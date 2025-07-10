@@ -1,7 +1,7 @@
 #
 # spec file for package python-hatchling
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-hatchling
 Version:        1.27.0
@@ -31,15 +32,15 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pluggy >= 1.0.0}
 BuildRequires:  %{python_module tomli >= 1.2.2 if %python-base < 3.11}
 BuildRequires:  %{python_module trove-classifiers}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-packaging >= 21.3
 Requires:       python-pathspec >= 0.10.1
 Requires:       python-pluggy >= 1.0.0
 Requires:       python-trove-classifiers
 Requires:       (python-tomli >= 1.2.2 if python-base < 3.11)
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -62,11 +63,8 @@ This is the extensible, standards compliant build backend used by Hatch.
 # (git clone, pip install ...), so they cannot work on obs
 # see tests/downstream/integrate.py for details
 
-%post
-%python_install_alternative hatchling
-
-%postun
-%python_uninstall_alternative hatchling
+%pre
+%python_libalternatives_reset_alternative hatchling
 
 %files %{python_files}
 %doc README.md
