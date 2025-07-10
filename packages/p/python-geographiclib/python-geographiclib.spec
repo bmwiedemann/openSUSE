@@ -1,7 +1,7 @@
 #
 # spec file for package python-geographiclib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-geographiclib
-Version:        1.50
+Version:        2.0
 Release:        0
 Summary:        Python geodesic routines
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://geographiclib.sourceforge.io/
 Source:         https://files.pythonhosted.org/packages/source/g/geographiclib/geographiclib-%{version}.tar.gz
-Source1:        https://sourceforge.net/p/geographiclib/code/ci/release/tree/LICENSE.txt?format=raw#/LICENSE.txt
 BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,13 +42,12 @@ GeodesicLine and PolygonArea.
 
 %prep
 %setup -q -n geographiclib-%{version}
-cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -r %{buildroot}%{$python_sitelib}/geographiclib/test
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -56,7 +56,8 @@ cp %{SOURCE1} .
 
 %files %{python_files}
 %doc README.md
-%license LICENSE.txt
-%{python_sitelib}/*
+%license LICENSE
+%{python_sitelib}/geographiclib
+%{python_sitelib}/geographiclib-%{version}.dist-info
 
 %changelog
