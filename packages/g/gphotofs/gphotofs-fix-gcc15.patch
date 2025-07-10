@@ -1,0 +1,31 @@
+Index: gphotofs-1.0/gphotofs.c
+===================================================================
+--- gphotofs-1.0.orig/gphotofs.c
++++ gphotofs-1.0/gphotofs.c
+@@ -904,7 +904,7 @@ gphotofs_connect()
+ }
+ 
+ static void *
+-gphotofs_init()
++gphotofs_init(struct fuse_conn_info *conn, struct fuse_config *config)
+ {
+    GPCtx *p;
+ 
+Index: gphotofs-1.0/configure.ac
+===================================================================
+--- gphotofs-1.0.orig/configure.ac
++++ gphotofs-1.0/configure.ac
+@@ -8,11 +8,13 @@ AM_INIT_AUTOMAKE([gnu 1.9 dist-bzip2])
+ 
+ GP_CHECK_SHELL_ENVIRONMENT
+ 
++
+ AC_PROG_CC
+ AC_PROG_CPP
+ AM_PROG_LIBTOOL
+ AC_PROG_INSTALL
+ AM_PROG_CC_C_O
++AC_SYS_LARGEFILE
+ 
+ GP_PKG_CONFIG
+ 

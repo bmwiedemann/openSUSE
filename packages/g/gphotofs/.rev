@@ -142,4 +142,13 @@
   - Fixed removal protection permissions. (forwarded request 1273984 from msmeissn)</comment>
     <requestid>1273985</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>813f9840857ec35300efe47c2fc94216</srcmd5>
+    <version>1.0</version>
+    <time>1752178316</time>
+    <user>anag_factory</user>
+    <comment>- gphotofs-fix-gcc15.patch: fix prototypes, add AC_SYS_LARGEFILE
+- rerun autotools (forwarded request 1291551 from msmeissn)</comment>
+    <requestid>1291552</requestid>
+  </revision>
 </revisionlist>

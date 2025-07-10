@@ -32,6 +32,10 @@ Release:        0
 Source0:        https://github.com/gphoto/gphotofs/releases/download/v1.0/gphotofs-%{version}.tar.bz2
 Source1:        https://github.com/gphoto/gphotofs/releases/download/v1.0/gphotofs-%{version}.tar.bz2.asc
 Source2:        gphotofs.keyring
+Patch0:         gphotofs-fix-gcc15.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -81,9 +85,10 @@ Authors:
     Colin Marquardt <cmarqu@users.sourceforge.net>
 
 %prep
-%setup -q
+%autosetup
 
 %build
+autoreconf -i -f
 %configure
 make
 

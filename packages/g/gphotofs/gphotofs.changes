@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  9 19:13:22 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- gphotofs-fix-gcc15.patch: fix prototypes, add AC_SYS_LARGEFILE
+- rerun autotools
+
+-------------------------------------------------------------------
 Fri May  2 09:55:31 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - updated to 1.0 upstream release
