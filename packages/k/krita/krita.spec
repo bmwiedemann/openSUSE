@@ -29,7 +29,7 @@
 %define pyver python311
 %endif
 Name:           krita
-Version:        5.2.9
+Version:        5.2.10
 Release:        0
 Summary:        Digital Painting Application
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.0-only
@@ -43,6 +43,8 @@ Source2:        krita.keyring
 Patch0:         0004-Fix-build-with-sip6.8.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         5d44af277b005692241a09f30e11bb0d16166823.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Fix-build-with-libheif-1.20.patch
 BuildRequires:  %{pyver}-devel
 BuildRequires:  %{pyver}-qt5-devel
 BuildRequires:  %{pyver}-sip-devel

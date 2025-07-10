@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Jul 10 13:23:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-Fix-build-with-libheif-1.20.patch
+
+-------------------------------------------------------------------
+Wed Jul  9 10:32:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.2.10
+  https://krita.org/en/posts/2025/krita-5.2.10-released/
+  * Raster layer opacity changes now properly clear the animation
+    cache. (kde#499389)
+  * Fix incorrect scaling of animated transform mask values.
+    (kde#469881)
+  * Allow resetting onion skins to default values. (kde#466977)
+  * Fix a crash in clipboard handling. (kde#501560)
+  * Resize canvas: reset the canvas size when toggling the
+    "preserve aspect ratio" button. (kde#452605)
+  * TIFF: Tiff files would append the entire image again on
+    saving again because we didn't truncate the file on
+    saving. (kde#500870)
+  * Fix a crash when autosaving extremely big files.
+  * Make updating the rulers more responsive during canvas
+    transformations
+  * Make panning more responsive
+  * Improve performance of the statusbar
+  * Fix the transform tool to show reordered layers preview
+    (kde#503201)
+  * OpenRaster: default group layers to non-passthrough mode,
+    following the specitication. Thanks Wareya Na!
+  * Palettes: use the title field for the palette name for
+    Adobe Color Book palettes
+  * Fix the brush preview when creating a new preset with canvas
+    mirroring enabled. (kde#501153)
+  * Fix handling of groups in palette files
+
+-------------------------------------------------------------------
 Fri May 30 11:51:38 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - backport 5d44af277b005692241a09f30e11bb0d16166823.patch:
