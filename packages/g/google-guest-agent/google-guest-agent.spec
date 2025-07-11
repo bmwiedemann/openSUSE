@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           google-guest-agent
-Version:        20250624.00
+Version:        20250709.02
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
@@ -69,6 +69,7 @@ done
 install -d %{buildroot}%{_bindir}
 install -p -m 0755 google_guest_agent/google_guest_agent %{buildroot}%{_bindir}/google_guest_agent
 install -p -m 0755 google_metadata_script_runner/google_metadata_script_runner %{buildroot}%{_bindir}/google_metadata_script_runner
+install -p -m 0755 google_metadata_script_runner/google_metadata_script_runner %{buildroot}%{_bindir}/google_metadata_script_runner_adapt
 install -d %{buildroot}/usr/share/google-guest-agent
 install -p -m 0644 instance_configs.cfg %{buildroot}/usr/share/google-guest-agent/instance_configs.cfg
 install -d %{buildroot}%{_unitdir}
