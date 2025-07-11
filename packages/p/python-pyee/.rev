@@ -162,4 +162,12 @@ Add missing BuildRequires</comment>
 - Enable sle15_python_module_pythons.</comment>
     <requestid>1248482</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>828feb78d13c4b49405c4127c1a3aa25</srcmd5>
+    <version>13.0.0</version>
+    <time>1752262243</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1291956</requestid>
+  </revision>
 </revisionlist>

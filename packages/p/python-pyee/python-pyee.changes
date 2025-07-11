@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jul 11 10:38:21 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Add gh-pr184_tests.patch to repair failing tests
+
+-------------------------------------------------------------------
+Sat Jun 28 07:30:03 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- update to 13.0.0:
+  * Type checking improvements
+    * Introduce overloads for ee.on
+    * Add None return type for functions as appropriate
+    * Type self as Any in all methods
+    * Local and CI tasks for type checking with mypy
+    * mypy type checking passes
+    * pyright type checking passes
+  * Addition of mypy to development dependencies
+  * Removed conditional import of iscoroutine
+    * This was implemented to support Python 3.3, which was dropped long ago
+  * Removed type stub for twisted.python.Failure
+    * This was to address a typing issue in unsupported versions of Twisted
+  * Export Handler type in pyee/__init__.py
+
+-------------------------------------------------------------------
 Tue Feb 25 20:36:45 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 12.1.1:

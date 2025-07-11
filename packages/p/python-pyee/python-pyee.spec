@@ -18,16 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyee
-Version:        12.1.1
+Version:        13.0.0
 Release:        0
 Summary:        A port of node.js's EventEmitter to python
 License:        MIT
 URL:            https://github.com/jfhbrook/pyee
 Source:         https://files.pythonhosted.org/packages/source/p/pyee/pyee-%{version}.tar.gz
+# https://github.com/jfhbrook/pyee/pull/184
+Patch0:         gh-pr184_tests.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module vcversioner}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,7 +46,7 @@ pyee supplies an ``EventEmitter`` object similar to the ``EventEmitter``
 from Node.js.
 
 %prep
-%setup -q -n pyee-%{version}
+%autosetup -n pyee-%{version} -p1
 
 %build
 %pyproject_wheel
