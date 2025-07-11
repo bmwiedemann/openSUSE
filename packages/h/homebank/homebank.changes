@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul 10 04:18:26 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.9.3
+  * bugfix: lp#2114680 Hard to switch an Income transaction to
+    Transfer
+  * bugfix: lp#2114674 QIF import mark transaction similar with
+    different Number
+  * bugfix: lp#2114136 3rd party flatpak broken translation
+  * bugfix: lp#2113492 AppStream metadata are invalid
+  * bugfix: lp#2112649 ledger refresh button faulty clear the
+    filter
+  * bugfix: lp#2111786 change of day is not detected and so future
+    transaction/balances are not updated
+  * bugfix: lp#2111468 CSV import silently skip some lines
+    (with a missing " enclosed)
+  * bugfix: lp#2110461 import a CSV with unsupported format crash
+  * bugfix: lp#2107951 when several ledger window opened, update
+    on transfer is deferred 
+- Changes in 5.9.2
+  * bugfix: lp#2112135 scheduled with limitation don't stop and
+    goes erroneous data
+  * bugfix: lp#2111663 variable scope issue in ui-assign.c
+  * bugfix: lp#2111359 remind status not synced in transfers 
+
+-------------------------------------------------------------------
 Mon Jun 23 19:31:18 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.9.1:
