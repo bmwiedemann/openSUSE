@@ -17,7 +17,7 @@
 
 
 Name:           liboqs
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        C library for quantum-resistant cryptographic algorithms
 License:        MIT
@@ -40,18 +40,18 @@ BuildRequires:  python3-pytest-xdist
 liboqs is a C library for quantum-resistant cryptographic algorithms.
 See the bundled README.md for particular limitations on intended use.
 
-%package -n liboqs7
+%package -n liboqs8
 Summary:        C library for quantum-resistant cryptographic algorithms
 Group:          System/Libraries
 
-%description -n liboqs7
+%description -n liboqs8
 liboqs is a C library for quantum-resistant cryptographic algorithms.
 See the bundled README.md for particular limitations on intended use.
 
 %package devel
 Summary:        Headers for liboqs, a library for quantum-resistant cryptography
 Group:          Development/Languages/C and C++
-Requires:       liboqs7 = %{version}
+Requires:       liboqs8 = %{version}
 
 %description devel
 liboqs is a C library for quantum-resistant cryptographic algorithms.
@@ -88,13 +88,13 @@ pushd build
 make run_tests
 popd
 
-%post -n liboqs7 -p /sbin/ldconfig
-%postun -n liboqs7 -p /sbin/ldconfig
+%post -n liboqs8 -p /sbin/ldconfig
+%postun -n liboqs8 -p /sbin/ldconfig
 
-%files -n liboqs7
+%files -n liboqs8
 %license LICENSE.txt
 %{_libdir}/liboqs.so.%version
-%{_libdir}/liboqs.so.7
+%{_libdir}/liboqs.so.8
 %doc README.md
 
 %files devel

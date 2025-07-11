@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jul 10 19:15:53 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 0.14.0:
+  * Key encapsulation mechanisms:
+    - HQC: Disabled compiler optimizations to avoid secret-dependent branching in certain configurations. HQC remains disabled by default.
+    - ML-KEM: Updated the default ML-KEM implementation to [PQCP's mlkem-native v1.0.0](https://github.com/pq-code-package/mlkem-native/releases/tag/v1.0.0).
+  * Digital signature schemes:
+    - New API: added an API function to check if a signature scheme supports signing with a context string.
+    - SNOVA: added [SNOVA](https://snova.pqclab.org/) from NIST Additional Signature Schemes Round 2.
+
+  * Other changes:
+     - Added an AVX512VL-optimized backend for SHA3.
+     - Improved memory management throughout the codebase.
+
+- CVE-2025-52473: Disabled compiler optimizations for HQC to avoid
+  secret-dependent branches. Thank you to Zhenzhi Lai and Zhiyuan Zhang
+  from from the University of Melbourne and the Max Planck Institute
+  for Security and Privacy for identifying the issue. (bsc#1246301)
+- new major library version liboqs.so.8
+
+-------------------------------------------------------------------
 Thu Jun 26 15:21:36 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - enable testsuite
