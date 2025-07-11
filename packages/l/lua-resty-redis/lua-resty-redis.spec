@@ -18,7 +18,7 @@
 
 %define lua_version 5.1
 Name:           lua-resty-redis
-Version:        0.32
+Version:        0.33
 Release:        0
 Summary:        Lua redis client driver for the ngx_lua based on the cosocket API
 License:        BSD-2-Clause
