@@ -613,6 +613,7 @@ unsorted:
   - ansible-sap-install 
   - ansible-sap-launchpad 
   - ansible-sap-operations 
+  - ansible-sap-playbooks 
   - ansible-terraform-inventory 
   - ansible-test 
   - ansible-variables 
@@ -3145,6 +3146,8 @@ unsorted:
   - deal_II-devel 
   - deal_II-openmpi4-devel 
   - deal_II-openmpi5-devel 
+  - dealers-choice 
+  - dealers-choice-lang 
   - debhelper 
   - debootstrap 
   - debugbreak 
@@ -8379,6 +8382,9 @@ unsorted:
   - gwenhywfar-lang 
   - gwenhywfar-qt6-devel 
   - gwenhywfar-tools 
+  - gxml-devel 
+  - gxml-doc 
+  - gxml-lang 
   - gzdoom 
   - gzrt 
   - h5utils 
@@ -13831,6 +13837,7 @@ unsorted:
   - libgwengui-qt6-79 
   - libgwenhywfar79 
   - libgwenhywfar79-plugins 
+  - libgxml0_20_4 
   - libgxps-devel 
   - libgxps-tools 
   - libgxw0 
@@ -14363,7 +14370,6 @@ unsorted:
   - liblirc_client0-32bit 
   - liblirc_driver0 
   - liblirc_driver0-32bit 
-  - liblittleb0 
   - liblkl0 
   - libllama 
   - liblldb15 
@@ -15299,6 +15305,7 @@ unsorted:
   - libplacebo351-32bit 
   - libplacebo5-devel 
   - libplanarity2 
+  - libplanify-0 
   - libplank1 
   - libplasma6-devel 
   - libplayerctl2 
@@ -17427,8 +17434,6 @@ unsorted:
   - lite-xl 
   - lite-xl-plugin-manager 
   - litetran 
-  - littleb-devel 
-  - littleb-examples 
   - littlewizard 
   - littlewizard-devel 
   - littlewizard-examples 
@@ -22744,6 +22749,9 @@ unsorted:
   - pkcs11-helper-devel 
   - pkcs11-provider 
   - pkgdiff 
+  - planify 
+  - planify-devel 
+  - planify-lang 
   - plank 
   - plank-devel 
   - plank-docklets 
@@ -48058,6 +48066,7 @@ unsorted:
   - typelib-1_0-GVnc-1_0 
   - typelib-1_0-GVncPulse-1_0 
   - typelib-1_0-GXPS-0_1 
+  - typelib-1_0-GXml-0_20_4 
   - typelib-1_0-Gck-1 
   - typelib-1_0-Gcr-3 
   - typelib-1_0-GcrUi-3 
