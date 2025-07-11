@@ -17,7 +17,7 @@
 
 %define ROCm_version 6.4.1
 Name:           btop
-Version:        1.4.3+git20250516.92f127e
+Version:        1.4.4+git20250703.762d0b4
 Release:        0
 Summary:        Usage and stats for processor, memory, disks, network and processes
 License:        Apache-2.0

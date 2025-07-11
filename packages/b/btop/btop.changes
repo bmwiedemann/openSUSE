@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jul 04 00:59:05 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.4.4+git20250703.762d0b4:
+  * Reduce noise in Github templates
+  * v1.4.4 Bug fixes
+  * Fix auto-detection of CPU temp on Ampere boards (#1185)
+  * ci: update openbsd 7 runners to 7.7
+  * ci: update freebsd 14 runners to 14.3
+  * Fixed floating_humanizer() to work correctly when numeric delimiter isn't a dot.
+  * Add command line option to set an inital filter
+  * CMake: Create a library target for intel_gpu_top code
+  * CMake: Don't drop LTO silently
+  * Exit gracefully if integer conversion in CLI parser fails
+  * Make 100ms the minimal refresh rate
+  * CI: Disable recursive cloning in workflows
+  * CMake: Remove compiler warning options
+  * Fix wrong use of too in terminal size error message (#1166)
+  * Make the disk filter description more clear (#1077)
+  * Lock/unlock config to avoid infinite recursion (#1031)
+
+-------------------------------------------------------------------
 Tue May 20 13:42:27 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating ROCm to v6.4.1
