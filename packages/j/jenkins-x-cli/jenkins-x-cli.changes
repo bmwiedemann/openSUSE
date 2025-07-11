@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Fri Jul 11 05:06:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.107:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.0.22
+    Changes in jenkins-x-plugins/jx-gitops 1.0.22:
+    * deps: bump helm.sh/helm/v3 from 3.17.3 to 3.18.4
+      (dependabot[bot])
+
+-------------------------------------------------------------------
+Fri Jul 11 05:04:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.106:
+  * chore: remove support for octant
+
+-------------------------------------------------------------------
+Thu Jul 10 07:44:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.105:
+  * chore(deps): upgrade jenkins-x-plugins/jx-project to version
+    0.2.76
+
+-------------------------------------------------------------------
+Thu Jul 10 07:38:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.104:
+  * chore: upgrade to go 1.24 and other upgrades
+
+-------------------------------------------------------------------
+Thu Jul 10 07:35:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.103:
+  * chore(deps): upgrade jenkins-x-plugins/jx-pipeline to version
+    0.7.28
+
+-------------------------------------------------------------------
+Wed Jul 09 11:02:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.102:
+  * chore(deps): upgrade jenkins-x-plugins/jx-promote to version
+    0.6.25
+
+-------------------------------------------------------------------
+Wed Jul 09 04:46:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.101:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.0.21
+
+-------------------------------------------------------------------
+Wed Jul 09 04:44:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.100:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.0.20
+
+-------------------------------------------------------------------
+Tue Jul 08 14:27:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.99:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.0.19
+
+-------------------------------------------------------------------
+Mon Jul 07 05:26:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.98:
+  * chore(deps): upgrade jenkins-x-plugins/jx-verify to version
+    0.3.15
+
+-------------------------------------------------------------------
+Thu Jun 12 05:11:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.97:
+  * chore(deps): upgrade jenkins-x-plugins/jx-pipeline to version
+    0.7.25
+
+-------------------------------------------------------------------
+Wed Jun 11 04:47:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.96:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.0.8
+
+-------------------------------------------------------------------
+Tue Jun 10 10:07:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.95:
+  * chore(deps): upgrade jenkins-x-plugins/jx-pipeline to version
+    0.7.23
+
+-------------------------------------------------------------------
+Thu Jun 05 16:59:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.94:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.0.2
+
+-------------------------------------------------------------------
+Thu Jun 05 16:53:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.93:
+  * chore(deps): upgrade jenkins-x-plugins/jx-pipeline to version
+    0.7.22
+
+-------------------------------------------------------------------
 Tue Jun 03 05:34:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.11.92:
