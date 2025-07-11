@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Jul 10 11:08:12 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.14.6.0
+  - fix: Check for errors in ShadingSystem::ReParameter() #1998 (by
+    cmstein)
+  - fix: Pass the real number of channels to rs_texture and
+    rs_texture3d on gpu #2004
+  - build: Link batched libraries with liboslexec #1987 (by John
+    Haddon)
+  - build: Update include directives for OpenImageIO_ROOT #1997 (by
+    cmstein)
+  - build(optix): Simplify FindOptiX.cmake a bit now that OptiX 7
+    is the minimum #1988
+  - build(optix): Get OptiX headers from new improved location
+    #1989
+  - build: Add compatibility with LLVM 20.1 #1993 (by Sven-Hendrik
+    Haase)
+  - ci: Remove Windows-2019 job #1990
+  - ci: GPU/OptiX full build and test #1992
+  - ci: Improve CI caching scheme #1994
+  - ci: Add vp2025 test #1995
+- drop add-missing-cstdint.patch
+- Allow OIIO 3 now
+
+-------------------------------------------------------------------
+Sat Jun 28 01:59:56 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.14.5.1
+  https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/releases/tag/v1.14.5.1
+  https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/releases/tag/v1.14.5.0
+  https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/releases/tag/v1.14.4.0-beta1
+  https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/releases/tag/v1.13.12.0
+- refreshed fix-install-paths.patch 
+- add add-missing-cstdint.patch
+
+-------------------------------------------------------------------
 Thu Feb 13 03:53:06 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Force newer boost on leap for blender

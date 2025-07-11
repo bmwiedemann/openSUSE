@@ -37,7 +37,7 @@
 %endif
 
 Name:           OpenShadingLanguage
-Version:        1.13.11.0
+Version:        1.14.6.0
 Release:        0
 Summary:        A language for programmable shading
 License:        BSD-3-Clause
@@ -47,6 +47,7 @@ Source0:        https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
 Source1:        https://creativecommons.org/licenses/by/3.0/legalcode.txt#/CC-BY-3.0.txt
 Patch0:         fix-install-paths.patch
 BuildRequires:  OpenEXR-devel >= 2.4
+BuildRequires:  OpenImageIO >= 2.5
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.15
 BuildRequires:  flex
@@ -54,7 +55,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem%{?force_boost_version}-devel
 BuildRequires:  libboost_system%{?force_boost_version}-devel
 BuildRequires:  libboost_thread%{?force_boost_version}-devel
-BuildRequires:  (OpenImageIO >= 2.4 with OpenImageIO < 3)
 BuildRequires:  (cmake(Clang) >= %{min_llvm_version} with cmake(Clang) =< %{max_llvm_version})
 BuildRequires:  (cmake(LLVM)  >= %{min_llvm_version} with cmake(LLVM)  =< %{max_llvm_version})
 %if %{with qt}
@@ -71,8 +71,9 @@ BuildRequires:  partio-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3-devel
 BuildRequires:  python3-pybind11-devel
-BuildRequires:  (cmake(OpenImageIO) >= 2.0 with cmake(OpenImageIO) < 3)
+BuildRequires:  cmake(OpenImageIO) >= 2.5
 BuildRequires:  cmake(pugixml)
+BuildRequires:  cmake(tsl-robin-map)
 Requires:       %{name}-common-headers = %{version}
 Recommends:     %{name}-doc = %{version}
 ExcludeArch:    %{ix86}
@@ -229,7 +230,7 @@ find %{buildroot} -name LICENSE.md -print -delete
 # add top level markdowns to the doc package
 cp -p *.md %{buildroot}%{_docdir}/%{name}/
 # TODO: package python module
-find %{buildroot}%{python3_sitearch} -name oslquery.so -print -delete
+rm -rv %{buildroot}%{python3_sitearch}/oslquery/
 rm %{buildroot}%{_datadir}/build-scripts/serialize-bc.py
 
 %ldconfig_scriptlets -n liboslcomp%{sufx}
