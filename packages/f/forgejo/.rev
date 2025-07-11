@@ -551,4 +551,23 @@
     <comment></comment>
     <requestid>1287177</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>82adfc1d18a35bc25eba4525d9c2a37a</srcmd5>
+    <version>11.0.3</version>
+    <time>1752262156</time>
+    <user>anag_factory</user>
+    <comment>- update to 11.0.3:
+  * fixing git security vulnerability
+  * add missing lazy load attribute to images
+  * backport of translation updates
+  * do not ignore automerge while a PR is checking for conflicts
+  * user activation with uppercase email address
+  * collaborator can edit wiki with write access
+  * fix: corrupted wiki unit default permission
+  * fix: skip empty tokens in SearchOptions.Tokens()
+  * fix: make API /repos/{owner}/{repo}/compare/{basehead} work with forks
+  * fix(ui): release: name is overridden with tag name on edit
+  * Revert &quot;fix(api): document is_system_webhook field (forwarded request 1291759 from rrahl0)</comment>
+    <requestid>1291760</requestid>
+  </revision>
 </revisionlist>

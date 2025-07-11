@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 10 18:05:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 11.0.3:
+  * fixing git security vulnerability
+  * add missing lazy load attribute to images
+  * backport of translation updates
+  * do not ignore automerge while a PR is checking for conflicts
+  * user activation with uppercase email address
+  * collaborator can edit wiki with write access
+  * fix: corrupted wiki unit default permission
+  * fix: skip empty tokens in SearchOptions.Tokens()
+  * fix: make API /repos/{owner}/{repo}/compare/{basehead} work with forks
+  * fix(ui): release: name is overridden with tag name on edit
+  * Revert "fix(api): document is_system_webhook field
+
+-------------------------------------------------------------------
 Thu Jun 19 11:16:20 UTC 2025 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
 
 - Update to 11.0.2:

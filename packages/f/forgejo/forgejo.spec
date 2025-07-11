@@ -30,7 +30,7 @@
 %endif
 %endif
 Name:           forgejo
-Version:        11.0.2
+Version:        11.0.3
 Release:        0
 Summary:        Self-hostable forge
 License:        GPL-3.0-or-later
