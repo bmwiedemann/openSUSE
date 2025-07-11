@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 10 16:43:27 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250708 (git commit 99d64b4f788c):
+  * xe: Add fan_control v203.0.0.0 for BMG
+
+-------------------------------------------------------------------
+Mon Jul  7 07:22:31 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250707 (git commit ba5e4e381494):
+  * xe: First HuC release for Pantherlake
+  * xe: First GuC release for Pantherlake
+
+-------------------------------------------------------------------
 Thu Jun  5 11:12:00 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases

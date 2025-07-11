@@ -94,4 +94,17 @@ After this PR, there will be a delete request for kernel-firmware.
   * xe: Update LNL GSC to v104.0.5.1429</comment>
     <requestid>1283310</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a0d501f4d6286a0c9291d8754d852a7b</srcmd5>
+    <version>20250708</version>
+    <time>1752262149</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250708 (git commit 99d64b4f788c):
+  * xe: Add fan_control v203.0.0.0 for BMG
+
+- Update to version 20250707 (git commit ba5e4e381494):
+  * xe: First HuC release for Pantherlake
+  * xe: First GuC release for Pantherlake</comment>
+    <requestid>1291746</requestid>
+  </revision>
 </revisionlist>
