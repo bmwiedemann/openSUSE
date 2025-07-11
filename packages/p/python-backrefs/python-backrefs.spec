@@ -18,19 +18,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-backrefs
-Version:        5.8
+Version:        5.9
 Release:        0
 Summary:        A wrapper around re and regex that adds additional back references
 License:        MIT
 URL:            https://github.com/facelessuser/backrefs
 Source:         https://files.pythonhosted.org/packages/source/b/backrefs/backrefs-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module hatchling >= 0.21.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module regex}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Suggests:       python-regex
 BuildArch:      noarch
 %python_subpackages

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 11 10:06:38 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.9
+  * NEW: Add support for Python 3.14.
+  * ENHANCE: Switch to deploying with PyPI's "Trusted Publisher".
+
+-------------------------------------------------------------------
 Thu Apr 24 13:10:41 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
