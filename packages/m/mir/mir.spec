@@ -1,7 +1,7 @@
 #
 # spec file for package mir
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) Shawn W Dunn <sfalken@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,7 +36,7 @@
 %global mirevdevsover 10
 
 Name:           mir
-Version:        2.21.0
+Version:        2.21.1
 Release:        0
 Summary:        Libraries for building Wayland shells
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
@@ -108,10 +108,10 @@ A set of libraries for building Wayland based shells.
 Summary:        Development files for Mir
 Requires:       %{name}-test-libs-static = %{version}
 Requires:       libmircommon%{commonlibsover} = %{version}
+Requires:       libmirevdev%{mirevdevsover} = %{version}
 Requires:       libmiroil%{lomirisover} = %{version}
 Requires:       libmirserver%{mirserversover} = %{version}
 Requires:       libmirserverplatform%{mirserverplatformsover} = %{version}
-Requires:       libmirevdev%{mirevdevsover} = %{version}
 
 %description devel
 This package provides the development files to create compositors built on Mir
@@ -162,8 +162,8 @@ Component library of the Mir compositing stack
 %package -n libmirserver%{mirserversover}
 Summary:        Mir server library
 License:        GPL-2.0-only OR GPL-3.0-only
-Requires:       libmirserverplatform%{mirserverplatformsover}
 Requires:       libmirevdev%{mirevdevsover}
+Requires:       libmirserverplatform%{mirserverplatformsover}
 
 %description -n libmirserver%{mirserversover}
 Component library of the Mir compositing stack
@@ -271,7 +271,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/miral-shell.desktop
 %license COPYING.*
 %{_libdir}/pkgconfig/mir*internal.pc
 %{_includedir}/mir*internal/
-
 
 %files -n libmircommon%{commonlibsover}
 %license COPYING.LGPL*

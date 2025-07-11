@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 10 17:07:29 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.21.1:
+  * Incorporate fixes needed to build for Ubuntu 25.10
+    - binutils 2.44.50.20250616 for arm64 still breaks LTO builds
+    - Turn off workaround for now-fixed GLib bug
+
+-------------------------------------------------------------------
 Sat Jun 28 07:05:48 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 2.21.0
