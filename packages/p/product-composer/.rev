@@ -497,4 +497,14 @@
   * Implement option to follow package version for product</comment>
     <requestid>1291053</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>daaf660467516b0918e131fb31b560d2</srcmd5>
+    <version>0.6.9</version>
+    <time>1752262221</time>
+    <user>anag_factory</user>
+    <comment>- update to version 0.6.9:
+  * Create the .license directory independend of iso generation
+  * Support set_updateinfo_id_prefix to be set per flavor</comment>
+    <requestid>1291853</requestid>
+  </revision>
 </revisionlist>
