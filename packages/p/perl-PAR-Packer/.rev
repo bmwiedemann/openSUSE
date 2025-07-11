@@ -267,4 +267,30 @@
     <comment></comment>
     <requestid>1173975</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>9ab999aa23ecb19a778632357f4ab93f</srcmd5>
+    <version>1.64.0</version>
+    <time>1752262238</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1291905 from tinita
+
+- updated to 1.64.0 (1.064)
+   see /usr/share/doc/packages/perl-PAR-Packer/Changes
+  1.064  2024-07-08
+  - add PAR::Packer::Troubleshooting (for pp)
+  - fix gcc-15 warnings &quot;old-style function definition&quot;
+  - .github/workflows/perl.yml: add perl 5.40
+  - usee three-argument open() everywhere
+  - myldr/boot.c: don't #include stringapiset.h:
+    some old toolchains don't have it, declaration of MultiByteToWideChar()
+    should be covered by #include'ing Windows.h anyway
+  - fix check for package &quot;libperl-dev&quot; on Debian-based systems
+  - remove reference to PAR::FAQ (obsolete)
+  - disallow &quot;.&quot; or &quot;..&quot; in --addfile or --addlist target paths;
+    also strip leading slashes when adding these files to
+    the zip (Archive::Zip allows this!)
+  - README: remove https://groups.google.com/g/perl.par ...
+    (as it will not be updated anymore)</comment>
+    <requestid>1291924</requestid>
+  </revision>
 </revisionlist>

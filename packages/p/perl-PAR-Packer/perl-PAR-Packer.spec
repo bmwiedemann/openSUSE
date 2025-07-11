@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PAR-Packer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name PAR-Packer
 Name:           perl-PAR-Packer
-Version:        1.63.0
+Version:        1.64.0
 Release:        0
-# 1.063 -> normalize -> 1.63.0
-%define cpan_version 1.063
+# 1.064 -> normalize -> 1.64.0
+%define cpan_version 1.064
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        PAR Packager
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -29,35 +29,35 @@ Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/%{cpan_name}-%
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Archive::Zip) >= 1.02
+BuildRequires:  perl(Archive::Zip) >= 1.20
 BuildRequires:  perl(Compress::Zlib) >= 1.30
 BuildRequires:  perl(Digest::SHA) >= 5.40
 BuildRequires:  perl(ExtUtils::CBuilder)
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.31
-BuildRequires:  perl(Getopt::ArgvFile) >= 1.07
+BuildRequires:  perl(Getopt::ArgvFile) >= 1.70
 BuildRequires:  perl(IO::Compress::Gzip)
-BuildRequires:  perl(IPC::Run3) >= 0.048
-BuildRequires:  perl(Module::ScanDeps) >= 1.21
-BuildRequires:  perl(PAR) >= 1.20.0
-BuildRequires:  perl(PAR::Dist) >= 0.22
-Requires:       perl(Archive::Zip) >= 1.02
+BuildRequires:  perl(IPC::Run3) >= 0.48
+BuildRequires:  perl(Module::ScanDeps) >= 1.210
+BuildRequires:  perl(PAR) >= 1.20
+BuildRequires:  perl(PAR::Dist) >= 0.220
+Requires:       perl(Archive::Zip) >= 1.20
 Requires:       perl(Compress::Zlib) >= 1.30
 Requires:       perl(Digest::SHA) >= 5.40
-Requires:       perl(Getopt::ArgvFile) >= 1.07
+Requires:       perl(Getopt::ArgvFile) >= 1.70
 Requires:       perl(IO::Compress::Gzip)
-Requires:       perl(Module::ScanDeps) >= 1.21
-Requires:       perl(PAR) >= 1.20.0
-Requires:       perl(PAR::Dist) >= 0.22
-Provides:       perl(App::Packer::PAR) = 0.91
-Provides:       perl(PAR::Filter) = 0.03
+Requires:       perl(Module::ScanDeps) >= 1.210
+Requires:       perl(PAR) >= 1.20
+Requires:       perl(PAR::Dist) >= 0.220
+Provides:       perl(App::Packer::PAR) = 0.910.0
+Provides:       perl(PAR::Filter) = 0.30.0
 Provides:       perl(PAR::Filter::Bleach)
 Provides:       perl(PAR::Filter::Bytecode)
 Provides:       perl(PAR::Filter::Obfuscate)
 Provides:       perl(PAR::Filter::PatchContent)
 Provides:       perl(PAR::Filter::PodStrip)
 Provides:       perl(PAR::Packer) = %{version}
-Provides:       perl(PAR::StrippedPARL::Base) = 0.975
-Provides:       perl(pp) = 0.992
+Provides:       perl(PAR::StrippedPARL::Base) = 0.975.0
+Provides:       perl(pp) = 0.992.0
 %undefine       __perllib_provides
 Recommends:     perl(Module::Signature)
 Recommends:     perl(Tk)
@@ -79,7 +79,7 @@ have been stripped from the PAR distribution and are now distributed as the
 compiler.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
