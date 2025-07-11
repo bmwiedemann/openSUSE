@@ -259,4 +259,16 @@
 - Adjust upstream source name in spec file (forwarded request 1252703 from glaubitz)</comment>
     <requestid>1252981</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9610aa5a8d8bc622c5608737eb076c30</srcmd5>
+    <version>12.0.0</version>
+    <time>1752262244</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 12.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1291854 from glaubitz)</comment>
+    <requestid>1291957</requestid>
+  </revision>
 </revisionlist>
