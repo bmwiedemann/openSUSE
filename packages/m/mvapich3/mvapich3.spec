@@ -70,7 +70,6 @@ Release:        0
 Source0:        http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich-%{version}%{?rc_ver}.tar.gz
 Source1:        mpivars.sh
 Source2:        mpivars.csh
-Source3:        macros.hpc-mvapich3
 Source100:      _multibuild
 Patch0:         mvapich3-s390_get_cycles.patch
 Patch1:         pass-correct-size-to-snprintf.patch
@@ -175,6 +174,7 @@ cp /usr/share/automake*/config.* .
 # GCC10 needs an extra flag to allow badly passed parameters
 %if 0%{?suse_version} > 1500
 export FFLAGS="-fallow-argument-mismatch $FFLAGS"
+export CFLAGS="-std=gnu17 $CFLAGS"
 %endif
 
 ./autogen.sh --without-ucx --without-ofi --without-json

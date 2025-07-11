@@ -25,4 +25,13 @@
 - Disable gnu-hpc build flavours (bsc#1239982)</comment>
     <requestid>1265558</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>96743d88c788583bcdc8e46fbdf14f5a</srcmd5>
+    <version>3.0</version>
+    <time>1752262271</time>
+    <user>anag_factory</user>
+    <comment>- Force -std to gnu17 to fix compilation with GCC15
+- Remove unneeded macros.hpc-mvapich3</comment>
+    <requestid>1292187</requestid>
+  </revision>
 </revisionlist>
