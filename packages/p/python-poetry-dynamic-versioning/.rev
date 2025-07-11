@@ -124,4 +124,14 @@
   * Option tool.poetry-dynamic-versioning.escape-with (forwarded request 1290820 from rrahl0)</comment>
     <requestid>1290821</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9570cf8c658cca420b4f710b6d29dd62</srcmd5>
+    <version>1.9.1</version>
+    <time>1752262278</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.9.1:
+  * File paths in tool.poetry-dynamic-versioning.files were not resolved the
+    same way as paths in tool.poetry-dynamic-versioning.substitution.files (forwarded request 1292088 from rrahl0)</comment>
+    <requestid>1292089</requestid>
+  </revision>
 </revisionlist>
