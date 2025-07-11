@@ -63,4 +63,13 @@
   * Fixed recording of BC_VARG.</comment>
     <requestid>1238655</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>05ea8693d2674efbd0b6f748a3c3586f</srcmd5>
+    <version>2.1.20250529</version>
+    <time>1752262273</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 2.1.20250529 (1748495995).
+  * https://github.com/openresty/luajit2/compare/v2.1-20250117...v2.1-20250529</comment>
+    <requestid>1292094</requestid>
+  </revision>
 </revisionlist>

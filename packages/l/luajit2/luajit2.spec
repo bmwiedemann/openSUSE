@@ -20,8 +20,8 @@
 %define so_ver 2
 %define lib_ver 5_1-%{so_ver}
 %define major 2.1
-%define minor 20250117
-%define upstream 1737090214
+%define minor 20250529
+%define upstream 1748495995
 Name:           luajit2
 Version:        %{major}.%{minor}
 Release:        0
@@ -75,8 +75,7 @@ Devel files for %{name} package.
 	PREFIX=%{_prefix} \
 	MULTILIB=%{_lib}
 
-%post -n lib%{name}-%{lib_ver} -p /sbin/ldconfig
-%postun -n lib%{name}-%{lib_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}-%{lib_ver}
 
 %files
 %{_bindir}/%{name}
