@@ -191,4 +191,18 @@
 - remove patch fix-CVE-2025-22869.patch, as upstream updated the dependencies (forwarded request 1289325 from rrahl0)</comment>
     <requestid>1289326</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>36b669fda0c281ed2dbc7f3b517418f7</srcmd5>
+    <version>7.0.0</version>
+    <time>1752262282</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 7.0.0:
+  * Update module code.forgejo.org/forgejo/act to v1.29.0
+  * chore(docs): update v7.0.0 release notes
+  * chore: remove gitea from variable names etc. with no functional change
+  * fix!: replace CLI --gitea-instance with --forgejo-instance
+  * chore: remove unused code and comments including gitea
+  * chore: update LICENSE year (forwarded request 1292090 from rrahl0)</comment>
+    <requestid>1292091</requestid>
+  </revision>
 </revisionlist>

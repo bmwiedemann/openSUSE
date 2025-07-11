@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 11 13:30:51 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 7.0.0:
+  * Update module code.forgejo.org/forgejo/act to v1.29.0
+  * chore(docs): update v7.0.0 release notes
+  * chore: remove gitea from variable names etc. with no functional change
+  * fix!: replace CLI --gitea-instance with --forgejo-instance
+  * chore: remove unused code and comments including gitea
+  * chore: update LICENSE year
+
+-------------------------------------------------------------------
 Mon Jun 30 16:59:32 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 6.4.0:
