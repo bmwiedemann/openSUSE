@@ -17,6 +17,8 @@
 
 
 %define _name   gst-devtools
+# rust1.88 build failed without this flag on PowerPC, bsc#1246111
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
 %{?sle15_python_module_pythons}
 Name:           gstreamer-devtools

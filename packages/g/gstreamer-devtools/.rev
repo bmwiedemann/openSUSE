@@ -287,4 +287,12 @@
     <comment></comment>
     <requestid>1289976</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>b874c5b0804e45bcba542f7364a02ca0</srcmd5>
+    <version>1.26.3</version>
+    <time>1752262224</time>
+    <user>anag_factory</user>
+    <comment>- Use lto macro instead of exporting cflags manually.</comment>
+    <requestid>1291867</requestid>
+  </revision>
 </revisionlist>
