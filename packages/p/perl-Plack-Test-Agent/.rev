@@ -15,4 +15,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1244436</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9f87a2edb4599eaa7081ecbc892893d3</srcmd5>
+    <version>1.600.0</version>
+    <time>1752262238</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1291899 from tinita
+
+- updated to 1.600.0 (1.6)
+   see /usr/share/doc/packages/perl-Plack-Test-Agent/Changes
+  1.6       2025-07-05 01:02:12Z
+  * Remove experimental note, given age of API (GH#2) (Andy Beverley)
+  * Add PUT and DELETE HTTP methods (GH#1) (Andy Beverley)</comment>
+    <requestid>1291921</requestid>
+  </revision>
 </revisionlist>

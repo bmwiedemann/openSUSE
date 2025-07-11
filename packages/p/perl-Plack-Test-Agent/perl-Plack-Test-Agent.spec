@@ -18,10 +18,10 @@
 
 %define cpan_name Plack-Test-Agent
 Name:           perl-Plack-Test-Agent
-Version:        1.500.0
+Version:        1.600.0
 Release:        0
-# 1.5 -> normalize -> 1.500.0
-%define cpan_version 1.5
+# 1.6 -> normalize -> 1.600.0
+%define cpan_version 1.6
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        OO interface for testing low-level Plack/PSGI apps
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -61,7 +61,7 @@ Provides:       perl(Test::WWW::Mechanize::Bound) = %{version}
 OO interface for testing low-level Plack/PSGI apps
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

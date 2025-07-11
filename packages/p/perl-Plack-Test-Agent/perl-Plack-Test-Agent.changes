@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul  5 05:33:38 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.600.0 (1.6)
+   see /usr/share/doc/packages/perl-Plack-Test-Agent/Changes
+
+  1.6       2025-07-05 01:02:12Z
+  * Remove experimental note, given age of API (GH#2) (Andy Beverley)
+  * Add PUT and DELETE HTTP methods (GH#1) (Andy Beverley)
+
+-------------------------------------------------------------------
 Thu Feb  6 22:28:17 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version
