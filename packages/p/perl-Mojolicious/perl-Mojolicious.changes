@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jul  4 05:38:02 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.410.0 (9.41)
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.41  2025-07-03
+    - Added EXPERIMENTAL support for Server-Sent Events.
+    - Added EXPERIMENTAL module Mojo::SSE.
+    - Added EXPERIMENTAL sse attribute to Test::Mojo.
+    - Added EXPERIMENTAL get_sse_ok, post_sse_ok, sse_finish_ok, sse_finished_ok, sse_ok, sse_id_is, sse_id_isnt,
+      sse_text_is, sse_text_isnt, sse_text_like, sse_text_unlike, sse_type_is and sse_type_isnt methods to Test::Mojo.
+    - Added EXPERIMENTAL is_sse and write_sse methods to Mojo::Content.
+    - Added EXPERIMENTAL write_sse method to Mojolicious::Controller.
+    - Added EXPERIMENTAL sse event to Mojo::Content.
+    - Fixed a bug where query parameters could not be set to undef. (ether)
+    - Fixed a bug where Host headers were not initialized correctly. (ether)
+
+-------------------------------------------------------------------
 Tue May 13 05:35:55 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.400.0 (9.40)

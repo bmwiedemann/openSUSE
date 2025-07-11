@@ -18,10 +18,10 @@
 
 %define cpan_name Mojolicious
 Name:           perl-Mojolicious
-Version:        9.400.0
+Version:        9.410.0
 Release:        0
-# 9.40 -> normalize -> 9.400.0
-%define cpan_version 9.40
+# 9.41 -> normalize -> 9.410.0
+%define cpan_version 9.41
 License:        Artistic-2.0
 Summary:        Real-time web framework
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -80,6 +80,7 @@ Provides:       perl(Mojo::Promise)
 Provides:       perl(Mojo::Reactor)
 Provides:       perl(Mojo::Reactor::EV)
 Provides:       perl(Mojo::Reactor::Poll)
+Provides:       perl(Mojo::SSE)
 Provides:       perl(Mojo::Server)
 Provides:       perl(Mojo::Server::CGI)
 Provides:       perl(Mojo::Server::Daemon)
@@ -161,7 +162,7 @@ first class Unicode support and much more for you to discover.
 Take a look at our excellent documentation in Mojolicious::Guides!
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
