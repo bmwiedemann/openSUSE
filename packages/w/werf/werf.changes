@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Jul 11 04:58:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.41.2:
+  * fix(deploy): improve context cancellation and clean up INFO
+    logs
+
+-------------------------------------------------------------------
+Fri Jul 11 04:49:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.41.1:
+  * chore(main): release 2.41.1 (#6961)
+  * fix(build): avoid inefficient tag listing and cache usage
+    (#6960)
+  * chore(ci): use proper token
+  * chore(ci): remove unnecessary step lint code
+  * chore(release): remove unnecessary condition
+  * chore(release): update release proccess lint code
+  * chore(release): add ability to publish new versions only
+  * chore(release): add wait for release to appear
+  * chore: update kind cluster for tests
+  * chore: increase buffer for printing stack traces
+  * chore(release): 2 stable
+  * chore(release): 2 alpha
+
+-------------------------------------------------------------------
+Fri Jul 11 04:44:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.41.0 (2.40.0 was not released):
+  * Features
+    - add glob patterns support for image names (#6935) (75b7261)
+  * Bug Fixes
+    - build: fix dockerfile custom project path (48a2dc7)
+    - build: fix dockerignore rel path (f962559)
+  * Dependencies
+    - chore(dev): freeze prettier version to prevent errors
+
+-------------------------------------------------------------------
 Mon Jun 30 05:16:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.39.1:
