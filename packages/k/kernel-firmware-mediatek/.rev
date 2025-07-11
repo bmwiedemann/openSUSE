@@ -139,4 +139,16 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases</comment>
     <requestid>1288147</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>571994a1ad8bb7bfa3a59c18a9a52e87</srcmd5>
+    <version>20250708</version>
+    <time>1752262149</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250708 (git commit 99d64b4f788c):
+  * mediatek MT7921: update bluetooth firmware to 20250625154126
+
+- Update to version 20250707 (git commit ba5e4e381494):
+  * linux-firmware: update firmware for MT7921 WiFi device</comment>
+    <requestid>1291747</requestid>
+  </revision>
 </revisionlist>
