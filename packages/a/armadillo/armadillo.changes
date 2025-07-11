@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 11 14:29:43 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 14.6.0:
+  * Added balance() to transform matrices so that column and row
+    norms are roughly the same.
+  * Added omit_nan() and omit_nonfinite() to extract elements
+    while omitting NaN and non-finite values.
+  * Added find_nonnan() for finding indices of non-NaN elements.
+  * Added standalone replace() function.
+
+-------------------------------------------------------------------
 Mon Jun  9 17:45:11 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 14.4.3:
