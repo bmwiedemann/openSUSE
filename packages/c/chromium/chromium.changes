@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul  9 16:52:34 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 138.0.7204.100:
+  * tweaks to the Google services settings page
+
+-------------------------------------------------------------------
+Tue Jul  1 12:18:23 CEST 2025 - ro@suse.de
+
+- update from debian: 
+  ppc-fedora-skia-vsx-instructions.patch
+- dropped patches:
+  ppc-skia-revert-1.patch
+  ppc-skia-revert-2.patch
+  ppc-skia-revert-3.patch
+
+-------------------------------------------------------------------
 Tue Jul  1 10:43:12 CEST 2025 - ro@suse.de
 
 - Chromium 138.0.7204.96

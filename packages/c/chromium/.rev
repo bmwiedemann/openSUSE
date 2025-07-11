@@ -5760,4 +5760,12 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
 - bump gn buildrequires to 0.20250520</comment>
     <requestid>1289449</requestid>
   </revision>
+  <revision rev="468" vrev="1">
+    <srcmd5>6a014a61b734447ebb53480b6e77f105</srcmd5>
+    <version>138.0.7204.100</version>
+    <time>1752262156</time>
+    <user>anag_factory</user>
+    <comment>Chromium 138.0.7204.100</comment>
+    <requestid>1291541</requestid>
+  </revision>
 </revisionlist>

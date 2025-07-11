@@ -110,7 +110,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        138.0.7204.96
+Version:        138.0.7204.100
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -236,9 +236,6 @@ Patch1030:      chromium-134-revert-rust-adler2.patch
 Patch1040:      gtk-414.patch
 # clang is too old
 Patch1050:      chromium-warning-suppression-mappings.patch
-#Patch1061:      ppc-skia-revert-1.patch
-Patch1062:      ppc-skia-revert-2.patch
-Patch1063:      ppc-skia-revert-3.patch
 # end conditionally applied patches
 BuildRequires:  SDL-devel
 BuildRequires:  bison
@@ -530,13 +527,6 @@ fi
 if [ "$clang_version" -lt 20 ] ; then
 %patch -p1 -R -P 1050
 fi
-
-%ifarch ppc64le
-pushd third_party/skia
-%patch -p1 -R -P 1062
-%patch -p1 -R -P 1063
-popd
-%endif
 
 %build
 # esbuild
