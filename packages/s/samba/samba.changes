@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul  8 08:15:46 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 4.22.3
+  * samba-tool cannot add user to group whose name is exactly 16
+    characters long; (bso#15854);
+  * Windows security hardening locks out schannel'ed netlogon dc
+    calls like netr_DsRGetDCName; (bso#15876);
+  * Startup messages of rpc deamons fills /var/log/messages;
+    (bso#15869);
+
+-------------------------------------------------------------------
 Fri Jun  6 15:06:53 UTC 2025 - Noel Power <nopower@suse.com>
 
 - Update to 4.22.2
