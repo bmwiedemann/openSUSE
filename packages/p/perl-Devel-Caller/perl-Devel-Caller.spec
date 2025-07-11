@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-Caller
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,20 @@
 
 %define cpan_name Devel-Caller
 Name:           perl-Devel-Caller
-Version:        2.07
+Version:        2.70.0
 Release:        0
+# 2.07 -> normalize -> 2.70.0
+%define cpan_version 2.07
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Meatier versions of caller
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RC/RCLAMP/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RC/RCLAMP/%{cpan_name}-%{cpan_version}.tar.gz
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(PadWalker) >= 0.08
-Requires:       perl(PadWalker) >= 0.08
+BuildRequires:  perl(PadWalker) >= 0.80
+Requires:       perl(PadWalker) >= 0.80
+Provides:       perl(Devel::Caller) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -55,7 +59,7 @@ constants are returned as 'undef' in both cases
 method.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
