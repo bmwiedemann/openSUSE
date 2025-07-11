@@ -1,7 +1,7 @@
 #
 # spec file for package lua-resty-mysql
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lua_version 5.1
 Name:           lua-resty-mysql
-Version:        0.27
+Version:        0.28
 Release:        0
 Summary:        Lua MySQL client driver for ngx_lua based on the cosocket API
 License:        BSD-2-Clause
