@@ -71,6 +71,7 @@ help2man -N -n "Use specific profiles per game" ./ui/razer-gamewrapper > %{build
 LD_LIBRARY_PATH=./build/librazer/ help2man -N ./build/razerd/razerd > %{buildroot}%{_mandir}/man1/razerd.1
 #Desktop file
 %suse_update_desktop_file -r %{name} Settings System HardwareSettings Qt
+%python3_fix_shebang
 
 %pre
 %service_add_pre razerd.service
