@@ -40,8 +40,8 @@ Requires:       python3-linkify-it-py
 Requires:       python3-packaging
 Requires:       python3-pygtkspellcheck
 Requires:       python3-urllib3
+Requires:       python3-markdown-it-py
 Recommends:     python3-requests
-Suggests:       python3-markdown-it-py
 Suggests:       python3-mdit-py-plugins
 Suggests:       python3-pypandoc
 BuildArch:      noarch

@@ -23,4 +23,12 @@
     <comment>Update to version 0.11.1. Add patch to fix crash when missing pandoc.</comment>
     <requestid>1283935</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>75a170ee61926cacbed6332eb240050c</srcmd5>
+    <version>0.11.1</version>
+    <time>1752262221</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1291858</requestid>
+  </revision>
 </revisionlist>
