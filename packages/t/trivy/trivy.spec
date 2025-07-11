@@ -17,7 +17,7 @@
 
 
 Name:           trivy
-Version:        0.62.1
+Version:        0.64.1
 Release:        0
 Summary:        A Simple and Comprehensive Vulnerability Scanner for Containers
 License:        Apache-2.0
@@ -25,6 +25,8 @@ Group:          System/Management
 URL:            https://github.com/aquasecurity/trivy
 Source:         %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+# PATCH-FIX-OPENSUSE: backport from  https://github.com/helm/helm/commit/00de613324df4dd930e6d231d9aae7f9dee29c76.patch
+Patch1:         CVE-2025-53547.patch
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
 BuildRequires:  golang(API) = 1.24
@@ -44,6 +46,9 @@ name of the container.
 
 %prep
 %setup -a1
+pushd vendor/helm.sh/helm/v3
+%patch -P 1 -p1
+popd
 
 %build
 export CGO_ENABLED=1

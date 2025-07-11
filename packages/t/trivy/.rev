@@ -1213,4 +1213,17 @@
 (🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/16 by dirkmueller)</comment>
     <requestid>1275332</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>748510fdbd1e05cd0a5508e9ad74af7b</srcmd5>
+    <version>0.64.1</version>
+    <time>1752262290</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.64.1
+
+Includes a changes file update to mention a already previously
+dropped patch file
+
+(🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/19 by dirkmueller)</comment>
+    <requestid>1292195</requestid>
+  </revision>
 </revisionlist>
