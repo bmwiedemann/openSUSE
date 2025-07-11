@@ -109,11 +109,17 @@ BuildRequires:  update-bootloader-rpm-macros
 %define only_efi 1
 %endif
 
+%ifarch loongarch64
+%define grubcpu loongarch64
+%define platform efi
+%define only_efi 1
+%endif
+
 %define grubarch %{grubcpu}-%{platform}
 
 # build efi bootloader on some platforms only:
 %if ! 0%{?efi:1}
-%global efi %{ix86} x86_64 ia64 aarch64 %{arm} riscv64
+%global efi %{ix86} x86_64 ia64 aarch64 %{arm} riscv64 loongarch64
 %endif
 
 %ifarch %{efi}
@@ -161,7 +167,7 @@ BuildRequires:  squashfs
 # For ALP and Tumbleweed
 %if 0%{?suse_version} >= 1600
 # Only include the macros for the architectures with the newer UEFI and TCG protocol
-%ifarch x86_64 aarch64 riscv64
+%ifarch x86_64 aarch64 riscv64 loongarch64
 BuildRequires:  fde-tpm-helper-rpm-macros
 %endif
 %endif
@@ -482,6 +488,7 @@ Patch310:       0004-Key-revocation-on-out-of-bound-file-access.patch
 Patch311:       grub2-bls-loader-entry-oneshot.patch
 Patch312:       0001-mkconfig-Determine-GRUB_DISTRIBUTOR-from-etc-SUSE-br.patch
 Patch313:       grub2-blsbumpcounter-menu.patch
+Patch314:       0001-disk-cryptodisk-Allow-user-to-retry-failed-passphras.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime
@@ -523,7 +530,7 @@ Requires:       grub2-%{grubarch} = %{version}-%{release}
 %if 0%{?only_x86_64:1}
 ExclusiveArch:  x86_64
 %else
-ExclusiveArch:  %{ix86} x86_64 ppc ppc64 ppc64le s390x aarch64 %{arm} riscv64
+ExclusiveArch:  %{ix86} x86_64 ppc ppc64 ppc64le s390x aarch64 %{arm} riscv64 loongarch64
 %endif
 
 %description

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 11 05:34:39 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Enable loongarch64 build (bsc#1234248)
+
+-------------------------------------------------------------------
+Tue Jul  8 07:14:12 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Backport upstream disk password retry (bsc#1245545)
+  * 0001-disk-cryptodisk-Allow-user-to-retry-failed-passphras.patch
+
+-------------------------------------------------------------------
 Fri Jun  6 09:46:55 UTC 2025 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix bls_bumpcounter breaking FDE (bsc#1243842)
