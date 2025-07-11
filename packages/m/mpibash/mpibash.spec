@@ -1,7 +1,7 @@
 #
 # spec file for package mpibash
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,6 +61,9 @@ This package contains example scripts for mpibash.
 # versions. Once updatig to v1.4 (which will require this header), this flag should
 # be dropped
 export CFLAGS="-Wno-implicit-function-declaration"
+%if 0%{?suse_version} > 1500
+export CFLAGS="-std=gnu17 $CFLAGS"
+%endif
 %configure --docdir=%{_docdir}/%{name} --with-plugindir=%{_libdir}/%{name}/ CC=mpicc
 %make_build
 
