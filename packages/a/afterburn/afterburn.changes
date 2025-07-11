@@ -192,6 +192,7 @@ Wed May 07 15:04:32 UTC 2025 - jan.suse@zerebecki.de
   * build(deps): bump mockito from 1.1.0 to 1.2.0
   * providers: add support for scaleway
   * Move away from deprecated `users` to `uzers`
+    though not vulnerable as unused but lib had CVE-2025-5791
   * Sync repo templates ⚙
   * providers/hetzner: add support for Hetzner Cloud
   * build(deps): bump clap from 4.4.1 to 4.4.2

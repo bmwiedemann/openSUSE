@@ -129,4 +129,12 @@ Prepare for RPM 4.20</comment>
     <comment>- Fix Requires in noarch package to not be arch specific (bsc#1244675)</comment>
     <requestid>1286306</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>034053a7f38dda89918406b0a04b96a1</srcmd5>
+    <version>5.8.2</version>
+    <time>1752262219</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1292218</requestid>
+  </revision>
 </revisionlist>
