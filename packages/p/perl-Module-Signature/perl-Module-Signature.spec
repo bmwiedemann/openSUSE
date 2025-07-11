@@ -18,11 +18,11 @@
 
 %define cpan_name Module-Signature
 Name:           perl-Module-Signature
-Version:        0.900.0
+Version:        0.930.0
 Release:        0
-# 0.90 -> normalize -> 0.900.0
-%define cpan_version 0.90
-#Upstream: SUSE-Public-Domain
+# 0.93 -> normalize -> 0.930.0
+%define cpan_version 0.93
+#Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND CC0-1.0
 Summary:        Module signature file manipulation
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -73,7 +73,7 @@ sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' 
 # MANUAL END
 
 %build
-PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make_build
 
 %check
@@ -85,6 +85,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc ANDK2020.pub AUDREYT2018.pub AUTHORS Changes NIKLASHOLM2018.pub PAUSE2022.pub README TIMLEGGE2024.pub
+%doc ANDK2020.pub AUDREYT2018.pub AUTHORS Changes NIKLASHOLM2018.pub PAUSE2022.pub SECURITY.md TIMLEGGE2024.pub
 
 %changelog

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jun 28 05:33:39 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.930.0 (0.93)
+   see /usr/share/doc/packages/perl-Module-Signature/Changes
+
+  Revision history for Module::Signature.
+  0.93 -- Fri Jun 27 16:38:26 ADT 2025
+  * Fixes Issue #44 - cpansign script not installed with version 0.92
+  0.92 -- Wed Jun 25 14:29:30 ADT 2025
+  * Release 0.91-TRIAL as production release.  Includes:
+  * Add SECURITY.md policy
+  * move to three-arg open
+  * Remove spaces from eol
+  * Change build process to Dist::Zilla
+  0.91 -- Tue Jun 24 12:18:51 ADT 2025
+  * Add SECURITY.md policy
+  * move to three-arg open
+  * Remove spaces from eol
+  * Change build process to Dist::Zilla
+
+-------------------------------------------------------------------
 Fri Jun 13 05:35:44 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.900.0 (0.90)

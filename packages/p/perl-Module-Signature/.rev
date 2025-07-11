@@ -262,4 +262,29 @@ License purports to be CC zero, not CC-BY. Also, see the script/cpansign and Mod
   * Fixes RT#166901: Suspicious fail on signature file with an unexpected empty line</comment>
     <requestid>1288167</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3b6c5090cd1ac8fa2cc471327b42a2be</srcmd5>
+    <version>0.930.0</version>
+    <time>1752262236</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1291893 from tinita
+
+- updated to 0.930.0 (0.93)
+   see /usr/share/doc/packages/perl-Module-Signature/Changes
+  Revision history for Module::Signature.
+  0.93 -- 
+  * Fixes Issue #44 - cpansign script not installed with version 0.92
+  0.92 -- 
+  * Release 0.91-TRIAL as production release.  Includes:
+  * Add SECURITY.md policy
+  * move to three-arg open
+  * Remove spaces from eol
+  * Change build process to Dist::Zilla
+  0.91 -- 
+  * Add SECURITY.md policy
+  * move to three-arg open
+  * Remove spaces from eol
+  * Change build process to Dist::Zilla</comment>
+    <requestid>1291916</requestid>
+  </revision>
 </revisionlist>
