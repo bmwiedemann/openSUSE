@@ -16,7 +16,7 @@
 #
 
 
-%define executable_name opencloud
+%define executable_name opencloud-server
 %define web_assets_version v2.3.0
 
 Name:           opencloud-server

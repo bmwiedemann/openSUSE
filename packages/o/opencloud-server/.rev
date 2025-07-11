@@ -7,4 +7,12 @@
     <comment>new package opencloud-server</comment>
     <requestid>1283494</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4ecd42939d71208a9ce911d16737f4b0</srcmd5>
+    <version>2.2.0</version>
+    <time>1752262234</time>
+    <user>anag_factory</user>
+    <comment>rename executable to opencloud-server to avoid clash with desktop sync client</comment>
+    <requestid>1291887</requestid>
+  </revision>
 </revisionlist>

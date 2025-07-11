@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  4 13:21:26 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
+
+- rename executable to opencloud-server to avoid clash with desktop
+  sync client 
+
+-------------------------------------------------------------------
 Sun May 18 12:03:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package opencloud-server: server of the OpenCloud file sharing solution
