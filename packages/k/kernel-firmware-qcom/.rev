@@ -139,4 +139,17 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: add gpu firmwares for X1P42100 chipset</comment>
     <requestid>1287535</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7dc6ecaafd42204a5c28ab667c787f99</srcmd5>
+    <version>20250708</version>
+    <time>1752262150</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250708 (git commit 99d64b4f788c):
+  * qcom/adreno: move A610 and A702 ZAP files to Adreno driver section
+  * qcom: Add sdx61 Foxconn vendor firmware image file
+
+- Update to version 20250707 (git commit ba5e4e381494):
+  * qcom/adreno: sort entries in WHENCE</comment>
+    <requestid>1291748</requestid>
+  </revision>
 </revisionlist>
