@@ -1252,4 +1252,15 @@
 </comment>
     <requestid>1286343</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>3b805312de4308f5cd739aa83b0c287d</srcmd5>
+    <version>5.202.507.30</version>
+    <time>1752262237</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1291895 from tinita
+
+- updated to 5.202.507.30 (5.20250703)
+   see /usr/share/doc/packages/perl-CPAN-Perl-Releases/Changes</comment>
+    <requestid>1291917</requestid>
+  </revision>
 </revisionlist>
