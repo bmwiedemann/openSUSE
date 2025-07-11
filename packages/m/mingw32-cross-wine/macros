@@ -1,8 +1,10 @@
 # Cross wine specific macro definitions.
 # TODO: setup DNS
 
+%_mingw32_cross_wine_wine_major_version %(rpm -q wine | gawk -F'-' '{ print $2}' | gawk -F'.' '{print $1}')
+
 #
-# Initialize wine home dir and add optional custom path to Windows PATH environment variable 
+# Initialize wine home dir and add optional custom path to Windows PATH environment variable
 #
 # syntax:
 #   %_mingw32_cross_wine_init [<path-add-to-PATH-env-var>]
@@ -11,7 +13,9 @@
     RPM_CONFIG_DIR=/usr/lib/rpm \
     RPM_FILE_PREFIX=mingw32-cross-wine- \
     export WINEPREFIX="$HOME/.mingw32-cross-wine" \
-    export WINEARCH=win32 \
+    if [ %_mingw32_cross_wine_wine_major_version -lt 10 ] ; then \
+        export WINEARCH=win32 \
+    fi \
     export WINEDLLPATH=/usr/lib/wine/ \
     export WINETRICKS_LATEST_VERSION_CHECK=disabled \
     export WINETRICKS_DOWNLOADER=wget \
