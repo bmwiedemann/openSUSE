@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 10 20:22:14 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add micropython-gcc15-string-initialization.patch: Refactor
+  string literal as array initializer
+  (gh#micropython/micropython#17269).
+
+-------------------------------------------------------------------
 Mon May 26 11:53:07 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Add script to delete some 3rd party libraries from the src tar

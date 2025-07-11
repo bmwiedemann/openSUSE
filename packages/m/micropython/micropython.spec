@@ -27,6 +27,8 @@ License:        MIT
 URL:            https://micropython.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        prepare.sh
+# PATCH-FIX-UPSTREAM
+Patch0:         https://patch-diff.githubusercontent.com/raw/micropython/micropython/pull/17269.patch#/micropython-gcc15-string-initialization.patch
 BuildRequires:  openssl
 BuildRequires:  pkgconfig
 BuildRequires:  python3
