@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 11 08:07:56 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Force C std to gnu17 to fix compilation with GCC15
+- Remove unneeded macros.hpc-mvapich2
+
+-------------------------------------------------------------------
 Sat Mar 29 14:29:28 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Remove support for gnu-hpc build flavours.
