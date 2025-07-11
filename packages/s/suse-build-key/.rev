@@ -407,4 +407,13 @@ This fixes build on SLE15SP7. (forwarded request 1190501 from epaolantonio)</com
   - suse_ptf_key_2023.asc, suse_ptf_key.asc: adjusted (forwarded request 1250454 from msmeissn)</comment>
     <requestid>1250462</requestid>
   </revision>
+  <revision rev="49" vrev="20">
+    <srcmd5>19b449a516f82626fdfdbd2f8e6036d9</srcmd5>
+    <version>12.0</version>
+    <time>1752262289</time>
+    <user>anag_factory</user>
+    <comment>- adjust UID (name + email) of SLES16 signing key with official
+  names. (bsc#1245223) (forwarded request 1292191 from msmeissn)</comment>
+    <requestid>1292192</requestid>
+  </revision>
 </revisionlist>

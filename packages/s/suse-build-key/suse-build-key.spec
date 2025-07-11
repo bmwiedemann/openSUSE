@@ -60,10 +60,10 @@ Source3:        build-container-d4ade9c3-5a2e9669.asc
 Source10:       build-container-d4ade9c3-5a2e9669.pem
 
 # New SL16 / SLM6 Keys
-#pub   rsa4096/0xFEC28EAF09D9EA69 2023-05-10 [SC] [expires: 2029-03-05]
+#pub   rsa4096/0xFEC28EAF09D9EA69 2023-05-10 [SC] [expires: 2029-08-01]
 #      Key fingerprint = 1C59 D66F CD52 563A 1693  3DBC FEC2 8EAF 09D9 EA69
-#uid                             ALP Package Signing Key <build-alp@suse.de>
-Source5:        gpg-pubkey-09d9ea69-67c857f3.asc
+#uid                             SUSE 16 Package Signing Key <build-suse16@suse.de>
+Source5:        gpg-pubkey-09d9ea69-68595a8c.asc
 # reserve key
 #pub   rsa4096/0xC7B81E4373F03759 2022-04-29 [SC] [expires: 2032-04-26]
 #      Key fingerprint = 5056 7568 F292 0FF1 65B2  5FB2 C7B8 1E43 73F0 3759

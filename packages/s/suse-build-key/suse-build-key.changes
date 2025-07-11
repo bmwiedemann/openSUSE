@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 11 15:27:29 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- adjust UID (name + email) of SLES16 signing key with official
+  names. (bsc#1245223)
+
+-------------------------------------------------------------------
 Wed Mar  5 14:53:48 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - changed keys to use SHA256 UIDs instead of SHA1. (bsc#1237294
