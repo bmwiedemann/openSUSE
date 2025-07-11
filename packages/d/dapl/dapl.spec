@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package dapl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,7 @@ Patch6:         dapl-add-arm-platform-support.patch
 Patch7:         ucm-mcm-fix-backlog-parameter-for-socket.patch
 Patch8:         reproducible.patch
 Patch9:         openib-add-missing-include.patch
+Patch10:        GCC15-C23-support.patch
 URL:            http://www.openfabrics.org
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -61,7 +62,7 @@ Obsoletes:      dapl-64bit
 %endif
 #
 Requires(post): /sbin/ldconfig
-Requires(postun):/sbin/ldconfig
+Requires(postun): /sbin/ldconfig
 Requires(post): sed
 Requires(post): coreutils
 

@@ -1,0 +1,24 @@
+commit ba8260733e4929383c447c38c6a7a755b20a43a9
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Fri Jul 11 08:30:59 2025 +0200
+
+    GCC15 C23 support
+
+diff --git test/dapltest/mdep/linux/dapl_mdep_user.h test/dapltest/mdep/linux/dapl_mdep_user.h
+index 2eeed9119adc..78fa4183d29c 100755
+--- test/dapltest/mdep/linux/dapl_mdep_user.h
++++ test/dapltest/mdep/linux/dapl_mdep_user.h
+@@ -52,11 +52,13 @@
+ /* Default Device Name */
+ #define DT_MdepDeviceName    "ofa-v2-ib0"
+ 
++#if __STDC_VERSION__ < 202300L
+ /* Boolean */
+ typedef int     bool;
+ 
+ #define true (1)
+ #define false (0)
++#endif
+ 
+ #ifndef __BASE_FILE__
+ #define __BASE_FILE__ __FILE__
