@@ -137,4 +137,14 @@ and those that do technical work.</comment>
 </comment>
     <requestid>1288760</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1c1e0a6ac0fb1211ed5b129e7660aeb7</srcmd5>
+    <version>2.9</version>
+    <time>1752262222</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.9:
+  * Revert scaling of % glyph
+</comment>
+    <requestid>1291861</requestid>
+  </revision>
 </revisionlist>
