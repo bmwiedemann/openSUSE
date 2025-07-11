@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jul 11 13:16:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.0:
+  * Bump golang.org/x/crypto in the all group across 1 directory
+  * make generate
+  * Add new fields to the internal API types
+  * Update github.com/cert-manager/cert-manager to version 1.18.2
+  * Update goreleaser config to v2
+  * make upgrade-klone
+  * Update github.com/cert-manager/cert-manager to v1.17.4
+  * Update k8s.io/utils to version
+    0.0.0-20250604170112-4c0f3b243397
+  * Update k8s.io/kube-aggregator to version 0.33.2
+  * Update github.com/sergi/go-diff to version 1.4.0
+  * Update golang.org/x/sync to version 0.16.0
+  * Update github.com/go-logr/logr to version 1.4.3
+  * Update sigs.k8s.io/yaml to version 1.5.0
+  * Update sigs.k8s.io/controller-runtime to version 0.21.0
+  * Update helm.sh/helm/v3 to v3.18.4 to fix CVE-2025-53547
+  * Run 'make upgrade-klone' and 'make generate'
+  * Bump the all group with 2 updates
+
+-------------------------------------------------------------------
 Tue Apr 29 17:06:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.0:
