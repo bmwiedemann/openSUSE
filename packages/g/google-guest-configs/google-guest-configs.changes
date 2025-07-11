@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 11 11:36:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20250709.00
+  * Add comments in scripts to document the behavior in google
+    hostname setting.
+  * Always use primary NIC IP for NetworkManager dispatcher hook.
+- from version 20250626.00
+  * Fix spelling error: "explicilty" -> "explicitly"
+
+-------------------------------------------------------------------
 Wed Jun 25 11:46:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20250605.00
