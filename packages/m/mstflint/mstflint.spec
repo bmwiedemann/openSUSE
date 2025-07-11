@@ -1,7 +1,7 @@
 #
 # spec file for package mstflint
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Patch4:         Fix-gcc7-and-gcc8.patch
 Patch5:         fix-race-condition-during-install.patch
 Patch6:         PIE.patch
 Patch7:         mflash-add-missing-stlib-include.patch
+Patch8:         GCC15-C23-support.patch
 BuildRequires:  gcc-c++
 BuildRequires:  infiniband-diags-devel
 BuildRequires:  libibverbs-devel
