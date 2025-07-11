@@ -282,4 +282,15 @@
 </comment>
     <requestid>1279845</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>58325ec283a85f3e4eb22f09a6c46e5a</srcmd5>
+    <version>0.870.0</version>
+    <time>1752262239</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1291909 from tinita
+
+- updated to 0.870.0 (0.87)
+   see /usr/share/doc/packages/perl-Inline/Changes</comment>
+    <requestid>1291928</requestid>
+  </revision>
 </revisionlist>

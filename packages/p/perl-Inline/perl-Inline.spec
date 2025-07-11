@@ -18,10 +18,10 @@
 
 %define cpan_name Inline
 Name:           perl-Inline
-Version:        0.860.0
+Version:        0.870.0
 Release:        0
-# 0.86 -> normalize -> 0.860.0
-%define cpan_version 0.86
+# 0.87 -> normalize -> 0.870.0
+%define cpan_version 0.87
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Write Perl Subroutines in Other Programming Languages
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -63,10 +63,10 @@ the module is installed, so the end user will never notice the compilation
 time.
 
 Best of all, it works the same on both Unix and Microsoft Windows. See
-Inline- Support for support information.
+Inline-Support for support information.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
