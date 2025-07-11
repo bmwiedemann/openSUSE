@@ -241,4 +241,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: DMCUB updates for DCN401</comment>
     <requestid>1289250</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>94b421e9221bd23a4eb7a9238f7e65bb</srcmd5>
+    <version>20250708</version>
+    <time>1752262148</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250708 (git commit 99d64b4f788c):
+  * amdgpu: Add DCN 3.6
+  * amdgpu: Add PSP 14.0.5
+  * amdgpu: Add SDMA 6.1.3
+  * amdgpu: Add GC 11.5.3</comment>
+    <requestid>1291745</requestid>
+  </revision>
 </revisionlist>
