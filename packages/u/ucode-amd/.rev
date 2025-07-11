@@ -29,4 +29,13 @@ After this PR, there will be a delete request for kernel-firmware.
   instructing zypp about the usrmerge is perfect for this use case.</comment>
     <requestid>1272746</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a64b2e6a8dd59ab5267c59aea3bb5955</srcmd5>
+    <version>20250708</version>
+    <time>1752262152</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250708 (git commit 99d64b4f788c):
+  * linux-firmware: Update AMD cpu microcode</comment>
+    <requestid>1291750</requestid>
+  </revision>
 </revisionlist>
