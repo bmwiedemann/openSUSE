@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 10 21:11:05 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1752164310.2f1c94d6:
+  * openQA-bootstrap: Replace hardcoded openqa directory path with variable
+  * Avoid trying to insert job modules without all required fields
+  * Removed unused and erroneous function `update_backend`
+  * Validate fields of update status before using them
+  * Schema::Result::Jobs: Catch undefined parent jobs
+  * Skip upload of test modules and extra tests with no name
+  * worker: disconnect dbus from NameOwnerChanged signal (POO #183833)
+  * Fix race cond when date ref job got deleted while serving build list
+  * Prevent error when workers config not found, throw warning instead
+
+-------------------------------------------------------------------
 Tue Jul 08 14:11:57 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1751964812.235a2034:
