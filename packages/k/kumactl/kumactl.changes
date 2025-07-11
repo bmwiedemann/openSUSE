@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 10 05:31:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.11.2:
+  * chore(deps): security update (#13899)
+  * chore(deps): bump golang from 1.24.4 to 1.24.5 (#13898)
+  * fix(dynconfig): change the direct response body size
+    dynamically (backport of #13853) (#13897)
+  * ci(gha): remove tag pushing triggering behavior for docs
+    updating (backport of #13833) (#13844)
+
+-------------------------------------------------------------------
 Wed Jun 25 09:25:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.11.1:

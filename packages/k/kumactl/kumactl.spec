@@ -17,7 +17,7 @@
 
 
 Name:           kumactl
-Version:        2.11.1
+Version:        2.11.2
 Release:        0
 Summary:        CLI for the Kuma service mesh
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23.5
+BuildRequires:  go >= 1.24.5
 BuildRequires:  zsh
 
 %description
