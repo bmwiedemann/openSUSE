@@ -1,7 +1,7 @@
 #
 # spec file for package cxxopts
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,12 @@
 
 
 Name:           cxxopts
-Version:        3.2.1
+Version:        3.3.1
 Release:        0
 Summary:        C++ command line option parser
 License:        MIT
 URL:            https://github.com/jarro2783/cxxopts
 Source0:        https://github.com/jarro2783/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch0:         cxxopts-3.2.1-cmake4.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 
@@ -48,7 +47,7 @@ It requires and makes use of C++11 <regex>.
 
 %build
 %cmake \
-   -DCXXOPTS_BUILD_EXAMPLES:BOOL=oFF \
+   -DCXXOPTS_BUILD_EXAMPLES:BOOL=OFF \
    -DCXXOPTS_BUILD_TESTS:BOOL=ON
 %cmake_build
 
@@ -62,7 +61,7 @@ It requires and makes use of C++11 <regex>.
 %doc README.md
 %license LICENSE
 %{_includedir}/%{name}.hpp
-%{_libdir}/cmake/%{name}/
-%{_libdir}/pkgconfig/%{name}.pc
+%{_datadir}/cmake/%{name}/
+%{_datadir}/pkgconfig/%{name}.pc
 
 %changelog

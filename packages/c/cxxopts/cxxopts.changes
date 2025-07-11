@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul  1 06:07:59 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- fix build with gcc 15 ("Added missing header" below)
+- update to 3.3.1:
+  * Added missing version bump
+  * Added missing header for GCC 15
+  * Fix some CMake packaging problems
+  * `as_optional`
+  * `ParseResult::contains`
+  * `std::filesystem` support
+  * CMake 4 compatibility
+- remove (is upstream):
+  cxxopts-3.2.1-cmake4.patch
+
+-------------------------------------------------------------------
 Thu Apr 17 17:08:04 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build with cmake 4 (boo#1239788) cxxopts-3.2.1-cmake4.patch
