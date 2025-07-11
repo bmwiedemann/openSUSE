@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Jul 11 05:12:16 UTC 2025 - ecsos <ecsos@opensuse.org> - 8.6.0
+
+- Update to 8.6.0
+  * New Features
+    - Content server: Add a checkbox in content server user
+      preferences to prevent a user account from changing its own
+      password via the web interface
+    - Restoring database: Improve performance by an order of
+      magnitude
+    - Add a tweak to Preferences->Tweaks to permit displaying
+      the sort value for series in the Tag browser
+    - Welcome wizard: Change default output format to AZW3 for
+      Kindle as MOBI is obsolete and all Kindles released within
+      the last decade plus support AZW3
+    - Add 'Search "not in"' and 'Filter "not in'" buttons to
+      Manage authors and Manage Items
+  * Bug Fixes
+    - Windows: Fix a regression in the previous release that caused
+      terminal windows to popup momentarily when adding PDF files
+      or converting them
+    - E-book viewer: Fix a regression in 8.4 that broke fading of
+      the background image
+    - Tag browser: Fix clicking on categories to search for books
+      by first letter of series not working correctly for
+      non-English language books
+    - Edit metadata individually: Ensure Next/Previous buttons work
+      even if something re-orders the books in the book list.
+      They will now iterate over the books as they were at the time
+      the dialog is created
+    - Windows: Generate catalog: Workaround for systems where
+      a broken antivirus or similar holds open files in the catalog
+      library causing a permission denied error
+
+-------------------------------------------------------------------
 Sat Jul  5 19:49:15 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add missing require libjpeg-turbo.
