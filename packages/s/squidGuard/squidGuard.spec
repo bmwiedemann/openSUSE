@@ -1,7 +1,7 @@
 #
 # spec file for package squidGuard
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ Patch1:         squidGuard-config.patch
 Patch2:         default_config_pathfixes.patch
 Patch3:         config_exit.patch
 Patch4:         types.patch
+Patch5:         fix-build-gcc15.patch
 BuildRequires:  bison
 BuildRequires:  db-devel
 BuildRequires:  flex

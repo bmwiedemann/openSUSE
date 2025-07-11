@@ -381,4 +381,12 @@
 - types.patch: fix types in mysql types</comment>
     <requestid>1222481</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>12aef2e2d7a193a2898408738e089bc8</srcmd5>
+    <version>1.6.0</version>
+    <time>1752262173</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1291778</requestid>
+  </revision>
 </revisionlist>

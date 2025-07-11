@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 10 17:09:16 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Fix builds with GCC 15
+  * fix-build-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Nov  7 12:27:41 UTC 2024 - Adam Majer <adam.majer@suse.de>
 
 - config_exit.patch: fix build failure due to undefined exit() in
