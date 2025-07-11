@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Jul 11 06:54:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.0:
+  * Features:
+    - Feature #2038 Add CycloneDX location field to the output
+      source string.
+    - Feature #2036 Include upstream source information in
+      vulnerability grouping to improve accuracy.
+    - Feature #1970 Hide unimportant vulnerabilities by default to
+      reduce noise, and adds a --show-all-vulns flag to show all.
+    - Feature #2003 Add experimental summary output format for the
+      reporter.
+    - Feature #1988 Add support for CycloneDX 1.6 report format.
+    - Feature #1987 Add support for gems.locked files used by
+      Bundler.
+    - Feature #1980 Enable transitive dependency extraction for
+      Python requirements.txt files.
+    - Feature #1961 Deprecate the --sbom flag in favor of the
+      existing -L/--lockfile flag for scanning SBOMs.
+    - Feature #1963 Stabilize various experimental fields in the
+      output by moving them out of the experimental struct.
+    - Feature #1957 Use a dedicated exit code for invalid
+      configuration files.
+  * Fixes:
+    - Bug #2046 Correctly set the user agent string for all
+      outgoing requests.
+    - Bug #2019 Use more natural language in the descriptions for
+      extractor-related flags.
+    - Bug #1982 Correctly parse Ubuntu package information with
+      suffixes (e.g. :Pro, :LTS).
+    - Bug #2000 Ensure CDATA content in XML is correctly outputted
+      in guided remediation.
+    - Bug #1949 Fix filtering of package types in vulnerability
+      counts.
+  * Dependencies
+    - chore(deps): lock file maintenance (#2006)
+    - chore(deps): update alpine docker tag to v3.22 (#1952)
+    - chore(deps): update github/codeql-action action to v3.29.2
+      (#2018)
+    - chore(deps): update workflows (#1989)
+    - chore: Update go-sarif to v3 from v2 (#1985)
+    - chore: Update scalibr again (#2044)
+    - chore: Update scalibr and remove javareach (#2011)
+    - chore: ignore use of our own deprecated field (#1991)
+    - chore: remove unneeded `goland:noinspection
+      GoBoolExpressions` comments (#2043)
+    - chore: update linter to v2.2 (#2016)
+    - chore: v2.1.0 Changelog (#2054)
+
+-------------------------------------------------------------------
 Mon Jun 16 06:42:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.0.3:
