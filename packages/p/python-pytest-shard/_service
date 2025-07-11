@@ -1,0 +1,18 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/AdamGleave/pytest-shard.git</param>
+    <param name="scm">git</param>
+    <param name="revision">53745ccddf016be134da4a42e94222eae8cf1564</param>
+    <param name="versionformat">0.1.2</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service mode="manual" name="set_version">
+  </service>
+  <service name="tar" mode="buildtime">
+  </service>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>
+
