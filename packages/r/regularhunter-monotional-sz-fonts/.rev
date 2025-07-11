@@ -38,4 +38,14 @@
 </comment>
     <requestid>1288762</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2d43b557c857b198c146ed214e2882e7</srcmd5>
+    <version>2.9</version>
+    <time>1752262223</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.9:
+  * Revert scaling of % glyph
+</comment>
+    <requestid>1291862</requestid>
+  </revision>
 </revisionlist>
