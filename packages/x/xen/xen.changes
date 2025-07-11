@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Jul 10 05:25:48 MDT 2025 - carnold@suse.com
+
+- Update to Xen 4.20.1 bug fix release (jsc#PED-8907)
+  * No upstream changelog found in sources or webpage
+- bsc#1246112 - VUL-0: xen: More AMD transient execution attacks
+  (XSA-471)
+  Patches contained in new tarball for 4.20.1
+- Drop patches contained in new tarball
+  67c818d4-x86-log-unhandled-mem-accesses-for-PVH-dom0.patch
+  67c818d5-x86-fixup-p2m-page-faults-for-PVH-dom0.patch
+  67c818d6-x86-PVH-dom0-correct-iomem_caps-bound.patch
+  67c818d7-x86-IOMMU-account-for-IOMEM-caps-when-populating.patch
+  67c818d8-x86-Dom0-relax-Interrupt-Address-Range.patch
+  67c86fc1-xl-fix-channel-configuration-setting.patch
+  67cb03e0-x86-vlapic-ESR-write-handling.patch
+  67d17edd-x86-expose-MSR_FAM10H_MMIO_CONF_BASE-on-AMD.patch
+  67d17ede-VT-x-PI-usage-of-msi_desc-msg-field.patch
+  67d2a3fe-libxl-avoid-infinite-loop-in-libxl__remove_directory.patch
+  67dada68-x86-mm-IS_ALIGNED-in-IS_LnE_ALIGNED.patch
+  67ea4268-x86-P2M-sync-fast-slow-p2m_get_page_from_gfn.patch
+  67ea428e-percpu-dont-init-on-resume.patch
+  67f8ecda-rangeset-incorrect-subtraction.patch
+  6800b54f-x86-HVM-update-repeat-count-upon.patch
+  68076044-x86emul-clip-rep-count-for-STOS.patch
+  6808f549-x86-Intel-work-around-MONITOR-MWAIT-errata.patch
+  68221f20-x86-alternative-when-feature-not-present.patch
+  68221f21-x86-guest-remove-Xen-hypercall_page.patch
+  68221f22-x86-misalign-__x86_indirect_thunk.patch
+  68221f23-x86-misalign-RETs-in-clear_bhb_loops.patch
+  68221f24-x86-stubs-introduce-place_ret.patch
+  68221f25-x86-build-with-Return-Thunks.patch
+  68221f26-x86-spec-ctrl-synthesise-ITS_NO.patch
+  682dff83-x86-vPCI-BAR-overlaps-with-non-holes.patch
+  6835a042-VMX-VMEntry-failure-on-ADL-SPR-with-shadow.patch
+  6835a043-x86-PV-breakpoint-reporting.patch
+  xsa470.patch
+
+-------------------------------------------------------------------
+Mon Jun 16 15:58:00 CEST 2025 - jbeulich@suse.com
+
+- bsc#1244644 - VUL-0: CVE-2025-27465: xen: x86: Incorrect stubs
+  exception handling for flags recovery (XSA-470)
+  xsa470.patch
+- Upstream bug fixes (bsc#1027519)
+  682dff83-x86-vPCI-BAR-overlaps-with-non-holes.patch
+  6835a042-VMX-VMEntry-failure-on-ADL-SPR-with-shadow.patch
+  6835a043-x86-PV-breakpoint-reporting.patch 
+
+-------------------------------------------------------------------
 Tue May 13 13:48:00 CEST 2025 - jbeulich@suse.com
 
 - bsc#1243117 - VUL-0: CVE-2024-28956: xen: Intel CPU: Indirect
@@ -5836,7 +5885,7 @@ Thu Nov 19 07:38:06 UTC 2015 - ohering@suse.de
 - Remove xenalyze.hg, its part of xen-4.6
 
 -------------------------------------------------------------------
-Wed Nov 10 16:16:24 MDT 2015 - carnold@suse.com
+Wed Nov 11 16:16:24 MST 2015 - carnold@suse.com
 
 - Update to Xen Version 4.6.0
   xen-4.6.0-testing-src.tar.bz2
@@ -7452,7 +7501,7 @@ Mon Nov 11 10:22:20 MST 2013 - carnold@suse.com
   5280aae0-x86-idle-reduce-contention-on-ACPI-register-accesses.patch
 
 -------------------------------------------------------------------
-Wed Nov  4 09:42:36 MDT 2013 - carnold@suse.com
+Mon Nov  4 09:42:36 MST 2013 - carnold@suse.com
 
 - bnc#848657 - VUL-0: xen: CVE-2013-4494: XSA-73: Lock order
   reversal between page allocation and grant table locks
@@ -8323,7 +8372,7 @@ Fri Nov  9 10:29:51 MST 2012 - carnold@novell.com
   xen-max-free-mem.diff
 
 -------------------------------------------------------------------
-Tue Nov  6 17:41:34 MDT 2012 - carnold@novell.com
+Tue Nov  6 17:41:34 MST 2012 - carnold@novell.com
 
 - fate#311966: Fix XEN VNC implementation to correctly map keyboard
   layouts
@@ -9983,7 +10032,7 @@ Wed Apr 20 17:50:04 CEST 2011 - ohering@suse.de
 - bnc#688519: correct indention in xend-domain-lock.patch
 
 -------------------------------------------------------------------
-Thu Apr 19 06:43:19 MST 2011 - jfehlig@novell.com
+Tue Apr 19 06:43:19 MDT 2011 - jfehlig@novell.com
 
 - bnc#687981 - L3: mistyping model type when defining VIF crashes 
   VM
@@ -10576,7 +10625,7 @@ Tue Nov  9 10:00:48 MST 2010 - jfehlig@novell.com
   modified block-iscsi script
 
 -------------------------------------------------------------------
-Mon Nov  8 13:11:02 MDT 2010 - jfehlig@novell.com
+Mon Nov  8 13:11:02 MST 2010 - jfehlig@novell.com
 
 - bnc#649277 - Fix pci passthru in xend interface used by libvirt
   22369-xend-pci-passthru-fix.patch

@@ -30,7 +30,7 @@
 
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
-%define xen_build_dir xen-4.20.0-testing
+%define xen_build_dir xen-4.20.1-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -125,12 +125,12 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.20.0_12
+Version:        4.20.1_02
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.20.0-testing-src.tar.bz2
+Source0:        xen-4.20.1-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source2:        mini-os.tar.bz2
 Source9:        xen.changes
@@ -160,30 +160,6 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
-Patch1:         67c818d4-x86-log-unhandled-mem-accesses-for-PVH-dom0.patch
-Patch2:         67c818d5-x86-fixup-p2m-page-faults-for-PVH-dom0.patch
-Patch3:         67c818d6-x86-PVH-dom0-correct-iomem_caps-bound.patch
-Patch4:         67c818d7-x86-IOMMU-account-for-IOMEM-caps-when-populating.patch
-Patch5:         67c818d8-x86-Dom0-relax-Interrupt-Address-Range.patch
-Patch6:         67c86fc1-xl-fix-channel-configuration-setting.patch
-Patch7:         67cb03e0-x86-vlapic-ESR-write-handling.patch
-Patch8:         67d17edd-x86-expose-MSR_FAM10H_MMIO_CONF_BASE-on-AMD.patch
-Patch9:         67d17ede-VT-x-PI-usage-of-msi_desc-msg-field.patch
-Patch10:        67d2a3fe-libxl-avoid-infinite-loop-in-libxl__remove_directory.patch
-Patch11:        67dada68-x86-mm-IS_ALIGNED-in-IS_LnE_ALIGNED.patch
-Patch12:        67ea4268-x86-P2M-sync-fast-slow-p2m_get_page_from_gfn.patch
-Patch13:        67ea428e-percpu-dont-init-on-resume.patch
-Patch14:        67f8ecda-rangeset-incorrect-subtraction.patch
-Patch15:        6800b54f-x86-HVM-update-repeat-count-upon.patch
-Patch16:        68076044-x86emul-clip-rep-count-for-STOS.patch
-Patch17:        6808f549-x86-Intel-work-around-MONITOR-MWAIT-errata.patch
-Patch18:        68221f20-x86-alternative-when-feature-not-present.patch
-Patch19:        68221f21-x86-guest-remove-Xen-hypercall_page.patch
-Patch20:        68221f22-x86-misalign-__x86_indirect_thunk.patch
-Patch21:        68221f23-x86-misalign-RETs-in-clear_bhb_loops.patch
-Patch22:        68221f24-x86-stubs-introduce-place_ret.patch
-Patch23:        68221f25-x86-build-with-Return-Thunks.patch
-Patch24:        68221f26-x86-spec-ctrl-synthesise-ITS_NO.patch
 # EMBARGOED security fixes
 # Our platform specific patches
 Patch400:       xen-destdir.patch

@@ -3094,4 +3094,12 @@
     <comment>Fix for security bug bsc#1243117 - VUL-0: CVE-2024-28956 XSA-469. Various other upstream bug fixes. Dropped a series of deprecated patches.</comment>
     <requestid>1277871</requestid>
   </revision>
+  <revision rev="365" vrev="1">
+    <srcmd5>6b6a670daa41d9c3e74054c8000838b8</srcmd5>
+    <version>4.20.1_02</version>
+    <time>1752262153</time>
+    <user>anag_factory</user>
+    <comment>Update Xen to bug fix release 4.20.1. Fixes for security bugs bsc#1244644, CVE-2025-27465, XSA-470 and bsc#1246112, CVE-2024-36350, XSA-471.</comment>
+    <requestid>1291787</requestid>
+  </revision>
 </revisionlist>
