@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 11 04:48:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.7.2:
+  * fix: no logs displayed
+
+-------------------------------------------------------------------
+Fri Jul 11 04:45:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.7.1:
+  * fix: hide libraries logs unless log level is debug
+  * fix: improve context cancellation handling
+  * chore: increase buffer for printing stack traces
+  * chore(kubedog): revert kubedog
+  * refactor: improve debug logs in plan executor
+  * chore(kubedog): update kubedog (#366)
+
+-------------------------------------------------------------------
 Wed Jun 18 11:27:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.7.0:
