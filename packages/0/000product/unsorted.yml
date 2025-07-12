@@ -15099,8 +15099,8 @@ unsorted:
   - libopusfile0 
   - liboqs-devel 
   - liboqs-devel-32bit 
-  - liboqs7 
-  - liboqs7-32bit 
+  - liboqs8 
+  - liboqs8-32bit 
   - liborc-0_4-0-32bit 
   - liborcania2_3 
   - liborcus-devel 
@@ -15116,10 +15116,10 @@ unsorted:
   - libosinfo-devel 
   - libosip2-15 
   - libosip2-devel 
-  - liboslcomp1_13 
-  - liboslexec1_13 
-  - liboslnoise1_13 
-  - liboslquery1_13 
+  - liboslcomp1_14 
+  - liboslexec1_14 
+  - liboslnoise1_14 
+  - liboslquery1_14 
   - libosmcomp5 
   - libosmgpsmap-1_0-1 
   - libosmgpsmap-devel 
@@ -16457,7 +16457,7 @@ unsorted:
   - libtermkey1 
   - libtesseract5 
   - libtesseract5-x86-64-v3 
-  - libtestshade1_13 
+  - libtestshade1_14 
   - libtestsweeper2 
   - libtevent-devel 
   - libtexlua53-5 
@@ -26685,6 +26685,7 @@ unsorted:
   - python311-pytest-salt-factories 
   - python311-pytest-server-fixtures 
   - python311-pytest-services 
+  - python311-pytest-shard 
   - python311-pytest-shell-utilities 
   - python311-pytest-shutil 
   - python311-pytest-skip-markers 
@@ -30447,6 +30448,7 @@ unsorted:
   - python312-pytest-salt-factories 
   - python312-pytest-server-fixtures 
   - python312-pytest-services 
+  - python312-pytest-shard 
   - python312-pytest-shell-utilities 
   - python312-pytest-shutil 
   - python312-pytest-skip-markers 
@@ -34159,6 +34161,7 @@ unsorted:
   - python313-pytest-salt-factories 
   - python313-pytest-server-fixtures 
   - python313-pytest-services 
+  - python313-pytest-shard 
   - python313-pytest-shell-utilities 
   - python313-pytest-shutil 
   - python313-pytest-skip-markers 
