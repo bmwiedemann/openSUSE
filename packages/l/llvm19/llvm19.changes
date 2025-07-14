@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 11 12:38:49 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to make libomp.so reproducible (boo#1199076)
+- Replace usage of %jobs for reproducible builds (boo#1237231)
+
+-------------------------------------------------------------------
 Mon May 26 08:06:27 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Use generic python3 for SLES 16 as python 3.11 is dropped there.

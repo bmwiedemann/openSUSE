@@ -131,4 +131,12 @@
   [bsc#1243630] (forwarded request 1280063 from rguenther)</comment>
     <requestid>1280064</requestid>
   </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>b55c431bd384367a9da88b4b41b0c423</srcmd5>
+    <version>19.1.7</version>
+    <time>1752483039</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1292275</requestid>
+  </revision>
 </revisionlist>
