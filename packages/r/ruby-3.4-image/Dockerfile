@@ -44,6 +44,6 @@ LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
 ENV LANG="C.UTF-8"
-ENV RUBY_VERSION="%%rb_ver%%"
 ENV RUBY_MAJOR="%%rb_maj%%"
+ENV RUBY_VERSION="%%rb_ver%%"
 RUN set -euo pipefail; sed -i 's/--format-executable/--no-format-executable/' /etc/gemrc
