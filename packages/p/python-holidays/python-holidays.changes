@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sun Jul 13 13:21:56 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.76:
+  * Add Bonaire, Sint Eustatius and Saba holidays
+  * Add Falkland Islands holidays
+  * Add Libya holidays
+  * Add Mauritius holidays
+  * Add Mongolia holidays
+  * Add Sint Maarten holidays
+  * Add working day tests for countries with substituted holidays
+  * Fix iCal exporter tests
+  * Update Aruba, Curaçao, Netherlands holidays: general code
+    refactor
+  * Update Cocos Islands holidays: fix 2023 Eid al-Fitr date
+  * Update France holidays: refactors, add `th` l10n
+  * Update San Marino holidays, add l10n support
+  * Update Svalbard and Jan Mayen holidays: remove l10n overrides
+  * Update Taiwan holidays
+  * Update United States holidays: add `th` l10n
+  * Update Uzbekistan holidays: add 2024-2025 exact dates
+  * Update l10n for RTL languages
+  * Update l10n helper script
+  * Update pytest configuration
+  * Archive a link for Turks and Caicos holidays
+  * Reformat .po files
+  * Show test coverage details by default
+  * Simplify parent-based entity handling
+  * Refactor TF holidays
+  * Refactor Trinidad and Tobago holidays
+  * Refactor `__init__` method signature
+  * Add Anguilla holidays
+  * Add Cook Islands holidays
+  * Add Guyana holidays
+  * Add Micronesia holidays
+  * Add Nauru holidays
+  * Add Niger holidays
+  * Add Senegal holidays
+  * Add Solomon Islands holidays
+  * Add Svalbard and Jan Mayen holidays
+  * Add Turks and Caicos Islands holidays
+  * Improve Togo holidays test coverage
+  * Update Bermuda holidays: add l10n support
+  * Update Hungary holidays: update 1991-2026 special holidays
+  * Update Namibia holidays, add l10n support
+  * Update Philippines holidays: 2025 Eid'l Adha Proclamation URL
+  * Update SPONSORSHIP.md
+  * Update Singapore holidays: add 2026 public holidays
+  * Update countries/financial with absolute imports
+  * Add Wayback Machine URL archiver and replacer script
+  * Add l10n helper script
+  * Archive more links
+  * Replace flake8 noqa-s w/ ruff
+  * Set Python 3.13 as primary in CI/CD
+
+-------------------------------------------------------------------
 Mon Jun 16 12:31:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.74

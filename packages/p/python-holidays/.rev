@@ -390,4 +390,41 @@
     <comment></comment>
     <requestid>1286137</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0d45b0d0d82a3e3669abbf256fc47e2e</srcmd5>
+    <version>0.76</version>
+    <time>1752483128</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.76:
+  * Add Bonaire, Sint Eustatius and Saba holidays
+  * Add Falkland Islands holidays
+  * Add Libya holidays
+  * Add Mauritius holidays
+  * Add Mongolia holidays
+  * Add Sint Maarten holidays
+  * Add working day tests for countries with substituted holidays
+  * Fix iCal exporter tests
+  * Update Aruba, Curaçao, Netherlands holidays: general code
+    refactor
+  * Update Cocos Islands holidays: fix 2023 Eid al-Fitr date
+  * Update France holidays: refactors, add `th` l10n
+  * Update San Marino holidays, add l10n support
+  * Update Svalbard and Jan Mayen holidays: remove l10n overrides
+  * Update Taiwan holidays
+  * Update United States holidays: add `th` l10n
+  * Update Uzbekistan holidays: add 2024-2025 exact dates
+  * Update l10n for RTL languages
+  * Update l10n helper script
+  * Update pytest configuration
+  * Archive a link for Turks and Caicos holidays
+  * Reformat .po files
+  * Show test coverage details by default
+  * Simplify parent-based entity handling
+  * Refactor TF holidays
+  * Refactor Trinidad and Tobago holidays
+  * Refactor `__init__` method signature
+  * Add Anguilla holidays
+  * Add Cook Islands holidays</comment>
+    <requestid>1292504</requestid>
+  </revision>
 </revisionlist>
