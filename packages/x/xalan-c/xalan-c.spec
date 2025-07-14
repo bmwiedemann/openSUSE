@@ -1,7 +1,7 @@
 #
 # spec file for package xalan-c
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,6 +73,7 @@ This package contains files needed for development with Xalanc
 %setup -q -n xalan_c-%{version}
 
 %build
+export CXXFLAGS="%{optflags} -Wno-error=template-body"
 %cmake
 %cmake_build
 

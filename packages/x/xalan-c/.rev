@@ -193,4 +193,12 @@
      xalan-c-parallel-build.patch : obsolete</comment>
     <requestid>838377</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>321c0a1d7ee8daa23bd94682d5405459</srcmd5>
+    <version>1.12</version>
+    <time>1752483290</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1292521</requestid>
+  </revision>
 </revisionlist>

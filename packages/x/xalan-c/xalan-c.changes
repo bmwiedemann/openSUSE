@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  9 14:25:11 UTC 2025 - Martin Jambor <mjambor@suse.com>
+
+- Add -Wno-error=template-body to CXXFLAGS to allow building with
+  GCC 15. [boo#1246187]
+
+-------------------------------------------------------------------
 Mon Sep 28 21:07:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.12:
