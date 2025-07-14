@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jul  7 07:24:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.16.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.16.0
+- Changes since 6.15.0:
+  * Update dependency version to 6.16.0
+  * Improve discrete GPU detection using switcheroo-control
+  * RenameFileDialog: Add Add Text Strategy
+  * KDirListerTest: test Remote Urls are equal
+  * KCoreDirLister: Clean up the trailing slash as expected on remote systems (kde#451050)
+  * smb: test if the needed helper we want to call is there
+  * kdynamicjobtracker: Remove KUIServerJobTracker support
+  * KNewFileMenu: Fix tab order of folder button icons
+  * KPropertiesDialog/Checksums: Make accessible
+  * Fix compile with qt6.7. Don't use 6.8 api
+  * Bump down kf deprecated methods to 6.13
+  * KMountPoint: Fix device IDs for mountpoints with non-ascii paths
+  * KPropertiesDialog/General: Add placeholder text to symlink text edit
+  * KPropertiesDialog/General: Define QLabel::body from .ui file
+  * Properties/General: Make most of the information accessible
+  * Properties/General: Have tab focus order top to bottom
+  * Properties/General: Make information keyboard-accessible
+  * Remove solid linked to KF6KIOWidgets
+  * RenameFileDialog: allow to rename by replacing text
+  * BatchRenameJob: allow to pass a function to rename files
+  * Indent things inside the NOT KIOCORE_ONLY if
+  * kfilewidget: Resolve relative file urls against current working dir (kde#490827)
+  * Rephrase misleading "full trash" message (kde#504785)
+  * Update version to 6.16.0
+
+-------------------------------------------------------------------
 Mon Jun  9 20:29:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.15.0
