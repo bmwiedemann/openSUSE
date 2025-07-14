@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jul  7 07:24:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.16.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.16.0
+- Changes since 6.15.0:
+  * Update dependency version to 6.16.0
+  * Add audio-speakers and audio-input-microphone to devices/64
+  * Remove duplicated icons
+  * Add 64px colorful printer-error icon
+  * Edit create-app-symlinks.py
+  * CMakeLists.txt - unset CMAKE_INTERPROCEDURAL_OPTIMIZATION
+  * Disable LTO for qt_add_big_resources (kde#487452)
+  * use big resource variant, else we OOM on 32 bit machines (kde#487452)
+  * Add TOML icon
+  * Add PIP Picture-in-Picture action icons
+  * Remove leftover of Virtualbox
+  * Remove outdated custom Virtualbox icon
+  * Update version to 6.16.0
+
+-------------------------------------------------------------------
 Mon Jun  9 20:29:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.15.0
