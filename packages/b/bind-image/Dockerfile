@@ -55,10 +55,10 @@ LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
-ENV RNDC_KEYSIZE="512"
 ENV NAMED_ARGS=""
-ENV NAMED_INITIALIZE_SCRIPTS=""
 ENV NAMED_CONF="/etc/named.conf"
+ENV NAMED_INITIALIZE_SCRIPTS=""
+ENV RNDC_KEYSIZE="512"
 EXPOSE 53/tcp 53/udp 953/tcp 853/tcp 443/tcp
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
