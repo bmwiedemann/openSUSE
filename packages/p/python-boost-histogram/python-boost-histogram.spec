@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-boost-histogram
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        The Boost::Histogram Python wrapper
 License:        BSD-3-Clause

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jul 12 17:25:32 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.2:
+  * Fix for axis metadata not passing though non-uniform
+    rebinning correctly. Flow bins are now preserved when doing a
+    non-uniform rebinning.  Also adds the ability to rebin by edges
+    or an existing axis.
+  * Support `edges=` and `axis=` in `bh.rebin`
+  * Allow axis to be passed through `bh.rebin` [#980][],
+  * Axis metadata was broken when rebinning
+  * Flow bins were lost when using variable rebinning
+  * Scikit-build-core 0.11, with PEP 639 license metadata
+    [#986][],
+  * Prepare for an potential upcoming pybind11 3 change
+
+-------------------------------------------------------------------
 Mon Feb  3 13:31:50 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.1:
