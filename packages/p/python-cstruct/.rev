@@ -70,4 +70,13 @@
     <comment>- Switch to pyroject macros.</comment>
     <requestid>1285962</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8b4fbe48659149ae82ee44bcc849aeb3</srcmd5>
+    <version>6.1</version>
+    <time>1752483101</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1:
+  * fix CStruct.pack() padding</comment>
+    <requestid>1292440</requestid>
+  </revision>
 </revisionlist>
