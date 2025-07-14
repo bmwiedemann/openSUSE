@@ -1,7 +1,7 @@
 #
 # spec file for package python-dj-database-url
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dj-database-url
-Version:        2.3.0
+Version:        3.0.1
 Release:        0
 Summary:        Utility to use database URLs in Django applications
 License:        BSD-3-Clause
@@ -34,7 +34,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django > 4.2
-Requires:       python-typing_extensions >= 3.10
 BuildArch:      noarch
 %python_subpackages
 

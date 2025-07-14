@@ -104,4 +104,16 @@ See request 531880 : https://build.opensuse.org/request/show/531880</comment>
     <comment></comment>
     <requestid>1217341</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ef89731c70356c7a5eea4df5d803c78d</srcmd5>
+    <version>3.0.1</version>
+    <time>1752483129</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.1:
+  * Re-drop dependency on `typing_extensions`
+- update to 3.0.0:
+  * Drop dependency on `typing_extensions`
+  * Fix type errors</comment>
+    <requestid>1292511</requestid>
+  </revision>
 </revisionlist>
