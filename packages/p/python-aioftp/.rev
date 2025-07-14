@@ -113,4 +113,15 @@
     <comment></comment>
     <requestid>1288510</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0048852fda8c6cb3e5ff26865b9c9a95</srcmd5>
+    <version>0.26.2</version>
+    <time>1752483071</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.26.2:
+  * fix type hinting
+  * fix minor documentaion bugs
+  * add type annotations</comment>
+    <requestid>1292315</requestid>
+  </revision>
 </revisionlist>

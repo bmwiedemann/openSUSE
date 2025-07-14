@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 12 08:30:03 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.26.2:
+  * fix type hinting
+  * fix minor documentaion bugs
+  * add type annotations
+
+-------------------------------------------------------------------
 Wed Jun 25 09:35:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.25.2
