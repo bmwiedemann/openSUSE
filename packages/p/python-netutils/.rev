@@ -130,4 +130,28 @@
     <comment></comment>
     <requestid>1269145</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>00ea967728e389611c5d5ff6f8a9d61e</srcmd5>
+    <version>1.14.1</version>
+    <time>1752483134</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14.1:
+  * 672 Update running configuration commands to be full
+    versions. Flatbot OUI and PROTOCOL file updates.
+- update to 1.14.0:
+  * Library mapping updates and fixes.
+  * NIST library updates and fixes for CVE reporting.
+  * Documentation fixes.
+  * Palo Alto brace configuration fixes.
+  * 646 Add Additional SROS Tests.
+  * 649 Add RUNNING_CONFIG_MAPPER to help map platform to running
+    configuration command.
+  * 652 Flatbot OUI File Updates.
+  * 653 Flatbot PROTOCOL File Updates.
+  * 662 NIST library updates and fixes.
+  * 640 Fix documentation issues.
+  * 641 Fix documentation for Jinja examples.
+  * 651 Fix Palo set format config parsing for curly brace.</comment>
+    <requestid>1292516</requestid>
+  </revision>
 </revisionlist>
