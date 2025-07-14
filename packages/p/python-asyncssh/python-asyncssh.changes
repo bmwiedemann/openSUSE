@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Sat Jul 12 17:35:09 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.21.0:
+  * Added sparse file support for SFTP, allowing file copying
+    which automatically skips over any "holes" in a source file,
+    transferring only the data ranges which are actually present.
+  * Added support for applications to request that session,
+    connection, or TUN/TAP requests arriving on an
+    SSHServerConnection be forwarded out some other established
+    SSHClientConnection. Callback methods on SSHServer which
+    decide how to handle these requests can now return an
+    SSHClientConnection to set up this tunneling, instead of
+    having to accept the request and implement their own
+    forwarding logic.
+  * Further hardened the SSH key exchange process to make
+    AsyncSSH more strict when accepting messages during key
+    exchange. Thanks go to Fabian Bäumer and Marcus Brinkmann for
+    identifying potential issues here.
+  * Added support for the auth_completed callback in SSHServer to
+    be either a callable or a coroutine, allowing async
+    operations to be performed when user authentication completes
+    successfully, prior to accepting session requests.
+  * Added support for the sftp_factory config argument be either
+    a callable or a coroutine, allowing async operations to be
+    performed when starting up a new SFTP server session.
+  * Fixed a bug where the exit() method of SFTPServer didn't
+    handle being declared as a coroutine. Thanks go to C. R.
+    Oldham for reporting this issue.
+  * Improved handling of exceptions in connection_lost()
+    callbacks. Exceptions in connection_lost() will now be
+    reported in the debug log, but other cleanup code in AsyncSSH
+    will continue, ignoring those exceptions. Thanks go to Danil
+    Slinchuk for reporting this issue.
+  * Added support for specifying an explicit path when
+    configuring agent forwarding. Thanks go to Aleksandr Ilin for
+    pointing out that this options supports more than just a
+    boolean value.
+  * Added support for environment variable expansion in SSH
+    config, for options which support percent expansion.
+  * Added a new begin_auth callback in SSHClient, reporting the
+    username being sent during SSH client authentication. This
+    can be useful when the user is conditionally set via an SSH
+    config file.
+  * Improved strict-kex interoperability during re-keying. Thanks
+    go to GitHub user emeryalden for reporting this issue and
+    helping to track down the source of the problem.
+  * Updated SFTP max_requests default to reduce memory usage when
+    using large block sizes.
+  * Updated testing to add Python 3.13 and drop Python 3.7,
+    avoiding deprecation warnings from the cryptography package.
+  * Fixed unit test issues under Windows, allowing unit tests to
+    run on Windows on all supported versions of Python.
+  * Fixed a couple of issues with Python 3.14. Thanks go to Georg
+    Sauthoff for initially reporting this.
+  * Added support for WebAuthN authentication with U2F security
+    keys, allowing non-admin Windows users to use these keys for
+    authentication. Previously, authentication with U2F keys
+    worked on Windows, but only for admin users.
+  * Added support for hostname canonicalization, compatible with
+    the configuration parameters used in OpenSSH, as well as
+    support for the "canonical" and "final" match keywords and
+    negation support for match. Thanks go to GitHub user
+    commonism who suggested this and provided a proposed
+    implementation for negation.
+  * Added client and server support for SFTP copy-data extension
+    and a new SFTP remote_copy() function which allows data to be
+    moved between two remote files without downloading and re-
+    uploading the data. Thanks go to Ali Khosravi for suggesting
+    this addition.
+  * Moved project metadata from setup.py to pyproject.toml.
+    Thanks go to Marc Mueller for contributing this.
+  * Updated SSH connection to keep strong references to
+    outstanding tasks, to avoid potential issues with the garbage
+    collector while the connection is active. Thanks go to GitHub
+    user Birnendampf for pointing out this potential issue and
+    suggesting a simple fix.
+  * Fixed some issues with block_size argument in SFTP copy
+    functions. Thanks go to Krzysztof Kotlenga for finding and
+    reporting these issues.
+  * Fixed an import error when fido2 package wasn't available.
+    Thanks go to GitHub user commonism for reporting this issue.
+
+-------------------------------------------------------------------
 Fri Jun 13 05:35:08 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
