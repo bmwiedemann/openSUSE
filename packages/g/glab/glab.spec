@@ -18,7 +18,7 @@
 
 
 Name:           glab
-Version:        1.61.0
+Version:        1.62.0
 Release:        0
 Summary:        A GitLab command line tool
 License:        MIT
@@ -29,9 +29,11 @@ Source1:        vendor.tar.gz
 # https://sources.debian.org/src/glab/1.49.0-1/debian/patches/0001-Disable-update-check.patch
 Patch0:         glab-disable_update_check.patch
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?almalinux_version} || 0%{?rocky_version}
-BuildRequires:  golang >= 1.24.1
+BuildRequires:  git
+BuildRequires:  golang >= 1.24.4
 %else
-BuildRequires:  go >= 1.24.1
+BuildRequires:  git-core
+BuildRequires:  go1.24 >= 1.24.4
 BuildRequires:  golang-packaging
 %endif
 BuildRequires:  bash-completion

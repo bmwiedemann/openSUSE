@@ -1,4 +1,154 @@
 -------------------------------------------------------------------
+Fri Jul 11 04:46:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- adjust patch glab-disable_update_check.patch
+- Update to version 1.62.0:
+  * feat: allow (un)archiving repo with `repo update --archive`
+  * chore(deps): update module golang.org/x/text to v0.27.0
+  * chore(deps): update module golang.org/x/sync to v0.16.0
+  * refactor: use oauth2 package from GitLab client-go
+  * refactor: use context in OAuth2 authorization flow
+  * refactor: use x/oauth2 instead of custom OAuth2 types
+  * refactor: rename oAuthClientID to oauthClientID
+  * refactor: use x/oauth2 for authorization flow
+  * refactor: use x/oauth2 for refreshing token
+  * chore(deps): update module github.com/docker/cli to
+    v28.3.1+incompatible
+  * feat: add docker-credential-helper
+  * chore: Backport change to backend file
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.134.0
+  * chore: Revise UI and docs strings
+  * fix: glab auth login to work with mTLS by using
+    api.NewClientWithCfg instead of native HTTPClient
+  * feat(var): add option to list instance vars
+  * refactor: do not write test key files if they already exist
+  * chore(pipeline): add job to verify generated code
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.133.0
+  * fix: reflection panic when using survey with release create
+  * refactor: improve structure of API client constructor
+  * refactor: make api client auth source available for OAuth2
+    refresh workflow
+  * refactor: use context for client HTTPRequest functions
+  * refactor: make api client initialization more flexible and more
+    maintainable
+  * refactor: remove condition httpclient nil check in api client
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.132.0
+  * refactor: remove globals in variable create command
+  * refactor: remove globals in create issue board command
+  * refactor: remove globals in ci run command
+  * refactor: remove globals in ci lint command
+  * refactor: remove globals in issue board view command
+  * refactor: move global API functions that are overridden in
+    tests to a local scope
+  * refactor: use GitLab client-go directly in some commands
+  * refactor: use GitLab client-go directly in some ci commands
+  * refactor: use GitLab client-go mocks instead of HTTP mocks in
+    changelog commands
+  * refactor: use GitLab client-go mocks instead of HTTP mocks in
+    auth commands
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.131.0
+  * refactor: speed up dpop generate test by pre-generating test
+    data
+  * refactor: remove unused BaseURL method in API client
+  * refactor: remove unnecessary lazy initalization of GitLab
+    Client in API client
+  * refactor: rename api.NewClientWithCfg to
+    api.NewClientFromConfig
+  * refactor: remove unused protocol parameter for
+    api.NewClientWithCfg
+  * refactor: remove unnecessary if err check when creating new
+    client
+  * refactor: move commands/flag into cmdutils
+  * chore(pipeline): use 2x large runners for release test
+  * refactor: use NewTestFactory instead of manually constructing
+    test factory
+  * refactor: use NewTestFactory with NewTestApiClient to remove
+    TestClient
+  * refactor: rename MustTestClient to NewTestApiClient
+  * refactor: remove unused cmdtest.InitFactory
+  * refactor: use NewTestFactory instead of InitFactory in command
+    tests
+  * feat(cluster/graph): use struct for arc attributes
+  * refactor: use NewTestFactory in SetupCmdTest
+  * refactor: move hooks package into telemetry files in main pkg
+  * fix: prevent crash when it is not possible to get client for
+    telemtry
+  * refactor: do not used named returns unless it makes sense
+  * refactor: remove unused parameters
+  * refactor: remove unneccessary type conversions
+  * refactor: remove deadcode
+  * refactor: move httpmock to testing/ and introduce
+    testing/gitmock
+  * refactor: remove unused git_mock package
+  * refactor: move api package into internal/
+  * refactor: add depguard rule that no testing package is used in
+    non-testing code
+  * refactor: only depend on cmdutils from commands
+  * refactor: move cmdutils package from commands/ to internal/
+    directly
+  * refactor: move cmdtest package into internal/testing
+  * refactor: move packages from pkg/ under internal/
+  * refactor: move commands/ under internal/
+  * refactor: cache base repo
+  * chore(deps): update dependency golangci-lint to v2.2.1
+  * chore(deps): update dependency golangci-lint to v2.2.0
+  * feat(cluster/graph): better error reporting
+  * refactor: remove integration test that doesn't make sense
+  * refactor: remove manual RepoOverride from integration tests
+  * refactor: remove manual RepoOverride from commands
+  * chore(deps): update dependency golangci-lint to v1.64.8
+  * ci: upgrade golangci-lint to v2
+  * chore(ci): enable race detector in tests
+  * refactor: update check from main function
+  * refactor: rename telemtry hook setup function
+  * refactor: concentrate debug mode setup in one place
+  * refactor: move survey core setup out of main function
+  * refactor: introduce build info to factory and use consistently
+    in commands
+  * refactor: remove global debug variable
+  * refactor: remove global default hostname and protocol variables
+  * refactor: remove global build info and introduce user agent to
+    factories
+  * refactor: use ExecuteCommand in favor of RunCommnad
+  * refactor: remove exotic FirstLine test helper function
+  * refactor: remove custom Eq test helper
+  * refactor: use prod factory directly in integration tests
+  * refactor: directly create factory with test config instead of
+    stubbing
+  * refactor: do not stub factory when no required
+  * refactor: initialize config exactly once
+  * refactor: reduce down to single factory creation function
+  * refactor: configure iostreams from config in factory func
+  * refactor: create config before factory to improve factory
+    immutability
+  * refactor: exclusively use `cmdtest.TestIOStreams` factory func
+    in tests
+  * refactor: unexport internal 256 color support check function
+  * refactor: use tagged switch instead of if to set iostreams
+    prompt
+  * refactor: introduce proper factory for iostreams
+  * refactor: remove global terminal-related variables
+  * refactor: remove IOStreams globals
+  * refactor: remove global apiClient instance
+  * refactor: always use factory to create client from commands
+  * refactor: introduce ApiClient factory function
+  * refactor: remove unneccessary use of global apiClient
+  * refactor: remove obsolete client refresh functionality
+  * refactor: remove introduce HTTP client override functionality
+  * refactor: introduce http client client option funcs
+  * refactor: unexport internal gitlab client
+  * refactor: unexport client protocol
+  * refactor: introduce client option funcs to replace various
+    client factory functions
+  * refactor: unexport private client factory functions
+  * refactor: move API test client to cmdtest package
+  * refactor: add allowInsecure flag to tlsConfig func
+
+-------------------------------------------------------------------
 Mon Jun 30 12:46:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - remove ldflags '-s -w' from build command

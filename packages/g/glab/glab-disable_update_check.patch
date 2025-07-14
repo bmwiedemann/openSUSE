@@ -10,19 +10,6 @@ Signed-off-by: Johannes Kastl <git@johannes-kastl.de>
  internal/config/config_stub.go   | 2 +-
  3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/commands/config/config.go b/commands/config/config.go
-index 3bd0dae5..e71fe0a1 100644
---- a/commands/config/config.go
-+++ b/commands/config/config.go
-@@ -22,7 +22,7 @@ func NewCmdConfig(f *cmdutils.Factory) *cobra.Command {
- Current respected settings:
- 
- - browser: If unset, uses the default browser. Override with environment variable $BROWSER.
--- check_update: If true, notifies of new versions of glab. Defaults to true. Override with environment variable $GLAB_CHECK_UPDATE.
-+- check_update: If true, notifies of new versions of glab. Defaults to false on openSUSE.
- - display_hyperlinks: If true, and using a TTY, outputs hyperlinks for issues and merge request lists. Defaults to false.
- - editor: If unset, uses the default editor. Override with environment variable $EDITOR.
- - glab_pager: Your desired pager command to use, such as 'less -R'.
 diff --git a/internal/config/config.yaml.lock b/internal/config/config.yaml.lock
 index b783ffd2..dda86da1 100644
 --- a/internal/config/config.yaml.lock
