@@ -354,4 +354,12 @@
   * Log an error when user has no challenges configured (#135) (forwarded request 1288507 from glaubitz)</comment>
     <requestid>1288753</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>872a794bf787233382528e38c984448e</srcmd5>
+    <version>20250710.00</version>
+    <time>1752483293</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1292590</requestid>
+  </revision>
 </revisionlist>
