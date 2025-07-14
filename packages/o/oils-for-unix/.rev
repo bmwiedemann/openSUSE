@@ -31,4 +31,15 @@
     <comment></comment>
     <requestid>1287807</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>262eddaf911f1d8f83ca1ad337c8bf68</srcmd5>
+    <version>0.33.0</version>
+    <time>1752483067</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.33.0:
+  * https://oils.pub/release/0.33.0/changelog.html
+  * https://oils.pub/release/0.32.0/changelog.html
+  * https://oils.pub/release/0.31.0/changelog.html</comment>
+    <requestid>1292314</requestid>
+  </revision>
 </revisionlist>
