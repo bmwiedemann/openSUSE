@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jul 10 17:48:55 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 7.5.0:
+  * Added: --no-plugin-sideloading for disabling plugin sideloading from the default location
+  * Added: --no-plugin-cache for disabling cache file I/O of the plugin key-value store
+  * Improved: cache file I/O of the plugin key-value store
+  * Changed: default log format on the trace/all log level, with included thread name
+  * Fixed: missing thread names for various segmented and muxed streams
+  * Fixed: pipe write error log messages when muxing streams
+  * Updated plugins:
+      - aloula: updated plugin matchers to support new URLs
+      - goodgame: fixed HLS stream URLs
+      - mitele: removed plugin
+      - nowtvtr: restored plugin
+      - twitcasting: updated plugin to filter out preroll ads
+      - twitch: changed plugin to always filter out ads, deprecated --twitch-disable-ads
+      - twitch: forced default User-Agent on access token API request
+      - twitch: fixed clips validation schema
+  * Docs: rearranged CLI arguments that are related to the plugin system
+  * Build: removed {dev,docs}-requirements.txt in favor of PEP 735
+  * Build: bumped lxml requirement to >=4.6.4,<7 (lxml>=6 now supports free-threaded mode)
+  * Tests: fixed test failures on Python 3.14.0b3
+  * Tests: fixed test failures in free-threaded mode
+
+
+-------------------------------------------------------------------
 Sun Jun  8 11:42:15 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 7.4.0:
