@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jul  7 07:24:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.16.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.16.0
+- Changes since 6.15.0:
+  * Update dependency version to 6.16.0
+  * Restore Qt6.7 buildability
+  * Fix selection ignored when layouting the line
+  * rename config from autoreload-on-external-changes to auto-reload-on-external-changes + set auto-reload-on-external-changes default value to false + use only config to autoreload
+  * use config interface instead of virtual method
+  * remove verification according to autoreload configuration on external changes + add documentHasAutoReloadConfiguration virtual method to document
+  * add verification on AutoReloadOnExternalChanges in slotDelayedHandleModOnHd
+  * add auto reload on external changes option
+  * Formalize a little more what VariableRemoveSpacesItem does
+  * support ctrl-backspace to delete word in vi mode (kde#504033)
+  * avoid that we create xxxxxx pixel long menus
+  * Draw selection background ourselves (kde#502233)
+  * Remove leftovers from old QCH generation
+  * Fix xml indent test
+  * Fix test
+  * Update version to 6.16.0
+
+-------------------------------------------------------------------
 Mon Jun  9 20:29:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.15.0
