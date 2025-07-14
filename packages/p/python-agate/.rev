@@ -214,4 +214,13 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1275953</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e147f394ac19e8021cc7259284c82a00</srcmd5>
+    <version>1.13.0</version>
+    <time>1752483109</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.0:
+  * fix: :meth:`.Table.order_by` sorts None as equal to None.</comment>
+    <requestid>1292443</requestid>
+  </revision>
 </revisionlist>
