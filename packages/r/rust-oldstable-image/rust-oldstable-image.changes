@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 11 10:46:14 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- order ENVs alphanumerically
+
+-------------------------------------------------------------------
 Mon Jun  2 15:37:37 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - rust 1.87 for stable, 1.86 for oldstable
