@@ -67,6 +67,8 @@
 
 %_kf6_importdir         %{_kf6_libdir}/qt6/imports
 %_kf6_mkspecsdir        %{_kf6_libdir}/qt6/mkspecs/modules
+%_kf6_pluginsdir        %{_kf6_libdir}/qt6/plugins
+# For backward compatibility
 %_kf6_plugindir         %{_kf6_libdir}/qt6/plugins
 %_kf6_qmldir            %{_kf6_libdir}/qt6/qml
 
@@ -116,14 +118,8 @@
 
 # Build the package
 %kf6_build \
-  cmake --build %__kf6_builddir %{?_smp_mflags} -v \
-%{nil}
+  cmake --build %__kf6_builddir %{?_smp_mflags} -v
 
 # Install package
 %kf6_install \
-  DESTDIR=%{buildroot} cmake --build %__kf6_builddir -v \\\
-%if "%__kf6_build_tool" == "%__ninja" \
-  -t install \
-%else \
-  -t install/fast \
-%endif
+  DESTDIR=%{buildroot} cmake --install %__kf6_builddir -v
