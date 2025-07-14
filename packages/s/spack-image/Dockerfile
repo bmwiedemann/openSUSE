@@ -45,8 +45,8 @@ LABEL org.opensuse.release-stage="released"
 LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
 LABEL io.artifacthub.package.logo-url="https://spack.io/assets/images/spack-logo-white.svg"
 LABEL usage="This container is enabled and supported only on a SLE15+ host."
-ENV SPACK_ROOT="/usr"
 ENV CURRENTLY_BUILDING_DOCKER_IMAGE="1"
+ENV SPACK_ROOT="/usr"
 ENV container="docker"
 ENTRYPOINT ["/bin/bash", "/usr/share/spack/docker/entrypoint.bash"]
 CMD ["interactive-shell"]
