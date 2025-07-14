@@ -27,4 +27,12 @@
   * improving typing annotations</comment>
     <requestid>1225372</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e14d7fa7e6ebfdaff2d9f00029a83c55</srcmd5>
+    <version>1.16.1</version>
+    <time>1752483157</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1292558</requestid>
+  </revision>
 </revisionlist>
