@@ -1439,4 +1439,12 @@ New stable release</comment>
     <comment></comment>
     <requestid>1289815</requestid>
   </revision>
+  <revision rev="183" vrev="2">
+    <srcmd5>530dacc46a8ab903c40a001e4b11287a</srcmd5>
+    <version>48.1</version>
+    <time>1752483121</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1292485</requestid>
+  </revision>
 </revisionlist>
