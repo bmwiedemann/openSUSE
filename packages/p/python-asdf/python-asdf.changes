@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jul 12 11:37:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.0:
+  * Allow extra keywords in structured datatype validation.
+  * yield instead of raise ValidationError in validate_datatype
+    to allow use in schema combiners
+  * Support recursive tagged nodes in load_yaml.
+  * Allow non-null bytes before the first byte.
+  * Fix deepcopy of lazy tree.
+  * Improve documentation based on review feedback.
+  * Optionally use fsspec for urls (like those for s3 resources)
+    provided to asdf.open.
+  * Load block index with CSafeLoader if available.
+  * Deprecate opening http uris unless fsspec is installed.
+
+-------------------------------------------------------------------
 Sun Feb  9 13:23:03 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.1.0

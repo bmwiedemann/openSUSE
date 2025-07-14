@@ -375,4 +375,23 @@
     issue deprecation warning if it is enabled. (#1858)</comment>
     <requestid>1244493</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8b7950e708d94eb6f9a505b6c51261d8</srcmd5>
+    <version>4.2.0</version>
+    <time>1752483110</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.2.0:
+  * Allow extra keywords in structured datatype validation.
+  * yield instead of raise ValidationError in validate_datatype
+    to allow use in schema combiners
+  * Support recursive tagged nodes in load_yaml.
+  * Allow non-null bytes before the first byte.
+  * Fix deepcopy of lazy tree.
+  * Improve documentation based on review feedback.
+  * Optionally use fsspec for urls (like those for s3 resources)
+    provided to asdf.open.
+  * Load block index with CSafeLoader if available.
+  * Deprecate opening http uris unless fsspec is installed.</comment>
+    <requestid>1292449</requestid>
+  </revision>
 </revisionlist>
