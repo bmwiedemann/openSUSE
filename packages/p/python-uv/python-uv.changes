@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Jul 13 13:50:02 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.7.20
+ * Enhancements
+   * Add --workspace flag to uv add 
+   * Add auto-detection for Intel GPUs 
+   * Drop trailing arguments when writing shebangs 
+   * Add debug message when skipping Python downloads 
+   * Add support for declaring multiple modules in namespace packages 
+ * Bug fixes
+   * Revert normalization of trailing slashes on index URLs 
+   * Fix forced resolution with all extras in uv version 
+   * Fix handling of pre-releases in preferences 
+   * Remove transparent variants in uv-extract to enable retries 
+ * Rust API
+   * Add method to get packages involved in a NoSolutionError 
+   * Make ErrorTree for NoSolutionError public 
+ * Documentation
+   * Finish incomplete sentence in pip migration guide 
+   * Remove cache-dependency-glob examples for setup-uv 
+   * Remove uv pip sync suggestion with pyproject.toml 
+   * Update documentation for GitHub to use setup-uv@v6 
+
+-------------------------------------------------------------------
 Sat Jul  5 00:05:00 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.19
