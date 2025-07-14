@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 12 17:19:29 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.8:
+  * ui: fix error display twice issue on export field select page
+    (2066)
+  * ui: add 'select all' fields toggle on export page (2068)
+  * Add Hebrew translation (2071)
+  * ui: fix display of non field errors on import (2075)
+
+-------------------------------------------------------------------
 Wed Feb 26 00:36:22 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.3.7:
