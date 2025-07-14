@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Eval-Closure
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Eval-Closure
-Version:        0.14
-Release:        0
 %define cpan_name Eval-Closure
-Summary:        Safely and Cleanly Create Closures Via String Eval
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Eval-Closure/
-Source0:        http://www.cpan.org/authors/id/D/DO/DOY/%{cpan_name}-%{version}.tar.gz
+Name:           perl-Eval-Closure
+Version:        0.140.0
+Release:        0
+# 0.14 -> normalize -> 0.140.0
+%define cpan_version 0.14
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Safely and cleanly create closures via string eval
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/D/DO/DOY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Requires)
-Recommends:     perl(Devel::LexAlias) >= 0.05
+Provides:       perl(Eval::Closure) = %{version}
+%undefine       __perllib_provides
+Recommends:     perl(Devel::LexAlias) >= 0.50
 Recommends:     perl(Perl::Tidy)
 %{perl_requires}
 
@@ -51,14 +53,14 @@ function, which evals a string in a clean environment, other than a fixed
 list of specified variables. Compilation errors are rethrown automatically.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -66,7 +68,7 @@ list of specified variables. Compilation errors are rethrown automatically.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes LICENSE README
+%doc Changes README
+%license LICENSE
 
 %changelog
