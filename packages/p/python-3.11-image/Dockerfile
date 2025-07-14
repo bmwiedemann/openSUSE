@@ -43,9 +43,9 @@ LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
-ENV PYTHON_VERSION="%%py311_ver%%"
 ENV PATH="$PATH:/root/.local/bin"
 ENV PIP_VERSION="%%pip_ver%%"
-RUN set -euo pipefail; install -d -m 0755 /root/.local/bin; if test -x /usr/bin/python3; then echo 'is_system_py is wrong - report a bug'; exit 1; fi; \
+ENV PYTHON_VERSION="%%py311_ver%%"
+RUN set -euo pipefail; install -d -o root -g root -m 0700 /root/.local/bin; if test -x /usr/bin/python3; then echo 'is_system_py is wrong - report a bug'; exit 1; fi; \
     ln -s /usr/bin/python3.11 /usr/local/bin/python3; \
     ln -s /usr/bin/pydoc3.11 /usr/local/bin/pydoc
