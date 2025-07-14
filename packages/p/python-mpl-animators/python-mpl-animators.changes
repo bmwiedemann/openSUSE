@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jul 13 13:56:16 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.2.4
+  * Catch errors when animating plots with missing data and replace
+    them with warnings. (#73)
+- Releases 1.2.0 to 1.2.3
+  * remove old circleci webhook config by @Cadair in #36
+  * Added Gallery + Update Package template by @nabobalis in #37
+  * Speed up CI by using different images per build by @Cadair in
+    #39
+  * use sh not bash because nixos lol by @Cadair in #41
+  * gallery plus api docs by @nabobalis in #47
+  * Registers package to sunpy template by @CyclingNinja in #48
+  * Wrong base python for image upload by @nabobalis in #50
+  * Allowed a user to override the slider labels for
+    .ArrayAnimatorWCS. (#93)
+
+-------------------------------------------------------------------
 Fri May  9 05:11:50 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

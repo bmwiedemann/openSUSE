@@ -18,35 +18,38 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mpl-animators
-Version:        1.1.1
+Version:        1.2.4
 Release:        0
 Summary:        An interative animation framework for matplotlib
 License:        BSD-3-Clause
 URL:            https://github.com/sunpy/mpl-animators
 Source:         https://files.pythonhosted.org/packages/source/m/mpl_animators/mpl_animators-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 62}
+BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-matplotlib >= 3.2.0
-Requires:       python-numpy >= 1.17.0
-Suggests:       python-astropy >= 4.2.0
+Requires:       python-matplotlib >= 3.5.0
+Requires:       python-numpy >= 1.23.0
+Suggests:       python-astropy >= 5.3.0
 Provides:       python-mpl_animators = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module astropy >= 4.2.0}
-BuildRequires:  %{python_module matplotlib >= 3.2.0}
-BuildRequires:  %{python_module numpy >= 1.17.0}
+BuildRequires:  %{python_module astropy >= 5.3.0}
+BuildRequires:  %{python_module matplotlib >= 3.5.0}
+BuildRequires:  %{python_module numpy >= 1.23.0}
+BuildRequires:  %{python_module pytest-doctestplus}
 BuildRequires:  %{python_module pytest-mpl}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
 %description
-An interative animation framework for matplotlib
+Aframework for creating interactive animations with matplotlib.
+It is designed to handle N-dimensional data, and can be used to create animations.
 
 %prep
 %setup -q -n mpl_animators-%{version}
@@ -59,7 +62,7 @@ An interative animation framework for matplotlib
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -n auto
 
 %files %{python_files}
 %{python_sitelib}/mpl_animators
