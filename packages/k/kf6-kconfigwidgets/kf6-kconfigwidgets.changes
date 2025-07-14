@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul  7 07:24:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.16.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.16.0
+- Changes since 6.15.0:
+  * Update dependency version to 6.16.0
+  * KCommandBar: Fix Escape key press and release leaking through (kde#506394)
+  * KCommandBar: Add Q_OBJECT macros
+  * Bring kf6_entry.desktop to the source code
+  * Update version to 6.16.0
+
+-------------------------------------------------------------------
 Mon Jun  9 20:29:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.15.0
