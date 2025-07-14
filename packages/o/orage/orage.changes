@@ -413,12 +413,10 @@ Tue Sep 05 00:00:00 CET 2006 - pnemec@suse.cz
 
 - updated to new version 4.3.99.1
 
-
 -------------------------------------------------------------------
 Thu Aug 24 00:00:00 CET 2006 - pnemec@suse.cz
 
  - added dbus-devel to build requires 
-
 
 -------------------------------------------------------------------
 Wed Aug  2 00:00:00 CET 2006 - pnemec@suse.cz
@@ -426,5 +424,3 @@ Wed Aug  2 00:00:00 CET 2006 - pnemec@suse.cz
 - initial comment, version is 4.3.90.2
 - package moved into BuildService
 - added orage-desktop.patch - small modificatin of desktop file
-
--------------------------------------------------------------------
