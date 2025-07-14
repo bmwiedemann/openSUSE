@@ -10,9 +10,15 @@
   <service name="set_version" mode="manual"/>
   <service name="replace_using_env" mode="manual">
     <param name="file">update-VERSION.diff</param>
-    <param name="var">NEWVERSION</param>
-    <param name="eval">NEWVERSION=$(grep ^Version miller.spec | awk -F+ '{print "+"$2}')</param>
-    <param name="eval">sed -i -e 's#\([^\.]*\)+git[0-9]\{8\}\.[[:alnum:]]\{9\}#\1%%NEWVERSION%%#' update-VERSION.diff</param>
+    <param name="var">RELVERSION</param>
+    <param name="eval">RELVERSION=$(grep ^Version miller.spec | awk -F: '{print $2}' | awk -F+ '{print $1}' | tr -d \[:space:\])</param>
+    <param name="var">TAGVERSION</param>
+    <param name="eval">TAGVERSION=$(grep ^Version miller.spec | awk -F+ '{print "+"$2}')</param>
+    <param name="eval">sed -i -e 's#\(-var STRING string = "\).*\(-dev"\)#\1%%RELVERSION%%\2#' update-VERSION.diff</param>
+    <param name="eval">sed -i -e 's#\(+var STRING string = "\).*\("\)#\1%%RELVERSION%%%%TAGVERSION%%\2#' update-VERSION.diff</param>
+    <!--
+    <param name="eval">sed -i -e 's#\([^\.]*\)+git[0-9]\{8\}\.[[:alnum:]]\{9\}#\1%%TAGVERSION%%#' update-VERSION.diff</param>
+    -->
     <param name="verbose">0</param>
   </service>
   <service name="tar" mode="manual"/>

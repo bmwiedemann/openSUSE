@@ -1,4 +1,139 @@
 -------------------------------------------------------------------
+Fri Jul 04 18:59:28 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.14.0+git20250704.313731386:
+  * Release-specific docs for 6.14.0
+  * Update `main` version to 6.14.0-dev
+  * Update release docs on xattr trick for MacOS
+  * Miller 6.14.0 (#1828)
+  * Doc copy edits (#1827)
+  * Add `-c`, `-t`, `-j` to doc matrix in PR 1824 (#1826)
+  * Add Keystroke savers for same format (#1824)
+  * cut: Consider `-o` flag even when using regexes with `-r` (#1823)
+  * Bump github/codeql-action from 3.29.1 to 3.29.2 (#1825)
+  * Bump github/codeql-action from 3.29.0 to 3.29.1 (#1822)
+  * Argument parsing is different in `mlr -s` scripts (#1817)
+  * Bump github/codeql-action from 3.28.19 to 3.29.0 (#1814)
+  * Bump golang.org/x/text from 0.25.0 to 0.26.0 (#1813)
+  * Bump github/codeql-action from 3.28.18 to 3.28.19 (#1812)
+  * Bump github/codeql-action from 3.28.17 to 3.28.18 (#1808)
+  * Docs for new `surv` verb (#1807)
+  * Bump golang.org/x/term from 0.29.0 to 0.32.0 (#1799)
+  * Bump golang.org/x/text from 0.22.0 to 0.25.0 (#1800)
+  * Bump golang.org/x/sys from 0.30.0 to 0.33.0 (#1801)
+  * Add surv Verb to Estimate a Survival Curve (#1788)
+  * Bump actions/setup-go from 5.4.0 to 5.5.0 (#1802)
+  * Improve help message on non-existent verb (#1798)
+  * Bump github/codeql-action from 3.28.16 to 3.28.17 (#1796)
+  * Fix `print` within `begin{}`/`end{}` (#1795)
+  * Fix `joinv` with `""` separator (#1794)
+  * Bump github/codeql-action from 3.28.15 to 3.28.16 (#1790)
+  * Bump github/codeql-action from 3.28.14 to 3.28.15 (#1783)
+  * Bump github/codeql-action from 3.28.13 to 3.28.14 (#1779)
+  * Bump goreleaser/goreleaser-action from 6.2.1 to 6.3.0 (#1778)
+  * Bump github/codeql-action from 3.28.12 to 3.28.13 (#1776)
+  * Bump github/codeql-action from 3.28.11 to 3.28.12 (#1772)
+  * Bump actions/upload-artifact from 4.6.1 to 4.6.2 (#1773)
+  * Bump actions/cache from 4.2.2 to 4.2.3 (#1774)
+
+-------------------------------------------------------------------
+Wed Mar 19 18:08:48 UTC 2025 - scott.bradnick@suse.com
+
+- Update to version 6.13.0+git20250319.b0addbe4f:
+  * Bump actions/setup-go from 5.3.0 to 5.4.0 (#1771)
+  * Bump github/codeql-action from 3.28.10 to 3.28.11 (#1769)
+  * Use Go 1.21 in CI (#1768)
+  * Switch to generics (#1763)
+  * Bump actions/cache from 4.2.1 to 4.2.2 (#1762)
+  * Bump github/codeql-action from 3.28.9 to 3.28.10 (#1759)
+  * Bump actions/upload-artifact from 4.6.0 to 4.6.1 (#1760)
+  * Bump actions/cache from 4.2.0 to 4.2.1 (#1756)
+  * Bump goreleaser/goreleaser-action from 6.1.0 to 6.2.1 (#1755)
+  * Bump github/codeql-action from 3.28.8 to 3.28.9 (#1753)
+
+-------------------------------------------------------------------
+Wed Feb 05 15:18:28 UTC 2025 - scott.bradnick@suse.com
+
+- Update to version 6.13.0+git20250205.bd2497a28:
+  * Fix non-constant format string errors with Go 1.24 (#1745)
+  * Bump golang.org/x/term from 0.28.0 to 0.29.0 (#1751)
+  * Bump golang.org/x/text from 0.21.0 to 0.22.0 (#1752)
+
+-------------------------------------------------------------------
+Thu Jan 30 18:22:07 UTC 2025 - scott.bradnick@suse.com
+
+- Update to version 6.13.0+git20250130.813a5204d:
+  * Bump github/codeql-action from 3.28.6 to 3.28.8 (#1748)
+  * Bump github/codeql-action from 3.28.5 to 3.28.6 (#1747)
+  * Bump github/codeql-action from 3.28.4 to 3.28.5 (#1746)
+  * Bump github/codeql-action from 3.28.3 to 3.28.4 (#1744)
+  * Bump github/codeql-action from 3.28.2 to 3.28.3 (#1743)
+  * Bump github/codeql-action from 3.28.1 to 3.28.2 (#1742)
+  * Bump actions/setup-go from 5.2.0 to 5.3.0 (#1741)
+  * Bump github/codeql-action from 3.28.0 to 3.28.1 (#1740)
+  * Bump actions/upload-artifact from 4.5.0 to 4.6.0 (#1739)
+  * Bump golang.org/x/term from 0.27.0 to 0.28.0 (#1737)
+  * Bump golang.org/x/sys from 0.28.0 to 0.29.0 (#1738)
+
+-------------------------------------------------------------------
+Fri Dec 27 17:10:53 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.13.0+git20241223.0060cceaf:
+  * Fix section-title typos for docs in #1735 (#1736)
+  * Fix unflatten with field names like `.` `.x` or `x..y` (#1735)
+  * Bump github/codeql-action from 3.27.9 to 3.28.0 (#1734)
+  * Bump actions/upload-artifact from 4.4.3 to 4.5.0 (#1732)
+  * Bump github/codeql-action from 3.27.7 to 3.27.9 (#1731)
+  * Bump actions/setup-go from 5.1.0 to 5.2.0 (#1729)
+  * Bump github/codeql-action from 3.27.6 to 3.27.7 (#1730)
+  * Bump actions/cache from 4.1.2 to 4.2.0 (#1728)
+  * Bump golang.org/x/term from 0.26.0 to 0.27.0 (#1726)
+  * Bump golang.org/x/text from 0.20.0 to 0.21.0 (#1727)
+  * Bump github/codeql-action from 3.27.5 to 3.27.6 (#1724)
+  * Bump github.com/stretchr/testify from 1.9.0 to 1.10.0 (#1723)
+  * Add help strings for `-a`/`-r` in `sub`/`gsub`/`ssub` (#1721)
+  * delve.txt
+  * Bump github/codeql-action from 3.27.4 to 3.27.5 (#1719)
+  * rm xtodo.txt
+  * Bump github/codeql-action from 3.27.3 to 3.27.4 (#1718)
+  * Bump github/codeql-action from 3.27.2 to 3.27.3 (#1717)
+  * Bump github/codeql-action from 3.27.1 to 3.27.2 (#1716)
+  * Bump github/codeql-action from 3.27.0 to 3.27.1 (#1715)
+  * Bump golang.org/x/text from 0.19.0 to 0.20.0 (#1714)
+
+-------------------------------------------------------------------
+Fri Nov 08 15:03:38 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 6.13.0+git20241108.193a2ee37:
+  * Bump goreleaser/goreleaser-action from 6.0.0 to 6.1.0 (#1711)
+  * Bump golang.org/x/term from 0.25.0 to 0.26.0 (#1712)
+  * Static-check fixes from @lespea #1657, batch 8/n (#1710)
+  * Static-check fixes from @lespea #1657, batch 7/n (#1709)
+  * Static-check fixes from @lespea #1657, batch 6/n (#1708)
+  * Static-check fixes from @lespea #1657, batch 5/n (#1707)
+  * Static-check fixes from @lespea #1657, batch 4/n (#1706)
+  * Static-check fixes from @lespea #1657, batch 3/n (#1705)
+  * Static-check fixes from @lespea #1657, batch 2/n (#1704)
+  * Static-check fixes from @lespea #1657, batch 1/n (#1703)
+  * Bump actions/setup-go from 5.0.2 to 5.1.0 (#1700)
+  * Bump actions/checkout from 4.2.1 to 4.2.2 (#1699)
+  * Bump github/codeql-action from 3.26.13 to 3.27.0 (#1697)
+  * Bump actions/cache from 4.1.1 to 4.1.2 (#1698)
+  * Join docs wrong link (#1695)
+  * Bump github.com/klauspost/compress from 1.17.10 to 1.17.11 (#1691)
+  * Bump github/codeql-action from 3.26.12 to 3.26.13 (#1692)
+  * Bump actions/upload-artifact from 4.4.2 to 4.4.3 (#1690)
+  * Bump actions/upload-artifact from 4.4.1 to 4.4.2 (#1689)
+  * Bump actions/cache from 4.1.0 to 4.1.1 (#1688)
+  * Bump actions/checkout from 4.2.0 to 4.2.1 (#1685)
+  * Bump actions/upload-artifact from 4.4.0 to 4.4.1 (#1686)
+  * Bump github/codeql-action from 3.26.11 to 3.26.12 (#1687)
+  * Bump golang.org/x/term from 0.24.0 to 0.25.0 (#1680)
+  * Bump golang.org/x/text from 0.18.0 to 0.19.0 (#1681)
+  * Bump golang.org/x/sys from 0.25.0 to 0.26.0 (#1682)
+  * Bump actions/cache from 4.0.2 to 4.1.0 (#1683)
+
+-------------------------------------------------------------------
 Sun Oct 06 21:53:46 UTC 2024 - scott.bradnick@suse.com
 
 - Update to version 6.13.0+git20241006.7a0320fc2:

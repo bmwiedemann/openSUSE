@@ -1,7 +1,7 @@
 #
 # spec file for package miller
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           miller
-Version:        6.13.0+git20241006.7a0320fc2
+Version:        6.14.0+git20250704.313731386
 Release:        0
 Summary:        Name-indexed data processing tool
 # c/lib/netbsd_strptime.c is BSD-4-Clause
@@ -28,16 +28,17 @@ Source0:        https://github.com/johnkerl/miller/archive/v%{version}.tar.gz#/%
 Source1:        vendor.tar.gz
 Patch0:         update-VERSION.diff
 Patch1:         buildmode-pie.diff
-### Temporary until go1.22 is default
+### Can be swapped to a specific go version what what's required isn't default
 BuildRequires:  golang-packaging
 #BuildRequires:  go >= 1.22
 #####
 BuildRequires:  gcc
 BuildRequires:  systemd-rpm-macros
-# Switched to a golang build sometime after 5.10.3
+### Switched to a golang build sometime after 5.10.3
 #BuildRequires:  automake
 #BuildRequires:  flex >= 2.5.35
 #BuildRequires:  libtool
+#####
 
 %description
 Miller (mlr) allows name-indexed data such as CSV and JSON files to be
@@ -52,18 +53,15 @@ well with pipes and can feed "tail -f".
 %if "%{_arch}" != "ppc64"
 %patch -P 1
 %endif
-# Not sure if this is still required
-#%%ifarch %%ix86
-#sed -e 's/-pg//' -i c/Makefile.am
-#%%endif
 
 %build
 %make_build
 
 %install
 %make_install PREFIX=%{_prefix}
-# Add provided example.csv
+### Add provided example.csv
 cp -v %{_builddir}/%{name}-%{version}/docs/src/example.csv %{_builddir}/%{name}-%{version}
+#####
 
 %files
 %license LICENSE.txt
