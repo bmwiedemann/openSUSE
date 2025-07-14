@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Daemon
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name HTTP-Daemon
 Name:           perl-HTTP-Daemon
-Version:        6.16
+Version:        6.160.0
 Release:        0
+# 6.16 -> normalize -> 6.160.0
+%define cpan_version 6.16
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple http server class
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -34,7 +36,8 @@ BuildRequires:  perl(HTTP::Response) >= 6
 BuildRequires:  perl(HTTP::Status) >= 6
 BuildRequires:  perl(IO::Socket::IP) >= 0.32
 BuildRequires:  perl(LWP::MediaTypes) >= 6
-BuildRequires:  perl(Module::Build::Tiny) >= 0.034
+BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build::Tiny) >= 0.34
 BuildRequires:  perl(Module::Metadata)
 BuildRequires:  perl(Test::More) >= 0.98
 BuildRequires:  perl(Test::Needs)
@@ -44,6 +47,8 @@ Requires:       perl(HTTP::Response) >= 6
 Requires:       perl(HTTP::Status) >= 6
 Requires:       perl(IO::Socket::IP) >= 0.32
 Requires:       perl(LWP::MediaTypes) >= 6
+Provides:       perl(HTTP::Daemon) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -63,7 +68,7 @@ method on this object will read data from the client and return an
 back various responses.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor
