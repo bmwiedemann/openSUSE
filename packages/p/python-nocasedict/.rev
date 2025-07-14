@@ -86,4 +86,41 @@
 - initial specfile for version 1.0.1</comment>
     <requestid>1217422</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>03a1cdb7aa3526cca5e47ee108e33d7a</srcmd5>
+    <version>2.1.0</version>
+    <time>1752483141</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  * Dropped support for Python 3.6 and 3.7 because they are out
+    of service and to simplify development dependencies. (issue
+    #214)
+  * Dev: Changed 'make install' to no longer perform an editable
+    install, but a standalone install, since pip will remove
+    support for editable installs. (related to issue #180)
+  * Dev: Removed support for the env.var TEST_INSTALLED that used
+    the installed package for testing, for simplicity. Now, the
+    local package in the repository main directory is always used
+    for testing.
+  * Test: Python 3.13 was pinned to 3.13.0 to work around a
+    pylint issue on Python 3.13.1.
+  * Addressed safety issues up to 2025-04-27.
+  * Dev: Added missing dependencies for development.
+  * Test: Fixed the issue that coveralls was not found in the
+    test workflow on MacOS with Python 3.9-3.11, by running it
+    without login shell. Added Python 3.11 on MacOS to the normal
+    tests.
+  * Added support for Python 3.13. This required increasing the
+    minimum version of several packages needed for development.
+    (issue #225)
+  * Added '__version_tuple__' with the integer versions. (related
+    to issue #180)
+  * Dev: Changed from setup.py to using pyproject.toml. (issue
+    #180)
+  * Dev: Split safety policy files into one for installation
+    dependencies and one for development dependencies. (issue
+    #205, related to issue #180)
+  * Dev: Split minimum-constraints.txt file into one for</comment>
+    <requestid>1292519</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-nocasedict
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-nocasedict
-Version:        2.0.4
+Version:        2.1.0
 Release:        0
 Summary:        A case-insensitive ordered dictionary for Python
 License:        LGPL-2.1-or-later
@@ -25,6 +25,7 @@ URL:            https://github.com/pywbem/nocasedict
 Source:         https://files.pythonhosted.org/packages/source/n/nocasedict/nocasedict-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
