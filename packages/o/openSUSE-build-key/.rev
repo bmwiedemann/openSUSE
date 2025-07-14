@@ -445,4 +445,13 @@ However, it would be good to have these out before we do switch. (forwarded requ
   for SLE 16.x series. (forwarded request 1281780 from msmeissn)</comment>
     <requestid>1281781</requestid>
   </revision>
+  <revision rev="50" vrev="59">
+    <srcmd5>6c813cd27a714cff80a4770da11745c6</srcmd5>
+    <version>1.0</version>
+    <time>1752482882</time>
+    <user>dimstar_suse</user>
+    <comment>- gpg-pubkey-09d9ea69-68595a8c.asc: renamed uid field to not
+  use outdated internal codenames. (bsc#1245223) (forwarded request 1292193 from msmeissn)</comment>
+    <requestid>1292194</requestid>
+  </revision>
 </revisionlist>

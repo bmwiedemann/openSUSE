@@ -75,8 +75,8 @@ Source13:       build-container-202304-d684afec-64390cff.asc
 Source14:       build-container-8fd6c337-63c94b45.pem
 Source15:       build-container-8fd6c337-63c94b45.asc
 
-# SLM 6.0 key (ALP / SLF1) RSA 4096 bit key
-Source16:       gpg-pubkey-09d9ea69-67c857f3.asc
+# SLM 6.0 key (SLM 6/ SLES 16) RSA 4096 bit key
+Source16:       gpg-pubkey-09d9ea69-68595a8c.asc
 # 2024 SUSE Linux Enterprise 15 SP6 RSA 4096 bit key
 Source17:       gpg-pubkey-3fa1d6ce-67c856ee.asc
 # SLM 6.0 key (ALP / SLF1) RSA 4096 bit reserve key
