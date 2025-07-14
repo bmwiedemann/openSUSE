@@ -1,3 +1,9 @@
+qt5-pbf-image-plugin (4.3) stable; urgency=low
+
+  * Default map style tweaks.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 13 Jul 2025 15:43:28 +0200
+
 qt5-pbf-image-plugin (4.2) stable; urgency=low
 
   * Qt5 builds now require Qt 5.15.

@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           qt6-qtpbfimageformat
-Version:        4.2
+Version:        4.3
 Release:        1
 Summary:        Qt6 PBF Image Format Plugin
 License:        LGPL-3.0-only
