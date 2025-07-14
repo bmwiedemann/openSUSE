@@ -92,13 +92,16 @@ ExclusiveArch:  %{ix86} x86_64 ppc64 ppc64le %{riscv}
 cd toonz
 %define __sourcedir sources
 
-# FIXME: -DCMAKE_POLICY_VERSION_MINIMUM=3.5 is temporarily needed until dependencies build with cmake 4 (e.g. kissfft)
+# -DCMAKE_POLICY_VERSION_MINIMUM=3.5 is temporarily needed until dependencies build with cmake 4 (e.g. kissfft)
+# -DCMAKE_C*_STANDARD is needed to build with GCC 15
 %cmake \
   -DCMAKE_SKIP_RPATH:BOOL=ON \
   -DWITH_SYSTEM_LZO:BOOL=ON \
   -DWITH_SYSTEM_SUPERLU:BOOL=ON \
   -DWITH_TRANSLATION:BOOL=OFF \
-  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+  -DCMAKE_CXX_STANDARD=17 \
+  -DCMAKE_C_STANDARD=99
 
 %cmake_build
 

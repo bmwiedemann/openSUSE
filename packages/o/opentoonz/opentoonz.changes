@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 13 07:45:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- define C and CXX standard to fix build with GCC 15
+
+-------------------------------------------------------------------
 Tue Apr  1 23:45:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add patches:

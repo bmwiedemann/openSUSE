@@ -246,4 +246,12 @@
 - Update the _service file and tarball</comment>
     <requestid>1266343</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>f9245e8adccf57f3529d02a6fb4a0494</srcmd5>
+    <version>1.7.1</version>
+    <time>1752483118</time>
+    <user>dimstar_suse</user>
+    <comment>- define C and CXX standard to fix build with GCC 15</comment>
+    <requestid>1292477</requestid>
+  </revision>
 </revisionlist>
