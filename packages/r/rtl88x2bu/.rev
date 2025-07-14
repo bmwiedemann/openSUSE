@@ -68,4 +68,15 @@
     <comment></comment>
     <requestid>1284514</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9c489f3611c3d40124064bc27cbb116c</srcmd5>
+    <version>5.8.7.1+git20250609.d99f4dc</version>
+    <time>1752483152</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.8.7.1+git20250609.d99f4dc:
+  * docs: Remove administrative note
+  * docs: Mention stability issues in README
+  * fix: Correctly report Kernels with dashes in their names</comment>
+    <requestid>1292535</requestid>
+  </revision>
 </revisionlist>

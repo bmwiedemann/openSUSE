@@ -17,7 +17,7 @@
 
 
 Name:           rtl88x2bu
-Version:        5.8.7.1+git20250512.1800958
+Version:        5.8.7.1+git20250609.d99f4dc
 Release:        0
 Summary:        Kernel driver for Realtek 88x2bu wifi cards
 License:        GPL-2.0-only
