@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-HTTP
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Net-HTTP
 Name:           perl-Net-HTTP
-Version:        6.23
+Version:        6.230.0
 Release:        0
+# 6.23 -> normalize -> 6.230.0
+%define cpan_version 6.23
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Low-level HTTP connection (client)
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -34,6 +36,11 @@ BuildRequires:  perl(URI)
 Requires:       perl(Compress::Raw::Zlib)
 Requires:       perl(IO::Uncompress::Gunzip)
 Requires:       perl(URI)
+Provides:       perl(Net::HTTP) = %{version}
+Provides:       perl(Net::HTTP::Methods) = %{version}
+Provides:       perl(Net::HTTP::NB) = %{version}
+Provides:       perl(Net::HTTPS) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -49,7 +56,7 @@ directly. This is not necessary a good idea, unless you know what you are
 doing.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
