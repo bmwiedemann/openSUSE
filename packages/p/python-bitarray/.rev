@@ -446,4 +446,14 @@
     <comment></comment>
     <requestid>1290225</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>31b4f8a55b880c0c7403001ca27fe095</srcmd5>
+    <version>3.5.0</version>
+    <time>1752483073</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.0:
+  * add util.random_p()
+  * improve sparse compression testing</comment>
+    <requestid>1292327</requestid>
+  </revision>
 </revisionlist>
