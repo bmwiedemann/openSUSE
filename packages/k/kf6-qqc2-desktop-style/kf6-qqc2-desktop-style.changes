@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul  7 07:24:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.16.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.16.0
+- Changes since 6.15.0:
+  * Update dependency version to 6.16.0
+  * Add footer line and padding to QQC2.Dialog style
+  * Use correct height for treeview delegates
+  * Check for text truncation correctly to fix tooltip visibility (kde#505745)
+  * Add the tooltip code from Kirigami.MenuDialog to QQC.ItemDelegate
+  * Skip disabled tabs when switching pages by mouse wheel
+  * Remove modelIndex property from TreeViewDelegate (kde#505437)
+  * Use loader for treeview indicators
+  * Update version to 6.16.0
+
+-------------------------------------------------------------------
 Mon Jun  9 20:29:49 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.15.0
