@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-deap
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        Distributed Evolutionary Algorithms in Python
 License:        LGPL-3.0-only

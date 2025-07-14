@@ -75,4 +75,13 @@
   * Fix use of unknown escape seqeuences</comment>
     <requestid>1242832</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6f4156685fb073ade6fc5b10d465e82e</srcmd5>
+    <version>1.4.3</version>
+    <time>1752483110</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.3:
+  * fix variable naming bug</comment>
+    <requestid>1292444</requestid>
+  </revision>
 </revisionlist>
