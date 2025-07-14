@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 11 10:46:14 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- order ENVs alphanumerically
+
+-------------------------------------------------------------------
 Tue Jun 10 08:35:06 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - update docker-entrypoint script in preparation of postgresql 18 upgrade
