@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jul 12 17:05:07 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.45.0:
+  * Single Dialog for Upload/Download Online Services
+  * Added option to swap paddles to Winkey settings
+  * Added native support for the FLRig interface
+  * QRZ Upload - Added support for multiple API Keys
+  * Added highlighting to the filter button when a filter is active
+  * WSJTX/DXC: Filtered label is shown when filter is enabled
+  * Added support to Upload Cloudlog/Wavelog
+  * Add JS8 to legacy_modes.json
+  * Unification Settings storage
+  * Calculate distances according to IARU rules
+  * Fixed missing Wsjtx Spot values in the AlertWindow
+
+-------------------------------------------------------------------
 Sun May 11 06:38:53 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.44.1:
