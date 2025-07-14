@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://wiki.gnome.org/Apps/Web
 Source0:        %{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM epiphany-bookmark-tags-crash.patch mgorse@suse.com -- fix a crash when editing bookmark tags.
+Patch0:         epiphany-bookmark-tags-crash.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes

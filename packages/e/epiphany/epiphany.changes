@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 11 19:46:31 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Add epiphany-bookmark-tags-crash.patch: fix a crash when editing
+  bookmark tags.
+
+-------------------------------------------------------------------
 Fri Jun 27 06:41:27 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.5:
