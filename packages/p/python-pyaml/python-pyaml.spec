@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyaml
-Version:        25.5.0
+Version:        25.7.0
 Release:        0
 Summary:        Python module to produce formatted YAML-serialized data
 License:        WTFPL

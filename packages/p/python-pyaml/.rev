@@ -142,4 +142,13 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1284630</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2083d445f448c48d58f294db006ce352</srcmd5>
+    <version>25.7.0</version>
+    <time>1752483143</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 25.7.0:
+  * tests: still match module in addition to class name</comment>
+    <requestid>1292522</requestid>
+  </revision>
 </revisionlist>
