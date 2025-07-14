@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul 13 13:35:54 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.19:
+  * Build sdist and aarch64
+  * Update from GSW-C and add declspec for dll export
+  * Modify c_header_parser.py for DECLSPEC addition
+  * Add infunnel wrapper, simplify code generation
+
+-------------------------------------------------------------------
 Fri May  9 05:10:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
@@ -90,7 +99,7 @@ Wed Feb 20 14:27:16 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.3.0:
   * Adds functions SP_salinometer, O2sol, and O2sol_SP_pt by
-    updating the C source. 
+    updating the C source.
   * Fixes a bug in handling of p_ref in geostrophy.
   * Fixes a bug in distance when the pressure argument is
     omitted.

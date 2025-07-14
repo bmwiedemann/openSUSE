@@ -17,7 +17,7 @@
 
 
 Name:           python-gsw
-Version:        3.6.18
+Version:        3.6.19
 Release:        0
 Summary:        Gibbs Seawater Oceanographic Package of TEOS-10
 # Note: Python code is MIT licensed
