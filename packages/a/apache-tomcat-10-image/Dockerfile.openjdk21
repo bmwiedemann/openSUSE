@@ -48,11 +48,11 @@ LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.openjdk21.md)%"
 LABEL io.artifacthub.package.logo-url="https://tomcat.apache.org/res/images/tomcat.png"
+ENV CATALINA_BASE="/usr/share/tomcat"
+ENV CATALINA_HOME="/usr/share/tomcat"
+ENV PATH="/usr/share/tomcat/bin:$PATH"
 ENV TOMCAT_MAJOR="10"
 ENV TOMCAT_VERSION="%%tomcat_version%%"
-ENV CATALINA_HOME="/usr/share/tomcat"
-ENV CATALINA_BASE="/usr/share/tomcat"
-ENV PATH="/usr/share/tomcat/bin:$PATH"
 CMD ["/usr/libexec/tomcat/server", "start"]
 EXPOSE 8080/tcp
 RUN set -euo pipefail; mkdir -p /var/log/tomcat; chown --recursive tomcat:tomcat /var/log/tomcat
