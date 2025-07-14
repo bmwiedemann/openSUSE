@@ -385,4 +385,13 @@
     * Merge upstream 8.13.55 phonenumber updates</comment>
     <requestid>1247411</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>dd36ec076b26d7daa44e6009a30941f4</srcmd5>
+    <version>9.0.9</version>
+    <time>1752483132</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 9.0.9:
+  * Merge upstream 9.0.9 phonenumber updates</comment>
+    <requestid>1292515</requestid>
+  </revision>
 </revisionlist>
