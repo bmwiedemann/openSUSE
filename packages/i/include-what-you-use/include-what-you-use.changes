@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 12 13:33:28 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Skip adding (unnecessary) RPATH.
+- Disable problematic tests for libstdc++-devel >= 15 as well.
+- Add constraints file because build often runs out of memory.
+
+-------------------------------------------------------------------
 Sun Apr  6 15:53:59 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 0.24, update LLVM/Clang to version 20.

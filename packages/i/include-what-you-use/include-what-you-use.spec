@@ -75,6 +75,7 @@ rm gcc.libc.imp gcc.symbols.imp gcc.stl.headers.imp stl.c.headers.imp
 rm iwyu.gcc.imp
 
 %cmake -DIWYU_LLVM_ROOT_PATH=%{_libdir} \
+    -DCMAKE_SKIP_RPATH:BOOL=ON \
 %if %{suse_version} <= 1500
     -DPython3_EXECUTABLE=%{_bindir}/python3.11 \
 %endif
@@ -93,7 +94,10 @@ rm iwyu.gcc.imp
 
 # Fails with older versions of libstdc++ (at least <= 7, maybe more) with error
 # "type 'const std::hash<IndirectClass>' does not provide a call operator".
-%if %{pkg_vcmp libstdc++-devel <= 7}
+# Fails with newer versions of libstc++ with error "static assertion failed due
+# to requirement 'is_copy_constructible<std::hash<IndirectClass>>::value': hash
+# function must be copy constructible".
+%if %{pkg_vcmp libstdc++-devel <= 7} || %{pkg_vcmp libstdc++-devel >= 15}
 %global exclude_tests %exclude_tests|cxx.test_precomputed_tpl_args(|_cpp14)
 %endif
 

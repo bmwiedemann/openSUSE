@@ -309,4 +309,15 @@
 </comment>
     <requestid>1267431</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>759f30cc32149b32e55ce4c63922ba1f</srcmd5>
+    <version>0.24</version>
+    <time>1752483117</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip adding (unnecessary) RPATH.
+- Disable problematic tests for libstdc++-devel &gt;= 15 as well.
+- Add constraints file because build often runs out of memory.
+</comment>
+    <requestid>1292461</requestid>
+  </revision>
 </revisionlist>
