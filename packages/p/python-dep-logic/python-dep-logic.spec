@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dep-logic
-Version:        0.4.10
+Version:        0.5.1
 Release:        0
 Summary:        Python dependency specifications supporting logical operations
 License:        Apache-2.0
