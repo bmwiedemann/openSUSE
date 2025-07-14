@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jul 11 20:27:23 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.63.0:
+  - Features
+    * feat: Check for secrets in re-add command
+    * feat: Add ensureLinePrefix template function
+    * feat: Add getRedirectedURL template function
+  - Fixes
+    * fix: Detect libc from current executable in upgrade command
+    * fix: Use filepath.Join() to join abspath
+  - Documentation updates
+    * docs: Refactor configuration variables reference page
+    * docs: Fix attribute name
+    * docs: Recommend run_onchange_ scripts over run_once_ scripts
+
+-------------------------------------------------------------------
 Mon Jun 23 11:18:17 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.62.7:
