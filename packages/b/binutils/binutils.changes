@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 10 05:26:01 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Skip PGO with %want_reproducible_builds (boo#1040589)
+
+-------------------------------------------------------------------
 Wed Jun 18 09:30:37 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - pr33029.patch: Fix crash in assembler with -gdawrf-5

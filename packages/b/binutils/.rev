@@ -2399,4 +2399,12 @@ soon.
     <comment>- pr33029.patch: Fix crash in assembler with -gdawrf-5 (forwarded request 1286747 from Andreas_Schwab)</comment>
     <requestid>1288676</requestid>
   </revision>
+  <revision rev="180" vrev="9">
+    <srcmd5>bb101ac8d8a4db9b3f2e2640c159411e</srcmd5>
+    <version>2.43</version>
+    <time>1752482979</time>
+    <user>dimstar_suse</user>
+    <comment>Skip PGO with %want_reproducible_builds (boo#1040589) (forwarded request 1291583 from bmwiedemann)</comment>
+    <requestid>1291682</requestid>
+  </revision>
 </revisionlist>

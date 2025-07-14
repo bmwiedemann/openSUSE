@@ -388,7 +388,7 @@ cd build-dir
 %endif
 	--enable-shared \
 %if %{suse_version} > 1500
-%if %{with bootstrap} && 0%{?do_profiling}
+%if %{with bootstrap} && 0%{?do_profiling} && !0%{?want_reproducible_builds}
 	--enable-pgo-build=lto \
 %endif
 	--enable-colored-disassembly \
