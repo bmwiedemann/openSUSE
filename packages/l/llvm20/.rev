@@ -108,4 +108,15 @@
 - Install liborc_rt-*.a on loongarch64</comment>
     <requestid>1291527</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5549a54c7a2db5e300e8cf4731736a7b</srcmd5>
+    <version>20.1.8</version>
+    <time>1752482883</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.1.8.
+  * This release contains bug-fixes for the LLVM 20.1.0 release.
+    This release is API and ABI compatible with 20.1.0.
+- Rebase llvm-do-not-install-static-libraries.patch.</comment>
+    <requestid>1292220</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 10 21:56:00 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 20.1.8.
+  * This release contains bug-fixes for the LLVM 20.1.0 release.
+    This release is API and ABI compatible with 20.1.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+
+-------------------------------------------------------------------
 Fri Jul  4 06:57:21 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Replace usage of %jobs for reproducible builds (boo#1237231)
