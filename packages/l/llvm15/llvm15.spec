@@ -104,7 +104,7 @@
 # Set max_<type>_jobs so that every job of the given type has at least the
 # given amount of memory.
 %define set_jobs() \
-    max_%{1}_jobs="%{?jobs:%{jobs}}" \
+    max_%{1}_jobs="$(echo %{?_smp_mflags} | cut -c 3-)" \
     if test -n "$max_%{1}_jobs" -a "$max_%{1}_jobs" -gt 1 ; then \
         max_jobs="$(($avail_mem / %2))" \
         test "$max_%{1}_jobs" -gt "$max_jobs" && max_%{1}_jobs="$max_jobs" && echo "Warning: Reducing number of %{1} jobs to $max_jobs because of memory limits" \
@@ -375,6 +375,8 @@ Patch16:        llvm-workaround-superfluous-branches.patch
 Patch17:        llvm-suse-implicit-gnu.patch
 # PATCH-FIX-UPSTREAM: Don't implicitly add RUNPATHs to openmp executable. (boo#1206837)
 Patch18:        openmp-drop-rpath.patch
+# PATCH-FIX-UPSTREAM: make libomp reproducible (boo#1199076)
+Patch19:        reproducible.patch
 Patch20:        llvm_build_tablegen_component_as_shared_library.patch
 Patch21:        tests-use-python3.patch
 Patch22:        llvm-better-detect-64bit-atomics-support.patch
@@ -919,6 +921,7 @@ mv lldb-%{_version}.src tools/lldb
 
 %if %{with openmp}
 mv openmp-%{_version}.src  projects/openmp
+%patch -P 19 -p1
 %endif
 
 %if %{with libcxx}
