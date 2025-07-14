@@ -200,4 +200,16 @@ Implement single-spec version</comment>
     <comment></comment>
     <requestid>1186504</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>de633905ae5b6b00bca97f9aff4d6610</srcmd5>
+    <version>1.11.3</version>
+    <time>1752483107</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.11.3:
+  * Added support for Python 3.13. Thanks to David Stansby.
+  * Internal C-Blosc sources updated to
+    051b9d2cb9437e375dead8574f66d80ebce47bee.
+  * CI fixes.</comment>
+    <requestid>1292431</requestid>
+  </revision>
 </revisionlist>
