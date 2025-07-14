@@ -1,7 +1,7 @@
 #
 # spec file for package VecCore
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        C++ Library for Portable SIMD Vectorization
 License:        Apache-2.0
 URL:            https://root-project.github.io/veccore
 Source:         https://github.com/root-project/veccore/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.16
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  cmake(Vc) >= 1.3.3
@@ -51,7 +51,6 @@ rm -rf builtins/*
 %build
 # The SKIP_RPATH fix is needed for Leap 15.2, but doesn't hurt generally
 %cmake -DCMAKE_SKIP_RPATH:BOOL=OFF \
-       -DCMAKE_CXX_STANDARD=14 \
        -DVC:BOOL=ON \
        -DUMESIMD:BOOL=OFF \
        -DUSE_EXTERNAL_GTEST:BOOL=ON \
