@@ -96,4 +96,16 @@
     <comment></comment>
     <requestid>1277822</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6962b5b4fdcecde68b44b76f2c314d17</srcmd5>
+    <version>2.5.0</version>
+    <time>1752483074</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5.0:
+  * Added noheader CSV and TSV output formats.
+  * Added `jsonl` and `jsonl_escaped` output formats.
+  * Added format_timestamps preprocessor for per-column date/time
+    formatting.</comment>
+    <requestid>1292328</requestid>
+  </revision>
 </revisionlist>

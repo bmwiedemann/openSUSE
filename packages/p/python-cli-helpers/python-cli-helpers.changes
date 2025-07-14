@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 12 11:40:58 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.0:
+  * Added noheader CSV and TSV output formats.
+  * Added `jsonl` and `jsonl_escaped` output formats.
+  * Added format_timestamps preprocessor for per-column date/time
+    formatting.
+
+-------------------------------------------------------------------
 Thu May 15 13:08:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
