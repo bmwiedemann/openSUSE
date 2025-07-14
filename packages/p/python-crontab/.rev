@@ -47,4 +47,15 @@
     <comment>- Switch to pyroject macros.</comment>
     <requestid>1285961</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ba67d0c63810ccda3c97585895ce2bcd</srcmd5>
+    <version>1.0.5</version>
+    <time>1752483100</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.5:
+  * [added] the ability to use z0 as last day of the month, z1
+    for the day before the last day of the month, up to z7 for
+    7 days before the last day of the month.</comment>
+    <requestid>1292436</requestid>
+  </revision>
 </revisionlist>
