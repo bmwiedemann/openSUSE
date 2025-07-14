@@ -22,9 +22,9 @@
 %define swname  wlroots
 %define swver   0.17.4
 %define slname  libsfdo
-%define slver   0.1.3
+%define slver   0.1.4
 Name:           labwc
-Version:        0.8.4
+Version:        0.9.0
 Release:        0
 Summary:        A Wayland window-stacking compositor
 License:        GPL-2.0-only
@@ -51,13 +51,13 @@ BuildRequires:  pkgconfig(xcb-render)
 BuildRequires:  pkgconfig(xcb-renderutil)
 BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xcb-xkb)
+BuildRequires:  pkgconfig(xwaylandproto)
+%else
+BuildRequires:  pkgconfig(wlroots-0.19)
+%endif
 %if %{with xwayland}
 BuildRequires:  pkgconfig(xcb-errors)
 BuildRequires:  pkgconfig(xwayland)
-%endif
-BuildRequires:  pkgconfig(xwaylandproto)
-%else
-BuildRequires:  pkgconfig(wlroots-0.18)
 %endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
@@ -99,6 +99,9 @@ tar -xf %{SOURCE2} --strip-components 1 -C subprojects/%{swname}
 mkdir subprojects/%{slname}
 tar -xf %{SOURCE1} --strip-components 1 -C subprojects/%{slname}
 
+# only need specific portal, no need trigger all portal
+sed -i 's/;.*//' data/labwc-portals.conf
+
 %build
 %meson \
     -Dman-pages=enabled \
@@ -120,6 +123,7 @@ install -Dm 0644 docs/*.xml -t %{buildroot}%{_sysconfdir}/xdg/%{name}/
 %license LICENSE
 %doc NEWS.md README.md
 %{_bindir}/%{name}
+%{_bindir}/lab-sensible-terminal
 %dir %{_sysconfdir}/xdg/%{name}
 %config(noreplace) %{_sysconfdir}/xdg/%{name}/menu.xml
 %config(noreplace) %{_sysconfdir}/xdg/%{name}/rc.xml
