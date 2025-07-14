@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Jul 12 07:16:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.83.1:
+  * Bug Fixes
+    - Adjusted lockfile handling when modules define constraints
+  * What's Changed
+    - fix: Adjusted lockfile handling when modules define
+      constraints by @yhakbar in #4514
+    - chore: Updated cicd to use tofu 1.10.2 by @denis256 in #4507
+    - chore: Added dependency grouping and type labels to
+      Dependabot config by @wakeful in #4518
+    - docs: Fixed getting started docs by @shahar1 in #4516
+    - chore: Configured dependabot to ignore buggy version of
+      charmbracelet/glamour by @wakeful in #4524
+    - build(deps): Bump the js-dependencies group across 1
+      directory with 9 updates by @dependabot[bot] in #4520
+    - chore: Removed npm dependencies, using only bun for docs
+      generation by @wakeful in #4527
+    - build(deps): Updated github.com/huandu/go-clone to v1.7.3 by
+      @wakeful in #4511
+    - build(deps): Updated google.golang.org/api to v0.240.0 by
+      @wakeful in #4511
+    - build(deps): Updated github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.83.0 by @wakeful in #4511
+    - build(deps): Updated github.com/hashicorp/hcl/v2 to 2.24.0 by
+      @denis256 in #4528
+    - build(deps): Updated golang.org/x/mo to 0.26.0 by @denis256
+      in #4528
+    - build(deps): Updated golang.org/x/sync to 0.16.0 by @denis256
+      in #4528
+    - build(deps): Updated golang.org/x/sys to 0.34.0 by @denis256
+      in #4528
+    - build(deps): Updated golang.org/x/term to 0.33.0 by @denis256
+      in #4528
+    - build(deps): Updated golang.org/x/text to 0.27.0 by @denis256
+      in #4528
+    - build(deps): Updated google.golang.org/api to 0.241.0 by
+      @denis256 in #4528
+
+-------------------------------------------------------------------
 Mon Jul 07 04:45:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.83.0:
