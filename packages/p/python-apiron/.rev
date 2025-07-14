@@ -103,4 +103,18 @@
   * Add support for Python 3.13</comment>
     <requestid>1242829</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e0448082c6d0560c2c203470c4bbde0b</srcmd5>
+    <version>8.0.2</version>
+    <time>1752483099</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.0.2:
+  * Bump version again to get successful release
+- update to 8.0.1:
+  * Fix GitHub Actions status badge
+  * Fix type disagreement for `required_headers` in service code
+  * Defer on digital attestations for now
+  * Use verbose during uploads for debugging</comment>
+    <requestid>1292434</requestid>
+  </revision>
 </revisionlist>

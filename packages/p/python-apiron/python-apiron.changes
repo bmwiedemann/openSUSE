@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 12 17:24:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.0.2:
+  * Bump version again to get successful release
+- update to 8.0.1:
+  * Fix GitHub Actions status badge
+  * Fix type disagreement for `required_headers` in service code
+  * Defer on digital attestations for now
+  * Use verbose during uploads for debugging
+
+-------------------------------------------------------------------
 Mon Feb  3 13:21:50 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.0.0.post1:

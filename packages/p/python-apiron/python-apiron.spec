@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-apiron
-Version:        8.0.0.post1
+Version:        8.0.2
 Release:        0
 Summary:        Apiron helps you cook a tasty client for RESTful APIs
 License:        MIT
