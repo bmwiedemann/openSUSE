@@ -17,7 +17,7 @@
 
 
 Name:           python-django-otp
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Add two-factor authentication to Django using one-time passwords
 License:        Unlicense
