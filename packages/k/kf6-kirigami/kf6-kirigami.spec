@@ -19,11 +19,11 @@
 %define qt6_version 6.8.0
 
 %define rname kirigami
-# Full KF6 version (e.g. 6.15.0)
+# Full KF6 version (e.g. 6.16.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kirigami
-Version:        6.15.0
+Version:        6.16.0
 Release:        0
 Summary:        Set of QtQuick components
 License:        LGPL-2.1-or-later
@@ -33,8 +33,6 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Revert-Properly-Align-menubar-when-there-is-a-sideba.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}

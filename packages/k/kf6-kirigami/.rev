@@ -166,4 +166,12 @@
   * 0001-Revert-Properly-Align-menubar-when-there-is-a-sideba.patch</comment>
     <requestid>1288099</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ed2b22bda5fb393aa4e0912b9912546b</srcmd5>
+    <version>6.16.0</version>
+    <time>1752482927</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 6.16 (forwarded request 1292110 from krop)</comment>
+    <requestid>1292148</requestid>
+  </revision>
 </revisionlist>
