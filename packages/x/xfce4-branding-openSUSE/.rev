@@ -1408,4 +1408,12 @@
     <comment></comment>
     <requestid>1234334</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>253947d2b56883d47a0dd585833b4c47</srcmd5>
+    <version>4.20.0+git1.d2555b3</version>
+    <time>1752483081</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1292359</requestid>
+  </revision>
 </revisionlist>
