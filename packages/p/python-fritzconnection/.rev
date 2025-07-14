@@ -153,4 +153,32 @@
 - Remove unneeded Requires on setuptools.</comment>
     <requestid>1286226</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d62e9245f9b998ea3948fa242b89365c</srcmd5>
+    <version>1.15.0</version>
+    <time>1752483127</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.15.0:
+  * support added for Python 3.14
+  * FritzConnection:
+    - additional argument `redact_debug_log` (default: False) for
+      optional redacting response in debug output. (#238) (#241)
+    - new method `get_cpu_temperatures()` providing a list of the
+      last recent cpu-temperatures.
+   FritzCall:
+   - new attribute `Path` for the class `Call` to access an
+     optional phone message. (#231)
+   FritzStatus:
+   - new method `get_avm_device_log()` to access system events.
+     Requires FritzOS 8. (#234)
+   - bugfix: in rare cases a session id of None has prevented a
+     successfull request of the http-interface.
+   - `fritzconnection.lib.fritzhomeauto.FritzHomeAutomation.device_informations()`,
+      deprecated in 1.9.0
+   - `fritzconnection.lib.fritzstatus.FritzStatus.uptime()`,
+      deprecated in 1.9.0
+   - `fritzconnection.lib.fritzwlan.FritzWLAN.channel_infos()`,
+      deprecated in 1.9.0</comment>
+    <requestid>1292503</requestid>
+  </revision>
 </revisionlist>
