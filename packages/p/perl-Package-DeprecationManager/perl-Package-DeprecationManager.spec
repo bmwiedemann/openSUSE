@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Package-DeprecationManager
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Package-DeprecationManager
 Name:           perl-Package-DeprecationManager
-Version:        0.18
+Version:        0.180.0
 Release:        0
+# 0.18 -> normalize -> 0.180.0
+%define cpan_version 0.18
 License:        Artistic-2.0
 Summary:        Manage deprecation warnings for your distribution
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -41,6 +43,8 @@ Requires:       perl(Package::Stash)
 Requires:       perl(Params::Util)
 Requires:       perl(Sub::Install)
 Requires:       perl(Sub::Util)
+Provides:       perl(Package::DeprecationManager) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -94,9 +98,9 @@ itself. This means that if you provide several different error messages for
 the same feature, all of those errors will appear.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
