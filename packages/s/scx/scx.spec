@@ -20,7 +20,7 @@
 %define llvm_min_ver 20
 
 Name:           scx
-Version:        1.0.13
+Version:        1.0.14
 Release:        0
 Summary:        Sched_ext CPU schedulers
 License:        GPL-2.0-only

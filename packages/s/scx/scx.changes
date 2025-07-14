@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jul 09 07:53:27 UTC 2025 - fredrik.lonnegren@suse.com
+
+- Update to version 1.0.14:
+  * scx_lavd: More aggressively compete against already enqueued tasks.
+  * scx_flash: Refine round-robin mode
+  * scx_p2dq: Use max slice for idle deadline scheduling
+  * scx_flash: Introduce --no-builtin-idle, --slice-lag-scaling,
+    --cpu-busy-thresh, --sticky-cpu, --rr-sched, --cpu-runqueue,
+    --direct-dispatch 
+  * layered: add gpu task affinitizer stats
+  * scx_p2dq: Allow load balancing interactive tasks by default in dispatch
+  * scx_lavd: Be conservative about migrating to a waker's CPU.
+  * scxtop: fix cpu stats tracker instantiation
+  * scx_lavd: Add an option, "--no-use-em".
+  * scx_lavd: Add PCO table related data structure in BPF.
+  * scx_flash: Introduce tickless mode
+  * scxtop: make generic kprobe handler sample
+  * scx_flash: Disable voluntary context switch rate tracking by default
+  * scx_flash: Allow to exclusively enable per-CPUs or per-node DSQs
+  * scx_flash: Handle migration-disabled tasks in direct dispatch
+  * layered/chaos: make --version and startup message uniform
+  * scxtop: fixing tracer running after trace
+  * scxtop: adding sched_migrate_task tracepoint.
+  * scx_p2dq: Add deadline scheduling
+  * scx_p2dq: Update dispatch DSQ selection to use DSQ iterators
+  * scx_flash: Introduce 
+  * layered: add -V/--version option
+  * scx_flash: Introduce "turbo" mode
+
+-------------------------------------------------------------------
 Thu Jun 12 20:29:11 UTC 2025 - fredrik.lonnegren@suse.com
 
 - Add llvm build dependency for llvm-strip
