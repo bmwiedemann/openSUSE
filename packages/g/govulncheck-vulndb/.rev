@@ -981,4 +981,15 @@
   * GO-2025-3755 GHSA-79xg-q4qm-7v9w (forwarded request 1285293 from jfkw)</comment>
     <requestid>1285294</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>a0aaca174a2b731b96cfd34538a7eb45</srcmd5>
+    <version>0.0.20250616T200841</version>
+    <time>1752483098</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.20250616T200841 2025-06-16T20:08:41Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3749 CVE-2025-22874 (forwarded request 1292447 from jfkw)</comment>
+    <requestid>1292448</requestid>
+  </revision>
 </revisionlist>
