@@ -32,6 +32,8 @@ Source1:        sysinit.vim
 Source3:        suse-spec-template
 Source4:        spec.vim
 Source10:       https://github.com/neovim/deps/raw/06ef2b58b0876f8de1a3f5a710473dcd7afff251/opt/lua-dev-deps.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         bad-format-call.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -129,17 +131,6 @@ USERNAME=OBS
        -DLIBLUV_INCLUDE_DIR:PATH=%{lua_incdir}
 %make_build
 
-%check
-mkdir -p runtime/parser
-ln -sf %{_libdir}/tree_sitter/vimdoc.so runtime/parser
-
-# old tests
-%make_build USE_BUNDLED=OFF oldtest
-# functional tests
-%ifarch aarch64 x86_64
-%make_build USE_BUNDLED=OFF unittest
-%endif
-
 %install
 %cmake_install
 
@@ -168,6 +159,17 @@ mkdir -p %{buildroot}%{_datadir}/vim/site/{after,after/syntax,autoload,colors,do
 # We have to have rpath
 # https://en.opensuse.org/openSUSE:Packaging_checks
 export NO_BRP_CHECK_RPATH=true
+
+%check
+mkdir -p runtime/parser
+ln -sf %{_libdir}/tree_sitter/vimdoc.so runtime/parser
+
+# old tests
+%make_build USE_BUNDLED=OFF oldtest
+# functional tests
+%ifarch aarch64 x86_64
+%make_build USE_BUNDLED=OFF unittest
+%endif
 
 %post
 if [ -d %{_datadir}/nvim/runtime/parser ]; then

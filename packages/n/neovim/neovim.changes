@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 12 16:53:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add patch bad-format-call.patch, which fixes an isuse where by accident,
+  you could pass on nil. - fixes ppc64le build
+- rearrange where the tests are in the specfile
+
+-------------------------------------------------------------------
 Fri May 30 10:20:00 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.11.2:
