@@ -140,4 +140,14 @@
     <comment></comment>
     <requestid>1280143</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>743f2f532fc1eaacf6c3772fad7ce1ff</srcmd5>
+    <version>0.4.3</version>
+    <time>1752483103</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.3:
+  * Drop support for Python 3.7, 3.8, and 3.9.
+  * Add support for italic.</comment>
+    <requestid>1292442</requestid>
+  </revision>
 </revisionlist>
