@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MRO-Compat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,20 @@
 
 %define cpan_name MRO-Compat
 Name:           perl-MRO-Compat
-Version:        0.15
+Version:        0.150.0
 Release:        0
-Summary:        Mro::* interface compatibility for Perls < 5.9.5
+# 0.15 -> normalize -> 0.150.0
+%define cpan_version 0.15
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Mro::* interface compatibility for Perls < 5.9.5
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(MRO::Compat) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -58,7 +62,7 @@ the function basically does, and what differences between MRO::Compat and
 interface docs, and contain a lot of other useful information.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
