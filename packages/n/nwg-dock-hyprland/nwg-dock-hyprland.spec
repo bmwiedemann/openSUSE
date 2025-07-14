@@ -18,7 +18,7 @@
 
 
 Name:           nwg-dock-hyprland
-Version:        0.4.3
+Version:        0.4.7
 Release:        0
 Summary:        Hyprland application dock
 License:        MIT
@@ -30,6 +30,9 @@ BuildRequires:  golang-packaging
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk-layer-shell-0)
+## MANUAL BEGIN
+Recommends:     nwg-drawer
+## MANUAL END
 
 %description
 Configurable (w/ command line arguments and css) dock, written in Go, aimed

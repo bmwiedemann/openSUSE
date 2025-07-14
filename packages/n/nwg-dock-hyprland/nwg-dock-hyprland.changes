@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul  2 00:48:57 UTC 2025 - malcolmlewis@opensuse.org
+
+- Updated to version 0.4.7:
+  * Fix: Class containing substring of another class leads to
+    incorrect instances, (gh#nwg-piotr/nwg-dock-hyprland#89).
+  * Fix: Remove all styling for default hotspot style (fix hotspot
+    styling when using box-shadow on dock),
+    (gh#nwg-piotr/nwg-dock-hyprland#92).
+  * golang.org/x/sync updated to v0.15.0.
+- Updates from version 0.4.6:
+  * Added -m flag to allow multiple program instances,
+    (gh#nwg-piotr/nwg-dock-hyprland#70).
+- Updates from version 0.4.5:
+  * Improved search for improper app_id,
+    (gh#nwg-piotr/nwg-dock-hyprland#79).
+  * nwg-drawer set as the default launcher.
+- Updates from version 0.4.4:
+  * Adjusted tooltip parsing, (gh#nwg-piotr/nwg-dock-hyprland#73).
+
+-------------------------------------------------------------------
 Fri Jan 10 02:28:40 UTC 2025 - malcolmlewis@opensuse.org
 
 - Updated to version 0.4.3:
