@@ -35,6 +35,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpkcs11-helper-1)
 BuildRequires:  pkgconfig(zlib)
 %{?suse_build_hwcaps_libs}
+# PATCH-FIX-UPSTREAM: Fix build with gcc15
+Patch0:         mbedtls-fix-build-with-gcc-15.patch
 
 %description
 mbedtls implements the SSL3, TLS 1.0, 1.1 and 1.2 protocols. It

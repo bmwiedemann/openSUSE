@@ -130,4 +130,12 @@
 Requested by @Yoshio_Sato at https://build.opensuse.org/requests/1274997 , who needs it for submitting MistServer to openSUSE:Factory .</comment>
     <requestid>1275902</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>1056965c0d954d503b9f5c655201f8aa</srcmd5>
+    <version>2.28.10</version>
+    <time>1752483160</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1292596</requestid>
+  </revision>
 </revisionlist>

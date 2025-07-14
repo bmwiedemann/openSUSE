@@ -1,0 +1,322 @@
+From 2e1399f1e1ed6fa1072cf9584f5771322b0d001b Mon Sep 17 00:00:00 2001
+From: Felix Conway <felix.conway@arm.com>
+Date: Wed, 11 Jun 2025 16:04:30 +0100
+Subject: [PATCH 1/4] Add __attribute__ ((nonstring)) to remove
+ unterminated-string-initialization warning
+
+Signed-off-by: Felix Conway <felix.conway@arm.com>
+---
+ library/ssl_tls13_keys.c                                   | 3 ++-
+ library/ssl_tls13_keys.h                                   | 3 ++-
+ tests/suites/test_suite_psa_crypto.function                | 6 ++++--
+ .../suites/test_suite_psa_crypto_slot_management.function  | 7 ++++---
+ tests/suites/test_suite_ssl_decrypt.function               | 3 ++-
+ 5 files changed, 14 insertions(+), 8 deletions(-)
+
+Index: mbedtls-2.28.10/library/ssl_tls13_keys.c
+===================================================================
+--- mbedtls-2.28.10.orig/library/ssl_tls13_keys.c
++++ mbedtls-2.28.10/library/ssl_tls13_keys.c
+@@ -67,7 +67,7 @@ struct mbedtls_ssl_tls1_3_labels_struct
+  *         the HkdfLabel structure on success.
+  */
+ 
+-static const char tls1_3_label_prefix[6] = "tls13 ";
++static const char tls1_3_label_prefix[6] MBEDTLS_ATTRIBUTE_UNTERMINATED_STRING = "tls13 ";
+ 
+ #define SSL_TLS1_3_KEY_SCHEDULE_HKDF_LABEL_LEN(label_len, context_len) \
+     (2                     /* expansion length           */ \
+Index: mbedtls-2.28.10/library/ssl_tls13_keys.h
+===================================================================
+--- mbedtls-2.28.10.orig/library/ssl_tls13_keys.h
++++ mbedtls-2.28.10/library/ssl_tls13_keys.h
+@@ -7,6 +7,8 @@
+ #if !defined(MBEDTLS_SSL_TLS1_3_KEYS_H)
+ #define MBEDTLS_SSL_TLS1_3_KEYS_H
+ 
++#include "common.h"
++
+ /* This requires MBEDTLS_SSL_TLS1_3_LABEL( idx, name, string ) to be defined at
+  * the point of use. See e.g. the definition of mbedtls_ssl_tls1_3_labels_union
+  * below. */
+@@ -30,8 +32,9 @@
+     MBEDTLS_SSL_TLS1_3_LABEL(res_binder, "res binder") \
+     MBEDTLS_SSL_TLS1_3_LABEL(derived, "derived")
+ 
++/* We need to tell the compiler that we meant to leave out the null character. */
+ #define MBEDTLS_SSL_TLS1_3_LABEL(name, string)       \
+-    const unsigned char name    [sizeof(string) - 1];
++    const unsigned char name    [sizeof(string) - 1] MBEDTLS_ATTRIBUTE_UNTERMINATED_STRING;
+ 
+ union mbedtls_ssl_tls1_3_labels_union {
+     MBEDTLS_SSL_TLS1_3_LABEL_LIST
+Index: mbedtls-2.28.10/tests/suites/test_suite_psa_crypto.function
+===================================================================
+--- mbedtls-2.28.10.orig/tests/suites/test_suite_psa_crypto.function
++++ mbedtls-2.28.10/tests/suites/test_suite_psa_crypto.function
+@@ -1990,7 +1990,9 @@ void mac_setup(int key_type_arg,
+     psa_mac_operation_t operation = PSA_MAC_OPERATION_INIT;
+     psa_status_t status = PSA_ERROR_GENERIC_ERROR;
+ #if defined(KNOWN_SUPPORTED_MAC_ALG)
+-    const uint8_t smoke_test_key_data[16] = "kkkkkkkkkkkkkkkk";
++    /* We need to tell the compiler that we meant to leave out the null character. */
++    const uint8_t smoke_test_key_data[16] MBEDTLS_ATTRIBUTE_UNTERMINATED_STRING =
++        "kkkkkkkkkkkkkkkk";
+ #endif
+ 
+     PSA_ASSERT(psa_crypto_init());
+@@ -2381,7 +2383,9 @@ void cipher_setup(int key_type_arg,
+     psa_cipher_operation_t operation = PSA_CIPHER_OPERATION_INIT;
+     psa_status_t status;
+ #if defined(KNOWN_SUPPORTED_CIPHER_ALG)
+-    const uint8_t smoke_test_key_data[16] = "kkkkkkkkkkkkkkkk";
++    /* We need to tell the compiler that we meant to leave out the null character. */
++    const uint8_t smoke_test_key_data[16] MBEDTLS_ATTRIBUTE_UNTERMINATED_STRING =
++        "kkkkkkkkkkkkkkkk";
+ #endif
+ 
+     PSA_ASSERT(psa_crypto_init());
+Index: mbedtls-2.28.10/tests/suites/test_suite_psa_crypto_slot_management.function
+===================================================================
+--- mbedtls-2.28.10.orig/tests/suites/test_suite_psa_crypto_slot_management.function
++++ mbedtls-2.28.10/tests/suites/test_suite_psa_crypto_slot_management.function
+@@ -1,6 +1,7 @@
+ /* BEGIN_HEADER */
+ #include <stdint.h>
+ 
++#include "common.h"
+ #include "psa_crypto_slot_management.h"
+ #include "psa_crypto_storage.h"
+ 
+@@ -358,8 +359,9 @@ void create_existent(int lifetime_arg, i
+     mbedtls_svc_key_id_t returned_id = MBEDTLS_SVC_KEY_ID_INIT;
+     psa_key_attributes_t attributes = PSA_KEY_ATTRIBUTES_INIT;
+     psa_key_type_t type1 = PSA_KEY_TYPE_RAW_DATA;
+-    const uint8_t material1[5] = "a key";
+-    const uint8_t material2[5] = "b key";
++    /* We need to tell the compiler that we meant to leave out the null character. */
++    const uint8_t material1[5] MBEDTLS_ATTRIBUTE_UNTERMINATED_STRING = "a key";
++    const uint8_t material2[5] MBEDTLS_ATTRIBUTE_UNTERMINATED_STRING = "b key";
+     size_t bits1 = PSA_BYTES_TO_BITS(sizeof(material1));
+     uint8_t reexported[sizeof(material1)];
+     size_t reexported_length;
+@@ -728,7 +730,7 @@ void invalid_handle(int handle_construct
+     psa_key_id_t key_id;
+     psa_status_t close_status = close_status_arg;
+     psa_key_attributes_t attributes = PSA_KEY_ATTRIBUTES_INIT;
+-    uint8_t material[1] = "a";
++    uint8_t material[1] = { 'a' };
+ 
+     PSA_ASSERT(psa_crypto_init());
+ 
+Index: mbedtls-2.28.10/tests/suites/test_suite_ssl_decrypt.function
+===================================================================
+--- mbedtls-2.28.10.orig/tests/suites/test_suite_ssl_decrypt.function
++++ mbedtls-2.28.10/tests/suites/test_suite_ssl_decrypt.function
+@@ -36,7 +36,7 @@ void ssl_decrypt_stream(int cipher_type,
+         .cid = { 0 },
+ #endif /* MBEDTLS_SSL_DTLS_CONNECTION_ID */
+     };
+-    const char sample_plaintext[3] = "ABC";
++    const char sample_plaintext[3] MBEDTLS_ATTRIBUTE_UNTERMINATED_STRING = "ABC";
+     mbedtls_cipher_context_t cipher;
+     mbedtls_cipher_init(&cipher);
+     mbedtls_ssl_context ssl;
+Index: mbedtls-2.28.10/library/common.h
+===================================================================
+--- mbedtls-2.28.10.orig/library/common.h
++++ mbedtls-2.28.10/library/common.h
+@@ -378,4 +378,20 @@ static inline const unsigned char *mbedt
+ #    define MBEDTLS_MAYBE_UNUSED
+ #endif
+ 
++/* GCC >= 15 has a warning 'unterminated-string-initialization' which complains if you initialize
++ * a string into an array without space for a terminating NULL character. In some places in the
++ * codebase this behaviour is intended, so we add the macro MBEDTLS_ATTRIBUTE_UNTERMINATED_STRING
++ * to suppress the warning in these places.
++ */
++#if defined(__has_attribute)
++#if __has_attribute(nonstring)
++#define MBEDTLS_HAS_ATTRIBUTE_NONSTRING
++#endif /* __has_attribute(nonstring) */
++#endif /* __has_attribute */
++#if defined(MBEDTLS_HAS_ATTRIBUTE_NONSTRING)
++#define MBEDTLS_ATTRIBUTE_UNTERMINATED_STRING __attribute__((nonstring))
++#else
++#define MBEDTLS_ATTRIBUTE_UNTERMINATED_STRING
++#endif /* MBEDTLS_HAS_ATTRIBUTE_NONSTRING */
++
+ #endif /* MBEDTLS_LIBRARY_COMMON_H */
+Index: mbedtls-2.28.10/ChangeLog.d/unterminated-string-initialization.txt
+===================================================================
+--- /dev/null
++++ mbedtls-2.28.10/ChangeLog.d/unterminated-string-initialization.txt
+@@ -0,0 +1,3 @@
++Bugfix
++   * Silence spurious -Wunterminated-string-initialization warnings introduced
++     by GCC 15. Fixes #9944.
+Index: mbedtls-2.28.10/tests/src/psa_exercise_key.c
+===================================================================
+--- mbedtls-2.28.10.orig/tests/src/psa_exercise_key.c
++++ mbedtls-2.28.10/tests/src/psa_exercise_key.c
+@@ -7,6 +7,8 @@
+  *  SPDX-License-Identifier: Apache-2.0 OR GPL-2.0-or-later
+  */
+ 
++#include "common.h"
++
+ #include <test/helpers.h>
+ #include <test/macros.h>
+ #include <test/psa_exercise_key.h>
+@@ -150,7 +152,7 @@ static int exercise_cipher_key(mbedtls_s
+     psa_key_attributes_t attributes = PSA_KEY_ATTRIBUTES_INIT;
+     psa_key_type_t key_type;
+     const unsigned char plaintext[16] = "Hello, world...";
+-    unsigned char ciphertext[32] = "(wabblewebblewibblewobblewubble)";
++    unsigned char ciphertext[32] MBEDTLS_ATTRIBUTE_UNTERMINATED_STRING = "(wabblewebblewibblewobblewubble)";
+     size_t ciphertext_length = sizeof(ciphertext);
+     unsigned char decrypted[sizeof(ciphertext)];
+     size_t part_length;
+Index: mbedtls-2.28.10/ChangeLog.d/union-initialization.txt
+===================================================================
+--- /dev/null
++++ mbedtls-2.28.10/ChangeLog.d/union-initialization.txt
+@@ -0,0 +1,15 @@
++Bugfix
++   * Fix failures of PSA multipart or interruptible operations when the
++     library or the application is built with a compiler where
++     "union foo x = {0}" does not initialize non-default members of the
++     union, such as GCC 15 and some versions of Clang 18. This affected MAC
++     multipart operations, MAC-based key derivation operations, interruptible
++     signature, interruptible verification, and potentially other operations
++     when using third-party drivers. This also affected one-shot MAC
++     operations using the built-in implementation. Fixes #9814.
++   * On entry to PSA driver entry points that set up a multipart operation
++     ("xxx_setup"), the operation object is supposed to be all-bits-zero.
++     This was sometimes not the case when an operation object is reused,
++     or with compilers where "union foo x = {0}" does not initialize
++     non-default members of the union. The PSA core now ensures that this
++     guarantee is met in all cases. Fixes #9975.
+Index: mbedtls-2.28.10/library/psa_crypto.c
+===================================================================
+--- mbedtls-2.28.10.orig/library/psa_crypto.c
++++ mbedtls-2.28.10/library/psa_crypto.c
+@@ -2343,8 +2343,11 @@ psa_status_t psa_hash_setup(psa_hash_ope
+         goto exit;
+     }
+ 
+-    /* Ensure all of the context is zeroized, since PSA_HASH_OPERATION_INIT only
+-     * directly zeroes the int-sized dummy member of the context union. */
++    /* Make sure the driver-dependent part of the operation is zeroed.
++     * This is a guarantee we make to drivers. Initializing the operation
++     * does not necessarily take care of it, since the context is a
++     * union and initializing a union does not necessarily initialize
++     * all of its members. */
+     memset(&operation->ctx, 0, sizeof(operation->ctx));
+ 
+     status = psa_driver_wrapper_hash_setup(operation, alg);
+@@ -2539,6 +2542,13 @@ psa_status_t psa_hash_clone(const psa_ha
+         return PSA_ERROR_BAD_STATE;
+     }
+ 
++    /* Make sure the driver-dependent part of the operation is zeroed.
++     * This is a guarantee we make to drivers. Initializing the operation
++     * does not necessarily take care of it, since the context is a
++     * union and initializing a union does not necessarily initialize
++     * all of its members. */
++    memset(&target_operation->ctx, 0, sizeof(target_operation->ctx));
++
+     psa_status_t status = psa_driver_wrapper_hash_clone(source_operation,
+                                                         target_operation);
+     if (status != PSA_SUCCESS) {
+@@ -2637,6 +2647,13 @@ static psa_status_t psa_mac_setup(psa_ma
+         goto exit;
+     }
+ 
++    /* Make sure the driver-dependent part of the operation is zeroed.
++     * This is a guarantee we make to drivers. Initializing the operation
++     * does not necessarily take care of it, since the context is a
++     * union and initializing a union does not necessarily initialize
++     * all of its members. */
++    memset(&operation->ctx, 0, sizeof(operation->ctx));
++
+     status = psa_get_and_lock_key_slot_with_policy(
+         key,
+         &slot,
+@@ -3750,6 +3767,14 @@ static psa_status_t psa_cipher_setup(psa
+         .core = slot->attr
+     };
+ 
++
++    /* Make sure the driver-dependent part of the operation is zeroed.
++     * This is a guarantee we make to drivers. Initializing the operation
++     * does not necessarily take care of it, since the context is a
++     * union and initializing a union does not necessarily initialize
++     * all of its members. */
++    memset(&operation->ctx, 0, sizeof(operation->ctx));
++
+     /* Try doing the operation through a driver before using software fallback. */
+     if (cipher_operation == MBEDTLS_ENCRYPT) {
+         status = psa_driver_wrapper_cipher_encrypt_setup(operation,
+@@ -4283,6 +4308,17 @@ exit:
+ #if defined(MBEDTLS_PSA_BUILTIN_ALG_HKDF) || \
+     defined(MBEDTLS_PSA_BUILTIN_ALG_TLS12_PRF) || \
+     defined(MBEDTLS_PSA_BUILTIN_ALG_TLS12_PSK_TO_MS)
++
++/** Internal helper to set up an HMAC operation with a key passed directly.
++ *
++ * \param[in,out] operation     A MAC operation object. It does not need to
++ *                              be initialized.
++ * \param hash_alg              The hash algorithm used for HMAC.
++ * \param hmac_key              The HMAC key.
++ * \param hmac_key_length       Length of \p hmac_key in bytes.
++ *
++ * \return A PSA status code.
++ */
+ static psa_status_t psa_key_derivation_start_hmac(
+     psa_mac_operation_t *operation,
+     psa_algorithm_t hash_alg,
+@@ -4295,6 +4331,14 @@ static psa_status_t psa_key_derivation_s
+     psa_set_key_bits(&attributes, PSA_BYTES_TO_BITS(hmac_key_length));
+     psa_set_key_usage_flags(&attributes, PSA_KEY_USAGE_SIGN_HASH);
+ 
++    /* Make sure the whole the operation is zeroed.
++     * It isn't enough to require the caller to initialize operation to
++     * PSA_MAC_OPERATION_INIT, since one field is a union and initializing
++     * a union does not necessarily initialize all of its members.
++     * psa_mac_setup() would handle PSA_MAC_OPERATION_INIT, but here we
++     * bypass it and call lower-level functions directly. */
++    memset(operation, 0, sizeof(*operation));
++
+     operation->is_sign = 1;
+     operation->mac_size = PSA_HASH_LENGTH(hash_alg);
+ 
+@@ -4491,7 +4535,7 @@ static psa_status_t psa_key_derivation_t
+ {
+     psa_algorithm_t hash_alg = PSA_ALG_HKDF_GET_HASH(alg);
+     uint8_t hash_length = PSA_HASH_LENGTH(hash_alg);
+-    psa_mac_operation_t hmac = PSA_MAC_OPERATION_INIT;
++    psa_mac_operation_t hmac;
+     size_t hmac_output_length;
+     psa_status_t status, cleanup_status;
+ 
+Index: mbedtls-2.28.10/library/psa_crypto_mac.c
+===================================================================
+--- mbedtls-2.28.10.orig/library/psa_crypto_mac.c
++++ mbedtls-2.28.10/library/psa_crypto_mac.c
+@@ -464,6 +464,15 @@ psa_status_t mbedtls_psa_mac_compute(
+ {
+     psa_status_t status = PSA_ERROR_CORRUPTION_DETECTED;
+     mbedtls_psa_mac_operation_t operation = MBEDTLS_PSA_MAC_OPERATION_INIT;
++    /* Make sure the whole operation is zeroed.
++     * PSA_MAC_OPERATION_INIT does not necessarily do it fully,
++     * since one field is a union and initializing a union does not
++     * necessarily initialize all of its members.
++     * In multipart operations, this is done in the API functions,
++     * before driver dispatch, since it needs to be done before calling
++     * the driver entry point. Here, we bypass the multipart API,
++     * so it's our job. */
++    memset(&operation, 0, sizeof(operation));
+ 
+     status = psa_mac_setup(&operation,
+                            attributes, key_buffer, key_buffer_size,

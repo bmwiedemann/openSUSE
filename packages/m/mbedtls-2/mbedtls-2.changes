@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 11 14:27:38 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Fix build with gcc15:
+  * Add patch mbedtls-fix-build-with-gcc-15.patch
+
+-------------------------------------------------------------------
 Tue May  6 16:02:34 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
 
-- Enable SRTP and DTLS protocols needed by some software. 
+- Enable SRTP and DTLS protocols needed by some software.
 
 -------------------------------------------------------------------
 Mon Mar 24 21:50:21 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
