@@ -232,4 +232,12 @@ on SELinux-enabled projects e.g. SLFO. (forwarded request 1186132 from danishpra
     <comment></comment>
     <requestid>1291672</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>789a5bbbfbc8331fc3437d46a6efca4d</srcmd5>
+    <version>20250611.0293c6f</version>
+    <time>1752482946</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1246432</comment>
+    <requestid>1293068</requestid>
+  </revision>
 </revisionlist>
