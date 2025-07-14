@@ -145,4 +145,13 @@
 - No more greedy globs in %files.</comment>
     <requestid>1291574</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ff3526be9aa1613f4b291923a2f7ccb0</srcmd5>
+    <version>2025.1.1</version>
+    <time>1752483123</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2025.1.1:
+  * Automated updates to the HSTS preload list on 2025-1-1</comment>
+    <requestid>1292496</requestid>
+  </revision>
 </revisionlist>
