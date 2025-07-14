@@ -16,7 +16,7 @@
 #
 
 
-%define skia_version m135-0.83.0
+%define skia_version m135-0.83.1
 %define wuffs_commit e3f919ccfe3ef542cfc983a82146070258fb57f8
 
 Name:           neovide
@@ -30,6 +30,9 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        https://github.com/rust-skia/skia/archive/%{skia_version}/skia-%{skia_version}.tar.gz
 Source3:        https://github.com/google/wuffs-mirror-release-c/archive/%{wuffs_commit}/wuffs-%{wuffs_commit}.tar.gz
+# Fix-UPSTREAM, https://github.com/rust-skia/rust-skia/commit/80bcc0a41a107d21068c5ff1c1920b2931df92ed
+Patch1:         0001-Fix-build-for-archlinux-latest.patch
+Patch2:         0002-skia-binding-patching.patch
 BuildRequires:  cargo >= 1.79
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
@@ -58,6 +61,7 @@ No Nonsense Neovim Client in Rust
 
 %prep
 %setup -q -a 1 -a 2 -a 3
+%autopatch -p1
 mkdir -p skia-%{skia_version}/third_party/externals/
 mv wuffs-mirror-release-c-%{wuffs_commit} skia-%{skia_version}/third_party/externals/wuffs
 

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 12 03:16:08 UTC 2025 - Jianhua Lu <lujianhua000@gmail.com>
+
+- Add 0001-Fix-build-for-archlinux-latest.patch and 0002-skia-binding-patching.patch to fix building
+- Updated bundled dependency:
+  * skia-m135-0.83.0.tar.gz -> skia-m135-0.83.1.tar.gz
+- Update vendor crates dependency
+
+-------------------------------------------------------------------
 Thu Apr 10 09:39:10 UTC 2025 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to version 0.15.0:
