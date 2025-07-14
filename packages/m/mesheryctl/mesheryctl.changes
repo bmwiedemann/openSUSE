@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jul 12 07:25:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.119:
+  * Meshery CLI
+    - feature: schema driven connection: use connection from schema in
+      (instead of) models/connections and model/environments @n2h9
+      (#15245)
+- update to 0.8.118:
+  no CLI-related changes
+- update to 0.8.117:
+  no CLI-related changes
+- update to 0.8.116:
+  no CLI-related changes
+
+-------------------------------------------------------------------
 Tue Jul  8 14:28:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.115:
