@@ -2717,4 +2717,12 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment>- Update to version 2.41.1... (forwarded request 1288403 from sbrabec)</comment>
     <requestid>1288490</requestid>
   </revision>
+  <revision rev="299" vrev="2">
+    <srcmd5>c3d1d90c56b70e6591c0991aa67e51a4</srcmd5>
+    <version>2.41.1</version>
+    <time>1752482978</time>
+    <user>dimstar_suse</user>
+    <comment>- agetty: Implement netlink based IP address detection</comment>
+    <requestid>1291647</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 10 02:39:17 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- agetty: Implement netlink based IP address detection and issue
+  reload. It makes possible to identify IP addresses usability and
+  prefer stable global addresses over ephemeral or link-local
+  addresses. New issue keywords \a and \A were added. (boo#1139983,
+  jsc#PED-8734, util-linux-lib-netlink.patch,
+  util-linux-agetty-netlink.patch)
+
+-------------------------------------------------------------------
 Tue Jun 24 22:41:18 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update to version 2.41.1:

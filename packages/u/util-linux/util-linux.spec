@@ -110,6 +110,10 @@ Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
 # PATCH-FIX-SUSE util-linux-bash-completion-su-chsh-l.patch bsc1172427 -- Fix "su -s" bash completion.
 Patch3:         util-linux-bash-completion-su-chsh-l.patch
 Patch5:         static_lib.patch
+# PATCH-FEATURE-UPSTREAM util-linux-lib-netlink.patch boo1139983 jsc#PED-8734 sbrabec@suse.com -- Implement netlink based IP address detection and issue reload.
+Patch6:         util-linux-lib-netlink.patch
+# PATCH-FEATURE-UPSTREAM util-linux-agetty-netlink.patch boo1139983 jsc#PED-8734 sbrabec@suse.com -- Implement netlink based IP address detection and issue reload.
+Patch7:         util-linux-agetty-netlink.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel
