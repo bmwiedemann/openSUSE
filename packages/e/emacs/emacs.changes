@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 11 07:47:21 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch emacs-30.1-pdumper.patch
+  * Avoid changing initial lisp timestamp as well as gc changing
+    statistics as lisp float in dumped images (bug#1239628)
+- Remove --enable-checking=all (bug#1246121)
+- Do not run checks in chroot environments as there are no
+  namespaces
+
+-------------------------------------------------------------------
 Thu Jul  3 07:29:17 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Make 32bit architectures build again by using %_libdir at

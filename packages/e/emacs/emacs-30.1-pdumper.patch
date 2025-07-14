@@ -1,0 +1,99 @@
+After some debugging I've identified two lisp objects, a Lisp
+Float which are set by the gc, and Lisp Cons set be the
+initial lisp timestamp at startup.  Both are changing at
+every dump therefore avoid them or use a fixed value.
+
+During debugging I stumbled over some inconsistencies in
+pdumper.c which are also fixed in upstream master branch.
+
+Werner
+
+---
+ src/alloc.c   |    4 ++--
+ src/pdumper.c |   10 +++++-----
+ src/timefns.c |   34 ++++++++++++++++++++++++++++++++++
+ 3 files changed, 41 insertions(+), 7 deletions(-)
+
+--- src/alloc.c
++++ src/alloc.c	2025-07-10 10:54:56.217020919 +0000
+@@ -6702,8 +6702,8 @@ garbage_collect (void)
+   image_prune_animation_caches (false);
+ #endif
+ 
+-  /* Accumulate statistics.  */
+-  if (FLOATP (Vgc_elapsed))
++  /* Accumulate statistics, but not during dump to get reproducible pdmp images.  */
++  if (FLOATP (Vgc_elapsed) && !will_dump_p ())
+     {
+       static struct timespec gc_elapsed;
+       gc_elapsed = timespec_add (gc_elapsed,
+--- src/pdumper.c
++++ src/pdumper.c	2025-07-09 07:26:00.889706813 +0000
+@@ -2140,9 +2140,9 @@ dump_interval_node (struct dump_context
+   if (node->parent)
+     dump_field_fixup_later (ctx, &out, node, &node->parent);
+   if (node->left)
+-    dump_field_fixup_later (ctx, &out, node, &node->parent);
++    dump_field_fixup_later (ctx, &out, node, &node->left);
+   if (node->right)
+-    dump_field_fixup_later (ctx, &out, node, &node->parent);
++    dump_field_fixup_later (ctx, &out, node, &node->right);
+   DUMP_FIELD_COPY (&out, node, begin);
+   DUMP_FIELD_COPY (&out, node, end);
+   DUMP_FIELD_COPY (&out, node, limit);
+@@ -2213,9 +2213,9 @@ dump_finalizer (struct dump_context *ctx
+   /* Do _not_ call dump_pseudovector_lisp_fields here: we dump the
+      only Lisp field, finalizer->function, manually, so we can give it
+      a low weight.  */
+-  dump_field_lv (ctx, &out, finalizer, &finalizer->function, WEIGHT_NONE);
+-  dump_field_finalizer_ref (ctx, &out, finalizer, &finalizer->prev);
+-  dump_field_finalizer_ref (ctx, &out, finalizer, &finalizer->next);
++  dump_field_lv (ctx, out, finalizer, &finalizer->function, WEIGHT_NONE);
++  dump_field_finalizer_ref (ctx, out, finalizer, &finalizer->prev);
++  dump_field_finalizer_ref (ctx, out, finalizer, &finalizer->next);
+   return finish_dump_pvec (ctx, &out->header);
+ }
+ 
+--- src/timefns.c
++++ src/timefns.c	2025-07-11 07:32:33.928031852 +0000
+@@ -600,6 +600,40 @@ make_lisp_time (struct timespec t)
+ Lisp_Object
+ timespec_to_lisp (struct timespec t)
+ {
++  if (will_dump_p())	/* Use provided epoch at dump to get reproducible pdmp images */
++    {
++      char *epoch;
++      epoch = secure_getenv("SOURCE_DATE_EPOCH");
++      if (epoch)
++        {
++          char *endptr;
++          const char env[] = "Environment variable SOURCE_DATE_EPOCH: ";
++          errno = 0;
++          t.tv_sec = strtoull(epoch, &endptr, 10);
++          if ((errno == ERANGE && (t.tv_sec == ULLONG_MAX || t.tv_sec == 0)) ||\
++              (errno != 0 && t.tv_sec == 0))
++            {
++              fprintf(stderr, "%s strtoull: %m\n", env);
++              exit(EXIT_FAILURE);
++            }
++          if (endptr == epoch)
++            {
++              fprintf(stderr, "%s No digits were found: %s\n", env, endptr);
++              exit(EXIT_FAILURE);
++            }
++          if (*endptr != '\0')
++            {
++              fprintf(stderr, "%s Trailing garbage: %s\n", env, endptr);
++              exit(EXIT_FAILURE);
++            }
++          if (t.tv_sec > ULONG_MAX)
++            {
++              fprintf(stderr, "%s value must be smaller than or equal to %lu but was found to be: %ld \n", env, ULONG_MAX, t.tv_sec);
++              exit(EXIT_FAILURE);
++            }
++          t.tv_nsec = 0ULL;
++        }
++    }
+   return Fcons (timespec_ticks (t), timespec_hz);
+ }
+ 

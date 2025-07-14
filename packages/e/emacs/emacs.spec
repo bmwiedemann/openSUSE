@@ -218,6 +218,7 @@ Patch0:         emacs-29.1.dif
 Patch1:         emacs-30.1-minmalxauth.patch
 # Currently disabled due memmmap build condition
 Patch2:         emacs-24.4-glibc.patch
+Patch3:         emacs-30.1-pdumper.patch
 Patch4:         emacs-24.3-asian-print.patch
 Patch5:         emacs-24.4-ps-bdf.patch
 Patch6:         emacs-30.1-silent.patch
@@ -412,6 +413,7 @@ and most assembler-like syntaxes.
 %if %{with memmmap}
 %patch -P2  -p0 -b .glibc
 %endif
+%patch -P3  -p0 -b .pdmp
 %patch -P4  -p0 -b .print
 %patch -P5  -p0 -b .psbdf
 %patch -P6  -p0 -b .silent
@@ -619,7 +621,6 @@ DESKTOP="--with-x \
 	 --with-file-notification=inotify \
 	 --with-modules \
 	 --enable-gcc-warnings=warn-only \
-         --enable-checking=all \
 	 --enable-autodepend \
 "
 if (($(getconf LONG_BIT) < 62))
@@ -773,13 +774,6 @@ umask 022
 SOURCE_DATE_EPOCH="$(sed -n '/^----/n;s/ - .*$//;p;q' %{SOURCE99} | date -u -f - +%%s)"
 export SOURCE_DATE_EPOCH
 parking=${PWD}/parking.*
-#%if 0%{?suse_version} >= 1550
-#%ifarch %ix86 %arm
-#    export CC=gcc-13
-#    export AR=gcc-ar-13
-#    export RANLIB=gcc-ranlib-13
-#%endif
-#%endif
 #
 PATH=/sbin:$PATH
 ##
@@ -1016,13 +1010,10 @@ mkdir -p %{buildroot}%{_sysconfdir}/permissions.d
 
 %if %{with checks}
 %check
-#%if 0%{?suse_version} >= 1550
-#%ifarch %ix86 %arm
-#export CC=gcc-13
-#export AR=gcc-ar-13
-#export RANLIB=gcc-ranlib-13
-#%endif
-#%endif
+if test "$(stat -c %d:%i /)" != "$(stat -c %d:%i /proc/1/root/)"
+then
+  exit 0
+fi
 mkdir -p native-lisp
 rm -rf native-lisp/%{version}-*
 ln -sf %{buildroot}%{_libdir}/emacs/%{version}/native-lisp/%{version}-* native-lisp/
