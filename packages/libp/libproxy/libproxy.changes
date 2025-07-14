@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 11 12:12:03 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.5.10:
+  + kde: Support Proxy Config Script value without scheme
+  + Add MATE and Cinnamon check to gnome plugin
+  + Support -M option for Solaris/illumos ld
+  + Fix symbol versioning with LLD
+
+-------------------------------------------------------------------
 Wed Oct  2 14:24:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.5.9:
