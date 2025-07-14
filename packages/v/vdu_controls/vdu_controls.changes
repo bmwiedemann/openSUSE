@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Jul 13 21:47:08 UTC 2025 - Michael Hamilton <michael@actrix.gen.nz>
+
+- Version 2.4.1
+  * Support PyQt6 before PyQt5 goes out of support.
+  * PyQt6 is used by default, with a fallback to PyQt5 should it
+    not be available.
+  * Add the prefer-qt6 option to the Settings-Dialog (you may 
+    disable this option to force the use of PyQt5).
+  * Various changes to UI layouts to accommodate both Qt5 and Qt6
+    (including Qt6 High-DPI scaling).
+  * Minor alterations to the main-window layout to make the more
+    spacious Qt6 styling more compact.
+  * Renamed the smart-uses-xcb option to smart-uses-xwayland.  This 
+    better reflects what the option does.
+  * Fixed smart-window preservation when the app was closed from the
+    tray without ever showing the main window. 
+  * Fixed weather selection: automatically restore any missing
+    weather definition files.
+  * Fixed initialization-preset error handling: fix a reference
+    to an undefined variable.
+  * Only persist lux_daylight_factor if in semi-auto mode (stop 
+    hardware light metering overwriting the user's choice).
+  * Allow Presets to be scheduled for a set time each day.
+  * The DBus-events default setting has been corrected to true/enabled.
+  * Dragging the Preset-Dialog elevation to below the horizon now 
+    works properly (previously it was jerky).
+
+-------------------------------------------------------------------
 Tue Jun 10 23:52:30 UTC 2025 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Version 2.4.0:
