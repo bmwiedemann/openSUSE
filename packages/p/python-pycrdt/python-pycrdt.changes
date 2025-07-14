@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 13 13:27:43 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.12.25
+  * Allow XML attributes to be of any type.
+  * Upgrade `yrs` to v0.24.0.
+- Bump trio test requirement gh#y-crdt/pycrdt#277
+
+-------------------------------------------------------------------
 Wed Jul  2 14:27:13 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.12.23

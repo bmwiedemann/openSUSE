@@ -139,4 +139,15 @@
   * Upgrade `yrs` to v0.23.5.</comment>
     <requestid>1289995</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>99ab5e1c9f38a7c6be168ee881d61e3f</srcmd5>
+    <version>0.12.25</version>
+    <time>1752483136</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.25
+  * Allow XML attributes to be of any type.
+  * Upgrade `yrs` to v0.24.0.
+- Bump trio test requirement gh#y-crdt/pycrdt#277</comment>
+    <requestid>1292509</requestid>
+  </revision>
 </revisionlist>
