@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jul 13 12:04:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.104.0:
+  * Features
+    - feat: Allow to customize temporary working branch created by
+      Updatecli @olblak (#5589)
+  * Bug Fixes
+    - fix: avoid loading partial when not needed @olblak (#5618)
+  * Maintenance
+    - deps: bump golangci-lint to v2.2.2 @updateclibot[bot] (#5619)
+    - deps(go): bump module golang.org/x/net to v0.42.0
+      @updateclibot[bot] (#5617)
+    - deps(go): bump module golang.org/x/mod to v0.26.0
+      @updateclibot[bot] (#5593)
+    - deps(go): bump module golang.org/x/text to v0.27.0
+      @updateclibot[bot] (#5600)
+    - deps: Bump Golang version to 1.24.5 @updateclibot[bot]
+      (#5579)
+    - deps(go): bump module github.com/fluxcd/source-controller/api
+      to v1.6.2 @updateclibot[bot] (#5588)
+    - deps: bump golangci-lint to v2.2.1 @updateclibot[bot] (#5570)
+    - deps(go): bump module helm.sh/helm/v3 to v3.18.4
+      @updateclibot[bot] (#5556)
+
+-------------------------------------------------------------------
 Wed Jul 09 04:54:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.103.1:
