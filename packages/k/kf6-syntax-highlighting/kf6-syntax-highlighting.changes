@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Jul  7 07:24:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.16.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.16.0
+- Changes since 6.15.0:
+  * Update dependency version to 6.16.0
+  * Remove doc comment from KQuickSyntaxHighlightingPlugin
+  * Remove asterisks from docs
+  * Link docs for QML module in index page
+  * Sagemath is a superlanguage of Python, and uses `.sage` extensions (kde#506125)
+  * DTD: add single quote string, Conditional Section and PEReference
+  * XML (Debug): add tests
+  * XML (Debug): fix DOCTYPE statement, optional prolog and the endless stacking of contexts
+  * XML (Debug): indentation
+  * Scheme: fix double hyphen error in a XML comment (Kawa extension): '--->' is a error
+  * Vue: remove double hyphen error in comment
+  * RHTML: remove ]]&amp;gt; as EntityRef in CDATA and double hyphen error in comment
+  * Mustache: remove ]]&amp;gt; as EntityRef in CDATA and double hyphen error in comment
+  * Mako: remove ]]&amp;gt; as EntityRef in CDATA and double hyphen error in comment
+  * HTML: remove ]]&amp;gt; as EntityRef in CDATA and double hyphen error in comment
+  * Django HTML Template: remove ]]&amp;gt; as EntityRef in CDATA and double hyphen error in comment
+  * XUL: use XML syntax, except for the CDATA part which has a special meaning
+  * XML: remove ]]&gt; as EntityRef in CDATA context and add ]]> as Error in text part
+  * SGML: add a comment on missing features
+  * Perl: remove symbol operators of operators list
+  * Perl: do not mark text after a numeric variable as Data Type
+  * Perl: add r flag with regex substitution
+  * Perl: fix digit separator and floating point ; add hexadecimal floating point
+  * Perl: simplify RegExpr: remove unnecessary \s* or replaces them with simpler rules
+  * Perl: add control flow highlight
+  * MediaWiki: fix some errors
+  * XSLT generated from the XML file
+  * XML: mark spaces before an attribute name as "Other Text"
+  * Update version to 6.16.0
+
+-------------------------------------------------------------------
 Mon Jun  9 20:29:50 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.15.0
