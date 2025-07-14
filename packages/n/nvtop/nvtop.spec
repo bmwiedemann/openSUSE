@@ -18,19 +18,16 @@
 
 
 Name:           nvtop
-Version:        3.1.0+100
+Version:        3.2.0+14
 Release:        0
 Summary:        A (h)top like task monitor for NVIDIA and AMD GPUs
 License:        GPL-3.0-or-later
 URL:            https://github.com/Syllo/nvtop
 Source0:        %{name}-%{version}.tar.xz
-#PATCH-FIX-UPSTREAM nvtop-fix-non-void-function.patch (gh#Syllo/nvtop#350) malcolmlewis@opensuse.org -- Fix control reaches end of non-void function error
-Patch0:         nvtop-fix-non-void-function.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(ncurses)
@@ -59,8 +56,8 @@ way.
 %doc README.markdown
 %{_bindir}/nvtop
 %{_datadir}/applications/nvtop.desktop
-%{_datadir}/icons/nvtop.svg
+%{_datadir}/icons/hicolor/scalable/apps/nvtop.svg
 %{_mandir}/man1/nvtop.1%{?ext_man}
-%{_datadir}/metainfo/nvtop.metainfo.xml
+%{_datadir}/metainfo/io.github.syllo.nvtop.metainfo.xml
 
 %changelog

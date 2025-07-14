@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jul 08 18:01:07 UTC 2025 - malcolmlewis@opensuse.org
+
+- Update to version 3.2.0+14:
+  * Fix power draw metrics on Intel Battlemage.
+  * Use fdinfo's engine count when refreshing utilisation rate.
+  * Add support for Rockchip NPU.
+  * Fix icon path.
+  * Fix the installed filename of the appstream metainfo.
+  * Fix division by zero on intel xe.
+  * Reorder percentage associativity and max to 100.
+  * Fix cpu fan selection.
+  * Adding TPU metrics via libtpuinfo.
+  * Convert output to json.
+  * Add Intel Xe driver temp support.
+  * Add snapshot command to nvtop for scripting purposes.
+  * Fix some compiler warnings.
+  * Control reaches end of non-void function error,
+    (gh#Syllo/nvtop#350).
+  * Improve PCI bridge checks.
+  * Add Intel to libdrm detection in CMakeLists.txt.
+  * Intel: Fix some very minor stuff.
+  * Workaround broken Intel PCIe speeds.
+- Drop nvtop-fix-non-void-function.patch as this has been
+  upstreamed.
+
+-------------------------------------------------------------------
 Sun Feb 09 22:56:56 UTC 2025 - malcolmlewis@opensuse.org
 
 - Update to version 3.1.0+100:
