@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sat Jul 12 08:24:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10:
+  * added JavaScript signing
+  * added PKCS#11 provider support (requires OpenSSL 3.0+)
+  * added support for providers without specifying
+    "-pkcs11module" option
+  * (OpenSSL 3.0+, e.g., for the upcoming CNG provider)
+  * added compatibility with the CNG engine version 1.1 or later
+  * added the "-engineCtrl" option to control hardware and CNG
+    engines
+  * added the '-blobFile' option to specify a file containing the
+    blob content
+  * improved unauthenticated blob support (thanks to Asger Hautop
+    Drewsen)
+  * improved UTF-8 handling for certificate subjects and issuers
+  * fixed support for multiple signerInfo contentType OIDs (CTL
+    and Authenticode)
+  * fixed tests for python-cryptography >= 43.0.0
+- update to version 2.9:
+  * added a 64 bit long pseudo-random NONCE in the TSA request
+  * missing NID_pkcs9_signingTime is no longer an error
+  * added support for PEM-encoded CRLs
+  * fixed the APPX central directory sorting order
+  * added a special "-" file name to read the passphrase from
+    stdin
+  * used native HTTP client with OpenSSL 3.x, removing libcurl
+    dependency
+  * added '-login' option to force a login to PKCS11 engines
+  * added the "-ignore-crl" option to disable fetching and
+    verifying CRL Distribution Points
+  * changed error output to stderr instead of stdout
+  * various testing framework improvements
+  * various memory corruption fixes
+- update to version 2.8:
+  * Microsoft PowerShell signing sponsored by Cisco Systems, Inc.
+  * fixed setting unauthenticated attributes (Countersignature,
+    Unauthenticated
+  * Data Blob) in a nested signature
+  * added the "-index" option to verify a specific signature or
+    modify its unauthenticated attributes
+  * added CAT file verification
+  * added listing the contents of a CAT file with the "-verbose"
+    option
+  * added the new "extract-data" command to extract a PKCS#7 data
+    content to be signed with "sign" and attached with "attach-signature"
+  * added PKCS9_SEQUENCE_NUMBER authenticated attribute support
+  * added the "-ignore-cdp" option to disable CRL Distribution
+    Points (CDP) online verification
+  * unsuccessful CRL retrieval and verification changed into a
+    critical error the "-p" option modified to also use to
+    configured proxy to connect CRL Distribution Points
+  * added implicit allowlisting of the Microsoft Root Authority
+    serial number 00C1008B3C3C8811D13EF663ECDF40
+  * added listing of certificate chain retrieved from the
+    signature in case of verification failure
+
+-------------------------------------------------------------------
 Wed Dec 20 09:35:53 UTC 2023 - Radoslav Kolev <radoslav.kolev@suse.com>
 
 - update to 2.7.0
@@ -52,7 +110,7 @@ Sun Apr 10 15:30:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * user-specified signing time ("-st" option) by vszakats
   * added more tests
   * fixed numerous bugs
-  * dropped OpenSSL 1.1.0 support 
+  * dropped OpenSSL 1.1.0 support
   * orphaned project adopted by Michał Trojnara
   * ported to OpenSSL 1.1.x
   * ported to SoftHSM2
@@ -69,9 +127,9 @@ Mon Nov 12 09:25:56 UTC 2018 - meissner@suse.com
 -------------------------------------------------------------------
 Wed Oct 24 13:33:21 UTC 2018 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
-- 0001-Make-code-work-with-OpenSSL-1.1.patch: Build against 
+- 0001-Make-code-work-with-OpenSSL-1.1.patch: Build against
   openssl 1.1.
- 
+
 -------------------------------------------------------------------
 Wed Dec 20 14:28:54 UTC 2017 - fcrozat@suse.com
 
@@ -80,7 +138,7 @@ Wed Dec 20 14:28:54 UTC 2017 - fcrozat@suse.com
 -------------------------------------------------------------------
 Mon Oct  5 09:57:22 UTC 2015 - idonmez@suse.com
 
-- Add libgsf-devel dependency to enable MSI support. 
+- Add libgsf-devel dependency to enable MSI support.
 
 -------------------------------------------------------------------
 Sun Mar  8 17:33:10 UTC 2015 - p.drouand@gmail.com

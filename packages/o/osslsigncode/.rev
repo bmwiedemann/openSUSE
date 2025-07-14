@@ -69,4 +69,41 @@
     <comment></comment>
     <requestid>1137717</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>6bf152fc5bf0f0d7151b5975673a4a09</srcmd5>
+    <version>2.10</version>
+    <time>1752483066</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.10:
+  * added JavaScript signing
+  * added PKCS#11 provider support (requires OpenSSL 3.0+)
+  * added support for providers without specifying
+    &quot;-pkcs11module&quot; option
+  * (OpenSSL 3.0+, e.g., for the upcoming CNG provider)
+  * added compatibility with the CNG engine version 1.1 or later
+  * added the &quot;-engineCtrl&quot; option to control hardware and CNG
+    engines
+  * added the '-blobFile' option to specify a file containing the
+    blob content
+  * improved unauthenticated blob support (thanks to Asger Hautop
+    Drewsen)
+  * improved UTF-8 handling for certificate subjects and issuers
+  * fixed support for multiple signerInfo contentType OIDs (CTL
+    and Authenticode)
+  * fixed tests for python-cryptography &gt;= 43.0.0
+- update to version 2.9:
+  * added a 64 bit long pseudo-random NONCE in the TSA request
+  * missing NID_pkcs9_signingTime is no longer an error
+  * added support for PEM-encoded CRLs
+  * fixed the APPX central directory sorting order
+  * added a special &quot;-&quot; file name to read the passphrase from
+    stdin
+  * used native HTTP client with OpenSSL 3.x, removing libcurl
+    dependency
+  * added '-login' option to force a login to PKCS11 engines
+  * added the &quot;-ignore-crl&quot; option to disable fetching and
+    verifying CRL Distribution Points
+  * changed error output to stderr instead of stdout</comment>
+    <requestid>1292313</requestid>
+  </revision>
 </revisionlist>

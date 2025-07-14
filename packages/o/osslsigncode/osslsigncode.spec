@@ -1,7 +1,7 @@
 #
 # spec file for package osslsigncode
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           osslsigncode
-Version:        2.7
+Version:        2.10
 Release:        0
 Summary:        Platform-independent tool for Authenticode signing of EXE/CAB files
 License:        GPL-3.0-only
@@ -27,7 +27,6 @@ Source0:        https://github.com/mtrojnar/osslsigncode/archive/%{version}/ossl
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcrypto) >= 1.1
-BuildRequires:  pkgconfig(libcurl)
 
 %description
 osslsigncode is a small utility for placing signatures on Microsoft cabinate
