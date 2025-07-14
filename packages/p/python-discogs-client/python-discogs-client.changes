@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul 13 13:39:26 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8:
+  * New collection folder methods `move_release` and
+    `uncategorize_release` allowing to change folder of
+    collection items
+  * Add Python 3.13 to GitHub Actions build workflow and removed
+    EOL Python 3.8
+  * Refactor some outdated Python code style along the way in
+    https://github.com/joalla/discogs_client/pull/165
+
+-------------------------------------------------------------------
 Thu Nov 28 03:14:29 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.7.1:
@@ -16,7 +28,7 @@ Thu Apr 13 11:02:51 UTC 2023 - pgajdos@suse.com
 -------------------------------------------------------------------
 Tue Sep 27 18:26:10 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 2.3.0 
+- Update to 2.3.0
   This project is no longer maintained. You can still use a REST client like Requests or other
   third-party Python library to access the Discogs REST API.
 

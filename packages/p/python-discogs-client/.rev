@@ -55,4 +55,21 @@
 - python-six is not required</comment>
     <requestid>1226998</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>65eaa10afb7720d7f6d9390fbc4e7973</srcmd5>
+    <version>2.8</version>
+    <time>1752483130</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8:
+  * New collection folder methods `move_release` and
+    `uncategorize_release` allowing to change folder of
+    collection items
+  * Add Python 3.13 to GitHub Actions build workflow and removed
+    EOL Python 3.8
+  * Refactor some outdated Python code style along the way in
+    https://github.com/joalla/discogs_client/pull/165
+
+- Update to 2.3.0</comment>
+    <requestid>1292513</requestid>
+  </revision>
 </revisionlist>
