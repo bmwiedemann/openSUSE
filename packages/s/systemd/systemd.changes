@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jul 11 16:52:08 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Import commit c3bcfc95582fd573e0b5686ce8115e3cf9a8122e
+
+  c3bcfc9558 uki.conf is used by the ukify tool to create an Unified Kernel Image [...]
+
+-------------------------------------------------------------------
+Fri Jul 11 14:44:12 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Make sure that the ordering trick used to update the udev package as close as
+  as possible to the update of the systemd package also works with zypper.
+
+  We also need to add "Suggests: udev", which serves the same purpose as
+  "OrderWithRequires: udev" but is part of the repository metadata. It should
+  therefore hint zypper to install systemd and udev as close together as
+  possible (see bsc#1228659)
+
+-------------------------------------------------------------------
 Fri Jul  4 14:57:26 UTC 2025 - Franck Bui <fbui@suse.com>
 
 - Move the workaround which consists in converting /var/lib/machines as a

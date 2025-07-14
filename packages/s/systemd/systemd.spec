@@ -33,7 +33,7 @@
 %if %{without obs_service_set_version}
 %define systemd_version    257.7
 %define systemd_release    0
-%define archive_version    +suse.19.ga0dfd5de4c
+%define archive_version    +suse.20.gc3bcfc9558
 %endif
 
 %define _testsuitedir %{_systemd_util_dir}/tests
@@ -159,14 +159,17 @@ Requires(post): coreutils
 Requires(post): findutils
 Requires(post): systemd-presets-branding
 Requires(post): pam-config >= 0.79-5
-# See bsc#1228659
-OrderWithRequires(post): udev
-OrderWithRequires(post): systemd-boot
 # These weak dependencies because some features are optional and enabled at
 # runtime with the presence of the relevant libs.
 Recommends:     libpcre2-8-0
 Recommends:     libbpf1
 %endif
+# These 2 dependencies (the first for rpm the second for zypper) ensure that
+# udev and systemd are updated as close together as possible in order to reduce
+# the window during which libsystemd-shared.so has been updated but udev has not
+# and still relies on the old version of the shared lib (see bsc#1228659).
+OrderWithRequires(post): udev
+Suggests:       udev
 Provides:       group(systemd-journal)
 Conflicts:      filesystem < 11.5
 Provides:       sbin_init
@@ -333,7 +336,7 @@ Requires:       filesystem
 %if %{without bootstrap}
 # kmod executable is needed by kmod-static-nodes.service
 Requires:       kmod
-# By v256 libkmod will be dlopen()ed.
+# From v256 libkmod is dlopen()ed.
 Requires:       libkmod2
 %endif
 Requires:       system-group-hardware
@@ -484,9 +487,10 @@ Requires:       %{name} = %{version}-%{release}
 Obsoletes:      systemd-network < %{version}-%{release}
 Provides:       systemd-network = %{version}-%{release}
 Provides:       systemd-network:/usr/lib/systemd/systemd-networkd
-# Workaround for bsc#1241513: ensure systemd-resolved is always installed before
-# systemd-network when the latter is replaced by both systemd-resolved and
-# systemd-networkd. The systemd-update-helper script logic depends on that.
+# Workaround for bsc#1241513 and libzypp: ensure systemd-resolved is always
+# installed before systemd-network is being removed when the latter is replaced
+# by both systemd-resolved and systemd-networkd. The systemd-update-helper
+# script logic depends on it.
 Suggests:       systemd-resolved
 
 %description networkd

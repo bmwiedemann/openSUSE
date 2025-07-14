@@ -7661,4 +7661,20 @@ handle manual pages that consist only of a .so directive such as
   an offline update.</comment>
     <requestid>1291008</requestid>
   </revision>
+  <revision rev="452" vrev="3">
+    <srcmd5>5d921d6a720ebda0b9f2cee6d038ef97</srcmd5>
+    <version>257.7</version>
+    <time>1752482885</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit c3bcfc95582fd573e0b5686ce8115e3cf9a8122e
+  c3bcfc9558 uki.conf is used by the ukify tool to create an Unified Kernel Image [...]
+
+- Make sure that the ordering trick used to update the udev package as close as
+  as possible to the update of the systemd package also works with zypper.
+  We also need to add &quot;Suggests: udev&quot;, which serves the same purpose as
+  &quot;OrderWithRequires: udev&quot; but is part of the repository metadata. It should
+  therefore hint zypper to install systemd and udev as close together as
+  possible (see bsc#1228659)</comment>
+    <requestid>1292221</requestid>
+  </revision>
 </revisionlist>
