@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul  7 07:24:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.16.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.16.0
+- Changes since 6.15.0:
+  * Update dependency version to 6.16.0
+  * Changes Queen (El. II)'s day to King's (everywhere)
+  * Update holidays for New Zaeland (kde#506251)
+  * Add holidays for the Federation of Bosnia and Herzegovina (kde#505924)
+  * holiday_ru_ru: keep old date for "День молодежи" if year is less than 2023
+  * holiday_ru_ru: moved "День молодежи" to last saturday in june
+  * holiday_hk_zh-cn: Use the official Chinese name for October 1
+  * Update version to 6.16.0
+
+-------------------------------------------------------------------
 Mon Jun  9 20:29:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.15.0
