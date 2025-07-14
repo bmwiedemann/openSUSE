@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 12 07:15:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.8.0:
+  * Features
+    - werf.io/sensitive-paths annotation and
+      WERF_FEAT_FIELD_SENSITIVE featgate (#364) (e3f9798)
+  * Bug Fixes
+    - leaking goroutines during tracking (1c1be03)
+    - logs from libraries still showed by default (c6b3928)
+
+-------------------------------------------------------------------
 Fri Jul 11 04:48:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.7.2:
