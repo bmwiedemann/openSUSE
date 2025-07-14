@@ -32,8 +32,9 @@ URL:            https://maven.apache.org/plugins/maven-javadoc-plugin
 Source0:        %{base_name}-%{version}.tar.xz
 Source1:        %{base_name}-build.xml
 Patch0:         %{base_name}-bootstrap-resources.patch
-Patch1:         stale-data-encoding.patch
-Patch2:         reproducible-from-environment.patch
+Patch1:         0001-Be-consistent-about-data-encoding.patch
+Patch2:         0002-Make-the-legacyMode-consistent-and-actually-useful.patch
+Patch3:         0003-reproducible-from-environment.patch
 BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
 BuildRequires:  apache-commons-text
@@ -117,6 +118,7 @@ cp %{SOURCE1} build.xml
 %endif
 %patch -P 1 -p1
 %patch -P 2 -p1
+%patch -P 3 -p1
 
 %pom_remove_dep :::test:
 

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jul 12 08:03:13 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0002-Make-the-legacyMode-consistent-and-actually-useful.patch
+    + fix the legacy mode so that is behaves really as javadoc 8
+      generation
+- Modified patches:
+  * stale-data-encoding.patch
+    --> 0001-Be-consistent-about-data-encoding.patch
+    + rebase and fix the coding style so that it corresponds to
+      our PR to the upstream project
+  * reproducible-from-environment.patch
+    --> 0003-reproducible-from-environment.patch
+    + rebase and make consistent with upstream coding style
+
+-------------------------------------------------------------------
 Tue Jun  3 08:26:53 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on objectweb-asm to build with sisu 0.9.0.M4
