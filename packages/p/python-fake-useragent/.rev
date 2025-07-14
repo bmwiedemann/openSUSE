@@ -135,4 +135,16 @@
     <comment></comment>
     <requestid>1267931</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e3867b245423b190015a4e12ebdbad3b</srcmd5>
+    <version>2.2.0</version>
+    <time>1752483122</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0:
+  * Running pyproject-fmt
+  * Update bundled user agents file
+  * Add SPDX license identifier
+  * Add Python 3.13 to test matrix</comment>
+    <requestid>1292495</requestid>
+  </revision>
 </revisionlist>

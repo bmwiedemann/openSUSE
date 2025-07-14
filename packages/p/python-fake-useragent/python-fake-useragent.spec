@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fake-useragent
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Useragent faker package for Python
 License:        Apache-2.0

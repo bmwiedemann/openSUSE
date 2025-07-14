@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul 13 12:18:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.0:
+  * Running pyproject-fmt
+  * Update bundled user agents file
+  * Add SPDX license identifier
+  * Add Python 3.13 to test matrix
+
+-------------------------------------------------------------------
 Tue Apr  8 10:31:46 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.1.0
