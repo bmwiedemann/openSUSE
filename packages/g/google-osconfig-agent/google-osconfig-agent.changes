@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 11 11:51:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20250703.00
+  * Fix sles images (#844)
+- from version 20250702.00
+  * Remove rhel-sap 8-4 add rhel-sap 8-10 (#843)
+- from version 20250701.00
+  * Bump the go_modules group across 1 directory with 2 updates (#840)
+
+-------------------------------------------------------------------
 Wed Jun 25 11:23:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20250606.00

@@ -597,4 +597,12 @@
   * Trace GetInstalledPackages memory levels (#835)</comment>
     <requestid>1288757</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>b759be544139c8d29b6b42b90062e9df</srcmd5>
+    <version>20250703.00</version>
+    <time>1752483294</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1292592</requestid>
+  </revision>
 </revisionlist>
