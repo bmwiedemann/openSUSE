@@ -60,4 +60,23 @@
 - Use Python 3.11 on SLE-15 by default</comment>
     <requestid>1284172</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bb6e242fab9271cba6b68b8f98b5f434</srcmd5>
+    <version>2.6.4</version>
+    <time>1752483131</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.4:
+  * This will be the last 2.6 release of the library and CLI;
+    2.7.0 should come soon, with updated protobufs, but the prior
+    release of this project had fairly outdated protobufs, so
+    this brings them to current for the 2.6 series.
+  * Fix --configure by adding delays after sections
+  * fix(util): update waitForTraceRoute reset logic
+  * Add a sendMqttClientProxyMessage helper for client proxy
+    implementation
+  * Add validation/prevent --set-owner, --set-owner-short, and
+    --set-ham …
+  * protobufs updated to v2.6.12</comment>
+    <requestid>1292514</requestid>
+  </revision>
 </revisionlist>

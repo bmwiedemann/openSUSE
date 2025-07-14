@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul 13 13:42:20 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.4:
+  * This will be the last 2.6 release of the library and CLI;
+    2.7.0 should come soon, with updated protobufs, but the prior
+    release of this project had fairly outdated protobufs, so
+    this brings them to current for the 2.6 series.
+  * Fix --configure by adding delays after sections
+  * fix(util): update waitForTraceRoute reset logic
+  * Add a sendMqttClientProxyMessage helper for client proxy
+    implementation
+  * Add validation/prevent --set-owner, --set-owner-short, and
+    --set-ham …
+  * protobufs updated to v2.6.12
+
+-------------------------------------------------------------------
 Mon Jun  9 12:29:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
