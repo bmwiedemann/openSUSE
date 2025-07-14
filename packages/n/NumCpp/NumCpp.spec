@@ -18,7 +18,7 @@
 
 %define __builder ninja
 Name:           NumCpp
-Version:        2.14.1
+Version:        2.14.2
 Release:        0
 Summary:        C++ implementation of the Python Numpy library
 License:        MIT
