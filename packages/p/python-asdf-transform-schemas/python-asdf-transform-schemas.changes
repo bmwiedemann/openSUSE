@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul 13 13:37:22 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.0:
+  * Changes documentation configuration settings to make this
+    consistent with other asdf-related projects
+  * Fix typo in latex logo path
+  * Adds global navigation in docs top bar
+  * Update schemas to prefer tag over ref
+
+-------------------------------------------------------------------
 Wed Aug 14 15:12:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - use modern python on sle15

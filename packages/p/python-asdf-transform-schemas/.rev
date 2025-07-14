@@ -68,4 +68,17 @@
     <comment>- use modern python on sle15</comment>
     <requestid>1193958</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e81e2e2ad6f8f644be8360ba74ce285a</srcmd5>
+    <version>0.6.0</version>
+    <time>1752483139</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.0:
+  * Changes documentation configuration settings to make this
+    consistent with other asdf-related projects
+  * Fix typo in latex logo path
+  * Adds global navigation in docs top bar
+  * Update schemas to prefer tag over ref</comment>
+    <requestid>1292510</requestid>
+  </revision>
 </revisionlist>
