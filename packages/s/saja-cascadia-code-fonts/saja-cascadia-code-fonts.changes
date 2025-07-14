@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 10 16:16:04 UTC 2025 - Herbert Graeber <herbert@graeber-clan.de>
+
+- The hinting instructions on some Arabic glyphs have been fixed (and
+   will no longer result in hilarity) (#745)
+
+-------------------------------------------------------------------
+Sun Jun 30 21:10:05 UTC 2024 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Update package to version 2404.23:
+  * Symbols for Legacy Computing
+  * "Nerd Fonts"
+
+-------------------------------------------------------------------
 Sat Nov 18 14:10:04 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update package to version 2111.01:
