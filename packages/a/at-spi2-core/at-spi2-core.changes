@@ -2,7 +2,7 @@
 Fri Jul 11 19:40:13 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Add upstream fixes:
-  +  at-spi2-core-grab-memory-leak.patch
+  + at-spi2-core-grab-memory-leak.patch
   + at-spi2-core-key-grabs.patch (glgo#GNOME/at-spi2-core!193)
   + at-spi2-core-plug-crash.patch (glgo#GNOME/at-spi2-core#198)
 
