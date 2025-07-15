@@ -76,8 +76,8 @@
 
 %define         _lto_cflags %{nil}
 Name:           wine%{psuffix}
-%define downloadver  10.11
-Version:        10.11
+%define downloadver  10.12
+Version:        10.12
 Release:        0
 Summary:        An MS Windows Emulator
 Group:          System/Emulators/PC
@@ -92,7 +92,6 @@ Source3:        https://github.com/wine-staging/wine-staging/archive/v%{download
 Source97:       baselibs.conf
 Source98:       wine.rpmlintrc
 Source99:       get-sources.sh
-Patch0:		0001-kernel32-Use-the-correct-buffer-length.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  flex

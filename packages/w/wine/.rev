@@ -5555,4 +5555,19 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - added wine-win-debuginfo to baselibs.conf</comment>
     <requestid>1291323</requestid>
   </revision>
+  <revision rev="466" vrev="1">
+    <srcmd5>7f82ff8aafaeb80e04b7e986dbdec084</srcmd5>
+    <version>10.12</version>
+    <time>1752590604</time>
+    <user>anag_factory</user>
+    <comment>- updated to 10.12 release
+  - Optional EGL backend in the X11 driver.
+  - Support for Bluetooth Low Energy services.
+  - More support for generating Windows Runtime metadata in WIDL.
+  - ARM64 builds enabled in Gitlab CI.
+  - Various bug fixes.
+- update staging to 10.12 release
+- removed 0001-kernel32-Use-the-correct-buffer-length.patch: upstream</comment>
+    <requestid>1292598</requestid>
+  </revision>
 </revisionlist>

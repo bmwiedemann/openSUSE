@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 12 07:53:27 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 10.12 release
+  - Optional EGL backend in the X11 driver.
+  - Support for Bluetooth Low Energy services.
+  - More support for generating Windows Runtime metadata in WIDL.
+  - ARM64 builds enabled in Gitlab CI.
+  - Various bug fixes.
+- update staging to 10.12 release
+- removed 0001-kernel32-Use-the-correct-buffer-length.patch: upstream
+
+-------------------------------------------------------------------
 Tue Jul  8 14:21:02 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - 0001-kernel32-Use-the-correct-buffer-length.patch: fixed a regression (bsc#1246072)
