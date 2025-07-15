@@ -1,4 +1,33 @@
 --------------------------------------------------------------------
+Mon Jul 14 15:12:08 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#170
+- Makefile: fix build for ARCH=i686
+- 25.0
+
+--------------------------------------------------------------------
+Mon Jul 14 15:09:17 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#165
+- Fix memory leaks in block device name handling
+
+--------------------------------------------------------------------
+Mon Jul 14 15:09:02 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#164
+- feat: capture usb alternate setting
+- feat: capture usb interface association
+- feat: use interface association descriptor first when classifying
+  usb devices
+- USB improvements
+
+--------------------------------------------------------------------
+Mon Jul 14 15:08:22 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#169
+- add nvmeof and iscsi info (jsc#PED-13261, jsc#PED-13209)
+
+--------------------------------------------------------------------
 Mon Jul 7 13:52:35 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#167
