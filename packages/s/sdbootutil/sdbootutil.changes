@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 14 07:36:25 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250710.d8e5d82:
+  * Check for transactional systems by actually checking ro status, not mount attributes
+
+-------------------------------------------------------------------
 Fri Jun 13 09:30:39 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20250613.ee73e55:
