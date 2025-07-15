@@ -291,4 +291,12 @@
 </comment>
     <requestid>1286300</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>1dce6c8585f729153abd8d92f1cf1d9c</srcmd5>
+    <version>0.13.4</version>
+    <time>1752590591</time>
+    <user>anag_factory</user>
+    <comment>- Do not put bottle.py in /usr/bin, bsc#1245790</comment>
+    <requestid>1293288</requestid>
+  </revision>
 </revisionlist>

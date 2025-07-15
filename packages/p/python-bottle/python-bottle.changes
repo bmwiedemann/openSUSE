@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 15 06:52:35 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Do not put bottle.py in /usr/bin, bsc#1245790
+
+-------------------------------------------------------------------
 Tue Jun 17 08:43:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives

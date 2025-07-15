@@ -61,14 +61,16 @@ This subpackage contains the PDF documentation for %{name}.
 %prep
 %autosetup -p1 -n bottle-%{version}
 cp %{SOURCE1} .
+chmod 644 bottle.py
+sed -i '1{ /^#!/d }' bottle.py
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
+rm -rf %{buildroot}%{_bindir}/bottle.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_clone -a %{buildroot}%{_bindir}/bottle.py
 %python_clone -a %{buildroot}%{_bindir}/bottle
 
 %check
@@ -76,11 +78,11 @@ cp %{SOURCE1} .
 
 %pre
 %python_libalternatives_reset_alternative bottle.py
+%python_libalternatives_reset_alternative bottle
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%python_alternative %{_bindir}/bottle.py
 %python_alternative %{_bindir}/bottle
 %{python_sitelib}/bottle.py*
 %pycache_only %{python_sitelib}/__pycache__
