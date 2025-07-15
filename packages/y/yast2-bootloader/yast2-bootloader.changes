@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 11 11:18:56 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Allowing systemd-boot as default bootloader (set in control.xml)
+  for aarch64.
+  (bsc#1246101)
+- 5.0.22
+
+-------------------------------------------------------------------
 Mon Jun 23 11:55:34 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
 
 - Ensure that dracut is on target system for any bootloader to have
