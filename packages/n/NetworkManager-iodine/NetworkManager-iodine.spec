@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-iodine
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -65,7 +65,7 @@ firewalled but DNS traffic is still allowed.
 %autosetup -p1
 
 %build
-autoreconf -fiv
+autoreconf -fiv -I /usr/share/gettext/m4
 %sysusers_generate_pre %{SOURCE1} %{name} %{name}.conf
 %configure \
            --disable-static \
