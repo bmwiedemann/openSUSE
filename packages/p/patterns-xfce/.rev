@@ -153,4 +153,12 @@
 - Fixed pattern xfce_extra name and order in Yast (forwarded request 1112572 from mauriziogalli)</comment>
     <requestid>1112573</requestid>
   </revision>
+  <revision rev="20" vrev="5">
+    <srcmd5>0ae307e2a09b4902e2b46ad52f2c6c92</srcmd5>
+    <version>20230212</version>
+    <time>1752590596</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1292418</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-xfce
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Patterns for Installation (Xfce)
 License:        MIT
 Group:          Metapackages
-Url:            https://github.com/openSUSE/patterns
+URL:            https://github.com/openSUSE/patterns
 Source0:        %{name}-rpmlintrc
 BuildRequires:  patterns-rpm-macros
 
@@ -34,6 +34,7 @@ of the installation source setup.  Installation of this package does
 not make sense.
 
 This particular package contains the Xfce patterns.
+
 
 ################################################################################
 
@@ -77,7 +78,10 @@ Recommends:     xfce4-genmon-plugin
 Recommends:     xfce4-kbdleds-plugin
 Recommends:     xfce4-mailwatch-plugin
 Recommends:     xfce4-mount-plugin
+# mpc stack not available on Leap 16.0
+%if 0%{?suse_version} > 1600
 Recommends:     xfce4-mpc-plugin
+%endif
 Recommends:     xfce4-netload-plugin
 Recommends:     xfce4-notes-plugin
 Recommends:     xfce4-places-plugin
@@ -104,7 +108,10 @@ Recommends:     lightdm-gtk-greeter
 Recommends:     lightdm-gtk-greeter-settings
 Recommends:     menulibre
 Recommends:     mugshot
+# mpc stack not available on Leap 16.0
+%if 0%{?suse_version} > 1600
 Recommends:     pragha
+%endif
 Recommends:     seahorse
 Recommends:     simple-scan
 Recommends:     thunar-sendto-blueman
@@ -149,6 +156,99 @@ Xfce is a lightweight desktop environment for various *NIX systems.
 
 ################################################################################
 
+%package xfce_wayland
+%pattern_graphicalenvironments
+Summary:        XFCE Desktop Environment (Experimental Wayland Variant)
+Group:          Metapackages
+Provides:       pattern() = xfce_wayland
+Provides:       pattern-icon() = pattern-xfce
+Provides:       pattern-order() = 1311
+Provides:       pattern-visible()
+# Not extending xfce to avoid X11 pull-in
+Requires:       pattern() = xfce_basis_wayland
+Provides:       patterns-openSUSE-xfce_wayland = %{version}
+Obsoletes:      patterns-openSUSE-xfce_wayland < %{version}
+
+# Xfce Recommended applications (Wayland safe)
+Recommends:     gigolo
+Recommends:     mousepad
+Recommends:     parole
+Recommends:     ristretto
+Recommends:     thunar-plugin-archive
+Recommends:     thunar-plugin-media-tags
+Recommends:     thunar-volman
+Recommends:     tumbler
+Recommends:     xfce4-dict
+Recommends:     xfce4-panel-profiles
+Recommends:     xfce4-screenshooter
+Recommends:     xfce4-taskmanager
+
+# Recommended Xfce Panel plugins (likely Wayland safe, double-check upstream)
+Recommends:     xfce4-clipman-plugin
+Recommends:     xfce4-eyes-plugin
+Recommends:     xfce4-genmon-plugin
+Recommends:     xfce4-notes-plugin
+Recommends:     xfce4-places-plugin
+Recommends:     xfce4-sensors-plugin
+Recommends:     xfce4-smartbookmark-plugin
+Recommends:     xfce4-stopwatch-plugin
+Recommends:     xfce4-systemload-plugin
+Recommends:     xfce4-timer-plugin
+Recommends:     xfce4-verve-plugin
+Recommends:     xfce4-weather-plugin
+
+# Third-party apps (Wayland-friendly)
+Recommends:     blueman
+Recommends:     evince
+Recommends:     file-roller
+Recommends:     galculator
+Recommends:     gnome-disk-utility
+Recommends:     gucharmap
+Recommends:     menulibre
+Recommends:     mugshot
+# no lastfm
+%if 0%{?suse_version} == 1600 && 0%{?is_opensuse}
+Recommends:     pragha
+%endif
+Recommends:     seahorse
+Recommends:     simple-scan
+Recommends:     thunar-sendto-blueman
+
+# LightDM is X11-based — omit or replace with Wayland DM (like GDM or SDDM)
+# Consider recommending greetd + gtkgreet if keeping it minimal.
+
+# Debug + quality-of-life tools
+Recommends:     gdb
+Recommends:     system-config-printer
+Recommends:     system-config-printer-applet
+
+# Offline updates / openQA workaround
+Recommends:     gnome-packagekit
+%if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
+Recommends:     package-update-indicator
+%endif
+
+# Auth & Secrets
+Recommends:     gnome-keyring
+Recommends:     gcr-ssh-askpass
+Recommends:     gnome-keyring-pam
+Recommends:     opensuse-welcome
+
+# Useful extras
+Recommends:     gutenprint
+Recommends:     samba
+Suggests:       hplip
+
+%description xfce_wayland
+Experimental Xfce desktop environment adapted for Wayland, using a lighter and modern graphical stack
+while keeping the familiar experience. This variant avoids traditional X11 components.
+
+%files xfce_wayland
+%dir %{_defaultdocdir}/patterns
+%{_defaultdocdir}/patterns/xfce_wayland.txt
+
+################################################################################
+
 %package xfce_extra
 %pattern_graphicalenvironments
 Summary:        XFCE Extra Applications
@@ -156,15 +256,12 @@ Group:          Metapackages
 Provides:       pattern() = xfce_extra
 Provides:       pattern-extends() = xfce
 Provides:       pattern-icon() = pattern-xfce
-Provides:       pattern-visible()
 Provides:       pattern-order() = 1315
+Provides:       pattern-visible()
 Requires:       pattern() = xfce
 Requires:       pattern() = xfce_basis
-Recommends:     pattern() = office
-Recommends:     pattern() = multimedia
-Recommends:     pattern() = imaging
-Recommends:     libreoffice-gtk3
 Recommends:     MozillaThunderbird
+Recommends:     libreoffice-gtk3
 Recommends:     pidgin
 Recommends:     remmina
 Recommends:     remmina-plugin-rdp
@@ -172,6 +269,9 @@ Recommends:     remmina-plugin-vnc
 Recommends:     remmina-plugin-xdmcp
 Recommends:     shotwell
 Recommends:     transmission-gtk
+Recommends:     pattern() = imaging
+Recommends:     pattern() = multimedia
+Recommends:     pattern() = office
 Provides:       patterns-openSUSE-xfce_extra = %{version}
 Obsoletes:      patterns-openSUSE-xfce_extra < %{version}
 Provides:       patterns-openSUSE-xfce_office = %{version}
@@ -188,6 +288,45 @@ Extra packages for the XFCE Desktop Environment
 
 ################################################################################
 
+%package xfce_extra_wayland
+%pattern_graphicalenvironments
+Summary:        XFCE Extra Applications (Experimental Wayland Variant)
+Group:          Metapackages
+Provides:       pattern() = xfce_extra_wayland
+Provides:       pattern-extends() = xfce
+Provides:       pattern-icon() = pattern-xfce
+Provides:       pattern-order() = 1316
+Provides:       pattern-visible()
+Requires:       pattern() = xfce
+Requires:       pattern() = xfce_basis
+
+# Wayland-friendly extras (avoid x11-specific plugins like remmina-plugin-xdmcp)
+Recommends:     pattern() = office
+Recommends:     MozillaThunderbird
+Recommends:     libreoffice-gtk3
+Recommends:     pidgin
+Recommends:     remmina
+Recommends:     remmina-plugin-rdp
+Recommends:     remmina-plugin-vnc
+Recommends:     pattern() = imaging
+Recommends:     pattern() = multimedia
+# Do not recommend remmina-plugin-xdmcp (X11 only)
+Recommends:     shotwell
+Recommends:     transmission-gtk
+
+Provides:       patterns-openSUSE-xfce_extra_wayland = %{version}
+Obsoletes:      patterns-openSUSE-xfce_extra_wayland < %{version}
+
+%description xfce_extra_wayland
+Extra Wayland-compatible applications for the XFCE Desktop Environment.
+
+This pattern includes additional applications suitable for use in XFCE sessions under Wayland. It intentionally avoids packages that depend on or strongly assume the presence of the X11 stack.
+
+%files xfce_extra_wayland
+%dir %{_defaultdocdir}/patterns
+%{_defaultdocdir}/patterns/xfce_extra_wayland.txt
+
+################################################################################
 
 %package xfce_basis
 %pattern_graphicalenvironments
@@ -224,11 +363,11 @@ Recommends:     avahi
 Recommends:     dbus-1-x11
 # bnc#540627
 Recommends:     xdg-utils
-Recommends:     xdg-user-dirs-gtk
-Recommends:     desktop-file-utils
-Recommends:     shared-mime-info
 Recommends:     NetworkManager
 Recommends:     NetworkManager-applet
+Recommends:     desktop-file-utils
+Recommends:     shared-mime-info
+Recommends:     xdg-user-dirs-gtk
 # without polkit-gnome, NetworkManager-applet is not that useful
 # we need a polkit-authentication-agent (bnc#1047500)
 Recommends:     polkit-gnome
@@ -238,9 +377,9 @@ Recommends:     libgnomesu
 Recommends:     pinentry-gtk2
 # For screenlocking to work in xfce
 Recommends:     xfce4-screensaver
+Recommends:     libxfce4ui-tools
 Recommends:     xfce4-notifyd
 Recommends:     xfce4-terminal
-Recommends:     libxfce4ui-tools
 Recommends:     xfce4-xkb-plugin
 #
 # core desktop functionality
@@ -281,6 +420,63 @@ Base packages for the XFCE Desktop Environment
 
 ################################################################################
 
+%package xfce_basis_wayland
+%pattern_graphicalenvironments
+Summary:        XFCE Base System (Experimental Wayland Variant)
+Group:          Metapackages
+Provides:       pattern() = xfce_basis_wayland
+Provides:       pattern-icon() = pattern-xfce
+Provides:       pattern-order() = 1299
+Requires:       pattern() = basesystem
+Provides:       patterns-openSUSE-xfce_basis_wayland = %{version}
+Obsoletes:      patterns-openSUSE-xfce_basis_wayland < %{version}
+
+# Wayland-specific session (xfce4-session-wayland-experimental)
+Requires:       xfce4-session-wayland-experimental
+# Alternative Wayland compositor for fallback or multi-session support
+Recommends:     labwc
+# D-Bus daemon is essential
+Requires:       dbus-1-daemon
+
+# Other lightweight and core XFCE components (Wayland-compatible only)
+Requires:       thunar
+Requires:       thunar-volman
+Requires:       xfce4-appfinder
+Requires:       xfce4-notifyd
+Requires:       xfce4-panel
+Requires:       xfce4-power-manager
+Requires:       xfce4-settings
+Requires:       xfconf
+Requires:       xfdesktop
+# xfwm4 is not Wayland-compatible; do not include it
+# xfce4-session is replaced with the Wayland experimental variant
+
+# Optional: recommend a terminal and pulseaudio plugin
+Recommends:     xfce4-terminal
+Recommends:     pavucontrol
+Recommends:     xfce4-pulseaudio-plugin
+
+# Optional: authentication agent for polkit
+Recommends:     polkit-gnome
+
+# Wayland desktop environment usually needs xdg-utils, mime info, etc.
+Recommends:     xdg-utils
+Recommends:     desktop-file-utils
+Recommends:     shared-mime-info
+Recommends:     xdg-user-dirs
+
+%description xfce_basis_wayland
+Base packages for the XFCE Desktop Environment using Wayland.
+This pattern avoids all X11-specific dependencies and includes
+a minimal setup using `xfce4-session-wayland-experimental`, `labwc`,
+and `dbus-1-daemon`.
+
+%files xfce_basis_wayland
+%dir %{_defaultdocdir}/patterns
+%{_defaultdocdir}/patterns/xfce_basis_wayland.txt
+
+################################################################################
+
 %package xfce_laptop
 %pattern_xfcedesktop
 Summary:        XFCE Laptop
@@ -304,13 +500,49 @@ XFCE Laptop
 
 ################################################################################
 
+%package xfce_laptop_wayland
+%pattern_xfcedesktop
+Summary:        XFCE Laptop (Experimental Wayland Variant)
+Group:          Metapackages
+Provides:       pattern() = xfce_laptop_wayland
+Provides:       pattern-icon() = pattern-generic
+Provides:       pattern-order() = 5181
+Supplements:    packageand(patterns-xfce-xfce_wayland:patterns-desktop-laptop)
+# Not extending `xfce_laptop` or `xfce` to avoid X11 pull-in
+Requires:       pattern() = xfce_wayland
+Requires:       pattern() = xfce_basis_wayland
+Provides:       patterns-openSUSE-xfce_laptop_wayland = %{version}
+Obsoletes:      patterns-openSUSE-xfce_laptop_wayland < %{version}
+
+# Laptop-specific recommendations (Wayland safe)
+Recommends:     upower
+Recommends:     xfce4-battery-plugin
+Recommends:     xfce4-brightness-plugin
+Recommends:     xfce4-power-manager
+Recommends:     xfce4-power-manager-plugin
+Recommends:     xfce4-pulseaudio-plugin
+
+# Touchpad and input settings
+Recommends:     xfce4-settings
+Recommends:     xfce4-notifyd
+
+%description xfce_laptop_wayland
+XFCE Laptop configuration optimized for Wayland, including power management,
+notifications, and input configuration suitable for portable devices.
+
+%files xfce_laptop_wayland
+%dir %{_defaultdocdir}/patterns
+%{_defaultdocdir}/patterns/xfce_laptop_wayland.txt
+
+################################################################################
+
 %prep
 
 %build
 
 %install
 mkdir -p %{buildroot}/%{_defaultdocdir}/patterns
-for i in xfce xfce_basis xfce_laptop xfce_extra; do
+for i in xfce xfce_basis xfce_laptop xfce_extra xfce_wayland xfce_basis_wayland xfce_laptop_wayland xfce_extra_wayland; do
 	echo "This file marks the pattern $i to be installed." \
 		>"%{buildroot}/%{_defaultdocdir}/patterns/$i.txt"
 done

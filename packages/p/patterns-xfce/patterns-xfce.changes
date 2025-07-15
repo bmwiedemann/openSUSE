@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 11 12:01:05 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add Experimental Wayland variants of patterns 
+  code-o-o#leap/features#218
+
+-------------------------------------------------------------------
 Wed Sep 20 10:16:23 UTC 2023 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Ensure the new pattern xfce_extra properly obsoletes the pattern
