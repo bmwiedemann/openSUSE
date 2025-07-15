@@ -15,8 +15,7 @@ description: |-
 #sources:
 #  - source1
 #  - source2
-patches:
-  perl-Term-ReadLine-Gnu-gcc15.patch: https://github.com/hirooih/perl-trg/commit/9c89044bca3437a4f5520357cee1d5971db9877b
+#patches:
 preamble: |-
  BuildRequires:  ncurses-devel
  BuildRequires:  readline-devel

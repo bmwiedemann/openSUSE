@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Jul 11 14:07:09 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Remove perl-Term-ReadLine-Gnu-gcc15.patch, fixed upstream:
+  https://github.com/hirooih/perl-trg/pull/32
+
+-------------------------------------------------------------------
+Sun Jul  6 05:35:14 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.470.0 (1.47)
+   see /usr/share/doc/packages/perl-Term-ReadLine-Gnu/Changes
+
+  1.47  2025-07-06
+  	- readline-8.3 support
+  	    new functions
+  		rl_reparse_colors
+  		rl_print_keybinding
+  	    new variables
+  		rl_full_quoting_desired
+  		rl_macro_display_hook
+  		rl_completion_rewrite_hook
+  	    new state values for rl_readline_state
+  		RL_STATE_READSTR
+  	- sample code updates
+  	    - import almost all examples from the GNU Readline Library
+  	    - use "/usr/bin/env" for sh-bang
+  	    - add eg/README.md
+  	- the check for being in emacs to be more like bash (#28)
+  	- add a wrap function on every function which has Keymap as an argument
+  	- add some constant functions
+  	    - add macro functions for rl_readline_state
+  		- RL_SETSTATE(), RL_UNSETSTATE(), RL_ISSTATE()
+  	    - export READERR
+  	- Fix for compilation in C23 mode (#32)
+  	- POD updates
+  	    - fix description of add_defun() in BUGS section (#23)
+  	    - fix formatting
+  	- GitHub actions: update os and perl-version matrix
+
+-------------------------------------------------------------------
 Wed Apr 16 11:14:16 UTC 2025 - pgajdos@suse.com
 
 - added patches

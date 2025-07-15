@@ -18,17 +18,22 @@
 
 %define cpan_name Term-ReadLine-Gnu
 Name:           perl-Term-ReadLine-Gnu
-Version:        1.46
+Version:        1.470.0
 Release:        0
+# 1.47 -> normalize -> 1.470.0
+%define cpan_version 1.47
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl extension for the GNU Readline/History Library
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAYASHI/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAYASHI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-# https://github.com/hirooih/perl-trg/commit/9c89044bca3437a4f5520357cee1d5971db9877b
-Patch0:         perl-Term-ReadLine-Gnu-gcc15.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Term::ReadLine::Gnu) = %{version}
+Provides:       perl(Term::ReadLine::Gnu::AU)
+Provides:       perl(Term::ReadLine::Gnu::Var)
+Provides:       perl(Term::ReadLine::Gnu::XS) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  ncurses-devel
@@ -49,7 +54,9 @@ This package also has the interface with the almost all functions and
 variables which are documented in the GNU Readline/History Library Manual.
 
 %prep
-%autosetup -p1 -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
