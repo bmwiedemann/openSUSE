@@ -334,4 +334,15 @@
     <comment></comment>
     <requestid>1289328</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>6a97e3858c8171df5ede5af06b657423</srcmd5>
+    <version>2.24</version>
+    <time>1752590620</time>
+    <user>anag_factory</user>
+    <comment>- upstream patch to fix build with C23
+- added patches
+  fix build with gcc15
+  + units-gcc15.patch (forwarded request 1293072 from pgajdos)</comment>
+    <requestid>1293073</requestid>
+  </revision>
 </revisionlist>

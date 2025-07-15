@@ -28,6 +28,8 @@ URL:            https://www.gnu.org/software/units/
 Source0:        http://ftp.gnu.org/gnu/units/units-%{version}.tar.gz
 Source1:        http://ftp.gnu.org/gnu/units/units-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=33238#/%{name}.keyring
+# fix build with gcc15
+Patch0:         units-gcc15.patch
 BuildRequires:  bison
 BuildRequires:  readline-devel
 %if %{with units_cur}
@@ -47,7 +49,7 @@ page for details.
 %autosetup -p1
 
 %build
-export CFLAGS="%{optflags} -fPIE -std=gnu11"
+export CFLAGS="%{optflags} -fPIE"
 export LDFLAGS="-pie"
 %configure
 %make_build
