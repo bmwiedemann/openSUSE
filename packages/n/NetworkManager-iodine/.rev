@@ -105,4 +105,12 @@
     <comment></comment>
     <requestid>1291950</requestid>
   </revision>
+  <revision rev="13" vrev="12">
+    <srcmd5>173a1ca996ada555d4c37d4f4b202335</srcmd5>
+    <version>1.2.0</version>
+    <time>1752592032</time>
+    <user>anag_factory</user>
+    <comment>Fix typo (forwarded request 1293427 from iznogood)</comment>
+    <requestid>1293455</requestid>
+  </revision>
 </revisionlist>
