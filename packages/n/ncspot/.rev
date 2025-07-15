@@ -14,4 +14,57 @@ It is useful for terminal users, because allows to listen to spotify using only 
 Therefore it would be important to have the package available in the main repos.</comment>
     <requestid>1243266</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bbd7ddd5097277c0d0d96924d09cda0c</srcmd5>
+    <version>1.3.0</version>
+    <time>1752590613</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.3.0:
+  * chore: Release prep for 1.3.0
+  * chore(deps): bump the cargo group with 3 updates (#1664)
+  * feat(auth): Automatically find free port
+  * chore: `cargo clippy --fix`
+  * [create-pull-request] automated change
+  * chore(deps): bump the cargo group across 1 directory with 2 updates (#1661)
+  * chore(deps): bump the cargo group with 6 updates (#1658)
+  * fix: Do not crash due to unavailable tracks in queue
+  * fix: Switch command line fg/bg colors
+  * chore(deps): bump the cargo group across 1 directory with 4 updates (#1654)
+  * docs: Update documentation links
+  * chore(deps): bump the cargo group with 2 updates (#1646)
+  * fix(queue): Don't freeze on item double click
+  * chore(deps): bump zbus from 5.6.0 to 5.7.0 in the cargo group
+  * fix: `cargo clippy --fix`
+  * [create-pull-request] automated change
+  * chore(deps): bump the cargo group with 4 updates
+  * Prevent event loop starvation by unplayable tracks
+  * chore: remove unused `rustfmt.toml` file
+  * Added missing parenthesis
+  * chore(deps): bump the cargo group across 1 directory with 9 updates
+  * chore: `cargo clippy --fix`
+  * [create-pull-request] automated change
+  * chore(deps): bump crossbeam-channel from 0.5.14 to 0.5.15
+  * chore(deps): bump openssl from 0.10.71 to 0.10.72
+  * chore(deps): bump the cargo group with 3 updates
+  * chore(deps): bump the cargo group across 1 directory with 5 updates
+  * chore(deps): bump the cargo group with 4 updates
+  * chore: Tweak log levels a little
+  * fix: Skip unplayable tracks
+  * feat(ci): Add nix-shell setup
+  * chore(deps): bump the cargo group across 1 directory with 3 updates
+  * chore: Update to edition 2024
+  * chore(deps): bump the cargo group with 3 updates
+  * chore(deps): bump ring from 0.17.8 to 0.17.13
+  * chore: Remove unnecessary `take()` call
+  * [create-pull-request] automated change
+  * chore(deps): bump the cargo group with 6 updates
+  * fix: Corrected incorrect comment
+  * chore: other small fixes
+  * chore: adapt to `rand` changes
+  * chore(deps): bump the cargo group across 1 directory with 7 updates
+  * chore(deps): bump openssl from 0.10.69 to 0.10.70
+  * [create-pull-request] automated change
+</comment>
+    <requestid>1293065</requestid>
+  </revision>
 </revisionlist>
