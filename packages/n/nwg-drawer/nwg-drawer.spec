@@ -17,7 +17,7 @@
 
 
 Name:           nwg-drawer
-Version:        0.7.0
+Version:        0.7.3
 Release:        0
 Summary:        Wlroots application drawer
 License:        MIT
