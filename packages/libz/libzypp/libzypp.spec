@@ -72,7 +72,7 @@
 %endif
 
 Name:           libzypp
-Version:        17.37.10
+Version:        17.37.11
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -162,6 +162,7 @@ BuildRequires:  readline-devel >= 5.1
 %if %{with mediabackend_tests}
 BuildRequires:  nginx
 BuildRequires:	vsftpd
+BuildRequires:	squid
 %endif
 
 Requires:       rpm
