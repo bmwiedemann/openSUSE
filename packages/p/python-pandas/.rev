@@ -803,4 +803,41 @@ All packages broken by this update should be fixed now.</comment>
     <comment></comment>
     <requestid>1254714</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>69d6488a9b66a41c28f4f7b1772d720f</srcmd5>
+    <version>2.3.1</version>
+    <time>1752590563</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.1
+  * This release includes some improvements and fixes to the future
+    string data type (preview feature for the upcoming pandas 3.0)
+  ## Improvements and fixes for the StringDtype
+  * Comparisons between different string dtypes
+  * Index set operations ignore empty RangeIndex and object dtype
+    Index
+  ## Bug fixes
+  * Bug in DataFrameGroupBy.min(), DataFrameGroupBy.max(),
+    Resampler.min(), Resampler.max() where all NA values of string
+    dtype would return float instead of string dtype (GH 60810)
+  * Bug in DataFrame.join() incorrectly downcasting object-dtype
+    indexes (GH 61771)
+  * Bug in DataFrame.sum() with axis=1, DataFrameGroupBy.sum() or
+    SeriesGroupBy.sum() with skipna=True, and Resampler.sum() with
+    all NA values of StringDtype resulted in 0 instead of the empty
+    string &quot;&quot; (GH 60229)
+  * Fixed bug in DataFrame.explode() and Series.explode() where
+    methods would fail with dtype=&quot;str&quot; (GH 61623)
+  * Fixed bug in unpickling objects pickled in pandas versions
+    pre-2.3.0 that used StringDtype (GH 61763)
+- Release 2.3.0
+  ## Enhancements
+  * The semantics for the copy keyword in __array__ methods (i.e.
+    called when using np.array() or np.asarray() on pandas objects)
+    has been updated to work correctly with NumPy &gt;= 2 (GH 57739)
+  * Series.str.decode() result now has StringDtype when
+    future.infer_string is True (GH 60709)
+  * to_hdf() and to_hdf() now round-trip with StringDtype (GH
+    60663)</comment>
+    <requestid>1292272</requestid>
+  </revision>
 </revisionlist>

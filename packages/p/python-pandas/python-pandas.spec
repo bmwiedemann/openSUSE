@@ -37,7 +37,7 @@
 %if "%{flavor}" != "test-py313"
 %define skip_python313 1
 %endif
-# Skip empty buildsets, last one is for sle15_python_module_pythons
+# Skip empty buildsets on tumbleweed or flavors other than python311 on leap with sle15_python_module_pythons
 %if "%{shrink:%{pythons}}" == "" || ("%pythons" == "python311" && 0%{?skip_python311})
 ExclusiveArch:  donotbuild
 %define python_module() %flavor-not-enabled-in-buildset-for-suse-%{?suse_version}
@@ -64,7 +64,7 @@ ExclusiveArch:  donotbuild
 %endif
 Name:           python-pandas%{psuffix}
 # Set version through _service
-Version:        2.2.3
+Version:        2.3.1
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -72,14 +72,8 @@ URL:            https://pandas.pydata.org/
 # SourceRepository: https://github.com/pandas-dev/pandas
 # Must be created by cloning through `osc service runall`: gh#pandas-dev/pandas#54903, gh#pandas-dev/pandas#54907
 Source0:        pandas-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pandas-pr60545-arrow-exception.patch gh#pandas-dev/pandas#60545
-Patch0:         https://github.com/pandas-dev/pandas/pull/60545.patch#/pandas-pr60545-arrow-exception.patch
-# PATCH-FIX-UPSTREAM pandas-pr60584-60586-mpl-vert.patch gh#pandas-dev/pandas#60584 gh#pandas-dev/pandas#60586
-Patch1:         https://github.com/pandas-dev/pandas/pull/60586.patch#/pandas-pr60584-60586-mpl-vert.patch
-# PATCH-FIX-UPSTREAM https://github.com/pandas-dev/pandas/pull/61132 BUG: .mode(dropna=False) doesn't work with nullable integers
-Patch2:         dropna.patch
-# PATCH-FIX-UPSTREAM https://github.com/pandas-dev/pandas/pull/60416 TST: Avoid hashing np.timedelta64 without unit
-Patch3:         timedelta.patch
+# PATCH-FIX-UPSTREAM pandas-pr61132-dropna.patch gh#pandas-dev/pandas#61132 BUG: .mode(dropna=False) doesn't work with nullable integers
+Patch1:         pandas-pr61132-dropna.patch
 %if !%{with test}
 BuildRequires:  %{python_module Cython >= 3.0.5}
 BuildRequires:  %{python_module devel >= 3.9}
@@ -91,7 +85,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?gccver}-c++
 BuildRequires:  git-core
-BuildRequires:  meson >= 1.2.1
+BuildRequires:  (meson >= 1.2.1 with meson < 2)
 %endif
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.8.2
@@ -518,21 +512,15 @@ SKIP_TESTS+=" or test_self_join_date_columns"
 # expects a dirty git revision from git repo
 SKIP_TESTS+=" or test_git_version"
 # https://github.com/pandas-dev/pandas/pull/57391, proposed change is not necessarily the right one
-%if "%{flavor}" == "test-py312"
+%if "%{flavor}" == "test-py312" || "%{flavor}" == "test-py313"
 SKIP_TESTS+=" or (test_scalar_unary and numexpr-pandas)"
 %endif
-%if "%{flavor}" == "test-py313"
-SKIP_TESTS+=" or (test_scalar_unary and numexpr-pandas)"
-%endif
-# https://github.com/pandas-dev/pandas/pull/55901, not gonna merge this huge patch to fix one test failing with new timezone, will be included in new release
+# https://github.com/pandas-dev/pandas/pull/55901, not gonna merge this huge patch to fix one test failing with new timezone, will be included in 3.0
 SKIP_TESTS+=" or test_array_inference[data7-expected7]"
-# numpy 2.1 issues?
-SKIP_TESTS+=" or test_frame_setitem_dask_array_into_new_col"
 # too new xarray, gh#pandas-dev/pandas#60109 backport too much
 SKIP_TESTS+=" or (TestDataFrameToXArray and test_to_xarray_index_types)"
-# too new pyarrow, gh#pandas-dev/pandas#60755 backport too much
-SKIP_TESTS+=" or (TestParquetPyArrow and test_roundtrip_decimal)"
-
+# xpass strict: our xarray seems to handle this fine
+SKIP_TESTS+=" or (TestSeriesToXArray and test_to_xarray_index_types)"
 %ifarch %{ix86} %{arm32}
 # https://github.com/pandas-dev/pandas/issues/31856
 SKIP_TESTS+=" or test_maybe_promote_int_with_int"

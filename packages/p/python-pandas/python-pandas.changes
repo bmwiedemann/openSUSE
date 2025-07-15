@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Fri Jul 11 19:29:45 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.3.1
+  * This release includes some improvements and fixes to the future
+    string data type (preview feature for the upcoming pandas 3.0)
+  ## Improvements and fixes for the StringDtype
+  * Comparisons between different string dtypes
+  * Index set operations ignore empty RangeIndex and object dtype
+    Index
+  ## Bug fixes
+  * Bug in DataFrameGroupBy.min(), DataFrameGroupBy.max(),
+    Resampler.min(), Resampler.max() where all NA values of string
+    dtype would return float instead of string dtype (GH 60810)
+  * Bug in DataFrame.join() incorrectly downcasting object-dtype
+    indexes (GH 61771)
+  * Bug in DataFrame.sum() with axis=1, DataFrameGroupBy.sum() or
+    SeriesGroupBy.sum() with skipna=True, and Resampler.sum() with
+    all NA values of StringDtype resulted in 0 instead of the empty
+    string "" (GH 60229)
+  * Fixed bug in DataFrame.explode() and Series.explode() where
+    methods would fail with dtype="str" (GH 61623)
+  * Fixed bug in unpickling objects pickled in pandas versions
+    pre-2.3.0 that used StringDtype (GH 61763)
+- Release 2.3.0
+  ## Enhancements
+  * The semantics for the copy keyword in __array__ methods (i.e.
+    called when using np.array() or np.asarray() on pandas objects)
+    has been updated to work correctly with NumPy >= 2 (GH 57739)
+  * Series.str.decode() result now has StringDtype when
+    future.infer_string is True (GH 60709)
+  * to_hdf() and to_hdf() now round-trip with StringDtype (GH
+    60663)
+  * Improved repr of NumpyExtensionArray to account for NEP51 (GH
+    61085)
+  * The Series.str.decode() has gained the argument dtype to
+    control the dtype of the result (GH 60940)
+  * The cumsum(), cummin(), and cummax() reductions are now
+    implemented for StringDtype columns (GH 60633)
+  * The sum() reduction is now implemented for StringDtype columns
+    (GH 59853)
+  ## Deprecations
+  * Deprecated allowing non-bool values for na in str.contains(),
+    str.startswith(), and str.endswith() for dtypes that do not
+    already disallow these (GH 59615)
+  * Deprecated the "pyarrow_numpy" storage option for StringDtype
+    (GH 60152)
+  * The deprecation of setting the argument include_groups to True
+    in DataFrameGroupBy.apply() has been promoted from a
+    DeprecationWarning to FutureWarning; only False will be allowed
+    (GH 7155)
+  ## Bug fixes
+  ### Numeric
+  * Bug in Series.mode() and DataFrame.mode() with dropna=False
+    where not all dtypes would sort in the presence of NA values
+    (GH 60702)
+  * Bug in Series.round() where a TypeError would always raise with
+    object dtype (GH 61206)
+  ### Strings
+  * Bug in Series.__pos__() and DataFrame.__pos__() where an
+    Exception was not raised for StringDtype with storage="pyarrow"
+    (GH 60710)
+  * Bug in Series.rank() for StringDtype with storage="pyarrow"
+    that incorrectly returned integer results with method="average"
+    and raised an error if it would truncate results (GH 59768)
+  * Bug in Series.replace() with StringDtype when replacing with a
+    non-string value was not upcasting to object dtype (GH 60282)
+  * Bug in Series.str.center() with StringDtype with
+    storage="pyarrow" not matching the python behavior in corner
+    cases with an odd number of fill characters (GH 54792)
+  * Bug in Series.str.replace() when n < 0 for StringDtype with
+    storage="pyarrow" (GH 59628)
+  * Bug in Series.str.slice() with negative step with ArrowDtype
+    and StringDtype with storage="pyarrow" giving incorrect results
+    (GH 59710)
+  ### Indexing
+    Bug in Index.get_indexer() round-tripping through string dtype
+    when infer_string is enabled (GH 55834)
+  ### I/O
+  * Bug in DataFrame.to_excel() which stored decimals as strings
+    instead of numbers (GH 49598)
+  ### Other
+  * Fixed usage of inspect when the optional dependencies pyarrow
+    or jinja2 are not installed (GH 60196)
+- Drop patches:
+  * timedelta.patch
+  * pandas-pr60545-arrow-exception.patch
+  * pandas-pr60584-60586-mpl-vert.patch
+- Refresh dropna.patch to pandas-pr61132-dropna.patch
+  * gh#pandas-dev/pandas#61132
+
+-------------------------------------------------------------------
 Thu Mar 20 11:36:22 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add dropna.patch and timedelta.patch to fix tests with Numpy 2.2
