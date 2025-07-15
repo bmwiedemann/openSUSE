@@ -27,7 +27,6 @@ URL:            https://libsdl.org/projects/SDL_image/
 Source:         https://github.com/libsdl-org/SDL_image/releases/download/release-%version/SDL2_image-%version.tar.gz
 Source2:        https://github.com/libsdl-org/SDL_image/releases/download/release-%version/SDL2_image-%version.tar.gz.sig
 Source9:        %name.keyring
-BuildRequires:  SDL2-devel >= 2.24
 BuildRequires:  automake
 BuildRequires:  dos2unix
 BuildRequires:  libjpeg-devel
@@ -38,6 +37,7 @@ BuildRequires:  pkgconfig(libavif)
 BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(sdl2) >= 2.24
 Provides:       bundled(stb_image) = 2.30
 
 %description
