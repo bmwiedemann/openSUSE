@@ -1,7 +1,7 @@
 #
 # spec file for package fzy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           fzy
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        A fuzzy text selector
 License:        MIT
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/jhawthorn/fzy
-Source0:        https://github.com/jhawthorn/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/jhawthorn/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
-Source2:        %{name}.keyring
+Source0:        https://github.com/jhawthorn/fzy/archive/refs/tags/v%{version}.tar.gz
 
 %description
 fzy can be used to filter any list: files, command history, processes,

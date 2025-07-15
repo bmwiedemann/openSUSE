@@ -15,4 +15,18 @@
     <comment></comment>
     <requestid>681204</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9786d18fe3282b8015c65cf3d1081eb9</srcmd5>
+    <version>1.1</version>
+    <time>1752590604</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.1:
+  Features:
+  * Add -i/--show-info to display selection information
+  * Add ability to use null as input delimiter with -0
+  * Support Ctrl-G to cancel/exit
+  Bugfixes:
+  * Avoid terminal flicker with large outputs</comment>
+    <requestid>1292595</requestid>
+  </revision>
 </revisionlist>
