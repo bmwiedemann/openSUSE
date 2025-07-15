@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 14 06:32:39 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.22.1:
+  * Replace default_input_path check with "." check
+  * "cheks" should be "checks"
+  * [breaking] Define -d/--treat-dirs-as-files behavior, tests
+  * Refresh icon set with new glyphs and additions
+  * Bump phf from 0.11.3 to 0.12.1
+  * Cargo bump 2025-07-03
+  * Flake bump 2025-07-03
+  * Bump windows-sys from 0.59.0 to 0.60.2
+
+-------------------------------------------------------------------
 Fri Jul  4 06:18:37 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.22.0:

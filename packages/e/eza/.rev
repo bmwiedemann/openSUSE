@@ -1186,4 +1186,20 @@
     removed in a future release.</comment>
     <requestid>1290611</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>056285fe698f8746d9cc56f1e5d7ff62</srcmd5>
+    <version>0.22.1</version>
+    <time>1752590600</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.22.1:
+  * Replace default_input_path check with &quot;.&quot; check
+  * &quot;cheks&quot; should be &quot;checks&quot;
+  * [breaking] Define -d/--treat-dirs-as-files behavior, tests
+  * Refresh icon set with new glyphs and additions
+  * Bump phf from 0.11.3 to 0.12.1
+  * Cargo bump 2025-07-03
+  * Flake bump 2025-07-03
+  * Bump windows-sys from 0.59.0 to 0.60.2</comment>
+    <requestid>1292594</requestid>
+  </revision>
 </revisionlist>
