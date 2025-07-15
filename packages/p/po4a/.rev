@@ -301,4 +301,13 @@ pull the gettext files.
     <comment></comment>
     <requestid>1268669</requestid>
   </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>966335c52fde36fc834c12a7aca8c3c3</srcmd5>
+    <version>0.73</version>
+    <time>1752590540</time>
+    <user>anag_factory</user>
+    <comment>-  Fix test to handle trailing spaces with gettext-runtime 0.25
+   * gettext-0.25-tests.patch</comment>
+    <requestid>1291881</requestid>
+  </revision>
 </revisionlist>

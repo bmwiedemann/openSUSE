@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 11 07:53:10 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+-  Fix test to handle trailing spaces with gettext-runtime 0.25
+   * gettext-0.25-tests.patch
+   
+-------------------------------------------------------------------
 Thu Apr 10 20:17:56 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - Update licence tag to GPL-2.0-or-later to match the

@@ -30,6 +30,8 @@ URL:            https://po4a.org/
 Source:         https://github.com/mquinson/po4a/releases/download/v%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Workaround for build error with perl 5.40, see https://github.com/mquinson/po4a/issues/508
 Patch0:         po4a.diff
+# PATCH-FIX-UPSTREAM https://github.com/mquinson/po4a/commit/7d88a5e59606a9a29ffe73325fff4a5ddb865d5c
+Patch1:         gettext-0.25-tests.patch
 
 %if "%{_vendor}" == "debbuild"
 BuildRequires:  deb-perl-macros
@@ -113,6 +115,7 @@ po4a supports currently the following formats:
 %prep
 %setup -q
 %patch -P0
+%patch -P1 -p1
 
 %build
 perl Build.PL installdirs=vendor

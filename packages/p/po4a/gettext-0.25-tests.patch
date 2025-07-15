@@ -1,0 +1,27 @@
+From 7d88a5e59606a9a29ffe73325fff4a5ddb865d5c Mon Sep 17 00:00:00 2001
+From: Martin Quinson <martin.quinson@ens-rennes.fr>
+Date: Sun, 6 Jul 2025 12:59:30 +0200
+Subject: [PATCH 1/4] Deal with gettext 0.25 in our tests
+
+The new verstion of Gettext adds a trailing space at some point.
+See https://github.com/mquinson/po4a/issues/580
+---
+ t/Testhelper.pm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/Testhelper.pm b/t/Testhelper.pm
+index 6fdc6a69..1d4e7755 100644
+--- a/t/Testhelper.pm
++++ b/t/Testhelper.pm
+@@ -100,7 +100,7 @@ my $execpath = defined $ENV{AUTOPKGTEST_TMP} ? "/usr/bin" : "perl ..";
+ 
+ # msginit annoyances, see https://github.com/mquinson/po4a/issues/338
+ my $PODIFF =
+-    "-I'^\"Project-Id-Version:' -I'^\"POT-Creation-Date:' -I'^\"PO-Revision-Date:' "
++    "--ignore-trailing-space -I'^\"Project-Id-Version:' -I'^\"POT-Creation-Date:' -I'^\"PO-Revision-Date:' "
+   . "-I'^# [^[:blank:]]* translations for ' -I'^# Language [^[:blank:]]* translations for ' -I'Copyright (C) 20.. Free Software Foundation, Inc.' -I'^# This file is distributed under the same license as the' -I'^# Automatically generated, 20...' ";
+ 
+ sub show_files {
+-- 
+2.39.5
+
