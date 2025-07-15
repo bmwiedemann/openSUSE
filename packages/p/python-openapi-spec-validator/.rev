@@ -155,4 +155,14 @@
   * schemas and validators lazy loading proxy #170</comment>
     <requestid>1133688</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f79e7f47fd55df9cf733b785a0bf9727</srcmd5>
+    <version>0.7.2</version>
+    <time>1752590639</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.7.2:
+  * Allow undefined required properties #312
+  * Extract extra options recursively #391</comment>
+    <requestid>1293130</requestid>
+  </revision>
 </revisionlist>

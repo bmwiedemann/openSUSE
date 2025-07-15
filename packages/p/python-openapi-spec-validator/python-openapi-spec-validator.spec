@@ -1,7 +1,7 @@
 #
 # spec file for package python-openapi-spec-validator
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-openapi-spec-validator
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Python module for validating OpenAPI Specs against Swagger and OAS3
 License:        Apache-2.0
@@ -38,7 +38,7 @@ Requires:       (python-openapi-schema-validator >= 0.6.0 with python-openapi-sc
 Requires:       python-importlib-resources >= 5.8.0
 %endif
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module importlib-resources >= 5.8.0 if %python-base < 3.9}
