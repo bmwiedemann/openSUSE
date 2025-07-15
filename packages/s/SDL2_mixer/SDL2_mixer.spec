@@ -30,7 +30,6 @@ Source:         https://github.com/libsdl-org/SDL_mixer/releases/download/releas
 Source2:        https://github.com/libsdl-org/SDL_mixer/releases/download/release-%version/SDL2_mixer-%version.tar.gz.sig
 Source3:        %name.keyring
 Source4:        baselibs.conf
-BuildRequires:  SDL2-devel >= 2.24
 BuildRequires:  dos2unix
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(flac)
@@ -38,6 +37,7 @@ BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libxmp)
 BuildRequires:  pkgconfig(opusfile)
+BuildRequires:  pkgconfig(sdl2) >= 2.24
 BuildRequires:  pkgconfig(vorbis)
 Suggests:       timidity
 

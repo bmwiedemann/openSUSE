@@ -126,4 +126,12 @@
     <comment>- Update to release 2.8.1</comment>
     <requestid>1244286</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>a80f00030f7059c457bb5ce35e913667</srcmd5>
+    <version>2.8.1</version>
+    <time>1752590651</time>
+    <user>anag_factory</user>
+    <comment>- Use pkgconfig() to locate build requirements</comment>
+    <requestid>1293174</requestid>
+  </revision>
 </revisionlist>

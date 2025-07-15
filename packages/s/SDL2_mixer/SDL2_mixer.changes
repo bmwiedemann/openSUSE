@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 14 14:45:50 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Use pkgconfig() to locate build requirements
+
+-------------------------------------------------------------------
 Fri Feb  7 21:58:11 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.1
