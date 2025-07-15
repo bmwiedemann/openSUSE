@@ -1,4 +1,421 @@
 -------------------------------------------------------------------
+Sun Jul 13 14:04:39 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.13.4
+  * If you pass a function as the first argument to a find* method,
+    the function will only ever be called once per tag, with the
+    Tag object as the argument. Starting in 4.13.0, there were
+    cases where the function would be called with a Tag object and
+    then called again with the name of the tag. [bug=2106435]
+  * Added a passthrough implementation for
+    NavigableString.__getitem__ which gives a more helpful
+    exception if the user tries to treat it as a Tag and access its
+    HTML attributes.
+  * Fixed a bug that caused an exception when unpickling the result
+    of parsing certain invalid markup with lxml as the tree
+    builder. [bug=2103126]
+  * Converted the AUTHORS file to UTF-8 for PEP8 compliance.
+    [bug=2107405]
+- Release 4.13.3 (20250204)
+  * Modified the 4.13.2 change slightly to restore backwards
+    compatibility. Specifically, calling a find_* method with no
+    arguments should return the first Tag out of the iterator, not
+    the first PageElement. [bug=2097333]
+- Release 4.13.2 (20250204)
+  * Gave ElementFilter the ability to explicitly say that it
+    excludes every item in the parse tree. This is used internally
+    in situations where the provided filters are logically
+    inconsistent or match a value against the null set.
+  
+    Without this, it's not always possible to distinguish between a
+    SoupStrainer that excludes everything and one that excludes
+    nothing.
+  
+    This fixes a bug where calls to find_* methods with no
+    arguments returned None, instead of the first item out of the
+    iterator. [bug=2097333]
+  
+    Things added to the API to support this:
+  
+    - The ElementFilter.includes_everything property
+    - The MatchRule.exclude_everything member
+    - The _known_rules argument to ElementFilter.match. This is an
+      optional argument used internally to indicate that an
+      optimization is safe.
+- Release 4.13.1 (20250203)
+  * Updated pyproject.toml to require Python 3.7 or above.
+    [bug=2097263]
+  * Pinned the typing-extensions dependency to a minimum version of
+    4.0.0. [bug=2097262]
+  * Restored the English documentation to the source distribution.
+    [bug=2097237]
+  * Fixed a regression where HTMLFormatter and XMLFormatter were
+    not propagating the indent parameter to the superconstructor.
+    [bug=2097272]
+- Release 4.13.0 (20250202)
+  * This release introduces Python type hints to all public classes
+    and methods in Beautiful Soup. The addition of these type hints
+    exposed a large number of very small inconsistencies in the
+    code, which I've fixed, but the result is a larger-than-usual
+    number of deprecations and changes that may break backwards
+    compatibility.
+    
+    Chris Papademetrious deserves a special thanks for his work on
+    this release through its long beta process.    
+  ## Deprecation notices
+  * These things now give DeprecationWarnings when you try to use
+    them, and are scheduled to be removed in Beautiful Soup 4.15.0.
+  * Every deprecated method, attribute and class from the 3.0 and
+    2.0 major versions of Beautiful Soup. These have been
+    deprecated for a very long time, but they didn't issue
+    DeprecationWarning when you tried to use them. Now they do, and
+    they're all going away soon.
+  
+    This mainly refers to methods and attributes with camelCase
+    names, for example: renderContents, replaceWith,
+    replaceWithChildren, findAll, findAllNext, findAllPrevious,
+    findNext, findNextSibling, findNextSiblings, findParent,
+    findParents, findPrevious, findPreviousSibling,
+    findPreviousSiblings, getText, nextSibling, previousSibling,
+    isSelfClosing, fetchNextSiblings, fetchPreviousSiblings,
+    fetchPrevious, fetchPreviousSiblings, fetchParents, findChild,
+    findChildren, childGenerator, nextGenerator,
+    nextSiblingGenerator, previousGenerator,
+    previousSiblingGenerator, recursiveChildGenerator, and
+    parentGenerator.
+  
+    This also includes the BeautifulStoneSoup class.
+  * The SAXTreeBuilder class, which was never officially supported
+    or tested.
+  * The private class method BeautifulSoup._decode_markup(), which
+    has not been used inside Beautiful Soup for many years.
+  * The first argument to BeautifulSoup.decode has been changed
+    from pretty_print:bool to indent_level:int, to match the
+    signature of Tag.decode. Using a bool will still work but will
+    give you a DeprecationWarning.
+  * SoupStrainer.text and SoupStrainer.string are both deprecated,
+    since a single item can't capture all the possibilities of a
+    SoupStrainer designed to match strings.
+  * SoupStrainer.search_tag(). It was never a documented method,
+    but if you use it, you should start using
+    SoupStrainer.allow_tag_creation() instead.
+  * The soup:BeautifulSoup argument to the TreeBuilderForHtml5lib
+    constructor is now required, not optional. It's unclear why it
+    was optional in the first place, so if you discover you need
+    this, contact me for possible un-deprecation.
+  ## Compatibility notices
+  * This version drops support for Python 3.6. The minimum
+    supported major Python version for Beautiful Soup is now Python
+    3.7.
+  * Deprecation warnings have been added for all deprecated methods
+    and attributes (see above). Going forward, deprecated names
+    will be removed two feature releases or one major release after
+    the deprecation warning is added.
+  * The storage for a tag's attribute values now modifies incoming
+    values to be consistent with the HTML or XML spec. This means
+    that if you set an attribute value to a number, it will be
+    converted to a string immediately, rather than being converted
+    when you output the document. [bug=2065525]
+  
+    More importantly for backwards compatibility, setting an HTML
+    attribute value to True will set the attribute's value to the
+    appropriate string per the HTML spec. Setting an attribute
+    value to False or None will remove the attribute value from the
+    tag altogether, rather than (effectively, as before) setting
+    the value to the string "False" or the string "None".
+  
+    This means that some programs that modify documents will
+    generate different output than they would in earlier versions
+    of Beautiful Soup, but the new documents are more likely to
+    represent the intent behind the modifications.
+  
+    To give a specific example, if you have code that looks
+    something like this:
+  
+  	checkbox1['checked'] = True checkbox2['checked'] = False
+  
+    Then a document that used to look like this (with most browsers
+    treating both boxes as checked):
+  
+  	<input type="checkbox" checked="True"/> <input type="checkbox"
+          checked="False"/>
+  
+    Will now look like this (with browsers treating only the first
+    box as checked):
+  
+  	<input type="checkbox" checked="checked"/> <input
+  	type="checkbox"/>
+  
+    You can get the old behavior back by instantiating a
+    TreeBuilder with `attribute_dict_class=dict`, or you can
+    customize how Beautiful Soup treates attribute values by
+    passing in a custom subclass of dict.
+  * If Tag.get_attribute_list() is used to access an attribute
+    that's not set, the return value is now an empty list rather
+    than [None].
+  * If you pass an empty list as the attribute value when searching
+    the tree, you will now find all tags which have that attribute
+    set to a value in the empty list--that is, you will find
+    nothing. This is consistent with other situations where a list
+    of acceptable values is provided. Previously, an empty list was
+    treated the same as None and False, and you would have found
+    the tags which did not have that attribute set at all.
+    [bug=2045469]
+  * For similar reasons, if you pass in limit=0 to a find() method,
+    you will now get zero results. Previously, you would get all
+    matching results.
+  * When using one of the find() methods or creating a
+    SoupStrainer, if you specify the same attribute value in
+    ``attrs`` and the keyword arguments, you'll end up with two
+    different ways to match that attribute. Previously the value in
+    keyword arguments would override the value in ``attrs``.
+  * All exceptions were moved to the bs4.exceptions module, and all
+    warnings to the bs4._warnings module (named so as not to shadow
+    Python's built-in warnings module). All warnings and exceptions
+    are exported from the bs4 module, which is probably the safest
+    place to import them from in your own code.
+  * As a side effect of this, the string constant
+    BeautifulSoup.NO_PARSER_SPECIFIED_WARNING was moved to
+    GuessedAtParserWarning.MESSAGE.
+  * The 'html5' formatter is now much less aggressive about
+    escaping ampersands, escaping only the ampersands considered
+    "ambiguous" by the HTML5 spec (which is almost none of them).
+    This is the sort of change that might break your unit test
+    suite, but the resulting markup will be much more readable and
+    more HTML5-ish.
+  
+    To quickly get the old behavior back, change code like this:
+  
+      tag.encode(formatter='html5')
+  
+    to this:
+  
+      tag.encode(formatter='html5-4.12')
+  
+    In the future, the 'html5' formatter may be become the default
+    HTML formatter, which will change Beautiful Soup's default
+    output. This will break a lot of test suites so it's not going
+    to happen for a while. [bug=1902431]
+  * Tag.sourceline and Tag.sourcepos now always have a consistent
+    data type: Optional[int]. Previously these values were
+    sometimes an Optional[int], and sometimes they were
+    Optional[Tag], the result of searching for a child tag called
+    <sourceline> or <sourcepos>. [bug=2065904]
+  
+    If your code does search for a tag called <sourceline> or
+    <sourcepos>, it may stop finding that tag when you upgrade to
+    Beautiful Soup 4.13. If this happens, you'll need to replace
+    code that treats "sourceline" or "sourcepos" as tag names:
+  
+       tag.sourceline
+  
+    with code that explicitly calls the find() method:
+  
+       tag.find("sourceline").name
+  
+    Making the behavior of sourceline and sourcepos consistent has
+    the side effect of fixing a major performance problem when a
+    Tag is copied.
+  
+    With this change, the store_line_numbers argument to the
+    BeautifulSoup constructor becomes much less useful, and its use
+    is now discouraged, thought I'm not deprecating it yet. Please
+    contact me if you have a performance or security rationale for
+    setting store_line_numbers=False.
+  * append(), extend(), insert(), and unwrap() were moved from
+    PageElement to Tag. Those methods manipulate the 'contents'
+    collection, so they would only have ever worked on Tag objects.
+  * The BeautifulSoupHTMLParser constructor now requires a
+    BeautifulSoup object as its first argument. This almost
+    certainly does not affect you, since you probably use
+    HTMLParserTreeBuilder, not BeautifulSoupHTMLParser directly.
+  * The TreeBuilderForHtml5lib methods fragmentClass(),
+    getFragment(), and testSerializer() now raise
+    NotImplementedError. These methods are called only by
+    html5lib's test suite, and Beautiful Soup isn't integrated into
+    that test suite, so this code was long since unused and
+    untested.
+  
+    These methods are _not_ deprecated, since they are methods
+    defined by html5lib. They may one day have real
+    implementations, as part of a future effort to integrate
+    Beautiful Soup into html5lib's test suite.
+  * AttributeValueWithCharsetSubstitution.encode() is renamed to
+    substitute_encoding, to avoid confusion with the much different
+    str.encode()
+  * Using PageElement.replace_with() to replace an element with
+    itself returns the element instead of None.
+  * All TreeBuilder constructors now take the empty_element_tags
+    argument. The sets of tags found in
+    HTMLTreeBuilder.empty_element_tags and
+    HTMLTreeBuilder.block_elements are now in
+    HTMLTreeBuilder.DEFAULT_EMPTY_ELEMENT_TAGS and
+    HTMLTreeBuilder.DEFAULT_BLOCK_ELEMENTS, to avoid confusing them
+    with instance variables.
+  * The unused constant LXMLTreeBuilderForXML.DEFAULT_PARSER_CLASS
+    has been removed.
+  * Some of the arguments in the methods of LXMLTreeBuilderForXML
+    have been renamed for consistency with the names lxml uses for
+    those arguments in the superclass. This won't affect you unless
+    you were calling methods like LXMLTreeBuilderForXML.start()
+    directly.
+  * In particular, the arguments to
+    LXMLTreeBuilderForXML.prepare_markup have been changed to match
+    the arguments to the superclass, TreeBuilder.prepare_markup.
+    Specifically, document_declared_encoding now appears before
+    exclude_encodings, not after. If you were calling this method
+    yourself, I recommend switching to using keyword arguments
+    instead.
+  ## New features
+  * The new ElementFilter class encapsulates Beautiful Soup's rules
+    about matching elements and deciding which parts of a document
+    to parse. It's easy to override those rules with subclassing or
+    function composition. The SoupStrainer class, which contains
+    all the matching logic you're familiar with from the find_*
+    methods, is now a subclass of ElementFilter.
+  * The new PageElement.filter() method provides a fully general
+    way of finding elements in a Beautiful Soup parse tree. You can
+    specify a function to iterate over the tree and an
+    ElementFilter to determine what matches.
+  * The new_tag() method now takes a 'string' argument. This allows
+    you to set the string contents of a Tag when creating it. Patch
+    by Chris Papademetrious. [bug=2044599]
+  * Defined a number of new iterators which are the same as
+    existing iterators, but which yield the element itself before
+    beginning to traverse the tree. [bug=2052936] [bug=2067634]
+  
+    - PageElement.self_and_parents
+    - PageElement.self_and_descendants
+    - PageElement.self_and_next_elements
+    - PageElement.self_and_next_siblings
+    - PageElement.self_and_previous_elements
+    - PageElement.self_and_previous_siblings
+  
+    self_and_parents yields the element you call it on and then all
+    of its parents. self_and_next_element yields the element you
+    call it on and then every element parsed afterwards; and so on.
+  * The NavigableString class now has a .string property which
+    returns the string itself. This makes it easier to iterate over
+    a mixed list of Tag and NavigableString objects. [bug=2044794]
+  * Defined a new method, Tag.copy_self(), which creates a copy of
+    a Tag with the same attributes but no contents. [bug=2065120]
+  
+    Note that this method used to be a private method named
+    _clone(). The _clone() method has been removed, so if you were
+    using it, change your code to call copy_self() instead.
+  * The PageElement.append() method now returns the element that
+    was appended; it used to have no return value. [bug=2093025]
+  * The methods PageElement.insert(), PageElement.extend(),
+    PageElement.insert_before(), and PageElement.insert_after() now
+    return a list of the items inserted. These methods used to have
+    no return value. [bug=2093025]
+  * The PageElement.insert() method now takes a variable number of
+    arguments and returns a list of all elements inserted, to match
+    insert_before() and insert_after(). (Even if I hadn't made the
+    variable-argument change, an edge case around inserting one
+    Beautiful Soup object into another means that insert()'s return
+    value needs to be a list.) [bug=2093025]
+  * Defined a new warning class, UnusualUsageWarning, which is a
+    superclass for all of the warnings issued when Beautiful Soup
+    notices something unusual but not guaranteed to be wrong, like
+    markup that looks like a URL (MarkupResemblesLocatorWarning) or
+    XML being run through an HTML parser (XMLParsedAsHTMLWarning).
+  
+    The text of these warnings has been revamped to explain in more
+    detail what is going on, how to check if you've made a mistake,
+    and how to make the warning go away if you are acting
+    deliberately.
+  
+    If these warnings are interfering with your workflow, or simply
+    annoying you, you can filter all of them by filtering
+    UnusualUsageWarning, without worrying about losing the warnings
+    Beautiful Soup issues when there *definitely* is a problem you
+    need to correct.
+  * It's now possible to modify the behavior of the list used to
+    store the values of multi-valued attributes such as HTML
+    'class', by passing in whatever class you want instantiated
+    (instead of a normal Python list) to the TreeBuilder
+    constructor as attribute_value_list_class. [bug=2052943]
+  ## Improvements
+  * decompose() was moved from Tag to its superclass PageElement,
+    since there's no reason it won't also work on NavigableString
+    objects.
+  * Emit an UnusualUsageWarning if the user tries to search for an
+    attribute called _class; they probably mean "class_".
+    [bug=2025089]
+  * The MarkupResemblesLocatorWarning issued when the markup
+    resembles a filename is now issued less often, due to
+    improvements in detecting markup that's unlikely to be a
+    filename. [bug=2052988]
+  * Emit a warning if a document is parsed using a SoupStrainer
+    that's set up to filter everything. In these cases, filtering
+    everything is the most consistent thing to do, but there was no
+    indication that this was happening, so the behavior may have
+    seemed mysterious.
+  * When using one of the find() methods or creating a
+    SoupStrainer, you can pass a list of any accepted object
+    (strings, regular expressions, etc.) for any of the objects.
+    Previously you could only pass in a list of strings.
+  * A SoupStrainer can now filter tag creation based on a tag's
+    namespaced name. Previously only the unqualified name could be
+    used.
+  * Added the correct stacklevel to another instance of the
+    XMLParsedAsHTMLWarning. [bug=2034451]
+  * Improved the wording of the TypeError raised when you pass
+    something other than markup into the BeautifulSoup constructor.
+    [bug=2071530]
+  * Optimized the case where you use Tag.insert() to "insert" a
+    PageElement into its current location. [bug=2077020]
+  * Changes to make tests work whether tests are run under
+    soupsieve 2.6 or an earlier version. Based on a patch by
+    Stefano Rivera.
+  * Removed the strip_cdata argument to lxml's HTMLParser
+    constructor, which never did anything and is deprecated as of
+    lxml 5.3.0. Patch by Stefano Rivera. [bug=2076897]
+  ## Bug fixes
+  * Copying a tag with a multi-valued attribute now makes a copy of
+    the list of values, eliminating a bug where both the old and
+    new copy shared the same list. [bug=2067412]
+  * The lxml TreeBuilder, like the other TreeBuilders, now filters
+    a document's initial DOCTYPE if you've set up a SoupStrainer
+    that eliminates it. [bug=2062000]
+  * A lot of things can go wrong if you modify the parse tree while
+    iterating over it, especially if you are removing or replacing
+    elements. Most of those things fall under the category of
+    unexpected behavior (which is why I don't recommend doing
+    this), but there are a few ways that caused unhandled
+    exceptions. The list comprehensions used by Beautiful Soup
+    (e.g. .descendants, which powers the find* methods) should now
+    work correctly in those cases, or at least not raise
+    exceptions.
+  
+    As part of this work, I changed when the list comprehension
+    determines the next element. Previously it was done after the
+    yield statement; now it's done before the yield statement. This
+    lets you remove the yielded element in calling code, or modify
+    it in a way that would break this calculation, without causing
+    an exception.
+  
+    So if your code relies on modifying the tree in a way that
+    'steers' a list comprehension, rather than using the list
+    comprension to decide which bits of the tree to modify, it will
+    probably stop working at this point. [bug=2091118]
+  * Fixed an error in the lookup table used when converting
+    ISO-Latin-1 to ASCII, which no one should do anyway.
+  * Corrected the markup that's output in the unlikely event that
+    you encode a document to a Python internal encoding (like
+    "palmos") that's not recognized by the HTML or XML standard.
+  * UnicodeDammit.markup is now always a bytestring representing
+    the *original* markup (sans BOM), and
+    UnicodeDammit.unicode_markup is always the converted Unicode
+    equivalent of the original markup. Previously,
+    UnicodeDammit.markup was treated inconsistently and would often
+    end up containing Unicode. UnicodeDammit.markup was not a
+    documented attribute, but if you were using it, you probably
+    want to switch to using .unicode_markup instead.
+- Drop soupsieve26-compat.patch
+
+-------------------------------------------------------------------
 Wed Jun 18 07:05:52 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Skip failing test test_rejected_input, it is known to be flaky

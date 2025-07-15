@@ -18,29 +18,32 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-beautifulsoup4
-Version:        4.12.3
+Version:        4.13.4
 Release:        0
 Summary:        HTML/XML Parser for Quick-Turnaround Applications Like Screen-Scraping
 License:        MIT
 URL:            https://www.crummy.com/software/BeautifulSoup/
 Source:         https://files.pythonhosted.org/packages/source/b/beautifulsoup4/beautifulsoup4-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM soupsieve26-compat.patch lp#2086199 mcepl@suse.com
-# compatibility patch for various versions of soupsieve
-Patch0:         soupsieve26-compat.patch
-BuildRequires:  %{python_module cchardet}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module soupsieve >= 1.2}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module typing-extensions >= 4.0.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
-Requires:       python-cchardet
 Requires:       python-soupsieve >= 1.2
+Requires:       python-typing-extensions >= 4.0.0
+Recommends:     python-cchardet
 Suggests:       python-html5lib
-Suggests:       python-lxml >= 3.4.4
+Suggests:       python-lxml
 Provides:       python-bs4 = %{version}-%{release}
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module cchardet}
+BuildRequires:  %{python_module html5lib}
+BuildRequires:  %{python_module lxml}
+# /SECTION
 BuildArch:      noarch
 %python_subpackages
 
@@ -75,8 +78,9 @@ Beautiful Soup.
 %package -n python-beautifulsoup4-doc
 Summary:        Documentation for %{name}
 Recommends:     %{name} = %{version}
-Obsoletes:      python2-beautifulsoup4-doc
-Obsoletes:      python3-beautifulsoup4-doc
+Provides:       %{python_module beautifulsoup4-doc = %{version}-%{release}}
+Provides:       python3-beautifulsoup4-doc = %{version}-%{release}
+Obsoletes:      python3-beautifulsoup4-doc < %{version}-%{release}
 
 %description -n python-beautifulsoup4-doc
 Documentation and help files for %{name}
@@ -87,7 +91,7 @@ Documentation and help files for %{name}
 
 %build
 %pyproject_wheel
-pushd doc && make html && rm build/html/.buildinfo build/html/objects.inv &&  popd
+pushd doc && make html && rm _build/html/.buildinfo _build/html/objects.inv &&  popd
 
 %install
 %pyproject_install
@@ -95,18 +99,17 @@ pushd doc && make html && rm build/html/.buildinfo build/html/objects.inv &&  po
 
 %check
 export LANG=en_US.UTF-8
-export PYTHONDONTWRITEBYTECODE=1
-donttest="test_rejected_input"
-%pytest -k "not ($donttest)"
+donttest="test_rejected_input or test_rejected_markup"
+%pytest -k "not ($donttest)" -rsfE
 
 %files %{python_files}
 %license LICENSE
 %{python_sitelib}/bs4/
-%{python_sitelib}/beautifulsoup4-%{version}*-info
+%{python_sitelib}/beautifulsoup4-%{version}.dist-info
 
 %if 0%{?suse_version} > 1500
 %files -n python-beautifulsoup4-doc
 %endif
-%doc CHANGELOG README.md doc/build/html
+%doc CHANGELOG README.md doc/_build/html
 
 %changelog
