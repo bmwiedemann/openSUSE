@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 11 11:06:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add ce52c5f96106ae5747171663a46831f21aa52d95.patch: Fix building with Poppler 25.07.0
+
+-------------------------------------------------------------------
+Thu Jul 10 09:22:33 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.2+38:
+  * Fix the popover bug in the Xml Attr Dialog
+
+-------------------------------------------------------------------
 Thu Jul 03 19:15:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4.2+37:

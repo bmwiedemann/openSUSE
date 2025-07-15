@@ -17,7 +17,7 @@
 
 
 Name:           inkscape
-Version:        1.4.2+37
+Version:        1.4.2+38
 Release:        0
 Summary:        Vector Illustration Program
 License:        GPL-3.0-only
@@ -27,6 +27,8 @@ Source:         inkscape-%{version}.tar.zst
 # openSUSE palette file
 Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
+# PATCH-FIX-UPSTREAM ce52c5f96106ae5747171663a46831f21aa52d95.patch -- Fix building with Poppler 25.07.0
+Patch:          https://gitlab.com/inkscape/inkscape/-/commit/ce52c5f96106ae5747171663a46831f21aa52d95.patch
 
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
