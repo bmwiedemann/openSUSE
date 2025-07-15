@@ -143,4 +143,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * QCA: Update WCN785x btusb firmware to 2.0.0-00799-5</comment>
     <requestid>1285896</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b9b110594443b2a14d7f5330f8bcb8b4</srcmd5>
+    <version>20250707</version>
+    <time>1752590528</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250707 (git commit ba5e4e381494):
+  * Revert &quot;linux-firmware: Update firmware file for Intel Pulsar core&quot;</comment>
+    <requestid>1293166</requestid>
+  </revision>
 </revisionlist>
