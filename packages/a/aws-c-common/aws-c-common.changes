@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 11 10:30:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.12.4
+  * Remove clang-3 from CI by @sbSteveK in (#1203)
+  * Fix signature of aws_backtrace_log by @TingDaoK in (#1206)
+  * Remove Windows 2019 and add Windows 2025 with MSVC-17
+    by @TingDaoK in (#1209)
+  * Fix byte helpers for mingw 32 bit by @DmitriyMusatkin in (#1210)
+  * Add a python script to help pick up the latest cjson and libcbor
+    by @TingDaoK in (#1211)
+  * Add API for a more compact (no dashes) UUID-to-str
+    by @bretambrose in (#1212)
+
+-------------------------------------------------------------------
 Wed May 14 08:43:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.12.3
