@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Tue Jul 15 10:56:52 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1028
+- handle remove of LVM PV hidden by LVM devices file (bsc#1246066)
+- 4.5.263
+
+--------------------------------------------------------------------
+Mon Jul 14 07:09:23 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1027
+- run lvm command with verbose flag
+- 4.5.262
+
+--------------------------------------------------------------------
 Wed Jul 9 13:56:34 UTC 2025 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1026
