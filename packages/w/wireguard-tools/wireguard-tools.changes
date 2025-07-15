@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun 18 12:31:20 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20250521
+  * config: handle strdup failure.
+  * wg-quick: linux: add 'dev' to 'ip link add' to avoid keyword
+    conflicts.
+  * ipc: add stub for allowedips flags on other platforms.
+  * ipc: linux: support incremental allowed ips updates.
+  * ipc: linux: enforce IFNAMSIZ limit.
+  * man: set private key in PreUp rather than PostUp.
+  * wg-quick: run PreUp hook after creating interface.
+  * show: fix show all endpoints output.
+  * show: apply const to right part of pointer.
+  * wg-quick: linux: prevent traffic from momentarily leaking into
+    tunnel.
+  * reresolve-dns: use $EPOCHSECONDS instead of $(date +%s).
+  * embeddable-wg-library: add named wg_endpoint union.
+  * ipc: use more clever PnP enumerator.
+
+-------------------------------------------------------------------
 Tue Feb 20 15:21:49 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
