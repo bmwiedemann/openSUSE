@@ -1,7 +1,7 @@
 #
 # spec file for package voms
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2015 mischa.salle@gmail.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,12 @@
 
 
 Name:           voms
-Version:        2.1.0~rc3
-%define upstream_version 2.1.0-rc3
+Version:        2.1.2
 Release:        0
 Summary:        The Virtual Organisation Membership Service
 License:        Apache-2.0
 URL:            https://wiki.italiangrid.it/VOMS
-Source:         https://github.com/italiangrid/voms/archive/v%{upstream_version}.tar.gz#/%{name}-%{upstream_version}.tar.gz
-Patch0:         voms-gcc14.patch
+Source:         https://github.com/italiangrid/voms/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 %description
 The Virtual Organization Membership Service (VOMS) is an attribute authority
@@ -103,8 +101,7 @@ authorization purposes.
 This package provides command line applications to access the VOMS services.
 
 %prep
-%autosetup -p1 -n voms-%{upstream_version}
-
+%autosetup -p1
 # Fix bad permissions (which otherwise end up in the debuginfo package)
 find . '(' -name '*.h' -o -name '*.c' -o -name '*.cpp' -o \
         -name '*.cc' -o -name '*.java' ')' -exec chmod a-x {} +

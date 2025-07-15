@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul  8 13:32:28 UTC 2025 - pgajdos@suse.com
+
+- version update to 2.1.2
+  * Make the build more robust against non-standard installations of some dependencies by @giacomini in #138
+  * Fix compilation with GCC 15 (Fedora 42) by @ellert in #140
+  * Remove an escaped slash during normalization of a DN by @giacomini in #144
+  * Preserve the possible failure of AC verification in voms-proxy-info by @giacomini in #143
+- deleted patches
+  - voms-gcc14.patch (upstreamed)
+
+-------------------------------------------------------------------
 Tue Nov  5 14:08:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Eliminate usage of update-alternatives: There is no actual
