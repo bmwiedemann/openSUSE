@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 09 12:23:28 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 0.23.2:
+  * update alpine to 3.22
+  * gha cache: reload expired cache URLs
+  * test: provenance local export
+  * local: fix attestation filename
+  * frontend: group provenance tests
+  * vendor: github.com/docker/cli v28.3.0
+  * vendor: github.com/docker/docker v28.3.0
+  * vendor: align otel deps to v0.60.0 / v1.35.0
+  * client: allow configuring exporter content store
+  * dockerfile: update govulncheck to v1.1.4
+
+-------------------------------------------------------------------
 Mon Jun 23 05:50:18 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 0.23.1:
