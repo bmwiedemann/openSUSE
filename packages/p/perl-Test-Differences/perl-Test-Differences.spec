@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Differences
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,10 @@
 
 %define cpan_name Test-Differences
 Name:           perl-Test-Differences
-Version:        0.710.0
+Version:        0.720.0
 Release:        0
-%define cpan_version 0.71
+# 0.72 -> normalize -> 0.720.0
+%define cpan_version 0.72
 #Upstream:  All Rights Reserved. You may use, distribute and modify this software under the terms of the GNU public license, any version, or the Artistic license.
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Test strings and data structures and show differences if not ok
@@ -30,15 +31,15 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Capture::Tiny) >= 0.24
+BuildRequires:  perl(Capture::Tiny) >= 0.240
 BuildRequires:  perl(Data::Dumper) >= 2.126
 BuildRequires:  perl(Test::More) >= 0.88
-BuildRequires:  perl(Text::Diff) >= 1.43
-Requires:       perl(Capture::Tiny) >= 0.24
+BuildRequires:  perl(Text::Diff) >= 1.430
+Requires:       perl(Capture::Tiny) >= 0.240
 Requires:       perl(Data::Dumper) >= 2.126
 Requires:       perl(Test::More) >= 0.88
-Requires:       perl(Text::Diff) >= 1.43
-Provides:       perl(Test::Differences) = 0.710.0
+Requires:       perl(Text::Diff) >= 1.430
+Provides:       perl(Test::Differences) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 
@@ -86,7 +87,7 @@ other Test::Builder based testing modules. As the SYNOPSIS shows, another
 testing module must be used as the basis for your test suite.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

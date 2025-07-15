@@ -155,4 +155,19 @@
 </comment>
     <requestid>1156512</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8d8010a737ab19e148610ebb6deb08a3</srcmd5>
+    <version>0.720.0</version>
+    <time>1752590547</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1291903 from tinita
+
+- updated to 0.720.0 (0.72)
+   see /usr/share/doc/packages/perl-Test-Differences/Changes
+  0.72   2025-07-07
+      - Changes to tests only, so tests pass when you have a new perl that
+        support bools, but an old Data::Dumper that doesn't (thanks to
+        Gianni Ceccarelli)</comment>
+    <requestid>1291923</requestid>
+  </revision>
 </revisionlist>
