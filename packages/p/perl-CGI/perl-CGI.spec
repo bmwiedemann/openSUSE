@@ -18,10 +18,10 @@
 
 %define cpan_name CGI
 Name:           perl-CGI
-Version:        4.690.0
+Version:        4.700.0
 Release:        0
-# 4.69 -> normalize -> 4.690.0
-%define cpan_version 4.69
+# 4.70 -> normalize -> 4.700.0
+%define cpan_version 4.70
 License:        Artistic-2.0
 Summary:        Handle Common Gateway Interface requests and responses
 URL:            https://metacpan.org/release/%{cpan_name}

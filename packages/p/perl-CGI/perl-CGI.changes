@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul  8 05:35:23 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.700.0 (4.70)
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.70 2025-06-11
+
+      [ META ]
+      - remove github/coveralls/travis badges, no meaningful any more
+      - add github actions for CI (GH #273, thanks to esabol)
+
+-------------------------------------------------------------------
 Wed Jun 11 14:55:21 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.690.0 (4.69)

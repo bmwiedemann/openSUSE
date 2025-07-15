@@ -271,4 +271,19 @@
     <comment></comment>
     <requestid>1286339</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>438966ffdb6bd28c27458dc4e066831c</srcmd5>
+    <version>4.700.0</version>
+    <time>1752590547</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1291902 from tinita
+
+- updated to 4.700.0 (4.70)
+   see /usr/share/doc/packages/perl-CGI/Changes
+  4.70 2025-06-11
+      [ META ]
+      - remove github/coveralls/travis badges, no meaningful any more
+      - add github actions for CI (GH #273, thanks to esabol)</comment>
+    <requestid>1291922</requestid>
+  </revision>
 </revisionlist>
