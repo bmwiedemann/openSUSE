@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mail-AuthenticationResults
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Mail-AuthenticationResults
 Name:           perl-Mail-AuthenticationResults
-Version:        2.20231031
+Version:        2.20250709
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Object Oriented Authentication-Results Headers
@@ -50,7 +50,7 @@ Comments added between key/value pairs will be added after them in the data
 structures and when stringified.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

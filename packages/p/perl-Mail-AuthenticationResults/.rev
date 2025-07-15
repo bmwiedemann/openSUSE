@@ -39,4 +39,17 @@
     <comment></comment>
     <requestid>1126975</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f0c424fa9d950d1c1634c124ca331168</srcmd5>
+    <version>2.20250709</version>
+    <time>1752590548</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1291906 from tinita
+
+- updated to 2.20250709
+   see /usr/share/doc/packages/perl-Mail-AuthenticationResults/Changes
+  2.20250709 2025-07-10 09:33:55+10:00 Australia/Melbourne
+    - Correctly parse a string beginning with a slash</comment>
+    <requestid>1291925</requestid>
+  </revision>
 </revisionlist>
