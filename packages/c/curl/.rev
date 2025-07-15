@@ -2018,4 +2018,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
   being successful even on failures when using -f --retry</comment>
     <requestid>1290049</requestid>
   </revision>
+  <revision rev="217" vrev="6">
+    <srcmd5>704210eee5eb31e6dc920b5106d6cdf5</srcmd5>
+    <version>8.14.1</version>
+    <time>1752590521</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1293071</requestid>
+  </revision>
 </revisionlist>

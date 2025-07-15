@@ -53,6 +53,8 @@ Patch2:         curl-secure-getenv.patch
 Patch3:         curl-disabled-redirect-protocol-message.patch
 # PATCH-FIX-UPSTREAM fix return code with --fail when --retry is used
 Patch4:         fix-return-code-with-retry.patch
+# PATCH-FIX-UPSTREAM bsc#1246197 Fix the --ftp-pasv option in curl v8.14.1
+Patch5:         curl-fix--ftp-pasv.patch
 BuildRequires:  groff
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

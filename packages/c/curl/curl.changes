@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 14 08:29:01 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix the --ftp-pasv option in curl v8.14.1 [bsc#1246197]
+  * tool_getparam: fix --ftp-pasv [5f805ee]
+  * Add curl-fix--ftp-pasv.patch
+
+-------------------------------------------------------------------
 Wed Jul  2 20:12:07 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - add fix-return-code-with-retry.patch to fix return code
