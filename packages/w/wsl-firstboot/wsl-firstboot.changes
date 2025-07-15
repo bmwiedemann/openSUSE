@@ -1,0 +1,58 @@
+-------------------------------------------------------------------
+Mon Jul 14 15:24:44 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'Source99: wsl-firstboot-rpmlintrc'
+
+-------------------------------------------------------------------
+Thu Jul 10 17:27:46 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating URL to point to openSUSE project space
+
+-------------------------------------------------------------------
+Thu Jul 10 17:14:46 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.5.5+git20250710.8ab0b8d:
+  * Updating jeos/JEOS/JeOS filenames and references to wsl/WSL/WSL
+
+-------------------------------------------------------------------
+Wed Jul 02 19:58:41 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.5.4+git20250702.74b8ef6:
+  * Update TERM in welcome-screen
+
+-------------------------------------------------------------------
+Sun Nov 24 06:14:49 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.5.3+git20241124.d5a7a3d:
+  * Updating 'registration' module to install proper -release package
+
+-------------------------------------------------------------------
+Sun Nov 24 02:35:00 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.5.3+git20241123.67bb2f5:
+  * Updating README; Adding "switch" module for SLES <-> SLED
+
+-------------------------------------------------------------------
+Mon Oct 21 18:52:26 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.5.3+git20241021.64f3015:
+  * Adding '-m' flag for useradd since SLE has 'CREATE_HOME no' for login.defs
+
+-------------------------------------------------------------------
+Fri Oct 18 20:35:51 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.5.3+git20241018.430e592:
+  * Updating registration permission
+
+-------------------------------------------------------------------
+Fri Oct 18 20:00:24 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.5.3+git20241018.56d74d6:
+  * Updating README; removing network files; adjusting user module; adding registration module
+
+-------------------------------------------------------------------
+Fri Oct 18 19:42:33 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Initial version from upstream.
+  * This is a copy of https://github.com/openSUSE/jeos-firstboot that has been
+    adjusted for WSL

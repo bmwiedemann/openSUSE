@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>50f424bf4dad8258b8dfda5bdcccd788</srcmd5>
+    <version>1.5.5+git20250710.8ab0b8d</version>
+    <time>1752590648</time>
+    <user>anag_factory</user>
+    <comment>wsl-firstboot is a fork of jeos-firstboot customized for WSL images; replacing the functionality of yast2-firstboot-wsl.</comment>
+    <requestid>1293194</requestid>
+  </revision>
+</revisionlist>
