@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul 14 09:21:36 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add texinfo-perl-5.42.patch: Fix syntax to be unambiguous
+  if (! $str eq '') is not really clear; is it
+    (!$str) eq ''
+  or
+    !($str eq '')
+  Perl 5.42 rightly flagges this syntax with:
+    Possible precedence problem between ! and string eq
+
+  Assuming !($str eq '') was meant, we can rewrite this as
+  $str ne '', which happens to also be used in multiple places
+  already (sometimes just a few lines further down in the same
+  files)
+
+-------------------------------------------------------------------
 Fri Apr  4 17:04:55 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu17 to CFLAGS to fix gcc15 compile time error

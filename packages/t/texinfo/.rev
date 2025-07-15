@@ -715,4 +715,12 @@
     <comment>add -std=gnu17 to CFLAGS to fix gcc15 compile time error (flag can be dropped w/ release 7.2) (forwarded request 1267205 from hsk17)</comment>
     <requestid>1267482</requestid>
   </revision>
+  <revision rev="73" vrev="3">
+    <srcmd5>8bccf5d05e83f2add05eac4d24edaffb</srcmd5>
+    <version>7.1</version>
+    <time>1752590481</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1293113</requestid>
+  </revision>
 </revisionlist>

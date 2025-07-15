@@ -1,0 +1,52 @@
+Index: texinfo-7.1/tp/Texinfo/Convert/DocBook.pm
+===================================================================
+--- texinfo-7.1.orig/tp/Texinfo/Convert/DocBook.pm
++++ texinfo-7.1/tp/Texinfo/Convert/DocBook.pm
+@@ -340,7 +340,7 @@ sub output($$)
+ 
+   my $fh;
+   my $encoded_output_file;
+-  if (! $output_file eq '') {
++  if ($output_file ne '') {
+     my $path_encoding;
+     ($encoded_output_file, $path_encoding)
+       = $self->encoded_output_file_name($output_file);
+Index: texinfo-7.1/tp/Texinfo/Convert/Info.pm
+===================================================================
+--- texinfo-7.1.orig/tp/Texinfo/Convert/Info.pm
++++ texinfo-7.1/tp/Texinfo/Convert/Info.pm
+@@ -100,7 +100,7 @@ sub output($)
+   my $tree_units = Texinfo::Structuring::split_by_node($root);
+ 
+   my $fh;
+-  if (! $output_file eq '') {
++  if ($output_file ne '') {
+     if ($self->get_conf('VERBOSE')) {
+       print STDERR "Output file $output_file\n";
+     }
+Index: texinfo-7.1/tp/Texinfo/Convert/LaTeX.pm
+===================================================================
+--- texinfo-7.1.orig/tp/Texinfo/Convert/LaTeX.pm
++++ texinfo-7.1/tp/Texinfo/Convert/LaTeX.pm
+@@ -1065,7 +1065,7 @@ sub output($$)
+ 
+   my $fh;
+   my $encoded_output_file;
+-  if (! $output_file eq '') {
++  if ($output_file ne '') {
+     my $path_encoding;
+     ($encoded_output_file, $path_encoding)
+       = $self->encoded_output_file_name($output_file);
+Index: texinfo-7.1/tp/Texinfo/Convert/TexinfoMarkup.pm
+===================================================================
+--- texinfo-7.1.orig/tp/Texinfo/Convert/TexinfoMarkup.pm
++++ texinfo-7.1/tp/Texinfo/Convert/TexinfoMarkup.pm
+@@ -298,7 +298,7 @@ sub output($$)
+ 
+   my $fh;
+   my $encoded_output_file;
+-  if (! $output_file eq '') {
++  if ($output_file ne '') {
+     my $path_encoding;
+     ($encoded_output_file, $path_encoding)
+       = $self->encoded_output_file_name($output_file);

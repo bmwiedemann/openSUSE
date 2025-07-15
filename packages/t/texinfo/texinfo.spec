@@ -1,7 +1,7 @@
 #
 # spec file for package texinfo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source2:        %{name}.keyring
 Source42:       %{name}-rpmlintrc
 Patch0:         texinfo-zlib.patch
 Patch1:         install-info_exitcode.patch
+Patch2:         texinfo-perl-5.42.patch
 BuildRequires:  automake
 BuildRequires:  glibc-locale
 BuildRequires:  help2man
