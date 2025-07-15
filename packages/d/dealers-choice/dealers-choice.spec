@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           dealers-choice
-Version:        0.0.5
+Version:        0.0.6
 Release:        0
 Summary:        Online Multiplayer Stud and Draw Poker
 License:        MIT
@@ -24,23 +25,26 @@ Group:          Amusements/Games/Board/Card
 URL:            https://dealer-s-choice.github.io/
 Source:         https://github.com/Dealer-s-Choice/dealers_choice/releases/download/v%{version}/%{name}-%{version}.tar.xz
 
-BuildRequires:  meson >= 0.61.0
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
-BuildRequires:  SDL2-devel
-BuildRequires:  SDL2_image-devel
-BuildRequires:  libSDL2_net-devel
-BuildRequires:  SDL2_ttf-devel
-BuildRequires:  libprotobuf-c-devel
-
+BuildRequires:  meson >= 0.61.0
+BuildRequires:  python3
+BuildRequires:  pkgconfig(SDL2_image)
+BuildRequires:  pkgconfig(SDL2_net)
+BuildRequires:  pkgconfig(SDL2_ttf)
+BuildRequires:  pkgconfig(libprotobuf-c)
+BuildRequires:  pkgconfig(sdl2)
 Requires:       hicolor-icon-theme
 
 %description
-Dealer's Choice is an online Multiplayer Stud and Draw Poker, where the deal
-rotates and each new game allows a different player to select the variant.
+Dealer's Choice is a cross-platform, networked multiplayer poker game that
+supports various draw and stud variants, including optional wild cards. The
+deal rotates between players, and each new game allows a different player to
+choose the variant.
 
 %lang_package
+
 %prep
 %autosetup -n %{name}-%{version}
 
@@ -54,19 +58,34 @@ rotates and each new game allows a different player to select the variant.
 
 %install
 %meson_install
+%check
+%meson_test
 
 %find_lang %{name}
 
-# Remove bundled license files if they exist in docs (duplicate with %license)
 rm -f %{buildroot}%{_docdir}/%{name}/LICENSE
 
 %files
 %license LICENSE
 %{_docdir}/%{name}
-%{_bindir}/*
+%{_bindir}/%{name}
 %{_datadir}/applications/dealers-choice.desktop
 %{_datadir}/%{name}/
-%{_datadir}/icons/hicolor/*/apps/dealers-choice.png
+%dir %{_datadir}/icons/hicolor
+%dir %{_datadir}/icons/hicolor/128x128
+%dir %{_datadir}/icons/hicolor/128x128/apps
+%dir %{_datadir}/icons/hicolor/64x64
+%dir %{_datadir}/icons/hicolor/64x64/apps
+%dir %{_datadir}/icons/hicolor/32x32
+%dir %{_datadir}/icons/hicolor/32x32/apps
+%dir %{_datadir}/icons/hicolor/16x16
+%dir %{_datadir}/icons/hicolor/16x16/apps
+%dir %{_datadir}/icons/hicolor/scalable
+%dir %{_datadir}/icons/hicolor/scalable/apps
+%{_datadir}/icons/hicolor/128x128/apps/dealers-choice.png
+%{_datadir}/icons/hicolor/64x64/apps/dealers-choice.png
+%{_datadir}/icons/hicolor/32x32/apps/dealers-choice.png
+%{_datadir}/icons/hicolor/16x16/apps/dealers-choice.png
 %{_datadir}/icons/hicolor/scalable/apps/dealers-choice.svg
 
 %files lang -f %{name}.lang

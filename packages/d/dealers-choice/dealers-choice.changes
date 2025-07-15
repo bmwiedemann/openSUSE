@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jul 14 07:00:16 UTC 2025 - Andy Alt <arch_stanton5995@proton.me>
+
+- Fix lint warnings
+- Fix directory ownership error
+- Enable tests
+- Update (fix) description
+
+-------------------------------------------------------------------
+Sun Jul 13 01:00:16 UTC 2025 - Andy Alt <arch_stanton5995@proton.me>
+
+- dealers-choice 0.0.6:
+  + Implement Deuces Wild option
+  * Fix tie handling
+  * Reduce client console output messages
+  + Partially implement 7-card stud
+  + Add optional 'language' setting (https://dealer-s-choice.github.io/docs/CONFIG.html)
+  * Network Protocol bumped to 3
+  + Add coin animation
+
+-------------------------------------------------------------------
+Wed Jul  9 19:38:04 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Use pkgconfig() BuildRequires to be more impervious to renames.
+
+-------------------------------------------------------------------
 Tue Jul  8 04:30:16 UTC 2025 - Andy Alt <arch_stanton5995@proton.me>
 
 - dealers-choice 0.0.5, initial package
