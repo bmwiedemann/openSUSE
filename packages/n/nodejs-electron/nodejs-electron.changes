@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 11 17:53:15 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Enable accelerated video decoding (VAAPI)
+  * vaapi-no-encoders.patch
+- Drop chromium-vaapi.patch which has been dead code for a while
+
+-------------------------------------------------------------------
 Wed Jul  2 21:04:03 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 36.7.0

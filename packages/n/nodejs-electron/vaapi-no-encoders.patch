@@ -1,0 +1,123 @@
+These encoders:
+* are supported by ~no hardware
+* i can't think of any actual use for them in the apps we ship, and
+* most importantly, fail to build with system aom/vpx.
+
+The hardware *decoders*, on the other hand, are useful for Signal Messenger, and should work now.
+
+--- src/media/gpu/vaapi/vaapi_video_encode_accelerator.cc.orig	2025-07-02 22:10:56.136470571 +0200
++++ src/media/gpu/vaapi/vaapi_video_encode_accelerator.cc	2025-07-11 18:16:04.978530973 +0200
+@@ -43,13 +43,10 @@
+ #include "media/gpu/gpu_video_encode_accelerator_helpers.h"
+ #include "media/gpu/h264_dpb.h"
+ #include "media/gpu/macros.h"
+-#include "media/gpu/vaapi/av1_vaapi_video_encoder_delegate.h"
+ #include "media/gpu/vaapi/h264_vaapi_video_encoder_delegate.h"
+ #include "media/gpu/vaapi/vaapi_common.h"
+ #include "media/gpu/vaapi/vaapi_utils.h"
+ #include "media/gpu/vaapi/vaapi_wrapper.h"
+-#include "media/gpu/vaapi/vp8_vaapi_video_encoder_delegate.h"
+-#include "media/gpu/vaapi/vp9_vaapi_video_encoder_delegate.h"
+ #include "media/gpu/vp8_reference_frame_vector.h"
+ #include "media/gpu/vp9_reference_frame_vector.h"
+ 
+@@ -230,8 +227,7 @@ bool VaapiVideoEncodeAccelerator::Initia
+   }
+ 
+   const VideoCodec codec = VideoCodecProfileToVideoCodec(config.output_profile);
+-  if (codec != VideoCodec::kH264 && codec != VideoCodec::kVP8 &&
+-      codec != VideoCodec::kVP9 && codec != VideoCodec::kAV1) {
++  if (codec != VideoCodec::kH264) {
+     MEDIA_LOG(ERROR, media_log.get())
+         << "Unsupported profile: " << GetProfileName(config.output_profile);
+     return false;
+@@ -321,11 +317,6 @@ void VaapiVideoEncodeAccelerator::Initia
+                      : VaapiWrapper::kEncodeVariableBitrate;
+         }
+         break;
+-      case VideoCodec::kVP8:
+-      case VideoCodec::kVP9:
+-      case VideoCodec::kAV1:
+-        mode = VaapiWrapper::kEncodeConstantQuantizationParameter;
+-        break;
+       default:
+         NotifyError({EncoderStatus::Codes::kEncoderUnsupportedCodec,
+                      "Unsupported codec: " + GetCodecName(output_codec_)});
+@@ -377,24 +368,6 @@ void VaapiVideoEncodeAccelerator::Initia
+         }
+       }
+       break;
+-    case VideoCodec::kVP8:
+-      if (!IsConfiguredForTesting()) {
+-        encoder_ = std::make_unique<VP8VaapiVideoEncoderDelegate>(
+-            vaapi_wrapper_, error_cb);
+-      }
+-      break;
+-    case VideoCodec::kVP9:
+-      if (!IsConfiguredForTesting()) {
+-        encoder_ = std::make_unique<VP9VaapiVideoEncoderDelegate>(
+-            vaapi_wrapper_, error_cb);
+-      }
+-      break;
+-    case VideoCodec::kAV1:
+-      if (!IsConfiguredForTesting()) {
+-        encoder_ = std::make_unique<AV1VaapiVideoEncoderDelegate>(
+-            vaapi_wrapper_, error_cb);
+-      }
+-      break;
+     default:
+       NOTREACHED() << "Unsupported codec type " << GetCodecName(output_codec_);
+   }
+@@ -893,19 +866,6 @@ VaapiVideoEncodeAccelerator::CreateEncod
+       picture = new VaapiH264Picture(
+           reconstructed_surface->ReleaseAsVASurfaceHandle());
+       break;
+-    case VideoCodec::kVP8:
+-      picture = new VaapiVP8Picture(
+-          reconstructed_surface->ReleaseAsVASurfaceHandle());
+-      break;
+-    case VideoCodec::kVP9:
+-      picture = new VaapiVP9Picture(
+-          reconstructed_surface->ReleaseAsVASurfaceHandle());
+-      break;
+-    case VideoCodec::kAV1:
+-      picture = new VaapiAV1Picture(
+-          /*display_va_surface=*/nullptr,
+-          reconstructed_surface->ReleaseAsVASurfaceHandle());
+-      break;
+     default:
+       return nullptr;
+   }
+--- src/media/gpu/vaapi/BUILD.gn.orig	2025-07-02 22:10:56.132470571 +0200
++++ src/media/gpu/vaapi/BUILD.gn	2025-07-11 18:17:18.866524759 +0200
+@@ -36,8 +36,6 @@ source_set("vaapi") {
+   sources = [
+     "av1_vaapi_video_decoder_delegate.cc",
+     "av1_vaapi_video_decoder_delegate.h",
+-    "av1_vaapi_video_encoder_delegate.cc",
+-    "av1_vaapi_video_encoder_delegate.h",
+     "h264_vaapi_video_decoder_delegate.cc",
+     "h264_vaapi_video_decoder_delegate.h",
+     "h264_vaapi_video_encoder_delegate.cc",
+@@ -67,12 +65,8 @@ source_set("vaapi") {
+     "vaapi_webp_decoder.h",
+     "vp8_vaapi_video_decoder_delegate.cc",
+     "vp8_vaapi_video_decoder_delegate.h",
+-    "vp8_vaapi_video_encoder_delegate.cc",
+-    "vp8_vaapi_video_encoder_delegate.h",
+     "vp9_vaapi_video_decoder_delegate.cc",
+     "vp9_vaapi_video_decoder_delegate.h",
+-    "vp9_vaapi_video_encoder_delegate.cc",
+-    "vp9_vaapi_video_encoder_delegate.h",
+   ]
+   if (enable_hevc_parser_and_hw_decoder) {
+     sources += [
+@@ -96,8 +90,6 @@ source_set("vaapi") {
+     "//media/gpu:video_frame_mapper_common",
+     "//media/gpu/chromeos:common",
+     "//mojo/public/cpp/bindings",
+-    "//third_party/libaom:libaomrc",
+-    "//third_party/libvpx:libvpxrc",
+     "//third_party/libyuv",
+     "//ui/gfx",
+     "//ui/gfx/geometry",

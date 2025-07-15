@@ -51,21 +51,10 @@ ExcludeArch: %arm
 %bcond_with qt
 
 
-%ifarch aarch64 riscv64
 #Video acceleration API to support. Useful for e.g. signal messenger.
 #One cannot enable both, unfortunately.
-#Apparently more arm hardware supports v4l2 than vaapi,
-#but that code does not build on armv{6,7}hl due to too high cpu requirements.
-#bcond_without v4l2
-#bcond_with vaapi
-%else
-#bcond_with v4l2
-#bcond_without vaapi
-%endif
-
-#DISABLING THIS — cannot use video acceleration with system aom/vpx
 %bcond_with v4l2
-%bcond_with vaapi
+%bcond_without vaapi
 
 %ifarch %arm aarch64 riscv64
 %bcond_with gdbjit
@@ -284,6 +273,7 @@ Patch604:       disable-avif-really.patch
 Patch605:       permission-gcc14.2.patch
 Patch606:       build-without-extensions.patch
 Patch607:       build-without-guest-view.patch
+Patch608:       vaapi-no-encoders.patch
 
 
 
@@ -399,7 +389,6 @@ Patch3213:      python3.14-nodedownload-FancyURLopener.patch
 # Patches to re-enable upstream force disabled features.
 # There's no sense in submitting them but they may be reused as-is by other packagers.
 Patch5000:      more-locales.patch
-Patch5006:      chromium-vaapi.patch
 
 BuildRequires:  brotli
 BuildRequires:  c-ares-devel
