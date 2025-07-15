@@ -156,4 +156,33 @@
     https://github.com/ggml-org/llama.cpp/compare/b5699...b5812</comment>
     <requestid>1290235</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3aedd043e095f6d55fd8a757c6428134</srcmd5>
+    <version>5889</version>
+    <time>1752590598</time>
+    <user>anag_factory</user>
+    <comment>- Add GGML_NATIVE=OFF build flag
+- Update to version 5889:
+  * Remove Kompute support
+  * Prevent integer overflow in gguf tensor size calculation
+    (bsc#1246377) (CVE-2025-53630) (GHSA-vgg9-87g3-85w8)
+  * Improved build-time messaging for ggml_set_rows.
+  * Enhanced test coverage for LFM2 and added LFM2 to
+    documentation.
+  * Synchronized ggml updates and improved Vulkan backend
+    (bilinear interpolation, ggml_roll, SET_ROWS, optimizations).
+  * Fixed pooled embedding output in server and improved prompt
+    processing.
+  * Added support for LiquidAI LFM2 hybrid family and Falcon-H1
+    models.
+  * Improved HIP, OpenCL, and SYCL backend compatibility
+    and features.
+  * Added new vocabularies and model support
+    (midm-2.0, skt/A.X-4.0, SmolLM3, hunyuan moe, Granite Four).
+  * Various bug fixes, optimizations, and documentation improvements
+    across backends and models.
+  * Full changelog:
+    https://github.com/ggml-org/llama.cpp/compare/b5812...b5889</comment>
+    <requestid>1292534</requestid>
+  </revision>
 </revisionlist>

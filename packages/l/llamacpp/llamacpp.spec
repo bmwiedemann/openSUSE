@@ -18,7 +18,7 @@
 
 
 Name:           llamacpp
-Version:        5812
+Version:        5889
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT
@@ -151,6 +151,7 @@ Library to handle multimodal inputs for llama.cpp.
     -DLLAMA_BUILD_EXAMPLES=OFF \
     -DLLAMA_BUILD_TOOLS=ON \
     -DLLAMA_CURL=ON \
+    -DGGML_NATIVE=OFF \
     -DGGML_CPU=ON \
     -DGGML_VULKAN=ON \
     -DGGML_OPENCL=ON \
