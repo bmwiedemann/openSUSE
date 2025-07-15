@@ -97,4 +97,24 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1284182</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>47746b7b1d997c9cea65184bcdcf8ee6</srcmd5>
+    <version>0.5.14</version>
+    <time>1752590639</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.5.14:
+  * Fixed a typo in PL
+  * Run tests against Python 3.12
+  * ADD num2words: es_CR language
+  * New languages: Welsh (Celtic) and Chechen (Nakho-Dagestanian)
+  * Add catalan language support
+  * Adding Tetum Language
+  * FIX ISO code for Belarusian language is be, not by.
+  * Add test to improve coverage
+  * Added Bangla language support to num2word for Bangladesh.
+  * Czech language ISO 639-1 code fix
+  * Added support for Tunisian Dinar
+  * Change danish language code to DA</comment>
+    <requestid>1293128</requestid>
+  </revision>
 </revisionlist>

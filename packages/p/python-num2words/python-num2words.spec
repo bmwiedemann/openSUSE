@@ -18,7 +18,7 @@
 
 %bcond_without libalternatives
 Name:           python-num2words
-Version:        0.5.13
+Version:        0.5.14
 Release:        0
 Summary:        Modules to convert numbers to words
 License:        LGPL-2.1-only
