@@ -102,4 +102,17 @@
     <comment></comment>
     <requestid>886587</requestid>
   </revision>
+  <revision rev="15" vrev="23">
+    <srcmd5>24ad4156391461b9a851864708e86225</srcmd5>
+    <version>1.4.50</version>
+    <time>1752590767</time>
+    <user>anag_factory</user>
+    <comment>- fix build errors and warnings:
+  * FE_ATSC-is-not-macro.patch
+  * header-guard.patch
+  * incompatible-pointer-types.patch
+  * switch-warnings.patch
+  * unused-but-set-variable.patch</comment>
+    <requestid>1293403</requestid>
+  </revision>
 </revisionlist>

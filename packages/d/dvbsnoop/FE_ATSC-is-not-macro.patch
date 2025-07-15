@@ -1,0 +1,53 @@
+---
+ src/dvb_api/fe_misc.c |    6 ------
+ src/dvb_api/fe_misc.h |    2 --
+ 2 files changed, 8 deletions(-)
+
+--- a/src/dvb_api/fe_misc.c
++++ b/src/dvb_api/fe_misc.c
+@@ -225,9 +225,7 @@ int  print_FE_BasicCapabilities (int v,
+ 	case FE_QPSK:   s = "QPSK (DVB-S)"; sf = "MHz";  break;
+ 	case FE_QAM:	s = "QAM (DVB-C)";  sf = "kHz";  break;
+ 	case FE_OFDM:	s = "OFDM (DVB-T)"; sf = "kHz";  break;
+-#ifdef FE_ATSC			// API 3.1
+ 	case FE_ATSC:   s = " VSB/QAM (ATSC)"; sf = "khz"; break;	// (QAM | VSB) -> VSB_param
+-#endif
+ 	default:	s = "unkonwn"; break;
+      }
+      out_nl (v,"Frontend-type:       %s", s);
+@@ -342,9 +340,7 @@ int  print_FE_CurrentParameters (int v,
+ 	   case FE_QPSK:  print_FE_QPSK_param (v,p.u.qpsk); break;
+ 	   case FE_QAM:   print_FE_QAM_param  (v,p.u.qam);  break;
+ 	   case FE_OFDM:  print_FE_OFDM_param (v,p.u.ofdm); break;
+-#ifdef FE_ATSC
+ 	   case FE_ATSC:  print_FE_VSB_param  (v,p.u.vsb);  break;  // also for ATSC QAM
+-#endif
+    }
+ 
+    indent(-1);
+@@ -409,13 +405,11 @@ void print_FE_OFDM_param (int v, struct
+  * -- print_FE vsb parameters
+  */
+ 
+-#ifdef FE_ATSC
+ void print_FE_VSB_param (int v, struct dvb_vsb_parameters vsb)
+ {
+ 
+    out_nl (v,"Modulation:  %s", festr_FE_modulation (vsb.modulation));
+ }
+-#endif
+ 
+ 
+ 
+--- a/src/dvb_api/fe_misc.h
++++ b/src/dvb_api/fe_misc.h
+@@ -52,9 +52,7 @@ int  print_FE_CurrentParameters (int v,
+ void print_FE_QPSK_param (int v, struct dvb_qpsk_parameters qp);
+ void print_FE_QAM_param  (int v, struct dvb_qam_parameters qp);
+ void print_FE_OFDM_param (int v, struct dvb_ofdm_parameters op);
+-#ifdef FE_ATSC			// API 3.1
+ void print_FE_VSB_param  (int v, struct dvb_vsb_parameters vsb);
+-#endif
+ 
+ 
+ fe_type_t  read_FEType(int f);

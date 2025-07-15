@@ -1,0 +1,88 @@
+---
+ src/dvb_api/fe_misc.c |   15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
+
+--- a/src/dvb_api/fe_misc.c
++++ b/src/dvb_api/fe_misc.c
+@@ -497,7 +497,7 @@ int read_FEParam(int f, struct dvb_front
+ 
+ const char *festr_FE_code_rate (fe_code_rate_t fec)
+ {
+-  const char *s = "";
++  const char *s;
+ 
+   switch (fec) {
+ 	  case FEC_NONE: s = "none"; break;
+@@ -510,6 +510,7 @@ const char *festr_FE_code_rate (fe_code_
+ 	  case FEC_7_8:  s = "FEC 7/8"; break;
+ 	  case FEC_8_9:  s = "FEC 8/9"; break;
+ 	  case FEC_AUTO: s = "FEC AUTO"; break;
++	  default: return "";
+   }
+ 
+   return s;
+@@ -519,7 +520,7 @@ const char *festr_FE_code_rate (fe_code_
+ 
+ const char *festr_FE_modulation (fe_modulation_t modulation)
+ {
+-  const char *s = "";
++  const char *s;
+ 
+   switch (modulation) {
+ 	  case QPSK:     s = "QPSK"; break;
+@@ -533,6 +534,7 @@ const char *festr_FE_modulation (fe_modu
+ 	  case VSB_8:    s = "VSB 8"; break;
+ 	  case VSB_16:   s = "VSB 16"; break;
+ #endif
++	  default: return "";
+   }
+ 
+   return s;
+@@ -542,13 +544,14 @@ const char *festr_FE_modulation (fe_modu
+ 
+ const char *festr_FE_bandwidth (fe_bandwidth_t bandwidth)
+ {
+-  const char *s = "";
++  const char *s;
+ 
+   switch (bandwidth) {
+ 	  case BANDWIDTH_8_MHZ:     s = "8 MHz"; break;
+ 	  case BANDWIDTH_7_MHZ:     s = "7 MHz"; break;
+ 	  case BANDWIDTH_6_MHZ:     s = "6 MHz"; break;
+ 	  case BANDWIDTH_AUTO:      s = "AUTO"; break;
++	  default: return "";
+   }
+ 
+   return s;
+@@ -557,12 +560,13 @@ const char *festr_FE_bandwidth (fe_bandw
+ 
+ const char *festr_FE_transmit_mode (fe_transmit_mode_t transmit_mode)
+ {
+-  const char *s = "";
++  const char *s;
+ 
+   switch (transmit_mode) {
+ 	  case TRANSMISSION_MODE_2K:     s = "2k mode"; break;
+ 	  case TRANSMISSION_MODE_8K:     s = "8k mode"; break;
+ 	  case TRANSMISSION_MODE_AUTO:   s = "auto"; break;
++	  default: return "";
+   }
+ 
+   return s;
+@@ -572,7 +576,7 @@ const char *festr_FE_transmit_mode (fe_t
+ 
+ const char *festr_FE_guard_interval (fe_guard_interval_t guard_interval)
+ {
+-  const char *s = "";
++  const char *s;
+ 
+   switch (guard_interval) {
+ 	  case GUARD_INTERVAL_1_32:  s = "1/32"; break;
+@@ -580,6 +584,7 @@ const char *festr_FE_guard_interval (fe_
+ 	  case GUARD_INTERVAL_1_8:   s = "1/8"; break;
+ 	  case GUARD_INTERVAL_1_4:   s = "1/4"; break;
+ 	  case GUARD_INTERVAL_AUTO:  s = "auto"; break;
++	  default: return "";
+   }
+ 
+   return s;

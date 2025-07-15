@@ -1,0 +1,18 @@
+
+premiere.de/premiere_de.h:37: warning: header guard ‘_PREMIERE_DE_H’ followed by ‘#define’ of a different macro [-Wheader-guard]
+
+---
+ src/private/premiere.de/premiere_de.h |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/src/private/premiere.de/premiere_de.h
++++ b/src/private/premiere.de/premiere_de.h
+@@ -34,7 +34,7 @@ Revision 1.1  2004/11/03 21:01:02  rasc
+ 
+ 
+ 
+-#ifndef _PREMIERE_DE_H
++#ifndef _PREMIERE_DE_H_
+ #define _PREMIERE_DE_H_
+ 
+ 

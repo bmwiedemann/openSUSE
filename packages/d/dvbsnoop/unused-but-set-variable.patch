@@ -1,0 +1,381 @@
+---
+ src/datacarousel/biop_tag_tap.c                   |    3 +--
+ src/datacarousel/datagram.c                       |    3 +--
+ src/datacarousel/dsmcc.c                          |   10 +++-------
+ src/datacarousel/dsmcc_unm_dlcancel.c             |    3 +--
+ src/datacarousel/llc_snap.c                       |   13 +++++--------
+ src/descriptors/dvb_descriptor.c                  |    6 +-----
+ src/dvb_api/dmx_pes.c                             |    4 ++--
+ src/dvb_api/dmx_ts.c                              |    6 +++---
+ src/dvb_api/dmx_tspidscan.c                       |    2 --
+ src/ebu/vps.c                                     |    5 ++---
+ src/misc/helper.c                                 |    3 ---
+ src/pes/pes_data_ebu.c                            |    4 +---
+ src/pes/pes_dsmcc.c                               |    6 ++----
+ src/private/premiere.de/dvb_descriptor_premiere.c |   10 ----------
+ src/private/premiere.de/section_premiere_cit.c    |    2 --
+ src/private/premiere.de/section_premiere_cpt.c    |    2 --
+ src/sections/mdt.c                                |    3 +--
+ 17 files changed, 23 insertions(+), 62 deletions(-)
+
+--- a/src/datacarousel/biop_tag_tap.c
++++ b/src/datacarousel/biop_tag_tap.c
+@@ -149,7 +149,6 @@ u_long  BIOP_TAG_dispatch (int v, u_char
+ int BIOP_TAP (int v, const char *str, u_char *b)
+ {
+   u_char       *b_org = b;
+-  int          use;
+   int          n;
+ 
+ 
+@@ -157,7 +156,7 @@ int BIOP_TAP (int v, const char *str, u_
+    indent (+1);
+ 
+          outBit_Sx_NL (v,"id: ",			b,  0, 16);
+-   use = outBit_S2x_NL(v,"use: ",			b, 16, 16,
++	 outBit_S2x_NL(v,"use: ",			b, 16, 16,
+ 			(char *(*)(u_long))dsmccStrBIOP_TAP_Use );
+ 
+          outBit_Sx_NL (v,"association_tag: ",		b, 32, 16);
+--- a/src/datacarousel/datagram.c
++++ b/src/datacarousel/datagram.c
+@@ -204,8 +204,7 @@ void section_DSMCC_DATAGRAM (u_char *b,
+ 
+  if (d.LLC_SNAP_flag == 0x01) {
+ 	 /*  ISO/IEC 8802-2   */
+-	 int k;
+-	 k = llc_snap (4, b);
++	 llc_snap (4, b);
+  } else {
+  	 net_IP_data (4, b, len1-4);
+  }
+--- a/src/datacarousel/dsmcc.c
++++ b/src/datacarousel/dsmcc.c
+@@ -95,9 +95,6 @@ void section_DSMCC (u_char *b, int len)
+  u_int      table_id;
+  u_int      section_length;
+  u_int      section_syntax_indicator;
+- u_int      private_indicator;
+- u_int	    sect_nr;
+- u_int      last_sect_nr;
+ 
+ 
+ 
+@@ -112,8 +109,7 @@ void section_DSMCC (u_char *b, int len)
+ 
+  section_syntax_indicator =
+ 	 outBit_Sx_NL (4,"Section_syntax_indicator: ",	b, 8, 1);
+- private_indicator = 
+-	 outBit_Sx_NL (4,"private_indicator: ",		b, 9, 1);
++ outBit_Sx_NL (4,"private_indicator: ",		b, 9, 1);
+  outBit_Sx_NL (6,"reserved_1: ",			b,10, 2);
+  section_length =
+ 	 outBit_Sx_NL (5,"dsmcc_section_length: ",	b,12,12);
+@@ -126,8 +122,8 @@ void section_DSMCC (u_char *b, int len)
+  outBit_S2x_NL(3,"Current_next_indicator: ",	b,47, 1,
+ 			(char *(*)(u_long))dvbstrCurrentNextIndicator );
+ 
+- sect_nr      = outBit_Sx_NL (3,"Section_number: ",		b,48, 8);
+- last_sect_nr = outBit_Sx_NL (3,"Last_section_number: ",	b,56, 8);
++ outBit_Sx_NL (3,"Section_number: ",		b,48, 8);
++ outBit_Sx_NL (3,"Last_section_number: ",	b,56, 8);
+ 
+ 
+  b += 8;
+--- a/src/datacarousel/dsmcc_unm_dlcancel.c
++++ b/src/datacarousel/dsmcc_unm_dlcancel.c
+@@ -49,7 +49,6 @@ DSM-CC  data/object carousell continued
+ int dsmcc_DownloadCancel (int v, u_char *b, u_int len)
+ {
+    int   	len_org = len;
+-   int		len2;
+ 
+ 
+ 
+@@ -62,7 +61,7 @@ int dsmcc_DownloadCancel (int v, u_char
+ 	outBit_Sx_NL (v,"downloadCancelReason: ",	b, 64,  8);
+ 	outBit_Sx_NL (v,"reserved: ",			b, 72,  8);
+ 
+-	len2 = outBit_Sx_NL (v,"privateDataLength: ",	b, 80,  16);
++	outBit_Sx_NL (v,"privateDataLength: ",	b, 80,  16);
+ 
+ 	b += 12;
+ 	len -= 12;
+--- a/src/datacarousel/llc_snap.c
++++ b/src/datacarousel/llc_snap.c
+@@ -60,21 +60,18 @@ LLC-SNAP
+ int  llc_snap (int v, u_char *b)
+ 
+ {
+-  int dsap, ssap, ctrl;
+-  int oui, prot;
+-
+   out_nl (v,"LLC/SNAP:");
+   indent (+1);
+ 
+   out_nl (v,"LLC:");
+-  dsap = outBit_Sx_NL (v," DSAP: ",  		b, 0, 8);
+-  ssap = outBit_Sx_NL (v," SSAP: ",  		b, 8, 8);
+-  ctrl = outBit_Sx_NL (v," Control: ",	 	b,16, 8);
++  outBit_Sx_NL (v," DSAP: ",  		b, 0, 8);
++  outBit_Sx_NL (v," SSAP: ",  		b, 8, 8);
++  outBit_Sx_NL (v," Control: ",	 	b,16, 8);
+   
+   out_nl (v,"SNAP:");
+-  oui   = outBit_S2x_NL (v," Org. Unique ID: ", 	b,24,24,
++  outBit_S2x_NL (v," Org. Unique ID: ", 	b,24,24,
+ 	  	(char *(*)(u_long))dsmccStrOUI );
+-  prot  = outBit_S2x_NL (v," Protocol Identifier: ", 	b,48,16,
++  outBit_S2x_NL (v," Protocol Identifier: ", 	b,48,16,
+ 	  	(char *(*)(u_long))dsmccStr_LLC_SNAP_prot );
+ 
+   indent (-1);
+--- a/src/descriptors/dvb_descriptor.c
++++ b/src/descriptors/dvb_descriptor.c
+@@ -887,7 +887,6 @@ void sub_descriptorDVB_Linkage0x09 (u_ch
+  /* ETSI TR 102 006   6.1 */
+ 
+     int      OUI_data_length;
+-    u_long   OUI;
+     int      selector_length;
+ 
+ 
+@@ -896,7 +895,7 @@ void sub_descriptorDVB_Linkage0x09 (u_ch
+     len --;
+ 
+     while (OUI_data_length > 0) {
+-    	OUI             = outBit_S2x_NL (4,"OUI: ", 		b, 0,24,
++    	outBit_S2x_NL (4,"OUI: ", 		b, 0,24,
+ 				   (char *(*)(u_long))dsmccStrOUI );
+ 	b += 3;
+ 	OUI_data_length -= 3;
+@@ -3413,7 +3412,6 @@ void descriptorDVB_AdaptationFieldData (
+ 
+ 
+  descAdaptationFieldData     d;
+- int                       len;
+  int                       i;
+ 
+ 
+@@ -3424,8 +3422,6 @@ void descriptorDVB_AdaptationFieldData (
+  d.adaptationFieldDataIdentifier   = getBits (b, 0, 16, 8);
+ 
+  b   += 3;
+- len = d.descriptor_length - 1;
+-
+ 
+  out_SB_NL (4,"Adaptation field data identifier: ",
+         d.adaptationFieldDataIdentifier);
+--- a/src/dvb_api/dmx_pes.c
++++ b/src/dvb_api/dmx_pes.c
+@@ -277,9 +277,9 @@ int  doReadPES (OPTION *opt)
+ 
+     // -- error or eof?
+     if (n < 0) {
+-	int err;
++	//int err;
+ 	
+-	err = IO_error("read");
++	/*err =*/ IO_error("read");
+ 	// if (err == ETIMEDOUT) break;		// Timout, abort
+ 	continue;
+     }
+--- a/src/dvb_api/dmx_ts.c
++++ b/src/dvb_api/dmx_ts.c
+@@ -299,9 +299,9 @@ int  doReadTS (OPTION *opt)
+ 
+     // -- error or eof?
+     if (n < 0) {
+-	int err;
+-	
+-	err = IO_error("read");
++	//int err;
++
++	/*err =*/ IO_error("read");
+ 	// if (err == ETIMEDOUT) break;		// Timout, abort
+ 	continue;
+     }
+--- a/src/dvb_api/dmx_tspidscan.c
++++ b/src/dvb_api/dmx_tspidscan.c
+@@ -178,7 +178,6 @@ int ts_pidscan (OPTION *opt)
+   struct dmx_pes_filter_params flt;
+   int 		*dmxfd;
+   int 		timeout;
+-  int 		timeout_corr;
+   int		pid,pid_low;
+   int    	i;
+   int		filters;
+@@ -232,7 +231,6 @@ int ts_pidscan (OPTION *opt)
+    while ( (pid <= MAX_PID) && !isSigAbort() )  {
+ 
+ 	pid_low = pid;
+-	timeout_corr = 0;
+ 	rescan = 0;
+ 
+ 	do {
+--- a/src/ebu/vps.c
++++ b/src/ebu/vps.c
+@@ -87,7 +87,6 @@ int  print_vps_decode (int v, u_char *b,
+ {
+ 	// warning!  Nipples e.g. _2_7 may not be msb...lsb order!
+ 	//           see: ETSI EN 300 231  for this notation!
+-   u_int  pcs;
+    u_int  cni_1_4;
+    u_int  pil;
+    u_int  pty;
+@@ -112,9 +111,9 @@ int  print_vps_decode (int v, u_char *b,
+    	outBit_Sx_NL (v,"(not relevant to PDC): ", 	b,    0, 16);
+ 
+ 	// -- PCS
+-   	pcs = outBit_S2x_NL (v,"PCS audio: ",		b+2,  0,  2,
++   	outBit_S2x_NL (v,"PCS audio: ",		b+2,  0,  2,
+ 			(char *(*)(u_long)) dvbstrVPS_pcs_audio );
+-   	pcs = outBit_Sx_NL  (v,"PCS reserved: ",	b+2,  2,  2);
++   	outBit_Sx_NL  (v,"PCS reserved: ",	b+2,  2,  2);
+ 
+ 
+    	cni_1_4  = outBit_Sx (v,"CNI reserved: ", 	b+2,  4,  4);
+--- a/src/misc/helper.c
++++ b/src/misc/helper.c
+@@ -558,7 +558,6 @@ void print_text_468A (int v, const char
+ 
+ static void print_text2_468A (int v, u_char *b, u_int len)
+ {
+-  int    in_emphasis = 0;
+   int    i;
+   u_char c;
+   u_char em_ON  = 0x86;
+@@ -571,12 +570,10 @@ static void print_text2_468A (int v, u_c
+     if (i == 0 && c < 0x20) continue;   // opt. charset descript.
+ 
+     if (c == em_ON) {
+-       in_emphasis = 1;
+        out (v,"<EM>");
+        continue;
+     }
+     if (c == em_OFF) {
+-       in_emphasis = 0;
+        out (v,"</EM>");
+        continue;
+     }
+--- a/src/pes/pes_data_ebu.c
++++ b/src/pes/pes_data_ebu.c
+@@ -78,12 +78,10 @@ void PES_decodeDATA_EBU_etc (u_char *b,
+    // -- Data Buffer starts at PES_DATA_BYTES...
+    // --> see parent
+ 
+-   int  data_identifier;
+-
+    out_nl (4,"EBU data:");
+    indent (+1);
+ 
+-   data_identifier		= getBits (b, 0,  0,  8);
++   getBits (b, 0,  0,  8);
+    outBit_S2x_NL (4,"data_identifier: ",	b, 0, 8,
+ 			(char *(*)(u_long)) dvbstrPESDataIdentifier);
+    b++;
+--- a/src/pes/pes_dsmcc.c
++++ b/src/pes/pes_dsmcc.c
+@@ -272,19 +272,17 @@ static void dsmcc_control (u_char *b, in
+ 
+ static void dsmcc_ack (u_char *b, int len)
+ {
+-   int  select_ack;
+    int  retrieval_ack;
+    int  storage_ack;
+-   int  error_ack;
+    int  cmd_status;
+ 
+ 
+    out_nl (3,"DSM-CC  Acknowledge: ");
+ 
+-   select_ack 		= outBit_Sx_NL (4,"select_ack: ",	b,0,1);
++			  outBit_Sx_NL (4,"select_ack: ",	b,0,1);
+    retrieval_ack 	= outBit_Sx_NL (4,"retrieval_ack: ",	b,1,1);
+    storage_ack 		= outBit_Sx_NL (4,"storage_ack: ",	b,2,1);
+-   error_ack 		= outBit_Sx_NL (4,"error_ack: ",	b,3,1);
++			  outBit_Sx_NL (4,"error_ack: ",	b,3,1);
+ 		          outBit_Sx_NL (6,"reserved: ",		b,4,10);
+ 			  outBit_Sx_NL (4,"marker_bit: ",	b,14,1);
+    cmd_status 		= outBit_Sx_NL (4,"cmd_status: ",	b,15,1);
+--- a/src/private/premiere.de/dvb_descriptor_premiere.c
++++ b/src/private/premiere.de/dvb_descriptor_premiere.c
+@@ -65,11 +65,6 @@ Revision 1.1  2004/11/03 21:01:02  rasc
+ 
+ void descriptor_PRIVATE_PremiereDE_ContentOrder (u_char *b)
+ {
+- int  tag, len;
+-
+-  tag		 = b[0];
+-  len       	 = b[1];
+- 
+   out_nl (4,"--> Premiere Content Order descriptor ");
+ 
+   b+=2;
+@@ -106,11 +101,6 @@ void descriptor_PRIVATE_PremiereDE_Conte
+  
+ void descriptor_PRIVATE_PremiereDE_ParentalInformation (u_char *b)
+ {
+-  int  tag, len;
+- 
+-  tag		 = b[0];
+-  len       	 = b[1];
+- 
+   out_nl (4,"--> Premiere Parental Information descriptor ");
+ 
+   b += 2;
+--- a/src/private/premiere.de/section_premiere_cit.c
++++ b/src/private/premiere.de/section_premiere_cit.c
+@@ -49,7 +49,6 @@ Revision 1.1  2004/11/03 21:01:02  rasc
+ void section_PRIVATE_PremiereDE_CIT (u_char *b, int len)
+ {
+  u_int      table_id;
+- u_int      section_syntax_indicator;
+  u_int      section_length;
+ 
+ 
+@@ -62,7 +61,6 @@ void section_PRIVATE_PremiereDE_CIT (u_c
+  }
+ 
+ 
+- section_syntax_indicator = 
+  	outBit_Sx_NL (3,"Section_syntax_indicator: ",	b, 8, 1);	// ==1 
+  	outBit_Sx_NL (3,"private_indicator: ",		b, 9, 1);
+  	outBit_Sx_NL (6,"reserved: ",			b,10, 2);
+--- a/src/private/premiere.de/section_premiere_cpt.c
++++ b/src/private/premiere.de/section_premiere_cpt.c
+@@ -49,7 +49,6 @@ Revision 1.1  2004/11/03 21:01:02  rasc
+ void section_PRIVATE_PremiereDE_CPT (u_char *b, int len)
+ {
+  u_int      table_id;
+- u_int      section_syntax_indicator;
+  u_int      section_length;
+  u_int      time_MJD, time_UTC;
+  u_int 	    i, content_list_length;
+@@ -66,7 +65,6 @@ void section_PRIVATE_PremiereDE_CPT (u_c
+  }
+ 
+ 
+- section_syntax_indicator = 
+  	outBit_Sx_NL (3,"Section_syntax_indicator: ",	b, 8, 1);	// == 1
+  	outBit_Sx_NL (3,"private_indicator: ",		b, 9, 1);
+  	outBit_Sx_NL (6,"reserved: ",			b,10, 2);
+--- a/src/sections/mdt.c
++++ b/src/sections/mdt.c
+@@ -56,7 +56,6 @@ void section_MDT (u_char *b, int len)
+ 
+   int   table_id;
+   int   m_len;
+-  int   sfi;	
+   int   x;
+ 
+ 
+@@ -92,7 +91,7 @@ void section_MDT (u_char *b, int len)
+   outBit_Sx_NL (3,"metadata_service_id: ",		b, 24,  8);
+   outBit_Sx_NL (6,"reserved: ",				b, 32,  8);
+ 
+-  sfi = outBit_S2x_NL (3,"section_fragment_indication: ",b, 40,  2,
++  outBit_S2x_NL (3,"section_fragment_indication: ",b, 40,  2,
+                  (char *(*)(u_long)) dvbstrMPEG_metadata_section_frag_indication );
+ 
+   outBit_Sx_NL (3,"version_number: ",			b, 42,  5);

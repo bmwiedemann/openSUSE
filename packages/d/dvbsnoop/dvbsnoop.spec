@@ -1,7 +1,7 @@
 #
 # spec file for package dvbsnoop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,15 @@ Name:           dvbsnoop
 Version:        1.4.50
 Release:        0
 Summary:        DVB / MPEG stream analyzer program
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/TV
-Url:            http://dvbsnoop.sourceforge.net/
-Source:         https://sourceforge.net/projects/dvbsnoop/files/dvbsnoop/dvbsnoop-%{version}/dvbsnoop-%{version}.tar.gz
+URL:            https://dvbsnoop.sourceforge.net/
+Source0:        https://sourceforge.net/projects/dvbsnoop/files/dvbsnoop/dvbsnoop-%{version}/dvbsnoop-%{version}.tar.gz
+Patch0:         incompatible-pointer-types.patch
+Patch1:         header-guard.patch
+Patch2:         unused-but-set-variable.patch
+Patch3:         switch-warnings.patch
+Patch4:         FE_ATSC-is-not-macro.patch
 
 %description
 Its purpose is to debug, dump or view digital stream information (e.g.
@@ -36,12 +41,12 @@ Solaris or tcpdump on Linux (which is in fact a kind of a clone of SunOS
 mpeg2 movie files.
 
 %prep
-%setup -q
+%autosetup -p1
 chmod 644 AUTHORS COPYING NEWS README
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul  4 09:09:14 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- fix build errors and warnings:
+  * FE_ATSC-is-not-macro.patch
+  * header-guard.patch
+  * incompatible-pointer-types.patch
+  * switch-warnings.patch
+  * unused-but-set-variable.patch
+
+-------------------------------------------------------------------
 Sun Apr 18 14:15:50 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fixed URL
