@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 11 10:47:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.21.0
+  * Support s2n security policy for TLS 1.2 and FIPS by @sfod in (#739)
+
+-------------------------------------------------------------------
 Wed Jun 18 12:47:57 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.20.1
