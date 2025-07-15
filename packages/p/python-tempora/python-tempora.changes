@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jul 14 09:19:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.9.0
+  * Bump badge for 2025.
+  * Removing dependabot config. Closes jaraco/skeleton#156
+  * Add support for building lxml on pre-release Pythons.
+  * Fix new mandatory configuration field for RTD (jaraco/skeleton#159)
+  * Select Ruff rules for modern type annotations (jaraco/skeleton#160)
+  * Consistent import sorting (isort) (jaraco/skeleton#157)
+  * Enable ruff rules ISC001/ISC002 (jaraco/skeleton#158)
+  * remove extra spaces in ruff.toml (jaraco/skeleton#164)
+  * Remove pycodestyle warnings, no longer meaningful when using ruff formatter.
+  * Update to the latest ruff version (jaraco/skeleton#166)
+  * Remove deprecated license classifier (PEP 639) (jaraco/skeleton#170)
+  * Remove workaround and update badge.
+  * Remove PIP_NO_PYTHON_VERSION_WARNING.
+  * Replace copy of license with an SPDX identifier. (jaraco/skeleton#171)
+  * Python 3 is the default nowadays (jaraco/skeleton#173)
+  * Add coherent.licensed plugin to inject license texts into the build.
+  * Revert "Python 3 is the default nowadays (jaraco/skeleton#173)" (jaraco/skeleton#175)
+  * Bump to setuptools 77 or later.
+  * Feed the hobgoblins (delint).
+  * Remove timedelta rendering workaround and thus conftest, no longer needed.
+  * Finalize
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Sun Mar 30 08:11:32 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.8.0:

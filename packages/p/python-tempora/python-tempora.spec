@@ -23,19 +23,19 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-tempora
-Version:        5.8.0
+Version:        5.8.1
 Release:        0
 Summary:        Objects and routines pertaining to date and time (tempora)
 License:        MIT
 URL:            https://github.com/jaraco/tempora
 Source:         https://files.pythonhosted.org/packages/source/t/tempora/tempora-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module jaraco.functools >= 1.20}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest > 4.6}
 BuildRequires:  %{python_module pytest-freezegun}
-BuildRequires:  %{python_module setuptools  >= 56}
+BuildRequires:  %{python_module setuptools  >= 77}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module tzdata}
