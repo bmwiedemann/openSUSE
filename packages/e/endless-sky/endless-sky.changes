@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jul 13 19:46:01 UTC 2025 - Wladimir Palant <utfsuse@palant.de>
+
+- Update to version 0.10.14
+  * Updated the text truncation method to fix inaccurate truncation
+    that could cause text to render outside of the intended input
+    box or crash the game.
+  * Various fixes to the missions and content of the recently added
+    Patir 2 storyline.
+  * Removed the unused portrait image assets from the game.
+  * Long planet or spaceport descriptions that created a scrolling
+    text box no longer slide off the screen.
+  * Starfield zoom limits can now be customized through the
+    interfaces file.
+  * The planet panel will now only be offset to the left slightly
+    when the game window is fewer than 1280 pixels wide.
+- Rebase endless-sky-fix-data-path.patch
+
+-------------------------------------------------------------------
 Sun Apr 20 08:02:58 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add BuildRequires pkgconfig(glu), fixes building for Leap
@@ -224,7 +242,7 @@ Sat Apr 15 13:46:06 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
     provider ranges.
   * Added the std:: prefix to two calls to std::move.
 - Run spec-cleaner
-- Rebase fix-data-path.patch and rename to 
+- Rebase fix-data-path.patch and rename to
   endless-sky-fix-data-path.patch
 - Add BuildRequires libuuid-devel and pkgconfig
 - Drop endless-sky-rpmlintrc, was needed for openSUSE 13.1
@@ -381,4 +399,3 @@ Sat Nov 21 14:47:06 UTC 2015 - mailaender@opensuse.org
 Sat Oct 31 06:51:27 UTC 2015 - mailaender@opensuse.org
 
 - initial packaging
-

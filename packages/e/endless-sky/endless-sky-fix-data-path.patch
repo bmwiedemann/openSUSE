@@ -1,54 +1,68 @@
-Index: endless-sky-0.10.12/endless-sky.6
+Index: endless-sky-0.10.14/CMakeLists.txt
 ===================================================================
---- endless-sky-0.10.12.orig/endless-sky.6
-+++ endless-sky-0.10.12/endless-sky.6
+--- endless-sky-0.10.14.orig/CMakeLists.txt
++++ endless-sky-0.10.14/CMakeLists.txt
+@@ -312,7 +312,7 @@
+ 	include(CPack)
+ elseif(UNIX)
+ 	# Install the binary.
+-	install(TARGETS EndlessSky CONFIGURATIONS Release RUNTIME DESTINATION games)
++	install(TARGETS EndlessSky CONFIGURATIONS Release RUNTIME DESTINATION bin)
+ 
+ 	# Install the desktop file.
+ 	install(FILES io.github.endless_sky.endless_sky.desktop DESTINATION share/applications)
+@@ -338,15 +338,12 @@
+ 	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/endless-sky.6.gz DESTINATION share/man/man6)
+ 
+ 	# Install the resource files.
+-	install(DIRECTORY data DESTINATION share/games/endless-sky)
+-	install(DIRECTORY images DESTINATION share/games/endless-sky)
+-	install(DIRECTORY shaders DESTINATION share/games/endless-sky)
+-	install(DIRECTORY sounds DESTINATION share/games/endless-sky)
+-	install(FILES credits.txt DESTINATION share/games/endless-sky)
+-	install(FILES keys.txt DESTINATION share/games/endless-sky)
+-	install(FILES copyright DESTINATION share/doc/endless-sky)
+-	install(FILES changelog DESTINATION share/doc/endless-sky)
+-	install(FILES license.txt DESTINATION share/doc/endless-sky)
++	install(DIRECTORY data DESTINATION share/endless-sky)
++	install(DIRECTORY images DESTINATION share/endless-sky)
++	install(DIRECTORY shaders DESTINATION share/endless-sky)
++	install(DIRECTORY sounds DESTINATION share/endless-sky)
++	install(FILES credits.txt DESTINATION share/endless-sky)
++	install(FILES keys.txt DESTINATION share/endless-sky)
+ endif()
+ 
+ # Create symlink to compile_commands.json from build/ so it's LSP-discoverable.
+Index: endless-sky-0.10.14/endless-sky.6
+===================================================================
+--- endless-sky-0.10.14.orig/endless-sky.6
++++ endless-sky-0.10.14/endless-sky.6
 @@ -17,7 +17,7 @@ Most of the controls should be self\-exp
  
  For a manual and other information, visit https://endless\-sky.github.io
  
 -When run from the command line, if a resource directory is not specified, the program will check to see if the current directory contains directories named "data" and "images" and files named "keys.txt" and "credits.txt"; if so it will read resources from the current directory. Otherwise it will use /usr/local/share/games/endless\-sky if it exists, or /usr/share/games/endless\-sky/ otherwise.
-+When run from the command line, if a resource directory is not specified, the program will check to see if the current directory contains directories named "data" and "images" and files named "keys.txt" and "credits.txt"; if so it will read resources from the current directory. Otherwise it will use /usr/local/share/endless\-sky if it exists, or /usr/share/endless\-sky/ otherwise.
++When run from the command line, if a resource directory is not specified, the program will check to see if the current directory contains directories named "data" and "images" and files named "keys.txt" and "credits.txt"; if so it will read resources from the current directory. Otherwise it will use /usr/local/share/endless\-sky if it exists, or /usr/share/games/endless\-sky/ otherwise.
  
  .SH OPTIONS
  .IP \fB\-h,\ \-\-help
-Index: endless-sky-0.10.12/SConstruct
+Index: endless-sky-0.10.14/source/Files.cpp
 ===================================================================
---- endless-sky-0.10.12.orig/SConstruct
-+++ endless-sky-0.10.12/SConstruct
-@@ -237,11 +237,11 @@ def RecursiveInstall(env, target, source
- 			RecursiveInstall(env, pathjoin(target, name), node.abspath)
- 		else:
- 			env.Install(target, node)
--RecursiveInstall(env, "$DESTDIR$PREFIX/share/games/endless-sky/data", "data")
--RecursiveInstall(env, "$DESTDIR$PREFIX/share/games/endless-sky/images", "images")
--RecursiveInstall(env, "$DESTDIR$PREFIX/share/games/endless-sky/sounds", "sounds")
--env.Install("$DESTDIR$PREFIX/share/games/endless-sky", "credits.txt")
--env.Install("$DESTDIR$PREFIX/share/games/endless-sky", "keys.txt")
-+RecursiveInstall(env, "$DESTDIR$PREFIX/share/endless-sky/data", "data")
-+RecursiveInstall(env, "$DESTDIR$PREFIX/share/endless-sky/images", "images")
-+RecursiveInstall(env, "$DESTDIR$PREFIX/share/endless-sky/sounds", "sounds")
-+env.Install("$DESTDIR$PREFIX/share/endless-sky", "credits.txt")
-+env.Install("$DESTDIR$PREFIX/share/endless-sky", "keys.txt")
- 
- # Make the word "install" in the command line do an installation.
- env.Alias("install", "$DESTDIR$PREFIX")
-Index: endless-sky-0.10.12/source/Files.cpp
-===================================================================
---- endless-sky-0.10.12.orig/source/Files.cpp
-+++ endless-sky-0.10.12/source/Files.cpp
-@@ -102,7 +102,7 @@ void Files::Init(const char * const *arg
- 		// the executable, but are under the same prefix (/usr or /usr/local).
- 		static const filesystem::path LOCAL_PATH = "/usr/local/";
- 		static const filesystem::path STANDARD_PATH = "/usr/";
+--- endless-sky-0.10.14.orig/source/Files.cpp
++++ endless-sky-0.10.14/source/Files.cpp
+@@ -128,7 +128,7 @@ void Files::Init(const char * const *arg
+ 		// the end, so parent paths do not include it.
+ 		static const filesystem::path LOCAL_PATH = "/usr/local";
+ 		static const filesystem::path STANDARD_PATH = "/usr";
 -		static const filesystem::path RESOURCE_PATH = "share/games/endless-sky/";
 +		static const filesystem::path RESOURCE_PATH = "share/endless-sky/";
  
- 		const auto IsParent = [](const auto parent, const auto child) -> bool {
- 			if(distance(child.begin(), child.end()) < distance(parent.begin(), parent.end()))
-Index: endless-sky-0.10.12/source/News.h
+ 		if(IsParent(LOCAL_PATH, resources))
+ 			resources = LOCAL_PATH / RESOURCE_PATH;
+Index: endless-sky-0.10.14/source/News.h
 ===================================================================
---- endless-sky-0.10.12.orig/source/News.h
-+++ endless-sky-0.10.12/source/News.h
+--- endless-sky-0.10.14.orig/source/News.h
++++ endless-sky-0.10.14/source/News.h
 @@ -20,6 +20,7 @@ this program. If not, see <https://www.g
  #include "Phrase.h"
  
@@ -56,4 +70,4 @@ Index: endless-sky-0.10.12/source/News.h
 +#include <cstdint>
  #include <vector>
  
- class DataNode;
+ class ConditionsStore;

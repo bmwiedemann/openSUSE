@@ -1,7 +1,7 @@
 #
 # spec file for package endless-sky
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %endif
 %define lname   io.github.endless_sky.endless_sky
 Name:           endless-sky
-Version:        0.10.12
+Version:        0.10.14
 Release:        0
 Summary:        Space exploration, trading, and combat game
 License:        CC-BY-3.0 AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND GPL-3.0-only
@@ -30,7 +30,7 @@ Group:          Amusements/Games/Action/Arcade
 URL:            https://endless-sky.github.io/
 Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE endless-sky-fix-data-path.patch -- Fix installation path of data
-Patch0:         endless-sky-fix-data-path.patch 
+Patch0:         endless-sky-fix-data-path.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1600
@@ -39,16 +39,19 @@ BuildRequires:  gcc%{?force_gcc_version}-c++
 %else
 BuildRequires:  gcc-c++
 %endif
+BuildRequires:  Catch2-devel
+BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg8-devel
 BuildRequires:  libmad-devel
 BuildRequires:  libuuid-devel
+BuildRequires:  minizip-devel
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  scons
 BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(openal)
@@ -63,6 +66,7 @@ find some friendly aliens whose culture is more civilized than your own...
 
 %prep
 %autosetup -p1
+cmake --preset linux
 
 %build
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
@@ -73,7 +77,7 @@ export CXX="g++-%{?force_gcc_version}"
 export CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden -Wno-error=dangling-reference"
 %endif
 export CFLAGS="%{optflags} -fvisibility=hidden"
-scons
+cmake --build --preset linux-release --target EndlessSky
 
 %install
 %if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
@@ -84,10 +88,7 @@ export CXX="g++-%{?force_gcc_version}"
 export CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden -Wno-error=dangling-reference"
 %endif
 export CFLAGS="%{optflags} -fvisibility=hidden"
-scons install PREFIX=%{_prefix} DESTDIR=%{buildroot}
-
-mkdir -p %{buildroot}%{_bindir}
-mv %{buildroot}%{_prefix}/games/endless-sky %{buildroot}%{_bindir}/endless-sky
+cmake --install build/linux --prefix %{buildroot}%{_prefix} --strip
 
 %fdupes %{buildroot}
 

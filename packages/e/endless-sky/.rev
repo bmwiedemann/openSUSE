@@ -146,4 +146,26 @@
     <comment></comment>
     <requestid>1273231</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>490811d8263d81eb1c0a48f60c8bcc5a</srcmd5>
+    <version>0.10.14</version>
+    <time>1752590655</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.10.14
+  * Updated the text truncation method to fix inaccurate truncation
+    that could cause text to render outside of the intended input
+    box or crash the game.
+  * Various fixes to the missions and content of the recently added
+    Patir 2 storyline.
+  * Removed the unused portrait image assets from the game.
+  * Long planet or spaceport descriptions that created a scrolling
+    text box no longer slide off the screen.
+  * Starfield zoom limits can now be customized through the
+    interfaces file.
+  * The planet panel will now only be offset to the left slightly
+    when the game window is fewer than 1280 pixels wide.
+- Rebase endless-sky-fix-data-path.patch
+</comment>
+    <requestid>1293192</requestid>
+  </revision>
 </revisionlist>
