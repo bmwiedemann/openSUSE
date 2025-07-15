@@ -16,7 +16,6 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,6 +25,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%bcond_without libalternatives
+%{?sle15_python_module_pythons}
 Name:           python-Markdown%{psuffix}
 Version:        3.8.2
 Release:        0
@@ -40,16 +41,16 @@ BuildRequires:  %{python_module importlib-metadata >= 4.4 if %python-base < 3.10
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
+Requires:       (python-importlib-metadata >= 4.4 if python-base < 3.10)
+BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Markdown = %{version}}
 BuildRequires:  %{python_module PyYAML}
 %endif
-Requires:       (python-importlib-metadata >= 4.4 if python-base < 3.10)
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -81,11 +82,8 @@ supported by the [Available Extensions][].
 %endif
 
 %if %{without test}
-%post
-%python_install_alternative markdown_py
-
-%postun
-%python_uninstall_alternative markdown_py
+%pre
+%python_libalternatives_reset_alternative markdown_py
 
 %files %{python_files}
 %license LICENSE.md
