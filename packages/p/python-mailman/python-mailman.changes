@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul 15 09:49:58 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix removal of context manager usage for PosixPath in Python 3.13
+- Added mailman-fix-python-313-posixpath.patch
+- Removed racy test_cli_syncmembers.py from tests
+
+-------------------------------------------------------------------
+Tue Jul 15 09:24:36 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Require python-standard-nntplib for Python >= 3.13
+
+-------------------------------------------------------------------
+Mon Jul 14 14:57:52 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix CVE-2025-53882 (boo#1246467)
+
+-------------------------------------------------------------------
 Wed Oct  2 07:11:06 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 3.3.10

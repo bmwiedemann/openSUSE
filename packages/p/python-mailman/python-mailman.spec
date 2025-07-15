@@ -1,7 +1,7 @@
 #
 # spec file for package python-mailman
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,6 +83,9 @@ Source23:       mailman-notify.timer
 Source30:       README.SUSE.md
 Source31:       python-mailman.rpmlintrc
 #
+# PATCH-FIX-UPSTREAM mailman-fix-python-313-posixpath.patch https://gitlab.com/mailman/mailman/-/commit/685d9a7bdbd382d9e8d4a2da74bd973e93356e05.patch
+Patch0:         mailman-fix-python-313-posixpath.patch
+#
 BuildRequires:  %{python_module pdm}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
@@ -129,6 +132,9 @@ Requires:       %{mypython}-zope.component
 Requires:       %{mypython}-zope.configuration
 Requires:       %{mypython}-zope.event
 Requires:       %{mypython}-zope.interface >= %{zope_interface_min_version}
+%if %{python_version_nodots} >= 313
+Requires:       %{mypython}-standard-nntplib
+%endif
 Requires:       logrotate
 Requires(pre):  /usr/sbin/groupadd
 Requires(post): update-alternatives
@@ -238,6 +244,8 @@ rm src/mailman/commands/tests/test_cli_control.py
 sed -i "s:\(902\):4\1:" src/mailman/testing/testing.cfg
 # https://gitlab.com/mailman/mailman/-/issues/1125
 rm src/mailman/handlers/tests/test_avoid_duplicates.py
+# Looks like this is racy, https://gitlab.com/mailman/mailman/-/issues/1236
+rm src/mailman/commands/tests/test_cli_syncmembers.py
 #
 %python_exec -m nose2 -v
 %endif

@@ -1,0 +1,68 @@
+From 685d9a7bdbd382d9e8d4a2da74bd973e93356e05 Mon Sep 17 00:00:00 2001
+From: liushuyu <liushuyu011@gmail.com>
+Date: Thu, 16 Jan 2025 09:12:34 -0700
+Subject: [PATCH] utilities: remove context manager usage for PosixPath ...
+
+... Python 3.13 removed the context manager functions from PosixPath
+---
+ src/mailman/utilities/i18n.py                 | 3 +--
+ src/mailman/utilities/tests/test_modules.py   | 6 ++----
+ src/mailman/utilities/tests/test_templates.py | 4 ++--
+ 3 files changed, 5 insertions(+), 8 deletions(-)
+
+diff --git a/src/mailman/utilities/i18n.py b/src/mailman/utilities/i18n.py
+index a694ae8ddc..d4ab9085bc 100644
+--- a/src/mailman/utilities/i18n.py
++++ b/src/mailman/utilities/i18n.py
+@@ -114,8 +114,7 @@ def search(resources, template_file, mlist=None, language=None):
+         languages.append(language)
+     languages.reverse()
+     # The non-language qualified $template_dir paths in search order.
+-    templates_dir = str(resources.enter_context(
+-        files('mailman').joinpath('templates')))
++    templates_dir = str(files('mailman').joinpath('templates'))
+     paths = [templates_dir, os.path.join(config.TEMPLATE_DIR, 'site')]
+     if mlist is not None:
+         # Don't forget these are in REVERSE search order!
+diff --git a/src/mailman/utilities/tests/test_modules.py b/src/mailman/utilities/tests/test_modules.py
+index baa39417b3..f525530920 100644
+--- a/src/mailman/utilities/tests/test_modules.py
++++ b/src/mailman/utilities/tests/test_modules.py
+@@ -164,8 +164,7 @@ class AbstractStyle:
+ 
+     def test_find_pluggable_components_by_plugin_name(self):
+         with ExitStack() as resources:
+-            testing_path = resources.enter_context(
+-                files('mailman.plugins.testing'))
++            testing_path = files('mailman.plugins.testing')
+             resources.enter_context(hack_syspath(0, str(testing_path)))
+             resources.enter_context(configuration('plugin.example', **{
+                 'class': 'example.hooks.ExamplePlugin',
+@@ -176,8 +175,7 @@ class AbstractStyle:
+ 
+     def test_find_pluggable_components_by_component_package(self):
+         with ExitStack() as resources:
+-            testing_path = resources.enter_context(
+-                files('mailman.plugins.testing'))
++            testing_path = files('mailman.plugins.testing')
+             resources.enter_context(hack_syspath(0, str(testing_path)))
+             resources.enter_context(configuration('plugin.example', **{
+                 'class': 'example.hooks.ExamplePlugin',
+diff --git a/src/mailman/utilities/tests/test_templates.py b/src/mailman/utilities/tests/test_templates.py
+index 43c680b23e..e5a6139f70 100644
+--- a/src/mailman/utilities/tests/test_templates.py
++++ b/src/mailman/utilities/tests/test_templates.py
+@@ -63,8 +63,8 @@ class TestSearchOrder(unittest.TestCase):
+         # tree.  The former will use /v/ as the root and the latter will use
+         # /m/ as the root.
+         with ExitStack() as resources:
+-            in_tree = str(resources.enter_context(
+-                resource_path('mailman').joinpath('templates')).parent)
++            in_tree = str(
++                resource_path('mailman').joinpath('templates').parent)
+             raw_search_order = search(
+                 resources, template_file, mailing_list, language)
+         for path in raw_search_order:
+-- 
+GitLab
+
