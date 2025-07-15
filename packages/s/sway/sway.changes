@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Jul 12 15:59:42 UTC 2025 - Jakob Lorenz <onlyjak0b@mailbox.org>
+
+- Update sway to 1.11
+  * All of the enhancements from wlroots 0.19.0.
+  * Add support for linux-drm-syncobj-v1 for explicit synchronization
+  * Add support for alpha-modifier-v1 for setting an alpha multiplier
+    for a surface
+  * Add support for ext-image-copy-capture-v1 and ext-image-capture-source-v1
+    for improved screen capture
+  * Add support for ext-data-control-v1 as an alternative protocol for
+    clipboard managers
+  * Improved output configuration logic for better and faster fallbacks
+  * Pointer keys are now supported and can be bound in keymaps to trigger
+    pointer events
+  * security-context-v1 metadata is exposed in IPC, and can be used in
+    criteria and title format
+  * The default configuration file now ships key bindings for a few
+    utilities: pactl, brightnessctl, grim
+  * The default menu now uses wmenu-run and no longer depends on dmenu_path.
+  * The default tap-and-drag lock mode has been switched to sticky as
+    recommended by upstream
+  * The sway.desktop file now sets DesktopNames (XDG_CURRENT_DESKTOP will
+    be set by login managers)
+- Update sway-constrib to 1.10.1
+  * grimpicker: Handle different output scales
+  * Add Float Window Manager directory (containing script and readme)
+  * Improve the robustness of inactive-windows-transparency
+  * Fix grimshot trying to send notification even when disabled
+
+-------------------------------------------------------------------
 Thu Mar 20 03:56:20 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to BuildRequires: pkgconfig(libpcre2-8)
