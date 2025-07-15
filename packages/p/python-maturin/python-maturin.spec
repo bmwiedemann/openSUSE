@@ -16,9 +16,10 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-maturin
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Rust/Python Interoperability
 License:        Apache-2.0 OR MIT
@@ -31,11 +32,11 @@ BuildRequires:  %{python_module setuptools-rust >= 1.4.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli >= 1.1.0 if %python-base < 3.11}
 BuildRequires:  %{python_module wheel >= 0.36.2}
+BuildRequires:  alts
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 1.1.0
 %endif
@@ -63,11 +64,8 @@ sed -i 's/--locked/--offline/' setup.py
 
 %check
 
-%post
-%python_install_alternative maturin
-
-%postun
-%python_uninstall_alternative maturin
+%pre
+%python_libalternatives_reset_alternative maturin
 
 %files %{python_files}
 %license license-apache license-mit

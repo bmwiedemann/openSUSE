@@ -1294,4 +1294,16 @@
     gh#PyO3/maturin#2653</comment>
     <requestid>1288127</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>95a816925fed624da9e4053d075a8700</srcmd5>
+    <version>1.9.1</version>
+    <time>1752590556</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives
+
+- Update to 1.9.1
+  * Fix absolute license path in generated Python wheels
+    gh#PyO3/maturin#2666</comment>
+    <requestid>1291953</requestid>
+  </revision>
 </revisionlist>
