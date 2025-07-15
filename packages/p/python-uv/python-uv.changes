@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jul 15 08:11:49 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.7.21
+ * Enhancements
+   * Add --python-platform to uv sync 
+   * Support pre-releases in uv version --bump 
+   * Add -w shorthand for --with 
+   * Add an exception handler on Windows to display information on crash 
+   * Add hint when Python downloads are disabled 
+   * Add UV_HTTP_RETRIES to customize retry counts 
+   * Follow leaf symlinks matched by globs in cache-key 
+   * Support parent path components (..) in globs in cache-key 
+   * Improve cache-key performance 
+ * Preview features
+   * Add uv sync --output-format json 
+ * Bug fixes
+   * Do not re-resolve with a new Python version in uv tool if it is incompatible with --python 
+ * Documentation
+   * Document how to nest dependency groups with include-group 
+   * Fix repeated word in Pyodide doc 
+   * Update CONTRIBUTING.md with instructions to format Markdown files via Docker 
+   * Fix version number for setup-python 
+
+-------------------------------------------------------------------
 Sun Jul 13 13:50:02 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.20
