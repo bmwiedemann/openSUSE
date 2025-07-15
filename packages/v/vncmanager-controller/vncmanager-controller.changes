@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 15 12:05:00 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_tigervnc-1.15.0.patch
+  * fixed the patch so it hopefully no longer crashes; previously
+    the patch converted to a QByteArray instead of a const char *,
+    which can lead to a crash, especially in optimized builds;
+    adding .constData() to fix this ... (boo#1241959)
+
+-------------------------------------------------------------------
 Tue May 27 11:05:18 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_tigervnc-1.15.0.patch

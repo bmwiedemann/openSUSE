@@ -6,7 +6,7 @@ diff -u -r -p vncmanager-controller-1.0.1.orig/ManagerConnection.cpp vncmanager-
          return false;
      }
 -    if (!XVncExtSetParam(m_display, (QString("Desktop=CONTROLLER_KEY:") + keyBase64).toLatin1())) {
-+    if (!XVncExtSetParam(m_display, "Desktop", (QString("CONTROLLER_KEY:") + keyBase64).toLatin1())) {
++    if (!XVncExtSetParam(m_display, "Desktop", (QString("CONTROLLER_KEY:") + keyBase64).toLatin1().constData())) {
          return false;
      }
  
@@ -15,7 +15,7 @@ diff -u -r -p vncmanager-controller-1.0.1.orig/ManagerConnection.cpp vncmanager-
  
      // Set back the original name
 -    XVncExtSetParam(m_display, (QString("Desktop=") + QString::fromLatin1(originalDesktopName, originalDesktopNameLength)).toLatin1());
-+    XVncExtSetParam(m_display, "Desktop", (QString::fromLatin1(originalDesktopName, originalDesktopNameLength)).toLatin1());
++    XVncExtSetParam(m_display, "Desktop", (QString::fromLatin1(originalDesktopName, originalDesktopNameLength)).toLatin1().constData());
      XFree(originalDesktopName);
  
      // Check if the response was correct
@@ -45,14 +45,14 @@ diff -u -r -p vncmanager-controller-1.0.1.orig/VncConfiguration.cpp vncmanager-c
 -        XVncExtSetParam(m_display, "SecurityTypes=VncAuth");
 -        XVncExtSetParam(m_display, (QString("PasswordFile=") + m_passwordFile).toLatin1());
 +        XVncExtSetParam(m_display, "SecurityTypes", "VncAuth");
-+        XVncExtSetParam(m_display, "PasswordFile", m_passwordFile.toLatin1());
++        XVncExtSetParam(m_display, "PasswordFile", m_passwordFile.toLatin1().constData());
          break;
  
      case Security::Plain:
 -        XVncExtSetParam(m_display, "SecurityTypes=Plain");
 -        XVncExtSetParam(m_display, (QString("PlainUsers=") + m_plainUsers.join(",")).toLatin1());
 +        XVncExtSetParam(m_display, "SecurityTypes", "Plain");
-+        XVncExtSetParam(m_display, "PlainUsers", m_plainUsers.join(",").toLatin1());
++        XVncExtSetParam(m_display, "PlainUsers", m_plainUsers.join(",").toLatin1().constData());
          break;
      }
  
@@ -82,7 +82,7 @@ diff -u -r -p vncmanager-controller-1.0.1.orig/VncConfiguration.cpp vncmanager-c
  
      // Name
 -    XVncExtSetParam(m_display, ("Desktop=" + m_sessionName).toLatin1());
-+    XVncExtSetParam(m_display, "Desktop", m_sessionName.toLatin1());
++    XVncExtSetParam(m_display, "Desktop", m_sessionName.toLatin1().constData());
  
      if (m_managerConnection.connected()) {
          // Send session info

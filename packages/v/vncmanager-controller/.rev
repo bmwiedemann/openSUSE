@@ -123,4 +123,16 @@ Session manager for VNC. It listens on VNC port and spawns Xvnc processes for in
       structured instead.</comment>
     <requestid>1280611</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>427afd9e6331efbfe9ef43518210003a</srcmd5>
+    <version>1.0.2</version>
+    <time>1752590770</time>
+    <user>anag_factory</user>
+    <comment>- u_tigervnc-1.15.0.patch
+  * fixed the patch so it hopefully no longer crashes; previously
+    the patch converted to a QByteArray instead of a const char *,
+    which can lead to a crash, especially in optimized builds;
+    adding .constData() to fix this ... (boo#1241959)</comment>
+    <requestid>1293430</requestid>
+  </revision>
 </revisionlist>
