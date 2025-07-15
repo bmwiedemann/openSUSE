@@ -167,4 +167,18 @@
     <comment></comment>
     <requestid>1237810</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ac49d4930c757757ef548d673ce3bbc9</srcmd5>
+    <version>1.7.2</version>
+    <time>1752590637</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.7.2:
+  * CI-only fix
+  * Update bundled LMDB to 0.9.33, plus a patch to fix ITS#10346.
+  * Prevent some accidental use of LMDB objects by child
+    processes.
+
+- Modernize specfile</comment>
+    <requestid>1293127</requestid>
+  </revision>
 </revisionlist>
