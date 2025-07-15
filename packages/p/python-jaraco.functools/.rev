@@ -175,4 +175,14 @@
 - Normalize metadata directory name.</comment>
     <requestid>1266233</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b4ecf188ecd958b3acb31ab48587bf93</srcmd5>
+    <version>4.2.1</version>
+    <time>1752590583</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.2.1:
+  * Add 'passthrough' function.
+  * Added missing splat in stubs -- by :user:`Avasam`</comment>
+    <requestid>1292508</requestid>
+  </revision>
 </revisionlist>

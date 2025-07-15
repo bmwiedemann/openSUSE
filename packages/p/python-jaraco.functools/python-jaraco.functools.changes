@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 13 13:36:31 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.1:
+  * Add 'passthrough' function.
+  * Added missing splat in stubs -- by :user:`Avasam`
+
+-------------------------------------------------------------------
 Tue Apr  1 15:35:00 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make it compatible with older setuptools
