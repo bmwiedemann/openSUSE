@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jul 13 14:55:01 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.4.0
+  * Allow opting in to limited API builds with
+    EXTENSION_HELPERS_PY_LIMITED_API by @astrofrog in #110
+- Release 1.3.0
+  * Automatically set compiler flags to target PEP 384 Python
+    limited API by @lpsinger in #26
+  * Bump minimum version of Python to 3.10 and update versions by
+    @astrofrog in #106
+- Release 1.2.0
+  * Support pathlib.Path in write_if_different and import_file by
+    @astrofrog in #84
+  * TST: fix pyproject-only test (ensure build-time dependencies
+    are installed) by @neutrinoceros in #80
+  * TST: drop legacy pytest fixture tmpdir, use tmp_path instead by
+    @neutrinoceros in #81
+
+-------------------------------------------------------------------
 Mon Jan  8 20:44:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.1:

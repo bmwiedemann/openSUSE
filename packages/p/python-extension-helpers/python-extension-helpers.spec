@@ -1,7 +1,7 @@
 #
 # spec file for package python-extension-helpers
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,32 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-extension-helpers
-Version:        1.1.1
+Version:        1.4.0
 Release:        0
-Summary:        Utilities for building and installing packages in the Astropy ecosystem
+Summary:        Utilities for building and installing packages wuth compiled extensions
 License:        BSD-3-Clause
 URL:            https://github.com/astropy/extension-helpers
-Source:         https://files.pythonhosted.org/packages/source/e/extension-helpers/extension-helpers-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/e/extension_helpers/extension_helpers-%{version}.tar.gz
 Source100:      python-extension-helpers-rpmlintrc
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 43}
+BuildRequires:  %{python_module setuptools >= 64}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
+BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module tomli if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 # /SECTION
-Requires:       python-setuptools >= 40.2
+Requires:       python-setuptools >= 64
+Requires:       (python-tomli if python-base < 3.11)
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,7 +56,7 @@ when the setup.py command is run and should be defined as a build-time
 dependency in pyproject.toml files.
 
 %prep
-%setup -q -n extension-helpers-%{version}
+%setup -q -n extension_helpers-%{version}
 
 %build
 %pyproject_wheel
@@ -63,13 +66,14 @@ dependency in pyproject.toml files.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# do not test local source dir
-%pytest --pyargs extension_helpers -k "not pyproject"
+# mismatch: can't build and don't neeed limited api cp310 in our flavored environment
+donttest="test_limited_api and cp310"
+%pytest --pyargs extension_helpers -k "not ($donttest)"
 
 %files %{python_files}
 %doc CHANGES.md README.rst
 %license LICENSE.rst licenses/LICENSE_ASTROSCRAPPY.rst
 %{python_sitelib}/extension_helpers
-%{python_sitelib}/extension_helpers-%{version}*-info
+%{python_sitelib}/extension_helpers-%{version}.dist-info
 
 %changelog
