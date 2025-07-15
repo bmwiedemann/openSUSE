@@ -340,4 +340,14 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
 </comment>
     <requestid>1279274</requestid>
   </revision>
+  <revision rev="40" vrev="40">
+    <srcmd5>d38b0fa8af2068413c09112f31a03202</srcmd5>
+    <version>15</version>
+    <time>1752590542</time>
+    <user>anag_factory</user>
+    <comment>- Add cockpit.socket to improve user experience as it is replacing
+  YaST (jsc#PED-13228)
+</comment>
+    <requestid>1291892</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 10 07:01:47 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Add cockpit.socket to improve user experience as it is replacing
+  YaST (jsc#PED-13228)
+
+-------------------------------------------------------------------
 Mon Apr 28 12:23:41 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - Create devel subpackage:
