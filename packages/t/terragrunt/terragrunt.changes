@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 15 05:59:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.83.2:
+  * build(deps): bump the js-dependencies group across 1 directory
+    with 2 updates (#4536)
+  * chore: updated engine used in tests to 0.0.20 (#4532)
+  * chore: runner pool improvements (#4506)
+  * chore: Updated cloud-nuke config to remove dynamodb tables
+    (#4531)
+
+-------------------------------------------------------------------
 Sat Jul 12 07:16:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.83.1:
