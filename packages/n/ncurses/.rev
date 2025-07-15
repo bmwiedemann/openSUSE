@@ -5238,4 +5238,20 @@
   + regen Ada95/configure (report by Sven Joachim).</comment>
     <requestid>1289192</requestid>
   </revision>
+  <revision rev="304" vrev="77">
+    <srcmd5>b4c2314985b1f4c45b0df5fc1964b383</srcmd5>
+    <version>unknown</version>
+    <time>1752590562</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20250712
+  + improve readability of term.h
+  + modify recursive make rules to avoid interference with GNU make's
+    &quot;-j&quot; option (report by Stas Sergeev).
+- Add ncurses patch 20250705
+  + when installing the terminfo database, check if symbolic links are
+    supported before attemping to link lib/terminfo from share/terminfo
+    (report by Kirill Makurin).
+  + modify configure check for MAKEFLAGS/MFLAGS to ignore existing value</comment>
+    <requestid>1293086</requestid>
+  </revision>
 </revisionlist>

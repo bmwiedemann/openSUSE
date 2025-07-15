@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 14 07:32:00 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250712
+  + improve readability of term.h
+  + modify recursive make rules to avoid interference with GNU make's
+    "-j" option (report by Stas Sergeev).
+- Add ncurses patch 20250705
+  + when installing the terminfo database, check if symbolic links are
+    supported before attemping to link lib/terminfo from share/terminfo
+    (report by Kirill Makurin).
+  + modify configure check for MAKEFLAGS/MFLAGS to ignore existing value
+
+-------------------------------------------------------------------
 Mon Jun 30 07:33:15 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20250628
