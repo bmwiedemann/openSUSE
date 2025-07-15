@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul  9 10:12:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Recommend installing gstreamer-plugins-good for mp3 decoding
+
+-------------------------------------------------------------------
+Tue Jul  8 21:24:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.3.0
+  https://blogs.kde.org/2025/07/08/amarok-3.3-far-above-the-clouds-released/
+  * Amarok now uses Qt 6 and KDE Frameworks 6
+  * Audio engine has been reworked to use GStreamer instead of Phonon
+  * Update database character set to allow full utf-8 values (kde#462268)
+  * Apply default pre-gain when ReplayGain is active and use
+    fallback value if no ReplayGain data is available for a track
+  * Clear out some of the now-discontinued Last.fm radio
+    functionalities and partially replace by opening relevant
+    Last.fm pages
+  * Remove TagLib extras support (RealMedia and Audible files)
+
+-------------------------------------------------------------------
 Sat Feb 15 16:02:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.2.2
