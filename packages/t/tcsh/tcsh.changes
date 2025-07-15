@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 11 09:53:34 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Update to tcsh 6.24.16 - 2025-07-09
+  * Use $+ instead of $^ in nls/Makefile.in
+    NetBSD make added support for $^ per POSIX, so it no longer expands to
+    an empty string, which breaks the rules.  It does not define $+, so we
+    can use that instead for GNU make.
+    A proper fix would be to detect the make flavor used, and build rules
+    appropriate for each flavor.  Listing all the dependencies is not
+    practical (in the rules involving multiple set files).
+
+-------------------------------------------------------------------
 Fri Feb 14 11:33:30 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Do not interfere Meta with Carriage Return (boo#1170527)

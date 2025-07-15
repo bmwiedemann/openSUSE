@@ -1151,4 +1151,19 @@
     <comment>- Do not interfere Meta with Carriage Return (boo#1170527)</comment>
     <requestid>1245870</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>5e74ab95c39e06684ea61dc1f3884d6d</srcmd5>
+    <version>6.24.16</version>
+    <time>1752590552</time>
+    <user>anag_factory</user>
+    <comment>- Update to tcsh 6.24.16 - 2025-07-09
+  * Use $+ instead of $^ in nls/Makefile.in
+    NetBSD make added support for $^ per POSIX, so it no longer expands to
+    an empty string, which breaks the rules.  It does not define $+, so we
+    can use that instead for GNU make.
+    A proper fix would be to detect the make flavor used, and build rules
+    appropriate for each flavor.  Listing all the dependencies is not
+    practical (in the rules involving multiple set files).</comment>
+    <requestid>1291947</requestid>
+  </revision>
 </revisionlist>
