@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jeepney
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Low-level, pure Python DBus protocol wrapper
 License:        MIT

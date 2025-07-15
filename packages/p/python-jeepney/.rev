@@ -121,4 +121,24 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1281309</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e4dfe183cb61ae617fb936241ce719c1</srcmd5>
+    <version>0.9.0</version>
+    <time>1752590579</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.9.0:
+  * Fixed subscribing to messages on the message bus with a
+    path_namespace parameter (:mr:`38`)
+  * Fixed authentication on (some?) BSDs, using SCM_CREDS
+    (:mr:`33`), for all integrations except for asyncio
+  * :class:`~.DBusAddress` and message generators will now raise
+    :exc:`ValueError` if given invalid D-Bus names
+  * Bindings can now be :doc:`generated &lt;bindgen&gt;` from D-Bus XML
+    in a file with the new :option:`--file` option (:mr:`34`).
+  * The async_timeout package is no longer required for running
+    the tests on Python 3.11 or above (:mr:`39`).
+
+  * Raise ConnectionResetError in blocking integration if socket.recv()</comment>
+    <requestid>1292494</requestid>
+  </revision>
 </revisionlist>
