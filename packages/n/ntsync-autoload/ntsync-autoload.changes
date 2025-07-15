@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Mon Jul 14 11:21:48 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.0.2
+  - add ntsync-autoload-udev-rules subpackage which changes the
+    permissions from the usptream default a=rw to ug=rw and adds an
+    ACL for the locally logged user to gain access
+
+-------------------------------------------------------------------
+Sat Jul 12 14:25:15 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

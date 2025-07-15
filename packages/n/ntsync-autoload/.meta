@@ -1,0 +1,8 @@
+<package name="ntsync-autoload" project="openSUSE:Factory">
+  <title>Automatically load the ntsync kernel module</title>
+  <description>Automatically load the ntsync kernel module.
+
+The module allows wine to handle the translations of some Windows specific
+primitives in a more efficient way.</description>
+  <url>https://www.opensuse.org/</url>
+</package>

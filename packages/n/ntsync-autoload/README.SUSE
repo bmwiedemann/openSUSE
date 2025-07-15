@@ -1,0 +1,13 @@
+  ntsync autoload
+==================
+
+This configures the system to automatically load the ntsync module to help wine/proton
+
+
+The ntsync-autoload-udev-rules restricts the permissions compared to the
+upstream default of read+rewrite for everyone.
+
+The new permissions are read+write for root:root and an ACL for the currently
+locally logged in user. For the normal desktop use that should not have any implications.
+If your use case needs the upstream defaults, you can remove the ntsync-autoload-udev-rules
+package and block it from reinstall with `zypper al ntsync-autoload-udev-rules`

@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>36ee1f69c029dd709fd076f1ac301d91</srcmd5>
+    <version>0.0.2</version>
+    <time>1752590636</time>
+    <user>anag_factory</user>
+    <comment>Automatically load the ntsync kernel module.
+
+The module allows wine to handle the translations of some Windows specific
+primitives in a more efficient way.</comment>
+    <requestid>1293120</requestid>
+  </revision>
+</revisionlist>
