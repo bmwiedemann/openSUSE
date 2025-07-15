@@ -1585,4 +1585,16 @@
   * releaser: Prepare repository for 0.148.0-DEV (forwarded request 1291307 from jfkw)</comment>
     <requestid>1291325</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>0df513c8c34993c3f760dc40a2bcb2d5</srcmd5>
+    <version>0.148.1</version>
+    <time>1752590671</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.148.1:
+  * releaser: Bump versions for release of 0.148.1
+  * Fix assignment to entry in nil map
+  * deps: Downgrade github.com/niklasfasching/go-org v1.9.0 =&gt; v1.8.0
+  * releaser: Prepare repository for 0.149.0-DEV (forwarded request 1293175 from jfkw)</comment>
+    <requestid>1293201</requestid>
+  </revision>
 </revisionlist>

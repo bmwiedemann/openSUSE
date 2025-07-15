@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 14 13:55:36 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.148.1:
+  * releaser: Bump versions for release of 0.148.1
+  * Fix assignment to entry in nil map
+  * deps: Downgrade github.com/niklasfasching/go-org v1.9.0 => v1.8.0
+  * releaser: Prepare repository for 0.149.0-DEV
+
+-------------------------------------------------------------------
 Tue Jul 08 14:14:39 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.148.0:
