@@ -575,6 +575,8 @@ unsorted:
   - amazon-ecs-init 
   - amazon-ssm-agent 
   - amber-cli 
+  - amberol 
+  - amberol-lang 
   - amdctl 
   - amdgpu_top 
   - amfora 
@@ -2317,8 +2319,6 @@ unsorted:
   - cmake 
   - cmake-doc-qhelp 
   - cmake-extras 
-  - cmake-fedora 
-  - cmake-fedora-modules 
   - cmake-full 
   - cmake-gui 
   - cmake-man 
@@ -5260,10 +5260,6 @@ unsorted:
   - ghc-binary 
   - ghc-binary-devel 
   - ghc-binary-doc 
-  - ghc-binary-orphans 
-  - ghc-binary-orphans-devel 
-  - ghc-binary-orphans-doc 
-  - ghc-binary-orphans-prof 
   - ghc-binary-prof 
   - ghc-bitvec 
   - ghc-bitvec-devel 
@@ -5363,10 +5359,6 @@ unsorted:
   - ghc-character-ps-devel 
   - ghc-character-ps-doc 
   - ghc-character-ps-prof 
-  - ghc-cipher-aes 
-  - ghc-cipher-aes-devel 
-  - ghc-cipher-aes-doc 
-  - ghc-cipher-aes-prof 
   - ghc-citeproc 
   - ghc-citeproc-devel 
   - ghc-citeproc-doc 
@@ -5383,10 +5375,6 @@ unsorted:
   - ghc-cmdargs-devel 
   - ghc-cmdargs-doc 
   - ghc-cmdargs-prof 
-  - ghc-code-page 
-  - ghc-code-page-devel 
-  - ghc-code-page-doc 
-  - ghc-code-page-prof 
   - ghc-colour 
   - ghc-colour-devel 
   - ghc-colour-doc 
@@ -5456,18 +5444,10 @@ unsorted:
   - ghc-cpphs-devel 
   - ghc-cpphs-doc 
   - ghc-cpphs-prof 
-  - ghc-criterion-measurement 
-  - ghc-criterion-measurement-devel 
-  - ghc-criterion-measurement-doc 
-  - ghc-criterion-measurement-prof 
   - ghc-crypto-api 
   - ghc-crypto-api-devel 
   - ghc-crypto-api-doc 
   - ghc-crypto-api-prof 
-  - ghc-crypto-cipher-types 
-  - ghc-crypto-cipher-types-devel 
-  - ghc-crypto-cipher-types-doc 
-  - ghc-crypto-cipher-types-prof 
   - ghc-crypto-pubkey-types 
   - ghc-crypto-pubkey-types-devel 
   - ghc-crypto-pubkey-types-doc 
@@ -5556,10 +5536,6 @@ unsorted:
   - ghc-deepseq-devel 
   - ghc-deepseq-doc 
   - ghc-deepseq-prof 
-  - ghc-dense-linear-algebra 
-  - ghc-dense-linear-algebra-devel 
-  - ghc-dense-linear-algebra-doc 
-  - ghc-dense-linear-algebra-prof 
   - ghc-deriving-aeson 
   - ghc-deriving-aeson-devel 
   - ghc-deriving-aeson-doc 
@@ -5569,10 +5545,6 @@ unsorted:
   - ghc-digest-devel 
   - ghc-digest-doc 
   - ghc-digest-prof 
-  - ghc-digits 
-  - ghc-digits-devel 
-  - ghc-digits-doc 
-  - ghc-digits-prof 
   - ghc-directory 
   - ghc-directory-devel 
   - ghc-directory-doc 
@@ -6004,10 +5976,6 @@ unsorted:
   - ghc-jira-wiki-markup-devel 
   - ghc-jira-wiki-markup-doc 
   - ghc-jira-wiki-markup-prof 
-  - ghc-js-chart 
-  - ghc-js-chart-devel 
-  - ghc-js-chart-doc 
-  - ghc-js-chart-prof 
   - ghc-kan-extensions 
   - ghc-kan-extensions-devel 
   - ghc-kan-extensions-doc 
@@ -6097,10 +6065,6 @@ unsorted:
   - ghc-microlens-th-devel 
   - ghc-microlens-th-doc 
   - ghc-microlens-th-prof 
-  - ghc-microstache 
-  - ghc-microstache-devel 
-  - ghc-microstache-doc 
-  - ghc-microstache-prof 
   - ghc-mime-types 
   - ghc-mime-types-devel 
   - ghc-mime-types-doc 
@@ -6141,10 +6105,6 @@ unsorted:
   - ghc-mtl-devel 
   - ghc-mtl-doc 
   - ghc-mtl-prof 
-  - ghc-mwc-random 
-  - ghc-mwc-random-devel 
-  - ghc-mwc-random-doc 
-  - ghc-mwc-random-prof 
   - ghc-netlink 
   - ghc-netlink-devel 
   - ghc-netlink-doc 
@@ -6270,6 +6230,10 @@ unsorted:
   - ghc-polyparse-doc 
   - ghc-polyparse-prof 
   - ghc-postgresql-libpq 
+  - ghc-postgresql-libpq-configure 
+  - ghc-postgresql-libpq-configure-devel 
+  - ghc-postgresql-libpq-configure-doc 
+  - ghc-postgresql-libpq-configure-prof 
   - ghc-postgresql-libpq-devel 
   - ghc-postgresql-libpq-doc 
   - ghc-postgresql-libpq-prof 
@@ -6532,10 +6496,6 @@ unsorted:
   - ghc-splitmix-devel 
   - ghc-splitmix-doc 
   - ghc-splitmix-prof 
-  - ghc-statistics 
-  - ghc-statistics-devel 
-  - ghc-statistics-doc 
-  - ghc-statistics-prof 
   - ghc-stm 
   - ghc-stm-chans 
   - ghc-stm-chans-devel 
@@ -6552,10 +6512,6 @@ unsorted:
   - ghc-strict-devel 
   - ghc-strict-doc 
   - ghc-strict-prof 
-  - ghc-string-conversions 
-  - ghc-string-conversions-devel 
-  - ghc-string-conversions-doc 
-  - ghc-string-conversions-prof 
   - ghc-string-interpolate 
   - ghc-string-interpolate-devel 
   - ghc-string-interpolate-doc 
@@ -6744,10 +6700,6 @@ unsorted:
   - ghc-transformers-devel 
   - ghc-transformers-doc 
   - ghc-transformers-prof 
-  - ghc-type-equality 
-  - ghc-type-equality-devel 
-  - ghc-type-equality-doc 
-  - ghc-type-equality-prof 
   - ghc-typed-process 
   - ghc-typed-process-devel 
   - ghc-typed-process-doc 
@@ -6833,10 +6785,6 @@ unsorted:
   - ghc-vector-algorithms-devel 
   - ghc-vector-algorithms-doc 
   - ghc-vector-algorithms-prof 
-  - ghc-vector-binary-instances 
-  - ghc-vector-binary-instances-devel 
-  - ghc-vector-binary-instances-doc 
-  - ghc-vector-binary-instances-prof 
   - ghc-vector-devel 
   - ghc-vector-doc 
   - ghc-vector-prof 
@@ -6844,10 +6792,6 @@ unsorted:
   - ghc-vector-stream-devel 
   - ghc-vector-stream-doc 
   - ghc-vector-stream-prof 
-  - ghc-vector-th-unbox 
-  - ghc-vector-th-unbox-devel 
-  - ghc-vector-th-unbox-doc 
-  - ghc-vector-th-unbox-prof 
   - ghc-void 
   - ghc-void-devel 
   - ghc-void-doc 
@@ -6908,22 +6852,6 @@ unsorted:
   - ghc-word8-devel 
   - ghc-word8-doc 
   - ghc-word8-prof 
-  - ghc-x509 
-  - ghc-x509-devel 
-  - ghc-x509-doc 
-  - ghc-x509-prof 
-  - ghc-x509-store 
-  - ghc-x509-store-devel 
-  - ghc-x509-store-doc 
-  - ghc-x509-store-prof 
-  - ghc-x509-system 
-  - ghc-x509-system-devel 
-  - ghc-x509-system-doc 
-  - ghc-x509-system-prof 
-  - ghc-x509-validation 
-  - ghc-x509-validation-devel 
-  - ghc-x509-validation-doc 
-  - ghc-x509-validation-prof 
   - ghc-xhtml 
   - ghc-xhtml-devel 
   - ghc-xhtml-doc 
@@ -8058,6 +7986,9 @@ unsorted:
   - grub2-i386-efi-extras 
   - grub2-i386-pc-debug 
   - grub2-i386-pc-extras 
+  - grub2-i386-xen 
+  - grub2-i386-xen-debug 
+  - grub2-i386-xen-extras 
   - grub2-theme-breeze 
   - grub2-x86_64-efi-debug 
   - grub2-x86_64-efi-extras 
@@ -13374,10 +13305,10 @@ unsorted:
   - libgaminggear0 
   - libgaminggearfx0 
   - libgaminggearwidget0 
-  - libgammaray-3_2_0 
-  - libgammaray-qt6-3_2_0 
-  - libgammaray-shared-3_2_0 
-  - libgammaray-shared-qt6-3_2_0 
+  - libgammaray-3_2_1 
+  - libgammaray-qt6-3_2_1 
+  - libgammaray-shared-3_2_1 
+  - libgammaray-shared-qt6-3_2_1 
   - libgap9 
   - libgarcon-branding-upstream 
   - libgarcon-devel 
@@ -13530,8 +13461,6 @@ unsorted:
   - libgloox18 
   - libglpk40 
   - libglslang15-32bit 
-  - libgltf-0_1-1 
-  - libgltf-devel 
   - libglusterfs0 
   - libglut3-32bit 
   - libglvnd-32bit 
@@ -15376,7 +15305,7 @@ unsorted:
   - libpoppler-qt5-1 
   - libpoppler-qt5-devel 
   - libpoppler-qt6-devel 
-  - libpoppler150-32bit 
+  - libpoppler151-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -16146,6 +16075,7 @@ unsorted:
   - libskk-devel 
   - libskk0 
   - libslang2-32bit 
+  - libsleef3 
   - libslirp-devel 
   - libslopy7_6 
   - libslurm42 
@@ -23849,7 +23779,6 @@ unsorted:
   - python3-pwquality 
   - python3-pycadf 
   - python3-pycdlib-common 
-  - python3-pyexmdb 
   - python3-pyghmi 
   - python3-pyginac 
   - python3-pyginac-devel 
@@ -25136,6 +25065,7 @@ unsorted:
   - python311-django-taggit 
   - python311-django-tagulous 
   - python311-django-tastypie 
+  - python311-django-test-migrations 
   - python311-django-timezone-field 
   - python311-django-treebeard 
   - python311-django-upgrade 
@@ -25661,6 +25591,7 @@ unsorted:
   - python311-jira 
   - python311-jirafs 
   - python311-jiter 
+  - python311-jiwer 
   - python311-joblib 
   - python311-josepy 
   - python311-joserfc 
@@ -26467,6 +26398,7 @@ unsorted:
   - python311-pyemd 
   - python311-pyenchant 
   - python311-pyerfa 
+  - python311-pyexmdb 
   - python311-pyface 
   - python311-pyfakefs 
   - python311-pyfeyn 
@@ -28862,6 +28794,7 @@ unsorted:
   - python312-django-taggit 
   - python312-django-tagulous 
   - python312-django-tastypie 
+  - python312-django-test-migrations 
   - python312-django-timezone-field 
   - python312-django-treebeard 
   - python312-django-upgrade 
@@ -29403,6 +29336,7 @@ unsorted:
   - python312-jira 
   - python312-jirafs 
   - python312-jiter 
+  - python312-jiwer 
   - python312-jmespath 
   - python312-joblib 
   - python312-josepy 
@@ -30230,6 +30164,7 @@ unsorted:
   - python312-pyemd 
   - python312-pyenchant 
   - python312-pyerfa 
+  - python312-pyexmdb 
   - python312-pyface 
   - python312-pyfakefs 
   - python312-pyfeyn 
@@ -32613,6 +32548,7 @@ unsorted:
   - python313-django-taggit 
   - python313-django-tagulous 
   - python313-django-tastypie 
+  - python313-django-test-migrations 
   - python313-django-timezone-field 
   - python313-django-treebeard 
   - python313-django-upgrade 
@@ -33143,6 +33079,7 @@ unsorted:
   - python313-jinja2-time 
   - python313-jira 
   - python313-jiter 
+  - python313-jiwer 
   - python313-jmespath 
   - python313-joblib 
   - python313-josepy 
@@ -33949,6 +33886,7 @@ unsorted:
   - python313-pyemd 
   - python313-pyenchant 
   - python313-pyerfa 
+  - python313-pyexmdb 
   - python313-pyface 
   - python313-pyfakefs 
   - python313-pyfeyn 
@@ -37083,6 +37021,7 @@ unsorted:
   - slade 
   - slang-devel 
   - slang-slsh 
+  - sleef-devel 
   - sleuthkit 
   - sleuthkit-devel 
   - slf4j 
