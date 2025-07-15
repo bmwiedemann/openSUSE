@@ -1,0 +1,323 @@
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Thu, 03 Jul 2025 09:19:46 +0200
+Subject: Fix tests without /usr/bin/egrep
+
+Picks egrep in a portable fashion, which may be grep -E.
+
+Index: libsmi-0.4.8/mibs/iana/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/mibs/iana/Makefile.am
++++ libsmi-0.4.8/mibs/iana/Makefile.am
+@@ -12,7 +12,7 @@
+ #
+ 
+ ianadir			= $(mibdir)/iana
+-MIBS			= $(shell ls -1 $(srcdir) | egrep -v 'CVS|Makefile')
++MIBS			= $(shell ls -1 $(srcdir) | @EGREP@ -v 'CVS|Makefile')
+ EXTRA_DIST		= $(MIBS)
+ iana_DATA		= $(MIBS)
+ MIBURLS			= http://www.iana.org/assignments/ianaaddressfamilynumbers-mib http://www.iana.org/assignments/ianacharset-mib http://www.iana.org/assignments/ianafinisher-mib http://www.iana.org/assignments/ianaiftype-mib http://www.iana.org/assignments/ianaiprouteprotocol-mib http://www.iana.org/assignments/ianalanguage-mib http://www.iana.org/assignments/ianamalloc-mib http://www.iana.org/assignments/ianaprinter-mib http://www.iana.org/assignments/ianatn3270etc-mib http://www.iana.org/assignments/ianagmplstc-mib http://www.iana.org/assignments/ianaippmmetricsregistry-mib http://www.iana.org/assignments/ianaitualarmtc-mib http://www.iana.org/assignments/ianamau-mib
+Index: libsmi-0.4.8/mibs/ietf/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/mibs/ietf/Makefile.am
++++ libsmi-0.4.8/mibs/ietf/Makefile.am
+@@ -12,6 +12,6 @@
+ #
+ 
+ ietfdir			= $(mibdir)/ietf
+-MIBS			= $(shell ls -1 $(srcdir) | egrep -v 'CVS|Makefile')
++MIBS			= $(shell ls -1 $(srcdir) | @EGREP@ -v 'CVS|Makefile')
+ EXTRA_DIST              = $(MIBS)
+ ietf_DATA		= $(MIBS)
+Index: libsmi-0.4.8/mibs/irtf/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/mibs/irtf/Makefile.am
++++ libsmi-0.4.8/mibs/irtf/Makefile.am
+@@ -12,6 +12,6 @@
+ #
+ 
+ irtfdir			= $(mibdir)/irtf
+-MIBS			= $(shell ls -1 $(srcdir) | egrep -v 'CVS|Makefile')
++MIBS			= $(shell ls -1 $(srcdir) | @EGREP@ -v 'CVS|Makefile')
+ EXTRA_DIST              = $(MIBS)
+ irtf_DATA		= $(MIBS)
+Index: libsmi-0.4.8/mibs/site/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/mibs/site/Makefile.am
++++ libsmi-0.4.8/mibs/site/Makefile.am
+@@ -12,6 +12,6 @@
+ #
+ 
+ sitedir			= $(mibdir)/site
+-MIBS			= $(shell ls -1 $(srcdir) | egrep -v 'CVS|Makefile')
++MIBS			= $(shell ls -1 $(srcdir) | @EGREP@ -v 'CVS|Makefile')
+ EXTRA_DIST              = $(MIBS)
+ site_DATA		= $(MIBS)
+Index: libsmi-0.4.8/mibs/tubs/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/mibs/tubs/Makefile.am
++++ libsmi-0.4.8/mibs/tubs/Makefile.am
+@@ -12,6 +12,6 @@
+ #
+ 
+ tubsdir			= $(mibdir)/tubs
+-MIBS			= $(shell ls -1 $(srcdir) | egrep -v 'CVS|Makefile')
++MIBS			= $(shell ls -1 $(srcdir) | @EGREP@ -v 'CVS|Makefile')
+ EXTRA_DIST              = $(MIBS)
+ tubs_DATA		= $(MIBS)
+Index: libsmi-0.4.8/pibs/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/pibs/Makefile.am
++++ libsmi-0.4.8/pibs/Makefile.am
+@@ -13,7 +13,7 @@
+ 
+ PIBDIRS			= ietf tubs site
+ 
+-PIBS			= $(shell ls -1d [a-z]*/* | egrep -v 'CVS|Makefile')
++PIBS			= $(shell ls -1d [a-z]*/* | @EGREP@ -v 'CVS|Makefile')
+ pib_DATA		= $(PIBS)
+ SUBDIRS			= $(PIBDIRS)
+ 
+Index: libsmi-0.4.8/pibs/ietf/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/pibs/ietf/Makefile.am
++++ libsmi-0.4.8/pibs/ietf/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1507 2002-12-22 16:12:23Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/pibs/site/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/pibs/site/Makefile.am
++++ libsmi-0.4.8/pibs/site/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1507 2002-12-22 16:12:23Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/pibs/tubs/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/pibs/tubs/Makefile.am
++++ libsmi-0.4.8/pibs/tubs/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1507 2002-12-22 16:12:23Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/Makefile.am
++++ libsmi-0.4.8/test/Makefile.am
+@@ -43,7 +43,7 @@ TESTS_ENVIRONMENT	= SMIPATH="$(TESTMIBDI
+ 
+ EXTRA_DIST		= $(TESTS)
+ 
+-SMIDIFFTESTS            = $(shell ls -1d smidiff/* | egrep -v 'CVS|Makefile')
++SMIDIFFTESTS            = $(shell ls -1d smidiff/* | @EGREP@ -v 'CVS|Makefile')
+ 
+ SUBDIRS                 = mibs dumps smidiff
+ 
+Index: libsmi-0.4.8/test/dumps/cm/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/dumps/cm/Makefile.am
++++ libsmi-0.4.8/test/dumps/cm/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1036 2000-11-13 11:02:49Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/dumps/corba/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/dumps/corba/Makefile.am
++++ libsmi-0.4.8/test/dumps/corba/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1030 2000-11-13 00:06:35Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/dumps/identifiers/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/dumps/identifiers/Makefile.am
++++ libsmi-0.4.8/test/dumps/identifiers/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1036 2000-11-13 11:02:49Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/dumps/imports/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/dumps/imports/Makefile.am
++++ libsmi-0.4.8/test/dumps/imports/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1030 2000-11-13 00:06:35Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/dumps/jax/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/dumps/jax/Makefile.am
++++ libsmi-0.4.8/test/dumps/jax/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1030 2000-11-13 00:06:35Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/dumps/metrics/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/dumps/metrics/Makefile.am
++++ libsmi-0.4.8/test/dumps/metrics/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1036 2000-11-13 11:02:49Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/dumps/mosy/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/dumps/mosy/Makefile.am
++++ libsmi-0.4.8/test/dumps/mosy/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1030 2000-11-13 00:06:35Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/dumps/netsnmp/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/dumps/netsnmp/Makefile.am
++++ libsmi-0.4.8/test/dumps/netsnmp/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1038 2000-11-13 11:39:43Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/dumps/orig-smiv2/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/dumps/orig-smiv2/Makefile.am
++++ libsmi-0.4.8/test/dumps/orig-smiv2/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1030 2000-11-13 00:06:35Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/dumps/python/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/dumps/python/Makefile.am
++++ libsmi-0.4.8/test/dumps/python/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1036 2000-11-13 11:02:49Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/dumps/smilint-smiv2/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/dumps/smilint-smiv2/Makefile.am
++++ libsmi-0.4.8/test/dumps/smilint-smiv2/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1030 2000-11-13 00:06:35Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/dumps/sming/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/dumps/sming/Makefile.am
++++ libsmi-0.4.8/test/dumps/sming/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1030 2000-11-13 00:06:35Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/dumps/smiv1/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/dumps/smiv1/Makefile.am
++++ libsmi-0.4.8/test/dumps/smiv1/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1030 2000-11-13 00:06:35Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/dumps/smiv2-smiv2/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/dumps/smiv2-smiv2/Makefile.am
++++ libsmi-0.4.8/test/dumps/smiv2-smiv2/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1030 2000-11-13 00:06:35Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/dumps/smiv2/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/dumps/smiv2/Makefile.am
++++ libsmi-0.4.8/test/dumps/smiv2/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1030 2000-11-13 00:06:35Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/dumps/tree/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/dumps/tree/Makefile.am
++++ libsmi-0.4.8/test/dumps/tree/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1030 2000-11-13 00:06:35Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/dumps/types/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/dumps/types/Makefile.am
++++ libsmi-0.4.8/test/dumps/types/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1030 2000-11-13 00:06:35Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/dumps/xml/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/dumps/xml/Makefile.am
++++ libsmi-0.4.8/test/dumps/xml/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1036 2000-11-13 11:02:49Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/dumps/yang/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/dumps/yang/Makefile.am
++++ libsmi-0.4.8/test/dumps/yang/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1030 2000-11-13 00:06:35Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')
+Index: libsmi-0.4.8/test/smidiff/Makefile.am
+===================================================================
+--- libsmi-0.4.8.orig/test/smidiff/Makefile.am
++++ libsmi-0.4.8/test/smidiff/Makefile.am
+@@ -11,4 +11,4 @@
+ # @(#) $Id: Makefile.am 1433 2002-07-24 11:54:24Z strauss $
+ #
+ 
+-EXTRA_DIST              = $(shell ls -1 | egrep -v 'CVS|Makefile')
++EXTRA_DIST              = $(shell ls -1 | @EGREP@ -v 'CVS|Makefile')

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  3 07:19:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix automake.am files to locate egrep / grep -E in a portable
+  fashion libsmi-0.4.8-egrep.patch
+
+-------------------------------------------------------------------
 Sun Apr  6 16:32:56 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to

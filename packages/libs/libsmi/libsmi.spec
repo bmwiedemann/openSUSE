@@ -32,6 +32,7 @@ Patch3:         libsmi-flex.patch
 Patch4:         libsmi-bison-3.0.patch
 Patch5:         libsmi-exports.patch
 Patch6:         libsmi-c99.patch
+Patch7:         libsmi-0.4.8-egrep.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libtool
@@ -87,6 +88,7 @@ libsmi.
 %patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
+%patch -P 7 -p1
 
 %build
 autoreconf --force --install
