@@ -404,4 +404,12 @@ https://bugzilla.redhat.com/996759) (forwarded request 224089 from mgorse)</comm
     <comment>- Drop obsolete update-desktop-files BuildRequires and macro. (forwarded request 1279656 from iznogood)</comment>
     <requestid>1280008</requestid>
   </revision>
+  <revision rev="55" vrev="16">
+    <srcmd5>df29ec54657b4cf1ad0b46d9685ad901</srcmd5>
+    <version>0.97.3</version>
+    <time>1752590537</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1291864</requestid>
+  </revision>
 </revisionlist>

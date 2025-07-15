@@ -1,7 +1,7 @@
 #
 # spec file for package dia
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -108,7 +108,7 @@ pages).
 cp $RPM_SOURCE_DIR/font-test*dia .
 
 %build
-autoreconf -f -i
+autoreconf -f -i -I /usr/share/gettext/m4
 intltoolize --force
 export CFLAGS="%{optflags} -std=gnu11"
 %configure\

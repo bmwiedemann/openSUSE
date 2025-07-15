@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 11 06:52:00 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Work with never gettext-runtime. In gettext 0.24.1 the m4 files
+  moved from /usr/share/aclocal/ to /usr/share/gettext/m4
+
+-------------------------------------------------------------------
 Fri May 23 18:49:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires and macro.
