@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 15 05:59:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.29.3:
+  * Hook up logger in spdx generation (#1747)
+  * Use contextualized loggers everywhere (#1748)
+  * build(deps): bump chainguard-dev/actions from 1.4.3 to 1.4.4
+    (#1745)
+
+-------------------------------------------------------------------
 Mon Jul 07 04:41:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.29.2:
