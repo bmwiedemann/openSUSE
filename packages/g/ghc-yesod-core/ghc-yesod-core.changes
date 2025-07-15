@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul  8 13:54:21 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update yesod-core to version 1.6.27.1.
+  ## 1.6.27.1
+
+  * Set `base >= 4.11` for less CPP and imports [#1876](https://github.com/yesodweb/yesod/pull/1876)
+
+-------------------------------------------------------------------
 Wed May 28 23:22:25 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update yesod-core to version 1.6.27.0 revision 1.
