@@ -1,7 +1,7 @@
 #
 # spec file for package mujs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,20 @@
 #
 
 
+%define ucd_ver 16.0.0
 Name:           mujs
-Version:        1.3.5
+Version:        1.3.7
 Release:        0
 Summary:        An embeddable Javascript interpreter
 License:        AGPL-3.0-or-later
 Group:          Development/Languages/C and C++
-URL:            https://mujs.com
-Source0:        https://mujs.com/downloads/%{name}-%{version}.tar.gz
+URL:            https://github.com/ccxvii/%{name}
+Source0:        https://github.com/ccxvii/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# v=16.0.0 && u=https://www.unicode.org/Public/$v/ucd && f1=SpecialCasing.txt && f2=UnicodeData.txt && f=ucd-$v.tar.xz && cd /tmp && curl -O $u/$f1 -O $u/$f2 && tar c --remove-files "$f1" "$f2" | xz -9e > "$f"
+Source1:        ucd-%{ucd_ver}.tar.xz
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} > 1500
+BuildRequires:  python3
 BuildRequires:  pkgconfig(readline)
-%else
-BuildRequires:  readline-devel
-%endif
 
 %description
 MuJS is a lightweight Javascript interpreter designed for embedding in other software to extend them with scripting capabilities.
@@ -43,20 +43,19 @@ Provides:       %{name}-static = %{version}
 This package provides the MuJS static library.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%make_build debug CFLAGS="%{optflags} -fPIC"
+%make_build CFLAGS="%{optflags} -fPIC"
 
 %install
-%make_install prefix="%{_prefix}" libdir="%{_libdir}" CFLAGS="%{optflags} -fPIC"
+%make_install CFLAGS="%{optflags} -fPIC" prefix="%{_prefix}" libdir="%{_libdir}"
 
 %files
 %license COPYING
 %doc AUTHORS README
-%{_bindir}/%{name}
-%{_bindir}/%{name}-pp
+%{_bindir}/%{name}{,-pp}
 
 %files devel
 %license COPYING
