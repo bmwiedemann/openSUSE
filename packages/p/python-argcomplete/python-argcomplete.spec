@@ -28,7 +28,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-argcomplete%{psuffix}
-Version:        3.5.3
+Version:        3.6.2
 Release:        0
 Summary:        Bash tab completion for argparse
 License:        Apache-2.0

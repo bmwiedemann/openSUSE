@@ -436,4 +436,41 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1286090</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>5146bafb993b62d9993833872a76199b</srcmd5>
+    <version>3.6.2</version>
+    <time>1752590577</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.6.2:
+  * Revert “zsh: skip repeat Python runs in the same completion
+    run” This reverts a regression introduced in zsh tab
+    completion configurations utilizing multiple matchers.
+  * zsh: add global completion system install dir to user fpath
+    if not present
+  * Update shell_integration.py to support spaces in script file
+    path.
+  * Fix completion when wordbreak is first character
+  * Support namespace package traversal when completing Python
+    entry points
+  * zsh: skip repeat Python runs in the same completion run
+  * Make _parse_known_args signature more general for future API
+    changes
+  * Use interactive shells and bind to make environment variable
+    name completions work in older Bash versions
+  * Fix _parse_known_args monkeypatching Note: This fix is
+    required to restore compatibility with Python 3.12.8 and
+    3.13.1.
+  * Note: This fix is required to restore compatibility with
+    Python 3.12.8 and 3.13.1.
+  * CI improvements
+  * Restore compatibility with argparse in Python 3.12.7+
+  * Use project.scripts instead of setuptools scripts
+  * Test infrastructure improvements
+  * No stdin for python calls from bash completion functions
+    (#488) Prevents usage of stdin by (python) executables that
+    are called during completion generation. This prevents the
+    completion locking up the entire shell when the python script
+    is broken i.e. it enters an interactive mode (REPL) instead</comment>
+    <requestid>1292430</requestid>
+  </revision>
 </revisionlist>

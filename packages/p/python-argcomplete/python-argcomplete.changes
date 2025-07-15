@@ -1,4 +1,254 @@
 -------------------------------------------------------------------
+Sat Jul 12 17:20:18 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.2:
+  * Revert “zsh: skip repeat Python runs in the same completion
+    run” This reverts a regression introduced in zsh tab
+    completion configurations utilizing multiple matchers.
+  * zsh: add global completion system install dir to user fpath
+    if not present
+  * Update shell_integration.py to support spaces in script file
+    path.
+  * Fix completion when wordbreak is first character
+  * Support namespace package traversal when completing Python
+    entry points
+  * zsh: skip repeat Python runs in the same completion run
+  * Make _parse_known_args signature more general for future API
+    changes
+  * Use interactive shells and bind to make environment variable
+    name completions work in older Bash versions
+  * Fix _parse_known_args monkeypatching Note: This fix is
+    required to restore compatibility with Python 3.12.8 and
+    3.13.1.
+  * Note: This fix is required to restore compatibility with
+    Python 3.12.8 and 3.13.1.
+  * CI improvements
+  * Restore compatibility with argparse in Python 3.12.7+
+  * Use project.scripts instead of setuptools scripts
+  * Test infrastructure improvements
+  * No stdin for python calls from bash completion functions
+    (#488) Prevents usage of stdin by (python) executables that
+    are called during completion generation. This prevents the
+    completion locking up the entire shell when the python script
+    is broken i.e. it enters an interactive mode (REPL) instead
+    of generating the completions, as expected.
+  * Localize shell variable REPLY to avoid overwriting users’
+    value (#489) The variable REPLY is used by default by the
+    read shell builtin to store the return value, and like all
+    bash/zsh variables, is scoped globally. This change allows
+    this variable to be used for other needs by appropriately
+    scoping its internal use by an argcomplete utility function
+    that uses read.
+  * Preserve compatibility with argparse option tuples of length
+    4. This update is required to use argcomplete on Python
+    3.11.9+ or 3.12.3+.
+  * Allow register-python-argcomplete output to be used as lazy-
+    loaded zsh completion module
+  * Move debug_stream initialization to helper method to allow fd
+    9 behavior to be overridden in subclasses
+  * Allow explicit zsh global completion activation
+  * Fix and test global completion in zsh
+  * Add –yes option to activate-global-python-argcomplete
+  * Test suite improvements
+  * Respect user choice in activate-global-python-argcomplete
+  * Escape colon in zsh completions. Fixes #456
+  * Call _default as a fallback in zsh global completion
+  * Use homebrew prefix by default
+  * zsh: Allow to use external script
+  * Add support for Python 3.12 and drop EOL 3.6 and 3.7
+  * Use homebrew prefix by default
+  * zsh: Allow to use external script
+  * Add support for Python 3.12 and drop EOL 3.6 and 3.7
+  * Ensure Python 3.12+ compatibility in check_console_script
+  * Search through asdf shims
+  * Use ` as escape character in PowerShell
+  * setup.py -> pyproject.toml migration start
+  * Improve user install logic in activate-global-python-
+    argcomplete
+  * Ensure Python 3.7 compatibility in check_console_script
+  * ZSH implementation fixes
+  * Documentation improvements
+  * Test suite shell wrapper: Accept OSError on exit
+  * Test suite: Use general regex to cut zsh reset ANSI sequences
+  * Allow importlib-metadata 6.x; skip test failures on Python
+    3.7
+  * Note completers can return iterables of strings, not just
+    lists
+  * Documentation and test improvements
+  * Call _default as fallback in zsh global completion hook
+  * Begin support for mapping-emitting completers
+  * activate-global-python-argcomplete: do not overwrite existing
+    dotfile in user directory
+  * Add NOTICE file
+  * Establish long term name for split_line as
+    argcomplete.lexers.split_line
+  * Re-add split_line to API
+  * Fix zsh autoload issues
+  * Fully support zsh. Argcomplete now supports completion
+    descriptions and global completion in zsh.
+  * Clean up top level namespace.
+  * Documentation and test improvements.
+  * Test infrastructure improvements
+  * Indicate that there is no support commitment for fish and
+    tcsh shells
+  * Documentation and test improvements
+  * Remove scripts for contrib-supported shells from global
+    namespace
+  * setup.py: exclude test.* subpackages from find_packages
+  * Support PowerShell
+  * CI updates
+  * Revert “Support powershell (#392)”
+  * Fix interrupted release (v2.0.1)
+  * Fix interrupted release (v2.0.1)
+  * Fix interrupted release (v2.0.1)
+  * Support powershell
+  * Update importlib-metadata dependency to include versions 5.x
+  * Test and documentation improvements
+  * Truncate input after cursor. Fixes #351
+  * Support of path completion in fish #327
+  * Drop support for Python 2.7 and 3.5
+  * Add support for Python 3.10
+  * Test, documentation, and release infrastructure improvements
+  * Update importlib-metadata version pin
+  * Display script debug output in tcsh
+  * Fish support improvements
+  * Print warn() message from beginning of line
+  * Test infrastructure improvements
+  * Update importlib-metadata dependency pin
+  * Add change log project URL
+  * Replace Travis CI with GitHub Actions
+  * Update importlib-metadata dependency version range
+  * Bash nounset mode fixes
+  * Add -o bashdefault to register-python-argcomplete’s output
+    command
+  * Use shell builtins where possible
+  * Switch from pkg_resources to importlib
+  * Remove .sh extension by bash-completion convention
+  * Catch exceptions in _check_module
+  * Documentation and test improvements
+  * Do not suggest options after – (end-of-options delimiter)
+  * Include all test directory contents in source distribution
+  * Trigger completers on –optional=PARTIAL_VALUE
+  * Complete console scripts installed from wheels
+  * Fish support #68 (#260), thanks to @volkov
+  * check_module: Don’t crash, exit with error instead
+  * Register completion for multiple commands
+  * Use the correct interpreter when checking wrappers
+  * Provide shellcode as a module function
+  * Fix handling of COMP_POINT
+  * Fix crash when writing unicode to debug_stream in Python 2
+  * Fix release
+  * Fix release
+  * Add SuppressCompleter to skip completion for specific
+    arguments while allowing help text
+  * Redirect all output to debug stream in debug mode
+  * Complete python -m module
+  * Fix bug introduced in v0.7.1 where completers would not
+    receive the parser keyword argument.
+  * Documentation improvements.
+  * Fix completion after tokens with wordbreak chars
+  * Simplify nospace handling in global completion
+  * Specially handle all characters in COMP_WORDBREAKS
+  * Use setuptools tests-require directive, fixes #186
+  * Complete files using the specified interpreter
+  * Fix completion for scripts run via python
+  * Clarify argument to register-python-argcomplete
+  * Fix handling of commas and other special chars (#172); handle
+    more special characters
+  * Fix handling of special characters in tcsh
+  * Update my_shlex to Python 3.6 version
+  * Fix additional trailing space in exact matches
+  * Adjust tests to handle development environments
+  * Fix tcsh tests on OSX (#177); Update bash on OSX (#176);
+    Check output of test setup command
+  * Optionally disable duplicated flags
+  * Add default_completer option to CompletionFinder.call
+  * Let bash add or suppress trailing space
+  * Restore parser to its original state to allow reuse after
+    completion (#150).
+  * Expose COMP_TYPE environment variable (#157). Thanks to Matt
+    Clay (@mattclay).
+  * Test infrastructure and documentation improvements.
+  * Add support for tcsh
+  * Fix handling of unquoted completions containing $
+  * Don't insert unnecessary leading quote char in completions
+  * Fix parser reuse with positional arguments
+  * Tests: Add simple pexpect tests for bash (#153); Add test
+    case to verify #20 is fixed
+  * Thanks to @davvid and @evanunderscore for their work on this
+    release.
+  * Packaging fix
+  * Do not suggest options from mutually exclusive groups (#145).
+  * activate-global-python-argcomplete runs on Homebrew out of
+    the box
+  * Correctly handle suggestions for positionals with variable-
+    length nargs. Thanks to @evanunderscore (#132, #133).
+  * Correctly handle suggestions with custom nargs for optionals.
+    Thanks to @evanunderscore (#131).
+  * Fix propagation of partially parsed subparser namespace into
+    parent parser namespace upon subparser failure due to partial
+    args. This allows completers to access partial parse results
+    for subparser optionals in parsed_args (#114).
+  * The default completer can now be specified when manually
+    instantiating CompletionFinder. Thanks to @avylove (#130).
+  * Use FilesCompleter as default completer fallback (#120).
+  * Recognize subclasses of argparse._SubParsersAction. Thanks to
+    Stephen Koo (#118).
+  * Support parsed_args in custom completers with missing args.
+    Thanks to Dan Kilman (#124).
+  * Non-ASCII support in FilesCompleter.
+  * Automatically enable FilesCompleter for argparse.FileType
+    arguments.
+  * Don't print args with suppressed help by default; add
+    argcomplete.autocomplete(print_suppressed=True) to control
+    this behavior (#113).
+  * Fix always_complete_options=False support (#115).
+  * Correct doc filename in setup.cfg (fixes bdist_rpm failure,
+    Issue 111).
+  * Make context managers exception-safe. Thanks to Mikołaj
+    Siedlarek (pull request #110).
+  * Build and upload universal wheel packages in release.
+  * Fix issue with non-string choices for arguments. Thanks to
+    @neizod (pull request #107).
+  * Improve non-ascii argparse argument support on Python 2.7.
+  * register-python-argcomplete: add option to avoid default
+    readline completion. Thanks to @drmalex07 (pull request #99).
+  * Expand tilde in script name, allowing argcomplete to work
+    when invoking scripts from one's home directory. Thanks to
+    @VorpalBlade (Issue 104).
+  * Fix issues related to using argcomplete in a REPL
+    environment.
+  * New helper method for custom completion display.
+  * Expand test suite; formatting cleanup.
+  * Fix issue related to using argcomplete in a REPL environment.
+    Thanks to @wapiflapi (pull request #91).
+  * Fix multiple issues related to using argcomplete in a REPL
+    environment. Thanks to @wapiflapi (pull request #90).
+  * Don't strip colon prefix in completion results if
+    COMP_WORDBREAKS does not contain a colon. Thanks to @berezv
+    (pull request #88).
+  * Use complete --nospace to avoid issues with directory
+    completion.
+  * Refactor main body of code into a class to enable subclassing
+    and overriding of functionality (Issue #78).
+  * New keyword option "argcomplete.autocomplete(validator=...)"
+    to supply a custom validator or bypass default validation.
+    Thanks to @thijsdezoete (Issue #77).
+  * Document debug options.
+  * New keyword option "argcomplete.autocomplete(exclude=[...])"
+    to suppress options (Issue #74).
+  * More speedups to code path for global completion hook
+    negative result.
+  * Fix handling of development mode script wrappers. Thanks to
+    @jmlopez-rod and @dcosson (Issue #69).
+  * Speed up code path for global completion hook negative result
+    by loading pkg_resources on demand.
+  * Begin tracking changes in changelog.
+  * Add completion support for PBR installed scripts (PR #71).
+  * Detect easy-install shims with shebang lines that contain Py
+    instead of py (Issue #69).
+
+-------------------------------------------------------------------
 Mon Jun 16 12:11:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
