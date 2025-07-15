@@ -761,7 +761,11 @@ Recommends:     pattern() = sw_management_x11
 %if !0%{?is_opensuse}
 Recommends:     cockpit-packages
 Recommends:     lifecycle-data
+Recommends:     suse-lifecycle
 Recommends:     zypper-lifecycle-plugin
+Recommends:     (suse-lifecycle-data-sle_ha if sle-ha-release)
+Recommends:     (suse-lifecycle-data-sles if SLES-release)
+Recommends:     (suse-lifecycle-data-sles_sap if SLES_SAP-release)
 %endif
 # Zypper is the basic sw_management stack for *SUSE
 Requires:       zypper

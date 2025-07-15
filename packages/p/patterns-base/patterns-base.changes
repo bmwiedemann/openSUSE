@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 10 11:04:51 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
+
+- Add suse-lifecyle* packages to sw_management pattern
+  (bsc#1240517).
+
+-------------------------------------------------------------------
 Wed Jul  2 15:04:17 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
 
 - Add a kdump pattern (bsc#1244712).
