@@ -308,4 +308,12 @@
     <comment></comment>
     <requestid>1291948</requestid>
   </revision>
+  <revision rev="37" vrev="5">
+    <srcmd5>645ad0668216f40da13157fe67c29a24</srcmd5>
+    <version>1.2.10</version>
+    <time>1752592031</time>
+    <user>anag_factory</user>
+    <comment>Fix typo (forwarded request 1293428 from iznogood)</comment>
+    <requestid>1293454</requestid>
+  </revision>
 </revisionlist>
