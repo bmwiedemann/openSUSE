@@ -1,7 +1,7 @@
 #
 # spec file for package qiv
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           qiv
-Version:        2.3.3
+Version:        2.3.4
 Release:        0
 Summary:        A gdk/imlib based image viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://spiegl.de/qiv/
-Source0:        https://spiegl.de/qiv/download/qiv-%{version}.tgz
+Source0:        https://codeberg.org/ciberandy/qiv/archive/v%{version}.tar.gz#/qiv-%{version}.tgz
 BuildRequires:  file-devel
 BuildRequires:  gtk2-devel
 BuildRequires:  imlib2-devel
@@ -46,13 +46,10 @@ real transparency, zoom and slideshow.
 It creates only one window, containing only the image to view.
 
 %prep
-%setup -q
-sed -i 's/-O2/$(RPM_OPT_FLAGS)/' Makefile
-
-# Remove exec bit from contrib scripts to avoid additional dependencies
-chmod -x contrib/*
+%autosetup -p1 -n qiv
 
 %build
+export RPM_OPT_FLAGS="%{optflags}"
 %make_build
 
 %install
