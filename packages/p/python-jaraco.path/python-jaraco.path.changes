@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 13 12:12:52 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.7.2:
+  * Fix FilesSpec parameters variance issues by making it a
+    typing.Mapping instead of a dict -- by :user:`Avasam`
+
+-------------------------------------------------------------------
 Tue Apr  1 15:35:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make it compatible with older setuptools

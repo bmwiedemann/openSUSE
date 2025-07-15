@@ -66,4 +66,14 @@
 - Normalize metadata directory name.</comment>
     <requestid>1266237</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ae8a49a64417b3232c28d813d8caaf73</srcmd5>
+    <version>3.7.2</version>
+    <time>1752590578</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.7.2:
+  * Fix FilesSpec parameters variance issues by making it a
+    typing.Mapping instead of a dict -- by :user:`Avasam`</comment>
+    <requestid>1292493</requestid>
+  </revision>
 </revisionlist>

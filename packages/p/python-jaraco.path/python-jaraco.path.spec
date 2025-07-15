@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.path
-Version:        3.7.1
+Version:        3.7.2
 Release:        0
 Summary:        Miscellaneous path functions for jaraco packages
 License:        MIT
