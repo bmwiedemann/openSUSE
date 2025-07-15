@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 14 15:39:31 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.37~git20250713:
+  * Qt/patches: optimize patch_manager_dialog::handle_item_changed
+  * Qt/patches: Fix configurable value dropdown visibility
+  * gl: Fix compiler warning
+  * vk: Default initiailize program inputs with trap constants
+  * vk: Properly initialize VS inputs
+  * fix: cannot compile with Qt Creator while using "/DYNAMICBASE:YES"
+
+-------------------------------------------------------------------
 Sun Jul  6 22:54:26 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 0.0.37~git20250706:
