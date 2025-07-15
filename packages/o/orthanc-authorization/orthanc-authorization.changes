@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jul 14 12:56:31 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 0.9.4
+  * Fixed a security issue: the entries in the cache token->permissions were kept too long in the cache
+  allowing users to have access to generic routes even with an expired token.
+  These entries are now stored maximum for 10 seconds.
+  Note that the validity duration of the token->user-profile entries is determined by the auth-service;
+  typically 60 seconds.
+  * New default permissions to Q&R remote modalities
+  * The /tokens/decode route now returns 2 additionnal fields:
+    "ResourcesDicomIds" and "ResourcesOrthancIds".
+    This will only work if the authorization service returns a "resources" field to the /tokens/decode route.
+  * Maintenance: Use Orthanc SDK 1.12.4 by default to benefit from more detailed logging.
+  * Fix default permission for /dicom-web/servers/../stow
+  * When calling /dicom-web/studies with a resource token when no StudyInstanceUID 
+    is specified in the query args, the plugin now adds a filter on StudyInstanceUID=X|Y where
+    X & Y are the StudyInstanceUIDs of the resource token.  
+    This will only work if the authorization service returns a "resources" field to the /tokens/decode route.  
+    This notably prevents OHIF to display errors when requesting 
+    prior studies while still preserving the security since only the authorized resources are returned.
+
+-------------------------------------------------------------------
 Mon May  5 19:26:55 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - Version 0.9.2
