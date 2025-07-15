@@ -1450,4 +1450,13 @@ There are also man pages translations but they doesn't get installed automatical
   * ps: restore lost tasks for options --sort with -H      issue #304</comment>
     <requestid>1232618</requestid>
   </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>2c5301d202cafbf2a752894077b34843</srcmd5>
+    <version>4.0.5</version>
+    <time>1752590559</time>
+    <user>anag_factory</user>
+    <comment>- Add patch procps-ng-4.0.5-bsc1246330.patch
+  * Do not Fail in year 2038 (bsc#1246330)</comment>
+    <requestid>1292057</requestid>
+  </revision>
 </revisionlist>

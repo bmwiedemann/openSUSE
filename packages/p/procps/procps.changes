@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 11 12:30:21 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch procps-ng-4.0.5-bsc1246330.patch
+  * Do not Fail in year 2038 (bsc#1246330)
+
+-------------------------------------------------------------------
 Thu Dec 19 14:34:39 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Update to procps-ng-4.0.5

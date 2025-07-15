@@ -1,7 +1,7 @@
 #
 # spec file for package procps
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ Source2:        procps-rpmlintrc
 Source3:        procps.keyring
 # PATCH-FIX-USTREAM -- w: Don't crash when using short option
 Patch1:         procps-v3.3.3-ia64.diff
+Patch2:         procps-ng-4.0.5-bsc1246330.patch
 Patch3:         procps-ng-3.3.9-w-notruncate.diff
 Patch7:         procps-ng-3.3.8-readeof.patch
 Patch8:         procps-ng-3.3.10-slab.patch
@@ -133,6 +134,7 @@ the process information pseudo-file system.
 %prep
 %setup -q -n procps-ng-%{version}
 %patch -P1
+%patch -P2
 %patch -P3 -p1 -b .trcate
 %patch -P7 -b .rof
 %patch -P8 -b .cache
