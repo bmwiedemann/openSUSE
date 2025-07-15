@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Jul 14 12:56:25 UTC 2025 - aplanas@suse.com
+
+- Update vendored crates (bsc#1242623, CVE-2025-3416)
+  * openssl 0.10.73
+
+- Update to version 0.2.7+117:
+  * Increase coverage in evidence handling structure
+  * Add Capabilities Negotiations resp. missing fields
+  * Fix UEFI test to check file access in all cases
+  * context_info_handler: Do not assume /var/lib/keylime exists
+  * Fix clippy warnings about uninlined format arguments
+  * attestation: Allow unwrap() in tests
+  * Increase coverage (groom code, extend unit tests)
+  * Include IMA/UEFI logs in Evidence Handling request
+  * Include method to get all IMA entries as string
+  * Send correct list of pcr banks and sign algorithms
+  * Try to fix TPM tests related issues
+  * Define attestation perform asynchronous
+  * Perform attestation in push model agent binary
+  * Refactor code to use new attestation.rs
+  * Create attestation.rs for Attestation stuff
+  * Move ContextInfo management to its own handler
+  * Adjust context_info.rs after rebase
+  * Add attestation function to ContextInfo structure
+  * Add prohibited signing algorithms, avoid ecschnorr
+  * keylime/config: Use macro to implement PushModelConfigTrait
+  * Introduce keylime-macros and define_view_trait
+  * config: Remove KeylimeConfig structure
+  * config: Remove unnecessary options and lazy initialization
+  * Fix pcr_bank function to send all possible slots
+  * Send Content-Type:application/json on request (#1039)
+  * Send correct 'key_algorithm' in certification_keys (#1035)
+  * Push Model: Persist Attestation Key to file
+  * Add Keylime push model binary to root GNUmakefile
+  * Use singleton to avoid multiple Context allocation
+  * tests: Do not assume `/var/lib/keylime` exists (#1030)
+  * lib/cert: Fix race condition due to use of same file path
+  * payloads: Fix race condition in tests
+  * Add uefi_log_handler.rs to parse UEFI binary
+  * Use IMA log parser to send correct entry count
+  * Add IMA log parser
+  * build(deps): bump once_cell from 1.19.0 to 1.21.3
+  * lib/config/base.rs: Add more unit tests
+  * lib/permissions: Add unit tests
+  * keylime-agent: move JsonWrapper from common.rs to the library
+  * lib/agent_data: Move agent_data related tests from common
+  * common: Replace APIVersion with the library Version structure
+  * keylime_agent: Move secure_mount.rs to the library
+  * lib: Rename keylime_error.rs as error.rs
+  * config: Move config to keylime library
+  * config: Rename push_model_config to push_model
+  * lib: Move permissions.rs from keylime-agent to the lib
+  * Extract Capabilities Negotiation info from TPM (#1014)
+
+-------------------------------------------------------------------
 Thu Jun 05 11:48:58 UTC 2025 - aplanas@suse.com
 
 - Update vendored crates (bsc#1243861, CVE-2024-12224)
