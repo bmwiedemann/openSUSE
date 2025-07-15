@@ -17,7 +17,7 @@
 
 
 Name:           orthanc-stl
-Summary:        plugin to provide support for DICOM STL in Orthanc
+Summary:        Plugin to provide support for DICOM STL in Orthanc
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 Version:        1.2
@@ -52,7 +52,10 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  orthanc-devel
 BuildRequires:  orthanc-source
+# Only needed for Leap 15.6
+%if 0%{?suse_version} == 1500 
 BuildRequires:  python311
+%endif
 BuildRequires:  unzip
 BuildRequires:  vtk-devel
 BuildRequires:  zlib-devel
