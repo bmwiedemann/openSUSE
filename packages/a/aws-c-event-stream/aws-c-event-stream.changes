@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 11 10:50:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.5.5
+  * Make exports consistent by @DmitriyMusatkin in (#126)
+  * Fix path for diagram in README by @sfod in (#127)
+  * Remove Windows 2019 and add Windows 2025 with MSVC-17 by @TingDaoK in (#129)
+  * Continuation termination callback support by @bretambrose in (#128)
+
+-------------------------------------------------------------------
 Wed Mar 12 07:08:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.5.4
