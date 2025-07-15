@@ -316,4 +316,12 @@
     <comment>- Fix license: it is MIT, not GPL-3.0-or-later.</comment>
     <requestid>1272084</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>83794b4bab82cd1699df914b9fad4098</srcmd5>
+    <version>5.4.8</version>
+    <time>1752590560</time>
+    <user>anag_factory</user>
+    <comment>5.4.8</comment>
+    <requestid>1292454</requestid>
+  </revision>
 </revisionlist>

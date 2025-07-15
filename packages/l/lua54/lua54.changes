@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 12 18:38:52 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 5.4.8:
+  * Fixed 8 bugs from 5.4.7
+- Add upstream1.patch: Numbered upstream patch
+
+-------------------------------------------------------------------
 Wed Apr 23 07:55:24 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Fix license: it is MIT, not GPL-3.0-or-later.

@@ -1,0 +1,53 @@
+From 1b0f943da7dfb25987456a77259edbeea0b94edc Mon Sep 17 00:00:00 2001
+From: Roberto Ierusalimschy <roberto@inf.puc-rio.br>
+Date: Mon, 16 Jun 2025 16:33:02 -0300
+Subject: [PATCH] Bug: new metatable in weak table can fool the GC
+
+All-weak tables are not being revisited after being visited during
+propagation; if it gets a new metatable after that, the new metatable
+may not be marked.
+---
+ lgc.c         |  8 ++++++--
+ testes/gc.lua | 10 ++++++++++
+ 2 files changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/lgc.c b/lgc.c
+index 5817f9eec3..c01660abc5 100644
+--- a/src/lgc.c
++++ b/src/lgc.c
+@@ -553,8 +553,12 @@ static lu_mem traversetable (global_State *g, Table *h) {
+       traverseweakvalue(g, h);
+     else if (!weakvalue)  /* strong values? */
+       traverseephemeron(g, h, 0);
+-    else  /* all weak */
+-      linkgclist(h, g->allweak);  /* nothing to traverse now */
++    else {  /* all weak */
++      if (g->gcstate == GCSpropagate)
++        linkgclist(h, g->grayagain);  /* must visit again its metatable */
++      else
++        linkgclist(h, g->allweak);  /* must clear collected entries */
++    }
+   }
+   else  /* not weak */
+     traversestrongtable(g, h);
+diff --git a/testes/gc.lua b/testes/gc.lua
+index 03093e34ff..f017f33056 100644
+--- a/testes/gc.lua
++++ b/testes/gc.lua
+@@ -301,6 +301,16 @@ collectgarbage()
+ assert(next(a) == string.rep('$', 11))
+ 
+ 
++if T then   -- bug since 5.3: all-weak tables are not being revisited
++  T.gcstate("propagate")
++  local t = setmetatable({}, {__mode = "kv"})
++  T.gcstate("atomic")   -- 't' was visited
++  setmetatable(t, {__mode = "kv"})
++  T.gcstate("pause")  -- its new metatable is not being visited
++  assert(getmetatable(t).__mode == "kv")
++end
++
++
+ -- 'bug' in 5.1
+ a = {}
+ local t = {x = 10}
