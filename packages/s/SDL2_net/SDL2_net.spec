@@ -27,7 +27,7 @@ URL:            http://libsdl.org/projects/SDL_net/
 #Hg-Clone:	http://hg.libsdl.org/SDL_net/
 Source:         http://www.libsdl.org/projects/SDL_net/release/%name-%version.tar.gz
 Source2:        baselibs.conf
-BuildRequires:  SDL2-devel >= 2.24
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  dos2unix
 BuildRequires:  pkg-config
 

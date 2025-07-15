@@ -38,4 +38,12 @@
     <comment>- Update to release 2.2.0</comment>
     <requestid>998296</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c6ad15a38df8f5dcc0c2c93251e02836</srcmd5>
+    <version>2.2.0</version>
+    <time>1752590649</time>
+    <user>anag_factory</user>
+    <comment>- Use pkgconfig(sdl2)</comment>
+    <requestid>1293172</requestid>
+  </revision>
 </revisionlist>
