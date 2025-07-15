@@ -125,4 +125,17 @@
 - Drop patch fix-httpd-fixture-path.patch, now included.</comment>
     <requestid>1246294</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>ee62ead8d9205f7d250a93cb7addb5b5</srcmd5>
+    <version>1.8.1</version>
+    <time>1752590653</time>
+    <user>anag_factory</user>
+    <comment>- remove python-jenkins from test requirements (jenkins tests
+  are not run)
+
+- Don't use %_libdir to discover where apache2 is living.
+- Drop mock BuildRequires, it is not required.
+- use pytest macro</comment>
+    <requestid>1293183</requestid>
+  </revision>
 </revisionlist>

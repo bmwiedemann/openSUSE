@@ -50,7 +50,6 @@ Suggests:       python-docker
 Suggests:       python-kubernetes
 Suggests:       python-psycopg2
 Suggests:       python-pymongo >= 3.6.0
-Suggests:       python-python-jenkins
 Suggests:       python-redis
 Suggests:       redis
 Suggests:       xauth
@@ -67,7 +66,6 @@ BuildRequires:  %{python_module pymongo >= 3.6.0}
 BuildRequires:  %{python_module pytest-fixture-config}
 BuildRequires:  %{python_module pytest-shutil}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-jenkins}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module retry}
