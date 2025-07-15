@@ -1,0 +1,6 @@
+<package name="opencloud-desktop" project="openSUSE:Factory">
+  <title>OpenCloud desktop synchronization client</title>
+  <description>The OpenCloud synchronization client
+
+OpenCloud client enables you to connect to your private OpenCloud Server. You can create folders in your home directory, and keep the contents of those folders synced with your OpenCloud server. Simply copy a file into the directory and the OpenCloud Client does the rest.</description>
+</package>

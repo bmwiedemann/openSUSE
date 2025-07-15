@@ -1,0 +1,66 @@
+-------------------------------------------------------------------
+Mon Jun 30 20:02:21 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
+
+- More speccleaner suggestions 
+
+-------------------------------------------------------------------
+Thu May 22 16:07:12 UTC 2025 - Pascal Bleser <p.bleser@opencloud.eu>
+
+- use a static build of libLibreGraph instead of a shared library,
+  and build it as part of the build of this package, to avoid eery
+  side-effects of an old libLibreGraphAPI1 package that was built
+  against Qt5 instead of Qt6 (and it isn't that pertinent to have
+  that as a shared library in the first place, since it's really
+  only used by this package)
+
+- use the OpenCloud fork of libLibreGraph, bump to 1.0.6
+
+-------------------------------------------------------------------
+Sun May 18 09:44:36 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
+
+- Fixed a couple of spec cleaner suggestions 
+
+-------------------------------------------------------------------
+Wed Apr 30 08:39:21 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
+
+- renamed package to opencloud-desktop 1.0.0 for naming consistency 
+
+-------------------------------------------------------------------
+Mon Apr 28 13:44:22 UTC 2025  - Pascal Bleser <p.bleser@opencloud.eu>
+
+- update to 1.0.0
+
+-------------------------------------------------------------------
+Thu Apr 17 14:18:52 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
+
+- Use conditional build requires for Leap 15.6 
+
+-------------------------------------------------------------------
+Tue Apr 15 15:17:35 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 1.0.0 rc3 
+
+-------------------------------------------------------------------
+Tue Apr 15 13:13:26 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 1.0.0 rc1 
+
+-------------------------------------------------------------------
+Wed Apr  9 20:48:33 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
+
+- Add a global define to fix the dependency scanning 
+
+-------------------------------------------------------------------
+Wed Apr  9 14:29:53 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 1.0.0 beta1  
+
+-------------------------------------------------------------------
+Mon Mar 31 16:17:22 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
+
+- Fix suggests for the client extensions 
+
+-------------------------------------------------------------------
+Fri Mar 28 14:07:43 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
+
+- Initial Package of the OpenCloud sync client 
