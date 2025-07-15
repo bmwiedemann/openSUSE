@@ -16,6 +16,7 @@
 #
 
 
+%define pythons python3
 Name:           rednotebook
 Version:        2.39
 Release:        0
@@ -28,9 +29,13 @@ Source:         https://github.com/jendrikseipp/rednotebook/archive/v%{version}.
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-cairo-devel
 BuildRequires:  python3-gobject-devel
+BuildRequires:  python3-pip
+BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
 Requires:       python3-PyYAML
 Requires:       python3-gobject-Gdk
@@ -51,12 +56,17 @@ entries.
 %setup -q
 
 %build
+%pyproject_wheel
 
 %install
-python3 setup.py install --prefix=%{_prefix} --exec-prefix=%{_prefix} --root=%{buildroot}
+%pyproject_install
 %find_lang %{name} %{?no_lang_C}
 %suse_update_desktop_file %{name} Calendar
 %fdupes %{buildroot}%{_datadir}
+%fdupes %{buildroot}%{python3_sitelib}
+
+%check
+%pytest
 
 %files
 %license LICENSE
@@ -65,7 +75,7 @@ python3 setup.py install --prefix=%{_prefix} --exec-prefix=%{_prefix} --root=%{b
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.svg
 %{python3_sitelib}/%{name}/
-%{python3_sitelib}/%{name}-%{version}-py%{python3_version}.egg-info
+%{python3_sitelib}/%{name}-%{version}.dist-info
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/rednotebook.appdata.xml
 

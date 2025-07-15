@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  2 05:28:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- Run the testsuite using pytest.
+
+-------------------------------------------------------------------
 Sat Apr  5 13:26:05 UTC 2025 - Andreas Prittwitz <m4ng4n@gmx.de>
 
 - Update to version 2.39
