@@ -1,7 +1,7 @@
 #
 # spec file for package python-markdown-it-py
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-markdown-it-py
 Version:        3.0.0
@@ -24,23 +25,22 @@ Summary:        Python port of markdown-it Markdown parsing
 License:        MIT
 URL:            https://github.com/executablebooks/markdown-it-py/
 Source:         https://github.com/executablebooks/markdown-it-py/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-#Source:         https://files.pythonhosted.org/packages/source/m/markdown-it-py/markdown-it-py-%%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module mdurl}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       alts
+Requires:       python-mdurl
+Suggests:       python-mdit-py-plugins
+BuildArch:      noarch
 # SECTION tests
 BuildRequires:  %{python_module linkify-it-py}
 BuildRequires:  %{python_module pytest-regressions}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-mdurl
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
-Suggests:       python-mdit-py-plugins
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -63,11 +63,8 @@ sed -i '1{/\/usr\/bin\/env python*/d;}' markdown_it/cli/parse.py
 %check
 %pytest tests
 
-%post
-%python_install_alternative markdown-it
-
-%postun
-%python_uninstall_alternative markdown-it
+%pre
+%python_libalternatives_reset_alternative markdown-it
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
