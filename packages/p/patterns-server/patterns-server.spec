@@ -42,8 +42,8 @@ This particular package contains all the server related patterns
 
 
 
-################################################################################
 
+################################################################################
 %package dhcp_dns_server
 %pattern_serverfunctions
 Summary:        DHCP and DNS Server
@@ -323,7 +323,11 @@ Software to set up a Web server that is able to serve static, dynamic, and inter
 
 %package mail_server
 %pattern_serverfunctions
+%if 0%{?is_opensuse}
 Summary:        Mail and News Server
+%else
+Summary:        Mail Server
+%endif
 Group:          Metapackages
 Provides:       pattern() = mail_server
 Provides:       pattern-icon() = pattern-server
@@ -344,8 +348,14 @@ Provides:       patterns-sles-mail_server = %{version}
 Obsoletes:      patterns-sles-mail_server < %{version}
 %endif
 
+%if 0%{?is_opensuse}
 %description mail_server
 Software to set up electronic mail and message services to handle email, mailing, and news lists, including a virus scanner to scan messages at the server level.
+%else
+
+%description mail_server
+Software to set up electronic mail services to handle email, mailing, and news lists, including a virus scanner to scan messages at the server level.
+%endif
 
 %files mail_server
 %dir %{_docdir}/patterns
