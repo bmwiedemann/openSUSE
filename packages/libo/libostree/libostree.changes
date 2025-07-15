@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 11 21:21:16 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 2025.3:
+  + preparations for soft-reboot
+  + admin status gets json output
+  + config set now validates and rolls back if invalid
+  + bug fixes
+
+-------------------------------------------------------------------
 Sun May  4 10:59:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete gnome-common BuildRequires, and add
