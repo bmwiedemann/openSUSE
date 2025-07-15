@@ -3001,6 +3001,7 @@ unsorted:
   - cxxopts-devel 
   - cxxtools-devel 
   - cyanrip 
+  - cyradm 
   - cyreal-alice-fonts 
   - cyreal-junge-fonts 
   - cyreal-lora-fonts 
@@ -3008,6 +3009,7 @@ unsorted:
   - cyreal-marko-horobchyk-fonts 
   - cyreal-marmelad-fonts 
   - cyreal-wire-fonts 
+  - cyrus-imapd 
   - cyrus-imapd-devel 
   - cyrus-imapd-snmp 
   - cyrus-imapd-snmp-mibs 
@@ -11203,6 +11205,7 @@ unsorted:
   - libKF5Su5 
   - libKF5Su5-lang 
   - libKF5Syndication5 
+  - libKF5ThreadWeaver5 
   - libKF5UnitConversion5 
   - libKF5UnitConversion5-lang 
   - libKGantt2 
@@ -12764,6 +12767,7 @@ unsorted:
   - libcxxtools-unit10 
   - libcxxtools-xmlrpc10 
   - libcxxtools10 
+  - libcyrus0 
   - libczmq4 
   - libd0_blind_id0 
   - libd0_rijndael0 
@@ -14294,7 +14298,7 @@ unsorted:
   - liblasso3 
   - liblastfm-qt5-devel 
   - liblastfm-qt6-devel 
-  - liblastfm6-1 
+  - liblastfm5-1 
   - liblastfm_fingerprint5-1 
   - liblastlog2-devel 
   - liblaszip8 
@@ -14762,8 +14766,8 @@ unsorted:
   - libmwaw-devel-doc 
   - libmwaw-tools 
   - libmxml1 
+  - libmygpo-qt5-1 
   - libmygpo-qt5-devel 
-  - libmygpo-qt6-1 
   - libmygpo-qt6-devel 
   - libmypaint-devel 
   - libmypaint-gegl-devel 
@@ -15028,6 +15032,8 @@ unsorted:
   - libopencascade-modelingdata7_8_1 
   - libopencascade-visualization7_8_1 
   - libopencl-clang15 
+  - libopencloudsync-devel 
+  - libopencloudsync0 
   - libopencore-amr-devel 
   - libopencore-amrnb0-32bit 
   - libopencore-amrwb0-32bit 
@@ -19751,6 +19757,8 @@ unsorted:
   - ntpsec-devel 
   - ntpsec-doc 
   - ntpsec-utils 
+  - ntsync-autoload 
+  - ntsync-autoload-udev-rules 
   - nudoku 
   - nudoku-lang 
   - nulloy 
@@ -20325,6 +20333,7 @@ unsorted:
   - opencensus-proto-source 
   - opencl-cpp-headers 
   - opencl-headers 
+  - opencloud-desktop 
   - opencloud-dolphin 
   - opencloud-extensions-resources 
   - opencloud-server 
@@ -20963,7 +20972,11 @@ unsorted:
   - patterns-wsl-gui 
   - patterns-wsl-systemd 
   - patterns-wsl-tmpfiles 
+  - patterns-xfce-xfce_basis_wayland 
   - patterns-xfce-xfce_extra 
+  - patterns-xfce-xfce_extra_wayland 
+  - patterns-xfce-xfce_laptop_wayland 
+  - patterns-xfce-xfce_wayland 
   - patterns-yast-devel_yast 
   - pavucontrol-qt 
   - pavucontrol-qt-lang 
@@ -21351,6 +21364,9 @@ unsorted:
   - perl-Curses 
   - perl-CursesWidgets 
   - perl-Cwd-Guard 
+  - perl-Cyrus-Annotator 
+  - perl-Cyrus-IMAP 
+  - perl-Cyrus-SIEVE-managesieve 
   - perl-DBD-CSV 
   - perl-DBD-MariaDB 
   - perl-DBD-ODBC 
@@ -22215,6 +22231,7 @@ unsorted:
   - perl-Template-Toolkit 
   - perl-Term-Encoding 
   - perl-Term-ProgressBar 
+  - perl-Term-ReadLine-Gnu 
   - perl-Term-ReadPassword 
   - perl-Term-Size-Any 
   - perl-Term-Size-Perl 
@@ -24613,6 +24630,7 @@ unsorted:
   - python311-azure-mgmt-resource-deployments 
   - python311-azure-mgmt-resource-deploymentscripts 
   - python311-azure-mgmt-resource-deploymentstacks 
+  - python311-azure-mgmt-resource-templatespecs 
   - python311-azure-mgmt-resourceconnector 
   - python311-azure-mgmt-resourcegraph 
   - python311-azure-mgmt-resourcehealth 
@@ -27178,6 +27196,7 @@ unsorted:
   - python311-sshpubkeys 
   - python311-sshtunnel 
   - python311-stack-data 
+  - python311-standard-nntplib 
   - python311-standard-xdrlib 
   - python311-standardwebhooks 
   - python311-starlette 
@@ -28324,6 +28343,7 @@ unsorted:
   - python312-azure-mgmt-resource-deployments 
   - python312-azure-mgmt-resource-deploymentscripts 
   - python312-azure-mgmt-resource-deploymentstacks 
+  - python312-azure-mgmt-resource-templatespecs 
   - python312-azure-mgmt-resourceconnector 
   - python312-azure-mgmt-resourcegraph 
   - python312-azure-mgmt-resourcehealth 
@@ -30951,6 +30971,7 @@ unsorted:
   - python312-sshpubkeys 
   - python312-sshtunnel 
   - python312-stack-data 
+  - python312-standard-nntplib 
   - python312-standard-xdrlib 
   - python312-standardwebhooks 
   - python312-starlette 
@@ -32090,6 +32111,7 @@ unsorted:
   - python313-azure-mgmt-resource-deployments 
   - python313-azure-mgmt-resource-deploymentscripts 
   - python313-azure-mgmt-resource-deploymentstacks 
+  - python313-azure-mgmt-resource-templatespecs 
   - python313-azure-mgmt-resourceconnector 
   - python313-azure-mgmt-resourcegraph 
   - python313-azure-mgmt-resourcehealth 
@@ -34653,6 +34675,7 @@ unsorted:
   - python313-standard-aifc 
   - python313-standard-chunk 
   - python313-standard-imghdr 
+  - python313-standard-nntplib 
   - python313-standard-sunau 
   - python313-standard-xdrlib 
   - python313-standardwebhooks 
@@ -49071,6 +49094,7 @@ unsorted:
   - wsdl4j-javadoc 
   - wsjtx 
   - wsl-appx 
+  - wsl-firstboot 
   - wslay 
   - wslay-devel 
   - wsmancli 

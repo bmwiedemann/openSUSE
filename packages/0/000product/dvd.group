@@ -288,9 +288,7 @@
     <package name="cups-pk-helper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cups-pk-helper-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="curl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="cyradm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="cyreal-lobster-cyrillic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="cyrus-imapd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="cyrus-sasl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cyrus-sasl-crammd5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cyrus-sasl-digestmd5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1259,7 +1257,6 @@
     <package name="libKF5SyntaxHighlighting5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5TextWidgets5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5TextWidgets5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libKF5ThreadWeaver5" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
     <package name="libKF5Wallet5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5WidgetsAddons5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libKF5WidgetsAddons5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1878,7 +1875,6 @@
     <package name="libcupsfilters2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcupsimage2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcurl4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libcyrus0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="libdaemon0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdatrie1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdav1d7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2200,7 +2196,7 @@
     <package name="libharfbuzz-icu0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libharfbuzz-subset0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libharfbuzz0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libhd24" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="libhd25" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="libheif-aom" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libheif-dav1d" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libheif-ffmpeg" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2329,7 +2325,7 @@
     <package name="libkyotocabinet16" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liblangtag1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liblapack3" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="liblastfm5-1" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
+    <package name="liblastfm6-1" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
     <package name="liblastlog2-2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liblavfile-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblavjpeg-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2431,7 +2427,7 @@
     <package name="libmtp9" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libmusicbrainz5-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libmwaw-0_3-3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libmygpo-qt5-1" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
+    <package name="libmygpo-qt6-1" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
     <package name="libmypaint-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmypaint0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmysofa1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3348,9 +3344,6 @@
     <package name="perl-Crypt-OpenSSL-Random" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Crypt-SmbHash" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="perl-CryptX" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-Cyrus-Annotator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-Cyrus-IMAP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-Cyrus-SIEVE-managesieve" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-DB_File" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Digest-HMAC" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Digest-MD4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3403,7 +3396,6 @@
     <package name="perl-SNMP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="perl-Socket6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Term-ReadKey" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="perl-Term-ReadLine-Gnu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-TimeDate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Try-Tiny" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Types-Serialiser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3434,7 +3426,7 @@
     <package name="phonon-vlc-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="phonon-vlc-qt6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="phonon4qt5-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="phononsettings-qt5" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
+    <package name="phononsettings-qt5" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="phononsettings-qt6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="php8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="php8-ctype" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
