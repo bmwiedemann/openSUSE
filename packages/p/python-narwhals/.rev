@@ -44,4 +44,32 @@
   * fix(typing): Resolve intermittent `*GroupBy` variance issue</comment>
     <requestid>1290770</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7e7b5ef3370918dc8f1b45dd64f09a67</srcmd5>
+    <version>1.46.0</version>
+    <time>1752590640</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.46.0:
+  * refactor: Cache, reuse `Implementation._backend_version`
+  * enh!: simplify exceptions, consistently raise
+    InvalidOperationError instead of
+    ShapeError/OrderDependentExprError/LengthChangingExprError
+  * feat: Add `Expr.dt.offset_by()`
+  * enh: allow for `over(order_by=...)` for `rank`
+  * fix: Respect session time zone when casting to `Datetime` for
+    PySpark
+  * enh: Support casting to Duration, and Datetime with different
+    units, for DuckDB
+  * feat: Add support for `quantile` and `ewm_mean` in over
+    context
+  * feat: Support `DataFrame().lazy(&quot;ibis&quot;)`
+  * chore: xfail cudf offset_by
+  * ci: cudf tests fixup
+  * ci: unxfail truncate tests for pyspark by checking local
+    results
+  * fix: type annotation default for `named: Literal[False]` was
+    missing in `DataFrame.iter_rows`
+  * refactor: Cache, reuse `Implementation._backend_version`</comment>
+    <requestid>1293131</requestid>
+  </revision>
 </revisionlist>
