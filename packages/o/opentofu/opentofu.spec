@@ -29,8 +29,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source99:       opentofu-rpmlintrc
 BuildRequires:  bash-completion
+BuildRequires:  go1.24 >= 1.24.4
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.24.4
 # See: https://github.com/hashicorp/opentofu/issues/22807
 ExcludeArch:    %{ix86} %{arm}
 

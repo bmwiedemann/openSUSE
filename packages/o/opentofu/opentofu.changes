@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul 12 14:36:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- BuildRequire go1.24 >= 1.24.4 to not use go1.25rc2
+
+-------------------------------------------------------------------
 Wed Jul 02 05:18:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.2:
