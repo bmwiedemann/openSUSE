@@ -1,7 +1,7 @@
 #
 # spec file for package vinagre
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,7 +84,7 @@ gnome-keyring.
 
 %build
 # Needed for Patch1
-autoreconf -fiv
+autoreconf -fiv -I /usr/share/gettext/m4
 export CFLAGS="%{optflags} -Wno-error=format-nonliteral -fcommon"
 %configure \
 	--disable-static \
