@@ -186,4 +186,16 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1282933</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1d80d6f8753c6f36d6baa86da07d99ae</srcmd5>
+    <version>1.1.1</version>
+    <time>1752590587</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.1:
+  * Add Python 3.13 trove classifier
+  * update Cython to 3.1.1
+  * update cibuildwheel to v2.23.3
+  * upload to PyPI on create a release</comment>
+    <requestid>1293129</requestid>
+  </revision>
 </revisionlist>

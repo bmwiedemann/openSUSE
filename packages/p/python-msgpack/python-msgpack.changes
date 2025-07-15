@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 14 12:27:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * Add Python 3.13 trove classifier
+  * update Cython to 3.1.1
+  * update cibuildwheel to v2.23.3
+  * upload to PyPI on create a release
+
+-------------------------------------------------------------------
 Thu Jun  5 04:38:03 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
