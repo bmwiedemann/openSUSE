@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 15 08:26:34 UTC 2025 - Dan Čermák <dcermak@suse.com>
+
+- Require cached-property for python < 3.8
+
+-------------------------------------------------------------------
 Tue Jul 01 09:24:42 UTC 2025 - maintenance-obs-robot <maintenance-automation-team@suse.de>
 
 - Release 0.10.8

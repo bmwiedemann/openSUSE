@@ -52,6 +52,8 @@ BuildRequires:  %{python_module cached-property if %python-base < 3.8}
 %else
 BuildRequires:  %{python_module cached-property}
 %endif
+Requires:       %{python_module cached-property if %python-base < 3.8}
+
 %python_subpackages
 
 %description
