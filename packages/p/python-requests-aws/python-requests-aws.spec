@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-aws
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-%define skip_python2 1
-%endif
+%{?sle15_python_module_pythons}
 Name:           python-requests-aws
 Version:        0.1.8
 Release:        0
@@ -29,8 +26,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/tax/python-requests-aws
 Source:         https://files.pythonhosted.org/packages/source/r/requests-aws/requests-aws-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.4.1
 BuildArch:      noarch
@@ -45,14 +44,16 @@ At the moment, only S3 is supported.
 %setup -q -n requests-aws-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%{python_sitelib}/*
+%pycache_only %{python_sitelib}/__pycache__
+%{python_sitelib}/awsauth.py
+%{python_sitelib}/requests_aws-%{version}.dist-info
 
 %changelog
