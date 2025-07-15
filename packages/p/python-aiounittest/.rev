@@ -40,4 +40,20 @@
     <comment></comment>
     <requestid>1277068</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>657ee915568abbae5e50a4b7f06f4f92</srcmd5>
+    <version>1.5.0</version>
+    <time>1752590575</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.5.0:
+  * package: include the requirements and tests in the sdist
+    package
+- update to 1.4.3:
+  * Drop travis in favor of gh actions
+  * Drop `nosetest`
+  * Add `DepracationWarning` for &quot;old-python&quot; tests
+
+  * declare python 3.9+ as supported</comment>
+    <requestid>1292329</requestid>
+  </revision>
 </revisionlist>
