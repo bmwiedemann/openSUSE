@@ -1,0 +1,35 @@
+diff -upr transconnect-1.2.orig/tconn.c transconnect-1.2/tconn.c
+--- transconnect-1.2.orig/tconn.c	2025-07-09 08:01:04.599298466 +0000
++++ transconnect-1.2/tconn.c	2025-07-09 08:11:25.314301171 +0000
+@@ -142,7 +142,7 @@ int connect (int sockfd, const struct so
+   char *tconn_env;			/* Environment Variable path for Config File */
+   FILE *fp;				/* For opening config file */
+   
+-  static int (*func) ();		/* The function we are overriding :-) */
++  static int (*func) (int, const struct sockaddr *, socklen_t);		/* The function we are overriding :-) */
+ 					/* It has been made static to avoid lookup of libc repeatedly */
+ 
+   int uid;				/* User id */
+@@ -163,10 +163,10 @@ int connect (int sockfd, const struct so
+ #ifdef _BSD_HACK_
+     /* On BSD we open the libc and retrive the pointer to connect function from it */
+     handle = dlopen(TCONN_LIBC_PATH, RTLD_LAZY);
+-    func = (int (*)()) dlsym (handle, "connect");
++    func = (int (*)(int, const struct sockaddr *, socklen_t)) dlsym (handle, "connect");
+ #else
+     /* On linux/Sun we can set func to next instance of connect, which is the original connect*/
+-    func = (int (*)()) dlsym (RTLD_NEXT, "connect");
++    func = (int (*)(int, const struct sockaddr *, socklen_t)) dlsym (RTLD_NEXT, "connect");
+ #endif
+   }
+ 
+@@ -183,7 +183,7 @@ int connect (int sockfd, const struct so
+ 	 fprintf (stderr, "Wrong socket type for routing\n"
+ 	       "optval == %d sa_family == %d optlen == %d \n"
+ 	       "whereas \n"
+-	       "stream == %d AF_INET == %d optlen ==%d \n ",
++	       "stream == %d AF_INET == %d optlen ==%ld \n ",
+ 	       optval, serv_addr->sa_family, optlen,
+ 	       SOCK_STREAM, AF_INET, sizeof (optval));
+       /* This was not a TCP stream socket so we connect using the original function */
+

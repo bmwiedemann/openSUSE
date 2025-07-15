@@ -26,6 +26,8 @@ URL:            http://transconnect.sourceforge.net/
 Source0:        http://prdownloads.sourceforge.net/transconnect/%{name}-%{version}.tar.bz2
 Source1:        README.SUSE
 Patch0:         %{name}-%{version}.dif
+# fix build with gcc15
+Patch1:         transconnect-gcc15.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -33,7 +35,7 @@ TransConnect is a program to allow you almost complete access to the
 internet through a HTTP proxy like squid.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 cp %{SOURCE1} .
 
 %build

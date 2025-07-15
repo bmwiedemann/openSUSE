@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  9 08:17:08 UTC 2025 - pgajdos@suse.com
+
+- modified patches
+  % transconnect-1.2.dif (refreshed)
+- added patches
+  fix build with gcc15
+  + transconnect-gcc15.patch
+
+-------------------------------------------------------------------
 Fri May 17 09:02:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop AUTHORS file: upstream already supplies it as part of the

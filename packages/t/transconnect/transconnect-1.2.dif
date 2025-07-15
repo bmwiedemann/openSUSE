@@ -1,5 +1,5 @@
---- Makefile
-+++ Makefile	2002/06/21 12:12:27
+--- a/Makefile
++++ b/Makefile	2002/06/21 12:12:27
 @@ -1,6 +1,6 @@
  # Makefile for transconnect
  
@@ -8,8 +8,8 @@
  LDFLAGS = -shared
  LINUX_LDLIBS  = -ldl
  
---- tconn.c
-+++ tconn.c
+--- a/tconn.c
++++ b/tconn.c
 @@ -149,7 +149,7 @@
    struct passwd *pwent;			/* Needed for reading the password file to extract home directory */
    
