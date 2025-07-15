@@ -242,4 +242,16 @@
 - No more greedy globs in %files.</comment>
     <requestid>1285948</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8bf8e3ede38de6994cf91b17a745f989</srcmd5>
+    <version>6.1.0</version>
+    <time>1752590576</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.1.0:
+  * Improve LFUCache insertion performance by switching to an
+    implementation based on the cacheing library.
+  * Update CI environment.
+  * Require Python 3.9 or later (breaking change).</comment>
+    <requestid>1292330</requestid>
+  </revision>
 </revisionlist>

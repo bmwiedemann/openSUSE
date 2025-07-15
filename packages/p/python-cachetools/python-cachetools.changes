@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 12 11:43:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.0:
+  * Improve LFUCache insertion performance by switching to an
+    implementation based on the cacheing library.
+  * Update CI environment.
+  * Require Python 3.9 or later (breaking change).
+
+-------------------------------------------------------------------
 Mon Jun 16 06:12:36 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyroject macros.
