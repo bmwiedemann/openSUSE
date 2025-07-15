@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 11 12:40:31 CEST 2025 - mls@suse.de
+
+- update to 5.42.0
+  * new pragma "source::encoding"
+  * new ":writer" attribute on field variables
+  * new "any" and "all" operators
+  * lexical method declaration using "my method"
+  * lexical method invocation operator "->&"
+  * switch and Smart Match operator kept, behind a feature
+  * unicode 16.0 supported
+  * assigning logical xor "^^=" operator
+  * many performance enhancements
+- drop perl-dirdup.diff (included upstream)
+
+-------------------------------------------------------------------
 Mon Jun  9 12:15:01 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Replace usage of %jobs for reproducible builds (boo#1237231)

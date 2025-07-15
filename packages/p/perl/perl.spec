@@ -25,11 +25,11 @@
 
 %define versionlist_provides() %{lua:for i, n in ipairs(arg) do ; print(" perl(:MODULE_COMPAT_"..n..")") ; end}
 
-%define pversion 5.40.2
+%define pversion 5.42.0
 # set to nil when equal to pversion
-%global versionlist 5.40.0 5.40.1
+%global versionlist %nil
 Name:           perl%{?name_suffix}
-Version:        5.40.2
+Version:        5.42.0
 Release:        0
 Summary:        The Perl interpreter
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -55,7 +55,6 @@ Patch12:        perl-reproducible.patch
 Patch13:        perl_skip_flaky_tests_powerpc.patch
 # PATCH-FIX-UPSTREAM unmerged https://www.nntp.perl.org/group/perl.perl5.porters/2018/12/msg253240.html
 Patch18:        perl-reproducible2.patch
-Patch19:        perl-dirdup.diff
 Patch20:        perl-fixed-uname.patch
 BuildRequires:  gdbm-devel
 BuildRequires:  libbz2-devel
@@ -138,7 +137,6 @@ cp -p %{SOURCE3} .
 %patch -P 9 -p1
 %patch -P 12 -p1
 %patch -P 18
-%patch -P 19
 %patch -P20 -p1
 
 %build

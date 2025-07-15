@@ -1195,4 +1195,12 @@ I hope I got it right now. It export both 5.34.0 and 5.34.1 COMPAT. That should 
     <comment></comment>
     <requestid>1287018</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>0b4cfa802d55d84972ba0619847c4dca</srcmd5>
+    <version>5.42.0</version>
+    <time>1752590478</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.42.0</comment>
+    <requestid>1291949</requestid>
+  </revision>
 </revisionlist>
