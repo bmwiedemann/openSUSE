@@ -34,6 +34,8 @@ URL:            https://docs.python-requests.org/
 Source:         https://files.pythonhosted.org/packages/source/r/requests/requests-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#psf/requests#6731
 Patch0:         inject-default-ca-bundles.patch
+# PATCH-FIX-UPSTREAM revert-caching-default-sslcontext.patch gh#psf/requests#6767
+Patch1:         revert-caching-default-sslcontext.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

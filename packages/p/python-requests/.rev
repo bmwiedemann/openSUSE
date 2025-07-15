@@ -961,4 +961,14 @@
 - Remove Requires on python-py, it should have been removed earlier.</comment>
     <requestid>1284404</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>fc06f9bbd8a0b510b6e47aba6c6508a9</srcmd5>
+    <version>2.32.4</version>
+    <time>1752590586</time>
+    <user>anag_factory</user>
+    <comment>- Add revert-caching-default-sslcontext.patch upstream patch to avoid
+  problems with certificate caching in sslcontext.
+  bsc#1246104, gh#psf/requests#6767</comment>
+    <requestid>1293092</requestid>
+  </revision>
 </revisionlist>

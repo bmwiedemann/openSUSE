@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 14 09:20:12 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add revert-caching-default-sslcontext.patch upstream patch to avoid
+  problems with certificate caching in sslcontext.
+  bsc#1246104, gh#psf/requests#6767
+
+-------------------------------------------------------------------
 Tue Jun 10 09:42:31 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.32.4:
