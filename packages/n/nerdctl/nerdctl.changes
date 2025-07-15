@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Mon Jul 14 08:15:43 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 2.1.3:
+  * update Kubo (0.35.0)
+  * update Nydus (2.3.2)
+  * update gotestsum (1.12.3)
+  * update slirp4netns (1.3.3)
+  * update BuildKit (0.23.2)
+  * update containerd (2.1.3)
+  * feat: Add completions for 'nerdctl network create -o'
+  * build(deps): bump the docker group with 2 updates
+  * rename flag variables to descriptive boolean names
+  * cmd/image: update save command usage string
+  * fix golangci-lint
+  * Enable setting DNS options through global nerdctl config
+  * check soci version
+  * add soci convert feature
+  * update soci base version to latest
+  * fix: allow soci v1 pulls for existing tests
+  * exec: wait for I/O completion before return
+  * commit: support zstdchunked conversion with writable layer in container commit
+  * build(deps): bump go.yaml.in/yaml/v3 from 3.0.3 to 3.0.4
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * Add build tag `no_ipfs`
+  * build(deps): bump github.com/Masterminds/semver/v3 from 3.3.1 to 3.4.0
+  * fix: allow storing additional network info in network-config.json
+  * bugfix:wait health check log complete
+  * build(deps): bump the docker group with 2 updates
+  * Allow compose exec concurrency
+  * Rewrite compose test (fix 4146)
+  * Improve debugging for healthcheck tests
+  * internal/filesystem minor fix
+  * docs: add network-config.json description to dir.md
+  * fix: allow containers to start using a large number of ports
+  * Fix broken image parsing and hard-coded data in tests
+  * Add DoesNotMatch comparator
+  * Fix healthcheck test
+  * refactor: move BUILDKIT_HOST to buildkitutil
+  * commit: support estargz conversion with writable layer in container commit
+  * image: extract image format options into separate structs
+  * Kube test: wait for image
+  * Simplify healthcheck file handling
+  * Add delay for windows network test
+  * Build examples and enable on CI
+  * Cleanup TestImageHistory
+  * Fixes for TestImageConvertNydusVerify
+  * Update testutil HTTPGet refresh strategy
+  * Move tests to new registry testing infrastructure
+  * Fix broken tigron testca
+  * commit: Add an option to nerdctl commit command for media type selection
+  * Pass along GITHUB_TOKEN
+  * Ensure container started on healthcheck tests
+  * Move tigron funcs from *testing.T to tig.T
+  * Bump CI timeout
+  * Fix copy-paste error in Makefile
+  * Re-enable tigron lint on the CI
+  * Remove deprecated info parameter in tigron funcs
+  * xMove gopkg.in/yaml.v3 to maintained fork
+  * Add example of using nerdctl as a library
+  * Add support for external embed test image list
+  * Move leftover os.WriteFile and os.ReadFile to `filesystem`
+  * feat: use stricter regex to filter network labels on the container.
+  * build(deps): bump github.com/containerd/containerd/v2
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * WriteFile with rollback and no inode change
+  * lint: bump cognitive-complexity
+  * feat: Add healthcheck command in nerdctl
+  * build(deps): bump actions/attest-build-provenance from 2.3.0 to 2.4.0
+  * feat: allow regexp name filters to match docker
+  * build(deps): bump github.com/containerd/containerd/v2
+  * build(deps): bump docker/setup-buildx-action from 3.10.0 to 3.11.1
+  * Forbidigo: prevent os fs operations
+  * Move from os filesystem operations to internal/filesystem
+  * Fix typo in `across`.
+  * build(deps): bump github.com/go-viper/mapstructure/v2
+  * fix: sbom and provenance tests
+  * fix:go-license dependency
+  * test: add one test case to TestNetworkInspect in network_inspect_test.go
+  * test: refactor TestNetworkInspect in network_inspect_test.go
+  * fix: display containers belonging to multiple networks in nerdctl network inspect
+  * Check if port is used in publish flag
+  * build(deps): bump the golang-x group with 4 updates
+  * mark go-iptables as gomodjail unconfined
+  * fix: improve network settings application and enhance iptables rule deletion
+  * build(deps): bump the docker group with 2 updates
+  * build(deps): bump lima-vm/lima-actions from 1.0.0 to 1.0.1
+  * build(deps): bump docker/build-push-action from 6.17.0 to 6.18.0
+  * <fix> stats: CPU perusage use the wrong systemUsage
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * test: update test functions in portutil_test.go
+  * Prevent empty container names
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * add commit compression type support
+  * cleanup for golang linter QF1012
+  * Use data.Temp() for assets
+  * Remove useless port bindings
+  * Move from Alpine to Common for compose tests
+  * Remove version: from test compose yaml files
+  * Move away from raw github domain to API
+
+-------------------------------------------------------------------
 Tue May 27 07:48:27 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 2.1.2:
