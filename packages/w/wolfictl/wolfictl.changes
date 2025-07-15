@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jul 15 06:02:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to 0.38.2:
+  * scan: make max db allowed build age configurable by @hectorj2f
+    in #1677
+
+-------------------------------------------------------------------
+Tue Jul 15 05:58:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.1:
+  * scan: add a comment to justify the change to 118h
+  * scan: add a warning when age is older than 48h for now
+  * scan: add docs with the new flag
+  * scan: make max db allowed build age configurable
+  * linter: avoid false positives for double ampersand (#6)
+  * fix background process regex (#5)
+  * lint: detect multiline background processes without redirect
+    (#4)
+  * fix lint false positive for -d (#3)
+  * lint: detect daemon flags and redirects (#2)
+  * Refine background process lint regex
+  * lint: warn on background processes without redirect
+
+-------------------------------------------------------------------
 Wed Jul 09 04:45:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.0:
