@@ -20,14 +20,13 @@
 %global import_path     %{provider_prefix}
 
 Name:           yq
-Version:        4.44.6
+Version:        4.46.1
 Release:        0
 Summary:        A portable command-line YAML processor
 License:        MIT
 URL:            https://github.com/mikefarah/yq
 Source0:        https://github.com/mikefarah/yq/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Patch0:         Bump-golang.org-x-net-from-0.32.0-to-0.33.0.patch
 # conflict with all python3X-yq packages since they install /usr/bin/yq
 # we need to handle Leap 15.4 specially since the python3dist() is not
 # generated there
@@ -36,7 +35,7 @@ Conflicts:      python3dist(yq)
 %else
 Conflicts:      python3-yq
 %endif
-BuildRequires:  golang(API) = 1.22
+BuildRequires:  golang(API) = 1.24
 
 %description
 A lightweight and portable command-line YAML processor. yq uses jq like syntax

@@ -157,4 +157,35 @@ IMO the Conflicts tag is unavoidable, hence adding.
     <comment></comment>
     <requestid>1236178</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ce41995e090d50165918963310b9f694</srcmd5>
+    <version>4.46.1</version>
+    <time>1752590611</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.46.1:
+  * Added INI support
+  * Fixed 'add' operator when piped in with no data #2378, #2383,
+    #2384
+  * Fixed delete after slice problem (bad node path) #2387 Thanks
+    @antoinedeschenes
+  * Fixed yq small build Thanks @imzue
+  * Switched to YAML org supported go-yaml!
+- update to 4.45.4:
+  * Fixing wrong map() behaviour on empty map #2359
+- update to 4.45.3:
+  * Fixing regression (#2353, #2359, #2325) introduced with in
+    4.45.2 with #2325 fix
+- update to 4.45.2:
+  * Added windows arm builds (Thanks @albertocavalcante,
+    @ShukantPal)
+  * Added s390x platform support (Thanks @ashokpariya0)
+  * Additionally push docker images to ghcr.io (Thanks @reegnz)
+  * Fixing add when there is no node match #2325
+  * sort_by works on maps
+- update to 4.45.1:
+  * Create parent directories when --split-exp is used, Thanks
+    @rudo-thomas
+- drop Bump-golang.org-x-net-from-0.32.0-to-0.33.0.patch (upstream)</comment>
+    <requestid>1293054</requestid>
+  </revision>
 </revisionlist>
