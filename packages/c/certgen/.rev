@@ -7,4 +7,12 @@
     <comment>new package certgen: a dead simple tool to generate self signed certificates (for MinIO TLS deployments)</comment>
     <requestid>1188852</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c0664773d23bb763f0444531e4988c9c</srcmd5>
+    <version>1.4.0</version>
+    <time>1752590698</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1293264</requestid>
+  </revision>
 </revisionlist>
