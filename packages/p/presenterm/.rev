@@ -422,4 +422,41 @@
   * Truly center +exec_replace snippet output (#572).</comment>
     <requestid>1281736</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fe3d9d16b02316e44fb3286744dabce4</srcmd5>
+    <version>0.15.0</version>
+    <time>1752590609</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.15.0:
+  * Breaking changes
+    The behavior for &quot;jump next fast&quot; and &quot;jump previous fast&quot; keybindings
+    (defaults to n and p) now jumps straight from one slide to the
+    next/previous one ignoring pauses. Before this used to &quot;reveal&quot; all pauses
+    when jumping forward before going to the next slide. This behavior was
+    weird and unintuitive so now fast jumps go straight into the next/previous
+    slides. The action of &quot;showing all pauses on the current slide&quot; can now be
+    done by pressing s (#678).
+  New features:
+  * Allow specifying where a snippet's execution output will go (#658).
+  * Add include comment command to import markdown files (#651) (#683).
+  * Allow validating snippets without explicitly executing them by using --validate-snippets switch (#645) (#637).
+  * Support iterm2 image protocol when running in tmux (#661).
+  * Add support for d2 diagrams (#657).
+  * Errors encountered when parsing markdown now always display the file, line,
+    and column where the error was found, as well as the markdown line that
+    caused the error (#674) (#653) (#684) (#685).
+  * Superscript via ^this^ and &lt;sup&gt;this&lt;/sup&gt; syntaxes is supported when using
+    the kitty terminal. For other terminals we try to use unicode half block
+    characters which cover a portion of the ASCII charset. (#606)(#617 )
+    (#665).
+  * Allow alternative snippet executors for languages that support execution.
+    This allows, for example, runnig rust code via rust-script or python code
+    via pytest (#614).
+  * Allow using env var PRESENTERM_CONFIG_FILE to point to the config file (#663)
+  * Set background color via OSC 11 to avoid having a colored edge around the
+    presentation (#623) (#624) (#627).
+  * Add support for markdown footnotes (#616).
+  * Runtime errors are now centered rather than being left aligned with some fixed margin (#638).</comment>
+    <requestid>1292635</requestid>
+  </revision>
 </revisionlist>
