@@ -44,6 +44,8 @@ Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
 # PATCH-FIX-UPSTREAM 0001-Rename-variable-being-shadowed.patch alarrosa@suse.com -- https://codereview.qt-project.org/c/qt/qtbase/+/638284
 Patch0:         0001-Rename-variable-being-shadowed.patch
+# CVE-2025-5992
+Patch1:         0001-Add-clamping-to-QColorTransferGenericFunction.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
 Patch100:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch

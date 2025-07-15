@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 11 10:11:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix (CVE-2025-5992, boo#1246343)
+  * 0001-Add-clamping-to-QColorTransferGenericFunction.patch
+
+-------------------------------------------------------------------
 Tue Jun  3 07:49:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.9.1:

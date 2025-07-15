@@ -598,4 +598,13 @@
     <comment>Qt 6.9.1 (forwarded request 1282452 from krop)</comment>
     <requestid>1282552</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>754c4f8d5b747403b5d1cfa13c6a2dcf</srcmd5>
+    <version>6.9.1</version>
+    <time>1752590543</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream fix (CVE-2025-5992, boo#1246343)
+  * 0001-Add-clamping-to-QColorTransferGenericFunction.patch</comment>
+    <requestid>1291918</requestid>
+  </revision>
 </revisionlist>
