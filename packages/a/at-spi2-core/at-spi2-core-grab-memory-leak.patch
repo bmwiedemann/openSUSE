@@ -1,0 +1,47 @@
+From 902be91dc466dd566c38850320ce1b6f421e3a03 Mon Sep 17 00:00:00 2001
+From: Mike Gorse <mgorse@suse.com>
+Date: Wed, 9 Jul 2025 08:19:33 -0500
+Subject: [PATCH] device: Fix a memory leak when removing a key grab
+
+---
+ atspi/atspi-device-a11y-manager.c | 4 +++-
+ atspi/atspi-device-x11.c          | 4 +++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/atspi/atspi-device-a11y-manager.c b/atspi/atspi-device-a11y-manager.c
+index 740f91a4..e590dcb0 100644
+--- a/atspi/atspi-device-a11y-manager.c
++++ b/atspi/atspi-device-a11y-manager.c
+@@ -316,9 +316,11 @@ atspi_device_a11y_manager_remove_key_grab (AtspiDevice *device, guint id)
+           manager_device->grabbed_keys = g_slist_remove (manager_device->grabbed_keys, entry);
+           g_free (entry);
+           schedule_refresh_grabs (manager_device);
+-          return;
++          break;
+         }
+     }
++
++  g_free (kd);
+ }
+ 
+ static void
+diff --git a/atspi/atspi-device-x11.c b/atspi/atspi-device-x11.c
+index d8fb6c1c..00d5eb58 100644
+--- a/atspi/atspi-device-x11.c
++++ b/atspi/atspi-device-x11.c
+@@ -709,9 +709,11 @@ atspi_device_x11_remove_key_grab (AtspiDevice *device, guint id)
+         {
+           disable_key_grab (x11_device, other);
+           priv->key_grabs = g_slist_remove (priv->key_grabs, other);
+-          return;
++          break;
+         }
+     }
++
++  g_free (kd);
+ }
+ 
+ static guint
+-- 
+2.50.0
+

@@ -1,0 +1,44 @@
+From: Mike Gorse <mgorse@suse.com>
+Subject: device-a11y-manager: Add grabs with numlock and capslock
+
+This is the equivalent of applying commits 2be90dac and and 1e1000d5 from
+the gnome-48 branch. It ensures that requested key grabs remain in effect
+when num lock or caps lock are enabled.
+
+diff -urp at-spi2-core-2.56.3.orig/atspi/atspi-device-a11y-manager.c at-spi2-core-2.56.3/atspi/atspi-device-a11y-manager.c
+--- at-spi2-core-2.56.3.orig/atspi/atspi-device-a11y-manager.c	2025-07-11 14:28:52.371304458 -0500
++++ at-spi2-core-2.56.3/atspi/atspi-device-a11y-manager.c	2025-07-11 14:28:54.932282887 -0500
+@@ -111,6 +111,18 @@ find_insertion_point_for_modifier (Atspi
+   return NULL;
+ }
+ 
++#define MODIFIER_NUMLOCK (1 << ATSPI_MODIFIER_META)
++#define MODIFIER_CAPSLOCK (1 << ATSPI_MODIFIER_SHIFTLOCK)
++
++static void
++add_grab_to_builder (GVariantBuilder *builder, guint32 keysym, guint32 modifiers)
++{
++  g_variant_builder_open (builder, G_VARIANT_TYPE ("(uu)"));
++  g_variant_builder_add (builder, "u", keysym);
++  g_variant_builder_add (builder, "u", modifiers);
++  g_variant_builder_close (builder);
++}
++
+ static void
+ refresh_grabs (AtspiDeviceA11yManager *manager_device)
+ {
+@@ -129,10 +141,10 @@ refresh_grabs (AtspiDeviceA11yManager *m
+   for (l = manager_device->grabbed_keys; l; l = l->next)
+     {
+       AtspiDeviceA11yManagerKey *entry = l->data;
+-      g_variant_builder_open (&builder, G_VARIANT_TYPE ("(uu)"));
+-      g_variant_builder_add (&builder, "u", entry->keysym);
+-      g_variant_builder_add (&builder, "u", entry->modifiers);
+-      g_variant_builder_close (&builder);
++      add_grab_to_builder (&builder, entry->keysym, entry->modifiers);
++      add_grab_to_builder (&builder, entry->keysym, entry->modifiers | MODIFIER_NUMLOCK);
++      add_grab_to_builder (&builder, entry->keysym, entry->modifiers | MODIFIER_CAPSLOCK);
++      add_grab_to_builder (&builder, entry->keysym, entry->modifiers | MODIFIER_CAPSLOCK | MODIFIER_NUMLOCK);
+     }
+   g_variant_builder_close (&builder);
+   g_dbus_proxy_call_sync (manager_device->keyboard_monitor,
