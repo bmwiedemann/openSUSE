@@ -17,22 +17,20 @@
 
 
 Name:           python-feedgenerator
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Standalone version of django.utilsfeedgenerator, compatible with Py3k
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/getpelican/feedgenerator
 Source:         https://files.pythonhosted.org/packages/source/f/feedgenerator/feedgenerator-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytz
 BuildArch:      noarch
 %python_subpackages
 
