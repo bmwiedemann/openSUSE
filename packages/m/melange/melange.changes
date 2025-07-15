@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 15 05:59:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.29.2:
+  * Do not allow packages to provide libcuda.so.1 (#2074)
+  * license-check: fix --format=simple (#2076)
+  * license-check: allow relative paths for extracted-source paths
+    (#2068)
+
+-------------------------------------------------------------------
 Wed Jul 09 04:44:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.29.1:
