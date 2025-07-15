@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  8 15:34:05 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add grub2-arm64-efi-bls as well - boo#1245049
+
+-------------------------------------------------------------------
 Tue Jun  3 09:43:19 UTC 2025 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Drop xen from the DVD.

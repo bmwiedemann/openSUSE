@@ -480,4 +480,12 @@
     <user>dimstar_suse</user>
     <comment>- Drop xen from the DVD.</comment>
   </revision>
+  <revision rev="58" vrev="58">
+    <srcmd5>94db8a811fd0b7e89396c6dff87be63b</srcmd5>
+    <version>20170319</version>
+    <time>1752590518</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1293059</requestid>
+  </revision>
 </revisionlist>

@@ -133,6 +133,7 @@ Recommends:     rsync
 Recommends:     sbl
 # Required for systemd-boot/grub2-bls
 Recommends:     sdbootutil
+Recommends:     grub2-arm64-efi-bls
 Recommends:     grub2-x86_64-efi-bls
 Recommends:     smartmontools
 # DELL laptop support
