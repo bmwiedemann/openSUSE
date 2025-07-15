@@ -213,4 +213,41 @@
     <comment></comment>
     <requestid>1226193</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>38660034c1db1ca96635c405424773a4</srcmd5>
+    <version>0.63.2</version>
+    <time>1752590608</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.63.2:
+  * Improve performance of templates that declare large numbers of
+    file variables.
+  * Fix selecting the byte range encapsulated by a comment (#255).
+  * Add &quot;Jump to end&quot; command to comments panel context menu (#254).
+  * Improve rendering performance and UI responsiveness, particularly
+    when a large number of colours are in use (#257).
+  * Fix searching within a range.
+  * Default to selection when a range is selected prior to opening
+    search dialog (#256).
+
+- Update to 0.63.0:
+  * Visual scrollbar
+  * Data visualization panel
+  * Add non-modal &quot;Jump to offset&quot; dialog option (#242).
+  * Add &quot;Repeat last 'Jump to offset'&quot; command (#242).
+  * Add &quot;Visual Scrollbar&quot; for high-level overview of file contents.
+  * Add &quot;Data visualisation&quot; tool for overfiew of file/selection contents (#230).
+  * Add metadata import/export commands (#248).
+  * Fix crash when &lt;charset = &quot;US-ASCII&quot;&gt; is specified for a file variable in a template (#246).
+  * Add highlight functions to scripting API and template language (#247).
+  * Fix memory leaks in bitmap preview tool and metadata serialisation.
+  * Suspend scanning for strings when the strings tool is hidden.
+  * Fix the continue/reset buttons in the strings tool not working correctly.
+  * Fix horizontal scroll position being set out-of-range when the
+    window is resized in some situations.
+  * Fix bitmap preview tool not following cursor correctly (#244).
+  * Allow detaching tool panels to floating windows or docking them
+    to any side of the main window (#229).
+  * Reduce unnecessary padding in decimal offsets (#235).</comment>
+    <requestid>1292600</requestid>
+  </revision>
 </revisionlist>

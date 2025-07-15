@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Jul 14 06:55:49 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.63.2:
+  * Improve performance of templates that declare large numbers of
+    file variables.
+  * Fix selecting the byte range encapsulated by a comment (#255).
+  * Add "Jump to end" command to comments panel context menu (#254).
+  * Improve rendering performance and UI responsiveness, particularly
+    when a large number of colours are in use (#257).
+  * Fix searching within a range.
+  * Default to selection when a range is selected prior to opening
+    search dialog (#256).
+
+-------------------------------------------------------------------
+Fri Jun 13 06:14:47 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.63.0:
+  * Visual scrollbar
+  * Data visualization panel
+  * Add non-modal "Jump to offset" dialog option (#242).
+  * Add "Repeat last 'Jump to offset'" command (#242).
+  * Add "Visual Scrollbar" for high-level overview of file contents.
+  * Add "Data visualisation" tool for overfiew of file/selection contents (#230).
+  * Add metadata import/export commands (#248).
+  * Fix crash when <charset = "US-ASCII"> is specified for a file variable in a template (#246).
+  * Add highlight functions to scripting API and template language (#247).
+  * Fix memory leaks in bitmap preview tool and metadata serialisation.
+  * Suspend scanning for strings when the strings tool is hidden.
+  * Fix the continue/reset buttons in the strings tool not working correctly.
+  * Fix horizontal scroll position being set out-of-range when the
+    window is resized in some situations.
+  * Fix bitmap preview tool not following cursor correctly (#244).
+  * Allow detaching tool panels to floating windows or docking them
+    to any side of the main window (#229).
+  * Reduce unnecessary padding in decimal offsets (#235).
+  * Fix range selection input for checksum/histogram on macOS.
+  * Fix selection being prematurely initiated when the mouse is clicked over file data.
+  * See https://github.com/solemnwarning/rehex/releases/tag/0.63.0
+- Remove rehex-0.62.1-Build-with-Botan-3.patch
+
+-------------------------------------------------------------------
 Thu Nov 21 09:46:27 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop conditional wxWidgets-3_0-devel BuildRequires, no longer
