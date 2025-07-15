@@ -162,4 +162,25 @@
   * fix builds with setuptools 72 by upgrading scikit-build</comment>
     <requestid>1194585</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5ccba00a9a06094b8e77bef78af3d015</srcmd5>
+    <version>3.13.0</version>
+    <time>1752590588</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.13.0:
+  * add support for arrays of type 'w'
+  * add support for any DTypeLike as dtype in ``cdist`` and ``cpdist``
+  * upgrade to ``Cython==3.0.12``
+  * generate code for fallback imports to be better parseable for tools
+    bundling Python applications into a single binary
+  * added support for taskflow 3.9.0
+  * improve calculation of min score inside partial_ratio so it can skip
+    more alignments
+  * fix compilation on clang-19
+  * fix incorrect results in simd optimized implementation of Levenshtein
+    and OSA on 32bit targets
+  * drop support for Python 3.8
+  * switch build system to ``scikit-build-core``</comment>
+    <requestid>1293242</requestid>
+  </revision>
 </revisionlist>

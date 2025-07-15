@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul 15 04:49:52 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.13.0:
+  * add support for arrays of type 'w'
+  * add support for any DTypeLike as dtype in ``cdist`` and ``cpdist``
+  * upgrade to ``Cython==3.0.12``
+  * generate code for fallback imports to be better parseable for tools
+    bundling Python applications into a single binary
+  * added support for taskflow 3.9.0
+  * improve calculation of min score inside partial_ratio so it can skip
+    more alignments
+  * fix compilation on clang-19
+  * fix incorrect results in simd optimized implementation of Levenshtein
+    and OSA on 32bit targets
+  * drop support for Python 3.8
+  * switch build system to ``scikit-build-core``
+
+-------------------------------------------------------------------
 Sun Aug 18 17:20:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.9.6:
