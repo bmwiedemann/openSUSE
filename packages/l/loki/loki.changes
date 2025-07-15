@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Jul 11 13:09:51 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.5.2:
+  * docs: backport 18396 to 3.5 branch (#18404)
+  * docs: backport 18387 to 3.5 branch (#18402)
+  * docs: fix typo (backport release-3.5.x) (#18301)
+  * fix(frontend): allow resolution of v6 addresses. (backport release-3.5.x) (#18261)
+  * fix(memberlist): allow resolution of advertise address from v6 interf… (backport release-3.5.x) (#18257)
+  * docs: Add link to Grafana OTEL docs (backport release-3.5.x) (#18224)
+  * docs: backport storage fix 3.5 (#18220)
+  * docs: add redirect to fix broken links (backport release-3.5.x) (#18180)
+  * docs: Add GCP to links, 3.5 branch (#18169)
+  * docs: update Promtail topic (backport release-3.5.x) (#18154)
+  * docs: add redirect to LogCLI topic (backport release-3.5.x) (#18150)
+  * docs: Add topic for editing default OTEL labels (backport release-3.5.x) (#18147)
+  * docs: remove note and add link to deployment guides (backport release-3.5.x) (#18134)
+  * docs: add Vale spelling exception to upgrade topic (backport release-3.5.x) (#18119)
+  * docs: update config option name (backport release-3.5.x) (#18071)
+  * docs: fix missing link in topic (backport release-3.5.x) (#18069)
+  * fix(jsonparser): Fix possible JSON log line corruption caused by `json` parser on query path (backport release-3.5.x) (#18059)
+  * docs: First draft of Helm GCP guide (backport release-3.5.x) (#18049)
+  * docs: manual backport RN 3.5 branch (#18045)
+  * docs: Update Release Notes 3.4.4 (#18042) (#18044)
+  * docs: backport shortcode addition to 3.5 branch (#18028)
+  * docs: manual backport 17007 (#18021)
+  * fix(ci): Update release code 3.5 (#18014)
+  * docs: backport 17060 to 3.5 branch (#17977)
+  * docs: Add links to learning journeys (backport release-3.5.x) (#17961)
+  * chore(deps): update module golang.org/x/net to v0.38.0 [security] (release-3.5.x) (#17419)
+  * chore(deps): update module github.com/containerd/containerd/v2 to v2.0.5 [security] (release-3.5.x) (#17796)
+  * fix(deps): Move to Go 1.24.2 (backport release-3.5.x) (#17805)
+  * ci: bump release pipeline to fix permissions (backport release-3.5.x) (#17803)
+  * docs: fix broken links in quickstart (backport release-3.5.x) (#17798)
+  * chore(release-3.5.x): release 3.5.1 (#17417)
+
+-------------------------------------------------------------------
 Thu May 22 22:46:22 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.5.1:
