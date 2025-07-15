@@ -2,6 +2,7 @@
 # spec file for package qgit
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           qgit
-Version:        2.10
+Version:        2.11
 Release:        0
 Summary:        Graphical Git Repository Viewer
 License:        GPL-2.0-or-later
@@ -56,7 +57,7 @@ current top one using the same semantics of git commit,  i.e. cherry
 picking single modified files.
 
 %prep
-%setup -q -n qgit-qgit-%{version}
+%autosetup -p1 -n qgit-qgit-%{version}
 
 %build
 %cmake
@@ -64,6 +65,9 @@ picking single modified files.
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files
 %license COPYING.rtf
