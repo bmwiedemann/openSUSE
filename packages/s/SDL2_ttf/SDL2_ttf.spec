@@ -30,11 +30,11 @@ Source:         https://github.com/libsdl-org/SDL_ttf/releases/download/release-
 Source2:        https://github.com/libsdl-org/SDL_ttf/releases/download/release-%version/SDL2_ttf-%version.tar.gz.sig
 Source3:        baselibs.conf
 Source8:        %name.keyring
-BuildRequires:  SDL2-devel >= 2.24
 BuildRequires:  c++_compiler
 BuildRequires:  dos2unix
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(sdl2) >= 2.24
 
 %description
 This is a sample library that allows you to use TrueType fonts in your

@@ -120,4 +120,12 @@
     <comment>- Reference baselibs.conf as a Source to make factory-auto happy</comment>
     <requestid>1291330</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>bbd64436cbcd7bb080d9cd652095a263</srcmd5>
+    <version>2.24.0</version>
+    <time>1752590650</time>
+    <user>anag_factory</user>
+    <comment>- Use pkgconfig() to locate build requirements</comment>
+    <requestid>1293173</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 14 14:45:50 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Use pkgconfig() to locate build requirements
+
+-------------------------------------------------------------------
 Tue Jul  8 12:08:48 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Reference baselibs.conf as a Source to make factory-auto happy 
