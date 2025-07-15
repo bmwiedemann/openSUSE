@@ -3,16 +3,26 @@
     <param name="url">https://github.com/etcd-io/etcd.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v3.6.1</param>
+    <param name="revision">v3.6.2</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
-  <service mode="manual" name="set_version"/>
+  <service name="set_version" mode="manual"/>
   <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
-  <!-- use ./update-vendor.sh instead -->
-  <!-- <service name="go_modules" mode="manual"/> -->
+  <service name="go_modules" mode="manual">
+    <param name="subdir">server</param>
+    <param name="vendorname">vendor-server</param>
+  </service>
+  <service name="go_modules" mode="manual">
+    <param name="subdir">etcdctl</param>
+    <param name="vendorname">vendor-etcdctl</param>
+  </service>
+  <service name="go_modules" mode="manual">
+    <param name="subdir">etcdutl</param>
+    <param name="vendorname">vendor-etcdutl</param>
+  </service>
 </services>

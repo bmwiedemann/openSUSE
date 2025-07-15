@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 15 08:43:36 UTC 2025 - Elisei Roca <eroca@suse.com>
+
+- Update to version 3.6.2:
+  * Avoid lowering revision of watchers in the future after restore
+  * Add verification to verify the watch response have a bigger revision than minRev
+  * Disable progress notify validation until we can guarantee response
+  * Skip sending progress notification for watch with starting revision in the future
+
+- Switch to _service file for vendoring and drop update-vendor.sh
+
+-------------------------------------------------------------------
 Tue Jun 10 09:33:50 UTC 2025 - Elisei Roca <eroca@suse.com>
 
 - See upgrade guide:

@@ -23,21 +23,22 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           etcd
-Version:        3.6.1
+Version:        3.6.2
 Release:        0
 Summary:        Reliable key-value store for the most critical data of a distributed system
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/etcd-io/etcd
 Source:         %{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source1:        vendor-server.tar.gz
+Source2:        vendor-etcdctl.tar.gz
+Source3:        vendor-etcdutl.tar.gz
 Source11:       %{name}.conf
 Source12:       %{name}.service
 Source13:       %{name}.sysconfig
 Source14:       %{name}.sysuser
 Source15:       README.security
-Source16:       update-vendor.sh
-Source17:       update-etcd-conf.sh
+Source16:       update-etcd-conf.sh
 BuildRequires:  golang(API) >= 1.23
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
@@ -77,9 +78,11 @@ It's designed to operate directly on etcd data files.
 For operations over a network, please use `etcdctl`.
 
 %prep
-%setup -q -a1
+%autosetup
 cp %{SOURCE15} .
-cp -rla vendor/* ./ && rm -r vendor/
+tar -C server -xzf %{SOURCE1}
+tar -C etcdctl -xzf %{SOURCE2}
+tar -C etcdutl -xzf %{SOURCE3}
 
 %build
 %{goprep} %{project}
