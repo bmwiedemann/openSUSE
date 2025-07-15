@@ -200,4 +200,14 @@
   * export trackingbranch to scmsync.obsinfo</comment>
     <requestid>1289983</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>814cdd5dbe901fadeaf8cd54e26279ce</srcmd5>
+    <version>0.7.2</version>
+    <time>1752590772</time>
+    <user>anag_factory</user>
+    <comment>- 0.7.2
+  * Improved error reporting of invalid files in package subdirs
+  * Introducing a mechanic to limit asset handling</comment>
+    <requestid>1293431</requestid>
+  </revision>
 </revisionlist>

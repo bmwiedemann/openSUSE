@@ -1,0 +1,11 @@
+Source: obs-scm-bridge
+Section: devel
+Priority: optional
+Maintainer: Adrian Schroeter <adrian@suse.de>
+Build-Depends: debhelper (>= 5)
+Standards-Version: 3.7.2
+
+Package: obs-scm-bridge
+Architecture: all
+Depends: obs-build, python3-yaml, libwww-perl
+Description: The SCM bridge used by osc and OBS server
