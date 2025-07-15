@@ -687,4 +687,12 @@
     retrieval and emit as JSON.</comment>
     <requestid>1173912</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>2716a3213ae84b402c346ae5ee6c2d05</srcmd5>
+    <version>25.2.1</version>
+    <time>1752590551</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1291938</requestid>
+  </revision>
 </revisionlist>
