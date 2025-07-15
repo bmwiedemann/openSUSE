@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jul 15 02:15:10 UTC 2025 - zzhou@suse.com
+
+- Update to version 5.0.0+20250715.749274d4:
+  * Dev: migration: allow to run migration locally (jsc#PED-8252)
+
+-------------------------------------------------------------------
+Fri Jul 11 07:42:39 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250711.8c82cb6b:
+  * Dev: Remove unused code
+
+-------------------------------------------------------------------
+Thu Jul 03 04:09:30 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250703.5ebd6a21:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: utils: Validate if local node is a cluster member on peer node's view
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: ui_cluster: Enhance membership validation for `cluster run` command
+
+-------------------------------------------------------------------
+Tue Jul 01 06:06:09 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250701.93ee876c:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: corosync: Get value from runtime.config prefix and update default token value
+
+-------------------------------------------------------------------
 Mon Jun 30 08:39:37 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250630.23be67df:
