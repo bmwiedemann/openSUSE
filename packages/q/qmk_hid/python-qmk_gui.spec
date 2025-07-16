@@ -17,6 +17,7 @@
 
 
 %{?sle15_python_module_pythons}
+%bcond_without libalternatives
 %define tag_version 0.1.12
 Name:           python-qmk_gui
 Version:        0.1.12+git44
@@ -28,13 +29,16 @@ Source0:        qmk_hid-%{version}.tar.gz
 Source1:        qmk_hid-rpmlintrc
 # PATCH-FIX-UPSTREAM fix-version.patch
 Patch0:         fix-version.patch
+# PATCH-FIX-UPSTREAM fix-open-browser.patch https://github.com/FrameworkComputer/qmk_hid/pull/49
+Patch1:         fix-open-browser.patch
 BuildRequires:  %{python_module hatch-requirements-txt}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module hatch}
 BuildRequires:  %{python_module pip}
+BuildRequires:  alts
 BuildRequires:  fdupes
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-hidapi
 Requires:       python-tk
 Requires:       qmk_hid
@@ -53,17 +57,11 @@ A GUI tool to control QMK keyboard, specifically of the Framework Laptop 16
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/qmk_gui
-%python_expand %fdupes %{buildroot}/%{python_sitelib}/qmk_hid
-# for some reason python_expand doesn't work here, so do manual fdupes
-%fdupes %{buildroot}/%{python311_sitelib}/qmk_hid/__pycache__
-%fdupes %{buildroot}/%{python312_sitelib}/qmk_hid/__pycache__
-%fdupes %{buildroot}/%{python313_sitelib}/qmk_hid/__pycache__
+%python_expand %fdupes %{buildroot}%{$python_sitelib}/qmk_hid
 
-%post
-%python_install_alternative qmk_gui
-
-%postun
-%python_uninstall_alternative qmk_gui
+%pre
+# removing old update-alternatives entries
+%python_libalternatives_reset_alternative qmk_gui
 
 %files %{python_files}
 %doc README.md

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 11 14:08:03 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- migrate to libalternatives
+- clean up rpmlint-warnings
+- add missing requirements
+- add fix-open-browser.patch to fix crash when opening link in browser
+
+-------------------------------------------------------------------
 Mon Apr 14 12:42:03 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - initial version of GUI subpackage 0.1.12+git44
