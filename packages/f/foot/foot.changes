@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jul 16 07:46:18 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.23.0:
+  * foot.ini options:
+    * Added new colors2 section to define alternative color theme.
+      Initial theme is defined by new main.initial-color-theme config.
+      Theme can be switched dynamically using keybinds configured in new
+      key-bindings.color-theme-* configs, or by sending SIGUSR1 to foot.
+    * Added "16-bit" option to tweak.surface-bit-depth. This makes foot use
+      16-bit image buffers which provide the necessary color precision
+      required by gamma-correct-blending=yes. This is the default when
+      gamma-correct-blending is set to "yes".
+    * Added "center-when-fullscreen" and "center-when-maximized-and-fullscreen"
+      options to main.pad option for more control over grid centering.
+    * cursor.color config has been deprecated and renamed to colors.cursor.
+    * Setting both colors.selection-foreground and selection-background is
+      no longer required. If one is unset then the corresponding regular color
+      is used.
+  * regex-copy and show-urls-copy commands now copy and paste the selected text
+    if the hint is completed with an uppercase character, inspired by
+    wezterm's quick select behavior.
+  * Added new themes: gruvbox, nvim, paper-color, selenized, solarized,
+    which combine the existing themes' dark and light variants into
+    one file with two color groups each.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.23.0 for more details.
+
+-------------------------------------------------------------------
 Thu May  1 16:07:36 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.22.3:
