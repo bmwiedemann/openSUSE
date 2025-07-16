@@ -17,7 +17,7 @@
 
 
 Name:           teleport
-Version:        17.5.4
+Version:        17.5.5
 Release:        0
 Summary:        Identity-aware, multi-protocol access proxy
 License:        AGPL-3.0-only
@@ -214,11 +214,11 @@ cd tool/fdpass-teleport
 
 %install
 # Install the binary.
-install -D -m 0755 tsh "%{buildroot}/%{_bindir}/tsh"
-install -D -m 0755 tctl "%{buildroot}/%{_bindir}/tctl"
-install -D -m 0755 tbot "%{buildroot}/%{_bindir}/tbot"
-install -D -m 0755 tool/fdpass-teleport/target/release/fdpass-teleport "%{buildroot}/%{_bindir}/fdpass-teleport"
-install -D -m 0755 teleport "%{buildroot}/%{_sbindir}/teleport"
+install -D -m 0755 tsh %{buildroot}%{_bindir}/tsh
+install -D -m 0755 tctl %{buildroot}%{_bindir}/tctl
+install -D -m 0755 tbot %{buildroot}%{_bindir}/tbot
+install -D -m 0755 target/release/fdpass-teleport %{buildroot}%{_bindir}/fdpass-teleport
+install -D -m 0755 teleport %{buildroot}%{_sbindir}/teleport
 install -D -m 644 %{SOURCE3} %{buildroot}%{_unitdir}/teleport.service
 install -D -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/teleport.yaml
 install -D -m 644 examples/systemd/machine-id/machine-id.service %{buildroot}%{_unitdir}/
@@ -228,41 +228,41 @@ install -D -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/tbot.yaml
 
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
-%{buildroot}/%{_sbindir}/teleport --completion-script-bash > %{buildroot}%{_datarootdir}/bash-completion/completions/teleport
+%{buildroot}%{_sbindir}/teleport --completion-script-bash > %{buildroot}%{_datarootdir}/bash-completion/completions/teleport
 
 # create the zsh completion file
 mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
-%{buildroot}/%{_sbindir}/teleport --completion-script-zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_teleport
+%{buildroot}%{_sbindir}/teleport --completion-script-zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_teleport
 
 # tctl completions
 
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
-%{buildroot}/%{_bindir}/tctl --completion-script-bash > %{buildroot}%{_datarootdir}/bash-completion/completions/tctl
+%{buildroot}%{_bindir}/tctl --completion-script-bash > %{buildroot}%{_datarootdir}/bash-completion/completions/tctl
 
 # create the zsh completion file
 mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
-%{buildroot}/%{_bindir}/tctl --completion-script-zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_tctl
+%{buildroot}%{_bindir}/tctl --completion-script-zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_tctl
 
 # tsh completions
 
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
-%{buildroot}/%{_bindir}/tsh --completion-script-bash > %{buildroot}%{_datarootdir}/bash-completion/completions/tsh
+%{buildroot}%{_bindir}/tsh --completion-script-bash > %{buildroot}%{_datarootdir}/bash-completion/completions/tsh
 
 # create the zsh completion file
 mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
-%{buildroot}/%{_bindir}/tsh --completion-script-zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_tsh
+%{buildroot}%{_bindir}/tsh --completion-script-zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_tsh
 
 # tbot completions
 
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
-%{buildroot}/%{_bindir}/tbot --completion-script-bash > %{buildroot}%{_datarootdir}/bash-completion/completions/tbot
+%{buildroot}%{_bindir}/tbot --completion-script-bash > %{buildroot}%{_datarootdir}/bash-completion/completions/tbot
 
 # create the zsh completion file
 mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
-%{buildroot}/%{_bindir}/tbot --completion-script-zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_tbot
+%{buildroot}%{_bindir}/tbot --completion-script-zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_tbot
 
 # teleport service
 
