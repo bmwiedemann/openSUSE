@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul 08 15:10:31 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.19 → 3.1.20
+
+-------------------------------------------------------------------
+Tue Jul 08 12:53:22 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix clippy hints
+
+  variables can be used directly in the format! string
+
+-------------------------------------------------------------------
+Tue Jul 08 12:44:44 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Prune old images after load
+
+  Make sure no <none> image references stay in the registry
+
+-------------------------------------------------------------------
 Wed Jun 25 14:49:48 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 3.1.18 → 3.1.19
