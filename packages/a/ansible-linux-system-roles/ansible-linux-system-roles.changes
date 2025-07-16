@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 10 14:19:35 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Add aide role
+- Add cockpit role 
+
+-------------------------------------------------------------------
 Fri Jun 27 10:37:02 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Add selinux role for managing SELinux configuration

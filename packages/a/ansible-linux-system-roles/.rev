@@ -46,4 +46,13 @@ This package contains ansible roles from linux-system-roles project: https://git
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1291011</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>67f0ee218d99c5a8b8293c23a9b1bfe4</srcmd5>
+    <version>1.0.0</version>
+    <time>1752680177</time>
+    <user>anag_factory</user>
+    <comment>- Add aide role
+- Add cockpit role </comment>
+    <requestid>1293785</requestid>
+  </revision>
 </revisionlist>

@@ -28,6 +28,8 @@
 %global certificate_version 1.3.11
 %global selinux_version 1.8.2
 %global podman_version 1.8.1
+%global cockpit_version 1.7.0
+%global aide_version 1.2.0
 
 %if 0%{?suse_version} >= 1600
 %global sle16 1
@@ -58,6 +60,8 @@ Source9:        %{url}/ansible-auto_maintenance/archive/refs/tags/%{auto_mainten
 Source10:        %{url}/ansible-certificate/archive/refs/tags/%{certificate_version}-suse.tar.gz#/certificate-%{certificate_version}.tar.gz
 Source11:        %{url}/ansible-selinux/archive/refs/tags/%{selinux_version}-suse.tar.gz#/selinux-%{selinux_version}.tar.gz
 Source12:        %{url}/ansible-podman/archive/refs/tags/%{podman_version}-suse.tar.gz#/podman-%{podman_version}.tar.gz
+Source13:        %{url}/ansible-cockpit/archive/refs/tags/%{cockpit_version}-suse.tar.gz#/cockpit-%{cockpit_version}.tar.gz
+Source14:        %{url}/ansible-aide/archive/refs/tags/%{aide_version}-suse.tar.gz#/aide-%{aide_version}.tar.gz
 %endif
 Source999:      galaxy.yml
 
@@ -94,6 +98,8 @@ roles=(
   "certificate:%{certificate_version}"
   "selinux:%{selinux_version}"
   "podman:%{podman_version}"
+  "cockpit:%{cockpit_version}"
+  "aide:%{aide_version}"
 %endif
 )
 
