@@ -1,7 +1,7 @@
 #
 # spec file for package ant
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -60,9 +60,8 @@ URL:            https://ant.apache.org/
 Source0:        https://www.apache.org/dist/ant/source/apache-ant-%{version}-src.tar.xz
 Source1:        apache-ant-1.8.ant.conf
 Source10:       ant-bootstrap.pom.in
-Source1000:     pre_checkin.sh
-Source1001:     https://www.apache.org/dist/ant/source/apache-ant-%{version}-src.tar.xz.asc
-Source1002:     ant.keyring
+Source1000:     https://www.apache.org/dist/ant/source/apache-ant-%{version}-src.tar.xz.asc
+Source1001:     ant.keyring
 Patch0:         apache-ant-no-test-jar.patch
 Patch1:         apache-ant-class-path-in-manifest.patch
 Patch2:         apache-ant-bootstrap.patch

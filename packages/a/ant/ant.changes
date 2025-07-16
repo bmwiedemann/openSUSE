@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 15 15:49:28 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Remove the stale pre_checkin.sh, a relict from before the
+  _multirelease spec
+
+-------------------------------------------------------------------
 Mon Nov  4 14:08:06 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Upgrade to version 1.10.15

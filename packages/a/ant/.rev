@@ -918,4 +918,12 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
     <comment>some distros don't support %elif</comment>
     <requestid>1221304</requestid>
   </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>aaca3b27e0e41740cbdd66881233cf82</srcmd5>
+    <version>1.10.15</version>
+    <time>1752680122</time>
+    <user>anag_factory</user>
+    <comment>cleanup</comment>
+    <requestid>1293473</requestid>
+  </revision>
 </revisionlist>
