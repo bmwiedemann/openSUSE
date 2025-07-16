@@ -38,4 +38,14 @@
 </comment>
     <requestid>1222192</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f082a54d766272f17a2ee51151d0e578</srcmd5>
+    <version>1.1</version>
+    <time>1752680145</time>
+    <user>anag_factory</user>
+    <comment>- Drop BuildRequires tinyxml-devel, not needed
+- Drop BuildRequires update-desktop-files, deprecated
+- Force gcc13 only for Leap 15.x (forwarded request 1293532 from Kieltux)</comment>
+    <requestid>1293596</requestid>
+  </revision>
 </revisionlist>

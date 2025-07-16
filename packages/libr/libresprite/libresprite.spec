@@ -1,7 +1,7 @@
 #
 # spec file for package libresprite
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,10 @@
 #
 
 
+# std=c++20 is required, use GCC 13 for Leap 15.x
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%global force_gcc_version 13
+%endif
 Name:           libresprite
 Version:        1.1
 Release:        0
@@ -25,11 +29,7 @@ Group:          Productivity/Graphics/Bitmap Editors
 Source:         LibreSprite-%{version}.tar.bz2
 URL:            https://libresprite.github.io/
 BuildRequires:  cmake >= 3.4
-%if 0%{?suse_version} <= 1500
-BuildRequires:  gcc10-c++
-%else
-BuildRequires:  gcc-c++
-%endif
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  fdupes
 BuildRequires:  giflib-devel >= 5.1.0
 BuildRequires:  glibc-devel
@@ -38,8 +38,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg-devel
 BuildRequires:  nodejs-devel-default
 BuildRequires:  shared-mime-info
-BuildRequires:  tinyxml-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(duktape)
 BuildRequires:  pkgconfig(freetype2)
@@ -60,10 +58,8 @@ for websites and games.
 %autosetup -p1 -n LibreSprite-%{version}
 
 %build
-%cmake .. -DWITH_DESKTOP_INTEGRATION=ON \
-%if 0%{?suse_version} <= 1500
-          -DCMAKE_CXX_COMPILER=g++-10 \
-%endif
+%cmake .. -DCMAKE_CXX_COMPILER=g++%{?force_gcc_version:-%{force_gcc_version}} \
+          -DWITH_DESKTOP_INTEGRATION=ON \
           -DWITH_QT_THUMBNAILER=OFF \
           -DWITH_WEBP_SUPPORT=ON
 

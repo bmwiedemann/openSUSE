@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 15 19:50:13 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Drop BuildRequires tinyxml-devel, not needed
+- Drop BuildRequires update-desktop-files, deprecated
+- Force gcc13 only for Leap 15.x
+
+-------------------------------------------------------------------
 Thu Nov  7 10:45:48 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - update to version 1.1
