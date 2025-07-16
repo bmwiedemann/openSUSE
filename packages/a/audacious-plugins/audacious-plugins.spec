@@ -1,7 +1,7 @@
 #
 # spec file for package audacious-plugins
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 %define __provides_exclude_from ^%{_libdir}/audacious/*/.*.so$
-%define aud_ver_min 4.4
-%define aud_ver_max 4.4.99
+%define aud_ver_min 4.5
+%define aud_ver_max 4.5.99
 %bcond_with faad
 
 %if 0%{?suse_version} < 1600
@@ -27,7 +27,7 @@
 %endif
 
 Name:           audacious-plugins
-Version:        4.4.2
+Version:        4.5
 Release:        0
 Summary:        Plugins for Audacious
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only AND MIT

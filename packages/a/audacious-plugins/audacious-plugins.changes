@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 16 04:58:34 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Update to 4.5
+  New plugins and features:
+  * Provide VU Meter plugin also for GTK build
+  * Add new Playback History plugin (Qt only for now)
+  * Improve PipeWire output plugin
+
+-------------------------------------------------------------------
 Tue May 20 11:51:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Remove unneeded qt6-gui-private-devel build dependency
