@@ -564,4 +564,12 @@
     <comment></comment>
     <requestid>1292634</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>1bee2a81588d182c4533c4528d286e07</srcmd5>
+    <version>1+git20250613.ee73e55</version>
+    <time>1752673925</time>
+    <user>anag_factory</user>
+    <comment>Regressed; new fix being discussed at https://github.com/openSUSE/sdbootutil/issues/266</comment>
+    <requestid>1293759</requestid>
+  </revision>
 </revisionlist>
