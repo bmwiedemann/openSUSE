@@ -396,4 +396,12 @@
     <comment>version bump (forwarded request 1289033 from DocB)</comment>
     <requestid>1289048</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>804c59fb6ee487e310be4493be55c420</srcmd5>
+    <version>7.0.14</version>
+    <time>1752674004</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1293774</requestid>
+  </revision>
 </revisionlist>

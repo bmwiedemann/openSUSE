@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_stock
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2014-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,7 +29,7 @@
 
 %define majorver 7.0
 Name:           trytond_stock
-Version:        %{majorver}.13
+Version:        %{majorver}.14
 Release:        0
 Summary:        The "stock" module for the Tryton ERP system
 License:        GPL-3.0-only
