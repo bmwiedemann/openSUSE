@@ -1,7 +1,7 @@
 #
 # spec file for package paho-mqtt-c
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,15 @@
 
 %define sover 1
 Name:           paho-mqtt-c
-Version:        1.3.13
+Version:        1.3.14
 Release:        0
 Summary:        MQTT C Client
 License:        BSD-3-Clause AND EPL-1.0
 URL:            https://eclipse.org/paho/clients/c/
 Source:         https://github.com/eclipse/paho.mqtt.c/archive/v%{version}.tar.gz#/paho.mqtt.c-%{version}.tar.gz
+Patch1:         fix-build-gcc15.patch
+Patch2:         fix-reason-code-handling.patch
+Patch3:         fix-char-range.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -48,7 +51,7 @@ Requires:       libpaho-mqtt%{sover} = %{version}
 Development files for the the Paho MQTT C Client.
 
 %prep
-%setup -q -n paho.mqtt.c-%{version}
+%autosetup -p1 -n paho.mqtt.c-%{version}
 
 %build
 %cmake -DPAHO_WITH_SSL=TRUE -DPAHO_BUILD_DOCUMENTATION=FALSE -DPAHO_BUILD_SAMPLES=FALSE -DPAHO_ENABLE_TESTING=FALSE -DPAHO_ENABLE_CPACK=FALSE ..

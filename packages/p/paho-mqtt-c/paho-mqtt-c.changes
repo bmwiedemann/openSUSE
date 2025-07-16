@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jul 10 15:20:58 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 1.3.14:
+  * Mainly a service release. Issues fixed:
+    https://github.com/eclipse-paho/paho.mqtt.c/milestone/21?closed=1
+  * Unix domain socket support
+  * HTTP proxy improvements
+    * the environment variable PAHO_C_CLIENT_USE_HTTP_PROXY must be
+      set to TRUE for http_proxy environment variable to be used
+    * the http_proxy environment variable to be read is lower case only
+    * the no_proxy environment variable can be set to exclude hosts from
+      using an environment set proxy
+- Fix builds with GCC15 (gh#eclipse-paho/paho.mqtt.c#1576)
+  * fix-build-gcc15.patch
+- Ensure argument for isprint and isxdigit is in the correct range
+  (gh#eclipse-paho/paho.mqtt.c#1565)
+  * fix-char-range.patch
+- Fix handling of MQTT 5 reason codes (gh#eclipse-paho/paho.mqtt.c#1596)
+  * fix-reason-code-handling.patch
+
+-------------------------------------------------------------------
 Wed Apr 10 13:57:34 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - The documentation isn't built anymore, fix spec file accordingly.
