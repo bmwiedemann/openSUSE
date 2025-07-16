@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jul 16 06:18:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.96.0:
+  * Added Features
+    - Added the EPSS score and KEV indications as CycloneDX
+      vulnerabilities.ratings entries [#2695 #2765 @AlinaPodoba]
+  * Bug Fixes
+    - The go run and go install broken due to useless redirect
+      directive in go.mod [#2777 #2780 @stefanb]
+    - EPSS implementation using percentile instead of percent
+      probability [#2778 #2785 @wagoodman]
+    - Latest version of grype with V6 schema lists incorrect URL
+      for v6 database [#2513]
+  * Additional Changes
+    - Add more detail around cataloging and DB load log statements
+      [#2779 @wagoodman]
+    - add version set and combined constraint [#2763 @wagoodman]
+    - add v6 OS store [#2766 @wagoodman]
+  * Dependencies
+    - chore(deps): update tools to latest versions (#2792)
+    - chore(deps): bump golang.org/x/tools from 0.34.0 to 0.35.0
+      (#2799)
+    - chore(deps): bump github.com/docker/docker (#2795)
+    - chore(deps): bump github.com/charmbracelet/bubbletea from
+      1.3.5 to 1.3.6 (#2790)
+    - chore(deps): bump github.com/olekukonko/tablewriter from
+      1.0.7 to 1.0.8 (#2781)
+    - chore(deps): bump github.com/docker/docker (#2775)
+    - chore(deps): bump anchore/sbom-action from 0.20.1 to 0.20.2
+      (#2776)
+
+-------------------------------------------------------------------
 Thu Jul 03 04:49:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.95.0:
