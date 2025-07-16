@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/wemake-services/django-test-migrations.git</param>
+              <param name="changesrevision">111b449b7029710149f0faef71aa85cbfc77e50e</param></service></servicedata>
