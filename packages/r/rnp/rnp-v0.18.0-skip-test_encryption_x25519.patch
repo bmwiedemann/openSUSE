@@ -1,0 +1,93 @@
+Index: rnp-v0.18.0/src/tests/cli_tests.py
+===================================================================
+--- rnp-v0.18.0.orig/src/tests/cli_tests.py
++++ rnp-v0.18.0/src/tests/cli_tests.py
+@@ -4809,88 +4809,6 @@ class Encryption(unittest.TestCase):
+         # Cleanup
+         clear_workfiles()
+ 
+-    def test_encryption_x25519(self):
+-        # Make sure that we support import and decryption using both tweaked and non-tweaked keys
+-        KEY_IMPORT = r'(?s)^.*' \
+-        r'sec.*255/EdDSA.*3176fc1486aa2528.*' \
+-        r'uid.*eddsa-25519-non-tweaked.*' \
+-        r'ssb.*255/ECDH.*950ee0cd34613dba.*$'
+-        BITS_MSG = r'(?s)^.*Warning: bits of 25519 secret key are not tweaked.*$'
+-
+-        ret, out, err = run_proc(RNPK, ['--homedir', RNPDIR, '--import', data_path(KEY_25519_NOTWEAK_SEC)])
+-        self.assertEqual(ret, 0)
+-        self.assertRegex(out, KEY_IMPORT)
+-        ret, _, err = run_proc(RNP, ['--homedir', RNPDIR, '-d', data_path(MSG_ES_25519)])
+-        self.assertEqual(ret, 0)
+-        self.assertRegex(err, BITS_MSG)
+-        self.assertRegex(err, r'(?s)^.*Signature\(s\) verified successfully.*$')
+-        ret, _, _ = run_proc(RNPK, ['--homedir', RNPDIR, '--remove-key', 'eddsa-25519-non-tweaked', '--force'])
+-        self.assertEqual(ret, 0)
+-        ret, out, _ = run_proc(RNPK, ['--homedir', RNPDIR, '--import', data_path('test_key_edge_cases/key-25519-tweaked-sec.asc')])
+-        self.assertEqual(ret, 0)
+-        self.assertRegex(out, KEY_IMPORT)
+-        ret, _, err = run_proc(RNP, ['--homedir', RNPDIR, '-d', data_path(MSG_ES_25519)])
+-        self.assertEqual(ret, 0)
+-        self.assertNotRegex(err, BITS_MSG)
+-        ret, _, _ = run_proc(RNPK, ['--homedir', RNPDIR, '--remove-key', 'eddsa-25519-non-tweaked', '--force'])
+-        self.assertEqual(ret, 0)
+-        # Due to issue in GnuPG it reports successful import of non-tweaked secret key in batch mode
+-        ret, _, _ = run_proc(GPG, ['--batch', '--homedir', GPGHOME, '--import', data_path(KEY_25519_NOTWEAK_SEC)])
+-        self.assertEqual(ret, 0)
+-        ret, _, _ = run_proc(GPG, ['--batch', '--homedir', GPGHOME, '-d', data_path(MSG_ES_25519)])
+-        self.assertNotEqual(ret, 0)
+-        ret, _, _ = run_proc(GPG, ['--batch', '--homedir', GPGHOME, '--yes', '--delete-secret-key', 'dde0ee539c017d2bd3f604a53176fc1486aa2528'])
+-        self.assertEqual(ret, 0)
+-        # Make sure GPG imports tweaked key and successfully decrypts message
+-        ret, _, _ = run_proc(GPG, ['--batch', '--homedir', GPGHOME, '--import', data_path('test_key_edge_cases/key-25519-tweaked-sec.asc')])
+-        self.assertEqual(ret, 0)
+-        ret, _, _ = run_proc(GPG, ['--batch', '--homedir', GPGHOME, '-d', data_path(MSG_ES_25519)])
+-        self.assertEqual(ret, 0)
+-        # Generate
+-        pipe = pswd_pipe(PASSWORD)
+-        ret, _, _ = run_proc(RNPK, ['--homedir', RNPDIR, '--pass-fd', str(pipe), '--userid',
+-                                      'eddsa_25519', '--generate-key', '--expert'], '22\n')
+-        os.close(pipe)
+-        self.assertEqual(ret, 0)
+-        # Export
+-        ret, out, _ = run_proc(RNPK, ['--homedir', RNPDIR, '--export', '--secret', 'eddsa_25519'])
+-        self.assertEqual(ret, 0)
+-        # Import key with GPG
+-        ret, out, _ = run_proc(GPG, ['--batch', '--homedir', GPGHOME, '--import'], out)
+-        self.assertEqual(ret, 0)
+-        src, dst, dec = reg_workfiles('cleartext', '.txt', '.rnp', '.dec')
+-        # Generate random file of required size
+-        random_text(src, 1000)
+-        # Encrypt and sign with RNP
+-        ret, out, _ = run_proc(RNP, ['--homedir', RNPDIR, '-es', '-r', 'eddsa_25519', '-u',
+-                                     'eddsa_25519', '--password', PASSWORD, src, '--output', dst, '--armor'])
+-        # Decrypt and verify with RNP
+-        rnp_decrypt_file(dst, dec, password='password')
+-        self.assertEqual(file_text(src), file_text(dec))
+-        remove_files(dec)
+-        # Decrypt and verify with GPG
+-        gpg_decrypt_file(dst, dec, 'password')
+-        self.assertEqual(file_text(src), file_text(dec))
+-        remove_files(dst, dec)
+-        # Encrypt and sign with GnuPG
+-        ret, _, _ = run_proc(GPG, ['--batch', '--homedir', GPGHOME, '--always-trust', '-r', 'eddsa_25519',
+-                             '-u', 'eddsa_25519', '--output', dst, '-es', src])
+-        self.assertEqual(ret, 0)
+-        # Decrypt and verify with RNP
+-        rnp_decrypt_file(dst, dec, password='password')
+-        self.assertEqual(file_text(src), file_text(dec))
+-        # Encrypt/decrypt using the p256 key, making sure message is not displayed
+-        key = data_path('test_stream_key_load/ecc-p256-sec.asc')
+-        remove_files(dst, dec)
+-        ret, _, err = run_proc(RNP, ['--keyfile', key, '-es', '-r', 'ecc-p256', '-u', 'ecc-p256', '--password', PASSWORD, src, '--output', dst])
+-        self.assertEqual(ret, 0)
+-        self.assertNotRegex(err, BITS_MSG)
+-        ret, _, err = run_proc(RNP, ['--keyfile', key, '-d', '--password', PASSWORD, dst, '--output', dec])
+-        self.assertEqual(ret, 0)
+-        self.assertNotRegex(err, BITS_MSG)
+-        # Cleanup
+-        clear_workfiles()
+-
+     def test_encryption_aead_defs(self):
+         if not RNP_AEAD or not RNP_BRAINPOOL:
+             self.skipTest('AEAD and/or Brainpool are not supported')

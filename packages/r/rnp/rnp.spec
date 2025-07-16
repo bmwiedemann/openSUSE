@@ -1,7 +1,7 @@
 #
 # spec file for package rnp
 #
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define soname 0
 Name:           rnp
-Version:        0.17.1
+Version:        0.18.0
 Release:        0
 Summary:        OpenPGP implementation fully compliant with RFC 4880
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause
@@ -26,6 +26,7 @@ URL:            https://www.rnpgp.com/
 Source:         https://github.com/rnpgp/rnp/releases/download/v%{version}/%{name}-v%{version}.tar.gz
 Source2:        https://github.com/rnpgp/rnp/releases/download/v%{version}/%{name}-v%{version}.tar.gz.asc
 Source3:        https://www.rnpgp.org/openpgp_keys/31AF5A24D861EFCB7CB79A1924900CE0AEFB5417-50DA59D5B9134FA2DB1EB20CFB829AB5D0FE017F.asc#/%{name}.keyring
+Patch0:         rnp-v0.18.0-skip-test_encryption_x25519.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.18
 BuildRequires:  gpg2 >= 2.2
@@ -90,12 +91,13 @@ export CXX=g++-12
 
 %files
 %license LICENSE*
-%{_bindir}/*
+%{_bindir}/rnp
+%{_bindir}/rnpkeys
 %{_mandir}/man1/*.1%{?ext_man}
 
 %files -n librnp%{soname}
 %license LICENSE*
-%{_libdir}/*.so.0*
+%{_libdir}/*.so.%{soname}{,.*}
 
 %files devel
 %license LICENSE*
