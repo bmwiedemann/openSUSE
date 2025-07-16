@@ -18,7 +18,7 @@
 
 
 Name:           difftastic
-Version:        0.63.0
+Version:        0.64.0
 Release:        0
 Summary:        A structural diff that understands syntax
 License:        Apache-2.0 AND MIT
@@ -65,6 +65,7 @@ mdbook build
 
 %install
 install -D -m 0755 -t %{buildroot}%{_bindir} target/release/difft
+install -D -m 0644 -t %{buildroot}%{_mandir}/man1 difft.1
 
 %if 0%{?suse_version} >= 1600
 rm -v manual/book/.nojekyll
@@ -78,6 +79,7 @@ rm -v manual/book/.nojekyll
 %license LICENSE
 %doc CHANGELOG.md README.md
 %{_bindir}/difft
+%{_mandir}/man1/difft.1%{?ext_man}
 
 %if 0%{?suse_version} >= 1600
 %files doc
