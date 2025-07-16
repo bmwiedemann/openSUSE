@@ -17,13 +17,13 @@
 
 
 Name:           praat
-Version:        6.4.35
+Version:        6.4.38
 Release:        0
 Summary:        Phonetics by computer
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            http://www.praat.org
-Source0:        https://github.com/praat/praat/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/praat/praat.github.io/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
 # PATCH-FIX-OPENSUSE praat-use_system_libs.patch -- replace some embedded libs with system ones
 Patch1:         praat-use_system_libs.patch
@@ -58,7 +58,7 @@ Praat is configurable and extensible through its own scripting language and has
 provisions for communicating with other programs.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}.github.io-%{version}
 
 %build
 cp makefiles/makefile.defs.linux.pulse-gcc ./makefile.defs
