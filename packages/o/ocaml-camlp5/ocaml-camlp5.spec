@@ -25,7 +25,7 @@
 	%nil
 
 Name:           ocaml-camlp5
-Version:        8.03.04
+Version:        8.03.05
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Preprocessor-Pretty-Printer for Objective Caml
@@ -36,7 +36,7 @@ URL:            https://opam.ocaml.org/packages/camlp5
 Source0:        %name-%version.tar.xz
 Patch0:         ocaml-camlp5.patch
 BuildRequires:  ocaml(ocaml_base_version) >= 4.10
-BuildRequires:  ocaml-rpm-macros >= 20240909
+BuildRequires:  ocaml-rpm-macros >= 20250517
 BuildRequires:  ocamlfind(bos)
 BuildRequires:  ocamlfind(camlp-streams)
 BuildRequires:  ocamlfind(compiler-libs)
