@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 15 15:22:44 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1752576096.2a4e8ff:
+  * Avoid running `$basetest->parse_serial_output_qemu` without checks
+  * setup-multi-machine: extend network service detection
+  * CI: Enable Leap 16.0 OBS build checks
+  * Autodetect default ethernet dev/br in os-autoinst-setup-multi-machine
+  * Fix category generation for paths to lua test modules
+
+-------------------------------------------------------------------
 Sat Jul 12 11:52:50 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1752222511.9791c75:
