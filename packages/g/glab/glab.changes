@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 16 06:21:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.63.0:
+  * fix(docker-credential-helper): init cred helpers if empty
+  * feat(hidden-variables): List and set hidden variables
+  * refactor: do not use SSH URL translator for non-SSH URLs
+  * refactor: remove unused url translator function
+  * chore(deps): bump go to v1.24.5
+  * chore(deps): update dependency golangci-lint to v2.2.2
+  * chore(deps): update module golang.org/x/crypto to v0.40.0
+  * chore(deps): update module github.com/docker/cli to
+    v28.3.2+incompatible
+
+-------------------------------------------------------------------
 Fri Jul 11 04:46:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - adjust patch glab-disable_update_check.patch
