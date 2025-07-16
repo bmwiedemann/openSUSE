@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 15 06:09:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.41.1:
+  This is a bugfix release which comes with a patch fix for tkn
+  logs command where there was a deadlock when following logs for
+  pipelineruns and taskruns.
+  * Fixes
+    - Fix deadlock issue when following logs
+
+-------------------------------------------------------------------
 Wed May 21 04:30:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.41.0:
