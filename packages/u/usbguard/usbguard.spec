@@ -19,7 +19,7 @@
 %global _hardened_build 1
 %define lname libusbguard1
 Name:           usbguard
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        A tool for implementing USB device usage policy
 ## Not installed
@@ -33,8 +33,6 @@ Source2:        usbguard.keyring
 Source3:        usbguard-daemon.conf
 Source4:        usbguard-rpmlintrc
 Patch0:         usbguard-pthread.patch
-# PATCH-FIX-UPSTREAM usbguard-protobuf-30.patch -- based on PR 650
-Patch1:         usbguard-protobuf-30.patch
 BuildRequires:  asciidoc
 BuildRequires:  audit-devel
 BuildRequires:  autoconf
@@ -147,6 +145,7 @@ find %{buildroot} \( -name '*.la' -o -name '*.a' \) -delete
 
 %post
 %service_add_post usbguard.service usbguard-dbus.service
+%tmpfiles_create usbguard.conf
 
 %postun
 %service_del_postun usbguard.service usbguard-dbus.service
@@ -180,15 +179,17 @@ find %{buildroot} \( -name '*.la' -o -name '*.a' \) -delete
 %{_datadir}/dbus-1/system-services/org.usbguard1.service
 %{_datadir}/dbus-1/system.d/org.usbguard1.conf
 %{_datadir}/polkit-1/actions/org.usbguard1.policy
+%{_tmpfilesdir}/usbguard.conf
 
 %files -n %{lname}
 %license LICENSE
 %{_libdir}/*.so.*
 
 %files devel
-%{_includedir}/*
-%{_libdir}/*.so
-%{_libdir}/pkgconfig/*.pc
+%dir %{_includedir}/usbguard
+%{_includedir}/usbguard/*
+%{_libdir}/libusbguard.so
+%{_libdir}/pkgconfig/libusbguard.pc
 
 %files tools
 %{_bindir}/usbguard
