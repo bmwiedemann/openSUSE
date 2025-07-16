@@ -1,0 +1,44 @@
+From 7f2ddbf5df9f5ff656b7f131eee301151711e7fd Mon Sep 17 00:00:00 2001
+From: Nicolas Morey <nmorey@suse.com>
+Date: Wed, 9 Jul 2025 10:20:34 +0200
+Subject: [PATCH 1/1] fabric: fix search path for SRPT wwn
+
+When converted to path link, Infiniband gid search path was replaced with a double wildcard '**'
+causing no WWNs to be found and SRPT to be unusable:
+No such path /srpt
+
+This due to HCA in /sys/class/infiniband being symlinks:
+$ ll /sys/class/infiniband
+total 0
+lrwxrwxrwx 1 root root 0 Jun 23 11:31 mlx5_0 -> ../../devices/pci0000:00/0000:00:02.6/0000:07:00.0/infiniband/mlx5_0
+
+recurse_symlinks=True cannot be used here as HCA directories contains a 'subsystem' symlink
+ pointing back to /sys/class/infiniband
+
+Replace the double wildcard with a single one to revert to the previous behaviour and be
+consistent with other fabrics.
+
+Fixes: d3abd5df9e06 ("Convert codebase to pathlib")
+
+Reviewed-by: Lee Duncan <lduncan@suse.com>
+Signed-off-by: Nicolas Morey <nmorey@suse.com>
+---
+ rtslib/fabric.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rtslib/fabric.py b/rtslib/fabric.py
+index 5ca686c83f4f..e480b79c2467 100644
+--- a/rtslib/fabric.py
++++ b/rtslib/fabric.py
+@@ -451,7 +451,7 @@ class SRPTFabricModule(_BaseFabricModule):
+ 
+     @property
+     def wwns(self):
+-        for wwn_file in Path("/sys/class/infiniband").glob("**/ports/*/gids/0"):
++        for wwn_file in Path("/sys/class/infiniband").glob("*/ports/*/gids/0"):
+             yield f"ib.{fread(wwn_file).replace(':', '')}"
+ 
+ 
+-- 
+2.50.1.1.g5ceaece06de7
+

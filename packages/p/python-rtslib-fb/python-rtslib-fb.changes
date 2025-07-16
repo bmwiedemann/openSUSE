@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  9 08:34:22 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add fabric-fix-search-path-for-SRPT-wwn.patch to fix
+  targetcli with SRPT (bsc#1246143)
+
+-------------------------------------------------------------------
 Sat Mar 22 15:35:05 UTC 2025 - lduncan@suse.com
 
 - Update to version v2.2.2:

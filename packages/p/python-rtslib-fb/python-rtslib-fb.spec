@@ -34,6 +34,7 @@ Patch1:         rtslib-target-service-for-suse.patch
 Patch2:         Install-targetctl-as-an-entrypoint.patch
 Patch3:         Remove-use-of-usr-bin-python.patch
 Patch4:         Fix-issue-with-Path-open-needs-parenthesis.patch
+Patch5:         fabric-fix-search-path-for-SRPT-wwn.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
