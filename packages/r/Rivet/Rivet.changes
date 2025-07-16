@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 10 22:56:17 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add Rivet-include-missing-cstdint.patch: Include cstdint header
+  to fix build failures against GCC 15.
+
+-------------------------------------------------------------------
 Wed Apr  9 13:51:38 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add Rivet-fix-hepmc-tests.patch -- Use deduce_reader in API

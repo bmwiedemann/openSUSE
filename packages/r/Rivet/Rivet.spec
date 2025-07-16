@@ -30,6 +30,8 @@ Patch0:         sover.diff
 Patch1:         Rivet-disable-testCmdLine.patch
 # PATCH-FIX-UPSTREAM Rivet-fix-hepmc-tests.patch badshah400@gmail.com -- Use deduce_reader in API tests for HepMC 3.3.x compatibility; part of upstream commit ca0d57ca to release-4-0-x development branch
 Patch2:         Rivet-fix-hepmc-tests.patch
+# PATCH-FIX-UPSTREAM Rivet-include-missing-cstdint.patch badshah400@gmail.com -- Include missing header cstdint to fix build failures against GCC 15
+Patch3:         Rivet-include-missing-cstdint.patch
 BuildRequires:  HepMC-devel >= 3.2
 BuildRequires:  YODA-devel >= 1.9.11
 BuildRequires:  bash-completion
