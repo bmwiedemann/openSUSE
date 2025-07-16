@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 15 14:36:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.2.1
+  * Fix infinite in loop QuickSceneGraphModel::itemForSgNode()
+
+-------------------------------------------------------------------
 Fri May 16 05:51:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.2.0

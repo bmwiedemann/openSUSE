@@ -259,4 +259,13 @@
     <comment>Update to 3.2.0</comment>
     <requestid>1277960</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>46159a648487bd44b33b0f6aa4592764</srcmd5>
+    <version>3.2.1</version>
+    <time>1752680189</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.2.1
+  * Fix infinite in loop QuickSceneGraphModel::itemForSgNode()</comment>
+    <requestid>1293834</requestid>
+  </revision>
 </revisionlist>

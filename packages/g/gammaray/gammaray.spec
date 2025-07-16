@@ -29,9 +29,9 @@
 %endif
 %define rname gammaray
 %define short_version 3.2
-%define soversion 3_2_0
+%define soversion 3_2_1
 Name:           gammaray%{?pkg_suffix}
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        Introspection/Debugging Tool for Qt Applications
 License:        GPL-2.0-or-later
