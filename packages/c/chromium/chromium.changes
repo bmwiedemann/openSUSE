@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 15 19:46:14 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 138.0.7204.157 (boo#1246558):
+  * CVE-2025-7656: Integer overflow in V8
+  * CVE-2025-6558: Incorrect validation of untrusted input in ANGLE
+    and GPU
+  * CVE-2025-7657: Use after free in WebRTC
+
+-------------------------------------------------------------------
 Wed Jul  9 16:52:34 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 138.0.7204.100:
