@@ -30,7 +30,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg ocaml-spdx_licenses
 Name:           %pkg%nsuffix
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        A library providing a strict SPDX License Expression parser
@@ -40,11 +40,11 @@ URL:            https://opam.ocaml.org/packages/spdx_licenses
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocaml-dune >= 2.3
-BuildRequires:  ocaml-rpm-macros >= 20231101
+BuildRequires:  ocaml-rpm-macros >= 20250517
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(alcotest)
-BuildRequires:  ocamlfind(spdx_licenses)
+BuildRequires:  ocamlfind(spdx_licenses) = %version
 %endif
 %description
 An OCaml library aiming to provide an up-to-date and strict SPDX

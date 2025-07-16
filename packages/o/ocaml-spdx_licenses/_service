@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="manual">
     <param name="filename">ocaml-spdx_licenses</param>
-    <param name="revision">31e7c8e5e99b9b018ca61e32a3e46f964f3d9dab</param>
+    <param name="revision">59de09de2640570495dea4017cf707db602e2079</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/kit-ty-kate/spdx_licenses.git</param>
