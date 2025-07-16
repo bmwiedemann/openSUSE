@@ -53,4 +53,16 @@
 - Update to ruby 3.0.0~preview2</comment>
     <requestid>1277497</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>195781e2348976df42a56b8b656efb29</srcmd5>
+    <version>3.4.5</version>
+    <time>1752680127</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.4.5
+  This is a routine update that includes bug fixes and GCC 15
+  support. Please refer to the release notes on GitHub for further
+  details.
+  https://github.com/ruby/ruby/releases/tag/v3_4_5</comment>
+    <requestid>1293500</requestid>
+  </revision>
 </revisionlist>
