@@ -69,7 +69,6 @@
 %global txredisapi_version            1.4.10
 %global Pympler_version               1.0.1
 %global pydantic_version              2.7.1
-%global pyicu_version                 2.13.1
 %global python_multipart_version      0.0.9
 %else
 # some version locks based on poetry.lock
@@ -119,7 +118,6 @@
 %global txredisapi_version            1.4.7
 %global Pympler_version               1.0.1
 %global pydantic_version              1.7.4
-%global pyicu_version                 2.10.2
 %global python_multipart_version      0.0.9
 %endif
 
@@ -158,7 +156,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.133.0
+Version:        1.134.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
@@ -311,8 +309,6 @@ BuildRequires:  %{use_python}-txredisapi >= %{txredisapi_version}
 %endif
 BuildRequires:  %{use_python}-Pympler >= %{Pympler_version}
 %requires_peq   %{use_python}-Pympler
-BuildRequires:  %{use_python}-PyICU >= %{pyicu_version}
-%requires_peq   %{use_python}-PyICU
 # We only provide/obsolete python2 to ensure that users upgrade.
 Obsoletes:      python2-matrix-synapse < %{version}-%{release}
 Provides:       python2-matrix-synapse = %{version}-%{release}

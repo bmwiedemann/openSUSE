@@ -1386,4 +1386,14 @@ mostly-working synapse than nothing at all) and the package has been update to
     - Add support for Twisted 25.5.0+ releases. (#18577)</comment>
     <requestid>1289572</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>96df1d60046813930cf4564ec99be53c</srcmd5>
+    <version>1.134.0</version>
+    <time>1752673977</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1293544 from darix
+
+- Update to 1.134.0</comment>
+    <requestid>1293545</requestid>
+  </revision>
 </revisionlist>
