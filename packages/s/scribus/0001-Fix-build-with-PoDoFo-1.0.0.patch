@@ -1,19 +1,44 @@
-From 857b62b7e88eb024539650a3de3c9b26c338ff64 Mon Sep 17 00:00:00 2001
+From 714feaa96db8c0ad86b43e0a69833a5ec24b7c62 Mon Sep 17 00:00:00 2001
 From: jghali <jghali@11d20701-8431-0410-a711-e3c959e3b870>
 Date: Fri, 6 Jun 2025 23:40:58 +0000
 Subject: [PATCH] Fix build with PoDoFo 1.0.0
 
 git-svn-id: svn://scribus.net/trunk/Scribus@26920 11d20701-8431-0410-a711-e3c959e3b870
 ---
- scribus/pdf_analyzer.cpp | 31 +++++++++++++++++++++++++++++++
- scribus/pdflib_core.cpp  | 18 ++++++++++++++++++
- 2 files changed, 49 insertions(+)
+ scribus/pdf_analyzer.cpp | 47 +++++++++++++++++++++++++++++++---------
+ scribus/pdflib_core.cpp  | 18 +++++++++++++++
+ 2 files changed, 55 insertions(+), 10 deletions(-)
 
 diff --git a/scribus/pdf_analyzer.cpp b/scribus/pdf_analyzer.cpp
-index d923148..3ecff48 100644
+index d923148..3f2083c 100644
 --- a/scribus/pdf_analyzer.cpp
 +++ b/scribus/pdf_analyzer.cpp
-@@ -276,7 +276,11 @@ bool PDFAnalyzer::inspectCanvas(PdfCanvas* canvas, QList<PDFColorSpace> & usedCo
+@@ -40,18 +40,14 @@ using namespace PoDoFo;
+ #include <string_view>
+ #include <utility>
+ 
+-namespace std
++namespace PoDoFo
+ {
+-	template<>
+-	struct less<PoDoFo::PdfName>
++	bool operator<(const PdfName& n1, const PdfName& n2)
+ 	{
+-		bool operator()(const PoDoFo::PdfName& n1, const PoDoFo::PdfName& n2) const
+-		{
+-			std::string_view s1 = n1.GetRawData();
+-			std::string_view s2 = n2.GetRawData();
+-			return s1 < s2;
+-		}
+-	};
++		std::string_view s1 = n1.GetRawData();
++		std::string_view s2 = n2.GetRawData();
++		return s1 < s2;
++	}
+ }
+ #endif
+ 
+@@ -276,7 +272,11 @@ bool PDFAnalyzer::inspectCanvas(PdfCanvas* canvas, QList<PDFColorSpace> & usedCo
  	try
  	{
  		// start parsing the content stream
@@ -25,7 +50,7 @@ index d923148..3ecff48 100644
  		PdfContentStreamReader tokenizer(*canvas, tokenizerArgs);
  		PdfContent pdfContent;
  		PdfVariant var;
-@@ -289,13 +293,29 @@ bool PDFAnalyzer::inspectCanvas(PdfCanvas* canvas, QList<PDFColorSpace> & usedCo
+@@ -289,13 +289,29 @@ bool PDFAnalyzer::inspectCanvas(PdfCanvas* canvas, QList<PDFColorSpace> & usedCo
  		while (tokenizer.TryReadNext(pdfContent))
  		{
  			++tokenNumber;
@@ -55,7 +80,7 @@ index d923148..3ecff48 100644
  				{
  				case PdfOperator::q:
  					gsStack.push(currGS);
-@@ -677,12 +697,23 @@ bool PDFAnalyzer::inspectCanvas(PdfCanvas* canvas, QList<PDFColorSpace> & usedCo
+@@ -677,12 +693,23 @@ bool PDFAnalyzer::inspectCanvas(PdfCanvas* canvas, QList<PDFColorSpace> & usedCo
  				}
  				args.clear();
  			}
@@ -128,5 +153,5 @@ index 3465ccd..5c6ebd1 100644
  			double imgHeight = (rotation == 90 || rotation == 270) ? pageRect.Width : pageRect.Height;
  			QTransform pageM;
 -- 
-2.49.0
+2.50.0
 

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 15 16:51:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Amend 0001-Fix-build-with-PoDoFo-1.0.0.patch to really fix build with podofo 1.0
+
+-------------------------------------------------------------------
+Tue Jul 15 08:08:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add  0001-Fix-build-with-poppler-25.07.0.patch: Fix build with
+  poppler 25.07.0
+
+-------------------------------------------------------------------
 Sun Jun  8 08:55:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.6.4:

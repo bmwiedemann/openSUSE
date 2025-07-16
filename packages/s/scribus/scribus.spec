@@ -45,6 +45,8 @@ Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
 Patch1:         0001-Fix-build-with-poppler-25.06.0.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         0001-Fix-build-with-PoDoFo-1.0.0.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-Fix-build-with-poppler-25.07.0.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix
@@ -58,6 +60,7 @@ BuildRequires:  libpagemaker-devel
 %if %{with podofo}
 BuildRequires:  libpodofo-devel
 %endif
+BuildRequires:  %{pyver}-devel
 BuildRequires:  libqxp-devel
 BuildRequires:  librevenge-devel
 BuildRequires:  libtiff-devel
@@ -66,7 +69,6 @@ BuildRequires:  libwpd-devel
 BuildRequires:  libwpg-devel
 BuildRequires:  libzmf-devel
 BuildRequires:  pkgconfig
-BuildRequires:  %{pyver}-devel
 BuildRequires:  cmake(Qt5Core) >= 5.14.0
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5LinguistTools)
