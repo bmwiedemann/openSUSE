@@ -12,4 +12,24 @@ Please ensure you read explanations in rpmlintrc file, that document design of p
     - all: Remove executable flag from yml files and fix typos in interactive mode</comment>
     <requestid>1291714</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4e00a12b39474800accf2aa689a491dc</srcmd5>
+    <version>1.2.0</version>
+    <time>1752673902</time>
+    <user>anag_factory</user>
+    <comment>This is release that removes passwords from templates to align it with compliance requirements.
+
+- 1.2.0
+  - Minor Changes:
+    - Comply with Security regulations
+      - Remove all hardcoded passwords
+      - Add validation for placeholder and empty passwords to fail playbook at beginning.
+      - Update readme with warnings and explanations for password usage.
+      - Add recommended steps to use Ansible Vault.
+
+  - Bugfixes
+    - Change few variables with `'true'` to `true` where it was required (identified during testing).
+    - Fix readme typo with incorrect role name.</comment>
+    <requestid>1293353</requestid>
+  </revision>
 </revisionlist>

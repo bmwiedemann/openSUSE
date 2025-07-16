@@ -19,7 +19,7 @@
 Name:           ansible-sap-playbooks
 Summary:        Ansible Playbooks for SAP Automation
 License:        Apache-2.0
-Version:        1.1.3
+Version:        1.2.0
 Release:        0
 URL:            https://github.com/SUSE/ansible.playbooks_for_sap/
 Source0:        %{url}archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz

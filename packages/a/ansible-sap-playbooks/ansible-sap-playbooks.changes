@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 14 15:17:30 UTC 2025 - Marcel Mamula <marcel.mamula@suse.com>
+
+- 1.2.0
+  - Minor Changes:
+    - Comply with Security regulations
+      - Remove all hardcoded passwords
+      - Add validation for placeholder and empty passwords to fail playbook at beginning.
+      - Update readme with warnings and explanations for password usage.
+      - Add recommended steps to use Ansible Vault.
+
+  - Bugfixes
+    - Change few variables with `'true'` to `true` where it was required (identified during testing).
+    - Fix readme typo with incorrect role name.
+
+-------------------------------------------------------------------
 Tue Jul  8 11:16:35 UTC 2025 - Marcel Mamula <marcel.mamula@suse.com>
 
 - 1.1.3
