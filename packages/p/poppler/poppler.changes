@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 10 09:06:55 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 25.07.0:
+  + core:
+    - Changed rendering of malformed documents to mimic what Adobe
+      Reader does
+    - Improvemenst in signature validation in the NSS backend
+    - Add more detailed output when signing fails
+    - Internal code improvements
+    - Fix crashes in malformed documents
+  + utils: pdfsig: command line option for allowing PGP signatures
+    in GnuPG backend
+- Bump sover following upstream changes.
+
+-------------------------------------------------------------------
 Thu Jul  3 08:46:24 UTC 2025 - pgajdos@suse.com
 
 - version update to 25.06.0 [bsc#1245625] (CVE-2025-52886)
