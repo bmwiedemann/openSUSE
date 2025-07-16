@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-logs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with     ocaml_lwt
 
 Name:           ocaml-logs
-Version:        0.7.0
+Version:        0.9.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Logging infrastructure for OCaml
@@ -28,11 +28,11 @@ Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/logs
 Source0:        %name-%version.tar.xz
 Patch0:         ocaml-logs.patch
-BuildRequires:  ocaml
+BuildRequires:  ocaml(ocaml_base_version) >= 4.14
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220707
+BuildRequires:  ocaml-rpm-macros >= 20250517
 BuildRequires:  ocamlfind(cmdliner)
-BuildRequires:  ocamlfind(compiler-libs.toplevel)
+BuildRequires:  ocamlfind(compiler-libs)
 BuildRequires:  ocamlfind(fmt)
 BuildRequires:  ocamlfind(result)
 BuildRequires:  ocamlfind(threads)

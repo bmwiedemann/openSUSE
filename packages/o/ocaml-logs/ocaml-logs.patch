@@ -1,27 +1,21 @@
+---
+ dune-project      |    2 ++
+ src/cli/dune      |    7 +++++++
+ src/dune          |    7 +++++++
+ src/fmt/dune      |    7 +++++++
+ src/lwt/dune      |    8 ++++++++
+ src/threaded/dune |    7 +++++++
+ src/top/dune      |    6 ++++++
+ 7 files changed, 44 insertions(+)
+
 --- /dev/null
 +++ b/dune-project
 @@ -0,0 +1,2 @@
 +(lang dune 1.0)
 +(name logs)
 --- /dev/null
-+++ b/src/dune
-@@ -0,0 +1,47 @@
-+(library
-+ (name logs)
-+ (public_name logs)
-+ (libraries result)
-+ (modules logs)
-+ (flags :standard -w -27 -safe-string)
-+ (wrapped false))
-+
-+(library
-+ (name logs_fmt)
-+ (public_name logs.fmt)
-+ (libraries fmt logs)
-+ (modules logs_fmt)
-+ (flags :standard -w -27 -safe-string)
-+ (wrapped false))
-+
++++ b/src/cli/dune
+@@ -0,0 +1,7 @@
 +(library
 + (name logs_cli)
 + (public_name logs.cli)
@@ -29,7 +23,29 @@
 + (modules logs_cli)
 + (flags :standard -w -27 -safe-string)
 + (wrapped false))
-+
+--- /dev/null
++++ b/src/dune
+@@ -0,0 +1,7 @@
++(library
++ (name logs)
++ (public_name logs)
++ (libraries result)
++ (modules logs)
++ (flags :standard -w -27 -safe-string)
++ (wrapped false))
+--- /dev/null
++++ b/src/fmt/dune
+@@ -0,0 +1,7 @@
++(library
++ (name logs_fmt)
++ (public_name logs.fmt)
++ (libraries fmt logs)
++ (modules logs_fmt)
++ (flags :standard -w -27 -safe-string)
++ (wrapped false))
+--- /dev/null
++++ b/src/lwt/dune
+@@ -0,0 +1,8 @@
 +(library
 + (name logs_lwt)
 + (public_name logs.lwt)
@@ -38,7 +54,9 @@
 + (flags :standard -w -27 -safe-string)
 + (optional)
 + (wrapped false))
-+
+--- /dev/null
++++ b/src/threaded/dune
+@@ -0,0 +1,7 @@
 +(library
 + (name logs_threaded)
 + (public_name logs.threaded)
@@ -46,7 +64,9 @@
 + (modules logs_threaded)
 + (flags :standard -w -27 -safe-string)
 + (wrapped false))
-+
+--- /dev/null
++++ b/src/top/dune
+@@ -0,0 +1,6 @@
 +(library
 + (name logs_top)
 + (public_name logs.top)
