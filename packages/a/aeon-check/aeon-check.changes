@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 16 11:22:05 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Update to version 1.0.6:
+  * boo1246605 - use 'ro=vfs' in fstab
+
+-------------------------------------------------------------------
 Wed May 14 11:53:49 UTC 2025 - rbrown@suse.com
 
 - Update to version 1.0.5:

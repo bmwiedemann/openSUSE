@@ -39,4 +39,13 @@
   * boo1243182 - use zypper SINGLETRANS backend</comment>
     <requestid>1277408</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e9128162f1db3f94fdc73f1bace668bf</srcmd5>
+    <version>1.0.6</version>
+    <time>1752680176</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0.6:
+  * boo1246605 - use 'ro=vfs' in fstab</comment>
+    <requestid>1293782</requestid>
+  </revision>
 </revisionlist>
