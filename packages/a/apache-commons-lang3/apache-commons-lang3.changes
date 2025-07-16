@@ -1,4 +1,190 @@
 -------------------------------------------------------------------
+Tue Jul 15 15:50:30 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 3.18.0 
+  * New features:
+    + Add Strings and refactor StringUtils
+    + LANG-1747: Add StopWatch.run([Failable]Runnable) and
+      get([Failable]Supplier)
+    + Add JavaVersion.JAVA_23
+    + Add JavaVersion.JAVA_24
+    + Add SystemUtils.IS_JAVA_23
+    + Add SystemUtils.IS_JAVA_24
+    + Add IntegerRange.toIntStream()
+    + Add LongRange.toLongStream()
+    + Add IntStrams.of(int...)
+    + Add ArrayUtils.containsAny(int[], int...)
+    + Add CalendarUtils.toLocalDate() #725
+    + Add SystemUtils.IS_OS_MAC_OSX_SEQUOIA
+    + Add BasicThreadFactory.builder() and deprecate
+      BasicThreadFactory.Builder()
+    + Add BasicThreadFactory.daemon()
+    + Add ArrayUtils.startsWith
+    + Add Predicates
+    + Add RegExUtils methods typed to CharSequence input and
+      deprecate old versions typed to String
+    + Add IterableStringTokenizer
+    + Add FailableIntToFloatFunction
+    + Add Validate.isTrue(boolean, Supplier<String>)
+    + Add EnumUtils.getFirstEnum(Class<E>, int, ToIntFunction<E>, E)
+    + Add FailableToBooleanFunction
+    + Add the @FunctionalInterface annotation to
+      org.apache.commons.lang3.concurrent.Computable
+    + Add SystemUtils.getJavaIoTmpDirPath()
+    + Add SystemUtils.getJavaHomePath()
+    + Add SystemUtils.getUserDirPath()
+    + Add SystemUtils.getUserHomePath()
+    + Add ArrayFill.fill(T[], FailableIntFunction))
+    + Add SystemProperties.JAVA_SECURITY_DEBUG
+    + Add SystemProperties.JAVA_SECURITY_KERBEROS_CONF
+    + Add SystemProperties.JAVA_SECURITY_KERBEROS_KDC
+    + Add SystemProperties.JAVA_SECURITY_KERBEROS_REAL
+    + Add ArrayFill.fill(boolean[], boolean) #1386
+    + Add ObjectUtils.getIfNull(Object, Object) and deprecate
+      defaultIfNull(Object, Object)
+    + org.apache.commons.lang3.mutable.Mutable now extends Supplier
+    + Add org.apache.commons.lang3.CharUtils.isHex(char)
+    + Add org.apache.commons.lang3.CharUtils.isOctal(char)
+    + Add org.apache.commons.lang3.concurrent.locks.LockingVisitors
+      .reentrantLockVisitor(Object)
+    + Add org.apache.commons.lang3.concurrent.locks.LockingVisitors
+      .create(Object, ReentrantLock)
+    + Add org.apache.commons.lang3.concurrent.locks.LockingVisitors
+      .ReentrantLockVisitor
+    + Add builders for LockingVisitors implementations
+    + Add EnumSet.stream(Class)
+    + Add org.apache.commons.lang3.SystemProperties.isPropertySet(String)
+  * Fixed Bugs:
+    + Fix flaky FileUtilsWaitForTest.testWaitForNegativeDuration()
+    + Pick up exec-maven-plugin version from parent POM
+    + Speed up and sanitize StopWatchTest
+    + Fix handling of non-ASCII letters and numbers in
+      RandomStringUtils #1273
+    + Rewrite ClassUtils.getClass(...) without recursion to avoid
+      StackOverflowError on very long inputs (bsc#1246397,
+      CVE-2025-48924)
+    + OSS-Fuzz Issue 42522972: apache-commons-text:
+      StringSubstitutorInterpolatorFuzzer: Security exception in
+      org.apache.commons.lang3.ClassUtils.getClass
+    + Remove trailing whitespace in StopWatch exception messages
+    + LANG-1754: Use getAllSuperclassesAndInterfaces() in
+      getMatchingMethod() #1289
+    + Add details to the ArrayFill Javadoc
+    + Add details to the ArraySorter Javadoc
+    + Fix broken URL to project location in Maven Central #1296
+    + LANG-1753: StringUtils.replaceEachRepeatedly regression in
+      3.11+ #1297
+    + Use simplified JUnit assertion methods #1298
+    + LANG-1682: Javadoc and test: Use Strings.CI.startsWithAny
+      method instead #1299
+    + Fix NullPointerException in FastDateParser.TimeZoneStrategy
+      .setCalendar(FastDateParser, Calendar, String) on Java 23
+    + LANG-1757: Fix NullPointerException in MethodUtils
+      .getMatchingAccessibleMethod((Class, String, Class...))
+    + LANG-1698: Fix StackOverflowError in TypeUtils
+      .typeVariableToString(TypeVariable), TypeUtils.toString(Type)
+      on Java 17 and up
+    + LANG-1511: SystemUtils is missing important documentation
+    + Make Failable.run(FailableRunnable) null-safe
+    + Make Failable.accept(*) null-safe
+    + Improve container detection by mimicking systemd #1323
+    + Make LangCollectors.collect(...) null-safe
+    + Make LangCollectors.collect(...) null-safe
+    + Fix names of UTF-16 surrogate character test fixture
+      constants, see also #1326
+    + Moditect plugin generates split package warnings
+    + LocaleUtils.availableLocaleSet() uses predictable iteration
+      order
+    + LANG-1759: SerializationUtils.clone(Object) throws
+      ClassCastException when called with a Serializable lambda
+    + LANG-1759: [StringUtils::indexOfAnyBut] redesign due to
+      inconsistent/faulty behavior regarding UTF-16 surrogates #1327
+    + Undeprecate ObjectUtils.toString(Object)
+    + Fix Spotbugs [ERROR] Medium: The field org.apache.commons
+      .lang3.builder.DiffBuilder$SDiff.leftSupplier is transient but
+      isn't set by deserialization [org.apache.commons.lang3.builder
+      .DiffBuilder$SDiff] In DiffBuilder.java
+      SE_TRANSIENT_FIELD_NOT_RESTORED
+    + Fix Spotbugs [ERROR] Medium: The field org.apache.commons
+      .lang3.builder.DiffBuilder$SDiff.rightSupplier is transient but
+      isn't set by deserialization [org.apache.commons.lang3.builder
+      .DiffBuilder$SDiff] In DiffBuilder.java
+      SE_TRANSIENT_FIELD_NOT_RESTORED
+    + LANG-1762: StopWatch methods should not delegate to deprecated
+      methods
+    + Don't call TypeUtils.toString(Type) on every array item in
+      TypeUtils.parameterize[WithOwner](Type, Class, Map, Type>)
+      unless required
+    + Remove -nouses directive from maven-bundle-plugin. OSGi
+      package imports now state 'uses' definitions for package
+      imports, this doesn't affect JPMS
+      (from org.apache.commons:commons-parent:80)
+    + Instead of throwing a NullPointerException,
+      ArrayUtils.toStringArray(Object[]) should return "null" for
+      null elements like ArrayUtils.toStringArray(Object[], String)
+      returns its valueForNullElements
+    + LANG-1764: Deprecate NumericEntityUnescaper.OPTION in favor of
+      Apache Commons Text
+    + Several hash collisions in Fraction class
+    + LANG-1768: MutableLong and friends should provide better
+      parsing exceptions Javadocs
+    + Reimplement StringUtils.toCodePoints(CharSequence) to use
+      java.lang.CharSequence.codePoints()
+    + Reimplement StringUtils.capitalize(String) to use
+      java.lang.CharSequence.codePoints()
+    + Reimplement StringUtils.uncapitalize(String) to use
+      java.lang.CharSequence.codePoints()
+    + org.apache.commons.lang3.ClassUtils.getCanonicalName(String)
+      now throws an IllegalArgumentException for array dimensions
+      greater than 255
+    + Fix Javadoc typo and improve clarity in defaultIfBlank method
+      #1376
+    + LANG-1773: Apache Commons Lang no longer builds on Android
+      #1381
+    + LANG-1772: Restrict size of cache to prevent overflow errors
+      #1379
+    + LANG-1772: Reimplement
+      org.apache.commons.lang3.ClassUtils.hierarchy(Class,
+      Interfaces) using an AtomicReference
+    + Fix Javadoc code examples in DiffBuilder and
+      ReflectionDiffBuilder #1400
+    + Fix generics in org.apache.commons.lang3.stream.Streams
+      .toArray(Class) signature
+    + LANG-1727: EventListenerSupport doesn't document ordering of
+      events
+    + Fix edge-case NullPointerException in org.apache.commons.lang3
+      .SystemUtils.IS_OS_ANDROID
+    + Fix edge-case NullPointerException in org.apache.commons.lang3
+      .SystemUtils.isJavaVersionAtLeast(JavaVersion)
+    + Fix edge-case NullPointerException in org.apache.commons.lang3
+      .SystemUtils.isJavaVersionAtMost(JavaVersion)
+    + Return the default enum if a SecurityException is caught in
+      getEnumSystemProperty()
+    + Fix edge-case NullPointerException in org.apache.commons.lang3
+      .EnumUtils.getEnum(Class, String, E)
+    + org.apache.commons.lang3.EnumUtils
+      .getFirstEnumIgnoreCase(Class, String, Function, E) now
+      returns the given default enum on null enumClass input
+    + org.apache.commons.lang3.EnumUtils.getEnumIgnoreCase(Class,
+      String, E) now returns the given default enum on null
+      enumClass input
+    + org.apache.commons.lang3.EnumUtils.getEnumIgnoreCase(Class,
+      String) now returns the given default enum on null enumClass
+      input
+    + Fix NullPointerException in org.apache.commons.lang3.compare
+      .ComparableUtils.ComparableCheckBuilder.equalTo(A)
+    + Fix NullPointerException in org.apache.commons.lang3.compare
+      .ComparableUtils.ComparableCheckBuilder.greaterThan(A)
+    + Fix NullPointerException in org.apache.commons.lang3.compare
+      .ComparableUtils.ComparableCheckBuilder.greaterThanOrEqualTo(A)
+    + Fix NullPointerException in org.apache.commons.lang3.compare
+      .ComparableUtils.ComparableCheckBuilder.lessThan(A)
+    + Fix NullPointerException in org.apache.commons.lang3.compare
+      .ComparableUtils.ComparableCheckBuilder.lessThanOrEqualTo(A)
+    + LANG-1776: Use GitHub URL in POM for improved automation
+      support
+
+-------------------------------------------------------------------
 Tue Apr  1 07:10:28 UTC 2025 - Gus Kenion <gus.kenion@suse.com>
 
 - Update to 3.17.0

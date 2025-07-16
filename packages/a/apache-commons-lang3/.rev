@@ -95,4 +95,12 @@
     <comment>3.17.0</comment>
     <requestid>1273815</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1773ac338357caedab03bdb9c2726220</srcmd5>
+    <version>3.18.0</version>
+    <time>1752680123</time>
+    <user>anag_factory</user>
+    <comment>bsc#1246397, CVE-2025-48924</comment>
+    <requestid>1293479</requestid>
+  </revision>
 </revisionlist>
