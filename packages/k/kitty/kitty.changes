@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Jul 16 05:22:32 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.42.2:
+  * A new protocol extension to notify terminal programs that have turned on
+    SGR Pixel mouse reporting when the mouse leaves the window (#8808)
+    - https://sw.kovidgoyal.net/kitty/misc-protocol/#mouse-leave-window
+  * clipboard kitten: Can now optionally take a password to avoid repeated
+    permission prompts when accessing the clipboard. Based on a protocol
+    extension. (#8789)
+    - https://sw.kovidgoyal.net/kitty/clipboard/#clipboard-repeated-permission
+  * A new launch --hold-after-ssh to not close a launched window that connects
+    directly to a remote host because of launch --cwd=current when the
+    connection ends (#8807)
+    - https://sw.kovidgoyal.net/kitty/launch/#cmdoption-launch-hold-after-ssh
+    - https://sw.kovidgoyal.net/kitty/launch/#cmdoption-launch-cwd
+  * Fix remember_window_position not working because of a stupid typo (#8646)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.remember_window_position
+  * A new kitty --grab-keyboard that can be used to grab the keyboard so that
+    global shortcuts are sent to kitty instead
+    - https://sw.kovidgoyal.net/kitty/invocation/#cmdoption-kitty-grab-keyboard
+  * Remote control: Fix holding a remote control socket open causing the kitty
+    I/O thread to go into a loop and not respond on other remote control
+    sockets (#8670)
+  * hints kitten: Preserve line breaks when the hint is over a line
+    break (#8674)
+  * Fix a segfault when using the copy_ansi_to_clipboard action (#8682)
+    - https://sw.kovidgoyal.net/kitty/actions/#action-copy_ansi_to_clipboard
+  * Fix a crash when using linear easing curves for animations (#8692)
+  * Graphics protocol: Add a note clarifying image update behavior on
+    re-transmission (#8701)
+  * Wayland GNOME: Fix incorrect OS Window tracking because GNOME has started
+    activating windows on non-current workspaces (#8716)
+  * Fix a regression in 0.40.0 that broke rendering of VS15 variation selectors
+    in some circumstances (#8731, #8794)
+  * Fix a regression in 0.40.0 that broke serialization of tab characters as
+    ANSI text (#8741)
+  * Fix a regression in 0.40.0 that broke erasing of characters in a line in
+    the presence of wide characters (#8758)
+  * Fix a regression in 0.40.0 that broke hyperlinking of wide
+    characters (#8796)
+  * Fix a regression that broke using esc to exit visual select window
+    mode (#8767)
+  * kitten run-shell: Fix SIGINT blocked when execing the shell (#8754)
+
+-------------------------------------------------------------------
 Sat May 17 14:38:50 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.42.1:
