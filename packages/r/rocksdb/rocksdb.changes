@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Jul 12 15:02:49 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 10.4.2:
+  * Fix a race condition between concurrent DB::Open sharing the same 
+    SstFileManager instance.
+- update to 10.4.1:
+  * RocksDB now triggers eligible compactions every 12 hours when periodic
+    compaction is configured. This solves a limitation of the compaction 
+    trigger mechanism, which would only trigger compaction after specific 
+    events like flush, compaction, or SetOptions.
+  * Fix a bug in BackupEngine that can crash backup due to a null 
+    FSWritableFile passed to WritableFileWriter.
+- update to 10.4.0:
+  * Add a new CF option memtable_avg_op_scan_flush_trigger 
+  * Vector based memtable now supports concurrent writers
+  * Add new experimental 
+    TransactionOptions::large_txn_commit_optimize_byte_threshold to enable
+    optimizations for large transaction commit by transaction batch data size
+  * Add a new option CompactionOptionsUniversal::reduce_file_locking
+  * Add new format_version=7 to aid experimental support of custom compression
+    algorithms with CompressionManager and block-based table. This format 
+    version includes changing the format of TableProperties::compression_name.
+  * Public API Changes
+    + Change NewExternalTableFactory to return a unique_ptr instead of 
+      shared_ptr
+    + Add an optional min file size requirement for deletion triggered 
+      compaction. 
+  * Fix a bug where CreateColumnFamilyWithImport() could miss the SST file for
+    the memtable flush it triggered. The exported CF then may not contain the
+    updates in the memtable when CreateColumnFamilyWithImport() is called.
+  * Fix iterator operations returning NotImplemented status if 
+    disallow_memtable_writes and paranoid_memory_checks CF options are both set
+  * Fixed handling of file checksums in IngestExternalFile()
+
+-------------------------------------------------------------------
 Fri May  9 13:24:11 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 10.2.1:
