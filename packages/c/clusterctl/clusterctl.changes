@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 16 06:32:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.4:
+  * fix: docs redirect for ClusterResourceSet
+  * Update github.com/go-viper/mapstructure/v2 to v2.3.0
+  * Add Scaleway infrastructure provider to clusterctl
+  * adding a retry mechanism, if first attempt of curl fails.
+
+-------------------------------------------------------------------
 Wed Jun 18 05:04:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.3:
