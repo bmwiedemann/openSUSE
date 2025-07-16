@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.10.1.0
+Version:        0.11.0.0
 Release:        0
 Summary:        Low-level binding to libpq
 License:        BSD-3-Clause
@@ -28,15 +28,16 @@ URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-Cabal-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-postgresql-libpq-configure-devel
+BuildRequires:  ghc-postgresql-libpq-configure-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-unix-prof
-BuildRequires:  postgresql-server-devel
+BuildRequires:  postgresql-devel
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel
@@ -55,7 +56,6 @@ these queries.
 Summary:        Haskell %{pkg_name} library development files
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
-Requires:       postgresql-server-devel
 Requires(post): ghc-compiler = %{ghc_version}
 Requires(postun): ghc-compiler = %{ghc_version}
 

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Dec 27 19:45:48 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update postgresql-libpq to version 0.11.0.0 revision 1.
+  0.11
+  ----
+
+  - Add pipeline mode API
+    https://www.postgresql.org/docs/current/libpq-pipeline-mode.html
+
+    There are new values in `ExecStatus`, therefore the major version release.
+
+  0.10.2.0
+  --------
+
+  - Split the c library dependency into separate packages.
+    Now the dependencies are either all `build-type: Simple` (`-f +use-pkg-config`)
+    or  `build-type: Configure` (`-f -use-pkg-config`).
+
+-------------------------------------------------------------------
 Tue Jul  9 14:17:52 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update postgresql-libpq to version 0.10.1.0 revision 1.
