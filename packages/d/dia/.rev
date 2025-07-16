@@ -412,4 +412,12 @@ https://bugzilla.redhat.com/996759) (forwarded request 224089 from mgorse)</comm
     <comment></comment>
     <requestid>1291864</requestid>
   </revision>
+  <revision rev="56" vrev="17">
+    <srcmd5>6680f0d54665ba45854aef1c51752df7</srcmd5>
+    <version>0.97.3</version>
+    <time>1752673923</time>
+    <user>anag_factory</user>
+    <comment>Fix typo (forwarded request 1293426 from iznogood)</comment>
+    <requestid>1293456</requestid>
+  </revision>
 </revisionlist>
