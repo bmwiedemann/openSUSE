@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Jul 16 06:45:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.18.7:
+  * Moves boolean table to module docs (#2812) (#2818)
+  * ci: refresh dev dependencies (#2804)
+  * Add more Windows Kerberos delegation info (#2779) (#2797)
+  * community/communication.rst: improve style a bit (#2790)
+    (#2794)
+  * [stable-2.18] Extension for Ansible redirects (#2763)
+  * ci: refresh dev dependencies (#2783)
+  * Announce Ansible 11 lifetime extension (#2491) (#2780)
+  * Move Ansible markup documentation to a separate page (#2753)
+    (#2777)
+  * Update windows_winrm.rst (#2721) (#2730)
+  * communication.rst: improve wording (#2765) (#2768)
+  * ci: refresh dev dependencies (#2772)
+  * [stable-2.18] ci: refresh docs build dependencies: bump
+    antsibull-docs to 2.18.0 (#2758)
+  * ci: refresh dev dependencies (#2749)
+  * ci: refresh docs build dependencies (#2743)
+  * ci: refresh dev dependencies (#2737)
+  * Add Ansible 11.7.0 porting guide. (#2732) (#2733)
+  * ci: refresh dev dependencies (#2726)
+  * Declare that Galaxy artifacts must not be deleted once they
+    appear in Ansible releases. (#2678) (#2722)
+  * Adjust indentation in sidecar docs (#2714) (#2719)
+  * Update intro_inventory.rst (#2708) (#2712)
+  * ci: refresh dev dependencies (#2702)
+  * ansible-core versioning scheme docs (#2666) (#2698)
+  * update Fest banner for slides coming soon (#2688) (#2693)
+  * [stable-2.18] ci: refresh docs build dependencies, bump
+    antsibull-docs to 2.17.0 (#2684)
+  * ci: refresh dev dependencies (#2668)
+  * intro_bsd.rs: remove deprecated yaml callback (#2573) (#2655)
+  * ci: refresh dev dependencies (#2660)
+  * collection_requirements: add requirements version specification
+    recommendation to avoid conflicts when building EEs (#2585)
+    (#2652)
+  * Add Ansible 11.6.0 porting guide. (#2646) (#2647)
+
+-------------------------------------------------------------------
 Tue May 20 04:57:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.18.6:
