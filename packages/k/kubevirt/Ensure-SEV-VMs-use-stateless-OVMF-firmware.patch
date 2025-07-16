@@ -12,11 +12,11 @@ Signed-off-by: Caleb Crane <ccrane@suse.de>
  rpm/BUILD.bazel                               |  2 +-
  4 files changed, 19 insertions(+), 22 deletions(-)
 
-diff --git a/pkg/virt-launcher/virtwrap/converter/converter.go b/pkg/virt-launcher/virtwrap/converter/converter.go
-index 0565ceb5dd..8f1094d141 100644
---- a/pkg/virt-launcher/virtwrap/converter/converter.go
-+++ b/pkg/virt-launcher/virtwrap/converter/converter.go
-@@ -1222,6 +1222,12 @@ func Convert_v1_Firmware_To_related_apis(vmi *v1.VirtualMachineInstance, domain
+Index: kubevirt-1.5.2/pkg/virt-launcher/virtwrap/converter/converter.go
+===================================================================
+--- kubevirt-1.5.2.orig/pkg/virt-launcher/virtwrap/converter/converter.go
++++ kubevirt-1.5.2/pkg/virt-launcher/virtwrap/converter/converter.go
+@@ -1180,6 +1180,12 @@ func Convert_v1_Firmware_To_related_apis
  			Template: c.EFIConfiguration.EFIVars,
  			NVRam:    filepath.Join(services.PathForNVram(vmi), vmi.Name+"_VARS.fd"),
  		}
@@ -29,7 +29,7 @@ index 0565ceb5dd..8f1094d141 100644
  	}
  
  	if firmware.Bootloader != nil && firmware.Bootloader.BIOS != nil {
-@@ -1449,13 +1455,13 @@ func Convert_v1_VirtualMachineInstance_To_api_Domain(vmi *v1.VirtualMachineInsta
+@@ -1448,13 +1454,13 @@ func Convert_v1_VirtualMachineInstance_T
  
  	// Set SEV launch security parameters: https://libvirt.org/formatdomain.html#launch-security
  	if c.UseLaunchSecurity {
@@ -50,10 +50,10 @@ index 0565ceb5dd..8f1094d141 100644
  		}
  		controllerDriver = &api.ControllerDriver{
  			IOMMU: "on",
-diff --git a/pkg/virt-launcher/virtwrap/efi/efi.go b/pkg/virt-launcher/virtwrap/efi/efi.go
-index 0a51067dc0..730b637c9f 100644
---- a/pkg/virt-launcher/virtwrap/efi/efi.go
-+++ b/pkg/virt-launcher/virtwrap/efi/efi.go
+Index: kubevirt-1.5.2/pkg/virt-launcher/virtwrap/efi/efi.go
+===================================================================
+--- kubevirt-1.5.2.orig/pkg/virt-launcher/virtwrap/efi/efi.go
++++ kubevirt-1.5.2/pkg/virt-launcher/virtwrap/efi/efi.go
 @@ -31,8 +31,7 @@ const (
  	EFIVarsAARCH64    = "AAVMF_VARS.fd"
  	EFICodeSecureBoot = "OVMF_CODE.secboot.fd"
@@ -80,7 +80,7 @@ index 0a51067dc0..730b637c9f 100644
  	} else {
  		return e.vars != "" && e.code != ""
  	}
-@@ -68,7 +66,8 @@ func (e *EFIEnvironment) EFIVars(secureBoot, sev bool) string {
+@@ -68,7 +66,8 @@ func (e *EFIEnvironment) EFIVars(secureB
  	if secureBoot {
  		return e.varsSecureBoot
  	} else if sev {
@@ -90,7 +90,7 @@ index 0a51067dc0..730b637c9f 100644
  	} else {
  		return e.vars
  	}
-@@ -100,7 +99,6 @@ func DetectEFIEnvironment(arch, ovmfPath string) *EFIEnvironment {
+@@ -100,7 +99,6 @@ func DetectEFIEnvironment(arch, ovmfPath
  
  	// detect EFI with SEV
  	codeWithSEV := getEFIBinaryIfExists(ovmfPath, EFICodeSEV)
@@ -98,7 +98,7 @@ index 0a51067dc0..730b637c9f 100644
  
  	return &EFIEnvironment{
  		codeSecureBoot: codeWithSB,
-@@ -108,7 +106,6 @@ func DetectEFIEnvironment(arch, ovmfPath string) *EFIEnvironment {
+@@ -108,7 +106,6 @@ func DetectEFIEnvironment(arch, ovmfPath
  		code:           code,
  		vars:           vars,
  		codeSEV:        codeWithSEV,
@@ -106,11 +106,11 @@ index 0a51067dc0..730b637c9f 100644
  	}
  }
  
-diff --git a/pkg/virt-launcher/virtwrap/efi/efi_test.go b/pkg/virt-launcher/virtwrap/efi/efi_test.go
-index dcc0e5a6f7..1123c20abd 100644
---- a/pkg/virt-launcher/virtwrap/efi/efi_test.go
-+++ b/pkg/virt-launcher/virtwrap/efi/efi_test.go
-@@ -82,7 +82,7 @@ var _ = Describe("EFI environment detection", func() {
+Index: kubevirt-1.5.2/pkg/virt-launcher/virtwrap/efi/efi_test.go
+===================================================================
+--- kubevirt-1.5.2.orig/pkg/virt-launcher/virtwrap/efi/efi_test.go
++++ kubevirt-1.5.2/pkg/virt-launcher/virtwrap/efi/efi_test.go
+@@ -82,7 +82,7 @@ var _ = Describe("EFI environment detect
  	)
  
  	It("SEV EFI Roms", func() {
@@ -119,7 +119,7 @@ index dcc0e5a6f7..1123c20abd 100644
  		defer os.RemoveAll(ovmfPath)
  
  		efiEnv := DetectEFIEnvironment("x86_64", ovmfPath)
-@@ -98,11 +98,5 @@ var _ = Describe("EFI environment detection", func() {
+@@ -98,11 +98,5 @@ var _ = Describe("EFI environment detect
  		Expect(efiEnv.EFICode(secureBootEnabled, !sevEnabled)).ToNot(Equal(codeSEV))
  		Expect(efiEnv.EFICode(!secureBootEnabled, sevEnabled)).To(Equal(codeSEV))
  		Expect(efiEnv.EFICode(!secureBootEnabled, !sevEnabled)).ToNot(Equal(codeSEV))
@@ -131,11 +131,11 @@ index dcc0e5a6f7..1123c20abd 100644
 -		Expect(efiEnv.EFIVars(!secureBootEnabled, !sevEnabled)).To(Equal(varsSEV)) // same as EFIVars
  	})
  })
-diff --git a/rpm/BUILD.bazel b/rpm/BUILD.bazel
-index 5c98670f80..13184cadb5 100644
---- a/rpm/BUILD.bazel
-+++ b/rpm/BUILD.bazel
-@@ -1228,7 +1228,7 @@ rpmtree(
+Index: kubevirt-1.5.2/rpm/BUILD.bazel
+===================================================================
+--- kubevirt-1.5.2.orig/rpm/BUILD.bazel
++++ kubevirt-1.5.2/rpm/BUILD.bazel
+@@ -1231,7 +1231,7 @@ rpmtree(
          "/usr/sbin/iptables": "/usr/sbin/iptables-legacy",
          "/usr/bin/nc": "/usr/bin/ncat",
          # Create a symlink to OVMF binary with SEV support (edk2 rpm does not do that for unknown reason)
@@ -144,6 +144,3 @@ index 5c98670f80..13184cadb5 100644
      },
      visibility = ["//visibility:public"],
  )
--- 
-2.47.1
-

@@ -1,12 +1,14 @@
-From 7ffdddcdb500e65f1e76d958c8a1116289445d25 Mon Sep 17 00:00:00 2001
+From dd1419b19a548917473e017810a73e8bedfbf6f8 Mon Sep 17 00:00:00 2001
+From: Jim Fehlig <jfehlig@suse.com>
+Date: Thu, 13 Mar 2025 21:15:53 +0000
+Subject: [PATCH 1/2] Update module golang.org/x/net to v0.36.0 [SECURITY]
+
 From: Dominik Holler <github@hollyhome.ath.cx>
-Date: Tue, 25 Mar 2025 13:24:38 +0000
-Subject: [PATCH 4/4] chore(deps): update module golang.org/x/net to v0.36.0
- [security]
 
 Signed-off-by: Dominik Holler <github@hollyhome.ath.cx>
-(cherry picked from commit f499bdbd3ff6c46cdf189c20dae3026aa8264f2a)
+(cherry picked from commit 962df486418abdf3973c690bd663914a63fc396c)
 Signed-off-by: Caleb Crane <ccrane@suse.de>
+Signed-off-by: Jim Fehlig <jfehlig@suse.com>
 ---
  go.mod                                        |   2 +-
  go.sum                                        |   4 +-
@@ -30,20 +32,12 @@ Signed-off-by: Caleb Crane <ccrane@suse.de>
  vendor/golang.org/x/net/proxy/per_host.go     |   8 +-
  vendor/modules.txt                            |   5 +-
  21 files changed, 773 insertions(+), 948 deletions(-)
- delete mode 100644 vendor/golang.org/x/net/context/go17.go
- delete mode 100644 vendor/golang.org/x/net/context/go19.go
- delete mode 100644 vendor/golang.org/x/net/context/pre_go17.go
- delete mode 100644 vendor/golang.org/x/net/context/pre_go19.go
- create mode 100644 vendor/golang.org/x/net/internal/httpcommon/BUILD.bazel
- create mode 100644 vendor/golang.org/x/net/internal/httpcommon/ascii.go
- rename vendor/golang.org/x/net/{http2 => internal/httpcommon}/headermap.go (74%)
- create mode 100644 vendor/golang.org/x/net/internal/httpcommon/request.go
 
-diff --git a/go.mod b/go.mod
-index 80e021ef61..54a4cce704 100644
---- a/go.mod
-+++ b/go.mod
-@@ -57,7 +57,7 @@ require (
+Index: kubevirt-1.5.2/go.mod
+===================================================================
+--- kubevirt-1.5.2.orig/go.mod
++++ kubevirt-1.5.2/go.mod
+@@ -58,7 +58,7 @@ require (
  	github.com/vishvananda/netlink v1.3.0
  	github.com/wadey/gocovmerge v0.0.0-20160331181800-b5bfa59ec0ad
  	golang.org/x/crypto v0.35.0
@@ -52,11 +46,11 @@ index 80e021ef61..54a4cce704 100644
  	golang.org/x/sync v0.11.0
  	golang.org/x/sys v0.30.0
  	golang.org/x/term v0.29.0
-diff --git a/go.sum b/go.sum
-index 1360c75b3b..6b69a1944b 100644
---- a/go.sum
-+++ b/go.sum
-@@ -2675,8 +2675,8 @@ golang.org/x/net v0.23.0/go.mod h1:JKghWKKOSdJwpW2GEx0Ja7fmaKnMsbu+MWVZTokSYmg=
+Index: kubevirt-1.5.2/go.sum
+===================================================================
+--- kubevirt-1.5.2.orig/go.sum
++++ kubevirt-1.5.2/go.sum
+@@ -2681,8 +2681,8 @@ golang.org/x/net v0.23.0/go.mod h1:JKghW
  golang.org/x/net v0.24.0/go.mod h1:2Q7sJY5mzlzWjKtYUEXSlBWCdyaioyXzRB2RtU8KVE8=
  golang.org/x/net v0.25.0/go.mod h1:JkAGAh7GEvH74S6FOH42FLoXpXbE/aqXSrIQjXgsiwM=
  golang.org/x/net v0.26.0/go.mod h1:5YKkiSynbBIh3p6iOc/vibscux0x38BZDkn8sCUPxHE=
@@ -67,11 +61,11 @@ index 1360c75b3b..6b69a1944b 100644
  golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be/go.mod h1:N/0e6XlmueqKjAGxoOufVs8QHGRruUQn6yWY3a++T0U=
  golang.org/x/oauth2 v0.0.0-20190226205417-e64efc72b421/go.mod h1:gOpvHmFTYa4IltrdGE7lF6nIHvwfUNPOp7c8zoXwtLw=
  golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45/go.mod h1:gOpvHmFTYa4IltrdGE7lF6nIHvwfUNPOp7c8zoXwtLw=
-diff --git a/vendor/golang.org/x/net/context/BUILD.bazel b/vendor/golang.org/x/net/context/BUILD.bazel
-index 2c15af1a35..976349f58f 100644
---- a/vendor/golang.org/x/net/context/BUILD.bazel
-+++ b/vendor/golang.org/x/net/context/BUILD.bazel
-@@ -2,13 +2,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
+Index: kubevirt-1.5.2/vendor/golang.org/x/net/context/BUILD.bazel
+===================================================================
+--- kubevirt-1.5.2.orig/vendor/golang.org/x/net/context/BUILD.bazel
++++ kubevirt-1.5.2/vendor/golang.org/x/net/context/BUILD.bazel
+@@ -2,13 +2,7 @@ load("@io_bazel_rules_go//go:def.bzl", "
  
  go_library(
      name = "go_default_library",
@@ -86,10 +80,10 @@ index 2c15af1a35..976349f58f 100644
      importmap = "kubevirt.io/kubevirt/vendor/golang.org/x/net/context",
      importpath = "golang.org/x/net/context",
      visibility = ["//visibility:public"],
-diff --git a/vendor/golang.org/x/net/context/context.go b/vendor/golang.org/x/net/context/context.go
-index cf66309c4a..db1c95fab1 100644
---- a/vendor/golang.org/x/net/context/context.go
-+++ b/vendor/golang.org/x/net/context/context.go
+Index: kubevirt-1.5.2/vendor/golang.org/x/net/context/context.go
+===================================================================
+--- kubevirt-1.5.2.orig/vendor/golang.org/x/net/context/context.go
++++ kubevirt-1.5.2/vendor/golang.org/x/net/context/context.go
 @@ -3,29 +3,31 @@
  // license that can be found in the LICENSE file.
  
@@ -239,10 +233,9 @@ index cf66309c4a..db1c95fab1 100644
 +func WithValue(parent Context, key, val interface{}) Context {
 +	return context.WithValue(parent, key, val)
 +}
-diff --git a/vendor/golang.org/x/net/context/go17.go b/vendor/golang.org/x/net/context/go17.go
-deleted file mode 100644
-index 0c1b867937..0000000000
---- a/vendor/golang.org/x/net/context/go17.go
+Index: kubevirt-1.5.2/vendor/golang.org/x/net/context/go17.go
+===================================================================
+--- kubevirt-1.5.2.orig/vendor/golang.org/x/net/context/go17.go
 +++ /dev/null
 @@ -1,72 +0,0 @@
 -// Copyright 2016 The Go Authors. All rights reserved.
@@ -317,10 +310,9 @@ index 0c1b867937..0000000000
 -func WithValue(parent Context, key interface{}, val interface{}) Context {
 -	return context.WithValue(parent, key, val)
 -}
-diff --git a/vendor/golang.org/x/net/context/go19.go b/vendor/golang.org/x/net/context/go19.go
-deleted file mode 100644
-index e31e35a904..0000000000
---- a/vendor/golang.org/x/net/context/go19.go
+Index: kubevirt-1.5.2/vendor/golang.org/x/net/context/go19.go
+===================================================================
+--- kubevirt-1.5.2.orig/vendor/golang.org/x/net/context/go19.go
 +++ /dev/null
 @@ -1,20 +0,0 @@
 -// Copyright 2017 The Go Authors. All rights reserved.
@@ -343,10 +335,9 @@ index e31e35a904..0000000000
 -// A CancelFunc does not wait for the work to stop.
 -// After the first call, subsequent calls to a CancelFunc do nothing.
 -type CancelFunc = context.CancelFunc
-diff --git a/vendor/golang.org/x/net/context/pre_go17.go b/vendor/golang.org/x/net/context/pre_go17.go
-deleted file mode 100644
-index 065ff3dfa5..0000000000
---- a/vendor/golang.org/x/net/context/pre_go17.go
+Index: kubevirt-1.5.2/vendor/golang.org/x/net/context/pre_go17.go
+===================================================================
+--- kubevirt-1.5.2.orig/vendor/golang.org/x/net/context/pre_go17.go
 +++ /dev/null
 @@ -1,300 +0,0 @@
 -// Copyright 2014 The Go Authors. All rights reserved.
@@ -649,10 +640,9 @@ index 065ff3dfa5..0000000000
 -	}
 -	return c.Context.Value(key)
 -}
-diff --git a/vendor/golang.org/x/net/context/pre_go19.go b/vendor/golang.org/x/net/context/pre_go19.go
-deleted file mode 100644
-index ec5a638033..0000000000
---- a/vendor/golang.org/x/net/context/pre_go19.go
+Index: kubevirt-1.5.2/vendor/golang.org/x/net/context/pre_go19.go
+===================================================================
+--- kubevirt-1.5.2.orig/vendor/golang.org/x/net/context/pre_go19.go
 +++ /dev/null
 @@ -1,109 +0,0 @@
 -// Copyright 2014 The Go Authors. All rights reserved.
@@ -764,10 +754,10 @@ index ec5a638033..0000000000
 -// A CancelFunc does not wait for the work to stop.
 -// After the first call, subsequent calls to a CancelFunc do nothing.
 -type CancelFunc func()
-diff --git a/vendor/golang.org/x/net/http2/BUILD.bazel b/vendor/golang.org/x/net/http2/BUILD.bazel
-index 78bb76156f..85f763e4a4 100644
---- a/vendor/golang.org/x/net/http2/BUILD.bazel
-+++ b/vendor/golang.org/x/net/http2/BUILD.bazel
+Index: kubevirt-1.5.2/vendor/golang.org/x/net/http2/BUILD.bazel
+===================================================================
+--- kubevirt-1.5.2.orig/vendor/golang.org/x/net/http2/BUILD.bazel
++++ kubevirt-1.5.2/vendor/golang.org/x/net/http2/BUILD.bazel
 @@ -14,7 +14,6 @@ go_library(
          "flow.go",
          "frame.go",
@@ -783,11 +773,11 @@ index 78bb76156f..85f763e4a4 100644
 +        "//vendor/golang.org/x/net/internal/httpcommon:go_default_library",
      ],
  )
-diff --git a/vendor/golang.org/x/net/http2/config.go b/vendor/golang.org/x/net/http2/config.go
-index de58dfb8dc..ca645d9a1a 100644
---- a/vendor/golang.org/x/net/http2/config.go
-+++ b/vendor/golang.org/x/net/http2/config.go
-@@ -60,7 +60,7 @@ func configFromServer(h1 *http.Server, h2 *Server) http2Config {
+Index: kubevirt-1.5.2/vendor/golang.org/x/net/http2/config.go
+===================================================================
+--- kubevirt-1.5.2.orig/vendor/golang.org/x/net/http2/config.go
++++ kubevirt-1.5.2/vendor/golang.org/x/net/http2/config.go
+@@ -60,7 +60,7 @@ func configFromServer(h1 *http.Server, h
  	return conf
  }
  
@@ -796,11 +786,11 @@ index de58dfb8dc..ca645d9a1a 100644
  // (the net/http Transport).
  func configFromTransport(h2 *Transport) http2Config {
  	conf := http2Config{
-diff --git a/vendor/golang.org/x/net/http2/config_go124.go b/vendor/golang.org/x/net/http2/config_go124.go
-index e3784123c8..5b516c55ff 100644
---- a/vendor/golang.org/x/net/http2/config_go124.go
-+++ b/vendor/golang.org/x/net/http2/config_go124.go
-@@ -13,7 +13,7 @@ func fillNetHTTPServerConfig(conf *http2Config, srv *http.Server) {
+Index: kubevirt-1.5.2/vendor/golang.org/x/net/http2/config_go124.go
+===================================================================
+--- kubevirt-1.5.2.orig/vendor/golang.org/x/net/http2/config_go124.go
++++ kubevirt-1.5.2/vendor/golang.org/x/net/http2/config_go124.go
+@@ -13,7 +13,7 @@ func fillNetHTTPServerConfig(conf *http2
  	fillNetHTTPConfig(conf, srv.HTTP2)
  }
  
@@ -809,10 +799,10 @@ index e3784123c8..5b516c55ff 100644
  func fillNetHTTPTransportConfig(conf *http2Config, tr *http.Transport) {
  	fillNetHTTPConfig(conf, tr.HTTP2)
  }
-diff --git a/vendor/golang.org/x/net/http2/http2.go b/vendor/golang.org/x/net/http2/http2.go
-index c7601c909f..6c18ea230b 100644
---- a/vendor/golang.org/x/net/http2/http2.go
-+++ b/vendor/golang.org/x/net/http2/http2.go
+Index: kubevirt-1.5.2/vendor/golang.org/x/net/http2/http2.go
+===================================================================
+--- kubevirt-1.5.2.orig/vendor/golang.org/x/net/http2/http2.go
++++ kubevirt-1.5.2/vendor/golang.org/x/net/http2/http2.go
 @@ -34,11 +34,19 @@ import (
  )
  
@@ -849,7 +839,7 @@ index c7601c909f..6c18ea230b 100644
  	}
  }
  
-@@ -407,23 +415,6 @@ func (s *sorter) SortStrings(ss []string) {
+@@ -407,23 +415,6 @@ func (s *sorter) SortStrings(ss []string
  	s.v = save
  }
  
@@ -873,10 +863,10 @@ index c7601c909f..6c18ea230b 100644
  // incomparable is a zero-width, non-comparable type. Adding it to a struct
  // makes that struct also non-comparable, and generally doesn't add
  // any size (as long as it's first).
-diff --git a/vendor/golang.org/x/net/http2/server.go b/vendor/golang.org/x/net/http2/server.go
-index b55547aec6..b640deb0e0 100644
---- a/vendor/golang.org/x/net/http2/server.go
-+++ b/vendor/golang.org/x/net/http2/server.go
+Index: kubevirt-1.5.2/vendor/golang.org/x/net/http2/server.go
+===================================================================
+--- kubevirt-1.5.2.orig/vendor/golang.org/x/net/http2/server.go
++++ kubevirt-1.5.2/vendor/golang.org/x/net/http2/server.go
 @@ -50,6 +50,7 @@ import (
  
  	"golang.org/x/net/http/httpguts"
@@ -885,7 +875,7 @@ index b55547aec6..b640deb0e0 100644
  )
  
  const (
-@@ -812,8 +813,7 @@ const maxCachedCanonicalHeadersKeysSize = 2048
+@@ -812,8 +813,7 @@ const maxCachedCanonicalHeadersKeysSize
  
  func (sc *serverConn) canonicalHeader(v string) string {
  	sc.serveG.check()
@@ -895,7 +885,7 @@ index b55547aec6..b640deb0e0 100644
  	if ok {
  		return cv
  	}
-@@ -2233,25 +2233,25 @@ func (sc *serverConn) newStream(id, pusherID uint32, state streamState) *stream
+@@ -2233,25 +2233,25 @@ func (sc *serverConn) newStream(id, push
  func (sc *serverConn) newWriterAndRequest(st *stream, f *MetaHeadersFrame) (*responseWriter, *http.Request, error) {
  	sc.serveG.check()
  
@@ -931,7 +921,7 @@ index b55547aec6..b640deb0e0 100644
  		// See 8.1.2.6 Malformed Requests and Responses:
  		//
  		// Malformed requests or responses that are detected
-@@ -2265,15 +2265,16 @@ func (sc *serverConn) newWriterAndRequest(st *stream, f *MetaHeadersFrame) (*res
+@@ -2265,15 +2265,16 @@ func (sc *serverConn) newWriterAndReques
  		return nil, nil, sc.countError("bad_path_method", streamError(f.StreamID, ErrCodeProtocol))
  	}
  
@@ -954,7 +944,7 @@ index b55547aec6..b640deb0e0 100644
  	}
  
  	rw, req, err := sc.newWriterAndRequestNoBody(st, rp)
-@@ -2282,7 +2283,7 @@ func (sc *serverConn) newWriterAndRequest(st *stream, f *MetaHeadersFrame) (*res
+@@ -2282,7 +2283,7 @@ func (sc *serverConn) newWriterAndReques
  	}
  	bodyOpen := !f.StreamEnded()
  	if bodyOpen {
@@ -963,7 +953,7 @@ index b55547aec6..b640deb0e0 100644
  			if cl, err := strconv.ParseUint(vv[0], 10, 63); err == nil {
  				req.ContentLength = int64(cl)
  			} else {
-@@ -2298,84 +2299,38 @@ func (sc *serverConn) newWriterAndRequest(st *stream, f *MetaHeadersFrame) (*res
+@@ -2298,84 +2299,38 @@ func (sc *serverConn) newWriterAndReques
  	return rw, req, nil
  }
  
@@ -1062,7 +1052,7 @@ index b55547aec6..b640deb0e0 100644
  	rw := sc.newResponseWriter(st, req)
  	return rw, req, nil
  }
-@@ -3270,12 +3225,12 @@ func (sc *serverConn) startPush(msg *startPushRequest) {
+@@ -3270,12 +3225,12 @@ func (sc *serverConn) startPush(msg *sta
  		// we start in "half closed (remote)" for simplicity.
  		// See further comments at the definition of stateHalfClosedRemote.
  		promised := sc.newStream(promisedID, msg.parent.id, stateHalfClosedRemote)
@@ -1081,10 +1071,10 @@ index b55547aec6..b640deb0e0 100644
  		})
  		if err != nil {
  			// Should not happen, since we've already validated msg.url.
-diff --git a/vendor/golang.org/x/net/http2/transport.go b/vendor/golang.org/x/net/http2/transport.go
-index 090d0e1bdb..f26356b9cd 100644
---- a/vendor/golang.org/x/net/http2/transport.go
-+++ b/vendor/golang.org/x/net/http2/transport.go
+Index: kubevirt-1.5.2/vendor/golang.org/x/net/http2/transport.go
+===================================================================
+--- kubevirt-1.5.2.orig/vendor/golang.org/x/net/http2/transport.go
++++ kubevirt-1.5.2/vendor/golang.org/x/net/http2/transport.go
 @@ -25,7 +25,6 @@ import (
  	"net/http"
  	"net/http/httptrace"
@@ -1109,7 +1099,7 @@ index 090d0e1bdb..f26356b9cd 100644
  	seenSettings     bool                     // true if we've seen a settings frame, false otherwise
  	seenSettingsChan chan struct{}            // closed when seenSettings is true or frame reading fails
  	wantSettingsAck  bool                     // we sent a SETTINGS frame and haven't heard back
-@@ -1089,10 +1090,12 @@ func (cc *ClientConn) idleStateLocked() (st clientConnIdleState) {
+@@ -1089,10 +1090,12 @@ func (cc *ClientConn) idleStateLocked()
  
  	// If this connection has never been used for a request and is closed,
  	// then let it take a request (which will fail).
@@ -1131,7 +1121,7 @@ index 090d0e1bdb..f26356b9cd 100644
  	nextID := cc.nextStreamID
  	// TODO: do clients send GOAWAY too? maybe? Just Close:
  	cc.mu.Unlock()
-@@ -1271,23 +1275,6 @@ func (cc *ClientConn) closeForLostPing() {
+@@ -1271,23 +1275,6 @@ func (cc *ClientConn) closeForLostPing()
  // exported. At least they'll be DeepEqual for h1-vs-h2 comparisons tests.
  var errRequestCanceled = errors.New("net/http: request canceled")
  
@@ -1155,7 +1145,7 @@ index 090d0e1bdb..f26356b9cd 100644
  func (cc *ClientConn) responseHeaderTimeout() time.Duration {
  	if cc.t.t1 != nil {
  		return cc.t.t1.ResponseHeaderTimeout
-@@ -1299,22 +1286,6 @@ func (cc *ClientConn) responseHeaderTimeout() time.Duration {
+@@ -1299,22 +1286,6 @@ func (cc *ClientConn) responseHeaderTime
  	return 0
  }
  
@@ -1178,7 +1168,7 @@ index 090d0e1bdb..f26356b9cd 100644
  // actualContentLength returns a sanitized version of
  // req.ContentLength, where 0 actually means zero (not unknown) and -1
  // means unknown.
-@@ -1360,25 +1331,7 @@ func (cc *ClientConn) roundTrip(req *http.Request, streamf func(*clientStream))
+@@ -1360,25 +1331,7 @@ func (cc *ClientConn) roundTrip(req *htt
  		donec:                make(chan struct{}),
  	}
  
@@ -1205,7 +1195,7 @@ index 090d0e1bdb..f26356b9cd 100644
  
  	go cs.doRequest(req, streamf)
  
-@@ -1492,10 +1445,6 @@ func (cs *clientStream) writeRequest(req *http.Request, streamf func(*clientStre
+@@ -1492,10 +1445,6 @@ func (cs *clientStream) writeRequest(req
  	cc := cs.cc
  	ctx := cs.ctx
  
@@ -1216,7 +1206,7 @@ index 090d0e1bdb..f26356b9cd 100644
  	// wait for setting frames to be received, a server can change this value later,
  	// but we just wait for the first settings frame
  	var isExtendedConnect bool
-@@ -1659,26 +1608,39 @@ func (cs *clientStream) encodeAndWriteHeaders(req *http.Request) error {
+@@ -1659,26 +1608,39 @@ func (cs *clientStream) encodeAndWriteHe
  	// we send: HEADERS{1}, CONTINUATION{0,} + DATA{0,} (DATA is
  	// sent by writeRequestBody below, along with any Trailers,
  	// again in form HEADERS{1}, CONTINUATION{0,})
@@ -1266,7 +1256,7 @@ index 090d0e1bdb..f26356b9cd 100644
  // cleanupWriteRequest performs post-request tasks.
  //
  // If err (the result of writeRequest) is non-nil and the stream is not closed,
-@@ -2066,218 +2028,6 @@ func (cs *clientStream) awaitFlowControl(maxBytes int) (taken int32, err error)
+@@ -2066,218 +2028,6 @@ func (cs *clientStream) awaitFlowControl
  	}
  }
  
@@ -1485,7 +1475,7 @@ index 090d0e1bdb..f26356b9cd 100644
  // requires cc.wmu be held.
  func (cc *ClientConn) encodeTrailers(trailer http.Header) ([]byte, error) {
  	cc.hbuf.Reset()
-@@ -2294,7 +2044,7 @@ func (cc *ClientConn) encodeTrailers(trailer http.Header) ([]byte, error) {
+@@ -2294,7 +2044,7 @@ func (cc *ClientConn) encodeTrailers(tra
  	}
  
  	for k, vv := range trailer {
@@ -1494,7 +1484,7 @@ index 090d0e1bdb..f26356b9cd 100644
  		if !ascii {
  			// Skip writing invalid headers. Per RFC 7540, Section 8.1.2, header
  			// field names have to be ASCII characters (just as in HTTP/1.x).
-@@ -2434,9 +2184,12 @@ func (rl *clientConnReadLoop) cleanup() {
+@@ -2434,9 +2184,12 @@ func (rl *clientConnReadLoop) cleanup()
  	// This avoids a situation where new connections are constantly created,
  	// added to the pool, fail, and are removed from the pool, without any error
  	// being surfaced to the user.
@@ -1509,7 +1499,7 @@ index 090d0e1bdb..f26356b9cd 100644
  		cc.idleTimer = cc.t.afterFunc(unusedWaitTime-idleTime, func() {
  			cc.t.connPool().MarkDead(cc)
  		})
-@@ -2457,6 +2210,13 @@ func (rl *clientConnReadLoop) cleanup() {
+@@ -2457,6 +2210,13 @@ func (rl *clientConnReadLoop) cleanup()
  	}
  	cc.cond.Broadcast()
  	cc.mu.Unlock()
@@ -1523,7 +1513,7 @@ index 090d0e1bdb..f26356b9cd 100644
  }
  
  // countReadFrameError calls Transport.CountError with a string
-@@ -2549,9 +2309,6 @@ func (rl *clientConnReadLoop) run() error {
+@@ -2549,9 +2309,6 @@ func (rl *clientConnReadLoop) run() erro
  			if VerboseLogs {
  				cc.vlogf("http2: Transport conn %p received error from processing frame %v: %v", cc, summarizeFrame(f), err)
  			}
@@ -1533,7 +1523,7 @@ index 090d0e1bdb..f26356b9cd 100644
  			return err
  		}
  	}
-@@ -2646,7 +2403,7 @@ func (rl *clientConnReadLoop) handleResponse(cs *clientStream, f *MetaHeadersFra
+@@ -2646,7 +2403,7 @@ func (rl *clientConnReadLoop) handleResp
  		Status:     status + " " + http.StatusText(statusCode),
  	}
  	for _, hf := range regularFields {
@@ -1542,7 +1532,7 @@ index 090d0e1bdb..f26356b9cd 100644
  		if key == "Trailer" {
  			t := res.Trailer
  			if t == nil {
-@@ -2654,7 +2411,7 @@ func (rl *clientConnReadLoop) handleResponse(cs *clientStream, f *MetaHeadersFra
+@@ -2654,7 +2411,7 @@ func (rl *clientConnReadLoop) handleResp
  				res.Trailer = t
  			}
  			foreachHeaderElement(hf.Value, func(v string) {
@@ -1551,7 +1541,7 @@ index 090d0e1bdb..f26356b9cd 100644
  			})
  		} else {
  			vv := header[key]
-@@ -2778,7 +2535,7 @@ func (rl *clientConnReadLoop) processTrailers(cs *clientStream, f *MetaHeadersFr
+@@ -2778,7 +2535,7 @@ func (rl *clientConnReadLoop) processTra
  
  	trailer := make(http.Header)
  	for _, hf := range f.RegularFields() {
@@ -1560,7 +1550,7 @@ index 090d0e1bdb..f26356b9cd 100644
  		trailer[key] = append(trailer[key], hf.Value)
  	}
  	cs.trailer = trailer
-@@ -3324,7 +3081,7 @@ func (cc *ClientConn) writeStreamReset(streamID uint32, code ErrCode, ping bool,
+@@ -3324,7 +3081,7 @@ func (cc *ClientConn) writeStreamReset(s
  
  var (
  	errResponseHeaderListSize = errors.New("http2: response header list larger than advertised limit")
@@ -1569,7 +1559,7 @@ index 090d0e1bdb..f26356b9cd 100644
  )
  
  func (cc *ClientConn) logf(format string, args ...interface{}) {
-@@ -3508,16 +3265,6 @@ func traceFirstResponseByte(trace *httptrace.ClientTrace) {
+@@ -3508,16 +3265,6 @@ func traceFirstResponseByte(trace *httpt
  	}
  }
  
@@ -1586,10 +1576,10 @@ index 090d0e1bdb..f26356b9cd 100644
  func traceGot1xxResponseFunc(trace *httptrace.ClientTrace) func(int, textproto.MIMEHeader) error {
  	if trace != nil {
  		return trace.Got1xxResponse
-diff --git a/vendor/golang.org/x/net/http2/write.go b/vendor/golang.org/x/net/http2/write.go
-index 6ff6bee7e9..fdb35b9477 100644
---- a/vendor/golang.org/x/net/http2/write.go
-+++ b/vendor/golang.org/x/net/http2/write.go
+Index: kubevirt-1.5.2/vendor/golang.org/x/net/http2/write.go
+===================================================================
+--- kubevirt-1.5.2.orig/vendor/golang.org/x/net/http2/write.go
++++ kubevirt-1.5.2/vendor/golang.org/x/net/http2/write.go
 @@ -13,6 +13,7 @@ import (
  
  	"golang.org/x/net/http/httpguts"
@@ -1598,7 +1588,7 @@ index 6ff6bee7e9..fdb35b9477 100644
  )
  
  // writeFramer is implemented by any type that is used to write frames.
-@@ -351,7 +352,7 @@ func encodeHeaders(enc *hpack.Encoder, h http.Header, keys []string) {
+@@ -351,7 +352,7 @@ func encodeHeaders(enc *hpack.Encoder, h
  	}
  	for _, k := range keys {
  		vv := h[k]
@@ -1607,11 +1597,10 @@ index 6ff6bee7e9..fdb35b9477 100644
  		if !ascii {
  			// Skip writing invalid headers. Per RFC 7540, Section 8.1.2, header
  			// field names have to be ASCII characters (just as in HTTP/1.x).
-diff --git a/vendor/golang.org/x/net/internal/httpcommon/BUILD.bazel b/vendor/golang.org/x/net/internal/httpcommon/BUILD.bazel
-new file mode 100644
-index 0000000000..225d78b08c
+Index: kubevirt-1.5.2/vendor/golang.org/x/net/internal/httpcommon/BUILD.bazel
+===================================================================
 --- /dev/null
-+++ b/vendor/golang.org/x/net/internal/httpcommon/BUILD.bazel
++++ kubevirt-1.5.2/vendor/golang.org/x/net/internal/httpcommon/BUILD.bazel
 @@ -0,0 +1,17 @@
 +load("@io_bazel_rules_go//go:def.bzl", "go_library")
 +
@@ -1630,11 +1619,10 @@ index 0000000000..225d78b08c
 +        "//vendor/golang.org/x/net/http2/hpack:go_default_library",
 +    ],
 +)
-diff --git a/vendor/golang.org/x/net/internal/httpcommon/ascii.go b/vendor/golang.org/x/net/internal/httpcommon/ascii.go
-new file mode 100644
-index 0000000000..ed14da5afc
+Index: kubevirt-1.5.2/vendor/golang.org/x/net/internal/httpcommon/ascii.go
+===================================================================
 --- /dev/null
-+++ b/vendor/golang.org/x/net/internal/httpcommon/ascii.go
++++ kubevirt-1.5.2/vendor/golang.org/x/net/internal/httpcommon/ascii.go
 @@ -0,0 +1,53 @@
 +// Copyright 2025 The Go Authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style
@@ -1689,58 +1677,227 @@ index 0000000000..ed14da5afc
 +	}
 +	return strings.ToLower(s), true
 +}
-diff --git a/vendor/golang.org/x/net/http2/headermap.go b/vendor/golang.org/x/net/internal/httpcommon/headermap.go
-similarity index 74%
-rename from vendor/golang.org/x/net/http2/headermap.go
-rename to vendor/golang.org/x/net/internal/httpcommon/headermap.go
-index 149b3dd20e..92483d8e41 100644
---- a/vendor/golang.org/x/net/http2/headermap.go
-+++ b/vendor/golang.org/x/net/internal/httpcommon/headermap.go
-@@ -1,11 +1,11 @@
+Index: kubevirt-1.5.2/vendor/golang.org/x/net/http2/headermap.go
+===================================================================
+--- kubevirt-1.5.2.orig/vendor/golang.org/x/net/http2/headermap.go
++++ /dev/null
+@@ -1,105 +0,0 @@
 -// Copyright 2014 The Go Authors. All rights reserved.
-+// Copyright 2025 The Go Authors. All rights reserved.
- // Use of this source code is governed by a BSD-style
- // license that can be found in the LICENSE file.
- 
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
 -package http2
-+package httpcommon
- 
- import (
+-
+-import (
 -	"net/http"
-+	"net/textproto"
- 	"sync"
- )
- 
-@@ -82,13 +82,15 @@ func buildCommonHeaderMaps() {
- 	commonLowerHeader = make(map[string]string, len(common))
- 	commonCanonHeader = make(map[string]string, len(common))
- 	for _, v := range common {
+-	"sync"
+-)
+-
+-var (
+-	commonBuildOnce   sync.Once
+-	commonLowerHeader map[string]string // Go-Canonical-Case -> lower-case
+-	commonCanonHeader map[string]string // lower-case -> Go-Canonical-Case
+-)
+-
+-func buildCommonHeaderMapsOnce() {
+-	commonBuildOnce.Do(buildCommonHeaderMaps)
+-}
+-
+-func buildCommonHeaderMaps() {
+-	common := []string{
+-		"accept",
+-		"accept-charset",
+-		"accept-encoding",
+-		"accept-language",
+-		"accept-ranges",
+-		"age",
+-		"access-control-allow-credentials",
+-		"access-control-allow-headers",
+-		"access-control-allow-methods",
+-		"access-control-allow-origin",
+-		"access-control-expose-headers",
+-		"access-control-max-age",
+-		"access-control-request-headers",
+-		"access-control-request-method",
+-		"allow",
+-		"authorization",
+-		"cache-control",
+-		"content-disposition",
+-		"content-encoding",
+-		"content-language",
+-		"content-length",
+-		"content-location",
+-		"content-range",
+-		"content-type",
+-		"cookie",
+-		"date",
+-		"etag",
+-		"expect",
+-		"expires",
+-		"from",
+-		"host",
+-		"if-match",
+-		"if-modified-since",
+-		"if-none-match",
+-		"if-unmodified-since",
+-		"last-modified",
+-		"link",
+-		"location",
+-		"max-forwards",
+-		"origin",
+-		"proxy-authenticate",
+-		"proxy-authorization",
+-		"range",
+-		"referer",
+-		"refresh",
+-		"retry-after",
+-		"server",
+-		"set-cookie",
+-		"strict-transport-security",
+-		"trailer",
+-		"transfer-encoding",
+-		"user-agent",
+-		"vary",
+-		"via",
+-		"www-authenticate",
+-		"x-forwarded-for",
+-		"x-forwarded-proto",
+-	}
+-	commonLowerHeader = make(map[string]string, len(common))
+-	commonCanonHeader = make(map[string]string, len(common))
+-	for _, v := range common {
 -		chk := http.CanonicalHeaderKey(v)
-+		chk := textproto.CanonicalMIMEHeaderKey(v)
- 		commonLowerHeader[chk] = v
- 		commonCanonHeader[v] = chk
- 	}
- }
- 
+-		commonLowerHeader[chk] = v
+-		commonCanonHeader[v] = chk
+-	}
+-}
+-
 -func lowerHeader(v string) (lower string, ascii bool) {
+-	buildCommonHeaderMapsOnce()
+-	if s, ok := commonLowerHeader[v]; ok {
+-		return s, true
+-	}
+-	return asciiToLower(v)
+-}
+-
+-func canonicalHeader(v string) string {
+-	buildCommonHeaderMapsOnce()
+-	if s, ok := commonCanonHeader[v]; ok {
+-		return s
+-	}
+-	return http.CanonicalHeaderKey(v)
+-}
+Index: kubevirt-1.5.2/vendor/golang.org/x/net/internal/httpcommon/headermap.go
+===================================================================
+--- /dev/null
++++ kubevirt-1.5.2/vendor/golang.org/x/net/internal/httpcommon/headermap.go
+@@ -0,0 +1,115 @@
++// Copyright 2025 The Go Authors. All rights reserved.
++// Use of this source code is governed by a BSD-style
++// license that can be found in the LICENSE file.
++
++package httpcommon
++
++import (
++	"net/textproto"
++	"sync"
++)
++
++var (
++	commonBuildOnce   sync.Once
++	commonLowerHeader map[string]string // Go-Canonical-Case -> lower-case
++	commonCanonHeader map[string]string // lower-case -> Go-Canonical-Case
++)
++
++func buildCommonHeaderMapsOnce() {
++	commonBuildOnce.Do(buildCommonHeaderMaps)
++}
++
++func buildCommonHeaderMaps() {
++	common := []string{
++		"accept",
++		"accept-charset",
++		"accept-encoding",
++		"accept-language",
++		"accept-ranges",
++		"age",
++		"access-control-allow-credentials",
++		"access-control-allow-headers",
++		"access-control-allow-methods",
++		"access-control-allow-origin",
++		"access-control-expose-headers",
++		"access-control-max-age",
++		"access-control-request-headers",
++		"access-control-request-method",
++		"allow",
++		"authorization",
++		"cache-control",
++		"content-disposition",
++		"content-encoding",
++		"content-language",
++		"content-length",
++		"content-location",
++		"content-range",
++		"content-type",
++		"cookie",
++		"date",
++		"etag",
++		"expect",
++		"expires",
++		"from",
++		"host",
++		"if-match",
++		"if-modified-since",
++		"if-none-match",
++		"if-unmodified-since",
++		"last-modified",
++		"link",
++		"location",
++		"max-forwards",
++		"origin",
++		"proxy-authenticate",
++		"proxy-authorization",
++		"range",
++		"referer",
++		"refresh",
++		"retry-after",
++		"server",
++		"set-cookie",
++		"strict-transport-security",
++		"trailer",
++		"transfer-encoding",
++		"user-agent",
++		"vary",
++		"via",
++		"www-authenticate",
++		"x-forwarded-for",
++		"x-forwarded-proto",
++	}
++	commonLowerHeader = make(map[string]string, len(common))
++	commonCanonHeader = make(map[string]string, len(common))
++	for _, v := range common {
++		chk := textproto.CanonicalMIMEHeaderKey(v)
++		commonLowerHeader[chk] = v
++		commonCanonHeader[v] = chk
++	}
++}
++
 +// LowerHeader returns the lowercase form of a header name,
 +// used on the wire for HTTP/2 and HTTP/3 requests.
 +func LowerHeader(v string) (lower string, ascii bool) {
- 	buildCommonHeaderMapsOnce()
- 	if s, ok := commonLowerHeader[v]; ok {
- 		return s, true
-@@ -96,10 +98,18 @@ func lowerHeader(v string) (lower string, ascii bool) {
- 	return asciiToLower(v)
- }
- 
--func canonicalHeader(v string) string {
++	buildCommonHeaderMapsOnce()
++	if s, ok := commonLowerHeader[v]; ok {
++		return s, true
++	}
++	return asciiToLower(v)
++}
++
 +// CanonicalHeader canonicalizes a header name. (For example, "host" becomes "Host".)
 +func CanonicalHeader(v string) string {
- 	buildCommonHeaderMapsOnce()
- 	if s, ok := commonCanonHeader[v]; ok {
- 		return s
- 	}
--	return http.CanonicalHeaderKey(v)
++	buildCommonHeaderMapsOnce()
++	if s, ok := commonCanonHeader[v]; ok {
++		return s
++	}
 +	return textproto.CanonicalMIMEHeaderKey(v)
 +}
 +
@@ -1749,12 +1906,11 @@ index 149b3dd20e..92483d8e41 100644
 +	buildCommonHeaderMapsOnce()
 +	s, ok := commonCanonHeader[v]
 +	return s, ok
- }
-diff --git a/vendor/golang.org/x/net/internal/httpcommon/request.go b/vendor/golang.org/x/net/internal/httpcommon/request.go
-new file mode 100644
-index 0000000000..4b70553179
++}
+Index: kubevirt-1.5.2/vendor/golang.org/x/net/internal/httpcommon/request.go
+===================================================================
 --- /dev/null
-+++ b/vendor/golang.org/x/net/internal/httpcommon/request.go
++++ kubevirt-1.5.2/vendor/golang.org/x/net/internal/httpcommon/request.go
 @@ -0,0 +1,467 @@
 +// Copyright 2025 The Go Authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style
@@ -2223,10 +2379,10 @@ index 0000000000..4b70553179
 +		Trailer:       trailer,
 +	}
 +}
-diff --git a/vendor/golang.org/x/net/proxy/per_host.go b/vendor/golang.org/x/net/proxy/per_host.go
-index d7d4b8b6e3..32bdf435ec 100644
---- a/vendor/golang.org/x/net/proxy/per_host.go
-+++ b/vendor/golang.org/x/net/proxy/per_host.go
+Index: kubevirt-1.5.2/vendor/golang.org/x/net/proxy/per_host.go
+===================================================================
+--- kubevirt-1.5.2.orig/vendor/golang.org/x/net/proxy/per_host.go
++++ kubevirt-1.5.2/vendor/golang.org/x/net/proxy/per_host.go
 @@ -7,6 +7,7 @@ package proxy
  import (
  	"context"
@@ -2235,7 +2391,7 @@ index d7d4b8b6e3..32bdf435ec 100644
  	"strings"
  )
  
-@@ -57,7 +58,8 @@ func (p *PerHost) DialContext(ctx context.Context, network, addr string) (c net.
+@@ -57,7 +58,8 @@ func (p *PerHost) DialContext(ctx contex
  }
  
  func (p *PerHost) dialerForRequest(host string) Dialer {
@@ -2245,7 +2401,7 @@ index d7d4b8b6e3..32bdf435ec 100644
  		for _, net := range p.bypassNetworks {
  			if net.Contains(ip) {
  				return p.bypass
-@@ -108,8 +110,8 @@ func (p *PerHost) AddFromString(s string) {
+@@ -108,8 +110,8 @@ func (p *PerHost) AddFromString(s string
  			}
  			continue
  		}
@@ -2256,11 +2412,11 @@ index d7d4b8b6e3..32bdf435ec 100644
  			continue
  		}
  		if strings.HasPrefix(host, "*.") {
-diff --git a/vendor/modules.txt b/vendor/modules.txt
-index 02d160e83b..49a5e6c1fe 100644
---- a/vendor/modules.txt
-+++ b/vendor/modules.txt
-@@ -500,8 +500,8 @@ golang.org/x/exp/typeparams
+Index: kubevirt-1.5.2/vendor/modules.txt
+===================================================================
+--- kubevirt-1.5.2.orig/vendor/modules.txt
++++ kubevirt-1.5.2/vendor/modules.txt
+@@ -510,8 +510,8 @@ golang.org/x/exp/typeparams
  # golang.org/x/mod v0.21.0
  ## explicit; go 1.22.0
  golang.org/x/mod/semver
@@ -2271,7 +2427,7 @@ index 02d160e83b..49a5e6c1fe 100644
  golang.org/x/net/bpf
  golang.org/x/net/context
  golang.org/x/net/html
-@@ -511,6 +511,7 @@ golang.org/x/net/http/httpguts
+@@ -521,6 +521,7 @@ golang.org/x/net/http/httpguts
  golang.org/x/net/http2
  golang.org/x/net/http2/hpack
  golang.org/x/net/idna
@@ -2279,6 +2435,3 @@ index 02d160e83b..49a5e6c1fe 100644
  golang.org/x/net/internal/iana
  golang.org/x/net/internal/socket
  golang.org/x/net/internal/socks
--- 
-2.49.0
-
