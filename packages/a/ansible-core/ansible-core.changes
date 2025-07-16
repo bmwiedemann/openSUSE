@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul 16 06:42:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.18.7:
+  * Minor Changes
+    - ansible-test - Add RHEL 10.0 as a remote platform for
+      testing.
+  * Bugfixes
+    - ansible-doc will no longer ignore docs for modules without an
+      extension (#85279).
+    - ansible-pull change detection will now work independently of
+      callback or result format settings.
+    - ansible-test - Fix Python relative import resolution from
+      __init__.py files when using change detection.
+    - dnf5 - handle all libdnf5 specific exceptions (#84634)
+    - meta - avoid traceback when retrieving the meta task name
+      (#85367).
+    - password lookup - fix acquiring the lock when human-readable
+      FileExistsError error message is not English.
+    - user - Set timeout for passphrase interaction.
+    - user - Update prompt for SSH key passphrase (#84484).
+
+-------------------------------------------------------------------
 Mon May 26 13:03:25 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Add patch suse-distribution-fix.patch to fix distribution.py
