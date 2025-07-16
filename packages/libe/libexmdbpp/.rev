@@ -23,4 +23,12 @@
     <comment>- Update to release 1.11</comment>
     <requestid>1108952</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d2fe77d2439dc3c91ce8f6f845645fa8</srcmd5>
+    <version>1.11.0.58baa16</version>
+    <time>1752673887</time>
+    <user>anag_factory</user>
+    <comment>- Enable multipython build</comment>
+    <requestid>1293334</requestid>
+  </revision>
 </revisionlist>

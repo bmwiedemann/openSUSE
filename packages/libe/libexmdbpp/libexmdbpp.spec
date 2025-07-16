@@ -1,7 +1,7 @@
 #
 # spec file for package libexmdbpp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 #
 
 
+%{?sle15allpythons}
+%define skip_python2 1
 %define lname libexmdbpp0
 Name:           libexmdbpp
 Version:        1.11.0.58baa16
@@ -27,9 +29,20 @@ URL:            https://grommunio.com/
 Source:         %name-%version.tar.xz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  python3
-BuildRequires:  python3-pybind11-devel
+%if 0%{?rhel} || 0%{?fedora_version}
 BuildRequires:  pkgconfig(python3)
+BuildRequires:  pybind11-devel
+BuildRequires:  python3
+%endif
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
+%{?sle15allpythons}
+BuildRequires:  python3-rpm-macros
+BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pybind11-devel}
+%define python_subpackage_only 1
+%python_subpackages
+%endif
 
 %description
 The library provides a C++ API and implementation for constructing
@@ -43,17 +56,30 @@ Group:          System/Libraries
 The library provides a C++ API and implementation for constructing
 exmdb protocol requests and responses and conversing with a server.
 
-%package devel
+%package -n libexmdbpp-devel
 Summary:        Development files for libexmdbpp
 Group:          System/Libraries
 Requires:       %lname = %version-%release
 
-%description devel
+%description -n libexmdbpp-devel
 The library provides a C++ API and implementation for constructing
 exmdb protocol requests and responses and conversing with a server.
 
 This subpackage contains the header files for the library.
 
+# section for SUSE
+%package -n python-pyexmdb
+Summary:        Python bindings for libexmdbpp
+Group:          Development/Languages/Python
+Requires:       %lname = %version-%release
+
+%description -n python-pyexmdb
+The library provides a C++ API and implementation for constructing
+exmdb protocol requests and responses and conversing with a server.
+
+This subpackage contains bindings for Python.
+
+# section for Fedora
 %package -n python3-pyexmdb
 Summary:        Python bindings for libexmdbpp
 Group:          Development/Languages/Python
@@ -69,27 +95,50 @@ This subpackage contains bindings for Python.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
+base="$PWD"
+%{python_expand #
+%define __builddir b%$python_bin_suffix
+%cmake -DPython3_EXECUTABLE=%{_bindir}/python%$python_bin_suffix
+%cmake_build
+cd "$base"
+}
+%else
 %cmake
 %cmake_build
+%endif
 
 %install
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
+base="$PWD"
+%{python_expand #
+%define __builddir b%$python_bin_suffix
+%cmake_install
+cd "$base"
+}
+%else
 %cmake_install
 # Stop check-rpaths from complaining about standard runpaths (fedora).
 export QA_RPATHS=0x0001
+%endif
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %_libdir/libexmdbpp.so.0
 %license LICENSE.txt
 
-%files devel
+%files -n libexmdbpp-devel
 %_includedir/exmdbpp/
 %_libdir/libexmdbpp.so
 %_datadir/exmdbpp/
 
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
+%files %{python_files pyexmdb}
+%python_sitearch/*
+%else
 %files -n python3-pyexmdb
-%python3_sitearch/pyexm*
+%python3_sitearch/*
+%endif
 
 %changelog
