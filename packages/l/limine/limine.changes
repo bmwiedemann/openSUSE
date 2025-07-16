@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 15 19:10:41 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 9.5.0:
+  * protocols/efi: Hybridise loading mechanism with old memory-device
+    based approach. This may work around the redundant requirement that
+    EFI applications be signed, and it may fix certain issues created
+    when the chainload mechanism was changed in 9.0.1.
+  * `limine` host tool: Fix some mismatched printf format specifiers.
+
+-------------------------------------------------------------------
 Thu Jul 10 16:04:05 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 9.4.0:
