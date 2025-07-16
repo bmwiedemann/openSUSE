@@ -69,4 +69,15 @@
     <comment>Budgie on Wayland</comment>
     <requestid>1250737</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>59982d161425a8366bde62352e2e46cb</srcmd5>
+    <version>20250305</version>
+    <time>1752673899</time>
+    <user>anag_factory</user>
+    <comment>- Changes for 16.0 setup:
+  * Remove cheese Recommends
+  * Lower x11_yast to Recommends
+</comment>
+    <requestid>1293328</requestid>
+  </revision>
 </revisionlist>

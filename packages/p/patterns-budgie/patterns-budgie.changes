@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 15 08:55:11 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Changes for 16.0 setup:
+  * Remove cheese Recommends
+  * Lower x11_yast to Recommends
+
+-------------------------------------------------------------------
 Thu Mar  6 15:45:38 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 20250305:

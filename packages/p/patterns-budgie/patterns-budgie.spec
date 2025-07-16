@@ -45,13 +45,15 @@ Provides:       pattern-icon() = pattern-budgie
 Provides:       pattern-order() = 1660
 Provides:       pattern-visible()
 Requires:       pattern() = x11
-Requires:       pattern() = x11_yast
+Recommends:     pattern() = x11_yast
 Requires:       budgie-desktop
 Recommends:     gnome-terminal
 Recommends:     budgie-backgrounds
 Recommends:     gnome-software
 Suggests:       gnome-backgrounds
+%if 0%{?suse_version} < 1600
 Suggests:       cheese
+%endif
 Suggests:       dconf-editor
 Suggests:       evince
 Suggests:       evolution
