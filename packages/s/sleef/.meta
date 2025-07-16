@@ -1,0 +1,5 @@
+<package name="sleef" project="openSUSE:Factory">
+  <title>sleef</title>
+  <description>SIMD Library for Evaluating Elementary Functions, vectorized libm and DFT</description>
+  <url>https://sleef.org/</url>
+</package>

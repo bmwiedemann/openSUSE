@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Wed Jul 16 09:34:58 UTC 2025 - Edgar Aichinger <edogawa@aon.at>
+
+- follow darix' advice about duplicate libname in -devel pkg
+- silence warning "shared-dir-glob-in-files %{_includedir}/*"
+
+-------------------------------------------------------------------
+Mon Apr 21 19:47:48 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Use _service file to download the tarball 
+- Use ninja to build
+- Update to version 3.9.0
+- Remove commented out steps
+
+-------------------------------------------------------------------
+Tue Dec  3 10:21:12 UTC 2024 - Edgar Aichinger <edogawa@aon.at>
+
+- updated to version 3.7
+- fix build
+
+-------------------------------------------------------------------
+Sat Apr  1 06:46:43 UTC 2023 - Fabio Pesari <fpesari@tuxfamily.org>
+
+- First upload, v3.5.1
+  * IBM System/390 support is added.
+  * The library can be built with Clang on Windows.
+  * Static libraries with LTO can be generated.
+  * Alternative division and sqrt methods can be chosen with AArch64.
+  * Header files for inlining the whole SLEEF functions can be generated.
+  * IEEE remainder function is added.
+  * GCC-10 can now build SLEEF with SVE support.
