@@ -1,0 +1,46 @@
+product_compose_schema: 0.2
+
+vendor: openSUSE
+name: openSUSE-Addon-NonOss
+version_from_package: openSUSE-Addon-NonOss-release
+product-type: module
+summary: openSUSE NonOSS Addon
+
+installcheck:
+ - ignore_errors
+
+source: split
+debug: split
+
+# repository meta data is written into arch specific directories
+# + smaller size of meta data to be processed by the client
+# - different URL's per arch are needed
+#repodata: all
+
+# The default architecture list. Each of these will be put on the medium.
+# It is optional to have a default list, when each flavor defines an
+# architecture list. The main package won't be build in that case.
+architectures:
+ - x86_64
+
+unpack:
+  - unpackset
+
+# packages to be put on the medium
+packagesets:
+- name: unpackset
+  packages:
+  - skelcd-openSUSE-non-OSS
+
+- name: package_blacklist
+  packages:
+  - skelcd-openSUSE-non-OSS
+
+# our main entry
+- add:
+  # take all available packages by default
+  # we limit it via BuildFlags: productcompose-onlydirectrepos in nonfree repo
+  - __all__
+  sub:
+  - package_blacklist
+
