@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jul 16 10:13:03 UTC 2025 - ecsos <ecsos@opensuse.org> - 2.12.5
+
+- Update to 2.12.5
+  * PHP 8.4 Support
+    We're again a little behind schedule, but now we support PHP 8.4!
+    This means that installations on Ubuntu 25.04 and Fedora 42+ can
+    now install Icinga Web without worrying about PHP related
+    incompatibilities. Icinga packages will be available in the
+    next few days.
+  * Good Things Take Time
+    There's only a single (notable) recent issue that is fixed
+    with this release. All the others are a bit older.
+    - External URLs set up as dashlets are not embedded the same
+      as navigation items #5346
+  * But the team sat together a few weeks ago and fixed a bug here
+    and there. And of course, also in Icinga Web!
+    - Users who are not allowed to change the theme, cannot change
+      the theme mode either #5385
+    - Improved compatibility with several SSO authentication
+      providers #5000, #5227
+    - Filtering for older-than events with relative time does not
+      work #5263
+    - Empty values are NULL in CSV exports #5350
+  * Breaking, Somewhat
+    This is mainly for developers.
+    With the support of PHP 8.4, we introduced a new environment
+    variable, ICINGAWEB_ENVIRONMENT. Unless set to dev, Icinga Web
+    will not show nor log deprecation notices anymore.
+
+-------------------------------------------------------------------
 Wed Mar 26 17:19:21 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.12.4
