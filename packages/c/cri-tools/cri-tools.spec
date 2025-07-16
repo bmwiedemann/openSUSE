@@ -15,98 +15,76 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-
-%define project         sigs.k8s.io/cri-tools
-%define name_source1    crictl.yaml
+%define executable_name crictl
 
 Name:           cri-tools
-Version:        1.32.0
+Version:        1.33.0
 Release:        0
 Summary:        CLI and validation tools for Kubelet Container Runtime Interface
 License:        Apache-2.0
 Group:          System/Management
 Url:            https://github.com/kubernetes-sigs/cri-tools
 Source0:        %{name}-%{version}.tar.xz
-Source1:        %{name_source1}
+Source1:        vendor.tar.gz
 Source2:        rpmlintrc
-Source3:        vendor.tar.gz
+Source11:       crictl.yaml
 BuildRequires:  go-go-md2man
-BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.24
-# disable stripping of binaries
-%{go_nostrip}
+BuildRequires:  bash-completion
+BuildRequires:  fish
+BuildRequires:  zsh
 
 %description
 cri-tools provides a series of debugging and validation tools for
 Kubelet CRI, which includes:
+
 - crictl: CLI for kubelet CRI
 - critest: validation test suites for kubelet CRI
 
 %prep
-%setup -q
+%autosetup -a 1
 
 %build
-export GOPATH=$HOME/go
-mkdir -pv $HOME/go/src/%{project}
-rm -rf $HOME/go/src/%{project}/*
-cp -avr * $HOME/go/src/%{project}
-cd $HOME/go/src/%{project}
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
+go build -o bin/%{executable_name} ./cmd/%{executable_name}
+go test -o bin/critest -c ./cmd/critest
 
-export BUILDMODE_ARGS="-buildmode=pie"
-# `-buildmode=pie` with "internal linking" is not yet supported on linux/s390x platform
-# https://github.com/golang/go/blob/a63907808d14679c723e566cb83acc76fc8cafc2/src/internal/platform/supported.go#L223-L232
-# https://github.com/golang/go/issues/64875#issuecomment-1870734528
-# if [ %{_arch} = "s390x" ]; then
-#    unset BUILDMODE_ARGS
-# fi
-
-go build $BUILDMODE_ARGS \
-         -o bin/crictl \
-         -mod vendor \
-         -ldflags '-X %{project}/pkg/version.Version=%{version}' \
-         %{project}/cmd/crictl
-
-go test $BUILDMODE_ARGS \
-        -o bin/critest \
-        -mod vendor \
-        -ldflags '-X %{project}/pkg/version.Version=%{version}' \
-        -c %{project}/cmd/critest
-
-# compile the manpages
-for md in docs/*.md
-do
-	go-md2man -in $md -out $md
-done
-rename '.md' '.1' docs/*
-
-# generate auto-completions
-bin/crictl completion bash > crictl-completion-bash
-bin/crictl completion zsh > crictl-completion-zsh
-bin/crictl completion fish > crictl.fish
+# compile the manpage
+go-md2man -in docs/%{executable_name}.md -out docs/%{executable_name}.1
 
 %install
-cd $HOME/go/src/%{project}
-install -D -m 0755 bin/crictl %{buildroot}/%{_bindir}/crictl
+install -D -m 0755 bin/%{executable_name} %{buildroot}/%{_bindir}/%{executable_name}
 install -D -m 0755 bin/critest %{buildroot}/%{_bindir}/critest
+
+# create the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+%{buildroot}/%{_bindir}/%{executable_name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{executable_name}
+
+# create the fish completion file
+mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
+%{buildroot}/%{_bindir}/%{executable_name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{executable_name}.fish
+
+# create the zsh completion file
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{executable_name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{executable_name}
+
 install -d %{buildroot}/%{_mandir}/man1
-install -D -m 0644 docs/crictl.1 %{buildroot}/%{_mandir}/man1/crictl.1
-install -D -m 0644 docs/benchmark.1 %{buildroot}/%{_mandir}/man1/critest-benchmark.1
-install -D -m 0644 docs/validation.1 %{buildroot}/%{_mandir}/man1/critest-validation.1
-install -D -m 0644 crictl-completion-bash %{buildroot}/%{_datadir}/bash-completion/completions/crictl
-install -D -m 0644 crictl-completion-zsh %{buildroot}/%{_datadir}/zsh/site-functions/_crictl
-install -D -m 0644 crictl.fish %{buildroot}/%{_datadir}/fish/completions/crictl.fish
-install -D -m 0644 %{SOURCE1} %{buildroot}/%{_sysconfdir}/%{name_source1}
+install -D -m 0644 docs/%{executable_name}.1 %{buildroot}/%{_mandir}/man1/
+install -D -m 0644 %{SOURCE11} %{buildroot}/%{_sysconfdir}/crictl.yaml
 
 %files
-%{_bindir}/crictl
-%{_bindir}/critest
-%{_mandir}/man1/*
-%{_datadir}/bash-completion/completions/crictl
-%{_datadir}/zsh
-%{_datadir}/fish
-%{_datadir}/fish/completions
-%{_datadir}/fish/completions/crictl.fish
-%config(noreplace) %{_sysconfdir}/%{name_source1}
+%doc README.md
 %license LICENSE
+%{_bindir}/%{executable_name}
+%{_bindir}/critest
+%config(noreplace) %{_sysconfdir}/crictl.yaml
+
+%{_mandir}/man1/*
+
+%{_datarootdir}/bash-completion/completions/%{executable_name}
+%{_datarootdir}/fish/vendor_completions.d/%{executable_name}.fish
+%{_datarootdir}/zsh/site-functions/_%{executable_name}
 
 %changelog

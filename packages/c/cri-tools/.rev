@@ -285,4 +285,13 @@
   * update .spec file to add the vendor tarball as source (forwarded request 1255939 from psaggu)</comment>
     <requestid>1271087</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cbf2c86849a155e561560924460934f7</srcmd5>
+    <version>1.33.0</version>
+    <time>1752673913</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.33.0
+- Avoid modifying permissions for man directory (forwarded request 1288807 from mchellamuthu)</comment>
+    <requestid>1293450</requestid>
+  </revision>
 </revisionlist>
