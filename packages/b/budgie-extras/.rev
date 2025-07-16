@@ -217,4 +217,13 @@
 </comment>
     <requestid>1255073</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>dd1ed6cc59d3fdb036a4999ccf4628cf</srcmd5>
+    <version>1.9.0</version>
+    <time>1752673898</time>
+    <user>anag_factory</user>
+    <comment>- Remove plank dependency for 16.0
+</comment>
+    <requestid>1293322</requestid>
+  </revision>
 </revisionlist>

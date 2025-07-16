@@ -28,6 +28,11 @@
 %if %{undefined _distconfdir}
 %define _distconfdir %{_sysconfdir}
 %endif
+%if 0%{?suse_version} < 1600
+%bcond_without plank
+%else
+%bcond_with plank
+%endif
 Name:           budgie-extras
 Version:        1.9.0
 Release:        0
@@ -62,7 +67,9 @@ BuildRequires:  pkgconfig(libnma)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libwnck-3.0)
+%if %{with plank}
 BuildRequires:  pkgconfig(plank)
+%endif
 # All applets
 Recommends:     budgie-app-launcher-applet
 Recommends:     budgie-brightness-controller-applet
