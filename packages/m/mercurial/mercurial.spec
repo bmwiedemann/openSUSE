@@ -31,7 +31,7 @@
 %endif
 
 Name:           mercurial
-Version:        7.0.2
+Version:        7.0.3
 Release:        0
 Summary:        Scalable Distributed SCM
 License:        GPL-2.0-or-later
@@ -105,8 +105,8 @@ chmod 644 hgweb.cgi
 
 %install
 %pyproject_install
-make -C doc install PREFIX="%{_prefix}" DESTDIR=%{buildroot} PYTHON=%{expand:%%__%{pythons}}
-make -C contrib/chg install PREFIX="%{_prefix}" DESTDIR=%{buildroot}
+%make_build -C doc install PREFIX="%{_prefix}" DESTDIR=%{buildroot} PYTHON=%{expand:%%__%{pythons}}
+%make_build -C contrib/chg install PREFIX="%{_prefix}" DESTDIR=%{buildroot}
 %{expand:%%%{pythons}_fix_shebang}
 
 # Move locales to proper location

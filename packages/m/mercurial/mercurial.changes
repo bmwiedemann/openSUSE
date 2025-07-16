@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jul 15 18:53:13 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Mercurial 7.0.3
+
+  * convert: correctly convert sub-hour timezones from Git source
+  * fastexport: fix error message when UTC offset is not a multiple of minutes
+  * hgdemandimport: exclude _contextvars (newly imported from threading)
+  * procutil: actually silence backgrounded process stdio on Windows when asked
+  * bundlespec: fix error in help text
+  * branch: pass correct set of files to memctx() in case of merge (issue6972)
+  * branch: recreate changeset of top of new parents if they were replaced
+  * fix: stop adding unexpected extra requirements to stream clones
+  * crecord: handle bad regexes in search
+  * config: move the --shared and --non-shared flag out of experimental
+  * Test harness improvements
+  * More modern Python fixes
+
+- Remove an unused rpmlint filter
+- Use %make_build for building docs and chg instead of make directly
+
+-------------------------------------------------------------------
 Wed May  7 11:22:36 UTC 2025 - Sean Baggaley <me@drinkybird.net>
 
 - Mercurial 7.0.2

@@ -1903,4 +1903,12 @@ Regularly scheduled major release. (forwarded request 1186324 from develop7)</co
     <comment>- Mercurial 7.0.2</comment>
     <requestid>1275241</requestid>
   </revision>
+  <revision rev="215" vrev="1">
+    <srcmd5>7828f18a8a42bdf629aef6b8543fd928</srcmd5>
+    <version>7.0.3</version>
+    <time>1752680129</time>
+    <user>anag_factory</user>
+    <comment>- Mercurial 7.0.3</comment>
+    <requestid>1293526</requestid>
+  </revision>
 </revisionlist>
