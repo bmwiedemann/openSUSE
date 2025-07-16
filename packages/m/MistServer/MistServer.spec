@@ -17,7 +17,7 @@
 
 
 Name:           MistServer
-Version:        3.6.1
+Version:        3.7
 Release:        0
 Summary:        Next-generation streaming media toolkit for internet streaming.
 License:        Unlicense
@@ -33,7 +33,7 @@ BuildRequires:  sysuser-tools
 BuildRequires:  group(video)
 BuildRequires:  pkgconfig(librist)
 BuildRequires:  pkgconfig(libsrtp2)
-BuildRequires:  pkgconfig(mbedtls) < 3
+BuildRequires:  pkgconfig(mbedtls)
 BuildRequires:  pkgconfig(srt)
 BuildRequires:  pkgconfig(usrsctp)
 Requires:       group(video)
@@ -163,6 +163,7 @@ install -D -p -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/mistserver.conf
 %{_bindir}/MistUtilMETA
 %{_bindir}/MistUtilNuke
 %{_bindir}/MistUtilRAX
+%{_bindir}/MistUtilWriter
 %{_libdir}/libmist.so
 %{_libdir}/libmist_srt.so
 %{_sysusersdir}/mistserver.conf

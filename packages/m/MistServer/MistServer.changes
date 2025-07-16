@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jul 15 12:21:24 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Update to new upstream release 3.7
+  * Feature: DTSC push/pull now can function in either async (allow tracks to have their own timing) or sync (keep tracks synced) mode
+  * Feature: Support for HTTP PUT push output with all container formats
+  * Feature: Support for HLS push to Youtube specifically (automatic URL format recognition)
+  * Feature: Support for shell-style string quoting and escaping wherever Mist supports running commands
+  * Feature: Implemented native support for "stream keys" (no longer needs a custom trigger now)
+  * Feature: Support for WHIP push output
+  * Improvement: Cleaner implementation of TS SRT initial seek behaviour (also supports all options now)
+  * Improvement: Rewrote Mist's internal STUN library
+  * Improvement: The local-only UDP API (used for some internal communications) now auto-retries booting up later if networking was not yet available during MistServer's start, rather than aborting immediately
+  * Improvement: MistProcLivepeer was updated to match the version in the Catalyst branch (including support for locally running broadcaster nodes)
+  * Improvement: All MistProc processes are now unable to select their own outputs as inputs
+  * Bugfix: Fixed timing of outputs that would get spurious wakeups in the event handler (no longer goes ahead of real time)
+  * Bugfix: Fixed password-based push input for RTMPS
+  * Bugfix: Fixed listening RTMPS port
+  * Bugfix: Fixed incoming RTMP pushes with non-zero start times
+  * Bugfix: Fixed track pages not always reloading when they needed to
+  * Bugfix: Fixed non-configured streams causing a reconnect loop (was especially noticable with SRT)
+  * Bugfix: Fixed compatibility with Naver CHZZK
+  * Bugfix: Fixed a small memory leak in the MPEG2-TS parser
+  * Bugfix: Fixed raw-mode TS-based inputs not shutting down automatically with zero viewers
+- Switch to mbedtls 3
+
+-------------------------------------------------------------------
 Sun May 11 19:10:14 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
 
 - Make it final

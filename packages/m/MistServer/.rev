@@ -7,4 +7,12 @@
     <comment>New package see https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/TDTQUMFHAZHN43LP44QKSRMXNSVSYDJP/ </comment>
     <requestid>1279786</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f0c4d86b95d433155a7e0df82854851d</srcmd5>
+    <version>3.7</version>
+    <time>1752673906</time>
+    <user>anag_factory</user>
+    <comment>Update MistServer to version 3.7</comment>
+    <requestid>1293481</requestid>
+  </revision>
 </revisionlist>
