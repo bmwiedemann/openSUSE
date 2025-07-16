@@ -1620,4 +1620,12 @@
     <comment></comment>
     <requestid>1291410</requestid>
   </revision>
+  <revision rev="90" vrev="3">
+    <srcmd5>521cf388fe8082a14f49ca1dbca30907</srcmd5>
+    <version>4.33c</version>
+    <time>1752680179</time>
+    <user>anag_factory</user>
+    <comment>- Add loongarch64 to the list of 32-bit architectures (forwarded request 1291558 from glaubitz)</comment>
+    <requestid>1293789</requestid>
+  </revision>
 </revisionlist>

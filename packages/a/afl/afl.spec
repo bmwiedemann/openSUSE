@@ -18,7 +18,7 @@
 
 %define afl_rt compiler-rt,llvm-rt,llvm-rt-lto
 
-%ifarch %{arm} %ix86 s390x x86_64
+%ifarch %{arm} loongarch64 %ix86 s390x x86_64
 %define afl_32 1
 %endif
 
