@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jul 16 06:30:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.7.3:
+  * revert(helm): Replace VFS with embed for Helm chart rendering
+    (#14206)
+  * build(deps): bump golang.org/x/tools from 0.34.0 to 0.35.0
+    (#14242)
+  * chore(deps): update rust kube dependencies (#14235)
+  * build(deps): bump delegate from 0.13.3 to 0.13.4 (#14245)
+  * build(deps): bump tj-actions/changed-files (#14243)
+  * build(deps-dev): bump @babel/preset-env in /web/app (#14240)
+  * build(deps-dev): bump babel-jest from 30.0.2 to 30.0.4 in
+    /web/app (#14239)
+  * build(deps): bump core-js from 3.43.0 to 3.44.0 in /web/app
+    (#14238)
+  * build(deps): bump query-string from 9.2.1 to 9.2.2 in /web/app
+    (#14236)
+  * refactor(helm): Replace VFS with embed for Helm chart rendering
+    (#14206)
+  * chore: remove empty lines from manifests (#14233)
+  * chore(build): remove choco (#14234)
+  * build(deps): bump golang.org/x/net from 0.41.0 to 0.42.0
+    (#14229)
+  * build(deps): bump rustls from 0.23.28 to 0.23.29 (#14230)
+
+-------------------------------------------------------------------
 Fri Jul 11 04:48:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.7.2:
