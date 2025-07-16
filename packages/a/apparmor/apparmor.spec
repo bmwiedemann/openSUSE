@@ -82,7 +82,8 @@ Patch6:         apache-extra-profile-include-if-exists.diff
 # add path for precompiled cache (only done/applied if precompiled_cache is enabled)
 Patch7:         apparmor-enable-precompiled-cache.diff
 
-# dovecot24: doveconf writes /tmp/doveconf.* (boo#1243008)
+# dovecot24: doveconf writes /tmp/doveconf.* and /run/dovecot/dovecot.conf.binary (boo#1243008)
+# taken from https://gitlab.com/apparmor/apparmor/-/merge_requests/1733 (merged 2025-07-15 to master, 4.1 and 4.0 branch)
 Patch10:        dovecot24.diff
 
 PreReq:         sed
@@ -353,7 +354,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %if %{with precompiled_cache}
 %patch -P 7
 %endif
-%patch -P 10
+%patch -P 10 -p1
 
 %build
 export SUSE_ASNEEDED=0

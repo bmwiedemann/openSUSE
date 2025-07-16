@@ -1,38 +1,52 @@
-Index: profiles/apparmor.d/usr.sbin.dovecot
-===================================================================
---- profiles/apparmor.d/usr.sbin.dovecot.orig	2025-04-08 18:20:05.000000000 +0200
-+++ profiles/apparmor.d/usr.sbin.dovecot	2025-06-09 18:01:25.539162656 +0200
-@@ -46,6 +46,7 @@ profile dovecot /usr/{bin,sbin}/dovecot
-   @{PROC}/@{pid}/mounts r,
-   @{PROC}/sys/fs/suid_dumpable r,
-   @{PROC}/sys/kernel/core_pattern r,
-+  owner /tmp/doveconf.* rw,
-   /usr/bin/doveconf rix,
-   /usr/lib*/dovecot/anvil mrPx,
-   /usr/lib*/dovecot/auth mrPx,
-Index: profiles/apparmor.d/usr.lib.dovecot.config
-===================================================================
---- profiles/apparmor.d/usr.lib.dovecot.config.orig	2025-04-08 18:20:05.000000000 +0200
-+++ profiles/apparmor.d/usr.lib.dovecot.config	2025-06-09 18:04:34.457452088 +0200
-@@ -23,6 +23,7 @@ profile dovecot-config /usr/lib*/dovecot
-   capability dac_override,
+From 021f701e59c8b8d17fa74c6590b8f9333a0b7be0 Mon Sep 17 00:00:00 2001
+From: Christian Pfeiffer <cpfeiffer@rev-crew.info>
+Date: Sun, 13 Jul 2025 00:26:49 +0000
+Subject: [PATCH] Profiles: dovecot add access for dovecot 2.4 doveconf paths
+
+---
+ profiles/apparmor.d/abstractions/dovecot-common | 2 ++
+ profiles/apparmor.d/usr.lib.dovecot.config      | 2 ++
+ profiles/apparmor.d/usr.sbin.dovecot            | 1 +
+ 3 files changed, 5 insertions(+)
+
+diff --git a/profiles/apparmor.d/abstractions/dovecot-common b/profiles/apparmor.d/abstractions/dovecot-common
+index d0722eb14..d39159ecf 100644
+--- a/profiles/apparmor.d/abstractions/dovecot-common
++++ b/profiles/apparmor.d/abstractions/dovecot-common
+@@ -19,6 +19,8 @@
+   signal receive peer=dovecot,
  
-   /etc/dovecot/** r,
-+  /tmp/doveconf.* rw,
-   /usr/bin/doveconf rix,
-   /usr/lib*/dovecot/config mr,
+   owner @{run}/dovecot/config rw,
++  owner @{run}/dovecot/dovecot.conf.binary r,
++  owner /tmp/doveconf.* r,
+ 
+   # Include additions to the abstraction
+   include if exists <abstractions/dovecot-common.d>
+diff --git a/profiles/apparmor.d/usr.lib.dovecot.config b/profiles/apparmor.d/usr.lib.dovecot.config
+index c0ae6a58f..471e0651d 100644
+--- a/profiles/apparmor.d/usr.lib.dovecot.config
++++ b/profiles/apparmor.d/usr.lib.dovecot.config
+@@ -28,6 +28,8 @@ profile dovecot-config /usr/lib*/dovecot/config {
    /usr/lib*/dovecot/managesieve Px,
-Index: profiles/apparmor.d/usr.lib.dovecot.log
-===================================================================
---- profiles/apparmor.d/usr.lib.dovecot.log.orig	2025-06-09 18:05:05.994534375 +0200
-+++ profiles/apparmor.d/usr.lib.dovecot.log	2025-06-09 18:05:14.456327370 +0200
-@@ -17,6 +17,9 @@ profile dovecot-log /usr/lib*/dovecot/lo
-   include <abstractions/base>
-   include <abstractions/dovecot-common>
- 
-+  /apparmor/.null rw,
-+  /tmp/doveconf.* r,
-+
-   /usr/lib*/dovecot/log mr,
+   /usr/share/dovecot/** r,
+   /var/lib/dovecot/ssl-parameters.dat r,
++  owner @{run}/dovecot/dovecot.conf.binary* rw,
++  owner /tmp/doveconf.* rw,
  
    # Site-specific additions and overrides. See local/README for details.
+   include if exists <local/usr.lib.dovecot.config>
+diff --git a/profiles/apparmor.d/usr.sbin.dovecot b/profiles/apparmor.d/usr.sbin.dovecot
+index 246a43b59..5f5aba514 100644
+--- a/profiles/apparmor.d/usr.sbin.dovecot
++++ b/profiles/apparmor.d/usr.sbin.dovecot
+@@ -78,6 +78,7 @@ profile dovecot /usr/{bin,sbin}/dovecot flags=(attach_disconnected) {
+   @{run}/dovecot/ rw,
+   @{run}/dovecot/** rw,
+   link @{run}/dovecot/** -> /var/lib/dovecot/**,
++  owner /tmp/doveconf.* rw,
+ 
+   # Site-specific additions and overrides. See local/README for details.
+   include if exists <local/usr.sbin.dovecot>
+-- 
+GitLab
+

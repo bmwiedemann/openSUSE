@@ -3011,4 +3011,12 @@ Also note that the &quot;mailserver_setup&quot; test in https://openqa.opensuse.
     for the detailed upstream changelog (forwarded request 1288379 from cboltz)</comment>
     <requestid>1288380</requestid>
   </revision>
+  <revision rev="226" vrev="2">
+    <srcmd5>1ab11509d532b27fc47a8301bccb2175</srcmd5>
+    <version>4.1.1</version>
+    <time>1752680131</time>
+    <user>anag_factory</user>
+    <comment>- replace dovecot24.diff with upstream fix from MR 1733 (boo#1243008)</comment>
+    <requestid>1293528</requestid>
+  </revision>
 </revisionlist>
