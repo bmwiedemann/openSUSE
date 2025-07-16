@@ -20,7 +20,7 @@
 %global __requires_exclude typelib\\(GtkosxApplication\\)|typelib\\(Gtkspell\\)|typelib\\(GConf\\)
 %define pythons python3
 Name:           gramps
-Version:        6.0.1
+Version:        6.0.3
 Release:        0
 Summary:        Genealogical Research Software
 License:        GPL-2.0-or-later

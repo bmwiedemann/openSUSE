@@ -660,4 +660,39 @@ Does it make sense to actually use &quot;Suggests:&quot;? I do not find a way to
     <comment></comment>
     <requestid>1285795</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>572fb687ab58fd4556bf3882d7694403</srcmd5>
+    <version>6.0.3</version>
+    <time>1752673921</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 6.0.3
+  * Revert “Pass an object rather than a handle to the note editor callback”.
+    Fixes #13884.
+  * Update translations.
+- Update to version 6.0.2
+  * Fix date modifiers for lt.
+  * Update translation template for new release.
+  * Add optimization to HasIdOf rules.
+  * Connect the Help button in the repository reference editor. Fixes #13352.
+  * Pass an object rather than a handle to the note editor callback. Fixes
+    #13702.
+  * Fix broken compound dates with bce year in XML import. Fixes #13631.
+  * Avoid multiple copies of Rules after Plugin manager reload. Fixes #13844.
+  * Fix bad surname list after upgrade from bsddb. Fixes #13807.
+  * Fix narrated web when two places have same name but a different type. Fixes
+    #13841.
+  * Fix crash in citation view due to wrong filter_info. Fixes #13796.
+  * Don’t attempt to call set_orientation if self.pui is None. Fixes #13820.
+  * Don’t crash in search_changed if self.search_list has no active item. Fixes
+    #13793.
+  * Fix incorrect addons project after upgrade from Gramps 5.2. Fixes #13789.
+  * Respect user choice of CSS files for existing narrated web site. Fixes
+    #13792.
+  * Ensure that the spell checker gets removed with the editor. Fixes #13795.
+  * Fix Optimizer class when combining sub-filters. Fixes #13799.
+  * Remove check for Gtk translations in Snap packages.
+  * Update translations.
+- Refresh gramps-no-translations-check.patch (forwarded request 1293470 from jaimeMF)</comment>
+    <requestid>1293472</requestid>
+  </revision>
 </revisionlist>
