@@ -190,4 +190,13 @@
 </comment>
     <requestid>1167019</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>3b17f7ea03cd9428f4716d8da0fc6d20</srcmd5>
+    <version>1.4.0+2</version>
+    <time>1752673889</time>
+    <user>anag_factory</user>
+    <comment>- Remove cheese dependency for 16.0
+</comment>
+    <requestid>1293321</requestid>
+  </revision>
 </revisionlist>

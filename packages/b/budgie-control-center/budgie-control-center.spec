@@ -14,8 +14,11 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
-
+%if 0%{?suse_version} < 1600
+%bcond_without cheese
+%else
+%bcond_with cheese
+%endif
 Name:           budgie-control-center
 Version:        1.4.0+2
 Release:        0
@@ -33,7 +36,10 @@ Requires:       gnome-online-accounts
 BuildRequires:  cups-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig(accountsservice)
+%if %{with cheese}
 BuildRequires:  pkgconfig(cheese)
+BuildRequires:  pkgconfig(cheese-gtk)
+%endif
 BuildRequires:  pkgconfig(colord)
 BuildRequires:  pkgconfig(colord-gtk)
 BuildRequires:  pkgconfig(gcr-3)
@@ -82,7 +88,7 @@ This package contains the Bash Completion for Budgie Control Center
 %autosetup -p1
 
 %build
-%meson -Ddocumentation=true -Dmalcontent=true
+%meson -Ddocumentation=true -Dmalcontent=true %{!?with_cheese:-Dcheese=false}
 %meson_build
 
 %install
