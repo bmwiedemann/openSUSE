@@ -141,4 +141,23 @@
 </comment>
     <requestid>1276330</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>65d0c99fd5bd820c87602dbc00e5db0f</srcmd5>
+    <version>3.3.4</version>
+    <time>1752673927</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.3.4:
+  * Fixed an issue caused by apps with spaces in their file names
+- Update to 3.3.3:
+  * Fixed an issue introduced with 3.3.1
+  * Fixed an issue causing some apps to be detected as always out-of-date
+- Update to 3.3.1:
+  * Fixed an issue causing app updates to delete the original app
+- Update to 3.3.0:
+  * Added support for Gitlab
+  * Added support for Codeberg
+  * Allow users to override the update url provided by the developer
+</comment>
+    <requestid>1293498</requestid>
+  </revision>
 </revisionlist>

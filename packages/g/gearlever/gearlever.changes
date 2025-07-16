@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 15 16:28:13 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 3.3.4:
+  * Fixed an issue caused by apps with spaces in their file names
+- Update to 3.3.3:
+  * Fixed an issue introduced with 3.3.1
+  * Fixed an issue causing some apps to be detected as always out-of-date
+- Update to 3.3.1:
+  * Fixed an issue causing app updates to delete the original app
+- Update to 3.3.0:
+  * Added support for Gitlab
+  * Added support for Codeberg
+  * Allow users to override the update url provided by the developer
+
+-------------------------------------------------------------------
 Fri May  9 20:43:16 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 3.2.4:
