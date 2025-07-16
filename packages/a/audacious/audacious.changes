@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jul 16 04:54:57 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Update to version 4.5
+  New features:
+  * Achieve feature parity for Jump to Song dialog (Qt vs. GTK)
+  * Read color scheme from settings portal
+  * Support Album Artist tag in APE header
+  * Improve probing of small audio files
+  * Support outdated ReplayGain tags again in Opus files
+  * Allow fetching lyrics from lrclib.net
+  * Render Clutterbar in several Winamp skins
+  * Distribute additional skins by default: Glare, Winamp 2.9
+  * Add setting for middle click action in Status Icon plugin
+  Bugs fixed since 4.4:
+  * Plug massive memory leaks in Jump to Song dialog (Qt)
+  * Make Blur Scope GTK plugin work on Wayland
+  * Prevent buffer overflow
+  * Work around Qt 6 icon search path bug
+  * Prefer OpenMPT plugin for S3M files
+  * Remove .m4v from supported file extensions
+  * Remove dual play icon in default skin
+
+-------------------------------------------------------------------
 Sat Dec 21 17:30:46 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - Update to version 4.4.2

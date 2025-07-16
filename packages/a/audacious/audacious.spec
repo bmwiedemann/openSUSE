@@ -1,7 +1,7 @@
 #
 # spec file for package audacious
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define aud_plugin_ver_min 4.4
-%define aud_plugin_ver_max 4.4.99
+%define aud_plugin_ver_min 4.5
+%define aud_plugin_ver_max 4.5.99
 %define core_soname 5
 %define gtk_soname 6
 %define qt_soname 3
@@ -29,7 +29,7 @@
 %endif
 
 Name:           audacious
-Version:        4.4.2
+Version:        4.5
 Release:        0
 Summary:        Audio player with graphical UI and library functionality
 License:        BSD-2-Clause
