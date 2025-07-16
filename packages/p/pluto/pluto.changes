@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 16 06:16:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.22.0:
+  * chore(deps): update tablewriter dependency (#572)
+
+-------------------------------------------------------------------
 Thu Jul 10 07:35:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.21.9:
