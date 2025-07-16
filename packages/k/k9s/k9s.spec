@@ -17,14 +17,13 @@
 
 
 Name:           k9s
-Version:        0.50.7
+Version:        0.50.8
 Release:        0
 Summary:        Curses based terminal UI for Kubernetes clusters
 License:        Apache-2.0
 URL:            https://github.com/derailed/k9s
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Patch1:         CVE-2025-53547.patch
 BuildRequires:  golang(API) = 1.24
 ExcludeArch:    %{ix86}
 
@@ -37,9 +36,6 @@ Kubernetes resources.
 
 %prep
 %setup -qa1
-pushd vendor/helm.sh/helm/v3
-%patch -P 1 -p1
-popd
 
 %build
 # hash will be shortened by COMMIT_HASH:0:8 later

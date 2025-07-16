@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 16 06:43:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.8:
+  * Resolved Issues
+    - #3453 [Feature Request] Add GPU column to pod/container view
+    - #3451 Weirdness when filtering namespaces
+    - #3439 Allow KnownGPUVendors customization
+- remove patch CVE-2025-53547.patch
+
+-------------------------------------------------------------------
 Wed Jul  9 16:42:07 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - add CVE-2025-53547.patch (CVE-2025-53547, bsc#1246155)
