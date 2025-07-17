@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Jul 17 00:38:48 UTC 2025 - William Brown <william.brown@suse.com>
+
+- Delete obs cpio archive
+
+-------------------------------------------------------------------
+Thu Jun 12 06:32:43 UTC 2025 - William Brown <william.brown@suse.com>
+
+- bsc#1243862 - CVE-2024-12224 - idna accepts invalid punycode
+- bsc#1230032 - GHSA-r7qv-8r2h-pg27 - shlex quote api
+
+-------------------------------------------------------------------
+Sun Jun 08 14:39:37 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.28.2~0:
+  * Deprecate native-tls as well
+  * Enable HTTP/2 support for reqwest download backend
+  * Emit tracing events from log facade calls
+  * download: show Debug representation for errors
+  * Avoid repeated globals in tracing events
+  * Log original download errors immediately
+  * feat(cli/rustup-mode): add aliases to `rustup component remove`
+  * Switch flate2 to use the zlib-rs backend
+  * Hardlink proxies if symlinks aren't reachable
+  * Add powerpc64le-unknown-linux-musl support
+  * Add toolchain_name to not installed bail msg
+  * Warn about using curl
+  * Drop workspace indirection
+  * Fold download crate back into rustup
+  * download: merge integration test files
+  * chore(deps): lock file maintenance
+  * Test CARGO environment replacement
+  * Update CARGO env var if it is a rustup proxy
+  * chore(deps): lock file maintenance
+  * Tweak toolchain subcommand help text
+  * Move toolchain and default commands first
+  * show toolchain paths in rustup show -v output
+  * refactor(cli/self-update): save allocations in `Nu::rcfiles()`
+  * fix(cli/self-update)!: stop appending to `env.nu` due to deprecation
+  * fix(cli/self-update): consider Windows paths in Nushell suggestions
+  * refactor(cli/self-update): use `path add` in `env.nu` template
+  * fix(cli/self-update): use interpolated string in `env.nu` template
+  * Upgrade dependencies
+  * docs(user-guide/environment-variables): document `RUSTUP_VERSION`
+  * feat(rustup-init/sh): allow setting `RUSTUP_VERSION` during installation
+  * feat(cli/self-update): allow setting `RUSTUP_VERSION` for arbitrary 
+    downgrades
+  * feat(test/clitools): add `Config::expect_ok_ex_env()`
+  * fix(errors)!: improve error messages for `RustupError::ToolchainNotInstalled`
+  * Add set auto-install disable
+  * Use `cursor: pointer` for copy button on website
+  * fix(dist): refine suggestions about missing targets
+  * Append Windows bin directory to PATH by default
+  * Remove validation for custom toolchains when reading rust-toolchain.toml
+  * document RUSTUP_AUTO_INSTALL
+  * Fix build script `cargo` instructions
+
+-------------------------------------------------------------------
 Wed May  7 04:35:06 UTC 2025 - William Brown <william.brown@suse.com>
 
 - bsc#1242617 - CVE-2025-3416 - openssl use after free
