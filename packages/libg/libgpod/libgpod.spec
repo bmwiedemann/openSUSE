@@ -1,7 +1,7 @@
 #
 # spec file for package libgpod
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -131,7 +131,7 @@ This package includes support tools for libgpod.
 
 %build
 %if %{libplist2}
-autoreconf -fvi
+autoreconf -fvi -I /usr/share/gettext/m4
 %endif
 %configure --disable-silent-rules \
            --disable-static \
