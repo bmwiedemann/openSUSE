@@ -31,4 +31,12 @@
     <comment>Remove dependency on maven2</comment>
     <requestid>1113419</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>ec85bd4937218b628b8f9b022b6d35d0</srcmd5>
+    <version>2.4</version>
+    <time>1752765585</time>
+    <user>anag_factory</user>
+    <comment>Fix pom file</comment>
+    <requestid>1293994</requestid>
+  </revision>
 </revisionlist>

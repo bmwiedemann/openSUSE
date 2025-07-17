@@ -1,7 +1,7 @@
 #
 # spec file for package maven-ant-plugin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,6 +59,7 @@ API documentation for %{name}.
 # migrate to maven 3
 %pom_xpath_set //pom:mavenVersion 3.8.6
 %pom_change_dep :maven-project :maven-compat
+%pom_xpath_remove pom:project/pom:parent/pom:relativePath
 
 %build
 %{mvn_build} -f -- \
