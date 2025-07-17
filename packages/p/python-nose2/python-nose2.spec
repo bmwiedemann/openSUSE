@@ -1,7 +1,7 @@
 #
 # spec file for package python-nose2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-nose2
 Version:        0.15.1
@@ -31,10 +32,10 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-wheel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
 Suggests:       python-coverage
 BuildArch:      noarch
 %python_subpackages
@@ -68,11 +69,8 @@ nose2 -v --pretty-assert
 deactivate
 }
 
-%post
-%python_install_alternative nose2
-
-%postun
-%python_uninstall_alternative nose2
+%pre
+%python_libalternatives_reset_alternative nose2
 
 %files %{python_files}
 %license LICENSE

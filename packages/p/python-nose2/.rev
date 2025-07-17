@@ -183,4 +183,13 @@
     support. Simply pip install tomli as necessary.</comment>
     <requestid>1178617</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>9367b47e44a65759a80cedae9810eb4d</srcmd5>
+    <version>0.15.1</version>
+    <time>1752765566</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives
+</comment>
+    <requestid>1294075</requestid>
+  </revision>
 </revisionlist>
