@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 17 03:46:27 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.33.3:
+  * Skip linter validation to allow cherrypick
+  * Use per-policy marker names for VAP integration tests.
+  * Fix validation for Job with suspend=true,completions=0 to set Complete condition
+  * Fix -Consistent paginated lists serve from cache
+  * Add check to see if promote worked within the retry loop
+  * reduce logspam when calculating sandbox resources
+  * Clean backoff record earlier
+  * fix(kubelet): acquire imageRecordsLock when removing image
+
+-------------------------------------------------------------------
 Sat Jun 21 06:24:37 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.33.2:
