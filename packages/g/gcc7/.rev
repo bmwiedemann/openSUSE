@@ -705,4 +705,12 @@ This is in preparation of Pointer Authentication enablement in Tumbleweed. (forw
   variant conflict with the unversioned cross-*-gcc package.</comment>
     <requestid>1283659</requestid>
   </revision>
+  <revision rev="47" vrev="22">
+    <srcmd5>d5245941f8fca8e99bd5c0360ca2a470</srcmd5>
+    <version>7.5.0+r278197</version>
+    <time>1752765567</time>
+    <user>anag_factory</user>
+    <comment>- Fixup conflicts again.</comment>
+    <requestid>1294073</requestid>
+  </revision>
 </revisionlist>

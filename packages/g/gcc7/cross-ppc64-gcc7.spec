@@ -278,17 +278,15 @@ ExclusiveArch:  ppc64le  x86_64 s390x aarch64
 %if "%pkgname" == "cross-ppc64-gcc49"
 Obsoletes:      cross-ppc-gcc49 <= 4.9.0+r209354
 %endif
-%if 0%{?gcc_target_newlib:1} || "%{cross_arch}" == "avr"
+%if 0%{!?gcc_accel:1}
 # Generally only one cross for the same target triplet can be installed
 # at the same time as we are populating a non-version-specific sysroot
-Provides:       %{gcc_target_arch}-gcc
-Conflicts:      %selfconflict %{gcc_target_arch}-gcc
-%endif
-%if 0%{?gcc_libc_bootstrap:1}
 # The -bootstrap packages file-conflict with the non-bootstrap variants.
 # Even if we don't actually (want to) distribute the bootstrap variants
 # the following avoids repo-checker spamming us endlessly.
-Conflicts:      %{gcc_target_arch}-gcc
+Provides:       %{gcc_target_arch}-gcc
+Conflicts:      %selfconflict %{gcc_target_arch}-gcc
+Conflicts:      %{pkgname}-bootstrap
 %endif
 #!BuildIgnore: gcc-PIE
 BuildRequires:  update-alternatives
