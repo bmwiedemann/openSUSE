@@ -54,7 +54,7 @@ This package provides shell integration for the ownCloud desktop sync client for
 %{kf6_build}
 
 %install
-%{kf6_install} -C build
+%kf6_install
 
 %ldconfig_scriptlets
 

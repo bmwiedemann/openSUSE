@@ -33,4 +33,12 @@ to its own tarball.</comment>
   * Port to KF6, splitting a header for the action plugin (forwarded request 1250246 from Vogtinator)</comment>
     <requestid>1250567</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>cae5e1d96ba1012378333d1dbb52e0a2</srcmd5>
+    <version>6.0.0</version>
+    <time>1752765532</time>
+    <user>anag_factory</user>
+    <comment>- Fix %install</comment>
+    <requestid>1293962</requestid>
+  </revision>
 </revisionlist>
