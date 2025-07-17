@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           wayshot
-Version:        1.3.1+git50.gf7dee21c16980eaabd1394b79ec42710e00bf6e5
+Version:        1.3.1+git56.g28331dcc3886f8b9e6bc09f9951fe59744c16acf
 Release:        0
 Summary:        Screenshot tool for wlroots based compositors
 License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND BSD-3-Clause AND ISC AND MIT AND Zlib AND BSD-2-Clause
