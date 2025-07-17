@@ -17,6 +17,7 @@
 #
 
 
+%bcond_without libalternatives
 %define stable_version 0.1.1
 %define reponame inputmodule-rs
 %{?sle15_python_module_python}
@@ -32,8 +33,10 @@ BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyserial}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       framework-inputmodule-control
 Requires:       python-Pillow
 Requires:       python-base >= 3.7
@@ -41,8 +44,6 @@ Requires:       python-getkey
 Requires:       python-pygame
 Requires:       python-pyserial
 Requires:       python-tk
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -66,11 +67,11 @@ cd python/
 %python_clone -a %{buildroot}%{_bindir}/ledmatrixgui
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative ledmatrixctl ledmatrixgui
+%pre
+# removing old update-alternatives entries
+%python_libalternatives_reset_alternative ledmatrixctl ledmatrixgui
 
-%postun
-%python_uninstall_alternative ledmatrixctl ledmatrixgui
+# post and postun macro call is not needed with only libalternatives
 
 %files %{python_files}
 %license LICENSE

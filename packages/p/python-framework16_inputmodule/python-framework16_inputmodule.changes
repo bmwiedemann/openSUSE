@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  4 12:57:49 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- migrate from update-alternatives to libalternatives
+
+-------------------------------------------------------------------
 Wed Apr 16 12:15:57 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Change version scheme from date to tag + git offset
