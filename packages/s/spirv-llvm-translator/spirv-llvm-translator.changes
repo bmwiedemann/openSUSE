@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 10 21:42:56 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 20.1.4.
+  * Fix crash on coopmat conversion without decoration.
+  * Remove internal values for SPV_INTEL_cache_controls pt.2.
+  * Remove SPV_INTEL_fast_composite extension.
+
+-------------------------------------------------------------------
 Sat Jun  7 15:55:24 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 20.1.3.
