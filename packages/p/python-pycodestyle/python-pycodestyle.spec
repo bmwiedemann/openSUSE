@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pycodestyle
-Version:        2.13.0
+Version:        2.14.0
 Release:        0
 Summary:        Python style guide checker
 License:        MIT

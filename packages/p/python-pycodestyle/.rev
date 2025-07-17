@@ -213,4 +213,15 @@
   * E251: fix false positive for PEP 696 defaults</comment>
     <requestid>1269466</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>97c6d0d089e7497385b3560cfc329f9d</srcmd5>
+    <version>2.14.0</version>
+    <time>1752765417</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.14.0:
+  * Add support for python 3.14.  PR #1283.
+  * Fix false positive for TypeVar defaults with more than one
+    argument.</comment>
+    <requestid>1292498</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 13 12:35:54 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.0:
+  * Add support for python 3.14.  PR #1283.
+  * Fix false positive for TypeVar defaults with more than one
+    argument.
+
+-------------------------------------------------------------------
 Tue Apr 15 07:56:06 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.13.0:
