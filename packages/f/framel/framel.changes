@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 10 14:38:51 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Pass CMAKE_C_STANDARD=17 to cmake to fix builds with GCC 15.
+
+-------------------------------------------------------------------
 Thu Jan 23 06:10:15 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 8.48.4:

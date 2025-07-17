@@ -81,6 +81,7 @@ mkdir ../$python
 cp -pr ./ ../$python
 pushd ../$python
 %cmake \
+  -DCMAKE_C_STANDARD=17 \
   -DENABLE_C:BOOL=ON \
   -DENABLE_PYTHON:BOOL=ON \
   -DCMAKE_INSTALL_INCLUDEDIR:PATH=%{_includedir}/%{name} \
