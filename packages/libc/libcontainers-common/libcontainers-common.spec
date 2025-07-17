@@ -56,8 +56,6 @@ Patch101:       0002-storage-conf-prio-list.patch
 Patch102:       0003-containers-conf-suse-defaults.patch
 BuildRequires:  go-go-md2man
 Requires(post): %{_bindir}/sed
-# add SLE-specific mounts for only SLES systems
-Requires:       (libcontainers-sles-mounts if (product(SUSE_SLE) or product(SLE-Micro)))
 Requires:       libcontainers-policy >= %{version}
 Suggests:       (libcontainers-policy-openSUSE if openSUSE-release)
 # Default to SUSE registry on SL Micro,
@@ -75,12 +73,6 @@ BuildArch:      noarch
 %description
 Configuration files and manpages shared by tools that are based on the
 github.com/containers libraries, such as Buildah, CRI-O, Podman and Skopeo.
-
-%package -n libcontainers-sles-mounts
-Summary:        Default mounts for SLE distributions
-
-%description -n libcontainers-sles-mounts
-Ships a /etc/containers/mounts.conf with default mounts for SLE distributions
 
 %package -n libcontainers-openSUSE-policy
 Summary:        Policy to enforce image verification for SLE BCI
@@ -160,13 +152,6 @@ cd common-%{commonver}
 go-md2man -in pkg/hooks/docs/oci-hooks.5.md -out pkg/hooks/docs/oci-hooks.5
 cd ..
 
-# These would only be used on SLE-systems
-# via libcontainers-sles-mounts subpackage
-cat >>%{SOURCE5} <<EOL
-%{_sysconfdir}/SUSEConnect:%{_sysconfdir}/SUSEConnect
-%{_sysconfdir}/zypp/credentials.d/SCCcredentials:%{_sysconfdir}/zypp/credentials.d/SCCcredentials
-EOL
-
 # Default to SUSE registry on SL Micro
 sed 's/unqualified-search-registries.*/unqualified-search-registries = \["registry.suse.com"\]/' %{SOURCE6} > registries.conf.suse
 
@@ -237,6 +222,7 @@ done
 
 %config(noreplace) %{_sysconfdir}/containers/registries.d/default.yaml
 %config(noreplace) %{_sysconfdir}/containers/registries.conf.d/000-shortnames.conf
+%{_datadir}/containers/mounts.conf
 %{_datadir}/containers/seccomp.json
 %{_datadir}/containers/storage.conf
 %{_datadir}/containers/containers.conf
@@ -245,8 +231,6 @@ done
 %{_mandir}/man5/*.5%{?ext_man}
 %license LICENSE
 
-%files -n libcontainers-sles-mounts
-%{_datadir}/containers/mounts.conf
 
 %files -n libcontainers-openSUSE-policy
 %config(noreplace) %{_sysconfdir}/containers/policy.json.openSUSE

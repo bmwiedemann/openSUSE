@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 14 07:24:58 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
+
+- Remove subpackage libcontainers-sles-mounts and prevent auto mounting
+  SUSEConnect credentials from host to container. SLE16 onwards, the idea is
+  to expect users to explicitly mount secrets. (bsc#1246227)
+
+-------------------------------------------------------------------
 Thu May 29 16:30:56 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
 
 - Sync containers.conf & storage.conf with the current c/* versions
