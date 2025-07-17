@@ -1,0 +1,35 @@
+commit 98cab46bff3ff124bb6428698f9987f87eefc619
+Author: lmat dartme18@gmail.com
+Date: Mon Jan 2 12:25:28 2023 -0500
+
+Corrected compilation errors
+
+  aliens.c: In function ‘render’:
+  aliens.c:167:31: warning: iteration 10 invokes undefined behavior [-Waggressive-loop-optimizations]
+    167 |                 lowest_ship[k]=-1;
+        |                 ~~~~~~~~~~~~~~^~~
+  aliens.c:166:19: note: within this loop
+    166 |         for (k=0;k<11;k++) {
+        |                  ~^~~
+  aliens.c:167:31: warning: ‘__builtin_memset’ forming offset [40, 43] is out of the bounds [0, 40] of object ‘lowest_ship’ with type ‘int[10]’ [-Warray-bounds]
+    167 |                 lowest_ship[k]=-1;
+        |                 ~~~~~~~~~~~~~~^~~
+  In file included from aliens.c:25:
+  aliens.h:50:5: note: ‘lowest_ship’ declared here
+     50 | int lowest_ship[ALIENS_MAX_NUMBER_X];
+        |     ^~~~~~~~~~~
+
+---
+Index: ninvaders-0.1.1/aliens.c
+===================================================================
+--- ninvaders-0.1.1.orig/aliens.c
++++ ninvaders-0.1.1/aliens.c
+@@ -176,7 +176,7 @@ void render()
+ 	aliens.right=-1;
+ 	aliens.bottom=-1;
+ 	shipnum=0;
+-	for (k=0;k<11;k++) {
++	for (k=0;k<ALIENS_MAX_NUMBER_X;k++) {
+ 		lowest_ship[k]=-1;
+ 	}
+ 	

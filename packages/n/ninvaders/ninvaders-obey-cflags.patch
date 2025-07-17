@@ -1,7 +1,7 @@
-diff --git a/Makefile b/Makefile
-index d815e2f..c68eeeb 100644
---- a/Makefile
-+++ b/Makefile
+Index: ninvaders-0.1.1/Makefile
+===================================================================
+--- ninvaders-0.1.1.orig/Makefile
++++ ninvaders-0.1.1/Makefile
 @@ -1,5 +1,5 @@
  CC=gcc
 -CFLAGS=-O3 -Wall

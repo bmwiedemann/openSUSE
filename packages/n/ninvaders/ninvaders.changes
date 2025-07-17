@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jul 10 12:36:01 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Backport ninvaders-fix-render-loop.patch: Fix buffer overflow in
+  render() function. Same as buffer_owerflow.patch, but with fixed
+  patchfile name and updated PATCH-FIX-UPSTREAM.
+  Adapted from https://sourceforge.net/p/ninvaders/bugs/2/
+
+- Remove buffer_owerflow.patch: Obsoleted by ninvaders-fix-render-loop.patch.
+
+- Modify ninvaders-obey-cflags.patch: Add missing PATCH-FIX-UPSTREAM comment
+  in spec file.
+
+-------------------------------------------------------------------
+Thu Jul 10 08:28:40 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Backport ninvaders-fix-multiple-definitions.patch: Fix link-time
+  error from multiple definitions of the same symbols in various
+  object files.
+  Adapted from https://sourceforge.net/p/ninvaders/bugs/2/
+
+- Add ninvaders-sighandler_t.patch: Fix function signature of the
+  signal handler. The correct signature expects an integer argument,
+  which is currently missing. Resolves compile-time errors.
+
+- Add ninvaders-fix-doSleep-decl.patch: Harmonize conflicting
+  declarations of doSleep(). The function expects an integer argument,
+  which is currently missing in the declarations. Resolves compile-time
+  errors.
+
+- Refresh existing patches accordingly
+
+-------------------------------------------------------------------
 Thu Feb 22 14:10:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

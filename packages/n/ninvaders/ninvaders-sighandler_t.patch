@@ -1,0 +1,21 @@
+Fixes the compile-time error show below.
+
+[    5s] nInvaders.c: In function ‘setUpTimer’:
+[    5s] nInvaders.c:323:29: error: assignment to ‘__sighandler_t’ {aka ‘void (*)(int)’} from incompatible pointer type ‘void (*)(void)’ [-Wincompatible-pointer-types]
+[    5s]   323 |         myAction.sa_handler = &handleTimer;
+[    5s]       |
+
+---
+Index: ninvaders-0.1.1/nInvaders.c
+===================================================================
+--- ninvaders-0.1.1.orig/nInvaders.c
++++ ninvaders-0.1.1/nInvaders.c
+@@ -211,7 +211,7 @@ void readInput()
+  * timer
+  * this method is executed every 1 / FPS seconds  
+  */
+-void handleTimer()
++void handleTimer(int signum)
+ {
+ 	static int aliens_move_counter = 0; 
+ 	static int aliens_shot_counter = 0;

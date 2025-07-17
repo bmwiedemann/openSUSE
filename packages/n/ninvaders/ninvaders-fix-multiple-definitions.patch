@@ -1,0 +1,163 @@
+commit 98cab46bff3ff124bb6428698f9987f87eefc619
+Author: lmat dartme18@gmail.com
+Date: Mon Jan 2 12:25:28 2023 -0500
+
+Corrected compilation errors
+
+  gcc  -onInvaders globals.o view.o aliens.o ufo.o player.o nInvaders.o -lncurses
+  /usr/bin/ld: ufo.o:(.bss+0x6d0): multiple definition of `aliens'; aliens.o:(.bss+0x6d0): first defined here
+  /usr/bin/ld: ufo.o:(.bss+0x0): multiple definition of `skill_level'; aliens.o:(.bss+0x0): first defined here
+  /usr/bin/ld: ufo.o:(.bss+0x4): multiple definition of `level'; aliens.o:(.bss+0x4): first defined here
+  /usr/bin/ld: ufo.o:(.bss+0x8): multiple definition of `weite'; aliens.o:(.bss+0x8): first defined here
+  /usr/bin/ld: ufo.o:(.bss+0x20): multiple definition of `bunker'; aliens.o:(.bss+0x20): first defined here
+  /usr/bin/ld: ufo.o:(.bss+0x540): multiple definition of `alienBlock'; aliens.o:(.bss+0x540): first defined here
+  /usr/bin/ld: ufo.o:(.bss+0x608): multiple definition of `alienshotnum'; aliens.o:(.bss+0x608): first defined here
+  /usr/bin/ld: ufo.o:(.bss+0x620): multiple definition of `alienshoty'; aliens.o:(.bss+0x620): first defined here
+  /usr/bin/ld: ufo.o:(.bss+0x660): multiple definition of `alienshotx'; aliens.o:(.bss+0x660): first defined here
+  /usr/bin/ld: ufo.o:(.bss+0x6a0): multiple definition of `lowest_ship'; aliens.o:(.bss+0x6a0): first defined here
+  /usr/bin/ld: ufo.o:(.bss+0x6c8): multiple definition of `shipnum'; aliens.o:(.bss+0x6c8): first defined here
+  /usr/bin/ld: player.o:(.bss+0x6f0): multiple definition of `aliens'; aliens.o:(.bss+0x6d0): first defined here
+  /usr/bin/ld: player.o:(.bss+0x18): multiple definition of `skill_level'; aliens.o:(.bss+0x0): first defined here
+  /usr/bin/ld: player.o:(.bss+0x6e8): multiple definition of `shipnum'; aliens.o:(.bss+0x6c8): first defined here
+  /usr/bin/ld: player.o:(.bss+0x1c): multiple definition of `level'; aliens.o:(.bss+0x4): first defined here
+  /usr/bin/ld: player.o:(.bss+0x20): multiple definition of `weite'; aliens.o:(.bss+0x8): first defined here
+  /usr/bin/ld: player.o:(.bss+0x28): multiple definition of `ufo'; ufo.o:(.bss+0x6e8): first defined here
+  /usr/bin/ld: player.o:(.bss+0x40): multiple definition of `bunker'; aliens.o:(.bss+0x20): first defined here
+  /usr/bin/ld: player.o:(.bss+0x560): multiple definition of `alienBlock'; aliens.o:(.bss+0x540): first defined here
+  /usr/bin/ld: player.o:(.bss+0x628): multiple definition of `alienshotnum'; aliens.o:(.bss+0x608): first defined here
+  /usr/bin/ld: player.o:(.bss+0x640): multiple definition of `alienshoty'; aliens.o:(.bss+0x620): first defined here
+  /usr/bin/ld: player.o:(.bss+0x680): multiple definition of `alienshotx'; aliens.o:(.bss+0x660): first defined here
+  /usr/bin/ld: player.o:(.bss+0x6c0): multiple definition of `lowest_ship'; aliens.o:(.bss+0x6a0): first defined here
+  /usr/bin/ld: nInvaders.o:(.bss+0x6f0): multiple definition of `weite'; aliens.o:(.bss+0x8): first defined here
+  /usr/bin/ld: nInvaders.o:(.bss+0x6ec): multiple definition of `level'; aliens.o:(.bss+0x4): first defined here
+  /usr/bin/ld: nInvaders.o:(.bss+0x6e8): multiple definition of `skill_level'; aliens.o:(.bss+0x0): first defined here
+  /usr/bin/ld: nInvaders.o:(.bss+0x6c8): multiple definition of `shipnum'; aliens.o:(.bss+0x6c8): first defined here
+  /usr/bin/ld: nInvaders.o:(.bss+0x18): multiple definition of `ufo'; ufo.o:(.bss+0x6e8): first defined here
+  /usr/bin/ld: nInvaders.o:(.bss+0x20): multiple definition of `bunker'; aliens.o:(.bss+0x20): first defined here
+  /usr/bin/ld: nInvaders.o:(.bss+0x540): multiple definition of `alienBlock'; aliens.o:(.bss+0x540): first defined here
+  /usr/bin/ld: nInvaders.o:(.bss+0x608): multiple definition of `alienshotnum'; aliens.o:(.bss+0x608): first defined here
+  /usr/bin/ld: nInvaders.o:(.bss+0x620): multiple definition of `alienshoty'; aliens.o:(.bss+0x620): first defined here
+  /usr/bin/ld: nInvaders.o:(.bss+0x660): multiple definition of `alienshotx'; aliens.o:(.bss+0x660): first defined here
+  /usr/bin/ld: nInvaders.o:(.bss+0x6a0): multiple definition of `lowest_ship'; aliens.o:(.bss+0x6a0): first defined here
+  /usr/bin/ld: nInvaders.o:(.bss+0x6d0): multiple definition of `aliens'; aliens.o:(.bss+0x6d0): first defined here
+  collect2: error: ld returned 1 exit status
+  make: *** [Makefile:11: nInvaders] Error 1
+
+---
+Index: ninvaders-0.1.1/aliens.c
+===================================================================
+--- ninvaders-0.1.1.orig/aliens.c
++++ ninvaders-0.1.1/aliens.c
+@@ -26,6 +26,19 @@
+ #include "player.h"
+ #include "nInvaders.h"
+ 
++Aliens aliens;
++
++int shipnum;
++
++// todo: move to structure
++int lowest_ship[ALIENS_MAX_NUMBER_X];
++int alienshotx[ALIENS_MAX_MISSILES];
++int alienshoty[ALIENS_MAX_MISSILES];
++int alienshotnum;
++int alienBlock[ALIENS_MAX_NUMBER_Y][ALIENS_MAX_NUMBER_X];
++
++int bunker[BUNKERHEIGHT][BUNKERWIDTH + 1];
++
+ /**
+  * initialize aliens attributes
+  */
+Index: ninvaders-0.1.1/aliens.h
+===================================================================
+--- ninvaders-0.1.1.orig/aliens.h
++++ ninvaders-0.1.1/aliens.h
+@@ -38,22 +38,22 @@ struct Aliens {
+ 	int speed;	  // 0: no movement; 1: one per turn; etc.
+ };
+ 	
+-Aliens aliens;
++extern Aliens aliens;
+ 		
+-int shipnum;	
++extern int shipnum;	
+ 
+ #define ALIENS_MAX_NUMBER_X 10
+ #define ALIENS_MAX_NUMBER_Y 5	
+ #define ALIENS_MAX_MISSILES 10	
+ 
+ // todo: move to structure
+-int lowest_ship[ALIENS_MAX_NUMBER_X];
+-int alienshotx[ALIENS_MAX_MISSILES];
+-int alienshoty[ALIENS_MAX_MISSILES];
+-int alienshotnum;
+-int alienBlock[ALIENS_MAX_NUMBER_Y][ALIENS_MAX_NUMBER_X];
++extern int lowest_ship[ALIENS_MAX_NUMBER_X];
++extern int alienshotx[ALIENS_MAX_MISSILES];
++extern int alienshoty[ALIENS_MAX_MISSILES];
++extern int alienshotnum;
++extern int alienBlock[ALIENS_MAX_NUMBER_Y][ALIENS_MAX_NUMBER_X];
+ 
+-int bunker[BUNKERHEIGHT][BUNKERWIDTH + 1];	
++extern int bunker[BUNKERHEIGHT][BUNKERWIDTH + 1];	
+ 
+ 
+ void aliensReset();
+Index: ninvaders-0.1.1/nInvaders.c
+===================================================================
+--- ninvaders-0.1.1.orig/nInvaders.c
++++ ninvaders-0.1.1/nInvaders.c
+@@ -32,6 +32,11 @@
+ 
+ #define FPS 50
+ 
++// todo: let's try to not having to declare these "public"
++int weite;
++int level;
++int skill_level;
++
+ int lives;
+ long score;
+ int status; // status handled in timer
+Index: ninvaders-0.1.1/nInvaders.h
+===================================================================
+--- ninvaders-0.1.1.orig/nInvaders.h
++++ ninvaders-0.1.1/nInvaders.h
+@@ -46,9 +46,9 @@ void drawscore();
+ void doScoring(int alienType);
+ 
+ // todo: let's try to not having to declare these "public"
+-int weite;
+-int level;
+-int skill_level;
++extern int weite;
++extern int level;
++extern int skill_level;
+ 	
+ // included from globals.h
+ extern void doSleep();
+Index: ninvaders-0.1.1/ufo.c
+===================================================================
+--- ninvaders-0.1.1.orig/ufo.c
++++ ninvaders-0.1.1/ufo.c
+@@ -27,6 +27,7 @@
+ #include "nInvaders.h"
+ 
+ static int fShowUfo = 0;
++Ufo ufo;
+ 
+ /**
+  * initialize ufo attributes
+Index: ninvaders-0.1.1/ufo.h
+===================================================================
+--- ninvaders-0.1.1.orig/ufo.h
++++ ninvaders-0.1.1/ufo.h
+@@ -34,7 +34,7 @@ struct Ufo {
+ 	int posY;	  // vertical position of aliens
+ };
+ 	
+-Ufo ufo;
++extern Ufo ufo;
+ 
+ void ufoReset();
+ int ufoShowUfo();

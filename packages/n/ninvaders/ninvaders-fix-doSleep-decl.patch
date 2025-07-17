@@ -1,0 +1,36 @@
+Fixes the compile-time error show below.
+
+globals.c:44:6: error: conflicting types for ‘doSleep’; have ‘void(int)’
+   44 | void doSleep(int microseconds)
+      |      ^~~~~~~
+In file included from globals.c:27:
+globals.h:28:13: note: previous declaration of ‘doSleep’ with type ‘void(void)’
+   28 | extern void doSleep();
+      |             ^~~~~~~
+
+Index: ninvaders-0.1.1/globals.h
+===================================================================
+--- ninvaders-0.1.1.orig/globals.h
++++ ninvaders-0.1.1/globals.h
+@@ -25,7 +25,7 @@
+ #ifndef GLOBALS
+ #define GLOBALS
+ 
+-extern void doSleep();
++extern void doSleep(int microseconds);
+ 	
+ extern void showUsage();
+ extern void showVersion();
+Index: ninvaders-0.1.1/nInvaders.h
+===================================================================
+--- ninvaders-0.1.1.orig/nInvaders.h
++++ ninvaders-0.1.1/nInvaders.h
+@@ -51,7 +51,7 @@ extern int level;
+ extern int skill_level;
+ 	
+ // included from globals.h
+-extern void doSleep();
++extern void doSleep(int microseconds);
+ extern void showUsage();
+ extern void showVersion();
+ extern void showGplShort();
