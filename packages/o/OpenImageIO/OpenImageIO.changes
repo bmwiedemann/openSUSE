@@ -1,4 +1,288 @@
 -------------------------------------------------------------------
+Tue Jul 15 16:36:25 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix build on leap
+  - force newer GCC
+  - disable python support
+    - disabled python supports also disables man pages
+
+-------------------------------------------------------------------
+Thu Jul 10 10:26:41 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.0.8.1
+  - build(heif): Fixes to build against libheif 1.20 #4822 (by Rui
+    Chen)
+- Update to 3.0.8.0
+  - oiiotool: New expression pseudo-metadata term: SUBIMAGES #4804
+  - oiiotool: Fixes to --missingfile behavior #4803
+  - iv: Area probe #4767 (by Danielle Imogu)
+  - python: Python ImageBuf.init_spec did not return correct value
+    #4805
+  - fix: ImageOutput::check_open logic was flawed #4779
+  - int(iv): Add raw string syntax modifier for VSCode and Cursor
+    to understand its glsl #4796 (by Aleksandr Motsjonov)
+  - int(iv): Use R"()" syntax for glsl shader strings for better
+    readability #4795 (by Aleksandr Motsjonov)
+  - exr: Not honoring 'missingcolor' for scanline files #4757
+  - build: Add arm_neon.h include on Windows ARM64 with clang-cl
+    #4691 (by Anthony Roberts)
+  - build: Adjust pystring finding #4816
+  - build(jxl): Use correct cmake variables for the include
+    directories #4810 #4813 (by Jesse Yurkovich)
+  - tests: Remove old test reference output we no longer need #4817
+  - ci: Remove tests on Windows-2019 GitHub runner #4793
+  - ci: Various ccache save/restore improvements for CI runs #4797
+  - ci: Simplify gh-win-installdeps, no more vcpkg #4809
+  - admin: Remove stale intake documents #4815
+- Update to 3.0.7.0
+  - oiiotool: --eraseattrib new modifier :fromfile=1 reads from a
+    file
+  - to get a list of patterns to specify the attributes to erase.
+    #4763 (by Lydia Zheng)
+  - oiiotool: Added --create-dir flag to create directories needed
+    by -o
+  - if they doesn't already exist #4762 (by Dharshan Vishwanatha)
+  - oiiotool: --eraseattrib:fromfile=1 #4763 (by Lydia Zheng)
+  - oiiotool: Added create-dir cmd arg to create dir if it doesn't
+    exist #4762 (by Dharshan Vishwanatha)
+  - oiiotool: -i:native=1, fix --native behavior, fix convert
+    datatype #4708
+  - iv: Fix crash on .DS_Store; fix uppercase extensions #4764 (by
+    Anton Dukhovnikov)
+  - iv: Do not resize on open and other zoom fixes #4766 (by
+    Aleksandr Motsjonov)
+  - iv: Bug fix for iv window losing focus on mac on startup #4773
+    (by Aleksandr Motsjonov)
+  - iv: Implement files drag and drop into an iv window #4774 (by
+    Aleksandr Motsjonov)
+  - iv: Use screen pixel ratio to render sharp text in pixel view
+    tool #4768 (by Aleksandr Motsjonov)
+  - python: Add python stub files #4692 #4754 (by Chad Dombrova)
+  - python: ImageBuf _repr_png_ method added, which allows use of
+  - ImageBuf in Jupyter Notebooks as a displayable object. #4753
+    (by Oktay Comu)
+  - exr: Did not properly allocate 'missingcolor' vector #4751
+  - exr: Add htj2k as a compression option for OpenEXR. Only works
+    with OpenEXR 3.4 or higher (or in-progress OpenEXR main). #4785
+    (by Li Ji)
+  - iff: Improved IFF support reading and writing z buffers #4673
+    (by Mikael Sundell)
+  - webp: Respect the oiio:UnassociatedAlpha attribute #4770 (by
+    Jesse Yurkovich)
+  - webp: Allow finer grained control over WEBP compression
+    settings #4772 (by Jesse Yurkovich)
+  - flx/python: IBA.demosaic had GIL release in wrong spot #4777
+  - fix: ImageInput/ImageOutput did not set per-file threads
+    correctly #4750
+  - fix: Address safety warnings in pvt::append_tiff_dir_entry
+    #4737
+  - build: Fix fmt throwing behavior warnings #4730
+  - build: Detect libultrahdr version and enforce minimum of 1.3
+    #4729
+  - build: Fix failed test with old fmt #4758
+  - ci: Save time by not checking out entire project history #4731
+  - ci: New testing variants for VFX Platform 2025, Windows 2025
+    #4744, Linux ARM #4749
+  - ci: Update ref output to compensate for GitHub windows drive
+    changes #4761
+  - ci: Pkg config libdir fix #4775 (by Scott Wilson)
+  - ci: For docs workflow, lock down versions and speed up #4646
+  - ci: Improved clang-format CI task #4647
+  - ci: Add facility for benchmarking as part of CI #4745
+  - ci: Update ref image for slightly changed freetype accents
+    #4765
+  - docs: Online docs improvements, mostly formatting (#4736,
+    #4743)
+  - docs: Update Windows build instructions to rely on deps
+    auto-build #4769
+- Update to 3.0.6.1
+  - fix: Restore OIIO_AVX512ER_ENABLED preprocessor symbol. Its
+    absence could break backwards source compatibility if anyone
+    was using it, even though it was useless and broken. Where
+    compatibility goes, better safe than sorry. #4735
+- Update to 3.0.6.0
+  - oiiotool: Add --text modifiers measure= and render= #4681
+  - python: Fix handle leak #4685
+  - bmp: Correct the type for BMP x/y density #4695 (by Campbell
+    Barton)
+  - dpx: Specify the units for DPX scanned size #4694 (by Campbell
+    Barton)
+  - sgi: Fix valid_file to properly swap bytes on little-endian
+    platforms #4697 (by Jesse Yurkovich)
+  - build: Fix new dcmtk 3.6.9 vs C++ warning #4698
+  - build: Address Robin-map vs CMake 4.0 compatibility #4701
+  - build: Fix broken OIIO_SITE customization #4709
+  - build: Address compiler warnings in simd.h #4724
+- Update to 3.0.5.0
+  - ImageBuf: ImageBuf::merge_metadata() merges one IB's metadata
+    into another's without deleting the metadata already present.
+    It can also filter which metadata are copied using a regex.
+    #4672
+  - oiiotool: --pastemeta now takes additional modifiers that
+    allows options for merging rather than rewriting, and is able
+    to copy only a subset of the metadata specified by a regex.
+    #4672 #4674 #4676
+  - oiiotool: Fix invalid loop bound when appending mipmap textures
+    using oiiotool #4671 (by Basile Fraboni)
+  - png: Increase allowed width/height limit #4655 (by Jesse
+    Yurkovich)
+  - psd: Improved tag recognition in psd files #4663 (by Lydia
+    Zheng)
+  - tiff: The default value for bitspersample should be 1 #4670 (by
+    vernalchen)
+  - int: Switch to spans for some exif manipulation, fixing
+    warnings #4689
+  - span.h: OIIO::span improvements #4667
+  - build: Better disabling of work when USE_PYTHON=0 #4657
+  - build: Improve OpenJpeg version detection. #4665 (by
+    jreichel-nvidia)
+  - build: Bump auto-build libdeflate to 1.23 to avoid AVX512 not
+    available errors #4679 (by LI JI)
+  - build: Cmake 4.0 compatibility #4686 #4688
+  - ci: Fix wheel building on Mac #4668 #4675
+  - ci: Update libPNG address and version for ci & autobuild #4659
+- Update to 3.0.4.0
+  - oiiotool: New expression eval tokens IS_CONSTANT, IS_BLACK
+    #4610 (by Lydia Zheng)
+  - oiiotool: Better handling of wildcards that match no files
+    #4627
+  - ImageBuf: IB::pixeltype() did not always return the right value
+    #4614
+  - ImageBuf: Fix bug in ImageBuf construction from ptr + neg
+    strides #4630
+  - ICC: ICC profile recognition and robustness improvements,
+    especially for PSD #4644
+  - exr: Fill in OpenEXR lineOrder attribute when reading #4628 (by
+    vernalchen)
+  - ico: More robust to corrupted ICO files #4625
+  - rla: More robust to corrupted RLA files that could overrun
+    buffers #4624
+  - span.h: Eliminate needless definitions of std::size(span) that
+    were triggering strange behavior on recent MSVS compiler
+    versions. #4652
+  - build: Fix recently broken rpath setting #4618
+  - build/python wheels: Ensure python-based builds use
+    maj.min.patch SO versioning #4634 (by zachlewis)
+  - build/python wheels: Fix recently broken rpath to restore
+    python wheel building #4633
+  - ci: Run wheel workflow on certain pushes #4617
+  - docs: Argparse documentation/comments typos #4612
+  - admin: Document Python Wheel completed in roadmap #4620 (by
+    Todica Ionut)
+  - admin: Add ".vs" to .gitignore #4645
+  - admin: Set up .gitattributes file and ensure it properly
+    categorizes certain files for GitHub's language analysis
+    statistics. #4648
+- Update to 3.0.3.1
+  The release is identical to v3.0.3.0, but some build issues were
+  fixed to allow proper build and upload of the Python wheels to
+  PyPI for the Linux ARM variants.
+- Update to 3.0.3.0
+  - separate images #4591 (by Loïc Vital)
+  - IBA: IBA:demosaic() adds the ability for X-Trans demosaicing
+    #4579 (by Anton Dukhovnikov)
+  - IBA: fix demosaic handling of roi channels #4602 (by Anton
+    Dukhovnikov)
+  - png: Alpha premultiplication adjustment and attribute #4585
+  - psd: Perform endian byteswap on correct buffer area for PSD RLE
+    #4600 (by Jesse Yurkovich)
+  - raw: Add black level and BPS metadata #4601 (by Anton
+    Dukhovnikov)
+  - python: Disable loading Python DLLs from PATH by default on
+    Windows #4590 (by zachlewis)
+  - dev (span.h): Span_memcpy is a safer memcpy when you know the
+    span boundaries #4597
+  - dev (filesystem.h): Filesystem::getline() #4569
+  - dev (paramlist.h): ParamValue as_span, as_cspan #4582
+  - build: Recent change broke when using non-Apple clang on Apple
+    #4596
+  - build: Fix build_cmake.bash script for aarch64, bump its
+    default version #4581
+  - build: Fix libraw definitions (again) #4588
+  - ci: Upgrade to newer actions #4570
+  - ci: Test and document support for WebP 1.5 and fmt 11.1 #4574
+  - ci: Only pass build-steps the secrets it needs #4576
+  - ci: Fix Windows 2019 CI -- make python version match the runner
+    #4592
+  - ci: Raise 'latest' tests to use new fmt 11.1.2 #4593
+  - ci: Adjust some pugixml versions #4594
+  - ci: Allow special branch names to prune CI jobs #4604
+  - tests: Improve Ptex testing #4573
+  - tests: Better testing coverage of null image reader/writer
+    #4578
+  - tests: At long last, set up a softimage reading test. #4583
+  - tests: Additional ref output for jpeg-corrupt test #4595
+  - docs: Fix typo in oiiotool's gradient fill example #4589 (by
+    Loïc Vital)
+- update test images to 20250119T083517
+- Update to 3.0.2.0
+  - api: Add global attribute imageinput:strict #4560
+  - various formats: Detect invalid ICC profile tags #4557 #4565
+  - various formats: IPTC fields have length limits, protect
+    against attributes passed that are too long to fit in them.
+    #4568
+  - pnm: Handle broken pnm files with invalid resolution #4561
+  - pnm: Handle broken pgm having memory access error #4559
+  - int: Some LoggedTimer instances lacked a variable name #4571
+  - build: Use target_compile_options (fixes a LibRaw build issue)
+    #4556 (by Don Olmstead)
+  - ci: Refactor using a single steps workflow #4545
+  - ci: Fixups of analysis workflow #4572
+  - docs: Minor fixes and typos #4564
+  - admin: Sign release artifacts #4580
+- Update to 3.0.1.0
+  - IBA: New IBA::scale() #4541 (by Anton Dukhovnikov) (3.0.1.0)
+  - IBA: IBA:demosaic() add white balancing #4499 (by Anton
+    Dukhovnikov) (3.0.1.0)
+  - jpeg: Support reading Ultra HDR images #4484 (by Loïc Vital)
+    (3.0.1.0)
+  - jpeg: Support encoding/decoding arbitrary metadata as comments
+    #4430 (by Lukas Stockner) (3.0.1.0)
+  - api: OIIO::getattribute() queries for available font families
+    and styles #4523 (by peterhorvath111) (3.0.1.0)
+  - perf: IBA::unsharp_mask() speed and memory optimization #4513
+    (by Vlad (Kuzmin) Erium) (3.0.1.0)
+  - perf: oiiotool --line, --text, --point, and --box speedups
+    #4518 (3.0.1.0)
+  - perf: Jpeg2000 valid_file implementation, much faster than
+    trying to open #4548 (by Aras Pranckevičius) (3.0.1.0)
+  - perf: Faster utf8<->utf16 conversion on Windows #4549 (by Aras
+    Pranckevičius) (3.0.1.0)
+  - fix(exr): Allow an empty "name" metadata to be read #4528 #4536
+    (3.0.1.0)
+  - fix(exr): Avoid integer overflow for large deep exr slice
+    strides #4542 (3.0.1.0)
+  - fix(raw): Fix channel layout #4516 (by Anton Dukhovnikov)
+    (3.0.1.0)
+  - build: Support static OCIO self-builds #4517 (by zachlewis)
+    (3.0.1.0)
+  - build: Add build recipe for PNG #4423 (by zachlewis) (3.0.1.0)
+  - build: Add hardening options #4538 (3.0.1.0)
+  - ci: Increased the macos timeout slightly to fix spurious
+    failures #4526 (3.0.1.0)
+  - ci: Don't rebuild docs in CI when only CMakeLists.txt changes
+    #4539 (3.0.1.0)
+  - ci: Fix broken CI for ASWF 2021 and 2022 containers #4543
+    (3.0.1.0)
+  - docs: Update some old links to our new vanity URLs #4533
+    (3.0.1.0)
+  - docs: Quickstart guide #4531 (3.0.1.0)
+  - docs: First stab at an architecture overview #4530 (3.0.1.0)
+  - docs/admin: Code review guidelines and tips #4532 (3.0.1.0)
+  - docs/admin: Document how to make signed release tags #4529
+    (3.0.1.0)
+- we can drop the buildrequires on google-droid-fonts again and use
+  the fonts from the tarball for the testsuite:
+  https://github.com/AcademySoftwareFoundation/OpenImageIO/issues/4615#issuecomment-2629490500
+- cleanup the %check section after the the discussion in
+  https://github.com/AcademySoftwareFoundation/OpenImageIO/issues/4615
+  - symlink all fonts to ~abuild/fonts
+  - minimize disabled tests list and document why they are filtered
+    out
+- Add back the LD_LIBRARY_PATH to fix some python tests
+- simplify test section
+
+-------------------------------------------------------------------
 Sun Jul  6 13:48:43 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.5.19.0

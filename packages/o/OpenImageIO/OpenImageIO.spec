@@ -30,22 +30,24 @@
 %bcond_without libheif
 %bcond_without python_bindings
 %else
-%bcond_with libheif
 %bcond_with python_bindings
+%bcond_with libheif
 %endif
 %bcond_without opencv
 %bcond_with apidocs
 %bcond_with ptex
 
 %if 0%{?suse_version} == 1500
+%global force_gcc_version 14
 %global force_boost_version 1_75_0
 %endif
 
-%define images_ts 20241104T095817
-%define so_ver 2_5
-%define major_minor_ver 2.5
+%global images_ts 20250119T083517
+%global so_ver 3_0
+%global major_minor_ver 3.0
+
 Name:           OpenImageIO
-Version:        2.5.19.0
+Version:        3.0.8.1
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        BSD-3-Clause
@@ -62,14 +64,14 @@ BuildRequires:  dcmtk-devel
 BuildRequires:  doxygen
 %endif
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  giflib-devel >= 5.0
 BuildRequires:  hdf5-devel
 # can be dropped when upgrading to 3.x again
-BuildRequires:  libboost_atomic%{?force_boost_version}-devel
-BuildRequires:  libboost_filesystem%{?force_boost_version}-devel
-BuildRequires:  libboost_system%{?force_boost_version}-devel
-BuildRequires:  libboost_thread%{?force_boost_version}-devel
+#BuildRequires:  libboost_atomic%{?force_boost_version}-devel
+#BuildRequires:  libboost_filesystem%{?force_boost_version}-devel
+#BuildRequires:  libboost_system%{?force_boost_version}-devel
+#BuildRequires:  libboost_thread%{?force_boost_version}-devel
 #/ can be dropped when upgrading to 3.x again
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel >= 1.6.0
@@ -115,6 +117,7 @@ BuildRequires:  pkgconfig(libwebpmux)
 %if %{with opencv}
 BuildRequires:  pkgconfig(opencv4)
 %endif
+BuildRequires:  fonts-config
 BuildRequires:  pkgconfig(zlib)
 Recommends:     google-droid-fonts
 
@@ -155,8 +158,6 @@ This package provides the API documentation for OpenImageIO.
 Summary:        Library for Reading and Writing Images
 Group:          System/Libraries
 # this is unfortunate and a fallout of properly naming the lib after fixing so_ver
-Conflicts:      libOpenColorIO2_0 = 2.1.1
-Conflicts:      libOpenColorIO2_0 = 2.1.2
 
 %description -n libOpenImageIO%{so_ver}
 OpenImageIO is a library for reading and writing images, and a bunch of related
@@ -199,6 +200,11 @@ rm -rf src/include/tbb/
 find . -iname \*.py -print -exec sed -i '1s@^#!.*@#!%{_bindir}/python3@' '{}' \;
 
 %build
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
+%endif
+
 %cmake \
 %ifarch ppc
     -DNOTHREADS=ON \
@@ -258,8 +264,10 @@ export PYTHONDONTWRITEBYTECODE=1
 #
 # heif -> our libheif does not support h265
 # ptex -> fileformat which we do not support
+# jpeg-ultrahdr -> fileformat which we do not support
 # cmake-consumer docs-examples-cpp -> currently failing tests as they assume normal cmake search paths will work to find the OIIO devel files in the final location
-export disabled_tests="heif|ptex|cmake-consumer|docs-examples-cpp"
+# docs-examples-python -> fails if docs-examples-cpp was not attempted
+export disabled_tests="heif|ptex|jpeg-ultrahdr|cmake-consumer|docs-examples-cpp|docs-examples-python"
 %ifarch x86_64
 %ctest '-E' ${disabled_tests}
 %else
@@ -271,11 +279,9 @@ export disabled_tests="heif|ptex|cmake-consumer|docs-examples-cpp"
 %ldconfig_scriptlets -n libOpenImageIO_Util%{so_ver}
 
 %files
-%doc CHANGES.md CREDITS.md README.md THIRD-PARTY.md
-%doc src/doc/CHANGES-0.x.md src/doc/CHANGES-1.x.md
+%doc %{_docdir}/%{name}/
 %license LICENSE.md
 %{_bindir}/*
-# so why are man pages behind the python bindings? because the CMakeLists.txt only renders man pages when python is enabled
 %if %{with python_bindings}
 %{_mandir}/man1/*.1%{ext_man}
 %endif
@@ -293,17 +299,18 @@ export disabled_tests="heif|ptex|cmake-consumer|docs-examples-cpp"
 %{_libdir}/libOpenImageIO_Util.so
 
 %files -n lib%{name}%{so_ver}
+%license LICENSE.md
 %{_libdir}/lib%{name}.so.*
 %dir %{_libdir}/%{name}-%{major_minor_ver}
 
 %files -n lib%{name}_Util%{so_ver}
+%license LICENSE.md
 %{_libdir}/lib%{name}_Util.so.*
 
 %if %{with python_bindings}
 %files -n python3-%{name}
-%dir %{python3_sitearch}/%{name}
-%{python3_sitearch}/%{name}/__init__.py
-%{python3_sitearch}/%{name}/%{name}.*.so
+%license LICENSE.md
+%{python3_sitearch}/%{name}/
 %endif
 
 %changelog
