@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Jul 16 19:38:30 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to 2.48.0:
+  Features:
+   * Add support for detecting Fedora variants 
+     (gh#fastfetch-cli/fastfetch#1830)
+     - Currently supported variants: CoreOS, Kinoite, Sericea, 
+       Silverblue
+   * Improve performance and security when spawning child processes 
+     by replacing `fork-exec` with `posix_spawn` (*nix)
+   * Trim leading and trailing whitespaces in disk serial numbers 
+     (PhysicalDisk)
+   * Add /etc/profiles/per-user detection for Nix user packages 
+     (gh#fastfetch-cli/fastfetch#1782)
+   * Introduce `years` (whole years as integer), `days-of-year` 
+     (days since the last anniversary) and `years-fraction` (years 
+     as fraction, e.g. 1.5 means 1 year and 6 months) formatting 
+     placeholder to `Disk` (since disk creation), `Users` (since 
+     user login) and `Uptime` (since system boot) modules 
+     - For example: `fastfetch -s disk --disk-key 'OS Installation' 
+       --disk-format '{years} years {days-of-year} days'`
+   * Add --fraction-ndigits option to specify the number of digits 
+     after the decimal point when displaying ordinary fractional 
+     values 
+     - Typically used with `{years-fraction}` above
+     - This option does not affect percentage values, sizes, etc, 
+       which are controlled by individual options.
+  Bugfixes:
+   * Fix compilation issues when not using 
+     `-DBINARY_LINK_TYPE=dlopen` 
+     - Regression from v2.47.0
+     - Note: this option was added for debugging purposes only and 
+       is not recommended for production use
+   * Prevent text files from being loaded as image files 
+     (gh#fastfetch-cli/fastfetch#1843)
+  Logos:
+   * Add Minimal System
+   * Add AxOS
+   * Rename Ada to Xray OS
+
+-------------------------------------------------------------------
 Tue Jul  8 14:10:31 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to 2.47.0:
