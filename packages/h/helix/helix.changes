@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Wed Jul 16 07:48:22 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 25.07:
+  Features:
+  * Add a picker which explores directories ([#11285](https://github.com/helix-editor/helix/pull/11285), [d4aed40](https://github.com/helix-editor/helix/commit/d4aed40))
+  * Allow cycling through multiple LSP Hover responses with `A-n`/`A-p` ([#10122](https://github.com/helix-editor/helix/pull/10122), [2367b20](https://github.com/helix-editor/helix/commit/2367b20))
+  * Add support for incomplete LSP completions ([5c1f3f8](https://github.com/helix-editor/helix/commit/5c1f3f8))
+  * Add support for EditorConfig ([#13056](https://github.com/helix-editor/helix/pull/13056), [#13443](https://github.com/helix-editor/helix/pull/13443))
+  * Add support for LSP document colors ([#12308](https://github.com/helix-editor/helix/pull/12308), [d43de14](https://github.com/helix-editor/helix/commit/d43de14), [47cdd23](https://github.com/helix-editor/helix/commit/47cdd23), [ba54b6a](https://github.com/helix-editor/helix/commit/ba54b6a), [#13188](https://github.com/helix-editor/helix/pull/13188))
+  * Support expansions in external formatter arguments ([#13429](https://github.com/helix-editor/helix/pull/13429))
+  * Switch out the highlighter for the `tree-house` crate ([#12972](https://github.com/helix-editor/helix/pull/12972), [09bc67a](https://github.com/helix-editor/helix/commit/09bc67a), [a7c3a43](https://github.com/helix-editor/helix/commit/a7c3a43), [3ceae88](https://github.com/helix-editor/helix/commit/3ceae88), [05ae617](https://github.com/helix-editor/helix/commit/05ae617), [5a1dcc2](https://github.com/helix-editor/helix/commit/5a1dcc2), [ebf96bd](https://github.com/helix-editor/helix/commit/ebf96bd), [#13644](https://github.com/helix-editor/helix/pull/13644), [b1f4717](https://github.com/helix-editor/helix/commit/b1f4717), [7410fe3](https://github.com/helix-editor/helix/commit/7410fe3), [633c5fb](https://github.com/helix-editor/helix/commit/633c5fb), [362e97e](https://github.com/helix-editor/helix/commit/362e97e), [#13828](https://github.com/helix-editor/helix/pull/13828), [6fd1efd](https://github.com/helix-editor/helix/commit/6fd1efd))
+      * This fixes a number of highlighter bugs.
+      * Locals like parameter highlights are now highlighted even when the definition is not in view.
+      * Markdown is now injected into rust doc comments (`///` and `//!`).
+  * Add support for the DAP `startDebugging` reverse request ([#13403](https://github.com/helix-editor/helix/pull/13403))
+
+  Fixes:
+  * Fix panic from using `search_selection_detect_word_boundaries` (`*`) at the end of the file ([#12611](https://github.com/helix-editor/helix/pull/12611))
+  * Discard placeholder text for zero tabstop `${0:placeholder}` ([#12647](https://github.com/helix-editor/helix/pull/12647))
+  * Fix panic in `goto_file` (`gf`) on file names with non-ASCII characters ([#12673](https://github.com/helix-editor/helix/pull/12673))
+  * Only accept unmodified characters in `goto_word` (`gw`) ([f5f9f49](https://github.com/helix-editor/helix/commit/f5f9f49), [0364521](https://github.com/helix-editor/helix/commit/0364521))
+  * Skip recording keys pressed by macros while recording a macro ([#12733](https://github.com/helix-editor/helix/pull/12733))
+  * Deny unknown fields in `editor.smart-tab` config ([28047fe](https://github.com/helix-editor/helix/commit/28047fe))
+  * Fix soft-wrap word boundary detection for Unicode combining accent characters ([#12483](https://github.com/helix-editor/helix/pull/12483))
+  * Fix clearing of infobox popups in `select_register` and `insert_register` commands ([e882a75](https://github.com/helix-editor/helix/commit/e882a75))
+  * Fix handling of `stderr` of DAP child processes ([d0d1693](https://github.com/helix-editor/helix/commit/d0d1693))
+  * Cancel all pending requests when a DAP session terminates ([26db541](https://github.com/helix-editor/helix/commit/26db541))
+  * Properly discard out-of-date diagnostics ([313a647](https://github.com/helix-editor/helix/commit/313a647))
+  * Fix display of multiple language servers in `hx --health` ([#12841](https://github.com/helix-editor/helix/pull/12841))
+  * Respect `editor.default-yank-register` in `:yank-joined` ([#12890](https://github.com/helix-editor/helix/pull/12890))
+  * Escape percent character when pasting the history register into the picker ([#12886](https://github.com/helix-editor/helix/pull/12886))
+  * Render rulers before the cursor ([2d3b75a](https://github.com/helix-editor/helix/commit/2d3b75a))
+  * Avoid inserting final newlines in empty files ([67879a1](https://github.com/helix-editor/helix/commit/67879a1))
+  * Gracefully handle partial failure in multi-language-server requests ([#13156](https://github.com/helix-editor/helix/pull/13156), [14cab4b](https://github.com/helix-editor/helix/commit/14cab4b))
+  * Improve LSP progress message display in the statusline ([#13180](https://github.com/helix-editor/helix/pull/13180))
+  * Fix behavior of `<esc>` removing added indentation in documents with CRLF line endings ([702a961](https://github.com/helix-editor/helix/commit/702a961))
+  * Append changes to document history before pushing jumplist jumps ([#13619](https://github.com/helix-editor/helix/pull/13619))
+  * Fix overflow in the display of large chunks of text in the signature-help component ([#13566](https://github.com/helix-editor/helix/pull/13566))
+  * Fix panic from clearing whitespace when changing multiple selections on one line ([#13673](https://github.com/helix-editor/helix/pull/13673))
+  * Include formatting options in LSP range formatting request ([#13734](https://github.com/helix-editor/helix/pull/13734))
+  * Consistently set statusline errors when LSP features are not available ([#12577](https://github.com/helix-editor/helix/pull/12577))
+  * Fix `goto_file` on Windows ([#13770](https://github.com/helix-editor/helix/pull/13770))
+  * Fix crash in `goto_word` (`gw`) when `editor.jump-label-alphabet` is configured to be empty ([#13863](https://github.com/helix-editor/helix/pull/13863))
+  * Fix `open_above` / `open_below` (`o` / `O`) when using a count on a document with CRLF line-endings ([#13905](https://github.com/helix-editor/helix/pull/13905))
+
+  New languages:
+  * Ghostty config ([#12703](https://github.com/helix-editor/helix/pull/12703))
+  * Tera ([#12756](https://github.com/helix-editor/helix/pull/12756))
+  * FGA ([#12763](https://github.com/helix-editor/helix/pull/12763))
+  * CSV ([#11973](https://github.com/helix-editor/helix/pull/11973))
+  * Yara ([#12753](https://github.com/helix-editor/helix/pull/12753))
+  * Djot ([#12562](https://github.com/helix-editor/helix/pull/12562))
+  * Ink ([#12773](https://github.com/helix-editor/helix/pull/12773))
+  * Mail ([#12945](https://github.com/helix-editor/helix/pull/12945))
+  * SourcePawn ([#13028](https://github.com/helix-editor/helix/pull/13028))
+  * TLA+ ([#13081](https://github.com/helix-editor/helix/pull/13081))
+  * Werk ([#13136](https://github.com/helix-editor/helix/pull/13136))
+  * Debian control file ([#13245](https://github.com/helix-editor/helix/pull/13245))
+  * WESL ([#13267](https://github.com/helix-editor/helix/pull/13267))
+  * Fennel ([#13260](https://github.com/helix-editor/helix/pull/13260), [6081a5d](https://github.com/helix-editor/helix/commit/6081a5d))
+  * Quarto ([#13339](https://github.com/helix-editor/helix/pull/13339))
+  * Pug ([#13435](https://github.com/helix-editor/helix/pull/13435))
+  * Slang ([#13449](https://github.com/helix-editor/helix/pull/13449))
+  * Dunst config ([#13458](https://github.com/helix-editor/helix/pull/13458))
+  * Luau ([#13702](https://github.com/helix-editor/helix/pull/13702))
+  * Caddyfile ([#13859](https://github.com/helix-editor/helix/pull/13859))
+  * Java properties ([#13874](https://github.com/helix-editor/helix/pull/13874))
+  * Git notes ([#13885](https://github.com/helix-editor/helix/pull/13885))
+  * systemd (split from INI) ([#13907](https://github.com/helix-editor/helix/pull/13907))
+  * JSON-LD (split from JSON) ([#13925](https://github.com/helix-editor/helix/pull/13925))
+  * Django HTML ([#13935](https://github.com/helix-editor/helix/pull/13935))
+
+  Packaging:
+  * Fix handling of spaces in Bash completion ([#12828](https://github.com/helix-editor/helix/pull/12828))
+  * Refactor Nix flake ([#12831](https://github.com/helix-editor/helix/pull/12831), [#13024](https://github.com/helix-editor/helix/pull/13024), [cb1ecc9](https://github.com/helix-editor/helix/commit/cb1ecc9), [#13305](https://github.com/helix-editor/helix/pull/13305))
+  * Add `ConsoleOnly` to `Helix.desktop` categories ([#13236](https://github.com/helix-editor/helix/pull/13236))
+  * Drop Nix flake dependency on flake-utils ([60a03a3](https://github.com/helix-editor/helix/commit/60a03a3))
+  * Increase the MSRV to 1.82 ([#13275](https://github.com/helix-editor/helix/pull/13275))
+
+-------------------------------------------------------------------
 Sat Jun  7 06:58:26 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Set `helix-runtime` package as required

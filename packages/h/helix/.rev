@@ -265,4 +265,41 @@ This will increase possible helix users.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1285699</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>2c60d2a4a111c07fd3bcbc48a88ec745</srcmd5>
+    <version>25.07</version>
+    <time>1752765526</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 25.07:
+  Features:
+  * Add a picker which explores directories ([#11285](https://github.com/helix-editor/helix/pull/11285), [d4aed40](https://github.com/helix-editor/helix/commit/d4aed40))
+  * Allow cycling through multiple LSP Hover responses with `A-n`/`A-p` ([#10122](https://github.com/helix-editor/helix/pull/10122), [2367b20](https://github.com/helix-editor/helix/commit/2367b20))
+  * Add support for incomplete LSP completions ([5c1f3f8](https://github.com/helix-editor/helix/commit/5c1f3f8))
+  * Add support for EditorConfig ([#13056](https://github.com/helix-editor/helix/pull/13056), [#13443](https://github.com/helix-editor/helix/pull/13443))
+  * Add support for LSP document colors ([#12308](https://github.com/helix-editor/helix/pull/12308), [d43de14](https://github.com/helix-editor/helix/commit/d43de14), [47cdd23](https://github.com/helix-editor/helix/commit/47cdd23), [ba54b6a](https://github.com/helix-editor/helix/commit/ba54b6a), [#13188](https://github.com/helix-editor/helix/pull/13188))
+  * Support expansions in external formatter arguments ([#13429](https://github.com/helix-editor/helix/pull/13429))
+  * Switch out the highlighter for the `tree-house` crate ([#12972](https://github.com/helix-editor/helix/pull/12972), [09bc67a](https://github.com/helix-editor/helix/commit/09bc67a), [a7c3a43](https://github.com/helix-editor/helix/commit/a7c3a43), [3ceae88](https://github.com/helix-editor/helix/commit/3ceae88), [05ae617](https://github.com/helix-editor/helix/commit/05ae617), [5a1dcc2](https://github.com/helix-editor/helix/commit/5a1dcc2), [ebf96bd](https://github.com/helix-editor/helix/commit/ebf96bd), [#13644](https://github.com/helix-editor/helix/pull/13644), [b1f4717](https://github.com/helix-editor/helix/commit/b1f4717), [7410fe3](https://github.com/helix-editor/helix/commit/7410fe3), [633c5fb](https://github.com/helix-editor/helix/commit/633c5fb), [362e97e](https://github.com/helix-editor/helix/commit/362e97e), [#13828](https://github.com/helix-editor/helix/pull/13828), [6fd1efd](https://github.com/helix-editor/helix/commit/6fd1efd))
+      * This fixes a number of highlighter bugs.
+      * Locals like parameter highlights are now highlighted even when the definition is not in view.
+      * Markdown is now injected into rust doc comments (`///` and `//!`).
+  * Add support for the DAP `startDebugging` reverse request ([#13403](https://github.com/helix-editor/helix/pull/13403))
+  Fixes:
+  * Fix panic from using `search_selection_detect_word_boundaries` (`*`) at the end of the file ([#12611](https://github.com/helix-editor/helix/pull/12611))
+  * Discard placeholder text for zero tabstop `${0:placeholder}` ([#12647](https://github.com/helix-editor/helix/pull/12647))
+  * Fix panic in `goto_file` (`gf`) on file names with non-ASCII characters ([#12673](https://github.com/helix-editor/helix/pull/12673))
+  * Only accept unmodified characters in `goto_word` (`gw`) ([f5f9f49](https://github.com/helix-editor/helix/commit/f5f9f49), [0364521](https://github.com/helix-editor/helix/commit/0364521))
+  * Skip recording keys pressed by macros while recording a macro ([#12733](https://github.com/helix-editor/helix/pull/12733))
+  * Deny unknown fields in `editor.smart-tab` config ([28047fe](https://github.com/helix-editor/helix/commit/28047fe))
+  * Fix soft-wrap word boundary detection for Unicode combining accent characters ([#12483](https://github.com/helix-editor/helix/pull/12483))
+  * Fix clearing of infobox popups in `select_register` and `insert_register` commands ([e882a75](https://github.com/helix-editor/helix/commit/e882a75))
+  * Fix handling of `stderr` of DAP child processes ([d0d1693](https://github.com/helix-editor/helix/commit/d0d1693))
+  * Cancel all pending requests when a DAP session terminates ([26db541](https://github.com/helix-editor/helix/commit/26db541))
+  * Properly discard out-of-date diagnostics ([313a647](https://github.com/helix-editor/helix/commit/313a647))
+  * Fix display of multiple language servers in `hx --health` ([#12841](https://github.com/helix-editor/helix/pull/12841))
+  * Respect `editor.default-yank-register` in `:yank-joined` ([#12890](https://github.com/helix-editor/helix/pull/12890))
+  * Escape percent character when pasting the history register into the picker ([#12886](https://github.com/helix-editor/helix/pull/12886))
+  * Render rulers before the cursor ([2d3b75a](https://github.com/helix-editor/helix/commit/2d3b75a))
+  * Avoid inserting final newlines in empty files ([67879a1](https://github.com/helix-editor/helix/commit/67879a1))</comment>
+    <requestid>1293872</requestid>
+  </revision>
 </revisionlist>
