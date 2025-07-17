@@ -20,10 +20,10 @@
 %define asan_build     0
 %define ubsan_build    0
 %define libmaj  11
-%define libmin  109
+%define libmin  111
 %define libver  %{libmaj}.%{libmin}
 Name:           netpbm
-Version:        11.9.3
+Version:        11.11.0
 Release:        0
 Summary:        A Graphics Conversion Package
 License:        BSD-3-Clause AND GPL-2.0-or-later AND IJG AND MIT AND SUSE-Public-Domain
@@ -117,6 +117,8 @@ export LDFLAGS="$LDFLAGS -fsanitize=undefined"
 %endif
 make %{?_smp_mflags} CFLAGS="$CFLAGS"
 rm doc/INSTALL
+# Remove doc and man pages for pamtojpeg2k [bsc#1245164]
+find -type f -name "pamtojpeg2k.[h1]*" -delete -print
 # DOC
 cd netpbm.sourceforge.net/doc
 # CVE-2024-38526

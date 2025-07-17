@@ -1018,4 +1018,12 @@ trigered by: https://build.opensuse.org/request/show/312207 (forwarded request 3
     + build: Make it work with -std=gnu23, which is the default in</comment>
     <requestid>1251739</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>adc1b4d23ad2ae726f497f754ea00c65</srcmd5>
+    <version>11.11.0</version>
+    <time>1752765463</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1293422</requestid>
+  </revision>
 </revisionlist>

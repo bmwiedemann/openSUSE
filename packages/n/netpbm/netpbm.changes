@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Jul 15 11:21:43 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove the doc and man pages for pamtojpeg2k since the binary
+  has not been available since jasper was dropped. [bsc#1245164]
+
+-------------------------------------------------------------------
+Tue Jul 15 07:23:25 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 11.11.00:
+  * pamflip: add -inverse.
+  * pamflip: add -reflect.
+  * pamdice: add -outsuffix.
+  * libnetpbm and 'ppmdraw' circle drawing functions: use floating
+    point arithmetic to make smoother circle.
+  * pamdice, pamundice: Add PBM fast path.
+  * ppmdraw: fix error message about 'filledrectangle' syntax.
+  * pamdice: fix using more digits than necessary in output file
+    names -- width was based on one more slice than was actually
+    generated. Broken since Netpbm 10.29 (August 2005).
+  * pnmquantall: fix arbitrary shell command execution with input
+    file names or color count that contain shell metacharacters.
+    Always present ('pnmquantall' has existed, aka 'ppmquantall',
+    since primordial Netpbm).
+  * ppmtogif: fix arbitrary shell commands when arguments contain
+    shell metacharacters. Broken in Netpbm 10.37 (June 2006).
+  * pnmtofiasco: fix crash when image is really small. Always
+    broken (program was new in Netpbm 9.6, July 2000).
+  * pnmtofiasco: fix bug: uses one tile regardless of
+    --tiling-exponent. Always broken (programs were new in Netpbm
+    9.6, July 2000).
+  * pnmtofiasco: fix bug: infinite loop with multiple tiles.
+    Always broken (program was new in Netpbm 96., July 2000),
+    but made functional by bug fix in 11.10 (March 2025).
+  * pnmtofiasco: fix bug: does wrong level of optimization
+    Introduced in Netpbm 11.05 (December 2023).
+  * libnetpbm ppmd_fill and ppmdraw filled shapes: fix bug: final
+    span of filling omitted from output. Always broken (ppmd_fill
+    was in primordial Netpbm).
+
+-------------------------------------------------------------------
+Tue Jul 15 07:21:30 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 11.10.00:
+  * pamdice: Add -listfile, -indexfile, -numberwidth, -dry-run.
+  * pamundice: Add -indexfile.
+  * pamflip: improve efficiency - less copying of tuples in basic
+    whole-image non-PBM case.
+  * pamflip: more direct error message for -memsize=0.
+  * pamflip: warn if redundant -pagesize specified with -verbose.
+  * pcdovtoppm: improve syntax error messages.
+  * pammixmulti: Fix crash from uninitialized memory. Introduced in
+    Netpbm 11.09 (December 2024).
+  * giftopnm: Fix wild pointer reference with -verbose and
+    invalid extension type. Broken in Netpbm 10.59 (December 2012).
+  * pdbimgtopam, pamtopdbimg: Fix crash when out of memory. Always
+    broken (programs were new in Netpbm 10.52 (September 2010)).
+  * pamrestack: fix failure when height too large for computations.
+    Broken in Netpbm 10.99 (June 2022).
+  * pamflip: fix: Don't allow -xform with older transform options
+    (-leftright, etc.). Before, -xform would be ignored in that
+    case.
+
+-------------------------------------------------------------------
 Mon Mar 10 09:20:53 UTC 2025 - pgajdos@suse.com
 
 - version update to 11.9.3
