@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  2 14:05:30 UTC 2025 - Stefan Schubert <schubi@suse.com>
+
+- Moved /etc/krb5.conf to /usr/etc/krb5.conf
+  This patch (0011_usr_etc.patch) is upstream:
+  https://github.com/krb5/krb5/pull/1437/
+
+-------------------------------------------------------------------
 Mon Apr 21 19:12:40 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to

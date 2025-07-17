@@ -46,6 +46,7 @@ Patch7:         0007-SELinux-integration.patch
 Patch8:         0008-krb5-1.9-debuginfo.patch
 Patch9:         0009-Fix-three-memory-leaks.patch
 Patch10:        0010-CVE-2025-24528.patch
+Patch11:        0011_usr_etc.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  pkgconfig
@@ -108,6 +109,9 @@ DEFCCNAME=DIR:/run/user/%%{uid}/krb5cc; export DEFCCNAME
         CPPFLAGS="-I%{_includedir}/et " \
         SS_LIB="-lss" \
     --sysconfdir=%{_sysconfdir} \
+%if 0%{?suse_version} > 1500
+    --with-vendordir=%{_distconfdir} \
+%endif
     --mandir=%{_mandir} \
     --infodir=%{_infodir} \
     --libdir=%{_libdir} \
@@ -151,7 +155,12 @@ mkdir -p %{buildroot}/%{_libdir}/krb5/plugins/kdb
 mkdir -p %{buildroot}/%{_libdir}/krb5/plugins/preauth
 mkdir -p %{buildroot}/%{_libdir}/krb5/plugins/libkrb5
 mkdir -p %{buildroot}/%{_libdir}/krb5/plugins/tls
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}%{_distconfdir}
+install -m 644 %{vendorFiles}/krb5.conf %{buildroot}%{_distconfdir}
+%else
 install -m 644 %{vendorFiles}/krb5.conf %{buildroot}%{_sysconfdir}
+%endif
 
 # Do not write directly to /var/lib/kerberos anymore as it breaks transactional
 # updates. Use systemd-tmpfiles to copy the files there when it doesn't exist
@@ -236,7 +245,18 @@ sed -i "s/%{_lto_cflags}//" %{buildroot}%{_bindir}/krb5-config
 
 %pre
 %service_add_pre krb5kdc.service kadmind.service kpropd.service
+%if 0%{?suse_version} > 1500
+# Prepare for migration to /usr/etc; save any old .rpmsave
+for i in krb5.conf ; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
+done
 
+%posttrans
+# Migration to /usr/etc, restore just created .rpmsave
+for i in krb5.conf; do
+     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+done
+%endif
 ########################################################
 # files sections
 ########################################################
@@ -278,7 +298,11 @@ sed -i "s/%{_lto_cflags}//" %{buildroot}%{_bindir}/krb5-config
 %dir %{_libdir}/krb5/plugins/tls
 %attr(0700,root,root) %dir %{_localstatedir}/log/krb5
 %doc %{krb5docdir}/README
+%if 0%{?suse_version} > 1500
+%attr(0644,root,root) %{_distconfdir}/krb5.conf
+%else
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/krb5.conf
+%endif
 %dir %{_sysconfdir}/krb5.conf.d
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 %config(noreplace,missingok) %{_sysconfdir}/krb5.conf.d/crypto-policies
