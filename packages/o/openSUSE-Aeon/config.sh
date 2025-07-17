@@ -99,8 +99,8 @@ set -eux
 
 # ... set options for autoexpanding /home
 gawk -i inplace '$2 == "/home" { $4 = $4",x-systemd.growfs" } { print $0 }' /etc/fstab
-# workaround https://github.com/systemd/systemd/issues/927, drop the ro from the fstab mount
-gawk -i inplace '$2 == "/" && $4 == "compress=zstd:1,ro" { $4 = "compress=zstd:1" } { print $0 }' /etc/fstab
+# https://bugzilla.opensuse.org/show_bug.cgi?id=1246605 change 'ro' to 'ro=vfs'
+gawk -i inplace '$2 == "/" && $4 == "compress=zstd:1,ro" { $4 = "compress=zstd:1,ro=vfs" } { print $0 }' /etc/fstab
 
 # Relabel /etc. While kiwi already relabelled it earlier, there are some files created later (boo#1210604).
 # The "gawk -i inplace" above also removes the label on /etc/fstab.

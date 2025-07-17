@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 16 10:57:41 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Use `ro=vfs` to mount / in /etc/fstab (boo#1246605)
+
+-------------------------------------------------------------------
 Thu Jun 12 08:55:20 UTC 2025 - Richard Brown <rbrown@suse.com>
 
 - Force installation of shim at build time (boo#1244248) 

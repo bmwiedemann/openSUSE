@@ -123,4 +123,12 @@
     <comment>- Force installation of shim at build time (boo#1244248)</comment>
     <requestid>1285084</requestid>
   </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>9fbf865954e7ae1f99bdf489e4c2bb54</srcmd5>
+    <version>0.1.0</version>
+    <time>1752765507</time>
+    <user>anag_factory</user>
+    <comment>- Use `ro=vfs` to mount / in /etc/fstab (boo#1246605)</comment>
+    <requestid>1293784</requestid>
+  </revision>
 </revisionlist>
