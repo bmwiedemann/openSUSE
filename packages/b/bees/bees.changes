@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Jul 16 10:35:23 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to 0.11:
+  * Introduce *extent scan mode* that scans the extent tree directly. It is the
+    new default scan mode.
+  * Show estimated data size and expected time to finish scanning in logs and
+    status outputs.
+  * Smarter dedupe criteria that prevents dedupe operations that save less than
+    half the blocks in an extent or require more than 100 copy/dedupe operations
+    to free space.
+  * Add the new dynamic rate throttling option `--throttle-factor` to estimate
+    the rate at which the kernel deletes extents and slow down dedupe requests
+    to match this rate.
+  * Threads now dynamically redistribute their work so that they can make
+    continuous progress without waiting for each other.
+  * Remove excessively costly "toxic extent" workarounds yielding up to
+    100x–1000x speed boost on some workloads.
+  * Coordinate between threads to prevent thrashing during disk reads.
+  * Prefetche data into page-cache before dedupe calls.
+  * Submit full-extent dedupe operations, avoiding obsolete 16M kernel limits.
+  * Reduce the size of `ioctl` buffers, which avoids forcing the kernel to
+    evict pages from memory to accommodate large buffers.
+  * Limit reference counts for very frequently duplicated data, which avoids
+    performance issues in btrfs (even when bees is not running).
+  * Use the new `openat2` system call for improved robustness against rename and
+    symlink attacks.
+  * Use a private mount namespace for isolation even without `systemd`.
+  * Recude warning and debug log verbosity.
+  * `SIGUSR1` and `SIGUSR2` signals allow bees to be paused and unpaused without
+    preventing bees from closing open files and subvols during the pause.
+  * It is now safe to locate `$BEESHOME` on filesystems such as XFS that lack
+    data flushing on `rename`.
+  * Fix 32-bit `ioctl` compatibility for mixed 32/64-bit systems.
+  * Detect a `btrfs send` in progress, and wait for it to complete
+    automatically. `--workaround-btrfs-send` is no longer necessary when used
+    with extent scan mode.
+
+
+-------------------------------------------------------------------
 Thu Mar  7 15:05:28 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Fix build fail with gcc7 on Leap 15
