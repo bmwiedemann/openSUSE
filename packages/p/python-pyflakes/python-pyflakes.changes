@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul 13 12:37:04 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.0:
+  * Add support for python 3.14
+  * Add "t-string is missing placeholders" error
+  * Fix annotation erroneously causing a name to be defined with
+    from __future__ import annotations
+  * Add support for always-deferred annotations (PEP 749)
+
+-------------------------------------------------------------------
 Tue Apr 15 07:53:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.2:

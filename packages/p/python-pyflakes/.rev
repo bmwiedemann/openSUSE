@@ -461,4 +461,17 @@ It is a dependency of the spyder python graphical environment, besides by a usef
   * Add new error for unused global / nonlocal names</comment>
     <requestid>1269465</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>812b067bf4ddd837139f10cd8b5ed2d3</srcmd5>
+    <version>3.4.0</version>
+    <time>1752765415</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.4.0:
+  * Add support for python 3.14
+  * Add &quot;t-string is missing placeholders&quot; error
+  * Fix annotation erroneously causing a name to be defined with
+    from __future__ import annotations
+  * Add support for always-deferred annotations (PEP 749)</comment>
+    <requestid>1292497</requestid>
+  </revision>
 </revisionlist>
