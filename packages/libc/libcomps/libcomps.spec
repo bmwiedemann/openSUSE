@@ -1,7 +1,7 @@
 #
 # spec file for package libcomps
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define major 0
 %define minor 1
-%define patch 20
+%define patch 21
 %define libname %{name}%{major}
 %define devname %{name}-devel
 
@@ -31,7 +31,7 @@ License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/rpm-software-management/libcomps
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-Patch0:         libcomps-c99.patch
+Patch0:         %{url}/commit/702ec142.patch
 
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  check-devel

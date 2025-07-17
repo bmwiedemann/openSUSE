@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 16 13:28:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.1.21:
+  + tests: Don't print parsing errors during tests
+  + tests: Unify formatting of current test announcements
+  + build: Restore compatiblity with libxml2-2.12.0
+  + Fix build: use correct variable for category and env
+- Drop libcomps-c99.patch: fixed upstream.
+- Add 702ec142.patch: Upstream commit, support builds with cmake
+  4.x.
+
+-------------------------------------------------------------------
 Wed Jul 10 14:05:56 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add libcomps-c99.patch in order to avoid C99 violations which are
