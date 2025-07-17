@@ -17,14 +17,16 @@
 
 
 Name:           tboot
-%define ver 1.11.9
-Version:        20250219_%{ver}
+%define ver 1.11.10
+Version:        20250417_%{ver}
 Release:        0
 Summary:        Program for performing a verified launch using Intel TXT
 License:        BSD-3-Clause
 Group:          Productivity/Security
 URL:            https://sourceforge.net/projects/tboot/
-Source0:        https://downloads.sourceforge.net/project/tboot/tboot/tboot-%{ver}.tar.gz
+Source0:        https://downloads.sourceforge.net/project/tboot/tboot-%{ver}.tar.gz
+Source2:        https://downloads.sourceforge.net/project/tboot/tboot-%{ver}.tar.gz.gpg
+Source3:        https://downloads.sourceforge.net/project/tboot/tboot-1.11.0-pub-key.key#/tboot.keyring
 Source1:        tboot.rpmlintrc
 Patch1:         tboot-grub2-fix-menu-in-xen-host-server.patch
 Patch2:         tboot-grub2-fix-xen-submenu-name.patch
@@ -32,6 +34,7 @@ Patch3:         tboot-distributor.patch
 Patch4:         tboot-grub2-refuse-secure-boot.patch
 Patch5:         tboot-bsc#1207833-copy-mbi.patch
 Patch6:         tboot-fix-alloc-size-warning.patch
+Patch7:         tboot-cet.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64
 BuildRequires:  openssl-devel

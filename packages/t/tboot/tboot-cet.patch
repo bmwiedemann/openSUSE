@@ -1,0 +1,12 @@
+Index: tboot-1.11.10/tboot/common/shutdown.S
+===================================================================
+--- tboot-1.11.10.orig/tboot/common/shutdown.S
++++ tboot-1.11.10/tboot/common/shutdown.S
+@@ -116,6 +116,7 @@ shutdown_entry32:
+  */
+ ENTRY(shutdown_entry)
+ 	.code64
++	endbr64
+ 	cli
+ 	wbinvd
+ 

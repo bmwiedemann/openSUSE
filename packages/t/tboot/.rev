@@ -737,4 +737,17 @@
 - refresh tboot-grub2-refuse-secure-boot.patch</comment>
     <requestid>1247027</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>e6bb174234c5df801b1d0f2ca770128d</srcmd5>
+    <version>20250417_1.11.10</version>
+    <time>1752766003</time>
+    <user>anag_factory</user>
+    <comment>- updated to version 20250417: v1.11.10
+  - Fix the issue causing tboot to hang during waking up processors from
+    txt sleep on DMR simics
+- add .gpg signature and tboot.keyring
+- tboot-cet.patch: add a missing ENDBR64 instruction when kernel is
+  using CET (bsc#1246573) (forwarded request 1293792 from msmeissn)</comment>
+    <requestid>1294047</requestid>
+  </revision>
 </revisionlist>
