@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 15 08:26:37 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+-  Enable libcxx, openmp, lldb and thin_lto on loongarch64
+
+-------------------------------------------------------------------
+Mon Jul 14 07:47:53 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Add reproducible.patch to make libomp.so reproducible (boo#1199076)
+
+-------------------------------------------------------------------
 Thu Jul 10 21:56:00 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 20.1.8.

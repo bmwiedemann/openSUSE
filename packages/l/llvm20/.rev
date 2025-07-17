@@ -119,4 +119,13 @@
 - Rebase llvm-do-not-install-static-libraries.patch.</comment>
     <requestid>1292220</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>2047f88f2d7bd4352a3bcc13cc823d42</srcmd5>
+    <version>20.1.8</version>
+    <time>1752765418</time>
+    <user>anag_factory</user>
+    <comment>- Add reproducible.patch to make libomp.so reproducible (boo#1199076)
+- Enable libcxx, openmp, lldb and thin_lto on loongarch64</comment>
+    <requestid>1293548</requestid>
+  </revision>
 </revisionlist>

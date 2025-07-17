@@ -28,13 +28,13 @@
 %global _soclang 13
 %global _socxx  1
 
-%ifarch x86_64 aarch64 %arm riscv64 ppc64le
+%ifarch x86_64 aarch64 %arm loongarch64 riscv64 ppc64le
 %bcond_without libcxx
 %else
 %bcond_with libcxx
 %endif
 
-%ifarch aarch64 ppc64 ppc64le %{ix86} x86_64 riscv64
+%ifarch aarch64 loongarch64 ppc64 ppc64le %{ix86} x86_64 riscv64
 %bcond_without openmp
 %else
 %bcond_with openmp
@@ -47,7 +47,7 @@
 %bcond_without use_lld
 %endif
 
-%ifarch aarch64 ppc64le s390x x86_64
+%ifarch aarch64 loongarch64 ppc64le s390x x86_64
 %bcond_without lldb
 %if %{suse_version} >= 1600 || 0%{?sle_version} >= 150600
 %bcond_without lldb_python
@@ -60,7 +60,7 @@
 %bcond_with lldb_python
 %endif
 
-%ifarch %{arm} aarch64 %{ix86} ppc64le riscv64 s390x x86_64
+%ifarch %{arm} aarch64 %{ix86} loongarch64 ppc64le riscv64 s390x x86_64
 %bcond_without thin_lto
 %else
 %bcond_with thin_lto
@@ -434,6 +434,8 @@ Patch15:        libcxx-test-library-path.patch
 Patch16:        llvm-workaround-superfluous-branches.patch
 # PATCH-FIX-UPSTREAM: Recognize <arch>-suse-linux as implicitly GNU. Discussion at https://reviews.llvm.org/D110900.
 Patch17:        llvm-suse-implicit-gnu.patch
+# PATCH-FIX-UPSTREAM: make libomp reproducible (boo#1199076)
+Patch19:        reproducible.patch
 Patch20:        llvm_build_tablegen_component_as_shared_library.patch
 Patch21:        tests-use-python3.patch
 Patch24:        opt-viewer-Find-style-css-in-usr-share.patch
@@ -951,6 +953,7 @@ mv lldb-%{_version}.src tools/lldb
 
 %if %{with openmp}
 mv openmp-%{_version}.src projects/openmp
+%patch -P 19 -p1
 %endif
 
 %if %{with libcxx}
