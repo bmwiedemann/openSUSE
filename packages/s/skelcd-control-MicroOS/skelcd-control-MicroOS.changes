@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 16 10:11:51 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Using systemd_fde in partition proposal (jsc#PED-10703).
+- 20250716
+
+-------------------------------------------------------------------
 Tue Apr 29 16:01:51 UTC 2025 - Stefan Schubert <schubi@suse.de>
 
 - Disabling kdump
