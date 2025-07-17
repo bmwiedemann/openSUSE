@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 16 06:21:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.3:
+  * BUG FIXES:
+    - OpenTofu will no longer crash in a rare case where a
+      dynamically-invalid expression has its error suppressed by
+      try or can and then that expression becomes relevant for
+      deciding whether to report a "change outside of OpenTofu" in
+      the human-oriented plan diff. (#2988)
+    - Ensure provider downloads into temp are cleaned up correctly
+      on windows. (#2843)
+    - Correctly handle structural typed attributes during test
+      provider mocking. (#2994)
+    - Fix erroneous detection of changes with sensitive resource
+      attributes. (#3024)
+
+-------------------------------------------------------------------
 Sat Jul 12 14:36:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - BuildRequire go1.24 >= 1.24.4 to not use go1.25rc2
