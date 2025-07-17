@@ -1,7 +1,7 @@
 #
 # spec file for package python-netaddr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-netaddr
 Version:        1.3.0
@@ -28,17 +29,17 @@ Source:         https://files.pythonhosted.org/packages/source/n/netaddr/netaddr
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       alts
+BuildArch:      noarch
 # SECTION test
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module iniconfig}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pluggy}
+BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -60,7 +61,7 @@ Included are routines for:
 
 %prep
 %autosetup -p1 -n netaddr-%{version}
-sed -i "1{\@/usr/bin/env python@d}" netaddr/{cli,ip/iana,eui/ieee}.py # Fix non-executable scripts
+sed -i "1{\@%{_bindir}/env python@d}" netaddr/{cli,ip/iana,eui/ieee}.py # Fix non-executable scripts
 
 %build
 %pyproject_wheel
@@ -73,11 +74,8 @@ sed -i "1{\@/usr/bin/env python@d}" netaddr/{cli,ip/iana,eui/ieee}.py # Fix non-
 %check
 %pytest
 
-%post
-%python_install_alternative netaddr
-
-%postun
-%python_uninstall_alternative netaddr
+%pre
+%python_libalternatives_reset_alternative netaddr
 
 %files %{python_files}
 %license LICENSE.rst
