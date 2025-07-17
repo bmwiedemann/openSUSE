@@ -194,4 +194,40 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1284230</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c04ddd9778639dd5c2cb71f0ca0543e3</srcmd5>
+    <version>3.3.0</version>
+    <time>1752765524</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.0:
+  * postgresql: fix initdb options
+  * ci(mergify): upgrade configuration to current format
+  * Valkey:  Redis: Use IP address in sentinel configuration
+  * Remove Python 3.8 support
+  * Allow drivers requiring extended attributes to use any xattr
+    implementation
+- update to 3.2.3:
+  * Fix list command names from importlib
+- update to 3.2.2:
+  * Fix long description
+  * Fix CI and test using Ubuntu 24.04 and Python 3.12
+- update to 3.2.1:
+  * Switch to new version of docker actions
+  * Redis: Use IP address in sentinel configuration
+  * Replace call to deprecated method Thread.setDaemon()
+- update to 3.2.0:
+  * Remove deprecated mongo cli options
+  * Add support for newer s3rver
+  * Fix etcd v3.4 cluster works
+  * ceph: auth_allow_insecure_global_id_reclaim and
+    mon_warn_on_pool_no_redundancy to false
+  * Move mergify to queue action
+  * Drop old Gnocchi support
+  * gnocchi: Change s3 credentials to s3rver default
+  * Start all etcd nodes at the same time
+  * Follow PEP517
+
+- Remove unneeded Requires on mock and six.</comment>
+    <requestid>1293845</requestid>
+  </revision>
 </revisionlist>

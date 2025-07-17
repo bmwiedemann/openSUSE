@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jul 16 15:09:31 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.0:
+  * postgresql: fix initdb options
+  * ci(mergify): upgrade configuration to current format
+  * Valkey:  Redis: Use IP address in sentinel configuration
+  * Remove Python 3.8 support
+  * Allow drivers requiring extended attributes to use any xattr
+    implementation
+- update to 3.2.3:
+  * Fix list command names from importlib
+- update to 3.2.2:
+  * Fix long description
+  * Fix CI and test using Ubuntu 24.04 and Python 3.12
+- update to 3.2.1:
+  * Switch to new version of docker actions
+  * Redis: Use IP address in sentinel configuration
+  * Replace call to deprecated method Thread.setDaemon()
+- update to 3.2.0:
+  * Remove deprecated mongo cli options
+  * Add support for newer s3rver
+  * Fix etcd v3.4 cluster works
+  * ceph: auth_allow_insecure_global_id_reclaim and
+    mon_warn_on_pool_no_redundancy to false
+  * Move mergify to queue action
+  * Drop old Gnocchi support
+  * gnocchi: Change s3 credentials to s3rver default
+  * Start all etcd nodes at the same time
+  * Follow PEP517
+
+-------------------------------------------------------------------
 Mon Jun  9 14:45:01 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
@@ -11,7 +42,7 @@ Tue Jun  3 11:22:03 UTC 2025 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Mon Dec  5 01:21:59 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Remove unneeded Requires on mock and six. 
+- Remove unneeded Requires on mock and six.
 
 -------------------------------------------------------------------
 Thu Jun 17 21:13:02 UTC 2021 - Dirk Müller <dmueller@suse.com>

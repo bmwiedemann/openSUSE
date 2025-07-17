@@ -18,19 +18,22 @@
 
 %bcond_without libalternatives
 Name:           python-pifpaf
-Version:        3.1.5
+Version:        3.3.0
 Release:        0
 Summary:        Suite of tools and fixtures to manage daemons for testing
 License:        Apache-2.0
 URL:            https://github.com/jd/pifpaf
 Source:         https://files.pythonhosted.org/packages/source/p/pifpaf/pifpaf-%{version}.tar.gz
-BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+BuildRequires:  alts
 Requires:       alts
+%endif
 Requires:       python-Jinja2
 Requires:       python-click
 Requires:       python-daiquiri
@@ -70,7 +73,7 @@ export LC_ALL=en_US.utf8
 
 %files %{python_files}
 %license LICENSE
-%doc ChangeLog README.rst
+%doc README.rst
 %{python_sitelib}/pifpaf
 %{python_sitelib}/pifpaf-%{version}*-info
 %python_alternative %{_bindir}/pifpaf
