@@ -1,7 +1,7 @@
 #
 # spec file for package libpfm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %global python_config CONFIG_PFMLIB_NOPYTHON=y
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define vname   libpfm4
 %bcond_without python2
 Name:           libpfm
@@ -31,7 +30,9 @@ Source:         https://downloads.sourceforge.net/project/perfmon2/libpfm4/%{nam
 Source1:        baselibs.conf
 
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig >= 2.0.5
 
@@ -123,7 +124,7 @@ export CFLAGS="%{optflags}"
 make %{?_smp_mflags} %{python_config}
 
 pushd python
-%python_build
+%pyproject_wheel
 popd
 
 %install
@@ -142,7 +143,7 @@ install -D -p -m 0755 perf_examples/evt2raw \
   %{buildroot}/%{_bindir}/evt2raw
 
 pushd python
-%python_install
+%pyproject_install
 popd
 
 %post -n %{vname} -p /sbin/ldconfig
@@ -166,7 +167,7 @@ popd
 
 %files %{python_files %{name}}
 %{python_sitearch}/perfmon
-%{python_sitearch}/perfmon-*-info
+%{python_sitearch}/perfmon-*.dist-info
 
 %if %{with python2} && ! 0%{?python_subpackage_only}
 %files -n python2-%{name}

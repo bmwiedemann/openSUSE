@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 11 05:12:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+
+-------------------------------------------------------------------
 Thu May  4 23:42:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.13:
