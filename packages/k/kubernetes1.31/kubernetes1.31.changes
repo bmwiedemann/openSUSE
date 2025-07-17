@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 17 03:58:50 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.31.11:
+  * Use per-policy marker names for VAP integration tests.
+  * Add check to see if promote worked within the retry loop
+  * Clean backoff record earlier
+
+-------------------------------------------------------------------
 Sat Jun 21 06:41:05 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.31.10:

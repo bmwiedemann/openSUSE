@@ -105,4 +105,12 @@ https://github.com/kubernetes/kubernetes/issues/130786</comment>
     <comment>Monthly Patch Release – June, 2025: Update to version 1.31.10</comment>
     <requestid>1287521</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7b4024acb710d38e179522261fb0c66d</srcmd5>
+    <version>1.31.11</version>
+    <time>1752765544</time>
+    <user>anag_factory</user>
+    <comment>Monthly Patch Release – July, 2025: Update to version 1.31.11</comment>
+    <requestid>1293985</requestid>
+  </revision>
 </revisionlist>
