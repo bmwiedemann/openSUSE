@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 16 13:00:05 UTC 2025 - peter czanik <peter@czanik.hu>
+
+- update to 4.9.0
+  * added modules for clickhouse and pubsub destination
+  * added configuration snippets for Azure, Prometheus exporter
+- remove 5408.patch, which became redundant 
+
+-------------------------------------------------------------------
 Tue Jun 24 10:06:11 UTC 2025 - peter czanik <peter@czanik.hu>
 
 - add patch (5408.patch) to compile GRPC-based modules with latest

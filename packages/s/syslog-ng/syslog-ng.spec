@@ -96,7 +96,7 @@ BuildRequires:  protobuf-devel
 %bcond_without	snmp
 %endif
 Name:           syslog-ng
-Version:        4.8.2
+Version:        4.9.0
 Release:        0
 Summary:        Enhanced system logging daemon
 License:        GPL-2.0-only
@@ -108,7 +108,6 @@ Source2:        syslog-ng.conf.default
 Source3:        syslog-ng.service
 Source4:        syslog-ng-service-prepare
 Patch0:         syslog-ng-reproducible-jar-mtime.patch
-Patch1:         5408.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -201,11 +200,11 @@ Key features:
  * hand on messages for further processing using message queues (like
    AMQP), files or databases (like PostgreSQL or MongoDB).
 
-%package -n libevtlog-4_8-0
+%package -n libevtlog-4_9-0
 Summary:        Syslog-ng event logger library runtime
 Group:          System/Libraries
 
-%description -n libevtlog-4_8-0
+%description -n libevtlog-4_9-0
 The EventLog library provides an alternative to the simple syslog()
 API provided on UNIX systems. Compared to syslog, EventLog adds
 structured messages.
@@ -372,6 +371,24 @@ Requires:       %{name}-grpc
 %description bigquery
 This package provides Google BigQuery destination support for syslog-ng
 
+%package clickhouse
+Summary:        Clickhouse destination support for syslog-ng
+Group:          System/Daemons
+Requires:       %{name} = %{version}
+Requires:       %{name}-grpc
+
+%description clickhouse
+This package provides Clickhouse destination support for syslog-ng
+
+%package pubsub
+Summary:        Google PubSub destination support for syslog-ng
+Group:          System/Daemons
+Requires:       %{name} = %{version}
+Requires:       %{name}-grpc
+
+%description pubsub
+This package provides Google PubSub destination support for syslog-ng
+
 %package cloudauth
 Summary:        Cloud Authentication support for syslog-ng: pubsub
 Group:          System/Daemons
@@ -392,7 +409,6 @@ This package provides MQTT support for syslog-ng
 %patch -P 0 -p1
 %endif
 %endif
-%patch -P 1 -p1
 # fill out placeholders in the config,
 # systemd service and prepare script.
 for file in \
@@ -631,8 +647,8 @@ chmod 640 "${additional_sockets#/}"
 #
 %{service_del_postun syslog-ng.service}
 
-%post -n libevtlog-4_8-0 -p /sbin/ldconfig
-%postun -n libevtlog-4_8-0 -p /sbin/ldconfig
+%post -n libevtlog-4_9-0 -p /sbin/ldconfig
+%postun -n libevtlog-4_9-0 -p /sbin/ldconfig
 
 %post -n syslog-ng-grpc -p /sbin/ldconfig
 %postun -n syslog-ng-grpc -p /sbin/ldconfig
@@ -722,6 +738,9 @@ chmod 640 "${additional_sockets#/}"
 %dir %{_datadir}/syslog-ng/include/scl/darwinosl/
 %dir %{_datadir}/syslog-ng/include/scl/arr/
 %dir %{_datadir}/syslog-ng/include/scl/jellyfin/
+%dir %{_datadir}/syslog-ng/include/scl/azure/
+%dir %{_datadir}/syslog-ng/include/scl/freebsd-audit/
+%dir %{_datadir}/syslog-ng/include/scl/stats-exporter/
 %dir %{_datadir}/syslog-ng/xsd
 %dir %{_sysconfdir}/syslog-ng
 %dir %{_sysconfdir}/syslog-ng/conf.d
@@ -835,11 +854,14 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/darwinosl/plugin.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/arr/arr.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/jellyfin/jellyfin.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/azure/azure-monitor.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/freebsd-audit/plugin.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/stats-exporter/plugin.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/smart-multi-line.fsm
 %attr(644,root,root) %{_datadir}/syslog-ng/xsd/*
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl.conf
 
-%files -n libevtlog-4_8-0
+%files -n libevtlog-4_9-0
 %{_libdir}/libevtlog-*.so.*
 
 %if %{with snmp}
@@ -880,6 +902,12 @@ chmod 640 "${additional_sockets#/}"
 
 %files bigquery
 %attr(755,root,root) %{_libdir}/syslog-ng/libbigquery.so
+
+%files clickhouse
+%attr(755,root,root) %{_libdir}/syslog-ng/libclickhouse.so
+
+%files pubsub
+%attr(755,root,root) %{_libdir}/syslog-ng/libpubsub.so
 
 %endif
 

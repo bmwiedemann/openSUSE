@@ -1117,4 +1117,12 @@ From syslog-ng OSE only 3.3 beta1+ is affected. (forwarded request 80925 from cz
     <comment></comment>
     <requestid>1288252</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>4078cd2f6ede0f94a10357c68ece0603</srcmd5>
+    <version>4.9.0</version>
+    <time>1752765520</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1293850</requestid>
+  </revision>
 </revisionlist>
