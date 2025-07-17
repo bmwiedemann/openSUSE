@@ -883,4 +883,14 @@
   + Updated translations. (forwarded request 1283839 from iznogood)</comment>
     <requestid>1284676</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>ebe649c545f5eabb375944f88c6eedaa</srcmd5>
+    <version>48.5</version>
+    <time>1752765424</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.5:
+  + Remove extra slash in API URL for Transitous, unbreaks routing
+    with latests MOTIS releases. (forwarded request 1293556 from iznogood)</comment>
+    <requestid>1293760</requestid>
+  </revision>
 </revisionlist>
