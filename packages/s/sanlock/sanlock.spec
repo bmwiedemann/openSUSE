@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package sanlock
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,7 +65,9 @@ Patch103:       suse-no-date-time.patch
 Patch104:       harden_fence_sanlockd.service.patch
 Patch105:       harden_sanlk-resetd.service.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  libaio-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -163,7 +165,7 @@ CFLAGS="%{optflags}" make -j1 -C reset
 %endif
 %else
 pushd python
-CFLAGS="%{optflags} -fno-strict-aliasing" %python_build
+CFLAGS="%{optflags} -fno-strict-aliasing" %pyproject_wheel
 popd
 %endif
 
@@ -202,7 +204,7 @@ install -Dm 0644 src/logrotate.sanlock \
 install -Dd -m 0755 %{buildroot}%{_sysconfdir}/wdmd.d
 %else
 pushd python
-%python_install
+%pyproject_install
 popd
 %endif
 
@@ -318,7 +320,7 @@ getent passwd sanlock > /dev/null || useradd \
 
 %files %{python_files}
 %{python_sitearch}/sanlock*.so
-%{python_sitearch}/sanlock_python-%{version}*info
+%{python_sitearch}/sanlock_python-%{version}.dist-info
 %endif
 
 %changelog

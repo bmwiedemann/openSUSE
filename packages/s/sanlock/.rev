@@ -332,4 +332,12 @@ corruption of the VM's disk image.  See FATE#306399.</comment>
   * sanlock: fix invalid strcpy in direct dump</comment>
     <requestid>1208511</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>6cd1bc144bf7ac2f25ec6cbea0210088</srcmd5>
+    <version>3.9.5</version>
+    <time>1752765439</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1293232</requestid>
+  </revision>
 </revisionlist>
