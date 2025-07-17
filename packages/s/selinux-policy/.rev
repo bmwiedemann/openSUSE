@@ -1904,4 +1904,21 @@ https://build.opensuse.org/request/show/1178504 </comment>
     <comment></comment>
     <requestid>1291206</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>578853f16dc5b57ad9b0ea81e7aedd37</srcmd5>
+    <version>20250716</version>
+    <time>1752765466</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250716:
+  * Allow virtqemud_t use its private tmpfs files (bsc#1242998)
+  * Allow virtqemud_t setattr to /dev/userfaultfd (bsc#1242998)
+  * Allow virtqemud_t read and write /dev/ptmx (bsc#1242998)
+  * Extend virtqemud_t tcp_socket permissions (bsc#1242998)
+  * Mark configfs_t as mountpoint (bsc#1246080)
+  * healthchecker: add proper optional_policy() guards
+  * Allow virtqemud_t to read and write generic pty (bsc#1242998)
+  * Allow plymouthd_t read proc files of systemd_passwd_agent (bsc#1245470)
+</comment>
+    <requestid>1293635</requestid>
+  </revision>
 </revisionlist>

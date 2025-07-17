@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 16 08:17:57 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20250716:
+  * Allow virtqemud_t use its private tmpfs files (bsc#1242998)
+  * Allow virtqemud_t setattr to /dev/userfaultfd (bsc#1242998)
+  * Allow virtqemud_t read and write /dev/ptmx (bsc#1242998)
+  * Extend virtqemud_t tcp_socket permissions (bsc#1242998)
+  * Mark configfs_t as mountpoint (bsc#1246080)
+  * healthchecker: add proper optional_policy() guards
+  * Allow virtqemud_t to read and write generic pty (bsc#1242998)
+  * Allow plymouthd_t read proc files of systemd_passwd_agent (bsc#1245470)
+
+-------------------------------------------------------------------
 Tue Jul  8 09:08:34 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update macros.selinux-policy to trigger a full relabel on transactional
