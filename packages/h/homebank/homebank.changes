@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 16 18:24:32 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.9.4
+  * bugfix: lp#2116088 ledger window quickfilter bar abnormal
+    height
+
+-------------------------------------------------------------------
 Thu Jul 10 04:18:26 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.9.3
