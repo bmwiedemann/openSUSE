@@ -88,4 +88,12 @@
   * Fix docutils deprecation in option parsing</comment>
     <requestid>1172883</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>7ce02bf6632819204b0fa7361881e5e5</srcmd5>
+    <version>3.0.1</version>
+    <time>1752765497</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1293645</requestid>
+  </revision>
 </revisionlist>

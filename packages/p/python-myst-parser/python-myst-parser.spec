@@ -1,7 +1,7 @@
 #
 # spec file for package python-myst-parser
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?sle15_python_module_pythons}
+%bcond_without libalternatives
 Name:           python-myst-parser
 Version:        3.0.1
 Release:        0
@@ -26,17 +27,16 @@ URL:            https://myst-parser.readthedocs.io/
 Source:         https://github.com/executablebooks/MyST-Parser/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PyPI tarball does not contain tests
 #Source:         https://files.pythonhosted.org/packages/source/m/myst-parser/myst-parser-%%{version}.tar.gz
-BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module docutils >= 0.18 with %python-docutils < 0.22}
-BuildRequires:  %{python_module markdown-it-py}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module markdown-it-py}
 BuildRequires:  %{python_module mdit-py-plugins}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
-
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION tests
@@ -44,6 +44,7 @@ BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module pytest-regressions}
 BuildRequires:  %{python_module pytest}
+# /SECTION
 # SECTION docs
 #BuildRequires:  python3-Sphinx
 #BuildRequires:  python3-Jinja2
@@ -53,14 +54,13 @@ BuildRequires:  %{python_module pytest}
 #BuildRequires:  python3-markdown-it-py >= 1
 #BuildRequires:  python3-mdit-py-plugins < 0.4
 # /SECTION
+Requires:       alts
 Requires:       python-Jinja2
 Requires:       python-PyYAML
 Requires:       python-Sphinx
 Requires:       python-docutils >= 0.18
 Requires:       python-markdown-it-py
 Requires:       python-mdit-py-plugins
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -91,6 +91,7 @@ rm docs/.gitignore
 %python_clone -a %{buildroot}%{_bindir}/myst-docutils-xml
 %python_clone -a %{buildroot}%{_bindir}/myst-docutils-demo
 %python_clone -a %{buildroot}%{_bindir}/myst-inv
+%python_group_libalternatives myst-anchors myst-docutils-html myst-docutils-html5 myst-docutils-latex myst-docutils-pseudoxml myst-docutils-xml myst-docutils-demo myst-inv
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -106,11 +107,8 @@ donttest="test_parsing or test_errors or test_render or test_html_to_nodes or te
 
 %pytest $ignore -k "not ($donttest)"
 
-%post
-%{python_install_alternative myst-anchors myst-docutils-html myst-docutils-html5 myst-docutils-latex myst-docutils-pseudoxml myst-docutils-xml myst-docutils-demo myst-inv}
-
-%postun
-%python_uninstall_alternative myst-anchors
+%pre
+%python_libalternatives_reset_alternative myst-anchors
 
 %files %{python_files}
 %{python_sitelib}/myst_parser/
