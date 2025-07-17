@@ -1,0 +1,31 @@
+https://github.com/dagolden/HTTP-CookieJar/pull/16
+
+From cb4faca2308a0a9a9b96526d9ef9e3cee58a4e35 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Mon, 14 Jul 2025 12:53:59 +0200
+Subject: [PATCH] Fix tests after year 2041
+
+moved to 3061 because it also has a Sunday on that day.
+
+Background:
+As part of my work on reproducible builds for openSUSE, I check that software still gives identical build results in the future.
+The usual offset is +16 years, because that is how long I expect some software will be used in some places.
+This showed up failing tests in our package build.
+See https://reproducible-builds.org/ for why this matters.
+---
+ t/examples.t | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/examples.t b/t/examples.t
+index 755d9b2..3c032e6 100644
+--- a/t/examples.t
++++ b/t/examples.t
+@@ -38,7 +38,7 @@ subtest "wrong path" => sub {
+ 
+ subtest "expiration" => sub {
+     $jar->clear;
+-    $jar->add( $req, "lang=en-US; Expires=Sun, 09 Jun 2041 10:18:14 GMT" );
++    $jar->add( $req, "lang=en-US; Expires=Sun, 09 Jun 3061 10:18:14 GMT" );
+     is( $jar->cookie_header($req), "lang=en-US" );
+     $jar->add( $req, "lang=; Expires=Sun, 06 Nov 1994 08:49:37 GMT" );
+     is( $jar->cookie_header($req), "" );

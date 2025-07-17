@@ -27,6 +27,7 @@ Summary:        Minimalist HTTP user agent cookie jar
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Patch0:         fix2041.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros

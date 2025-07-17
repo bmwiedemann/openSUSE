@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 16 09:50:41 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add fix2041.patch to make tests pass after year 2041
+
+-------------------------------------------------------------------
 Tue Jun  3 13:03:41 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version
