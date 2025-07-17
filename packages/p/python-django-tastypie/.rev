@@ -230,4 +230,13 @@
 - Drop patch correct-assertion-methods.patch, included upstream.</comment>
     <requestid>1225688</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7efc3993bbbc07eb7c405f3ad98a63a4</srcmd5>
+    <version>0.15.1</version>
+    <time>1752765560</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.15.1:
+  * Django 5.2 support</comment>
+    <requestid>1294059</requestid>
+  </revision>
 </revisionlist>
