@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 16 14:18:31 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Add modules for confidential compute (bsc#1246502)
+
+-------------------------------------------------------------------
 Wed Jul  2 07:50:03 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Add nvme support (bsc#1245533)
