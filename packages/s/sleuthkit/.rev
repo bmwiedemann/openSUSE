@@ -255,4 +255,14 @@ There are a couple known attacker inducible crashes identified in 4.4.2.  Upstre
     <comment></comment>
     <requestid>1141995</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>4fecc73cf50b35990e69d8b8de420b37</srcmd5>
+    <version>4.14.0</version>
+    <time>1752766002</time>
+    <user>anag_factory</user>
+    <comment>- version update to 4.14.0
+
+Trim really old changelog that upsets the syntax checker bot</comment>
+    <requestid>1294041</requestid>
+  </revision>
 </revisionlist>

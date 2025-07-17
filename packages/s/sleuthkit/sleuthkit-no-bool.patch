@@ -1,0 +1,34 @@
+Index: sleuthkit-4.14.0/tsk/base/crc.h
+===================================================================
+--- sleuthkit-4.14.0.orig/tsk/base/crc.h
++++ sleuthkit-4.14.0/tsk/base/crc.h
+@@ -82,6 +82,8 @@ Status  : Copyright (C) Ross Williams, 1
+ #ifndef CM_DONE
+ #define CM_DONE
+ 
++#include <stdbool.h>
++
+ /******************************************************************************/
+ 
+ /* The following definitions are extracted from my style header file which    */
+@@ -91,7 +93,6 @@ Status  : Copyright (C) Ross Williams, 1
+ #ifndef DONE_STYLE
+ 
+ typedef unsigned long   ulong;
+-typedef unsigned        bool;
+ typedef unsigned char * p_ubyte_;
+ 
+ #ifndef TRUE
+Index: sleuthkit-4.14.0/tsk/img/aff.c
+===================================================================
+--- sleuthkit-4.14.0.orig/tsk/img/aff.c
++++ sleuthkit-4.14.0/tsk/img/aff.c
+@@ -14,8 +14,6 @@
+ 
+ #if HAVE_LIBAFFLIB
+ 
+-typedef int bool;
+-
+ #include "aff.h"
+ 
+ /* Note: The routine -assumes- we are under a lock on &(img_info->cache_lock)) */
