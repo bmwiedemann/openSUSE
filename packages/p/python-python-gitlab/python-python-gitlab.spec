@@ -17,7 +17,7 @@
 
 
 Name:           python-python-gitlab
-Version:        5.6.0
+Version:        6.1.0
 Release:        0
 Summary:        Python module for interacting with the GitLab API
 License:        LGPL-3.0-only

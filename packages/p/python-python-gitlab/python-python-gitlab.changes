@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Wed Jul 16 09:55:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.1.0:
+  * Chores
+    - Update to mypy 1.16.0 and resolve issues found (f734c58)
+    - deps: Update all non-major dependencies (2bab8d4)
+    - deps: Update all non-major dependencies (a87ba63)
+    - deps: Update dependency requests to v2.32.4 [security]
+      (ff579a6)
+  * Documentation
+    - Update CONTRIBUTING.rst with policy on issue management
+      (45dda50)
+  * Features
+    - api: Add listing user contributed projects (98c1307)
+    - api: Add support for project tag list filters (378a836)
+    - api: Pipeline inputs support (#3194, 306c4b1)
+    - const: Add PLANNER_ACCESS constant (ba6f174)
+    - groups: Add protectedbranches to group class (#3164, bfd31a8)
+- update to 6.0.0:
+  * Chores
+    - Add reformat code commit to .git-blame-ignore-revs (a6ac939)
+    - Reformat code with skip_magic_trailing_comma = true (2100aa4)
+    - Remove trivial get methods in preparation for generic Get
+      mixin (edd01a5)
+    - Upgrade to sphinx 8.2.1 and resolve issues (d0b5ae3)
+    - ci: Replace docs artifact with readthedocs previews (193c5de)
+    - deps: Update all non-major dependencies (4fef9f6)
+    - deps: Update all non-major dependencies (78c0c03)
+    - deps: Update all non-major dependencies (ee6cba1)
+    - deps: Update all non-major dependencies (e54516f)
+    - deps: Update all non-major dependencies (159b958)
+    - deps: Update all non-major dependencies (af137ca)
+    - deps: Update all non-major dependencies (1a2a68c)
+    - deps: Update all non-major dependencies (6ad4ce6)
+    - deps: Update all non-major dependencies (f166928)
+    - deps: Update all non-major dependencies (1a95981)
+    - deps: Update all non-major dependencies (451d951)
+    - deps: Update all non-major dependencies (41eb95d)
+    - deps: Update all non-major dependencies (37ff25b)
+    - deps: Update dependency black to v25 (e61157b)
+    - deps: Update dependency isort to v6 (46dfc50)
+    - deps: Update dependency jinja2 to v3.1.6 [security] (52bc585)
+    - deps: Update dependency types-setuptools to v76 (1299440)
+    - deps: Update dependency types-setuptools to v78 (20f83e3)
+    - deps: Update dependency types-setuptools to v79 (2e51cd5)
+    - deps: Update dependency types-setuptools to v80 (9ba9ac0)
+    - deps: Update gitlab/gitlab-ee docker tag to v17.8.2-ee.0
+      (#3135, 051ea71)
+    - deps: Update gitlab/gitlab-runner docker tag to v92098577
+      (#3142, 58e798e)
+    - deps: Update gitlab/gitlab-runner docker tag to v92594782
+      (#3167, 795f83c)
+    - deps: Update gitlab/gitlab-runner docker tag to v96856197
+      (#3190, 8c8fd84)
+    - deps: Update pre-commit hook maxbrunet/pre-commit-renovate to
+      v40 (5a4acab)
+    - deps: Update pre-commit hook psf/black to v25 (9040dbe)
+    - deps: Update pre-commit hook pycqa/isort to v6 (c45e445)
+    - deps: Update python-semantic-release/python-semantic-release
+      action to v10 (f49d54e)
+    - dev: Add option for serving docs locally (beb2f24)
+  * Documentation
+    - Use get_all keyword arg instead of all in docstrings
+      (f62dda7)
+    - Use list(get_all=True) in documentation examples (f36614f)
+    - api-usage: Fix GitLab API links to the publicly accessible
+      URLs (f55fa15)
+    - api-usage-graphql: Fix the example graphql query string
+      (8dbdd7e)
+    - job_token_scope: Fix typo/inconsistency (203bd92)
+  * Features
+    - Adds member role methods (055557e)
+    - api: Add iteration_id as boards create attribute (#3191,
+      938b0d9)
+    - api: Add support for adding instance deploy keys (22be96c)
+    - api: Add support for avatar removal (5edd2e6)
+    - api: Add support for token self-rotation (da40e09)
+    - api: Listmixin.list typing overload (6eee494)
+    - api: Make RESTManager generic on RESTObject class (91c4f18)
+    - api: Make RESTObjectList typing generic (befba35)
+    - settings: Implement support for 'silent_mode_enabled'
+      (a9163a9)
+  * Refactoring
+    - Use more python3.9 syntax (4e90c11)
+  * Testing
+    - functional: Switch to new runner registration API (cbc613d)
+
+-------------------------------------------------------------------
 Fri Apr 18 06:14:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 5.6.0:
