@@ -60,7 +60,7 @@
 
 %if %{with buildx}
 # MANUAL: This needs to be updated with every docker-buildx update.
-%define buildx_version 0.22.0
+%define buildx_version 0.25.0
 %endif
 
 # Used when generating the "build" information for Docker version. The value of
@@ -156,7 +156,7 @@ BuildRequires:  procps
 BuildRequires:  sqlite3-devel
 BuildRequires:  sysuser-tools
 BuildRequires:  zsh
-BuildRequires:  golang(API) = 1.22
+BuildRequires:  golang(API) = 1.23
 BuildRequires:  pkgconfig(libsystemd)
 %if %{with apparmor}
 %if 0%{?suse_version} >= 1500

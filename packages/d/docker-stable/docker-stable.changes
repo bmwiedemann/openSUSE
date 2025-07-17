@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 17 04:27:33 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to docker-buildx v0.25.0. Upstream changelog:
+  <https://github.com/docker/buildx/releases/tag/v0.25.0>
+- Update to Go 1.23 for building now that upstream has switched their 23.0.x
+  LTSS to use Go 1.23.
+
+-------------------------------------------------------------------
 Thu Jun  5 16:12:14 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Do not try to inject SUSEConnect secrets when in Rootless Docker mode, as
