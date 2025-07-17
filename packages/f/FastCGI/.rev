@@ -251,4 +251,25 @@ Use SUSE- proprietary prefix until license is accepted upstream by SPDX.org. Fed
   fixed</comment>
     <requestid>1206336</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e7e41f80b419c13cef46c17e82980d6f</srcmd5>
+    <version>2.4.6</version>
+    <time>1752765443</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.6 (boo#1243325 CVE-2025-23016)
+  switch to https://github.com/FastCGI-Archives/fcgi2
+  lots of small bugs fixes and incorporation of patches that
+  distros carried in the past
+- drop patches which are included upstream
+  FastCGI-clientdata_pointer.patch
+  FastCGI-gcc44.patch
+  FastCGI-makefile.am_cppflags.patch
+  FastCGI-supervise_cgi-fcgi.patch
+  fastcgi-2.4.0_missing_call_to_fclose.patch
+- drop patches obsoleted by changes to the perl building
+  FastCGI-fix_deprecated_api.patch
+  FastCGI-perl514.patch
+  FastCGI-perl526.patch</comment>
+    <requestid>1293233</requestid>
+  </revision>
 </revisionlist>

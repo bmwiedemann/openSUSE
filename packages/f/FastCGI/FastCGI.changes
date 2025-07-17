@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jun 13 12:23:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.4.6 (boo#1243325 CVE-2025-23016)
+  switch to https://github.com/FastCGI-Archives/fcgi2
+  lots of small bugs fixes and incorporation of patches that
+  distros carried in the past
+- drop patches which are included upstream
+  FastCGI-clientdata_pointer.patch
+  FastCGI-gcc44.patch
+  FastCGI-makefile.am_cppflags.patch
+  FastCGI-supervise_cgi-fcgi.patch
+  fastcgi-2.4.0_missing_call_to_fclose.patch
+- drop patches obsoleted by changes to the perl building
+  FastCGI-fix_deprecated_api.patch
+  FastCGI-perl514.patch
+  FastCGI-perl526.patch
+
+-------------------------------------------------------------------
 Tue Oct  8 14:33:00 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - add the normalized provides for perl(FCGI) until auto provides is

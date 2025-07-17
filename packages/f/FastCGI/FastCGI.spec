@@ -1,7 +1,7 @@
 #
 # spec file for package FastCGI
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,18 @@
 
 Name:           FastCGI
 %define lname	libfcgi0
-Version:        2.4.0
+Version:        2.4.6
 Release:        0
 Summary:        A Scalable, Open Extension to CGI
 License:        OML
 Group:          Development/Languages/C and C++
 URL:            https://fastcgi-archives.github.io/
 Source:         https://github.com/FastCGI-Archives/fcgi2/archive/%{version}.tar.gz
-Source1:        README.supervise
-Patch0:         FastCGI-makefile.am_cppflags.patch
-Patch1:         FastCGI-clientdata_pointer.patch
-Patch2:         FastCGI-supervise_cgi-fcgi.patch
-Patch3:         fastcgi-2.4.0_missing_call_to_fclose.patch
-Patch4:         FastCGI-gcc44.patch
-Patch5:         FastCGI-perl514.patch
-Patch6:         FastCGI-fix_deprecated_api.patch
-Patch7:         FastCGI-perl526.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  perl
+BuildRequires:  pkg-config
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -71,14 +63,10 @@ APIs.
 Summary:        A scalable, open extension to CGI
 Group:          Development/Languages/C and C++
 Requires:       %{name} = %{version}
-Provides:       perl-FastCGI = %{version}
-Obsoletes:      perl-FastCGI <= %{version}
+Provides:       perl-FastCGI = %{version}-%{release}
+Obsoletes:      perl-FastCGI < %{version}-%{release}
 Provides:       perl(FCGI) = 0.670.0
-%if 0%{?suse_version} < 1120
-Requires:       perl >= 5.8.0
-%else
 %{perl_requires}
-%endif
 
 %description -n perl-FCGI
 FastCGI is a language independent, scalable, open extension to CGI that
@@ -87,8 +75,7 @@ APIs.
 
 %prep
 %autosetup -n fcgi2-%{version} -p0
-touch NEWS AUTHORS ChangeLog COPYING
-find doc/{fastcgi-prog-guide,fastcgi-whitepaper} -type f -print0 | xargs -r0 chmod 0644
+find examples/ doc/{fastcgi-prog-guide,fastcgi-whitepaper} -type f -print0 | xargs -r0 chmod 0644
 cp include/fcgi_config.h.in .
 cp include/fcgi_config.h.in perl
 
@@ -123,16 +110,15 @@ popd
 %{__install} -m 0644 examples/* %{buildroot}%{_docdir}/%{name}/examples/
 %{__install} -m 0644 doc/*.1    %{buildroot}%{_mandir}/man1/
 %{__install} -m 0644 doc/*.3    %{buildroot}%{_mandir}/man3/
-%{__install} -m 0644 doc/*.htm* doc/*.gif LICENSE.TERMS README \
+%{__install} -m 0644 doc/*.htm* doc/*.gif LICENSE README.* \
     %{buildroot}%{_docdir}/%{name}/
 %{__install} -m 0644 perl/README    %{buildroot}%{_docdir}/%{name}/README.perl
 %{__install} -m 0644 perl/ChangeLog %{buildroot}%{_docdir}/%{name}/ChangeLog.perl
-%{__cp} -vr doc/{fastcgi-prog-guide,fastcgi-whitepaper} java %{S:1} \
+%{__cp} -vr doc/{fastcgi-prog-guide,fastcgi-whitepaper} java \
     %{buildroot}%{_docdir}/%{name}/
 rm -f %{buildroot}%{_libdir}/libfcgi*.la
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %defattr(-,root,root)
@@ -142,10 +128,10 @@ rm -f %{buildroot}%{_libdir}/libfcgi*.la
 
 %files devel
 %defattr(-,root,root)
-%dir %{_includedir}/fastcgi/
-%{_includedir}/fastcgi/*
+%{_includedir}/fastcgi/
 %{_libdir}/libfcgi*.so
 %{_mandir}/man3/*.3.gz
+%{_libdir}/pkgconfig/fcgi*.pc
 
 %files -n %lname
 %defattr(-,root,root)
@@ -155,11 +141,6 @@ rm -f %{buildroot}%{_libdir}/libfcgi*.la
 %defattr(-,root,root)
 %{_mandir}/man3/*.3pm.gz
 %{perl_vendorarch}/FCGI.pm
-%dir %{perl_vendorarch}/auto/FCGI
-%{perl_vendorarch}/auto/FCGI/*.*
-%if %suse_version < 1140
-%{perl_vendorarch}/auto/FCGI/.packlist
-%{_var}/adm/perl-modules/%{name}
-%endif
+%{perl_vendorarch}/auto/FCGI/
 
 %changelog
