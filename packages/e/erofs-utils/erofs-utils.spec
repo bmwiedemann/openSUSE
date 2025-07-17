@@ -1,7 +1,7 @@
 #
 # spec file for package erofs-utils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           erofs-utils
-Version:        1.8.3
+Version:        1.8.10
 Release:        0
 Summary:        Utilities for the Extendable Read-Only Filesystem (EROFS)
 License:        GPL-2.0-or-later
@@ -32,9 +32,9 @@ BuildRequires:  libtool
 BuildRequires:  libuuid-devel
 BuildRequires:  pkg-config
 BuildRequires:  xz
-BuildRequires:  pkgconfig(liblzma)
-%if 0%{?sle_version} >= 150600
-BuildRequires:  pkgconfig(libzstd) >= 5.3.2
+BuildRequires:  pkgconfig(liblzma) >= 5.3.2
+%if 0%{?suse_version} >= 1560 || 0%{?sle_version} >= 150600
+BuildRequires:  pkgconfig(libzstd)
 %endif
 BuildRequires:  pkgconfig(zlib)
 Supplements:    filesystem(erofs)

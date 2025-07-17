@@ -135,4 +135,15 @@
     <comment>- update to 1.8.3:</comment>
     <requestid>1232603</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>fc8e144b777b2674ac0164436c976e1d</srcmd5>
+    <version>1.8.10</version>
+    <time>1752765457</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.8.10
+- Enable zstd [boo#1229961]
+
+remove broken &quot;enable zstd&quot; changelog entry;was never enabled</comment>
+    <requestid>1293367</requestid>
+  </revision>
 </revisionlist>
