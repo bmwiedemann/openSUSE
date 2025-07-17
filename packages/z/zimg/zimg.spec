@@ -1,7 +1,7 @@
 #
 # spec file for package zimg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source99:       baselibs.conf
 Patch0:         zimg-s390x-unit-tests.patch
 # https://github.com/sekrit-twc/zimg/issues/214
 Patch1:         zimg-gcc15.patch
+Patch2:         cmake-googletest.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake

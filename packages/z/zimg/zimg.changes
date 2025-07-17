@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 13 06:20:40 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- add patch cmake-googletest.patch to fix incompatibility of
+  old google-test with CMake 4.0. Upstream has already updated the
+  dependency.
+
+-------------------------------------------------------------------
 Wed Feb 12 11:28:14 UTC 2025 - pgajdos@suse.com
 
 - added patches
