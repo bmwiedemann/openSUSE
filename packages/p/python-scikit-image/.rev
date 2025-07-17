@@ -271,4 +271,37 @@
     <comment></comment>
     <requestid>1290709</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>6fa3c0cafaeaabed51eac0ba604c887a</srcmd5>
+    <version>0.25.2</version>
+    <time>1752765561</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.25.2
+  * Handle random degenerate case in skimage.graph.cut_normalized
+    gracefully (#7675).
+  * In skimage.feature.BRIEF, copy keypoints if necessary to
+    preserve contiguity (#7692).
+  * Revert a previous fix to skimage.segmentation.watershed that
+    unintentionally changed the algorithm's behavior for markers
+    placed at maxima in the image. We decided that the behavior
+    originally reported as a bug (gh-6632), is not actually one
+    (#7702).
+- Release 0.25.1
+  * Include centroid in __all__ of the PYI file in skimage.measure
+    (#7652).
+  * Improve numerical stability of blur_effect (#7643).
+  * Because under-determined fits are unreliable,
+    skimage.measure.EllipseModel will now warn and return False (no
+    fit) when fewer than 5 data points are provided (#7648).
+  * Explicitly upcast data with dtype float16 to float32 in
+    skimage.segmentation.random_walker; this fixes passing float16
+    on NumPy 1.26 (#7655).
+- Add scikit-image-pr7828-pillow-deprecations.patch
+  gh#scikit-image/scikit-image#7828
+- Remove install of stray header file
+- Update ancient requirement versions.
+- Revert test disablement on Leap: If you can't have the runtime
+  dependencies, you can't have the package. See sr#1293826</comment>
+    <requestid>1294071</requestid>
+  </revision>
 </revisionlist>
