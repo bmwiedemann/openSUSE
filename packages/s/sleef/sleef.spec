@@ -1,5 +1,7 @@
+#
 # spec file for package sleef
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2023 Fabio Pesari
 #
 # All modifications and additions to the file contributed by third parties
@@ -10,47 +12,50 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+
 
 %define v_major 3
 %define v_minor 9
 %define v_patch 0
 
-Name:          sleef
-Version:       %{v_major}.%{v_minor}.%{v_patch}
-Release:       0
-Summary:       SIMD Library for Evaluating Elementary Functions, vectorized libm and DFT
-License:       BSL-1.0
-Group:         Productivity/Scientific/Math
-URL:           https://sleef.org/
-Source:        https://github.com/shibatch/sleef/archive/refs/tags/%{v_major}.%{v_minor}.%{v_patch}.tar.gz#/%{name}-%{version}.tar.gz
+Name:           sleef
+Version:        %{v_major}.%{v_minor}.%{v_patch}
+Release:        0
+Summary:        SIMD Library for Evaluating Elementary Functions, vectorized libm and DFT
+License:        BSL-1.0
+Group:          Productivity/Scientific/Math
+URL:            https://sleef.org/
+Source:         https://github.com/shibatch/sleef/archive/refs/tags/%{v_major}.%{v_minor}.%{v_patch}.tar.gz#/%{name}-%{version}.tar.gz
 
-BuildRequires: gcc gcc-c++
-BuildRequires: cmake
-BuildRequires: fftw3-devel
-BuildRequires: gmp-devel
-BuildRequires: git
-BuildRequires: ninja
+BuildRequires:  cmake
+BuildRequires:  fftw3-devel
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
+BuildRequires:  git
+BuildRequires:  gmp-devel
+BuildRequires:  ninja
 
 %description
 SLEEF is a library that implements vectorized versions of C standard math
 functions. This library also includes DFT subroutines.
 
 %package -n libsleef%{v_major}
-Summary:       SIMD Library for Evaluating Elementary Functions, vectorized libm and DFT
-License:       BSL-1.0
-Group:         System/Libraries
+Summary:        SIMD Library for Evaluating Elementary Functions, vectorized libm and DFT
+License:        BSL-1.0
+Group:          System/Libraries
 
 %description -n libsleef%{v_major}
 SLEEF is a library that implements vectorized versions of C standard math
 functions. This library also includes DFT subroutines.
 
 %package devel
-Summary:       Development files for SLEEF
-License:       BSL-1.0
-Group:         Development/Languages/C and C++
-Requires:      libsleef%{v_major} = %{version}
+Summary:        Development files for SLEEF
+License:        BSL-1.0
+Group:          Development/Languages/C and C++
+Requires:       libsleef%{v_major} = %{version}
 
 %description devel
 SLEEF is a library that implements vectorized versions of C standard math
@@ -60,6 +65,11 @@ These are the development files for SLEEF.
 
 %prep
 %autosetup
+
+%ifarch riscv64
+# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110812
+%global _lto_cflags %{nil}
+%endif
 
 %build
 %define __builder ninja

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 16 19:21:36 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Disable LTO on riscv64 due to gcc bug 110812
+
+-------------------------------------------------------------------
 Wed Jul 16 09:34:58 UTC 2025 - Edgar Aichinger <edogawa@aon.at>
 
 - follow darix' advice about duplicate libname in -devel pkg

@@ -1,5 +1,6 @@
 <package name="sleef" project="openSUSE:Factory">
   <title>sleef</title>
   <description>SIMD Library for Evaluating Elementary Functions, vectorized libm and DFT</description>
+  <devel project="devel:libraries:c_c++" package="sleef"/>
   <url>https://sleef.org/</url>
 </package>
