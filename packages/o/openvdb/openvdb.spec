@@ -25,14 +25,14 @@
 #
 %bcond_without openvdb_tool
 
-%define libname libopenvdb11_0
+%define libname libopenvdb12_0
 %if 0%{suse_version} <= 1500
 # force a recent gcc version on 15.X, default would be gcc7 which is too old
 %define gcc_major 14
 %endif
 
 Name:           openvdb
-Version:        11.0.0
+Version:        12.0.1
 Release:        0
 Summary:        Sparse volume data structure and tools
 License:        Apache-2.0
@@ -43,8 +43,8 @@ Patch0:         openvdb-boost-static-assert-include.patch
 Patch1:         fix-tool-building.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc%{?gcc_major}-c++ >= 9.3.1
-BuildRequires:  libboost_iostreams-devel-impl >= 1.70
-BuildRequires:  libboost_system-devel-impl >= 1.70
+BuildRequires:  libboost_iostreams-devel-impl >= 1.80
+BuildRequires:  libboost_system-devel-impl >= 1.80
 BuildRequires:  memory-constraints
 %if %{with openvdb_ax}
 BuildRequires:  cmake(LLVM) < 16
