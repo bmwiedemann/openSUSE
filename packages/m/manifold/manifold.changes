@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Mon Jul 14 00:41:46 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- prepare enabling the testsuite 
+
+-------------------------------------------------------------------
+Mon Jul 14 00:18:08 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable export and par support. New BuildRequires: cmake(assimp)
+
+-------------------------------------------------------------------
+Mon Jul 14 00:17:51 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable python bindings
+
+-------------------------------------------------------------------
+Sun Jul 13 23:54:23 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package
