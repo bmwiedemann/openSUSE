@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jul 14 12:28:00 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.22
+  Broker
+  * Bridge: Fix idle_timeout never occurring for lazy bridges.
+  * Fix case where max_queued_messages = 0 was not treated as
+    unlimited.
+  * Fix --version exit code and output.
+  * Fix crash on receiving a $CONTROL message over a bridge, if
+    per_listener_settings is set true and the bridge is carrying
+    out topic remapping.
+  * Fix incorrect reference clock being selected on startup on
+    Linux. Closes #3238.
+  * Fix reporting of client disconnections being incorrectly
+    attributed to "out of memory".
+  * Fix compilation when using WITH_OLD_KEEPALIVE.
+  * Fix problems with secure websockets.
+  * Fix crash on exit when using WITH_EPOLL=no.
+  * Fix clients being incorrectly expired when they have
+    keepalive == max_keepalive. Closes #3226, #3286.
+  Dynamic security plugin
+  * Fix mismatch memory free when saving config which caused
+    memory tracking to be incorrect.
+  Client library
+  * Fix C++ symbols being removed when compiled with link time
+    optimisation.
+  * TLS error handling was incorrectly setting a protocol error
+    for non-TLS errors. This would cause the mosquitto_loop_start()
+    thread to exit if no broker was available on the first
+    connection attempt. This has been fixed. Closes #3258.
+  * Fix linker errors on some architectures using cmake.
+
+-------------------------------------------------------------------
 Thu Mar  6 20:46:07 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.21

@@ -307,4 +307,12 @@
 - Update to version 2.0.19 (CVE-2024-3935 bsc#1232635, CVE-2024-10525 bsc#1232636):</comment>
     <requestid>1276283</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9b7b91bf5e2059022da02393b6363c53</srcmd5>
+    <version>2.0.22</version>
+    <time>1752765582</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1294184</requestid>
+  </revision>
 </revisionlist>
