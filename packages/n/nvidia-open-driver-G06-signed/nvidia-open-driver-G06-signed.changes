@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul 11 08:45:55 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA variant to 570.172.08 (boo#1246327)
+- supersedes
+  * 0003-nv-dmabuf-Inline-dma_buf_attachment_is_dynamic.patch
+  * 0004-nvidia-uvm-Disable-SVA-support-for-6.16.patch
+- update pci_ids-supported
+
+-------------------------------------------------------------------
+Mon Jul  7 16:04:52 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- empty pci_ids-570.169; PCI ID hardware Supplements get moved to
+  gfx repository to package nvidia-open-driver-G06-signed-kmp-meta
+  (boo#1246010)
+- remove 60-nvidia-$flavor.conf, since driver no longer gets
+  autoselected without gfx/cuda repositories present and so we no
+  longer need to disable it by default (boo#1246010)
+
+-------------------------------------------------------------------
 Tue Jun 24 09:47:53 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - 0003-nv-dmabuf-Inline-dma_buf_attachment_is_dynamic.patch

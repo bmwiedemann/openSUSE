@@ -3,10 +3,3 @@
 %dir %{kernel_module_directory}/%2-%1/updates
 %dir %{kernel_module_directory}/%2-%1/updates/%{name}-%{version}
 %{kernel_module_directory}/%2-%1/updates/%{name}-%{version}/nvidia*.ko
-%if 0%{?suse_version} >= 1550
-%dir %{_prefix}/lib/modprobe.d
-%config %{_prefix}/lib/modprobe.d/60-nvidia-%1.conf
-%else
-%dir %{_sysconfdir}/modprobe.d
-%config %{_sysconfdir}/modprobe.d/60-nvidia-%1.conf
-%endif

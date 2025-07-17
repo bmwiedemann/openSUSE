@@ -16,7 +16,7 @@
 #
 
 
-%define gfx_version 570.169
+%define gfx_version 570.172.08
 %define cuda_version 575.57.08
 
 %global flavor @BUILD_FLAVOR@%{?nil}
@@ -82,8 +82,6 @@ Source11:       pesign-copy-sources
 Source12:       pesign-spec-macros
 Source14:       group-source-files.pl
 Source15:       kmp-trigger.sh
-Patch0:         0003-nv-dmabuf-Inline-dma_buf_attachment_is_dynamic.patch
-Patch1:         0004-nvidia-uvm-Disable-SVA-support-for-6.16.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -217,28 +215,12 @@ for flavor in %{flavors_to_build}; do
 	popd
 done
 
-%if 0%{?suse_version} >= 1550
-modprobedir=%{_prefix}/lib/modprobe.d
-%else
-modprobedir=%{_sysconfdir}/modprobe.d
-%endif
-mkdir -p %{buildroot}${modprobedir}
-
 for flavor in %{flavors_to_build}; do
     mkdir -p %{buildroot}%{_prefix}/src/kernel-modules/nvidia-%{version}-${flavor}
     cp -r source/kernel-open/* %{buildroot}%{_prefix}/src/kernel-modules/nvidia-%{version}-${flavor}
     echo %dir %{_prefix}/src/kernel-modules > files-${flavor}
     perl %{S:14} -L %{buildroot}%{_prefix}/src/kernel-modules/nvidia-%{version}-${flavor} | sed -e "s@%{buildroot}@@" | sort -u >> files-${flavor}
     %fdupes -s %{buildroot}%{_prefix}/src/kernel-modules/nvidia-%{version}-${flavor}
-    cat > %{buildroot}${modprobedir}/60-nvidia-${flavor}.conf << EOF
-# Don't try to load the driver if config and GSP firmware files are
-# not available. Otherwise let the default install rule
-# 'install nvidia-drm /sbin/modprobe --ignore-install nvidia-drm' of
-# 50-nvidia.conf win, which comes together with config and GSP
-# firmware files (package nvidia-common-G06).
-
-install nvidia-drm /usr/bin/true
-EOF
 done
 
 %changelog

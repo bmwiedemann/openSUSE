@@ -799,4 +799,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1289518</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>e0192cd09c7f6f522a5cd090b6f594b7</srcmd5>
+    <version>570.172.08</version>
+    <time>1752765583</time>
+    <user>anag_factory</user>
+    <comment>- update non-CUDA variant to 570.172.08 (boo#1246327)
+- supersedes
+  * 0003-nv-dmabuf-Inline-dma_buf_attachment_is_dynamic.patch
+  * 0004-nvidia-uvm-Disable-SVA-support-for-6.16.patch
+- update pci_ids-supported
+
+- empty pci_ids-570.169; PCI ID hardware Supplements get moved to
+  gfx repository to package nvidia-open-driver-G06-signed-kmp-meta
+  (boo#1246010)
+- remove 60-nvidia-$flavor.conf, since driver no longer gets
+  autoselected without gfx/cuda repositories present and so we no
+  longer need to disable it by default (boo#1246010)</comment>
+    <requestid>1294192</requestid>
+  </revision>
 </revisionlist>
