@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jul 14 20:37:59 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.18
+  * Added SDL_PROP_WINDOW_CREATE_CONSTRAIN_POPUP_BOOLEAN to support
+    non-constrained and non-grabbing popups
+  * Fixed a crash in SDL_GetAudioDeviceChannelMap()
+  * Fixed duplicate mouse events when using a pen under X11
+  * Improved thumbstick range for Nintendo Switch Pro Controllers
+  * Fixed loading user calibration for Nintendo Switch Pro
+    Controllers
+  * Added support for the ZEROPLUS P4 Wired Gamepad
+  * Fixed input from the MayFlash GameCube adapter with version 7
+    firmware
+
+-------------------------------------------------------------------
+Tue Jun  3 07:55:36 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.16
+  * Fixed a rare crash in SDL_WaitEvent()
+  * Fixed entering fullscreen mode on some X11 window managers
+  * Fixed hang processing mouse input on Wayland
+  * Fixed occasionally corrupt text input on Wayland
+  * Respect the application text input area on Wayland
+
+-------------------------------------------------------------------
 Wed May 14 18:15:30 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.14

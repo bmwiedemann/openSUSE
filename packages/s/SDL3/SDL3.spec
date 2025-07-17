@@ -19,7 +19,7 @@
 %define sle_version 0
 Name:           SDL3
 %define lname   libSDL3-0
-Version:        3.2.14
+Version:        3.2.18
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib
