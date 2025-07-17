@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jul 17 05:56:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.29.5:
+  * fix: tighten up permissions for written SBOM files and
+    signature tarballs (#2086)
+
+-------------------------------------------------------------------
+Thu Jul 17 05:53:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.29.4:
+  * Revert "Use os.DirFS over apkofs.DirFS (#2079)" (#2085)
+  * chore(pipelines/cargo): add parallel jobs input (#2083)
+
+-------------------------------------------------------------------
+Thu Jul 17 05:48:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.29.3:
+  * Use os.DirFS over apkofs.DirFS (#2079)
+  * Include top-level environment variables in tests (#2080)
+  * config: use supplier for namespace for unknown gits (#2081)
+
+-------------------------------------------------------------------
 Tue Jul 15 05:59:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.29.2:
