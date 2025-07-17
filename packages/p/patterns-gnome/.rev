@@ -479,4 +479,12 @@
     <comment>- Switch to Loupe and Papers for TW. (forwarded request 1270585 from fcrozat)</comment>
     <requestid>1271335</requestid>
   </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>bf615e144bf06af70471ebeb648dd1bb</srcmd5>
+    <version>20250310</version>
+    <time>1752765426</time>
+    <user>anag_factory</user>
+    <comment>Do not build gnome_yast pattern for Leap 16 (forwarded request 1293577 from mlin7442)</comment>
+    <requestid>1293761</requestid>
+  </revision>
 </revisionlist>

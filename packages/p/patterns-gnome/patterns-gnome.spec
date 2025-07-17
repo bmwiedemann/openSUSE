@@ -137,7 +137,9 @@ Requires:       seahorse
 Recommends:     totem
 Recommends:     pattern() = gnome_imaging
 Recommends:     pattern() = office
+%if 0%{?suse_version} > 1600
 Recommends:     pattern() = x11_yast
+%endif
 %endif
 #
 # Official upstream
@@ -692,7 +694,7 @@ GNOME Utilities
 
 ################################################################################
 
-%if 0%{?is_opensuse}
+ %if 0%{?is_opensuse} && 0%{?suse_version} > 1600
 %package gnome_yast
 %pattern_basetechnologies
 Summary:        YaST GNOME User Interfaces
@@ -758,7 +760,11 @@ done
 for i in devel_gnome \
     gnome_games gnome_ide gnome_x11 gnome_multimedia \
     gnome_office \
-    gnome_utilities gnome_yast sw_management_gnome; do
+    gnome_utilities \
+%if 0%{?suse_version} > 1600
+    gnome_yast\
+%endif
+    sw_management_gnome; do
 	echo "This file marks the pattern $i to be installed." \
 		>"%{buildroot}%{_docdir}/patterns/$i.txt"
 done
