@@ -1,7 +1,7 @@
 #
 # spec file for package lal
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,8 @@ Patch0:         https://git.ligo.org/lscsoft/lalsuite/-/commit/9dba245ab3692ecf6
 Patch1:         https://git.ligo.org/lscsoft/lalsuite/-/commit/e12d57e893882c1603778018139ed9060579c8a7.patch#/lalsuite_fix_swig_4_3_0_compat_2.patch
 # PATCH-FIX-UPSTREAM lal-disable-erroneous-test.patch badshah400@gmail.com -- Disable a test that gives 'SystemError: error return without exception set'
 Patch2:         lal-disable-erroneous-test.patch
+# PATCH-FIX-UPSTREAM lal-gcc15-fix-unterminated-string-initialization.patch badshah400@gmail.com -- Fix build with GCC 15 by correctly initializing char array; patch taken from upstream commit
+Patch3:         https://git.ligo.org/lscsoft/lalsuite/-/commit/893b1e51c2444d7ca5d87c703986541be89c5ed4.patch#/lal-gcc15-fix-unterminated-string-initialization.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module numpy}
@@ -154,6 +156,7 @@ This package provides the octave module for lal.
 %patch -P0 -p2
 %patch -P1 -p2
 %patch -P2 -p1
+%patch -P3 -p2
 
 %build
 autoreconf -fvi
