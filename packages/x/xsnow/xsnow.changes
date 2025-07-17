@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Jul 10 16:54:48 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.8.5: 
+  * src/windows.c: add test for "hidden" to determine if snow
+    should fall on window.
+  * src/fallensnow.c: generate more fallensnow for first and last
+    item of fallensnow.
+  * src/main.c: do not specify "dock" for the snow window.
+    "dock" causes KDE PLASMA 6 to have the snow window always 
+    on top.
+  * src/main.c, src/windows.c: add property "TRANSPARENCY" "YES"
+    to snow window if transparent, else "TRANSPARENCY" "NO" so
+    that other apps, like xpenguins, can determine if this
+    window is to be ignored or not.
+  * src/fallensnow.c: transform blob into snow now and then.
+    prevent direct accumulation of snow from transformed blob.
+  * src/snow.c: after about 2 seconds, make accumulation possible
+    again.
+  * src/fallensnow.c: CreateSurfaceFromFallen(FallenSnow *f):
+    fix bug with regard to the number of points to average.
+    make height max height of fallensnow dependent on width.
+  * birds.c: lower default number of birds
+  * stars.c: if CIRCLESTARS is defined, paint circle-like stars
+    suggestion by Mihai Dobrescu.
+  * doit.h: increase default nr of stars.
+  * ui.glade: increase max number of starts.
+  * change snowtree.xpm and tree-1_100px.xpm (Thanks to Carla)
+  * Create halo around stars (thanks to Carla)
+  * Create src/transwindow.c: GetYOffset() to determine absolute
+    value of y-coordinate of an window. This is used to properly
+    size a snow window.
+  * flags.c: check value of Flags.ForceRoot before
+    using gtk_builder_get_object().
+  * pofiles/*.po: update translations
+  * src/transwindow.c: force snow window to have 
+    _NET_WM_WINDOW_TYPE(ATOM) = _NET_WM_WINDOW_TYPE_NORMAL
+    by calling
+    gdk_window_set_type_hint(gdkwin,GDK_WINDOW_TYPE_HINT_NORMAL);
+  * src/main.c: HandleX11Cairo(): set SnowWinX, SnowWinY to 0,0 .
+  * In LXDE, monitor 0 and 1 are used correctly now.
+  * bootstrap: insert correct xsnow version in pofiles/*.po.
+- Changes in version 3.8.4
+  * main.c: add code to stop if ~/.xsnowstop is present.
+  * test2.sh: get rid of kill, killall by using xvfb-run
+    and touching ~/.xsnowstop when testing is done.
+  * main.c, flags,c: make them acceptable for c++.
+  * adapt for loops to C99, except a few where the lopp variable 
+    is used after the loop
+  * pofiles/nl.po: Some minor translation changes for nl.
+  * ui.glade: change step increment for nbirds from 5 to 1.
+  * Santa.c, xsnow.h: make SantaRegion global for use in
+    fallensnow.c.
+  * fallensnow.c: turn fallensnow in flakes for Santa occupied
+    zones.
+  * ui.glade: remove donate button
+  * ui.glade: minor alignments of bottom buttons
+  * snow.c: take care that start of fallensnow's are covered by
+    snow by subtracting SnowSize from x-coordinate.
+  * fallensnow.c: do not smooth start and end points of
+    fallensnow. allow start and end-points >= 0. draw half circles
+    at start and end to simulate snow overflow
+  * xsnow.h, fallensnow.c: every 30 seconds 0.3 change that
+    desired height of fallen snow is re-established
+  * fallensnow.c: let desired heights between 0.3 and 1.0
+  * fallensnow.c, aurora.c, main.c, wmctrl.c: removed some
+    dead code
+
+-------------------------------------------------------------------
 Sun Feb 23 17:56:00 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.8.3:
