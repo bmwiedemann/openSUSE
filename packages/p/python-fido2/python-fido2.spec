@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fido2
-Version:        1.2.0
+Version:        2.0.0
 Release:        0
 Summary:        Python-based FIDO 2.0 library
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MPL-2.0
@@ -27,11 +27,12 @@ URL:            https://github.com/Yubico/python-fido2
 Source0:        https://github.com/Yubico/python-fido2/releases/download/%{version}/fido2-%{version}.tar.gz
 Source1:        https://github.com/Yubico/python-fido2/releases/download/%{version}/fido2-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module cryptography >= 2.6}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1.0}
+BuildRequires:  %{python_module poetry-core >= 2.0}
 BuildRequires:  %{python_module pyfakefs >= 3.4}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

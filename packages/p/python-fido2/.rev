@@ -178,4 +178,47 @@
     <comment></comment>
     <requestid>1236812</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0a8a7087d403b76a0c3ad251a286633d</srcmd5>
+    <version>2.0.0</version>
+    <time>1752765565</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.0.0:
+  * See also the migration guide: doc/Migration_1-2.adoc.
+  * Python 3.10 or later is now required.
+  * WebAuthn dataclasses have been updated to align with the
+    WebAuthn Level 3 Working Draft. Constructors now require
+    keyword arguments (kwargs_only=True), and serialization to/from
+    dictionaries is compatible with standardized JSON formats.
+  * The features.webauthn_json_mapping flag has been removed, as
+    its behavior (standardized JSON mapping) is now default.
+  * Fido2Client and WindowsClient constructors now accept a
+    ClientDataCollector instance instead of origin and verify
+    parameters.
+  * WindowsClient has been relocated to fido2.client.windows.
+    Importing this class on non-Windows platforms will now raise an
+    ImportError.
+  * Fido2Client methods now return RegistrationResponse and
+    AuthenticationResponse objects, instead of raw
+    attestation/assertion data.
+  * CTAP2/WebAuthn extension handling has been redesigned.
+    Fido2Client now expects a list of Ctap2Extension instances.
+    Default behavior includes extensions commonly supported by
+    browsers.
+  * The fido2.cbor module's load_x and dump_x functions have been
+    made private (renamed with a leading underscore) and should not
+    be used directly.
+  * Previously deprecated functions and APIs have been removed.
+  * The __version__ attribute in fido2/__init__.py has been
+    removed. Use importlib.metadata.version('fido2') to get the
+    package version.
+  * Add support for Persistent PinUvAuthToken and encIdentifier.
+  * Add support for hmac-secret-mc and thirdPartyPayments
+    exensions.
+  * Add new GetInfo fields based on CTAP 2.2
+  * Update COSE algorithnm types.
+  * Building the library now requires Poetry version 2.0 or later.
+</comment>
+    <requestid>1294069</requestid>
+  </revision>
 </revisionlist>
