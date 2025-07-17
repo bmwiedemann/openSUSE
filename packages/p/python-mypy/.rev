@@ -508,4 +508,54 @@ reveal_type(Context[MyBot]().bot)
     <comment>- Convert to libalternatives</comment>
     <requestid>1291195</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8a028506490dde52d880126bd63b81a7</srcmd5>
+    <version>1.17.0</version>
+    <time>1752765428</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.17.0:
+  - Optionally Check That Match Is Exhaustive
+    Mypy can now optionally generate an error if a match
+    statement does not match exhaustively, without having to use
+    assert_never(...). Enable this by using --enable-error-code
+    exhaustive-match.
+  - Further Improvements to Attribute Resolution
+    This release includes additional improvements to how
+    attribute types and kinds are resolved. These fix many bugs
+    and overall improve consistency.
+  - Fixes to Nondeterministic Type Checking
+    Previous mypy versions could infer different types for
+    certain expressions across different runs (typically
+    depending on which order certain types were processed, and
+    this order was nondeterministic). This release includes fixes
+    to several such issues.
+  - Remove Support for Targeting Python 3.8
+    Mypy now requires --python-version 3.9 or greater. Support
+    for targeting Python 3.8 is fully removed now. Since 3.8
+    is an unsupported version, mypy will default to the oldest
+    supported version (currently 3.9) if you still try to target
+    3.8.
+  - Initial Support for Python 3.14
+    Mypy is now tested on 3.14 and mypyc works with 3.14.0b3 and
+    later. Binary wheels compiled with mypyc for mypy itself will
+    be available for 3.14 some time after 3.14.0rc1 has been
+    released.
+  - Deprecated Flag: --force-uppercase-builtins
+    Mypy only supports Python 3.9+. The
+    --force-uppercase-builtins flag is now deprecated as
+    unnecessary, and a no-op. It will be removed in a future
+    version.
+  - Mypyc: Improvements to Generators and Async Functions
+    This release includes both performance improvements and bug
+    fixes related to generators and async functions (these share
+    many implementation details).
+  - Mypyc: Partial, Unsafe Support for Free Threading
+    Mypyc has minimal, quite memory-unsafe support for the free
+    threaded builds of 3.14. It is also only lightly tested. Bug
+    reports and experience reports are welcome!
+  - Other Mypyc Fixes and Improvements
+  - Stubgen Improvements
+</comment>
+    <requestid>1293793</requestid>
+  </revision>
 </revisionlist>

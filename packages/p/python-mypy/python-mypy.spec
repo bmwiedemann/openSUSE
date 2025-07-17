@@ -22,7 +22,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-mypy
-Version:        1.16.0
+Version:        1.17.0
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
