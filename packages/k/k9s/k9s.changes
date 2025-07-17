@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 17 05:52:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.9:
+  * Resolved Issues
+    - #3459 Update the tablewriter dependency + implementation
+    - #3458 Unable to switch namespaces with 0.50.8
+
+-------------------------------------------------------------------
 Wed Jul 16 06:43:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.8:
