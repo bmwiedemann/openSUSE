@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 16 15:06:04 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
+
+- Updated to 3.3.2:
+  * Fixed crash when failing to load a font.
+  * Fixed memory leak in fcft_fini() if the font cache contained entries for
+    fonts that had failed to load.
+
+-------------------------------------------------------------------
 Thu Mar 13 17:44:21 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
 
 - Updated to 3.3.1:

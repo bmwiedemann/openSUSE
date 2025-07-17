@@ -295,4 +295,15 @@
     use fcft_font_options::scaling_filter instead.</comment>
     <requestid>1253873</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7c4b89be9851a12609cc4ceae3bc2242</srcmd5>
+    <version>3.3.2</version>
+    <time>1752765523</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 3.3.2:
+  * Fixed crash when failing to load a font.
+  * Fixed memory leak in fcft_fini() if the font cache contained entries for
+    fonts that had failed to load.</comment>
+    <requestid>1293844</requestid>
+  </revision>
 </revisionlist>
