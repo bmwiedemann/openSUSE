@@ -26,6 +26,7 @@ Group:          Development/Tools/Building
 Url:            https://codeberg.org/cunix/vendored_licenses_packager
 Source0:        https://codeberg.org/attachments/23443436-3863-442e-9ba0-dac1ff13f646#/%{name}-%{version}.tar.xz
 Source1:        https://codeberg.org/attachments/3b6f0375-36a8-4811-a83d-2d9f38bca835#/%{name}-%{version}.tar.xz.minisig
+Patch0:         reproducible.patch
 BuildArch:      noarch
 %if 0%{?minisign_verify}
 BuildRequires:  rsign2

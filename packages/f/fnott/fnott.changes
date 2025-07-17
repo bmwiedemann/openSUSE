@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 17 14:21:55 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.8.0:
+  * progress-style configuration option with possible values of bar (previous behavior) and background which shows the progress as the background color.
+  * Fish shell completions.
+  * Default icon theme from hicolor to default.
+  * Crash when max-icon-size=0 (#145).
+  * Parse sections in order. This fixes a bug where sections before the main section get ignored. (#137).
+  * fnottctl pause|unpause exiting with an error.
+  * Lookup of icon themes in ~/.icons and /usr/share/pixmaps.
+
+-------------------------------------------------------------------
 Tue Jun  3 13:15:51 UTC 2025 - Nathan Cutler <ncutler@suse.com>
 
 - spec: package fnott.service also on 16.0 (bsc#1244025) 

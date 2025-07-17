@@ -157,4 +157,20 @@
     <comment></comment>
     <requestid>1283616</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fe650cbcfccb731dc1263e0d4e5f61f2</srcmd5>
+    <version>1.8.0</version>
+    <time>1752767757</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.8.0:
+  * progress-style configuration option with possible values of bar (previous behavior) and background which shows the progress as the background color.
+  * Fish shell completions.
+  * Default icon theme from hicolor to default.
+  * Crash when max-icon-size=0 (#145).
+  * Parse sections in order. This fixes a bug where sections before the main section get ignored. (#137).
+  * fnottctl pause|unpause exiting with an error.
+  * Lookup of icon themes in ~/.icons and /usr/share/pixmaps.
+</comment>
+    <requestid>1294190</requestid>
+  </revision>
 </revisionlist>

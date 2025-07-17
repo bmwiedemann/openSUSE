@@ -17,7 +17,7 @@
 
 
 Name:           fnott
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        Lightweight notification daemon for Wayland
 License:        MIT
@@ -61,7 +61,17 @@ Requires:       %{name}
 Requires:       zsh
 
 %description    zsh-completion
-Zsh command-line completion support for %{name}
+Zsh command-line completion support for %{name}.
+
+%package        fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and fish)
+Requires:       %{name}
+Requires:       fish
+
+%description    fish-completion
+Fish command-line completion support for %{name}.
 
 %build
 %meson \
@@ -101,5 +111,11 @@ Zsh command-line completion support for %{name}
 %files zsh-completion
 %{_datadir}/zsh/site-functions/_fnott
 %{_datadir}/zsh/site-functions/_fnottctl
+
+%files fish-completion
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/fnott.fish
+%{_datadir}/fish/vendor_completions.d/fnottctl.fish
 
 %changelog

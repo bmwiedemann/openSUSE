@@ -15,4 +15,13 @@ to
 twice</comment>
     <requestid>960823</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6ca2697249c3330af6f0c0fbcd0bf7a0</srcmd5>
+    <version>0.1.0</version>
+    <time>1752767756</time>
+    <user>anag_factory</user>
+    <comment>Add reproducible.patch to avoid embedding a random tmp dir
+  into .src.rpm headers (bsc#1245269, bsc#1237231)</comment>
+    <requestid>1293299</requestid>
+  </revision>
 </revisionlist>

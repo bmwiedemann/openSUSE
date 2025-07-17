@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  9 10:03:02 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to avoid embedding a random tmp dir
+  into .src.rpm headers (bsc#1245269, bsc#1237231)
+
+-------------------------------------------------------------------
 Tue Feb 22 12:00:00 UTC 2022 - cunix@mail.de
 
 - Initial version 0.1.0
