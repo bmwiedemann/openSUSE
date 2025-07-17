@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package libdbusmenu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -204,7 +204,7 @@ This package contains the development files for the dbusmenu-jsonloader library.
 
 %build
 export CFLAGS="%{optflags} -Wno-error"
-%gtkdoc autoreconf -fiv
+%gtkdoc autoreconf -fiv -I /usr/share/gettext/m4
 
 %configure \
         --disable-static       \

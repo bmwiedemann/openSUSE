@@ -112,4 +112,13 @@ Fix license </comment>
     <comment></comment>
     <requestid>1155387</requestid>
   </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>0b36c683161e7ab51083ef8bf5eeedd7</srcmd5>
+    <version>16.04.0</version>
+    <time>1752765459</time>
+    <user>anag_factory</user>
+    <comment>- Work with newer gettext-runtime. In gettext 0.24.1 the m4 files
+  moved from /usr/share/aclocal/ to /usr/share/gettext/m4</comment>
+    <requestid>1293380</requestid>
+  </revision>
 </revisionlist>
