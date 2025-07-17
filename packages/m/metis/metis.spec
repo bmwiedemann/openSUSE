@@ -32,7 +32,9 @@ Patch1:         metis-cmake.patch
 # PATCH-FIX-OPENSUSE metis-programs-no-compilation-time.patch -- Fix W: file-contains-date-and-time
 Patch2:         metis-programs-no-compilation-time.patch
 Patch3:         metis-makefile-c-directives.patch
-BuildRequires:  cmake >= 2.8
+# PATCH-FIX-OPENSUSE: require at least cmake 3.5 in order to allow building against cmake 4
+Patch4:         metis-min-cmake-3.5.patch
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 

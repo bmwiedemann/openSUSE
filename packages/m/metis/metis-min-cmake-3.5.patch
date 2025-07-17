@@ -1,0 +1,20 @@
+Index: metis-5.1.0/CMakeLists.txt
+===================================================================
+--- metis-5.1.0.orig/CMakeLists.txt
++++ metis-5.1.0/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.5)
+ project(METIS)
+ 
+ set(GKLIB_PATH "${CMAKE_SOURCE_DIR}/GKlib" CACHE PATH "path to GKlib")
+Index: metis-5.1.0/GKlib/CMakeLists.txt
+===================================================================
+--- metis-5.1.0.orig/GKlib/CMakeLists.txt
++++ metis-5.1.0/GKlib/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.5)
+ project(GKlib)
+ 
+ get_filename_component(abs "." ABSOLUTE)

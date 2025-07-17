@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 16 11:29:00 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add metis-min-cmake-3.5.patch: declare cmake 3.5 as minimal
+  required version in order to allow building using cmake 4, which
+  sets 3.5 as arbitrary lower limit. CMake 3.5 was release in 2016,
+  so we can get away with simply not caring for older things.
+
+-------------------------------------------------------------------
 Mon Mar 24 13:13:32 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Disable and remove support for gnu-hpc build flavours (bsc#1239982)
