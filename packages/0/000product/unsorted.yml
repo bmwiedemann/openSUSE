@@ -37,6 +37,7 @@ unsorted:
   - Catch2-2-devel 
   - Catch2-devel 
   - CharLS-devel 
+  - Clipper2-devel 
   - Coin-devel 
   - Coin4-devel 
   - ColPack-devel 
@@ -4313,6 +4314,7 @@ unsorted:
   - fnotifystat 
   - fnotifystat-bash-completion 
   - fnott 
+  - fnott-fish-completion 
   - fnott-zsh-completion 
   - fntsample 
   - fntsample-lang 
@@ -8877,7 +8879,6 @@ unsorted:
   - infos-creator-rpm 
   - ini4j 
   - ini4j-javadoc 
-  - injeqt-devel 
   - inkscape-extensions-fig 
   - inkscape-extensions-scribus 
   - inn-devel 
@@ -11035,6 +11036,8 @@ unsorted:
   - libCSXCAD0 
   - libCbc3 
   - libCgl1 
+  - libClipper2Z_1 
+  - libClipper2_1 
   - libClp1 
   - libCoin60 
   - libCoin80 
@@ -11223,8 +11226,8 @@ unsorted:
   - libOpenImageDenoise2 
   - libOpenImageDenoise_core2_3_3 
   - libOpenImageDenoise_device_cpu2_3_3 
-  - libOpenImageIO2_5 
-  - libOpenImageIO_Util2_5 
+  - libOpenImageIO3_0 
+  - libOpenImageIO_Util3_0 
   - libOpenSceneGraph-devel 
   - libOpenSceneGraph161 
   - libOpenThreads-devel 
@@ -11921,7 +11924,7 @@ unsorted:
   - libapr-util1-0-dbd-mysql 
   - libapr-util1-0-dbd-pgsql 
   - libapr-util1-0-dbd-sqlite3 
-  - libaquamarine7 
+  - libaquamarine8 
   - libaravis-0_8-0 
   - libaravis-0_8-devel 
   - libarchive-devel 
@@ -12601,7 +12604,6 @@ unsorted:
   - libconfuse-lang 
   - libconfuse2 
   - libcontainers-openSUSE-policy 
-  - libcontainers-sles-mounts 
   - libcorrect-devel 
   - libcorrect0_0_0 
   - libcosmos-4 
@@ -12972,7 +12974,7 @@ unsorted:
   - libevt-devel 
   - libevt-tools 
   - libevt1 
-  - libevtlog-4_8-0 
+  - libevtlog-4_9-0 
   - libevtx-devel 
   - libevtx-tools 
   - libevtx1 
@@ -13874,7 +13876,7 @@ unsorted:
   - libhyprcursor0 
   - libhyprgraphics0 
   - libhyprlang2 
-  - libhyprutils6 
+  - libhyprutils7 
   - libi2c0 
   - libi2c0-devel 
   - libibdm1 
@@ -13955,7 +13957,6 @@ unsorted:
   - libinih-devel 
   - libiniparser-devel 
   - libiniparser4 
-  - libinjeqt1 
   - libinotifytools0 
   - libinput-debug-gui 
   - libinput-devel 
@@ -14437,6 +14438,8 @@ unsorted:
   - libmaliit-glib2 
   - libmaliit-plugins2 
   - libmanette-devel 
+  - libmanifold3 
+  - libmanifoldc3 
   - libmapidb-devel 
   - libmapidb1 
   - libmapserver2 
@@ -15014,7 +15017,7 @@ unsorted:
   - libopenssl-fips-provider 
   - libopentimelineio0 
   - libopentracing-cpp1 
-  - libopenvdb11_0 
+  - libopenvdb12_0 
   - libopenvino2520 
   - libopenvino_c2520 
   - libopenvino_ir_frontend2520 
@@ -16492,7 +16495,7 @@ unsorted:
   - libtsan0 
   - libtsan2-gcc13 
   - libtsan2-gcc14 
-  - libtsk19 
+  - libtsk23 
   - libtsm-devel 
   - libtsm4 
   - libtspi1 
@@ -18045,6 +18048,7 @@ unsorted:
   - mangohud 
   - mangohud-32bit 
   - mangoplot 
+  - manifold-devel 
   - manpageeditor 
   - mapi-header-php 
   - mapitags 
@@ -23708,6 +23712,7 @@ unsorted:
   - python3-lttngust 
   - python3-magnumclient 
   - python3-mailman-hyperkitty 
+  - python3-manifold 
   - python3-manilaclient 
   - python3-masakariclient 
   - python3-mistralclient 
@@ -24531,6 +24536,7 @@ unsorted:
   - python311-azure-mgmt-peering 
   - python311-azure-mgmt-pineconevectordb 
   - python311-azure-mgmt-planetarycomputer 
+  - python311-azure-mgmt-playwright 
   - python311-azure-mgmt-playwrighttesting 
   - python311-azure-mgmt-policyinsights 
   - python311-azure-mgmt-portal 
@@ -24556,6 +24562,7 @@ unsorted:
   - python311-azure-mgmt-relay 
   - python311-azure-mgmt-reservations 
   - python311-azure-mgmt-resource 
+  - python311-azure-mgmt-resource-bicep 
   - python311-azure-mgmt-resource-deployments 
   - python311-azure-mgmt-resource-deploymentscripts 
   - python311-azure-mgmt-resource-deploymentstacks 
@@ -25061,6 +25068,8 @@ unsorted:
   - python311-django-silk 
   - python311-django-sortedm2m 
   - python311-django-storages 
+  - python311-django-stubs 
+  - python311-django-stubs-ext 
   - python311-django-tables2 
   - python311-django-taggit 
   - python311-django-tagulous 
@@ -25077,6 +25086,7 @@ unsorted:
   - python311-djangorestframework-camel-case 
   - python311-djangorestframework-csv 
   - python311-djangorestframework-simplejwt 
+  - python311-djangorestframework-stubs 
   - python311-dkimpy 
   - python311-dlib 
   - python311-dm-tree 
@@ -28247,6 +28257,7 @@ unsorted:
   - python312-azure-mgmt-peering 
   - python312-azure-mgmt-pineconevectordb 
   - python312-azure-mgmt-planetarycomputer 
+  - python312-azure-mgmt-playwright 
   - python312-azure-mgmt-playwrighttesting 
   - python312-azure-mgmt-policyinsights 
   - python312-azure-mgmt-portal 
@@ -28272,6 +28283,7 @@ unsorted:
   - python312-azure-mgmt-relay 
   - python312-azure-mgmt-reservations 
   - python312-azure-mgmt-resource 
+  - python312-azure-mgmt-resource-bicep 
   - python312-azure-mgmt-resource-deployments 
   - python312-azure-mgmt-resource-deploymentscripts 
   - python312-azure-mgmt-resource-deploymentstacks 
@@ -28790,6 +28802,8 @@ unsorted:
   - python312-django-silk 
   - python312-django-sortedm2m 
   - python312-django-storages 
+  - python312-django-stubs 
+  - python312-django-stubs-ext 
   - python312-django-tables2 
   - python312-django-taggit 
   - python312-django-tagulous 
@@ -28806,6 +28820,7 @@ unsorted:
   - python312-djangorestframework-camel-case 
   - python312-djangorestframework-csv 
   - python312-djangorestframework-simplejwt 
+  - python312-djangorestframework-stubs 
   - python312-dkimpy 
   - python312-dlib 
   - python312-dm-tree 
@@ -32018,6 +32033,7 @@ unsorted:
   - python313-azure-mgmt-peering 
   - python313-azure-mgmt-pineconevectordb 
   - python313-azure-mgmt-planetarycomputer 
+  - python313-azure-mgmt-playwright 
   - python313-azure-mgmt-playwrighttesting 
   - python313-azure-mgmt-policyinsights 
   - python313-azure-mgmt-portal 
@@ -32043,6 +32059,7 @@ unsorted:
   - python313-azure-mgmt-relay 
   - python313-azure-mgmt-reservations 
   - python313-azure-mgmt-resource 
+  - python313-azure-mgmt-resource-bicep 
   - python313-azure-mgmt-resource-deployments 
   - python313-azure-mgmt-resource-deploymentscripts 
   - python313-azure-mgmt-resource-deploymentstacks 
@@ -32544,6 +32561,8 @@ unsorted:
   - python313-django-silk 
   - python313-django-sortedm2m 
   - python313-django-storages 
+  - python313-django-stubs 
+  - python313-django-stubs-ext 
   - python313-django-tables2 
   - python313-django-taggit 
   - python313-django-tagulous 
@@ -32560,6 +32579,7 @@ unsorted:
   - python313-djangorestframework-camel-case 
   - python313-djangorestframework-csv 
   - python313-djangorestframework-simplejwt 
+  - python313-djangorestframework-stubs 
   - python313-dkimpy 
   - python313-dlib 
   - python313-dm-tree 
@@ -37466,7 +37486,6 @@ unsorted:
   - supercollider 
   - supercollider-devel 
   - supercollider-emacs 
-  - supercollider-gedit 
   - supercollider-sc3-plugins 
   - supercollider-vim 
   - supergfxctl 
@@ -37612,6 +37631,7 @@ unsorted:
   - syslog-ng 
   - syslog-ng-bigquery 
   - syslog-ng-bpf 
+  - syslog-ng-clickhouse 
   - syslog-ng-cloudauth 
   - syslog-ng-devel 
   - syslog-ng-geoip 
@@ -37621,6 +37641,7 @@ unsorted:
   - syslog-ng-loki 
   - syslog-ng-mqtt 
   - syslog-ng-opentelemetry 
+  - syslog-ng-pubsub 
   - syslog-ng-python 
   - syslog-ng-python-modules 
   - syslog-ng-redis 
@@ -48632,6 +48653,7 @@ unsorted:
   - vinci 
   - vino 
   - vino-lang 
+  - vips-bash-completion 
   - vips-doc 
   - vips-modules-8.0 
   - vips-tools 
