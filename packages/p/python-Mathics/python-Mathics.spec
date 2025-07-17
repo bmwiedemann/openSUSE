@@ -134,7 +134,7 @@ export USE_CYTHON=0
 %doc README.rst AUTHORS.txt
 %python_alternative %{_bindir}/mathics
 %{python_sitelib}/mathics/
-%{python_sitelib}/%{pyname}-%{version}*.*-info/
+%{python_sitelib}/mathics3-%{version}*.*-info/
 %endif
 
 %changelog
