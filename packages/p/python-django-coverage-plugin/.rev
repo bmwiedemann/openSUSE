@@ -67,4 +67,14 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1282118</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f56de824c98a180621653cf70aa5e148</srcmd5>
+    <version>3.1.1</version>
+    <time>1752765560</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.1:
+  * Support changes: dropped Python 3.8, added Python 3.13. Added
+    Django 5.2.</comment>
+    <requestid>1294060</requestid>
+  </revision>
 </revisionlist>
