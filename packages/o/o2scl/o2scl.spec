@@ -29,8 +29,13 @@
 %endif
 %define pname o2scl
 %define shlib lib%{pname}0
+
+# Use GCC 14 for TW until upstream fixes issues when building with GCC 15
+%if 0%{?suse_version} >= 1650
+%define gcc_ver 14
+%endif
 Name:           %{pname}%{?psuffix}
-Version:        0.930
+Version:        0.930.1
 Release:        0
 Summary:        Object-oriented Scientific Computing Library
 License:        GPL-3.0-only
@@ -39,7 +44,7 @@ URL:            https://awsteiner.org/code/o2scl
 Source0:        https://github.com/awsteiner/o2scl/releases/download/v%{version}/%{pname}-%{version}.tar.gz
 Source1:        %{pname}.rpmlintrc
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  hdf5-devel
 # Required For Patch0
 BuildRequires:  libtool
@@ -60,6 +65,9 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  readline-devel
+%endif
+%if 0%{?gcc_ver}
+BuildRequires:  libquadmath0-devel-gcc%{gcc_ver}
 %endif
 Recommends:     %{pname}-doc = %{version}
 
@@ -88,12 +96,15 @@ Requires:       %{shlib} = %{version}
 Requires:       armadillo-devel
 Requires:       cblas-devel
 Requires:       eigen3-devel
-Requires:       gcc-c++
+Requires:       gcc%{?gcc_ver}-c++
 Requires:       hdf5-devel
 Requires:       readline-devel
 Requires:       pkgconfig(fftw3)
 Requires:       pkgconfig(gsl)
 Requires:       pkgconfig(mpfr)
+%if 0%{?gcc_ver}
+Requires:       libquadmath0-devel-gcc%{gcc_ver}
+%endif
 
 %description -n %{pname}-devel
 O2scl is a C++ library for object-oriented numerical programming.
@@ -111,7 +122,7 @@ O2scl is a C++ library for object-oriented numerical programming.
 This package provides the documentation for %{name}.
 
 %prep
-%autosetup -p1 -n %{pname}-%{version}
+%autosetup -p1 -n %{pname}-0.930
 cp %{SOURCE1} doc/o2scl/
 sed -Ei "s/\r$/\n/g" doc/o2scl/html/_static/evan.eml
 
@@ -127,6 +138,11 @@ export CXXFLAGS+=" -DO2SCL_HDF5_PRE_1_12"
 # Needed to avoid "undefined symbol: GOMP_critical_name_end" when using o2sclpy from python
 # https://github.com/awsteiner/o2scl/issues/40
 export LDFLAGS+="-lgomp"
+
+%if 0%{?suse_version} >= 1650
+export CXX=g++-%{gcc_ver}
+%endif
+
 %configure                           \
   --enable-armadillo                 \
   --enable-eigen                     \
