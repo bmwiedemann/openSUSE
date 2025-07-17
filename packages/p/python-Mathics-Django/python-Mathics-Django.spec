@@ -16,7 +16,7 @@
 #
 
 
-%define modname Mathics_Django
+%define modname mathics_django
 %define skip_python313 1
 Name:           python-Mathics-Django
 Version:        8.0.1
@@ -26,10 +26,10 @@ Summary:        A Django front end for Mathics3
 License:        Apache-2.0 AND BSD-3-Clause AND GPL-3.0-only AND MIT
 URL:            https://mathics.org/
 Source:         https://files.pythonhosted.org/packages/source/m/mathics-django/Mathics_Django-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module django}
 BuildRequires:  %{python_module Mathics-Scanner >= 1.4.1}
@@ -41,9 +41,9 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-django
 Requires:       python-Mathics-Scanner >= 1.4.1
 Requires:       python-Mathics3 >= 8.0.0
+Requires:       python-django
 Requires:       python-matplotlib
 Requires:       python-networkx >= 3.0
 Requires:       python-pygments
