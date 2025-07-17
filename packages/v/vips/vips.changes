@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed Jul 16 18:22:50 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- BuildRequires: libspng-devel instead of pkgconfig(spng)
+
+-------------------------------------------------------------------
+Tue Jul 15 13:41:22 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Remove dependency on swig, orc
+- Add dependency on highway, libraw
+- Use libspng on Tumbleweed instead of libpng
+- Add bash completion
+- Disable openslide on Leap <= 16
+- Tidy specfile
+- Update to version 8.17.1:
+  * full changelog: https://github.com/libvips/libvips/blob/8fa37a64547e392d3808eed8d72adab7e02b3d00/ChangeLog
+  * fix API docs build with meson < 0.60 [lovell]
+  * improve function checks in meson [kleisauke]
+  * tiff: use correct log domain in threadsafe warning handlers [kleisauke]
+  * shift 16-bit output down to 8-bit when unsupported by saver [kleisauke]
+  * text: prevent use of rgba subpixel anti-aliasing [lovell]
+  * tiffsave: always apply resolution unit conversion [kleisauke]
+  * cache: suppress invalidation errors in release builds [kleisauke]
+  * dzsave: IIIF: use named region of 'full' when no crop takes place [lovell]
+  * pdfload: fix potential crash with pdfium < 6633 [zhifengzhuang]
+  * gifsave: add `keep_duplicate_frames` flag [dloebl]
+  * add Magic Kernel support [akimon658]
+  * tiff: add threadsafe warning/error handlers (requires libtiff 4.5.0+) [lovell]
+  * tiffload: add support for `fail_on` flag [lovell]
+  * tiffload: add support for `unlimited` flag (requires libtiff 4.7.0+) [lovell]
+  * much more reliable operation caching
+  * colour: add support for auto-selecting the rendering intent [kleisauke]
+  * add matrixmultiply
+  * better handling of malformed size values [Simcha Kosman]
+  * improve performance of vips_shrink() [kleisauke]
+  * svgload: add support for custom CSS via `stylesheet` option [lovell]
+  * heifload: `unlimited` flag removes all limits (requires libheif 1.19.0+) [lovell]
+  * heifsave: improve alpha channel detection [lovell]
+  * convi: ensure double sum precision for floats [lovell]
+  * improve guard against corrupt ICC profiles with older lcms2 versions [kleisauke]
+  * improve vips_sink_screen() thumbnail rendering
+  * heifload: improve detection of seek beyond EOF [lovell]
+  * jp2kload: add `oneshot` flag [mbklein]
+  * share and reuse openslide connections
+  * drop support for openslide 3.3
+  * fix vips_quadratic()
+  * rename `thumbnail`'s export/import profile options as input/output for
+    consistency
+  * restore vips_remosaic(), it was not being linked
+  * deprecate VipsSaveable, add VipsForeignSaveable
+  * move vips_image_preeval(), vips_image_eval(), vips_image_posteval() into the
+    public API
+  * jxlsave: add support for chunked save (requires libjxl 0.9.0+)
+  * increase minimum version of libjxl dependency to 0.7.0
+  * increase minimum version of libheif dependency to 1.7.0
+  * improve scaling of hough_line feature space [ecbypi]
+  * heifload: limit per-image memory usage to 2GB (requires libheif 1.20.0+)
+  * svgload: add support for scRGB output via `high_bitdepth` flag [kstanikviacbs]
+  * remove vipsprofile from default install
+  * add ppmload_buffer [kleisauke]
+
+-------------------------------------------------------------------
 Sun Jan 19 14:24:45 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 8.16.0

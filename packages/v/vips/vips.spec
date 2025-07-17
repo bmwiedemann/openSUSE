@@ -23,50 +23,58 @@
 %define short_version_ 8.0
 %define somajor 42
 Name:           vips
-Version:        8.16.0
+Version:        8.17.1
 Release:        0
 Summary:        C/C++ library for processing large images
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://www.libvips.org/
 Source0:        https://github.com/libvips/libvips/releases/download/v%{version}/%{name}-%{version}.tar.xz
-# Based on https://github.com/libvips/libvips/commit/f0ed595021786f70dbcb145abbe8301e8a2fb331.patch with the Changelog chunk removed
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
 BuildRequires:  giflib-devel
-BuildRequires:  libarchive-devel
-BuildRequires:  libjxl-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  swig
 BuildRequires:  pkgconfig(ImageMagick)
-BuildRequires:  pkgconfig(OpenEXR)
+BuildRequires:  pkgconfig(OpenEXR) >= 1.2.2
+BuildRequires:  pkgconfig(cairo) >= 1.2
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(fftw3)
+BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(imagequant)
 BuildRequires:  pkgconfig(lcms2)
-BuildRequires:  pkgconfig(libexif)
+BuildRequires:  pkgconfig(libarchive) >= 3.0.0
+BuildRequires:  pkgconfig(libexif) >= 0.6
 BuildRequires:  pkgconfig(libgsf-1)
-BuildRequires:  pkgconfig(libheif)
+BuildRequires:  pkgconfig(libheif) >= 1.7.0
+BuildRequires:  pkgconfig(libhwy) >= 1.0.5
 BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libjxl) >= 0.7
+BuildRequires:  pkgconfig(libjxl_threads) >= 0.7
 BuildRequires:  pkgconfig(libopenjp2) >= 2.4
-BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(librsvg-2.0)
+BuildRequires:  pkgconfig(libraw)
+BuildRequires:  pkgconfig(librsvg-2.0) >= 2.40.3
 BuildRequires:  pkgconfig(libtiff-4)
-BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(libwebp) >= 0.6
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(matio)
-BuildRequires:  pkgconfig(openslide)
-BuildRequires:  pkgconfig(orc-0.4) >= 0.4
 BuildRequires:  pkgconfig(pango)
-BuildRequires:  pkgconfig(poppler-glib)
+BuildRequires:  pkgconfig(pangocairo) >= 1.32.6
+BuildRequires:  pkgconfig(pangoft2) >= 1.32.6
+BuildRequires:  pkgconfig(poppler-glib) >= 0.16.0
 BuildRequires:  pkgconfig(pygobject-3.0)
 BuildRequires:  pkgconfig(zlib)
+%if 0%{?suse_version} > 1600
+BuildRequires:  pkgconfig(openslide) >= 3.4.0
+BuildRequires:  libspng-devel >= 0.7
+%else
+BuildRequires:  pkgconfig(libpng) >= 1.2.9
+%endif
 
 %description
 VIPS is an image processing system. It is good with large images
@@ -136,21 +144,38 @@ BuildArch:      noarch
 This package contains documentation about the VIPS library in HTML and PDF
 formats.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name}-tools
+Requires:       bash-completion
+Supplements:    (%{name}-tools and bash)
+BuildArch:      noarch
+
+%description bash-completion
+Bash command line completion support for %{name}.
+
 %prep
 %autosetup -p1
 
 %build
 %meson \
   -Dcgif=disabled \
-  -Dspng=disabled \
   -Dpdfium=disabled \
-  -Dnifti=disabled
+  -Dnifti=disabled \
+%if 0%{?suse_version} <= 1600
+  -Dspng=disabled \
+  -Dopenslide=disabled \
+%endif
+  %{?nil}
 %meson_build
 
 %install
 %meson_install
 %find_lang %{name} --all-name
 %fdupes %{buildroot}%{python_sitearch}/
+
+install -Dm644 completions/vips-completion.bash %{buildroot}%{_datadir}/bash-completion/completions/vips
 
 %check
 %meson_test
@@ -159,11 +184,11 @@ formats.
 
 %files -n %{libname}%{somajor} -f vips.lang
 %license LICENSE
-%{_libdir}/*.so.%{somajor}*
+%{_libdir}/libvips{,-*}.so.%{somajor}{,.*}
 
 %files modules-%{short_version}
 %license LICENSE
-%{_libdir}/vips-modules-8.16/
+%{_libdir}/vips-modules-8.17/
 
 %files -n typelib-1_0-Vips-%{short_version_}
 %license LICENSE
@@ -171,18 +196,21 @@ formats.
 
 %files -n %{libname}-devel
 %license LICENSE
-%{_libdir}/*.so
+%{_libdir}/libvips{,-*}.so
 %{_includedir}/%{name}/
-%{_libdir}/pkgconfig/*
+%{_libdir}/pkgconfig/vips{,-*}.pc
 %{_girdir}/Vips-%{short_version}.gir
 
 %files tools
 %license LICENSE
-%{_bindir}/*
-%{_mandir}/man1/*
+%{_bindir}/vips{,edit,header,thumbnail}
+%{_mandir}/man1/vips{,edit,header,profile,thumbnail}.1%{ext_man}
 
 %files doc
 %license LICENSE
-%doc README.md ChangeLog doc
+%doc README.md ChangeLog doc/*.md
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/vips
 
 %changelog
