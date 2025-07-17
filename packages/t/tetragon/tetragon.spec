@@ -20,7 +20,7 @@
 %define cli_package_name tetragon-cli
 
 Name:           tetragon
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        eBPF-based Security Observability and Runtime Enforcement
 License:        Apache-2.0
@@ -30,7 +30,7 @@ Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  clang >= 15
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
+BuildRequires:  go1.24 >= 1.24.5
 BuildRequires:  llvm
 BuildRequires:  make
 BuildRequires:  zsh

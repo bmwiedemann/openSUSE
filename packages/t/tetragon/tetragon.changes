@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jul 16 06:31:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.1:
+ * Bugfixes
+    - tetragon: Fix storing of flags and mode for path (#3634) by
+      @olsajiri
+    - [backport/v1.4] Do proper cleanup on maps during sensor
+      unload (#3816) by @tpapagian
+  * Dependency updates
+    - chore(deps): update go to v1.24.2 (v1.4) (patch) (#3597) by
+      @cilium-renovate[bot]
+    - chore(deps): update module golang.org/x/net to v0.38.0
+      [security] (v1.4) (#3649) by @cilium-renovate[bot]
+    - fix(deps): update module github.com/cilium/cilium to v1.17.3
+      [security] (v1.4) (#3660) by @cilium-renovate[bot]
+    - chore(deps): update go to v1.24.3 (v1.4) (patch) (#3722) by
+      @cilium-renovate[bot]
+    - chore(deps): update docker.io/library/alpine docker tag to
+      v3.22.0 (v1.4) (#3784) by @cilium-renovate[bot]
+    - chore(deps): update go to v1.24.4 (v1.4) (patch) (#3811) by
+      @cilium-renovate[bot]
+    - chore(deps): update module
+      github.com/go-viper/mapstructure/v2 to v2.3.0 [security]
+      (v1.4) (#3862) by @cilium-renovate[bot]
+    - chore(deps): update go to v1.24.5 (v1.4) (patch) (#3880) by
+      @cilium-renovate[bot]
+
+-------------------------------------------------------------------
 Fri Mar 21 17:33:21 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.4.0:
