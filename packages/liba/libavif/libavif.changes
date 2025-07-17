@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 11 13:51:38 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+ 
+- Update libavif.spec:
+  Add compile condition for SvtAv1Enc, SLE-15-SP4, and other old
+  releases will not build with it to make the update successful.
+  (jsc#PED-13277, CVE-2025-48175, bsc#1243270, CVE-2025-48174, bsc#1243269)
+
+-------------------------------------------------------------------
 Fri May  9 22:46:11 UTC 2025 - munix9@googlemail.com
 
 - update to 1.3.0:
@@ -34,10 +42,10 @@ Fri May  9 22:46:11 UTC 2025 - munix9@googlemail.com
   * Always forward Unspecified (2) CICP color primaries, transfer characteristics,
     and matrix coefficients to the AV1 encoder. Rely on the 'colr' box instead.
   * Declare *RowBytes as size_t in avifImageRGBToYUV()
-    (CVE-2025-48175, bsc#1243270)
+    (jsc#PED-13277, CVE-2025-48175, bsc#1243270)
   * Check ftell returned value in avifjpeg.c
   * Add integer overflow checks to makeRoom.
-    (CVE-2025-48174, bsc#1243269)
+    (jsc#PED-13277, CVE-2025-48174, bsc#1243269)
   * LocalJpeg.cmake: Support multi-config generators.
 
 - Remove 'Group:' tags.

@@ -25,10 +25,12 @@
 %bcond_with     man_pages
 %bcond_with     tests
 
+%if 0%{?sle_version} > 150400 || 0%{?suse_version} >= 1599
 %ifarch aarch64 x86_64
 %bcond_without  SvtAv1Enc
 %else
 %bcond_with     SvtAv1Enc
+%endif
 %endif
 
 Name:           libavif
