@@ -877,4 +877,14 @@
   * Don't add pam_env twice</comment>
     <requestid>1286518</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>2e7848c036ed45e1f28ffa1baf99e3dd</srcmd5>
+    <version>2.13+git.20250715</version>
+    <time>1752765444</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.13+git.20250715:
+  * Release version 2.13
+  * Place himmelblau near the top of pam stack [bsc#1243418]</comment>
+    <requestid>1293274</requestid>
+  </revision>
 </revisionlist>

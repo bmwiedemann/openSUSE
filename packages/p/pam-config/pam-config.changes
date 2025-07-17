@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 15 06:44:03 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.13+git.20250715:
+  * Release version 2.13
+  * Place himmelblau near the top of pam stack [bsc#1243418]
+
+-------------------------------------------------------------------
 Wed Jun 18 05:28:06 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.12+git.20250516:
