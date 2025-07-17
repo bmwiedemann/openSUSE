@@ -2,7 +2,7 @@
 # spec file for package hyprutils
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2024 Florian "sp1rit" <sp1rit@disroot.org>
+# Copyright (c) 2024/25 Florian "sp1rit" <sp1rit@disroot.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 #
 
 
-%define sover 6
+%define sover 7
 
 Name:           hyprutils
-Version:        0.7.1
+Version:        0.8.1
 Release:        0
 Summary:        Utilities used across the Hypr* ecosystem
 License:        BSD-3-Clause
 URL:            https://github.com/hyprwm/hyprutils
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
-BuildRequires:  gcc-c++ >= 11
+BuildRequires:  gcc-c++ >= 14
 BuildRequires:  pkgconfig(pixman-1)
 
 %package -n lib%{name}%{sover}

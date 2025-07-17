@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul 16 12:23:15 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.8.1:
+  + A small update with a few small new things.
+  + Features:
+    - make hyprctl animations print details about bezier curves
+    - Added transform method to Vector2D class
+  + Fixes:
+    - implbase: include cstdint and fix building with GCC 16
+
+- Changes from version 0.8.0:
+  + This version introduces a few new things and fixes, and breaks
+    ABI.
+  + New stuff:
+    - signals: add typed signals with CSignalT<>
+    - memory: add CAtomicSharedPointer and CAtomicWeakPointer
+  + Fixes:
+    - os/process: disallow copy/move
+    - tests: fix matrix test on 32-bit
+    - include/hyprutils/memory/SharedPtr.hpp: include missing
+
+-------------------------------------------------------------------
 Mon May 19 01:32:14 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.7.1:
