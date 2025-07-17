@@ -486,4 +486,31 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1291284</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>ff29156320513d7f357bd744637bcdb1</srcmd5>
+    <version>7.3.0</version>
+    <time>1752765426</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.3.0:
+  * pycodestyle has been updated to &gt;= 2.4.0, &lt; 2.5.0
+  * Pyflakes has been updated to &gt;= 2.0.0, &lt; 2.1.0
+  * Add ``paths`` to allow local plugins to exist outside of
+    ``sys.path`` (See also :issue:`1067`, :issue:`1237`)
+  * Copy ``setup.cfg`` files to the temporary git hook execution
+    directory (See also :issue:`1299`)
+  * Only skip a file if ``# flake8: noqa`` is on a line by itself
+  * Provide a better user experience for broken plugins
+  * Report ``E902`` when a file passed on the command line does
+    not exist (See also :issue:`645`, :issue:`878`)
+  * Add ``--extend-ignore`` for extending the default ``ignore``
+    instead of overriding it (See also :issue:`1061`, :issue:`1180`)
+  * Respect a formatter's newline setting when printing
+  * Fix leaking of processes in the legacy api
+  * Fix a ``SyntaxWarning`` for an invalid escape sequence
+  * Fix ``DeprecationWarning`` due to import of ``abc`` classes
+  * Defer ``setuptools`` import to improve flake8 startup time
+  * Fix inconsistent line endings in ``FileProcessor.lines``
+    when running under python 3.x</comment>
+    <requestid>1293763</requestid>
+  </revision>
 </revisionlist>

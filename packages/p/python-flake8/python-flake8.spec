@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-flake8
-Version:        7.2.0
+Version:        7.3.0
 Release:        0
 Summary:        Modular source code checker: pep8, pyflakes and co
 License:        MIT
@@ -31,19 +31,21 @@ BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+%if %{with libalternatives}
 BuildRequires:  alts
+Requires:       alts
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # https://flake8.pycqa.org/en/latest/faq.html#why-does-flake8-use-ranges-for-its-dependencies
 Requires:       (python-mccabe >= 0.7.0 with python-mccabe < 0.8.0)
-Requires:       alts
-Requires:       (python-pycodestyle >= 2.13.0 with python-pycodestyle < 2.14.0)
-Requires:       (python-pyflakes >= 3.3.0 with python-pyflakes < 3.4.0)
+Requires:       (python-pycodestyle >= 2.14.0 with python-pycodestyle < 2.15.0)
+Requires:       (python-pyflakes >= 3.4.0 with python-pyflakes < 3.5.0)
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mccabe >= 0.7.0 with %python-mccabe < 0.8.0}
-BuildRequires:  %{python_module pycodestyle >= 2.13.0 with %python-pycodestyle < 2.14.0}
-BuildRequires:  %{python_module pyflakes >= 3.3.0 with %python-pyflakes < 3.4.0}
+BuildRequires:  %{python_module pycodestyle >= 2.14.0 with %python-pycodestyle < 2.15.0}
+BuildRequires:  %{python_module pyflakes >= 3.4.0 with %python-pyflakes < 3.5.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
