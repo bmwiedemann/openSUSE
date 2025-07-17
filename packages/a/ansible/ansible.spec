@@ -17,7 +17,7 @@
 
 
 %define ansible_community_major_version 11
-%define required_ansible_core_version 2.18.6
+%define required_ansible_core_version 2.18.7
 %define next_ansible_core_version 2.19.0
 
 
@@ -43,7 +43,7 @@
 %endif
 
 Name:           ansible
-Version:        11.7.0
+Version:        11.8.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
