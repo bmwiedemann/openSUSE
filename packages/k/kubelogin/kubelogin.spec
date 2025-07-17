@@ -17,7 +17,7 @@
 
 
 Name:           kubelogin
-Version:        0.2.9
+Version:        0.2.10
 Release:        0
 Summary:        Kubernetes client credential plugin implementing Azure authentication
 License:        MIT
@@ -25,7 +25,7 @@ URL:            https://github.com/Azure/kubelogin
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.23.7
+BuildRequires:  golang(API) >= 1.23
 %{go_provides}
 
 %description
