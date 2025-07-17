@@ -1,7 +1,7 @@
 #
 # spec file for package xkeyboard-config
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xkeyboard-config
-Version:        2.44
+Version:        2.45
 Release:        0
 Summary:        The X Keyboard Extension
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
@@ -70,9 +70,28 @@ make keyboards more accessible to people with physical impairments.
 mkdir -p %{buildroot}%{_localstatedir}/lib/xkb
 # Bug 335553
 mkdir -p %{buildroot}%{_localstatedir}/lib/xkb/compiled/
-ln -snf %{_localstatedir}/lib/xkb/compiled/ %{buildroot}%{_datadir}/X11/xkb/compiled
+ln -snf %{_localstatedir}/lib/xkb/compiled/ %{buildroot}%{_datadir}/xkeyboard-config-2/compiled
 %find_lang %{name}
 %fdupes -s %{buildroot}%{_datadir}/X11/xkb
+
+# migration to 2.45 (boo#1246516)
+%pretrans -p <lua>
+-- https://fedoraproject.org/wiki/Packaging:Directory_Replacement#Replacing_a_symlink_with_a_directory_or_a_directory_with_any_type_of_file
+-- Define the path to directory being replaced below.
+-- DO NOT add a trailing slash at the end.
+path = "%{_datadir}/X11/xkb"
+st = posix.stat(path)
+if st and st.type == "directory" then
+  status = os.rename(path, path .. ".rpmmoved")
+  if not status then
+    suffix = 0
+    while not status do
+      suffix = suffix + 1
+      status = os.rename(path .. ".rpmmoved", path .. ".rpmmoved." .. suffix)
+    end
+    os.rename(path, path .. ".rpmmoved")
+  end
+end
 
 %post
 rm -rf %{_localstatedir}/lib/xkb/compiled/server*.xkm
@@ -83,11 +102,14 @@ rm -rf %{_localstatedir}/lib/xkb/compiled/server*.xkm
 %dir %{_localstatedir}/lib/xkb
 %dir %{_localstatedir}/lib/xkb/compiled
 %dir %{_datadir}/X11
-%{_datadir}/X11/xkb/
+%{_datadir}/xkeyboard-config-2
+%{_datadir}/X11/xkb
+%ghost %attr(0755, root, root) %dir %{_datadir}/X11/xkb.rpmmoved
 %{_datadir}/pkgconfig/*.pc
 %{_mandir}/man7/*
 
 %files lang -f %{name}.lang
 %license COPYING
+%{_datadir}/locale/*/LC_MESSAGES/xkeyboard-config-2.mo
 
 %changelog

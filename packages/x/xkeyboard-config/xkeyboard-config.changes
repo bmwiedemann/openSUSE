@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 15 09:57:30 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 2.45 (boo#1246516)
+- added %pretrans lua script for migration from /usr/share/X11/xkb
+  directory to symlink
+- custom files previously under `/usr/share/X11/xkb`, e.g. the file
+  `/usr/share/X11/xkb/symbols/custom`, which are saved under
+  `/usr/share/X11/xkb.rpmmoved` after the update to 2.45 needs to
+  be migrated manually by the user to `usr/share/xkeyboard-config-2`
+
+-------------------------------------------------------------------
 Fri Feb 14 22:02:11 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.44 (boo#1237205)

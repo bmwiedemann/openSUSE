@@ -1017,4 +1017,18 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
     <comment></comment>
     <requestid>1246075</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>9346bdffd7f0bfc8418a6144b9b426d6</srcmd5>
+    <version>2.45</version>
+    <time>1752765467</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.45 (boo#1246516)
+- added %pretrans lua script for migration from /usr/share/X11/xkb
+  directory to symlink
+- custom files previously under `/usr/share/X11/xkb`, e.g. the file
+  `/usr/share/X11/xkb/symbols/custom`, which are saved under
+  `/usr/share/X11/xkb.rpmmoved` after the update to 2.45 needs to
+  be migrated manually by the user to `usr/share/xkeyboard-config-2`</comment>
+    <requestid>1293638</requestid>
+  </revision>
 </revisionlist>
