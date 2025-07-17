@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul 15 11:36:19 UTC 2025 - pgajdos@suse.com
+
+- version update to 7.1.2.0
+  * magick-config.h: Remove redundant block by @ferdnyc in #8076
+  * Remove generated 'magick.sh' from repo by @ferdnyc in #8075
+  * JXL: Preserve ICC profile for lossless encoding by @ferdnyc in #8074
+  * Support ICN file extension for old Windows icons by @bitplane in #8107
+  * fix build when libjpeg is not in its default location by @mmomtchev in #8172
+  * Change 'Mac OS X' to 'macOS' in descriptions and comments by @gy-mate in #8224
+  * Fix NULL pointer dereference in XWarning by @moon044 in #8230
+- modified patches
+  % ImageMagick-library-installable-in-parallel.patch (refreshed)
+- fixes: CVE-2025-53101 [bsc#1246529]
+         CVE-2025-53014 [bsc#1246530]
+         CVE-2025-53015 [bsc#1246531]
+         CVE-2025-53019 [bsc#1246534]
+
+-------------------------------------------------------------------
 Mon May 26 09:10:06 UTC 2025 - pgajdos@suse.com
 
 - fix config policies [bsc#1243622]

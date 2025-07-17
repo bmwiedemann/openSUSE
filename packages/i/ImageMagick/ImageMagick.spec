@@ -20,8 +20,8 @@
 
 %define debug_build    0
 %define asan_build     0
-%define mfr_version    7.1.1
-%define mfr_revision   47
+%define mfr_version    7.1.2
+%define mfr_revision   0
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
