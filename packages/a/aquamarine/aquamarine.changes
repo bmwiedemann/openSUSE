@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jul 16 12:35:08 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to aquamarine-0.9.1:
+  * A small patch release fixing builds with hl <= 0.49
+  * Fixes:
+    - backend: don't use a shorthand for SP
+    - Avoid unnecessary modeset
+
+- Changes from aquamarine aquamarine-0.9.0:
+  * A new major update, breaking ABI, but bringing a lot of
+    improvements
+  * Fixes:
+    - swapchain: fix age
+    - wayland: don't force swapchain length
+    - backend: Fix compiler warnings
+    - Restore hdr metadata after vt switch
+    - atomic: fix compiler warning with string
+    - clang-tidy: fix some errors
+  * Other:
+    - a few small renderer optimisations
+    - depend on gles3 and use vertex array objects
+    - reduce a bit of local temporar copies going around in renderer
+    - Use typed signals from hyprutils
+    - optimize blitting and use gles3 shaders
+
+-------------------------------------------------------------------
 Sun Mar 23 22:17:25 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to aquamarine-0.8.0:
