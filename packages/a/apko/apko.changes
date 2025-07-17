@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jul 17 05:55:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.29.7:
+  * Fix OPERATING-SYSTEM primaryPackagePurpose (#1763)
+  * build(deps): bump google.golang.org/api from 0.241.0 to 0.242.0
+    (#1762)
+  * build(deps): bump k8s.io/apimachinery from 0.33.2 to 0.33.3
+    (#1760)
+  * build(deps): bump step-security/harden-runner from 2.12.2 to
+    2.13.0 (#1759)
+  * build(deps): bump chainguard.dev/sdk from 0.1.35 to 0.1.36
+    (#1757)
+
+-------------------------------------------------------------------
+Thu Jul 17 05:52:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.29.6:
+  * Add a test case for /etc/ld.so.cache permissions (#1761)
+
+-------------------------------------------------------------------
+Thu Jul 17 05:49:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.29.5:
+  * fix: /etc/ld.so.cache file permissions (#1758)
+
+-------------------------------------------------------------------
 Wed Jul 16 06:16:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.29.4:
