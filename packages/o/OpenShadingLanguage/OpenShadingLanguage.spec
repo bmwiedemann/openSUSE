@@ -26,14 +26,21 @@
 %global min_llvm_version 16
 %global max_llvm_version 18.9
 
+# cmake expects the shaders in /usr/share/OSL
+%define osldir OSL
+
+# keep in sync with blender
 %if 0%{?suse_version} >= 1600
 %bcond_without qt
+%global py3ver 3.13
+%global py3pkg python313
 %else
 %bcond_with    qt
-%endif
-
-%if 0%{?suse_version} == 1500
 %global force_boost_version 1_75_0
+%global force_gcc_version   14
+
+%global py3ver 3.11
+%global py3pkg python311
 %endif
 
 Name:           OpenShadingLanguage
@@ -51,7 +58,7 @@ BuildRequires:  OpenImageIO >= 2.5
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.15
 BuildRequires:  flex
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  libboost_filesystem%{?force_boost_version}-devel
 BuildRequires:  libboost_system%{?force_boost_version}-devel
 BuildRequires:  libboost_thread%{?force_boost_version}-devel
@@ -68,9 +75,9 @@ BuildRequires:  cmake(Qt6Widgets)
 # Build fails with partio on armv7/armv6
 BuildRequires:  partio-devel
 %endif
+BuildRequires:  %{py3pkg}-devel
+BuildRequires:  %{py3pkg}-pybind11-devel
 BuildRequires:  pkg-config
-BuildRequires:  python3-devel
-BuildRequires:  python3-pybind11-devel
 BuildRequires:  cmake(OpenImageIO) >= 2.5
 BuildRequires:  cmake(pugixml)
 BuildRequires:  cmake(tsl-robin-map)
@@ -91,6 +98,7 @@ Summary:        Documentation for OpenShadingLanguage
 License:        CC-BY-3.0
 Group:          Documentation/Other
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description doc
 Open Shading Language (OSL) is a language for programmable shading
@@ -104,6 +112,7 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
 Requires:       %{name}-common-headers
+BuildArch:      noarch
 
 %description example-shaders-source
 Open Shading Language (OSL) is a language for programmable shading
@@ -117,6 +126,7 @@ Summary:        OSL standard library and auxiliary headers
 License:        BSD-3-Clause
 Group:          Development/Languages/Other
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description common-headers
 Open Shading Language (OSL) is a language for programmable shading
@@ -207,17 +217,25 @@ developing applications that use %{name}.
 
 %prep
 %autosetup -p1
-find . -iname CMakeLists.txt -exec sed "-i" "-e s/COMMAND python/COMMAND python3/" "{}" \;
+find . -iname CMakeLists.txt -exec sed "-i" "-e s/COMMAND python/COMMAND python%{py3ver}/" "{}" \;
 
 %build
 %define _lto_cflags %{nil}
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
+%endif
+
+%if 0%{?suse_version} == 1500
+export pybind11_DIR="$(pybind11-config --cmakedir)"
+%endif
 %cmake \
 %if %{without qt}
       -DUSE_QT:BOOL=FALSE \
 %endif
       -DCMAKE_SKIP_RPATH:BOOL=TRUE \
       -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
-      -DOSL_SHADER_INSTALL_DIR:PATH=%{_datadir}/%{name}/shaders/ \
+      -DOSL_SHADER_INSTALL_DIR:PATH=%{_datadir}/%{osldir}/shaders/ \
       -DCMAKE_CXX_STANDARD:STRING=17
 %cmake_build
 
@@ -230,7 +248,7 @@ find %{buildroot} -name LICENSE.md -print -delete
 # add top level markdowns to the doc package
 cp -p *.md %{buildroot}%{_docdir}/%{name}/
 # TODO: package python module
-rm -rv %{buildroot}%{python3_sitearch}/oslquery/
+rm -rv %{buildroot}%{_libdir}/python%{py3ver}/site-packages/oslquery/
 rm %{buildroot}%{_datadir}/build-scripts/serialize-bc.py
 
 %ldconfig_scriptlets -n liboslcomp%{sufx}
@@ -241,20 +259,20 @@ rm %{buildroot}%{_datadir}/build-scripts/serialize-bc.py
 
 %files
 %license LICENSE.md
-%{_bindir}/*
+%{_bindir}/{osl,test}*
 
 %files doc
 %license CC-BY-3.0.txt
 %doc %{_docdir}/%{name}/
 
 %files example-shaders-source
-%{_datadir}/%{name}/shaders/*.osl
-%{_datadir}/%{name}/shaders/*.oso
+%{_datadir}/%{osldir}/shaders/*.osl
+%{_datadir}/%{osldir}/shaders/*.oso
 
 %files common-headers
-%dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/shaders
-%{_datadir}/%{name}/shaders/*.h
+%dir %{_datadir}/%{osldir}
+%dir %{_datadir}/%{osldir}/shaders
+%{_datadir}/%{osldir}/shaders/*.h
 
 %files -n liboslcomp%{sufx}
 %license LICENSE.md
@@ -282,7 +300,7 @@ rm %{buildroot}%{_datadir}/build-scripts/serialize-bc.py
 
 %files devel
 %license LICENSE.md
-%{_includedir}/*
+%{_includedir}/%{osldir}
 %{_libdir}/lib*.so
 %{_libdir}/cmake/OSL
 %{_libdir}/pkgconfig/osl*.pc
