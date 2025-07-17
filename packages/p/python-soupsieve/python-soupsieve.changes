@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 14 10:39:01 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.7
+  * Add :open pseudo selector.
+  * Add :muted pseudo selector.
+  * Recognize the following pseudo selectors: :autofill, :buffering,
+    :fullscreen, :picture-in-picture, :popover-open, :seeking, :stalled,
+    and :volume-locked. These selectors, while recognized, will not
+    match any element as they require a live environment to check
+    element states and browser states. This just prevents Soup Sieve
+    from failing when any of these selectors are specified.
+  * A number of existing pseudo-classes are no longer noted as experimental.
+  * Typing fixes.
+
+-------------------------------------------------------------------
 Wed Oct 30 19:49:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6:
