@@ -131,4 +131,12 @@
 - No more greedy globs in %files.</comment>
     <requestid>1274277</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>805efddefbdeb08468f1986002f688a0</srcmd5>
+    <version>1.9.1</version>
+    <time>1752765431</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1293812</requestid>
+  </revision>
 </revisionlist>
