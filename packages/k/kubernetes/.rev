@@ -1131,4 +1131,15 @@ fix source validator errors (date: invalid date ‘ Tue Nov 26 11:10:35 UTC 2019
 * kubernetes (versionminus3) - 1.30.14</comment>
     <requestid>1287523</requestid>
   </revision>
+  <revision rev="117" vrev="57">
+    <srcmd5>80708618bcb89672f4e444b9e0c63ef2</srcmd5>
+    <version>unknown</version>
+    <time>1752765545</time>
+    <user>anag_factory</user>
+    <comment>- Bump meta package versions:
+  * kubernetes (version) - 1.33.3
+  * kubernetes (versionminus1) - 1.32.7
+  * kubernetes (versionminus2) - 1.31.11</comment>
+    <requestid>1293986</requestid>
+  </revision>
 </revisionlist>
