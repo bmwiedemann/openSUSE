@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 17 03:57:52 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.32.7:
+  * Use per-policy marker names for VAP integration tests.
+  * Fix validation for Job with suspend=true,completions=0 to set Complete condition
+  * Add check to see if promote worked within the retry loop
+  * Clean backoff record earlier
+  * fix(kubelet): acquire imageRecordsLock when removing image
+
+-------------------------------------------------------------------
 Sat Jun 21 06:38:38 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.32.6:
