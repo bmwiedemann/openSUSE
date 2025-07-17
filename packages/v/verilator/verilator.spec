@@ -17,7 +17,7 @@
 
 
 Name:           verilator
-Version:        5.036
+Version:        5.038
 Release:        0
 Summary:        Compiling Verilog HDL simulator
 License:        Artistic-2.0 OR LGPL-3.0-only
@@ -32,7 +32,7 @@ BuildRequires:  gdb
 BuildRequires:  help2man
 BuildRequires:  perl
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel
+BuildRequires:  python3-devel >= 3.7
 BuildRequires:  python3-distro
 
 %description
@@ -80,10 +80,6 @@ autoconf
 install -d %{buildroot}%{_docdir}/%{name}/
 mv %{buildroot}%{_datadir}/verilator/examples %{buildroot}%{_docdir}/%{name}/examples
 
-# fix install of devel files
-mkdir -p %{buildroot}%{_includedir}/
-mv %{buildroot}%{_datadir}/verilator/include/ %{buildroot}%{_includedir}/verilator
-
 %check
 mkdir -p "~/.config/gdb/"
 echo "set auto-load safe-path /" > "~/.config/gdb/gdbinit"
@@ -94,6 +90,7 @@ make test
 %license Artistic LICENSE
 %doc Changes README.rst
 %exclude %{_docdir}/%{name}/examples/
+%exclude %{_datadir}/verilator/include
 %{_bindir}/verilator
 %{_bindir}/verilator_bin
 %{_bindir}/verilator_bin_dbg
@@ -108,8 +105,8 @@ make test
 %{_mandir}/man1/verilator_profcfunc.1%{?ext_man}
 
 %files devel
+%{_datadir}/verilator/include
 %{_datadir}/pkgconfig/verilator.pc
-%{_includedir}/verilator
 
 %files examples
 %doc %{_docdir}/%{name}/examples/

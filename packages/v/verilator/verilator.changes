@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 14 13:19:50 UTC 2025 - Yousaf Kaukab <yousaf.kaukab@suse.com>
+
+- Update to v5.038. For a list of changes, see included Changes or
+  https://github.com/verilator/verilator/blob/v5.038/Changes
+- Add requirement for python >= 3.7 as build fails with earlier versions.
+- Don't move devel files and keep them at the default location. This also
+  fixes the the location reported by pkg-config.
+
+-------------------------------------------------------------------
 Mon Jul  7 15:28:51 UTC 2025 - Yousaf Kaukab <yousaf.kaukab@suse.com>
 
 - Update to v5.036. For a list of changes, see included Changes or
