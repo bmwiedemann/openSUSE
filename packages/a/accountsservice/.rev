@@ -1211,4 +1211,12 @@ By now, it's required for sle-15, so synchronized the updated specfile and chang
   Gnome-shell now has similar functionality upstream. (forwarded request 1193502 from mgorse)</comment>
     <requestid>1193510</requestid>
   </revision>
+  <revision rev="92" vrev="11">
+    <srcmd5>344ad7a86d58f509c1c52fc5c5db48b3</srcmd5>
+    <version>23.13.9</version>
+    <time>1752765465</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1293459</requestid>
+  </revision>
 </revisionlist>
