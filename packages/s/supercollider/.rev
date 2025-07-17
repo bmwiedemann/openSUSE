@@ -7,4 +7,20 @@
     <comment></comment>
     <requestid>1067962</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cdeb81e0db160af0cc2424e90e07a4d2</srcmd5>
+    <version>3.14.0~rc1</version>
+    <time>1752765468</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.14.0~rc1:
+  * Sclang functions now support collecting arbitrary keyword
+     arguments via { |...args, kwargs| kwargs }
+  * The initialization sample of multiple UGens was fixed
+  * Documentation can now also be themed like the IDE
+  * migrated to qt6, added and improved tests,
+    updated 3rd-party libraries
+  * updated the build system for most recent build tools
+- select pipewire-libjack over jack</comment>
+    <requestid>1293424</requestid>
+  </revision>
 </revisionlist>

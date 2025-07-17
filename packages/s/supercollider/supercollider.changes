@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jun 29 08:57:44 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.14.0~rc1:
+  * Sclang functions now support collecting arbitrary keyword
+     arguments via { |...args, kwargs| kwargs }
+  * The initialization sample of multiple UGens was fixed
+  * Documentation can now also be themed like the IDE
+  * migrated to qt6, added and improved tests,
+    updated 3rd-party libraries
+  * updated the build system for most recent build tools
+
+-------------------------------------------------------------------
+Tue Feb 28 10:05:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- select pipewire-libjack over jack
+
+-------------------------------------------------------------------
 Sat Feb 25 00:20:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.13.0:
@@ -99,7 +116,7 @@ Sat Feb 25 00:20:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Fixed CPU hog when sclang is built without Qt.
   * Fixed some stray issues on Windows with paths containing non-
     ASCII characters.
-- add gpg validation 
+- add gpg validation
 - drop patch fix-desktop.patch, x64-libdir.patch, supercollider.patch: obsolete
 
 -------------------------------------------------------------------

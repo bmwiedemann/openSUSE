@@ -1,7 +1,7 @@
 #
 # spec file for package supercollider
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,24 @@
 
 
 Name:           supercollider
-Version:        3.13.0
+Version:        3.14.0~rc1
+%global tar_version 3.14.0-rc1
 Release:        0
 Summary:        Programming environment for audio synthesis and composition
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://supercollider.github.io/
-Source0:        https://github.com/supercollider/supercollider/releases/download/Version-%{version}/SuperCollider-%{version}-Source.tar.bz2
-Source1:        https://github.com/supercollider/supercollider/releases/download/Version-%{version}/SuperCollider-%{version}-Source.tar.bz2.asc
+Source0:        https://github.com/supercollider/supercollider/releases/download/Version-%{tar_version}/SuperCollider-%{tar_version}-Source.tar.bz2
+Source1:        https://github.com/supercollider/supercollider/releases/download/Version-%{tar_version}/SuperCollider-%{tar_version}-Source.tar.bz2.asc
 Source2:        supercollider.keyring
 BuildRequires:  alsa-lib-devel
 BuildRequires:  avahi-devel
-BuildRequires:  hicolor-icon-theme
 BuildRequires:  cmake
 BuildRequires:  emacs-nox
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libX11-devel
 BuildRequires:  libXt-devel
 BuildRequires:  libcurl-devel
@@ -42,11 +43,6 @@ BuildRequires:  libicu-devel
 BuildRequires:  libjack-devel
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  libqt5-qtlocation-devel
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Sensors)
-BuildRequires:  pkgconfig(Qt5WebEngineCore)
-BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
-BuildRequires:  pkgconfig(Qt5WebSockets)
 BuildRequires:  libqt5-qttools-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  libtool
@@ -56,8 +52,20 @@ BuildRequires:  readline-devel
 BuildRequires:  ruby
 BuildRequires:  w3m
 BuildRequires:  yaml-cpp-devel
+BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  pkgconfig(Qt6Linguist)
+BuildRequires:  pkgconfig(Qt6Sensors)
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6WebEngineCore)
+BuildRequires:  pkgconfig(Qt6WebEngineWidgets)
+BuildRequires:  pkgconfig(Qt6WebSockets)
 BuildRequires:  pkgconfig(atomic_ops)
-Suggests:       jack
+%if 0%{?suse_version} > 1500
+# Force pipewire over jack itself
+Requires:       pipewire-libjack-0_3
+%else
+Requires:       jack
+%endif
 
 %description
 SuperCollider is a platform for audio synthesis and algorithmic composition,
@@ -90,14 +98,6 @@ Requires:       supercollider = %{version}-%{release}
 %description emacs
 SuperCollider support for the Emacs text editor.
 
-%package gedit
-Summary:        SuperCollider support for GEdit
-Group:          Development/Tools/IDE
-Requires:       supercollider = %{version}-%{release}
-
-%description gedit
-SuperCollider support for the GEdit text editor.
-
 %package vim
 Summary:        SuperCollider support for Vim
 Group:          Development/Tools/IDE
@@ -107,7 +107,7 @@ Requires:       supercollider = %{version}-%{release}
 SuperCollider support for the Vim text editor.
 
 %prep
-%setup -q -n SuperCollider-%{version}-Source
+%setup -q -n SuperCollider-%{tar_version}-Source
 
 %build
 # remove exec flag from boost
@@ -125,9 +125,8 @@ find external_libraries/boost -type f -exec chmod -x {} \;
 %if 0%{?suse_version} > 1320
 	-DCMAKE_CXX_FLAGS="-fext-numeric-literals %{optflags}" \
 %endif
-	-DSUPERNOVA=ON
+	-DSC_EL=ON -DSC_VIM=ON -DSUPERNOVA=ON
 
-%make_build clean
 %make_build
 
 %install
@@ -174,6 +173,7 @@ rm -rf %{buildroot}%{_datadir}/doc/SuperCollider
 %{_datadir}/applications/SuperColliderIDE.desktop
 %{_datadir}/icons/hicolor/scalable/apps/sc_ide.svg
 %{_datadir}/icons/hicolor/*x*/apps/supercollider.*
+%{_datadir}/metainfo/online.supercollider.SuperCollider.metainfo.xml
 
 %files devel
 %{_includedir}/SuperCollider
@@ -197,14 +197,5 @@ rm -rf %{buildroot}%{_datadir}/doc/SuperCollider
 # %{_datadir}/vim/addons/*/supercollider*
 # %dir %{_datadir}/vim/registry
 # %{_datadir}/vim/registry/supercollider-vim.yaml
-
-%files gedit
-%doc editors/sced/README.md
-%dir %{_libdir}/gedit
-%dir %{_libdir}/gedit/plugins
-%{_libdir}/gedit/plugins/*
-%dir %{_datadir}/gtksourceview-3.0
-%dir %{_datadir}/gtksourceview-3.0/language-specs
-%{_datadir}/gtksourceview-3.0/language-specs/supercollider.lang
 
 %changelog
