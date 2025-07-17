@@ -41,10 +41,6 @@ Patch4:         0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch
 #PATCH-FEATURE-OPENSUSE mutter-implement-text-input-v1.patch glgo#GNOME/mutter!3751 bsc#1219505 alynx.zhou@suse.com -- Allow input method to work in Wayland Chromium
 Patch5:         mutter-implement-text-input-v1.patch
 
-## SLE-only patches start at 1000
-# PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.
-Patch1000:      mutter-SLE-bell.patch
-
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
 %ifnarch s390x
@@ -144,17 +140,11 @@ applications that want to make use of the mutter library.
 %lang_package
 
 %prep
-%autosetup -N
+%autosetup -p1
 pushd subprojects
 tar xf %{SOURCE1}
 mv gvdb-0.gitmodule gvdb
 popd
-%if 0%{?is_opensuse}
-%autopatch -p1 -M 999
-%else
-# SLE-only patches (apply all patches).
-%autopatch -p1
-%endif
 
 %build
 %meson \
