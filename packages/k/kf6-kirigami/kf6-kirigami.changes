@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul 14 11:33:43 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Replace 0001-Fix-another-ShadowedTexture-crash-with-software-rend.patch
+  with new version:
+  * 0001-Revert-Fix-SoftwareRectangleNode-leaking-image-nodes.patch
+  * 0002-Revert-Fix-ShadowedTexture-crashing-with-software-re.patch
+  * 0003-Fix-SoftwareRectangleNode-creating-QSGImageNode-s-wi.patch
+
+-------------------------------------------------------------------
+Mon Jul 14 08:21:51 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix a crash with the Qt Quick software renderer
+  (kde#506991, boo#1246411):
+  * 0001-Fix-another-ShadowedTexture-crash-with-software-rend.patch
+
+-------------------------------------------------------------------
 Mon Jul  7 07:24:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.16.0

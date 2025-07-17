@@ -174,4 +174,18 @@
     <comment>KDE Frameworks 6.16 (forwarded request 1292110 from krop)</comment>
     <requestid>1292148</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>2371425543da5296a6b0e2d4fee06e59</srcmd5>
+    <version>6.16.0</version>
+    <time>1752765436</time>
+    <user>anag_factory</user>
+    <comment>Next attempt?
+
+- Replace 0001-Fix-another-ShadowedTexture-crash-with-software-rend.patch
+  with new version:
+  * 0001-Revert-Fix-SoftwareRectangleNode-leaking-image-nodes.patch
+  * 0002-Revert-Fix-ShadowedTexture-crashing-with-software-re.patch
+  * 0003-Fix-SoftwareRectangleNode-creating-QSGImageNode-s-wi.patch (forwarded request 1293125 from Vogtinator)</comment>
+    <requestid>1293136</requestid>
+  </revision>
 </revisionlist>

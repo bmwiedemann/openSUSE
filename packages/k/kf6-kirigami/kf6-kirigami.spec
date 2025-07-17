@@ -33,6 +33,10 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
+# PATCH-FIX-UPSTREAM https://invent.kde.org/frameworks/kirigami/-/merge_requests/1884
+Patch1:         0001-Revert-Fix-SoftwareRectangleNode-leaking-image-nodes.patch
+Patch2:         0002-Revert-Fix-ShadowedTexture-crashing-with-software-re.patch
+Patch3:         0003-Fix-SoftwareRectangleNode-creating-QSGImageNode-s-wi.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
@@ -70,8 +74,8 @@ Based on Qt Quick Controls 2. This package contains the base shared libraries.
 %package devel
 Summary:        Development package for kirigami
 Requires:       libKirigamiPlatform6 = %{version}
-Requires:       cmake(Qt6Core) >= %{qt6_version}
 Requires:       cmake(Qt6Concurrent) >= %{qt6_version}
+Requires:       cmake(Qt6Core) >= %{qt6_version}
 Requires:       cmake(Qt6Qml) >= %{qt6_version}
 Requires:       cmake(Qt6Quick) >= %{qt6_version}
 
