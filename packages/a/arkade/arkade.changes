@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 17 09:57:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.40:
+  * Add gha-bump to README
+  * Add gha-bump tool by Alex Ellis
+  * Bump golang.org/x/mod from 0.24.0 to 0.26.0
+  * Bump golang.org/x/crypto from 0.38.0 to 0.40.0
+  * Updates to go.mod
+  * Static checks
+
+-------------------------------------------------------------------
 Thu May 22 04:34:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.39:
