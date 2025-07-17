@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Jul 17 05:50:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.9:
+  * Bug Fixes
+    - go: update k8s.io/apimachinery ( v0.33.2 → v0.33.3 )
+      (a78e902)
+  * CI/CD
+    - github-action: update jdx/mise-action ( v2.3.1 → v2.4.0 )
+      (0d96133)
+    - github-action: update jdx/mise-action ( 5cb1df6 → bfb9fa0 )
+      (bc69045)
+    - github-action: update aquasecurity/trivy-action ( 0.31.0 →
+      0.32.0 ) (35f945b)
+    - github-action: pin mirceanton/action-semver-release action to
+      be5a941 (785832f)
+    - release: update workflow (1017d41)
+    - github-action: update github/codeql-action ( v3.29.1 →
+      v3.29.2 ) (a889447)
+    - github-action: pin mirceanton/action-semver-release action to
+      be5a941 (f87230b)
+    - release: update release action (f411582)
+    - renovate: replace mise exec with renovatebot action (81a62b5)
+    - github-action: update github/codeql-action ( v3.29.0 →
+      v3.29.1 ) (be4fad1)
+    - github-action: update jdx/mise-action ( v2.3.0 → v2.3.1 )
+      (76ef09d)
+    - github-action: update jdx/mise-action ( v2.2.3 → v2.3.0 )
+      (92364ad)
+    - github-action: update jdx/mise-action ( 429184f → 5cb1df6 )
+      (ff5ebaf)
+    - github-action: update jdx/mise-action ( 13abe50 → 429184f )
+      (5186a30)
+  * Chores
+    - mise: update aqua:golangci/golangci-lint ( 2.2.1 → 2.2.2 )
+      (839bf71)
+    - mise: update aqua:goreleaser/goreleaser ( 2.10.2 → 2.11.0 )
+      (#200) (2b0ae0c)
+    - mise: update go ( 1.24.4 → 1.24.5 ) (8c7d5f0)
+    - mise: update aqua:golangci/golangci-lint ( 2.2.0 → 2.2.1 )
+      (aa5a949)
+    - mise: update aqua:golangci/golangci-lint ( 2.1.6 → 2.2.0 )
+      (6944aa9)
+    - mise: Update npm:renovate ( 40.62.1 → 41.1.0 ) (#199)
+      (b66a549)
+
+-------------------------------------------------------------------
 Mon Jun 23 04:49:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.8:
