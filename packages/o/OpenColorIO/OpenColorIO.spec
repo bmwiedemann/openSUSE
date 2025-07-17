@@ -55,6 +55,8 @@ BuildRequires:  pkgconfig(Imath) >= 3.1.1
 BuildRequires:  pkgconfig(minizip-ng) >= 4.0.4
 Recommends:     %{pkg_name}-doc = %{version}
 %if %{with ocio_tools}
+BuildRequires:  OpenImageIO
+BuildRequires:  OpenImageIO-devel
 BuildRequires:  OpenImageIO-plugin-osl
 BuildRequires:  OpenShadingLanguage-devel
 BuildRequires:  python3-MarkupSafe
@@ -66,8 +68,6 @@ BuildRequires:  python3-six
 BuildRequires:  python3-sphinx-tabs
 BuildRequires:  python3-sphinx_press_theme
 BuildRequires:  python3-testresources
-BuildRequires:  (OpenImageIO >= 2.1.9 with OpenImageIO < 3)
-BuildRequires:  (OpenImageIO-devel >= 2.1.9 with OpenImageIO-devel < 3)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glut)
