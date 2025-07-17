@@ -596,4 +596,15 @@
     <comment></comment>
     <requestid>1286792</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>29fea1fac3191f0b2e2a558184968756</srcmd5>
+    <version>1.73.0</version>
+    <time>1752765516</time>
+    <user>anag_factory</user>
+    <comment>- Require Cython &gt;= 3.0.0 instead of 3.1.1 as the latest version
+  available on TW is 3.0.2 currently.
+- Fix build error for Leap 15.6.
+</comment>
+    <requestid>1293843</requestid>
+  </revision>
 </revisionlist>

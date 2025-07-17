@@ -31,15 +31,22 @@ Patch1:         xxhash-avoid-armv6-unaligned-access.patch
 # PATCH-FIX-SLE xxhash-ppc64le-gcc7.patch boo#1208794 alarrosa@suse.com -- fix build failure on ppc64le when using gcc 7
 Patch2:         xxhash-ppc64le-gcc7.patch
 Patch3:         fix-return-values.patch
-BuildRequires:  %{python_module Cython >= 0.29.8}
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module Cython >= 3.0.0}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module protobuf >= 6.30 }
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel >= 0.29}
-BuildRequires:  abseil-cpp-devel >= 20220623.0
+BuildRequires:  abseil-cpp-devel >= 20250127.0
 BuildRequires:  ca-certificates
 BuildRequires:  fdupes
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+%else
+BuildRequires:  gcc
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libcares)
@@ -60,6 +67,10 @@ connected systems.
 %autosetup -p1 -n grpcio-%{version}
 
 %build
+%if 0%{?suse_version} < 1600
+export CC=gcc-13
+export CXX=g++-13
+%endif
 export GRPC_BUILD_WITH_BORING_SSL_ASM=false
 export GRPC_PYTHON_BUILD_SYSTEM_ABSL=true
 export GRPC_PYTHON_BUILD_SYSTEM_CARES=true
