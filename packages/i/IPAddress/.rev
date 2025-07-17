@@ -15,4 +15,12 @@
     <comment>CVE-2023-50570</comment>
     <requestid>1222472</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>f123398636d89c40d7df7ac3291de271</srcmd5>
+    <version>5.5.1</version>
+    <time>1752765530</time>
+    <user>anag_factory</user>
+    <comment>Restore reproducibility</comment>
+    <requestid>1293993</requestid>
+  </revision>
 </revisionlist>

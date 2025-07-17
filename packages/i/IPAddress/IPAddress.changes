@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 16 22:31:10 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * IPAddress-reproducible.patch
+    + make the bundle manifest reproducible
+
+-------------------------------------------------------------------
 Thu Nov  7 14:30:24 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 5.5.1

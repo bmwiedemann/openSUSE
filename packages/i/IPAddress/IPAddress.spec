@@ -1,7 +1,7 @@
 #
 # spec file for package IPAddress
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ URL:            https://github.com/seancfoley/IPAddress
 Source0:        https://github.com/seancfoley/IPAddress/archive/v%{version}.tar.gz
 Patch0:         IPAddress-encoding.patch
 Patch1:         IPAddress-doclet.patch
+Patch2:         IPAddress-reproducible.patch
 BuildRequires:  ant
 BuildRequires:  aqute-bnd
 BuildRequires:  fdupes
@@ -45,17 +46,14 @@ This package provides API documentation for xbean.
 %setup -q
 %patch -P 0 -p1
 %patch -P 1 -p1
+%patch -P 2 -p1
 find -name \*.jar -delete
 find -name \*.class -delete
-
-echo "-reproducible: true" >> IPAddress/ipaddress.bnd
-echo "-noextraheaders: true" >> IPAddress/ipaddress.bnd
-echo "-snapshot: SNAPSHOT" >> IPAddress/ipaddress.bnd
 
 %build
 pushd IPAddress
 mkdir bin
-%{ant} "create dist jar" "create javadoc" "create pom"
+ant "create dist jar" "create javadoc" "create pom"
 
 %install
 # jar

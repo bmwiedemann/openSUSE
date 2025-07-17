@@ -1,0 +1,15 @@
+diff -urEbwB IPAddress-5.5.1/IPAddress/build.xml IPAddress-5.5.1/IPAddress/build.xml
+--- IPAddress-5.5.1/IPAddress/build.xml	2025-07-17 00:23:22.955680951 +0200
++++ IPAddress-5.5.1/IPAddress/build.xml	2025-07-17 00:30:44.477386275 +0200
+@@ -177,7 +177,10 @@
+ Bundle-SymbolicName: com.github.seancfoley.ipaddress
+ ver: ${version}
+ Bundle-Version: ${version}
+-Export-Package: *;version=${version}</concat>
++Export-Package: *;version=${version}
++-reproducible: true
++-noextraheaders: true
++-snapshot: SNAPSHOT</concat>
+ 		<fixcrlf file="${bndfile}" eol="lf"/>
+ 		<echo message="created ${bndfile}"/>
+ 	</target>
