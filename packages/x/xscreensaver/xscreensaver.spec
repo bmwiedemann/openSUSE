@@ -176,7 +176,7 @@ sed -re '
 intltoolize --copy --force
 chmod +x install-sh
 cp /usr/share/gettext/config.rpath .
-autoreconf -fi
+autoreconf -fi -I /usr/share/gettext/m4
 # Regarding options checking: %%configure includes --disable-dependency-tracking, which causes fatal error.
 # Please try to comment out during the upgrade. You should see exactly this single error.
 export enable_option_checking=no

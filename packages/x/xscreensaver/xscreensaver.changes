@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 11 09:34:46 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Work with newer gettext-runtime. In gettext 0.24.1 the m4 files
+  moved from /usr/share/aclocal/ to /usr/share/gettext/m4
+
+-------------------------------------------------------------------
 Mon Mar 24 17:37:04 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove dependency on unused unix2_chkpwd
@@ -1483,11 +1489,10 @@ Tue Feb 10 11:41:56 MET 1998 - bs@suse.de
 
 - fixed Check for man pages
 
-----------------------------------------------------------------------------
+-------------------------------------------------------------------
 Tue Jan 13 16:41:07 MET 1998 -  bb@suse.de
 
 Changes since 2.13:     
-------------------
 
 - Better fix for the Motif drag-and-die lossage.
 - Put in some kludges to work around a LessTif bug.
