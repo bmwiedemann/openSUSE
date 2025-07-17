@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 14 17:11:03 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.5.9:
+  * gpg: Add the revocation reason to the sigclass of a "rev" line
+    (drops gnupg-2.5.8-re-add-revocation-reason.patch)
+  * gpg: Do not show the non-standard secp256k1 curve in the menu
+    to select the curve. It can however be specified using its name
+  * gpg: Fix regression in using the secp256k1 curve.
+  * dirmngr: New option --user-agent and send a default User-Agent
+    of "GnuPG/2.6" for all HTTP requests
+
+-------------------------------------------------------------------
 Sun Jun 29 07:56:45 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build of qgpgme >= 2.0.0 [T7083] boo#1244605

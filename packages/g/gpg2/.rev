@@ -1537,4 +1537,12 @@ Still valid</comment>
     <comment></comment>
     <requestid>1289186</requestid>
   </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>7cc1c68a819a5fb8ee892ff8da5d7e8c</srcmd5>
+    <version>2.5.9</version>
+    <time>1752765437</time>
+    <user>anag_factory</user>
+    <comment>gpg2 2.5.9 (forwarded request 1293215 from AndreasStieger)</comment>
+    <requestid>1293223</requestid>
+  </revision>
 </revisionlist>
