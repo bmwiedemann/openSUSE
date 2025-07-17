@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 15 11:31:55 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch 0001-fuser-Fix-expandpath.patch
+  * Is an upstream commit which fixes https://gitlab.com/psmisc/psmisc/-/issues/57
+    as well as bug boo#1242093
+
+-------------------------------------------------------------------
 Thu Mar 13 09:45:47 UTC 2025 - pgajdos@suse.com
 
 - fix build with gcc15

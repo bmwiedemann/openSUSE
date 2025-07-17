@@ -916,4 +916,14 @@
     <comment></comment>
     <requestid>1252709</requestid>
   </revision>
+  <revision rev="93" vrev="5">
+    <srcmd5>a849b3287bff6fbdd08c72f441a87ab1</srcmd5>
+    <version>23.7</version>
+    <time>1752765462</time>
+    <user>anag_factory</user>
+    <comment>- Add patch 0001-fuser-Fix-expandpath.patch
+  * Is an upstream commit which fixes https://gitlab.com/psmisc/psmisc/-/issues/57
+    as well as bug boo#1242093</comment>
+    <requestid>1293419</requestid>
+  </revision>
 </revisionlist>

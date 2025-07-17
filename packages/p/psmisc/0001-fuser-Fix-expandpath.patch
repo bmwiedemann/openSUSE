@@ -1,0 +1,211 @@
+From b61e3c44b636691d5d2d2519efc934eac03e0f22 Mon Sep 17 00:00:00 2001
+From: Craig Small <csmall@dropbear.xyz>
+Date: Sat, 3 May 2025 11:10:11 +1000
+Subject: [PATCH] fuser: Fix expandpath
+
+The function expandpath had some issues:
+ * It would fail if you looked at non-Unix sockets
+ * get_pidfd called it twice most times
+ * it would try to find symlinks in /proc/<PID>/fd
+ * it kept scanning /proc/self/net/unix over and over
+
+This meant fuser ran really slow, and would never find
+any TCP/UDP sockets (and probably anything else that wasn't
+a normal file/directory or Unix socket).
+
+The main changes are:
+ If we know we are looking at procfs, skip over scanning for
+directories.
+ Use the already parsed unix sockets list
+ If we find a socket and its not a unix socket, return the orginal path
+
+References:
+ commit 366b0071aa889d2620b78f1cf4e197771171aea8
+ issue #57
+
+Signed-off-by: Craig Small <csmall@dropbear.xyz>
+---
+ ChangeLog   |  1 +
+ src/fuser.c | 73 +++++++++++++++++++----------------------------------
+ 2 files changed, 27 insertions(+), 47 deletions(-)
+
+|diff --git a/ChangeLog b/ChangeLog
+|index 4222066..edf164e 100644
+|--- a/ChangeLog
+|+++ b/ChangeLog
+|@@ -1,6 +1,7 @@
+| Changes in NEXT
+| ===============
+| 	* fuser: Use mountinfo to distinguish NFS mounts !40
+|+	* fuser: Make TCP/UDP sockets work again #57
+| 	* killall,pstree: Use gettime instead of uptime Debian 1066090
+| 	* pstree: Add -P to show path of exe !38
+| 
+diff --git a/src/fuser.c b/src/fuser.c
+index b31338e..d3622d6 100644
+--- a/src/fuser.c
++++ b/src/fuser.c
+@@ -134,7 +134,7 @@ static ino_t get_namespace(const pid_t pid);
+ static int get_mountid(const char *path);
+ #endif
+ static int find_mountpoint(const char *path, mntinfo_t **mountinfo);
+-static char *expandpath(const char *path);
++static char *expandpath(const char *path, const bool isproc);
+ static struct unixsocket_list *unixsockets = NULL;
+ static struct names *names_head = NULL, *names_tail = NULL;
+ static struct ip_connections *tcp_connection_list = NULL;
+@@ -541,7 +541,7 @@ int parse_file(
+     const opt_type opts)
+ {
+     mntinfo_t *mountinfo;
+-    char *new = expandpath(this_name->filename);
++    char *new = expandpath(this_name->filename, false);
+     if (new)
+     {
+         if (this_name->filename)
+@@ -1722,7 +1722,7 @@ static struct stat *get_pidstat(
+     if (id)
+     {
+         mntinfo_t *info;
+-        char *new = expandpath(pathname);
++        char *new = expandpath(pathname, true);
+         if (new && find_mountpoint(new, &info) == 0)
+             *id = info->id;
+         else    *id = -1;
+@@ -2442,11 +2442,10 @@ static int get_fdinfo(
+     const static char delimiters[] = ": \t\n";
+     char line[BUFSIZ];
+     FILE *fp;
+-# if defined(HAS_NAME_TO_HANDLE_AT)
+     char *realname;
+-# endif
+ 
+     snprintf(pathname, sizeof(pathname)-1, "/proc/%d/fdinfo/%s", pid, fd);
++
+     if ((fp = fopen(pathname, "r")) == NULL)
+                goto out;
+ 
+@@ -2470,9 +2469,9 @@ static int get_fdinfo(
+     }
+     fclose(fp);
+ out:
+-# if defined(HAS_NAME_TO_HANDLE_AT)
+     snprintf(pathname, sizeof(pathname)-1, "/proc/%d/fd/%s", pid, fd);
+-    realname = expandpath(pathname);
++    realname = expandpath(pathname, true);
++# if defined(HAS_NAME_TO_HANDLE_AT)
+     if (realname)
+     {
+         info->mnt_id = get_mountid(realname);
+@@ -2485,7 +2484,6 @@ out:
+     {
+         struct stat lst;
+ 
+-        snprintf(pathname, sizeof(pathname)-1, "/proc/%d/fd/%s", pid, fd);
+         if (!flags && lstatn(pathname, STATX_MODE, &lst) == 0)
+         {
+             if (lst.st_mode & S_IWUSR)
+@@ -2495,7 +2493,6 @@ out:
+ 
+         if (!mnt_id)
+         {
+-            realname = expandpath(pathname);
+             if (realname)
+             {
+                 mntinfo_t *mountinfo;
+@@ -2699,7 +2696,8 @@ out:
+  */
+ static char real[PATH_MAX + 1];
+ char *expandpath(
+-    const char *path)
++    const char *path,
++    const bool isproc)
+ {
+     char tmpbuf[PATH_MAX + 1];
+     const char *start, *end;
+@@ -2726,7 +2724,10 @@ char *expandpath(
+         while (*start == '/')
+             ++start;
+ 
+-        for (end = start; *end && *end != '/'; ++end) ;
++        if (isproc)
++            end = start + strlen(start);
++        else
++            for (end = start; *end && *end != '/'; ++end) ;
+ 
+         if (end - start == 0)
+             break;
+@@ -2741,6 +2742,7 @@ char *expandpath(
+             char lnkbuf[PATH_MAX + 1];
+             size_t len;
+             ssize_t n;
++            unsigned long long lnk_inode;
+ 
+             if (dest[-1] != '/')
+                 *dest++ = '/';
+@@ -2773,49 +2775,26 @@ char *expandpath(
+             /*
+              * Expand to real path of named socket if any 
+              */
+-            if (lnkbuf[0] != '/' && strncmp("socket:[", lnkbuf, 8) == 0)
++            if (lnkbuf[0] != '/' && sscanf(lnkbuf, "socket:[%llu]", &lnk_inode) == 1)
+             {
+-                FILE *fp;
+-                char *inode;
+-                char line[BUFSIZ];
+-                if ((inode = strchr(&lnkbuf[8], ']')))
+-                {
+-                    *inode = '\0';
+-                    inode = &lnkbuf[8];
+-                }
+-
+-                if (!inode || (fp = fopen(PROC_SOCKETS, "r")) == NULL)
+-                {
+-                    /*fprintf(stderr, "Cannot open %s\n", PROC_SOCKETS); */
+-                    return (char *)0;
+-                }
+-                while (fgets(line, BUFSIZ, fp) != NULL)
++                struct unixsocket_list *sock_tmp;
++                for (sock_tmp = unixsockets; sock_tmp != NULL; sock_tmp = sock_tmp->next)
+                 {
+-                    char *named = NULL;
+-                    unsigned long snode;
+-
+-                    if (*line == 'N')
+-                        continue;
+-
+-                    if (sscanf(line, "%*x: %*x %*x %*x %*x %*x %lu %ms",
+-                               &snode, &named) == 2)
++                    if (sock_tmp->net_inode == lnk_inode)
+                     {
+-                        char *ep;
+-                        unsigned long oul = strtoul(inode, &ep, 0);
+-                        if (oul == snode) {
+-                            ep = named;
+-                            if (*ep == '@')
+-                               ep++;
+-                            n = strlen(ep);
+-                            memcpy(lnkbuf, ep, n);
+-                            lnkbuf[n] = '\0';
+-                        }
+-                        free (named);
++                        strncpy(lnkbuf, sock_tmp->sun_name, PATH_MAX);
++                        n = strlen(sock_tmp->sun_name);
++                        break;
+                     }
+                 }
+-                fclose(fp);
++                if (sock_tmp == NULL) // socket, but not unix socket
++                {
++                    strcpy(real, path);
++                    return curr;
++                }
+             }
+ 
++            lnkbuf[n] = '\0';
+             len = strlen(end);
+             if ((n + len) > PATH_MAX)
+             {
+-- 
+GitLab
+

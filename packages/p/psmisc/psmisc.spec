@@ -48,6 +48,8 @@ Patch2:         %{name}-22.21-pstree.patch
 Patch3:         0001-Use-mountinfo-to-be-able-to-use-the-mount-identity.patch
 # https://gitlab.com/psmisc/psmisc/-/issues/59
 Patch4:         psmisc-gcc15.patch
+# https://gitlab.com/psmisc/psmisc/-/issues/57
+Patch5:         0001-fuser-Fix-expandpath.patch
 
 %define have_peekfd %ix86 x86_64 ppc ppc64 ppc64le %arm mipsel m68k aarch64 loongarch64
 
@@ -66,6 +68,7 @@ processes that are using specified files or filesystems.
 %patch -P 1 -p0 -b .uptime
 %patch -P 2 -p0 -b .pstree
 %patch -P 3 -p0 -b .mntinf
+%patch -P 5 -p1 -b .tcp
 %patch -P 0 -p0 -b .p0
 %patch -P 4 -p1
 
