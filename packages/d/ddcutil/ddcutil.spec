@@ -2,6 +2,7 @@
 # spec file for package ddcutil
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           ddcutil
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Utility to query and update monitor settings
 License:        GPL-2.0-or-later
@@ -31,6 +32,7 @@ BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  libi2c0-devel
 BuildRequires:  libtool
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libdrm)
@@ -55,9 +57,9 @@ applied.
 %package -n libddcutil5
 Summary:        Shared library to query and update monitor settings
 Group:          System/Libraries
+Suggests:       ddcutil-i2c-udev-rules
 # libddcutil.so.4 was wrongly packaged as libddcutil3 after the 1.x upgrade
 Conflicts:      libddcutil3 >= 1.0
-Suggests:       ddcutil-i2c-udev-rules
 
 %description -n libddcutil5
 Shared library version of ddcutil, exposing a C API.
@@ -90,22 +92,26 @@ DDC/CI bus of connected displays for regular (non-root) users
 who are currently logged in.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 ./autogen.sh --prefix=%{_prefix}
-%configure --enable-lib=yes --enable-drm=yes --enable-usb=yes \
-   --docdir="%{_defaultdocdir}/%{name}"
+%configure \
+	--enable-lib=yes \
+	--enable-drm=yes \
+	--enable-usb=yes \
+	--docdir="%{_defaultdocdir}/%{name}" \
+	--disable-build-timestamp \
+	%{nil}
 %make_build
-
-%check
-make %{?_smp_mflags} check
 
 %install
 %make_install
 
-%post   -n libddcutil5 -p /sbin/ldconfig
-%postun -n libddcutil5 -p /sbin/ldconfig
+%check
+%make_build check
+
+%ldconfig_scriptlets -n libddcutil5
 
 %files
 %doc AUTHORS NEWS.md README.md CHANGELOG.md
@@ -115,10 +121,11 @@ make %{?_smp_mflags} check
 %{_datadir}/%{name}/data/*rules
 %{_datadir}/%{name}/data/90-nvidia-i2c.conf
 %{_datadir}/%{name}/data/nvidia-i2c.conf
-%{_mandir}/man1/ddcutil.1*
+%{_mandir}/man1/ddcutil.1%{?ext_man}
 %{_bindir}/ddcutil
 
 %files -n ddcutil-i2c-udev-rules
+%license COPYING
 %{_udevrulesdir}/60-ddcutil-i2c.rules
 %{_modulesloaddir}*
 
@@ -127,6 +134,7 @@ make %{?_smp_mflags} check
 %{_libdir}/libddcutil.so.5*
 
 %files -n libddcutil-devel
+%license COPYING
 %{_includedir}/ddcutil_types.h
 %{_includedir}/ddcutil_c_api.h
 %{_includedir}/ddcutil_macros.h

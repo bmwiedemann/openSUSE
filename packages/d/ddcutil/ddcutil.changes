@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Tue Jul 15 07:02:40 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 2.2.1:
+  * Added
+    - Do not perform permission checks if running with effective
+      user root, i.e. when running with setuid bit set.
+      Partially addresses issue #509
+  * Changed
+    - Command environment: report if running as root, with sudo, or
+      setuid bit set
+    - Command environment --verbose: eliminate some unneeded edid
+      read tests
+    - Command setvcp: Emit more more useful messages when the cause
+      of a DDCRC_RETRIES error is itself a DDCRC_RETRIES error.
+    - Add option --disable-traced-function-stack The default
+      traced-function-stack option value (disabled) is set in
+      parms.h.
+  * Fixed
+    - Avoid segfault if invalid feature code specified
+    - Maximum wait time on function lock_display() not respected,
+      possible infinte loop. Addresses issue #511
+    - Fix --verify/--noverify parsing. Addresses issue #512.
+    - ddca_close_display(): do not respect quiesce, allowing the
+      display lock record to be released, avoiding possible
+      deadlock
+    - Fix the spelling of company name HON HAI PRECISION" (obtained
+      from UEFI), avoiding a lintian message. Addresses issue #500
+    - Fix errors reported by clang 19: unused variable, expression
+      which evaluates to 0 treated as null pointer.
+      Addresses issue #502.
+    - Command getvcp --terse: Eliminate irrelevant messages
+      regarding VCP version not set.
+    - Make test for missing DRM card-connector directories more
+      robust. Issue #507.
+    - DDC communication not detected with old (340 series) Nvidia
+      proprietary driver. Issue #507
+    - Function end_capture(): call close() in case of fflush()
+      error, ensuring that messages are always sent to the
+      terminal after message capture complete
+    - Functions ddca_find_display_ref() and ddca_get_display_ref()
+      were returning a pointer to the internal Display_Ref struct
+      rather than an external integer DDCA_Display_Ref, causing
+      segfault or return code DDCRC_INVALID_DISPLAY on a subsequent
+      api call such as ddca_open_display2(). Addresses issue #528.
+    - Several API functions were not recognized as arguments to
+      --trcfunc and --trcfrom. These included
+      ddca_find_display_ref(), ddca_get_display_ref(),
+      report_parsed_capabilities()
+    - Option --stats was not reporting data
+    - ddc_open_display(): return DDCRC_DISCONNECTED instead of an
+      assert failure if bus_info == NULL. Addresses KDE Powerdevil
+      issue #504861 (powerdevil crash from libddcutil, no restart
+      happens)
+    - Macro TRACED_ASSERT() calls __assert_fail() instead of
+      exit(1). Addresses Powerdevil issue #504861.
+    - Fix troff formatting in ddcutil man page. Pull request #531.
+  * Building
+    - configure option --enable-watch-displays/
+      --disable-watch-displays controls whether display watch
+      functionaliity is built. The default is
+      --enable-watch-displays. If built with
+      --disable-watch-displays, API functions related to display
+      change detection return DDCRC_UNIMPLEMENTED
+    - If configure option --disable-x11 is specified, the only
+      watch-mode is POLL. watch-mode XEVENT does not exist.
+  * Detailed information about the changes can be found in file
+    CHANGELOG.md in the source tree, and on pages ddcutil 2.2.1
+    Release Notes (https://www.ddcutil.com/release_notes_221/)
+    and Shared Library Changes for Release 2.2.1
+    (https://www.ddcutil.com/c_api_221/) on the web site.
+- Drop patch which is already included by upstream:
+  * ddcutil-2.2.0-verify-noverify.patch
+
+-------------------------------------------------------------------
+Sat Jul  5 06:38:20 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- reproducible builds: pass --disable-build-timestamp
+- improve handling of --verify/--noverify (boo#1245807)
+  add ddcutil-2.2.0-verify-noverify.patch from upstream
+
+-------------------------------------------------------------------
 Thu Apr  3 08:40:34 UTC 2025 - pallas wept <pallaswept@proton.me>
 
 - Update to 2.2.0:
