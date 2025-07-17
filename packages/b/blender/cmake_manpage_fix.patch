@@ -1,8 +1,8 @@
-Index: blender/source/creator/CMakeLists.txt
+Index: b/source/creator/CMakeLists.txt
 ===================================================================
---- blender.orig/source/creator/CMakeLists.txt
-+++ blender/source/creator/CMakeLists.txt
-@@ -2086,7 +2086,7 @@ detect_leaks=0\"\n\
+--- a/source/creator/CMakeLists.txt
++++ b/source/creator/CMakeLists.txt
+@@ -2081,7 +2081,7 @@ detect_leaks=0\"\n\
    execute_process(\n\
      COMMAND\n\
      $\{PYTHON_EXECUTABLE\} $\{MANPAGE_GEN\}\n\

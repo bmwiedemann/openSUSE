@@ -2,7 +2,7 @@
 # spec file for package blender
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2019-2023 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2019-2025 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,16 @@
 # use osc build --with=debugbuild to turn this on
 %bcond_with debugbuild
 
+%bcond_with strict_dependencies
+
 %bcond_with is_snapshot
+%bcond_without this_is_lts
 
 %bcond_with blender_ua
 
 %ifarch x86_64 aarch64
 %bcond_without embree
+%bcond_without manifold
 %bcond_without oidn
 %bcond_without oneapi_support
 %bcond_without oceansim
@@ -70,6 +74,8 @@
 %global py3pkg python311
 %endif
 
+%bcond_without system_audaspace
+
 %if %{without system_audaspace}
 %define numpy_include_path %(%{_bindir}/python%{py3ver} -c "import numpy; print(numpy.get_include())")
 %endif
@@ -84,7 +90,7 @@
 %global pkg_name blender
 
 Name:           blender
-Version:        4.4.3
+Version:        4.5.0
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -109,6 +115,8 @@ Source10:       SUSE-NVIDIA-OptiX-rendering.txt
 Source99:       series
 # PATCH-FIX-UPSTREAM https://projects.blender.org/blender/blender/pulls/115320
 Patch1:         cmake_manpage_fix.patch
+# https://projects.blender.org/blender/blender/issues/141943
+Patch2:         manifold-include-fix.patch
 BuildRequires:  %{py3pkg}-devel
 BuildRequires:  %{py3pkg}-numpy-devel
 BuildRequires:  %{py3pkg}-requests
@@ -129,7 +137,6 @@ BuildRequires:  ninja
 BuildRequires:  potrace-devel
 BuildRequires:  xz
 BuildRequires:  (cmake(OpenAL) or  pkgconfig(openal))
-BuildRequires:  (cmake(OpenImageIO) >= 2.5 with cmake(OpenImageIO) < 3)
 BuildRequires:  (cmake(SDL2) or pkgconfig(sdl2))
 BuildRequires:  (cmake(SndFile) or pkgconfig(sndfile))
 BuildRequires:  (pkgconfig(gmp) or gmp-devel)
@@ -138,6 +145,10 @@ BuildRequires:  cmake(Clang)
 BuildRequires:  cmake(LLVM)
 BuildRequires:  cmake(OpenColorIO) >= 2
 BuildRequires:  cmake(OpenEXR)
+BuildRequires:  cmake(OpenImageIO) >= 3
+%if %{with manifold}
+BuildRequires:  cmake(manifold)
+%endif
 %if %{with oidn}
 BuildRequires:  cmake(OpenImageDenoise)
 %endif
@@ -179,7 +190,7 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xxf86vm)
 %if %{with embree}
-BuildRequires:  cmake(embree)
+BuildRequires:  cmake(embree) >= 4
 %endif
 %if %{with openpgl}
 BuildRequires:  cmake(openpgl)
@@ -188,7 +199,9 @@ BuildRequires:  cmake(openpgl)
 # oneVPL only available on x86_64 atm
 BuildRequires:  pkgconfig(vpl)
 %endif
-BuildRequires:  openvdb-devel
+# TODO: should this maybe also be a runtime requires
+BuildRequires:  OpenShadingLanguage-common-headers
+BuildRequires:  openvdb-devel >= 11
 BuildRequires:  cmake(OSL) > 1.13
 BuildRequires:  cmake(OpenSubdiv)
 BuildRequires:  pkgconfig(blosc)
@@ -198,9 +211,11 @@ BuildRequires:  cmake(pxr)
 %if %{with pipewire}
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 1.1.0
 %endif
-BuildRequires:  pkgconfig(audaspace) >= 1.6
+%if %{with system_audaspace}
+BuildRequires:  pkgconfig(audaspace) >= 1.7.0
 Requires:       audaspace-deviceplugin
 Requires:       audaspace-fileplugin
+%endif
 %if %{with optix}
 BuildRequires:  nvidia-optix-headers
 %endif
@@ -217,8 +232,12 @@ Recommends:     %name-demo = %version
 Recommends:     %name-lang = %version
 Provides:       %{pkg_name}-%{_suffix} = %{version}
 %ifarch x86_64
-Obsoletes:      %{pkg_name}-cycles-devel = %{version}
+Obsoletes:      %{pkg_name}-cycles-devel <= %{version}
 Provides:       %{pkg_name}-cycles-devel = %{version}
+%endif
+%if %{with this_is_lts}
+Provides:       blender-lts = %{version}-%{release}
+Obsoletes:      blender-lts <= %{version}-%{release}
 %endif
 ExcludeArch:    %{ix86} %{arm}
 %if %{with blender_ua}
@@ -302,8 +321,8 @@ cmake ../ \
       -DWITH_MEM_VALGRIND:BOOL=ON \
       -DWITH_ASSERT_ABORT:BOOL=ON \
 %else
-      -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC -fopenmp %{?numpy_include_path:-I%{numpy_include_path}}" \
-      -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC -fopenmp %{?numpy_include_path:-I%{numpy_include_path}}" \
+      -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIC %{?numpy_include_path:-I%{numpy_include_path}}" \
+      -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIC %{?numpy_include_path:-I%{numpy_include_path}}" \
       -DCMAKE_EXE_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,--no-undefined -Wl,-z,now" \
       -DCMAKE_MODULE_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed" \
       -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,--no-undefined -Wl,-z,now" \
@@ -323,7 +342,11 @@ cmake ../ \
       -DWITH_MEM_JEMALLOC:BOOL=ON \
       -DWITH_ALEMBIC:BOOL=ON \
       -DWITH_AUDASPACE:BOOL=ON \
+%if %{with system_audaspace}
       -DWITH_SYSTEM_AUDASPACE:BOOL=ON \
+%else
+      -DWITH_SYSTEM_AUDASPACE:BOOL=OFF \
+%endif
       -DWITH_BUILDINFO:BOOL=OFF \
       -DWITH_BULLET:BOOL=ON \
       -DWITH_CODEC_FFMPEG:BOOL=ON \
@@ -357,6 +380,9 @@ cmake ../ \
       -DWITH_SYSTEM_EIGEN3:BOOL=ON \
       -DWITH_SYSTEM_LZO:BOOL=ON \
       -DWITH_SYSTEM_FREETYPE:BOOL=ON \
+%if %{with manifold}
+      -DWITH_MANIFOLD:BOOL=ON \
+%endif
       -DWITH_MOD_FLUID:BOOL=ON \
       -DWITH_FRIBIDI:BOOL=ON \
 %if %{with oceansim}
@@ -372,7 +398,6 @@ cmake ../ \
 %if %{with oidn}
       -DWITH_OPENIMAGEDENOISE:BOOL=ON \
 %endif
-      -DWITH_OPENMP:BOOL=ON \
       -DWITH_OPENSUBDIV:BOOL=ON \
       -DOPENSUBDIV_OSDGPU_LIBRARY:FILE=%{_libdir}/libosdGPU.so \
       -DWITH_OPENVDB:BOOL=ON \
@@ -402,7 +427,6 @@ cmake ../ \
       -DWITH_GHOST_XDND:BOOL=ON \
       -DWITH_GHOST_SDL:BOOL=OFF \
       -DWITH_X11_XINPUT:BOOL=ON \
-      -DWITH_X11_XF86VMODE:BOOL=ON \
       -DWITH_INPUT_IME:BOOL=ON \
 %if %{with openxr}
       -DWITH_XR_OPENXR:BOOL=ON \
@@ -419,6 +443,10 @@ cmake ../ \
       -DWITH_CYCLES_DEVICE_HIPRT:BOOL=ON \
       -DWITH_CYCLES_DEVICE_ONEAPI:BOOL=ON \
       -DWITH_CYCLES_ONEAPI_BINARIES:BOOL=ON \
+      -DWITH_MANIFOLD:BOOL=ON \
+      %if %{with strict_dependencies}
+      -DWITH_STRICT_BUILD_OPTIONS:BOOL=ON \
+      %endif
       %{nil}
 
 %cmake_build

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jul 16 16:20:42 UTC 2025 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Sync manifold-include-fix.patch with upstream fix
+
+-------------------------------------------------------------------
+Tue Jul 15 15:53:25 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.5.0
+  https://www.blender.org/download/releases/4-5/
+  https://developer.blender.org/docs/release_notes/4.5/
+- let the package provide if the current version is LTS
+
+-------------------------------------------------------------------
+Tue Jul 15 11:01:10 UTC 2025 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add manifold build conditional
+- Add manifold-include-fix.patch
+
+-------------------------------------------------------------------
+Mon Jul 14 01:07:47 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- make OSL shader compilation actually find our files
+
+-------------------------------------------------------------------
+Sun Jul 13 23:54:55 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable manifold support. New BuildRequires cmake(manifold)
+
+-------------------------------------------------------------------
+Sat Jun 28 01:48:35 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump to openvdb >= 11
+- force embree >= 4
+- remove unused cmake options
+  -DWITH_OPENMP:BOOL=ON
+  -DWITH_X11_XF86VMODE:BOOL=ON
+- disable system audaspace until
+  https://github.com/audaspace/audaspace/issues/31 is solved
+
+-------------------------------------------------------------------
 Tue May  6 08:10:52 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add condition for OpenImageDenoise BuildRequires
