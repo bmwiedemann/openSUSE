@@ -82,4 +82,12 @@
     (CVE-2025-48937). (forwarded request 1284617 from iznogood)</comment>
     <requestid>1284681</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c4cc85954c258667f7efd77a2df8fbd5</srcmd5>
+    <version>12.beta+14</version>
+    <time>1752765555</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1294052</requestid>
+  </revision>
 </revisionlist>

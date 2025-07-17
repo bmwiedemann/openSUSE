@@ -3,9 +3,8 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/World/fractal.git</param>
-    <!-- FIXME FIXME enable update of vendors on next change -->
-    <param name="revision">refs/tags/11.2</param>
-    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">d3ce661865377e59cd5de08515c116b6c99fd1ac</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <!--
     <param name="changesgenerate">enable</param>
     -->
@@ -19,7 +18,7 @@
   <service name="cargo_vendor" mode="manual">
     <param name="srcdir">fractal</param>
     <param name="compression">zst</param>
-    <param name="update">false</param>
+    <param name="update">true</param>
   </service>
 </services>
 

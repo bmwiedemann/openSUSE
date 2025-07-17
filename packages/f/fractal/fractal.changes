@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul 15 08:02:57 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 12.beta+14 (boo#1246463, CVE-2025-53549):
+  + The safety setting to hide media previews in rooms is now
+    synced between Matrix clients.
+  + Added another safety setting (which is also synced) to hide
+    avatars in invites.
+  + A room can be marked as unread via the context menu in the
+    sidebar.
+  + Changed the UX a little for tombstoned rooms. Instead of
+    showing a banner at the top of the history, it now replaces the
+    composer at the bottom of the history.
+  + You can now see if a section in the sidebar has any
+    notifications or activity when it is collapsed.
+  + As usual, this release includes other improvements and fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Jun 10 16:59:41 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 11.2 (boo#1244411):
