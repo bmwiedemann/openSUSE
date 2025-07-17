@@ -5,7 +5,7 @@
 		<param name="scm">git</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="versionrewrite-pattern">v(.*)</param>
-		<param name="revision">v0.4.4</param>
+		<param name="revision">v0.4.5</param>
 		<param name="submodule">enable</param>
 	</service>
 	<service name="tar" mode="buildtime" />
