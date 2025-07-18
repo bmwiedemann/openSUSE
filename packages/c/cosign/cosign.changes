@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Jul 18 11:54:31 UTC 2025 - meissner@suse.com
+
+- Update to version 2.5.3 (jsc#SLE-23879)
+  - Add signing-config create command (#4280)
+  - Allow multiple services to be specified for trusted-root create (#4285)
+  - force when copying the latest image to overwrite (#4298)
+  - Fix cert verification logic for trusted-root/SCTs (#4294)
+  - Fix lint error for types package (#4295)
+  - feat: Add OCI 1.1+ experimental support to tree (#4205)
+  - Add validity period end for trusted-root create (#4271)
+  - avoid double-loading trustedroot from file (#4264)
+- Update to 2.5.2:
+  - Do not load trusted root when CT env key is set
+  - docs: improve doc for --no-upload option (#4206)
+- Update to 2.5.1:
+  * Features
+    - Add Rekor v2 support for trusted-root create (#4242)
+    - Add baseUrl and Uri to trusted-root create command
+    - Upgrade to TUF v2 client with trusted root
+    - Don't verify SCT for a private PKI cert (#4225)
+    - Bump TSA library to relax EKU chain validation rules (#4219)
+  * Bug Fixes
+    - Bump sigstore-go to pick up log index=0 fix (#4162)
+    - remove unused recursive flag on attest command (#4187)
+  * Docs
+    - Fix indentation in verify-blob cmd examples (#4160)
+*  GO-2025-3660/ CVE-2025-46569: Fixed OPA server Data API HTTP path injection of Rego (bsc#1246725)
+
+-------------------------------------------------------------------
+Wed May 28 15:47:32 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- switch to go1.24, enable fips build
+
+-------------------------------------------------------------------
 Sun Apr 13 11:23:56 UTC 2025 - meissner@suse.com
 
 - Update to version 2.5.0:

@@ -17,7 +17,7 @@
 
 
 Name:           cosign
-Version:        2.5.0
+Version:        2.5.3
 Release:        0
 Summary:        Container Signing, Verification and Storage in an OCI registry
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         https://github.com/sigstore/cosign/archive/refs/tags/v%{version}
 Source1:        vendor.tar.zst
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
-BuildRequires:  golang(API) = 1.23
+BuildRequires:  golang(API) = 1.24
 
 %description
 Cosign aims to make signatures invisible infrastructure.
@@ -81,6 +81,7 @@ BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || dat
 CLI_PKG=sigs.k8s.io/release-utils/version
 CLI_LDFLAGS="-X ${CLI_PKG}.gitVersion=%{version} -X ${CLI_PKG}.gitCommit=$COMMIT_HASH -X ${CLI_PKG}.gitTreeState=release -X ${CLI_PKG}.buildDate=${BUILD_DATE}"
 
+export GOFIPS140=v1.0.0
 CGO_ENABLED=1 go build -mod=vendor -buildmode=pie -trimpath -ldflags "${CLI_LDFLAGS}" -o cosign ./cmd/cosign
 
 %check
