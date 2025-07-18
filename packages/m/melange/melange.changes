@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jul 18 05:48:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.29.7:
+  * Revert changes related to "avoid SSH lockups, use script for
+    tests" (#2096)
+  * build(deps): bump sigs.k8s.io/release-utils from 0.11.1 to
+    0.12.0 (#2095)
+
+-------------------------------------------------------------------
+Fri Jul 18 05:46:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.29.6:
+  * build(deps): bump mvdan.cc/sh/v3 from 3.11.0 to 3.12.0 (#2090)
+  * build(deps): bump github.com/moby/moby (#2091)
+  * build(deps): bump sigs.k8s.io/yaml from 1.4.0 to 1.5.0 (#2089)
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/stdout/stdouttrace (#2092)
+  * build(deps): bump github.com/docker/docker (#2088)
+  * build(deps): bump the gomod group across 1 directory with 6
+    updates (#2087)
+  * build(deps): bump the actions group across 1 directory with 2
+    updates (#2054)
+  * Upgrade apko to v0.29.4 (#2084)
+
+-------------------------------------------------------------------
 Thu Jul 17 05:56:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.29.5:
