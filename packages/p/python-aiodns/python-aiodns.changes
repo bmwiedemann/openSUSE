@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jul 12 17:28:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.0:
+  * Added explicit close method (#166)
+  * Fixed return type signature for CNAME and SOA records (#162)
+  * Improved Windows event loop documentation (#163)
+    loops on Windows
+  * Added fallback to `sock_state_cb` if `event_thread` creation
+    fails (#151)
+  * Implemented strict typing (#138)
+  * Updated dependencies
+  * Used c-ares event thread when available (#145)
+  * Dropped Python 3.8 support (#129)
+  * Updated CI infrastructure
+    upload/download artifact (#148)
+
+-------------------------------------------------------------------
 Tue May 13 07:28:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
