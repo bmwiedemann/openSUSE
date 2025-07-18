@@ -7,4 +7,21 @@
     <comment>New package suse-kabi-tools, ABI tools for the kernel build</comment>
     <requestid>1281378</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>49dfcdad3b157cd1bb44e4b444cabd81</srcmd5>
+    <version>0.5.0+git0.9ad91db</version>
+    <time>1752847221</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.5.0+git0.9ad91db:
+  * Improve man pages, enhance examples
+  * Sort added/removed symbols when reporting symtypes differences
+  * Ensure all output streams are correctly flushed
+  * Remove the deprecated script kabi.pl
+  * Make the --output option mandatory for ksymtypes consolidate
+  * Add the split command, the opposite of consolidate
+  * Downgrade duplicate exported symbols in symtypes data to warnings
+  * Improve the loading speed of split symtypes data
+  * Reject duplicate symvers records</comment>
+    <requestid>1294331</requestid>
+  </revision>
 </revisionlist>

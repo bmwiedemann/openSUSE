@@ -17,7 +17,7 @@
 
 
 Name:           suse-kabi-tools
-Version:        0.4.0+git0.6481acc
+Version:        0.5.0+git0.9ad91db
 Release:        0
 Summary:        A set of ABI tools for the Linux kernel
 Group:          System/Kernel
@@ -43,7 +43,6 @@ Linux kernel.
 install -D -m 0644 %{_builddir}/%{name}-%{version}/doc/ksymtypes.1 %{buildroot}%{_mandir}/man1/ksymtypes.1
 install -D -m 0644 %{_builddir}/%{name}-%{version}/doc/ksymvers.1 %{buildroot}%{_mandir}/man1/ksymvers.1
 install -D -m 0644 %{_builddir}/%{name}-%{version}/doc/suse-kabi-tools.5 %{buildroot}%{_mandir}/man5/suse-kabi-tools.5
-install -D -m 0755 kabi.pl %{buildroot}/%{_bindir}/suse-kabi
 
 %check
 %{cargo_test}
@@ -52,7 +51,6 @@ install -D -m 0755 kabi.pl %{buildroot}/%{_bindir}/suse-kabi
 %license COPYING
 %{_bindir}/ksymtypes
 %{_bindir}/ksymvers
-%{_bindir}/suse-kabi
 %{_mandir}/man1/ksymtypes.1%{?ext_man}
 %{_mandir}/man1/ksymvers.1%{?ext_man}
 %{_mandir}/man5/suse-kabi-tools.5%{?ext_man}
