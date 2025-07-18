@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-invoke
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-invoke%{psuffix}
 Version:        2.2.0
@@ -39,13 +39,13 @@ Patch0:         remove-icecream.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools > 56}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-PyYAML
 Requires:       python-fluidity-sm
 Requires:       python-lexicon
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module PyYAML}
@@ -78,6 +78,7 @@ rm -fr invoke/vendor/*
 
 %python_clone -a %{buildroot}%{_bindir}/inv
 %python_clone -a %{buildroot}%{_bindir}/invoke
+%python_group_libalternatives inv invoke
 %endif
 
 %if %{with test}
@@ -95,11 +96,8 @@ skiptests+=" or may_be_overridden_when_pty_True or uses_execve_for_pty_True or s
 %pytest -s -k "not ($skiptests)" tests
 %endif
 
-%post
-%{python_install_alternative inv invoke}
-
-%postun
-%python_uninstall_alternative inv
+%pre
+%python_libalternatives_reset_alternative inv
 
 %if !%{with test}
 %files %{python_files}
