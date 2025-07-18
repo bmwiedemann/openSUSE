@@ -2765,9 +2765,7 @@ unsorted:
   - cross-amdgcn-newlib15-devel 
   - cross-arm-binutils 
   - cross-arm-gcc13 
-  - cross-arm-gcc13-icecream-backend 
   - cross-arm-gcc14 
-  - cross-arm-gcc14-icecream-backend 
   - cross-arm-gcc15 
   - cross-arm-gcc7 
   - cross-arm-linux-glibc-devel 
@@ -2818,18 +2816,10 @@ unsorted:
   - cross-loongarch64-glibc-devel 
   - cross-loongarch64-linux-glibc-devel 
   - cross-m68k-binutils 
-  - cross-m68k-gcc13 
-  - cross-m68k-gcc13-icecream-backend 
-  - cross-m68k-gcc14 
-  - cross-m68k-gcc14-icecream-backend 
   - cross-m68k-gcc7 
   - cross-m68k-gcc7-icecream-backend 
   - cross-m68k-linux-glibc-devel 
   - cross-mips-binutils 
-  - cross-mips-gcc13 
-  - cross-mips-gcc13-icecream-backend 
-  - cross-mips-gcc14 
-  - cross-mips-gcc14-icecream-backend 
   - cross-mips-gcc7 
   - cross-mips-gcc7-icecream-backend 
   - cross-mips-linux-glibc-devel 
@@ -2844,9 +2834,7 @@ unsorted:
   - cross-ppc-binutils 
   - cross-ppc64-binutils 
   - cross-ppc64-gcc13 
-  - cross-ppc64-gcc13-icecream-backend 
   - cross-ppc64-gcc14 
-  - cross-ppc64-gcc14-icecream-backend 
   - cross-ppc64-gcc15 
   - cross-ppc64-gcc7 
   - cross-ppc64-gcc7-icecream-backend 
@@ -2906,20 +2894,12 @@ unsorted:
   - cross-s390x-glibc-devel 
   - cross-s390x-linux-glibc-devel 
   - cross-sparc-binutils 
-  - cross-sparc-gcc13 
-  - cross-sparc-gcc14 
   - cross-sparc-gcc7 
   - cross-sparc-linux-glibc-devel 
   - cross-sparc64-binutils 
-  - cross-sparc64-gcc13 
-  - cross-sparc64-gcc13-icecream-backend 
-  - cross-sparc64-gcc14 
-  - cross-sparc64-gcc14-icecream-backend 
   - cross-sparc64-gcc7 
   - cross-sparc64-gcc7-icecream-backend 
   - cross-sparc64-linux-glibc-devel 
-  - cross-sparcv9-gcc13-icecream-backend 
-  - cross-sparcv9-gcc14-icecream-backend 
   - cross-sparcv9-gcc7-icecream-backend 
   - cross-spu-binutils 
   - cross-x86_64-linux-glibc-devel 
@@ -18400,6 +18380,7 @@ unsorted:
   - mchange-commons-javadoc 
   - mcjoin 
   - mcomix 
+  - mcp-dap-server 
   - mcpp 
   - mcpp-devel 
   - mcqd 
@@ -19922,6 +19903,8 @@ unsorted:
   - ocaml-ounit-devel 
   - ocaml-parmap 
   - ocaml-parmap-devel 
+  - ocaml-patch 
+  - ocaml-patch-devel 
   - ocaml-pcre2 
   - ocaml-pcre2-devel 
   - ocaml-pp 
@@ -27138,7 +27121,6 @@ unsorted:
   - python311-sshpubkeys 
   - python311-sshtunnel 
   - python311-stack-data 
-  - python311-standard-nntplib 
   - python311-standard-xdrlib 
   - python311-standardwebhooks 
   - python311-starlette 
@@ -30921,7 +30903,6 @@ unsorted:
   - python312-sshpubkeys 
   - python312-sshtunnel 
   - python312-stack-data 
-  - python312-standard-nntplib 
   - python312-standard-xdrlib 
   - python312-standardwebhooks 
   - python312-starlette 
@@ -37163,6 +37144,7 @@ unsorted:
   - software-o-o-launcher 
   - solaar 
   - solaar-doc 
+  - solaar-lang 
   - solaar-udev 
   - solanum 
   - solarus 
