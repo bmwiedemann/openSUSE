@@ -38,7 +38,7 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       27
+%global updatever       28
 %global buildver        6
 %global openjdk_repo    jdk11u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
@@ -291,7 +291,6 @@ Provides:       java-fonts = %{version}
 # Required at least by fop
 Provides:       java-%{bits} = %{javaver}
 Provides:       java-%{javaver}-%{bits}
-Provides:       java-10-openjdk = %{version}-%{release}
 Provides:       java-openjdk-%{bits} = %{version}-%{release}
 Provides:       jre-%{bits} = %{javaver}
 Provides:       jre-%{javaver}-%{bits}
@@ -305,7 +304,10 @@ Provides:       jre1.6.x
 Provides:       jre1.7.x
 Provides:       jre1.8.x
 Provides:       jre1.9.x
+%if 0%{?suse_version} <= 1500
+Provides:       java-10-openjdk = %{version}-%{release}
 Obsoletes:      java-10-openjdk < %{version}-%{release}
+%endif
 %endif
 %if %{bootcycle}
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
@@ -365,7 +367,6 @@ Provides:       jre-headless = %{javaver}
 Provides:       jre-openjdk-headless = %{version}-%{release}
 # Standard JPackage extensions provides.
 Provides:       jaas = %{version}
-Provides:       java-10-openjdk-headless = %{version}-%{release}
 Provides:       java-sasl = %{version}
 Provides:       jce = %{version}
 Provides:       jdbc-stdext = 4.3
@@ -375,7 +376,10 @@ Provides:       jndi-dns = %{version}
 Provides:       jndi-ldap = %{version}
 Provides:       jndi-rmi = %{version}
 Provides:       jsse = %{version}
+%if 0%{?suse_version} <= 1500
+Provides:       java-10-openjdk-headless = %{version}-%{release}
 Obsoletes:      java-10-openjdk-headless < %{version}-%{release}
+%endif
 %endif
 
 %description headless
@@ -393,14 +397,16 @@ Requires(postun): update-alternatives
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage devel provides.
 Provides:       java-%{javaver}-devel = %{version}
-Provides:       java-10-openjdk-devel = %{version}-%{release}
 Provides:       java-devel = %{javaver}
 Provides:       java-devel-openjdk = %{version}
 Provides:       java-sdk = %{javaver}
 Provides:       java-sdk-%{javaver} = %{version}
 Provides:       java-sdk-%{javaver}-openjdk = %{version}
 Provides:       java-sdk-openjdk = %{version}
+%if 0%{?suse_version} <= 1500
+Provides:       java-10-openjdk-devel = %{version}-%{release}
 Obsoletes:      java-10-openjdk-devel < %{version}-%{release}
+%endif
 %endif
 
 %description devel
@@ -411,8 +417,10 @@ Summary:        JMods for OpenJDK %{featurever}
 Group:          Development/Languages/Java
 Requires:       %{name}-devel = %{version}-%{release}
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
+%if 0%{?suse_version} <= 1500
 Provides:       java-10-openjdk-jmods = %{version}-%{release}
 Obsoletes:      java-10-openjdk-jmods < %{version}-%{release}
+%endif
 %endif
 
 %description jmods
@@ -423,8 +431,10 @@ Summary:        OpenJDK %{featurever} Demos
 Group:          Development/Languages/Java
 Requires:       %{name} = %{version}-%{release}
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
+%if 0%{?suse_version} <= 1500
 Provides:       java-10-openjdk-demo = %{version}-%{release}
 Obsoletes:      java-10-openjdk-demo < %{version}-%{release}
+%endif
 %endif
 
 %description demo
@@ -435,8 +445,10 @@ Summary:        OpenJDK %{featurever} Source Bundle
 Group:          Development/Languages/Java
 Requires:       %{name} = %{version}-%{release}
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
+%if 0%{?suse_version} <= 1500
 Provides:       java-10-openjdk-src = %{version}-%{release}
 Obsoletes:      java-10-openjdk-src < %{version}-%{release}
+%endif
 %endif
 
 %description src
@@ -454,9 +466,11 @@ BuildArch:      noarch
 %if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage javadoc provides.
 Provides:       java-%{javaver}-javadoc = %{version}-%{release}
-Provides:       java-10-openjdk-javadoc = %{version}-%{release}
 Provides:       java-javadoc = %{version}-%{release}
+%if 0%{?suse_version} <= 1500
+Provides:       java-10-openjdk-javadoc = %{version}-%{release}
 Obsoletes:      java-10-openjdk-javadoc < %{version}-%{release}
+%endif
 %endif
 
 %description javadoc

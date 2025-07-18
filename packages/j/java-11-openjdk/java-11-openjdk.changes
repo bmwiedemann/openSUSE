@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Fri Jul 18 04:43:44 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-11.0.28+6 (July 2025 CPU)
+  * CVEs
+    + CVE-2025-30749, bsc#1246595
+    + CVE-2025-30754, bsc#1246598
+    + CVE-2025-30761, bsc#1246580
+    + CVE-2025-50059, bsc#1246575
+    + CVE-2025-50106, bsc#1246584
+  * Changes
+    + JDK-8026976: ECParameters, Point does not match field size
+    + JDK-8211400: nsk.share.gc.Memory::getArrayLength returns wrong
+      value
+    + JDK-8231058: VerifyOops crashes with assert(_offset >= 0)
+      failed: offset for non comment?
+    + JDK-8232625: HttpClient redirect policy should be more
+      conservative
+    + JDK-8258483: [TESTBUG] gtest
+      CollectorPolicy.young_scaled_initial_ergo_vm fails if heap is
+      too small
+    + JDK-8293345: SunPKCS11 provider checks on PKCS11 Mechanism are
+      problematic
+    + JDK-8296631: NSS tests failing on OL9 linux-aarch64 hosts
+    + JDK-8301753: AppendFile/WriteFile has differences between make
+      3.81 and 4+
+    + JDK-8303770: Remove Baltimore root certificate expiring in May
+      2025
+    + JDK-8315380: AsyncGetCallTrace crash in frame::safe_for_sender
+    + JDK-8327476: Upgrade JLine to 3.26.1
+    + JDK-8328957: Update PKCS11Test.java to not use hardcoded path
+    + JDK-8331959: Update PKCS#11 Cryptographic Token Interface to
+      v3.1
+    + JDK-8339300: CollectorPolicy.young_scaled_initial_ergo_vm
+      gtest fails on ppc64 based platforms
+    + JDK-8339728: [Accessibility,Windows,JAWS] Bug in the
+      getKeyChar method of the AccessBridge class
+    + JDK-8345133: Test sun/security/tools/jarsigner/
+      /TsacertOptionTest.java failed: Warning found in stdout
+    + JDK-8345625: Better HTTP connections
+    + JDK-8346887: DrawFocusRect() may cause an assertion failure
+    + JDK-8347629: Test FailOverDirectExecutionControlTest.java
+      fails with -Xcomp
+    + JDK-8348110: Update LCMS to 2.17
+    + JDK-8348596: Update FreeType to 2.13.3
+    + JDK-8348598: Update Libpng to 1.6.47
+    + JDK-8348989: Better Glyph drawing
+    + JDK-8349111: Enhance Swing supports
+    + JDK-8349594: Enhance TLS protocol support
+    + JDK-8350469: [11u] Test AbsPathsInImage.java fails
+      - JDK-8239429 public clone
+    + JDK-8350498: Remove two Camerfirma root CA certificates
+    + JDK-8350991: Improve HTTP client header handling
+    + JDK-8351099: Bump update version of OpenJDK: 11.0.28
+    + JDK-8351422: Improve scripting supports
+    + JDK-8352302: Test sun/security/tools/jarsigner/
+      /TimestampCheck.java is failing
+    + JDK-8352716: (tz) Update Timezone Data to 2025b
+    + JDK-8356096: ISO 4217 Amendment 179 Update
+    + JDK-8356571: Re-enable -Wtype-limits for GCC in LCMS
+    + JDK-8359170: Add 2 TLS and 2 CS Sectigo roots
+    + JDK-8360147: Better Glyph drawing redux
+
+-------------------------------------------------------------------
 Thu Apr 24 11:19:50 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to
