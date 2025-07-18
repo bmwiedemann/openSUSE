@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Jul 14 14:24:27 UTC 2025 - Kirk Allan <kallan@suse.com>
+
+- Updates in VMDP-WIN-2.5.5: https://github.com/SUSE/vmdp/releases/tag/v2.5.5
+
+- Renamed vmdp-250424 to VMDP-WiN-2.5.5.
+
+- All drivers for Windows Server 2025 have been signed and are now supported.
+
+- The same driver binary is used for both Windows Server 2022 and Windows
+  Server 2025.  The drivers contain signatures for both versions of
+  Windows Server.
+
+- Updated driver INF files to follow driver isolation policies.
+
+- Drivers for Windows Server 2008 R2 have been removed from this package.
+
+- Use a common style help box for setup, uninstall, and pvctrlw.
+
+- Media layout changes:
+  - Renamed directories to better identify drivers to Windows versions:
+    - win7-8r2 -> Server2008r2-Win7
+    - win8-2012 -> Server2012-Win8
+    - win8.1-2012r2 -> Server2012r2-Win8.1
+    - win10-server16-19 -> Server2016-19-Win10
+    - win10-11-server22 -> Server2022-25-Win11.
+  - Removed the <win_os>\<arch>\pvvx directory and moved its contents to the
+    <win_os>\<arch> directory.
+  - In the root directory created a utilities directory.  Moved the x86,
+    x86ex, x64, and x64ex directories into the utilities directory.
+
+- pvvxnet.sys:
+  - NDIS Poll functionality is fully supported.
+  - Split event channels in now on by default for Xen environments.
+
+- virtio_rng.sys:
+   Fixed bsc#1227857 virtio_rng to correctly initialize the virtio queue
+   to utilize MSI interrupts.
+
+- setup.exe:
+  - Updated setup to recognize the new media directory layout.
+  - setup now installs qemu-ga by default.  If the /qemu-ga parameter is
+    given, only install qemu-ga along with the virtio_serial driver if needed.
+  - setup renames the \program files\vmdp\pvvx directory
+    to \program files\vmdp\drivers.
+  - Flush the pv log file after each write.  Helps to follow setup's progress.
+  - Update setup to be able to install individual drivers.
+  - Fixed possible buffer overflow error when writing out the virtio_rng
+    registry entries.
+
+- uninstall.exe
+  - When uninstalling virtiofs_svc, stop the service first so that the file
+    can be deleted without a reboot.  If the file is successfully removed,
+    no need to prompt for a reboot.
+  - Remove the virtio_rng registry entries when uninstalling virtio_rng.
+
+- qemu-ga:
+  - Update to latest code.
+
+- virtiofs_svc:
+  - Update to latest code.
+
+-------------------------------------------------------------------
 Tue Jul  2 16:22:25 UTC 2024 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 2.5.4.3: https://github.com/SUSE/vmdp/releases/tag/v2.5.4.3
