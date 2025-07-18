@@ -1144,4 +1144,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1277119</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>05deb1f13e758274ac630f67cef2332b</srcmd5>
+    <version>1.1.14</version>
+    <time>1752847220</time>
+    <user>anag_factory</user>
+    <comment>- Add solaar-lang package
+- Build package with pyproject macros
+</comment>
+    <requestid>1294315</requestid>
+  </revision>
 </revisionlist>

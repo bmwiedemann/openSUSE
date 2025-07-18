@@ -39,14 +39,16 @@ BuildRequires:  %{python_module evdev}
 BuildRequires:  %{python_module gobject-Gdk}
 BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module hid-parser}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-xlib}
 BuildRequires:  %{python_module pyudev}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 75}
 BuildRequires:  %{python_module typing_extensions}
 #
+BuildRequires:  gettext-runtime
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
@@ -68,6 +70,7 @@ Requires:       typelib(AyatanaAppIndicator3)
 Requires:       typelib(Gtk) >= 3.0
 #
 Recommends:     python3-python-xlib
+Recommends:     %{name}-lang = %{version}
 #
 Obsoletes:      solaar-cli < %{version}
 Provides:       solaar-cli = %{version}
@@ -103,6 +106,8 @@ Conflicts:      solaar-cli < %{version}
 %description    udev
 Rules that users are able to access Logitech Unifying Receiver.
 
+%lang_package
+
 %prep
 %autosetup -p1 -n Solaar-%{version}
 
@@ -111,13 +116,14 @@ sed -i '/yield autostart_path/d' setup.py
 
 %build
 sed -i 's#%{_bindir}/env python##' lib/solaar/gtk.py lib/solaar/tasks.py
-%python_build
+
+# Build languages first!
+./tools/po-compile.sh
+
+%pyproject_wheel
 
 %install
-%python_install
-
-%fdupes %{buildroot}%{python_sitelib}
-%fdupes -s %{buildroot}%{_datadir}
+%pyproject_install
 
 install -d 0755 %{buildroot}%{_udevrulesdir}
 install -m 0644 rules.d/42-logitech-unify-permissions.rules %{buildroot}%{_udevrulesdir}/42-logitech-unify-permissions.rules
@@ -129,6 +135,11 @@ rm -rf %{buildroot}%{python3_sitelib}/hid_parser
 # We do not need generate keysymdef.py
 rm -f %{buildroot}%{python3_sitelib}/keysyms/__pycache__/generate*.pyc
 rm -f %{buildroot}%{python3_sitelib}/keysyms/generate.py
+
+%fdupes %{buildroot}%{python_sitelib}
+%fdupes -s %{buildroot}%{_datadir}
+
+%find_lang %{name}
 
 %check
 %pytest
@@ -158,5 +169,7 @@ rm -f %{buildroot}%{python3_sitelib}/keysyms/generate.py
 
 %files doc
 %doc docs/*
+
+%files lang -f %{name}.lang
 
 %changelog
