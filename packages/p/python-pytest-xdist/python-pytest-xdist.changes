@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jul 17 19:35:11 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.0:
+  * #1083: Add --no-loadscope-reorder and --loadscope-reorder
+    option to control whether to automatically reorder tests in
+    loadscope for tests where relative ordering matters. This
+    only applies when using loadscope. For example, [test_file_1,
+    test_file_2, ..., test_file_n] are given as input test files,
+    if --no-loadscope-reorder is used, for either worker, the
+    test_file_a will be executed before test_file_b only if a <
+    b. The default behavior is to reorder the tests to maximize
+    the number of tests that can be executed in parallel.
+  * #1142: Added support for Python 3.13.
+  * #1144: The internal steal command is now atomic - it
+    unschedules either all requested tests or none. This is a
+    prerequisite for group/scope support in the worksteal
+    scheduler, so test groups won't be broken up incorrectly.
+  * #1170: Add the --px arg to create proxy gateways. Proxy
+    gateways are passed to additional gateways using the via
+    keyword. They can serve as a way to run multiple workers on
+    remote machines.
+  * #1200: Now multiple xdist_group markers are considered when
+    assigning tests to groups (order does not matter).
+    Previously, only the last marker would assign a test to a
+    group, but now if a test has multiple xdist_group marks
+    applied (for example via parametrization or via fixtures),
+    they are merged to make a new group.
+  * #1162: Dropped support for EOL Python 3.8.
+  * #1092: Update an error message to better indicate where users
+    should go for more information.
+  * #1190: Switched to using a SPDX license identifier introduced
+    in PEP 639.
+
+-------------------------------------------------------------------
 Thu Jun  6 09:35:35 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - update to 3.6.1
