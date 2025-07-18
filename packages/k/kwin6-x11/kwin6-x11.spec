@@ -29,7 +29,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwin6-x11
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -41,7 +41,6 @@ Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  libcap-progs
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel >= %{qt6_version}
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
@@ -92,7 +91,6 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libcanberra)
-BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libdisplay-info) >= 0.2.0
 BuildRequires:  pkgconfig(libdrm) >= 2.4.116
 BuildRequires:  pkgconfig(libsystemd)
