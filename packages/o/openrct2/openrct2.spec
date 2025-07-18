@@ -18,21 +18,21 @@
 # disable lto build - https://github.com/OpenRCT2/OpenRCT2/issues/23180
 %define _lto_cflags %{nil}
 
-# std=c++20 now required, use GCC 12 for Leap
-%if 0%{?suse_version} < 1650
-%define gcc_ver 12
+# std=c++20 now required, use GCC 13 for Leap 15.x
+%if 0%{?suse_version} < 1600
+%define gcc_ver 13
 %endif
 
 %define lib_suffix %{nil}
 %ifarch x86_64
-  %define lib_suffix 64
+%define lib_suffix 64
 %endif
 %define title_version 0.4.14
 %define title_version_url %{title_version}
-%define objects_version 1.6.1
+%define objects_version 1.7.1
 %define openmusic_version 1.6
 %define opensound_version 1.0.5
-%define openrct2_version 0.4.23
+%define openrct2_version 0.4.24
 
 Name:           openrct2
 Version:        %{openrct2_version}
