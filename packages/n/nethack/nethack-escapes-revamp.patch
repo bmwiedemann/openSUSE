@@ -12,10 +12,10 @@ for trailing \X or \O).
  src/options.c | 82 ++++++++++++++++++++++++++++++---------------------
  1 file changed, 48 insertions(+), 34 deletions(-)
 
-Index: src/options.c
+Index: nethack-3.4.3/src/options.c
 ===================================================================
---- src/options.c.orig
-+++ src/options.c
+--- nethack-3.4.3.orig/src/options.c
++++ nethack-3.4.3/src/options.c
 @@ -633,32 +633,45 @@ escapes(cp, tp)
  const char	*cp;
  char *tp;

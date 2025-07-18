@@ -1,7 +1,7 @@
-Index: include/system.h
+Index: nethack-3.4.3/include/system.h
 ===================================================================
---- include/system.h.orig
-+++ include/system.h
+--- nethack-3.4.3.orig/include/system.h
++++ nethack-3.4.3/include/system.h
 @@ -100,7 +100,9 @@ E void srand48();
  #if !defined(BSD) || defined(ultrix)
  			/* real BSD wants all these to return int */

@@ -1,7 +1,7 @@
-Index: src/cmd.c
+Index: nethack-3.4.3/src/cmd.c
 ===================================================================
---- src/cmd.c.orig
-+++ src/cmd.c
+--- nethack-3.4.3.orig/src/cmd.c
++++ nethack-3.4.3/src/cmd.c
 @@ -2443,6 +2443,16 @@ readchar()
  	    readchar_queue = click_to_cmd(x, y, mod);
  	    sym = *readchar_queue++;

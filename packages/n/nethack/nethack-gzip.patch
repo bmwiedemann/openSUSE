@@ -1,7 +1,7 @@
-Index: include/config.h
+Index: nethack-3.4.3/include/config.h
 ===================================================================
---- include/config.h.orig
-+++ include/config.h
+--- nethack-3.4.3.orig/include/config.h
++++ nethack-3.4.3/include/config.h
 @@ -169,11 +169,11 @@
  
  #ifdef UNIX

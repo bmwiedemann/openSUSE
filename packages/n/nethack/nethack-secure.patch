@@ -1,7 +1,7 @@
-Index: util/recover.c
+Index: nethack-3.4.3/util/recover.c
 ===================================================================
---- util/recover.c.orig
-+++ util/recover.c
+--- nethack-3.4.3.orig/util/recover.c
++++ nethack-3.4.3/util/recover.c
 @@ -16,6 +16,12 @@
  #include "win32api.h"
  #endif

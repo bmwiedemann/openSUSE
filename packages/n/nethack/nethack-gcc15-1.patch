@@ -1,7 +1,7 @@
-Index: include/system.h
+Index: nethack-3.4.3/include/system.h
 ===================================================================
---- include/system.h.orig
-+++ include/system.h
+--- nethack-3.4.3.orig/include/system.h
++++ nethack-3.4.3/include/system.h
 @@ -57,7 +57,11 @@ typedef long	off_t;
  #endif
  #ifndef SIG_RET_TYPE
@@ -54,10 +54,10 @@ Index: include/system.h
  # endif
  E int FDECL(tgetnum, (const char *));
  E int FDECL(tgetflag, (const char *));
-Index: sys/unix/Makefile.src
+Index: nethack-3.4.3/sys/unix/Makefile.src
 ===================================================================
---- sys/unix/Makefile.src.orig
-+++ sys/unix/Makefile.src
+--- nethack-3.4.3.orig/sys/unix/Makefile.src
++++ nethack-3.4.3/sys/unix/Makefile.src
 @@ -124,7 +124,7 @@ SYSOBJ = ioctl.o unixmain.o unixtty.o un
  
  # flags for Linux

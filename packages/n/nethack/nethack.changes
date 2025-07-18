@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 16 08:17:14 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Apply patches with %autosetup. Rpm's %autosetup applies all listed
+  patches automatically and avoids manual patch specification via
+  %patch.
+
+- Patches taken for git commits require -p1 to apply cleanly. Change
+  the formatting of several existing patches to contain the nethack
+  build directory, so that all patches apply with -p1. Enables
+  %autosetup. No functional changes to existing patch.
+
+-------------------------------------------------------------------
 Tue Jul  8 14:08:40 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
 
 - Add nethack-WINCHAIN-a-framework-allowing-multiple-processors-be.patch:

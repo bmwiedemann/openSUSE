@@ -1,7 +1,7 @@
-Index: include/unixconf.h
+Index: nethack-3.4.3/include/unixconf.h
 ===================================================================
---- include/unixconf.h.orig
-+++ include/unixconf.h
+--- nethack-3.4.3.orig/include/unixconf.h
++++ nethack-3.4.3/include/unixconf.h
 @@ -32,12 +32,12 @@
  
  
@@ -54,10 +54,10 @@ Index: include/unixconf.h
  # endif
  #endif
  
-Index: sys/unix/Makefile.top
+Index: nethack-3.4.3/sys/unix/Makefile.top
 ===================================================================
---- sys/unix/Makefile.top.orig
-+++ sys/unix/Makefile.top
+--- nethack-3.4.3.orig/sys/unix/Makefile.top
++++ nethack-3.4.3/sys/unix/Makefile.top
 @@ -35,8 +35,8 @@ DIRPERM  = 0755
  # therefore there should not be anything in GAMEDIR that you want to keep
  # (if there is, you'll have to do the installation by hand or modify the
@@ -69,10 +69,10 @@ Index: sys/unix/Makefile.top
  SHELLDIR = $(PREFIX)/games
  
  # per discussion in Install.X11 and Install.Qt
-Index: include/config.h
+Index: nethack-3.4.3/include/config.h
 ===================================================================
---- include/config.h.orig
-+++ include/config.h
+--- nethack-3.4.3.orig/include/config.h
++++ nethack-3.4.3/include/config.h
 @@ -143,10 +143,10 @@
  
  #ifndef WIZARD		/* allow for compile-time or Makefile changes */
@@ -122,10 +122,10 @@ Index: include/config.h
  
  /* End of Section 5 */
  
-Index: sys/unix/Makefile.doc
+Index: nethack-3.4.3/sys/unix/Makefile.doc
 ===================================================================
---- sys/unix/Makefile.doc.orig
-+++ sys/unix/Makefile.doc
+--- nethack-3.4.3.orig/sys/unix/Makefile.doc
++++ nethack-3.4.3/sys/unix/Makefile.doc
 @@ -4,8 +4,8 @@
  # for Atari
  # SHELL=E:/GEMINI2/MUPFEL.TTP
@@ -137,10 +137,10 @@ Index: sys/unix/Makefile.doc
  #GUIDEBOOK = Guidebook.dvi	# TeX device-independent file
  
  # Some versions of col need -x to keep them from converting spaces to tabs;
-Index: sys/unix/Makefile.src
+Index: nethack-3.4.3/sys/unix/Makefile.src
 ===================================================================
---- sys/unix/Makefile.src.orig
-+++ sys/unix/Makefile.src
+--- nethack-3.4.3.orig/sys/unix/Makefile.src
++++ nethack-3.4.3/sys/unix/Makefile.src
 @@ -126,6 +126,8 @@ SYSOBJ = ioctl.o unixmain.o unixtty.o un
  #   compile normally
  # CFLAGS = -O2 -fomit-frame-pointer -I../include -Wno-old-style-definition -Wno-unused-result -Wno-format-overflow
@@ -172,10 +172,10 @@ Index: sys/unix/Makefile.src
  #
  # libraries for X11
  # If USE_XPM is defined in config.h, you will also need -lXpm here.
-Index: sys/unix/nethack.sh
+Index: nethack-3.4.3/sys/unix/nethack.sh
 ===================================================================
---- sys/unix/nethack.sh.orig
-+++ sys/unix/nethack.sh
+--- nethack-3.4.3.orig/sys/unix/nethack.sh
++++ nethack-3.4.3/sys/unix/nethack.sh
 @@ -1,9 +1,9 @@
  #!/bin/sh
  #	SCCS Id: @(#)nethack.sh	3.4	1990/02/26
@@ -188,10 +188,10 @@ Index: sys/unix/nethack.sh
  MAXNROFPLAYERS=4
  
  # Since Nethack.ad is installed in HACKDIR, add it to XUSERFILESEARCHPATH
-Index: doc/nethack.6
+Index: nethack-3.4.3/doc/nethack.6
 ===================================================================
---- doc/nethack.6.orig
-+++ doc/nethack.6
+--- nethack-3.4.3.orig/doc/nethack.6
++++ nethack-3.4.3/doc/nethack.6
 @@ -197,7 +197,7 @@ option, which must be the first argument
  supplies a directory which is to serve as the playground.
  It overrides the value from NETHACKDIR, HACKDIR,

@@ -132,4 +132,21 @@
   room for backports in the range below.</comment>
     <requestid>1291315</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>09d143f1db4e44056e3a9c1d968c8f30</srcmd5>
+    <version>3.4.3</version>
+    <time>1752847112</time>
+    <user>anag_factory</user>
+    <comment>Switch to %autosetup:
+
+- Apply patches with %autosetup. Rpm's %autosetup applies all listed
+  patches automatically and avoids manual patch specification via
+  %patch.
+- Patches taken for git commits require -p1 to apply cleanly. Change
+  the formatting of several existing patches to contain the nethack
+  build directory, so that all patches apply with -p1. Enables
+  %autosetup. No functional changes to existing patch.
+</comment>
+    <requestid>1294012</requestid>
+  </revision>
 </revisionlist>

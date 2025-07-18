@@ -66,18 +66,7 @@ Persist against various monsters and defeat the Wizard of Yendor.
 This package contains the text interface.
 
 %prep
-%setup
-%patch -P0
-%patch -P1 -p1
-%patch -P2 -p1
-%patch -P3 -p1
-%patch -P4
-%patch -P50
-%patch -P51
-%patch -P52
-%patch -P53
-%patch -P54
-%patch -P55 -p1
+%autosetup -p1
 
 %build
 # copy Makefiles and add optimization flags
