@@ -24,7 +24,7 @@
 %define rname kscreen
 %bcond_without released
 Name:           kscreen6
-Version:        6.4.2
+Version:        6.4.3
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -48,6 +48,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  qt6-waylandclient-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6GlobalAccel) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
