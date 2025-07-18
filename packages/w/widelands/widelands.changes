@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 12 16:55:26 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Use pkgconfig(glew) also for Leap 16.0
+
+-------------------------------------------------------------------
+Wed Jul  9 15:51:12 UTC 2025 - Martin Jambor <mjambor@suse.com>
+
+- Add include_missing_cstdint.patch and compile_c_only_libs_with_c11_std.patch
+  to fix building with GCC 15.
+
+-------------------------------------------------------------------
 Tue Apr 29 19:36:34 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Switch BuildRequires from 'pkgconfig(glew)' to
@@ -288,4 +299,3 @@ Thu Jun  5 23:32:19 CEST 2008 - claes.backstrom@fsfe.org
 Fri Apr 11 23:02:49 CEST 2008 - claes.backstrom@fsfe.org
 
 - Initial package (build11-1)
-

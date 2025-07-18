@@ -20,11 +20,11 @@
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
 %global force_gcc_version 13
 %endif
-%if 0%{?suse_version} < 1600
-# Build against glew for Leap 15.X...
+# Build against glew for Leap 15.X, Leap 16.X
+%if 0%{?suse_version} < 1650
 %bcond_without glew
 %else
-# ...but disable glew and build with glbinding for Tumbleweed, Leap 16.0 and newer
+# ...but disable glew and build with glbinding for Tumbleweed
 %bcond_with glew
 %endif
 Name:           widelands
@@ -34,6 +34,10 @@ Summary:        Realtime strategy game involving map control
 License:        GPL-2.0-or-later
 URL:            https://www.widelands.org
 Source0:        https://codeberg.org/wl/widelands/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM compile_c_only_libs_with_c11_std.patch https://github.com/widelands/widelands/issues/6697
+Patch1:         compile_c_only_libs_with_c11_std.patch
+# PATCH-FIX-UPSTREAM include_missing_cstdint.patch https://github.com/widelands/widelands/commit/a6c5a51a15e08894b4260c90a7c08615c495465a
+Patch2:         include_missing_cstdint.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  doxygen
 BuildRequires:  fdupes
