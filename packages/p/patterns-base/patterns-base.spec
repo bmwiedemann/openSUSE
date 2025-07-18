@@ -718,6 +718,30 @@ This pattern holds files required for booting the system
 
 ################################################################################
 
+%if !0%{?is_opensuse} && 0%{?suse_version} >= 1600
+%package kernel_livepatching
+%pattern_basetechnologies
+Summary:        Kernel Livepatching
+Group:          Metapackages
+Provides:       pattern() = kernel_livepatching
+%ifarch x86_64 ppc64le s390x
+Requires:       kernel-livepatch-tools
+Requires:       (kernel-default-livepatch if kernel-default)
+%endif
+%ifarch x86_64
+Requires:       (kernel-rt-livepatch if kernel-rt)
+%endif
+
+%description kernel_livepatching
+This pattern holds files required for kernel livepatching
+
+%files kernel_livepatching
+%dir %{_docdir}/patterns
+%{_docdir}/patterns/kernel_livepatching.txt
+%endif
+
+################################################################################
+
 %package selinux
 %pattern_basetechnologies
 Summary:        SELinux Support
@@ -1188,6 +1212,9 @@ done
 for i in basesystem bootloader documentation fips selinux kdump \
 %if !(0%{?is_opensuse} && 0%{?suse_version} == 1600) || 0%{?is_leapmicro}
 transactional_base \
+%endif
+%if !0%{?is_opensuse} && 0%{?suse_version} >= 1600
+kernel_livepatching \
 %endif
 %if 0%{?is_opensuse}
 console update_test basic_desktop \

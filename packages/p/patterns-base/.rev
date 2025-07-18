@@ -1134,4 +1134,13 @@
     <comment></comment>
     <requestid>1293608</requestid>
   </revision>
+  <revision rev="132" vrev="16">
+    <srcmd5>7b95d0bb2bb89209ecdd9d5058609d87</srcmd5>
+    <version>20241218</version>
+    <time>1752847071</time>
+    <user>anag_factory</user>
+    <comment>- Add kernel_livepatching pattern for SLES16 (bsc#1246606).
+</comment>
+    <requestid>1294287</requestid>
+  </revision>
 </revisionlist>

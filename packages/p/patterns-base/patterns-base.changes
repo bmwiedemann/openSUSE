@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 17 09:14:25 UTC 2025 - Petr Mladek <pmladek@suse.com>
+
+- Add kernel_livepatching pattern for SLES16 (bsc#1246606).
+
+-------------------------------------------------------------------
 Wed Jul 16 06:09:01 UTC 2025 - Max Lin <mlin@suse.com>
 
 - Do not build transactional_base pattern for Leap 16
