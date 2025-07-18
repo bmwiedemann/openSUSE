@@ -25,14 +25,9 @@ URL:            https://github.com/trezor/cython-hidapi
 Source:         https://files.pythonhosted.org/packages/source/h/hidapi/hidapi-%{version}.tar.gz
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module Cython0}
-# SECTION test requirements
-BuildRequires:  %{python_module setuptools >= 19.0}
-# /SECTION
 BuildRequires:  fdupes
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  libgudev-1_0-devel

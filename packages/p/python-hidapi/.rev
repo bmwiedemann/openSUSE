@@ -7,4 +7,12 @@
     <comment>new package python-hidapi, required by python-pynitrokey &gt;= 0.7.x</comment>
     <requestid>1248469</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>07988da5d95c0c90ad40c4173298c267</srcmd5>
+    <version>0.14.0.post2</version>
+    <time>1752847223</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1294344</requestid>
+  </revision>
 </revisionlist>

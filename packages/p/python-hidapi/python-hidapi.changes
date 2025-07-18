@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 18 08:40:24 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- drop BuildRequires on flit-core and poetry, build-backend is setuptools
+- drop duplicate BuildRequires
+
+-------------------------------------------------------------------
 Tue Sep 17 03:32:59 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.14.0.post2 
