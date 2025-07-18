@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 15 12:07:33 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Add upstream gcc15-includes.patch to fix stricter includes from
+  GCC 15.
+
+-------------------------------------------------------------------
 Thu Dec 26 00:13:55 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 3.15.4.

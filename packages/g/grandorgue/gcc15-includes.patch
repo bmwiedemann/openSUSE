@@ -1,0 +1,35 @@
+From 254c03f02eded193895cc8559a7a0526f2563456 Mon Sep 17 00:00:00 2001
+From: Oleg Samarin <osamarin68@gmail.com>
+Date: Thu, 1 May 2025 23:17:33 +0300
+Subject: [PATCH] Fixed compilation on a recent gcc
+
+---
+ src/core/GOWave.h | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/src/core/GOWave.h b/src/core/GOWave.h
+index cb050d6de..201b2c760 100644
+--- a/src/core/GOWave.h
++++ b/src/core/GOWave.h
+@@ -1,6 +1,6 @@
+ /*
+  * Copyright 2006 Milan Digital Audio LLC
+- * Copyright 2009-2023 GrandOrgue contributors (see AUTHORS)
++ * Copyright 2009-2025 GrandOrgue contributors (see AUTHORS)
+  * License GPL-2.0 or later
+  * (https://www.gnu.org/licenses/old-licenses/gpl-2.0.html).
+  */
+@@ -8,10 +8,11 @@
+ #ifndef GOWAVE_H
+ #define GOWAVE_H
+ 
+-#include <wx/string.h>
+-
++#include <cstdint>
+ #include <vector>
+ 
++#include <wx/string.h>
++
+ #include "GOBuffer.h"
+ #include "GOWaveLoop.h"
+ 
