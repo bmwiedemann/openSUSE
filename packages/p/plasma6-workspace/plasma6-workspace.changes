@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul 15 10:58:31 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.3
+- Changes since 6.4.2:
+  * applets/devicenotifer: fix the wrong message when unmounting a device
+  * Update version for new release 6.4.3
+  * [appmenu] Better error message
+  * servicerunner: repair removing favorties at runtime
+  * kcms/componentchooser: Don't offer NoDisplay services
+  * cmake: don't depend on xdotool when building without x11
+  * Do not emit OOM notifications on systemd services reload (kde#502279)
+  * applets/devicenotifer: don't do check if a device is already mounted
+
+-------------------------------------------------------------------
 Tue Jul  1 13:11:39 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.2:
