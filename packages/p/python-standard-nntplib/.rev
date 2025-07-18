@@ -7,4 +7,12 @@
     <comment>This is the nntplib package which has been removed in Python 3.13 but is still a requirement of mailman.</comment>
     <requestid>1293365</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8e415a077f5fbd219b2ce0861bfbf857</srcmd5>
+    <version>3.13.0</version>
+    <time>1752847122</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1294181</requestid>
+  </revision>
 </revisionlist>
