@@ -463,4 +463,19 @@
 - Tune for z15 for SLES 16.  [jsc#PED-253]</comment>
     <requestid>1290114</requestid>
   </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>883992aba195cafec399cfbddff700f0</srcmd5>
+    <version>13.4.0+git9739</version>
+    <time>1752847117</time>
+    <user>anag_factory</user>
+    <comment>- Remove all %gcc_icecream mode cross-compilers and the corresponding
+  icecream backend subpackages.  Instead use glibc-bootstrap only
+  configs for cross-x86_64-gcc (ipxe,ovmf,qemu), cross-ppc64-gcc (qemu)
+  and cross-arm-gcc (ovmf).
+- Prune the use of update-alternatives from openSUSE Factory and
+  SLFO.
+- Adjust crosses to conflict consistently where they did not
+  already and make them use unsuffixed binaries.</comment>
+    <requestid>1294099</requestid>
+  </revision>
 </revisionlist>

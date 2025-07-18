@@ -14,11 +14,7 @@
 <flavor>cross-pru-gcc13-bootstrap</flavor>
 <flavor>cross-pru-gcc13</flavor>
 <flavor>cross-x86_64-gcc13</flavor>
-<flavor>cross-sparc-gcc13</flavor>
-<flavor>cross-sparc64-gcc13</flavor>
 <flavor>cross-ppc64-gcc13</flavor>
-<flavor>cross-m68k-gcc13</flavor>
-<flavor>cross-mips-gcc13</flavor>
 <flavor>cross-hppa-gcc13-bootstrap</flavor>
 <flavor>cross-arm-none-gcc13-bootstrap</flavor>
 <flavor>cross-arm-none-gcc13</flavor>
