@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 15 13:20:32 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- update git-gui sha256 patches after the upstream review:
+  0001-git-gui-Replace-null_sha1-with-nullid.patch
+  0002-git-gui-Add-support-of-SHA256-repo.patch
+
+-------------------------------------------------------------------
 Wed Jul  9 11:01:47 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - refreshed gitk sha256 patches:

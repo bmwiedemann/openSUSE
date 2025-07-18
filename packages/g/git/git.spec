@@ -72,7 +72,8 @@ Patch10:        setup-don-t-fail-if-commondir-reference-is-deleted.patch
 Patch11:        CVE-2024-24577.patch
 # Add SHA256 support for gitk and git-gui (bsc#1239989)
 Patch20:        0001-gitk-Add-support-of-SHA256-repo.patch
-Patch21:        0002-git-gui-Add-support-of-SHA256-repo.patch
+Patch21:        0001-git-gui-Replace-null_sha1-with-nullid.patch
+Patch22:        0002-git-gui-Add-support-of-SHA256-repo.patch
 BuildRequires:  fdupes
 BuildRequires:  gpg2
 BuildRequires:  libcurl-devel

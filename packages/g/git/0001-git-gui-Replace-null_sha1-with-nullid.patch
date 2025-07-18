@@ -1,0 +1,66 @@
+From c0c016a2d63fc834a26ebf50e7940a1cf58e7b64 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Tue, 15 Jul 2025 14:14:19 +0200
+Subject: [PATCH 1/2] git-gui: Replace null_sha1 with nullid
+
+Both $nullid and $null_sha1 point to the same content.
+Use only $nullid consistently.
+
+This is a preliminary cleanup for adding the support of SHA256 repo.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ git-gui/git-gui.sh          | 5 ++---
+ git-gui/lib/checkout_op.tcl | 4 ++--
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/git-gui/git-gui.sh b/git-gui/git-gui.sh
+index c77c05edde3b..413a8a9abc1f 100755
+--- a/git-gui/git-gui.sh
++++ b/git-gui/git-gui.sh
+@@ -1845,10 +1845,9 @@ proc short_path {path} {
+ }
+ 
+ set next_icon_id 0
+-set null_sha1 [string repeat 0 40]
+ 
+ proc merge_state {path new_state {head_info {}} {index_info {}}} {
+-	global file_states next_icon_id null_sha1
++	global file_states next_icon_id nullid
+ 
+ 	set s0 [string index $new_state 0]
+ 	set s1 [string index $new_state 1]
+@@ -1870,7 +1869,7 @@ proc merge_state {path new_state {head_info {}} {index_info {}}} {
+ 	elseif {$s1 eq {_}} {set s1 _}
+ 
+ 	if {$s0 eq {A} && $s1 eq {_} && $head_info eq {}} {
+-		set head_info [list 0 $null_sha1]
++		set head_info [list 0 $nullid]
+ 	} elseif {$s0 ne {_} && [string index $state 0] eq {_}
+ 		&& $head_info eq {}} {
+ 		set head_info $index_info
+diff --git a/git-gui/lib/checkout_op.tcl b/git-gui/lib/checkout_op.tcl
+index 87ed0b48585e..987486a4b602 100644
+--- a/git-gui/lib/checkout_op.tcl
++++ b/git-gui/lib/checkout_op.tcl
+@@ -151,7 +151,7 @@ method _finish_fetch {ok} {
+ }
+ 
+ method _update_ref {} {
+-	global null_sha1 current_branch repo_config
++	global nullid current_branch repo_config
+ 
+ 	set ref $new_ref
+ 	set new $new_hash
+@@ -177,7 +177,7 @@ method _update_ref {} {
+ 		}
+ 
+ 		set reflog_msg "branch: Created from $new_expr"
+-		set cur $null_sha1
++		set cur $nullid
+ 
+ 		if {($repo_config(branch.autosetupmerge) eq {true}
+ 			|| $repo_config(branch.autosetupmerge) eq {always})
+-- 
+2.50.1
+
