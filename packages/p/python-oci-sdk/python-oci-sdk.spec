@@ -47,7 +47,6 @@ Requires:       python-httpsig_cffi
 Requires:       python-requests
 Requires:       python-six
 Requires:       python-sseclient
-Requires:       python-urllib3 < 2
 # /SECTION
 BuildArch:      noarch
 # SECTION test requirements
@@ -63,7 +62,6 @@ BuildRequires:  %{python_module pytz >= 2016.10}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module sseclient}
-BuildRequires:  %{python_module urllib3 < 2}
 BuildRequires:  %{python_module vcrpy >= 2.0.1}
 %if %{with python2}
 BuildRequires:  python-configparser >= 4.0.2
