@@ -1,0 +1,13 @@
+Index: cvsps-2.1/CMakeLists.txt
+===================================================================
+--- cvsps-2.1.orig/CMakeLists.txt
++++ cvsps-2.1/CMakeLists.txt
+@@ -1,6 +1,8 @@
+ #cmake support for cvsps 
+ # author: Cristian Rodriguez crrodriguez@suse.de
+ 
++cmake_minimum_required(VERSION 3.5)
++
+ PROJECT(cvsps C)
+ SET(CVSPS_VERSION_MAJOR 2)
+ SET(CVSPS_VERSION_MINOR 1)

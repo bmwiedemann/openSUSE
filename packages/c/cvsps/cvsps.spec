@@ -34,6 +34,7 @@ Source4:        CMakeLists.txt
 Obsoletes:      cvsps2 <= %{version}
 Provides:       cvsps2 = %{version}
 Patch0:         commitid.diff
+Patch1:         cvsps-min-cmake-3.5.patch
 URL:            http://www.cobite.com/cvsps/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -54,6 +55,7 @@ for patch in $(cat fixes/series); do
 done
 cp %{SOURCE1} %{SOURCE2} %{SOURCE4} .
 %patch -P 0 -p1
+%patch -P 1 -p1
 
 %build
 export CFLAGS="%{optflags}"

@@ -206,4 +206,14 @@
     <comment></comment>
     <requestid>1277655</requestid>
   </revision>
+  <revision rev="26" vrev="186">
+    <srcmd5>73be6e642fd1c6e54d43435e5f5dc8b5</srcmd5>
+    <version>2.1</version>
+    <time>1752847058</time>
+    <user>anag_factory</user>
+    <comment>- Add cvsps-min-cmake-3.5.patch: Allow building with cmake 4.5. The
+  patch declared cmake 3.5 as minimum, which is acceptable, as
+  CMake 3.5 was released in 2016. (forwarded request 1293807 from dimstar)</comment>
+    <requestid>1294097</requestid>
+  </revision>
 </revisionlist>

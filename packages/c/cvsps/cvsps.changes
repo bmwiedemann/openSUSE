@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 16 12:39:34 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add cvsps-min-cmake-3.5.patch: Allow building with cmake 4.5. The
+  patch declared cmake 3.5 as minimum, which is acceptable, as
+  CMake 3.5 was released in 2016.
+
+-------------------------------------------------------------------
 Wed May 14 14:49:34 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use %make_build instead of %jobs (boo#1237231)
