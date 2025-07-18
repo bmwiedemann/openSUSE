@@ -1,0 +1,17 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="filename">ocaml-patch</param>
+    <param name="revision">76fb487c5f2f194c65a79b310c89fc91ee416f21</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/hannesm/patch.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+</services>
