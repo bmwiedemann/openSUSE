@@ -17,19 +17,19 @@
 
 
 Name:           python-blockbuster
-Version:        1.5.24
+Version:        1.5.25
 Release:        0
 Summary:        Utility to detect blocking calls in the async event loop
 License:        Apache-2.0
-URL:            https://github.com/cbornet/blockbuster.git
+URL:            https://github.com/cbornet/blockbuster
 Source:         https://files.pythonhosted.org/packages/source/b/blockbuster/blockbuster-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module forbiddenfruit >= 0.1.4}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module sqlite3}
 # /SECTION
@@ -40,7 +40,7 @@ BuildArch:      noarch
 
 %description
 Blockbuster is a Python package designed to detect and prevent blocking calls within an asynchronous event loop.
-It is particularly useful when executing tests to ensure that your asynchronous code does not inadvertently call blocking operations, 
+It is particularly useful when executing tests to ensure that your asynchronous code does not inadvertently call blocking operations,
 which can lead to performance bottlenecks and unpredictable behavior.
 
 In Python, the asynchronous event loop allows for concurrent execution of tasks without the need for multiple threads or processes.
