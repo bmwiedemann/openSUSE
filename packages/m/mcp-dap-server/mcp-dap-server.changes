@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Thu Jul 17 16:55:22 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Initial package version 0.0.0+git20250716.7ffcc1d:
+  * *: add demos to README
+  * *: skip restart test in github CI until new Delve release
+  * tools: fix restart, improve breakpoint errors
+  * tools: improve error handling and responses
+  * tools: pass restart args to DAP server
+  * tools: include DAP server capabilities in response
+  * tools: add helper in tests
+  * tools: fix stacktrace tool
+  * github: fix type in go install command
+  * github: update formatting, install delve
+

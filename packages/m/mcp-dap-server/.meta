@@ -1,0 +1,5 @@
+<package name="mcp-dap-server" project="openSUSE:Factory">
+  <title>mcp-dap-server</title>
+  <description>A Model Context Protocol (MCP) server that provides debugging capabilities through the Debug Adapter Protocol (DAP). This server enables AI assistants and other MCP clients to interact with debuggers for various programming languages.</description>
+  <url>https://github.com/go-delve/mcp-dap-server</url>
+</package>
