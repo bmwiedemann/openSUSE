@@ -7,4 +7,16 @@
     <comment>This is a new requirement for blender 4.5</comment>
     <requestid>1293798</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>47c3340135e482a86815eefcc7ef70f2</srcmd5>
+    <version>3.1.1</version>
+    <time>1752847227</time>
+    <user>anag_factory</user>
+    <comment>- only force gcc14 on leap 15
+
+- Fix build on leap:
+  - downgrade openvdb 11
+  - disable python support</comment>
+    <requestid>1294355</requestid>
+  </revision>
 </revisionlist>

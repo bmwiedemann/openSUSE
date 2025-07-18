@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 18 10:48:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- only force gcc14 on leap 15
+
+-------------------------------------------------------------------
+Tue Jul 15 16:55:10 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix build on leap:
+  - downgrade openvdb 11
+  - disable python support
+
+-------------------------------------------------------------------
 Mon Jul 14 00:41:46 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - prepare enabling the testsuite 
