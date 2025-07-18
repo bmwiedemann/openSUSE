@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 17 21:35:53 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20250716.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20250716
+  * Add 3.4.5
+  * Allow installation of Ruby 2.7, 3.0, 3.1 on Fedora >= 42 by @pboling in #2543
+  * Fix Fedora version check when VERSION_ID is decimal by @mislav in #2549
+
+-------------------------------------------------------------------
 Tue Jun 10 20:46:52 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20250610.
