@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  9 16:04:54 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Fix builds with automake >= 1.17
+  * lasso-automake-1.17-support.patch
+
+-------------------------------------------------------------------
 Wed Jun 18 19:11:23 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Merge the upstream PR
