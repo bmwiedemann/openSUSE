@@ -31,11 +31,13 @@ BuildRequires:  %{python_module objgraph >= 1.7.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+%if %{with libalternatives}
+BuildRequires:  alts
 Requires:       alts
+%endif
 Recommends:     python-objgraph >= 1.7.2
 BuildArch:      noarch
 %python_subpackages

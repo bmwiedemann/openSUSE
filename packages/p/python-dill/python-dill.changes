@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 10 15:29:34 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- do not depend on alts for sle15
+
+-------------------------------------------------------------------
 Tue Jul  8 13:59:14 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
