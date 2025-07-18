@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Jul 18 05:49:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.25.0:
+  * Features
+    - add dual cache interface (b2fa37d)
+    - api/gitlab/v1: enable DLB for List Repository Tags API
+      endpoint (7698d73)
+    - custom GCRA rate limiting implementation (cef7e0f)
+    - enable integrity checks for gcs next storage driver (295397a)
+    - handlers: expose import stats to v1 stats endpoint (e2419a9)
+    - registry: import-command: add import-statistics option
+      (ca99dd7)
+    - storage middleware for caching URLs (bd4ec81)
+  * Bug Fixes
+    - change not implemented status code of rename api (cb457a1)
+    - improve retries handling in gcs next storage driver (1e4ea3e)
+    - validate subject field in manifest database not blob storage
+      (a3dad3a)
+  * Performance Improvements
+    - add metrics for gcs storage retries (f793100)
+  * Build
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.84.0 (3a398c5)
+    - deps: update module
+      github.com/azure/azure-sdk-for-go/sdk/azcore to v1.18.1
+      (69bc416)
+    - deps: update module github.com/getsentry/sentry-go to v0.34.1
+      (e7b17b2)
+    - deps: update module github.com/olekukonko/tablewriter to
+      v1.0.8 (e220c7e)
+    - deps: update module
+      github.com/testcontainers/testcontainers-go to v0.38.0
+      (51dcd31)
+    - deps: update module gitlab.com/gitlab-org/api/client-go to
+      v0.133.0 (4880e94)
+    - deps: update module gitlab.com/gitlab-org/api/client-go to
+      v0.134.0 (6dd2b83)
+    - deps: update module golang.org/x/net to v0.42.0 (bce0d75)
+    - deps: update module golang.org/x/sync to v0.16.0 (340e4cf)
+    - deps: update module google.golang.org/api to v0.240.0
+      (721b768)
+    - deps: update module google.golang.org/api to v0.241.0
+      (996be04)
+
+-------------------------------------------------------------------
 Mon Jul 07 04:51:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.24.0:
