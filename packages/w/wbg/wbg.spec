@@ -1,7 +1,7 @@
 #
 # spec file for package wbg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wbg
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Wallpaper application for layer-shell Wayland compositors
 License:        MIT
@@ -32,6 +32,7 @@ BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(pixman-1)

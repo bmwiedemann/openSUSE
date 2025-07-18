@@ -55,4 +55,23 @@
     <comment></comment>
     <requestid>1169765</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cdbd0a832e69933d2ea596d63e2a6f46</srcmd5>
+    <version>1.3.0</version>
+    <time>1752847133</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.3.0:
+  * Nanosvg updated to ea6a6aca009422bba0dbad4c80df6e6ba0c82183
+  * JPEG XL support (#14)
+  * Log output now respects the NO_COLOR environment variable.
+  * Support for linking against a system provided nanosvg library. See the new -Dsystem-nanosvg meson option. Defaults to disabled (i.e. use the bundled version).
+  * SVG images rendered at output resolution; this prevents them from being unnecessarily blurry.
+  * Flags added to stretch wallpapers: [-s|--stretch] (#13)
+  * &quot;Centered maximized&quot; is the default method now (#13)
+  * Decreased run-time memory usage, by unloading image data after rendering.
+  * Alpha not being applied correctly to PNG images.
+  * Compilation error on musl libc (#11).
+</comment>
+    <requestid>1294191</requestid>
+  </revision>
 </revisionlist>

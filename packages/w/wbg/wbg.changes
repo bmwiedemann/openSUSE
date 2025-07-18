@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 17 14:28:58 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.3.0:
+  * Nanosvg updated to ea6a6aca009422bba0dbad4c80df6e6ba0c82183
+  * JPEG XL support (#14)
+  * Log output now respects the NO_COLOR environment variable.
+  * Support for linking against a system provided nanosvg library. See the new -Dsystem-nanosvg meson option. Defaults to disabled (i.e. use the bundled version).
+  * SVG images rendered at output resolution; this prevents them from being unnecessarily blurry.
+  * Flags added to stretch wallpapers: [-s|--stretch] (#13)
+  * "Centered maximized" is the default method now (#13)
+  * Decreased run-time memory usage, by unloading image data after rendering.
+  * Alpha not being applied correctly to PNG images.
+  * Compilation error on musl libc (#11).
+
+-------------------------------------------------------------------
 Mon Apr 22 22:47:05 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Add keyring and signature for package.
