@@ -1,41 +1,71 @@
-From a580aa1ee6c24aab29fc7710b82187c15f21e6ec Mon Sep 17 00:00:00 2001
+From a7a02f9aaabf6cc4c92f672eb08752374f614a32 Mon Sep 17 00:00:00 2001
 From: Miika Alikirri <miika.alikirri@suse.com>
-Date: Thu, 6 Mar 2025 09:25:08 +0200
-Subject: Use UEFI as default firmware instead of bios
+Date: Wed, 9 Jul 2025 11:11:07 +0300
+Subject: Explicitly set UEFI as default firmware
 
 ---
- src/components/vm/overview/firmware.jsx | 4 ++--
- src/components/vm/overview/helpers.jsx  | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ src/libvirtApi/domain.ts | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/src/components/vm/overview/firmware.jsx b/src/components/vm/overview/firmware.jsx
-index e99c893a..f04dc023 100644
---- a/src/components/vm/overview/firmware.jsx
-+++ b/src/components/vm/overview/firmware.jsx
-@@ -32,8 +32,8 @@ import { supportsUefiXml, labelForFirmwarePath } from './helpers.jsx';
+diff --git a/src/libvirtApi/domain.ts b/src/libvirtApi/domain.ts
+index 88d39dab..61926d52 100644
+--- a/src/libvirtApi/domain.ts
++++ b/src/libvirtApi/domain.ts
+@@ -360,6 +360,7 @@ interface DomainSpec {
+     userPassword: string,
+     vmName: string,
+     sshKeys: string[],
++    firmware: 'bios' | 'uefi'
+ }
  
- const _ = cockpit.gettext;
- 
--const xmlToState = value => value || 'bios';
--const stateToXml = value => value == 'bios' ? null : value;
-+const xmlToState = value => value || 'efi';
-+const stateToXml = value => value == 'efi' ? null : value;
- 
- class FirmwareModal extends React.Component {
-     static contextType = DialogsContext;
-diff --git a/src/components/vm/overview/helpers.jsx b/src/components/vm/overview/helpers.jsx
-index e0702ac6..582225fd 100644
---- a/src/components/vm/overview/helpers.jsx
-+++ b/src/components/vm/overview/helpers.jsx
-@@ -69,7 +69,7 @@ export function labelForFirmwarePath(path, guest_arch) {
+ export async function domainCreate({
+@@ -415,6 +416,7 @@ export async function domainCreate({
+         userPassword,
+         vmName,
+         sshKeys,
++        firmware: "uefi",
      };
-     if (!path) {
-         if (["i686", "x86_64"].includes(guest_arch))
--            return "bios";
-+            return "efi";
-         else
-             return "unknown";
-     } else {
+ 
+     logDebug(`CREATE_VM(${vmName}): install_machine.py '${JSON.stringify(args)}'`);
 -- 
-2.48.1
+2.50.0
+
+
+From a5dcfb74c517aea09f17bd3efc0ef750c335e39b Mon Sep 17 00:00:00 2001
+From: Miika Alikirri <miika.alikirri@suse.com>
+Date: Thu, 10 Jul 2025 12:48:50 +0300
+Subject: libvirt: allow changing from UEFI to BIOS
+
+When UEFI is already selected and a user tries to switch to BIOS, not
+all the relevant UEFI related elements are removed
+
+This patch adds the functionality for removing loader and nvram if they
+are set
+---
+ src/libvirtApi/domain.ts | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/src/libvirtApi/domain.ts b/src/libvirtApi/domain.ts
+index 61926d52..5ba12a0b 100644
+--- a/src/libvirtApi/domain.ts
++++ b/src/libvirtApi/domain.ts
+@@ -1297,6 +1297,16 @@ export async function domainSetOSFirmware({
+     if (loaderElem)
+         loaderElem.remove();
+ 
++    // remove efi related things so it gets actually disabled
++    if (!loaderType || loaderType === "bios") {
++        const fwElem = getSingleOptionalElem(osElem, "firmware");
++        if (fwElem)
++            fwElem.remove();
++        const nvramElem = getSingleOptionalElem(osElem, "nvram");
++        if (nvramElem)
++            nvramElem.remove();
++    }
++
+     if (!loaderType)
+         osElem.removeAttribute("firmware");
+     else
+-- 
+2.50.0
 

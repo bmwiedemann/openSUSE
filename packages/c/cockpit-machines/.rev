@@ -286,4 +286,12 @@
 - Re-add source-offset to _service.</comment>
     <requestid>1289270</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>85839d3ff26a3197cd6aa6e36cbe0917</srcmd5>
+    <version>333</version>
+    <time>1752847121</time>
+    <user>anag_factory</user>
+    <comment>- Explicitly set uefi as default firmware (bsc#1245145)</comment>
+    <requestid>1294142</requestid>
+  </revision>
 </revisionlist>
