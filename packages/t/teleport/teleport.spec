@@ -17,7 +17,7 @@
 
 
 Name:           teleport
-Version:        17.5.5
+Version:        17.5.6
 Release:        0
 Summary:        Identity-aware, multi-protocol access proxy
 License:        AGPL-3.0-only
@@ -32,7 +32,7 @@ Source5:        tbot.yaml
 # Rust vendoring
 Source6:        vendor.tar.zst
 BuildRequires:  bash-completion
-BuildRequires:  cargo >= 1.82
+BuildRequires:  cargo >= 1.88
 BuildRequires:  cargo-packaging
 BuildRequires:  git-core
 BuildRequires:  go >= 1.23.7
@@ -217,7 +217,11 @@ cd tool/fdpass-teleport
 install -D -m 0755 tsh %{buildroot}%{_bindir}/tsh
 install -D -m 0755 tctl %{buildroot}%{_bindir}/tctl
 install -D -m 0755 tbot %{buildroot}%{_bindir}/tbot
+%if 0%{?suse_version} >= 1699
 install -D -m 0755 target/release/fdpass-teleport %{buildroot}%{_bindir}/fdpass-teleport
+%else
+install -D -m 0755 tool/fdpass-teleport/target/release/fdpass-teleport %{buildroot}%{_bindir}/fdpass-teleport
+%endif
 install -D -m 0755 teleport %{buildroot}%{_sbindir}/teleport
 install -D -m 644 %{SOURCE3} %{buildroot}%{_unitdir}/teleport.service
 install -D -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/teleport.yaml

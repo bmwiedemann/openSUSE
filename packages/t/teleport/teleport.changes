@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 18 06:00:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.5.6:
+  * Fix backward compatibility issue introduced in the 17.5.5 / 18.0.1
+    release related to Access List type, causing the unknown
+    access_list type "dynamic" validation error. #56888
+  * Added support for glob-style matching to Spacelift join rules. #56878
+  * Improve PKINIT compatibility by always including CDP information
+    in the certificate. #56876
+
+-------------------------------------------------------------------
 Wed Jul 16 06:52:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.5.5:
