@@ -122,7 +122,7 @@ BuildRequires:  procps
 BuildRequires:  sqlite3-devel
 BuildRequires:  sysuser-tools
 BuildRequires:  zsh
-BuildRequires:  golang(API) = 1.23
+BuildRequires:  golang(API) = 1.24
 BuildRequires:  pkgconfig(libsystemd)
 %if %{with apparmor}
 %if 0%{?suse_version} >= 1500

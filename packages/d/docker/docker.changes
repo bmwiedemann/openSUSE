@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 17 04:32:55 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Go 1.24 for builds, to match upstream.
+
+-------------------------------------------------------------------
 Wed Jul  9 19:54:47 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 28.3.2-ce. See upstream changelog online at
