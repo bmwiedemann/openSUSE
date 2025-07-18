@@ -232,4 +232,15 @@
     <comment></comment>
     <requestid>1290226</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d8a8a0b6d6a20e000d3e4acfba627306</srcmd5>
+    <version>1.5.3</version>
+    <time>1752847065</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.5.3:
+  * Fix compatibility with pytest 8.4.0 when using fixtures
+  * Add (back) class-decorator overload to guarantee Pytype
+    understands it</comment>
+    <requestid>1294212</requestid>
+  </revision>
 </revisionlist>

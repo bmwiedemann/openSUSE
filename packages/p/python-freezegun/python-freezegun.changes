@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 17 19:18:42 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.3:
+  * Fix compatibility with pytest 8.4.0 when using fixtures
+  * Add (back) class-decorator overload to guarantee Pytype
+    understands it
+
+-------------------------------------------------------------------
 Thu Jul  3 10:21:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.5.2
