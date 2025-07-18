@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul 18 05:24:27 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.6.0
+  * New Features
+    - Added in new CodeView Insert menu item: "Role..." (epub3 only) to make adding Aria role attributes
+      and epub:type attributes where allowed easier
+    - Added in new CodeView Insert menu item: "Aria Clips..." (epub3 only) to make adding code clips
+      that improving Accessibility easier.
+    - Made the Epub3 Tools menu submenu items be shown as disabled on Epub2
+  * Bug Fixes
+    - prevent crash on Windows when hand typing in an external url in Add Existing files
+    - fix bug in how nav is handled by Prettify (Thank you BeckyEbook)
+    - fix bug in wait cursor appearing when showing last epub open warnings
+    - fix crash caused by empty Automate lists (Thank you BeckyEbook)
+    - fix wild card disconnection Qt warnings
+    - fix class initialization reorder warnings
+    - remove now unnecessary workaround for sys.argv not being defined in embedded python
+    - fix bugs in regex search and replace by using PCRE2 NOTEMPTY to match Sigil logic
+
+-------------------------------------------------------------------
 Fri Jun  6 05:18:08 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.5.2
