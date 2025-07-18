@@ -21,8 +21,10 @@
 %global zypp_path   %{_prefix}/lib/zypp/plugins
 %global zypp_services %{zypp_path}/services
 %global zypp_urlresolver %{zypp_path}/urlresolver
+%global use_fips_mode 0%{?suse_version} == 1500 || 0%{?suse_version} == 1600
+
 Name:           %{project}
-Version:        2.5.4
+Version:        2.5.5
 Release:        0
 Summary:        Provides access to repositories inside containers
 License:        Apache-2.0
@@ -33,11 +35,7 @@ Source1:        vendor.tar.zst
 Source2:        container-suseconnect-rpmlintrc
 BuildRequires:  libzypp > 9.34
 BuildRequires:  zstd
-%if 0%{?suse_version} == 1500
-BuildRequires:  go1.24-openssl
-%else
 BuildRequires:  golang(API) = 1.24
-%endif
 Requires:       libzypp > 9.34
 
 %description
@@ -51,13 +49,13 @@ export TAR_OPTIONS="-I zstd"
 %setup -q -n %{project}-%{version} -a1
 
 %build
-%if 0%{?suse_version} > 1600
+%if %use_fips_mode
 export GOFIPS140=v1.0.0
 %endif
 go build -tags enablecgo -o %{project} -mod=vendor -buildmode=pie -trimpath -ldflags="-s -w" ./cmd/container-suseconnect
 
 %check
-%if 0%{?suse_version} > 1600
+%if %use_fips_mode
 export GODEBUG=fips140=only GOFIPS140=v1.0.0
 %endif
 go test ./...

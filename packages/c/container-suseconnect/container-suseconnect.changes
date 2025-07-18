@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 18 07:47:21 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 2.5.5:
+  * Do not log credentials errors
+- switch to the go native fips 140-3 module
+  (https://go.dev/blog/fips140)
+
+-------------------------------------------------------------------
 Tue Jun 10 09:44:09 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 2.5.4:

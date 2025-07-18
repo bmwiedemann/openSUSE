@@ -70,4 +70,15 @@
 - use go's native fips module on tumbleweed</comment>
     <requestid>1284407</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0a663a3a49a08099f8c38a023bf32b6c</srcmd5>
+    <version>2.5.5</version>
+    <time>1752847221</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.5.5:
+  * Do not log credentials errors
+- switch to the go native fips 140-3 module
+  (https://go.dev/blog/fips140)</comment>
+    <requestid>1294333</requestid>
+  </revision>
 </revisionlist>
