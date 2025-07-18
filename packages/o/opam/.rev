@@ -153,4 +153,12 @@
     <comment>- Remove ExclusiveArch 64bit</comment>
     <requestid>1267067</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>27cbe378156bee8a2dbef86566ecf7b4</srcmd5>
+    <version>2.4.0</version>
+    <time>1752847207</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.0</comment>
+    <requestid>1294294</requestid>
+  </revision>
 </revisionlist>

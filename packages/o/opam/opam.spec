@@ -17,15 +17,12 @@
 
 
 Name:           opam
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Source-based package manager for OCaml
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
 URL:            https://opam.ocaml.org/
 Source:         %name-%version.tar.xz
-Patch0:         5ffd07705853a7d6516b65db08d3f0a47aa421ab.patch
-Patch1:         d5e0bcb805839ce8e9b9e423415bd81fc8c13abe.patch
-Patch2:         2532248d70b14a137164194e6c0eb3459b50de0f.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -43,6 +40,7 @@ BuildRequires:  ocamlfind(mccs)
 BuildRequires:  ocamlfind(ocamlgraph)
 BuildRequires:  ocamlfind(opam-0install-cudf)
 BuildRequires:  ocamlfind(opam-file-format)
+BuildRequires:  ocamlfind(patch)
 BuildRequires:  ocamlfind(re)
 BuildRequires:  ocamlfind(sha)
 BuildRequires:  ocamlfind(spdx_licenses)
