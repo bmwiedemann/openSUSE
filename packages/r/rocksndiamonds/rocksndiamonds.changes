@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jul 13 19:03:10 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 4.4.0.5:
+  * fixed broken handling of swipe gestures for moving scrollbars
+  * fixed saving setup for name/team, keyboard and joystick
+    changes
+  * fixed saving setup for music and sound button changes
+  * fixed saving setup for virtual button changes
+  * fixed support for snapshot when collecting diamond for
+    BD engine
+  * fixed bugs with showing correct game buttons for various cases
+  * fixed game restart button when playing non-score tapes
+  * fixed updating ffwd/warp tape display when playing native
+    BD replays
+  * fixed crash bug caused by freeing custom game tile size
+    graphics twice
+  * added "please wait" message screen when importing level set
+    zip files
+
+-------------------------------------------------------------------
 Sun Feb 23 06:28:49 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 4.4.0.4:
