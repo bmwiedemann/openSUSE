@@ -19,7 +19,7 @@
 %bcond_with docs
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp
-Version:        3.12.13
+Version:        3.12.14
 Release:        0
 Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
@@ -30,7 +30,7 @@ Patch0:         test_no_warnings_fix.patch
 # Remove python-isal dependency for testing.
 Patch1:         remove-isal-test-dep.patch
 Requires:       python-aiohappyeyeballs >= 2.5.0
-Requires:       python-aiosignal >= 1.1.2
+Requires:       python-aiosignal >= 1.4
 Requires:       python-attrs >= 17.3.0
 Requires:       python-frozenlist >= 1.1.1
 Requires:       (python-charset-normalizer >= 2.0 with python-charset-normalizer < 4)
@@ -51,7 +51,7 @@ BuildRequires:  python-rpm-macros
 # /SECTION
 # SECTION install requirements
 BuildRequires:  %{python_module aiohappyeyeballs >= 2.5.0}
-BuildRequires:  %{python_module aiosignal >= 1.1.2}
+BuildRequires:  %{python_module aiosignal >= 1.4}
 BuildRequires:  %{python_module attrs >= 17.3.0}
 BuildRequires:  %{python_module charset-normalizer >= 2.0 with %python-charset-normalizer < 4}
 BuildRequires:  %{python_module frozenlist >= 1.1.1}
@@ -59,7 +59,6 @@ BuildRequires:  %{python_module multidict >= 4.5 with %python-multidict < 7}
 BuildRequires:  %{python_module yarl >= 1.17.0 with %python-yarl < 2}
 # /SECTION
 # SECTION test requirements
-BuildRequires:  %{python_module aiodns}
 BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module blockbuster}
 BuildRequires:  %{python_module freezegun}
@@ -150,8 +149,7 @@ single_runs="(test_run_app or test_web_runner)"
 # breaks without threading
 single_runs+=" and not test_shutdown_handler_cancellation_suppressed"
 test -d aiohttp && mv aiohttp aiohttp.bkp
-%pytest_arch %{?jobs: -n %jobs} tests -k "not ($donttest or ${single_runs})"
-%pytest_arch tests -k "${single_runs}"
+%pytest_arch tests -n 4 -k "not ($donttest or skip_blockbuster)"
 
 %files %{python_files}
 %license LICENSE.txt

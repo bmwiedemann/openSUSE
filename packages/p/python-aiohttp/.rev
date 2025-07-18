@@ -725,4 +725,31 @@
   * Downgraded the logging level for connector close errors from ERROR</comment>
     <requestid>1289166</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>b751ae9b77eb0ad3a507d65b97b27038</srcmd5>
+    <version>3.12.14</version>
+    <time>1752847069</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.12.14:
+  * Fixed file uploads failing with HTTP 422 errors when
+    encountering 307/308 redirects, and 301/302 redirects for
+    non-POST methods, by preserving the request body when
+    appropriate per RFC 9110 -- by :user:`bdraco`. Related issues
+    and pull requests on GitHub: :issue:`11270`.
+  * Fixed :py:meth:`ClientSession.close()
+    &lt;aiohttp.ClientSession.close&gt;` hanging indefinitely when
+    using HTTPS requests through HTTP proxies -- by
+    :user:`bdraco`. Related issues and pull requests on GitHub:
+    :issue:`11273`.
+  * Bumped minimum version of aiosignal to 1.4+ to resolve typing
+    issues -- by :user:`Dreamsorcerer`. Related issues and pull
+    requests on GitHub: :issue:`11280`.
+  * Added initial trailer parsing logic to Python HTTP parser --
+    by :user:`Dreamsorcerer`. Related issues and pull requests on
+    GitHub: :issue:`11269`.
+  * Clarified exceptions raised by WebSocketResponse.send_frame
+    et al. -- by :user:`DoctorJohn`. Related issues and pull
+    requests on GitHub: :issue:`11234`.</comment>
+    <requestid>1294222</requestid>
+  </revision>
 </revisionlist>

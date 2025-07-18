@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jul 14 15:17:06 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.12.14:
+  * Fixed file uploads failing with HTTP 422 errors when
+    encountering 307/308 redirects, and 301/302 redirects for
+    non-POST methods, by preserving the request body when
+    appropriate per RFC 9110 -- by :user:`bdraco`. Related issues
+    and pull requests on GitHub: :issue:`11270`.
+  * Fixed :py:meth:`ClientSession.close()
+    <aiohttp.ClientSession.close>` hanging indefinitely when
+    using HTTPS requests through HTTP proxies -- by
+    :user:`bdraco`. Related issues and pull requests on GitHub:
+    :issue:`11273`.
+  * Bumped minimum version of aiosignal to 1.4+ to resolve typing
+    issues -- by :user:`Dreamsorcerer`. Related issues and pull
+    requests on GitHub: :issue:`11280`.
+  * Added initial trailer parsing logic to Python HTTP parser --
+    by :user:`Dreamsorcerer`. Related issues and pull requests on
+    GitHub: :issue:`11269`.
+  * Clarified exceptions raised by WebSocketResponse.send_frame
+    et al. -- by :user:`DoctorJohn`. Related issues and pull
+    requests on GitHub: :issue:`11234`.
+
+-------------------------------------------------------------------
 Mon Jun 30 06:00:18 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add remove-isal-test-dep.patch to remove python-isal test
