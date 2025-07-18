@@ -1,7 +1,7 @@
 #
 # spec file for package ctags
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           ctags
 Version:        5.8
 Release:        0
@@ -48,9 +53,15 @@ Patch18:        0018-SUSE-man-page-changes.patch
 Patch19:        0019-Do-not-include-build-time-in-binary.patch
 Patch20:        ctags-gcc11.patch
 Patch21:        CVE-2022-4515.patch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires(pre):  alts
+Requires(post): alts
+%else
 BuildRequires:  update-alternatives
 Requires(pre):  update-alternatives
 Requires(post): update-alternatives
+%endif
 Requires(post): coreutils
 Provides:       arduino-ctags
 
@@ -77,10 +88,21 @@ Emacs, and several other editors.
 mv %{buildroot}%{_bindir}/ctags{,-exuberant}
 mv %{buildroot}%{_mandir}/man1/ctags{,-exuberant}.1
 
+%if %{with libalternatives}
+mkdir -p %{buildroot}%{_datadir}/libalternatives/ctags
+ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/ctags
+cat > %{buildroot}%{_datadir}/libalternatives/ctags/20.conf <<-EOF
+	binary=%{_bindir}/ctags-exuberant
+	man=ctags-exuberant.1
+	group=ctags
+	EOF
+%else
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
 ln -s %{_sysconfdir}/alternatives/ctags              %{buildroot}%{_bindir}/ctags
 ln -s %{_sysconfdir}/alternatives/ctags.1%{ext_man}  %{buildroot}%{_mandir}/man1/ctags.1%{ext_man}
+%endif
 
+%if ! %{with libalternatives}
 %post
 test -L %{_bindir}/ctags || rm -f %{_bindir}/ctags
 update-alternatives --install %{_bindir}/ctags ctags %{_bindir}/ctags-exuberant 20 \
@@ -90,6 +112,7 @@ update-alternatives --install %{_bindir}/ctags ctags %{_bindir}/ctags-exuberant 
 if [ ! -f %{_bindir}/ctags-exuberant ]; then
   update-alternatives --remove ctags %{_bindir}/ctags-exuberant
 fi
+%endif
 
 %files
 %license COPYING
@@ -97,8 +120,14 @@ fi
 %{_bindir}/ctags
 %{_bindir}/ctags-exuberant
 %{_mandir}/man1/ctags-exuberant.1%{ext_man}
+%if %{with libalternatives}
+%dir %{_datadir}/libalternatives/
+%dir %{_datadir}/libalternatives/ctags/
+%{_datadir}/libalternatives/ctags/20.conf
+%else
 %{_mandir}/man1/ctags.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/ctags
 %ghost %{_sysconfdir}/alternatives/ctags.1%{ext_man}
+%endif
 
 %changelog

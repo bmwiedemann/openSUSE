@@ -272,4 +272,13 @@
     <comment>- mark u-a generics as non-%ghost</comment>
     <requestid>1072437</requestid>
   </revision>
+  <revision rev="38" vrev="14">
+    <srcmd5>fc51f7ebca198d189f0f1c02637dce4e</srcmd5>
+    <version>5.8</version>
+    <time>1752847060</time>
+    <user>anag_factory</user>
+    <comment>- Switch over to libalternatives for ctags to provide a ctags
+  variant (bsc#1245894) (forwarded request 1293636 from WernerFink)</comment>
+    <requestid>1294186</requestid>
+  </revision>
 </revisionlist>

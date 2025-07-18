@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 16 06:45:14 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Switch over to libalternatives for ctags to provide a ctags
+  variant (bsc#1245894) 
+
+-------------------------------------------------------------------
 Thu Feb  2 10:40:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - mark u-a generics as non-%ghost
