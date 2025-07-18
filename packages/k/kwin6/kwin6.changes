@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jul 15 10:53:41 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.3
+- Changes since 6.4.2:
+  * Update version for new release 6.4.3
+  * Guard against internal window being null when dispatching tablet events (kde#506886)
+  * Fix "activate and raise" action with panels (kde#461414)
+  * wayland: close popups upon window activation (kde#497075)
+  * wayland: Fix resizing with fractional increments
+  * plugins/magnifier: Constrain zoom factors (kde#506549)
+  * cmake: install wayland/textinput.h
+  * A11yKeyboardMonitor: Distinguish modifier and other key (kde#506715)
+  * tablet: Fix sending delta for relative dials
+  * backends/drm: Fix memory leak in DrmGpu::createNonMasterFd
+  * backends/drm: never use DEGAMMA_LUT (kde#505869)
+  * wayland: Remove buffer checks in xdg_surface and layer_surface factory requests (kde#506412)
+  * backends/drm: don't use UUID to identify outputs (kde#493879,kde#506135,kde#505953)
+  * xdgshellwindow: Reset gravity on interactive resize finish
+  * workspace: Fix window activation on activity change (kde#501393)
+  * utils/edid: also read edid colorimetry (kde#505971)
+  * OutputConfigurationStore: Don't auto-generate low-but-not-1 scale factors
+  * backends/virtual: use explicit modifiers for egl
+  * A11yKeyboardMonitor: Fix sending keycodes to AT (kde#506445)
+  * xwayland: don't forward left/middle/right mouse buttons to Xwayland
+
+-------------------------------------------------------------------
 Tue Jul  1 13:07:50 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.2:
