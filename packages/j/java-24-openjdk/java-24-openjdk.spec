@@ -1,5 +1,5 @@
 #
-# spec file for package java-23-openjdk
+# spec file for package java-24-openjdk
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -33,8 +33,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      24
 %global interimver      0
-%global updatever       1
-%global buildver        9
+%global updatever       2
+%global buildver        12
 %global openjdk_repo    jdk24u
 %global openjdk_tag     jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}-%{buildver}
@@ -100,8 +100,8 @@
 %global package_version %{featurever}.%{interimver}.%{?updatever:%{updatever}}%{!?updatever:0}.%{?patchver:%{patchver}}%{!?patchver:0}~%{buildver}
 %endif
 %global NSS_LIBDIR %(pkg-config --variable=libdir nss)
-%if 0%{?gcc_version} < 7
-%global with_gcc 7
+%if 0%{?gcc_version} < 11
+%global with_gcc 11
 %endif
 %bcond_with zero
 %if ! %{with zero}
