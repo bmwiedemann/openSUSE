@@ -19,6 +19,7 @@
 %define pkgname cross-riscv64-gcc14-bootstrap
 %define cross_arch riscv64
 %define gcc_target_arch riscv64-suse-linux
+%define gcc_target_glibc 1
 %define gcc_libc_bootstrap 1
 # nospeccleaner
 
@@ -273,26 +274,24 @@ ExclusiveArch:  i586 ppc64le x86_64 s390x aarch64
 %if "%pkgname" == "cross-ppc64-gcc49"
 Obsoletes:      cross-ppc-gcc49 <= 4.9.0+r209354
 %endif
-%if 0%{?gcc_target_newlib:1}%{?gcc_target_glibc:1}
+%if 0%{!?gcc_accel:1}
 # Generally only one cross for the same target triplet can be installed
 # at the same time as we are populating a non-version-specific sysroot
-Provides:       %{gcc_target_arch}-gcc
-Conflicts:      %{gcc_target_arch}-gcc
-%endif
-%if 0%{?gcc_libc_bootstrap:1}
 # The -bootstrap packages file-conflict with the non-bootstrap variants.
 # Even if we don't actually (want to) distribute the bootstrap variants
 # the following avoids repo-checker spamming us endlessly.
+Provides:       %{gcc_target_arch}-gcc
 Conflicts:      %{gcc_target_arch}-gcc
+Conflicts:      %{pkgname}-bootstrap
 %endif
 #!BuildIgnore: gcc-PIE
-%if 0%{build_cp:1}
+%if %{build_cp}
 # The cross compiler only packages the arch specific c++ headers, so
 # we need to depend on the host libstdc++ devel headers (we wouldn't need
 # the libs, though)
 Requires:       libstdc++6-devel-gcc14
 %endif
-%if 0%{!?gcc_accel:1}
+%if 0%{!?gcc_accel:1} && %{suse_version} < 1600
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
@@ -554,11 +553,11 @@ amdgcn-amdhsa,\
 %ifarch %ix86 x86_64 ppc ppc64 ppc64le %arm aarch64 s390 s390x %sparc
 	--enable-gnu-indirect-function \
 %endif
-	--program-suffix=%{binsuffix} \
 %ifarch %{disable_multilib_arch}
 	--disable-multilib \
 %endif
 %if 0%{!?gcc_target_arch:1}
+	--program-suffix=%{binsuffix} \
 %ifarch ia64
 	--with-system-libunwind \
 %else
@@ -566,6 +565,9 @@ amdgcn-amdhsa,\
 %endif
 %endif
 %if 0%{?gcc_target_arch:1}
+%if 0%{?gcc_accel:1} || %{suse_version} < 1600
+	--program-suffix=%{binsuffix} \
+%endif
 	--program-prefix=%{gcc_target_arch}- \
 	--target=%{gcc_target_arch} \
 	--disable-nls \
@@ -653,7 +655,7 @@ amdgcn-amdhsa,\
 %endif
 %if %{suse_version} >= 1600 && !0%{?is_opensuse}
 	--with-cpu=power9 \
-	--with-tune=power9 \
+	--with-tune=power10 \
 %else
 %if %{suse_version} >= 1350
 	--with-cpu=power8 \
@@ -717,7 +719,7 @@ amdgcn-amdhsa,\
 %endif
 %if "%{TARGET_ARCH}" == "s390" || "%{TARGET_ARCH}" == "s390x"
 %if %{suse_version} >= 1600 && !0%{?is_opensuse}
-        --with-tune=z14 --with-arch=z14 \
+        --with-tune=z15 --with-arch=z14 \
 %else
         --with-tune=zEC12 --with-arch=z196 \
 %endif
@@ -850,6 +852,7 @@ rm -rf $RPM_BUILD_ROOT%{_infodir}
 # for accelerators remove all frontends but lto1 and also install-tools
 %if 0%{?gcc_accel:1}
 rm -f $RPM_BUILD_ROOT%{libsubdir}/accel/%{gcc_target_arch}/cc1
+rm -f $RPM_BUILD_ROOT%{libsubdir}/accel/%{gcc_target_arch}/f951
 rm -f $RPM_BUILD_ROOT%{libsubdir}/accel/%{gcc_target_arch}/cc1plus
 rm -rf $RPM_BUILD_ROOT%{libsubdir}/accel/%{gcc_target_arch}/install-tools
 rm -rf $RPM_BUILD_ROOT%{targetlibsubdir}/install-tools
@@ -857,6 +860,8 @@ rm -rf $RPM_BUILD_ROOT%{targetlibsubdir}/install-tools
 # that is the place where we later search for (only)
 ( cd $RPM_BUILD_ROOT%{targetlibsubdir} && tar cf - . ) | ( cd $RPM_BUILD_ROOT%{libsubdir}/accel/%{gcc_target_arch} && tar xf - )
 rm -rf $RPM_BUILD_ROOT%{targetlibsubdir}
+# also remove installed libstdc++ headers
+rm -rf $RPM_BUILD_ROOT%{_prefix}/include/c++
 %endif
 # for amdgcn install the symlinks to the llvm tools
 # follow alternatives symlinks to the hardcoded version requirement
@@ -921,7 +926,7 @@ rm -r env
 
 # we provide update-alternatives for selecting a compiler version for
 # crosses
-%if 0%{!?gcc_accel:1}
+%if 0%{!?gcc_accel:1} && %{suse_version} < 1600
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 for ex in gcc cpp \
 %if %{build_cp}
@@ -977,15 +982,19 @@ fi
 %endif
 %else
 %{_prefix}/bin/%{gcc_target_arch}-gcc%{binsuffix}
+%if %{suse_version} < 1600
 %{_prefix}/bin/%{gcc_target_arch}-cpp%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-gcc-ar%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-gcc-nm%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-gcc-ranlib%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-lto-dump%{binsuffix}
+%endif
 %if 0%{!?gcc_libc_bootstrap:1} && "%{cross_arch}" != "bpf"
+%if %{suse_version} < 1600
 %{_prefix}/bin/%{gcc_target_arch}-gcov%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-gcov-dump%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-gcov-tool%{binsuffix}
+%endif
 %{_prefix}/bin/%{gcc_target_arch}-gcov
 %{_prefix}/bin/%{gcc_target_arch}-gcov-dump
 %{_prefix}/bin/%{gcc_target_arch}-gcov-tool
@@ -996,6 +1005,7 @@ fi
 %{_prefix}/bin/%{gcc_target_arch}-gcc-nm
 %{_prefix}/bin/%{gcc_target_arch}-gcc-ranlib
 %{_prefix}/bin/%{gcc_target_arch}-lto-dump
+%if %{suse_version} < 1600
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcc
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-cpp
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcc-ar
@@ -1007,13 +1017,16 @@ fi
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcov-dump
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcov-tool
 %endif
+%endif
 %if %{build_cp}
-%{_prefix}/bin/%{gcc_target_arch}-c++%{binsuffix}
-%{_prefix}/bin/%{gcc_target_arch}-g++%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-c++
 %{_prefix}/bin/%{gcc_target_arch}-g++
+%if %{suse_version} < 1600
+%{_prefix}/bin/%{gcc_target_arch}-c++%{binsuffix}
+%{_prefix}/bin/%{gcc_target_arch}-g++%{binsuffix}
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-c++
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-g++
+%endif
 %if 0%{!?gcc_libc_bootstrap:1}
 %if "%{cross_arch}" == "avr" || 0%{?gcc_target_newlib:1} || 0%{?gcc_target_glibc:1}
 %{_prefix}/include/c++

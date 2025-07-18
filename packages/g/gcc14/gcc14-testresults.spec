@@ -746,11 +746,11 @@ amdgcn-amdhsa,\
 %ifarch %ix86 x86_64 ppc ppc64 ppc64le %arm aarch64 s390 s390x %sparc
 	--enable-gnu-indirect-function \
 %endif
-	--program-suffix=%{binsuffix} \
 %ifarch %{disable_multilib_arch}
 	--disable-multilib \
 %endif
 %if 0%{!?gcc_target_arch:1}
+	--program-suffix=%{binsuffix} \
 %ifarch ia64
 	--with-system-libunwind \
 %else
@@ -758,6 +758,9 @@ amdgcn-amdhsa,\
 %endif
 %endif
 %if 0%{?gcc_target_arch:1}
+%if 0%{?gcc_accel:1} || %{suse_version} < 1600
+	--program-suffix=%{binsuffix} \
+%endif
 	--program-prefix=%{gcc_target_arch}- \
 	--target=%{gcc_target_arch} \
 	--disable-nls \
@@ -845,7 +848,7 @@ amdgcn-amdhsa,\
 %endif
 %if %{suse_version} >= 1600 && !0%{?is_opensuse}
 	--with-cpu=power9 \
-	--with-tune=power9 \
+	--with-tune=power10 \
 %else
 %if %{suse_version} >= 1350
 	--with-cpu=power8 \
@@ -909,7 +912,7 @@ amdgcn-amdhsa,\
 %endif
 %if "%{TARGET_ARCH}" == "s390" || "%{TARGET_ARCH}" == "s390x"
 %if %{suse_version} >= 1600 && !0%{?is_opensuse}
-        --with-tune=z14 --with-arch=z14 \
+        --with-tune=z15 --with-arch=z14 \
 %else
         --with-tune=zEC12 --with-arch=z196 \
 %endif
