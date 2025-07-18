@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 14 13:56:21 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Switch over to libalternatives for etags to provide a ctags
+  variant (bsc#1245894) 
+
+-------------------------------------------------------------------
 Fri Jul 11 07:47:21 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch emacs-30.1-pdumper.patch

@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %bcond_without  autoconf
 # Does not work without build dir and git
 %bcond_with     ghosts
@@ -102,7 +107,11 @@ BuildRequires:  texlive-lh
 %endif
 #BuildRequires:  i3
 BuildRequires:  procps
+%if %{with libalternatives}
+BuildRequires:  alts
+%else
 BuildRequires:  update-alternatives
+%endif
 BuildRequires:  update-desktop-files
 #BuildRequires:  xdotool
 #BuildRequires:  xorg-x11-Xvfb
@@ -393,8 +402,15 @@ group called "games".
 %package     -n etags
 Summary:        Generate Tag Files for Use with Emacs
 Group:          Development/Tools/Navigators
-Requires(post): coreutils update-alternatives
-Requires(preun): coreutils update-alternatives
+%if %{with libalternatives}
+Requires(post): alts
+Requires(preun): alts
+%else
+Requires(post): update-alternatives
+Requires(preun): update-alternatives
+%endif
+Requires(post): coreutils
+Requires(preun): coreutils
 Provides:       ctags:/usr/bin/etags
 
 %description -n etags
@@ -959,9 +975,19 @@ do
     rm -vf $df
     %suse_update_desktop_file -r -i ${base%%.desktop} TextEditor Utility
 done
+%if %{with libalternatives}
+mkdir -p %{buildroot}%{_datadir}/libalternatives/ctags
+ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/ctags
+cat > %{buildroot}%{_datadir}/libalternatives/ctags/10.conf <<EOF
+binary=%{_bindir}/etags
+man=etags.1
+group=ctags
+EOF
+%else
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -sf %{_sysconfdir}/alternatives/ctags		%{buildroot}%{_bindir}/ctags
 ln -sf %{_sysconfdir}/alternatives/ctags.1%{ext_man}	%{buildroot}%{_mandir}/man1/ctags.1%{ext_man}
+%endif
 
 install -Dm644 %{SOURCE9} %{buildroot}%{_rpmmacrodir}/macros.emacs
 
@@ -1111,6 +1137,7 @@ for f in %info_files; do
 done
 %endif
 
+%if ! %{with libalternatives}
 %post -n etags
 test -L %{_bindir}/ctags || rm -f %{_bindir}/ctags
 %{_sbindir}/update-alternatives --quiet --force --install \
@@ -1122,6 +1149,7 @@ test -L %{_bindir}/ctags || rm -f %{_bindir}/ctags
 if test ! -f %{_bindir}/gnuctags ; then
     %{_sbindir}/update-alternatives --quiet --remove ctags %{_bindir}/gnuctags
 fi
+%endif
 
 %files -f site-lisp.lst -n emacs
 %defattr(-, root, root)
@@ -5552,7 +5580,13 @@ fi
 %{_mandir}/man1/ctags.1%{ext_man}
 %{_mandir}/man1/etags.1%{ext_man}
 %{_mandir}/man1/gnuctags.1%{ext_man}
+%if %{with libalternatives}
+%dir %{_datadir}/libalternatives/
+%dir %{_datadir}/libalternatives/ctags/
+%{_datadir}/libalternatives/ctags/10.conf
+%else
 %ghost %attr(0644,root,root) %{_sysconfdir}/alternatives/ctags
 %ghost %attr(0644,root,root) %{_sysconfdir}/alternatives/ctags.1%{ext_man}
+%endif
 
 %changelog

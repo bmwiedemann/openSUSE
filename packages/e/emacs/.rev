@@ -2225,4 +2225,13 @@ Now one could consider building emacs with gsettings support (both debian and fe
   namespaces</comment>
     <requestid>1292097</requestid>
   </revision>
+  <revision rev="208" vrev="9">
+    <srcmd5>133626f0f99aef0d00f36b47987d1975</srcmd5>
+    <version>30.1</version>
+    <time>1752847053</time>
+    <user>anag_factory</user>
+    <comment>- Switch over to libalternatives for etags to provide a ctags
+  variant (bsc#1245894)</comment>
+    <requestid>1293248</requestid>
+  </revision>
 </revisionlist>
