@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 15 10:58:13 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.3
+- Changes since 6.4.2:
+  * Update version for new release 6.4.3
+  * lockscreen: prevent immediate prompting for the password (kde#499637)
+  * applets/showdesktop: fix minimizeAll (kde#506734)
+  * widget explorer: delete icon on the uninstall button (kde#506818)
+  * kcms/workspaceoptions: Wrap other options text
+
+-------------------------------------------------------------------
 Tue Jul  1 13:11:23 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.2:
