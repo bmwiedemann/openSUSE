@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jul 15 13:56:33 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Upgrade to release 9.20.11
+  Security Fixes:
+  * Fix a possible assertion failure when
+    stale-answer-client-timeout is set to 0. In specific
+    circumstances the named resolver process could exit with an
+    assertion failure when stale answers were enabled and the
+    stale-answer-client-timeout configuration option was set to 0.
+    (CVE-2025-40777)
+    [bsc#1246548]
+
+  New Features:
+  * Add support for the CO flag to dig.
+
+  Bug Fixes:
+  * Correct the default interface-interval from 60s to 60m.
+  * Fix a purge-keys bug when using multiple views of a zone.
+  * Use IPv6 queries in delv +ns.
+
+-------------------------------------------------------------------
 Mon Jun 23 08:59:18 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Upgrade to release 9.20.10
