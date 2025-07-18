@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jul 18 05:58:19 UTC 2025 - ecsos <ecsos@opensuse.org> - 8.7.0
+
+- Update to 8.7.0
+  * New Features
+    - Kindle driver: Add support for generating page number files
+      (APNX) on 2024 and newer MTP based Kindles
+    - When finding similar books by author ignore "et al." suffix
+      on author names
+  * Bug Fixes
+    - Fix a regression in the previous release that broke
+      configuring Sending of books to device
+    - Kobo driver: Fix a regression that caused ancient, pre-Touch
+      kobo devices to no longer work with calibre
+    - MTP driver: Workaround for LibMTP no longer returning device
+      serial numbers on some systems
+    - Edit book: Fix the next/previous buttons in the Text search
+      tool not working
+    - Fix series and publisher mapping rules not handling commas
+      correctly when downloading metadata one book at a time
+    - Edit metadata dialog: When there are only a few cusotm
+      comments like fields stretch them vertically to take up
+      unused psace
+
+-------------------------------------------------------------------
 Fri Jul 11 05:12:16 UTC 2025 - ecsos <ecsos@opensuse.org> - 8.6.0
 
 - Update to 8.6.0
