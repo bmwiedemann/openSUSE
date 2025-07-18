@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Jul 17 19:35:48 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.9.2:
+  * Fix: complex conditionals within a line might cause a
+    KeyError when using sys.monitoring, as reported in issue
+    1991.  This is now fixed.
+  * Fix: we can now measure coverage for code in Python archive
+    (.par) files. Thanks, Itamer Oren.
+  * The "no-ctracer" warning is not issued for Python pre-release
+    versions. Coverage doesn't ship compiled wheels for those
+    versions, so this was far too noisy.
+  * On Python 3.14+, the "sysmon" core is now the default if it's
+    supported for your configuration.  Plugins and dynamic
+    contexts are still not supported with it.
+  * Added a [run] core configuration setting to specify the
+    measurement core, which was previously only available through
+    the COVERAGE_CORE environment variable. Finishes issue 1746.
+  * Fixed incorrect rendering of f-strings with doubled braces,
+    closing issue 1980.
+  * If the C tracer core can't be imported, a warning ("no-
+    ctracer") is issued with the reason.
+  * The C tracer core extension module now conforms to PEP 489,
+    closing issue 1977.  Thanks, Adam Turner.
+  * Fixed a "ValueError: min() arg is an empty sequence" error
+    caused by strange empty modules, found by oss-fuzz.
+  * Wheels are provided for Windows ARM64 on Python 3.11, 3.12,
+    and 3.13. Thanks, Finn Womack.
+  * A number of EncodingWarnings were fixed that could appear if
+    you've enabled PYTHONWARNDEFAULTENCODING, fixing issue 1966.
+    Thanks, Henry Schreiner.
+  * Fixed a race condition when using sys.monitoring with free-
+    threading Python, closing issue 1970.
+  * Added a new source_dirs setting for symmetry with the
+    existing source_pkgs setting. It's preferable to the existing
+    source setting, because you'll get a clear error when
+    directories don't exist. Fixes issue 1942.  Thanks, Jeremy
+    Fleischman.
+  * Fix: the PYTHONSAFEPATH environment variable new in Python
+    3.11 is properly supported, closing issue 1696.  Thanks,
+    Philipp A..  This works properly except for a detail when
+    using the coverage command on Windows.  There you can use
+    python -m coverage instead if you need exact emulation.
+- drop setuptools77.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Mar 27 09:44:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 7.7.1

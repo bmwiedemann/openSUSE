@@ -881,4 +881,41 @@ update to latest version</comment>
     <comment></comment>
     <requestid>1265232</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>e6a08f2836f007353c0993ca363b6481</srcmd5>
+    <version>7.9.2</version>
+    <time>1752847068</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.9.2:
+  * Fix: complex conditionals within a line might cause a
+    KeyError when using sys.monitoring, as reported in issue
+    1991.  This is now fixed.
+  * Fix: we can now measure coverage for code in Python archive
+    (.par) files. Thanks, Itamer Oren.
+  * The &quot;no-ctracer&quot; warning is not issued for Python pre-release
+    versions. Coverage doesn't ship compiled wheels for those
+    versions, so this was far too noisy.
+  * On Python 3.14+, the &quot;sysmon&quot; core is now the default if it's
+    supported for your configuration.  Plugins and dynamic
+    contexts are still not supported with it.
+  * Added a [run] core configuration setting to specify the
+    measurement core, which was previously only available through
+    the COVERAGE_CORE environment variable. Finishes issue 1746.
+  * Fixed incorrect rendering of f-strings with doubled braces,
+    closing issue 1980.
+  * If the C tracer core can't be imported, a warning (&quot;no-
+    ctracer&quot;) is issued with the reason.
+  * The C tracer core extension module now conforms to PEP 489,
+    closing issue 1977.  Thanks, Adam Turner.
+  * Fixed a &quot;ValueError: min() arg is an empty sequence&quot; error
+    caused by strange empty modules, found by oss-fuzz.
+  * Wheels are provided for Windows ARM64 on Python 3.11, 3.12,
+    and 3.13. Thanks, Finn Womack.
+  * A number of EncodingWarnings were fixed that could appear if
+    you've enabled PYTHONWARNDEFAULTENCODING, fixing issue 1966.
+    Thanks, Henry Schreiner.
+  * Fixed a race condition when using sys.monitoring with free-
+    threading Python, closing issue 1970.</comment>
+    <requestid>1294221</requestid>
+  </revision>
 </revisionlist>
