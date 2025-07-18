@@ -31,10 +31,12 @@ Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.x
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        kdiff3.keyring
 %endif
-BuildRequires:  cmake >= 3.22
+# PATCH-FIX-UPSTREAM
+Patch0:         m_bWordWrap-wrong-condition-hang.patch
 BuildRequires:  boost-devel >= 1.82
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake >= 3.22
 BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}

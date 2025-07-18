@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 17 11:54:05 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Add backported m_bWordWrap-wrong-condition-hang.patch
+  * fixes mergetool hang (kde#507065)
+
+-------------------------------------------------------------------
 Tue May 20 06:38:21 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.12.3

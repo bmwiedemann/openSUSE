@@ -459,4 +459,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1289093</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>7d600729e7f9722a2c3a1a640345e21c</srcmd5>
+    <version>1.12.3</version>
+    <time>1752847132</time>
+    <user>anag_factory</user>
+    <comment>- Add backported m_bWordWrap-wrong-condition-hang.patch
+  * fixes mergetool hang (kde#507065)</comment>
+    <requestid>1294194</requestid>
+  </revision>
 </revisionlist>
