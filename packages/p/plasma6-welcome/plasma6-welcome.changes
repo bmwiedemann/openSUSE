@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 15 10:58:28 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.3
+- Changes since 6.4.2:
+  * Update version for new release 6.4.3
+  * Give tab focus to page content label
+  * Make PlasmaFeatureCard accessible
+  * Make pseudo-buttons based on AbstractButton
+
+-------------------------------------------------------------------
 Tue Jul  1 13:11:35 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.2:
