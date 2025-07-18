@@ -37,7 +37,7 @@ Source7:        https://www.artsoft.org/RELEASES/%{oname}/levels/Boulder_Dash_Dr
 Source8:        https://www.artsoft.org/RELEASES/%{oname}/levels/Supaplex-2.0.0.7z
 Source9:        https://www.artsoft.org/RELEASES/unix/%{oname}/levels/rockslevels-dx-1.0.tar.gz
 Source68:       https://www.artsoft.org/RELEASES/%{oname}/levels/Better_Together-1.0.0.7z
-Source69:       https://www.artsoft.org/RELEASES/%{oname}/levels/Boulder_Dash-1.0.4.zip
+Source69:       https://www.artsoft.org/RELEASES/%{oname}/levels/Boulder_Dash-1.0.5.zip
 # Downloaded from http://www.jb-line.de/rnd/rnd_jue-3.3.0.0.tar.gz
 # Deleted directory rnd_jue/jue_sobigo and other which are not level
 # and packed than rockslevels, repacked as tar.gz
