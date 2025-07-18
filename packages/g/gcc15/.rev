@@ -156,4 +156,17 @@ since we bumped libgo SONAME as well for 15</comment>
   already and make them use unsuffixed binaries.</comment>
     <requestid>1291470</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1b482d33a2a838ed43be8f08c3af7213</srcmd5>
+    <version>15.1.1+git9973</version>
+    <time>1752846985</time>
+    <user>anag_factory</user>
+    <comment>- Fixup conflicts again.
+- Make sure to retain binary suffixes for accelerator crosses.
+
+- Update to GCC 15 branch head, 15.1.1+git9973
+- Fixes PR120995, unrecognizable insn UNSPEC_COMPARE_AND_SWAP with
+  rv64gc_zabha_zacas</comment>
+    <requestid>1294100</requestid>
+  </revision>
 </revisionlist>

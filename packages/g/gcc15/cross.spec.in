@@ -189,11 +189,9 @@ Obsoletes: cross-ppc-gcc49 <= 4.9.0+r209354
 # The -bootstrap packages file-conflict with the non-bootstrap variants.
 # Even if we don't actually (want to) distribute the bootstrap variants
 # the following avoids repo-checker spamming us endlessly.
-%if 0%{!?gcc_libc_bootstrap:1}
 Provides: %{gcc_target_arch}-gcc
-Conflicts: %{pkgname}-bootstrap
-%endif
 Conflicts: %{gcc_target_arch}-gcc
+Conflicts: %{pkgname}-bootstrap
 %endif
 #!BuildIgnore: gcc-PIE
 %if %{build_cp}

@@ -1624,7 +1624,7 @@ amdgcn-amdhsa,\
 %endif
 %endif
 %if 0%{?gcc_target_arch:1}
-%if %{suse_version} < 1600
+%if 0%{?gcc_accel:1} || %{suse_version} < 1600
 	--program-suffix=%{binsuffix} \
 %endif
 	--program-prefix=%{gcc_target_arch}- \

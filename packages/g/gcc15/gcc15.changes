@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 17 09:24:30 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Fixup conflicts again.
+- Make sure to retain binary suffixes for accelerator crosses.
+
+-------------------------------------------------------------------
+Mon Jul 14 12:20:31 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Update to GCC 15 branch head, 15.1.1+git9973
+- Fixes PR120995, unrecognizable insn UNSPEC_COMPARE_AND_SWAP with
+  rv64gc_zabha_zacas
+
+-------------------------------------------------------------------
 Wed Jul  9 11:26:24 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Prune the use of update-alternatives from openSUSE Factory and

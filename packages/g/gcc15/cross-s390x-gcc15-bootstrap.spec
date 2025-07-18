@@ -103,7 +103,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        15.1.1+git9866
+Version:        15.1.1+git9973
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -276,11 +276,9 @@ Obsoletes:      cross-ppc-gcc49 <= 4.9.0+r209354
 # The -bootstrap packages file-conflict with the non-bootstrap variants.
 # Even if we don't actually (want to) distribute the bootstrap variants
 # the following avoids repo-checker spamming us endlessly.
-%if 0%{!?gcc_libc_bootstrap:1}
 Provides:       %{gcc_target_arch}-gcc
-Conflicts:      %{pkgname}-bootstrap
-%endif
 Conflicts:      %{gcc_target_arch}-gcc
+Conflicts:      %{pkgname}-bootstrap
 %endif
 #!BuildIgnore: gcc-PIE
 %if %{build_cp}
@@ -560,7 +558,7 @@ amdgcn-amdhsa,\
 %endif
 %endif
 %if 0%{?gcc_target_arch:1}
-%if %{suse_version} < 1600
+%if 0%{?gcc_accel:1} || %{suse_version} < 1600
 	--program-suffix=%{binsuffix} \
 %endif
 	--program-prefix=%{gcc_target_arch}- \
