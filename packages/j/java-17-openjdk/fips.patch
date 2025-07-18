@@ -1417,7 +1417,7 @@
 +}
 --- a/src/java.base/share/conf/security/java.security
 +++ b/src/java.base/share/conf/security/java.security
-@@ -82,6 +82,17 @@ security.provider.tbd=Apple
+@@ -83,6 +83,17 @@
  #endif
  security.provider.tbd=SunPKCS11
  
@@ -1435,7 +1435,7 @@
  #
  # A list of preferred providers for specific algorithms. These providers will
  # be searched for matching algorithms before the list of registered providers.
-@@ -292,6 +303,47 @@ policy.ignoreIdentityScope=false
+@@ -293,6 +304,47 @@ policy.ignoreIdentityScope=false
  #
  keystore.type=pkcs12
  
@@ -1483,7 +1483,7 @@
  #
  # Controls compatibility mode for JKS and PKCS12 keystore types.
  #
-@@ -329,6 +381,13 @@ package.definition=sun.misc.,\
+@@ -330,6 +382,13 @@ package.definition=sun.misc.,\
  #
  security.overridePropertiesFile=true
  
@@ -2417,8 +2417,8 @@
 -                attrs[1].getBoolean() || !attrs[2].getBoolean();
 +        boolean exportable = plainKeySupportEnabled && !algorithm.equals("DH");
 +        boolean keySensitive = (!exportable &&
-+                ((attrs[0].getBoolean() && P11Util.isNSS(session.token)) ||
-+                attrs[1].getBoolean() || !attrs[2].getBoolean()));
++            (attrs[0].getBoolean() && P11Util.isNSS(session.token))  ||
++             attrs[1].getBoolean() || !attrs[2].getBoolean());
  
          switch (algorithm) {
          case "RSA":
@@ -3285,30 +3285,7 @@
          d(SIG, "RawDSA",        P11Signature,
                  List.of("NONEwithDSA"),
                  m(CKM_DSA));
-@@ -1120,9 +1332,22 @@ public final class SunPKCS11 extends AuthProvider {
-                 continue;
-             }
-             boolean allowLegacy = config.getAllowLegacy();
-+            descLoop:
-             for (Descriptor d : ds) {
-                 Integer oldMech = supportedAlgs.get(d);
-                 if (oldMech == null) {
-+                    // check all required mechs are supported
-+                    if (d.requiredMechs != null) {
-+                        // Check that other mechanisms required for the
-+                        // service are supported before listing it as
-+                        // available for the first time.
-+                        for (int requiredMech : d.requiredMechs) {
-+                            if (token.getMechanismInfo(
-+                                    requiredMech & 0xFFFFFFFFL) == null) {
-+                                continue descLoop;
-+                            }
-+                        }
-+                    }
- 
-                     // assume full support if no mech info available
-                     if (!allowLegacy && mechInfo != null) {
-@@ -1211,11 +1436,52 @@ public final class SunPKCS11 extends AuthProvider {
+@@ -1211,11 +1423,52 @@ public final class SunPKCS11 extends AuthProvider {
          }
  
          @Override
@@ -3361,7 +3338,7 @@
              try {
                  return newInstance0(param);
              } catch (PKCS11Exception e) {
-@@ -1235,6 +1501,8 @@ public final class SunPKCS11 extends AuthProvider {
+@@ -1235,6 +1488,8 @@ public final class SunPKCS11 extends AuthProvider {
                  } else if (algorithm.endsWith("GCM/NoPadding") ||
                             algorithm.startsWith("ChaCha20-Poly1305")) {
                      return new P11AEADCipher(token, algorithm, mechanism);
@@ -3370,7 +3347,7 @@
                  } else {
                      return new P11Cipher(token, algorithm, mechanism);
                  }
-@@ -1570,6 +1838,9 @@ public final class SunPKCS11 extends AuthProvider {
+@@ -1570,6 +1825,9 @@ public final class SunPKCS11 extends AuthProvider {
          try {
              session = token.getOpSession();
              p11.C_Logout(session.id());
