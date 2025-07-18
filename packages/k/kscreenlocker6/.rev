@@ -207,4 +207,15 @@
     <comment>Plasma 6.4.2, untested (forwarded request 1289775 from Vogtinator)</comment>
     <requestid>1289886</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5bbb3cfb39bb258c14f8b874c90414a2</srcmd5>
+    <version>6.4.3</version>
+    <time>1752847051</time>
+    <user>anag_factory</user>
+    <comment>The PAM change separately, to be accepted after greenlit on the referenced bug.
+
+- Use a hardcoded list of PAM modules for auth in kde-fingerprint and
+  kde-smartcard and deny password (boo#1244496) (forwarded request 1293848 from Vogtinator)</comment>
+    <requestid>1294156</requestid>
+  </revision>
 </revisionlist>
