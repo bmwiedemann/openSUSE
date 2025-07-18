@@ -28,23 +28,19 @@
 ExclusiveArch:  x86_64 aarch64
 
 Name:           warewulf4
-Version:        4.6.0
+Version:        4.6.2
 Release:        0
 Summary:        A suite of tools for clustering
 License:        BSD-3-Clause
 Group:          Productivity/Clustering/Computing
 URL:            https://warewulf.org
 Source0:        warewulf-%{version}.tar
-#Source0:        https://github.com/mslacken/warewulf/archive/%{githash}.tar.gz#/warewulf-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Source5:        warewulf4-rpmlintrc
 Source10:       config-ww4.sh
 Source11:       adjust_overlays.sh
 Source20:       README.dnsmasq
 Source21:       README.RKE2.md
-Patch0:         fixup-pdf-build.patch
-Patch1:         security-fixes.patch
-Patch2:         udev-regression.patch
 
 BuildRequires:  %{python_module Sphinx-latex}
 BuildRequires:  distribution-release
@@ -114,7 +110,7 @@ Reference documentation for warewulf4.
 %package overlay-slurm
 Summary:        Configuration template for slurm
 Requires:       %{name} = %{version}
-Requires:       slurm
+Recommends:     slurm
 BuildArch:      noarch
 Obsoletes:      warewulf4-slurm <= 4.4.0
 Provides:       warewulf4-slurm = %version
@@ -245,6 +241,8 @@ mkdir -p %{buildroot}/%{_defaultdocdir}/%{name}
 mv %{buildroot}/%{_sysconfdir}/warewulf/examples %{buildroot}%{_defaultdocdir}/%{name}/example-templates
 # fix logrotate name
 mv %{buildroot}/%{_sysconfdir}/logrotate.d/warewulfd.conf %{buildroot}/%{_sysconfdir}/logrotate.d/warewulf4
+# add version tag to documentation
+mv ./userdocs/_build/latex/warewulfuserguide.pdf ./userdocs/_build/latex/warewulfuserguide-%{version}.pdf
 
 %pre -f %{name}.pre
 %service_add_pre warewulfd.service
@@ -281,6 +279,7 @@ fi
 %config(noreplace) %{_sysconfdir}/warewulf/warewulf.conf
 %config(noreplace) %{_sysconfdir}/warewulf/grub
 %config(noreplace) %{_sysconfdir}/warewulf/ipxe
+%config(noreplace) %{_sysconfdir}/warewulf/auth.conf
 %config %{_sysconfdir}/logrotate.d/warewulf4
 %{_defaultdocdir}/%{name}/example-templates
 %{_prefix}/lib/firewalld/services/warewulf.xml
@@ -331,10 +330,9 @@ fi
 
 %files dracut
 %defattr(-, root, root)
-%dir %{_prefix}/lib/dracut/modules.d/90wwinit
-%{_prefix}/lib/dracut/modules.d/90wwinit/*.sh
+%{_prefix}/lib/dracut/modules.d/90wwinit
 
 %files reference-doc
-%doc ./userdocs/_build/latex/warewulfuserguide.pdf
+%doc ./userdocs/_build/latex/warewulfuserguide-%{version}.pdf
 
 %changelog

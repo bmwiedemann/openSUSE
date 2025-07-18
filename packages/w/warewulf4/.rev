@@ -416,4 +416,21 @@
     <comment></comment>
     <requestid>1265147</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>90a319c5d984a55f041bdeded41863b3</srcmd5>
+    <version>4.6.2</version>
+    <time>1752847228</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.6.2 which contains the (preview) support for 
+  provisioning to local disk
+- incoperated from 4.6.1
+  * rest api which is disabled in the default configuration
+- removed following files as fixed upstream:
+  * fixup-pdf-build.patch
+  * security-fixes.patch
+  * udev-regression.patch
+- marked slurm as recommeneded in the warewulf4-overlay-slurm
+  package bsc#124608</comment>
+    <requestid>1294380</requestid>
+  </revision>
 </revisionlist>
