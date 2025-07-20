@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 17 14:09:55 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Enable openmp and lldb for loongarch64 
+
+-------------------------------------------------------------------
 Wed Apr 16 21:13:49 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Enable LLDB Python bindings on Leap 15.6 and newer.

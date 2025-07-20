@@ -2390,4 +2390,13 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>1270295</requestid>
   </revision>
+  <revision rev="149" vrev="3">
+    <srcmd5>e3ccfa657a18503b2943b471ba4867c0</srcmd5>
+    <version>20</version>
+    <time>1753018079</time>
+    <user>anag_factory</user>
+    <comment>- Enable openmp and lldb for loongarch64 
+</comment>
+    <requestid>1294241</requestid>
+  </revision>
 </revisionlist>

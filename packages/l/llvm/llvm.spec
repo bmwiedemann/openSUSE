@@ -18,11 +18,11 @@
 
 %define _sonum 20
 
-%ifarch aarch64 ppc64 ppc64le %{ix86} x86_64 riscv64
+%ifarch aarch64 loongarch64 ppc64 ppc64le %{ix86} x86_64 riscv64
 %global has_openmp 1
 %endif
 
-%ifarch aarch64 ppc64le s390x x86_64
+%ifarch aarch64 loongarch64 ppc64le s390x x86_64
 %define has_lldb 1
 %if %{suse_version} >= 1600 || 0%{?sle_version} >= 150600
 %define has_lldb_python 1
