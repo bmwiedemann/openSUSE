@@ -36,6 +36,9 @@ Source1:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
 Source2:        socket_wrapper.keyring
 Source3:        %{name}-rpmlintrc
 #
+# PATCH-FIX-UPSTREAM https://gitlab.com/cwrap/socket_wrapper/-/merge_requests/49
+Patch0:         swrap-fix-tests.patch
+#
 BuildRequires:  cmake
 BuildRequires:  pkg-config
 BuildRequires:  cmake(cmocka)

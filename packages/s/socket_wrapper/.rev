@@ -268,4 +268,13 @@ Note: socket_wrapper fails if built on 'lamb'</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1277071</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>39fdad16a71207a5a685a5313f03b507</srcmd5>
+    <version>1.5.0</version>
+    <time>1753018076</time>
+    <user>anag_factory</user>
+    <comment>- Added swrap-fix-tests.patch
+</comment>
+    <requestid>1294177</requestid>
+  </revision>
 </revisionlist>
