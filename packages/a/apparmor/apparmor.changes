@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 18 21:15:55 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- add xkeyboard.diff to allow reading /usr/share/xkeyboard-config-2/
+  via abstractions/X (boo#1246743)
+
+-------------------------------------------------------------------
+Fri Jul 18 11:50:04 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- add kerberosclient-usrmerge.diff to allow reading
+  /usr/etc/krb5.conf (boo#1246689)
+
+-------------------------------------------------------------------
 Tue Jul 15 18:18:26 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
 
 - replace dovecot24.diff with upstream fix from MR 1733 (boo#1243008)

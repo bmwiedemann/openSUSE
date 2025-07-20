@@ -23,7 +23,7 @@ if [ $? -eq 0 ]; then
 fi
 
 if [ -f /etc/nsswitch.conf ]; then
-    grep -Exq "passwd:.*?compat systemd" /etc/nsswitch.conf
+    grep -Eq "passwd:.*systemd" /etc/nsswitch.conf
     if [ $? -ne 0 ]; then
         echo "/etc/nsswitch.conf is out of date, please update it from /usr/etc/nsswitch.conf to use cockpit"
         failed=true

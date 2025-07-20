@@ -1387,4 +1387,14 @@
     <comment></comment>
     <requestid>1290998</requestid>
   </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>5a2ebe130b700be937ea0ea28c62bca6</srcmd5>
+    <version>5.2.4</version>
+    <time>1753018134</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream test_strip_tags.patch to fix test errors with
+  at-this-point future python interpreters
+</comment>
+    <requestid>1294515</requestid>
+  </revision>
 </revisionlist>

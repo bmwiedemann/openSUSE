@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 17 10:16:07 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Don't globstar files in shared directory _bindir.
+
+-------------------------------------------------------------------
+Wed Jul  9 16:09:35 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- build the man page
+
+-------------------------------------------------------------------
 Mon Oct  9 20:24:31 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.7.4a:

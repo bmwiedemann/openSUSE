@@ -86,6 +86,12 @@ Patch7:         apparmor-enable-precompiled-cache.diff
 # taken from https://gitlab.com/apparmor/apparmor/-/merge_requests/1733 (merged 2025-07-15 to master, 4.1 and 4.0 branch)
 Patch10:        dovecot24.diff
 
+# /usr/etc/krb5.conf - boo#1246689 - not submitted upstream yet since https://github.com/krb5/krb5/pull/1437/ is still open
+Patch11:        kerberosclient-usrmerge.diff
+
+# abstractions/X: allow reading /usr/share/xkeyboard-config-2/ - submitted upstream 2025-07-18 https://gitlab.com/apparmor/apparmor/-/merge_requests/1741
+Patch12:        xkeyboard.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -355,6 +361,8 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch -P 7
 %endif
 %patch -P 10 -p1
+%patch -P 11 -p1
+%patch -P 12 -p1
 
 %build
 export SUSE_ASNEEDED=0

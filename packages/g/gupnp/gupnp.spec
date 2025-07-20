@@ -127,8 +127,11 @@ mv %{buildroot}%{_datadir}/doc/%{name}-%{sover} %{buildroot}%{_docdir}
 
 %ldconfig_scriptlets -n libgupnp-%{soname}
 
+# The test cannot be completed on loongarch64 due to architectural limitations
+%ifnarch loongarch64
 %check
 %meson_test || (%meson_test)
+%endif
 
 %files -n libgupnp-%{soname}
 %license COPYING

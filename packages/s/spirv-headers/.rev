@@ -403,4 +403,14 @@
     <comment>- Update to snapshot 1.6.4+sdk313+git19 (Git 2a611a9)</comment>
     <requestid>1288937</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>5688955b19ec6314c9b391f8d6fffb4f</srcmd5>
+    <version>1.6.4+sdk321</version>
+    <time>1753018113</time>
+    <user>anag_factory</user>
+    <comment>- Update to tag SDK-1.4.321.0 (Git 2a611a9); i.e. bump at the
+  openSUSE package level only, no source code change, no user
+  visible change.</comment>
+    <requestid>1294039</requestid>
+  </revision>
 </revisionlist>

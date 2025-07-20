@@ -16,9 +16,9 @@
 #
 
 
-%define libselinux_ver   3.8.1
+%define libselinux_ver   3.9
 Name:           restorecond
-Version:        3.8.1
+Version:        3.9
 Release:        0
 Summary:        Daemon to restore SELinux contexts
 License:        GPL-2.0-or-later

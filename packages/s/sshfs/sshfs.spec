@@ -1,7 +1,7 @@
 #
 # spec file for package sshfs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source2:        sshfs.keyring
 BuildRequires:  fuse3-devel >= 3.1.0
 BuildRequires:  meson
 BuildRequires:  pkgconfig >= 0.9.0
+BuildRequires:  python3-docutils
 BuildRequires:  pkgconfig(glib-2.0)
 Requires:       fuse3 >= 3.1.0
 
@@ -52,8 +53,9 @@ openssh (ssh).
 %files
 %license COPYING
 %doc AUTHORS
-%{_bindir}/*
+%{_bindir}/sshfs
 %{_sbindir}/mount.fuse.sshfs
 %{_sbindir}/mount.sshfs
+%{_mandir}/man1/sshfs.1%{?ext_man}
 
 %changelog

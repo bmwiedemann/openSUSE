@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 16 22:29:54 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Changed nginx.logrotate and nginx-conf.patch files.
+  * Removed hardcoded user and group definitions.
+- Removed ending slashes wherever possible.
+
+-------------------------------------------------------------------
+Wed Jul 16 21:33:02 UTC 2025 - Parag Jain <parag.jain@suse.com>
+
+- Removed root privileges when running logrotate (bsc#1246090).
+
+-------------------------------------------------------------------
 Fri Jun 27 09:33:06 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 1.29.0

@@ -357,4 +357,29 @@
   * cmd/dlv: update staticcheck (#3989) (forwarded request 1286173 from jfkw)</comment>
     <requestid>1286174</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>43ae2e1bd7d7e7f9a3437a4752e43c57</srcmd5>
+    <version>1.25.1</version>
+    <time>1753018141</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.25.1:
+  * *: v1.25.1
+  * service/dap: do not try to stacktrace an unreadable goroutine (#4056)
+  * service/dap: implement restart request (#4057)
+  * service/dap: do not try to access value of unreadable string variables (#4055)
+  * goversion: update min supported go minor version
+  * CI: update teamcity to run 1.25
+  * *: update golang.org/x/tools
+  * pkg/goversion: update max supported go minor version
+  * gobuild: try using debug filename pattern for debug binary first
+  * pkg/proc: fix type cast between slices (#4048)
+  * pkg/proc: make closure captured vars visible on closure's first line (#4049)
+  * pkg,service: simplify tests with slices.Contains (#4040)
+  * service/dap: add missing response body close in test (#4039)
+  * dwarf/frame: handle unknown opcodes more gracefully (#4037)
+  * proc: propogate errors from switchToGoroutineStack
+  * proc: refactor multi arch branches to uses Arch.usesLR
+  * proc: handle moving of direct interface flag in Go 1.26 (#4032) (forwarded request 1294418 from jfkw)</comment>
+    <requestid>1294421</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 18 23:58:42 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 20250716T153503Z:
+  * fix: redact sse key in debug logs (#5231)
+  * mv:support set tag and checksum (#5133)
+  * ping: support ping a specified node and remove duplicate port printing (#5132)
+  * feat: add `--storage-class` option to `mc put` subcommand (#5228)
+  * mirror and cp support set the maximum number of threads (#5220)
+  * Some paths like url2Stat will send resource with backslashes on windows (#5226)
+  * Include ARN in "replicate list" output (#5215)
+  * Update build version (#5218)
+  * fix: add checks for nil HTTP in admin-trace matches func (#5216)
+  * remove fips 'mc' container Dockerfile
+
+-------------------------------------------------------------------
 Sun May 25 07:51:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 20250521T015954Z:

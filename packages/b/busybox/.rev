@@ -891,4 +891,15 @@
 </comment>
     <requestid>1273377</requestid>
   </revision>
+  <revision rev="91" vrev="5">
+    <srcmd5>49c123b97d3956dbd368897273a8e91d</srcmd5>
+    <version>1.37.0</version>
+    <time>1753018109</time>
+    <user>anag_factory</user>
+    <comment>Please not this request should be staged after or together with https://build.opensuse.org/request/show/1294030
+
+- add placeholder variable and ignore applet logic to busybox.install 
+- enable halt, poweroff, reboot commands (bsc#1243201) </comment>
+    <requestid>1294032</requestid>
+  </revision>
 </revisionlist>

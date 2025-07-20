@@ -1,4 +1,243 @@
 -------------------------------------------------------------------
+Fri Jul 18 13:59:31 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.27 → 10.2.28
+
+-------------------------------------------------------------------
+Fri Jul 18 10:35:32 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix dracut code to be POSIX compliant
+
+  The redirect type "< <(...)" is not POSIX complians and leads
+  to a syntax error in dracut which calls bash as "sh" leading
+  it to be restricted to POSIX only
+
+-------------------------------------------------------------------
+Thu Jul 17 15:24:09 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Extend test-image-lvm integration test
+
+  For testing a bit more complex resize procedure, update
+  the lvm integration test to run more resize actions
+  with required device locking
+
+-------------------------------------------------------------------
+Thu Jul 17 12:33:17 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Apply proper udev locking
+
+  Several commands during repart, resize and other actions
+  require a proper lock to be set for udev such that other
+  events knows about the locked state of a device and do
+  not mess with it until the command for which the lock
+  persists has completed. This commit applies proper udev
+  locks to all commands that requires it. In addition
+  incorrect code that was expected to prevent such race
+  conditions got dropped from the implementation.
+  This is related to bsc#1242987
+
+-------------------------------------------------------------------
+Thu Jul 17 11:28:59 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- relocate GPT at the end of disk using sfdisk
+
+  Using sfdisk for relocation and verification makes this
+  part more consistent. We also want to move away from gdisk.
+  This is related to #2851
+
+-------------------------------------------------------------------
+Thu Jul 17 10:42:34 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Do not strictly require config.partids in repart
+
+  The kiwi-repart implementation requires a metadata file
+  named config.partids which holds information about
+  partition ids and more stored at the time the image was
+  built. Depending on the complexity of the image and the
+  resize request some of the information can be rebuilt
+  in case the metadata file is missing. This commit adds
+  the rebuild of the minimum required information to run
+  a standard resize and therefore allows the kiwi-repart
+  dracut module to work also without config.partids to be
+  present in the system
+
+-------------------------------------------------------------------
+Thu Jul 17 10:37:34 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Do not drop /config.partids
+
+  The partition id metadata file is used in the kiwi-repart
+  module. If a user wants to use the kiwi repart module
+  permanently, this metadata file needs to stay in the system.
+  Therefore it should not be automatically deleted by the
+  cleanup. A disk.sh hook script can be used to force the
+  deletion of the file though. This is related #2851
+
+-------------------------------------------------------------------
+Wed Jul 16 16:10:07 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix centos/test-image-live-disk-v10
+
+  There is no package named iprutils
+
+-------------------------------------------------------------------
+Wed Jul 16 16:04:15 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix centos/test-image-live-disk-v10
+
+  Update package names
+
+-------------------------------------------------------------------
+Wed Jul 16 15:59:23 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added centos/test-image-live-disk-v10 build test
+
+-------------------------------------------------------------------
+Wed Jul 16 11:07:05 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix tumbleweed/test-image-gce integration test
+
+  Drop obsolete growpart
+
+-------------------------------------------------------------------
+Wed Jul 16 10:54:54 CEST 2025 - Robert Schneider <48757730+work-robot@users.noreply.github.com>
+
+- Followup fix to support older apt versions for bootstrap
+
+  There are apt versions that do not create missing state files.
+  Make sure the intermediate bootstrap state file is created in
+  any case. This Fixes #2857
+
+-------------------------------------------------------------------
+Wed Jul 16 10:36:41 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed integration test builds
+
+  Next round of fixes for integration tests. Missing
+  or wrong service activations
+
+-------------------------------------------------------------------
+Wed Jul 16 10:22:11 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix arm/tumbleweed/test-image-rpi
+
+  Fix snapper setup for this integration test
+
+-------------------------------------------------------------------
+Tue Jul 15 16:28:45 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed test-image-live-disk
+
+  Added missing openssh-server package
+
+-------------------------------------------------------------------
+Tue Jul 15 15:54:51 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed test-image-azure
+
+  Add missing python-azure-agent-config-default package
+
+-------------------------------------------------------------------
+Tue Jul 15 15:50:10 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed debian integration test builds
+
+  secure shell service is named ssh and not sshd there
+
+-------------------------------------------------------------------
+Tue Jul 15 15:37:10 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed integration test builds
+
+  Second round of fixes for integration tests. Again errors
+  now became visible due to the refactoring of the script code
+
+-------------------------------------------------------------------
+Tue Jul 15 15:03:59 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed integration test builds
+
+  Errors from scripts were no longer ignored due to the last
+  cleanup of the integration test script code. This commit
+  fixes the now exposed build errors
+
+-------------------------------------------------------------------
+Tue Jul 15 11:15:25 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix check_target_dir_on_unsupported_filesystem
+
+  Find the first existing path in the target path and
+  check the filesystem capabilities for this path.
+  This Fixes #2858
+
+-------------------------------------------------------------------
+Mon Jul 14 18:24:23 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Cleanup integration tests config.sh script code
+
+  Add script code to shellcheck and fix all reported issues.
+  Get rid of suseXX and baseXX methods as much as possible.
+  Add set -ex for all script code. Do not allow any script
+  code to fail.
+
+-------------------------------------------------------------------
+Mon Jul 14 16:34:38 CEST 2025 - Andrea Bolognani <abologna@redhat.com>
+
+- defaults: Add patterns for shim/grub2 on riscv64
+
+  A recent commit changed the way these are looked up and
+  accidentally broke image building on riscv64, with
+
+  KiwiBootLoaderGrubSecureBootError: Signed grub2 efi loader not found
+
+  now being raised for kiwi recipes that worked just fine
+  before that moment.
+
+  Fixes: 197572378cf4f25103934beac2ceca4fbbcfcbc0
+  Thanks: David Abdurachmanov <davidlt@rivosinc.com>
+  Thanks: Marcus Schäfer <marcus.schaefer@gmail.com>
+  Signed-off-by: Andrea Bolognani <abologna@redhat.com>
+
+-------------------------------------------------------------------
+Sat Jul 12 23:50:39 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add SLFO test-image-disk-simple integration test
+
+  Add simple disk test and allow for testing the new
+  transparent container idea for the aws toolchain. also
+  add SLFO builds to the helper script
+
+-------------------------------------------------------------------
+Wed Jul 09 15:23:41 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed check for unallocated space on disk
+
+  So far the check for unallocated space was only working for GPT
+  and there it was also not really stable. The check was based on
+  verifying if the backup GPT table is really at the end of the
+  disk. Depending on which tool was used to dump the image on the
+  target this "mistake" often got corrected by the tools that
+  dumped the image. In this case the check no longer worked.
+  This commit improves the check by another test which looks
+  for the real free bytes on disk compared to the current
+  partition geometry.
+
+-------------------------------------------------------------------
+Wed Jul 09 12:50:06 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move to neutral directory for calling osc
+
+  When calling the helper/build_status.sh script to get an
+  overview about the results of the integration tests, there
+  is a stupid new behavior from the osc tool that it assumes
+  a package name according to the name of the directory you
+  are in probably connected to the fact that the data in this
+  directory is a git checkout or some other strange assumption.
+  This commit moves to a neutral directory where none of the
+  osc internal assumptions applies and it just does what it
+  should do... showing results of the given project.
+
+-------------------------------------------------------------------
 Wed Jul 09 11:26:31 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.2.26 → 10.2.27

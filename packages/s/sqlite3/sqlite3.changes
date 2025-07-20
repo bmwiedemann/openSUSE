@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 17 16:17:25 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Update to version 3.50.3:
+  * Fix a possible memory error that can occur if a query is made
+    against against FTS5 index that has been deliberately corrupted
+    in a very specific way.
+  * Fix the parser so that it ignored SQL comments in all places of
+    a CREATE TRIGGER statement. This resolves a problem that was
+    introduced by the introduction of the
+    SQLITE_DBCONFIG_ENABLE_COMMENTS feature in version 3.49.0.
+  * Fix an incorrect answer due to over-optimization of an AND
+    operator.
+
+-------------------------------------------------------------------
 Tue Jul  1 12:04:55 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Update to 3.50.2:
@@ -12,7 +26,8 @@ Tue Jul  1 12:04:55 UTC 2025 - Reinhard Max <max@suse.com>
   * Fix a problem with UPDATEs on fts5 tables that contain BLOB
     values.
   * Fix an issue with transitive IS constraints on a RIGHT JOIN.
-  * Raise an error early if the number of aggregate terms in a
+  * CVE-2025-6965, bsc#1246597:
+    Raise an error early if the number of aggregate terms in a
     query exceeds the maximum number of columns, to avoid
     downstream assertion faults.
   * Ensure that sqlite3_setlk_timeout() holds the database mutex.

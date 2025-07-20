@@ -186,6 +186,9 @@ Patch19:        bso1227999-reproducible-builds.patch
 Patch22:        gh120226-fix-sendfile-test-kernel-610.patch
 # PATCH-FIX-UPSTREAM Add platform triplets for 64-bit LoongArch gh#python/cpython#30939 glaubitz@suse.com
 Patch24:        add-loongarch64-support.patch
+# PATCH-FIX-UPSTREAM CVE-2025-6069-quad-complex-HTMLParser.patch bsc#1244705 mcepl@suse.com
+# avoid quadratic complexity when processing malformed inputs with HTMLParser
+Patch25:        CVE-2025-6069-quad-complex-HTMLParser.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  crypto-policies-scripts
@@ -478,7 +481,7 @@ TODAY_DATE=`date -r %{SOURCE0} "+%%B %%d, %%Y"`
 
 cd Doc
 sed -i "s/^today = .*/today = '$TODAY_DATE'/" conf.py
-%make_build -j1 html
+%make_build -j1 JOBS=1 html
 
 # Build also devhelp files
 sphinx-build -a -b devhelp . build/devhelp

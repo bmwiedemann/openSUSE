@@ -1,0 +1,17 @@
+diff --git a/profiles/apparmor.d/abstractions/kerberosclient b/profiles/apparmor.d/abstractions/kerberosclient
+index e5f3a934f..d01bfe804 100644
+--- a/profiles/apparmor.d/abstractions/kerberosclient
++++ b/profiles/apparmor.d/abstractions/kerberosclient
+@@ -28,9 +28,9 @@
+   /usr/lib/@{multiarch}/krb5/plugins/authdata/* mr,
+ 
+   /etc/krb5.keytab            rk,
+-  /etc/krb5.conf              r,
+-  /etc/krb5.conf.d/           r,
+-  /etc/krb5.conf.d/*          r,
++  @{etc_ro}/krb5.conf         r,
++  @{etc_ro}/krb5.conf.d/      r,
++  @{etc_ro}/krb5.conf.d/*     r,
+ 
+   # config files found via strings on libs
+   /etc/krb.conf               r,

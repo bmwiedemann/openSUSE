@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul 17 08:16:41 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop excessive gcc flags: add cf-prot.patch.
+
+-------------------------------------------------------------------
+Mon Jun 30 19:18:22 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to version 2022.2.0:
+  * Improved Hybrid CPU and NUMA Platforms API Support: Enhanced
+    API availability for better compatibility with Hybrid CPU and
+    NUMA platforms.
+  * Refined Environment Setup: Replaced CPATH with C_INCLUDE_PATH 
+    and CPLUS_INCLUDE_PATH in environment setup to avoid 
+    unintended compiler warnings caused by globally applied 
+    include paths.
+
+-------------------------------------------------------------------
 Tue May  6 13:19:31 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 2022.1.0:

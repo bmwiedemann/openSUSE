@@ -1512,4 +1512,14 @@ Changes from version 1.3.0:
     <comment></comment>
     <requestid>1289809</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>ac6a01b5cd71557ceaf5179afbf34290</srcmd5>
+    <version>1.6.9</version>
+    <time>1753018115</time>
+    <user>anag_factory</user>
+    <comment>- Disable test on loongarch. The test cannot be completed on
+  loongarch64 due to architectural limitations.
+</comment>
+    <requestid>1294054</requestid>
+  </revision>
 </revisionlist>

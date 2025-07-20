@@ -20,7 +20,7 @@
 %endif
 
 Name:           vulkan-validationlayers
-Version:        1.4.313
+Version:        1.4.321
 Release:        0
 Summary:        Validation layers for Vulkan
 License:        Apache-2.0
@@ -31,15 +31,15 @@ Patch2:         xxhash.diff
 BuildRequires:  cmake >= 3.7.12
 BuildRequires:  gcc%{?gcc_version} >= 9
 BuildRequires:  gcc%{?gcc_version}-c++ >= 9
-BuildRequires:  glslang-devel >= 15.1
+BuildRequires:  glslang-devel >= 15.4
 BuildRequires:  memory-constraints
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
-BuildRequires:  spirv-headers >= 1.6.4+sdk309+git17
-BuildRequires:  spirv-tools-devel >= 2025.2~rc2
+BuildRequires:  spirv-headers >= 1.6.4+sdk313+git19
+BuildRequires:  spirv-tools-devel >= 2025.3~rc1
 BuildRequires:  vulkan-headers >= %version
 BuildRequires:  vulkan-utility-libraries-devel >= %version
-BuildRequires:  xxhash-devel
+BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(vulkan) >= %version
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
@@ -53,7 +53,8 @@ This package contains the Khronos official Vulkan validation layers.
 
 %prep
 %autosetup -n Vulkan-ValidationLayers-vulkan-sdk-%version.0 -p1
-perl -i -pe 's{\@PACKAGE_VERSION\@}{%version}' CMakeLists.txt */CMakeLists.txt
+perl -i -lpe 's{\@PACKAGE_VERSION\@}{%version}' CMakeLists.txt */CMakeLists.txt
+rm -Rfv layers/external/xxhash* layers/external/parallel_hashmap
 
 %build
 %limit_build -m 2000

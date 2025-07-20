@@ -30,8 +30,8 @@
 %endif
 
 Name:           spirv-headers
-Version:        1.6.4+sdk313+git19
-%define innerver 1.4.313
+Version:        1.6.4+sdk321
+%define innerver 1.4.321
 %define rev 2a611a970fdbc41ac2e3e328802aed9985352dca
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry

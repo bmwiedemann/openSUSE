@@ -2988,4 +2988,41 @@
   Co-Authored-By: Marcus Schäfer &lt;marcus.schaefer@gmail.com&gt;</comment>
     <requestid>1291451</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>71570706353ac2aa8f5e7026af8a032c</srcmd5>
+    <version>10.2.28</version>
+    <time>1753018094</time>
+    <user>anag_factory</user>
+    <comment>- Bump version: 10.2.27 → 10.2.28
+
+- Fix dracut code to be POSIX compliant
+  The redirect type &quot;&lt; &lt;(...)&quot; is not POSIX complians and leads
+  to a syntax error in dracut which calls bash as &quot;sh&quot; leading
+  it to be restricted to POSIX only
+
+- Extend test-image-lvm integration test
+  For testing a bit more complex resize procedure, update
+  the lvm integration test to run more resize actions
+  with required device locking
+
+- Apply proper udev locking
+  Several commands during repart, resize and other actions
+  require a proper lock to be set for udev such that other
+  events knows about the locked state of a device and do
+  not mess with it until the command for which the lock
+  persists has completed. This commit applies proper udev
+  locks to all commands that requires it. In addition
+  incorrect code that was expected to prevent such race
+  conditions got dropped from the implementation.
+  This is related to bsc#1242987
+
+- relocate GPT at the end of disk using sfdisk
+  Using sfdisk for relocation and verification makes this
+  part more consistent. We also want to move away from gdisk.
+  This is related to #2851
+
+- Do not strictly require config.partids in repart
+  The kiwi-repart implementation requires a metadata file</comment>
+    <requestid>1294365</requestid>
+  </revision>
 </revisionlist>

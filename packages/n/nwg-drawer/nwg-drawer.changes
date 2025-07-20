@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 18 12:53:20 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 0.7.4.
+  Changelog: https://github.com/nwg-piotr/nwg-drawer/releases/tag/v0.7.4
+  - Fixed launching programs through uwsm (it didn't go well with `env -S`);
+  - golang.org/x/sync -> v0.16.0;
+  - golang.org/x/sys -> v0.34.0;
+  - license description in README corrected.
+
+-------------------------------------------------------------------
 Sat Jul 12 19:08:44 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 0.7.3.

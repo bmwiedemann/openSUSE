@@ -1,5 +1,7 @@
+diff --git a/applets/install.sh b/applets/install.sh
+index 415896893..c1b611bfc 100755
 --- a/applets/install.sh
-+++ b/applets/install.sh	2019/03/29 09:03:34
++++ b/applets/install.sh
 @@ -1,11 +1,11 @@
 -#!/bin/sh
 +#!/usr/bin/busybox sh
@@ -14,7 +16,7 @@
  	echo "  TYPE is one of: --symlinks --hardlinks --binaries --scriptwrapper --none"
  	echo "  OPTS is one or more of: --cleanup --noclobber"
  	exit 1
-@@ -13,9 +13,9 @@
+@@ -13,9 +13,13 @@ fi
  shift # Keep only remaining options
  
  # Source the configuration
@@ -22,11 +24,15 @@
 +#. ./.config
  
 -h=`sort busybox.links | uniq`
-+h=`sort /usr/share/busybox/busybox.links | uniq`
++#this is a placeholder, it will be replaced with correct list by create-filelists.sh
++#when building the busybox-links package
++IGNORE_APPLETS=""
++
++h=`sort /usr/share/busybox/busybox.links | uniq | grep -vE "${IGNORE_APPLETS// /|}"`
  
  sharedlib_dir="0_lib"
  
-@@ -78,7 +78,7 @@
+@@ -78,7 +82,7 @@ fi
  
  rm -f "$prefix/bin/busybox" || exit 1
  mkdir -p "$prefix/bin" || exit 1

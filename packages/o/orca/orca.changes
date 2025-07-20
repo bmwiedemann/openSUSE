@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 16 18:37:13 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Add orca-large-set-oom.patch: fix possible out-of-memory when
+  presenting gtk 4 list items (glgo#GNOME/orca#560).
+
+-------------------------------------------------------------------
 Wed Jun 25 16:12:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.6:
@@ -5725,7 +5731,7 @@ Mon Apr  9 12:57:32 CDT 2007 - maw@suse.de
 - Improved man pages (b.g.o #414981).
 
 -------------------------------------------------------------------
-Mon Mar 12 09:11:03 CST 2007 - maw@suse.de
+Mon Mar 12 10:11:03 CDT 2007 - maw@suse.de
 
 - Fix silly build error - don't package %{_datadir}/pixmaps/*.png,
   which doesn't even exist.

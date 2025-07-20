@@ -40,11 +40,8 @@ Patch0:         libxslt-1.1.24-no-net-autobuild.patch
 #   Initialize the random seed to ensure libxslt's math.random() function
 #   produces unpredictable outputs.
 Patch1:         libxslt-random-seed.patch
-#
-### SUSE patches starts on 1000
-# PATCH-FIX-SUSE
-#Patch1000:
-#
+# CVE-2025-7424 [bsc#1246360], Type confusion in xmlNode.psvi between stylesheet and source nodes
+Patch2:         libxslt-CVE-2025-7424.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  libgcrypt-devel

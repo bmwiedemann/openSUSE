@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 17 04:47:22 UTC 2025 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- add placeholder variable and ignore applet logic to busybox.install 
+
+-------------------------------------------------------------------
+Mon Jun 23 12:48:28 UTC 2025 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- enable halt, poweroff, reboot commands (bsc#1243201) 
+
+-------------------------------------------------------------------
 Tue Apr 29 07:57:10 UTC 2025 - Radoslav Kolev <radoslav.kolev@suse.com>
 
 - fix regression in hexdump that broke kernel build:
@@ -32,6 +42,9 @@ Sat Sep 28 20:48:01 UTC 2024 - Matthias G. Eckermann <mge@suse.com>
 - Update to 1.37.0
 - remove unnecessary patch ash-fix-segfault-d417193cf.patch
 - Update default config to match 1.37.0 expectations
+- fix use-after-free in xasprintf (CVE-2023-42363, bsc#1217580)
+- fix use-after-free in awk evaluate (CVE-2023-42364, bsc#1217584)
+- fix use-after-free in awk copyvar (CVE-2023-42365, bsc#1217585)
 
 -------------------------------------------------------------------
 Thu Mar 14 09:15:13 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>

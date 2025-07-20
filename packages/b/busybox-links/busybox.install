@@ -15,7 +15,11 @@ shift # Keep only remaining options
 # Source the configuration
 #. ./.config
 
-h=`sort /usr/share/busybox/busybox.links | uniq`
+#this is a placeholder, it will be replaced with correct list by create-filelists.sh
+#when building the busybox-links package
+IGNORE_APPLETS="halt poweroff reboot"
+
+h=`sort /usr/share/busybox/busybox.links | uniq | grep -vE "${IGNORE_APPLETS// /|}"`
 
 sharedlib_dir="0_lib"
 

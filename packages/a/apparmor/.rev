@@ -3019,4 +3019,16 @@ Also note that the &quot;mailserver_setup&quot; test in https://openqa.opensuse.
     <comment>- replace dovecot24.diff with upstream fix from MR 1733 (boo#1243008)</comment>
     <requestid>1293528</requestid>
   </revision>
+  <revision rev="227" vrev="3">
+    <srcmd5>e0edd16ff1c74d88e38a98a6a6a22417</srcmd5>
+    <version>4.1.1</version>
+    <time>1753018099</time>
+    <user>anag_factory</user>
+    <comment>- add xkeyboard.diff to allow reading /usr/share/xkeyboard-config-2/
+  via abstractions/X (boo#1246743)
+
+- add kerberosclient-usrmerge.diff to allow reading
+  /usr/etc/krb5.conf (boo#1246689)</comment>
+    <requestid>1294456</requestid>
+  </revision>
 </revisionlist>

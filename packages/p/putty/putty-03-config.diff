@@ -7,14 +7,14 @@
 ---
  conf.h                   |   20 ++++++++++----------
  settings.c               |   29 +++++++++++++++++++++++------
- unix/platform.h          |    6 +-----
+ unix/platform.h          |    2 +-
  windows/utils/defaults.c |    2 +-
- 4 files changed, 35 insertions(+), 22 deletions(-)
+ 4 files changed, 35 insertions(+), 18 deletions(-)
 
-Index: putty-0.82/conf.h
+Index: putty-0.83/conf.h
 ===================================================================
---- putty-0.82.orig/conf.h
-+++ putty-0.82/conf.h
+--- putty-0.83.orig/conf.h
++++ putty-0.83/conf.h
 @@ -408,7 +408,7 @@ CONF_OPTION(ssh_nc_port, /* port to conn
  /* Telnet options */
  CONF_OPTION(termtype,
@@ -105,10 +105,10 @@ Index: putty-0.82/conf.h
      SAVE_KEYWORD("LineCodePage"),
  )
  CONF_OPTION(cjk_ambig_wide,
-Index: putty-0.82/settings.c
+Index: putty-0.83/settings.c
 ===================================================================
---- putty-0.82.orig/settings.c
-+++ putty-0.82/settings.c
+--- putty-0.83.orig/settings.c
++++ putty-0.83/settings.c
 @@ -18,8 +18,8 @@ static const struct keyvalwhere cipherna
      { "aes",        CIPHER_AES,             -1, -1 },
      { "chacha20",   CIPHER_CHACHA20,        CIPHER_AES, +1 },
@@ -119,7 +119,7 @@ Index: putty-0.82/settings.c
      { "des",        CIPHER_DES,             -1, -1 },
      { "blowfish",   CIPHER_BLOWFISH,        -1, -1 },
      { "arcfour",    CIPHER_ARCFOUR,         -1, -1 },
-@@ -982,11 +982,28 @@ void load_open_settings(settings_r *sess
+@@ -984,11 +984,28 @@ void load_open_settings(settings_r *sess
  
      for (i = 0; i < 22; i++) {
          static const char *const defaults[] = {
@@ -153,27 +153,23 @@ Index: putty-0.82/settings.c
          };
          char buf[20], *buf2;
          int c0, c1, c2;
-Index: putty-0.82/unix/platform.h
+Index: putty-0.83/unix/platform.h
 ===================================================================
---- putty-0.82.orig/unix/platform.h
-+++ putty-0.82/unix/platform.h
-@@ -400,11 +400,7 @@ void fd_socket_set_psb_prefix(Socket *s,
- /*
-  * Default font setting, which can vary depending on NOT_X_WINDOWS.
+--- putty-0.83.orig/unix/platform.h
++++ putty-0.83/unix/platform.h
+@@ -408,7 +408,7 @@ void fd_socket_set_psb_prefix(Socket *s,
+  * handle server-side fonts, is legacy. So the default font is
+  * unconditionally the client-side one.
   */
--#ifdef NOT_X_WINDOWS
--#define DEFAULT_GTK_FONT "client:Monospace 12"
--#else
--#define DEFAULT_GTK_FONT "server:fixed"
--#endif
-+#define DEFAULT_GTK_FONT "client:Monospace 16"
+-#define DEFAULT_GTK_CLIENT_FONT "client:Monospace 12"
++#define DEFAULT_GTK_CLIENT_FONT "client:Monospace 16"
+ #define DEFAULT_GTK_SERVER_FONT "server:fixed"
+ #define DEFAULT_GTK_FONT DEFAULT_GTK_CLIENT_FONT
  
- /*
-  * pty.c.
-Index: putty-0.82/windows/utils/defaults.c
+Index: putty-0.83/windows/utils/defaults.c
 ===================================================================
---- putty-0.82.orig/windows/utils/defaults.c
-+++ putty-0.82/windows/utils/defaults.c
+--- putty-0.83.orig/windows/utils/defaults.c
++++ putty-0.83/windows/utils/defaults.c
 @@ -9,7 +9,7 @@
  FontSpec *platform_default_fontspec(const char *name)
  {

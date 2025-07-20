@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 17 06:39:55 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.321.0
+  * formats: Remove old format utils
+  * enums: Add C Name helper for VkStructureType
+  * layer: Fix trim namespace env with overridden namespace
+  * layer: Fix unknown settings across layers
+
+-------------------------------------------------------------------
 Sun May 18 04:34:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.313.0

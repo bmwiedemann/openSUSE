@@ -22,7 +22,7 @@
 #
 
 Name:           vulkan-headers
-Version:        1.4.313
+Version:        1.4.321
 Release:        0
 Summary:        Vulkan C and C++ API header files
 License:        Apache-2.0

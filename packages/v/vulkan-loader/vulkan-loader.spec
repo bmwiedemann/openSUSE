@@ -19,7 +19,7 @@
 # Prefer to go with just /^sdk-.*/ tags
 %define lname	libvulkan1
 Name:           vulkan-loader
-Version:        1.4.313
+Version:        1.4.321
 Release:        0
 Summary:        Reference ICD loader for Vulkan
 License:        Apache-2.0

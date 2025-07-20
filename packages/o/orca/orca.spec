@@ -26,6 +26,8 @@ License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Orca
 Source0:        %{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM orca-large-set-oom.patch mgorse@suse.com -- fix possible out-of-memory when presenting gtk 4 list items.
+Patch0:         orca-large-set-oom.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection

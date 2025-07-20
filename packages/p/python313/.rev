@@ -971,4 +971,14 @@
       (gh#135034, bsc#1244061).</comment>
     <requestid>1288597</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>13c51d6d24a5108bc9042a7d6fb5aeb4</srcmd5>
+    <version>3.13.5</version>
+    <time>1753018128</time>
+    <user>anag_factory</user>
+    <comment>DEPENDS ON SR#1294511, THEY HAVE TO GO TOGETHER!!!
+
+- Fix gil/nogil package description, bsc#1246229</comment>
+    <requestid>1294512</requestid>
+  </revision>
 </revisionlist>

@@ -5,7 +5,7 @@
     <param name="exclude">.git</param>
     <param name="changesgenerate">enable</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">RELEASE.2025-05-21T01-59-54Z</param>
+    <param name="revision">RELEASE.2025-07-16T15-35-03Z</param>
     <param name="match-tag">RELEASE.*</param>
     <param name="versionrewrite-pattern">RELEASE\.(.*)-(.*)-(.*)-(.*)-(.*)</param>
     <param name="versionrewrite-replacement">\1\2\3\4\5</param>
@@ -14,12 +14,13 @@
   <service name="set_version" mode="manual">
   </service>
   <service name="go_modules" mode="manual">
+    <param name="compression">zst</param>
   </service>
   <!-- services below are running at buildtime -->
   <service name="tar" mode="buildtime">
   </service>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
-    <param name="compression">gz</param>
+    <param name="compression">zst</param>
   </service>
 </services>

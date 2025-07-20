@@ -1265,4 +1265,15 @@
   * Disabled OpenSSL 3.5 QUIC API support by default.</comment>
     <requestid>1288818</requestid>
   </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>23b8338e9c7cfdf6a7f738306fcb5bbb</srcmd5>
+    <version>1.29.0</version>
+    <time>1753018107</time>
+    <user>anag_factory</user>
+    <comment>- Changed nginx.logrotate and nginx-conf.patch files.
+  * Removed hardcoded user and group definitions.
+- Removed ending slashes wherever possible.
+- Removed root privileges when running logrotate (bsc#1246090).</comment>
+    <requestid>1293972</requestid>
+  </revision>
 </revisionlist>

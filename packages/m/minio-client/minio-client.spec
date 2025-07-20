@@ -17,15 +17,16 @@
 
 
 Name:           minio-client
-Version:        20250521T015954Z
+Version:        20250716T153503Z
 Release:        0
 Summary:        Client for MinIO
 License:        AGPL-3.0-only
 URL:            https://github.com/minio/mc
-Source:         %{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source:         %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 Source2:        README.SUSE
 BuildRequires:  go1.23
+BuildRequires:  zstd
 # obsolete some other package we had in the past
 Provides:       minio-mc = %{version}-%{release}
 Obsoletes:      minio-mc < %{version}-%{release}

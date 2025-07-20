@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jul 10 09:33:26 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix gil/nogil package description, bsc#1246229
+
+-------------------------------------------------------------------
+Wed Jul  2 14:47:20 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2025-6069-quad-complex-HTMLParser.patch to avoid worst
+  case quadratic complexity when processing certain crafted
+  malformed inputs with HTMLParser (CVE-2025-6069, bsc#1244705).
+
+-------------------------------------------------------------------
+Wed Jul  2 13:14:28 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add bsc1243155-sphinx-non-determinism.patch (bsc#1243155) to
+  generate ids for audit_events using docname (reproducible
+  builds).
+
+-------------------------------------------------------------------
+Tue Jul  1 08:23:22 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use one core to build doc. This will make sphinx doc build
+  reproducible.
+  bsc#1243155
+
+-------------------------------------------------------------------
 Sat Jun 21 14:32:16 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - adjusted sofilename for "nogil" build correctly.

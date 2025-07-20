@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 19 06:51:37 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream test_strip_tags.patch to fix test errors with
+  at-this-point future python interpreters
+
+-------------------------------------------------------------------
 Thu Jul  3 12:47:34 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.2.4

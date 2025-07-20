@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul  2 14:47:20 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2025-6069-quad-complex-HTMLParser.patch to avoid worst
+  case quadratic complexity when processing certain crafted
+  malformed inputs with HTMLParser (CVE-2025-6069, bsc#1244705).
+
+-------------------------------------------------------------------
+Tue Jul  1 08:19:52 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use one core to build doc. This will make sphinx doc build
+  reproducible.
+  bsc#1243155
+
+-------------------------------------------------------------------
 Mon Jun  9 17:19:32 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.11.13:

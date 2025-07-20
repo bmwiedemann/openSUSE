@@ -1,0 +1,136 @@
+From cfc476e5127ee3f21b70124e77ded9627e9692b5 Mon Sep 17 00:00:00 2001
+From: Luna D Dragon <luna.dragon@suse.com>
+Date: Tue, 8 Jul 2025 15:09:09 +0530
+Subject: [PATCH 3/3] branding: use SUSE_SUPPORT_PRODUCT and
+ SUSE_SUPPORT_PRODUCT_VERSION
+
+---
+ Makefile.am                    |  1 +
+ src/branding/suse/Makefile.am  | 11 +++++
+ src/branding/suse/branding.css | 82 ++++++++++++++++++++++++++++++++++
+ 3 files changed, 94 insertions(+)
+ create mode 100644 src/branding/suse/Makefile.am
+ create mode 100644 src/branding/suse/branding.css
+
+diff --git a/Makefile.am b/Makefile.am
+index 83f1ee7a7..1198d191e 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -167,6 +167,7 @@ include src/branding/debian/Makefile.am
+ include src/branding/default/Makefile.am
+ include src/branding/fedora/Makefile.am
+ include src/branding/opensuse/Makefile.am
++include src/branding/suse/Makefile.am
+ include src/branding/rhel/Makefile.am
+ include src/branding/ubuntu/Makefile.am
+ include src/client/Makefile.am
+diff --git a/src/branding/suse/Makefile.am b/src/branding/suse/Makefile.am
+new file mode 100644
+index 000000000..4a1e7ab72
+--- /dev/null
++++ b/src/branding/suse/Makefile.am
+@@ -0,0 +1,11 @@
++slemicrobrandingdir = $(datadir)/cockpit/branding/suse
++
++dist_slemicrobranding_DATA = \
++    src/branding/suse/branding.css \
++	$(NULL)
++
++install-data-hook::
++	ln -sf /usr/share/wallpapers/SLEdefault/contents/images/1920x1200.png $(DESTDIR)$(slemicrobrandingdir)/default-1920x1200.png
++	ln -sf /usr/share/pixmaps/distribution-logos/square-hicolor.svg $(DESTDIR)$(slemicrobrandingdir)/square-hicolor.svg
++	ln -sf /usr/share/pixmaps/distribution-logos/favicon.ico $(DESTDIR)$(slemicrobrandingdir)/favicon.ico
++	ln -sf /usr/share/pixmaps/distribution-logos/apple-touch-icon.png $(DESTDIR)$(slemicrobrandingdir)/apple-touch-icon.png
+\ No newline at end of file
+diff --git a/src/branding/suse/branding.css b/src/branding/suse/branding.css
+new file mode 100644
+index 000000000..c1617abc2
+--- /dev/null
++++ b/src/branding/suse/branding.css
+@@ -0,0 +1,82 @@
++/* Extra overrides */
++:root {
++    --eos-bc-green-500: #30ba78;
++    --eos-bc-pine-500: #0c322c;
++    --eos-bc-gray-50: #F2F2F2;
++    --eos-bc-white: #ffffff;
++    --eos-bc-text: #333;
++}
++
++
++#brand:before {
++    content: "${SUSE_PRETTY_NAME}";
++}
++
++#option-group svg polygon {
++    fill: var(--eos-bc-text);
++}
++
++/* Nav & sidebar overwrites */
++.navbar-pf {
++    background: var(--eos-bc-pine-500);
++}
++
++.navbar-pf-vertical {
++    border-top: none;
++}
++
++
++/* Default overrides */
++
++.login-note {
++    color: transparent;
++    position: relative;
++}
++
++body.login-pf {
++    background-color: var(--eos-bc-pine-500);
++}
++
++/* Only use background image on desktops */
++@media(min-width: 1024px) {
++    body.login-pf {
++        background-image: url("default-1920x1200.png") !important;
++        background-repeat: no-repeat;
++        background-position: 100% 0 !important;
++        background-size: cover;
++    }
++}
++
++/* Hide badge on desktops (already included in background) */
++@media(max-width: 1023px) {
++    #badge {
++        width: 51px;
++        height: 45px;
++        background-image: url("square-hicolor.svg");
++        background-repeat: no-repeat;
++    }
++}
++
++#brand {
++    width: auto;
++    height: auto;
++    background-image: none;
++    background-repeat: no-repeat;
++    font-size: 2em;
++    white-space: nowrap;
++}
++
++/* Switch to small font faster to not clip long name */
++@media(max-width: 560px) {
++    #brand {
++        font-size: inherit;
++    }
++}
++
++#index-brand {
++    font-weight: bold;
++}
++
++#index-brand:before {
++    content: "${PRETTY_NAME}";
++}
+\ No newline at end of file
+-- 
+2.50.0
+

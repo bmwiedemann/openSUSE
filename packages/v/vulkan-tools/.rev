@@ -448,4 +448,12 @@
     <comment>- Add cmake.patch</comment>
     <requestid>1290915</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>602df7c1006606240f148011839494f7</srcmd5>
+    <version>1.4.321</version>
+    <time>1753018112</time>
+    <user>anag_factory</user>
+    <comment>- Update to tag SDK-1.4.321.0</comment>
+    <requestid>1294035</requestid>
+  </revision>
 </revisionlist>

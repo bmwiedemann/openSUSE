@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul 13 19:38:41 UTC 2025 - lduncan@suse.com
+
+- Update to version 2.1.11.suse+73.1723affc61eb:
+  * README for rpm build directory
+  * Fix issue with IPv6 adapter interfaces (#508, bsc#1240969)
+  * fwparam_ppc.c: Fix the calloc-transposed-args issue (#504)
+  * Makefile: fix "No rule to make target 'iscsiuio/Makefile.in" issue (#506)
+  * Fix typo in initiator.c (#507)
+
+- Fixed some issues in this changes file
+  * One date had incorrect format from 2014
+  * Two separator lines were formatted incrrectly
+
+-------------------------------------------------------------------
 Wed Apr 16 15:51:37 UTC 2025 - lduncan@suse.com
 
 - Update to version 2.1.11.suse+66.13c070123738:
@@ -399,7 +413,7 @@ Tue Nov  3 14:34:25 UTC 2020 - Franck Bui <fbui@suse.com>
 
   More accurately it's been introduced in SLE12-SP2+ and SLE15+
 
-+-------------------------------------------------------------------
+-------------------------------------------------------------------
 Sat Jul 25 01:05:13 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Upgrade to upstream vresion 2.1.2 as 2.1.2-suse (for
@@ -843,7 +857,7 @@ Mon Aug 28 13:45:52 PDT 2017 - lduncan@suse.com
   in SPEC file, which (as always) changes:
   * open-iscsi-SUSE-latest.diff.bz2
 
-+-------------------------------------------------------------------
+-------------------------------------------------------------------
 Thu Jul 27 16:22:58 UTC 2017 - lduncan@suse.com
 
 - Clear errno before calling strotull in iscsiadm
@@ -1155,7 +1169,7 @@ Wed May 28 15:26:29 CEST 2014 - hare@suse.de
 - iscsid.service: Fixup dependencies (bnc#880338)
 
 -------------------------------------------------------------------
-Fri May 2 15:07:14 2014 +0200 - hare@suse.de
+Fri May 2 15:07:14 CEST 2014 - hare@suse.de
 
 - iscsi_offload: do not print error messages for be2iscsi
     

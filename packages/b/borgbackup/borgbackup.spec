@@ -57,6 +57,8 @@ Source2:        %{name}.keyring
 # python3-guzzle_sphinx_theme isn't available everywhere,
 # fall back to Sphinx default theme for older distributions
 Patch0:         borgbackup-1.1.4-sphinx-default-theme.patch
+# PATCH-FIX-UPSTREAM msgpack-allow-1.1.1.patch -- backport of commit f6724bfef
+Patch1:         msgpack-allow-1.1.1.patch
 # SECTION build dependencies
 BuildRequires:  bash
 BuildRequires:  fdupes
@@ -88,9 +90,9 @@ BuildRequires:  libzstd-devel >= 1.3.0
 # msgpack is not included with borg version >= 1.2.0 anymore
 # The metadata is very specific about the version, the command will fail if msgpack is out of range -- boo#1198267
 # See https://github.com/borgbackup/borg/blob/1.2.1/setup.py#L68 and update this for every version bump!
-BuildRequires:  (python3-msgpack >= 1.0.3 with python3-msgpack <= 1.1.0)
+BuildRequires:  (python3-msgpack >= 1.0.3 with python3-msgpack <= 1.1.1)
 Requires:       python3-packaging
-Requires:       (python3-msgpack >= 1.0.3 with python3-msgpack <= 1.1.0)
+Requires:       (python3-msgpack >= 1.0.3 with python3-msgpack <= 1.1.1)
 %if 0%{?suse_version} > 1500
 # upstream recommends a "Requires" if pyfuse3 is available
 Requires:       python3-pyfuse3 >= 3.1.1
@@ -188,6 +190,7 @@ This package contains the fish completion script for borgbackup.
 %if ! %{with borg_guzzle}
 %patch -P 0 -p1
 %endif
+%patch -P 1 -p1
 
 %ifnarch %ix86 %arm
   # https://github.com/borgbackup/borg/issues/6996

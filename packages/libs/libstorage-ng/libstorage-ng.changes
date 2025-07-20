@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Thu Jul 17 09:12:48 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1029
+- fixed sysfs name and path for numeric named MD RAIDs (bsc#1246331)
+- coding style
+- 4.5.264
+
+--------------------------------------------------------------------
 Tue Jul 15 10:56:52 UTC 2025 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1028

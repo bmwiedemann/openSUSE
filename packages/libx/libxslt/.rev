@@ -570,4 +570,15 @@
     <comment></comment>
     <requestid>1253117</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>13ec019d02e0f8eb249bc42111f8e118</srcmd5>
+    <version>1.1.43</version>
+    <time>1753018096</time>
+    <user>anag_factory</user>
+    <comment>- security update
+- added patches
+  CVE-2025-7424 [bsc#1246360], Type confusion in xmlNode.psvi between stylesheet and source nodes
+  + libxslt-CVE-2025-7424.patch</comment>
+    <requestid>1294383</requestid>
+  </revision>
 </revisionlist>

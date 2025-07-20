@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 16 17:01:35 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.7
+  * All previous versions of fluidsynth have incorrectly rejected
+    Soundfont files with unknown INFO subchunks.
+  * Fix incorrect GS DT1 SysEx checksum validation.
+  * Fix a NULL pointer dereference during legato mono playing.
+
+-------------------------------------------------------------------
 Sun May 11 07:58:30 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.6

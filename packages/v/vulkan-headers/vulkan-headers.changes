@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 16 21:31:12 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.4.321.0
+  * New extensions: VK_EXT_robustness2,
+    VK_EXT_zero_initialize_device_memory,
+    VK_VALVE_fragment_density_map_layered, VK_ARM_data_graph,
+    VK_KHR_present_mode_fifo_latest_ready,
+    VK_KHR_surface_maintenance1, VK_KHR_swapchain_maintenance1,
+    VK_KHR_video_encode_intra_refresh,
+    VK_SEC_pipeline_cache_incremental_mode.
+
+-------------------------------------------------------------------
 Sun May 18 04:25:29 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.313.0

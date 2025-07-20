@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jul 18 15:48:36 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.83
+  * Support for ML-KEM, a NIST-standardised post-quantum key
+    exchange mechanism.
+  * Bug fix: psftp -b works again.
+  * Fixed bug which crashed Pageant if an SSH connection is
+    abandoned while waiting for a deferred decryption passphrase.
+  * Fix a tight loop bug occurring if PuTTY tried to send an
+    empty answerback string.
+  * Fixed a bug where some configuration edit boxes' contents
+    were accidentally truncated to 127 characters.
+  * Bug fix: the small keypad keys did not reliably work in the
+    terminal on Unix.
+
+-------------------------------------------------------------------
 Thu Dec  5 01:22:12 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.82

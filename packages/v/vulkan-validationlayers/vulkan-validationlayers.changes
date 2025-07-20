@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jul 17 06:22:07 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.321.0
+  * layers: Add check for UAB features
+  * layers: Add submit validation of dynamic rendering barriers
+  * layers: Add VK_KHR_robustness2
+  * layers: Add DGC in renderpass check
+  * layers: Add shaderRelaxedExtendedInstruction check
+  * layers: Add CooperativeMatrix version check
+  * layers: Add VK_EXT_zero_initialize_device_memory
+  * layers: Remove layout map compatibility check
+  * layers: Add detailed info about video profiles in error msgs
+  * layers: Rename many image layout names
+  * sync: Validate vkCmdCopyAccelerationStructureKHR
+  * sync: Validate vkCmdCopyAccelerationStructureToMemoryKHR
+  * sync: Validate vkCmdTraceRaysKHR TLAS accesses
+  * layers: Validate vkCmdTraceRaysIndirectKHR
+  * layers: Fix crash for geometry dynamic state
+  * gpuav: Profile GPU memory usage with Tracy
+  * layers: Add validation for VK_KHR_maintenancne9
+  * layers: Add support for VK_KHR_video_decode_vp9
+  * layers: Validate VkAttachmentFeedbackLoopInfoEXT
+  * layers: Add DescriptorTemplate object tracking support
+  * layers: Add per-slice layout tracking for 3d images
+  * layers: Add VK_KHR_presentid2 and VK_KHR_present_wait2
+  * layers: Add VK_VALVE_fragment_density_map_layered
+  * layers: Add missing asymmetric events validation
+  * layers: Validate global image layouts during queue retire phase
+  * layers: Add support for VK_KHR_video_encode_intra_refresh
+
+-------------------------------------------------------------------
 Sun May 18 06:02:29 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.313.0

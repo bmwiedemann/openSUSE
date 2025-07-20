@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 18 07:35:43 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- add msgpack-allow-1.1.1.patch:
+  backport of upstream commit f6724bfef
+- change the maximum version of msgpack to 1.1.1
+
+-------------------------------------------------------------------
 Sun Jun  8 15:42:53 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to version 1.4.1

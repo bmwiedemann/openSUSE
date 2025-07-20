@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 16 11:56:11 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Allow building with CMake 4.0
+  * Bump cmake_minumum_required to 3.10, which matches what most
+    other modules in libyui use (3.5 is the minimum required to be
+    supportable by CMake 4.0(
+  * Remove CMP0046, as CMake 4.0 no longer supports it. The OLD
+    mode in any case was a workaround for 'badly written
+    CMakeLists.txt', as it just instructed cmake to ignore
+    non-existing dependenices listed in add_dependencies. This
+    package does not rely on non-existing dependencies and builds
+    perfectly without this policy.
+- 4.7.6
+
+-------------------------------------------------------------------
 Tue Jun 24 14:16:06 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Do not build the qt packages (libyui-qt, libyui-qt-graph,

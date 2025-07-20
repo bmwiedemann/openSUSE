@@ -228,6 +228,12 @@ Patch41:        doc-py38-to-py36.patch
 # PATCH-FIX-UPSTREAM gh126985-mv-pyvenv.cfg2getpath.patch mcepl@suse.com
 # Remove tests failing in test_sysconfig
 Patch42:        gh126985-mv-pyvenv.cfg2getpath.patch
+# PATCH-FIX-UPSTREAM bsc1243155-sphinx-non-determinism.patch bsc#1243155 mcepl@suse.com
+# Doc: Generate ids for audit_events using docname
+Patch43:        bsc1243155-sphinx-non-determinism.patch
+# PATCH-FIX-UPSTREAM CVE-2025-6069-quad-complex-HTMLParser.patch bsc#1244705 mcepl@suse.com
+# avoid quadratic complexity when processing malformed inputs with HTMLParser
+Patch44:        CVE-2025-6069-quad-complex-HTMLParser.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -321,7 +327,7 @@ Installing "python3" is sufficient for the vast majority of usecases.
 In addition, recommended packages provide UI toolkit support (python3-curses,
 python3-tk), legacy UNIX database bindings (python3-dbm), and the IDLE
 development environment (python3-idle).
-%if %{with GIL}
+%if %{without GIL}
 
 This package has been built with the Global Interpreter Lock removed.
 This feature is still considered to be experimental. This package is
@@ -442,7 +448,7 @@ This package contains the interpreter core and most commonly used modules
 from the standard library. This is sufficient for many usecases, but it
 excludes components that depend on external libraries, most notably XML,
 database and UI toolkits support.
-%if %{with GIL}
+%if %{without GIL}
 
 This package has been built with the Global Interpreter Lock removed.
 This feature is still considered to be experimental. This package is
@@ -562,7 +568,7 @@ TODAY_DATE=`date -r %{SOURCE0} "+%%B %%d, %%Y"`
 
 cd Doc
 sed -i "s/^today = .*/today = '$TODAY_DATE'/" conf.py
-%make_build -j1 html
+%make_build -j1 JOBS=1 html
 
 # Build also devhelp files
 sphinx-build -a -b devhelp . build/devhelp

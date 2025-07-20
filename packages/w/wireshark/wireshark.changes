@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 16 21:37:22 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.4.8
+  * Renegotiated DTLS session is not being decrypted.
+  * Wireshark is completely stuck in initialization because androiddump recv()
+    is blocked.
+  * Fuzz job UTF-8 encoding issue: fuzz-2025-06-20-7318.pcap.
+  * Crash when showing packet in new window after reloading Lua plugins with a
+    certain gui.column.format preference.
+- Many more features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.4.8.html
+
+-------------------------------------------------------------------
 Thu Jun  5 07:12:18 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.4.7

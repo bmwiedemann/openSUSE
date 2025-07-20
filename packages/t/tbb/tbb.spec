@@ -40,7 +40,7 @@
 %bcond_with python3
 %endif
 Name:           tbb
-Version:        2022.1.0
+Version:        2022.2.0
 Release:        0
 Summary:        oneAPI Threading Building Blocks (oneTBB)
 License:        Apache-2.0
@@ -51,6 +51,7 @@ Source99:       tbb-rpmlintrc
 # PATCH-FIX-OPENSUSE cmake-remove-include-path.patch -- openCV include error
 Patch2:         cmake-remove-include-path.patch
 Patch4:         add-cmake-check-for-libatomic-requirement-when-build.patch
+Patch5:         cf-prot.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

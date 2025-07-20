@@ -1671,4 +1671,27 @@ C API
     <comment>Also addresses CVE-2025-4435 (gh#135034, bsc#1244061).</comment>
     <requestid>1288599</requestid>
   </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>24888b6e79686939128bfd89479a3336</srcmd5>
+    <version>3.11.13</version>
+    <time>1753018131</time>
+    <user>anag_factory</user>
+    <comment>DEPENDS ON SR#1294511, THEY HAVE TO GO TOGETHER!!!
+
+- Add CVE-2025-6069-quad-complex-HTMLParser.patch to avoid worst
+  case quadratic complexity when processing certain crafted
+  malformed inputs with HTMLParser (CVE-2025-6069, bsc#1244705).
+
+- Use one core to build doc. This will make sphinx doc build
+  reproducible.
+  bsc#1243155
+- Add CVE-2025-6069-quad-complex-HTMLParser.patch to avoid worst
+  case quadratic complexity when processing certain crafted
+  malformed inputs with HTMLParser (CVE-2025-6069, bsc#1244705).
+
+- Use one core to build doc. This will make sphinx doc build
+  reproducible.
+  bsc#1243155</comment>
+    <requestid>1294514</requestid>
+  </revision>
 </revisionlist>

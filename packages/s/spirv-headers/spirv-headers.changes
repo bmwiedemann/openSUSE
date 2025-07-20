@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 17 06:36:21 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.321.0 (Git 2a611a9); i.e. bump at the
+  openSUSE package level only, no source code change, no user
+  visible change.
+
+-------------------------------------------------------------------
 Fri Jun 27 18:22:07 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 1.6.4+sdk313+git19 (Git 2a611a9)

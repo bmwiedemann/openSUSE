@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jul 15 07:00:10 UTC 2025 - Luna D Dragon <luna.dragon@suse.com>
+
+- add 0001-cockpit-overview-support-SUSE_SUPPORT_PRODUCT-keys.patch
+- add 0002-cockpit-kdump-support-SLE-micro-6.2.patch
+- add 0003-branding-use-SUSE_SUPPORT_PRODUCT-and-SUSE_SUPPORT_P.patch to fix bsc#1241003 
+
+-------------------------------------------------------------------
+Mon Jul 14 08:04:06 UTC 2025 - Luna D Dragon <luna.dragon@suse.com>
+
+- update check_cockpit_users to only check for systemd support in /etc/nsswitch.conf bsc#1246408
+
+-------------------------------------------------------------------
+Fri Jul 11 07:13:59 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- add a requirement on /usr/sbin/kdumptool for cockpit-kdump (bsc#1227402)
+
+-------------------------------------------------------------------
+Fri Jul 11 06:50:17 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- add libzypp-plugin-appdata dependency to cockpit-packagekit as
+  this will generate the swcatalog which it depends on for calculating
+  various cockpit packages
+
+-------------------------------------------------------------------
+Thu Jul 10 10:10:21 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Show reboot nofication after updates in packagekit
+  * Add 0009-packagekit-reboot-notification.patch
+
+-------------------------------------------------------------------
 Thu Jun 19 08:30:49 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
 
 - Add kdump-nfs-fixes.patch to fix bsc#1241949

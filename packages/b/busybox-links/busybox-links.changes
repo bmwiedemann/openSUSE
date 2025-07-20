@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 17 06:00:41 UTC 2025 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- add filtering of ignored applets to busybox.install 
+
+-------------------------------------------------------------------
 Mon Jun 23 12:35:43 UTC 2025 - Radoslav Kolev <radoslav.kolev@suse.com>
 
 - Blacklist creating links for halt, reboot, shutdown commands to avoid accidental

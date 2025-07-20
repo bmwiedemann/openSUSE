@@ -100,8 +100,9 @@ The source of %{name} [engine x] HTTP server and IMAP/POP3 proxy server.
 
 %prep
 %autosetup -p1
-sed -i 's/\r//g' contrib/geo2nginx.pl
-sed -i -e 's|#LIBDIR#|%{_libdir}|g' -e 's|/var/run|/run|' conf/nginx.conf
+sed -i 's/\r//' contrib/geo2nginx.pl
+sed -i -e 's/USER/%{ngx_user_group}/' -e 's/GROUP/%{ngx_user_group}/' %{SOURCE4} conf/%{name}.conf
+sed -i -e 's|#LIBDIR#|%{_libdir}|' -e 's|/var/run|/run|' conf/%{name}.conf
 sed -i 's/^\(#define NGX_LISTEN_BACKLOG \).*/\1-1/' src/os/unix/ngx_linux_config.h
 
 %build
@@ -124,12 +125,12 @@ rm %{buildroot}/srv/www/htdocs/{50x,index}.html
 mkdir -p %{buildroot}%{ngx_doc_dir}
 cp -av CHANGES* LICENSE %{buildroot}%{ngx_doc_dir}
 
-mkdir -p %{buildroot}%{_datadir}/%{name}/
-mkdir -p %{buildroot}%{ngx_conf_dir}/vhosts.d/
-mkdir -p %{buildroot}%{ngx_conf_dir}/conf.d/
+mkdir -p %{buildroot}%{_datadir}/%{name}
+mkdir -p %{buildroot}%{ngx_conf_dir}/vhosts.d
+mkdir -p %{buildroot}%{ngx_conf_dir}/conf.d
 
 chmod a+rx contrib/geo2nginx.pl
-cp -av contrib/geo2nginx.pl contrib/unicode2nginx/ %{buildroot}%{_datadir}/%{name}/
+cp -av contrib/geo2nginx.pl contrib/unicode2nginx/ %{buildroot}%{_datadir}/%{name}
 
 mkdir -p %{buildroot}%{src_install_dir}
 tar -xzf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
@@ -137,9 +138,9 @@ tar -xzf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
 copydocs() {
   subdir=$1;
   shift;
-  mkdir -p %{buildroot}%{ngx_doc_dir}/$subdir/
+  mkdir -p %{buildroot}%{ngx_doc_dir}/$subdir
   pushd $subdir
-  cp -av $* %{buildroot}%{ngx_doc_dir}/$subdir/
+  cp -av $* %{buildroot}%{ngx_doc_dir}/$subdir
   popd
 }
 
@@ -162,7 +163,7 @@ rm -r $GPGTMP
 %service_del_postun %{name}.service
 
 %files
-%dir %{ngx_conf_dir}/
+%dir %{ngx_conf_dir}
 %dir %{ngx_conf_dir}/vhosts.d
 %dir %{ngx_conf_dir}/conf.d
 %config(noreplace) %{ngx_conf_dir}/koi-utf
@@ -171,7 +172,7 @@ rm -r $GPGTMP
 %config %{ngx_conf_dir}/fastcgi_params.default
 %config(noreplace) %{ngx_conf_dir}/mime.types
 %config %{ngx_conf_dir}/mime.types.default
-%config(noreplace) %{ngx_conf_dir}/nginx.conf
+%config(noreplace) %{ngx_conf_dir}/%{name}.conf
 %config %{ngx_conf_dir}/%{name}.conf.default
 %config(noreplace) %{ngx_conf_dir}/fastcgi.conf
 %config %{ngx_conf_dir}/fastcgi.conf.default
@@ -180,11 +181,11 @@ rm -r $GPGTMP
 %config %{ngx_conf_dir}/scgi_params.default
 %config(noreplace) %{ngx_conf_dir}/uwsgi_params
 %config %{ngx_conf_dir}/uwsgi_params.default
-%{perl_vendorarch}/auto/%{name}/
+%{perl_vendorarch}/auto/%{name}
 %{perl_vendorarch}/%{name}.pm
 %{ngx_sbin_path}
-%dir %{_libdir}/%{name}/
-%dir %{ngx_module_dir}/
+%dir %{_libdir}/%{name}
+%dir %{ngx_module_dir}
 %{ngx_module_dir}/ngx_http_image_filter_module.so
 %{ngx_module_dir}/ngx_http_perl_module.so
 %{ngx_module_dir}/ngx_http_xslt_filter_module.so
@@ -194,8 +195,8 @@ rm -r $GPGTMP
 %dir /srv/www
 %dir /srv/www/htdocs
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
-%dir %attr(750,%{ngx_user_group},%{ngx_user_group}) %{_localstatedir}/log/nginx/
-%dir %attr(750,%{ngx_user_group},%{ngx_user_group}) %{ngx_home}/
+%dir %attr(750,%{ngx_user_group},%{ngx_user_group}) %{_localstatedir}/log/%{name}
+%dir %attr(750,%{ngx_user_group},%{ngx_user_group}) %{ngx_home}
 %dir %attr(750,%{ngx_user_group},%{ngx_user_group}) %{ngx_tmp_http}
 %dir %attr(750,%{ngx_user_group},%{ngx_user_group}) %{ngx_tmp_proxy}
 %dir %attr(750,%{ngx_user_group},%{ngx_user_group}) %{ngx_tmp_fcgi}
@@ -204,7 +205,7 @@ rm -r $GPGTMP
 %doc %{ngx_doc_dir}
 %{_unitdir}/%{name}.service
 %{_sysusersdir}/%{name}.conf
-%{_datadir}/%{name}/
+%{_datadir}/%{name}
 
 %files source
 %{src_install_dir}

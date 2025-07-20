@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Thu Jul 17 09:11:35 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#191
+- avoid spurious warning messages when parsing /etc/default/grub
+  (bsc#1246373, bsc#1245323)
+- 1.25
+
+--------------------------------------------------------------------
 Fri Jan 24 17:03:35 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#190

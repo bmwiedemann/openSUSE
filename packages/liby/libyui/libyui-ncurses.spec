@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-ncurses
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           libyui-ncurses
 
 # DO NOT manually bump the version here; instead, use rake version:bump
-Version:        4.7.5
+Version:        4.7.6
 Release:        0
 
 %define         so_version 16
@@ -40,6 +40,7 @@ Source:         libyui-%{version}.tar.bz2
 %description
 This package contains the NCurses (text based) user interface
 component for libyui.
+
 
 %package -n %{bin_name}
 Summary:        Libyui - NCurses (text based) user interface
@@ -74,6 +75,7 @@ This package contains the header files for the NCurses
 This package is not needed to develop libyui-based applications,
 only to develop extensions for libyui-ncurses.
 
+
 %package tools
 
 Summary:        Libyui - tools for the NCurses (text based) user interface
@@ -86,6 +88,7 @@ This package contains tools for the NCurses (text based)
 user interface component for libyui:
 
 libyui-terminal - useful for testing on headless machines
+
 
 %prep
 %setup -q -n libyui-%{version}

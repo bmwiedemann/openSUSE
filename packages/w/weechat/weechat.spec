@@ -44,7 +44,7 @@ BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  ruby-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(enchant)
+BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(gnutls) >= 3.3.0
 BuildRequires:  pkgconfig(libcjson)
 BuildRequires:  pkgconfig(libzstd)

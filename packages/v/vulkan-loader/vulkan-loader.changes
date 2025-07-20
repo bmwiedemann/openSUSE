@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 17 06:11:15 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.321.0
+  * Simplify portability enumeration variables.
+  * Only call surface creation functions on supported drivers.
+  * Add vkGetPhysicalDeviceSurfaceSupportKHR test when ICD does not
+    support the surface extension.
+
+-------------------------------------------------------------------
 Sun May 18 04:28:06 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.313.0

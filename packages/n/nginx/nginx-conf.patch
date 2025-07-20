@@ -2,7 +2,7 @@ diff -Pdpru nginx-1.27.4.orig/conf/nginx.conf nginx-1.27.4/conf/nginx.conf
 --- nginx-1.27.4.orig/conf/nginx.conf	2025-02-05 14:06:32.000000000 +0300
 +++ nginx-1.27.4/conf/nginx.conf	2025-03-30 05:11:05.303755904 +0300
 @@ -1,117 +1,130 @@
-+#user nginx nginx;
++#user USER GROUP;
 +#worker_processes 1;
 +#pcre_jit off;
  

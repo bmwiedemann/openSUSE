@@ -16,7 +16,6 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,6 +24,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%bcond_without libalternatives
+%{?sle15_python_module_pythons}
 Name:           python-pbr%{psuffix}
 Version:        6.1.1
 Release:        0
@@ -35,11 +36,11 @@ Source:         https://files.pythonhosted.org/packages/source/p/pbr/pbr-%{versi
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-setuptools >= 64.0.0
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     git-core
 Obsoletes:      python-pbr-doc
 BuildArch:      noarch
@@ -102,11 +103,8 @@ exclude+="test_handling_of_whitespace_in_data_files"
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative pbr
-
-%postun
-%python_uninstall_alternative pbr
+%pre
+%python_libalternatives_reset_alternative pbr
 
 %files %{python_files}
 %license LICENSE

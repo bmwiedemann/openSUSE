@@ -184,6 +184,12 @@ Patch41:        docs-docutils_014-Sphinx_420.patch
 # PATCH-FIX-SLE doc-py38-to-py36.patch mcepl@suse.com
 # Make documentation extensions working with Python 3.6
 Patch44:        doc-py38-to-py36.patch
+# PATCH-FIX-UPSTREAM bsc1243155-sphinx-non-determinism.patch bsc#1243155 mcepl@suse.com
+# Doc: Generate ids for audit_events using docname
+Patch45:        bsc1243155-sphinx-non-determinism.patch
+# PATCH-FIX-UPSTREAM CVE-2025-6069-quad-complex-HTMLParser.patch bsc#1244705 mcepl@suse.com
+# avoid quadratic complexity when processing malformed inputs with HTMLParser
+Patch46:        CVE-2025-6069-quad-complex-HTMLParser.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -486,7 +492,7 @@ TODAY_DATE=`date -r %{SOURCE0} "+%%B %%d, %%Y"`
 
 cd Doc
 sed -i "s/^today = .*/today = '$TODAY_DATE'/" conf.py
-%make_build -j1 html
+%make_build -j1 JOBS=1 html
 
 # Build also devhelp files
 sphinx-build -a -b devhelp . build/devhelp

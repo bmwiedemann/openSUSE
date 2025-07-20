@@ -1795,4 +1795,35 @@
     <comment>Also addresses CVE-2025-4435 (gh#135034, bsc#1244061).</comment>
     <requestid>1288598</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>a5e8384e4b26fc053ff8969c9eb864f9</srcmd5>
+    <version>3.12.11</version>
+    <time>1753018130</time>
+    <user>anag_factory</user>
+    <comment>DEPENDS ON SR#1294511, THEY HAVE TO GO TOGETHER!!!
+
+- Add CVE-2025-6069-quad-complex-HTMLParser.patch to avoid worst
+  case quadratic complexity when processing certain crafted
+  malformed inputs with HTMLParser (CVE-2025-6069, bsc#1244705).
+
+- Add bsc1243155-sphinx-non-determinism.patch (bsc#1243155) to
+  generate ids for audit_events using docname (reproducible
+  builds).
+
+- Use one core to build doc. This will make sphinx doc build
+  reproducible.
+  bsc#1243155
+- Add CVE-2025-6069-quad-complex-HTMLParser.patch to avoid worst
+  case quadratic complexity when processing certain crafted
+  malformed inputs with HTMLParser (CVE-2025-6069, bsc#1244705).
+
+- Add bsc1243155-sphinx-non-determinism.patch (bsc#1243155) to
+  generate ids for audit_events using docname (reproducible
+  builds).
+
+- Use one core to build doc. This will make sphinx doc build
+  reproducible.
+  bsc#1243155</comment>
+    <requestid>1294513</requestid>
+  </revision>
 </revisionlist>
