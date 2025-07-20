@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 18 08:58:47 UTC 2025 - pgajdos@suse.com
+
+- security update
+- added patches
+  CVE-2025-7425 [bsc#1246296], Heap Use-After-Free in libxslt caused by atype corruption in xmlAttrPtr
+  + libxml2-CVE-2025-7425.patch
+
+-------------------------------------------------------------------
 Mon Jul  7 12:23:31 UTC 2025 - pgajdos@suse.com
 
 - security update

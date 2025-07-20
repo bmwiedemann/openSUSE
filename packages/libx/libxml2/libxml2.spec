@@ -60,6 +60,8 @@ Patch2001:      libxml2-CVE-2025-6170,6021.patch
 Patch2002:      libxml2-CVE-2025-49794,49796.patch
 # CVE-2025-49795 [bsc#1244555], null pointer dereference may lead to Denial of service (DoS)
 Patch2003:      libxml2-CVE-2025-49795.patch
+# CVE-2025-7425 [bsc#1246296], Heap Use-After-Free in libxslt caused by atype corruption in xmlAttrPtr
+Patch2004:      libxml2-CVE-2025-7425.patch
 #
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig

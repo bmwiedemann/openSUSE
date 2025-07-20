@@ -1255,4 +1255,15 @@
   + libxml2-CVE-2025-6170,6021.patch</comment>
     <requestid>1291037</requestid>
   </revision>
+  <revision rev="136" vrev="3">
+    <srcmd5>6f01c62364ad362b71c55bd64c7a4b22</srcmd5>
+    <version>2.13.8</version>
+    <time>1753018068</time>
+    <user>anag_factory</user>
+    <comment>- security update
+- added patches
+  CVE-2025-7425 [bsc#1246296], Heap Use-After-Free in libxslt caused by atype corruption in xmlAttrPtr
+  + libxml2-CVE-2025-7425.patch</comment>
+    <requestid>1294382</requestid>
+  </revision>
 </revisionlist>
