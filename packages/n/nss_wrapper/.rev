@@ -252,4 +252,13 @@
 </comment>
     <requestid>1185771</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>8182edd67ac38141f9d840e3bd3d4957</srcmd5>
+    <version>1.1.16</version>
+    <time>1753018077</time>
+    <user>anag_factory</user>
+    <comment>- Added nwrap-fix-tests.patch
+</comment>
+    <requestid>1294178</requestid>
+  </revision>
 </revisionlist>

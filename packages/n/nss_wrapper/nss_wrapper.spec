@@ -1,7 +1,7 @@
 #
 # spec file for package nss_wrapper
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
 Source2:        https://cryptomilk.org/gpgkey-8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D.gpg#/%{name}.keyring
 Source3:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM https://gitlab.com/cwrap/nss_wrapper/-/merge_requests/26
+Patch0:         nwrap-fix-tests.patch
 BuildRequires:  cmake
 BuildRequires:  libcmocka-devel
 BuildRequires:  netcfg
