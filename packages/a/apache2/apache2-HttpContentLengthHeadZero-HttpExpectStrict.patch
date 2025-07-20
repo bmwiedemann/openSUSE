@@ -42,11 +42,11 @@ Conflicts:
  server/protocol.c           | 25 +++++++++++++++++--------
  6 files changed, 77 insertions(+), 10 deletions(-)
 
-Index: httpd-2.4.49/modules/http/http_filters.c
+Index: httpd-2.4.64/modules/http/http_filters.c
 ===================================================================
---- httpd-2.4.49.orig/modules/http/http_filters.c	2021-05-11 17:21:43.000000000 +0200
-+++ httpd-2.4.49/modules/http/http_filters.c	2021-09-17 09:33:49.496853894 +0200
-@@ -1488,10 +1488,17 @@ AP_CORE_DECLARE_NONSTD(apr_status_t) ap_
+--- httpd-2.4.64.orig/modules/http/http_filters.c
++++ httpd-2.4.64/modules/http/http_filters.c
+@@ -1409,10 +1409,17 @@ static void merge_response_headers(reque
       * zero C-L to the client.  We can't just remove the C-L filter,
       * because well behaved 2.0 handlers will send their data down the stack,
       * and we will compute a real C-L for the head request. RBB
@@ -64,12 +64,12 @@ Index: httpd-2.4.49/modules/http/http_filters.c
 +        && conf->http_cl_head_zero != AP_HTTP_CL_HEAD_ZERO_ENABLE) {
          apr_table_unset(r->headers_out, "Content-Length");
      }
- 
-Index: httpd-2.4.49/server/core.c
+ }
+Index: httpd-2.4.64/server/core.c
 ===================================================================
---- httpd-2.4.49.orig/server/core.c	2021-05-27 15:08:21.000000000 +0200
-+++ httpd-2.4.49/server/core.c	2021-09-17 09:33:49.496853894 +0200
-@@ -551,6 +551,12 @@ static void *merge_core_server_configs(a
+--- httpd-2.4.64.orig/server/core.c
++++ httpd-2.4.64/server/core.c
+@@ -564,6 +564,12 @@ static void *merge_core_server_configs(a
      if (virt->http_methods != AP_HTTP_METHODS_UNSET)
          conf->http_methods = virt->http_methods;
  
@@ -82,7 +82,7 @@ Index: httpd-2.4.49/server/core.c
      /* no action for virt->accf_map, not allowed per-vhost */
  
      if (virt->protocol)
-@@ -4142,6 +4148,32 @@ static const char *set_http_method(cmd_p
+@@ -4166,6 +4172,32 @@ static const char *set_http_method(cmd_p
      return NULL;
  }
  
@@ -115,7 +115,7 @@ Index: httpd-2.4.49/server/core.c
  static apr_hash_t *errorlog_hash;
  
  static int log_constant_item(const ap_errorlog_info *info, const char *arg,
-@@ -4685,6 +4717,10 @@ AP_INIT_TAKE1("TraceEnable", set_trace_e
+@@ -4732,6 +4764,10 @@ AP_INIT_TAKE1("TraceEnable", set_trace_e
                "'on' (default), 'off' or 'extended' to trace request body content"),
  AP_INIT_FLAG("MergeTrailers", set_merge_trailers, NULL, RSRC_CONF,
                "merge request trailers into request headers or not"),
@@ -126,11 +126,11 @@ Index: httpd-2.4.49/server/core.c
  AP_INIT_ITERATE("Protocols", set_protocols, NULL, RSRC_CONF,
                  "Controls which protocols are allowed"),
  AP_INIT_TAKE1("ProtocolsHonorOrder", set_protocols_honor_order, NULL, RSRC_CONF,
-Index: httpd-2.4.49/server/protocol.c
+Index: httpd-2.4.64/server/protocol.c
 ===================================================================
---- httpd-2.4.49.orig/server/protocol.c	2021-09-17 09:33:49.496853894 +0200
-+++ httpd-2.4.49/server/protocol.c	2021-09-17 10:15:28.643596021 +0200
-@@ -1056,6 +1056,11 @@ AP_DECLARE(int) ap_check_request_header(
+--- httpd-2.4.64.orig/server/protocol.c
++++ httpd-2.4.64/server/protocol.c
+@@ -1058,6 +1058,11 @@ AP_DECLARE(int) ap_check_request_header(
          if (ap_cstr_casecmp(expect, "100-continue") == 0) {
              r->expecting_100 = 1;
          }
@@ -142,11 +142,11 @@ Index: httpd-2.4.49/server/protocol.c
          else {
              ap_log_rerror(APLOG_MARK, APLOG_INFO, 0, r, APLOGNO(00570)
                            "client sent an unrecognized expectation value "
-Index: httpd-2.4.49/include/http_core.h
+Index: httpd-2.4.64/include/http_core.h
 ===================================================================
---- httpd-2.4.49.orig/include/http_core.h	2021-05-27 15:08:21.000000000 +0200
-+++ httpd-2.4.49/include/http_core.h	2021-09-17 09:33:49.496853894 +0200
-@@ -733,6 +733,16 @@ typedef struct {
+--- httpd-2.4.64.orig/include/http_core.h
++++ httpd-2.4.64/include/http_core.h
+@@ -734,6 +734,16 @@ typedef struct {
  #define AP_MERGE_TRAILERS_DISABLE  2
      int merge_trailers;
  
@@ -163,7 +163,7 @@ Index: httpd-2.4.49/include/http_core.h
      apr_array_header_t *protocols;
      int protocols_honor_order;
  
-@@ -776,7 +786,6 @@ apr_status_t ap_core_input_filter(ap_fil
+@@ -780,7 +790,6 @@ apr_status_t ap_core_input_filter(ap_fil
                                    apr_off_t readbytes);
  apr_status_t ap_core_output_filter(ap_filter_t *f, apr_bucket_brigade *b);
  

@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Fri Jul 18 03:25:25 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+* Refresh patches:
+  - apache-test-application-xml-type.patch
+  - apache-test-turn-off-variables-in-ssl-var-lookup.patch
+  - apache2-HttpContentLengthHeadZero-HttpExpectStrict.patch
+  - apache2-LimitRequestFieldSize-limits-headers.patch
+* Update to 2.4.64.
+* CVE-2025-53020: Apache HTTP Server: HTTP/2 DoS by Memory Increase
+* CVE-2025-49812: Apache HTTP Server: mod_ssl TLS upgrade attack
+* CVE-2025-49630: Apache HTTP Server: mod_proxy_http2 denial of service
+* CVE-2025-23048: Apache HTTP Server: mod_ssl access control bypass with session resumption
+* CVE-2024-47252: Apache HTTP Server: mod_ssl error log variable escaping
+* CVE-2024-43394: Apache HTTP Server: SSRF on Windows due to UNC paths
+* CVE-2024-43204: Apache HTTP Server: SSRF with mod_headers setting Content-Type header
+* CVE-2024-42516: Apache HTTP Server: HTTP response splitting
+* mod_proxy_ajp: Use iobuffersize set on worker level for the IO buffer
+  size.
+* mod_ssl: Drop $SSLKEYLOGFILE handling internally for OpenSSL 3.5
+  builds which enable it in libssl natively.
+* mod_asis: Fix the log level of the message AH01236.
+* mod_session_dbd: ensure format used with SessionDBDCookieName and
+  SessionDBDCookieName2 are correct.
+* mod_headers: 'RequestHeader set|edit|edit_r Content-Type X' could
+  inadvertently modify the Content-Type _response_ header. Applies to
+  Content-Type only and likely to only affect static file responses.
+* mod_ssl: Remove warning over potential uninitialised value
+  for ssl protocol prior to protocol selection.
+* mod_proxy: Reuse ProxyRemote connections when possible, like prior
+  to 2.4.59.
+* mod_systemd: Add systemd socket activation support.
+* mod_systemd: Log the SELinux context at startup if available and
+  enabled.
+* mod_http2: update to version 2.0.32
+  The code setting the connection window size was set wrong,
+  preventing `H2WindowSize` to work.
+* mod_http2: update to version 2.0.30
+- Fixed bug in handling over long response headers. When the 64 KB limit
+  of nghttp2 was exceeded, the request was not reset and the client was
+  left hanging, waiting for it. Now the stream is reset.
+- Added new directive `H2MaxHeaderBlockLen` to set the limit on response
+  header sizes.
+- Fixed handling of Timeout vs. KeepAliveTimeout when first request on a
+  connection was reset.
+* mod_lua: Fix memory handling in LuaOutputFilter.
+* mod_proxy_http2: revert r1912193 for detecting broken backend connections
+  as this interferes with backend selection who a node is unresponsive.
+* mod_proxy_balancer: Fix a regression that caused stickysession keys no
+  longer be recognized if they are provided as query parameter in the URL.
+* mod_md: update to version 2.5.2
+- Fixed TLS-ALPN-01 challenges when multiple `MDPrivateKeys` are specified
+  with EC keys before RSA ones.
+- Fixed missing newlines in the status page output.
+* mod_dav: Add API to expose DavBasePath setting.
+* mod_md: update to version 2.5.1
+  - Added support for ACME profiles with new directives MDProfile and
+    MDProfileMandatory.
+  - When installing a custom CA file via `MDCACertificateFile`, also set the
+    libcurl option CURLSSLOPT_NO_REVOKE that suppresses complains by Schannel
+    (when curl is linked with it) about missing CRL/OCSP in certificates.
+  - Fixed handling of corrupted httpd.json and added test 300_30 for it.
+    File is removed on error and written again. Fixes #369.
+  - Added explanation in log for how to proceed when md_store.json could not be
+    parsed and prevented the server start.
+  - restored fixed to #336 and #337 which got lost in a sync with Apache svn
+  - Add Issue Name/Uris to certificate information in md-status handler
+  - MDomains with static certificate files have MDRenewMode "manual", unless
+    "always" is configured.
+* core: Report invalid Options= argument when parsing AllowOverride
+  directives.
+* scoreboard/mod_http2: record durations of HTTP/2 requests.
+
+-------------------------------------------------------------------
 Mon Mar 10 05:00:51 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 2.4.63:

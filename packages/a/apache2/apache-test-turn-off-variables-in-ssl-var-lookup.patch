@@ -1,8 +1,8 @@
-Index: httpd-framework/t/ssl/varlookup.t
+Index: httpd-2.4.64/httpd-framework/t/ssl/varlookup.t
 ===================================================================
---- a/httpd-framework/t/ssl/varlookup.t	2016-10-25 14:30:54.250707932 +0200
-+++ b/httpd-framework/t/ssl/varlookup.t	2016-10-27 15:38:52.440667690 +0200
-@@ -210,9 +210,7 @@ SSL_SERVER_S_DN_UID
+--- httpd-2.4.64.orig/httpd-framework/t/ssl/varlookup.t
++++ httpd-2.4.64/httpd-framework/t/ssl/varlookup.t
+@@ -227,9 +227,7 @@ SSL_SERVER_S_DN_UID
  SSL_CLIENT_S_DN_Email        "$client_dn{$email_field}"
  SSL_SERVER_S_DN_Email        "$server_dn{$email_field}"
  SSL_CLIENT_SAN_Email_0       "$san_email"
