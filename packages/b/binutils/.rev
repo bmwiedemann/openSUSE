@@ -2407,4 +2407,16 @@ soon.
     <comment>Skip PGO with %want_reproducible_builds (boo#1040589) (forwarded request 1291583 from bmwiedemann)</comment>
     <requestid>1291682</requestid>
   </revision>
+  <revision rev="181" vrev="10">
+    <srcmd5>5d7a3f82c34f919148ea6fa9462baee8</srcmd5>
+    <version>2.43</version>
+    <time>1753018065</time>
+    <user>anag_factory</user>
+    <comment>Fix a typo and sync with a change from SLFO (adjusted to
+continue building gold in Factory)
+
+- pr33029.patch: Fix crash in assembler with -gdwarf-5
+- Do not build binutils-gold for SLFO.</comment>
+    <requestid>1294193</requestid>
+  </revision>
 </revisionlist>

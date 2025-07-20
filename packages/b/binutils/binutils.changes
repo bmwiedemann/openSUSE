@@ -6,7 +6,7 @@ Thu Jul 10 05:26:01 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 -------------------------------------------------------------------
 Wed Jun 18 09:30:37 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
-- pr33029.patch: Fix crash in assembler with -gdawrf-5
+- pr33029.patch: Fix crash in assembler with -gdwarf-5
 
 -------------------------------------------------------------------
 Tue Jun  3 09:07:07 UTC 2025 - Andreas Schwab <schwab@suse.de>
@@ -18,6 +18,11 @@ Tue May  6 14:33:48 UTC 2025 - Michael Matz <matz@suse.com>
 
 - Add -std=gnu17 to move gcc15 forward, as temporary measure until
   the binutils version can be updated [bsc#1241916].
+
+-------------------------------------------------------------------
+Thu Feb 13 09:39:06 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Do not build binutils-gold for SLFO.
 
 -------------------------------------------------------------------
 Fri Jan 10 08:54:55 UTC 2025 - JS <obs.coke518@passinbox.com>

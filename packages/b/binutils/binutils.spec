@@ -178,7 +178,8 @@ Requires:       alts
 %else
 PreReq:         update-alternatives
 %endif
-%if 0%{!?cross:1} && 0%{?suse_version} >= 1310
+# We want gold for SLE15 and (newer) openSUSE, but not SLE16
+%if 0%{!?cross:1} && 0%{?suse_version} >= 1310 && ( 0%{?suse_version} < 1600 || 0%{?is_opensuse} )
 %define gold_archs %ix86 aarch64 %arm x86_64 %x86_64 ppc ppc64 ppc64le s390x %sparc
 %endif
 
