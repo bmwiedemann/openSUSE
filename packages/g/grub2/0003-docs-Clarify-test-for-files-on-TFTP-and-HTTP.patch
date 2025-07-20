@@ -1,0 +1,34 @@
+From a0bcce49bc285fb71c572963e662db3d88bcd563 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Wed, 16 Jul 2025 17:52:03 +0800
+Subject: [PATCH 3/4] docs: Clarify test for files on TFTP and HTTP
+
+---
+ docs/grub.texi | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/docs/grub.texi b/docs/grub.texi
+index 9aaea7282..4b947e942 100644
+--- a/docs/grub.texi
++++ b/docs/grub.texi
+@@ -5887,13 +5887,13 @@ the strings are not equal
+ @item @var{prefix}@var{integer1} @code{-plt} @var{prefix}@var{integer2}
+ @var{integer1} is less than @var{integer2} after stripping off common non-numeric @var{prefix}.
+ @item @var{file1} @code{-nt} @var{file2}
+-@var{file1} is newer than @var{file2} (modification time). Optionally numeric @var{bias} may be directly appended to @code{-nt} in which case it is added to the first file modification time.
++@var{file1} is newer than @var{file2} (modification time). Optionally numeric @var{bias} may be directly appended to @code{-nt} in which case it is added to the first file modification time. For @var{file} on TFTP or HTTP servers, this operation may not work as expected.
+ @item @var{file1} @code{-ot} @var{file2}
+-@var{file1} is older than @var{file2} (modification time). Optionally numeric @var{bias} may be directly appended to @code{-ot} in which case it is added to the first file modification time.
++@var{file1} is older than @var{file2} (modification time). Optionally numeric @var{bias} may be directly appended to @code{-ot} in which case it is added to the first file modification time. For @var{file} on TFTP or HTTP servers, this operation may not work as expected.
+ @item @code{-d} @var{file}
+-@var{file} exists and is a directory
++@var{file} exists and is a directory. For @var{file} on TFTP or HTTP servers, the test is unreliable because these protocols are designed for file transport, and GRUB’s netfs does not implement directory listing for them.
+ @item @code{-e} @var{file}
+-@var{file} exists
++@var{file} exists. For @var{file} on TFTP or HTTP servers, the result is the same as @code{-f} because these protocols are designed for file transport, and GRUB’s netfs lacks directory support to distinguish between files and directories.
+ @item @code{-f} @var{file}
+ @var{file} exists and is not a directory
+ @item @code{-s} @var{file}
+-- 
+2.50.0
+

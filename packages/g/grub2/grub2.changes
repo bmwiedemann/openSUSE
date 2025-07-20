@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 16 11:19:21 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Fix test -f and -s do not work properly over the network files served via
+  tftp and http (bsc#1246157) (bsc#1246237)
+  * 0001-test-Fix-f-test-on-files-over-network.patch
+  * 0002-http-Return-HTTP-status-code-in-http_establish.patch
+  * 0003-docs-Clarify-test-for-files-on-TFTP-and-HTTP.patch
+  * 0004-tftp-Fix-hang-when-file-is-a-directory.patch
+
+-------------------------------------------------------------------
 Fri Jul 11 05:34:39 UTC 2025 - Michael Chang <mchang@suse.com>
 
 - Enable loongarch64 build (bsc#1234248)

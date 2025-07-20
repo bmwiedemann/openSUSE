@@ -1,0 +1,67 @@
+From 0a8f0e75151067a8b7c09a6ffdfa9558aa040d3b Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 14 Jul 2025 17:59:20 +0800
+Subject: [PATCH 1/4] test: Fix -f test on files over network
+
+The "test -f ..." aka "if [ -f ... ]; " does not work for files over
+network in both TFTP and HTTP and always evaluates to false.
+
+It is caused by network protocols like TFTP and HTTP are designed for
+transferring files and not a file system over network. In that way they
+do not have a way to list files in a directory and test their properties
+individually. The current logic in grub assumes that directory and file
+listing must be implemented, which applies to local file systems but not
+to file reading over the network. This logic should be adjusted to test
+network files.
+
+This patch updates the logic to detect when the underlying device is a
+network device. If so, it attempts to test the file using
+grub_file_open. If the file opens successfully, the ctx->file_exists
+flag is set accordingly to true. Other properties that cannot be
+determined over the network, such as whether the file is a directory or
+whether the modification time is set, are conservatively set to false.
+
+This means that -d cannot reliably detect directories on network
+devices, and -e may not work as expected if the target is a directory.
+In addition, comparisons such as -nt and -ot will not function
+correctly, since file timestamps are not available. Despite these
+limitations, this patch ensures that the -f test behaves correctly in
+the most common case: checking whether a "file" exists on a network
+device.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/commands/test.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/grub-core/commands/test.c b/grub-core/commands/test.c
+index 62d3fb398..541f36daf 100644
+--- a/grub-core/commands/test.c
++++ b/grub-core/commands/test.c
+@@ -91,6 +91,23 @@ get_fileinfo (char *path, struct test_parse_ctx *ctx)
+       return;
+     }
+ 
++  if (! dev->disk && dev->net)
++    {
++      grub_file_t file;
++
++      file = grub_file_open (path , GRUB_FILE_TYPE_GET_SIZE
++			     | GRUB_FILE_TYPE_NO_DECOMPRESS);
++      ctx->file_exists = file ? 1 : 0;
++      ctx->file_info.dir = 0;
++      ctx->file_info.mtimeset = 0;
++      grub_errno = GRUB_ERR_NONE;
++      if (file)
++	grub_file_close (file);
++      grub_free (device_name);
++      grub_device_close (dev);
++      return;
++    }
++
+   fs = grub_fs_probe (dev);
+   if (! fs)
+     {
+-- 
+2.50.0
+

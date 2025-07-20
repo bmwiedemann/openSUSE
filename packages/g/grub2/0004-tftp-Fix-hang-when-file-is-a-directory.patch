@@ -1,0 +1,59 @@
+From 9f8f5e0d45165b99d0f3ce9bf37382738e0bddb7 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 17 Jul 2025 13:29:48 +0800
+Subject: [PATCH 4/4] tftp: Fix hang when file is a directory
+
+We observed an issue when accessing a remote directory via TFTP: GRUB
+hangs indefinitely instead of returning an error immediately.
+
+The packet capture [1] shows that the server doesn't send an error
+packet right after the RRQ. Instead, it first replies with an OACK
+indicating tsize=22, as if the target were a regular file. After GRUB
+sends its ACK, the server then sends an error "Is a directory". GRUB
+ignores this delayed error and hangs while waiting for data that never
+arrives.
+
+This happens because GRUB currently assumes any error must follow the
+RRQ immediately, before data transfer begins. Once it receives an OACK,
+it switches to expecting data packets and neglects any error that
+arrives afterward.
+
+To work around this, we detect an error on block 0 immediately after
+OACK, set the eof and stall flags to break out of the receive loop, and
+close the socket (so that tftp_close() won't send another error). GRUB
+will then report the error and exit properly.
+
+[1]
+Source          Destination     Info
+192.168.100.122	192.168.100.2	Read Request, File: /grub/i386-pc, Transfer type: octet, blksize=1024, tsize=0
+192.168.100.2	192.168.100.122	Option Acknowledgement, blksize=1024, tsize=22
+192.168.100.122	192.168.100.2	Acknowledgement, Block: 0
+192.168.100.2	192.168.100.122	Error Code, Code: Not defined, Message: Is a directory
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/net/tftp.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/grub-core/net/tftp.c b/grub-core/net/tftp.c
+index 409b1d09b..93452fe3b 100644
+--- a/grub-core/net/tftp.c
++++ b/grub-core/net/tftp.c
+@@ -250,6 +250,14 @@ tftp_receive (grub_net_udp_socket_t sock __attribute__ ((unused)),
+       grub_netbuff_free (nb);
+       return GRUB_ERR_NONE;
+     case TFTP_ERROR:
++      if (data->have_oack == 1 && data->block == 0)
++	{
++	  file->device->net->eof = 1;
++	  file->device->net->stall = 1;
++	  /* Do not send closed error code back to server in tftp_close() */
++	  grub_net_udp_close (data->sock);
++	  data->sock = NULL;
++	}
+       data->have_oack = 1;
+       grub_error (GRUB_ERR_IO, "%s", tftph->u.err.errmsg);
+       grub_error_save (&data->save_err);
+-- 
+2.50.0
+

@@ -489,6 +489,10 @@ Patch311:       grub2-bls-loader-entry-oneshot.patch
 Patch312:       0001-mkconfig-Determine-GRUB_DISTRIBUTOR-from-etc-SUSE-br.patch
 Patch313:       grub2-blsbumpcounter-menu.patch
 Patch314:       0001-disk-cryptodisk-Allow-user-to-retry-failed-passphras.patch
+Patch315:       0001-test-Fix-f-test-on-files-over-network.patch
+Patch316:       0002-http-Return-HTTP-status-code-in-http_establish.patch
+Patch317:       0003-docs-Clarify-test-for-files-on-TFTP-and-HTTP.patch
+Patch318:       0004-tftp-Fix-hang-when-file-is-a-directory.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime
