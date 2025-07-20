@@ -833,4 +833,12 @@
 - Drop unzip BuildRequires and pre_checkin.sh script. (forwarded request 1174646 from dimstar)</comment>
     <requestid>1174652</requestid>
   </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>d9b0b0d55fb6b2f8d4f2a1cd22110cc8</srcmd5>
+    <version>2.42.12</version>
+    <time>1753018089</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1294303</requestid>
+  </revision>
 </revisionlist>

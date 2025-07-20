@@ -33,6 +33,8 @@ Source3:        gdk-pixbuf-rpmlintrc
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM gdk-pixbuf-jpeg-slow.patch -- https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/merge_requests/174
 Patch0:         gdk-pixbuf-jpeg-slow.patch
+# PATCH-FIX-UPSTREAM gdk-pixbuf-fix-decoder-written-bytes-reporting.patch bsc#1245227 alynx.zhou@suse.com -- Fix wrong written bytes reported by decoder
+Patch1:         gdk-pixbuf-fix-decoder-written-bytes-reporting.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docutils

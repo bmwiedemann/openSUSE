@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 18 06:35:12 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gdk-pixbuf-fix-decoder-written-bytes-reporting.patch: Fix
+  memory leak caused by wrong written bytes reported by decoder
+  (bsc#1245227).
+
+-------------------------------------------------------------------
 Thu May 16 13:30:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Enable test suite on x86_64 (other arches seem too flaky for now):
