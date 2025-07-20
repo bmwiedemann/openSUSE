@@ -16,9 +16,9 @@
 #
 
 
-%define libsepol_ver 3.8.1
+%define libsepol_ver 3.9
 Name:           libselinux
-Version:        3.8.1
+Version:        3.9
 Release:        0
 Summary:        SELinux runtime library and utilities
 License:        SUSE-Public-Domain
