@@ -1,7 +1,7 @@
 #
 # spec file for package uid_wrapper
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
 Source3:        uid_wrapper.keyring
+# PATCH-FIX-UPSTREAM https://gitlab.com/cwrap/uid_wrapper/-/merge_requests/21
+Patch0:         uwrap-fix-tests.patch
 BuildRequires:  cmake
 BuildRequires:  libcmocka-devel
 BuildRequires:  pkgconf
