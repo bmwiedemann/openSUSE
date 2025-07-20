@@ -1,0 +1,153 @@
+From 6941162cd2a2375df8d2095abcba86a53aff7418 Mon Sep 17 00:00:00 2001
+From: Stefan Schubert <schubi@suse.de>
+Date: Fri, 15 Dec 2023 13:22:31 +0100
+Subject: [PATCH] Using vendor defined directories for configuration files
+ besides user/admin defined configuration files.
+
+Signed-off-by: Stefan Schubert <schubi@suse.de>
+---
+ policycoreutils/sestatus/Makefile        |  8 +++
+ policycoreutils/sestatus/sestatus.c      | 79 ++++++++++++++++++++++--
+ policycoreutils/sestatus/sestatus.conf.5 |  2 +-
+ 4 files changed, 90 insertions(+), 5 deletions(-)
+
+diff --git a/policycoreutils/sestatus/Makefile b/policycoreutils/sestatus/Makefile
+index aebf050c2..bb1f6bda0 100644
+--- a/policycoreutils/sestatus/Makefile
++++ b/policycoreutils/sestatus/Makefile
+@@ -5,6 +5,7 @@ BINDIR ?= $(PREFIX)/bin
+ SBINDIR ?= $(PREFIX)/sbin
+ MANDIR = $(PREFIX)/share/man
+ ETCDIR ?= /etc
++LIBECONFH ?= $(shell test -f /usr/include/libeconf.h && echo y)
+ 
+ CFLAGS ?= -Werror -Wall -W
+ override CFLAGS += -I../../libselinux/include -D_FILE_OFFSET_BITS=64
+@@ -13,6 +14,13 @@ override LDLIBS += -lselinux
+ all: sestatus
+ 
+ sestatus: sestatus.o
++ifdef VENDORDIR
++ifneq ($(LIBECONFH), y)
++	(echo "VENDORDIR defined but libeconf not available."; exit 1)
++endif
++override CFLAGS += -DVENDORDIR='"${VENDORDIR}"'
++override LDLIBS += -leconf
++endif
+ 
+ install: all
+ 	[ -d $(DESTDIR)$(MANDIR)/man8 ] || mkdir -p $(DESTDIR)$(MANDIR)/man8
+diff --git a/policycoreutils/sestatus/sestatus.c b/policycoreutils/sestatus/sestatus.c
+index 6c95828ed..f80612dcd 100644
+--- a/policycoreutils/sestatus/sestatus.c
++++ b/policycoreutils/sestatus/sestatus.c
+@@ -21,11 +21,16 @@
+ 
+ #define PROC_BASE "/proc"
+ #define MAX_CHECK 50
+-#define CONF "/etc/sestatus.conf"
++#define CONFDIR "/etc"
++#define CONFNAME "sestatus"
++#define CONFPOST "conf"
++#define CONF CONFDIR "/" CONFNAME "." CONFPOST
+ 
+ /* conf file sections */
+-#define PROCS "[process]"
+-#define FILES "[files]"
++#define SECTIONPROCS "process"
++#define SECTIONFILES "files"
++#define PROCS "[" SECTIONPROCS "]"
++#define FILES "[" SECTIONFILES "]"
+ 
+ /* buffer size for cmp_cmdline */
+ #define BUFSIZE 255
+@@ -92,9 +97,75 @@ static int pidof(const char *command)
+ 	return ret;
+ }
+ 
+-static void load_checks(char *pc[], int *npc, char *fc[], int *nfc)
++#ifdef VENDORDIR
++#include <libeconf.h>
++
++static void load_checks_with_vendor_settings(char *pc[], int *npc, char *fc[], int *nfc)
+ {
++	econf_file *key_file = NULL;
++	econf_err error;
++	char **keys;
++	size_t key_number;
++
++	error = econf_readDirs (&key_file,
++				VENDORDIR,
++				CONFDIR,
++				CONFNAME,
++				CONFPOST,
++				"", "#");
++	if (error != ECONF_SUCCESS) {
++		printf("\nCannot read settings %s.%s: %s\n",
++		       CONFNAME,
++		       CONFPOST,
++		       econf_errString( error ));
++		return;
++	}
++
++	error = econf_getKeys(key_file, SECTIONPROCS, &key_number, &keys);
++	if (error != ECONF_SUCCESS) {
++		printf("\nCannot read group %s: %s\n",
++		       SECTIONPROCS,
++		       econf_errString( error ));
++	} else {
++		for (size_t i = 0; i < key_number; i++) {
++			if (*npc >= MAX_CHECK)
++				break;
++			pc[*npc] = strdup(keys[i]);
++			if (!pc[*npc])
++				break;
++			(*npc)++;
++		}
++		econf_free (keys);
++	}
++
++	error = econf_getKeys(key_file, SECTIONFILES, &key_number, &keys);
++	if (error != ECONF_SUCCESS) {
++		printf("\nCannot read group %s: %s\n",
++		       SECTIONFILES,
++		       econf_errString( error ));
++	} else {
++		for (size_t i = 0; i < key_number; i++) {
++			if (*nfc >= MAX_CHECK)
++				break;
++			fc[*nfc] = strdup(keys[i]);
++			if (!fc[*nfc])
++				break;
++			(*nfc)++;
++		}
++		econf_free (keys);
++	}
+ 
++	econf_free (key_file);
++	return;
++}
++#endif
++
++static void load_checks(char *pc[], int *npc, char *fc[], int *nfc)
++{
++#ifdef VENDORDIR
++	load_checks_with_vendor_settings(pc, npc, fc, nfc);
++	return;
++#endif
+ 	FILE *fp = fopen(CONF, "r");
+ 	char buf[255], *bufp;
+ 	int buf_len, section = -1;
+diff --git a/policycoreutils/sestatus/sestatus.conf.5 b/policycoreutils/sestatus/sestatus.conf.5
+index acfedf6f5..01f8051d2 100644
+--- a/policycoreutils/sestatus/sestatus.conf.5
++++ b/policycoreutils/sestatus/sestatus.conf.5
+@@ -8,7 +8,7 @@ The \fIsestatus.conf\fR file is used by the \fBsestatus\fR(8) command with the \
+ .sp
+ The fully qualified path name of the configuration file is:
+ .RS
+-\fI/etc/sestatus.conf\fR
++\fI/etc/sestatus.conf\fR or \fI<vendordir>/sestatus.conf\fR if it is not available
+ .RE
+ .RE
+ .sp

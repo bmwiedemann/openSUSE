@@ -6,5 +6,5 @@ Index: policycoreutils-2.8/Makefile
 -SUBDIRS = setfiles load_policy newrole run_init secon sestatus semodule setsebool scripts po man hll unsetfiles
 +SUBDIRS = setfiles load_policy newrole run_init secon sestatus semodule setsebool scripts po man hll unsetfiles sepolicy audit2allow semanage sepolgen chcat semodule_expand semodule_link semodule_package
  
- all install relabel clean indent:
- 	@for subdir in $(SUBDIRS); do \
+ PKG_CONFIG ?= pkg-config
+ 

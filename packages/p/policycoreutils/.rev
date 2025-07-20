@@ -694,4 +694,12 @@ sepolgen: Add back attributes flag to fix exception crash from Dan Walsh.
     <comment></comment>
     <requestid>1280163</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>add79cb5a97f36e073f5a9cde46f17d4</srcmd5>
+    <version>3.9</version>
+    <time>1753018075</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1294371</requestid>
+  </revision>
 </revisionlist>
