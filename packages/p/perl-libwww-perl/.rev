@@ -1466,4 +1466,18 @@ update to 5.76
         (GH#469) (Austin Hill) (forwarded request 1268689 from tinita)</comment>
     <requestid>1269242</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>14232f372494ac005b276ca2b67c4c92</srcmd5>
+    <version>6.790.0</version>
+    <time>1753018094</time>
+    <user>anag_factory</user>
+    <comment>- updated to 6.790.0 (6.79)
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.79      2025-06-27 22:43:32Z
+      - Remove example references to malicious domain (GH#476) (Devin Dooley)
+      - Documentation updates for mirror (GH#470) (Julien Fiegehenn)
+      - Allow underscores in headers not to be removed in lwp-request (GH#443)
+        (@JohnHughesAtlantech and Olaf Alders) (forwarded request 1294123 from tinita)</comment>
+    <requestid>1294332</requestid>
+  </revision>
 </revisionlist>

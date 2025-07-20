@@ -18,10 +18,10 @@
 
 %define cpan_name libwww-perl
 Name:           perl-libwww-perl
-Version:        6.780.0
+Version:        6.790.0
 Release:        0
-# 6.78 -> normalize -> 6.780.0
-%define cpan_version 6.78
+# 6.79 -> normalize -> 6.790.0
+%define cpan_version 6.79
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        The World-Wide Web library for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -36,7 +36,7 @@ BuildRequires:  perl(HTML::Entities)
 BuildRequires:  perl(HTML::HeadParser) >= 3.710
 BuildRequires:  perl(HTTP::CookieJar::LWP)
 BuildRequires:  perl(HTTP::Cookies) >= 6
-BuildRequires:  perl(HTTP::Daemon) >= 6.12
+BuildRequires:  perl(HTTP::Daemon) >= 6.120
 BuildRequires:  perl(HTTP::Date) >= 6
 BuildRequires:  perl(HTTP::Negotiate) >= 6
 BuildRequires:  perl(HTTP::Request) >= 6.180
@@ -45,7 +45,7 @@ BuildRequires:  perl(HTTP::Response) >= 6.180
 BuildRequires:  perl(HTTP::Status) >= 6.180
 BuildRequires:  perl(LWP::MediaTypes) >= 6
 BuildRequires:  perl(Module::Load)
-BuildRequires:  perl(Net::HTTP) >= 6.18
+BuildRequires:  perl(Net::HTTP) >= 6.180
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Needs)
@@ -68,7 +68,7 @@ Requires:       perl(HTTP::Response) >= 6.180
 Requires:       perl(HTTP::Status) >= 6.180
 Requires:       perl(LWP::MediaTypes) >= 6
 Requires:       perl(Module::Load)
-Requires:       perl(Net::HTTP) >= 6.18
+Requires:       perl(Net::HTTP) >= 6.180
 Requires:       perl(Try::Tiny)
 Requires:       perl(URI) >= 1.100
 Requires:       perl(URI::Escape)
@@ -107,7 +107,7 @@ Recommends:     perl(LWP::Protocol::https) >= 6.06
 The World-Wide Web library for Perl
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

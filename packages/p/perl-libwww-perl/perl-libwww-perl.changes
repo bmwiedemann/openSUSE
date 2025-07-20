@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 28 05:34:08 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.790.0 (6.79)
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.79      2025-06-27 22:43:32Z
+      - Remove example references to malicious domain (GH#476) (Devin Dooley)
+      - Documentation updates for mirror (GH#470) (Julien Fiegehenn)
+      - Allow underscores in headers not to be removed in lwp-request (GH#443)
+        (@JohnHughesAtlantech and Olaf Alders)
+
+-------------------------------------------------------------------
 Thu Feb 20 05:33:39 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.780.0 (6.78)
