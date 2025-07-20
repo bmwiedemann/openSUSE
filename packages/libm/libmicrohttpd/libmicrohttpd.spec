@@ -21,7 +21,7 @@
 %global sover   12
 %global libname %{name}%{sover}
 Name:           libmicrohttpd
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Small Embeddable HTTP Server Library
 # Some internal tests are licenced as GPL-3.0+ - they are only used in
@@ -31,8 +31,8 @@ Group:          Productivity/Networking/Web/Servers
 URL:            https://www.gnu.org/software/libmicrohttpd/
 Source0:        https://ftp.gnu.org/gnu/libmicrohttpd/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/libmicrohttpd/%{name}-%{version}.tar.gz.sig
-Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=90068#/%{name}.keyring
-Patch0:         libmicrohttpd-1.0.1-curl-8.13.0.patch
+# https://savannah.gnu.org/project/release-gpgkeys.php?group=libmicrohttpd
+Source2:        %{name}.keyring
 BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig >= 0.9.0

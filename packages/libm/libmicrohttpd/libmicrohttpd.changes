@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 14 17:39:05 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libmicrohttpd 1.0.2:
+  * Fix double-close bugs on bind()
+  * Remove MHD2 draft code
+- drop libmicrohttpd-1.0.1-curl-8.13.0.patch, included
+- update upstream signing key
+
+-------------------------------------------------------------------
 Fri Apr 11 18:04:05 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build with curl 8.13.0 (boo#1241036)

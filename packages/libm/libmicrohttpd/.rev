@@ -534,4 +534,12 @@ BTW: should go to 13.1
   add libmicrohttpd-1.0.1-curl-8.13.0.patch</comment>
     <requestid>1269062</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>97f3ab5e868b29b10821573bcc796d62</srcmd5>
+    <version>1.0.2</version>
+    <time>1753018080</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1294248</requestid>
+  </revision>
 </revisionlist>
