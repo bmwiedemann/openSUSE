@@ -1,0 +1,5 @@
+<package name="perl-Crypt-SysRandom" project="openSUSE:Factory">
+  <title>Perl interface to system randomness</title>
+  <description>This module uses whatever interface is available to procure cryptographically random data from the system.</description>
+  <url>https://metacpan.org/dist/Crypt-SysRandom</url>
+</package>
