@@ -171,4 +171,41 @@ development tree.
     <comment></comment>
     <requestid>1222230</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5dee64649e2c68c827c9fdff729387ef</srcmd5>
+    <version>1.4.4</version>
+    <time>1753120797</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.4
+  * Fixed audio distortion when the audio device uses a sample rate
+    other than 48 kHz.
+  * Fixed the internal mixer_chunksize setting being ignored.
+    This resulted in a larger audio buffer than intended,
+    increasing latency.
+  * Fixed some minor SDL3 migration issues, particularly in
+    handling of IO errors.
+  * Fixed mimalloc being built incorrectly as a subproject.
+- Changes in 1.4.3
+  * SDL3 is now used instead of SDL2. Should work with any SDL3
+    version, but latest is recommended.
+  * When the online shader translator is enabled, the glslang API
+    is now used directly instead of shaderc. The glslc frontend
+    from shaderc is still used for offline shader validation and
+    translation (e.g. for Emscripten builds), but is not required
+    at runtime.
+  * Implemented a new rendering backend based on the SDL3 GPU API.
+    This backend is now used by default in Windows and macOS
+    builds, so the game now renders with Vulkan and Metal APIs on
+    those platforms, respectively. Requires the shader translator.
+    The Linux build still prefers OpenGL, because it is more
+    efficient with the Mesa drivers, but includes support for SDL
+    GPU as well.
+  * 32-bit x86 builds are no longer provided for Windows.
+    32-bit architectures (except WASM) are not officially supported
+    anymore.
+  * Taisei now prefers to use mimalloc as its memory allocator if
+    available. This generally improves memory usage. Package
+    maintainers are encouraged to add a dependency on mimalloc.</comment>
+    <requestid>1294539</requestid>
+  </revision>
 </revisionlist>

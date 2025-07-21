@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Jul 19 20:54:22 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to version 1.4.4
+  * Fixed audio distortion when the audio device uses a sample rate
+    other than 48 kHz.
+  * Fixed the internal mixer_chunksize setting being ignored.
+    This resulted in a larger audio buffer than intended,
+    increasing latency.
+  * Fixed some minor SDL3 migration issues, particularly in
+    handling of IO errors.
+  * Fixed mimalloc being built incorrectly as a subproject.
+- Changes in 1.4.3
+  * SDL3 is now used instead of SDL2. Should work with any SDL3
+    version, but latest is recommended.
+  * When the online shader translator is enabled, the glslang API
+    is now used directly instead of shaderc. The glslc frontend
+    from shaderc is still used for offline shader validation and
+    translation (e.g. for Emscripten builds), but is not required
+    at runtime.
+  * Implemented a new rendering backend based on the SDL3 GPU API.
+    This backend is now used by default in Windows and macOS
+    builds, so the game now renders with Vulkan and Metal APIs on
+    those platforms, respectively. Requires the shader translator.
+    The Linux build still prefers OpenGL, because it is more
+    efficient with the Mesa drivers, but includes support for SDL
+    GPU as well.
+  * 32-bit x86 builds are no longer provided for Windows.
+    32-bit architectures (except WASM) are not officially supported
+    anymore.
+  * Taisei now prefers to use mimalloc as its memory allocator if
+    available. This generally improves memory usage. Package
+    maintainers are encouraged to add a dependency on mimalloc.
+  * Worked around a potential crash in Wriggle EX's Moonlight
+    Rocket spell card.
+  * Fixed a crash that occurred when the window is closed during
+    the gameover menu.
+  * Improved dependency lookup for libpng and
+    libwebp/libwebpdecoder.
+  * Fixed some documentation issues.
+
+-------------------------------------------------------------------
 Sun Oct 20 05:41:42 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Fix building for Leap 15.6

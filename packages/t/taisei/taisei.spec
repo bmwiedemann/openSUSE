@@ -1,7 +1,7 @@
 #
 # spec file for package taisei
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           taisei
-Version:        1.4.2
+Version:        1.4.4
 Release:        0
 Summary:        Clone of the Touhou Project series of shoot ’em up games
 License:        MIT
-Group:          Amusements/Games/Action/Arcade
 URL:            https://taisei-project.org
 Source0:        https://github.com/taisei-project/taisei/releases/download/v%{version}/taisei-%{version}.tar.xz
 Source1:        https://github.com/taisei-project/taisei/releases/download/v%{version}/taisei-%{version}.tar.xz.sig
 Source2:        gpg.keyring
 BuildRequires:  c++_compiler
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.63.0
@@ -34,6 +34,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-Pygments
 BuildRequires:  python3-docutils
 BuildRequires:  python3-zstandard
+BuildRequires:  shaderc
+BuildRequires:  spirv-cross-devel
+BuildRequires:  cmake(glslang)
 BuildRequires:  pkgconfig(cglm) >= 0.7.8
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gamemode)
@@ -42,12 +45,11 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libwebpdecoder) >= 0.5
 BuildRequires:  pkgconfig(libzip) >= 1.7.0
 BuildRequires:  pkgconfig(libzstd) >= 1.4.0
+BuildRequires:  pkgconfig(mimalloc)
 BuildRequires:  pkgconfig(opusfile)
-BuildRequires:  pkgconfig(sdl2) >= 2.0.16
-BuildRequires:  pkgconfig(zlib)
-BuildRequires:  shaderc
+BuildRequires:  pkgconfig(sdl3)
 BuildRequires:  pkgconfig(shaderc)
-BuildRequires:  spirv-cross-devel
+BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data
 Suggests:       gamemoded
 ExcludeArch:    %{ix86}
@@ -58,7 +60,6 @@ of shoot ’em up games set in an isolated world full of Japanese folklore.
 
 %package data
 Summary:        Data files for Taisei
-Group:          Amusements/Games/Action/Arcade
 Requires:       %{name} >= %{version}
 BuildArch:      noarch
 
