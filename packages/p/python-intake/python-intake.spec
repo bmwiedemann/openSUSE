@@ -1,7 +1,7 @@
 #
 # spec file for package python-intake
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-intake%{psuffix}
-Version:        2.0.7
+Version:        2.0.8
 Release:        0
 Summary:        Data loading and cataloging system
 License:        BSD-2-Clause
