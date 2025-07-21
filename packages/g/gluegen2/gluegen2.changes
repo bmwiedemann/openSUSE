@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 21 10:01:44 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * gluegen2-notimestamp.patch
+    + for reproducible builds, do not add timestamps to generated
+      files
+
+-------------------------------------------------------------------
 Wed Feb 21 09:06:30 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use %autopatch instead of deprecated %patchN.

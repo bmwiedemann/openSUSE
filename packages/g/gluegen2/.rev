@@ -156,4 +156,12 @@ http://lists.opensuse.org/opensuse-factory/2014-04/msg00309.html</comment>
     <comment>rpm 4.20 compat</comment>
     <requestid>1148465</requestid>
   </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>d5a17837843178ded2f6a0204cc190a7</srcmd5>
+    <version>2.3.2</version>
+    <time>1753120896</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1294782</requestid>
+  </revision>
 </revisionlist>

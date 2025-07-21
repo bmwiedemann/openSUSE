@@ -1,7 +1,7 @@
 #
 # spec file for package gluegen2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,7 @@ Patch8:         gluegen2-0001-Remove-version-overrides-for-memcpy.patch
 Patch9:         gluegen2-jdk9.patch
 Patch10:        gluegen2-jdk10.patch
 Patch11:        gluegen2-riscv64.patch
+Patch12:        gluegen2-notimestamp.patch
 BuildRequires:  ant >= 1.9.8
 BuildRequires:  ant-antlr
 BuildRequires:  ant-contrib

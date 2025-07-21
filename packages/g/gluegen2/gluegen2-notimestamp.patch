@@ -1,0 +1,11 @@
+--- gluegen-v2.3.2/src/java/com/jogamp/gluegen/CodeGenUtils.java	2025-07-17 08:17:37.631827626 +0200
++++ gluegen-v2.3.2/src/java/com/jogamp/gluegen/CodeGenUtils.java	2025-07-17 08:17:46.384507694 +0200
+@@ -64,8 +64,6 @@
+             w.print(packageAsPath(generator.getClass().getName()));
+             w.print(".java ");
+         }
+-        w.print("on ");
+-        w.print((new Date()).toString());
+         w.println(" ----! */");
+         w.println();
+     }
