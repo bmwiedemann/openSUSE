@@ -23,7 +23,7 @@
 %global origrel 1
 
 Name:           distribution-gpg-keys
-Version:        1.111
+Version:        1.113
 Release:        0
 Summary:        GPG keys of various Linux distributions
 Group:          System/Packages

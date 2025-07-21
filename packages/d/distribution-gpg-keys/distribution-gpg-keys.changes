@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 19 19:07:00 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.113:
+  + Add Rocky Linux 10 keys
+  + Add FreeBSD keys
+  + Fix AlmaLinux name and alphabetical ordering of distros
+  + Add AlmaLinux EPEL AltArch Key
+
+-------------------------------------------------------------------
 Fri May 23 21:02:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.111
