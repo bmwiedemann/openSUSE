@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 20 16:56:08 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.0.2
+  * Fix a case of `CantPackException: corrupted file; details: size
+    <= max_size` occurring during compression of some files with
+    LZMA.
+  * Fix a case of `CantPackException: bad DT_GNU_HASH
+    n_bucket{0x107} <= buckets[251]` occurring during compression
+    of some i386 ELF32 executables.
+
+-------------------------------------------------------------------
 Tue May  6 14:35:01 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.0.1
