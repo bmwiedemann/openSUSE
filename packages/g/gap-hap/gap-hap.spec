@@ -17,7 +17,7 @@
 
 
 Name:           gap-hap
-Version:        1.69
+Version:        1.70
 Release:        0
 Summary:        GAP: Homological Algebra Programming
 License:        GPL-2.0-or-later
