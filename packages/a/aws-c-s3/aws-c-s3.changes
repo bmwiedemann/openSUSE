@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 15 11:55:48 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.4
+  * More request metrics by @DmitriyMusatkin in (#530)
+  * Avoid releasing pending mem ticket future while holding
+    the lock by @DmitriyMusatkin in (#533)
+
+-------------------------------------------------------------------
 Wed Jul  2 07:20:01 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.3
