@@ -22,14 +22,18 @@ License:        MPL-2.0
 Group:          Development/Tools/Building
 # Repository name subject to change
 URL:            https://github.com/openSUSE-Rust/%{name}
-Version:        7.0.1+git4.gf492aff6b70ec15c54c50bd1800062bdac7c6b0e
+Version:        7.0.1+git7.ga8fcbee4d5c2cf895e943cb1485ebcc81e83f8e4
 Release:        0
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
+%if 0%{?suse_version} > 1600
+BuildRequires:  libressl-devel
+%else
+BuildRequires:  openssl-devel
+%endif
 BuildRequires:  pkgconfig(libzstd)
-BuildRequires:  pkgconfig(openssl)
 # Version with fixed vendor filterer
 Requires:       cargo-vendor-filterer >= 0.5.16
 Requires:       (cargo or rustup)

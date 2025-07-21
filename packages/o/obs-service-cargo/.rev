@@ -1179,4 +1179,18 @@ packages. This library is fasted, easier to maintain and easier for a user to co
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1290001</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>2b9b89d565bb9bfdb6a8f46e43cddc43</srcmd5>
+    <version>7.0.1+git7.ga8fcbee4d5c2cf895e943cb1485ebcc81e83f8e4</version>
+    <time>1753120806</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 7.0.1+git7.ga8fcbee4d5c2cf895e943cb1485ebcc81e83f8e4:
+  * remove &quot;to&quot; in README
+  * apply cargo clippy fixes. mostly `format!` related usage
+  * fix: forgot to set clap::ArgAction::Set for filter and versioned-dirs
+  * docs: improve README.md
+- Use libressl-devel
+</comment>
+    <requestid>1294544</requestid>
+  </revision>
 </revisionlist>

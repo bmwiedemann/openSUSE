@@ -2,6 +2,7 @@
   <service name="cargo_vendor" mode="manual">
     <param name="src">https://github.com/openSUSE-Rust/obs-service-cargo</param>
     <param name="update">true</param>
+    <param name="filter">true</param>
     <param name="versionrewriteregex">^v?(.*)</param>
     <param name="versionrewritepattern">${1}</param>
     <param name="changesgenerate">true</param>

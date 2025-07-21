@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 19 23:22:03 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 7.0.1+git7.ga8fcbee4d5c2cf895e943cb1485ebcc81e83f8e4:
+  * remove "to" in README
+  * apply cargo clippy fixes. mostly `format!` related usage
+  * fix: forgot to set clap::ArgAction::Set for filter and versioned-dirs
+  * docs: improve README.md
+- Use libressl-devel
+
+-------------------------------------------------------------------
 Wed Jun 25 14:16:40 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 7.0.1+git4.gf492aff6b70ec15c54c50bd1800062bdac7c6b0e:
