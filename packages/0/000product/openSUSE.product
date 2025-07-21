@@ -256,10 +256,12 @@
     <packagelist relationship="requires">
       <package name="bitwarden"/>
       <package name="MozillaFirefox"/>
+      <package name="MozillaFirefox-branding-upstream"/>
       <package name="MozillaFirefox-devel"/>
       <package name="MozillaFirefox-translations-common"/>
       <package name="MozillaFirefox-translations-other"/>
       <package name="MozillaThunderbird"/>
+      <package name="MozillaThunderbird-openpgp-librnp"/>
       <package name="MozillaThunderbird-translations-common"/>
       <package name="MozillaThunderbird-translations-other"/>
       <package name="libmozjs-115-0"/>
