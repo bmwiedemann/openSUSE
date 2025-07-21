@@ -1,0 +1,2 @@
+# it's a subpackage in the distro
+addFilter("python-leftover-require python.*-matplotlib-web")

@@ -16,9 +16,8 @@
 #
 
 
-%define skip_python39 1
-%define pyver   0.9.4
-%define jsver   0.11.4
+%define pyver   0.9.7
+%define jsver   0.11.7
 %bcond_with     test
 Name:           python-ipympl
 Version:        %{pyver}
@@ -34,20 +33,20 @@ Source2:        package-lock.json
 # node_modules generated using "osc service mr" with the https://github.com/openSUSE/obs-service-node_modules
 Source3:        node_modules.spec.inc
 %include        %{_sourcedir}/node_modules.spec.inc
+Source99:       python-ipympl.rpmlintrc
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module hatch-jupyter-builder}
+BuildRequires:  %{python_module hatch-jupyter-builder >= 0.8.3}
+BuildRequires:  %{python_module hatch-nodejs-version >= 0.3.2}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module ipython < 9}
-BuildRequires:  %{python_module ipython_genutils}
+BuildRequires:  %{python_module ipython < 10}
 BuildRequires:  %{python_module ipywidgets >= 7.6.0 with %python-ipywidgets < 9}
-BuildRequires:  %{python_module jupyterlab}
-BuildRequires:  %{python_module matplotlib >= 3.4.0 with %python-matplotlib < 4}
+BuildRequires:  %{python_module jupyterlab >= 4}
+BuildRequires:  %{python_module matplotlib >= 3.5.0 with %python-matplotlib < 4}
 BuildRequires:  %{python_module matplotlib-web}
 BuildRequires:  %{python_module nbval}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module traitlets < 6}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
 BuildRequires:  local-npm-registry
@@ -55,13 +54,12 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       jupyter-matplotlib = %{jsver}
 Requires:       python-Pillow
-Requires:       python-ipython < 9
-Requires:       python-ipython_genutils
+Requires:       python-ipython < 10
 Requires:       python-matplotlib-web
 Requires:       python-numpy
 Requires:       python-traitlets < 6
 Requires:       (python-ipywidgets >= 7.6.0 with python-ipywidgets < 9)
-Requires:       (python-matplotlib >= 3.4.0 with python-matplotlib < 4)
+Requires:       (python-matplotlib >= 3.5.0 with python-matplotlib < 4)
 Suggests:       python-jupyterlab
 Suggests:       python-notebook
 Provides:       python-jupyter_ipympl = %{pyver}
@@ -109,9 +107,6 @@ This package provides the JupyterLab extension.
 
 %prep
 %autosetup -p1 -n ipympl-%{pyver}
-# Replace usage of "jlpm" with "npm"
-sed -i 's/npm = \["jlpm"\]/npm = ["npm"]/g' pyproject.toml
-sed -i 's/jlpm/npm run/g' package.json
 sed -i '/prepublish/d' package.json
 local-npm-registry %{_sourcedir} install --include=dev --include=peer
 

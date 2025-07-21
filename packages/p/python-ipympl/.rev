@@ -192,4 +192,23 @@
     <comment>- Refresh node modules to update brace-expansion (CVE-2025-5889, bsc#1244347)</comment>
     <requestid>1288678</requestid>
   </revision>
+  <revision rev="16" vrev="16">
+    <srcmd5>09bcc070756f299037ed588fd917f7c8</srcmd5>
+    <version>unknown</version>
+    <time>1753120824</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.9.7
+  * Use mpl.version_info in FigureManager by @ianthomas23 in #580
+  * Update Ipython requirement by @ianhi in #589
+- Version 0.9.6
+  * Remove workaround for matplotlib &lt; 3.4 by @ianthomas23 in #577
+- Version 0.9.6
+  * Minor doc formatting improvement by @oscargus in #521
+  * Remove unnecessary dependency ipython_genutils by
+    @randolf-scholz in #558
+  * Include event.buttons in mouse events by @ianthomas23 in #568
+  * Support python 3.13 in classifiers and CI by @ianthomas23 in
+    #571</comment>
+    <requestid>1294597</requestid>
+  </revision>
 </revisionlist>
