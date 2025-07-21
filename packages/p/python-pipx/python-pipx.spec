@@ -1,7 +1,7 @@
 #
 # spec file for package python-pipx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-pipx
 Version:        1.7.1
@@ -27,10 +28,10 @@ Source:         pipx-%{version}.tar.gz
 BuildRequires:  %{python_module hatch-vcs >= 0.4}
 BuildRequires:  %{python_module hatchling >= 1.18}
 BuildRequires:  %{python_module pip}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
 Requires:       python >= 3.8
 Requires:       python-argcomplete >= 1.9.4
 Requires:       python-packaging >= 20
@@ -61,11 +62,8 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %python_clone -a %{buildroot}%{_bindir}/pipx
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%post
-%python_install_alternative pipx
-
-%postun
-%python_uninstall_alternative pipx
+%pre
+%python_libalternatives_reset_alternative pipx
 
 %check
 # Tests require network or .pipx_tests with downloaded .whl, so not

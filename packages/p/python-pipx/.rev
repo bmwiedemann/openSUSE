@@ -189,4 +189,12 @@
 - Use obs-service-tar_scm instead of GitHub releases</comment>
     <requestid>1199618</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>f4de0f417ad017ada42c6190027fb8d8</srcmd5>
+    <version>1.7.1</version>
+    <time>1753120784</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1294493</requestid>
+  </revision>
 </revisionlist>
