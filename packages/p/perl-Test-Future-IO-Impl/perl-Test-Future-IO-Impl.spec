@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Future-IO-Impl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,23 @@
 
 %define cpan_name Test-Future-IO-Impl
 Name:           perl-Test-Future-IO-Impl
-Version:        0.14
+Version:        0.150.0
 Release:        0
+# 0.15 -> normalize -> 0.150.0
+%define cpan_version 0.15
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Acceptance tests for Future::IO implementations
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build) >= 0.400400
+BuildRequires:  perl(Module::Build) >= 0.400.400
 BuildRequires:  perl(Test2::V0)
 Requires:       perl(Test2::V0)
+Provides:       perl(Test::Future::IO::Impl) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -38,17 +42,17 @@ This module contains a collection of acceptance tests for implementations
 of Future::IO.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
