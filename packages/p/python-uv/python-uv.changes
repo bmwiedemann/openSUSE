@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Jul 18 18:14:03 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.8.0
+ * Breaking changes
+   * Install Python executables into a directory on the PATH
+   * Prompt before removing an existing directory in uv venv
+   * Validate that discovered interpreters meet the Python preferences
+   * Install dependencies without build systems when they are path sources
+   * Install dependencies without build systems when they are workspace members
+   * Bump --python-platform linux to manylinux_2_28
+   * Remove uv version fallback
+   * Require --global for removal of the global Python pin
+   * Support conflicting editable settings across groups
+   * Make uv_build the default build backend in uv init
+   * Set default UV_TOOL_BIN_DIR on Docker images
+   * Update --check to return an exit code of 1
+   * Use an ephemeral environment for uv run --with invocations
+   * Restructure the uv venv command output and exit codes
+   * Default to --workspace when adding subdirectories
+   * Add missing validations for disallowed uv.toml fields
+ * Configuration
+   * Add support for toggling Python bin and registry install options via env vars 
+   * Add UV_COMPILE_BYTECODE_TIMEOUT environment variable 
+   * Allow users to override index cache-control headers 
+   * Add UV_LIBC to override libc selection in multi-libc environment 
+ * Bug fixes
+   * Fix --all-arches when paired with --only-downloads 
+   * Skip Windows Python interpreters that return a broken MSIX package code 
+   * Warn on invalid uv.toml when provided via direct path 
+   * Improve async signal safety in Windows exception handler 
+ * Documentation
+   * Mention the revision in the lockfile versioning doc 
+   * Move "Conflicting dependencies" to the "Resolution" page 
+   * Rename "Dependency specifiers" section to exclude PEP 508 reference 
+   * Suggest uv cache clean prior to --reinstall 
+ * Preview features
+   * Make preview Python registration on Windows non-fatal 
+   * Update preview installation of Python executables to be non-fatal 
+   * Add uv python update-shell 
+
+-------------------------------------------------------------------
 Tue Jul 15 08:11:49 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.21
