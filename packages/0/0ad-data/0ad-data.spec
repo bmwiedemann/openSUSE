@@ -17,14 +17,13 @@
 
 
 Name:           0ad-data
-Version:        0.27.0
+Version:        0.27.1
 Release:        0
 Summary:        The Data Files for 0 AD
 # When openSUSE supports full spdx 2.2, replace GPL-3.0+ with (GPL-3.0+ with Font-exception-2.0)
 License:        CC-BY-SA-3.0 AND LPPL-1.3c+ AND GPL-3.0-or-later
 Group:          Amusements/Games/Strategy/Real Time
 URL:            https://play0ad.com/
-# SF tarball is currently broken. Upstreamed notified and confirmed. Lets use their site for now.
 Source:         https://releases.wildfiregames.com/0ad-%{version}-unix-data.tar.xz
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
@@ -65,7 +64,6 @@ done
 %fdupes %{buildroot}%{_datadir}/0ad
 
 %files
-%defattr(-,root,root)
 %{_datadir}/0ad
 
 %changelog
