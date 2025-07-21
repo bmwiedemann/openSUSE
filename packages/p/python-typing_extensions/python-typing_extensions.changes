@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 18 16:11:33 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.14.1:
+  * Fix usage of `typing_extensions.TypedDict` nested inside
+    other types (e.g., `typing.Type[typing_extensions.TypedDict]`).
+    This is not allowed by the type system but worked on older
+    versions, so we maintain support.
+
+-------------------------------------------------------------------
 Thu Jul 10 10:39:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.14.0
@@ -48,7 +57,7 @@ Sat Mar 29 09:46:25 UTC 2025 - Dirk Müller <dmueller@suse.com>
   * Backport `evaluate_forward_ref` from CPython
   * Update PEP 728 implementation to a newer version of the PEP.
   * Copy the coroutine status of functions and methods wrapped
-    with `@typing_extensions.deprecated`. 
+    with `@typing_extensions.deprecated`.
   * Fix bug where `TypeAliasType` instances could be subscripted
     even where they were not generic.
   * Fix bug where a subscripted `TypeAliasType` instance did not

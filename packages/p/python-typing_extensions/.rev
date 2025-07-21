@@ -350,4 +350,18 @@
     <comment></comment>
     <requestid>1291658</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>24172ad2717dd755b0a19ff2838c4c35</srcmd5>
+    <version>4.14.1</version>
+    <time>1753120716</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.14.1:
+  * Fix usage of `typing_extensions.TypedDict` nested inside
+    other types (e.g., `typing.Type[typing_extensions.TypedDict]`).
+    This is not allowed by the type system but worked on older
+    versions, so we maintain support.
+
+    with `@typing_extensions.deprecated`.</comment>
+    <requestid>1294417</requestid>
+  </revision>
 </revisionlist>
