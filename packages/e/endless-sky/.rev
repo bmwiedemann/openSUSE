@@ -168,4 +168,13 @@
 </comment>
     <requestid>1293192</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>00ce2716dd0c7ea1a793dcc2e123667e</srcmd5>
+    <version>0.10.14</version>
+    <time>1753120916</time>
+    <user>anag_factory</user>
+    <comment>- Fix building on openSUSE Leap 15.6
+</comment>
+    <requestid>1294805</requestid>
+  </revision>
 </revisionlist>

@@ -65,6 +65,13 @@ Take sides in a civil war. Or leave human space behind and hope to
 find some friendly aliens whose culture is more civilized than your own...
 
 %prep
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+export CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden"
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
+%else
+export CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden -Wno-error=dangling-reference"
+%endif
 %autosetup -p1
 cmake --preset linux
 
