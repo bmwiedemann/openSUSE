@@ -1,7 +1,7 @@
 #
 # spec file for package partio
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,13 @@
 %define pyver python3
 
 Name:           partio
-Version:        1.14.6
+Version:        1.19.0
 Release:        1
 Summary:        Library for reading/writing/manipulating common animation particle
 License:        BSD-3-Clause
 URL:            https://github.com/wdas/%{name}
 Source:         https://github.com/wdas/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.15
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -83,8 +83,7 @@ sed -i 's:^#!/usr/bin/env python:#!%{_bindir}/%{pyver}:' src/tools/*.py
 %build
 %cmake \
  -DCMAKE_PREFIX_PATH=%{_prefix} \
- -DCMAKE_INSTALL_DOCDIR=%{_defaultdocdir}/%{name} \
- -DCXXFLAGS_STD=c++17
+ -DCMAKE_INSTALL_DOCDIR=%{_defaultdocdir}/%{name}
 %cmake_build
 
 %install
@@ -103,7 +102,6 @@ rm -vrf %{buildroot}%{_datadir}/%{name}/test
 %doc README.md
 %{_bindir}/part*
 %{_datadir}/swig/%{name}.i
-%dir %{_datadir}/%{name}
 
 %files devel
 %{_includedir}/*

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul  8 18:03:44 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 1.19.0
+  * fix opacity by swapping logic
+- update to 1.18.0
+  * Fixes for partedit to show fixed attribute indexed strs
+  * Fix crash divide by zero when attribute has no count
+  * update partinspect to accept ParticlesDataMutable pointe
+- update to 1.17.0
+  * Update CMake Python detection
+  * tests: only enable when PARTIO_GTEST_ENABLED is ON
+- update to 1.16.0
+  * Fixed a number of bugs and compiler warnings
+- update to 1.15.0
+  * Ptython3 compatibility
+
+-------------------------------------------------------------------
 Wed Oct 27 18:15:01 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - fix python version
