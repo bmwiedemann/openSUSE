@@ -51,15 +51,11 @@ pushd %{_name}
 popd
 
 %install
-%if %{?suse_version} >= 1600
-for p in python3.11 python3.12 python3.13; do
-%else
-for p in python3.11; do
-%endif
+for p in $(echo "%{pythons}" | sed s/python31/python3.1/g); do
 install -d %{buildroot}%{_libdir}/$p/site-packages/{proton,proton/vpn};
 ln -sr %{buildroot}%{_libdir}/proton/local_agent.so  %{buildroot}%{_libdir}/$p/site-packages/proton/vpn/local_agent.so;
 done
-install -Dm0644 %{_builddir}/local-agent-rs-%{version}/%{_name}/target/release/libpython_proton_vpn_local_agent.so %{buildroot}%{_libdir}/proton/local_agent.so
+install -Dm0644 target/release/libpython_proton_vpn_local_agent.so %{buildroot}%{_libdir}/proton/local_agent.so
 
 %files %{python_files}
 %doc README.md

@@ -15,4 +15,16 @@
     <comment>Add python-proton-vpn-local-agent</comment>
     <requestid>1270230</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5ff36a994577a641f249c4d2688257e2</srcmd5>
+    <version>1.4.5</version>
+    <time>1753120935</time>
+    <user>anag_factory</user>
+    <comment>- fix build. had accidently changed the library name which we copy
+  to the correct location
+
+- use pythons macro for identiying which python versions exist for
+  each distribution</comment>
+    <requestid>1294826</requestid>
+  </revision>
 </revisionlist>

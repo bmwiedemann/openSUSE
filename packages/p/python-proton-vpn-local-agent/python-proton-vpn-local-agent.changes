@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 21 12:37:26 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix build. had accidently changed the library name which we copy
+  to the correct location
+
+-------------------------------------------------------------------
+Sat May 17 16:10:17 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- use pythons macro for identiying which python versions exist for
+  each distribution
+
+-------------------------------------------------------------------
 Mon Apr 14 10:59:10 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.4.5:
