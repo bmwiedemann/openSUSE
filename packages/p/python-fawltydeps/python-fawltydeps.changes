@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Jul 13 12:15:54 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.0:
+  * When FawltyDeps finds a 3rd-party `import` that is not
+    declared, it will output that import name as an undeclared
+    dependency. But as we've talked about before, _import_ names
+    in Python are not necessarily synonymous with the _package_
+    names that you would have to declare in order to make those
+    import names available.
+  * For example, if you `import sklearn` in your code, it might
+    not be obvious that the corresponding dependency declaration
+    should be `scikit-learn`, and not `sklearn`.
+  * Starting with this version, if you run FawltyDeps with the
+    `--detailed` option, _and_ if there happens to be one or more
+    (undeclared) packages in your Python environment that provide
+    the relevant import name, then FawltyDeps will suggest these
+    packages as potential solutions to your undeclared
+    dependency.
+  * By default (and before this release) FawltyDeps looks at the
+    paths on the command-line to deduce where 1st-party imports
+    (i.e. your project's own modules) can be found. In some
+    corner cases this deduction fails, and the result is
+    typically that a 1st-party import is flagged by FawltyDeps as
+    an undeclared dependency.
+  * The new `--base-dir` allows you to control where FawltyDeps
+    looks for 1st-party imports, and it can help fix those cases
+    where the default deduction fails, for example in cases where
+    you are passing individual file names (instead of directory
+    names) on the FawltyDeps command line.
+
+-------------------------------------------------------------------
 Tue Apr  1 20:03:48 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.19.0
