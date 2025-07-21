@@ -10,10 +10,10 @@ Wed Jul  9 05:50:32 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
   - Tools/Demos
     - gh-135968: Stubs for strip are now provided as part of an
       iOS install.
-    - gh-133600: Backport file reorganization for               .
-      Tools/wasm/wasi This should make backporting future code  .
-      changes easier. It also simplifies instructions around how.
-      to do WASI builds in the devguide                         .
+    - gh-133600: Backport file reorganization for Tools/wasm/wasi
+      This should make backporting future code changes easier. It
+      also simplifies instructions around how to do WASI builds
+      in the devguide.
   - Tests
     - gh-135966: The iOS testbed now handles the app_packages
       folder as a site directory.

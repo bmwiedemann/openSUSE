@@ -2295,4 +2295,12 @@
     <comment>- Fix gil/nogil package description, bsc#1246229</comment>
     <requestid>1291661</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>1bc570c745dcfe5f095fa31511ed376e</srcmd5>
+    <version>3.14.0~b4</version>
+    <time>1753120824</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1294540</requestid>
+  </revision>
 </revisionlist>
