@@ -1601,4 +1601,13 @@ FIXES (LSP):
 - rearrange where the tests are in the specfile (forwarded request 1292422 from rrahl0)</comment>
     <requestid>1292423</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>1270e51cd00d9fec8ae7feb31ed88f03</srcmd5>
+    <version>0.11.3</version>
+    <time>1753120841</time>
+    <user>anag_factory</user>
+    <comment>- disable tests on ppc64le and s390x, otherwise works fine (lua fails)
+- move s390x back onto lua, not luajit, as nvim coredumps otherwise (forwarded request 1294647 from rrahl0)</comment>
+    <requestid>1294648</requestid>
+  </revision>
 </revisionlist>

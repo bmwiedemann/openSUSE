@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Jul 16 07:38:24 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.11.3:
+  * fix(terminal): stack overflow when too many csi args
+  * fix(terminal): stack overflow when too many csi args
+  * fix(api): add missing nargs field to user command Lua callbacks
+  * fix(api): reconfiguring float "relative" does not clear "win"
+  * fix(api): adjust fix for reconfiguring float "relative"
+  * fix(menu): fix listing of submenus
+  * fix(treesitter): ensure TSNode's tree is immutable
+  * fix(lsp): only auto-detach lsp.config enabled clients
+  * test(treesitter): test node access after tree edit
+  * fix(api): update topline when flushing with nvim__redraw()
+  * fix(treesitter): scope highlight state per window
+  * fix(treesitter): support multiple @injection.content captures
+  * fix(treesitter): ensure window is valid in async parsing
+  * test(screen): still match by full row when {MATCH:} is present
+  * fix(editorconfig): a custom property is treated as a section
+  * fix(msgpack): flush incomplete big UI event before packing RPC event
+  * fix(lsp): advertise supported fold kinds
+  * fix(lsp) type annotation for vim.lsp.Config.cmd
+  * fix(vim.system): clear_env=true gives an invalid env to uv.spawn
+  * fix(tui): don't crash when nvim__screenshot() is called with bad path
+  * fix(term): terminal attr index may exceed TERM_ATTRS_MAX
+  * test(editor/defaults_spec): fix flakiness
+  * fix(api): populate lhsrawalt in nvim_get_keymap response
+  * fix(runtime): no conceal in qf on :lopen
+  * fix(messages): make swapfile attention message part of prompt
+  * fix(health): bad format() call
+- remove patch bad-format-call.patch, as upstream included the patch
+  in the release
+- remove skipping Rpath tests
+- disable tests on ppc64le and s390x, otherwise works fine (lua fails)
+- move s390x back onto lua, not luajit, as nvim coredumps otherwise
+
+-------------------------------------------------------------------
 Sat Jul 12 16:53:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - add patch bad-format-call.patch, which fixes an isuse where by accident,

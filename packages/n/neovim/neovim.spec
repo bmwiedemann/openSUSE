@@ -16,13 +16,13 @@
 #
 
 
-%ifarch ppc64le
+%ifarch ppc64le s390x
 %bcond_with luajit
 %else
 %bcond_without luajit
 %endif
 Name:           neovim
-Version:        0.11.2
+Version:        0.11.3
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim AND GPL-3.0-or-later AND CC-BY-3.0
@@ -32,15 +32,12 @@ Source1:        sysinit.vim
 Source3:        suse-spec-template
 Source4:        spec.vim
 Source10:       https://github.com/neovim/deps/raw/06ef2b58b0876f8de1a3f5a710473dcd7afff251/opt/lua-dev-deps.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         bad-format-call.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
-BuildRequires:  git-core
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  hostname
@@ -51,14 +48,16 @@ BuildRequires:  lua51-compat-5.3
 BuildRequires:  lua51-lpeg
 BuildRequires:  lua51-luarocks
 BuildRequires:  lua51-luv
-BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(libluv)
 BuildRequires:  pkgconfig(libutf8proc) >= 2.10.0
 BuildRequires:  pkgconfig(libuv) >= 1.50.0
+%if %{with luajit}
 BuildRequires:  pkgconfig(luajit)
+%else
+BuildRequires:  pkgconfig(lua5.1)
+%endif
 BuildRequires:  pkgconfig(tree-sitter) >= 0.25.3
 BuildRequires:  pkgconfig(unibilium) >= 2.1.2
 BuildRequires:  pkgconfig(vterm) >= 0.3.3
@@ -129,7 +128,7 @@ USERNAME=OBS
        -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
        -DENABLE_TRANSLATIONS=ON \
        -DLIBLUV_INCLUDE_DIR:PATH=%{lua_incdir}
-%make_build
+%cmake_build
 
 %install
 %cmake_install
@@ -146,26 +145,20 @@ desktop-file-install --dir=%{buildroot}%{_datadir}/applications \
     runtime/nvim.desktop
 install -Dm0644 runtime/nvim.png %{buildroot}%{_datadir}/pixmaps/nvim.png
 
-# Fix exec bits
-find %{buildroot}%{_datadir} \( -name \*.bat -o -name \*.awk \) \
-    -print -exec chmod -x '{}' \;
-
 # vim/site directories for plugins shared with vim
 mkdir -p %{buildroot}%{_datadir}/vim/site/{after,after/syntax,autoload,colors,doc,ftdetect,plugin,syntax}
 
 %fdupes %{buildroot}
 %find_lang nvim
 
-# We have to have rpath
-# https://en.opensuse.org/openSUSE:Packaging_checks
-export NO_BRP_CHECK_RPATH=true
-
 %check
 mkdir -p runtime/parser
 ln -sf %{_libdir}/tree_sitter/vimdoc.so runtime/parser
 
+%ifnarch %{power64} s390x
 # old tests
 %make_build USE_BUNDLED=OFF oldtest
+%endif
 # functional tests
 %ifarch aarch64 x86_64
 %make_build USE_BUNDLED=OFF unittest
