@@ -2224,4 +2224,11 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <time>1751816931</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="312" vrev="310">
+    <srcmd5>628f1866e9ce6e3059757ca78ca49c57</srcmd5>
+    <version>unknown</version>
+    <time>1753088162</time>
+    <user>dimstar_suse</user>
+    <comment>Fix i586 Firefox orphans</comment>
+  </revision>
 </revisionlist>
