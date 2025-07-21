@@ -17,7 +17,7 @@
 
 
 Name:           firejail
-Version:        0.9.72
+Version:        0.9.74
 Release:        0
 Summary:        Linux namepaces sandbox program
 License:        GPL-2.0-only
@@ -114,8 +114,10 @@ rm %{buildroot}%{_docdir}/firejail/COPYING
 %dir %{_datadir}/vim
 %dir %{_datadir}/vim/vimfiles
 %dir %{_datadir}/vim/vimfiles/ftdetect
+%dir %{_datadir}/vim/vimfiles/ftplugin
 %dir %{_datadir}/vim/vimfiles/syntax
 %{_datadir}/vim/vimfiles/ftdetect/firejail.vim
+%{_datadir}/vim/vimfiles/ftplugin/firejail.vim
 %{_datadir}/vim/vimfiles/syntax/firejail.vim
 %dir %{_datadir}/gtksourceview-5
 %dir %{_datadir}/gtksourceview-5/language-specs
