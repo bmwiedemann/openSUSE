@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jul  5 05:32:52 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.4000
+   see /usr/share/doc/packages/perl-Moose/Changes
+
+  2.4000   2025-07-04
+    [DOCUMENTATION]
+    - clarified some wording regarding the interactions between attribute
+      configuration options "init_arg" and "required". (Christian Walde, #187)
+    [OTHER]
+    - the release schedule and numbering scheme has changed; see
+      Moose::Manual::Support
+
+-------------------------------------------------------------------
 Sun Jan 21 03:09:56 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.2207
