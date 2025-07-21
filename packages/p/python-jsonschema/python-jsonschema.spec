@@ -33,7 +33,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonschema%{psuffix}
-Version:        4.24.0
+Version:        4.24.1
 Release:        0
 Summary:        An implementation of JSON-Schema validation for Python
 License:        MIT
@@ -47,6 +47,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 %if %{with test}
+BuildRequires:  %{python_module jsonpath-ng}
 BuildRequires:  %{python_module jsonschema = %{version}}
 BuildRequires:  %{python_module jsonschema-format = %{version}}
 BuildRequires:  %{python_module jsonschema-format-nongpl = %{version}}

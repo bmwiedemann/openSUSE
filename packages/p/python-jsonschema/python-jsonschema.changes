@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 18 05:56:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.24.1:
+  * Unambiguously quote and escape properties in JSON path rendering
+    by @kurtmckee in #1390
+  * Drop python<3.9 backports by @hackowitz-af in #1367
+
+-------------------------------------------------------------------
 Thu May 29 05:55:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 4.24.0:
