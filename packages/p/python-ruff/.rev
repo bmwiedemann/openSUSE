@@ -2286,4 +2286,34 @@
    * [flake8-bandit] Make example error out-of-the-box (S412)</comment>
     <requestid>1292499</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>02ba71523027dc276fa6c782663f9a15</srcmd5>
+    <version>0.12.4</version>
+    <time>1753120720</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.12.4
+ * Preview features
+   * [flake8-type-checking, pyupgrade, ruff] Add from __future__ import annotations when it would
+      allow new fixes (TC001, TC002, TC003, UP037, RUF013) 
+   * [flake8-use-pathlib] Add autofix for PTH109 
+   * [pylint] Detect indirect pathlib.Path usages for unspecified-encoding (PLW1514) 
+ * Bug fixes
+   * [flake8-bugbear] Fix B017 false negatives for keyword exception arguments 
+   * [flake8-use-pathlib] Fix false negative on direct Path() instantiation (PTH210) 
+   * [flake8-django] Fix DJ008 false positive for abstract models with type-annotated abstract field 
+   * [isort] Fix I002 import insertion after docstring with multiple string statements 
+   * [isort] Treat form feed as valid whitespace before a semicolon 
+   * [pydoclint] Fix SyntaxError from fixes with line continuations (D201, D202) 
+   * [refurb] FURB164 fix should validate arguments and should usually be marked unsafe 
+ * Rule changes
+   * [flake8-use-pathlib] Skip single dots for invalid-pathlib-with-suffix (PTH210) on versions &gt;= 3.14 
+   * [pep8_naming] Avoid false positives on standard library functions with uppercase names (N802) 
+   * [pycodestyle] Handle brace escapes for t-strings in logical lines 
+   * [pylint] Extend invalid string character rules to include t-strings 
+   * [ruff] Allow strict kwarg when checking for starmap-zip (RUF058) in Python 3.14+ 
+ * Documentation
+   * [flake8-type-checking] Make TC010 docs example more realistic 
+   * Make more documentation examples error out-of-the-box</comment>
+    <requestid>1294441</requestid>
+  </revision>
 </revisionlist>
