@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 20 13:05:39 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.13
+  * zsolve: remove secret 'maxnorm == 2' option handling
+
+-------------------------------------------------------------------
 Wed May 28 22:06:01 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.12

@@ -99,4 +99,12 @@
     anyway); current SWIG no longer supports it.</comment>
     <requestid>1280998</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>def3623745d8c280fe70559cce81f381</srcmd5>
+    <version>1.6.13</version>
+    <time>1753120853</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 6.13</comment>
+    <requestid>1294587</requestid>
+  </revision>
 </revisionlist>
