@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 18 16:24:10 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250718.9f557f7:
+  * MicroOS mounts encrypted /var in initrd
+
+-------------------------------------------------------------------
 Wed Jul 16 10:57:22 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20250716.b03c12f:
