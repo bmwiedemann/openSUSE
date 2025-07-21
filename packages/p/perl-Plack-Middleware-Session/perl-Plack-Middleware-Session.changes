@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul  8 05:36:36 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.350.0 (0.35)
+   see /usr/share/doc/packages/perl-Plack-Middleware-Session/Changes
+
+  0.35  2025-07-07 18:49:59 EDT
+          - Added secure session ID generation using Crypt::SysRandom (#52)
+
+-------------------------------------------------------------------
 Tue Sep 24 05:38:46 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.340.0 (0.34)

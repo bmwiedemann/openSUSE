@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Plack-Middleware-Session
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Plack-Middleware-Session
 Name:           perl-Plack-Middleware-Session
-Version:        0.340.0
+Version:        0.350.0
 Release:        0
-# 0.34 -> normalize -> 0.340.0
-%define cpan_version 0.34
+# 0.35 -> normalize -> 0.350.0
+%define cpan_version 0.35
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Middleware for session management
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -31,21 +31,21 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Cookie::Baker) >= 0.120
-BuildRequires:  perl(Digest::HMAC_SHA1) >= 1.03
-BuildRequires:  perl(Digest::SHA)
+BuildRequires:  perl(Crypt::SysRandom)
+BuildRequires:  perl(Digest::HMAC_SHA1) >= 1.30
 BuildRequires:  perl(HTTP::Cookies)
 BuildRequires:  perl(HTTP::Request::Common)
 BuildRequires:  perl(LWP::UserAgent)
 BuildRequires:  perl(Module::Build)
-BuildRequires:  perl(Module::Build::Tiny) >= 0.034
-BuildRequires:  perl(Plack) >= 0.9910
-BuildRequires:  perl(Test::Fatal) >= 0.006
+BuildRequires:  perl(Module::Build::Tiny) >= 0.34
+BuildRequires:  perl(Plack) >= 0.991
+BuildRequires:  perl(Test::Fatal) >= 0.6
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Requires)
 Requires:       perl(Cookie::Baker) >= 0.120
-Requires:       perl(Digest::HMAC_SHA1) >= 1.03
-Requires:       perl(Digest::SHA)
-Requires:       perl(Plack) >= 0.9910
+Requires:       perl(Crypt::SysRandom)
+Requires:       perl(Digest::HMAC_SHA1) >= 1.30
+Requires:       perl(Plack) >= 0.991
 Provides:       perl(Plack::Middleware::Session) = %{version}
 Provides:       perl(Plack::Middleware::Session::Cookie)
 Provides:       perl(Plack::Session) = %{version}
@@ -58,6 +58,7 @@ Provides:       perl(Plack::Session::Store::DBI) = %{version}
 Provides:       perl(Plack::Session::Store::File) = %{version}
 Provides:       perl(Plack::Session::Store::Null) = %{version}
 %undefine       __perllib_provides
+Recommends:     perl(Crypt::SysRandom::XS)
 %{perl_requires}
 
 %description
@@ -74,7 +75,7 @@ needed.
 of 'plack.session'.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
