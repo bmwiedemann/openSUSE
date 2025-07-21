@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 18 22:23:02 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 25.2.5.2:
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/25.2.5/RC1
+    https://wiki.documentfoundation.org/Releases/25.2.5/RC2
+- Remove patch, no longer required:
+  * fix_build_with_poppler_25.05.patch
+
+-------------------------------------------------------------------
 Fri Jul  4 14:29:15 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add fix_build_with_poppler_25.05.patch: Fix build with current
