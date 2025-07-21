@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 21 04:35:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update URL.
+- Add patch support-click-8.2.patch:
+  * Support Click 8.2+ changes.
+- Add patch fix-cli-test-fails-with-yes.patch:
+  * Invoke ourselves with --yes to avoid interactive prompts.
+
+-------------------------------------------------------------------
 Tue Apr  8 11:25:44 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Fix dependencies 

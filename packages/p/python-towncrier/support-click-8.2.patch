@@ -1,0 +1,36 @@
+From 2fee0e7f103161175424867c9716339a196bc957 Mon Sep 17 00:00:00 2001
+From: Firas AlShafei <f.alshafei@gmail.com>
+Date: Thu, 22 May 2025 21:17:15 -0500
+Subject: [PATCH] ci: fix clirunner
+
+- Adapt CliRunner for different Click library versions to correctly handle error messages.
+---
+ src/towncrier/test/test_check.py | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+Index: towncrier-24.8.0/src/towncrier/test/test_check.py
+===================================================================
+--- towncrier-24.8.0.orig/src/towncrier/test/test_check.py
++++ towncrier-24.8.0/src/towncrier/test/test_check.py
+@@ -245,7 +245,12 @@ class TestChecker(TestCase):
+         """
+         No failure when output is piped causing None encoding for stdout.
+         """
+-        runner = CliRunner()
++        try:
++            runner = CliRunner(mix_stderr=False)
++        except TypeError:
++            # Fallback for older Click versions (or unexpected signature)
++            print("TypeError with mix_stderr=False, falling back to echo_stdin=True")
++            runner = CliRunner(echo_stdin=True)
+ 
+         with runner.isolated_filesystem():
+             create_project("pyproject.toml", main_branch="master")
+@@ -257,7 +262,6 @@ class TestChecker(TestCase):
+             call(["git", "add", fragment_path])
+             call(["git", "commit", "-m", "add a newsfragment"])
+ 
+-            runner = CliRunner(mix_stderr=False)
+             result = runner.invoke(towncrier_check, ["--compare-with", "master"])
+ 
+         self.assertEqual(0, result.exit_code)

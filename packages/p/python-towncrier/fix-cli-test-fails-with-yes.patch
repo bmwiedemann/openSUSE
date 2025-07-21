@@ -1,0 +1,50 @@
+From de71f131cd845ba76ae288292d7c3338716b82fd Mon Sep 17 00:00:00 2001
+From: Firas AlShafei <f.alshafei@gmail.com>
+Date: Thu, 22 May 2025 21:20:19 -0500
+Subject: [PATCH] ci: add --yes flag to build tests to prevent interactive
+ prompt failures
+
+---
+ src/towncrier/test/test_build.py | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+Index: towncrier-24.8.0/src/towncrier/test/test_build.py
+===================================================================
+--- towncrier-24.8.0.orig/src/towncrier/test/test_build.py
++++ towncrier-24.8.0/src/towncrier/test/test_build.py
+@@ -1143,7 +1143,7 @@ class TestCli(TestCase):
+             ),
+         )
+ 
+-        result = runner.invoke(_main, ["--date", "01-01-2001"], catch_exceptions=False)
++        result = runner.invoke(_main, ["--date", "01-01-2001", "--yes"], catch_exceptions=False)
+ 
+         with open("foo/newsfragments/123.feature", "w") as f:
+             f.write("Adds levitation")
+@@ -1319,7 +1319,7 @@ class TestCli(TestCase):
+             dedent=True,
+         )
+ 
+-        result = runner.invoke(_main, ["--date", "01-01-2001"], catch_exceptions=False)
++        result = runner.invoke(_main, ["--date", "01-01-2001", "--yes"], catch_exceptions=False)
+         self.assertEqual(0, result.exit_code, result.output)
+         output = read("NEWS.rst")
+ 
+@@ -1373,7 +1373,7 @@ class TestCli(TestCase):
+             dedent=True,
+         )
+ 
+-        result = runner.invoke(_main, ["--date", "01-01-2001"], catch_exceptions=False)
++        result = runner.invoke(_main, ["--date", "01-01-2001", "--yes"], catch_exceptions=False)
+         self.assertEqual(0, result.exit_code, result.output)
+         output = read("NEWS.md")
+ 
+@@ -1425,7 +1425,7 @@ class TestCli(TestCase):
+             dedent=True,
+         )
+ 
+-        result = runner.invoke(_main, ["--date", "01-01-2001"], catch_exceptions=False)
++        result = runner.invoke(_main, ["--date", "01-01-2001", "--yes"], catch_exceptions=False)
+         self.assertEqual(0, result.exit_code, result.output)
+         output = read("NEWS.md")
+ 
