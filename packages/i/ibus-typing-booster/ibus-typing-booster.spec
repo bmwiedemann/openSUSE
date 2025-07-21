@@ -17,7 +17,7 @@
 
 
 Name:           ibus-typing-booster
-Version:        2.27.69
+Version:        2.27.70
 Release:        0
 Summary:        An input completion utility
 License:        GPL-3.0-or-later
@@ -34,7 +34,7 @@ BuildRequires:  glibc-locale
 BuildRequires:  gtk3
 BuildRequires:  ibus-devel
 BuildRequires:  m17n-db
-%if  0%{?suse_version} < 1600
+%if 0%{?suse_version} < 1600
 BuildRequires:  python3-dataclasses
 %endif
 # for the unit tests
@@ -43,7 +43,7 @@ BuildRequires:  python3
 BuildRequires:  python3-devel
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 BuildRequires:  python3-rapidfuzz
 %endif
 # Because of “from packing import version”:
@@ -64,7 +64,7 @@ Requires:       python3-distro
 Requires:       python3-packaging
 Requires:       python3-pyenchant
 Requires:       python3-pyxdg
-%if  0%{?suse_version} < 1600
+%if 0%{?suse_version} < 1600
 Requires:       python3-dataclasses
 %endif
 Recommends:     gdouros-symbola-fonts

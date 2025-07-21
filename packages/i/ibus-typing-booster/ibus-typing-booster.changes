@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul 20 08:51:29 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed usage of %suse_version macros
+
+-------------------------------------------------------------------
+Fri Jul 18 17:53:17 UTC 2025 - Mike FABIAN <maiku.fabian@gmail.com>
+
+- Update to 2.27.70
+- Add selection-to-preedit command
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/769)
+- Translation update from Weblate (fi 100%)
+
+-------------------------------------------------------------------
 Wed Jul 09 00:22:45 UTC 2025 - maiku.fabian@gmail.com
 
 - Update to 2.27.69
