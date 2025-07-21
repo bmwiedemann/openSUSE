@@ -31,12 +31,17 @@
 %define sover 4
 %define shlib lib%{name}%{sover}
 Name:           blis
-Version:        1.1
+Version:        2.0
 Release:        0
 Summary:        BLAS-like Library Instantiation Software Framework
 License:        BSD-3-Clause
 URL:            https://github.com/flame/blis
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM blis-gcc15-disable-slp-tree-vectorization.patch gh#flame/blis#874 badshah400@gmail.com -- As a temporary fix for building with GCC 15, disable slp-tree-vectorization in affected files; rebased from upstream commit
+Patch0:         blis-gcc15-disable-slp-tree-vectorization.patch
+# PATCH-FIX-UPSTREAM blis-gcc15-unnecessary-openmp-include.patch gh#flame/blis#875 badshah400@gmail.com -- Remove unnecessary OpenMP include; rebased from upstream commit
+Patch1:         blis-gcc15-unnecessary-openmp-include.patch
+BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
@@ -80,7 +85,8 @@ intensive operations. BLIS is written in ISO C99.
 This package provides the headers and devel files for %{name}.
 
 %prep
-%autosetup
+%autosetup -p1
+sed -Ei '1{\@#!/usr/bin/env python@d}' build/flatten-headers.py
 
 %build
 export CFLAGS="%{optflags}"
@@ -100,9 +106,12 @@ export CFLAGS="%{optflags}"
 
 %install
 %make_install
+sed -Ei '1{s@/usr/bin/env bash@%{_bindir}/bash@}' %{buildroot}%{_datadir}/blis/configure-plugin
 
 # Manually remove rpath from pkgconfig file
 sed -i "s/\-Wl,\-rpath.* //g" %{buildroot}%{_datadir}/pkgconfig/blis.pc
+
+%fdupes %{buildroot}%{_datadir}/blis/
 
 %check
 pushd testsuite
