@@ -33,4 +33,15 @@
     <comment></comment>
     <requestid>1222857</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>07649aba9008a37db8adb8075911768d</srcmd5>
+    <version>0.7.0</version>
+    <time>1753120830</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.7.0:
+  * Improve performance for sequential combine operations (task_limit=1)
+  * Raise a ValueError when 'task_limit' or 'ordered' arguments are provided
+    with a sync function</comment>
+    <requestid>1294662</requestid>
+  </revision>
 </revisionlist>

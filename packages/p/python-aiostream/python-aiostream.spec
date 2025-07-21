@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiostream
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,25 +19,24 @@
 %global modname aiostream
 %{?sle15_python_module_pythons}
 Name:           python-aiostream
-Version:        0.6.4
+Version:        0.7.0
 Release:        0
 Summary:        Generator-based operators for asynchronous iteration
 License:        Apache-2.0
 URL:            https://github.com/vxgmichel/%{modname}
 Source:         https://github.com/vxgmichel/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-siosocks >= 0.2.0
 Requires:       python-typing-extensions
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing-extensions}
 # /SECTION
 %python_subpackages

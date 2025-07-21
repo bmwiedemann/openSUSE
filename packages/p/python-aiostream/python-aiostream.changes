@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 21 05:58:13 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.7.0:
+  * Improve performance for sequential combine operations (task_limit=1)
+  * Raise a ValueError when 'task_limit' or 'ordered' arguments are provided
+    with a sync function
+
+-------------------------------------------------------------------
 Fri Nov  8 08:34:07 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.6.4
