@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 12 05:35:08 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.520.0 (0.52)
+   see /usr/share/doc/packages/perl-Future/Changes
+
+  0.52    2025-07-11
+          [CHANGES]
+           * Expose `Test::Future::Deferred->flush` as a method for test scripts
+           * Include constructed-at message in debug warnings
+
+-------------------------------------------------------------------
 Tue Oct 22 05:33:40 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.510.0 (0.51)

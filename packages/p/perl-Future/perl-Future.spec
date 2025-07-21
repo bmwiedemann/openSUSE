@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Future
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Future
 Name:           perl-Future
-Version:        0.510.0
+Version:        0.520.0
 Release:        0
-# 0.51 -> normalize -> 0.510.0
-%define cpan_version 0.51
+# 0.52 -> normalize -> 0.520.0
+%define cpan_version 0.52
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Represent an operation awaiting completion
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,7 +32,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Carp) >= 1.25
 BuildRequires:  perl(List::Util) >= 1.29
-BuildRequires:  perl(Module::Build) >= 0.4004
+BuildRequires:  perl(Module::Build) >= 0.400.400
 BuildRequires:  perl(Test2::V0) >= 0.000148
 Requires:       perl(Carp) >= 1.25
 Requires:       perl(List::Util) >= 1.29
@@ -82,7 +82,7 @@ Unless otherwise noted, the following methods require at least version
 _0.08_.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor
