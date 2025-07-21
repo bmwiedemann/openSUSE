@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 20 16:19:08 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update node build preparation and fix jupyter extension package
+  version
+
+-------------------------------------------------------------------
 Thu Jun 26 12:04:55 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Build javascript in the package with node_modules.tar.gz, generated

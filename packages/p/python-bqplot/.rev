@@ -181,4 +181,13 @@
     <comment></comment>
     <requestid>1288692</requestid>
   </revision>
+  <revision rev="17" vrev="11">
+    <srcmd5>ceb1909a65934335bb9c51550b72d246</srcmd5>
+    <version>unknown</version>
+    <time>1753120833</time>
+    <user>anag_factory</user>
+    <comment>- Update node build preparation and fix jupyter extension package
+  version</comment>
+    <requestid>1294610</requestid>
+  </revision>
 </revisionlist>

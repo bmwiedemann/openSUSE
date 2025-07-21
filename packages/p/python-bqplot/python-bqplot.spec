@@ -20,7 +20,7 @@
 %define skip_python312 1
 %define skip_python313 1
 %define         pyver 0.12.45
-%define         jupver 0.5.44
+%define         jupver 0.5.46
 Name:           python-bqplot
 Version:        %{pyver}
 Release:        0
@@ -31,8 +31,6 @@ Source0:        https://github.com/bqplot/bqplot/archive/refs/tags/%{pyver}.tar.
 Source1:        node_modules.tar.xz
 # Script to vendor node_modules sources
 Source2:        create_node_modules.sh
-# Copied from bqplot/js and force some "resolutions" to fix js conflicts
-Source3:        package.json
 BuildRequires:  %{python_module jupyter-packaging}
 BuildRequires:  %{python_module jupyterlab}
 BuildRequires:  %{python_module pip}
@@ -97,9 +95,8 @@ This package provides the jupyterlab extension.
 
 %prep
 %autosetup -p1 -n bqplot-%{pyver} -a1
-pushd js
-mv ../node_modules .
-popd
+# sync with create_node_modules.sh
+sed -i '/builder/ s/\^3/\^4/' js/package.json
 rm bqplot/install.py
 
 %build
