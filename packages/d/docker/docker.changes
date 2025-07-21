@@ -20,6 +20,7 @@ Wed Jun 25 15:33:36 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 28.3.0-ce. See upstream changelog online at
   <https://docs.docker.com/engine/release-notes/28/#2830>
+  bsc#1246556
 - Rebase patches:
  * 0001-SECRETS-SUSE-always-clear-our-internal-secrets.patch
  * 0002-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
