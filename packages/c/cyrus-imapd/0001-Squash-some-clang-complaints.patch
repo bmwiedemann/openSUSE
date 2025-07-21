@@ -1,0 +1,108 @@
+From f187c82604997991121c913732ffd95c161cbe27 Mon Sep 17 00:00:00 2001
+From: Ken Murchison <murch@fastmail.com>
+Date: Mon, 27 Feb 2023 11:09:51 -0500
+Subject: [PATCH] Squash some clang complaints
+
+---
+ backup/cyr_backup.c | 3 ---
+ imap/httpd.h        | 2 +-
+ imap/reconstruct.c  | 2 +-
+ imap/squat_build.c  | 4 ----
+ imap/zoneinfo_db.c  | 3 ++-
+ 5 files changed, 4 insertions(+), 10 deletions(-)
+
+diff --git a/backup/cyr_backup.c b/backup/cyr_backup.c
+index 07d534454..ec3f752bd 100644
+--- a/backup/cyr_backup.c
++++ b/backup/cyr_backup.c
+@@ -730,7 +730,6 @@ static int cmd_json_chunks(struct backup *backup,
+     struct backup_chunk *chunk = NULL;
+     json_t *jchunks = NULL;
+     struct stat data_stat_buf;
+-    double total_length = 0.0;
+     int r;
+ 
+     (void) options;
+@@ -759,8 +758,6 @@ static int cmd_json_chunks(struct backup *backup,
+             ratio = 100.0 * (data_stat_buf.st_size - chunk->offset) / chunk->length;
+         }
+ 
+-        total_length += chunk->length;
+-
+         /* XXX which fields do we want? */
+         json_object_set_new(jchunk, "id", json_integer(chunk->id));
+         json_object_set_new(jchunk, "offset", json_integer(chunk->offset));
+diff --git a/imap/httpd.h b/imap/httpd.h
+index 67279a942..43cf8205b 100644
+--- a/imap/httpd.h
++++ b/imap/httpd.h
+@@ -280,7 +280,7 @@ struct range {
+ 
+ struct patch_doc_t {
+     const char *format;                 /* MIME format of patch document */
+-    int (*proc)();                      /* Function to parse and apply doc */
++    int (*proc)(txn_t *, void *);       /* Function to parse and apply doc */
+ };
+ 
+ typedef int (*encode_proc_t)(struct transaction_t *txn,
+diff --git a/imap/reconstruct.c b/imap/reconstruct.c
+index d5f355653..58f215a4b 100644
+--- a/imap/reconstruct.c
++++ b/imap/reconstruct.c
+@@ -821,7 +821,7 @@ static void reconstruct_mbentry(const char *header_path)
+                         mbentry->mbtype &= ~(MBTYPE_LEGACY_DIRS);
+ 
+                         token = tok_next(&tok);
+-                        if (strcmpnull(token, FNAME_HEADER+1) || tok_next(&tok)) {
++                        if (strcmpnull(token, &FNAME_HEADER[1]) || tok_next(&tok)) {
+                             xzfree(mbentry->uniqueid);
+                         }
+                     }
+diff --git a/imap/squat_build.c b/imap/squat_build.c
+index b56717f30..b7dd51867 100644
+--- a/imap/squat_build.c
++++ b/imap/squat_build.c
+@@ -1163,7 +1163,6 @@ static int dump_doc_list_present_bits(SquatIndex *index,
+     int start_present = docs->first_valid_entry;
+     int end_present = docs->last_valid_entry;
+     char *buf;
+-    int present_count;
+ 
+     /* If the leaf is empty, we should never get here! */
+     assert(start_present <= end_present);
+@@ -1175,7 +1174,6 @@ static int dump_doc_list_present_bits(SquatIndex *index,
+             return SQUAT_ERR;
+         } else {
+             *buf++ = (char)end_present;
+-            present_count = 1;
+         }
+     } else {
+         int first_byte = start_present >> 3;
+@@ -1191,10 +1189,8 @@ static int dump_doc_list_present_bits(SquatIndex *index,
+             *buf++ = (char)first_byte;
+             *buf++ = (char)byte_count - 1;
+             memset(buf, 0, byte_count);
+-            present_count = 0;
+             for (i = start_present; i <= end_present; i++) {
+                 if (docs->docs[i] != NULL) {
+-                    present_count++;
+                     buf[(i >> 3) - first_byte] |= 1 << (i & 7);
+                 }
+             }
+diff --git a/imap/zoneinfo_db.c b/imap/zoneinfo_db.c
+index 3be631ccd..46f7c661a 100644
+--- a/imap/zoneinfo_db.c
++++ b/imap/zoneinfo_db.c
+@@ -243,7 +243,8 @@ struct findrock {
+     const char *find;
+     int tzid_only;
+     time_t changedsince;
+-    int (*proc)();
++    int (*proc)(const char *tzid, int tzidlen,
++                struct zoneinfo *zi, void *rock);
+     void *rock;
+ };
+ 
+-- 
+2.49.0
+

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jul 18 13:03:45 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- add 0001-Squash-some-clang-complaints.patch: fix compile errors in 3.8
+  release line occuring with newer compilers.
+
+-------------------------------------------------------------------
+Tue Jul 15 12:09:11 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- update to version 3.8.6 (bugfix release)
+  VUL-0: CVE-2025-49812: cyrus-imapd: Opossum Attack Application Layer
+  Desynchronization using Opportunistic TLS (bsc#1246165)
+  The industry is deprecating STARTTLS (aka opportunistic TLS) in favor of
+  implicit TLS over a dedicated port.  STARTTLS is now disabled by default.
+  * Fixed issue #5477: master: tighten up pidfile/etc handling (bsc#1241543)
+    VUL-0: cyrus-imapd: privilege drop happens too late, opening attack vectors from cyrus to root
+  * Fixed issue #5450: fix zoneinfo_db code for GCC 15 (thanks Yadd)
+  * Fixed issue #5309: deadlock on shutdown (thanks Mark Cammidge)
+  * Fixed issue #5424: recognise service-specific SASL options in
+    ``cyr_info conf-lint``
+  * Fixed issue #5420: fix double-free in http_admin (thanks Wolfgang Breyha)
+  * Fixed issue #5460: pop3d: add basic prometheus support (thanks Wolfgang
+    Breyha)
+  * Fixed issue #5454: httpd fails to parse OpenSSL version for status string
+
+-------------------------------------------------------------------
 Tue May 27 22:43:21 UTC 2025 - Aeneas Jaißle <aj@ajaissle.de>
 
 - update to version 3.8.5 (bugfix release)

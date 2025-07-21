@@ -30,7 +30,7 @@
 %global _servicename    cyrus-imapd
 %define _sover 0
 Name:           cyrus-imapd
-Version:        3.8.5
+Version:        3.8.6
 Release:        0
 Summary:        The Cyrus IMAP and POP Mail Server
 License:        BSD-3-Clause
@@ -51,6 +51,7 @@ Patch7:         cyrus-imapd-3.8.5_syslog-facility-doc.patch
 # PATCH-FIX-FEDORA -- Link Perl components against pcre2
 # pending upstream discussion
 Patch8:         perl-pcre2.patch
+Patch9:         0001-Squash-some-clang-complaints.patch
 
 BuildRequires:  autoconf >= 2.63
 BuildRequires:  automake
@@ -106,7 +107,7 @@ BuildRequires:  db-utils >= 3.0.55
 %endif
 %endif
 
-%sysusers_requires
+#%%sysusers_requires
 Prereq:         system-user-mail
 Requires:       perl-Cyrus-Annotator = %{version}
 Requires:       perl-Cyrus-IMAP = %{version}
