@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        PHP wrapper around the gpgme library
 License:        BSD-2-Clause

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 19 19:24:44 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.5.3:
+  * Fix decryption of message encrypted with multiple keys [boo#1246759]
+
+-------------------------------------------------------------------
 Sun Apr 27 18:42:54 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 1.5.2
