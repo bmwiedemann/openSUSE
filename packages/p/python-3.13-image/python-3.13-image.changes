@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 18 11:56:17 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- set PIPX installation directories to world readable paths
+
+-------------------------------------------------------------------
 Fri Jul 11 10:46:14 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - order ENVs alphanumerically
