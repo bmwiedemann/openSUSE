@@ -185,4 +185,31 @@
 </comment>
     <requestid>1275934</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>15b5672bb313a2483e0c191e44f4a66f</srcmd5>
+    <version>0.27.1</version>
+    <time>1753120891</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.27.1:
+  * Fixed the large performance issue observed by some players on
+    older hardware.
+  * Several small performance improvements in the calculation of
+    simulation hashes (related to multiplayer stuttering).
+  * Fixed modifying your lobby password when you have an uppercase
+    letter in your username.
+  * Fixed the distorted 3D models with GPU Skinning.
+  * Fixes for crashes with Vulkan and/or with GPU Skinning.
+  * Fixed changing player perspective in replays.
+  * Fixed an out-of-memory crash in the JS engine when generating
+    random maps.
+  * Fixed the game crash on pressing Fn key.
+  * Fixed a crash in Atlas when the map generation fails.
+  * Fixed a memory leak in the renderer.
+  * Fixes for multiplayer port forwarding.
+  * Package fixes for Linux desktop environments.
+  * Various build fixes for Linux (some sent by package managers).
+- Fix spec file for Leap 16.0.
+</comment>
+    <requestid>1294846</requestid>
+  </revision>
 </revisionlist>

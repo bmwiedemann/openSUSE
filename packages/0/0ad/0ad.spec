@@ -29,12 +29,12 @@
 %bcond_without system_nvtt
 
 # 0ad needs a c++17 compiler at least
-%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%if %{suse_version} < 1600
 %global force_gcc_version 13
 %endif
 
 Name:           0ad
-Version:        0.27.0
+Version:        0.27.1
 Release:        0
 Summary:        A real-time strategy game of ancient warfare
 License:        BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT AND ISC AND MPL-2.0
