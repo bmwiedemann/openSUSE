@@ -18,10 +18,10 @@
 
 %define cpan_name Finance-Quote
 Name:           perl-Finance-Quote
-Version:        1.650.0
+Version:        1.660.0
 Release:        0
-# 1.65 -> normalize -> 1.650.0
-%define cpan_version 1.65
+# 1.66 -> normalize -> 1.660.0
+%define cpan_version 1.66
 #Upstream: GPL-1.0-or-later
 License:        GPL-2.0-or-later
 Summary:        Get stock and mutual fund quotes from various exchanges
@@ -40,6 +40,7 @@ BuildRequires:  perl(DateTime)
 BuildRequires:  perl(DateTime::Duration)
 BuildRequires:  perl(DateTime::Format::ISO8601)
 BuildRequires:  perl(DateTime::Format::Strptime)
+BuildRequires:  perl(Devel::Trace) >= 0.120
 BuildRequires:  perl(HTML::Entities)
 BuildRequires:  perl(HTML::TableExtract)
 BuildRequires:  perl(HTML::TokeParser)
@@ -61,7 +62,9 @@ BuildRequires:  perl(LWP::UserAgent) >= 6.480
 BuildRequires:  perl(Module::CPANTS::Analyse)
 BuildRequires:  perl(Module::Load) >= 0.36
 BuildRequires:  perl(Mozilla::CA)
+BuildRequires:  perl(Net::SSLeay) >= 1.920
 BuildRequires:  perl(Readonly)
+BuildRequires:  perl(Smart::Comments) >= 1.0.5
 BuildRequires:  perl(Spreadsheet::XLSX)
 BuildRequires:  perl(String::Util)
 BuildRequires:  perl(Test2) >= 1.302167
@@ -69,8 +72,6 @@ BuildRequires:  perl(Test::Kwalitee)
 BuildRequires:  perl(Test::Perl::Critic)
 BuildRequires:  perl(Text::Template)
 BuildRequires:  perl(Time::Piece)
-BuildRequires:  perl(Time::Seconds)
-BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(URI::Escape) >= 3.310
 BuildRequires:  perl(Web::Scraper)
 BuildRequires:  perl(XML::LibXML)
@@ -78,6 +79,7 @@ BuildRequires:  perl(feature)
 Requires:       perl(Compress::Zlib)
 Requires:       perl(Date::Parse)
 Requires:       perl(DateTime::Format::Strptime)
+Requires:       perl(Devel::Trace) >= 0.120
 Requires:       perl(HTML::Entities)
 Requires:       perl(HTML::TableExtract)
 Requires:       perl(HTML::TokeParser)
@@ -98,27 +100,27 @@ Requires:       perl(LWP::Simple)
 Requires:       perl(LWP::UserAgent) >= 6.480
 Requires:       perl(Module::Load) >= 0.36
 Requires:       perl(Mozilla::CA)
+Requires:       perl(Net::SSLeay) >= 1.920
 Requires:       perl(Readonly)
+Requires:       perl(Smart::Comments) >= 1.0.5
 Requires:       perl(Spreadsheet::XLSX)
 Requires:       perl(String::Util)
 Requires:       perl(Test2) >= 1.302167
 Requires:       perl(Text::Template)
 Requires:       perl(Time::Piece)
-Requires:       perl(Time::Seconds)
-Requires:       perl(Try::Tiny)
 Requires:       perl(URI::Escape) >= 3.310
 Requires:       perl(Web::Scraper)
 Requires:       perl(XML::LibXML)
-Provides:       perl(Finance::Quote) = %{version}
+Provides:       perl(Finance::Quote) = 0.00
 Provides:       perl(Finance::Quote::AEX) = %{version}
 Provides:       perl(Finance::Quote::ASEGR) = %{version}
 Provides:       perl(Finance::Quote::ASX) = %{version}
 Provides:       perl(Finance::Quote::AlphaVantage) = %{version}
 Provides:       perl(Finance::Quote::BSEIndia) = %{version}
 Provides:       perl(Finance::Quote::BVB) = %{version}
-Provides:       perl(Finance::Quote::Bloomberg) = %{version}
 Provides:       perl(Finance::Quote::BorsaItaliana) = %{version}
 Provides:       perl(Finance::Quote::Bourso) = %{version}
+Provides:       perl(Finance::Quote::CMBChina) = %{version}
 Provides:       perl(Finance::Quote::CSE) = %{version}
 Provides:       perl(Finance::Quote::Comdirect) = %{version}
 Provides:       perl(Finance::Quote::Consorsbank) = %{version}
@@ -138,7 +140,6 @@ Provides:       perl(Finance::Quote::Fondsweb) = %{version}
 Provides:       perl(Finance::Quote::Fool) = %{version}
 Provides:       perl(Finance::Quote::GoldMoney) = %{version}
 Provides:       perl(Finance::Quote::GoogleWeb) = %{version}
-Provides:       perl(Finance::Quote::HU) = %{version}
 Provides:       perl(Finance::Quote::IndiaMutual) = %{version}
 Provides:       perl(Finance::Quote::MarketWatch) = %{version}
 Provides:       perl(Finance::Quote::MorningstarCH) = %{version}
@@ -147,8 +148,6 @@ Provides:       perl(Finance::Quote::MorningstarUK) = %{version}
 Provides:       perl(Finance::Quote::NSEIndia) = %{version}
 Provides:       perl(Finance::Quote::NZX) = %{version}
 Provides:       perl(Finance::Quote::OnVista) = %{version}
-Provides:       perl(Finance::Quote::Oslobors) = %{version}
-Provides:       perl(Finance::Quote::SEB) = %{version}
 Provides:       perl(Finance::Quote::SIX) = %{version}
 Provides:       perl(Finance::Quote::Sinvestor) = %{version}
 Provides:       perl(Finance::Quote::StockData) = %{version}
@@ -156,10 +155,8 @@ Provides:       perl(Finance::Quote::Stooq) = %{version}
 Provides:       perl(Finance::Quote::TMX) = %{version}
 Provides:       perl(Finance::Quote::TSP) = %{version}
 Provides:       perl(Finance::Quote::TesouroDireto) = %{version}
-Provides:       perl(Finance::Quote::Tiaacref) = %{version}
 Provides:       perl(Finance::Quote::Tradegate) = %{version}
 Provides:       perl(Finance::Quote::TreasuryDirect) = %{version}
-Provides:       perl(Finance::Quote::Troweprice) = %{version}
 Provides:       perl(Finance::Quote::TwelveData) = %{version}
 Provides:       perl(Finance::Quote::Union) = %{version}
 Provides:       perl(Finance::Quote::UserAgent) = %{version}
