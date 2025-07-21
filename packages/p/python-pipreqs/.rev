@@ -52,4 +52,12 @@
 - Drop unneeded Requires on setuptools.</comment>
     <requestid>1097856</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c47843c4c1a880caa7ddbde913bd2178</srcmd5>
+    <version>0.4.13</version>
+    <time>1753120783</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1294492</requestid>
+  </revision>
 </revisionlist>

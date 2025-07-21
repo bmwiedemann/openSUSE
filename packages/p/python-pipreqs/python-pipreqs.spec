@@ -1,7 +1,7 @@
 #
 # spec file for package python-pipreqs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-pipreqs
 Version:        0.4.13
@@ -28,12 +29,12 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-docopt
 Requires:       python-yarg
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module docopt}
@@ -60,11 +61,8 @@ chmod a-x pipreqs/pipreqs.py
 # Ignore tests that require network access
 %pytest -k 'not (test_get_imports_info or test_ignored_directory or test_init or test_init_overwrite or teset_init_savepath or test_omit_version or test_clean or test_dynamic_version)'
 
-%post
-%python_install_alternative pipreqs
-
-%postun
-%python_uninstall_alternative pipreqs
+%pre
+%python_libalternatives_reset_alternative pipreqs
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst
