@@ -43,7 +43,7 @@
 %define glamor 1
 %define _name_archive mesa
 %ifnarch s390x
-%define _version 25.1.5
+%define _version 25.1.6
 %else
 %define _version 24.1.7
 %endif
@@ -52,7 +52,7 @@
 %define with_vulkan 0
 %define with_llvm 0
 
-%ifarch %{ix86} x86_64 %{arm} aarch64 ppc64 ppc64le riscv64
+%ifarch %{ix86} x86_64 %{arm} aarch64 loongarch64 ppc64 ppc64le riscv64
   %define gallium_loader 1
 %else
   %define gallium_loader 0
@@ -63,7 +63,7 @@
 %define vdpau_virtio_gpu 0
 %define vdpau_d3d12 0
 
-%ifarch %{ix86} x86_64 aarch64 %{arm} ppc64 ppc64le riscv64
+%ifarch %{ix86} x86_64 aarch64 %{arm} loongarch64 ppc64 ppc64le riscv64
   %define vdpau_nouveau 1
   %define vdpau_radeon 1
   %define vdpau_virtio_gpu 1
@@ -102,9 +102,13 @@
     %define with_vulkan 1
     %define vulkan_drivers swrast,amd,intel,intel_hasvk
   %endif
+  %ifarch loongarch64
+    %define with_vulkan 1
+    %define vulkan_drivers swrast,amd,intel,intel_hasvk,nouveau
+  %endif
 %endif
 
-%ifarch aarch64 %{arm} ppc64 ppc64le riscv64 s390x %{ix86} x86_64 ix86
+%ifarch aarch64 %{arm} loongarch64 ppc64 ppc64le riscv64 s390x %{ix86} x86_64 ix86
   %define with_llvm 1
 %endif
 
@@ -160,7 +164,7 @@
 
 Name:           Mesa%{psuffix}
 %ifnarch s390x
-Version:        25.1.5
+Version:        25.1.6
 %else
 Version:        24.1.7
 %endif
@@ -191,8 +195,8 @@ Source9:        manual-pages.tar.bz2
 Source10:       Mesa-rpmlintrc
 Source11:       Mesa.keyring
 Source12:       README-suse-maintenance.md
-Source20:       https://archive.mesa3d.org/%{_name_archive}-25.1.5.tar.xz
-Source21:       https://archive.mesa3d.org/%{_name_archive}-25.1.5.tar.xz.sig
+Source20:       https://archive.mesa3d.org/%{_name_archive}-25.1.6.tar.xz
+Source21:       https://archive.mesa3d.org/%{_name_archive}-25.1.6.tar.xz.sig
 Patch2:         n_add-Mesa-headers-again.patch
 Patch11:        u_0001-intel-genxml-Drop-from-__future__-import-annotations.patch
 Patch12:        u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
@@ -983,7 +987,7 @@ egl_platforms=x11,wayland
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,virgl,iris,freedreno,vc4,lima,panfrost,v3d,svga,tegra,zink \
 %endif
   %else
-  %ifarch ppc64 ppc64le riscv64
+  %ifarch loongarch64 ppc64 ppc64le riscv64
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,virgl,iris,zink \
   %else
             -Dgallium-drivers=swrast \
@@ -1168,7 +1172,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %endif
 
 %if "%{flavor}" == "drivers"
-%ifarch aarch64 %{ix86} x86_64 %{arm} ppc64 ppc64le riscv64
+%ifarch aarch64 %{ix86} x86_64 %{arm} loongarch64 ppc64 ppc64le riscv64
 %files -n libxatracker2
 %{_libdir}/libxatracker.so.2*
 
@@ -1253,7 +1257,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_libdir}/gallium-pipe/pipe_*.so
 %endif
 
-%ifarch %{ix86} x86_64 aarch64 %{arm} ppc64 ppc64le riscv64
+%ifarch %{ix86} x86_64 aarch64 %{arm} loongarch64 ppc64 ppc64le riscv64
 %files -n Mesa-dri-nouveau
 %{_libdir}/dri/nouveau_dri.so
 %endif
@@ -1317,14 +1321,14 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %endif
 
 %if "%{flavor}" == "drivers"
-%ifarch %{ix86} x86_64 aarch64 %{arm} ppc64 ppc64le riscv64
+%ifarch %{ix86} x86_64 aarch64 %{arm} loongarch64 ppc64 ppc64le riscv64
 %files -n Mesa-libva
 %{_libdir}/dri/*_drv_video.so
 %endif
 %endif
 
 %if 0%{with_vulkan}
-%ifarch %{ix86} x86_64 aarch64 %{arm} riscv64
+%ifarch %{ix86} x86_64 aarch64 %{arm} loongarch64 riscv64
 %files -n libvulkan_intel
 %dir %{_datadir}/vulkan
 %dir %{_datadir}/vulkan/icd.d
@@ -1334,7 +1338,7 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_libdir}/libvulkan_intel_hasvk.so
 %endif
 
-%ifarch %{ix86} x86_64 aarch64 %{arm}
+%ifarch %{ix86} x86_64 aarch64 %{arm} loongarch64
 # Only available on Tumbleweed because of rust-cbindgen >= 1.25 requirement
 %if 0%{?suse_version} > 1600
 %files -n libvulkan_nouveau

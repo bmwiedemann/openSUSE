@@ -6357,4 +6357,15 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   --&gt;  https://docs.mesa3d.org/relnotes/25.1.5</comment>
     <requestid>1290492</requestid>
   </revision>
+  <revision rev="548" vrev="420">
+    <srcmd5>708775a6b542cacbd5edb0879a55c0ca</srcmd5>
+    <version>unknown</version>
+    <time>1753120723</time>
+    <user>anag_factory</user>
+    <comment>- Customise drivers for loongarch64
+
+- Update to release 25.1.6
+  --&gt;  https://docs.mesa3d.org/relnotes/25.1.6</comment>
+    <requestid>1294444</requestid>
+  </revision>
 </revisionlist>
