@@ -55,4 +55,13 @@
     <comment></comment>
     <requestid>1160028</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>9beb160ec81d940bc88cef30bf96e4a6</srcmd5>
+    <version>2.2.1</version>
+    <time>1753120844</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-new-pytest-asyncio.patch:
+  * Support changes required for pytest-asyncio 1.0.</comment>
+    <requestid>1294652</requestid>
+  </revision>
 </revisionlist>

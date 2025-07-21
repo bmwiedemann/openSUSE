@@ -1,7 +1,7 @@
 #
 # spec file for package python-backoff
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,15 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-backoff
 Version:        2.2.1
 Release:        0
 Summary:        Function decoration for backoff and retry
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/litl/backoff
 Source0:        https://files.pythonhosted.org/packages/source/b/backoff/backoff-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#litl/backoff#224
+Patch0:         support-new-pytest-asyncio.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  fdupes
@@ -50,7 +52,7 @@ Decorators support both regular functions for synchronous code and
 for asynchronous code.
 
 %prep
-%setup -q -n backoff-%{version}
+%autosetup -p1 -n backoff-%{version}
 
 %build
 %pyproject_wheel
