@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 15 05:39:49 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.050003
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+   [ Other ]
+   - Added: ArrayRef:indexed.
+   - Added: Number:ceil and Number:floor.
+   - Added: Scalar:get and Scalar:set.
+   - Added: String:trim.
+
+-------------------------------------------------------------------
 Tue Apr  1 05:35:42 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.050002

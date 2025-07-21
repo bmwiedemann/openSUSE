@@ -18,7 +18,7 @@
 
 %define cpan_name Sub-HandlesVia
 Name:           perl-Sub-HandlesVia
-Version:        0.050002
+Version:        0.050003
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Alternative handles_via implementation
@@ -31,19 +31,19 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Class::Method::Modifiers)
 BuildRequires:  perl(Exporter::Shiny)
 BuildRequires:  perl(List::Util) >= 1.54
-BuildRequires:  perl(Role::Hooks) >= 0.8.0
+BuildRequires:  perl(Role::Hooks) >= 0.8
 BuildRequires:  perl(Role::Tiny)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Requires)
 BuildRequires:  perl(Try::Tiny)
-BuildRequires:  perl(Type::Tiny) >= 1.004
+BuildRequires:  perl(Type::Tiny) >= 1.4
 Requires:       perl(Class::Method::Modifiers)
 Requires:       perl(Exporter::Shiny)
 Requires:       perl(List::Util) >= 1.54
-Requires:       perl(Role::Hooks) >= 0.8.0
+Requires:       perl(Role::Hooks) >= 0.8
 Requires:       perl(Role::Tiny)
-Requires:       perl(Type::Tiny) >= 1.004
+Requires:       perl(Type::Tiny) >= 1.4
 Recommends:     perl(Sub::Util)
 %{perl_requires}
 
@@ -92,7 +92,7 @@ to be loaded _after_ Moo/Moose/Mouse/etc. Your 'use Moo' or 'use
 Moose::Role' or whatever needs to be _before_ your 'use Sub::HandlesVia'.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
