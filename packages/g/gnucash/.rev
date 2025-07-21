@@ -1126,4 +1126,17 @@
     <comment></comment>
     <requestid>1281071</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>9e79f27531d48810e2c1e8e3cefc2f72</srcmd5>
+    <version>5.12</version>
+    <time>1753120817</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.12:
+  + Bugfixes
+    See https://github.com/Gnucash/gnucash/releases/tag/5.12 for 
+    full changes
+- Drop upstream fix_build_with_boost_1_88.patch
+</comment>
+    <requestid>1294579</requestid>
+  </revision>
 </revisionlist>
