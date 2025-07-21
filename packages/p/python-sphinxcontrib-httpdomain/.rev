@@ -256,4 +256,12 @@
   * Made :mod:`sphinxcontrib.autohttp.tornado` compatible with</comment>
     <requestid>1224153</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>2ebbf93662a51fc030fa9c5f8fba620a</srcmd5>
+    <version>1.8.1</version>
+    <time>1753120774</time>
+    <user>anag_factory</user>
+    <comment>- add missing wheel buildrequires</comment>
+    <requestid>1294461</requestid>
+  </revision>
 </revisionlist>

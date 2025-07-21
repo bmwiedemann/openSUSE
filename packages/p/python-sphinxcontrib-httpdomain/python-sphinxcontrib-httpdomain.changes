@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 18 21:42:33 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- add missing wheel buildrequires
+
+-------------------------------------------------------------------
 Thu Nov 14 10:27:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip test failure with updated bottle
