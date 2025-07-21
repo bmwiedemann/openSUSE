@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul 21 08:14:30 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Bumped required hyprland version to 0.50.1
+
+-------------------------------------------------------------------
+Thu Jul 17 09:02:06 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.50.0:
+  + The plugins were updated to use the plugin interface in use by
+    hyprland 0.50.0.
+
+-------------------------------------------------------------------
+Fri Jun 27 13:13:55 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- ensure that the plugin subpackages require at least the hyprland
+  version that they were build against
+
+-------------------------------------------------------------------
 Sun Jun 22 17:44:47 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - move BR from hyprland-plugins to devel package as the header with

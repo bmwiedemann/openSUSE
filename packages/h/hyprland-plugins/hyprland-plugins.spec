@@ -15,20 +15,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%define hypr_tgt 0.50.1
+%define pkg_version 0.50.0
 
 Name:           hyprland-plugins
-Version:        0.49.0+fix
+Version:        %{pkg_version}
 Release:        0
-%global pkg_version 0.49.0-fix
 Summary:        Official plugins for Hyprland
 License:        BSD-3-Clause
 URL:            https://github.com/hyprwm/hyprland-plugins
-Source0:        https://github.com/hyprwm/hyprland-plugins/archive/refs/tags/v%{pkg_version}.tar.gz#/%{name}-%{pkg_version}.tar.gz
+Source0:        https://github.com/hyprwm/hyprland-plugins/archive/refs/tags/v%{pkg_version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(hyprland) >= 0.49.0
+BuildRequires:  pkgconfig(hyprland) = %{hypr_tgt}
 BuildRequires:  pkgconfig(pangocairo)
-%requires_ge    hyprland
+%requires_eq    hyprland
 
 %{lua: plugins = {
 	['borders-plus-plus'] = 'This plugin adds one or two additional borders to windows',
@@ -50,6 +51,7 @@ Plugins allow users to add extra functionality to Hyprland.
 for plugin,desc in pairs(plugins) do
 	print("%package -n hyprland-plugin-"..plugin.."\n")
 	print("Summary:\tHyprland plugin: "..plugin.."\n")
+	print(rpm.expand("%requires_ge hyprland\n"))
 	print("\n%description -n hyprland-plugin-"..plugin..rpm.expand("%_description").."\n"..desc.."\n")
 	print("\n%files -n hyprland-plugin-"..plugin.."\n")
 	print("%license LICENSE\n")
