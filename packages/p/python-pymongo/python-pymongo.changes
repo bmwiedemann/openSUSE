@@ -1,4 +1,281 @@
 -------------------------------------------------------------------
+Fri Jul 18 21:03:59 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.11.1:
+  * Fixed support for prebuilt ppc64le and s390x wheels.
+  * Dropped support for Python 3.8 and PyPy 3.9.
+  * Dropped support for MongoDB 3.6.
+  * Dropped support for the MONGODB-CR authenticate mechanism,
+    which is no longer supported by MongoDB 4.0+.
+  * pymongocrypt>=1.12 is now required for :ref:`In-Use
+    Encryption` support.
+  * Added support for free-threaded Python with the GIL disabled.
+    For more information see: Free-threaded CPython. We do not
+    yet support free-threaded Python on Windows (PYTHON-5027) or
+    with In-Use Encryption (PYTHON-5024).
+  * :attr:`~pymongo.asynchronous.mongo_client.AsyncMongoClient.ad
+    dress` and :attr:`~pymongo.mongo_client.MongoClient.address`
+    now correctly block when called on unconnected clients until
+    either connection succeeds or a server selection timeout
+    error is raised.
+  * Added :func:`repr` support to
+    :class:`pymongo.operations.IndexModel`.
+  * Added :func:`repr` support to
+    :class:`pymongo.operations.SearchIndexModel`.
+  * Added sort parameter to
+    :meth:`~pymongo.collection.Collection.update_one`,
+    :meth:`~pymongo.collection.Collection.replace_one`,
+    :class:`~pymongo.operations.UpdateOne`, and
+    :class:`~pymongo.operations.UpdateMany`,
+  * :meth:`~pymongo.mongo_client.MongoClient.bulk_write` and :met
+    h:`~pymongo.asynchronous.mongo_client.AsyncMongoClient.bulk_w
+    rite` now throw an error when ordered=True or
+    verboseResults=True are used with unacknowledged writes.
+    These are unavoidable breaking changes.
+  * Fixed a bug in :const:`bson.json_util.dumps` where a
+    :class:`bson.datetime_ms.DatetimeMS` would be incorrectly
+    encoded as '{"$date": "X"}' instead of '{"$date": X}' when
+    using the legacy MongoDB Extended JSON datetime
+    representation.
+  * Fixed a bug where :const:`bson.json_util.loads` would raise
+    an IndexError when parsing an invalid "$date" instead of a
+    ValueError.
+  * Fixed a bug where
+    :meth:`~pymongo.results.UpdateResult.did_upsert` would raise
+    a TypeError.
+  * Fixed Binary BSON subtype (9) support on big-endian operating
+    systems (such as zSeries).
+  * Added provisional (BETA) support for a new Binary BSON
+    subtype (9) used for efficient storage and retrieval of
+    vectors: densely packed arrays of numbers, all of the same
+    type. This includes new methods
+    :meth:`~bson.binary.Binary.from_vector` and
+    :meth:`~bson.binary.Binary.as_vector`.
+  * Added C extension use to client metadata, for example:
+    {"driver": {"name": "PyMongo|c", "version": "4.10.0"}, ...}
+  * Fixed a bug where
+    :class:`~pymongo.asynchronous.mongo_client.AsyncMongoClient`
+    could deadlock.
+  * Fixed a bug where PyMongo could fail to import on Windows if
+    asyncio is misconfigured.
+  * Fixed a bug where
+    :class:`~pymongo.asynchronous.mongo_client.AsyncMongoClient`
+    could deadlock.
+  * Fixed a bug where PyMongo could fail to import on Windows if
+    asyncio is misconfigured.
+  * Fixed a bug where
+    :meth:`~pymongo.results.UpdateResult.did_upsert` would raise
+    a TypeError.
+  * Add missing documentation about the fact the async API is in
+    beta state.
+  * Added support for MongoDB 8.0.
+  * Added support for Python 3.13.
+  * A new beta asynchronous API with full asyncio support. This
+    new asynchronous API is a work-in-progress that may change
+    during the beta period before the full release.
+  * Added support for In-Use Encryption range queries with
+    MongoDB 8.0. Added
+    :attr:`~pymongo.encryption.Algorithm.RANGE`. sparsity and
+    trim_factor are now optional in
+    :class:`~pymongo.encryption_options.RangeOpts`.
+  * Added support for the "delegated" option for the KMIP
+    master_key in
+    :meth:`~pymongo.encryption.ClientEncryption.create_data_key`.
+  * pymongocrypt>=1.10 is now required for :ref:`In-Use
+    Encryption` support.
+  * Added :meth:`~pymongo.cursor.Cursor.to_list` to
+    :class:`~pymongo.cursor.Cursor`,
+    :class:`~pymongo.command_cursor.CommandCursor`,
+    :class:`~pymongo.asynchronous.cursor.AsyncCursor`, and :class
+    :`~pymongo.asynchronous.command_cursor.AsyncCommandCursor` as
+    an asynchronous-friendly alternative to list(cursor).
+  * Added :meth:`~pymongo.mongo_client.MongoClient.bulk_write` to
+    :class:`~pymongo.mongo_client.MongoClient` and
+    :class:`~pymongo.asynchronous.mongo_client.AsyncMongoClient`,
+    enabling users to perform insert, update, and delete
+    operations against mixed namespaces in a minimized number of
+    round trips. Please see :doc:`examples/client_bulk` for more
+    information.
+  * Added support for the namespace parameter to the
+    :class:`~pymongo.operations.InsertOne`,
+    :class:`~pymongo.operations.ReplaceOne`,
+    :class:`~pymongo.operations.UpdateOne`,
+    :class:`~pymongo.operations.UpdateMany`,
+    :class:`~pymongo.operations.DeleteOne`, and
+    :class:`~pymongo.operations.DeleteMany` operations, so they
+    can be used in the new
+    :meth:`~pymongo.mongo_client.MongoClient.bulk_write`.
+  * Added :func:`repr` support to
+    :class:`bson.tz_util.FixedOffset`.
+  * Fixed a bug where PyMongo would raise InvalidBSON: unhashable
+    type: 'tzfile' when using
+    :attr:`~bson.codec_options.DatetimeConversion.DATETIME_CLAMP`
+    or
+    :attr:`~bson.codec_options.DatetimeConversion.DATETIME_AUTO`
+    with a timezone from dateutil.
+  * Fixed a bug where PyMongo would raise InvalidBSON: date value
+    out of range when using
+    :attr:`~bson.codec_options.DatetimeConversion.DATETIME_CLAMP`
+    or
+    :attr:`~bson.codec_options.DatetimeConversion.DATETIME_AUTO`
+    with a non-UTC timezone.
+  * Added a warning to unclosed MongoClient instances telling
+    users to explicitly close clients when finished with them to
+    avoid leaking resources. For example:  sys:1:
+    ResourceWarning: Unclosed MongoClient opened at:     File
+    "/Users/<user>/my_file.py", line 8, in <module>``
+    client = MongoClient() Call MongoClient.close() to safely
+    shut down your client and free up resources.
+  * The default value for connect in MongoClient is changed to
+    False when running on unction-as-a-service (FaaS) like AWS
+    Lambda, Google Cloud Functions, and Microsoft Azure
+    Functions. On some FaaS systems, there is a fork() operation
+    at function startup.  By delaying the connection to the first
+    operation, we avoid a deadlock.  See Is PyMongo Fork-Safe for
+    more information.
+  * The handshake metadata for "os.name" on Windows has been
+    simplified to "Windows" to improve import time.
+  * The repr of bson.binary.Binary is now redacted when the
+    subtype is SENSITIVE_SUBTYPE(8).
+  * Secure Software Development Life Cycle automation for release
+    process. GitHub Releases now include a Software Bill of
+    Materials, and signature files corresponding to the
+    distribution files released on PyPI.
+  * Fixed a bug in change streams where both startAtOperationTime
+    and resumeToken could be added to a retry attempt, which
+    caused the retry to fail.
+  * Fallback to stdlib ssl module when pyopenssl import fails
+    with AttributeError.
+  * Improved performance of MongoClient operations, especially
+    when many operations are being run concurrently.
+  * Since we are now using hatch as our build backend, we no
+    longer have a usable setup.py file and require installation
+    using pip.  Attempts to invoke the setup.py file will raise
+    an exception. Additionally, pip >= 21.3 is now required for
+    editable installs.
+  * We no longer support the srv extra, since dnspython is
+    included as a dependency in PyMongo 4.7+. Instead of pip
+    install pymongo[srv], use pip install pymongo.
+  * We no longer support the tls extra, which was only valid for
+    Python 2. Instead of pip install pymongo[tls], use pip
+    install pymongo.
+  * Use deferred imports instead of importlib lazy module
+    loading.
+  * Improve import time on Windows.
+  * Reduce verbosity of "Waiting for suitable server to become
+    available" log message from info to debug.
+  * Fixed a bug where PyMongo could not be used with the Nuitka
+    compiler.
+  * Fixed a bug where PyMongo would cause an AttributeError if
+    dns.resolver was imported and referenced after PyMongo was
+    imported.
+  * Clarified the behavior of the TOKEN_RESOURCE auth mechanism
+    property for MONGODB-OIDC.
+  * Added support for MONGODB-OIDC authentication.  The MONGODB-
+    OIDC mechanism authenticates using an OpenID Connect (OIDC)
+    access token. The driver supports OIDC for workload identity,
+    defined as an identity you assign to a software workload
+    (such as an application, service, script, or container) to
+    authenticate and access other services and resources. Please
+    see :doc:`examples/authentication` for more information.
+  * Added support for Python's native logging library, enabling
+    developers to customize the verbosity of log messages for
+    their applications. Please see :doc:`examples/logging` for
+    more information.
+  * Significantly improved the performance of encoding BSON
+    documents to JSON.
+  * Added support for named KMS providers for client side field
+    level encryption. Previously supported KMS providers were
+    only: aws, azure, gcp, kmip, and local. The KMS provider is
+    now expanded to support name suffixes (e.g. local:myname).
+    Named KMS providers enables more than one of each KMS
+    provider type to be configured. See the docstring for
+    :class:`~pymongo.encryption_options.AutoEncryptionOpts`. Note
+    that named KMS providers requires pymongocrypt >=1.9 and
+    libmongocrypt >=1.9.
+  * Added the :class:`pymongo.hello.Hello.connection_id`, :attr:`
+    pymongo.monitoring.CommandStartedEvent.server_connection_id`,
+    :attr:`pymongo.monitoring.CommandSucceededEvent.server_connec
+    tion_id`, and :attr:`pymongo.monitoring.CommandFailedEvent.se
+    rver_connection_id` properties.
+  * Fixed a bug where inflating a
+    :class:`~bson.raw_bson.RawBSONDocument` containing a
+    :class:`~bson.code.Code` would cause an error.
+  * :meth:`~pymongo.encryption.ClientEncryption.encrypt` and :met
+    h:`~pymongo.encryption.ClientEncryption.encrypt_expression`
+    now allow key_id to be passed in as a :class:`uuid.UUID`.
+  * Fixed a bug where :class:`~bson.int64.Int64` instances could
+    not always be encoded by orjson. The following now works:
+    >>> import orjson >>> from bson import json_util >>>
+    orjson.dumps({'a': Int64(1)}, default=json_util.default,
+    option=orjson.OPT_PASSTHROUGH_SUBCLASS)
+  * Fixed a bug appearing in Python 3.12 where "RuntimeError:
+    can't create new thread at interpreter shutdown" could be
+    written to stderr when a MongoClient's thread starts as the
+    python interpreter is shutting down.
+  * Added a warning when connecting to DocumentDB and CosmosDB
+    clusters. For more information regarding feature
+    compatibility and support please visit
+    mongodb.com/supportability/documentdb and
+    mongodb.com/supportability/cosmosdb.
+  * Added the :attr:`pymongo.monitoring.ConnectionCheckedOutEvent
+    .duration`, :attr:`pymongo.monitoring.ConnectionCheckOutFaile
+    dEvent.duration`, and
+    :attr:`pymongo.monitoring.ConnectionReadyEvent.duration`
+    properties.
+  * Added the type and kwargs arguments to
+    :class:`~pymongo.operations.SearchIndexModel` to enable
+    creating vector search indexes in MongoDB Atlas.
+  * Fixed a bug where read_concern and write_concern were
+    improperly added to
+    :meth:`~pymongo.collection.Collection.list_search_indexes`
+    queries.
+  * Deprecated
+    :attr:`pymongo.write_concern.WriteConcern.wtimeout` and
+    :attr:`pymongo.mongo_client.MongoClient.wTimeoutMS`. Use
+    :meth:`~pymongo.timeout` instead.
+  * Replaced usage of :class:`bson.son.SON` on all internal
+    classes and commands to dict,
+    :attr:`options.pool_options.metadata` is now of type dict as
+    opposed to :class:`bson.son.SON`. Here's some examples of how
+    this changes expected output as well as how to convert from
+    :class:`dict` to :class:`bson.son.SON`:  # Before >>> from
+    pymongo import MongoClient >>> client = MongoClient() >>>
+    client.options.pool_options.metadata SON([('driver',
+    SON([('name', 'PyMongo'), ('version', '4.7.0.dev0')])),
+    ('os', SON([('type', 'Darwin'), ('name', 'Darwin'),
+    ('architecture', 'arm64'), ('version', '14.3')])),
+    ('platform', 'CPython 3.11.6.final.0')])  # After >>>
+    client.options.pool_options.metadata {'driver': {'name':
+    'PyMongo', 'version': '4.7.0.dev0'}, 'os': {'type': 'Darwin',
+    'name': 'Darwin', 'architecture': 'arm64', 'version':
+    '14.3'}, 'platform': 'CPython 3.11.6.final.0'}  # To convert
+    from dict to SON # This will only convert the first layer of
+    the dictionary >>> data_as_dict =
+    client.options.pool_options.metadata >>> SON(data_as_dict)
+    SON([('driver', {'name': 'PyMongo', 'version':
+    '4.7.0.dev0'}), ('os', {'type': 'Darwin', 'name': 'Darwin',
+    'architecture': 'arm64', 'version': '14.3'}), ('platform',
+    'CPython 3.11.6.final.0')])  # To convert from dict to SON on
+    a nested dictionary >>> def dict_to_SON(data_as_dict:
+    dict[Any, Any]): ...     data_as_SON = SON() ...     for key,
+    value in data_as_dict.items(): ...         data_as_SON[key] =
+    dict_to_SON(value) if isinstance(value, dict) else value ...
+    return data_as_SON >>> >>> dict_to_SON(data_as_dict)
+    SON([('driver', SON([('name', 'PyMongo'), ('version',
+    '4.7.0.dev0')])), ('os', SON([('type', 'Darwin'), ('name',
+    'Darwin'), ('architecture', 'arm64'), ('version', '14.3')])),
+    ('platform', 'CPython 3.11.6.final.0')])
+  * PyMongo now uses lazy imports for external dependencies. If
+    you are relying on any kind of monkey-patching of the
+    standard library, you may need to explicitly import those
+    external libraries in addition to pymongo before applying the
+    patch.  Note that we test with gevent and eventlet patching,
+    and those continue to work.
+  * The "aws" extra now requires minimum version of 1.1.0 for
+    pymongo_auth_aws.
+
+-------------------------------------------------------------------
 Tue May  7 07:26:43 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.3 (bsc#1222492, CVE-2024-21506):

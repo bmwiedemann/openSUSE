@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymongo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pymongo
-Version:        4.6.3
+Version:        4.11.1
 Release:        0
 Summary:        Python driver for MongoDB
 License:        Apache-2.0
@@ -27,10 +27,13 @@ URL:            https://github.com/mongodb/mongo-python-driver
 Source:         https://files.pythonhosted.org/packages/source/p/pymongo/pymongo-%{version}.tar.gz
 # PATCH-FIX-SUSE: upstream does not care about 32bit
 Patch0:         mongodb-skip-test.patch
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.10}
+BuildRequires:  %{python_module dnspython}
+BuildRequires:  %{python_module hatch-requirements-txt}
+BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-asyncio >= 0.24.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,8 +52,7 @@ driver for MongoDB. The gridfs package is a gridfs
 implementation on top of pymongo.
 
 %prep
-%setup -q -n pymongo-%{version}
-%autopatch -p1
+%autosetup -p1  -n pymongo-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -63,11 +65,15 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pyunittest discover -v
+# tests rely on working DNS which is not available during build
+rm -v test/asynchronous/test_client.py
+rm -v test/test_srv_polling.py
+rm -v test/test_uri_spec.py
+%pytest_arch -k 'not (test_connection_timeout_ms_propagates_to_DNS_resolver or test_detected_environment_logging or test_detected_environment_warning)'
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %{python_sitearch}/pymongo
 %{python_sitearch}/pymongo-%{version}.dist-info
 %{python_sitearch}/bson
