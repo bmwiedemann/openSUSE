@@ -1,7 +1,7 @@
 #
 # spec file for package adapta-gtk-theme
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -172,6 +172,7 @@ created based on the Flat-Plat theme.
 
 This package contains the Xfce4 notifyd themes.
 
+%if 0%{?suse_version} < 1650
 %package -n plank-theme-%{_name}
 Summary:        Adapta Plank themes
 Requires:       metatheme-%{_name}-common = %{version}
@@ -184,6 +185,7 @@ Adapta is a GTK+ theme based on Material Design Guidelines that was
 created based on the Flat-Plat theme.
 
 This package contains the Plank themes.
+%endif
 
 %package -n openbox-theme-%{_name}
 Summary:        Adapta openbox themes
@@ -236,7 +238,9 @@ NOCONFIGURE=yes ./autogen.sh --prefix=%{_prefix}
     --disable-gtk_next \
 %endif
     --enable-parallel \
+%if 0%{?suse_version} < 1650
     --enable-plank \
+%endif
 %ifnarch i586
     --enable-telegram \
 %endif
@@ -309,11 +313,13 @@ rm %{buildroot}%{_datadir}/themes/%{_theme}/README.md
 %files -n xfce4-notifyd-theme-%{_name}
 %{_datadir}/themes/%{_theme}/xfce-notify-4.0/
 
+%if 0%{?suse_version} < 1650
 %files -n plank-theme-%{_name}
 %{_datadir}/themes/%{_theme}/plank/
 %{_datadir}/themes/%{_theme}-Eta/plank
 %{_datadir}/themes/%{_theme}-Nokto/plank
 %{_datadir}/themes/%{_theme}-Nokto-Eta/plank
+%endif
 
 %files -n openbox-theme-%{_name}
 %{_datadir}/themes/%{_theme}/openbox-3/
