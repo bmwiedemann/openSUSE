@@ -2982,7 +2982,6 @@ unsorted:
   - cxxopts-devel 
   - cxxtools-devel 
   - cyanrip 
-  - cyradm 
   - cyreal-alice-fonts 
   - cyreal-junge-fonts 
   - cyreal-lora-fonts 
@@ -2990,7 +2989,6 @@ unsorted:
   - cyreal-marko-horobchyk-fonts 
   - cyreal-marmelad-fonts 
   - cyreal-wire-fonts 
-  - cyrus-imapd 
   - cyrus-imapd-devel 
   - cyrus-imapd-snmp 
   - cyrus-imapd-snmp-mibs 
@@ -7819,6 +7817,8 @@ unsorted:
   - gperiodic 
   - gperiodic-lang 
   - gpg2-tpm 
+  - gpgme-devel 
+  - gpgmepp-devel 
   - gphoto 
   - gphoto2-webcam 
   - gphotofs 
@@ -12681,7 +12681,6 @@ unsorted:
   - libcxxtools-unit10 
   - libcxxtools-xmlrpc10 
   - libcxxtools10 
-  - libcyrus0 
   - libczmq4 
   - libd0_blind_id0 
   - libd0_rijndael0 
@@ -13572,10 +13571,7 @@ unsorted:
   - libgpaste2-0 
   - libgpg-error-devel 
   - libgpg-error-devel-32bit 
-  - libgpgme-devel 
-  - libgpgme11-32bit 
-  - libgpgmepp-devel 
-  - libgpgmepp6-32bit 
+  - libgpgme45-32bit 
   - libgphobos4 
   - libgphobos4-32bit 
   - libgphobos5 
@@ -15430,7 +15426,6 @@ unsorted:
   - libqd0 
   - libqgpgme-devel 
   - libqgpgme15 
-  - libqgpgme15-32bit 
   - libqgpgmeqt6-devel 
   - libqhexedit0 
   - libqhull_r8_0 
@@ -21277,14 +21272,12 @@ unsorted:
   - perl-Crypt-Rot13 
   - perl-Crypt-SSLeay 
   - perl-Crypt-SaltedHash 
+  - perl-Crypt-SysRandom 
   - perl-Crypt-URandom 
   - perl-Crypt-UnixCrypt_XS 
   - perl-Curses 
   - perl-CursesWidgets 
   - perl-Cwd-Guard 
-  - perl-Cyrus-Annotator 
-  - perl-Cyrus-IMAP 
-  - perl-Cyrus-SIEVE-managesieve 
   - perl-DBD-CSV 
   - perl-DBD-MariaDB 
   - perl-DBD-ODBC 
@@ -22149,7 +22142,6 @@ unsorted:
   - perl-Template-Toolkit 
   - perl-Term-Encoding 
   - perl-Term-ProgressBar 
-  - perl-Term-ReadLine-Gnu 
   - perl-Term-ReadPassword 
   - perl-Term-Size-Any 
   - perl-Term-Size-Perl 
@@ -22691,7 +22683,6 @@ unsorted:
   - plank-devel 
   - plank-docklets 
   - plank-lang 
-  - plank-theme-adapta 
   - plank-theme-matcha 
   - plantri 
   - plantuml 
@@ -24420,6 +24411,7 @@ unsorted:
   - python311-azure-mgmt-dataprotection 
   - python311-azure-mgmt-datashare 
   - python311-azure-mgmt-defendereasm 
+  - python311-azure-mgmt-dellstorage 
   - python311-azure-mgmt-dependencymap 
   - python311-azure-mgmt-deploymentmanager 
   - python311-azure-mgmt-desktopvirtualization 
@@ -28140,6 +28132,7 @@ unsorted:
   - python312-azure-mgmt-dataprotection 
   - python312-azure-mgmt-datashare 
   - python312-azure-mgmt-defendereasm 
+  - python312-azure-mgmt-dellstorage 
   - python312-azure-mgmt-dependencymap 
   - python312-azure-mgmt-deploymentmanager 
   - python312-azure-mgmt-desktopvirtualization 
@@ -31915,6 +31908,7 @@ unsorted:
   - python313-azure-mgmt-dataprotection 
   - python313-azure-mgmt-datashare 
   - python313-azure-mgmt-defendereasm 
+  - python313-azure-mgmt-dellstorage 
   - python313-azure-mgmt-dependencymap 
   - python313-azure-mgmt-deploymentmanager 
   - python313-azure-mgmt-desktopvirtualization 
@@ -48263,9 +48257,7 @@ unsorted:
   - uftpd 
   - ufw 
   - ufw-lang 
-  - uget 
   - uget-integrator 
-  - uget-lang 
   - ugrep 
   - ugrep-bash-completion 
   - ugrep-fish-completion 
