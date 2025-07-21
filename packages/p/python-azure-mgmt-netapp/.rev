@@ -335,4 +335,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1271347 from glaubitz)</comment>
     <requestid>1271847</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>de24690b807799f4c16ba8a1e9ef5003</srcmd5>
+    <version>13.6.0</version>
+    <time>1753120903</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 13.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1294794 from glaubitz)</comment>
+    <requestid>1294798</requestid>
+  </revision>
 </revisionlist>
