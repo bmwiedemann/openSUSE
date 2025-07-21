@@ -1,4 +1,208 @@
 -------------------------------------------------------------------
+Mon Jul 21 08:10:14 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.50.1:
+  + A patch release backporting some fixes from main onto 0.50.0.
+  + Fixes backported:
+    - socket2: fixup invalid ws passed to openwindow
+    - config: default drag_lock to 0
+    - framescheduler: dont if check deleted weakpointer (#11063)
+    - compositor: properly set infinite region on null input
+    - framescheduler: check monitor validity in doLater
+    - snap: use window extents instead of border size (#11079)
+    - opengl: detect android fence support and disable explicit if
+      it's missing (#11077)
+    - eventloop: avoid duplicate timers
+    - eventloop: improve timer handling to avoid crashes
+    - sessionlock: fix timer logic on unsafe state
+
+-------------------------------------------------------------------
+Wed Jul 16 12:08:30 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.50.0:
+  + New features:
+    - Core: Add a test suite (#9297)
+    - config/monitor: Add monitor v2 HDR rules (#10623)
+    - config: add a new monitor v2 config syntax (#9761)
+    - config: add group: selector (#10588)
+    - config: add maxwidth monitor resolution mode (#10528)
+    - core: add auto-center arrangements (#10527)
+    - drm-lease: Add Multi-GPU Support (#10099)
+    - dwindle: add better automatic window drag and drop direction
+      detection (#9704)
+    - dwindle: add the ability to specify an aspect ratio for a
+      singular window (#10650)
+    - grpupbar: Add config options to color inactive and locked
+      groupbar titles (#10667)
+    - input: add sticky option for drag_lock (#10702)
+    - internal: added error log when getEdgeDefinedPoint is
+      impossible (#10462)
+    - keybinds: add an option to respect gaps out for floating to
+      movewindow (#9360)
+    - permissions: add permission management for keyboards (#10367)
+    - protocols: add ext-workspace implementation (#10818)
+    - renderer/cm: Add automatic hdr (#9785)
+    - renderer: Added a pointer position uniform to the screen
+      shader. (#10821)
+    - renderer: add mouse zoom animations (#10882)
+    - renderer: add wrapping options to renderTexture method (#10497)
+    - renderer: add wrapping options to renderTextureWithBlur method
+      (#10807)
+    - snap: add option to respect gaps (#10524)
+    - unbind: add unbind all
+    - windowrules: Add noscreenshare (#10482)
+  + Fixes:
+    - compositor: fix race to finish on null buffer (#10970)
+    - config: fix crash on misnamed variable (#10549)
+    - config: fix inconsistant hint of default value (#10556)
+    - config: add missing description for enforce_permissions
+    - cursor: fix screencopy cursor pos and duplicate shape with sw
+      cursors (#10519)
+    - debugOverlay: fix tick measurement
+    - eventLoop: fixup event source callbacks
+    - hookSystem: avoid using manual mem management, fix leak
+    - input: Fix incorrect localcoords with a surface above an
+      XWayland window (#10773)
+    - input: fix mouseDown triggering hl ops on locked (#10809)
+    - internal: Fix HyprError not displaying at startup (#10606)
+    - opengl: add missing skipcm if case (#10888)
+    - opengl: add missing vao for screenshader (#10397)
+    - protocols/cm: Fix preferred image description (#11026)
+    - protocols/cm: fix wp invalid luminance check (#10752)
+    - protocols/subcompositor: fixup place_above and _below
+    - protocols: Remove incorrect CM proto debug check and fix
+      preferred image description (#11023)
+    - renderer: fix incorrect cursor position when screencopy region
+      with monitor scaling (#10675)
+    - renderer: fixup some missing fadeout cases with special
+    - renderer: minor damage fixes
+    - screencopy: fix applying noscreenshare to invisible special
+      workspaces (#10628)
+    - screencopy: fix improper box calculations for transforms
+      (#10870)
+    - screencopy: fix incorrect noscreenshare positions with monitor
+      scaling (#10674)
+    - snap: fix border_overlap option for monitor snapping (#10987)
+    - xwayland: Fix crash when copying from wayland to xwayland
+      (#10786)
+    - xwayland: fix minor errors in previous refactor (#10763)
+    - xwayland: fix xwayland -> wayland clipboard (#10646)
+  + Other:
+    - Renderer: Implement new render scheduling (#10936)
+    - alphamodifier: move to unique ptrs
+    - anr: make dialog disappear if the app dies
+    - assets: update header
+    - asyncDialogBox: lock box in fdWrite to prevent a uaf (#10759)
+    - buffer: check if buffer fd already readable (#10894)
+    - buffer: don't use crazy listener::emit()
+    - build: require hyprgraphics>=0.1.3 (#10350)
+    - compositor: dont send around int max values
+    - config: Restore auto-center-* for monitors (#10660)
+    - config: disable hw on mgpu nvidia by default (#11018)
+    - config: disable new_render_scheduling by default
+    - config: nuke explicit_sync settings
+    - config: remove render_ahead* config options
+    - config: use parseScale for monitorv2 (#10852)
+    - core: Include cstring whenever strncpy is used (#10404)
+    - core: drop the legacy renderer (#10408)
+    - core: never use hw cursors when tearing
+    - core: use new typed signals from hu (#10853)
+    - ctmcontrol: move to unique ptrs
+    - cursor: reset hc data after theme change
+    - cursorshape: use unique ptrs
+    - debug/pass: show live/precompile blur in debug
+    - desktop: prevent layers from dismissing their own seat grabs on
+      map (#10417)
+    - dmabuf: move to unique ptrs
+    - eventloop: RAII the even source on readable fd
+    - groupbar: force recalc on visibility changes
+    - hyprctl: Remove exceptions, use modern error handling (#10664)
+    - hyprctl: don't detect a negative value as a parameter (#10671)
+    - hyprctl: print no open windows instead of invalid request on
+      empty clients
+    - hyprctl: replace read-only strings with std::string_view
+      (#10851)
+    - input: always allow focus to permission popups
+    - input: disallow virtual keyboards from changing LED state
+      (#10402)
+    - input: do not send mouse events when outside of a surface
+      (#10416)
+    - input: ensure seat grabs from exclusive layers can be dismissed
+      (#10418)
+    - input: grab the correct active workspace on mouseMove
+    - input: revert #10416 and #10418
+    - input: support configuring drag_3fg from libinput (#10631)
+    - input: unhide cursor on tablet events after touch events
+      (#10484)
+    - internal: Catch filesystem exceptions while iterating
+      RunTimeDir (#10648)
+    - internal: Center window on parent if available (#10582)
+    - internal: Prevent double-free in attemptDirectScanout (#10974)
+    - internal: Use using instead of #define to alias smart pointers
+      (#10673)
+    - internal: clean up dead snapshot code
+    - internal: embed example config (#10608)
+    - internal: handle setGroupCurrent properly on fs groups (#10920)
+    - internal: iso C++ prohibits anonymous structs (#10955)
+    - internal: refactor to use empty() (#10599)
+    - monintor: remove rathandler
+    - monitor: ensure autoDir is applied when changed (#10672)
+    - monitor: mark 0, 0 presentation timestamps as invalid
+    - opengl: avoid reallocations in EGLImage (#10960)
+    - opengl: optimize shaders and reduce unneeded drawcalls (#10364)
+    - opengl: publicize shader creation/usage functions (#10378)
+    - opengl: use a stack for storing monitor transform enabled
+    - pass/surface: make sure popup blurs are marked for require live
+      blur
+    - pass: overload TexPass constructor
+    - permissions: properly print config requests for plugins
+    - plugins: don't update config plugins on state unchanged
+    - plugins: made currentWindow available in RENDER_PRE_WINDOW
+      (#10957)
+    - presentation: move to unique ptrs
+    - protocols/hyprland-surface: account for scaled monitor
+      positions (#10415)
+    - protocols: simulate mouse movement after activating a toplevel
+      (#10429)
+    - protocols: support xdg-shell v7
+    - protocols: whitelist wp_color_manager_v1 for security_context
+      (#10723)
+    - refactor: replace all typedef with using (#10594)
+    - refactor: use std::ranges whenever possible (#10584)
+    - renderer: always render snapshots as 8bit
+    - renderer: clamp rounding_power (#10816)
+    - renderer: make lock fail textures dynamically loaded
+    - renderer: move render calculation behind if case
+    - renderer: reduce a lot of glcalls and cache various states
+      (#10757)
+    - renderer: refuse rendering invalid resolutions
+    - renderer: render blur on fade out (#10356)
+    - renderer: use alpha for the lockttytext texture
+    - renderer: use makeUnique for session-lock render passes
+      (#11019)
+    - renderpass: use unique ptr instead of shared ptr
+    - screencopy: ignore hidden windows in noscreenshare
+    - screencopy: store a fb before permission popup if the
+      permission is pending (#10455)
+    - session-lock: don't render workspaces when locked (#10865)
+    - sessionlock: restore cursor if hidden on unlock (#10889)
+    - shader: replace texture2d with texture (#10893)
+    - singlepixel: move to unique ptrs
+    - snap: move gapOffset logic outside of for loop (#10861)
+    - splashes: add zacoons' splash
+    - texture: zero out the cached states in destroy (#10954)
+    - versionkeeper: don't pop up on initial launch
+    - windowrules/move: clamp max pos in onscreen to avoid assert
+      crash
+    - xwayland: Don't leave shell process (#10802)
+    - xwayland: Use RAII instead or freeing memory manually (#10677)
+    - xwayland: do not include xcb.h when xwayland is disabled
+      (#10407)
+    - xwayland: pad pid with leading zeroes in lockfile
+    - xwl: dont mark the even source as readable
+    - xwm: Refactored functions in XWM.cpp (#10569)
+
+-------------------------------------------------------------------
 Sun Jun 22 16:42:21 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Add missing dependencies of hyprland-devel:
