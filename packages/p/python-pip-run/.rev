@@ -49,4 +49,12 @@
 - Update to version v8.8.2</comment>
     <requestid>1193815</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>b57e93074763cf1f9ea41870d5f50c4f</srcmd5>
+    <version>8.8.2</version>
+    <time>1753120782</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1294491</requestid>
+  </revision>
 </revisionlist>

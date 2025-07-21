@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul 19 07:23:16 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives
+
+-------------------------------------------------------------------
 Wed Aug 14 06:13:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - use ca-certificates-mozilla for pip 24.2

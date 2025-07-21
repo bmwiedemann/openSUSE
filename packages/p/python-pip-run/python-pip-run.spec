@@ -1,7 +1,7 @@
 #
 # spec file for package python-pip-run
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -27,12 +26,12 @@
 %endif
 # Disables installing nbformat for tests in Ring1 (see also Patch1)
 %bcond_with ringdisabled
-
 # Do not depend on nbformat for SLES or SLFO:Main
 %if ( 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150400 ) || 0%{?suse_version} == 1600
 %bcond_without ringdisabled
 %endif
-
+%bcond_without libalternatives
+%{?sle15_python_module_pythons}
 Name:           python-pip-run%{psuffix}
 Version:        8.8.2
 Release:        0
@@ -50,14 +49,15 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-autocommand
 Requires:       python-packaging
 Requires:       python-path >= 15.1
 Requires:       python-pip >= 19.3
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+BuildArch:      noarch
 %if 0%{?python_version_nodots} < 38
 Requires:       python-importlib-metadata
 %endif
@@ -70,7 +70,6 @@ BuildRequires:  ca-certificates-mozilla
 BuildRequires:  %{python_module nbformat}
 %endif
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -114,11 +113,8 @@ dont_test=""
 %pytest -k "$dont_test"
 %endif
 
-%post
-%python_install_alternative pip-run
-
-%postun
-%python_uninstall_alternative pip-run
+%pre
+%python_libalternatives_reset_alternative pip-run
 
 %if !%{with test}
 %files %{python_files}
