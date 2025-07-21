@@ -1,0 +1,21 @@
+Index: restic/build.go
+===================================================================
+--- restic.orig/build.go
++++ restic/build.go
+@@ -132,6 +132,7 @@ func build(cwd string, env map[string]st
+ 		a = append(a, "-buildmode=pie")
+ 	}
+ 
++	a = append(a, "-mod=vendor")
+ 	a = append(a, args...)
+ 	cmd := exec.Command("go", a...)
+ 	cmd.Env = os.Environ()
+@@ -386,7 +387,7 @@ func main() {
+ 
+ 	verbosePrintf("detected Go version %v\n", goVersion)
+ 
+-	preserveSymbols := false
++	preserveSymbols := true
+ 	for i := range buildTags {
+ 		buildTags[i] = strings.TrimSpace(buildTags[i])
+ 		if buildTags[i] == "debug" || buildTags[i] == "profile" {

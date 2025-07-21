@@ -323,4 +323,14 @@
     <comment>Add missing bugnumber</comment>
     <requestid>1265145</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>cb36075f310718e0d89d9c6264b05eb5</srcmd5>
+    <version>0.18.0</version>
+    <time>1753120855</time>
+    <user>anag_factory</user>
+    <comment>- Upstream's build.go auto-sets CGO_ENABLED=0, producing static binaries. As a
+  distribution we generally prefer dynamically linked binaries, so use
+  --enable-cgo. This won't really affect users in practice. (forwarded request 1294746 from cyphar)</comment>
+    <requestid>1294770</requestid>
+  </revision>
 </revisionlist>

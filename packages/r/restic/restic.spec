@@ -17,7 +17,7 @@
 # nodebuginfo
 
 
-%define import_path github.com/restic/restic
+%bcond_without run_tests
 
 Name:           restic
 Version:        0.18.0
@@ -30,12 +30,18 @@ Source0:        https://github.com/restic/restic/releases/download/v%{version}/%
 Source1:        https://github.com/restic/restic/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        vendor.tar.gz
-Source9:        series
 Patch0:         disable-selfupdate.patch
+Patch1:         build.patch
+Patch2:         testsuite-use-python3.patch
 BuildRequires:  bash-completion
 BuildRequires:  golang-packaging
 BuildRequires:  zsh
 BuildRequires:  golang(API) >= 1.24
+%if %{with run_tests}
+# for the tesuite suite
+BuildRequires:  fuse
+BuildRequires:  python3
+%endif
 
 %description
 restic is a backup program. It supports verification, encryption,
@@ -65,20 +71,12 @@ Zsh command line completion support for %{name}.
 %autosetup -p 1 -a 3
 
 %build
-# Set up GOPATH.
-export GOPATH="$GOPATH:$HOME/go"
-mkdir -p $HOME/go/src/%{import_path}
-cp -rT $PWD $HOME/go/src/%{import_path}
-
-# Build restic. We don't use build.go because it builds statically, uses go
-# modules, and also restricts the Go version in cases where it's not actually
-# necessary. We disable go modules because restic still provides a vendor/.
-GO111MODULE=off go build -o %{name} \
+go run -mod=vendor build.go \
+	--enable-cgo \
 %ifnarch ppc64 s390x
-	-buildmode=pie \
+	--enable-pie \
 %endif
-	-ldflags "-s -w -X main.version=%{version}" \
-	%{import_path}/cmd/restic
+	--verbose
 
 %install
 install -D -m0755 %{name} %{buildroot}%{_bindir}/%{name}
@@ -86,6 +84,14 @@ install -d %{buildroot}%{_mandir}/man1
 ./%{name} generate --man %{buildroot}%{_mandir}/man1
 install -Dm0644 doc/bash-completion.sh %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 install -Dm0644 doc/zsh-completion.zsh %{buildroot}%{_sysconfdir}/zsh_completion.d/%{name}
+
+rm doc/.gitignore
+perl -p -i -e 's|\r\n|\n|g' doc/logo/font/OFL.txt
+
+%if %{with run_tests}
+%check
+go test ./...
+%endif
 
 %files
 %defattr(-,root,root)

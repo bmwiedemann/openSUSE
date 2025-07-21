@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Jul 21 01:26:02 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Upstream's build.go auto-sets CGO_ENABLED=0, producing static binaries. As a
+  distribution we generally prefer dynamically linked binaries, so use
+  --enable-cgo. This won't really affect users in practice.
+
+-------------------------------------------------------------------
+Sun Jul 20 14:31:36 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix rpmlint warnings about wrong line endings and .gitignore
+  files
+
+-------------------------------------------------------------------
+Sun Jul 20 14:21:26 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Port to actually using build.go
+  - adds the following patches
+    build.patch
+    disable-selfupdate.patch
+- Prepare testsuite running. Can be disabled for local builds with
+  --without=run_tests
+  - adds the following patches
+    testsuite-use-python3.patch
+
+-------------------------------------------------------------------
+Tue Jul  1 08:42:11 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Go module building has worked in OBS for a few years now (and this package
+  switched to using obs-service-go_modules to generate a vendor.tar.gz a while
+  ago). So we can remove GO111MODULES=off and all of the GOPATH magic, since
+  "go build" just works with the current setup.
+- Remove unneeded disable-selfupdate.patch -- we have never used build.go to
+  build the binary, and this patch only modified build.go. The self-update
+  feature is gated behind the "selfupdate" build tag, which is something we've
+  never passed and so the feature has always been disabled regardless of the
+  patch.
+
+-------------------------------------------------------------------
 Thu Mar 27 20:59:00 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 0.18.0 (boo#1240262)
@@ -53,9 +91,9 @@ Tue Mar 11 14:26:17 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 - add bump-google-apis-for-oauth2-fix.patch:
   This patch is only applied for manually creating the vendor
   tarball with
-  go mod vendor 
+  go mod vendor
   tar cfvz ../vendor.tar.gz go.mod go.sum vendor
-  
+
   the patched go.* files are in the vendor tarball afterwards.
 
   boo#1239264 CVE-2025-22868
@@ -756,7 +794,7 @@ Tue Sep 22 21:22:18 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
 - Update to 0.10.0.
   https://github.com/restic/restic/releases/tag/v0.10.0
   See installed /usr/share/doc/packages/restic/CHANGELOG.md.
-- we need to manually vendor the libraries now 
+- we need to manually vendor the libraries now
 - bump minimum go version to >= 1.13
 
 -------------------------------------------------------------------
