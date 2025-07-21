@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jul 19 20:26:47 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to 2.48.1:
+  Features:
+   * Add support for detecting Openbox WM version
+   * Add a new option `--packages-combined`, which combines related 
+     package managers into single counts 
+     (gh#fastfetch-cli/fastfetch#1851) 
+     - For example: if you have both `flatpak-system` and 
+       `flatpak-user` packages installed, they will be combined 
+       into a single `flatpak` count with `--packages-combined` 
+       enabled.
+   * Add `modules[n].condition` to conditionally enable modules on 
+     different platforms 
+     - Useful when sharing configuration files across platforms
+
+-------------------------------------------------------------------
 Wed Jul 16 19:38:30 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to 2.48.0:
