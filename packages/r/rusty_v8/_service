@@ -1,22 +1,9 @@
 <services>
-  <service name="obs_scm" mode="manual">
-    <param name="url">https://github.com/denoland/rusty_v8</param>
-    <param name="scm">git</param>
-    <param name="revision">v134.4.0</param>
-    <param name="version">134.4.0</param>
-    <param name="exclude">.git</param>
-    <param name="exclude">.github</param>
-    <param name="exclude">.gitignore</param>
-    <param name="exclude">.prettierrc.json</param>
-    <param name="exclude">.rustfmt.toml</param>
-  </service>
-  <service mode="manual" name="tar" />
-  <service mode="manual" name="recomprizz">
-    <param name="target">rusty_v8*.tar</param>
-    <param name="compression">zst</param>
-  </service>
   <service name="cargo_vendor" mode="manual">
-     <param name="src">rusty_v8</param>
+     <param name="src">https://github.com/denoland/rusty_v8</param>
+     <param name="revision">v137.2.1</param>
+     <param name="versionrewriteregex">^v?(.*)</param>
+     <param name="versionrewritepattern">$1</param>
      <param name="compression">zst</param>
      <param name="update">false</param>
   </service>

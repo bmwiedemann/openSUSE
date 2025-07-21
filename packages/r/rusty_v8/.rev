@@ -79,4 +79,20 @@
 </comment>
     <requestid>1247549</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6591e21109998d4ab2d859c9b995e618</srcmd5>
+    <version>137.2.1</version>
+    <time>1753120844</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 137.2.1:
+  * Rolling to V8 13.7.152.14 (#1797)
+
+- Update to version 137.1.0:
+  * No changelog provided
+
+- Update to version 135.1.0:
+  * Rolling to V8 13.4.114.11 (#1709)
+  * fix: backport explicit resource management fixes and release 134.5.0</comment>
+    <requestid>1294651</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jul 17 23:21:08 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 137.2.1:
+  * Rolling to V8 13.7.152.14 (#1797)
+
+-------------------------------------------------------------------
+Thu May 22 01:31:15 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 137.1.0:
+  * No changelog provided
+
+-------------------------------------------------------------------
+Mon Apr  7 00:55:24 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 135.1.0:
+  * Rolling to V8 13.4.114.11 (#1709)
+  * fix: backport explicit resource management fixes and release 134.5.0
+
+-------------------------------------------------------------------
 Thu Feb 20 07:39:11 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 134.4.0:
