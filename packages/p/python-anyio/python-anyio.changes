@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jul 21 05:03:47 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Inject multibuild to break a build loop. 
+
+-------------------------------------------------------------------
+Fri Jul 18 08:45:09 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Update to 4.9.0:
+  * Added async support for temporary file handling (#344; PR by @11kkw)
+  * Added 4 new fixtures for the AnyIO pytest plugin:
+    * free_tcp_port_factory: session scoped fixture returning a callable
+      that generates unused TCP port numbers
+    * free_udp_port_factory: session scoped fixture returning a callable
+      that generates unused UDP port numbers
+    * free_tcp_port: function scoped fixture that invokes the
+      free_tcp_port_factory fixture to generate a free TCP port number
+    * free_udp_port: function scoped fixture that invokes the
+      free_udp_port_factory fixture to generate a free UDP port number
+  * Added stdin argument to anyio.run_process() akin to what
+    anyio.open_process(), asyncio.create_subprocess(), trio.run_process(),
+    and subprocess.run() already accept (PR by @jmehnle)
+  * Added the info property to anyio.Path on Python 3.14
+  * Changed anyio.getaddrinfo() to ignore (invalid) IPv6 name resolution
+    results when IPv6 support is disabled in Python
+  * Changed EndOfStream raised from MemoryObjectReceiveStream.receive()
+    to leave out the AttributeError from the exception chain which was
+    merely an implementation detail and caused some confusion
+  * Fixed traceback formatting growing quadratically with level of
+    TaskGroup nesting on asyncio due to exception chaining when raising
+    ExceptionGroups in TaskGroup.__aexit__ (#863; PR by @tapetersen)
+  * Fixed anyio.Path.iterdir() making a blocking call in Python 3.13
+    (#873; PR by @cbornet and @agronholm)
+  * Fixed connect_tcp() producing cyclic references in tracebacks when
+    raising exceptions (#809; PR by @graingert)
+  * Fixed anyio.to_thread.run_sync() needlessly holding on to references
+    of the context, function, arguments and others until the next work
+    item on asyncio (PR by @Wankupi)
+
+
+-------------------------------------------------------------------
 Mon Feb 10 09:17:39 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 4.8.0:

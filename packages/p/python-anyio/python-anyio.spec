@@ -16,37 +16,49 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?sle15_python_module_pythons}
-Name:           python-anyio
-Version:        4.8.0
+Name:           python-anyio%{psuffix}
+Version:        4.9.0
 Release:        0
 Summary:        High level compatibility layer for asynchronous event loop implementations
 License:        MIT
 URL:            https://github.com/agronholm/anyio
 Source:         https://files.pythonhosted.org/packages/source/a/anyio/anyio-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module exceptiongroup}
-BuildRequires:  %{python_module idna >= 2.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module psutil >= 5.9}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module sniffio >= 1.1}
-BuildRequires:  %{python_module toml}
-BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros >= 20210127.3a18043
 # SECTION test requirements
+%if %{with test}
+BuildRequires:  %{python_module anyio = %{version}}
+BuildRequires:  %{python_module blockbuster}
+BuildRequires:  %{python_module exceptiongroup}
 BuildRequires:  %{python_module hypothesis >= 4.0}
+BuildRequires:  %{python_module psutil >= 5.9}
 BuildRequires:  %{python_module pytest >= 7.0}
 BuildRequires:  %{python_module pytest-mock >= 3.6.1}
-BuildRequires:  %{python_module trio >= 0.26.1}
+BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module trio}
 BuildRequires:  %{python_module trustme}
+BuildRequires:  %{python_module truststore}
 BuildRequires:  %{python_module uvloop}
+%endif
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-idna >= 2.8
 Requires:       python-sniffio >= 1.1
-Requires:       python-typing_extensions
+%if 0%{?python_version_nodots} < 313
+Requires:       python-typing_extensions >= 4.5
+%endif
 %if 0%{?python_version_nodots} < 311
 Requires:       python-exceptiongroup
 %endif
@@ -65,9 +77,12 @@ against it to run unmodified on asyncio, curio and trio.
 %pyproject_wheel
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 sed -i '/filterwarnings/,/^]/ { /"error"/ d}' pyproject.toml
 # bind and resolution failures inside OBS
@@ -89,11 +104,14 @@ donttest+=" or (test_exception_group and trio)"
 donttest+=" or (test_properties and trio)"
 donttest+=" or (test_properties and asyncio)"
 %pytest -m "not network" -k "not (${donttest:4})" -ra
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/anyio
 %{python_sitelib}/anyio-%{version}.dist-info
+%endif
 
 %changelog
