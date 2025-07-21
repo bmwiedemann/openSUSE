@@ -1,0 +1,24 @@
+diff -PpuriN gpgmepy-66e8a5e-old/autogen.sh gpgmepy-66e8a5e/autogen.sh
+--- gpgmepy-66e8a5e-old/autogen.sh	2025-06-08 10:48:55.000000000 +0200
++++ gpgmepy-66e8a5e/autogen.sh	2025-06-19 11:16:43.444702353 +0200
+@@ -244,7 +244,7 @@ if [ "$myhost" = "find-version" ]; then
+     fi
+ 
+     beta=no
+-    if [ -e .git ]; then
++    if false; then
+       ingit=yes
+       tmp=$(git describe --match "${matchstr1}" --long 2>/dev/null)
+       if [ -n "$tmp" ]; then
+diff -PpuriN gpgmepy-66e8a5e-old/setup.py.in gpgmepy-66e8a5e/setup.py.in
+--- gpgmepy-66e8a5e-old/setup.py.in	2025-06-08 10:48:55.000000000 +0200
++++ gpgmepy-66e8a5e/setup.py.in	2025-06-19 11:24:34.370334320 +0200
+@@ -236,7 +236,7 @@ swige = Extension(
+ 
+ setup(
+     cmdclass={'build': BuildExtFirstHack},
+-    version='@VERSION@',
++    version=version.split('-')[0],
+     ext_modules=[swige],
+     packages=[
+         'gpg', 'gpg.constants', 'gpg.constants.data', 'gpg.constants.keylist',

@@ -1,0 +1,23 @@
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Sun, 20 Jul 2025 18:52:30 +0000
+Subject: [PATCH] pass large file options to swig
+Upstream: maybe
+References: https://bugzilla.opensuse.org/show_bug.cgi?id=1244605#c34
+
+Fixes the following issue on 32 bit:
+
+[   37s]   swig -python -threads -Ibuild -outdir build/lib.linux-i686-cpython-311/gpg -o build/gpgme_wrap.c build/gpgme.i
+[   37s]   build/gpgme.h:111: Error: CPP #error "GPGME was compiled with _FILE_OFFSET_BITS = 64, please see the section "Largefile support (LFS)" in the GPGME manual.". Use the -cpperraswarn option to continue swig processing.
+
+Index: gpgmepy-2.0.0/setup.py.in
+===================================================================
+--- gpgmepy-2.0.0.orig/setup.py.in
++++ gpgmepy-2.0.0/setup.py.in
+@@ -214,6 +214,7 @@ class BuildExtFirstHack(build):
+         swige.sources.extend((self._in_build_base('gpgme.i'),
+                               self._in_build_base('helpers.c')))
+         swige.swig_opts.extend([
++            '-D_FILE_OFFSET_BITS=64', 
+             '-I' + self.build_base, '-outdir',
+             os.path.join(self.build_lib, 'gpg')
+         ])

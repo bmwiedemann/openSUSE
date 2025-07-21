@@ -1,0 +1,12 @@
+diff -PpuriN gpgmepy-66e8a5e-old/Makefile.am gpgmepy-66e8a5e/Makefile.am
+--- gpgmepy-66e8a5e-old/Makefile.am	2025-06-08 10:48:55.000000000 +0200
++++ gpgmepy-66e8a5e/Makefile.am	2025-06-19 11:07:42.069642169 +0200
+@@ -63,7 +63,7 @@ prepare: copystamp
+ # distutils are not VPATH-aware.
+ copystamp:
+ 	for f in $(COPY_FILES); do \
+-		cp -v $(srcdir)/$$f $(builddir)/; \
++		cp -v -n $(srcdir)/$$f $(builddir)/; \
+ 	done
+ 	ln -sf "$(srcdir)/src" gpg
+ 	touch $@

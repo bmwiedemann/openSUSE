@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Sun Jul 20 18:51:37 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- use fdupes
+- fix 32 bit swig failures, adding gpgmepy-2.0.0-swig-32-bit.patch
+
+-------------------------------------------------------------------
+Sat Jul 19 08:54:09 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Python bindings for GnuPG, based on gpgme, providing python*-gpg
+  This is split from upstream gpgme from 2.0.0.
+
+-------------------------------------------------------------------
+Mon Jul 14 20:28:11 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Rewrite building of the package using PEP517 compatible build system.
+
+-------------------------------------------------------------------
+Thu Jun 19 09:43:10 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Do not pull revision info from GIT when autoconf is run. This
+  removes the -unknown suffix after the version number. Fix also
+  the version string in setup.py. [bsc#1244605]
+  * Add python-gpgme-nobetasuffix.patch
+
+-------------------------------------------------------------------
+Thu Jun 19 09:12:35 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Do not error out when copying duplicated files: [bsc#1244605]
+  * Add python-gpgme-COPY_FILES.patch
+
+-------------------------------------------------------------------
+Sun Jun 15 07:35:04 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- wip, split upstream from gpgme since 2.0.0
