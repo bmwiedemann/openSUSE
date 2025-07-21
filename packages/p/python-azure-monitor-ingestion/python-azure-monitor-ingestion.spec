@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-monitor-ingestion
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-monitor-ingestion
-Version:        1.0.4
+Version:        1.1.0
 Release:        0
 Summary:        Microsoft Azure Monitor Ingestion Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-monitor-ingestion/azure-monitor-ingestion-%{version}.tar.gz
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_monitor_ingestion/azure_monitor_ingestion-%{version}.tar.gz
 BuildRequires:  %{python_module azure-monitor-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -54,10 +53,9 @@ or to custom tables that you create in Log Analytics workspace. You can even ext
 of built-in tables with custom columns.
 
 %prep
-%setup -q -n azure-monitor-ingestion-%{version}
+%setup -q -n azure_monitor_ingestion-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-monitor-ingestion-%{version}
 %pyproject_wheel
 
 %install
@@ -72,7 +70,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/monitor/ingestion
 %{python_sitelib}/azure_monitor_ingestion-*.dist-info
 
