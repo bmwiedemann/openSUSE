@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 12 11:39:20 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 25.4.16:
+  * documentation update
+  * allow python 3.13
+
+-------------------------------------------------------------------
 Mon Jun 16 14:24:41 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
@@ -6,7 +13,7 @@ Mon Jun 16 14:24:41 UTC 2025 - Markéta Machová <mmachova@suse.com>
 -------------------------------------------------------------------
 Sun Mar 30 08:26:56 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
-- make it compatible with older setuptools again 
+- make it compatible with older setuptools again
 
 -------------------------------------------------------------------
 Mon Mar 24 18:00:52 UTC 2025 - Markéta Machová <mmachova@suse.com>

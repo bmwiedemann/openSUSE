@@ -27,7 +27,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-Automat%{psuffix}
-Version:        24.8.1
+Version:        25.4.16
 Release:        0
 Summary:        Self-service finite-state machines for the programmer on the go
 License:        MIT
