@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 18 17:18:31 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250718:
+  * Revise UV-5R8W alias
+  * Add Baofeng UV-5R8W alias
+  * Fix stuck clone dialogs after failure
+  * id51: Disable callsign list settings
+  * icf: Filter D-STAR callsigns to valid chars
+  * icf: Gracefully handle invalid bank index mappings
+  * Improve setting load failure error messages
+
+-------------------------------------------------------------------
 Sat Jul  5 07:09:40 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250704:
