@@ -71,7 +71,7 @@ with focus on extensibility, framework-independence and improved type handling.
 %doc README.rst examples
 %{python_sitelib}/wsme
 %{python_sitelib}/wsmeext
-%{python_sitelib}/wsme-%{version}.dist-info
+%{python_sitelib}/[wW][sS][mM][eE]-%{version}.dist-info
 %{python_sitelib}/WSME-%{version}-py*-nspkg.pth
 
 %changelog

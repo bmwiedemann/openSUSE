@@ -281,4 +281,12 @@ Requires python-setuptools 78 to build successfully.
 </comment>
     <requestid>1264853</requestid>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>3b4566978e1ef802530b0c42d120fce8</srcmd5>
+    <version>0.12.1</version>
+    <time>1753120780</time>
+    <user>anag_factory</user>
+    <comment>- fix compatibility with older setuptools again</comment>
+    <requestid>1294473</requestid>
+  </revision>
 </revisionlist>
