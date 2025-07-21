@@ -1,0 +1,73 @@
+diff -upr sqliteodbc-0.99991.orig/sqlite3odbc.c sqliteodbc-0.99991/sqlite3odbc.c
+--- sqliteodbc-0.99991.orig/sqlite3odbc.c	2025-06-25 15:01:51.572128342 +0000
++++ sqliteodbc-0.99991/sqlite3odbc.c	2025-06-26 06:29:23.121622140 +0000
+@@ -1240,7 +1240,7 @@ static void
+ drvgetgpps(DBC *d)
+ {
+     void *lib;
+-    int (*gpps)();
++    int (*gpps)(char *, char *, char *, char *, int, char *);
+ 
+     lib = dlopen("libodbcinst.so.2", RTLD_LAZY);
+     if (!lib) {
+@@ -1256,7 +1256,7 @@ drvgetgpps(DBC *d)
+ 	lib = dlopen("libiodbcinst.so", RTLD_LAZY);
+     }
+     if (lib) {
+-	gpps = (int (*)()) dlsym(lib, "SQLGetPrivateProfileString");
++	gpps = (int (*)(char *, char *, char *, char *, int, char *)) dlsym(lib, "SQLGetPrivateProfileString");
+ 	if (!gpps) {
+ 	    dlclose(lib);
+ 	    return;
+@@ -14835,7 +14835,7 @@ drvtables(SQLHSTMT stmt,
+ #ifdef MEMORY_DEBUG
+ 	s->rowfree = xfree__;
+ #else
+-	s->rowfree = sqlite3_free;
++	s->rowfree = (void (*)(char **))sqlite3_free;
+ #endif
+ 	s->nrows = 2;
+ 	s->rowp = s->rowprs = -1;
+@@ -15918,7 +15918,7 @@ drvgettypeinfo(SQLHSTMT stmt, SQLSMALLIN
+ #ifdef MEMORY_DEBUG
+     s->rowfree = xfree__;
+ #else
+-    s->rowfree = sqlite3_free;
++    s->rowfree =  (void (*)(char **))sqlite3_free;
+ #endif
+     memset(s->rows, 0, sizeof (char *) * (s->nrows + 1) * asize);
+     if (sqltype == SQL_ALL_TYPES) {
+diff -upr sqliteodbc-0.99991.orig/sqlite3odbc.h sqliteodbc-0.99991/sqlite3odbc.h
+--- sqliteodbc-0.99991.orig/sqlite3odbc.h	2025-06-25 15:01:51.572481260 +0000
++++ sqliteodbc-0.99991/sqlite3odbc.h	2025-06-26 06:27:22.667908348 +0000
+@@ -147,7 +147,7 @@ typedef struct dbc {
+     int pwdLen;			/**< Length of password */
+ #ifdef USE_DLOPEN_FOR_GPPS
+     void *instlib;
+-    int (*gpps)();
++    int (*gpps)(char *, char *, char *, char *, int, char *);
+ #endif
+ #if defined(_WIN32) || defined(_WIN64)
+     CRITICAL_SECTION cs;	/**< For serializing most APIs */
+@@ -256,7 +256,7 @@ typedef struct stmt {
+     int rowp;			/**< Current result row */
+     int rowprs;			/**< Current start row of rowset */
+     char **rows;		/**< 2-dim array, result set */
+-    void (*rowfree)();		/**< Free function for rows */
++    void (*rowfree)(char **);  	/**< Free function for rows */
+     int naterr;			/**< Native error code */
+     char sqlstate[6];		/**< SQL state for SQLError() */
+     SQLCHAR logmsg[1024];	/**< Message for SQLError() */
+diff -upr sqliteodbc-0.99991.orig/sqlite4odbc.h sqliteodbc-0.99991/sqlite4odbc.h
+--- sqliteodbc-0.99991.orig/sqlite4odbc.h	2025-06-25 15:01:51.572963218 +0000
++++ sqliteodbc-0.99991/sqlite4odbc.h	2025-06-26 06:27:36.234956092 +0000
+@@ -252,7 +252,7 @@ typedef struct stmt {
+     int rowp;			/**< Current result row */
+     int rowprs;			/**< Current start row of rowset */
+     char **rows;		/**< 2-dim array, result set */
+-    void (*rowfree)();		/**< Free function for rows */
++    void (*rowfree)(char **);  	/**< Free function for rows */
+     int naterr;			/**< Native error code */
+     char sqlstate[6];		/**< SQL state for SQLError() */
+     SQLCHAR logmsg[1024];	/**< Message for SQLError() */
+

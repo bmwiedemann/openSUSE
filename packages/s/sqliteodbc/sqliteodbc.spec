@@ -26,6 +26,8 @@ URL:            http://www.ch-werner.de/sqliteodbc
 Source0:        http://www.ch-werner.de/sqliteodbc/%{name}-%{version}.tar.gz
 # This is not typical shared library but plugin for unixODBC
 Source1:        %{name}-rpmlintrc
+# fix build with gcc15
+Patch0:         sqliteodbc-gcc15.patch
 BuildRequires:  dos2unix
 BuildRequires:  doxygen
 BuildRequires:  graphviz
@@ -54,7 +56,7 @@ unixODBC or iODBC driver managers. This package contains generated
 documentation.
 
 %prep
-%setup -q
+%autosetup -p1
 # Fix bug https://bugzilla.novell.com/show_bug.cgi?id=969496
 # No more changing time stamp for every time this builds
 echo "HTML_TIMESTAMP         = NO" >> doxygen.conf
