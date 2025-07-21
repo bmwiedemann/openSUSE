@@ -1166,4 +1166,41 @@
 </comment>
     <requestid>1287230</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>85d1a264e560be4cb061409d1bbfc6d5</srcmd5>
+    <version>4.4.5</version>
+    <time>1753120829</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.4.5
+  * Fix scrollbar behaviour when scrolling past long cell in full
+    windowing mode #17705 (@krassowski)
+  * Update @codemirror/view to v6.38.1, fixing lineWrap in defer
+    mode #17698 (@krassowski)
+  * Fix auto completion on irrelevant cell types #17693
+    (@itsmevichu)
+  * Do not change silently when executing an empty cell #17701
+    (@brichet)
+  * Reduce UI blocking time when saving large notebooks by using
+    file stream #17707 (@krassowski)
+  * Normalize ToolbarButtonComponent dataset attributes with the
+    data- prefix #17703 (@RRosio)
+  * Fixes for accessibility issues reported on missing ARIA roles
+    #17591 (@nkn2022)
+  * Fix threadId being passed to the debugger #17667 (@kr-2003)
+- Release 4.4.4
+  * Fix colors for CodeMirror panels #17666 (@krassowski)
+  * Fix cell toolbar enabled status with multiple notebooks #17625
+    (@MUFFANUJ)
+  * Create a subshell per target and kernel when using
+    CommsOverSubshells.PerCommTarget #17634 (@ianthomas23)
+  * Prevent memory leak when rendering text stream #17628
+    (@krassowski)
+  * Backport PR #17602 on branch 4.3.x (Fix setting allowed schemes
+    on runtime using Sanitizer.setAllowedSchemes) #17640 (@jtpio)
+  * Add layout containment on viewport in windowed mode #17620
+    (@krassowski)
+  * Fix selection visibility in terminal while using Dark High
+    Contrast theme #17618 (@MUFFANUJ)</comment>
+    <requestid>1294598</requestid>
+  </revision>
 </revisionlist>
