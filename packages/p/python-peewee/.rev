@@ -447,4 +447,15 @@
     psycopg3.</comment>
     <requestid>1274716</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>dbbf19f5b9596d8b407057ba90d40a55</srcmd5>
+    <version>3.18.2</version>
+    <time>1753120785</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.18.2:
+  * Support Cython 3.1.
+
+- Convert to libalternatives</comment>
+    <requestid>1294653</requestid>
+  </revision>
 </revisionlist>

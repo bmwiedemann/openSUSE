@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 21 03:14:08 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.18.2:
+  * Support Cython 3.1.
+
+-------------------------------------------------------------------
+Sat Jul 19 07:29:15 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives
+
+-------------------------------------------------------------------
 Mon May  5 21:01:49 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.18.1:

@@ -16,9 +16,10 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-peewee
-Version:        3.18.1
+Version:        3.18.2
 Release:        0
 Summary:        An expressive ORM that supports multiple SQL backends
 License:        MIT
@@ -26,21 +27,21 @@ URL:            https://github.com/coleifer/peewee
 Source:         https://github.com/coleifer/peewee/archive/refs/tags/%{version}.tar.gz#/peewee-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Flask}
-%if 0%{?suse_version} > 1500
-BuildRequires:  %{python_module apsw}
-%endif
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(sqlite3)
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
+%if 0%{?suse_version} > 1500
+BuildRequires:  %{python_module apsw}
+%endif
 %python_subpackages
 
 %description
@@ -64,11 +65,8 @@ sed -i -e '1{\@^#! *%{_bindir}.*python@d}' %{buildroot}%{$python_sitearch}/pwiz.
 %check
 %pytest_arch tests
 
-%post
-%python_install_alternative pwiz.py
-
-%postun
-%python_uninstall_alternative pwiz.py
+%pre
+%python_libalternatives_reset_alternative pwiz.py
 
 %files %{python_files}
 %license LICENSE
