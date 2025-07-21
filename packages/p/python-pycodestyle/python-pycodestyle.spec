@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-pycodestyle
 Version:        2.14.0
@@ -29,10 +30,10 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
 Provides:       python-pep8 = %{version}
 Obsoletes:      python-pep8 < %{version}
 BuildArch:      noarch
@@ -58,11 +59,8 @@ sed -ri '1s/^#!.*//' pycodestyle.py
 %python_clone -a %{buildroot}%{_bindir}/pycodestyle
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
-%post
-%python_install_alternative pycodestyle
-
-%postun
-%python_uninstall_alternative pycodestyle
+%pre
+%python_libalternatives_reset_alternative pycodestyle
 
 %check
 %pytest

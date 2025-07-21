@@ -224,4 +224,12 @@
     argument.</comment>
     <requestid>1292498</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>ee4607cbeeb4cb89d9babfa86f9ee7f1</srcmd5>
+    <version>2.14.0</version>
+    <time>1753120748</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1294497</requestid>
+  </revision>
 </revisionlist>
