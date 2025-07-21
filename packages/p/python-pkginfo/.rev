@@ -133,4 +133,12 @@
     with different metadata (version, 'Dynamic' headers, etc).</comment>
     <requestid>1248500</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>8f4b5fec82d33dabc230c0551ddc36dd</srcmd5>
+    <version>1.12.1.2</version>
+    <time>1753120746</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1294494</requestid>
+  </revision>
 </revisionlist>

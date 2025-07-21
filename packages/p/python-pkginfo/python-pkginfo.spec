@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-pkginfo
 Version:        1.12.1.2
@@ -29,11 +30,11 @@ BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-setuptools
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -65,11 +66,8 @@ the *.egg-info stored in a "development checkout"
 sed -iE "s/_make_installed('wheel')/_make_installed('wheel', metadata_version='2.3')/" pkginfo/tests/test_installed.py
 %pytest
 
-%post
-%python_install_alternative pkginfo
-
-%postun
-%python_uninstall_alternative pkginfo
+%pre
+%python_libalternatives_reset_alternative pkginfo
 
 %files %{python_files}
 %license LICENSE.txt
