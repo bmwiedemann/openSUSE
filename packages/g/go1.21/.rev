@@ -334,4 +334,25 @@
     <comment>- Enable loongarch64 builds (forwarded request 1229871 from jfkw)</comment>
     <requestid>1229876</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>871c1e6d31aa907e7bcc18a0c5f70133</srcmd5>
+    <version>1.21.13</version>
+    <time>1753120898</time>
+    <user>anag_factory</user>
+    <comment>- Packaging improvements:
+  * Refs bsc#1245292 go1.16 unresolveable on SLFO:Main. Recommended
+    mitigation for SLFO:Main is to bootstrap go1.21 with gccgo and
+    delete go1.16 through go1.20, all of which are EOL.
+  * Update %bcond_with gccgo_go121 to a version unique name from
+    %bcond_with gccgo. OBS prjconf does not support a conditional
+    %_with configuration to match just one package. Use a unique
+    name that is defined only in go1.21 packaging. Bootstrap
+    go1.21 with gcc-go by adding the following to prjconf:
+    Macros:
+    %_with_gccgo_go121 1
+    :Macros
+  * Update to %define gcc_go_version from 11 to 13 for SLE. gcc13
+    provides go1.18 needed for bootstrapping go1.21. (forwarded request 1294843 from jfkw)</comment>
+    <requestid>1294844</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package go1.21
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,13 @@
 %define go_bootstrap_version go1.18
 %else
 # Use gccgo and go1.x specified by upstream Go
-%define gcc_go_version 11
+%define gcc_go_version 13
 %define go_bootstrap_version go1.17
 %endif
 
 # Bootstrap go toolchain using existing go package go_bootstrap_version
-# To bootstrap using gccgo use '--with gccgo'
-%bcond_with gccgo
+# To bootstrap using gccgo use '--with gccgo_go121'
+%bcond_with gccgo_go121
 
 # gccgo on ppc64le with default PIE enabled fails with:
 # error while loading shared libraries:
@@ -82,7 +82,7 @@
 
 # shared library support
 %if "%{rpm_vercmp %{go_api} 1.5}" > "0"
-%if %{with gccgo}
+%if %{with gccgo_go121}
 %define with_shared 1
 %else
 %ifarch %ix86 %arm x86_64 aarch64
@@ -147,7 +147,7 @@ Patch7:         dont-force-gold-on-arm64.patch
 Patch8:         gcc-go.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # boostrap
-%if %{with gccgo}
+%if %{with gccgo_go121}
 BuildRequires:  gcc%{gcc_go_version}-go
 %else
 # no gcc-go
@@ -234,7 +234,7 @@ Go standard library compiled to a dynamically loadable shared object libstd.so
 # go
 %setup -q -n go
 %patch -P 7 -p1
-%if %{with gccgo}
+%if %{with gccgo_go121}
 # Currently gcc-go does not manage an update-alternatives entry and will
 # never be symlinked as "go", even if gcc-go is the only installed go toolchain.
 # Patch go bootstrap scripts to find hardcoded go-(gcc-go-version) e.g. go-8
@@ -261,7 +261,7 @@ cp -v "$TSAN_DIR/race_linux_%{go_arch}.syso" src/runtime/race/
 %endif
 
 # Now, compile Go.
-%if %{with gccgo}
+%if %{with gccgo_go121}
 export GOROOT_BOOTSTRAP=%{_prefix}
 %else
 export GOROOT_BOOTSTRAP=%{_libdir}/%{go_bootstrap_version}
