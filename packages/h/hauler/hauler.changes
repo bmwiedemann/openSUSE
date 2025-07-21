@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jul 21 12:28:01 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.5 (bsc#1246722, CVE-2025-46569):
+  * Bump github.com/open-policy-agent/opa from 1.1.0 to 1.4.0 in
+    the go_modules group across 1 directory (CVE-2025-46569)
+  * deprecate auth from hauler store copy
+  * Bump github.com/cloudflare/circl from 1.3.7 to 1.6.1 in the
+    go_modules group across 1 directory
+  * Bump github.com/go-viper/mapstructure/v2 from 2.2.1 to 2.3.0
+    in the go_modules group across 1 directory
+  * upgraded go and dependencies versions
+
+-------------------------------------------------------------------
+Mon Jul 21 12:23:59 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 1.2.5:
+  * upgraded go and dependencies versions (#444)
+  * Bump github.com/go-viper/mapstructure/v2 (#442)
+  * bump github.com/cloudflare/circl (#441)
+  * deprecate auth from hauler store copy (#440)
+  * Bump github.com/open-policy-agent/opa (#438)
+
+-------------------------------------------------------------------
 Thu May  1 16:34:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.4 (CVE-2025-22872, bsc#1241804):
