@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 22 03:56:14 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.8:
+  * Add new build file to build the cython extension and update
+    pyproject.toml to use it.
+
+-------------------------------------------------------------------
 Wed Jun 11 11:43:51 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

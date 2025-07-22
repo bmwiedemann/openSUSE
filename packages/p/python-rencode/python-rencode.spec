@@ -17,19 +17,18 @@
 
 
 Name:           python-rencode
-Version:        1.0.6
+Version:        1.0.8
 Release:        0
 Summary:        Web safe object pickling/unpickling
 License:        GPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/aresch/rencode
 Source0:        https://github.com/aresch/rencode/archive/v%{version}.tar.gz
 Source1:        %{name}.changes
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -42,11 +41,6 @@ b-encodings. Python2 version of package
 
 %prep
 %setup -q -n rencode-%{version}
-# to "avoid python-bytecode-inconsistent-mtime" warnings
-FAKE_TIMESTAMP=$(LC_ALL=C date -u -r %{SOURCE1} +%%y%%m%%d%%H%%M)
-find . -name '*.py' -exec touch -mat $FAKE_TIMESTAMP {} \;
-# do not use O3
-sed -i -e '/extra_compile_args/d' setup.py
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
@@ -62,6 +56,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %files %{python_files}
 %license COPYING
 %{python_sitearch}/rencode
-%{python_sitearch}/rencode-%{version}*-info
+%{python_sitearch}/rencode-%{version}.dist-info
 
 %changelog

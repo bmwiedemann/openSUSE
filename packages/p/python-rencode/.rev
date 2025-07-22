@@ -26,4 +26,14 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1284806</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5b2cad41d87570da95683932a7402fc3</srcmd5>
+    <version>1.0.8</version>
+    <time>1753179644</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.8:
+  * Add new build file to build the cython extension and update
+    pyproject.toml to use it.</comment>
+    <requestid>1294922</requestid>
+  </revision>
 </revisionlist>
