@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 21 10:11:31 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Update capnproto.spec:
+  Change 0%{?suse_version} macro to 1599 to enable build constraintion
+  include SLFO:Main and other folked from openSUSE. If not, some ibus
+  engine need capnproto, and it will introduce too many irrelevant
+  build dependencies.
+  (bsc#1246569)
+
+-------------------------------------------------------------------
 Mon Jun 16 05:15:43 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.2.0 (no changelog)

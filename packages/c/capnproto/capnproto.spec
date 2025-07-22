@@ -25,7 +25,7 @@ License:        MIT
 URL:            https://capnproto.org
 Source:         https://capnproto.org/capnproto-c++-%{version}.tar.gz
 BuildRequires:  cmake
-%if 0%{?suse_version} >= 1699
+%if 0%{?suse_version} >= 1599
 BuildRequires:  clang
 BuildRequires:  clang-devel
 %else
