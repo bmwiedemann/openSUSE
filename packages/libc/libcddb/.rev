@@ -206,4 +206,60 @@
     <comment></comment>
     <requestid>1160810</requestid>
   </revision>
+  <revision rev="29" vrev="30">
+    <srcmd5>9a5fe3b679d40530043a9a49afa8863e</srcmd5>
+    <version>1.3.2</version>
+    <time>1753181652</time>
+    <user>anag_factory</user>
+    <comment>- Tighten %files, don't glob so much.
+- Work with newer gettext-runtime. In gettext 0.24.1 the m4 files
+  moved from /usr/share/aclocal/ to /usr/share/gettext/m4
+- Add pointer-types.patch to fix compilation error with GCC 14
+  (bsc#1221698).
+- Use %patch -P N instead of deprecated %patchN.
+- Transform into a proper _multibuild package: the spec is already
+  prepared and uses a few variables to distinguish flavors.
+- Drop --with-pic (no effect with --disable-static)
+- Trim old/redundant rpm constructs
+- Added url as source.
+  Please see http://en.opensuse.org/SourceUrls
+- move license outside a %if to fix build of libcddb-utils
+- fix pre_checkin.sh
+- add libtool as buildrequire to avoid implicit dependency
+- Package baselibs.conf
+- Updated to version 1.3.2:
+  * ported to more platforms
+  * new functions in the API
+  * minor fixes
+- Build in two stages to break build loop without removing
+  utilities.
+- use Obsoletes: -XXbit only for ppc64 to help solver during distupgrade
+  (bnc#437293)
+- obsolete old -XXbit packages (bnc#437293)
+- update baselibs.conf
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+- fix build using library packaging policy
+- remove static libraries and useless libtool archive
+- permanently break build loop by removing the example code that caused it
+- Break build loop libcddb -&gt; libcdio -&gt; libcddb.
+- Updated to version 1.3.0:
+  * Support for the 'album' command of the freedb2.org.
+  * Functions to set or reset some flags.
+- Updated to version 1.2.2:
+  * Correct character set is specified when submitting data.
+- Fixed cyclic dependencies in a correct way.
+- Simpler solution of cyclic dependencies.
+- Enabled parallel build.
+- Fixed devel splitting.
+- converted neededforbuild to BuildRequires
+- Build with libcdio-0.76.
+- Updated to version 1.2.1.
+- Updated to version 1.2.0.
+- Updated to version 1.0.2.
+- Updated to version 1.0.1.
+- New SuSE package, version 0.9.6.
+</comment>
+    <requestid>1294834</requestid>
+  </revision>
 </revisionlist>

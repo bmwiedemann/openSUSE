@@ -1,7 +1,7 @@
 #
 # spec file for package libcddb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -85,7 +85,7 @@ sed -i 's:\(\.\.\|\$(top_builddir)\)/[^/]*/lib\([^ ]*\)\.la:-l\2:g' */Makefile.a
 %patch -p1 -P 1
 
 %build
-autoreconf -f -i
+autoreconf -f -i -I /usr/share/gettext/m4
 %configure\
 	--disable-rpath\
 	--disable-static
@@ -103,20 +103,20 @@ rm -f %{buildroot}%{_libdir}/libcddb.la
 
 %if %{BUILD_UTILS}
 %files
-%{_bindir}/*
+%{_bindir}/cddb_query
 
 %else
 
 %ldconfig_scriptlets -n libcddb2
 
 %files -n libcddb2
-%{_libdir}/*.so.2*
+%{_libdir}/libcddb*.so.2*
 
 %files devel
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README THANKS TODO
-%{_libdir}/*.so
-%{_libdir}/pkgconfig/*.pc
+%{_libdir}/libcddb*.so
+%{_libdir}/pkgconfig/libcddb*.pc
 %{_includedir}/cddb
 %endif
 

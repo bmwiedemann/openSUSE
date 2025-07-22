@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 21 12:52:52 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Tighten %files, don't glob so much.
+
+-------------------------------------------------------------------
+Fri Jul 18 08:16:29 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Work with newer gettext-runtime. In gettext 0.24.1 the m4 files
+  moved from /usr/share/aclocal/ to /usr/share/gettext/m4
+
+-------------------------------------------------------------------
 Fri Mar 22 19:04:27 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add pointer-types.patch to fix compilation error with GCC 14
@@ -71,7 +82,7 @@ Thu Dec  4 12:34:56 CET 2008 - olh@suse.de
 -------------------------------------------------------------------
 Thu Nov 27 14:14:33 CET 2008 - ro@suse.de
 
-- update baselibs.conf 
+- update baselibs.conf
 
 -------------------------------------------------------------------
 Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
