@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 17 05:40:16 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * 0003-reproducible-from-environment.patch
+    + We made the modification more central in maven-archiver
+
+-------------------------------------------------------------------
+Tue Jul 15 11:40:44 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patches:
+  * 0001-Be-consistent-about-data-encoding.patch ->
+    0001-Be-consistent-about-data-encoding-when-copying-files.patch
+    + Take the version of our PR that was integrated upstream
+  * 0003-reproducible-from-environment.patch
+    + Make the situation exactly the same as before if the
+      SOURCE_DATE_EPOCH is not set
+
+-------------------------------------------------------------------
 Sat Jul 12 08:03:13 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

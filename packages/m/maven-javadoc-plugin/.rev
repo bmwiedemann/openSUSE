@@ -169,4 +169,12 @@ put into adi:2</comment>
     <comment>Fix legacy mode</comment>
     <requestid>1292312</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>3ec328c5eaaa4a7bd88b46318be2a1a1</srcmd5>
+    <version>3.11.2</version>
+    <time>1753181660</time>
+    <user>anag_factory</user>
+    <comment>reproducible: another solution</comment>
+    <requestid>1294861</requestid>
+  </revision>
 </revisionlist>
