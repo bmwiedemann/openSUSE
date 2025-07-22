@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 17 05:40:14 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.10.0 (3.010)
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+
+  3.010     2025-07-16 09:04:21-04:00 America/New_York
+          - add flog_messages and fmt_event, which return formatted strings
+            without logging them
+
+-------------------------------------------------------------------
 Wed Jan  8 05:33:31 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.9.0 (3.009)

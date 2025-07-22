@@ -181,4 +181,18 @@
     <comment></comment>
     <requestid>1237577</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e7c4c83ca1b7ac641eb9ea878f9b68d4</srcmd5>
+    <version>3.10.0</version>
+    <time>1753179609</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1294135 from tinita
+
+- updated to 3.10.0 (3.010)
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+  3.010     2025-07-16 09:04:21-04:00 America/New_York
+          - add flog_messages and fmt_event, which return formatted strings
+            without logging them</comment>
+    <requestid>1294878</requestid>
+  </revision>
 </revisionlist>

@@ -18,10 +18,10 @@
 
 %define cpan_name Log-Dispatchouli
 Name:           perl-Log-Dispatchouli
-Version:        3.9.0
+Version:        3.10.0
 Release:        0
-# 3.009 -> normalize -> 3.9.0
-%define cpan_version 3.009
+# 3.010 -> normalize -> 3.10.0
+%define cpan_version 3.010
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple wrapper around Log::Dispatch
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -40,12 +40,12 @@ BuildRequires:  perl(Log::Dispatch::Syslog)
 BuildRequires:  perl(Params::Util)
 BuildRequires:  perl(String::Flogger)
 BuildRequires:  perl(Sub::Exporter)
-BuildRequires:  perl(Sub::Exporter::GlobExporter) >= 0.002
+BuildRequires:  perl(Sub::Exporter::GlobExporter) >= 0.2
 BuildRequires:  perl(Sys::Syslog) >= 0.16
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
-BuildRequires:  perl(Try::Tiny) >= 0.04
+BuildRequires:  perl(Try::Tiny) >= 0.40
 BuildRequires:  perl(experimental)
 Requires:       perl(Log::Dispatch)
 Requires:       perl(Log::Dispatch::Array)
@@ -55,9 +55,9 @@ Requires:       perl(Log::Dispatch::Syslog)
 Requires:       perl(Params::Util)
 Requires:       perl(String::Flogger)
 Requires:       perl(Sub::Exporter)
-Requires:       perl(Sub::Exporter::GlobExporter) >= 0.002
+Requires:       perl(Sub::Exporter::GlobExporter) >= 0.2
 Requires:       perl(Sys::Syslog) >= 0.16
-Requires:       perl(Try::Tiny) >= 0.04
+Requires:       perl(Try::Tiny) >= 0.40
 Requires:       perl(experimental)
 Provides:       perl(Log::Dispatchouli) = %{version}
 Provides:       perl(Log::Dispatchouli::Global) = %{version}
@@ -85,7 +85,7 @@ subroutines are called only if needed. For more information read the
 String::Flogger docs.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
