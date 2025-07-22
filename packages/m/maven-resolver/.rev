@@ -184,4 +184,12 @@
     <comment>Add dependency on objectweb-asm to build with sisu 0.9.0.M4</comment>
     <requestid>1282178</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ca4ca3fa0d221a2f88e836a7faf7217a</srcmd5>
+    <version>1.9.24</version>
+    <time>1753181663</time>
+    <user>anag_factory</user>
+    <comment>1.9.24 + _multibuild</comment>
+    <requestid>1294967</requestid>
+  </revision>
 </revisionlist>

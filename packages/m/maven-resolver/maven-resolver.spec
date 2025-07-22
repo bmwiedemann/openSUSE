@@ -16,22 +16,23 @@
 #
 
 
+%global base_name maven-resolver
 %define _buildshell /bin/bash
-%bcond_with tests
-Name:           maven-resolver
-Version:        1.9.23
+Name:           %{base_name}
+Version:        1.9.24
 Release:        0
 Summary:        Apache Maven Artifact Resolver library
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/resolver/
-Source0:        https://archive.apache.org/dist/maven/resolver/%{name}-%{version}-source-release.zip
-Source1:        %{name}-build.tar.xz
+Source0:        https://archive.apache.org/dist/maven/resolver/%{base_name}-%{version}-source-release.zip
+Source1:        %{base_name}-build.tar.xz
 BuildRequires:  ant
 BuildRequires:  apache-commons-lang3
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  glassfish-annotation-api
+BuildRequires:  google-gson
 BuildRequires:  google-guice
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
@@ -49,13 +50,6 @@ BuildRequires:  unzip
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  ant-junit
-BuildRequires:  cglib
-BuildRequires:  mockito
-BuildRequires:  objenesis
-BuildRequires:  plexus-containers-component-annotations
-%endif
 
 %description
 Apache Maven Artifact Resolver is a library for working with artifact
@@ -149,7 +143,7 @@ Group:          Documentation/HTML
 This package provides %{summary}.
 
 %prep
-%setup -q -a1
+%setup -q -n %{base_name}-%{version} -a1
 
 # requires internet connection
 rm maven-resolver-transport-http/src/test/java/org/eclipse/aether/transport/http/{HttpServer,HttpTransporterTest}.java
@@ -158,6 +152,7 @@ rm maven-resolver-transport-http/src/test/java/org/eclipse/aether/transport/http
 %pom_remove_plugin -r :bnd-maven-plugin
 %pom_remove_plugin -r org.codehaus.mojo:animal-sniffer-maven-plugin
 %pom_remove_plugin -r :japicmp-maven-plugin
+%pom_remove_plugin -r :maven-enforcer-plugin
 
 %pom_disable_module maven-resolver-demos
 %pom_disable_module maven-resolver-named-locks-hazelcast
@@ -193,7 +188,7 @@ done
 %{mvn_package} :maven-resolver-{*}  @1
 %{mvn_alias} 'org.apache.maven.resolver:maven-resolver{*}' 'org.eclipse.aether:aether@1'
 %{mvn_alias} 'org.apache.maven.resolver:maven-resolver-transport-wagon' 'org.eclipse.aether:aether-connector-wagon'
-%{mvn_file} ':maven-resolver{*}' %{name}/maven-resolver@1 aether/aether@1
+%{mvn_file} ':%{base_name}{*}' %{base_name}/%{base_name}@1 aether/aether@1
 
 # Try to avoid sucking in dependencies on packages that are not built at this moment
 %pom_remove_parent .
@@ -205,6 +200,7 @@ build-jar-repository -s lib \
   atinject \
   commons-lang3 \
   glassfish-annotation-api \
+  google-gson/gson \
   guice/google-guice-no_aop \
   httpcomponents/httpclient \
   httpcomponents/httpcore \
@@ -216,26 +212,16 @@ build-jar-repository -s lib \
   plexus/utils \
   plexus/xml \
   slf4j/api
-%if %{with tests}
-build-jar-repository -s lib \
-  cglib/cglib \
-  mockito/mockito-core \
-  objenesis/objenesis \
-  plexus-containers/plexus-component-annotations \
-  slf4j/simple
-%endif
-%{ant} \
-%if %{without tests}
+ant \
   -Dtest.skip=true \
-%endif
   package javadoc
 
 %{mvn_artifact} pom.xml
 
 mkdir -p target/site/apidocs
 for i in api spi test-util util named-locks impl connector-basic transport-classpath transport-file transport-http transport-wagon; do
-  cp -r %{name}-${i}/target/site/apidocs target/site/apidocs/%{name}-${i}
-  %{mvn_artifact} %{name}-${i}/pom.xml %{name}-${i}/target/%{name}-${i}-%{version}.jar
+  cp -r %{base_name}-${i}/target/site/apidocs target/site/apidocs/%{base_name}-${i}
+  %{mvn_artifact} %{base_name}-${i}/pom.xml %{base_name}-${i}/target/%{base_name}-${i}-%{version}.jar
 done
 
 %install
