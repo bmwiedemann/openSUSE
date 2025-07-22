@@ -830,4 +830,28 @@
   * docs: update GitHub Action assets (forwarded request 1292276 from jfkw)</comment>
     <requestid>1292277</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f3774771c7d66da6c0445515a1fefa14</srcmd5>
+    <version>2.3.0</version>
+    <time>1753179621</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.0:
+  * chore: prepare release
+  * build(deps): bump github.com/securego/gosec/v2 from 2.22.5 to 2.22.6 (#5950)
+  * build(deps): bump github.com/AlwxSin/noinlineerr from 1.0.4 to 1.0.5 (#5949)
+  * build(deps): bump github.com/spf13/pflag from 1.0.6 to 1.0.7 (#5948)
+  * build(deps): bump github.com/go-viper/mapstructure/v2 from 2.3.0 to 2.4.0 (#5947)
+  * build(deps): bump on-headers and compression in /docs (#5944)
+  * fix: panic: close of closed channel (#5939)
+  * build(deps): bump go-simpler.org/sloglint from 0.11.0 to 0.11.1 (#5936)
+  * build(deps): bump github.com/mgechev/revive from 1.10.0 to 1.11.0 (#5933)
+  * build(deps): bump golang.org/x/tools from 0.34.0 to 0.35.0 (#5935)
+  * build(deps): bump golang.org/x/sync from 0.15.0 to 0.16.0 (#5934)
+  * build(deps): bump github.com/nunnatsa/ginkgolinter from 0.19.1 to 0.20.0 (#5932)
+  * build(deps): bump github.com/bombsimon/wsl/v5 from 5.0.0 to 5.1.0 (#5917)
+  * build(deps): bump github.com/sonatard/noctx from 0.3.4 to 0.3.5 (#5916)
+  * build(deps): bump github.com/uudashr/iface from 1.4.0 to 1.4.1 (#5915)
+  * docs: update GitHub Action assets (forwarded request 1294887 from jfkw)</comment>
+    <requestid>1294891</requestid>
+  </revision>
 </revisionlist>
