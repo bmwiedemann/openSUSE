@@ -87,4 +87,12 @@
     <comment>3.4.0</comment>
     <requestid>1280574</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e08139983abfe353401be57762586517</srcmd5>
+    <version>3.4.0</version>
+    <time>1753181656</time>
+    <user>anag_factory</user>
+    <comment>reproducible: another solution</comment>
+    <requestid>1294854</requestid>
+  </revision>
 </revisionlist>

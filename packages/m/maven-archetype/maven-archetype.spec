@@ -24,7 +24,6 @@ License:        Apache-2.0
 URL:            https://maven.apache.org/archetype/
 Source0:        https://dlcdn.apache.org/maven/archetype/%{name}-%{version}-source-release.zip
 Patch1:         0001-Avoid-reliance-on-groovy.patch
-Patch2:         0002-reproducible-from-environment.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
@@ -127,7 +126,6 @@ Summary:        Maven Plugin for using archetypes
 %prep
 %setup -q
 %patch -P 1 -p1
-%patch -P 2 -p1
 
 # Pointless for rpm build
 %pom_remove_plugin -r org.apache.rat:apache-rat-plugin

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 21 14:09:52 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * 0002-reproducible-from-environment.patch
+    + patched already in maven-archiver
+
+-------------------------------------------------------------------
 Tue May 27 11:24:27 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.4.0
