@@ -1,7 +1,8 @@
 #
 # spec file for package aircrack-ng
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,18 +43,19 @@ BuildRequires:  libnl3-devel >= 3.2
 BuildRequires:  libpcap-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-graphviz
 BuildRequires:  python3-setuptools
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(hwloc)
 BuildRequires:  pkgconfig(libpcre2-8)
-%if 0%{?with sqlite}
-BuildRequires:  sqlite3-devel
-%endif
 Requires:       ethtool
 Requires:       python3-graphviz
 Requires:       wireless-tools
+%if 0%{?with sqlite}
+BuildRequires:  sqlite3-devel
+%endif
 
 %description
 Aircrack-ng is a suite of tools to assess network security.
@@ -103,6 +105,7 @@ find %{buildroot} -type f \( -name "*.la" -o -name "*.a" \) -delete -print
 rm %{buildroot}%{_prefix}/local/lib/python3*/site-packages/aircrack-ng/air*-install_files.txt
 rm %{buildroot}%{_datadir}/airgraph-ng/.keepthisfolder
 %endif
+%python3_fix_shebang_path %{buildroot}%{python_sitelib}/*/EGG-INFO/scripts/*
 
 %check
 %make_build check
