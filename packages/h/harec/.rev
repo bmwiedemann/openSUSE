@@ -124,4 +124,41 @@
     <comment></comment>
     <requestid>1246389</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8f69632fa1531950c078a18142a5970b</srcmd5>
+    <version>0.25.2+git.1750492315.966012b</version>
+    <time>1753179653</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1750492315.966012b:
+  * scripts/version: upgrade to 0.25.2
+  * Enable -Wformat errors for more functions
+  * check: fix -Wformat issues with 'error'
+  * tests/21-tuples: add offset expr tests
+  * type_store: fix offset of zero-sized tuple members
+  * tests/37-annotations: expand tests
+  * tests/26-regression: re-add minimal repro for old buggy switch test
+  * tests/14-switch: re-add pointer switch tests as fail tests
+  * lex: fix colno with tabs
+  * lex: fix order of xcalloc arguments
+  * tests/12-loops: remove unnecessary heap allocation
+  * tests/26-regression: add free after alloc
+  * type_store: disallow error flag on done and never
+  * check: improve yield and return errors
+  * utf8: switch to an off-the-shelf decoder.
+  * lex: Require identifier in #[annotation]
+  * lex: disallow sign/whitespace in hex literal
+  * Makefile: add -- to install command
+  * Makefile: remove unused suffixes
+  * types: make alignment of 64-bit types arch-dependent
+  * Gradually remove usage of &quot;iconst&quot; et al
+  * Move struct dimensions to type_store.h
+  * check: improve error message
+  * qinstr: remove outdated comment
+  * gen: fix inaccurate comment
+  * qbe: drop unused qbe_aggregate global
+  * tests/06-structs: fix invariant tests
+  * parse: improve empty block error message
+  * check: improve some error messages</comment>
+    <requestid>1294958</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 Name:           harec
 Release:        0
-Version:        0.24.2
+Version:        0.25.2+git.1750492315.966012b
 Summary:        Bootstrap compiler for hare
 Group:          Development/Tools/Building
 URL:            https://git.sr.ht/~sircmpwn/harec
@@ -30,7 +30,6 @@ BuildRequires:  zstd
 License:        GPL-3.0-only
 
 %description
-
 HareC is a bootstrap compiler for the Hare programming language. Written in C11 for
 POSIX-compatible systems.
 

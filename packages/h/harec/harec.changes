@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Jul 17 15:10:36 UTC 2025 - uncomfyhalomacro@opensuse.org
+
+- Update to version 1750492315.966012b:
+  * scripts/version: upgrade to 0.25.2
+  * Enable -Wformat errors for more functions
+  * check: fix -Wformat issues with 'error'
+  * tests/21-tuples: add offset expr tests
+  * type_store: fix offset of zero-sized tuple members
+  * tests/37-annotations: expand tests
+  * tests/26-regression: re-add minimal repro for old buggy switch test
+  * tests/14-switch: re-add pointer switch tests as fail tests
+  * lex: fix colno with tabs
+  * lex: fix order of xcalloc arguments
+  * tests/12-loops: remove unnecessary heap allocation
+  * tests/26-regression: add free after alloc
+  * type_store: disallow error flag on done and never
+  * check: improve yield and return errors
+  * utf8: switch to an off-the-shelf decoder.
+  * lex: Require identifier in #[annotation]
+  * lex: disallow sign/whitespace in hex literal
+  * Makefile: add -- to install command
+  * Makefile: remove unused suffixes
+  * types: make alignment of 64-bit types arch-dependent
+  * Gradually remove usage of "iconst" et al
+  * Move struct dimensions to type_store.h
+  * check: improve error message
+  * qinstr: remove outdated comment
+  * gen: fix inaccurate comment
+  * qbe: drop unused qbe_aggregate global
+  * tests/06-structs: fix invariant tests
+  * parse: improve empty block error message
+  * check: improve some error messages
+  * eval: fix typo in comment
+  * tests/29-unarithm: add bnot tests
+  * type_store: make a couple functions static
+  * lex: compare strcmp to 0 instead of negating
+  * gen: don't generate defers on assertion failure
+  * typedef: output pointer literals.
+  * eval: allow taking address of arbitrary expressions
+  * lex: scan and discard #[annotations]
+
+-------------------------------------------------------------------
+Sat Mar 29 16:38:01 UTC 2025 - mcepl@cepl.eu
+
+- Update to version 0.24.2+git.1742030605.75ad385:
+  * Save sources unaffected by -M for places using them as full paths
+  * types: add missing newline to "Unsupported or unrecognized target" error message
+  * parse: better error report in invalid local defines
+  * check: don't autodereference append/insert value
+  * check: disallow C variadism in @init/@fini/@test
+  * check: don't do type promotion on arrays
+  * gen: move an alloc instruction to function preamble
+  * parse: simplify parse_binding_unpack
+  * gen: fix expandable array gen_value type
+  * check: use explicit false as nullability parameter
+
+-------------------------------------------------------------------
 Thu Feb  6 07:47:27 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Limit %check on architectures supported by the testsuite:
