@@ -733,4 +733,12 @@
     <comment></comment>
     <requestid>1294367</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>e04d0ca697835d169c6d502b042c7ab4</srcmd5>
+    <version>3.8.1</version>
+    <time>1753179424</time>
+    <user>anag_factory</user>
+    <comment>https://bugzilla.suse.com/show_bug.cgi?id=1246831</comment>
+    <requestid>1295050</requestid>
+  </revision>
 </revisionlist>
