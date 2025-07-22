@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 21 14:46:07 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Suppress strict aliasing violations warnings to make build log readable.
+- Add build flag to default char to unsigned type.
+- Further correct descriptions to make them more clear.
+
+-------------------------------------------------------------------
+Thu Jul 17 07:14:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add forced symbol versions to ensure lockstep RPM updates,
+  since the shared library is otherwise completely unversioned.
+- Trim redundancies from descriptions.
+
+-------------------------------------------------------------------
 Tue Jul 15 12:21:24 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
 
 - Update to new upstream release 3.7

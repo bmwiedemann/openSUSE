@@ -19,7 +19,7 @@
 Name:           MistServer
 Version:        3.7
 Release:        0
-Summary:        Next-generation streaming media toolkit for internet streaming.
+Summary:        Internet streaming media toolkit
 License:        Unlicense
 URL:            https://github.com/DDVTECH/mistserver
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -42,9 +42,8 @@ Recommends:     ffmpeg
 %{?systemd_ordering}
 
 %description
-%{name} is an open source, public domain, full-featured,
-next-generation streaming media toolkit for OTT (internet streaming),
-designed to be ideal for developers and system integrators.
+%{name} is a streaming media toolkit for over-the-top media
+services (internet streaming) ideal for developers and system integrators.
 
 %package devel
 Summary:        Development files for %{name}
@@ -57,6 +56,18 @@ Development files for %{name}.
 %autosetup -n mistserver-%{version}
 
 %build
+
+# Libraries are not versioned, version on RPM side
+echo "V_%version { global: *; };" > /tmp/z.sym
+export LDFLAGS="$LDFLAGS -Wl,--version-script=/tmp/z.sym"
+
+# Disable warnings caused by certain upstream coding practices
+# to make it possible to focus on other and future warnings
+export CXXFLAGS="$CXXFLAGS -Wno-strict-aliasing"
+
+# Default char to unsigned according to uppstream
+export CXXFLAGS="$CXXFLAGS -funsigned-char"
+
 %meson \
   -DDEBUG=3 \
   -DLOCAL_GENERATORS=false \

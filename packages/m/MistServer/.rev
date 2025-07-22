@@ -15,4 +15,12 @@
     <comment>Update MistServer to version 3.7</comment>
     <requestid>1293481</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>06f3fe346dffc510c3641f3f2e9df215</srcmd5>
+    <version>3.7</version>
+    <time>1753179601</time>
+    <user>anag_factory</user>
+    <comment>Add forced symbol versions and trim redundancies from descriptions (thanks to jengelh). Suppress strict aliasing violations warnings.</comment>
+    <requestid>1294865</requestid>
+  </revision>
 </revisionlist>
