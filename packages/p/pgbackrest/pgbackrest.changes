@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jul 21 18:50:57 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.56.0
+  - Bug Fixes:
+    - Fix issue with adhoc expiration when no backups in a
+      repository. (Reviewed by Stefan Fercot. Reported by Anup
+      Gupta.)
+  - Features:
+    - Add restore progress to info command output. (Contributed by
+      Denis Garsh, Maxim Michkov. Reviewed by David Steele.)
+    - Add progress-only detail level for info command output.
+      (Contributed by Denis Garsh. Reviewed by David Steele, Stefan
+      Fercot.)
+  - Improvements:
+    - Retry failed reads on object stores. (Reviewed by David
+      Christensen.)
+    - Fix defaults in command-line help. (Reviewed by David
+      Christensen, Chris Bandy.)
+  - Documentation Improvements:
+    - Describe discrete option values in a list where appropriate.
+      (Contributed by Anton Kurochkin. Reviewed by David Steele.)
+    - Fix "less than" in help output for archive-mode option.
+      (Contributed by Anton Kurochkin. Reviewed by David Steele.)
+- refreshed use-run-pgbackrest.patch
+
+-------------------------------------------------------------------
 Mon May  5 21:56:33 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.55.1

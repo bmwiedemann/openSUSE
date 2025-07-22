@@ -168,4 +168,33 @@ The package has 2 maintainers/bugowner and the binary has shown its stability du
     Christensen, Wolfgang Walther. Reported by Wolfgang Walther.)</comment>
     <requestid>1274734</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ca3091864b2dcc9d09e396c49bf14de1</srcmd5>
+    <version>2.56.0</version>
+    <time>1753179613</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.56.0
+  - Bug Fixes:
+    - Fix issue with adhoc expiration when no backups in a
+      repository. (Reviewed by Stefan Fercot. Reported by Anup
+      Gupta.)
+  - Features:
+    - Add restore progress to info command output. (Contributed by
+      Denis Garsh, Maxim Michkov. Reviewed by David Steele.)
+    - Add progress-only detail level for info command output.
+      (Contributed by Denis Garsh. Reviewed by David Steele, Stefan
+      Fercot.)
+  - Improvements:
+    - Retry failed reads on object stores. (Reviewed by David
+      Christensen.)
+    - Fix defaults in command-line help. (Reviewed by David
+      Christensen, Chris Bandy.)
+  - Documentation Improvements:
+    - Describe discrete option values in a list where appropriate.
+      (Contributed by Anton Kurochkin. Reviewed by David Steele.)
+    - Fix &quot;less than&quot; in help output for archive-mode option.
+      (Contributed by Anton Kurochkin. Reviewed by David Steele.)
+- refreshed use-run-pgbackrest.patch</comment>
+    <requestid>1294888</requestid>
+  </revision>
 </revisionlist>
