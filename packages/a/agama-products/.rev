@@ -225,4 +225,26 @@
   https://news.opensuse.org/2025/02/13/tw-plans-to-adopt-selinux-as-default/</comment>
     <requestid>1289320</requestid>
   </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>689f65bc2141b9f0ad2910db6a1e565c</srcmd5>
+    <version>0</version>
+    <time>1753179630</time>
+    <user>anag_factory</user>
+    <comment>- Version 17
+
+- Adapt the products definition to the new way of pre-selecting
+  user patterns (gh#agama-project/agama#2560).
+
+- Display only Tumblweed based distros in Tumbleweed installer
+  and vice versa.
+
+- Add Experimental xfce_wayland to Leap 16.0
+
+- Fixed base product names to install for Kalpa, Leap 16.0
+  and Leap-Micro 6.2 distributions (gh#agama-project/agama#2550)
+
+- Add initial Leap Micro 6.2 product
+  based on MicroOS, with renamed patterns</comment>
+    <requestid>1294906</requestid>
+  </revision>
 </revisionlist>
