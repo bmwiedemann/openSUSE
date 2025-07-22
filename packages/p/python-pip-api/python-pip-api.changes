@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 14 19:39:36 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.34:
+  * meta: drop support for Python 3.7
+- update to 0.0.33:
+  * fix release workflow, corrective release
+- update to 0.0.32:
+  * Bump the actions group with 5 updates
+- update to 0.0.31:
+  * Handle editable projects with `pyproject.toml`
+
+-------------------------------------------------------------------
 Tue Jun  3 11:33:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

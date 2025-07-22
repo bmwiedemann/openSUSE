@@ -117,4 +117,12 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1282280</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c31cf811824da2c347b1d78da452622a</srcmd5>
+    <version>0.0.34</version>
+    <time>1753179625</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1294896</requestid>
+  </revision>
 </revisionlist>

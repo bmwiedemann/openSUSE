@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pip-api
-Version:        0.0.30
+Version:        0.0.34
 Release:        0
 Summary:        The official unofficial pip API
 License:        Apache-2.0
 URL:            https://github.com/di/pip-api
-Source0:        https://github.com/di/pip-api/releases/download/%{version}/pip-api-%{version}.tar.gz
+Source0:        https://github.com/di/pip-api/releases/download/%{version}/pip_api-%{version}.tar.gz
 Source1:        test-data.tar.gz
 # PATCH-FIX-OPENSUSE We do not want a vendored packaging.
 Patch0:         unvendor.patch
@@ -35,11 +35,13 @@ BuildRequires:  %{python_module pip >= 22.1}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pyparsing >= 2.4.7}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module tomli}
 BuildRequires:  %{python_module virtualenv}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pip
+Requires:       python-tomli
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,7 +49,7 @@ BuildArch:      noarch
 The official unofficial pip API.
 
 %prep
-%autosetup -p1 -a 1 -n pip-api-%{version}
+%autosetup -p1 -a 1 -n pip_api-%{version}
 rm -Rf ./pip_api/_vendor
 
 %build

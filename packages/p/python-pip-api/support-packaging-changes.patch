@@ -1,8 +1,8 @@
-Index: pip-api-0.0.30/tests/test_parse_requirements.py
+Index: pip_api-0.0.34/tests/test_parse_requirements.py
 ===================================================================
---- pip-api-0.0.30.orig/tests/test_parse_requirements.py
-+++ pip-api-0.0.30/tests/test_parse_requirements.py
-@@ -75,14 +75,6 @@ PEP508_PIP_EXAMPLE_WHEEL_FILE = "file://
+--- pip_api-0.0.34.orig/tests/test_parse_requirements.py
++++ pip_api-0.0.34/tests/test_parse_requirements.py
+@@ -73,14 +73,6 @@ PEP508_PIP_EXAMPLE_WHEEL_FILE = "file://
              "",
          ),
          (

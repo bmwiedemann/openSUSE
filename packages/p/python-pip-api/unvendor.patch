@@ -1,7 +1,7 @@
-Index: pip-api-0.0.30/pip_api/__init__.py
+Index: pip_api-0.0.34/pip_api/__init__.py
 ===================================================================
---- pip-api-0.0.30.orig/pip_api/__init__.py
-+++ pip-api-0.0.30/pip_api/__init__.py
+--- pip_api-0.0.34.orig/pip_api/__init__.py
++++ pip_api-0.0.34/pip_api/__init__.py
 @@ -1,7 +1,7 @@
  import sys
  
@@ -12,10 +12,10 @@ Index: pip-api-0.0.30/pip_api/__init__.py
  
  # Import this now because we need it below
  from pip_api._version import version
-Index: pip-api-0.0.30/pip_api/_hash.py
+Index: pip_api-0.0.34/pip_api/_hash.py
 ===================================================================
---- pip-api-0.0.30.orig/pip_api/_hash.py
-+++ pip-api-0.0.30/pip_api/_hash.py
+--- pip_api-0.0.34.orig/pip_api/_hash.py
++++ pip_api-0.0.34/pip_api/_hash.py
 @@ -1,6 +1,6 @@
  import os
  
@@ -24,10 +24,10 @@ Index: pip-api-0.0.30/pip_api/_hash.py
  
  import pip_api
  from pip_api._call import call
-Index: pip-api-0.0.30/pip_api/_installed_distributions.py
+Index: pip_api-0.0.34/pip_api/_installed_distributions.py
 ===================================================================
---- pip-api-0.0.30.orig/pip_api/_installed_distributions.py
-+++ pip-api-0.0.30/pip_api/_installed_distributions.py
+--- pip_api-0.0.34.orig/pip_api/_installed_distributions.py
++++ pip_api-0.0.34/pip_api/_installed_distributions.py
 @@ -7,7 +7,7 @@ import pip_api
  from pip_api._call import call
  from pip_api.exceptions import PipError
@@ -37,23 +37,25 @@ Index: pip-api-0.0.30/pip_api/_installed_distributions.py
  
  
  class Distribution:
-Index: pip-api-0.0.30/pip_api/_parse_requirements.py
+Index: pip_api-0.0.34/pip_api/_parse_requirements.py
 ===================================================================
---- pip-api-0.0.30.orig/pip_api/_parse_requirements.py
-+++ pip-api-0.0.30/pip_api/_parse_requirements.py
-@@ -14,7 +14,7 @@ from typing import Any, Dict, Optional,
- from urllib.parse import urljoin, unquote, urlsplit
+--- pip_api-0.0.34.orig/pip_api/_parse_requirements.py
++++ pip_api-0.0.34/pip_api/_parse_requirements.py
+@@ -11,8 +11,8 @@ from typing import Any, Dict, Optional,
+ from urllib.parse import unquote, urljoin, urlsplit
  from urllib.request import pathname2url, url2pathname
  
+-from pip_api._vendor import tomli
 -from pip_api._vendor.packaging import requirements, specifiers  # type: ignore
++import tomli
 +from packaging import requirements, specifiers  # type: ignore
- 
  from pip_api.exceptions import PipError
  
-Index: pip-api-0.0.30/tests/conftest.py
+ parser = argparse.ArgumentParser()
+Index: pip_api-0.0.34/tests/conftest.py
 ===================================================================
---- pip-api-0.0.30.orig/tests/conftest.py
-+++ pip-api-0.0.30/tests/conftest.py
+--- pip_api-0.0.34.orig/tests/conftest.py
++++ pip_api-0.0.34/tests/conftest.py
 @@ -6,7 +6,7 @@ import pytest
  import pretend
  import virtualenv
@@ -63,10 +65,10 @@ Index: pip-api-0.0.30/tests/conftest.py
  
  import pip_api
  
-Index: pip-api-0.0.30/tests/test_installed_distributions.py
+Index: pip_api-0.0.34/tests/test_installed_distributions.py
 ===================================================================
---- pip-api-0.0.30.orig/tests/test_installed_distributions.py
-+++ pip-api-0.0.30/tests/test_installed_distributions.py
+--- pip_api-0.0.34.orig/tests/test_installed_distributions.py
++++ pip_api-0.0.34/tests/test_installed_distributions.py
 @@ -2,7 +2,7 @@ import os
  import pytest
  
