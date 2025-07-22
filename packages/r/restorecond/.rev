@@ -161,4 +161,12 @@
     <comment></comment>
     <requestid>1294372</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>f6f54550045ab525123d089d18f2f256</srcmd5>
+    <version>3.8.1</version>
+    <time>1753179653</time>
+    <user>anag_factory</user>
+    <comment>https://bugzilla.suse.com/show_bug.cgi?id=1246831</comment>
+    <requestid>1295056</requestid>
+  </revision>
 </revisionlist>
