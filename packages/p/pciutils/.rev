@@ -650,4 +650,12 @@
     <comment>Updated change log to include entries from SLE-12.</comment>
     <requestid>1252781</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>ead8aa5c6500d7194c1e174a459e4cf8</srcmd5>
+    <version>3.14.0</version>
+    <time>1753181638</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1294659</requestid>
+  </revision>
 </revisionlist>

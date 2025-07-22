@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul 20 08:32:02 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 3.14.0:
+  * New capabilities are decoded: VirtIO SharedMemory, Physical
+    Layer 16 to 64 GT/s, Flit Mode, Device 3, Intel vendor-
+    specific.
+  * <lib/header.h> got definitions of new classes and capabilities
+    from PCI Code and ID Assignment rev 1.18
+  * <lib/pci.h> can be included from C++ programs
+  * Updated pci.ids
+
+-------------------------------------------------------------------
 Thu Mar 13 13:26:48 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Synchronize SLE-12 and openSUSE:Factory [jsc#PED-4587].
