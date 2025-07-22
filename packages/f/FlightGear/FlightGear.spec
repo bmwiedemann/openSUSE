@@ -27,7 +27,7 @@ URL:            https://www.flightgear.org/
 Source0:        https://gitlab.com/flightgear/fgmeta/-/jobs/9343758788/artifacts/raw/fgbuild/flightgear-%{version}.tar.bz2
 
 BuildRequires:  SimGear-devel = %{version}
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.10
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -46,8 +46,9 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(speexdsp)
 
-# Additional dependencies to enable FlightGear's new Qt launcher interface
+# Additional dependencies to enable FlightGear's Qt launcher interface
 BuildRequires:  libQt5PlatformHeaders-devel
+BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Quick)
@@ -74,6 +75,7 @@ done
 %cmake \
     -DFG_DATA_DIR:STRING="%{_datadir}/flightgear" \
     -DSYSTEM_SQLITE:BOOL=ON \
+    -DCMAKE_C_STANDARD=17 \
     -DBUILD_SHARED_LIBS:BOOL=OFF \
     -DBUILD_TESTING:BOOL=OFF \
     -DENABLE_JS_DEMO:BOOL=OFF \
