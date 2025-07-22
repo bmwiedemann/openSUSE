@@ -400,4 +400,13 @@
   * Support even more pytest-asyncio.</comment>
     <requestid>1229680</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>14e87906455857e171fede15bc0b25a8</srcmd5>
+    <version>24.4.2</version>
+    <time>1753179646</time>
+    <user>anag_factory</user>
+    <comment>- Add patch use-plain-twisted.patch:
+  * Support pytest-asyncio 1.0 changes.</comment>
+    <requestid>1294925</requestid>
+  </revision>
 </revisionlist>

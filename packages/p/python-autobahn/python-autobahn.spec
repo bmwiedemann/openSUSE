@@ -1,7 +1,7 @@
 #
 # spec file for package python-autobahn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Patch0:         respect-cflags.patch
 Patch1:         intrin-arch.patch
 # PATCH-FIX-UPSTREAM gh#crossbario/autobahn-python#1647
 Patch2:         support-new-pytest-asyncio.patch
+# PATCH-FIX-UPSTREAM gh#crossbario/autobahn-python#1661
+Patch3:         use-plain-twisted.patch
 BuildRequires:  %{python_module PyNaCl >= 1.4.0}
 BuildRequires:  %{python_module Twisted >= 24.3.0}
 BuildRequires:  %{python_module argon2-cffi >= 20.1.0}
