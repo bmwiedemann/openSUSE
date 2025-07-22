@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Jul 21 13:49:57 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.50.2.0
+  * Features
+    ~ jdbc
+      + support JDBC4 CLOB and BLOB in PreparedStatement parameters
+        (9515a80)
+    ~ sqlite
+      + upgrade to sqlite 3.50.3 (ef4e649)
+    ~ unscoped
+      + build android native lib with 16kb page size (8548d1c),
+        closes #1296
+  * Build
+    ~ deps
+      + bump org.apache.maven.plugins:maven-enforcer-plugin
+        (e20d3b6)
+      + bump org.apache.maven.plugins:maven-gpg-plugin (d1efafe)
+      + bump org.jreleaser:jreleaser-maven-plugin (4042011)
+  * Documentation
+      ~ update maven snapshot badge (19e32f0)
+
+-------------------------------------------------------------------
+Mon Jun 30 03:46:01 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.50.2.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.50.2 (fb62309)
+  * Fixes
+    ~ jdbc
+      + update JDBC3DatabaseMetaData to enable supported features
+        (524ac3a)
+      + ResultSetMetaData.getCatalogName incorrectly returns the
+        table name (891b650), closes #1279
+    ~ unscoped
+      + faulty android detection (170ce6e), closes #1287
+  * Build
+    ~ deps
+      + bump org.sonatype.central:central-publishing-maven-plugin
+        (d891708)
+  * Documentation
+    ~ replace maven central links (6eea8c5)
+    ~ update maven central badge in readme (9a4afe8)
+
+-------------------------------------------------------------------
 Mon Jun  9 10:50:26 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.50.1.0
