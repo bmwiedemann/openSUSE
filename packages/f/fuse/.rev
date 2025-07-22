@@ -609,4 +609,13 @@
   headers.</comment>
     <requestid>1283761</requestid>
   </revision>
+  <revision rev="78" vrev="8">
+    <srcmd5>0117f8f780e175e68bfe2ca800ad5a61</srcmd5>
+    <version>2.9.9</version>
+    <time>1753181633</time>
+    <user>anag_factory</user>
+    <comment>- Workaround gettext 0.25 behavioral changes
+  and call autopoint as needed [boo#1246701]</comment>
+    <requestid>1294359</requestid>
+  </revision>
 </revisionlist>

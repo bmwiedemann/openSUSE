@@ -35,8 +35,9 @@ Patch3:         aarch64-build-fix.patch
 Patch4:         closefrom.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  gettext-devel
 BuildRequires:  libtool
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 Requires(post): permissions
 Requires(pre):  group(trusted)
 Requires:       util-linux >= 2.18
@@ -102,6 +103,10 @@ systems.
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 export CFLAGS="%{optflags} -g -fno-strict-aliasing"
 export MOUNT_FUSE_PATH=%{_sbindir}
+%if %{pkg_vcmp gettext-devel >= 0.25}
+# https://lists.gnu.org/archive/html/bug-gettext/2025-06/msg00009.html
+autopoint -f
+%endif
 autoreconf -fi
 %configure \
     --with-pkgconfigdir=%{_libdir}/pkgconfig \

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 18 11:25:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Workaround gettext 0.25 behavioral changes
+  and call autopoint as needed [boo#1246701]
+
+-------------------------------------------------------------------
 Sat Jun  7 00:19:35 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop fuse-devel-static.
