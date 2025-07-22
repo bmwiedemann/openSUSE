@@ -95,4 +95,12 @@
     <comment>3.4.2</comment>
     <requestid>1283732</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>22bb8339e7aa0e487c8a4192f53428e1</srcmd5>
+    <version>3.4.2</version>
+    <time>1753181659</time>
+    <user>anag_factory</user>
+    <comment>reproducible: another solution</comment>
+    <requestid>1294860</requestid>
+  </revision>
 </revisionlist>
