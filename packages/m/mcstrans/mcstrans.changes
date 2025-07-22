@@ -1,9 +1,4 @@
 -------------------------------------------------------------------
-Thu Jul 17 15:50:50 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
-
-- Update to version 3.9. No user visible changes
-
--------------------------------------------------------------------
 Fri Mar 21 21:40:13 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - remove unneeded pcre build dependency, builds with pcre2 already

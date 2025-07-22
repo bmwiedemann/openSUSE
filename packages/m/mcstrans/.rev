@@ -312,4 +312,12 @@
     <comment>with updated version in changes file</comment>
     <requestid>1294758</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>e5f8aabeab7681149ea4105d14069308</srcmd5>
+    <version>3.8.1</version>
+    <time>1753179652</time>
+    <user>anag_factory</user>
+    <comment>https://bugzilla.suse.com/show_bug.cgi?id=1246831</comment>
+    <requestid>1295055</requestid>
+  </revision>
 </revisionlist>
