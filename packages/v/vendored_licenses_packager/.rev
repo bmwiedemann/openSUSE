@@ -24,4 +24,12 @@ twice</comment>
   into .src.rpm headers (bsc#1245269, bsc#1237231)</comment>
     <requestid>1293299</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0b58982fd2605d6c2edb2ddaf2b2833d</srcmd5>
+    <version>0.1.1</version>
+    <time>1753179595</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.1.1</comment>
+    <requestid>1294859</requestid>
+  </revision>
 </revisionlist>

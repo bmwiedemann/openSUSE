@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 17 12:00:00 UTC 2025 - cunix@mail.de
+
+- Update to 0.1.1
+  * disable wildcards for finding directory names
+  * avoid randomness in rpm macro
+
+- reproducible.patch deleted because merged in version 0.1.1
+
+-------------------------------------------------------------------
 Wed Jul  9 10:03:02 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to avoid embedding a random tmp dir

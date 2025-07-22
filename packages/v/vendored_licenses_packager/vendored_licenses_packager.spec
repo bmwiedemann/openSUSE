@@ -1,7 +1,7 @@
 #
 # spec file for package vendored_licenses_packager
 #
-# Copyright (c) 2022 cunix
+# Copyright (c) 2022-2025 cunix
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,14 @@
 %define minisign_verify 0
 
 Name:           vendored_licenses_packager
-Version:        0.1.0
+Version:        0.1.1
 Release:        0
 Summary:        Script to package legal files of vendored sources
 License:        EUPL-1.2
 Group:          Development/Tools/Building
 Url:            https://codeberg.org/cunix/vendored_licenses_packager
-Source0:        https://codeberg.org/attachments/23443436-3863-442e-9ba0-dac1ff13f646#/%{name}-%{version}.tar.xz
-Source1:        https://codeberg.org/attachments/3b6f0375-36a8-4811-a83d-2d9f38bca835#/%{name}-%{version}.tar.xz.minisig
-Patch0:         reproducible.patch
+Source0:        https://codeberg.org/cunix/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Source1:        https://codeberg.org/cunix/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz.minisig
 BuildArch:      noarch
 %if 0%{?minisign_verify}
 BuildRequires:  rsign2
