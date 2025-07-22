@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 21 14:40:41 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * reproducible-from-environment.patch
+    + patched in a more central place in maven-archiver
+
+-------------------------------------------------------------------
 Tue Sep 24 09:38:55 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

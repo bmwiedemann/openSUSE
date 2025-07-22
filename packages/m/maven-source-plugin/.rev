@@ -31,4 +31,12 @@
     <comment>Reproducible build</comment>
     <requestid>1202879</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f6424b07a53ac07d6345ec4d44d08f9c</srcmd5>
+    <version>3.3.1</version>
+    <time>1753181661</time>
+    <user>anag_factory</user>
+    <comment>reproducible: another solution</comment>
+    <requestid>1294862</requestid>
+  </revision>
 </revisionlist>
