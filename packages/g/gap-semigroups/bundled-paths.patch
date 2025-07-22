@@ -1,0 +1,62 @@
+From 6f2259f81b9de5ad14e4019cc31a03f6b09b61e8 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Mon, 21 Jul 2025 20:38:57 +0200
+Subject: [PATCH] build: override bundled libsemigroups install paths
+References: https://github.com/semigroups/Semigroups/pull/1074
+
+---
+ GNUmakefile.in | 11 ++++++++---
+ configure.ac   |  4 ----
+ 2 files changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/GNUmakefile.in b/GNUmakefile.in
+index d55c7e4e..421d928c 100644
+--- a/GNUmakefile.in
++++ b/GNUmakefile.in
+@@ -1,6 +1,11 @@
+ #
+ # Makefile rules for the semigroups package
+ #
++abs_top_builddir = @abs_top_builddir@
++top_builddir = @top_builddir@
++abs_builddir = @abs_builddir@
++builddir = @builddir@
++
+ KEXT_NAME = semigroups
+ 
+ KEXT_CXXFLAGS = @LIBSEMIGROUPS_CFLAGS@ -std=gnu++14 -O3
+@@ -84,13 +89,13 @@ $(KEXT_OBJS): bin/include/libsemigroups/libsemigroups.hpp
+ 
+ # the following is only run if BUILT_SOURCES is wound up
+ bin/include/libsemigroups/libsemigroups.hpp:
+-	$(MAKE) -C libsemigroups install
++	$(MAKE) -C libsemigroups install prefix='${abs_builddir}/bin' includedir='${abs_builddir}/bin/include' libdir='${abs_builddir}/bin/lib'
+ 	# Cygwin only looks for DLLs in the same directory as the executable
+ 	# resides in. The following achieves that assuming that the GAP
+ 	# being used was self-compiled by the user. This supports
+ 	# both older GAPs with libtool (first) and GAP without libtool (second)
+-	if test -f bin/bin/cygsemigroups*.dll ; then if test -d $(GAPPATH)/.libs; then cp bin/bin/cygsemigroups*.dll $(GAPPATH)/.libs/ ; fi ; fi
+-	if test -f bin/bin/cygsemigroups*.dll ; then cp bin/bin/cygsemigroups*.dll $(GAPPATH)/ ; fi
++	if test -f bin/lib/cygsemigroups*.dll ; then if test -d $(GAPPATH)/.libs; then cp bin/lib/cygsemigroups*.dll $(GAPPATH)/.libs/ ; fi ; fi
++	if test -f bin/lib/cygsemigroups*.dll ; then cp bin/lib/cygsemigroups*.dll $(GAPPATH)/ ; fi
+ 
+ endif
+ 
+diff --git a/configure.ac b/configure.ac
+index 80237dce..51cca67f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -16,10 +16,6 @@ AC_CONFIG_MACRO_DIR([m4])
+ 
+ AX_PREFIX_CONFIG_H([src/semigroups-config.hpp],[semigroups],[gen/pkgconfig.h])
+ 
+-dnl ## abs_top_builddir seems to hold the top build dir for the subpackage
+-dnl ## libsemigroups which is why this contains ../
+-AC_PREFIX_DEFAULT('${abs_top_builddir}/../bin/')
+-
+ dnl ##
+ dnl ## Set the language
+ dnl ##
+-- 
+2.50.1
+

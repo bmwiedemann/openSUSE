@@ -17,7 +17,7 @@
 
 
 Name:           gap-semigroups
-Version:        5.5.0
+Version:        5.5.3
 Release:        0
 Summary:        GAP: Computing with Semigroups of Transformations and Partial Permutations
 License:        GPL-2.0-or-later
@@ -26,15 +26,21 @@ URL:            https://semigroups.github.io/Semigroups/
 #Git-Clone:     https://github.com/semigroups/Semigroups
 Source:         https://github.com/semigroups/Semigroups/releases/download/v%version/semigroups-%version.tar.gz
 Patch1:         no-avx.patch
+Patch2:         bundled-paths.patch
 BuildRequires:  automake
 BuildRequires:  c++_compiler
+BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  gap-devel >= 4.12.1
 BuildRequires:  gap-rpm-devel
 BuildRequires:  gmp-devel
+BuildRequires:  pkgconfig(eigen3)
+BuildRequires:  pkgconfig(fmt) >= 10.1
 BuildRequires:  libtool
 BuildRequires:  xz
-BuildRequires:  pkgconfig(libsemigroups)
+Provides:       bundled(libsemigroups) = 2.7.4
+Provides:       bundled(magic_enum)
+Provides:       bundled(rx-ranges)
 Requires:       gap-core >= 4.12.1
 Requires:       gap-datastructures >= 0.2.5
 Requires:       gap-digraphs >= 1.6.2
@@ -59,16 +65,38 @@ possible to test if a semigroup satisfies a particular property, such
 as if it is regular, simple, inverse, completely regular, and a
 variety of further properties.
 
+%package -n libsemigroups2
+Summary:        Library with algorithms for computing finite and finitely presented semigroups
+Group:          System/Libraries
+
+%description -n libsemigroups2
+A C++14 library containing implementations of several algorithms for
+computing finite and finitely presented semigroups.
+
 %prep
 %autosetup -n semigroups-%version
 
 %build
 autoreconf -fi
-%configure --with-gaproot="%gapdir" --with-external-libsemigroups
+# gap-semigroup use of a just-built bundled libsemigroups is fragile
+%set_build_flags
+export CFLAGS="$CFLAGS $(pkg-config eigen3 --cflags)"
+export CXXFLAGS="$CXXFLAGS $(pkg-config eigen3 --cflags)"
+# hpcombi requires AVX-256, which is not guaranteed to exist everywhere
+%configure --disable-static --disable-hpcombi \
+	--enable-eigen --with-external-eigen \
+	--enable-fmt --with-external-fmt \
+	--with-gaproot="%gapdir"
+
 %make_build
 
 %install
-rm -Rf libsemigroups
+b="%buildroot"
+mkdir -pv "$b/%_libdir"
+rm -Rfv libsemigroups bin/include bin/lib/*.la bin/lib/*.so bin/lib/pkgconfig
+mv -v bin/lib/* "$b/%_libdir/"
+
+find . -name semigroups.so -exec chrpath -d "{}" "+"
 %gappkg_simple_install
 cd "%buildroot/$fmoddir/"
 rm -Rfv Makefile* configure* config.* cnf/ src/ gapbind14/src/ gapbind14/include/ autom4te.cache
@@ -76,6 +104,11 @@ find "%buildroot" "(" -name "*.orig" -o -name .gitignore -o \
 	-name .dirstamp -o -name .clang-format -o -name .ccls ")" -print -delete
 %fdupes %buildroot/%_prefix
 
+%ldconfig_scriptlets -n libsemigroups2
+
 %files -f %name.files
+
+%files -n libsemigroups2
+%_libdir/libsemigroups.so.*
 
 %changelog
