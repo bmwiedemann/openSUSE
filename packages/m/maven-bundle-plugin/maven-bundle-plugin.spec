@@ -1,7 +1,7 @@
 #
 # spec file for package maven-bundle-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ Group:          Development/Libraries/Java
 URL:            https://felix.apache.org
 Source0:        https://repo1.maven.org/maven2/org/apache/felix/%{name}/%{version}/%{name}-%{version}-source-release.tar.gz
 Patch0:         new-reporting-api.patch
-Patch1:         reproducible-from-environment.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(biz.aQute.bnd:biz.aQute.bndlib)
@@ -70,7 +69,6 @@ API documentation for %{name}.
 %prep
 %setup -q
 %patch -P 0 -p1
-%patch -P 1 -p1
 
 find -name '*.jar' -delete
 
@@ -78,12 +76,13 @@ find -name '*.jar' -delete
 
 %pom_remove_plugin :maven-invoker-plugin
 
+%pom_xpath_remove pom:project/pom:parent/pom:relativePath
+
 %build
 %{mvn_build} -f -- \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
 %endif
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
     -Dsource=8
 
 %install

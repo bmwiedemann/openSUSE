@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 21 14:19:23 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * reproducible-from-environment.patch
+    + patched in a more central place in maven-archiver
+
+-------------------------------------------------------------------
 Thu Oct  3 10:26:07 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Build against maven-doxia >= 2.0.0

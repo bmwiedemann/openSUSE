@@ -31,4 +31,12 @@
     <comment>Build against maven-doxia 2.0.0+</comment>
     <requestid>1208218</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>86471a55907b68669eaec64159c150a9</srcmd5>
+    <version>5.1.9</version>
+    <time>1753181658</time>
+    <user>anag_factory</user>
+    <comment>reproducible: another solution</comment>
+    <requestid>1294858</requestid>
+  </revision>
 </revisionlist>
