@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 21 20:04:15 UTC 2025 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new major release of GSequencer version 8.0.13
+- implemented MIDI control change editor
+- implemented additional synths
+- improved performance
+- many bug-fixes
+
+-------------------------------------------------------------------
 Sun Nov 10 04:41:54 UTC 2024 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v7.2.4 fixed potential SIGSEGV because of
