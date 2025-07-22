@@ -254,4 +254,20 @@
     <comment></comment>
     <requestid>1203923</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>2b71b873ee125709a2b1875f95c8387d</srcmd5>
+    <version>0.11.0</version>
+    <time>1753179594</time>
+    <user>anag_factory</user>
+    <comment>- Add gpa-0.11.0-drop-trustlist.patch: the trustlist is no longer
+  there in gpgme. See
+  https://dev.gnupg.org/rM7e6a65e66a96278bed5fed6d0b75887c0f032c4e
+
+- update to 0.11.0:
+  + port to gtk3
+- drop gpa-0.10.0-reduce-gpgme-requirement.patch - inclued
+- add gpa-0.11.0-fix-implicit-declaration.patch
+- update upstream signing key (forwarded request 1294301 from yfjiang)</comment>
+    <requestid>1294857</requestid>
+  </revision>
 </revisionlist>

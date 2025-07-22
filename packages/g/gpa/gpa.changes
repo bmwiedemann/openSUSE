@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 18 07:03:27 UTC 2025 - Yifan Jiang <yfjiang@suse.com>
+
+- Add gpa-0.11.0-drop-trustlist.patch: the trustlist is no longer
+  there in gpgme. See
+
+  https://dev.gnupg.org/rM7e6a65e66a96278bed5fed6d0b75887c0f032c4e
+
+-------------------------------------------------------------------
+Thu Jul 17 21:32:43 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.11.0:
+  + port to gtk3
+- drop gpa-0.10.0-reduce-gpgme-requirement.patch - inclued
+- add gpa-0.11.0-fix-implicit-declaration.patch
+- update upstream signing key
+
+-------------------------------------------------------------------
 Thu Sep 26 14:46:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Delete m4/libassuan.m4, and call autoreconf: let autoconf copy

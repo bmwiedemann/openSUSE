@@ -1,7 +1,8 @@
 #
 # spec file for package gpa
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +18,26 @@
 
 
 Name:           gpa
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        GNU Privacy Assistant
 License:        GPL-3.0-only
 Group:          Productivity/Security
-URL:            http://www.gnupg.org/related_software/gpa/index.html
+URL:            https://www.gnupg.org/related_software/gpa/index.html
 Source:         https://gnupg.org/ftp/gcrypt/gpa/%{name}-%{version}.tar.bz2
 Source1:        https://gnupg.org/ftp/gcrypt/gpa/%{name}-%{version}.tar.bz2.sig
+# https://www.gnupg.org/signature_key.html
 Source2:        gpa.keyring
-Patch0:         gpa-0.10.0-reduce-gpgme-requirement.patch
+Patch0:         gpa-0.11.0-fix-implicit-declaration.patch
+# PATCH-FIX-UPSTREAM gpa-0.11.0-drop-trustlist.patch bsc#1246682 yfjiang@suse.com -- Drop trustlist as it has been dropped in gpgme
+Patch1:         gpa-0.11.0-drop-trustlist.patch
 BuildRequires:  gnupg
-BuildRequires:  gpgme-devel >= 1.9.0
-BuildRequires:  gtk2-devel >= 2.10.0
-BuildRequires:  libassuan-devel >= 2.4.2
-BuildRequires:  libgpg-error-devel >= 1.27
-BuildRequires:  libtool
-BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gpg-error) >= 1.27
+BuildRequires:  pkgconfig(gpgme) >= 1.9.0
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libassuan) >= 2.4.2
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Gnu Privacy Assistant (GPA) is a graphical user interface for Gnu
@@ -44,28 +48,19 @@ checking signatures, and signing, decrypting, and encrypting files.
 
 %prep
 %autosetup -p1
-rm m4/libassuan.m4
 
 %build
-# ensure to copy libassuan.m4 from libassuan-devel
-autoreconf -fiv
 %configure \
-        --with-gnu-ld
-make %{?_smp_mflags}
+        --with-gnu-ld \
+	%{nil}
+%make_build
 
 %install
 %make_install
-%suse_update_desktop_file -i %{name} Security
 %find_lang %{name} %{?no_lang_C}
 
 %check
-make %{?_smp_mflags} check
-
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
+%make_build check
 
 %files
 %license COPYING
@@ -74,8 +69,8 @@ make %{?_smp_mflags} check
 %{_bindir}/gpa
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/gpa/
-%{_datadir}/pixmaps/gpa.png
 
 %files lang -f %{name}.lang
+%license COPYING
 
 %changelog
