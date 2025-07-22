@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jul 21 09:45:04 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.7.1
+- Changes of 1.7.1
+  * Bug Fixes
+    + Fix #400 - Preserve POM content ordering (and formatting) on
+      resolveCiFriendliesOnly flattenMode
+    + Fix FilteringValueSourceWrapper for a newer version of
+      plexus-interpolation, Maven 3.9.10
+  * Documentation updates
+    + Use resolveCiFriendliesOnly in examples instead of minimum
+      for flattenMode
+    + Remove a dead link to MOJO-2030 from documentation
+    + Rename 'Goals' to 'Plugin Documentation' in site manu
+  * Maintenance
+    + Fix typo in License name
+    + Use constant 3.6.3 in prerequisites/maven as minimal Maven
+      version
+- Changes of 1.7.0
+  * New features and improvements
+    + Bind :clean to 'clean' phase by default
+    + Feature/extended interpolate
+  * Bug Fixes
+    + Fix Issue#377 Regression: parent dependencies missing in
+      flattened pom
+  * Maintenance
+    + Avoid using deprecated items
+    + Remove Maven wrapper configuration
+    + Remove no-overwrite-3.6.2-before IT
+
+-------------------------------------------------------------------
 Wed Oct  9 07:08:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging with version 1.6.0

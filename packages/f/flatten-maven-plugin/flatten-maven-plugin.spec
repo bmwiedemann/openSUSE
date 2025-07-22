@@ -1,7 +1,7 @@
 #
 # spec file for package flatten-maven-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           flatten-maven-plugin
-Version:        1.6.0
+Version:        1.7.1
 Release:        0
 Summary:        Maven Flatten Plugin
 License:        Apache-2.0
@@ -56,8 +56,8 @@ This package provides %{summary}.
 %prep
 %setup -q
 
-%pom_add_plugin org.eclipse.sisu:sisu-maven-plugin
-%pom_xpath_remove "pom:plugin[pom:artifactId[text()='sisu-maven-plugin']]/pom:version"
+%pom_add_dep javax.inject:javax.inject:1.0.5:provided
+%pom_add_dep org.eclipse.sisu:org.eclipse.sisu.inject:0.9.0.M3:provided
 
 %build
 %{mvn_build} -f -- \
