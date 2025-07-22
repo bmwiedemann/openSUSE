@@ -629,4 +629,12 @@ Could not find any LGPL-2.1 &quot;only&quot; licensed files in the pacakge (forw
     <comment></comment>
     <requestid>1294368</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>11467b8ef16d30920b0b5de0442a4596</srcmd5>
+    <version>3.8.1</version>
+    <time>1753179650</time>
+    <user>anag_factory</user>
+    <comment>https://bugzilla.suse.com/show_bug.cgi?id=1246831</comment>
+    <requestid>1295053</requestid>
+  </revision>
 </revisionlist>
