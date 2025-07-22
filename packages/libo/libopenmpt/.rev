@@ -1086,4 +1086,23 @@ Changes in 0.5.3:
     correctly again.</comment>
     <requestid>1285834</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>0750debe5428da022285cca411452c18</srcmd5>
+    <version>0.8.2</version>
+    <time>1753181634</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.2:
+  * [Sec] Possible out-of-bounds sample data read in a specific
+    combination of reverse sample playback + offset past sample
+    loop. (r23711).
+  * [Bug] Fixed pre-C++20 undefined behaviour due to left-shifting
+    negative integer values.
+  * Since libopenmpt 0.8.0, swapping between samples on the rear
+    channels could introduce a click on the front channels.
+  * IT: Volume column slides no longer propagate their effect
+    memory to the regular effect column volume slides.
+  * FC: Allow files with a sequence size of 0 to load (fixes a
+    broken copy of cult.smod).</comment>
+    <requestid>1294536</requestid>
+  </revision>
 </revisionlist>
