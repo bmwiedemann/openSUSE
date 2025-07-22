@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jul 14 21:10:28 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.0.2
+  * Support for per-CPU SAs (RFC 9611) has been added on Linux
+    6.13+. The new per_cpu_sas setting enables the installation of
+    special trap policies (start_action=trap) that instruct the
+    kernel to consider the CPU from which a packet originates.
+  * Basic support for IP-TFS's (RFC 9347) new AGGFRAG mode has been
+    added on Linux 6.14+. It's similar to tunnel mode but allows
+    aggregating small IP packets into single ESP packets and
+    fragmenting large IP packets into multiple ESP packets.
+  * POSIX regular expressions are now supported to match remote
+    identities. They must start with an explicit type prefix,
+    followed by a caret character (^), and end with a dollar sign
+    ($) to indicate an anchored pattern. Regular expressions are
+    always matched case insensitive against the string
+    representation of other identities, however, the type must
+    match as well.
+  * Switching configs based on EAP-Identities is supported. This
+    changes how configured EAP identities are used. Instead of
+    statically setting and using a configured remote.eap_id !=
+    %any, an EAP-Identity exchange is now always initiated (and
+    required). If the received identity doesn't match the
+    configuration, the peer config is switched to one with a
+    matching identity (wildcards and regular expressions are
+    supported for that match).
+  * ML-KEM is now supported via OpenSSL 3.5+ by the openssl plugin.
+- Delete init.patch (merged), strongswan-gcc15-part1.patch
+  strongswan-gcc15-part2.patch, strongswan-gcc15-part3.patch
+
+-------------------------------------------------------------------
 Thu Jun  5 07:41:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add pkgconfig(libxml-2.0) BuildRequire which was previously

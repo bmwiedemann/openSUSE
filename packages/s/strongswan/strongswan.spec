@@ -39,7 +39,7 @@
 %bcond_without  systemd
 
 Name:           strongswan
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        IPsec-based VPN solution
 License:        GPL-2.0-or-later
@@ -55,10 +55,6 @@ Source7:        fips-enforce.conf
 Patch2:         %{name}_ipsec_service.patch
 Patch5:         0005-ikev1-Don-t-retransmit-Aggressive-Mode-response.patch
 Patch6:         harden_strongswan.service.patch
-Patch7:         init.patch
-Patch11:        strongswan-gcc15-part1.patch
-Patch12:        strongswan-gcc15-part2.patch
-Patch13:        strongswan-gcc15-part3.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -476,6 +472,7 @@ fi
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-logging.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/imcv.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/imv_policy_manager.conf
+%config(noreplace) %attr(600,root,root) %{strongswan_configs}/iptfs.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/pki.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/pool.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/tnc.conf
@@ -776,6 +773,7 @@ fi
 %{strongswan_templates}/config/strongswan.d/charon-nm.conf
 %{strongswan_templates}/config/strongswan.d/imcv.conf
 %{strongswan_templates}/config/strongswan.d/imv_policy_manager.conf
+%{strongswan_templates}/config/strongswan.d/iptfs.conf
 %{strongswan_templates}/config/strongswan.d/pki.conf
 %{strongswan_templates}/config/strongswan.d/pool.conf
 %{strongswan_templates}/config/strongswan.d/tnc.conf
