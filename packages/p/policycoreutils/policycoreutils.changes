@@ -1,19 +1,4 @@
 -------------------------------------------------------------------
-Thu Jul 17 15:53:34 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
-
-- Update to version 3.9
-  * setfiles: Add -U option to modify user and role portions
-  * semodule: Add [-g PATH |--config=PATH] for an alternate path for the semanage config
-  * Updated usr_etc.patch
-
--------------------------------------------------------------------
-Wed Jun 11 09:04:57 UTC 2025 - Stefan Schubert <schubi@suse.com>
-
-- Moved /etc/sestatus.conf to /usr/etc.
-- This patch is upstream:
-  https://github.com/SELinuxProject/selinux/pull/415
-
--------------------------------------------------------------------
 Mon May 26 11:59:36 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
 
 - Remove misleading comment from spec file about reuqires for
