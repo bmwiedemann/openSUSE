@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jun 30 06:12:03 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.9.1
+  * Documentation updates
+    + Add note about cloneProjectsTo being required for filtering
+  * Maintenance
+    + Use constant 3.6.3 in prerequisites/maven as minimal Maven
+      version
+    + Enable GH Issues
+    + MNGSITE-529: Rename "Goals" to "Plugin Documentation"
+    + Switch to Guice constructor injection
+    + Specify UTF-8 when reading build log
+    + Make utility class static
+  * Build
+    + Enable build by Maven 4 on GitHub
+  * Dependency updates
+    + Bump commons-beanutils:commons-beanutils from 1.9.4 to 1.11.0
+    + Bump commons-codec:commons-codec from 1.17.1 to 1.18.0
+    + Bump commons-io:commons-io from 2.18.0 to 2.19.0
+    + Bump mavenVersion from 3.6.3 to 3.9.10
+    + Bump org.apache.groovy:groovy-bom from 4.0.24 to 4.0.27
+    + Bump org.apache.maven.plugins:maven-plugins from 43 to 45
+    + Bump org.assertj:assertj-core from 3.26.3 to 3.27.3
+    + Bump org.codehaus.plexus:plexus-interpolation from 1.27 to 1.28
+
+-------------------------------------------------------------------
 Tue Dec 10 15:36:31 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.9.0
