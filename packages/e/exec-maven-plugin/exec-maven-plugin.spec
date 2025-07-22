@@ -1,7 +1,7 @@
 #
 # spec file for package exec-maven-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,36 @@
 #
 
 
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 Name:           exec-maven-plugin
-Version:        3.0.0
+Version:        3.5.1
 Release:        0
 Summary:        Exec Maven Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://www.mojohaus.org/exec-maven-plugin/
 Source0:        https://repo1.maven.org/maven2/org/codehaus/mojo/exec-maven-plugin/%{version}/exec-maven-plugin-%{version}-source-release.zip
-Patch0:         exec-maven-plugin-ioexception.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(org.apache.commons:commons-exec)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.shared:maven-artifact-transfer)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
+BuildRequires:  mvn(org.apache.maven:maven-compat)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.codehaus.mojo:mojo-parent:pom:)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-component-annotations)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
+BuildRequires:  mvn(org.eclipse.sisu:sisu-maven-plugin)
+BuildRequires:  mvn(org.slf4j:slf4j-jdk14)
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 
 %description
@@ -54,7 +60,6 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n exec-maven-plugin-%{version}
-%patch -P 0 -p1
 
 sed -i 's/\r$//' LICENSE.txt
 find . -name *.jar -delete
@@ -64,16 +69,13 @@ find . -name *.jar -delete
 #Drop test part. sonatype-aerther not available
 %pom_remove_dep :mockito-core
 %pom_remove_dep :maven-plugin-testing-harness
-%pom_remove_dep :plexus-interpolation
 
 rm -rf src/test/
 
+%pom_xpath_set pom:project/pom:properties/pom:mavenVersion 3
+
 %build
 %{mvn_build} -f
-
-# The tooling generates Java 9+ require, but it a multi-release jar that works with Java 8 just fine
-sed -i 's|compilerTarget=9|compilerTarget=1\.8|' .xmvn/properties
-sed -i 's|<requiresJava>9</requiresJava>|<requiresJava>1\.8</requiresJava>|' .xmvn-reactor
 
 %install
 %mvn_install

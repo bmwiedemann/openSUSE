@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Mon Jul 21 09:15:07 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.5.1
+- Changes of 3.5.1
+  * Bug Fixes
+    + Add ClassLoader support for ASM ClassWriter
+  * Maintenance
+    + Fix ITs for Maven 4 rc-3
+    + Document how to use env vars in commandlineArgs
+- Changes of 3.5.0
+  * New features and improvements
+    + Add toolchain java path to environment variables in ExecMojo
+  * Bug Fixes
+    + #322, enable to control the exec:java interaction with JVM
+      classloader more finely
+  * Maintenance
+    + Update site descriptor to 2.0.0
+    + Toolchains manual improvements
+    + Manage version of maven-toolchains-plugin
+- Changes of 3.4.1
+  * Bug Fixes
+    + Environment variable Path should be used as case-insensitive
+    + fix: NPE because declared MavenSession field hides field of
+      superclass
+  * Maintenance
+    + Remove redundant spotless configuration
+  * Build
+    + Use Maven4 enabled with GH Action
+    + Use shared release drafter GH Action
+- Chages of 3.4.0
+  * New features and improvements
+    + Allow <includePluginDependencies> to be specified for the
+      exec:exec goal
+  * Bug Fixes
+    + Do not get UPPERCASE env vars
+  * Maintenance
+    + Remove Log4j 1.2.x from ITs
+  * Build
+    + Use Maven 3.9.7 and 4.0.0-beta-3
+- Changes of 3.3.0
+  * New features and improvements
+    + Add option to include runtime and provided
+- Changes of 3.2.0
+  * New features and improvements
+    + Enable to exec:java runnables and not only mains with loosely
+      coupled injections
+    + Try to get rid of legacy API which can break starting with
+      java 17
+  * Bug Fixes
+    + Fix #401 - Maven v4 compatibility
+  * Maintenance
+    + ITs improvement
+    + Fix documentation formatting, add menu items for new examples
+    + Execute mexec-137 also on unix family
+    + Remove unused test
+  * Build
+    + Bump release-drafter/release-drafter from 5 to 6
+- Changes of 3.1.1
+  * New features and improvements
+    + Remove unused killAfter options
+    + [#391] Cope with Thread::stop being unavailable in JDK 20+
+    + Only prefix program output with thread name when running with
+      multiple threads
+    + [#389] Add option 'blockSystemExit' to 'java' mojo
+    + Require Maven 3.6.3+
+    + Ensure maven.properties can be forwarded to system properties
+      for exec:java
+  * Bug Fixes
+    + Fix #158 - Fix non ascii character handling
+    + [#323] exec arguments missing
+  * Maintenance
+    + Code cleanups - use newer JDK features
+    + Enable spotless for code formatting
+    + Require Maven 3.6.3+
+    + ITs cleanups
+    + Use Resolver Api for dependency resolving
+  * Build
+    + Workaround for concurrent access to local repository on
+      Windows by ITs
+    + Use Maven 3.9.4, 3.8.8 in GitHub build
+- Changes of 3.1.0
+  * New features and improvements
+    + Require Maven 3.2.5
+    + Support stream inheritance for the forked process, fixes #71
+  * Bug Fixes
+    + Fix NullPointerException when using plugin dependencies in
+      version 1.6.0
+    + preload common pool - issue #198
+    + fix handling of LongModulePathArgument and LongClassPathArgument
+    + Do not drop environment variables that contain '=' in their value,
+      or have no value.
+    + Empty argument tag should add empty string instead of null
+    + Fixes #160, ensure the java classloader is a child first one and
+      supports to excludes some gathered classpath element to solve
+      manually conflicts
+  * Maintenance
+    + Get rid of maven-artifact-transfer from dependencies
+    + Cleanup project site
+    + Cleanup project
+    + Fix build badge for current CI system
+    + Enforce JAVA_HOME for ITs
+    + Drop Invokable interface
+    + Remove unused class
+    + Remove unused class and profile to build it
+    + Remove unused imports
+    + Remove unused fields
+    + Bump sniffed signatures
+    + fix issue with IBM semu 11
+    + [DEPS] remove unused logging dependencies.
+    + Fixed message: Removed duplicate space
+    + Fix spelling in error msg (occured -> occurred)
+  * Build
+    + Testing with Maven 3.2.5 and 3.8.6
+    + use shared gh action from ASF
+    + use Temurin JDK
+- Removed patch:
+  * exec-maven-plugin-ioexception.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
 Wed Feb 21 10:42:51 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -16,7 +136,7 @@ Tue Oct 25 14:01:40 UTC 2022 - Fridrich Strba <fstrba@suse.com>
   * exec-maven-plugin-ioexception.patch
     + allow building with wider range of plexus-utils versions,
       including the 3.5.0 that does not declare IOException as
-      thrown in functions where it is actually not thrown. 
+      thrown in functions where it is actually not thrown.
 
 -------------------------------------------------------------------
 Tue Mar 22 08:31:00 UTC 2022 - Fridrich Strba <fstrba@suse.com>
