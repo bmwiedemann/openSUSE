@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 21 06:56:09 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250720
+  + further improve readability of header-files
+  + add a consistency-check for termio(s)/tty headers, to help with
+    cross-compiles (report by Stas Sergeev).
+  + remove some unused configure-macros
+  + add xterm+keypad to pccon+base -TD
+  + trim trailing blanks from a few files (report by Stas Sergeev).
+
+-------------------------------------------------------------------
 Mon Jul 14 07:32:00 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20250712
