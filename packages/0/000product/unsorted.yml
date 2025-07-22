@@ -11832,7 +11832,7 @@ unsorted:
   - libagdb-devel 
   - libagdb-tools 
   - libagdb1 
-  - libags7 
+  - libags8 
   - libaiff-devel 
   - libaiff2 
   - libaio-devel 
@@ -13572,6 +13572,7 @@ unsorted:
   - libgpg-error-devel 
   - libgpg-error-devel-32bit 
   - libgpgme45-32bit 
+  - libgpgmepp7-32bit 
   - libgphobos4 
   - libgphobos4-32bit 
   - libgphobos5 
@@ -13847,7 +13848,7 @@ unsorted:
   - libhwasan0-gcc14 
   - libhwloc15 
   - libhwy1-32bit 
-  - libhydrogen-core-1_2_4 
+  - libhydrogen-core-1_2_5 
   - libhydrogen-core-devel 
   - libhyphen0-32bit 
   - libhyprcursor0 
@@ -15426,6 +15427,7 @@ unsorted:
   - libqd0 
   - libqgpgme-devel 
   - libqgpgme15 
+  - libqgpgme15-32bit 
   - libqgpgmeqt6-devel 
   - libqhexedit0 
   - libqhull_r8_0 
@@ -15982,6 +15984,7 @@ unsorted:
   - libsemanage2-32bit 
   - libsemigroups-devel 
   - libsemigroups2 
+  - libsemigroups3 
   - libsensors4-32bit 
   - libsensors4-devel 
   - libsepol-devel 
@@ -18302,6 +18305,8 @@ unsorted:
   - maven-resolver-javadoc 
   - maven-resolver-named-locks 
   - maven-resolver-spi 
+  - maven-resolver-supplier 
+  - maven-resolver-supplier-javadoc 
   - maven-resolver-test-util 
   - maven-resolver-transport-classpath 
   - maven-resolver-transport-file 
@@ -48114,7 +48119,7 @@ unsorted:
   - typelib-1_0-Keybinder-0_0 
   - typelib-1_0-Keybinder-3_0 
   - typelib-1_0-Lfb-0_0 
-  - typelib-1_0-Libags-7_0 
+  - typelib-1_0-Libags-8_0 
   - typelib-1_0-Libinsane-1_0 
   - typelib-1_0-Libmsi-1_0 
   - typelib-1_0-Libosinfo-1_0 
