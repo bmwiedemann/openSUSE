@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 21 12:39:09 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.5
+  * Move fulfilling pending future outside the lock and ignore
+    already completed futures by @DmitriyMusatkin in (#536)
+
+-------------------------------------------------------------------
 Tue Jul 15 11:55:48 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.4
