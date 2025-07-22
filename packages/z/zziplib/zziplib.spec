@@ -18,7 +18,7 @@
 
 %define lname   libzzip-0-13
 Name:           zziplib
-Version:        0.13.79
+Version:        0.13.80
 Release:        0
 Summary:        ZIP Compression Library
 License:        LGPL-2.1-or-later
@@ -26,9 +26,6 @@ Group:          Development/Libraries/C and C++
 URL:            http://zziplib.sourceforge.net
 Source0:        https://github.com/gdraheim/zziplib/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
-# PATCHES-FIX-UPSTREAM: Move pkgconfig file from libdir to datadir
-Patch0:         zziplib-move-zzipwrap-pc-from-libdir-to-datadir.patch
-Patch1:         zziplib-move-pc-to-share-pkgconfig.patch
 
 BuildRequires:  cmake >= 3.5
 BuildRequires:  pkgconfig
@@ -86,13 +83,13 @@ rm -rf %{buildroot}%{_libdir}/cmake
 %{_libdir}/libzzip*.so.*
 
 %files devel
-%doc docs/README.SDL ChangeLog README TODO
+%doc docs/README.MD ChangeLog TODO
 %{_bindir}/unzzip*
 %{_bindir}/zz*
 %{_bindir}/unzip-mem
 %{_libdir}/libzzip*.so
 %{_includedir}/*
-%{_datadir}/pkgconfig/*.pc
+%{_libdir}/pkgconfig/*.pc
 %{_datadir}/aclocal/*.m4
 %{_mandir}/man3/__zzip_*.3%{?ext_man}
 %{_mandir}/man3/zzip_*.3%{?ext_man}

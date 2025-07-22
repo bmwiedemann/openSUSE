@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 21 10:30:27 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Release to 0.13.80:
+  * '.pc' files back to $libdir
+  * add conanfile.py and tests to support c++ package manager
+  * add vcpkg.json and tests to support c++ package manager
+  * switch from setup.cfg to pyproject.toml to python wheels
+  * rename to zzipdoctools to prepare actual pypi distribution
+  * drop unused '.cdtproject' and '.pydevproject'
+  * switch to lintcheck.yml to extend support for vscode development
+  * fix afl warnings, specifically maxint check ((A & MAXINT) == MAXINT)
+  * refer dependency to sdl2 instead of sdl (to not get sdl3)
+- Remove patches fixed upstream:
+  [- zziplib-move-zzipwrap-pc-from-libdir-to-datadir.patch]
+  [- zziplib-move-pc-to-share-pkgconfig.patch]
+- Keep pc files into libdir.
+- Readme filename has been changed.
+
+-------------------------------------------------------------------
 Wed Apr 23 09:18:04 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Release to 0.13.79:
