@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jul 18 13:12:24 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Wed Jul 16 17:55:16 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Split kernel module into to a separate package as to allow leancrypto to be
+  part of ring1 following replacement of liboqs in gnutls [jsc#PED-3176]
+
+-------------------------------------------------------------------
+Wed Jul 16 08:33:41 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.5.1:
+  * add ChaCha20 Poly 1305 AEAD
+  * ChaCha20: add ARMv8 NEON, ARMv7 Neon, Intel AVX2, Intel AVX512,
+    RISCV RVV/ZBB implementations
+  * RISC-V entropy source: make implementation consistent to spec
+  * Unify stack memory allocation
+
+-------------------------------------------------------------------
 Thu Jul  3 23:51:03 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 1.5.0:

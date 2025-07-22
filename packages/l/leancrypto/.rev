@@ -25,4 +25,12 @@
     <comment></comment>
     <requestid>1290982</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7f349a2220fc110d8a5aef4c232b533b</srcmd5>
+    <version>1.5.1</version>
+    <time>1753181633</time>
+    <user>anag_factory</user>
+    <comment>- Add baselibs.conf (forwarded request 1294405 from lmulling)</comment>
+    <requestid>1294406</requestid>
+  </revision>
 </revisionlist>
