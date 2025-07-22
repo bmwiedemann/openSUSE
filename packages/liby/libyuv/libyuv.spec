@@ -1,7 +1,7 @@
 #
 # spec file for package libyuv
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Patch3:         Install-missing-yuvconstants-binary.patch
 Patch4:         Use-library-suffix-during-installation.patch
 Patch5:         cmake-minimum-required.patch
 Patch6:         convert_test-little-endian.patch
+Patch7:         fix-narrowing-conversion-initializer-errors-on-LoongArch64.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

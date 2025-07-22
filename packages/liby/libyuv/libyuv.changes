@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 18 04:43:30 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-narrowing-conversion-initializer-errors-on-LoongArch64.patch
+  Fix C++11 narrowing conversion errors when initializing __m128i constants
+  with unsigned long long literals on LoongArch64 builds.
+
+-------------------------------------------------------------------
 Mon May 22 13:35:51 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim redundancies and compact descriptions.
