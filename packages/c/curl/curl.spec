@@ -36,7 +36,7 @@
 %endif
 
 Name:           curl%{?psuffix}
-Version:        8.14.1
+Version:        8.15.0
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
@@ -51,10 +51,6 @@ Patch1:         dont-mess-with-rpmoptflags.patch
 Patch2:         curl-secure-getenv.patch
 # PATCH-FIX-OPENSUSE bsc#1076446 protocol redirection not supported or disabled
 Patch3:         curl-disabled-redirect-protocol-message.patch
-# PATCH-FIX-UPSTREAM fix return code with --fail when --retry is used
-Patch4:         fix-return-code-with-retry.patch
-# PATCH-FIX-UPSTREAM bsc#1246197 Fix the --ftp-pasv option in curl v8.14.1
-Patch5:         curl-fix--ftp-pasv.patch
 BuildRequires:  groff
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

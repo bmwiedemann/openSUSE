@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Jul 21 08:16:16 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.15.0:
+  * Changes:
+    - TLS: remove support for Secure Transport and BearSSL
+  * Bugfixes:
+    - cf-socket: make socket data_pending a nop
+    - configure: order LDAP after the SSL libraries
+    - curl: improve non-blocking STDIN performance
+    - curl_get_line: make sure lines end with newline
+    - curl_path: make SFTP handle a path like /~ properly.
+    - curlinfo: provide the 'digest' feature
+    - digest: fix build with disabled digest auth
+    - docs: note SSLS-EXPORT feature in -ssl-sessions doc
+    - docs: reflect that delimiter-separated capath is only OpenSSL
+    - docs: sync -tls-earlydata support w/ CURLOPT_SSL_OPTIONS
+    - http/3: report handshake with version and cipher as for TCP connections
+    - http2: do not delay RST send on aborted transfer
+    - http_ntlm: protect against null deref
+    - ldap: initial support for --with-ldap option
+    - lib: address singleuse issues
+    - lib: avoid reusing unclean connection
+    - lib: drop two interim macros in favor of native libcurl API calls
+    - lib: stop 'time()' debug overrides at the end of source in altsvc, hsts
+    - lib: unify recv/send function signatures
+    - memdebug.h: #undef 'fclose' before defining it
+    - openssl: enable readahead
+    - openssl: error on SSL_ERROR_SYSCALL
+    - openssl: fix handling of buffered data
+    - openssl: fix openssl engine use
+    - openssl: fix pkcs11 provider available check
+    - quic: implement CURLINFO_TLS_SSL_PTR
+    - schannel: allow partial chains for manual peer verification
+    - SCP/SFTP: avoid busy loop after EAGAIN
+    - socks: fix query when filter context is null
+    - tls: remove Curl_ssl false_start
+    - tool_getparam: fix --ftp-pasv
+    - tool_operate: fix return code when --retry is used but not triggered
+    - top-complexity: lower max allowed complexity threshold to 90
+    - url: fix NULL deref with bad password when no user is provided
+    - urlapi: use uppercase hex encoding
+    - vtls: change send/recv signatures of tls backends
+    - vtls: prefer ciphersuite to cipher in msgs
+    - vtls: prefer rustls-ffi ciphersuite name API
+    - xfer: manage pause bits
+  * Remove patches upstream:
+    - curl-fix--ftp-pasv.patch
+    - fix-return-code-with-retry.patch
+
+-------------------------------------------------------------------
 Mon Jul 14 08:29:01 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix the --ftp-pasv option in curl v8.14.1 [bsc#1246197]
