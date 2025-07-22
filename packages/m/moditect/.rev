@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1198975</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>d4dfe5ed38dc65e210b7bf18661c6bfd</srcmd5>
+    <version>1.2.2</version>
+    <time>1753179598</time>
+    <user>anag_factory</user>
+    <comment>reproducible + do not shade dependencies</comment>
+    <requestid>1294868</requestid>
+  </revision>
 </revisionlist>

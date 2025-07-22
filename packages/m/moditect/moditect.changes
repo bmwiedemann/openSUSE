@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 16 14:59:10 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Do not shade dependencies
+- Added patch:
+  * 0001-Use-maven-archiver-to-parse-ouputTimestamp.patch
+    + use MavenArchiver.parseBuildOutputTimestamp instead of custom
+      outputTimestamp parser
+
+-------------------------------------------------------------------
 Wed Sep  4 19:22:02 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v1.2.2

@@ -1,7 +1,7 @@
 #
 # spec file for package moditect
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,18 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/%{name}/%{name}
 Source0:        %{url}/archive/refs/tags/%{version}.Final.tar.gz
+Patch0:         0001-Use-maven-archiver-to-parse-ouputTimestamp.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.beust:jcommander)
 BuildRequires:  mvn(com.github.javaparser:javaparser-core)
+BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-shade-plugin)
+BuildRequires:  mvn(org.apache.maven:maven-archiver)
+BuildRequires:  mvn(org.apache.maven:maven-core)
+BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
+BuildRequires:  mvn(org.eclipse.aether:aether-util)
+BuildRequires:  mvn(org.ow2.asm:asm)
 BuildArch:      noarch
 
 %description
@@ -63,6 +69,7 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{version}.Final
+%patch -P 0 -p1
 
 %pom_remove_parent parent
 
@@ -73,10 +80,10 @@ API documentation for %{name}.
 %pom_disable_module integrationtest
 
 %pom_change_dep org.jcommander:jcommander com.beust: core
+%pom_remove_plugin :maven-shade-plugin core
 
 %build
-%{mvn_build} -f -- \
-	-Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
+%{mvn_build} -f
 
 %install
 %mvn_install
