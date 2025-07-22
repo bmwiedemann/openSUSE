@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jul 22 07:34:55 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.0.0
+  * Changes
+    + #19 Fix mistype in INFO output
+    + Setup GitHub Actions and remove setup for Travis
+    + Require Java 8
+    + Remove use of plexus-build-api
+    + Require Maven 3.2.5+
+    + Update .gitignore
+    + Update mockito-core dependency to fix test errors
+    + Use forward-slash instead of File.separator for resource URLs
+    + Remove plexus-utils dependency
+    + Update maven-filtering dependency; replace deprecated
+      FileUtils methods
+    + Convert line endings with dos2unix
+    + Require Maven 3.6.3+
+    + Move to JUnit5
+
+-------------------------------------------------------------------
 Wed Mar  8 06:01:57 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Initial packaging with v1.0.0
