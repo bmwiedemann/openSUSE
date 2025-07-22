@@ -18,10 +18,10 @@
 
 %define cpan_name Perl-Tidy
 Name:           perl-Perl-Tidy
-Version:        20250616.0.0
+Version:        20250711.0.0
 Release:        0
-# 20250616 -> normalize -> 20250616.0.0
-%define cpan_version 20250616
+# 20250711 -> normalize -> 20250711.0.0
+%define cpan_version 20250711
 #Upstream: GPL-1.0-or-later
 License:        GPL-2.0-or-later
 Summary:        Indent and reformat perl scripts
