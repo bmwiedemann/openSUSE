@@ -492,4 +492,12 @@
     <comment></comment>
     <requestid>1294369</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>1bc6b957c50520981c2deefe8d5c6cd4</srcmd5>
+    <version>3.8.1</version>
+    <time>1753179649</time>
+    <user>anag_factory</user>
+    <comment>https://bugzilla.suse.com/show_bug.cgi?id=1246831</comment>
+    <requestid>1295052</requestid>
+  </revision>
 </revisionlist>
