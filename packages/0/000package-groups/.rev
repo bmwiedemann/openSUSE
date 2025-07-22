@@ -2231,4 +2231,11 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <user>dimstar_suse</user>
     <comment>Fix i586 Firefox orphans</comment>
   </revision>
+  <revision rev="313" vrev="311">
+    <srcmd5>2949fc3941cadd9276956c9e1bb45c0a</srcmd5>
+    <version>unknown</version>
+    <time>1753198275</time>
+    <user>dimstar_suse</user>
+    <comment>Mozillafirefox-devel is not i686; it is noarch</comment>
+  </revision>
 </revisionlist>
