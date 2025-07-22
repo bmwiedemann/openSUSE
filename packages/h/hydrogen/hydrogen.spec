@@ -24,8 +24,8 @@
 # will work properly as expected.
 %bcond_with librubberband
 Name:           hydrogen
-Version:        1.2.4
-%define soversion 1_2_4
+Version:        1.2.5
+%define soversion 1_2_5
 Release:        0
 Summary:        A Real-Time Drum Machine and Sequencer
 License:        GPL-2.0-or-later
@@ -43,20 +43,18 @@ BuildRequires:  libtar-devel
 BuildRequires:  pkgconfig
 BuildRequires:  portmidi-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core) >= 5.6
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5OpenGL)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5X11Extras)
-BuildRequires:  cmake(Qt5Xml)
-BuildRequires:  cmake(Qt5XmlPatterns)
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6OpenGL)
+BuildRequires:  cmake(Qt6Sql)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Test)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(jack)
@@ -144,7 +142,8 @@ export LADSPA_PATH=%{_libdir}/ladspa
 %if %{with librubberband}
 	-DWANT_RUBBERBAND:BOOL=ON \
 %endif
-	-DWANT_SHARED:BOOL=ON
+	-DWANT_SHARED:BOOL=ON \
+	-DWANT_QT6=1
 
 %cmake_build
 
@@ -164,7 +163,7 @@ LD_LIBRARY_PATH=%{buildroot}%{_libdir} \
 
 %files -f %{name}.lang
 %license COPYING
-%doc AUTHORS ChangeLog README.md
+%doc AUTHORS CHANGELOG.md README.md
 %{_bindir}/*
 %{_datadir}/%{name}
 %{_datadir}/applications/org.hydrogenmusic.Hydrogen.desktop
