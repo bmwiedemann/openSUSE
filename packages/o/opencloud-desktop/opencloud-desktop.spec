@@ -23,12 +23,12 @@
 %global _distconfdir %{_sysconfdir}
 %endif
 # define the version of the tarball, both the tarball name and top dir
-%define src_version 1.0.0
+%define src_version 2.0.0
 # LibreGraph version to build against (statically):
-%define libregraph_version 1.0.6
+%define libregraph_version 1.0.7
 %global __requires_exclude qt6qmlimport\\(eu\\.OpenCloud\\.*
 Name:           opencloud-desktop
-Version:        1.0.0
+Version:        2.0.0
 Release:        0
 Summary:        The OpenCloud synchronization client
 License:        GPL-2.0-only AND GPL-3.0-only
@@ -72,8 +72,7 @@ Suggests:       nautilus-extension-opencloud
 Suggests:       nemo-extension-opencloud
 Suggests:       opencloud-dolphin
 Supplements:    (%{name} and nautilus)
-Provides:       opencloud-client = %{version}-%{release}
-Obsoletes:      opencloud-client
+Obsoletes:      libLibreGraphAPI
 %if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
 BuildRequires:  kf6-extra-cmake-modules
 %else
@@ -157,24 +156,21 @@ rm -rf \
 %dir %{_libdir}/qt6/qml/eu
 %{_libdir}/qt6/qml/eu/OpenCloud
 %{_datadir}/icons/hicolor/*/apps/opencloud.*
-%dir %{_distconfdir}/OpenCloud
 %dir %{_distconfdir}/opencloud
 # old rpm without /usr/etc
 %if 0%{?suse_version} && 0%{?suse_version} <= 1500
-%config(noreplace) %{_distconfdir}/OpenCloud/sync-exclude.lst
 %config(noreplace) %{_distconfdir}/opencloud/opencloud.conf
 %else
-%{_distconfdir}/OpenCloud/sync-exclude.lst
 %{_distconfdir}/opencloud/opencloud.conf
 %endif
 
 %files -n libopencloudsync0
 %{_libdir}/libOpenCloudLibSync.so.0
-%{_libdir}/libOpenCloudLibSync.so.1.*
+%{_libdir}/libOpenCloudLibSync.so.2.*
 %{_libdir}/libOpenCloudCsync.so.0
-%{_libdir}/libOpenCloudCsync.so.1.*
+%{_libdir}/libOpenCloudCsync.so.2.*
 %{_libdir}/libOpenCloudResources.so.0
-%{_libdir}/libOpenCloudResources.so.1.*
+%{_libdir}/libOpenCloudResources.so.2.*
 
 %files -n libopencloudsync-devel
 %{_libdir}/libOpenCloudLibSync.so
