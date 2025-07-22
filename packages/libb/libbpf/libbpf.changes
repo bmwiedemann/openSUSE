@@ -1,8 +1,42 @@
 -------------------------------------------------------------------
+Mon Jul 21 03:31:14 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- update to 1.6.0:
+  * add more control over BPF object lifetime with new preparation step
+    (bpf_object__prepare() API)
+  * libbpf will report symbolic error code (e.g., "-EINVAL") in addition to
+    human-readable error description
+  * bpf_prog_stream_read() API
+  * BPF token support when attaching BPF trampoline-based BPF programs in
+    bpf_program__set_attach_target()
+  * BPF token support for BPF_BTF_GET_FD_BY_ID command
+  * support multi-uprobe session (SEC("uprobe.session")) BPF programs
+  * support unique_match option for multi-kprobe attachment
+  * support creating and destroying qdisk with BPF_TC_QDISC flag;
+  * bpf_program__attach_cgroup_opts() which enables more precise cgroup-based
+    attachment ordering
+  * automatically take advantage of memory-mappable kernel BTF
+    (/sys/kernel/btf/vmlinux), if supported
+  * emit_strings option for BTF dumper API, improving string-like data printing
+  * add BPF program's func and line info accessors
+  * BPF linker supports linking ELF object files coming from memory buffer and
+    referenced by FD, in addition to file path-based APIs;
+  * small improvements to BTF dedup to handle rare quirky corner cases produces
+    by some compilers
+  * add likely() and unlikely() convenience macros;
+  * __arg_untrusted annotation for BPF global subprog arguments;
+  * bpf_stream_printk() macro for working with BPF streams;
+  * bpf_usdt_arg_size() API
+- update to 1.6.0:
+  * fixing a possible crash when handling BPF arena global variable relocations
+- drop 0001-libbpf-Add-identical-pointer-detection-to-btf_dedup_.patch, which
+  is now included
+
+-------------------------------------------------------------------
 Thu Jun  5 14:34:05 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Workaround kernel module size increase due to BTF deduplication
-  issue since the introduction of TYPEOF_UNQUAL (poo#183503)
+  issue since the introduction of TYPEOF_UNQUAL (poo#183503 bsc#1244135)
   * add 0001-libbpf-Add-identical-pointer-detection-to-btf_dedup_.patch
 
 -------------------------------------------------------------------

@@ -252,4 +252,12 @@
     <comment>Workaround kernel module size increase due to BTF deduplication issue since the introduction of TYPEOF_UNQUAL (poo#183503)</comment>
     <requestid>1283405</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>50b0cdddfe495e1196961f4d14fd8446</srcmd5>
+    <version>1.6.1</version>
+    <time>1753181639</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1294661</requestid>
+  </revision>
 </revisionlist>

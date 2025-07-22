@@ -19,14 +19,13 @@
 %define sover_major 1
 %define libname libbpf%{sover_major}
 Name:           libbpf
-Version:        1.5.1
+Version:        1.6.1
 Release:        0
 Summary:        C library for managing eBPF programs and maps
 License:        LGPL-2.1-only
 URL:            https://github.com/libbpf/libbpf
 Source:         https://github.com/libbpf/libbpf/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-Patch0:         0001-libbpf-Add-identical-pointer-detection-to-btf_dedup_.patch
 BuildRequires:  libelf-devel
 BuildRequires:  linux-glibc-devel >= 4.5
 BuildRequires:  zlib-devel
