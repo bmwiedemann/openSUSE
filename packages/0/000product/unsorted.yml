@@ -10812,6 +10812,7 @@ unsorted:
   - leafnode 
   - leafpad 
   - leancrypto-devel 
+  - leancrypto-devel-32bit 
   - leancrypto-devel-static 
   - leancrypto-kmp-default 
   - leancrypto-tools 
@@ -14234,7 +14235,9 @@ unsorted:
   - libldm-1_0-0 
   - libldm-1_0-0-devel 
   - libleancrypto-fips1 
+  - libleancrypto-fips1-32bit 
   - libleancrypto1 
+  - libleancrypto1-32bit 
   - libled1 
   - libleechcraft-util-db-qt6-0_6_75 
   - libleechcraft-util-gui-qt6-0_6_75 
