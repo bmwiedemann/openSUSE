@@ -32,8 +32,10 @@ Patch0:         allow_old_sphinx.patch
 Patch1:         intersphinx-mapping.patch
 BuildRequires:  %{python_module lxml >= 3.3.0}
 BuildRequires:  %{python_module paramiko >= 1.15.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml >= 3.3.0
@@ -68,11 +70,11 @@ find examples/ -name "*.py" -exec sed -i 's|#!/usr/bin/env python$|#!/usr/bin/py
 find ncclient/operations/third_party/ -name "*.py" -exec sed -i '/^#!\//, 1d' {} \;
 
 %build
-%python_build
+%pyproject_wheel
 cd docs && make %{?_smp_mflags} html && rm build/html/.buildinfo
 
 %install
-%python_install
+%pyproject_install
 %fdupes %{buildroot}
 
 %check
@@ -81,7 +83,7 @@ cd docs && make %{?_smp_mflags} html && rm build/html/.buildinfo
 %files %{python_files}
 %license LICENSE
 %{python_sitelib}/ncclient
-%{python_sitelib}/ncclient-%{version}*-info
+%{python_sitelib}/ncclient-%{version}.dist-info
 
 %files -n python-ncclient-doc
 %doc README.md README.rst examples docs/build/html

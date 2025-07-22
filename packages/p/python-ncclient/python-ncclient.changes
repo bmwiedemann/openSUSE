@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 22 05:43:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Thu Apr 10 14:09:27 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Enable sle15allpythons to also build for Python 3.11 on Leap
