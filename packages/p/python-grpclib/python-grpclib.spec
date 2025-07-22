@@ -24,6 +24,8 @@ Summary:        Pure-Python gRPC implementation for asyncio
 License:        BSD-3-Clause
 URL:            https://github.com/vmagamedov/grpclib
 Source:         https://github.com/vmagamedov/grpclib/archive/v%{version}.tar.gz#/grpclib-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#vmagamedov/grpclib#205
+Patch0:         support-new-pytest-asyncio.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.6.0}
 BuildRequires:  %{python_module wheel}
