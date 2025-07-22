@@ -834,4 +834,12 @@
     <comment>- Enable build on riscv64 (forwarded request 1289764 from Andreas_Schwab)</comment>
     <requestid>1289768</requestid>
   </revision>
+  <revision rev="102" vrev="3">
+    <srcmd5>3b5c2513fe7b9e86abeffe5fdbba9cd5</srcmd5>
+    <version>18.2.7</version>
+    <time>1753181646</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1294791</requestid>
+  </revision>
 </revisionlist>

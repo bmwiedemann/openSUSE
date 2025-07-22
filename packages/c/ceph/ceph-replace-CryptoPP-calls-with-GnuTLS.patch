@@ -1,0 +1,319 @@
+From 6bdef1e4319fcc3af078844c2c2ed57f7a6debf3 Mon Sep 17 00:00:00 2001
+From: Kefu Chai <kefu.chai@scylladb.com>
+Date: Sun, 5 Mar 2023 21:55:09 +0800
+Subject: [PATCH] net, websocket: replace Crypto++ calls with GnuTLS
+
+since we already depend on GnuTLS which provides the functions which
+we use Crypto++ for. so let's rewrite the Crypto++ function calls
+using the ones provided by GnuTLS for less dependencies.
+
+when calculating TCP's Initial Sequence Numbers (ISN for short), we have
+two options:
+
+1. have a large-enough buffer, so we can calculate the MD5 hash in a single
+   pass. the downside is that we need to copy the 64-byte ISN secretkey
+   into the buffer, and the code to fill the "large-enough" buffer would
+   be a little bit mess. the upside is that we don't need to allocate
+   the hash handle.
+2. hash the data with two passes, one using IP addresses and ports, and
+   another using the secretkey. the downside is that we have to init and
+   deinit a gnutls_hmac_hd_t dynamically instead of reusing the
+   registered one.
+
+since we only generate an ISN once for each connection, and the GnuTLS
+uses malloc() under the hood for allocating the hash handle struct, also
+none of GnuTLS's digest algorithms set its "init" or "deinit" function,
+so these are no-op. hence the performance overhead should be negligible.
+for the better readability, we use the two-passes approach for
+generating the ISN.
+
+please note, GnuTLS does not provide a compile-time constant for the
+length of output hash of a given digest algorithm. if it were a C++
+library, it could use some templated constexpr function for this purpose
+through. so we just use magic numbers for the size of output hash,
+and use `assert()` to make sure we don't make mistakes when dupming
+these magic numbers from brain (a volatile memory).
+
+the websocket change should be verified by tests/unit/websocket_test
+the native tcp change was tested manually, by running httpd with wrk,
+like `apps/httpd/httpd --network-stack native`
+
+Fixes #680
+Signed-off-by: Kefu Chai <kefu.chai@scylladb.com>
+---
+ CMakeLists.txt                  |  2 --
+ cmake/Findcryptopp.cmake        | 51 ---------------------------------
+ cmake/SeastarDependencies.cmake |  3 --
+ cooking_recipe.cmake            | 11 -------
+ include/seastar/net/tcp.hh      | 15 ++++++----
+ install-dependencies.sh         |  2 --
+ kvm/scripts/bootstrap.sh        |  2 +-
+ pkgconfig/seastar.pc.in         |  6 ++--
+ src/websocket/server.cc         | 39 +++++++++++++------------
+ 9 files changed, 33 insertions(+), 98 deletions(-)
+ delete mode 100644 cmake/Findcryptopp.cmake
+
+Index: ceph-18.2.7/src/seastar/CMakeLists.txt
+===================================================================
+--- ceph-18.2.7.orig/src/seastar/CMakeLists.txt
++++ ceph-18.2.7/src/seastar/CMakeLists.txt
+@@ -760,7 +760,6 @@ target_link_libraries (seastar
+     Boost::program_options
+     Boost::thread
+     c-ares::cares
+-    cryptopp::cryptopp
+     fmt::fmt
+     lz4::lz4
+     SourceLocation::source_location
+@@ -1265,7 +1264,6 @@ if (Seastar_INSTALL)
+       ${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindSourceLocation.cmake
+       ${CMAKE_CURRENT_SOURCE_DIR}/cmake/FindStdAtomic.cmake
+       ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Findc-ares.cmake
+-      ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Findcryptopp.cmake
+       ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Finddpdk.cmake
+       ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Findhwloc.cmake
+       ${CMAKE_CURRENT_SOURCE_DIR}/cmake/Findlksctp-tools.cmake
+Index: ceph-18.2.7/src/seastar/cmake/Findcryptopp.cmake
+===================================================================
+--- ceph-18.2.7.orig/src/seastar/cmake/Findcryptopp.cmake
++++ /dev/null
+@@ -1,51 +0,0 @@
+-#
+-# This file is open source software, licensed to you under the terms
+-# of the Apache License, Version 2.0 (the "License").  See the NOTICE file
+-# distributed with this work for additional information regarding copyright
+-# ownership.  You may not use this file except in compliance with the License.
+-#
+-# You may obtain a copy of the License at
+-#
+-#   http://www.apache.org/licenses/LICENSE-2.0
+-#
+-# Unless required by applicable law or agreed to in writing,
+-# software distributed under the License is distributed on an
+-# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+-# KIND, either express or implied.  See the License for the
+-# specific language governing permissions and limitations
+-# under the License.
+-#
+-
+-#
+-# Copyright (C) 2018 Scylladb, Ltd.
+-#
+-
+-find_library (cryptopp_LIBRARY
+-  NAMES cryptopp)
+-
+-find_path (cryptopp_INCLUDE_DIR
+-  NAMES cryptopp/aes.h
+-  PATH_SUFFIXES cryptopp)
+-
+-mark_as_advanced (
+-  cryptopp_LIBRARY
+-  cryptopp_INCLUDE_DIR)
+-
+-include (FindPackageHandleStandardArgs)
+-
+-find_package_handle_standard_args (cryptopp
+-  REQUIRED_VARS
+-    cryptopp_LIBRARY
+-    cryptopp_INCLUDE_DIR)
+-
+-set (cryptopp_LIBRARIES ${cryptopp_LIBRARY})
+-set (cryptopp_INCLUDE_DIRS ${cryptopp_INCLUDE_DIR})
+-
+-if (cryptopp_FOUND AND NOT (TARGET cryptopp::cryptopp))
+-  add_library (cryptopp::cryptopp UNKNOWN IMPORTED)
+-
+-  set_target_properties (cryptopp::cryptopp
+-    PROPERTIES
+-      IMPORTED_LOCATION ${cryptopp_LIBRARIES}
+-      INTERFACE_INCLUDE_DIRECTORIES ${cryptopp_INCLUDE_DIRS})
+-endif ()
+Index: ceph-18.2.7/src/seastar/cmake/SeastarDependencies.cmake
+===================================================================
+--- ceph-18.2.7.orig/src/seastar/cmake/SeastarDependencies.cmake
++++ ceph-18.2.7/src/seastar/cmake/SeastarDependencies.cmake
+@@ -84,7 +84,6 @@ macro (seastar_find_dependencies)
+     # Public dependencies.
+     Boost
+     c-ares
+-    cryptopp
+     dpdk # No version information published.
+     fmt
+     lz4
+@@ -116,8 +115,6 @@ macro (seastar_find_dependencies)
+       unit_test_framework)
+   seastar_set_dep_args (c-ares REQUIRED
+     VERSION 1.13)
+-  seastar_set_dep_args (cryptopp REQUIRED
+-    VERSION 5.6.5)
+   seastar_set_dep_args (dpdk
+     OPTION ${Seastar_DPDK})
+   seastar_set_dep_args (fmt REQUIRED
+Index: ceph-18.2.7/src/seastar/cooking_recipe.cmake
+===================================================================
+--- ceph-18.2.7.orig/src/seastar/cooking_recipe.cmake
++++ ceph-18.2.7/src/seastar/cooking_recipe.cmake
+@@ -260,18 +260,6 @@ cooking_ingredient (c-ares
+     BUILD_COMMAND <DISABLE>
+     INSTALL_COMMAND ${make_command} install)
+ 
+-cooking_ingredient (cryptopp
+-  EXTERNAL_PROJECT_ARGS
+-    URL https://github.com/weidai11/cryptopp/archive/CRYPTOPP_8_7_0.tar.gz
+-    URL_MD5 69b11e59094c10d437f295f11e51c16a
+-    CONFIGURE_COMMAND <DISABLE>
+-    BUILD_IN_SOURCE ON
+-    BUILD_COMMAND
+-      ${CMAKE_COMMAND} -E env CXX=${CMAKE_CXX_COMPILER} CXXFLAGS=${CMAKE_CXX_FLAGS} ${make_command} static
+-    INSTALL_COMMAND
+-      ${CMAKE_COMMAND} -E env CXX=${CMAKE_CXX_COMPILER} CXXFLAGS=${CMAKE_CXX_FLAGS} ${make_command} install-lib PREFIX=<INSTALL_DIR>)
+-
+-
+ # Use the "native" profile that DPDK defines in `dpdk/config`, but in `dpdk_configure.cmake` we override
+ # CONFIG_RTE_MACHINE with `Seastar_DPDK_MACHINE`.
+ if (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64")
+Index: ceph-18.2.7/src/seastar/include/seastar/net/tcp.hh
+===================================================================
+--- ceph-18.2.7.orig/src/seastar/include/seastar/net/tcp.hh
++++ ceph-18.2.7/src/seastar/include/seastar/net/tcp.hh
+@@ -41,8 +41,7 @@
+ #include <stdexcept>
+ #include <system_error>
+ 
+-#define CRYPTOPP_ENABLE_NAMESPACE_WEAK 1
+-#include <cryptopp/md5.h>
++#include <gnutls/crypto.h>
+ 
+ namespace seastar {
+ 
+@@ -2089,8 +2088,14 @@ tcp_seq tcp<InetTraits>::tcb::get_isn()
+     hash[0] = _local_ip.ip;
+     hash[1] = _foreign_ip.ip;
+     hash[2] = (_local_port << 16) + _foreign_port;
+-    hash[3] = _isn_secret.key[15];
+-    CryptoPP::Weak::MD5::Transform(hash, _isn_secret.key);
++    gnutls_hash_hd_t md5_hash_handle;
++    // GnuTLS digests do not init at all, so this should never fail.
++    gnutls_hash_init(&md5_hash_handle, GNUTLS_DIG_MD5);
++    gnutls_hash(md5_hash_handle, hash, 3 * sizeof(hash[0]));
++    gnutls_hash(md5_hash_handle, _isn_secret.key, sizeof(_isn_secret.key));
++    // reuse "hash" for the output of digest
++    assert(sizeof(hash) == gnutls_hash_get_len(GNUTLS_DIG_MD5));
++    gnutls_hash_deinit(md5_hash_handle, hash);
+     auto seq = hash[0];
+     auto m = duration_cast<microseconds>(clock_type::now().time_since_epoch());
+     seq += m.count() / 4;
+Index: ceph-18.2.7/src/seastar/install-dependencies.sh
+===================================================================
+--- ceph-18.2.7.orig/src/seastar/install-dependencies.sh
++++ ceph-18.2.7/src/seastar/install-dependencies.sh
+@@ -70,7 +70,6 @@ redhat_packages=(
+     hwloc-devel
+     numactl-devel
+     libpciaccess-devel
+-    cryptopp-devel
+     libxml2-devel
+     xfsprogs-devel
+     gnutls-devel
+@@ -183,7 +182,6 @@ opensuse_packages=(
+     libboost_test1_66_0-devel
+     libboost_thread1_66_0
+     libboost_thread1_66_0-devel
+-    libcryptopp-devel
+     libboost_atomic1_66_0
+     libboost_atomic1_66_0-devel
+     libboost_date_time1_66_0
+Index: ceph-18.2.7/src/seastar/kvm/scripts/bootstrap.sh
+===================================================================
+--- ceph-18.2.7.orig/src/seastar/kvm/scripts/bootstrap.sh
++++ ceph-18.2.7/src/seastar/kvm/scripts/bootstrap.sh
+@@ -4,7 +4,7 @@ systemctl restart network
+ echo nameserver 8.8.8.8 > /etc/resolv.conf
+ useradd -m -p "" -g wheel seastar
+ chage -d 0 seastar
+-yum install -y gcc gcc-c++ libaio-devel ninja-build ragel hwloc-devel numactl-devel libpciaccess-devel cryptopp-devel boost-devel kernel-devel libxml2-devel zlib-devel libasan libubsan git wget python3 tar pciutils xterm
++yum install -y gcc gcc-c++ libaio-devel ninja-build ragel hwloc-devel numactl-devel libpciaccess-devel boost-devel kernel-devel libxml2-devel zlib-devel libasan libubsan git wget python3 tar pciutils xterm
+ cd /root
+ wget http://dpdk.org/browse/dpdk/snapshot/dpdk-2.0.0.tar.gz
+ tar -xpf dpdk-2.0.0.tar.gz
+Index: ceph-18.2.7/src/seastar/pkgconfig/seastar.pc.in
+===================================================================
+--- ceph-18.2.7.orig/src/seastar/pkgconfig/seastar.pc.in
++++ ceph-18.2.7/src/seastar/pkgconfig/seastar.pc.in
+@@ -22,8 +22,6 @@ boost_program_options_libs=@Boost_PROGRA
+ boost_thread_libs=${boost_system_libs} @Boost_THREAD_LIBRARY@
+ c_ares_cflags=-I$<JOIN:@c-ares_INCLUDE_DIRS@, -I>
+ c_ares_libs=$<JOIN:@c-ares_LIBRARIES@, >
+-cryptopp_cflags=-I$<JOIN:@cryptopp_INCLUDE_DIRS@, -I>
+-cryptopp_libs=$<JOIN:@cryptopp_LIBRARIES@, >
+ fmt_cflags=-I$<JOIN:$<TARGET_PROPERTY:fmt::fmt,INTERFACE_INCLUDE_DIRECTORIES>, -I>
+ fmt_libs=$<TARGET_LINKER_FILE:fmt::fmt>
+ lksctp_tools_cflags=-I$<JOIN:@lksctp-tools_INCLUDE_DIRS@, -I>
+@@ -40,6 +38,6 @@ seastar_libs=${libdir}/$<TARGET_FILE_NAM
+ Requires: liblz4 >= 1.7.3
+ Requires.private: gnutls >= 3.2.26, hwloc >= 1.11.2, $<$<BOOL:@Seastar_IO_URING@>:liburing $<ANGLE-R>= 2.0, >yaml-cpp >= 0.5.1
+ Conflicts:
+-Cflags: ${boost_cflags} ${c_ares_cflags} ${cryptopp_cflags} ${fmt_cflags} ${liburing_cflags} ${lksctp_tools_cflags} ${numactl_cflags} ${seastar_cflags}
+-Libs: ${seastar_libs} ${boost_program_options_libs} ${boost_thread_libs} ${c_ares_libs} ${cryptopp_libs} ${fmt_libs}
++Cflags: ${boost_cflags} ${c_ares_cflags} ${fmt_cflags} ${liburing_cflags} ${lksctp_tools_cflags} ${numactl_cflags} ${seastar_cflags}
++Libs: ${seastar_libs} ${boost_program_options_libs} ${boost_thread_libs} ${c_ares_libs} ${fmt_libs}
+ Libs.private: ${dl_libs} ${rt_libs} ${boost_thread_libs} ${lksctp_tools_libs} ${liburing_libs} ${numactl_libs} ${stdatomic_libs}
+Index: ceph-18.2.7/src/seastar/src/websocket/server.cc
+===================================================================
+--- ceph-18.2.7.orig/src/seastar/src/websocket/server.cc
++++ ceph-18.2.7/src/seastar/src/websocket/server.cc
+@@ -21,17 +21,12 @@
+ 
+ #include <seastar/websocket/server.hh>
+ #include <seastar/util/log.hh>
+-#include <cryptopp/sha.h>
+-#include <cryptopp/filters.h>
+-#include <cryptopp/base64.h>
++#include <seastar/util/defer.hh>
+ #include <seastar/core/scattered_message.hh>
+ #include <seastar/core/byteorder.hh>
+ 
+-#ifndef CRYPTOPP_NO_GLOBAL_BYTE
+-namespace CryptoPP {
+-using byte = unsigned char;
+-}
+-#endif
++#include <gnutls/crypto.h>
++#include <gnutls/gnutls.h>
+ 
+ namespace seastar::experimental::websocket {
+ 
+@@ -123,14 +118,24 @@ future<> connection::process() {
+ }
+ 
+ static std::string sha1_base64(std::string_view source) {
+-    // CryptoPP insists on freeing the pointers by itself...
+-    // It's leaky, but `read_http_upgrade_request` is a one-shot operation
+-    // per handshake, so the real risk is not particularly great.
+-    CryptoPP::SHA1 sha1;
+-    std::string hash;
+-    CryptoPP::StringSource(reinterpret_cast<const CryptoPP::byte*>(source.data()), source.size(),
+-            true, new CryptoPP::HashFilter(sha1, new CryptoPP::Base64Encoder(new CryptoPP::StringSink(hash), false)));
+-    return hash;
++    unsigned char hash[20];
++    assert(sizeof(hash) == gnutls_hash_get_len(GNUTLS_DIG_SHA1));
++    if (int ret = gnutls_hash_fast(GNUTLS_DIG_SHA1, source.data(), source.size(), hash);
++        ret != GNUTLS_E_SUCCESS) {
++        throw websocket::exception(fmt::format("gnutls_hash_fast: {}", gnutls_strerror(ret)));
++    }
++    gnutls_datum_t hash_data{
++        .data = hash,
++        .size = sizeof(hash),
++    };
++    gnutls_datum_t base64_encoded;
++    if (int ret = gnutls_base64_encode2(&hash_data, &base64_encoded);
++        ret != GNUTLS_E_SUCCESS) {
++        throw websocket::exception(fmt::format("gnutls_base64_encode2: {}", gnutls_strerror(ret)));
++    }
++    auto free_base64_encoded = defer([&] () noexcept { gnutls_free(base64_encoded.data); });
++    // base64_encoded.data is "unsigned char *"
++    return std::string(reinterpret_cast<const char*>(base64_encoded.data), base64_encoded.size);
+ }
+ 
+ future<> connection::read_http_upgrade_request() {

@@ -220,6 +220,8 @@ Patch11:        ceph-mgr-workaround-numpy-28271.patch
 Patch12:        cephadm-fix-get_cluster_count_when_data_dir_is_missing.patch
 # PATCH-FIX-OPENSUSE ceph-rocksdb-gcc15.patch -- Fix gcc15 compatibility issues
 Patch13:        ceph-rocksdb-gcc15.patch
+# PATCH-FIX-UPSTREAM replace CryptoPP calls with GnuTLS [jsc#PED-13011]
+Patch14:        ceph-replace-CryptoPP-calls-with-GnuTLS.patch
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x riscv64
@@ -242,9 +244,9 @@ BuildRequires:  checkpolicy
 BuildRequires:  selinux-policy-devel
 %endif
 BuildRequires:  cmake > 3.5
-BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  git
 BuildRequires:  gperf
+BuildRequires:  pkgconfig(fuse3)
 %if 0%{?fedora} || 0%{?suse_version} > 1500 || 0%{?rhel} == 9 || 0%{?openEuler}
 BuildRequires:  gcc-c++ >= 11
 %endif
@@ -489,11 +491,9 @@ BuildRequires:  openEuler-rpm-config
 %endif
 %if 0%{with seastar}
 %if 0%{?fedora} || 0%{?rhel} || 0%{?openEuler}
-BuildRequires:  cryptopp-devel
 BuildRequires:  numactl-devel
 %endif
 %if 0%{?suse_version}
-BuildRequires:  libcryptopp-devel
 BuildRequires:  libnuma-devel
 %endif
 %endif
@@ -506,10 +506,13 @@ Ceph is a massively scalable, open-source, distributed storage system that runs
 on commodity hardware and delivers object, block and file system storage.
 
 
+
+
+
+
 #################################################################################
 # subpackages
 #################################################################################
-
 %package base
 Summary:        Ceph Base Package
 %if 0%{?suse_version}
@@ -560,8 +563,8 @@ Requires:       which
 %if 0%{?weak_deps}
 Recommends:     podman >= 2.0.2
 %endif
-Provides:       user(cephadm)
 Provides:       group(cephadm)
+Provides:       user(cephadm)
 
 %description -n cephadm
 Utility to bootstrap a Ceph cluster and manage Ceph daemons deployed
@@ -593,10 +596,10 @@ Requires:       libradosstriper1 = %{_epoch_prefix}%{version}-%{release}
 %{?systemd_requires}
 %if 0%{?suse_version}
 PreReq:         permissions
-Requires(pre):	shadow
+Requires(pre):  shadow
 %endif
-Provides:       user(ceph)
 Provides:       group(ceph)
+Provides:       user(ceph)
 
 %description -n ceph-common
 Common utilities to mount and interact with a ceph storage cluster.
@@ -637,7 +640,7 @@ Requires:       ceph-base = %{_epoch_prefix}%{version}-%{release}
 Requires:       ceph-mgr-modules-core = %{_epoch_prefix}%{version}-%{release}
 Requires:       libcephsqlite = %{_epoch_prefix}%{version}-%{release}
 %if 0%{?weak_deps}
-%if !%{with ringdisabled} 
+%if !%{with ringdisabled}
 Recommends:     ceph-mgr-cephadm = %{_epoch_prefix}%{version}-%{release}
 %endif
 Recommends:     ceph-mgr-dashboard = %{_epoch_prefix}%{version}-%{release}
@@ -958,8 +961,8 @@ Requires:       e2fsprogs
 Requires:       lvm2
 Requires:       parted
 Requires:       python%{python3_pkgversion}-ceph-common = %{_epoch_prefix}%{version}-%{release}
-Requires:       python%{python3_pkgversion}-setuptools
 Requires:       python%{python3_pkgversion}-packaging
+Requires:       python%{python3_pkgversion}-setuptools
 Requires:       util-linux
 Requires:       xfsprogs
 
@@ -1398,10 +1401,13 @@ Group:          System/Monitoring
 %description node-proxy
 This package provides a Ceph hardware monitoring agent.
 
+
+
+
+
 #################################################################################
 # common
 #################################################################################
-
 %prep
 %autosetup -p1 -n ceph-%{version}
 

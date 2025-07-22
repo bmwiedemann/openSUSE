@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 18 14:07:16 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Drop cryptopp as potential dependency [jsc#PED-13011] and use gnutls as upstream seastar.
+  * Remove cryptopp and use gnutls instead.
+  * Add ceph-replace-CryptoPP-calls-with-GnuTLS.patch
+
+-------------------------------------------------------------------
 Tue Jul  1 12:04:59 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Enable build on riscv64
