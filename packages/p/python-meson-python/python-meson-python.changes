@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 18 08:46:56 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 1.18.0
+  * Drop Python 3.7 support.
+  * Bump minimum required Meson version to 0.64.0.
+  * Bump minimum required pyproject-metadata version to 0.9.0 to
+    enable support for PEP 639.
+  * Add support for PEP 639 metadata fields. Canonicalization and
+    validation of the license expression requires packaging version
+    24.2 or later.
+  * Add support for declaring the licence and license-files as
+    dynamic fields in pyproject.toml.
+  * Add support for symbolic links that point to files within the
+    source tree. They are now included as regular files in the sdist
+    archive.
+
+-------------------------------------------------------------------
 Thu May  1 08:17:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Unset SOURCE_DATE_EPOCH while running the test suite

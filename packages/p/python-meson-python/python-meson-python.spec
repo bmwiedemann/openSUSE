@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-meson-python
-Version:        0.17.1
+Version:        0.18.0
 Release:        0
 Summary:        Meson Python build backend (PEP 517)
 License:        MIT
@@ -29,25 +29,21 @@ Source0:        https://files.pythonhosted.org/packages/source/m/meson_python/me
 Patch11:        mesonpy-trim-deps.patch
 # PATCH-FEATURE-OPENSUSE mesonpy-reproducible.patch gh#openSUSE/python-rpm-macros#182
 Patch12:        mesonpy-reproducible.patch
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module packaging >= 0.19}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module packaging >= 23.2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyproject-metadata >= 0.7.1}
-BuildRequires:  %{python_module tomli >= 1.0.0 if %python-base < 3.11}
+BuildRequires:  %{python_module pyproject-metadata >= 0.9.0}
 BuildRequires:  fdupes
 BuildRequires:  meson >= 1.2.3
 BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
-Requires:       python-packaging >= 0.19
-Requires:       python-pyproject-metadata >= 0.7.1
+Requires:       python-packaging >= 23.2
+Requires:       python-pyproject-metadata >= 0.9.0
 BuildArch:      noarch
 %if 0%{python_version_nodots} >= 312
 Requires:       meson >= 1.2.3
 %else
-Requires:       meson >= 0.63.3
-%endif
-%if 0%{python_version_nodots} < 311
-Requires:       python-tomli >= 1.0.0
+Requires:       meson >= 0.64.0
 %endif
 # SECTION test
 BuildRequires:  %{python_module Cython}
