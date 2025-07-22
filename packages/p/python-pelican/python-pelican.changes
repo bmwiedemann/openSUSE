@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 22 03:09:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not install testsuite.
+- Add patch support-new-bs4.patch:
+  * Support new bs4 changes.
+
+-------------------------------------------------------------------
 Thu Jan 16 20:16:19 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 4.11.0:

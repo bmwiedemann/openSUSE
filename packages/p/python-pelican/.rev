@@ -457,4 +457,14 @@
     <comment></comment>
     <requestid>1238504</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>e99ec42e2a89337612d1b3be55eef081</srcmd5>
+    <version>4.11.0</version>
+    <time>1753179643</time>
+    <user>anag_factory</user>
+    <comment>- Do not install testsuite.
+- Add patch support-new-bs4.patch:
+  * Support new bs4 changes.</comment>
+    <requestid>1294921</requestid>
+  </revision>
 </revisionlist>

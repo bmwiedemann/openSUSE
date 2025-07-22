@@ -22,9 +22,10 @@ Version:        4.11.0
 Release:        0
 Summary:        A tool to generate a static blog from reStructuredText or Markdown input files
 License:        AGPL-3.0-only
-Group:          Development/Languages/Python
 URL:            https://getpelican.com/
 Source:         https://github.com/getpelican/pelican/archive/refs/tags/%{version}.tar.gz#/pelican-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM gh#getpelican/pelican#3461
+Patch0:         support-new-bs4.patch
 BuildRequires:  %{python_module Jinja2 >= 3.1.2}
 BuildRequires:  %{python_module Pygments >= 2.16.1}
 BuildRequires:  %{python_module Unidecode >= 1.3.7}
@@ -119,7 +120,10 @@ chmod -x \
 
 %install
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+# Do not install tests
+%{python_expand rm -r %{buildroot}%{$python_sitelib}/pelican/tests
+%fdupes %{buildroot}%{$python_sitelib}
+}
 
 for p in pelican pelican-import pelican-plugins pelican-quickstart pelican-themes; do
     %python_clone -a %{buildroot}%{_bindir}/$p
@@ -146,6 +150,6 @@ export PYTHONPATH=.
 %python_alternative %{_bindir}/pelican-quickstart
 %python_alternative %{_bindir}/pelican-themes
 %{python_sitelib}/pelican
-%{python_sitelib}/pelican-*.dist-info
+%{python_sitelib}/pelican-%{version}.dist-info
 
 %changelog
