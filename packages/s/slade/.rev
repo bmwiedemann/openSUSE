@@ -144,4 +144,14 @@
     <comment>- Switch to wxGTK3 backend</comment>
     <requestid>1256275</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>ff1d50103d5d86a77fb3389a4a23e8f4</srcmd5>
+    <version>3.2.7</version>
+    <time>1753179626</time>
+    <user>anag_factory</user>
+    <comment>- Delete accidentally committed UBSAN flags from specfile
+- Drop BuildRequires: pkgconfig(glew) as it is not used for build;
+  GLAD is used instead.</comment>
+    <requestid>1294898</requestid>
+  </revision>
 </revisionlist>

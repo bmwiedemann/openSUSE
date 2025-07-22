@@ -42,7 +42,6 @@ BuildRequires:  pkgconfig(clzma)
 BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(ftgl)
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(sfml-all)
@@ -65,8 +64,6 @@ from/to other generic formats such as PNG.
 
 %build
 %define _lto_cflags %nil
-export CFLAGS="%optflags -O0 -ggdb3 -fsanitize=address,undefined"
-export CXXFLAGS="%optflags -O0 -ggdb3 -fsanitize=address,undefined"
 %cmake -DNO_WEBVIEW=ON -DWX_GTK3=OFF -DNO_CRASHHANDLER=ON \
 	-DCMAKE_C_FLAGS_RELWITHDEBINFO:STRING="$CFLAGS" \
 	-DCMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING="$CFLAGS" \
