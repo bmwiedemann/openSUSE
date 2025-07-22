@@ -76,21 +76,19 @@ ln -snf %{_localstatedir}/lib/xkb/compiled/ %{buildroot}%{_datadir}/xkeyboard-co
 
 # migration to 2.45 (boo#1246516)
 %pretrans -p <lua>
--- https://fedoraproject.org/wiki/Packaging:Directory_Replacement#Replacing_a_symlink_with_a_directory_or_a_directory_with_any_type_of_file
--- Define the path to directory being replaced below.
--- DO NOT add a trailing slash at the end.
-path = "%{_datadir}/X11/xkb"
-st = posix.stat(path)
-if st and st.type == "directory" then
-  status = os.rename(path, path .. ".rpmmoved")
-  if not status then
-    suffix = 0
-    while not status do
-      suffix = suffix + 1
-      status = os.rename(path .. ".rpmmoved", path .. ".rpmmoved." .. suffix)
-    end
-    os.rename(path, path .. ".rpmmoved")
+local path = "%{_datadir}/X11/xkb"
+local stat = posix.stat(path)
+
+if stat and stat.type == "directory" then
+  local target = path .. ".rpmmoved"
+  local suffix = 0
+
+  while posix.stat(target) do
+    suffix = suffix + 1
+    target = path .. ".rpmmoved." .. suffix
   end
+
+  os.rename(path, target)
 end
 
 %post

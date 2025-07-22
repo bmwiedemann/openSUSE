@@ -1031,4 +1031,13 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
   be migrated manually by the user to `usr/share/xkeyboard-config-2`</comment>
     <requestid>1293638</requestid>
   </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>2e8f9865f47ccc85a7236eaa3c2810a5</srcmd5>
+    <version>2.45</version>
+    <time>1753181651</time>
+    <user>anag_factory</user>
+    <comment>- make %pretrans lua script more robust to avoid endless loops
+  during package installation (boo#1246768)</comment>
+    <requestid>1294803</requestid>
+  </revision>
 </revisionlist>

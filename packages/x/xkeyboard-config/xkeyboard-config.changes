@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 21 11:26:10 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- make %pretrans lua script more robust to avoid endless loops
+  during package installation (boo#1246768)
+
+-------------------------------------------------------------------
 Tue Jul 15 09:57:30 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 2.45 (boo#1246516)
