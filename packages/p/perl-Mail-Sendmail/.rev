@@ -147,4 +147,20 @@
     <comment>1</comment>
     <requestid>521633</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9407c685a0e690498934e4d4e89abd8e</srcmd5>
+    <version>0.820.0</version>
+    <time>1753179610</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1294165 from tinita
+
+- updated to 0.820.0 (0.82)
+   see /usr/share/doc/packages/perl-Mail-Sendmail/Changes
+  0.82 2025-07-14 NEILB
+      - Improvement from Pete Houston to use Sys::Hostname::Long
+  0.81 2019-05-13 NEILB
+      - Fixed typos, reported by dsteinbrunner in RT#88351
+      - Fixed typos, reported by Florian Schlichting in RT#119000</comment>
+    <requestid>1294879</requestid>
+  </revision>
 </revisionlist>

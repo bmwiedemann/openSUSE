@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mail-Sendmail
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define cpan_name Mail-Sendmail
 Name:           perl-Mail-Sendmail
-Version:        0.80
+Version:        0.820.0
 Release:        0
+# 0.82 -> normalize -> 0.820.0
+%define cpan_version 0.82
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple platform independent mailer
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Mail-Sendmail/
-Source0:        https://cpan.metacpan.org/authors/id/N/NE/NEILB/%{cpan_name}-%{version}.tar.gz
-BuildRequires:  findutils
-BuildRequires:  make
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/N/NE/NEILB/%{cpan_name}-%{cpan_version}.tar.gz
+Source1:        cpanspec.yml
+BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Sys::Hostname::Long)
 BuildRequires:  perl(parent)
+Requires:       perl(Sys::Hostname::Long)
 Requires:       perl(parent)
-BuildArch:      noarch
+Provides:       perl(Mail::Sendmail) = 0.800.0
+%undefine       __perllib_provides
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  findutils
+BuildRequires:  make
+# MANUAL END
 
 %description
 Simple platform independent e-mail from your perl script. Only requires
@@ -45,16 +53,17 @@ mail server. It is intended to be very easy to setup and use. See also
 There is also a FAQ (see "NOTES").
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 # bsc#1017667 -- Disabled tests sending email when building
-# %% {__make} test
+# make test
 
 %install
 %perl_make_install

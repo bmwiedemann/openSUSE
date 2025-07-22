@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 15 05:39:12 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.820.0 (0.82)
+   see /usr/share/doc/packages/perl-Mail-Sendmail/Changes
+
+  0.82 2025-07-14 NEILB
+      - Improvement from Pete Houston to use Sys::Hostname::Long
+
+  0.81 2019-05-13 NEILB
+      - Fixed typos, reported by dsteinbrunner in RT#88351
+      - Fixed typos, reported by Florian Schlichting in RT#119000
+
+-------------------------------------------------------------------
 Tue Sep  5 16:11:29 UTC 2017 - pmonrealgonzalez@suse.com
 
 - Updated to version 0.80
