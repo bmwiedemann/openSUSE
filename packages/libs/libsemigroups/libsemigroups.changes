@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sun Jul 20 13:34:51 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.1.0
+  * Add presentation for the `abacus_jones_monoid` method
+  * Add AhoCorasickImpl with strong alphabet constraints
+  * Knuth bendix performance improvements
+
+-------------------------------------------------------------------
+Wed Apr  9 23:51:29 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.0.3
+  * GCC 15 support
+
+-------------------------------------------------------------------
+Tue Apr  1 18:52:20 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.0.2
+  * Konieczny: fix typos in to_human_readable_repr
+
+-------------------------------------------------------------------
+Wed Mar 26 14:44:48 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.0.1
+  * Catch up on SONAME bump missing from 3.0.0
+
+-------------------------------------------------------------------
+Sat Mar 22 09:07:35 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.0.0
+  * Reporting during a computation has been improved
+  * Class interfaces were reduced in size, with member functions
+    only calling other public member functions being moved into a
+    helper namespace.
+  * Most classes now use iterators exclusively in their interfaces.
+  * The class ``ActionDigraph`` has been renamed ``WordGraph`` for
+    consistency with the mathematical literature.
+  * Some functionality that used to be in ``ActionDigraph`` has
+    been move into the classes ``Gabow`` and ``Paths``.
+  * The class ``Dot`` facilitates the creation and rendering of
+    graph descriptions in the DOT language of the Graphviz graph
+    drawing software.
+  * Conversion from one libsemigroups type to another is now
+    exclusively via the function template to.
+  * Many constructors for classes where it is expected that many
+    instances will be created (such as Transf, for example) do not
+    perform any checks on their arguments. Alternative versions of
+    these constructors, that do perform checks, are available using
+    the ``make`` function.
+  * Range objects are used fairly extensively throughout the
+    library.
+  * libsemigroups has been updated to use C++17 (from C++14).
+
+-------------------------------------------------------------------
 Fri Jan 19 22:10:46 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.7.3

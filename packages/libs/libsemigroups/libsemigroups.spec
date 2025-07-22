@@ -1,7 +1,7 @@
 #
 # spec file for package libsemigroups
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           libsemigroups
-%define lname	libsemigroups2
-Version:        2.7.3
+%define lname	libsemigroups3
+Version:        3.1.0
 Release:        0
 Summary:        Library with algorithms for computing finite and finitely presented semigroups
 License:        GPL-3.0-or-later
@@ -29,7 +29,9 @@ BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(eigen3)
-BuildRequires:  pkgconfig(fmt) >= 8.1.1
+BuildRequires:  pkgconfig(fmt) >= 10.1
+Provides:       bundled(magic_enum)
+Provides:       bundled(rx-ranges)
 
 %description
 A C++14 library containing implementations of several algorithms for
@@ -43,10 +45,10 @@ Group:          System/Libraries
 A C++14 library containing implementations of several algorithms for
 computing finite and finitely presented semigroups, namely:
 
-	* the Froidure–Pin algorithm for computing finite semigroups
-	* the Todd–Coxeter and Knuth–Bendix algorithms for finitely
-	  presented semigroups and monoids;
-	* the Schreier–Sims algorithm for permutation groups
+* the Froidure–Pin algorithm for computing finite semigroups
+* the Todd–Coxeter and Knuth–Bendix algorithms for finitely
+  presented semigroups and monoids;
+* the Schreier–Sims algorithm for permutation groups
 
 %package devel
 Summary:        Development files for the Semigroups library
@@ -77,17 +79,16 @@ rm -f "%buildroot/%_libdir"/*.la
 %check
 %make_build check
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
-%_libdir/libsemigroups.so.2*
+%_libdir/libsemigroups.so.*
 
 %files devel
 %_includedir/libsemigroups/
 %_libdir/libsemigroups.so
 %_libdir/pkgconfig/*.pc
 %license LICENSE
-%doc README.rst
+%doc README.md
 
 %changelog
