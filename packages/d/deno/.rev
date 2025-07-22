@@ -4116,4 +4116,28 @@
 </comment>
     <requestid>1251286</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>7ec8cfa0d99bd5f8fba0e34c52252dc6</srcmd5>
+    <version>2.4.2</version>
+    <time>1753179654</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.2:
+  * fix(bundle): default &quot;jsxImportSource&quot; to &quot;react&quot; (#30082)
+  * fix(check): temporarily ignore ERR_TYPES_NOT_FOUND (#29926)
+  * fix(ext/node): don't throw error on invalid path input on exists and
+  * existsSync (#29971)
+  * fix(ext/node): validate path parameters on link and linkSync (#30061)
+  * fix(lint): do not panic for many overlapping lint fixes (#30104)
+  * fix(lsp): tsconfig features for 'deno check' parity (#30007)
+  * fix(tsconfig): prioritize deno.json if it has compiler options (#30056)
+  * fix(tsconfig): use tsc defaults for 'strict' and 'noImplicitOverride' (#30045)
+  * fix(unstable): support importing files in npm packages as bytes and text
+  * (#30065)
+  * fix: global global should be writeable (#30032)
+  * fix: early init logging (#30034)
+  * fix: new signal handling (#30029)
+  * fix: upgrade deno_core to 0.352.1 (#30119)
+  * All other changes listed here: https://github.com/denoland/deno/compare/v2.2.2...v2.4.2</comment>
+    <requestid>1294953</requestid>
+  </revision>
 </revisionlist>

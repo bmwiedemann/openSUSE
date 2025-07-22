@@ -3,28 +3,14 @@
 -->
 
 <services>
- <service name="obs_scm" mode="manual">
-   <param name="scm">git</param>
-   <param name="url">https://github.com/denoland/deno</param>
-   <!-- param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param -->
-   <param name="versionformat">@PARENT_TAG@</param>
-   <param name="revision">v2.2.2</param>
-   <param name="versionrewrite-pattern">v(.*)</param>
-   <param name="versionrewrite-replacement">\1</param>
-   <param name="changesgenerate">enable</param>
- </service>
- <service mode="manual" name="set_version"/>
  <service name="cargo_vendor" mode="manual">
     <param name="update">false</param>
     <param name="respect-lockfile">true</param>
     <param name="method">registry</param>
-    <param name="src">deno</param>
- </service>
- <service name="roast" mode="manual">
-   <param name="target">deno</param>
-   <param name="outfile">deno-2.2.2.tar.zst</param>
-   <param name="preserve-root">true</param>
-   <param name="reproducible">true</param>
+    <param name="url">https://github.com/denoland/deno</param>
+    <param name="revision">v2.4.2</param>
+    <param name="versionrewriteregex">^v?(.*)</param>
+    <param name="versionrewritepattern">$1</param>
  </service>
 </services>
 

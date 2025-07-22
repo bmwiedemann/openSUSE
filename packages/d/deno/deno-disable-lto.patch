@@ -1,14 +1,14 @@
---- deno-2.0.0/Cargo.toml.orig	2024-10-11 10:48:05.784147338 +0200
-+++ deno-2.0.0/Cargo.toml	2024-10-11 10:48:41.196337140 +0200
-@@ -231,7 +231,6 @@ winres = "=0.1.12"
+--- a/Cargo.toml.orig	2025-07-18 13:10:15.182788420 +0800
++++ b/Cargo.toml	2025-07-18 13:11:10.652425382 +0800
+@@ -402,7 +402,6 @@
  [profile.release]
  codegen-units = 1
  incremental = true
 -lto = true
  opt-level = 'z' # Optimize for size
- 
- # Build release with debug symbols: cargo build --profile=release-with-debug
-@@ -243,7 +242,6 @@ debug = true
+ split-debuginfo = "packed"
+ debug = "line-tables-only"
+@@ -416,7 +415,6 @@
  [profile.release-lite]
  inherits = "release"
  codegen-units = 128

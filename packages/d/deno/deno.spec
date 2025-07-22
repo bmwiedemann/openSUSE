@@ -19,9 +19,9 @@
 
 
 %global _lto_cflags %nil
-%global _v8_version 134.4.0
+%global _v8_version 137.2.1
 Name:           deno
-Version:        2.2.2
+Version:        2.4.2
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -104,7 +104,7 @@ Remote code is fetched and cached on first execution, and only
 updated with the --reload flag.
 
 %prep
-%autosetup -a1 -p1 -n %{name}
+%autosetup -a1 -p1
 
 unlink rusty_v8 || true
 ln -sf %{_libdir}/crates/rusty_v8/ $PWD/rusty_v8
@@ -128,6 +128,7 @@ export CXXFLAGS="%{optflags}"
 
 # https://www.chromium.org/developers/gn-build-configuration
 export GN_ARGS="clang_version=${CLANG_VERSION} use_lld=true enable_nacl = false blink_symbol_level = 0 v8_symbol_level = 0"
+%{__cargo} update --offline
 %{cargo_build}
 
 %install
