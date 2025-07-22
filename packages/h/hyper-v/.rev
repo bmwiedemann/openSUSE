@@ -525,4 +525,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1286999</requestid>
   </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>ad3a5c68b99129802101857a46490642</srcmd5>
+    <version>9</version>
+    <time>1753181640</time>
+    <user>anag_factory</user>
+    <comment>- fcopy: Fix irregularities with size of ring buffer (a4131a50)
+- fcopy: Fix incorrect file path conversion (0d86a8d6)</comment>
+    <requestid>1294750</requestid>
+  </revision>
 </revisionlist>

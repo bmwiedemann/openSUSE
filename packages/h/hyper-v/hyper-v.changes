@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 20 20:20:20 UTC 2025 - ohering@suse.de
+
+- fcopy: Fix irregularities with size of ring buffer (a4131a50)
+- fcopy: Fix incorrect file path conversion (0d86a8d6)
+
+-------------------------------------------------------------------
 Fri Jun  6 06:06:06 UTC 2025 - ohering@suse.de
 
 - Enable debug logs for hv_kvp_daemon (a9c0b33e) (bsc#1244154)
