@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Jul 21 18:37:49 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 4.7.0:
+
+  Changed
+  * breaking: core: fix buffer overflow in function utf8_next_char 
+    and return NULL for empty string
+  * breaking: core: fix integer overflow and return "unsigned long" 
+    in function util_version_number
+  * core: write configuration files on disk only if there are 
+    changes (#2250)
+  * core: always enable partial completion for templates in option 
+    weechat.completion.partial_completion_templates, add option 
+    weechat.completion.partial_completion_auto_expand to expand word 
+    on new completion (#2253)
+  * core: add script name in output of /debug hooks <plugin>
+  * relay/api: return HTTP error 405 (Method Not Allowed) when the 
+    method received is not allowed
+
+  Added
+  * core: add support of specifier %@ for UTC time in function 
+    util_strftimeval
+  * api: add function file_compare
+  * irc: add support of strikethrough text in IRC messages (#2248)
+  * buflist: add variables ${number_zero} and ${number_zero2} 
+    (zero-padded buffer number)
+  * tests: add fuzz testing (#1462)
+
+  Fixed
+  * core: fix write of weechat.log to stdout with weechat-headless 
+    --stdout (#2247)
+  * core: add refresh of window title on buffer switch, when option 
+    weechat.look.window_title is set
+  * core: consider all keys are safe in cursor context (#2244)
+  * core: fix integer overflow with decimal numbers in calculation of 
+    expression
+  * core: fix integer overflow in base32 encoding/decoding
+  * core: fix buffer overflow in function util_parse_time
+  * core: fix buffer overflow in function eval_syntax_highlight_colorize
+  * core: fix buffer overflow in function eval_string_base_encode
+  * core: fix memory leak in function util_parse_delay
+  * irc: display nick changes and quit messages when option 
+    irc.look.ignore_tag_messages is enabled (#2241)
+  * perl: fix build when multiplicity is not available (#2243)
+  * relay/api: reject any invalid or unknown password hash algorithm 
+    in handshake resource
+  * relay/api: process HTTP request received as soon as a NULL char 
+    is received
+  * relay/weechat: fix empty buffers in client when WeeChat is running 
+    on Solaris/illumos
+  * build: fix build on Solaris/illumos (#2251)
+
+-------------------------------------------------------------------
 Fri Jul 18 16:57:24 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Migrate from enchant-1 to enchant-2
