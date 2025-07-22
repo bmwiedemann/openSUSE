@@ -385,4 +385,41 @@
   (jsc#AGM-154)</comment>
     <requestid>1289322</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3270bad2166744e796eac43125353ac6</srcmd5>
+    <version>17</version>
+    <time>1753179632</time>
+    <user>anag_factory</user>
+    <comment>- Version 17
+
+- Report all steps of the storage progress
+  (gh#agama-project/agama#2565).
+
+- Adjust the information included in the logs (gh#agama-project/agama#2575).
+
+- Add AutoYaST conversion for DASD and zFCP sections
+  (gh#agama-project/agama#2551)
+
+- Do not overwrite the list of chosen patterns when selecting an LSM
+  (gh#agama-project/agama#2560).
+- Extend products definition with the possibility to define whether a
+  user pattern should be pre-selected or not.
+
+- Save registration code and email, even if registration fails
+  (related to jsc#AGM-156).
+
+- Install the packages from DUD to the target system
+  (gh#agama-project/agama#2543)
+- Allow ignoring GPG signature problems for the DUD packages using
+  the &quot;inst.dud_packages.gpg=0&quot; boot parameter
+  (problems for packages from other repositories are still reported)
+- Fixed parsing the boot command line options,
+  using both nested and parent option would crash the installer
+  (like &quot;inst.foo&quot; with &quot;inst.foo.bar&quot;)
+
+- Inhibit storage subsystems (bsc#1245159, bsc#1246133).
+
+- Fix error at /api/manager/installer: initialize the backend value</comment>
+    <requestid>1294908</requestid>
+  </revision>
 </revisionlist>
