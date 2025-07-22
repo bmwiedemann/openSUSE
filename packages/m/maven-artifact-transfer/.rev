@@ -81,4 +81,12 @@
 put into adi:2</comment>
     <requestid>1179766</requestid>
   </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>f3b1225e95619e6b778ee209926d3fe1</srcmd5>
+    <version>0.13.1</version>
+    <time>1753181657</time>
+    <user>anag_factory</user>
+    <comment>Prepare to be maven4 compatible</comment>
+    <requestid>1294856</requestid>
+  </revision>
 </revisionlist>

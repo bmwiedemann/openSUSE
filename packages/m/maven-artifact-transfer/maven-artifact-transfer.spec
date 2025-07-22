@@ -1,7 +1,7 @@
 #
 # spec file for package maven-artifact-transfer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source1:        %{name}-build.xml
 Patch0:         0001-Compatibility-with-Maven-3.0.3-and-later.patch
 Patch1:         0002-Remove-support-for-maven-3.0.X.patch
 Patch2:         0003-Port-to-maven-3.8.1.patch
+Patch3:         maven-4-compat.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
@@ -57,11 +58,8 @@ Group:          Documentation/HTML
 This package provides %{summary}.
 
 %prep
-%setup -q
+%autosetup -p1
 cp %{SOURCE1} build.xml
-%patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 2 -p1
 
 %pom_remove_plugin :maven-shade-plugin
 %pom_remove_plugin :apache-rat-plugin
@@ -76,6 +74,7 @@ mkdir -p lib
 build-jar-repository -s lib \
     maven-common-artifact-filters/maven-common-artifact-filters \
     maven/maven-artifact \
+    maven/maven-compat \
     maven/maven-core \
     maven/maven-model \
     maven-resolver/maven-resolver-api \

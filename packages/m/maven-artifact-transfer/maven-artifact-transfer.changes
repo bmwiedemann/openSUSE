@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 23 21:13:09 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * maven-4-compat.patch
+    + allow building against maven 4.x and maven-resolver 2.x
+
+-------------------------------------------------------------------
 Mon Jun 10 16:29:15 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use plexus-metadata-generator executable directly to simplify
