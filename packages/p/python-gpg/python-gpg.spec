@@ -59,7 +59,7 @@ This package contains Python bindings for GnuPG
 %autosetup -p1 -n gpgmepy-%{version}
 
 %build
-%ifarch %{ix86} armv7l armv7hl
+%ifarch %{ix86} %{arm}
 # explicitly pass the large file options, because we build gpgme with it
 export CFLAGS="%{optflags} -D_FILE_OFFSET_BITS=64"
 %endif

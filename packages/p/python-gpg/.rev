@@ -13,4 +13,12 @@ v2: renamed from python-gpgme, and Matej's work on the wheel
 v3: 32 bit build fixed</comment>
     <requestid>1294642</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7ade960ce72c2f2de3276be8c8b8f1b5</srcmd5>
+    <version>2.0.0</version>
+    <time>1753181458</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1295059</requestid>
+  </revision>
 </revisionlist>

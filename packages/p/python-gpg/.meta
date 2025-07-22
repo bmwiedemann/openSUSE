@@ -1,5 +1,6 @@
 <package name="python-gpg" project="openSUSE:Factory">
   <title>Python bindings for GnuPG</title>
   <description>This package contains Python bindings for GnuPG</description>
+  <devel project="security:privacy" package="python-gpg"/>
   <url>https://gnupg.org/software/gpgme/index.html</url>
 </package>
