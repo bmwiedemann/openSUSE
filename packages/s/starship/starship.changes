@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Jul 20 21:10:10 UTC 2025 - Toby Boulton <toby@boulton.net.au>
+
+- Update to version 1.23.0:
+  * Features:
+    - Add network namespace module
+    - Add support for pixi
+    - Added mise module
+    - C++: Adding C++ module
+    - Completions: Offer Nushell completions
+    - Nodejs: Disable if bun project files detected
+    - Package: Support JSR package version
+    - Preset: Add gcloud symbol to nerd-fonts preset to match aws
+    - Python: Add support for python_binary arguments in config
+  * Bug Fixes:
+    - Battery: Prefer charge ratio over current capacity
+    - Change to a non-yanked version of the log crate
+    - Fossil_metrics: Add -i flag to the fossil_metrics module's command
+    - Package: Fix cargo workspace version
+    - Preset: Add missing rlang to plain-text-symbols preset
+    - Preset: Add missing rlang to plain-text-symbols preset
+  * Performance Improvements:
+    - Ancestor-scan: Preallocate and reuse a single PathBuf
+    - Use gitoxide for git_status and git_metrics modules
+  * Reverts:
+    - Remove specialized whoami hostname function choice for windows
+
+-------------------------------------------------------------------
 Sat Apr  5 14:56:39 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.22.1:
