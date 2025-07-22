@@ -47,4 +47,12 @@
     <comment>Fix exception with empty Automatic-Module-Name</comment>
     <requestid>1283730</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>406df3edb307295d073afde1c7541d3e</srcmd5>
+    <version>3.6.3</version>
+    <time>1753181656</time>
+    <user>anag_factory</user>
+    <comment>Some reproducible changes</comment>
+    <requestid>1294787</requestid>
+  </revision>
 </revisionlist>

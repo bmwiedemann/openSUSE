@@ -27,6 +27,7 @@ URL:            https://maven.apache.org/shared/maven-archiver/
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
 Patch0:         automatic-module-name.patch
+Patch1:         reproducible-from-environment.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
@@ -54,21 +55,22 @@ Javadoc for %{name}.
 %setup -q
 cp %{SOURCE1} build.xml
 %patch -P 0 -p1
+%patch -P 1 -p1
 
 %pom_xpath_remove pom:project/pom:parent/pom:relativePath
 
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-  org.eclipse.sisu.plexus \
-  maven-shared-utils/maven-shared-utils \
-  maven/maven-artifact maven/maven-core \
+  maven/maven-artifact \
+  maven/maven-core \
   maven/maven-model \
-  plexus/interpolation \
-  plexus/archiver
+  maven-shared-utils/maven-shared-utils \
+  org.eclipse.sisu.plexus \
+  plexus/archiver \
+  plexus/interpolation
 
-%{ant} \
-  jar javadoc
+ant jar javadoc
 
 %install
 # jar

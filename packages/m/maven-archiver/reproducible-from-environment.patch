@@ -1,0 +1,58 @@
+--- maven-archiver-3.6.3/pom.xml	2025-07-21 12:15:02.217924139 +0200
++++ maven-archiver-3.6.3/pom.xml	2025-07-21 12:16:28.230551125 +0200
+@@ -115,4 +115,22 @@
+       <scope>test</scope>
+     </dependency>
+   </dependencies>
++
++  <build>
++    <pluginManagement>
++      <plugins>
++        <plugin>
++          <groupId>org.apache.maven.plugins</groupId>
++          <artifactId>maven-surefire-plugin</artifactId>
++          <configuration>
++            <redirectTestOutputToFile>true</redirectTestOutputToFile>
++            <excludedEnvironmentVariables>
++              <excludedEnvironmentVariable>SOURCE_DATE_EPOCH</excludedEnvironmentVariable>
++            </excludedEnvironmentVariables>
++          </configuration>
++        </plugin>
++      </plugins>
++    </pluginManagement>
++  </build>
++
+ </project>
+--- maven-archiver-3.6.3/src/main/java/org/apache/maven/archiver/MavenArchiver.java	2025-07-21 12:15:02.214537980 +0200
++++ maven-archiver-3.6.3/src/main/java/org/apache/maven/archiver/MavenArchiver.java	2025-07-21 12:16:38.230572982 +0200
+@@ -753,9 +753,15 @@
+      *             section 4.4.6.
+      */
+     public static Optional<Instant> parseBuildOutputTimestamp(String outputTimestamp) {
+-        // Fail-fast on nulls
+-        if (outputTimestamp == null) {
++        final String sourceDateEpoch = System.getenv("SOURCE_DATE_EPOCH");
++        // Fail fast on null and no timestamp configured (1 character configuration is useful to override
++        // a full value during pom inheritance)
++        if (outputTimestamp == null || (outputTimestamp.length() < 2 && !isNumeric(outputTimestamp))) {
++            if (sourceDateEpoch == null) {
+             return Optional.empty();
++            } else {
++                outputTimestamp = sourceDateEpoch;
++            }
+         }
+ 
+         // Number representing seconds since the epoch
+@@ -769,12 +775,6 @@
+             return Optional.of(date);
+         }
+ 
+-        // no timestamp configured (1 character configuration is useful to override a full value during pom
+-        // inheritance)
+-        if (outputTimestamp.length() < 2) {
+-            return Optional.empty();
+-        }
+-
+         try {
+             // Parse the date in UTC such as '2011-12-03T10:15:30Z' or with an offset '2019-10-05T20:37:42+06:00'.
+             final Instant date = OffsetDateTime.parse(outputTimestamp)
