@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul 22 07:02:57 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.9.11
+  * New features and improvements
+    + Augment version range resolution used repositories
+  * Bug Fixes
+    + Deduplicate filtered dependency graph
+    + Move ensure in boundaries of project lock
+  * Maintenance
+    + [MNGSITE-393] - remove references to Maven 2
+    + Update CONTRIBUTING after GitHub issues enabled
+    + Enable Github Issues
+    + [MNG-8763] - Remove name from site bannerLeft
+  * Build
+    + Pin GitHub action versions by hash
+    + Build the project by JDK 21 as default
+    + Use Maven 3.9.10 for build on GitHub
+
+-------------------------------------------------------------------
 Wed Jun  4 08:06:58 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.9.10
