@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 22 04:29:15 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-new-pytest-asyncio.patch:
+  * Support changes required by pytest-asyncio 1.0.
+
+-------------------------------------------------------------------
 Tue Dec 17 00:59:32 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.19.3:

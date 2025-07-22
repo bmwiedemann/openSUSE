@@ -271,4 +271,13 @@
 - Stop skipping so many tests.</comment>
     <requestid>1231588</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>432be9520178bfda83c2522a8b0df0fd</srcmd5>
+    <version>0.19.3</version>
+    <time>1753179646</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-new-pytest-asyncio.patch:
+  * Support changes required by pytest-asyncio 1.0.</comment>
+    <requestid>1294923</requestid>
+  </revision>
 </revisionlist>
