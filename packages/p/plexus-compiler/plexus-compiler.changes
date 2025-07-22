@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jul 22 07:27:28 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream release 2.15.0
+  * New features and improvements
+    + Allow to override useUnsharedTable compiler argument
+    + Lazy providers and better error reporting
+    + Only use "-release" parameter with javac 9+
+    + Correctly determine the version of the underlying javac tool
+    + Use a TreeSet instead of HashSet to get consistent ordering
+      of results
+  * Bug Fixes
+    + Cleanup dependencies
+    + Path.relativize() may throw exception if source and build
+      directories are on different Windows drives
+    + Fix ECJ not using annotation processor when defined via
+      processorpath
+    + Report "Error occurred during initialization of VM" as error
+  * Maintenance
+    + Bump project version to 2.15.0-SNAPSHOT
+    + Use LocalRepositoryManager for resolving artifacts paths in
+      tests
+
+-------------------------------------------------------------------
 Tue Jun  3 08:24:10 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on objectweb-asm to build with sisu 0.9.0.M4
