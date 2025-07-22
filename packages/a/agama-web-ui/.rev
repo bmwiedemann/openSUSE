@@ -361,4 +361,41 @@
 - Warn the user when using a weak user password (bsc#1237480).</comment>
     <requestid>1289321</requestid>
   </revision>
+  <revision rev="20" vrev="20">
+    <srcmd5>423c8c297072a0da745c2baa47ef3863</srcmd5>
+    <version>0</version>
+    <time>1753179631</time>
+    <user>anag_factory</user>
+    <comment>- Version 17
+
+- Fix extensions layout to reduce excessive gaps on large
+  screens (gh#agama-project/agama#2590).
+
+- Fixed crash when registering an extension without registration
+  key (bsc#1246690)
+
+- Replaced all usage of generatePath with generateEncodedPath to
+  ensure proper URL encoding of route parameters and prevent issues
+  with special characters (bsc#1246551).
+  
+
+- Add button to allow re-probing storage devices.
+  (gh#agama-project/agama#2565)
+
+- Display a message when the license is not available in the
+  selected language (bsc#1238364, gh#agama-project/agama#2571).
+
+- Allow to use a whole disk or MD RAID without a partition table
+  (gh#agama-project/agama#2559).
+
+- Allow specifying the registration server (jsc#AGM-156).
+
+- Improve UX around non-persistent connections (bsc#1245187).
+
+- Reorganize the storage screen and introduce a new modal device
+  selector (related to bsc#1242002 and bsc#1240062).
+
+- Avoid scroll to top on software selection (bsc#1245732).</comment>
+    <requestid>1294907</requestid>
+  </revision>
 </revisionlist>
