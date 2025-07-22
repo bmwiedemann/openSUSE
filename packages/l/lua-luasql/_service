@@ -6,8 +6,8 @@
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">mcepl@cepl.eu</param>
   </service>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>

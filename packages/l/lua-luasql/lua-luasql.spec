@@ -21,14 +21,17 @@
 %define flavor_dec $(c=%{flavor}; echo ${c:0:-1}.${c: -1})
 %define flavor_ver %{lua:ver, ok = string.gsub(rpm.expand("%{flavor}"), "lua(%{d})(%{d})", "%{1}.%{2}"); print(ver)}
 %define mod_name luasql
-Version:        2.6.0+git.1724375068.d60f8b2
+Version:        2.7.0
 Release:        0
 Summary:        Simple interface from Lua to a DBMS
 License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://github.com/lunarmodules/luasql
-# Source0:        https://github.com/lunarmodules/luasql/archive/refs/tags/%%{version}/%%{mod_name}-%%{version}.tar.gz
-Source0:        %{mod_name}-%{version}.tar.gz
+Source0:        https://github.com/lunarmodules/luasql/archive/refs/tags/%{version}/%{mod_name}-%{version}.tar.gz
+# Source0:        %%{mod_name}-%%{version}.tar.gz
+# PATCH-FIX-UPSTREAM add_missing_cur_gc.patch gh#lunarmodules/luasql#178 mcepl@suse.com
+# add missing definition of cur_gc function
+Patch0:         add_missing_cur_gc.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  libiodbc-devel
 BuildRequires:  libmysqlclient-devel

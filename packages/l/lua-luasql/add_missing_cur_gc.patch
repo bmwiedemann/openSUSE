@@ -1,0 +1,30 @@
+From 10ed75b36bf909f57b3c1a070dd87669c323cff0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1s=20Guisasola?= <tomas@puc-rio.br>
+Date: Mon, 7 Jul 2025 20:59:39 -0300
+Subject: [PATCH] Solving issue #178, missing cur_gc
+
+---
+ src/ls_odbc.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/src/ls_odbc.c b/src/ls_odbc.c
+index 1a7f768..565b216 100644
+--- a/src/ls_odbc.c
++++ b/src/ls_odbc.c
+@@ -483,6 +483,16 @@ static int cur_fetch (lua_State *L)
+ 	}
+ }
+ 
++/*
++** Cursor object collector function
++*/
++static int cur_gc (lua_State *L) {
++	cur_data *cur = (cur_data *) luaL_checkudata (L, 1, LUASQL_CURSOR_ODBC);
++	if (cur != NULL && !(cur->closed))
++		cur_shut(L, cur);
++	return 0;
++}
++
+ /*
+ ** Closes a cursor.
+ */

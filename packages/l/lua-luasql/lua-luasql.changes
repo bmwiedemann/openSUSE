@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul  8 15:05:21 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.7.0:
+  * LuaSQL is adapted to Lua version 5.4 and all the drivers are
+    compatible with To-be-closed variables.
+  * The :close() method now returns false and a string with
+    appropriate message instead of raising an error when there
+    are related open objects.
+- Add add_missing_cur_gc.patch adding missing cur_gc symbol
+  (gh#lunarmodules/luasql#178).
+
+-------------------------------------------------------------------
 Tue Nov  5 10:25:55 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch to _service and download the code from GitHub repo,
