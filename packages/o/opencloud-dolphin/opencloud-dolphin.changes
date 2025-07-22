@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 21 15:28:03 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
+
+- Remove bogus argument from kf6_install which broke builds
+
+-------------------------------------------------------------------
 Fri Jul  4 13:03:54 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
 
 - Fix source link to tag link on Github 

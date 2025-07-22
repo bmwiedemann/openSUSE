@@ -7,4 +7,12 @@
     <comment>I changed the source link, please reconsider.</comment>
     <requestid>1290691</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>080667c3716adf20d777b2dbb1078c16</srcmd5>
+    <version>1.0.0</version>
+    <time>1753179600</time>
+    <user>anag_factory</user>
+    <comment>- Remove bogus argument from kf6_install which broke builds</comment>
+    <requestid>1294870</requestid>
+  </revision>
 </revisionlist>

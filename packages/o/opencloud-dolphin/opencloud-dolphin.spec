@@ -55,7 +55,7 @@ This package provides shell integration for the OpenCloud desktop sync client fo
 %{kf6_build}
 
 %install
-%{kf6_install} -C build
+%{kf6_install}
 
 %ldconfig_scriptlets
 
