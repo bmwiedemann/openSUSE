@@ -1,12 +1,4 @@
 -------------------------------------------------------------------
-Thu Jul 17 15:40:49 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
-
-- Update to version 3.9
-  * Add support for wildcard netifcon names
-  * Abort on mismatched declarations
-  * Introduce neveraudit types
-
--------------------------------------------------------------------
 Fri Mar  7 14:12:08 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.8.1
