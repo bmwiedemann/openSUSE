@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Tue Jul 22 07:11:10 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 3.6.1
+  * New features and improvements
+    + Improve performance of transitive dependency checks
+  * Bug Fixes
+    + Fix NPE when a classifier part is specified in
+      bannedDependencies
+  * Documentation updates
+    + Move contributing information into README
+    + Rewrite CONTRIBUTING.md to use the Github issue tracker
+      instead of JIRA
+  * Maintenance
+    + Remove unused javax.annotations dependency
+    + Remove unused methods
+    + Remove the from parameter names
+    + Fix a grab bag of typos and minor grammar errors
+    + remove unneeded contains check as add already does that
+- Update to version 3.6.0
+  * New features and improvements
+    + Warning about old enforcer api in rule implementation
+    + Introduce ruleName for rules configuration
+    + Improve performance of BannedPlugins and RequireReleaseDeps
+    + Enforce size bounds recursively on directory content
+    + Improve the performance of BannedDependencies
+    + MENFORCER-516: Use rule configuration in POM when executed
+      from CLI
+    + MENFORCER-508: Add option to enforce same versions among Maven
+      modules
+    + MENFORCER-507: Add xsltLocation parameter to ExternalRules
+  * Bug Fixes
+    + RequireSameVersions rule: consider entries in <plugins> when
+      analyzing build- and report-plugins
+    + [MENFORCER-495] - Remove "JAVA_HOME" from rule violation
+      message
+  * Documentation updates
+    + Improve example of custom rule
+    + Make documentation explicit about java versions for custom
+      rules
+    + MNGSITE-529: Rename "Goals" to "Plugin Documentation"
+    + MENFORCER-335: Update dependencyConvergence.apt.vm
+    + MENFORCER-511: Match start-tag to end-tag
+    + MENFORCER-505: fix documentation for
+      requireMatchingCoordinates
+  * Maintenance
+    + Update site descriptor to 2.0.0
+    + Use constant 3.6.3 in prerequisites/maven as minimal Maven
+      version
+    + Enable Github Issues
+    + Remove unused collections
+    + Eliminate some string operations
+    + Use cached default charset and update URL fragment
+    + Add GitHub Automation actions
+    + A grabbag of small simplifications found by IntelliJ
+  * Build
+    + Enable build by Maven 4 on GitHub
+
+-------------------------------------------------------------------
 Wed Oct 30 09:27:39 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 3.5.0
