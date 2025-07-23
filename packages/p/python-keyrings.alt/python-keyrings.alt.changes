@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 18 11:43:08 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- update to 5.0.2
+  * No upstream changelog.
+
+- update to v5.0.1
+  * Fix encoding warnings.
+
+- update to 5.0.0
+  * Require Python 3.8 or later.
+  * Removed the pyfs backend, as it has eroded beyond repair. (#49)
+
+-------------------------------------------------------------------
 Thu Jul  6 11:45:42 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

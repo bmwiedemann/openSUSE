@@ -1,7 +1,7 @@
 #
 # spec file for package python-keyrings.alt
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,29 +19,30 @@
 %define keyring_ver 18.0.0
 %{?sle15_python_module_pythons}
 Name:           python-keyrings.alt
-Version:        4.2.0
+Version:        5.0.2
 Release:        0
 Summary:        Alternate keyring implementations
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/keyrings.alt
-Source:         https://files.pythonhosted.org/packages/source/k/keyrings.alt/keyrings.alt-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/k/keyrings.alt/keyrings_alt-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jaraco.classes
-Requires:       python-pycryptodomex
+Requires:       python-jaraco.context
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pycryptodome}
 BuildRequires:  %{python_module fs >= 0.5}
 BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module keyring >= 20}
+BuildRequires:  %{python_module keyring}
 BuildRequires:  %{python_module pycryptodomex}
-BuildRequires:  %{python_module pycryptodomex}
-BuildRequires:  %{python_module pytest >= 3.5}
+BuildRequires:  %{python_module pycryptodome}
+BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  typelib(GnomeKeyring)
 # /SECTION
 %python_subpackages
@@ -51,7 +52,7 @@ Alternate keyring backend implementations for use with the
 keyring package.
 
 %prep
-%setup -q -n keyrings.alt-%{version}
+%autosetup -p1 -n keyrings_alt-%{version}
 sed -i -e 's/--flake8//' -e 's/--black//' -e 's/--cov//' pytest.ini
 
 %build
@@ -59,14 +60,20 @@ sed -i -e 's/--flake8//' -e 's/--black//' -e 's/--cov//' pytest.ini
 
 %install
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}/keyrings/__pycache__
+%python_expand %fdupes %{buildroot}%{$python_sitelib}/keyrings/alt/__pycache__
 
 %check
 %pytest
 
 %files %{python_files}
-%doc CHANGES.rst README.rst
+%doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%dir %{python_sitelib}/keyrings
+%{python_sitelib}/keyrings/__init__.py
+%pycache_only %{python_sitelib}/keyrings/__pycache__
+%{python_sitelib}/keyrings/alt
+# dynamic version is broken and builds v0.0.0
+%{python_sitelib}/keyrings_alt-*.dist-info
 
 %changelog
