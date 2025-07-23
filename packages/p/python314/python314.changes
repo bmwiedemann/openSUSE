@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Wed Jul 23 08:05:20 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.14.0~rc1:
+  - Tools/Demos
+    - gh-136251: Fixes and usability improvements for
+      Tools/wasm/emscripten/web_example
+  - Security
+    - gh-135661: Fix parsing attributes with whitespaces around
+      the = separator in html.parser.HTMLParser according to the
+      HTML5 standard.
+    - gh-118350: Fix support of escapable raw text mode (elements
+      “textarea” and “title”) in html.parser.HTMLParser.
+  - Library
+    - gh-136170: Removed the unreleased
+      zipfile.ZipFile.data_offset property added in 3.14.0a7 as
+      it wasn’t fully clear which behavior it should have in some
+      situations so the result was not always what a user might
+      expect.
+    - gh-124621: pyrepl now works in Emscripten.
+    - gh-136874: Discard URL query and fragment in
+      urllib.request.url2pathname().
+    - gh-130645: Enable color help by default in argparse.
+    - gh-136549: Fix signature of threading.excepthook().
+    - gh-136523: Fix wave.Wave_write emitting an unraisable when
+      open raises.
+    - gh-52876: Add missing keepends (default True)
+      parameter to codecs.StreamReaderWriter.readline() and
+      codecs.StreamReaderWriter.readlines().
+    - gh-136470: Correct
+      concurrent.futures.InterpreterPoolExecutor’s default thread
+      name.
+    - gh-136476: Fix a bug that was causing the
+      get_async_stack_trace function to miss some frames in the
+      stack trace.
+    - gh-136434: Fix docs generation of UnboundItem in
+      concurrent.interpreters when running with -OO.
+    - gh-136380: Raises AttributeError when accessing
+      concurrent.futures.InterpreterPoolExecutor and
+      subinterpreters are not available.
+    - gh-134759: Fix UnboundLocalError in
+      email.message.Message.get_payload() when the payload to
+      decode is a bytes object. Patch by Kliment Lamonov.
+    - gh-134657: asyncio: Remove some private names from
+      asyncio.__all__.
+  - Core and Builtins
+    - gh-136801: Fix PyREPL syntax highlighting on match cases
+      after multi-line case. Contributed by Olga Matoula.
+    - gh-136421: Fix crash when initializing datetime
+      concurrently.
+    - gh-136541: Fix some issues with the perf trampolines
+      on x86-64 and aarch64. The trampolines were not being
+      generated correctly for some cases, which could lead to
+      the perf integration not working correctly. Patch by Pablo
+      Galindo.
+    - gh-136517: Fixed a typo that prevented printing of
+      uncollectable objects when the gc.DEBUG_UNCOLLECTABLE mode
+      was set.
+    - gh-136525: Fix issue where per-thread bytecode was not
+      instrumented for newly created threads.
+    - gh-132661: Interpolation.expression now has a default, the
+      empty string.
+    - gh-132661: Reflect recent PEP 750 change.
+    - Disallow concatenation of string.templatelib.Template and
+      str. Also, disallow implicit concatenation of t-string
+      literals with string or f-string literals.
+    - gh-116738: Make functions in grp thread-safe on the free
+      threaded build.
+    - gh-135148: Fixed a bug where f-string debug expressions
+      (using =) would incorrectly strip out parts of strings
+      containing escaped quotes and # characters. Patch by Pablo
+      Galindo.
+    - gh-133136: Limit excess memory usage in the free threading
+      build when a large dictionary or list is resized and
+      accessed by multiple threads.
+    - gh-91153: Fix a crash when a bytearray is concurrently
+      mutated during item assignment.
+    - gh-127971: Fix off-by-one read beyond the end of a string
+      in string search.
+  - C API
+    - gh-112068: Revert support of nullable arguments in
+      PyArg_Parse().
+    - gh-133296: New variants for the critical section API that
+      accept one or two PyMutex pointers rather than PyObject
+      instances are now public in the non-limited C API.
+    - gh-134009: Expose PyMutex_IsLocked() as part of the public
+      C API.
+  - Build
+    - gh-135621: PyREPL no longer depends on the curses standard
+      library. Contributed by Łukasz Langa.
+
+-------------------------------------------------------------------
 Thu Jul 10 10:17:47 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix gil/nogil package description, bsc#1246229

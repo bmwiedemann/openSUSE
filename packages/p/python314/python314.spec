@@ -162,8 +162,8 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.14.0~b4
-%define         tarversion 3.14.0b4
+Version:        3.14.0~rc1
+%define         tarversion 3.14.0rc1
 %define         tarname    Python-%{tarversion}
 Release:        0
 Summary:        Python 3 Interpreter
@@ -727,7 +727,7 @@ done
 
 for library in \
     array _asyncio binascii _bisect _bz2 cmath _codecs_* \
-    _csv _ctypes _datetime _decimal fcntl grp \
+    _csv _ctypes _decimal fcntl grp \
     _hashlib _heapq _hmac _json _lsprof _lzma math mmap \
     _multibytecodec _multiprocessing _pickle _posixshmem \
     _posixsubprocess _queue _random resource select _ssl _socket \
@@ -1044,7 +1044,6 @@ fi
 %{dynlib _codecs_tw}
 %{dynlib _csv}
 %{dynlib _ctypes}
-%{dynlib _datetime}
 %{dynlib _decimal}
 %{dynlib _elementtree}
 %{dynlib fcntl}
