@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-ansi-terminal-types
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name ansi-terminal-types
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        1.1
+Version:        1.1.3
 Release:        0
 Summary:        Types and functions used to represent SGR aspects
 License:        BSD-3-Clause
