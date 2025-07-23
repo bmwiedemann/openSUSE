@@ -20,7 +20,7 @@
 %define wuffs_commit e3f919ccfe3ef542cfc983a82146070258fb57f8
 
 Name:           neovide
-Version:        0.15.0
+Version:        0.15.1
 Release:        0
 Summary:        Simple Neovim GUI
 License:        MIT
