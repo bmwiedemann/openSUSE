@@ -161,4 +161,13 @@
     <comment>- Update to version 2.4.0</comment>
     <requestid>1294294</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>15a0e20f4feeccb6bf816d3b03033b45</srcmd5>
+    <version>2.4.1</version>
+    <time>1753281400</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.1
+  see included CHANGES file for details</comment>
+    <requestid>1295298</requestid>
+  </revision>
 </revisionlist>
