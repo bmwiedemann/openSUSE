@@ -114,4 +114,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * WHENCE: some older AMD drivers are MIT licensed</comment>
     <requestid>1289255</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a32231edeaf8fb74dc182baa3697099a</srcmd5>
+    <version>20250717</version>
+    <time>1753281156</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250717 (git commit 6fc20e018cca):
+  * WHENCE: extract more license statements</comment>
+    <requestid>1295039</requestid>
+  </revision>
 </revisionlist>
