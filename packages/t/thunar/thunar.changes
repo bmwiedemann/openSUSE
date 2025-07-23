@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jul 19 08:16:18 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 4.20.4
+  * Improve file add/remove checks for ThunarFolder (#1649)
+  * Properly update view after hidden file rename
+  * Always reload ThunarFiles on change notice (#1650)
+  * Directly notify after file reload (#1650)
+  * Set initial state of "Restore" button (#1663)
+  * Fix quoting when running shell scripts in a terminal (#1661)
+  * Avoid use-after-free in rename dialog when file is changed
+  * Fix a GFile leak in _thunar_io_jobs_rename
+  * Fix use-after-free in thunar_renamer_dialog_response (#1458)
+  * Fix use-after-free on exit with search tabs open (#1593)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri May 16 09:08:52 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 4.20.3
