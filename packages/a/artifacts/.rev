@@ -84,4 +84,12 @@
 - Add PyYAML as a runtime dependency (forwarded request 1255648 from jaimeMF)</comment>
     <requestid>1256346</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>f894e7b8f25cac84f246e4c122d6723a</srcmd5>
+    <version>20221219</version>
+    <time>1753281341</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1295234</requestid>
+  </revision>
 </revisionlist>

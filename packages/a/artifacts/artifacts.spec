@@ -36,7 +36,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module base}
-
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildArch:      noarch
 
 %description
@@ -57,6 +58,7 @@ Summary:        Digital Forensics Artifact Repository Validator
 Group:          Productivity/Security
 Requires:       artifacts
 Requires:       python3-PyYAML
+Requires:       python3-pip
 
 %description validator
 Python modules and program to validate the artifact data. It is
@@ -68,10 +70,10 @@ themselves and not use these Python modules.
 %setup -q -n artifacts-%{timestamp}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %fdupes %{buildroot}%{python_sitelib}
 # these are installed to the wrong dir by %{name}
 rm %{buildroot}/usr/share/doc/%{name}/ACKNOWLEDGEMENTS
@@ -89,7 +91,8 @@ rm %{buildroot}/usr/share/doc/%{name}/README
 
 %files validator
 %license LICENSE
-%{python_sitelib}/artifacts*
+%{python_sitelib}/artifacts
+%{python_sitelib}/artifacts-%{version}.dist-info
 %{_bindir}/validator.py
 %{_bindir}/stats.py
 
