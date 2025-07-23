@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jul 18 14:42:52 UTC 2025 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 2.1.4
+  * work around failing calibration on aarch64
+  * support for kernel flavour-specific calibration 
+  * specific calibration for aarch64 -64kb kernels (jsc#PED-12971)
+  * use KDUMP_NET_TIMEOUT as sftp/ftp timeout
+- update calibrate values
+
+-------------------------------------------------------------------
+Wed Jul  9 12:38:39 UTC 2025 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 2.1.1
+  * check for reserved memory on load for better error reporting
+  * update man page
+  * set KDUMP_CPUS to 1 on XEN (bsc#1244289)
+  * load.sh clean up
+  * use eval for PRESCRIPT, POSTSCRIPT and TRANSFER
+  * sftp: fix key-based authentication
+  * fix and improve calibrate build
+- update calibrate values
+
+-------------------------------------------------------------------
 Thu May 22 08:52:32 UTC 2025 - Jiri Bohac <jbohac@suse.com>
 
 - upgrade to version 2.1.0

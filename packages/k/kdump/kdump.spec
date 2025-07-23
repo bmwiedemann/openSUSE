@@ -14,7 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
+#needsrootforbuild
 
 %bcond_with calibrate
 
@@ -57,7 +57,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        2.1.0
+Version:        2.1.4
 Release:        0
 Summary:        Kernel crash dump scripts and utilities
 License:        GPL-2.0-or-later
@@ -78,16 +78,26 @@ BuildRequires:  pkgconfig(udev)
 # so turn them on unconditionally
 # %if %{with calibrate}
 BuildRequires:  %qemu
-BuildRequires:  dhcp-client
+BuildRequires:  udev
+BuildRequires:  systemd
+BuildRequires:  NetworkManager
+BuildRequires:  iproute2
+BuildRequires:  dbus-1
+BuildRequires:  hostname
 BuildRequires:  dracut >= 047
 BuildRequires:  iputils
 BuildRequires:  kernel-default
+%ifarch aarch64
+BuildRequires:  kernel-64kb
+%endif
 BuildRequires:  lftp
 BuildRequires:  makedumpfile
 BuildRequires:  openssh-clients
+BuildRequires:  openssh-server
 BuildRequires:  pciutils
 BuildRequires:  procps
 BuildRequires:  python3
+BuildRequires:  e2fsprogs
 %ifnarch s390x
 BuildRequires:  qemu-ipxe
 BuildRequires:  qemu-vgabios

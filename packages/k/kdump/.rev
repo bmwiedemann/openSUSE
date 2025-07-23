@@ -1450,4 +1450,27 @@ Please note that the boo#1226676 fix does not completely fix the issue on its ow
 - update calibrate values for SLFO (alp1600)</comment>
     <requestid>1289600</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>2671cc3856e00735ea77c1ec3f6bf5f6</srcmd5>
+    <version>2.1.4</version>
+    <time>1753281173</time>
+    <user>anag_factory</user>
+    <comment>- upgrade to version 2.1.4
+  * work around failing calibration on aarch64
+  * support for kernel flavour-specific calibration 
+  * specific calibration for aarch64 -64kb kernels (jsc#PED-12971)
+  * use KDUMP_NET_TIMEOUT as sftp/ftp timeout
+- update calibrate values
+
+- upgrade to version 2.1.1
+  * check for reserved memory on load for better error reporting
+  * update man page
+  * set KDUMP_CPUS to 1 on XEN (bsc#1244289)
+  * load.sh clean up
+  * use eval for PRESCRIPT, POSTSCRIPT and TRANSFER
+  * sftp: fix key-based authentication
+  * fix and improve calibrate build
+- update calibrate values</comment>
+    <requestid>1295067</requestid>
+  </revision>
 </revisionlist>
