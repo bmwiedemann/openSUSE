@@ -244,4 +244,34 @@
   * feat: add --help</comment>
     <requestid>1256458</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>69950914ce51d2ca0be8ac7efbc471ba</srcmd5>
+    <version>3.15.0</version>
+    <time>1753281257</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.15.0:
+  - [fix] Linux debugging server not starting by @jpeletier
+  - feat: support hex color with # by @seblyng
+  - Fix gcc15 build by @CppCXY
+  - docs: add missing locale. by @qwertycxz
+  - Support Custom Addons Path for Enhanced Editor Flexibility by
+    @IronBlood
+  - Prevent class methods from triggering missing fields
+    diagnostics (Fixes #3175) by @CWood-sdf
+  - fix: large unions no longer erroneously fail to match later
+    variants by @DoubleThoughtTheProgrammer
+  - Traditional Chinese translation by @AlexCai2019
+- Switch to storing upstream soruces as a tarball … saving 60MB
+  on each version is just too much to overlook.
+
+- update to 3.14.0:
+  * feat: provide ES localisation
+  * Diagnostics for unnecessary assert
+  * fix: return empty response to textDocument/formatting if no changes
+  * fix: return empty response to textDocument/completion if completion
+    disabled
+- move tests to a bcond_with condition, as they are very flaky, even
+  on x86_64, most of the time it runs on second try, sometimes 5+</comment>
+    <requestid>1295151</requestid>
+  </revision>
 </revisionlist>

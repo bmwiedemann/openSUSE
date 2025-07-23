@@ -17,8 +17,9 @@
 #
 
 
+%bcond_with     tests
 Name:           lua-language-server
-Version:        3.13.9
+Version:        3.15.0
 Release:        0
 Summary:        Lua Language Server coded by Lua
 License:        MIT
@@ -59,8 +60,8 @@ install -d %{buildroot}%{_bindir}
 sed -e 's#@LIBEXECDIR@#%{_libexecdir}#' %{SOURCE1} > %{buildroot}%{_bindir}/%{name}
 chmod 0755 %{buildroot}%{_bindir}/%{name}
 
-%ifarch x86_64
-#tests are very flaky on non x86_64
+%if %{with tests}
+#tests are very flaky on all arches
 %check
 ./3rd/luamake/luamake unit-test
 %endif

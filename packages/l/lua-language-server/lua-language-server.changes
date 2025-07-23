@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jul 22 12:27:33 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.15.0:
+  - [fix] Linux debugging server not starting by @jpeletier
+  - feat: support hex color with # by @seblyng
+  - Fix gcc15 build by @CppCXY
+  - docs: add missing locale. by @qwertycxz
+  - Support Custom Addons Path for Enhanced Editor Flexibility by
+    @IronBlood
+  - Prevent class methods from triggering missing fields
+    diagnostics (Fixes #3175) by @CWood-sdf
+  - fix: large unions no longer erroneously fail to match later
+    variants by @DoubleThoughtTheProgrammer
+  - Traditional Chinese translation by @AlexCai2019
+- Switch to storing upstream soruces as a tarball … saving 60MB
+  on each version is just too much to overlook.
+
+-------------------------------------------------------------------
+Mon Apr 14 06:27:26 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.14.0:
+  * feat: provide ES localisation
+  * Diagnostics for unnecessary assert
+  * fix: return empty response to textDocument/formatting if no changes
+  * fix: return empty response to textDocument/completion if completion
+    disabled
+- move tests to a bcond_with condition, as they are very flaky, even
+  on x86_64, most of the time it runs on second try, sometimes 5+
+
+-------------------------------------------------------------------
 Wed Mar 26 20:37:12 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 3.13.9:
