@@ -79,7 +79,7 @@ Requires:       (python3-ipython >= 8.13 with python3-ipython < 9)
 Requires:       (python3-jedi >= 0.17.2 with python3-jedi < 0.20)
 Requires:       (python3-pylint >= 3.1 with python3-pylint < 4)
 Requires:       (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
-Requires:       (python3-python-lsp-server-all >= 1.12.0 with python3-python-lsp-server-all < 1.13)
+Requires:       (python3-python-lsp-server-all >= 1.13.0 with python3-python-lsp-server-all < 1.14)
 Requires:       (python3-qtconsole >= 5.6.1 with python3-qtconsole < 5.7)
 Requires:       (python3-spyder-kernels >= 3.0.5 with python3-spyder-kernels < 3.1)
 Requires:       (python3-superqt >= 0.6.2 with python3-superqt < 1)
@@ -181,7 +181,7 @@ BuildRequires:  (python3-ipython >= 8.13 with python3-ipython < 9)
 BuildRequires:  (python3-jedi >= 0.17.2 with python3-jedi < 0.20)
 BuildRequires:  (python3-pylint >= 3.1 with python3-pylint < 4)
 BuildRequires:  (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
-BuildRequires:  (python3-python-lsp-server-all >= 1.12.0 with python3-python-lsp-server-all < 1.13)
+BuildRequires:  (python3-python-lsp-server-all >= 1.13.0 with python3-python-lsp-server-all < 1.14)
 BuildRequires:  (python3-qtconsole >= 5.6.1 with python3-qtconsole < 5.7)
 BuildRequires:  (python3-spyder-kernels >= 3.0.5 with python3-spyder-kernels < 3.1)
 BuildRequires:  (python3-superqt >= 0.6.2 with python3-superqt < 1)
@@ -230,6 +230,10 @@ rm spyder/utils/check-git.sh
 # Upstream brings its fixed versions for pyls, qdarksstyle and spyder-kernels for its
 # test environment, but we want to test against installed packages.
 rm -r external-deps/*
+
+# gh#spyder-ide/spyder#24761
+sed -i -E "s/(PYLSP_REQVER = ).*/\1'>=1.13.0,<1.14.0'/" spyder/dependencies.py
+sed -i -E "s/(python-lsp-server.*)>=[0-9,<.]*/\1>=1.13.0,<1.14.0/" setup.py
 
 sed -i "s/installer = 'pip'/installer = 'openSUSE RPM'/" spyder/__init__.py
 # avoid mtime destroying dedup

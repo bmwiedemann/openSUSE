@@ -875,4 +875,14 @@ rename the package from spyder3 to spyder.
 </comment>
     <requestid>1281211</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>1291d9bb57c85812fb08e4bd5baaefb9</srcmd5>
+    <version>6.0.7</version>
+    <time>1753281360</time>
+    <user>anag_factory</user>
+    <comment>- Bump python-python-lsp-server
+  * Should not effect any incompatibilities:
+    gh#spyder-ide/spyder#24761 (forwarded request 1295255 from bnavigator)</comment>
+    <requestid>1295258</requestid>
+  </revision>
 </revisionlist>

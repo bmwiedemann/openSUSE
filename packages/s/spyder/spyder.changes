@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 23 08:46:39 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Bump python-python-lsp-server
+  * Should not effect any incompatibilities:
+    gh#spyder-ide/spyder#24761
+
+-------------------------------------------------------------------
 Thu May 29 18:28:19 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.0.7
