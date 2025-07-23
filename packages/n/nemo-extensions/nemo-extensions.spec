@@ -2,6 +2,7 @@
 # spec file for package nemo-extensions
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +27,7 @@ URL:            https://github.com/linuxmint/nemo-extensions
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         fix-hwcaps.patch
 Patch1:         gnome-installer-removal.patch
+Patch2:         nemo-extensions-6.4.0-nemo-seahorse-Fix-build-with-gpgme-2.0.0.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime

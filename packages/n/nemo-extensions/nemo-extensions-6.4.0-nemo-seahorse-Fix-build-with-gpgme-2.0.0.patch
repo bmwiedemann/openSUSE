@@ -1,0 +1,24 @@
+From 29aa09a685fe491429c2ac8559506c5dfb4f556c Mon Sep 17 00:00:00 2001
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Mon, 21 Jul 2025 22:58:22 +0200
+Subject: [PATCH] nemo-seahorse: Fix build with gpgme >= 2.0.0
+
+---
+ nemo-seahorse/tool/seahorse-pgp-operation.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/nemo-seahorse/tool/seahorse-pgp-operation.c b/nemo-seahorse/tool/seahorse-pgp-operation.c
+index 1c01c13..f1c459a 100644
+--- a/nemo-seahorse/tool/seahorse-pgp-operation.c
++++ b/nemo-seahorse/tool/seahorse-pgp-operation.c
+@@ -300,7 +300,6 @@ event_cb (void *data, gpgme_event_io_t type, void *type_data)
+         break;
+ 
+     case GPGME_EVENT_NEXT_KEY:
+-    case GPGME_EVENT_NEXT_TRUSTITEM:
+     default:
+         /* Ignore unsupported event types */
+         break;
+-- 
+2.50.1
+

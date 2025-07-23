@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 21 21:02:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build with gpgme >= 2.0.0 (boo#1246849), add
+  nemo-extensions-6.4.0-nemo-seahorse-Fix-build-with-gpgme-2.0.0.patch
+
+-------------------------------------------------------------------
 Sat Jun 14 18:14:28 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix nemo-exensions-image-converter file misplaced into the
