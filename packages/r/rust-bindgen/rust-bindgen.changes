@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Sat Jul 19 08:41:26 UTC 2025 - Mark Abarintos <mrkcee@protonmail.com>
+
+- Update to version 0.71.1:
+  * chore: bump versions and update changelog
+  * ci: bump macos image for x86 binaries
+  * chore: update changelog for release
+  * ci: Revert `cargo-dist` update
+  * chore: use custom action to create the tag
+  * ci: fetch all the history
+  * ci: invert conditional
+  * ci: fix `git rev-parse`
+  * chore: fix `create-tag` conditional logic
+  * ci: add missing `&&` on `create-tag.yml`
+  * ci: checkout to the right commit
+  * ci: sign tag
+  * ci: allow creating tags on manually
+  * ci: only trigger tag creation on github-actions PRs
+  * ci: update `cargo-dist` version
+  * ci: add regression tests for #3037 and #3039
+  * Unbreak shell completion and --version without header
+  * Add version field to `bindgen` as a dependency
+  * chore: bump versions
+  * chore: update changelog
+  * ci: remove `main_tests` from matrix
+  * ci: remove unused targets
+  * docs(book): fix inconsistent use of Clang versions
+  * docs(book): fix package name for the extra Clang tools
+  * ci: Move forward Rust for Linux version to v6.13-rc1
+  * Use `KyleMayes/install-llvm-action` to install LLVM
+  * Use `macos-latest` on CI
+  * Fix regression spotted at #3027
+  * Bless all the tests
+  * Update the `--merge-extern-blocks` tests
+  * Test the `unsafe_extern_blocks` feature
+  * Add support for unsafe extern blocks
+  * Fix some markdown
+  * Expose the name of the inner type of an alias
+  * Add FieldInfo::field_type_name
+  * Wrap the array representation of opaque types in a #[repr(C)] struct
+  * example test for item discovery callback (new_item_found)
+  * expose discovered composite types and aliases to parse callbacks
+  * Improve debug str generator
+  * Fix `manual_let_else` and `single_match_else` lint
+  * Fix `explicit_iter_loop` lint
+  * Fix `if_not_else` lint
+  * Fix `map_unwrap_or` lint
+  * Fix `cast_lossless` lint
+  * Fix a lot of `unused_qualifications` lints
+  * Bump some dependencies
+  * Consolidate clippy configuration
+  * automate MSRV in CI
+  * consolidate versions in one place
+  * sort dependencies
+  * Linting semicolons
+  * Inline more format args, spelink
+  * Applied clippy cloned->copied, and cleanup
+  * Make RustEdition public
+  * Test the `literal_cstr` feature with different editions
+  * Add support for edition 2024
+  * Introduce `--rust-edition`
+  * Make nightly target compatible with every other target
+  * Use `Display` for `Builder::generate` errors
+  * Clippify, and hide some lints in test output
+  * Inline format args
+  * Use v2 cargo resolver
+  * a few more lints
+  * avoid compiler warning
+  * Automatic support for C-String literals
+  * Bump to 2021 edition
+  * Update the help message for `--rust-target`
+  * Ignore the `layout.h` test
+  * Make clippy happy :)
+  * Remove deprecated targets
+  * Add constructors to `RustTarget`
+  * Represent Rust versions with integers
+  * Make `RustTarget` parsing more permissive
+  * Recognize inline namespaces using clang's dedicated API for that
+  * Add test of macro-generated inline namespace
+  * Install libtinfo5 from jammy-updates
+  * Add `raw_ref_macros` feature
+  * Handle version and shell completions
+  * Let clap handle missing headers
+  * abstract away the control-flow for applying args
+  * delete duplicated default logic for `--anon-fields-prefix`
+  * Formatted `CONTRIBUTING.md`. - Passes `markdownlint` (mostly) - Removed `$` from shell instructions, as to be more copy/paste friendly - Annotated code-like things with backticks. - Annotated all shell blocks with `sh` to format nicely on GitHub.com.
+  * make `RegexSet` non-public
+  * Move CLI options to `bindgen`
+  * Set edition for `bindgen-integration`
+  * Use workspace inheritance for dependencies
+  * Changelog: Move --with-attribute-custom to unreleased
+  * Restrict release workflow to pushes
+  * Use `field_visibility` callback for new-type aliases
+  * Wrap __library.get calls for variables if wrap_unsafe_ops
+  * Add test showing bad behavior for non-functions
+  * Wrap libloading::Library::new call in unsafe if --wrap-unsafe-ops
+  * update small typo
+  * ci: Move forward Rust for Linux version
+  * Docs: Fix example code error
+  * Update `cargo-dist`
+  * Update documentation of Debian dependencies
+  * Update libc.
+  * Require libclang 9.0 or newer Adds a check for the loaded libclang version and logs a warning if the version is unsupported.
+  * Add additional helpers to bitfield data structure
+  * ci: Add Rust for Linux
+  * Update CHANGELOG.md
+  * Stabilize `--wrap-static-fns`
+  * Update CHANGELOG.md
+  * Use `\r\n\r\n` on Windows
+  * Add support for custom attributes
+  * update to use annotate-snippets 0.11.4
+  * update to annotate-snippets 0.10.2
+  * ir: Dig into atomic types.
+  * Explain how to generate documentation for system headers
+  * Only publish on crates.io if the workflow event is called `'Release'`
+  * Update cargo-dist config
+
+-------------------------------------------------------------------
 Wed Aug 21 06:48:23 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.70.1:
