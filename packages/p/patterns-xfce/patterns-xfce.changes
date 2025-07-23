@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 22 13:22:41 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add missing MozillaFirefox to xfce_basis_wayland 
+
+-------------------------------------------------------------------
+Tue Jul 22 11:45:29 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add greetd and gtkgreet as a minimal Display Manager solution.
+  These are pulled by new greetd-gtkgreet-xfce-wayland which
+  runs gtkgreet with cage and starts startxfce --wayland
+
+-------------------------------------------------------------------
 Fri Jul 11 12:01:05 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Add Experimental Wayland variants of patterns 

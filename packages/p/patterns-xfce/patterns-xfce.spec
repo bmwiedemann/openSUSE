@@ -214,8 +214,8 @@ Recommends:     seahorse
 Recommends:     simple-scan
 Recommends:     thunar-sendto-blueman
 
-# LightDM is X11-based — omit or replace with Wayland DM (like GDM or SDDM)
-# Consider recommending greetd + gtkgreet if keeping it minimal.
+# greetd + gtkgreet to keep it minimal.
+Recommends:     greetd-gtkgreet-xfce-wayland
 
 # Debug + quality-of-life tools
 Recommends:     gdb
@@ -464,6 +464,8 @@ Recommends:     xdg-utils
 Recommends:     desktop-file-utils
 Recommends:     shared-mime-info
 Recommends:     xdg-user-dirs
+
+Recommends:     MozillaFirefox
 
 %description xfce_basis_wayland
 Base packages for the XFCE Desktop Environment using Wayland.
