@@ -1,7 +1,60 @@
 -------------------------------------------------------------------
+Tue Jul 22 14:47:58 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 1.22.2
+  * Syntax file installation
+  * Better Wayland build errors
+- update to 1.22.1
+  * MODULE
+  * Add #include to fix building with gcc 15 
+
+-------------------------------------------------------------------
 Mon Mar  3 03:03:03 UTC 2025 - olaf@aepfle.de
 
 - Use gcc13 in SLE15 because because C++17 is used
+
+-------------------------------------------------------------------
+Wed Jan  8 08:48:45 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.22.0:
+  Features:
+  * Allow to override build date with SOURCE_DATE_EPOCH #2096
+  * Add support for power_now #2099
+  Bug fixes:
+  * NetBSD: Fix CPU usage and top info. #2101
+  * Fix out_to_wayland giving nothing #2103
+  * Revert "Use private mapping from provided shm_pool buffer" #2104
+  * Fix non-text content using own_window_argb_value #2105
+  * NetBSD: Fix meminfo. #2122
+  * wayland: fix clean_text bug #2127
+
+-------------------------------------------------------------------
+Wed Jan  8 08:47:56 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.21.9:
+  Features:
+  * Implement -U for FreeBSD. #2077
+  * OpenBSD: Fill missing fields in get_top_info(). #2093
+  * Implement -U for Haiku. #2079
+  Bug fixes:
+  * lua-imlib2: fix memory leak #2083
+  * Fix OpenBSD build #2080
+  * Fix NetBSD build #2089
+  * OpenBSD: Fix CPU Usage. #2092
+
+-------------------------------------------------------------------
+Wed Jan  8 08:46:21 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.21.8:
+  Features:
+  * Implement -U. #2049
+  Bug fixes:
+  * set display to null for race condition #2032
+  * src/fs.{cc,h}: Update fs_stats without error spam. #2033
+  * audacious.cc: print_audacious_filename(): fix always empty $audacious_filename #2038
+  * Fix tcp_ping for non-existent local network hosts #2043
+  * Fix if_match comparison for string operands containing operator symbols (#1988) 
+  * fix: set initial state withdrawn wm hint (fixes #2046) #2056
 
 -------------------------------------------------------------------
 Thu Oct 17 01:27:40 UTC 2024 - Simon Lees <sflees@suse.de>
