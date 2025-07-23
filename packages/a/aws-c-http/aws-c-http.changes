@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 22 08:32:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.10.4
+  * [fix] failed to compile on FreeBSD by @TingDaoK in (#527)
+- from version 0.10.3
+  * Remove Windows 2019 and add Windows 2025 with MSVC-17 by @TingDaoK in (#521)
+  * Support no_proxy exactly like CURL by @TingDaoK in (#522)
+
+-------------------------------------------------------------------
 Tue Jun 10 07:03:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.10.2
