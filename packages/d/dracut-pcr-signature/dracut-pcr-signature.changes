@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 22 09:27:06 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.6+2 (bsc#1246322):
+  * Extract the token from os-release
+
+-------------------------------------------------------------------
+Mon Mar 17 14:49:21 UTC 2025 - aplanas@suse.com
+
+- Update to version 0.6+1:
+  * Fix typo in service description
+
+-------------------------------------------------------------------
 Fri Jan 31 13:46:43 UTC 2025 - aplanas@suse.com
 
 - Update to version 0.6+0:
