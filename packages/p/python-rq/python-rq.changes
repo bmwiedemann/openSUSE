@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Jul 23 10:45:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.4.1
+  * `Worker` will now automatically choose `TimerDeathPenalty` if
+    `UnixSignalDeathPenalty` is not available. Thanks @selwin!
+  * Introduced `CREATED` `Job` status for jobs that are not enqueued
+    not deferred. Thanks @selwin!
+  * `Worker` can now import `Job` and `Queue` classes from string.
+    Thanks @selwin!
+  * Fixed a bug in `Group.cleanup()`. Thanks @dixoncrews-gdl!
+  * Logging improvements and code cleanups. Thanks @selwin, @SpecLad!
+- from version 2.4.0
+  * Added `rq cron` CLI command. Thanks @selwin!
+  * Various tests, typing improvements and cleanups. Thanks @SpecLad!
+  * When a job is canceled, you can now optionally clean it from
+    dependencies using `job.cancel(remove_from_dependencies=True)`.
+    Thanks @Marishka17!
+  * RQ now requires Python >= 3.9. Thanks @Jankovn and @selwin!
+- from version 2.3.3
+  * `WorkerPool` now accepts `queue_class` argument. Thanks @amonsh1!
+  * Disallow `redis-py=6.0.0`. Thanks @selwin and @terencehonles!
+  * Minor typing improvements. Thanks @SpecLad!
+- from version 2.3.2
+  * Don't log job description when `log_job_description` is set to False.
+    Thanks @danilopeixoto!
+  * Fixes an issue where `pubsub_thread` may die in the background.
+    Thanks @ankush!
+- from version 2.3.1
+  * Fixes an issue running RQ on Windows. Thanks @selwin!
+- from version 2.3.0
+  * Added the feature to repeat jobs. Thanks @selwin!
+  * Officially support Valkey. Thanks @selwin!
+  * Fixes an issue that prevents jobs from being enqueued across multiple
+    with using Redis pipeline. Thanks @Nativu5!
+- from version 2.2.0
+  * Added `SpawnWorker` that uses `multiprocessing.spawn` to spawn worker
+    processes. This makes RQ usable in operating systems without `os.fork()`
+    like Windows. Thanks @selwin!
+  * RQ now always use timezone aware timestamps. Thanks @deathtracktor!
+  * `StartedJobRegistry.cleanup()` now properly creates job results.
+    Thanks @OlegZv!
+  * Fixed a bug in worker logging configuration. Thanks @rlaminseok0824!
+  * Reworked RQ's pubsub thread to not use polling. Thanks @ankush!
+  * Fixed a bug where `WorkerPool` status is never set to `STARTED`.
+    Thanks @taleinat!
+  * `Worker.monitor_work_horse()` now properly handles `InvalidJobOperation`.
+    Thanks @fancyweb!
+  * `queue.enqueue_many` now always registers the queue in RQ's queue registry.
+    Thanks @eswolinsky3241!
+  * Minor fixes and improvements. Thanks @hongquan, @OlegZv, @victorb, @rparini!
+- from version 2.1.0
+  * `job.id` must not contain `:`. Thanks @sanurielf!
+  * Various type hint improvements by @terencehonles!
+  * `job.ended_at` should be set when job is run synchronously.
+    Thanks @alexprabhat99!
+  * `Group.all()` now properly handles non existing group.
+    Thanks @eswolinsky3241!
+  * Use `ruff` instead of `black` as formatter. Thanks @hongquan!
+
+-------------------------------------------------------------------
 Thu Nov  7 15:28:00 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 2.0.0
