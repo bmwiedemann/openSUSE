@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 23 08:29:46 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.13.0
+  * Format signatures in docstrings.
+  * Add support for type definition.
+  * Send websocket payload using a queue.
+  * Fix getting symbols with inline comments that include the
+    import word.
+  * Drop support for Python 3.8
+
+-------------------------------------------------------------------
 Thu May 29 18:57:12 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Bump flake8 dependencies

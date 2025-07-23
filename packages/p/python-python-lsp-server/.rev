@@ -415,4 +415,18 @@
 - Remove PyQt5 test dependency and skip the one test using it (forwarded request 1281203 from bnavigator)</comment>
     <requestid>1281204</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f9edebc2f7754940369c38071709e8e2</srcmd5>
+    <version>1.13.0</version>
+    <time>1753281358</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.13.0
+  * Format signatures in docstrings.
+  * Add support for type definition.
+  * Send websocket payload using a queue.
+  * Fix getting symbols with inline comments that include the
+    import word.
+  * Drop support for Python 3.8 (forwarded request 1295256 from bnavigator)</comment>
+    <requestid>1295257</requestid>
+  </revision>
 </revisionlist>

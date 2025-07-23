@@ -18,22 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-lsp-server
-Version:        1.12.2
+Version:        1.13.0
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python_lsp_server-%{version}.tar.gz
 Patch1:         unpin-autopep8.patch
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros >= 20210628
 # SECTION test requirements
-BuildRequires:  %{python_module docstring-to-markdown}
 BuildRequires:  %{python_module autopep8 >= 2.0.4}
+BuildRequires:  %{python_module black}
+BuildRequires:  %{python_module docstring-to-markdown}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module importlib_metadata > 4.8.3 if %python-base < 3.10}
 BuildRequires:  %{python_module jedi >= 0.17.2 with %python-jedi < 0.20}
@@ -47,15 +48,17 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lsp-jsonrpc >= 1.1.0 with %python-python-lsp-jsonrpc < 2}
 BuildRequires:  %{python_module rope >= 1.2.0}
 BuildRequires:  %{python_module ujson >= 3.0.0}
+BuildRequires:  %{python_module websockets >= 10.3}
 BuildRequires:  %{python_module whatthepatch >= 1.0.2 with %python-whatthepatch < 2}
 BuildRequires:  %{python_module yapf >= 0.33}
 # flake8 is special, see below
 BuildRequires:  %{python_module flake8 >= 7.2 with %python-flake8 < 8}
 BuildRequires:  %{python_module mccabe >= 0.7.0 with %python-mccabe < 0.8.0}
-BuildRequires:  %{python_module pycodestyle >= 2.13.0 with %python-pycodestyle < 2.14.0}
-BuildRequires:  %{python_module pyflakes >= 3.3.0 with %python-pyflakes < 3.4.0}
+BuildRequires:  %{python_module pycodestyle >= 2.14.0 with %python-pycodestyle < 2.15.0}
+BuildRequires:  %{python_module pyflakes >= 3.4.0 with %python-pyflakes < 3.5.0}
 # /SECTION
 BuildRequires:  fdupes
+Requires:       python-black
 Requires:       python-docstring-to-markdown
 Requires:       python-pluggy >= 1.0.0
 Requires:       python-ujson >= 3.0.0
@@ -91,15 +94,15 @@ Summary:        The python-lsp-server[all] extra
 Requires:       python-autopep8 >= 2.0.4
 Requires:       python-rope >= 1.2.0
 Requires:       python-yapf >= 0.33
-Requires:       (python-pycodestyle >= 2.13.0 with python-pycodestyle < 2.14.0)
+Requires:       (python-pydocstyle >= 6.3.0 with python-pydocstyle < 6.4.0)
 Requires:       (python-pylint >= 3.1 with python-pylint < 4)
 Requires:       (python-whatthepatch >= 1.0.2 with python-whatthepatch < 2)
 # Let's bump this in sync with flake8 and ignore pylsp upstream being still behind
 # https://flake8.pycqa.org/en/latest/faq.html#why-does-flake8-use-ranges-for-its-dependencies
 Requires:       (python-flake8 >= 7.2 with python-flake8 < 8)
 Requires:       (python-mccabe >= 0.7.0 with python-mccabe < 0.8.0)
-Requires:       (python-pydocstyle >= 6.3.0 with python-pydocstyle < 6.4.0)
-Requires:       (python-pyflakes >= 3.3.0 with python-pyflakes < 3.4.0)
+Requires:       (python-pycodestyle >= 2.14.0 with python-pycodestyle < 2.15.0)
+Requires:       (python-pyflakes >= 3.3.0 with python-pyflakes < 3.5.0)
 
 %description all
 Python Language Server for the Language Server Protocol
@@ -111,11 +114,12 @@ python-lsp-server[all] extra requirement
 %autosetup -p1 -n python_lsp_server-%{version}
 # Remove pytest addopts
 sed -i '/addopts/d' pyproject.toml
-# see flake8 comment above
+# see flake8 comment above, check
+# https://github.com/PyCQA/flake8/blob/main/setup.cfg
 sed -i  pyproject.toml \
     -e 's/flake8>=7.1,<8/flake8>=7.2,<8/' \
-    -e 's/pycodestyle>=2.12.0,<2.13.0/pycodestyle>=2.13.0,<2.14.0/' \
-    -e 's/pyflakes>=3.2.0,<3.3.0/pyflakes>=3.3.0,<3.4.0/'
+    -e 's/pycodestyle>=2.12.0,<2.13.0/pycodestyle>=2.14.0,<2.15.0/' \
+    -e 's/pyflakes>=3.2.0,<3.3.0/pyflakes>=3.4.0,<3.5.0/'
 
 %build
 %pyproject_wheel
