@@ -29,4 +29,13 @@ After this PR, there will be a delete request for kernel-firmware.
   instructing zypp about the usrmerge is perfect for this use case.</comment>
     <requestid>1272738</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>faa582a279a1695dfbf41fecf4767040</srcmd5>
+    <version>20250717</version>
+    <time>1753281158</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250717 (git commit 6fc20e018cca):
+  * WHENCE: extract more license statements</comment>
+    <requestid>1295041</requestid>
+  </revision>
 </revisionlist>
