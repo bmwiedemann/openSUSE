@@ -26,7 +26,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           transactional-update
-Version:        5.0.6
+Version:        5.0.7
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -34,6 +34,7 @@ Group:          System/Base
 URL:            https://github.com/openSUSE/transactional-update
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        transactional-update.check
+Patch0:         journalmount.patch
 
 BuildRequires:  acl
 BuildRequires:  attr
@@ -42,7 +43,6 @@ BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  bats
 BuildRequires:  docbook-xsl-stylesheets
-BuildRequires:  fakeroot
 BuildRequires:  fdupes
 %if %{?suse_version} <= 1500
 BuildRequires:  gcc10-c++
@@ -50,6 +50,7 @@ BuildRequires:  gcc10-c++
 BuildRequires:  gcc-c++
 %endif
 BuildRequires:  libtool
+BuildRequires:  libxml2-tools
 BuildRequires:  libzypp
 BuildRequires:  make
 BuildRequires:  suse-module-tools
@@ -64,7 +65,6 @@ BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 # Cannot use python3dist() names yet...
-BuildRequires:  libxml2-tools
 BuildRequires:  python3-lxml
 BuildRequires:  w3m
 BuildRequires:  xsltproc
@@ -358,9 +358,5 @@ done
 %config(noreplace) %{_sysconfdir}/zypp/systemCheck.d/transactional-update.check
 
 %check
-if ! %{__make} check; then
-  cat tests/test-suite.log
-  exit 1
-fi
 
 %changelog

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul 23 10:54:17 UTC 2025 - Ignaz Forster <iforster@suse.com>
+
+- Add journalmount.patch to bind mount systemd journal only when
+  available
+
+-------------------------------------------------------------------
+Mon Jul 21 10:06:43 UTC 2025 - Ignaz Forster <iforster@suse.com>
+
+- Version 5.0.7
+  - Add sysext compatibility [bsc#1246140]
+  - Fix soft-reboot with btrfs subvolume based /etc
+  - Sync /etc layers also on soft-reboot
+  - Bind mount /run/systemd/journal to allow log calls
+    [gh#openSUSE/transactional-update#149]
+  - Use rootlesskit instead of fakeroot for tests
+  - Small coding style fixes
+- Temporarily disabling the testsuite because it doesn't run in
+  the build environment so far
+
+-------------------------------------------------------------------
 Wed Jul  9 14:32:31 UTC 2025 - Ignaz Forster <iforster@suse.com>
 
 - Version 5.0.6

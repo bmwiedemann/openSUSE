@@ -1366,4 +1366,32 @@ Also requires https://build.opensuse.org/request/show/1167142.</comment>
   - Integrate test to support `make check</comment>
     <requestid>1291508</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>eedb6436e5a49ea4e3222693846089b1</srcmd5>
+    <version>5.0.7</version>
+    <time>1753281138</time>
+    <user>anag_factory</user>
+    <comment>- Version 5.0.7
+  - Add sysext compatibility [bsc#1246140]
+  - Fix soft-reboot with btrfs subvolume based /etc
+  - Sync /etc layers also on soft-reboot
+  - Bind mount /run/systemd/journal to allow log calls [gh#openSUSE/transactional-update#149]
+  - Use rootlesskit instead of fakeroot for tests
+  - Small coding style fixes
+- Temporarily disabling the testsuite because it doesn't run in the build environment so far
+- Add journalmount.patch to bind mount systemd journal only when
+  available
+
+- Version 5.0.7
+  - Add sysext compatibility [bsc#1246140]
+  - Fix soft-reboot with btrfs subvolume based /etc
+  - Sync /etc layers also on soft-reboot
+  - Bind mount /run/systemd/journal to allow log calls
+    [gh#openSUSE/transactional-update#149]
+  - Use rootlesskit instead of fakeroot for tests
+  - Small coding style fixes
+- Temporarily disabling the testsuite because it doesn't run in
+  the build environment so far</comment>
+    <requestid>1295281</requestid>
+  </revision>
 </revisionlist>
