@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Tue Jul 22 10:25:50 UTC 2025 - pgajdos@suse.com
+
+- version update to 6.15
+  New and rewritten pages
+  -----------------------
+  man2/
+          cachestat.2
+          fcntl.2                                 (split into many pages)
+          fcntl_locking.2                         (previously, fcntl(2))
+          futex.2                                 (split into many pages)
+  man2const/
+          FUTEX_CMP_REQUEUE.2const                (previously, futex(2))
+          FUTEX_CMP_REQUEUE_PI.2const             (previously, futex(2))
+          FUTEX_FD.2const                         (previously, futex(2))
+          FUTEX_LOCK_PI.2const                    (previously, futex(2))
+          FUTEX_LOCK_PI2.2const                   (previously, futex(2))
+          FUTEX_REQUEUE.2const                    (previously, futex(2))
+          FUTEX_TRYLOCK_PI.2const                 (previously, futex(2))
+          FUTEX_UNLOCK_PI.2const                  (previously, futex(2))
+          FUTEX_WAIT.2const                       (previously, futex(2))
+          FUTEX_WAIT_BITSET.2const                (previously, futex(2))
+          FUTEX_WAIT_REQUEUE_PI.2const            (previously, futex(2))
+          FUTEX_WAKE.2const                       (previously, futex(2))
+          FUTEX_WAKE_OP.2const                    (previously, futex(2))
+          F_DUPFD.2const                          (previously, fcntl(2))
+          F_GETFD.2const                          (previously, fcntl(2))
+          F_GETFL.2const                          (previously, fcntl(2))
+          F_GETLEASE.2const                       (previously, fcntl(2))
+          F_GETPIPE_SZ.2const                     (previously, fcntl(2))
+          F_GETSIG.2const                         (previously, fcntl(2))
+          F_GET_RW_HINT.2const                    (previously, fcntl(2))
+          F_GET_SEALS.2const                      (previously, fcntl(2))
+          F_NOTIFY.2const                         (previously, fcntl(2))
+          PR_FUTEX_HASH.2const                    (previously, fcntl(2))
+  man3attr/
+          intro.3attr
+          gnu::aligned.3attr                      
+          gnu::format.3attr
+  Newly documented interfaces in existing pages   
+  ---------------------------------------------   
+  man2/   
+          chmod.2
+                  fchmodat(AT_EMPTY_PATH)
+                  fchmodat(AT_SYMLINK_NOFOLLOW)
+  
+          ioctl_vt.2
+                  VT_GETCONSIZECSRPOS
+  
+          prctl.2
+                  PR_FUTEX_HASH
+  
+          *printf.3
+                  ERRORS
+  
+          statx.2
+                  statx.stx_atomic_write_unit_max_opt
+  man2const/
+          PR_FUTEX_HASH.2const
+                  PR_FUTEX_HASH
+  
+          TIOCLINUX.2const
+                  TIOCL_GETBRACKETEDPASTE
+  
+          UFFDIO_API.2const
+                  UFFDIO_FEATURE_MOVE
+  man5/
+          core.5
+                  /proc/sys/kernel/core_pattern   %F
+- added sources
+  + man-pages-6.15.tar.sign
+
+-------------------------------------------------------------------
 Mon May 12 07:20:01 UTC 2025 - pgajdos@suse.com
 
 - version update to 6.14

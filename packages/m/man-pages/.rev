@@ -2261,4 +2261,41 @@
     abs.3</comment>
     <requestid>1276752</requestid>
   </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>2e310aa86f14a9f825a6634fbc2d63af</srcmd5>
+    <version>6.15</version>
+    <time>1753281134</time>
+    <user>anag_factory</user>
+    <comment>- version update to 6.15
+  New and rewritten pages
+  -----------------------
+  man2/
+          cachestat.2
+          fcntl.2                                 (split into many pages)
+          fcntl_locking.2                         (previously, fcntl(2))
+          futex.2                                 (split into many pages)
+  man2const/
+          FUTEX_CMP_REQUEUE.2const                (previously, futex(2))
+          FUTEX_CMP_REQUEUE_PI.2const             (previously, futex(2))
+          FUTEX_FD.2const                         (previously, futex(2))
+          FUTEX_LOCK_PI.2const                    (previously, futex(2))
+          FUTEX_LOCK_PI2.2const                   (previously, futex(2))
+          FUTEX_REQUEUE.2const                    (previously, futex(2))
+          FUTEX_TRYLOCK_PI.2const                 (previously, futex(2))
+          FUTEX_UNLOCK_PI.2const                  (previously, futex(2))
+          FUTEX_WAIT.2const                       (previously, futex(2))
+          FUTEX_WAIT_BITSET.2const                (previously, futex(2))
+          FUTEX_WAIT_REQUEUE_PI.2const            (previously, futex(2))
+          FUTEX_WAKE.2const                       (previously, futex(2))
+          FUTEX_WAKE_OP.2const                    (previously, futex(2))
+          F_DUPFD.2const                          (previously, fcntl(2))
+          F_GETFD.2const                          (previously, fcntl(2))
+          F_GETFL.2const                          (previously, fcntl(2))
+          F_GETLEASE.2const                       (previously, fcntl(2))
+          F_GETPIPE_SZ.2const                     (previously, fcntl(2))
+          F_GETSIG.2const                         (previously, fcntl(2))
+          F_GET_RW_HINT.2const                    (previously, fcntl(2))
+          F_GET_SEALS.2const                      (previously, fcntl(2))</comment>
+    <requestid>1295084</requestid>
+  </revision>
 </revisionlist>
