@@ -30,6 +30,10 @@
 %define pname o2scl
 %define shlib lib%{pname}0
 
+%ifnarch aarch64 %{arm}
+%define needlibquadmath 1
+%endif
+
 # Use GCC 14 for TW until upstream fixes issues when building with GCC 15
 %if 0%{?suse_version} >= 1650
 %define gcc_ver 14
@@ -67,7 +71,9 @@ BuildRequires:  python3-setuptools
 BuildRequires:  readline-devel
 %endif
 %if 0%{?gcc_ver}
+%if 0%{?needlibquadmath}
 BuildRequires:  libquadmath0-devel-gcc%{gcc_ver}
+%endif
 %endif
 Recommends:     %{pname}-doc = %{version}
 
@@ -103,7 +109,9 @@ Requires:       pkgconfig(fftw3)
 Requires:       pkgconfig(gsl)
 Requires:       pkgconfig(mpfr)
 %if 0%{?gcc_ver}
+%if 0%{?needlibquadmath}
 Requires:       libquadmath0-devel-gcc%{gcc_ver}
+%endif
 %endif
 
 %description -n %{pname}-devel
