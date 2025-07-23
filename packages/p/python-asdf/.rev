@@ -394,4 +394,24 @@
   * Deprecate opening http uris unless fsspec is installed.</comment>
     <requestid>1292449</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4111188f017f5dca9fe9895d0bc4cd8d</srcmd5>
+    <version>4.3.0</version>
+    <time>1753281394</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.3.0
+  * return ndarray if lazy_load=False by @braingram in #1929
+  * Add dump load dumps and loads to top level asdf by @braingram
+    in #1930
+  * Fix urljoin usage for python 3.14 by @braingram in #1932
+  * deprecate resolver argument to load_schema by @braingram in
+    #1934
+  * deprecate refresh_extension_manager by @braingram in #1935
+  * Restrict scope of ndarray validators by @braingram in #1937
+  * Fixes for custom schemas by @braingram in #1931
+  * deprecate url_mapping argument to get_validator by @braingram
+    in #1936
+</comment>
+    <requestid>1295291</requestid>
+  </revision>
 </revisionlist>
