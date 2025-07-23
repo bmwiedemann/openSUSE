@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 22 02:55:53 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-bsc1246464-use-default-uefi-boot-path.patch to
+  use the default EFI boot path if there is no FILE compoment in
+  in the boot entry (bsc#1246464)
+
+-------------------------------------------------------------------
 Wed Jun 11 08:25:31 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fde-tools-bsc1244323-firstboot-fix-lsinitrd.patch to fix the

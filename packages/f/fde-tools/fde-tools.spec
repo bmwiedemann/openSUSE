@@ -32,6 +32,7 @@ Source1:        fde-tools.service
 Patch0:         fde-tools-firstboot-alp-snapshot.patch
 Patch1:         fde-tools-bsc1243877-firstboot-remove-key-conf.patch
 Patch2:         fde-tools-bsc1244323-firstboot-fix-lsinitrd.patch
+Patch3:         fde-tools-bsc1246464-use-default-uefi-boot-path.patch
 BuildRequires:  help2man
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcryptsetup)
