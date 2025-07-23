@@ -463,4 +463,41 @@
 </comment>
     <requestid>1204540</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>f0dc4ce4a32d1f67c11680c2d78b93de</srcmd5>
+    <version>0.10.2</version>
+    <time>1753281366</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.10.2
+  * This release includes numerous bug fixes and improvements, with
+    major changes such as a substantial reorganization of the
+    documentation into a User Guide and Reference Manual, more
+    consistent and complete docstrings, and support for referencing
+    signals and subsystems by name as well as by index. Phase plane
+    plots now use matplotlib’s streamplot for better visuals. New
+    functions include combine_tf and split_tf for MIMO/SISO
+    conversion and disk_margins for stability analysis. Additional
+    improvements include consistent keyword usage, expanded LTI
+    system methods for plotting and responses, better error
+    messages, and legacy aliases to maintain backward
+    compatibility.
+  * This version of python-control requires Python 3.10 or higher,
+    NumPy 1.23 or higher (2.x recommended), and SciPy 1.8 or
+    higher.
+  ## New classes, functions, and methods
+  *  find_operating_point: this function replaces (with a legacy
+     alias) the find_eqpt function and now returns an
+     OperatingPoint object containing the information about the
+     operating point.
+  *  combine_tf and split_tf: these two new functions allow you to
+     create an MIMO transfer function from SISO transfer functions
+     and vice versa.
+  *  create_statefbk_iosystem now allows the creation of state
+     feedback controllers using a “reference gain” pattern (u =
+     k_\text{f}\, r - K x) in addition to the default “trajectory
+     generation” pattern (u = u_\text{d} - K(x - x_\text{d})).
+  *  disk_margins: compute disk-based stability margins for SISO
+     and MIMO systems.</comment>
+    <requestid>1295262</requestid>
+  </revision>
 </revisionlist>

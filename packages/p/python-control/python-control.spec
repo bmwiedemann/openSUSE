@@ -1,7 +1,7 @@
 #
 # spec file for package python-control
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,35 +18,36 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-control
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        Python control systems library
 License:        BSD-3-Clause
 URL:            https://python-control.org
 Source:         https://files.pythonhosted.org/packages/source/c/control/control-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-matplotlib
-Requires:       python-numpy
-Requires:       python-scipy >= 1.3
+Requires:       python-matplotlib >= 3.6
+Requires:       python-numpy >= 1.23
+Requires:       python-scipy >= 1.8
 Recommends:     python-slycot
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module matplotlib-qt}
-BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module PyQt6}
+BuildRequires:  %{python_module matplotlib >= 3.6}
+BuildRequires:  %{python_module numpy >= 1.23}
+BuildRequires:  %{python_module numpydoc}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module qt5}
-BuildRequires:  %{python_module scipy >= 1.3}
+BuildRequires:  %{python_module scipy >= 1.8}
 BuildRequires:  %{python_module slycot}
 # /SECTION
 %python_subpackages
@@ -69,10 +70,12 @@ sed -i '1{\@^#!/usr/bin/env@ d}' control/tests/*.py
 
 %check
 # The default Agg backend does not define the toolbar attribute in the Figure
-# Manager used by some tests, so we run the tests with the Qt5 backend
-export MPLBACKEND="Qt5Agg"
+# Manager used by some tests, so we run the tests with the Qt backend
+export MPLBACKEND="QtAgg"
 # precision issues
 donttest="test_lti_nlsys_response"
+# don't check if upstream has all the documentation
+donttest="test_sphinxdocs"
 # flaky precision issues
 donttest="$donttest or test_response_plot_kwargs"
 donttest="$donttest or test_sample_system_prewarp"
