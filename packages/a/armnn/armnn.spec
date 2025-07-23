@@ -68,6 +68,8 @@ Group:          Development/Libraries/Other
 URL:            https://developer.arm.com/products/processors/machine-learning/arm-nn
 Source0:        https://github.com/ARM-software/armnn/archive/v%{version}.tar.gz#/armnn-%{version}.tar.gz
 Source1:        armnn-rpmlintrc
+# PATCH-FIX-UPSTREAM -
+Patch1:         armnn-fix-gcc15.patch
 BuildRequires:  ComputeLibrary-devel >= %{version_major}.%{version_minor}
 BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
@@ -320,7 +322,7 @@ This package contains the libarmnnOnnxParser library from armnn.
 %endif
 
 %prep
-%setup -q -n armnn-%{version}
+%autosetup -p1 -n armnn-%{version}
 
 %build
 %if %{with armnn_onnx}
