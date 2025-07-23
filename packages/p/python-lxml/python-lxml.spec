@@ -18,11 +18,10 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lxml
-Version:        5.4.0
+Version:        6.0.0
 Release:        0
 Summary:        Pythonic XML processing library
 License:        BSD-3-Clause AND GPL-2.0-or-later
-Group:          Development/Languages/Python
 URL:            https://lxml.de/
 Source0:        https://files.pythonhosted.org/packages/source/l/lxml/lxml-%{version}.tar.gz
 Source1:        https://lxml.de/lxmldoc-4.5.2.pdf
@@ -30,13 +29,12 @@ Source99:       python-lxml.rpmlintrc
 # PATCH-FIX-OPENSUSE Skip a test under libxml2 2.10.4+
 # https://bugs.launchpad.net/lxml/+bug/2016939
 Patch1:         skip-test-under-libxml2-2.10.4.patch
-# PATCH-FIX-OPENSUSE Skip a test under libxml2 2.11.1+
-# https://bugs.launchpad.net/lxml/+bug/2018522
-Patch2:         skip-test-under-libxml2-2.11.1.patch
 BuildRequires:  %{python_module Cython >= 3.0.7}
-BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 18.0.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 %if 0%{?suse_version} == 1500
 # Assume the best that the old libxml2 in SLE15 is patched for  https://gitlab.gnome.org/GNOME/libxml2/-/issues/378 (CVE-2022-2309)
@@ -95,26 +93,29 @@ rm src/lxml/lxml.etree_api.h
 
 %build
 export CFLAGS="%{optflags}"
-%python_build build_ext -i --with-cython
+%pyproject_wheel
+# The testsuite relies on the inplace build
+%python_expand PYTHON=$python make inplace
+
+%install
+%pyproject_install
+%python_expand %fdupes %{buildroot}
 
 %check
 # The tests fail on SLE 11 due to broken incremental parsing in libxml2
 export CFLAGS="%{optflags}"
 export LANG=en_US.UTF-8
 export PYTHONUNBUFFERED=x
+export PYTHONDONTWRITEBYTECODE=1
 # cyclic dependency between html5lib and lxml
 rm -v src/lxml/html/tests/test_html5parser.py
 %python_exec test.py
-
-%install
-%python_install
-%python_expand %fdupes %{buildroot}
 
 %files %{python_files}
 %license LICENSES.txt
 %doc CHANGES.txt CREDITS.txt README.rst
 %{python_sitearch}/lxml/
-%{python_sitearch}/lxml-%{version}-py%{python_version}.egg-info
+%{python_sitearch}/lxml-%{version}.dist-info
 %exclude %{python_sitearch}/lxml/*.h
 %exclude %{python_sitearch}/lxml/includes/*.h
 

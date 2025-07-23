@@ -1146,4 +1146,41 @@ Send to Staging:E.
     <comment></comment>
     <requestid>1280666</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>4d017d67cc03611be7c63a06bbe33a19</srcmd5>
+    <version>6.0.0</version>
+    <time>1753281139</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.0.0:
+  * ``lxml.html.diff`` is faster and provides structurally better diffs.
+  * The factories ``Element`` and ``ElementTree`` can now be used in type
+    hints.
+  * Parsing from ``memoryview`` and other buffers is supported to allow
+    zero-copy parsing.
+  * ``lxml.html.builder`` was missing several HTML5 tag names.
+  * ``CDATA`` can now be written into the incremental ``xmlfile()`` writer.
+  * A new parser option ``decompress=False`` was added that controls the
+    automatic input decompression when using libxml2 2.15.0 or later.
+  * The set of compile time / runtime supported libxml2 feature names is
+    available as ``etree.LIBXML_COMPILED_FEATURES`` and
+    ``etree.LIBXML_FEATURES``.
+  * Predicates in ``.find*()`` could mishandle tag indices if a default
+    namespace is provided.
+  * The ``head`` and ``body`` properties of ``lxml.html`` elements failed
+    if no such element was found.  They now return ``None`` instead.
+  * Tag names provided by code (API, not data) that are longer than
+    ``INT_MAX`` could be truncated or mishandled in other ways.
+  * ``.text_content()`` on ``lxml.html`` elements accidentally returned
+    a &quot;smart string&quot; without additional information.  It now returns a plain
+    string.
+  * Support for Python &lt; 3.8 was removed.
+  * Parsing directly from zlib (or lzma) compressed data is now considered
+    an optional feature in lxml.
+  * The ``Schematron`` class is deprecated and will become non-functional in
+    a future lxml version.
+  * Built using Cython 3.1.2.
+  * The debug methods ``MemDebug.dump()`` and ``MemDebug.show()`` were
+    removed completely.</comment>
+    <requestid>1294982</requestid>
+  </revision>
 </revisionlist>
