@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 20 18:17:33 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Remove leftover dependency on sudo (not required)
+  See also: boo#1215628
+
+-------------------------------------------------------------------
 Thu Apr 24 11:58:41 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 1.23.0:

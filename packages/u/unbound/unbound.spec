@@ -55,8 +55,6 @@ BuildRequires:  swig
 # needed for dns over https
 BuildRequires:  pkgconfig(libnghttp2)
 Requires:       ldns >= %{ldns_version}
-# until we figured something else out for the unbound-anchor part in the systemd unit file
-Requires:       sudo
 # unbound-control-setup depends on /usr/bin/openssl
 Requires:       openssl
 %if %{with systemd}
