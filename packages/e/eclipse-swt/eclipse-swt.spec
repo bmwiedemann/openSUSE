@@ -16,9 +16,8 @@
 #
 
 
-%global archs_32bit s390 %{arm} %{ix86}
 %global major_version   4
-%ifarch %{archs_32bit}
+%if %{__isa_bits} == 32
 %global minor_version   9
 %global other_minor_version 29
 %else
@@ -81,7 +80,7 @@ This package contains the API documentation for %{name}.
 %patch -P 0 -p1
 %patch -P 1 -p1
 %patch -P 2 -p1
-%ifarch %{archs_32bit}
+%if %{__isa_bits} == 32
 %patch -P 3 -p2
 %endif
 %patch -P 4 -p1

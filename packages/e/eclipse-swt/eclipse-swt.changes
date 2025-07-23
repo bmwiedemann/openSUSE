@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 22 11:36:43 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Use the existing %%{__isa_bits} macro instead of crafting one
+
+-------------------------------------------------------------------
 Wed Jun 18 07:22:27 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Extend the architectures to build to all the 64-bit ones
