@@ -1,0 +1,47 @@
+From abe6e04450ff1518d27af362b7e11e0182962b46 Mon Sep 17 00:00:00 2001
+From: Michal Schorm <mschorm@redhat.com>
+Date: Tue, 10 Jun 2025 12:53:08 +0200
+Subject: [PATCH] Fix compilation with GCC 15
+
+---
+ driver/class/ColumnDefinition.h   | 1 +
+ driver/interface/CmdInformation.h | 1 +
+ driver/interface/Row.h            | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/driver/class/ColumnDefinition.h b/driver/class/ColumnDefinition.h
+index 4919ee15..a05d4b5f 100644
+--- a/driver/class/ColumnDefinition.h
++++ b/driver/class/ColumnDefinition.h
+@@ -23,6 +23,7 @@
+ 
+ #include <memory>
+ #include <map>
++#include <cstdint>
+ 
+ #include "mysql.h"
+ 
+diff --git a/driver/interface/CmdInformation.h b/driver/interface/CmdInformation.h
+index 228714b4..efe08e79 100644
+--- a/driver/interface/CmdInformation.h
++++ b/driver/interface/CmdInformation.h
+@@ -23,6 +23,7 @@
+ 
+ #include <vector>
+ #include <memory>
++#include <cstdint>
+ 
+ namespace mariadb
+ {
+diff --git a/driver/interface/Row.h b/driver/interface/Row.h
+index 3fa1cc54..872efe09 100644
+--- a/driver/interface/Row.h
++++ b/driver/interface/Row.h
+@@ -24,6 +24,7 @@
+ #include <sstream>
+ #include <vector>
+ #include <memory>
++#include <cstdint>
+ 
+ #include "mysql.h"
+ 

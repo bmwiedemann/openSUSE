@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Jul 13 07:06:54 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to version 3.2.6
+  * ODBC-457 - Introduced option TRUNCDT to skip time truncation
+    error. Setting it to non-zero value makes connector not to
+    return error on date/time type parameter value truncation.
+    These are when value for SQL_TIME contains fractional part,
+    or for SQL_DATE contains non-zero time.
+  * ODBC-460 - Crash in SQLExecDirect on UPDATE statement with
+    array of parameters
+  * ODBC-461 - The destructor releasing server side prepared
+    statement could throw and this exception would not be caught
+  * ODBC-458 - MS Access won't work with the linked table if
+    best row id is BIGINT
+  * ODBC-459 - MS Access shows record with AUTO_INCREMENT
+    primary key as #Deleted after insert that does not specify
+    that field value
+  * ODBC-462 - SQLExecDirect on array of parameters could issue
+    multistatement query even if multistatement option had not
+    been selected for the connection.
+  * ODBC-464 - Multiple issues with current implementation of
+    SQLCancel
+  * ODBC-466 - SQLCancel could run on already dropped statement
+    due to race condition
+  * ODBC-467 - Possible crash in SQLCancelHandle
+- Adjust DSN_names.patch
+- Add gcc-15.patch to fix compilation with GCC 15.
+  https://github.com/mariadb-corporation/mariadb-connector-odbc/pull/63
+
+-------------------------------------------------------------------
 Mon Apr 14 12:17:05 UTC 2025 - Adam Majer <adam.majer@suse.de>
 
 - Update to upstream version 3.2.5

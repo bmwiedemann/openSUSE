@@ -17,7 +17,7 @@
 
 
 Name:           mariadb-connector-odbc
-Version:        3.2.5
+Version:        3.2.6
 Release:        0
 Summary:        MariaDB ODBC Connector
 License:        LGPL-2.1-or-later
@@ -31,6 +31,8 @@ Source3:        sample_odbc.ini
 Source4:        mariadb-connector-odbc-rpmlintrc
 ## https://mariadb.org/new-gpg-release-key-rpms/
 Source10:       mariadb.keyring
+## https://github.com/mariadb-corporation/mariadb-connector-odbc/pull/63
+Patch0:         gcc-15.patch
 Patch6:         DSN_names.patch
 Patch8:         nosoname.patch
 BuildRequires:  cmake > 3.5.0

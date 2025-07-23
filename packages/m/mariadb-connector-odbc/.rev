@@ -172,4 +172,12 @@
 - nosoname.patch DSN_names.patch: refreshed</comment>
     <requestid>1269287</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>753e91293a2114868c3aecf9afd0c671</srcmd5>
+    <version>3.2.6</version>
+    <time>1753281236</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1295125</requestid>
+  </revision>
 </revisionlist>
