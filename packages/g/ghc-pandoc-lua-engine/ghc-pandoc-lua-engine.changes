@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 20 15:33:55 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-engine to version 0.4.3 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Jun 27 07:51:17 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - jailbreak for hslua-2.4
