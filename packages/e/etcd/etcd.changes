@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 23 08:18:21 UTC 2025 - Elisei Roca <eroca@suse.com>
+
+- Update to version 3.6.3:
+  * Fix v2store check returning wrong result even there isn't any auth data
+  * Updated help for --quota-backend-bytes
+  * Prevent flakes with TestWatchRestore
+
+-------------------------------------------------------------------
 Tue Jul 15 08:43:36 UTC 2025 - Elisei Roca <eroca@suse.com>
 
 - Update to version 3.6.2:
