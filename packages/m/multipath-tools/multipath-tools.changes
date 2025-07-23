@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 19 12:28:12 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.11.0+184+suse.9bca786:
+  * tests: fix tests when built against cmocka 1.1.8 or newer
+    (gh#openSUSE/multipath-tools#19)
+
+-------------------------------------------------------------------
 Wed Mar  5 14:33:08 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.11.0+183+suse.3973293:
@@ -58,6 +65,7 @@ Fri Jan 24 15:06:55 UTC 2025 - Martin Wilck <mwilck@suse.com>
     matching UUID and matching type was already present. multipathd
     previously failed to set up such maps. Now it will reload them with the
     correct content. (bsc#1236390)
+  * Add HPE MSA Gen7 (2070/2072) to hwtable (bsc#1246501)
 
 -------------------------------------------------------------------
 Wed Jan 22 16:18:10 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -3686,4 +3694,3 @@ Tue May 25 10:43:15 CEST 2004 - fehr@suse.de
 - created initial version of a SuSE package from version 0.2.0 of
   multipath tools
 
--------------------------------------------------------------------

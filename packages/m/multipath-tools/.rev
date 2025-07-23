@@ -2099,4 +2099,12 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
   * libmultipath: remove buggy reinstate_paths function (forwarded request 1250441 from mwilck)</comment>
     <requestid>1250442</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>dc5c6dc9b1078327751f80d579fc4ae4</srcmd5>
+    <version>0.11.0+184+suse.9bca786</version>
+    <time>1753281118</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1294880</requestid>
+  </revision>
 </revisionlist>
