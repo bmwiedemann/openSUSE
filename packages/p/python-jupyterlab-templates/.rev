@@ -147,4 +147,13 @@
   (CVE-2025-5889, bsc#1244347)</comment>
     <requestid>1286870</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>396cc537bf08d3075c77db0c8505bf94</srcmd5>
+    <version>0.5.2</version>
+    <time>1753281385</time>
+    <user>anag_factory</user>
+    <comment>- Refresh javascript dependencies to update form-data
+  (CVE-2025-7783, bsc#1246814)</comment>
+    <requestid>1295284</requestid>
+  </revision>
 </revisionlist>

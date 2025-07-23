@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 23 08:58:34 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Refresh javascript dependencies to update form-data
+  (CVE-2025-7783, bsc#1246814)
+
+-------------------------------------------------------------------
 Thu Jun 19 08:40:43 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Build javascript from sources with local-npm-registry
