@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 22 13:41:54 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250722.bf18f3b:
+  * Measure kernel in PCR4 for grub2-bls if secure-boot
+
+-------------------------------------------------------------------
 Fri Jul 18 16:24:10 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20250718.9f557f7:
