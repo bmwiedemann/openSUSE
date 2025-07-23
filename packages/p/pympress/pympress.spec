@@ -1,7 +1,7 @@
 #
 # spec file for package pympress
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,12 @@
 # Do not support python 2, and build a single package
 %define pythons python3
 Name:           pympress
-Version:        1.8.5
+Version:        1.8.6
 Release:        0
 Summary:        A simple and powerful dual-screen PDF reader designed for presentations
 License:        GPL-2.0-or-later
 URL:            https://github.com/Cimbali/pympress/
-Source0:        pympress-1.8.5.tar.gz
+Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  coreutils
 BuildRequires:  fdupes
 BuildRequires:  findutils
@@ -39,16 +39,15 @@ BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools >= 42
 BuildRequires:  python3-wheel
 BuildRequires:  sed
-BuildRequires:  update-desktop-files
 Requires:       gobject-introspection
 Requires:       gstreamer
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
 Requires:       gstreamer-plugins-good-gtk
 Requires:       gtk3
-Requires:       python(abi) >= 3.4
 Requires:       python3-gobject
 Requires:       python3-watchdog
+Requires:       python(abi) >= 3.4
 Requires:       typelib(DBus)
 Requires:       typelib(DBusGLib)
 Requires:       typelib(GLib)
@@ -89,7 +88,7 @@ great features, including:
 - and much more
 
 %prep
-%setup -q -n pympress-%{version}
+%autosetup
 
 %build
 %pyproject_wheel
@@ -104,8 +103,6 @@ great features, including:
 
 # Identify lang files
 %find_lang pympress
-
-%suse_update_desktop_file %{gtk_app_id}
 
 mkdir -p %{buildroot}%{_mandir}/man1/
 cp -av man/pympress.1 %{buildroot}%{_mandir}/man1/
