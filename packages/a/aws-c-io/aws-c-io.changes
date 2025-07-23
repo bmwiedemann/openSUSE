@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 22 08:28:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.21.2
+  * aws_parse_ipv4/6_address by @TingDaoK in (#745)
+- from version 0.21.1
+  * Stop packing future variable to avoid tsan data race warnings
+    by @DmitriyMusatkin in (#741)
+
+-------------------------------------------------------------------
 Fri Jul 11 10:47:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.21.0
