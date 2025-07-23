@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 23 12:23:16 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.9
+  * Expand class-permissions in deny rules
+  * Fix copying of declarations
+  * Reject wildcard only network interface names
+
+-------------------------------------------------------------------
 Fri Mar  7 14:12:08 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.8.1
