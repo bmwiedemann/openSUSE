@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 18 12:26:24 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- update to 5.2.1
+  * Fixed issue when the defaults included the key 'target'.
+
+
+-------------------------------------------------------------------
 Tue Apr  1 15:34:16 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make it compatible with older setuptools
