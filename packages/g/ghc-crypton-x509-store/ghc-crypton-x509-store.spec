@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.10
+Version:        1.6.11
 Release:        0
 Summary:        X.509 collection accessing and storing methods
 License:        BSD-3-Clause

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 16 23:14:31 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update crypton-x509-store to version 1.6.11.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Mon Feb 17 23:15:11 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update crypton-x509-store to version 1.6.10.
