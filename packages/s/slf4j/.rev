@@ -273,4 +273,12 @@
     <comment>Use SOURCE_DATE_EPOCH for reproducible jar mtime</comment>
     <requestid>1202899</requestid>
   </revision>
+  <revision rev="34" vrev="7">
+    <srcmd5>28ce686438ffb99b0f8aff67491c4d0c</srcmd5>
+    <version>1.7.36</version>
+    <time>1753281175</time>
+    <user>anag_factory</user>
+    <comment>cleanup</comment>
+    <requestid>1295071</requestid>
+  </revision>
 </revisionlist>

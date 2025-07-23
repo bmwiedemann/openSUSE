@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 22 11:32:50 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Remove stale pre_checkin.sh file
+
+-------------------------------------------------------------------
 Tue Sep 24 10:45:44 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use SOURCE_DATE_EPOCH for reproducible jar mtime
