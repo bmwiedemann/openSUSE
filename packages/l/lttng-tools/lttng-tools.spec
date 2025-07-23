@@ -1,7 +1,7 @@
 #
 # spec file for package lttng-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(lttng-ust) >= %{_version}
 BuildRequires:  pkgconfig(uuid)
 Requires:       babeltrace
 Recommends:     lttng-modules-kmp
-ExclusiveArch:  %ix86 x86_64 armv7l aarch64 riscv64 ppc64 ppc64le
+ExclusiveArch:  %ix86 x86_64 armv7l aarch64 loongarch64 riscv64 ppc64 ppc64le
 
 %description
 This package provides the userspace tools for controlling the LTTng
