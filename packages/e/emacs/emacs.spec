@@ -841,8 +841,13 @@ rm -vf %{buildroot}%{_infodir}/dir
 mkdir -p %{buildroot}%(dirname %{appDefaultsFile})
 cp -p %{S:1} %{buildroot}%{appDefaultsFile}
 pushd ../
-mkdir -p %{buildroot}/etc/skel
-install -m 0644 %{S:3} %{buildroot}/etc/skel/.gnu-emacs
+%if 0%{?suse_version} >= 1550
+mkdir -p %{buildroot}%{_prefix}%{_sysconfdir}/skel
+install -m 0644 %{S:3} %{buildroot}%{_prefix}%{_sysconfdir}/skel/.gnu-emacs
+%else
+mkdir -p %{buildroot}%{_sysconfdir}/skel
+install -m 0644 %{S:3} %{buildroot}%{_sysconfdir}/skel/.gnu-emacs
+%endif
 mkdir -p %{buildroot}%{_datadir}/emacs/site-lisp/site-start.d
 tar cf - site-lisp/ | tar xvvf - -C %{buildroot}%{_datadir}/emacs/
 chmod -R a+r %{buildroot}%{_datadir}/emacs/site-lisp/
@@ -1153,7 +1158,11 @@ fi
 
 %files -f site-lisp.lst -n emacs
 %defattr(-, root, root)
-%config /etc/skel/.gnu-emacs
+%if 0%{?suse_version} >= 1550
+%{_prefix}%{_sysconfdir}/skel/.gnu-emacs
+%else
+%config %{_sysconfdir}/skel/.gnu-emacs
+%endif
 %{_bindir}/ebrowse
 %{_bindir}/emacs
 %{_bindir}/emacsclient

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 15 09:13:53 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Move .gnu-emacs to /usr/etc/skel/
+
+-------------------------------------------------------------------
 Mon Jul 14 13:56:21 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Switch over to libalternatives for etags to provide a ctags

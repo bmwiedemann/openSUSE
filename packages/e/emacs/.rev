@@ -2234,4 +2234,12 @@ Now one could consider building emacs with gsettings support (both debian and fe
   variant (bsc#1245894)</comment>
     <requestid>1293248</requestid>
   </revision>
+  <revision rev="209" vrev="10">
+    <srcmd5>230217cbd148fa2cdc3458ddc4cd6182</srcmd5>
+    <version>30.1</version>
+    <time>1753281167</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1295049</requestid>
+  </revision>
 </revisionlist>
