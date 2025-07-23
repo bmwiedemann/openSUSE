@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 99d64b4f788c16e81b6550ef94f43c6b91cfad2d
+%define git_version ecdbd2b8af04b515732fbf11113cec16651915f0
 
 Name:           kernel-firmware-qcom
-Version:        20250708
+Version:        20250714
 Release:        0
 Summary:        Kernel firmware files for Qualcomm device drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250710.tar.gz#/kernel-firmware-tools-20250710.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250721.tar.gz#/kernel-firmware-tools-20250721.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -340,24 +340,20 @@ install -c -D -m 0644 WHENCE %{buildroot}%{_licensedir}/%{name}/WHENCE
 install -c -D -m 0644 README.md %{buildroot}%{_docdir}/%{name}/README.md
 
 %pretrans -p <lua>
-if not macros then
-  fwdir = "/lib/firmware"
-else
-  fwdir = macros._firmwaredir
-end
-path = fwdir .. "/qcom/LENOVO/21BX"
+path = "%{_firmwaredir}/qcom/LENOVO/21BX"
 st = posix.stat(path)
 if st and st.type == "directory" then
-  status = os.rename(path, path .. ".rpmmoved")
-  if not status then
-    suffix = 0
-    while not status do
-      suffix = suffix + 1
-      status = os.rename(path .. ".rpmmoved", path .. ".rpmmoved." .. suffix)
-    end
-    os.rename(path, path .. ".rpmmoved")
+  path2 = path .. ".rpmmoved"
+  if not os.rename(path, path2) then
+    print("Cannot rename to " .. path2)
+    os.exit(1)
   end
 end
+
+%posttrans
+if test -d %{_firmwaredir}/qcom/LENOVO/21BX.rpmmoved; then
+  rm -rf %{_firmwaredir}/qcom/LENOVO/21BX.rpmmoved
+fi
 
 %files
 %doc %{_docdir}/%{name}

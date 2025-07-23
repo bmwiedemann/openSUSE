@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 21 15:47:24 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Remove stale *.rpmmoved directories (bsc#1244458)
+
+-------------------------------------------------------------------
+Tue Jul 15 07:11:06 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250714 (git commit ecdbd2b8af04):
+  * qcom: Update gpu firmwares of QCS615 chipset
+
+-------------------------------------------------------------------
 Thu Jul 10 16:43:48 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250708 (git commit 99d64b4f788c):

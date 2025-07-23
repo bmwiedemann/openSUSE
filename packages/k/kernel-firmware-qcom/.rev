@@ -152,4 +152,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom/adreno: sort entries in WHENCE</comment>
     <requestid>1291748</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>993a5ae544a842476cc1697438cafaeb</srcmd5>
+    <version>20250714</version>
+    <time>1753281157</time>
+    <user>anag_factory</user>
+    <comment>- Remove stale *.rpmmoved directories (bsc#1244458)
+
+- Update to version 20250714 (git commit ecdbd2b8af04):
+  * qcom: Update gpu firmwares of QCS615 chipset</comment>
+    <requestid>1295040</requestid>
+  </revision>
 </revisionlist>
