@@ -112,4 +112,20 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtw89: 8852c: update fw to v0.27.128.0</comment>
     <requestid>1293168</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a7de9e76ed83e747c1cda33b05ed2f84</srcmd5>
+    <version>20250717</version>
+    <time>1753281160</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250717 (git commit 6fc20e018cca):
+  * WHENCE: extract more license statements
+
+- Update to version 20250715 (git commit 04c379b552c7):
+  * rtw89: 8852b: update fw to v0.29.128.0
+  * rtw89: 8852bt: update fw to v0.29.127.0
+  * rtw89: 8922a: add regd fw element with version R72-R6
+  * rtw89: 8852c: add regd fw element with version R72-R57
+  * rtw89: 8922a: update BB parameter V49</comment>
+    <requestid>1295042</requestid>
+  </revision>
 </revisionlist>
