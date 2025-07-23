@@ -17,7 +17,7 @@
 
 
 Name:           maven-assembly-plugin
-Version:        3.6.0
+Version:        3.7.1
 Release:        0
 Summary:        Maven Assembly Plugin
 License:        Apache-2.0
@@ -35,6 +35,7 @@ BuildRequires:  mvn(javax.inject:javax.inject)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugins:pom:)
+BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-util)
 BuildRequires:  mvn(org.apache.maven.shared:maven-common-artifact-filters)
 BuildRequires:  mvn(org.apache.maven.shared:maven-filtering)
 BuildRequires:  mvn(org.apache.maven:maven-archiver)
@@ -48,7 +49,6 @@ BuildRequires:  mvn(org.codehaus.plexus:plexus-interpolation)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-io)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-xml)
-BuildRequires:  mvn(org.eclipse.aether:aether-api)
 BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus)
 BuildRequires:  mvn(org.eclipse.sisu:sisu-maven-plugin)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
@@ -68,11 +68,6 @@ This package provides %{summary}.
 %prep
 %setup -q
 %patch -P 0 -p1
-
-%pom_remove_dep jaxen:jaxen
-%pom_add_dep commons-io:commons-io
-%pom_add_dep commons-codec:commons-codec
-%pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0
 
 %build
 %{mvn_build} -f -- \

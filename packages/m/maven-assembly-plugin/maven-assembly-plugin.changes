@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Jul 22 11:22:05 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 3.7.1
+- Changes of 3.7.1
+  * Bug
+    + MASSEMBLY-1020: Cannot invoke "java.io.File.isFile()" because
+      "this.inputFile" is null
+    + MASSEMBLY-1021: Nullpointer in assembly:single when upgrading
+      to 3.7.0
+    + MASSEMBLY-1022: Unresolved artifacts should be not processed
+- Changes of 3.7.0
+  * Bug
+    + MASSEMBLY-967: maven-assembly-plugin doesn't add target/class
+      artifacts in generated jarfat but META-INF/MANIFEST.MF seems
+      to be correct
+    + MASSEMBLY-994: Items from unpacked dependency are not refreshed
+    + MASSEMBLY-998: Transitive dependencies are not properly
+      excluded as of 3.1.1
+    + MASSEMBLY-1008: Assembly plugin handles scopes wrongly
+    + MASSEMBLY-1018: Fix examples about useStrictFiltering
+  * New Feature
+    + MASSEMBLY-992: Facility to define assembly descriptor in body
+      of POM
+  * Improvement
+    + MASSEMBLY-1007: Upgrade maven-plugin parent to 41
+    + MASSEMBLY-1016: clarify and fix plugin system requirements
+      history
+    + MASSEMBLY-1017: Don't use deprecated methods in code
+  * Task
+    + MASSEMBLY-991: XSDs for 2.2.0 missing from Maven Project Web
+      Site
+    + MASSEMBLY-1000: ITs - cleanups, refresh plugins versions
+    + MASSEMBLY-1003: Remove unused remoteRepositories
+    + MASSEMBLY-1004: Remove ignored and deprecated parameter -
+      useJvmChmod
+    + MASSEMBLY-1010: Use IOUtils from commons-io instead of plexus
+    + MASSEMBLY-1013: Code cleanups
+
+-------------------------------------------------------------------
 Mon Feb 17 12:30:49 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Fix broken source link
