@@ -27,6 +27,7 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/protocolbuffers/protobuf
 Source0:        https://files.pythonhosted.org/packages/source/p/protobuf/protobuf-%{version}.tar.gz
+Patch0:         https://github.com/protocolbuffers/protobuf/commit/8351926380c7cc91aae6df5695c91426e209f958.patch#/protobuf-fix-google-imports.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil}
@@ -43,7 +44,7 @@ RPC protocols and file formats.
 This package contains the Python bindings for Google Protocol Buffers.
 
 %prep
-%autosetup -p1 -n protobuf-%{version}
+%autosetup -p2 -n protobuf-%{version}
 
 # The previous blank line is crucial for older system being able
 # to use the autosetup macro

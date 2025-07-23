@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 21 10:01:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick protobuf-fix-google-imports.patch to fix import issues of
+  reverse-dependency packages within the google namespace (bsc#1244918)
+
+-------------------------------------------------------------------
 Wed Jun 18 07:25:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 31.1
