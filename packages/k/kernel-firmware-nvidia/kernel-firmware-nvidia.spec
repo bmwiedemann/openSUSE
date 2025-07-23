@@ -30,7 +30,7 @@ License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250605.tar.gz#/kernel-firmware-tools-20250605.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250721.tar.gz#/kernel-firmware-tools-20250721.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -170,27 +170,25 @@ install -c -D -m 0644 WHENCE %{buildroot}%{_licensedir}/%{name}/WHENCE
 install -c -D -m 0644 README.md %{buildroot}%{_docdir}/%{name}/README.md
 
 %pretrans -p <lua>
-if not macros then
-  fwdir = "/lib/firmware"
-else
-  fwdir = macros._firmwaredir
-end
 paths = {"ad103", "ad104", "ad106", "ad107"}
 for i = 1, 4 do
-  path = fwdir .. "/nvidia/" .. paths[i]
+  path = "%{_firmwaredir}/nvidia/" .. paths[i]
   st = posix.stat(path)
   if st and st.type == "directory" then
-    status = os.rename(path, path .. ".rpmmoved")
-    if not status then
-      suffix = 0
-      while not status do
-        suffix = suffix + 1
-        status = os.rename(path .. ".rpmmoved", path .. ".rpmmoved." .. suffix)
-      end
-      os.rename(path, path .. ".rpmmoved")
+    path2 = path .. ".rpmmoved"
+    if not os.rename(path, path2) then
+      print("Cannot rename " .. path .. " to " .. path2)
+      os.exit(1)
     end
   end
 end
+
+%posttrans
+for f in ad103 ad104 ad106 ad107; do
+  if test -d %{_firmwaredir}/nvidia/$f.rpmmoved; then
+    rm -rf %{_firmwaredir}/nvidia/$f.rpmmoved
+  fi
+done
 
 %files
 %doc %{_docdir}/%{name}

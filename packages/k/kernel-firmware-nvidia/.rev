@@ -75,4 +75,12 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Fix zypper conflict about directory -&gt; symlink workaround (bsc#1244458)</comment>
     <requestid>1285206</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>0942399e2d29bbc8cd7b71c32a2cbb7c</srcmd5>
+    <version>20250516</version>
+    <time>1753281154</time>
+    <user>anag_factory</user>
+    <comment>- Remove stale *.rpmmoved directories (bsc#1244458)</comment>
+    <requestid>1295038</requestid>
+  </revision>
 </revisionlist>
