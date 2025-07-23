@@ -18,7 +18,7 @@
 
 
 Name:           bettercap
-Version:        2.41.0
+Version:        2.41.1
 Release:        0
 Summary:        Swiss army knife for network attacks and monitoring
 License:        GPL-3.0-or-later

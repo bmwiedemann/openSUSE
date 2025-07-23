@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jul 16 07:20:43 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.41.1:
+  New Features
+  * Queue handle is now passed to the packet proxy plugins to
+    allow packet manipulation within the callback.
+  * Wifi module now reports the current channel in state.
+  * Added net.sniffer.interface parameter to sniff from a
+    different interface.
+  Fixes
+  * Print event data instead of the whole struct for unhandled
+    events.
+  * Routing tables unit tests fix for Linux.
+  * Refactored deprecated ioutil calls to io equivalents.
+  * Gracefully handled packets that would crash gopacket
+    (fixes #1184).
+  * Fixed net.sniff stats output for local packets flag.
+  * Fixed JavaScript number conversion issues for backwards
+    compatibility.
+  Miscellaneous
+  * Various small fixes or general refactoring that did not
+    warrant individual comments, including version bump for
+    golang.org/x/net.
+  * Multiple updates and fixes to issue templates and
+    configuration.
+
+-------------------------------------------------------------------
 Fri Jan 31 20:40:44 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.41.0
