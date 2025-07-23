@@ -81,4 +81,13 @@
  * Ignore not found errors from fmutex for config init and edits</comment>
     <requestid>1291303</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>277a06827c2478d1b2fe2099a34293bc</srcmd5>
+    <version>0.8.5</version>
+    <time>1753281254</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.5
+ * Fix SSH agent authentication not used when cloning submodules</comment>
+    <requestid>1295150</requestid>
+  </revision>
 </revisionlist>
