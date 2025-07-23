@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 22 09:56:03 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 3.3+git20250722.adf0149:
+  * rebootmgrctl: don't exit with negativ error codes
+
+-------------------------------------------------------------------
 Mon May 12 11:18:09 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 3.3+git20250512.b6e4e84:

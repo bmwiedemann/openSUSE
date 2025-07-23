@@ -362,4 +362,13 @@
   * Fix handling of temporarily disabled reboots</comment>
     <requestid>1276813</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>14ce4a9b98859d3b926ca5fbb488ffb7</srcmd5>
+    <version>3.3+git20250722.adf0149</version>
+    <time>1753281166</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3+git20250722.adf0149:
+  * rebootmgrctl: don't exit with negativ error codes</comment>
+    <requestid>1295047</requestid>
+  </revision>
 </revisionlist>
