@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 22 14:52:31 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 20250721:
+  * Pipewire: dont attempt to use modifier if modifier is 0x0
+  * Proper debug context setup
+
+-------------------------------------------------------------------
 Sat Jun 28 20:18:55 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 20250628:
