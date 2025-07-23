@@ -19,7 +19,7 @@
 %global pkg_name crypton-connection
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.4.4
+Version:        0.4.5
 Release:        0
 Summary:        Simple and easy network connection API
 License:        BSD-3-Clause
@@ -32,6 +32,8 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-crypton-socks-devel
+BuildRequires:  ghc-crypton-socks-prof
 BuildRequires:  ghc-crypton-x509-store-devel
 BuildRequires:  ghc-crypton-x509-store-prof
 BuildRequires:  ghc-crypton-x509-system-devel
@@ -41,8 +43,6 @@ BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-prof
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-socks-devel
-BuildRequires:  ghc-socks-prof
 BuildRequires:  ghc-tls-devel
 BuildRequires:  ghc-tls-prof
 ExcludeArch:    %{ix86}
