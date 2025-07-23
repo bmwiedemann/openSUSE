@@ -1,11 +1,243 @@
 -------------------------------------------------------------------
-Mon Jun 23 09:12:47 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Tue Jul 22 15:02:34 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
-- Firefox Extended Support Release 128.12.0 ESR
+- Avoid file conflict with MozillaFirefox regarding
+  firefox-search-provider.ini; assume MozillaFirefox gets installed
+  anyway, so omit traces here. Add Recommends: MozillaFirefox for
+  this.
+
+-------------------------------------------------------------------
+Sat Jul 19 08:56:15 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox Extended Support Release 140.1.0 ESR
   * Fixed: Various security fixes.
-- Mozilla Firefox ESR 128.12.0
-  https://www.mozilla.org/security/advisories/mfsa2025-53
-  MFSA 2025-53 (boo#1244670)
+- Mozilla Firefox ESR 140.1.0
+  https://www.mozilla.org/security/advisories/mfsa2025-59
+  MFSA 2025-59 (boo#1246664)
+  * CVE-2025-8027 (bmo#1968423)
+    JavaScript engine only wrote partial return value to stack
+  * CVE-2025-8028 (bmo#1971581)
+    Large branch table could lead to truncated instruction
+  * CVE-2025-8029 (bmo#1928021)
+    javascript: URLs executed on object and embed tags
+  * CVE-2025-8036 (bmo#1960834)
+    DNS rebinding circumvents CORS
+  * CVE-2025-8037 (bmo#1964767)
+    Nameless cookies shadow secure cookies
+  * CVE-2025-8030 (bmo#1968414)
+    Potential user-assisted code execution in “Copy as cURL”
+    command
+  * CVE-2025-8031 (bmo#1971719)
+    Incorrect URL stripping in CSP reports
+  * CVE-2025-8032 (bmo#1974407)
+    XSLT documents could bypass CSP
+  * CVE-2025-8038 (bmo#1808979)
+    CSP frame-src was not correctly enforced for paths
+  * CVE-2025-8039 (bmo#1970997)
+    Search terms persisted in URL bar
+  * CVE-2025-8033 (bmo#1973990)
+    Incorrect JavaScript state machine for generators
+  * CVE-2025-8034 (bmo#1970422, bmo#1970422, bmo#1970422,
+    bmo#1970422)
+    Memory safety bugs fixed in Firefox ESR 115.26, Firefox ESR
+    128.13, Thunderbird ESR 128.13, Firefox ESR 140.1,
+    Thunderbird ESR 140.1, Firefox 141 and Thunderbird 141
+  * CVE-2025-8040 (bmo#1975058, bmo#1975058, bmo#1975998,
+    bmo#1975998)
+    Memory safety bugs fixed in Firefox ESR 140.1, Thunderbird
+    ESR 140.1, Firefox 141 and Thunderbird 141
+  * CVE-2025-8035 (bmo#1975961, bmo#1975961, bmo#1975961)
+    Memory safety bugs fixed in Firefox ESR 128.13, Thunderbird
+    ESR 128.13, Firefox ESR 140.1, Thunderbird ESR 140.1, Firefox
+    141 and Thunderbird 141
+
+-------------------------------------------------------------------
+Mon Jun 23 09:15:00 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox Extended Support Release 140.0esr ESR
+  * New: ###General
+    - Reader View now has an enhanced Text and Layout menu with
+    new options for character spacing, word spacing, and text
+    alignment. These changes offer a more accessible reading
+    experience.
+    - Reader View now has a Theme menu with additional Contrast
+    and Gray options. You can also select custom colors for text,
+    background, and links from the Custom tab.
+    - Firefox will now offer to temporarily remember when users
+    grant permissions to sites (e.g. geolocation). Temporary
+    permissions will be removed either after one hour or when the
+    tab is closed.
+    - Firefox now includes safeguards to prevent sites from
+    abusing the history API by generating excessive history
+    entries, which can make navigating with the back and forward
+    buttons difficult by cluttering the history. This
+    intervention ensures that such entries, unless interacted
+    with by the user, are skipped when using the back and forward
+    buttons.
+    - Firefox now identifies all links in PDFs and turns them
+    into hyperlinks.
+    - You can now copy links from background tabs using the
+    tabstrip context menu on macOS and Linux.
+    - Users on macOS and Linux are now given the option to close
+    only the current tab if the Quit keyboard shortcut is used
+    while multiple tabs are open in the window.
+  * New: ###Sidebar and Tabs
+    - You can now enable the updated Firefox sidebar in Settings
+    > General > Browser Layout to quickly access multiple tools
+    in one click, without leaving your main view. Sidebar tools
+    include an AI chatbot of your choice, bookmarks, history, and
+    tabs from devices you sync with your Mozilla account.
+    - Keep a lot of tabs open? Try our new vertical tabs layout
+    to quickly scan your list of tabs. With vertical tabs, your
+    open and pinned tabs appear in the sidebar instead of along
+    the top of the browser. To turn on vertical tabs, right-click
+    on the toolbar near the top of the browser and select Turn on
+    Vertical Tabs. If you’ve enabled the updated sidebar, you can
+    also go to Customize sidebar and check Vertical tabs. Early
+    testers report feeling more organized after using vertical
+    tabs for a few days.
+    - Stay productive and organized with less effort by grouping
+    related tabs together. One simple way to create a group is to
+    drag a tab onto another, pause until you see a highlight,
+    then drop to create the group. Tab groups can be named,
+    color-coded, and are always saved. You can close a group and
+    reopen it later.
+    - A tab preview is now displayed when hovering the mouse over
+    background tabs, making it easier to locate the desired tab
+    without needing to switch tabs.
+    - The sidebar to view tabs from other devices can now be
+    opened via the Tab overview menu.
+  * New: ###Security & Privacy
+    - HTTPS is replacing HTTP as the default protocol in the
+    address bar on non-local sites. If a site is not available
+    via HTTPS, Firefox will fall back to HTTP.
+    - Firefox now blocks third-party cookie access when Enhanced
+    Tracking Protection's Strict mode is enabled.
+    - Firefox now has a new anti-tracking feature, Bounce
+    Tracking Protection, which is now available in Enhanced
+    Tracking Protection's "Strict" mode. This feature detects
+    bounce trackers based on their redirect behavior and
+    periodically purges their cookies and site data to block
+    tracking.
+    - Firefox now enforces certificate transparency, requiring
+    web servers to provide sufficient proof that their
+    certificates were publicly disclosed before they will be
+    trusted. This only affects servers using certificates issued
+    by a certificate authority in Mozilla's Root CA Program.
+    - Smartblock Embeds allows users to selectively unblock
+    certain social media embeds that are blocked in ETP Strict
+    and Private Browsing modes. Currently, support is limited to
+    a few embed types, with more to be added in future updates.
+    - Firefox now upgrades page loads to HTTPS by default and
+    gracefully falls back to HTTP if the secure connection fails.
+    This behavior is known as HTTPS-First.
+    - The "Copy Without Site Tracking" menu item was renamed to
+    "Copy Clean Link" to help clarify expectations around what
+    the feature does. "Copy Clean Link" is a list based approach
+    to remove - known tracking parameters from links. This option
+    can also now be used on plain text links.
+    - The Clear browsing data and cookies dialog now allows
+    clearing saved form info separately from browsing history.
+  * New: ###Translations
+    - Firefox now allows translating selected text portions to
+    different languages after a full-page translation.
+    - Full-Page Translations are now available within Firefox
+    extension pages that start with the moz-extension:// URL
+    scheme.
+    - When suggesting a default translation language, Firefox
+    will now take into consideration languages you have
+    previously used for translations.
+    - Added support for many new languages in Firefox
+    translation.
+  * New: ###Windows
+    - Canvas2D switched from Direct2D to a platform independent
+    acceleration backend on Windows.
+    - Hardware-accelerated playback of HEVC video content is now
+    supported on Windows.
+    - Firefox on Windows 11 now uses acrylic-style menus for
+    popup windows, which better match the operating system’s
+    aesthetic.
+  * New: ###macOS
+    - Added support for multiple languages in the same document
+    spoken in macOS VoiceOver.
+    - The macOS session resume feature has been enhanced. Firefox
+    will now automatically relaunch if it was open before a
+    system restart, like after an OS update.
+    - The macOS DMG installer packages now use LZMA for
+    compression, reducing download size and installation time.
+    - Due to recent changes in macOS Sequoia, the shortcut for
+    completing search strings to .com addresses has been changed
+    from Ctrl+Enter to Cmd+Enter.
+  * New: ###Linux
+    - Firefox now supports touchpad hold gestures on Linux. This
+    means that kinetic (momentum) scrolling can now be
+    interrupted by placing two fingers on the touchpad.
+  * Developer: - Firefox now supports text fragments, which
+    allows users to link directly to a specific portion of text
+    in a web document via a special URL fragment.
+    - Debugger log-point values are now automatically converted
+    into profiler markers, making it easy to add information to
+    the marker timeline directly from the Debugger.
+    - The Debugger's directory root is now scoped to the specific
+    domain where it was set, which aligns with typical usage and
+    avoids applying it across unrelated domains. This builds on
+    previous improvements such as a redesigned UI and easier
+    removal of the root setting. Setting a directory root updates
+    the Source List to show only the selected directory and its
+    children. (Learn more)
+    - The Network Blocking feature in the Network panel now
+    blocks HTTP requests in addition to blocking responses.
+    - The Network panel displays information about Early Hints,
+    including a dedicated indicator for the 103 HTTP status code
+    in the user interface.
+    - The Network panel now allows overriding network request
+    responses with local files.
+    - The filter setting in the Network panel is now preserved
+    across DevTools Toolbox sessions.
+    - A new column has been added to the Network panel to display
+    the full path of the request URL. This enhancement makes
+    helps developers quickly view and analyze complete request
+    paths.
+    - Introduced a new console command `$$$` that allows
+    searching the page, including within shadow roots.
+    - Improved support for debugging web extensions, such as
+    automatically reloading the web extension's source code in
+    the Debugger when the extension is reloaded. Workers are now
+    available in the Console panel’s context selector and
+    breakpoints function correctly in content scripts.
+    - In the Inspector Fonts panel, we now display fonts
+    metadata, like the font version, designer, vendor, license,
+    etc.
+    - Added support for the import map integrity field, allowing
+    you to ensure the integrity of dynamically or statically
+    imported modules.
+    - Implemented support for `Error.isError`, enabling brand
+    checks to determine whether an object is an instance of
+    Error. (Learn more)
+    - Added support for the `error.captureStackTrace` extension
+    to improve compatibility with other browsers. (Learn more)
+      [5]: http://github.com/tc39/proposal-error-
+    capturestacktrace
+  * Enterprise: - The UserMessaging policy has been updated with
+    a new option to allow disabling Firefox Labs in preferences.
+    - The Preferences policy has been updated to allow setting
+    the preference security.pki.certificate_transparency.mode.
+    - HTTPS-First is now on by default. You can manage this
+    behavior using the HttpsOnlyMode and HttpAllowlist policies.
+    - An internal change has been made to Firefox that removes
+    `XPCOMUtils.defineLazyGetter`. For most people, this
+    shouldn't matter, but if you encounter problems with
+    AutoConfig or third party software like PolicyPak, this might
+    be the cause. You'll need to reach out to your provider.
+    - Firefox now supports the Content Analysis SDK for
+    integrating DLP software. For more information, see this
+    post.
+    - The SearchEngines policy is now available on all versions
+    of Firefox (not just the ESR).
+  * Fixed: Various security fixes.
+- Mozilla Firefox ESR 140.0
+  https://www.mozilla.org/security/advisories/mfsa2025-51
+  MFSA 2025-51 (boo#1244670)
   * CVE-2025-6424 (bmo#1966423)
     Use-after-free in FontFaceSet
   * CVE-2025-6425 (bmo#1717672)
@@ -13,19 +245,38 @@ Mon Jun 23 09:12:47 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
     persistent UUID
   * CVE-2025-6426 (bmo#1964385)
     No warning when opening executable terminal files on macOS
+  * CVE-2025-6427 (bmo#1966927)
+    connect-src Content Security Policy restriction could be
+    bypassed
+  * CVE-2025-6428 (bmo#1970151)
+    Firefox for Android opened URLs specified in a link
+    querystring parameter
   * CVE-2025-6429 (bmo#1970658)
     Incorrect parsing of URLs could have allowed embedding of
     youtube.com
   * CVE-2025-6430 (bmo#1971140)
     Content-Disposition header ignored when a file is included in
     an embed or object tag
-
--------------------------------------------------------------------
-Tue Jun 17 08:18:37 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
-
-- Use these tools/versions unconditionally, package won't build on
-  Tumbleweed with new gcc15 otherwise:
-  gcc14, gcc14-c++, cargo1.84, rust1.84
+  * CVE-2025-6431 (bmo#1942716)
+    The prompt in Firefox for Android that asks before opening a
+    link in an external application could be bypassed
+  * CVE-2025-6432 (bmo#1943804)
+    DNS Requests leaked outside of a configured SOCKS proxy
+  * CVE-2025-6433 (bmo#1954033)
+    WebAuthn would allow a user to sign a challenge on a webpage
+    with an invalid TLS certificate
+  * CVE-2025-6434 (bmo#1955182)
+    HTTPS-Only exception screen lacked anti-clickjacking delay
+  * CVE-2025-6435 (bmo#1950056, bmo#1961777)
+    Save as in Devtools could download files without sanitizing
+    the extension
+  * CVE-2025-6436 (bmo#1941377, bmo#1960948, bmo#1966187,
+    bmo#1966505, bmo#1970764)
+    Memory safety bugs fixed in Firefox 140 and Thunderbird 140
+- Requires:
+  NSS >= 3.112
+  cargo/rust 1.86
+  rust-cbindgen >= 0.28
 
 -------------------------------------------------------------------
 Sun Jun  8 14:58:17 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
@@ -429,6 +680,11 @@ Mon Sep 30 16:08:17 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
     bmo#1915008, bmo#1916476)
     Memory safety bugs fixed in Firefox 131, Firefox ESR 128.3,
     Thunderbird 131, and Thunderbird 128.3
+
+-------------------------------------------------------------------
+Wed Sep  4 03:11:13 UTC 2024 - pallas wept <pallaswept@proton.me>
+
+- Added mozilla-bmo1746799.patch to fix incorrect audio volume scaling
 
 -------------------------------------------------------------------
 Tue Sep  3 05:21:00 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>

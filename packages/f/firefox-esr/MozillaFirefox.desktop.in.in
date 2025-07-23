@@ -1,0 +1,27 @@
+[Desktop Entry]
+Encoding=UTF-8
+_Name=%NAME
+_GenericName=Web Browser
+_Comment=Browse the Web
+TryExec=%EXEC
+Exec=%EXEC %u
+Icon=%ICON
+Terminal=false
+StartupNotify=true
+Categories=Network;WebBrowser;GTK;
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;application/x-xpinstall;x-scheme-handler/http;x-scheme-handler/https;
+Type=Application
+
+Actions=new-window;PrivateBrowsing;ProfileManager
+
+[Desktop Action new-window]
+_Name=New Window
+Exec=%EXEC --new-window %u
+
+[Desktop Action PrivateBrowsing]
+_Name=New Private Browsing Window
+Exec=%EXEC --private-window %u
+
+[Desktop Action ProfileManager]
+_Name=Profile Manager
+Exec=%EXEC --ProfileManager

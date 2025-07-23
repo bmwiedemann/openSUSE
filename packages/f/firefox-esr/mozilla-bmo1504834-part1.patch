@@ -1,12 +1,16 @@
 # HG changeset patch
-# Parent  9fcbd287056a40084b1e679f787bf683b291f323
+# Parent  e31f5228a09ed69d7ac3c84e54f0faa6a5910ae0
 Taken from https://bugzilla.mozilla.org/show_bug.cgi?id=1504834
 
-Index: firefox-128.0/gfx/2d/DrawTargetSkia.cpp
-===================================================================
---- firefox-128.0.orig/gfx/2d/DrawTargetSkia.cpp
-+++ firefox-128.0/gfx/2d/DrawTargetSkia.cpp
-@@ -156,7 +156,8 @@ static IntRect CalculateSurfaceBounds(co
+diff --git a/gfx/2d/DrawTargetSkia.cpp b/gfx/2d/DrawTargetSkia.cpp
+--- a/gfx/2d/DrawTargetSkia.cpp
++++ b/gfx/2d/DrawTargetSkia.cpp
+@@ -155,17 +155,18 @@ static IntRect CalculateSurfaceBounds(co
+   if (!sampledBounds.ToIntRect(&bounds)) {
+     return surfaceBounds;
+   }
+ 
+   return surfaceBounds.Intersect(bounds);
  }
  
  static const int kARGBAlphaOffset =
@@ -16,11 +20,20 @@ Index: firefox-128.0/gfx/2d/DrawTargetSkia.cpp
  
  static bool VerifyRGBXFormat(uint8_t* aData, const IntSize& aSize,
                               const int32_t aStride, SurfaceFormat aFormat) {
-Index: firefox-128.0/gfx/2d/Types.h
-===================================================================
---- firefox-128.0.orig/gfx/2d/Types.h
-+++ firefox-128.0/gfx/2d/Types.h
-@@ -89,18 +89,11 @@ enum class SurfaceFormat : int8_t {
+   if (aFormat != SurfaceFormat::B8G8R8X8 || aSize.IsEmpty()) {
+     return true;
+   }
+   // We should've initialized the data to be opaque already
+   // On debug builds, verify that this is actually true.
+diff --git a/gfx/2d/Types.h b/gfx/2d/Types.h
+--- a/gfx/2d/Types.h
++++ b/gfx/2d/Types.h
+@@ -94,28 +94,21 @@ enum class SurfaceFormat : int8_t {
+               // this format.
+   HSV,
+   Lab,
+   Depth,
+ 
    // This represents the unknown format.
    UNKNOWN,  // TODO: Replace uses with Maybe<SurfaceFormat>.
  
@@ -42,11 +55,20 @@ Index: firefox-128.0/gfx/2d/Types.h
  
    // The following values are OS and endian-independent synonyms.
    //
-Index: firefox-128.0/gfx/skia/skia/modules/skcms/skcms.cc
-===================================================================
---- firefox-128.0.orig/gfx/skia/skia/modules/skcms/skcms.cc
-+++ firefox-128.0/gfx/skia/skia/modules/skcms/skcms.cc
-@@ -31,6 +31,8 @@
+   // TODO(aosmond): When everything blocking bug 1581828 has been resolved, we
+   // can make this use R8B8G8A8 and R8B8G8X8 for non-Windows platforms.
+   OS_RGBA = A8R8G8B8_UINT32,
+   OS_RGBX = X8R8G8B8_UINT32
+ };
+diff --git a/gfx/skia/skia/modules/skcms/skcms.cc b/gfx/skia/skia/modules/skcms/skcms.cc
+--- a/gfx/skia/skia/modules/skcms/skcms.cc
++++ b/gfx/skia/skia/modules/skcms/skcms.cc
+@@ -26,16 +26,18 @@
+         // it'd be a lot slower.  But we want all those headers included so we
+         // can use their features after runtime checks later.
+         #include <smmintrin.h>
+         #include <avxintrin.h>
+         #include <avx2intrin.h>
          #include <avx512fintrin.h>
          #include <avx512dqintrin.h>
      #endif
@@ -55,7 +77,17 @@ Index: firefox-128.0/gfx/skia/skia/modules/skcms/skcms.cc
  #endif
  
  using namespace skcms_private;
-@@ -324,20 +326,28 @@ enum {
+ 
+ static bool sAllowRuntimeCPUDetection = true;
+ 
+ void skcms_DisableRuntimeCPUDetection() {
+     sAllowRuntimeCPUDetection = false;
+@@ -319,30 +321,38 @@ enum {
+     skcms_Signature_sf32 = 0x73663332,
+     // XYZ is also a PCS signature, so it's defined in skcms.h
+     // skcms_Signature_XYZ = 0x58595A20,
+ };
+ 
  static uint16_t read_big_u16(const uint8_t* ptr) {
      uint16_t be;
      memcpy(&be, ptr, sizeof(be));
@@ -90,3 +122,8 @@ Index: firefox-128.0/gfx/skia/skia/modules/skcms/skcms.cc
  #endif
  }
  
+ static int32_t read_big_i32(const uint8_t* ptr) {
+     return (int32_t)read_big_u32(ptr);
+ }
+ 
+ static float read_big_fixed(const uint8_t* ptr) {

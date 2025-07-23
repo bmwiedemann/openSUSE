@@ -40,9 +40,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          128
-%define mainver        %major.12.0
-%define orig_version   128.12.0
+%define major          140
+%define mainver        %major.1.0
+%define orig_version   140.1.0
 %define orig_suffix    esr
 %define update_channel esr
 %define branding       1
@@ -113,10 +113,14 @@ BuildRequires:  dbus-1-glib-devel
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
 BuildRequires:  memory-constraints
-BuildRequires:  gcc14
-BuildRequires:  gcc14-c++
-BuildRequires:  cargo1.84
-BuildRequires:  rust1.84
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+%else
+BuildRequires:  gcc-c++
+%endif
+BuildRequires:  cargo1.86
+BuildRequires:  rust1.86
 %if 0%{useccache} != 0
 BuildRequires:  ccache
 %endif
@@ -125,8 +129,8 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
-BuildRequires:  mozilla-nspr-devel >= 4.35
-BuildRequires:  mozilla-nss-devel >= 3.100
+BuildRequires:  mozilla-nspr-devel >= 4.36
+BuildRequires:  mozilla-nss-devel >= 3.110
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -149,9 +153,11 @@ BuildRequires:  python3-curses
 BuildRequires:  python3-devel
 %endif
 %endif
-BuildRequires:  rust-cbindgen >= 0.26
+BuildRequires:  rust-cbindgen >= 0.28
+%if 0%{?suse_version} > 1560
+BuildRequires:  translate-suse-desktop
+%endif
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libXt-devel
 %if 0%{?do_profiling}
 BuildRequires:  xvfb-run
@@ -195,10 +201,13 @@ Group:          Productivity/Networking/Web/Browsers
 URL:            http://www.mozilla.org/
 %if !%{with only_print_mozconfig}
 Source:         http://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/source/%{srcname}-%{orig_version}%{orig_suffix}.source.tar.xz
-Source1:        MozillaFirefox.desktop
+Source1:        MozillaFirefox.desktop.in.in
 Source2:        MozillaFirefox-rpmlintrc
 Source3:        mozilla.sh.in
 Source4:        tar_stamps
+# Ready made desktop file for products that don't support %%translate_suse_desktop.
+# You can be prompted for the update during the Factory build.
+Source5:        MozillaFirefox.desktop
 %if %{localize}
 Source7:        l10n-%{orig_version}%{orig_suffix}.tar.xz
 %endif
@@ -209,7 +218,10 @@ Source12:       mozilla-get-app-id
 Source13:       spellcheck.js
 Source14:       https://github.com/openSUSE/firefox-scripts/raw/913fab1/create-tar.sh
 Source15:       firefox-appdata.xml
-Source16:       firefox-search-provider.ini
+Source16:       %{name}.changes
+%if "%{pkgname}" != "firefox-esr"
+Source17:       firefox-search-provider.ini
+%endif
 # Set up API keys, see http://www.chromium.org/developers/how-tos/api-keys
 # Note: these are for the openSUSE Firefox builds ONLY. For your own distribution,
 # please get your own set of keys.
@@ -231,9 +243,10 @@ Patch14:        mozilla-bmo849632.patch
 Patch15:        mozilla-bmo998749.patch
 Patch17:        mozilla-libavcodec58_91.patch
 Patch18:        mozilla-silence-no-return-type.patch
+Patch19:        mozilla-bmo531915.patch
 Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
-Patch22:        mozilla-fix-cmath-issues.patch
+Patch24:        mozilla-bmo1746799.patch
 # Firefox/browser
 Patch102:       firefox-branded-icons.patch
 %endif
@@ -255,6 +268,9 @@ Recommends:     libfido2-udev
 %endif
 # addon leads to startup crash (bnc#908892)
 Obsoletes:      tracker-miner-firefox < 0.15
+%if "%{pkgname}" == "firefox-esr"
+Recommends:     MozillaFirefox
+%endif
 %if 0%{?devpkg} == 0
 Obsoletes:      %{name}-devel < %{version}
 %endif
@@ -340,11 +356,33 @@ fi
 %else
 %setup -q -n %{srcname}-%{orig_version}
 %endif
+%if 0%{?suse_version} > 1560
+cp %{SOURCE1} %{desktop_file_name}.desktop.in.in
+%else
+cp %{SOURCE5} %{desktop_file_name}.desktop
+%endif
 cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %autopatch -p1
 %endif
 
 %build
+# desktop file
+%if 0%{?suse_version} > 1560
+sed "s:%%NAME:%{appname}:g
+s:%%EXEC:%{progname}:g
+s:%%ICON:%{progname}:g
+s:%%WMCLASS:%{progname}%{major}:g" \
+  %{desktop_file_name}.desktop.in.in > %{desktop_file_name}.desktop.in
+%translate_suse_desktop %{desktop_file_name}.desktop
+if ! diff %{desktop_file_name}.desktop %{SOURCE5} ; then
+cat <<EOF
+A new version of desktop file exists. Please update MozillaFirefox.desktop
+rpm source from $PWD/%{desktop_file_name}.desktop
+to get translations to older products.
+EOF
+  exit 1
+fi
+%endif
 %if !%{with only_print_mozconfig}
 # Ensure both .changes files do exist:
 ln -f "%{_sourcedir}/firefox-esr.changes.txt" "%{_sourcedir}/%{pkgname}.changes"
@@ -381,9 +419,14 @@ export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
 export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 export CFLAGS="%{optflags}"
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
+export CC=gcc-13
+export CXX=g++-13
+%else
 %if 0%{?clang_build} == 0
-export CC=gcc-14
-export CXX=g++-14
+export CC=gcc
+export CXX=g++
+%endif
 %endif
 %ifarch %arm %ix86
 ### NOTE: these sections are not required anymore. Alson --no-keep-memory + -Wl,-z,pack-relative-relocs causes
@@ -523,7 +566,6 @@ cat << EOF > ${MOZCONFIG}_LANG
 mk_add_options MOZILLA_OFFICIAL=1
 mk_add_options BUILD_OFFICIAL=1
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../obj_LANG
-mk_add_options MOZ_MAKE_FLAGS=-j1
 . \$topsrcdir/browser/config/mozconfig
 ac_add_options --prefix=%{_prefix}
 ac_add_options --with-l10n-base=$RPM_BUILD_DIR/l10n
@@ -534,12 +576,11 @@ ac_add_options --enable-official-branding
 %endif
 EOF
 
-# Let's not build the various langpacks in parallel. It may be the
-# reason for random build failures as can be seen in boo#1239446
-# %define njobs 0%{?jobs:%%jobs}
-# Unless the build failures will happen again even when building
-# sequentially, we'll define njobs to 1:
-%define njobs 1
+%if 0%{?suse_version} >= 1600
+%define njobs ${RPM_BUILD_NCPUS:-0}
+%else
+%define njobs 0%{?jobs:%jobs}
+%endif
 mkdir -p $RPM_BUILD_DIR/langpacks_artifacts/
 sed -r '/^(ja-JP-mac|ga-IE|en-US|)$/d;s/ .*$//' $RPM_BUILD_DIR/%{srcname}-%{orig_version}/browser/locales/shipped-locales \
     | xargs -n 1 %{?njobs:-P %njobs} -I {} /bin/sh -c '
@@ -568,6 +609,7 @@ ccache -s
 %endif
 
 %install
+install -D -m 0644 %{desktop_file_name}.desktop %{buildroot}%{_datadir}/applications/%{desktop_file_name}.desktop
 cd $RPM_BUILD_DIR/obj
 source %{SOURCE4}
 export MOZ_SOURCE_STAMP=$RELEASE_TAG
@@ -621,14 +663,6 @@ s:%%PROFILE:.mozilla/firefox:g" \
   %{SOURCE3} > %{buildroot}%{progdir}/%{progname}.sh
 chmod 755 %{buildroot}%{progdir}/%{progname}.sh
 ln -sf ../..%{progdir}/%{progname}.sh %{buildroot}%{_bindir}/%{progname}
-# desktop file
-mkdir -p %{buildroot}%{_datadir}/applications
-sed "s:%%NAME:%{appname}:g
-s:%%EXEC:%{progname}:g
-s:%%ICON:%{progname}:g
-s:%%WMCLASS:%{progname}%{major}:g" \
-  %{SOURCE1} > %{buildroot}%{_datadir}/applications/%{desktop_file_name}.desktop
-%suse_update_desktop_file %{desktop_file_name} Network WebBrowser GTK
 # additional mime-types
 mkdir -p %{buildroot}%{_datadir}/mime/packages
 cp %{SOURCE8} %{buildroot}%{_datadir}/mime/packages/%{progname}.xml
@@ -639,9 +673,11 @@ sed "s:firefox.desktop:%{desktop_file_name}:g" \
 # install man-page
 mkdir -p %{buildroot}%{_mandir}/man1/
 cp %{SOURCE11} %{buildroot}%{_mandir}/man1/%{progname}.1
-## install GNOME Shell search provider
-#mkdir -p %{buildroot}%{_datadir}/gnome-shell/search-providers
-#cp %{SOURCE16} %{buildroot}%{_datadir}/gnome-shell/search-providers
+%if "%{pkgname}" != "firefox-esr"
+# install GNOME Shell search provider
+mkdir -p %{buildroot}%{_datadir}/gnome-shell/search-providers
+cp %{SOURCE17} %{buildroot}%{_datadir}/gnome-shell/search-providers
+%endif
 ##########
 # ADDONS
 #
@@ -712,7 +748,6 @@ exit 0
 %dir %{progdir}/browser/
 %dir %{progdir}/browser/chrome/
 %{progdir}/browser/defaults
-%{progdir}/browser/features/
 %{progdir}/browser/chrome/icons
 %{progdir}/browser/omni.ja
 %dir %{progdir}/distribution/
@@ -737,17 +772,20 @@ exit 0
 %{progdir}/pingsender
 %{progdir}/platform.ini
 %if %crashreporter
+%{progdir}/crashhelper
 %{progdir}/crashreporter
-#%{progdir}/crashreporter.ini
-#%{progdir}/Throbber-small.gif
-%{progdir}/minidump-analyzer
-#%{progdir}/browser/crashreporter-override.ini
+#%%{progdir}/crashreporter.ini
+#%%{progdir}/Throbber-small.gif
+#%%{progdir}/minidump-analyzer
+#%%{progdir}/browser/crashreporter-override.ini
 %endif
 %{_datadir}/applications/%{desktop_file_name}.desktop
 %{_datadir}/mime/packages/%{progname}.xml
-#%dir %{_datadir}/gnome-shell
-#%dir %{_datadir}/gnome-shell/search-providers
-#%{_datadir}/gnome-shell/search-providers/*.ini
+%if "%{pkgname}" != "firefox-esr"
+%dir %{_datadir}/gnome-shell
+%dir %{_datadir}/gnome-shell/search-providers
+%{_datadir}/gnome-shell/search-providers/*.ini
+%endif
 %dir %{_datadir}/mozilla
 %dir %{_datadir}/mozilla/extensions
 %dir %{_datadir}/mozilla/extensions/%{firefox_appid}
