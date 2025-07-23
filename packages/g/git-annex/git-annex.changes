@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul 22 18:12:16 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20250721.
+  git-annex (10.20250721) upstream; urgency=medium
+
+    * Improved workaround for git 2.50 bug, avoding an occasional test suite
+      failure, as well as some situations where an unlocked file did not get
+      populated when adding another file to the repository with the same
+      content.
+    * Add --url option and url= preferred content expression, to match
+      content that is recorded as present in an url.
+    * p2phttp: Scan multilevel directories with --directory.
+    * p2phttp: Added --socket option.
+    * Fix bug in handling of linked worktrees on filesystems not supporting
+      symlinks, that caused annexed file content to be stored in the wrong
+      location inside the git directory, and also caused pointer files to not
+      get populated.
+    * fsck: Fix location of annexed files when run in linked worktrees
+      that have experienced the above bug.
+    * Fix symlinks generated to annexed content when in adjusted unlocked
+      branch in a linked worktree on a filesystem not supporting symlinks.
+
+   -- Joey Hess <id@joeyh.name>  Tue, 22 Jul 2025 14:11:26 -0400
+
+-------------------------------------------------------------------
 Mon Jun 30 14:06:16 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20250630.
