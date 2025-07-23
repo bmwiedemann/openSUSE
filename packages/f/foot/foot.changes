@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 23 06:45:11 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.23.1:
+  * URL labels are now assigned from bottom to top.
+  * SIGUSR1 no longer toggles between color themes. Instead SIGUSR1 explicitly
+    changes to primary theme and SIGUSR2 changes to alternative theme.
+  * Fixed 10-bit surfaces being used sometimes instead of 16-bit.
+  * Fixed OSC sequences for resetting colors not taking the current theme
+    into account.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.23.1 for more details.
+
+-------------------------------------------------------------------
 Wed Jul 16 07:46:18 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.23.0:
