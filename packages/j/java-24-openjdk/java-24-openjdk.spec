@@ -458,7 +458,7 @@ bash ../configure \
     --with-version-pre="" \
 %endif
     --with-version-build="%{buildver}" \
-    --with-version-opt="suse-%{release}-%{_arch}" \
+    --with-version-opt="suse-%{suse_version}-%{_arch}" \
 %if %{with zero}
     --with-jvm-variants=zero \
 %else

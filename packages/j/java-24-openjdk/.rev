@@ -15,4 +15,12 @@
     <comment>July 2025 CPU</comment>
     <requestid>1294304</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>420c29a89ece3ee374f4e0161aaa5f40</srcmd5>
+    <version>24.0.2.0</version>
+    <time>1753281195</time>
+    <user>anag_factory</user>
+    <comment>Do not embed rebuild counter (bsc#1246806)</comment>
+    <requestid>1294996</requestid>
+  </revision>
 </revisionlist>
