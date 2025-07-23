@@ -1,7 +1,7 @@
 #
 # spec file for package matcha-gtk-theme
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,9 @@
 %define         _theme              Matcha
 %define         gtk3_min_version    3.20.0
 %define         gtk2_min_version    2.24.30
-%define         _version            2023-04-03
+%define         _version            2025-04-11
 Name:           matcha-gtk-theme
-Version:        20230403
+Version:        20250411
 Release:        0
 Summary:        Matcha is a flat Design theme for GTK 4, GTK 3, GTK 2 and Gnome-Shell
 License:        GPL-3.0-only
@@ -144,6 +144,7 @@ Matcha is a flat Design theme for GTK 4, GTK 3, GTK 2 and Gnome-Shell.
 
 This package contains the Xfwm4 themes.
 
+%if 0%{?suse_version} < 1650
 %package -n plank-theme-%{_name}
 Summary:        Matcha Plank themes
 Group:          System/GUI/Other
@@ -154,6 +155,7 @@ BuildArch:      noarch
 
 %description -n plank-theme-%{_name}
 Matcha is a flat Design theme for GTK 4, GTK 3, GTK 2 and Gnome-Shell.
+%endif
 
 This package contains the Plank themes.
 
@@ -187,6 +189,11 @@ mkdir -p %{buildroot}%{_datadir}/themes
 # Remove unity and index.theme files
 rm -rf  %{buildroot}%{_datadir}/themes/*/unity
 rm -f   %{buildroot}%{_datadir}/themes/*/index.theme
+
+# Remove plank theme files for TW
+%if 0%{?suse_version} > 1650
+rm -rf %{buildroot}%{_datadir}/themes/*/plank
+%endif
 
 %if 0%{?suse_version} <= 1500
 rm -rf %{buildroot}%{_datadir}/themes/*/gtk-4.0
@@ -361,6 +368,7 @@ rm -rf %{buildroot}%{_datadir}/themes/*/gtk-4.0
 %{_datadir}/themes/Matcha-sea-xhdpi/xfwm4/
 %{_datadir}/themes/Matcha-sea/xfwm4/
 
+%if 0%{?suse_version} < 1650
 %files -n plank-theme-%{_name}
 %{_datadir}/themes/Matcha-aliz/plank/
 %{_datadir}/themes/Matcha-azul/plank/
@@ -374,6 +382,7 @@ rm -rf %{buildroot}%{_datadir}/themes/*/gtk-4.0
 %{_datadir}/themes/Matcha-light-sea/plank/
 %{_datadir}/themes/Matcha-pueril/plank/
 %{_datadir}/themes/Matcha-sea/plank/
+%endif
 
 %files -n openbox-theme-%{_name}
 %{_datadir}/themes/Matcha-aliz/openbox-3/

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul 20 14:36:20 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 20250411:
+  * Support gnome 48
+- update to version 20240501:
+  * Fixed gnome-shell 46 issues
+- don't install the plank theme for tumbleweed
+
+-------------------------------------------------------------------
 Tue Aug 22 11:45:59 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 20230403:
