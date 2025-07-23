@@ -1,4 +1,6 @@
 /var/log/traefik/*.log {
+    su traefik traefik
+
     weekly
     maxsize 32G
     notifempty

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul 22 13:38:51 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Fixed boo#1246094 bad logrotate configuration allows potential escalation
+  from traefik to root
+
+- Disabled MPTCP which caused issues (see gh#traefik/traefik#11869
+
+- Version 3.4.4
+  - k8s/gatewayapi
+    * Respect service.nativelb=false annotation when nativeLBByDefault is
+      enabled (gh#traefik/traefik#11847 by sdelicata)
+  - service
+    * Fix concurrent access to balancer status map in WRR and P2C 
+      strategies (gh#traefik/traefik#11887 by kevinpollet)
+
+-------------------------------------------------------------------
 Thu Jun 26 15:05:31 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 3.4.3

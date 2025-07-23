@@ -23,7 +23,7 @@
 %define buildmode pie
 %endif
 Name:           traefik
-Version:        3.4.3
+Version:        3.4.4
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT
@@ -61,7 +61,7 @@ Etcd, Rancher, Amazon ECS) and configures itself automatically and dynamically.
 Pointing Traefik at your orchestrator should be the only configuration step you need.
 
 %prep
-%setup -q -c %{name}-%{version} -b0 -a1
+%autosetup -c %{name}-%{version} -b0 -a1 -p1
 
 %build
 %sysusers_generate_pre %{SOURCE4} %{name} %{name}-user.conf
