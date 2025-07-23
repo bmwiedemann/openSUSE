@@ -42,6 +42,7 @@ Patch7:         ucm-mcm-fix-backlog-parameter-for-socket.patch
 Patch8:         reproducible.patch
 Patch9:         openib-add-missing-include.patch
 Patch10:        GCC15-C23-support.patch
+Patch11:        dapl-add-missing-attribute.patch
 URL:            http://www.openfabrics.org
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf

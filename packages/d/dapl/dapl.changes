@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 22 12:41:52 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add dapl-add-missing-attribute.patch to fix an issue with flto
+  where constructors are not properly called.
+
+-------------------------------------------------------------------
 Fri Jul 11 06:32:56 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Add GCC15-C23-support.patch to fix compilation with GCC >= 15.

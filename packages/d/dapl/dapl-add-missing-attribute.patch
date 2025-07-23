@@ -1,0 +1,34 @@
+commit 83dfda46eef190bb5c6910e2365746d5529de5e0
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Tue Jul 22 13:52:43 2025 +0200
+
+    dapl: add missing attribute
+    
+    With flto=auto, the constructors and destructors are being dropped
+    as there are not called by anything within the code. It seems that -Wl,-init
+    is not enough for ld.
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git dapl/udapl/dapl_init.c dapl/udapl/dapl_init.c
+index 9ccbaf5d214d..89c08ab3cb0e 100644
+--- dapl/udapl/dapl_init.c
++++ dapl/udapl/dapl_init.c
+@@ -67,6 +67,7 @@
+  *
+  * Return Values:
+  */
++__attribute__((constructor))
+ void dapl_init(void)
+ {
+ 	DAT_RETURN dat_status;
+@@ -147,7 +148,8 @@ void dapl_init(void)
+  *
+  * Return Values:
+  */
+-void dapl_fini(void)
++__attribute__((destructor))
++void dapl_fini(void) 
+ {
+ 	DAT_RETURN dat_status;
+ 
