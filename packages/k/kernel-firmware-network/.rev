@@ -74,4 +74,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * WHENCE: extract license texts</comment>
     <requestid>1289254</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a1b3e0a573ded2705aaa9c1e8473a986</srcmd5>
+    <version>20250717</version>
+    <time>1753281152</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250717 (git commit 6fc20e018cca):
+  * WHENCE: extract more license statements</comment>
+    <requestid>1295037</requestid>
+  </revision>
 </revisionlist>
