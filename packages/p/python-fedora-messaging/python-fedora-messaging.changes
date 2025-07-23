@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jul 21 12:04:27 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 3.8.0:
+  * Add typing to the entire library, and check it with mypy and pyright
+  * Update the Fedora certificates
+  * Make the factory directly available as an attribute of the service
+  * Drop support for Python 3.8 and Pika < 1.0
+  * Support Python 3.13
+- update to version 3.7.1:
+  * Add the new CAs to the trusted CA certs
+  * Documentation Improvements
+- update to version 3.7.0:
+  * Indicate which package a schema comes from when missing
+  * Add a new reconsume CLI command
+  * Add an embedded HTTP server to monitor the service
+  * Documentation Improvements
+- update to version 3.6.0:
+  * nothing of relevance
+- update to version 3.5.0:
+  * Add a replay command
+  * Add support Python 3.11 and 3.12, drop support for Python 3.6 and 3.7
+  * Better protection against invalid bodies breaking the headers generation
+    and the instanciation of a message
+  * Testing framework: make the sent messages available in the context manager
+
+-------------------------------------------------------------------
 Mon Mar  4 14:50:05 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - use pyproject_wheel to build
