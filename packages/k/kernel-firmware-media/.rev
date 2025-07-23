@@ -74,4 +74,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: venus-5.4: add the firmware binary for qcs615</comment>
     <requestid>1289253</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>038c95f14a49245dda9e8651e5a80aad</srcmd5>
+    <version>20250717</version>
+    <time>1753281148</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250717 (git commit 6fc20e018cca):
+  * WHENCE: extract more license statements</comment>
+    <requestid>1295035</requestid>
+  </revision>
 </revisionlist>
