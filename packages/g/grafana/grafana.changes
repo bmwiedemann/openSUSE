@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul 22 13:10:21 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update to version 11.6.3+security-01:
+  Security:
+  CVE-2025-6023: Fix cross-site-scripting via scripted dashboards
+                 (bsc#1246735)
+  CVE-2025-6197: Fix open redirect in organization switching
+                 (bsc#1246736)
+  Features and enhancements:
+  * Profiles: Stop passing response headers for Grafana-Pyroscope
+              and parca datasources.
+  Bug fixes:
+  * FlameGraph: Fix bug for function names that conflict with
+                JavaScript object prototype properties.
+- Require Go 1.24 for building
+
+-------------------------------------------------------------------
 Thu Jul 10 13:36:29 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Bump disk space build constraint to 12 GB
@@ -9519,6 +9536,7 @@ Thu Feb 08 14:12:39 UTC 2018 - jfajerski@suse.com
 
 
  -------------------------------------------------------------------
+-------------------------------------------------------------------
 Mon Jan 29 11:04:08 UTC 2018 - jan.fajerski@suse.com
 
 - Use %{_fillupdir} for sysconfig file
