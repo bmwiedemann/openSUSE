@@ -208,4 +208,19 @@
 </comment>
     <requestid>1179326</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cae357bb37d975a81a1d34228317ef49</srcmd5>
+    <version>1.1.8</version>
+    <time>1753281108</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.8
+  * Set CMOCKA_LIBRARIES in package config for backwards compatibility
+  * Improve c_strreplace implementation
+  * Sanitize XML strings
+  * Update check for uintptr_t
+  * Require cmake &gt;= 3.10
+- Make libcmocka-doc a noarch package
+</comment>
+    <requestid>1294040</requestid>
+  </revision>
 </revisionlist>

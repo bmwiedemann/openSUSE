@@ -1,7 +1,7 @@
 #
 # spec file for package cmocka
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 
 Name:           cmocka
-Version:        1.1.7
+Version:        1.1.8
 Release:        0
 Summary:        Lightweight library to simplify and generalize unit tests for C
 License:        Apache-2.0
@@ -100,12 +100,13 @@ Summary:        Documentation for the cmocka library
 Group:          Development/Libraries/C and C++
 Enhances:       libcmocka-devel
 Provides:       libcmocka-devel:%{_defaultdocdir}/libcmocka-devel
+BuildArch:      noarch
 
 %description -n libcmocka-doc
 Documentation for the cmocka unit testing library.
 
 %package -n libcmocka-cmake
-Summary:        cmake support for the cmocka library
+Summary:        CMake support for the cmocka library
 Group:          Development/Libraries/C and C++
 Requires:       cmake
 Requires:       libcmocka-devel = %{version}

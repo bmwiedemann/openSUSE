@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 17 07:06:11 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.1.8
+  * Set CMOCKA_LIBRARIES in package config for backwards compatibility
+  * Improve c_strreplace implementation
+  * Sanitize XML strings
+  * Update check for uintptr_t
+  * Require cmake >= 3.10
+- Make libcmocka-doc a noarch package
+
+-------------------------------------------------------------------
 Fri Jun  7 11:09:17 UTC 2024 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix baselibs.conf for libcmocka-cmake subpackage
