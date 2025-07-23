@@ -619,7 +619,7 @@ bash ../configure \
     --with-version-pre="" \
 %endif
     --with-version-build="%{buildver}" \
-    --with-version-opt="suse-%{release}-%{_arch}" \
+    --with-version-opt="suse-%{suse_version}-%{_arch}" \
     --disable-warnings-as-errors \
 %if %{with zero}
     --with-jvm-variants=zero \
