@@ -2,6 +2,67 @@
 control logs (e.g. 'git log --oneline v1..v2'), as the Logwatch project does
 not release a change log themselves. ***
 
+==== 7.13 ====
+88df91d (HEAD -> master, tag: 7.13, origin/master, origin/HEAD) [logwatch] Preparation for Release 7.13
+0ac11a5 [rsyslogd] De-duplicate lines with time calculations
+86aa1fa [sendmail] Removed invalid commented-out code.
+36eb45f [logstash] Remove script - needs update to Logwatph.pm
+8a53a17 [sendmail] Improved detection of "Command unrecognized" strings.
+cffe05c [rsyslogd] Ignore "GnuTLS error: Error in the push function" - paired with other errors
+1e95342 [omsa] Handle peak power and new Unexpected sense messages
+662e3a4 [systemd] Add ignore_messages option to ignore messages matching a regex
+df14f64 [kernel] Fix EDAC regex
+d0ccbc7 [rsyslogd] Ignore additional rate-limiting message paired with other messages
+3c170e1 [rsyslogd] Ignore additional omfwd messages paired with other messages
+18825a7 [nut] Ignore upsnotify message about tech that we already know about
+b299949 [pam_unix] Add nx to services; Allow for username in session opened by messages for cron
+b71a566 [pam_unix] Add kde to dektop services; Hande "User info message"
+174a9e0 [systemd] Update for newer systemd
+6c17f89 [logstash] Initial version
+1360c39 [systemd] Ignore "Unnecessary job was removed for .*" - appears informational
+f88b825 [systemd] Ignore State timed out messages - followed by a failed message
+d6c750d [named] No need for unconfineds variable, not used
+358d98d [clam-update] Added comments about syslog format.
+ca25f68 [logwatch.8] Clarified use of debug.
+21a1fee Fix Dir glob issue Iridos2 bug report.
+f4dce54 [postfix] Added support for postfix version 3.10, per Michael Grimm.
+a07f7b0 [zypp] Added support for patch statements; reported by leithh.
+2e4ab31 [dovecot] Added better detail granularity, and support logformat 2.3, per Michael Grimm.
+914696e [systemd] Relax LSM BPF program attached regex
+2cbf358 [dirsrv] Relax ACL target does not exist regex; Ignore schema-compat-plugin info messages that are at ERR level
+5072cff [dovecot] Script and configuration file updated with granular detail options           and improved report grouping, per Michael Grimm.
+1253609 [clam-update] Fixed typo.
+38d9e3c [clam-update] Check for empty LogFile strings and adjust error messages, reported by Al Heynneman.
+85f3b99 [onlyservice,removeheaders] Allow RFC 3164 Log Format with named facility.severity, per Michael Grimm.
+61de7f8 [http] Setting default http_rc code for when not specified in LogFormat, reported by Harald Leithner.
+42e9499 [logwatch.pl,syslog-ng] Removed HTML Entity encoding for xml, as all strings are now UTF-8, per Michael Grimm.
+
+==== 7.12 ====
+85e5559 [logwatch] Updating release version
+690b772 [http] Replace hyphen with "Unidentified agent," per Michael Grimm.
+7919282 [named] Handle "zone not loaded due to errors; Handle "journal file is out of date; removed" separately;  Ignore "New key observered for zone"
+fe5173a [named] handle "TCP client quota reached" messages; Expand limit regex
+892b3e2 Remove trailing whitespace
+b5f0ecf [nut] Handle battery needs to be replaced message
+e1bd825 [nut] Update for 2.8.2
+d1121e5 [postfix] Support for aliased mailboxes, per Michael Grimm
+14b4cee [zz-zfs] Added 'Cap' column header, per Michael Grimm
+b0a7ba5 [sudo] Add sudo_detail, per Michael Grimm
+607f729 [omsa] Ignored Administrator stopped message
+db42195 [omsa] Update Patrol Read regex
+d046c64 [sssd] Ignore "exec_child_ex command" messages
+85d7298 [secure] relax regex around "gkr-pam: no password is available for user"
+51e7db0 [secure] Ignore sshd-session messages
+77f86bd [sendmail] Added filter for new pre-greeting message.
+848bc1f [postfix] Added DNSBL rank display, per Michael Grimm.
+126d7c5 [sshd] Added 'drop connection' counter.
+aa44df8 [rsyslogd] Handle stdout/stderr sent to journal which ends up with an extra prefix
+b3678b6 [named] Add option to ignore denied zone trasfter; Move limit reporting to detail >= 1
+1e74b91 [systemd] Handle new Watchdog and Reexecuting requested messages
+c820291 [dnf-automatic] New script contributed by Clive Lin.
+a1ebae9 [mdadm] Check if hash of 'good devices' is undefined or empty.
+1d25f53 [sshd,secure] Added support for OpenSSH 9.8 (sshd-session, port number), per tomop.
+
 ==== 7.11 ====
 d32d105 (tag: 7.11) [logwatch.spec, logwatch.pl] Preparing for release 7.11
 f95ffd5 [journalctl] Added additional comments on usage.
