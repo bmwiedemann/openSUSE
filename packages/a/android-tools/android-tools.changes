@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 22 10:20:58 UTC 2025 - munix9@googlemail.com
+
+- Add fix-libusb-enumeration.patch
+  * Fix libusb enumeration to handle PINE64 PinePhone modem
+    (gh#nmeum/android-tools#153)
+- The android-udev-rules package is now suggested but no longer
+  required. See https://github.com/systemd/systemd/pull/36939
+  and (gh#M0Rf30/android-udev-rules#344)
+
+-------------------------------------------------------------------
 Tue May 27 09:28:29 UTC 2025 - munix9@googlemail.com
 
 - Add fix-protobuf-30-compat.patch

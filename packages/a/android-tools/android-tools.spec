@@ -35,6 +35,8 @@ Source0:        https://github.com/nmeum/android-tools/releases/download/%{versi
 Patch0:         fix-install-completion.patch
 # PATCH-FIX-UPSTREAM fix-protobuf-30-compat.patch -- based on commit 0c4d799
 Patch1:         fix-protobuf-30-compat.patch
+# PATCH-FIX-UPSTREAM fix-libusb-enumeration.patch gh#nmeum/android-tools#153
+Patch2:         fix-libusb-enumeration.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  go
 BuildRequires:  llvm-gold
@@ -49,9 +51,9 @@ BuildRequires:  pkgconfig(libunwind-generic)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(protobuf) >= 21
 BuildRequires:  pkgconfig(zlib)
-Requires:       android-udev-rules
 Suggests:       %{name}-mkbootimg = %{version}
 Suggests:       %{name}-partition = %{version}
+Suggests:       android-udev-rules
 Provides:       %{name}-python3 = %{version}-%{release}
 Obsoletes:      %{name}-python3 < %{version}-%{release}
 Provides:       bundled(boringssl)
