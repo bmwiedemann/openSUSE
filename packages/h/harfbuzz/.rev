@@ -1217,4 +1217,12 @@ New stable rel</comment>
   + Various build fixes. (forwarded request 1276943 from iznogood)</comment>
     <requestid>1277946</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>afade085cc54b469aadbe0e8c140cf68</srcmd5>
+    <version>11.3.2</version>
+    <time>1753281128</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1294977</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jul 21 07:38:41 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 11.3.2:
+  + Fix build with non-compliant C++11 compilers that don't
+    recognize the "and" keyword.
+- Changes from version 11.3.1:
+  + Fix crasher in the glyph_v_origin function introduced in
+    11.3.0.
+- Changes from version 11.3.0:
+  + Speed up handling fonts with very large number of variations.
+  + Speed up getting horizontal and vertical glyph advances by up
+    to 24%.
+  + Significantly speed up vertical text shaping.
+  + Various documentation improvements.
+  + Various build improvements.
+  + Various subsetting improvements.
+  + Various improvements to Rust font functions (fontations
+    integration) and shaper (HarfRust integration).
+  + Rename harfruzz option and shaper to harfrust following
+    upstream rename.
+  + Implement hb_face_reference_blob() for DirectWrite font
+    functions.
+
+-------------------------------------------------------------------
 Mon May 12 17:22:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 11.2.1:
