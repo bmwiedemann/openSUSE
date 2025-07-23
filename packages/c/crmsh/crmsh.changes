@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jul 23 13:22:46 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250723.07081e35:
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: sbd: Add pcmk_delay_max back to calculate SBD_DELAY_START
+
+-------------------------------------------------------------------
+Fri Jul 18 09:01:30 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250718.33900d18:
+  * Dev: doc: release crmsh-5.0 document
+
+-------------------------------------------------------------------
+Fri Jul 18 07:45:31 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250718.c6cf7189:
+  * Fix: ui_context: should not require root privilege when using subcommand 'help' (#1791)
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: unittests: Adjust unit test for previous commit
+  * Fix: sbd: Avoid negative value for the property 'stonith-watchdog-timeout' (bsc#1246622)
+
+-------------------------------------------------------------------
+Tue Jul 15 05:30:03 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250715.2a6fcf1f:
+  * Dev: ChangeLog: update ChangeLog for release 5.0.0-rc2
+
+-------------------------------------------------------------------
 Tue Jul 15 02:15:10 UTC 2025 - zzhou@suse.com
 
 - Update to version 5.0.0+20250715.749274d4:
