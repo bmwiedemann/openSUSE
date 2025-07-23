@@ -1,0 +1,93 @@
+---
+ CMakeLists.txt              |    2 +-
+ reformatter/CMakeLists.txt  |    6 ------
+ reformatter/json_reformat.c |    7 ++++---
+ src/CMakeLists.txt          |    2 +-
+ src/yajl_parser.c           |    3 ++-
+ verify/CMakeLists.txt       |    6 ------
+ 6 files changed, 8 insertions(+), 18 deletions(-)
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,7 +12,7 @@
+ # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ 
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
+ 
+ PROJECT(YetAnotherJSONParser C)
+ 
+--- a/reformatter/CMakeLists.txt
++++ b/reformatter/CMakeLists.txt
+@@ -34,10 +34,4 @@ IF (NOT WIN32)
+     TARGET_LINK_LIBRARIES(json_reformat m)
+ ENDIF (NOT WIN32)
+ 
+-# copy the binary into the output directory
+-GET_TARGET_PROPERTY(binPath json_reformat LOCATION)
+-
+-ADD_CUSTOM_COMMAND(TARGET json_reformat POST_BUILD
+-    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${binPath} ${binDir})
+-
+ INSTALL(TARGETS json_reformat RUNTIME DESTINATION bin)
+--- a/reformatter/json_reformat.c
++++ b/reformatter/json_reformat.c
+@@ -188,9 +188,10 @@ main(int argc, char ** argv)
+         {
+             const unsigned char * buf;
+             size_t len;
+-            yajl_gen_get_buf(g, &buf, &len);
+-            fwrite(buf, 1, len, stdout);
+-            yajl_gen_clear(g);
++            if (yajl_gen_get_buf(g, &buf, &len) == yajl_gen_status_ok) {
++                fwrite(buf, 1, len, stdout);
++                yajl_gen_clear(g);
++            }
+         }
+     }
+ 
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -67,7 +67,7 @@ CONFIGURE_FILE(yajl.pc.cmake ${shareDir}
+ FOREACH (header ${PUB_HDRS})
+   SET (header ${CMAKE_CURRENT_SOURCE_DIR}/${header})
+ 
+-  EXEC_PROGRAM(${CMAKE_COMMAND} ARGS -E copy_if_different ${header} ${incDir})
++  execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different ${header} ${incDir})
+ 
+   ADD_CUSTOM_COMMAND(TARGET yajl_s POST_BUILD
+       COMMAND ${CMAKE_COMMAND} -E copy_if_different ${header} ${incDir})
+--- a/src/yajl_parser.c
++++ b/src/yajl_parser.c
+@@ -342,8 +342,8 @@ yajl_do_parse(yajl_handle hand, const un
+                         yajl_bs_pop(hand->stateStack);
+                         goto around_again;
+                     }
+-                    /* intentional fall-through */
+                 }
++                /* fall through */
+                 case yajl_tok_colon:
+                 case yajl_tok_comma:
+                 case yajl_tok_right_bracket:
+@@ -411,6 +411,7 @@ yajl_do_parse(yajl_handle hand, const un
+                         yajl_bs_pop(hand->stateStack);
+                         goto around_again;
+                     }
++                /* fall through */
+                 default:
+                     yajl_bs_set(hand->stateStack, yajl_state_parse_error);
+                     hand->parseError =
+--- a/verify/CMakeLists.txt
++++ b/verify/CMakeLists.txt
+@@ -28,10 +28,4 @@ ADD_EXECUTABLE(json_verify ${SRCS})
+ 
+ TARGET_LINK_LIBRARIES(json_verify yajl_s)
+ 
+-# copy in the binary
+-GET_TARGET_PROPERTY(binPath json_verify LOCATION)
+-
+-ADD_CUSTOM_COMMAND(TARGET json_verify POST_BUILD
+-    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${binPath} ${binDir})
+-
+ INSTALL(TARGETS json_verify RUNTIME DESTINATION bin)

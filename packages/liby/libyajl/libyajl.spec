@@ -1,7 +1,7 @@
 #
 # spec file for package libyajl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,18 +29,18 @@ Source1:        baselibs.conf
 Source2:        json_reformat.1
 Source3:        json_verify.1
 Source99:       %{name}-rpmlintrc
+Patch0:         %{name}.patch
 Patch1:         libyajl-optflags.patch
 Patch2:         libyajl-lib_suffix.patch
 Patch3:         libyajl-pkgconfig.patch
 Patch4:         libyajl-CVE-2022-24795.patch
 Patch5:         libyajl-CVE-2023-33460.patch
 BuildRequires:  bison
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.10
 BuildRequires:  doxygen
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 YAJL is a small event-driven (SAX-style) JSON parser written in ANSI C, and a
@@ -105,29 +105,23 @@ install -m644 %{SOURCE2} %{SOURCE3} %{buildroot}/%{_mandir}/man1
 %check
 make %{?_smp_mflags} test
 
-%post   -n %{name}%{sover} -p /sbin/ldconfig
-
-%postun -n %{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{sover}
 
 %files -n %{name}%{sover}
-%defattr(-,root,root)
 %license COPYING
 %{_libdir}/libyajl.so.%{sover}
 %{_libdir}/libyajl.so.%{sover}.*
 
 %files -n %{name}-devel
-%defattr(-,root,root)
 %doc README TODO
 %{_includedir}/yajl
 %{_libdir}/libyajl.so
 %{_libdir}/pkgconfig/yajl.pc
 
 %files -n %{name}-devel-static
-%defattr(-,root,root)
 %{_libdir}/libyajl_s.a
 
 %files -n yajl
-%defattr(-,root,root)
 %{_mandir}/man1/json_reformat.1*
 %{_mandir}/man1/json_verify.1*
 %{_bindir}/json_reformat
