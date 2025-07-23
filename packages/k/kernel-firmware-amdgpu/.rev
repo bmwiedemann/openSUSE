@@ -253,4 +253,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: Add GC 11.5.3</comment>
     <requestid>1291745</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>74b297585f09e6970db099b812c74dfa</srcmd5>
+    <version>20250718</version>
+    <time>1753281146</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250718 (git commit a5fbfa20d1bd):
+  * amdgpu: update dmcub fw for various DCN version
+
+- Update to version 20250716 (git commit 1b1a9d871442):
+  * amdgpu: Update GC 11.5.1 microcode</comment>
+    <requestid>1295032</requestid>
+  </revision>
 </revisionlist>

@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 99d64b4f788c16e81b6550ef94f43c6b91cfad2d
+%define git_version a5fbfa20d1bd0f11d7f530ddee7385812da1f24e
 
 Name:           kernel-firmware-amdgpu
-Version:        20250708
+Version:        20250718
 Release:        0
 Summary:        Kernel firmware files for AMDGPU graphics driver
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250710.tar.gz#/kernel-firmware-tools-20250710.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250718.tar.gz#/kernel-firmware-tools-20250718.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases

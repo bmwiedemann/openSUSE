@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 19 06:35:44 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250718 (git commit a5fbfa20d1bd):
+  * amdgpu: update dmcub fw for various DCN version
+
+-------------------------------------------------------------------
+Thu Jul 17 07:02:54 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250716 (git commit 1b1a9d871442):
+  * amdgpu: Update GC 11.5.1 microcode
+
+-------------------------------------------------------------------
 Thu Jul 10 16:43:03 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250708 (git commit 99d64b4f788c):
