@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 23 08:07:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.6
+  * Add more getters for metrics by @DmitriyMusatkin in (#538)
+  * Revamp checksum - retry will reuse the checksum by @TingDaoK in (#532)
+
+-------------------------------------------------------------------
 Mon Jul 21 12:39:09 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.5
