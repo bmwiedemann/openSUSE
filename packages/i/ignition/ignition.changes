@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 21 12:56:07 UTC 2025 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.22.0:
+  * Features
+    * Support Oracle Cloud Infrastructure
+  * Changes
+    * Rename ignition.cfg -> 05_ignition.cfg
+    * Support setting setuid/setgid/sticky mode bits (3.6.0-exp)
+    * Warn if setuid/setgid/sticky mode bits specified (3.4.0 -
+      3.5.0)
+    * Add initial TMT tests and a new workflow to execute tests on
+      PRs
+
+-------------------------------------------------------------------
 Mon Jun 30 14:08:02 UTC 2025 - Ignaz Forster <iforster@suse.com>
 
 - ignition-suse-generator: Only use Ignition platform ID when
