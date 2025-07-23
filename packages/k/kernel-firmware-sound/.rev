@@ -196,4 +196,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * WHENCE: extract license texts</comment>
     <requestid>1289258</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>60536bc3b311829013aff5827088adcc</srcmd5>
+    <version>20250721</version>
+    <time>1753281163</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250721 (git commit d89120bb80fc):
+  * cirrus: cs35l41: Add Firmware for various ASUS commercial Laptops using CS35L41 HDA
+  * cirrus: cs35l41: Update Firmware for Dell Oasis
+  * cirrus: cs35l56: Add firmware for Cirrus CS35L56 for various Dell laptops
+  * qcom: Add Audio topology for QCS6490 RB3Gen2</comment>
+    <requestid>1295044</requestid>
+  </revision>
 </revisionlist>
