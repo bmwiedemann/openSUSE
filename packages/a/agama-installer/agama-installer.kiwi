@@ -21,7 +21,7 @@
         <profile name="Leap_16.0_PXE" description="openSUSE Leap OEM image for remote installation" import="true" />
     </profiles>
     <preferences>
-        <version>16.0.0</version>
+        <version>17.0.0</version>
         <packagemanager>zypper</packagemanager>
         <locale>en_US</locale>
         <keytable>us</keytable>
@@ -145,7 +145,7 @@
         <package name="agama-web-ui"/>
         <package name="agama-cli"/>
         <package name="agama-cli-bash-completion"/>
-        <package name="agama-auto"/>
+        <package name="agama-autoinstall"/>
         <package name="rubygem(agama-yast)"/>
         <package name="rubygem(byebug)"/>
         <package name="psmisc"/>
@@ -157,12 +157,13 @@
         <package name="qrencode"/>
         <package name="qemu-guest-agent" />
         <package name="aaa_base-extras"/>
-        <package name="createrepo_c" />
         <!-- it can be used by users in AutoYaST pre-scripts -->
         <package name="perl-XML-Simple"/>
         <archive name="live-root.tar.xz"/>
         <!-- IPMI support -->
         <package name="ipmitool" />
+        <!-- jsc#PED-13114 -->
+        <package name="tpm2.0-tools" />
     </packages>
 
     <!-- packages for local installation (desktop, browser, etc.) -->

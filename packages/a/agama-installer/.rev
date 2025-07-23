@@ -262,4 +262,41 @@
     <comment>- Version 16</comment>
     <requestid>1289319</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ad277ed3ca0d316eb305ada7b793d0ef</srcmd5>
+    <version>17.0.0</version>
+    <time>1753281355</time>
+    <user>anag_factory</user>
+    <comment>- Version 17
+
+- Disabled udev rules that interfere with the activation process of
+  libstorage-ng (bsc#1246133 and bsc#1245159).
+
+- Masked some systemd services that interfere with the activation
+  process of libstorage-ng (bsc#1246133).
+
+- Added &quot;inst.dud_insecure&quot; boot option for ignoring SSL
+  certificate problems when downloading DUD from an HTTPS server
+  (related to bsc#1245393)
+- Skip updating kernel module dependencies if the DUD image does
+  not provide any kernel module
+
+- Fixed downloading DUD files from HTTPS URL
+  (link the SSL certificates and config from the root image)
+  (bsc#1245393)
+
+- Use &quot;plaindir&quot; repository type for the DUD package repository,
+  we do not need to create any repository index
+  (gh#agama-project/agama#2543)
+- Automatically configure network when a remote DUD is used,
+  the &quot;rd.neednet=1&quot; boot option is not required anymore
+  (by default uses the DHCP configuration, can be changed via the
+  &quot;ip=&quot; boot option)
+
+- Add support to update kernel modules from a Driver Update Disk
+  (jsc#AGM-158, jsc#PED-3670, gh#agama-project/agama#2548).
+
+- Add the tpm2.0-tools package (jsc#PED-13114).</comment>
+    <requestid>1294905</requestid>
+  </revision>
 </revisionlist>

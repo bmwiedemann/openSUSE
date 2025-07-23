@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Jul 21 15:07:42 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 17
+
+-------------------------------------------------------------------
+Mon Jul 21 14:12:22 UTC 2025 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Disabled udev rules that interfere with the activation process of
+  libstorage-ng (bsc#1246133 and bsc#1245159).
+
+-------------------------------------------------------------------
+Thu Jul 17 21:51:19 UTC 2025 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Masked some systemd services that interfere with the activation
+  process of libstorage-ng (bsc#1246133).
+
+-------------------------------------------------------------------
+Thu Jul 17 08:08:40 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Added "inst.dud_insecure" boot option for ignoring SSL
+  certificate problems when downloading DUD from an HTTPS server
+  (related to bsc#1245393)
+- Skip updating kernel module dependencies if the DUD image does
+  not provide any kernel module
+
+-------------------------------------------------------------------
+Tue Jul 15 16:19:21 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed downloading DUD files from HTTPS URL
+  (link the SSL certificates and config from the root image)
+  (bsc#1245393)
+
+-------------------------------------------------------------------
+Mon Jul 14 11:25:22 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Use "plaindir" repository type for the DUD package repository,
+  we do not need to create any repository index
+  (gh#agama-project/agama#2543)
+- Automatically configure network when a remote DUD is used,
+  the "rd.neednet=1" boot option is not required anymore
+  (by default uses the DHCP configuration, can be changed via the
+  "ip=" boot option)
+
+-------------------------------------------------------------------
+Thu Jul 10 13:09:26 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add support to update kernel modules from a Driver Update Disk
+  (jsc#AGM-158, jsc#PED-3670, gh#agama-project/agama#2548).
+
+-------------------------------------------------------------------
+Wed Jul  9 12:07:21 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add the tpm2.0-tools package (jsc#PED-13114).
+
+-------------------------------------------------------------------
+Wed Jul  2 13:28:46 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- live: fix_bootconfig.s390x: strip CDLABEL from the kiwi-generated
+  grub config (bsc#1245453)
+
+-------------------------------------------------------------------
+Tue Jul  1 15:29:36 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Make agama-installer build more reproducible (boo#1245501)
+
+-------------------------------------------------------------------
 Mon Jun 30 15:51:37 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Version 16

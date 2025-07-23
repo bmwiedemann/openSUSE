@@ -16,13 +16,18 @@ suseSetupProduct
 # kiwi_metainfo_helper service before starting the build
 mkdir -p /var/log/build
 cat << EOF > /var/log/build/info
-Build date:    $(LC_ALL=C date -u "+%F %T %Z")
+Build date:    $(LC_ALL=C date -u -d "@${SOURCE_DATE_EPOCH:-$(date +%s)}" "+%F %T %Z")
 Build number:  Build%RELEASE%
 Image profile: $kiwi_profiles
 Image version: $kiwi_iversion
 Image type:    $kiwi_type
 Source URL:    %SOURCEURL%
 EOF
+
+# for reproducible builds:
+echo -n > /var/log/alternatives.log
+sed -i 's/# AutoInstalled generated.*/# AutoInstalled generated in kiwi reproducible build/' /var/lib/zypp/AutoInstalled # drop timestamp
+rm /var/tmp/rpm-tmp.*
 
 # enable the corresponding repository
 DISTRO=$(grep "^NAME" /etc/os-release | cut -f2 -d\= | tr -d '"' | tr " " "_")
@@ -54,7 +59,7 @@ systemctl enable avahi-daemon.service
 systemctl enable agama.service
 systemctl enable agama-web-server.service
 systemctl enable agama-dbus-monitor.service
-systemctl enable agama-auto.service
+systemctl enable agama-autoinstall.service
 systemctl enable agama-hostname.service
 systemctl enable agama-proxy-setup.service
 systemctl enable agama-certificate-issue.path
@@ -90,6 +95,13 @@ systemctl disable snapper-timeline.timer
 # disable unused services
 systemctl disable YaST2-Firstboot.service
 systemctl disable YaST2-Second-Stage.service
+
+# Prevent premature activation of LVM (bsc#1246133)
+systemctl mask lvm2-monitor.service
+sed -i 's:# event_activation = 1:event_activation = 0:' /etc/lvm/lvm.conf
+
+# Prevent premature assembly of MD RAIDs (bsc#1245159)
+touch /etc/udev/rules.d/64-md-raid-assembly.rules
 
 # the "eurlatgr" is the default font for the English locale
 echo -e "\nFONT=eurlatgr.psfu" >> /etc/vconsole.conf
