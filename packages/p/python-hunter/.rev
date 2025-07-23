@@ -69,4 +69,12 @@
   * use-sys.executable.patch, use sys.executable in the testsuite.</comment>
     <requestid>1290567</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>824380fa3ef20d12938f53e70a646fc7</srcmd5>
+    <version>3.8.0</version>
+    <time>1753281376</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1295277</requestid>
+  </revision>
 </revisionlist>

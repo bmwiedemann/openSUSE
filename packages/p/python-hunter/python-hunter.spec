@@ -17,16 +17,12 @@
 
 
 Name:           python-hunter
-Version:        3.7.0
+Version:        3.8.0
 Release:        0
 Summary:        Pytest plugin for coverage reporting
 License:        BSD-2-Clause
 URL:            https://github.com/ionelmc/python-hunter
 Source:         https://files.pythonhosted.org/packages/source/h/hunter/hunter-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Fix the testsuite to build with Python 3.13
-Patch0:         support-python-313.patch
-# PATCH-FIX-UPSTREAM gh#ionelmc/python-hunter#126
-Patch1:         use-sys.executable.patch
 BuildRequires:  %pythons
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module aspectlib}
