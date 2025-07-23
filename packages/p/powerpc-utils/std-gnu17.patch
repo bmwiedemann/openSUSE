@@ -1,0 +1,17 @@
+Patch-mainline: should be fixed in the code (https://github.com/ibm-power-utilities/powerpc-utils/pull/105)
+
+Add '-std=gnu17' to make gcc15 happy.
+
+diff --git a/Makefile.am b/Makefile.am
+index fe54de9..d0dc045 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -91,7 +91,7 @@ src_ppc64_cpu_LDADD = -lpthread
+ src_vcpustat_SOURCES = src/vcpustat.c $(pseries_platform_SOURCES)
+ 
+ 
+-AM_CFLAGS = -Wall -g
++AM_CFLAGS = -Wall -g -std=gnu17
+ AM_CPPFLAGS = -I $(top_srcdir)/src/common/ -D _GNU_SOURCE
+ 
+ if WITH_LIBRTAS

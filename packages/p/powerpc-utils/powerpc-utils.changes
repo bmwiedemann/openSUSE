@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 17 16:29:03 UTC 2025 - Matthias Brugger <mbrugger@suse.com>
+
+- Fix inconsistent Core Online/Offline States Observed in lscpu and
+  ppc64_cpu --info Command Outputs During DLPAR Operation (bsc#1246126)
+  * cpu_info_helpers-Add-helper-function-to-retrieve-pre.patch
+  * ppc64_cpu-Fix-handling-of-non-contiguous-CPU-IDs.patch
+  * std-gnu17.patch
+
+-------------------------------------------------------------------
 Mon May 12 09:44:17 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix-HNV-installation-network-conflicts-across-all-di.patch (jsc#PED-3946)

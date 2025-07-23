@@ -1261,4 +1261,17 @@
     <comment></comment>
     <requestid>1276793</requestid>
   </revision>
+  <revision rev="152" vrev="7">
+    <srcmd5>8e7a6121c941bc3c1cf2858d0417491a</srcmd5>
+    <version>1.3.13</version>
+    <time>1753281115</time>
+    <user>anag_factory</user>
+    <comment>- Fix inconsistent Core Online/Offline States Observed in lscpu and
+  ppc64_cpu --info Command Outputs During DLPAR Operation (bsc#1246126)
+  * cpu_info_helpers-Add-helper-function-to-retrieve-pre.patch
+  * ppc64_cpu-Fix-handling-of-non-contiguous-CPU-IDs.patch
+  * std-gnu17.patch
+</comment>
+    <requestid>1294866</requestid>
+  </revision>
 </revisionlist>
