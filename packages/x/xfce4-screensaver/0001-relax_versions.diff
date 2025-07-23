@@ -1,0 +1,12 @@
+diff -rup a/meson.build b/meson.build
+--- a/meson.build	2025-07-14 08:57:28.000000000 +0200
++++ b/meson.build	2025-07-14 11:26:32.120578873 +0200
+@@ -27,7 +27,7 @@ dependency_versions = {
+ 
+   'x11': '>= 1.6.7',
+   'xext': '>= 1.0.0',
+-  'xscrnsaver': '>= 1.2.3',
++  'xscrnsaver': '>= 1.2.2',
+   'libxklavier': '>= 5.2',
+   'libwnck': '>= 3.20',
+ 

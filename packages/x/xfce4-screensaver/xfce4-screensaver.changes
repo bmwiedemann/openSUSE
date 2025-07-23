@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Mon Jul 14 07:13:24 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.0
+  * Add meson build
+  * build: Automate copyright year management
+  * build: Guard config.h include with HAVE_CONFIG_H
+  * build: Remove X-XFCE-{Autostart,Bugzilla}-* from desktop files
+  * build: Install docbook.css
+  * build: Replace xdt-csource with glib-compile-resources
+  * build: Remove xscreensaver migration
+  * build: Remove --with-xscreensaverdir option
+  * build: Rename xfce4-screensavers.menu from .in
+  * prefs: Enable fullscreen-inhibit by default
+  * lock-plug: Fix possible null dereference
+  * lock-plug: Fix possible null dereference
+  * configure.py: Properly init settings when opening dialog
+  * configure.py: Fix unquoted command tokens
+  * slideshow: Increase timeout to switch image a bit
+  * build: Add missing dep flags
+  * I18n: Update po/LINGUAS list
+  * Exit early in unsupported windowing environments
+  * Apply .clang-format file
+  * Preliminary cleanup
+  * Sort includes
+  * clang-format: Add file
+  * wayland: manager: Fix activated/deactivated signal emission
+  * wayland: Use ext-idle-notify protocol
+  * wayland: Make sure text entry of unlock dialog is grabbed
+  * wayland: Use ext-session-lock protocol
+  * Remove -x11 suffix from file names that do not contain an X11 impl
+  * wayland: Use WleGtkSocket and WleGtkPlug from libwlembed
+  * Guard X11 code paths at buildtime and runtime
+  * Add GSListener abstract class and X11 impl
+  * Rename GSListener to GSListenerDBus
+  * Get screen dimensions from GDK instead of X11-specific APIs
+  * Use %lu or %lX to print or scan X11 window ID
+  * prefs-dialog: Use a placeholder for the socket in the glade file
+  * lock-plug: Derive from GObject and make GtkPlug a class member
+  * Use GtkSocket/GtkPlug instead of GtkDrawingArea/GSThemeWindow
+  * build: Use AM_DISTCHECK_CONFIGURE_FLAGS
+  * build: Use XDT_CHECK_PACKAGE and XDT_CHECK_OPTIONAL_FEATURE
+  * build: Various cleanups
+  * build: Check for libxext
+  * build: Remove check for sigaction
+  * Remove DPMS support
+  * Remove xfce4-screensaver-gl-helper
+  * Revert "Exit early in non-X11 environments"
+  * Translation Updates
+- Add 0001-relax_versions.diff to accept some elder packages on
+  Leap 15.6, which are still sufficient.
+
+-------------------------------------------------------------------
+Sat Dec 21 07:55:12 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.4
+  * Exit early in non-X11 environments
+  * Fix return codes in main() functions
+  * prefs-dialog: Remove subtitle
+  * Revert "prefs-dialog: Remove subtitle"
+  * prefs-dialog: Remove subtitle
+  * xfce-bg: Update default fallback wallpaper
+  * xfce-bg: Default to XFCE_BG_PLACEMENT_ZOOMED when image-style is 
+    missing
+  * Fix blurry avatar when UI scale > 1
+  * Fix blurry background when UI scale > 1
+  * I18n: Update po/LINGUAS list
+  * prefs-dialog: Fix GtkTreePath leaks
+  * I18n: Update po/LINGUAS list
+  * lock-plug: Fix GVariant leak when switching user
+  * lock-plug: Fix GVariant leak
+  * Fix GSMonitor leak when screensaver fails to start
+  * lock-plug: Fix GtkBuilder leak
+  * prefs-dialog: Fix string leak
+  * Fix string leaks in xfce_bg_load_from_xfconf
+  * Fix string leak in get_themes_menu
+  * lock-plug: Fix string leak
+  * Fix string leak in xfce_bg_load_from_xfconf
+  * Added image cropping to the slideshow screensaver
+  * lock-plug: Use consistent keymap for capslock detection
+  * lock-plug: Silence gdk-pixbuf warning
+  * listener: Fix fullscreen inhibit
+  * gcc-analyzer: Fix -Wanalyzer-possible-null-argument
+  * gcc-analyzer: Fix -Wanalyzer-null-dereference
+  * build: clang: Fix -Wsingle-bit-bitfield-constant-conversion
+  * slideshow: Do not load image if window size is invalid
+  * lock-plug: Draw background in constructed()
+  * Revert "lock-plug: Delay background drawing at startup"
+  * Use same debug function everywhere
+  * lock-plug: Delay background drawing at startup
+  * xfce4-screensaver-preferences.desktop: Add Keywords
+  * Rename directory file to desktop for gettext detection
+  * Add .py extension to xfce4-screensaver-configure for gettext
+    detection
+  * xfce4-screensaver-dialog: Restore "Password:" filter
+  * xfce4-screensaver-dialog: Remove custom status text mapper
+  * gs-lock-plug: Improve utf8 string check in show_status_text
+  * I18n: Update po/LINGUAS list
+  * build: Switch from intltool to gettext
+  * Skip including crypt.h on FreeBSD
+  * Translation Updates
+
+-------------------------------------------------------------------
 Mon Mar  4 13:05:29 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.3

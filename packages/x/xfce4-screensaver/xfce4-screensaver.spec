@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-screensaver
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,43 +16,43 @@
 #
 
 
-%bcond_with git
 Name:           xfce4-screensaver
-Version:        4.18.3
+Version:        4.20.0
 Release:        0
 Summary:        Screensaver and locker for Xfce
 License:        GPL-2.0-only
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/apps/xfce4-screensaver/start
-Source:         https://archive.xfce.org/src/apps/xfce4-screensaver/4.18/%{name}-%{version}.tar.bz2
-BuildRequires:  intltool
+Source:         https://archive.xfce.org/src/apps/xfce4-screensaver/4.20/%{name}-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE 0001-relax_versions.diff -- Allow build for Leap with its ancient but sufficient X11 packages.
+Patch01:        0001-relax_versions.diff
+BuildRequires:  gettext >= 0.19.8
+BuildRequires:  meson >= 0.60.0
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig
 BuildRequires:  xfce4-session
-BuildRequires:  xfconf >= 4.12.1
+BuildRequires:  xfconf >= 4.18.0
 BuildRequires:  xscreensaver-data
 BuildRequires:  pkgconfig(dbus-1) >= 0.30
 BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  pkgconfig(garcon-1) >= 0.5.0
-BuildRequires:  pkgconfig(garcon-gtk3-1) >= 0.5.0
+BuildRequires:  pkgconfig(garcon-1) >= 4.18.0
+BuildRequires:  pkgconfig(garcon-gtk3-1) >= 4.18.0
+BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(gdk-x11-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(gtk+-x11-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.20
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.4
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.1
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.1
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.18.0
+BuildRequires:  pkgconfig(libxfce4windowing-0) >= 4.19.2
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.18.0
 BuildRequires:  pkgconfig(libxklavier) >= 5.2
-BuildRequires:  pkgconfig(x11) >= 1.0
-BuildRequires:  pkgconfig(xrandr) >= 1.3
-BuildRequires:  pkgconfig(xscrnsaver)
-%if %{with git}
-BuildRequires:  xfce4-dev-tools
-%endif
+BuildRequires:  pkgconfig(x11) >= 1.6.7
+BuildRequires:  pkgconfig(xext) >= 1.0.0
+BuildRequires:  pkgconfig(xscrnsaver) >= 1.2.2
 Requires:       xfconf
 Recommends:     %{name}-lang
 Conflicts:      xscreensaver
@@ -69,28 +69,17 @@ Add xfce4-screensaver-command -l to xflock4 script for it to work properly.
 %autosetup -p1
 
 %build
-%if %{with git}
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-    --enable-maintainer-mode \
-    --with-systemd     \
-    --enable-pam       \
-    --enable-locking   \
-    --with-console-kit \
-    --with-pam-auth-type=common
-%else
-%configure  \
-    --with-systemd     \
-    --enable-pam       \
-    --enable-locking   \
-    --with-console-kit \
-    --with-pam-auth-type=common
-%endif
-
-%make_build
+%meson	\
+    -Dauthentication-scheme=pam	\
+    -Dpam-auth-type=common	\
+    -Dsession-manager=systemd	\
+    -Dx11=enabled		\
+    -Dlocking=true		\
+    -Ddocs=disabled
+%meson_build
 
 %install
-%make_install
+%meson_install
 %find_lang %{name}
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_pam_vendordir}
@@ -113,11 +102,7 @@ done
 
 %files -f  %{name}.lang
 %license COPYING COPYING.LGPL COPYING.LIB
-%if %{with git}
-%doc README.md NEWS TODO
-%else
-%doc README.md NEWS TODO ChangeLog
-%endif
+%doc README.md NEWS
 %dir %{_sysconfdir}/xdg/menus
 %dir %{_datadir}/applications/screensavers
 %dir %{_datadir}/desktop-directories
@@ -132,7 +117,7 @@ done
 %endif
 %{_bindir}/xfce4-screensaver
 %{_bindir}/xfce4-screensaver-command
-%{_bindir}/xfce4-screensaver-configure
+%{_bindir}/xfce4-screensaver-configure.py
 %{_bindir}/xfce4-screensaver-preferences
 %{_datadir}/applications/screensavers/xfce-floaters.desktop
 %{_datadir}/applications/xfce4-screensaver-preferences.desktop
