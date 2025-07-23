@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 21 10:59:48 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Do not embed rebuild counter (bsc#1246806)
+
+-------------------------------------------------------------------
 Fri Jul 18 05:21:11 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-17.0.16+8 (July 2025 CPU)
