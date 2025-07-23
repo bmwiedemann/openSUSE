@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jul 21 08:53:43 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- systemd-testsuite: fix Requires to systemd-ukify
+
+-------------------------------------------------------------------
+Tue Jul 15 17:25:48 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- systemd-update-helper: fix regression introduced when support for package
+  renaming/splitting was added (bsc#1245551)
+
+  The cleanup of the flags in /run/systemd/rpm was previously handled in the
+  %pretrans/%posttrans sections of the systemd main package. However, this
+  method was ineffective if systemd was not part of the transaction. The cleanup
+  is now run in %transfiletriggerin instead.
+
+-------------------------------------------------------------------
+Tue Jul 15 07:23:37 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Add sub-package for ukify binary.
+
+  move ukify from experimental package to a dedicated sub package.
+
+-------------------------------------------------------------------
 Fri Jul 11 16:52:08 UTC 2025 - Franck Bui <fbui@suse.com>
 
 - Import commit c3bcfc95582fd573e0b5686ce8115e3cf9a8122e

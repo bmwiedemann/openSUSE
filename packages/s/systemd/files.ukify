@@ -1,0 +1,8 @@
+#
+# Please keep the list sorted (with `LC_ALL=C sort`).
+#
+%{_bindir}/ukify
+%{_mandir}/man1/ukify.1.gz
+%{_prefix}/lib/kernel/install.d/60-ukify.install
+%{_prefix}/lib/kernel/uki.conf
+%{_systemd_util_dir}/ukify

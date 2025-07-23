@@ -26,7 +26,7 @@ assert(rpm.execute("/usr/lib/systemd/systemd-update-helper", "user-reload-restar
 -- executed.
 assert(rpm.execute("/usr/lib/systemd/systemd-update-helper", "system-reload"))
 
-%transfiletriggerpostun -P 1000100 -p <lua> -- /usr/lib/systemd/system /etc/systemd/system
+%transfiletriggerpostun -P 1000100 -p <lua> -- /usr/lib/systemd/user /etc/systemd/user
 -- Execute daemon-reload in user managers.
 assert(rpm.execute("/usr/lib/systemd/systemd-update-helper", "user-reload"))
 

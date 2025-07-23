@@ -38,6 +38,9 @@
 %{_systemd_util_dir}/systemd-mountwork
 %{_systemd_util_dir}/systemd-nsresourced
 %{_systemd_util_dir}/systemd-nsresourcework
+%if %{with upstream}
+%{_systemd_util_dir}/user/systemd-nspawn@.service
+%endif
 %{_unitdir}/systemd-mountfsd.service
 %{_unitdir}/systemd-mountfsd.socket
 %{_unitdir}/systemd-nspawn@.service
@@ -63,6 +66,11 @@
 %{_mandir}/man8/systemd-machined.8.gz
 %{_mandir}/man8/systemd-machined.service.8.gz
 %{_systemd_util_dir}/systemd-machined
+%if %{with upstream}
+%{_systemd_util_dir}/user/machine.slice
+%{_systemd_util_dir}/user/machines.target
+%{_systemd_util_dir}/user/systemd-nspawn@.service
+%endif
 %{_tmpfilesdir}/systemd-nspawn.conf
 %{_unitdir}/dbus-org.freedesktop.machine1.service
 %{_unitdir}/machine.slice

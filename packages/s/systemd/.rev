@@ -7677,4 +7677,22 @@ handle manual pages that consist only of a .so directive such as
   possible (see bsc#1228659)</comment>
     <requestid>1292221</requestid>
   </revision>
+  <revision rev="453" vrev="4">
+    <srcmd5>32286a40bcfce0f06e375c9fe0f79bc2</srcmd5>
+    <version>257.7</version>
+    <time>1753281133</time>
+    <user>anag_factory</user>
+    <comment>- systemd-testsuite: fix Requires to systemd-ukify
+
+- systemd-update-helper: fix regression introduced when support for package
+  renaming/splitting was added (bsc#1245551)
+  The cleanup of the flags in /run/systemd/rpm was previously handled in the
+  %pretrans/%posttrans sections of the systemd main package. However, this
+  method was ineffective if systemd was not part of the transaction. The cleanup
+  is now run in %transfiletriggerin instead.
+
+- Add sub-package for ukify binary.
+  move ukify from experimental package to a dedicated sub package.</comment>
+    <requestid>1294979</requestid>
+  </revision>
 </revisionlist>

@@ -20,6 +20,10 @@ do_mark_install_units() {
     mkdir -p /run/systemd/rpm/$mode/{needs-preset,dont-disable}
 
     for unit in "$@" ; do
+        # Clean any leftovers that might remain from a previous transaction
+        # which exited abnormally.
+        rm -f /run/systemd/rpm/$mode/*/"$unit"
+
         if [ ! -e /usr/lib/systemd/$mode/"$unit" ]; then
             # The unit is being introduced: remember we need to apply preset on
             # this new unit regardless of whether it's a package update or
@@ -95,7 +99,7 @@ do_remove_units() {
 }
 
 case "$command" in
-    mark-install-system-units) # called from %pre
+    mark-install-system-units) # called from %pre (on install or upgrade)
         do_mark_install_units system "$@"
         ;;
 
@@ -103,7 +107,7 @@ case "$command" in
         do_mark_install_units user "$@"
         ;;
 
-    install-system-units) # called from %post
+    install-system-units) # called from %post (on install or upgrade)
         do_install_units system "$@"
         ;;
 
@@ -111,7 +115,7 @@ case "$command" in
         do_install_units user "$@"
         ;;
 
-    remove-system-units) # called from %preun
+    remove-system-units) # called from %preun (on removal)
         do_remove_units system "$@"
         ;;
 
@@ -119,7 +123,7 @@ case "$command" in
         do_remove_units user "$@"
         ;;
 
-    mark-restart-system-units) # called from %postun
+    mark-restart-system-units) # called from %postun (on upgrade)
         [ -d /run/systemd/system ] || exit 0
 
         for unit in "$@"; do
@@ -141,11 +145,15 @@ case "$command" in
         wait
         ;;
 
-    system-reload-restart|system-reload|system-restart) # called from the filetriggers
+    system-reload-restart|system-reload|system-restart) # called from %transfiletriggerin
         if [ -n "$*" ]; then
             echo >&2 "Unexpected arguments for '$command': $*"
             exit 2
         fi
+
+        # Clean up all flags created during executions of %pre (i.e. on
+        # install/upgrade/rename) at the very end of the transaction.
+        rm -fr /run/systemd/rpm/system
 
         [ -d /run/systemd/system ] || exit 0
 
@@ -158,11 +166,15 @@ case "$command" in
         fi
         ;;
 
-    user-reload-restart|user-reload|user-restart|user-reexec) # called from the filetriggers
+    user-reload-restart|user-reload|user-restart|user-reexec) # called from %transfiletriggerin
         if [ -n "$*" ]; then
             echo >&2 "Unexpected arguments for '$command': $*"
             exit 2
         fi
+
+        # Clean up all flags created during executions of %pre (i.e. on
+        # install/upgrade/rename) at the very end of the transaction.
+        rm -fr /run/systemd/rpm/user
 
         [ -d /run/systemd/system ] || exit 0
 
@@ -182,7 +194,7 @@ case "$command" in
         ;;
 
     clean-state)
-        rm -fr /run/systemd/rpm
+        # Not used anymore, to be removed
         ;;
 
     *)

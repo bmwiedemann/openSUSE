@@ -217,6 +217,7 @@ Source210:      files.lang
 Source211:      files.journal-remote
 Source212:      files.portable
 Source213:      files.devel-doc
+Source214:      files.ukify
 
 #
 # All changes backported from upstream are tracked by the git repository, which
@@ -686,6 +687,9 @@ Requires:       systemd-networkd
 %if %{with portabled}
 Requires:       systemd-portable
 %endif
+%if %{with sd_boot}
+Requires:       systemd-ukify
+%endif
 Requires:       xz
 
 %description testsuite
@@ -731,9 +735,25 @@ merged into the main package or moved into a dedicated package.
 
 Currently this package contains the following features : bsod, oomd, measure,
 pcrextend, pcrlock, run0, ssh-generator, storagetm, systemd-vmspawn, sysupdate,
-tpm2-setup, userwork and ukify.
+tpm2-setup and userwork.
 
 Have fun (at your own risk).
+%endif
+
+%if %{with sd_boot}
+%package ukify
+Summary:        Tool to build Unified Kernel Image
+License:        LGPL-2.1-or-later
+BuildArch:      noarch
+Requires:       %{name} = %{version}-%{release}
+Requires:       python3-cryptography
+Requires:       python3-pefile
+Requires:       systemd-boot
+
+%description ukify
+This package provides ukify, a script that combines a kernel image, an initrd,
+with a command line, and possibly PCR measurements and other metadata, into a
+Unified Kernel Image (UKI).
 %endif
 
 %if %{without bootstrap}
@@ -864,6 +884,7 @@ for the C APIs.
         -Dbootloader=%{enabled_with sd_boot} \
         -Defi=%{when sd_boot} \
         -Defi-color-highlight="black,green" \
+        -Dukify=%{enabled_with sd_boot} \
         \
         -Dsbat-distro="%{?sbat_distro}" \
         -Dsbat-distro-summary="%{?sbat_distro_summary}" \
@@ -881,11 +902,9 @@ for the C APIs.
 %if %{with experimental}
         -Dsshdconfdir=%{_distconfdir}/ssh/sshd_config.d \
         -Dsshconfdir=%{_distconfdir}/ssh/ssh_config.d \
-        -Dukify=%{enabled_with sd_boot} \
 %else
         -Dsshdconfdir=no \
         -Dsshconfdir=no \
-        -Dukify=disabled \
 %endif
         -Dsshdprivsepdir=no \
         -Dsysupdate=%{enabled_with experimental} \
@@ -1178,14 +1197,6 @@ journalctl --update-catalog || :
 %systemd_postun_with_restart systemd-timedated.service
 %systemd_postun_with_restart systemd-userdbd.service
 
-%pretrans -p <lua>
-if posix.access("%{_systemd_util_dir}/systemd-update-helper") then
-   rpm.execute("%{_systemd_util_dir}/systemd-update-helper", "clean-state")
-end
-
-%posttrans -p <lua>
-rpm.execute("%{_systemd_util_dir}/systemd-update-helper", "clean-state")
-
 %pre -n udev%{?mini}
 %systemd_pre remote-cryptsetup.target
 %systemd_pre systemd-pstore.service
@@ -1476,6 +1487,11 @@ rm -rf \
 %if %{with experimental}
 %files experimental
 %include %{SOURCE207}
+%endif
+
+%if %{with sd_boot}
+%files ukify
+%include %{SOURCE214}
 %endif
 
 %changelog

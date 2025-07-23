@@ -134,7 +134,12 @@
 %{_mandir}/man8/systemd-pstore.8.gz
 %{_mandir}/man8/systemd-pstore.service.8.gz
 %{_mandir}/man8/systemd-quotacheck.8.gz
+%if %{with upstream}
+%{_mandir}/man8/systemd-quotacheck@.service.8.gz
+%{_mandir}/man8/systemd-quotacheck-root.service.8.gz
+%else
 %{_mandir}/man8/systemd-quotacheck.service.8.gz
+%endif
 %{_mandir}/man8/systemd-random-seed.8.gz
 %{_mandir}/man8/systemd-random-seed.service.8.gz
 %{_mandir}/man8/systemd-remount-fs.8.gz
@@ -272,6 +277,9 @@
 %{_udevhwdbdir}/70-cameras.hwdb
 %{_udevhwdbdir}/70-hardware-wallets.hwdb
 %{_udevhwdbdir}/70-joystick.hwdb
+%if %{with upstream}
+%{_udevhwdbdir}/70-maker-tools.hwdb
+%endif
 %{_udevhwdbdir}/70-mouse.hwdb
 %{_udevhwdbdir}/70-pda.hwdb
 %{_udevhwdbdir}/70-pointingstick.hwdb

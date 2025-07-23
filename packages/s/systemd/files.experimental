@@ -27,9 +27,6 @@
 %{_bindir}/systemd-pty-forward
 %endif
 %{_bindir}/systemd-vmspawn
-%if %{with sd_boot}
-%{_bindir}/ukify
-%endif
 %{_bindir}/updatectl
 %{_datadir}/bash-completion/completions/oomctl
 %{_datadir}/bash-completion/completions/run0
@@ -61,9 +58,6 @@
 %endif
 %{_mandir}/man1/systemd-ssh-proxy.1.gz
 %{_mandir}/man1/systemd-vmspawn.1.gz
-%if %{with sd_boot}
-%{_mandir}/man1/ukify.1.gz
-%endif
 %{_mandir}/man1/updatectl.1.gz
 %{_mandir}/man5/oomd.conf.5.gz
 %{_mandir}/man5/oomd.conf.d.5.gz
@@ -127,10 +121,6 @@
 %{_mandir}/man8/systemd-validatefs@.service.8.gz
 %endif
 %{_pam_vendordir}/systemd-run0
-%if %{with sd_boot}
-%{_prefix}/lib/kernel/install.d/60-ukify.install
-%endif
-%{_prefix}/lib/kernel/uki.conf
 %{_prefix}/lib/pcrlock.d/350-action-efi-application.pcrlock
 %{_prefix}/lib/pcrlock.d/400-secureboot-separator.pcrlock.d/300-0x00000000.pcrlock
 %{_prefix}/lib/pcrlock.d/400-secureboot-separator.pcrlock.d/600-0xffffffff.pcrlock
@@ -172,9 +162,9 @@
 %if %{with upstream}
 %{_systemd_util_dir}/systemd-validatefs
 %endif
-%{_systemd_util_dir}/ukify
 %endif
 %if %{with upstream}
+%{_systemd_util_dir}/user/systemd-vmspawn@.service
 %{_systemdgeneratordir}/systemd-factory-reset-generator
 %endif
 # ssh-generator: in the futur to be moved to the main package
