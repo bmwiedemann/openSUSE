@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Thu Jul 17 15:19:08 UTC 2025 - uncomfyhalomacro@opensuse.org
+
+- Update to version 0.25.2+git.1750492346.e07d36b3:
+  * scripts/version: update version to 0.25.2
+  * cmd/hare: Break out of loops on boolean latches
+  * cmd/hare: Flatten link rendering inner loop
+  * cmd/hare: Ignore missing modules in 'hare deps'
+  * hare::module: Tolerate missing dependencies
+  * hare::module: Remove unused recursive flags
+  * cmd/hare: Handle direct dependencies when rendering
+  * cmd/hare: Plug 'hare deps' depth leak
+  * strings: add bytesub
+  * debug: cleanup scan_strtab
+  * path: clarify MAX docs
+  * encoding::utf8: simplify utf8sz implementation
+  * encoding::utf8, strings: add position function
+  * os::exec::exec: document error handling
+  * os: nomem changes
+  * docs/hare-tool.1: minor stylistic changes
+  * ascii: Make cclass an array, rather than a slice.
+  * encoding::utf8: document behavior of next on invalid codepoint
+  * encoding::base{32,64}: remove @init
+  * hare::module: unexport locstr
+  * hare::build: replace os::move with os::rename in cleanup_task
+  * hare::parse::doc: remove strerror
+  * bytes: disallow no variadic args in trim functions
+  * hare deps: make it colorful :)
+  * types::c, sort::cmp: add C string comparison functions
+  * io: document that io::off is compatible with off_t
+  * regex: fix `\\` in replace targetstr
+  * linux: delete start+libc.ha
+  * format::ini: prepend syntaxerr string with "line "
+  * format::ini: improve docs all around
+  * rt: fix return types of bind and connect
+  * rt: rename ucontext to ucontext_t
+  * strings: document end type
+  * hare(1): add hare tool subcommand
+  * hare::parse: s/non-c-style/for-each/
+  * debug::dwarf: add missing `ok = true`
+  * types::c: actually propagate nomem errors from fromstr
+  * path: replace static delete with slice assignment
+  * crypto::math: remove unnecessary casts when negating
+  * all: style: remove space before colon in cast exprs
+  * encoding::pem: change globals into constants
+  * types::c: improve docs all around
+  * docs/haredoc.5: clarify that haredoc only doesn't format in default mode
+  * hare::parse::doc: add examples to decl_ref/mod_ref docs
+  * haredoc.1: add trailing :: to example
+  * test: document that functions can't be called outside test
+  * encoding::utf8: remove mention of strings from README
+  * crypto::math: document precondition in eqslice
+  * crypto: improve compare docs
+  * fs, os: improve iter docs
+  * hare::module: unexport _gather_submodules
+  * hare::module: fix typo in docs
+  * wordexp: s/returned/resulted in/ in utf8::invalid err msg
+  * wordexp: improve wording in README
+  * encoding::utf8: add sentence to decode docs
+  * time::date: add error assertions to date::parse examples
+  * time::date: remove "shall" from parsefail docs
+  * os::exec: line-wrap docs
+  * Add period to some docs
+  * all: improve some strerror docs
+  * test: mention hare-test(1) in README
+  * fmt: improve README wording
+  * sort: mention sort::cmp:: in cmpfunc docs
+  * strings: s/runewise/rune-wise/ in sub docs
+  * Add one-line module summary to haredoc
+  * os: add open_buffered et al
+  * bufio: add managed bufio::stream modes
+  * unix: add getrlimit/setrlimit
+  * unix::resolvconf::parse fix memory leak
+  * unix::passwd: fix _dup methods returing 0 as uid/gid
+  * Remove most unused imports.
+  * ascii: comment ctype constants.
+  * mime: nomem updates
+  * mime: Use tuple destructuring
+  * memio: add "nonblocking" mode
+  * utf8::utf8sz: use for-each loop.
+  * haredoc: fix link template for symbols
+  * time: nomem updates
+  * Document various undocumented modules
+  * hare::parse: export parsing utilities
+  * hare::lex: add registration for user annotations
+  * hare::lex: scan & discard annotations
+  * sort: add sort::inplace
+  * regex: nomem updates
+  * test: sort tests by name
+  * bufio::scanner: address my own feedback
+  * io+linux: fix rt::dup3 flags
+  * hare::lex: add save, restore functions
+  * bufio::scanner: implement io::seek
+  * io::dup, io::dup2: make flags optional
+  * debug: print context on assertion failure
+  * rt::strcmp: O(1) if data pointers are equal
+  * io::copier: accept io::handle for "from"
+  * strings::dup: update comment for nomem changes
+
+-------------------------------------------------------------------
+Sat Mar 29 16:52:57 UTC 2025 - mcepl@cepl.eu
+
+- Update to version 0.24.2+git.1743159305.5b6db3e8:
+  * net::dial::dial_uri: don't return nomem
+  * net::dns: do not abort on fetch tcp errors
+  * net: nomem updates
+  * hare::lex: add io::off to location
+  * haredoc(1): add source links to HTML output
+  * haredoc(1): add option to show line numbers
+  * linux::keyctl: nomem api update
+  * all: fix incorrect indentation
+  * sort: Handle allocation failure
+  * types::c: return nomem on allocation failure
+
+-------------------------------------------------------------------
+Sat Mar 29 16:49:04 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Don’t require EXACT version of harec (there is nothing exact
+  when using git checkouts).
+
+-------------------------------------------------------------------
 Sat Aug 10 01:04:06 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Improve build logic.

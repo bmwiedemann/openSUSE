@@ -17,9 +17,10 @@
 
 
 %bcond_without  test
+%define relver 0.25.2
 Name:           hare
 Release:        0
-Version:        0.24.2
+Version:        0.25.2+git.1750492346.e07d36b3
 Summary:        Hare system programming language
 Group:          Development/Tools/Building
 License:        MPL-2.0
@@ -30,13 +31,13 @@ Source2:        README-suse-maint.md
 BuildRequires:  binutils
 BuildRequires:  gcc
 # Hare and the HareC compiler should have the same version
-BuildRequires:  harec = %{version}
+BuildRequires:  harec >= %{relver}
 BuildRequires:  make
 BuildRequires:  qbe
 BuildRequires:  scdoc
 BuildRequires:  timezone
 BuildRequires:  zstd
-Requires:       harec = %{version}
+Requires:       harec >= %{relver}
 # Hare requires QBE 1.2 like HareC does
 Requires:       qbe = 1.2
 Requires:       timezone

@@ -164,4 +164,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1194397</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f9eea826be83a5df7ab1cf2c8d740395</srcmd5>
+    <version>0.25.2+git.1750492346.e07d36b3</version>
+    <time>1753281223</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.25.2+git.1750492346.e07d36b3:
+  * scripts/version: update version to 0.25.2
+  * cmd/hare: Break out of loops on boolean latches
+  * cmd/hare: Flatten link rendering inner loop
+  * cmd/hare: Ignore missing modules in 'hare deps'
+  * hare::module: Tolerate missing dependencies
+  * hare::module: Remove unused recursive flags
+  * cmd/hare: Handle direct dependencies when rendering
+  * cmd/hare: Plug 'hare deps' depth leak
+  * strings: add bytesub
+  * debug: cleanup scan_strtab
+  * path: clarify MAX docs
+  * encoding::utf8: simplify utf8sz implementation
+  * encoding::utf8, strings: add position function
+  * os::exec::exec: document error handling
+  * os: nomem changes
+  * docs/hare-tool.1: minor stylistic changes
+  * ascii: Make cclass an array, rather than a slice.
+  * encoding::utf8: document behavior of next on invalid codepoint
+  * encoding::base{32,64}: remove @init
+  * hare::module: unexport locstr
+  * hare::build: replace os::move with os::rename in cleanup_task
+  * hare::parse::doc: remove strerror
+  * bytes: disallow no variadic args in trim functions
+  * hare deps: make it colorful :)
+  * types::c, sort::cmp: add C string comparison functions
+  * io: document that io::off is compatible with off_t
+  * regex: fix `\\` in replace targetstr
+  * linux: delete start+libc.ha
+  * format::ini: prepend syntaxerr string with &quot;line &quot;</comment>
+    <requestid>1295107</requestid>
+  </revision>
 </revisionlist>
