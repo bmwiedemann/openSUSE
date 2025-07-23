@@ -152,4 +152,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * Revert &quot;linux-firmware: Update firmware file for Intel Pulsar core&quot;</comment>
     <requestid>1293166</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>32a3a7d9da2a45f4647d18bdd54e06cb</srcmd5>
+    <version>20250714</version>
+    <time>1753281146</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250714 (git commit ecdbd2b8af04):
+  * linux-firmware: Update firmware file for Intel Solar core
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel BlazarI core</comment>
+    <requestid>1295033</requestid>
+  </revision>
 </revisionlist>
