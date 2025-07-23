@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 16 13:02:54 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Allow building using CMake 4.0 by bumping the minimum for cmake
+  to 3.5 (boo#1239788).
+- 5.0.5
+
+-------------------------------------------------------------------
 Wed May 28 11:44:30 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Revert the last change (drop cli):
