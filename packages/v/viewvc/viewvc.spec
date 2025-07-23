@@ -24,7 +24,7 @@
 %define viewvc_dir /srv/viewvc
 #
 Name:           viewvc
-Version:        1.3.0~dev20240207
+Version:        1.3.0~dev20250722
 Release:        0
 Summary:        Browse a Subversion Repository with a Web Browser
 License:        BSD-2-Clause
@@ -72,7 +72,7 @@ rm -rf "lib/vclib/ccvs/rcsparse/test-data"
 mkdir -p %{buildroot}/%{apache_sysconfdir}/conf.d
 cp -avL %{SOURCE1} %{buildroot}/%{apache_sysconfdir}/conf.d/viewvc.conf
 # viewvc
-./viewvc-install --prefix "%{viewvc_dir}" --destdir %{buildroot}
+python3 ./viewvc-install --prefix "%{viewvc_dir}" --destdir %{buildroot}
 #
 rm -f %{buildroot}/srv/viewvc/cvsgraph.conf.dist
 sed '

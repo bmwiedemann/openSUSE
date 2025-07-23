@@ -31,4 +31,41 @@
     <comment></comment>
     <requestid>1267835</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>479c864d668bc6927a2a8d69905487c2</srcmd5>
+    <version>1.3.0~dev20250722</version>
+    <time>1753281325</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.3.0~dev20250722 (bsc#1246909, CVE-2025-54141):
+  * Update README.md
+  * Don't include .flake8 in releases
+  * Merge 1.1.31 and 1.2.4 CHANGES
+  * Clean up some path handling
+  * issue 374: Fix code formatting checks (and its findings)
+  * Fix bump-copyright-years to list files in the current branch
+  * Update COMMITTERS file
+  * Bump copyright years
+  * Rework bump-copyright-years to use 'git ls-tree'
+  * Note removal of the commits database feature in CHANGES
+  * Redirect the query and queryform views to the roots view
+  * Update template authoring guide
+  * Some markup and minor styling tweaks to the upgrading how-to
+  * Flesh out more upgrade documentation
+  * Remove/fix some stuff that got overlooked
+  * Add note about dropping commits database feature to upgrading-howto.html
+  * Begin ripping out the checkins database feature
+  * Record issue #370 fix
+  * issue 370: Disallow patch view on directories
+  * issue 369: Fix 'dead' state determination when use_rcsparse=1
+  * HTML-escape error template dictionary items
+  * replace imp with importlib to load authorizer modules
+  * Used keyword argument to simplify the call.
+  * Let py_compile decide where *.pyc files go.
+  * issue 360: Address some review comments
+  * Update actions
+  * issue 360: Introduce new &quot;image&quot; view
+  * Update CHANGES
+  * standalone.py: Update command-line help for --htpasswd-file.</comment>
+    <requestid>1295218</requestid>
+  </revision>
 </revisionlist>

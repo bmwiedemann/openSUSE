@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Jul 23 07:12:13 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 1.3.0~dev20250722 (bsc#1246909, CVE-2025-54141):
+  * Update README.md
+  * Don't include .flake8 in releases
+  * Merge 1.1.31 and 1.2.4 CHANGES
+  * Clean up some path handling
+  * issue 374: Fix code formatting checks (and its findings)
+  * Fix bump-copyright-years to list files in the current branch
+  * Update COMMITTERS file
+  * Bump copyright years
+  * Rework bump-copyright-years to use 'git ls-tree'
+  * Note removal of the commits database feature in CHANGES
+  * Redirect the query and queryform views to the roots view
+  * Update template authoring guide
+  * Some markup and minor styling tweaks to the upgrading how-to
+  * Flesh out more upgrade documentation
+  * Remove/fix some stuff that got overlooked
+  * Add note about dropping commits database feature to upgrading-howto.html
+  * Begin ripping out the checkins database feature
+  * Record issue #370 fix
+  * issue 370: Disallow patch view on directories
+  * issue 369: Fix 'dead' state determination when use_rcsparse=1
+  * HTML-escape error template dictionary items
+  * replace imp with importlib to load authorizer modules
+  * Used keyword argument to simplify the call.
+  * Let py_compile decide where *.pyc files go.
+  * issue 360: Address some review comments
+  * Update actions
+  * issue 360: Introduce new "image" view
+  * Update CHANGES
+  * standalone.py: Update command-line help for --htpasswd-file.
+  * INSTALL: move description about passlib to 'ViewVC Standalone Server section'
+  * INSTALL: Add passlib to requirement for htpasswd support for standalne server
+  * standalone.py: Use passlib for htpasswd support
+  * standalone.py: Fix htpasswd support
+  * Update bincvs.py (corrected typo)
+  * cvsdbadmin: normalize file path for printing
+  * make-database: Fix false negative on handling --help option.
+  * Revert "Revert dirs to binary, handle conversion in Python instead."
+  * Revert dirs to binary, handle conversion in Python instead.
+  * Use utf8 / utf8_bin consistently across all columns.
+  * Partially revert 14e7719 to restore 1.2 root parent behavior
+  * issue 346: Fix exceptions on patch generation when two revision have no diff.
+  * issue #344: Fix symlinks in tar file
+  * Style fix, suggested by flake8
+
+-------------------------------------------------------------------
 Thu Mar 20 00:57:31 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add {Build,}Requires on python3-legacy-cgi, required for Python 3.13+.
@@ -102,7 +150,7 @@ Sun Dec 18 14:38:28 UTC 2016 - astieger@suse.com
 -------------------------------------------------------------------
 Fri May 20 20:32:45 UTC 2016 - adaugherity@tamu.edu
 
-- Update viewvc.conf for Apache 2.4 syntax. 
+- Update viewvc.conf for Apache 2.4 syntax.
 
 -------------------------------------------------------------------
 Wed Mar 23 13:18:53 UTC 2016 - astieger@suse.com
@@ -550,7 +598,7 @@ Sun Oct 29 13:00:18 CET 2006 - meissner@suse.de
 -------------------------------------------------------------------
 Thu Sep 28 00:33:39 CEST 2006 - ro@suse.de
 
-- use source=1.4 for java compilation 
+- use source=1.4 for java compilation
 
 -------------------------------------------------------------------
 Mon Sep 25 10:55:08 CEST 2006 - olh@suse.de
@@ -607,7 +655,7 @@ Fri Sep 15 08:07:14 CEST 2006 - poeml@suse.de
 -------------------------------------------------------------------
 Wed Sep 13 17:22:58 CEST 2006 - olh@suse.de
 
-- Version 1.4.0 
+- Version 1.4.0
   User-visible-changes:
   - Client:
     * new 'svnsync' commandline tool for repository replication
@@ -889,7 +937,7 @@ Sun Mar  5 16:32:34 CET 2006 - olh@suse.de
 -------------------------------------------------------------------
 Mon Feb 27 15:40:05 CET 2006 - olh@suse.de
 
-- fix viewcvs buglink patch 
+- fix viewcvs buglink patch
 
 -------------------------------------------------------------------
 Mon Feb 27 10:48:44 CET 2006 - olh@suse.de
@@ -937,7 +985,7 @@ Mon Jan  9 23:16:28 CET 2006 - olh@suse.de
 -------------------------------------------------------------------
 Mon Jan  2 19:49:56 CET 2006 - dmueller@suse.de
 
-- build against apache 2.2.x 
+- build against apache 2.2.x
 
 -------------------------------------------------------------------
 Sun Jan  1 12:55:53 CET 2006 - olh@suse.de
@@ -1013,7 +1061,7 @@ Sun Jan  1 12:55:53 CET 2006 - olh@suse.de
   * working copy is now storing repos_root as separate field (issue #960)
   * keywords are now stored in an internal hash (issue #890)
   * client status APIs now makes more server-side info available (r16344)
-  * new public APIs:  
+  * new public APIs:
      - new transfer progress callback for DAV (r15948)
      - svn_ra_initialize(), svn_client_open_ra_session()
      - svn_fs_closest_copy(), svn_fs_type()
@@ -1031,7 +1079,7 @@ Sun Jan  1 12:55:53 CET 2006 - olh@suse.de
        - new accessors for svn_lock_t, svn_fs_access_t
        - a number of bugfixes
   * javahl bindings:
-    - add streamy API for fetching file contents (r15584) 
+    - add streamy API for fetching file contents (r15584)
     - fixed: let tests run before bindings are installed (issue #2040)
     - fixed: lock command not raising errors properly (issue #2394)
     - fixed: ignored errors from svn_client_blame2() (r16434)
@@ -1180,7 +1228,7 @@ Tue Jul 12 20:32:51 CEST 2005 - olh@suse.de
 -------------------------------------------------------------------
 Tue Jul 12 11:27:41 CEST 2005 - poeml@suse.de
 
-- double check that all repository access schemes are compiled 
+- double check that all repository access schemes are compiled
 
 -------------------------------------------------------------------
 Sun Jul  3 20:34:33 CEST 2005 - olh@suse.de
@@ -1207,7 +1255,7 @@ Sun Jul  3 20:34:33 CEST 2005 - olh@suse.de
     * fixed: mod_dav_svn bug sets content-type incorrectly (r15046)
  Developer-visible-changes:
  * fixed:  OBOE with 'limit' parameter of svn_repos_get_logs3(). (r15119)
- * perl bindings:  
+ * perl bindings:
       - accessors for svn_lock_t (r15082)
       - call utf_initialize, adjust global pool usage (r15076, r15080,
                                                        r15081, r15117)
@@ -1270,8 +1318,8 @@ Sat May 21 19:09:42 CEST 2005 - olh@suse.de
     * fixed: 'svn copy' shouldn't copy into schedule-delete area (issue #2020)
     * fixed: 'svn copy dir dir' infinite recursion (issue #2224)
     * fixed: 'svn log' throws error on unversioned target (issue #1551)
-    * fixed: 'svn log' in r0 working copy shows r1 log msg (issue #1950) 
-    * fixed: 'svn export' bugs on deleted dirs or nonexistents (#2226, r13226) 
+    * fixed: 'svn log' in r0 working copy shows r1 log msg (issue #1950)
+    * fixed: 'svn export' bugs on deleted dirs or nonexistents (#2226, r13226)
     * fixed: 'svn export' on single file from working copy (issue #1708)
     * fixed: 'svn import' creating an empty revision (r14293)
     * fixed: 'svn commit' ignores --encoding when editing externally (#2244)
@@ -1313,7 +1361,7 @@ Sat May 21 19:09:42 CEST 2005 - olh@suse.de
     * new switches added:
        - 'svnlook diff --no-diff-added'        - suppress added files (#2180)
        - 'svnlook propget/proplist --revprop'  - show revision props (#2181)
-       - 'svnadmin load --use-pre-commit-hook'  
+       - 'svnadmin load --use-pre-commit-hook'
          'svnadmin load --use-post-commit-hook'- invoke hooks when loading
     * fixed: FSFS race condition on posix platforms (issue #2265)
     * fixed: change FSFS revprops atomically and safely (issue #2193)
@@ -1333,7 +1381,7 @@ Sat May 21 19:09:42 CEST 2005 - olh@suse.de
    - Both:
     * new 'locking' feature (issue #1478, see release notes for details):
         - new: 'svn lock/unlock', 'svnadmin lslocks/rmlocks', 'svnlook lock'
-        - new: 'svn:needs-lock' property to enable communication         
+        - new: 'svn:needs-lock' property to enable communication
         - 'svn st [-u]' shows local or remote lock overview
         - 'svn info wc | URL'  shows local or remote lock details
         - 'svn commit' sends locks, 'svn up' removes stale locks
@@ -1372,7 +1420,7 @@ Sun May  1 20:58:13 CEST 2005 - olh@suse.de
      * fixed: two dataloss bugs in svndumpfilter (r12630, r12636)
      * fixed: wasteful memory usage in svndumpfilter (r12637, r12640)
      * fixed: mod_dav_svn segfaults when client sends bogus paths (issue #2199)
- 
+
 -------------------------------------------------------------------
 Wed Apr 20 00:50:25 CEST 2005 - ro@suse.de
 
@@ -1404,7 +1452,7 @@ Wed Feb 23 15:14:50 CET 2005 - olh@suse.de
 -------------------------------------------------------------------
 Tue Feb 22 17:43:51 CET 2005 - ro@suse.de
 
-- search also for "other" java on a biarch platform 
+- search also for "other" java on a biarch platform
 
 -------------------------------------------------------------------
 Sat Feb 19 20:15:10 CET 2005 - olh@suse.de
@@ -1571,7 +1619,7 @@ Mon Mar  8 11:56:00 CET 2004 - olh@suse.de
 -------------------------------------------------------------------
 Thu Mar  4 15:37:59 CET 2004 - poeml@suse.de
 
-- add patch for ViewCVS 
+- add patch for ViewCVS
   http://cvs.sourceforge.net/viewcvs.py/viewcvs/viewcvs/lib/ezt.py?r1=1.22&r2=1.23
 
 -------------------------------------------------------------------
@@ -1661,7 +1709,7 @@ Sat Jul 12 13:15:11 CEST 2003 - olh@suse.de
 -------------------------------------------------------------------
 Sat Jul  5 00:17:13 CEST 2003 - olh@suse.de
 
-- add subversion-python_bytecode-path-pr1131.patch 
+- add subversion-python_bytecode-path-pr1131.patch
   do not compile in RPM_BUILD_ROOT, use builddir instead
 
 -------------------------------------------------------------------
@@ -1696,7 +1744,7 @@ Fri May  2 15:58:30 CEST 2003 - olh@suse.de
 -------------------------------------------------------------------
 Fri Apr 11 01:02:07 CEST 2003 - ro@suse.de
 
-- fix deprecated head/tail calling syntax (-1) 
+- fix deprecated head/tail calling syntax (-1)
 
 -------------------------------------------------------------------
 Wed Mar 19 21:32:02 CET 2003 - olh@suse.de
