@@ -2,7 +2,7 @@
 # spec file for package chrpath
 #
 # Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           chrpath
-Version:        0.17
+Version:        0.18
 Release:        0
 Summary:        Modifies the dynamic library load path of compiled programs and libraries
 License:        GPL-2.0-or-later
