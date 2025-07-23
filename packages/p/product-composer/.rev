@@ -507,4 +507,14 @@
   * Support set_updateinfo_id_prefix to be set per flavor</comment>
     <requestid>1291853</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>ed85251b6d373830f8fefe9585085002</srcmd5>
+    <version>0.6.10</version>
+    <time>1753281228</time>
+    <user>anag_factory</user>
+    <comment>- update to version 0.6.10:
+  * fixing missing debuginfo package in case dwz compression
+    mechanic is used.</comment>
+    <requestid>1295115</requestid>
+  </revision>
 </revisionlist>
