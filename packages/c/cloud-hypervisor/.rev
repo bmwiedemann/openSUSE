@@ -65,4 +65,24 @@
   * Fix extended topology enumeration leaf exposed to the guest (forwarded request 1279757 from rrahl0)</comment>
     <requestid>1279758</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4af78754b773505725d16178f5598981</srcmd5>
+    <version>47.0</version>
+    <time>1753281389</time>
+    <user>anag_factory</user>
+    <comment>- update to version 47.0:
+  DEPRECATION:
+  * A default IP (192.168.249.1) and mask (255.255.255.0) are
+    currently assigned to the virtio-net device if no value is
+    specified by users
+  FEATURES/BUG FIXES:
+  * Block Device Error Reporting to the Guest
+  * Nice Error Messages on Exit
+  * Alphabetically Sorted CLI Options for ch-remote
+  * Error out early when block device serial is too long
+  * Fix partial commands being discarded for virtio-vsock
+  * Disable the broken interrupt support for the rtc_pl031 device to
+    prevent spurious guest interrupts (forwarded request 1295287 from rrahl0)</comment>
+    <requestid>1295288</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 23 11:22:46 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 47.0:
+  DEPRECATION:
+  * A default IP (192.168.249.1) and mask (255.255.255.0) are
+    currently assigned to the virtio-net device if no value is
+    specified by users
+  FEATURES/BUG FIXES:
+  * Block Device Error Reporting to the Guest
+  * Nice Error Messages on Exit
+  * Alphabetically Sorted CLI Options for ch-remote
+  * Error out early when block device serial is too long
+  * Fix partial commands being discarded for virtio-vsock
+  * Disable the broken interrupt support for the rtc_pl031 device to
+    prevent spurious guest interrupts
+
+-------------------------------------------------------------------
 Sat May 24 10:24:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 46.0:
