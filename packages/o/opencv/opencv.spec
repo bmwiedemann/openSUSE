@@ -50,7 +50,7 @@ ExclusiveArch: do_not_build
 %endif
 
 %define libname lib%{pname}
-%define soname 411
+%define soname 412
 # disabled by default as many fail
 %bcond_with    tests
 %bcond_without gapi
@@ -63,7 +63,7 @@ ExclusiveArch: do_not_build
 %define __builder ninja
 
 Name:           %{pname}%{psuffix}
-Version:        4.11.0
+Version:        4.12.0
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build
@@ -401,6 +401,9 @@ cp opencv_contrib-%{version}/LICENSE LICENSE.contrib
 rm -f doc/packaging.txt
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 %limit_build -m 1800
 
 # openCV does not understand the standard RelWithDebinfo,
