@@ -390,4 +390,40 @@
   section of agama profile (jsc#AGM-154)</comment>
     <requestid>1289317</requestid>
   </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>f4843009a01400551801c665a870098d</srcmd5>
+    <version>0</version>
+    <time>1753281355</time>
+    <user>anag_factory</user>
+    <comment>- fix .changes errors reported by obs-service-source_validator
+  (gh#agama-project/agama#2593)
+
+- Version 17
+
+- Add support for an inst.script that allows to run an arbitrary
+  script (bsc#1246702, gh#agama-project/agama#2589).
+
+- Ensure software cache is updated even if part of its config
+  cause error (gh#agama-project/agama#2585)
+
+- Fix device type detection when reading a VLAN connection
+  (gh#agama-project/agama#2586).
+
+- Add support to configure VLANs through the CLI or HTTP API
+  (gh#agama-project/agama#2580).
+
+- Adjust the information included in the logs (gh#agama-project/agama#2575).
+
+- Fix crash when an Agama profile contains only the zfcp section by
+  providing better error report when product selection have to be
+  done before or in the same profile (bsc#1246601)
+
+- When searching for a translation of a license, use the first
+  language in the same territory as fallback (bsc#1238364,
+  gh#agama-project/agama#2571).
+- Add the language tag to the /licences/:id endpoint.
+
+- Fix deletion of controller connections (gh#agama-project/agama#2564)</comment>
+    <requestid>1295145</requestid>
+  </revision>
 </revisionlist>
