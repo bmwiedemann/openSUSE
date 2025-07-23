@@ -124,7 +124,7 @@ Source75:       io-console-0.8.0.gem
 Source76:       reline-0.6.0.gem
 Source77:       irb-1.15.1.gem
 Source78:       rackup-2.2.1.gem
-Source79:       thor-1.3.2.gem
+Source79:       thor-1.4.0.gem
 Source80:       railties-8.0.2.gem
 Source81:       rails-8.0.2.gem
 Source82:       gettext_i18n_rails_js-2.1.0.gem

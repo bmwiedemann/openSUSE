@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 22 11:33:43 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+
+- bump ruby gem thor to 1.4.0 (bsc#1246809)
+  * thor-1.4.0.gem
+
+-------------------------------------------------------------------
 Mon Jun 16 09:14:35 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
 
 - bump ruby gem rack to 3.1.16 (bsc#1244113)
