@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 22 21:31:06 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 138.0.7204.168 (boo#1246902):
+  * CVE-2025-8010: Type Confusion in V8
+  * CVE-2025-8011: Type Confusion in V8
+  * Various fixes from internal audits, fuzzing and other
+    initiatives
+
+-------------------------------------------------------------------
 Tue Jul 15 19:46:14 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 138.0.7204.157 (boo#1246558):

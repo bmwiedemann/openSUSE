@@ -5776,4 +5776,15 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
     <comment>chromium 138.0.7204.157 (boo#1246558)</comment>
     <requestid>1293533</requestid>
   </revision>
+  <revision rev="470" vrev="1">
+    <srcmd5>9dc22cb25c9eb8a9e41745bc7340f00a</srcmd5>
+    <version>138.0.7204.168</version>
+    <time>1753281305</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 138.0.7204.168 (boo#1246902):
+  * CVE-2025-8010: Type Confusion in V8
+  * CVE-2025-8011: Type Confusion in V8
+  * Various fixes from internal audits, fuzzing and other</comment>
+    <requestid>1295183</requestid>
+  </revision>
 </revisionlist>
