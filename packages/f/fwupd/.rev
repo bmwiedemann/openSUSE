@@ -925,4 +925,41 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>1287892</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>51a98fd25bd9d03c868474e80b33fe06</srcmd5>
+    <version>2.0.13</version>
+    <time>1753281180</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.0.13:
+  + This release adds the following features:
+    - Add a daemon config option to ignore efivars free space
+    - Add support for glob-aware version comparison requirements
+    - Allow targeting specific regions in FMAP when using flashrom
+    - Detect static variables and magic numbers during code review
+    - Remove the unused hailuck and rts54hid plugins
+  + This release fixes the following bugs:
+    - Align MTD erase up to the erasesize as necessary
+    - Allow parsing IGSC OptionROM when using fwupdtool
+    - Allow removing private flags from UEFI capsule devices in quirks
+    - Do not copy the vendor for Intel reference ME firmware
+    - Do not use an interactive console if stdout is redirected
+    - Fix the UEFI self-test when the capsule splash is disabled
+    - Get better device information when using PCI-backed MTD devices
+    - Get the Intel GPU SKU and SVN when using BMG hardware
+    - Make MBIM modem devices emulatable
+    - Make sure fwupdtool.exe is available in the Windows PATH
+    - Only show the 'Full Disk Encryption Detected' warning when required
+    - Set all QCDM modem devices to raw mode when updating
+    - Show all devices for fwupdtool get-devices --show-all --force
+    - Show correct dbx version if non-Microsoft entries are present
+    - Show KEK device attributes in fwupdmgr
+    - Use an alternate GUID when the Intel GPU is in recovery mode
+    - Use the kernel netlink hotplug socket when there is no Udev
+    - Various small changes to speed up startup by 60% and lower RSS by 40%
+  + This release adds support for the following hardware:
+    - HP USB-C 100W G6 Dock
+    - Logitech Bulk Controller pheripherals
+    - More MediaTek scaler devices (forwarded request 1295070 from dimstar)</comment>
+    <requestid>1295137</requestid>
+  </revision>
 </revisionlist>
