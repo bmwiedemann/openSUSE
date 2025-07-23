@@ -427,4 +427,13 @@ Stop storing build machine kernel version (boo#1101107)</comment>
   We made the decision to deprecate hypercore access method (TAM)</comment>
     <requestid>1291267</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>946f58431bb4adf01286bff86311c211</srcmd5>
+    <version>2.21.1</version>
+    <time>1753281214</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.21.1
+  https://github.com/timescale/timescaledb/releases/tag/2.21.1</comment>
+    <requestid>1295096</requestid>
+  </revision>
 </revisionlist>
