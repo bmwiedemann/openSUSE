@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 22 10:10:22 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to release 2.2.1.2:
+  * Accurate arc rendering: Issue #2035
+  * Fixed a crash with hatch: Issue #2034
+  * A few usage issues.
+
+-------------------------------------------------------------------
 Tue Apr  1 11:27:39 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Install lanauge packs [boo#1240406]
