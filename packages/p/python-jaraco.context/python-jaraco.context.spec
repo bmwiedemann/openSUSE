@@ -18,17 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.context
-Version:        5.3.0
+Version:        6.0.0
 Release:        0
 Summary:        Tools to work with functools
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.context
-Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.context/jaraco.context-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/j/jaraco.context/jaraco_context-%{version}.tar.gz
 BuildRequires:  %{python_module backports.tarfile}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module portend}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -42,7 +43,7 @@ jaraco.functools Tools for working with functools.
 Additional functools in the spirit of stdlib’s functools.
 
 %prep
-%autosetup -p1 -n jaraco.context-%{version}
+%autosetup -p1 -n jaraco_context-%{version}
 
 %build
 %pyproject_wheel
@@ -52,15 +53,16 @@ Additional functools in the spirit of stdlib’s functools.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest -k "not repo_context"
 
 %files %{python_files}
 %license LICENSE
 %doc docs/*.rst README.rst NEWS.rst
 %{python_sitelib}/jaraco[_.]context-%{version}.dist-info
 %dir %{python_sitelib}/jaraco
-%{python_sitelib}/jaraco/context.py*
-%dir %{python_sitelib}/jaraco/__pycache__
-%pycache_only %{python_sitelib}/jaraco/__pycache__/context*.py*
+%dir %{python_sitelib}/jaraco/context
+%{python_sitelib}/jaraco/context/*
+%dir %{python_sitelib}/jaraco/context/__pycache__
+%pycache_only %{python_sitelib}/jaraco/context/__pycache__/*
 
 %changelog

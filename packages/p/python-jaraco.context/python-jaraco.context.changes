@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 18 13:57:07 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- update to 6.0.1
+  * Removed type declarations as suggested by Gemini. (#13)
+
+- update to 6.0.0
+  * Fixed bug in repo_context where standard output from git would not be
+    hidden (because git emits standard output on the stderr stream).
+  * Removed deprecated 'tarball_context', 'infer_compression', and 'null' 
+    contexts.
+
+-------------------------------------------------------------------
 Tue Apr  1 15:34:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make it compatible with older setuptools
