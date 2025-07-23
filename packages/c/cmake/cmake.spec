@@ -45,14 +45,14 @@
 %else
 %bcond_with full
 %endif
-%define shortversion 3.31
+%define shortversion 4.0
 %if 0%{?suse_version} && 0%{?suse_version} <= 1500
 %define pyver 311
 %else
 %define pyver 3
 %endif
 Name:           cmake%{?psuffix}
-Version:        3.31.7
+Version:        4.0.3
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
@@ -237,9 +237,6 @@ install -p -m0644 -D %{SOURCE3} %{buildroot}%{_fileattrsdir}/cmake.attr
 install -p -m0755 -D %{SOURCE4} %{buildroot}%{_rpmconfigdir}/cmake.prov
 sed -i -e "1s@#!.*python.*@#!$(realpath %{_bindir}/python3)@" %{buildroot}%{_rpmconfigdir}/cmake.prov
 
-# fix: W: files-duplicate  (%%license covers already)
-rm %{buildroot}%{_docdir}/cmake/Copyright.txt
-
 %fdupes %{buildroot}%{_datadir}/cmake
 %endif
 %endif
@@ -257,13 +254,11 @@ rm %{buildroot}%{_docdir}/cmake/Copyright.txt
 
 %if %{with qhelp}
 %files -n cmake-doc-qhelp
-%license Copyright.txt
 %{_docdir}/cmake/CMake.qch
 %endif
 
 %if %{with gui}
 %files -n cmake-gui
-%license Copyright.txt
 %{_bindir}/cmake-gui
 %{_datadir}/applications/cmake-gui.desktop
 %{_datadir}/mime/packages/cmakecache.xml
@@ -274,7 +269,6 @@ rm %{buildroot}%{_docdir}/cmake/Copyright.txt
 %{_datadir}/icons/hicolor/32x32/apps/CMakeSetup.png
 
 %files -n cmake-man
-%license Copyright.txt
 %{_mandir}/man7/*
 %{_mandir}/man1/*
 
@@ -284,7 +278,6 @@ rm %{buildroot}%{_docdir}/cmake/Copyright.txt
 %if "%{flavor}" == ""
 %doc README.SUSE
 %else
-%license Copyright.txt
 %doc README.rst
 %{_rpmconfigdir}/macros.d/macros.cmake
 %{_fileattrsdir}/cmake.attr

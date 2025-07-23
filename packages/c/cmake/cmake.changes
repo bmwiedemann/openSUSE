@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun 18 12:04:17 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- Set -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix a bunch of build
+  issues.
+
+-------------------------------------------------------------------
+Mon Jun 16 21:14:47 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 4.0.3
+  * CUDA/Clang: Fix list of architectures supported by Clang < 20.1,
+    Reorder the logic for setting supported archs, add archs
+    supported by Clang 21
+  * gcc: support `import std`
+  * experimental: recycle the `import std` UUID
+  * Clang/CXXImportStd: support `-stdlib=libstdc++`
+  * experimental/CXXModules: recycle the UUID
+  * FindPython: rely on ABIFLAGS on Windows for ABI profile
+  * FindPython: Avoid implicit link library on Windows
+
+-------------------------------------------------------------------
 Wed May 28 18:49:13 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
  
  - Replace usage of %jobs for reproducible builds (boo#1237231)
@@ -7,6 +27,34 @@ Wed May 28 18:49:13 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 Tue May 20 20:45:39 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix GUI build on openSUSE Leap 15.x
+
+-------------------------------------------------------------------
+Wed Apr 16 21:31:21 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 4.0.1
+  * get_filename_component: Restore lexical preprocessing of
+    REALPATH for compat
+  * find_package: Restore component requirements in nested calls
+  * Source: Include specific CoreFoundation headers instead of
+    umbrella header
+
+-------------------------------------------------------------------
+Tue Apr 16 17:27:57 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to CMake 4.0
+  * The "CMAKE_POLICY_VERSION_MINIMUM" variable was added to help
+    packagers and end users try to configure existing projects that
+    have not been updated to work with supported CMake versions.
+  * The "$<PATH>" generator expression gained the "NATIVE_PATH"
+    operation to convert a CMake path into a native one.
+  * Compatibility with versions of CMake older than 3.5 has been
+    removed.
+  * The "cmake --link-no-warning-as-error" option was added to
+    suppress the effects of the "LINK_WARNING_AS_ERROR" target
+    property and "CMAKE_LINK_WARNING_AS_ERROR" variable.
+  * The "target_link_libraries()" command now supports the
+    "LINKER:" prefix.
+- adjust cmake-fix-ruby-test.patch
 
 -------------------------------------------------------------------
 Fri Apr 11 15:23:54 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>

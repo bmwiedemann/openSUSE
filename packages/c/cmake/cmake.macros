@@ -57,7 +57,8 @@
         -DBUILD_STATIC_LIBS:BOOL=OFF \\\
         -DCMAKE_COLOR_MAKEFILE:BOOL=OFF \\\
         -DCMAKE_INSTALL_DO_STRIP:BOOL=OFF \\\
-        -DCMAKE_MODULES_INSTALL_DIR=%{_libdir}/cmake/%{name}
+        -DCMAKE_MODULES_INSTALL_DIR=%{_libdir}/cmake/%{name} \\\
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
 %__builder_verbose \
 %if "%__builder" == "%__make" \
