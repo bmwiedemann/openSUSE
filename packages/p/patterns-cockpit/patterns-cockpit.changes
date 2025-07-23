@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 21 12:15:18 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Require cockpit-firewalld if firewalld is installed so Cockpit is
+  allowed through the firewall jsc#PED-13228
+
+-------------------------------------------------------------------
 Wed Jun 18 16:36:14 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
 
 - Ensure cockpit-kdump is installed if kdump is installed.

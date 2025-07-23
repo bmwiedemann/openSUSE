@@ -26,4 +26,15 @@
 - Added cockpit-packages</comment>
     <requestid>1288465</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>05d9dcd2891f7d04f1c574053b93e634</srcmd5>
+    <version>16.0</version>
+    <time>1753281347</time>
+    <user>anag_factory</user>
+    <comment>Requires 1295242
+
+- Require cockpit-firewalld if firewalld is installed so Cockpit is
+  allowed through the firewall jsc#PED-13228</comment>
+    <requestid>1295243</requestid>
+  </revision>
 </revisionlist>

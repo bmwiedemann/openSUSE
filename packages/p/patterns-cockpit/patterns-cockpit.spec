@@ -49,6 +49,7 @@ Requires:       (cockpit-packages if PackageKit)
 Requires:       (cockpit-packagekit if PackageKit)
 Requires:       cockpit-repos
 Requires:       (cockpit-subscriptions if suseconnect-ng)
+Requires:       (cockpit-firewalld if firewalld)
 Requires:       sudo
 
 %description
