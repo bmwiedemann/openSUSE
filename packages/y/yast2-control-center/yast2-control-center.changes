@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 16 12:08:03 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Allow building using CMake 4.0 by bumping the minimum for cmake
+  to 3.5.(boo#1239788).
+- 5.0.2
+
+-------------------------------------------------------------------
 Thu Sep 26 11:21:09 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Install YaST-systemsettings.desktop into location for Plasma 6,
