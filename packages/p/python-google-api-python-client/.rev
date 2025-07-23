@@ -1377,4 +1377,41 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     <comment></comment>
     <requestid>1281289</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>22f4e9273450158f852a1110af24bda5</srcmd5>
+    <version>2.172.0</version>
+    <time>1753281722</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.172.0
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **cloudscheduler:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **containeranalysis:** Update the api
+  * **content:** Update the api
+  * **developerconnect:** Update the api
+  * **dfareporting:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **drivelabels:** Update the api
+  * **firebasedataconnect:** Update the api
+  * **firebaseml:** Update the api
+  * **gkebackup:** Update the api
+  * **healthcare:** Update the api
+  * **logging:** Update the api
+  * **managedkafka:** Update the api
+  * **merchantapi:** Update the api
+  * **monitoring:** Update the api
+  * **netapp:** Update the api
+  * **networksecurity:** Update the api
+  * **playintegrity:** Update the api
+  * **policysimulator:** Update the api
+  * **privateca:** Update the api
+  * **servicemanagement:** Update the api
+  * **storage:** Update the api
+  * **travelimpactmodel:** Update the api
+  * **workloadmanager:** Update the api (forwarded request 1294987 from glaubitz)</comment>
+    <requestid>1295068</requestid>
+  </revision>
 </revisionlist>
