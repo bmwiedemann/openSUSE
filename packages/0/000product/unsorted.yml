@@ -7925,6 +7925,7 @@ unsorted:
   - greetd-branding-openSUSE 
   - greetd-branding-upstream 
   - greetd-fakegreet 
+  - greetd-gtkgreet-xfce-wayland 
   - grepcidr 
   - grepmail 
   - gretl 
@@ -14860,7 +14861,7 @@ unsorted:
   - libnxml0 
   - libo2scl0 
   - liboaml1 
-  - liboapv1 
+  - liboapv2 
   - liboath-devel 
   - liboauth-devel 
   - libobby-0_4-1 
@@ -24578,6 +24579,7 @@ unsorted:
   - python311-azure-mgmt-storage 
   - python311-azure-mgmt-storageactions 
   - python311-azure-mgmt-storagecache 
+  - python311-azure-mgmt-storagediscovery 
   - python311-azure-mgmt-storageimportexport 
   - python311-azure-mgmt-storagemover 
   - python311-azure-mgmt-storagepool 
@@ -25219,6 +25221,7 @@ unsorted:
   - python311-finance_enums 
   - python311-findpython 
   - python311-fire 
+  - python311-firewall 
   - python311-first 
   - python311-fissix 
   - python311-fixedint 
@@ -26527,7 +26530,6 @@ unsorted:
   - python311-pysmi 
   - python311-pysndfile 
   - python311-pysnmp 
-  - python311-pysnmp-lextudio 
   - python311-pysnmpcrypto 
   - python311-pysofaconventions 
   - python311-pysol-cards 
@@ -28299,6 +28301,7 @@ unsorted:
   - python312-azure-mgmt-storage 
   - python312-azure-mgmt-storageactions 
   - python312-azure-mgmt-storagecache 
+  - python312-azure-mgmt-storagediscovery 
   - python312-azure-mgmt-storageimportexport 
   - python312-azure-mgmt-storagemover 
   - python312-azure-mgmt-storagepool 
@@ -28954,6 +28957,7 @@ unsorted:
   - python312-finance_enums 
   - python312-findpython 
   - python312-fire 
+  - python312-firewall 
   - python312-first 
   - python312-fissix 
   - python312-fixedint 
@@ -30300,7 +30304,6 @@ unsorted:
   - python312-pysmi 
   - python312-pysndfile 
   - python312-pysnmp 
-  - python312-pysnmp-lextudio 
   - python312-pysnmpcrypto 
   - python312-pysofaconventions 
   - python312-pysol-cards 
@@ -32075,6 +32078,7 @@ unsorted:
   - python313-azure-mgmt-storage 
   - python313-azure-mgmt-storageactions 
   - python313-azure-mgmt-storagecache 
+  - python313-azure-mgmt-storagediscovery 
   - python313-azure-mgmt-storageimportexport 
   - python313-azure-mgmt-storagemover 
   - python313-azure-mgmt-storagepool 
@@ -34023,7 +34027,6 @@ unsorted:
   - python313-pysmi 
   - python313-pysndfile 
   - python313-pysnmp 
-  - python313-pysnmp-lextudio 
   - python313-pysnmpcrypto 
   - python313-pysofaconventions 
   - python313-pysol-cards 
@@ -35956,6 +35959,7 @@ unsorted:
   - retro-gtk-devel 
   - retroarch 
   - retry 
+  - retsnoop 
   - reuse 
   - revelation 
   - revelation-lang 
@@ -37609,6 +37613,8 @@ unsorted:
   - sypper 
   - sysbench 
   - sysctl-logger 
+  - sysextmgr 
+  - sysextmgrcli 
   - sysfsutils 
   - sysfsutils-devel 
   - sysinfo 
