@@ -24,4 +24,12 @@
   * Add 001-harden-systemd-unit.patch (forwarded request 1251405 from alessio.biancalana)</comment>
     <requestid>1251406</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f4c29e636a17277c44913972ca3e608b</srcmd5>
+    <version>0.10.0~0</version>
+    <time>1753375566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1295387</requestid>
+  </revision>
 </revisionlist>

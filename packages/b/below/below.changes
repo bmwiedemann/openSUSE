@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Wed Jul 23 17:46:09 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.10.0~0:
+  * Release 0.10.0
+  * Update tokio 1.45.0 -> 1.46.1
+  * Swallow tar unpack error
+  * Update tempfile from 3.19.1 to 3.20.0
+  * Update toml from 0.8.22 to 0.9.2
+  * Enable toml preserve_order feature
+  * refactor: `Dockerfile` support (#8251)
+  * Update resctl-demo (transitively fix RUSTSEC-2022-0040)
+  * Add Nice% to summary CPU view
+  * Simplify lazy_static dependency
+  * Update cursive 0.20.0 -> 0.21.1 (#8253)
+  * Strip float_roundtrip and unbounded_depth from serde_json for no_std builds
+  * Collector plugin do not send error to consumer
+  * Bump anyhow from 1.0.95 to 1.0.98
+  * add file THP data
+  * upgrade to 0.24.2
+  * Update autocargo component on FBS:master
+  * Delete all autocargo project-level edition settings
+  * applying rustfix to remaining fbcode targets
+  * Update toml from 0.8.19 to 0.8.22
+  * Update thiserror from 2.0.7 to 2.0.12
+  * Update os_info from 3.9.2 to 3.11.0
+  * Gate record mlock behind a config option
+  * Improve help ui
+  * Bring back Bold+Underline for selected tab/column
+  * third-party: rust: upgrade to memmap2 0.9.5
+  * Add DurationSec format for uptime
+  * Reduce IO/iface max rows on summary view
+  * Suppress exit stat bpf EACCESS error
+  * Log to $TMPDIR by default
+  * Do not use color on titles
+  * Upgrade gix crates
+  * Switch from bold+underline on tabs to indicator
+  * Add proper suffix for iface RX/TX bytes/s
+  * Support custom rows
+  * Move to column major layout for summary view
+  * Use spelled out process state names
+  * Right justify field values
+  * Compat title columns
+  * Decouple entry gathering from rendering
+  * Bold titles
+  * Upgrade clap and clap_complete
+  * Add additional logging for collection/write time (#8248)
+  * Fix github build (#8247)
+  * Align process state summary to columns
+  * Move store write and clean up to separate thread
+  * applying rustfix to fbcode
+  * Update tokio and some tokio- crates
+  * prevent below process being evicted out of memory
+  * Upgrade Rust tokio
+  * set style edition to 2024
+  * upgrade to nightly-2025-04-14
+  * Support zswap writeback cgroup property
+  * Add bitflags to no_std universe
+  * Update cargo.lock (#8246)
+  * Add spin_no_std feature to lazy_static
+  * third-party/rust: serde_json 1.0.132 -> 1.0.140
+  * add LICENSE file for tc crate (#8242)
+  * below: proc_reader: Skip cmdline task enqueue when threadpool is saturated
+  * Update publish crates.io script
+  * Upgrade tar package
+  * Upgrade clap, clap_complete
+
+-------------------------------------------------------------------
 Sat Mar  8 10:26:39 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Apply hardening to the systemd service
