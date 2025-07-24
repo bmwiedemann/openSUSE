@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jul 24 04:12:08 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.106.0:
+  * NEW: Experimental options:
+  * Improved fuzzy completion.
+    - Arguments over possible commands.
+    - Prefer prefix matches.
+  * Improvements to errors and warnings.
+  * Breaking changes:
+    - Regression: bare word interpolation on both sides does
+      not work.
+    - `path` and `directory` command arguments are no longer
+      expanded.
+    - Stricter compound assignment operator type checking.
+    - `parse`: unmatched optional capture groups are now `null`.
+  * Additions:
+    - Experimental options.
+    - `clip` graduates from `std-rfc`.
+    - Improved documentation, errors, and warnings.
+    - Commands.
+  * Deprecations:
+    - `--ignore-errors (-i)` renamed to `--optional (-o)`.
+  * Bug fixes and other changes:
+    - `table`.
+    - Interrupting endless loops.
+    - Dynamic config with hooks and overlays.
+    - Preserve type of float values in conversions to various
+      formats.
+    - Keybind action: `KillLine`.
+    - Polars.
+    - Additional bug fixes.
+  * For a full list of changes with detailed descriptions, see:
+    - https://www.nushell.sh/blog/2025-07-23-nushell_0_106_0.html
+
+-------------------------------------------------------------------
 Wed Jun 11 04:20:53 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.105.1:
@@ -29,7 +64,7 @@ Wed Jun 11 04:20:53 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
       - Cell-paths with case-sensitivity and without`!`
       - Paths on lazy frames now produce expressions.
     + Notes for plugin developers:
-      - Construct `IoError` from `std::io::Error` instead 
+      - Construct `IoError` from `std::io::Error` instead
         of `std::io::ErrorKind`.
   * For a full list of changes with detailed descriptions, see:
     - https://www.nushell.sh/blog/2025-06-10-nushell_0_105_0.html
@@ -50,11 +85,11 @@ Wed Apr 30 03:53:45 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
       - `kill` now accepts list spreading
       - Custom indicator for missing table values
       - Some `math` commands now work with bounded ranges
-      - The executable directory is now added to 
+      - The executable directory is now added to
         `$NU_PLUGIN_DIRS` by default
       - `env-conversions` helpers added to the standard library
       - Proxy support for `http` commands
-      - Tab completion when importing the standard library 
+      - Tab completion when importing the standard library
         and its exports
       - LSP: Snippet-style completions
       - `debug --raw-value`
@@ -74,7 +109,7 @@ Wed Apr 30 03:53:45 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
       - Removed `-s` and `-p` in `do`
   * Bug fixes and other changes.
   * For a full list of changes with detailed descriptions, see:
-    - https://www.nushell.sh/blog/2025-04-29-nushell_0_104_0.html. 
+    - https://www.nushell.sh/blog/2025-04-29-nushell_0_104_0.html.
 
 -------------------------------------------------------------------
 Wed Mar 19 04:57:25 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
@@ -117,17 +152,17 @@ Thu Feb 20 09:48:43 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 -------------------------------------------------------------------
 Thu Feb 20 04:26:43 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Added missing dependencies in subpackages. 
+- Added missing dependencies in subpackages.
 
 -------------------------------------------------------------------
 Wed Feb 19 08:59:10 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Plugins are moved to subpackages. 
+- Plugins are moved to subpackages.
 
 -------------------------------------------------------------------
 Wed Feb 19 06:55:55 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
-- The build of built-in plugins is involved. 
+- The build of built-in plugins is involved.
 
 -------------------------------------------------------------------
 Wed Feb  5 04:53:16 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
@@ -156,13 +191,13 @@ Wed Feb  5 04:53:16 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
       - `move --first`/`--list` flags.
       - `find --no-highlight` switch.
       - `seq date` enhancements.
-      - `content_type` metadata is now assigned to known filetypes 
+      - `content_type` metadata is now assigned to known filetypes
          that don't have a `from` convertor.
   + Breaking changes:
     - `$env.config.filesize` changes.
     - `format filesize`.
     - `ENV_CONVERSIONS` take effect immediately.
-    - External completers fall back to file completions only 
+    - External completers fall back to file completions only
       on `null`.
     - Custom completions inherit `case_sensitive` option from config.
     - Command pipeline input/output type changes.
@@ -190,7 +225,7 @@ Wed Feb  5 04:53:16 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
     - Fix: Auto `cd` should not canonicalize symbolic path.
     - Fix: Pressing `Esc` or `Q` was not closing `explore`.
     - Custom values are now expanded in tables.
-    - Change how `and` and `or` operations are compiled to IR 
+    - Change how `and` and `or` operations are compiled to IR
       to support custom values.
     - Fix `stor reset` when there are foreign keys.
     - New, improved `grid` icons.
@@ -316,8 +351,8 @@ Sun Oct 20 22:34:00 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 0.99.1
   + Bug fixes and other changes
-    * A bug was introduced in 0.99.0 where `return`, `break`, and `continue` 
-      could cause `$env.LAST_EXIT_CODE` to be set to 1. This has been 
+    * A bug was introduced in 0.99.0 where `return`, `break`, and `continue`
+      could cause `$env.LAST_EXIT_CODE` to be set to 1. This has been
       fixed in #14120.
 
 -------------------------------------------------------------------
@@ -493,14 +528,14 @@ Wed Jun 26 03:02:25 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 -------------------------------------------------------------------
 Fri Jun 14 15:44:10 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Removed post scriptlets that add and remove shells in /etc/shells. 
+- Removed post scriptlets that add and remove shells in /etc/shells.
 
 -------------------------------------------------------------------
 Tue Jun  4 04:50:29 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.94.2:
   * Fix external command name parsing with backslashes.
-  * Preserving absolute paths when expanding globs. 
+  * Preserving absolute paths when expanding globs.
 
 -------------------------------------------------------------------
 Fri May 31 03:11:15 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
