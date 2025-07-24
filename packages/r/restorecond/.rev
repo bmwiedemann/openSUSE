@@ -169,4 +169,12 @@
     <comment>https://bugzilla.suse.com/show_bug.cgi?id=1246831</comment>
     <requestid>1295056</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>ec61f020db5e3792cb939580203490e1</srcmd5>
+    <version>3.9</version>
+    <time>1753374867</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1295306</requestid>
+  </revision>
 </revisionlist>
