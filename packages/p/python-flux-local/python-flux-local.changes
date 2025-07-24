@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Jul 24 12:47:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.6.0:
+  * What's changed
+    - Steamline error logging in flux shell by @allenporter in #949
+    - Apply cruft updates by @allenporter in #951
+    - Perform scruft update by @allenporter in #961
+    - Fixes for new Helm Controller reconciliation by @allenporter
+      in #962
+    - Update testdata to remove unnecessary kustomization
+      dependency by @allenporter in #963
+    - Update orchestrator to handle implicit GitRepository by
+      @allenporter in #964
+    - Add kustomize controller support for post build substitution
+      by @allenporter in #965
+    - Strip attributes when building using the orchestrator by
+      @allenporter in #966
+    - Remove test visitor by @allenporter in #967
+    - Separate build ks-new into a separate module by @allenporter
+      in #968
+    - Fix source controller expansion of OCI Repisotories by
+      @allenporter in #969
+    - Split build tests into separate targets by @allenporter in
+      #970
+    - Update controller work plans for increased feature parity by
+      @allenporter in #971
+    - Add flag --skip-invalid-kustomization-paths to skip invalid
+      external repos by @allenporter in #972
+  * Dependency updates
+    - Reject new updates detected with Cruft by
+      @github-actions[bot] in #952
+    - New updates detected with Cruft by @github-actions[bot] in
+      #955
+    - chore(deps): update dependency ruff to v0.12.3 by
+      @renovate[bot] in #957
+
+-------------------------------------------------------------------
 Wed Jun 18 04:53:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 7.5.6:
