@@ -1080,4 +1080,41 @@
    * Mention the revision in the lockfile versioning doc</comment>
     <requestid>1294440</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>943877467ac7e0a0978c7f703793144b</srcmd5>
+    <version>0.8.2</version>
+    <time>1753375581</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.2
+ * Configuration
+   * Add UV_INIT_BUILD_BACKEND 
+ * Rust API
+   * Expose tls_built_in_root_certs for client 
+ * Enhancements
+   * Add derivation chains for dependency errors 
+   * Add support for HF_TOKEN 
+   * Allow --config-settings-package to apply configuration settings at the package level 
+   * Create (e.g.) python3.13t executables in uv venv 
+   * Disallow writing symlinks outside the source distribution target directory 
+   * Elide traceback when python -m uv in interrupted with Ctrl-C on Windows 
+   * Match --bounds formatting for uv_build bounds in uv init 
+   * Support extras and dependency_groups markers in PEP 508 grammar 
+   * Support extras and dependency_groups markers on uv pip install and uv pip sync 
+   * Add hint to use uv self version when uv version cannot find a project 
+   * Improve error reporting when removing Python versions from the Windows registry 
+   * Make warnings about masked [tool.uv] fields more precise 
+ * Preview features
+   * Emit JSON output in uv sync with --quiet 
+ * Bug fixes
+   * Avoid reading files in the environment bin that are not entrypoints 
+   * Avoid removing empty directories when constructing virtual environments 
+   * Preserve index URL priority order when writing to pyproject.toml 
+   * Allow removal of virtual environments with missing interpreters 
+   * Apply Cache-Control overrides to response, not request headers 
+   * Copy entry points into ephemeral environments to ensure layers are respected 
+   * Workaround Jupyter Lab application directory discovery in ephemeral environments 
+   * Enforce requires-python in pylock.toml 
+   * Fix kebab casing of README variants in build backend</comment>
+    <requestid>1295390</requestid>
+  </revision>
 </revisionlist>
