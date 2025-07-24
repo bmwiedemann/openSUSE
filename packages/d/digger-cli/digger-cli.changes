@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Jul 24 11:48:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.111:
+  * set max limit on number of impacted project per action (#2049)
+  * send workflow url from cli (#2048)
+  * add debug logs for github api requests (#2047)
+  * docs: add git workflow shortcuts to CLAUDE.md
+  * docs: improve helm installation documentation structure
+  * Add baseline values
+  * Create helm values first
+  * Update helm setup docs
+  * Fix helm release action
+  * Update claude.md for helm charts
+  * Fix helm readme inconsistencies
+  * Clean up helm readme
+  * Add workflows to test and release helm charts
+  * Move helm charts from a separate repo
+
+-------------------------------------------------------------------
+Thu Jul 24 11:40:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.110:
+  * proposed override for sops function override (#2032)
+  * Add Azure tab to quickstarts
+  * Add Github Actions only note to FAQ
+  * Add With Terragrunt quickstart
+  * Add With Opentofu page
+  * Consolidate quickstarts into With Terraform
+  * feat/app urls (#2028)
+  * use correct url in notifications (#2027)
+  * fix/drift settings (#2026)
+  * fix drift settings (#2025)
+  * Update docs to point to ui.digger.dev (#2024)
+  * feat/drift readiness (#2023)
+  * Update pro-deploy.yml
+  * feat/billing gate (#2021)
+  * add a note on codeowners (#2020)
+  * cleanup the frontegg view (#2019)
+  * feat/drift fields (#2018)
+  * add docs on remote runs (#2017)
+  * use debug logs during create project status (#2015)
+  * add pro deployment (#2012)
+  * projects refresh background service (#2011)
+  * fix typos (#2007)
+  * make loading projects from push configurable (#2010)
+  * include projects api (#2006)
+  * load projects on push (#1964)
+  * Investigate bug root cause (#2005)
+
+-------------------------------------------------------------------
 Mon Jun 30 07:57:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.109:
