@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 23 07:43:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Enable faad2 support.
+
+-------------------------------------------------------------------
 Sat May  3 14:18:03 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add fix-gcc15-build.patch from upstream to fix gcc-15 compile

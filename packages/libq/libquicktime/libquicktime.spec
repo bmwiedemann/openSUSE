@@ -18,7 +18,6 @@
 
 %define sover 0
 %bcond_with    faac
-%bcond_with    faad
 %bcond_with    x264
 Name:           libquicktime
 Version:        1.2.4+git20180804.fff99cd
@@ -36,6 +35,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  libdv-devel
+BuildRequires:  libfaad2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libmp3lame-devel
 BuildRequires:  libtool
@@ -54,9 +54,6 @@ BuildRequires:  pkgconfig(libavcodec) < 59
 BuildRequires:  pkgconfig(libswscale) < 6
 %if %{with faac}
 BuildRequires:  libfaac-devel
-%endif
-%if %{with faad}
-BuildRequires:  libfaad2-devel
 %endif
 %if %{with x264}
 BuildRequires:  libx264-devel
@@ -140,6 +137,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_libdir}/libquicktime
 %{_libdir}/libquicktime/lqt_audiocodec.so
 %{_libdir}/libquicktime/lqt_dv.so
+%{_libdir}/libquicktime/lqt_faad2.so
 %{_libdir}/libquicktime/lqt_lame.so
 %{_libdir}/libquicktime/lqt_mjpeg.so
 %{_libdir}/libquicktime/lqt_png.so
@@ -153,9 +151,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libquicktime/lqt_ffmpeg.so
 %if %{with faac}
 %{_libdir}/libquicktime/lqt_faac.so
-%endif
-%if %{with faad}
-%{_libdir}/libquicktime/lqt_faad2.so
 %endif
 %if %{with x264}
 %{_libdir}/libquicktime/lqt_x264.so
