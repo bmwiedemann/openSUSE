@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Thu Jul 24 05:00:02 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.6.5
+
+- Update 2.6.5
+  * Bump OpenSSL to 3.5.1 in the latest releases and branch tips in CPython
+    3.12 - 3.15 by @edgarrmondragon in #3287
+  * Add Jython 2.7.4 by @cesarcoatl in #3290
+  * Add CPython 3.14.0rc1 by @nedbat in #3293
+  * Add GraalPy 24.2.2 by @msimacek in #3291
+
+-------------------------------------------------------------------
+Thu Jul 24 04:59:28 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.6.4
+
+- Update 2.6.4
+  * Backport bpo_36106 to 3.5.10 and 3.6.15 by @native-api in #3280
+  * (regression) Use Zlib from XCode SDK in MacOS without Homebrew or Macports by @native-api in #3282
+  * Add PyPy v7.3.20 by @jsirois in #3284
+  * Add CPython 3.14.0b4 by @edgarrmondragon in #3285
+
+-------------------------------------------------------------------
+Thu Jul 24 04:58:53 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.6.3
+
+- Update 2.6.3
+  * README: Re-promote "Python versions with extended support" to a section
+    by @native-api in #3276
+  * Support linking to MacPorts ports installed from binary archives
+    by @0916dhkim in #3272
+  * Add CPython 3.14.0b3 by @nedbat in #3278
+
+-------------------------------------------------------------------
+Thu Jul 24 04:58:34 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.6.2
+
+- Update 2.6.2
+  * Add CPython 3.13.5 by @nedbat in #3269
+
+-------------------------------------------------------------------
+Thu Jul 24 04:58:11 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.6.1
+
+- Update 2.6.1
+  * Add CPython 3.9.23, 3.10.18, 3.11.13, 3.12.11, 3.13.4 by @nedbat in #3266
+
+-------------------------------------------------------------------
+Thu Jul 24 04:57:14 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.6.0
+
+- Update 2.6.0
+  * python-build: Support patch paths with spaces/special characters
+    by @native-api in #3251
+  * Add CODEOWNERS file by @native-api in #3247
+  * README: make fish PATH add conditional on the directory existing by
+    @BooleanCat in #2786
+  * Add --bare option to pyenv version by @jjwatt in #2783
+  * README: Add shell setup instructions for nushell by @jordanst3wart in #2916
+  * Add MacPorts support for python-build by @studnitskiy in #3186
+  * python-build: fix has_broken_mac_readline when Readline is explicitly configured
+    by @fofoni in #3254
+  * Add CPython 3.14.0b2 by @nedbat in #3259
+
+-------------------------------------------------------------------
+Thu Jul 24 04:56:48 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.5.7
+
+- Update 2.5.7
+  * Point 3.14-dev to 3.14 branch by @edgarrmondragon in #3246
+
+-------------------------------------------------------------------
+Thu Jul 24 04:55:45 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.5.6
+
+- Update 2.5.6
+  * Add GraalPy 24.2.1 by @msimacek in #3238
+  * Fix get-pip URLs for 3.7, 3.8 and Pyston by @dmrlawson in #3242
+  * [CI] Cache uname and sw_vers output in Python-Build for easier mocking in
+    tests by @native-api in #3244
+  * Add CPython 3.14.0b1 and 3.15-dev by @edgarrmondragon in #3245
+
+-------------------------------------------------------------------
+Thu Apr 17 06:59:33 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.5.5
+
+- Update 2.5.5
+  * Add graalpy 24.2 by @msimacek in #3215
+  * Switch 3.9+ to OpenSSL 3 by @native-api in #3223
+  * Add miniforge3-24.11.3-1, miniforge3-24.11.3-2, miniforge3-25.1.1
+    by @native-api in #3224
+  * Add CPython 3.9.22, 3.10.17, 3.11.12, 3.12.10, 3.13.3, 3.14.0a7
+    by @native-api in #3233
+
+-------------------------------------------------------------------
+Thu Apr 17 06:57:31 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.5.4
+
+- Update 2.5.4
+  * Add anaconda3-2025.1.1-2 by @binbjz in #3198
+  * Add PyPy v7.3.19 by @jsirois in #3205
+  * Add CPython 3.14.0a6 by @nedbat in #3213
+
+-------------------------------------------------------------------
 Thu Feb 13 07:33:11 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.5.3
 
 - Update 2.5.3
