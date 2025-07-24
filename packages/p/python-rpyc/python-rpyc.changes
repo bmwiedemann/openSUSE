@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jul 23 12:13:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 6.0.2
+  * Add support to current numpy __array__ ndarray method
+  * Allow DeployServer to execute any service and script
+  * Updated owner path segment for GitHub links in CHANGELOG.rst
+  * Removed references to EOL Python2 to shorten the read
+    and keep it relevant to today
+  * Removed broken link to Travis CI as it was deprecated
+    in favor of GitHub Actions
+  * Switched dead link to internet archive for the write up
+    by David Mertz.
+  * Corrected link to pull request docs by GitHub
+  * Mass update of moved links to reduce sphinx linkcheck noise
+  * Fixed linkcheck for sourceforge by setting user agent;
+    changed sourceforge links to https
+  * Removed reference to IronPython 2.7 since latest RPyC
+    dropped EOL python versions like 2.7
+  * Updated location to context manager docs
+  * Updated owner path segment for GitHub links in docs/install.rst
+    and CONTRIBUTORS.rst
+
+-------------------------------------------------------------------
 Thu Nov 14 11:29:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 6.0.1
