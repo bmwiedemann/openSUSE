@@ -17,7 +17,7 @@
 
 
 Name:           pluto
-Version:        5.22.0
+Version:        5.22.1
 Release:        0
 Summary:        A cli tool to help discover deprecated apiVersions in Kubernetes
 License:        Apache-2.0
