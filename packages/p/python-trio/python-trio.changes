@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 17 20:26:22 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- add pyopenssl-25-1-compatibility.patch to ignore deprecation
+  warnings (from pyopenssl)
+
+-------------------------------------------------------------------
 Wed Jul  2 11:20:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.30.0

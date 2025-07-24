@@ -32,6 +32,7 @@ Summary:        Python async/await-native I/O library
 License:        Apache-2.0 OR MIT
 URL:            https://github.com/python-trio/trio
 Source:         https://files.pythonhosted.org/packages/source/t/trio/trio-%{version}.tar.gz
+Patch1:         https://github.com/python-trio/trio/pull/3292/commits/c6e15249dc0cfe29bdbe6829ae4a3891aa147aa3.patch#/pyopenssl-25-1-compatibility.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools > 77}
@@ -84,6 +85,7 @@ sed -i '/\/usr\/bin\/env\ python3/d' src/trio/_tests/check_type_completeness.py 
 
 %check
 %if %{with test}
+export PYTEST_ADDOPTS="-W ignore::DeprecationWarning"
 # test_static_tool_sees_all_symbols uses jedi/pylint for static analysis,
 #   pointless for us.
 donttest="test_static_tool_sees_all_symbols"

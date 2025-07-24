@@ -277,4 +277,13 @@
     <comment></comment>
     <requestid>1290021</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>0dc9e5ffbc78dc766011695f24487097</srcmd5>
+    <version>0.30.0</version>
+    <time>1753374874</time>
+    <user>dimstar_suse</user>
+    <comment>- add pyopenssl-25-1-compatibility.patch to ignore deprecation
+  warnings (from pyopenssl)</comment>
+    <requestid>1294231</requestid>
+  </revision>
 </revisionlist>
