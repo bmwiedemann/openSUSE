@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 17 15:46:08 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.9
+  * Improved POSIX compliance (added semanage_basename)
+  * Add relabel_store config option
+  * Add semanage_handle_create_with_path
+  * Add relabel_store config option to semanage.conf
+
+-------------------------------------------------------------------
 Fri Mar  7 14:10:50 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.8.1
