@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 24 10:47:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.7.1:
+  This release introduces code to replace the shlex library used
+  for parsing arguments in the exec plugin.
+  If any existing manifests become corrupted, please file an issue.
+  discussion: kubernetes/kubernetes#132593 (comment)
+  * Dependencies
+    - #5943: drop shlex dependency
+  * Chore
+    - #5948: Update kyaml to v0.20.1
+    - #5949: Update cmd/config to v0.20.1
+    - #5950: Update api to v0.20.1
+
+-------------------------------------------------------------------
 Mon Jun 30 08:13:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.7.0:
