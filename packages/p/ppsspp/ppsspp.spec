@@ -2,7 +2,7 @@
 # spec file for package ppsspp
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define _lto_cflags %{nil}
 Name:           ppsspp
-Version:        1.18.1
+Version:        1.19.3
 Release:        0
 Summary:        PlayStation Portable Emulator
 License:        Apache-2.0 AND BSD-1-Clause AND BSL-1.0 AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND (BSD-2-Clause OR GPL-2.0-or-later) AND (BSD-3-Clause OR GPL-2.0-only) AND CC0-1.0 AND GPL-2.0-or-later WITH Autoconf-exception-3.0 AND GPL-3.0-or-later WITH Bison-exception-2.2 AND Libpng AND ISC AND IJG AND Zlib AND MIT AND CC-BY-4.0 AND FTL
@@ -66,6 +66,9 @@ Requires(post): hicolor-icon-theme
 Requires(postun): hicolor-icon-theme
 # never built for PowerPC/Arm on 20200721
 ExcludeArch:    aarch64 %{arm} ppc ppc64 ppc64le s390x
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc12-c++
+%endif
 
 %description
 PPSSPP is a PSP emulator written in C++, and translates PSP CPU instructions directly into optimized x86, x64 and ARM machine code, using JIT recompilers (dynarecs).
@@ -109,6 +112,10 @@ const char *PPSSPP_GIT_VERSION = \"%{version}\";
 # Remove cmake4 error due to not setting
 # min cmake version - sflees.de
 export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
+%if 0%{?suse_version} < 1600
+export CXX=g++-12
+%endif
 
 mkdir build-headless build-qt build
 

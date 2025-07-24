@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 20 08:53:59 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ppsspp 1.19.3:
+  * Fixes for crashes, compatibility, functionality, rending
+    in multiple games
+  * New sceAtrac audio implementation
+  * Touch gliding support
+  * Add Infrastructure for multiplayer support
+  * UI adjustments and functionality extensions
+
+-------------------------------------------------------------------
 Wed May  7 10:20:42 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
