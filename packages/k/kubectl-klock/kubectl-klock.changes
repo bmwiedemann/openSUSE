@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 24 10:45:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.8.2:
+  * Fixes
+    - bugfix: Fix panic that sometimes happen with lots of
+      resources by @applejag in #162
+  * Dependencies
+    - Bump actions/attest-build-provenance from 2.3.0 to 2.4.0 in
+      the all group by @dependabot[bot] in #164
+    - Bump the all group across 1 directory with 7 updates by
+      @dependabot[bot] in #167
+
+-------------------------------------------------------------------
 Wed Jun 04 18:35:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.8.1:
