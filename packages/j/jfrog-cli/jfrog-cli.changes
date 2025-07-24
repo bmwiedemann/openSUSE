@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Jul 24 10:56:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.78.1:
+  * Improvements
+    - replace sast fingerprint to significant path by @hadarshjfrog
+      in jfrog/jfrog-cli-security#498
+    - Add partialFingerprints to result sarif by @solganik in
+      jfrog/jfrog-cli-security#510
+  * Bug Fixes
+    - Fix build failure logic to consider applied policies rules by
+      @eranturgeman in jfrog/jfrog-cli-security#501
+  * Other Changes
+    - IDE setup for vscode and jetbrains by @agrasth in #3027
+    - Fixed the proper handling of deletionStatus by
+      @naveenku-jfrog in jfrog/jfrog-client-go#1142
+    - Add properties for repository via j frog cli by
+      @naveenku-jfrog in jfrog/jfrog-client-go#1148
+    - get all permisison targets(fix jfrog/jfrog-client-go#569) by
+      @legnoh in jfrog/jfrog-client-go#1141
+
+-------------------------------------------------------------------
+Thu Jul 24 10:47:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.78.0:
+  * Exciting New Features
+    - Add versioning support to worker commands by @ehl-jf in #3018
+  * Improvements
+    - Add OIDC context struct by @EyalDelarea in #3014
+  * Other Changes
+    - Add Ruby gems support to JFrog CLI by @agrasth in #2992
+    - Remove scanning of unused resources when creating binaries by
+      @naveenku-jfrog in #3016
+    - Remove audit command and add scan command by @naveenku-jfrog
+      in #3019
+    - Add properties for repository via the JFrog CLI by
+      @naveenku-jfrog in #3025
+  * Dependencies
+    - Bump go version to 1.24 (#3037)
+
+-------------------------------------------------------------------
 Fri Jun 13 04:56:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.77.0:
