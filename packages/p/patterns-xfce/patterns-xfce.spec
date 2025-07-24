@@ -36,8 +36,8 @@ not make sense.
 This particular package contains the Xfce patterns.
 
 
-################################################################################
 
+################################################################################
 %package xfce
 %pattern_graphicalenvironments
 Summary:        XFCE Desktop Environment
@@ -518,8 +518,8 @@ Obsoletes:      patterns-openSUSE-xfce_laptop_wayland < %{version}
 
 # Laptop-specific recommendations (Wayland safe)
 Recommends:     upower
+Recommends:     brightnessctl
 Recommends:     xfce4-battery-plugin
-Recommends:     xfce4-brightness-plugin
 Recommends:     xfce4-power-manager
 Recommends:     xfce4-power-manager-plugin
 Recommends:     xfce4-pulseaudio-plugin
