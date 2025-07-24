@@ -25,7 +25,7 @@
 %endif
 
 Name:           kid3
-Version:        3.9.6
+Version:        3.9.7
 Release:        0
 Summary:        Efficient ID3 Tag Editor
 License:        GPL-2.0-or-later

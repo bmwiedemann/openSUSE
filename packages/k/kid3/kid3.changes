@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jul 24 11:54:41 UTC 2025 - enzokiel@kabelmail.de
+
+- Update to version 3.9.7
+  * Fixed:
+    + KDE: Avoid excessive width of file dialog.
+    + Make Chapters frames accessible via kid3-cli.
+    + Superfluous imported tracks can be deleted before import.
+    + Fix creation of wrong editor in frame table after selection
+      change.
+    + Completions with different values when selecting multiple
+      files now also support genre.
+    + Do not leave temporary cover art files on the system.
+    + EmbedLyrics.qml: Remove illegal characters for query
+      parameters.
+    + Scripting: Fix crash if execute @qml is used from kid3-cli,
+      fix isStandalone() when running non-interactively with
+      kid3-cli, add new script SelectChapterTags.qml.
+    + Build system: Don't hardcode WITH_DATAROOTDIR_DEFAULT path,
+      support CMake option BUILD_WITH_QT5 to force using Qt5,
+      support Qt 6/KDE 6 on Debian, add various new CI/CD targets,
+      improve Snap support.
+
+-------------------------------------------------------------------
 Mon Mar 31 07:39:15 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use pkgconfig(libavcodec) to allow building with ffmpeg-*-mini.
@@ -1223,7 +1246,6 @@ Sat Mar 6 23:32:09 MST 2010 - zOOmER.gm@gmail.com - 1.4
      edited, and then copied to the other tag.
   ++ Adapted to Discogs server update.
 
--------------------------------------------------------------------
 
 - removed unnecessary BuildRequires
 - fixed file list for older distributions
