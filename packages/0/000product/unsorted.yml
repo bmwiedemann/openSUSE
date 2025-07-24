@@ -470,6 +470,7 @@ unsorted:
   - afterburn-dracut 
   - agama 
   - agama-auto 
+  - agama-autoinstall 
   - agama-cli 
   - agama-cli-bash-completion 
   - agama-cli-fish-completion 
@@ -2146,11 +2147,9 @@ unsorted:
   - chocolate-doom 
   - choose 
   - chromaprint-fpcalc 
-  - chrome-uget-integrator 
   - chromedriver 
   - chromium 
   - chromium-bsu 
-  - chromium-uget-integrator 
   - chronic 
   - chronos 
   - chrony-pool-empty 
@@ -4187,7 +4186,6 @@ unsorted:
   - firefox-esr-branding-upstream 
   - firefox-esr-translations-common 
   - firefox-esr-translations-other 
-  - firefox-uget-integrator 
   - firehol 
   - firehol-doc 
   - firejail 
@@ -4344,7 +4342,6 @@ unsorted:
   - forgejo-cli 
   - forgejo-environment-to-ini 
   - forgejo-firewalld 
-  - forgejo-guardian 
   - forgejo-longterm 
   - forgejo-longterm-apparmor 
   - forgejo-longterm-environment-to-ini 
@@ -5457,6 +5454,10 @@ unsorted:
   - ghc-crypton-devel 
   - ghc-crypton-doc 
   - ghc-crypton-prof 
+  - ghc-crypton-socks 
+  - ghc-crypton-socks-devel 
+  - ghc-crypton-socks-doc 
+  - ghc-crypton-socks-prof 
   - ghc-crypton-x509 
   - ghc-crypton-x509-devel 
   - ghc-crypton-x509-doc 
@@ -14954,18 +14955,18 @@ unsorted:
   - libopencsd_c_api1 
   - libopencsg1 
   - libopencv3_4 
-  - libopencv_aruco411 
-  - libopencv_face411 
-  - libopencv_gapi411 
-  - libopencv_highgui411 
-  - libopencv_highgui411-qt6 
-  - libopencv_imgcodecs411 
-  - libopencv_objdetect411 
-  - libopencv_optflow411 
-  - libopencv_superres411 
-  - libopencv_videoio411 
-  - libopencv_videostab411 
-  - libopencv_ximgproc411 
+  - libopencv_aruco412 
+  - libopencv_face412 
+  - libopencv_gapi412 
+  - libopencv_highgui412 
+  - libopencv_highgui412-qt6 
+  - libopencv_imgcodecs412 
+  - libopencv_objdetect412 
+  - libopencv_optflow412 
+  - libopencv_superres412 
+  - libopencv_videoio412 
+  - libopencv_videostab412 
+  - libopencv_ximgproc412 
   - libopendkim11 
   - libopenh264-8-32bit 
   - libopenh264-devel 
@@ -20428,7 +20429,6 @@ unsorted:
   - openwsman-server 
   - openwsman-server-plugin-ruby 
   - openxcom 
-  - opera-uget-integrator 
   - operator-sdk 
   - operator-sdk-bash-completion 
   - operator-sdk-fish-completion 
@@ -22691,7 +22691,6 @@ unsorted:
   - plank-devel 
   - plank-docklets 
   - plank-lang 
-  - plank-theme-matcha 
   - plantri 
   - plantuml 
   - plantuml-javadoc 
@@ -37698,6 +37697,7 @@ unsorted:
   - systemd-status-mail 
   - systemd-sysvcompat 
   - systemd-testsuite 
+  - systemd-ukify 
   - systemtap 
   - systemtap-docs 
   - systemtap-dtrace 
@@ -48265,7 +48265,6 @@ unsorted:
   - uftpd 
   - ufw 
   - ufw-lang 
-  - uget-integrator 
   - ugrep 
   - ugrep-bash-completion 
   - ugrep-fish-completion 
