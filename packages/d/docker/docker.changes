@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 23 04:23:57 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to docker-buildx v0.26.1. Upstream changelog:
+  <https://github.com/docker/buildx/releases/tag/v0.26.1>
+
+-------------------------------------------------------------------
+Mon Jul 21 21:53:38 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to docker-buildx v0.26.0. Upstream changelog:
+  <https://github.com/docker/buildx/releases/tag/v0.26.0>
+
+-------------------------------------------------------------------
 Thu Jul 17 04:32:55 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Go 1.24 for builds, to match upstream.

@@ -60,7 +60,7 @@
 
 %if %{with buildx}
 # MANUAL: This needs to be updated with every docker-buildx update.
-%define buildx_version 0.25.0
+%define buildx_version 0.26.1
 %endif
 
 # Used when generating the "build" information for Docker version. The value of
