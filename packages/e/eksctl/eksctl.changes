@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Jul 24 08:27:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.211.0:
+  * Improvements
+    - Migrate EBS CSI policy to AmazonEBSCSIDriverPolicy managed
+      policy (#8422)
+    - Add support for custom Bottlerocket AMIs for MNG (#8418)
+    - Implementation of MCP server for eksctl (#8414)
+  * Bug Fixes
+    - Add DescribeRouteTables to load balancer controller
+      permissions (#8447)
+  * Maintenance
+    - Update coredns (#8437)
+    - Update aws-node to v1.20.0 (#8426)
+    - Update ec2-info (#8427)
+  * Documentation
+    - Update schema.md (#8443)
+    - add note about docs migration (#8441)
+    - Add announcement for docs on AWS, remove old announcements
+      (#8442)
+    - Fix link URL for privateNetworking (#8416)
+  * Dependencies
+    - Bump helm.sh/helm/v3 from 3.17.3 to 3.18.4 (#8439)
+    - Bump github.com/aws/aws-sdk-go-v2/service/autoscaling from
+      1.53.0 to 1.54.0 (#8431)
+    - Bump golang.org/x/text from 0.25.0 to 0.26.0 (#8435)
+    - Bump
+      github.com/aws/aws-sdk-go-v2/service/elasticloadbalancing
+      from 1.29.3 to 1.29.6 (#8434)
+    - Bump github.com/aws/aws-sdk-go-v2/service/iam from 1.42.0 to
+      1.43.0 (#8433)
+    - Bump sigs.k8s.io/yaml from 1.4.0 to 1.5.0 (#8432)
+    - Bump github.com/Masterminds/semver/v3 from 3.3.1 to 3.4.0
+      (#8430)
+    - Bump github.com/aws/aws-sdk-go-v2/service/cloudtrail from
+      1.49.0 to 1.49.3 (#8429)
+    - Bump github.com/go-viper/mapstructure/v2 from 2.2.1 to 2.3.0
+      (#8428)
+
+-------------------------------------------------------------------
 Sat Jun 07 04:46:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.210.0:
