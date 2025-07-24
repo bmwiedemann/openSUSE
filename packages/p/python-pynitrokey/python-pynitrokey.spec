@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pynitrokey
-Version:        0.8.5
+Version:        0.9.3
 Release:        0
 Summary:        Python Library for Nitrokey devices
 License:        Apache-2.0 OR MIT
@@ -26,15 +26,15 @@ URL:            https://github.com/Nitrokey/pynitrokey
 Source:         https://files.pythonhosted.org/packages/source/p/pynitrokey/pynitrokey-%{version}.tar.gz
 Source1:        LICENSE-MIT
 Source2:        LICENSE-APACHE
-BuildRequires:  %{python_module flit}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 #
 BuildRequires:  %{python_module cffi}
-BuildRequires:  %{python_module click >= 8.1.6}
+BuildRequires:  %{python_module click >= 8.1.6 with %python-click < 9}
 BuildRequires:  %{python_module click-aliases >= 1.0.5 with %python-click-aliases < 2}
-BuildRequires:  %{python_module cryptography >= 41.0.4 with %python-cryptography < 45}
+BuildRequires:  %{python_module cryptography >= 43 with %python-cryptography < 46}
 BuildRequires:  %{python_module ecdsa}
-BuildRequires:  %{python_module fido2 >= 1.2.0 with %python-fido2 < 2}
+BuildRequires:  %{python_module fido2 >= 2 with %python-fido2 < 3}
 # https://github.com/Nitrokey/pynitrokey/issues/601
 BuildRequires:  %{python_module hidapi >= 0.14.0.post1 with %python-hidapi < 0.14.0.post4}
 BuildRequires:  %{python_module nethsm >= 1.4.0 with %python-nethsm < 2}
@@ -65,7 +65,7 @@ Requires:       python-tlv8
 Requires:       python-tqdm
 Requires:       (python-click-aliases >= 1.0.5 with python-click-aliases < 2)
 Requires:       (python-cryptography >= 41.0.4 with python-cryptography < 45)
-Requires:       (python-fido2 >= 1.2.0 with python-fido2 < 2)
+Requires:       (python-fido2 >= 2 with python-fido2 < 3)
 Requires:       (python-hidapi >= 0.14.0.post1 with python-hidapi < 0.14.0.post4)
 Requires:       (python-nethsm >= 1.4.0 with python-nethsm < 2)
 Requires:       (python-nitrokey >= 0.3.1 with python-nitrokey < 0.4)
@@ -129,6 +129,7 @@ echo "Disabled pytest"
 %license LICENSE-MIT LICENSE-APACHE
 %{python_sitelib}/pynitrokey/
 %{python_sitelib}/pynitrokey-%{version}*-info
+%exclude %{python_sitelib}/pynitrokey/nk_headers/*.h
 %python_alternative %{_bindir}/nitropy
 
 %changelog

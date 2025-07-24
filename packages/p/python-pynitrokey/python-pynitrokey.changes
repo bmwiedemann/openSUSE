@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul 22 15:34:03 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- update to 0.9.3:
+  * nk3: Fix fido2 test case by @robin-nitrokey in #666
+- update to 0.9.2:
+  * Fix version subcommand by @robin-nitrokey in #665
+- update to 0.9.1:
+  * ci: Use bash for version check and release v0.9.1 by
+    @robin-nitrokey in #663
+- update to 0.9.0:
+  * This release drops support for Python 3.9.
+  * Migrate from flit to poetry by @robin-nitrokey in #651
+  * Improve log file naming scheme by @robin-nitrokey in #659
+  * Update fido2 and release v0.9.0 by @robin-nitrokey in #662
+
+-------------------------------------------------------------------
 Mon Jun  2 10:24:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.5:
