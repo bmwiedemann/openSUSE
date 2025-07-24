@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 24 09:50:38 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with newer cmake
+
+-------------------------------------------------------------------
 Thu Mar 27 15:30:37 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with both xmvn-mojo:javadoc and javadoc:aggregate

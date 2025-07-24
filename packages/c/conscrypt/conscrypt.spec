@@ -78,6 +78,7 @@ sed -i -e 's#<openssl/#<boringssl/#' \
 	common/src/jni/main/include/conscrypt/ssl_error.h
 
 cat <<__CMAKELISTS__ >openjdk/CMakeLists.txt
+cmake_minimum_required(VERSION 3.5.0)
 project(conscrypt_jni LANGUAGES CXX)
 add_library(conscrypt_jni SHARED
 	../common/src/jni/main/cpp/conscrypt/compatibility_close_monitor.cc
@@ -120,6 +121,7 @@ pushd openjdk
 %{mvn_alias} :{*} :@1-uber
 
 %{mvn_build} -f -- \
+    -Dmaven.compiler.source=8 -Dmaven.compiler.target=8 \
     -Dsource=8
 popd
 

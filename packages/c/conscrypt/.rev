@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1264614</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>89c2d3bb249f2adbc80a7c379da41b64</srcmd5>
+    <version>2.5.2</version>
+    <time>1753375641</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with newer cmake</comment>
+    <requestid>1295494</requestid>
+  </revision>
 </revisionlist>
