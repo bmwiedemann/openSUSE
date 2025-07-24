@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-thor
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 %define mod_name thor
 %define mod_full_name %{mod_name}-%{version}

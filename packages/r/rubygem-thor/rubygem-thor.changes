@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul 23 09:20:48 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+
+- 1.4.0:
+
+## What's Changed
+* Lazy-load YAML for performance improvement in https://github.com/rails/thor/pull/892
+* Fix encoding error when displaying diffs in https://github.com/rails/thor/pull/898
+* Fix unsafe shell command construction (security issue) in https://github.com/rails/thor/pull/897 (bsc#1246809)
+* Support `git difftool`-style merge tool identifiers in https://github.com/rails/thor/pull/900
+* Add `gsub_file!` and make `gsub_file` fail if no substitutions occur in https://github.com/rails/thor/pull/877
+
+## Security
+* CVE-2025-54314: Fixed a vulnerability where user input could result in unsafe shell command execution. (bsc#1246809)
+
+## New Contributors
+* @hlascelles made their first contribution in https://github.com/rails/thor/pull/893
+
+**Full Changelog**: https://github.com/rails/thor/compare/v1.3.2...v1.4.0
+
+-------------------------------------------------------------------
 Mon Nov  4 17:41:16 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - 1.3.2:
