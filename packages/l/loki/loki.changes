@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 23 09:42:01 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.5.3:
+  * docs: add lokitool download link (backport release-3.5.x) (#18477)
+  * docs: Update v3-5.md (backport release-3.5.x) (#18446)
+  * docs: Update RN for 3.4.5 (backport release-3.5.x) (#18431)
+  * docs: Update RN for 3.5.2 (backport release-3.5.x) (#18432)
+  * chore(release-3.5.x): release 3.5.2 (#17801)
+  * fix(deps): Move to Go 1.24.5 (#18412)
+  * fix: Handle WAL corruption properly on startup (backport release-3.5.x) (#18408)
+
+-------------------------------------------------------------------
 Fri Jul 11 13:09:51 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.5.2:
