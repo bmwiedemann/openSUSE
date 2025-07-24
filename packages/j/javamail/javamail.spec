@@ -1,7 +1,7 @@
 #
 # spec file for package javamail
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Libraries/Java
 URL:            https://www.oracle.com/technetwork/java/javamail
 Source:         https://github.com/javaee/javamail/archive/%{git_tag}.tar.gz
 Patch0:         %{name}-javadoc.patch
+Patch1:         %{name}-CVE-2025-7962.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  glassfish-activation-api
@@ -51,6 +52,7 @@ Group:          Documentation/HTML
 %prep
 %setup -q -n %{name}-%{git_tag}
 %patch -P 0 -p1
+%patch -P 1 -p1
 
 add_dep() {
     %pom_xpath_inject pom:project "<dependencies/>" ${2}

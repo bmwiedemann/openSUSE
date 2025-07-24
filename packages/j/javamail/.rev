@@ -81,4 +81,12 @@
     <comment>Spec file cleanup</comment>
     <requestid>1205260</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>497e758980019d277be77c778dfc86c9</srcmd5>
+    <version>1.6.2</version>
+    <time>1753374880</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1246873, CVE-2025-7962</comment>
+    <requestid>1295219</requestid>
+  </revision>
 </revisionlist>

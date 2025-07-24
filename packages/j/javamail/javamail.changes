@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 23 07:01:17 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * javamail-CVE-2025-7962.patch
+    + backport of upstream fix for bsc#1246873, CVE-2025-7962:
+      improper neutralization of \r and \n UTF-8 characters can
+      lead to SMTP injection
+
+-------------------------------------------------------------------
 Wed Oct  2 15:48:59 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Spec file cleanup
