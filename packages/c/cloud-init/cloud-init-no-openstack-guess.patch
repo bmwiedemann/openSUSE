@@ -14,13 +14,13 @@
 @@ -101,7 +101,7 @@ DI_MAIN=${DI_MAIN:-main}
  DI_BLKID_EXPORT_OUT=""
  DI_GEOM_LABEL_STATUS_OUT=""
- DI_DEFAULT_POLICY="search,found=all,maybe=all,notfound=${DI_DISABLED}"
--DI_DEFAULT_POLICY_NO_DMI="search,found=all,maybe=all,notfound=${DI_ENABLED}"
-+DI_DEFAULT_POLICY_NO_DMI="search,found=all,maybe=all,notfound=${DI_DISABLED}"
+ DI_DEFAULT_POLICY="search,found=all,maybe=none,notfound=${DI_DISABLED}"
+-DI_DEFAULT_POLICY_NO_DMI="search,found=all,maybe=none,notfound=${DI_ENABLED}"
++DI_DEFAULT_POLICY_NO_DMI="search,found=all,maybe=none,notfound=${DI_DISABLED}"
  DI_DMI_BOARD_NAME=""
  DI_DMI_CHASSIS_ASSET_TAG=""
  DI_DMI_PRODUCT_NAME=""
-@@ -1474,12 +1474,6 @@ dscheck_OpenStack() {
+@@ -1474,11 +1474,6 @@ dscheck_OpenStack() {
          return ${DS_FOUND}
      fi
  
@@ -29,7 +29,6 @@
 -        i?86|x86_64) :;;
 -        *) return ${DS_MAYBE};;
 -    esac
--
+ 
      return ${DS_NOT_FOUND}
  }
- 

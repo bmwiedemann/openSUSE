@@ -26,7 +26,7 @@
 
 
 Name:           cloud-init
-Version:        25.1.1
+Version:        25.1.3
 Release:        0
 License:        GPL-3.0
 Summary:        Cloud node initialization tool
@@ -52,7 +52,7 @@ Patch7:       cloud-init-ssh-usrmerge.patch
 Patch8:       cloud-init-lint-set-interpreter.patch
 Patch9:       cloud-init-lint-fix.patch
 # FIXME https://github.com/canonical/cloud-init/blob/ubuntu/noble/debian/patches/no-single-process.patch
-# We have an olde version of netcat that does not support the necessary
+# We have an old version of netcat that does not support the necessary
 # feature to support a single process for cloud-init. Once we have netcat
 # 1.226 or later available we can get rid of this patch
 # Maybe there is hope for 16 https://jira.suse.com/browse/PED-12810
