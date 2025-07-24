@@ -1,0 +1,25 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d4bee344d39bfd06d6d78ed98196f049</srcmd5>
+    <version>1.0</version>
+    <time>1753375431</time>
+    <user>dimstar_suse</user>
+    <comment>greetd gtkgreet configuration for Xfce/Wayland
+
+* provides greedt config to run gtkgreet in Cage Wayland compositor
+
+* provides environments entry for gtree to run startxfce4 --wayland
+  
+* conflicts with greetd-branding-upstream
+  which owns default configuration
+
+* Alterantive on Wayland to LigtDM
+
+* I was originally considering listing all usual
+  desktops launchers, however,  people who
+  install these typically do not install GNOME or KDE
+
+* Conflict with openSUSEway</comment>
+    <requestid>1295337</requestid>
+  </revision>
+</revisionlist>

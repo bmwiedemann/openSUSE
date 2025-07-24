@@ -1,0 +1,22 @@
+-------------------------------------------------------------------
+Wed Jul 23 13:48:18 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add conflict on openSUSEway
+
+-------------------------------------------------------------------
+Wed Jul 23 11:59:20 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Conflict with greetd-branding-upstream
+- Supply environments and config.toml as Sources
+- Use config(noreplace) since we now own these files
+
+-------------------------------------------------------------------
+Tue Jul 22 14:55:14 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Do not use config(noreplace) that would not work in our case 
+
+-------------------------------------------------------------------
+Tue Jul 22 13:07:36 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Initial package for greetd using gtkgreet and XFCE Wayland session
+- 
