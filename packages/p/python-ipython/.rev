@@ -1635,4 +1635,32 @@
     <comment></comment>
     <requestid>1287223</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>6c65c6d94e2b5e1bacda0040edb961c7</srcmd5>
+    <version>8.37.0</version>
+    <time>1753374873</time>
+    <user>dimstar_suse</user>
+    <comment>- skip deprecation warnings
+
+    (see #14620) but should be sufficient for now.
+  * improve the documentatation for custom IPython formatters, and how
+  * fix a bug in which commands that were not assigned a shortcut could
+  * fix a bug in which a single / on an empty line would not be an error.
+  * replace the greedy completer and improve completion, in particular
+  * implements tab completions for IPython options in the shell when
+    using argcomplete
+  * compatibility with Jedi 0.18, and bump minimum Jedi version.
+    PR #12793
+  compatibility with new or future versions of some libraries.
+    matplotlib3.3+
+    gh#ipython/ipython#12230
+- update dep version of python-prompt_toolkit
+    notebook). The behavior can be disable by passing the
+  * Comments failing Jedi test :ghpull:`11110`
+    completing non-executed code.
+    only 5.x branch.
+  * Faster shutdown. :ghpull:`10408`
+    deactivate backslash-tab completion that may conflict with windows path.</comment>
+    <requestid>1294230</requestid>
+  </revision>
 </revisionlist>

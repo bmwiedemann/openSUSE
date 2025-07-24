@@ -89,7 +89,7 @@ BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy >= 1.23}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pickleshare}
-BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-trio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testpath}
 BuildRequires:  %{python_module trio}
