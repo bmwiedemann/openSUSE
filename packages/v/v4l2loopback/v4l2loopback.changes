@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 24 03:36:19 UTC 2025 - munix9@googlemail.com
+
+- Update to version 0.15.1:
+  * Bump version to v0.15.1
+  * [ci] also allow skipping of exactly known kernel-version
+  * [ci] mark alpine/6.15.0.0-edge as known-failure
+  * [ci] don't fail if the badge-file did not change
+  * Adds support for XBGR32 (XR24)
+  * Drop from_timer macro usage
+
+-------------------------------------------------------------------
 Tue Jun 03 06:44:50 UTC 2025 - munix9@googlemail.com
 
 - Update to version 0.15.0:
