@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Jul 24 11:32:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.25.1:
+  * fix: wrong CLI flag type (#2595)
+
+-------------------------------------------------------------------
+Thu Jul 24 11:24:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.25.0:
+  * Prepare release v4.25.0
+  * chore: update dependencies (#2592)
+  * huaweicloud: lightweight client (#2591)
+  * alidns: replace alidns-20150109 with a fork (#2589)
+  * tencentcloud: replace tencentcloud-sdk-go with a fork (#2588)
+  * chore: use custom API client constructor for sakuracloud
+    (#2587)
+  * tests: improve function naming (#2586)
+  * chore:  migrate to yandex cloud API Client v2 (#2585)
+  * chore: replace official Civo API client by an internal API
+    client (#2584)
+  * chore: replace official Cloudflare API client by an internal
+    API client (#2583)
+  * chore: check generated files (#2582)
+  * chore: minor changes (#2581)
+  * Add DNS provider for ZoneEdit (#2578)
+  * test: server client mock (#2571)
+  * vinyldns: add an option to add quotes around the TXT record
+    value (#2580)
+  * fix: enforce domain into renewal command (#2576)
+  * feat: add option to define dynamically the renew date (#2574)
+  * chore: update to go1.24 (#2566)
+  * feat: add option to disable common name in CSR (#2570)
+  * ionos: increase default propagation timeout (#2569)
+  * Detach v4.24.0
+
+-------------------------------------------------------------------
 Tue Jul 08 04:59:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.24.0:
