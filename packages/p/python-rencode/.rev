@@ -36,4 +36,13 @@
     pyproject.toml to use it.</comment>
     <requestid>1294922</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ada530065bbb3aae88314d27387906cc</srcmd5>
+    <version>1.0.8</version>
+    <time>1753375600</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch drop-march-native.patch:
+  * Do not use CPU-specific build flags. (bsc#1246916)</comment>
+    <requestid>1295406</requestid>
+  </revision>
 </revisionlist>

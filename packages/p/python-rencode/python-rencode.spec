@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 URL:            https://github.com/aresch/rencode
 Source0:        https://github.com/aresch/rencode/archive/v%{version}.tar.gz
 Source1:        %{name}.changes
+# PATCH-FIX-UPSTREAM Based on gh#aresch/rencode#e7ec8ea718e73a8fee7dbc007c262e1584f7f94b
+Patch0:         drop-march-native.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
@@ -40,7 +42,7 @@ many small elements, r-encodings take up significantly less space than
 b-encodings. Python2 version of package
 
 %prep
-%setup -q -n rencode-%{version}
+%autosetup -p1 -n rencode-%{version}
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
