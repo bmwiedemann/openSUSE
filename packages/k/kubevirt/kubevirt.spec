@@ -42,8 +42,8 @@ Source2:        kubevirt_containers_meta.service
 Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
 Patch1:         Ensure-SEV-VMs-use-stateless-OVMF-firmware.patch
-Patch2:         Update-module-golang.org-x-net-to-v0.36.0-SECURITY.patch
-Patch3:         chore-deps-update-module-golang.org-x-oauth2-to-v0.2.patch
+Patch2:         Update-module-golang.org-x-oauth2-to-v0.27.0-SECURITY.patch
+Patch3:         Update-module-golang.org-x-net-to-v0.38.0-SECURITY.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig

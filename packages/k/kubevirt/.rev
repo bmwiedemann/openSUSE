@@ -792,4 +792,19 @@ and req#1293554
   Update-module-golang.org-x-net-to-v0.36.0-SECURITY.patch</comment>
     <requestid>1293555</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>97f32af99102d2674eb97aa29c061c6f</srcmd5>
+    <version>1.5.2</version>
+    <time>1753375592</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace/Supercede patch
+  Update-module-golang.org-x-net-to-v0.36.0-SECURITY.patch -&gt;
+  Update-module-golang.org-x-net-to-v0.38.0-SECURITY.patch (bsc#1238704, bsc#1241772)
+- Rename patch for clarity and consistency
+  chore-deps-update-module-golang.org-x-oauth2-to-v0.2.patch -&gt;
+  Update-module-golang.org-x-oauth2-to-v0.27.0-SECURITY.patch
+- Update _service file to reference v1.5.2
+- Reorder patches with respect to the newly added patch</comment>
+    <requestid>1295401</requestid>
+  </revision>
 </revisionlist>

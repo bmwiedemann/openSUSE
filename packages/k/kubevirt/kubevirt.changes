@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 23 19:08:18 UTC 2025 - Caleb Crane <caleb.crane@suse.com>
+
+- Replace/Supercede patch
+  Update-module-golang.org-x-net-to-v0.36.0-SECURITY.patch ->
+  Update-module-golang.org-x-net-to-v0.38.0-SECURITY.patch (bsc#1238704, bsc#1241772)
+- Rename patch for clarity and consistency
+  chore-deps-update-module-golang.org-x-oauth2-to-v0.2.patch ->
+  Update-module-golang.org-x-oauth2-to-v0.27.0-SECURITY.patch
+- Update _service file to reference v1.5.2
+- Reorder patches with respect to the newly added patch
+-------------------------------------------------------------------
 Mon Jul 14 21:34:26 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - Update to version 1.5.2
