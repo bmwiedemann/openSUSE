@@ -66,4 +66,16 @@
     <comment>- add patch fix-CVE-2025-22869.patch, fixes bsc#1239387 (forwarded request 1252351 from rrahl0)</comment>
     <requestid>1252352</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8219aa62d70a61937ab655a3226930db</srcmd5>
+    <version>1.9.6</version>
+    <time>1753375487</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.9.6:
+  * Support dropping inactive tunnels. This is disabled by default
+  * Ensure the same relay tunnel is always used when multiple relay
+    tunnels are present
+  * Fix relay migration panic (forwarded request 1295366 from rrahl0)</comment>
+    <requestid>1295367</requestid>
+  </revision>
 </revisionlist>
