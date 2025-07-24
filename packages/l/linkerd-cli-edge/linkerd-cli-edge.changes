@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul 24 10:29:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.7.5:
+  No CLI-related changes in the changelog
+  * Dependencies
+    - build(deps): bump hyper-util from 0.1.15 to 0.1.16 (#14268)
+    - build(deps): bump tj-actions/changed-files (#14271)
+    - build(deps): bump io-uring from 0.7.8 to 0.7.9 (#14269)
+    - build(deps): bump google.golang.org/grpc from 1.74.0 to
+      1.74.2 (#14267)
+    - build(deps): bump google-github-actions/setup-gcloud (#14263)
+    - build(deps): bump google-github-actions/auth from 2.1.10 to
+      2.1.11 (#14262)
+    - build(deps): bump serde_json from 1.0.140 to 1.0.141 (#14261)
+    - build(deps): bump cc from 1.2.29 to 1.2.30 (#14260)
+    - build(deps): bump rand from 0.9.1 to 0.9.2 (#14259)
+    - build(deps-dev): bump webpack from 5.99.9 to 5.100.2 in
+      /web/app (#14258)
+    - build(deps): bump the kube group with 7 updates (#14251)
+    - build(deps): bump github.com/spf13/pflag from 1.0.6 to 1.0.7
+      (#14253)
+    - build(deps): bump google.golang.org/grpc from 1.73.0 to
+      1.74.0 (#14252)
+
+-------------------------------------------------------------------
 Fri Jul 18 05:48:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.7.4:
