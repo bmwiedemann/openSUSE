@@ -17,7 +17,7 @@
 
 
 Name:           chezmoi
-Version:        2.63.0
+Version:        2.63.1
 Release:        0
 Summary:        A multi-host manager for dotfiles
 License:        MIT
@@ -26,6 +26,7 @@ URL:            https://chezmoi.io
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Recommends:     git
+BuildRequires:  git
 BuildRequires:  golang(API) >= 1.22
 
 %description

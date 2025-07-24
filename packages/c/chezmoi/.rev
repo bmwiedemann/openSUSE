@@ -889,4 +889,20 @@
 </comment>
     <requestid>1292264</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>6ba020484984d7e745a7715acf272b2a</srcmd5>
+    <version>2.63.1</version>
+    <time>1753375553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.63.1:
+  - Fixes
+    * fix: Properly handle comments after filenames
+    * fix: Only auto add files in source directory, not in working tree
+  - Documentation updates
+    * docs: Removing leading dot on top level variable titles
+    * docs: Correct requirement for run_ in .chezmoiscripts
+- Add BuildRequires Git needed by tests
+</comment>
+    <requestid>1295374</requestid>
+  </revision>
 </revisionlist>

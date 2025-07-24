@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 23 15:30:31 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.63.1:
+  - Fixes
+    * fix: Properly handle comments after filenames
+    * fix: Only auto add files in source directory, not in working tree
+  - Documentation updates
+    * docs: Removing leading dot on top level variable titles
+    * docs: Correct requirement for run_ in .chezmoiscripts
+- Add BuildRequires Git needed by tests
+
+-------------------------------------------------------------------
 Fri Jul 11 20:27:23 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.63.0:
