@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 22 07:41:52 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.47.2 (fixes CVE-2025-54121, bsc#1246855)
+  * Make UploadFile check for future rollover #2962.
+- Update to 0.47.1
+  * Use Self in TestClient.__enter__ #2951
+  * Allow async exception handlers to type-check #2949
+
+-------------------------------------------------------------------
 Wed Jun  4 12:21:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.47.0
