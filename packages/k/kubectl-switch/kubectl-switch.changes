@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 24 11:33:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.10:
+  * Bug Fixes
+    - go: update k8s.io/client-go ( v0.33.2 → v0.33.3 ) (08718e0)
+  * CI/CD
+    - github-action: update renovatebot/github-action ( v43.0.2 →
+      v43.0.3 ) (412dc68)
+
+-------------------------------------------------------------------
 Thu Jul 17 05:50:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.9:
