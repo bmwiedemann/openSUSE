@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Jul 24 11:01:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 8.28.0:
+  * Changelog
+    - cant count
+    - Composite rules (#1905)
+    - feat: add Anthropic API key detection (#1910)
+    - fix(git): handle port (#1912)
+    - dont prematurely calculate fragment newlines (#1909)
+    - feat(allowlist): promote optimizations (#1908)
+    - Fix: CVEs on go and go crypto (#1868)
+    - feat: add artifactory reference token and api key detection
+      (#1906)
+    - silly
+    - Update gitleaks.yml
+    - add just like that, no leaks
+  * Optimizations
+    - #1909 waits to find newlines until a match. This ends up
+      saving a boat load of time since before we were finding
+      newlines for every fragment regardless if a rule matched or
+      not.
+    - #1908 promoted @rgmz excellent stopword optimization
+  * Composite Rules (Multi-part or required Rules) #1905
+    In v8.28.0 Gitleaks introduced composite rules, which are made
+    up of a single "primary" rule and one or more auxiliary or
+    required rules. To create a composite rule, add a
+    [[rules.required]] table to the primary rule specifying an id
+    and optionally withinLines and/or withinColumns proximity
+    constraints. A fragment is a chunk of content that Gitleaks
+    processes at once (typically a file, part of a file, or git
+    diff), and proximity matching instructs the primary rule to
+    only report a finding if the auxiliary required rules also find
+    matches within the specified area of the fragment.
+    Proximity matching: Using the withinLines and withinColumns
+    fields instructs the primary rule to only report a finding if
+    the auxiliary required rules also find matches within the
+    specified proximity. You can set:
+    - withinLines: N - required findings must be within N lines
+      (vertically)
+    - withinColumns: N - required findings must be within N
+      characters (horizontally)
+    - Both - creates a rectangular search area (both constraints
+      must be satisfied)
+    - Neither - fragment-level matching (required findings can be
+      anywhere in the same fragment)
+
+-------------------------------------------------------------------
 Mon Jun 09 15:29:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 8.27.2:
