@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 23 22:52:10 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 20250721T052808Z:
+  * update dependencies to fix dependent library CVEs: CVE-2025-22874, CVE-2025-4673 (#5235)
+  * fix: mirror active-active and race condition (#5234)
+
+-------------------------------------------------------------------
 Fri Jul 18 23:58:42 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 20250716T153503Z:
