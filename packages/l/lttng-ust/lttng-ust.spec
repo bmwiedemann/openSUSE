@@ -35,7 +35,7 @@ BuildRequires:  python3
 BuildRequires:  python3-setuptools
 BuildRequires:  pkgconfig(liburcu) >= 0.12
 BuildRequires:  pkgconfig(uuid)
-ExclusiveArch:  %ix86 x86_64 armv7l aarch64 riscv64 ppc64 ppc64le
+ExclusiveArch:  %ix86 x86_64 armv7l aarch64 loongarch64 riscv64 ppc64 ppc64le
 
 %description
 This library may be used by user space applications to generate

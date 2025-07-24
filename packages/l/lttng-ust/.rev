@@ -133,4 +133,12 @@
     <comment>- Add python3-setuptools BuildRequires, needed for Python 3.13. (forwarded request 1241312 from mcalabkova)</comment>
     <requestid>1243383</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>d6f160753e257c0628b78b08592e3115</srcmd5>
+    <version>2.13.6</version>
+    <time>1753374878</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1295193</requestid>
+  </revision>
 </revisionlist>

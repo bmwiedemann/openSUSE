@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 17 11:01:03 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Enable build for loongarch64 
+
+-------------------------------------------------------------------
 Thu Jan 30 10:10:16 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add python3-setuptools BuildRequires, needed for Python 3.13.
