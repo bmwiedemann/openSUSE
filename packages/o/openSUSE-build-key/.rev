@@ -454,4 +454,13 @@ However, it would be good to have these out before we do switch. (forwarded requ
   use outdated internal codenames. (bsc#1245223) (forwarded request 1292193 from msmeissn)</comment>
     <requestid>1292194</requestid>
   </revision>
+  <revision rev="51" vrev="60">
+    <srcmd5>7d0f3dd842d47299a70436d256197a62</srcmd5>
+    <version>1.0</version>
+    <time>1753374875</time>
+    <user>dimstar_suse</user>
+    <comment>- obsolete gpg-pubkey-ded64f3b, the openSUSE buildservice global
+  key which was used mistakenly for repository signing. (forwarded request 1295131 from msmeissn)</comment>
+    <requestid>1295146</requestid>
+  </revision>
 </revisionlist>

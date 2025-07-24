@@ -36,6 +36,12 @@ Obsoletes:      gpg-pubkey-3dbdc284
 # old global openSUSE key, was errnously used for Slowroll
 Obsoletes:      gpg-pubkey-eae4fd92
 
+# this is the opensuse buildservice key, it was mistakenly used for repo signing.
+# pub   rsa4096/0xCF0B928CDED64F3B 2022-07-20 [SC] [expires: 2042-07-15]
+#      Key fingerprint = CC35 CC3D 35E5 A364 3E54  5A43 CF0B 928C DED6 4F3B
+#uid                             openSUSE Build Service <buildservice@opensuse.org>
+Obsoletes:      gpg-pubkey-ded64f3b
+
 # openSUSE RSA 4096 key
 Source10:       gpg-pubkey-29b700a4-62b07e22.asc
 
