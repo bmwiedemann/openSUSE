@@ -72,7 +72,7 @@
 %endif
 
 Name:           libzypp
-Version:        17.37.12
+Version:        17.37.14
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -105,7 +105,7 @@ Recommends:     logrotate
 # lsof is used for 'zypper ps':
 Recommends:     lsof
 %endif
-BuildRequires:  cmake >= 3.10
+BuildRequires:  cmake >= 3.17
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(libudev)
 %if 0%{?suse_version} >= 1330
