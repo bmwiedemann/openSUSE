@@ -1,5 +1,5 @@
---- maven-archiver-3.6.3/src/main/java/org/apache/maven/archiver/MavenArchiver.java	2025-07-21 12:17:38.831806826 +0200
-+++ maven-archiver-3.6.3/src/main/java/org/apache/maven/archiver/MavenArchiver.java	2025-07-21 12:17:56.567532578 +0200
+--- maven-archiver-3.6.3/src/main/java/org/apache/maven/archiver/MavenArchiver.java	2025-07-24 11:19:55.246162093 +0200
++++ maven-archiver-3.6.3/src/main/java/org/apache/maven/archiver/MavenArchiver.java	2025-07-24 11:21:19.107011760 +0200
 @@ -597,7 +597,9 @@
  
          String automaticModuleName = manifest.getMainSection().getAttributeValue("Automatic-Module-Name");
@@ -11,9 +11,9 @@
                  throw new ManifestException("Invalid automatic module name: '" + automaticModuleName + "'");
              }
          }
---- maven-archiver-3.6.3/src/test/java/org/apache/maven/archiver/MavenArchiverTest.java	2025-07-21 12:17:38.832836603 +0200
-+++ maven-archiver-3.6.3/src/test/java/org/apache/maven/archiver/MavenArchiverTest.java	2025-07-21 12:18:11.727320893 +0200
-@@ -563,9 +563,36 @@
+--- maven-archiver-3.6.3/src/test/java/org/apache/maven/archiver/MavenArchiverTest.java	2025-07-24 11:19:55.246960737 +0200
++++ maven-archiver-3.6.3/src/test/java/org/apache/maven/archiver/MavenArchiverTest.java	2025-07-24 11:21:19.107155460 +0200
+@@ -563,9 +563,37 @@
      }
  
      /*
@@ -28,7 +28,8 @@
 +
 +        MavenArchiver archiver = getMavenArchiver(jarArchiver);
 +
-+        Project project = getDummyProject();
++        MavenSession session = getDummySession();
++        MavenProject project = getDummyProject();
 +        MavenArchiveConfiguration config = new MavenArchiveConfiguration();
 +
 +        Map<String, String> manifestEntries = new HashMap<>();

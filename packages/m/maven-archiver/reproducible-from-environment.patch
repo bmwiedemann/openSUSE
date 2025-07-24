@@ -1,5 +1,5 @@
---- maven-archiver-3.6.3/pom.xml	2025-07-21 12:15:02.217924139 +0200
-+++ maven-archiver-3.6.3/pom.xml	2025-07-21 12:16:28.230551125 +0200
+--- maven-archiver-3.6.3/pom.xml	2025-07-24 11:23:22.714993571 +0200
++++ maven-archiver-3.6.3/pom.xml	2025-07-24 11:23:41.927511030 +0200
 @@ -115,4 +115,22 @@
        <scope>test</scope>
      </dependency>
@@ -23,9 +23,9 @@
 +  </build>
 +
  </project>
---- maven-archiver-3.6.3/src/main/java/org/apache/maven/archiver/MavenArchiver.java	2025-07-21 12:15:02.214537980 +0200
-+++ maven-archiver-3.6.3/src/main/java/org/apache/maven/archiver/MavenArchiver.java	2025-07-21 12:16:38.230572982 +0200
-@@ -753,9 +753,15 @@
+--- maven-archiver-3.6.3/src/main/java/org/apache/maven/archiver/MavenArchiver.java	2025-07-24 11:23:22.713655251 +0200
++++ maven-archiver-3.6.3/src/main/java/org/apache/maven/archiver/MavenArchiver.java	2025-07-24 11:23:41.927689457 +0200
+@@ -755,9 +755,15 @@
       *             section 4.4.6.
       */
      public static Optional<Instant> parseBuildOutputTimestamp(String outputTimestamp) {
@@ -43,7 +43,7 @@
          }
  
          // Number representing seconds since the epoch
-@@ -769,12 +775,6 @@
+@@ -771,12 +777,6 @@
              return Optional.of(date);
          }
  

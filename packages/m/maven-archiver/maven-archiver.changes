@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 24 09:24:28 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * automatic-module-name.patch
+  * reproducible-from-environment.patch
+    + rediff with our accepted pull requests
+
+-------------------------------------------------------------------
 Mon Jul 21 10:30:59 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:
