@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 24 11:40:13 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Refresh javascript dependencies to update form-data
+(CVE-2025-7783, bsc#1246814)
+
+-------------------------------------------------------------------
 Thu Jun 26 12:45:05 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Refresh node modules to update brace-expansion (CVE-2025-5889, bsc#1244347)
