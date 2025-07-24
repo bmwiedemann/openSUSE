@@ -656,4 +656,12 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     <comment>Fix the .changes file format</comment>
     <requestid>1285430</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>7445cffe5532f28b3e263eb65a181dd1</srcmd5>
+    <version>3.3.11</version>
+    <time>1753375317</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1295268</requestid>
+  </revision>
 </revisionlist>

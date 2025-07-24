@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 23 08:27:09 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.3.11
+  * Fix a crash when parsing an empty arbitrary expression with
+    ``extract_node`` (``extract_node("__()")``).
+  * Fix a crash when parsing a slice called in a decorator on a
+    function that is also decorated with a known ``six`` decorator.
+
+-------------------------------------------------------------------
 Wed May 14 09:35:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.3.10
