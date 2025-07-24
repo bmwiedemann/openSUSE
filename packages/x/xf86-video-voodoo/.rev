@@ -105,4 +105,12 @@
   * fixes build on i586 (hopefully)</comment>
     <requestid>1230203</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>36fa89782b08ced448a9861fec872d84</srcmd5>
+    <version>1.2.6</version>
+    <time>1753376111</time>
+    <user>dimstar_suse</user>
+    <comment>- add '--install' option to 'autoreconf --force' to fix build on TW</comment>
+    <requestid>1295601</requestid>
+  </revision>
 </revisionlist>

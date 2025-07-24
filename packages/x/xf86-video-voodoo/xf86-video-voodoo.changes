@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 24 14:23:14 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- add '--install' option to 'autoreconf --force' to fix build on TW
+
+-------------------------------------------------------------------
 Wed Dec 11 16:10:06 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - 0002-configure-Use-LT_INIT-from-libtool-2-instead-of-depr.patch
