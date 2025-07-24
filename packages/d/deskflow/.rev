@@ -29,4 +29,23 @@
   updater, and hides the UI elements</comment>
     <requestid>1289195</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>95922454e40db167c085b6d41ffd9415</srcmd5>
+    <version>1.23.0</version>
+    <time>1753375445</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.23.0:
+  * add restart action fixes
+  * remove defunct --no-xinitThreads option
+  * improve connections status bar info
+  * Enforce a minimum TLS size of 2048bit
+  * Wayland, only set a side to a border if if has a neighboring screen
+  * core not starting if gui started minimized
+  * Error text is not shown for Qt CLI parser
+  * save geometry not frameGeometry on exit
+  * adjust windows installer images and their sizes, remove synergy
+    background image from install
+  * setWindowIcon explicitly</comment>
+    <requestid>1295355</requestid>
+  </revision>
 </revisionlist>

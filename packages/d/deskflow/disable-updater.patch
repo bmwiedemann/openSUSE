@@ -1,7 +1,7 @@
-diff -rub deskflow-1.22.0.orig/src/lib/gui/dialogs/SettingsDialog.cpp deskflow-1.22.0/src/lib/gui/dialogs/SettingsDialog.cpp
---- deskflow-1.22.0.orig/src/lib/gui/dialogs/SettingsDialog.cpp	2025-06-29 21:48:28.699626407 +0200
-+++ deskflow-1.22.0/src/lib/gui/dialogs/SettingsDialog.cpp	2025-06-30 09:48:59.119608144 +0200
-@@ -134,7 +134,6 @@
+diff -rub deskflow-1.23.0/src/lib/gui/dialogs/SettingsDialog.cpp deskflow-1.23.0-patched/src/lib/gui/dialogs/SettingsDialog.cpp
+--- deskflow-1.23.0/src/lib/gui/dialogs/SettingsDialog.cpp	2025-07-23 15:27:06.000000000 +0200
++++ deskflow-1.23.0-patched/src/lib/gui/dialogs/SettingsDialog.cpp	2025-07-23 16:10:11.418491973 +0200
+@@ -133,7 +133,6 @@
    Settings::setValue(Settings::Log::File, ui->lineLogFilename->text());
    Settings::setValue(Settings::Daemon::Elevate, ui->cbElevateDaemon->isChecked());
    Settings::setValue(Settings::Gui::Autohide, ui->cbAutoHide->isChecked());
@@ -9,7 +9,7 @@ diff -rub deskflow-1.22.0.orig/src/lib/gui/dialogs/SettingsDialog.cpp deskflow-1
    Settings::setValue(Settings::Core::PreventSleep, ui->cbPreventSleep->isChecked());
    Settings::setValue(Settings::Security::Certificate, ui->lineTlsCertPath->text());
    Settings::setValue(Settings::Security::KeySize, ui->comboTlsKeyLength->currentText().toInt());
-@@ -168,7 +167,6 @@
+@@ -167,7 +166,6 @@
    ui->cbScrollDirection->setChecked(Settings::value(Settings::Client::InvertScrollDirection).toBool());
    ui->cbCloseToTray->setChecked(Settings::value(Settings::Gui::CloseToTray).toBool());
    ui->cbElevateDaemon->setChecked(Settings::value(Settings::Daemon::Elevate).toBool());
@@ -17,7 +17,7 @@ diff -rub deskflow-1.22.0.orig/src/lib/gui/dialogs/SettingsDialog.cpp deskflow-1
  
    const auto processMode = Settings::value(Settings::Core::ProcessMode).value<Settings::ProcessMode>();
    ui->groupService->setChecked(processMode == Settings::ProcessMode::Service);
-@@ -259,7 +257,6 @@
+@@ -258,7 +256,6 @@
    ui->comboLogLevel->setEnabled(writable);
    ui->cbLogToFile->setEnabled(writable);
    ui->cbAutoHide->setEnabled(writable);
@@ -25,9 +25,9 @@ diff -rub deskflow-1.22.0.orig/src/lib/gui/dialogs/SettingsDialog.cpp deskflow-1
    ui->cbPreventSleep->setEnabled(writable);
    ui->lineTlsCertPath->setEnabled(writable);
    ui->comboTlsKeyLength->setEnabled(writable);
-diff -rub deskflow-1.22.0.orig/src/lib/gui/dialogs/SettingsDialog.ui deskflow-1.22.0/src/lib/gui/dialogs/SettingsDialog.ui
---- deskflow-1.22.0.orig/src/lib/gui/dialogs/SettingsDialog.ui	2025-06-29 21:48:28.700626413 +0200
-+++ deskflow-1.22.0/src/lib/gui/dialogs/SettingsDialog.ui	2025-06-30 09:42:29.698300043 +0200
+diff -rub deskflow-1.23.0/src/lib/gui/dialogs/SettingsDialog.ui deskflow-1.23.0-patched/src/lib/gui/dialogs/SettingsDialog.ui
+--- deskflow-1.23.0/src/lib/gui/dialogs/SettingsDialog.ui	2025-07-23 15:27:06.000000000 +0200
++++ deskflow-1.23.0-patched/src/lib/gui/dialogs/SettingsDialog.ui	2025-07-23 16:10:40.154771473 +0200
 @@ -85,13 +85,6 @@
           </property>
           <layout class="QVBoxLayout" name="_9">
@@ -42,14 +42,14 @@ diff -rub deskflow-1.22.0.orig/src/lib/gui/dialogs/SettingsDialog.ui deskflow-1.
             <widget class="QCheckBox" name="cbCloseToTray">
              <property name="text">
               <string>Leave app running in notification area when the window is closed</string>
-diff -rub deskflow-1.22.0.orig/src/lib/gui/MainWindow.cpp deskflow-1.22.0/src/lib/gui/MainWindow.cpp
---- deskflow-1.22.0.orig/src/lib/gui/MainWindow.cpp	2025-06-29 21:48:28.691626355 +0200
-+++ deskflow-1.22.0/src/lib/gui/MainWindow.cpp	2025-06-30 09:42:29.700300055 +0200
-@@ -372,6 +372,7 @@
+diff -rub deskflow-1.23.0/src/lib/gui/MainWindow.cpp deskflow-1.23.0-patched/src/lib/gui/MainWindow.cpp
+--- deskflow-1.23.0/src/lib/gui/MainWindow.cpp	2025-07-23 15:27:06.000000000 +0200
++++ deskflow-1.23.0-patched/src/lib/gui/MainWindow.cpp	2025-07-23 16:11:37.707331245 +0200
+@@ -634,6 +634,7 @@
    const auto kCriticalDialogDelay = 100;
    QTimer::singleShot(kCriticalDialogDelay, this, &messages::raiseCriticalDialog);
  
 +  Settings::setValue(Settings::Gui::AutoUpdateCheck, false);
    if (!Settings::value(Settings::Gui::AutoUpdateCheck).isValid()) {
-     showAndActivate();
      Settings::setValue(Settings::Gui::AutoUpdateCheck, messages::showUpdateCheckOption(this));
+   }
