@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 23 16:11:07 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1753279335.b2b4eddc:
+  * Clarify role of set_var in variable precedence
+  * Use signatures in code for handling special group columns
+  * Sort keys in test of job group API
+  * Avoid duplicated code in job group API code
+  * Dependency cron 2025-07-23
+  * build(deps-dev): bump @eslint/plugin-kit from 0.3.3 to 0.3.4
+  * Allow querying the state of scheduled products by distri/version/flavor
+  * unit_tests: Add unit tests for KTAP parser
+  * parser: Add KTAP parser for handling kernel selftests
+  * Deduplicate openqa-cli options and help
+
+-------------------------------------------------------------------
 Mon Jul 21 18:11:20 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1753110584.5810ee79:
