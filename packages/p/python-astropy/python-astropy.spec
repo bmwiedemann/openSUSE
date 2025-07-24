@@ -25,7 +25,7 @@
 %define psuffix %{nil}
 %endif
 
-%define binaries fitsdiff fitsheader fitscheck fitsinfo fits2bitmap samp_hub showtable volint wcslint
+%define binaries fitsdiff fitsheader fitscheck fitsinfo fits2bitmap samp_hub showtable volint wcslint showtable-astropy
 
 # backwards compatibility for --without systemlibs
 %bcond_without systemlibs
@@ -49,7 +49,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-astropy%{psuffix}
-Version:        7.0.1
+Version:        7.1.0
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -73,7 +73,7 @@ BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 6
-Requires:       python-astropy-iers-data >= 0.2025.1.31.12.41.4
+Requires:       python-astropy-iers-data >= 0.2025.4.28.0.37.27
 Requires:       python-numpy >= 1.23.2
 Requires:       python-packaging >= 22
 Requires:       python-pyerfa >= 2.0.1.1
@@ -98,7 +98,7 @@ Suggests:       python-setuptools
 Suggests:       python-mpmath
 Suggests:       python-asdf-astropy >= 0.3
 Suggests:       python-Bottleneck
-Suggests:       python-pyarrow >= 5
+Suggests:       python-pyarrow >= 10.0.1
 Suggests:       python-fsspec >= 2023.4.0
 # Suggests:     python-s3fs
 %if %{with system_expat}
@@ -118,14 +118,14 @@ BuildRequires:  %{python_module fsspec >= 2023.4.0}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module jplephem}
-BuildRequires:  %{python_module matplotlib >= 3.5}
+BuildRequires:  %{python_module matplotlib >= 3.6.0}
 BuildRequires:  %{python_module mpmath}
 BuildRequires:  %{python_module pandas}
 %ifnarch %arm
-BuildRequires:  %{python_module pyarrow >= 5}
+BuildRequires:  %{python_module pyarrow >= 10.0.1}
 %endif
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module scipy >= 1.8}
+BuildRequires:  %{python_module scipy >= 1.9.2}
 BuildRequires:  %{python_module sortedcontainers}
 BuildRequires:  %{python_module typing_extensions >= 4.0.0}
 BuildRequires:  libxml2-tools
