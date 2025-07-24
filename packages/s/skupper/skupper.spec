@@ -17,7 +17,7 @@
 
 
 Name:           skupper
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Virtual Application Network, enabling rich hybrid cloud communication
 License:        Apache-2.0
