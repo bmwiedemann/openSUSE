@@ -95,4 +95,12 @@
     <comment>update to 2.15.0</comment>
     <requestid>1286116</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cfedb662ba7c00a1f63f9ccc650657f2</srcmd5>
+    <version>2.15.4</version>
+    <time>1753376075</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.15.4</comment>
+    <requestid>1295519</requestid>
+  </revision>
 </revisionlist>
