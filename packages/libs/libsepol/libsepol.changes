@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 17 15:49:27 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.9
+  * Add new 'netif_wildcard' policy capability
+  * Allow multiple policycap statements
+  * Support genfs_seclabel_wildcard
+  * Introduce neveraudit types
+
+-------------------------------------------------------------------
 Fri Mar  7 14:12:08 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.8.1
