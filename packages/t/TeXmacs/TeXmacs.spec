@@ -26,6 +26,7 @@ License:        GPL-3.0-or-later
 URL:            https://www.texmacs.org/
 Source:         %{name}-%{version}.tar.gz
 Patch1:         Reproducibility.patch
+Patch2:         texmacs-hashtree-fix.patch
 BuildRequires:  fdupes
 BuildRequires:  fontpackages-devel
 BuildRequires:  libtool-ltdl-devel

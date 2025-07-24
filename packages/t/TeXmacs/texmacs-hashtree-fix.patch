@@ -1,0 +1,22 @@
+From e72783b023f22eaa0456d2e4cc76ae509d963672 Mon Sep 17 00:00:00 2001
+From: Liza Belos <belos.liza@gmail.com>
+Date: Wed, 15 Jan 2025 09:45:04 +0000
+Subject: [PATCH] fix [bug #66656] Clang 19.1.5 compile error in hashtree.cpp
+
+---
+ src/Kernel/Containers/hashtree.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Kernel/Containers/hashtree.cpp b/src/Kernel/Containers/hashtree.cpp
+index 300b175fb7..a36ffb40e1 100644
+--- a/src/Kernel/Containers/hashtree.cpp
++++ b/src/Kernel/Containers/hashtree.cpp
+@@ -94,7 +94,7 @@ hashtree<K,V>::operator-> (void) {
+ 
+ template<class K, class V> inline hashtree<K,V> 
+ hashtree<K,V>::operator[] (K key) {
+-  if (*this->contains (key)) return *this->children (key);
++  if ((*this)->contains (key)) return (*this)->children (key);
+   else FAILED ("read-access to non-existent node requested");
+ }
+   

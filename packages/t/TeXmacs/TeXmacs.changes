@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 24 11:11:47 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Add texmacs-hashtree-fix.patch to fix compatibility with
+  recent compilers (gh#texmacs/texmacs/pull/107)
+
+-------------------------------------------------------------------
 Mon Jan 27 22:00:33 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Added reproducibility Reproducibility.patch 
