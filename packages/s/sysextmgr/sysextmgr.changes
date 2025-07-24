@@ -1,0 +1,113 @@
+-------------------------------------------------------------------
+Thu Jul 24 12:07:39 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- File requires for /usr/lib/systemd doesn't work, use
+  systemd-container >= 257.6 instead 
+
+-------------------------------------------------------------------
+Mon Jul 21 07:54:37 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20250718.e2565a6:
+  * Add timer/service to cleanup sysext images
+  * Correct usage of sd_json_variant_is_null()
+  * sysextmgrcli: add prefix option for check
+  * Create list of installed, but incompatible images
+  * extension_release_validate: always use \n for printf
+  * sysextmgrcli: fix dispatch table for NULL pointer
+  * Implement cleanup in sysextmgrcli
+  * sysextmgrd: implement cleanup method
+  * Remove debugging comment
+  * update cli: add prefix option
+  * sysextmgrd: use prefix parameter to read os-relase
+  * Add Prefix argument for tukit
+  * Add hint about enabling systemd-sysext
+
+-------------------------------------------------------------------
+Tue Jul 08 07:53:40 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20250708.0d1364c:
+  * Use full image name in /etc/extensions
+
+-------------------------------------------------------------------
+Tue Jun 03 13:23:32 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20250603.3e13bcd:
+  * Don't print strerror(-r) if we know r is 0.
+  * Only use compatible images for check_for_newer
+  * Fix error message output
+  * "NewName" can be NULL if no update was found
+  * struct osrelease is "const"
+  * Fix OS vs. version_id in output
+  * Always set "compatibility" if we create an image entry
+  * Move osrelease variables in own struct
+  * Initial support for ID_LIKE from systemd v258
+
+-------------------------------------------------------------------
+Mon May 12 11:57:53 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20250512.dddbcd5:
+  * Make sure sysext-store directory exists
+
+-------------------------------------------------------------------
+Wed Apr 30 19:19:40 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20250430.019c9dc:
+  * install: make sure etc/extensions directory exists
+  * list: ignore if /etc/extensions does not exist
+  * Don't block network (systemd-pull)
+  * list: don't abort if /var/lib/sysext-store does not exist
+  * Enhance and simplify reading of config
+  * check: move to varlink
+  * Convert "install" to varlink interface
+  * update: allow empty new image name for no-update
+  * README: document changes for varlink
+  * Rename sysext-cli to sysextmgrcli
+  * Move "update" to varlink service
+  * main-list: free all results
+  * Implement sysextmgr daemon via varlink
+  * Use strverscmp()
+
+-------------------------------------------------------------------
+Wed Apr 23 12:33:45 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20250423.2e6c26d:
+  * Fix usage of install verb
+  * Implement install verb
+  * Fix free, fix logic of update entry
+  * Implement updating of sysext images
+  * Add checks for errors
+  * Correctly merge local and remote images
+  * Fix list indicies
+  * Refactor code to get newest version
+  * Use correct function to free deps pointer
+  * Enhance free_image_entry*
+  * Update usage
+  * Implement check for updates verb
+  * images-list: add support for /etc/extensions
+  * image-deps: add support for images in /etc
+  * Differentiate between name of image and full image
+  * Remove debug code, fix error message
+  * Move image collect data in own function
+  * Make url optional, check exec return codes
+  * Move struct image_deps and functions to own files
+  * Add meson_options.txt
+  * Implement "list" verb
+  * Update json example
+  * Add meson sanitize run
+  * Add missing strv.[ch]
+  * Add comment from where the code is
+  * Fix memory leaks
+  * Add list option to display remote images
+  * ci-opensuse: install diffutils
+  * Adjust github CI workflow
+
+-------------------------------------------------------------------
+Thu Apr 03 14:29:23 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20250403.c44d956:
+  - sysctl-cli with create-json, merge-json and dump-json
+
+-------------------------------------------------------------------
+Mon Mar 31 09:42:59 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial version
