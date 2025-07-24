@@ -34,7 +34,7 @@ Patch1:         python-gpg-nobetasuffix.patch
 # PATCH-FIX-UPSTREAM build-pep621-pyproject.patch bsc#[0-9]+ mcepl@suse.com
 # clean up pyproject.toml for switch to wheel-based build
 Patch2:         build-pep621-pyproject.patch
-%ifarch %{ix86} armv7l armv7hl
+%ifarch %{ix86} %{arm}
 Patch3:         gpgmepy-2.0.0-swig-32-bit.patch
 %endif
 BuildRequires:  %{python_module devel}
