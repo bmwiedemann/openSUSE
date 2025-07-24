@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Jul 24 07:48:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.0:
+  * fix(ci): mark the workflow as successful on coverage report
+    error (#874)
+  * chore(deps): update module golang.org/x/tools to v0.35.0 (#861)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mongodbflex
+    from 1.4.0 to 1.5.0 (#856)
+  * feat(git): add flags for flavor and acl to instance create cmd,
+    add flavor list cmd (#841)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/observability
+    (#865)
+  * chore(deps): bump github.com/golang-jwt/jwt/v5 from 5.2.2 to
+    5.2.3 (#866)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/alb (#867)
+  * fix(deps): update module github.com/spf13/pflag to v1.0.7
+    (#871)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/ske (#859)
+  * chore(deps): bump golang.org/x/term from 0.32.0 to 0.33.0
+    (#860)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/loadbalancer
+    (#862)
+  * chore(deps): update renovatebot/github-action action to v43.0.3
+    (#864)
+  * feat(mongodbflex): region adjustment (#857)
+  * chore(deps): bump golang.org/x/mod from 0.25.0 to 0.26.0 (#854)
+  * chore(deps): bump golang.org/x/text from 0.26.0 to 0.27.0
+    (#855)
+  * feat: add continue-on-error attribute to pipeline  (#848)
+  * feat: add refreshing access token functionality to
+    get-access-token command (#847)
+  * fix: add missing security group ID output to `security-group
+    create` command (#846)
+  * fix(deps): update module
+    github.com/stackitcloud/stackit-sdk-go/services/iaas to v0.27.0
+    (#844)
+
+-------------------------------------------------------------------
 Tue Jul 08 04:59:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.36.0:
