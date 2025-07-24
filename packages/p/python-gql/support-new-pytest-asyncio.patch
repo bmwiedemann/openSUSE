@@ -1,0 +1,2727 @@
+From f54a495a79ff3bb9aa371f864712e8ea0bf05ef2 Mon Sep 17 00:00:00 2001
+From: "Leszek Hanusz (aider)" <leszek.hanusz@gmail.com>
+Date: Tue, 11 Mar 2025 11:53:34 +0100
+Subject: [PATCH 1/2] Update pytest to 8.3.4 and pytest-asyncio to 0.25.3
+ Remove obsolete event_loop argument in tests
+
+---
+ pyproject.toml                                |  3 +
+ setup.py                                      |  4 +-
+ tests/conftest.py                             | 23 ++---
+ tests/custom_scalars/test_money.py            | 26 +++---
+ tests/starwars/test_introspection.py          |  2 +-
+ tests/starwars/test_validation.py             |  7 +-
+ tests/test_aiohttp.py                         | 86 +++++++++----------
+ tests/test_aiohttp_online.py                  |  6 +-
+ tests/test_aiohttp_websocket_exceptions.py    | 24 +++---
+ ..._aiohttp_websocket_graphqlws_exceptions.py | 16 ++--
+ ...iohttp_websocket_graphqlws_subscription.py | 32 +++----
+ tests/test_aiohttp_websocket_query.py         | 36 ++++----
+ tests/test_aiohttp_websocket_subscription.py  | 32 +++----
+ tests/test_appsync_http.py                    |  2 +-
+ tests/test_appsync_websockets.py              | 20 ++---
+ tests/test_async_client_validation.py         | 12 +--
+ tests/test_graphqlws_exceptions.py            | 16 ++--
+ tests/test_graphqlws_subscription.py          | 32 +++----
+ tests/test_http_async_sync.py                 |  4 +-
+ tests/test_httpx.py                           | 74 ++++++++--------
+ tests/test_httpx_async.py                     | 76 ++++++++--------
+ tests/test_httpx_online.py                    |  6 +-
+ tests/test_phoenix_channel_exceptions.py      | 12 +--
+ tests/test_phoenix_channel_query.py           |  8 +-
+ tests/test_phoenix_channel_subscription.py    |  6 +-
+ tests/test_requests.py                        | 82 +++++++++---------
+ tests/test_requests_batch.py                  | 46 +++++-----
+ tests/test_websocket_exceptions.py            | 24 +++---
+ tests/test_websocket_query.py                 | 38 ++++----
+ tests/test_websocket_subscription.py          | 26 +++---
+ tests/test_websockets_adapter.py              |  4 +-
+ 31 files changed, 396 insertions(+), 389 deletions(-)
+
+Index: gql-3.5.3/tests/conftest.py
+===================================================================
+--- gql-3.5.3.orig/tests/conftest.py
++++ gql-3.5.3/tests/conftest.py
+@@ -454,9 +454,9 @@ async def client_and_server(server):
+     # Generate transport to connect to the server fixture
+     path = "/graphql"
+     url = f"ws://{server.hostname}:{server.port}{path}"
+-    sample_transport = WebsocketsTransport(url=url)
++    transport = WebsocketsTransport(url=url)
+ 
+-    async with Client(transport=sample_transport) as session:
++    async with Client(transport=transport) as session:
+ 
+         # Yield both client session and server
+         yield session, server
+@@ -472,12 +472,12 @@ async def client_and_graphqlws_server(gr
+     # Generate transport to connect to the server fixture
+     path = "/graphql"
+     url = f"ws://{graphqlws_server.hostname}:{graphqlws_server.port}{path}"
+-    sample_transport = WebsocketsTransport(
++    transport = WebsocketsTransport(
+         url=url,
+         subprotocols=[WebsocketsTransport.GRAPHQLWS_SUBPROTOCOL],
+     )
+ 
+-    async with Client(transport=sample_transport) as session:
++    async with Client(transport=transport) as session:
+ 
+         # Yield both client session and server
+         yield session, graphqlws_server
+@@ -485,11 +485,12 @@ async def client_and_graphqlws_server(gr
+ 
+ @pytest_asyncio.fixture
+ async def run_sync_test():
+-    async def run_sync_test_inner(event_loop, server, test_function):
++    async def run_sync_test_inner(server, test_function):
+         """This function will run the test in a different Thread.
+ 
+         This allows us to run sync code while aiohttp server can still run.
+         """
++        event_loop = asyncio.get_running_loop()
+         executor = ThreadPoolExecutor(max_workers=2)
+         test_task = event_loop.run_in_executor(executor, test_function)
+ 
+Index: gql-3.5.3/tests/custom_scalars/test_money.py
+===================================================================
+--- gql-3.5.3.orig/tests/custom_scalars/test_money.py
++++ gql-3.5.3/tests/custom_scalars/test_money.py
+@@ -491,7 +491,7 @@ async def make_sync_money_transport(aioh
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_custom_scalar_in_output_with_transport(event_loop, aiohttp_server):
++async def test_custom_scalar_in_output_with_transport(aiohttp_server):
+ 
+     transport = await make_money_transport(aiohttp_server)
+ 
+@@ -509,7 +509,7 @@ async def test_custom_scalar_in_output_w
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_custom_scalar_in_input_query_with_transport(event_loop, aiohttp_server):
++async def test_custom_scalar_in_input_query_with_transport(aiohttp_server):
+ 
+     transport = await make_money_transport(aiohttp_server)
+ 
+@@ -531,9 +531,7 @@ async def test_custom_scalar_in_input_qu
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_custom_scalar_in_input_variable_values_with_transport(
+-    event_loop, aiohttp_server
+-):
++async def test_custom_scalar_in_input_variable_values_with_transport(aiohttp_server):
+ 
+     transport = await make_money_transport(aiohttp_server)
+ 
+@@ -556,7 +554,7 @@ async def test_custom_scalar_in_input_va
+ 
+ @pytest.mark.asyncio
+ async def test_custom_scalar_in_input_variable_values_split_with_transport(
+-    event_loop, aiohttp_server
++    aiohttp_server,
+ ):
+ 
+     transport = await make_money_transport(aiohttp_server)
+@@ -581,7 +579,7 @@ query myquery($amount: Float, $currency:
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_custom_scalar_serialize_variables(event_loop, aiohttp_server):
++async def test_custom_scalar_serialize_variables(aiohttp_server):
+ 
+     transport = await make_money_transport(aiohttp_server)
+ 
+@@ -603,7 +601,7 @@ async def test_custom_scalar_serialize_v
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_custom_scalar_serialize_variables_no_schema(event_loop, aiohttp_server):
++async def test_custom_scalar_serialize_variables_no_schema(aiohttp_server):
+ 
+     transport = await make_money_transport(aiohttp_server)
+ 
+@@ -623,7 +621,7 @@ async def test_custom_scalar_serialize_v
+ 
+ @pytest.mark.asyncio
+ async def test_custom_scalar_serialize_variables_schema_from_introspection(
+-    event_loop, aiohttp_server
++    aiohttp_server,
+ ):
+ 
+     transport = await make_money_transport(aiohttp_server)
+@@ -656,7 +654,7 @@ async def test_custom_scalar_serialize_v
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_update_schema_scalars(event_loop, aiohttp_server):
++async def test_update_schema_scalars(aiohttp_server):
+ 
+     transport = await make_money_transport(aiohttp_server)
+ 
+@@ -735,7 +733,7 @@ def test_update_schema_scalars_scalar_ty
+ @pytest.mark.asyncio
+ @pytest.mark.requests
+ async def test_custom_scalar_serialize_variables_sync_transport(
+-    event_loop, aiohttp_server, run_sync_test
++    aiohttp_server, run_sync_test
+ ):
+ 
+     server, transport = await make_sync_money_transport(aiohttp_server)
+@@ -754,13 +752,13 @@ async def test_custom_scalar_serialize_v
+             print(f"result = {result!r}")
+             assert result["toEuros"] == 5
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.requests
+ async def test_custom_scalar_serialize_variables_sync_transport_2(
+-    event_loop, aiohttp_server, run_sync_test
++    aiohttp_server, run_sync_test
+ ):
+     server, transport = await make_sync_money_transport(aiohttp_server)
+ 
+@@ -783,7 +781,7 @@ async def test_custom_scalar_serialize_v
+             assert results[0]["toEuros"] == 5
+             assert results[1]["toEuros"] == 5
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ def test_serialize_value_with_invalid_type():
+@@ -818,7 +816,7 @@ def test_serialize_value_with_nullable_t
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_gql_cli_print_schema(event_loop, aiohttp_server, capsys):
++async def test_gql_cli_print_schema(aiohttp_server, capsys):
+ 
+     from gql.cli import get_parser, main
+ 
+Index: gql-3.5.3/tests/starwars/test_introspection.py
+===================================================================
+--- gql-3.5.3.orig/tests/starwars/test_introspection.py
++++ gql-3.5.3/tests/starwars/test_introspection.py
+@@ -10,7 +10,7 @@ pytestmark = pytest.mark.aiohttp
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_starwars_introspection_args(event_loop, aiohttp_server):
++async def test_starwars_introspection_args(aiohttp_server):
+ 
+     transport = await make_starwars_transport(aiohttp_server)
+ 
+Index: gql-3.5.3/tests/starwars/test_validation.py
+===================================================================
+--- gql-3.5.3.orig/tests/starwars/test_validation.py
++++ gql-3.5.3/tests/starwars/test_validation.py
+@@ -1,3 +1,5 @@
++import copy
++
+ import pytest
+ 
+ from gql import Client, gql
+@@ -62,7 +64,8 @@ def introspection_schema():
+ 
+ @pytest.fixture
+ def introspection_schema_empty_directives():
+-    introspection = StarWarsIntrospection
++    # Create a deep copy to avoid modifying the original
++    introspection = copy.deepcopy(StarWarsIntrospection)
+ 
+     # Simulate an empty dictionary for directives
+     introspection["__schema"]["directives"] = []
+@@ -72,7 +75,8 @@ def introspection_schema_empty_directive
+ 
+ @pytest.fixture
+ def introspection_schema_no_directives():
+-    introspection = StarWarsIntrospection
++    # Create a deep copy to avoid modifying the original
++    introspection = copy.deepcopy(StarWarsIntrospection)
+ 
+     # Simulate no directives key
+     del introspection["__schema"]["directives"]
+Index: gql-3.5.3/tests/test_aiohttp.py
+===================================================================
+--- gql-3.5.3.orig/tests/test_aiohttp.py
++++ gql-3.5.3/tests/test_aiohttp.py
+@@ -41,7 +41,7 @@ pytestmark = pytest.mark.aiohttp
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_query(event_loop, aiohttp_server):
++async def test_aiohttp_query(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -80,7 +80,7 @@ async def test_aiohttp_query(event_loop,
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_ignore_backend_content_type(event_loop, aiohttp_server):
++async def test_aiohttp_ignore_backend_content_type(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -109,7 +109,7 @@ async def test_aiohttp_ignore_backend_co
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_cookies(event_loop, aiohttp_server):
++async def test_aiohttp_cookies(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -142,7 +142,7 @@ async def test_aiohttp_cookies(event_loo
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_error_code_401(event_loop, aiohttp_server):
++async def test_aiohttp_error_code_401(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -173,7 +173,7 @@ async def test_aiohttp_error_code_401(ev
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_error_code_429(event_loop, aiohttp_server):
++async def test_aiohttp_error_code_429(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -220,7 +220,7 @@ async def test_aiohttp_error_code_429(ev
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_error_code_500(event_loop, aiohttp_server):
++async def test_aiohttp_error_code_500(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -255,7 +255,7 @@ transport_query_error_responses = [
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("query_error", transport_query_error_responses)
+-async def test_aiohttp_error_code(event_loop, aiohttp_server, query_error):
++async def test_aiohttp_error_code(aiohttp_server, query_error):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -310,7 +310,7 @@ invalid_protocol_responses = [
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("param", invalid_protocol_responses)
+-async def test_aiohttp_invalid_protocol(event_loop, aiohttp_server, param):
++async def test_aiohttp_invalid_protocol(aiohttp_server, param):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -338,7 +338,7 @@ async def test_aiohttp_invalid_protocol(
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_subscribe_not_supported(event_loop, aiohttp_server):
++async def test_aiohttp_subscribe_not_supported(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -363,7 +363,7 @@ async def test_aiohttp_subscribe_not_sup
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_cannot_connect_twice(event_loop, aiohttp_server):
++async def test_aiohttp_cannot_connect_twice(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -385,7 +385,7 @@ async def test_aiohttp_cannot_connect_tw
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_cannot_execute_if_not_connected(event_loop, aiohttp_server):
++async def test_aiohttp_cannot_execute_if_not_connected(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -407,7 +407,7 @@ async def test_aiohttp_cannot_execute_if
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_extra_args(event_loop, aiohttp_server):
++async def test_aiohttp_extra_args(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -454,7 +454,7 @@ query2_server_answer = '{"data": {"conti
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_query_variable_values(event_loop, aiohttp_server):
++async def test_aiohttp_query_variable_values(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -486,7 +486,7 @@ async def test_aiohttp_query_variable_va
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_query_variable_values_fix_issue_292(event_loop, aiohttp_server):
++async def test_aiohttp_query_variable_values_fix_issue_292(aiohttp_server):
+     """Allow to specify variable_values without keyword.
+ 
+     See https://github.com/graphql-python/gql/issues/292"""
+@@ -520,9 +520,7 @@ async def test_aiohttp_query_variable_va
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_execute_running_in_thread(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_aiohttp_execute_running_in_thread(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -544,13 +542,11 @@ async def test_aiohttp_execute_running_i
+ 
+         client.execute(query)
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_subscribe_running_in_thread(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_aiohttp_subscribe_running_in_thread(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -581,7 +577,7 @@ async def test_aiohttp_subscribe_running
+             for result in client.subscribe(query):
+                 pass
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ file_upload_server_answer = '{"data":{"success":true}}'
+@@ -636,7 +632,7 @@ async def single_upload_handler(request)
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_file_upload(event_loop, aiohttp_server):
++async def test_aiohttp_file_upload(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -701,7 +697,7 @@ async def single_upload_handler_with_con
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_file_upload_with_content_type(event_loop, aiohttp_server):
++async def test_aiohttp_file_upload_with_content_type(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -739,9 +735,7 @@ async def test_aiohttp_file_upload_with_
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_file_upload_without_session(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_aiohttp_file_upload_without_session(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -774,7 +768,7 @@ async def test_aiohttp_file_upload_witho
+ 
+                 assert success
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ # This is a sample binary file content containing all possible byte values
+@@ -809,7 +803,7 @@ async def binary_upload_handler(request)
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_binary_file_upload(event_loop, aiohttp_server):
++async def test_aiohttp_binary_file_upload(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -844,7 +838,7 @@ async def test_aiohttp_binary_file_uploa
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_stream_reader_upload(event_loop, aiohttp_server):
++async def test_aiohttp_stream_reader_upload(aiohttp_server):
+     from aiohttp import web, ClientSession
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -881,7 +875,7 @@ async def test_aiohttp_stream_reader_upl
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_async_generator_upload(event_loop, aiohttp_server):
++async def test_aiohttp_async_generator_upload(aiohttp_server):
+     import aiofiles
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+@@ -944,7 +938,7 @@ This file will also be sent in the Graph
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_file_upload_two_files(event_loop, aiohttp_server):
++async def test_aiohttp_file_upload_two_files(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -1035,7 +1029,7 @@ file_upload_mutation_3_map = '{"0": ["va
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_file_upload_list_of_two_files(event_loop, aiohttp_server):
++async def test_aiohttp_file_upload_list_of_two_files(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -1107,7 +1101,7 @@ async def test_aiohttp_file_upload_list_
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_using_cli(event_loop, aiohttp_server, monkeypatch, capsys):
++async def test_aiohttp_using_cli(aiohttp_server, monkeypatch, capsys):
+     from aiohttp import web
+ 
+     async def handler(request):
+@@ -1144,7 +1138,7 @@ async def test_aiohttp_using_cli(event_l
+ @pytest.mark.asyncio
+ @pytest.mark.script_launch_mode("subprocess")
+ async def test_aiohttp_using_cli_ep(
+-    event_loop, aiohttp_server, monkeypatch, script_runner, run_sync_test
++    aiohttp_server, monkeypatch, script_runner, run_sync_test
+ ):
+     from aiohttp import web
+ 
+@@ -1176,13 +1170,11 @@ async def test_aiohttp_using_cli_ep(
+ 
+         assert received_answer == expected_answer
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_using_cli_invalid_param(
+-    event_loop, aiohttp_server, monkeypatch, capsys
+-):
++async def test_aiohttp_using_cli_invalid_param(aiohttp_server, monkeypatch, capsys):
+     from aiohttp import web
+ 
+     async def handler(request):
+@@ -1216,9 +1208,7 @@ async def test_aiohttp_using_cli_invalid
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_using_cli_invalid_query(
+-    event_loop, aiohttp_server, monkeypatch, capsys
+-):
++async def test_aiohttp_using_cli_invalid_query(aiohttp_server, monkeypatch, capsys):
+     from aiohttp import web
+ 
+     async def handler(request):
+@@ -1256,7 +1246,7 @@ query1_server_answer_with_extensions = (
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_query_with_extensions(event_loop, aiohttp_server):
++async def test_aiohttp_query_with_extensions(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -1284,7 +1274,7 @@ async def test_aiohttp_query_with_extens
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("ssl_close_timeout", [0, 10])
+-async def test_aiohttp_query_https(event_loop, ssl_aiohttp_server, ssl_close_timeout):
++async def test_aiohttp_query_https(ssl_aiohttp_server, ssl_close_timeout):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -1318,7 +1308,7 @@ async def test_aiohttp_query_https(event
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_error_fetching_schema(event_loop, aiohttp_server):
++async def test_aiohttp_error_fetching_schema(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -1361,7 +1351,7 @@ async def test_aiohttp_error_fetching_sc
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_reconnecting_session(event_loop, aiohttp_server):
++async def test_aiohttp_reconnecting_session(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -1399,9 +1389,7 @@ async def test_aiohttp_reconnecting_sess
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("retries", [False, lambda e: e])
+-async def test_aiohttp_reconnecting_session_retries(
+-    event_loop, aiohttp_server, retries
+-):
++async def test_aiohttp_reconnecting_session_retries(aiohttp_server, retries):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -1433,7 +1421,7 @@ async def test_aiohttp_reconnecting_sess
+ 
+ @pytest.mark.asyncio
+ async def test_aiohttp_reconnecting_session_start_connecting_task_twice(
+-    event_loop, aiohttp_server, caplog
++    aiohttp_server, caplog
+ ):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+@@ -1467,7 +1455,7 @@ async def test_aiohttp_reconnecting_sess
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_json_serializer(event_loop, aiohttp_server, caplog):
++async def test_aiohttp_json_serializer(aiohttp_server, caplog):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -1512,7 +1500,7 @@ async def test_aiohttp_json_serializer(e
+ 
+ 
+ @pytest.mark.asyncio
+-async def test_aiohttp_connector_owner_false(event_loop, aiohttp_server):
++async def test_aiohttp_connector_owner_false(aiohttp_server):
+     from aiohttp import web, TCPConnector
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+Index: gql-3.5.3/tests/test_aiohttp_online.py
+===================================================================
+--- gql-3.5.3.orig/tests/test_aiohttp_online.py
++++ gql-3.5.3/tests/test_aiohttp_online.py
+@@ -11,7 +11,7 @@ from gql.transport.exceptions import Tra
+ @pytest.mark.aiohttp
+ @pytest.mark.online
+ @pytest.mark.asyncio
+-async def test_aiohttp_simple_query(event_loop):
++async def test_aiohttp_simple_query():
+ 
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -56,7 +56,7 @@ async def test_aiohttp_simple_query(even
+ @pytest.mark.aiohttp
+ @pytest.mark.online
+ @pytest.mark.asyncio
+-async def test_aiohttp_invalid_query(event_loop):
++async def test_aiohttp_invalid_query():
+ 
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -85,7 +85,7 @@ async def test_aiohttp_invalid_query(eve
+ @pytest.mark.online
+ @pytest.mark.skipif(sys.version_info < (3, 8), reason="requires python3.8 or higher")
+ @pytest.mark.asyncio
+-async def test_aiohttp_two_queries_in_parallel_using_two_tasks(event_loop):
++async def test_aiohttp_two_queries_in_parallel_using_two_tasks():
+ 
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+Index: gql-3.5.3/tests/test_appsync_http.py
+===================================================================
+--- gql-3.5.3.orig/tests/test_appsync_http.py
++++ gql-3.5.3/tests/test_appsync_http.py
+@@ -8,9 +8,7 @@ from gql import Client, gql
+ @pytest.mark.asyncio
+ @pytest.mark.aiohttp
+ @pytest.mark.botocore
+-async def test_appsync_iam_mutation(
+-    event_loop, aiohttp_server, fake_credentials_factory
+-):
++async def test_appsync_iam_mutation(aiohttp_server, fake_credentials_factory):
+     from aiohttp import web
+     from gql.transport.aiohttp import AIOHTTPTransport
+     from gql.transport.appsync_auth import AppSyncIAMAuthentication
+Index: gql-3.5.3/tests/test_appsync_websockets.py
+===================================================================
+--- gql-3.5.3.orig/tests/test_appsync_websockets.py
++++ gql-3.5.3/tests/test_appsync_websockets.py
+@@ -402,7 +402,7 @@ async def default_transport_test(transpo
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [realtime_appsync_server_keepalive], indirect=True)
+-async def test_appsync_subscription_api_key(event_loop, server):
++async def test_appsync_subscription_api_key(server):
+ 
+     from gql.transport.appsync_auth import AppSyncApiKeyAuthentication
+     from gql.transport.appsync_websockets import AppSyncWebsocketsTransport
+@@ -422,7 +422,7 @@ async def test_appsync_subscription_api_
+ @pytest.mark.asyncio
+ @pytest.mark.botocore
+ @pytest.mark.parametrize("server", [realtime_appsync_server], indirect=True)
+-async def test_appsync_subscription_iam_with_token(event_loop, server):
++async def test_appsync_subscription_iam_with_token(server):
+ 
+     from gql.transport.appsync_auth import AppSyncIAMAuthentication
+     from gql.transport.appsync_websockets import AppSyncWebsocketsTransport
+@@ -449,7 +449,7 @@ async def test_appsync_subscription_iam_
+ @pytest.mark.asyncio
+ @pytest.mark.botocore
+ @pytest.mark.parametrize("server", [realtime_appsync_server], indirect=True)
+-async def test_appsync_subscription_iam_without_token(event_loop, server):
++async def test_appsync_subscription_iam_without_token(server):
+ 
+     from gql.transport.appsync_auth import AppSyncIAMAuthentication
+     from gql.transport.appsync_websockets import AppSyncWebsocketsTransport
+@@ -475,7 +475,7 @@ async def test_appsync_subscription_iam_
+ @pytest.mark.asyncio
+ @pytest.mark.botocore
+ @pytest.mark.parametrize("server", [realtime_appsync_server], indirect=True)
+-async def test_appsync_execute_method_not_allowed(event_loop, server):
++async def test_appsync_execute_method_not_allowed(server):
+ 
+     from gql.transport.appsync_auth import AppSyncIAMAuthentication
+     from gql.transport.appsync_websockets import AppSyncWebsocketsTransport
+@@ -522,7 +522,7 @@ mutation createMessage($message: String!
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.botocore
+-async def test_appsync_fetch_schema_from_transport_not_allowed(event_loop):
++async def test_appsync_fetch_schema_from_transport_not_allowed():
+ 
+     from gql.transport.appsync_auth import AppSyncIAMAuthentication
+     from gql.transport.appsync_websockets import AppSyncWebsocketsTransport
+@@ -550,7 +550,7 @@ async def test_appsync_fetch_schema_from
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [realtime_appsync_server], indirect=True)
+-async def test_appsync_subscription_api_key_unauthorized(event_loop, server):
++async def test_appsync_subscription_api_key_unauthorized(server):
+ 
+     from gql.transport.appsync_auth import AppSyncApiKeyAuthentication
+     from gql.transport.appsync_websockets import AppSyncWebsocketsTransport
+@@ -575,7 +575,7 @@ async def test_appsync_subscription_api_
+ @pytest.mark.asyncio
+ @pytest.mark.botocore
+ @pytest.mark.parametrize("server", [realtime_appsync_server], indirect=True)
+-async def test_appsync_subscription_iam_not_allowed(event_loop, server):
++async def test_appsync_subscription_iam_not_allowed(server):
+ 
+     from gql.transport.appsync_auth import AppSyncIAMAuthentication
+     from gql.transport.appsync_websockets import AppSyncWebsocketsTransport
+@@ -614,9 +614,7 @@ async def test_appsync_subscription_iam_
+ @pytest.mark.parametrize(
+     "server", [realtime_appsync_server_not_json_answer], indirect=True
+ )
+-async def test_appsync_subscription_server_sending_a_not_json_answer(
+-    event_loop, server
+-):
++async def test_appsync_subscription_server_sending_a_not_json_answer(server):
+ 
+     from gql.transport.appsync_auth import AppSyncApiKeyAuthentication
+     from gql.transport.appsync_websockets import AppSyncWebsocketsTransport
+@@ -642,9 +640,7 @@ async def test_appsync_subscription_serv
+ @pytest.mark.parametrize(
+     "server", [realtime_appsync_server_error_without_id], indirect=True
+ )
+-async def test_appsync_subscription_server_sending_an_error_without_an_id(
+-    event_loop, server
+-):
++async def test_appsync_subscription_server_sending_an_error_without_an_id(server):
+ 
+     from gql.transport.appsync_auth import AppSyncApiKeyAuthentication
+     from gql.transport.appsync_websockets import AppSyncWebsocketsTransport
+@@ -668,9 +664,7 @@ async def test_appsync_subscription_serv
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [realtime_appsync_server_keepalive], indirect=True)
+-async def test_appsync_subscription_variable_values_and_operation_name(
+-    event_loop, server
+-):
++async def test_appsync_subscription_variable_values_and_operation_name(server):
+ 
+     from gql.transport.appsync_auth import AppSyncApiKeyAuthentication
+     from gql.transport.appsync_websockets import AppSyncWebsocketsTransport
+Index: gql-3.5.3/tests/test_async_client_validation.py
+===================================================================
+--- gql-3.5.3.orig/tests/test_async_client_validation.py
++++ gql-3.5.3/tests/test_async_client_validation.py
+@@ -85,9 +85,7 @@ starwars_invalid_subscription_str = """
+         {"schema": StarWarsTypeDef},
+     ],
+ )
+-async def test_async_client_validation(
+-    event_loop, server, subscription_str, client_params
+-):
++async def test_async_client_validation(server, subscription_str, client_params):
+ 
+     from gql.transport.websockets import WebsocketsTransport
+ 
+@@ -133,7 +131,7 @@ async def test_async_client_validation(
+     ],
+ )
+ async def test_async_client_validation_invalid_query(
+-    event_loop, server, subscription_str, client_params
++    server, subscription_str, client_params
+ ):
+ 
+     from gql.transport.websockets import WebsocketsTransport
+@@ -166,7 +164,7 @@ async def test_async_client_validation_i
+     [{"schema": StarWarsSchema, "introspection": StarWarsIntrospection}],
+ )
+ async def test_async_client_validation_different_schemas_parameters_forbidden(
+-    event_loop, server, subscription_str, client_params
++    server, subscription_str, client_params
+ ):
+ 
+     from gql.transport.websockets import WebsocketsTransport
+@@ -192,7 +190,7 @@ hero_server_answers = (
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [hero_server_answers], indirect=True)
+ async def test_async_client_validation_fetch_schema_from_server_valid_query(
+-    event_loop, client_and_server
++    client_and_server,
+ ):
+     session, server = client_and_server
+     client = session.client
+@@ -230,7 +228,7 @@ async def test_async_client_validation_f
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [hero_server_answers], indirect=True)
+ async def test_async_client_validation_fetch_schema_from_server_invalid_query(
+-    event_loop, client_and_server
++    client_and_server,
+ ):
+     session, server = client_and_server
+ 
+@@ -256,7 +254,7 @@ async def test_async_client_validation_f
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [hero_server_answers], indirect=True)
+ async def test_async_client_validation_fetch_schema_from_server_with_client_argument(
+-    event_loop, server
++    server,
+ ):
+ 
+     from gql.transport.websockets import WebsocketsTransport
+Index: gql-3.5.3/tests/test_graphqlws_exceptions.py
+===================================================================
+--- gql-3.5.3.orig/tests/test_graphqlws_exceptions.py
++++ gql-3.5.3/tests/test_graphqlws_exceptions.py
+@@ -38,9 +38,7 @@ invalid_query1_server = [invalid_query1_
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("graphqlws_server", [invalid_query1_server], indirect=True)
+ @pytest.mark.parametrize("query_str", [invalid_query_str])
+-async def test_graphqlws_invalid_query(
+-    event_loop, client_and_graphqlws_server, query_str
+-):
++async def test_graphqlws_invalid_query(client_and_graphqlws_server, query_str):
+ 
+     session, server = client_and_graphqlws_server
+ 
+@@ -81,9 +79,7 @@ async def server_invalid_subscription(ws
+     "graphqlws_server", [server_invalid_subscription], indirect=True
+ )
+ @pytest.mark.parametrize("query_str", [invalid_subscription_str])
+-async def test_graphqlws_invalid_subscription(
+-    event_loop, client_and_graphqlws_server, query_str
+-):
++async def test_graphqlws_invalid_subscription(client_and_graphqlws_server, query_str):
+ 
+     session, server = client_and_graphqlws_server
+ 
+@@ -109,9 +105,7 @@ async def server_no_ack(ws, path):
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("graphqlws_server", [server_no_ack], indirect=True)
+ @pytest.mark.parametrize("query_str", [invalid_query_str])
+-async def test_graphqlws_server_does_not_send_ack(
+-    event_loop, graphqlws_server, query_str
+-):
++async def test_graphqlws_server_does_not_send_ack(graphqlws_server, query_str):
+     from gql.transport.websockets import WebsocketsTransport
+ 
+     url = f"ws://{graphqlws_server.hostname}:{graphqlws_server.port}/graphql"
+@@ -141,7 +135,7 @@ async def server_invalid_query(ws, path)
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("graphqlws_server", [server_invalid_query], indirect=True)
+-async def test_graphqlws_sending_invalid_query(event_loop, client_and_graphqlws_server):
++async def test_graphqlws_sending_invalid_query(client_and_graphqlws_server):
+ 
+     session, server = client_and_graphqlws_server
+ 
+@@ -193,9 +187,7 @@ sending_bytes = [b"\x01\x02\x03"]
+     ],
+     indirect=True,
+ )
+-async def test_graphqlws_transport_protocol_errors(
+-    event_loop, client_and_graphqlws_server
+-):
++async def test_graphqlws_transport_protocol_errors(client_and_graphqlws_server):
+ 
+     session, server = client_and_graphqlws_server
+ 
+@@ -213,7 +205,7 @@ async def server_without_ack(ws, path):
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("graphqlws_server", [server_without_ack], indirect=True)
+-async def test_graphqlws_server_does_not_ack(event_loop, graphqlws_server):
++async def test_graphqlws_server_does_not_ack(graphqlws_server):
+     from gql.transport.websockets import WebsocketsTransport
+ 
+     url = f"ws://{graphqlws_server.hostname}:{graphqlws_server.port}/graphql"
+@@ -232,7 +224,7 @@ async def server_closing_directly(ws, pa
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("graphqlws_server", [server_closing_directly], indirect=True)
+-async def test_graphqlws_server_closing_directly(event_loop, graphqlws_server):
++async def test_graphqlws_server_closing_directly(graphqlws_server):
+     import websockets
+     from gql.transport.websockets import WebsocketsTransport
+ 
+@@ -253,9 +245,7 @@ async def server_closing_after_ack(ws, p
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("graphqlws_server", [server_closing_after_ack], indirect=True)
+-async def test_graphqlws_server_closing_after_ack(
+-    event_loop, client_and_graphqlws_server
+-):
++async def test_graphqlws_server_closing_after_ack(client_and_graphqlws_server):
+ 
+     import websockets
+ 
+Index: gql-3.5.3/tests/test_graphqlws_subscription.py
+===================================================================
+--- gql-3.5.3.orig/tests/test_graphqlws_subscription.py
++++ gql-3.5.3/tests/test_graphqlws_subscription.py
+@@ -228,9 +228,7 @@ countdown_subscription_str = """
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("graphqlws_server", [server_countdown], indirect=True)
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+-async def test_graphqlws_subscription(
+-    event_loop, client_and_graphqlws_server, subscription_str
+-):
++async def test_graphqlws_subscription(client_and_graphqlws_server, subscription_str):
+ 
+     session, server = client_and_graphqlws_server
+ 
+@@ -252,7 +250,7 @@ async def test_graphqlws_subscription(
+ @pytest.mark.parametrize("graphqlws_server", [server_countdown], indirect=True)
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_graphqlws_subscription_break(
+-    event_loop, client_and_graphqlws_server, subscription_str
++    client_and_graphqlws_server, subscription_str
+ ):
+ 
+     session, server = client_and_graphqlws_server
+@@ -282,7 +280,7 @@ async def test_graphqlws_subscription_br
+ @pytest.mark.parametrize("graphqlws_server", [server_countdown], indirect=True)
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_graphqlws_subscription_task_cancel(
+-    event_loop, client_and_graphqlws_server, subscription_str
++    client_and_graphqlws_server, subscription_str
+ ):
+ 
+     session, server = client_and_graphqlws_server
+@@ -321,7 +319,7 @@ async def test_graphqlws_subscription_ta
+ @pytest.mark.parametrize("graphqlws_server", [server_countdown], indirect=True)
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_graphqlws_subscription_close_transport(
+-    event_loop, client_and_graphqlws_server, subscription_str
++    client_and_graphqlws_server, subscription_str
+ ):
+ 
+     session, server = client_and_graphqlws_server
+@@ -386,7 +384,7 @@ async def server_countdown_close_connect
+ )
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_graphqlws_subscription_server_connection_closed(
+-    event_loop, client_and_graphqlws_server, subscription_str
++    client_and_graphqlws_server, subscription_str
+ ):
+     import websockets
+ 
+@@ -411,7 +409,7 @@ async def test_graphqlws_subscription_se
+ @pytest.mark.parametrize("graphqlws_server", [server_countdown], indirect=True)
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_graphqlws_subscription_with_operation_name(
+-    event_loop, client_and_graphqlws_server, subscription_str
++    client_and_graphqlws_server, subscription_str
+ ):
+ 
+     session, server = client_and_graphqlws_server
+@@ -441,7 +439,7 @@ async def test_graphqlws_subscription_wi
+ )
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_graphqlws_subscription_with_keepalive(
+-    event_loop, client_and_graphqlws_server, subscription_str
++    client_and_graphqlws_server, subscription_str
+ ):
+ 
+     session, server = client_and_graphqlws_server
+@@ -471,7 +469,7 @@ async def test_graphqlws_subscription_wi
+ )
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_graphqlws_subscription_with_keepalive_with_timeout_ok(
+-    event_loop, graphqlws_server, subscription_str
++    graphqlws_server, subscription_str
+ ):
+ 
+     from gql.transport.websockets import WebsocketsTransport
+@@ -503,7 +501,7 @@ async def test_graphqlws_subscription_wi
+ )
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_graphqlws_subscription_with_keepalive_with_timeout_nok(
+-    event_loop, graphqlws_server, subscription_str
++    graphqlws_server, subscription_str
+ ):
+ 
+     from gql.transport.websockets import WebsocketsTransport
+@@ -536,7 +534,7 @@ async def test_graphqlws_subscription_wi
+ )
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_graphqlws_subscription_with_ping_interval_ok(
+-    event_loop, graphqlws_server, subscription_str
++    graphqlws_server, subscription_str
+ ):
+ 
+     from gql.transport.websockets import WebsocketsTransport
+@@ -572,7 +570,7 @@ async def test_graphqlws_subscription_wi
+ )
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_graphqlws_subscription_with_ping_interval_nok(
+-    event_loop, graphqlws_server, subscription_str
++    graphqlws_server, subscription_str
+ ):
+ 
+     from gql.transport.websockets import WebsocketsTransport
+@@ -605,7 +603,7 @@ async def test_graphqlws_subscription_wi
+ )
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_graphqlws_subscription_manual_pings_with_payload(
+-    event_loop, graphqlws_server, subscription_str
++    graphqlws_server, subscription_str
+ ):
+ 
+     from gql.transport.websockets import WebsocketsTransport
+@@ -647,7 +645,7 @@ async def test_graphqlws_subscription_ma
+ )
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_graphqlws_subscription_manual_pong_answers_with_payload(
+-    event_loop, graphqlws_server, subscription_str
++    graphqlws_server, subscription_str
+ ):
+ 
+     from gql.transport.websockets import WebsocketsTransport
+@@ -778,7 +776,7 @@ def test_graphqlws_subscription_sync_gra
+ )
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_graphqlws_subscription_running_in_thread(
+-    event_loop, graphqlws_server, subscription_str, run_sync_test
++    graphqlws_server, subscription_str, run_sync_test
+ ):
+     from gql.transport.websockets import WebsocketsTransport
+ 
+@@ -802,7 +800,7 @@ async def test_graphqlws_subscription_ru
+ 
+         assert count == -1
+ 
+-    await run_sync_test(event_loop, graphqlws_server, test_code)
++    await run_sync_test(graphqlws_server, test_code)
+ 
+ 
+ @pytest.mark.asyncio
+@@ -812,7 +810,7 @@ async def test_graphqlws_subscription_ru
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ @pytest.mark.parametrize("execute_instead_of_subscribe", [False, True])
+ async def test_graphqlws_subscription_reconnecting_session(
+-    event_loop, graphqlws_server, subscription_str, execute_instead_of_subscribe
++    graphqlws_server, subscription_str, execute_instead_of_subscribe
+ ):
+ 
+     import websockets
+Index: gql-3.5.3/tests/test_http_async_sync.py
+===================================================================
+--- gql-3.5.3.orig/tests/test_http_async_sync.py
++++ gql-3.5.3/tests/test_http_async_sync.py
+@@ -7,7 +7,7 @@ from gql import Client, gql
+ @pytest.mark.online
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("fetch_schema_from_transport", [True, False])
+-async def test_async_client_async_transport(event_loop, fetch_schema_from_transport):
++async def test_async_client_async_transport(fetch_schema_from_transport):
+ 
+     from gql.transport.aiohttp import AIOHTTPTransport
+ 
+@@ -51,7 +51,7 @@ async def test_async_client_async_transp
+ @pytest.mark.online
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("fetch_schema_from_transport", [True, False])
+-async def test_async_client_sync_transport(event_loop, fetch_schema_from_transport):
++async def test_async_client_sync_transport(fetch_schema_from_transport):
+ 
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+Index: gql-3.5.3/tests/test_httpx.py
+===================================================================
+--- gql-3.5.3.orig/tests/test_httpx.py
++++ gql-3.5.3/tests/test_httpx.py
+@@ -36,7 +36,7 @@ query1_server_answer = (
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_query(event_loop, aiohttp_server, run_sync_test):
++async def test_httpx_query(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXTransport
+ 
+@@ -74,12 +74,12 @@ async def test_httpx_query(event_loop, a
+             assert isinstance(transport.response_headers, Mapping)
+             assert transport.response_headers["dummy"] == "test1234"
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_cookies(event_loop, aiohttp_server, run_sync_test):
++async def test_httpx_cookies(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXTransport
+ 
+@@ -111,12 +111,12 @@ async def test_httpx_cookies(event_loop,
+ 
+             assert africa["code"] == "AF"
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_error_code_401(event_loop, aiohttp_server, run_sync_test):
++async def test_httpx_error_code_401(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXTransport
+ 
+@@ -146,12 +146,12 @@ async def test_httpx_error_code_401(even
+ 
+             assert "Client error '401 Unauthorized'" in str(exc_info.value)
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_error_code_429(event_loop, aiohttp_server, run_sync_test):
++async def test_httpx_error_code_429(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXTransport
+ 
+@@ -200,7 +200,7 @@ async def test_httpx_error_code_429(even
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_error_code_500(event_loop, aiohttp_server, run_sync_test):
++async def test_httpx_error_code_500(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXTransport
+ 
+@@ -224,7 +224,7 @@ async def test_httpx_error_code_500(even
+             with pytest.raises(TransportServerError):
+                 session.execute(query)
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ query1_server_error_answer = '{"errors": ["Error 1", "Error 2"]}'
+@@ -232,7 +232,7 @@ query1_server_error_answer = '{"errors":
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_error_code(event_loop, aiohttp_server, run_sync_test):
++async def test_httpx_error_code(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXTransport
+ 
+@@ -257,7 +257,7 @@ async def test_httpx_error_code(event_lo
+             with pytest.raises(TransportQueryError):
+                 session.execute(query)
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ invalid_protocol_responses = [
+@@ -270,9 +270,7 @@ invalid_protocol_responses = [
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("response", invalid_protocol_responses)
+-async def test_httpx_invalid_protocol(
+-    event_loop, aiohttp_server, response, run_sync_test
+-):
++async def test_httpx_invalid_protocol(aiohttp_server, response, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXTransport
+ 
+@@ -295,12 +293,12 @@ async def test_httpx_invalid_protocol(
+             with pytest.raises(TransportProtocolError):
+                 session.execute(query)
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_cannot_connect_twice(event_loop, aiohttp_server, run_sync_test):
++async def test_httpx_cannot_connect_twice(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXTransport
+ 
+@@ -321,14 +319,12 @@ async def test_httpx_cannot_connect_twic
+             with pytest.raises(TransportAlreadyConnected):
+                 session.transport.connect()
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_cannot_execute_if_not_connected(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_httpx_cannot_execute_if_not_connected(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXTransport
+ 
+@@ -349,7 +345,7 @@ async def test_httpx_cannot_execute_if_n
+         with pytest.raises(TransportClosed):
+             transport.execute(query)
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ query1_server_answer_with_extensions = (
+@@ -365,7 +361,7 @@ query1_server_answer_with_extensions = (
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_query_with_extensions(event_loop, aiohttp_server, run_sync_test):
++async def test_httpx_query_with_extensions(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXTransport
+ 
+@@ -391,7 +387,7 @@ async def test_httpx_query_with_extensio
+ 
+             assert execution_result.extensions["key1"] == "val1"
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ file_upload_server_answer = '{"data":{"success":true}}'
+@@ -420,7 +416,7 @@ This file will be sent in the GraphQL mu
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_file_upload(event_loop, aiohttp_server, run_sync_test):
++async def test_httpx_file_upload(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXTransport
+ 
+@@ -475,14 +471,12 @@ async def test_httpx_file_upload(event_l
+ 
+                     assert execution_result.data["success"]
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_file_upload_with_content_type(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_httpx_file_upload_with_content_type(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXTransport
+ 
+@@ -543,14 +537,12 @@ async def test_httpx_file_upload_with_co
+ 
+                     assert execution_result.data["success"]
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_file_upload_additional_headers(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_httpx_file_upload_additional_headers(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXTransport
+ 
+@@ -607,12 +599,12 @@ async def test_httpx_file_upload_additio
+ 
+                     assert execution_result.data["success"]
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_binary_file_upload(event_loop, aiohttp_server, run_sync_test):
++async def test_httpx_binary_file_upload(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXTransport
+ 
+@@ -673,7 +665,7 @@ async def test_httpx_binary_file_upload(
+ 
+                     assert execution_result.data["success"]
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ file_upload_mutation_2_operations = (
+@@ -685,7 +677,7 @@ file_upload_mutation_2_operations = (
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_file_upload_two_files(event_loop, aiohttp_server, run_sync_test):
++async def test_httpx_file_upload_two_files(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXTransport
+ 
+@@ -771,7 +763,7 @@ async def test_httpx_file_upload_two_fil
+                     f1.close()
+                     f2.close()
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ file_upload_mutation_3_operations = (
+@@ -783,9 +775,7 @@ file_upload_mutation_3_operations = (
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_file_upload_list_of_two_files(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_httpx_file_upload_list_of_two_files(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXTransport
+ 
+@@ -869,12 +859,12 @@ async def test_httpx_file_upload_list_of
+                     f1.close()
+                     f2.close()
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_error_fetching_schema(event_loop, aiohttp_server, run_sync_test):
++async def test_httpx_error_fetching_schema(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXTransport
+ 
+@@ -916,4 +906,4 @@ async def test_httpx_error_fetching_sche
+         assert expected_error in str(exc_info.value)
+         assert transport.client is None
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+Index: gql-3.5.3/tests/test_httpx_async.py
+===================================================================
+--- gql-3.5.3.orig/tests/test_httpx_async.py
++++ gql-3.5.3/tests/test_httpx_async.py
+@@ -42,7 +42,7 @@ pytestmark = pytest.mark.httpx
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_query(event_loop, aiohttp_server):
++async def test_httpx_query(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -82,7 +82,7 @@ async def test_httpx_query(event_loop, a
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_ignore_backend_content_type(event_loop, aiohttp_server):
++async def test_httpx_ignore_backend_content_type(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -112,7 +112,7 @@ async def test_httpx_ignore_backend_cont
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_cookies(event_loop, aiohttp_server):
++async def test_httpx_cookies(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -146,7 +146,7 @@ async def test_httpx_cookies(event_loop,
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_error_code_401(event_loop, aiohttp_server):
++async def test_httpx_error_code_401(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -178,7 +178,7 @@ async def test_httpx_error_code_401(even
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_error_code_429(event_loop, aiohttp_server):
++async def test_httpx_error_code_429(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -226,7 +226,7 @@ async def test_httpx_error_code_429(even
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_error_code_500(event_loop, aiohttp_server):
++async def test_httpx_error_code_500(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -262,7 +262,7 @@ transport_query_error_responses = [
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("query_error", transport_query_error_responses)
+-async def test_httpx_error_code(event_loop, aiohttp_server, query_error):
++async def test_httpx_error_code(aiohttp_server, query_error):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -318,7 +318,7 @@ invalid_protocol_responses = [
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("param", invalid_protocol_responses)
+-async def test_httpx_invalid_protocol(event_loop, aiohttp_server, param):
++async def test_httpx_invalid_protocol(aiohttp_server, param):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -347,7 +347,7 @@ async def test_httpx_invalid_protocol(ev
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_subscribe_not_supported(event_loop, aiohttp_server):
++async def test_httpx_subscribe_not_supported(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -373,7 +373,7 @@ async def test_httpx_subscribe_not_suppo
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_cannot_connect_twice(event_loop, aiohttp_server):
++async def test_httpx_cannot_connect_twice(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -396,7 +396,7 @@ async def test_httpx_cannot_connect_twic
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_cannot_execute_if_not_connected(event_loop, aiohttp_server):
++async def test_httpx_cannot_execute_if_not_connected(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -419,7 +419,7 @@ async def test_httpx_cannot_execute_if_n
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_extra_args(event_loop, aiohttp_server):
++async def test_httpx_extra_args(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+     import httpx
+@@ -464,7 +464,7 @@ query2_server_answer = '{"data": {"conti
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_query_variable_values(event_loop, aiohttp_server):
++async def test_httpx_query_variable_values(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -497,7 +497,7 @@ async def test_httpx_query_variable_valu
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_query_variable_values_fix_issue_292(event_loop, aiohttp_server):
++async def test_httpx_query_variable_values_fix_issue_292(aiohttp_server):
+     """Allow to specify variable_values without keyword.
+ 
+     See https://github.com/graphql-python/gql/issues/292"""
+@@ -532,9 +532,7 @@ async def test_httpx_query_variable_valu
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_execute_running_in_thread(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_httpx_execute_running_in_thread(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -556,14 +554,12 @@ async def test_httpx_execute_running_in_
+ 
+         client.execute(query)
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_subscribe_running_in_thread(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_httpx_subscribe_running_in_thread(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -594,7 +590,7 @@ async def test_httpx_subscribe_running_i
+             for result in client.subscribe(query):
+                 pass
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ file_upload_server_answer = '{"data":{"success":true}}'
+@@ -650,7 +646,7 @@ async def single_upload_handler(request)
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_file_upload(event_loop, aiohttp_server):
++async def test_httpx_file_upload(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -686,9 +682,7 @@ async def test_httpx_file_upload(event_l
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_file_upload_without_session(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_httpx_file_upload_without_session(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -721,7 +715,7 @@ async def test_httpx_file_upload_without
+ 
+                 assert success
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ # This is a sample binary file content containing all possible byte values
+@@ -757,7 +751,7 @@ async def binary_upload_handler(request)
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_binary_file_upload(event_loop, aiohttp_server):
++async def test_httpx_binary_file_upload(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -815,7 +809,7 @@ This file will also be sent in the Graph
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_file_upload_two_files(event_loop, aiohttp_server):
++async def test_httpx_file_upload_two_files(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -907,7 +901,7 @@ file_upload_mutation_3_map = '{"0": ["va
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_file_upload_list_of_two_files(event_loop, aiohttp_server):
++async def test_httpx_file_upload_list_of_two_files(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -980,7 +974,7 @@ async def test_httpx_file_upload_list_of
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_using_cli(event_loop, aiohttp_server, monkeypatch, capsys):
++async def test_httpx_using_cli(aiohttp_server, monkeypatch, capsys):
+     from aiohttp import web
+ 
+     async def handler(request):
+@@ -1018,7 +1012,7 @@ async def test_httpx_using_cli(event_loo
+ @pytest.mark.asyncio
+ @pytest.mark.script_launch_mode("subprocess")
+ async def test_httpx_using_cli_ep(
+-    event_loop, aiohttp_server, monkeypatch, script_runner, run_sync_test
++    aiohttp_server, monkeypatch, script_runner, run_sync_test
+ ):
+     from aiohttp import web
+ 
+@@ -1050,14 +1044,12 @@ async def test_httpx_using_cli_ep(
+ 
+         assert received_answer == expected_answer
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_using_cli_invalid_param(
+-    event_loop, aiohttp_server, monkeypatch, capsys
+-):
++async def test_httpx_using_cli_invalid_param(aiohttp_server, monkeypatch, capsys):
+     from aiohttp import web
+ 
+     async def handler(request):
+@@ -1092,9 +1084,7 @@ async def test_httpx_using_cli_invalid_p
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_using_cli_invalid_query(
+-    event_loop, aiohttp_server, monkeypatch, capsys
+-):
++async def test_httpx_using_cli_invalid_query(aiohttp_server, monkeypatch, capsys):
+     from aiohttp import web
+ 
+     async def handler(request):
+@@ -1133,7 +1123,7 @@ query1_server_answer_with_extensions = (
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_query_with_extensions(event_loop, aiohttp_server):
++async def test_httpx_query_with_extensions(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -1161,7 +1151,7 @@ async def test_httpx_query_with_extensio
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_query_https(event_loop, ssl_aiohttp_server):
++async def test_httpx_query_https(ssl_aiohttp_server):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -1196,7 +1186,7 @@ async def test_httpx_query_https(event_l
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_error_fetching_schema(event_loop, aiohttp_server):
++async def test_httpx_error_fetching_schema(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -1240,7 +1230,7 @@ async def test_httpx_error_fetching_sche
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_reconnecting_session(event_loop, aiohttp_server):
++async def test_httpx_reconnecting_session(aiohttp_server):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -1279,7 +1269,7 @@ async def test_httpx_reconnecting_sessio
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("retries", [False, lambda e: e])
+-async def test_httpx_reconnecting_session_retries(event_loop, aiohttp_server, retries):
++async def test_httpx_reconnecting_session_retries(aiohttp_server, retries):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -1312,7 +1302,7 @@ async def test_httpx_reconnecting_sessio
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+ async def test_httpx_reconnecting_session_start_connecting_task_twice(
+-    event_loop, aiohttp_server, caplog
++    aiohttp_server, caplog
+ ):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+@@ -1347,7 +1337,7 @@ async def test_httpx_reconnecting_sessio
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_httpx_json_serializer(event_loop, aiohttp_server, caplog):
++async def test_httpx_json_serializer(aiohttp_server, caplog):
+     from aiohttp import web
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+Index: gql-3.5.3/tests/test_httpx_online.py
+===================================================================
+--- gql-3.5.3.orig/tests/test_httpx_online.py
++++ gql-3.5.3/tests/test_httpx_online.py
+@@ -11,7 +11,7 @@ from gql.transport.exceptions import Tra
+ @pytest.mark.httpx
+ @pytest.mark.online
+ @pytest.mark.asyncio
+-async def test_httpx_simple_query(event_loop):
++async def test_httpx_simple_query():
+ 
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -56,7 +56,7 @@ async def test_httpx_simple_query(event_
+ @pytest.mark.httpx
+ @pytest.mark.online
+ @pytest.mark.asyncio
+-async def test_httpx_invalid_query(event_loop):
++async def test_httpx_invalid_query():
+ 
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+@@ -85,7 +85,7 @@ async def test_httpx_invalid_query(event
+ @pytest.mark.online
+ @pytest.mark.skipif(sys.version_info < (3, 8), reason="requires python3.8 or higher")
+ @pytest.mark.asyncio
+-async def test_httpx_two_queries_in_parallel_using_two_tasks(event_loop):
++async def test_httpx_two_queries_in_parallel_using_two_tasks():
+ 
+     from gql.transport.httpx import HTTPXAsyncTransport
+ 
+Index: gql-3.5.3/tests/test_phoenix_channel_exceptions.py
+===================================================================
+--- gql-3.5.3.orig/tests/test_phoenix_channel_exceptions.py
++++ gql-3.5.3/tests/test_phoenix_channel_exceptions.py
+@@ -161,7 +161,7 @@ async def no_connection_ack_phoenix_serv
+     indirect=True,
+ )
+ @pytest.mark.parametrize("query_str", [query1_str])
+-async def test_phoenix_channel_query_protocol_error(event_loop, server, query_str):
++async def test_phoenix_channel_query_protocol_error(server, query_str):
+ 
+     from gql.transport.phoenix_channel_websockets import (
+         PhoenixChannelWebsocketsTransport,
+@@ -191,7 +191,7 @@ async def test_phoenix_channel_query_pro
+     indirect=True,
+ )
+ @pytest.mark.parametrize("query_str", [query1_str])
+-async def test_phoenix_channel_query_error(event_loop, server, query_str):
++async def test_phoenix_channel_query_error(server, query_str):
+ 
+     from gql.transport.phoenix_channel_websockets import (
+         PhoenixChannelWebsocketsTransport,
+@@ -407,9 +407,7 @@ def subscription_server(
+     indirect=True,
+ )
+ @pytest.mark.parametrize("query_str", [query2_str])
+-async def test_phoenix_channel_subscription_protocol_error(
+-    event_loop, server, query_str
+-):
++async def test_phoenix_channel_subscription_protocol_error(server, query_str):
+ 
+     from gql.transport.phoenix_channel_websockets import (
+         PhoenixChannelWebsocketsTransport,
+@@ -439,7 +437,7 @@ server_error_server_answer = '{"event":"
+     indirect=True,
+ )
+ @pytest.mark.parametrize("query_str", [query1_str])
+-async def test_phoenix_channel_server_error(event_loop, server, query_str):
++async def test_phoenix_channel_server_error(server, query_str):
+ 
+     from gql.transport.phoenix_channel_websockets import (
+         PhoenixChannelWebsocketsTransport,
+@@ -468,7 +466,7 @@ async def test_phoenix_channel_server_er
+     indirect=True,
+ )
+ @pytest.mark.parametrize("query_str", [query2_str])
+-async def test_phoenix_channel_unsubscribe_error(event_loop, server, query_str):
++async def test_phoenix_channel_unsubscribe_error(server, query_str):
+ 
+     from gql.transport.phoenix_channel_websockets import (
+         PhoenixChannelWebsocketsTransport,
+@@ -498,7 +496,7 @@ async def test_phoenix_channel_unsubscri
+     indirect=True,
+ )
+ @pytest.mark.parametrize("query_str", [query2_str])
+-async def test_phoenix_channel_unsubscribe_error_forcing(event_loop, server, query_str):
++async def test_phoenix_channel_unsubscribe_error_forcing(server, query_str):
+ 
+     from gql.transport.phoenix_channel_websockets import (
+         PhoenixChannelWebsocketsTransport,
+Index: gql-3.5.3/tests/test_phoenix_channel_query.py
+===================================================================
+--- gql-3.5.3.orig/tests/test_phoenix_channel_query.py
++++ gql-3.5.3/tests/test_phoenix_channel_query.py
+@@ -49,7 +49,7 @@ async def query_server(ws, path):
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [query_server], indirect=True)
+ @pytest.mark.parametrize("query_str", [query1_str])
+-async def test_phoenix_channel_query(event_loop, server, query_str):
++async def test_phoenix_channel_query(server, query_str):
+     from gql.transport.phoenix_channel_websockets import (
+         PhoenixChannelWebsocketsTransport,
+     )
+@@ -126,7 +126,7 @@ async def subscription_server(ws, path):
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [subscription_server], indirect=True)
+ @pytest.mark.parametrize("query_str", [query2_str])
+-async def test_phoenix_channel_subscription(event_loop, server, query_str):
++async def test_phoenix_channel_subscription(server, query_str):
+     from gql.transport.phoenix_channel_websockets import (
+         PhoenixChannelWebsocketsTransport,
+     )
+Index: gql-3.5.3/tests/test_phoenix_channel_subscription.py
+===================================================================
+--- gql-3.5.3.orig/tests/test_phoenix_channel_subscription.py
++++ gql-3.5.3/tests/test_phoenix_channel_subscription.py
+@@ -174,9 +174,7 @@ countdown_subscription_str = """
+ @pytest.mark.parametrize("server", [server_countdown], indirect=True)
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ @pytest.mark.parametrize("end_count", [0, 5])
+-async def test_phoenix_channel_subscription(
+-    event_loop, server, subscription_str, end_count
+-):
++async def test_phoenix_channel_subscription(server, subscription_str, end_count):
+     """Parameterized test.
+ 
+     :param end_count: Target count at which the test will 'break' to unsubscribe.
+@@ -224,9 +222,7 @@ async def test_phoenix_channel_subscript
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server_countdown], indirect=True)
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+-async def test_phoenix_channel_subscription_no_break(
+-    event_loop, server, subscription_str
+-):
++async def test_phoenix_channel_subscription_no_break(server, subscription_str):
+     import logging
+ 
+     from gql.transport.phoenix_channel_websockets import (
+@@ -370,7 +366,7 @@ heartbeat_subscription_str = """
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [phoenix_heartbeat_server], indirect=True)
+ @pytest.mark.parametrize("subscription_str", [heartbeat_subscription_str])
+-async def test_phoenix_channel_heartbeat(event_loop, server, subscription_str):
++async def test_phoenix_channel_heartbeat(server, subscription_str):
+     from gql.transport.phoenix_channel_websockets import (
+         PhoenixChannelWebsocketsTransport,
+     )
+Index: gql-3.5.3/tests/test_requests.py
+===================================================================
+--- gql-3.5.3.orig/tests/test_requests.py
++++ gql-3.5.3/tests/test_requests.py
+@@ -36,7 +36,7 @@ query1_server_answer = (
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_query(event_loop, aiohttp_server, run_sync_test):
++async def test_requests_query(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -74,12 +74,12 @@ async def test_requests_query(event_loop
+             assert isinstance(transport.response_headers, Mapping)
+             assert transport.response_headers["dummy"] == "test1234"
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_cookies(event_loop, aiohttp_server, run_sync_test):
++async def test_requests_cookies(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -111,12 +111,12 @@ async def test_requests_cookies(event_lo
+ 
+             assert africa["code"] == "AF"
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_error_code_401(event_loop, aiohttp_server, run_sync_test):
++async def test_requests_error_code_401(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -146,12 +146,12 @@ async def test_requests_error_code_401(e
+ 
+             assert "401 Client Error: Unauthorized" in str(exc_info.value)
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_error_code_429(event_loop, aiohttp_server, run_sync_test):
++async def test_requests_error_code_429(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -200,7 +200,7 @@ async def test_requests_error_code_429(e
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_error_code_500(event_loop, aiohttp_server, run_sync_test):
++async def test_requests_error_code_500(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -224,7 +224,7 @@ async def test_requests_error_code_500(e
+             with pytest.raises(TransportServerError):
+                 session.execute(query)
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ query1_server_error_answer = '{"errors": ["Error 1", "Error 2"]}'
+@@ -232,7 +232,7 @@ query1_server_error_answer = '{"errors":
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_error_code(event_loop, aiohttp_server, run_sync_test):
++async def test_requests_error_code(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -257,7 +257,7 @@ async def test_requests_error_code(event
+             with pytest.raises(TransportQueryError):
+                 session.execute(query)
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ invalid_protocol_responses = [
+@@ -270,9 +270,7 @@ invalid_protocol_responses = [
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("response", invalid_protocol_responses)
+-async def test_requests_invalid_protocol(
+-    event_loop, aiohttp_server, response, run_sync_test
+-):
++async def test_requests_invalid_protocol(aiohttp_server, response, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -295,12 +293,12 @@ async def test_requests_invalid_protocol
+             with pytest.raises(TransportProtocolError):
+                 session.execute(query)
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_cannot_connect_twice(event_loop, aiohttp_server, run_sync_test):
++async def test_requests_cannot_connect_twice(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -321,14 +319,12 @@ async def test_requests_cannot_connect_t
+             with pytest.raises(TransportAlreadyConnected):
+                 session.transport.connect()
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_cannot_execute_if_not_connected(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_requests_cannot_execute_if_not_connected(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -349,7 +345,7 @@ async def test_requests_cannot_execute_i
+         with pytest.raises(TransportClosed):
+             transport.execute(query)
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ query1_server_answer_with_extensions = (
+@@ -365,9 +361,7 @@ query1_server_answer_with_extensions = (
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_query_with_extensions(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_requests_query_with_extensions(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -393,7 +387,7 @@ async def test_requests_query_with_exten
+ 
+             assert execution_result.extensions["key1"] == "val1"
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ file_upload_server_answer = '{"data":{"success":true}}'
+@@ -422,7 +416,7 @@ This file will be sent in the GraphQL mu
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_file_upload(event_loop, aiohttp_server, run_sync_test):
++async def test_requests_file_upload(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -477,14 +471,12 @@ async def test_requests_file_upload(even
+ 
+                     assert execution_result.data["success"]
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_file_upload_with_content_type(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_requests_file_upload_with_content_type(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -545,14 +537,12 @@ async def test_requests_file_upload_with
+ 
+                     assert execution_result.data["success"]
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_file_upload_additional_headers(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_requests_file_upload_additional_headers(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -609,12 +599,12 @@ async def test_requests_file_upload_addi
+ 
+                     assert execution_result.data["success"]
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_binary_file_upload(event_loop, aiohttp_server, run_sync_test):
++async def test_requests_binary_file_upload(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -675,7 +665,7 @@ async def test_requests_binary_file_uplo
+ 
+                     assert execution_result.data["success"]
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ file_upload_mutation_2_operations = (
+@@ -687,9 +677,7 @@ file_upload_mutation_2_operations = (
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_file_upload_two_files(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_requests_file_upload_two_files(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -775,7 +763,7 @@ async def test_requests_file_upload_two_
+                     f1.close()
+                     f2.close()
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ file_upload_mutation_3_operations = (
+@@ -787,9 +775,7 @@ file_upload_mutation_3_operations = (
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_file_upload_list_of_two_files(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_requests_file_upload_list_of_two_files(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -873,14 +859,12 @@ async def test_requests_file_upload_list
+                     f1.close()
+                     f2.close()
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_error_fetching_schema(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_requests_error_fetching_schema(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -922,4 +906,4 @@ async def test_requests_error_fetching_s
+         assert expected_error in str(exc_info.value)
+         assert transport.session is None
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+Index: gql-3.5.3/tests/test_requests_batch.py
+===================================================================
+--- gql-3.5.3.orig/tests/test_requests_batch.py
++++ gql-3.5.3/tests/test_requests_batch.py
+@@ -48,7 +48,7 @@ query1_server_answer_twice_list = (
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_query(event_loop, aiohttp_server, run_sync_test):
++async def test_requests_query(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -86,14 +86,12 @@ async def test_requests_query(event_loop
+             assert isinstance(transport.response_headers, Mapping)
+             assert transport.response_headers["dummy"] == "test1234"
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_query_auto_batch_enabled(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_requests_query_auto_batch_enabled(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -134,13 +132,13 @@ async def test_requests_query_auto_batch
+             assert isinstance(transport.response_headers, Mapping)
+             assert transport.response_headers["dummy"] == "test1234"
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+ async def test_requests_query_auto_batch_enabled_two_requests(
+-    event_loop, aiohttp_server, run_sync_test
++    aiohttp_server, run_sync_test
+ ):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+@@ -194,12 +192,12 @@ async def test_requests_query_auto_batch
+         for thread in threads:
+             thread.join()
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_cookies(event_loop, aiohttp_server, run_sync_test):
++async def test_requests_cookies(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -233,12 +231,12 @@ async def test_requests_cookies(event_lo
+ 
+             assert africa["code"] == "AF"
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_error_code_401(event_loop, aiohttp_server, run_sync_test):
++async def test_requests_error_code_401(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -268,13 +266,13 @@ async def test_requests_error_code_401(e
+ 
+             assert "401 Client Error: Unauthorized" in str(exc_info.value)
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+ async def test_requests_error_code_401_auto_batch_enabled(
+-    event_loop, aiohttp_server, run_sync_test
++    aiohttp_server, run_sync_test
+ ):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+@@ -308,12 +306,12 @@ async def test_requests_error_code_401_a
+ 
+             assert "401 Client Error: Unauthorized" in str(exc_info.value)
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_error_code_429(event_loop, aiohttp_server, run_sync_test):
++async def test_requests_error_code_429(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -362,7 +360,7 @@ async def test_requests_error_code_429(e
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_error_code_500(event_loop, aiohttp_server, run_sync_test):
++async def test_requests_error_code_500(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -386,7 +384,7 @@ async def test_requests_error_code_500(e
+             with pytest.raises(TransportServerError):
+                 session.execute_batch(query)
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ query1_server_error_answer_list = '[{"errors": ["Error 1", "Error 2"]}]'
+@@ -394,7 +392,7 @@ query1_server_error_answer_list = '[{"er
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_error_code(event_loop, aiohttp_server, run_sync_test):
++async def test_requests_error_code(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -419,7 +417,7 @@ async def test_requests_error_code(event
+             with pytest.raises(TransportQueryError):
+                 session.execute_batch(query)
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ invalid_protocol_responses = [
+@@ -437,9 +435,7 @@ invalid_protocol_responses = [
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("response", invalid_protocol_responses)
+-async def test_requests_invalid_protocol(
+-    event_loop, aiohttp_server, response, run_sync_test
+-):
++async def test_requests_invalid_protocol(aiohttp_server, response, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -462,14 +458,12 @@ async def test_requests_invalid_protocol
+             with pytest.raises(TransportProtocolError):
+                 session.execute_batch(query)
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_cannot_execute_if_not_connected(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_requests_cannot_execute_if_not_connected(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -492,7 +486,7 @@ async def test_requests_cannot_execute_i
+         with pytest.raises(TransportClosed):
+             transport.execute_batch(query)
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ query1_server_answer_with_extensions_list = (
+@@ -508,9 +502,7 @@ query1_server_answer_with_extensions_lis
+ 
+ @pytest.mark.aiohttp
+ @pytest.mark.asyncio
+-async def test_requests_query_with_extensions(
+-    event_loop, aiohttp_server, run_sync_test
+-):
++async def test_requests_query_with_extensions(aiohttp_server, run_sync_test):
+     from aiohttp import web
+     from gql.transport.requests import RequestsHTTPTransport
+ 
+@@ -537,7 +529,7 @@ async def test_requests_query_with_exten
+ 
+             assert execution_results[0].extensions["key1"] == "val1"
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)
+ 
+ 
+ ONLINE_URL = "https://countries.trevorblades.com/"
+Index: gql-3.5.3/tests/test_websocket_exceptions.py
+===================================================================
+--- gql-3.5.3.orig/tests/test_websocket_exceptions.py
++++ gql-3.5.3/tests/test_websocket_exceptions.py
+@@ -41,7 +41,7 @@ invalid_query1_server = [invalid_query1_
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [invalid_query1_server], indirect=True)
+ @pytest.mark.parametrize("query_str", [invalid_query_str])
+-async def test_websocket_invalid_query(event_loop, client_and_server, query_str):
++async def test_websocket_invalid_query(client_and_server, query_str):
+ 
+     session, server = client_and_server
+ 
+@@ -80,7 +80,7 @@ async def server_invalid_subscription(ws
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server_invalid_subscription], indirect=True)
+ @pytest.mark.parametrize("query_str", [invalid_subscription_str])
+-async def test_websocket_invalid_subscription(event_loop, client_and_server, query_str):
++async def test_websocket_invalid_subscription(client_and_server, query_str):
+ 
+     session, server = client_and_server
+ 
+@@ -112,7 +112,7 @@ async def server_no_ack(ws, path):
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server_no_ack], indirect=True)
+ @pytest.mark.parametrize("query_str", [invalid_query_str])
+-async def test_websocket_server_does_not_send_ack(event_loop, server, query_str):
++async def test_websocket_server_does_not_send_ack(server, query_str):
+     from gql.transport.websockets import WebsocketsTransport
+ 
+     url = f"ws://{server.hostname}:{server.port}/graphql"
+@@ -135,7 +135,7 @@ async def server_connection_error(ws, pa
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server_connection_error], indirect=True)
+ @pytest.mark.parametrize("query_str", [invalid_query_str])
+-async def test_websocket_sending_invalid_data(event_loop, client_and_server, query_str):
++async def test_websocket_sending_invalid_data(client_and_server, query_str):
+ 
+     session, server = client_and_server
+ 
+@@ -163,9 +163,7 @@ async def server_invalid_payload(ws, pat
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server_invalid_payload], indirect=True)
+ @pytest.mark.parametrize("query_str", [invalid_query_str])
+-async def test_websocket_sending_invalid_payload(
+-    event_loop, client_and_server, query_str
+-):
++async def test_websocket_sending_invalid_payload(client_and_server, query_str):
+ 
+     session, server = client_and_server
+ 
+@@ -234,7 +232,7 @@ sending_bytes = [b"\x01\x02\x03"]
+     ],
+     indirect=True,
+ )
+-async def test_websocket_transport_protocol_errors(event_loop, client_and_server):
++async def test_websocket_transport_protocol_errors(client_and_server):
+ 
+     session, server = client_and_server
+ 
+@@ -252,7 +250,7 @@ async def server_without_ack(ws, path):
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server_without_ack], indirect=True)
+-async def test_websocket_server_does_not_ack(event_loop, server):
++async def test_websocket_server_does_not_ack(server):
+     from gql.transport.websockets import WebsocketsTransport
+ 
+     url = f"ws://{server.hostname}:{server.port}/graphql"
+@@ -271,7 +269,7 @@ async def server_closing_directly(ws, pa
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server_closing_directly], indirect=True)
+-async def test_websocket_server_closing_directly(event_loop, server):
++async def test_websocket_server_closing_directly(server):
+     import websockets
+     from gql.transport.websockets import WebsocketsTransport
+ 
+@@ -292,7 +290,7 @@ async def server_closing_after_ack(ws, p
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server_closing_after_ack], indirect=True)
+-async def test_websocket_server_closing_after_ack(event_loop, client_and_server):
++async def test_websocket_server_closing_after_ack(client_and_server):
+ 
+     import websockets
+ 
+@@ -321,7 +319,7 @@ async def server_sending_invalid_query_e
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server_sending_invalid_query_errors], indirect=True)
+-async def test_websocket_server_sending_invalid_query_errors(event_loop, server):
++async def test_websocket_server_sending_invalid_query_errors(server):
+     from gql.transport.websockets import WebsocketsTransport
+ 
+     url = f"ws://{server.hostname}:{server.port}/graphql"
+@@ -336,7 +334,7 @@ async def test_websocket_server_sending_
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server_sending_invalid_query_errors], indirect=True)
+-async def test_websocket_non_regression_bug_105(event_loop, server):
++async def test_websocket_non_regression_bug_105(server):
+     from gql.transport.websockets import WebsocketsTransport
+ 
+     # This test will check a fix to a race condition which happens if the user is trying
+@@ -365,9 +363,7 @@ async def test_websocket_non_regression_
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [invalid_query1_server], indirect=True)
+-async def test_websocket_using_cli_invalid_query(
+-    event_loop, server, monkeypatch, capsys
+-):
++async def test_websocket_using_cli_invalid_query(server, monkeypatch, capsys):
+ 
+     url = f"ws://{server.hostname}:{server.port}/graphql"
+     print(f"url = {url}")
+Index: gql-3.5.3/tests/test_websocket_query.py
+===================================================================
+--- gql-3.5.3.orig/tests/test_websocket_query.py
++++ gql-3.5.3/tests/test_websocket_query.py
+@@ -51,7 +51,7 @@ server1_answers = [
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server1_answers], indirect=True)
+-async def test_websocket_starting_client_in_context_manager(event_loop, server):
++async def test_websocket_starting_client_in_context_manager(server):
+     import websockets
+     from gql.transport.websockets import WebsocketsTransport
+ 
+@@ -91,7 +91,7 @@ async def test_websocket_starting_client
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("ws_ssl_server", [server1_answers], indirect=True)
+-async def test_websocket_using_ssl_connection(event_loop, ws_ssl_server):
++async def test_websocket_using_ssl_connection(ws_ssl_server):
+     import websockets
+     from gql.transport.websockets import WebsocketsTransport
+ 
+@@ -132,7 +132,7 @@ async def test_websocket_using_ssl_conne
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server1_answers], indirect=True)
+ @pytest.mark.parametrize("query_str", [query1_str])
+-async def test_websocket_simple_query(event_loop, client_and_server, query_str):
++async def test_websocket_simple_query(client_and_server, query_str):
+ 
+     session, server = client_and_server
+ 
+@@ -152,9 +152,7 @@ server1_two_answers_in_series = [
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server1_two_answers_in_series], indirect=True)
+ @pytest.mark.parametrize("query_str", [query1_str])
+-async def test_websocket_two_queries_in_series(
+-    event_loop, client_and_server, query_str
+-):
++async def test_websocket_two_queries_in_series(client_and_server, query_str):
+ 
+     session, server = client_and_server
+ 
+@@ -188,9 +186,7 @@ async def server1_two_queries_in_paralle
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server1_two_queries_in_parallel], indirect=True)
+ @pytest.mark.parametrize("query_str", [query1_str])
+-async def test_websocket_two_queries_in_parallel(
+-    event_loop, client_and_server, query_str
+-):
++async def test_websocket_two_queries_in_parallel(client_and_server, query_str):
+ 
+     session, server = client_and_server
+ 
+@@ -235,9 +231,7 @@ async def server_closing_while_we_are_do
+     "server", [server_closing_while_we_are_doing_something_else], indirect=True
+ )
+ @pytest.mark.parametrize("query_str", [query1_str])
+-async def test_websocket_server_closing_after_first_query(
+-    event_loop, client_and_server, query_str
+-):
++async def test_websocket_server_closing_after_first_query(client_and_server, query_str):
+ 
+     session, server = client_and_server
+ 
+@@ -265,7 +259,7 @@ ignore_invalid_id_answers = [
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [ignore_invalid_id_answers], indirect=True)
+ @pytest.mark.parametrize("query_str", [query1_str])
+-async def test_websocket_ignore_invalid_id(event_loop, client_and_server, query_str):
++async def test_websocket_ignore_invalid_id(client_and_server, query_str):
+ 
+     session, server = client_and_server
+ 
+@@ -300,7 +294,7 @@ async def assert_client_is_working(sessi
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server1_answers], indirect=True)
+-async def test_websocket_multiple_connections_in_series(event_loop, server):
++async def test_websocket_multiple_connections_in_series(server):
+     from gql.transport.websockets import WebsocketsTransport
+ 
+     url = f"ws://{server.hostname}:{server.port}/graphql"
+@@ -323,7 +317,7 @@ async def test_websocket_multiple_connec
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server1_answers], indirect=True)
+-async def test_websocket_multiple_connections_in_parallel(event_loop, server):
++async def test_websocket_multiple_connections_in_parallel(server):
+     from gql.transport.websockets import WebsocketsTransport
+ 
+     url = f"ws://{server.hostname}:{server.port}/graphql"
+@@ -342,9 +336,7 @@ async def test_websocket_multiple_connec
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server1_answers], indirect=True)
+-async def test_websocket_trying_to_connect_to_already_connected_transport(
+-    event_loop, server
+-):
++async def test_websocket_trying_to_connect_to_already_connected_transport(server):
+     from gql.transport.websockets import WebsocketsTransport
+ 
+     url = f"ws://{server.hostname}:{server.port}/graphql"
+@@ -391,7 +383,7 @@ async def server_with_authentication_in_
+ )
+ @pytest.mark.parametrize("query_str", [query1_str])
+ async def test_websocket_connect_success_with_authentication_in_connection_init(
+-    event_loop, server, query_str
++    server, query_str
+ ):
+     from gql.transport.websockets import WebsocketsTransport
+ 
+@@ -426,7 +418,7 @@ async def test_websocket_connect_success
+ @pytest.mark.parametrize("query_str", [query1_str])
+ @pytest.mark.parametrize("init_payload", [{}, {"Authorization": "invalid_code"}])
+ async def test_websocket_connect_failed_with_authentication_in_connection_init(
+-    event_loop, server, query_str, init_payload
++    server, query_str, init_payload
+ ):
+     from gql.transport.websockets import WebsocketsTransport
+ 
+@@ -486,7 +478,7 @@ def test_websocket_execute_sync(server):
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server1_answers], indirect=True)
+-async def test_websocket_add_extra_parameters_to_connect(event_loop, server):
++async def test_websocket_add_extra_parameters_to_connect(server):
+     from gql.transport.websockets import WebsocketsTransport
+ 
+     url = f"ws://{server.hostname}:{server.port}/graphql"
+@@ -518,9 +510,7 @@ async def server_sending_keep_alive_befo
+     "server", [server_sending_keep_alive_before_connection_ack], indirect=True
+ )
+ @pytest.mark.parametrize("query_str", [query1_str])
+-async def test_websocket_non_regression_bug_108(
+-    event_loop, client_and_server, query_str
+-):
++async def test_websocket_non_regression_bug_108(client_and_server, query_str):
+ 
+     # This test will check that we now ignore keepalive message
+     # arriving before the connection_ack
+@@ -542,7 +532,7 @@ async def test_websocket_non_regression_
+ 
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server1_answers], indirect=True)
+-async def test_websocket_using_cli(event_loop, server, monkeypatch, capsys):
++async def test_websocket_using_cli(server, monkeypatch, capsys):
+ 
+     url = f"ws://{server.hostname}:{server.port}/graphql"
+     print(f"url = {url}")
+@@ -593,9 +583,7 @@ server1_answers_with_extensions = [
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server1_answers_with_extensions], indirect=True)
+ @pytest.mark.parametrize("query_str", [query1_str])
+-async def test_websocket_simple_query_with_extensions(
+-    event_loop, client_and_server, query_str
+-):
++async def test_websocket_simple_query_with_extensions(client_and_server, query_str):
+ 
+     session, server = client_and_server
+ 
+Index: gql-3.5.3/tests/test_websocket_subscription.py
+===================================================================
+--- gql-3.5.3.orig/tests/test_websocket_subscription.py
++++ gql-3.5.3/tests/test_websocket_subscription.py
+@@ -126,7 +126,7 @@ countdown_subscription_str = """
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server_countdown], indirect=True)
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+-async def test_websocket_subscription(event_loop, client_and_server, subscription_str):
++async def test_websocket_subscription(client_and_server, subscription_str):
+ 
+     session, server = client_and_server
+ 
+@@ -148,7 +148,7 @@ async def test_websocket_subscription(ev
+ @pytest.mark.parametrize("server", [server_countdown], indirect=True)
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_websocket_subscription_get_execution_result(
+-    event_loop, client_and_server, subscription_str
++    client_and_server, subscription_str
+ ):
+ 
+     session, server = client_and_server
+@@ -172,9 +172,7 @@ async def test_websocket_subscription_ge
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server_countdown], indirect=True)
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+-async def test_websocket_subscription_break(
+-    event_loop, client_and_server, subscription_str
+-):
++async def test_websocket_subscription_break(client_and_server, subscription_str):
+ 
+     session, server = client_and_server
+ 
+@@ -202,9 +200,7 @@ async def test_websocket_subscription_br
+ @pytest.mark.asyncio
+ @pytest.mark.parametrize("server", [server_countdown], indirect=True)
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+-async def test_websocket_subscription_task_cancel(
+-    event_loop, client_and_server, subscription_str
+-):
++async def test_websocket_subscription_task_cancel(client_and_server, subscription_str):
+ 
+     session, server = client_and_server
+ 
+@@ -242,7 +238,7 @@ async def test_websocket_subscription_ta
+ @pytest.mark.parametrize("server", [server_countdown], indirect=True)
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_websocket_subscription_close_transport(
+-    event_loop, client_and_server, subscription_str
++    client_and_server, subscription_str
+ ):
+ 
+     session, server = client_and_server
+@@ -307,7 +303,7 @@ async def server_countdown_close_connect
+ )
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_websocket_subscription_server_connection_closed(
+-    event_loop, client_and_server, subscription_str
++    client_and_server, subscription_str
+ ):
+     import websockets
+ 
+@@ -332,7 +328,7 @@ async def test_websocket_subscription_se
+ @pytest.mark.parametrize("server", [server_countdown], indirect=True)
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_websocket_subscription_slow_consumer(
+-    event_loop, client_and_server, subscription_str
++    client_and_server, subscription_str
+ ):
+ 
+     session, server = client_and_server
+@@ -357,7 +353,7 @@ async def test_websocket_subscription_sl
+ @pytest.mark.parametrize("server", [server_countdown], indirect=True)
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_websocket_subscription_with_operation_name(
+-    event_loop, client_and_server, subscription_str
++    client_and_server, subscription_str
+ ):
+ 
+     session, server = client_and_server
+@@ -388,7 +384,7 @@ WITH_KEEPALIVE = True
+ @pytest.mark.parametrize("server", [server_countdown], indirect=True)
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_websocket_subscription_with_keepalive(
+-    event_loop, client_and_server, subscription_str
++    client_and_server, subscription_str
+ ):
+ 
+     session, server = client_and_server
+@@ -411,7 +407,7 @@ async def test_websocket_subscription_wi
+ @pytest.mark.parametrize("server", [server_countdown], indirect=True)
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_websocket_subscription_with_keepalive_with_timeout_ok(
+-    event_loop, server, subscription_str
++    server, subscription_str
+ ):
+ 
+     from gql.transport.websockets import WebsocketsTransport
+@@ -441,7 +437,7 @@ async def test_websocket_subscription_wi
+ @pytest.mark.parametrize("server", [server_countdown], indirect=True)
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_websocket_subscription_with_keepalive_with_timeout_nok(
+-    event_loop, server, subscription_str
++    server, subscription_str
+ ):
+ 
+     from gql.transport.websockets import WebsocketsTransport
+@@ -617,7 +613,7 @@ def test_websocket_subscription_sync_gra
+ @pytest.mark.parametrize("server", [server_countdown], indirect=True)
+ @pytest.mark.parametrize("subscription_str", [countdown_subscription_str])
+ async def test_websocket_subscription_running_in_thread(
+-    event_loop, server, subscription_str, run_sync_test
++    server, subscription_str, run_sync_test
+ ):
+     from gql.transport.websockets import WebsocketsTransport
+ 
+@@ -641,4 +637,4 @@ async def test_websocket_subscription_ru
+ 
+         assert count == -1
+ 
+-    await run_sync_test(event_loop, server, test_code)
++    await run_sync_test(server, test_code)

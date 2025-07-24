@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 24 02:45:28 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-new-pytest-asyncio.patch:
+  * Support changes required by pytest-asyncio >= 0.25.
+- Convert to using libalternatives.
+
+-------------------------------------------------------------------
 Fri May 30 07:37:19 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.5.3

@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1281299</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8a45434c45a4e31fc9d1bca5b782a7e2</srcmd5>
+    <version>3.5.3</version>
+    <time>1753375600</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-new-pytest-asyncio.patch:
+  * Support changes required by pytest-asyncio &gt;= 0.25.
+- Convert to using libalternatives.</comment>
+    <requestid>1295408</requestid>
+  </revision>
 </revisionlist>
