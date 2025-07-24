@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jul 24 11:51:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.116:
+  * chore(deps): upgrade jenkins-x-plugins/jx-verify to version
+    0.3.16
+
+-------------------------------------------------------------------
+Thu Jul 24 11:48:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.115:
+  * chore(deps): upgrade jenkins-x-plugins/jx-test to version
+    0.4.10
+
+-------------------------------------------------------------------
+Thu Jul 24 11:46:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.114:
+  * chore(deps): upgrade jenkins-x-plugins/jx-secret to version
+    0.4.16
+
+-------------------------------------------------------------------
+Thu Jul 24 11:44:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.113:
+  * chore(deps): upgrade jenkins-x-plugins/jx-pipeline to version
+    0.7.30
+
+-------------------------------------------------------------------
+Thu Jul 24 11:39:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.112:
+  * chore(deps): upgrade jenkins-x-plugins/jx-health to version
+    0.0.81
+
+-------------------------------------------------------------------
 Tue Jul 15 06:33:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.11.111:
