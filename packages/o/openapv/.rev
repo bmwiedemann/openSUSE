@@ -7,4 +7,28 @@
     <comment></comment>
     <requestid>1276600</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>02f29d1593234ffbe129a895d1a353d1</srcmd5>
+    <version>0.2.0.0</version>
+    <time>1753375447</time>
+    <user>dimstar_suse</user>
+    <comment>- disable building on %{ix86}
+
+- update to version 0.2.0.0:
+  * Adds 'APV family' (typical target bitrate) definition
+  * Updates 'level' table according to APV spec changes
+  * Improves coding gain according to preset values through
+    enhanced RDOQ and RDO
+  * Supports various profiles:
+    422-12, 444-10, 444-12, 4444-10, 4444-12, and 400-10
+  * Speed-up encoding and decoding time
+  * Safe bitstreasm buffer access by one byte-level addressing
+  * Safe management of metadata by instance copy
+  * Introduces a method to disable the 'Raw bitstream format' in
+    encoding and decoding API
+  * new API for getting version number
+  * new logo of OpenAPV project provided by ASWF
+- remove 010-openapv-fix-pkgconfig.patch, upstream applied the patch</comment>
+    <requestid>1295353</requestid>
+  </revision>
 </revisionlist>

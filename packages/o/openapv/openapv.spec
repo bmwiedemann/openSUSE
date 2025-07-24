@@ -16,20 +16,19 @@
 #
 
 
-%define         sover 1
+%define         sover 2
 %define         sname oapv
 Name:           openapv
-Version:        0.1.13.1
+Version:        0.2.0.0
 Release:        0
 Summary:        Open Advanced Professional Video Codec
 License:        BSD-3-Clause
 URL:            https://github.com/AcademySoftwareFoundation/openapv
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         remove-opensuse-release-requirement.patch
-# thanks to archlinux
-Patch1:         010-openapv-fix-pkgconfig.patch
 BuildRequires:  cmake
 BuildRequires:  gcc
+ExcludeArch:    %{ix86}
 
 %description
 The APV codec is a professional video codec, which was developed in response to
