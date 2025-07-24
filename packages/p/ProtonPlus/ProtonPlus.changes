@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Jul 23 13:00:28 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 0.5.10:
+  * Fix runners not downloading for HGL
+  * Fix recursive copy error
+  * Delete cache on exit
+  * Fix WineZGUI Flatpak not appearing in launcher list
+- update to version 0.5.9:
+  * style: replace .png with .svg and update tab symbolic icons
+  * Fix SteamTinkerLaunch being duplicated
+  * Made the runners dynamic
+  * Add WineZGUI support
+  * Fix launchers not loading
+  * Fix "Load more" not always appearing
+  * Fix translation crash on empty string
+  * Fix StatusPage not displaying icon correctly
+  * Fix launch options parsing issue
+  * Made the game list sort-able via the header bar
+  * Add script to extract translatable JSON strings
+  * Add LC_ALL to Steam shortcut launch options
+  * Add a shortcut to open protontricks
+  * Add a loading screen
+  * Add a profile switch button
+  * Fix issue with incorrectly identifying Steam shortcut
+  * Fix crash when CompatToolMapping is missing in config.vdf
+  * Fix incorrect insertion position when launch options are missing
+  * Fix "Load more" scrolling to top after click
+  * Add a fallback in case runners.json is missing
+  * Fix build script
+  * Improve scroll stability after clicking Load more
+  * Add Proton-GE Latest
+  * Change groups for compat_layers in runners.json
+  * Add a message when closing and an update is running
+
+-------------------------------------------------------------------
 Thu Jul  3 07:28:21 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.5.8:

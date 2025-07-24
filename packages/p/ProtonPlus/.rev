@@ -211,4 +211,12 @@
   * Fix issue related to the new custom dropdown's (forwarded request 1290134 from rrahl0)</comment>
     <requestid>1290135</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>253df2771b9891c3048b2c1cdba33d50</srcmd5>
+    <version>0.5.10</version>
+    <time>1753375443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1295343</requestid>
+  </revision>
 </revisionlist>
