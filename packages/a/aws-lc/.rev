@@ -53,4 +53,12 @@
   * Add hardened build back in (forwarded request 1289677 from rrahl0)</comment>
     <requestid>1289678</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>41f0131fb2e3089827a787e29127d52f</srcmd5>
+    <version>1.56.0</version>
+    <time>1753375472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1295357</requestid>
+  </revision>
 </revisionlist>

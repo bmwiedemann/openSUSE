@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Jul 23 13:51:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.56.0:
+  * Export BIO_f_md for consumers
+  * Remove obsolete python main patch
+  * Remove redundant conditions
+  * Implement pkcs8 cli
+  * Export BF_cfb64_encrypt
+  * Add pkey command to CLI tool
+  * Improve OpenSSL compatibility
+  * Fix PKCS12 Error Code
+  * Use SP 800-56Arev3 Section 5.6.2.1.4.b instead of
+    ECDSA PCT method
+  * Minimize the nginx patch even further
+  * Add LC contributors to allowlist
+  * Align -help return codes in tool-openssl CLI to match Openssl
+  * Dynamically link AWS-LC in cpython integration tests
+  * Add missing x509 CI to list of tests
+  * docs: Add FIPS documentation to BUILDING.md and README.md
+  * Implement SSL_CTX_set_client_hello_cb for ClientHello callback
+  * tool-openssl: Fix warning 'strnlen' specified bound 4096 exceeds
+    source size 128
+  * Pull in SSL_get_negotiated_group and TLSEXT_nid_unknown
+    from upstream
+  * Document non-support of TLS 1.3
+- update to version 1.55.0:
+  * Add SSL_CTRL defines for SSL_*_tlsext_status_type
+  * Implement HMAC over SHA3 truncated variants
+  * Temporarily allowlist the webhook actors to AWS-LC
+  * Rework memory BIOs and implement BIO_seek
+  * s2n-bignum: Add prefix header to _s2n_bignum_internal.h
+
+-------------------------------------------------------------------
 Mon Jun 30 12:50:18 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.54.0:
