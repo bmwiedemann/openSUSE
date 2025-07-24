@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 23 15:48:02 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to version 0.0.37~git20250722:
+  * vk: Fix textureCompressionBC check for v3dv/panvk
+
+-------------------------------------------------------------------
 Tue Jul 22 14:22:43 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 0.0.37~git20250719:
