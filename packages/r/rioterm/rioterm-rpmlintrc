@@ -1,1 +1,4 @@
-addFilter("W: useless-provides");
+### 20250716, smb - This was useful at some point, doesn't seem necessary
+#     at present.
+#addFilter("useless-provides");
+#####

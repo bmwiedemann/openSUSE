@@ -2,7 +2,6 @@
 # spec file for package rioterm
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2023 Nicolas Lorin <androw95220@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +17,7 @@
 
 
 Name:           rioterm
-Version:        0.2.20
+Version:        0.2.21
 Release:        0
 Summary:        A hardware-accelerated GPU terminal emulator powered by WebGPU
 License:        MIT
@@ -26,9 +25,6 @@ URL:            https://raphamorim.io/rio/
 Source0:        rio-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source99:       %{name}-rpmlintrc
-BuildRequires:  cargo-packaging
-BuildRequires:  cmake
-BuildRequires:  freetype2-devel
 %if 0%{?suse_version} <= 1500
 Group:          System/X11/Terminals
 BuildRequires:  gcc13
@@ -36,13 +32,15 @@ BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  libxcb-devel
-BuildRequires:  libxkbcommon-devel
+BuildRequires:  cargo-packaging
+BuildRequires:  cmake
 BuildRequires:  make
-BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python311
 BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(xcb)
+BuildRequires:  pkgconfig(xkbcommon)
 
 %description
 A hardware-accelerated GPU terminal emulator powered by WebGPU, focusing to run in desktops and browsers.

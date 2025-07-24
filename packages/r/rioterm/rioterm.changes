@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Jul 16 14:19:30 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Converting -devel BuildRequires to pkgconfig
+- Removing 'BuildRequires: python311'
+- Update to version 0.2.21:
+  * update deps
+  * update docs
+  * Add xterm-rio terminfo entry for better application compatibility
+  * Fix underline metrics (#1220)
+  * docs: add terminfo section to Linux installation guide
+  * canonicalize the input to the --working-dir argument for rio cli (#1217)
+  * Fix/cursor damage line based (#1216)
+  * update docs
+  * update documentation
+  * rename: use_current_path to current_working_directory (or cwd)
+  * flake.lock: Update (#1212)
+  * always damage cursor
+  * synchronize criterion
+  * font cache logic for the renderer
+  * Disable redundant vsync calculations on macOS
+  * Fix clippy warnings in char cache and benchmark
+  * Optimize character-to-string conversion in renderer hot path
+  * Split work (#1206)
+  * flake.lock: Update (#1202)
+  * CVDisplayLink-plus-GCD (#1200)
+  * fix lint
+  * fixup! avoid damage cursor all time
+  * avoid damage cursor all time
+  * fix fmt on last_blink
+  * add last_blink_toggle
+  * update rust
+  * Perf multiscreen (#1189)
+  * flake.lock: Update (#1186)
+  * fix remaining sextants
+  * implement disable_occluded_render
+  * fix #1169 wrong encoding
+  * send BS (0x08)
+  * shift+click selection
+  * update dependencies
+  * stop calling rendering implementation on scroll (#1182)
+  * Changed from sending DEL (, ASCII 127) to backspace (, ASCII 8). Closes #1169
+  * Fix Ime position (#1178)
+  * man pages support (#1179)
+  * fix hash string content
+  * Sugarloaf unify cache on render (#1176)
+  * update docs
+  * fix lint
+  * update comment
+  * fixup! improve atlas
+  * improve atlas
+  * implement around 75% Memory Reduction: Text glyphs now use R8 (1 byte) instead of RGBA (4 bytes)
+  * fix cache key and implement whitespace_optimization
+  * fix cache key and add debugs
+  * cache_key_with_interning
+  * fix is_srgb issue
+  * remove self.router.update_titles from wait
+  * add feature mention
+  * implement p3 display for macos (#1164)
+  * flake.lock: Update (#1161)
+  * update com.rioterm.Rio.metainfo.xml with 0.2.20 version
+
+-------------------------------------------------------------------
 Fri Jun 20 16:05:52 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 0.2.20:
