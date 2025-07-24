@@ -703,4 +703,14 @@
 - Update to 0.9.36</comment>
     <requestid>1154459</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>93d31da44c4ba7eccfcadeeade63593b</srcmd5>
+    <version>0.9.36</version>
+    <time>1753375769</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1295418 from StevenK
+
+- Use pyproject macros from python-rpm-macros to build and install.</comment>
+    <requestid>1295491</requestid>
+  </revision>
 </revisionlist>

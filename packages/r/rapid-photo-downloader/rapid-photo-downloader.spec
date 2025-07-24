@@ -1,7 +1,7 @@
 #
 # spec file for package rapid-photo-downloader
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Togan Muftuoglu toganm@opensuse.org
 # Copyright (c) 2009-2011 Pascal Blesser pascal.bleser@opensuse.org
 #
@@ -19,6 +19,7 @@
 
 
 %global __requires_exclude ^typelib\\(Unity\\).*$
+%define pythons python3
 Name:           rapid-photo-downloader
 Version:        0.9.36
 Release:        0
@@ -37,15 +38,18 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  python3-devel >= 3.10
 Requires:       python3 >= 3.10
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
 Requires:       exiftool
 BuildRequires:  python3-PyPrind >= 2.9.4
 Requires:       python3-PyPrind >= 2.9.4
 BuildRequires:  python3-arrow >= 0.9.0
 Requires:       python3-arrow >= 0.9.0
-BuildRequires:  python3-base >= 3.6
 BuildRequires:  python3-Babel
+BuildRequires:  python3-base >= 3.6
 Requires:       python3-Babel
 BuildRequires:  python3-colorlog >= 2.6
 Requires:       python3-colorlog >= 2.6
@@ -114,12 +118,10 @@ consecutive days.
 find raphodo -type f -name '*.py' -exec sed -i -e '/^#!\//, 1d' {} \;
 
 %build
-python3 setup.py build
+%pyproject_wheel
 
 %install
-python3 setup.py install \
-    --prefix="%{_prefix}" \
-    --root=%{buildroot}
+%pyproject_install
 
 %find_lang %{name}
 %fdupes %{buildroot}%{_datadir}
@@ -138,7 +140,7 @@ python3 setup.py install \
 %{_datadir}/solid/actions/net.damonlynch.rapid_photo_downloader.desktop
 %{_mandir}/man1/%{name}.1%{ext_man}
 %{python3_sitelib}/raphodo
-%{python3_sitelib}/rapid_photo_downloader-%{version}*-info
+%{python3_sitelib}/rapid_photo_downloader-%{version}.dist-info
 
 %files lang -f %{name}.lang
 
