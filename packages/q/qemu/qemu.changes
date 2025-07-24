@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 23 06:34:02 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix bsc#1246566:
+  * [roms] seabios: include "pciinit: don't misalign large BARs" (bsc#1246566)
+
+-------------------------------------------------------------------
 Fri Jun 20 05:49:49 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
 
 - Add Live migration support for QEMU-emulated AMD IOMMU (jsc#PED-13144):
