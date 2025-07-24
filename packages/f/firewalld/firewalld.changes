@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 19 14:22:31 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Adding Python multiversion support, will enable firewalld pkg
+  to provide Python libraries compatible with all supported Python
+  versions.
+
+-------------------------------------------------------------------
 Wed Apr 30 11:57:21 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Split the package to build the firewalld-rpmmacros subpackage in

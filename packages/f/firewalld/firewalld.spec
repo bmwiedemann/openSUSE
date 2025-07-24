@@ -16,10 +16,21 @@
 #
 
 
+%{?sle15allpythons}
+%if 0%{?sle_version} >= 150500 && "%{?primary_python}XX" == "XX"
+# the macro sle15allpythons define pythons as "python3 python311"
+# on sles version >=15-SP5, but doesn't define the primary_python
+# version. As our python_expand flow need this, we define it by our
+# self. Once it is defined (as in tumbleweed), we don't need this
+# anymore.
+%define primary_python python3
+%endif
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "macros"
 %define pkg_suffix -macros
 %bcond_without macros
+%define pythons %primary_python
 %else
 %bcond_with macros
 %endif
@@ -52,6 +63,7 @@ BuildRequires:  docbook-xsl-stylesheets
 # Adding tools to BuildRequires as well so they can be autodetected
 # Else the configure tool will set them to /bin/false
 BuildRequires:  fdupes
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  ebtables
 BuildRequires:  gettext
 BuildRequires:  glib2-devel
@@ -61,7 +73,6 @@ BuildRequires:  intltool
 BuildRequires:  ipset
 BuildRequires:  iptables
 BuildRequires:  libxslt-tools
-BuildRequires:  python3-devel
 BuildRequires:  systemd-rpm-macros
 Recommends:     logrotate
 Obsoletes:      firewalld-prometheus-config < 0.2
@@ -69,27 +80,28 @@ Provides:       firewalld-prometheus-config = 0.2
 # Workaround: nftables seems to be a python3-nftables requirement,
 # not of firewalld.
 Requires:       nftables
-Requires:       python3-firewall = %{version}
+Requires:       python3-firewall = %{version}-%{release}
 Requires:       python3-gobject
 Requires:       python3-nftables
 Requires(post): %fillup_prereq
 Suggests:       susefirewall2-to-firewalld
 BuildArch:      noarch
 %{?systemd_ordering}
+%define python_subpackage_only 1
+%python_subpackages
 
 %description
 firewalld is a firewall service daemon that provides a dynamic customizable
 firewall with a D-Bus interface.
 
-%package -n python3-firewall
+%package -n python-firewall
 Summary:        Python3 bindings for FirewallD
 Group:          Productivity/Networking/Security
-Requires:       dbus-1-python3
-Requires:       python3-dbus-python
-Requires:       python3-decorator
-Requires:       python3-gobject
+Requires:       python-dbus-python
+Requires:       python-decorator
+Requires:       python-gobject
 
-%description -n python3-firewall
+%description -n python-firewall
 The python3 bindings for firewalld.
 
 %package -n firewall-macros
@@ -123,31 +135,31 @@ Requires:       python3-gobject-Gdk
 The firewall configuration application provides an configuration interface for
 firewalld.
 
-%package test
+%package -n %{name}-test
 Summary:        Firewalld testsuite
 Group:          Productivity/Networking/Security
 
-%description test
+%description -n %{name}-test
 This package provides the firewalld testsuite.
 
-%package bash-completion
+%package -n %{name}-bash-completion
 Summary:        Bash Completion for firewalld
 Group:          Productivity/Networking/Security
 Requires:       %{name} = %{version}-%{release}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
 
-%description bash-completion
+%description -n %{name}-bash-completion
 Bash command line completion support for firewalld.
 
-%package zsh-completion
+%package -n %{name}-zsh-completion
 Summary:        Zsh Completion for firewalld
 Group:          Productivity/Networking/Security
 Requires:       %{name} = %{version}-%{release}
 Requires:       zsh
 Supplements:    (%{name} and zsh)
 
-%description zsh-completion
+%description -n %{name}-zsh-completion
 Zsh command line completion support for firewalld.
 
 %lang_package
@@ -158,34 +170,64 @@ Zsh command line completion support for firewalld.
 # bsc#1078223
 rm config/services/high-availability.xml
 
-%build
-export PYTHON="%{_bindir}/python3"
-autoreconf -fiv
-%configure \
-  --enable-sysconfig \
-%if 0%{with macros}
-  --enable-rpmmacros \
-%endif
-  --with-ifcfgdir="%{_sysconfdir}/sysconfig/network"
+%{python_expand # expanded-body:
+  mkdir -p %{_builddir}/${python_flavor}
+  cp -rp  %{_builddir}/firewalld-%{version} %{_builddir}/${python_flavor}
+}
 
-# Normally documentation is shipped but this will ensure that missing
-# files will be generated.
-%if 0%{without macros}
-%make_build
+%build
+
+%{python_expand # expanded-body:
+  pushd %{_builddir}/${python_flavor}/firewalld-%{version}
+  export PYTHON="%{_bindir}/$python"
+  autoreconf -fiv
+  %configure \
+    --enable-sysconfig \
+%if 0%{with macros}
+    --enable-rpmmacros \
 %endif
+    --with-ifcfgdir="%{_sysconfdir}/sysconfig/network"
+
+%if 0%{without macros}
+  %make_build
+%endif
+  popd
+}
 
 %install
+
 %if 0%{with macros}
-cd config
+cd %{_builddir}/%{primary_python}/firewalld-%{version}/config
 %{__make} install-rpmmacros DESTDIR=%{?buildroot} INSTALL="%{__install} -p"
 exit 0
 %endif
+# without macros
 
-%make_install
+%{python_expand # expanded-body:
+  pushd %{_builddir}/${python_flavor}/%{name}-%{version}
+  export PYTHON="%{_bindir}/$python"
 
-%py3_compile %{buildroot}
+  if [ "%{primary_python}XX" == "${python_flavor}XX" ]; then
+    %make_install
+  else
+    make install DESTDIR=%{buildroot}/${python_flavor}
 
-# remove files that shouldn't exist in the final rpms
+    if [ ! -d %{buildroot}/%{$python_sitelib}/firewall ]; then
+      mkdir -p %{buildroot}/%{$python_sitelib}
+      mv %{buildroot}/${python_flavor}/%{$python_sitelib}/firewall \
+           %{buildroot}/%{$python_sitelib}
+    fi
+
+    # We only needed the python sitelib files, delete others.
+    rm -rf %{buildroot}/${python_flavor}
+  fi
+  popd
+}
+
+%python_compileall
+
+# Compile firewalld/testsuite
+%py3_compile %{buildroot}%{_datadir}/%{name}
 rm -r %{buildroot}%{_datadir}/%{name}/__pycache__
 
 desktop-file-install --delete-original \
@@ -218,11 +260,9 @@ mv %{buildroot}%{_sysconfdir}/xdg/autostart/* %{buildroot}%{_distconfdir}/xdg/au
 mv %{buildroot}%{_sysconfdir}/logrotate.d/firewalld %{buildroot}%{_distconfdir}/logrotate.d/firewalld
 %endif
 
-%fdupes %{buildroot}%{python3_sitelib}
+%python_expand %fdupes %{buildroot}/%{$python_sitelib}/firewall
 
 %find_lang %{name} --all-name
-
-%python3_fix_shebang
 
 %pre
 %service_add_pre firewalld.service
@@ -294,7 +334,7 @@ fi
 %{_bindir}/glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 
 %if 0%{without macros}
-%files
+%files -n %{name}
 %doc README.md
 %license COPYING
 %{_sbindir}/firewalld
@@ -346,22 +386,22 @@ fi
 %{_mandir}/man1/firewalld*.1%{?ext_man}
 %{_mandir}/man5/firewall*.5%{?ext_man}
 
-%files -n python3-firewall
-%attr(0755,root,root) %dir %{python3_sitelib}/firewall
-%attr(0755,root,root) %dir %{python3_sitelib}/firewall/config
-%attr(0755,root,root) %dir %{python3_sitelib}/firewall/core
-%attr(0755,root,root) %dir %{python3_sitelib}/firewall/core/io
-%attr(0755,root,root) %dir %{python3_sitelib}/firewall/server
-%attr(0755,root,root) %{python3_sitelib}/firewall/__pycache__
-%attr(0755,root,root) %{python3_sitelib}/firewall/config/__pycache__
-%attr(0755,root,root) %{python3_sitelib}/firewall/core/__pycache__
-%attr(0755,root,root) %{python3_sitelib}/firewall/core/io/__pycache__
-%attr(0755,root,root) %{python3_sitelib}/firewall/server/__pycache__
-%{python3_sitelib}/firewall/*.py*
-%{python3_sitelib}/firewall/config/*.py*
-%{python3_sitelib}/firewall/server/*.py*
-%{python3_sitelib}/firewall/core/io/*.py*
-%{python3_sitelib}/firewall/core/*.py*
+%files %{python_files firewall}
+%attr(0755,root,root) %dir %{python_sitelib}/firewall
+%attr(0755,root,root) %dir %{python_sitelib}/firewall/config
+%attr(0755,root,root) %dir %{python_sitelib}/firewall/core
+%attr(0755,root,root) %dir %{python_sitelib}/firewall/core/io
+%attr(0755,root,root) %dir %{python_sitelib}/firewall/server
+%attr(0755,root,root) %{python_sitelib}/firewall/__pycache__
+%attr(0755,root,root) %{python_sitelib}/firewall/config/__pycache__
+%attr(0755,root,root) %{python_sitelib}/firewall/core/__pycache__
+%attr(0755,root,root) %{python_sitelib}/firewall/core/io/__pycache__
+%attr(0755,root,root) %{python_sitelib}/firewall/server/__pycache__
+%{python_sitelib}/firewall/*.py*
+%{python_sitelib}/firewall/config/*.py*
+%{python_sitelib}/firewall/server/*.py*
+%{python_sitelib}/firewall/core/io/*.py*
+%{python_sitelib}/firewall/core/*.py*
 
 %files -n firewall-applet
 %attr(0755,root,root) %{_bindir}/firewall-applet
@@ -387,7 +427,7 @@ fi
 %{_datadir}/glib-2.0/schemas/org.fedoraproject.FirewallConfig.gschema.xml
 %{_mandir}/man1/firewall-config*.1%{?ext_man}
 
-%files test
+%files -n %{name}-test
 %dir %{_datadir}/firewalld/testsuite
 %{_datadir}/firewalld/testsuite/README.md
 %{_datadir}/firewalld/testsuite/testsuite
@@ -397,15 +437,15 @@ fi
 %attr(0755,root,root) %{_datadir}/firewalld/testsuite/python/*.py
 %attr(0755,root,root) %{_datadir}/firewalld/testsuite/python/__pycache__
 
-%files bash-completion
+%files -n %{name}-bash-completion
 %dir %{_datadir}/bash-completion/completions
 %{_datadir}/bash-completion/completions/firewall-cmd
 
-%files zsh-completion
+%files -n %{name}-zsh-completion
 %dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_firewalld
 
-%files lang -f %{name}.lang
+%files -n %{name}-lang -f %{name}.lang
 %exclude %{_datadir}/locale/en_*/LC_MESSAGES/firewalld.mo
 
 %else
