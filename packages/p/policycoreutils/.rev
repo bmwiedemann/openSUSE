@@ -710,4 +710,19 @@ sepolgen: Add back attributes flag to fix exception crash from Dan Walsh.
     <comment>https://bugzilla.suse.com/show_bug.cgi?id=1246831</comment>
     <requestid>1295051</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>add79cb5a97f36e073f5a9cde46f17d4</srcmd5>
+    <version>3.9</version>
+    <time>1753374872</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.9
+  * setfiles: Add -U option to modify user and role portions
+  * semodule: Add [-g PATH |--config=PATH] for an alternate path for the semanage config
+  * Updated usr_etc.patch
+
+- Moved /etc/sestatus.conf to /usr/etc.
+- This patch is upstream:
+  https://github.com/SELinuxProject/selinux/pull/415</comment>
+    <requestid>1295314</requestid>
+  </revision>
 </revisionlist>

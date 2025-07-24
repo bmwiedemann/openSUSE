@@ -30,12 +30,12 @@
 %endif
 
 %define libaudit_ver     2.2
-%define libsepol_ver     3.8.1
-%define libsemanage_ver  3.8.1
-%define libselinux_ver   3.8.1
+%define libsepol_ver     3.9
+%define libsemanage_ver  3.9
+%define libselinux_ver   3.9
 %define setools_ver      4.1.1
 Name:           policycoreutils
-Version:        3.8.1
+Version:        3.9
 Release:        0
 Summary:        SELinux policy core utilities
 License:        GPL-2.0-or-later
@@ -57,6 +57,7 @@ Source18:       policycoreutils-rpmlintrc
 Patch0:         make_targets.patch
 Patch2:         get_os_version.patch
 Patch3:         run_init.pamd.patch
+Patch4:         usr_etc.patch
 BuildRequires:  audit-devel >= %{libaudit_ver}
 BuildRequires:  bison
 BuildRequires:  dbus-1-glib-devel
@@ -208,12 +209,17 @@ semodule_utils_pwd="$PWD/semodule-utils-%{version}"
 %patch -P0 -p1
 %patch -P2 -p1
 %patch -P3 -p1
+%patch -P4 -p2
 mv ${setools_python_pwd}/audit2allow ${setools_python_pwd}/chcat ${setools_python_pwd}/semanage ${setools_python_pwd}/sepolgen ${setools_python_pwd}/sepolicy .
 mv ${semodule_utils_pwd}/semodule_expand ${semodule_utils_pwd}/semodule_link ${semodule_utils_pwd}/semodule_package .
 
 %build
 export PYTHON="%{python_binary_for_executables}" LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fPIE" LDFLAGS="-pie -Wl,-z,relro"
+%if 0%{?suse_version} > 1500
+make %{?_smp_mflags} LIBEXECDIR="%{_libexecdir}" VENDORDIR=%{_distconfdir}
+%else
 make %{?_smp_mflags} LIBEXECDIR="%{_libexecdir}"
+%endif
 (cd selinux-python-%{version}/po && make)
 
 %install
@@ -228,6 +234,7 @@ mkdir -p %{buildroot}%{_mandir}/man1
 mkdir -p %{buildroot}%{_mandir}/man8
 %if 0%{?suse_version} > 1500
 mkdir -p %{buildroot}%{_pam_vendordir}
+mkdir -p %{buildroot}%{_distconfdir}
 %else
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 %endif
@@ -239,6 +246,7 @@ export PYTHON="%{python_binary_for_executables}"
 cp -f %{SOURCE13} %{buildroot}%{_pam_vendordir}/newrole
 rm %{buildroot}%{_sysconfdir}/pam.d/newrole
 mv %{buildroot}%{_sysconfdir}/pam.d/run_init %{buildroot}%{_pam_vendordir}/run_init
+mv %{buildroot}%{_sysconfdir}/sestatus.conf %{buildroot}%{_distconfdir}/sestatus.conf
 %else
 cp -f %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/newrole
 %endif
@@ -292,7 +300,7 @@ sed -i '1s@#!.*python.*@#!%{_bindir}/%{python_binary_for_executables}@' %{buildr
 %if 0%{?suse_version} > 1500
 %pre
 # Prepare for migration to /usr/etc; save any old .rpmsave
-for i in pam.d/run_init ; do
+for i in pam.d/run_init sestatus.conf ; do
      test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
 done
 
@@ -304,7 +312,7 @@ done
 
 %posttrans
 # Migration to /usr/etc, restore just created .rpmsave
-for i in pam.d/run_init ; do
+for i in pam.d/run_init sestatus.conf; do
    test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
 
@@ -364,7 +372,11 @@ done
 %else
 %config(noreplace) %{_sysconfdir}/pam.d/run_init
 %endif
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/sestatus.conf
+%else
 %config(noreplace) %{_sysconfdir}/sestatus.conf
+%endif
 %{_mandir}/man8/fixfiles.8%{?ext_man}
 %{_mandir}/man8/genhomedircon.8%{?ext_man}
 %{_mandir}/man8/load_policy.8%{?ext_man}
