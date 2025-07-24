@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 17 15:42:25 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.9
+  * Fix local literal fcontext definitions priority
+  * Fix order for path substitutions
+  * Limit fcontext regex path length
+
+-------------------------------------------------------------------
 Fri Mar  7 14:12:08 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.8.1
