@@ -80,7 +80,8 @@ Pydantic-core is currently around 17x faster than pydantic V1.
 
 %check
 %if %{with test}
-%pytest_arch
+# https://github.com/pydantic/pydantic-core/issues/1755
+%pytest_arch -k 'not (test_keyword_args or test_positional_args)'
 %endif
 
 %if %{without test}

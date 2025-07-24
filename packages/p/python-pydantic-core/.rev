@@ -171,4 +171,12 @@
   * Make ValidationInfo and SerializationInfo generic for context by @Viicos in #1686</comment>
     <requestid>1287849</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>376afa61704475cc586e3811f0f94cec</srcmd5>
+    <version>2.35.1</version>
+    <time>1753374879</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip two tests broken upstream by pytest 8.4.</comment>
+    <requestid>1295195</requestid>
+  </revision>
 </revisionlist>

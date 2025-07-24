@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 23 04:12:34 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip two tests broken upstream by pytest 8.4.
+
+-------------------------------------------------------------------
 Mon Jun 23 05:40:13 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 2.35.1:
