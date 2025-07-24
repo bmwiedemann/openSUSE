@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 27 01:46:10 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros from python-rpm-macros to build and install.
+- Run the testsuite.
+- Sprinkle in fdupes.
+
+-------------------------------------------------------------------
 Thu Jun 20 05:09:23 UTC 2024 - ming li <mli@suse.com>
 
 - update to 0.2.6:

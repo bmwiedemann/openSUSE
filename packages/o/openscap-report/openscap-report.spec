@@ -1,7 +1,7 @@
 #
 # spec file for package openscap-report
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define pythons python3
 Name:           openscap-report
 Version:        0.2.6
 Release:        0
@@ -24,12 +25,18 @@ Summary:        A tool for generating human-readable reports from (SCAP) XCCDF a
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND SUSE-Public-Domain
 URL:            https://github.com/OpenSCAP/%{name}
 Source0:        https://github.com/OpenSCAP/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-devel
+BuildRequires:  python3-jsonschema
 BuildRequires:  python3-lxml
+BuildRequires:  python3-pip
+BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-sphinx_rtd_theme
+BuildRequires:  python3-wheel
 Requires:       python3-Jinja2
 Requires:       python3-lxml
 Provides:       bundled(patternfly) = 4
@@ -43,23 +50,25 @@ human-readable reports from SCAP XCCDF and ARF results.
 %autosetup -p1 -n %{name}-%{version}
 
 %build
-python3 setup.py build
+%pyproject_wheel
 sphinx-build -b man docs _build_docs
 
 %install
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%pyproject_install
+%fdupes %{buildroot}%{python3_sitelib}
 install -m 0644 -Dt %{buildroot}%{_mandir}/man1 _build_docs/oscap-report.1
 
-# not sure how to do that:
-#check
-#tox
+%check
+export PATH=%{buildroot}%{_bindir}:$PATH
+# File doesn't get written
+%pytest -k 'not test_store_file'
 
 %files
 %{_mandir}/man1/oscap-report.*
 %{_bindir}/oscap-report
 %exclude %{python3_sitelib}/tests/
 %{python3_sitelib}/openscap_report/
-%{python3_sitelib}/openscap_report-%{version}-py%{python3_bin_suffix}.egg-info/
+%{python3_sitelib}/openscap_report-%{version}.dist-info/
 %license LICENSE
 
 %changelog

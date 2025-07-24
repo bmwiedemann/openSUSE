@@ -31,4 +31,14 @@
     <comment>Update to version 0.2.6 (forwarded request 1181851 from simonlm)</comment>
     <requestid>1181877</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>52f364e6f21dca406c7b2396f0340ba6</srcmd5>
+    <version>0.2.6</version>
+    <time>1753375777</time>
+    <user>dimstar_suse</user>
+    <comment>- Use pyproject macros from python-rpm-macros to build and install.
+- Run the testsuite.
+- Sprinkle in fdupes. (forwarded request 1288763 from StevenK)</comment>
+    <requestid>1295474</requestid>
+  </revision>
 </revisionlist>
