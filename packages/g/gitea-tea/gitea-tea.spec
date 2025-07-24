@@ -24,6 +24,7 @@ License:        MIT
 URL:            https://gitea.com/gitea/tea
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Patch0:         fix-Reenable-p-and-limit-switches-778.patch
 BuildRequires:  golang(API) >= 1.24
 Conflicts:      tea
 
@@ -63,7 +64,7 @@ BuildArch:      noarch
 Zsh command line completion support for Gitea's tea CLI.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -p1
 
 %build
 go build \
