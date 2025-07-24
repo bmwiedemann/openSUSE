@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 23 19:18:17 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.41.0:
+  * Add a HTTP API which instructs the Leader to stepdown,
+    transferring Leadership to another node in the cluster
+  * Allow specification of target node as new Leader during
+    Stepdown
+  * rqlite shell supports specifying ID of new leader node after
+    stepdown
+
+-------------------------------------------------------------------
 Wed Jul  9 20:50:22 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 8.39.1:

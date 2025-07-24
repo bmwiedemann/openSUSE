@@ -160,4 +160,12 @@
     <comment>rqlite 8.39.1</comment>
     <requestid>1291562</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>86ccadd900f10a794bb7771da6316fa9</srcmd5>
+    <version>8.41.0</version>
+    <time>1753375587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1295394</requestid>
+  </revision>
 </revisionlist>
