@@ -170,4 +170,12 @@
   * migration for content width preference (forwarded request 1290822 from rrahl0)</comment>
     <requestid>1290823</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4358e530d62dfb7b3c9ec9220412451a</srcmd5>
+    <version>4.1.2</version>
+    <time>1753375449</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1295351</requestid>
+  </revision>
 </revisionlist>

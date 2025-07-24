@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul 23 13:33:54 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 4.1.2:
+  * Don't show notification if no new articles were synced
+  * Fix article zoom-level regression
+- update to version 4.1.1:
+  * Fix deserializing feed settings
+- update to version 4.1.0:
+  * Today view
+  * Allow to mute feed
+  * Apply themes to whole app
+  * Show highres favicon in edit feed dialog
+  * Fix deserializing 'order by' preference
+  * Multiple Article View scrolling improvements
+  * Fix footnote navigation
+  * Fix sync on startup
+  * Fix inoreader login
+  * Fix video speed audio pitch
+
+-------------------------------------------------------------------
 Sat Jul 05 17:10:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to 4.0.3:
