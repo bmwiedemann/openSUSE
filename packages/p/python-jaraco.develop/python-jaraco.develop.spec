@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jaraco.develop
-Version:        8.6.0
+Version:        8.17.6
 Release:        0
 Summary:        Development utilities by jaraco
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.develop
-Source:         https://files.pythonhosted.org/packages/source/j/jaraco.develop/jaraco.develop-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/j/jaraco.develop/jaraco_develop-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
@@ -33,31 +33,40 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module autocommand}
 BuildRequires:  %{python_module PyNaCl}
 BuildRequires:  %{python_module build}
+BuildRequires:  %{python_module ini2toml}
 BuildRequires:  %{python_module jaraco.collections}
 BuildRequires:  %{python_module jaraco.context}
+BuildRequires:  %{python_module jaraco.packaging}
 BuildRequires:  %{python_module jaraco.ui}
 BuildRequires:  %{python_module jaraco.vcs >= 1.1}
 BuildRequires:  %{python_module keyring}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module path}
 BuildRequires:  %{python_module pytest >= 6}
+BuildRequires:  %{python_module pytest-home}
+BuildRequires:  %{python_module requests-file}
 BuildRequires:  %{python_module requests-toolbelt}
 BuildRequires:  %{python_module subprocess-tee}
+BuildRequires:  git
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-PyNaCl
-Requires:       python-autocommand
 Requires:       python-build
-Requires:       python-jaraco.collections
+Requires:       python-ini2toml
 Requires:       python-jaraco.context
 Requires:       python-jaraco.ui
 Requires:       python-jaraco.vcs >= 1.1
 Requires:       python-keyring
+Requires:       python-keyring
 Requires:       python-packaging
 Requires:       python-path
+Requires:       python-requests
+Requires:       python-requests-file
 Requires:       python-requests-toolbelt
 Requires:       python-setuptools
 Requires:       python-subprocess-tee
+Requires:       python-typer
+Requires:       python-typing-extensions
 BuildArch:      noarch
 %python_subpackages
 
@@ -65,7 +74,7 @@ BuildArch:      noarch
 Development utilities by jaraco
 
 %prep
-%autosetup -p1 -n jaraco.develop-%{version}
+%autosetup -p1 -n jaraco_develop-%{version}
 
 %build
 %pyproject_wheel
@@ -78,7 +87,7 @@ Development utilities by jaraco
 # *-github*.py and towncrier.get_version: No source repo or suitable VCS version found
 # git.resolve: needs internet
 # git.URLScheme: needs pytest plugin we don't have yet
-%pytest --ignore-glob "*-github-*.py" -k "not (URLScheme or resolve or towncrier.get_version)"
+%pytest --ignore-glob "*-github-*.py" -k "not (URLScheme or resolve or towncrier.get_version or target_for_root)"
 
 %files %{python_files}
 %doc NEWS.rst README.rst

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jul 18 15:03:39 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- update 8.17.6
+  * Fix Windows handling in target_for_root. (#28)
+  * Prefer glob for finding files in a possibly-non-existent directory. (#26)
+  * Add support for adding secrets in coherent projects.
+  * Fix issue in create-github-release with typer usage. (#23)
+  * Add type annotations for base, branch, dry_run, and restore short options to tag and keyword.
+  * Migrated from autocommand to typer for CLI handling. (#21)
+  * Add support for resolving metadata even when pyproject.toml is in conflict. (#19)
+  * When configuring a fork, configure the default repo as the upstream repo (for PRs, etc).
+  * Rely on jaraco.packaging.metadata.hunt_down_url to resolve the homepage.
+  * Fix bug where migrate-config would fail to include a homepage.
+  * Inject the URLs agead of project.optional-dependencies, but only if there's not already a homepage indicated.
+  * Fix bug where migrate-config would replace an already multiline contributor with extra space.
+  * Add command for migrating config to pyproject.toml.
+  * Succeed even if git returns no substitutions.
+  * Restore Python 3.8 compatibility.
+  * Fix late-add bug in add-project where item was chosen and not attribute.
+  * Add routine to add a project.
+  * In projects-run, flush stdout.
+  * In projects-run, implemented selection and exclusion logic for tags and keywords.
+  * Updated Python build routine for macOS to support OpenSSL 3. (#16)
+  * Added support for file:// URL for projects list.
+
+- update requirements from pyproject.toml
+
+-------------------------------------------------------------------
 Tue Apr  1 15:34:43 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make it compatible with older setuptools
