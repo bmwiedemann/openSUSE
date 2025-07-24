@@ -355,4 +355,12 @@
   - Drop py313-interpreter-repr.patch, merged upstream</comment>
     <requestid>1228385</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c17dcbe20f4e23154dda2b74f24c3ee8</srcmd5>
+    <version>0.4.0</version>
+    <time>1753375307</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1295267</requestid>
+  </revision>
 </revisionlist>

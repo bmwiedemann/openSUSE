@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 23 09:15:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.4.0
+  * Add the ``interpret_parsed`` function.
+  * Fix #238: Add build tag to wheel metadata if specified.
+  * Fix #243: Update to support free-threading version of Python (3.13t).
+  * Fix #246: Support subdirectories in the dist-info directory.
+    Thanks to Pieter P for the patch.
+  * Fix #248: Fix path normalisation issue caused by the fix for #246.
+  * Move import in script wrapper to "if __name__ == 'main'" clause.
+  * Fix #245: Skip test_package_data if a SKIP_EXT_PACKAGE_DATA
+    environment variable is present.
+
+-------------------------------------------------------------------
 Wed Dec  4 13:16:38 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.3.9
