@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 23 12:36:21 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.42.3:
+  * Run recipes from submodules in correct directory
+- update to version 1.42.2:
+  * nothing of relevance
+- update to version 1.42.1:
+  * Only override root-justfile variable assignments
+- update to version 1.42.0:
+  * Use correct scope when running recipes in submodules
+  * Add `[parallel]` attribute to run dependencies in parallel
+  * Allow configuring `cygpath` with `--cygpath` and `$JUST_CYGPATH`
+  * Add `[metadata]` recipe attribute
+  * Allow depending on recipes in submodules
+  * Allow completing multiple recipes in bash
+  * Make global justfile filename case-insensitive
+
+-------------------------------------------------------------------
 Thu Jul  3 07:41:04 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.41.0:

@@ -408,4 +408,25 @@
   * Release 1.29.1 (forwarded request 1290139 from rrahl0)</comment>
     <requestid>1290140</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>bfa20cd1c7799240ca44827cb882cecf</srcmd5>
+    <version>1.42.3</version>
+    <time>1753375474</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.42.3:
+  * Run recipes from submodules in correct directory
+- update to version 1.42.2:
+  * nothing of relevance
+- update to version 1.42.1:
+  * Only override root-justfile variable assignments
+- update to version 1.42.0:
+  * Use correct scope when running recipes in submodules
+  * Add `[parallel]` attribute to run dependencies in parallel
+  * Allow configuring `cygpath` with `--cygpath` and `$JUST_CYGPATH`
+  * Add `[metadata]` recipe attribute
+  * Allow depending on recipes in submodules
+  * Allow completing multiple recipes in bash
+  * Make global justfile filename case-insensitive (forwarded request 1295358 from rrahl0)</comment>
+    <requestid>1295359</requestid>
+  </revision>
 </revisionlist>
