@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul 24 07:29:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.35.0:
+  * Added Features
+    - Add support for RedHat EUS data [#540 @willmurphyscode]
+  * Bug Fixes
+    - CVE-2004-0377 false positive [#611 #609 @westonsteimel]
+  * Dependencies
+    - chore(deps): Bump astral-sh/setup-uv in
+      /.github/actions/bootstrap (#608)
+    - chore(deps): Bump github.com/spf13/pflag from 1.0.6 to 1.0.7
+      (#605)
+    - chore(deps): update anchore dependencies (#601)
+    - chore(deps): Bump golang.org/x/sync from 0.15.0 to 0.16.0
+      (#598)
+
+-------------------------------------------------------------------
 Thu Jul 03 04:54:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.34.1:
