@@ -1,0 +1,48 @@
+From 4315485efe9318b18bf859c5bf1a810b9235ae2e Mon Sep 17 00:00:00 2001
+From: Wolfgang Frisch <wfrisch@suse.de>
+Date: Tue, 15 Jul 2025 19:12:53 +0200
+Subject: [PATCH] Fix ReDoS issue in  HPLIP's SLP parser
+
+Patch for the ReDoS issue in HPLIP's SLP parser (bsc#1245358).
+https://bugs.launchpad.net/hplip/+bug/2115626
+
+An unauthenticated denial-of-service attack in the local network is possible
+against HPLIP's SLP network printer discovery. This vulnerability arises from
+an algorithmic complexity attack on regular expressions within the SLP parser
+(`base/slp.py`).
+
+Signed-off-by: Wolfgang Frisch <wfrisch@suse.de>
+---
+ base/slp.py | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/base/slp.py b/base/slp.py
+index 8e2d8f9..06a00aa 100644
+--- a/base/slp.py
++++ b/base/slp.py
+@@ -33,14 +33,14 @@ from .g import *
+ from . import utils
+ from .sixext import to_bytes_utf8, to_unicode, to_string_utf8
+ 
+-prod_pat = re.compile(r"""\(\s*x-hp-prod_id\s*=\s*(.*?)\s*\)""", re.IGNORECASE)
+-mac_pat  = re.compile(r"""\(\s*x-hp-mac\s*=\s*(.*?)\s*\)""", re.IGNORECASE)
+-num_port_pat = re.compile(r"""\(\s*x-hp-num_port\s*=\s*(.*?)\s*\)""", re.IGNORECASE)
+-ip_pat =   re.compile(r"""\(\s*x-hp-ip\s*=\s*(.*?)\s*\)""", re.IGNORECASE)
+-p1_pat =   re.compile(r"""\(\s*x-hp-p1\s*=(?:\d\)|\s*(.*?)\s*\))""", re.IGNORECASE)
+-p2_pat =   re.compile(r"""\(\s*x-hp-p2\s*=(?:\d\)|\s*(.*?)\s*\))""", re.IGNORECASE)
+-p3_pat =   re.compile(r"""\(\s*x-hp-p3\s*=(?:\d\)|\s*(.*?)\s*\))""", re.IGNORECASE)
+-hn_pat =   re.compile(r"""\(\s*x-hp-hn\s*=\s*(.*?)\s*\)""", re.IGNORECASE)
++prod_pat = re.compile(r"""\(\s*x-hp-prod_id\s*=\s*([^\s]*)\s*\)""", re.IGNORECASE)
++mac_pat  = re.compile(r"""\(\s*x-hp-mac\s*=\s*([^\s]*)\s*\)""", re.IGNORECASE)
++num_port_pat = re.compile(r"""\(\s*x-hp-num_port\s*=\s*([^\s]*)\s*\)""", re.IGNORECASE)
++ip_pat =   re.compile(r"""\(\s*x-hp-ip\s*=\s*([^\s]*)\s*\)""", re.IGNORECASE)
++p1_pat =   re.compile(r"""\(\s*x-hp-p1\s*=(?:\d\)|\s*([^\s]*)\s*\))""", re.IGNORECASE)
++p2_pat =   re.compile(r"""\(\s*x-hp-p2\s*=(?:\d\)|\s*([^\s]*)\s*\))""", re.IGNORECASE)
++p3_pat =   re.compile(r"""\(\s*x-hp-p3\s*=(?:\d\)|\s*([^\s]*)\s*\))""", re.IGNORECASE)
++hn_pat =   re.compile(r"""\(\s*x-hp-hn\s*=\s*([^\s]*)\s*\)""", re.IGNORECASE)
+ 
+ def createSocketsWithsetOption(ttl=4):
+     s=None
+-- 
+2.50.0
+

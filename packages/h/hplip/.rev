@@ -1527,4 +1527,12 @@ Fixes build in Staging_A (python 3.13) - and seems to address the real reaason w
     <comment></comment>
     <requestid>1275594</requestid>
   </revision>
+  <revision rev="162" vrev="2">
+    <srcmd5>5d19c8b906d973edb0dc09066f5f5d7b</srcmd5>
+    <version>3.25.2</version>
+    <time>1753374876</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1295165</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 15 17:52:47 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Fix ReDoS issue in  HPLIP's SLP parser (bsc#1245358)
+  * add Fix-ReDoS-issue-in-HPLIP-s-SLP-parser.patch
+
+-------------------------------------------------------------------
 Wed May  7 13:33:02 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Update to hplip 3.25.2

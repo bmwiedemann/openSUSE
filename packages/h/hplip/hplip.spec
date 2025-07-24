@@ -108,6 +108,8 @@ Patch402:       hplip-change-pgp-server.patch
 Patch403:       Revert-changes-from-3.18.5-that-break-hp-setup-for-f.patch
 # PATCH-FIX-UPSTREAM: https://bugs.launchpad.net/hplip/+bug/1879445
 Patch404:       hplip-3.20.6-python-includes.patch
+# PATCH-FIX-SUSE https://bugs.launchpad.net/hplip/+bug/2115626 bsc#1245358
+Patch405:       Fix-ReDoS-issue-in-HPLIP-s-SLP-parser.patch
 Patch500:       hplip-missing-drivers.patch
 # PATCH-FIX-UPSTREAM boo#1225777
 Patch601:       hplip-pserror-c99.patch
@@ -380,6 +382,7 @@ This sub-package is only required by developers.
 # This patch replaces python-config by python3-config, don't apply on SLE12
 %patch -P 404 -p1
 %endif
+%patch -P 405 -p1
 %patch -P 500 -p1
 %patch -P 601 -p1
 %patch -P 602 -p1
