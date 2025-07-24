@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 11 10:03:28 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Update to version 1.39
+  * UI: Adjust shader debugger colours when using the dark theme.
+  * D3D12: Match variable names to disassembly for resource access SSA names.
+  * D3D12: Ensure SSA variables are displayed until the end of their use.
+  * D3D12: Add support for variable length strings in PIX strings, as well as V2 PIX strings.
+  * D3D12: Improve DXIL disassembly for global pointers.
+  * Vulkan: Improve SPIR-V disassembly when basic block order is unconventional.
+  * Vulkan: Add support for extensions:
+    - VK_KHR_robustness2
+    - VK_EXT_dynamic_rendering_unused_attachments
+
+-------------------------------------------------------------------
 Fri Jun 20 07:50:47 UTC 2025 - Sean Baggaley <me@drinkybird.net>
 
 - Update to version 1.38
