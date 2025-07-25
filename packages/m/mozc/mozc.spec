@@ -18,6 +18,7 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
+%if 0%{?is_opensuse}
 %if "%flavor" == "fcitx"
 %define with_fcitx4 1
 %define with_fcitx5 0
@@ -26,6 +27,17 @@
 %define with_fcitx4 0
 %define with_fcitx5 1
 %define install_mozc 1
+%endif
+%endif
+
+%if !0%{?is_opensuse}
+%if "%flavor" == "fcitx"
+ExclusiveArch:  do_not_build
+%else
+%define with_fcitx4 0
+%define with_fcitx5 0
+%define install_mozc 1
+%endif
 %endif
 
 %if %{with_fcitx4}
@@ -53,6 +65,9 @@ Summary:        Mozc - Japanese Input Method for Chromium OS, Mac and Linux
 License:        Apache-2.0 AND BSD-3-Clause AND SUSE-Public-Domain AND Zlib
 Group:          System/I18n/Japanese
 ExcludeArch:    ppc ppc64 s390 s390x %{ix86}
+%if %{with_fcitx4} && 0%{?suse_version} == 1600 && 0%{?is_opensuse}
+ExclusiveArch:  donotbuild
+%endif
 URL:            https://github.com/google/mozc
 Source0:        %{name}-%{version}.tar.xz
 Source1:        README.SUSE

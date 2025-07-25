@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 22 12:13:00 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Update mozc.spec:
+  Disable Mozc building with fcitx4 or fcitx5 in SLE, since SLE does
+  not deliver fcitx. Avoid importing too many irrelevant build dependency
+  packages in SLFO.
+  (bsc#1246569, jsc#PED-12066)
+
+-------------------------------------------------------------------
+Sat Jun 28 03:21:22 UTC 2025 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Disable fcitx-mozc for Leap 16.0 sicne Fcitx 4 is not available 
+
+-------------------------------------------------------------------
 Mon Jun  9 13:04:10 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Replace usage of %jobs for reproducible builds (boo#1237231)
