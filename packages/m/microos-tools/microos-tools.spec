@@ -19,7 +19,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           microos-tools
-Version:        4.0+git17
+Version:        4.0+git19
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
@@ -121,6 +121,9 @@ This package contains tools to make developing of MicroOS easier.
 %{_bindir}/import-pubring-from-rpmdb
 %{_bindir}/man-online
 %{_distconfdir}/profile.d/man-online.sh
+%{_distconfdir}/profile.d/zypp-single-rpmtrans.sh
+%dir %{_systemd_util_dir}/system.conf.d
+%{_systemd_util_dir}/system.conf.d/10-zypp-single-rpmtrans.conf
 
 %files -n selinux-autorelabel
 %license COPYING

@@ -454,4 +454,14 @@
   * 98selinux-microos: Also include parent devices needed for /var</comment>
     <requestid>1289864</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>9fb2e19b897b5be96cf0c6cf7318e3eb</srcmd5>
+    <version>4.0+git19</version>
+    <time>1753455856</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0+git19:
+  * Add zypp-single-rpmtrans files to spec file
+  * Use single rpmtrans with libzypp by default</comment>
+    <requestid>1295493</requestid>
+  </revision>
 </revisionlist>
