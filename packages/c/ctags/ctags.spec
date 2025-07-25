@@ -55,8 +55,7 @@ Patch20:        ctags-gcc11.patch
 Patch21:        CVE-2022-4515.patch
 %if %{with libalternatives}
 BuildRequires:  alts
-Requires(pre):  alts
-Requires(post): alts
+Requires:       alts
 %else
 BuildRequires:  update-alternatives
 Requires(pre):  update-alternatives
@@ -71,8 +70,7 @@ C++, Eiffel, Fortran, and Java to be used with vi and its derivatives,
 Emacs, and several other editors.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %configure

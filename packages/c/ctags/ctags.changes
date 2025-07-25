@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 24 11:36:57 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- Only Require: alts when using libalternatives, no need for scriplets
+
+-------------------------------------------------------------------
 Wed Jul 16 06:45:14 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Switch over to libalternatives for ctags to provide a ctags

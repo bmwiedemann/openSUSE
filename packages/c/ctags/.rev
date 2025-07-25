@@ -281,4 +281,12 @@
   variant (bsc#1245894) (forwarded request 1293636 from WernerFink)</comment>
     <requestid>1294186</requestid>
   </revision>
+  <revision rev="39" vrev="15">
+    <srcmd5>2a1d466264bacb7bb4ec97ac0cd4ea0c</srcmd5>
+    <version>5.8</version>
+    <time>1753455864</time>
+    <user>dimstar_suse</user>
+    <comment>- Only Require: alts when using libalternatives, no need for scriplets</comment>
+    <requestid>1295538</requestid>
+  </revision>
 </revisionlist>
