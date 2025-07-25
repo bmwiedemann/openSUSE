@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Sat Jul 19 06:05:52 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird ESR 140.1.0
+  * New folders were not added alphabetically if folders manually
+    reordered beforehand
+  * Message archive folder creation could silently stop during async
+    folder creation
+  MFSA 2025-63 (bsc#1246664)
+  * CVE-2025-8027 (bmo#1968423)
+    JavaScript engine only wrote partial return value to stack
+  * CVE-2025-8028 (bmo#1971581)
+    Large branch table could lead to truncated instruction
+  * CVE-2025-8029 (bmo#1928021)
+    javascript: URLs executed on object and embed tags
+  * CVE-2025-8036 (bmo#1960834)
+    DNS rebinding circumvents CORS
+  * CVE-2025-8037 (bmo#1964767)
+    Nameless cookies shadow secure cookies
+  * CVE-2025-8030 (bmo#1968414)
+    Potential user-assisted code execution in “Copy as cURL” command
+  * CVE-2025-8031 (bmo#1971719)
+    Incorrect URL stripping in CSP reports
+  * CVE-2025-8032 (bmo#1974407)
+    XSLT documents could bypass CSP
+  * CVE-2025-8038 (bmo#1808979)
+    CSP frame-src was not correctly enforced for paths
+  * CVE-2025-8039 (bmo#1970997)
+    Search terms persisted in URL bar
+  * CVE-2025-8033 (bmo#1973990)
+    Incorrect JavaScript state machine for generators
+  * CVE-2025-8034 (bmo#1970422, bmo#1970422, bmo#1970422, bmo#1970422)
+    Memory safety bugs fixed in Firefox ESR 115.26, Firefox ESR
+    128.13, Thunderbird ESR 128.13, Firefox ESR 140.1,
+    Thunderbird ESR 140.1, Firefox 141 and Thunderbird 141
+  * CVE-2025-8040 (bmo#1975058, bmo#1975058, bmo#1975998, bmo#1975998)
+    Memory safety bugs fixed in Firefox ESR 140.1, Thunderbird
+    ESR 140.1, Firefox 141 and Thunderbird 141
+  * CVE-2025-8035 (bmo#1975961, bmo#1975961, bmo#1975961)
+    Memory safety bugs fixed in Firefox ESR 128.13, Thunderbird
+    ESR 128.13, Firefox ESR 140.1, Thunderbird ESR 140.1, Firefox
+    141 and Thunderbird 141
+
+-------------------------------------------------------------------
+Mon Jul 15 04:38:05 UTC 2025 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- Mozilla Thunderbird ESR 140.0.1
+  MFSA 2025-54
+  * CVE-2025-6424 (bmo#1966423)
+    Use-after-free in FontFaceSet
+  * CVE-2025-6425 (bmo#1717672)
+    The WebCompat WebExtension shipped exposed a persistent UUID
+  * CVE-2025-6426 (bmo#1964385)
+    No warning when opening executable terminal files on macOS
+  * CVE-2025-6427 (bmo#1966927)
+    connect-src Content Security Policy restriction could be
+    bypassed
+  * CVE-2025-6429 (bmo#1970658)
+    Incorrect parsing of URLs could have allowed embedding of
+    youtube.com
+  * CVE-2025-6430 (bmo#1971140)
+    Content-Disposition header ignored when a file is included in
+    an embed or object tag
+  * CVE-2025-6432 (bmo#1943804)
+    DNS Requests leaked outside of a configured SOCKS proxy
+  * CVE-2025-6433 (bmo#1954033)
+    WebAuthn would allow a user to sign a challenge on a webpage
+    with an invalid TLS certificate
+  * CVE-2025-6434 (bmo#1955182)
+    HTTPS-Only exception screen lacked anti-clickjacking delay
+  * CVE-2025-6435 (bmo#1961777 bmo#1950056)
+    Save as in Devtools could download files without sanitizing
+    the extension
+  * CVE-2025-6436 (bmo#1941377 bmo#1960948 bmo#1966187 bmo#1966505
+    bmo#1970764)
+    Memory safety bugs fixed in Firefox 140 and Thunderbird 140
+- adapt mozilla-ntlm-full-path.patch for Thunderbird 140.0.1
+- adapt mozilla-silence-no-return-type.patch for Thunderbird
+  140.0.1
+
+-------------------------------------------------------------------
 Sun Jun 29 06:49:01 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird ESR 128.12.0

@@ -5949,4 +5949,41 @@ I cannot test locally unfortunately.
     an embed or object tag</comment>
     <requestid>1290580</requestid>
   </revision>
+  <revision rev="367" vrev="1">
+    <srcmd5>2fdd7d96739c52ccc622b3b271758644</srcmd5>
+    <version>140.1.0</version>
+    <time>1753455951</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird ESR 140.1.0
+  * New folders were not added alphabetically if folders manually
+    reordered beforehand
+  * Message archive folder creation could silently stop during async
+    folder creation
+  MFSA 2025-63 (bsc#1246664)
+  * CVE-2025-8027 (bmo#1968423)
+    JavaScript engine only wrote partial return value to stack
+  * CVE-2025-8028 (bmo#1971581)
+    Large branch table could lead to truncated instruction
+  * CVE-2025-8029 (bmo#1928021)
+    javascript: URLs executed on object and embed tags
+  * CVE-2025-8036 (bmo#1960834)
+    DNS rebinding circumvents CORS
+  * CVE-2025-8037 (bmo#1964767)
+    Nameless cookies shadow secure cookies
+  * CVE-2025-8030 (bmo#1968414)
+    Potential user-assisted code execution in “Copy as cURL” command
+  * CVE-2025-8031 (bmo#1971719)
+    Incorrect URL stripping in CSP reports
+  * CVE-2025-8032 (bmo#1974407)
+    XSLT documents could bypass CSP
+  * CVE-2025-8038 (bmo#1808979)
+    CSP frame-src was not correctly enforced for paths
+  * CVE-2025-8039 (bmo#1970997)
+    Search terms persisted in URL bar
+  * CVE-2025-8033 (bmo#1973990)
+    Incorrect JavaScript state machine for generators
+  * CVE-2025-8034 (bmo#1970422, bmo#1970422, bmo#1970422, bmo#1970422)
+    Memory safety bugs fixed in Firefox ESR 115.26, Firefox ESR</comment>
+    <requestid>1295681</requestid>
+  </revision>
 </revisionlist>
