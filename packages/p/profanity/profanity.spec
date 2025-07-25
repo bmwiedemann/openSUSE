@@ -25,6 +25,8 @@ Group:          Productivity/Networking/Instant Messenger
 URL:            https://profanity-im.github.io
 Source:         https://github.com/profanity-im/profanity/releases/download/%{version}/profanity-%{version}.tar.gz
 Source1:        profanity-rpmlintrc
+# bsc#1246850: Fix build with gpgme >= 2.0.0. See gh/profanity#2048
+Patch0:         https://github.com/profanity-im/profanity/commit/606eaac31dfb97df16b0d2ba9466a3a67bec122a.patch#/profanity-0.15.0-gpgme.patch
 BuildRequires:  glib2-devel >= 2.62
 BuildRequires:  gtk2-devel
 BuildRequires:  libcurl-devel

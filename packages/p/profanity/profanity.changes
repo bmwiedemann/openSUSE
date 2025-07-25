@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 23 07:04:12 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1246850: Fix build with gpgme >= 2.0.0
+  Add profanity-0.15.0-gpgme.patch
+
+-------------------------------------------------------------------
 Thu Mar 27 19:15:29 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.15.0:

@@ -670,4 +670,13 @@
   * Smooth scrolling support (+mouse wheel scrolling in some terminals) (#1824)</comment>
     <requestid>1264689</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>ca3ab67d296a495485d65905d7046bd7</srcmd5>
+    <version>0.15.0</version>
+    <time>1753455874</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1246850: Fix build with gpgme &gt;= 2.0.0
+  Add profanity-0.15.0-gpgme.patch</comment>
+    <requestid>1295216</requestid>
+  </revision>
 </revisionlist>
