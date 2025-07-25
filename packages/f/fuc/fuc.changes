@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 24 19:25:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 3.1.1:
+  * fix recursive copy detection for multiple directories
+  * Upgrade deps
+
+-------------------------------------------------------------------
 Thu May 22 13:06:58 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 3.1.0:
