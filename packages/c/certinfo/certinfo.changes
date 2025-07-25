@@ -1,0 +1,214 @@
+-------------------------------------------------------------------
+Thu Jul 24 06:24:58 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating copyright year and 'BuildRequires: go >= ...' version
+
+-------------------------------------------------------------------
+Mon Jul 07 15:15:50 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.0.37+git20250707.e2340ba:
+  * add option to print signature (#44)
+
+-------------------------------------------------------------------
+Sun Jul 06 20:00:11 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.0.36+git20250706.fd6a656:
+  * add public key algorithm to output
+
+-------------------------------------------------------------------
+Sun Jul 06 06:48:41 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.0.35+git20250705.671076b:
+  * update brew not to show message
+
+-------------------------------------------------------------------
+Fri Jul 04 16:44:54 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.0.34+git20250704.39a6d1c:
+  * update goreleaser
+
+-------------------------------------------------------------------
+Sat Apr 05 02:12:24 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.0.33+git20250401.4a9a06f:
+  * fix dns names with expiry flag
+
+-------------------------------------------------------------------
+Sun Mar 02 19:16:20 UTC 2025 - scott.bradnick@suse.com
+
+- Update to version 1.0.32+git20250228.fab4bfe:
+  * add dns names if present to expiry output
+  * update deprected gorelaser flags
+  * updte go version
+
+-------------------------------------------------------------------
+Thu Jan 09 19:36:53 UTC 2025 - scott.bradnick@suse.com
+
+- Update to version 1.0.31+git20250109.c903eed:
+  * fix tests
+  * remove clipboard - pipeline failing and cannot be released
+  * add server-name flag, useful for SNI testing
+  * remove gox/timex dependency
+
+-------------------------------------------------------------------
+Tue Dec 24 16:37:15 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.0.30+git20241224.290f752:
+  * update dependencies
+  * add the rest of id kp oids
+
+-------------------------------------------------------------------
+Wed Dec 18 15:39:56 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.0.29+git20241218.bb2a9c4:
+  * refactor and formatting
+  * update README
+
+-------------------------------------------------------------------
+Tue Dec 17 16:24:23 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.0.28+git20241217.5396db3:
+  * print chains with insecure flag
+
+-------------------------------------------------------------------
+Tue Dec 17 15:41:41 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.0.27+git20241217.a2eaff6:
+  * move github action permissions
+
+-------------------------------------------------------------------
+Mon Dec 16 20:57:34 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.0.26+git20241216.c2cda7b:
+  * add more extensions
+
+-------------------------------------------------------------------
+Mon Dec 16 18:27:24 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.0.25+git20241216.a1c8af6:
+  * initial working version with extensions
+  * add more extensions
+  * update deprecated field in goreleaser
+  * Bump github.com/stretchr/testify from 1.9.0 to 1.10.0 in the go group (#40)
+  * Bump github.com/icza/gox in the go group (#39)
+  * WIP asn1 extensions
+  * add oids for extensions
+  * initial extensions
+
+-------------------------------------------------------------------
+Thu Oct 03 14:56:33 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.0.24+git20241003.3fa99e8:
+  * add issuer and subject like flags
+  * trigger pipeline
+  * update dependencies
+  * update deprecated field in go releaser
+
+-------------------------------------------------------------------
+Fri Aug 02 16:31:11 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.0.23+git20240802.4ca345b:
+  * added sort by expiry flag
+
+-------------------------------------------------------------------
+Fri Aug 02 13:29:16 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.0.22+git20240802.1e4f1ae:
+  * execute args in go routines
+
+-------------------------------------------------------------------
+Mon Jul 08 16:18:59 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.0.21+git20240626.b1e05d7:
+  * Bump golang.org/x/image from 0.15.0 to 0.18.0 (#37)
+  * update dependabot
+
+-------------------------------------------------------------------
+Wed Mar 06 15:02:18 UTC 2024 - scott.bradnick@suse.com
+
+- Update to version 1.0.21+git20240301.787930f:
+  * Bump github.com/stretchr/testify from 1.8.4 to 1.9.0 (#36)
+  * update dependencies
+
+-------------------------------------------------------------------
+Mon Nov 06 19:20:26 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.21+git20231103.a26b114:
+  * Bump golang.org/x/image from 0.6.0 to 0.10.0 (#35)
+  * update go version
+
+-------------------------------------------------------------------
+Thu Jul 06 18:04:39 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.21+git20230706.706f415:
+  * update goreleaser
+
+-------------------------------------------------------------------
+Wed Jul 05 13:42:34 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.20+git20230705.c668bb7:
+  * fix clipboard panic
+  * update readme with clipboard flag
+  * support stdin, clipboard, file and network cert at the same time
+  * add support for reading certificates from clipboard. (#34)
+
+-------------------------------------------------------------------
+Fri Jun 30 14:42:53 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.18+git20230630.387ab58:
+  * remove deprecated block from goreaser
+  * fix load certificate with spaces test
+  * trim spaces of the certificate before loading (#33)
+  * add test for certificates with extra new lines
+  * Bump github.com/stretchr/testify from 1.8.3 to 1.8.4 (#32)
+
+-------------------------------------------------------------------
+Mon May 22 21:42:09 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.17+git20230522.42d0d71:
+  * use key instead of subject to check root cert (#31)
+
+-------------------------------------------------------------------
+Mon May 22 13:45:23 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.16+git20230520.9e1bc55:
+  * update dependencies
+  * enables identification of root certificate if subject and issuer identical in spite of defined authority key id. (#30)
+  * Bump github.com/stretchr/testify from 1.8.2 to 1.8.3 (#29)
+
+-------------------------------------------------------------------
+Sun Mar 12 02:17:37 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.15+git20230310.3b2349e:
+  * parse subject more accurately
+
+-------------------------------------------------------------------
+Fri Mar 10 19:58:37 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.14+git20230310.0e35ab4:
+  * add authority and subject key id fields
+
+-------------------------------------------------------------------
+Tue Feb 28 13:54:41 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.13+git20230227.6c201c8:
+  * Bump github.com/stretchr/testify from 1.8.1 to 1.8.2 (#28)
+
+-------------------------------------------------------------------
+Thu Feb 23 22:13:55 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.13+git20230222.0ca0060:
+  * update dependencies
+
+-------------------------------------------------------------------
+Mon Feb 06 16:01:47 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.13+git20230203.b7a63b9:
+  * update dependencies
+  * add workflow badge
+  * update github actions
+
+-------------------------------------------------------------------
+Fri Dec 16 19:44:31 UTC 2022 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Initial version from upstream

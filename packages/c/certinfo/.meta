@@ -1,0 +1,7 @@
+<package name="certinfo" project="openSUSE:Factory">
+  <title></title>
+  <description>print x509 certificate info
+
+Similar to openssl x509 -in &lt;file&gt; -text command, but handles chains, multiple files and TCP addresses. TLS/SSL version prints as well when using TCP address argument.</description>
+  <url>https://github.com/pete911/certinfo</url>
+</package>
