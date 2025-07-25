@@ -134,7 +134,7 @@ Group:          System/GUI/Other
 Requires:       python3-CairoSVG
 Requires:       python3-Pillow
 Requires:       python3-gobject-Gdk
-Requires:       python3-svgwrite
+Recommends:     python3-svgwrite
 
 %description -n budgie-clockworks-applet
 A multi-clock applet to show the time across multiple timezones.
@@ -322,8 +322,8 @@ Requires:       xrandr
 Requires:       xrdb
 Requires:       xrefresh
 Requires:       xset
-Requires:       xsetmode
-Requires:       xsetpointer
+Recommends:     xsetmode
+Recommends:     xsetpointer
 Requires:       xsetroot
 Requires:       xstdcmap
 Requires:       xvidtune

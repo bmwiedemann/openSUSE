@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 17 17:06:34 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Changes for 16.0:
+  * Downgrade python3-svgwrite, xsetpointer, xsetmode to
+    Recommends
+
+-------------------------------------------------------------------
 Tue Jul 15 08:49:56 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - Remove plank dependency for 16.0
