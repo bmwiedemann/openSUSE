@@ -1,7 +1,7 @@
 #
 # spec file for package hyprpaper
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,17 @@
 %global __builder ninja
 Name:           hyprpaper
 Summary:        Wayland wallpaper utility with IPC controls
-Version:        0.7.1
+Version:        0.7.5
 Release:        0
 License:        BSD-3-Clause
 URL:            https://github.com/hyprwm/hyprpaper
-Source0:        https://github.com/hyprwm/hyprpaper/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
 BuildRequires:  pkgconfig(gtk-layer-shell-0)
+BuildRequires:  pkgconfig(hyprgraphics)
 BuildRequires:  pkgconfig(hyprland-protocols)
 BuildRequires:  pkgconfig(hyprlang) >= 0.2.0
 BuildRequires:  pkgconfig(hyprutils) >= 0.2.0
@@ -62,5 +63,6 @@ image formats.
 %files
 %_bindir/hyprpaper
 %license LICENSE
+%_userunitdir/hyprpaper.service
 
 %changelog
