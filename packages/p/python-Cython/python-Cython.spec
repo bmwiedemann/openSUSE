@@ -19,7 +19,7 @@
 %bcond_with test
 %{?sle15_python_module_pythons}
 Name:           python-Cython
-Version:        3.0.12
+Version:        3.1.2
 Release:        0
 Summary:        The Cython compiler for writing C extensions for the Python language
 License:        Apache-2.0
@@ -27,14 +27,14 @@ URL:            https://cython.org/
 # SourceRepository: https://github.com/cython/cython
 Source:         https://files.pythonhosted.org/packages/source/C/Cython/cython-%{version}.tar.gz
 Source1:        python-Cython-rpmlintrc
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-devel
+Requires:       python-devel >= 3.8
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Conflicts:      python-Cython < 3
