@@ -18,7 +18,7 @@
 
 Name:           wmime
 %define lname	libwmime2
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Library for working with RFC 5322, MIME messages and IMAP/POP/SMTP
 License:        GPL-3.0-or-later

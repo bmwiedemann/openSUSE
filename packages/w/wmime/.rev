@@ -7,4 +7,12 @@
     <comment>replacement for libvmime</comment>
     <requestid>1239351</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1f2fcda34e56b7769421b44c47cbefc6</srcmd5>
+    <version>1.1.0</version>
+    <time>1753455932</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.1.0</comment>
+    <requestid>1295638</requestid>
+  </revision>
 </revisionlist>

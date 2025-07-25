@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 24 23:09:06 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.0
+  * Preserve original MIME boundary when parsing and regenerating
+    messages
+  * POSIX platforms: avoid having undefined bytes in
+    generateRandomBytes result
+  * Avoid ODR violation resulting from different struct layouts
+    per translation unit
+
+-------------------------------------------------------------------
 Tue Jan 21 14:16:23 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Switch upstream location from vmime to wmime
