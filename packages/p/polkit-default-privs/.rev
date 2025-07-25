@@ -2352,4 +2352,14 @@ for 12.3</comment>
 </comment>
     <requestid>1282236</requestid>
   </revision>
+  <revision rev="254" vrev="1">
+    <srcmd5>55c5b2e290c451c189c89ef44819a52f</srcmd5>
+    <version>1550+20250721.f1b71a3</version>
+    <time>1753455869</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20250721.f1b71a3:
+  * profiles: dnf5daemon-server execute_trusted_transaction (bsc#1245451)
+</comment>
+    <requestid>1295589</requestid>
+  </revision>
 </revisionlist>
