@@ -310,4 +310,12 @@ pull the gettext files.
    * gettext-0.25-tests.patch</comment>
     <requestid>1291881</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f4353fedc0c57e440f1b1e91e7017f2a</srcmd5>
+    <version>0.74</version>
+    <time>1753455829</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1295285</requestid>
+  </revision>
 </revisionlist>

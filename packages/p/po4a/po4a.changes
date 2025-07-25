@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Jul 21 19:12:56 UTC 2025 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
+
+- Update to version 0.74:
+General:
+ * Fix a failure with Perl 5.40.
+ * Add --target-lang option to po4a [jnavila]
+ * Include bash_completion files (GitHub's #542) [Fat-Zer]
+   Copy the share/bash-completion/completions/ files under /usr to use them.
+
+Scripts:
+ * po4a-updatepo: remove --width as no localized file will ever be
+   generated (GitHub's #549) [Mt].
+
+Asciidoc:
+ * Manage custom verbatim styles (Github's #548) [Jean-Noël Avila]
+
+Markdown:
+ * Avoid searching for bullets in code blocks (GitHub's #550)
+   [Alexander Golubev].
+ * Ensure the parser avoids infinite loops, even when a document ends with an
+   incorrect number of backticks, leaving a code block incomplete (GitHub's
+   #558 and #560) [reported by Jibec, and fixed by gemmaro].
+
+Org:
+ * New module (GitHub's #485) [gemmaro].
+
+Pod:
+ * Add an announcement warning to the Pod module. (GitHub's #573) [gemmaro].
+   It is based on a deprecated Perl module that will disappear at some point.
+
+SimplePod:
+ * New module (GitHub's #573), meant as a drop-in to the deprecated Pod [gemmaro].
+   We think that it is production-ready, even if it was never tested
+   in battlefield conditions, so bugs are expected in some cases.
+   Please help us improving it as it will become the only Pod module.
+
+TeX:
+ * Fix read error of input/include files in TeX files (thanks Alex Karabanov)
+ * latex: Fix a failure when \input is surrounded with {curly braces}.
+   Thanks to Mayeul Cantan for the report and fix, and to Alex Karabanov
+   for the test case.
+
+Texinfo:
+ * Allow spaces before line-breaking commands and fix some warnings
+   (GitHub's #497) [Alexander Golubev].
+
+VimHelp:
+ * New module (GitHub's #525) [gemmaro].
+ * Allow for an optional Vim language specification in code blocks
+   (GitHub's #552) [Gemmaro].
+
+Internal refactorings:
+ * Remove DynaLoader (GitHub's #532) [gemmaro].
+ * Improve the code when reading a non-UTF po file (GitHub's #538)
+   [Golubev Alexander].
+   
+- remove upstreamed patches (gettext-0.25-tests.patch and po4a.diff)
+
+-------------------------------------------------------------------
 Fri Jul 11 07:53:10 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 -  Fix test to handle trailing spaces with gettext-runtime 0.25
