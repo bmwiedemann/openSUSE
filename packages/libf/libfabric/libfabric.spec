@@ -19,7 +19,7 @@
 #
 %define git_ver .0.2182f99e9
 
-%ifarch aarch64 %power64 x86_64 s390x
+%ifarch aarch64 %power64 x86_64 s390x riscv64
 %if 0%{?suse_version} > 1530
 %define with_ucx 1
 %endif
