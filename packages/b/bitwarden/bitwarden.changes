@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 25 09:34:30 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 2025.7.0
+  * no changelog provided
+- Drop no longer relevant patches
+  * remove-argon2-browser.patch
+  * system-libargon2.patch
+
+
+-------------------------------------------------------------------
 Wed Jul  2 19:53:15 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Update to 2025.6.1

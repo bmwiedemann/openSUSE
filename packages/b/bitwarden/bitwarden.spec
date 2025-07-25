@@ -20,11 +20,11 @@
 #not running the tests on OBS — extremely flaky
 %bcond_with test_rust
 
-%global sdk_internal_req_version 0.2.0~main.198
+%global sdk_internal_req_version 0.2.0~main.225
 
 
 Name:       bitwarden
-Version:    2025.6.1
+Version:    2025.7.0
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
@@ -59,7 +59,6 @@ Patch0:    remove-unnecessary-deps.patch
 Patch1:    fix-desktop-file.patch
 Patch3:    do-not-install-font-privately.patch
 Patch4:    desktop_native-rust-arch.patch
-Patch5:    remove-argon2-browser.patch
 Patch7:    bug-reporting-url.patch
 Patch8:    no-sourcemaps.patch
 Patch9:    main-getPath-exe.patch
@@ -67,7 +66,6 @@ Patch10:   native-messaging.main-fix-path.patch
 
 
 #patches to use system libs
-Patch1000: system-libargon2.patch
 Patch1001: system-roboto-font.patch
 
 #patches to fix interaction with other software
@@ -100,7 +98,6 @@ BuildRequires: jq
 BuildRequires: nodejs-packaging
 BuildRequires: nodejs-bitwarden-sdk-internal = %sdk_internal_req_version
 BuildRequires: nodejs-electron-devel
-BuildRequires: pkgconfig(libargon2)
 BuildRequires: sed
 BuildRequires: zstd
 #Tools used by npm
@@ -166,7 +163,12 @@ cd apps/desktop/desktop_native
 rm -rf vendor/wayland-protocols/protocols
 ln -svT /usr/share/wayland-protocols vendor/wayland-protocols/protocols
 # https://blogs.gnome.org/mcatanzaro/2020/05/18/patching-vendored-rust-dependencies/
-for i in wayland-protocols libloading pkcs5 aes-gcm blake2; do
+for i in \
+wayland-protocols \
+libloading \
+pkcs5 \
+aes-gcm \
+; do
 pushd vendor/$i
 jq -cj '.files={}' .cargo-checksum.json >tmp && mv tmp .cargo-checksum.json && popd
 done
