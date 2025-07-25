@@ -118,4 +118,12 @@
   * Added SANE_AIRSCAN_DEVICE environment variable (forwarded request 1273429 from rrahl0)</comment>
     <requestid>1273430</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>06d1184b2bfcaef9a9df6bb6865bf6e9</srcmd5>
+    <version>0.99.36</version>
+    <time>1753456010</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1295792</requestid>
+  </revision>
 </revisionlist>

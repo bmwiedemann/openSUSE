@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 25 14:36:31 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 0.99.36:
+  * mdns: fixed crash, when WSDD calls DNS-SD resolver during Avahi client restart
+  * test-uri: added http_uri_get_host() test
+  * Fixed typo in the man page
+  * Don't enable console log automatically when protocol trace is enabled
+  * escl: Xerox WorkCentre 3345 quirks
+  * Statically choose minimum compression for JPEG and TIFF.
+  * README.md: added Lexmark CX310dn
+
+-------------------------------------------------------------------
 Tue Apr 29 11:41:15 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.99.35:

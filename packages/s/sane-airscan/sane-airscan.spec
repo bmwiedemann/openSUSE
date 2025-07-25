@@ -17,7 +17,7 @@
 
 
 Name:           sane-airscan
-Version:        0.99.35
+Version:        0.99.36
 Release:        0
 Summary:        Universal driver for Apple AirScan (eSCL) and WSD
 License:        SUSE-GPL-2.0+-with-sane-exception
