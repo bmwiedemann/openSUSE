@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Thu Jul 17 06:36:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.10.0:
+  Breaking changes
+  * Removing the nanoserver-1809 container image for Windows 2019.
+    (@ptodev)
+  * This is due to the deprecation of windows-2019 GitHub Actions
+    runners.
+  * The windowsservercore-ltsc2022 Alloy image is still being
+    published to DockerHub.
+  Bugfixes
+  * Upgrade otelcol components from OpenTelemetry v0.126.0 to
+    v0.128.0 (@korniltsev, @dehaansa)
+     [otelcol.exporter.kafka]: Allow kafka exporter to produce to
+     topics based on metadata key values.
+     [otelcol.receiver.kafka]: Enforce a backoff mechanism on
+     non-permanent errors, such as when the queue is full.
+     [otelcol.receiver.kafka]: Don't restart the Kafka consumer on
+     failed errors when message marking is enabled for them.
+     [otelcol.connector.spanmetrics]: Fix bug causing span metrics
+     calls count to be always 0 when using delta temporality.
+  Features
+  * (Experimental) Add an array.group_by stdlib function to group
+    items in an array by a key. (@wildum)
+  * Add the otelcol.exporter.faro exporter to export traces and
+    logs to Faro endpoint. (@mar4uk)
+  * Add the otelcol.receiver.faro receiver to receive traces and
+    logs from the Grafana Faro Web SDK. (@mar4uk)
+  * Add entropy support for loki.secretfilter (@romain-gaillard)
+  Enhancements
+  * Add hash_string_id argument to foreach block to hash the string
+    representation of the pipeline id instead of using the string
+    itself. (@wildum)
+  * (Experimental) Additions to experimental
+    database_observability.mysql component:
+     Add explain_plan collector to database_observability.mysql
+     component. (@rgeyer) locks: addition of data locks collector
+     (@gaantunes @fridgepoet) Query sample collector is now enabled
+     by default (@matthewnolf)
+  * (Experimental) prometheus.write.queue add support for
+    exemplars. (@dehaansa)
+  * Wire in survey block for beyla.ebpf component. (@grcevski,
+    @tpaschalis)
+  * Upgrade otelcol components from OpenTelemetry v0.126.0 to
+    v0.128.0 (@korniltsev, @dehaansa)
+     [otelcol.processor.resourcedetection]: Add additional OS
+     properties to resource detection: os.build.id and os.name.
+     [otelcol.processor.resourcedetection]: Add host.interface
+     resource attribute to system detector.
+     [otelcol.exporter.kafka]: Fix Snappy compression codec support
+     for the Kafka exporter.  [otelcol.receiver.filelog]: Introduce
+     utf8-raw encoding to avoid replacing invalid bytes with \uFFFD
+     when reading UTF-8 input.  [otelcol.processor.k8sattributes]:
+     Support extracting labels and annotations from k8s
+     Deployments.  [otelcol.processor.k8sattributes]: Add option to
+     configure automatic service resource attributes.
+     [otelcol.exporter.datadog]: Adds hostname_detection_timeout
+     configuration option for Datadog Exporter and sets default to
+     25 seconds.  [otelcol.receiver.datadog]: Address semantic
+     conventions noncompliance and add support for http/db.
+     [otelcol.exporter.awss3]: Add the retry mode, max attempts and
+     max backoff to the settings.
+  * Add support for conditions and statement-specific error_mode in
+    otelcol.processor.transform. (@ptodev)
+  * Add storage and start_from args to cloudwatch logs receiver.
+    (@boernd)
+  Bugfixes
+  * Fix extension registration for otelcol.receiver.splunkhec auth
+    extensions. (@dehaansa)
+  Other changes
+  * Mark pyroscope.receive_http and pyroscope.relabel components as
+    GA. (@marcsanmi)
+  * Upgrade otelcol.exporter.windows to v0.30.8 to get bugfixes and
+    fix update collector support. (@dehaansa)
+
+-------------------------------------------------------------------
 Mon Jul  7 13:05:12 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Install default configuration file
