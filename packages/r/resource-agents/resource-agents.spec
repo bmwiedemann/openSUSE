@@ -17,7 +17,7 @@
 
 
 Name:           resource-agents
-Version:        4.16.0+git73.99f301e1
+Version:        4.16.0+git90.968ad701
 Release:        0
 Summary:        HA Reusable Cluster Resource Scripts
 License:        GPL-2.0-only AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -191,6 +191,7 @@ ln -s %{_prefix}/lib/ocf/resource.d/heartbeat/aws-vpc-move-ip aws-vpc-move-ip
 %service_add_pre ldirectord.service
 
 %files
+%exclude %{_usr}/lib/ocf/resource.d/heartbeat/ldirectord
 %defattr(-,root,root)
 %dir %{_prefix}/lib/ocf
 %dir %{_prefix}/lib/ocf/resource.d
@@ -245,6 +246,7 @@ ln -s %{_prefix}/lib/ocf/resource.d/heartbeat/aws-vpc-move-ip aws-vpc-move-ip
 %{_sbindir}/rcldirectord
 %exclude %{_sysconfdir}/init.d/ldirectord
 %{_sysconfdir}/ha.d/resource.d/ldirectord
+%{_usr}/lib/ocf/resource.d/heartbeat/ldirectord
 %config(noreplace) %{_sysconfdir}/logrotate.d/ldirectord
 
 %changelog

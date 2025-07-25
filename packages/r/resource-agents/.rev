@@ -1940,4 +1940,27 @@
     <comment>  * Filesystem: fix getting the wrong block device when doing grep (bsc#1241867)</comment>
     <requestid>1277984</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>cf15b1ab8f3b38dd142e7c6290c42598</srcmd5>
+    <version>4.16.0+git90.968ad701</version>
+    <time>1753455851</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.16.0+git90.968ad701:
+  * OCPBUGS-58324: podman-etcd Add OOM score adjustment for etcd containers
+  * ocf-shellfuncs: remove extra sleep from curl_retry (#2058)
+  * Filesystem: remove validate-all fstype check, as there isnt a reliable and portable way to check
+  * IPaddr2: add link status DOWN/LOWERLAYERDOWN check
+  * ocf-shellfuncs: set SHELL to default shell if it's set to nologin
+  * mariadb: add SSL/TLS-Support (#2045)
+  * findif.sh: fix to avoid duplicate route issues
+  * podman-etcd: fix listen-peer-urls binding (#2049)
+  * azure-events-az: Update Deployment info section
+  * azure-events: backport relevant changes from azure-events-az
+- Remove unsupported RAs from resource-agents package
+  Remove man pages of unsupported RAs from resource-agents package
+  Adapt drop-deprecated-agents.patch (jsc#PED-8737)
+- Move %{_usr}/lib/ocf/resource.d/heartbeat/ldirectord into the
+  package ldirectord</comment>
+    <requestid>1295449</requestid>
+  </revision>
 </revisionlist>
