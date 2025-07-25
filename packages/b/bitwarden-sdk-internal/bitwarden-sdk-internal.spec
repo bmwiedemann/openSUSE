@@ -17,7 +17,7 @@
 
 
 Name:           bitwarden-sdk-internal
-Version:        0.2.0~main.198
+Version:        0.2.0~main.225
 %global toolchain clang
 # Remove requires on type_fest
 %global __requires_exclude ^npm(.*)
@@ -28,7 +28,7 @@ License:        Apache-2.0 AND (Apache-2.0 OR BSL-1.0) AND BSD-3-Clause AND GPL-
 Group:          System/Libraries
 Url:            https://github.com/bitwarden/sdk-internal
 # Created by create-tarball.sh
-Source0:        sdk-internal-0.2.0-main.198.tar.zst
+Source0:        sdk-internal-0.2.0-main.225.tar.zst
 Patch0:         remove-nonfree.patch
 
 #Is applied before vendor step as it adds additional dependencies.
@@ -173,6 +173,7 @@ mkdir -pv %{buildroot}%{nodejs_sitelib}/@bitwarden
 cp -alrvT crates/bitwarden-wasm-internal/npm %{buildroot}%{nodejs_sitelib}/@bitwarden/sdk-internal
 ln -srvf %{buildroot}{%{_datadir}/bitwarden,%{nodejs_sitelib}/@bitwarden/sdk-internal}/bitwarden_wasm_internal_bg.wasm
 rm -v %{buildroot}%{nodejs_sitelib}/@bitwarden/sdk-internal/{package-lock.json,.gitignore,node_modules/.package-lock.json}
+
 
 
 %files

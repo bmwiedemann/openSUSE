@@ -49,6 +49,20 @@ index 7afe8fe66..6c2bb6f6a 100644
        - name: Build
          run: ./build.sh -r
  
+diff --git a/.github/workflows/rust-test.yml b/.github/workflows/rust-test.yml
+index 346c9361b..72386646c 100644
+--- a/.github/workflows/rust-test.yml
++++ b/.github/workflows/rust-test.yml
+@@ -70,9 +70,6 @@ jobs:
+       - name: Cache cargo registry
+         uses: Swatinem/rust-cache@f0deed1e0edfc6a9be95417288c0e1099b1eeec3 # v2.7.7
+ 
+-      - name: Install wasm-bindgen-cli
+-        run: cargo install wasm-bindgen-cli --version 0.2.100
+-
+       - name: Test WASM
+         run: cargo test --target wasm32-unknown-unknown -p bitwarden-wasm-internal -p bitwarden-threading -p bitwarden-error -p bitwarden-uuid --all-features
+ 
 diff --git a/Cargo.lock b/Cargo.lock
 index b73ca6026..7141a00b7 100644
 --- a/Cargo.lock
@@ -414,9 +428,9 @@ index a18845414..dcbf947b3 100644
 --- a/crates/bitwarden-wasm-internal/Cargo.toml
 +++ b/crates/bitwarden-wasm-internal/Cargo.toml
 @@ -28,9 +28,8 @@ bitwarden-vault = { workspace = true, features = ["wasm"] }
- console_error_panic_hook = "0.1.7"
- console_log = { version = "1.0.0", features = ["color"] }
  log = "0.4.20"
+ serde = { workspace = true }
+ tsify-next = { workspace = true }
 -# When upgrading wasm-bindgen, make sure to update the version in the workflows!
 -wasm-bindgen = { version = "=0.2.100", features = ["serde-serialize"] }
 -wasm-bindgen-futures = "0.4.41"
