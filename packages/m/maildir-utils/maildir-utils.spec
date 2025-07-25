@@ -17,7 +17,7 @@
 
 
 Name:           maildir-utils
-Version:        1.12.11
+Version:        1.12.12
 Release:        0
 Summary:        Maildir indexer and searcher
 License:        GPL-3.0-or-later

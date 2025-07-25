@@ -913,4 +913,25 @@
   * New stable update; mostly to fix #2847, but with some doc fixes as well.</comment>
     <requestid>1277001</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>48122ed26c2360f4969dfdc00edcfaa2</srcmd5>
+    <version>1.12.12</version>
+    <time>1753455972</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.12.12:
+  Overall:
+  * In 'mu init', --my-address has been renamed into --personal-address
+    for consistency. The old name still works.
+  Mu4e:
+  * Emacs bookmarks can be now also be created for mu4e queries; see
+    the mu4e-emacs-bookmark-policy defcustom
+  * Support dash when completing maildirs
+  * Add defcustom for mu4e-compose-jump-to-reasonable-place, so it can be
+    overridden, e.g. in compose hooks.
+  * In mu4e, make indexing snappier when there no new messages
+  SCM:
+  * Experimental new Guile bindings under scm/, including a reference
+    manual and unit tests.</comment>
+    <requestid>1295676</requestid>
+  </revision>
 </revisionlist>
