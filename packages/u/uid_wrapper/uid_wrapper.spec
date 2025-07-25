@@ -23,7 +23,7 @@
 #
 ############################# NOTE ##################################
 Name:           uid_wrapper
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        A wrapper for privilege seperation
 License:        GPL-3.0-or-later
@@ -33,8 +33,6 @@ Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
 Source3:        uid_wrapper.keyring
-# PATCH-FIX-UPSTREAM https://gitlab.com/cwrap/uid_wrapper/-/merge_requests/21
-Patch0:         uwrap-fix-tests.patch
 BuildRequires:  cmake
 BuildRequires:  libcmocka-devel
 BuildRequires:  pkgconf

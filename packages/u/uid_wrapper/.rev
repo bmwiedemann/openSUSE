@@ -169,4 +169,20 @@
 </comment>
     <requestid>1294182</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5da255be6d38bd67ea589e85fa87896b</srcmd5>
+    <version>1.3.2</version>
+    <time>1753455855</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.2
+  * Fixed binding the getresgid glibc symbol
+  * Fixed building tests
+- Removed uwrap-fix-getresgid.patch
+- Removed uwrap-fix-tests.patch
+- Add patch uwrap-fix-getresgid.patch
+  * Fix a crash of latest bash-5.3 is e.g. used in libssh test suite
+    as here uid_wrapper library is preloaded (boo#1246830) 
+</comment>
+    <requestid>1295492</requestid>
+  </revision>
 </revisionlist>
