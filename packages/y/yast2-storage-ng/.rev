@@ -1403,4 +1403,12 @@
     <comment>submit new version 5.0.33</comment>
     <requestid>1293839</requestid>
   </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>2dc16bab4989449d932bb2c8d03c7e04</srcmd5>
+    <version>5.0.34</version>
+    <time>1753455869</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 5.0.34</comment>
+    <requestid>1295573</requestid>
+  </revision>
 </revisionlist>
