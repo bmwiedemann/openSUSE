@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 23 10:20:49 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 9.0.10:
+  * Updated metadata
+  * Yeah, that's actually it - the major version bump was apparently
+    only because the java version in pom.xml files was updated,
+    which isn't even mentioned in the release notes.
+
+-------------------------------------------------------------------
 Mon Jan 27 15:44:31 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 8.13.53:

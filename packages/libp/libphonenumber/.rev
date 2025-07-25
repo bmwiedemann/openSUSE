@@ -91,4 +91,16 @@
   * Updated metadata (forwarded request 1240579 from favogt)</comment>
     <requestid>1240580</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c9e830bb63cd946e0c7c331650b9b837</srcmd5>
+    <version>9.0.10</version>
+    <time>1753455820</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 9.0.10:
+  * Updated metadata
+  * Yeah, that's actually it - the major version bump was apparently
+    only because the java version in pom.xml files was updated,
+    which isn't even mentioned in the release notes. (forwarded request 1295266 from favogt)</comment>
+    <requestid>1295271</requestid>
+  </revision>
 </revisionlist>

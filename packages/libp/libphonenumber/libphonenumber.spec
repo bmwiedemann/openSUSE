@@ -16,10 +16,10 @@
 #
 
 
-%define lib_ver 8
-%define lib_ver2 8.13
+%define lib_ver 9
+%define lib_ver2 9.0
 Name:           libphonenumber
-Version:        8.13.53
+Version:        9.0.10
 Release:        0
 Summary:        Library for parsing, formatting, and validating international phone numbers
 License:        Apache-2.0
