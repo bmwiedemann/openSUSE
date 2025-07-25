@@ -549,7 +549,7 @@ fi
 
 # enable vendor change openSUSE,SUSE for DUP from 15.3 to TW (boo#1198332)
 mkdir -p %{buildroot}%{_sysconfdir}/zypp/vendors.d
-echo -e "[main]\nvendors=openSUSE,SUSE,SUSE LLC <https://www.suse.com/>\n" > %{buildroot}%{_sysconfdir}/zypp/vendors.d/00-openSUSE.conf
+echo -e "[main]\nvendors=openSUSE,obs://build.opensuse.org/openSUSE:Factory,SUSE,SUSE LLC <https://www.suse.com/>\n" > %{buildroot}%{_sysconfdir}/zypp/vendors.d/00-openSUSE.conf
 
 # fate#319341, make openSUSE-release own YaST license files.
 install -D -d -m 755 "%{buildroot}%_defaultlicensedir/product/base"
