@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 24 23:00:12 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.7.1
+  * Only register uint128_t as a TypeName when it's available
+  * Set SubmatrixAdapter::setEntry return type to void
+  * New sparse sequence iterator API
+
+-------------------------------------------------------------------
 Sun Jun 22 21:11:54 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 1.7.0+git119 (48953a8a3)

@@ -20,15 +20,13 @@
 
 Name:           linbox
 %define lname   liblinbox0
-Version:        1.7.0+git119
+Version:        1.7.1
 Release:        0
 Summary:        C++ library for computation with matrices over ints and finite fields
 License:        LGPL-2.1-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://linalg.org/
-#Source:         https://github.com/linbox-team/linbox/releases/download/v%version/linbox-%version.tar.gz
-%define rev 48953a8a39a3cb06dd2382afed119b5213824854
-Source:         https://github.com/linbox-team/linbox/archive/%rev.tar.gz
+Source:         https://github.com/linbox-team/linbox/releases/download/v%version/linbox-%version.tar.gz
 BuildRequires:  autoconf >= 2.61
 BuildRequires:  automake >= 1.8
 BuildRequires:  gcc-c++
@@ -75,7 +73,7 @@ This subpackage contains the include files and library links for
 developing against the Givaro library.
 
 %prep
-%autosetup -p1 -n %name-%rev
+%autosetup -p1
 
 %build
 autoreconf -fi

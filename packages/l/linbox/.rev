@@ -64,4 +64,12 @@
   * Resolve compile error with gcc-15</comment>
     <requestid>1287763</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>114bcb2658b85977d0d441609c927b8e</srcmd5>
+    <version>1.7.1</version>
+    <time>1753455930</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.7.1</comment>
+    <requestid>1295636</requestid>
+  </revision>
 </revisionlist>
