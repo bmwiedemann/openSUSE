@@ -30,6 +30,8 @@ License:        GPL-2.0-only AND LGPL-2.1-or-later
 URL:            https://github.com/libimobiledevice/libplist
 Source:         https://github.com/libimobiledevice/libplist/archive/%{version}.tar.gz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM https://github.com/libimobiledevice/libplist/commit/d7fe479707af57aeedf7e41c08e7fb698cd2e2a3
+Patch0:         0001-cython-Fix-build-with-cython-3.1.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
