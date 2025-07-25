@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 22 10:27:07 UTC 2025 - Christopher Hofmann <cwh@suse.com>
+
+- remove dependency on 'rpm' which became obsolete a while ago
+
+-------------------------------------------------------------------
 Wed Jul  9 15:48:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - add CVE-2025-53547.patch: (CVE-2025-53547, bsc#1246151)

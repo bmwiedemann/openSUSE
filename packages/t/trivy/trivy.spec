@@ -32,7 +32,6 @@ BuildRequires:  zstd
 BuildRequires:  golang(API) = 1.24
 Requires:       ca-certificates
 Requires:       git-core
-Requires:       rpm
 
 %description
 Trivy (`tri` pronounced like trigger, `vy` pronounced like envy) is a simple and

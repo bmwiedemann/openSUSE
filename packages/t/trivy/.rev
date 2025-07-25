@@ -1226,4 +1226,16 @@ dropped patch file
 (🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/19 by dirkmueller)</comment>
     <requestid>1292195</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>35f461add1600f5ba075e3bb2a2f5722</srcmd5>
+    <version>0.64.1</version>
+    <time>1753455875</time>
+    <user>dimstar_suse</user>
+    <comment>remove rpm dependency
+
+
+
+(🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/20 by dirkmueller)</comment>
+    <requestid>1295289</requestid>
+  </revision>
 </revisionlist>
