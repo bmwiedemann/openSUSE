@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Jul 23 17:01:00 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch upstream from the dead one
+  (http://www.kyne.com.au/~mark/software/lua-cjson.php) to
+  https://github.com/openresty/lua-cjson
+- Update 2.1.0.14:
+    - doc: added doc for encode_skip_unsupported_value_types.
+- Update 2.1.0.13:
+    - Bugfix: Lua cjson integer overflow issues (CVE-2022-24834)
+      (#94)
+- Update 2.1.0.11:
+    - add lua 5.4 to test suite
+- Update to 2.1.0.9:
+    - Support for Lua 5.2+ Update test suite to GitHub Actions.
+    - Matrix for Lua 5.1, 5.2, 5.3, luajit master and luajit
+      openresty branch, clang and gcc
+- Update 2.1.0.8rc1:
+    - feature: add option to disable forward slash escaping
+- Update 2.1.0.7rc1:
+    - feature: ported to the ARM64 platform by masking off the
+      bits higher than 47-bit in the lightud.
+- Update 2.1.0.6rc2:
+    - bugfix: fixed the C compiler warning "SO C90 forbids mixed
+      declarations and code" on older operating systems.
+- Update 2.1.0.6rc1:
+    - feature: set cjson.array_mt on decoded
+      JSON arrays; this can be turned on via
+      cjson.decode_array_with_array_mt(true). off by default.
+- Update 2.1.0.5:
+    - bugfix: conditionally build luaL_setfuncs() function as the
+      latest LuaJIT v2.1 already includes it. fixes #21.
+- Update 2.1.0.4:
+    - travis-ci: added valgrind testing mode as well.
+- Update 2.1.0.3rc2:
+    - fixed the warning "inline function ‘fpconv_init’ declared
+      but never defined" from gcc.
+- Update 2.1.0.3rc1:
+    - Makefile: removed the slash (/) after $(DESTDIR) so as
+      to support empty DESTDIR and relative path values in the
+      following variable.
+- Update 2.1.0.3:
+    - feature: now we allow up to 16 decimal places in JSON
+      number encoding via cjson.encode_number_precision(); thanks
+      lordnynex for the patch in #4.
+    - Test cases for changing precision
+- Update 2.1.0.2:
+    - bugfix: the Makefile had a bug that overwrites existing
+      cjson.so file in place which could cause already running
+      nginx workers to crash. thanks ywsample for the report.
+- Update 2.1.0.1:
+    - feature: applied Jiale Zhi's patch to add the new config
+      function encode_empty_table_as_object so that we can encode
+      empty Lua tables into empty JSON arrays.
+
+-------------------------------------------------------------------
 Thu Jan 26 09:07:56 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Opencode %make_build to prevent build failure when not defined.

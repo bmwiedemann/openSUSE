@@ -18,12 +18,12 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name cjson
-Version:        2.1.0
+Version:        2.1.0.14
 Release:        0
 Summary:        Lua JSON Encoding/Decoding
 License:        MIT
-URL:            https://www.kyne.com.au/~mark/software/lua-cjson.php
-Source0:        http://www.kyne.com.au/~mark/software/download/lua-cjson-%{version}.tar.gz
+URL:            https://github.com/openresty/lua-cjson
+Source:         https://github.com/openresty/lua-cjson/archive/refs/tags/%{version}.tar.gz
 # PATCH-FIX-UPSTREAM test_environment.patch gh#mpx/lua-cjson#75 mcepl@suse.com
 # Make it possible for tests to be influenced by the variables
 Patch0:         test_environment.patch
@@ -73,7 +73,7 @@ install -m644 lua/cjson/util.lua %{buildroot}%{lua_noarchdir}/cjson/
 
 %check
 rm -rf build
-export CFLAGS="%{optflags}" PREFIX="%{_prefix}" \
+export CFLAGS="%{optflags}" PREFIX="%{_prefix}" SKIP_CMAKE=1 \
     LUA_INCLUDE_DIR="%{lua_incdir}" LUA_CMODULE_DIR="%{lua_archdir}" LUA_MODULE_DIR="%{lua_noarchdir}"
 ./runtests.sh
 
