@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 24 11:23:01 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250724.553d46c:
+  * measure-pcr-validator: fail if the file is missing
+  * measure-pcr-validator.service: Run after initrd-root-device.target
+  * measure-pcr-validator.service: Fix failure handling
+  * Clean the default snapshot in Tumbleweed
+  * Improve volume key extraction
+
+-------------------------------------------------------------------
 Tue Jul 22 13:41:54 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20250722.bf18f3b:
