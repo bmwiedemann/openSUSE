@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jul 18 08:07:35 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 5.4 Patch 2 - 2025-07-16
+
+- MINOR CHANGE: remind: Allow daysinmon() to take a DATE or DATETIME
+  argument.
+
+- MINOR CHANGE: remind: All functions that want an integer month number
+  will now also accept a string naming the month.
+
+= UPDATE: include/holidays/chinese-new-year.rem: Add dates for Chinese
+  New Year for 2051 through 2100.
+
+- BUG FIX: remind: Set trigdate() correctly for a fully-specified
+  date, even if it's in the past, as the manual documented.  Bug
+  found by Tim Chase.
+
+- DOCUMENTATION FIX: rem2html: Document the correct Perl module
+  prerequisites.
+
+- CODE FIXES: remind: Various minor improvements to the code with
+  no user-visible changes. 
+
+-------------------------------------------------------------------
 Mon Jun 16 11:17:47 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 5.4 Patch 1 - 2025-06-15
