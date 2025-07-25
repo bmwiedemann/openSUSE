@@ -90,6 +90,7 @@ Patch200:       ghc-hadrian-s390x-rts--qg.patch
 Patch300:       hadrian-9.10-deps.patch
 # Backport of MR 13105 (NCG for RISCV64)
 Patch243:       riscv64-ncg.patch
+Patch400:       gnu23-hp2ps.patch
 
 BuildRequires:  binutils-devel
 BuildRequires:  gcc-PIE
@@ -301,6 +302,7 @@ Installing this package causes %{name}-*-prof packages corresponding to
 %patch -P 243 -p1
 
 %patch -P 300 -p1
+%patch -P 400 -p1
 
 rm libffi-tarballs/libffi-*.tar.gz
 

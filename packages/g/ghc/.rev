@@ -1143,4 +1143,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     <comment>Improve loongarch64 support.</comment>
     <requestid>1291352</requestid>
   </revision>
+  <revision rev="114" vrev="4">
+    <srcmd5>22828c86b40ca9fba0f0a96eade2156d</srcmd5>
+    <version>9.10.2</version>
+    <time>1753455884</time>
+    <user>dimstar_suse</user>
+    <comment>- add gnu23-hp2ps.patch for build hp2ps with gcc15+ (forwarded request 1295602 from mimi_vx)</comment>
+    <requestid>1295609</requestid>
+  </revision>
 </revisionlist>
