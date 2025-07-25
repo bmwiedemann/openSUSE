@@ -1609,4 +1609,12 @@
     <comment>Update to version 14.6.0</comment>
     <requestid>1292188</requestid>
   </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>4c41d86047da8f5dbc724c980db1ce2a</srcmd5>
+    <version>14.6.1</version>
+    <time>1753456121</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 14.6.1</comment>
+    <requestid>1295771</requestid>
+  </revision>
 </revisionlist>
