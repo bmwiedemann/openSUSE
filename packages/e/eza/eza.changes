@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 25 06:21:06 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.23.0:
+  Bug Fixes:
+  * [breaking] Make --grid work when not in TTY
+  * [breaking] if data is piped into eza, eza will not ignore it
+  Documentation:
+  * Add --smart-group option to README
+  Features:
+  * Add icons for changelog and todo files
+  * Use CHANGES icon for CHANGELOG as well
+
+-------------------------------------------------------------------
 Mon Jul 14 06:32:39 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.22.1:
