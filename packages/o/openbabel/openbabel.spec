@@ -162,17 +162,27 @@ biochemistry, or related areas.
 %postun -n libopenbabel%{abiver} -p /sbin/ldconfig
 
 %check
+
+## disable test_align_{4,5}, known to fail w/ gcc-15
+## cf. gh#openbabel/openbabel/issues/2766 and ..../2799
+%if 0%{?suse_version} > 1600
+  %ifarch x86_64 aarch64 %{power64}
+    ## multiple --exclude-regex options do not work...
+    %define test_filter_add |test_align_(4|5)
+  %endif
+%endif
+
 %ifarch aarch64 %{power64} riscv64
   # See gh#openbabel/openbabel/266, gh#openbabel/openbabel#2246
-  %define test_filter --exclude-regex "(test_regressions_1|test_regressions_221|test_regressions_228|inchiSteffen_PubChem.smi_Test|pytest_sym|pybindtest_obconv_writers|pybindtest_bindings)"
+  %global test_filter --exclude-regex "(test_regressions_1|test_regressions_221|test_regressions_228|inchiSteffen_PubChem.smi_Test|pytest_sym|pybindtest_obconv_writers|pybindtest_bindings%{?test_filter_add})"
 %else
   # Some test failures on Tumbleweed apparently linked to slight changes in floating point value outputs.
   # They look harmless - maybe float comparison margin is just not big enough - and may be linked to newer rapidjson.
   %if 0%{?suse_version} > 1500
     %ifarch %{ix86}
-      %define test_filter --exclude-regex "(pybindtest_obconv_writers|test_cifspacegroup_11|pybindtest_bindings)"
+      %global test_filter --exclude-regex "(pybindtest_obconv_writers|test_cifspacegroup_11|pybindtest_bindings)"
     %else
-      %define test_filter --exclude-regex "pybindtest_obconv_writers"
+      %global test_filter --exclude-regex "pybindtest_obconv_writers%{?test_filter_add}"
     %endif
   %endif
 %endif

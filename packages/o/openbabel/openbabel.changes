@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  9 19:30:12 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Until upstream provides fixed code, disable test_align_{4,5},
+  known to fail w/ gcc-15; see gh#openbabel/openbabel/issues/2766
+  and ..../2799
+
+-------------------------------------------------------------------
 Sat Apr 19 17:05:53 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Add openbabel-cmake-4.patch and openbabel-cmake-4-exports.patch
