@@ -21,7 +21,7 @@
 %endif
 
 Name:           nvidia-settings
-Version:        570.153.02
+Version:        570.172.08
 Release:        0
 Summary:        Configure the NVIDIA graphics driver
 License:        GPL-2.0-only
