@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 25 04:58:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.39.1:
+  * Internal
+    - Add info about models usage to OpenTelemetry spans by @glours
+      in #13094
+  * Dependencies
+    - Bump compose-go to v2.8.1 by @glours in #13096
+
+-------------------------------------------------------------------
 Thu Jul 24 10:28:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.39.0:
