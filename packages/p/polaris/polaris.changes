@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 25 04:59:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 10.0.0:
+  * Remove flags from audit command and remove auth command (#1138)
+  * INS-1251: Polaris: upgrade github.com/qri-io/jsonschema to
+    v0.2.1 (#1135)
+
+-------------------------------------------------------------------
 Wed Jun 18 04:30:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 9.6.4:
