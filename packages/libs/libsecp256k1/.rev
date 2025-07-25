@@ -76,4 +76,24 @@
   * Remove the unused secp256k1_scratch_space functions</comment>
     <requestid>1226811</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>23590978196adbcb27acbe97a15a1cb2</srcmd5>
+    <version>0.7.0</version>
+    <time>1753455970</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  This release is primarily a maintenance release. Besides many minor
+  internal fixes and improvements, a handful of changes affect the public
+  API and thus break API and ABI compatibility.
+  The most notable changes are:
+  * The pointers secp256k1_context_static and secp256k1_context_no_precomp
+    to the constant context objects are now const.
+  * Removed previously deprecated function aliases secp256k1_ec_privkey_&lt;operation&gt;
+    in favor of secp256k1_ec_seckey_&lt;operation&gt;.
+  * Starting with this release, building with CMake is no longer
+    considered experimental.  Traditional GNU Autotools builds (./configure
+    and make) remain fully supported.
+  * For a more detailed list of changes, see the CHANGELOG.md</comment>
+    <requestid>1295682</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 25 06:30:30 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.0:
+  This release is primarily a maintenance release. Besides many minor
+  internal fixes and improvements, a handful of changes affect the public
+  API and thus break API and ABI compatibility.
+  The most notable changes are:
+  * The pointers secp256k1_context_static and secp256k1_context_no_precomp
+    to the constant context objects are now const.
+  * Removed previously deprecated function aliases secp256k1_ec_privkey_<operation>
+    in favor of secp256k1_ec_seckey_<operation>.
+  * Starting with this release, building with CMake is no longer
+    considered experimental.  Traditional GNU Autotools builds (./configure
+    and make) remain fully supported.
+  * For a more detailed list of changes, see the CHANGELOG.md
+
+-------------------------------------------------------------------
 Wed Nov 27 08:09:41 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.0:
