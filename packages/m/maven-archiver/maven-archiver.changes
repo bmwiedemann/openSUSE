@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 25 07:15:18 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * reproducible-from-environment.patch
+    + rediff to include a follow-up PR
+
+-------------------------------------------------------------------
 Thu Jul 24 09:24:28 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

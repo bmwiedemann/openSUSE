@@ -63,4 +63,12 @@
     <comment>rebase patches to accepted pull request</comment>
     <requestid>1295480</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>3546b0fc415fae095d4a008aa024926e</srcmd5>
+    <version>3.6.3</version>
+    <time>1753455974</time>
+    <user>dimstar_suse</user>
+    <comment>small tiny change again</comment>
+    <requestid>1295692</requestid>
+  </revision>
 </revisionlist>
