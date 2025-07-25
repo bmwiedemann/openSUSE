@@ -2082,6 +2082,7 @@ unsorted:
   - cereal-devel 
   - certbot-systemd-timer 
   - certgen 
+  - certinfo 
   - cervisia 
   - cervisia-lang 
   - cf-cli 
@@ -15201,8 +15202,6 @@ unsorted:
   - libpfm4 
   - libpfm4-32bit 
   - libpfs2 
-  - libpgeasy-devel 
-  - libpgeasy3 
   - libpgf-devel 
   - libpgf7 
   - libpgm-5_3-0-32bit 
@@ -15911,7 +15910,7 @@ unsorted:
   - librttopo1 
   - librttr_core0_9_6 
   - librubberband-devel 
-  - librubberband2-32bit 
+  - librubberband3-32bit 
   - librvngabw-0_0-0 
   - librvngabw-devel 
   - librvngabw-devel-doc 
@@ -15975,7 +15974,7 @@ unsorted:
   - libseccomp-devel 
   - libseccomp-tools 
   - libseccomp2-32bit 
-  - libsecp256k1-5 
+  - libsecp256k1-6 
   - libsecp256k1-devel 
   - libsecprog-devel 
   - libsecprog0 
@@ -21282,7 +21281,6 @@ unsorted:
   - perl-Crypt-SSLeay 
   - perl-Crypt-SaltedHash 
   - perl-Crypt-SysRandom 
-  - perl-Crypt-URandom 
   - perl-Crypt-UnixCrypt_XS 
   - perl-Curses 
   - perl-CursesWidgets 
@@ -48821,6 +48819,7 @@ unsorted:
   - wavpack 
   - wavpack-devel 
   - wavpack-doc 
+  - wayback 
   - waybar 
   - waybar-branding-openSUSE 
   - waybar-branding-upstream 
