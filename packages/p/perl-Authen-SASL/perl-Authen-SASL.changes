@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 21 10:03:21 UTC 2025 - pgajdos@suse.com
+
+- security update
+- added patches
+  CVE-2025-40918 [bsc#1246623], insecurely generated client nonce
+  + perl-Authen-SASL-CVE-2025-40918.patch
+
+-------------------------------------------------------------------
 Sat Apr 26 05:33:44 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.180.0 (2.1800)

@@ -27,13 +27,17 @@ Summary:        SASL Authentication framework
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/EH/EHUELS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+# CVE-2025-40918 [bsc#1246623], insecurely generated client nonce
+Patch0:         perl-Authen-SASL-CVE-2025-40918.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Crypt::URandom)
 BuildRequires:  perl(Digest::HMAC_MD5)
 BuildRequires:  perl(Pod::Coverage::TrustPod)
 BuildRequires:  perl(Test::Pod)
 BuildRequires:  perl(Test::Pod::Coverage)
+Requires:       perl(Crypt::URandom)
 Requires:       perl(Digest::HMAC_MD5)
 Provides:       perl(Authen::SASL) = %{version}
 Provides:       perl(Authen::SASL::CRAM_MD5) = %{version}

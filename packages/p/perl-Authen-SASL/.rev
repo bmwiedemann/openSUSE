@@ -230,4 +230,12 @@
         on the callback values (forwarded request 1278620 from tinita)</comment>
     <requestid>1279032</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>a690d094620bd024bff10b3e01540894</srcmd5>
+    <version>2.180.0</version>
+    <time>1753455827</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1295283</requestid>
+  </revision>
 </revisionlist>
