@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 23 13:05:39 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.4.5
+  * Remove support for python 3.7 and older
+  * Add tag_filter as a way to pre-filter tags
+  * Detect src layout only if it exists and included by build config
+  * Accept context as the second argument to version_format function
+  * Update pyproject-metadata to support latest version of PEP 639
+  * Use fallback_version for source = "call"
+  * Out-of-box stubs package support
+  * Support a SOURCE_DATE_EPOCH prior to 1980
+
+-------------------------------------------------------------------
 Mon Apr 15 09:01:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.0:

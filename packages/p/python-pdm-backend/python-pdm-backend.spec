@@ -1,7 +1,7 @@
 #
 # spec file for package python-pdm-backend
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pdm-backend
-Version:        2.2.0
+Version:        2.4.5
 Release:        0
 Summary:        Backend used by PDM
 License:        MIT
 URL:            https://github.com/pdm-project/pdm-backend
 Source:         https://files.pythonhosted.org/packages/source/p/pdm-backend/pdm_backend-%{version}.tar.gz
-BuildRequires:  %{python_module importlib-metadata >= 3.6.0 if %python-base < 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -35,9 +34,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  git-core
 # /SECTION
-%if 0%{?python_version_nodots} < 310
-Requires:       python-importlib-metadata >= 3.6.0
-%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,6 +51,8 @@ The build backend used by [PDM] that supports latest packaging standards.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+git config --global user.email "o@bs.com"
+git config --global user.name "Open Build Service"
 %pytest
 
 %files %{python_files}
