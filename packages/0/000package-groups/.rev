@@ -2238,4 +2238,10 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <user>dimstar_suse</user>
     <comment>Mozillafirefox-devel is not i686; it is noarch</comment>
   </revision>
+  <revision rev="314" vrev="312">
+    <srcmd5>b34fb98b6a8292cc35802fb11142e6c2</srcmd5>
+    <version>unknown</version>
+    <time>1753468171</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
