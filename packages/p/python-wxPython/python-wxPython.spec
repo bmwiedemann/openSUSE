@@ -16,6 +16,10 @@
 #
 
 
+%if 0%{suse_version} < 1600
+%define gccver 13
+%endif
+
 %define         X_display ":98"
 %bcond_without  test
 %bcond_without  syswx
@@ -78,7 +82,7 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           %{pprefix}-wxPython
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Summary:        The "Phoenix" variant of the wxWidgets Python bindings
 License:        GPL-2.0-or-later
@@ -98,13 +102,12 @@ Patch15:        CVE-2024-50602-no-crash-XML_ResumeParser.patch
 # PATCH-FIX-OPENSUSE - Test fixes/additions:
 Patch112:       0001-Check-HSV-values-in-image-test.patch
 Patch114:       wxwidgets-3.2.5.patch
-# PATCH-FIX-UPSTREAM https://github.com/wxWidgets/Phoenix/pull/2680 Implement __iter__ for wxList iterator classes
-Patch115:       https://github.com/wxWidgets/Phoenix/commit/2adbeaa7854342a27aab828c128f2111a99c4cf0.patch#/python-3.13.1.patch
 # TODO: Replace deprecated setup.py calls in build.py with PEP517 without building wxWidgets into the wheel
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  c++_compiler
+BuildRequires:  gcc%{?gccver}-c++
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -112,7 +115,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module sip6-devel >= 6.8.3}
 BuildRequires:  waf
 BuildRequires:  wxGTK3-devel >= 3.2.0
-BuildRequires:  wxWidgets-3_2-doc-xml >= 3.2.0
+BuildRequires:  wxWidgets-3_2-doc-xml >= 3.2.7
 %else
 BuildRequires:  freeglut-devel
 BuildRequires:  gstreamer-plugins-base-devel
@@ -204,6 +207,9 @@ sed -i -e '/^#!\//, 1d' wx/py/tests/*.py
 echo "# empty module" >> wx/lib/pubsub/core/itopicdefnprovider.py
 
 %build
+%{?gccver:export CXX=g++-%{gccver}}
+%{?gccver:export CC=gcc-%{gccver}}
+
 export CFLAGS="%{optflags}"
 
 %if %{with rebuild_sip}
