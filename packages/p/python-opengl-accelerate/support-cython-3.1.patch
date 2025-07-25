@@ -1,0 +1,23 @@
+From 69e8ced15eb63c3f00293f59cef50d5fad02d884 Mon Sep 17 00:00:00 2001
+From: Vsevolod Misiul <vsevolod.misul@innowise.com>
+Date: Mon, 19 May 2025 14:46:00 +0300
+Subject: [PATCH 1/2] For linux on arm64 the long type is not defined, so grab
+ it from ctypes.c_long
+
+---
+ accelerate/src/vbo.pyx | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/accelerate/src/vbo.pyx b/accelerate/src/vbo.pyx
+index 13f9e99d..6e92c059 100644
+--- a/accelerate/src/vbo.pyx
++++ b/accelerate/src/vbo.pyx
+@@ -1,6 +1,7 @@
+ """Cython-coded VBO implementation"""
+ #cython: language_level=3
+ import ctypes, weakref
++from ctypes import c_long as long
+ from OpenGL_accelerate.formathandler cimport FormatHandler
+ from OpenGL import error
+ from OpenGL._bytes import bytes,unicode
+

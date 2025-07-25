@@ -26,6 +26,8 @@ Summary:        Acceleration for python-opengl
 License:        BSD-3-Clause
 URL:            http://pyopengl.sourceforge.net
 Source0:        %{tarname}-%{_version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#mcfletch/pyopengl#146
+Patch0:         support-cython-3.1.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module opengl >= %{version}}

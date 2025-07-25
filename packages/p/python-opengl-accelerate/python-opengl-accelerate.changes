@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 25 05:03:22 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-cython-3.1.patch:
+  * Support Cython 3.1 changes.
+
+-------------------------------------------------------------------
 Fri Jul  4 05:28:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

@@ -133,4 +133,13 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1290576</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>2d19fb1939906276e13be0461758c912</srcmd5>
+    <version>3.1.9</version>
+    <time>1753455933</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-cython-3.1.patch:
+  * Support Cython 3.1 changes.</comment>
+    <requestid>1295643</requestid>
+  </revision>
 </revisionlist>
