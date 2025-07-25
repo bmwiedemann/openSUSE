@@ -17,9 +17,7 @@
 
 
 Name:           vm-install
-%if %suse_version <= 1230
-%define with_vminstall_as_default_installer 1
-%endif
+%define with_vminstall_as_default_installer 0
 URL:            http://developer.novell.com/wiki/index.php/Vm-install
 BuildRequires:  python3-setuptools
 %if %{?with_vminstall_as_default_installer}0
@@ -64,7 +62,7 @@ vm-install can be used in a variety of ways:
 Python programs, to create VMs programmatically.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 
@@ -79,12 +77,11 @@ rm -f  $RPM_BUILD_ROOT/%{_datadir}/applications/YaST2/vm-install.desktop
 mkdir -p $RPM_BUILD_ROOT/etc/default
 install -m644 %SOURCE1 $RPM_BUILD_ROOT/etc/default/vm-install
 
-%clean
-test ! -z "$RPM_BUILD_ROOT" -a "$RPM_BUILD_ROOT" != "/" && rm -rf $RPM_BUILD_ROOT
+%python3_fix_shebang
 
 %files -f xen-vm-install.lang
 %defattr(-,root,root,-)
-%doc COPYING
+%license COPYING
 %{_mandir}/man8/*.8%{?ext_man}
 %{_bindir}/vm-disks
 %{_bindir}/vm-install

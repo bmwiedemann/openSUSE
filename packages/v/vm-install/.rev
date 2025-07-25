@@ -1353,4 +1353,12 @@
     <comment></comment>
     <requestid>1252566</requestid>
   </revision>
+  <revision rev="175" vrev="3">
+    <srcmd5>055ba9ed54eef6910fd9f8d438cfe57c</srcmd5>
+    <version>0.10.11</version>
+    <time>1753455916</time>
+    <user>dimstar_suse</user>
+    <comment>Fix issues when building with gcc15. Clean up some other spec file rot.</comment>
+    <requestid>1295626</requestid>
+  </revision>
 </revisionlist>
