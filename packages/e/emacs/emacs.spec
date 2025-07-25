@@ -403,8 +403,7 @@ group called "games".
 Summary:        Generate Tag Files for Use with Emacs
 Group:          Development/Tools/Navigators
 %if %{with libalternatives}
-Requires(post): alts
-Requires(preun): alts
+Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
@@ -5586,7 +5585,6 @@ fi
 %{_bindir}/ctags
 %{_bindir}/etags
 %{_bindir}/gnuctags
-%{_mandir}/man1/ctags.1%{ext_man}
 %{_mandir}/man1/etags.1%{ext_man}
 %{_mandir}/man1/gnuctags.1%{ext_man}
 %if %{with libalternatives}
@@ -5594,6 +5592,7 @@ fi
 %dir %{_datadir}/libalternatives/ctags/
 %{_datadir}/libalternatives/ctags/10.conf
 %else
+%{_mandir}/man1/ctags.1%{ext_man}
 %ghost %attr(0644,root,root) %{_sysconfdir}/alternatives/ctags
 %ghost %attr(0644,root,root) %{_sysconfdir}/alternatives/ctags.1%{ext_man}
 %endif

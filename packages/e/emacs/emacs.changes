@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 24 11:51:40 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- Remove ctags.1 that's unused with libalternatives
+- Requires: alts, not used in scriptlets
+
+-------------------------------------------------------------------
 Tue Jul 15 09:13:53 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Move .gnu-emacs to /usr/etc/skel/
