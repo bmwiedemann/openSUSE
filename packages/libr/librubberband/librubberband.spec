@@ -1,7 +1,7 @@
 #
 # spec file for package librubberband
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,11 @@
 #
 
 
-%define sover   2
+%bcond_with sleef
+
+%define sover   3
 Name:           librubberband
-Version:        3.1.0
+Version:        4.0.0
 Release:        0
 Summary:        Audio time-stretching and pitch-shifting library
 License:        GPL-2.0-or-later
@@ -26,15 +28,20 @@ Group:          System/Libraries
 URL:            https://www.breakfastquay.com/rubberband/
 Source:         https://breakfastquay.com/files/releases/rubberband-%{version}.tar.bz2
 Source1:        baselibs.conf
+BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa-devel
+BuildRequires:  libboost_test-devel
 BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
 BuildRequires:  vamp-plugin-sdk-devel
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(samplerate)
+%if %{with sleef}
+BuildRequires:  pkgconfig(sleef)
+%endif
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(vamp-sdk)
 Requires:       ladspa
@@ -114,7 +121,7 @@ developing applications that use %{name}.
 %setup -q -n rubberband-%{version}
 
 %build
-%meson -Dfft=fftw
+%meson -Dfft=fftw -Djni=disabled
 %meson_build
 
 %install

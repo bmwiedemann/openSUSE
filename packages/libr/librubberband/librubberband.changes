@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Jul 23 12:05:30 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Disable BuildReq of sleef temporarily due to the build failures on TW;
+  it can be reenabled later once after the build of sleef gets fixed
+
+-------------------------------------------------------------------
+Thu Jul 10 07:25:59 UTC 2025 - Edgar Aichinger <edogawa@aon.at>
+
+- Updated to 4.0.0
+ * Add a new API, RubberBandLiveShifter, which is simpler to use
+   than the general RubberBandStretcher interface in cases where only
+   pitch-shifting is required. For more general purposes the original
+   interface is still the proper one.
+ * Fix incorrect URIs in LV2 plugins
+ * Fix stack overflow in seldom used R2 time-domain smoothing code
+ * Add support for key-frame maps (and the live shifter) to JNI interface
+ * Fix some compatibility issues and warnings with certain compilers
+
+- Updated to 3.3
+ * Fix incorrect output with unexpectedly large buffers in process
+ * Add getProcessSizeLimit to query the maximum buffer length for
+   process and highest supported value for setMaxProcessSize
+ * Fix formal test failure in some contexts
+
+- Updated to 3.2.1
+ * Fix formal test failure in build configurations using other
+   resamplers than the built-in one
+
+-------------------------------------------------------------------
+Thu Mar 30 18:37:28 UTC 2023 - Fabio Pesari <fpesari@tuxfamily.org>
+
+- Updated to 3.2.0
+ * Fix inability of the R3 engine to produce mono-compatible output
+   when processing stereo. In R2 the OptionChannelsTogether option has
+   always done this (with some quality caveats). In R3 this option was
+   more nearly mono-compatible than the default, but not
+   entirely. With this release, OptionChannelsTogether uses a new
+   method that is both high quality and mono-compatible and is
+   recommended for situations benefiting from this.
+ * Correct the start delay calculation in "resample-before" modes of
+   both stretcher engines. This affects latency reporting in realtime
+   mode when using the non-recommended realtime pitch options
+   (i.e. those other than OptionPitchHighConsistency, which is the
+   recommended option for variable-rate use in realtime mode)
+ * Relatedly, fix failure to use OptionPitchHighConsistency in R3
+   LADSPA/LV2 plugins
+ * Fix small difference in output from R3 engine depending on whether
+   time and pitch ratios were provided on construction or immediately
+   after it
+ * Expand automated tests
+
+-------------------------------------------------------------------
 Mon Oct  3 14:45:57 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 3.1.0
@@ -116,5 +168,3 @@ Fri Jul 17 08:14:06 CEST 2009 - mseben@suse.cz
 Tue Jul  7 22:21:50 CEST 2009 - mseben@suse.cz
 
 - initial package for openSUSE
-
--------------------------------------------------------------------
