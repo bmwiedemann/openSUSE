@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Fri Jul 25 12:15:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.26.1:
+  No kubectl-cnpg related changes
+  * Dependencies
+    - fix(deps): update all non-major go dependencies
+      (release-1.26) (#8049)
+    - chore(deps): update kindest/node docker tag to v1.33.2
+      (release-1.26) (#8097)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.3.0 (release-1.26) (#8090)
+    - chore(deps): update backup test tools (release-1.26) (#8081)
+    - chore(deps): update github/codeql-action digest to d6bbdef
+      (release-1.26) (#8079)
+    - fix(deps): update kubernetes patches to v0.33.3
+      (release-1.26) (#8057)
+    - fix(deps): update module
+      github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+      to v0.84.0 (release-1.26) (#8044)
+    - chore(deps): update dependency rook/rook to v1.17.6
+      (release-1.26) (#8040)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.2.2 (release-1.26) (#8030)
+    - fix(deps): update module golang.org/x/term to v0.33.0
+      (release-1.26) (#8013)
+    - chore(deps): update operator framework to v1.41.1
+      (release-1.26) (#8021)
+    - chore(deps): update module github.com/goreleaser/goreleaser
+      to v2.11.0 (release-1.26) (#8006)
+    - chore(deps): update dependency golang to v1.24.5
+      (release-1.26) (#8002)
+    - chore(deps): update operator framework (release-1.26) (#7977)
+    - fix(deps): update module github.com/cloudnative-pg/machinery
+      to v0.3.0 (release-1.26) (#7971)
+    - fix(deps): update module
+      github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+      to v0.83.0 (release-1.26) (#7966)
+    - fix(deps): update kubernetes patches to v0.33.2
+      (release-1.26) (#7962)
+    - fix(deps): update module github.com/masterminds/semver/v3 to
+      v3.4.0 (release-1.26) (#7957)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.2.1 (release-1.26) (#7960)
+    - chore(deps): update github/codeql-action digest to 181d5ee
+      (release-1.26) (#7952)
+    - fix(deps): update module sigs.k8s.io/yaml to v1.5.0
+      (release-1.26) (#7940)
+    - chore(deps): update github/codeql-action digest to 39edc49
+      (release-1.26) (#7935)
+    - chore(deps): update dependency
+      kubernetes-csi/csi-driver-host-path to v1.17.0 (release-1.26)
+      (#7927)
+    - chore(deps): update minio/minio docker tag to
+      release.2025-06-13t11-33-47z (release-1.26) (#7921)
+    - chore(deps): update dependency
+      redhat-openshift-ecosystem/openshift-preflight to v1.14.0
+      (release-1.26) (#7916)
+    - chore(deps): update all non-major github action
+      (release-1.26) (#7911)
+    - chore(deps): update jonasbn/github-action-spellcheck docker
+      tag to v0.51.0 (release-1.26) (#7908)
+    - chore(deps): update kubernetes csi (release-1.26) (#7857)
+    - chore(deps): update jonasbn/github-action-spellcheck docker
+      tag to v0.50.0 (release-1.26) (#7855)
+    - chore(deps): update docker/setup-buildx-action digest to
+      e468171 (release-1.26) (#7849)
+    - chore(deps): update dependency
+      redhat-openshift-ecosystem/openshift-preflight to v1.13.3
+      (release-1.26) (#7843)
+    - chore(deps): update all non-major github action
+      (release-1.26) (#7838)
+    - chore(deps): update dependency
+      kubernetes-csi/external-resizer to v1.14.0 (release-1.26)
+      (#7825)
+    - chore(deps): update dependency
+      redhat-openshift-ecosystem/openshift-preflight to v1.13.2
+      (release-1.26) (#7819)
+    - chore(deps): update all non-major github action
+      (release-1.26) (#7798)
+    - chore(deps): update module github.com/goreleaser/goreleaser
+      to v2.10.2 (release-1.26) (#7789)
+    - chore(deps): update module sigs.k8s.io/controller-tools to
+      v0.18.0 (release-1.26) (#7746)
+    - fix(deps): update module sigs.k8s.io/controller-runtime to
+      v0.21.0 (release-1.26) (#7776)
+    - fix(deps): update k8s.io/utils digest to 4c0f3b2
+      (release-1.26) (#7773)
+    - chore(deps): update dependency vmware-tanzu/velero to v1.16.1
+      (release-1.26) (#7769)
+    - chore(deps): pin agilepathway/label-checker action to c3d16ad
+      (release-1.26) (#7764)
+    - chore(deps): update dependency golang to v1.24.4
+      (release-1.26) (#7760)
+    - chore(deps): update kubernetes csi (release-1.26) (#7747)
+    - chore(deps): update operator framework to v1.40.0
+      (release-1.26) (#7743)
+    - chore(deps): update all non-major github action
+      (release-1.26) (#7738)
+    - fix(deps): update all non-major go dependencies
+      (release-1.26) (#7700)
+    - chore(deps): update kindest/node docker tag to v1.33.1
+      (release-1.26) (#7695)
+    - chore(deps): update operator framework (release-1.26) (#7688)
+    - chore(deps): update jonasbn/github-action-spellcheck docker
+      tag to v0.49.0 (release-1.26) (#7683)
+    - chore(deps): update dependency rook/rook to v1.17.2
+      (release-1.26) (#7678)
+    - chore(deps): update backup test tools (release-1.26) (#7675)
+    - chore(deps): update all non-major github action
+      (release-1.26) (#7670)
+    - fix(deps): update kubernetes packages to v0.33.1
+      (release-1.26) (#7666)
+
+-------------------------------------------------------------------
 Fri May 23 12:33:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.26.0:
