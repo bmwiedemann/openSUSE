@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jul 23 19:05:00 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.4.7:
+  * Highlights
+    - Improve latency handling in echo-cancel.
+    - Don't leak SyncObj fds in client-node.
+    - Improve the adaptive resampler performance.
+    - Some more fixes and improvements.
+  * modules
+    - Set module-echo-cancel latency correctly.
+    - Avoid extra latency in echo-cancel by dropping samples when
+      one end is paused.
+    - Don't leak SyncObj fds in client-node. (#4807)
+  * SPA
+    - Actually enable echo cancellation when using webrtc 2.0
+    - Improve ALSA driver resampling setup and follower adaptive
+      resampling.
+    - Fix an off-by-one in the delay filter.
+    - Improve the adaptive resampler performance.
+  * bluetooth
+    - Improve compatibility with some JBL flip and change models.
+  * GStreamer
+    - Add some format validations.
+
+-------------------------------------------------------------------
 Fri Jun 27 16:29:52 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.4.6:
