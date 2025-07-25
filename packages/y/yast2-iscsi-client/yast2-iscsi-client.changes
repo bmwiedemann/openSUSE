@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 23 10:38:00 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Ensure to hide passwords (bsc#1246833)
+- 5.0.9
+
+-------------------------------------------------------------------
+Wed Jul 23 10:00:00 UTC 2025 - Knut Alejandro Anderssen González <kanderssen@suse.com>
+
+- Do not filter netcard cards by iscsioffload feature as for example
+  it is not present in qede/qedi devices (bsc#1236433).
+
+-------------------------------------------------------------------
 Thu Jul  3 13:24:33 UTC 2025 - José Iván López González <jlopez@suse.com>
 
 - Avoid exception if discovering from a portal fails (related to
