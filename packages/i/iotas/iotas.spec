@@ -17,7 +17,7 @@
 
 
 Name:           iotas
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 Summary:        Distraction-free note taking app with optional cloud sync
 License:        GPL-3.0-or-later
