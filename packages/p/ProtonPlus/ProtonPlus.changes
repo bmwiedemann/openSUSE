@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jul 25 22:14:49 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 0.5.12:
+  * Fix launchers loading issue
+  * Fix possible parsing issue
+  * Fix force exit in warning dialog when closing the application
+  * Fix application freezing in a certain scenario
+
+-------------------------------------------------------------------
+Thu Jul 24 14:40:37 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 0.5.11:
+  * Update launcher icons for better consistency
+  * Add missing i18n strings
+  * Add a way to see the game prefix in the Games tab
+  * Add a sticky filter bar to the "Runners" tab
+  * Add a way to see which runners are used
+  * Add used/unused filters in the "Runners" tab filters bar
+  * Fix "Runners" tab filters not working when switching launcher
+  * Fix the "apps" block end calculation in VDF parser
+  * Fix a launcher loading issue
+  * Fix key case mismatch issue
+  * Add non-steam games support
+  * Hide ProtonPlus in "Games" tab
+  * Improve Proton-GE Latest handling
+  * Add an update indicator
+  * Remove default compatibility tool check
+  * Add default compatibility tool field automatically
+
+-------------------------------------------------------------------
 Wed Jul 23 13:00:28 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 0.5.10:
