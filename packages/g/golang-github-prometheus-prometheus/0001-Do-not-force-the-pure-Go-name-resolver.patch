@@ -1,4 +1,4 @@
-From b47f7e3be0836970dfe48ba476039dc9ac9998b7 Mon Sep 17 00:00:00 2001
+From 471ee4bb9b461c0555cf46c2ea5c423827ec1369 Mon Sep 17 00:00:00 2001
 From: Jan Fajerski <jfajerski@suse.com>
 Date: Fri, 8 Feb 2019 09:17:06 +0100
 Subject: [PATCH] Do not force the pure Go name resolver
@@ -16,23 +16,21 @@ Signed-off-by: Johannes Kastl <git@johannes-kastl.de>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/.promu.yml b/.promu.yml
-index 6feaa6ef6..48d42ee92 100644
+index d16bceeed..367a75765 100644
 --- a/.promu.yml
 +++ b/.promu.yml
-@@ -12,12 +12,12 @@ build:
+@@ -12,10 +12,10 @@ build:
            path: ./cmd/promtool
      tags:
          all:
 -            - netgo
              - builtinassets
-             - stringlabels
          windows:
              - builtinassets
-             - stringlabels
 +    flags: -mod=vendor -a
      ldflags: |
          -X github.com/prometheus/common/version.Version={{.Version}}
          -X github.com/prometheus/common/version.Revision={{.Revision}}
 -- 
-2.44.2
+2.49.0
 
