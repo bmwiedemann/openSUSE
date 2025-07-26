@@ -535,4 +535,12 @@ But since we have been since august, I'm subbing the next version also. Should y
   + rvv:</comment>
     <requestid>1286307</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>9ad32185312ad2f7310fb9c215e23704</srcmd5>
+    <version>0.46.2</version>
+    <time>1753530041</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable LTO on riscv64 due to gcc bug 110812 (forwarded request 1293890 from Andreas_Schwab)</comment>
+    <requestid>1295785</requestid>
+  </revision>
 </revisionlist>

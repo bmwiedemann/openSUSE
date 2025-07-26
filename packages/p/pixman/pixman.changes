@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 16 19:20:34 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Disable LTO on riscv64 due to gcc bug 110812
+
+-------------------------------------------------------------------
 Tue Jun 17 07:04:34 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to version 0.46.2:
