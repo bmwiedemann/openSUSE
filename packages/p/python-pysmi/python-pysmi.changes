@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jul 25 23:57:07 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Skipping failing tests (gh#lextudio/pysnmp#198)
+- Redownload tarball from GitHub (missing tests, gh#lextudio/pysnmp#197)
+
+-------------------------------------------------------------------
+Fri Jul 18 22:35:58 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.2:
+  * Fixed debugging flag bug.
+  * Upgraded to match pysnmp 7.1.16 and above.
+
+-------------------------------------------------------------------
+Tue Feb 25 13:12:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.5.10
+  * Improved DEFVAL handling.
+
+-------------------------------------------------------------------
+Tue Feb  4 19:02:26 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.9:
+  * Exposed reference property in MIB objects.
+  * Fixed fixed-length OCTET STRING handling.
+  * Various improvements in MIB parsing, including better DEFVAL
+    handling, symbol name generation, and more.
+  * Improved DISPLAY-HINT support.
+
+-------------------------------------------------------------------
 Sun Oct 20 18:57:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.4:

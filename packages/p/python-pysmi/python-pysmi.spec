@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysmi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,30 +30,32 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-pysmi%{psuffix}
-Version:        1.5.4
+Version:        1.6.2
 Release:        0
 Summary:        SNMP SMI/MIB Parser
 License:        BSD-2-Clause
 URL:            https://github.com/lextudio/pysmi
-Source:         https://files.pythonhosted.org/packages/source/p/pysmi/pysmi-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+# Source:         https://files.pythonhosted.org/packages/source/p/pysmi/pysmi-%%{version}.tar.gz
+Source:         https://github.com/lextudio/pysmi/archive/refs/tags/v%{version}.tar.gz#/pysmi-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module flit-core >= 3.9.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
-BuildRequires:  %{python_module Jinja2 >= 3.1}
+BuildRequires:  %{python_module Jinja2 >= 3.1.3}
 BuildRequires:  %{python_module ply >= 3.11}
 BuildRequires:  %{python_module pyasn1}
 BuildRequires:  %{python_module pysmi = %{version}}
 BuildRequires:  %{python_module pysnmp}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests >= 2.26}
+BuildRequires:  %{python_module requests >= 2.26.0}
 %endif
-Requires:       python-Jinja2 >= 3.1
+Requires:       python-Jinja2 >= 3.1.3
 Requires:       python-ply >= 3.11
-Requires:       python-requests >= 2.26
+Requires:       python-requests >= 2.26.0
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
@@ -84,7 +86,8 @@ Can produce PySNMP MIB modules.
 
 %check
 %if %{with test}
-%pytest
+# Skipping tests because of gh#lextudio/pysnmp#198
+%pytest -k 'not (ModuleComplianceReferenceTestCase or NotificationGroupReferenceTestCase or ObjectGroupReferenceTestCase or TypeDeclarationTestCase or TypeDeclarationFixedLengthTestCase)'
 %endif
 
 %if !%{with test}
@@ -100,7 +103,7 @@ Can produce PySNMP MIB modules.
 
 %files %{python_files}
 %license LICENSE.rst
-%doc README.md examples/*
+%doc README.md
 %{python_sitelib}/pysmi
 %{python_sitelib}/pysmi-%{version}.dist-info
 %python_alternative %{_bindir}/mibdump
