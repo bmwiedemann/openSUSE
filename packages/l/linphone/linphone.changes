@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 25 15:08:06 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- fix build with gcc15
+
+-------------------------------------------------------------------
 Mon Feb 17 08:16:41 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.3.1015 (no changelog).
@@ -300,7 +305,7 @@ Fri Jul 30 05:09:30 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.5.25
 - add build-liblinphone4-with-mediastreamer5.patch
 
 -------------------------------------------------------------------
-Sun Jul 4 2021 Giacomo Comes <gcomes.obs@gmail.com> - 4.5.21
+Sun Jul 04 05:09:30 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.5.21
 
 - fix several RPMLINT warning
 - Update to 4.5.21:

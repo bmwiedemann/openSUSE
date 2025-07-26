@@ -921,4 +921,12 @@
 </comment>
     <requestid>1246367</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>a2df1db1c730bd148f0390bcb034772c</srcmd5>
+    <version>5.3.105</version>
+    <time>1753530151</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build with gcc15</comment>
+    <requestid>1295853</requestid>
+  </revision>
 </revisionlist>

@@ -211,6 +211,7 @@ patch -p1 <%SOURCE11
 patch -p1 <%SOURCE12
 patch -p1 <%SOURCE13
 autoreconf -vif
+export CFLAGS="%{optflags} -std=gnu11"
 LDFLAGS="-Wl,-rpath,%ldaplibdir" ./configure \
   --enable-static=yes \
   --enable-shared=no \
