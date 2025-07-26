@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 25 14:38:11 UTC 2025 - Mike FABIAN <maiku.fabian@gmail.com>
+
+- Add a new gsettings option `emojistyle` and make it changeable with a `toggle_emoji_style` command
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/774)
+- Fix list of sentence ending characters to avoid incorrect auto-capitalization
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/773)
+- Update emoji annotations from CLDR
+- Translation update from Weblate (de 100%, es 99.2 %, it 98.5%, ja 100%)
+
+-------------------------------------------------------------------
 Sun Jul 20 08:51:29 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed usage of %suse_version macros
