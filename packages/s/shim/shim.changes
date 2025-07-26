@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jul 25 06:01:26 UTC 2025 - Joey Lee <jlee@suse.com>
+
+- Building out shim.nx.efi for supporting non-executable
+    - Building additional shim with POST_PROCESS_PE_FLAGS=-n to set
+      the PE NX-compatibility DLL. (NxCompatible field in DllCharacteristics)
+    - Packaging shim.nx.efi to shim-nx RPM.
+    - Add MS signatures for shim.nx
+        - signature-opensuse-nx.x86_64.asc
+          signature-sles-nx.x86_64.asc
+          signature-opensuse-nx.aarch64.asc
+          signature-sles-nx.aarch64.asc
+        - We direc copy signatures of shim for shim.nx before we got
+          signatures from Microsoft.
+- Building MokManager.efi and fallback.efi with POST_PROCESS_PE_FLAGS=-n
+(bsc#1205588)
+
+-------------------------------------------------------------------
+Fri Jul 25 05:44:51 UTC 2025 - Joey Lee <jlee@suse.com>
+
+- Add shim-change-automatically-enable-MOK_POLICY_REQUIRE_NX.patch 
+    - shim: change automatically enable MOK_POLICY_REQUIRE_NX (PR #761)
+  (bsc#1205588)
+
+-------------------------------------------------------------------
 Tue Jul  8 13:44:42 UTC 2025 - Joey Lee <jlee@suse.com>
 
 - The old shim-16.0.tar.bz2 is repackaged from a local source which

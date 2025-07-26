@@ -65,6 +65,11 @@ Source11:       signature-sles.x86_64.asc
 Source12:       signature-opensuse.aarch64.asc
 Source13:       signature-sles.aarch64.asc
 Source14:       generate-vendor-dbx.sh
+# signatures for shim.nx
+Source20:       signature-opensuse-nx.x86_64.asc
+Source21:       signature-sles-nx.x86_64.asc
+Source22:       signature-opensuse-nx.aarch64.asc
+Source23:       signature-sles-nx.aarch64.asc
 # revoked certificates for dbx
 Source50:       revoked-openSUSE-UEFI-SIGN-Certificate-2013-01.crt
 Source51:       revoked-openSUSE-UEFI-SIGN-Certificate-2013-08.crt
@@ -90,6 +95,8 @@ Patch3:         remove_build_id.patch
 Patch4:         shim-disable-export-vendor-dbx.patch
 # PATCH-FIX-UPSTREAM shim-alloc-one-more-byte-for-sprintf.patch dennis.tseng@suse.com
 Patch5:         shim-alloc-one-more-byte-for-sprintf.patch
+# PATCH-FIX-UPSTREAM shim: change automatically enable MOK_POLICY_REQUIRE_NX (PR #761)(bsc#1205588) - jlee@suse.com
+Patch6:         shim-change-automatically-enable-MOK_POLICY_REQUIRE_NX.patch
 BuildRequires:  dos2unix
 BuildRequires:  efitools
 BuildRequires:  mozilla-nss-tools
@@ -120,6 +127,15 @@ ExclusiveArch:  x86_64 aarch64
 %description
 shim is a trivial EFI application that, when run, attempts to open and
 execute another application.
+
+%package -n shim-nx
+Summary:        UEFI shim loader - supports non-executable
+Group:          System/Boot
+Requires:	shim = %{version}
+
+%description -n shim-nx
+shim with NX_COMPAT field (aka. NxCompatible field in DllCharacteristics)
+for supporting non-executable
 
 %package -n shim-debuginfo
 Summary:        UEFI shim loader - debug symbols
@@ -159,6 +175,7 @@ ls -al *.esl
 # specific certificate
 make RELEASE=0 \
      MMSTEM=MokManager FBSTEM=fallback \
+     POST_PROCESS_PE_FLAGS=-n \
      MokManager.efi.debug fallback.efi.debug \
      MokManager.efi fallback.efi
 # make sure all object files gets rebuilt
@@ -191,12 +208,14 @@ for suffix in "${suffixes[@]}"; do
 	vendor_dbx='vendor-dbx-opensuse.esl'
 %ifarch x86_64
 	signature=%{SOURCE1}
+	signature_nx=%{SOURCE20}
 %else
 	# AArch64 signature
 	# Disable AArch64 signature attachment temporarily
 	# until we get a real one.
         # Now, we got a real one. So enable it again.
 	signature=%{SOURCE12}
+	signature_nx=%{SOURCE22}
 %endif
     elif test "$suffix" = "sles"; then
 	cert=%{SOURCE4}
@@ -204,15 +223,18 @@ for suffix in "${suffixes[@]}"; do
 	vendor_dbx='vendor-dbx-opensuse.esl'
 %ifarch x86_64
 	signature=%{SOURCE11}
+	signature_nx=%{SOURCE21}
 %else
 	# AArch64 signature
 	signature=%{SOURCE13}
+	signature_nx=%{SOURCE23}
 %endif
     elif test "$suffix" = "devel"; then
 	cert=%{_sourcedir}/_projectcert.crt
 	verify=`openssl x509 -in "$cert" -noout -email`
 	vendor_dbx='vendor-dbx.esl'
 	signature=''
+	signature_nx=''
 	test -e "$cert" || continue
     else
 	echo "invalid suffix"
@@ -264,10 +286,59 @@ for suffix in "${suffixes[@]}"; do
     rm -f shim_cert.h shim.cer shim.crt
     # make sure all object files gets rebuilt
     rm -f *.o
+
+    # building shim.nx.efi
+    make RELEASE=0 ENABLE_CODESIGN_EKU=1 SHIMSTEM=shim.nx \
+         VENDOR_CERT_FILE=shim-$suffix.der ENABLE_HTTPBOOT=1 \
+         DEFAULT_LOADER="\\\\\\\\grub.efi" \
+         VENDOR_DBX_FILE=$vendor_dbx \
+	 POST_PROCESS_PE_FLAGS=-n \
+         shim.nx.efi.debug shim.nx.efi
+    #
+    # assert correct certificate embedded
+    grep -q "$verify" shim.nx.efi
+    # make VENDOR_CERT_FILE=cert.der VENDOR_DBX_FILE=dbx
+    chmod 755 %{SOURCE9}
+    # alternative: verify signature
+    #sbverify --cert MicCorThiParMarRoo_2010-10-05.pem shim-signed.efi
+    if test -n "$signature_nx"; then
+	head -1 "$signature_nx" > hash1
+	cp shim.nx.efi shim.nx.efi.bak
+	# pe header contains timestamp and checksum. we need to
+	# restore that
+	%{SOURCE9} --set-from-file "$signature_nx" shim.nx.efi
+	pesign -h -P -i shim.nx.efi > hash2
+	cat hash1 hash2
+	if ! cmp -s hash1 hash2; then
+		echo "ERROR: $suffix nx binary changed, need to request new signature!"
+%if %{defined shim_enforce_ms_signature} && 0%{?shim_enforce_ms_signature} > 0
+		# compare suffix (sles, opensuse) with distro_id (sle, opensuse)
+		# when hash mismatch and distro_id match with suffix, stop building 
+		if test "$suffix" = "$distro_id" || test "$suffix" = "${distro_id}s"; then
+			false
+		fi
+%endif
+		mv shim.nx.efi.bak shim-$suffix.nx.efi
+		rm shim.nx.efi
+	else
+		# attach signature
+		pesign -m "$signature" -i shim.nx.efi -o shim-$suffix.nx.efi
+		rm -f shim.nx.efi
+	fi
+    else
+        mv shim.nx.efi shim-$suffix.nx.efi
+    fi
+    mv shim.nx.efi.debug shim-$suffix.nx.debug
+    # remove the build cert if exists
+    rm -f shim_cert.h shim.cer shim.crt
+    # make sure all object files gets rebuilt
+    rm -f *.o
 done
 
 ln -s shim-${suffixes[0]}.efi shim.efi
 mv shim-${suffixes[0]}.debug shim.debug
+ln -s shim-${suffixes[0]}.nx.efi shim.nx.efi
+mv shim-${suffixes[0]}.nx.debug shim.nx.debug
 
 # Collect the source for debugsource
 mkdir ../source
@@ -355,6 +426,7 @@ fi
 %dir %{sysefidir}
 %{sysefidir}/shim.efi
 %{sysefidir}/shim-*.efi
+%exclude %{sysefidir}/shim-*.nx.efi
 %{sysefidir}/shim-*.der
 %{sysefidir}/MokManager.efi
 %{sysefidir}/fallback.efi
@@ -367,6 +439,11 @@ fi
 %dir /usr/lib64/efi
 /usr/lib64/efi/*.efi
 %endif
+
+%files -n shim-nx
+%defattr(-,root,root)
+%{sysefidir}/shim.nx.efi
+%{sysefidir}/shim-*.nx.efi 
 
 %files -n shim-debuginfo
 %defattr(-,root,root,-)
