@@ -21,7 +21,7 @@
 %bcond_without check
 
 Name:           libnvme
-Version:        1.13
+Version:        1.15
 Release:        0
 Summary:        Linux-native nvme device management library
 License:        LGPL-2.1-or-later
@@ -36,9 +36,6 @@ BuildRequires:  meson
 BuildRequires:  openssl-devel
 BuildRequires:  python3-devel
 BuildRequires:  swig
-%if 0%{?suse_version} >= 1600
-BuildRequires:  liburing-devel
-%endif
 
 %description
 Provides library functions for accessing and managing NVMe devices on a Linux
