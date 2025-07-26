@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  4fbe42370941f5652d0735686debee5f4b0d6e0e
+# Parent  df83073d2834936ee6a66cdb875fca6f63767297
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -406,7 +406,7 @@ diff --git a/third_party/libwebrtc/api/video/video_frame_buffer.cc b/third_party
 diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party/libwebrtc/api/video_codecs/video_codec.cc
 --- a/third_party/libwebrtc/api/video_codecs/video_codec.cc
 +++ b/third_party/libwebrtc/api/video_codecs/video_codec.cc
-@@ -161,16 +161,17 @@ const char* CodecTypeToPayloadString(Vid
+@@ -153,16 +153,17 @@ const char* CodecTypeToPayloadString(Vid
      case kVideoCodecH264:
        return kPayloadNameH264;
      case kVideoCodecGeneric:
@@ -466,7 +466,7 @@ diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallb
 diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
 --- a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
 +++ b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
-@@ -163,16 +163,17 @@ const char* Adaptation::StatusToString(A
+@@ -172,16 +172,17 @@ const char* Adaptation::StatusToString(A
      case Status::kInsufficientInput:
        return "kInsufficientInput";
      case Status::kAdaptationDisabled:
@@ -484,7 +484,7 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
                         VideoStreamInputState input_state)
      : validation_id_(validation_id),
        status_(Status::kValid),
-@@ -385,16 +386,17 @@ VideoStreamAdapter::RestrictionsOrState 
+@@ -394,16 +395,17 @@ VideoStreamAdapter::RestrictionsOrState 
      case DegradationPreference::MAINTAIN_RESOLUTION: {
        // Scale up framerate.
        return IncreaseFramerate(input_state, current_restrictions_);
@@ -502,7 +502,7 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
    ++adaptation_validation_id_;
    RestrictionsOrState restrictions_or_state =
        GetAdaptationDownStep(input_state, current_restrictions_);
-@@ -467,16 +469,17 @@ VideoStreamAdapter::GetAdaptationDownSte
+@@ -474,16 +476,17 @@ VideoStreamAdapter::GetAdaptationDownSte
      }
      case DegradationPreference::MAINTAIN_RESOLUTION: {
        return DecreaseFramerate(input_state, current_restrictions);
@@ -520,7 +520,7 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
    int target_pixels =
        GetLowerResolutionThan(input_state.frame_size_pixels().value());
    // Use single active stream if set, this stream could be lower than the input.
-@@ -620,16 +623,18 @@ Adaptation VideoStreamAdapter::GetAdaptD
+@@ -627,16 +630,18 @@ Adaptation VideoStreamAdapter::GetAdaptD
      case DegradationPreference::MAINTAIN_FRAMERATE:
        return GetAdaptationDown();
      case DegradationPreference::BALANCED: {
@@ -538,11 +538,11 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
      const VideoStreamInputState& input_state) const {
    // Adapt twice if the first adaptation did not decrease resolution.
    auto first_step = GetAdaptationDownStep(input_state, current_restrictions_);
-   if (!absl::holds_alternative<RestrictionsWithCounters>(first_step)) {
+   if (!std::holds_alternative<RestrictionsWithCounters>(first_step)) {
 diff --git a/third_party/libwebrtc/call/rtp_payload_params.cc b/third_party/libwebrtc/call/rtp_payload_params.cc
 --- a/third_party/libwebrtc/call/rtp_payload_params.cc
 +++ b/third_party/libwebrtc/call/rtp_payload_params.cc
-@@ -426,17 +426,18 @@ std::optional<FrameDependencyStructure> 
+@@ -425,17 +425,18 @@ std::optional<FrameDependencyStructure> 
      case VideoCodecType::kVideoCodecH264:
        return MinimalisticStructure(
            /*num_spatial_layers=*/1,
@@ -646,7 +646,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.
 --- a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
 @@ -55,16 +55,18 @@ std::vector<float> PreprocessWeights(rtc
- rtc::FunctionView<float(float)> GetActivationFunction(
+ FunctionView<float(float)> GetActivationFunction(
      ActivationFunction activation_function) {
    switch (activation_function) {
      case ActivationFunction::kTansigApproximated:
@@ -903,7 +903,7 @@ diff --git a/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc b/
  
  bool HasSps(const H26xPacketBuffer::Packet& packet) {
    auto& h264_header =
-       absl::get<RTPVideoHeaderH264>(packet.video_header.video_type_header);
+       std::get<RTPVideoHeaderH264>(packet.video_header.video_type_header);
    return absl::c_any_of(h264_header.nalus, [](const auto& nalu_info) {
      return nalu_info.type == H264::NaluType::kSps;
    });
