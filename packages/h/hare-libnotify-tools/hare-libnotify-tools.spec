@@ -22,10 +22,10 @@ Name:           hare-libnotify-tools
 License:        MPL-2.0
 Summary:        Hare clone of the notify-send tool
 URL:            https://git.sr.ht/~uncomfy/hare-libnotify
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Source0:        https://git.sr.ht/~uncomfy/hare-libnotify/archive/%{version}.tar.gz
-BuildRequires:  hare
+BuildRequires:  hare >= 0.25.2
 BuildRequires:  hare-libnotify = %{version}
 BuildRequires:  make
 BuildRequires:  pkgconfig(libnotify)

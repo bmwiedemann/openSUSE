@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1240506</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2098fb2943c18dc08eb804c666e0b1d8</srcmd5>
+    <version>1.0.1</version>
+    <time>1753530092</time>
+    <user>dimstar_suse</user>
+    <comment>- Set hare version to 0.25.2
+- Update to version 1.0.1:
+  * fix: handle `nomem` with `!`</comment>
+    <requestid>1295887</requestid>
+  </revision>
 </revisionlist>
