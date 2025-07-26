@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 25 13:34:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.0:
+  * Use session.Run instead of session.Shell with session.Stdin
+    (#2100)
+  * feat(sbom): Include the distro qualifier as part of the APK
+    PURL (#2078)
+
+-------------------------------------------------------------------
 Fri Jul 18 05:48:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.29.7:
