@@ -7,4 +7,17 @@
     <comment></comment>
     <requestid>1295564</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2d8075eac0c7b29076fcf52750c918ed</srcmd5>
+    <version>0.0+git20250725.602e873</version>
+    <time>1753530072</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20250725.602e873:
+  * Add meson option to install tukit plugin
+  * tukit plugin: fix argument handling (off by one)
+  * Implement support as tukit plugin
+  * Add missing &quot;\n&quot; in message
+  * check: error codes should be negative</comment>
+    <requestid>1295783</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           sysextmgr
-Version:        0.0+git20250718.e2565a6
+Version:        0.0+git20250725.602e873
 Release:        0
 Summary:        Tools to manage sysext-images on MicroOS
 License:        GPL-2.0-or-later
@@ -25,12 +25,11 @@ URL:            https://github.com/thkukuk/sysextmgr
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libsystemd) >= 257
 BuildRequires:  pkgconfig(libeconf)
-Requires:       /usr/bin/systemd-dissect
+BuildRequires:  pkgconfig(libsystemd) >= 257
+Requires:       %{_bindir}/systemd-dissect
 #Requires:       /usr/lib/systemd/systemd-pull
 Requires:       systemd-container >= 257.6
-Requires:       sysextmgrcli
 
 %description
 sysextmgr is used to create and manage json files of dependencies
@@ -41,6 +40,13 @@ Summary:        Command line interface for sysextmgr
 
 %description -n sysextmgrcli
 sysextmgrcli is a commandline interface to communicate with the sysextmgr daemon via varlink.
+
+%package -n sysextmgr-tukit-plugin
+Summary:        Plugin for tukit to update sysexe images
+Requires:       sysextmgrcli
+
+%description -n sysextmgr-tukit-plugin
+This package contains a plugin for tukit, so that transactional-update not only updates the packages of the host OS, but also the sysext images.
 
 %prep
 %autosetup
@@ -67,7 +73,6 @@ sysextmgrcli is a commandline interface to communicate with the sysextmgr daemon
 %postun
 %service_del_postun sysextmgr.socket sysextmgr-cleanup.timer
 
-
 %files
 %license LICENSE.GPL2 LICENSE.LGPL2.1
 %{_prefix}/lib/systemd/system/sysextmgr.service
@@ -79,5 +84,10 @@ sysextmgrcli is a commandline interface to communicate with the sysextmgr daemon
 %files -n sysextmgrcli
 %license LICENSE.GPL2 LICENSE.LGPL2.1
 %{_bindir}/sysextmgrcli
+
+%files -n sysextmgr-tukit-plugin
+%dir %{_prefix}/lib/tukit
+%dir %{_prefix}/lib/tukit/plugins
+%{_prefix}/lib/tukit/plugins/50-sysext-update
 
 %changelog

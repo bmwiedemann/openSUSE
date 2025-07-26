@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 25 13:14:44 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20250725.602e873:
+  * Add meson option to install tukit plugin
+  * tukit plugin: fix argument handling (off by one)
+  * Implement support as tukit plugin
+  * Add missing "\n" in message
+  * check: error codes should be negative
+
+-------------------------------------------------------------------
 Thu Jul 24 12:07:39 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - File requires for /usr/lib/systemd doesn't work, use
