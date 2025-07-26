@@ -1121,6 +1121,7 @@ MALLOC_CHECK_BACK=$MALLOC_CHECK_
 unset MALLOC_CHECK_
 %endif
 
+setarch -R \
 ninja -v %{?_smp_mflags}
 
 %if %{with thin_lto}

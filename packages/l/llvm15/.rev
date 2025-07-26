@@ -242,4 +242,13 @@ without RUNPATH on libc++.so.
 </comment>
     <requestid>1292354</requestid>
   </revision>
+  <revision rev="20" vrev="14">
+    <srcmd5>21f7a232ca340b7999f3ae2afd58d970</srcmd5>
+    <version>15.0.7</version>
+    <time>1753530142</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable ASLR during build to make libomp.so reproducible (boo#1199076)
+</comment>
+    <requestid>1295844</requestid>
+  </revision>
 </revisionlist>

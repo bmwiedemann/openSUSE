@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 24 19:27:38 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Disable ASLR during build to make libomp.so reproducible (boo#1199076)
+
+-------------------------------------------------------------------
 Fri Jul 11 05:41:04 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to make libomp.so reproducible (boo#1199076)
