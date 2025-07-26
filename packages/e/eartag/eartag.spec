@@ -17,7 +17,7 @@
 
 
 Name:           eartag
-Version:        0.6.5
+Version:        1.0.0
 Release:        0
 Summary:        Edit audio file tags
 License:        MIT
@@ -27,18 +27,22 @@ BuildArch:      noarch
 BuildRequires:  blueprint-compiler
 BuildRequires:  meson
 BuildRequires:  python3-Pillow
-BuildRequires:  python3-gobject
+BuildRequires:  python3-base >= 3.11
+BuildRequires:  python3-gobject >= 3.49.0
 BuildRequires:  python3-mutagen
 BuildRequires:  python3-pyacoustid
-BuildRequires:  python3-python-magic
 BuildRequires:  pkgconfig(gtk4) >= 4.16
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.5
 Requires:       chromaprint-fpcalc
 Requires:       python3-Pillow
+Requires:       python3-aiofiles
+Requires:       python3-aiohttp
+Requires:       python3-aiohttp-retry
+Requires:       python3-filetype
 Requires:       python3-gobject
 Requires:       python3-mutagen
 Requires:       python3-pyacoustid
-Requires:       python3-python-magic
+Requires:       python3-xxhash
 
 %description
 Ear Tag is a simple audio file tag editor. It is primarily geared towards making quick edits or bulk-editing tracks in albums/EPs.

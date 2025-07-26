@@ -67,4 +67,23 @@
 </comment>
     <requestid>1279859</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e948e65c869cce8ce2406d58d8b4697a</srcmd5>
+    <version>1.0.0</version>
+    <time>1753530070</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0:
+  * We now make extensive use of PyGObject's asyncio support for operations
+    like file loading and fetching resources from the internet (for the
+    Identify option)
+  * Folders can now be opened recursively
+  * Loading files is considerably faster now
+  * Selecting files from the sidebar and scrolling through see large speed
+    improvements
+  * Errors during file loading no longer stop the loading process
+  * The algorithm for the Identify selected files options has been rewritten
+    from scratch
+  * new dependencies: aiohttp, aiohttp-retry, aiofiles, filetype and xxhash (forwarded request 1294649 from rrahl0)</comment>
+    <requestid>1295789</requestid>
+  </revision>
 </revisionlist>

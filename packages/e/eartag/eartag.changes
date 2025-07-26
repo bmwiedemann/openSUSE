@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul 20 18:23:47 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.0.0:
+  * We now make extensive use of PyGObject's asyncio support for operations
+    like file loading and fetching resources from the internet (for the
+    Identify option)
+  * Folders can now be opened recursively
+  * Loading files is considerably faster now
+  * Selecting files from the sidebar and scrolling through see large speed
+    improvements
+  * Errors during file loading no longer stop the loading process
+  * The algorithm for the Identify selected files options has been rewritten
+    from scratch
+  * new dependencies: aiohttp, aiohttp-retry, aiofiles, filetype and xxhash
+
+-------------------------------------------------------------------
 Sat May 24 17:59:51 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.6.5:
