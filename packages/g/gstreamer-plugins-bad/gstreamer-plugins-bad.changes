@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jul 24 06:57:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.4:
+  + avtp: crf: Setup socket during state change to ensure we handle
+    failure
+  + d3d12screencapture: Add support for monitor add/remove in
+    device provider
+  + mpegtsmux: fix double free caused by shared PMT descriptor
+  + openh264: Ensure src_pic is initialized before use
+  + rtmp2src: various fixes to make it play back AWS medialive
+    streams
+  + ssdobjectdetector: Use correct tensor data index for the scores
+  + v4l2codecs: h265dec: Fix zero-copy of cropped window located at
+    position 0,0
+  + vp9parse: Fix handling of spatial SVC decoding
+  + vp9parse: Revert "Always default to super-frame"
+  + vtenc: Fix negotiation failure with profile=main-422-10
+  + vulkan: Fix drawing too many triangles in fullscreenquad
+  + vulkanfullscreenquad: add locks for synchronisation
+  + Fix various valgrind/test errors when GST_DEBUG is enabled
+  + More valgrind and test fixes
+  + Various ASAN fixes
+
+-------------------------------------------------------------------
 Fri Jul  4 09:11:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Provide and Obsolete gstreamer-1.20-plugin-openh264 too, not just
