@@ -22,7 +22,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           gstreamer-devtools
-Version:        1.26.3
+Version:        1.26.4
 Release:        0
 Summary:        Development and debugging tools for GStreamer
 License:        LGPL-2.1-or-later
@@ -41,12 +41,12 @@ BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gstreamer-1.0) >= %{version}
-BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= %{version}
-BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0) >= %{version}
-BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{version}
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.26.0
+BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= 1.26.0
+BuildRequires:  pkgconfig(gstreamer-plugins-bad-1.0) >= 1.26.0
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= 1.26.0
 %if 0%{?suse_version} >= 1500
-BuildRequires:  pkgconfig(gstreamer-rtsp-server-1.0) >= %{version}
+BuildRequires:  pkgconfig(gstreamer-rtsp-server-1.0) >= 1.26.0
 %endif
 BuildRequires:  pkgconfig(gstreamer-transcoder-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
