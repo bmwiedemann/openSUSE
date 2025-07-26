@@ -726,9 +726,7 @@ Index: nss/lib/softoken/fips_algorithms.h
      /* ------------------------- Hashing Operations ----------------------- */
      { CKM_SHA224, { 0, 0, CKF_HSH }, 1, SFTKFIPSNone },
      { CKM_SHA224_HMAC, { 112, 224, CKF_SGN }, 1, SFTKFIPSNone },
-@@ -139,44 +190,86 @@ SFTKFIPSAlgorithmList sftk_fips_mechs[]
-     { CKM_SHA512_HMAC, { 256, 512, CKF_SGN }, 1, SFTKFIPSNone },
-     { CKM_SHA512_HMAC_GENERAL, { 256, 512, CKF_SGN }, 1, SFTKFIPSNone },
+@@ -141,46 +192,88 @@ SFTKFIPSAlgorithmList sftk_fips_mechs[]
      /* --------------------- Secret Key Operations ------------------------ */
 -    { CKM_GENERIC_SECRET_KEY_GEN, { 8, 256, CKF_GEN }, 1, SFTKFIPSNone },
 +    { CKM_GENERIC_SECRET_KEY_GEN, { 112, 512, CKF_GEN }, 1, SFTKFIPSNone },
@@ -805,6 +803,10 @@ Index: nss/lib/softoken/fips_algorithms.h
 +    { CKM_NSS_SP800_108_DOUBLE_PIPELINE_KDF_DERIVE_DATA, { 112, CK_MAX, CKF_KDF }, 1, SFTKFIPSChkHashSp800,
 +      offsetof(CK_SP800_108_KDF_PARAMS, prfType) },
      /* --------------------IPSEC ----------------------- */
+     { CKM_IKE2_PRF_PLUS_DERIVE, { 8, 255 * 64, CKF_KDF }, 1, SFTKFIPSNone },
+     { CKM_IKE_PRF_DERIVE, { 8, 64, CKF_KDF }, 1, SFTKFIPSNone },
+     { CKM_IKE1_PRF_DERIVE, { 8, 64, CKF_KDF }, 1, SFTKFIPSNone },
+     { CKM_IKE1_EXTENDED_DERIVE, { 8, 255 * 64, CKF_KDF }, 1, SFTKFIPSNone },
 -    { CKM_NSS_IKE_PRF_PLUS_DERIVE, { 8, 255 * 64, CKF_KDF }, 1, SFTKFIPSNone },
 -    { CKM_NSS_IKE_PRF_DERIVE, { 8, 64, CKF_KDF }, 1, SFTKFIPSNone },
 -    { CKM_NSS_IKE1_PRF_DERIVE, { 8, 64, CKF_KDF }, 1, SFTKFIPSNone },
