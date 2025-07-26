@@ -1,7 +1,7 @@
 #
 # spec file for package rpi-imager
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rpi-imager
-Version:        1.9.0
+Version:        1.9.5
 Release:        0
 Summary:        Raspberry Pi Imaging Utility
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Patch0:         0000-remove-vendoring.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libarchive-devel
+BuildRequires:  libarchive-devel >= 3.8.0
 BuildRequires:  libcurl-devel
 BuildRequires:  libgnutls-devel
 BuildRequires:  lzma-devel

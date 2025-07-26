@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 15 06:39:51 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.9.5
+  * updated 0000-remove-vendoring.patch
+
+-------------------------------------------------------------------
+Tue Jun 10 16:00:33 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- New version 1.9.4
+  * lengthy changelog, see github for details
+  * fixes boo#1244387 (CVE-2025-5916)
+  * 0000-remove-vendoring.patch updated
+
+-------------------------------------------------------------------
 Sun Oct 27 15:36:23 UTC 2024 - Mikhail Paulyshka <me@mixaill.net>
 
 - adding 0000-remove-vendoring.patch
