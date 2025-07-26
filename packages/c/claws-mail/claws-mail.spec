@@ -45,7 +45,7 @@ BuildRequires:  docbook-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  gmp-devel
-BuildRequires:  gpgme-devel
+BuildRequires:  pkgconfig(gpgme)
 BuildRequires:  libarchive-devel
 BuildRequires:  libcanberra-devel >= 0.6
 BuildRequires:  libcurl-devel
@@ -124,7 +124,7 @@ Requires:       claws-mail = %{version}
 Requires:       enchant-devel
 Requires:       glib2-devel >= 2.50
 Requires:       gnutls-devel
-Requires:       gpgme-devel
+Requires:       pkgconfig(gpgme)
 Requires:       gtk3-devel
 Requires:       libcanberra-gtk3-devel
 Requires:       libetpan-devel

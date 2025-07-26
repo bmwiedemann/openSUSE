@@ -990,4 +990,12 @@ No changes entry, as it's just a correction of the last changes entry.</comment>
     <comment></comment>
     <requestid>1248334</requestid>
   </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>145d8c0e3963d8097cd83c62fb51b29b</srcmd5>
+    <version>4.3.1</version>
+    <time>1753530083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1295817</requestid>
+  </revision>
 </revisionlist>
