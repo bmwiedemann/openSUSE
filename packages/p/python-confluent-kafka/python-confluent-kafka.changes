@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Fri Jul 18 20:17:49 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.0:
+  * Ensure algorithm query param is passed for CSFLE
+  * DGS-19492 Handle records nested in arrays/maps when searching
+    for tags
+  * confluent-kafka-python v2.8.0 is based on librdkafka v2.8.0,
+    see the librdkafka release notes
+- update to 2.7.0:
+  * Support for Data Contracts with Schema Registry, including
+    + Data Quality rules
+    + Data Transformation rules
+    + Client-Side Field Level Encryption (CSFLE)
+    + Schema Migration rules (requires Python 3.9+)
+  * Migrated the Schema Registry client from requests to httpx
+  * Add support for multiple URLs
+  * Allow configuring timeout
+  * Fix deletion semantics
+  * Python deserializer can take SR client
+  * Fix handling of Avro unions
+  * Remove deprecated RefResolver for JSON
+  * Support delete of subject version
+  * Added missing dependency on googleapis-common-protos when
+    using protobufs.
+- update to 2.6.2:
+  * Support for Data Contracts with Schema Registry, including
+  * Data Quality rules
+  * Data Transformation rules
+  * Client-Side Field Level Encryption (CSFLE)
+  * Schema Migration rules (requires Python 3.9+)
+  * Migrated the Schema Registry client from requests to httpx
+  * Add support for multiple URLs
+  * Allow configuring timeout
+  * Fix deletion semantics
+  * Python deserializer can take SR client
+  * Fix handling of Avro unions
+  * Remove deprecated RefResolver for JSON
+  * Support delete of subject version
+  * Added Python 3.13 wheels (#1828).
+  * KIP-460 Admin Leader Election RPC
+  * Added Transactional id resource type for ACL operations
+- update to 2.5.3:
+  * Fix an assert being triggered during push telemetry call when
+    no metrics matched on the client side.
+  * Minor enhancement to JSONDeserializer to retrieve schema from
+    Schema Registry if not provided
+  * confluent-kafka-python is based on librdkafka v2.5.3, see the
+  * librdkafka release notes
+  * for a complete list of changes, enhancements, fixes and
+    upgrade considerations.
+- update to 2.5.0:
+  * KIP-107 Added delete_records API.
+  * Added an example to show the usage of the custom logger with
+    `AdminClient`.
+  * Improve caching on Schema Registry client.
+  * Removed usage of `strcpy` to enhance security of the client.
+  * Removed support for centos6 and centos7.
+  * Fixed invalid write in `OAUTHBEARER/OIDC` extensions copy.
+  * Fixed documentation for default value of `operation_timeout`
+    and `request_timeout` in various Admin apis.
+  * Fixed an issue related to import error of `TopicCollection`
+    and `TopicPartitionInfo` classes when importing through other
+    module like mypy.
+  * Fixed a segfault when `commit` or `store_offsets` consumer
+    method is called incorrectly with errored Message object.
+  * Fixed `logger` not working when provided as an argument to
+    `AdminClient` instead of a configuration property.
+  * Fixed some memory leaks related to `PyDict_SetItem`.
+- update to 2.4.0:
+  * KIP-848: Added KIP-848 based new consumer group rebalance
+    protocol. The feature is an **Early Access**: not production
+    ready yet. Please refer detailed doc for more information.
+  * Fix segfault with describe_topics and flaky connection
+    (@lpsinger, #1692)
+
+-------------------------------------------------------------------
 Fri May 23 09:09:21 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
