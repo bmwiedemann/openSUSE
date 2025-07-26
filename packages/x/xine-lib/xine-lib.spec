@@ -1,7 +1,7 @@
 #
 # spec file for package xine-lib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -449,7 +449,7 @@ sed -i 's@libfaad@@g' contrib/Makefile.am
 rm -f m4/libtool15.m4
 sed -i -e 's|/tmp/vdr-xine|/var/lib/vdr-xine|g' src/vdr/input_vdr.c
 
-export CFLAGS="%{optflags} -fno-strict-aliasing -fno-force-addr `pkg-config --cflags smbclient`"
+export CFLAGS="%{optflags} -fno-strict-aliasing -fno-force-addr `pkg-config --cflags smbclient` -std=gnu11"
 export CCASFLAGS=-Wa,--noexecstack
 test -x "$(type -p gcc-7)" && export CC="$_"
 test -x "$(type -p gcc-8)" && export CC="$_"

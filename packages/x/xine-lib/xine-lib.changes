@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 26 01:38:02 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add -std=gnu11 to CFLAGS
+  * fix buid with gcc15
+
+-------------------------------------------------------------------
 Wed May 14 16:21:42 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use %make_build instead of %jobs (boo#1237231)
