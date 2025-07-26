@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 24 06:55:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.4:
+  + Revert "streamsynchronizer: Consider streams having received
+    stream-start as waiting"
+  + alsa: free conf cache under valgrind
+  + gst-device-monitor: Fix caps filter splitting
+  + Fix various valgrind/test errors when GST_DEBUG is enabled
+  + More valgrind and test fixes
+  + Various ASAN fixes
+
+-------------------------------------------------------------------
 Tue Jul  1 19:41:33 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.3:
