@@ -22,7 +22,7 @@ Name:           sdl2-compat
 Version:        2.32.56
 Release:        0
 Summary:        SDL-2.0 Compatibility Layer for Simple DirectMedia Layer 3.0
-License:        MIT
+License:        Zlib
 Group:          Development/Libraries/X11
 URL:            https://github.com/libsdl-org/sdl2-compat
 Source:         https://github.com/libsdl-org/sdl2-compat/releases/download/release-%version/sdl2-compat-%version.tar.gz

@@ -145,4 +145,12 @@ Index: sdl2-compat-2.32.54.tar.gz.sig
 Binary file sdl2-compat-2.32.54.tar.gz.sig (revision 2) deleted</comment>
     <requestid>1274285</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>a685fba304068999f0c979b807ba1233</srcmd5>
+    <version>2.32.56</version>
+    <time>1753530009</time>
+    <user>dimstar_suse</user>
+    <comment>- Change license to Zlib</comment>
+    <requestid>1295718</requestid>
+  </revision>
 </revisionlist>
