@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jul 21 15:13:17 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 128.13.0:
+  + CVE-2025-8027: JavaScript engine only wrote partial return
+    value to stack
+  + CVE-2025-8028: Large branch table could lead to truncated
+    instruction
+  + CVE-2025-8029: javascript: URLs executed on object and embed
+    tags
+  + CVE-2025-8030: Potential user-assisted code execution in “Copy
+    as cURL” command
+  + CVE-2025-8031: Incorrect URL stripping in CSP reports
+  + CVE-2025-8032: XSLT documents could bypass CSP
+  + CVE-2025-8033: Incorrect JavaScript state machine for
+    generators
+  + CVE-2025-8034: Memory safety bugs fixed in Firefox ESR 115.26,
+    Firefox ESR 128.13, Thunderbird ESR 128.13, Firefox ESR 140.1,
+    Thunderbird ESR 140.1, Firefox 141 and Thunderbird 141
+  + CVE-2025-8035: Memory safety bugs fixed in Firefox ESR 128.13,
+    Thunderbird ESR 128.13, Firefox ESR 140.1, Thunderbird ESR
+    140.1, Firefox 141 and Thunderbird 141
+
+-------------------------------------------------------------------
 Fri Jul  4 18:00:13 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 128.12.0:
