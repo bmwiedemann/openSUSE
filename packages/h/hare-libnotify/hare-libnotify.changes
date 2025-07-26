@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 26 02:50:01 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Set hare version to 0.25.2
+
+-------------------------------------------------------------------
+Sat Jul 26 02:39:13 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.0.1:
+  * fix: handle `nomem` with `!`
+
+-------------------------------------------------------------------
 Thu Feb  6 07:49:52 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Make use of %make_build macro

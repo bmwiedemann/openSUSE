@@ -22,11 +22,11 @@ Name:           hare-libnotify
 License:        MPL-2.0
 Summary:        Hare C bindings for libnotify
 URL:            https://git.sr.ht/~uncomfy/hare-libnotify
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Source0:        https://git.sr.ht/~uncomfy/hare-libnotify/archive/%{version}.tar.gz
 Source99:       hare-libnotify-rpmlintrc
-BuildRequires:  hare
+BuildRequires:  hare >= 0.25.2
 BuildRequires:  make
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpng)
