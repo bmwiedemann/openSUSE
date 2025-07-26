@@ -50,7 +50,7 @@ Name:           OpenImageIO
 Version:        3.0.8.1
 Release:        0
 Summary:        Library for Reading and Writing Images
-License:        BSD-3-Clause
+License:        Apache-2.0
 Group:          Productivity/Graphics/Other
 URL:            https://www.openimageio.org/
 Source0:        https://github.com/AcademySoftwareFoundation/OpenImageIO/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
