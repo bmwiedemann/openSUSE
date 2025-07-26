@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jul 24 19:42:56 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.28 → 10.2.29
+
+-------------------------------------------------------------------
+Thu Jul 24 19:03:08 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix return from repart stage
+
+  If we return from the repart stage it's important to wait
+  for the root device to appear. This is because the device
+  setup from udev might still be held back due to a former
+  lock on the device. This means if we return fast after
+  locking for example when check_repart_possible() quickly
+  finds out that it's not possible, then udev has not yet
+  got the time to create the device nodes.
+  This Fixes #2863
+
+-------------------------------------------------------------------
 Fri Jul 18 13:59:31 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.2.27 → 10.2.28
