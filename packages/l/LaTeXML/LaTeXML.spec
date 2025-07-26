@@ -1,7 +1,7 @@
 #
 # spec file for package LaTeXML
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Group:          Productivity/Publishing/TeX/Utilities
 Summary:        TeX and LaTeX to XML translator
 URL:            http://dlmf.nist.gov/LaTeXML/
 Source:         https://github.com/brucemiller/LaTeXML/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE: fix test files
+Patch1:         fix_overaccent_tests.patch
 BuildArch:      noarch
 %define perl_modules perl(Archive::Zip) perl(DB_File) perl(File::Which) perl(Getopt::Long) perl(IO::String) perl(Image::Size) perl(JSON::XS) perl(LWP::Protocol::https) perl(Parse::RecDescent) perl(Text::Unidecode) perl(Test::Simple) perl(Time::HiRes) perl(URI) perl(XML::LibXML) perl(XML::LibXSLT) perl(Pod::Find) perl(UUID::Tiny)
 BuildRequires:  %perl_modules
@@ -47,7 +49,7 @@ Requires:       %perl_modules
 Perl files for %{name}
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 sed -i 's@\#\!/usr/bin/env perl@\#\!/usr/bin/perl@' bin/*

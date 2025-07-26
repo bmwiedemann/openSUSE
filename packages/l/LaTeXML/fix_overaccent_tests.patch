@@ -1,0 +1,44 @@
+Index: LaTeXML-0.8.8/t/fonts/abxtest.xml
+===================================================================
+--- LaTeXML-0.8.8.orig/t/fonts/abxtest.xml
++++ LaTeXML-0.8.8/t/fonts/abxtest.xml
+@@ -4808,7 +4808,7 @@
+             <td align="left" thead="row"><Math mode="inline" tex="\widecheck{ABC\ldots XYZ}" text="widecheck@(A * B * C * ldots * X * Y * Z)" xml:id="S0.SS0.SSS0.Px30.p2.m2">
+                 <XMath>
+                   <XMApp>
+-                    <XMTok name="widecheck" role="OVERACCENT">ˇ</XMTok>
++                    <XMTok font="italic" name="widecheck" role="OVERACCENT">ˇ</XMTok>
+                     <XMApp>
+                       <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                       <XMTok font="italic" role="UNKNOWN">A</XMTok>
+Index: LaTeXML-0.8.8/t/fonts/mathaccents.xml
+===================================================================
+--- LaTeXML-0.8.8.orig/t/fonts/mathaccents.xml
++++ LaTeXML-0.8.8/t/fonts/mathaccents.xml
+@@ -122,7 +122,7 @@
+           <td align="left" thead="row"><Math mode="inline" tex="\check{a}" text="check@(a)" xml:id="p1.m11">
+               <XMath>
+                 <XMApp>
+-                  <XMTok name="check" role="OVERACCENT" stretchy="false">ˇ</XMTok>
++                  <XMTok font="italic" name="check" role="OVERACCENT" stretchy="false">ˇ</XMTok>
+                   <XMTok font="italic" role="UNKNOWN">a</XMTok>
+                 </XMApp>
+               </XMath>
+@@ -130,7 +130,7 @@
+           <td align="left" border="r"><Math mode="inline" tex="\mathaccent 28692{a}" text="ˇ@(a)" xml:id="p1.m12">
+               <XMath>
+                 <XMApp>
+-                  <XMTok role="OVERACCENT">ˇ</XMTok>
++                  <XMTok font="italic" role="OVERACCENT">ˇ</XMTok>
+                   <XMTok font="italic" role="UNKNOWN">a</XMTok>
+                 </XMApp>
+               </XMath>
+@@ -138,7 +138,7 @@
+           <td align="left"><Math mode="inline" tex="\check{abc}" text="check@(a * b * c)" xml:id="p1.m13">
+               <XMath>
+                 <XMApp>
+-                  <XMTok name="check" role="OVERACCENT" stretchy="false">ˇ</XMTok>
++                  <XMTok font="italic" name="check" role="OVERACCENT" stretchy="false">ˇ</XMTok>
+                   <XMApp>
+                     <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                     <XMTok font="italic" role="UNKNOWN">a</XMTok>
