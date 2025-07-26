@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Jul 25 08:35:52 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.5.7.2
+  * caching number of available cores from cpuinfo
+    by 60 seconds (VM may change settings)
+- from version 1.5.7.1
+  * fixed function ZSTD_min_compression_level() - now
+    returns real number, not some shifted int value
+  * added some information functions about debug level
+    builded with
+  * module now building with -O3 level of optimization.
+    Probably will be about 20% faster
+  * module now building with binary stripping
+    (wheels for 3.13 and 3.14 will be smaller)
+  * module now building with disabled LTO
+  * added pypy builds
+- from version 1.5.7.0
+  * Update bundled libzstd to 1.5.7
+  * Wheel for linux are here and pipy (built
+    on Ubuntu xenial, gcc-5, manylinux_2_14)
+- from version 1.5.6.8
+  * Make decompression of zstd stream data possible
+    #228 and #100
+  * Wheel for python3.12 amd64 uploaded here
+- from version 1.5.6.7
+  * support of multiple instances of interpreter
+    with own GIL by @domysh
+- Set ZSTD_EXTERNAL=1 to use system-provided libzstd
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+
+-------------------------------------------------------------------
 Sun Mar 30 08:06:34 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.6.6:

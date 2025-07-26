@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zstd
-Version:        1.5.6.6
+Version:        1.5.7.2
 Release:        0
 Summary:        ZSTD Bindings for Python
 License:        BSD-2-Clause
@@ -27,8 +27,10 @@ URL:            https://github.com/sergey-dryabzhinsky/python-zstd
 Source:         https://files.pythonhosted.org/packages/source/z/zstd/zstd-%{version}.tar.gz
 Patch0:         test-external.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -49,10 +51,11 @@ sed -i -e '/test_version/d' tests/__init__.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build --legacy --external
+export ZSTD_EXTERNAL=1
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
