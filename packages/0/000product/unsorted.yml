@@ -7580,7 +7580,6 @@ unsorted:
   - google-noto-sans-adlam-fonts 
   - google-noto-sans-adlamunjoined-fonts 
   - google-noto-sans-anatolianhieroglyphs-fonts 
-  - google-noto-sans-arabic-fonts 
   - google-noto-sans-armenian-fonts 
   - google-noto-sans-avestan-fonts 
   - google-noto-sans-balinese-fonts 
@@ -12002,6 +12001,8 @@ unsorted:
   - libavahi-libevent1 
   - libavahi-qt5-1 
   - libavahi-qt5-devel 
+  - libavahi-qt6-1 
+  - libavahi-qt6-devel 
   - libavc1394-0-32bit 
   - libavc1394-devel 
   - libavc1394-devel-32bit 
@@ -37612,6 +37613,7 @@ unsorted:
   - sysbench 
   - sysctl-logger 
   - sysextmgr 
+  - sysextmgr-tukit-plugin 
   - sysextmgrcli 
   - sysfsutils 
   - sysfsutils-devel 
@@ -37685,7 +37687,6 @@ unsorted:
   - systemd-doc 
   - systemd-generator-cron2timer 
   - systemd-homed 
-  - systemd-inputmethod-generator 
   - systemd-journal-remote 
   - systemd-mini 
   - systemd-mini-container 
@@ -48699,8 +48700,6 @@ unsorted:
   - vnote 
   - vnstat 
   - vnstat-cgi 
-  - vocal 
-  - vocal-lang 
   - vocalis 
   - vocalis-lang 
   - vodovod 
