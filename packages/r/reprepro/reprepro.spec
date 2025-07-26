@@ -24,7 +24,7 @@ License:        GPL-2.0-only AND GPL-2.0-or-later AND MIT
 URL:            https://salsa.debian.org/debian/reprepro
 Source:         http://deb.debian.org/debian/pool/main/r/reprepro/reprepro_%{version}.orig.tar.xz
 BuildRequires:  automake
-BuildRequires:  gpgme-devel
+BuildRequires:  pkgconfig(gpgme)
 BuildRequires:  libarchive-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  xz-devel

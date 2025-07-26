@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 25 15:42:48 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- adjust gpgme build dependency for future-proofing
+
+-------------------------------------------------------------------
 Fri Dec 27 16:09:52 UTC 2024 - Michael Calmer <mc@suse.com>
 
 - Update to version 5.4.6
