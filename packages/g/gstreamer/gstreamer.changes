@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jul 24 06:52:29 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.4:
+  + Highlighted bugfixes in 1.26.4:
+    - adaptivedemux2: Fixed reverse playback
+    - d3d12screencapture: Add support for monitor add/remove in
+      device provider
+    - rtmp2src: various fixes to make it play back AWS medialive
+      streams
+    - rtph265pay: add profile-id, tier-flag, and level-id to output
+      rtp caps
+    - vp9parse: Fix handling of spatial SVC decoding
+    - vtenc: Fix negotiation failure with profile=main-422-10
+    - gtk4paintablesink: Add YCbCr memory texture formats and other
+      improvements
+    - livekit: add room-timeout
+    - mp4mux: add TAI timestamp muxing support
+    - rtpbin2: fix various race conditions, plus other bug fixes
+      and performance improvements
+    - threadshare: add a ts-rtpdtmfsrc element, implement run-time
+      input switching in ts-intersrc
+    - webrtcsink: fix deadlock on error setting remote description
+      and other fixes.
+    - cerbero: WiX installer: fix missing props files in the MSI
+      packages
+    - smaller macOS/iOS package sizes
+    - Various bug fixes, build fixes, memory leak fixes, and other
+      stability and reliability improvements
+  + gstreamer:
+    - tracers: Fix deadlock in latency tracer
+    - Fix various valgrind/test errors when GST_DEBUG is enabled
+    - More valgrind and test fixes
+    - Various ASAN fixes
+
+-------------------------------------------------------------------
 Tue Jul  1 19:32:27 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.3:
