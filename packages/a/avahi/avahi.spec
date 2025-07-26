@@ -19,23 +19,37 @@
 %define _name avahi
 %global flavor @BUILD_FLAVOR@%{nil}
 
+%if "%{flavor}" == "qt6"
+%global psuffix -qt6
+%global build_qt6 1
+%global build_qt5 0
+%global build_glib2 0
+%global build_core 0
+%else
 %if "%{flavor}" == "qt5"
 %global psuffix -qt5
+%global build_qt6 0
 %global build_qt5 1
 %global build_glib2 0
 %global build_core 0
+%if 0%{suse_version} == 1600 && ! 0%{?is_openSUSE}
+ExclusiveArch:  donotbuild
+%endif
 %else
 %if "%{flavor}" == "glib2"
 %global psuffix -glib2
 # NOTE: build_glib2 also controls build of gobject, gtk3 and pygobject code.
+%global build_qt6 0
 %global build_qt5 0
 %global build_glib2 1
 %global build_core 0
 %else
 %global psuffix %{nil}
+%global build_qt6 0
 %global build_qt5 0
 %global build_glib2 0
 %global build_core 1
+%endif
 %endif
 %endif
 %define avahi_client_sover 3
@@ -48,6 +62,7 @@
 %define avahi_gobject_sover 0
 %define avahi_gtk3_sover 0
 %define avahi_qt5_sover 1
+%define avahi_qt6_sover 1
 %if %{build_glib2}
 %define debug_package_requires libavahi-ui%{avahi_ui_sover} = %{version}-%{release}
 %endif
@@ -116,6 +131,8 @@ Patch35:        avahi-CVE-2023-38471.patch
 Patch36:        avahi-filter-bogus-services.patch
 # PATCH-FIX-UPSTREAM avahi-CVE-2024-52616.patch CVE-2024-52616 bsc#1233420 qzhao@suse.com -- Properly randomize query id of DNS packets.
 Patch37:        avahi-CVE-2024-52616.patch
+# PATCH-FIX-UPSTREAM 0001-Enable-building-with-Qt6.patch alarrosa@suse.com -- Port to build with qt6 (https://github.com/avahi/avahi/pull/704)
+Patch38:        0001-Enable-building-with-Qt6.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel
@@ -156,6 +173,12 @@ BuildRequires:  pkgconfig(pygobject-3.0)
 BuildRequires:  dbus-1-devel
 BuildRequires:  libavahi-devel = %{version}
 BuildRequires:  pkgconfig(Qt5Core)
+Requires:       libavahi-client%{avahi_client_sover} >= %{version}
+%endif
+%if %{build_qt6}
+BuildRequires:  dbus-1-devel
+BuildRequires:  libavahi-devel = %{version}
+BuildRequires:  pkgconfig(Qt6Core)
 Requires:       libavahi-client%{avahi_client_sover} >= %{version}
 %endif
 BuildRequires:  python-rpm-macros
@@ -424,8 +447,13 @@ Obsoletes:      avahi-glib2-utils-gtk < %{version}
 Avahi is an implementation of the DNS Service Discovery and Multicast
 DNS specifications for Zeroconf Computing.
 
-# This is the avahi-discover command, only provided for the primary python3 flavor
 
+
+
+
+
+
+# This is the avahi-discover command, only provided for the primary python3 flavor
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
 Group:          Development/Languages/Python
@@ -498,6 +526,30 @@ Avahi is an implementation of the DNS Service Discovery and Multicast DNS
 specifications for Zeroconf Computing.
 %endif
 
+%if %{build_qt6}
+%package -n libavahi-qt6-%{avahi_qt6_sover}
+Summary:        Qt6 Bindings for avahi, the D-Bus Service for Zeroconf and Bonjour
+Group:          System/Libraries
+
+%description -n libavahi-qt6-%{avahi_qt6_sover}
+Qt6 support for Avahi.
+
+Avahi is an implementation of the DNS Service Discovery and Multicast DNS
+specifications for Zeroconf Computing.
+
+%package -n libavahi-qt6-devel
+Summary:        Header files for Avahi's Qt6 bindings
+Group:          Development/Libraries/C and C++
+Requires:       libavahi-devel = %{version}
+Requires:       libavahi-qt6-%{avahi_qt6_sover} = %{version}
+
+%description -n libavahi-qt6-devel
+Development files for the Qt6 support for Avahi.
+
+Avahi is an implementation of the DNS Service Discovery and Multicast DNS
+specifications for Zeroconf Computing.
+%endif
+
 %prep
 %setup -q -n %{_name}-%{version}
 cp -a %{SOURCE5} sysconfig.avahi
@@ -562,6 +614,11 @@ export PYTHON=%{_bindir}/$python
 %else
 	--disable-qt5\
 %endif
+%if %{build_qt6}
+	--enable-qt6\
+%else
+	--disable-qt6\
+%endif
 %ifarch ppc64 ppc64le s390x
 	--disable-monodoc\
 %endif
@@ -597,7 +654,7 @@ cd ..
 done
 cd -
 %endif
-%if %{build_qt5} && !%{build_core}
+%if (%{build_qt5} || %{build_qt6}) && !%{build_core}
 cd avahi-qt
 %endif
 %make_install
@@ -716,6 +773,9 @@ fi
 
 %if %{build_qt5}
 %ldconfig_scriptlets -n libavahi-qt5-%{avahi_qt5_sover}
+%endif
+%if %{build_qt6}
+%ldconfig_scriptlets -n libavahi-qt6-%{avahi_qt6_sover}
 %endif
 
 %post -n python3-avahi-gtk
@@ -921,6 +981,17 @@ fi
 %{_libdir}/libavahi-qt5.*a
 %{_libdir}/libavahi-qt5.so
 %{_libdir}/pkgconfig/avahi-qt5.pc
+%endif
+
+%if %{build_qt6}
+%files -n libavahi-qt6-%{avahi_qt6_sover}
+%{_libdir}/libavahi-qt6.so.*
+
+%files -n libavahi-qt6-devel
+%{_includedir}/avahi-qt6
+%{_libdir}/libavahi-qt6.*a
+%{_libdir}/libavahi-qt6.so
+%{_libdir}/pkgconfig/avahi-qt6.pc
 %endif
 
 %changelog

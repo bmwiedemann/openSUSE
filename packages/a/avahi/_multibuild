@@ -1,4 +1,5 @@
 <multibuild>
+  <package>qt6</package>
   <package>qt5</package>
   <package>glib2</package>
 </multibuild>

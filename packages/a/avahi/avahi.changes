@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 30 09:51:51 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch submitted to upstream at
+  to enable building with Qt6 and add that flavor:
+  0001-Enable-building-with-Qt6.patch
+- Disable building the Qt5 flavor in SLE16.
+
+-------------------------------------------------------------------
 Fri May 23 07:43:38 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires and macro.
