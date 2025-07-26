@@ -7088,4 +7088,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.15.7 &amp; procmap fix &amp; s390x config fix; bugs: bsc#1012628 bsc#1246332 bsc#1246476</comment>
     <requestid>1294351</requestid>
   </revision>
+  <revision rev="792" vrev="1">
+    <srcmd5>146dfac5e8e86e05b659c79f91bc3604</srcmd5>
+    <version>6.15.8</version>
+    <time>1753530051</time>
+    <user>dimstar_suse</user>
+    <comment>6.15.8; bugs: bsc#1012628</comment>
+    <requestid>1295447</requestid>
+  </revision>
 </revisionlist>
