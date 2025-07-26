@@ -2760,4 +2760,12 @@ we must have vb7.1.10.</comment>
     <comment>- fix build against 6.16, add:</comment>
     <requestid>1284728</requestid>
   </revision>
+  <revision rev="294" vrev="1">
+    <srcmd5>653d408892c031e89945afa8f291d403</srcmd5>
+    <version>7.1.12a</version>
+    <time>1753530008</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.1.12</comment>
+    <requestid>1295707</requestid>
+  </revision>
 </revisionlist>

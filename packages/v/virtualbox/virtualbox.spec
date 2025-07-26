@@ -62,8 +62,8 @@
 %endif
 
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.1.10
-%define rversion %version
+Version:        7.1.12a
+%define rversion 7.1.12
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-3.0-or-later
@@ -126,9 +126,6 @@ Patch9:         vbox-usb-warning.diff
 Patch10:        fix_for_leap15.5.patch
 Patch11:        cxx17.patch
 Patch12:        host-source.patch
-Patch13:        kernel-6.16-READ-WRITE.patch
-Patch14:        kernel-6.16-from_timer.patch
-Patch15:        kernel-6.16-page-index.patch
 Patch20:        gentoo-C23.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp

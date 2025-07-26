@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -ex
 
 if [ -z "$1" ]; then
 	echo "You need to pass the filename VirtualBox-x.y.z.tar.bz2 as first argument."

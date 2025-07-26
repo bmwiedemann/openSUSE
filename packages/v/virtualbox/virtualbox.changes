@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jul 24 13:07:21 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1.12
+  * VMM: Fixed issue when running a nested VM caused Guru
+    Meditation for outer VM
+  * NAT: Fixed issue when VMs with long names were unable to start
+  * Linux host: Fixed possible kernel panic when using bridged
+    networking with a network interface handled by the ixgbe
+    driver on newer kernels
+  * Recording: Fixed issue when Windows Guest Machine was unable
+    to start when recording was enabled in Display Settings
+  * Support for Linux 6.16
+  * Linux Guest Additions (LGA): Fixed issue when 'rcvboxadd
+    status-kernel' was reporting incorrect status when guest was
+    running kernel 3.10 series and older
+  * LGA: Fixed issue when VBoxClient was unable to start if guest
+    was running kernel 2.6 series and older
+  * LGA: Fixed issue which caused a warning in system log due to
+    incorrect udev rule
+- Delete kernel-6.16-READ-WRITE.patch, kernel-6.16-from_timer.patch,
+  kernel-6.16-page-index.patch
+
+-------------------------------------------------------------------
 Wed Jun 11 07:18:15 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - fix build against 6.16, add:
