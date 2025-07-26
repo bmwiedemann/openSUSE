@@ -1159,8 +1159,6 @@ Requires:       xscope
 Requires:       xscreensaver
 Requires:       xscreensaver-data
 Requires:       xset
-Requires:       xsetmode
-Requires:       xsetpointer
 Requires:       xsetroot
 Requires:       xterm
 Requires:       xtermset

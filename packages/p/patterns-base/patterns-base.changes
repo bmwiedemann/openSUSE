@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 23 08:53:48 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop xsetmode and xsetpointer from x11_raspberrypi (boo#1246921)
+
+-------------------------------------------------------------------
 Thu Jul 17 09:14:25 UTC 2025 - Petr Mladek <pmladek@suse.com>
 
 - Add kernel_livepatching pattern for SLES16 (bsc#1246606).
