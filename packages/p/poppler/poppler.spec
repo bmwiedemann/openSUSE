@@ -85,6 +85,10 @@ BuildRequires:  extra-cmake-modules
 %if "%{flavor}" == "qt6" && (0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300)
 ExclusiveArch:  do_not_build
 %endif
+# Don't build poppler-qt5 on SLE16
+%if "%{flavor}" == "qt5" && (0%{suse_version} == 1600 && ! 0%{?is_opensuse})
+ExclusiveArch:  do_not_build
+%endif
 %if "%{flavor}" == "qt5"
 BuildRequires:  pkgconfig(Qt5Core) >= 5.9
 BuildRequires:  pkgconfig(Qt5Gui)
