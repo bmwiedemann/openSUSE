@@ -33,7 +33,7 @@
 %endif
 
 Name:           gstreamer-plugins-good
-Version:        1.26.3
+Version:        1.26.4
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -51,7 +51,6 @@ BuildRequires:  gcc13-c++
 BuildRequires:  gcc-c++
 %endif
 BuildRequires:  libICE-devel
-BuildRequires:  libQt5PlatformHeaders-devel
 BuildRequires:  libSM-devel
 # used by libgstvideo4linux2.so
 BuildRequires:  libXv-devel
