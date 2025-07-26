@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 23 08:01:21 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.82.0:
+  * Fixed app crash due to changes in AVIF image format support
+  * [Servers] MangaFire (EN/ES/ES_LA/FR/JA/PT/pt_BR): Update
+  * [L10n] Updated Portuguese and Russian translations
+- remove patch do-not-load-avif.patch, upstream included a fix
+- remove python-pillow-heif as a runtime dependency, as avif is now
+  supported in Pillow directly
+
+-------------------------------------------------------------------
 Sat Jul  5 16:20:40 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.81.0:

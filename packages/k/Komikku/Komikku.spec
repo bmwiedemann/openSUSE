@@ -18,14 +18,13 @@
 
 %define         appid info.febvre.Komikku
 Name:           Komikku
-Version:        1.81.0
+Version:        1.82.0
 Release:        0
 Summary:        A manga reader for GNOME
 # appdata.xml is CC-BY-4.0
 License:        CC-BY-4.0 AND GPL-3.0-or-later
 URL:            https://codeberg.org/valos/Komikku
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         do-not-load-avif.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -57,7 +56,6 @@ Requires:       python3-lxml >= 5.2.1
 Requires:       python3-modern-colorthief >= 0.1.3
 Requires:       python3-natsort >= 7.1.1
 Requires:       python3-piexif
-Requires:       python3-pillow-heif >= 0.16.0
 Requires:       python3-pure-protobuf >= 3.0.0
 Requires:       python3-pycairo
 Requires:       python3-python-magic

@@ -515,4 +515,18 @@
   AVIF support anymore (and it's removed since 1.0.0) (forwarded request 1290825 from rrahl0)</comment>
     <requestid>1291669</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>38ab3cb1b80d14e65ada4166ae1648d0</srcmd5>
+    <version>1.82.0</version>
+    <time>1753530072</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.82.0:
+  * Fixed app crash due to changes in AVIF image format support
+  * [Servers] MangaFire (EN/ES/ES_LA/FR/JA/PT/pt_BR): Update
+  * [L10n] Updated Portuguese and Russian translations
+- remove patch do-not-load-avif.patch, upstream included a fix
+- remove python-pillow-heif as a runtime dependency, as avif is now
+  supported in Pillow directly (forwarded request 1295236 from rrahl0)</comment>
+    <requestid>1295790</requestid>
+  </revision>
 </revisionlist>
