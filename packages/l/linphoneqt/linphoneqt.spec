@@ -1,7 +1,7 @@
 #
 # spec file for package linphoneqt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -122,6 +122,7 @@ rm linphone-app/cmake/FindMediastreamer2.cmake \
    linphone-app/cmake/FindLinphoneCxx.cmake
 
 %build
+export CFLAGS="%{optflags} -std=gnu11"
 %cmake \
   -DCMAKE_CXX_FLAGS="%{optflags} -fpic -ffat-lto-objects -fpermissive" \
   -DCMAKE_BUILD_TYPE=Release \

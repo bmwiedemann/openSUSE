@@ -209,4 +209,12 @@
     <comment></comment>
     <requestid>1223427</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>e5688f53b4f3f1f78b4c8d7a5b573db7</srcmd5>
+    <version>5.2.6</version>
+    <time>1753530150</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build with gcc15</comment>
+    <requestid>1295852</requestid>
+  </revision>
 </revisionlist>
