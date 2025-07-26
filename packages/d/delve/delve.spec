@@ -27,7 +27,7 @@ Group:          Development/Languages/Go
 URL:            https://github.com/go-delve/delve
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.25
 # your_linux_architecture_is_not_supported_by_delve (support_sentinel_linux.go)
 ExcludeArch:    s390x ppc64 ppc64le %arm riscv64
 

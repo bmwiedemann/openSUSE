@@ -382,4 +382,19 @@
   * proc: handle moving of direct interface flag in Go 1.26 (#4032) (forwarded request 1294418 from jfkw)</comment>
     <requestid>1294421</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>6c305c7d375f4973290436c3bbaf9e42</srcmd5>
+    <version>1.25.1</version>
+    <time>1753530085</time>
+    <user>dimstar_suse</user>
+    <comment>- Packaging improvements:
+  * Update BuildRequires: golang(API) &gt;= 1.25 to address warning:
+    &quot;To debug executables using DWARFv5 or later Delve must be
+    built with Go version 1.25.0 or later.&quot; The go1.25 compiler
+    emits DWARF version 5 debuginfo and delve must be built with
+    go1.25 to debug go1.25 built binaries.
+    https://go.dev/doc/go1.25#compiler
+    Refs boo#1246767 (forwarded request 1295827 from jfkw)</comment>
+    <requestid>1295828</requestid>
+  </revision>
 </revisionlist>

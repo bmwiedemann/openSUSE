@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 25 12:15:40 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Update BuildRequires: golang(API) >= 1.25 to address warning:
+    "To debug executables using DWARFv5 or later Delve must be
+    built with Go version 1.25.0 or later." The go1.25 compiler
+    emits DWARF version 5 debuginfo and delve must be built with
+    go1.25 to debug go1.25 built binaries.
+    https://go.dev/doc/go1.25#compiler
+    Refs boo#1246767
+
+-------------------------------------------------------------------
 Fri Jul 18 16:04:58 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.25.1:
