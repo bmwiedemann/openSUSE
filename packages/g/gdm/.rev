@@ -2208,4 +2208,13 @@
     <comment>Removes pam_env from auth stack for security reason [bsc#1243226, CVE-2025-6018] (forwarded request 1286602 from vlefebvre)</comment>
     <requestid>1286734</requestid>
   </revision>
+  <revision rev="284" vrev="11">
+    <srcmd5>bcc1bd06499a386eae70818bb60b451a</srcmd5>
+    <version>48.0</version>
+    <time>1753530039</time>
+    <user>dimstar_suse</user>
+    <comment>- gdm-fingerprint.pamd: Fix inclusion of common-account instead
+  of postlogin-account (forwarded request 1293840 from favogt)</comment>
+    <requestid>1295784</requestid>
+  </revision>
 </revisionlist>
