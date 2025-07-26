@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 17 02:09:36 UTC 2025 - Yifan Jiang <yfjiang@suse.com>
+
+- Explicitly recommends Google Noto Arabic fonts in GNOME
+  (bsc#1246323).
+
+-------------------------------------------------------------------
 Wed Jul 16 05:54:26 UTC 2025 - Max Lin <mlin@suse.com>
 
 - Drop gnome_yast on Leap 16, code-o-o#leap/features/173

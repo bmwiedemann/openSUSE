@@ -167,6 +167,7 @@ Recommends:     gnome-control-center-goa
 Recommends:     gnome-disk-utility %dnl boo#554954
 Recommends:     gnome-remote-desktop
 Recommends:     nautilus-sendto
+Recommends:     noto-sans-arabic-fonts
 Recommends:     noto-sans-cjk-fonts
 Recommends:     orca
 %if 0%{?suse_version} < 01600 && !0%{?is_opensuse}
