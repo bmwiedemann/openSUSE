@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 23 19:32:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2025.4:
+  + ostree-prepare-root: remove duplicate transient directory
+  + Add root.transient-ro
+
+-------------------------------------------------------------------
 Fri Jul 11 21:21:16 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 2025.3:
