@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Jul 24 07:32:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.4:
+  + aws: s3hlssink: Write to S3 on OutputStream flush
+  + cea708mux: fix clipping function
+  + dav1ddec: Use video decoder base class latency reporting API
+  + elevenlabssynthesizer: fix running time checks
+  + gopbuffer: Push GOPs in order of time on EOS
+  + gtk4: Improve color-state fallbacks for unknown values
+  + gtk4: Add YCbCr memory texture formats
+  + gtk4: Promote set_caps debug log to info
+  + hlssink3: Fix a comment typo
+  + hlssink3: Use closed fragment location in playlist generation
+  + livekit: add room-timeout
+  + mccparse: Convert "U" to the correct byte representation
+  + mp4mux: add TAI timestamp element and muxing
+  + threadshare: add a ts-rtpdtmfsrc element
+  + rtp: Update to rtcp-types 0.2
+  + rtpsend: Don't configure a zero min RTCP interval for senders
+  + rtpbin2: Fix handling of unknown PTs and don't warn about
+    incomplete RTP caps to allow for bundling
+  + rtpbin2: Improve rtcp-mux support
+  + rtpbin2: fix race condition on serialized Queries
+  + rtpbin2: sync: fix race condition
+  + rtprecv optimize src pad scheduling
+  + rtprecv: fix SSRC collision event sent in wrong direction
+  + skia: Add harfbuzz, freetype and fontconfig as dependencies in
+    the meson build
+  + tttocea{6,7}08: Disallow pango markup from input caps
+  + ts-intersrc: handle dynamic inter-ctx changes
+  + threadshare: src elements: don't pause the task in downward
+    state transitions
+  + webrtc: sink: avoid recursive locking of the session
+  + webrtcsink: fix deadlock on error setting remote description
+  + webrtcsink: add mitigation modes parameter and signal
+  + webrtc: fix Safari addIceCandidate crash
+  + webrtc-api: Set default bundle policy to max-bundle
+  + WHIP client: emit shutdown after DELETE request
+  + Fix various new clippy 1.88 warnings
+  + Update dependencies
+
+-------------------------------------------------------------------
 Tue Jul  1 20:32:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.3:

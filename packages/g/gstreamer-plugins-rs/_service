@@ -3,8 +3,8 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git</param>
     <param name="filename">gst-plugins-rs</param>
-    <param name="versionformat">1.26.3</param>
-    <param name="revision">refs/tags/gstreamer-1.26.2</param>
+    <param name="versionformat">1.26.4</param>
+    <param name="revision">refs/tags/gstreamer-1.26.4</param>
     <param name="scm">git</param>
   </service>
   <service name="set_version" mode="manual"/>
@@ -17,5 +17,6 @@
 	  <param name="srcdir">gst-plugins-rs</param>
 	  <param name="compression">zst</param>
 	  <param name="update">false</param>
+	  <param name="i-accept-the-risk">RUSTSEC-2023-0071</param>
   </service>
 </services>

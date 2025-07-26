@@ -27,7 +27,7 @@
 %dnl #%%endif
 
 Name:           gstreamer-plugins-rs
-Version:        1.26.3
+Version:        1.26.4
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -125,6 +125,7 @@ cp %{SOURCE4} %{buildroot}%{_datadir}/appdata/
 # Disable csound for now, bring issue upstream
 #%%{_libdir}/gstreamer-%%{gst_branch}/libgstcsound.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdav1d.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstelevenlabs.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfallbackswitch.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstffv1.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfmp4.so
@@ -145,6 +146,7 @@ cp %{SOURCE4} %{buildroot}%{_datadir}/appdata/
 %{_libdir}/gstreamer-%{gst_branch}/libgstrav1e.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstregex.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstreqwest.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstrsanalytics.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsaudiofx.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsclosedcaption.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrsfile.so
@@ -167,7 +169,6 @@ cp %{SOURCE4} %{buildroot}%{_datadir}/appdata/
 %{_libdir}/gstreamer-%{gst_branch}/libgsturiplaylistbin.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstwebrtchttp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsthlsmultivariantsink.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstrsrelationmeta.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstspeechmatics.so
 %{_libdir}/gstreamer-%{gst_branch}/libgststreamgrouper.so
 %dir %{_datadir}/appdata
