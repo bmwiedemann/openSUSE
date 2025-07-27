@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Jul 26 20:54:18 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 17.0.16 with OpenJ9 0.53.0 virtual machine
+- Including Oracle July 2025 CPU changes
+  * CVE-2025-30749 (bsc#1246595), CVE-2025-30754 (bsc#1246598),
+    CVE-2025-50059 (bsc#1246575), CVE-2025-50106 (bsc#1246584)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.53/
+- Removed patches:
+  * fix-build-with-gcc15.patch
+  * libdwarf-fix.patch
+  * openj9-noexecstack.patch
+  * stringop-overflow.patch
+    + fixed in this version
+- Modified patches:
+  * openj9-nogit.patch.in
+  * openssl-OSSL_LIB_CTX.patch
+    + rediff to changed context
+- Added patch:
+  * bootcycle.patch
+    + fix bootcycle-images target
+- Enable bootcycle build
+
+-------------------------------------------------------------------
+Mon Jul 21 10:59:48 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Do not embed rebuild counter (bsc#1246806)
+
+-------------------------------------------------------------------
 Tue Jun 17 15:58:52 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Add -std=gnu99 to CFLAGS to fix gcc15 compile time error. Since

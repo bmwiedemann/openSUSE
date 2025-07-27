@@ -159,4 +159,12 @@
     <comment>fix gcc15 build</comment>
     <requestid>1286416</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5c99d03667d62f8fa13450ddd6a33a49</srcmd5>
+    <version>17.0.16.0</version>
+    <time>1753626429</time>
+    <user>dimstar_suse</user>
+    <comment>July 2025 CPU: OpenJDK 17.0.16 with OpenJ9 0.53.0</comment>
+    <requestid>1295918</requestid>
+  </revision>
 </revisionlist>
