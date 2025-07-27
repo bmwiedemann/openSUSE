@@ -1,5 +1,3 @@
-diff --git a/closed/src/java.base/share/native/libjncrypto/NativeCrypto.c b/closed/src/java.base/share/native/libjncrypto/NativeCrypto.c
-index 2e53d0a8e1e..1226f96f1f8 100644
 --- a/closed/src/java.base/share/native/libjncrypto/NativeCrypto.c
 +++ b/closed/src/java.base/share/native/libjncrypto/NativeCrypto.c
 @@ -77,6 +77,10 @@
@@ -12,4 +10,4 @@ index 2e53d0a8e1e..1226f96f1f8 100644
 +
  /* Header for NativeCrypto loading methods. */
  static void * find_crypto_symbol(void *handle, const char *symname);
- static void * find_crypto_library(jboolean traceEnabled, const char *chomepath);
+ static void * find_crypto_library(jboolean traceEnabled, jboolean skipBundled, const char *chomepath);

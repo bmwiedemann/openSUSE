@@ -30,19 +30,19 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       27
+%global updatever       28
 %global patchver        0
 %global buildver        6
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk11/archive
-%global root_revision   3e17c0897e96b7b1dbb3a1f55aa437576fc28bd4
-%global root_branch     v0.51.0-release
+%global root_revision   36f5ad584831ac9f27a3eb656f82fa0b8c8c7bcd
+%global root_branch     v0.53.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    9bcff94a2a0f12baeac8f5d098b597e8ea076b67
-%global omr_branch      v0.51.0-release
+%global omr_revision    266a8c6f5b6d202e4aaa09e19ce0d956605f27fd
+%global omr_branch      v0.53.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 31cf5538b0a4875a2310e917a80bb16c81065d3c
-%global openj9_branch   v0.51.0-release
-%global openj9_tag      openj9-0.51.0
+%global openj9_revision 017819f167cbcedd175a3f20e1112992bf4ecc1e
+%global openj9_branch   v0.53.0-release
+%global openj9_tag      openj9-0.53.0
 # priority must be 6 digits in total
 %global priority        2101
 %global javaver         %{featurever}
@@ -59,12 +59,13 @@
 %global cacerts  %{_jvmdir}/%{sdkdir}/lib/security/cacerts
 # real file made by update-ca-certificates
 %global javacacerts %{_var}/lib/ca-certificates/java-cacerts
-%global bootcycle 0
+%global bootcycle 1
 %if %{debug}
 %global debugbuild slowdebug
 %else
 %global debugbuild release
 %endif
+%global docsdir build/%{debugbuild}/images
 %if %{bootcycle}
 %global imagesdir build/%{debugbuild}/bootcycle-build/images
 %global imagestarget bootcycle-images
@@ -99,32 +100,28 @@ Source15:       TestECDSA.java
 Source100:      openj9-nogit.patch.in
 Source1000:     %{name}-rpmlintrc
 # Restrict access to java-atk-wrapper classes
-Patch3:         java-atk-wrapper-security.patch
-# Allow building with newer libdwarf
-Patch4:         libdwarf-fix.patch
+Patch1:         java-atk-wrapper-security.patch
 # Allow multiple initialization of PKCS11 libraries
-Patch5:         multiple-pkcs11-library-init.patch
+Patch2:         multiple-pkcs11-library-init.patch
 # Fix build with older openssl
-Patch6:         openssl-OSSL_LIB_CTX.patch
-Patch7:         openj9-openssl.patch
-Patch8:         openj9-noexecstack.patch
+Patch3:         openssl-OSSL_LIB_CTX.patch
+Patch4:         openj9-openssl.patch
 # Fix: implicit-pointer-decl
-Patch13:        implicit-pointer-decl.patch
+Patch5:         implicit-pointer-decl.patch
 #
-Patch15:        system-pcsclite.patch
+Patch10:        system-pcsclite.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
 #
 Patch30:        JDK-8208602.patch
 Patch31:        aarch64.patch
 #
-Patch32:        stringop-overflow.patch
-# Fix an error with gcc 15
-Patch33:        fix-build-with-gcc15.patch
-#
 # OpenJDK specific patches
 #
-Patch302:       disable-doclint-by-default.patch
+Patch300:       disable-doclint-by-default.patch
+#
+Patch400:       bootcycle.patch
+#
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -348,26 +345,24 @@ rm -rvf src/java.desktop/share/native/libsplashscreen/giflib
 rm -rvf src/java.desktop/share/native/liblcms/cms*
 rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
+%patch -P 1 -p1
+%patch -P 2 -p1
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
-%patch -P 6 -p1
-%patch -P 7 -p1
-%patch -P 8 -p1
-%patch -P 13 -p1
 
 %if %{with_system_pcsc}
-%patch -P 15 -p1
+%patch -P 10 -p1
 %endif
 
 %patch -P 20 -p1
 
 %patch -P 30 -p1
 %patch -P 31 -p1
-%patch -P 32 -p1
-%patch -P 33 -p1
 
-%patch -P 302 -p1
+%patch -P 300 -p1
+
+%patch -P 400 -p1
 
 cat %{SOURCE100} \
     | sed "s/@OPENJ9_SHA@/`expr substr '%{openj9_revision}' 1 7`/g" \
@@ -410,7 +405,7 @@ bash configure \
     --with-extra-cflags="$EXTRA_CFLAGS" \
     --with-extra-cxxflags="$EXTRA_CPP_FLAGS" \
     --with-version-pre="" \
-    --with-version-opt="suse-%{release}-%{_arch}" \
+    --with-version-opt="suse-%{suse_version}-%{_arch}" \
     --disable-warnings-as-errors \
     --disable-warnings-as-errors-omr \
     --disable-warnings-as-errors-openj9 \
@@ -512,6 +507,10 @@ pushd %{imagesdir}
 
   # Install jmods
   cp -a jmods %{buildroot}%{_jvmdir}/%{sdkdir}
+
+popd
+
+pushd %{docsdir}
 
 # Install Javadoc documentation.
 install -d -m 755 %{buildroot}%{_javadocdir}
