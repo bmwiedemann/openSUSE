@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 26 21:29:26 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1753506485.d911de9f:
+  * Dependency cron 2025-07-26
+  * Require openssh-clients for git clone with ssh
+  * Allow empty values in openqa-cli parameters
+
+-------------------------------------------------------------------
 Thu Jul 24 17:11:10 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1753359903.308980e8:
