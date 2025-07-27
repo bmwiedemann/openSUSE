@@ -1,5 +1,5 @@
 -------------------------------------------------------------------
-Tue Mar 11 22:44:22 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+Fri Jul 25 20:57:36 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.1.6:
   - Add 'normalize_nfc' and 'isnfc' functions
@@ -7,7 +7,8 @@ Tue Mar 11 22:44:22 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
   - Add new 'grapheme_indices' function
   - Improve grammar, spelling, and formatting of README.md
   - Fix bugs in NFC normalization code
-  - Explicitly include limits.h instead of transitively assuming it
+  - Explicitly include limits.h instead of transitively assuming
+    it
 
 -------------------------------------------------------------------
 Mon Apr  1 02:00:36 UTC 2024 - Gordon Leung <pirateclip@protonmail.com>

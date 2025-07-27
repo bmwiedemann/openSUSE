@@ -59,4 +59,17 @@
 </comment>
     <requestid>1252171</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8122b70c3d51404ff5ba2f7b27665e5a</srcmd5>
+    <version>0.1.6</version>
+    <time>1753626394</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.6:
+  - Add 'normalize_nfc' and 'isnfc' functions
+  - Add new 'grapheme_indices' function
+  - Improve grammar, spelling, and formatting of README.md
+  - Fix bugs in NFC normalization code
+  - Explicitly include limits.h instead of transitively assuming it</comment>
+    <requestid>1295831</requestid>
+  </revision>
 </revisionlist>
