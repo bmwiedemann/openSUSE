@@ -96,6 +96,7 @@ Summary:        Additional extensions for Inkscape
 Requires:       %{name} = %{version}
 # ps_input.py is a wrapper around ps2pdf, which lives in ghostscript package.
 Requires:       ghostscript
+Requires:       python3-appdirs
 Requires:       python3-lxml
 Requires:       python3-numpy
 Requires:       python3-scour

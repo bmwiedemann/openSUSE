@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 25 11:32:29 UTC 2025 - Tobias Schula <tobias@schula.org>
+
+- Extension manager needs Python module 'appdirs', add dependency
+  for python313-appdirs to inkscape-extensions-extra
+
+-------------------------------------------------------------------
 Fri Jul 11 11:06:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add ce52c5f96106ae5747171663a46831f21aa52d95.patch: Fix building with Poppler 25.07.0
