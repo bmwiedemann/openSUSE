@@ -438,6 +438,8 @@ Requires:       pattern() = microos_base_zypper
 
 # Pull in plasma-branding-MicroOS for firstboot setup
 Requires:       plasma-branding-Kalpa
+# Currently breaks sddm in the existing YaST installer
+%dnl Requires:       systemd-presets-branding-Kalpa
 
 # Some basic system tools
 Requires:       kate
@@ -491,7 +493,6 @@ Requires:       adwaita-fonts
 Requires:       cantarell-fonts
 Requires:       dejavu-fonts
 Requires:       ghostscript-fonts-std
-Requires:       ghostscript-fonts-std-converted
 Requires:       google-carlito-fonts
 Requires:       google-noto-sans-cjk-fonts
 Requires:       google-noto-coloremoji-fonts

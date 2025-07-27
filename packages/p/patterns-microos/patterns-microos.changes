@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 26 14:23:19 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Drop ghostscript-fonts-std-converted from kde pattern
+
+-------------------------------------------------------------------
+Tue Jun 24 08:38:44 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added systemd-presets-branding-Kalpa to kde pattern
+
+-------------------------------------------------------------------
 Fri Jun 20 05:51:06 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Adjusted Font selection in the kde pattern to fix some rendering

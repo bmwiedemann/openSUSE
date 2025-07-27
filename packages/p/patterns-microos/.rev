@@ -944,4 +944,14 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
 - Cleaned up a few things in the KDE/Kalpa pattern</comment>
     <requestid>1287043</requestid>
   </revision>
+  <revision rev="101" vrev="101">
+    <srcmd5>b7c009a73d69bda8d61afcfd65977299</srcmd5>
+    <version>5.0</version>
+    <time>1753626381</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop ghostscript-fonts-std-converted from kde pattern
+
+- Added systemd-presets-branding-Kalpa to kde pattern</comment>
+    <requestid>1295896</requestid>
+  </revision>
 </revisionlist>
