@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jul 25 13:59:54 UTC 2025 - dcermak@suse.com
+
+- Update to version 1.0.4+git13:
+  * fix: resolve test failures in package build
+- Remove upstreamed support-python312.patch.
+
+-------------------------------------------------------------------
+Tue Jul 22 14:45:03 UTC 2025 - dcermak@suse.com
+
+- Update to version 1753113091.b90b296:
+  * feat: recognize emacsclient as emacs
+  * fix: shlex.split() $EDITOR before calling Popen
+  * ci: run the CI on python 3.6 too
+  * Add simple tests using pytest & CI using github actions
+  * support python 3.12
+  * Move the import of disutils.spawn into the scope where it is actually being used so that inquirer can mostly function on default ubuntu python.
+
+-------------------------------------------------------------------
 Fri Jun 20 11:51:56 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Add support-python312.patch to not depend on distutils (boo#1245108)

@@ -17,18 +17,20 @@
 
 
 Name:           python-python-editor
-Version:        1.0.4
+Version:        1.0.4+git13
 Release:        0
 Summary:        Python library to programmatically open an editor and capture the result
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/fmoo/python-editor
-Source:         https://files.pythonhosted.org/packages/source/p/python-editor/python-editor-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM support-python312.patch https://github.com/fmoo/python-editor/commit/5023fafd265add111b29baca59b07f140daf75b7
-Patch0:         support-python312.patch
+Source:         python-editor-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+# tests
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-mock}
+
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -44,6 +46,7 @@ environment variable.
 
 %prep
 %autosetup -p1 -n python-editor-%{version}
+sed -i 's|__VERSION__ = .*|__VERSION__ = "%{version}"|' setup.py
 
 %build
 find -type f -exec chmod 644 {} +
@@ -54,16 +57,14 @@ find -type f -exec chmod 644 {} +
 %python_expand sed -i -e '/^#!\/usr\/bin\/env/d' %{buildroot}%{$python_sitelib}/editor.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/
 
-# the example does not look like an unit test
-# %%check
-# export EDITOR='nano'
-# Xpython_exec test.py
+%check
+%python_expand pytest test_editor.py
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitelib}/editor.py
-%{python_sitelib}/python[-_]editor-%{version}*-info
+%{python_sitelib}/python_editor-%{version}.dist-info/
 %pycache_only %{python_sitelib}/__pycache__/editor*
 
 %changelog

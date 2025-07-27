@@ -63,4 +63,22 @@
     <comment></comment>
     <requestid>1287805</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>45dba406ff90d87084d92d309236ff9f</srcmd5>
+    <version>1.0.4+git13</version>
+    <time>1753626392</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.4+git13:
+  * fix: resolve test failures in package build
+- Remove upstreamed support-python312.patch.
+- Update to version 1753113091.b90b296:
+  * feat: recognize emacsclient as emacs
+  * fix: shlex.split() $EDITOR before calling Popen
+  * ci: run the CI on python 3.6 too
+  * Add simple tests using pytest &amp; CI using github actions
+  * support python 3.12
+  * Move the import of disutils.spawn into the scope where it is actually being used so that inquirer can mostly function on default ubuntu python.
+</comment>
+    <requestid>1295893</requestid>
+  </revision>
 </revisionlist>
