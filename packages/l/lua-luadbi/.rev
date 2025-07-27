@@ -72,4 +72,17 @@
 </comment>
     <requestid>1205567</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>49023ce7fbb60b22a7ca5daa3aeb0f97</srcmd5>
+    <version>0.7.4</version>
+    <time>1753626388</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 0.7.4:
+  - Add missing braces around initializer
+  - Unbreak building against MariaDB 5.5
+  - Avoid incompatible pointer type error on x86 (32 bit)
+  - New driver for DuckDB. Largely untested and should be
+    considered expiremental at this time.</comment>
+    <requestid>1295835</requestid>
+  </revision>
 </revisionlist>

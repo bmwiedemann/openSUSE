@@ -18,7 +18,7 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name luadbi
-Version:        0.7.3
+Version:        0.7.4
 Release:        0
 Summary:        A database interface library for Lua
 License:        MIT
@@ -57,17 +57,18 @@ Oracle.
 %prep
 %autosetup -p1 -n luadbi-%{version}
 
-sed -i \
-    -e 's:-g -pedantic -Wall -O2:%{optflags} -fPIC -I%{lua_incdir}:g' \
-    Makefile
-
 %build
-%make_build LIBDIR=%{_libdir}
+# We have to list targets specifically, because openSUSE still
+# doesn’t have support for DuckDB
+%make_build LIBDIR=%{_libdir} LUA_INC="-I%{lua_incdir}" \
+    COMMON_CFLAGS="%{optflags} -fPIC" \
+    mysql psql sqlite3
 
 %install
 install -d %{buildroot}%{lua_archdir}
 install -d %{buildroot}%{lua_noarchdir}
-make install_free DESTDIR=%{buildroot} LUA_LDIR=%{lua_noarchdir} LUA_CDIR=%{lua_archdir}
+make install_lua install_mysql install_psql install_sqlite3 \
+    DESTDIR=%{buildroot} LUA_LDIR=%{lua_noarchdir} LUA_CDIR=%{lua_archdir}
 
 %check
 # run tests

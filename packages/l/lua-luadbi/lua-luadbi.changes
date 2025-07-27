@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 25 19:54:10 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Upgrade to 0.7.4:
+  - Add missing braces around initializer
+  - Unbreak building against MariaDB 5.5
+  - Avoid incompatible pointer type error on x86 (32 bit)
+  - New driver for DuckDB. Largely untested and should be
+    considered expiremental at this time.
+
+-------------------------------------------------------------------
 Thu Oct  3 15:12:49 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.7.3:
