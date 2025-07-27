@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 20 10:22:25 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2.76.0:
+  * Copilot Pro+ / Enterprise subscribers can now assign issues to
+    Copilot during issue creation 
+  * Display immutable field in release view command
+  * Do not fetch logs for skipped jobs
+  * Transform extension and filename qualifiers into path qualifier
+    for web code search
+
+-------------------------------------------------------------------
 Thu Jul 10 10:54:52 UTC 2025 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 2.75.0:
