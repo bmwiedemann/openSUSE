@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Jul 26 11:38:02 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 25.2:
+  + Added:
+    - Add a Description button to the Episode Sheet
+      (glgo#World/podcasts#407).
+    - Set current position and track length in mpris
+      (glgo#World/podcasts#417).
+  + Fixed:
+    - Miscellaneous fixes for AdwButtonContent
+      (glgo#World/podcasts#401).
+    - Cosmetic fixes for the Episode Menu
+      (glgo#World/podcasts#408).
+    - Timestamp links work again with Streamed episodes
+      (glgo#World/podcasts#372).
+    - Improve rendering and sizing of episode widgets
+      (glgo#World/podcasts#414).
+  * Updated translations.
+- Changes from version 0.7.2:
+  + Added:
+    - You can now mark individual episodes as played.
+    - The Shows will now scale based on the window size.
+    - You can close the window with the Control + W shortcut.
+  + Changed:
+    - Rework the download machinery to be faster and more
+      efficient.
+    - Rework the way thumbnails are saved on disk.
+    - Generate thumbnails in a dedicated thread.
+    - Use AdwAboutDialog instead of AdwAboutWindow.
+    - Only run cleanup at shutdown to improve application startup.
+  + Fixed:
+    - Automatically detect the image format for thumbnails.
+    - Dates are now displayed and calculated using localtime
+      instead of sometimes using UTC.
+    - Fix accessibility warnings in the Episode Description.
+    - Correctly trigger a download when thumbnail cover for mpris
+      is missing.
+    - Handle hidpi values bigger than 2 for thumbnails.
+    - Correctly calculate the episode download size if its missing
+      from the xml metadata.
+    - Fix a bug where thumbnails would not get downscaled
+      properly.
+  + Removed:
+    - Links in the Episode Description are no longer underlined.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Oct 28 14:54:35 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.7.1:

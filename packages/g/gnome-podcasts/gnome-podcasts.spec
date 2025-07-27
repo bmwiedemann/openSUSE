@@ -20,7 +20,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           gnome-podcasts
-Version:        0.7.1
+Version:        25.2
 Release:        0
 Summary:        Podcast app for GNOME
 License:        GPL-3.0-or-later
