@@ -255,4 +255,12 @@
     <comment>fix gcc15 build</comment>
     <requestid>1286414</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>6a19609bf4062a2a6cfe91fa0d2b4b46</srcmd5>
+    <version>1.8.0.462</version>
+    <time>1753626440</time>
+    <user>dimstar_suse</user>
+    <comment>July 2025 CPU: OpenJDK 8u462 build 08 with OpenJ9 0.53.0</comment>
+    <requestid>1295920</requestid>
+  </revision>
 </revisionlist>

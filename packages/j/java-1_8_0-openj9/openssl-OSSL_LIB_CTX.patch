@@ -10,4 +10,4 @@
 +
  /* Header for NativeCrypto loading methods. */
  static void * find_crypto_symbol(void *handle, const char *symname);
- static void * find_crypto_library(jboolean traceEnabled, const char *chomepath);
+ static void * find_crypto_library(jboolean traceEnabled, jboolean skipBundled, const char *chomepath);

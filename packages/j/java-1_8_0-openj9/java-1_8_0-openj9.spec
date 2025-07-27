@@ -28,18 +28,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       452
-%global buildver        b09
+%global updatever       462
+%global buildver        b08
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   a00de86921fa72472213e1da6f5216a62a70db7f
-%global root_branch     v0.51.0-release
+%global root_revision   cb4b9ae56eabc82d4f828956d064834f883b6a4d
+%global root_branch     v0.53.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    9bcff94a2a0f12baeac8f5d098b597e8ea076b67
-%global omr_branch      v0.51.0-release
+%global omr_revision    266a8c6f5b6d202e4aaa09e19ce0d956605f27fd
+%global omr_branch      v0.53.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 31cf5538b0a4875a2310e917a80bb16c81065d3c
-%global openj9_branch   v0.51.0-release
-%global openj9_tag      openj9-0.51.0
+%global openj9_revision 017819f167cbcedd175a3f20e1112992bf4ecc1e
+%global openj9_branch   v0.53.0-release
+%global openj9_tag      openj9-0.53.0
 # priority must be 6 digits in total
 %global priority        1801
 %global javaver         1.8.0
@@ -110,14 +110,6 @@ Patch1:         java-atk-wrapper-security.patch
 Patch2:         multiple-pkcs11-library-init.patch
 # Disable doclint for compatibility
 Patch3:         disable-doclint-by-default.patch
-# Allow building with newer libdwarf
-Patch4:         libdwarf-fix.patch
-# Fix build with gcc 13
-Patch31:        stringop-overflow.patch
-# Fix build with gcc 14
-Patch32:        fix-build-with-gcc14.patch
-# Fix an error with gcc 15
-Patch33:        fix-build-with-gcc15.patch
 # Patches for system libraries
 Patch201:       system-libjpeg.patch
 Patch202:       system-libpng.patch
@@ -125,7 +117,6 @@ Patch203:       system-lcms.patch
 Patch210:       openj9-no-werror.patch
 Patch211:       openj9-openssl.patch
 Patch212:       openssl-OSSL_LIB_CTX.patch
-Patch213:       openj9-noexecstack.patch
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -358,16 +349,10 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 %patch -P 210
 %patch -P 211 -p1
 %patch -P 212 -p1
-%patch -P 213 -p1
 
 %patch -P 1 -p1
 %patch -P 2 -p1
 %patch -P 3 -p1
-%patch -P 4 -p1
-
-%patch -P 31 -p1
-%patch -P 32 -p1
-%patch -P 33 -p1
 
 cat %{SOURCE100} \
     | sed "s/@OPENJ9_SHA@/`expr substr '%{openj9_revision}' 1 7`/g" \

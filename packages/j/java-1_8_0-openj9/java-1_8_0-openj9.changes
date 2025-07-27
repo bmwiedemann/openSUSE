@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jul 26 21:23:44 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 8u462 build 08 with OpenJ9 0.53.0 virtual
+  machine
+- Including Oracle July 2025 CPU changes
+  * CVE-2025-30749 (bsc#1246595), CVE-2025-30754 (bsc#1246598),
+    CVE-2025-30761 (bsc#1246580), CVE-2025-50059 (bsc#1246575)
+- Removed patches:
+  * fix-build-with-gcc14.patch
+  * fix-build-with-gcc15.patch
+  * libdwarf-fix.patch
+  * openj9-noexecstack.patch
+  * stringop-overflow.patch
+    + fixed in this version
+- Modified patches:
+  * openj9-nogit.patch.in
+  * openssl-OSSL_LIB_CTX.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Tue Jun 17 15:58:52 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Add -std=gnu99 to CFLAGS to fix gcc15 compile time error. Since
