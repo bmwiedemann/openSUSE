@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 24 15:22:56 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Remove the -converted subpackage that uses ttf-converter.
+  Anyone using these fonts should actually use the
+  urw-base35-fonts package.
+
+-------------------------------------------------------------------
 Mon Jun 22 11:10:15 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Force the converted Nimbus Mono font to be monospaced by using
