@@ -1,7 +1,7 @@
 #
 # spec file for package smplayer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,19 @@
 
 
 Name:           smplayer
-Version:        24.5.0
+Version:        25.6.0
 Release:        0
 Summary:        Complete frontend for MPV
 License:        GPL-2.0-or-later
 URL:            https://smplayer.info/
 Source:         https://github.com/smplayer-dev/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.bz2
 # PATCH-FIX-OPENSUSE smplayer-makeflags.patch
-Patch0:         %{name}-makeflags.patch
+Patch0:         smplayer-makeflags.patch
 # PATCH-FEATURE-OPENSUSE smplayer-defaults.patch sor.alexei@meowr.ru -- Use PulseAudio, system Qt5 theme, and "Papirus" icon theme by default.
-Patch1:         %{name}-defaults.patch
+Patch1:         smplayer-defaults.patch
 # PATCH-FIX-UPSTREAM smplayer-add_kde_protocols_to_desktop_file.patch -- To play network shared video correctly: #PM-48.
-Patch2:         %{name}-add_kde_protocols_to_desktop_file.patch
-# PATCH-FIX-UPSTREAM 0001-Adapt-MPV-s-renaming-sub-forced-only-to-sub-forced-e.patch bsc#1227841, gh#smplayer-dev/smplayer!1029 alynx.zhou@suse.com -- Adapt MPV's option renaming.
-Patch3:         0001-Adapt-MPV-s-renaming-sub-forced-only-to-sub-forced-e.patch
+Patch2:         smplayer-add_kde_protocols_to_desktop_file.patch
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -38,8 +37,6 @@ BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libqt5-qttools-devel
 BuildRequires:  libstdc++-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  zlib-devel
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
@@ -52,6 +49,7 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(zlib)
 # Either mpv >= 0.6.2 or MPlayer >= 1.0rc4_r32607.
 Requires:       mpv >= 0.6.2
 Recommends:     smplayer-lang
@@ -74,7 +72,7 @@ same chosen audio track, subtitles and volume level.
 %autosetup -p1
 
 # Fix CRLF in .txt files.
-sed -i 's/\r$//' *.txt
+sed -i 's/\r$//' *.txt *.md
 
 find . -type f -name '*.pro' | while read f; do
 cat << EOF >> "$f"
@@ -103,21 +101,20 @@ rm -r %{buildroot}%{_docdir}/%{name}/*
 
 mv %{buildroot}%{_bindir}/{,%{name}-}simple_web_server
 
-%suse_update_desktop_file %{name}
-%suse_update_desktop_file %{name}_enqueue
-
 %find_lang %{name} --with-qt
 %fdupes %{buildroot}%{_datadir}/
+
+%check
+desktop-file-validate \
+	%{buildroot}%{_datadir}/applications/%{name}{,_enqueue}.desktop
 
 %files
 %license Copying*.txt
 %doc Readme.txt Release_notes.md
 %{_bindir}/%{name}
 %{_bindir}/%{name}-simple_web_server
-%{_datadir}/applications/%{name}*.desktop
-%dir %{_datadir}/icons/hicolor/*/
-%dir %{_datadir}/icons/hicolor/*/apps/
-%{_datadir}/icons/hicolor/*/apps/%{name}.*
+%{_datadir}/applications/%{name}{,_enqueue}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{name}.{png,svg}
 %{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/%{name}/
 %exclude %{_datadir}/%{name}/translations/

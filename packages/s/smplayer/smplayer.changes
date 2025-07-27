@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul 26 04:24:23 UTC 2025 - munix9@googlemail.com
+
+- Update to 25.6.0:
+  * Fix play/pause button.
+  * Some fixes to stop the screensaver on Linux.
+  * Fixed some issues related to disc playback.
+  * Various bug fixes and stability improvements.
+
+- Remove 0001-Adapt-MPV-s-renaming-sub-forced-only-to-sub-forced-e.patch
+  (merged upstream)
+- Clean up spec file
+
+-------------------------------------------------------------------
 Fri Aug 16 06:05:23 UTC 2024 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add 0001-Adapt-MPV-s-renaming-sub-forced-only-to-sub-forced-e.patch:
