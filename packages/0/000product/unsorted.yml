@@ -243,9 +243,6 @@ unsorted:
   - PrusaSlicer 
   - PyCBC-utils 
   - QCSXCAD-devel 
-  - QGnomePlatform-colorschemes 
-  - QGnomePlatform-qt5 
-  - QGnomePlatform-qt6 
   - QLog 
   - QMPlay2 
   - QMPlay2-devel 
@@ -31652,7 +31649,6 @@ unsorted:
   - python313-apipkg 
   - python313-apiron 
   - python313-apns2 
-  - python313-appdirs 
   - python313-application 
   - python313-applicationinsights 
   - python313-apprise 
