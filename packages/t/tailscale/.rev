@@ -310,4 +310,22 @@
   * ipn/ipnlocal: Update hostinfo to control on service config change (forwarded request 1288738 from rrahl0)</comment>
     <requestid>1288739</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e87182ea5d781f5f167bbc490e3d86b1</srcmd5>
+    <version>1.86.0</version>
+    <time>1753626416</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.86.0:
+  * tsStateEncrypted device posture attribute for checking whether the
+    Tailscale client state is encrypted at rest
+  * Cross-site request forgery (CSRF) issue that may have resulted in a log in
+    error when accessing the web interface
+  * Recommended exit node when the previously recommended exit node is offline
+  * tailscale up --exit-node=auto:any and tailscale set --exit-node=auto:any
+    CLI commands track the recommended exit node and automatically switches to
+    it when available exit nodes or network conditions change
+  * tailscaled CLI command flag --encrypt-state encrypts the node state file on
+    the disk using trusted platform module (TPM) (forwarded request 1295906 from rrahl0)</comment>
+    <requestid>1295907</requestid>
+  </revision>
 </revisionlist>
