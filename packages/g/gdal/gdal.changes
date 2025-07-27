@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jul 27 07:27:23 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
+
+- Update gdal to version 3.11.3; changes below are combined for 3.11.1, .2 and .3
+  * Remove gdal-backport-commit-b11cad7.patch since the backported commit is
+    included in the 3.11.1 release
+  * Fixes various build related issues, for example missing includes
+  * Fixes various potential or actual integer overflows, nullptr derefrences
+    and memory leaks
+  * Fixes crashes when using the MEM driver, caused by wrong usage of
+    a function
+  * Fixes crashes when using the VRT driver with empty mappings
+  * Fixes segfault in gdal vector grid that occurred when the first feature
+    had no geometry
+  * Readds Golden Software Surfer Binary Grid 6.0 (GSBG) driver
+  * Readds GSAG driver
+  * Various bug and regression fixes
+  * Full changelog is avaiable at
+    https://github.com/OSGeo/gdal/blob/v3.11.3/NEWS.md
+
+-------------------------------------------------------------------
 Sat Jun 28 14:07:32 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
 
 - Update gdal to version 3.11.0
