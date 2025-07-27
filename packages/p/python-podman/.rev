@@ -205,4 +205,12 @@
     <comment></comment>
     <requestid>1285532</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a50ed97aed387c2964c4f3f7db8c9120</srcmd5>
+    <version>5.5.0</version>
+    <time>1753626481</time>
+    <user>dimstar_suse</user>
+    <comment>update to 5.5.0 (and fix wrong directory name) (forwarded request 1292414 from ojkastl_buildservice)</comment>
+    <requestid>1295944</requestid>
+  </revision>
 </revisionlist>

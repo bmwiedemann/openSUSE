@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jun 17 18:07:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 5.5.0:
+  * fix(doc): correction of the example for the registry at the
+    login by @dklimpel in #518
+  * fix: set return type for ImagesManager.load() to Image by
+    @dklimpel in #519
+  * Enable tmt downstream by @inknos in #522
+  * Implement container.update() by @inknos in #521
+  * skip tests when the test image is not available (e.g. 32-bit)
+    by @eighthave in #524
+  * chore(deps): update dependency containers/automation_images to
+    v20250324 by @renovate in #529
+  * feat: expose *ns keys to consumers by @josegomezr in #525
+  * Fix: fix timeout type as int by @inknos in #537
+  * Enable Unit test coverage upstream by @inknos in #531
+  * Add inspect volume by @rkozlo in #535
+  * fix: push image does not stream by @dklimpel in #538
+  * misc: add mypy for type checking by @dklimpel in #541
+  * chore(deps): update dependency containers/automation_images to
+    v20250422 by @renovate in #543
+  * Set X-Registry-Auth header on manifest push and bump to new API
+    by @dklimpel in #536
+  * Set verbose: true to debug twine uploads to PypI by @inknos in
+    #520
+  * Improve testing against distro and podman-next by @inknos in
+    #548
+  * Add support for custom contexts by @aseering in #552
+  * fix: move digest label to the repository instead of tag by
+    @Alex-Izquierdo in #555
+  * Bump release to 5.5.0 and enable updates-testing repos on
+    Fedora by @inknos in #549
+- Remove patch gh-pr525-nsdict.patch
+
+-------------------------------------------------------------------
 Sun Jun  8 18:27:52 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Add gh-pr525-nsdict.patch to repair "userns_mode" attribute
