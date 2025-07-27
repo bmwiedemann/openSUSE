@@ -61,9 +61,9 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  gpgme-devel
 BuildRequires:  libsolv-devel >= %{libsolv_version}
 BuildRequires:  pkgconfig(check)
+BuildRequires:  pkgconfig(gpgme)
 BuildRequires:  pkgconfig(librepo) >= %{librepo_version}
 %if %{with valgrind}
 BuildRequires:  valgrind
