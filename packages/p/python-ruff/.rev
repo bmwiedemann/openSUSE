@@ -2316,4 +2316,41 @@
    * Make more documentation examples error out-of-the-box</comment>
     <requestid>1294441</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>3154759f9975544edaf8a615e9ebca2d</srcmd5>
+    <version>0.12.5</version>
+    <time>1753626372</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.12.5:
+  * \[`flake8-use-pathlib`\] Add autofix for `PTH101`, `PTH104`,
+    `PTH105`, `PTH121`
+  * \[`ruff`\] Support byte strings (`RUF055`)
+  * Fix `unreachable` panic in parser
+  * \[`flake8-pyi`\] Skip fix if all `Union` members are `None`
+    (`PYI016`)
+  * \[`perflint`\] Parenthesize generator expressions (`PERF401`)
+  * \[`pylint`\] Handle empty comments after line continuation
+    (`PLR2044`)
+
+      allow new fixes (TC001, TC002, TC003, UP037, RUF013)
+   * [flake8-use-pathlib] Add autofix for PTH109
+   * [pylint] Detect indirect pathlib.Path usages for unspecified-encoding (PLW1514)
+   * [flake8-bugbear] Fix B017 false negatives for keyword exception arguments
+   * [flake8-use-pathlib] Fix false negative on direct Path() instantiation (PTH210)
+   * [flake8-django] Fix DJ008 false positive for abstract models with type-annotated abstract field
+   * [isort] Fix I002 import insertion after docstring with multiple string statements
+   * [isort] Treat form feed as valid whitespace before a semicolon
+   * [pydoclint] Fix SyntaxError from fixes with line continuations (D201, D202)
+   * [refurb] FURB164 fix should validate arguments and should usually be marked unsafe
+   * [flake8-use-pathlib] Skip single dots for invalid-pathlib-with-suffix (PTH210) on versions &gt;= 3.14
+   * [pep8_naming] Avoid false positives on standard library functions with uppercase names (N802)
+   * [pycodestyle] Handle brace escapes for t-strings in logical lines
+   * [pylint] Extend invalid string character rules to include t-strings
+   * [ruff] Allow strict kwarg when checking for starmap-zip (RUF058) in Python 3.14+
+   * [flake8-type-checking] Make TC010 docs example more realistic
+   * [flake8-bugbear] Support non-context-manager calls in B017
+   * [flake8-use-pathlib] Add autofixes for PTH100, PTH106, PTH107, PTH108, PTH110, PTH111, PTH112, PTH113, PTH114, PTH115, PTH117, PTH119, PTH120
+   * [flake8-use-pathlib] Add autofixes for PTH203, PTH204, PTH205</comment>
+    <requestid>1295811</requestid>
+  </revision>
 </revisionlist>
