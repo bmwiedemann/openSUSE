@@ -429,4 +429,14 @@
   * Make global justfile filename case-insensitive (forwarded request 1295358 from rrahl0)</comment>
     <requestid>1295359</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>76bc6894c685cc495ca14a43cfaea172</srcmd5>
+    <version>1.42.4</version>
+    <time>1753626413</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.42.4:
+  * Run imported recipes in correct scope
+  * Fix alias doc comment (forwarded request 1295909 from rrahl0)</comment>
+    <requestid>1295910</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 26 16:30:06 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.42.4:
+  * Run imported recipes in correct scope
+  * Fix alias doc comment
+
+-------------------------------------------------------------------
 Wed Jul 23 12:36:21 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.42.3:
