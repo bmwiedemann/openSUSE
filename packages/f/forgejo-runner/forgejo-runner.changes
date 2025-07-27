@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul 26 16:14:33 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 8.0.0:
+  * Breaking change: workflows files go through a schema validation and will
+    not run if they do not pass
+  * Breaking change: in the absence of a label or a label, default to
+    docker://node:22-bookworm instead of docker://node:20-bullseye or host
+  * Breaking change: bash fallback to sh if it is not available
+  * Breaking change: sanitize network aliases to be valid DNS names
+  * secrets that contain multiple lines are masked from the output
+  * sum256 the container name so derivations do not overflow
+
+-------------------------------------------------------------------
 Fri Jul 11 13:30:51 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 7.0.0:

@@ -205,4 +205,20 @@
   * chore: update LICENSE year (forwarded request 1292090 from rrahl0)</comment>
     <requestid>1292091</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0798c9cefeb0b538a7b09f9baa8740eb</srcmd5>
+    <version>8.0.0</version>
+    <time>1753626421</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.0.0:
+  * Breaking change: workflows files go through a schema validation and will
+    not run if they do not pass
+  * Breaking change: in the absence of a label or a label, default to
+    docker://node:22-bookworm instead of docker://node:20-bullseye or host
+  * Breaking change: bash fallback to sh if it is not available
+  * Breaking change: sanitize network aliases to be valid DNS names
+  * secrets that contain multiple lines are masked from the output
+  * sum256 the container name so derivations do not overflow (forwarded request 1295904 from rrahl0)</comment>
+    <requestid>1295905</requestid>
+  </revision>
 </revisionlist>
