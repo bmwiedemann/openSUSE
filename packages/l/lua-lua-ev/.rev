@@ -38,4 +38,13 @@
 - Fix unowned %{lua_incdir} directory.</comment>
     <requestid>1037591</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>bd9ac5a1282396842a4d579627151ee1</srcmd5>
+    <version>1.5</version>
+    <time>1753626390</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CMAKE_POLICY_VERSION_MINIMUM=3.5 configuration to build
+  with current CMake.</comment>
+    <requestid>1295836</requestid>
+  </revision>
 </revisionlist>

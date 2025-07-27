@@ -92,6 +92,7 @@ rm -fv tests/test-dns.lua
 cmake -H. -Bbuild -DCMAKE_C_FLAGS="%{optflags}" \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_COLOR_MAKEFILE=OFF \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DBUILD_SHARED_LIBS=ON
 ( cd build ; make )
 mv build/ev.so build/libev.so.%{libev_sover}
@@ -101,6 +102,7 @@ mv build/ev.so build/libev.so.%{libev_sover}
 cmake -H. -Bbuild -DCMAKE_C_FLAGS="%{optflags}" \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_COLOR_MAKEFILE=OFF \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DBUILD_SHARED_LIBS=ON
 ( cd build ; make )
 
