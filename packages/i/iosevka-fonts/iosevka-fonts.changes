@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jul 19 21:15:34 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v33.2.7
+  * Changes of version 33.2.7
+    = Make certain characters slightly wider under
+      Quasi-Proportional. Affected characters:
+      ~ CYRILLIC CAPITAL LETTER IOTIFIED YAT (U+A652).
+      ~ CYRILLIC SMALL LETTER IOTIFIED YAT (U+A653).
+      ~ CYRILLIC LETTER MULTIOCULAR O (U+A66E).
+    = Refine shape of the following characters:
+      ~ CYRILLIC SMALL LETTER TALL YAT (U+1C87).
+      ~ MATHEMATICAL DOUBLE-STRUCK SMALL A (U+1D552) (#2769).
+
+-------------------------------------------------------------------
 Sat Jun 28 23:43:37 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v33.2.6
