@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 23 18:28:04 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- disable the buildroot virus scanning, as it needs the vscan user
+  this package provides. (bsc#1246878)
+
+-------------------------------------------------------------------
 Mon Jan 27 16:41:20 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add support for "u!" with useradd (shadow). busybox has no 

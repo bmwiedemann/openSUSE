@@ -31,6 +31,8 @@ BuildArch:      noarch
 Requires:       sysuser-shadow
 #!BuildIgnore:  sysuser-shadow
 #!BuildIgnore:  sysuser-tools
+# This would need system-user-vscan, which needs this package
+#!BuildIgnore:  post-build-checks-malwarescan clamav clamav-database
 BuildRequires:  diffutils
 
 %description
