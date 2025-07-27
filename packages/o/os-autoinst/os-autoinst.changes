@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 26 21:42:34 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1753467593.10e57cf:
+  * Require openssh-clients for git clone with ssh
+  * Avoid running `$basetest->parse_serial_output_qemu` without checks
+  * t: use mock not redefine for lua_set
+  * t: make autotest tests pass if lua and/or python are missing
+  * setup-multi-machine: extend network service detection
+  * Autodetect default ethernet dev/br in os-autoinst-setup-multi-machine
+  * Fix category generation for paths to lua test modules
+
+-------------------------------------------------------------------
 Thu Jul 17 05:16:00 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1752671185.6fc0c66:
