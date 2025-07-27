@@ -1,7 +1,7 @@
 #
 # spec file for package post-build-checks
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           post-build-checks
 Summary:        post checks for build after rpms have been created
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Version:        84.87+git20240327.7996a0f
+Version:        84.87+git20250725.0c3a172
 Release:        0
 PreReq:         aaa_base
 PreReq:         permissions
