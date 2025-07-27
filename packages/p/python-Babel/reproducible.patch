@@ -1,0 +1,24 @@
+diff --git a/babel/messages/catalog.py b/babel/messages/catalog.py
+index f84a5bd..786d1a4 100644
+--- a/babel/messages/catalog.py
++++ b/babel/messages/catalog.py
+@@ -11,6 +11,8 @@ from __future__ import annotations
+ 
+ import datetime
+ import re
++import time
++import os
+ from collections.abc import Iterable, Iterator
+ from copy import copy
+ from difflib import SequenceMatcher
+@@ -385,7 +387,9 @@ class Catalog:
+         self.charset = charset or 'utf-8'
+ 
+         if creation_date is None:
+-            creation_date = datetime.datetime.now(LOCALTZ)
++            creation_date = datetime.datetime.utcfromtimestamp(
++                int(os.environ.get('SOURCE_DATE_EPOCH', time.time()))
++            )
+         elif isinstance(creation_date, datetime.datetime) and not creation_date.tzinfo:
+             creation_date = creation_date.replace(tzinfo=LOCALTZ)
+         self.creation_date = creation_date

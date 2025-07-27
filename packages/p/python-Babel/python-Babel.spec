@@ -32,6 +32,7 @@ Summary:        Internationalization utilities
 License:        BSD-3-Clause
 URL:            https://babel.pocoo.org/
 Source:         https://files.pythonhosted.org/packages/source/b/babel/babel-%{version}.tar.gz
+Patch0:         reproducible.patch
 BuildRequires:  %{python_module freezegun >= 1.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6.0}
@@ -73,6 +74,7 @@ A collection of tools for internationalizing Python applications.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+unset SOURCE_DATE_EPOCH
 %pytest
 
 %pre
