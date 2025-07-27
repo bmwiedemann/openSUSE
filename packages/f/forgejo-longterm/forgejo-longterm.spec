@@ -16,21 +16,16 @@
 #
 
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 %bcond_without selinux
 %bcond_without apparmor
 %else
-%if 0%{?suse_version} == 1600
-%bcond_without selinux
-%bcond_with apparmor
-%else
-# Leap & SLE
+# Leap & SLE 15.X
 %bcond_with selinux
 %bcond_without apparmor
 %endif
-%endif
 Name:           forgejo-longterm
-Version:        10.0.3
+Version:        11.0.3
 Release:        0
 Summary:        Self-hostable forge
 License:        GPL-3.0-or-later
@@ -51,12 +46,9 @@ Source10:       forgejo.apparmor
 Source11:       forgejo.firewalld
 Source12:       forgejo-abstraction.apparmor
 Source13:       forgejo-hooks-abstraction.apparmor
-Source14:       vendor.tar.gz
-Source98:       README.SUSE
-Source99:       get-sources.sh
+Source14:       node_modules.sums
+Source99:       README.SUSE
 Patch0:         custom-app.ini.patch
-Patch1:         fix-CVE-2025-22869.patch
-Patch2:         fix-CVE-2025-3445.patch
 BuildRequires:  golang(API) >= 1.24
 ## node >= 20
 %if 0%{?suse_version} == 1500
@@ -65,6 +57,7 @@ BuildRequires:  npm-default
 %else
 BuildRequires:  nodejs-packaging
 %endif
+BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  firewalld
 BuildRequires:  local-npm-registry
@@ -142,9 +135,8 @@ builtin functionality.
 
 %prep
 %autosetup -p1 -n forgejo-src-%{version}
-tar xf %{SOURCE14} -C %{_builddir}/forgejo-src-%{version}/
 local-npm-registry %{_sourcedir} install --include=dev --legacy-peer-deps
-cp %{SOURCE98} .
+cp %{SOURCE99} .
 
 %build
 %sysusers_generate_pre %{SOURCE6} forgejo forgejo.conf
@@ -203,6 +195,8 @@ install -Dm0644 forgejo.if %{buildroot}%{_datadir}/selinux/devel/include/distrib
 
 #firewalld service file
 install -D -m 0644 %{SOURCE11} %{buildroot}%{_prefix}/lib/firewalld/services/forgejo.xml
+
+%fdupes %{buildroot}
 
 %pre -f forgejo.pre
 %service_add_pre forgejo.service
