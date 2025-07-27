@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 25 06:48:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.7.0:
+  * Improve effectiveness of --skip-invalid-kustomization-paths for
+    more cases by @allenporter in #974
+  * Add flag --skip-invalid-helm-release-paths to ignore invalid
+    external git repos by @allenporter in #975
+
+-------------------------------------------------------------------
 Thu Jul 24 12:47:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 7.6.0:
