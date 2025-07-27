@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Fri Jul 25 17:20:27 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Upgrade to 1.51.0-1:
+    - Fix use-after-free in new_thread
+    - feat: add binding for semaphore to test synchronization
+    - ci: Add check that docs.md and meta.lua are up-to-date
+    - docs: move to new directory
+    - Remove unused function luv_gc_cb
+- Upgrade to 1.51.0-0:
+    - Bump Libuv to 1.51.0
+        - Added the constants FS_UTIME_NOW and FS_UTIME_OMIT
+        - Made the atime/mtime parameters of
+          fs_utime/fs_futime/fs_lutime accept nil, a string, or
+          a number. If nil, the argument is translated to
+          FS_UTIME_OMIT. If it is a string, it must be "omit" or
+          "now".
+        - Adds the constant TTY_MODE_RAW_VT ("raw_vt" is the
+          shorthand string version) (context:
+          libuv/libuv@843b64f)
+    - Fix typos
+    - feat(doc): move to structured format
+    - Update luv-scm-0.rockspec
+    - feat(doc): generate meta file
+- Upgrade to v1.50.0-1:
+    - test-misc: Allow big endian WTF-16, too
+    - Clean up test step and exclude it from the "all" target
+    - rework luv work vm storage into userdata
+- Upgrade to v1.50.0-0:
+    - docs: Clarify types for mode arg in some filesystem
+      functions
+    - Disable flaky UDP test on macOS CI
+    - ci: handle EBUSY for udp
+    - Lua 5.4.7 update
+    - Clean up and expand docs for constants/options
+    - docs: typo fix
+    - update submodules
+    - Remove unnecessary allocation from wtf8 functions
+    - Bump Libuv to 1.49.1
+    - Bump Libuv to 1.49.2
+    - Support Lua integer in thread and async arguments
+    - Fix a misleading skip message in test-tty.lua
+    - Use main thread of current Lua state for callbacks, when
+      known
+    - luv_cfpcall: Fix stack balancing after an uncaught error
+    - try safe handle external handle
+    - Update minimum cmake version to 3.10
+    - fix: prevent calling uv.run while already running.
+    - move luv_work_cleanup into loop gc
+    - fix unused-variable warning
+    - test-dns: Don't skip 'Get only ipv6 tcp adresses for
+      luvit.io' test
+    - Bump Libuv to 1.50.0
+    - bump LuaJIT to v2.1.1736781742
+- Upgrade to 1.48.0-2:
+    - Fix garbage collection of scandir reqs
+        - This fixes a regression (use-after-free) that was
+          introduced in 1.48.0-1, see #694 (comment)
+    - Fix a few instances of undefined behavior caught by UBSan
+    - msvcbuild: Set MSVC 2022 as the default
+- Upgrade to 1.48.0-1:
+    - fix memory leak in fs.scandir sync mode
+    - bump lua-compat-5.3 to 0.13
+- Upgrade to v1.48.0-0:
+    - fix: Use os_uname() to check for Linux
+    - docs: typo in a table field name
+    - docs: most new_handle methods won't return fail
+    - test-tty: Don't depend on stdin/stdout handle type
+    - Bump/libuv
+    - Annotate .gitmodules with branch and tag
+- Upgrade to v1.47.0-0:
+    - Bump/luajit
+    - docs: Correct uv.spawn options.args docs about the first
+      argument
+    - Remove redundant CMake policy change
+    - docs: new_async callback is not optional
+    - update submodule
+    - Bump version to 1.47.0 in CMakeLists.txt
+- Upgrade to 1.46.0-0:
+    - update libuv to v1.46.0
+    - chore: update uv.tty_set_mode, and add tty test
+    - chore: fix crash in loop_gc
+    - fix: avoid dir be gc early.
+    - fix: callback handle error with non-strings
+    - docs: make process_kill signum arg optional
+    - docs: add missing uv.os_unsetenv() parameter
+    - docs: make uv.kill's signum optional
+- Remove upstreamed patch luv-fix-segfault-from-gc.patch
+
+-------------------------------------------------------------------
 Mon Dec  4 10:05:58 UTC 2023 - Noah Dörr <archecraft1@gmail.com>
 
 - Update to version 1.45.0-0:

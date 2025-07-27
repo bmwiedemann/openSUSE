@@ -156,4 +156,41 @@
   (gh#luvit/luv#599 and gh#luvit/luv#644)</comment>
     <requestid>1131025</requestid>
   </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>8f097244f4026ae3544b469c584e7e35</srcmd5>
+    <version>MACRO</version>
+    <time>1753626388</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 1.51.0-1:
+    - Fix use-after-free in new_thread
+    - feat: add binding for semaphore to test synchronization
+    - ci: Add check that docs.md and meta.lua are up-to-date
+    - docs: move to new directory
+    - Remove unused function luv_gc_cb
+- Upgrade to 1.51.0-0:
+    - Bump Libuv to 1.51.0
+        - Added the constants FS_UTIME_NOW and FS_UTIME_OMIT
+        - Made the atime/mtime parameters of
+          fs_utime/fs_futime/fs_lutime accept nil, a string, or
+          a number. If nil, the argument is translated to
+          FS_UTIME_OMIT. If it is a string, it must be &quot;omit&quot; or
+          &quot;now&quot;.
+        - Adds the constant TTY_MODE_RAW_VT (&quot;raw_vt&quot; is the
+          shorthand string version) (context:
+          libuv/libuv@843b64f)
+    - Fix typos
+    - feat(doc): move to structured format
+    - Update luv-scm-0.rockspec
+    - feat(doc): generate meta file
+- Upgrade to v1.50.0-1:
+    - test-misc: Allow big endian WTF-16, too
+    - Clean up test step and exclude it from the &quot;all&quot; target
+    - rework luv work vm storage into userdata
+- Upgrade to v1.50.0-0:
+    - docs: Clarify types for mode arg in some filesystem
+      functions
+    - Disable flaky UDP test on macOS CI
+    - ci: handle EBUSY for udp</comment>
+    <requestid>1295834</requestid>
+  </revision>
 </revisionlist>

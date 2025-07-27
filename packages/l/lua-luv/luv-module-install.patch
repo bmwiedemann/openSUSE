@@ -1,6 +1,12 @@
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -271,7 +271,8 @@
+---
+ CMakeLists.txt |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+Index: luv-1.51.0-1/CMakeLists.txt
+===================================================================
+--- luv-1.51.0-1.orig/CMakeLists.txt	2025-07-25 19:14:46.432241486 +0200
++++ luv-1.51.0-1/CMakeLists.txt	2025-07-25 19:15:15.325766468 +0200
+@@ -278,7 +278,8 @@
      if (WIN32)
        set(MODULE_INSTALL_LIB_DIR "${CMAKE_INSTALL_PREFIX}/lib")
      else (WIN32)

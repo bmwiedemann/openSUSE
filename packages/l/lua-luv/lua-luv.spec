@@ -21,8 +21,8 @@
 %define lua_default 1
 %endif
 %define mod_name luv
-%define upver 1.45.0-0
-%define fixver %(echo %{upver}|sed 's|-|~|g')
+%define upver 1.51.0-1
+%define fixver %(echo %{upver}|sed 's|-|+|g')
 %define libluv_sover 1
 %define flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
@@ -36,15 +36,10 @@ Release:        0
 Summary:        Bare libuv bindings for lua
 License:        Apache-2.0
 Group:          Development/Languages/Other
-URL:            https://github.com/luvit/%{mod_name}
-Source0:        https://github.com/luvit/%{mod_name}/releases/download/%{upver}/%{mod_name}-%{upver}.tar.gz
+URL:            https://github.com/luvit/luv
+Source0:        https://github.com/luvit/luv/releases/download/%{upver}/luv-%{upver}.tar.gz
 Patch0:         lua-link.patch
 Patch1:         luv-module-install.patch
-# PATCH-FIX-UPSTREAM luv-fix-segfault-from-gc.patch gh#luvit/luv#599 mcepl@suse.com
-# merged https://github.com/luvit/luv/commit/ff5e90249e08 and
-# https://github.com/luvit/luv/commit/ecf3988c0be9
-# Also closes gh#luvit/luv#644
-Patch2:         luv-fix-segfault-from-gc.patch
 BuildRequires:  %{flavor}-compat-5.3
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-luafilesystem
