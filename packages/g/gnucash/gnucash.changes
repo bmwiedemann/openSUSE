@@ -2,7 +2,9 @@
 Wed Jul 16 13:45:37 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to 5.12:
-  See https://github.com/Gnucash/gnucash/releases/tag/5.12 for full changes
+  + Bugfixes
+    See https://github.com/Gnucash/gnucash/releases/tag/5.12 for 
+    full changes
 - Drop upstream fix_build_with_boost_1_88.patch
 
 -------------------------------------------------------------------
