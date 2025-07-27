@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 25 05:48:31 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 3.4.5
+  * logs
+    - Redact logged install configuration (gh#traefik/traefik#11907 by jspdown)
+  * plugins
+    - Fix client arbitrary file access during archive extraction zipslip
+      (gh#traefik/traefik#11911 by odaysec)
+  * server
+    - Disable MPTCP by default (gh#traefik/traefik#11918 by rtribotte)
+  * http3
+    - Bump github.com/quic-go/quic-go to v0.54.0 (gh#traefik/traefik#11919 by GreyXor)
+
+-------------------------------------------------------------------
 Tue Jul 22 13:38:51 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Fixed boo#1246094 bad logrotate configuration allows potential escalation

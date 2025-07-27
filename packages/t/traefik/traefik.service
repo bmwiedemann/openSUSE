@@ -10,7 +10,6 @@ AssertPathExists=/etc/traefik/traefik.yml
 Type=notify
 ExecStart=/usr/bin/traefik --configFile=/etc/traefik/traefik.yml
 ExecReload=kill -HUP $MAINPID ; kill -USR1 $MAINPID
-Environment="GODEBUG=multipathtcp=0"
 User=traefik
 WorkingDirectory=~
 Restart=always
