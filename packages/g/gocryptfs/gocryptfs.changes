@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul 26 12:56:21 UTC 2025 - munix9@googlemail.com
+
+- Update to version 2.6.0:
+  * Upgrade to go-fuse v2.8.0
+  * Switch to the new go-fuse directory API
+  * Fix -force_owner not allowing file/dir create ( #783 )
+  * Skip TestBtrfsQuirks if mkfs.btrfs is not installed ( #930 )
+
+- Add fix-fusermount3-bin-name.patch
+  * Redefine fusermount3 binary where appropriate
+- Add tests
+
+-------------------------------------------------------------------
 Fri May 16 07:04:04 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - switch to fuse 3 (boo#1242079). The go code supports run-time

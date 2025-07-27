@@ -1,0 +1,69 @@
+diff -ruNp a/Documentation/gocryptfs.1 b/Documentation/gocryptfs.1
+--- a/Documentation/gocryptfs.1	2025-07-14 21:41:51.000000000 +0200
++++ b/Documentation/gocryptfs.1	2025-07-26 15:38:36.355108334 +0200
+@@ -11,7 +11,7 @@ gocryptfs \- create or mount an encrypte
+ .SS Mount
+ \f[CR]gocryptfs [OPTIONS] CIPHERDIR MOUNTPOINT [\-o COMMA\-SEPARATED\-OPTIONS]\f[R]
+ .SS Unmount
+-\f[CR]fusermount \-u MOUNTPOINT\f[R]
++\f[CR]fusermount3 \-u MOUNTPOINT\f[R]
+ .SS Change password
+ \f[CR]gocryptfs \-passwd [OPTIONS] CIPHERDIR\f[R]
+ .SS Check consistency
+diff -ruNp a/mount.go b/mount.go
+--- a/mount.go	2025-07-14 21:38:59.000000000 +0200
++++ b/mount.go	2025-07-26 15:42:22.956028741 +0200
+@@ -516,7 +516,7 @@ func initGoFuse(rootNode fs.InodeEmbedde
+ 
+ // haveFusermount2 finds out if the "fusermount" binary is from libfuse 2.x.
+ func haveFusermount2() bool {
+-	path, err := exec.LookPath("fusermount")
++	path, err := exec.LookPath("fusermount3")
+ 	if err != nil {
+ 		path = "/bin/fusermount"
+ 	}
+@@ -554,7 +554,7 @@ func unmount(srv *fuse.Server, mountpoin
+ 		if runtime.GOOS == "linux" {
+ 			// MacOSX does not support lazy unmount
+ 			tlog.Info.Printf("Trying lazy unmount")
+-			cmd := exec.Command("fusermount", "-u", "-z", mountpoint)
++			cmd := exec.Command("fusermount3", "-u", "-z", mountpoint)
+ 			cmd.Stdout = os.Stdout
+ 			cmd.Stderr = os.Stderr
+ 			cmd.Run()
+diff -ruNp a/tests/fuse-unmount.bash b/tests/fuse-unmount.bash
+--- a/tests/fuse-unmount.bash	2025-07-14 21:38:59.000000000 +0200
++++ b/tests/fuse-unmount.bash	2025-07-26 15:39:16.404094278 +0200
+@@ -12,7 +12,7 @@ fuse-unmount() {
+ 		exit 1
+ 	fi
+ 	if [[ $OSTYPE == linux* ]] ; then
+-		fusermount -u "$@"
++		fusermount3 -u "$@"
+ 	else
+ 		# Mountpoint is in last argument, ignore anything else
+ 		# (like additional flags for fusermount).
+diff -ruNp a/vendor/github.com/hanwen/go-fuse/v2/fuse/mount_linux.go b/vendor/github.com/hanwen/go-fuse/v2/fuse/mount_linux.go
+--- a/vendor/github.com/hanwen/go-fuse/v2/fuse/mount_linux.go	2025-07-14 21:41:51.000000000 +0200
++++ b/vendor/github.com/hanwen/go-fuse/v2/fuse/mount_linux.go	2025-07-26 15:36:34.659151045 +0200
+@@ -153,7 +153,7 @@ func callFusermount(mountPoint string, o
+ 		return
+ 	}
+ 	if !w.Success() {
+-		err = fmt.Errorf("fusermount exited with code %v\n", w.Sys())
++		err = fmt.Errorf("fusermount3 exited with code %v\n", w.Sys())
+ 		return
+ 	}
+ 
+diff -ruNp a/vendor/github.com/hanwen/go-fuse/v2/fuse/server.go b/vendor/github.com/hanwen/go-fuse/v2/fuse/server.go
+--- a/vendor/github.com/hanwen/go-fuse/v2/fuse/server.go	2025-07-14 21:41:51.000000000 +0200
++++ b/vendor/github.com/hanwen/go-fuse/v2/fuse/server.go	2025-07-26 15:35:57.921163937 +0200
+@@ -121,7 +121,7 @@ func (ms *Server) Unmount() (err error)
+ 		return nil
+ 	}
+ 	if parseFuseFd(ms.mountPoint) >= 0 {
+-		return fmt.Errorf("Cannot unmount magic mountpoint %q. Please use `fusermount -u REALMOUNTPOINT` instead.", ms.mountPoint)
++		return fmt.Errorf("Cannot unmount magic mountpoint %q. Please use `fusermount3 -u REALMOUNTPOINT` instead.", ms.mountPoint)
+ 	}
+ 	delay := time.Duration(0)
+ 	for try := 0; try < 5; try++ {

@@ -62,4 +62,19 @@
   switching of both fusermount3 and fusermount (from fuse 2) (forwarded request 1277968 from AndreasStieger)</comment>
     <requestid>1278074</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>caede7ee24b85f56ace606efe71383dd</srcmd5>
+    <version>2.6.0</version>
+    <time>1753626479</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.0:
+  * Upgrade to go-fuse v2.8.0
+  * Switch to the new go-fuse directory API
+  * Fix -force_owner not allowing file/dir create ( #783 )
+  * Skip TestBtrfsQuirks if mkfs.btrfs is not installed ( #930 )
+- Add fix-fusermount3-bin-name.patch
+  * Redefine fusermount3 binary where appropriate
+- Add tests (forwarded request 1295933 from munix9)</comment>
+    <requestid>1295936</requestid>
+  </revision>
 </revisionlist>
