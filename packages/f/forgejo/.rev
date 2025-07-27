@@ -570,4 +570,41 @@
   * Revert &quot;fix(api): document is_system_webhook field (forwarded request 1291759 from rrahl0)</comment>
     <requestid>1291760</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>34db76131c0bb86b5e2320edddedd3a3</srcmd5>
+    <version>12.0.1</version>
+    <time>1753626399</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 12.0.1:
+  * allow for tracked time to be removed again
+  * correct image source for quoted reply
+  * prevent render failure on faulty org settings post
+  * Revert &quot;remove API authentication methods that uses the URL query&quot;
+  * upgrade fails or hang at migration[31]: Migrate maven package
+    name concatenation
+  * make the action feed resilient to database inconsistencies
+  * make sure to use unaltered fields when saving a shadow copy
+    for updated profiles or comments
+  * follow symlinks for local assets
+  * use correct ACME default
+- remove get-sources.sh, use obs tooling
+- include apparmor in Leap 16
+
+- update to version 12.0.0:
+  * remove API authentication methods that uses the URL query
+  * relax email requirements
+  * consider WebAuthn &amp; SSH for instance signing
+  * add SSH signing support for instances
+  * forgejo docs command is deprecated
+  * remove the legacy TEST_CONFLICTING_PATCHES_WITH_GIT_APPLY setting
+  * fail if sha is not provided to the POST
+    /repos/{owner}/{repo}/contents API endpoint
+  * transform fediverse handles
+  * add user visibility description in the settings page
+  * add model viewer for .glb (GLTF) model in file view
+  * show size constraints of custom avatar
+  * add links to milestones and projects in issue comments
+  * global styling for the kbd tag (forwarded request 1295900 from rrahl0)</comment>
+    <requestid>1295901</requestid>
+  </revision>
 </revisionlist>
