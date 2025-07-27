@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 24 11:39:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.25.0:
+  * Add support for the iri and iri-reference formats to the
+    format-nongpl extra by @jkowalleck in #1388
+
+-------------------------------------------------------------------
 Fri Jul 18 05:56:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 4.24.1:
