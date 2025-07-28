@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jul 24 10:02:56 UTC 2025 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.76.1:
+  * Updated third-party license compliance content
+  * Add tests for reviewer team handling in PR creation
+  * Refactor and improve RepoMetadata teams test
+  * Refactor error assertion in Test_RepoMetadataTeams
+  * FIX: conditionally fetching team reviewers
+  * Add TeamReviewers flag to RepoMetadataInput
+  * Update .github/workflows/scripts/spam-detection/generate-sys-prompt.sh
+  * Use gh go templating for user prompt
+  * Update eval script comments
+  * Remove unnecessary file for heredoc
+  * First pass to optimize and improve
+  * Limit permissions of govulncheck workflow
+  * Incorporate govulncheck into workflows
+  * update ownership of pkg/cmd/release/shared/
+  * Run Lint and Tests on `push` to `trunk` branch
+  * ci: echo spam detection result
+  * ci: add `models: read` permission
+  * ci: correct `sed` usage to remove Markdown front matter
+  * docs: fix typo in script docs
+  * ci: fix potentially confusing typo in system prompt
+  * ci: use `issue.html_url` instead of `issue.url`
+  * ci: remove unused env vars
+  * ci: add spam issue detection workflow
+  * ci: add spam issue detection scripts
+  * chore(deps): bump github.com/sigstore/sigstore-go from 1.0.0 to 1.1.0
+  * chore(deps): bump advanced-security/filter-sarif from 1.0.0 to 1.0.1
+  * Improve `api` `--preview` docs
+  * add tenancy aware for san matcher
+
+-------------------------------------------------------------------
 Sun Jul 20 10:22:25 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2.76.0:
