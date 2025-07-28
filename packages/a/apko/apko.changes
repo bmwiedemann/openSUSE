@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 28 05:31:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.29.10:
+  * chore(typos): fix typos in comments and documentation (#1772)
+  * DirFS implementations: make Create() default to safer
+    permissions (#1783)
+  * Fix parsing of apk installed for files in top level directory.
+    (#1779)
+  * build(deps): bump github/codeql-action from 3.29.3 to 3.29.4
+    (#1777)
+
+-------------------------------------------------------------------
 Thu Jul 24 08:20:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.29.9:
