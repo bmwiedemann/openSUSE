@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 27 19:02:58 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 94.0
+  New features and enhancements:
+  * MKVToolNix GUI: multiplexer: the "delete source files after
+    multiplexing" job runner will now delete both files of an
+    `.idx`/`.sub` VobSub file pair.
+  Bug fixes:
+  * all: fix compilation without FLAC.
+
+-------------------------------------------------------------------
 Sun Jun 15 05:58:45 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 93.0
