@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul 28 04:08:10 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.2:
+  * Fix compatibility with setuptools >= 66
+  * get_build_artifact_as_bytes to support non-json files
+  * Handle 'all' view name when requested 'All'
+  * WrappedSession: Fix URL to requests issue 3829
+  * support urllib3 newer DEFAULT_TIMEOUT
+  * Use multiprocess to avoid pickle errors in tox on macos
+- Dropped patch use-parts-of-legacy-version.patch:
+  * Merged upstream.
+- Refreshed patch python-python-jenkins-no-mock.patch:
+  * It was submitted upstream.
+- Add patch remove-six.patch:
+  * Remove usage of six.
+- Remove pin against urllib3.
+
+-------------------------------------------------------------------
 Mon Jul 24 06:15:47 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Pin {Build,}Requires on urllib3 to < 2. 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-jenkins
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2014 Thomas Bechtold <thomasbechtold@jpberlin.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,25 +18,24 @@
 
 
 Name:           python-python-jenkins
-Version:        1.8.0
+Version:        1.8.2
 Release:        0
 Summary:        Python bindings for the remote Jenkins API
 License:        BSD-3-Clause
 URL:            https://opendev.org/jjb/python-jenkins
 Source:         https://files.pythonhosted.org/packages/source/p/python-jenkins/python-jenkins-%{version}.tar.gz
-# https://bugs.launchpad.net/python-jenkins/+bug/1971524
+# PATCH-FIX-UPSTREAM Based on https://review.opendev.org/c/jjb/python-jenkins/+/953273
 Patch0:         python-python-jenkins-no-mock.patch
-# PATCH-FIX-OPENSUSE Upstream are arguing about version parsing, use the
-# underlying parts of LegacyVersion from packaging pre-removal
-Patch1:         use-parts-of-legacy-version.patch
+# PATCH-FIX-UPSTREAM Based on https://opendev.org/jjb/python-jenkins/commit/63b657fe23c3b33903061a17b88787886be3c6dd
+Patch1:         remove-six.patch
 BuildRequires:  %{python_module cmd2}
 BuildRequires:  %{python_module multi_key_dict}
+BuildRequires:  %{python_module multiprocess}
 BuildRequires:  %{python_module pbr >= 0.8.2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module requests-mock >= 1.4}
+BuildRequires:  %{python_module requests-mock >= 1.11}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module testscenarios}
-BuildRequires:  %{python_module urllib3 < 2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  openssl-devel
@@ -46,8 +45,6 @@ BuildRequires:  pkgconfig(krb5-gssapi)
 Requires:       python-multi_key_dict
 Requires:       python-pbr
 Requires:       python-requests
-Requires:       python-six >= 1.3.0
-Requires:       python-urllib3 < 2
 Provides:       python-jenkins = %{version}
 Obsoletes:      python-jenkins < %{version}
 BuildArch:      noarch
@@ -79,6 +76,6 @@ sed -i '1{\@^#!%{_bindir}/env python@d}' jenkins/__init__.py
 %license COPYING
 %doc README.rst
 %{python_sitelib}/jenkins
-%{python_sitelib}/python_jenkins-%{version}*-info
+%{python_sitelib}/python_jenkins-%{version}.dist-info
 
 %changelog

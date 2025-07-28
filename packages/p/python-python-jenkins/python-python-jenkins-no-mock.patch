@@ -1,92 +1,62 @@
----
- test-requirements.txt                    |    2 --
- tests/base.py                            |    7 ++-----
- tests/helper.py                          |    2 +-
- tests/jobs/test_assert.py                |    2 +-
- tests/jobs/test_build.py                 |    2 +-
- tests/jobs/test_config.py                |    2 +-
- tests/jobs/test_copy.py                  |    2 +-
- tests/jobs/test_count.py                 |    2 +-
- tests/jobs/test_create.py                |    2 +-
- tests/jobs/test_debug.py                 |    2 +-
- tests/jobs/test_delete.py                |    2 +-
- tests/jobs/test_disable.py               |    2 +-
- tests/jobs/test_enable.py                |    2 +-
- tests/jobs/test_get.py                   |    2 +-
- tests/jobs/test_getall.py                |    2 +-
- tests/jobs/test_info.py                  |    2 +-
- tests/jobs/test_name.py                  |    2 +-
- tests/jobs/test_reconfig.py              |    2 +-
- tests/jobs/test_rename.py                |    2 +-
- tests/jobs/test_set_next_build_number.py |    2 +-
- tests/test_build.py                      |    2 +-
- tests/test_check_jenkinsfile_syntax.py   |    2 +-
- tests/test_credential.py                 |    2 +-
- tests/test_info.py                       |    2 +-
- tests/test_jenkins.py                    |    2 +-
- tests/test_job_folder.py                 |    2 +-
- tests/test_node.py                       |    2 +-
- tests/test_plugins.py                    |    2 +-
- tests/test_promotion.py                  |    2 +-
- tests/test_queue.py                      |    2 +-
- tests/test_quiet_down.py                 |    2 +-
- tests/test_script.py                     |    2 +-
- tests/test_version.py                    |    2 +-
- tests/test_view.py                       |    2 +-
- tests/test_whoami.py                     |    2 +-
- 35 files changed, 35 insertions(+), 40 deletions(-)
+From c37936698341e1bbbec2b9b62dfc64ddc51f3dfd Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 25 Jun 2025 16:02:31 +1000
+Subject: [PATCH] Stop using external mock module
 
-Index: python-jenkins-1.8.0/test-requirements.txt
+Now that support for Python 2 has been dropped, we can switch to the
+built-in unittest.mock module and drop one more external test
+dependency.
+
+Change-Id: Ie6e3b2c4047d00509053769fd5b49a1e4464e951
+---
+ test-requirements.txt                    | 1 -
+ tests/jobs/test_assert.py                | 2 +-
+ tests/jobs/test_config.py                | 2 +-
+ tests/jobs/test_copy.py                  | 2 +-
+ tests/jobs/test_count.py                 | 2 +-
+ tests/jobs/test_create.py                | 2 +-
+ tests/jobs/test_debug.py                 | 2 +-
+ tests/jobs/test_delete.py                | 2 +-
+ tests/jobs/test_disable.py               | 2 +-
+ tests/jobs/test_enable.py                | 2 +-
+ tests/jobs/test_get.py                   | 2 +-
+ tests/jobs/test_getall.py                | 2 +-
+ tests/jobs/test_info.py                  | 2 +-
+ tests/jobs/test_name.py                  | 2 +-
+ tests/jobs/test_reconfig.py              | 2 +-
+ tests/jobs/test_rename.py                | 2 +-
+ tests/jobs/test_set_next_build_number.py | 2 +-
+ tests/test_build.py                      | 2 +-
+ tests/test_check_jenkinsfile_syntax.py   | 2 +-
+ tests/test_credential.py                 | 2 +-
+ tests/test_info.py                       | 2 +-
+ tests/test_job_folder.py                 | 2 +-
+ tests/test_node.py                       | 2 +-
+ tests/test_plugins.py                    | 2 +-
+ tests/test_queue.py                      | 2 +-
+ tests/test_quiet_down.py                 | 2 +-
+ tests/test_script.py                     | 2 +-
+ tests/test_version.py                    | 2 +-
+ tests/test_view.py                       | 2 +-
+ tests/test_whoami.py                     | 2 +-
+ 30 files changed, 29 insertions(+), 30 deletions(-)
+
+Index: python-jenkins-1.8.2/test-requirements.txt
 ===================================================================
---- python-jenkins-1.8.0.orig/test-requirements.txt
-+++ python-jenkins-1.8.0/test-requirements.txt
-@@ -1,8 +1,6 @@
+--- python-jenkins-1.8.2.orig/test-requirements.txt
++++ python-jenkins-1.8.2/test-requirements.txt
+@@ -1,7 +1,6 @@
  cmd2!=0.8.3,<0.9.0;python_version<'3.0'  # MIT
  cmd2!=0.8.3;python_version>='3.0'  # MIT
  coverage>=3.6
 -mock
--unittest2
+ unittest2
  python-subunit
- requests-mock>=1.4.0
- requests-kerberos<=0.12.0;python_version<'3.6'
-Index: python-jenkins-1.8.0/tests/base.py
+ requests-mock>=1.11.0
+Index: python-jenkins-1.8.2/tests/jobs/test_assert.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/base.py
-+++ python-jenkins-1.8.0/tests/base.py
-@@ -1,14 +1,11 @@
- import sys
- 
--import mock
-+from unittest import mock
-+import unittest
- from testscenarios import TestWithScenarios
- 
- import jenkins
- 
--if sys.version_info < (2, 7):
--    import unittest2 as unittest
--else:
--    import unittest
- 
- 
- class JenkinsTestBase(TestWithScenarios, unittest.TestCase):
-Index: python-jenkins-1.8.0/tests/helper.py
-===================================================================
---- python-jenkins-1.8.0.orig/tests/helper.py
-+++ python-jenkins-1.8.0/tests/helper.py
-@@ -4,7 +4,7 @@ from multiprocessing import Process
- from multiprocessing import Queue
- import traceback
- 
--from mock import Mock
-+from unittest.mock import Mock
- import requests
- from six.moves import socketserver
- 
-Index: python-jenkins-1.8.0/tests/jobs/test_assert.py
-===================================================================
---- python-jenkins-1.8.0.orig/tests/jobs/test_assert.py
-+++ python-jenkins-1.8.0/tests/jobs/test_assert.py
+--- python-jenkins-1.8.2.orig/tests/jobs/test_assert.py
++++ python-jenkins-1.8.2/tests/jobs/test_assert.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -94,31 +64,20 @@ Index: python-jenkins-1.8.0/tests/jobs/test_assert.py
  
  import jenkins
  from tests.jobs.base import JenkinsJobsTestBase
-Index: python-jenkins-1.8.0/tests/jobs/test_build.py
+Index: python-jenkins-1.8.2/tests/jobs/test_config.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/jobs/test_build.py
-+++ python-jenkins-1.8.0/tests/jobs/test_build.py
-@@ -1,5 +1,5 @@
- # -*- coding: utf-8 -*-
--from mock import patch
-+from unittest.mock import patch
- 
- import jenkins
- from six.moves.urllib.parse import quote
-Index: python-jenkins-1.8.0/tests/jobs/test_config.py
-===================================================================
---- python-jenkins-1.8.0.orig/tests/jobs/test_config.py
-+++ python-jenkins-1.8.0/tests/jobs/test_config.py
+--- python-jenkins-1.8.2.orig/tests/jobs/test_config.py
++++ python-jenkins-1.8.2/tests/jobs/test_config.py
 @@ -1,4 +1,4 @@
 -from mock import patch
 +from unittest.mock import patch
  
  import jenkins
  from tests.jobs.base import JenkinsJobsTestBase
-Index: python-jenkins-1.8.0/tests/jobs/test_copy.py
+Index: python-jenkins-1.8.2/tests/jobs/test_copy.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/jobs/test_copy.py
-+++ python-jenkins-1.8.0/tests/jobs/test_copy.py
+--- python-jenkins-1.8.2.orig/tests/jobs/test_copy.py
++++ python-jenkins-1.8.2/tests/jobs/test_copy.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -126,10 +85,10 @@ Index: python-jenkins-1.8.0/tests/jobs/test_copy.py
  
  import jenkins
  from tests.jobs.base import JenkinsJobsTestBase
-Index: python-jenkins-1.8.0/tests/jobs/test_count.py
+Index: python-jenkins-1.8.2/tests/jobs/test_count.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/jobs/test_count.py
-+++ python-jenkins-1.8.0/tests/jobs/test_count.py
+--- python-jenkins-1.8.2.orig/tests/jobs/test_count.py
++++ python-jenkins-1.8.2/tests/jobs/test_count.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -137,10 +96,10 @@ Index: python-jenkins-1.8.0/tests/jobs/test_count.py
  
  import jenkins
  from tests.jobs.base import JenkinsJobsTestBase
-Index: python-jenkins-1.8.0/tests/jobs/test_create.py
+Index: python-jenkins-1.8.2/tests/jobs/test_create.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/jobs/test_create.py
-+++ python-jenkins-1.8.0/tests/jobs/test_create.py
+--- python-jenkins-1.8.2.orig/tests/jobs/test_create.py
++++ python-jenkins-1.8.2/tests/jobs/test_create.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -148,10 +107,10 @@ Index: python-jenkins-1.8.0/tests/jobs/test_create.py
  
  import jenkins
  from tests.jobs.base import JenkinsJobsTestBase
-Index: python-jenkins-1.8.0/tests/jobs/test_debug.py
+Index: python-jenkins-1.8.2/tests/jobs/test_debug.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/jobs/test_debug.py
-+++ python-jenkins-1.8.0/tests/jobs/test_debug.py
+--- python-jenkins-1.8.2.orig/tests/jobs/test_debug.py
++++ python-jenkins-1.8.2/tests/jobs/test_debug.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -159,10 +118,10 @@ Index: python-jenkins-1.8.0/tests/jobs/test_debug.py
  
  import jenkins
  from tests.jobs.base import JenkinsJobsTestBase
-Index: python-jenkins-1.8.0/tests/jobs/test_delete.py
+Index: python-jenkins-1.8.2/tests/jobs/test_delete.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/jobs/test_delete.py
-+++ python-jenkins-1.8.0/tests/jobs/test_delete.py
+--- python-jenkins-1.8.2.orig/tests/jobs/test_delete.py
++++ python-jenkins-1.8.2/tests/jobs/test_delete.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -170,10 +129,10 @@ Index: python-jenkins-1.8.0/tests/jobs/test_delete.py
  
  import jenkins
  from tests.jobs.base import JenkinsJobsTestBase
-Index: python-jenkins-1.8.0/tests/jobs/test_disable.py
+Index: python-jenkins-1.8.2/tests/jobs/test_disable.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/jobs/test_disable.py
-+++ python-jenkins-1.8.0/tests/jobs/test_disable.py
+--- python-jenkins-1.8.2.orig/tests/jobs/test_disable.py
++++ python-jenkins-1.8.2/tests/jobs/test_disable.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -181,10 +140,10 @@ Index: python-jenkins-1.8.0/tests/jobs/test_disable.py
  
  import jenkins
  from tests.jobs.base import JenkinsJobsTestBase
-Index: python-jenkins-1.8.0/tests/jobs/test_enable.py
+Index: python-jenkins-1.8.2/tests/jobs/test_enable.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/jobs/test_enable.py
-+++ python-jenkins-1.8.0/tests/jobs/test_enable.py
+--- python-jenkins-1.8.2.orig/tests/jobs/test_enable.py
++++ python-jenkins-1.8.2/tests/jobs/test_enable.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -192,10 +151,10 @@ Index: python-jenkins-1.8.0/tests/jobs/test_enable.py
  
  import jenkins
  from tests.jobs.base import JenkinsJobsTestBase
-Index: python-jenkins-1.8.0/tests/jobs/test_get.py
+Index: python-jenkins-1.8.2/tests/jobs/test_get.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/jobs/test_get.py
-+++ python-jenkins-1.8.0/tests/jobs/test_get.py
+--- python-jenkins-1.8.2.orig/tests/jobs/test_get.py
++++ python-jenkins-1.8.2/tests/jobs/test_get.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -203,10 +162,10 @@ Index: python-jenkins-1.8.0/tests/jobs/test_get.py
  
  import jenkins
  from tests.helper import build_response_mock
-Index: python-jenkins-1.8.0/tests/jobs/test_getall.py
+Index: python-jenkins-1.8.2/tests/jobs/test_getall.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/jobs/test_getall.py
-+++ python-jenkins-1.8.0/tests/jobs/test_getall.py
+--- python-jenkins-1.8.2.orig/tests/jobs/test_getall.py
++++ python-jenkins-1.8.2/tests/jobs/test_getall.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -214,10 +173,10 @@ Index: python-jenkins-1.8.0/tests/jobs/test_getall.py
  
  import jenkins
  from tests.jobs.base import JenkinsGetJobsTestBase
-Index: python-jenkins-1.8.0/tests/jobs/test_info.py
+Index: python-jenkins-1.8.2/tests/jobs/test_info.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/jobs/test_info.py
-+++ python-jenkins-1.8.0/tests/jobs/test_info.py
+--- python-jenkins-1.8.2.orig/tests/jobs/test_info.py
++++ python-jenkins-1.8.2/tests/jobs/test_info.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -225,10 +184,10 @@ Index: python-jenkins-1.8.0/tests/jobs/test_info.py
  
  import jenkins
  from tests.helper import build_response_mock
-Index: python-jenkins-1.8.0/tests/jobs/test_name.py
+Index: python-jenkins-1.8.2/tests/jobs/test_name.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/jobs/test_name.py
-+++ python-jenkins-1.8.0/tests/jobs/test_name.py
+--- python-jenkins-1.8.2.orig/tests/jobs/test_name.py
++++ python-jenkins-1.8.2/tests/jobs/test_name.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -236,10 +195,10 @@ Index: python-jenkins-1.8.0/tests/jobs/test_name.py
  
  import jenkins
  from tests.jobs.base import JenkinsJobsTestBase
-Index: python-jenkins-1.8.0/tests/jobs/test_reconfig.py
+Index: python-jenkins-1.8.2/tests/jobs/test_reconfig.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/jobs/test_reconfig.py
-+++ python-jenkins-1.8.0/tests/jobs/test_reconfig.py
+--- python-jenkins-1.8.2.orig/tests/jobs/test_reconfig.py
++++ python-jenkins-1.8.2/tests/jobs/test_reconfig.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -247,10 +206,10 @@ Index: python-jenkins-1.8.0/tests/jobs/test_reconfig.py
  
  import jenkins
  from tests.jobs.base import JenkinsJobsTestBase
-Index: python-jenkins-1.8.0/tests/jobs/test_rename.py
+Index: python-jenkins-1.8.2/tests/jobs/test_rename.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/jobs/test_rename.py
-+++ python-jenkins-1.8.0/tests/jobs/test_rename.py
+--- python-jenkins-1.8.2.orig/tests/jobs/test_rename.py
++++ python-jenkins-1.8.2/tests/jobs/test_rename.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -258,43 +217,43 @@ Index: python-jenkins-1.8.0/tests/jobs/test_rename.py
  
  import jenkins
  from tests.jobs.base import JenkinsJobsTestBase
-Index: python-jenkins-1.8.0/tests/jobs/test_set_next_build_number.py
+Index: python-jenkins-1.8.2/tests/jobs/test_set_next_build_number.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/jobs/test_set_next_build_number.py
-+++ python-jenkins-1.8.0/tests/jobs/test_set_next_build_number.py
+--- python-jenkins-1.8.2.orig/tests/jobs/test_set_next_build_number.py
++++ python-jenkins-1.8.2/tests/jobs/test_set_next_build_number.py
 @@ -1,4 +1,4 @@
 -from mock import patch
 +from unittest.mock import patch
  
  import jenkins
  from tests.jobs.base import JenkinsJobsTestBase
-Index: python-jenkins-1.8.0/tests/test_build.py
+Index: python-jenkins-1.8.2/tests/test_build.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/test_build.py
-+++ python-jenkins-1.8.0/tests/test_build.py
+--- python-jenkins-1.8.2.orig/tests/test_build.py
++++ python-jenkins-1.8.2/tests/test_build.py
 @@ -1,7 +1,7 @@
  import json
  
  import collections
--from mock import patch
-+from unittest.mock import patch
+-from mock import patch, Mock
++from unittest.mock import patch, Mock
  
  import jenkins
  from tests.base import JenkinsTestBase
-Index: python-jenkins-1.8.0/tests/test_check_jenkinsfile_syntax.py
+Index: python-jenkins-1.8.2/tests/test_check_jenkinsfile_syntax.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/test_check_jenkinsfile_syntax.py
-+++ python-jenkins-1.8.0/tests/test_check_jenkinsfile_syntax.py
+--- python-jenkins-1.8.2.orig/tests/test_check_jenkinsfile_syntax.py
++++ python-jenkins-1.8.2/tests/test_check_jenkinsfile_syntax.py
 @@ -1,4 +1,4 @@
 -from mock import patch
 +from unittest.mock import patch
  
  from tests.base import JenkinsTestBase
  from tests.helper import build_response_mock
-Index: python-jenkins-1.8.0/tests/test_credential.py
+Index: python-jenkins-1.8.2/tests/test_credential.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/test_credential.py
-+++ python-jenkins-1.8.0/tests/test_credential.py
+--- python-jenkins-1.8.2.orig/tests/test_credential.py
++++ python-jenkins-1.8.2/tests/test_credential.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -302,10 +261,10 @@ Index: python-jenkins-1.8.0/tests/test_credential.py
  
  import jenkins
  from tests.base import JenkinsTestBase
-Index: python-jenkins-1.8.0/tests/test_info.py
+Index: python-jenkins-1.8.2/tests/test_info.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/test_info.py
-+++ python-jenkins-1.8.0/tests/test_info.py
+--- python-jenkins-1.8.2.orig/tests/test_info.py
++++ python-jenkins-1.8.2/tests/test_info.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -313,33 +272,20 @@ Index: python-jenkins-1.8.0/tests/test_info.py
  
  import jenkins
  from tests.base import JenkinsTestBase
-Index: python-jenkins-1.8.0/tests/test_jenkins.py
+Index: python-jenkins-1.8.2/tests/test_job_folder.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/test_jenkins.py
-+++ python-jenkins-1.8.0/tests/test_jenkins.py
-@@ -1,7 +1,7 @@
- import json
- import socket
- 
--from mock import patch
-+from unittest.mock import patch
- import six
- 
- from tests.base import JenkinsTestBase
-Index: python-jenkins-1.8.0/tests/test_job_folder.py
-===================================================================
---- python-jenkins-1.8.0.orig/tests/test_job_folder.py
-+++ python-jenkins-1.8.0/tests/test_job_folder.py
+--- python-jenkins-1.8.2.orig/tests/test_job_folder.py
++++ python-jenkins-1.8.2/tests/test_job_folder.py
 @@ -1,4 +1,4 @@
 -from mock import patch
 +from unittest.mock import patch
  
  import jenkins
  from tests.base import JenkinsTestBase
-Index: python-jenkins-1.8.0/tests/test_node.py
+Index: python-jenkins-1.8.2/tests/test_node.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/test_node.py
-+++ python-jenkins-1.8.0/tests/test_node.py
+--- python-jenkins-1.8.2.orig/tests/test_node.py
++++ python-jenkins-1.8.2/tests/test_node.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -347,10 +293,10 @@ Index: python-jenkins-1.8.0/tests/test_node.py
  
  import jenkins
  import requests_mock
-Index: python-jenkins-1.8.0/tests/test_plugins.py
+Index: python-jenkins-1.8.2/tests/test_plugins.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/test_plugins.py
-+++ python-jenkins-1.8.0/tests/test_plugins.py
+--- python-jenkins-1.8.2.orig/tests/test_plugins.py
++++ python-jenkins-1.8.2/tests/test_plugins.py
 @@ -32,7 +32,7 @@
  
  
@@ -360,10 +306,10 @@ Index: python-jenkins-1.8.0/tests/test_plugins.py
  from testscenarios.scenarios import multiply_scenarios
  
  import jenkins
-Index: python-jenkins-1.8.0/tests/test_promotion.py
+Index: python-jenkins-1.8.2/tests/test_queue.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/test_promotion.py
-+++ python-jenkins-1.8.0/tests/test_promotion.py
+--- python-jenkins-1.8.2.orig/tests/test_queue.py
++++ python-jenkins-1.8.2/tests/test_queue.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -371,10 +317,10 @@ Index: python-jenkins-1.8.0/tests/test_promotion.py
  
  import jenkins
  from tests.base import JenkinsTestBase
-Index: python-jenkins-1.8.0/tests/test_queue.py
+Index: python-jenkins-1.8.2/tests/test_quiet_down.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/test_queue.py
-+++ python-jenkins-1.8.0/tests/test_queue.py
+--- python-jenkins-1.8.2.orig/tests/test_quiet_down.py
++++ python-jenkins-1.8.2/tests/test_quiet_down.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -382,41 +328,30 @@ Index: python-jenkins-1.8.0/tests/test_queue.py
  
  import jenkins
  from tests.base import JenkinsTestBase
-Index: python-jenkins-1.8.0/tests/test_quiet_down.py
+Index: python-jenkins-1.8.2/tests/test_script.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/test_quiet_down.py
-+++ python-jenkins-1.8.0/tests/test_quiet_down.py
-@@ -1,5 +1,5 @@
- import json
--from mock import patch
-+from unittest.mock import patch
- 
- import jenkins
- from tests.base import JenkinsTestBase
-Index: python-jenkins-1.8.0/tests/test_script.py
-===================================================================
---- python-jenkins-1.8.0.orig/tests/test_script.py
-+++ python-jenkins-1.8.0/tests/test_script.py
+--- python-jenkins-1.8.2.orig/tests/test_script.py
++++ python-jenkins-1.8.2/tests/test_script.py
 @@ -1,4 +1,4 @@
 -from mock import patch
 +from unittest.mock import patch
  
  import jenkins
  from tests.base import JenkinsTestBase
-Index: python-jenkins-1.8.0/tests/test_version.py
+Index: python-jenkins-1.8.2/tests/test_version.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/test_version.py
-+++ python-jenkins-1.8.0/tests/test_version.py
+--- python-jenkins-1.8.2.orig/tests/test_version.py
++++ python-jenkins-1.8.2/tests/test_version.py
 @@ -1,4 +1,4 @@
 -from mock import patch
 +from unittest.mock import patch
  
  import jenkins
  from tests.base import JenkinsTestBase
-Index: python-jenkins-1.8.0/tests/test_view.py
+Index: python-jenkins-1.8.2/tests/test_view.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/test_view.py
-+++ python-jenkins-1.8.0/tests/test_view.py
+--- python-jenkins-1.8.2.orig/tests/test_view.py
++++ python-jenkins-1.8.2/tests/test_view.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
@@ -424,10 +359,10 @@ Index: python-jenkins-1.8.0/tests/test_view.py
  
  import jenkins
  from tests.base import JenkinsTestBase
-Index: python-jenkins-1.8.0/tests/test_whoami.py
+Index: python-jenkins-1.8.2/tests/test_whoami.py
 ===================================================================
---- python-jenkins-1.8.0.orig/tests/test_whoami.py
-+++ python-jenkins-1.8.0/tests/test_whoami.py
+--- python-jenkins-1.8.2.orig/tests/test_whoami.py
++++ python-jenkins-1.8.2/tests/test_whoami.py
 @@ -1,5 +1,5 @@
  import json
 -from mock import patch
