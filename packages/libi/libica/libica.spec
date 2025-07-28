@@ -117,7 +117,7 @@ the libica library.
 
 %build
 autoreconf --force --install
-%configure CPPFLAGS="-Iinclude -fPIC" CFLAGS="%{optflags} -fPIC" \
+%configure CPPFLAGS="-Iinclude -fPIC -DNO_FIPS_CONFIG_LOAD" CFLAGS="%{optflags} -fPIC -DNO_FIPS_CONFIG_LOAD" \
   --enable-fips
 
 %make_build clean
@@ -146,6 +146,7 @@ cp -a %{SOURCE1} .
 rm -vf %{buildroot}%{_libdir}/libica*.la
 rm -f %{buildroot}%{_datadir}/doc/libica/*
 rmdir %{buildroot}%{_datadir}/doc/libica
+### Comment below two lines to enable FIPS config file 'openssl3-fips.cnf'
 # rm %{buildroot}/%{_sysconfdir}/libica/openssl3-fips.cnf
 # rmdir %{buildroot}/%{_sysconfdir}/libica
 

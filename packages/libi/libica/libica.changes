@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 28 10:40:04 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file (bsc#1246541)
+  * Added a flag '-DNO_FIPS_CONFIG_LOAD' to CPPFLAGS and CFLAGS
+  * Do not ship the config file '/etc/libica/openssl3-fips.cnf'
+
+-------------------------------------------------------------------
 Fri May 30 09:40:05 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade libica to version 4.4.1
