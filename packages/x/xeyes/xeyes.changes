@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul 27 17:01:11 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.3.1
+  * Fix -Wcalloc-transposed-args warnings
+  * Fix 5 -Wuseless-cast warnings from gcc 14.1
+  * Add unused attribute to unused parameters of callback functions
+  * Cast Xlib XID types to xcb types
+  * meson: Add option to build with meson
+  * Improve man page formatting
+  * man page: fix warnings from `mandoc -T lint` and `groff -rCHECKSTYLE=10`
+- switched to meson build
+
+-------------------------------------------------------------------
 Fri Jul 14 07:40:47 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.3.0

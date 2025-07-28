@@ -88,4 +88,20 @@
     amusement.</comment>
     <requestid>1098629</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d578fc596ab6e207652902d60535ed76</srcmd5>
+    <version>1.3.1</version>
+    <time>1753707489</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.1
+  * Fix -Wcalloc-transposed-args warnings
+  * Fix 5 -Wuseless-cast warnings from gcc 14.1
+  * Add unused attribute to unused parameters of callback functions
+  * Cast Xlib XID types to xcb types
+  * meson: Add option to build with meson
+  * Improve man page formatting
+  * man page: fix warnings from `mandoc -T lint` and `groff -rCHECKSTYLE=10`
+- switched to meson build</comment>
+    <requestid>1295974</requestid>
+  </revision>
 </revisionlist>
