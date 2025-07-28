@@ -1,7 +1,7 @@
 #
 # spec file for package urw-base35-fonts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           urw-base35-fonts
 Version:        20200910
@@ -21,7 +22,7 @@ Release:        0
 Summary:        Core Font Set containing 35 freely distributable fonts from (URW)++
 License:        AGPL-3.0-only WITH PS-or-PDF-font-exception-20170817
 Group:          System/X11/Fonts
-Url:            https://github.com/ArtifexSoftware/urw-base35-fonts/
+URL:            https://github.com/ArtifexSoftware/urw-base35-fonts/
 Source0:        https://github.com/ArtifexSoftware/urw-base35-fonts/archive/refs/tags/%{version}.tar.gz#/urw-base35-fonts-%{version}.tar.gz
 Source1:        urw-postscript-aliases.conf
 BuildRequires:  fontpackages-devel
@@ -38,6 +39,8 @@ Requires:       urw-base35-fonts-URWBookman
 Requires:       urw-base35-fonts-URWGothic
 Requires:       urw-base35-fonts-Z003
 Conflicts:      ghostscript-fonts-std-converted
+Provides:       ghostscript-fonts-std-converted
+Provides:       xorg-x11-fonts-converted
 %reconfigure_fonts_prereq
 BuildArch:      noarch
 
