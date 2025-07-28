@@ -1,0 +1,20 @@
+[Unit]
+Description=Suricata Intrusion Detection and Prevention Tool
+Documentation=man:suricata(1)
+After=network.target
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/suricata
+ExecStart=/usr/bin/suricata -c /etc/suricata/suricata.yaml $SURICATA_OPTIONS
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=yes
+ProtectSystem=full
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+ProtectKernelModules=yes
+
+[Install]
+WantedBy=multi-user.target

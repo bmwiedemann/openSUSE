@@ -1,0 +1,13 @@
+/var/log/suricata/*.log /var/log/suricata/*.json
+{
+    nocompress
+    maxage 30
+    rotate 99
+    dateext
+    missingok
+    create
+    sharedscripts
+    postrotate
+            systemctl reload suricata.service
+    endscript
+}

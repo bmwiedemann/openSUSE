@@ -1,0 +1,612 @@
+-------------------------------------------------------------------
+Fri Jul 18 11:26:30 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Enable source package signature verification
+  https://en.opensuse.org/openSUSE:Package_source_verification
+
+- Update keyring. Key ID taken from
+  https://docs.suricata.io/en/suricata-8.0.0/verifying-source-files.html#importing-the-oisf-signing-key
+
+-------------------------------------------------------------------
+Mon Jul  7 22:37:49 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Disable LTO because of build issues when building the Rust
+  components.
+- Remove htp dependency
+- Remove lua dependency
+- Enable eBPF support
+- Remove old configure flags
+- Migrate %setup to %autosetup
+
+- Update to version 8.0.0:
+  * Lua breaking changes:
+    ~ No ability to load third-party modules in Lua rules
+    ~ No access to the “os” Lua library for access to system
+      resources such as the file system
+    ~ Moving global Lua functions that access Suricata features
+      to Lua libraries
+  * The general detection engine performance was improved.
+  * PCAP reading mode can now process files faster.
+  * Suricata initialization has been significantly improved.
+  * More protocol conversions to Rust including:
+    LibHTP, FTP, ENIP, MIME parsing
+  * New protocols: ARP: decoder and logger, DNS over HTTPS (DoH),
+    LDAP support, Multicast DNS (mDNS), POP3: decoder and logger,
+    SDP: parse traffic over SIP, SIP: parse traffic over TCP,
+    Websocket support
+  * Data JSON for data sets: enrich alerts using metadata in
+    datasets
+  * New transforms and keywords: from_base64, entropy, luaxform
+  * requires: rules can check for keywords or features
+  * Integer keywords: accept hexadecimal notation, negated ranges,
+    enumerations, bitmask
+  * IPS: Suricata as a Firewall. The firewall mode is considered
+    experimental and may be subject to changes during the 8.0
+    lifecycle.
+  * Lua 5.4 has been “vendored” into the Suricata code base,
+    making it always available by default.
+  * Lua now runs in a sandboxed environment, so users can allow
+    Lua rules with confidence they won’t perform activities such
+    as writing to files or opening sockets or other system-level
+    access allowed  by an unrestricted Lua runtime.
+  * Improvements to output formats
+  * Release blog post:
+    https://suricata.io/2025/07/08/suricata-8-0-0-released/
+
+-------------------------------------------------------------------
+Tue May 27 22:26:52 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 7.0.10:
+  * Address a critical issue in 7.0.9 affecting AF_PACKET users:
+    setting a BPF would cause Suricata to fail to start up.
+
+- Update to version 7.0.9:
+  * LibHTP has been updated to version 0.5.50
+  * Fix CVE-2025-29915: HIGH
+  * Fix CVE-2025-29917: HIGH
+  * CVE-2025-29918: HIGH
+  * CVE-2025-29916: Moderate
+
+-------------------------------------------------------------------
+Tue Apr 22 14:37:23 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Invert libhs inclusion condition to handle other architectures
+
+-------------------------------------------------------------------
+Wed Jan 15 16:47:35 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Added suricata-devel package
+- Added libsuricata package
+  * Enable shared library build
+
+- Use pkgconfig to find build dependencies
+- Remove coccinelle build dependency
+
+- Only build with XDP/eBPF support when available
+- Only build with libmagic/libnet support when available
+
+- Update to version 7.0.8:
+  * Various security, performance, accuracy, and stability issues
+    have been fixed.
+  * This release addresses CVE IDs:
+    ~ CVE-2024-55627: CRITICAL
+    ~ CVE-2024-55605: CRITICAL
+    ~ CVE-2024-55629: HIGH
+    ~ CVE-2024-55628: HIGH
+    ~ CVE-2024-55626: LOW
+
+- Update to version 7.0.7:
+  * LibHTP has been updated to version 0.5.49
+  * Various security, performance, accuracy, and stability issues
+    have been fixed.
+  * This release addresses CVE IDs:
+    ~ CVE-2024-45797: CRITICAL
+    ~ CVE-2024-47187: CRITICAL
+    ~ CVE-2024-47188: CRITICAL
+    ~ CVE-2024-47522: HIGH
+    ~ CVE-2024-45795: HIGH
+    ~ CVE-2024-45796: HIGH
+
+- Update to version 7.0.6
+  * Various security, performance, accuracy, and stability issues
+    have been fixed.
+  * JA4 for TLS and QUIC has been backported to Suricata 7.0.6.
+  * These releases address CVE IDs:
+    ~ CVE-2024-37151: CRITICAL
+    ~ CVE-2024-38536: HIGH
+    ~ CVE-2024-38534: HIGH
+    ~ CVE-2024-38535: CRITICAL
+
+-------------------------------------------------------------------
+Mon Jul 15 17:54:13 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Depend on vectorscan, as hyperscan has gone closed source
+
+-------------------------------------------------------------------
+Sat Jun 22 18:38:38 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 7.0.5
+  * LibHTP has been updated to version 0.5.48. This version is
+    bundled with these new Suricata releases.
+  * Suricata-Update has been updated to 1.3.3 in Suricata 7.0.5.
+  * Various security, performance, accuracy, and stability issues
+    have been fixed.
+    https://redmine.openinfosecfoundation.org/versions/206
+  * These releases address CVE IDs:
+    ~ CVE-2024-32663 - Critical severity
+    ~ CVE-2024-32664 - High severity
+    ~ CVE-2024-32867 - Moderate severity
+
+- Update to version 7.0.4
+  * Various security, performance, accuracy, and stability issues
+    have been fixed.
+    https://redmine.openinfosecfoundation.org/versions/202
+
+-------------------------------------------------------------------
+Mon Feb 19 07:26:30 UTC 2024 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to version 7.0.3
+  * LibHTP required version is 0.5.46. This is the version that is bundled
+    with the releases.
+  * Various security, performance, accuracy, and stability issues have been fixed.
+    https://redmine.openinfosecfoundation.org/versions/200
+  * These releases address CVE IDs:
+    - CVE-2024-23839 - Critical severity
+    - CVE-2024-23836 - Critical severity
+    - CVE-2024-23835 - High severity
+    - CVE-2024-24568 - Moderate severity
+
+-------------------------------------------------------------------
+Thu Oct 19 17:24:49 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to version 7.0.2
+  * Various security, performance, accuracy, and stability issues have been fixed.
+    https://redmine.openinfosecfoundation.org/versions/198
+
+-------------------------------------------------------------------
+Mon Sep 25 07:04:49 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to version 7.0.1
+  * LibHTP required version is 0.5.45. This is the version that is bundled
+    with the release.
+  * Various security, performance, accuracy, and stability issues have been
+    fixed.
+
+-------------------------------------------------------------------
+Thu Jul 27 08:44:46 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to version 7.0.0
+  * Main features:
+    - DPDK IDS/IPS 35 support for primary mode was added
+    - AF_XDP IDS 17support by Richard McConnell at Rapid7
+    - HTTP/HTTP2 new keywords for header inspection
+    - TLS: client certificate logging and detection
+    - Bittorrent parser by Aaron Bungay
+    - IPS: new default DROP behavior for exception policies 7
+    - EVE documented and validated with a json schema
+    - HTTP/2 support is no longer considered experimental
+    - NETMAP API 14
+    - Conditional PCAP 43 by Eric Leblond and Scott Jordan
+    - Initial libsuricata support
+    - VLAN support extended from 2 to 3 layers
+  * Performance improvements:
+    - file.data MPM split per app protocol
+    - New lighter rule profiling mode by Eric Leblond
+    - SMB: many fixes and optimizations
+    - Hash calculation using Rust crypto instead of NSS
+    - Flow manager tuning
+    - Many more performance-related counters
+    - Stream buffer, which is used by stream engine, file tracking, and more, is more memory efficient
+  * Secure Deployment / Security
+    - Linux Landlock support added by Eric Leblond
+    - Use of setrlimit to prevent Suricata from creating another process
+    - Lock cargo crates
+    - Default to secure settings for Datasets and Lua
+    - Maximum number of transactions for several protocols
+    - New Security Policies: https://github.com/OISF/suricata/blob/master/SECURITY.md 15
+  * Protocols
+    - QUICv1, GQUIC support added. GQUIC contributed by Emmanuel Thompson
+    - PostgreSQL support added
+    - HTTP/2 deflate decompression, byte-ranges support
+    - VN-Tag support
+    - Modbus rewritten to Rust with Eve logging added by Simon Dugas
+    - IKEv1 support added by Sascha Steinbiss and Frank Honza
+    - ESP flow tracking and logging
+    - Minimal telnet parser
+    - Active flow and TCP counters
+    - Network service header
+    - Remove dependency on system’s /etc/protocols
+  * Rules
+    - Added new rule keywords for DHCP, Kerberos, SNMP, TLS, QUIC
+    - JA3(s) support for QUIC
+    - New (experimental) class of keywords through “frames API”: NFS, SMB, DNS, telnet, SSL/TLS
+    - HTTP request files and NFS now support file.data
+    - “XOR” transform was added
+    - Lua: access to more rule info
+    - The byte_test, byte_math, and byte_jump keywords allow a variable name for the byte count value.
+    - flow.age keyword was added
+  * IPS
+    - Exception Policies added to better control packet handling in such conditions as memory caps being hit
+    - DPDK support
+  * Socket Control
+    - Get flow stats over Unix socket
+    - Datasets management commands were added
+  * Output
+    - Conditional packet capture allows packets to be written to disk only after an alert has been triggered
+    - New “stream” eve output type for debugging the stream engine
+    - Log engine verdict on rejected/dropped/passed packets
+  * Dev corner
+    - Total: 1375 files changed, 130027 insertions(+), 127626 deletions(-)
+    - Rust: 173 files changed, 39279 insertions(+), 13830 deletions(-)
+    - C: 978 files changed, 73882 insertions(+), 109446 deletions(-)
+    - Docs: 142 files changed, 6636 insertions(+), 1890 deletions(-)
+    - Much stricter C compiler flags.
+    - Clang’s scan-build clean, which is enforced in CI.
+    - CI was expanded.
+    - Rust parsers upgraded to using Nom 7
+  * Upgrade notes:
+    - Suricata 7.0 now uses pcre2 instead of pcre1.
+    - The MSRV (minimum supported Rust version) has been updated to 1.63.0 from 1.41.1 minimum in Suricata 6.0.
+    - Support for Prelude (libprelude) has been removed
+    - Suricata 7.0 requires and bundles libhtp 0.5.45
+
+-------------------------------------------------------------------
+Tue Jun 20 07:16:17 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to version 6.0.13
+  * LibHTP has been updated to 0.5.44. This is a required version that is
+    bundled with the release.
+  * Security #6119: datasets: absolute path in rules can overwrite arbitrary
+    files (6.0.x backport)
+  * Bug #6138: Decode-events of IPv6 packets are not triggered
+    (6.0.x backport)
+  * Bug #6136: suricata-update: dump-sample-configs: configuration files not
+    found (6.0.x backport)
+  * Bug #6125: http2: cpu overconsumption in rust moving/memcpy in
+    http2_parse_headers_blocks (6.0.x backport)
+  * Bug #6113: ips: txs still logged for dropped flow (6.0.x backport)
+  * Bug #6056: smtp: long line discard logic should be separate for server and
+    client (6.0.x backport)
+  * Bug #6055: ftp:  long line discard logic should be separate for server and
+    client (6.0.x backport)
+  * Bug #5990: smtp: any command post a long command gets skipped
+    (6.0.x backport)
+  * Bug #5982: smtp: Long DATA line post boundary is capped at 4k Bytes
+    (6.0.x backport)
+  * Bug #5809: smb: convert transaction list to vecdeque (6.0.x backport)
+  * Bug #5604: counters: tcp.syn, tcp.synack, tcp.rst depend on flow
+    (6.0.x backport)
+  * Bug #5550: dns: allow dns messages with invalid opcodes (6.0.x backport)
+  * Task #5984: libhtp 0.5.44 (6.0.x backport)
+  * Documentation #6134: userguide: add instructions/explanation for
+    (not) running suricata with root (6.0.x backport)
+  * Documentation #6121: datasets: 6.0.x work-arounds for dataset supply chain
+    attacks
+
+-------------------------------------------------------------------
+Wed May 10 07:15:41 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to version 6.0.12
+  * Various performance, accuracy, and stability issues have been fixed.
+  * Remove legacy pfring install guide
+
+-------------------------------------------------------------------
+Fri Apr 21 12:28:37 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to version 6.0.11
+  * LibHTP has been updated to 0.5.43. This is a required version that is
+    bundled with the release.
+  * Various security, performance, accuracy, and stability issues have been
+    fixed.
+
+-------------------------------------------------------------------
+Thu Feb  9 21:50:04 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to version 6.0.10
+  Various security, performance, accuracy, and stability issues have been fixed
+  https://forum.suricata.io/t/suricata-6-0-10-released/3175/2
+  * Security #5804: Suricata crashes while processing FTP (6.0.x backport)
+  * Bug #5815: detect: config keyword prevents tx cleanup (6.0.x backport)
+  * Bug #5812: nfs: debug validation triggered on nfs2 read
+  * Bug #5810: smb/ntlmssp: parser incorrectly assumes fixed field order
+    (6.0.x backport)
+  * Bug #5806: exceptions: midstream flows are dropped if
+    midstream=true && stream.midstream-policy=drop-flow (6.0.x backport)
+  * Bug #5796: TLS Handshake Fragments not Reassembled (6.0.x backport)
+  * Bug #5795: detect/udp: different detection from rules when UDP/TCP header is
+    broken (6.0.x backport)
+  * Bug #5793: decode: Padded packet to minimal Ethernet length marked with
+    invalid length event (6.0.x backport)
+  * Bug #5791: smb: unbounded file chunk queuing after gap (6.0.x backport)
+  * Bug #5763: libbpf: Use of legacy code in eBPF/XDP programs (6.0.x backport)
+  * Bug #5762: detect/pcre: JIT not disabled when OS doesn't allow RWX pages
+  * Bug #5760: nfs: ASSERT: attempt to subtract with overflow (compound)
+    (6.0.x backport)
+  * Bug #5749: iprep/ipv6: warning issued on valid reputation input
+    (6.0.x backport)
+  * Bug #5744: netmap: 6.0.9 v14 backport causes known packet stalls from v14
+    implementation in "legacy" mode too
+  * Bug #5738: smb: failed assertion
+    (!((f->alproto == ALPROTO_SMB && txd->files_logged != 0))),
+    function CloseFile, file output-file.c (6.0.x backport)
+  * Bug #5735: smtp: quoted-printable encoding skips empty lines in files
+    (6.0.x backport)
+  * Bug #5723: eve: missing common fields like community id for some event types
+    like RFB
+  * Bug #5601: detect: invalid hex character in content leads to bad debug
+    message (6.0.x backport)
+  * Bug #5565: Excessive qsort/msort time when large number of rules using
+    tls.fingerprint (6.0.x backport)
+  * Bug #5299: YAML warning from default config on 6.0.5
+  * Optimization #5797: tls: support incomplete API to replace internal buffering
+  * Optimization #5790: smb: set defaults for file chunk limits (6.0.x backport)
+- add dependency libhtp >= 0.5.42
+
+-------------------------------------------------------------------
+Tue Nov 29 18:46:25 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 6.0.9
+  Various security, performance, accuracy and stability issues have been fixed
+  https://forum.suricata.io/t/suricata-6-0-9-released/3012
+- build now requires libhtp >= 0.5.42
+
+-------------------------------------------------------------------
+Mon Oct  3 11:41:34 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Use hyperscan-devel instead of 'pkgconfig(libhs)' to prevent:
+  "unresolvable: have choice for pkgconfig(libhs): hyperscan-devel
+   vectorscan-devel"
+
+-------------------------------------------------------------------
+Wed Sep 28 08:06:06 UTC 2022 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 6.0.8
+  https://forum.suricata.io/t/suricata-6-0-8-released/2808
+  https://forum.suricata.io/t/suricata-6-0-7-released/2807
+  https://forum.suricata.io/t/suricata-6-0-6-and-5-0-10-released/2637
+- build now requires libhtp >= 0.5.41
+
+-------------------------------------------------------------------
+Tue Jun 28 12:13:10 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Copy config files and update rules
+- Add python3-PyYAML as dependency for suricata-update
+
+-------------------------------------------------------------------
+Tue Jun 28 11:58:29 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
+
+-  Update to version 6.0.5
+   https://forum.suricata.io/t/suricata-6-0-5-and-5-0-9-released/2415
+-  LibHTP has been updated to 0.5.40. This is a required version that
+   is bundled with both releases.
+-  Suricata-Update, as bundled with 6.0.5, was updated to 1.2.4.
+-  Various security, performance, accuracy and stability issues have
+   been fixed.
+
+-------------------------------------------------------------------
+Tue Jan 25 15:09:22 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 6.0.4:
+  https://forum.suricata.io/t/suricata-6-0-4-and-5-0-8-released/1942
+- Add luajit build conditional
+- More man pages
+
+-------------------------------------------------------------------
+Mon Nov  9 11:56:06 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 6.0.0:
+  https://suricata-ids.org/2020/10/08/suricata-6-0-0-released/
+  Upgrade notes:
+  https://suricata.readthedocs.io/en/latest/upgrade.html
+- Add new dependencies, most notably: rust, cargo
+- Change geoip to maxminddb:
+  https://build.opensuse.org/package/view_file/openSUSE:Leap:15.2/GeoIP/README.SUSE
+- Disable prelude support: currently broken
+  https://redmine.openinfosecfoundation.org/issues/4065
+
+-------------------------------------------------------------------
+Tue Apr 28 17:51:33 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Switch to python3
+- Update to version 4.1.8
+  * Bug #3492: Backport 4 BUG_ON(strcasecmp(str, “any”) in
+    DetectAddressParseString
+  * Bug #3508: rule parsing: memory leaks
+  * Bug #3527: 4.1.x Kerberos vulnerable to TCP splitting evasion
+  * Bug #3533: Skip over ERF_TYPE_META records
+  * Bug #3551: file logging: complete files sometimes marked
+    ‘TRUNCATED’
+  * Bug #3572: rust: smb compile warnings
+  * Bug #3579: Faulty signature with two threshold keywords does
+    not generate an error and never match
+  * Bug #3581: random failures on sip and http-evader
+    suricata-verify tests
+  * Bug #3596: ftp: asan detects leaks of expectations
+  * Bug #3599: rules: memory leaks in pktvar keyword
+  * Bug #3601: rules: bad address block leads to stack exhaustion
+  * Bug #3603: rules: crash on ‘internal’-only keywords
+  * Bug #3605: rules: missing ‘consumption’ of transforms
+    before pkt_data would lead to crash
+  * Bug #3607: rules: minor memory leak involving
+    pcre_get_substring
+  * Bug #3608: ssl/tls: ASAN issue in SSLv3ParseHandshakeType
+  * Bug #3611: defrag: asan issue
+  * Bug #3633: file-store.stream-depth not working as expected
+    when configured to a specfic value (4.1.x)
+  * Bug #3645: Invalid memory read on malformed rule with Lua
+    script
+  * Bug #3647: rules: memory leaks on failed rules
+  * Bug #3648: CIDR Parsing Issue
+  * Bug #3650: FTP response buffering against TCP stream
+  * Bug #3652: Recursion stack-overflow in parsing YAML
+    configuration
+  * Bug #3659: Multiple DetectEngineReload and bad insertion
+    into linked list lead to buffer overflow
+  * Bug #3666: FTP: Incorrect ftp_memuse calculation.
+  * Bug #3668: Signature with an IP range creates one
+    IPOnlyCIDRItem by signe IP address
+  * Bug #3671: Protocol detection evasion by packet splitting
+  * Bug #3676: Segfault on SMTP TLS
+  * Feature #3482: GRE ERSPAN Type 1 Support
+  * Task #3479: libhtp 0.5.33 (4.1.x)
+  * Task #3513: SMTP should place restraints on variable length
+    items (e.g., filenames)
+
+-------------------------------------------------------------------
+Wed Feb 19 20:27:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 4.1.7
+  * Bug #3417: –disable-geoip does not work
+  * Bug #3448: Suricata 4.1 Seg Fault: Socket Control pcap-file
+    and corrupt pcap
+  * Bug #3452: smb: post-GAP file tx handling
+  * Bug #3453: coverity: CID 1456680: Incorrect expression
+    (IDENTICAL_BRANCHES)
+  * Bug #3470: gcc10: compilation failure unless -fcommon is
+    supplied
+  * Bug #3471: nfs: post-GAP some transactions never close
+  * Bug #3472: nfs: post-GAP file tx handling
+  * Bug #3474: Dropping privileges does not work with NFLOG
+- Update to 4.1.6
+  * Bug #3276: address parsing: memory leak in error path
+  * Bug #3278: segfault when test a nfs pcap file
+  * Bug #3279: ikev2 enabled in config even if Rust is disabled
+  * Bug #3325: lua issues on arm (fedora:29)
+  * Bug #3326: Static build with pcap fails
+  * Bug #3327: tcp: empty SACK option leads to decoder event
+  * Bug #3347: BPF filter on command line not honored for pcap
+    file
+  * Bug #3355: DNS: DNS over TCP transactions logged with wrong
+    direction.
+  * Bug #3356: DHCP: Slow down over time due to lack of detect
+    flags
+  * Bug #3369: byte_extract does not work in some situations
+  * Bug #3385: fast-log: icmp type prints wrong value
+  * Bug #3387: suricata is logging tls log repeatedly if custom
+    mode is enabled
+  * Bug #3388: TLS Lua output does not work without TLS log
+  * Bug #3391: Suricata is unable to get MTU from NIC after
+  * Bug #3393: http: pipelining tx id handling broken
+  * Bug #3394: TCP evasion technique by overlapping a TCP segment
+    with a fake packet
+  * Bug #3395: TCP evasion technique by faking a closed TCP sessionl
+  * Bug #3402: smb: post-GAP some transactions never close
+  * Bug #3403: smb1: ‘event only’ transactions for bad requests
+    never close
+  * Bug #3404: smtp: file tracking issues when more than one
+    attachment in a tx
+  * Bug #3405: Filehash rule does not fire without filestore
+    keyword
+  * Bug #3410: intermittent abort()s at shutdown and in unix-socket
+  * Bug #3412: detect/asn1: crashes on packets smaller than offset
+    setting
+  * Task #3367: configure: Rust 1.37+ has cargo-vendor support
+    bundled into cargo
+  * Bundle Suricata-Update 1.0.6
+  * Bundle Libhtp 0.5.32
+
+-------------------------------------------------------------------
+Tue Oct 22 09:24:31 UTC 2019 - Lars Vogdt <lars@linux-schulserver.de>
+
+- Update to 4.1.5
+  * Feature #3068: protocol parser: vxlan (4.1.x)
+  * Bug #2841: False positive alerts firing after upgrade suricata 3.0 -> 4.1.0 (4.1.x)
+  * Bug #2966: filestore (v1 and v2): dropping of “unwanted” files (4.1.x)
+  * Bug #3008: rust: updated libc crate causes depration warnings (4.1.x)
+  * Bug #3044: tftp: missing logs because of broken tx handling (4.1.x)
+  * Bug #3067: GeoIP keyword depends on now discontinued legacy GeoIP database (4.1.x)
+  * Bug #3094: Fedora rawhide af-packet compilation err (4.1.x)
+  * Bug #3123: bypass keyword: Suricata 4.1.x Segmentation Faults (4.1.x)
+  * Bug #3129: Fixes warning about size of integers in string formats (4.1.x)
+  * Bug #3159: SC_ERR_PCAP_DISPATCH with message “error code -2” upon rule reload completion (4.1.x)
+  * Bug #3164: Suricata 4.1.4: NSS Shutdown triggers crashes in test mode
+  * Bug #3168: tls: out of bounds read
+  * Bug #3170: defrag: out of bounds read
+  * Bug #3173: ipv4: ts field decoding oob read
+  * Bug #3175: File_data inspection depth while inspecting base64 decoded data (4.1.x)
+  * Bug #3184: decode/der: crafted input can lead to resource starvation
+  * Bug #3186: Multiple Content-Length headers causes HTP_STREAM_ERROR (4.1.x)
+  * Bug #3187: GET/POST HTTP-request with no Content-Length, http_client_body miss (4.1.x)
+- build with lz4 and lzma support, especially to enable compression
+- require python-yaml during build, which results in suricate-update
+  get's build and installed. This allows to update local
+  Suricata rules
+- package /var/log/suricata directory instead of creating it during
+  post-installation of the package
+
+-------------------------------------------------------------------
+Tue May 14 09:35:39 UTC 2019 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 4.1.4
+  * CVE-2019-10053: ssh: heap buffer overflow (boo#1134993)
+  * CVE-2019-10050: mpls: heapbuffer overflow in file decode-mpls.c (boo#1134991)
+  * decode-ethernet: heapbuffer overflow in file decode-ethernet.c
+  * smb 1 create andx request does not parse the filename correctly
+  * rust/dhcp: panic in dhcp parser
+  * mpls: cast of misaligned data leads to undefined behavior
+  * rust/ftp: panic in ftp parser
+  * rust/nfs: integer underflow
+  * This release includes Suricata-Update 1.0.5
+
+-------------------------------------------------------------------
+Thu Mar  7 21:31:14 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.7
+  * Failed Assertion, Suricata Abort - util-mpm-hs.c line 163
+  * unix runmode deadlock when using too many threads
+  * rule reload with workers mode and NFQUEUE not working stable
+  * TCP FIN/ACK, RST/ACK in HTTP - detection bypass
+  * afpacket doesn't wait for all capture threads to start
+  * DNS Golden Transaction ID - detection bypass
+  * Invalid detect-engine config could lead to segfault
+  * suricata.c ConfigGetCaptureValue - PCAP/AFP fallthrough to
+    strip_trailing_plus
+  * Stats interval are 1 second too early each tick
+  * rust/dns/lua - The Lua calls for DNS values when using Rust
+    don't behave the same as the C implementation.
+  * out of bounds read in detection
+  * smtp: improve pipelining support
+
+-------------------------------------------------------------------
+Sun Dec 16 19:44:13 UTC 2018 - mardnh@gmx.de
+
+- Use pkg-config style build dependencies
+- Build with support for Hyperscan
+- Add systemd service file
+- Add logrotate configuration file
+- Update to version 4.0.6
+  * smtp segmentation fault (4.0.x)
+  * negated fileext and filename do not work as expected (4.0.x)
+  * filemd5 is not fired in some cases when there are invalid packets
+  * File descriptor leak in af-packet mode (4.0.x)
+  * Improve errors handling in AF_PACKET (4.0.x)
+  * Support http events - Weird unicode characters and truncation in
+    some of http_method/http_user_agent fields.
+
+-------------------------------------------------------------------
+Tue Jul 24 11:52:06 UTC 2018 - kbabioch@suse.com
+
+- Applied spec-cleaner
+- Removed gpg-offline, since we have GPG source validation by default now
+- Update to 4.0.5
+  - Bug fixes
+  - Private Suricata stops inspecting TCP stream if a TCP RST was met (4.0.x)
+    (CVE-2018-14568 bsc#1102334)
+
+-------------------------------------------------------------------
+Tue Oct  4 23:06:57 UTC 2016 - Greg.Freemyer@gmail.com
+
+- update to v3.1.2
+- Fixed an issue with the handling of ICMPv4 error packets (CVE-2016-10728 bsc#1102402)
+- build with libprelude suppport
+- use libnetfilter_queue, libnfnetlink from the Factory repo instead of 5 year old versions
+- use libhtp from server:monitoring
+- run through spec-cleaner
+- Still don't have man pages or user manual in the RPM
+   - http://redmine.openinfosecfoundation.org/projects/suricata/wiki/Suricata_User_Guide
+- change license to GPL-2.0
+
+-------------------------------------------------------------------
+Fri Feb 12 08:28:27 UTC 2016 - christoph@stop.pe
+
+- Initial release

@@ -1,0 +1,9 @@
+## Path: Network/Security
+## Description: suricata configuration
+## Type: string(-i,-q,-l)
+## Default: ""
+## ServiceRestart: suricata
+# Parameters for suricata. See the manual page for the
+# accepted parameters.
+SURICATA_OPTIONS=""
+
