@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 21 10:07:05 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to version 7.1.1:
+  * Update dependencies and re-build binaries with new Go version.
+    No substantive changes.
+
+-------------------------------------------------------------------
 Tue Apr 15 01:16:35 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Add more hardening options, restrict write access to system
