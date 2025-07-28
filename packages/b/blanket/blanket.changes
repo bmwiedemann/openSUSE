@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 28 05:17:10 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.0:
+  * Allow renaming custom sounds
+  * Make suspension inhibition optional and disabled by default
+  * Bug fixes
+
+-------------------------------------------------------------------
 Mon Apr  8 06:14:42 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.7.0:

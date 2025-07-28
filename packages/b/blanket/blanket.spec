@@ -1,7 +1,7 @@
 #
 # spec file for package blanket
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           blanket
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Listen to different sounds
 License:        GPL-3.0-or-later
@@ -26,6 +26,7 @@ URL:            https://github.com/rafaelmardojai/blanket
 Source:         https://github.com/rafaelmardojai/blanket/archive/%{version}.tar.gz
 BuildRequires:  appstream-glib-devel
 BuildRequires:  blueprint-compiler
+BuildRequires:  desktop-file-utils
 BuildRequires:  gtk4-devel
 BuildRequires:  libadwaita-devel
 BuildRequires:  libhandy-devel

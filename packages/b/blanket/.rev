@@ -91,4 +91,15 @@
   * Added preference to always start on pause</comment>
     <requestid>1166082</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f358610efbec731eb1e16d50b9a3edda</srcmd5>
+    <version>0.8.0</version>
+    <time>1753707529</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0:
+  * Allow renaming custom sounds
+  * Make suspension inhibition optional and disabled by default
+  * Bug fixes</comment>
+    <requestid>1295998</requestid>
+  </revision>
 </revisionlist>
