@@ -4185,6 +4185,17 @@
     <package name="update-bootloader" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="upower" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="upower-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="urw-base35-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_x11 -->
+    <package name="urw-base35-fonts-C059" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_x11 -->
+    <package name="urw-base35-fonts-D050000L" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_x11 -->
+    <package name="urw-base35-fonts-NimbusMonoPS" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_x11 -->
+    <package name="urw-base35-fonts-NimbusRoman" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_x11 -->
+    <package name="urw-base35-fonts-NimbusSans" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_x11 -->
+    <package name="urw-base35-fonts-P052" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_x11 -->
+    <package name="urw-base35-fonts-StandardSymbolsPS" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_x11 -->
+    <package name="urw-base35-fonts-URWBookman" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_x11 -->
+    <package name="urw-base35-fonts-URWGothic" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_x11 -->
+    <package name="urw-base35-fonts-Z003" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_x11 -->
     <package name="usb_modeswitch" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="usb_modeswitch-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="usbmuxd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

@@ -13612,9 +13612,9 @@ unsorted:
   - libgretl-1_0-51 
   - libgromacs10 
   - libgromacs_mpi10 
-  - libgrpc++1_73 
-  - libgrpc1_73 
-  - libgrpc48 
+  - libgrpc++1_74 
+  - libgrpc1_74 
+  - libgrpc49 
   - libgsequencer0 
   - libgsf-devel 
   - libgsf-tools 
@@ -16291,6 +16291,7 @@ unsorted:
   - libsuperlu7 
   - libsuperlu7-32bit 
   - libsurgescript0_6_1 
+  - libsuricata8_0_0 
   - libsuseconnect 
   - libsvm-devel 
   - libsvm-java 
@@ -16584,7 +16585,7 @@ unsorted:
   - libunwind-setjmp0 
   - libunwind-setjmp0-32bit 
   - libunwind8-32bit 
-  - libupb48 
+  - libupb49 
   - libupnp-devel 
   - libupnpp-devel 
   - libupnpp17 
@@ -22822,6 +22823,7 @@ unsorted:
   - plymouth-theme-tribar 
   - plzip 
   - pmacct 
+  - pmbootstrap 
   - pmccabe 
   - pmdk-convert 
   - pmdk-devel-doc 
@@ -25926,6 +25928,7 @@ unsorted:
   - python311-multidict 
   - python311-multipart 
   - python311-multipledispatch 
+  - python311-multiprocess 
   - python311-multivolumefile 
   - python311-munch 
   - python311-munkres 
@@ -29683,6 +29686,7 @@ unsorted:
   - python312-multidict 
   - python312-multipart 
   - python312-multipledispatch 
+  - python312-multiprocess 
   - python312-multivolumefile 
   - python312-munch 
   - python312-munkres 
@@ -33420,6 +33424,7 @@ unsorted:
   - python313-multidict 
   - python313-multipart 
   - python313-multipledispatch 
+  - python313-multiprocess 
   - python313-multivolumefile 
   - python313-munch 
   - python313-munkres 
@@ -37486,6 +37491,8 @@ unsorted:
   - surfraw 
   - surgescript 
   - surgescript-devel 
+  - suricata 
+  - suricata-devel 
   - suru-plus-dark-icon-theme 
   - suse-build-key 
   - suse-kabi-tools 
@@ -48394,17 +48401,6 @@ unsorted:
   - urlscan 
   - urlview 
   - urlwatch 
-  - urw-base35-fonts 
-  - urw-base35-fonts-C059 
-  - urw-base35-fonts-D050000L 
-  - urw-base35-fonts-NimbusMonoPS 
-  - urw-base35-fonts-NimbusRoman 
-  - urw-base35-fonts-NimbusSans 
-  - urw-base35-fonts-P052 
-  - urw-base35-fonts-StandardSymbolsPS 
-  - urw-base35-fonts-URWBookman 
-  - urw-base35-fonts-URWGothic 
-  - urw-base35-fonts-Z003 
   - urxvt-font-size 
   - urxvt-perls 
   - us428control 
