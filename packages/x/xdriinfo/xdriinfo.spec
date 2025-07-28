@@ -1,7 +1,7 @@
 #
 # spec file for package xdriinfo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           xdriinfo
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        Query configuration information of DRI drivers
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://wiki.freedesktop.org/dri/
 Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
-Source1:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glproto)
@@ -41,12 +41,11 @@ drivers (DRI).
 %setup -q
 
 %build
-%configure --x-includes=%{_includedir} --x-libraries=%{_libdir}
-
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %license COPYING

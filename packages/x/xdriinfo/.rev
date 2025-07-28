@@ -44,4 +44,16 @@
     <comment></comment>
     <requestid>1045895</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ebcb1558d4a1884dc51890621a0892e1</srcmd5>
+    <version>1.0.8</version>
+    <time>1753707495</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.8
+  * meson: Add option to build with meson
+  * Add -help option
+  * Accept --help &amp; --version as aliases to -help &amp; -version
+- switched to meson</comment>
+    <requestid>1295971</requestid>
+  </revision>
 </revisionlist>
