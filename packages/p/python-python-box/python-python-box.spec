@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-box
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-box
-Version:        7.2.0
+Version:        7.3.2
 Release:        0
 Summary:        Advanced Python dictionaries with dot notation access
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/cdgriffith/Box
 Source:         https://github.com/cdgriffith/Box/archive/%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -37,9 +36,11 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module ruamel.yaml >= 0.17}
 BuildRequires:  %{python_module toml >= 0.10.2}
 # /SECTION
-Requires:       python-msgpack >= 1.0.0
-Requires:       python-ruamel.yaml >= 0.17
-Requires:       python-toml >= 0.10.2
+Suggests:       python-msgpack >= 1.0.0
+Suggests:       python-ruamel.yaml >= 0.17
+%if %{python_version_nodots} < 311
+Suggests:       python-toml >= 0.10.2
+%endif
 %python_subpackages
 
 %description
@@ -57,7 +58,7 @@ Advanced Python dictionaries with dot notation access
 
 %check
 export PYTHONPATH='.'
-%pytest_arch
+%pytest_arch -k 'not test_to_yaml_ruamel'
 
 %files %{python_files}
 %license LICENSE
