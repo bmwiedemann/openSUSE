@@ -142,4 +142,24 @@
     <comment></comment>
     <requestid>1239866</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0fc7da45dbdcdc8f4ab74e544862227f</srcmd5>
+    <version>1.21</version>
+    <time>1753707537</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.21:
+  * A serious parser bug could accidentally concatenate numerator and
+    denominator as final denominator when parsing &quot;x/y&quot; where x or y are
+    close to ``sys.maxsize``, thus returning a ``Fraction(&quot;x/xy&quot;)``.
+  * MSVC and clang now also benefit from fast &quot;count trailing zeroes&quot;
+    intrinsics.
+  * ``quicktions`` is compatible with freethreading Python (3.13+).
+  * Accept leading zeros in precision/width for Fraction's formatting
+  * In line with Python's ``Fraction``, quicktions now raises a
+    ``ValueError`` (instead of an ``OverflowError``) when exceeding parser
+    limits
+  * Call ``__rpow__`` in ternary ``pow()`` if necessary
+  * Built using Cython 3.1.2.</comment>
+    <requestid>1296038</requestid>
+  </revision>
 </revisionlist>
