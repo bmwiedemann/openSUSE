@@ -1,7 +1,7 @@
 #
 # spec file for package xdpyinfo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           xdpyinfo
-Version:        1.3.4
+Version:        1.4.0
 Release:        0
 Summary:        Utility to display information about an X server
 License:        MIT
 Group:          System/X11/Utilities
 URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+BuildRequires:  meson
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(dmx)
 BuildRequires:  pkgconfig(x11)
@@ -55,11 +56,11 @@ protocol extensions that are available.
 %setup -q
 
 %build
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %defattr(-,root,root)

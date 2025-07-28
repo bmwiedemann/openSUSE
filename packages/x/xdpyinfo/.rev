@@ -101,4 +101,22 @@
   side with our customers</comment>
     <requestid>1083414</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a53fb802d4292c41bc2288cf0cb8bd06</srcmd5>
+    <version>1.4.0</version>
+    <time>1753707479</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0
+  * gitlab CI: Update to latest CI templates &amp; Debian stable release
+  * XFree86-DGA: -ext all shoudn't exit on XF86DGAClientNotLocal error
+  * Present: add -ext present that prints version &amp; screen capabilities
+  * Present: add per-crtc capabilities to -ext output
+  * meson: Add option to build with meson
+  * Add -help option
+  * Accept --help &amp; --version as aliases to -help &amp; -version
+  * man page: fix warnings from `mandoc -T lint`
+  * Fix alignment of -help description in -help output
+- switched to meson build</comment>
+    <requestid>1295943</requestid>
+  </revision>
 </revisionlist>
