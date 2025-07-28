@@ -159,4 +159,32 @@
     <comment></comment>
     <requestid>1170767</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5385b82e331996830a241bc2da7cd28c</srcmd5>
+    <version>0.25.4</version>
+    <time>1753707538</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.25.4:
+  * Data files:
+    + Added internal quantum numbers for several mesons.
+    + Added the 2024 PDG data table file, now default.
+    + Version 14 of package CSV data files: Since PDG 2024 information now
+      the default.
+    + Removed superseded data files from 2021.
+  * Particle class and submodules:
+    + Fixed the creation of programmatic names for nuclei when the nucleus
+      names end with a 0.
+    + Minor fix for the Higgs spin.
+    + Ensure the proton and neutron are correctly handled whether using the
+      particle representation (PDG IDs 2212 and 2112) or their representation
+      as a nucleus.
+    + Minor fix in conversion to particle names in HTML.
+  * PDGID class method and related standalone functions:
+    + Little improvement to the helper function _digit.
+  * Miscellaneous:
+    + Added support for Python 3.13.
+    + Added attestations.
+- Dropped rpmlintrc, unneeded.</comment>
+    <requestid>1296039</requestid>
+  </revision>
 </revisionlist>
