@@ -1,0 +1,519 @@
+-------------------------------------------------------------------
+Sat Jul 26 14:49:47 UTC 2025 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- fix non-executable-script in merge-usr.sh and other related erros.
+
+-------------------------------------------------------------------
+Wed Jul 23 18:04:33 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Run tests only on x86_64 due to issue on other architectures
+
+-------------------------------------------------------------------
+Wed Jul 23 17:08:15 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 3.5.2:
+  * Fix: show actual version
+- update to version 3.5.1:
+  * pmb: drop unused import
+  * pmb.helpers.apk: fix crash computing progress from apk3
+  * pmb.helpers.apk_static: fix version check for apk3
+  * pmb.helpers.repo: Always update APKINDEX if it doesn't exist
+  * pmb.helpers.apk_static: Update "malicious server" message
+  * export: allow to export vmlinuz files which have any suffix
+  * export: drop support for flavor in export
+  * test: add small test for argument parsing
+
+-------------------------------------------------------------------
+Tue Jun 10 15:57:07 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.5.0:
+  * Split devices by category during codename selection
+  * Warn users about downstream ports
+  * pmb.helpers.logging: Fix type for args
+  * pmb.qemu.run: fix x86_64 CPU check for EFI support
+  * init: systemd: fix always switching pma to edge
+  * pmb.aportgen.core: Initialize chroot properly
+  * pmb.helpers.pmaports: Clean up some strings
+  * pmb.config.__init__: Add escape sequence for magenta text
+  * pmb.config.apk_tools_min_version: add v3.22
+  * pmb/helpers/other: fix typo found by codespell
+  * Remove "pmbootstrap repo_bootstrap"
+  * pmb.aportgen: Match aportgen prefixes explicitly
+  * pmb.aportgen: Add default value to fork_alpine parameter
+- update to 3.4.2:
+  * pmb.qemu.run: fix x86_64 CPU check for EFI support
+- update to 3.4.1:
+  * CONTRIBUTING.md, README.md: Use descriptive links
+  * pmb.arch: Add support for s390x
+  * pmb.config.init: Use heapq for sorting timings
+  * pmb.helpers.apk: Avoid concatenation
+  * pmb.helpers.pmaports: Add must_exist to cache signature for find()
+  * pmb.qemu.run: Use NonBugError for invalid device selection error
+  * pmb.qemu.run: use virgl on aarch64 hosts
+  * pmb.qemu.run: add support for EFI on aarch64
+  * pmb.qemu.run: command_qemu: refactor applying arch-specific options
+  * docs/index: introduce local deploy example
+  * docs/index: update local deploy example with pmb.ci
+  * docs/mirrors: mention env variables example
+- update to 3.4.0:
+  * pmb.ci: choose multiple scripts at once interactively
+  * build: add pmb:cross-native2
+  * config: add pigz to build_packages
+  * pmb.install.format: add support for setting FDE passphrase
+  * Add option to auto-select the best mirror
+  * pmb.helpers.apk: support PMB_APK_NO_CACHE
+  * pmb/install: Add option to create single combined boot/root partition
+  * Log only if config was really changed
+  * install: Do not fail on invalid SSH key
+  * install: remove redundant package musl-locales
+  * core: Arch: define supported arches as a set
+  * build: backend: remove trailing spaces
+  * build: envkernel: build for the correct channel
+  * build: package: install rsync even when package has no makedepends
+  * build: fix cross-compile without CPU emulation
+  * build: fix duplicate install messages
+  * pmb.build: install checkdepends when building
+  * pmb.build: fix internal cross compiling names
+  * pmb.build.package: fix strict mode
+  * cross-native2: set CGO_CFLAGS, CGO_LDFLAGS
+  * pmb.netboot: Initialize chroot before checking path in chroot
+  * pmb.netboot: Only attempt to install nbd after rootfs existance check
+  * pmb.netboot: Use NonBugError for nonexistent rootfs code path
+  * pmb.flasher: fix "flasher boot" crash if cmdline is empty
+  * pmb.flasher.frontend: Use NonBugError for nonexistent rootfs code path
+  * pmb.qemu.run: Use NonBugError for nonexistent rootfs code path
+  * pmb.lint: Don't try to lint apkbuild paths that are empty
+  * sideload: get channel from package not from global pmaports
+  * pmb.core.config: remove +1 from nproc defaults
+  * pmb.config: Add pmb:cross-native2 to custom valid options
+  * pmb.parse.apkindex: account for provider_priority when locating packages
+  * init: fix currently checked out channel detection
+  * chroot: don't depende on alpine-base
+  * pmb: Rename pmb:gpu-accel and deviceinfo_gpu_accelerated
+  * core: Arch: add .supported_binary()
+  * core: Arch: add method to map to Go arch
+  * core: small typing improvement
+  * FIXUP: build: abstract CrossCompile type logic
+  * build: print !tracedeps warning for cross-native 1
+  * build.package: makedeps warning only for c-n2
+  * pmb/build/autodetect: remove deprecated comment
+  * pmb.build.backend.run_abuild: remove cross default
+  * pmb.types.CrossCompileType: split up None
+  * pmb.build.package: log the cross compile type
+  * pmb.install._install: remove installation of lang
+  * pmb.install._install: write lang configuration to /etc/locale.conf
+  * pmb.install._install: install locale config on default lang aswell
+  * lint: adjust comment for empty apkbuild_paths
+  * docs/cross_compiling: new page
+  * docs/cross_compiling: fix makedeps host/build desc
+  * docs/env_variables: document PMB_FDE_PASSWORD
+- build only for primary python
+- adjust license as this software is gpl3+
+- use upstream tarballs (use download_files service)
+- use autosetup
+- enable testing
+
+-------------------------------------------------------------------
+Thu Apr 03 12:52:53 UTC 2025 - lujianhua000@gmail.com
+
+- Update to version 3.3.2:
+  * Prepare 3.3.2 release
+  * docs/env_variables: document PMB_FDE_PASSWORD
+  * pmb.install.format: add support for setting FDE passphrase
+  * CI: ruff: use 0.11.0 (Cannot use star annotation)
+
+-------------------------------------------------------------------
+Fri Feb 28 01:56:00 UTC 2025 - lujianhua000@gmail.com
+
+- Update to version 3.3.1:
+  * Prepare 3.3.1 release
+  * pyproject.toml: fix tests getting installed
+  * Prepare 3.3.0 release
+  * pmb.parse.apkindex: Improve parse_add_block() type hint (MR 2515)
+  * pmb.chroot.run: Add another overload for root() (MR 2515)
+  * helpers.cli: Fix regex validation (MR 2557)
+  * pmbootstrap chroot: fix --image bugs (MR 2556)
+  * pmb.install.format: set bytes-per-inode to 16384 (MR 2558)
+  * install: log space/inodes used in image (MR 2558)
+  * pyproject.toml: Remove ignore for F401 in __init__.py files (MR 2545)
+  * pmb.chroot: Rename exists() to user_exists() (MR 2545)
+  * pmb: Use explicit re-exports (MR 2545)
+  * pmb: Remove unused imports (MR 2545)
+  * pmb.install.format: set ext4 usage-type to big (MR 2555)
+  * ci/markdown: fix shellcheck errors (MR 2485)
+  * ci/markdown: don't run "npm install" as root (MR 2485)
+  * add pre-commit hook for ruff (MR 2485)
+  * CONTRIBUTING: document markdown linting (MR 2485)
+  * treewide: lint markdown files (MR 2485)
+  * CI: add markdown lint (MR 2485)
+  * chroot: add --usb flag to make usb devices available (MR 2554)
+  * pmbootstrap config: Fix setting attribute value to False (MR 2546)
+  * pmb.install.format: set ext4 inodes to 1M (MR 2552)
+  * test: move all tests into separate module (MR 2551)
+  * pmb.config.init: prompt for pmaports path (MR 2502)
+  * pmb.config.init: resolve double-negation (MR 2502)
+  * pmb.config.init: Reformat some strings (MR 2535)
+  * pmb.config.init: Improve message when "Archived:" header is missing (MR 2535)
+  * CI: use new runner where necessary (MR 2548)
+  * pyproject.toml: Enable all N checks (MR 2537)
+  * pmb.helpers.logging: Use PEP 8-compliant naming (MR 2537)
+  * pmb.conftest: Use PEP 8-compliant naming (MR 2537)
+  * pyproject.toml: Enable all PIE checks (MR 2537)
+  * pmb.install.losetup: Remove unnecessary range start (MR 2537)
+  * pmb: Remove unnecessary pass statements (MR 2537)
+  * pmb.aportgen.core: Combine startswith(...) calls into one (MR 2537)
+  * pmb.flasher: Fix passing command line flags (MR 2543)
+  * install: create_device_rootfs: check if ui extras package exists (MR 2534)
+
+-------------------------------------------------------------------
+Tue Jan 21 12:06:27 UTC 2025 - lujianhua000@gmail.com
+
+- Update to version 3.2.0:
+  * Prepare 3.2.0 release
+  * pmb.chroot.binfmt: Initialise chroot before installing packages in register() (MR 2526)
+  * pmb.parse.bootimg: Initialise chroot before installing packages in bootimg() (MR 2526)
+  * pmb.config.other: Don't require selected UI package to exist (MR 2530)
+  * pmb.helpers.ui: Add must_exist argument to check_option() (MR 2530)
+  * pmb.types: Fix type for PmbArgs.output (MR 2522)
+  * pmb.build.autodetect: Remove FIXME about type hinting arch (MR 2522)
+  * pmb.qemu.run: Remove FIXME and type ignore stuff from command_qemu() (MR 2522)
+  * Fix pmbootstrap install --android-recovery-zip (MR 2527)
+  * helpers.run.core.add_proxy_env_vars: fix variables (MR 2525)
+  * CI: Install Ruff from PyPi instead of Alpine (MR 2525)
+  * pmb: Reformat with Ruff 0.9 (MR 2525)
+  * pmb.install: Remove unnecessary calls to round() (MR 2525)
+  * pmb.config.init: Simplify removal of select from providers_cfg (MR 2525)
+  * pmb.helpers.aportupgrade: Remove unnecessary regex (MR 2525)
+  * pmb: Use raw strings for regexes (MR 2525)
+  * pmb.chroot.apk: Use unpacking operator to create command in install_run_apk() (MR 2525)
+  * pyproject.toml: Enable most RUF checks (MR 2525)
+  * pmb: Use unpacking operator to concatenate collections (MR 2525)
+  * pmb.core.config: Add note about aports variable being class variable (MR 2525)
+  * pmb.core.config: Mark mirrors and providers as class variables (MR 2525)
+  * pmb.helpers.locale: Use frozenset for primary_layouts (MR 2525)
+  * pmb.build._package: Replace sum() with functools.reduce() (MR 2525)
+  * pmb.commands.repo_bootstrap: Remove unnecessary noqa comment (MR 2525)
+  * pmb.helpers.run_core: Remove unnecessary str(...) (MR 2525)
+  * pmb: Replace list(...)[0] with next(iter(...)) (MR 2525)
+  * pmb.build.other: Fix broken f-string (MR 2525)
+  * install: support systemd for disabling services (MR 2529)
+  * install: merge disable_sshd(), disable_firewall() (MR 2529)
+  * Cosmetic: pmb/install/_install.py: tweak strings (MR 2529)
+  * Update systemd repo URL
+  * pmb.config.pmaports: Make pmbootstrap automatically switch away from master_staging_systemd (MR 2528)
+  * pmb.core.test_pkgrepo: Remove reference to master_staging_systemd (MR 2528)
+  * repo_missing: ensure pkgs don't depend on themselves
+  * repo_missing: fix picking wrong package info
+  * repo_missing: ensure abuild is not twice in deps
+  * repo_missing: if abuild is forked, add it as dep (MR 2410)
+  * Rewrite repo_missing for bpo + systemd split repo (MR 2410)
+  * docs: use pmOS green color in html output (MR 2520)
+  * editorconfig: new file (MR 2520)
+  * pyproject.toml: Enable Ruff preview (MR 2516)
+  * pyproject.toml: Add CPY001 to Ruff linting (MR 2516)
+  * docs, pmb: Add missing copyright headers (MR 2516)
+  * pmb.parse.version: Use _ for "value" variable in validate() (MR 2516)
+  * CI: Simplify Ruff check (MR 2517)
+  * pmb.parse.version: Replace token_value() with Token enum (MR 2518)
+  * pmb.config.pmaports: Get rid of cast hack for SectionProxy (MR 2519)
+  * pyproject.toml: Set disallow_untyped_calls = true (MR 2514)
+  * pyproject.toml: Set disallow_untyped_defs = true (MR 2514)
+  * pmb: Add more types and fix type errors (MR 2514)
+  * pmb.parse.arguments: Type hint and remove unused arguments from add_kernel_arg() (MR 2514)
+  * pmb.parse.arguments: Ignore attr-defined on arg.completer (MR 2514)
+  * pmb.parse.test_version: Add unit tests for version.py (MR 2514)
+  * pmb.parse.version: Convert rest[0] to integer before storing it in value (MR 2514)
+  * pmb.parse.version: Link to older apk-tools (MR 2514)
+  * pmb: Add more type hints (MR 2513)
+  * pmb.qemu.run: Fix odd strings (MR 2513)
+  * docs: fix typos (MR 2510)
+  * pmb.aportgen: Update APKINDEX for relevant arch before parsing it (MR 2509)
+  * pmb.aportgen: Unify tempdir preparation and checksum generation (MR 2509)
+  * pmb.flasher.frontend: detect lk2nd as subpackage dependency (MR 2511)
+  * pmb: Add more type hints (MR 2490)
+  * pmb.aportgen: Annotate <options> as AportGenEntry in generate() (MR 2490)
+  * pmb.helpers.repo_missing: Use f-string in get_relevant_packages() (MR 2490)
+  * pmb/helpers/repo_missing: Remove <arch> from filter_aport_packages() docstring (MR 2490)
+  * pmb.commands.pull: Remove bool return type from run() (MR 2490)
+  * pmb.config.init: Use separate answer variable for sudo timer (MR 2490)
+  * pmb.config.init: Explicitly convert string to int for config.extra_space (MR 2490)
+  * pmb.config.init: Fix types in ask_for_systemd() (MR 2490)
+  * pmb.config.init: Fix types in ask_for_work_path() (MR 2490)
+  * pmb.parse.kconfig: Rename options to arch_options in check_config_options_set (MR 2490)
+  * pmb.parse.kconfig.check_config_options_set: Update docstring (MR 2490)
+  * pmb.helpers.http: Simplify retrieve_json() (MR 2490)
+  * pmb/config: enable "flasher boot" for fastboot-bootpart (MR 2508)
+  * Fix spelling "infront" -> "in front"
+
+-------------------------------------------------------------------
+Mon Dec 23 09:03:42 UTC 2024 - lujianhua000@gmail.com
+
+- Update to version 3.1.0:
+  * Prepare 3.1.0 release
+  * .gitignore: add note for missing text editors (MR 2501)
+  * pmb.aportgen.device: fix skipping when analyzing boot image (MR 2507)
+  * pmb.install._install: add setup_locale() (MR 2497)
+  * pmb.helpers.locale: add unit tests (MR 2497)
+  * pmb.helpers.locale: new module (MR 2497)
+  * docs: document PMB_APK_FORCE_MISSING_REPOSITORIES (MR 2506)
+  * docs: add env vars page with PMB_SUDO (MR 2506)
+  * CI: docs: fail on warning (MR 2506)
+  * docs: fix 'WARNING: Title underline too short' (MR 2506)
+  * docs/api/pmb.commands: fix "failed to import" (MR 2506)
+  * pmb.helpers.repo.update: support PMB_APK_FORCE_MISSING_REPOSITORIES (MR 2505)
+  * build: envkernel: overmount outdir/Makefile to use local include (MR 2504)
+  * build: envkernel: default to .output again (MR 2504)
+  * Fix apkbuild parsing in edge cases (MR 2503)
+  * test: conftest: require_programs() automatically (MR 2483)
+  * test: aportgen: test deviceinfo fastboot content (MR 2477) (MR 2483)
+  * test: parse: add tests for bootimg parsing (MR 2477) (MR 2483)
+  * test: conftest: adjust pmaports fixture (MR 2477) (MR 2483)
+  * Revert "CI: Add bootimg analysis integration test (MR 2467)" (MR 2483)
+  * pmb.core.arch: Use annotations from future instead of quoted Arch type (MR 2498)
+  * pmb.core.arch: Handle unsupported arches in from_machine_type() better (MR 2498)
+  * pmb.core.arch: Use match statement instead of mappings (MR 2498)
+  * qemu: run: Add support for ppc64le (MR 2476)
+  * qemu: run: Invoke the correct qemu command (MR 2476)
+  * core: arch: Add ppc64le qemu mapping (MR 2476)
+  * helpers: pmaports: Always fall back to parsing all APKBUILDS (MR 2476)
+  * core: arch: Add ppc64le as a supported architecture (MR 2476)
+  * helpers: pmaports: Fix package detection for cross g++ and musl-dev (MR 2476)
+  * core: chroot: Deduplicate supported arch list (MR 2476)
+  * tests: Assert that riscv64 is supported (MR 2476)
+  * .ci/docs.sh: add py3-sphinxcontrib-jquery to fix the failing search (MR 2500)
+  * build: newapkbuild: initialize chroot before use (MR 2495)
+  * build: envkernel: cleanup behaviour (MR 2491)
+  * pmb/aportgen: lookup package in APKINDEX with correct arch (MR 2493)
+  * pmb.config.apk_tools_min_version: add v3.21
+  * pmb.helpers.git: fix get_upstream_remote() (MR 2496)
+  * helpers: git: ignore case in get_upstream_remote()
+  * pmb: Add more type hints (MR 2489)
+  * pmb.config.init: Call pmb.helpers.cli.confirm() correctly (MR 2489)
+
+-------------------------------------------------------------------
+Sun Nov 24 23:50:43 UTC 2024 - jonatas.sgoncalves@gmail.com
+
+- Update to version 3.0.0:
+  * Prepare 3.0.0 release
+  * zap: cache_clean: get apk.static if missing (MR 2481)
+  * ci/integration: run "zap -a" afterwards (MR 2481)
+  * Fix pmb zap -a permissions error (MR 2481)
+  * Tweak messages for 'Could not find aport' (MR 2480)
+  * pmaports.find: show extra-repos/systemd hint (MR 2480)
+  * Replace skip_extra_repos -> with_extra_repos (MR 2480)
+  * pmaports._find_apkbuilds: use new cache logic (MR 2480)
+  * gitignore: add junit.xml (MR 2480)
+  * Revert "test: aportgen: test deviceinfo fastboot content (MR 2477)" (MR 2482)
+
+  * Change source to updated oficial gitlab repo
+
+-------------------------------------------------------------------
+Sun May 19 14:10:33 UTC 2024 - lujianhua000@gmail.com
+
+- Update to version 2.3.1:
+  * Prepare 2.3.1 release
+  * pyproject.toml: add docs to the parts to be excluded (MR 2312)
+  * pmb.config.apk_tools_min_version: add v3.20
+  * pmb.config.apk_tools_min_version: update
+
+-------------------------------------------------------------------
+Sun May 19 14:09:34 UTC 2024 - lujianhua000@gmail.com
+
+- Update to version 2.3.0:
+  * Prepare 2.3.0 release
+  * treewide: Rename unmaintained to archived (MR 2308)
+  * ci: add job to generate docs (MR 2266)
+  * docs: add new configuration for generating docs using sphinx (MR 2266)
+  * pmb.*: various comment reformatting to assist with generating docs (MR 2266)
+  * pmb.parse: add get_parser for returning ArgumentParser obj (MR 2266)
+  * pmb: install: add options for default charset in vfat /boot partitions (MR 2304)
+  * pmb: install: add some sane mount options to default /boot in /etc/fstab (MR 2304)
+  * pmb: install: allow to mount fat{16,32} /boot from /etc/fstab (MR 2304)
+  * pmb.config: kconfig check: turn off RT_GROUP_SCHED in 'community' (MR 2305)
+  * test: disable cross compile test (MR 2307)
+  * gitignore: Ignore KDevelop files and folder (MR 2302)
+  * pmb.build.is_necessary: tweak log msgs (MR 2295)
+  * pmb.build.is_necessary: tweak comments (MR 2295)
+  * pmb.build.is_necessary: replace version_{new,old} (MR 2295)
+  * testdata/APKBUILD.var-replacements: add custom var (MR 2300)
+  * APKBUILD parser: recognize all top-level variables (MR 2300)
+  * test/test_parse_apkbuild: fix running standalone (MR 2300)
+  * Print ERROR: infront of {NonBug,BuildFailed}Error (MR 2298)
+  * pmb.config.apkbuild_attributes: add sha512sums (MR 2296)
+  * pmbootstrap status: rework (MR 2294)
+  * CI: Always update packages (MR 2297)
+  * CI: Stop adding testing repository in before_script (MR 2297)
+  * CI: Use yaml anchor for global before_script (MR 2297)
+  * Revert "pmb.build._package: build depends of subpackages (MR 2292)"
+  * pmb.build._package: build depends of subpackages (MR 2292)
+  * pmbootstrap init: remove text about daily zapping (MR 2293)
+  * pmb.chroot.init: warn about outdated chroots (MR 2293)
+  * pmb: Handle BuildFailedError (MR 2288)
+  * pmb.build._package: Raise BuildFailedError when build fails (MR 2288)
+  * pmb.helpers.exceptions: Add BuildFailedError (MR 2288)
+  * build: fix !pmb:crossdirect (MR 2291)
+  * test.test_apk: Replace osk-sdl with unl0kr in apk install test (MR 2289)
+  * pmb.install._install: Replace osk-sdl with unl0kr in nofde explanation (MR 2289)
+  * pmb.helpers.repo_missing: Replace osk-sdl with unl0kr in example (MR 2289)
+  * pmb.flasher.frontend: Replace osk-sdl with Unl0kr in FDE reminder (MR 2289)
+  * README: Replace osk-sdl with tinydm in newapkbuild example (MR 2289)
+  * pmb.chroot.apk: Use unl0kr instead of osk-sdl in example (MR 2289)
+  * require_bootstrap: ensure apkindex exists (MR 2287)
+  * pmb.sideload: Remove irrelevant output when querying architecture (MR 2286)
+  * pmb.sideload: Run apk incantation in a subshell (MR 2283)
+  * pmb.parse.arch: use qemu for running armhf on aarch64 (MR 2285)
+  * pmb.helpers.exceptions: Add licence header (MR 2284)
+  * test: Test pmb.parse.arch.machine_type_to_alpine (MR 2282)
+  * pmb.parse.arch: Import pmb.config instead of pmb.parse.arch (MR 2282)
+  * pmb.sideload: Query architecture from foreign device (MR 2282)
+  * pmb.parse.arch: Break out marchine type to arch into separate function (MR 2282)
+  * pmb.parse.kconfig: Raise NonBugError on invalid kernel config (MR 2279)
+  * pmb: Only log error if NonBugError is caught (MR 2279)
+  * pmb.helpers.exceptions: Introduce (MR 2279)
+  * pmb.config: kconfig check: add USB mass storage devices to community (MR 2281)
+  * pmb.parse.bootimg: implement detection of QCDT types (MR 2276)
+  * pmb.aportgen: add deviceinfo_bootimg_qcdt_type (MR 2276)
+  * aportgen: shorten hasatrr checks with getattr (MR 2271)
+  * aportgen: Add short forms of arguments (MR 2271)
+  * aportgen: Allow retaining current branch when forking Alpine (MR 2271)
+  * logging: reset style at the end of log line (MR 2272)
+  * CI: ruff: fix "ruff <path>" warning (MR 2274)
+  * pmb.flasher: fix C0303: Trailing whitespace (trailing-whitespace) (MR 2280)
+  * Add sanity check for "systemd" config values (MR 2273)
+  * is_systemd_selected: check for branch support (MR 2273)
+  * Support pmb:systemd-never option (MR 2273)
+  * install: add pmos-base-systemd if systemd enabled (MR 2273)
+  * pmbootstrap build, install: require repo_bootstrap (MR 2273)
+  * Add "pmbootstrap repo_bootstrap" (MR 2273)
+  * pmb.chroot.init: upgrade pkgs at the end (MR 2273)
+  * pmb.chroot.init: add postmarketos_mirror argument (MR 2273)
+  * systemd installs: merge /usr on chroot init (MR 2273)
+  * init: ask whether to install systemd (MR 2273)
+  * aportgen: Set pkgver for devices to 1 by default (MR 2275)
+  * pmb.helpers.frontend: Add some type hints (MR 2262)
+  * pmb.helpers.status: Add type hints (MR 2262)
+  * pmb.helpers.run: Add some type hints (MR 2262)
+  * pyproject.toml: Fix deprecation warning (MR 2262)
+  * pmb.config: kconfig check: add vfat to uefi check (MR 2269)
+  * pmb.config: kconfig check: mark some EFI config as specific to ARM (MR 2269)
+  * pmb: correct link after moving sources back to gitlab (MR 2270)
+  * Remove unnecessary setup.cfg, non-universal is the default (MR 2265)
+  * Drop support for python3.7 and python3.8 (MR 2265)
+  * Migrate from setup.py to pyproject.toml (MR 2265)
+  * test: Test subpackages which set a different architecture (MR 2267)
+  * pmb.parse._apkbuild: Fix subpackages with set arch but no custom function (MR 2267)
+  * pmb/config: s/für/for/
+  * pmb.parse.arch: add armv8l -> armv7 mapping (MR 2259)
+  * logging: print text between *** in green (MR 2263)
+  * README.md: mention parted bug in kernels between 5.8 and 6.0 (MR 2264)
+  * pmb.install: fall back to a valid hostname if none set (MR 2260)
+  * CI: mypy: make compatible with "pmbootstrap ci" (MR 2258)
+  * CI: add Mypy check (MR 2258)
+  * pmb.parse._apkbuild: Disable attr-defined for entire module (MR 2258)
+  * pmb.helpers.aportupgrade: Remove unused return values (MR 2258)
+  * pmb.helpers.aportupgrade: Don't return any value from upgrade (MR 2258)
+  * pmb.helpers.aportupgrade: Check for none pkgver_match in upgrade_git_package (MR 2258)
+  * pmb.helpers.aportupgrade: Import urllib.parse explicitly (MR 2258)
+  * pmb.parse.arguments: Check for argcomplete in sys.modules instead (MR 2258)
+  * pmb.config: do not prompt for nonfree fw/userland (MR 2255)
+  * pmb.install…get_selected_providers: tweak comment (MR 2261)
+  * pmb.install: discover selected providers in dependencies too (MR 2261)
+  * config: add note on why mirrors are http and not https (MR 2256)
+  * config: organize defaults matching config_keys and order alphabetically (MR 2256)
+  * b4-config: Remove (MR 2257)
+
+-------------------------------------------------------------------
+Sun Mar 03 13:49:23 UTC 2024 - lujianhua000@gmail.com
+
+- Update to version 2.2.1:
+  * Prepare 2.2.1 release
+  * envkernel: Install envkernel.fish (MR 2249)
+  * envkernel.fish: Support out-of-tree usage of envkernel.fish (MR 2249)
+  * envkernel: only export alias when defined (MR 2249)
+  * pmb.aportgen: drop deviceinfo_screen_* (MR 2253)
+  * install: get_recommends: fix infinite recursion (MR 2250)
+
+-------------------------------------------------------------------
+Wed Feb  7 15:09:41 UTC 2024 - xtexChooser <xtexchooser@duck.com>
+
+- Remove url source in pmbootstrap.spec
+
+-------------------------------------------------------------------
+Wed Feb 07 03:56:43 UTC 2024 - xtexchooser@duck.com
+
+- Package /usr/share/pmbootstrap
+- Update to version 2.2.0:
+  * Prepare 2.2.0 release
+  * pmb.build.init: fix apk wrapper for x86 on x86_64 (MR 2247)
+  * kconfig check: Enable more options for community (MR 2245)
+  * kconfig check: enable NFT_COMPAT for iptables-nft wrapper (MR 2245)
+  * build.envkernel: simplify and fix unhandled error path (MR 2243)
+  * pmb.build: ensure all specified packages are built with --force (MR 2244)
+  * pmb: only enable abuild-apk wrapper for buildroot (MR 2246)
+  * install: more comprehensive subdivision of btrfs subvols (MR 2233)
+  * pmb.install: honor -y, don't prompt when target disk is >100GiB (MR 2239)
+  * pmb.install: include dependencies when searching for pmb_recommends (MR 2238)
+  * pmb.install: fix crash on empty subpackage in get_recommends (MR 2238)
+  * build: use native abuild-apk (MR 2242)
+  * build: use host native gzip (MR 2242)
+  * Fix preserving proxy variables (MR 2237)
+  * Don't drop parameters in run-script (MR 2230)
+  * CONTRIBUTING: modernize (MR 2235)
+  * Install envkernel.sh (MR 2229)
+  * Fall back to pmbootstrap from PATH (MR 2229)
+  * Guess kbuild out dir for downstreamkernel_package (MR 2231)
+  * CI: bring back mr-settings check (MR 2234)
+  * pmb.helpers.args: Skip some initialisation code when running checksum (MR 2228)
+  * pmb.flasher.variables: use getattr instead of hasattr (MR 2232)
+  * pmb.flasher.vars: do not assume that args.no_reboot and args.resume are defined (MR 2232)
+  * CI: use gitlab-ci
+  * README.md: update source code location
+  * flasher: heimdall-bootimg: add support for '--no-reboot' and '--resume'
+  * helpers/envkernel.fish: add deactivate & reactivate function for fish
+  * helpers/envkernel.fish: set prompt prefix in fish-shell
+  * helpers/envkernel.fish: export pmbootstrap_dir
+  * install: initial implementation of flat btrfs layout
+  * pmb.config: add new newapkbuild arguments
+  * pmb.install.format: Write boot mountpoint to log
+  * pmb.install: add --zap option
+  * pmb.install._install.get_recommends: tweak comment
+  * pmb.install: support pmb_recommends for any package
+  * parse.apkbuild.parse_subpackage: don't inherit pmb_recommends
+  * install: throw error if boot_size is too small
+  * aportgen: Only warn if binary version > APKBUILD version
+  * install: do not fail on alpine-appstream-downloader error
+
+-------------------------------------------------------------------
+Mon Feb 05 07:08:03 UTC 2024 - xtexchooser@duck.com
+
+- Add OBS source service file
+- Change source URL from SourceHut to GitLab, for postmarketOS moved
+  their development to GitLab
+- Update to version 2.1.0:
+  * Prepare 2.1.0 release
+  * pmb.helpers.frontend: Convert kconfig check --file argument
+  * aportgen: remove binutils
+  * aportgen: build gcc-x86_64 etc. pkgs for aarch64
+  * pkg resolver: don't guess if pmaport was found
+  * pmb.helpers.pmaports.get: deal with operators
+  * pmb.config.apk_tools_min_version: add alpine 3.19
+  * pkg resolve: add more verbose logs
+  * config.init: allow using pmb_select in pmos-base-ui
+  * parse.depends: consider selected providers when resolving providers
+
+-------------------------------------------------------------------
+Fri Oct 13 12:52:01 UTC 2023 - Tomas Cech <sleep_walker@opensuse.org>
+
+- update to 2.0.0 - the list of changes over the years is huge, here
+  are the "breaking" changes:
+
+  * Remove distcc support (was already disabled by default since
+    crossdirect had been added in 2019)
+  * Remove --no-crossdirect argument
+  * flasher: remove long deprecated flash_system alias
+  * flasher: set default fastboot rootfs partition to userdata
+
+-------------------------------------------------------------------
+Thu Jan 28 22:28:27 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.29.0
