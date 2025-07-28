@@ -672,4 +672,12 @@ fixed in that other package, after which it will trickle down.</comment>
     <comment>- Update to version 1.73.0:</comment>
     <requestid>1283952</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>e9847a973d324929dd2a6c298948fa77</srcmd5>
+    <version>1.74.0</version>
+    <time>1753707480</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.74.0:</comment>
+    <requestid>1295957</requestid>
+  </revision>
 </revisionlist>

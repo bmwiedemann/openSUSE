@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jul 27 08:00:17 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.74.0:
+  * Core:
+  * [OTel C++, Posix EE] Plumb TCP write timestamps and metrics
+    to OTel tracers (gh#grpc/grpc#39946).
+  * [EventEngine] Fix Python reconnect issues: use iomgr backup
+    poller when EE is disabled (gh#grpc/grpc#39894).
+  * [Python] Upgrade Pytype (Part - 1) (gh#grpc/grpc#39816).
+  * [Python] Upgrade black (gh#grpc/grpc#39774).
+  * [event_engine] Implement fork support in Posix Event Engine
+    (gh#grpc/grpc#38980).
+  * [http2] Fix GRPC_ARG_HTTP2_STREAM_LOOKAHEAD_BYTES for when
+    BDP is disabled (gh#grpc/grpc#39585).
+- Update return-values.patch with a couple more missed return
+  values from non-void functions.
+- Bump so version in shlib package name.
+- Re-base telemetry.patch for updated version.
+
+-------------------------------------------------------------------
 Sun Jun  8 16:09:54 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.73.0:
