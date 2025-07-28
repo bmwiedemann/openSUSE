@@ -2,6 +2,7 @@
 # spec file for package almanah
 #
 # Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +21,11 @@ Name:           almanah
 Version:        0.12.4
 Release:        0
 Summary:        GTK+ application to allow you to keep a diary of your life
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://gitlab.gnome.org/GNOME/almanah
 Source:         https://download.gnome.org/sources/almanah/0.12/%{name}-%{version}.tar.xz
-
 BuildRequires:  desktop-file-utils
-BuildRequires:  gpgme-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  meson >= 0.51
@@ -38,6 +37,7 @@ BuildRequires:  pkgconfig(gcr-4)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
+BuildRequires:  pkgconfig(gpgme)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.5.6
 BuildRequires:  pkgconfig(gtksourceview-4)
@@ -82,5 +82,6 @@ diary entries using multiple events.
 %{_datadir}/metainfo/org.gnome.Almanah.metainfo.xml
 
 %files lang -f %{name}.lang
+%license COPYING
 
 %changelog
