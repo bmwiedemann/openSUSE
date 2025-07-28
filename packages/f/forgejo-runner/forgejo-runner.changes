@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 27 21:36:22 UTC 2025 - rrahl0@opensuse.org
+
+- Update to version 8.0.1:
+  * fix: tolerate strings for fail-fast, max-parallel, timeout-minutes,
+    cancel-timeout-minutes
+
+-------------------------------------------------------------------
 Sat Jul 26 16:14:33 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 8.0.0:

@@ -221,4 +221,14 @@
   * sum256 the container name so derivations do not overflow (forwarded request 1295904 from rrahl0)</comment>
     <requestid>1295905</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1e231c75101965bdbd1dfb035d09262f</srcmd5>
+    <version>8.0.1</version>
+    <time>1753707510</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.0.1:
+  * fix: tolerate strings for fail-fast, max-parallel, timeout-minutes,
+    cancel-timeout-minutes (forwarded request 1295991 from rrahl0)</comment>
+    <requestid>1295992</requestid>
+  </revision>
 </revisionlist>
