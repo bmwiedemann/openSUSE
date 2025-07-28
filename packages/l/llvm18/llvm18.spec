@@ -117,7 +117,7 @@
 # Set max_<type>_jobs so that every job of the given type has at least the
 # given amount of memory.
 %define set_jobs() \
-    max_%{1}_jobs="%{?jobs:%{jobs}}" \
+    max_%{1}_jobs="$(echo %{?_smp_mflags} | cut -c 3-)" \
     if test -n "$max_%{1}_jobs" -a "$max_%{1}_jobs" -gt 1 ; then \
         max_jobs="$(($avail_mem / %2))" \
         test "$max_%{1}_jobs" -gt "$max_jobs" && max_%{1}_jobs="$max_jobs" && echo "Warning: Reducing number of %{1} jobs to $max_jobs because of memory limits" \
@@ -413,6 +413,8 @@ Patch16:        llvm-workaround-superfluous-branches.patch
 Patch17:        llvm-suse-implicit-gnu.patch
 # PATCH-FIX-OPENSUSE: No need to run {amdgpu,nvptx}-arch because we don't have the toolchains installed anyway.
 Patch18:        openmp-dont-run-gpu-arch.patch
+# PATCH-FIX-UPSTREAM: make libomp reproducible (boo#1199076)
+Patch19:        reproducible.patch
 Patch20:        llvm_build_tablegen_component_as_shared_library.patch
 Patch21:        tests-use-python3.patch
 Patch24:        opt-viewer-Find-style-css-in-usr-share.patch
@@ -959,6 +961,7 @@ mv lldb-%{_version}.src tools/lldb
 
 %if %{with openmp}
 mv openmp-%{_version}.src projects/openmp
+%patch -P 19 -p1
 %endif
 
 %if %{with libcxx}
@@ -1088,12 +1091,13 @@ max_link_jobs=1
 %if %{with thin_lto} && %{with use_lld}
 %global lld_ldflag --ld-path=%{sourcedir}/stage1/bin/ld.lld
 %ifarch %{arm} i586 ppc
-%if %{jobs} > 8
-%global lto_limit_threads -Wl,--thinlto-jobs=8
+jobs=$(echo %{?_smp_mflags} | cut -c 3-)
+if [ "$jobs" -gt 8 ] ; then
+    lto_limit_threads=-Wl,--thinlto-jobs=8
+fi
 %endif
 %endif
-%endif
-%define build_ldflags -Wl,--build-id=sha1 %{?lld_ldflag} %{?lto_limit_threads}
+%define build_ldflags -Wl,--build-id=sha1 %{?lld_ldflag} ${lto_limit_threads}
 # The build occasionally uses tools linking against previously built
 # libraries (mostly libLLVM.so), but we don't want to set RUNPATHs.
 export LD_LIBRARY_PATH=%{sourcedir}/build/%{_lib}
@@ -1166,6 +1170,7 @@ MALLOC_CHECK_BACK=$MALLOC_CHECK_
 unset MALLOC_CHECK_
 %endif
 
+setarch -R \
 ninja -v %{?_smp_mflags}
 
 %if %{with thin_lto}

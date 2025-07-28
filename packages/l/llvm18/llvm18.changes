@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 26 16:17:06 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Disable ASLR during build to make libomp.so reproducible (boo#1199076)
+- Add reproducible.patch to make libomp.so reproducible (boo#1199076)
+- Replace usage of %jobs for reproducible builds (boo#1237231)
+
+-------------------------------------------------------------------
 Wed May 14 10:30:28 UTC 2025 - Martin Jambor <mjambor@suse.com>
 
 - Add gcc15-add-necessary-includes.patch in order to add four

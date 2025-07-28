@@ -254,4 +254,15 @@
 </comment>
     <requestid>1277902</requestid>
   </revision>
+  <revision rev="14" vrev="8">
+    <srcmd5>fb03e85356407407f20243455d7b7bb3</srcmd5>
+    <version>18.1.8</version>
+    <time>1753707484</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable ASLR during build to make libomp.so reproducible (boo#1199076)
+- Add reproducible.patch to make libomp.so reproducible (boo#1199076)
+- Replace usage of %jobs for reproducible builds (boo#1237231)
+</comment>
+    <requestid>1295972</requestid>
+  </revision>
 </revisionlist>
