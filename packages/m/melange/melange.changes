@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 28 05:31:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.1:
+  * sbom: populate supplier for operating system package (#2101)
+  * Do not require .so files to be executable (#2099)
+  * SCA: Generate "depends" for shlibs ending in ".so" (#2072)
+  * Expand check for libraries provided by the host (#2077)
+
+-------------------------------------------------------------------
 Fri Jul 25 13:34:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.0:
