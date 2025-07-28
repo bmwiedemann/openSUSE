@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 27 15:11:02 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.148.2:
+  * releaser: Bump versions for release of 0.148.2
+  * tpl: Add test for recent template selection regression
+  * Revert "hugolib: Honor implicit "page" type during template selection"
+  * Fix regression with hyphenated codeblock templates, e.g. render-codeblock-go-html-template.html
+  * commands: Avoid full browser refresh on simple CSS changes
+  * releaser: Prepare repository for 0.149.0-DEV
+
+-------------------------------------------------------------------
 Mon Jul 14 13:55:36 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.148.1:

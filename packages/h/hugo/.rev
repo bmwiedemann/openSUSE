@@ -1597,4 +1597,18 @@
   * releaser: Prepare repository for 0.149.0-DEV (forwarded request 1293175 from jfkw)</comment>
     <requestid>1293201</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>1b5b884bde32502b57201449c148aad1</srcmd5>
+    <version>0.148.2</version>
+    <time>1753707497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.148.2:
+  * releaser: Bump versions for release of 0.148.2
+  * tpl: Add test for recent template selection regression
+  * Revert &quot;hugolib: Honor implicit &quot;page&quot; type during template selection&quot;
+  * Fix regression with hyphenated codeblock templates, e.g. render-codeblock-go-html-template.html
+  * commands: Avoid full browser refresh on simple CSS changes
+  * releaser: Prepare repository for 0.149.0-DEV (forwarded request 1295967 from jfkw)</comment>
+    <requestid>1295969</requestid>
+  </revision>
 </revisionlist>
