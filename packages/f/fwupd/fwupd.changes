@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 25 15:57:05 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- drop unneeded gpgme build dependency. GPG support is provided
+  with libjcat
+
+-------------------------------------------------------------------
 Tue Jul 22 10:47:51 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.0.13:

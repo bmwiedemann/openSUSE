@@ -61,7 +61,6 @@ BuildRequires:  gcab
 BuildRequires:  gnutls
 BuildRequires:  gobject-introspection
 BuildRequires:  gobject-introspection-devel
-BuildRequires:  gpgme-devel
 BuildRequires:  help2man
 BuildRequires:  intltool
 BuildRequires:  libelf-devel

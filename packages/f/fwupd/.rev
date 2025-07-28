@@ -962,4 +962,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     - More MediaTek scaler devices (forwarded request 1295070 from dimstar)</comment>
     <requestid>1295137</requestid>
   </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>f13c534a9afe6bc34b7b012c7b5e11a6</srcmd5>
+    <version>2.0.13</version>
+    <time>1753707481</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1295960</requestid>
+  </revision>
 </revisionlist>
