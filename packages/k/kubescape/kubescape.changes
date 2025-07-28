@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 28 05:34:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.36:
+  * fix buildnumber test
+  * close grype DB at the very end of processing
+  * do not fail version if update info cannot be fetched
+  * fix: control-plane node taints check (#1843)
+  * check scanInfo.Submit in HandleResults to not submit by default
+
+-------------------------------------------------------------------
 Wed Jun 25 04:52:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.35:
