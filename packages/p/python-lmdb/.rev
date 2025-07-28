@@ -181,4 +181,14 @@
 - Modernize specfile</comment>
     <requestid>1293127</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2a4c33020b44fa734e5354a6073c58b2</srcmd5>
+    <version>1.7.3</version>
+    <time>1753707551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.3:
+  * Fix: CFFI build now uses relative paths
+    gh#jnwatson/py-lmdb#386</comment>
+    <requestid>1296053</requestid>
+  </revision>
 </revisionlist>

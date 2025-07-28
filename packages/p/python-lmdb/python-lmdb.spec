@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lmdb
-Version:        1.7.2
+Version:        1.7.3
 Release:        0
 Summary:        Universal Python binding for the LMDB 'Lightning' Database
 License:        OLDAP-2.8

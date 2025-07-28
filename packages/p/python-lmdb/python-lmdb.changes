@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 28 08:42:04 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.7.3:
+  * Fix: CFFI build now uses relative paths
+    gh#jnwatson/py-lmdb#386
+
+-------------------------------------------------------------------
 Mon Jul 14 12:26:32 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.2:
