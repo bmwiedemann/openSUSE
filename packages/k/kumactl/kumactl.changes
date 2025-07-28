@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 25 05:01:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.11.3:
+  * chore(deps): bump envoy from v1.34.2 to v1.34.3 (#14015)
+  * chore(deps): bump CoreDNS to v1.12.2 (#13979)
+  * chore(deps): bump envoy from v1.34.1 to v1.34.2 (#13946)
+
+-------------------------------------------------------------------
 Thu Jul 10 05:31:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.11.2:
