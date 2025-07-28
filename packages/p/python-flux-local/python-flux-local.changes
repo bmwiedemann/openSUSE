@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 28 06:02:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.7.1:
+  * What's Changed
+    - Fix bugs due to adding --skip_invalid_paths by @ansarhun in #977
+  * Developer updates
+    - chore(deps): update dependency coverage to v7.10.0 by
+      @renovate[bot] in #976
+    - chore(deps): update dependency gitpython to v3.1.45 by
+      @renovate[bot] in #973
+
+-------------------------------------------------------------------
 Fri Jul 25 06:48:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 7.7.0:
