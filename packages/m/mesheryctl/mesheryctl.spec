@@ -17,7 +17,7 @@
 
 
 Name:           mesheryctl
-Version:        0.8.119
+Version:        0.8.122
 Release:        0
 Summary:        CLI for the meshery cloud native management plane
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.23
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.24
 
 %description
 Meshery manages the provisioning, configuration and operation of your
