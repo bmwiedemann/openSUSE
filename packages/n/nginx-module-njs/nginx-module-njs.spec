@@ -1,7 +1,7 @@
 #
 # spec file for package nginx-module-njs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nginx-module-njs
-Version:        0.8.5
+Version:        0.9.1
 Release:        0
 Summary:        NGINX module for NGINX Javascript
 License:        BSD-2-Clause

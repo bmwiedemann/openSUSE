@@ -52,4 +52,12 @@ nginx modules:
   *  Improvement: validating URI and args arguments in r.subrequest().</comment>
     <requestid>1189037</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d3d9b7175c60c4e25017b97380eedffd</srcmd5>
+    <version>0.9.1</version>
+    <time>1753868717</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1296321</requestid>
+  </revision>
 </revisionlist>
