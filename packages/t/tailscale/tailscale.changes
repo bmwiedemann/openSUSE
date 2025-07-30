@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 29 21:20:47 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.86.2:
+  * A deadlock issue that may have occurred in the client
+  * An occasional crash when establishing a new port mapping with a gateway or
+    firewall
+
+-------------------------------------------------------------------
 Sat Jul 26 16:23:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.86.0:

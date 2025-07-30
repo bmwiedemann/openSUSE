@@ -328,4 +328,15 @@
     the disk using trusted platform module (TPM) (forwarded request 1295906 from rrahl0)</comment>
     <requestid>1295907</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f5ed0022b27203ca80eeeaf652a3b63c</srcmd5>
+    <version>1.86.2</version>
+    <time>1753868745</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.86.2:
+  * A deadlock issue that may have occurred in the client
+  * An occasional crash when establishing a new port mapping with a gateway or
+    firewall (forwarded request 1296389 from rrahl0)</comment>
+    <requestid>1296390</requestid>
+  </revision>
 </revisionlist>
