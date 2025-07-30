@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul 27 18:25:53 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 1.5.201
+  * Support imx943 v2x image container
+  * Reduce transfer size to 16k because chipidea usb driver limitation
+  * Fix workflow pdf build error
+  * Fix workflow arm build fail
+- update to 1.5.197
+  * Add iMX943 support
+- Add upstream patch mfgtools-gcc15.patch for fix compilation with
+  GCC 15.
+
+-------------------------------------------------------------------
 Wed May  7 08:13:38 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes

@@ -17,15 +17,16 @@
 
 
 Name:           mfgtools
-Version:        1.5.191.0
+Version:        1.5.201
 Release:        0
 Summary:        Freescale/NXP I.MX Chip image deploy tools
 License:        BSD-3-Clause
 Group:          System/Management
-URL:            https://github.com/NXPmicro/mfgtools.git
-Source0:        %{name}-%{version}.tar
+URL:            https://github.com/NXPmicro/mfgtools
+Source0:        %{name}-uuu_%{version}.tar.gz
 Patch0:         mfgtools-gcc13.patch
-BuildRequires:  cmake
+Patch1:         mfgtools-gcc15.patch
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  libbz2-devel
 BuildRequires:  libopenssl-devel
@@ -37,22 +38,19 @@ BuildRequires:  tinyxml2-devel
 BuildRequires:  zlib-devel
 
 %description
-Freescale/NXP I.MX Chip image deploy tools. This package holds the evolution of MFGTools (aka MFGTools v3), which is called the UUU (Universal Update Utility).
+Freescale/NXP I.MX Chip image deploy tools. This package holds the evolution of
+MFGTools (aka MFGTools v3), which is called the UUU (Universal Update Utility).
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-uuu_%{version}
 
 %build
-# Remove cmake4 error due to not setting
-# min cmake version - sflees.de
-export CMAKE_POLICY_VERSION_MINIMUM=3.5
 echo uuu_%{version} > .tarball-version
-cmake .
-make
+%cmake
+%cmake_build
 
 %install
-mkdir -p %{buildroot}%{_bindir}
-install uuu/uuu %{buildroot}%{_bindir}
+%cmake_install
 
 %files
 %license LICENSE
