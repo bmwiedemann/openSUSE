@@ -1,7 +1,7 @@
 #
 # spec file for package gap-crisp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-crisp
-Version:        1.4.6
+Version:        1.4.7
 Release:        0
 Summary:        GAP: Computing with Radicals, Injectors, Schunck classes and Projectors
 License:        BSD-2-Clause
