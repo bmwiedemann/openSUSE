@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 28 14:25:34 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20250728.f544090:
+  * Make sure struct config is always initialized
+  * sysextmgrd check: only root can specify prefix
+
+-------------------------------------------------------------------
 Fri Jul 25 13:14:44 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.0+git20250725.602e873:

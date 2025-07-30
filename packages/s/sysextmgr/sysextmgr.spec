@@ -17,7 +17,7 @@
 
 
 Name:           sysextmgr
-Version:        0.0+git20250725.602e873
+Version:        0.0+git20250728.f544090
 Release:        0
 Summary:        Tools to manage sysext-images on MicroOS
 License:        GPL-2.0-or-later

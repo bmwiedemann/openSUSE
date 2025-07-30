@@ -20,4 +20,14 @@
   * check: error codes should be negative</comment>
     <requestid>1295783</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b90b6b059b86663669a47a48422fc803</srcmd5>
+    <version>0.0+git20250728.f544090</version>
+    <time>1753868585</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0+git20250728.f544090:
+  * Make sure struct config is always initialized
+  * sysextmgrd check: only root can specify prefix</comment>
+    <requestid>1296167</requestid>
+  </revision>
 </revisionlist>
