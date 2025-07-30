@@ -18,17 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lupa
-Version:        2.0
+Version:        2.5
 Release:        0
 Summary:        Python wrapper around Lua and LuaJIT
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/scoder/lupa
 Source:         https://files.pythonhosted.org/packages/source/l/lupa/lupa-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM no-bundle.patch gh#scoder/lupa@19279acda1ad
-Patch1:         no-bundle.patch
-# PATCH-FIX-UPSTREAM noexcept.patch gh#scoder/lupa@fc0a1af99b74
-Patch2:         noexcept.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}

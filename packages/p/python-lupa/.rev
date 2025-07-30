@@ -183,4 +183,34 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1281777</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>75eeb44f18f0088385948c99cfdd38b7</srcmd5>
+    <version>2.5</version>
+    <time>1753868660</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.5:
+  * Lua uses dlopen() again, which was lost in Lupa 2.3.
+  * Built with Cython 3.1.2.
+  * Failures in the test suite didn't set a non-zero process exit value.
+  * Removed support for Python 2.x.
+  * Built with Cython 3.0.11.
+  * A new method LuaRuntime.gccollect() was added to trigger the Lua garbage
+    collector.
+  * A new context manager LuaRuntime.nogc() was added to temporarily disable
+    the Lua garbage collector.
+  * The table_from() method gained a new keyword argument recursive=False.
+  * The LuaRuntime methods &quot;eval&quot;, &quot;execute&quot; and &quot;compile&quot; gained new keyword
+    options mode and name that allow constraining the input type and
+    modifying the (chunk) name shown in error messages, following similar
+    arguments in the Lua load() function.
+  * Loading Lua modules did not work for the version specific Lua modules
+    introduced in Lupa 2.0. It turned out that it can only be enabled for one
+    of them in a given Python run, so it is now left to users to enable it
+    explicitly at need.
+  * Built with Cython 3.0.9 for improved support of Python 3.12/13.
+- Drop patches, included upstream:
+  * no-bundle.patch
+  * noexcept.patch</comment>
+    <requestid>1296221</requestid>
+  </revision>
 </revisionlist>
