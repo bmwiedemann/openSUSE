@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 24 15:16:51 UTC 2025 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 2.1.5
+  * kdumptool calibrate: use kernel flavour from the 
+    kdump kernel (jsc#PED-12971)
+  * order kdump-commandline.service after kdump.service
+  * updated documentation (bsc#1246908)
+
+-------------------------------------------------------------------
 Thu Jul 18 14:42:52 UTC 2025 - Jiri Bohac <jbohac@suse.com>
 
 - upgrade to version 2.1.4

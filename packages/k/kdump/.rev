@@ -1473,4 +1473,16 @@ Please note that the boo#1226676 fix does not completely fix the issue on its ow
 - update calibrate values</comment>
     <requestid>1295067</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>698175088a054a8ad6a93fff7de52ec9</srcmd5>
+    <version>2.1.5</version>
+    <time>1753868485</time>
+    <user>dimstar_suse</user>
+    <comment>- upgrade to version 2.1.5
+  * kdumptool calibrate: use kernel flavour from the 
+    kdump kernel (jsc#PED-12971)
+  * order kdump-commandline.service after kdump.service
+  * updated documentation (bsc#1246908)</comment>
+    <requestid>1295604</requestid>
+  </revision>
 </revisionlist>
