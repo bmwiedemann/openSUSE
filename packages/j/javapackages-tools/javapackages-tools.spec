@@ -1,7 +1,7 @@
 #
 # spec file for package javapackages-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ Name:           javapackages-tools-%{flavor}
 %else
 Name:           javapackages-tools
 %endif
-Version:        6.3.4
+Version:        6.4.1
 Release:        0
 Summary:        Macros and scripts for Java packaging support
 License:        BSD-3-Clause
@@ -45,8 +45,6 @@ Patch1:         python-optional.patch
 #PATCH-FIX-SUSE: SUSE did not bump epoch of openjdk packages, whereas Fedora did
 #               Avoid generating unresolvable requires
 Patch2:         suse-no-epoch.patch
-#PATCH-FIX-UPSTREAM: removing the backslashes breaks checks with rpm 4.14.1
-Patch3:         0001-Revert-jpackage_script-Remove-unneeded-backslashes.patch
 
 BuildRequires:  fdupes
 BuildRequires:  perl
@@ -184,6 +182,7 @@ files="
 %{_sysconfdir}/java/eclipse.conf
 %{_datadir}/java-utils/java-functions
 %{_datadir}/java-utils/java-wrapper
+%{_datadir}/java-utils/jp_binding.sh
 %{_datadir}/java-utils/scl-enable
 %{_rpmmacrodir}/macros.jpackage
 %{_rpmmacrodir}/macros.javapackages-filesystem

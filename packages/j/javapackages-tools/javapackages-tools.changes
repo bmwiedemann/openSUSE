@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul 28 17:05:19 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 6.4.1
+  * Changes
+    + Revert "jpackage_script: Remove unneeded backslashes"
+    + Initial implementation of %jp_binding macro
+    + Replace invalid $ escape in regex
+- Removed patch:
+  * 0001-Revert-jpackage_script-Remove-unneeded-backslashes.patch
+    + integrated in this version
+- Modified patches:
+  * python-optional.patch
+  * suse-no-epoch.patch
+  * suse-use-libdir.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Fri Oct 11 10:56:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 6.3.4

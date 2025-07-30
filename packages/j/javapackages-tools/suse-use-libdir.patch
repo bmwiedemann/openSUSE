@@ -1,6 +1,6 @@
---- javapackages-5.3.1/configure	2019-06-14 12:26:27.000000000 +0200
-+++ javapackages-5.3.1/configure	2020-07-16 09:04:37.316453132 +0200
-@@ -14,6 +14,7 @@
+--- a/configure
++++ b/configure
+@@ -43,6 +43,7 @@ sysconfdir
  root_sysconfdir
  rpmconfigdir
  rpmmacrodir
@@ -8,7 +8,7 @@
  
  m2home
  
-@@ -51,6 +52,7 @@
+@@ -81,6 +82,7 @@ test -z "${mandir}" && mandir="${datadir}/man"
  test -z "${rundir}" && rundir="${localstatedir}/run"
  test -z "${sysconfdir}" && sysconfdir="${prefix}/etc"
  test -z "${root_sysconfdir}" && root_sysconfdir="${prefix}/etc"
@@ -16,9 +16,8 @@
  test -z "${rpmconfigdir}" && rpmconfigdir="${prefix}/lib/rpm"
  test -z "${rpmmacrodir}" && rpmmacrodir="${rpmconfigdir}/macros.d"
  
-diff -urEbwB javapackages-5.3.1/etc/eclipse.conf javapackages-5.3.1/etc/eclipse.conf
---- javapackages-5.3.1/etc/eclipse.conf	2019-06-14 12:26:27.000000000 +0200
-+++ javapackages-5.3.1/etc/eclipse.conf	2020-07-16 09:04:37.316453132 +0200
+--- a/etc/eclipse.conf
++++ b/etc/eclipse.conf
 @@ -1,7 +1,7 @@
  # Eclipse filesystem configuration file
  
@@ -28,7 +27,7 @@ diff -urEbwB javapackages-5.3.1/etc/eclipse.conf javapackages-5.3.1/etc/eclipse.
  
  # Location of architecture-independant dropins
  eclipse.dropins.noarch=@{datadir}/eclipse/dropins
-@@ -10,10 +10,10 @@
+@@ -10,10 +10,10 @@ eclipse.dropins.noarch=@{datadir}/eclipse/dropins
  eclipse.droplets.noarch=@{datadir}/eclipse/droplets
  
  # Location of architecture-dependant dropins
@@ -41,9 +40,9 @@ diff -urEbwB javapackages-5.3.1/etc/eclipse.conf javapackages-5.3.1/etc/eclipse.
  
  # Comma-separated list of directories searched for external bundles
  eclipse.bundles=@{javadir},@{jnidir}
---- javapackages-5.3.1/expand.sh	2019-06-14 12:26:27.000000000 +0200
-+++ javapackages-5.3.1/expand.sh	2020-07-16 09:04:37.316453132 +0200
-@@ -45,6 +45,7 @@
+--- a/expand.sh
++++ b/expand.sh
+@@ -41,6 +41,7 @@ expand()
      sed \
          -e "s|@{bindir}|${bindir}|g" \
          -e "s|@{datadir}|${datadir}|g" \
@@ -51,11 +50,11 @@ diff -urEbwB javapackages-5.3.1/etc/eclipse.conf javapackages-5.3.1/etc/eclipse.
          -e "s|@{javaconfdir}|${javaconfdir}|g" \
          -e "s|@{javadir}|${javadir}|g" \
          -e "s|@{jnidir}|${jnidir}|g" \
---- javapackages-5.3.1/install	2019-06-14 12:26:27.000000000 +0200
-+++ javapackages-5.3.1/install	2020-07-16 09:04:37.316453132 +0200
-@@ -90,11 +90,11 @@
- dir "${mavenpomdir}"
+--- a/install
++++ b/install
+@@ -91,11 +91,11 @@ dir "${mavenpomdir}"
  dir "${ivyxmldir}"
+ dir "${jpbindingdir}"
  dir "${datadir}/maven-metadata"
 -dir "${prefix}/lib/eclipse"
 -dir "${prefix}/lib/eclipse/features"
@@ -70,8 +69,8 @@ diff -urEbwB javapackages-5.3.1/etc/eclipse.conf javapackages-5.3.1/etc/eclipse.
  dir "${datadir}/eclipse"
  dir "${datadir}/eclipse/dropins"
  dir "${datadir}/eclipse/droplets"
---- javapackages-5.3.1/macros.d/macros.javapackages-filesystem	2019-06-14 12:26:27.000000000 +0200
-+++ javapackages-5.3.1/macros.d/macros.javapackages-filesystem	2020-07-16 09:05:34.448792440 +0200
+--- a/macros.d/macros.javapackages-filesystem
++++ b/macros.d/macros.javapackages-filesystem
 @@ -13,17 +13,17 @@
  #
  # Root directory where all Java VMs/SDK/JREs are installed.

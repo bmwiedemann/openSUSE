@@ -1,6 +1,6 @@
---- javapackages-5.3.0/depgenerators/maven.req	2018-08-06 17:09:06.000000000 +0200
-+++ javapackages-5.3.0/depgenerators/maven.req	2018-10-24 10:29:11.404375107 +0200
-@@ -295,9 +295,9 @@
+--- a/depgenerators/maven.req
++++ b/depgenerators/maven.req
+@@ -294,9 +294,9 @@ class TagBuilder(object):
      def _get_java_requires(self, reqs):
          major, minor = max([self._parse_java_requires(x) for x in reqs])
          if minor:
@@ -12,9 +12,9 @@
  
      def _parse_java_requires(self, req):
          match = re.match(r'^(\d+)(?:\.(\d+))?$', req)
---- javapackages-5.3.0/test/maven_req_test.py	2018-08-06 17:09:06.000000000 +0200
-+++ javapackages-5.3.0/test/maven_req_test.py	2018-10-24 10:28:59.408310751 +0200
-@@ -30,7 +30,7 @@
+--- a/test/maven_req_test.py
++++ b/test/maven_req_test.py
+@@ -30,7 +30,7 @@ class TestMavenReq(unittest.TestCase):
          self.assertEqual(return_value, 0, stderr)
          sout = [x for x in stdout.split('\n') if x]
          want = ("javapackages-filesystem", "mvn(org.apache.maven:maven-project)",
@@ -23,7 +23,7 @@
          self.assertEqual(set(want), set(sout))
  
      @mavenreq(["require-java2/buildroot/usr/share/maven-metadata/require.xml"])
-@@ -38,7 +38,7 @@
+@@ -38,7 +38,7 @@ class TestMavenReq(unittest.TestCase):
          self.assertEqual(return_value, 0, stderr)
          sout = [x for x in stdout.split('\n') if x]
          want = ("javapackages-filesystem", "mvn(org.apache.maven:maven-project)",
@@ -32,7 +32,7 @@
          self.assertEqual(set(want), set(sout))
  
      @mavenreq(["require-java3/buildroot/usr/share/maven-metadata/require.xml"])
-@@ -46,7 +46,7 @@
+@@ -46,7 +46,7 @@ class TestMavenReq(unittest.TestCase):
          self.assertEqual(return_value, 0, stderr)
          sout = [x for x in stdout.split('\n') if x]
          want = ("javapackages-filesystem", "mvn(org.apache.maven:maven-project)",
@@ -41,7 +41,7 @@
          self.assertEqual(set(want), set(sout))
  
      @mavenreq(["require-java9/buildroot/usr/share/maven-metadata/require.xml"])
-@@ -54,7 +54,7 @@
+@@ -54,7 +54,7 @@ class TestMavenReq(unittest.TestCase):
          self.assertEqual(return_value, 0, stderr)
          sout = [x for x in stdout.split('\n') if x]
          want = ("javapackages-filesystem", "mvn(org.apache.maven:maven-project)",
@@ -50,7 +50,7 @@
          self.assertEqual(set(want), set(sout))
  
      @mavenreq(["require-java10/buildroot/usr/share/maven-metadata/require.xml"])
-@@ -62,7 +62,7 @@
+@@ -62,7 +62,7 @@ class TestMavenReq(unittest.TestCase):
          self.assertEqual(return_value, 0, stderr)
          sout = [x for x in stdout.split('\n') if x]
          want = ("javapackages-filesystem", "mvn(org.apache.maven:maven-project)",
@@ -59,7 +59,7 @@
          self.assertEqual(set(want), set(sout))
  
      @mavenreq(["require-java9and10/buildroot/usr/share/maven-metadata/require.xml"])
-@@ -70,7 +70,7 @@
+@@ -70,7 +70,7 @@ class TestMavenReq(unittest.TestCase):
          self.assertEqual(return_value, 0, stderr)
          sout = [x for x in stdout.split('\n') if x]
          want = ("javapackages-filesystem", "mvn(org.apache.maven:maven-project)",

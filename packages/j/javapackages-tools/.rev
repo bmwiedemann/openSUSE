@@ -439,4 +439,12 @@
     <comment>6.3.4 + fix</comment>
     <requestid>1207246</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>0ceec9924aa5cc233b6121fd6326a29c</srcmd5>
+    <version>6.4.1</version>
+    <time>1753868487</time>
+    <user>dimstar_suse</user>
+    <comment>6.4.1</comment>
+    <requestid>1296198</requestid>
+  </revision>
 </revisionlist>
