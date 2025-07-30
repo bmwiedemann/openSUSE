@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Jul 29 06:43:17 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.11.1:
+  * chore: auto-update generated files
+  * chore(deps): update github to v74 (#5926)
+  * fix: make brews deprecation "soft" (#5924)
+  * ci: link announcement in the release notes (#5925)
+  * chore(deps): bump github/codeql-action from 3.29.3 to 3.29.4 (#5923)
+  * chore(deps): bump anchore/sbom-action from 0.20.2 to 0.20.4 (#5921)
+  * chore(deps): bump github/codeql-action from 3.29.2 to 3.29.3 (#5920)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from 1.84.0 to 1.84.1 (#5919)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.134.0 to 0.137.0 (#5917)
+  * fix(aur): quotting when binary (#5914)
+  * fix: exec.CommandContext (#5913)
+  * docs: fix pro inline shortcode
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from 1.78.2 to 1.84.0 (#5912)
+  * chore(deps): bump golang from `48ee313` to `daae04e` (#5911)
+  * chore(deps): bump sigstore/cosign-installer from 3.9.1 to 3.9.2 (#5910)
+  * fix(s3): acls not working on aws sdk v2 (#5904)
+  * docs: update users.md
+  * chore(deps): bump golang from `ddf5200` to `48ee313` (#5906)
+  * chore(deps): bump github.com/mark3labs/mcp-go from 0.33.0 to 0.34.0 (#5905)
+  * chore(deps): bump github.com/mattn/go-mastodon from 0.0.9 to 0.0.10 (#5903)
+  * chore(deps): bump golang.org/x/tools from 0.34.0 to 0.35.0 (#5902)
+  * fix(artifactory,http): exts filter not working properly (#5892)
+  * fix(nix): snapshot builds can now hash files as well (#5894)
+  * docs: update required workflow permissions in attestations.md (#5900)
+  * chore(deps): bump golang.org/x/crypto from 0.39.0 to 0.40.0 (#5899)
+  * chore(deps): bump golang.org/x/text from 0.26.0 to 0.27.0 (#5898)
+  * chore(deps): bump golang.org/x/sync from 0.15.0 to 0.16.0 (#5897)
+  * docs: update
+  * docs: update USERS.md (#5895)
+  * chore(deps): bump github.com/charmbracelet/lipgloss/v2 from 2.0.0-beta.2.0.20250707173510-045a87bf1420 to 2.0.0-beta1 (#5891)
+  * ci: fix only login to npm if tag
+  * docs: update post
+  * chore: auto-update generated files
+  * docs: announce v2.11 (#5886)
+  * chore: auto-update generated files
+
+-------------------------------------------------------------------
 Wed Jul 09 14:28:31 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.11.0:
