@@ -29,6 +29,8 @@ Patch0:         test_no_warnings_fix.patch
 # PATCH-FIX-OPENSUSE remove-isal-test-dep.patch -- daniel.garcia@suse.com
 # Remove python-isal dependency for testing.
 Patch1:         remove-isal-test-dep.patch
+# PATCH-FIX-OPENSUSE remove-zlib-ng-test-dep.patch
+Patch2:         remove-zlib-ng-test-dep.patch
 Requires:       python-aiohappyeyeballs >= 2.5.0
 Requires:       python-aiosignal >= 1.4
 Requires:       python-attrs >= 17.3.0
@@ -73,7 +75,6 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module re-assert}
 BuildRequires:  %{python_module time-machine}
 BuildRequires:  %{python_module trustme}
-BuildRequires:  %{python_module zlib-ng}
 # /SECTION
 # SECTION docs
 %if %{with docs}
@@ -141,8 +142,6 @@ rm -v tests/autobahn/test_autobahn.py
 rm -v tests/test_proxy_functional.py
 # Requires python-pytest-codspeed
 rm -v tests/test_benchmarks_*
-# some tests from here hang with pycares 4.9 https://github.com/aio-libs/aiohttp/issues/11244
-rm -v tests/test_leaks.py
 
 # randomly fails on xdist splits
 single_runs="(test_run_app or test_web_runner)"
