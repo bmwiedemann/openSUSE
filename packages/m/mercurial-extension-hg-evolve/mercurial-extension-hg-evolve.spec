@@ -28,7 +28,7 @@
 %endif
 
 Name:           mercurial-extension-hg-evolve
-Version:        11.1.8
+Version:        11.1.9
 Release:        0
 Summary:        Flexible evolution of Mercurial history
 License:        GPL-2.0-or-later

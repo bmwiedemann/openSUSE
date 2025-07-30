@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 26 15:02:36 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Update to version 11.1.9.
+  * compatibility with Mercurial 7.1
+  topic (1.1.9)
+  * compatibility with Mercurial 7.1
+
+-------------------------------------------------------------------
 Wed Mar 26 23:26:37 UTC 2025 - Sean Baggaley <me@drinkybird.net>
 
 - Use PEP 517/518 build system via pyproject macros
