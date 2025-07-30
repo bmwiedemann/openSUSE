@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 29 09:33:21 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 1.6.2
+  * Fixed ID field on permissions not changing
+  * Improved the Profiler and Process Viewer plots
+  * Made Graph ports use their own media type instead of the node's
+
+-------------------------------------------------------------------
 Tue Oct 22 18:54:41 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 1.6.1
