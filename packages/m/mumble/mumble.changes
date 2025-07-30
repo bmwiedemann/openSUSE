@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 18 05:14:45 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Use SHARED_LINKER_FLAGS="-lGL" also for Leap 16, fixes building
+
+-------------------------------------------------------------------
 Thu Jun 26 13:40:44 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Fix build with gcc15 (boo#1245428):

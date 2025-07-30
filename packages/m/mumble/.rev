@@ -90,4 +90,12 @@
     <comment>Fix build with gcc15 (boo#1245428)</comment>
     <requestid>1288948</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>46f9f581b8e629240ed5ee29b64c57ba</srcmd5>
+    <version>1.5.735</version>
+    <time>1753868773</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1296493</requestid>
+  </revision>
 </revisionlist>

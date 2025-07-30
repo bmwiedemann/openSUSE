@@ -152,7 +152,7 @@ won't be audible to other players.
 	-Dbundled-speex:BOOL=OFF \
 	-Dqtspeech:BOOL=ON \
 	-Dbundle-qt-translations:BOOL=OFF \
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
 	-DCMAKE_SHARED_LINKER_FLAGS="-lGL" \
 %endif
 %if 0%{?suse_version} <= 1550
