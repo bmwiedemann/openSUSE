@@ -456,4 +456,12 @@
   * improve sparse compression testing</comment>
     <requestid>1292327</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>518cdd9e02a2cb95d7ca9ee3f8f56b5f</srcmd5>
+    <version>3.5.2</version>
+    <time>1753868706</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1296292</requestid>
+  </revision>
 </revisionlist>
