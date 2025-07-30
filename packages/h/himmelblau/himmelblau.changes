@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 28 18:53:09 UTC 2025 - david.mulder@suse.com
+
+- Update to version 0.9.21+git.0.6963ee0:
+  * Fix authentication when passkeys are enabled
+  * Version 0.9.20
+  * Fix Intermittent auth issue AADSTSError 16000
+  * Version 0.9.19
+  * Disable cookies
+  * Version 0.9.18
+  * Cache the build target output to improve build times
+  * Easier build selection w/ Makefile
+  * Never write the app_id to the server config
+
+-------------------------------------------------------------------
 Thu Jun 26 17:04:51 UTC 2025 - david.mulder@suse.com
 
 - Update to version 0.9.17+git.0.4a97692:
