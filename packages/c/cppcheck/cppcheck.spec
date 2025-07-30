@@ -22,7 +22,7 @@
 %bcond_without rules
 %endif
 Name:           cppcheck
-Version:        2.17.1
+Version:        2.18.0
 Release:        0
 Summary:        A tool for static C/C++ code analysis
 License:        GPL-3.0-or-later
