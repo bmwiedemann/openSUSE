@@ -21,17 +21,23 @@
 %else
 %define build_pkg_name build
 %endif
+
+# this needs to match the usd python in github test suite
+%define our_python3_version 11
+
 Name:           obs-scm-bridge
-Version:        0.7.2
+Version:        0.7.4
 Release:        0
 Summary:        A help service to work with git repositories in OBS
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/obs-scm-bridge
 Source0:        %{name}-%{version}.tar.xz
+BuildRequires:  python3%{our_python3_version}
+BuildRequires:  python3%{our_python3_version}-PyYAML
 Requires:       %{build_pkg_name} >= 20211125
-Requires:       python3-PyYAML >= 6.0.0
 # these are just recommends in build package, but we need it here
 Requires:       perl(Date::Parse)
+Requires:       git-lfs
 Requires:       perl(LWP::UserAgent)
 Requires:       perl(Net::SSL)
 Requires:       perl(Pod::Usage)
@@ -39,15 +45,9 @@ Requires:       perl(Time::Zone)
 Requires:       perl(URI)
 Requires:       perl(XML::Parser)
 Requires:       perl(YAML::LibYAML)
-Recommends:     python3-packaging
 BuildArch:      noarch
-# git 2.49 for SHA1 submodule support in SHA256 repositories
-%if 0%{?fedora} || 0%{?rhel}
-Requires:       git >= 2.49
-%else
-Requires:       git-core >= 2.49
-Requires:       git-lfs
-%endif
+Requires:       python3%{our_python3_version}-PyYAML
+Recommends:     python3%{our_python3_version}-packaging
 
 %description
 
@@ -55,11 +55,27 @@ Requires:       git-lfs
 %autosetup
 
 %build
+sed -i 's,^#!/usr/bin/python3.*,#!/usr/bin/python3.%our_python3_version,' obs_scm_bridge
 
 %install
-%make_install
+make DESTDIR=%{buildroot} install
+
+mkdir -p %buildroot/etc/obs/services/scm-bridge
+echo "src.opensuse.org" > %buildroot/etc/obs/services/scm-bridge/critical-instances
+# we would need to configure permissions and owner ship for this file
+# but we don't want to enforce obs server package for userid
+#echo "" > %buildroot/etc/obs/services/scm-bridge/credentials
 
 %files
 %{_prefix}/lib/obs/service
+%dir /etc/obs
+%dir /etc/obs/services
+%dir /etc/obs/services/scm-bridge
+%config(noreplace) /etc/obs/services/scm-bridge/critical-instances
+
+%check
+# the test suite requires online resources unfortunatly
+# so let's at least test if our python version understands our syntax
+python3.%our_python3_version obs_scm_bridge --help
 
 %changelog

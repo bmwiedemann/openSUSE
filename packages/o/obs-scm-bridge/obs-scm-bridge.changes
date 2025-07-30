@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul 28 14:53:36 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- 0.7.4
+  * syntax fix
+
+-------------------------------------------------------------------
+Fri Jul 25 11:29:07 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- 0.7.3
+  * fix .gitsubmodule parser to handle space and tabs mixed
+
+-------------------------------------------------------------------
+Tue Jul 22 14:46:43 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- package /etc/obs/service directories
+
+-------------------------------------------------------------------
 Tue Jul 15 12:03:26 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - 0.7.2
