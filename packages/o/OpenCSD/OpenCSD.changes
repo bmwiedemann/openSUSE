@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Jul 22 14:52:20 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update 1.6.1:
+  * Bugfix: docs: Fix name of funciton referenced in API document.
+    (github pr #71 kesyog)
+  * Bugfix: etmv4: ete: Spec trace: Fix handling of uncommitted P0
+    on initial sync (github issue #76)
+  * Bugfix: etmv4: ete: Spec trace: Fix handling of periodic TINFO
+    packets (github issue #75)
+  * Bugfix: etmv4: ete: Spec trace: Commit elements in cycle count
+    packets no processed (github issue #74)
+  * Update: Thumb2: Update handling of IT blocks in thumb trace to
+    mark subsequent instructions as Conditional (github issue #72)
+- From slipped versions:
+  * Update: ete: add FEAT_CMPBR instructions for decode (Arch v9.6)
+  * Bugfix: build: Fix issue with 'make -f ' no longer working for 
+    linux/macos build since 1.5.5.
+  * Update: build: later versions of clang require additional
+    includes to compile correctly.
+  * Update: docs: Update autofdo docs to reflect latest requirements.
+    Other minor docs updates.
+  * Bugfix: memacc: Fix for memacc objects created in decode tree
+    not being released correctly.
+  * Update: build: Add support for MacOS build / clang.
+  * Update: Add operation flags to allow clients to enable
+    additional checking modes. Checks for inconsistencies in 
+    program image and incoming trace. Adds operational flags:
+    - OCSD_OPFLG_N_UNCOND_DIR_BR_CHK - check for N atom on
+    unconditional direct branches. 
+    - OCSD_OPFLG_STRICT_N_UNCOND_BR_CHK - check for N atom on 
+    all unconditional branches. 
+    - OCSD_OPFLG_CHK_RANGE_CONTINUE - Inconsistent range 
+    continuity on not taken branches.
+  * Update: Add operational flag ETM4_OPFLG_PKTDEC_AA64_OPCODE_CHK
+    to enable aa64 opcode checks.
+  * Update: tests: Add timing information to trc_pkt_lister program.
+  * Update: memacc: Add external interface to set memacc cache
+    parameters. Update test programs.
+  * Bugfix: etm4x: fix packet print typo.
+  * Bugfix: docs: Minor fixes to docs and man file.
+  * Bugfix: build: minor fix for clang compatibility.
+  * Update: docs: Update documentation for test programs.
+  * Update: docs: Update trc_pkt_lister man file.
+  * Bugfix: build: fix warnings building library.
+  * Bugfix: tests: Fix typo in trc_pkt_lister help output.
+
+-------------------------------------------------------------------
 Tue Mar  5 12:26:12 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update 1.5.1:

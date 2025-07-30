@@ -1,7 +1,7 @@
 #
 # spec file for package OpenCSD
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %define libnum  1
 Name:           OpenCSD
-Version:        1.5.1
+Version:        1.6.1
 Release:        0
 Summary:        CoreSight Trace Decode library
 License:        BSD-3-Clause
