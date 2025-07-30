@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jul 30 01:10:51 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.17.1:
+  * enhancements:
+    + improved handling for OGIP products that do not follow the standards
+    + Models can now be combined using arbitrary ufuncs
+    + various updates to XSpec interface and support for XSpec 12.15.0
+      including the additional of 17 new models
+    + added interface to support ArviZ for analysis of Bayesian models
+  * infrastructure and testing:
+    + updated tests to work with python 3.13
+  * bug fixes:
+    + fixed a bug in the caching code that limited the cache size to 1
+    + update to use fake_pha for missions which don't use 1 as the first
+      channel
+- Dropped patches:
+  * sherpa-pr2188-np2docstrings.patch
+  * sherpa-pr2207-mpl.patch
+  * support-pytest-8.3.4.patch
+- Refresed sherpa-suse-libdir.patch
+- Add patch support-gcc-15.patch:
+  * Specify function declarations correctly.
+
+-------------------------------------------------------------------
 Wed Feb 12 14:51:20 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Add sherpa-pr2207-mpl.patch for matplotlib 3.10 test

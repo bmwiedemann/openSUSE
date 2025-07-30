@@ -1,0 +1,535 @@
+Index: sherpa-4.17.1/extern/region-4.14/src/region_eval.c
+===================================================================
+--- sherpa-4.17.1.orig/extern/region-4.14/src/region_eval.c
++++ sherpa-4.17.1/extern/region-4.14/src/region_eval.c
+@@ -80,30 +80,28 @@ int regCompareRegion( regRegion* Region1
+ {
+     regShape* Shape1;
+     regShape* Shape2;
+-    int true  = 1;
+-    int false = 0;
+     Shape1 = Region1->shape;
+     Shape2 = Region2->shape;
+ 
+     while (Shape1 != NULL )
+     {
+         if ( !Shape2 )
+-            return false;
++            return 0;
+ 
+         if ( Shape1->component != Shape2->component )
+-            return false;
++            return 0;
+ 
+         if( !Shape1->isEqual(Shape1, Shape2) )
+-            return false;
++            return 0;
+ 
+         Shape1 = Shape1->next;
+         Shape2 = Shape2->next;
+     }
+ 
+     if ( Shape2 )
+-        return false;
++        return 0;
+ 
+-    return true;
++    return 1;
+ }
+ 
+ 
+Index: sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/imhfile.c
+===================================================================
+--- sherpa-4.17.1.orig/extern/wcssubs/wcssubs-3.9.5/imhfile.c
++++ sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/imhfile.c
+@@ -148,27 +148,27 @@
+ #define LEN_FITSHDR	11520
+ 
+ int check_immagic();
+-int irafgeti4();
+-float irafgetr4();
+-char *irafgetc2();
+-char *irafgetc();
+-char *iraf2str();
+-static char *same_path();
+-static void irafputr4();
+-static void irafputi4();
+-static void irafputc2();
+-static void irafputc();
+-static void str2iraf();
++int irafgeti4(char *irafheader, int offset);
++float irafgetr4(char *irafheader, int offset);
++char *irafgetc2(char *irafheader, int offset, int nc);
++char *irafgetc(char *irafheader, int offset, int nc);
++char *iraf2str(char *irafstring, int nchar);
++static char *same_path(char *pixname, char *hdrname);
++static void irafputr4(char *irafheader, int offset, float rnum);
++static void irafputi4(char *irafheader, int offset, int inum);
++static void irafputc2(char *string, char *irafheader, int offset, int nc);
++static void irafputc(char *string, char *irafheader, int offset, int nc);
++static void str2iraf(char *string, char *irafstring, int nchar);
+ static int headswap=-1;	/* =1 to swap data bytes of foreign IRAF file */
+-static void irafswap();
+-static void irafswap2();
+-static void irafswap4();
+-static void irafswap8();
+-int head_version ();
+-int pix_version ();
+-int irafncmp ();
++static void irafswap(int bitpix, char *string, int nbytes);
++static void irafswap2(char *string, int nbytes);
++static void irafswap4(char *string, int nbytes);
++static void irafswap8(char *string, int nbytes);
++int head_version(char *irafheader);
++int pix_version(char *irafheader);
++int irafncmp(char *irafheader, char *teststring, int nc);
+ static int machswap();
+-static int irafsize();
++static int irafsize(FILE *diskfile);
+ 
+ #define SECONDS_1970_TO_1980    315532800L
+ 
+Index: sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/hget.c
+===================================================================
+--- sherpa-4.17.1.orig/extern/wcssubs/wcssubs-3.9.5/hget.c
++++ sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/hget.c
+@@ -74,7 +74,7 @@
+ static int use_saolib=0;
+ #endif
+ 
+-char *hgetc ();
++char *hgetc(const char *hstring, const char *keyword0);
+ 
+ static char val[VLENGTH+1];
+ static int multiline = 0;
+Index: sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/hput.c
+===================================================================
+--- sherpa-4.17.1.orig/extern/wcssubs/wcssubs-3.9.5/hput.c
++++ sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/hput.c
+@@ -58,7 +58,7 @@
+ 
+ static int verbose=0;	/* Set to 1 to print error messages and other info */
+ 
+-static void fixnegzero();
++static void fixnegzero(char *string);
+ 
+ 
+ /*  HPUTI4 - Set int keyword = ival in FITS header string */
+Index: sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/iget.c
+===================================================================
+--- sherpa-4.17.1.orig/extern/wcssubs/wcssubs-3.9.5/iget.c
++++ sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/iget.c
+@@ -52,7 +52,7 @@
+ 
+ #define MAX_LVAL 2000
+ 
+-static char *isearch();
++static char *isearch(const char *hstring, const char *keyword);
+ static char val[30];
+ 
+ /* Extract long value for variable from IRAF multiline keyword value */
+Index: sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/wcscon.c
+===================================================================
+--- sherpa-4.17.1.orig/extern/wcssubs/wcssubs-3.9.5/wcscon.c
++++ sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/wcscon.c
+@@ -73,10 +73,30 @@
+ #include <string.h>
+ #include "wcs.h"
+ 
+-void fk524(), fk524e(), fk524m(), fk524pv();
+-void fk425(), fk425e(), fk425m(), fk425pv();
+-void fk42gal(), fk52gal(), gal2fk4(), gal2fk5();
+-void fk42ecl(), fk52ecl(), ecl2fk4(), ecl2fk5();
++void fk524(double *ra, double *dec);
++void fk524e(double *ra, double *dec, double epoch);
++void fk524m(double *ra, double *dec, double *rapm, double *decpm);
++void fk524pv(double *ra, double *dec, double *rapm, double *decpm, double *parallax, double *rv);
++void fk425(double *ra, double *dec);
++void fk425e(double *ra, double *dec, double epoch);
++void fk425m(double *ra, double *dec, double *rapm, double *decpm);
++void fk425pv(double *ra, double *dec, double *rapm, double *decpm, double *parallax, double *rv);
++void fk42gal(double *dtheta, double *dphi);
++void fk52gal(double *dtheta, double *dphi);
++void gal2fk4(double *dtheta, double *dphi);
++void gal2fk5(double *dtheta, double *dphi);
++void fk42ecl(double *dtheta, double *dphi, double epoch);
++void fk52ecl(double *dtheta, double *dphi, double epoch);
++void ecl2fk4(double *dtheta, double *dphi, double epoch);
++void ecl2fk5(double *dtheta, double *dphi, double epoch);
++void v2s3(double pos[3], double *rra, double *rdec, double *r);
++void s2v3(double rra, double rdec, double r, double pos[3]);
++void fk4prec(double ep0, double ep1, double *ra, double *dec);
++void fk5prec(double ep0, double ep1, double *ra, double *dec);
++void rotmat(int axes, double rot1, double rot2, double rot3, double *matrix);
++void mprecfk4(double bep0, double bep1, double rmatp[9]);
++void mprecfk5(double ep0, double ep1, double rmatp[9]);
++char *eqstrn(double dra, double ddec);
+ 
+ /* Convert from coordinate system sys1 to coordinate system sys2, converting
+    proper motions, too, and adding them if an epoch is specified */
+@@ -100,7 +120,6 @@ double	*pphi;	/* Latitude or declination
+ 		   Input in sys1, returned in sys2 */
+ 
+ {
+-    void fk5prec(), fk4prec();
+ 
+     /* Set equinoxes if 0.0 */
+     if (eq1 == 0.0) {
+@@ -306,7 +325,6 @@ double	*px;	/* Parallax in arcseconds */
+ double	*rv;	/* Radial velocity in km/sec */
+ 
+ {
+-    void fk5prec(), fk4prec();
+ 
+     /* Set equinoxes if 0.0 */
+     if (eq1 == 0.0) {
+@@ -510,7 +528,6 @@ double	*dphi;	/* Latitude or declination
+ double	epoch;	/* Besselian epoch in years */
+ 
+ {
+-    void fk5prec(), fk4prec();
+ 
+     /* Set equinoxes if 0.0 */
+     if (eq1 == 0.0) {
+@@ -1441,9 +1458,8 @@ double *dphi;	/* B1950.0 FK4 declination
+     Reference: Blaauw et al, MNRAS,121,123 (1960) */
+ {
+     double pos[3],pos1[3],r,dl,db,rl,rb,rra,rdec,dra,ddec;
+-    void v2s3(),s2v3();
+     int i;
+-    char *eqcoor, *eqstrn();
++    char *eqcoor;
+ 
+     dra = *dtheta;
+     ddec = *dphi;
+@@ -1499,8 +1515,7 @@ double *dphi;	/* Galactic latitude (b2)
+ 
+ {
+     double pos[3],pos1[3],r,dl,db,rl,rb,rra,rdec,dra,ddec;
+-    void v2s3(),s2v3();
+-    char *eqcoor, *eqstrn();
++    char *eqcoor;
+     int i;
+ 
+     /*  spherical to cartesian */
+@@ -1574,8 +1589,7 @@ double *dphi;	/* J2000 declination in de
+     Reference: Blaauw et al, MNRAS,121,123 (1960) */
+ {
+     double pos[3],pos1[3],r,dl,db,rl,rb,rra,rdec,dra,ddec;
+-    void v2s3(),s2v3();
+-    char *eqcoor, *eqstrn();
++    char *eqcoor;
+     int i;
+ 
+     /*  Spherical to cartesian */
+@@ -1627,9 +1641,8 @@ double *dphi;	/* Galactic latitude (b2)
+ 
+ {
+     double pos[3],pos1[3],r,dl,db,rl,rb,rra,rdec,dra,ddec;
+-    void v2s3(),s2v3();
+     int i;
+-    char *eqcoor, *eqstrn();
++    char *eqcoor;
+ 
+     /*  Spherical to Cartesian */
+     dl = *dtheta;
+@@ -1727,8 +1740,6 @@ double *dphi;	/* B1950 declination in de
+ double	epoch;	/* Besselian epoch in years */
+ 
+ {
+-    void fk425e(), fk52ecl();
+-
+     /* Convert from B1950 to J2000 coordinates */
+     fk425e (dtheta, dphi, epoch);
+ 
+@@ -1755,8 +1766,6 @@ double	epoch;	/* Besselian epoch in year
+     double v1[3], v2[3], r;
+     double rmat[9], *rmati;	/* Rotation matrix  */
+ 
+-    void rotmat(), v2s3(), s2v3(), fk5prec();
+-
+     /* Precess coordinates from J2000 to epoch */
+     if (epoch != 2000.0)
+ 	fk5prec (2000.0, epoch, dtheta, dphi);
+@@ -1810,8 +1819,6 @@ double *dphi;	/* Galactic latitude (b2)
+ double	epoch;	/* Besselian epoch in years */
+ 
+ {
+-    void ecl2fk5(), fk524e();
+-
+     /* Convert from ecliptic to J2000 coordinates */
+     ecl2fk5 (dtheta, dphi, epoch);
+ 
+@@ -1839,7 +1846,6 @@ double	epoch;	/* Besselian epoch in year
+     double rtheta, rphi, v1[3], v2[3];
+     double t, eps0, r;
+     double rmat[9];	/* Rotation matrix */
+-    void v2s3(),s2v3(), fk5prec(), rotmat();
+ 
+     rtheta = degrad (*dtheta);
+     rphi = degrad (*dphi);
+@@ -1902,7 +1908,6 @@ double *dec;	/* Dec in degrees mean equa
+ {
+     int i, j;
+     double pm[9], *pmi, v1[3], v2[3], rra, rdec, r;
+-    void v2s3(),s2v3(), mprecfk4();
+ 
+     rra = degrad (*ra);
+     rdec = degrad (*dec);
+@@ -1950,7 +1955,6 @@ double *dec;	/* Dec in degrees mean equa
+ {
+     int i, j;
+     double pm[9], *pmi, v1[3], v2[3], rra, rdec, r;
+-    void v2s3(),s2v3(), mprecfk5();
+ 
+     rra = degrad (*ra);
+     rdec = degrad (*dec);
+@@ -2003,7 +2007,6 @@ double rmatp[9];	/* 3x3 Precession matri
+ */
+ {
+     double bigt, t, tas2r, w, zeta, z, theta;
+-    void rotmat();
+  
+     /* Interval between basic epoch B1850.0 and beginning epoch in TC */
+     bigt  = ( bep0 - 1850.0 ) / 100.0;
+@@ -2047,7 +2050,6 @@ double rmatp[9];	/* 3x3 Precession matri
+ */
+ {
+     double t0, t, tas2r, w, zeta, z, theta;
+-    void rotmat();
+  
+     /* Interval between basic epoch J2000.0 and beginning epoch (JC) */
+     t0 = ( ep0 - 2000.0 ) / 100.0;
+Index: sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/tnxpos.c
+===================================================================
+--- sherpa-4.17.1.orig/extern/wcssubs/wcssubs-3.9.5/tnxpos.c
++++ sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/tnxpos.c
+@@ -47,10 +47,17 @@
+ 
+ #define	max_niter	500
+ #define	SZ_ATSTRING	2000
+-static void wf_gsclose();
+-static void wf_gsb1pol();
+-static void wf_gsb1leg();
+-static void wf_gsb1cheb();
++static void wf_gsclose(struct IRAFsurface *sf);
++static void wf_gsb1pol(double x, int order, double *basis);
++static void wf_gsb1leg(double x, int order, double k1, double k2, double *basis);
++static void wf_gsb1cheb(double x, int order, double k1, double k2, double *basis);
++struct IRAFsurface *wf_gsopen(char *astr);
++struct IRAFsurface *wf_gsrestore(double *fit);
++struct IRAFsurface *wf_gspset(int xorder, int yorder, int xterms, double *coeff);
++double wf_gseval(struct IRAFsurface *sf, double x, double y);
++double wf_gsder(struct IRAFsurface *sf, double x, double y, int nxd, int nyd);
++
++extern void wcsrotset(struct WorldCoor *wcs);
+ 
+ /* tnxinit -- initialize the gnomonic forward or inverse transform.
+  * initialization for this transformation consists of, determining which
+@@ -75,9 +82,7 @@ tnxinit (header, wcs)
+ const char *header;	/* FITS header */
+ struct WorldCoor *wcs;	/* pointer to WCS structure */
+ {
+-    struct IRAFsurface *wf_gsopen();
+     char *str1, *str2, *lngstr, *latstr;
+-    extern void wcsrotset();
+ 
+     /* allocate space for the attribute strings */
+     str1 = malloc (SZ_ATSTRING);
+@@ -166,7 +171,6 @@ double	*xpos, *ypos;	/*o world coordinat
+     double x, y, r, phi, theta, costhe, sinthe, dphi, cosphi, sinphi, dlng, z;
+     double colatp, coslatp, sinlatp, longp;
+     double xs, ys, ra, dec, xp, yp;
+-    double wf_gseval();
+ 
+     /* Convert from pixels to image coordinates */
+     xpix = xpix - wcs->crpix[0];
+@@ -317,7 +321,6 @@ double	*xpix, *ypix;	/*o physical coordi
+     double s, r, dphi, z, dpi, dhalfpi, twopi, tx;
+     double xm, ym, f, fx, fy, g, gx, gy, denom, dx, dy;
+     double colatp, coslatp, sinlatp, longp, sphtol;
+-    double wf_gseval(), wf_gsder();
+ 
+     /* get the axis numbers */
+     if (wcs->coorflip) {
+@@ -562,7 +565,6 @@ char    *astr;		/* the input mwcs attrib
+     int npar, szcoeff;
+     double *coeff;
+     struct IRAFsurface *gs;
+-    struct IRAFsurface *wf_gsrestore();
+ 
+     if (astr[1] == 0)
+ 	return (NULL);
+@@ -737,7 +739,6 @@ int	nxd, nyd;	/* order of the derivative
+     struct IRAFsurface *sf2 = 0;
+     double *ptr1, *ptr2;
+     double zfit, norm;
+-    double wf_gseval();
+ 
+     if (sf1 == NULL)
+ 	return (0.0);
+@@ -1121,7 +1122,6 @@ double	*coeff;		/* Plate fit coefficient
+ 
+ {
+     double *ycoeff;
+-    struct IRAFsurface *wf_gspset ();
+ 
+     wcs->prjcode = WCS_TNX;
+ 
+Index: sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/zpxpos.c
+===================================================================
+--- sherpa-4.17.1.orig/extern/wcssubs/wcssubs-3.9.5/zpxpos.c
++++ sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/zpxpos.c
+@@ -50,7 +50,13 @@
+ 
+ #define	max_niter	500
+ #define	SZ_ATSTRING	2000
+-static void wf_gsclose();
++
++static void wf_gsclose(struct IRAFsurface *sf);
++
++extern struct IRAFsurface *wf_gsopen(char *astr);
++extern double wf_gseval(struct IRAFsurface *sf, double x, double y);
++extern double wf_gsder(struct IRAFsurface *sf, double x, double y, int nxd, int nyd);
++extern void wcsrotset(struct WorldCoor *wcs);
+ 
+ /* zpxinit -- initialize the zenithal/azimuthal polynomial forward or
+  * inverse transform. initialization for this transformation consists of,
+@@ -81,10 +87,8 @@ const char *header;	/* FITS header */
+ struct WorldCoor *wcs;	/* pointer to WCS structure */
+ {
+     int i, j;
+-    struct IRAFsurface *wf_gsopen();
+     char key[8], *str1, *str2, *lngstr, *latstr, *header1;
+     double zd1, d1, zd2,d2, zd, d, r;
+-    extern void wcsrotset();
+ 
+     /* allocate space for the attribute strings */
+     str1 = malloc (SZ_ATSTRING);
+@@ -252,7 +256,6 @@ double	*xpos, *ypos;	/*o world coordinat
+     double colatp, coslatp, sinlatp, longp;
+     double xs, ys, ra, dec, xp, yp;
+     double a, b, c, d, zd, zd1, zd2, r1, r2, rt, lambda;
+-    double wf_gseval();
+ 
+     /* Convert from pixels to image coordinates */
+     xpix = xpix - wcs->crpix[0];
+@@ -520,7 +523,6 @@ double	*xpix, *ypix;	/*o physical coordi
+     double s, r, dphi, z, dpi, dhalfpi, twopi, tx;
+     double xm, ym, f, fx, fy, g, gx, gy, denom, dx, dy;
+     double colatp, coslatp, sinlatp, longp, sphtol;
+-    double wf_gseval(), wf_gsder();
+ 
+     /* get the axis numbers */
+     if (wcs->coorflip) {
+Index: sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/wcsinit.c
+===================================================================
+--- sherpa-4.17.1.orig/extern/wcssubs/wcssubs-3.9.5/wcsinit.c
++++ sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/wcsinit.c
+@@ -47,11 +47,13 @@
+ #include <stdlib.h>
+ #endif
+ 
+-static void wcseq();
+-static void wcseqm();
+-static void wcsioset();
+-void wcsrotset();
+-char wcschar();
++void invert_wcs(struct WorldCoor *wcs);
++static void wcseq(char *hstring, struct WorldCoor *wcs);
++static void wcseqm(char *hstring, struct WorldCoor *wcs, char *mchar);
++static void wcsioset(struct WorldCoor *wcs);
++char wcschar(const char *hstring, const char *name);
++
++extern void wcsrotset(struct WorldCoor *wcs);
+ 
+ /* set up a WCS structure from a FITS image header lhstring bytes long 
+  * for a specified WCS name */
+@@ -242,11 +244,6 @@ char *wchar;		/* Suffix character for on
+     double ut;
+     int nax;
+     int twod;
+-    extern int tnxinit();
+-    extern int zpxinit();
+-    extern int platepos();
+-    extern int dsspos();
+-    void invert_wcs();
+ 
+     wcs = (struct WorldCoor *) calloc (1, sizeof(struct WorldCoor));
+ 
+Index: sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/wcs.c
+===================================================================
+--- sherpa-4.17.1.orig/extern/wcssubs/wcssubs-3.9.5/wcs.c
++++ sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/wcs.c
+@@ -89,12 +89,16 @@
+ 
+ static char wcserrmsg[80];
+ static char wcsfile[256]={""};
+-static void wcslibrot();
+-void wcsrotset();
+ static int wcsproj0 = 0;
+ static int izpix = 0;
+ static double zpix = 0.0;
+ 
++static void wcslibrot(struct WorldCoor *wcs);
++int wcspos(double xpix, double ypix, struct WorldCoor *wcs, double *xpos, double *ypos);
++int wcspix(double xpos, double ypos, struct WorldCoor *wcs, double *xpix, double *ypix);
++
++extern void wcsrotset(struct WorldCoor *wcs);
++
+ void
+ wcsfree (wcs)
+ struct WorldCoor *wcs;	/* WCS structure */
+@@ -2123,7 +2127,6 @@ double	*xpos,*ypos;	/* RA and Dec in deg
+ {
+     double	xpi, ypi, xp, yp;
+     double	eqin, eqout;
+-    int wcspos();
+ 
+     if (nowcs (wcs))
+ 	return;
+@@ -2246,7 +2249,6 @@ int	*offscl;	/* 0 if within bounds, else
+     double xp, yp, xpi, ypi;
+     double eqin, eqout;
+     int sysin;
+-    int wcspix();
+ 
+     if (nowcs (wcs))
+ 	return;
+@@ -2351,7 +2353,6 @@ double  *ypos;           /* y (dec) coor
+ {
+     int offscl;
+     int i;
+-    int wcsrev();
+     double wcscrd[4], imgcrd[4], pixcrd[4];
+     double phi, theta;
+     
+@@ -2392,7 +2393,6 @@ double  *ypix;          /* y pixel numbe
+ 
+ {
+     int offscl;
+-    int wcsfwd();
+     double wcscrd[4], imgcrd[4], pixcrd[4];
+     double phi, theta;
+ 
+Index: sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/dateutil.c
+===================================================================
+--- sherpa-4.17.1.orig/extern/wcssubs/wcssubs-3.9.5/dateutil.c
++++ sherpa-4.17.1/extern/wcssubs/wcssubs-3.9.5/dateutil.c
+@@ -313,11 +313,11 @@
+ #include "wcs.h"
+ #include "fitsfile.h"
+ 
+-static double suntl();
+-static void fixdate();
+-static int caldays();
+-static double dint();
+-static double dmod();
++static double suntl(double dj, double ra, double dec, int sys);
++static void fixdate(int *iyr, int *imon, int *iday, int *ihr, int *imn, double *sec, int ndsec);
++static int caldays(int year, int month);
++static double dint(double dnum);
++static double dmod(double dnum, double dm);
+ 
+ static double longitude = 0.0;	/* longitude of observatory in degrees (+=west) */
+ void
