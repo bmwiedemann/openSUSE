@@ -34,7 +34,7 @@
 %endif
 
 Name:           bpftool
-Version:        7.5.0
+Version:        7.6.0
 Release:        0
 Summary:        Tool for inspection and manipulation of BPF programs and maps
 License:        GPL-2.0-only

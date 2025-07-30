@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jul 25 20:11:11 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to version 7.6.0:
+  * Add new commands bpftool tracelog <stdout|stderr> PROG to print the BPF
+    streams content of a given BPF program. (faad8ad)
+  * Allow users to specify a custom path for BTF information when loading
+    programs with bpftool. (6977b71)
+  * Add a root_id argument when dumping a BTF object, in order to have bpftool
+    print a minimized dump (type and dependencies) of a specific type from the
+    BTF object. (2c5b7fd)
+  * Add probe for ISA v4 instruction set extensions. New BPF instructions
+    include: BPF_{SDIV,SMOD} (signed div and mod), BPF_{LD,LDX,ST,STX,MOV}
+    (sign-extended load/store/move), 32-bit BPF_JA (unconditional jump),
+    target-independent BPF_ALU64 BSWAP (byte-swapping 16/32/64). Availability
+    is now probed as part of bpftool feature probe. (a5c0580)
+  * Display additional information about BPF links, such as ref_ctr_offset for
+    uprobe links, cookies for raw_tp probes and tracing probes. (1375884,
+    c4c2dd0, 2406596)
+  * Support "load-acquire" and "store-release" atomic instructions in the
+    disassembler for translated programs. (452f644)
+  * Make bpftool request fewer permissions, via libbpf's options, when possible
+    for map operations: use read-only access for operations that don't require
+    write access (for example, map creation requires write access, map dump can
+    work with read-only access). (224edf4)
+
+-------------------------------------------------------------------
 Sun May 25 04:18:20 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Change .spec to not write files
