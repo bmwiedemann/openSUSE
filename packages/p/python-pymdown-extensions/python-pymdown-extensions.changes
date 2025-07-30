@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 28 18:31:44 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to 10.16.1:
+  * FIX: Inefficient regular expression pattern for figure caption
+    numbers.
+
+-------------------------------------------------------------------
 Sat Jun 21 18:39:56 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to 10.16:
