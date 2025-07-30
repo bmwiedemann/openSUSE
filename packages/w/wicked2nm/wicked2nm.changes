@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 29 12:07:00 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to v1.2.0
+  * Fix netconfig handling with proper priority setting
+  * Add ovs support
+
+-------------------------------------------------------------------
 Wed Jun 11 13:54:11 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to v1.1.0

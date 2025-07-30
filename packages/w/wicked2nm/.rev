@@ -25,4 +25,14 @@
   [bsc#1244188]</comment>
     <requestid>1284881</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f015cc22d06a64a45a1e6fa25c9ccfb7</srcmd5>
+    <version>1.2.0</version>
+    <time>1753868714</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.2.0
+  * Fix netconfig handling with proper priority setting
+  * Add ovs support</comment>
+    <requestid>1296322</requestid>
+  </revision>
 </revisionlist>
