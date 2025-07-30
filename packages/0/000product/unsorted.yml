@@ -14971,6 +14971,7 @@ unsorted:
   - libopenh264-8-32bit 
   - libopenh264-devel 
   - libopenhpi4 
+  - libopenhtj2k0 
   - libopenjp2-7-32bit 
   - libopenjph0_21 
   - libopenlibm4 
@@ -17199,9 +17200,6 @@ unsorted:
   - libzarchive0_1 
   - libzbar-devel 
   - libzbar0-32bit 
-  - libzbarqt-devel 
-  - libzbarqt0 
-  - libzbarqt0-32bit 
   - libzbc-devel 
   - libzbc-gui 
   - libzbc-tools 
@@ -20289,6 +20287,8 @@ unsorted:
   - openhpi-clients 
   - openhpi-daemon 
   - openhpi-devel 
+  - openhtj2k 
+  - openhtj2k-devel 
   - openjade 
   - openjade-devel 
   - openjfx 
@@ -22260,7 +22260,6 @@ unsorted:
   - perl-Test2-Formatter-YAMLEnhancedTAP 
   - perl-Test2-Plugin-IOEvents 
   - perl-Test2-Plugin-NoWarnings 
-  - perl-Test2-Suite 
   - perl-Text-Aligner 
   - perl-Text-Autoformat 
   - perl-Text-BibTeX 

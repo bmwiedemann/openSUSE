@@ -2845,7 +2845,7 @@
     <package name="libupnp17" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libupower-glib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liburcu8" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="liburing2" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="liburing2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="liburiparser1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libusb-0_1-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libusb-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
