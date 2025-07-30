@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 23 13:30:13 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Proposal cleanup: If the system supports BLS bootloader, select
+  the BLS bootloader which is defined in the control.xml file.
+  If no one has been set, grub2-bls will be taken as default.
+  (jsc#PED-10703)
+- 5.0.23
+
+-------------------------------------------------------------------
 Fri Jul 11 11:18:56 UTC 2025 - Stefan Schubert <schubi@suse.de>
 
 - Allowing systemd-boot as default bootloader (set in control.xml)
