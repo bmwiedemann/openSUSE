@@ -29,7 +29,11 @@ Source1:        doxywizard.desktop
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.14
 BuildRequires:  flex
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+BuildRequires:  gcc14-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -54,6 +58,10 @@ configuration files.
 %build
 %cmake \
     -Dbuild_wizard=ON \
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+    -DCMAKE_C_COMPILER=gcc-14 \
+    -DCMAKE_CXX_COMPILER=g++-14 \
+%endif
     -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
     -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \

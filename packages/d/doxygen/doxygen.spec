@@ -30,8 +30,16 @@ Patch2:         reproducible.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.14
 BuildRequires:  flex
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+BuildRequires:  gcc14-c++
+%else
 BuildRequires:  gcc-c++
+%endif
+%if 0%{?is_opensuse} || 0%{?suse_version} >= 1600
 BuildRequires:  llvm-clang-devel
+%else
+BuildRequires:  clang17-devel
+%endif
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
 # Do not bother building documentation with latex since it is present on the
@@ -58,6 +66,10 @@ language VHDL.
     -Dbuild_search=OFF \
     -Dbuild_wizard=OFF \
     -Duse_libclang=ON \
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+    -DCMAKE_C_COMPILER=gcc-14 \
+    -DCMAKE_CXX_COMPILER=g++-14 \
+%endif
     -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
     -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \
     -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now" \

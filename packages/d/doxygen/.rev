@@ -2477,4 +2477,14 @@
     <comment>- Doxywizard: Use Qt 6 instead of Qt5. (forwarded request 1281162 from mathletic)</comment>
     <requestid>1281276</requestid>
   </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>4fdf6b0ee2d8c5edd7098b54f2ca34bc</srcmd5>
+    <version>1.14.0</version>
+    <time>1753868463</time>
+    <user>dimstar_suse</user>
+    <comment>Restore build on openSUSE 15.6 and SLE15 SP6/SP7
+
+On Leap15/SLE15 a newer GCC is needed to build against Qt6. On SLE15 the default clang7 is too old for doxygen with libclang support, use clang17 instead. (forwarded request 1295341 from fsirl)</comment>
+    <requestid>1296037</requestid>
+  </revision>
 </revisionlist>
