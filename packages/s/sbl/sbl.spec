@@ -1,7 +1,7 @@
 #
 # spec file for package sbl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ Patch7:         sbl-orca-python3.patch
 Patch8:         sbl-gcc14.patch
 # fixes to make gcc-15 happy
 Patch9:         sbl-gcc15.patch
+Patch10:        use-termios.patch
 BuildRequires:  bluez-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libusb-devel
@@ -72,6 +73,7 @@ this python module enables orca to use brld for braille output
 %patch -P 7 -p1
 %patch -P 8 -p1
 %patch -P 9 -p1
+%patch -P 10 -p1
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags} -fcommon -D_POSIX_C_SOURCE=2 -D_DEFAULT_SOURCE" \

@@ -1,0 +1,13 @@
+Index: sbl-3.5.0.20130317.git7a75bc29/sbl/spk.c
+===================================================================
+--- sbl-3.5.0.20130317.git7a75bc29.orig/sbl/spk.c
++++ sbl-3.5.0.20130317.git7a75bc29/sbl/spk.c
+@@ -1,7 +1,7 @@
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <fcntl.h>
+-#include <termio.h>
++#include <termios.h>
+ 
+ #include "mbrola.h"
+ #include "festival.h"
