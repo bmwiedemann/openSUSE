@@ -88,7 +88,15 @@ if stat and stat.type == "directory" then
     target = path .. ".rpmmoved." .. suffix
   end
 
-  os.rename(path, target)
+  local ok, err = os.rename(path, target)
+  if not ok then
+    io.stderr:write("Rename failed: " .. tostring(err) .. "\n")
+    io.stderr:write("Trying Copy and Remove instead\n")
+    local ok, kind, exit_code = os.execute("cp -a '" .. path .. "' '" .. target .. "' && rm -rf '" .. path .. "'")
+    if not ok or exit_code ~= 0 then
+      io.stderr:write("Copy and Remove failed (" .. tostring(kind) .. "): exit code " .. tostring(exit_code) .. "\n")
+    end
+  end
 end
 
 %post

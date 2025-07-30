@@ -1040,4 +1040,17 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
   during package installation (boo#1246768)</comment>
     <requestid>1294803</requestid>
   </revision>
+  <revision rev="111" vrev="3">
+    <srcmd5>9143a06ee302d21ca3459927c94ab707</srcmd5>
+    <version>2.45</version>
+    <time>1753868525</time>
+    <user>dimstar_suse</user>
+    <comment>- adjust the lua code for LUA 5.2+; builtin LUA currently seems to
+  be LUA 5.4 in RPM 4.20 on Tumbleweed (boo#1247050)
+
+- improved lua script in %pretrans (boo#1246768, boo#1247050)
+  * better diagnostics for the failure in distrobox containers
+  * add a fallback to use cp and rm if rename fails</comment>
+    <requestid>1296333</requestid>
+  </revision>
 </revisionlist>

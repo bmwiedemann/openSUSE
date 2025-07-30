@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 29 13:25:48 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- adjust the lua code for LUA 5.2+; builtin LUA currently seems to
+  be LUA 5.4 in RPM 4.20 on Tumbleweed (boo#1247050)
+
+-------------------------------------------------------------------
+Tue Jul 29 11:49:35 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- improved lua script in %pretrans (boo#1246768, boo#1247050)
+  * better diagnostics for the failure in distrobox containers
+  * add a fallback to use cp and rm if rename fails
+
+-------------------------------------------------------------------
 Mon Jul 21 11:26:10 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - make %pretrans lua script more robust to avoid endless loops
