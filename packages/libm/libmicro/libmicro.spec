@@ -1,7 +1,7 @@
 #
 # spec file for package libmicro
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Patch1:         removed_undefined_warning.patch
 Patch2:         fix-link.diff
 Patch3:         libmicro-implicit-fortify-decl.patch
 Patch4:         libmicro-gcc14.patch
+# fix build with gcc15
+Patch5:         libmicro-gcc15.patch
 
 %description
 LibMicro is a portable set of microbenchmarks that many Solaris

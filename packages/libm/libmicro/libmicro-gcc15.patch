@@ -1,0 +1,25 @@
+--- libmicro.h	2025-07-01 06:45:32.384120175 +0000
++++ libmicro.h	2025-07-01 06:54:04.256882783 +0000
+@@ -138,8 +138,8 @@ int	benchmark_init();
+ int	benchmark_fini();
+ int	benchmark_initrun();
+ int	benchmark_finirun();
+-int	benchmark_initworker();
+-int	benchmark_finiworker();
++int	benchmark_initworker(void *tsd);
++int	benchmark_finiworker(void *tsd);
+ int	benchmark_initbatch(void *tsd);
+ int	benchmark_finibatch(void *tsd);
+ int	benchmark_optswitch(int opt, char *optarg);
+@@ -188,8 +188,8 @@ void 		*gettsd(int p, int t);
+ long long 	getusecs();
+ long long 	getnsecs();
+ int 		setfdlimit(int limit);
+-long long 	sizetoll();
+-int 		sizetoint();
++long long 	sizetoll(const char *arg);
++int 		sizetoint(const char *arg);
+ int		fit_line(double *, double *, int, double *, double *);
+ long long	get_nsecs_resolution();
+ 
+
