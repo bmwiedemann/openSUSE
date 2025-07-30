@@ -529,4 +529,22 @@
   supported in Pillow directly (forwarded request 1295236 from rrahl0)</comment>
     <requestid>1295790</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>25d2d8ddf6ad8a5091cfd90a60ddf24a</srcmd5>
+    <version>1.83.0</version>
+    <time>1753868681</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.83.0:
+  * [Servers] Added MANGA Plus Creators by SHUEISHA (EN/ES)
+  * [Servers] Cartel De Manhwas (ES): Update
+  * [Servers] Flame Comics (EN): Update
+  * [Servers] Lectormanga (ES): Update
+  * [Servers] MangaCrab (ES): Update
+  * [Servers] MangaLib (RU): Update
+  * [Servers] Raw Manga (JA): Disabled
+  * [Servers] ToonGod (EN): Update
+  * [Servers] Webtoon Hatti (TR): Update
+  * [L10n] Updated Arabic and Bulgarian translations (forwarded request 1296220 from rrahl0)</comment>
+    <requestid>1296264</requestid>
+  </revision>
 </revisionlist>
