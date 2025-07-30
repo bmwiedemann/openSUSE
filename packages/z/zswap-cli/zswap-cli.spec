@@ -29,7 +29,7 @@ BuildRequires:  cmake >= 3.14
 BuildRequires:  libboost_program_options-devel >= 1.70.0
 BuildRequires:  pandoc
 %if %{with systemd}
-BuildRequires:  systemd
+BuildRequires:  pkgconfig(systemd)
 %endif
 
 %description
