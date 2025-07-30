@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 30 03:18:23 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.106.1:
+  * Bug fixes and other changes:
+    - Fixed regression in the bare string interpolation.
+    - Fixed flag handling of `get` in the const version.
+  * For a full list of changes with detailed descriptions, see:
+    - https://www.nushell.sh/blog/2025-07-30-nushell_0_106_1.html
+
+-------------------------------------------------------------------
 Thu Jul 24 04:12:08 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.106.0:
