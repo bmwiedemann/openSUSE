@@ -2,6 +2,7 @@
 # spec file for package rubygem-gpgme
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +25,14 @@
 #
 
 Name:           rubygem-gpgme
-Version:        2.0.24
+Version:        2.0.25
 Release:        0
 %define mod_name gpgme
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
-BuildRequires:  libassuan-devel >= 2.0.2
-BuildRequires:  libgpg-error-devel >= 1.8
-BuildRequires:  libgpgme-devel >= 1.2.0
+BuildRequires:  pkgconfig(libassuan) >= 2.0.2
+BuildRequires:  pkgconfig(gpg-error) >= 1.8
+BuildRequires:  pkgconfig(gpgme) >= 1.2.0
 # /MANUAL
 BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{rubydevel}

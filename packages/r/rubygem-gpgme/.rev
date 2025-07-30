@@ -111,4 +111,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1182784</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ee6301428e745586d653f5d7fc33969b</srcmd5>
+    <version>2.0.25</version>
+    <time>1753868678</time>
+    <user>dimstar_suse</user>
+    <comment>2.0.25, fix build with GPGME 2.0.0 (boo#1246684) (forwarded request 1295859 from AndreasStieger)</comment>
+    <requestid>1296243</requestid>
+  </revision>
 </revisionlist>
