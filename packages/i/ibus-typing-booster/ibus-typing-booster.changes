@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 29 10:01:10 UTC 2025 - Mike FABIAN <maiku.fabian@gmail.com>
+
+- Toogle the emoji style only between 'emoji' and 'text' in the toogle_emoji_style() function
+- Better parsing of gnome-shell versions (handle also `alpha`, `beta`, and `rc`)
+- Make input mode symbols black and white already for gnome-shell >= 48.3 instead of for gnome-shell >= 49.0
+- Update emoji annotations from CLDR
+- Translation update from Weblate (ka 100%, ko 100%, pl 100%, sv 100%)
+
+-------------------------------------------------------------------
 Fri Jul 25 14:38:11 UTC 2025 - Mike FABIAN <maiku.fabian@gmail.com>
 
 - Add a new gsettings option `emojistyle` and make it changeable with a `toggle_emoji_style` command
