@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 28 06:30:38 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file (bsc#1246931)
+  * removed obsolete engine-related content(files), IBMCA engine is deprecated
+  * removed sub-packages
+    - openssl-ibmca-engine
+    - openssl-ibmca-provider
+- Removed multibuild and sources:
+  * Source1:        engine_section.txt
+  * Source2:        _multibuild
+
+-------------------------------------------------------------------
 Wed Apr 23 08:33:06 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade openssl-ibmca to version 2.5.0
