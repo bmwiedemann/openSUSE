@@ -1,3 +1,10 @@
+qt5-pbf-image-plugin (4.4) stable; urgency=low
+
+  * Added support for scaling non-sdf icons.
+  * Improved text-anchor layout property support.
+
+ -- Martin Tuma <tumic@cbox.cz>  Tue, 29 Jul 2025 05:36:31 +0200
+
 qt5-pbf-image-plugin (4.3) stable; urgency=low
 
   * Default map style tweaks.
