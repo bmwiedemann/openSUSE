@@ -1,0 +1,27 @@
+From 050b3a15bc00a31968cbdcf627692c1eb2ca3219 Mon Sep 17 00:00:00 2001
+From: Sandro <devel@penguinpee.nl>
+Date: Wed, 12 Mar 2025 23:44:55 +0100
+Subject: [PATCH] Set C standard to C17 explicitely
+
+GCC 15 uses C23 by default. But `libmilter` is not compatible, yet.
+This breaks the build as `bool` is a keyword in C23 (issue #68).
+---
+ setup.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 958feee..a6fe2a0 100644
+--- a/setup.py
++++ b/setup.py
+@@ -36,7 +36,10 @@
+ 	    # set MAX_ML_REPLY to 1 for sendmail < 8.13
+ 	    define_macros = [ ('MAX_ML_REPLY',32) ],
+             # save lots of debugging time testing rfc2553 compliance
+-            extra_compile_args = [ "-Werror=implicit-function-declaration" ]
++            extra_compile_args = [
++                "-Werror=implicit-function-declaration",
++                "-std=gnu17",
++            ]
+ 	  ),
+ 	],
+ 	keywords = ['sendmail','milter'],

@@ -30,6 +30,8 @@ Source0:        https://github.com/sdgathman/pymilter/archive/pymilter-%{version
 Source1:        tmpfiles-python-pymilter.conf
 # PATCH-FIX-UPSTREAM: https://github.com/sdgathman/pymilter/pull/57
 Patch1:         0001-Remove-calls-to-the-deprecated-method-assertEquals.patch
+# PATCH-FIX-UPSTREAM https://github.com/sdgathman/pymilter/pull/70
+Patch2:         set-c-standard-17.patch
 BuildRequires:  %{python_module bsddb3}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 30 04:59:43 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch set-c-standard-17.patch:
+  * Set the C standard to c17 until libmilter is fixed.
+
+-------------------------------------------------------------------
 Tue Jun 10 09:04:00 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

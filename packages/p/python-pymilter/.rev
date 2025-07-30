@@ -60,4 +60,13 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1284397</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>bc815de252910ec10f5cc54564824f1d</srcmd5>
+    <version>1.0.5</version>
+    <time>1753868758</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch set-c-standard-17.patch:
+  * Set the C standard to c17 until libmilter is fixed.</comment>
+    <requestid>1296408</requestid>
+  </revision>
 </revisionlist>
