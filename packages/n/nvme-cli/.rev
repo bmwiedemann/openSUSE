@@ -930,4 +930,12 @@
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1247053</comment>
     <requestid>1295958</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>8dc4ff9808a4c16bd32e37fe145a324e</srcmd5>
+    <version>2.15</version>
+    <time>1753868475</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit after bsc#1247053 was fixed</comment>
+    <requestid>1296260</requestid>
+  </revision>
 </revisionlist>
