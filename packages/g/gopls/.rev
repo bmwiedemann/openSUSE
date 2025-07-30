@@ -309,4 +309,41 @@
   * gopls/internal/settings: revert to old goimports index (forwarded request 1287004 from jfkw)</comment>
     <requestid>1287005</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3a44633495f7d521b117c2c6098a44b7</srcmd5>
+    <version>0.20.0</version>
+    <time>1753868644</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.20.0:
+  * gopls: update go.mod for v0.20.0-pre.2
+  * gopls/doc/release/v0.20.0.md: final tweaks
+  * gopls: update go.mod for v0.20.0-pre.1
+  * all: update codereview.cfg for gopls-release-branch.0.20
+  * gopls/internal/filewatcher: fix for windows deadlock
+  * gopls/internal/cmd: disable mcp tests when fsnotify not supported
+  * gopls/internal/mcp: avoid pointless diagnostics in the edit workflow
+  * gopls/internal/mcp: document MCP for v0.20.0; some CLI improvements
+  * gopls/internal/mcp: a couple more small improvements to instructions
+  * gopls/internal/mcp: more tuning of tools and prompts
+  * gopls/internal/mcp: include module paths in workspace summaries
+  * gopls/internal/cmd: wait for startup log in TestMCPCommandHTTP
+  * gopls/internal/cmd: avoid the use of channels in the sessions API
+  * gopls/internal/filewatcher: skip test for unsupported OS
+  * gopls/doc: document Zed editor
+  * gopls/internal/util/tokeninternal: move from internal/tokeninternal
+  * gopls/internal/filewatcher: refactor filewatcher to pass in handler func
+  * gopls/internal/cache/metadata: use pointers for Graph indexes
+  * gopls/internal/filewatcher: skip file removal event when removing dir
+  * gopls/internal/util/memoize: move from internal/memoize
+  * gopls/internal/util/fakenet: move from internal/fakenet
+  * gopls/internal/mcp: add -logfile and -rpc.trace to the headless server
+  * gopls/internal/mcp: tune tools for editing
+  * gopls/doc: more doc tweaks
+  * gopls/internal/server: omit CompletionItem.documentation when empty
+  * gopls/internal/settings: use gopls import source
+  * gopls: update to x/sync@master
+  * gopls/internal/test/marker: temporarily revert marker test shutdown
+  * gopls/internal/cmd: fix flaky mcp http test (forwarded request 1296211 from jfkw)</comment>
+    <requestid>1296212</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Mon Jul 28 19:08:55 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.20.0:
+  * gopls: update go.mod for v0.20.0-pre.2
+  * gopls/doc/release/v0.20.0.md: final tweaks
+  * gopls: update go.mod for v0.20.0-pre.1
+  * all: update codereview.cfg for gopls-release-branch.0.20
+  * gopls/internal/filewatcher: fix for windows deadlock
+  * gopls/internal/cmd: disable mcp tests when fsnotify not supported
+  * gopls/internal/mcp: avoid pointless diagnostics in the edit workflow
+  * gopls/internal/mcp: document MCP for v0.20.0; some CLI improvements
+  * gopls/internal/mcp: a couple more small improvements to instructions
+  * gopls/internal/mcp: more tuning of tools and prompts
+  * gopls/internal/mcp: include module paths in workspace summaries
+  * gopls/internal/cmd: wait for startup log in TestMCPCommandHTTP
+  * gopls/internal/cmd: avoid the use of channels in the sessions API
+  * gopls/internal/filewatcher: skip test for unsupported OS
+  * gopls/doc: document Zed editor
+  * gopls/internal/util/tokeninternal: move from internal/tokeninternal
+  * gopls/internal/filewatcher: refactor filewatcher to pass in handler func
+  * gopls/internal/cache/metadata: use pointers for Graph indexes
+  * gopls/internal/filewatcher: skip file removal event when removing dir
+  * gopls/internal/util/memoize: move from internal/memoize
+  * gopls/internal/util/fakenet: move from internal/fakenet
+  * gopls/internal/mcp: add -logfile and -rpc.trace to the headless server
+  * gopls/internal/mcp: tune tools for editing
+  * gopls/doc: more doc tweaks
+  * gopls/internal/server: omit CompletionItem.documentation when empty
+  * gopls/internal/settings: use gopls import source
+  * gopls: update to x/sync@master
+  * gopls/internal/test/marker: temporarily revert marker test shutdown
+  * gopls/internal/cmd: fix flaky mcp http test
+  * gopls/doc: add default.tmpl for x/website
+  * gopls/internal/mcp: add a symbol search tool
+  * gopls/internal/mcp: add a tool for workspace diagnostics
+  * gopls/internal/golang: allow rename of embedded fields at declaration
+  * gopls/internal/filewatcher: introduce filewatcher using fsnotify
+  * gopls/internal/mcp: skip standard lib package summary in context tool
+  * gopls/internal/mcp: use fenced code blocks for context
+  * gopls/internal/mcp: add a variant of the references tool
+  * gopls/doc: use YAML title blocks in .md files
+  * gopls: fix SignatureHelp activeParameter not being passed
+  * gopls/doc: fix broken links
+  * gopls/internal/mcp: add several tools and organize them by file
+  * gopls/internal/test/marker: close the JSON-RPC connection when tests exit
+  * gopls/doc: rationalize
+  * gopls/internal/golang: Definition: fix crash wrt unsafe.Pointer
+  * gopls/internal/debug: display metadata graph
+  * gopls/internal/cmd: rename conn to cli
+  * gopls/internal/cmd: cleanup: unify connection, cmdClient
+  * gopls/internal/golang: cleanups while investigating golang/go#74434
+  * gopls/internal/analysis/modernize: fix a typo in doc.go
+  * gopls/internal/golang: recover failed inlineAllCalls
+  * gopls/internal/util/immutable: Map.Range -> Map.All, with iter.Seq2
+  * gopls/internal/mcp: add references mcp tool
+  * gopls/internal/golang: reproduce various edge cases of issue 69616
+  * gopls/internal/mcp: attach text edits to diagnostics if exist
+  * gopls/internal/golang: add web-based "split package" tool
+  * gopls/internal/protocol: Mapper: reject start > end
+  * gopls/internal/cmd: implement counters for mcp server
+  * gopls/internal/golang: InlayHint: reveal ignored errors
+  * gopls/internal/server: remove tempDir field
+  * gopls/internal/cmd: fix directory cleanup issue in flaky test
+  * gopls/internal/golang: Hover: fix crash on alias to built-in Named
+  * gopls/internal/golang: fix crash in refactor.inline.variable
+  * gopls/internal/golang: implementation: fix nil panic
+  * gopls/internal/mcp: unbreak build
+  * gopls/internal/mcp: add diagnostics tool
+  * gopls/internal/settings: revert to old goimports index
+  * gopls/internal/analysis/unusedfunc: support var, type, func
+  * gopls/internal/cmd: fix mcp http test
+  * gopls/internal/cmd: fix mcp stdio test
+  * gopls/go.mod: update dependencies following the v0.19.0 release
+  * gopls/doc/release: add contributor shout-out
+  * gopls/internal/cmd: headless mcp server command
+  * gopls/internal: eliminate two unused declarations
+  * gopls/internal/golang: add counters for refactoring ops
+  * gopls/internal/test/integration: fix race
+
+-------------------------------------------------------------------
 Thu Jun 19 16:52:01 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.19.1:
