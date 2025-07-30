@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-collections
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           eclipse-collections
-Version:        11.1.0
+Version:        12.0.0
 Release:        0
 Summary:        Collections framework for Java
 License:        BSD-3-Clause AND EPL-1.0
@@ -25,16 +25,18 @@ Group:          Development/Libraries/Java
 URL:            https://www.eclipse.org/collections
 Source0:        https://github.com/eclipse/%{name}/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
+BuildRequires:  java-devel >= 11
 BuildRequires:  maven-local
-BuildRequires:  mvn(biz.aQute.bnd:bnd-maven-plugin)
+BuildRequires:  mvn(biz.aQute.bnd:biz.aQute.bnd.annotation)
 BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.antlr:ST4)
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven:maven-core)
-BuildRequires:  mvn(org.apache.maven:maven-model)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
+BuildRequires:  mvn(org.junit.jupiter:junit-jupiter-engine)
+BuildRequires:  mvn(org.junit.platform:junit-platform-engine)
+BuildRequires:  mvn(org.junit.vintage:junit-vintage-engine)
 BuildArch:      noarch
 
 %description
@@ -55,30 +57,20 @@ Summary:        API documentation for %{name}
 API documentation for %{name}.
 
 %prep
-%setup -q
-%pom_remove_plugin -r org.apache.maven.plugins:maven-dependency-plugin
-%pom_remove_plugin -r org.eclipse.ebr:ebr-maven-plugin
+%autosetup
+
 %pom_remove_plugin -r org.jacoco:jacoco-maven-plugin
 %pom_remove_plugin -r :maven-enforcer-plugin
 %pom_remove_plugin -r :maven-javadoc-plugin
+
 %pom_disable_module jcstress-tests
-%pom_disable_module p2-repository
 %pom_disable_module test-coverage
 %pom_disable_module unit-tests-java8
-
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-%pom_add_plugin org.apache.maven.plugins:maven-compiler-plugin:3.8.1 eclipse-collections-api \
-'<configuration>
-    <release>8</release>
-</configuration>'
-%endif
 
 %{mvn_package} :*-tests __noinstall
 
 %build
-%{mvn_build} -f -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
-    -Dsource=8
+%{mvn_build} -f
 
 %install
 %mvn_install
