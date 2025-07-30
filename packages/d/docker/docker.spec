@@ -51,8 +51,8 @@
 %endif
 
 # MANUAL: This needs to be updated with every docker update.
-%define docker_real_version 28.3.2
-%define docker_git_version e77ff99ed
+%define docker_real_version 28.3.3
+%define docker_git_version bea959c7b
 %define docker_version %{docker_real_version}_ce
 # This "nice version" is so that docker --version gives a result that can be
 # parsed by other people. boo#1182476

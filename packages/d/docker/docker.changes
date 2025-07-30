@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 29 14:44:44 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 28.3.3-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/28/#2833>
+  CVE-2025-54388
+
+-------------------------------------------------------------------
 Wed Jul 23 04:23:57 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to docker-buildx v0.26.1. Upstream changelog:
