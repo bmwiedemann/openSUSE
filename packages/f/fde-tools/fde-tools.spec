@@ -139,6 +139,7 @@ cp %{S:1} %{buildroot}%{_unitdir}/fde-tpm-enroll.service
 %{_mandir}/man8/fdectl.8.gz
 %dir %{_libdir}/cryptsetup/
 %{_libdir}/cryptsetup/libcryptsetup-token-*.so
+%dir %attr(750,root,root) %{_var}/log/fde
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/fdectl

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 29 07:32:53 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add the missing /var/log/fde (bsc#1247228)
+
+-------------------------------------------------------------------
 Tue Jul 22 02:55:53 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fde-tools-bsc1246464-use-default-uefi-boot-path.patch to
