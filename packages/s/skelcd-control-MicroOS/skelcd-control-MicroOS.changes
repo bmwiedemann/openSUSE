@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 23 14:39:22 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Using tpm2 instead of tpm2+pin because MicroOS will installed
+  mainly on servers. (jsc#PED-10703)
+- 20250723
+
+-------------------------------------------------------------------
 Wed Jul 16 10:11:51 UTC 2025 - Stefan Schubert <schubi@suse.de>
 
 - Using systemd_fde in partition proposal (jsc#PED-10703).
