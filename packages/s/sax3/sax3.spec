@@ -27,6 +27,7 @@ Source:         %{name}-%{version}.tar.gz
 #               https://github.com/openSUSE/%{name}/archive/v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM sax3-gcc6.patch
 Patch0:         sax3-gcc6.patch
+Patch1:         sax3-cmake-circular-linking.patch
 BuildRequires:  augeas-devel
 BuildRequires:  augeas-lenses
 BuildRequires:  cmake >= 3.5

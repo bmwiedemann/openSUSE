@@ -1,0 +1,30 @@
+From fd2d7365edfc9b47fab3f4101780b85cd5bcc308 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christoph=20Gr=C3=BCninger?= <foss@grueninger.de>
+Date: Tue, 29 Jul 2025 17:03:19 +0200
+Subject: [PATCH] [cmake] Prevent circular linking of library sax3-yuif
+
+---
+ src/CMakeLists.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 2aa8b1d..556da03 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,3 +1,5 @@
++add_library(sax3-yuif SHARED ui/yuifactory.cxx ui/yui.cxx)
++
+ include_directories(${SaX3_SOURCE_DIR}/src/ui ${LIBYUI_INCLUDE_DIR} ${AUGEAS_INCLUDE_DIR})
+ link_libraries(${LIBYUI_LIBRARIES} ${AUGEAS_LIBRARIES} sax3-yuif)
+ 
+@@ -6,7 +8,6 @@ add_subdirectory(modules.d)
+ add_subdirectory(man)
+ add_subdirectory(translation)
+ 
+-add_library(sax3-yuif SHARED ui/yuifactory.cxx ui/yui.cxx)
+ add_executable(sax3 main.cxx)
+ add_executable(sax3-keyboard keyboard.cxx)
+ add_executable(sax3-mouse mouse.cxx)
+-- 
+2.50.1
+
