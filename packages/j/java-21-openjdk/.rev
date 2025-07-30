@@ -151,4 +151,12 @@
     <comment>Do not embed rebuild counter (bsc#1246806)</comment>
     <requestid>1294995</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>53cdc65e91f059b182c7f07a85cbb384</srcmd5>
+    <version>21.0.8.0</version>
+    <time>1753868512</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1296294</requestid>
+  </revision>
 </revisionlist>

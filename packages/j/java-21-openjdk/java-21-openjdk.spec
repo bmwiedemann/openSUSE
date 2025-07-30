@@ -175,6 +175,7 @@ Patch200:       ppc_stack_overflow_fix.patch
 #
 Patch302:       disable-doclint-by-default.patch
 Patch303:       java-40y.patch
+Patch304:       jdk-8354941.patch
 #
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
@@ -412,6 +413,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch -P 302 -p1
 %patch -P 303 -p1
+%patch -P 304 -p1
 
 # Extract systemtap tapsets
 
