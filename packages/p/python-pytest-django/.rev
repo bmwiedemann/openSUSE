@@ -224,4 +224,13 @@ See request 531880 : https://build.opensuse.org/request/show/531880</comment>
   * Bugfixes</comment>
     <requestid>1276724</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>298acb39332b51d483b7c1c1bc4ec8e0</srcmd5>
+    <version>4.11.1</version>
+    <time>1753868462</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch fix-use-of-mail-outbox.patch:
+  * Fix use of django.mail.outbox with Django 5.2.</comment>
+    <requestid>1296031</requestid>
+  </revision>
 </revisionlist>

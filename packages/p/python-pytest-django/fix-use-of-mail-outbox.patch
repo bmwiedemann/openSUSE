@@ -1,0 +1,998 @@
+From 1fe4ef768dbad77a833a4ecc70a07207d4bda641 Mon Sep 17 00:00:00 2001
+From: Javier Buzzi <buzzi.javier@gmail.com>
+Date: Mon, 31 Mar 2025 15:34:52 -0400
+Subject: [PATCH 01/23] Update plugin.py
+
+---
+ pytest_django/plugin.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/pytest_django/plugin.py b/pytest_django/plugin.py
+index 08d961a6..fc439819 100644
+--- a/pytest_django/plugin.py
++++ b/pytest_django/plugin.py
+@@ -599,7 +599,8 @@ def _dj_autoclear_mailbox() -> None:
+ 
+     from django.core import mail
+ 
+-    del mail.outbox[:]
++    if hasattr(main, "outbox":
++        mail.outbox.clear()
+ 
+ 
+ @pytest.fixture()
+
+From acd9d6182b5db49e0715e76c1abc1982aa981ad0 Mon Sep 17 00:00:00 2001
+From: Javier Buzzi <buzzi.javier@gmail.com>
+Date: Mon, 31 Mar 2025 15:37:33 -0400
+Subject: [PATCH 02/23] Update plugin.py
+
+---
+ pytest_django/plugin.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pytest_django/plugin.py b/pytest_django/plugin.py
+index fc439819..2309c9ed 100644
+--- a/pytest_django/plugin.py
++++ b/pytest_django/plugin.py
+@@ -599,7 +599,7 @@ def _dj_autoclear_mailbox() -> None:
+ 
+     from django.core import mail
+ 
+-    if hasattr(main, "outbox":
++    if hasattr(main, "outbox"):
+         mail.outbox.clear()
+ 
+ 
+
+From 502380faa59d98c6137f74b14abe05170423d832 Mon Sep 17 00:00:00 2001
+From: Javier Buzzi <buzzi.javier@gmail.com>
+Date: Mon, 31 Mar 2025 15:41:33 -0400
+Subject: [PATCH 03/23] Update test_environment.py
+
+---
+ tests/test_environment.py | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/tests/test_environment.py b/tests/test_environment.py
+index a3549732..2823d813 100644
+--- a/tests/test_environment.py
++++ b/tests/test_environment.py
+@@ -18,6 +18,23 @@
+ # to do it.
+ 
+ 
++@pytest.mark.django_project(
++    project_root="django_project_root",
++    extra_settings="""
++    EMAIL_BACKEND = "django.core.mail.backends.dummy.EmailBackend"
++    """,
++)
++def test_manage_test_runner(django_pytester: DjangoPytester) -> None:
++    django_pytester.create_test_module(
++        """
++        def test_bad_mail():
++            pass
++        """
++    )
++    result = django_pytester.runpytest_subprocess("-s")
++    assert "1 passed" in "\n".join(result.outlines)
++
++
+ @pytest.mark.parametrize("subject", ["subject1", "subject2"])
+ def test_autoclear_mailbox(subject: str) -> None:
+     assert len(mail.outbox) == 0
+
+From c8427b437f48efdf9ff3c3090a10e52dd2f4cc46 Mon Sep 17 00:00:00 2001
+From: Javier Buzzi <buzzi.javier@gmail.com>
+Date: Mon, 31 Mar 2025 15:42:37 -0400
+Subject: [PATCH 04/23] i want to see it fail
+
+---
+ pytest_django/plugin.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/pytest_django/plugin.py b/pytest_django/plugin.py
+index 2309c9ed..eece6a51 100644
+--- a/pytest_django/plugin.py
++++ b/pytest_django/plugin.py
+@@ -599,8 +599,9 @@ def _dj_autoclear_mailbox() -> None:
+ 
+     from django.core import mail
+ 
+-    if hasattr(main, "outbox"):
+-        mail.outbox.clear()
++    del mail.outbox[:]
++    # if hasattr(main, "outbox"):
++    #     mail.outbox.clear()
+ 
+ 
+ @pytest.fixture()
+
+From 9e786dba0541d97cc8a285e90d453f9e496d95af Mon Sep 17 00:00:00 2001
+From: Javier Buzzi <buzzi.javier@gmail.com>
+Date: Mon, 31 Mar 2025 15:48:41 -0400
+Subject: [PATCH 05/23] Update test_environment.py
+
+---
+ tests/test_environment.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_environment.py b/tests/test_environment.py
+index 2823d813..26876ab5 100644
+--- a/tests/test_environment.py
++++ b/tests/test_environment.py
+@@ -32,7 +32,7 @@ def test_bad_mail():
+         """
+     )
+     result = django_pytester.runpytest_subprocess("-s")
+-    assert "1 passed" in "\n".join(result.outlines)
++    assert "1 passed" in "\n".join([*result.outlines, *result.errlines])
+ 
+ 
+ @pytest.mark.parametrize("subject", ["subject1", "subject2"])
+
+From b9dee6aec323ffe6d78b5da9ace65a0e1608690e Mon Sep 17 00:00:00 2001
+From: kingbuzzman <buzzi.javier@gmail.com>
+Date: Mon, 31 Mar 2025 17:47:51 -0400
+Subject: [PATCH 06/23] This is a much bigger issue.
+
+---
+ pytest_django/plugin.py   |  7 ++++---
+ tests/test_environment.py | 26 +++++++++++++++++++++++---
+ 2 files changed, 27 insertions(+), 6 deletions(-)
+
+diff --git a/pytest_django/plugin.py b/pytest_django/plugin.py
+index eece6a51..fe315fe5 100644
+--- a/pytest_django/plugin.py
++++ b/pytest_django/plugin.py
+@@ -599,9 +599,10 @@ def _dj_autoclear_mailbox() -> None:
+ 
+     from django.core import mail
+ 
+-    del mail.outbox[:]
+-    # if hasattr(main, "outbox"):
+-    #     mail.outbox.clear()
++    # import ipdb; print('\a'); ipdb.sset_trace()
++    # del mail.outbox[:]
++    if hasattr(mail, "outbox"):
++        mail.outbox.clear()
+ 
+ 
+ @pytest.fixture()
+diff --git a/tests/test_environment.py b/tests/test_environment.py
+index 26876ab5..8e375c65 100644
+--- a/tests/test_environment.py
++++ b/tests/test_environment.py
+@@ -19,19 +19,39 @@
+ 
+ 
+ @pytest.mark.django_project(
+-    project_root="django_project_root",
+     extra_settings="""
+     EMAIL_BACKEND = "django.core.mail.backends.dummy.EmailBackend"
++    import unittest.mock
++    from types import SimpleNamespace
++
++    def setup_test_environment(*a, **k):
++        if hasattr(_TestState, "saved_data"):
++            # Executing this function twice would overwrite the saved values.
++            raise RuntimeError(
++                "setup_test_environment() was already called and can't be called "
++                "again without first calling teardown_test_environment()."
++            )
++
++        saved_data = SimpleNamespace()
++        _TestState.saved_data = saved_data
++        saved_data.allowed_hosts = []
++        saved_data.debug = False
++        saved_data.email_backend = None
++        saved_data.template_render = None
++
++    unittest.mock.patch("django.test.utils.setup_test_environment", setup_test_environment).start()
++    from django.test.utils import _TestState
+     """,
+ )
+-def test_manage_test_runner(django_pytester: DjangoPytester) -> None:
++def test_mail_auto_fixture(django_pytester: DjangoPytester) -> None:
+     django_pytester.create_test_module(
+         """
+         def test_bad_mail():
+             pass
+         """
+     )
+-    result = django_pytester.runpytest_subprocess("-s")
++    result = django_pytester.runpytest_subprocess("-s", "-vv")
++    print("\n".join([*result.outlines, *result.errlines]))
+     assert "1 passed" in "\n".join([*result.outlines, *result.errlines])
+ 
+ 
+
+From 2b5b1977927177ec8de7744d4e380c5ed76b4ea3 Mon Sep 17 00:00:00 2001
+From: Javier Buzzi <buzzi.javier@gmail.com>
+Date: Tue, 1 Apr 2025 10:59:21 +0200
+Subject: [PATCH 07/23] Update test_environment.py
+
+---
+ tests/test_environment.py | 22 ++--------------------
+ 1 file changed, 2 insertions(+), 20 deletions(-)
+
+diff --git a/tests/test_environment.py b/tests/test_environment.py
+index 8e375c65..687bbe69 100644
+--- a/tests/test_environment.py
++++ b/tests/test_environment.py
+@@ -21,26 +21,8 @@
+ @pytest.mark.django_project(
+     extra_settings="""
+     EMAIL_BACKEND = "django.core.mail.backends.dummy.EmailBackend"
+-    import unittest.mock
+-    from types import SimpleNamespace
+-
+-    def setup_test_environment(*a, **k):
+-        if hasattr(_TestState, "saved_data"):
+-            # Executing this function twice would overwrite the saved values.
+-            raise RuntimeError(
+-                "setup_test_environment() was already called and can't be called "
+-                "again without first calling teardown_test_environment()."
+-            )
+-
+-        saved_data = SimpleNamespace()
+-        _TestState.saved_data = saved_data
+-        saved_data.allowed_hosts = []
+-        saved_data.debug = False
+-        saved_data.email_backend = None
+-        saved_data.template_render = None
+ 
+-    unittest.mock.patch("django.test.utils.setup_test_environment", setup_test_environment).start()
+-    from django.test.utils import _TestState
++    unittest.mock.patch("pytest_django.lazy_django.django_settings_is_configured", lambda: False).start()
+     """,
+ )
+ def test_mail_auto_fixture(django_pytester: DjangoPytester) -> None:
+@@ -50,7 +32,7 @@ def test_bad_mail():
+             pass
+         """
+     )
+-    result = django_pytester.runpytest_subprocess("-s", "-vv")
++    result = django_pytester.runpytest_subprocess("-s")
+     print("\n".join([*result.outlines, *result.errlines]))
+     assert "1 passed" in "\n".join([*result.outlines, *result.errlines])
+ 
+
+From 60a07b2a12596bd8777cb915ed2bfc64abe8b48a Mon Sep 17 00:00:00 2001
+From: Javier Buzzi <buzzi.javier@gmail.com>
+Date: Tue, 1 Apr 2025 11:00:07 +0200
+Subject: [PATCH 08/23] Update test_environment.py
+
+---
+ tests/test_environment.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/test_environment.py b/tests/test_environment.py
+index 687bbe69..98cb79d6 100644
+--- a/tests/test_environment.py
++++ b/tests/test_environment.py
+@@ -22,6 +22,7 @@
+     extra_settings="""
+     EMAIL_BACKEND = "django.core.mail.backends.dummy.EmailBackend"
+ 
++    import unittest.mock
+     unittest.mock.patch("pytest_django.lazy_django.django_settings_is_configured", lambda: False).start()
+     """,
+ )
+
+From e831c77373cbda0b28e8e548180dbcfc83d0de5c Mon Sep 17 00:00:00 2001
+From: Javier Buzzi <buzzi.javier@gmail.com>
+Date: Tue, 1 Apr 2025 11:49:43 +0200
+Subject: [PATCH 09/23] getting closer..
+
+---
+ pytest_django/plugin.py   |  5 ++---
+ tests/test_environment.py | 11 +++++++----
+ 2 files changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/pytest_django/plugin.py b/pytest_django/plugin.py
+index fe315fe5..b479fefb 100644
+--- a/pytest_django/plugin.py
++++ b/pytest_django/plugin.py
+@@ -599,8 +599,6 @@ def _dj_autoclear_mailbox() -> None:
+ 
+     from django.core import mail
+ 
+-    # import ipdb; print('\a'); ipdb.sset_trace()
+-    # del mail.outbox[:]
+     if hasattr(mail, "outbox"):
+         mail.outbox.clear()
+ 
+@@ -616,7 +614,8 @@ def mailoutbox(
+ 
+     from django.core import mail
+ 
+-    return mail.outbox  # type: ignore[no-any-return]
++    if hasattr(mail, "outbox"):
++        return mail.outbox  # type: ignore[no-any-return]
+ 
+ 
+ @pytest.fixture()
+diff --git a/tests/test_environment.py b/tests/test_environment.py
+index 98cb79d6..a568c60f 100644
+--- a/tests/test_environment.py
++++ b/tests/test_environment.py
+@@ -19,21 +19,24 @@
+ 
+ 
+ @pytest.mark.django_project(
++    create_manage_py=True,
+     extra_settings="""
+     EMAIL_BACKEND = "django.core.mail.backends.dummy.EmailBackend"
+ 
+     import unittest.mock
+-    unittest.mock.patch("pytest_django.lazy_django.django_settings_is_configured", lambda: False).start()
++    unittest.mock.patch("django.test.utils.setup_test_environment", lambda *a, **k: None).start()
++    unittest.mock.patch("django.test.utils.teardown_test_environment", lambda *a, **k: None).start()
+     """,
+ )
+ def test_mail_auto_fixture(django_pytester: DjangoPytester) -> None:
+     django_pytester.create_test_module(
+         """
+-        def test_bad_mail():
+-            pass
++        def test_bad_mail(settings, mailoutbox):
++            assert mailoutbox is None
++            assert settings.EMAIL_BACKEND == "django.core.mail.backends.dummy.EmailBackend"
+         """
+     )
+-    result = django_pytester.runpytest_subprocess("-s")
++    result = django_pytester.runpytest_subprocess("-s", '-vv')
+     print("\n".join([*result.outlines, *result.errlines]))
+     assert "1 passed" in "\n".join([*result.outlines, *result.errlines])
+ 
+
+From e5631311edb1a0b62643df954296de56c30261ca Mon Sep 17 00:00:00 2001
+From: Javier Buzzi <buzzi.javier@gmail.com>
+Date: Tue, 1 Apr 2025 12:01:50 +0200
+Subject: [PATCH 10/23] got to the root issue, its a custom
+ django_test_environment
+
+---
+ tests/test_environment.py | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/tests/test_environment.py b/tests/test_environment.py
+index a568c60f..9188acbe 100644
+--- a/tests/test_environment.py
++++ b/tests/test_environment.py
+@@ -22,13 +22,19 @@
+     create_manage_py=True,
+     extra_settings="""
+     EMAIL_BACKEND = "django.core.mail.backends.dummy.EmailBackend"
+-
+-    import unittest.mock
+-    unittest.mock.patch("django.test.utils.setup_test_environment", lambda *a, **k: None).start()
+-    unittest.mock.patch("django.test.utils.teardown_test_environment", lambda *a, **k: None).start()
+     """,
+ )
+ def test_mail_auto_fixture(django_pytester: DjangoPytester) -> None:
++    django_pytester.create_test_module(
++        """
++        import pytest
++
++        @pytest.fixture(autouse=True, scope="session")
++        def django_test_environment(request):
++            yield
++        """, filename="conftest.py"
++    )
++
+     django_pytester.create_test_module(
+         """
+         def test_bad_mail(settings, mailoutbox):
+
+From 43da9ac17508208a28620c0b1b6758c029ce2b20 Mon Sep 17 00:00:00 2001
+From: Javier Buzzi <buzzi.javier@gmail.com>
+Date: Tue, 1 Apr 2025 12:17:45 +0200
+Subject: [PATCH 11/23] Moved test
+
+---
+ tests/test_environment.py | 29 -----------------------------
+ tests/test_fixtures.py    | 34 ++++++++++++++++++++++++++++++++++
+ 2 files changed, 34 insertions(+), 29 deletions(-)
+
+diff --git a/tests/test_environment.py b/tests/test_environment.py
+index 9188acbe..a3549732 100644
+--- a/tests/test_environment.py
++++ b/tests/test_environment.py
+@@ -18,35 +18,6 @@
+ # to do it.
+ 
+ 
+-@pytest.mark.django_project(
+-    create_manage_py=True,
+-    extra_settings="""
+-    EMAIL_BACKEND = "django.core.mail.backends.dummy.EmailBackend"
+-    """,
+-)
+-def test_mail_auto_fixture(django_pytester: DjangoPytester) -> None:
+-    django_pytester.create_test_module(
+-        """
+-        import pytest
+-
+-        @pytest.fixture(autouse=True, scope="session")
+-        def django_test_environment(request):
+-            yield
+-        """, filename="conftest.py"
+-    )
+-
+-    django_pytester.create_test_module(
+-        """
+-        def test_bad_mail(settings, mailoutbox):
+-            assert mailoutbox is None
+-            assert settings.EMAIL_BACKEND == "django.core.mail.backends.dummy.EmailBackend"
+-        """
+-    )
+-    result = django_pytester.runpytest_subprocess("-s", '-vv')
+-    print("\n".join([*result.outlines, *result.errlines]))
+-    assert "1 passed" in "\n".join([*result.outlines, *result.errlines])
+-
+-
+ @pytest.mark.parametrize("subject", ["subject1", "subject2"])
+ def test_autoclear_mailbox(subject: str) -> None:
+     assert len(mail.outbox) == 0
+diff --git a/tests/test_fixtures.py b/tests/test_fixtures.py
+index 39c6666f..4c98b899 100644
+--- a/tests/test_fixtures.py
++++ b/tests/test_fixtures.py
+@@ -825,3 +825,37 @@ def mocked_make_msgid(*args, **kwargs):
+     result = django_pytester.runpytest_subprocess("--tb=short", "-vv", "-s")
+     result.stdout.fnmatch_lines(["*test_mailbox_inner*", "django_mail_dnsname_mark", "PASSED*"])
+     assert result.ret == 0
++
++
++@pytest.mark.django_project(
++    create_manage_py=True,
++    extra_settings="""
++    EMAIL_BACKEND = "django.core.mail.backends.dummy.EmailBackend"
++    """,
++)
++def test_mail_auto_fixture_misconfigured(django_pytester: DjangoPytester) -> None:
++    """
++    django_test_environment fixture can be overridden by user, and that would break mailoutbox fixture.
++
++    Normally settings.EMAIL_BACKEND is set to "django.core.mail.backends.locmem.EmailBackend" by django, 
++    along with mail.outbox = []. If this function doesn't run for whatever reason, the mailoutbox fixture will not work properly.
++    """
++    django_pytester.create_test_module(
++        """
++        import pytest
++
++        @pytest.fixture(autouse=True, scope="session")
++        def django_test_environment(request):
++            yield
++        """, filename="conftest.py"
++    )
++
++    django_pytester.create_test_module(
++        """
++        def test_bad_mail(settings, mailoutbox):
++            assert mailoutbox is None
++            assert settings.EMAIL_BACKEND == "django.core.mail.backends.dummy.EmailBackend"
++        """
++    )
++    result = django_pytester.runpytest_subprocess()
++    assert result.ret == 0
+
+From c8c73550cf8d0786ecb38fa0e2f9914ade00eff4 Mon Sep 17 00:00:00 2001
+From: Javier Buzzi <buzzi.javier@gmail.com>
+Date: Tue, 1 Apr 2025 12:19:29 +0200
+Subject: [PATCH 12/23] Fixes linter
+
+---
+ pytest_django/plugin.py | 1 +
+ tests/test_fixtures.py  | 5 +++--
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/pytest_django/plugin.py b/pytest_django/plugin.py
+index b479fefb..f99ea246 100644
+--- a/pytest_django/plugin.py
++++ b/pytest_django/plugin.py
+@@ -616,6 +616,7 @@ def mailoutbox(
+ 
+     if hasattr(mail, "outbox"):
+         return mail.outbox  # type: ignore[no-any-return]
++    return None
+ 
+ 
+ @pytest.fixture()
+diff --git a/tests/test_fixtures.py b/tests/test_fixtures.py
+index 4c98b899..f8ca69c7 100644
+--- a/tests/test_fixtures.py
++++ b/tests/test_fixtures.py
+@@ -837,7 +837,7 @@ def test_mail_auto_fixture_misconfigured(django_pytester: DjangoPytester) -> Non
+     """
+     django_test_environment fixture can be overridden by user, and that would break mailoutbox fixture.
+ 
+-    Normally settings.EMAIL_BACKEND is set to "django.core.mail.backends.locmem.EmailBackend" by django, 
++    Normally settings.EMAIL_BACKEND is set to "django.core.mail.backends.locmem.EmailBackend" by django,
+     along with mail.outbox = []. If this function doesn't run for whatever reason, the mailoutbox fixture will not work properly.
+     """
+     django_pytester.create_test_module(
+@@ -847,7 +847,8 @@ def test_mail_auto_fixture_misconfigured(django_pytester: DjangoPytester) -> Non
+         @pytest.fixture(autouse=True, scope="session")
+         def django_test_environment(request):
+             yield
+-        """, filename="conftest.py"
++        """,
++        filename="conftest.py",
+     )
+ 
+     django_pytester.create_test_module(
+
+From 4e26a87597231a9b4945017bb05e7f739fd01f68 Mon Sep 17 00:00:00 2001
+From: Javier Buzzi <buzzi.javier@gmail.com>
+Date: Tue, 1 Apr 2025 12:29:43 +0200
+Subject: [PATCH 13/23] Adds warning
+
+---
+ pytest_django/plugin.py | 6 +++++-
+ tests/test_fixtures.py  | 7 ++++++-
+ 2 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/pytest_django/plugin.py b/pytest_django/plugin.py
+index f99ea246..faaa3535 100644
+--- a/pytest_django/plugin.py
++++ b/pytest_django/plugin.py
+@@ -593,7 +593,7 @@ def non_debugging_runtest(self) -> None:
+ 
+ 
+ @pytest.fixture(autouse=True)
+-def _dj_autoclear_mailbox() -> None:
++def _dj_autoclear_mailbox(request: pytest.FixtureRequest) -> None:
+     if not django_settings_is_configured():
+         return
+ 
+@@ -601,6 +601,10 @@ def _dj_autoclear_mailbox() -> None:
+ 
+     if hasattr(mail, "outbox"):
+         mail.outbox.clear()
++    else:
++        request.node.warn(
++            pytest.PytestWarning("Error when trying to clear mailbox, possible misconfiguration")
++        )
+ 
+ 
+ @pytest.fixture()
+diff --git a/tests/test_fixtures.py b/tests/test_fixtures.py
+index f8ca69c7..bf4fccf9 100644
+--- a/tests/test_fixtures.py
++++ b/tests/test_fixtures.py
+@@ -838,8 +838,12 @@ def test_mail_auto_fixture_misconfigured(django_pytester: DjangoPytester) -> Non
+     django_test_environment fixture can be overridden by user, and that would break mailoutbox fixture.
+ 
+     Normally settings.EMAIL_BACKEND is set to "django.core.mail.backends.locmem.EmailBackend" by django,
+-    along with mail.outbox = []. If this function doesn't run for whatever reason, the mailoutbox fixture will not work properly.
++    along with mail.outbox = []. If this function doesn't run for whatever reason, the
++    mailoutbox fixture will not work properly.
+     """
++    expected_warning_message = (
++        "PytestWarning: Error when trying to clear mailbox, possible misconfiguration"
++    )
+     django_pytester.create_test_module(
+         """
+         import pytest
+@@ -860,3 +864,4 @@ def test_bad_mail(settings, mailoutbox):
+     )
+     result = django_pytester.runpytest_subprocess()
+     assert result.ret == 0
++    assert expected_warning_message in "\n".join(result.outlines)
+
+From 5effbf7f348fcd62e4ca5b1fde8cb4e080d5941f Mon Sep 17 00:00:00 2001
+From: Javier Buzzi <buzzi.javier@gmail.com>
+Date: Tue, 1 Apr 2025 12:39:01 +0200
+Subject: [PATCH 14/23] Test the warning
+
+---
+ tests/test_fixtures.py | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/tests/test_fixtures.py b/tests/test_fixtures.py
+index bf4fccf9..8227ec84 100644
+--- a/tests/test_fixtures.py
++++ b/tests/test_fixtures.py
+@@ -857,11 +857,16 @@ def django_test_environment(request):
+ 
+     django_pytester.create_test_module(
+         """
+-        def test_bad_mail(settings, mailoutbox):
++        def test_with_fixture(settings, mailoutbox):
+             assert mailoutbox is None
+             assert settings.EMAIL_BACKEND == "django.core.mail.backends.dummy.EmailBackend"
++
++        def test_without_fixture():
++            from django.core import mail
++            assert not hasattr(mail, "outbox")
+         """
+     )
+-    result = django_pytester.runpytest_subprocess()
+-    assert result.ret == 0
+-    assert expected_warning_message in "\n".join(result.outlines)
++    result = django_pytester.runpytest_subprocess("-q")
++    output = "\n".join(result.outlines)
++    assert "2 passed, 2 warnings" in output
++    assert expected_warning_message in output
+
+From c4a9a7b252ec5badcc6b888c36619f77290c0794 Mon Sep 17 00:00:00 2001
+From: Javier Buzzi <buzzi.javier@gmail.com>
+Date: Tue, 1 Apr 2025 13:00:21 +0200
+Subject: [PATCH 15/23] ehh f-it. this is good enough
+
+---
+ tests/test_fixtures.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_fixtures.py b/tests/test_fixtures.py
+index 8227ec84..db524cc6 100644
+--- a/tests/test_fixtures.py
++++ b/tests/test_fixtures.py
+@@ -868,5 +868,5 @@ def test_without_fixture():
+     )
+     result = django_pytester.runpytest_subprocess("-q")
+     output = "\n".join(result.outlines)
+-    assert "2 passed, 2 warnings" in output
++    assert "2 passed" in output
+     assert expected_warning_message in output
+
+From 1d7a61570769783c498e2f9bb7e760bd3896abdd Mon Sep 17 00:00:00 2001
+From: kingbuzzman <buzzi.javier@gmail.com>
+Date: Wed, 2 Apr 2025 15:43:19 -0400
+Subject: [PATCH 16/23] Adds test for when there is no 'settings' at all
+
+---
+ tests/conftest.py      |  7 ++++++-
+ tests/test_fixtures.py | 22 ++++++++++++++++++++++
+ 2 files changed, 28 insertions(+), 1 deletion(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 16e209f1..1ef17498 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -30,11 +30,13 @@ def _marker_apifun(
+     extra_settings: str = "",
+     create_manage_py: bool = False,
+     project_root: str | None = None,
++    has_settings: bool = True,
+ ):
+     return {
+         "extra_settings": extra_settings,
+         "create_manage_py": create_manage_py,
+         "project_root": project_root,
++        "has_settings": has_settings,
+     }
+ 
+ 
+@@ -142,7 +144,10 @@ def django_pytester(
+     pythonpath = os.pathsep.join(filter(None, [str(REPOSITORY_ROOT), os.getenv("PYTHONPATH", "")]))
+     monkeypatch.setenv("PYTHONPATH", pythonpath)
+ 
+-    monkeypatch.setenv("DJANGO_SETTINGS_MODULE", "tpkg.the_settings")
++    if options["has_settings"]:
++        monkeypatch.setenv("DJANGO_SETTINGS_MODULE", "tpkg.the_settings")
++    else:
++        monkeypatch.delenv("DJANGO_SETTINGS_MODULE", raising=False)
+ 
+     def create_test_module(test_code: str, filename: str = "test_the_test.py") -> Path:
+         r = tpkg_path.joinpath(filename)
+diff --git a/tests/test_fixtures.py b/tests/test_fixtures.py
+index db524cc6..500c34b0 100644
+--- a/tests/test_fixtures.py
++++ b/tests/test_fixtures.py
+@@ -870,3 +870,25 @@ def test_without_fixture():
+     output = "\n".join(result.outlines)
+     assert "2 passed" in output
+     assert expected_warning_message in output
++
++
++@pytest.mark.django_project(has_settings=False)
++def test_no_settings(django_pytester: DjangoPytester) -> None:
++    django_pytester.create_test_module(
++        """
++        def test_skipped_settings(settings):
++            pass
++
++        def test_mailoutbox(mailoutbox):
++            assert mailoutbox is None
++
++        def test_mail():
++            from django.core import mail
++            assert not hasattr(mail, "outbox")
++        """
++    )
++    result = django_pytester.runpytest_subprocess("-v")
++    output = "\n".join(result.outlines)
++    assert "::test_skipped_settings SKIPPED" in output
++    assert "::test_mailoutbox PASSED" in output
++    assert "::test_mail PASSED" in output
+
+From cf170faeff64ef9d0d966c622a42379b30064508 Mon Sep 17 00:00:00 2001
+From: kingbuzzman <buzzi.javier@gmail.com>
+Date: Wed, 2 Apr 2025 15:46:14 -0400
+Subject: [PATCH 17/23] Slight change to ensure that there really isnt any
+ settings
+
+---
+ tests/conftest.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 1ef17498..ea59945d 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -137,7 +137,8 @@ def django_pytester(
+ 
+     # Copy the test app to make it available in the new test run
+     shutil.copytree(str(app_source), str(test_app_path))
+-    tpkg_path.joinpath("the_settings.py").write_text(test_settings)
++    if options["has_settings"]:
++        tpkg_path.joinpath("the_settings.py").write_text(test_settings)
+ 
+     # For suprocess tests, pytest's `pythonpath` setting doesn't currently
+     # work, only the envvar does.
+
+From 534a7f2b7ed952d7b6c90fc8f7f9829619742c73 Mon Sep 17 00:00:00 2001
+From: kingbuzzman <buzzi.javier@gmail.com>
+Date: Wed, 2 Apr 2025 16:06:22 -0400
+Subject: [PATCH 18/23] Gigantic simplification
+
+---
+ pytest_django/plugin.py |  7 +------
+ tests/test_fixtures.py  | 14 +++++---------
+ 2 files changed, 6 insertions(+), 15 deletions(-)
+
+diff --git a/pytest_django/plugin.py b/pytest_django/plugin.py
+index faaa3535..e1d56156 100644
+--- a/pytest_django/plugin.py
++++ b/pytest_django/plugin.py
+@@ -601,10 +601,6 @@ def _dj_autoclear_mailbox(request: pytest.FixtureRequest) -> None:
+ 
+     if hasattr(mail, "outbox"):
+         mail.outbox.clear()
+-    else:
+-        request.node.warn(
+-            pytest.PytestWarning("Error when trying to clear mailbox, possible misconfiguration")
+-        )
+ 
+ 
+ @pytest.fixture()
+@@ -613,8 +609,7 @@ def mailoutbox(
+     _dj_autoclear_mailbox: None,
+ ) -> list[django.core.mail.EmailMessage] | None:
+     """A clean email outbox to which Django-generated emails are sent."""
+-    if not django_settings_is_configured():
+-        return None
++    skip_if_no_django()
+ 
+     from django.core import mail
+ 
+diff --git a/tests/test_fixtures.py b/tests/test_fixtures.py
+index 500c34b0..0d6327ea 100644
+--- a/tests/test_fixtures.py
++++ b/tests/test_fixtures.py
+@@ -841,9 +841,6 @@ def test_mail_auto_fixture_misconfigured(django_pytester: DjangoPytester) -> Non
+     along with mail.outbox = []. If this function doesn't run for whatever reason, the
+     mailoutbox fixture will not work properly.
+     """
+-    expected_warning_message = (
+-        "PytestWarning: Error when trying to clear mailbox, possible misconfiguration"
+-    )
+     django_pytester.create_test_module(
+         """
+         import pytest
+@@ -869,7 +866,6 @@ def test_without_fixture():
+     result = django_pytester.runpytest_subprocess("-q")
+     output = "\n".join(result.outlines)
+     assert "2 passed" in output
+-    assert expected_warning_message in output
+ 
+ 
+ @pytest.mark.django_project(has_settings=False)
+@@ -877,10 +873,10 @@ def test_no_settings(django_pytester: DjangoPytester) -> None:
+     django_pytester.create_test_module(
+         """
+         def test_skipped_settings(settings):
+-            pass
++            assert False
+ 
+-        def test_mailoutbox(mailoutbox):
+-            assert mailoutbox is None
++        def test_skipped_mailoutbox(mailoutbox):
++            assert False
+ 
+         def test_mail():
+             from django.core import mail
+@@ -890,5 +886,5 @@ def test_mail():
+     result = django_pytester.runpytest_subprocess("-v")
+     output = "\n".join(result.outlines)
+     assert "::test_skipped_settings SKIPPED" in output
+-    assert "::test_mailoutbox PASSED" in output
+-    assert "::test_mail PASSED" in output
++    assert "::test_skipped_mailoutbox SKIPPED" in output
++    assert "::test_mail PASSED" in output
+\ No newline at end of file
+
+From b330a26929cf06d1cbdbdf6b86a94cf998c8db96 Mon Sep 17 00:00:00 2001
+From: kingbuzzman <buzzi.javier@gmail.com>
+Date: Wed, 2 Apr 2025 16:08:10 -0400
+Subject: [PATCH 19/23] Removes unused import
+
+---
+ pytest_django/plugin.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pytest_django/plugin.py b/pytest_django/plugin.py
+index e1d56156..f8e1d071 100644
+--- a/pytest_django/plugin.py
++++ b/pytest_django/plugin.py
+@@ -593,7 +593,7 @@ def non_debugging_runtest(self) -> None:
+ 
+ 
+ @pytest.fixture(autouse=True)
+-def _dj_autoclear_mailbox(request: pytest.FixtureRequest) -> None:
++def _dj_autoclear_mailbox() -> None:
+     if not django_settings_is_configured():
+         return
+ 
+
+From 80303a447062ba1bba42d15893a30d876bd2df52 Mon Sep 17 00:00:00 2001
+From: kingbuzzman <buzzi.javier@gmail.com>
+Date: Wed, 2 Apr 2025 16:15:38 -0400
+Subject: [PATCH 20/23] Updates linter
+
+---
+ tests/test_fixtures.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_fixtures.py b/tests/test_fixtures.py
+index 0d6327ea..62cb7f20 100644
+--- a/tests/test_fixtures.py
++++ b/tests/test_fixtures.py
+@@ -887,4 +887,4 @@ def test_mail():
+     output = "\n".join(result.outlines)
+     assert "::test_skipped_settings SKIPPED" in output
+     assert "::test_skipped_mailoutbox SKIPPED" in output
+-    assert "::test_mail PASSED" in output
+\ No newline at end of file
++    assert "::test_mail PASSED" in output
+
+From 3223687b2bd08b1f3cb016a6481df9f2c1d1152b Mon Sep 17 00:00:00 2001
+From: kingbuzzman <buzzi.javier@gmail.com>
+Date: Wed, 2 Apr 2025 17:10:38 -0400
+Subject: [PATCH 21/23] Slight simplification when asserting tests
+
+---
+ tests/test_fixtures.py | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/tests/test_fixtures.py b/tests/test_fixtures.py
+index 62cb7f20..490dd8ef 100644
+--- a/tests/test_fixtures.py
++++ b/tests/test_fixtures.py
+@@ -863,9 +863,8 @@ def test_without_fixture():
+             assert not hasattr(mail, "outbox")
+         """
+     )
+-    result = django_pytester.runpytest_subprocess("-q")
+-    output = "\n".join(result.outlines)
+-    assert "2 passed" in output
++    result = django_pytester.runpytest_subprocess()
++    result.assert_outcomes(passed=2)
+ 
+ 
+ @pytest.mark.django_project(has_settings=False)
+@@ -883,8 +882,5 @@ def test_mail():
+             assert not hasattr(mail, "outbox")
+         """
+     )
+-    result = django_pytester.runpytest_subprocess("-v")
+-    output = "\n".join(result.outlines)
+-    assert "::test_skipped_settings SKIPPED" in output
+-    assert "::test_skipped_mailoutbox SKIPPED" in output
+-    assert "::test_mail PASSED" in output
++    result = django_pytester.runpytest_subprocess()
++    result.assert_outcomes(passed=1, skipped=2)
+
+From 7acaee2530a4eb45acf4f6505e774d4f88273c8a Mon Sep 17 00:00:00 2001
+From: Javier Buzzi <buzzi.javier@gmail.com>
+Date: Thu, 3 Apr 2025 16:11:12 -0400
+Subject: [PATCH 22/23] Changes bluetech wanted
+
+---
+ pytest_django/plugin.py | 2 +-
+ tests/conftest.py       | 8 ++++----
+ tests/test_fixtures.py  | 2 +-
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/pytest_django/plugin.py b/pytest_django/plugin.py
+index f8e1d071..e8e629f4 100644
+--- a/pytest_django/plugin.py
++++ b/pytest_django/plugin.py
+@@ -615,7 +615,7 @@ def mailoutbox(
+ 
+     if hasattr(mail, "outbox"):
+         return mail.outbox  # type: ignore[no-any-return]
+-    return None
++    return []
+ 
+ 
+ @pytest.fixture()
+diff --git a/tests/conftest.py b/tests/conftest.py
+index ea59945d..e3bfa1f4 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -30,13 +30,13 @@ def _marker_apifun(
+     extra_settings: str = "",
+     create_manage_py: bool = False,
+     project_root: str | None = None,
+-    has_settings: bool = True,
++    create_settings: bool = True,
+ ):
+     return {
+         "extra_settings": extra_settings,
+         "create_manage_py": create_manage_py,
+         "project_root": project_root,
+-        "has_settings": has_settings,
++        "create_settings": create_settings,
+     }
+ 
+ 
+@@ -137,7 +137,7 @@ def django_pytester(
+ 
+     # Copy the test app to make it available in the new test run
+     shutil.copytree(str(app_source), str(test_app_path))
+-    if options["has_settings"]:
++    if options["create_settings"]:
+         tpkg_path.joinpath("the_settings.py").write_text(test_settings)
+ 
+     # For suprocess tests, pytest's `pythonpath` setting doesn't currently
+@@ -145,7 +145,7 @@ def django_pytester(
+     pythonpath = os.pathsep.join(filter(None, [str(REPOSITORY_ROOT), os.getenv("PYTHONPATH", "")]))
+     monkeypatch.setenv("PYTHONPATH", pythonpath)
+ 
+-    if options["has_settings"]:
++    if options["create_settings"]:
+         monkeypatch.setenv("DJANGO_SETTINGS_MODULE", "tpkg.the_settings")
+     else:
+         monkeypatch.delenv("DJANGO_SETTINGS_MODULE", raising=False)
+diff --git a/tests/test_fixtures.py b/tests/test_fixtures.py
+index 490dd8ef..9d55ad6d 100644
+--- a/tests/test_fixtures.py
++++ b/tests/test_fixtures.py
+@@ -867,7 +867,7 @@ def test_without_fixture():
+     result.assert_outcomes(passed=2)
+ 
+ 
+-@pytest.mark.django_project(has_settings=False)
++@pytest.mark.django_project(create_settings=False)
+ def test_no_settings(django_pytester: DjangoPytester) -> None:
+     django_pytester.create_test_module(
+         """
+
+From 4975bc168b41c3a4951e108548a85ed815d31f28 Mon Sep 17 00:00:00 2001
+From: Javier Buzzi <buzzi.javier@gmail.com>
+Date: Thu, 3 Apr 2025 16:14:40 -0400
+Subject: [PATCH 23/23] Update test_fixtures.py
+
+---
+ tests/test_fixtures.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_fixtures.py b/tests/test_fixtures.py
+index 9d55ad6d..f88ed802 100644
+--- a/tests/test_fixtures.py
++++ b/tests/test_fixtures.py
+@@ -855,7 +855,7 @@ def django_test_environment(request):
+     django_pytester.create_test_module(
+         """
+         def test_with_fixture(settings, mailoutbox):
+-            assert mailoutbox is None
++            assert mailoutbox == []
+             assert settings.EMAIL_BACKEND == "django.core.mail.backends.dummy.EmailBackend"
+ 
+         def test_without_fixture():

@@ -24,6 +24,8 @@ Summary:        A Django plugin for Pytest
 License:        BSD-3-Clause
 URL:            https://github.com/pytest-dev/pytest-django
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-django/pytest_django-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#pytest-dev/pytest-django#1187
+Patch0:         fix-use-of-mail-outbox.patch
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
