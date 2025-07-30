@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 29 10:41:22 UTC 2025 - Tomasz Kantecki <tomasz.kantecki@intel.com>
+
+- Update to v2.0.1:
+  * Fix for issue #169 where DES-CBC and 3DES-CBC may produce wrong output.
+  * SPEC file changed to use CMake and CTest vs GNU Make. README, ReleaseNotes and man page files moved to the standard package.
+
+-------------------------------------------------------------------
 Thu Jan 16 15:35:49 UTC 2025 - Tomasz Kantecki <tomasz.kantecki@intel.com>
 
 - Update to v2.0:

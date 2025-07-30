@@ -19,10 +19,10 @@
 
 %global major        2
 %global minor        0
-%global patch        0
+%global patch        1
 
 # GitHub properties
-%global githubver    %{major}.%{minor}
+%global githubver    %{major}.%{minor}.%{patch}
 %global githubfull   %{name}-%{githubver}
 
 %global rpm_name     libIPSec_MB
@@ -30,14 +30,15 @@
 Name:           intel-ipsec-mb
 Summary:        IPSec cryptography library optimized for Intel Architecture
 Release:        0
-Version:        %{major}.%{minor}.%{patch}
+Version:        2.0.1
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/intel/%{name}
 Source0:        https://github.com/intel/%{name}/archive/v%{githubver}.tar.gz#/%{githubfull}.tar.gz
 ExclusiveArch:  x86_64
+BuildRequires:  cmake
 BuildRequires:  gcc >= 4.8.3
-BuildRequires:  make
+BuildRequires:  gcc-c++
 BuildRequires:  nasm >= 2.14
 
 %description
@@ -67,30 +68,24 @@ and primarily targeted at packet processing applications.
 %autosetup -n %{name}-%{githubver}
 
 %build
-cd lib
-%make_build EXTRA_CFLAGS='%{optflags}'
+%cmake
+%cmake_build
 
 %install
-install -d %{buildroot}/%{_includedir}
-install -m 0644 %{_builddir}/%{githubfull}/lib/intel-ipsec-mb.h %{buildroot}/%{_includedir}
-install -d %{buildroot}/%{_libdir}
-install -s -m 0755 %{_builddir}/%{githubfull}/lib/libIPSec_MB.so.%{version} %{buildroot}/%{_libdir}
-install -d %{buildroot}/%{_mandir}/man7
-install -m 0444 lib/libipsec-mb.7 %{buildroot}/%{_mandir}/man7
-install -m 0444 lib/libipsec-mb-dev.7 %{buildroot}/%{_mandir}/man7
-cd %{buildroot}/%{_libdir}
-ln -s libIPSec_MB.so.%{version} libIPSec_MB.so.%{major}
-ln -s libIPSec_MB.so.%{version} libIPSec_MB.so
+%cmake_install
+
+%check
+%ctest
 
 %files -n %{rpm_name}%{major}
 %license LICENSE
+%doc README ReleaseNotes.txt
 %{_libdir}/libIPSec_MB.so.%{version}
 %{_libdir}/libIPSec_MB.so.%{major}
+%{_mandir}/man7/libipsec-mb.7.gz
 
 %files devel
-%doc README ReleaseNotes.txt
 %{_includedir}/intel-ipsec-mb.h
-%{_mandir}/man7/libipsec-mb.7.gz
 %{_mandir}/man7/libipsec-mb-dev.7.gz
 %{_libdir}/libIPSec_MB.so
 

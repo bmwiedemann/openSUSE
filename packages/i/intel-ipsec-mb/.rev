@@ -102,4 +102,12 @@
   * Crash seen on VMware with dpdk crypto using ipsec-mb library (issue #153)</comment>
     <requestid>1238292</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8129c2d2a4cbb4efa0825f01ed5bf760</srcmd5>
+    <version>2.0.1</version>
+    <time>1753868712</time>
+    <user>dimstar_suse</user>
+    <comment>v2.0.1 update</comment>
+    <requestid>1296317</requestid>
+  </revision>
 </revisionlist>
