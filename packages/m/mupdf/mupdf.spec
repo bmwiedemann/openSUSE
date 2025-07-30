@@ -17,8 +17,11 @@
 #
 
 
+%if 0%{suse_version} < 1600
+%define gcc_ver 11
+%endif
 Name:           mupdf
-Version:        1.25.6
+Version:        1.26.3
 Release:        0
 Summary:        PDF and XPS Viewer and Parser and Rendering Library
 License:        AGPL-3.0-or-later
@@ -29,20 +32,24 @@ Source1:        %{name}.desktop
 Source2:        %{name}-gl.desktop
 Patch0:         mupdf-no-strip.patch
 BuildRequires:  Mesa-libGL-devel
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?gcc_ver}-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  jbig2dec-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  openjpeg2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(harfbuzz)
+BuildRequires:  pkgconfig(libbrotlidec)
+BuildRequires:  pkgconfig(libbrotlienc)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(tesseract)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xi)
@@ -84,6 +91,7 @@ do
 done
 
 echo > user.make "\
+  USE_SYSTEM_BROTLI := yes
   USE_SYSTEM_FREETYPE := yes
   USE_SYSTEM_HARFBUZZ := yes
   USE_SYSTEM_JBIG2DEC := yes
@@ -92,6 +100,7 @@ echo > user.make "\
   USE_SYSTEM_LIBJPEG := yes
   USE_SYSTEM_MUJS := no # build needs source anyways
   USE_SYSTEM_OPENJPEG := yes
+  USE_SYSTEM_TESSERACT := yes
   USE_SYSTEM_ZLIB := yes
   USE_SYSTEM_GLUT := no # need freeglut2-art frok
   USE_SYSTEM_CURL := yes
@@ -99,6 +108,8 @@ echo > user.make "\
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+export CC=gcc%{?gcc_ver:-%{gcc_ver}}
+export CXX=g++%{?gcc_ver:-%{gcc_ver}}
 export XCFLAGS="%{optflags} -fcommon -fPIC -DJBIG_NO_MEMENTO -DTOFU -DTOFU_CJK"
 %make_build build=release verbose=yes
 
@@ -117,24 +128,12 @@ find %{buildroot}/%{_includedir} -type f -exec chmod 0644 {} \;
 cd %{buildroot}/%{_bindir} && ln -s %{name}-x11 %{name}
 %fdupes %{buildroot}%{_datadir}
 
-%suse_update_desktop_file mupdf
-
-%if 0%{?suse_version} <= 1320
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%endif
-
 %files
 %doc README CHANGES docs/*
 %license COPYING
-%{_bindir}/*
+%{_bindir}/mupdf*
+%{_bindir}/mutool
 %{_datadir}/applications/mupdf*.desktop
-%{_datadir}/icons/hicolor
-%{_datadir}/icons/hicolor/scalable
-%{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/scalable/apps/*
 %{_mandir}/man1/*.1%{?ext_man}
 

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jul 21 14:09:31 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.26.3:
+  * Cope with /AS being an indirection in annotations.
+  * PDF redaction should honour RO entries.
+  * Recompress lossy (JPEG, J2K, JXR, etc) as JPEG when writing to
+    SVG.
+  * Improve speed of roll in postscript functions.
+  * Be more accepting of EmbeddedFiles FileSpecs.
+  * Extend rectangles to improve strikeout detection.
+  * Fix strikeout detection failure caused by FP inaccuracy.
+  * Make mutool trace and mutool draw -Ftrace output identical.
+  * Re-order mutool sub-commands, highlight the most useful
+    commands at the top.
+  * Use fz_strstrcase for case insensitive file dialog filters in
+    mupdf-gl.
+- Changes from version 1.26.0 through 1.26.2: see
+  <https://mupdf.com/releases/history>.
+- Use system brotli, tesseract for builds; add BuildRequires:
+  pkgconfig(brotlidec), pkgconfig(brotlienc),
+  pkgconfig(tesseract).
+- Add BuildRequires: hicolor-icon-theme for proper ownership of
+  hicolor icons dir.
+- More specific directory globs for files section.
+- Drop use of obsolete suse_update_desktop_files macro; switch
+  BuildRequires: update-desktop-files for desktop-file-utils.
+- Use GCC 11 to build for Leap 15.6 since std=c++20 is required.
+- Drop support for EOL openSUSE <= 1320.
+
+-------------------------------------------------------------------
 Wed Apr  2 11:24:01 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
 
 - Update to 1.25.6:
