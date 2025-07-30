@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 26 03:53:23 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.39:
+  * Calibrated cepstral peak prominence (PowerCepstrogram: Get
+    CPPS...).
+- Rebase praat-allow-system-flags.patch for updated version.
+
+-------------------------------------------------------------------
 Fri Jul 11 09:24:51 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.38:
