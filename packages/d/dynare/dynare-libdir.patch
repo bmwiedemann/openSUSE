@@ -2,10 +2,10 @@
  meson.build |   14 +++++++-------
  1 file changed, 7 insertions(+), 7 deletions(-)
 
-Index: dynare-6.1/meson.build
+Index: dynare-6.4/meson.build
 ===================================================================
---- dynare-6.1.orig/meson.build
-+++ dynare-6.1/meson.build
+--- dynare-6.4.orig/meson.build
++++ dynare-6.4/meson.build
 @@ -36,19 +36,19 @@ subdir('preprocessor/src')
  # NB: the following two symlinks my be improved if this wishlist item is done:
  #  https://github.com/mesonbuild/meson/issues/11519
@@ -46,12 +46,12 @@ Index: dynare-6.1/meson.build
                   'link_args' : [ export_link_arg, '-L' + (matlab_path / 'bin' / matlab_arch), '-lmx', '-lmex', '-lmat' ],
                   'link_depends' : export_file,
                   'install' : true,
--                 'install_dir' : 'lib/dynare/mex/matlab' }
-+                 'install_dir' : get_option('libdir') / 'dynare/mex/matlab' }
+-                 'install_dir' : 'lib/dynare/mex/matlab',
++                 'install_dir' : get_option('libdir') / 'dynare/mex/matlab',
+                  'sources' : [] }
  
    # For unit tests
-   exe_rpath = matlab_path / 'bin' / matlab_arch
-@@ -249,7 +249,7 @@ else # Octave build
+@@ -257,7 +257,7 @@ else # Octave build
                   'c_args' : octave_incflags + octave_defs,
                   'link_args' : octave_link_args,
                   'install' : true,

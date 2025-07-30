@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Fri Jul 25 12:39:31 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4:
+  * Several issues with the
+    `perfect_foresight_with_expectation_errors` command:
+    - when used with no `endval`/`endval(learnt_in=1)` block but
+      an `endval(learnt_in=`t`)` block with t>1, convergence could
+      fail if homotopy was needed
+    - combined with `homotopy_marginal_linearization_fallback`, it
+      would return incorrect results
+    - it would crash with
+      `homotopy_marginal_linearization_fallback` option if there
+      were several distinct `shocks` or `endval` blocks with the
+      `learnt_in` option
+  * Using the `model_diagnostics` command with the `bytecode`
+    option of the `model` block or the `model_options` command
+    would crash if the static Jacobian was singular
+  * The `discretionary_policy` command with the `noprint` option
+    would crash when encountering a problem instead of continuing
+  * Using the `ramsey_model` command with models declared as
+    `linear` would crash during preprocessing when there is a
+    lead/lag greater than 1 on endogenous variables or any
+    lead/lag on exogenous variables
+  * Using the `identification` command with the slice sampler
+    would crash if the `slice_initialize_with_mode` option was
+    used
+  * The particle filter option `resampling_method` of the
+    `estimation` command was broken
+  * The `output=third` preprocessor option would not work if no
+    computational commands were present in the `.mod` file
+- Changes from version 6.3:
+  * OccBin with option `smoother_inversion_filter` would crash the
+    MCMC estimation if the `filtered_variables` or
+    `filter_step_ahead` options were used
+  * OccBin with option `smoother_inversion_filter` would use the
+    PKF if `mh_replic>0`
+  * OccBin with option `smoothed_state_uncertainty` would crash
+    Dynare if the MCMC smoother was run after the classical one
+  * OccBin's smoother would crash when encountering an internal
+    error due to the output of the linear smoother not having been
+    computed
+  * Calling `model_info` with `differentiate_forward_vars` would
+    crash The `identification` command would compute the
+    asymptotic Hessian via simulation instead of via moments as
+    intended
+  * The `identification` command would crash during prior sampling
+    if the initial draw did not solve the model
+  * The `gsa_sample_file` was broken
+  * Optimization algorithm `mode_compute=5` (`newrat`) would crash
+    with `analytic_derivation`
+  * The `discretionary_policy` command would crash if the model
+    was purely forward-looking
+  * The `dsample` command would crash
+  * The `conditional_forecast_paths` block did not accept vector
+    inputs
+  * For MCMC chains with fewer than 6000 draws, the default number
+    of `sub_draws` used to compute posterior moments was incorrect
+  * Bi-annual dates (e.g. `2024S1` or `2024H1`) were not accepted
+    within Dynare statements
+  * Plotting `dseries` did not correctly show dates on the x-axis
+- Drop dynare-sphinx-str-concat.patch: incorporated upstream.
+- Minor re-base of dynare-libdir.patch for updated version.
+
+-------------------------------------------------------------------
 Sun Oct 13 15:22:00 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.2:

@@ -1,7 +1,7 @@
 #
 # spec file for package dynare
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_without doc
 %endif
 Name:           dynare
-Version:        6.2
+Version:        6.4
 Release:        0
 Summary:        A platform for handling a wide class of economic models
 License:        GPL-3.0-or-later
@@ -33,8 +33,6 @@ URL:            https://www.dynare.org/
 Source:         %{name}-%{version}.tar.zst
 # PATCH-FIX-UPSTREAM dynare-libdir.patch badshah400@gmail.com -- Use correct libdir instead of 'lib'
 Patch0:         dynare-libdir.patch
-# PATCH-FIX-UPSTREAM dynare-sphinx-str-concat.patch badshah400@gmail.com -- Fix a path to string concatenation
-Patch1:         dynare-sphinx-str-concat.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
