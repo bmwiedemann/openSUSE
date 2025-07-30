@@ -166,4 +166,20 @@
     <comment></comment>
     <requestid>1240366</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4e402916cddb58b3ff61f550e70d3252</srcmd5>
+    <version>2025.07.22</version>
+    <time>1753868538</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2025.07.22
+  * Synchronize with OpenCL v3.0.19 specification release.
+  * Introduction of `CL_ENABLE_BETA_EXTENSIONS` to guard beta
+    features or extensions that can be modified with backward-
+    incompatible changes. Previously unguarded extensions are now
+    guarded.
+- Add remove-opencl-install.patch to only include .cmake files if
+  opencl-headers exports theirs.
+</comment>
+    <requestid>1295983</requestid>
+  </revision>
 </revisionlist>

@@ -18,13 +18,16 @@
 
 
 Name:           opencl-cpp-headers
-Version:        2024.10.24
+Version:        2025.07.22
 Release:        0
 Summary:        OpenCL C++ headers
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://www.khronos.org/registry/OpenCL/
 Source:         https://github.com/KhronosGroup/OpenCL-CLHPP/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+%if 0%{?suse_version} <= 1600
+Patch1:         remove-opencl-install.patch
+%endif
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  findutils
@@ -50,13 +53,19 @@ This package provides the official C++ headers for OpenCL, which are wrappers
 around the C headers.
 
 %prep
-%autosetup -n OpenCL-CLHPP-%{version}
+%autosetup -p1 -n OpenCL-CLHPP-%{version}
 
 %build
 # Fix line endings
-find -type f -exec dos2unix {} \;
+find -type f -exec dos2unix {} +
 
-%cmake -DBUILD_DOCS=OFF -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF
+%cmake \
+%if 0%{?suse_version} <= 1600
+    -DOPENCL_INCLUDE_DIR=%{_includedir} \
+%endif
+    -DBUILD_DOCS=OFF \
+    -DBUILD_EXAMPLES=OFF \
+    -DBUILD_TESTING=OFF \
 
 %cmake_build
 
@@ -67,7 +76,9 @@ find -type f -exec dos2unix {} \;
 %dir %{_includedir}/CL
 %{_includedir}/CL/cl2.hpp
 %{_includedir}/CL/opencl.hpp
+%if 0%{?suse_version} > 1600
 %{_datadir}/cmake/OpenCLHeadersCpp/
+%endif
 %{_datadir}/pkgconfig/OpenCL-CLHPP.pc
 
 %changelog
