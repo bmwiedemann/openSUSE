@@ -19,7 +19,7 @@
 %define openCryptoki_32bit_arch %{ix86} s390 ppc %{arm}
 # support in the workings for: ppc64
 # no support in sight for: ia64
-%define openCryptoki_64bit_arch s390x ppc64 ppc64le x86_64 aarch64
+%define openCryptoki_64bit_arch s390x ppc64 ppc64le x86_64 aarch64 riscv64
 # autobuild:/work/cd/lib/misc/group
 #   openCryptoki    pkcs11:x:64:
 %define pkcs11_group_id 64

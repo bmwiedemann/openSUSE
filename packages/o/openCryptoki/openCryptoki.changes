@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 29 07:27:20 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Add riscv54 to openCryptoki_64bit_arch
+
+-------------------------------------------------------------------
 Mon Jun 16 09:43:23 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade openCryptoki to version 3.25 (jsc#PED-3361)
