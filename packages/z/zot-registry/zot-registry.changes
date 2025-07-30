@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 28 05:41:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.6:
+  * Read OpenID credentials from file (#3244)
+  * Fix building zot natively on FreeBSD (#3247)
+  * feat: healthz server (#3228)
+  * fix: GetNextRepository to use a list already scanned
+    repositories as input (#3230)
+  * chore: bump zui version (#3241)
+
+-------------------------------------------------------------------
 Wed Jun 18 04:30:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.5:
