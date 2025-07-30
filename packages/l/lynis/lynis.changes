@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 29 07:33:22 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Update to 3.1.5
+  * Added
+    - Support for OpenWrt
+    - Bitdefender detection on Linux
+    - Detection of openSUSE Tumbleweed-Slowroll
+  * Changed
+    - Corrected detection of service manager SMF
+    - Extended GetHostID function to allow HostID and HostID2 creation on OpenWrt
+    - Check modules also under /usr/lib/modules.d
+- Drop additional_module_blacklist_locations.patch: accepted upstream
+
+-------------------------------------------------------------------
 Tue Jan 28 12:22:48 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Update to 3.1.4:
@@ -999,7 +1013,7 @@ Sat Mar 28 10:27:12 CET 2009 - saigkill@opensuse.org
   BIND, PowerDNS, SSH, Exim, and nginx
 
 -----------------------------------------------------------------
-Tue Mar 17 2009 20:32 CET - mrdocs@opensuse.org
+Tue Mar 17 20:32 CET 2009 - mrdocs@opensuse.org
 
 - added 1.2.4 release
 - This release adds more than 30 new tests,

@@ -23,7 +23,7 @@
 %define _pluginsdir       %{_datadir}/lynis/plugins
 %define _dbdir            %{_datadir}/lynis/db
 Name:           lynis
-Version:        3.1.4
+Version:        3.1.5
 Release:        0
 Summary:        Security and System auditing tool
 License:        GPL-3.0-only
@@ -49,8 +49,6 @@ Patch0:         %{name}_1.3.5_lynis.diff
 # PATCH-OPENSUSE-FIX -- thomas@novell.com - modifying for openSUSE
 Patch2:         %{name}_1.3.1_include_consts.diff
 Patch5:         %{name}_1.3.6_include-osdetection.diff
-# https://github.com/CISOfy/lynis/pull/1215
-Patch6:         additional_module_blacklist_locations.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libxml2-devel
 Requires:       bash
@@ -78,7 +76,6 @@ most interesting parts useful for audits, like:
 %patch -P 0
 %patch -P 2
 %patch -P 5
-%patch -P 6 -p1
 
 %build
 
