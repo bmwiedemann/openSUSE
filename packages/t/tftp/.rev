@@ -367,4 +367,13 @@
     <comment></comment>
     <requestid>1269981</requestid>
   </revision>
+  <revision rev="48" vrev="29">
+    <srcmd5>6c45d7cff486f7454e8d720434fcd0f7</srcmd5>
+    <version>5.2</version>
+    <time>1753868495</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow enabling the service via `systemctl enable tftp` to create
+  the tftp.socket symlink [bsc#1215520, bsc#1246141]</comment>
+    <requestid>1296245</requestid>
+  </revision>
 </revisionlist>
