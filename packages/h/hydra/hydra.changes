@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 21 14:24:05 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Add patch fix-prototype-mismatches.patch
+
+-------------------------------------------------------------------
+Wed May 14 15:35:25 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Make build recipe POSIX sh compatible (no pushd). Trim
+  unnecessary `exit 1` since scriptlets run with sh -e anyway.
+- Trim unquantified claims from summary line. Have the %description
+  talk about hydra, not about papers or other tools.
+
+-------------------------------------------------------------------
 Thu May  8 17:25:29 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Replace #!/bin/sh with #!/bin/bash in hydra-wizard.sh

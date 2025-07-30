@@ -15,15 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 Name:           hydra
 Version:        9.5
 Release:        0
-Summary:        A very fast network logon cracker which support many different services
+Summary:        A network logon cracker with support for many different services
 License:        AGPL-3.0-only
 Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/vanhauser-thc/thc-hydra
-Source0:        https://github.com/vanhauser-thc/thc-hydra/archive/refs/tags/v%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/vanhauser-thc/thc-hydra/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch1:         fix-prototype-mismatches.patch
 BuildRequires:  fdupes
 BuildRequires:  make
 BuildRequires:  pkgconfig
@@ -38,49 +38,42 @@ BuildRequires:  pkgconfig(gtk+-unix-print-2.0)
 BuildRequires:  pkgconfig(gtk+-x11-2.0)
 BuildRequires:  pkgconfig(libgcrypt)
 BuildRequires:  pkgconfig(libidn)
+BuildRequires:  pkgconfig(libmariadb)
 BuildRequires:  pkgconfig(libmemcached)
 BuildRequires:  pkgconfig(libpq)
-BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(libssh)
 BuildRequires:  pkgconfig(libsvn_client)
-BuildRequires:  pkgconfig(libmariadb)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(smbclient)
 
 %description
-Number one of the biggest security holes are passwords, as every password
-security study shows.
-This tool is a proof of concept code, to give researchers and security
-consultants the possiblity to show how easy it would be to gain unauthorized
-access from remote to a system.
+A parallelized network login cracker, created as a proof of concept
+tool for security researchers to demonstrate how easy it can be to
+crack logins for a particular target.
 
-THIS TOOL IS FOR LEGAL PURPOSES ONLY!
-
-There are already several login hacker tools available, however none does
-either support more than one protocol to attack or support parallized
-connects.
+Hydra works by using different approaches, such as brute-force
+attacks and dictionary attacks, in order to guess the right username
+and password combination.
 
 %prep
-%autosetup -n thc-%{name}-%{version}
+%autosetup -n thc-%{name}-%{version} -p1
 
 %build
 %configure --fhs DATADIR=/share/hydra
 %make_build
 
-pushd hydra-gtk || exit 1
+prev="$PWD"
+cd hydra-gtk
 %configure
 %make_build
-popd || exit 1
+cd "$prev"
 
 # Replace /bin/sh with /bin/bash in hydra-wizard.sh, as it uses bashisms
 sed -i '1s|^.*$|#!/bin/bash|' hydra-wizard.sh
 
 %install
 %make_install MANDIR=/share/man/man1/ DATADIR=/share/hydra
-
-pushd hydra-gtk || exit 1
-%make_install MANDIR=/share/man/man1/ DATADIR=/share/hydra
-popd || exit 1
+%make_install -C hydra-gtk MANDIR=/share/man/man1/ DATADIR=/share/hydra
 
 %fdupes -s %{buildroot}/%{_mandir}
 %fdupes %{buildroot}/%{_prefix}
