@@ -1,6 +1,7 @@
 #
 # spec file for package faad2
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020 Packman Team <packman@links2linux.de>
 # Copyright (c) 2005-2020 Manfred Tremmel <Manfred.Tremmel@iiv.de>
 # Copyright (c) 2004-2005 Rainer Lay <rainer@links2linux.de>
@@ -15,7 +16,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.links2linux.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -28,7 +29,7 @@ Release:        0
 Summary:        Freeware Advanced Audio (AAC) Decoder including SBR decoding
 License:        GPL-2.0-or-later
 URL:            https://github.com/knik0/faad2
-Source0:        %name-%version.tar
+Source0:        %name-%version.tar.zst
 Source99:       baselibs.conf
 
 BuildRequires:  cmake >= 3.15

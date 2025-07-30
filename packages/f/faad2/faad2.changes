@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 20 18:01:15 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Tweak _service. Compress archive during build.
+
+-------------------------------------------------------------------
 Wed Jun 25 14:31:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add libfaad_drm2 to baselibs.conf, build 32bit support for this

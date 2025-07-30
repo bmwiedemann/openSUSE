@@ -9,8 +9,10 @@
 		<param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
 		<param name="versionrewrite-replacement">\1</param>
 	</service>
-	<service mode="buildtime" name="tar">
-		<param name="obsinfo">faad2.obsinfo</param>
+	<service name="tar" mode="buildtime"/>
+		<service name="recompress" mode="buildtime">
+		<param name="file">*.tar</param>
+		<param name="compression">zst</param>
 	</service>
 	<service mode="manual" name="set_version">
 		<param name="basename">faad2</param>
