@@ -118,4 +118,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1266023</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>62e72764d9ef3b6e5607752b900e5751</srcmd5>
+    <version>0.25.0</version>
+    <time>1753868684</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.25:
+  * rawsocket: allow using custom transport class
+- add event_loop.patch
+</comment>
+    <requestid>1296251</requestid>
+  </revision>
 </revisionlist>

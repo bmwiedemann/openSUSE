@@ -18,13 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiorpcX
-Version:        0.24
+Version:        0.25.0
 Release:        0
 Summary:        Generic async RPC implementation, including JSON-RPC
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/kyuupichan/aiorpcX
 Source:         https://github.com/kyuupichan/aiorpcX/archive/%{version}.tar.gz
+Patch0:         event_loop.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -48,6 +49,9 @@ Generic async RPC implementation, including JSON-RPC
 
 %prep
 %setup -q -n aiorpcX-%{version}
+%if 0%{?suse_version} > 1600
+%autopatch -p1
+%endif
 # needs network
 rm tests/test_websocket.py
 chmod a-x LICENCE README.rst docs/*
@@ -72,6 +76,6 @@ SKIP_TESTS="$SKIP_TESTS or test_cancel_remaining_on_group_with_stubborn_task"
 %doc README.rst docs/*.rst
 %license LICENCE
 %{python_sitelib}/aiorpcx
-%{python_sitelib}/aiorpc[xX]-%{version}.0.dist-info
+%{python_sitelib}/aiorpc[xX]-%{version}.dist-info
 
 %changelog
