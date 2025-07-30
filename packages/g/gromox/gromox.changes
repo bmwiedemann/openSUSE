@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jul 28 16:42:44 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.47
+  * oxdisco: support RFC 6764 well-known endpoints for
+    CalDAV/CardDAV (if not running grommunio nginx config in front)
+  * oxcical: try to handle ICS files with missing VTIMEZONE blocks
+  * oxcical: support YEARLY recurrences with BYDAY without BYSETPOS
+  * imap: offer $Forwarded keyword for APPEND/STORE commands
+  * nsp: remove meaningless session_check directive; no longer
+    erroneously reject requests after daemon received SIGHUP
+  * oxcical: avoid setting out-of-spec MAPI recurnum for
+    FREQ=MONTHLY,BYDAY= recurrences
+  * oxcical: fix wrong BYMONTH calculation for MONTHNTH recurrences
+    being exported to iCal
+  * midb, imap: make EXPUNGE synchronous so that old UIDs don't
+    reappear in a subsequent FETCH
+  * midb: respect setting \Deleted, \Answered, \Flagged during APPEND
+  * exmdb: resolve a case of "INSERT INTO t... UNIQUE constraint
+    failed" log message
+  * exmdb: stop losing RFC5322 representation when a message is
+    copied
+  * HTML-to-Text conversion using w3m suffered from an encoding
+    mismatch, which was fixed.
+
+-------------------------------------------------------------------
 Wed May 28 15:02:51 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.46

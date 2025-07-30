@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        2.46
+Version:        2.47
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -168,7 +168,11 @@ cp -a "$b/usr/share/gromox/fpm-gromox.conf.sample" "$b/etc/php-fpm.d/gromox.conf
 perl -i -lpe 's{Type=simple}{Type=simple\nRestart=on-failure}' "$b/%_unitdir"/*.service
 %fdupes %buildroot/%_prefix
 
-%global services gromox-delivery.service gromox-delivery-queue.service gromox-event.service gromox-http.service gromox-imap.service gromox-midb.service gromox-pop3.service gromox-snapshot.service gromox-snapshot.timer gromox-timer.service gromox-zcore.service
+%check
+%make_build check V=1
+
+# Though services autoreconnect, starting them in the preferred order services is smoother
+%global services gromox-timer.service gromox-http.service gromox-zcore.service gromox-event.service gromox-midb.service gromox-imap.service gromox-pop3.service gromox-delivery.service gromox-delivery-queue.service gromox-snapshot.service gromox-snapshot.timer
 
 %if 0%{?service_add_pre:1}
 %pre
@@ -193,27 +197,6 @@ fi
 # the pam module will be combined with a too old version of gromox
 # libs. No good solution in sight..
 /usr/bin/systemctl try-restart grommunio-chat.service php-fpm.service saslauthd.service 2>/dev/null || :
-# Delete old service links
-if /usr/bin/systemctl is-enabled gromox-exch.target >/dev/null 2>/dev/null; then
-	echo Migrating gromox-exch.target
-	/usr/bin/systemctl enable gromox-http.service gromox-midb.service gromox-zcore.service || :
-	/usr/bin/systemctl disable gromox-exch.target || :
-fi
-if /usr/bin/systemctl is-enabled gromox-mra.target >/dev/null 2>/dev/null; then
-	echo Migrating gromox-mra.target
-	/usr/bin/systemctl enable gromox-imap.service gromox-pop3.service || :
-	/usr/bin/systemctl disable gromox-mra.target || :
-fi
-if /usr/bin/systemctl is-enabled gromox-mta.target >/dev/null 2>/dev/null; then
-	echo Migrating gromox-mta.target
-	/usr/bin/systemctl enable gromox-delivery.service gromox-delivery-queue.service || :
-	/usr/bin/systemctl disable gromox-mta.target || :
-fi
-if /usr/bin/systemctl is-enabled gromox-sa.target >/dev/null 2>/dev/null; then
-	echo Migrating gromox-sa.target
-	/usr/bin/systemctl enable gromox-event.service gromox-timer.service || :
-	/usr/bin/systemctl disable gromox-sa.target || :
-fi
 
 %preun
 %if 0%{?service_del_preun:1}
