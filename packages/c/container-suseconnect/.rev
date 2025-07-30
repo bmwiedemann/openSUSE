@@ -81,4 +81,12 @@
   (https://go.dev/blog/fips140)</comment>
     <requestid>1294333</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a9cb0c2ce6333d0362f3c5df6f3e93c5</srcmd5>
+    <version>2.5.6</version>
+    <time>1753868722</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1296327</requestid>
+  </revision>
 </revisionlist>

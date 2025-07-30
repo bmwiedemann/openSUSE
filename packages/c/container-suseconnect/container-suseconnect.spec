@@ -24,7 +24,7 @@
 %global use_fips_mode 0%{?suse_version} == 1500 || 0%{?suse_version} == 1600
 
 Name:           %{project}
-Version:        2.5.5
+Version:        2.5.6
 Release:        0
 Summary:        Provides access to repositories inside containers
 License:        Apache-2.0
@@ -52,9 +52,12 @@ export TAR_OPTIONS="-I zstd"
 %if %use_fips_mode
 export GOFIPS140=v1.0.0
 %endif
-go build -tags enablecgo -o %{project} -mod=vendor -buildmode=pie -trimpath -ldflags="-s -w" ./cmd/container-suseconnect
+go build -o %{project} -mod=vendor -buildmode=pie -trimpath \
+    -ldflags="-s -w -X %{import_path}/internal.version=%{version}" \
+    ./cmd/container-suseconnect
 
 %check
+test "$(./%{project} -version)" = "%version"
 %if %use_fips_mode
 export GODEBUG=fips140=only GOFIPS140=v1.0.0
 %endif

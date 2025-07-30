@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 22 10:29:32 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 2.5.6:
+  * Change the version logic
+  * Fix FIPS environment variable in CI
+  * Test in fips mode
+
+-------------------------------------------------------------------
 Fri Jul 18 07:47:21 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 2.5.5:
