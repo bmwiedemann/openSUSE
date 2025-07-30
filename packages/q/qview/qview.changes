@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 28 05:14:44 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 7.1:
+  Enhancements:
+  * Add option to force scroll/zoom behavior on trackpads, rather
+    than always attemping to auto-detect
+  * Add QNativeGesture handling support (Tested on Wayland)
+  * Improve trackpad auto-detection to avoid catching Logitech
+    fake trackpad devices
+  Bugfixes:
+  * Fix weird QInfoDialog resizing behavior
+
+-------------------------------------------------------------------
 Sat Jun 28 07:00:06 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 7.0:

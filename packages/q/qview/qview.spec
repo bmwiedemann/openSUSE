@@ -17,7 +17,7 @@
 
 
 Name:           qview
-Version:        7.0
+Version:        7.1
 Release:        0
 Summary:        Practical and minimal image viewer
 License:        GPL-3.0-only
