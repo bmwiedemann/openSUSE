@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package PackageKit-Qt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ ExclusiveArch:  do_not_build
 %endif
 %define major 1
 Name:           PackageKit%{?pkg_suffix}
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        Simple software installation management software
 License:        LGPL-2.1-or-later
@@ -97,12 +97,12 @@ suck less.
 
 %build
 %if 0%{?qt5}
-%cmake
+%cmake -DBUILD_WITH_QT5:BOOL=ON
 %cmake_build
 %endif
 
 %if 0%{?qt6}
-%cmake_qt6 -DBUILD_WITH_QT6:BOOL=ON
+%cmake_qt6
 %{qt6_build}
 %endif
 
