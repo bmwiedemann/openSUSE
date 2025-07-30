@@ -18,13 +18,15 @@
 
 
 Name:           siege
-Version:        4.1.6
+Version:        4.1.7
 Release:        0
 Summary:        HTTP Regression Testing/Benchmarking Utility
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://www.joedog.org/siege-home/
 Source:         http://download.joedog.org/siege/siege-%{version}.tar.gz
+# https://github.com/JoeDog/siege/issues/248
+Patch0:          siege-gcc15.patch
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
@@ -42,7 +44,7 @@ authentication. Its features are configurable on a per user basis. Since
 3.0.0 it also supports FTP.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \

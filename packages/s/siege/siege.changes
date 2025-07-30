@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul  8 10:16:00 UTC 2025 - pgajdos@suse.com
+
+- version update to 4.1.7
+- added patches
+  https://github.com/JoeDog/siege/issues/248
+  + siege-gcc15.patch
+
+-------------------------------------------------------------------
 Tue Jan 17 09:47:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.6:
