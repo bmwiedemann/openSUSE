@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 27 16:34:43 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build on Tumbleweed - add pgbadger-13.1-precedence.patch
+
+-------------------------------------------------------------------
 Mon Mar 17 22:20:37 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 13.1

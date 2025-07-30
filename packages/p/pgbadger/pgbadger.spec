@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013-2015 Lars Vogdt
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +42,7 @@ Source1:        %{name}-cron
 Source2:        %{name}.timer
 Source3:        %{name}.service
 Source4:        README.SUSE
+Patch0:         pgbadger-13.1-precedence.patch
 BuildRequires:  cron
 BuildRequires:  perl
 BuildRequires:  perl(Benchmark)
