@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  2 09:00:37 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Deactivate glusterfs backend for fio
+
+-------------------------------------------------------------------
 Tue Jun  3 14:50:56 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - Disable librbd on SLES16.0 and higher (bsc#1241271) 

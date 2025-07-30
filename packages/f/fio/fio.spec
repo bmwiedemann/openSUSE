@@ -51,9 +51,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 Suggests:       gfio
 Suggests:       gnuplot
-%if 0%{?is_opensuse}
-BuildRequires:  glusterfs-devel
-%endif
 %if %{with libnuma}
 BuildRequires:  libnuma-devel
 %endif
