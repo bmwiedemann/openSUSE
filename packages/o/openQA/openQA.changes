@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 28 12:11:17 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1753703782.e7ffc367:
+  * docs: Clarify that openQA is not only Perl
+  * Use and recommend --ignore-scripts with npm install
+
+-------------------------------------------------------------------
 Sat Jul 26 21:29:26 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1753506485.d911de9f:
