@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 28 08:47:52 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file for opticsmon.service (bsc#1246669)
+- Re-vendored vendor.tar.zst
+
+-------------------------------------------------------------------
 Mon Jun 30 09:17:50 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade s390-tools to version 2.38 (jsc#PED-10303)

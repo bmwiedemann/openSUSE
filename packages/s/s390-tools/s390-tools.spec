@@ -378,7 +378,8 @@ export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
      DISTRELEASE=%{release} \
      UDEVRUNDIR=/run/udev \
      HAVE_CARGO=1 \
-     HAVE_DRACUT=1
+     HAVE_DRACUT=1 \
+     HAVE_LIBNL3=1
 ###     all
 gcc -static -o read_values ${OPT_FLAGS} %{SOURCE86} -lqc
 
@@ -391,7 +392,8 @@ mkdir -p %{buildroot}%{_sysconfdir}/zkey/repository
      SYSTEMDSYSTEMUNITDIR=%{_unitdir} \
      UDEVRUNDIR=/run/udev \
      HAVE_CARGO=1 \
-     HAVE_DRACUT=1
+     HAVE_DRACUT=1 \
+     HAVE_LIBNL3=1
 ###     all
 
 # The make install command puts things in /etc/sysconfig and not the
@@ -474,6 +476,7 @@ fi
 (cd %{buildroot}%{_sbindir}; ln -s service rcmon_fsstatd)
 (cd %{buildroot}%{_sbindir}; ln -s service rcmon_procd)
 (cd %{buildroot}%{_sbindir}; ln -s service rcvirtsetup)
+(cd %{buildroot}%{_sbindir}; ln -s service rcopticsmon)
 
 if [ ! -d %{_bindir} ]; then
     rm -f %{_bindir}
@@ -488,6 +491,8 @@ install -m644 -t %{buildroot}/%{_mandir}/man8 %{SOURCE25}
 # align with the openSUSE "usrmerge" project
 %if 0%{?suse_version} >= 1550
 mv -vi %{buildroot}/sbin/* %{buildroot}%{_mysbindir}/
+%else
+cp -r %{buildroot}/sbin/opticsmon %{buildroot}/usr/sbin/
 %endif
 
 ### Obsolete scripts and man pages to be removed once changes in other tools are made
@@ -548,6 +553,7 @@ getent group cpacfstats >/dev/null 2>&1 || groupadd -r cpacfstats
 %service_add_pre hsnc.service
 %service_add_pre mon_fsstatd.service
 %service_add_pre mon_procd.service
+%service_add_pre opticsmon.service
 %service_add_pre virtsetup.service
 %service_add_pre vmlogrdr.service
 %service_add_pre xpram.service
@@ -576,6 +582,7 @@ fi
 %service_add_post hsnc.service
 %service_add_post mon_fsstatd.service
 %service_add_post mon_procd.service
+%service_add_post opticsmon.service
 %service_add_post virtsetup.service
 %service_add_post vmlogrdr.service
 %service_add_post xpram.service
@@ -588,6 +595,7 @@ fi
 %{fillup_only -n mon_fsstatd}
 %{fillup_only -n mon_procd}
 %{fillup_only -n mon_statd}
+%{fillup_only -n opticsmon}
 %{fillup_only -n virtsetup}
 %{fillup_only -n xpram}
 
@@ -619,6 +627,7 @@ ldconfig
 %service_del_preun hsnc.service
 %service_del_preun mon_fsstatd.service
 %service_del_preun mon_procd.service
+%service_del_preun opticsmon.service
 %service_del_preun virtsetup.service
 %service_del_preun vmlogrdr.service
 %service_del_preun xpram.service
@@ -633,6 +642,7 @@ ldconfig
 %service_del_postun hsnc.service
 %service_del_postun mon_fsstatd.service
 %service_del_postun mon_procd.service
+%service_del_postun opticsmon.service
 %service_del_postun virtsetup.service
 %service_del_postun vmlogrdr.service
 %service_del_postun xpram.service
