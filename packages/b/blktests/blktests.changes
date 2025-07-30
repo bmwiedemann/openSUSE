@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Jul 29 16:49:41 UTC 2025 - sebastian.chlad@suse.com
+
+- Update to version 0+20250718.d24f744:
+  * common/null_blk: wait device ready in _configure_null_blk
+  * loop/010, common/rc: drain udev events after test
+  * md/002: add atomic write tests for md/stacked devices
+  * common/null_blk: check FULL file availability before write
+  * block: add block/040 for test updating nr_hw_queues vs switching elevator
+  * nvme/049: add fio md_per_io_size option
+  * nvme/{034,035}: skip when the test target namespace has metadata
+  * nvme/064: fix failure when the sysfs metadata_bytes doesn't exist
+  * tests/throtl: add a new test 007
+  * nvme: add nvme metadata passthrough test
+  * nvme/rc: introduce helper functions to check namespace metadata
+  * loop/011: use lazy umount for tmpfs
+  * check: allow strict error-checking by "set -e" in test cases
+  * common/rc: Optimize _module_file_exists()
+  * common/null_blk: Make configuration failures easier to debug
+  * common/null_blk: Log null_blk configuration parameters
+  * common/null_blk: Rename a local variable
+  * common/fio: Optimize _fio_perf_report()
+  * common/fio: Log the fio arguments
+  * common/nvme: fix nvme json support check in _have_nvme_cli_with_json_support
+  * common/scsi_debug: Use _unload_module in _exit_scsi_debug
+  * nvme/rc, md/001: check that nvme-cli supports json output format
+  * common/nvme: introduce _have_nvme_cli_with_json_support()
+  * zbd/006: reset only the test target zone
+  * README, CONTRIBUTING: refer to the new repository addresses
+  * nvme/063: fixup tls_key encryption check
+  * nvme/054: update to support all fabrics
+  * nvme/rc: fix the skip reasons in _require_nvme_cli_tls
+  * block: add test for race between set_blocksize and read paths
+
+-------------------------------------------------------------------
 Wed Apr 23 14:28:05 UTC 2025 - sebastian.chlad@suse.com
 
 - Update to version 0+20250415.9aa2023:
