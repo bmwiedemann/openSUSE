@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Jul 28 16:25:59 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20250728
+  * Add support for loading Sony/Sonic Foundry Wave64 (.w64)
+    samples.
+  * Add support for loading Epic MegaGames MASI (.psm) modules.
+  * Add highly experimental support for loading EdLib Tracker D00
+    (.d00) modules. Since this format is quite unique, many files
+    won't play (or even load) correctly.
+  * Add sample-only SoundFont (.sf2) support. No instrument data
+    is loaded at all for now.
+  * Pattern Editor: shift selection now gets applied on key
+    release, not the next key press. This is the Impulse Tracker
+    (and literally everything else) behavior.
+  * Diskwriter: support exporting to 24-bit and 32-bit in all
+    formats.
+  * XM format: Fix loading modules packed by BoobieSqueezer,
+    would cause a crash if played.
+  * FLAC format: Fix hang when loading samples on newer versions
+    of libFLAC.
+
+-------------------------------------------------------------------
+Tue Apr 15 23:28:51 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20250415
+  * Fix saving 16-bit WAV files (it would unreasonably error, even
+    though the data written was correctly).
+  * Fix saving stereo samples at all.
+  * Allow reading and writing sample metadata in and out of WAV and
+    FLAC files, including loop, sustain loop, default volume &
+    panning, global volume, and autovibrato settings.
+  * Don't assume a U.S. keyboard when interpreting shifted forms of
+    number keys.
+  * Increase sample view increment precision, fixing sample view
+    for large samples.
+ *  MOD: Detect Tetramed and some TakeTracker modules.
+ *  XM: Read MIDI macros (Modplug extension).
+
+-------------------------------------------------------------------
 Fri Mar 14 07:34:02 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20250313
