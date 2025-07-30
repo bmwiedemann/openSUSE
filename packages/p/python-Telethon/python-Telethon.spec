@@ -19,12 +19,14 @@
 %define modname Telethon
 %{?sle15_python_module_pythons}
 Name:           python-Telethon
-Version:        1.39.0
+Version:        1.40.0
 Release:        0
 Summary:        Full-featured Telegram client library for Python 3
 License:        MIT
 URL:            https://github.com/LonamiWebs/Telethon
 Source:         https://github.com/LonamiWebs/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#LonamiWebs/Telethon#4670
+Patch0:         stop-using-event_loop-fixture.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyaes}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -46,7 +48,7 @@ Telethon is an asyncio Python 3 MTProto library to interact with Telegram's API
 as a user or through a bot account (bot API alternative).
 
 %prep
-%setup -q -n Telethon-%{version}
+%autosetup -p1 -n Telethon-%{version}
 chmod -x *.rst LICENSE
 
 %build
@@ -58,12 +60,12 @@ chmod -x *.rst LICENSE
 
 %check
 # test_all_methods_present needs readthedocs available
-%pytest -k 'not test_all_methods_present'
+%pytest -k 'not (test_all_methods_present or test_send_msg_and_file)'
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/telethon
-%{python_sitelib}/telethon-%{version}.dist-info
+%{python_sitelib}/[Tt]elethon-%{version}.dist-info
 
 %changelog

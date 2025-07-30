@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jul 30 02:43:53 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.40.0:
+  * Additions
+    + send_as and effect added to send_message and related methods.
+    + MessageMediaGeoLive is now recognized for auto-input conversion.
+  * Enhancements
+    + Improved wording when using a likely unintended session file.
+    + Improved behaviour for matching Markdown links.
+    + A truly clean update-state is now fetched upon login.
+    + Time offset is now updated more reliably after connecting. This should
+      fix legitimate “message too old/new” issues.
+  * Bug fixes
+    + ChannelParticipantLeft is now skipped in iter_participants.
+    + spoiler flag was lost on MessageMediaPhoto auto-input conversion.
+    + KeyboardButtonCopy is now recognized as an inline button.
+    + Downloading web-documents should now work again. Note that this still
+      fetches the file from the original server.
+- Add patch stop-using-event_loop-fixture.patch:
+  * Stop using removed event_loop fixture.
+- Support both upper and lower case metadata directory names.
+
+-------------------------------------------------------------------
 Wed Mar 26 00:56:52 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Lowercase metadata directory name.

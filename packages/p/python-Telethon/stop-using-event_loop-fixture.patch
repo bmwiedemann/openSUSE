@@ -1,0 +1,50 @@
+From 8e2a46568ef9193f5887aea1abf919ac4ca6d31e Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 30 Jul 2025 12:31:14 +1000
+Subject: [PATCH] Stop using the event_loop fixture
+
+pytest-asyncio has deprecated (and in 1.0, removed) the event_loop
+fixture, which is only used for one testcase. Use the get_running_loop()
+helper function instead.
+---
+ tests/telethon/test_helpers.py | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/tests/telethon/test_helpers.py b/tests/telethon/test_helpers.py
+index 47705ca25..3dffdf66d 100644
+--- a/tests/telethon/test_helpers.py
++++ b/tests/telethon/test_helpers.py
+@@ -39,9 +39,9 @@ def test_strip_text():
+ 
+ class TestSyncifyAsyncContext:
+     class NoopContextManager:
+-        def __init__(self, loop):
++        def __init__(self):
+             self.count = 0
+-            self.loop = loop
++            self.loop = helpers.get_running_loop()
+ 
+         async def __aenter__(self):
+             self.count += 1
+@@ -54,8 +54,8 @@ async def __aexit__(self, exc_type, *args):
+         __enter__ = helpers._sync_enter
+         __exit__ = helpers._sync_exit
+ 
+-    def test_sync_acontext(self, event_loop):
+-        contm = self.NoopContextManager(event_loop)
++    def test_sync_acontext(self):
++        contm = self.NoopContextManager()
+         assert contm.count == 0
+ 
+         with contm:
+@@ -64,8 +64,8 @@ def test_sync_acontext(self, event_loop):
+         assert contm.count == 0
+ 
+     @pytest.mark.asyncio
+-    async def test_async_acontext(self, event_loop):
+-        contm = self.NoopContextManager(event_loop)
++    async def test_async_acontext(self):
++        contm = self.NoopContextManager()
+         assert contm.count == 0
+ 
+         async with contm:
