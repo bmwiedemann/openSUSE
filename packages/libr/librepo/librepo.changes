@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 25 15:25:09 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update gpgme build requirement for future-proofing
+- use cmake macros and other spec file tweaks
+
+-------------------------------------------------------------------
 Mon Jun 23 13:42:21 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Update to 1.20.0:
