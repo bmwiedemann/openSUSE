@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 29 07:27:32 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to 1.11.0
+  Added:
+  * Search in pages (#36, #240)
+  * Support for custom commands (#262, #265)
+  Changed:
+  * Use preformatted_text color for rendering plain text files (#351)
+  Fixed:
+  * Fix building cview (#360)
+
+-------------------------------------------------------------------
 Mon Mar 18 05:30:09 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Switch to generic make macros and filled out version information

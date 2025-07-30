@@ -1,7 +1,7 @@
 #
 # spec file for package amfora
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global revision  2534983
 
 Name:           amfora
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        CLI/Terminal based gemini browser
 License:        GPL-3.0-only
