@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 29 19:50:07 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 9.5.1:
+  * Unbreak build using ld.gold as linker.
+  * Miscellaneous build system updates and improvements.
+
+-------------------------------------------------------------------
 Tue Jul 15 19:10:41 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 9.5.0:
