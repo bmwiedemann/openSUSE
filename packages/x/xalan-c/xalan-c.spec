@@ -73,7 +73,9 @@ This package contains files needed for development with Xalanc
 %setup -q -n xalan_c-%{version}
 
 %build
+%if 0%{?suse_version} > 1600
 export CXXFLAGS="%{optflags} -Wno-error=template-body"
+%endif
 %cmake
 %cmake_build
 
