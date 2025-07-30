@@ -21,7 +21,7 @@ Name:           mujs
 Version:        1.3.7
 Release:        0
 Summary:        An embeddable Javascript interpreter
-License:        AGPL-3.0-or-later
+License:        ISC
 Group:          Development/Languages/C and C++
 URL:            https://github.com/ccxvii/%{name}
 Source0:        https://github.com/ccxvii/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
