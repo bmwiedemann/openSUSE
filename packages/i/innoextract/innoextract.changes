@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 27 15:43:57 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Add upstream cmake-version-range.patch for compatibility with
+  CMake 4.0 and newer.
+
+-------------------------------------------------------------------
 Sun Apr 28 13:13:44 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch:
