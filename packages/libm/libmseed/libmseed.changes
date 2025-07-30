@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul 28 18:29:35 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.1.6:
+  Use cases creating miniSEED v2 records with microsecond
+  resolution and non-integer sampling rates are strongly encouraged
+  to update to this release to retain full microsecond accuracy in
+  created data.
+  * Properly propagate sub-fractional microseconds to v2 blockette
+    1001 when packing more than one record.
+  * Round sub-fractional and sub-microsecond times for v2 record
+    fields to retain accuracy.
+  * Ensure microsecond offsets in v2 record fields are -50 to +49,
+    which matches previous major library version behavior and SEED
+    recommendation.
+  * Add msr3_repack_mseed2() to repack v2 records efficiently
+    without decoding data samples.
+  * Add -s (start time) and -R (sample rate) options to
+    example/lm_pack.c.
+  * Fix some pedantic compiler warnings in msio.c.
+
+-------------------------------------------------------------------
 Sat Apr 26 07:15:44 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.1.5:
