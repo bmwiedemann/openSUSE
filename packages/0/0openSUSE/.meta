@@ -1,7 +1,4 @@
 <package name="0openSUSE" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <build>
-    <disable repository="product_nonfree"/>
-  </build>
 </package>
