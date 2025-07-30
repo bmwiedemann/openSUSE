@@ -214,4 +214,14 @@ AFAICT these packages aren't needed for generating the docs and the official doc
   permissions.</comment>
     <requestid>1291080</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>db837dc2507fa5370b5f303e3523fec0</srcmd5>
+    <version>3.0.0</version>
+    <time>1753868725</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove `/usr/share/kea/meson-info` directory because it contains
+  non reproducible files.
+  [bsc#1246670]</comment>
+    <requestid>1296356</requestid>
+  </revision>
 </revisionlist>

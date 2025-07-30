@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 29 09:44:04 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Remove `/usr/share/kea/meson-info` directory because it contains
+  non reproducible files.
+  [bsc#1246670]
+
+-------------------------------------------------------------------
 Mon Jul  7 14:40:57 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Use meson install_umask to set binaries and libraries

@@ -392,6 +392,8 @@ mkdir -p "$b%_localstatedir/log/kea"
 
 # Remove unnecessary files
 rm -Rf "%buildroot/%python3_sitelib/kea/__pycache__"
+# Remove meson-info directory as it contains non reproducable files
+rm -Rf "%{buildroot}/%{_datadir}/kea/meson-info"
 %fdupes %{buildroot}/%{_datadir}/doc/kea
 
 %pre -f random.pre
