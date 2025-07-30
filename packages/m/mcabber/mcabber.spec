@@ -2,6 +2,7 @@
 # spec file for package mcabber
 #
 # Copyright (c) 2025 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,25 +21,23 @@ Name:           mcabber
 Version:        1.1.2
 Release:        0
 Summary:        Modular XMPP client on ncurses
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Instant Messenger
-Url:            https://mcabber.com/
+URL:            https://mcabber.com/
 Source:         https://mcabber.com/files/%{name}-%{version}.tar.bz2
 Source1:        https://mcabber.com/files/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 # PATCH-FEATURE-OPENSUSE up_one_line_message_length.patch
 Patch0:         up_one_line_message_length.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
+Patch1:         mcabber-1.1.2-gcc15.patch
 BuildRequires:  fdupes
-BuildRequires:  libgpgme-devel
-BuildRequires:  libotr-devel
-BuildRequires:  libtool
-BuildRequires:  ncurses-devel
-BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig >= 0.16
 BuildRequires:  pkgconfig(enchant)
-BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.14.0
+BuildRequires:  pkgconfig(gpgme) >= 1.0.0
+BuildRequires:  pkgconfig(libotr) >= 4.0.0
 BuildRequires:  pkgconfig(loudmouth-1.0)
+BuildRequires:  pkgconfig(ncursesw)
 
 %description
 mcabber is a small XMPP console client on ncurses. It features
@@ -49,9 +48,6 @@ conferences (MUC) support.
 Summary:        Headers for modular XMPP client on ncurses
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-Requires:       pkgconfig(glib-2.0)
-Requires:       pkgconfig(gmodule-2.0)
-Requires:       pkgconfig(loudmouth-1.0)
 
 %description devel
 mcabber is a small XMPP console client on ncurses. It features
@@ -59,24 +55,28 @@ SSL support, history logging, external actions, OTR support,
 conferences (MUC) support.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 mv -f %{name}rc.example %{name}rc
 
 %build
-NOCONFIGURE=1 ./autogen.sh
 %configure \
   --enable-enchant \
   --enable-hgcset \
-  --enable-otr
-make %{?_smp_mflags} V=1
+  --enable-otr \
+  %{nil}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}%{_datadir}
 
+%check
+%make_build check
+
 %files
-%doc AUTHORS ChangeLog COPYING NEWS README TODO
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README TODO
 %doc %{name}rc doc/%{name}.?.* doc/manpage.css
 %{_bindir}/%{name}
 %{_libdir}/%{name}/
@@ -84,6 +84,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man?/%{name}.?%{?ext_man}
 
 %files devel
+%license COPYING
 %{_includedir}/%{name}/
 %{_libdir}/pkgconfig/%{name}.pc
 

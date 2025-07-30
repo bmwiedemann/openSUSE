@@ -1,0 +1,59 @@
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Wed, 23 Jul 2025 22:59:15 +0200
+Subject: [PATCH] Fix gcc15 build
+Upstream: https://github.com/McKael/mcabber/pull/3
+
+Turns out there is an upstream PR.
+
+Fixes:
+
+[   19s] screen.c:2471:56: error: passing argument 2 of ‘g_timeout_add_seconds’ from incompatible pointer type [-Wincompatible-pointer-types]
+[   19s]  2471 |                                                        scr_chatstates_timeout,
+[   19s]       |                                                        ^~~~~~~~~~~~~~~~~~~~~~
+[   19s]       |                                                        |
+[   19s]       |                                                        gboolean (*)(void) {aka int (*)(void)}
+
+Index: mcabber-1.1.2/mcabber/screen.c
+===================================================================
+--- mcabber-1.1.2.orig/mcabber/screen.c
++++ mcabber-1.1.2/mcabber/screen.c
+@@ -90,7 +90,7 @@ static void scr_glog_print(const gchar *
+                            const gchar *message, gpointer user_data);
+ 
+ #ifdef XEP0085
+-static gboolean scr_chatstates_timeout();
++static gboolean scr_chatstates_timeout(void *);
+ #endif
+ 
+ #if defined(WITH_ENCHANT) || defined(WITH_ASPELL)
+@@ -2485,7 +2485,7 @@ static void set_chatstate(int state)
+ }
+ 
+ #ifdef XEP0085
+-static gboolean scr_chatstates_timeout(void)
++static gboolean scr_chatstates_timeout(void *dummy)
+ {
+   time_t now;
+   time(&now);
+Index: mcabber-1.1.2/mcabber/xmpp.c
+===================================================================
+--- mcabber-1.1.2.orig/mcabber/xmpp.c
++++ mcabber-1.1.2/mcabber/xmpp.c
+@@ -50,7 +50,7 @@ LmConnection* lconnection = NULL;
+ static guint AutoConnection;
+ 
+ inline void update_last_use(void);
+-inline gboolean xmpp_reconnect();
++inline gboolean xmpp_reconnect(void *);
+ 
+ enum imstatus mystatus = offline;
+ static enum imstatus mywantedstatus = available;
+@@ -781,7 +781,7 @@ static void connection_auth_cb(LmConnect
+     scr_LogPrint(LPRINT_LOGNORM, "Authentication failed");
+ }
+ 
+-gboolean xmpp_reconnect()
++gboolean xmpp_reconnect(void *dummy)
+ {
+   if (!lconnection)
+     xmpp_connect();
