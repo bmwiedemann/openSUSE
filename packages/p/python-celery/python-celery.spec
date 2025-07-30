@@ -72,6 +72,7 @@ BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module eventlet >= 0.32.0}
 BuildRequires:  %{python_module gevent}
+BuildRequires:  %{python_module google-cloud-core}
 BuildRequires:  %{python_module google-cloud-firestore}
 BuildRequires:  %{python_module google-cloud-storage}
 BuildRequires:  %{python_module moto >= 2.2.6}

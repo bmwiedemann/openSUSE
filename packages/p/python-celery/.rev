@@ -528,4 +528,12 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1288522</requestid>
   </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>da29890b9246b80d6300bb069beefbca</srcmd5>
+    <version>5.5.3</version>
+    <time>1753868568</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1296142</requestid>
+  </revision>
 </revisionlist>
