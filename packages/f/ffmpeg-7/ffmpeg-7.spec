@@ -60,6 +60,7 @@
 %bcond_with    fdk_aac_dlopen
 %bcond_with    opencore
 %bcond_with    smbclient
+%bcond_with    vvenc
 %bcond_with    x264
 %bcond_with    x265
 %bcond_with    xvid
@@ -122,6 +123,7 @@ Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
 Patch18:        ffmpeg-7-CVE-2025-25473.patch
 Patch19:        ffmpeg-7-CVE-2025-22921.patch
 Patch20:        0001-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
+Patch21:        ffmpeg-CVE-2025-7700.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  nasm
@@ -220,6 +222,9 @@ BuildRequires:  pkgconfig(opencore-amrnb)
 %endif
 %if %{with amrwb}
 BuildRequires:  pkgconfig(vo-amrwbenc)
+%endif
+%if %{with vvenc}
+BuildRequires:  vvenc-devel
 %endif
 %if %{with x264}
 BuildRequires:  pkgconfig(x264)
@@ -660,6 +665,9 @@ LDFLAGS="%_lto_cflags" \
 %endif
 %if %{with amrwb}
 	--enable-libvo-amrwbenc \
+%endif
+%if %{with vvenc}
+	--enable-libvvenc \
 %endif
 %if %{with x264}
 	--enable-libx264 \

@@ -166,4 +166,13 @@ retry submit due to git-&gt;obs autosync delays</comment>
   (jsc#PED-12607)</comment>
     <requestid>1288497</requestid>
   </revision>
+  <revision rev="20" vrev="8">
+    <srcmd5>d440b88e044c8462deef55f2b4723128</srcmd5>
+    <version>7.1.1</version>
+    <time>1753868483</time>
+    <user>dimstar_suse</user>
+    <comment>- Add vvenc build conditional
+- Add ffmpeg-CVE-2025-7700.patch</comment>
+    <requestid>1295332</requestid>
+  </revision>
 </revisionlist>

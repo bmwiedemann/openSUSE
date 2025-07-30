@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 23 13:28:49 UTC 2025 - Hans-Peter Jansen <hp@urpla.net>
+
+- Add vvenc build conditional
+
+-------------------------------------------------------------------
+Wed Jul 23 07:01:22 UTC 2025 - SongChuan Kang <sckang@suse.com>
+
+- Add ffmpeg-CVE-2025-7700.patch: Add check for the return value
+  of av_malloc_array() and av_calloc() to avoid potential NULL
+  pointer dereference(CVE-2025-7700, bsc#1246790).
+
+-------------------------------------------------------------------
 Wed Jun 25 08:40:15 UTC 2025 - Yifan Jiang <yfjiang@suse.com>
 
 - Built with noopenh264, drop ffmpeg-dlopen-openh264.patch

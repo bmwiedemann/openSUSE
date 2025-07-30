@@ -13,11 +13,12 @@ ffmpeg, which can cause inadvertent mixing of library versions on
 openSUSE, and precompiled Linux distributions in general.
 
 Upstream says "we only add new functions" - which is ok in its own
-right. verdefs, if you have them, *must*not* change under any
-circumstances, but that is what they broke: the set of symbols
-included in the "LIBAVFORMAT_59" verdef changed between 5.0 and 5.1.
+right. New symbols must be in a new verdef section though, existing
+sections *must*not* change under *any* circumstances, but that is
+what they broke: the set of symbols included in the "LIBAVFORMAT_59"
+verdef changed between 5.0 and 5.1.
 
-$ abidiff abidiff /usr/lib64/libavformat.so.59.16.100 usr/lib64/libavformat.so.59.27.100
+$ abidiff /usr/lib64/libavformat.so.59.16.100 usr/lib64/libavformat.so.59.27.100
 Functions changes summary: 0 Removed, 0 Changed, 0 Added function
 Variables changes summary: 0 Removed, 0 Changed, 0 Added variable
 Function symbols changes summary: 0 Removed, 1 Added function symbol not referenced by debug info
