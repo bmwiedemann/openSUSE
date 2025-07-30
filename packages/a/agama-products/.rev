@@ -247,4 +247,13 @@
   based on MicroOS, with renamed patterns</comment>
     <requestid>1294906</requestid>
   </revision>
+  <revision rev="22" vrev="22">
+    <srcmd5>8577f9d5dfce6e0509bdc9d3839d99ce</srcmd5>
+    <version>0</version>
+    <time>1753868691</time>
+    <user>dimstar_suse</user>
+    <comment>- Set configuration for selinux for SLES4SAP to permissive
+  (bsc#1247046)</comment>
+    <requestid>1296254</requestid>
+  </revision>
 </revisionlist>
