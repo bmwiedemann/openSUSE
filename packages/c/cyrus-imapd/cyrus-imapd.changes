@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 29 13:48:50 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Only BuildRequire systemd-rpm-macros instead of systemd
+  to reduce unneeded OBS rebuilds
+
+-------------------------------------------------------------------
 Fri Jul 18 13:03:45 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - add 0001-Squash-some-clang-complaints.patch: fix compile errors in 3.8

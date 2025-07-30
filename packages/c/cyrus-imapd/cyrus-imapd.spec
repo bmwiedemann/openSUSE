@@ -67,7 +67,7 @@ BuildRequires:  libtool >= 2.2.6
 BuildRequires:  libuuid-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  systemd
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 
 # optionals:
