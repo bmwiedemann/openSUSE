@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 28 15:39:07 UTC 2025 - Nathan Cutler <ncutler@suse.com>
+
+- spec:
+  * obsolete perl-Test2-Suite because it has been merged into
+    this package as of 1.302201
+
+-------------------------------------------------------------------
 Sun May 25 05:34:28 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302214

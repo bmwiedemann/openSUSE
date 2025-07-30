@@ -447,4 +447,12 @@
       - Minor doc fix</comment>
     <requestid>1282006</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>672f1c5509ed49f3b1e2eab358cb0aaf</srcmd5>
+    <version>1.302214</version>
+    <time>1753868473</time>
+    <user>dimstar_suse</user>
+    <comment>obsolete perl-Test2-Suite since it has been merged into this package</comment>
+    <requestid>1296178</requestid>
+  </revision>
 </revisionlist>

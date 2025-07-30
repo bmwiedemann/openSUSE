@@ -34,6 +34,7 @@ Requires:       perl(Term::Table) >= 0.013
 # MANUAL BEGIN
 Obsoletes:      perl-Test-Tester <= 0.109
 Obsoletes:      perl-Test-use-ok <= 0.11
+Obsoletes:      perl-Test2-Suite <= 0.163
 # MANUAL END
 
 %description
