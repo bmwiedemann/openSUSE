@@ -47,7 +47,11 @@ versions of Windows greater than or equal to Windows 2000.
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%if 0%{suse_version} > 1315
 %make_build
+%else
+make
+%endif
 
 %check
 make test

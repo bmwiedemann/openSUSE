@@ -22,7 +22,13 @@
 # sed on %{name}.files
 #license: SUSE-NonFree
 #skip_noarch: 1
-#custom_build: |-
+custom_build: |-
+  perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+  %if 0%{suse_version} > 1315
+  %make_build
+  %else
+  make
+  %endif
 #./Build build flags=%{?_smp_mflags} --myflag
 #custom_test: |-
 #startserver && make test
