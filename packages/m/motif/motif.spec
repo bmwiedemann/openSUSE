@@ -1,7 +1,7 @@
 #
 # spec file for package motif
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -121,7 +121,7 @@ sed -i 's|{libdir}/X11|{datadir}/X11|' configure.ac
 
 %build
 autoreconf -fi
-export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CFLAGS="%{optflags} -fno-strict-aliasing -std=gnu11"
 %configure \
     --disable-static \
     --disable-demos \

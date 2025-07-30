@@ -90,4 +90,13 @@
     <comment></comment>
     <requestid>1173796</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>dbd9b5b6b92abedb33d890ca10e5085b</srcmd5>
+    <version>2.3.8</version>
+    <time>1753868531</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build with gcc15
+</comment>
+    <requestid>1295940</requestid>
+  </revision>
 </revisionlist>
