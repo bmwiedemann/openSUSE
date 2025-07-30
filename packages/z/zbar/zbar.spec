@@ -1,7 +1,7 @@
 #
 # spec file for package zbar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010 Carlos Goncalves <cgoncalves@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,6 +16,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{suse_version} >= 1600
+%bcond_with qt
+%else
+%bcond_without qt
+%endif
 
 %define sover   0
 %define libname lib%{name}%{sover}
@@ -37,10 +43,12 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(ImageMagick)
+%if %{with qt}
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
+%endif
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libv4l2)
@@ -112,7 +120,14 @@ autoreconf -fiv
   --disable-static \
   --without-java \
   --with-python=python3 \
-  --without-gtk
+  --without-gtk \
+%if %{with qt}
+  --with-qt \
+%else
+  --without-qt \
+%endif
+  %{nil}
+
 %make_build
 
 %install
@@ -126,14 +141,18 @@ rm -f %{buildroot}%{_docdir}/zbar/{COPYING,LICENSE.md,INSTALL.md}
 rm -rf %{buildroot}%{_sysconfdir}/dbus-1/system.d/org.linuxtv.Zbar.conf
 
 %ldconfig_scriptlets -n %{libname}
+%if %{with qt}
 %ldconfig_scriptlets -n libzbarqt0
+%endif
 
 %files
 %license COPYING LICENSE.md
 %{_defaultdocdir}/%{name}/
 %{_bindir}/zbarimg
 %{_bindir}/zbarcam
+%if %{with qt}
 %{_bindir}/zbarcam-qt
+%endif
 %{_mandir}/man1/*
 
 %files lang -f %{name}.lang
@@ -157,6 +176,7 @@ rm -rf %{buildroot}%{_sysconfdir}/dbus-1/system.d/org.linuxtv.Zbar.conf
 %{_libdir}/libzbar.so
 %{_libdir}/pkgconfig/zbar.pc
 
+%if %{with qt}
 %files -n lib%{name}qt0
 %{_libdir}/libzbarqt.so.%{sover}*
 
@@ -164,6 +184,7 @@ rm -rf %{buildroot}%{_sysconfdir}/dbus-1/system.d/org.linuxtv.Zbar.conf
 %{_includedir}/%{name}/QZBar*.h
 %{_libdir}/libzbarqt.so
 %{_libdir}/pkgconfig/zbar-qt.pc
+%endif
 
 %files -n python3-zbar
 %{python3_sitearch}/zbar.so

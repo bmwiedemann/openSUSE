@@ -234,4 +234,12 @@
     <comment>- Fix building for Leap</comment>
     <requestid>1141556</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>e71bed8650e9fa86cf76bff80e6b03d5</srcmd5>
+    <version>0.23.93</version>
+    <time>1753868522</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1296320</requestid>
+  </revision>
 </revisionlist>

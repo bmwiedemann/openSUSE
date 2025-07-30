@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 29 10:24:16 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not build with Qt in TW and SLE16. zbar only supports Qt5
+  and it seems to be mostly unmaintained.
+
+-------------------------------------------------------------------
 Thu Jan 25 16:52:45 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix building for Leap
