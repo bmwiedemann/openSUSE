@@ -355,4 +355,14 @@
     provides go1.18 needed for bootstrapping go1.21. (forwarded request 1294843 from jfkw)</comment>
     <requestid>1294844</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>0e7e2397ba0096455fddacec4523f73c</srcmd5>
+    <version>1.21.13</version>
+    <time>1753868621</time>
+    <user>dimstar_suse</user>
+    <comment>The support for -buildmode=shared only depends on the go version and architecture, not how it was bootstrapped
+
+Expand previous changelog entry for go1.21 boostrap with gccgo (forwarded request 1296196 from jfkw)</comment>
+    <requestid>1296197</requestid>
+  </revision>
 </revisionlist>

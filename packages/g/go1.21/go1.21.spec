@@ -82,19 +82,12 @@
 
 # shared library support
 %if "%{rpm_vercmp %{go_api} 1.5}" > "0"
-%if %{with gccgo_go121}
-%define with_shared 1
-%else
 %ifarch %ix86 %arm x86_64 aarch64
 %define with_shared 1
 %else
 %define with_shared 0
 %endif
-%endif
 %else
-%define with_shared 0
-%endif
-%ifarch ppc64
 %define with_shared 0
 %endif
 # setup go_arch (BSD-like scheme)

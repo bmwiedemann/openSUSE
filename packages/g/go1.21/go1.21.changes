@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 28 12:59:30 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- The support for -buildmode=shared only depends on the go version and
+  architecture, not how it was bootstrapped
+
+-------------------------------------------------------------------
 Fri Jul 18 12:23:38 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
@@ -15,6 +21,15 @@ Fri Jul 18 12:23:38 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
     :Macros
   * Update to %define gcc_go_version from 11 to 13 for SLE. gcc13
     provides go1.18 needed for bootstrapping go1.21.
+  * Current Go bootstrap status: gcc13, gcc14, gcc15 all provide
+    go1.18 language level gccgo. go1.21 is the latest Go toolchain
+    that can bootstrap with go1.18 and thus gccgo, newer Go
+    toolchains require newer bootstrap versions. No newer gccgo
+    language level support has been announced, so go1.21 is the
+    initial Go bootstrap version until that changes. Recommended
+    for all distribution repositories to use the above prjconf to
+    shorten the bootstrap toolchain and optionally remove EOL go
+    versions older than go1.21.
 
 -------------------------------------------------------------------
 Mon Jul  7 15:32:03 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
