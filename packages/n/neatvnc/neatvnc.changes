@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 29 05:19:43 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.5:
+  * Sending an illegal security type would result in use-after-free.
+  * The required size for the alpha map for cursors was incorrectly
+    calculated. This resulted in a heap-overflow under some circumstances.
+  * The buffer transform for the cursor was being applied to the
+    cursor hotspot. The buffer transform does not apply to the hotspot,
+    so undoing the transform is incorrect. This resulted in the cursor
+    being offset from the correct hotspot.
+
+-------------------------------------------------------------------
 Mon Mar  3 08:09:46 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.4:
