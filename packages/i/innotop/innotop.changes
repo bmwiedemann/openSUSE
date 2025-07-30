@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jul 26 07:46:19 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- innotop 1.15.2:
+  * Updated version check logic in SHOW_MASTER_LOGS and SHOW_MASTER_STATUS
+  * Added a zero division check for the $this_qps variable in the 
+    get_status_info function.
+  * Added renaming of variables from replica_ to slave_ and from source_ to
+    master_ to support the new terminology.
+
+- innotop 1.15.0:
+  * Support Group Replication
+  * Support new replication terminology
+  * Add --ssl_optional option
+
+- innotop 1.13.1:
+  * Fix to read my.cnf
+
+- removed out of support distro from spec
+- patched shebang interpreter 
+
+-------------------------------------------------------------------
 Sat May 15 12:16:52 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - innotop 1.13.0:

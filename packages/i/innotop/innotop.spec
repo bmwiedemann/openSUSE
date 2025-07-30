@@ -1,7 +1,7 @@
 #
 # spec file for package innotop
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           innotop
-Version:        1.13.0
+Version:        1.15.2
 Release:        0
 Summary:        A MySQL and InnoDB monitor program
 License:        GPL-2.0-only
@@ -45,11 +45,7 @@ Requires:       perl(List::Util)
 Requires:       perl(Term::ReadKey)
 Requires:       perl(Time::HiRes)
 BuildArch:      noarch
-%if 0%{?suse_version} < 1140
-Requires:       perl = %{perl_version}
-%else
 %{perl_requires}
-%endif
 
 %description
 Innotop is a powerful "top" clone for MySQL. It connects to a MySQL database server
@@ -59,6 +55,7 @@ PROCESSLIST, and SHOW ENGINE INNODB STATUS, among other things.
 
 %prep
 %setup -q
+sed -i "s|\#\!\/usr\/bin\/env perl|\#\!\/usr\/bin\/perl|g" innotop
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
