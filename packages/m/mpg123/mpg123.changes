@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul 27 18:59:58 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.33.1
+  * Finally formatted README. Maybe do it in Markdown sometime,
+    as that's the fashion.
+  build:
+  * The ports/cmake only installs manpages for BUILD_PROGRAMS now.
+  * The configure gives better hint if pkg-config was missing
+    during generation
+  mpg123:
+  * Replace usage of signal() in terminal code with our
+    sigaction() wrapper to fix repeated handling for --sigusr1
+    and --sigusr2, which got subtly broken on Linux + glibc by a
+    feature test macro change in mpg123 1.31.
+
+-------------------------------------------------------------------
 Sun Jun  8 09:18:13 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.33.0
