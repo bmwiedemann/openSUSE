@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Fri Jul 25 09:50:15 UTC 2025 - Daniel Wagner <dwagner@suse.de>
+
+- Update to version 1.15:
+  * Release v1.15
+  * doc: Regenerate all docs for v1.15
+  * tree: always set the host key (bsc#1246560)
+  * json: do not leak port_obj for PCI devices
+  * Revert "linux: TLS PSK derivation fixes"
+  * linux: TLS PSK derivation fixes
+  * mi: correct mi admin feature functions map file
+  * mi: add power management feature functions
+  * mi: add arbitration feature get function
+  * libnvme: sanitize free() handling
+  * ioctl: fix nvme_get_log_endurance_grp_evt() description
+  * tree: free ctrl attributes when (re)configure ctrl (bsc#1243716)
+  * types: Add Create Queue Specific (CQS) shift and mask for LM CDQ command
+  * test: add tests for miscellaneous ioctl functions
+  * test: move _cleanup_free_ to util.h
+  * ioctl: fix nvme_directive_recv_stream_status
+  * test: add tests for miscellaneous ioctl functions
+  * tree: filter tree after scan has completed (bsc#1243716)
+  * build: disable liburing support per default
+  * ioctl: introduce force xfer length configuration knob
+  * mi:     nvme_mi_mi_xfer() is overly restrictive
+  * mi: Additional define options for older systems with SIOCMCTPALLOC
+  * types: Fix nvme_ns_id_desc packing
+  * types: add SMART / health information CW shift and mask values
+  * doc: fix return value description for nvme_scan_topology
+  * test: add tests for zns functions
+  * test: add missing tests for features functions
+  * ioctl: fix nvme_lm_set_features_ctrl_data_queue
+  * test: extend sysfs tree dump test
+  * tree: add attribute numa_nodes for NVMe path object
+  * tree: add queue-depth attribute for nvme path object
+  * tree: add support for discovering nvme paths using sysfs multipath link
+  * test: add tests for log functions
+  * test: add missing tests for identify functions
+  * ioctl: only use io_uring for char devices
+  * examples: Make examples build selectable
+  * examples: remove unnecessary include of <bits/pthreadtypes.h>
+  * tree: handle the case when host_iface/host_traddr are set to "none"
+  * Release v1.14
+  * doc: Regenerate all docs for v1.14
+  * examples: add explicit pthread dependency to meson
+  * build: disable netdb test for static builds
+  * build: make 'clean' target an alias for 'purge'
+  * types: Change LM CDQ sz argument from u8 to u32.
+  * Revert "fabrics: retry connect command on EINTR"
+  * ioctl: add temperature threshold TMPSEL and THSEL parameters to get
+  * types: add temperature threshold feature TMPTHH field
+  * mi: Introduce asynchronous event message handling
+  * types,util: add enums for Boot Partition Write Protection Config feature
+  * tests: Add an empty NBFT table
+  * tests: Add sample NBFT table with empty HFI ipv6 address
+  * mi: Add support for multiple csi buffers
+  * mi: add nvme_mi_submit entry and exit weak functions
+  * util: add FDP events feature length
+  * tree: add routine to fetch subsys serial number
+  * mi: fix unrleased section name
+  * build: use newer build container for readthedocs
+  * build: update readthedocs commands
+  * scripts: update UNRELEASED export map on release
+  * src: introduce unreleased export section
+  * biuld: patch the meson.build for test pypi upload
+  * build: split 'dev' postfix from version string
+  * build: cleanup python test pypi upload
+  * build: fix test pypi cleanup task
+  * build: add cleanup task for pypi test uploads
+  * build: upload unique pypi test versions
+  * util: add performance characteristic feature length
+  * types: add performance characteristics attribute definitions
+  * build: allow to specify tag for workflow_dispatch
+  * build: switch to new python meson backend
+- disable liburing support, upstream disabled it on default.
+
+-------------------------------------------------------------------
 Mon Apr 14 09:26:06 UTC 2025 - Daniel Wagner <dwagner@suse.de>
 
 - Update to version 1.13:

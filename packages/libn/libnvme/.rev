@@ -343,4 +343,12 @@
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1247053</comment>
     <requestid>1295959</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>1242ca55eed9a76d0d8c208de25247a9</srcmd5>
+    <version>1.15</version>
+    <time>1753868478</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit after bsc#1247053 was fixed</comment>
+    <requestid>1296261</requestid>
+  </revision>
 </revisionlist>
