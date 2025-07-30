@@ -61,4 +61,14 @@
 </comment>
     <requestid>983171</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c31de26c09cc8678323c0d2e86421552</srcmd5>
+    <version>2.37</version>
+    <time>1753868534</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.37.
+  * Bug fix release.
+</comment>
+    <requestid>1295975</requestid>
+  </revision>
 </revisionlist>
