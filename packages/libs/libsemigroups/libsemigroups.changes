@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 29 22:04:46 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.1.2
+  * Remove remaining occurrences of std::basic_string<uint8_t>
+
+-------------------------------------------------------------------
+Mon Jul 28 15:47:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.1.1
+  * It is currently only possible to construct KnuthBendix objects
+    using presentations with at most 128 generators. This is now
+    properly checked, and a meaningful exception is thrown
+    otherwise.
+
+-------------------------------------------------------------------
 Sun Jul 20 13:34:51 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.1.0
