@@ -17,12 +17,12 @@
 
 
 Name:           warpinator
-Version:        1.8.8
+Version:        1.8.9
 Release:        0
 Summary:        Share files across the LAN
 License:        GPL-3.0-or-later
 URL:            https://github.com/linuxmint/warpinator
-Source:         https://github.com/linuxmint/warpinator/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  desktop-file-utils
 BuildRequires:  glib2-tools
 BuildRequires:  gobject-introspection
