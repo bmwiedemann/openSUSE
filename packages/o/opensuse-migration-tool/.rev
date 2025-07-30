@@ -66,4 +66,15 @@ migrations as well as point release upgrades
     <comment></comment>
     <requestid>1279197</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>64d647b0a41dbf319c65370c96ed73e4</srcmd5>
+    <version>20250729.4ed6ec5</version>
+    <time>1753868719</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250729.4ed6ec5:
+  * Add a screen to disable 3rd party repos
+  * Add post-migration script support #30
+  * Drop --pre-release flag completely</comment>
+    <requestid>1296382</requestid>
+  </revision>
 </revisionlist>

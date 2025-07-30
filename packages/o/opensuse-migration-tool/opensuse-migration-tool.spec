@@ -19,7 +19,7 @@
 
 
 Name:           opensuse-migration-tool
-Version:        20250521.ab8700a
+Version:        20250729.4ed6ec5
 Release:        0
 Summary:        Migration and Upgrade tool for openSUSE
 License:        Apache-2.0
@@ -50,12 +50,19 @@ cp %{name} %{buildroot}/%{_sbindir}/%{name}
 mkdir -p %{buildroot}/%{_datadir}/%{name}
 cp SLES.prod %{buildroot}/%{_datadir}/%{name}/SLES.prod
 
+# Install scripts directory
+cp -a scripts %{buildroot}/%{_datadir}/%{name}/
+
 %check
 
 %files
 %defattr(644,root,root,755)
 %attr(0755, root, root) %{_sbindir}/%{name}
 %{_datadir}/%{name}
+%{_datadir}/%{name}/scripts
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/scripts
+%attr(0755, root, root) %{_datadir}/%{name}/scripts/*
 %attr(0644, root, root) %{_datadir}/%{name}/SLES.prod
 
 %license LICENSE
