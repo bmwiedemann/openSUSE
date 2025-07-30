@@ -42,10 +42,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli >= 1.1.0}
 BuildRequires:  %{python_module typing_extensions >= 4.6.0}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-mypy_extensions >= 0.4.3
 Requires:       python-pathspec
 Requires:       python-typing_extensions >= 3.10
@@ -55,6 +53,13 @@ BuildArch:      noarch
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       mypy = %{version}
 Obsoletes:      mypy < %{version}
+%endif
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %endif
 %if %{with test}
 BuildRequires:  %{python_module attrs >= 18}
@@ -116,7 +121,9 @@ rm docs/make.bat
 %python_clone -a  %{buildroot}%{_bindir}/mypyc
 %python_clone -a  %{buildroot}%{_bindir}/stubgen
 %python_clone -a  %{buildroot}%{_bindir}/stubtest
+%if %{with libalternatives}
 %python_group_libalternatives mypy dmypy mypyc stubgen stubtest
+%endif
 # solve "W: python-doc-in-package" in 3.9, 3.10 and 3.11, but not in 3.8 (thus -f to ignore the error)
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/mypyc/doc
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -146,8 +153,17 @@ donttest+=" or PEP561Suite"
 %pytest -n auto -k "not (testallexcept ${donttest})"
 %endif
 
+%if %{with libalternatives}
 %pre
 %python_libalternatives_reset_alternative mypy
+%else
+
+%post
+%python_install_alternative mypy dmypy mypyc stubgen stubtest
+
+%postun
+%python_uninstall_alternative mypy
+%endif
 
 %files %{python_files}
 %doc docs/
