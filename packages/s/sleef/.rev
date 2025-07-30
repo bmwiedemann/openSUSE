@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1294005</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8378db2d2aa54e517284b77a3245fb63</srcmd5>
+    <version>3.9.0</version>
+    <time>1753868576</time>
+    <user>dimstar_suse</user>
+    <comment>disable the broken build for i586 (bsc#1246933)</comment>
+    <requestid>1296153</requestid>
+  </revision>
 </revisionlist>

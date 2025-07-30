@@ -29,6 +29,7 @@ License:        BSL-1.0
 Group:          Productivity/Scientific/Math
 URL:            https://sleef.org/
 Source:         https://github.com/shibatch/sleef/archive/refs/tags/%{v_major}.%{v_minor}.%{v_patch}.tar.gz#/%{name}-%{version}.tar.gz
+ExcludeArch:    %{ix86}
 
 BuildRequires:  cmake
 BuildRequires:  fftw3-devel

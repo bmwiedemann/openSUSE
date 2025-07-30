@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 28 12:48:21 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Disable the broken build for i586 (bsc#1246933)
+
+-------------------------------------------------------------------
 Wed Jul 16 19:21:36 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Disable LTO on riscv64 due to gcc bug 110812
