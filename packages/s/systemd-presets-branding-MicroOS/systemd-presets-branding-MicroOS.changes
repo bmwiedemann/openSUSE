@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 28 08:58:08 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Enable services for sysext image support (systemd-sysext.socket, 
+  sysextmgr.socket, sysextmgr-cleanup.timer)
+
+-------------------------------------------------------------------
 Thu May 15 06:25:23 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Enable import-pubring-from-rpmdb.* to import keyrings from rpmdb

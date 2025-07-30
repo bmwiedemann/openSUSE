@@ -91,4 +91,14 @@
 </comment>
     <requestid>1277748</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>b352ed97aeeea32160d95cdc135aff7b</srcmd5>
+    <version>20230214</version>
+    <time>1753868519</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable services for sysext image support (systemd-sysext.socket, 
+  sysextmgr.socket, sysextmgr-cleanup.timer)
+</comment>
+    <requestid>1296315</requestid>
+  </revision>
 </revisionlist>

@@ -17,3 +17,7 @@ disable purge-kernels.service
 # optional packages
 enable lastlog2-import.service
 enable man-db-create.service
+# sysext images
+enable systemd-sysext.socket
+enable sysextmgr.socket
+enable sysextmgr-cleanup.timer
