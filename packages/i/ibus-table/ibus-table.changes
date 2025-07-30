@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 25 01:39:20 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Update to 1.17.14:
+ * Make it possible to configure which menu entries are shown in the
+   desktop panel menu and in the floating panel (Resolves: #189)
+ * Translation update from Weblate (ca 99.3%, de 100%, es 99.3%,
+   fr 100%, ka 60.7%, kab 35.5%, pt_BR 99.3%, pt_PT 74.5%, ru 98.6%,
+   tr 99.3%, ua 100%, zh_CN 90.1%, zh_TW 99.3%)
+
+-------------------------------------------------------------------
 Tue May  6 07:34:33 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace obsolete and unneeded gnome-common with libtool
@@ -294,7 +304,7 @@ Fri Dec 15 04:27:29 UTC 2017 - hillwood@opensuse.org
 - Drop ibus-table-python3.patch, It is needless.
 
 -------------------------------------------------------------------
-Sun Sep 28 23:10:37 PRC 2014 - hillwood@linuxfans.org
+Sun Sep 28 23:10:37 UTC 2014 - hillwood@linuxfans.org
 
 - update to 1.8.11
   * Fix typo in variable name self_onechar -> self._onechar

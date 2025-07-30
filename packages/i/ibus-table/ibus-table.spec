@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-table
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           ibus-table
-Version:        1.17.8
+Version:        1.17.14
 Release:        0
 Summary:        The Table engine for IBus platform
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/mike-fabian/ibus-table/
-Source:         https://github.com/mike-fabian/ibus-table/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/mike-fabian/ibus-table/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  docbook-utils-minimal
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
@@ -34,7 +34,6 @@ BuildRequires:  pkgconfig(python3)
 Requires:       ibus >= 1.4.99
 Requires:       python3
 Requires:       python3-curses
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The package contains general Table engine for IBus platform.
@@ -73,10 +72,10 @@ NOCONFIGURE=1 ./autogen.sh
 %{_ibus_libexecdir}/ibus-setup-table
 %{_datadir}/applications/ibus-setup-table.desktop
 %{_datadir}/%{name}
+%{_datadir}/metainfo/org.freedesktop.ibus.engine.table.metainfo.xml
 %{_datadir}/glib-2.0/schemas/org.freedesktop.ibus.engine.table.gschema.xml
 %{_ibus_componentdir}/table.xml
 %{_mandir}/man1/%{name}-createdb.1.gz
-%{_datadir}/metainfo/ibus-table.appdata.xml
 %{_datadir}/icons/hicolor/16x16/apps/ibus-table.png
 %{_datadir}/icons/hicolor/22x22/apps/ibus-table.png
 %{_datadir}/icons/hicolor/32x32/apps/ibus-table.png
