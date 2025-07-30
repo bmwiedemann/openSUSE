@@ -574,4 +574,22 @@
 - Switch from version to revision in _service (forwarded request 1286136 from ph03nix)</comment>
     <requestid>1286138</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3d37fc6a3f4831dbbe16700cec5ddc11</srcmd5>
+    <version>2.22.7</version>
+    <time>1753868731</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.22.7:
+  * Fix crash in hardcoded_nonce analyzer
+  * Update go action to use release v2.22.6
+  * Update go version to 1.24.5 and 1.23.11 in the CI
+  * chore(deps): update module google.golang.org/api to v0.242.0
+  * chore(deps): update all dependencies
+  * chore(deps): update all dependencies
+  * chore(deps): update all dependencies
+  * chore(deps): update all dependencies
+  * Do not allow dashes in file names
+  * Update gosec to version 2.22.5 in Github action (forwarded request 1296248 from ph03nix)</comment>
+    <requestid>1296369</requestid>
+  </revision>
 </revisionlist>
