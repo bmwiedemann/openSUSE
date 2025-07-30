@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 29 07:20:41 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Correct typing_extensions Requires.
+
+-------------------------------------------------------------------
 Tue Jul 22 07:41:52 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.47.2 (fixes CVE-2025-54121, bsc#1246855)

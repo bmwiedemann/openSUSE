@@ -39,7 +39,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-anyio >= 3.6.2
-Requires:       (python-typing_extensions >= 3.10.0 if python-base < 3.10)
+Requires:       (python-typing_extensions >= 4.10.0 if python-base < 3.13)
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module anyio >= 3.6.2}

@@ -419,4 +419,12 @@ https://build.opensuse.org/request/show/1126958
     <comment></comment>
     <requestid>1295274</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>a17ca7fcfe8a7a31dad40e10d2fa74ff</srcmd5>
+    <version>0.47.2</version>
+    <time>1753868491</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct typing_extensions Requires.</comment>
+    <requestid>1296244</requestid>
+  </revision>
 </revisionlist>
