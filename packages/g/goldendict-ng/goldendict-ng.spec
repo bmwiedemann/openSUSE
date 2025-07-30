@@ -1,7 +1,7 @@
 #
 # spec file for package goldendict-ng
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,11 @@
 
 
 %define __builder ninja
+%if 0%{?suse_version} < 1600
+%define gcc_ver 11
+%endif
 Name:           goldendict-ng
-Version:        24.09.1
+Version:        25.06.0
 Release:        0
 Summary:        Dictionary Lookup Program
 License:        GPL-3.0-or-later
@@ -27,7 +30,7 @@ URL:            https://xiaoyifang.github.io/goldendict-ng/
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  git
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -71,13 +74,21 @@ Obsoletes:      goldendict < 1.5.1
 The Next Generation GoldenDict: A feature-rich dictionaries lookup program,
 supporting many dictionary formats.
 
+%if 0%{?suse_version} >= 1600
 %lang_package -b goldendict-lang
+%else
+%lang_package
+%endif
 
 %prep
 %autosetup
 
 %build
-%cmake -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON
+%cmake \
+  -DCMAKE_C_COMPILER=gcc%{?gcc_ver:-%{gcc_ver}} \
+  -DCMAKE_CXX_COMPILER=g++%{?gcc_ver:-%{gcc_ver}} \
+  -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
+	%{nil}
 %cmake_build
 
 %install

@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Jul 24 05:13:39 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 25.06.0:
+  * Feature: Split Single/Solo Selection Mode to 2 composable
+    features (gh#xiaoyifang/goldendict-ng#2275).
+  * Improvements:
+    - Optimize the builtin whitelist check
+      (gh#xiaoyifang/goldendict-ng#2371).
+    - Minor changes to the default style css
+      (gh#xiaoyifang/goldendict-ng#2351).
+    - Extract common variable to config constexpr
+      (gh#xiaoyifang/goldendict-ng#2350).
+    - Register custom protocol (gh#xiaoyifang/goldendict-ng#2359).
+    - Remove website dictionary experimental feature
+      (gh#xiaoyifang/goldendict-ng#2335).
+    - Move iframe embed event to js file
+      (gh#xiaoyifang/goldendict-ng#2337).
+    - Update iframe resizing scripts
+      (gh#xiaoyifang/goldendict-ng#2339).
+    - Iframe experimental feature to bypass cors
+      (gh#xiaoyifang/goldendict-ng#2338).
+    - Protect vector variable in wordfinder with copy-on-read
+      (gh#xiaoyifang/goldendict-ng#2324).
+    - Refactor language loading logic in preferences UI.
+      (gh#xiaoyifang/goldendict-ng#2327).
+    - Add prettier configuration
+      (gh#xiaoyifang/goldendict-ng#2313).
+    - Remove deprecated window.event variable
+      (gh#xiaoyifang/goldendict-ng#2312).
+    - Action input variable (gh#xiaoyifang/goldendict-ng#2315).
+    - Move audio play icon image to css
+      (gh#xiaoyifang/goldendict-ng#2320).
+    - Only show splash windows when not enable start to tray
+      (gh#xiaoyifang/goldendict-ng#2299).
+    - Rename anki to Anki (gh#xiaoyifang/goldendict-ng#2308).
+    - Extract div onclick event to js file
+      (gh#xiaoyifang/goldendict-ng#2300).
+    - Safeguard to reset source
+      (gh#xiaoyifang/goldendict-ng#2309).
+    - Rename to more meaningful form
+      (gh#xiaoyifang/goldendict-ng#2289).
+    - Add F11 as the shortcut to open configuration folder.
+    - Simplify dsl opt_expand logic
+      (gh#xiaoyifang/goldendict-ng#2295).
+    - Dsl restrict area (gh#xiaoyifang/goldendict-ng#2296).
+    - Replace collapse png image with svg
+      (gh#xiaoyifang/goldendict-ng#2294).
+    - Remove jap trans hepburn checkbox
+      (gh#xiaoyifang/goldendict-ng#2297).
+    - Add concurrency to the workflow
+      (gh#xiaoyifang/goldendict-ng#2305).
+    - Rework of PR#2279 (gh#xiaoyifang/goldendict-ng#2283).
+    - Update sonar scan version
+      (gh#xiaoyifang/goldendict-ng#2288).
+  * Bug fixes:
+    - Epwing dictionary crash when meet certain diacritics
+      (gh#xiaoyifang/goldendict-ng#2348).
+    - Custom trans does not work
+      (gh#xiaoyifang/goldendict-ng#2349).
+    - History back/forward navigation,audio playing issue.
+- Fix lang_package macro usage for Leap 15.6 and older.
+- Use GCC 11 for builds on Leap 15.6 and older as c++-17 std
+  including <filesystem> header support is required.
+
+-------------------------------------------------------------------
 Mon Dec 16 10:39:58 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 24.09.1:

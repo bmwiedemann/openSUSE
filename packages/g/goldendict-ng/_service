@@ -4,8 +4,8 @@
     <param name="filename">goldendict-ng</param>
     <param name="scm">git</param>
     <param name="url">git@github.com:xiaoyifang/goldendict-ng.git</param>
-    <param name="version">24.09.1</param>
-    <param name="revision">v24.09.1-Release.ca9dd133</param>
+    <param name="version">25.06.0</param>
+    <param name="revision">v25.06.0-Release.8a87a79b</param>
     <param name="exclude">winlibs/*</param>
     <param name="submodules">disable</param>
   </service>
