@@ -2268,4 +2268,41 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
   * Analyzer/datadog (#4132) (forwarded request 1286293 from ph03nix)</comment>
     <requestid>1286400</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>666b8fe0703292f7d3af72976938ffd2</srcmd5>
+    <version>3.90.2</version>
+    <time>1753868734</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.90.2:
+  * [Update] Dovico Detector Updated (#4290)
+  * Add slack continuous protobuf messages (#4330)
+  * Suppress AWS SDK checksum skip warnings for S3 (#4324)
+  * Removed stored logger from HuggingFace source (#4328)
+  * Add additional Vector configuration options (#4301)
+  * Updated and Fixed CircleCI Source (#4309)
+  * Added Anypoint API OAuth2 Detector (#4312)
+  * Salesforce Refresh Token Detector (#4295)
+  * Added KeySet Pagination for Gitlab Projects V2 Enumeration (#4319)
+  * Add support for docker daemon as a source (#4306)
+  * Add field for conditional permission binding (#4316)
+  * Added v2 for CircleCI Detector (#4300)
+  * add detection for updated asana personal access token (#4273)
+  * chore(deps): update sigstore/cosign-installer action to v3.9.1 (#4308)
+  * chore(deps): update alpine docker tag to v3.22 (#4307)
+  * fix(deps): update module go.uber.org/mock to v0.5.2 (#4305)
+  * fix(deps): update module go.mongodb.org/mongo-driver to v1.17.4 (#4304)
+  * fix(deps): update module github.com/xo/dburl to v0.23.8 (#4303)
+  * fix(deps): update module github.com/hashicorp/go-retryablehttp to v0.7.8 (#4302)
+  * fix(deps): update github.com/avast/apkparser digest to d53391f (#4297)
+  * fix(deps): update aws-sdk-go-v2 monorepo (#4299)
+  * Simplified Gitlab Enumeration (#4283)
+  * chore(deps): update dependency go to v1.24.5 (#4298)
+  * fix(deps): update module github.com/google/go-containerregistry to v0.20.6 (#4230)
+  * fix(deps): update module github.com/charmbracelet/bubbletea to v1.3.6 (#4227)
+  * [perf] - Optimize Chunk Size Handling for Improved I/O and Memory Efficiency (#3134)
+  * Updated Detectors Proto (#4294)
+  * chore: fix some minor issues in the comments (#4292)
+  * Fixed Gist URL Detection (#4284) (forwarded request 1296257 from ph03nix)</comment>
+    <requestid>1296375</requestid>
+  </revision>
 </revisionlist>
