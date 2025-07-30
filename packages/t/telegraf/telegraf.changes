@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Jul 28 21:30:16 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.35.3:
+  * Telegraf v1.35.3
+  * Update changelog for v1.35.3
+  * Update build_version.txt for v1.35.3
+  * docs(inputs.openweathermap): Document default units configuration (#17377)
+  * fix(outputs): Retrigger batch-available-events only for non-failing writes (#17349)
+  * chore: Update Go to 1.24.5 (#17380)
+  * fix(agent): Handle nil timer on telegraf reload when no debounce is specified (#17373)
+  * fix(plugins.snmp): Update gosnmp to prevent panic in snmp agents (#17367)
+  * fix(processors.snmp_lookup): Prevent deadlock during plugin shutdown (#17369)
+  * docs(inputs.docker): Remove deprecated option (#17354)
+  * docs(inputs.ntpq): Remove deprecated option (#17361)
+  * docs(inputs.vsphere): Remove deprecated option (#17362)
+  * docs(outputs.kinesis): Remove deprecated option (#17363)
+  * fix(outputs.sql): Add timestamp to derived datatypes (#17310)
+  * chore(CI): Update milestone action (#17351)
+  * docs(specs): Labels and Selectors for Plugin Enablement (#16884)
+  * chore(inputs.internal): Replace multiple string operations with single replacer (#17339)
+  * fix(agent): Make Windows service install more robust (#17340)
+  * chore(deps): Bump go.step.sm/crypto from 0.64.0 to 0.67.0 (#17091)
+  * chore(deps): Bump go.opentelemetry.io/collector/pdata from 1.35.0 to 1.36.0 (#17323)
+  * fix(parsers.json_v2): Respect string type for objects and arrays (#17293)
+  * chore(deps): Bump google.golang.org/api from 0.240.0 to 0.241.0 (#17325)
+  * chore(deps): Bump github.com/google/cel-go from 0.25.0 to 0.26.0 (#17327)
+  * chore(deps): Bump github.com/alitto/pond/v2 from 2.4.0 to 2.5.0 (#17326)
+  * chore(deps): Bump github.com/SAP/go-hdb from 1.13.11 to 1.13.12 (#17328)
+  * chore(deps): Bump golang.org/x/net from 0.41.0 to 0.42.0 (#17336)
+  * chore(deps): Bump golang.org/x/crypto from 0.39.0 to 0.40.0 (#17330)
+  * chore(deps): Bump golang.org/x/term from 0.32.0 to 0.33.0 (#17335)
+  * chore(deps): Bump github.com/openconfig/goyang from 1.6.2 to 1.6.3 (#17321)
+  * chore(deps): Bump golang.org/x/mod from 0.25.0 to 0.26.0 (#17322)
+  * chore(deps): Bump github.com/Azure/azure-sdk-for-go/sdk/azcore from 1.18.0 to 1.18.1 (#17320)
+  * chore(deps): Bump github.com/miekg/dns from 1.1.66 to 1.1.67 (#17331)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/ec2 from 1.230.0 to 1.231.0 (#17332)
+  * chore(deps): Bump github.com/docker/docker from 28.3.1+incompatible to 28.3.2+incompatible (#17334)
+  * chore(deps): Bump golang.org/x/sys from 0.33.0 to 0.34.0 (#17337)
+  * chore(deps): Bump modernc.org/sqlite from 1.37.0 to 1.38.0 (#17138)
+  * docs: Update documentation to point to the right install key (#17307)
+  * test(outputs.stackdriver): Cleanup tests (#17302)
+  * fix(processors.snmp_lookup): Avoid re-enqueing updates after plugin stopped (#17292)
+  * docs: Improve wording (#17305)
+  * chore(deps): Bump github.com/SAP/go-hdb from 1.13.9 to 1.13.11 (#17301)
+  * chore(deps): Bump github.com/docker/docker from 28.3.0+incompatible to 28.3.1+incompatible (#17300)
+  * chore(deps): Bump github.com/snowflakedb/gosnowflake from 1.14.1 to 1.15.0 (#17299)
+  * chore(deps): Bump github.com/prometheus/procfs from 0.16.1 to 0.17.0 (#17298)
+  * chore(deps): Bump github.com/nats-io/nats-server/v2 from 2.11.5 to 2.11.6 (#17297)
+  * chore(deps): Bump github.com/shirou/gopsutil/v4 from 4.25.5 to 4.25.6 (#17296)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/ec2 from 1.227.0 to 1.230.0 (#17295)
+  * chore(deps): Bump google.golang.org/api from 0.239.0 to 0.240.0 (#17294)
+
+-------------------------------------------------------------------
 Mon Jul 07 23:46:57 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 1.35.2:
