@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 28 05:32:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.6.16:
+  * Fixed #8349: Info plugin doesn't correctly detect virtualenv in
+    some cases
+  * Fixed #8334: Find-in-page detects matches in hidden search result
+    list
+
+-------------------------------------------------------------------
 Tue Jul  1 11:12:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.6.15:

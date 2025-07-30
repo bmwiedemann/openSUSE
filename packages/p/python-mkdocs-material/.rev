@@ -733,4 +733,12 @@ update to 9.5.26</comment>
     <comment></comment>
     <requestid>1289547</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>437bd5d8f7a7f9e78fbdcb6d5048b6e9</srcmd5>
+    <version>9.6.16</version>
+    <time>1753868570</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1296143</requestid>
+  </revision>
 </revisionlist>
