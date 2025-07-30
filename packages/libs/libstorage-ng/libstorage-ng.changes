@@ -1,4 +1,20 @@
 --------------------------------------------------------------------
+Tue Jul 29 14:59:20 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1032
+- work on encryption names with spaces (bsc#1247173)
+- coding style
+- 4.5.268
+
+--------------------------------------------------------------------
+Mon Jul 28 13:42:08 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1031
+- Call nvme tools with --output-format instead of --output
+  (bsc#1247053)
+- 4.5.267
+
+--------------------------------------------------------------------
 Thu Jul 24 06:51:15 UTC 2025 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1030
