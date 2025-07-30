@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 25 09:49:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 3.36.0
+  * add support for python 3.13
+  * add Asyncio SQLAlchemy support
+  * add channels param to files.upload v2 method
+  * support pathlike objects in upload util
+  * WebClient/AsyncWebClient expose logger property
+  * add support for elevate methods
+
+-------------------------------------------------------------------
 Wed Oct 30 19:53:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.33.2:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-slack-sdk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-slack-sdk
-Version:        3.33.2
+Version:        3.36.0
 Release:        0
 Summary:        Python SDKs for the Slack API
 License:        MIT
@@ -35,6 +35,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module Werkzeug}
+BuildRequires:  %{python_module aiosqlite}
 BuildRequires:  %{python_module boto3}
 BuildRequires:  %{python_module itsdangerous}
 BuildRequires:  %{python_module moto}
