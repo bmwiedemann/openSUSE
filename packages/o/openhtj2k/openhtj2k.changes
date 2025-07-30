@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Mon Jul 28 09:17:39 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Add openhtj2k-0.3.0-tiff.patch:
+  make pkg-config based requires for the devel package actually
+  match our libtiff package
+
+-------------------------------------------------------------------
+Mon Jul 28 05:18:12 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.0:
+  * SOVERSION is introduced for versioning of shared library
+- Drop openhtj2k-0.2.9-soversion.patch
+
+-------------------------------------------------------------------
+Thu Jul 24 07:55:16 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Add openhtj2k-0.2.9-soversion.patch:
+  Add so versioning
+
+-------------------------------------------------------------------
+Mon Jul  7 05:46:24 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.9:
+  * Fix bug for the wrong stride of dwt coefficients.
+  * Add HEAP32 into EXPORTED_RUNTIME_METHODS for was-build.
+
+-------------------------------------------------------------------
+Wed Nov 27 08:07:09 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.8:
+  * Fix incorrect packet parsing for RPCL, PCRL, CPRL
+  * Introduce stride access into DWT
+  * Change cmake configuration for MinGW environments
+
+-------------------------------------------------------------------
+Fri Jun 14 08:49:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.7:
+  * Refactor non-SIMD HT cleanup decoding
+  * Fix CMakeLists.txt for windows-latest runner (GitHub actions)
+  * Fix PGX parsing
+
+-------------------------------------------------------------------
+Thu Jun 13 06:43:50 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.6:
+  * Fix unnecessary assignment of pass_length in packet header parsing
+  * Remove CR (=0xd) from the delimiter in imgcmp
+
+-------------------------------------------------------------------
+Fri Jan 19 09:26:56 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.5:
+  * Fix memory leak in decoder with '-reduce' parameter greater
+    than actual DWT levels
+  * Fix buffer overrun with image width which is not multiple
+    of vector length in IDWT and block-decoding for ARM NEON
+  * Improve UI for WASM demo
+  * Enable WASM SIMD (using NEON)
+  * Fix wrong line break in encoder usage (#162)
+
+-------------------------------------------------------------------
+Fri Jan 19 09:26:37 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.4:
+  * small fix for wasm wrapper
+
+-------------------------------------------------------------------
+Fri Jan 19 09:26:28 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.3:
+  * Experimental support of emscripten
+  * Fix compilation error on aarch64 with gcc
+  * Small editorial changes
+
+-------------------------------------------------------------------
+Mon Nov 27 12:43:54 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.2:
+  * Fix compilation errors in aarch64 and gcc 9 or earlier
+
+-------------------------------------------------------------------
+Mon Nov 13 08:01:25 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.2.1:
+  * Add installation part to CMakeLists.txt (#154)
+  * Allow space between comma separated input file names
+
+-------------------------------------------------------------------
+Thu Nov  2 09:58:23 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of OpenHTJ2K 0.2 for openSUSE

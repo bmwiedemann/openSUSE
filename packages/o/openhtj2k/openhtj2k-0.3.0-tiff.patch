@@ -1,0 +1,15 @@
+zypper info --provides libtiff-devel
+returns pkgconfig(libtiff-4)
+Index: OpenHTJ2K-0.3.0/CMakeLists.txt
+===================================================================
+--- OpenHTJ2K-0.3.0.orig/CMakeLists.txt
++++ OpenHTJ2K-0.3.0/CMakeLists.txt
+@@ -121,7 +121,7 @@ if (NOT EMSCRIPTEN)
+     target_include_directories(open_htj2k PUBLIC ${TIFF_INCLUDE_DIR})
+     target_link_libraries(open_htj2k PUBLIC ${TIFF_LIBRARIES})
+     message(STATUS "OPENHTJ2K_TIFF_SUPPORT is set ")
+-    set(PKG_CONFIG_REQUIRES "libtiff")
++    set(PKG_CONFIG_REQUIRES "libtiff-4")
+   endif()
+ endif()
+ 
