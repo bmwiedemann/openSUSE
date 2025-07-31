@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of samba-toolbox-image</comment>
     <requestid>1285191</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>24f692cabbaf19f1ceb74cf55ee4de79</srcmd5>
+    <version>unknown</version>
+    <time>1753976805</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1296642</requestid>
+  </revision>
 </revisionlist>
