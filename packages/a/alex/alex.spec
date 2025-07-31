@@ -56,6 +56,7 @@ lex or flex for C/C++.
 %ghc_bin_install
 
 %check
+export alex_datadir="%{_builddir}/%{name}-%{version}/data"
 %cabal_test
 
 %files
