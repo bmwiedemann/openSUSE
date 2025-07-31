@@ -138,7 +138,7 @@ BuildRequires:  librados-devel
 %endif
 BuildRequires:  libgnutls-devel >= 3.4.7
 %if %{with_dc}
-BuildRequires:  gpgme-devel
+BuildRequires:  pkgconfig(gpgme)
 BuildRequires:  libjansson-devel
 BuildRequires:  python3-gpg
 BuildRequires:  lmdb-devel >= 0.9.16
@@ -168,7 +168,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.22.3+git.401.c70158430cc
+Version:        4.22.3+git.403.4e078bdb832
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
