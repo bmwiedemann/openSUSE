@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Jul 24 07:47:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.64.0:
+  * fix(ci run): honor passing `--variables`
+  * docs: Add bare explanation of mTLS config
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.137.0
+  * chore(deps): update dependency golangci-lint to v2.3.0
+  * refactor: use AutoMerge
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.135.0
+  * refactor: factory ApiClient method does not ned to rely on
+    config
+  * refactor(config): remove unused UnsetHost method from Config
+  * fix(docker-credential-helper): default config stub fixes
+  * fix(api): use correct API path for GraphQL requests
+  * refactor(get-token): us os.UserCacheDir instead of own version
+  * feat: show all configured hosts in interactive login prompt
+  * refactor(agent get-token): support cache mode
+  * chore(enum flag): implement enum flag helper
+  * refactor(agent get-token): use keyring and fallback to fs for
+    token cache
+  * feat(release): support uploading release assets to generic
+    package registry
+  * chore(deps): update module k8s.io/client-go to v0.33.3
+  * chore(deps): update module k8s.io/client-go to v0.33.3
+  * chore(deps): update module github.com/golang-jwt/jwt/v5 to
+    v5.2.3
+  * feat(agent): support configurable token expiration duration
+  * refactor(agent update-kubeconfig): remove unnecessary use of
+    persistent flags
+  * feat(agent get-token): cache token in local file
+  * refactor(agent get-token): move pat creation into separate
+    function
+
+-------------------------------------------------------------------
 Wed Jul 16 06:21:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.63.0:
