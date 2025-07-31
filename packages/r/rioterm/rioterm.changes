@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Jul 24 04:43:21 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.23:
+  * update markdown
+  * update docs
+  * update deps
+  * run step with minimal lock and fix WM_CLASS (#1229)
+  * flake.lock: Update (#1230)
+  * fix syntax for man
+
+-------------------------------------------------------------------
+Thu Jul 24 04:40:03 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.22:
+  * comment markers for now
+  * schedule every 2 seconds
+  * fix caret cursor
+  * update note to mention v0.2.20
+  * revisit perf on renderer
+  * fix lint on cache key changes
+  * if there's something pending we need to act
+  * emit the actual damage
+  * update tests
+  * base on font_id only
+  * deserialization
+  * remove unnecessary metrics
+  * remove unnecessary stuff
+  * remove warm cache
+  * remove unused vertexpool
+  * fix lint
+  * drop cursor update
+  * update to skip save double cache (non-color)
+  * remove opt-level declaration from dev and let it to rust decide
+  * fix tab identation on scd files
+  * reinforce damage through event
+  * fixup! rewriting cache on text_run
+  * rewriting cache on text_run
+  * move to hashmap
+
+-------------------------------------------------------------------
 Wed Jul 16 14:19:30 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Converting -devel BuildRequires to pkgconfig
