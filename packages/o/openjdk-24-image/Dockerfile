@@ -25,7 +25,7 @@ FROM opensuse/tumbleweed:latest
 RUN set -euo pipefail; \
     zypper -n install --no-recommends java-24-openjdk curl findutils gawk git-core procps util-linux
 RUN set -euo pipefail; zypper -n clean -a; \
-    rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
+    rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; rm -f {/target,}/etc/shadow-
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.openjdk
