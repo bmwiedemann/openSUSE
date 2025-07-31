@@ -148,4 +148,12 @@
 - Require libzstd1 = 1.5.7</comment>
     <requestid>1247620</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>374625edd5652093cf5785a4c999c745</srcmd5>
+    <version>0.23.0</version>
+    <time>1753976696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1296377</requestid>
+  </revision>
 </revisionlist>

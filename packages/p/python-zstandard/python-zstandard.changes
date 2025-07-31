@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 22 07:55:15 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.23.0
+  * tests: suppress data_too_large health check
+  * zstd: upgrade vendored zstd to 1.5.6
+  * setup: Python 3.13 support
+  * rust: upgrade packages in Cargo.toml
+  * build: fix building with modern setuptools backend
+
+-------------------------------------------------------------------
 Fri Feb 21 10:44:16 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add fix-zstd-1.5.7.patch to make it work with zstd-1.5.7
