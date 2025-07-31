@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 23 17:22:10 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-system to version 1.2.1.1.
+  ## hslua-module-system-1.2.1.1
+
+  Released 2025-07-23.
+
+  -   Fixed the docstring of `exists`.
+
+  ## hslua-module-system-1.2.1
+
+  Released 2025-07-23.
+
+  -   Add new function `exists`, which allows to check the existance
+      and, optionally, type of a filesystem object at the given
+      path.
+
+-------------------------------------------------------------------
 Mon Jun 23 10:16:38 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update hslua-module-system to version 1.2.0.

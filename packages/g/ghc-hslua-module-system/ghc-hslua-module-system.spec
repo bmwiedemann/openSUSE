@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.2.0
+Version:        1.2.1.1
 Release:        0
 Summary:        Lua module wrapper around Haskell's System module
 License:        MIT
