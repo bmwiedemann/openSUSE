@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  6 06:52:33 UTC 2024 - Peter Simons <psimons@suse.com>
+
+- Update wai-extra to version 3.1.17.
+  ## 3.1.17
+
+  * Started deprecation of `data-default` [#1011](https://github.com/yesodweb/wai/pull/1011)
+    * All `Default` instances have comments that these will be removed in a future major version.
+    * `def` exported from `Network.Wai.Middleware.Gzip` now has a deprecation warning
+    * All uses of `def` have been replaced with explicit `default{TYPE_NAME}` values.
+  * Some additional documentation
+
+-------------------------------------------------------------------
 Wed Nov  6 05:03:18 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update wai-extra to version 3.1.16.
