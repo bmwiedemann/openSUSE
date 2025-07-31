@@ -136,4 +136,16 @@
 - Rename LICENSE.txt to LICENSE in %files section (forwarded request 1238204 from glaubitz)</comment>
     <requestid>1238242</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7658c9d094e4e9509458c1ee71842ef4</srcmd5>
+    <version>2.0.0</version>
+    <time>1753976865</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1296720 from glaubitz)</comment>
+    <requestid>1296810</requestid>
+  </revision>
 </revisionlist>

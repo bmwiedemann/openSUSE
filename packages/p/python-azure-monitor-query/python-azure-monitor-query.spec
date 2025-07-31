@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-monitor-query
-Version:        1.4.1
+Version:        2.0.0
 Release:        0
 Summary:        Microsoft Azure Azure Monitor Query Client Library for Python
 License:        MIT
@@ -34,9 +34,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-monitor-nspkg >= 1.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-isodate >= 0.6.0
-Requires:       (python-azure-core >= 1.28.0 with python-azure-core < 2.0.0)
-Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
+Requires:       python-isodate >= 0.6.1
+Requires:       python-typing_extensions >= 4.6.0
+Requires:       (python-azure-core >= 1.30.0 with python-azure-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-monitor-query < 1.2.1
