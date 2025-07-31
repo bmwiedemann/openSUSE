@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 28 19:16:15 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Jailbreak over-specified constraints to fix build with ghc-9.12.x.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:41 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
