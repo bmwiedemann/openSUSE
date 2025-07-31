@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of samba-client-image</comment>
     <requestid>1285192</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5803ff0a08098c893e3ad2bb8913202a</srcmd5>
+    <version>unknown</version>
+    <time>1753976798</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1296625</requestid>
+  </revision>
 </revisionlist>
