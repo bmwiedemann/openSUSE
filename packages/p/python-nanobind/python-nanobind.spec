@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nanobind
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Summary:        Tiny And Efficient C++/Python Bindings
 License:        BSD-3-Clause
@@ -28,6 +28,7 @@ Source:         https://github.com/wjakob/nanobind/archive/refs/tags/v%{version}
 Patch1:         nanobind-installationpath.patch
 BuildRequires:  cmake
 BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module testsuite}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 
