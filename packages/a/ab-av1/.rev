@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>731ff77558a346ce8a6055bfcf10fe10</srcmd5>
+    <version>0.10.1</version>
+    <time>1753976719</time>
+    <user>dimstar_suse</user>
+    <comment>AV1 re-encoding tool using ffmpeg, svt-av1 &amp; vmaf.
+Now includes shell completions in the main package.</comment>
+    <requestid>1296607</requestid>
+  </revision>
+</revisionlist>

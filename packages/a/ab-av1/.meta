@@ -1,0 +1,5 @@
+<package name="ab-av1" project="openSUSE:Factory">
+  <title></title>
+  <description>AV1 re-encoding using ffmpeg, svt-av1 &amp; vmaf.</description>
+  <url>https://github.com/alexheretic/ab-av1</url>
+</package>
