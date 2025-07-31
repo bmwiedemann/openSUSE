@@ -54,6 +54,7 @@ cp %{SOURCE1} data
 
 %build
 %cmake
+setarch -R \
 %make_build
 
 %install

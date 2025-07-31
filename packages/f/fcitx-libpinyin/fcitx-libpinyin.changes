@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 30 17:55:21 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Disable ASLR during build for reproducible builds (bsc#1180734)
+
+-------------------------------------------------------------------
 Mon Feb 26 08:42:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
