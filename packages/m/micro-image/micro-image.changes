@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 30 09:56:28 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- set PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC to allow operation without accessible /proc filesystem
+
+-------------------------------------------------------------------
 Tue Jul  8 17:05:27 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - drop /var/cache/ldconfig/aux-cache from the containers
