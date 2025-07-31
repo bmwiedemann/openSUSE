@@ -426,4 +426,22 @@
 - Fix deletion of controller connections (gh#agama-project/agama#2564)</comment>
     <requestid>1295145</requestid>
   </revision>
+  <revision rev="25" vrev="25">
+    <srcmd5>9fc0dc4933487b1e1d0df3c6050a667e</srcmd5>
+    <version>0</version>
+    <time>1753976720</time>
+    <user>dimstar_suse</user>
+    <comment>- Introduce inst.auto_insecure and inst.script_insecure to disable
+  SSL checks for inst.auto and inst.script (bsc#1246836).
+
+- Added &quot;--insecure&quot; option to &quot;agama config load&quot; and
+  &quot;agama config generate&quot; commands (related to bsc#1246836)
+
+- Fix CLI connection update when using an special character in
+  the connection ID (bsc#1246930, gh#agama-project/agama#2605).
+
+- Add support for an inst.script option that allows to run an
+  arbitrary script (bsc#1246702, gh#agama-project/agama#2589).</comment>
+    <requestid>1295725</requestid>
+  </revision>
 </revisionlist>
