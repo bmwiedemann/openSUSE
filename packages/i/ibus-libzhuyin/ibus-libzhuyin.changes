@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 29 14:50:03 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Disable ASLR during build for reproducible builds (bsc#1180734)
+
+-------------------------------------------------------------------
 Tue May  6 08:04:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete and unused gnome-common BuildRequires.

@@ -46,6 +46,7 @@ on libzhuyin for IBus.
 
 %build
 %configure --libexecdir=%{_ibus_libexecdir}
+setarch -R \
 %make_build
 
 %install
