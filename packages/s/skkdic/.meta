@@ -1,0 +1,10 @@
+<package name="skkdic" project="openSUSE:Factory">
+  <title>SKK (Simple Kana-Kanji) dictionary files</title>
+  <description>Various dictionaries for SKK according to fit your personal environment and your personal needs.
+If you are not particularly worried about disk space, you should use skk-jisyo.l for the time being.
+If you can use small disk space such as Windows CE device or various pdas, you can use skk-jisyo.s,
+according to the disk space that you can put the dictionary. You should use skk-jisyo.m or skk-jisyo.ml.
+If you want to make a lot of English to Japanese conversions with the SKK abbrev conversion,
+you can use the english-japanese dictionary skk-jisyo.edict with skk-jisyo.l.
+If you want to strengthen place names, it is good to use place names dictionary skk-jisyo.geo together.</description>
+</package>
