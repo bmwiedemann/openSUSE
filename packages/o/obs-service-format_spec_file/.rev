@@ -792,4 +792,21 @@
 - cleanup prepare_spec, drop Needed.pm</comment>
     <requestid>1140288</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>c0a0fcc4063384e1ecf0d08a9fe93262</srcmd5>
+    <version>20250725</version>
+    <time>1753976830</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250725:
+  * Fix indentation to run checks on pull request
+  * Change autoadded copyright header to include &quot;and contributors&quot;
+  * Add 3 extra test-cases
+  * Run tests in github actions
+  * Preserve the order of multiple copyright lines.
+  * Allow for truly empty lines in copyright sections
+  * Accept empty lines in %changelog sections
+  * Update licenses
+  * Avoid using temporary files for tests</comment>
+    <requestid>1296713</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 31 06:50:53 UTC 2025 - dmueller@suse.com
+
+- Update to version 20250725:
+  * Fix indentation to run checks on pull request
+  * Change autoadded copyright header to include "and contributors"
+  * Add 3 extra test-cases
+  * Run tests in github actions
+  * Preserve the order of multiple copyright lines.
+  * Allow for truly empty lines in copyright sections
+  * Accept empty lines in %changelog sections
+  * Update licenses
+  * Avoid using temporary files for tests
+
+-------------------------------------------------------------------
 Sun Jan 21 11:25:24 UTC 2024 - dmueller@suse.com
 
 - Update to version 20240121:
