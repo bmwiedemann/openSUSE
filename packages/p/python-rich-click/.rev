@@ -92,4 +92,41 @@
     <comment>- Convert to pip-based build and libalternatives</comment>
     <requestid>1285051</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fe4401858be77fb4e0d57f3da26f6925</srcmd5>
+    <version>1.8.9</version>
+    <time>1753976814</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.9:
+  * Fix deprecation warning in Click 8.2.
+  * Fix typing incompatibilities with Click 8.2.
+  * Fixed no_args_is_help=True with Click 8.2.
+  * Added Click 8.2's support for Parameter.deprecated: str | bool
+  * Make text wrap instead of using ellipses for overflowing metavars in
+    options tables.
+  * Added --errors-in-output-format flag to rich-click CLI.
+  * Actually fixed regression in stderr handling
+  * Add ability to turn off option/command deduplication in groups
+  * Fix regression in stderr handling
+  * Fix incompatibility with click 8.2.0.
+  * Fix issue with error messages not using user-defined styles.
+  * Support rich.text.Text() objects for header_text, footer_text,
+    errors_suggestion, and errors_epilogue.
+  * Support {cmd} as an option/command group key when python -m {cmd} is the
+    command_path.
+  * Fixed incompatibility with Click 9.
+  * Add --rich-config and --output options to the rich-click CLI.
+  * Lazy load Rich to reduce overhead when not rendering help text.
+  * Added RichHelpConfiguration.load_from_globals() classmethod, which pulls
+    all configuration from rich_click.py.
+  * Fix bug with regex highlighter for options and switches.
+  * RichHelpConfiguration() is now asserted to be JSON serializable, as an
+    option for porting configurations.
+  * Moved exclusively to pyproject.toml and removed setup.py / setup.cfg
+  * Moved to text_markup: Literal[&quot;markdown&quot;, &quot;rich&quot;, &quot;ansi&quot;, None] instead
+    of booleans.
+  * Fixed issue where error messages would not print to stderr by default.
+- Switch to github tarball.</comment>
+    <requestid>1296682</requestid>
+  </revision>
 </revisionlist>

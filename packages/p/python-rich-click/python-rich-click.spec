@@ -18,12 +18,13 @@
 
 %bcond_without libalternatives
 Name:           python-rich-click
-Version:        1.7.4
+Version:        1.8.9
 Release:        0
 Summary:        Format click help output nicely with rich
 License:        MIT
 URL:            https://github.com/ewels/rich-click
-Source:         https://files.pythonhosted.org/packages/source/r/rich-click/rich-click-%{version}.tar.gz
+Source:         https://github.com/ewels/rich-click/archive/refs/tags/v%{version}.tar.gz#/rich_click-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -33,10 +34,13 @@ BuildRequires:  python-rpm-macros
 Requires:       alts
 Requires:       python-click >= 8
 Requires:       python-rich >= 10.7.0
+Requires:       python-typing_extensions >= 4
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click >= 8}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rich >= 10.7.0}
+BuildRequires:  %{python_module typing_extensions >= 4}
 # /SECTION
 %python_subpackages
 
@@ -57,13 +61,16 @@ Format click help output nicely with rich.
 %pre
 %python_libalternatives_reset_alternative rich-click
 
-#%%check
-# No tests yet https://github.com/ewels/rich-click/issues/25
+%check
+# Requires specific modifications to sys.path and PYTHONPATH that
+# don't behave well with our macros
+%pytest -x --ignore tests/test_rich_click_cli.py
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/rich-click
-%{python_sitelib}/*rich[_-]click*/
+%{python_sitelib}/rich_click
+%{python_sitelib}/rich_click-%{version}.dist-info
 
 %changelog
