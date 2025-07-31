@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 30 09:52:40 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- include kiwi version major.minor in description and readme
+
+-------------------------------------------------------------------
 Tue Jun  3 09:04:29 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - disable runtime checks for the filesystem temporarily until next kiwi release

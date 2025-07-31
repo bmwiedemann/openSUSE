@@ -1,4 +1,4 @@
-# KIWI Appliance Builder (kiwi) container image
+# KIWI Appliance Builder 10.2 (kiwi) container image
 
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
