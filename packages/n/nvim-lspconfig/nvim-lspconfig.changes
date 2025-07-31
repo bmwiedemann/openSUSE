@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Jul 30 05:00:53 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 2.4.0:
+  * Fix millet install target to millet-ls
+  * fix(svelte): only attach to existing files
+  * feat(glint): add vim.lsp.config support
+  * feat(glint): dynamic cmd
+  * feat(biome): add html as filetype
+  * fix(powershell_es): update LogLevel to Information
+  * fix: some on_attach callbacks may create commands in a wrong buffer
+  * fix(powershell_es): update LogLevel to recognized value
+  * fix(csharp_ls): add missing slnx root pattern
+  * fix(omnisharp): missing root_dir patterns
+  * docs: add notes about creating buffer-local commands
+  * docs: Correct install command for pug lsp
+  * feat: herb_ls
+  * fix(phpactor): root markers precedence
+  * fix(intelephense): change root markers order
+  * feat(tailwindcss): tailwind root_dir rails phoenix
+  * feat(eslint): add htmlangular to supported filetypes
+  * feat: codebook lsp
+  * feat: add autopkgtest file type to debputy.lua
+  * feat(ts_ls): implement code lens support
+  * feat(gopls): refactor root_dir identification #3940
+  * fix(docs): "commands" item breaks docgen
+  * fix(vue_ls): support vue_ls v3
+  * feat: swap pkgbuild_language_server with termux_language_server
+  * feat(clarinet)!: rename clarity_lsp to clarinet
+  * fix(clarinet): Clarinet.toml is the root_marker
+  * feat(harper): add clojure filetypes
+  * docs(rescriptls): add didChangeWatchedFiles example
+  * feat(clangd): remove proto filetype support, reverting (#2125)
+  * feat(biome): use project local bin if available
+  * refactor(glint): use cmd(…, config)
+  * feat(svelte): notify LSP of changes in JS/TS files
+  * docs(smithy): how do you install this thing
+  * fix(biome): error when using non-local biome binary
+  * fix(roslyn_ls): replace deprecated function call
+  * fix(svelte): use augroup to avoid creating multiple autocmds
+  * feat(biome): monorepo support
+  * docs: mention a way to explicitly set root_dir in README.md
+  * fix(vue_ls): throwing errors in tsserverRequest
+  * fix(tailwindcss): add fallback for tailwind v4
+
+-------------------------------------------------------------------
 Tue Jun 10 15:21:31 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 2.3.0:

@@ -260,4 +260,41 @@
   * fix: support :LspRestart without arguments (forwarded request 1284536 from rrahl0)</comment>
     <requestid>1284537</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a48eed9ca2d5b364edb0969cbf086e3b</srcmd5>
+    <version>2.4.0</version>
+    <time>1753976783</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.4.0:
+  * Fix millet install target to millet-ls
+  * fix(svelte): only attach to existing files
+  * feat(glint): add vim.lsp.config support
+  * feat(glint): dynamic cmd
+  * feat(biome): add html as filetype
+  * fix(powershell_es): update LogLevel to Information
+  * fix: some on_attach callbacks may create commands in a wrong buffer
+  * fix(powershell_es): update LogLevel to recognized value
+  * fix(csharp_ls): add missing slnx root pattern
+  * fix(omnisharp): missing root_dir patterns
+  * docs: add notes about creating buffer-local commands
+  * docs: Correct install command for pug lsp
+  * feat: herb_ls
+  * fix(phpactor): root markers precedence
+  * fix(intelephense): change root markers order
+  * feat(tailwindcss): tailwind root_dir rails phoenix
+  * feat(eslint): add htmlangular to supported filetypes
+  * feat: codebook lsp
+  * feat: add autopkgtest file type to debputy.lua
+  * feat(ts_ls): implement code lens support
+  * feat(gopls): refactor root_dir identification #3940
+  * fix(docs): &quot;commands&quot; item breaks docgen
+  * fix(vue_ls): support vue_ls v3
+  * feat: swap pkgbuild_language_server with termux_language_server
+  * feat(clarinet)!: rename clarity_lsp to clarinet
+  * fix(clarinet): Clarinet.toml is the root_marker
+  * feat(harper): add clojure filetypes
+  * docs(rescriptls): add didChangeWatchedFiles example
+  * feat(clangd): remove proto filetype support, reverting (#2125) (forwarded request 1296587 from rrahl0)</comment>
+    <requestid>1296588</requestid>
+  </revision>
 </revisionlist>
