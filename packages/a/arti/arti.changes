@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul 24 19:49:00 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Add "AND LGPL-3.0-only" to the spec license tag, as arti links
+  with Rust crates crates/equix and crates/hashx which are
+  licensed under LGPL-3.0-only
+
+- Update to version 1.4.5:
+  * Breaking: Console logging now goes to stderr instead of stdout.
+  * Arti 1.4.5 continues development on xon-based (proposal 324)
+    flow control and Conflux. In addition, we have drafted an
+    initial design for the directory cache storage model, which
+    will be needed for the core relay functionality, and
+    for the directory authority implementation.
+  * Decreased the minimum allowed duration of the hsdir_interval to
+    5 minutes
+  * New experimental arti keys list and arti keys list-keystores
+    subcommands for listing the existing keys and configured
+    keystores
+  * More work and bug fixes on the conflux implementation
+  * Experimental support for launching a SOCKS proxy from a set of
+    already bound listeners.
+  * For a full changelog see
+    /usr/share/doc/packages/arti/CHANGELOG.md
+
+-------------------------------------------------------------------
 Sat Jun 14 13:19:34 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Use %global instead of %define in arti.spec

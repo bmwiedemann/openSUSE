@@ -141,4 +141,31 @@ It doesn't build on 15.5 because of rust being too old
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1287573</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8a26922f7d68a21ec7b14a52b1601f65</srcmd5>
+    <version>1.4.5</version>
+    <time>1753976790</time>
+    <user>dimstar_suse</user>
+    <comment>- Add &quot;AND LGPL-3.0-only&quot; to the spec license tag, as arti links
+  with Rust crates crates/equix and crates/hashx which are
+  licensed under LGPL-3.0-only
+- Update to version 1.4.5:
+  * Breaking: Console logging now goes to stderr instead of stdout.
+  * Arti 1.4.5 continues development on xon-based (proposal 324)
+    flow control and Conflux. In addition, we have drafted an
+    initial design for the directory cache storage model, which
+    will be needed for the core relay functionality, and
+    for the directory authority implementation.
+  * Decreased the minimum allowed duration of the hsdir_interval to
+    5 minutes
+  * New experimental arti keys list and arti keys list-keystores
+    subcommands for listing the existing keys and configured
+    keystores
+  * More work and bug fixes on the conflux implementation
+  * Experimental support for launching a SOCKS proxy from a set of
+    already bound listeners.
+  * For a full changelog see
+    /usr/share/doc/packages/arti/CHANGELOG.md</comment>
+    <requestid>1296609</requestid>
+  </revision>
 </revisionlist>
