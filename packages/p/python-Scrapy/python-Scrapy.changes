@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul 31 05:18:40 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.13.3:
+  * Changed the values for DOWNLOAD_DELAY (from 0 to 1) and
+    CONCURRENT_REQUESTS_PER_DOMAIN (from 8 to 1) in the default project
+    template.
+  * Fixed several bugs in the engine initialization and exception handling
+    logic.
+  * Allowed running tests with Twisted 25.5.0+ again and fixed test failures
+    with lxml 6.0.0.
+  * Give callback requests precedence over start requests when priority
+    values are the same.
+  * The asyncio reactor is now enabled by default
+  * Replaced start_requests() (sync) with start() (async) and changed how it
+    is iterated.
+  * Added the allow_offsite request meta key
+  * Spider middlewares that don't support asynchronous spider output are
+    deprecated
+  * Added a base class for universal spider middlewares
+- Add patch remove-hoverxref.patch:
+  * Do not use deprecated sphinx-hoverxref extension.
+- Add patch no-dark-mode.patch:
+  * Do not use unavailable sphinx-rtd-dark-mode extension.
+
+-------------------------------------------------------------------
 Thu Mar 27 05:45:59 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Normalize metadata directory name.

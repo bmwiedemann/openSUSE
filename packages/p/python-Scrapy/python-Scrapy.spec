@@ -18,12 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Scrapy
-Version:        2.12.0
+Version:        2.13.3
 Release:        0
 Summary:        A high-level Python Screen Scraping framework
 License:        BSD-3-Clause
 URL:            https://scrapy.org
 Source:         https://files.pythonhosted.org/packages/source/s/scrapy/scrapy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#scrapy/scrapy#6922
+Patch0:         remove-hoverxref.patch
+# PATCH-FIX-OPENSUSE No sphinx-rtd-dark-mode
+Patch1:         no-dark-mode.patch
 BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module Protego}
@@ -36,6 +40,7 @@ BuildRequires:  %{python_module cryptography >= 36.0.0}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module defusedxml >= 0.7.1}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module itemadapter >= 0.1.0}
 BuildRequires:  %{python_module itemloaders >= 1.0.1}
 BuildRequires:  %{python_module lxml >= 4.4.1}
@@ -48,17 +53,17 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module queuelib >= 1.4.2}
 BuildRequires:  %{python_module service_identity >= 18.1.0}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sybil}
 BuildRequires:  %{python_module testfixtures}
 BuildRequires:  %{python_module tldextract}
 BuildRequires:  %{python_module uvloop}
 BuildRequires:  %{python_module w3lib >= 1.17.0}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.interface >= 5.1.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-sphinx-notfound-page
+BuildRequires:  python3-sphinx_rtd_theme
 Requires:       python-Protego >= 0.1.15
 Requires:       python-PyDispatcher >= 2.0.5
 Requires:       python-Twisted >= 18.9.0
@@ -115,6 +120,8 @@ skiplist="test_pformat"
 skiplist="$skiplist or CheckCommandTest or test_file_path"
 # Flaky test gh#scrapy/scrapy#5703
 skiplist="$skiplist or test_start_requests_laziness"
+# Fails on 32 bit arches
+skiplist="$skiplist or test_queue_push_pop_priorities"
 %{pytest -x \
     -k "not (${skiplist})" \
     -W ignore::DeprecationWarning \
@@ -130,7 +137,7 @@ skiplist="$skiplist or test_start_requests_laziness"
 %license LICENSE
 %doc AUTHORS README.rst
 %{python_sitelib}/scrapy
-%{python_sitelib}/scrapy-%{version}.dist-info
+%{python_sitelib}/[Ss]crapy-%{version}.dist-info
 %python_alternative %{_bindir}/scrapy
 
 %files -n %{name}-doc

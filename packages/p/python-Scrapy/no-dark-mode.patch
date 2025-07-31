@@ -1,0 +1,18 @@
+Index: scrapy-2.13.3/docs/conf.py
+===================================================================
+--- scrapy-2.13.3.orig/docs/conf.py
++++ scrapy-2.13.3/docs/conf.py
+@@ -34,7 +34,7 @@ extensions = [
+     "sphinx.ext.coverage",
+     "sphinx.ext.intersphinx",
+     "sphinx.ext.viewcode",
+-    "sphinx_rtd_dark_mode",
++    "sphinx_rtd_theme",
+ ]
+ 
+ templates_path = ["_templates"]
+@@ -158,4 +158,3 @@ intersphinx_mapping = {
+ intersphinx_disabled_reftypes: Sequence[str] = []
+ 
+ # -- Other options ------------------------------------------------------------
+-default_dark_mode = False

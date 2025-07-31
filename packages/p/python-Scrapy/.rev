@@ -300,4 +300,32 @@ Requires python-setuptools 78 to build successfully.
 </comment>
     <requestid>1264848</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>be4aaa1ab7cc16cfc59c8c0ef4f757f4</srcmd5>
+    <version>2.13.3</version>
+    <time>1753976822</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.13.3:
+  * Changed the values for DOWNLOAD_DELAY (from 0 to 1) and
+    CONCURRENT_REQUESTS_PER_DOMAIN (from 8 to 1) in the default project
+    template.
+  * Fixed several bugs in the engine initialization and exception handling
+    logic.
+  * Allowed running tests with Twisted 25.5.0+ again and fixed test failures
+    with lxml 6.0.0.
+  * Give callback requests precedence over start requests when priority
+    values are the same.
+  * The asyncio reactor is now enabled by default
+  * Replaced start_requests() (sync) with start() (async) and changed how it
+    is iterated.
+  * Added the allow_offsite request meta key
+  * Spider middlewares that don't support asynchronous spider output are
+    deprecated
+  * Added a base class for universal spider middlewares
+- Add patch remove-hoverxref.patch:
+  * Do not use deprecated sphinx-hoverxref extension.
+- Add patch no-dark-mode.patch:
+  * Do not use unavailable sphinx-rtd-dark-mode extension.</comment>
+    <requestid>1296688</requestid>
+  </revision>
 </revisionlist>
