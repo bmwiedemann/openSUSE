@@ -36,6 +36,6 @@ if command -v zypper > /dev/null; then
     zypper -n clean
 fi
 
-rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
+rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; rm -f {/target,}/etc/shadow-
 
 exit 0
