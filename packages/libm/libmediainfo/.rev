@@ -1607,4 +1607,71 @@ Dropped CVE-2019-11372_CVE-2019-11373.patch (merged upstream)
 </comment>
     <requestid>1273875</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>32e235c8dde0595722acfcde7e6c4ab1</srcmd5>
+    <version>25.07</version>
+    <time>1753976811</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 25.07
+  Added features:
+  * MPEG-4 : Support of Spherical Video 2
+  * MPEG-4 : Spherical Video improvements
+  * MPEG-4: Support of location in mdta
+  * MPEG-4: Parse XMP metadata (thanks to cjee21)
+  * MPEG-4: Better support of Auro-Cx 3D audio
+    (thanks to cjee21)
+  * Matroska : Improvement of Spherical Video
+  * Matroska: TimecodeXML output
+  * AV1: Display of HDR10+ (thanks to cjee21)
+  * CAF: Improved support (thanks to cjee21)
+  * APE tags: Map more tags (thanks to cjee21)
+  * WavPack: Display MD5 sum of raw audio data
+    (thanks to cjee21)
+  * FLAC: Map Arranger and Lyricist (thanks to cjee21)
+  * DTS: More DTS:X detection
+  * PNG/HEIF: Parse ISO 21496-1 Gain map metadata
+    (thanks to cjee21)
+  * XMP: Parse Adobe/UltraHDR Gain map metadata
+    (thanks to cjee21)
+  * JPEG/TIFF: Show thumbnails information, Exif style
+    (thanks to cjee21)
+  * JPEG/TIFF/HEIF: Parse Exif (location, dates, model name...)
+    metadata (thanks to cjee21)
+  * JPEG: Show thumbnails information, MPF style
+    (thanks to cjee21)
+  * TIFF/JPEG: Parse IPTC-NAA, XMP, PSIR, PSD metadata and more
+    (thanks to cjee21)
+  * JPEG/PNG: Support of C2PA (thanks to cjee21)
+  * C2PA: Parsing of thumbnails
+  * JPEG: Support of GContainer with or without MPF, for more HDR
+    related info (thanks to cjee21)
+  * Model names: Map to marketing names e.g SM-S931B becomes
+    Samsung S25 (thanks to cjee21)
+  * XMP: GIMP version + improve multi CreateDate handling and more
+    (thanks to cjee21)
+  * ICC: Information from profile description (thanks to cjee21)
+  * PNG: Split image size from metadata size
+  * PNG: Parse metadata at the end of the file
+  * DNG: Detection of DNG rather than generic TIFF
+    (thanks to cjee21)
+  * PNG: Encoded date
+  * JPG: Writing library name
+  * PNG: Support of MNG and JNG
+  * Thumbnails: Add a dedicated image track for thumbnails and
+    covers
+  * PAC: Option for default frame rate
+  * Dates: Normalize dates from different formats
+  * HTML output: Display cover image (thanks to cjee21)
+  * Add package.json for npm archive / git / package
+  Fixed bugs:
+  * I2360, MPEG4: fix crash on HEIC files
+  * H263: Fix potential bad compute of frame size
+  * FFV1: Fix parsing of initial_state_delta tables leading to
+    wrong full frame parsing
+  * ADM: Don't consider comments as not permitted
+  * EXR : Fix comment not displayed
+  * JNA: Fix Java to Native integer conversion
+</comment>
+    <requestid>1296673</requestid>
+  </revision>
 </revisionlist>
