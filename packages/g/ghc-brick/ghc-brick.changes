@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Wed May 28 18:38:17 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update brick to version 2.9.
+  2.9
+  ---
+
+  API changes:
+  * Added `Brick.Widgets.List.listFindFirst` function.
+
+  2.8.3
+  -----
+
+  Bug fixes:
+
+  * Fixed a bug that completely broke `makeVisible` that was introduced
+    in brick 2.6.
+  * Fixed context cropping in `cropRightBy` and `cropBottomBy`.
+
+  2.8.2
+  -----
+
+  * Updated `Brick.Widgets.Core` functions `cropBottomBy`, `cropToBy`,
+    `cropLeftBy`, and `cropRightBy` to properly perform result cropping to
+    actually address the internal bug fixed in 2.8.1.
+
+  2.8.1
+  -----
+
+  * Fixed a long-standing bug in `cropToContext` that resulted in some
+    extents getting left around when they should be dropped, possibly
+    leading to application bugs when handling mouse clicks in extent
+    regions that should have been removed from the rendering result.
+
+  2.8
+  ---
+
+  Behavior changes:
+  * `FileBrowser` file marking with `Space` now honors the file browser's
+    configured file selector predicate.
+  * `FileBrowser` file marking with `Space` and `Enter` now toggles file
+    selection rather than just selecting files, allowing for selected
+    files to be unselected.
+
+  2.7
+  ---
+
+  This release adds `Brick.Animation`, a module providing infrastructure
+  for adding animations to Brick interfaces. See the Haddock documentation
+  in `Brick.Animation` for full details; see `programs/AnimationDemo.hs`
+  for a working example.
+
+  2.6
+  ---
+
+  Behavior changes:
+   * `Brick.Widgets.Core.relativeTo` now draws nothing if the requested
+     extent is not found. Previously it would draw the specified widget in
+     the upper-left corner of the layer.
+
+  Bug fixes:
+   * Fixed the conditional import in `BorderMap` (#519)
+   * `Brick.Widgets.Center.hCenterWith` now properly accounts for centered
+     image width when computing additional right padding (#520)
+   * The Brick renderer now properly resets some render-specific state
+     in between renderings that was previously kept around, avoiding
+     preservation of stale extents across renderings
+   * `brick-tail-demo` and `brick-custom-event-demo` now shut down Vty
+     properly
+
+  2.5
+  ---
+
+  New features:
+  * `Brick.Widgets.ProgressBar` got a new function, `customProgressBar`,
+    which allows the customization of the fill characters used to draw a
+    progress bar. (Thanks @sectore)
+
+-------------------------------------------------------------------
 Fri Jul  5 21:48:31 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update brick to version 2.4.

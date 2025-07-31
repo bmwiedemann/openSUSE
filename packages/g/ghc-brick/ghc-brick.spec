@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-brick
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.4
+Version:        2.9
 Release:        0
 Summary:        A declarative terminal user interface library
 License:        BSD-3-Clause
@@ -47,6 +47,8 @@ BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-exceptions-prof
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-filepath-prof
+BuildRequires:  ghc-hashable-devel
+BuildRequires:  ghc-hashable-prof
 BuildRequires:  ghc-microlens-devel
 BuildRequires:  ghc-microlens-mtl-devel
 BuildRequires:  ghc-microlens-mtl-prof
@@ -64,8 +66,12 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-text-zipper-devel
 BuildRequires:  ghc-text-zipper-prof
+BuildRequires:  ghc-time-devel
+BuildRequires:  ghc-time-prof
 BuildRequires:  ghc-unix-compat-devel
 BuildRequires:  ghc-unix-compat-prof
+BuildRequires:  ghc-unordered-containers-devel
+BuildRequires:  ghc-unordered-containers-prof
 BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-vector-prof
 BuildRequires:  ghc-vty-crossplatform-devel
