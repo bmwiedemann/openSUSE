@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.18.1.0
+Version:        0.19.0.0
 Release:        0
 Summary:        Utilities and combinators for parsing command line options
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -39,8 +38,6 @@ BuildRequires:  ghc-process-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
-BuildRequires:  ghc-transformers-compat-devel
-BuildRequires:  ghc-transformers-compat-prof
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
 ExcludeArch:    %{ix86}
@@ -90,7 +87,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
