@@ -55,4 +55,12 @@ This package contains ansible roles from linux-system-roles project: https://git
 - Add cockpit role </comment>
     <requestid>1293785</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>4e653b2f11af392cb2aea8c98018e25f</srcmd5>
+    <version>1.0.0</version>
+    <time>1753976773</time>
+    <user>dimstar_suse</user>
+    <comment>- Add postfix role</comment>
+    <requestid>1296564</requestid>
+  </revision>
 </revisionlist>

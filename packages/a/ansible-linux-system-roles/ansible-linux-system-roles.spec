@@ -30,6 +30,7 @@
 %global podman_version 1.8.1
 %global cockpit_version 1.7.0
 %global aide_version 1.2.0
+%global postfix_version 1.6.1
 
 %if 0%{?suse_version} >= 1600
 %global sle16 1
@@ -62,6 +63,7 @@ Source11:        %{url}/ansible-selinux/archive/refs/tags/%{selinux_version}-sus
 Source12:        %{url}/ansible-podman/archive/refs/tags/%{podman_version}-suse.tar.gz#/podman-%{podman_version}.tar.gz
 Source13:        %{url}/ansible-cockpit/archive/refs/tags/%{cockpit_version}-suse.tar.gz#/cockpit-%{cockpit_version}.tar.gz
 Source14:        %{url}/ansible-aide/archive/refs/tags/%{aide_version}-suse.tar.gz#/aide-%{aide_version}.tar.gz
+Source15:        %{url}/ansible-postfix/archive/refs/tags/%{postfix_version}-suse.tar.gz#/postfix-%{postfix_version}.tar.gz
 %endif
 Source999:      galaxy.yml
 
@@ -100,6 +102,7 @@ roles=(
   "podman:%{podman_version}"
   "cockpit:%{cockpit_version}"
   "aide:%{aide_version}"
+  "postfix:%{postfix_version}"
 %endif
 )
 
