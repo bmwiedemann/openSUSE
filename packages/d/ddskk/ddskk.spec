@@ -30,10 +30,6 @@ Source1:        suse-start.el
 Source97:       update_skkdic.py
 Source98:       README.SUSE
 Source99:       ddskk-rpmlintrc
-# see README.SUSE for how to generate this file.
-# NOTE: some dictionary files are not licenced under GPL-2.0+
-# see commiters.txt
-Source100:      skkdic-20250328.tar.xz
 Patch2:         bugzilla-141756-workaround.patch
 # PATCH-FIX-OPENSUSE or UPSTREAM -- drop build date to make build reproducible
 Patch3:         ddskk-drop-build-date.patch
@@ -76,30 +72,8 @@ aggressively developed.
 
 %endif
 
-%package -n skkdic
-Summary:        Main Dictionary for SKK
-Group:          System/I18n/Japanese
-URL:            http://openlab.ring.gr.jp/skk/dic.html
-Requires(post): info
-Requires(preun): info
-Provides:       locale(scim-skk:ja)
-
-%description -n skkdic
-main dictionary for SKK
-
-%package -n skkdic-extra
-Summary:        Optional, additional dictionaries for SKK
-Group:          System/I18n/Japanese
-URL:            http://openlab.ring.gr.jp/skk/dic.html
-
-%description -n skkdic-extra
-optional, additional dictionaries for SKK
-
 %prep
 %autosetup -p1 -n ddskk-ddskk-17.1_Neppu
-mkdir -p dic
-tar --strip-components=2 --xz -xf %{S:100} -C dic
-cp dic/zipcode/SKK-JISYO.* dic/
 
 %build
 %define emacs_sitelisp_dir %{_datadir}/emacs/site-lisp
@@ -181,6 +155,11 @@ fi
 %doc ChangeLog* READMEs
 %{emacs_package_dir}
 %config %{emacs_sitelisp_dir}/suse-start-%{name}.el
+%dir %{_datadir}/skk/
+%{_datadir}/skk/NICOLA-SKK.tut
+%{_datadir}/skk/SKK.tut
+%{_datadir}/skk/SKK.tut.E
+%{_datadir}/skk/skk.xpm
 %{_infodir}/*
 
 %if %{use_xemacs}
@@ -193,45 +172,5 @@ fi
 %{xemacs_package_dir}/lisp/*
 %{xemacs_package_dir}%{_sysconfdir}/*
 %endif
-
-%files -n skkdic
-%defattr(-,root,root)
-%doc dic/ChangeLog*
-%license dic/READMEs/committers.txt
-%dir %{_datadir}/skk/
-%{_datadir}/skk/SKK-JISYO.L
-%{_datadir}/skk/skk.xpm
-%{_datadir}/skk/SKK.tut
-%{_datadir}/skk/SKK.tut.E
-
-%files -n skkdic-extra
-%defattr(-,root,root)
-%dir %{_datadir}/skk/
-%{_datadir}/skk/SKK-JISYO.ML
-%{_datadir}/skk/SKK-JISYO.M
-%{_datadir}/skk/SKK-JISYO.zipcode
-%{_datadir}/skk/SKK-JISYO.office.zipcode
-# SUSE-Permissive
-%{_datadir}/skk/SKK-JISYO.pubdic+
-%{_datadir}/skk/SKK-JISYO.JIS3_4
-%{_datadir}/skk/SKK-JISYO.JIS2
-%{_datadir}/skk/SKK-JISYO.S
-%{_datadir}/skk/SKK-JISYO.JIS2004
-%{_datadir}/skk/SKK-JISYO.assoc
-%{_datadir}/skk/SKK-JISYO.china_taiwan
-#%{_datadir}/skk/SKK-JISYO.edict
-%{_datadir}/skk/SKK-JISYO.fullname
-%{_datadir}/skk/SKK-JISYO.geo
-%{_datadir}/skk/SKK-JISYO.itaiji
-%{_datadir}/skk/SKK-JISYO.itaiji.JIS3_4
-%{_datadir}/skk/SKK-JISYO.jinmei
-%{_datadir}/skk/SKK-JISYO.law
-%{_datadir}/skk/SKK-JISYO.lisp
-%{_datadir}/skk/SKK-JISYO.mazegaki
-%{_datadir}/skk/SKK-JISYO.okinawa
-%{_datadir}/skk/SKK-JISYO.propernoun
-%{_datadir}/skk/SKK-JISYO.requested
-%{_datadir}/skk/SKK-JISYO.station
-%{_datadir}/skk/NICOLA-SKK.tut
 
 %changelog

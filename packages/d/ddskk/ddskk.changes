@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 28 10:09:45 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Split skkdic out of ddskk:
+  * skkdic is seperate project, with it's own upstream;
+  * skkdic has it's own maintenance cycle time;
+  * There may have other package including ibus-skk, ibus-kkc, depending
+    on skkdic, it will importing too many irrelavent packages to SLE and Leap.
+    This makes it impossible to integrate these input methods cleanly.
+  * Do my best to keep the original work the same in respect of original
+    maintainer's hard work.  
+    (bsc#1246569)
+
+-------------------------------------------------------------------
 Fri Mar 28 01:47:23 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - Update to ddskk 17.1_Neppu
