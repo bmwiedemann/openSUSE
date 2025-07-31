@@ -21,7 +21,7 @@
 %define _rname openssl
 %define man_suffix 3ssl
 
-%bcond_without lto
+%bcond_with lto
 %if %{without lto}
 %define _lto_cflags %{nil}
 %endif
@@ -252,7 +252,7 @@ export MACHINE=armv6l
     -Wa,--noexecstack \
     -Wl,-z,relro,-z,now \
     -fno-common \
-    -DTERMIO \
+    -DTERMIOS \
     -DPURIFY \
     -D_GNU_SOURCE \
     -DOPENSSL_PEDANTIC_ZEROIZATION \

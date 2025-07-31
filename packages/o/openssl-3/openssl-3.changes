@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 30 09:17:24 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Disable LTO for userspace livepatching [jsc#PED-13245]
+
+-------------------------------------------------------------------
+Mon Jul 28 07:45:23 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Use termios instead of obsolete termio
+
+-------------------------------------------------------------------
 Mon Jul  7 13:33:21 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 3.5.1:
