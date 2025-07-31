@@ -26,7 +26,7 @@ FROM opensuse/tumbleweed:latest
 RUN set -euo pipefail; \
     zypper -n install --no-recommends go1.23 go1.23-doc make curl findutils gawk git-core procps util-linux
 RUN set -euo pipefail; zypper -n clean -a; \
-    rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
+    rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; rm -f {/target,}/etc/shadow-
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.golang
@@ -53,5 +53,5 @@ ENV PATH="/go/bin:/usr/local/go/bin:/root/go/bin/:/usr/local/sbin:/usr/local/bin
 #!ArchExclusiveLine: x86_64 aarch64 s390x ppc64le
 RUN set -euo pipefail; if zypper -n install go1.23-race; then zypper -n clean; fi
 RUN set -euo pipefail; install -m 755 -d /go/bin /go/src
-RUN set -euo pipefail; rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
+RUN set -euo pipefail; rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; rm -f {/target,}/etc/shadow-
 WORKDIR /go
