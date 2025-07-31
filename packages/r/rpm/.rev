@@ -2611,4 +2611,12 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>use the pubkey modification time instead of the creation time</comment>
     <requestid>1283572</requestid>
   </revision>
+  <revision rev="325" vrev="6">
+    <srcmd5>0fcd7fda6e1258115729fdc6cab1835a</srcmd5>
+    <version>4.20.1</version>
+    <time>1753976751</time>
+    <user>dimstar_suse</user>
+    <comment>- flush scriptlet notification messages in --runposttrans</comment>
+    <requestid>1296339</requestid>
+  </revision>
 </revisionlist>

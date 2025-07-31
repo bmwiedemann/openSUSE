@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 29 16:15:58 CEST 2025 - mls@suse.de
+
+- flush scriptlet notification messages in --runposttrans
+  * needed to fix leaking tmp files [bsc#1218459]
+  * updated patch: posttrans.diff
+  * added "rpm_flushes_runposttrans" provides for libzypp
+
+-------------------------------------------------------------------
 Mon Jun  2 15:07:06 CEST 2025 - mls@suse.de
 
 - use the pubkey modification time instead of the creation time

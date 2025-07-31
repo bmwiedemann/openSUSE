@@ -1,5 +1,5 @@
 --- include/rpm/rpmcli.h.orig	2025-02-19 15:29:33.000000000 +0000
-+++ include/rpm/rpmcli.h	2025-05-19 13:58:25.952973533 +0000
++++ include/rpm/rpmcli.h	2025-07-29 14:13:12.907099597 +0000
 @@ -306,6 +306,7 @@ enum rpmInstallFlags_e {
      INSTALL_ALLMATCHES	= (1 << 9),	/*!< from --allmatches */
      INSTALL_REINSTALL	= (1 << 10),	/*!< from --reinstall */
@@ -24,8 +24,8 @@
   */
  extern struct rpmInstallArguments_s rpmIArgs;
  
---- include/rpm/rpmts.h.orig	2025-05-19 13:58:13.800993465 +0000
-+++ include/rpm/rpmts.h	2025-05-19 13:58:25.952973533 +0000
+--- include/rpm/rpmts.h.orig	2025-07-29 14:13:01.139113390 +0000
++++ include/rpm/rpmts.h	2025-07-29 14:13:12.907099597 +0000
 @@ -253,6 +253,15 @@ int rpmtsOrder(rpmts ts);
  int rpmtsRun(rpmts ts, rpmps okProbs, rpmprobFilterFlags ignoreSet);
  
@@ -43,7 +43,7 @@
   * @param ts		transaction set
   * @return		new transaction set reference
 --- lib/poptI.c.orig	2025-02-19 15:29:33.000000000 +0000
-+++ lib/poptI.c	2025-05-19 13:58:25.952973533 +0000
++++ lib/poptI.c	2025-07-29 14:13:12.907099597 +0000
 @@ -283,6 +283,10 @@ struct poptOption rpmInstallPoptTable[]
  	&rpmIArgs.installInterfaceFlags, (INSTALL_RESTORE),
  	N_("restore package(s)"),
@@ -55,8 +55,8 @@
  
     POPT_TABLEEND
  };
---- lib/psm.c.orig	2025-05-19 13:58:13.780993499 +0000
-+++ lib/psm.c	2025-05-19 14:32:29.713648565 +0000
+--- lib/psm.c.orig	2025-07-29 14:13:01.119113413 +0000
++++ lib/psm.c	2025-07-29 14:13:12.907099597 +0000
 @@ -612,6 +612,8 @@ static int isUpdate(rpmts ts, rpmte te)
      rpmtsi pi = rpmtsiInit(ts);
      rpmte p;
@@ -76,7 +76,7 @@
  	    rpmtriggersPrepPostUnTransFileTrigs(psm->ts, psm->te);
  	}
 --- lib/rpminstall.c.orig	2025-02-19 15:29:33.000000000 +0000
-+++ lib/rpminstall.c	2025-05-19 13:58:25.952973533 +0000
++++ lib/rpminstall.c	2025-07-29 14:13:56.519048463 +0000
 @@ -6,6 +6,8 @@
  
  #include <string.h>
@@ -111,7 +111,7 @@
  void * rpmShowProgress(const void * arg,
  			const rpmCallbackType what,
  			const rpm_loff_t amount,
-@@ -213,8 +233,20 @@ void * rpmShowProgress(const void * arg,
+@@ -213,8 +233,22 @@ void * rpmShowProgress(const void * arg,
      case RPMCALLBACK_CPIO_ERROR:
  	break;
      case RPMCALLBACK_SCRIPT_ERROR:
@@ -119,6 +119,7 @@
 +	    rpmTagVal stag = (rpmTagVal)amount;
 +	    char *s = headerGetAsString(h, RPMTAG_NEVRA);
 +	    fprintf(stdout, "Error from %%%s(%s)\n", posttranstag2str(stag), s);
++	    (void) fflush(stdout);
 +	    free(s);
 +	}
  	break;
@@ -127,12 +128,13 @@
 +	    rpmTagVal stag = (rpmTagVal)amount;
 +	    char *s = headerGetAsString(h, RPMTAG_NEVRA);
 +	    fprintf(stdout, "Running %%%s(%s)\n", posttranstag2str(stag), s);
++	    (void) fflush(stdout);
 +	    free(s);
 +	}
  	break;
      case RPMCALLBACK_SCRIPT_STOP:
  	break;
-@@ -831,3 +863,33 @@ int rpmInstallSource(rpmts ts, const cha
+@@ -831,3 +865,33 @@ int rpmInstallSource(rpmts ts, const cha
      return rc;
  }
  
@@ -166,8 +168,8 @@
 +    argvFree(manifest);
 +    return rc;
 +}
---- lib/rpmte_internal.h.orig	2025-05-19 14:17:38.131089552 +0000
-+++ lib/rpmte_internal.h	2025-05-19 14:18:06.503043382 +0000
+--- lib/rpmte_internal.h.orig	2025-02-19 15:29:33.000000000 +0000
++++ lib/rpmte_internal.h	2025-07-29 14:13:12.907099597 +0000
 @@ -32,6 +32,7 @@ enum addOp_e {
    RPMTE_UPGRADE       = 1,
    RPMTE_REINSTALL     = 2,
@@ -177,7 +179,7 @@
  
  /** \ingroup rpmte
 --- lib/rpmtriggers.c.orig	2025-02-19 15:29:33.000000000 +0000
-+++ lib/rpmtriggers.c	2025-05-19 14:36:21.781275493 +0000
++++ lib/rpmtriggers.c	2025-07-29 14:13:12.907099597 +0000
 @@ -1,5 +1,6 @@
  #include "system.h"
  
@@ -252,7 +254,7 @@
  	priorityTag = RPMTAG_FILETRIGGERPRIORITIES;
      } else {
 --- lib/rpmtriggers.h.orig	2025-02-19 15:29:33.000000000 +0000
-+++ lib/rpmtriggers.h	2025-05-19 13:58:25.956973525 +0000
++++ lib/rpmtriggers.h	2025-07-29 14:13:12.907099597 +0000
 @@ -24,6 +24,10 @@ rpmtriggers rpmtriggersCreate(unsigned i
  RPM_GNUC_INTERNAL
  rpmtriggers rpmtriggersFree(rpmtriggers triggers);
@@ -265,7 +267,7 @@
   * Prepare post trans uninstall file triggers. After transcation uninstalled
   * files are not saved anywhere. So we need during uninstalation of every
 --- lib/rpmts_internal.h.orig	2025-02-19 15:29:33.000000000 +0000
-+++ lib/rpmts_internal.h	2025-05-19 13:58:25.956973525 +0000
++++ lib/rpmts_internal.h	2025-07-29 14:13:12.907099597 +0000
 @@ -83,6 +83,8 @@ struct rpmts_s {
      int min_writes;             /*!< macro minimize_writes used */
  
@@ -276,7 +278,7 @@
  
  /** \ingroup rpmts
 --- lib/transaction.c.orig	2025-02-19 15:29:33.000000000 +0000
-+++ lib/transaction.c	2025-05-21 13:35:19.931704634 +0000
++++ lib/transaction.c	2025-07-29 14:13:12.907099597 +0000
 @@ -1475,6 +1475,8 @@ static int rpmtsSetup(rpmts ts, rpmprobF
      /* Get available space on mounted file systems. */
      (void) rpmtsInitDSI(ts);
@@ -425,7 +427,7 @@
 +    return rc;
 +}
 --- tools/rpm.c.orig	2025-02-19 15:29:33.000000000 +0000
-+++ tools/rpm.c	2025-05-19 13:58:25.956973525 +0000
++++ tools/rpm.c	2025-07-29 14:13:12.907099597 +0000
 @@ -21,6 +21,7 @@ enum modes {
      MODE_ERASE		= (1 <<  2),
      MODE_RESTORE	= (1 <<  4),

@@ -52,6 +52,7 @@ BuildRequires:  xz-devel
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 #!BuildIgnore:  rpmlint-Factory
+Provides:       rpm_flushes_runposttrans
 Provides:       rpminst
 Requires(post): %fillup_prereq
 Requires:       rpm-config-SUSE
