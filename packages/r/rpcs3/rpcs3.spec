@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
-BuildRequires:  pkgconfig(opencv)
+BuildRequires:  pkgconfig(opencv4)
 BuildRequires:  pkgconfig(pugixml) >= 1.15
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(yaml-cpp)
