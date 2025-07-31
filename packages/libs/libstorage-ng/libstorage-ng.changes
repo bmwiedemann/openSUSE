@@ -1,4 +1,20 @@
 --------------------------------------------------------------------
+Thu Jul 31 10:30:36 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1034
+- added testcases
+- 4.5.270
+
+--------------------------------------------------------------------
+Wed Jul 30 15:33:35 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1033
+- work on device names and mount points with '#' sign
+- added testcase
+- extended logging
+- 4.5.269
+
+--------------------------------------------------------------------
 Tue Jul 29 14:59:20 UTC 2025 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1032
