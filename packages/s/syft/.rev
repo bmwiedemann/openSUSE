@@ -807,4 +807,12 @@
     <comment></comment>
     <requestid>1290075</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>f84a34ad183c9f4af2a904abc647761f</srcmd5>
+    <version>1.29.0</version>
+    <time>1753976834</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1296727</requestid>
+  </revision>
 </revisionlist>
