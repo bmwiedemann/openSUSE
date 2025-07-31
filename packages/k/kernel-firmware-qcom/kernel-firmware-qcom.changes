@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 25 15:08:58 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250725 (git commit 4bb152fb4405):
+  * qcom: Add QCS6490 symlink for QUPv3 firmware
+
+-------------------------------------------------------------------
 Mon Jul 21 15:47:24 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Remove stale *.rpmmoved directories (bsc#1244458)

@@ -163,4 +163,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Update gpu firmwares of QCS615 chipset</comment>
     <requestid>1295040</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f17a438847357851b34dcd03beeac87e</srcmd5>
+    <version>20250725</version>
+    <time>1753976708</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250725 (git commit 4bb152fb4405):
+  * qcom: Add QCS6490 symlink for QUPv3 firmware</comment>
+    <requestid>1296571</requestid>
+  </revision>
 </revisionlist>
