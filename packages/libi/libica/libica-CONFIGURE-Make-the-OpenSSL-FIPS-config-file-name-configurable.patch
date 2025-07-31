@@ -1,0 +1,52 @@
+From 11078c8bcd99f29f2cc7094cdced801a0b53f6df Mon Sep 17 00:00:00 2001
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+Date: Wed, 4 Jun 2025 11:17:35 +0200
+Subject: [PATCH] CONFIGURE: Make the OpenSSL FIPS config file name
+ configurable
+
+The name of the OpenSSL FIPS config file may be different on various
+distros. It is included in src/openssl3-fips.cnf when used with
+OpenSSL 3.0 or later.
+
+To use a specific name:
+  ./configure --enable-fips --with-fips-config=fips_local.cnf
+
+The default remains fipsmodule.cnf. It is only used when --enable-fips
+is also specified, and libica is built against OpenSSL 3.0 or later.
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ configure.ac             | 7 +++++++
+ src/openssl3-fips.cnf.in | 2 +-
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index bb35b867..7e45dd70 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -100,6 +100,13 @@ if test "x$enable_fips" = xyes; then
+     fi
+ fi
+ 
++dnl --- with-fips-config
++AC_ARG_WITH([fips-config],
++	AS_HELP_STRING([--with-fips-config=FILE],[OpenSSL FIPS config file name. Default is fipsmodule.cnf]),
++	[], [with_fips_config=fipsmodule.cnf])
++FIPSCONFIGFILE="$with_fips_config"
++AC_SUBST(FIPSCONFIGFILE)
++
+ dnl --- enable_sanitizer
+ AC_ARG_ENABLE(sanitizer,
+               [  --enable-sanitizer      turn on sanitizer (may not work on all systems)],
+diff --git a/src/openssl3-fips.cnf.in b/src/openssl3-fips.cnf.in
+index 1391bcbd..0c1a4147 100644
+--- a/src/openssl3-fips.cnf.in
++++ b/src/openssl3-fips.cnf.in
+@@ -1,6 +1,6 @@
+ openssl_conf = openssl_init
+ 
+-.include @FIPSDIR@/fipsmodule.cnf
++.include @FIPSDIR@/@FIPSCONFIGFILE@
+ 
+ [openssl_init]
+ providers = provider_sect

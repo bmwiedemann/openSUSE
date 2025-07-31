@@ -38,6 +38,8 @@ Source5:        %{name}-rpmlintrc
 Patch01:        libica-FIPS-make-it-possible-to-specify-fipshmac-binary.patch
 Patch02:        libica-sles15sp5-FIPS-hmac-key.patch
 ###
+Patch10:        libica-CONFIGURE-Make-the-OpenSSL-FIPS-config-file-name-configurable.patch
+###
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -118,7 +120,7 @@ the libica library.
 %build
 autoreconf --force --install
 %configure CPPFLAGS="-Iinclude -fPIC -DNO_FIPS_CONFIG_LOAD" CFLAGS="%{optflags} -fPIC -DNO_FIPS_CONFIG_LOAD" \
-  --enable-fips
+  --enable-fips --with-fips-config=fips_local.cnf
 
 %make_build clean
 %make_build FIPSHMAC=fipshmac BUILD_VERSION="FIPS-SUSE-%version-%release"

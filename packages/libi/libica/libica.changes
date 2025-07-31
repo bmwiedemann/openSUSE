@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 30 06:53:05 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch (bsc#1247287)
+  * libica-CONFIGURE-Make-the-OpenSSL-FIPS-config-file-name-configurable.patch
+- Added '--with-fips-config=fips_local.cnf' in "%configure" 
+
+-------------------------------------------------------------------
 Mon Jul 28 10:40:04 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file (bsc#1246541)
