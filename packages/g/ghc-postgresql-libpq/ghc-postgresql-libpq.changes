@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 29 14:04:46 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Configure build to use pg_config.
+
+-------------------------------------------------------------------
 Fri Dec 27 19:45:48 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update postgresql-libpq to version 0.11.0.0 revision 1.

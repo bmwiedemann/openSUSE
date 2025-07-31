@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-postgresql-libpq
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,6 +84,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
+%define cabal_configure_options -f-use-pkg-config
 %ghc_lib_build
 
 %install
