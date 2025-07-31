@@ -299,4 +299,22 @@
 - Add the tpm2.0-tools package (jsc#PED-13114).</comment>
     <requestid>1294905</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>f3715c400948eabe0aa39293032bca55</srcmd5>
+    <version>17.0.0</version>
+    <time>1753976721</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not fail if there are no rpm scriptlets to clean
+  (gh#agama-project/agama#2617). 
+
+- Ensure iSCSI initiator name is unique (bsc#1246280).
+
+- In Firefox disable downloading the binary H.264 codec from
+  ciscobinary.openh264.org (gh#agama-project/agama#2601)
+
+- Include the &quot;libopenssl-3-fips-provider&quot; package in the installer
+  image to work properly with the &quot;fips=1&quot; boot parameter
+  (bsc#1246857)</comment>
+    <requestid>1296551</requestid>
+  </revision>
 </revisionlist>
