@@ -26,6 +26,7 @@ FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
 
 RUN set -euo pipefail; \
+    export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1; \
     zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends cosign openSUSE-build-key
 # sanity check that the version from the tag is equal to the version of cosign that we expect
 RUN set -euo pipefail; \
