@@ -156,6 +156,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup
+cabal-tweak-dep-ver base '< 4.21' '< 5'
 
 %build
 %define cabal_configure_options -f+all_extensions
