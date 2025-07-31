@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 28 16:04:53 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.12.2
+- dropped patches:
+ + Disable-unboxed-arrays.patch
+ + hadrian-9.10-deps.patch
+ + riscv64-ncg.patch
+- refreshed patches
+ + ghc-gen_contents_index-haddock-path.patch
+ + gnu23-hp2ps.patch
+ + ghc-Cabal-install-PATH-warning.patch
+- full changelog at:
+ + https://downloads.haskell.org/~ghc/9.12.2/docs/users_guide/9.12.2-notes.html
+
+-------------------------------------------------------------------
 Thu Jul 24 14:50:47 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - add gnu23-hp2ps.patch for build hp2ps with gcc15+ 

@@ -1,8 +1,8 @@
-Index: ghc-9.10.1/libraries/Cabal/Cabal/src/Distribution/Simple/Install.hs
+Index: ghc-9.12.2/libraries/Cabal/Cabal/src/Distribution/Simple/Install.hs
 ===================================================================
---- ghc-9.10.1.orig/libraries/Cabal/Cabal/src/Distribution/Simple/Install.hs
-+++ ghc-9.10.1/libraries/Cabal/Cabal/src/Distribution/Simple/Install.hs
-@@ -261,12 +261,7 @@ copyComponent verbosity pkg_descr lbi (C
+--- ghc-9.12.2.orig/libraries/Cabal/Cabal/src/Distribution/Simple/Install.hs
++++ ghc-9.12.2/libraries/Cabal/Cabal/src/Distribution/Simple/Install.hs
+@@ -297,12 +297,7 @@ copyComponent verbosity pkg_descr lbi (C
      )
    inPath <- isInSearchPath binPref
    when (not inPath) $

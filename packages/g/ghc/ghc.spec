@@ -14,10 +14,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define full_version 9.10.2
-%define short_version 9.10.2
+%define full_version 9.12.2
+%define short_version 9.12.2
 
-%global llvm_major 15
+%global llvm_major 18
 
 # conditionals
 # disable prof, docs, perf build
@@ -61,12 +61,15 @@
 %global ghc_llvm_archs s390x
 %global ghc_unregisterized_arches noarch
 
-%global base_ver 4.20.1.0
+%global base_ver 4.21.0.0
+%global cabal_ver 3.14.1.0
 %global ghc_compact_ver 0.1.0.0
 %global hpc_ver 0.7.0.2
 %global hsc2hs_ver 0.68.10
 %global ghc_bignum_ver 1.3
 %global xhtml_ver 3000.2.2.1
+%global ghc_ver_for_lib 9.1202.0
+%global haddock_api_ver 2.30.0
 
 Name:           ghc
 Version:        %{short_version}
@@ -84,12 +87,7 @@ Source7:        runghc.man
 Patch1:         ghc-gen_contents_index-haddock-path.patch
 # https://ghc.haskell.org/trac/ghc/ticket/15689
 Patch2:         ghc-Cabal-install-PATH-warning.patch
-# PATCH-FIX-UPSTREAM Disable-unboxed-arrays.patch ptrommler@icloud.com -- Do not use unboxed arrays on big-endian platforms. See Haskell Trac #15411.
-Patch3:         Disable-unboxed-arrays.patch
 Patch200:       ghc-hadrian-s390x-rts--qg.patch
-Patch300:       hadrian-9.10-deps.patch
-# Backport of MR 13105 (NCG for RISCV64)
-Patch243:       riscv64-ncg.patch
 Patch400:       gnu23-hp2ps.patch
 
 BuildRequires:  binutils-devel
@@ -97,7 +95,7 @@ BuildRequires:  gcc-PIE
 BuildRequires:  gcc-c++
 BuildRequires:  ghc-bootstrap >= 9.8
 BuildRequires:  ghc-bootstrap-helpers >= 1.3
-BuildRequires:  ghc-rpm-macros-extra => 2.6.1
+BuildRequires:  ghc-rpm-macros-extra => 2.9.1
 BuildRequires:  glibc-devel
 BuildRequires:  gmp-devel
 BuildRequires:  libdw-devel
@@ -123,7 +121,6 @@ Requires:       %{name}-ghc-devel = %{version}-%{release}
 Requires:       %{name}-ghc-heap-devel = %{version}-%{release}
 Requires:       %{name}-ghci-devel = %{version}-%{release}
 Requires:       %{name}-hpc-devel = %{hpc_ver}-%{release}
-Recommends:     %{name}-compiler-default = %{version}-%{release}
 %if %{without ghc_debuginfo}
 %undefine _enable_debug_packages
 %endif
@@ -166,7 +163,11 @@ Requires:       gcc
 Requires:       ghc-base-devel = %{base_ver}-%{release}
 Requires:       %{name}-filesystem = %{version}-%{release}
 Provides:       hsc2hs = %{hsc2hs_ver}-%{release}
-%ifarch %{ghc_llvm_archs}
+Obsoletes:      %{name}-ghc-internal < 9.1202.0-%{release}
+Obsoletes:      %{name}-ghc-internal-devel < 9.1202.0-%{release}
+Obsoletes:      %{name}-ghc-internal-doc < 9.1202.0-%{release}
+Obsoletes:      %{name}-ghc-internal-prof < 9.1202.0-%{release}
+%ifarch s390x
 Requires:       clang%{llvm_major}
 Requires:       llvm%{llvm_major}
 %endif
@@ -182,6 +183,7 @@ To install all of GHC install package ghc.
 %package doc
 Summary:        Haskell library documentation meta package
 License:        BSD-3-Clause
+BuildArch:      noarch
 
 %description doc
 Installing this package causes %{name}-*-doc packages corresponding to
@@ -223,15 +225,15 @@ This package provides the User Guide and Haddock manual.
 %global ghc_pkg_c_deps ghc-compiler = %{ghc_version_override}-%{release}
 %global version %{ghc_version_override}
 #!ForceMultiversion
-%ghc_lib_subpackage -d Cabal-3.12.1.0
-%ghc_lib_subpackage -d Cabal-syntax-3.12.1.0
+%ghc_lib_subpackage -d Cabal-%{cabal_ver}
+%ghc_lib_subpackage -d Cabal-syntax-%{cabal_ver}
 %ghc_lib_subpackage -d array-0.5.8.0
 %ghc_lib_subpackage -d -c gmp-devel,libffi-devel,libdw-devel,libelf-devel,libnuma-devel base-%{base_ver}
 %ghc_lib_subpackage -d binary-0.8.9.3
 %ghc_lib_subpackage -d bytestring-0.12.2.0
 %ghc_lib_subpackage -d containers-0.7
-%ghc_lib_subpackage -d deepseq-1.5.0.0
-%ghc_lib_subpackage -d directory-1.3.8.5
+%ghc_lib_subpackage -d deepseq-1.5.1.0
+%ghc_lib_subpackage -d directory-1.3.9.0
 %ghc_lib_subpackage -d exceptions-0.10.9
 %ghc_lib_subpackage -d filepath-1.5.4.0
 %ghc_lib_subpackage -d -x ghc-%{ghc_version_override}
@@ -239,9 +241,9 @@ This package provides the User Guide and Haddock manual.
 %ghc_lib_subpackage -d -x ghc-boot-%{ghc_version_override}
 %ghc_lib_subpackage -d ghc-boot-th-%{ghc_version_override}
 %ghc_lib_subpackage -d -x ghc-compact-%{ghc_compact_ver}
-%ghc_lib_subpackage -d ghc-experimental-9.1002.0
+%ghc_lib_subpackage -d ghc-experimental-%{ghc_ver_for_lib}
+%ghc_lib_subpackage -d ghc-internal-%{ghc_ver_for_lib}
 %ghc_lib_subpackage -d -x ghc-heap-%{ghc_version_override}
-%ghc_lib_subpackage -d ghc-internal-9.1002.0
 %ghc_lib_subpackage -d -x ghci-%{ghc_version_override}
 %ghc_lib_subpackage -d haskeline-0.8.2.1
 %ghc_lib_subpackage -d -x hpc-%{hpc_ver}
@@ -251,18 +253,23 @@ This package provides the User Guide and Haddock manual.
 %ghc_lib_subpackage -d process-1.6.25.0
 %ghc_lib_subpackage -d stm-2.5.3.1
 %ghc_lib_subpackage -d semaphore-compat-1.0.0
-%ghc_lib_subpackage -d template-haskell-2.22.0.0
+%ghc_lib_subpackage -d template-haskell-2.23.0.0
 %ghc_lib_subpackage -d -c ncurses-devel terminfo-0.4.1.7
 %ghc_lib_subpackage -d text-2.1.2
-%ghc_lib_subpackage -d time-1.12.2
-%ghc_lib_subpackage -d transformers-0.6.1.1
+%ghc_lib_subpackage -d time-1.14
+%ghc_lib_subpackage -d transformers-0.6.1.2
 %ghc_lib_subpackage -d unix-2.8.6.0
 %ghc_lib_subpackage -d xhtml-%{xhtml_ver}
-
 # new in 9.10 
-%ghc_lib_subpackage -d os-string-2.0.4
+%ghc_lib_subpackage -d os-string-2.0.7
 %ghc_lib_subpackage -d ghc-toolchain-0.1.0.0
 %ghc_lib_subpackage -d ghc-platform-0.1.0.0
+# new in 9.12
+%ghc_lib_subpackage -d haddock-library-1.11.0
+%ghc_lib_subpackage -d haddock-api-%{haddock_api_ver}
+%ghc_lib_subpackage -d file-io-0.1.5 
+
+
 
 %global version %{ghc_version_override}
 
@@ -292,16 +299,11 @@ Installing this package causes %{name}-*-prof packages corresponding to
 %setup -q
 %patch -P 1 -p1
 %patch -P 2 -p1
-%ifarch s390x
-%patch -P 3 -p1
-%endif
 
-%ifarch loongarch64 ppc64le s390x riscv64
+%ifarch ppc64le s390x riscv64
 %patch -P 200 -p1
 %endif
-%patch -P 243 -p1
 
-%patch -P 300 -p1
 %patch -P 400 -p1
 
 rm libffi-tarballs/libffi-*.tar.gz
@@ -342,8 +344,12 @@ python3 boot.source --hadrian
 %define hadrian_docs %{!?with_haddock:--docs=no-haddocks} %{!?with_manual:--docs=no-sphinx}%{?with_manual:--docs=no-sphinx-pdfs --docs=no-sphinx-man}
 
 %if 0%{?suse_version} >= 1500
-%ifarch %{unregisterised_archs}
+%ifarch %{unregisterised_archs} riscv64
+%if 0%{?qemu_user_space_build}
+%limit_build -m 15000
+%else
 %limit_build -m 8000
+%endif
 %else
 %limit_build -m 2000
 %endif
@@ -351,7 +357,7 @@ python3 boot.source --hadrian
 %else
 %global jobs_nr -j1 
 %endif
-%{hadrian} %{jobs_nr} --flavour=%{?with_quickbuild:quick+no_profiled_libs}%{!?with_quickbuild:perf%{!?with_ghc_prof:+no_profiled_libs}}%{?hadrian_llvm} %{hadrian_docs} binary-dist-dir --hash-unit-ids
+%{hadrian} %{jobs_nr} --flavour=%{?with_quickbuild:quick+no_profiled_libs}%{!?with_quickbuild:release%{!?with_ghc_prof:+no_profiled_libs}}%{?hadrian_llvm} %{hadrian_docs} binary-dist-dir --hash-unit-ids
 
 %install
 
@@ -360,8 +366,11 @@ cd _build/bindist/ghc-%{version}-*
 ./configure --prefix=%{buildroot}%{ghclibdir} --bindir=%{buildroot}%{_bindir} --libdir=%{buildroot}%{_libdir} --mandir=%{buildroot}%{_mandir} --docdir=%{buildroot}%{_docdir}/%{name}-%{version}
 make install
 )
+
 mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d
-echo "%{ghclibplatform}" > %{buildroot}%{_sysconfdir}/ld.so.conf.d/%{name}.conf
+
+export LD_PATH=$(realpath %{buildroot}%{ghclibplatform} | sed "s|^%{buildroot}||")
+echo "${LD_PATH}" > %{buildroot}%{_sysconfdir}/ld.so.conf.d/%{name}.conf
 
 # avoid 'E: binary-or-shlib-defines-rpath'
 for i in $(find %{buildroot} -type f -executable -exec sh -c "file {} | grep -q 'dynamically linked'" \; -print); do
@@ -372,7 +381,7 @@ done
 %if %{with haddock}
 # remove short hashes
 for d in %{buildroot}%{ghc_html_libraries_dir}/*/; do
-mv $d $(echo $d | sed -e "s/\(.*\)-.*/\\1/")
+  mv $d $(echo $d | sed -e "s/\(.*\)-.*/\\1/")
 done
 %endif
  
@@ -384,15 +393,20 @@ cp -p libraries/Cabal/Cabal-syntax/LICENSE libraries/Cabal-syntax
 # hack for ghc-toolchain
 mkdir -p libraries/ghc-toolchain
 cp -p LICENSE libraries/ghc-toolchain
+# hacks for haddock libs
+mkdir -p libraries/haddock-api libraries/haddock-library
+cp -p utils/haddock/haddock-api/LICENSE libraries/haddock-api
+cp -p utils/haddock/haddock-library/LICENSE libraries/haddock-library
+
 rm -f %{name}-*.files
 
 
 # FIXME replace with ghc_subpackages_list
 for i in %{ghc_packages_list}; do
-name=$(echo $i | sed -e "s/\(.*\)-.*/\1/")
-ver=$(echo $i | sed -e "s/.*-\(.*\)/\1/")
-%ghc_gen_filelists $name $ver
-echo "%%license libraries/$name/LICENSE" >> %{name}-$name.files
+  name=$(echo $i | sed -e "s/\(.*\)-.*/\1/")
+  ver=$(echo $i | sed -e "s/.*-\(.*\)/\1/")
+  %ghc_gen_filelists $name $ver
+  echo "%%license libraries/$name/LICENSE" >> %{name}-$name.files
 done
 
 echo "%%dir %{ghclibdir}" >> %{name}-base%{?_ghcdynlibdir:-devel}.files
@@ -405,7 +419,7 @@ echo "%%dir %{ghclibdir}" >> %{name}-base%{?_ghcdynlibdir:-devel}.files
 %ghc_gen_filelists ghci %{ghc_version_override}
 %ghc_gen_filelists hpc %{hpc_ver}
 
-%ghc_gen_filelists ghc-prim 0.12.0
+%ghc_gen_filelists ghc-prim 0.13.0
 %ghc_gen_filelists integer-gmp 1.1
 %ghc_gen_filelists rts 1.0.2
 
@@ -450,7 +464,9 @@ rm %{buildroot}%{ghclibdir}/lib/package.conf.d/.stamp
 rm %{buildroot}%{ghclibdir}/lib/package.conf.d/*.conf.copy
 
 # https://gitlab.haskell.org/ghc/ghc/-/issues/24121
-rm %{buildroot}%{ghclibdir}/share/doc/%{ghcplatform}/*/LICENSE
+#rm %{buildroot}%{ghclibdir}/share/doc/%{ghcplatform}/*/LICENSE
+# something ugly in haddock build it's copy of ghc docu in totaly wrong place, similiary to license files
+rm -Rf %{buildroot}%{ghclibdir}/share
 
 
 %check
@@ -458,7 +474,7 @@ rm %{buildroot}%{ghclibdir}/share/doc/%{ghcplatform}/*/LICENSE
 # stolen from ghc6/debian/rules:
 #Do some very simple tests that the compiler actually works
 export LANG=C.utf8
-export LD_LIBRARY_PATH=%{buildroot}%{ghclibplatform}:
+export LD_LIBRARY_PATH=$(realpath %{buildroot}%{ghclibplatform}):
 GHC=%{buildroot}%{ghclibdir}/bin/ghc
 # Do some very simple tests that the compiler actually works
 rm -rf testghc
@@ -485,6 +501,7 @@ $GHC --info
 %transfiletriggerpostun compiler -- %{ghcliblib}/package.conf.d
 %ghc_pkg_recache
 %end
+
 
 %files
 %license LICENSE
@@ -543,7 +560,8 @@ $GHC --info
 %{ghcliblib}/llvm-passes
 %{ghcliblib}/llvm-targets
 %{ghcliblib}/post-link.mjs
-%{ghcliblib}/prelude.js
+%{ghcliblib}/prelude.mjs
+%{ghcliblib}/dyld.mjs
 %dir %{ghcliblib}/package.conf.d
 %ghost %{ghcliblib}/package.conf.d/package.cache
 %{ghcliblib}/package.conf.d/package.cache.lock
