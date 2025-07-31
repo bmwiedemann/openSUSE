@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 30 09:56:28 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- set PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC to allow operation without accessible /proc filesystem
+
+-------------------------------------------------------------------
 Mon May 26 07:43:19 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - update to new version 3.18
