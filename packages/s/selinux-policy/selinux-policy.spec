@@ -36,7 +36,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20250716
+Version:        20250730
 Release:        0
 Source0:        %{name}-%{version}.tar.xz
 Source1:        container.fc
@@ -399,15 +399,18 @@ if [ ! -s %{_sysconfdir}/selinux/config ]; then
 # SELinux can be completly disabled with the \"selinux=0\" kernel
 # commandline option.
 #
-# SELINUX= can take one of these three values:
+# SELINUX= can take one of these two values:
 #     enforcing  - SELinux security policy is enforced.
 #     permissive - SELinux prints warnings instead of enforcing.
-#     disabled   - SELinux is disabled
-SELINUX=permissive
+# Previously SELinux could be disabled by changing the value to
+# 'disabled'. This is deprecated and should not be used anymore.
+# If you want to disable linux add 'selinux=0' to the kernel
+# command line. For details see
+# https://github.com/SELinuxProject/selinux-kernel/wiki/DEPRECATE-runtime-disable
+SELINUX=enforcing
 # SELINUXTYPE= can take one of these three values:
 #     targeted - Targeted processes are protected,
 #     minimum - Modification of targeted policy. Only selected processes are protected.
-#     mls - Multi Level Security protection.
 SELINUXTYPE=targeted
 
 " > %{_sysconfdir}/selinux/config

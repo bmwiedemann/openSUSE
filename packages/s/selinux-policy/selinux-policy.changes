@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jul 31 13:07:09 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Change default of example config to enforcing mode. With
+  selinux-autorelabel taking care of relabeling this should work
+  nowadays
+
+-------------------------------------------------------------------
+Wed Jul 30 14:37:50 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
+
+- Update to version 20250730:
+  * Set /srv/tftpboot = /var/lib/tftpboot as equivalent file context (bsc#1247381)
+  * Create unconfined type for salt-minion bsc#1228984
+
+-------------------------------------------------------------------
+Wed Jul 23 15:27:56 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Explain that disabling SELinux should not be done via the config
+  file anymore (bsc#1246549)
+- Drop mls option, as we don't provide this ATM
+
+-------------------------------------------------------------------
 Wed Jul 16 08:17:57 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20250716:
