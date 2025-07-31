@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Jul 23 14:07:56 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 5970:
+  * batch: fix uninitialized has_cpl flag
+  * ggml: Add initial WebGPU backend
+  * ggml: adds CONV_2D op and direct GEMM Vulkan implementation
+  * ggml: fix loongarch quantize_row_q8_1 error
+  * ggml: model card yaml tab->2xspace
+  * ggml: refactor llamafile_sgemm PPC code
+  * gguf-py : dump bpw per layer and model in markdown mode
+  * graph: avoid huge warm-up graphs for MoE models
+  * graph: fix graph reuse reset of params
+  * graph: pass the graph placeholder message in debug mode
+  * graph: refactor context to not pass gf explicitly
+  * imatrix: add option to display importance score statistics 
+  	for a given imatrix file
+  * imatrix: use GGUF to store importance matrices
+  * kv-cache: fix k-shift for multiple streams
+  * kv-cache: opt mask set input
+  * llama: add high-throughput mode
+  * llama: add jinja template for rwkv-world
+  * llama: add LLAMA_API to deprecated llama_kv_self_seq_div
+  * llama: add model type detection for rwkv7 7B&14B
+  * llama: fix parallel processing for lfm2
+  * llama: fix parallel processing for plamo2
+  * llama: fix parameter order for hybrid memory initialization
+  * llama: fix `--reverse-prompt` crashing issue
+  * llama: reuse compute graphs
+  * llama-context: add ability to get logits
+  * memory: handle saving/loading null layers in recurrent memory
+  * metal: fuse add, mul + add tests
+  * model: add Ernie 4.5 MoE support
+  * model: add EXAONE 4.0 support
+  * model: add Kimi-K2 support
+  * model: add PLaMo-2 support
+  * model: fix build after merge conflict
+  * model: support output bias for qwen2
+  * model: support diffusion models: Add Dream 7B
+  * mtmd: add a way to select device for vision encoder
+  * opencl: add conv2d kernel (#14403)
+  * opencl: fix `im2col` when `KW!=KH`
+  * opencl: remove unreachable `return`
+  * parallel: add option for different RNG seeds
+  * quantize: fix minor logic flaw in --tensor-type
+  * scripts: benchmark for HTTP server throughput
+  * scripts: synthetic prompt mode for server-bench.py
+  * server: add parse_special option to /tokenize endpoint
+  * server: allow setting `--reverse-prompt` arg
+  * server: fix handling of the ignore_eos flag
+  * server: pre-calculate EOG logit biases
+  * vulkan: Add logging for bf16 features to ggml_vk_print_gpu_info
+  * vulkan: add RTE variants for glu/add/sub/mul/div
+  * vulkan/cuda: Fix im2col when KW!=KH
+  * culkan: Fix fprintf format-security warning
+  * vulkan: fix noncontig check for mat_mul_id splitting
+  * vulkan: fix rms_norm_mul to handle broadcasting dim0
+  * Full changelog:
+    https://github.com/ggml-org/llama.cpp/compare/b5889...b5970
+
+-------------------------------------------------------------------
 Sun Jul 13 14:56:17 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Add GGML_NATIVE=OFF build flag

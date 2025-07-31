@@ -18,7 +18,7 @@
 
 
 Name:           llamacpp
-Version:        5889
+Version:        5970
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT
