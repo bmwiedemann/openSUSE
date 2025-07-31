@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 29 14:05:37 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Build without Haddock by default.
+
+-------------------------------------------------------------------
 Sat Aug 24 16:19:13 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Add postgresql-libpq-configure at version 0.11.

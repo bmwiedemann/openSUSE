@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-postgresql-libpq-configure
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name postgresql-libpq-configure
 %global pkgver %{pkg_name}-%{version}
-%bcond_without haddock
+%bcond_with haddock
 Name:           ghc-%{pkg_name}
 Version:        0.11
 Release:        0
