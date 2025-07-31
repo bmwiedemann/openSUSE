@@ -401,4 +401,45 @@
     glfo#xorg/driver/xf86-video-amdgpu#70 glfo#drm/amd#2375</comment>
     <requestid>1225115</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>287a21964ec2eba0fca206af813690a2</srcmd5>
+    <version>25.0.0</version>
+    <time>1753976696</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 25.0.0
+  * gitlab CI: add builds against server-21.1-branch
+  * Revert &quot;use dixDestroyPixmap() instead of direct driver call&quot;
+  * Improve man page formatting
+  * Fix segfault on dock suspend, unplug, resume
+  * Free output_ids
+  * bump minimal xorg version to 1.18
+  * drop compat with ancient xserver versions
+  * dont check for HAS_DIRTYTRACKING_ROTATION: it's always enabled.
+  * dont use obsolete pict_f_transform alias anymore
+  * use XNFalloc() instead of xnfalloc
+  * use XNFcallocarray() instead of xnfcalloc macro
+  * use dixDestroyPixmap() instead of direct driver call
+  * ci: compactify redundant declarations via matrix
+  * Enable TearFree if it's set to auto and VariableRefresh is enabled
+  * Fixed AMDGPUOptions_KMS for align structures 64bit
+  * Check GFX12 swizzle mode correctly
+  * Fix a crash when initializing with a property with no atoms
+  * trivial: Add workflow rules
+  * Add missing xorg-server.h header
+  * Add support for the meson build system
+  * Migrate CI over to meson
+  * Drop support for autotools build system
+  * trivial: drop unused gitignore
+  * trivial: ignore .vscode directory
+  * Bump version for 25.0.0 release
+  * ci: switch from testing to bookworm
+  * ci: use gfx-ci/ci-deb-repo to get latest libdrm
+  * Use GBM_BO_USE_FRONT_RENDERING on front_buffer alloc
+  * Handling of color management properties
+- supersedes U_Fix-segfault-on-dock-suspend-unplug-resume.patch,
+  U_Free-output_ids.patch
+- adjusted N_amdgpu-present-Check-tiling-for-newer-versions-too.patch
+- switched to meson build</comment>
+    <requestid>1296365</requestid>
+  </revision>
 </revisionlist>

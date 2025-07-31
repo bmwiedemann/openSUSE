@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-amdgpu
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define pci_ids_dir %{_sysconfdir}/X11/xorg_pci_ids
 %endif
 Name:           xf86-video-amdgpu
-Version:        23.0.0
+Version:        25.0.0
 Release:        0
 Summary:        AMDGPU video driver for the Xorg X server
 License:        MIT
@@ -33,16 +33,15 @@ Source2:        %{name}.keyring
 Source3:        amdgpu.ids
 # PATCH-FIX-OPENSUSE Workaround to fix crashes when an external monitor is connected bsc#1169222
 Patch1:         N_amdgpu-present-Check-tiling-for-newer-versions-too.patch
-# PATCH-FIX-UPSTREAM Fix segfaults when e.g. suspending glfo/xorg/driver/xf86-video-amdgpu#70
-Patch2:         U_Fix-segfault-on-dock-suspend-unplug-resume.patch
-Patch3:         U_Free-output_ids.patch
 BuildRequires:  autoconf >= 2.6.0
 BuildRequires:  automake
 BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(damageproto)
 BuildRequires:  pkgconfig(fontsproto)
 BuildRequires:  pkgconfig(gbm)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.58
 BuildRequires:  pkgconfig(libdrm_amdgpu)
 BuildRequires:  pkgconfig(libudev)
@@ -72,12 +71,11 @@ Its autodetects whether your hardware has a CI or newer AMD Graphics Card
 # We have some -z now related errors during X default startup (boo#1197994):
 # this is directly visible on startup, so easy to test later on.
 export SUSE_ZNOW=0
-autoreconf -fiv
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %if 0%{?pci_ids_dir:1}
 rm -f %{buildroot}%{_datadir}/X11/xorg.conf.d/10-amdgpu.conf

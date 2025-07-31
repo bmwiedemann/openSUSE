@@ -18,9 +18,11 @@ Signed-off-by: Takashi Iwai <tiwai@suse.de>
  src/amdgpu_present.c |    3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
---- a/src/amdgpu_present.c
-+++ b/src/amdgpu_present.c
-@@ -305,7 +305,8 @@ amdgpu_present_check_flip(RRCrtcPtr crtc
+Index: xf86-video-amdgpu-25.0.0/src/amdgpu_present.c
+===================================================================
+--- xf86-video-amdgpu-25.0.0.orig/src/amdgpu_present.c
++++ xf86-video-amdgpu-25.0.0/src/amdgpu_present.c
+@@ -292,7 +292,8 @@ amdgpu_present_check_flip(RRCrtcPtr crtc
  			return FALSE;
  	}
  
