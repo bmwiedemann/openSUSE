@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jul 30 11:11:37 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1753868091.5fba34bf:
+  * docs: Remove deprecated references to openqa-client
+  * Fix weird validation errors of date time on API keys page
+  * build(deps-dev): bump eslint from 9.31.0 to 9.32.0
+  * Simplify `_set_default_storage_durations`
+  * Rename template for "Show advanced cleanup …" button
+  * Use loop to setup validation of cleanup properties
+  * Validate cleanup fields for important jobs as well
+  * Ensure advanced cleanup settings are shown if error relates to them
+  * Improve showing error in group property editor
+  * Fix id/label/default in group property editor after recent changes
+  * Move link to documentation next to "Show advanced …" button
+  * Improve help popover for retention durations
+  * Collapse settings for keeping jobs in database longer by default
+  * Reorder group property editor so important fields come first
+  * Move lengthy description of cleanup settings to the users guide
+  * Update and improve documentation about cleanup
+  * Explain what "important" means in help popover of group properties
+  * Ensure default config of limits/durations make sense
+  * Make use of configured job storage duration when limiting jobs
+  * Extend UI for configuring job storage duration
+  * Extend job group API for configuring job storage duration
+  * Add settings for configuring job storage duration
+  * Add database columns for configuring job storage duration
+  * Show note about sorting on group overview pages
+  * Improve documentation section about Python API
+  * Mention Lua based tests in documentation
+
+-------------------------------------------------------------------
 Mon Jul 28 12:11:17 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1753703782.e7ffc367:
