@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 27 12:36:08 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.7.0
+  * added official support for Python 3.8 through 3.13 (#165)
+  * extensions pecan imports via `pecan.ext` has been removed (#157)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Apr  7 10:19:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.6.0

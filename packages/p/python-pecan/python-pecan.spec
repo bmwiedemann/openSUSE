@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pecan
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        A WSGI object-dispatching web framework
 License:        BSD-3-Clause
@@ -37,7 +37,6 @@ BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module WebOb >= 1.8}
 BuildRequires:  %{python_module WebTest >= 1.3.1}
 BuildRequires:  %{python_module gunicorn}
-BuildRequires:  %{python_module logutils}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module virtualenv}
@@ -51,7 +50,6 @@ Requires:       python-Mako >= 0.4.0
 Requires:       python-WebOb >= 1.8
 # Still needed by pecan.testing
 Requires:       python-WebTest >= 1.3.1
-Requires:       python-logutils >= 0.3
 Requires:       python-setuptools
 %if %{with libalternatives}
 Requires:       alts
