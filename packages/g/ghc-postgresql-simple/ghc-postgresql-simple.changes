@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 29 14:08:24 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Jailbreak over-specified constraints to fix build with ghc-9.12.x.
+
+-------------------------------------------------------------------
 Sat Aug 24 19:25:31 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update postgresql-simple to version 0.7.0.0 revision 3.

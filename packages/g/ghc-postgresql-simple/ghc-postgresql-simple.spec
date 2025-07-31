@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-postgresql-simple
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -114,6 +114,8 @@ This package provides the Haskell %{pkg_name} profiling library.
 %prep
 %autosetup -n %{pkg_name}-%{version}
 cp -p %{SOURCE1} %{pkg_name}.cabal
+cabal-tweak-dep-ver base '<4.21' '< 5'
+cabal-tweak-dep-ver template-haskell '<2.23' '< 3'
 
 %build
 %ghc_lib_build
