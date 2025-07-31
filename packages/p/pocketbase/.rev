@@ -1,0 +1,15 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bef750659ff218d1b323c3fef9dc446f</srcmd5>
+    <version>0.29.0</version>
+    <time>1753976793</time>
+    <user>dimstar_suse</user>
+    <comment>PocketBase is an open source Go backend that includes:
+
+-    embedded database (SQLite) with realtime subscriptions
+-    built-in files and users management
+-    convenient Admin dashboard UI
+-    and simple REST-ish API</comment>
+    <requestid>1296605</requestid>
+  </revision>
+</revisionlist>
