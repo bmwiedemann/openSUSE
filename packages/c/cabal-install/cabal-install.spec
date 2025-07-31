@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        3.12.1.0
+Version:        3.14.1.1
 Release:        0
 Summary:        The command-line interface for Cabal and Hackage
 License:        BSD-3-Clause
@@ -64,8 +64,6 @@ BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-hackage-security-devel
 BuildRequires:  ghc-hackage-security-prof
-BuildRequires:  ghc-hashable-devel
-BuildRequires:  ghc-hashable-prof
 BuildRequires:  ghc-lukko-devel
 BuildRequires:  ghc-lukko-prof
 BuildRequires:  ghc-mtl-devel
@@ -175,8 +173,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 %prep
 %autosetup
 cp -p %{SOURCE1} %{name}.cabal
-cabal-tweak-dep-ver Cabal '^>=3.12.1.0' '< 4'
-cabal-tweak-dep-ver Cabal-syntax '^>=3.12.1.0' '< 4'
 
 %build
 %ghc_lib_build
