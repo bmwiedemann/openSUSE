@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 26 17:41:41 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-engine to version 0.4.3 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sun Jul 20 15:33:55 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update pandoc-lua-engine to version 0.4.3 revision 1.
