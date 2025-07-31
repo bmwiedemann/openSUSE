@@ -109,13 +109,17 @@
 %define chromedriver_name chromedriver
 %define n_suffix %{nil}
 %endif
+# official builds have less debugging and go faster... but we have to shut some things off.
+%global official_build 1
+
 Name:           chromium%{n_suffix}
-Version:        138.0.7204.168
+Version:        138.0.7204.183
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
 URL:            https://www.chromium.org/
-Source0:        https://commondatastorage.googleapis.com/chromium-browser-official/%{rname}-%{version}.tar.xz
+#Source0:        https://commondatastorage.googleapis.com/chromium-browser-official/%{rname}-%{version}.tar.xz
+Source0:        https://github.com/chromium-linux-tarballs/chromium-tarballs/releases/download/%{version}/chromium-%{version}-linux.tar.xz
 # https://github.com/evanw/esbuild/archive/refs/tags/v%%{esbuild_version}.tar.gz
 Source1:        esbuild-%{esbuild_version}.tar.gz
 Source2:        esbuild-%{esbuild_version}-vendor.tar.gz
@@ -141,7 +145,6 @@ Patch7:         chromium-norar.patch
 Patch9:         system-libdrm.patch
 # gentoo/fedora/arch patchset
 Patch15:        chromium-125-compiler.patch
-Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
 Patch62:        chromium-93-ffmpeg-4.4.patch
 Patch98:        chromium-102-regex_pattern-array.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
@@ -160,6 +163,7 @@ Patch371:       chromium-133-bring_back_and_disable_allowlist.patch
 Patch373:       chromium-134-type-mismatch-error.patch
 Patch375:       chromium-131-fix-qt-ui.pach
 Patch376:       chromium-135-add_map_droppable.patch
+Patch377:       chromium-139-deterministic.patch
 # conditionally applied patches ppc64le only
 Patch401:       ppc-fedora-add-ppc64-architecture-string.patch
 Patch402:       ppc-fedora-0001-linux-seccomp-bpf-ppc64-glibc-workaround-in-SIGSYS-h.patch
@@ -1035,6 +1039,10 @@ myconf_gn+=" arm_control_flow_integrity=\"none\""
 myconf_gn+=" host_cpu=\"ppc64\""
 %endif
 myconf_gn+=" host_os=\"linux\""
+%if %{official_build}
+myconf_gn+=" is_official_build=true"
+sed -i 's|OFFICIAL_BUILD|GOOGLE_CHROME_BUILD|g' tools/generate_shim_headers/generate_shim_headers.py
+%endif
 myconf_gn+=" is_debug=false"
 myconf_gn+=" dcheck_always_on=false"
 myconf_gn+=" enable_nacl=false"

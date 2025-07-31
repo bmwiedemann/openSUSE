@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jul 30 10:26:40 CEST 2025 - ro@suse.de
+
+- Chromium 138.0.7204.183 (boo#1247365):
+  * CVE-2025-8292: Use after free in Media Stream
+- try to switch to smaller linux tarball from
+   https://github.com/chromium-linux-tarballs)
+- disable chromium-91-java-only-allowed-in-android-builds.patch
+  (not part of reduced tarball)
+
+-------------------------------------------------------------------
+Tue Jul 29 10:44:14 CEST 2025 - ro@suse.de
+
+- set official_build to true (like other distributions)
+  "official builds have less debugging and go faster..." 
+- added patches:
+  chromium-139-deterministic.patch
+  (undefine __DATE__,__TIME__ like without official-build set
+   to keep the build reproducible)
+
+-------------------------------------------------------------------
+Thu Jul 24 18:23:20 CEST 2025 - ro@suse.de
+
+- modified patches:
+  ppc-fedora-0001-sandbox-linux-Update-syscall-helpers-lists-for-ppc64.patch
+  (update context to apply) 
+
+-------------------------------------------------------------------
 Tue Jul 22 21:31:06 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 138.0.7204.168 (boo#1246902):

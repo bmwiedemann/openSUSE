@@ -5787,4 +5787,12 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
   * Various fixes from internal audits, fuzzing and other</comment>
     <requestid>1295183</requestid>
   </revision>
+  <revision rev="471" vrev="1">
+    <srcmd5>50940c4ff4bd8c62bfbf28bc2cadd38f</srcmd5>
+    <version>138.0.7204.183</version>
+    <time>1753976809</time>
+    <user>dimstar_suse</user>
+    <comment>Chromium 138.0.7204.183 (boo#1247365)</comment>
+    <requestid>1296650</requestid>
+  </revision>
 </revisionlist>
