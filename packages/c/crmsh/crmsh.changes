@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul 31 08:47:31 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250731.d3091c0c:
+  * Dev: command: Show help topic completion only at root level
+
+-------------------------------------------------------------------
+Wed Jul 30 07:30:49 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250730.55c60660:
+  * Fix: sbd: should show warning instead of error when unable to restart the cluster automatically after changing configs (bsc#1246956)
+
+-------------------------------------------------------------------
+Fri Jul 25 09:41:34 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250725.84f2955a:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: qdevice: Reload corosync configuration on one node
+
+-------------------------------------------------------------------
+Wed Jul 23 23:59:12 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250724.4eb69e1d:
+  * Fix: bootstrap: continue qnetd setup when ssh keypair is not found for some cluster nodes (#1850)
+
+-------------------------------------------------------------------
 Wed Jul 23 13:22:46 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250723.07081e35:
