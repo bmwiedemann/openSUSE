@@ -55,6 +55,7 @@ export CC=%{_bindir}/gcc-13
 export CXX=%{_bindir}/g++-13
 %endif
 %cmake
+setarch -R \
 %make_build
 
 %install
