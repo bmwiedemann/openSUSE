@@ -107,4 +107,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * xe: First GuC release for Pantherlake</comment>
     <requestid>1291746</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e742ca8b8ab578b1a88a12fc2a561396</srcmd5>
+    <version>20250730</version>
+    <time>1753976707</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250730 (git commit 910c19074091):
+  * i915: Xe3LPD DMC v2.29</comment>
+    <requestid>1296569</requestid>
+  </revision>
 </revisionlist>
