@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.1.8
+Version:        2.1.11
 Release:        0
 Summary:        TLS protocol native implementation
 License:        BSD-3-Clause
@@ -49,12 +49,18 @@ BuildRequires:  ghc-crypton-x509-validation-devel
 BuildRequires:  ghc-crypton-x509-validation-prof
 BuildRequires:  ghc-data-default-devel
 BuildRequires:  ghc-data-default-prof
+BuildRequires:  ghc-ech-config-devel
+BuildRequires:  ghc-ech-config-prof
+BuildRequires:  ghc-hpke-devel
+BuildRequires:  ghc-hpke-prof
 BuildRequires:  ghc-memory-devel
 BuildRequires:  ghc-memory-prof
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-prof
+BuildRequires:  ghc-random-devel
+BuildRequires:  ghc-random-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-serialise-devel
 BuildRequires:  ghc-serialise-prof
@@ -70,6 +76,8 @@ BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-async-devel
 BuildRequires:  ghc-async-prof
+BuildRequires:  ghc-base64-bytestring-devel
+BuildRequires:  ghc-base64-bytestring-prof
 BuildRequires:  ghc-hourglass-devel
 BuildRequires:  ghc-hourglass-prof
 BuildRequires:  ghc-hspec-devel
