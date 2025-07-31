@@ -24,6 +24,7 @@ FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
 
 RUN set -euo pipefail; \
+    export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1; \
     zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends kubernetes1.32-client
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
