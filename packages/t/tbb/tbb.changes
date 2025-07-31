@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 30 03:38:43 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Change tbb-2022.2.0.tar.gz file [boo#1247142]
+
+-------------------------------------------------------------------
 Thu Jul 17 08:16:41 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Drop excessive gcc flags: add cf-prot.patch.

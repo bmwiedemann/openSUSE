@@ -480,4 +480,12 @@
     <comment>- Update to version 2022.2.0:</comment>
     <requestid>1294051</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>5e410ce3a2f8e0aef4811cc8985c2467</srcmd5>
+    <version>2022.2.0</version>
+    <time>1753976701</time>
+    <user>dimstar_suse</user>
+    <comment>- Change tbb-2022.2.0.tar.gz file [boo#1247142]</comment>
+    <requestid>1296540</requestid>
+  </revision>
 </revisionlist>
