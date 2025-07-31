@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 10 17:48:36 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Set -std=gnu17 to fix builds with gcc15
+
+-------------------------------------------------------------------
 Thu Jul 25 08:37:48 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - amanda-fix-proto.patch: fix build with gcc14

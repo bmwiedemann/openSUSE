@@ -1,7 +1,7 @@
 #
 # spec file for package amanda
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -98,7 +98,7 @@ running multiple versions of Linux or Unix.
 %build
 ./autogen
 
-export CFLAGS="%{optflags} -fno-strict-aliasing -fPIC -fPIE"
+export CFLAGS="%{optflags} -fno-strict-aliasing -fPIC -fPIE -std=gnu17"
 export CXXFLAGS="%{optflags} -fno-strict-aliasing -fPIC -fPIE"
 export LDFLAGS="-pie"
 %configure --with-bsdtcp-security \
