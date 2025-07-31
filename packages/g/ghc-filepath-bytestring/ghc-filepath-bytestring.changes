@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 28 19:15:24 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Jailbreak over-specified constraints to fix build with ghc-9.12.x.
+
+-------------------------------------------------------------------
 Mon Jan 20 23:43:32 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update filepath-bytestring to version 1.5.2.0.2.
