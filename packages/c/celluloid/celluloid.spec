@@ -24,11 +24,12 @@ Summary:        Simple GTK+ frontend for MPV
 License:        GPL-3.0-or-later
 URL:            https://celluloid-player.github.io/
 Source:         https://github.com/celluloid-player/celluloid/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool >= 0.40.6
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(appstream-glib)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.44
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.44
@@ -56,6 +57,9 @@ Celluloid is a simple GTK+ frontend for MPV.
 %install
 %meson_install
 %find_lang %{name}
+
+%check
+%meson_test
 
 %files
 %doc README.md

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 30 08:59:03 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace unneeded pkgconfig(appstream-glib) with appstream-glib,
+  and add optional desktop-file-utils BuildRequires. Following
+  this, add check section and meson_test macro, run tests during
+  buildtime.
+
+-------------------------------------------------------------------
 Sun May 18 05:52:08 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.29
