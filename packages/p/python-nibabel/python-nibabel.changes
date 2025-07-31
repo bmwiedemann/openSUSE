@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 31 02:59:03 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch ignore-userwarnings.patch:
+  * Ignore any UserWarnings that arise, rather than to trying to swallow
+    them with pytest.warns().
+
+-------------------------------------------------------------------
 Tue Nov 26 05:22:53 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.3.2:

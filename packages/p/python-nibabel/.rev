@@ -184,4 +184,14 @@
     + The nibabel.onetime.auto_attr module can be replaced by</comment>
     <requestid>1226405</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4567bd732a045cfc691d8f9caf25d11c</srcmd5>
+    <version>5.3.2</version>
+    <time>1753976816</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch ignore-userwarnings.patch:
+  * Ignore any UserWarnings that arise, rather than to trying to swallow
+    them with pytest.warns().</comment>
+    <requestid>1296683</requestid>
+  </revision>
 </revisionlist>

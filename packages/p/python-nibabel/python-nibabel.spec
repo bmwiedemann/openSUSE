@@ -1,7 +1,7 @@
 #
 # spec file for package python-nibabel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 URL:            https://nipy.org/nibabel
 # SourceRepository: https://github.com/nipy/nibabel
 Source:         https://files.pythonhosted.org/packages/source/n/nibabel/nibabel-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM One commit of gh#nipy/nibabel#1416
+Patch0:         ignore-userwarnings.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
