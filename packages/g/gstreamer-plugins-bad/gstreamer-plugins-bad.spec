@@ -36,6 +36,12 @@
 %bcond_with voamrwbenc
 %endif
 
+%if 0%{?is_opensuse} || 0%{?suse_version} > 1600
+%bcond_without faad
+%else
+%bcond_with faad
+%endif
+
 %if 0%{?is_opensuse}
 %bcond_without fluidsynth
 %bcond_without openjp2
@@ -91,7 +97,9 @@ BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  ladspa-devel
+%if %{with faad}
 BuildRequires:  libfaad-devel
+%endif
 BuildRequires:  libgme-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  meson >= 1.4
@@ -822,6 +830,9 @@ export PYTHON=%{_bindir}/python3
 %if %{without faac}
 	-D faac=disabled \
 %endif
+%if %{without faad}
+	-D faad=disabled \
+%endif
 	-D directfb=disabled \
 	-D doc=disabled \
 	-D examples=disabled \
@@ -988,7 +999,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvbsuboverlay.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvdspu.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfaceoverlay.so
+%if %{with faad}
 %{_libdir}/gstreamer-%{gst_branch}/libgstfaad.so
+%endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstfbdevsink.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfdkaac.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstfieldanalysis.so

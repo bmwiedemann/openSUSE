@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 30 12:24:16 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix really disabling faad when building without faad support.
+
+-------------------------------------------------------------------
+Wed Jul 30 11:14:57 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Do not build with faad in SLE16 where faad2 is not available.
+
+-------------------------------------------------------------------
 Thu Jul 24 06:57:18 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.4:
