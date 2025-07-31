@@ -77,4 +77,12 @@ migrations as well as point release upgrades
   * Drop --pre-release flag completely</comment>
     <requestid>1296382</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f26aecbe4b69f05500465ac7905a3bca</srcmd5>
+    <version>20250731.8b95d00</version>
+    <time>1753976866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1296819</requestid>
+  </revision>
 </revisionlist>
