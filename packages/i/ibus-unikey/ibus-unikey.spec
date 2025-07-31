@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-unikey
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,18 +22,17 @@ Release:        0
 Summary:        Vietnamese engine for IBus input platform
 License:        GPL-3.0-only
 Group:          System/Localization
-URL:            http://code.google.com/p/ibus-unikey/
-Source:         http://%{name}.googlecode.com/files/%{name}-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM i@marguerite.su fix narrowing conversion from char to unsigned char
+URL:            https://github.com/vn-input/ibus-unikey/
+Source:         https://github.com/vn-input/ibus-unikey/archive/refs/tags/%{version}.tar.gz
+#PATCH-FIX-OPENSUSE ibus-unikey-static_cast.patch boo#985186 i@marguerite.su -- fix narrowing conversion from char to unsigned char
 Patch0:         ibus-unikey-static_cast.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gtk2-devel
-BuildRequires:  ibus
 BuildRequires:  ibus-devel
 BuildRequires:  intltool
+BuildRequires:  libtool
 Requires:       ibus
 Provides:       locale(ibus:vi)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A Vietnamese engine for IBus input platform that uses Unikey.
@@ -42,6 +41,7 @@ A Vietnamese engine for IBus input platform that uses Unikey.
 %autosetup -p1
 
 %build
+sh ./autogen.sh
 %configure --libexecdir=%{_ibus_libexecdir}
 make %{?_smp_mflags}
 
@@ -52,7 +52,8 @@ make %{?_smp_mflags} DESTDIR=%{buildroot} install
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
-%doc README AUTHORS COPYING ChangeLog
+%doc README AUTHORS ChangeLog
+%license COPYING
 %{_datadir}/%{name}
 %{_datadir}/ibus/component/*
 %{_ibus_libexecdir}/ibus-*-unikey
