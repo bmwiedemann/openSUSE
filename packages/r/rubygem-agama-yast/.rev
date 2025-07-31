@@ -422,4 +422,14 @@
 - Fix error at /api/manager/installer: initialize the backend value</comment>
     <requestid>1294908</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>bbcee341778f00492c8de7476131c189</srcmd5>
+    <version>17.devel37.571bbc676</version>
+    <time>1753976720</time>
+    <user>dimstar_suse</user>
+    <comment>- Make encryption work with whole formatted devices (bsc#1246939).
+- Do not export partitions to json if there is no partition
+  (bsc#1246940).</comment>
+    <requestid>1295726</requestid>
+  </revision>
 </revisionlist>
