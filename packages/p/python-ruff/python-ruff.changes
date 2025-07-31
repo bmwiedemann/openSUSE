@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jul 30 09:48:46 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.7:
+  * \[`flake8-commas`\] Add support for trailing comma checks in
+    type parameter lists (`COM812`, `COM819`)
+  * \[`pylint`\] Implement auto-fix for `missing-maxsplit-arg`
+    (`PLC0207`)
+  * \[`ruff`\] Offer fixes for `RUF039` in more cases
+  * Support `.pyi` files in ruff analyze graph
+  * \[`flake8-pyi`\] Preserve inline comment in ellipsis removal
+    (`PYI013`)
+  * \[`perflint`\] Ignore rule if target is `global` or
+    `nonlocal` (`PERF401`)
+  * \[`pyupgrade`\] Fix `UP030` to avoid modifying double curly
+    braces in format strings
+  * \[`refurb`\] Ignore decorated functions for `FURB118`
+  * \[`refurb`\] Mark `int` and `bool` cases for
+    `Decimal.from_float` as safe fixes (`FURB164`)
+  * \[`ruff`\] Fix `RUF033` for named default expressions
+
+-------------------------------------------------------------------
 Fri Jul 25 15:50:14 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.5:
