@@ -1,5 +1,25 @@
 <services>
-<service  name="cargo_vendor" mode="manual">
-<param name="src">kwctl-1.23.0</param>
-</service>
+  <service mode="manual" name="obs_scm">
+    <param name="url">https://github.com/kubewarden/kwctl</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="scm">git</param>
+    <param name="revision">v1.27.1</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="manual">
+  </service>
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">kwctl</param>
+     <param name="compression">zst</param>
+     <param name="update">false</param>
+  </service>
+  <!-- services below are running at buildtime -->
+  <service name="tar" mode="buildtime">
+  </service>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
 </services>

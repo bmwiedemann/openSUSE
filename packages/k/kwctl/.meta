@@ -1,4 +1,5 @@
 <package name="kwctl" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="Virtualization:containers" package="kwctl"/>
 </package>

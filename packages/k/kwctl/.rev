@@ -7,4 +7,41 @@
     <comment>submitting this to factory...</comment>
     <requestid>1270648</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6a42a9a7f446c78df4e645b6483f5944</srcmd5>
+    <version>1.27.1</version>
+    <time>1753976788</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.27.1 (bsc#1246954, CVE-2025-53901):
+  * test: update e2e test running policies from YAML
+  * chore(deps): consume wasmparser from policy-evaluator
+  * build: Bump version to 1.27.1
+  * deps: Consume policy-evaluator 0.29.1
+  * Migrate mailing list mentions to CNCF
+  * build: Bump version to 1.27.0
+  * chore: update cargo-audit exceptions
+  * build(deps): update all minor level dependencies
+  * build(deps): update taiki-e/install-action action to v2.57.1
+  * build(deps): update taiki-e/install-action action to v2.56.24 (#1283)
+  * chore(deps): update policy-evaluator
+  * build(deps): update taiki-e/install-action action to v2.56.22
+  * build: Bump version to 1.27.0-rc1
+  * build(deps): lock file maintenance
+  * build(deps): update taiki-e/install-action action to v2.56.21
+  * Apply suggestions from code review
+  * feat: Populate PolicyDefinition with more info
+  * feat: Process validation response with AdmissionResponseHandler
+  * deps: Consume policy-evaluator
+  * chore(deps): update to latest version of wasmtime
+  * build(deps): update rust crate serde_json to v1.0.141
+  * build(deps): update taiki-e/install-action action to v2.56.19 (#1275)
+  * build(deps): update sigstore/cosign-installer action to v3.9.2
+  * chore: Adapt syft calls to syft 1.x
+  * build(deps): update github-actions
+  * build: Bump version to 1.27.0-alpha3
+  * deps: Bump policy-evaluator to 0.27.2
+  * build(deps): update taiki-e/install-action action to v2.56.14
+  * build(deps): lock file maintenance (#301)</comment>
+    <requestid>1296598</requestid>
+  </revision>
 </revisionlist>

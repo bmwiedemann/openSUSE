@@ -1,7 +1,202 @@
 -------------------------------------------------------------------
+Wed Jul 30 15:10:50 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 1.27.1 (bsc#1246954, CVE-2025-53901):
+  * test: update e2e test running policies from YAML
+  * chore(deps): consume wasmparser from policy-evaluator
+  * build: Bump version to 1.27.1
+  * deps: Consume policy-evaluator 0.29.1
+  * Migrate mailing list mentions to CNCF
+  * build: Bump version to 1.27.0
+  * chore: update cargo-audit exceptions
+  * build(deps): update all minor level dependencies
+  * build(deps): update taiki-e/install-action action to v2.57.1
+  * build(deps): update taiki-e/install-action action to v2.56.24 (#1283)
+  * chore(deps): update policy-evaluator
+  * build(deps): update taiki-e/install-action action to v2.56.22
+  * build: Bump version to 1.27.0-rc1
+  * build(deps): lock file maintenance
+  * build(deps): update taiki-e/install-action action to v2.56.21
+  * Apply suggestions from code review
+  * feat: Populate PolicyDefinition with more info
+  * feat: Process validation response with AdmissionResponseHandler
+  * deps: Consume policy-evaluator
+  * chore(deps): update to latest version of wasmtime
+  * build(deps): update rust crate serde_json to v1.0.141
+  * build(deps): update taiki-e/install-action action to v2.56.19 (#1275)
+  * build(deps): update sigstore/cosign-installer action to v3.9.2
+  * chore: Adapt syft calls to syft 1.x
+  * build(deps): update github-actions
+  * build: Bump version to 1.27.0-alpha3
+  * deps: Bump policy-evaluator to 0.27.2
+  * build(deps): update taiki-e/install-action action to v2.56.14
+  * build(deps): lock file maintenance (#301)
+  * build(deps): update updatecli/updatecli-action action to v2.88.0
+  * build(deps): update taiki-e/install-action action to v2.56.13 (#1264)
+  * build(deps): update taiki-e/install-action action to v2.56.13 (#299)
+  * build(deps): update taiki-e/install-action action to v2.56.12 (#1263)
+  * build(deps): update taiki-e/install-action action to v2.56.12 (#292)
+  * build(deps): lock file maintenance (#297)
+  * chore: 1.27.0-alpha2 bump.
+  * chore: update policy-evaluator.
+  * build(deps): update taiki-e/install-action action to v2.56.10
+  * build(deps): update github-actions
+  * build(deps): update all patch level dependencies to v4.5.41
+  * build(deps): update github-actions
+  * build: Bump version to 1.27.0-alpha1
+  * build(deps): update github-actions
+  * build(deps): update rust crate indicatif to 0.18
+  * build(deps): update rust crate tokio to v1.46.1 (#1254)
+  * build(deps): update taiki-e/install-action action to v2.56.3
+  * feat(capabilities): update policy-evaluator to v0.27.0.
+  * build(deps): update rust crate tokio to v1.46.0
+  * build(deps): update taiki-e/install-action action to v2.56.2
+  * build(deps): update taiki-e/install-action action to v2.56.1
+  * build(deps): update rust crate reqwest to v0.12.22 (#1248)
+  * build(deps): update all patch level dependencies
+  * build(deps): update github-actions
+  * ci: Pin cosign to 2.5.0
+  * build(deps): update github-actions
+
+-------------------------------------------------------------------
+Wed Jun 25 12:36:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.26.0:
+  * Features
+    - feat: allow running policies from CRD (#1232)
+  * Maintenance
+    - build(deps): update taiki-e/install-action action to v2.54.0
+      (#1240)
+    - build(deps): update taiki-e/install-action action to v2.53.2
+      (#1239)
+    - build(deps): update github-actions (#1238)
+    - build(deps): update taiki-e/install-action action to v2.53.0
+      (#1237)
+    - chore: prepare for v1.26.0-rc1 release. (#1236)
+    - build(deps): update github-actions (#1234)
+    - build(deps): update github-actions (#1233)
+    - build(deps): update taiki-e/install-action action to v2.52.7
+      (#1230)
+    - build(deps): update taiki-e/install-action action to v2.52.6
+      (#1229)
+    - build(deps): update rust crate wasmparser to 0.233 (#1228)
+    - build(deps): update github-actions (#1227)
+    - build(deps): update rust crate termimad to 0.33.0 (#1225)
+    - build(deps): update taiki-e/install-action action to v2.52.4
+      (#1226)
+    - build(deps): update github-actions (#1224)
+    - build(deps): update rust crate wasmparser to 0.232 (#1223)
+    - build(deps): update taiki-e/install-action action to v2.52.2
+      (#1222)
+    - build(deps): update rust crate wasmparser to 0.231 (#1219)
+    - build(deps): update taiki-e/install-action action to v2.52.1
+      (#1220)
+    - build(deps): update all patch level dependencies (#1221)
+    - Update Rust version inside of rust-toolchain file (#1217)
+    - build(deps): update kubewarden/github-actions action to
+      v4.5.1 (#1216)
+    - build(deps): update github-actions (#1214)
+    - build(deps): update github-actions - autoclosed (#1212)
+    - build(deps): update rust crate tempfile to v3.20.0 (#1213)
+    - build(deps): update all minor level dependencies (#1206)
+    - build(deps): update rust crate clap to v4.5.38 (#1210)
+    - build(deps): update github-actions (#1211)
+
+-------------------------------------------------------------------
+Thu May 15 05:00:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.25.0:
+  * Features
+    - feat: Improve policy version handling and verification
+      (#1169)
+  * Bug Fixes
+    - fix(deps): remove deprecated actions-rs/cargo Github action.
+      (#1194)
+  * Maintenance
+    - Revert "build(deps): update rust crate clap to v4.5.38
+      (#1207)" (#1209)
+    - chore: v1.25.0 version update (#1208)
+    - build(deps): update rust crate clap to v4.5.38 (#1207)
+    - build(deps): update github-actions (#1204)
+    - chore(deps): removes some actions-rs/toolchain references.
+      (#1203)
+    - chore(deps): add rust-toolchain.toml (#1200)
+    - build(deps): update rust crate rustls-pki-types to v1.12.0
+      (#1202)
+    - build(deps): update taiki-e/install-action action to v2.50.9
+      (#1201)
+    - fix(deps): remove deprecated actions-rs/cargo Github action.
+      (#1194)
+    - build(deps): update taiki-e/install-action action to v2.50.8
+      (#1198)
+    - build(deps): update rust crate tokio to v1.45.0 (#1199)
+    - build(deps): update rust crate clap_complete to v4.5.50
+      (#1197)
+    - build(deps): update rust crate wasmparser to 0.230 (#1196)
+    - build(deps): update rust crate clap_complete to v4.5.49
+      (#1195)
+    - build(deps): update rust crate testcontainers to 0.24 (#1193)
+    - build(deps): update github-actions (#1192)
+    - build(deps): update rust crate clap-markdown to v0.1.5
+      (#1191)
+    - build(deps): update taiki-e/install-action action to v2.50.4
+      (#1190)
+
+-------------------------------------------------------------------
+Wed Apr 30 21:33:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- refactor '_service' file
+- Update to version 1.24.0:
+  * Features
+    - feat:Added a validate_policy_title function that validates
+      policy titles according to Kubernetes RFC 1123 (#1157)
+  * Bug Fixes
+    - chore(deps): fix RUSTSEC-2025-002 (#1175)
+    - fix(ci): build on windows (#1166)
+    - fix(cli): correct quotation marks with normal qutations.
+      (#1153)
+  * Maintenance
+    - build(deps): update github-actions (#1186)
+    - build(deps): update rust crate clap_complete to v4.5.48
+      (#1185)
+    - build(deps): update github-actions (#1183)
+    - chore: bump version to v1.24.0-rc3. (#1184)
+    - build(deps): update sigstore/cosign-installer action to
+      v3.8.2 (#1181)
+    - build(deps): update rust crate wasmparser to 0.229 (#1178)
+    - build(deps): update taiki-e/install-action action to v2.50.0
+      (#1180)
+    - build(deps): update rust crate clap to v4.5.37 (#1179)
+    - build(deps): update github-actions (#1177)
+    - build(deps): update all patch level dependencies (#1176)
+    - chore(deps): fix RUSTSEC-2025-002 (#1175)
+    - build(deps): update codecov/codecov-action action to v5.4.2
+      (#1174)
+    - build(deps): update all patch level dependencies (#1172)
+    - build(deps): update taiki-e/install-action action to v2.49.49
+      (#1173)
+    - build(deps): update github-actions (#1171)
+    - build(deps): update taiki-e/install-action action to v2.49.47
+      (#1168)
+    - build(deps): update github-actions (#1167)
+    - build(deps): update rust crate tokio to v1.44.2 (#1164)
+    - build(deps): update taiki-e/install-action action to v2.49.45
+      (#1165)
+    - build(deps): update taiki-e/install-action action to v2.49.44
+      (#1163)
+    - build(deps): update rust crate wasmparser to 0.228 (#1161)
+    - build(deps): update all patch level dependencies (#1159)
+    - build(deps): update taiki-e/install-action action to v2.49.43
+      (#1160)
+    - build(deps): update github-actions (#1158)
+    - build(deps): update github-actions (#1156)
+    - build(deps): update github-actions (#1152)
+    - build(deps): update rust crate clap to v4.5.34 (#1155)
+
+-------------------------------------------------------------------
 Thu Apr 17 20:53:54 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
-- spec-cleaner run 
+- spec-cleaner run
 
 -------------------------------------------------------------------
 Mon Apr 14 20:13:30 UTC 2025 - Robert Sirchia <rsirchia@outlook.com>

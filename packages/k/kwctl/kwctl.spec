@@ -17,15 +17,17 @@
 
 
 Name:           kwctl
-Version:        1.23.0
+Version:        1.27.1
 Release:        0
-Summary:        kwctl is the go-to CLI tool for Kubewarden users.
+Summary:        The go-to CLI tool for Kubewarden users
 License:        Apache-2.0
 URL:            https://kubewarden.io/
-Source0:        https://github.com/kubewarden/kwctl/archive/refs/tags/v%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
+BuildRequires:  cargo >= 1.74
 BuildRequires:  zstd
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 kwctl is the go-to CLI tool for Kubewarden users.
