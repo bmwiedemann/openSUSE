@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jul 29 19:20:30 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.29 → 10.2.30
+
+-------------------------------------------------------------------
+Tue Jul 29 16:20:37 CEST 2025 - Fabian Vogt <fvogt@suse.de>
+
+- Fix repartitioning with parted
+
+  parted does locking itself already. Wrapping it in udevadm lock results
+  in a deadlock, breaking boot.
+
+-------------------------------------------------------------------
+Mon Jul 28 16:23:38 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update test-image-disk-simple integration test
+
+  Update slfo/test-image-disk-simple. Add more space for
+  flake testing and add a user to test flakes for non root
+
+-------------------------------------------------------------------
+Fri Jul 25 12:49:44 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Catch potential exceptions from pathlib.Path.mkdir
+
+  Creating a directory can fail, we should catch this error
+  instead of ending up in a stack trace
+
+-------------------------------------------------------------------
 Thu Jul 24 19:42:56 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.2.28 → 10.2.29

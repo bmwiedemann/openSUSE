@@ -3043,4 +3043,24 @@
   This Fixes #2863</comment>
     <requestid>1295613</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>6e6a0131cf12853680b1dbf034aecbfc</srcmd5>
+    <version>10.2.30</version>
+    <time>1753976695</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 10.2.29 → 10.2.30
+
+- Fix repartitioning with parted
+  parted does locking itself already. Wrapping it in udevadm lock results
+  in a deadlock, breaking boot.
+
+- Update test-image-disk-simple integration test
+  Update slfo/test-image-disk-simple. Add more space for
+  flake testing and add a user to test flakes for non root
+
+- Catch potential exceptions from pathlib.Path.mkdir
+  Creating a directory can fail, we should catch this error
+  instead of ending up in a stack trace</comment>
+    <requestid>1296359</requestid>
+  </revision>
 </revisionlist>
