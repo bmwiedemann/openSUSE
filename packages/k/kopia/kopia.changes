@@ -1,4 +1,158 @@
 -------------------------------------------------------------------
+Thu Jul 24 11:13:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.21.1:
+  * Server
+    - fixed scheduling bug (#4732) by Jarek Kowalski
+  * Storage Providers
+    - New Feature Azure Federated Identity support (#4728) by Julio
+      Lopez
+
+-------------------------------------------------------------------
+Thu Jul 24 11:02:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.21.0:
+  * Command-Line Interface
+    - New Feature human-readable sizes for kopia ls (#4696) by Kian
+      Kasad
+    - New Feature add --disable-file-logging to suppress log file
+      output (#4686) by Leonardo Cecchi
+    - fix path printed by "kopia snapshot fix" commands (#4638) by
+      Kian Kasad
+  * General Improvements
+    - cleanup clock bounds check (#4720) by Julio Lopez
+    - New Feature check for clock skew on write session creation
+      (#4719) by Julio Lopez
+    - rename variable to humanReadable for consistency (#4709) by
+      Julio Lopez
+    - use require to cleanup snapshot tests (#4708) by Julio Lopez
+    - add {peta,exa}byte prefixes (#4707) by Julio Lopez
+    - use snapshot end time as tie breaker for equal start time
+      (#4705) by Julio Lopez
+    - minor cleanups (#4704) by Julio Lopez
+    - migrate remnant piece to crypto/hkdf (#4691) by Julio Lopez
+    - migrate to crypto/{hkdf,pbkdf2,sha3} (#4678) by Julio Lopez
+    - small misc. cleanups (#4666) by Julio Lopez
+    - typos (#4659) by Nathan Baulch
+    - misc cleanups (#4652) by Julio Lopez
+    - enable forcetypeassert linter (#4624) by Julio Lopez
+    - minor cleanups (#4621) by Julio Lopez
+    - upload tests (#4619) by Julio Lopez
+    - misc cleanups (#4615) by Julio Lopez
+    - minor cleanups in snapshot GC (#4612) by Julio Lopez
+    - convenience make targets to install tools (#4616) by Julio
+      Lopez
+    - s/interface{}/any/ (#4614) by Julio Lopez
+    - fix TestSnapshotNoLeftoverCheckpoints slowness (#4611) by
+      Julio Lopez
+  * Repository
+    - create minimal cache.Storage interface (#4618) by Jarek
+      Kowalski
+  * Server
+    - fix snapshot scheduling in the event of machine goes to sleep
+      (#4682) by Jarek Kowalski
+  * Snapshots
+    - New Feature Add periodic JSON progress output to snapshot
+      verify (#4645) by Nick
+    - completely ignore unsupported entries instead of reporting
+      them as ignored errors to avoid snapshot warnings (#4613) by
+      Jarek Kowalski
+  * Storage Providers
+    - Azure client cert env var (#4726) by Julio Lopez
+    - rename Options.ClientCertificate for clarity (#4724) by Julio
+      Lopez
+    - add omitempty JSON tags in azure.Options (#4721) by Julio
+      Lopez
+    - add tags in azure.Options (#4716) by Julio Lopez
+  * CI/CD
+    - upgrade to Go 1.24 (#4675) by Julio Lopez
+    - pin actions (#4657) by Julio Lopez
+    - upgrade Go toolchain to 1.23.10 (#4656) by Julio Lopez
+    - include date-time in temp dir name used for tests (#4651) by
+      Julio Lopez
+  * Graphical User Interface
+    - extracted formatting utilities to separate module (#370) by
+      Jarek Kowalski
+    - moved policy utils to a separate module (#367) by Jarek
+      Kowalski
+    - component refactoring (#365) by Jarek Kowalski
+    - fixed warnings during 'npm test' (#345) by Jarek Kowalski
+    - reorganized test utilities (#369) by Jarek Kowalski
+    - speed up tests that use polling with long intervals (#368) by
+      Jarek Kowalski
+    - refactored router mock setup (#366) by Jarek Kowalski
+    - move cancelTask to a separate module (#364) by Jarek Kowalski
+    - added test for top-level index.jsx (#363) by Jarek Kowalski
+    - added tests for the App component (#362) by Jarek Kowalski
+    - added tests for Policies page (#361) by Jarek Kowalski
+    - added tests for DirectoryItems (#360) by Jarek Kowalski
+    - added tests for DirectoryBreadcrums (#359) by Jarek Kowalski
+    - added tests for SnapshotCreate component (#358) by Jarek
+      Kowalski
+    - added tests for SnapshotDirectory component (#357) by Jarek
+      Kowalski
+    - added forms test (#351) by Jarek Kowalski
+    - more test coverage (#350) by Jarek Kowalski
+    - added tests for the Logs component (#349) by Jarek Kowalski
+    - add tests for Snapshots tab (#348) by Jarek Kowalski
+    - added tests for the Repository tab (#347) by Jarek Kowalski
+    - added tests for Tasks (#346) by Jarek Kowalski
+    - added tests for TimesOfDayTest component (#344) by Jarek
+      Kowalski
+    - added tests for snapshot estimation (#343) by Jarek Kowalski
+    - increased coverage for NotificationEditor.jsx (#342) by Jarek
+      Kowalski
+    - added tests for remaining repository setup pages (#341) by
+      Jarek Kowalski
+    - increase code coverage (#340) by Jarek Kowalski
+    - moved tests to tests/ directory and reorganized by their
+      target (#339) by Jarek Kowalski
+  * Dependencies
+    - build(deps): bump the common-golang-dependencies group with 9
+      updates (#4718)
+    - build(deps): bump google.golang.org/api (#4715)
+    - build(deps): bump github/codeql-action in the github-actions
+      group (#4701)
+    - build(deps): bump docker/setup-buildx-action in the docker
+      group (#4702)
+    - build(deps): bump dawidd6/action-homebrew-bump-formula from 4
+      to 5 (#4703)
+    - build(deps): bump the telemetry-dependencies group with 4
+      updates (#4699)
+    - build(deps): bump github.com/mocktools/go-smtp-mock/v2
+      (#4697)
+    - build(deps): bump google.golang.org/api (#4698)
+    - build(deps): bump github.com/chromedp/chromedp from 0.13.6 to
+      0.13.7 (#4688)
+    - build(deps): bump github.com/prometheus/common (#4687)
+    - build(deps): bump the common-golang-dependencies group with 2
+      updates (#4676)
+    - build(deps): bump github.com/hanwen/go-fuse/v2 from 2.7.2 to
+      2.8.0 (#4672)
+    - build(deps): bump the common-golang-dependencies group with 2
+      updates (#4671)
+    - build(deps): bump github/codeql-action in the github-actions
+      group (#4664)
+    - build(deps): bump
+      github.com/Azure/azure-sdk-for-go/sdk/azidentity (#4662)
+    - build(deps): bump the common-golang-dependencies group with 7
+      updates (#4660)
+    - build(deps): bump github.com/mocktools/go-smtp-mock/v2
+      (#4647)
+    - build(deps): bump the common-golang-dependencies group with 2
+      updates (#4646)
+    - build(deps): bump the telemetry-dependencies group with 4
+      updates (#4608)
+    - build(deps): bump the github-actions group with 2 updates
+      (#4632)
+    - build(deps): bump codecov/codecov-action from 5.4.2 to 5.4.3
+      (#4634)
+    - build(deps): bump ossf/scorecard-action from 2.4.1 to 2.4.2
+      (#4633)
+    - build(deps): bump the common-golang-dependencies group with 2
+      updates (#4607)
+
+-------------------------------------------------------------------
 Mon May 26 04:45:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.20.1:

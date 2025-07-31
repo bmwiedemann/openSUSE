@@ -17,14 +17,14 @@
 
 
 Name:           kopia
-Version:        0.20.1
+Version:        0.21.1
 Release:        0
 Summary:        Cross-platform backup tool with fast incremental backups
 License:        Apache-2.0
 URL:            https://github.com/kopia/kopia
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.22
+BuildRequires:  golang(API) >= 1.24
 
 %description
 Kopia is a fast and secure open-source backup/restore tool that allows you to
