@@ -192,6 +192,7 @@ Requires: cockpit-system
 # Optional components
 Recommends: (cockpit-storaged if udisks2)
 Recommends: (cockpit-packagekit if (dnf or zypper))
+Recommends: (cockpit-firewalld if firewalld)
 Suggests: python3-pcp
 
 %if 0%{?rhel} == 0
@@ -924,6 +925,32 @@ via PackageKit.
 
 %files -n cockpit-packagekit -f packagekit.list
 %license COPYING
+
+%package firewalld
+Summary: Allows Cockpit access through the firewall
+Requires: cockpit-bridge >= %{required_base}
+Requires: firewalld
+BuildArch: noarch
+
+%description firewalld
+This package allows Cockpit access through the firewall
+
+%files firewalld
+%license COPYING
+
+%postun firewalld
+if test -f %{_bindir}/firewall-cmd && firewall-cmd --state &>/dev/null; then
+    firewall-cmd --quiet --permanent --remove-service=cockpit && firewall-cmd --reload --quiet || true
+elif test -f %{_bindir}/firewall-offline-cmd; then
+    firewall-offline-cmd --quiet --remove-service=cockpit || true
+fi
+
+%posttrans firewalld
+if test -f %{_bindir}/firewall-cmd && firewall-cmd --state &>/dev/null; then
+    firewall-cmd --quiet --permanent --add-service=cockpit && firewall-cmd --reload --quiet || true
+elif test -f %{_bindir}/firewall-offline-cmd; then
+    firewall-offline-cmd --quiet --add-service=cockpit || true
+fi
 
 # The changelog is automatically generated and merged
 %changelog

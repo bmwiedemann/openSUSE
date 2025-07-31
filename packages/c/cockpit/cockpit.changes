@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 30 03:21:48 UTC 2025 - Luna D Dragon <luna.dragon@suse.com>
+
+- drop duplicate %changelog macro
+
+-------------------------------------------------------------------
+Wed Jul 23 12:53:37 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Add %postun for firewalld package to ensure the firewall state
+  remains as expected
+
+-------------------------------------------------------------------
+Mon Jul 21 11:39:56 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Add cockpit-firewalld package for easily configuring the users
+  firewall jsc#PED-13228
+
+-------------------------------------------------------------------
 Tue Jul 15 07:00:10 UTC 2025 - Luna D Dragon <luna.dragon@suse.com>
 
 - add 0001-cockpit-overview-support-SUSE_SUPPORT_PRODUCT-keys.patch

@@ -744,4 +744,18 @@ For details, see https://cockpit-project.org/blog/cockpit-322.html</comment>
   * Add 0009-packagekit-reboot-notification.patch</comment>
     <requestid>1294141</requestid>
   </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>1bd64a67333dfd0508ac6241fe31b796</srcmd5>
+    <version>340</version>
+    <time>1753976699</time>
+    <user>dimstar_suse</user>
+    <comment>- drop duplicate %changelog macro
+
+- Add %postun for firewalld package to ensure the firewall state
+  remains as expected
+
+- Add cockpit-firewalld package for easily configuring the users
+  firewall jsc#PED-13228</comment>
+    <requestid>1296485</requestid>
+  </revision>
 </revisionlist>
