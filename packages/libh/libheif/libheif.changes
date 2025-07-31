@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 29 08:01:31 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Remove conditionals for openh264, we can build against noopenh264
+
+-------------------------------------------------------------------
 Sat Jul  5 15:51:19 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 1.20.1:

@@ -28,7 +28,6 @@
 %define gdk_pixbuf_binary_version 2.10.0
 %bcond_with x265
 %bcond_with kvazaar
-%bcond_with openh264
 %bcond_with openjpeg
 %bcond_with openjph
 %bcond_with svtenc
@@ -65,6 +64,7 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libbrotlienc)
 BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(openh264)
 %if %{with heif_view}
 BuildRequires:  pkgconfig(sdl2)
 %endif
@@ -75,9 +75,6 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libwebp)
 %if %{with kvazaar}
 BuildRequires:  pkgconfig(kvazaar)
-%endif
-%if %{with openh264}
-BuildRequires:  pkgconfig(openh264)
 %endif
 %if %{with openjph}
 BuildRequires:  pkgconfig(openjph)
@@ -318,12 +315,8 @@ sed -i '/add_libheif_test(encode)/d' tests/CMakeLists.txt
 	-DWITH_OpenJPEG_DECODER_PLUGIN=ON \
 	-DWITH_OpenJPEG_ENCODER=ON \
 	-DWITH_OpenJPEG_ENCODER_PLUGIN=ON \
-%if %{with openh264}
 	-DWITH_OpenH264_DECODER=ON \
 	-DWITH_OpenH264_DECODER_PLUGIN=ON \
-%else
-	-DWITH_OpenH264_DECODER=OFF \
-%endif
 %if %{with openjph}
 	-DWITH_OPENJPH_ENCODER=ON \
 	-DWITH_OPENJPH_ENCODER_PLUGIN=ON \
@@ -417,10 +410,8 @@ rm -f %{buildroot}%{_datadir}/thumbnailers/heif.thumbnailer
 %{_libexecdir}/libheif/libheif-j2kenc.so
 %endif
 
-%if %{with openh264}
 %files openh264
 %{_libexecdir}/libheif/libheif-openh264dec.so
-%endif
 
 %if %{with openjph}
 %files openjph
