@@ -1,7 +1,7 @@
 #
 # spec file for package rpcbind
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           rpcbind
-Version:        1.2.7
+Version:        1.2.8
 Release:        0
 Summary:        Transport independent RPC portmapper
 # Git-Web:      http://git.linux-nfs.org/?p=steved/rpcbind.git;a=summary
@@ -31,9 +31,6 @@ URL:            http://rpcbind.sourceforge.net
 Source:         https://downloads.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
 Source2:        sysconfig.rpcbind
 Source5:        rpc-user.conf
-Patch1:         0001-systemd-rpcbind.service-Fix-ordering-add-etc-sysconf.patch
-Patch2:         0001-change-lockingdir-to-run.patch
-Patch3:         0001-systemd-rpcbind.service-Add-hardening-bsc-1181400.patch
 BuildRequires:  libtirpc-devel >= 1.0.1
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul 28 07:14:31 UTC 2025 - Petr Vorel <pvorel@suse.cz>
+
+- Update to rpcbind 1.2.8
+  https://lore.kernel.org/linux-nfs/b553cc5a-46eb-453b-80f0-cfe69ccb7b21@redhat.com/
+  * Added -v (print version and compile flags)
+  * A number of systemd updates/bug fixes.
+  * A number of manpage updates.
+  * Moved rpcbind.lock and default configs to /run instead of /var/run
+  * A couple of bug fixes
+- systemd: Upstream added systemd EnvironmentFile: 1) /etc/rpcbind.conf 2)
+  /etc/default/rpcbind 3) /etc/sysconfig/rpcbind (the only one originally used
+  in openSUSE patch for boo#1117217)
+- systemd: Add 'systemd-tmpfiles-setup.service' into 'Wants' and 'After'
+  targets (originally openSUSE patch for boo#1117217 added 'After=sysinit.target')
+- Removed openSUSE downstream patches (accepted upstream):
+  * 0001-systemd-rpcbind.service-Fix-ordering-add-etc-sysconf.patch
+  * 0001-systemd-rpcbind.service-Add-hardening-bsc-1181400.patch
+  * 0001-change-lockingdir-to-run.patch
+
+-------------------------------------------------------------------
 Wed Dec 11 03:20:26 UTC 2024 - William Brown <william.brown@suse.com>
 
 - Require system-user-nobody for as the rpc user relies on `nobody`
