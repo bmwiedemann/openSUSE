@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar  9 02:34:20 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update vty to version 6.4.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/vty-6.4/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Tue Feb 25 08:18:26 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Jailbreak over-specified constraint on microlens to fix the build.

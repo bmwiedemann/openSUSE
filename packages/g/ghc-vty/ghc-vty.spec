@@ -19,7 +19,7 @@
 %global pkg_name vty
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        6.2
+Version:        6.4
 Release:        0
 Summary:        A simple terminal UI library
 License:        BSD-3-Clause
@@ -63,12 +63,8 @@ ExcludeArch:    %{ix86}
 Vty is terminal GUI library in the niche of ncurses. It is intended to be easy
 to use and to provide good support for common terminal types.
 
-See the 'vty-examples' package as well as the program
-'examples/interactive_terminal_test.hs' included in the 'vty' repository for
-examples on how to use the library.
-
-Import the 'Graphics.Vty' convenience module to get access to the core parts of
-the library.
+See the example programs in the 'vty-crossplatform' package examples on how to
+use the library.
 
 &#169; 2006-2007 Stefan O'Rear; BSD3 license.
 
@@ -104,7 +100,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver microlens '< 0.4.14' '< 5'
 
 %build
 %ghc_lib_build
