@@ -1225,4 +1225,13 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1294977</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>3fa1a5ead59236e5100ddcd9f007e9b7</srcmd5>
+    <version>11.3.3</version>
+    <time>1753976710</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 11.3.3:
+  + Fix bug in vertical shaping of fonts without the vmtx table. (forwarded request 1296051 from iznogood)</comment>
+    <requestid>1296652</requestid>
+  </revision>
 </revisionlist>
