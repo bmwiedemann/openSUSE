@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun 13 16:44:53 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update resource-pool to version 0.5.0.0.
+  # resource-pool-0.5.0.0 (2025-06-13)
+  * Drop support for GHC < 8.10.
+  * Use STM based lockless implementation as it results in much better throughput
+    in a multi-threaded environment when number of stripes is not equal to the
+    number of capabilities (in particular with a single stripe).
+  * Stop running resource freeing functions within `uninterruptibleMask`.
+  * `destroyResource` no longer ignores exceptions thrown from resource releasing
+    functions.
+  * Change the default number of stripes to 1.
+  * Do not exceed the maximum number of resources if the number of stripes does
+    not divide it.
+  * Add support for assigning a label to the pool.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:05 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

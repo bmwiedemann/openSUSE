@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-resource-pool
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name resource-pool
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.4.0.0
+Version:        0.5.0.0
 Release:        0
 Summary:        A high-performance striped resource pooling implementation
 License:        BSD-3-Clause
@@ -33,6 +33,10 @@ BuildRequires:  ghc-hashable-prof
 BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-primitive-prof
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-stm-devel
+BuildRequires:  ghc-stm-prof
+BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-time-prof
 ExcludeArch:    %{ix86}
