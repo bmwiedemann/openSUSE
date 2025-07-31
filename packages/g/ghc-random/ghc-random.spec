@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-random
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.2.1.3
+Version:        1.3.1
 Release:        0
 Summary:        Pseudo-random number generation
 License:        BSD-3-Clause
@@ -38,6 +38,8 @@ BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-splitmix-devel
 BuildRequires:  ghc-splitmix-prof
+BuildRequires:  ghc-transformers-devel
+BuildRequires:  ghc-transformers-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-containers-devel
@@ -49,13 +51,9 @@ BuildRequires:  ghc-stm-prof
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
 BuildRequires:  ghc-tasty-hunit-prof
-BuildRequires:  ghc-tasty-inspection-testing-devel
-BuildRequires:  ghc-tasty-inspection-testing-prof
 BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-tasty-smallcheck-devel
 BuildRequires:  ghc-tasty-smallcheck-prof
-BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-transformers-prof
 %endif
 
 %description
