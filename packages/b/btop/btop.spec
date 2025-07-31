@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define ROCm_version 6.4.1
+%define ROCm_version 6.4.2
 Name:           btop
-Version:        1.4.4+git20250703.762d0b4
+Version:        1.4.4+git20250718.86ec5fd
 Release:        0
 Summary:        Usage and stats for processor, memory, disks, network and processes
 License:        Apache-2.0
@@ -34,7 +34,7 @@ BuildRequires:  sed
 %if 0%{?suse_version} < 1550
 BuildRequires:  gcc13-c++
 %define cxxflags CXXFLAGS="%{optflags} -fPIE"
-%define cxxopt CXX="g++-13"
+%define cxxopt CXX="g++-13" CC=gcc-13
 ### Throws:
 # ... relocation R_X86_64_32S against hidden symbol `_ZTVN3fmt3v1012format_errorE' can not be used when
 #   making a PIE object ..." error when '-pie' is used

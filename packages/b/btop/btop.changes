@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 24 05:19:16 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating ROCm to v6.4.2
+- Update to version 1.4.4+git20250718.86ec5fd:
+  * Changed decimal points to always be dots regardless of locale, issue #1183
+  * Fix --tty/--no-tty flag having no effect
+  * Update README.md (#1194)
+  * docs: spelling and formatting fixes in README.md (#1182)
+
+-------------------------------------------------------------------
 Fri Jul 04 00:59:05 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 1.4.4+git20250703.762d0b4:
