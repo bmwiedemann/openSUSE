@@ -30,9 +30,14 @@ Source2:        %{name}.keyring
 # PATCH-FEATURE-OPENSUSE up_one_line_message_length.patch
 Patch0:         up_one_line_message_length.patch
 Patch1:         mcabber-1.1.2-gcc15.patch
+Patch2:         mcabber-1.1.2-enchant-2.patch
+# for mcabber-1.1.2-enchant-2.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  fdupes
+BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.16
-BuildRequires:  pkgconfig(enchant)
+BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.14.0
 BuildRequires:  pkgconfig(gpgme) >= 1.0.0
 BuildRequires:  pkgconfig(libotr) >= 4.0.0
@@ -59,6 +64,8 @@ conferences (MUC) support.
 mv -f %{name}rc.example %{name}rc
 
 %build
+# for mcabber-1.1.2-enchant-2.patch
+autoreconf -fiv
 %configure \
   --enable-enchant \
   --enable-hgcset \

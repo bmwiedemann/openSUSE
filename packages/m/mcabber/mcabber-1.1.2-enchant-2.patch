@@ -1,0 +1,21 @@
+
+# HG changeset patch
+# User Mikael Berthe <mikael@lilotux.net>
+# Date 1685456990 -7200
+# Node ID d5486807b6375188767650d7bf9c039244303cd8
+# Parent  ca442ece1f702f649bdd1ee2454381f4cf6ddd6d
+Switch to enchant 2
+
+Index: mcabber-1.1.2/configure.ac
+===================================================================
+--- mcabber-1.1.2.orig/configure.ac
++++ mcabber-1.1.2/configure.ac
+@@ -233,7 +233,7 @@ AC_ARG_ENABLE(aspell,
+               enable_aspell=$enableval, aspell="")
+ 
+ if test "x$enable_enchant" = "xyes"; then
+- PKG_CHECK_MODULES(ENCHANT, [enchant],
++ PKG_CHECK_MODULES(ENCHANT, [enchant-2],
+    AC_DEFINE(WITH_ENCHANT, 1, [Define if you want enchant support])
+  )
+ else

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 30 13:11:27 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- move to enchant-2, add mcabber-1.1.2-enchant-2.patch
+
+-------------------------------------------------------------------
 Wed Jul 23 21:02:07 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix gcc15 build - add mcabber-1.1.2-gcc15.patch
