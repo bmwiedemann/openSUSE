@@ -25,6 +25,7 @@ FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
 
 RUN set -euo pipefail; \
+    export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1; \
     zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends tomcat10 java-21-openjdk java-21-openjdk-headless; \
     zypper -n --installroot /target remove util-linux
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
