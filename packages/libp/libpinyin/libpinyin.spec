@@ -107,6 +107,7 @@ This package provides the tools used to make data files.
     --with-dbm=KyotoCabinet \
     --disable-silent-rules \
     --enable-libzhuyin
+setarch -R \
 %make_build
 
 %install
