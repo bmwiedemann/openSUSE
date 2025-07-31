@@ -188,4 +188,12 @@ IMO the Conflicts tag is unavoidable, hence adding.
 - drop Bump-golang.org-x-net-from-0.32.0-to-0.33.0.patch (upstream)</comment>
     <requestid>1293054</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>a973faea01704c0488b709188b24dc7d</srcmd5>
+    <version>4.46.1</version>
+    <time>1753976762</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1296513</requestid>
+  </revision>
 </revisionlist>

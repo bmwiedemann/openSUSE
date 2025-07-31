@@ -83,8 +83,8 @@ go test ./...
 install -D -m 0755 ./bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions
 %{buildroot}/%{_bindir}/%{name} shell-completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d
-%{buildroot}/%{_bindir}/%{name} shell-completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions
+%{buildroot}/%{_bindir}/%{name} shell-completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
 %{buildroot}/%{_bindir}/%{name} shell-completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
@@ -95,8 +95,9 @@ mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
 
 %files zsh-completion
 %defattr(-,root,root)
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{name}
+%dir %{_datarootdir}/zsh/
+%dir %{_datarootdir}/zsh/site-functions/
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %files fish-completion
 %defattr(-,root,root)
