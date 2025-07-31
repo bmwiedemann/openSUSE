@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jul 19 15:41:01 UTC 2025 - marec <marec@detebe.org>
+
+- update to 0.9.8:
+  - Added rudimentary support for iTunes MVNM and MVIN frames. (#644)
+  - Added support for Python 3.11, 3.12, and 3.13
+  - Using PDM for dependency management.
+  - Raise GenreException instead of ValueError
+  - Removed support for Python 3.7 and 3.8
+  - recording date fix (#623) (TJ-59)
+  - improve printing of WXXX frames (#662)
+  - align output from classic plugin (#660)
+  - classic plugin: decode ufid.owner_id for display (#661)
+  - handle BrokenPipeError (#663)
+  - Improved TextFrame ID checking.
+  - Fix dependency on coverage to be conditional to test extra (#606)
+  - Skip tests if the data directory isn't found (#647)
+- removed skip-tests-that-require-external-data.patch as it is not needed anymore
+
+-------------------------------------------------------------------
 Fri Apr 11 03:50:10 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
