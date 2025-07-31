@@ -20,9 +20,9 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.12.1.0
+Version:        3.14.1.0
 Release:        0
-Summary:        The command-line interface for Cabal and Hackage
+Summary:        The solver component of cabal-install
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
@@ -66,7 +66,7 @@ BuildRequires:  ghc-tasty-quickcheck-prof
 %endif
 
 %description
-The solver component used in cabal-install command-line program.
+The solver component used in the cabal-install command-line program.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -97,8 +97,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver Cabal '^>=3.12.1.0' '< 4'
-cabal-tweak-dep-ver Cabal-syntax '^>=3.12.1.0' '< 4'
 
 %build
 %ghc_lib_build
