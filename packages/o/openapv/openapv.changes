@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 30 19:03:49 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 0.2.0.1:
+  * Fixed bug in case of zero-byte metadata payload
+  * Improve ImHex pattern file to show metadata syntaxes
+
+-------------------------------------------------------------------
 Wed Jul 23 14:23:43 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - disable building on %{ix86}

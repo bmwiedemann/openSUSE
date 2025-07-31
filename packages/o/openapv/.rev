@@ -31,4 +31,14 @@
 - remove 010-openapv-fix-pkgconfig.patch, upstream applied the patch</comment>
     <requestid>1295353</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c9468f9039069886ca31d51c5d28bd2a</srcmd5>
+    <version>0.2.0.1</version>
+    <time>1753976810</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.2.0.1:
+  * Fixed bug in case of zero-byte metadata payload
+  * Improve ImHex pattern file to show metadata syntaxes</comment>
+    <requestid>1296663</requestid>
+  </revision>
 </revisionlist>
