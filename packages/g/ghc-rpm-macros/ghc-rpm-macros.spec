@@ -18,7 +18,7 @@
 
 %global without_hscolour 1
 Name:           ghc-rpm-macros
-Version:        2.6.4
+Version:        2.9.1
 Release:        0
 Summary:        RPM Macros for building packages for GHC
 License:        GPL-3.0-or-later
@@ -26,7 +26,6 @@ Group:          Development/Libraries/Other
 URL:            https://fedoraproject.org/wiki/Haskell_SIG
 # source gets updated with osc service dr
 Source0:        %{name}-%{version}.tar.xz
-Patch1:         https://github.com/opensuse-haskell/ghc-rpm-macros/pull/1.patch#/reproducible-builds.patch
 BuildRequires:  xz
 Requires:       rpm
 Requires:       chrpath
@@ -50,7 +49,7 @@ Extra macros used for subpackaging of Haskell libraries,
 for example in ghc and haskell-platform.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 echo no build stage needed

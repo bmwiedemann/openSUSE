@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 25 13:35:26 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2.9.1
+ * sync with upstream
+ + merge and drop reproducible-builds.patch
+
+-------------------------------------------------------------------
 Thu Nov  9 02:21:34 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 2.6.1
