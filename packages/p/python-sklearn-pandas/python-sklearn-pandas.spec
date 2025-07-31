@@ -25,6 +25,8 @@ URL:            https://github.com/scikit-learn-contrib/sklearn-pandas
 Source:         %{url}/archive/v%{version}.tar.gz#/sklearn-pandas-%{version}-gh.tar.gz
 # PATCH-FIX-UPSTREAM gh#scikit-learn-contrib/sklearn-pandas#266
 Patch0:         remove-six.patch
+# PATCH-FIX-OPENSUSE Support sklearn >= 1.7
+Patch1:         support-new-sklearn.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

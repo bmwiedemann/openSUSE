@@ -1,0 +1,19 @@
+Index: sklearn-pandas-2.2.0/sklearn_pandas/pipeline.py
+===================================================================
+--- sklearn-pandas-2.2.0.orig/sklearn_pandas/pipeline.py
++++ sklearn-pandas-2.2.0/sklearn_pandas/pipeline.py
+@@ -1,5 +1,4 @@
+ from sklearn.pipeline import _name_estimators, Pipeline
+-from sklearn.utils import tosequence
+ 
+ 
+ def _call_fit(fit_method, X, y=None, **kwargs):
+@@ -41,7 +40,7 @@ class TransformerPipeline(Pipeline):
+                 "Provided step names are not unique: %s" % (names,))
+ 
+         # shallow copy of steps
+-        self.steps = tosequence(steps)
++        self.steps = steps
+         estimator = estimators[-1]
+ 
+         for e in estimators:

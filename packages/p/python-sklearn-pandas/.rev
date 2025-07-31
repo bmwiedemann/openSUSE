@@ -74,4 +74,13 @@
 - Switch to autosetup and pyproject macros.</comment>
     <requestid>1235770</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>30b03e6a4b95e82d0835007f1f30e5b8</srcmd5>
+    <version>2.2.0</version>
+    <time>1753976823</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-new-sklearn.patch:
+  * Support sklearn &gt;= 1.7 changes.</comment>
+    <requestid>1296707</requestid>
+  </revision>
 </revisionlist>
