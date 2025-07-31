@@ -24,6 +24,7 @@ License:        BSD-Source-Code
 Group:          Development/Tools/Version Control
 URL:            https://invisible-island.net/rcshist/rcshist.html
 Source:         https://github.com/ThomasDickey/rcshist-snapshots/archive/%{version}.tar.gz#/%{name}-snapshots-%{version}.tar.gz
+Recommends:     rcs
 
 %description
 This utility displays the complete revision history of a set of
@@ -39,8 +40,6 @@ reverse date order over all revisions of all files.
 
 %install
 %make_install
-
-%check
 
 %files
 %license COPYING
