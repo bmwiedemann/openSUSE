@@ -523,4 +523,13 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
     <comment>- buildrequire cmake3 on older SLES versions for build (forwarded request 1288194 from msmeissn)</comment>
     <requestid>1288195</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>48a8c2283b72515195fafd2e0fef178d</srcmd5>
+    <version>0.1.77</version>
+    <time>1753976763</time>
+    <user>dimstar_suse</user>
+    <comment>- ssg-remove-cis.patch: remove cis profiles 
+- Update description: remove cis profiles</comment>
+    <requestid>1296600</requestid>
+  </revision>
 </revisionlist>

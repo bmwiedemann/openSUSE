@@ -51,6 +51,7 @@ URL:            https://github.com/ComplianceAsCode/content
 Packager:       SUSE Security Team <security@suse.de>
 %endif
 Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
+Patch0:         ssg-remove-cis.patch
 
 # explicit require what is needed by the detection logic in the scripts
 Requires:       coreutils
@@ -167,7 +168,6 @@ SUSE supported in this version of scap-security-guide:
 - ANSSI-BP-028 profile for SUSE Linux Enterprise Server 12 and 15
 - PCI-DSS profile for SUSE Linux Enterprise Server 12 and 15
 - HIPAA profile for SUSE Linux Enterprise Server 12 and 15
-- CIS profile for SUSE Linux Enterprise Server 12 and 15
 - Hardening for Public Cloud Image of SUSE Linux Enterprise Server for SAP Applications 15
 - Public Cloud Hardening for SUSE Linux Enterprise 15
 
@@ -218,6 +218,7 @@ Note that the included profiles are community supplied and not officially suppor
 
 %prep
 %setup -q -n content-%version
+%patch -P 0
 
 %build
 cd build
