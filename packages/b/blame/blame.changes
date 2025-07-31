@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 24 08:30:33 UTC 2025 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Add "Recommends: rcs" to spec file
+
+-------------------------------------------------------------------
 Tue Jan  7 23:27:45 UTC 2025 - Manfred Schwarb <manfred99@gmx.ch>
 
 - update to version 1.4 snapshot t20250101:
@@ -31,13 +36,13 @@ Tue Nov  8 16:56:32 UTC 2022 - Manfred Schwarb <manfred99@gmx.ch>
 - update to snapshot t20221108:
   * minor cleanup of README and blame.1
   * add VERSION file
-  * config and install-sh updates 
+  * config and install-sh updates
 
 -------------------------------------------------------------------
 Mon Oct  3 09:05:02 UTC 2022 - Manfred Schwarb <manfred99@gmx.ch>
 
 - update to snapshot t20220129:
-  * configure and makefile updates 
+  * configure and makefile updates
 
 -------------------------------------------------------------------
 Sun May  2 21:41:11 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>

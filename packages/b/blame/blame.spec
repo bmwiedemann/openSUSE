@@ -27,6 +27,7 @@ License:        GPL-2.0-only
 Group:          Development/Tools/Version Control
 URL:            https://invisible-island.net/rcs-blame/rcs-blame.html
 Source:         https://github.com/ThomasDickey/rcs-blame-snapshots/archive/refs/tags/%{tversion}.tar.gz#/rcs-%{name}-snapshots-%{tversion}.tar.gz
+Recommends:     rcs
 
 %description
 Blame displays the last modification for each line in an RCS file.
