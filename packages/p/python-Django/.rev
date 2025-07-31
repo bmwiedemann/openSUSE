@@ -1397,4 +1397,14 @@
 </comment>
     <requestid>1294515</requestid>
   </revision>
+  <revision rev="135" vrev="3">
+    <srcmd5>951a99b64c11b1e968a34ff6da72f9ba</srcmd5>
+    <version>5.2.4</version>
+    <time>1753976698</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-msgfmt-0.25.patch:
+  * Support msgfmt 0.25 error messages changes. (bsc#1246966)
+- Remove unneeded Requires on tzdata.</comment>
+    <requestid>1296418</requestid>
+  </revision>
 </revisionlist>

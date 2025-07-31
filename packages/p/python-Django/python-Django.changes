@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 30 06:03:44 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-msgfmt-0.25.patch:
+  * Support msgfmt 0.25 error messages changes. (bsc#1246966)
+- Remove unneeded Requires on tzdata.
+
+-------------------------------------------------------------------
 Sat Jul 19 06:51:37 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream test_strip_tags.patch to fix test errors with
