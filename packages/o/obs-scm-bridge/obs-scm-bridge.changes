@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 31 07:16:30 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- use the system default python version (boo#1247410)
+
+-------------------------------------------------------------------
 Mon Jul 28 14:53:36 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - 0.7.4

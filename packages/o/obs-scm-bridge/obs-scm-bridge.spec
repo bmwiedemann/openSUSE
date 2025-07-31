@@ -16,14 +16,15 @@
 #
 
 
+%if %{undefined primary_python}
+%define primary_python python3
+%endif
+
 %if 0%{?fedora} || 0%{?rhel}
 %define build_pkg_name obs-build
 %else
 %define build_pkg_name build
 %endif
-
-# this needs to match the usd python in github test suite
-%define our_python3_version 11
 
 Name:           obs-scm-bridge
 Version:        0.7.4
@@ -32,8 +33,8 @@ Summary:        A help service to work with git repositories in OBS
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/obs-scm-bridge
 Source0:        %{name}-%{version}.tar.xz
-BuildRequires:  python3%{our_python3_version}
-BuildRequires:  python3%{our_python3_version}-PyYAML
+BuildRequires:  %{primary_python}
+BuildRequires:  %{primary_python}-PyYAML
 Requires:       %{build_pkg_name} >= 20211125
 # these are just recommends in build package, but we need it here
 Requires:       perl(Date::Parse)
@@ -46,8 +47,8 @@ Requires:       perl(URI)
 Requires:       perl(XML::Parser)
 Requires:       perl(YAML::LibYAML)
 BuildArch:      noarch
-Requires:       python3%{our_python3_version}-PyYAML
-Recommends:     python3%{our_python3_version}-packaging
+Requires:       %{primary_python}-PyYAML
+Recommends:     %{primary_python}-packaging
 
 %description
 
@@ -55,7 +56,6 @@ Recommends:     python3%{our_python3_version}-packaging
 %autosetup
 
 %build
-sed -i 's,^#!/usr/bin/python3.*,#!/usr/bin/python3.%our_python3_version,' obs_scm_bridge
 
 %install
 make DESTDIR=%{buildroot} install
@@ -76,6 +76,6 @@ echo "src.opensuse.org" > %buildroot/etc/obs/services/scm-bridge/critical-instan
 %check
 # the test suite requires online resources unfortunatly
 # so let's at least test if our python version understands our syntax
-python3.%our_python3_version obs_scm_bridge --help
+python3 obs_scm_bridge --help
 
 %changelog

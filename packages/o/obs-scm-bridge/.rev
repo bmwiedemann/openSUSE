@@ -224,4 +224,12 @@
 - package /etc/obs/service directories</comment>
     <requestid>1296171</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>8e62ca203b70fe1c34e5004414dfd1be</srcmd5>
+    <version>0.7.4</version>
+    <time>1753976831</time>
+    <user>dimstar_suse</user>
+    <comment>- use the system default python version (boo#1247410)</comment>
+    <requestid>1296753</requestid>
+  </revision>
 </revisionlist>
