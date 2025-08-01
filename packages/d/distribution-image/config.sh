@@ -22,7 +22,7 @@ fi
 # Clean up after zypper if it is present
 #---------------------------------------
 if command -v zypper > /dev/null; then
-    zypper -n clean
+    zypper -n clean -a
 fi
 
 rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; rm -f {/target,}/etc/shadow-
