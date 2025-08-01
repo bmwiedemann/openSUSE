@@ -365,4 +365,12 @@ It does NOT conflict with python38 standard library (see upstream description)</
     <comment>- Fix multibuild by BuildRequires ourselves.</comment>
     <requestid>1250282</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5fd3b12e1dded452e1b5a57ae9d481b4</srcmd5>
+    <version>8.7.0</version>
+    <time>1754080803</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1296829</requestid>
+  </revision>
 </revisionlist>
