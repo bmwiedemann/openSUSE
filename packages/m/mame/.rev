@@ -279,4 +279,13 @@
   * /usr/share/doc/packages/mame/whatsnew-0.278.txt</comment>
     <requestid>1289692</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>a2c67999af155e2f1d531b4314ab9e24</srcmd5>
+    <version>0.279</version>
+    <time>1754088157</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.279
+  * /usr/share/doc/packages/mame/whatsnew-0.279.txt</comment>
+    <requestid>1297030</requestid>
+  </revision>
 </revisionlist>
