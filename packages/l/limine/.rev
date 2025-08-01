@@ -87,4 +87,12 @@
     <comment>Update to 9.5.1</comment>
     <requestid>1296376</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fb6b79c764125506585efbd86a458911</srcmd5>
+    <version>9.5.2</version>
+    <time>1754088189</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 9.5.2</comment>
+    <requestid>1297065</requestid>
+  </revision>
 </revisionlist>

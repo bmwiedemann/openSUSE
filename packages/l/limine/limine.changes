@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug  1 12:34:02 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 9.5.2:
+  * Revert change that moved to `nm` from `objdump` for generating the
+    symbol table, as that broke section-specific symbol dumps and caused
+    BIOS stage 2 to be bloated with the full symbol table.
+
+-------------------------------------------------------------------
 Tue Jul 29 19:50:07 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 9.5.1:
