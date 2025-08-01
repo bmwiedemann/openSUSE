@@ -21,13 +21,15 @@ Version:        0.6.1
 Release:        0
 Summary:        Vietnamese engine for IBus input platform
 License:        GPL-3.0-only
-Group:          System/Localization
+Group:          System/I18n/Vietnamese
 URL:            https://github.com/vn-input/ibus-unikey/
-Source:         https://github.com/vn-input/ibus-unikey/archive/refs/tags/%{version}.tar.gz
+Source:         https://github.com/vn-input/ibus-unikey/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 #PATCH-FIX-OPENSUSE ibus-unikey-static_cast.patch boo#985186 i@marguerite.su -- fix narrowing conversion from char to unsigned char
 Patch0:         ibus-unikey-static_cast.patch
+#PATCH-FIX-UPSTREAM ibus-unikey-rm-mouse-capture.patch bco#1246569 qzhao@suse.com -- Remove mouse capture fuction to get rid of X11-devel dependence.
+Patch1:         ibus-unikey-rm-mouse-capture.patch
 BuildRequires:  gcc-c++
-BuildRequires:  gtk2-devel
+BuildRequires:  gtk3-devel
 BuildRequires:  ibus-devel
 BuildRequires:  intltool
 BuildRequires:  libtool
@@ -37,25 +39,38 @@ Provides:       locale(ibus:vi)
 %description
 A Vietnamese engine for IBus input platform that uses Unikey.
 
+%lang_package
+
 %prep
 %autosetup -p1
 
 %build
-sh ./autogen.sh
-%configure --libexecdir=%{_ibus_libexecdir}
+./autogen.sh                   \
+        --with-debuginfod=no   \
+        --disable-static       \
+        --disable-silent-rules \
+        --prefix=%{_prefix}   \
+        --libexecdir=%{_ibus_libexecdir} \
+        --with-gtk-version=3
+
 make %{?_smp_mflags}
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
-
+make install DESTDIR=%{buildroot}
 %find_lang %{name}
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)
-%doc README AUTHORS ChangeLog
 %license COPYING
-%{_datadir}/%{name}
-%{_datadir}/ibus/component/*
-%{_ibus_libexecdir}/ibus-*-unikey
+%doc README AUTHORS ChangeLog
+%{_ibus_libexecdir}/ibus-engine-unikey
+%{_ibus_libexecdir}/ibus-setup-unikey
+%dir %{_datadir}/%{name}
+%dir %{_datadir}/%{name}/icons/
+%dir %{_datadir}/%{name}/ui/
+%{_datadir}/%{name}/icons/ibus-unikey.png
+%{_datadir}/%{name}/ui/setup-macro.ui
+%{_datadir}/%{name}/ui/setup-main.ui
+%{_datadir}/ibus/component/unikey.xml
 
 %changelog

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug  1 04:12:23 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add ibus-unikey-rm-mouse-capture.patch:
+  Backport b6626d75 from upstream, remove mouse capture. Make SLFO
+  intergration could get rid of X11-devel and its dependence packages.
+- Update ibus-unikey-rm-mouse-capture.spec:
+  Add build option: --with-gtk-version=3. Make SLFO intergration
+  could get rid of gtk2-devel and its many dependence packages.
+- Update ibus-unikey-rm-mouse-capture.spec:
+  Drop %configure to avoid duplicated config actions.
+  Resort %files sections.
+  (bsc#1246569)
+
+-------------------------------------------------------------------
 Thu Jul 31 11:59:32 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Fix the download URL in Source tag

@@ -1,0 +1,354 @@
+commit b6626d75fa49bd411e4b275790e2245177e790ba
+Author: Lê Quốc Tuấn <mr.lequoctuan@gmail.com>
+Date:   Sun Jul 1 22:21:46 2018 +0700
+
+    remove mouse capture
+
+--- ibus-unikey-0.6.1/configure.ac
++++ ibus-unikey-0.6.1_new/configure.ac
+@@ -43,11 +43,6 @@
+     ibus-1.0 >= 1.2.99
+ ])
+ 
+-PKG_CHECK_MODULES(X11, [
+-    x11
+-])
+-AC_SUBST(X11)
+-
+ PKG_CHECK_MODULES(GTK,
+     $gtk_version
+ )
+
+--- ibus-unikey-0.6.1/setup/config_utils.cpp
++++ ibus-unikey-0.6.1_new/setup/config_utils.cpp
+@@ -23,7 +23,6 @@
+     opt->freeMarking        = DEFAULT_CONF_FREEMARKING;
+     opt->enableMacro        = DEFAULT_CONF_MACROENABLED;
+     opt->processwatbegin    = DEFAULT_CONF_PROCESSWATBEGIN;
+-    opt->mousecapture       = DEFAULT_CONF_MOUSECAPTURE;
+ 
+     opt->macrofile = get_macro_file();
+ }
+@@ -86,10 +85,6 @@
+     // get ProcessWAtBegin
+     if (ibus_unikey_config_get_boolean(config, CONFIG_SECTION, CONFIG_PROCESSWATBEGIN, &b))
+         opt->processwatbegin = b;
+-
+-    // get MouseCapture
+-    if (ibus_unikey_config_get_boolean(config, CONFIG_SECTION, CONFIG_MOUSECAPTURE, &b))
+-        opt->mousecapture = b;
+ }
+ 
+ void write_config(void* data, UnikeyMainSetupOptions* opt)
+@@ -112,8 +107,6 @@
+                                     opt->enableMacro);
+     ibus_unikey_config_set_boolean(config, CONFIG_SECTION, CONFIG_PROCESSWATBEGIN,
+                                     opt->processwatbegin);
+-    ibus_unikey_config_set_boolean(config, CONFIG_SECTION, CONFIG_MOUSECAPTURE,
+-                                    opt->mousecapture);
+ }
+ 
+ int force_engine_to_reload_config()
+
+--- ibus-unikey-0.6.1/setup/dlg_main_setup.cpp
++++ ibus-unikey-0.6.1_new/setup/dlg_main_setup.cpp
+@@ -50,9 +50,6 @@
+     g_object_set_data(G_OBJECT(dlg),
+                       "check_processwatbegin",
+                       gtk_builder_get_object(builder, "check_processwatbegin"));
+-    g_object_set_data(G_OBJECT(dlg),
+-                      "check_mousecapture",
+-                      gtk_builder_get_object(builder, "check_mousecapture"));
+ 
+     // END save object pointer
+ 
+@@ -101,10 +98,6 @@
+     wid = GTK_WIDGET(g_object_get_data(G_OBJECT(dlg), "check_processwatbegin"));
+     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(wid), opt->processwatbegin);
+ 
+-// set mousecapture?
+-    wid = GTK_WIDGET(g_object_get_data(G_OBJECT(dlg), "check_mousecapture"));
+-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(wid), opt->mousecapture);
+-
+ // set macro file name data
+     g_object_set_data(G_OBJECT(dlg), "macrofile", opt->macrofile);
+ }
+@@ -144,10 +137,6 @@
+ // get processwatbegin?
+     wid = GTK_WIDGET(g_object_get_data(G_OBJECT(dlg), "check_processwatbegin"));
+     opt->processwatbegin = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(wid));
+-
+-// get mousecapture?
+-    wid = GTK_WIDGET(g_object_get_data(G_OBJECT(dlg), "check_mousecapture"));
+-    opt->mousecapture = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(wid));
+ }
+ 
+ void macro_enable_toggle_cb(GtkToggleButton* btn, gpointer user_data)
+
+--- ibus-unikey-0.6.1/setup/setup-main.ui
++++ ibus-unikey-0.6.1_new/setup/setup-main.ui
+@@ -389,23 +389,6 @@
+                             <property name="position">5</property>
+                           </packing>
+                         </child>
+-                        <child>
+-                          <object class="GtkCheckButton" id="check_mousecapture">
+-                            <property name="label" translatable="yes">Capture _mouse event</property>
+-                            <property name="use_action_appearance">False</property>
+-                            <property name="visible">True</property>
+-                            <property name="can_focus">True</property>
+-                            <property name="receives_default">False</property>
+-                            <property name="use_action_appearance">False</property>
+-                            <property name="use_underline">True</property>
+-                            <property name="draw_indicator">True</property>
+-                          </object>
+-                          <packing>
+-                            <property name="expand">True</property>
+-                            <property name="fill">True</property>
+-                            <property name="position">6</property>
+-                          </packing>
+-                        </child>
+                       </object>
+                     </child>
+                   </object>
+
+--- ibus-unikey-0.6.1/src/engine_const.h
++++ ibus-unikey-0.6.1_new/src/engine_const.h
+@@ -13,7 +13,6 @@
+ #define CONFIG_FREEMARKING       "free_marking"
+ #define CONFIG_MACROENABLED      "macro_enabled"
+ #define CONFIG_PROCESSWATBEGIN   "process_word_at_begin"
+-#define CONFIG_MOUSECAPTURE      "mouse_capture"
+ 
+ // DEFAULT options
+ #define DEFAULT_CONF_SPELLCHECK         TRUE
+@@ -22,9 +21,6 @@
+ #define DEFAULT_CONF_FREEMARKING        TRUE
+ #define DEFAULT_CONF_MACROENABLED       FALSE
+ #define DEFAULT_CONF_PROCESSWATBEGIN    TRUE
+-#define DEFAULT_CONF_MOUSECAPTURE       TRUE
+-
+-#define CAPTURE_MOUSE_MOVE_DELTA        50
+ 
+ #endif
+ 
+--- ibus-unikey-0.6.1/src/engine.cpp
++++ ibus-unikey-0.6.1_new/src/engine.cpp
+@@ -6,7 +6,6 @@
+ 
+ #include <wait.h>
+ #include <string.h>
+-#include <X11/Xlib.h>
+ #include <ibus.h>
+ 
+ #include "engine_const.h"
+@@ -65,11 +64,7 @@
+ static IBusEngineClass* parent_class = NULL;
+ static IBusConfig*      config       = NULL;
+ 
+-static pthread_t th_mcap;
+-static pthread_mutex_t mutex_mcap;
+-static Display* dpy;
+ static IBusUnikeyEngine* unikey; // current (focus) unikey engine
+-static gboolean mcap_running;
+ 
+ GType ibus_unikey_engine_get_type(void)
+ {
+@@ -102,18 +97,10 @@
+ {
+     UnikeySetup();
+     config = ibus_bus_get_config(bus);
+-
+-    mcap_running = TRUE;
+-    pthread_mutex_init(&mutex_mcap, NULL);
+-    pthread_mutex_trylock(&mutex_mcap); // lock mutex after init so mouse capture not start
+-    pthread_create(&th_mcap, NULL, &thread_mouse_capture, NULL);
+-    pthread_detach(th_mcap);
+ }
+ 
+ void ibus_unikey_exit()
+ {
+-    mcap_running = FALSE;
+-    pthread_mutex_unlock(&mutex_mcap); // unlock mutex, so thread can exit
+     UnikeyCleanup();
+ }
+ 
+@@ -154,7 +141,6 @@
+     unikey->ukopt.freeMarking           = DEFAULT_CONF_FREEMARKING;
+     unikey->ukopt.macroEnabled          = DEFAULT_CONF_MACROENABLED;
+     unikey->process_w_at_begin          = DEFAULT_CONF_PROCESSWATBEGIN;
+-    unikey->mouse_capture               = DEFAULT_CONF_MOUSECAPTURE;
+ 
+ // read config value
+     // read Input Method
+@@ -207,11 +193,6 @@
+     // ProcessWAtBegin
+     if (ibus_unikey_config_get_boolean(config, CONFIG_SECTION, CONFIG_PROCESSWATBEGIN, &b))
+         unikey->process_w_at_begin = b;
+-
+-    // MouseCapture
+-    if (ibus_unikey_config_get_boolean(config, CONFIG_SECTION, CONFIG_MOUSECAPTURE, &b))
+-        unikey->mouse_capture = b;
+-    // end read Unikey Option
+ // end read config value
+ 
+     // load macro
+@@ -443,34 +424,7 @@
+         } // end update state
+     } // end MacroEnabled active
+ 
+-    // MouseCapture active
+-    else if (strcmp(prop_name, CONFIG_MOUSECAPTURE) == 0)
+-    {
+-        unikey->mouse_capture = !unikey->mouse_capture;
+-
+-        ibus_unikey_config_set_boolean(config,
+-                                    CONFIG_SECTION, 
+-                                    CONFIG_MOUSECAPTURE,
+-                                    unikey->mouse_capture);
+-
+-        // update state
+-        for (j = 0; j < unikey->menu_opt->properties->len ; j++)
+-        {
+-            prop = ibus_prop_list_get(unikey->menu_opt, j);
+-            if (prop == NULL)
+-                return;
+-
+-            else if (strcmp(ibus_property_get_key(prop), CONFIG_MOUSECAPTURE) == 0)
+-            {
+-                ibus_property_set_state(prop, (unikey->mouse_capture == 1)?
+-                    PROP_STATE_CHECKED:PROP_STATE_UNCHECKED);
+-                break;
+-            }
+-        } // end update state
+-    } // end MouseCapture active
+-
+-
+-    // if Run setup
++     // if Run setup
+     else if (strcmp(prop_name, "RunSetupGUI") == 0)
+     {
+         pthread_t pid;
+@@ -573,23 +527,6 @@
+ 
+     ibus_prop_list_append(unikey->menu_opt, prop);
+ 
+-    // --create and add MouseCapture property
+-    label = ibus_text_new_from_static_string(_("Capture mouse event"));
+-    tooltip = ibus_text_new_from_static_string(_("Auto send PreEdit string to Application when mouse move or click"));
+-    prop = ibus_property_new(CONFIG_MOUSECAPTURE,
+-                             PROP_TYPE_TOGGLE,
+-                             label,
+-                             "",
+-                             tooltip,
+-                             TRUE,
+-                             TRUE,
+-                             (unikey->mouse_capture==1)?
+-                             PROP_STATE_CHECKED:PROP_STATE_UNCHECKED,
+-                             NULL);
+-
+-    ibus_prop_list_append(unikey->menu_opt, prop);
+-
+-
+     // --separator
+     prop = ibus_property_new("", PROP_TYPE_SEPARATOR,
+                              NULL, "", NULL, TRUE, TRUE,
+@@ -692,13 +629,6 @@
+ 
+     // update and display text
+     ibus_engine_update_preedit_text(engine, text, ibus_text_get_length(text), visible);
+-
+-    // every time have preedit text -> unlock mutex -> start capture mouse
+-    if (unikey->mouse_capture)
+-    {
+-        // unlock capture thread (start capture)
+-        pthread_mutex_unlock(&mutex_mcap);
+-    }
+ }
+ 
+ static void ibus_unikey_engine_erase_chars(IBusEngine *engine, int num_chars)
+@@ -956,50 +886,6 @@
+     return false;
+ }
+ 
+-static void* thread_mouse_capture(void* data)
+-{
+-    XEvent event;
+-    int x_old, y_old, x_root_old, y_root_old;
+-    uint mask;
+-    Window w, w_root_return, w_child_return;
+-
+-    dpy = XOpenDisplay(NULL);
+-    w = XDefaultRootWindow(dpy);
+-
+-    XQueryPointer(dpy, w, &w_root_return, &w_child_return, &x_root_old, &y_root_old, &x_old, &y_old, &mask);
+-    while (mcap_running)
+-    {
+-        pthread_mutex_lock(&mutex_mcap);
+-        if (!mcap_running)
+-            return NULL;
+-        XGrabPointer(dpy, w, 0, ButtonPressMask | PointerMotionMask, GrabModeAsync, GrabModeAsync, None, None, CurrentTime);
+-        XPeekEvent(dpy, &event);
+-        pthread_mutex_trylock(&mutex_mcap); // set mutex to lock status, so this thread will wait until next unlock (by update preedit string)
+-        XUngrabPointer(dpy, CurrentTime);
+-        XSync(dpy, TRUE);
+-
+-        if (event.type == MotionNotify) // mouse move
+-        {
+-            if ((abs(event.xmotion.x_root - x_root_old) >= CAPTURE_MOUSE_MOVE_DELTA) ||
+-                (abs(event.xmotion.y_root - y_root_old) >= CAPTURE_MOUSE_MOVE_DELTA)) // mouse move at least CAPTURE_MOUSE_MOVE_DELTA
+-            {
+-                ibus_unikey_engine_reset((IBusEngine*)unikey);
+-
+-                x_root_old = event.xmotion.x_root;
+-                y_root_old = event.xmotion.y_root;
+-            }
+-            else // if don't reset -> unlock mutex so mouse continue to be grab
+-                pthread_mutex_unlock(&mutex_mcap);
+-        }
+-        else
+-            ibus_unikey_engine_reset((IBusEngine*)unikey);
+-    }
+-
+-    XCloseDisplay(dpy);
+-
+-    return NULL;
+-}
+-
+ static void* thread_run_setup(void* data)
+ {
+     int stat;
+
+--- ibus-unikey-0.6.1/src/engine_private.h
++++ ibus-unikey-0.6.1_new/src/engine_private.h
+@@ -24,7 +24,6 @@
+     unsigned int  oc; // output charset
+     UnikeyOptions ukopt;
+     gboolean process_w_at_begin;
+-    gboolean mouse_capture;
+ 
+     gboolean auto_commit;
+     gboolean last_key_with_shift;
+@@ -70,7 +69,6 @@
+ static void ibus_unikey_engine_commit_string(IBusEngine *engine, const gchar *string);
+ static void ibus_unikey_engine_update_preedit_string(IBusEngine *engine, const gchar *string, gboolean visible);
+ static void ibus_unikey_engine_erase_chars(IBusEngine *engine, int num_chars);
+-static void* thread_mouse_capture(void* data);
+ static void* thread_run_setup(void* data);
+ #endif
+
+--- ibus-unikey-0.6.1/src/Makefile.am
++++ ibus-unikey-0.6.1_new/src/Makefile.am
+@@ -21,11 +21,10 @@
+     engine_const.h \
+     utils.h
+ 
+-ibus_engine_unikey_CXXFLAGS = @IBUS_CFLAGS@ @X11_CFLAGS@
++ibus_engine_unikey_CXXFLAGS = @IBUS_CFLAGS@
+ 
+ ibus_engine_unikey_LDFLAGS = \
+ 	@IBUS_LIBS@ \
+-	@X11_LIBS@ \
+ 	$(top_builddir)/ukengine/libunikey-ibus.la
+ 
+ component_DATA = unikey.xml
