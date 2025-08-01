@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Fri Aug 01 04:52:46 UTC 2025 - william.brown@suse.com
+
+- Update to version 1.7.0~git0.621ac7be0:
+  * Release 1.7.0
+  * Fix a couple of commands in the OAuth2 Proxy examples (#3758)
+
+-------------------------------------------------------------------
+Thu Jul 31 01:22:06 UTC 2025 - william.brown@suse.com
+
+- Update to version 1.7.0-pre~git0.7d9da9dc8:
+  * Release 1.7.0-pre
+  * 20250729 pre release (#3756)
+  * Helps to enable features like defer spans (#3755)
+  * Downgrade notify-debouncer (#3747)
+  * Reduce memory usage on unixd (#3754)
+  * Bump the all group with 4 updates (#3753)
+  * 20250723 application passwords again (#3748)
+  * Docs oauth2 examples (#3750)
+  * Groups WebUI, modify description (#3734)
+  * Improve replication logging (#3746)
+  * 20250711 type migrations (#3741)
+  * Bump the all group with 3 updates (#3743)
+  * Use constants for /etc/shadow and related paths (#3740)
+  * fix: don't show people's whole tokens in debugs (#3742)
+  * Updates to makefile (#3736)
+  * Add a new paragraph in the installation quickstart for installing required client tools, and clarify the client tool setup paragraph (#3735)
+  * Bump the all group with 4 updates (#3737)
+  * Add ppc64le support for docker images (#3733)
+  * Basic interface to get and regenerate the RADIUS password (#3728)
+  * book: fix command example in pam_and_nsswitch.md (#3732)
+  * fix docgen (#3731)
+  * Fix for Failed to deserialize query: missing field 'state' (#3726)
+  * Add user facing SCIM pagination / sorting (#3725)
+  * Admin UI Group name modification (#3717)
+  * fix typo in documentation: tls_path to tls_key (#3727)
+  * Pre-validate and extract UAT into ClientAuthInfo (#3714)
+  * Security policy updates (re: #3719) (#3722)
+  * Fix using wrong template when setting POSIX password (#3719) (#3720)
+  * Resolve startup failure with client TLS certificates (#3712)
+  * Bump the all group with 2 updates (#3718)
+  * Simple group list (#3713)
+  * Update repos (#3711)
+  * 20250621 application passwords (#3700)
+  * Update docs, doc fmt (#3710)
+  * Apply review feedback
+  * Correctly log connection information
+  * Refactor middleware/extractors
+  * [htmx] basic profile updating (#2994)
+  * Correct 389DS command (#3707)
+  * Schema again (#3706)
+  * examples: small grammar fix (#3705)
+  * Clippy (#3702)
+  * 20250627 update hsm crypto (#3701)
+  * Update 389 content sync instructions (#3699)
+  * Corrections to radius examples (#3697)
+  * fix: wording (#3696)
+  * Update radius.md (Explain: NAS == Network Access Server) (#3691)
+  * updating docs around packages (#3695)
+  * 20250618 rustls (#3687)
+  * fix: error message that wasn't an error (#3690)
+  * Only generate passwords on service accounts (#3688)
+  * Add hmac 256 for cryptography operations (#3663)
+  * Update Nextcloud example (#3683)
+  * Bump the all group with 8 updates (#3684)
+  * Allow deferring spans in unixd (#3680)
+  * OpenSUSE build fix (#3681)
+  * Dark mode improvements (#3660)
+  * Add port examples for server.toml (#3679)
+  * Fix SCIM filter parser for quoted values with spaces and escaped quotes (#3673)
+  * fix: strip comments from UNIX files before parsing (#3674)
+  * Bump the all group across 1 directory with 11 updates (#3675)
+  * Start to implement SCIM apis (#3535)
+  * Fix healthcheck to use ENV for config path (#3656)
+  * maint: rewrite crypto Password::try_from (#3637)
+  * doc(book): Add  option to Nextcloud Oauth2.0 example (#3654)
+  * Bump the all group with 4 updates (#3655)
+  * Make it clearer that the http address section is needed (#3652)
+  * TODO trimming (#3641)
+  * Investigate and reduce memory consumption of unixd (#3645)
+  * Swap bytes mut at buffer limits (#3651)
+  * Clippy for 1.87 (#3644)
+  * fix: Improve unixd & unixd-tasks startup coupling (#3638)
+  * Bump the all group with 2 updates (#3648)
+  * reload schema before verify (#3643)
+  * Defend against split_at panic (#3636)
+  * Fix minor issue with untagged version handling (#3634)
+  * Move shadow processing out of task event loop (#3631)
+  * Dont specify config path in container (#3630)
+  * Accept SSHA with different salt lengths (#3629)
+  * Bye poetry, hi uv for python things (#3627)
+  * Resolve flaw with ssh key parse if the key has no comment (#3628)
+  * Indicate that this is an ip list, not a range (#3626)
+  * Test for corrupted unicode in SSH keys, keep the key title on error/resubmit (#3618)
+  * Reduce replication logging verbosity
+  * Bump the all group across 1 directory with 7 updates (#3623)
+  * Bump the all group in /pykanidm with 2 updates (#3621)
+  * cargo publish (#3613)
+  * fix: clippy
+  * maint: typo in log message
+  * Set kid manually to prevent divergence
+  * Order keys in application JWKS / Fix rotation bug
+  * Fix toml issues with strings
+  * OAuth2 Client ID's should be processed as lowercase (#3605)
+  * Resolve reload of oauth2 on startup (#3604)
+  * Bump petgraph from 0.7.1 to 0.8.1 in the all group (#3595)
+  * Bump the all group in /pykanidm with 2 updates (#3596)
+  * Avoid openssl for md4 (#3594)
+  * Fixes #3586, inverts the navbar button color (#3593)
+  * Update to 1.7.0-dev (#3592)
+
+-------------------------------------------------------------------
 Thu Jun 12 05:27:20 UTC 2025 - william.brown@suse.com
 
 - Update to version 1.6.4~git2.a4b3b0f7b:
