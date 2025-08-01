@@ -1396,4 +1396,14 @@ mostly-working synapse than nothing at all) and the package has been update to
 - Update to 1.134.0</comment>
     <requestid>1293545</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>d4b6e1b5d07c08e8727d32796d4a4842</srcmd5>
+    <version>1.135.0</version>
+    <time>1754088237</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1297072 from darix
+
+- Update to 1.135.0</comment>
+    <requestid>1297073</requestid>
+  </revision>
 </revisionlist>

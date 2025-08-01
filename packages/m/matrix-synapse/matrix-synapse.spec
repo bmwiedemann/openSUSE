@@ -1,7 +1,8 @@
 #
 # spec file for package matrix-synapse
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,12 +33,12 @@
 %global immutabledict_version         4.2.1
 %global idna_version                  3.8
 %global ijson_version                 3.3.0
-%global jsonschema_version            4.20.0
+%global jsonschema_version            4.25.0
 %global matrix_common_version         1.3.0
 %global matrix_common_max_version     2
 %global msgpack_version               1.1.0
 %global netaddr_version               1.3.0
-%global phonenumbers_version          8.13.52
+%global phonenumbers_version          9.0.9
 %global prometheus_client_version     0.20.0
 %global psutil_version                2.0.0
 %global pyOpenSSL_version             25.0.0
@@ -56,9 +57,9 @@
 %global packaging_version             24.0
 %global psycopg2_version              2.9.9
 %global pysaml2_version               7.5.0
-%global Authlib_version               1.5.2
-# TODO: 5.4.0
-%global lxml_version                  5.3.0
+# TOOD: 1.6.1
+%global Authlib_version               1.6.0
+%global lxml_version                  6.0.0
 %global sentry_sdk_version            2.20.0
 %global PyJWT_version                 2.6.0
 %global jaeger_client_version         4.8.0
@@ -90,7 +91,7 @@
 %global msgpack_version               0.5.2
 %global netaddr_version               0.7.18
 %global phonenumbers_version          8.13.37
-%global prometheus_client_version     0.4.0
+%global prometheus_client_version     0.6.0
 %global psutil_version                2.0.0
 %global pyOpenSSL_version             16.0.0
 %global pyasn1_version                0.1.9
@@ -156,7 +157,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.134.0
+Version:        1.135.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
@@ -174,7 +175,6 @@ Source51:       matrix-synapse-generate-config.sh
 # to clean up your working copy afterwards: git reset --hard ; rm -rv .pc patches
 Source99:       series
 Patch0:         matrix-synapse-1.4.1-paths.patch
-Patch1:         bump-dependencies.patch
 # https://github.com/matrix-org/synapse/pull/10719
 # disable by marking as source until we get a decision upstream
 Source100:      10719-Fix-instert-of-duplicate-key-into-event_json.patch
