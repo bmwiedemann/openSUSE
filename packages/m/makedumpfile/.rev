@@ -1260,4 +1260,13 @@ See README.static for an explanation why static linking is preferred for some li
     <comment>Convert HKT timezone in Changelog to UTC.</comment>
     <requestid>1291179</requestid>
   </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>b7f7913c05577c35ce32bf8b9ae54679</srcmd5>
+    <version>1.7.7</version>
+    <time>1754080802</time>
+    <user>dimstar_suse</user>
+    <comment>- makedumpfile-fix-multi-threading-data-race.patch: Fix a data race
+  in multi-threading mode (--num-threads=N) (bsc#1245569).</comment>
+    <requestid>1296764</requestid>
+  </revision>
 </revisionlist>

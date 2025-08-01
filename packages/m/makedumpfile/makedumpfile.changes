@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 18 12:40:21 UTC 2025 - Petr Tesařík <ptesarik@suse.com>
+
+- makedumpfile-fix-multi-threading-data-race.patch: Fix a data race
+  in multi-threading mode (--num-threads=N) (bsc#1245569).
+
+-------------------------------------------------------------------
 Thu May 29 11:10:50 UTC 2025 - Petr Tesařík <ptesarik@suse.com>
 
 - Update to 1.7.7:
