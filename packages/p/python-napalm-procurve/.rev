@@ -95,4 +95,12 @@
     * sent upstream in https://github.com/ixs/napalm-procurve/pull/33</comment>
     <requestid>1230773</requestid>
   </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>47fa27f8834825e6850c2580b04d14fc</srcmd5>
+    <version>0.7.0</version>
+    <time>1754088117</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1296927</requestid>
+  </revision>
 </revisionlist>

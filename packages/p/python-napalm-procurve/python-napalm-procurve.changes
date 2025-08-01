@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  1 04:12:54 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Thu Dec 12 12:52:32 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add patch py313.patch to fix compatibility with Python 3.13

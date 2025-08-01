@@ -1,7 +1,7 @@
 #
 # spec file for package python-napalm-procurve
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,6 @@
 #
 
 
-# python-napalm is python3 only
-%define skip_python2 1
 Name:           python-napalm-procurve
 Version:        0.7.0
 Release:        0
@@ -57,10 +55,10 @@ ProCurve driver support for Napalm network automation.
 sed -i -e '/addopts/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -72,6 +70,6 @@ sed -i -e '/addopts/d' setup.cfg
 %license LICENSE
 %doc AUTHORS README.md
 %{python_sitelib}/napalm_procurve
-%{python_sitelib}/napalm_procurve-%{version}*-info
+%{python_sitelib}/napalm_procurve-%{version}.dist-info
 
 %changelog
