@@ -1,7 +1,7 @@
 #
 # spec file for package python-huggingface-hub
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,10 +28,12 @@ BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module filelock}
 BuildRequires:  %{python_module fsspec >= 2023.5.0}
 BuildRequires:  %{python_module packaging >= 20.9}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tqdm >= 4.42.1}
 BuildRequires:  %{python_module typing-extensions >= 3.7.4.3}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 5.1
@@ -51,10 +53,10 @@ Client library to download and publish models, datasets and other repos on the h
 %setup -q -n huggingface_hub-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/huggingface-cli
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -67,6 +69,6 @@ Client library to download and publish models, datasets and other repos on the h
 %files %{python_files}
 %python_alternative %{_bindir}/huggingface-cli
 %{python_sitelib}/huggingface_hub
-%{python_sitelib}/huggingface_hub-%{version}*info
+%{python_sitelib}/huggingface_hub-%{version}.dist-info
 
 %changelog
