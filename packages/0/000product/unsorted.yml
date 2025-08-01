@@ -372,6 +372,7 @@ unsorted:
   - aalib-devel 
   - aalto-xml 
   - aalto-xml-javadoc 
+  - ab-av1 
   - abcde 
   - abcm2ps 
   - abi-compliance-checker 
@@ -2363,6 +2364,7 @@ unsorted:
   - cockpit 
   - cockpit-devel 
   - cockpit-doc 
+  - cockpit-firewalld 
   - cockpit-kdump 
   - cockpit-machines 
   - cockpit-packages 
@@ -5061,10 +5063,6 @@ unsorted:
   - ghc-HUnit-devel 
   - ghc-HUnit-doc 
   - ghc-HUnit-prof 
-  - ghc-HsYAML 
-  - ghc-HsYAML-devel 
-  - ghc-HsYAML-doc 
-  - ghc-HsYAML-prof 
   - ghc-IfElse 
   - ghc-IfElse-devel 
   - ghc-IfElse-doc 
@@ -5355,10 +5353,6 @@ unsorted:
   - ghc-colour-devel 
   - ghc-colour-doc 
   - ghc-colour-prof 
-  - ghc-colourista 
-  - ghc-colourista-devel 
-  - ghc-colourista-doc 
-  - ghc-colourista-prof 
   - ghc-commonmark 
   - ghc-commonmark-devel 
   - ghc-commonmark-doc 
@@ -5371,10 +5365,6 @@ unsorted:
   - ghc-commonmark-pandoc-doc 
   - ghc-commonmark-pandoc-prof 
   - ghc-commonmark-prof 
-  - ghc-commutative-semigroups 
-  - ghc-commutative-semigroups-devel 
-  - ghc-commutative-semigroups-doc 
-  - ghc-commutative-semigroups-prof 
   - ghc-comonad 
   - ghc-comonad-devel 
   - ghc-comonad-doc 
@@ -5549,6 +5539,10 @@ unsorted:
   - ghc-dlist-devel 
   - ghc-dlist-doc 
   - ghc-dlist-prof 
+  - ghc-dns 
+  - ghc-dns-devel 
+  - ghc-dns-doc 
+  - ghc-dns-prof 
   - ghc-doc 
   - ghc-doc-index 
   - ghc-doclayout 
@@ -5563,6 +5557,10 @@ unsorted:
   - ghc-easy-file-devel 
   - ghc-easy-file-doc 
   - ghc-easy-file-prof 
+  - ghc-ech-config 
+  - ghc-ech-config-devel 
+  - ghc-ech-config-doc 
+  - ghc-ech-config-prof 
   - ghc-echo 
   - ghc-echo-devel 
   - ghc-echo-doc 
@@ -5591,6 +5589,10 @@ unsorted:
   - ghc-entropy-devel 
   - ghc-entropy-doc 
   - ghc-entropy-prof 
+  - ghc-esqueleto 
+  - ghc-esqueleto-devel 
+  - ghc-esqueleto-doc 
+  - ghc-esqueleto-prof 
   - ghc-exceptions 
   - ghc-exceptions-devel 
   - ghc-exceptions-doc 
@@ -5640,10 +5642,6 @@ unsorted:
   - ghc-filepattern-doc 
   - ghc-filepattern-prof 
   - ghc-filesystem 
-  - ghc-foldl 
-  - ghc-foldl-devel 
-  - ghc-foldl-doc 
-  - ghc-foldl-prof 
   - ghc-free 
   - ghc-free-devel 
   - ghc-free-doc 
@@ -5691,6 +5689,14 @@ unsorted:
   - ghc-ghc-internal-devel 
   - ghc-ghc-internal-doc 
   - ghc-ghc-internal-prof 
+  - ghc-ghc-lib-parser 
+  - ghc-ghc-lib-parser-devel 
+  - ghc-ghc-lib-parser-doc 
+  - ghc-ghc-lib-parser-ex 
+  - ghc-ghc-lib-parser-ex-devel 
+  - ghc-ghc-lib-parser-ex-doc 
+  - ghc-ghc-lib-parser-ex-prof 
+  - ghc-ghc-lib-parser-prof 
   - ghc-ghc-platform 
   - ghc-ghc-platform-devel 
   - ghc-ghc-platform-doc 
@@ -5712,10 +5718,6 @@ unsorted:
   - ghc-githash-devel 
   - ghc-githash-doc 
   - ghc-githash-prof 
-  - ghc-gitrev 
-  - ghc-gitrev-devel 
-  - ghc-gitrev-doc 
-  - ghc-gitrev-prof 
   - ghc-glib 
   - ghc-glib-devel 
   - ghc-glib-doc 
@@ -5732,6 +5734,10 @@ unsorted:
   - ghc-hackage-security-devel 
   - ghc-hackage-security-doc 
   - ghc-hackage-security-prof 
+  - ghc-haddock-api 
+  - ghc-haddock-api-devel 
+  - ghc-haddock-api-doc 
+  - ghc-haddock-api-prof 
   - ghc-haddock-library 
   - ghc-haddock-library-devel 
   - ghc-haddock-library-doc 
@@ -5784,6 +5790,10 @@ unsorted:
   - ghc-hledger-ui-devel 
   - ghc-hledger-ui-doc 
   - ghc-hledger-ui-prof 
+  - ghc-hlint 
+  - ghc-hlint-devel 
+  - ghc-hlint-doc 
+  - ghc-hlint-prof 
   - ghc-hourglass 
   - ghc-hourglass-devel 
   - ghc-hourglass-doc 
@@ -5792,10 +5802,18 @@ unsorted:
   - ghc-hpc-devel 
   - ghc-hpc-doc 
   - ghc-hpc-prof 
+  - ghc-hpke 
+  - ghc-hpke-devel 
+  - ghc-hpke-doc 
+  - ghc-hpke-prof 
   - ghc-hscolour 
   - ghc-hscolour-devel 
   - ghc-hscolour-doc 
   - ghc-hscolour-prof 
+  - ghc-hslogger 
+  - ghc-hslogger-devel 
+  - ghc-hslogger-doc 
+  - ghc-hslogger-prof 
   - ghc-hslua 
   - ghc-hslua-aeson 
   - ghc-hslua-aeson-devel 
@@ -5908,10 +5926,6 @@ unsorted:
   - ghc-http2-devel 
   - ghc-http2-doc 
   - ghc-http2-prof 
-  - ghc-ilist 
-  - ghc-ilist-devel 
-  - ghc-ilist-doc 
-  - ghc-ilist-prof 
   - ghc-indexed-profunctors 
   - ghc-indexed-profunctors-devel 
   - ghc-indexed-profunctors-doc 
@@ -5964,10 +5978,6 @@ unsorted:
   - ghc-language-c-devel 
   - ghc-language-c-doc 
   - ghc-language-c-prof 
-  - ghc-language-docker 
-  - ghc-language-docker-devel 
-  - ghc-language-docker-doc 
-  - ghc-language-docker-prof 
   - ghc-language-javascript 
   - ghc-language-javascript-devel 
   - ghc-language-javascript-doc 
@@ -6073,15 +6083,15 @@ unsorted:
   - ghc-mono-traversable-devel 
   - ghc-mono-traversable-doc 
   - ghc-mono-traversable-prof 
-  - ghc-monoid-subclasses 
-  - ghc-monoid-subclasses-devel 
-  - ghc-monoid-subclasses-doc 
-  - ghc-monoid-subclasses-prof 
   - ghc-mountpoints 
   - ghc-mountpoints-devel 
   - ghc-mountpoints-doc 
   - ghc-mountpoints-prof 
   - ghc-mtl 
+  - ghc-mtl-compat 
+  - ghc-mtl-compat-devel 
+  - ghc-mtl-compat-doc 
+  - ghc-mtl-compat-prof 
   - ghc-mtl-devel 
   - ghc-mtl-doc 
   - ghc-mtl-prof 
@@ -6145,10 +6155,6 @@ unsorted:
   - ghc-os-string-devel 
   - ghc-os-string-doc 
   - ghc-os-string-prof 
-  - ghc-pager 
-  - ghc-pager-devel 
-  - ghc-pager-doc 
-  - ghc-pager-prof 
   - ghc-pandoc 
   - ghc-pandoc-devel 
   - ghc-pandoc-doc 
@@ -6205,6 +6211,10 @@ unsorted:
   - ghc-persistent-sqlite-devel 
   - ghc-persistent-sqlite-doc 
   - ghc-persistent-sqlite-prof 
+  - ghc-persistent-template 
+  - ghc-persistent-template-devel 
+  - ghc-persistent-template-doc 
+  - ghc-persistent-template-prof 
   - ghc-polyparse 
   - ghc-polyparse-devel 
   - ghc-polyparse-doc 
@@ -6245,10 +6255,6 @@ unsorted:
   - ghc-prettyprinter-devel 
   - ghc-prettyprinter-doc 
   - ghc-prettyprinter-prof 
-  - ghc-primes 
-  - ghc-primes-devel 
-  - ghc-primes-doc 
-  - ghc-primes-prof 
   - ghc-primitive 
   - ghc-primitive-devel 
   - ghc-primitive-doc 
@@ -6266,10 +6272,6 @@ unsorted:
   - ghc-psqueues-devel 
   - ghc-psqueues-doc 
   - ghc-psqueues-prof 
-  - ghc-puresat 
-  - ghc-puresat-devel 
-  - ghc-puresat-doc 
-  - ghc-puresat-prof 
   - ghc-quote-quot 
   - ghc-quote-quot-devel 
   - ghc-quote-quot-doc 
@@ -6372,10 +6374,6 @@ unsorted:
   - ghc-semigroups-devel 
   - ghc-semigroups-doc 
   - ghc-semigroups-prof 
-  - ghc-semver 
-  - ghc-semver-devel 
-  - ghc-semver-doc 
-  - ghc-semver-prof 
   - ghc-serialise 
   - ghc-serialise-devel 
   - ghc-serialise-doc 
@@ -6464,10 +6462,6 @@ unsorted:
   - ghc-sop-core-devel 
   - ghc-sop-core-doc 
   - ghc-sop-core-prof 
-  - ghc-spdx 
-  - ghc-spdx-devel 
-  - ghc-spdx-doc 
-  - ghc-spdx-prof 
   - ghc-split 
   - ghc-split-devel 
   - ghc-split-doc 
@@ -6636,10 +6630,6 @@ unsorted:
   - ghc-timeit-devel 
   - ghc-timeit-doc 
   - ghc-timeit-prof 
-  - ghc-timerep 
-  - ghc-timerep-devel 
-  - ghc-timerep-doc 
-  - ghc-timerep-prof 
   - ghc-timezone-olson 
   - ghc-timezone-olson-devel 
   - ghc-timezone-olson-doc 
@@ -8495,6 +8485,7 @@ unsorted:
   - hledger 
   - hledger-interest 
   - hledger-ui 
+  - hlint 
   - hmaccalc 
   - hmcfgusb 
   - hmconv 
@@ -15225,7 +15216,6 @@ unsorted:
   - libplacebo5-devel 
   - libplanarity2 
   - libplanify-0 
-  - libplank1 
   - libplasma6-devel 
   - libplayerctl2 
   - libplib0 
@@ -22684,10 +22674,6 @@ unsorted:
   - planify 
   - planify-devel 
   - planify-lang 
-  - plank 
-  - plank-devel 
-  - plank-docklets 
-  - plank-lang 
   - plantri 
   - plantuml 
   - plantuml-javadoc 
@@ -22861,6 +22847,7 @@ unsorted:
   - pnpm-zsh-completion 
   - po4a 
   - po4a-lang 
+  - pocketbase 
   - pocketsphinx 
   - pocketsphinx-devel 
   - pocl 
