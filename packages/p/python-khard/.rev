@@ -22,4 +22,33 @@
   * Remove deprecated options from --help and zsh completion</comment>
     <requestid>1133659</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>eb96c06c65b053522b17e07115546c1c</srcmd5>
+    <version>0.20.0</version>
+    <time>1754088066</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1296745 from glaubitz
+
+- Update to 0.20.0
+    * Remove support for python 3.8 (638fb2e)
+    * Replace atomicwrites dependency with an inlined function (#343)
+    * Allow new version of vobject (f768845)
+    * Add new addressbook type &quot;discover&quot; (#341)
+    * Use python's glibc bindings for locale aware sorting, replacing the unidecode dependency (aad8d03, #338)
+    * Add support for KIND: vCard fields (#310)
+    * Remove command line options --strict-search, --uid and --target-uid (946999c)
+    * Allow address_book as field for list -F (512d8ce)
+    * Add new man page with subcommand listing (71fb6f0)
+    * Internal changes:
+      * Rename default branch to main (369106c)
+      * Remove setup.py (f6f0047)
+      * Specify version (ranges) for dependencies (e4a3f71)
+      * Replace sys.exit calls with exceptions and return values (b721246)
+      * Use standard list, dict and tuple for type hints (9d17c5f)
+      * Use python 3.13 in CI (17a8681, f6b7c5c)
+      * Add extra opt dependency group for type checking (031682c)
+  - Update BuildRequires from pyproject.toml
+  - Use Python 3.11 on SLE-15 by default</comment>
+    <requestid>1296838</requestid>
+  </revision>
 </revisionlist>

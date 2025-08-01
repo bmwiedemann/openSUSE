@@ -1,7 +1,7 @@
 #
 # spec file for package python-khard
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,22 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-khard
-Version:        0.19.1
+Version:        0.20.0
 Release:        0
 Summary:        Console carddav client
 License:        GPL-3.0-only
 URL:            https://github.com/lucc/khard
 Source0:        https://files.pythonhosted.org/packages/source/k/khard/khard-%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test
-BuildRequires:  %{python_module Unidecode}
-BuildRequires:  %{python_module atomicwrites}
 BuildRequires:  %{python_module configobj}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module vobject}
@@ -44,7 +42,7 @@ Requires:       python-configobj
 Requires:       python-ruamel.yaml
 Requires:       python-vobject
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Suggests:       python3-vdirsyncer
 %python_subpackages
 
