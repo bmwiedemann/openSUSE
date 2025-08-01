@@ -217,11 +217,7 @@ fi
 %build
 
 %install
-mkdir -p %{buildroot}%{_sysconfdir} %{buildroot}%{_prefix}/lib/issue.d %{buildroot}/run
-
-echo -e "\nWelcome to Aeon (%{_target_cpu}) - Kernel \\\r (\\\l).\n" > %{buildroot}%{_prefix}/lib/issue.d/10-OS
-echo -e "\n" > %{buildroot}%{_prefix}/lib/issue.d/90-OS
-
+mkdir -p %{buildroot}%{_sysconfdir} %{buildroot}%{_prefix}/lib/
 VERSION_ID=`echo %{version}|tr '[:upper:]' '[:lower:]'|sed -e 's/ //g;'`
 # note: VERSION is an optional field and has no meaning other than informative on a rolling distro
 # We do thus not add it to the os-release file
@@ -323,8 +319,6 @@ fi
 %{_prefix}/lib/os-release
 %dir %{_sysconfdir}/products.d
 %{_sysconfdir}/products.d/*
-%dir %{_prefix}/lib/issue.d
-%{_prefix}/lib/issue.d/*-OS
 
 %changelog
 * Mon Feb 19 2024 Dominique Leuenberger <dimstar@opensuse.org>
