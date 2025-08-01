@@ -17,13 +17,13 @@
 
 
 Name:           ibus-table-chinese
-Version:        1.8.12
+Version:        1.8.14
 Release:        0
 Summary:        Various Chinese input method table for the IBus framework
 License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/mike-fabian/ibus-table-chinese
-Source:         https://github.com/mike-fabian/ibus-table-chinese/archive/%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/mike-fabian/ibus-table-chinese/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ibus-table)

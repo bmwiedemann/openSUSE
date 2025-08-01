@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 25 02:17:53 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Update to Release 1.8.14:
+  * cmake_minimum_required(VERSION 3.0.0) -> cmake_minimum_required
+    (VERSION 3.12...4.0) 
+    (Resolves: https://bugzilla.redhat.com/show_bug.cgi?id=2380646)
+  * Fix typo in tables/CMakeLists.txt 
+
+-------------------------------------------------------------------
 Wed May  7 05:33:33 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
