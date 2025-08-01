@@ -22,9 +22,10 @@ Version:        0.7.3
 Release:        0
 Summary:        Python logging component with a simple interface
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/Delgan/loguru
 Source:         https://github.com/Delgan/loguru/archive/refs/tags/%{version}.tar.gz#/loguru-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support newer mypy than upstream
+Patch0:         support-new-mypy.patch
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module freezegun}
@@ -68,6 +69,6 @@ fi
 %license LICENSE
 %doc README.md
 %{python_sitelib}/loguru
-%{python_sitelib}/loguru-%{version}*-info
+%{python_sitelib}/loguru-%{version}.dist-info
 
 %changelog

@@ -176,4 +176,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1278383</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>b9813f98c85493840e408c48dbdaa989</srcmd5>
+    <version>0.7.3</version>
+    <time>1754088115</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-new-mypy.patch:
+  * Support newer mypy than upstream.</comment>
+    <requestid>1296926</requestid>
+  </revision>
 </revisionlist>
