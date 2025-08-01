@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 31 10:49:59 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.8.3:
+  + Add project to check that test target's args and depends are in
+    path.
+  + options: do not store duplicate UserOptions.
+  + options: apply CFLAGS even if c_link_args exists.
+  + interpreter: allow retrieving build options with get_option().
+  + environment: allow setting build options with "build." prefix.
+  + hdf5: Skip failing Fortran config-tool test when h5fc is
+    broken.
+  + Replace deprecated setup.py install command.
+
+-------------------------------------------------------------------
 Tue Jun 10 06:56:52 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.8.2:
