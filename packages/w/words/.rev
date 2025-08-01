@@ -235,4 +235,12 @@
     <comment>- Avoid the build requires for sysvinit-tools (forwarded request 1065510 from kukuk)</comment>
     <requestid>1065512</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>efa300a0ee4036d0a2c490e6b3afff86</srcmd5>
+    <version>2020.12.07</version>
+    <time>1754088155</time>
+    <user>dimstar_suse</user>
+    <comment>- /etc/sysconfig/language is gone</comment>
+    <requestid>1297035</requestid>
+  </revision>
 </revisionlist>

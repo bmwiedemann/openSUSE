@@ -14,11 +14,13 @@ if test "$UID" != 0 -a "$USER" != root; then
     exit 1
 fi
 
-test -f $ROOT/etc/sysconfig/language || { echo "No /etc/sysconfig/language found." && exit 1 ; }
-. $ROOT/etc/sysconfig/language
-
-test -f $ROOT/etc/sysconfig/words || { echo "No /etc/sysconfig/words found." && exit 1 ; }
-. $ROOT/etc/sysconfig/words
+if test -s $ROOT/etc/sysconfig/words
+then
+	. $ROOT/etc/sysconfig/words
+else
+	echo "No /etc/sysconfig/words found."
+	exit 1
+fi
 
 # which dictionaries are installed?
 if [ -f $ROOT/usr/share/dict/american ]; then

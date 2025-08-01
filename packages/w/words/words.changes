@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  1 10:31:54 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- /etc/sysconfig/language is gone 
+
+-------------------------------------------------------------------
 Mon Feb 13 13:32:47 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Avoid the build requires for sysvinit-tools
