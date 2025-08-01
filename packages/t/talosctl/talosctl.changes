@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug  1 11:59:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.10.6:
+  https://github.com/siderolabs/talos/releases/tag/v1.10.6
+  * no CLI-related changes in the Changelog
+  * Dependency changes
+    - github.com/siderolabs/gen v0.8.4 -> v0.8.5
+    - github.com/siderolabs/go-blockdevice/v2 v2.0.16 -> v2.0.19
+    - github.com/siderolabs/pkgs v1.10.0-24-g28fa97d ->
+      v1.10.0-29-g2e6dd0a
+    - github.com/siderolabs/talos/pkg/machinery v1.10.5 -> v1.10.6
+    - github.com/siderolabs/tools v1.10.0-4-g9d54ed4 ->
+      v1.10.0-5-g31fd099
+    - golang.org/x/sync v0.15.0 -> v0.16.0
+    - golang.org/x/sys v0.33.0 -> v0.34.0
+    - golang.org/x/text v0.26.0 -> v0.27.0
+
+-------------------------------------------------------------------
 Fri Jul  4 05:09:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.10.5:
