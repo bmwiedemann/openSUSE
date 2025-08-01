@@ -954,4 +954,12 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
 - Added systemd-presets-branding-Kalpa to kde pattern</comment>
     <requestid>1295896</requestid>
   </revision>
+  <revision rev="102" vrev="102">
+    <srcmd5>40a5a1e2f4504ecd5adb2c607cbd6da5</srcmd5>
+    <version>5.0</version>
+    <time>1754080808</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1296560</requestid>
+  </revision>
 </revisionlist>

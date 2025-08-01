@@ -68,7 +68,9 @@ Requires:       ca-certificates-mozilla
 Requires:       coreutils
 Requires:       coreutils-systemd
 Requires:       glibc
+%ifnarch s390x
 Requires:       (grub2-branding-openSUSE if (grub2 or grub2-common))
+%endif
 ### Packages formerly provided by bootloader
 Requires:       (grub2-snapper-plugin if (grub2 or grub2-common))
 ###
@@ -103,7 +105,6 @@ Requires:       dosfstools
 Requires:       glibc-locale-base
 Suggests:       busybox-gzip
 Requires:       iputils
-Requires:       issue-generator
 Requires:       (health-checker if (grub2 or grub2-common))
 Requires:       (health-checker-plugins-MicroOS if health-checker)
 %ifnarch %{arm}
@@ -125,6 +126,9 @@ Requires:       timezone
 Requires:       tpm2-0-tss
 Requires:       libtss2-tcti-device0
 Requires:       tpm2.0-tools
+# sysext image support
+Requires:       sysextmgrcli
+#Requires:      sysextmgr-tukit-plugin
 Conflicts:      gettext-runtime-mini
 Conflicts:      krb5-mini
 Requires:       yast2-logs
@@ -443,8 +447,8 @@ Requires:       plasma-branding-Kalpa
 
 # Some basic system tools
 Requires:       kate
-Requires:       konsole
 Requires:       falkon-kde
+Requires:       konsole
 # Add KDE Partition Manager to install pattern (boo#1212925)
 Requires:       partitionmanager
 
@@ -494,8 +498,8 @@ Requires:       cantarell-fonts
 Requires:       dejavu-fonts
 Requires:       ghostscript-fonts-std
 Requires:       google-carlito-fonts
-Requires:       google-noto-sans-cjk-fonts
 Requires:       google-noto-coloremoji-fonts
+Requires:       google-noto-sans-cjk-fonts
 Requires:       google-noto-sans-symbols-fonts
 Requires:       google-noto-sans-symbols2-fonts
 Requires:       google-opensans-fonts
@@ -504,8 +508,7 @@ Requires:       hack-fonts
 Requires:       ibm-plex-mono-fonts
 Requires:       liberation-fonts
 Requires:       suse-fonts
-
-
+Requires:       urw-base35-fonts
 
 # Recommends and Supplements won't work, so pull in manually
 Requires:       discover6-backend-flatpak

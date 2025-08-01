@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul 29 10:57:27 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- There is no grub2 branding on s390x
+
+-------------------------------------------------------------------
+Mon Jul 28 09:10:24 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove issue-generator, now handled by agetty itself
+- Add sysextmgrcli to install and update sysext images
+
+-------------------------------------------------------------------
+Mon Jul 28 05:50:06 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Require urw-base35-fonts which provide similar fonts to the now
+  obsolete ghostscript-fonts-std-converted
+
+-------------------------------------------------------------------
 Sat Jul 26 14:23:19 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Drop ghostscript-fonts-std-converted from kde pattern
