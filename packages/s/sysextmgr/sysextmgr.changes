@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 01 15:10:36 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20250801.4978328:
+  * tukit-plugin: print more informal messages
+  * update cli: don't print header without updates
+  * sysextmgrd: don't report images without update
+  * check cli: only print header if there are images
+
+-------------------------------------------------------------------
 Mon Jul 28 14:25:34 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.0+git20250728.f544090:
