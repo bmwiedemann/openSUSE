@@ -1,7 +1,23 @@
 -------------------------------------------------------------------
+Thu Jul 31 14:59:23 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Remove the script used to help migrating the language and locale settings
+  located in /etc/sysconfig/language on old systems to the systemd default
+  locations (bsc#1247074)
+
+  The script was introduced more than 7 years ago and all systems running TW
+  should have been migrated since then. Moreover the installer supports the
+  systemd default locations since approximately SLE15. 
+
+-------------------------------------------------------------------
 Mon Jul 21 08:53:43 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - systemd-testsuite: fix Requires to systemd-ukify
+
+-------------------------------------------------------------------
+Thu Jul 17 15:25:27 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Build systemd-boot for riscv64
 
 -------------------------------------------------------------------
 Tue Jul 15 17:25:48 UTC 2025 - Franck Bui <fbui@suse.com>

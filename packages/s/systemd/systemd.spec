@@ -66,7 +66,7 @@
 %bcond_without  networkd
 %bcond_without  portabled
 %bcond_without  resolved
-%ifarch %{ix86} x86_64 aarch64
+%ifarch %{ix86} x86_64 aarch64 riscv64
 %bcond_without  sd_boot
 %else
 %bcond_with     sd_boot
@@ -928,6 +928,9 @@ export BRP_PESIGN_FILES="%{_systemd_util_dir}/boot/efi/systemd-bootx64.efi"
 %if %{with upstream}
 %ifarch aarch64
 export BRP_PESIGN_FILES="%{_systemd_util_dir}/boot/efi/systemd-bootaa64.efi"
+%endif
+%ifarch riscv64
+export BRP_PESIGN_FILES="%{_systemd_util_dir}/boot/efi/systemd-bootriscv64.efi"
 %endif
 %endif
 %endif

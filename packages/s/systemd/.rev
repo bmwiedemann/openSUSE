@@ -7695,4 +7695,16 @@ handle manual pages that consist only of a .so directive such as
   move ukify from experimental package to a dedicated sub package.</comment>
     <requestid>1294979</requestid>
   </revision>
+  <revision rev="454" vrev="5">
+    <srcmd5>7a0fa73edbe1c841f42acb854b1e5747</srcmd5>
+    <version>257.7</version>
+    <time>1754080804</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the script used to help migrating the language and locale settings
+  located in /etc/sysconfig/language on old systems to the systemd default
+  locations (bsc#1247074)
+
+- Build systemd-boot for riscv64</comment>
+    <requestid>1296831</requestid>
+  </revision>
 </revisionlist>
