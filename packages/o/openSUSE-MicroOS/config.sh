@@ -91,11 +91,17 @@ if [ -f /etc/chrony.conf ]; then
 	systemctl enable chronyd
 fi
 
-# Enable jeos-firstboot if installed, disabled by combustion/ignition
-if rpm -q --whatprovides jeos-firstboot >/dev/null; then
-	mkdir -p /var/lib/YaST2
-	touch /var/lib/YaST2/reconfig_system
-	systemctl enable jeos-firstboot.service
+# Enable jeos-firstboot if installed, disabled by combustion/ignition.
+# However, on s390x without KVM the console is not capable of running
+# jeos-firstboot, use systemd-firstboot as minimal alternative.
+if [[ "$kiwi_profiles" =~ s390x-(dasd|fba|fcp) ]]; then
+	systemctl enable systemd-firstboot
+	# Enable prompting for the root password
+	echo 'root:!unprovisioned' | chpasswd -e
+elif rpm -q --whatprovides jeos-firstboot >/dev/null; then
+        mkdir -p /var/lib/YaST2
+        touch /var/lib/YaST2/reconfig_system
+        systemctl enable jeos-firstboot.service
 fi
 
 # The %post script can't edit /etc/fstab sys due to https://github.com/OSInside/kiwi/issues/945
@@ -144,11 +150,14 @@ sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp
 #======================================
 # Add default kernel boot options
 #--------------------------------------
-serialconsole='console=ttyS0,115200'
-[[ "$kiwi_profiles" == *"RaspberryPi2" ]] && serialconsole='console=ttyAMA0,115200'
-[[ "$kiwi_profiles" == *"Rock64" ]] && serialconsole='console=ttyS2,1500000'
+consoles='console=ttyS0,115200 console=tty0'
+[[ "$kiwi_profiles" == *"RaspberryPi2"* ]] && consoles='console=ttyAMA0,115200 console=tty0'
+[[ "$kiwi_profiles" == *"Rock64"* ]] && consoles='console=ttyS2,1500000 console=tty0'
+[[ "$kiwi_profiles" == *"ppc64"* ]] && consoles='console=hvc0,115200'
+[[ "$kiwi_profiles" == *"s390x-Cloud"* ]] && consoles='' # autodetect
+[[ "$kiwi_profiles" == *"s390x-dasd"* ]] && consoles='hvc_iucv=8'
 
-cmdline=('quiet' 'systemd.show_status=yes' "${serialconsole}" 'console=tty0')
+cmdline=('quiet' 'systemd.show_status=yes' ${consoles})
 rpm -q wicked && cmdline+=('net.ifnames=0')
 
 ignition_platform='metal'
@@ -160,7 +169,7 @@ case "${kiwi_profiles}" in
 	*VirtualBox*) ignition_platform='virtualbox' ;;
 	*HyperV*) ignition_platform='metal'
 	          cmdline+=('rootdelay=300') ;;
-	*Pine64*|*RaspberryPi*|*Rock64*|*Vagrant*) ignition_platform='metal' ;;
+	*Pine64*|*RaspberryPi*|*Rock64*|*Vagrant*|*s390x*|*ppc64le*) ignition_platform='metal' ;;
 	# Use autodetection on selfinstall. The first boot doesn't use the grub
 	# cmdline anyway, it's started with kexec using kiwi's builtin default.
 	*SelfInstall*) ignition_platform='' ;;
@@ -177,7 +186,7 @@ fi
 # If SELinux is installed, configure it like transactional-update setup-selinux
 #--------------------------------------
 if [[ -e /etc/selinux/config ]]; then
-	cmdline+=("security=selinux selinux=1")
+	cmdline+=('security=selinux' 'selinux=1')
 	# Adjust selinux config
 	sed -i -e 's|^SELINUX=.*|SELINUX=enforcing|g' \
 	    -e 's|^SELINUXTYPE=.*|SELINUXTYPE=targeted|g' \

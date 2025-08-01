@@ -9,6 +9,7 @@ if [ -x /usr/bin/sdbootutil ]; then
 	arch="$(uname -m)"
 	case "$arch" in
 		aarch64) arch=aa64 ;;
+		riscv64) arch=riscv64 ;;
 		x86_64) arch=x64 ;;
 		*) echo "Unknown arch $arch"; exit 1 ;;
 	esac

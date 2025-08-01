@@ -11,8 +11,8 @@
         <!-- Flavors -->
         <profile name="ContainerHost" description="MicroOS with container runtime (podman)"/>
         <!-- Platforms -->
-        <profile name="kvm-and-xen-sdboot" description="kvm-and-xen with systemd-boot" arch="x86_64,aarch64"/>
-        <profile name="kvm-and-xen-grub-bls" description="kvm-and-xen with GRUB2 and bootctl" arch="x86_64,aarch64"/>
+        <profile name="kvm-and-xen-sdboot" description="kvm-and-xen with systemd-boot" arch="x86_64,aarch64,riscv64"/>
+        <profile name="kvm-and-xen-grub-bls" description="kvm-and-xen with GRUB2 and bootctl" arch="x86_64,aarch64,riscv64"/>
         <profile name="kvm-and-xen" description="kvm-and-xen" arch="x86_64,aarch64,armv7l"/>
         <profile name="VMware" description="VMware for x86_64" arch="x86_64"/>
         <profile name="MS-HyperV" description="Hyper-V" arch="x86_64,aarch64"/>
@@ -24,6 +24,9 @@
         <profile name="RaspberryPi2" description="RaspberryPi2 (armv7)" arch="armv7l"/>
         <profile name="Rock64" description="Rock64" arch="aarch64"/>
         <profile name="Vagrant" description="Vagrant for x86_64" arch="x86_64,aarch64"/>
+        <profile name="s390x-dasd" description="Raw DASD image for z Systems" arch="s390x"/>
+        <profile name="s390x-Cloud" description="qcow2 image for z Systems" arch="s390x"/>
+        <profile name="ppc64le-512B" description="Raw disk image for POWER (512B sectors)" arch="ppc64le"/>
         <profile name="SelfInstall" description="Self Installing Image" arch="x86_64,aarch64"/>
         <!-- Images (flavor + platform) -->
         <profile name="ContainerHost-kvm-and-xen" description="MicroOS with Podman for KVM and HVM Xen" arch="x86_64,aarch64">
@@ -656,6 +659,98 @@
             <size unit="G">24</size>
         </type>
     </preferences>
+    <preferences profiles="s390x-dasd">
+        <version>16.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
+        <type
+            image="oem"
+            filesystem="btrfs"
+            bootpartition="true"
+            bootpartsize="300"
+            bootfilesystem="ext4"
+            devicepersistency="by-uuid"
+            target_blocksize="4096"
+            btrfs_root_is_snapshot="true"
+            btrfs_root_is_readonly_snapshot="true"
+            btrfs_quota_groups="true"
+        >
+            <bootloader name="grub2_s390x_emu" timeout="3" targettype="CDL"/>
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="boot/grub2/s390x-emu" mountpoint="boot/grub2/s390x-emu"/>
+                <volume name="boot/writable"/>
+                <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
+            </systemdisk>
+            <size unit="G">2</size>
+      </type>
+    </preferences>
+    <preferences profiles="s390x-Cloud">
+        <version>16.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
+        <type
+            image="oem"
+            filesystem="btrfs"
+            format="qcow2"
+            bootpartition="true"
+            bootpartsize="300"
+            bootfilesystem="ext4"
+            btrfs_root_is_snapshot="true"
+            btrfs_root_is_readonly_snapshot="true"
+            btrfs_quota_groups="true"
+        >
+            <bootloader name="grub2_s390x_emu" timeout="3"/>
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="boot/grub2/s390x-emu" mountpoint="boot/grub2/s390x-emu"/>
+                <volume name="boot/writable"/>
+                <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
+            </systemdisk>
+            <size unit="G">20</size>
+        </type>
+    </preferences>
+    <preferences profiles="ppc64le-512B">
+        <version>16.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
+        <type
+            image="oem"
+            filesystem="btrfs"
+            firmware="ofw"
+            bootpartition="false"
+            devicepersistency="by-uuid"
+            btrfs_root_is_snapshot="true"
+            btrfs_root_is_readonly_snapshot="true"
+            btrfs_quota_groups="true"
+        >
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="boot/grub2/powerpc-ieee1275"/>
+                <volume name="boot/writable"/>
+                <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
+            </systemdisk>
+            <size unit="G">2</size>
+        </type>
+    </preferences>
     <preferences profiles="SelfInstall">
         <version>16.0.0</version>
         <packagemanager>zypper</packagemanager>
@@ -719,7 +814,7 @@
         <!-- New version with /etc as subvolume -->
         <package name="read-only-root-fs &gt;= 1.0+git20250414"/>
     </packages>
-    <packages type="image" profiles="SelfInstall,kvm-and-xen,VMware,MS-HyperV,VirtualBox,Pine64,RaspberryPi,RaspberryPi2,Rock64,Vagrant,DigitalOcean-Cloud">
+    <packages type="image" profiles="SelfInstall,kvm-and-xen,VMware,MS-HyperV,VirtualBox,Pine64,RaspberryPi,RaspberryPi2,Rock64,Vagrant,DigitalOcean-Cloud,s390x-dasd,s390x-Cloud,ppc64le-512B">
         <!-- Needed for initial configuration, except on OpenStack-Cloud, where cloud-init is used -->
         <package name="ignition-dracut"/>
         <package name="combustion &gt;= 1.2"/> <!-- New firstboot mechanism -->
@@ -749,16 +844,17 @@
     </packages>
     <packages type="image" profiles="kvm-and-xen-grub-bls">
         <package name="grub2-arm64-efi-bls" arch="aarch64"/>
+        <package name="grub2-riscv64-efi-bls" arch="riscv64"/>
         <package name="grub2-x86_64-efi-bls" arch="x86_64"/>
         <package name="uefi_mbr" arch="x86_64"/>
     </packages>
-    <packages type="image" profiles="Pine64,RaspberryPi,RaspberryPi2,Rock64">
+    <packages type="image" profiles="Pine64,RaspberryPi,RaspberryPi2,Rock64,ppc64le-512B">
         <package name="patterns-microos-hardware"/>
     </packages>
     <packages type="image" profiles="ContainerHost">
         <package name="patterns-containers-container_runtime"/>
     </packages>
-    <packages type="image" profiles="kvm-and-xen">
+    <packages type="image" profiles="kvm-and-xen,s390x-Cloud">
         <!-- KVM and Xen specific packages -->
         <package name="xen-tools-domU" arch="x86_64"/>
         <package name="qemu-guest-agent"/>
@@ -769,7 +865,7 @@
     <packages type="image" profiles="MS-HyperV">
         <package name="hyper-v"/>
     </packages>
-    <packages type="image" profiles="OpenStack-Cloud">
+    <packages type="image" profiles="OpenStack-Cloud,s390x-Cloud">
         <package name="patterns-microos-cloud"/>
         <package name="patterns-base-bootloader"/>
     </packages>
