@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 31 09:33:19 UTC 2025 - schubi@suse.com
+
+- Update to version 0.7.10:
+  * cmake: Fix .pc file with absolute CMAKE_INSTALL_<dir> (#237)
+  * Add build options for the CMake build (#230)
+  * check NULL for default string (bnc#1247107)
+
+-------------------------------------------------------------------
 Thu May 08 14:41:05 UTC 2025 - schubi@suse.com
 
 - Update to version 0.7.9:
