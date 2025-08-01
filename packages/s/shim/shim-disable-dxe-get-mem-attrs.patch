@@ -1,0 +1,16 @@
+Index: shim-16.0/memattrs.c
+===================================================================
+--- shim-16.0.orig/memattrs.c
++++ shim-16.0/memattrs.c
+@@ -459,6 +459,11 @@ get_hsi_mem_info(void)
+ 		hsi_status |= SHIM_HSI_STATUS_HASMAP;
+ 	}
+ 
++	if (!(hsi_status & SHIM_HSI_STATUS_HASMAP)) {
++		dprint(L"No memory protocol, not testing further\n");
++		return;
++	}
++
+ 	get_dxe_services_table(&dst);
+ 	if (dst) {
+ 		dprint(L"Setting HSI from %a to %a\n",

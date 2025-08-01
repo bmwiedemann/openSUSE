@@ -52,8 +52,10 @@ Source:         %{name}-%{version}.tar.bz2
 # with the signature from the UEFI signing service.
 # Note: For signature requesting, check SIGNATURE_UPDATE.txt
 Source1:        signature-opensuse.x86_64.asc
+# openSUSE Secure Boot CA, 2013-2035, PEM format
 Source2:        openSUSE-UEFI-CA-Certificate.crt
 Source3:        shim-install
+# SUSE Linux Enterprise Secure Boot CA, 2013-2035, PEM format
 Source4:        SLES-UEFI-CA-Certificate.crt
 Source5:        extract_signature.sh
 Source6:        attach_signature.sh
@@ -97,6 +99,8 @@ Patch4:         shim-disable-export-vendor-dbx.patch
 Patch5:         shim-alloc-one-more-byte-for-sprintf.patch
 # PATCH-FIX-UPSTREAM shim: change automatically enable MOK_POLICY_REQUIRE_NX (PR #761)(bsc#1205588) - jlee@suse.com
 Patch6:         shim-change-automatically-enable-MOK_POLICY_REQUIRE_NX.patch
+# PATCH-FIX-SUSE shim-disable-dxe-get-mem-attrs.patch bsc#1247432 jlee@suse.com -- Disable DXE approach for getting memory attributes approach
+Patch7:         shim-disable-dxe-get-mem-attrs.patch
 BuildRequires:  dos2unix
 BuildRequires:  efitools
 BuildRequires:  mozilla-nss-tools

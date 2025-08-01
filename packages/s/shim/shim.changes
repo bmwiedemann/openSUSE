@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jul 31 12:47:58 UTC 2025 - Joey Lee <jlee@suse.com>
+
+- Add shim-disable-dxe-get-mem-attrs.patch
+    - On old edk2-stable202308 ovmf, running dxe_get_mem_attrs() causes
+      get_hsi_mem_info() confusion on hsi_status. It looks that hsi_status
+      has a copy after running dxe_get_mem_attrs(). Those elements in 
+      hsi_nx_is_enforced(), HEAPX|STACKX|ROW can NOT set into hsi_status.
+      Let's disabling the approach of DXE get memory attributes until
+      we found the root cause.
+  (bsc#1247432) 
+
+-------------------------------------------------------------------
+Mon Jul 28 16:25:46 UTC 2025 - Joey Lee <jlee@suse.com>
+
+- Removed pre script in shim package for checking UEFI db has valid key
+  for shim because it will interrupt group update of RPMs. It should be
+  moved to %pretrans and re-written by lua.
+
+-------------------------------------------------------------------
+Sun Jul 27 04:48:57 UTC 2025 - Joey Lee <jlee@suse.com>
+
+- Add pre script to shim package for checking UEFI db has valid key for shim.
+  It prevents that SUSE shim be installed on a machine which can no verify
+  and boot with it when secure boot is enabled.
+  User can still install shim success when secure boot is disabled even no
+  valid key in UEFI db. User should aware that shim can not be boot when
+  secure boot is enabled.
+  This checking will useful for changing Microsoft or SUSE CA in the future.
+  The shim be signed by new MS/SUSE key will NOT be installed on a machine
+  which does not have new key in UEFI db when secure boot is enabled. It
+  can prevent booting fail after shim package is updated.
+
+-------------------------------------------------------------------
 Fri Jul 25 06:01:26 UTC 2025 - Joey Lee <jlee@suse.com>
 
 - Building out shim.nx.efi for supporting non-executable
