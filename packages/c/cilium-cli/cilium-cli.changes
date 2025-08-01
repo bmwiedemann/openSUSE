@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Fri Aug 01 12:40:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.18.6:
+  * Minor Changes:
+    - Cilium uninstall now removes annotations from Kubernetes
+      nodes when clean-cilium-state: true (cilium/cilium#39931,
+      @AritraDey-Dev)
+    - Deprecate v2alpha1 version of CiliumLoadBalancerIPPool CRD in
+      favor of the v2 version (cilium/cilium#39134, @pippolo84)
+  * Bugfixes:
+    - Fix bug where we would display the Max Seq. Number for IPsec
+      on 32bits. (cilium/cilium#40622, @pchaigno)
+  * CI Changes:
+    - Add l7 proxy check for to-fqdns connectivity test
+      (cilium/cilium#40549, @vipul-21)
+    - cli: switch coredns image to registry.k8s.io, and fix
+      renovate (cilium/cilium#40706, @giorio94)
+    - connectivity: Allow customization of tcpdump kill timeout
+      (cilium/cilium#40774, @gentoo-root)
+    - connectivity: rework sniffer to execute tcpdump in background
+      (cilium/cilium#40487, @smagnani96)
+  * Misc Changes:
+    - cilium-cli: Print partial output upon bgp peers errors
+      (cilium/cilium#40278, @rastislavs)
+    - cilium-cli: Update default network-perf image
+      (cilium/cilium#40376, @HadrienPatte)
+    - cilium-cli: Use slim k8s packages for connectivity tests
+      (cilium/cilium#40708, @HadrienPatte)
+    - Fix misc typos (cilium/cilium#40769, @HadrienPatte)
+    - Miscellaneous improvements to option.NewNamedMapOptions
+      (cilium/cilium#40529, @giorio94)
+    - The unableTranslateCIDRgroups variable is removed as it is
+      not used since the v1.17 release (cilium/cilium#40267,
+      @Surya-7890)
+    - Update stable release to v0.18.5 by @tklauser in #3060
+    - Update RELEASE.md by @michi-covalent in #3062
+  * Dependencies
+    - go.mod, vendor: pull in charts for Cilium 1.18.0 and Tetragon
+      1.5.0 (cilium/cilium#40823, @tklauser)
+    - vendor: Update github.com/google/go-github to v73
+      (cilium/cilium#40326, @HadrienPatte)
+    - chore(deps): update docker.io/library/golang:1.24.5 docker
+      digest to ef5b4be
+    - chore(deps): update dependency cilium/cilium to v1.18.0
+    - chore(deps): update golangci/golangci-lint docker tag to
+      v2.3.0
+    - chore(deps): update golang:1.24.5-alpine3.21 docker digest to
+      6edc205
+    - chore(deps): update golang:1.24.5-alpine3.21 docker digest to
+      72ff633
+    - chore(deps): update golang:1.24.5-alpine3.21 docker digest to
+      3ebc008
+    - chore(deps): update dependency cilium/cilium to v1.17.6
+    - chore(deps): update golangci/golangci-lint docker tag to
+      v2.2.2
+    - chore(deps): update go to v1.24.5
+    - chore(deps): update golang docker tag to v1.24.5
+    - chore(deps): update docker.io/library/golang:1.24.4 docker
+      digest to 20a022e
+
+-------------------------------------------------------------------
 Thu Jul 03 04:59:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.18.5:
