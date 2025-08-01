@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 31 16:06:13 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.48
+  * gromox.cfg now has a ``ruleproc_debug`` directive (applies to
+    the TWOSTEP Processor only)
+  * ews: repair a nullptr dereference from the OOF XML change
+  * exmdb: make EXRPC write_message_v2 fill in return MID/CN values
+  * ab_tree: restore filtering of objects with AB_HIDE_FROM_GAL
+    for NSP (this was lost in a Global Address Book provider
+    rewrite in 2.40)
+
+-------------------------------------------------------------------
 Mon Jul 28 16:42:44 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.47
