@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Aug 01 11:57:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.3:
+  * Revert "SCA: Generate depends for shlibs ending in .so" and
+    related commits (#2116)
+
+-------------------------------------------------------------------
+Fri Aug 01 11:49:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.2:
+  * Use https://mirrors.ocf.berkeley.edu whenever applicable for
+    GNU programs by @sergiodj in #2073
+  * build(deps): bump github.com/docker/docker from
+    28.3.2+incompatible to 28.3.3+incompatible in the go_modules
+    group by @dependabot[bot] in #2108
+  * Don't --require-zero in CI scan by @jonjohnsonjr in #2112
+  * Improve SCA handling of bogus shlib dependencies by @sergiodj
+    in #2109
+  * Bump apko to v0.30.2 and handle field rename by @kevinmdavis in
+    #2111
+
+-------------------------------------------------------------------
 Mon Jul 28 05:31:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.1:
