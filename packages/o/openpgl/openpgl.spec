@@ -20,7 +20,7 @@
 %define libname libopenpgl0
 
 Name:           openpgl
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Open Path Guiding Library
 License:        Apache-2.0

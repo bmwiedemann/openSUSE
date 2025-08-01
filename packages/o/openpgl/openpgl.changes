@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jul 31 17:40:35 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.7.1:
+  * [release] Bumping version number to 0.7.1 and updating changelog and readme.
+  * [pathsegmentstorage] Removing noisy stdout prints
+  * [cmake] Bumping cmake minimum version to 3.5 to align with Embree
+  * [cleanup] Some minor code cleanup
+  * [vmm] Improving stability of parallax shifting for numerical edge cases
+  * [vmmfit] Improving numerical stability
+  * [vmmsplitter] Imporved numerical stability
+  * [region] Adding regionPivot member representing the mean of the samples
+  * [kdtree] Implementing a more robust split dimension calculation that considers zero valued variance estimates
+  * [samplestats] Increasing the accuracy and robustness to the integer arithmetric  based sample statistic estimation
+  * [samplestats] Switching from inc sample variance  to numerical more stable inc variance estimation
+  * [samplestats] Fixing wrong initial bounds for the sample bounds of the IntegerSampleStatistics
+  * [samplestorage] Adding function to merge SampleStorages.
+  * [superbuild] Adding options to enable experimental features and compression
+  * [samplestats] Increasing the number of integer bins to 2^18 (262K) to increase robustness on very large scenes and adding some additional checks
+  * [kdtree] Adding pivotSplitSamplesWithIntegerStats for being able to use integer arithmetic when parallel pivot splitting is disabled.
+  * [kdtree] Adding USE_PARALLEL_PIVOT_SPLIT define to disable parallel pivot splitting
+  * [samplestas] Fixing a bug when merging two statistics each containing zero
+  * [tools] Adding fitField functionality to fitting a guiding structure from scratch from multiple sample sets
+  * [superbuild] Adding BUILD_TBB_SHARED config to build  and link TBB either as shared or static library
+  * [samplestats] Code cleanup
+  * [kdtree] Fixing bug caused by inaccuracies in the leaf node splitting using integer arithmetic
+  * [kdtree] Renamed pivotSplit function to clarify if they are parallel or not and if they use integer arithmetic
+  * [field] Handling the case when one region gets zero samples at the beginning more gracefully.
+  * [superbuild] Adding the new OpenPGL CMake flags to the superbuild script
+  * [ci] Update permissions for main.yml
+
+-------------------------------------------------------------------
 Sat Apr 05 21:43:28 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.7.0:

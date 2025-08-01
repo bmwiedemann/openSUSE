@@ -45,4 +45,12 @@ it's x86_64 exclusive for the time being</comment>
     <comment></comment>
     <requestid>1267740</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1001a87924bdd940289583270a04a182</srcmd5>
+    <version>0.7.1</version>
+    <time>1754088153</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297020</requestid>
+  </revision>
 </revisionlist>
