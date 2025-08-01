@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 31 08:52:38 UTC 2025 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Stop emitting %{release} into program binaries(bsc#1246806).
+
+-------------------------------------------------------------------
 Thu Mar 28 07:55:28 UTC 2024 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add missing supplements(bsc#1220391):

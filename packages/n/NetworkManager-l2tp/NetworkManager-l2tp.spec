@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-l2tp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %define pppd_plugin_dir %(rpm -ql ppp | grep -m1 pppd/[0-9]*)
+%define rbrelease %(r=%{release}; echo ${r%%.*})
 Name:           NetworkManager-l2tp
 Version:        1.20.10
 Release:        0
@@ -73,7 +74,7 @@ This package contains software for integrating L2TP and L2TP/IPsec
 	--enable-lto=yes \
 	--enable-libreswan-dh2 \
 	--with-pppd-plugin-dir=%{pppd_plugin_dir} \
-	--with-dist-version=%{version}-%{release} \
+	--with-dist-version=%{version}-%{rbrelease} \
 	runstatedir=%{_rundir} \
 	%{nil}
 %make_build
