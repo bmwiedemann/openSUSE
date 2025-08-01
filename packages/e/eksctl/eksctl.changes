@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 01 12:22:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.212.0:
+  * Features
+    - Add support for Cross Account Pod Identity Associations
+      (#8425)
+
+-------------------------------------------------------------------
 Thu Jul 24 08:27:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.211.0:
