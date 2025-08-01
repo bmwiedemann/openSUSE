@@ -1372,4 +1372,16 @@ The Python versions supported in this release are 3.9-3.11.
     <comment></comment>
     <requestid>1266567</requestid>
   </revision>
+  <revision rev="139" vrev="3">
+    <srcmd5>f68dd95205f77849cc3c33cb0d3599b5</srcmd5>
+    <version>2.2.2</version>
+    <time>1754080804</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1296687 from bmwiedemann
+
+This was now merged upstream, so I added relevant metadata
+
+  Add reproducible.patch to make debuginfo reproducible (bsc#1245203)</comment>
+    <requestid>1296837</requestid>
+  </revision>
 </revisionlist>

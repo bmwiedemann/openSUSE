@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 29 11:09:08 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to make debuginfo reproducible (bsc#1245203)
+
+-------------------------------------------------------------------
 Mon Mar 24 16:06:08 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Disable and remove support of gnu-hpc build flavours (bsc#1239982)
