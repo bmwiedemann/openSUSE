@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 01 08:43:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.9.0:
+  * Features
+    - cli: release install, release rollback and release uninstall
+      should have --no-pod-logs option (#386) (b186537)
+  * Bug Fixes
+    - non-successful release revisions since last successful never
+      cleaned up (9dc59d8)
+
+-------------------------------------------------------------------
 Sat Jul 12 07:15:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.8.0:
