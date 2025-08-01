@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jul 31 12:19:27 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250731.055e2fe:
+  * Refactor the write_issue_file function
+
+-------------------------------------------------------------------
+Thu Jul 31 06:33:35 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250731.b7568e3:
+  * Some style changes
+  * Exit if no encrypted devices
+
+-------------------------------------------------------------------
+Wed Jul 30 07:43:49 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1+git20250729.9dba13a:
+  * sdbootutil-enroll: support agetty for issue.d, too
+  * Support riscv64 in set_image_name
+
+-------------------------------------------------------------------
 Thu Jul 24 11:23:01 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20250724.553d46c:
