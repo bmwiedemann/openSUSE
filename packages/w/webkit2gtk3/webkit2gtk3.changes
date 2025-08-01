@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 30 18:52:46 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.48.4:
+  + Improve emoji font selection with USE_SKIA=ON.
+  + Improve playback of multimedia streams from blob URLs.
+  + Fix the build with USE_SKIA_OPENTYPE_SVG=ON and
+    USE_SYSPROF_CAPTURE=ON.
+  + Fix the build on LoongArch with USE_SKIA=ON.
+  + Fix crash when using a WebKitWebView widget in an offscreen
+    window.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
 Sun Jun  8 05:33:09 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Replace usage of %jobs for reproducible builds (boo#1237231)
