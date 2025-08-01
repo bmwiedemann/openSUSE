@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-typing-inspection
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Runtime typing introspection tools
 License:        MIT

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 30 18:03:09 UTC 2025 - Elisei Roca <eroca@suse.com>
+
+- Update to 0.4.1
+  * Fix compatibility with latest Python 3.14
+  * Add typing_objects.is_forwardref()
+  * Fix implementation of is_union_origin()
+  * Add SPDX license identifier
+  * Use list as a type hint for InspectedAnnotation.metadata
+
+-------------------------------------------------------------------
+Tue Jul 29 14:35:39 UTC 2025 - Elisei Roca <eroca@suse.com>
+
+- Add %{?sle15_python_module_pythons} for SLE 15 builds
+
+-------------------------------------------------------------------
 Fri Apr  4 04:38:50 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 0.4.0. 
