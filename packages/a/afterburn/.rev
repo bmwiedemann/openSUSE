@@ -137,4 +137,12 @@ Prepare for RPM 4.20</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1292218</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a5c1f8d182fc24eea14e682ad2e6856c</srcmd5>
+    <version>5.9.0</version>
+    <time>1754088063</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1296822</requestid>
+  </revision>
 </revisionlist>
