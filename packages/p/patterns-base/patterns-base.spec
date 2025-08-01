@@ -155,7 +155,7 @@ Requires:       glibc-locale-base
 %{recommends_on_traditional hostname}
 %{requires_on_transactional /usr/bin/hostname}
 %{requires_on_transactional_recommends_otherwise iproute2}
-%{requires_on_transactional_recommends_otherwise issue-generator}
+%{recommends_on_traditional issue-generator}
 %{requires_on_transactional_recommends_otherwise lastlog2}
 %if !0%{?is_opensuse}
 %{requires_on_transactional pam_pwquality}

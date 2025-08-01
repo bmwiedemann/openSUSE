@@ -1151,4 +1151,13 @@
     <comment></comment>
     <requestid>1295793</requestid>
   </revision>
+  <revision rev="134" vrev="18">
+    <srcmd5>348e5a47cebbe132b2628ab5e166b2cf</srcmd5>
+    <version>20241218</version>
+    <time>1754080807</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer require issue-generator on transactional systems.
+  agetty produces the needed output by itself.</comment>
+    <requestid>1296328</requestid>
+  </revision>
 </revisionlist>

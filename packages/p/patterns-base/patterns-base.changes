@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 29 13:11:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer require issue-generator on transactional systems.
+  agetty produces the needed output by itself.
+
+-------------------------------------------------------------------
 Wed Jul 23 08:53:48 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Drop xsetmode and xsetpointer from x11_raspberrypi (boo#1246921)
