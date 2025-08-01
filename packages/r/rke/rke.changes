@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug  1 12:24:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.8.5:
+  * RKE Kubernetes versions
+    - v1.30.14-rancher1-1
+    - v1.31.10-rancher1-1
+    - v1.32.6-rancher1-1 (default)
+  * What's Changed
+    - Updates deployListener() to contain docker output check
+      compatable with Docker Enginer 28 and below by @Faulkner-Ned
+      in #3865
+
+-------------------------------------------------------------------
 Wed Jun 18 04:43:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.8.4:
