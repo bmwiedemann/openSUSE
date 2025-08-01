@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Aug 01 07:12:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.45.0:
+  * Features
+    - build: add worktree pool for git patch (#7008) (2875a42)
+    - support basic auth for remote git in includes and stapel git
+      directive (#7006) (4782d32)
+  * Bug Fixes
+    - build: fix path matcher special char error (ad42553)
+
+-------------------------------------------------------------------
+Fri Aug 01 07:04:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.44.0:
+  * Features
+    - build: warn if registry overflows due to missed cleanup
+      (#6975) (6aa302a)
+    - deploy, tracking: update kubedog to track prometheus
+      resources (#7005) (7ef8f0d)
+    - deploy: add option "--no-pod-logs" (#6993) (e5a1c57)
+  * Bug Fixes
+    - deploy: non-successful release revisions since last
+      successful never cleaned up (81faa1f)
+    - host-cleanup: decrease retention period of dangling images
+      (b0aedf9)
+
+-------------------------------------------------------------------
+Fri Aug 01 06:31:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.43.0:
+  * Features
+    - build: add disable publish tag cache sync option and
+      background cache updater (#6986) (9d7bd6e)
+    - build: add image size and build time to report (58b489b)
+    - deploy, tracking: add rules for new custom resources (#6982)
+      (fbd2960)
+  * Bug Fixes
+    - build, buildah: prevent history error if user switched from
+      docker to buildah (#6980) (18eea62)
+    - bundles: fix load chart dir error (#6981) (bac1cd5)
+
+-------------------------------------------------------------------
 Fri Jul 18 09:40:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.42.0:
