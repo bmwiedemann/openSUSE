@@ -1,6 +1,7 @@
 #
 # spec file for package fake-hwclock
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2022 B1 Systems GmbH, Vohburg
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           fake-hwclock
-Version:        0.13
+Version:        0.14
 Release:        0
 Summary:        Save/restore system clock on machines without working RTC hardware
 License:        GPL-2.0-only
@@ -66,7 +67,6 @@ cp -p %{SOURCE1} .
 %service_del_postun fake-hwclock-load.service
 %service_del_postun fake-hwclock-save.service
 %service_del_postun fake-hwclock-save.timer
-
 
 %files
 %license COPYING

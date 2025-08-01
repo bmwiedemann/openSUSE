@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 26 07:09:19 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.14
+  * Update paths listed in the man page to point to /usr
+  * Read parameters from our config file directly from fake-hwclock rather
+    than from the init script.
+  * Make fake-hwclock-load.service run before systemd-fsck-root.service
+
+-------------------------------------------------------------------
 Tue Jun  4 16:37:10 UTC 2024 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 0.13
