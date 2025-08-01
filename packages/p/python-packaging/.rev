@@ -365,4 +365,14 @@
  * Add major, minor, and micro aliases to packaging.version.Version</comment>
     <requestid>1277200</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>b6c89b1532a99e5770600673ca4626d9</srcmd5>
+    <version>25.0</version>
+    <time>1754080812</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1296769 from marec2000
+
+update to 25.0</comment>
+    <requestid>1296839</requestid>
+  </revision>
 </revisionlist>
