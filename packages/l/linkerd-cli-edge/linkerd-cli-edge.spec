@@ -19,7 +19,7 @@
 %define linkerd_executable_name linkerd
 
 Name:           linkerd-cli-edge
-Version:        25.7.5
+Version:        25.7.6
 Release:        0
 Summary:        CLI for the linkerd service mesh for Kubernetes
 License:        Apache-2.0
@@ -80,10 +80,6 @@ zsh command line completion support for %{name}.
 %autosetup -p 1 -a 1
 
 %build
-GO111MODULE=on go generate -mod=readonly ./pkg/charts/static
-GO111MODULE=on go generate -mod=readonly ./jaeger/static
-GO111MODULE=on go generate -mod=readonly ./multicluster/static
-GO111MODULE=on go generate -mod=readonly ./viz/static
 go build \
    -mod=vendor \
    -tags prod \
@@ -106,6 +102,9 @@ mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
 # create the zsh completion file
 mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
 %{buildroot}/%{_bindir}/%{linkerd_executable_name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
+
+%check
+%{buildroot}/%{_bindir}/%{linkerd_executable_name} version --client | grep %{version}
 
 %files
 %doc README.md

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug 01 06:18:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.7.6:
+  No CLI-related changes in the changelog
+  * Dependencies
+    - build(deps): bump aws-lc-rs from 1.13.1 to 1.13.3 (#14294)
+    - build(deps): bump tj-actions/changed-files (#14287)
+    - build(deps): bump sigs.k8s.io/yaml from 1.5.0 to 1.6.0
+      (#14273)
+    - build(deps): bump linkerd/dev to v47 (#14275)
+    - build(deps): bump dyn-clone from 1.0.19 to 1.0.20 (#14284)
+    - build(deps): bump rustc-demangle from 0.1.25 to 0.1.26
+      (#14282)
+    - build(deps): bump rustls from 0.23.29 to 0.23.30 (#14283)
+    - build(deps): bump tokio from 1.46.1 to 1.47.0 (#14285)
+
+-------------------------------------------------------------------
 Thu Jul 24 10:29:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.7.5:
