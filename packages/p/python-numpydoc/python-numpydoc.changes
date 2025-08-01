@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Jul 31 18:06:59 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Need to mention:
+  * Drop numpydoc-pr523-py312deprecation.patch
+  * Drop mockapp.patch
+
+-------------------------------------------------------------------
+Thu Jul 31 15:43:39 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- update to 1.9.0
+  * ignore some errors at module level (#593).
+  * Rework hook output to remove the table (#611).
+  * Switch to storing AST nodes on the stack for more accurate method signature check and easy access to parent nodes (#623).
+  * MAINT: Changed class constructor init GL08 reporting (#592).
+  * BUG: Correct functionality of numpydoc SS05 (#613).
+  * Specity the types of numpydoc_xref_ignore option (#631).
+  * DOC: Do not use types for *args, **kwargs (#585).
+  * mention conda-forge in installation docs (#595).
+  * Fix typo in validation.rst (#605).
+  * Fix broken link in format.rst (#628).
+  * CI: use hashes for actions' versions in publishing job (#579).
+  * Bump the actions group with 2 updates (#581).
+  * Bump pypa/gh-action-pypi-publish from 1.10.0 to 1.10.2 in the actions group (#582).
+  * [pre-commit.ci] pre-commit autoupdate (#583).
+  * MAINT: Add _exception_on_warning to MockApp (#586).
+  * Bump the actions group across 1 directory with 2 updates (#590).
+  * don't pass maxsplit as positional arg (#596).
+  * [pre-commit.ci] pre-commit autoupdate (#598).
+  * Add Python 3.13 support (#599).
+  * Update readthedocs config (#600).
+  * Bump the actions group with 2 updates (#603).
+  * Bump the actions group with 3 updates (#609).
+  * [pre-commit.ci] pre-commit autoupdate (#614).
+  * Bump actions/download-artifact from 4.2.1 to 4.3.0 in the actions group (#620).
+  * Bump scientific-python/circleci-artifacts-redirector-action from 1.0.0 to 1.1.0 in the actions group (#627).
+  * Switch to dependency groups (#626).
+  * Fix pip setup command in github workflow (#629).
+
+-------------------------------------------------------------------
 Thu Feb 27 12:20:40 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

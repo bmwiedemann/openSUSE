@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-numpydoc
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        Sphinx extension to support docstrings in Numpy format
 License:        BSD-3-Clause
@@ -27,22 +27,16 @@ URL:            https://github.com/numpy/numpydoc
 Source:         https://files.pythonhosted.org/packages/source/n/numpydoc/numpydoc-%{version}.tar.gz
 # https://docs.python.org/3/objects.inv (changes from time to time, accessed 2024-02-29)
 Source1:        python-objects.inv
-# PATCH-FIX-UPSTREAM numpydoc-pr523-py312deprecation.patch gh#numpy/numpydoc#523
-Patch0:         numpydoc-pr523-py312deprecation.patch
-# PATCH-FIX-UPSTREAM https://github.com/numpy/numpydoc/pull/586 MAINT: Add _exception_on_warning to MockApp
-Patch1:         mockapp.patch
 BuildRequires:  %{python_module Sphinx >= 5}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tabulate >= 0.8.10}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Requires:       python-Sphinx >= 5
-Requires:       python-tabulate >= 0.8.10
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
