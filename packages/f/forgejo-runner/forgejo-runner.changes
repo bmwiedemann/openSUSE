@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 31 17:34:08 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 9.0.1:
+  * chore: to allow the runner to be imported, v9 needs to be in the go module
+- update to version 9.0.0:
+  * feat!: remove support for using an artifact server via CLI
+  * feat: the new forgejo-runner validate command
+  * fix: allow expressions in action descriptions and incomplete action inputs
+  * fix: the vars context is allowed in an action step env
+  * fix: allow expressions in step and job uses:
+
+-------------------------------------------------------------------
 Sun Jul 27 21:36:22 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 8.0.1:
