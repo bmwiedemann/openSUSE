@@ -1,4 +1,246 @@
 -------------------------------------------------------------------
+Fri Aug 01 12:55:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.15.0:
+  * CLI-related changes
+    -  fix(gpols): fetch sources from the cluster in case of
+       in-cluster mode in the CLI (#13603) (#13604)
+    -  fix: evaluate MAPs correctly in the CLI (#13557) (#13578)
+    -  Complete CLI fix command documentation with website URLs
+       (#13300)
+    -  feat: apply GPOLs in cluster mode in CLI (#13414)
+    -  feat: remove CLI deprecated APIs (#13481)
+    -  Support MutatingPolicy in Kyverno CLI apply command (#13425)
+    -  Init MutatingPolicy support in the CLI test command (#13420)
+    -  feat: support gpols in CLI test (#13412)
+    -  feat: support gpols in CLI apply (#13365)
+    -  Support dpol in kyverno apply CLI command (#13301)
+    -  Support JSON Payload for dpols in kyverno cli test command
+       (#13286)
+    -  feat: test deleting policy with the CLI test command
+       (#13284)
+    -  feat: support Cli  for map (#12667)
+    -  fix(cli): ensure JMESPath expressions handle number types
+       correctly  (#12037)
+    -  chore: add mpol and gpol crds in the CLI (#13181)
+    -  fix: apply IVPs in cluster mode in the CLI (#13101)
+    -  test: add cli test with namespaceObject (#13083)
+    -  fix: apply VPs in cluster mode in the CLI (#13084)
+    -  chore: update CLI warning messages (#13060)
+    -  refactor: use resource fetcher in the CLI (#13054)
+    -  chore: remove unused function in CLI (#13053)
+    -  fix: use the generic policy in the CLI (#13035)
+    -  feature: support multiple output formats (json, yaml,
+       markdown, junit) for CLI test command  (#12799)
+    -  fix: convert gvk to gvr for VAPs in the CLI (#12937)
+    -  feat: remove CLI legacy loader (#12919)
+    -  fix: compute vpols autogen in CLI provider (#12871)
+    -  chore: add local CLI tests for the new policy types in the
+       workflow (… (#12758)
+    -  chore: add local CLI tests for the new policy types in the
+       workflow (#12755)
+    -  feat: add --markdownLinks to cli docs command (#12734)
+    -  fix: evaluate celexceptions with ivpol in CLI (#12728)
+    -  chore: add --noDate to cli docs command (#12712)
+    -  feat(cli): return an error if tests are required (#12395)
+    -  fix: add result count for VPs in the CLI (#12711)
+    -  feat: add cli test command support for ivpols (#12660)
+    -  fix: use correct resource in cli processor (#12575)
+    -  fix: CLI policies processing order (VPOL) (#12567)
+    -  fix: CLI policies processing order (#12561)
+    -  feat: support json for ivpol via CLI apply (#12511)
+    -  fix: handle nil namespace pointer in CLI mode for
+       ValidatingPolicies with namespaceSelector (#13636) (#13646)
+    -  fix(gpols): fetch sources from the cluster in case of
+       in-cluster mode in the CLI (#13603) (#13604)
+    -  fix: evaluate MAPs correctly in the CLI (#13557) (#13578)
+  * Dependencies
+    - fix: Update Go version to fix CVE-2025-22871 vulnerability by
+      @samsonkolge in #12714
+    - chore(deps): bump actions/download-artifact (#12881)
+    - chore(deps): bump actions/download-artifact from 4.2.1 to
+      4.3.0 (#12879)
+    - chore(deps): bump actions/setup-go in
+      /.github/actions/setup-build-env (#12743)
+    - chore(deps): bump actions/setup-go in
+      /.github/actions/setup-build-env (#13077)
+    - chore(deps): bump actions/setup-python from 5.4.0 to 5.5.0
+      (#12529)
+    - chore(deps): bump actions/setup-python from 5.5.0 to 5.6.0
+      (#12869)
+    - chore(deps): bump adRise/update-pr-branch from 0.9.1 to
+      0.10.1 (#13294)
+    - chore(deps): bump aquasecurity/trivy-action from 0.30.0 to
+      0.31.0 (#13316)
+    - chore(deps): bump cbrgm/cleanup-stale-branches-action
+      (#12617)
+    - chore(deps): bump cbrgm/cleanup-stale-branches-action
+      (#12993)
+    - chore(deps): bump cbrgm/cleanup-stale-branches-action
+      (#13297)
+    - chore(deps): bump cbrgm/cleanup-stale-branches-action
+      (#13511)
+    - chore(deps): bump codecov/codecov-action from 5.4.0 to 5.4.2
+      (#12761)
+    - chore(deps): bump codecov/codecov-action from 5.4.2 to 5.4.3
+      (#13160)
+    - chore(deps): bump fluxcd/flux2 from 2.5.1 to 2.6.0 (#13282)
+    - chore(deps): bump fluxcd/flux2 from 2.6.0 to 2.6.1 (#13295)
+    - chore(deps): bump fluxcd/flux2 from 2.6.1 to 2.6.2 (#13388)
+    - chore(deps): bump fluxcd/flux2 from 2.6.2 to 2.6.3 (#13490)
+    - chore(deps): bump fossas/fossa-action from 1.6.0 to 1.7.0
+      (#13147)
+    - chore(deps): bump github.com/aptible/supercronic from 0.2.33
+      to 0.2.34 (#13438)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.14.0 to
+      5.15.0 (#12747)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.15.0 to
+      5.16.0 (#12788)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.16.0 to
+      5.16.1 (#13318)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.16.1 to
+      5.16.2 (#13342)
+    - chore(deps): bump github.com/go-logr/logr from 1.4.2 to 1.4.3
+      (#13271)
+    - chore(deps): bump github.com/go-viper/mapstructure/v2
+      (#13486)
+    - chore(deps): bump github.com/golang-jwt/jwt/v4 from 4.5.1 to
+      4.5.2 (#12496)
+    - chore(deps): bump github.com/golang-jwt/jwt/v5 from 5.2.1 to
+      5.2.2 (#12495)
+    - chore(deps): bump github.com/onsi/gomega from 1.36.2 to
+      1.36.3 (#12506)
+    - chore(deps): bump github.com/onsi/gomega from 1.36.3 to
+      1.37.0 (#12628)
+    - chore(deps): bump github.com/open-policy-agent/opa from 1.1.0
+      to 1.4.0 (#13019)
+    - chore(deps): bump github.com/prometheus/client_golang
+      (#12675)
+    - chore(deps): bump github.com/rs/zerolog from 1.33.0 to 1.34.0
+      (#12507)
+    - chore(deps): bump github.com/sergi/go-diff (#13328)
+    - chore(deps): bump github.com/sigstore/rekor from 1.3.9 to
+      1.3.10 (#12746)
+    - chore(deps): bump github.com/sigstore/sigstore from 1.9.1 to
+      1.9.3 (#12696)
+    - chore(deps): bump github.com/sigstore/sigstore from 1.9.3 to
+      1.9.4 (#12902)
+    - chore(deps): bump github.com/sigstore/sigstore from 1.9.4 to
+      1.9.5 (#13356)
+    - chore(deps): bump
+      github.com/sigstore/sigstore/pkg/signature/kms/aws (#12695)
+    - chore(deps): bump
+      github.com/sigstore/sigstore/pkg/signature/kms/aws (#12884)
+    - chore(deps): bump
+      github.com/sigstore/sigstore/pkg/signature/kms/azure (#12677)
+    - chore(deps): bump
+      github.com/sigstore/sigstore/pkg/signature/kms/azure (#12883)
+    - chore(deps): bump
+      github.com/sigstore/sigstore/pkg/signature/kms/gcp (#12698)
+    - chore(deps): bump
+      github.com/sigstore/sigstore/pkg/signature/kms/gcp (#12885)
+    - chore(deps): bump
+      github.com/sigstore/sigstore/pkg/signature/kms/hashivault
+      (#12676)
+    - chore(deps): bump
+      github.com/sigstore/sigstore/pkg/signature/kms/hashivault
+      (#12882)
+    - chore(deps): bump github/codeql-action from 3.28.12 to
+      3.28.13 (#12528)
+    - chore(deps): bump github/codeql-action from 3.28.13 to
+      3.28.15 (#12656)
+    - chore(deps): bump github/codeql-action from 3.28.15 to
+      3.28.16 (#12868)
+    - chore(deps): bump github/codeql-action from 3.28.16 to
+      3.28.17 (#13004)
+    - chore(deps): bump github/codeql-action from 3.28.17 to
+      3.28.18 (#13173)
+    - chore(deps): bump github/codeql-action from 3.28.18 to
+      3.28.19 (#13315)
+    - chore(deps): bump github/codeql-action from 3.28.19 to 3.29.0
+      (#13358)
+    - chore(deps): bump github/codeql-action from 3.29.0 to 3.29.1
+      (#13489)
+    - chore(deps): bump github/codeql-action from 3.29.1 to 3.29.2
+      (#13503)
+    - chore(deps): bump
+      go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
+      (#13469)
+    - chore(deps): bump golang.org/x/crypto from 0.36.0 to 0.37.0
+      (#12659)
+    - chore(deps): bump golang.org/x/crypto from 0.37.0 to 0.38.0
+      (#13024)
+    - chore(deps): bump golang.org/x/crypto from 0.38.0 to 0.39.0
+      (#13331)
+    - chore(deps): bump golang.org/x/net in
+      /hack/api-group-resources (#12805)
+    - chore(deps): bump golang.org/x/net in /hack/controller-gen
+      (#12846)
+    - chore(deps): bump golang.org/x/text from 0.23.0 to 0.24.0
+      (#12645)
+    - chore(deps): bump google.golang.org/grpc from 1.71.0 to
+      1.72.0 (#12843)
+    - chore(deps): bump google.golang.org/grpc from 1.72.0 to
+      1.72.1 (#13146)
+    - chore(deps): bump google.golang.org/grpc from 1.72.1 to
+      1.72.2 (#13242)
+    - chore(deps): bump google.golang.org/grpc from 1.72.2 to
+      1.73.0 (#13330)
+    - chore(deps): bump goreleaser/goreleaser-action from 6.2.1 to
+      6.3.0 (#12597)
+    - chore(deps): bump jpmcb/prow-github-actions from 1.1.3 to
+      2.0.0 (#12674)
+    - chore(deps): bump ossf/scorecard-action from 2.4.1 to 2.4.2
+      (#13296)
+    - chore(deps): bump sigs.k8s.io/controller-runtime from 0.20.3
+      to 0.20.4 (#12526)
+    - chore(deps): bump sigs.k8s.io/controller-tools in
+      /hack/controller-gen (#13092)
+    - chore(deps): bump sigs.k8s.io/kustomize/api from 0.19.0 to
+      0.20.0 (#13493)
+    - chore(deps): bump sigs.k8s.io/kustomize/kyaml from 0.19.0 to
+      0.20.0 (#13491)
+    - chore(deps): bump sigs.k8s.io/yaml from 1.4.0 to 1.5.0
+      (#13470)
+    - chore(deps): bump sigstore/cosign-installer (#12860)
+    - chore(deps): bump sigstore/cosign-installer (#13406)
+    - chore(deps): bump sigstore/cosign-installer (#13445)
+    - chore(deps): bump sigstore/cosign-installer from 3.8.1 to
+      3.8.2 (#12859)
+    - chore(deps): bump sigstore/cosign-installer from 3.8.2 to
+      3.9.0 (#13405)
+    - chore(deps): bump sigstore/scaffolding (#13404)
+    - chore(deps): bump sigstore/scaffolding (#13437)
+    - chore(deps): bump svenstaro/upload-release-action from 2.10.0
+      to 2.11.1 (#13501)
+    - chore(deps): bump svenstaro/upload-release-action from 2.9.0
+      to 2.10.0 (#13436)
+    - chore(deps): bump the kubernetes group across 3 directories
+      with 7 updates (#13426)
+    - chore(deps): bump the otel group across 1 directory with 10
+      updates (#13206)
+    - chore(deps): bump the otel group across 1 directory with 9
+      updates (#13454)
+    - chore(deps): bump the sigstore group across 1 directory with
+      4 updates (#13355)
+    - chore(deps): bump ubuntu from `1e622c5` to `6015f66` in
+      /.devcontainer (#13021)
+    - chore(deps): bump ubuntu from `4524361` to `1e622c5` in
+      /.devcontainer (#12694)
+    - chore(deps): bump ubuntu from `6015f66` to `b59d215` in
+      /.devcontainer (#13307)
+    - chore(deps): bump ubuntu from `7229784` to `4524361` in
+      /.devcontainer (#12673)
+    - chore(deps): bump ubuntu from `b59d215` to `89ef6e4` in
+      /.devcontainer (#13510)
+    - chore(deps): bump
+      zgosalvez/github-actions-ensure-sha-pinned-actions (#12598)
+    - chore(deps): bump
+      zgosalvez/github-actions-ensure-sha-pinned-actions (#13003)
+    - chore(deps): bump
+      zgosalvez/github-actions-ensure-sha-pinned-actions (#13172)
+
+-------------------------------------------------------------------
 Mon Jun 30 04:54:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.14.4:
