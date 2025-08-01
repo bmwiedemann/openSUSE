@@ -121,4 +121,15 @@
     - Added otplock(1) utility (issue #38) (forwarded request 1183589 from archie172)</comment>
     <requestid>1184837</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>36871b4f1ffebc240ec8773f09400d69</srcmd5>
+    <version>1.1.12</version>
+    <time>1754088142</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.12
+  + Added &quot;OTPAuthMaxIdle&quot; as an alternative to &quot;OTPAuthMaxLinger&quot; (issue #51).
+  + Refactor to avoid warnings and reduce code duplication (issue #49).
+  + Use pkg-config to find openssl and libapr (#50). (forwarded request 1295908 from archie172)</comment>
+    <requestid>1297005</requestid>
+  </revision>
 </revisionlist>

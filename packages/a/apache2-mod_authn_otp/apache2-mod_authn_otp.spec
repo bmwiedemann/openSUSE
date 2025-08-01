@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package apache2-mod_authn_otp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Archie L. Cobbs <archie@dellroad.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define mod_name           mod_authn_otp
 Name:           apache2-%{mod_name}
-Version:        1.1.11
+Version:        1.1.12
 Release:        0
 Summary:        Apache module for one-time password authentication
 License:        Apache-2.0
