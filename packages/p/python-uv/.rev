@@ -1117,4 +1117,41 @@
    * Fix kebab casing of README variants in build backend</comment>
     <requestid>1295390</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>dc6fa47afb16f032e344806bc0bf4f58</srcmd5>
+    <version>0.8.4</version>
+    <time>1754088069</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.4
+ * Enhancements
+  * Improve styling of warning cause chains 
+  * Extend wheel filtering to Android tags 
+  * Perform wheel lockfile filtering based on platform and OS intersection 
+  * Clarify messaging when a new resolution needs to be performed 
+ * Preview features
+  * Add support for extending package's build dependencies with extra-build-dependencies 
+  * Split preview mode into separate feature flags 
+ * Configuration
+  * Add support for package specific exclude-newer dates via exclude-newer-package 
+ * Bug fixes
+  * Avoid invalidating lockfile when path or workspace dependencies define explicit indexes 
+  * Copy entrypoints that have a shebang that differs in python vs python3 
+  * Fix incorrect file permissions in wheel packages 
+  * Update validation for environments and required-environments in uv.toml 
+ * Documentation
+  * Show uv_build in projects documentation 
+  * Add UV_ prefix to installer environment variables 
+  * Un-hide uv from --build-backend options 
+  * Update documentation for preview flags 
+
+- update to 0.8.3:
+ * Enhancements
+  * Allow non-standard entrypoint names in uv_build 
+  * Publish riscv64 wheels to PyPI 
+ * Bug fixes
+  * Avoid writing redacted credentials to tool receipt 
+  * Respect --with versions over base environment versions 
+  * Respect credentials from all defined indexes</comment>
+    <requestid>1296842</requestid>
+  </revision>
 </revisionlist>
