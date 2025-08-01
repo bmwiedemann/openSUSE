@@ -51,7 +51,7 @@ ENV PATH="/go/bin:/usr/local/go/bin:/root/go/bin/:/usr/local/sbin:/usr/local/bin
 
 # only available on go's tsan_arch architectures
 #!ArchExclusiveLine: x86_64 aarch64 s390x ppc64le
-RUN set -euo pipefail; if zypper -n install go1.23-race; then zypper -n clean; fi
+RUN set -euo pipefail; if zypper -n install go1.23-race; then zypper -n clean -a; fi
 RUN set -euo pipefail; install -m 755 -d /go/bin /go/src
 RUN set -euo pipefail; rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; rm -f {/target,}/etc/shadow-
 WORKDIR /go
