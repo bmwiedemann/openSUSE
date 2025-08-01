@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 28 17:47:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.14
+  * Enable sending to distribution lists from shared stores.
+  * Emails written by a delegate can now be copied into the
+    representee's Sent Items..
+  * Support password change (via Settings) even if an altname was
+    used to log in to the mailbox.
+  * Add a config setting to select the email preview style
+    (plaintext or HTML).
+  * Deletion of a recurrent appointment series's instance did not
+    mark the instance as deleted for Outlook; this was repaired.
+  * When composing/sending a mail, the value in the From: field
+    was ignored, even if the user had Send-As permission.
+  * In the Out-of-office Settings configuration view, the "Apply"
+    button now actually does save changes even if only radio
+    buttons were changed.
+
+-------------------------------------------------------------------
 Fri Apr  4 23:30:48 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.12

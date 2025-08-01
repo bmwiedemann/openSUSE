@@ -21,13 +21,13 @@
 %endif
 
 Name:           grommunio-web
-Version:        3.12
+Version:        3.14
 Release:        0
 Summary:        Web client for access to grommunio features from the web
 License:        AGPL-3.0-or-later AND GPL-3.0-only AND LGPL-2.1-only AND MIT
 Group:          Productivity/Networking/Email/Clients
 URL:            http://www.grommunio.com/
-Source:         https://github.com/grommunio/grommunio-web/releases/download/grommunio-web-%version/grommunio-web-%version.tar.xz
+Source:         https://github.com/grommunio/grommunio-web/releases/download/grommunio-web-%version/grommunio-web-%version.tar.zst
 Source2:        https://github.com/grommunio/grommunio-web/releases/download/grommunio-web-%version/grommunio-web-%version.tar.asc
 Source3:        %name.keyring
 
@@ -74,6 +74,7 @@ Requires:       gromox >= 2.11
 Requires:       mapi-header-php >= 1.6
 %if 0%{?suse_version}
 BuildRequires:  fdupes
+BuildRequires:  zstd
 %endif
 
 %define langdir %_datadir/%name/server/language

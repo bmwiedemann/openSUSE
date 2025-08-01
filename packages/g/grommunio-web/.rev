@@ -55,4 +55,12 @@
     <comment>- Update to release 3.12</comment>
     <requestid>1268256</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a2fe4b658ddef4b19ad9d622d6bf3b7f</srcmd5>
+    <version>3.14</version>
+    <time>1754088075</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.14</comment>
+    <requestid>1296845</requestid>
+  </revision>
 </revisionlist>
