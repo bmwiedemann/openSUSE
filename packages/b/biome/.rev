@@ -43,4 +43,41 @@
   * see github/releases for info</comment>
     <requestid>1288389</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8ec9a18649efca95211eee248b45d3fb</srcmd5>
+    <version>2.1.3</version>
+    <time>1754088112</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.3:
+  * feat(analyze/js): add useReactFunctionComponents rule (#7055)
+  * feat(lint): implement `noVueReservedKeys` rule (#7057)
+  * refactor(format): use specialised tokens (#7052)
+  * docs: update analyzer CONTRIBUTING.md (#7056)
+  * ci: make it so windows devs don't get lints that don't show up on linux/macos (#7003)
+  * chore(deps): update rust:1.88.0-bullseye docker digest to b315f98 (#7043)
+  * fix(lint): `useSemanticElements` self-closing elements (#7044)
+  * Revert &quot;ci: use depot cargo in the PR workflow&quot; (#7046)
+  * ci: use depot cargo in the PR workflow (#7045)
+  * fix(lint/noUnassignedVariables): handle JSX ref attribute assignments (#7000)
+  * test(biome-js-analyze): add tests to cover tests to cover ??=, ||=, &amp;&amp;= (#7010)
+  * fix(migrate): transfer comments to the separator (#7014)
+  * fix(suppression): invalid suppression comments should not cause a panic (#7012)
+  * fix(css_parser): add active-view-transition-type() (#6973) (#6991)
+  * refactor(formatter): specialised verbatim formatting (#7002)
+  * chore: update generated code from analyzer codegen (#7001)
+  * feat(json/analyze): rule `noQuickfixBiome` (#6992)
+  * fix(lint/useSortedClasses): remove leading and trailing whitespaces (#6979)
+  * fix: update documentation URL for `noUnknownPseudoClass` (#6990)
+  * feat(parse): add tailwind parser (#6980)
+  * fix(deps): update @biomejs packages (major) (#6962)
+  * feat(parse): add tailwind grammar (#6978)
+  * fix: remove infinite loop on `function A(A) {}` (#6976)
+  * feat(yaml_parser): parse flow constructs (#6961)
+  * chore: split `Type` from `TypeData` (#6963)
+  * feat(parser): support import defer (#6949)
+  * chore(deps): update dependency @types/node to v22.16.5 (#6955)
+  * feat(biome-js-analyze): expanded support for useReadonlyClassProperties to cover async class methods too (#6938)
+  * chore(deps): update dependency @types/node to v22.16.5 (#6956)</comment>
+    <requestid>1296910</requestid>
+  </revision>
 </revisionlist>

@@ -17,9 +17,9 @@
 #
 
 
-%define rev 09f49bade82e0aa15201b7db2efef10b1c330763
+%define rev a1469432d44f95e3f685fe294c49ecf3517c1c7e
 Name:           biome
-Version:        2.0.5
+Version:        2.1.3
 Release:        0
 Summary:        A JavaScript and TypeScript toolchain
 License:        Apache-2.0 AND MIT
@@ -30,6 +30,7 @@ Source1:        vendor.tar.zst
 BuildRequires:  cargo >= 1.53.0
 BuildRequires:  cargo-packaging
 BuildRequires:  zstd
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 A toolchain for web projects, aimed to provide functionalities to maintain
