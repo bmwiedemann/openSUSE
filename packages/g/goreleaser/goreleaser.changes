@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul 31 14:34:08 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.11.2:
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from 1.85.0 to 1.85.1 (#5942)
+  * chore(site): rm google analytics
+  * chore(deps): bump github/codeql-action from 3.29.4 to 3.29.5 (#5938)
+  * chore(deps): bump github.com/docker/docker from 28.2.2+incompatible to 28.3.3+incompatible in the go_modules group (#5937)
+  * chore(deps): bump github.com/awslabs/amazon-ecr-credential-helper/ecr-login from 0.9.1 to 0.10.1 (#5934)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from 1.84.1 to 1.85.0 (#5933)
+  * chore(deps): bump github.com/mark3labs/mcp-go from 0.35.0 to 0.36.0 (#5932)
+  * chore(deps): bump mkdocs-material from 9.6.15 to 9.6.16 in /www (#5930)
+  * chore(deps): bump github.com/mark3labs/mcp-go from 0.34.0 to 0.35.0 (#5931)
+  * ci: do not mark winget prs as drafts
+  * fix(shell): prevent panic on empty commands (#5929)
+  * chore: auto-update generated files
+
+-------------------------------------------------------------------
 Tue Jul 29 06:43:17 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.11.1:
