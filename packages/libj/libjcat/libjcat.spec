@@ -2,6 +2,7 @@
 # spec file for package libjcat
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,6 @@
 
 
 %define sover 1
-
 Name:           libjcat
 Version:        0.2.3
 Release:        0
@@ -25,19 +25,22 @@ Summary:        Library for reading and writing gzip-compressed JSON catalog fil
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://github.com/hughsie/libjcat
-Source:         https://github.com/hughsie/libjcat/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/hughsie/libjcat/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source2:        https://github.com/hughsie/libjcat/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+# 163EB50119225DB3DF8F49EA17ACBA8DFA970E17 Richard Hughes <richard@hughsie.com>
+Source3:        %{name}.keyring
 # for certtool
 BuildRequires:  gnutls
-BuildRequires:  gpgme-devel
 BuildRequires:  gtk-doc
-BuildRequires:  help2man
 BuildRequires:  meson >= 0.47.0
+BuildRequires:  pkgconfig
 BuildRequires:  python3-setuptools
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= 2.45.8
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gpgme)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.1.1
 
 %description
@@ -97,22 +100,24 @@ Files for development with %{name}.
 %check
 %meson_test
 
-%post -n %{name}%{sover} -p /sbin/ldconfig
-%postun -n %{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{sover}
 
 %files -n %{name}%{sover}
 %license LICENSE
 %{_libdir}/%{name}.so.%{sover}*
 
 %files -n typelib-1_0-Jcat-1_0
+%license LICENSE
 %{_libdir}/girepository-1.0/Jcat-1.0.typelib
 
 %files -n jcat-tool
+%license LICENSE
 %doc NEWS README.md
 %{_bindir}/jcat-tool
-%{_mandir}/man1/jcat-tool.1.gz
+%{_mandir}/man1/jcat-tool.1%{?ext_man}
 
 %files devel
+%license LICENSE
 %doc %{_datadir}/gtk-doc/html/%{name}
 %{_datadir}/gir-1.0/*.gir
 %dir %{_datadir}/vala/vapi/

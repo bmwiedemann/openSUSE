@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 25 16:29:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- adjust gpgme build dependency for future-proofing
+- drop unneeded help2man build dependency
+- add upstream signing key and validate source signature
+
+-------------------------------------------------------------------
 Mon Feb  3 14:15:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.2.3:
