@@ -257,4 +257,14 @@ https://github.com/yt-project/yt/releases.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1227513</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4f54e586457b6f1be071defce0cc467a</srcmd5>
+    <version>4.4.0</version>
+    <time>1754088067</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1296601 from fstegmeier
+
+- remove version pin for Cpython</comment>
+    <requestid>1296836</requestid>
+  </revision>
 </revisionlist>

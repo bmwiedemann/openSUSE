@@ -1,7 +1,7 @@
 #
 # spec file for package python-yt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@ Patch1:         yt-ignore-pytestdepr.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  python-rpm-macros
 %if !%{with test}
-BuildRequires:  %{python_module Cython > 3 with %python-Cython < 3.1}
+BuildRequires:  %{python_module Cython > 3}
 BuildRequires:  %{python_module ewah-bool-utils-devel >= 1.0.2}
 BuildRequires:  %{python_module numpy-devel >= 1.25}
 BuildRequires:  %{python_module pip}
