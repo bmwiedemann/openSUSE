@@ -1414,4 +1414,41 @@ eplacement for google-api-python-client, follow our naming convention</comment>
   * **workloadmanager:** Update the api (forwarded request 1294987 from glaubitz)</comment>
     <requestid>1295068</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>a94a5842402f3601e7e34938775d410c</srcmd5>
+    <version>2.177.0</version>
+    <time>1754088248</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.177.0
+  * **admin:** Update the api
+  * **adsenseplatform:** Update the api
+  * **aiplatform:** Update the api
+  * **analyticsadmin:** Update the api
+  * **androidpublisher:** Update the api
+  * **apphub:** Update the api
+  * **backupdr:** Update the api
+  * **beyondcorp:** Update the api
+  * **chat:** Update the api
+  * **chromemanagement:** Update the api
+  * **civicinfo:** Update the api
+  * **cloudasset:** Update the api
+  * **cloudbilling:** Update the api
+  * **compute:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **contactcenteraiplatform:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **container:** Update the api
+  * **dataflow:** Update the api
+  * **dataform:** Update the api
+  * **dataplex:** Update the api
+  * **datastream:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **discoveryengine:** Update the api
+  * **displayvideo:** Update the api
+  * **dlp:** Update the api
+  * **documentai:** Update the api (forwarded request 1297023 from glaubitz)</comment>
+    <requestid>1297112</requestid>
+  </revision>
 </revisionlist>
