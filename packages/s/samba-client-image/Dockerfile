@@ -32,7 +32,7 @@ RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' samba-client | \
     cut -d '.' -f -2)" = "4.22" ]
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
-    rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
+    rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; rm -f {/target,}/etc/shadow-
 FROM opensuse/bci/bci-micro:latest
 COPY --from=builder /target /
 # Define labels according to https://en.opensuse.org/Building_derived_containers
