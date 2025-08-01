@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>afs3-callback</short>
-  <description>OpenAFS callbacks to cache managers (clients)</description>
-  <port protocol="udp" port="7001"/>
-</service>

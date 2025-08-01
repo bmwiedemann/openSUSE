@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>afs3-bos</short>
-  <description>OpenAFS basic overseer process (bosserver)</description>
-  <port protocol="udp" port="7007"/>
-</service>

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<service>
-  <short>afs3-rmtsys</short>
-  <description>OpenAFS remote cache manager service</description>
-  <port protocol="udp" port="7009"/>
-</service>
