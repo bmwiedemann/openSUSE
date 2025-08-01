@@ -1,7 +1,7 @@
 #
 # spec file for package nfs4-acl-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           nfs4-acl-tools
-Version:        0.3.7
+Version:        0.4.2
 Release:        0
 Summary:        Command line tools for managing ACLs over NFSv4
 License:        BSD-3-Clause
 Group:          System/Filesystems
-URL:            http://linux-nfs.org/~bfields/nfs4-acl-tools/
-Source0:        http://linux-nfs.org/~bfields/nfs4-acl-tools/nfs4-acl-tools-%{version}.tar.gz
-# GitClone:     http://git.linux-nfs.org/?p=bfields/nfs4-acl-tools.git
-Patch2:         nfs-acl-tools-xattr.patch
+URL:            https://linux-nfs.org/~steved/nfs4-acl-tools/
+Source0:        https://linux-nfs.org/~steved/nfs4-acl-tools/nfs4-acl-tools-%{version}.tar.gz
+# GitClone:     git://git.linux-nfs.org/projects/steved/nfs4-acl-tools.git
+Patch0:         nfs-acl-tools-xattr.patch
 BuildRequires:  libtool
 
 %description

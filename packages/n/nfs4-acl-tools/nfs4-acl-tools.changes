@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 31 08:49:27 UTC 2025 - Anthony Iliopoulos <ailiop@suse.com>
+
+- Update to version 0.4.2
+  * nfs4_setfacl: update man page about new option index
+  * nfs4_setfacl: add a specific option for indexes
+  * libnfs4acl: Check file mode before getxattr call
+  * nfs4_setacl: Add support for the --dacl and --sacl options
+  * nfs4_getacl: Add support for the --dacl and --sacl options
+  * libnfs4acl: Add support for the NFS4.1 ACE_INHERITED_ACE flag
+  * libnfs4acl: Add helpers to set the dacl and sacl
+  * acl_nfs4_get_who: removed an always false evaluate warning
+  * nfs4_print_ace_verbose: Removed a differ in signedness warning
+
+-------------------------------------------------------------------
 Thu Feb 22 14:09:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
