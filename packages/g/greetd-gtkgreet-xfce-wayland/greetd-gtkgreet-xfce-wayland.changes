@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 31 20:15:13 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Fix correct path to gtkgreet in config.toml 
+  drop accidental %bindir macro
+
+-------------------------------------------------------------------
 Wed Jul 23 13:48:18 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Add conflict on openSUSEway

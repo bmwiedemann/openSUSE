@@ -22,4 +22,13 @@
 * Conflict with openSUSEway</comment>
     <requestid>1295337</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6d2b42571c864f44ac20f8ffde9212a4</srcmd5>
+    <version>1.0</version>
+    <time>1754088111</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix correct path to gtkgreet in config.toml 
+  drop accidental %bindir macro</comment>
+    <requestid>1296903</requestid>
+  </revision>
 </revisionlist>
