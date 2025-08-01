@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 01 09:02:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.4:
+  * strip +dirty from version produced by goreleaser
+  * Update README.md
+
+-------------------------------------------------------------------
 Fri Jul 04 05:09:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.9.3:
