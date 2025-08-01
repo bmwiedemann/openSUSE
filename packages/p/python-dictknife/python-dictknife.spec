@@ -18,15 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dictknife
-Version:        0.14.1
+Version:        0.14.2
 Release:        0
 Summary:        Army knife of handling data
 License:        MIT
 URL:            https://github.com/podhmo/dictknife
 Source:         https://github.com/podhmo/dictknife/archive/%{version}.tar.gz#/dictknife-%{version}.tar.gz
-Patch0:         support-python-310.patch
 BuildRequires:  %{python_module google-api-python-client}
 BuildRequires:  %{python_module google-auth-oauthlib}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module jsonpatch}
 BuildRequires:  %{python_module magicalimport}
 BuildRequires:  %{python_module pip}

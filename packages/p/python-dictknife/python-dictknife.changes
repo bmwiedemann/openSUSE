@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jul 27 12:37:16 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.14.2
+  * Use hatch (#205)
+  * style: fmt
+  * fix: fix for lint
+  * chore: refine github actions (#206)
+  * Typing (#207)
+  * Create AGENTS.md for jules (#210)
+  * Refactor: Migrate to src layout (#211)
+  * feat: Add English docstrings to public APIs (#212)
+  * Update AGENTS.md
+  * Add docstrings to public APIs in dictknife.loading
+    and submodules (#213)
+  * fix: fix type, loading module
+  * chore: bump version
+- Drop support-python-310.patch, fixed upstream
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Thu Jun  5 06:01:36 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

@@ -64,4 +64,29 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1282970</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1e72d8e5a113d52cbacf19e698e4ebe8</srcmd5>
+    <version>0.14.2</version>
+    <time>1754088066</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1295955 from glaubitz
+
+- Update to 0.14.2
+    * Use hatch (#205)
+    * style: fmt
+    * fix: fix for lint
+    * chore: refine github actions (#206)
+    * Typing (#207)
+    * Create AGENTS.md for jules (#210)
+    * Refactor: Migrate to src layout (#211)
+    * feat: Add English docstrings to public APIs (#212)
+    * Update AGENTS.md
+    * Add docstrings to public APIs in dictknife.loading
+      and submodules (#213)
+    * fix: fix type, loading module
+    * chore: bump version
+  - Drop support-python-310.patch, fixed upstream
+  - Update BuildRequires from pyproject.toml</comment>
+    <requestid>1296835</requestid>
+  </revision>
 </revisionlist>
