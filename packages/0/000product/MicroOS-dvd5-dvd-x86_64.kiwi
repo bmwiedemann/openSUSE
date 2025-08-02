@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20250731" schemaversion="4.1">
+<image name="OBS__MicroOS___20250801" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20250731</productvar>
+      <productvar name="VERSION">20250801</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20250731,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20250801,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20250731/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20250801/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -275,7 +275,6 @@
       <repopackage name="iscsiuio"/>
       <repopackage name="iso-codes"/>
       <repopackage name="iso_ent"/>
-      <repopackage name="issue-generator"/>
       <repopackage name="jeos-firstboot"/>
       <repopackage name="jq"/>
       <repopackage name="kaccounts-integration"/>
@@ -1703,6 +1702,7 @@
       <repopackage name="suse-fonts"/>
       <repopackage name="suse-module-tools"/>
       <repopackage name="suse-module-tools-scriptlets"/>
+      <repopackage name="sysextmgrcli"/>
       <repopackage name="system-config-printer-common"/>
       <repopackage name="system-config-printer-dbus-service"/>
       <repopackage name="system-group-audit"/>
@@ -1770,6 +1770,17 @@
       <repopackage name="update-alternatives"/>
       <repopackage name="update-bootloader"/>
       <repopackage name="upower"/>
+      <repopackage name="urw-base35-fonts"/>
+      <repopackage name="urw-base35-fonts-C059"/>
+      <repopackage name="urw-base35-fonts-D050000L"/>
+      <repopackage name="urw-base35-fonts-NimbusMonoPS"/>
+      <repopackage name="urw-base35-fonts-NimbusRoman"/>
+      <repopackage name="urw-base35-fonts-NimbusSans"/>
+      <repopackage name="urw-base35-fonts-P052"/>
+      <repopackage name="urw-base35-fonts-StandardSymbolsPS"/>
+      <repopackage name="urw-base35-fonts-URWBookman"/>
+      <repopackage name="urw-base35-fonts-URWGothic"/>
+      <repopackage name="urw-base35-fonts-Z003"/>
       <repopackage name="util-linux"/>
       <repopackage name="util-linux-systemd"/>
       <repopackage name="vim-data-common"/>
