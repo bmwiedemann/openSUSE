@@ -17,7 +17,7 @@
 
 
 Name:           python-pycrdt
-Version:        0.12.25
+Version:        0.12.26
 Release:        0
 Summary:        Python bindings for Yrs
 License:        MIT

@@ -150,4 +150,13 @@
 - Bump trio test requirement gh#y-crdt/pycrdt#277</comment>
     <requestid>1292509</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>31146c14c48ffc5a6464ae1f8c966108</srcmd5>
+    <version>0.12.26</version>
+    <time>1754221079</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.26
+  * Bump trio to &lt;0.31.</comment>
+    <requestid>1297168</requestid>
+  </revision>
 </revisionlist>
