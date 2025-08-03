@@ -18,14 +18,19 @@
 
 %define major_version 5.3
 %define libname liblua5_3-5
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           lua53
 Version:        5.3.6
 Release:        0
 Summary:        Small Embeddable Language with Procedural Syntax
 License:        MIT
 Group:          Development/Languages/Other
-Url:            http://www.lua.org
-Source:         http://www.lua.org/ftp/lua-%{version}.tar.gz
+URL:            https://www.lua.org
+Source:         https://www.lua.org/ftp/lua-%{version}.tar.gz
 Source99:       baselibs.conf
 # PATCH-FIX-SUSE tweak the buildsystem to produce what is needed for SUSE
 Patch0:         lua-build-system.patch
@@ -38,11 +43,19 @@ BuildRequires:  libtool
 BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Conflicts:      lua
 Provides:       lua = %{version}
 Obsoletes:      lua < %{version}
 Provides:       Lua(API) = %{major_version}
+%if %{with libalternatives}
+BuildRequires:  alts
+BuildRequires:  lua-interpreter
+Requires:       alts
+Requires:       lua-interpreter
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 
 %description
 Lua is a programming language originally designed for extending
@@ -62,8 +75,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       %{name} = %{version}
 Requires:       lua-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Conflicts:      lua-devel
 Provides:       lua-devel = %{version}
 Provides:       Lua(devel) = %{major_version}
 Provides:       pkgconfig(lua) = %{version}
@@ -80,15 +92,15 @@ application.
 Summary:        The Lua integration library
 # Compat as libtool changes the soname
 Group:          System/Libraries
+Provides:       liblua5_3 = %{version}-%{release}
+Obsoletes:      liblua5_3 < %{version}-%{release}
+Provides:       %{name}-libs = %{version}
+Obsoletes:      %{name}-libs < %{version}
 %ifarch aarch64 x86_64 ppc64 ppc64le s390x riscv64
 Provides:       liblua.so.5.3()(64bit)
 %else
 Provides:       liblua.so.5.3
 %endif
-Provides:       liblua5_3 = %{version}-%{release}
-Obsoletes:      liblua5_3 < %{version}-%{release}
-Provides:       %{name}-libs = %{version}
-Obsoletes:      %{name}-libs < %{version}
 
 %description -n %{libname}
 Lua is a programming language originally designed for extending
@@ -131,7 +143,7 @@ cat doc/luac.1 | sed 's/TH LUAC 1/TH LUAC%{major_version} 1/' > doc/luac%{major_
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 sed -i -e "s@lib/lua/@%{_lib}/lua/@g" src/luaconf.h
 export LIBTOOL="libtool --quiet"
-make %{?_smp_mflags} -C src \
+%make_build -C src \
     CC="cc" \
     MYCFLAGS="%{optflags} -std=gnu99 -D_GNU_SOURCE -fPIC -DLUA_USE_LINUX -DLUA_COMPAT_MODULE" \
     MYLIBS="-Wl,-E -ldl -lreadline -lhistory -lncurses" \
@@ -150,18 +162,31 @@ cat > lua%{major_version}.pc <<-EOF
 prefix=%{_prefix}
 exec_prefix=%{_prefix}
 libdir=%{_libdir}
-includedir=%{_prefix}/include/lua%{major_version}
+includedir=%{_includedir}/lua%{major_version}
 INSTALL_LMOD=%{_datadir}/lua/%{major_version}
 INSTALL_CMOD=%{_libdir}/lua/%{major_version}
 
-Name: Lua %{major_version}
+Name:           Lua %{major_version}
 Description: An Extensible Extension Language
-Version: %{version}
+Version:        %{version}
 Libs: -llua%{major_version} -lm
 Cflags: -I\${includedir}
 EOF
-install -D -m 644 lua%{major_version}.pc %{buildroot}/%{_libdir}/pkgconfig/lua%{major_version}.pc
+install -D -m 644 lua%{major_version}.pc %{buildroot}%{_libdir}/pkgconfig/lua%{major_version}.pc
 
+%if %{with libalternatives}
+# alternatives - create configuration file
+mkdir -p %{buildroot}%{_datadir}/libalternatives/lua
+cat > %{buildroot}%{_datadir}/libalternatives/lua/53.conf <<EOF
+binary=%{_bindir}/lua5.3
+man=lua5.3
+EOF
+mkdir -p %{buildroot}%{_datadir}/libalternatives/luac
+cat > %{buildroot}%{_datadir}/libalternatives/luac/53.conf <<EOF
+binary=%{_bindir}/luac5.3
+man=luac5.3
+EOF
+%else
 # update-alternatives
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 for file in lua luac ; do
@@ -170,16 +195,17 @@ for file in lua luac ; do
     touch "%{buildroot}%{_sysconfdir}/alternatives/${file}.1%{ext_man}"
     ln -sf "%{_sysconfdir}/alternatives/${file}.1%{ext_man}" "%{buildroot}%{_mandir}/man1/${file}.1%{ext_man}"
 done
+%endif
 
 # Compat link with older unprefixed library and with soname 0 from deb/etc
+chmod +x %{buildroot}%{_libdir}/*
 ln -s %{_libdir}/liblua%{major_version}.so.%{major_version}.0 %{buildroot}%{_libdir}/liblua%{major_version}.so.%{major_version}
 ln -s %{_libdir}/liblua%{major_version}.so.%{major_version}.0 %{buildroot}%{_libdir}/liblua%{major_version}.so.0
 ln -s %{_libdir}/liblua%{major_version}.so.%{major_version}.0 %{buildroot}%{_libdir}/liblua.so.%{major_version}
-# Library devel alternatives
-touch %{buildroot}%{_sysconfdir}/alternatives/liblua.so
-ln -sf %{_sysconfdir}/alternatives/liblua.so %{buildroot}%{_libdir}/liblua.so
-touch %{buildroot}%{_sysconfdir}/alternatives/lua.pc
-ln -sf %{_sysconfdir}/alternatives/lua.pc %{buildroot}%{_libdir}/pkgconfig/lua.pc
+
+# We don’t create alternatives for -devel content, just conflict those
+ln -s %{_libdir}/liblua%{major_version}.so %{buildroot}%{_libdir}/liblua.so
+ln -s %{_libdir}/pkgconfig/lua%{major_version}.pc %{buildroot}%{_libdir}/pkgconfig/lua.pc
 
 %check
 cd src
@@ -188,6 +214,7 @@ LD_LIBRARY_PATH=`pwd` ./lua%{major_version} -e 'print(0)' > /dev/null
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
+%if %{without libalternatives}
 %post
 %{_sbindir}/update-alternatives --install                                                 \
             %{_bindir}/lua            lua       %{_bindir}/lua%{major_version}         53 \
@@ -199,16 +226,7 @@ LD_LIBRARY_PATH=`pwd` ./lua%{major_version} -e 'print(0)' > /dev/null
 if [ "$1" = 0 ] ; then
     %{_sbindir}/update-alternatives --remove lua %{_bindir}/lua%{major_version}
 fi
-
-%post devel
-%{_sbindir}/update-alternatives --install                                                     \
-            %{_libdir}/liblua.so        liblua.so %{_libdir}/liblua%{major_version}.so     53 \
-    --slave %{_libdir}/pkgconfig/lua.pc lua.pc    %{_libdir}/pkgconfig/lua%{major_version}.pc
-
-%postun devel
-if [ "$1" = 0 ] ; then
-    %{_sbindir}/update-alternatives --remove liblua.so %{_libdir}/liblua%{major_version}.so
-fi
+%endif
 
 %files
 %doc README
@@ -218,17 +236,22 @@ fi
 %dir %{_datadir}/lua/%{major_version}
 %{_bindir}/lua%{major_version}
 %{_bindir}/luac%{major_version}
-%{_mandir}/man1/lua%{major_version}.1%{ext_man}
-%{_mandir}/man1/luac%{major_version}.1%{ext_man}
+%{_mandir}/man1/lua%{major_version}.1%{?ext_man}
+%{_mandir}/man1/luac%{major_version}.1%{?ext_man}
+%if %{with libalternatives}
+%{_datadir}/libalternatives/lua/53.conf
+%{_datadir}/libalternatives/luac/53.conf
+%else
 # alternatives
 %{_bindir}/lua
 %{_bindir}/luac
-%{_mandir}/man1/lua.1%{ext_man}
-%{_mandir}/man1/luac.1%{ext_man}
+%{_mandir}/man1/lua.1%{?ext_man}
+%{_mandir}/man1/luac.1%{?ext_man}
 %ghost %{_sysconfdir}/alternatives/lua
 %ghost %{_sysconfdir}/alternatives/luac
 %ghost %{_sysconfdir}/alternatives/lua.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/luac.1%{ext_man}
+%endif
 
 %files -n %{libname}
 %{_libdir}/liblua%{major_version}.so.*
@@ -243,11 +266,8 @@ fi
 %{_includedir}/lua%{major_version}/lualib.h
 %{_libdir}/liblua%{major_version}.so
 %{_libdir}/pkgconfig/lua%{major_version}.pc
-# alternatives
 %{_libdir}/liblua.so
 %{_libdir}/pkgconfig/lua.pc
-%ghost %{_sysconfdir}/alternatives/liblua.so
-%ghost %{_sysconfdir}/alternatives/lua.pc
 
 %files doc
 %doc doc/*

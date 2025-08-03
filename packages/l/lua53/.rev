@@ -55,4 +55,15 @@
 </comment>
     <requestid>1002894</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>8d7d23614478678280805891876e6421</srcmd5>
+    <version>5.3.6</version>
+    <time>1754220948</time>
+    <user>dimstar_suse</user>
+    <comment>- Add shared-link.patch: fix dynamic linking executable
+- Stop building static library
+- this package also provides devel symlink directly and conflicts
+  other -devel packages</comment>
+    <requestid>1295838</requestid>
+  </revision>
 </revisionlist>

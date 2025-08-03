@@ -3,6 +3,8 @@ Mon Sep 12 11:10:48 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add shared-link.patch: fix dynamic linking executable
 - Stop building static library
+- this package also provides devel symlink directly and conflicts
+  other -devel packages
 
 -------------------------------------------------------------------
 Fri Sep 25 14:46:59 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
