@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Aug  2 13:31:16 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 2.0.8
+  * [Intel]
+    - [Emerald Rapids] Align MSR entries with Sapphire Rapids
+    - [Sapphire Rapids] Xeon Scalable 4th gen. startup fix (#560)
+  * [AMD]
+    - [Zen5] Introduced a UMC capabilities decoder for STX families
+    - [Zen5][STX/KRK/STXH] Avoid undefined COF and Power registers
+    - Switch Zen5/Strix families to the Raphael voltage decoder
+    - [Zen5/Strix Halo] Probe Memory Controller from DID 0x12b8
+    - [Zen5][Strix Halo] Adding the RYZEN AI MAX 385
+    - Add fallback TjMax for legacy CPU families
+    - Add missing DCU and XPROC_LEAK bitmasks on legacy processors
+    - [Excavator] Fix setting the scope of temperature to Package
+  * [aarch64]
+    - Temperature compilation based on CONFIG_THERMAL
+    - Getting temperature from the Generic Thermal Management
+    - Provide the state of WFI/WFE Low Power Methods
+    - Set the UI comment for PMULL instruction
+    - Registers requiring a safe access guard (TID3)
+    - Drop Experimental guard to safely read ID_AA64MMFR3_EL1
+    - Display detected Interconnect Technology in UI
+    - Query Cache Coherent Network|Interconnect via DT
+    - Added multiple Processors and Architectures:
+        Cortex-A320, Cortex-A520, Cortex-A720AE, Cortex-A725,
+        Cortex-R82AE, Cortex-X925, Neoverse N3, Neoverse V3,
+        Neoverse V3AE * ARMv8.1-A, ARMv8.8-A, ARMv9.1-A, ARMv9.2-A,
+        ARMv9.3-A
+    - Assign DSU-RTL version according to detected ARM arch.
+    - Improve detection of Mesh interconnect via DT/ACPI
+    - Query CMN either from DeviceTree either from ACPI
+    - JSON export DSU, CMN, CCI, CCN
+    - Display the presence of the DynamIQ Shared Unit (DSU)
+    - Added SMT and big.LITTLE labels in the UI footer
+  * [UI]
+    - Rephrased string for the CPUID.80000001.ECX[27] feature
+    - Optimize POWERED() macro with branchless 3-state array lookup
+    - [aarch64][riscv64][ppc64] Optimize POWERED() macro with branchless 3-state
+    - [CR] In _F4() cast complement mask to the type of bit argument
+  * [Build]
+    - [CI] Comment out the unreachable debian-10-buster
+    - Enforce targets are not built more than necessary
+    - Clarify Makefile help, info, and version targets
+    - Support building CoreFreq binaries individually or together
+ 
+-------------------------------------------------------------------
 Thu Jun  5 19:47:58 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 2.0.7
