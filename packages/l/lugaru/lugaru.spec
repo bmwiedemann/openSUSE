@@ -1,7 +1,7 @@
 #
 # spec file for package lugaru
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,10 +21,11 @@ Name:           lugaru
 Version:        1.2
 Release:        0
 Summary:        Third-person ninja rabbit fighting game
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Other
-Url:            https://osslugaru.gitlab.io/
-Source:         https://bitbucket.org/osslugaru/lugaru/downloads/%{name}-%{version}.tar.xz
+URL:            https://osslugaru.gitlab.io/
+# The code is now hosted at https://gitlab.com/osslugaru/lugaru/ - use the url with the next release.
+Source:         %{name}-%{version}.tar.xz
 
 # PATCH-FIX-UPSTREAM 0001-CMake-Define-build-type-before-configuring-version-h.patch rverschelde@gmail.com -- Define build type before configuring version header
 Patch0001:      0001-CMake-Define-build-type-before-configuring-version-h.patch
@@ -32,6 +33,8 @@ Patch0001:      0001-CMake-Define-build-type-before-configuring-version-h.patch
 Patch0002:      0002-ImageIO-fix-invalid-conversion.patch
 # PATCH-FIX-UPSTREAM 0003-Dist-Linux-Add-content-ratings-to-AppStream-appdata-.patch ngompa13@gmail.com -- Add content ratings to AppStream data
 Patch0003:      0003-Dist-Linux-Add-content-ratings-to-AppStream-appdata-.patch
+# PATCH-FIX-UPSTREAM 0004-Revert-Set-CMP0004-policy-to-OLD.patch adam@mizerski.pl - Revert "Set CMP0004 policy to OLD"
+Patch0004:      0004-Revert-Set-CMP0004-policy-to-OLD.patch
 
 # PATCH-FIX-OPENSUSE lugaru-1.1-do-not-install-documentation.patch ngompa13@gmail.com -- Don't try to install docs, as we're doing it ourselves
 Patch1000:      lugaru-1.1-do-not-install-documentation.patch
@@ -77,7 +80,7 @@ upon himself to fight against their plot and save his fellow rabbits from slaver
 
 %package data
 Summary:        Arch-independent data files for the Lugaru game
-License:        CC-BY-SA-3.0 and CC-BY-SA-4.0
+License:        CC-BY-SA-3.0 AND CC-BY-SA-4.0
 Group:          Amusements/Games/Action/Other
 Requires:       %{name} = %{version}
 BuildArch:      noarch
@@ -112,7 +115,8 @@ This package contains arch-independent data files for the game Lugaru.
 
 %files
 %defattr(-,root,root)
-%doc COPYING.txt AUTHORS RELEASE-NOTES.md Docs/*
+%doc AUTHORS RELEASE-NOTES.md Docs/*
+%license COPYING.txt
 %{_bindir}/%{name}
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/%{name}.appdata.xml
@@ -122,7 +126,7 @@ This package contains arch-independent data files for the game Lugaru.
 
 %files data
 %defattr(-,root,root)
-%doc CONTENT-LICENSE.txt
+%license CONTENT-LICENSE.txt
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
 

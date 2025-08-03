@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul 26 17:56:54 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
+
+- added patch 0004-Revert-Set-CMP0004-policy-to-OLD.patch
+
+-------------------------------------------------------------------
 Tue Feb 13 20:07:33 UTC 2018 - crrodriguez@opensuse.org
 
 - DO not buildrequire xorg-x11-devel metapackage 
