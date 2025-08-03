@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug  1 19:23:11 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250801:
+  * Add fingerprint for RT-630 V0.09
+  * btech: Fix block size for non-8900D models
+  * Add Baofeng UV-5G Pro
+  * btech: Fix download for QYT KT-8900D radios
+  * ft4: Format different ID messages for better readability
+  * rt21: Add new fingerprint for RT29UHF
+
+-------------------------------------------------------------------
 Fri Jul 18 17:18:31 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250718:

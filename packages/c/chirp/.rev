@@ -247,4 +247,12 @@
     <comment></comment>
     <requestid>1294428</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>49a78a017ef1f4c87880a5cf860bdd61</srcmd5>
+    <version>20250801</version>
+    <time>1754221051</time>
+    <user>dimstar_suse</user>
+    <comment>chirp 20250801 (forwarded request 1297118 from AndreasStieger)</comment>
+    <requestid>1297119</requestid>
+  </revision>
 </revisionlist>
