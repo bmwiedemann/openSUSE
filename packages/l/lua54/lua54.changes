@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 19 09:23:33 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch from update-alternatives to libalternatives (and
+  dependency on lua-interpreter)
+- improve .gitignore and overall improve the packaging.
+- this package also provides devel symlink directly and conflicts
+  other -devel packages
+
+-------------------------------------------------------------------
 Sat Jul 12 18:38:52 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 5.4.8:
@@ -400,7 +409,7 @@ Wed Sep 17 15:04:25 UTC 2014 - i@marguerite.su
 -------------------------------------------------------------------
 Fri Sep 12 09:19:07 UTC 2014 - pgajdos@suse.com
 
-- fix update-alternatives 
+- fix update-alternatives
 
 -------------------------------------------------------------------
 Wed Sep 10 10:21:23 UTC 2014 - pgajdos@suse.com
@@ -424,13 +433,13 @@ Mon Mar 31 11:05:05 UTC 2014 - pgajdos@suse.com
 Mon Sep  9 11:12:20 UTC 2013 - pgajdos@suse.com
 
 - updated to 5.2.2: bugfix release, fixed:
-  * Stack overflow in vararg functions with many fixed parameters 
-    called with few arguments. 
+  * Stack overflow in vararg functions with many fixed parameters
+    called with few arguments.
   * Garbage collector can trigger too many times in recursive loops.
-  * Wrong assert when reporting concatenation errors (manifests only 
-    when Lua is compiled in debug mode). 
-  * Wrong error message in some short-cut expressions. 
-  * luac listings choke on long strings. 
+  * Wrong assert when reporting concatenation errors (manifests only
+    when Lua is compiled in debug mode).
+  * Wrong error message in some short-cut expressions.
+  * luac listings choke on long strings.
   * see http://www.lua.org/bugs.html for details
 
 -------------------------------------------------------------------
@@ -451,32 +460,32 @@ Tue Feb  5 14:18:18 UTC 2013 - coolo@suse.com
 -------------------------------------------------------------------
 Thu Nov 15 15:11:34 UTC 2012 - pgajdos@suse.com
 
-- export luaU_dump in order to fix linking of luac binary 
+- export luaU_dump in order to fix linking of luac binary
 
 -------------------------------------------------------------------
 Tue Oct  9 14:55:31 UTC 2012 - crrodriguez@opensuse.org
 
 - Tweak lua-suse.diff again:
-* LUA_IFUNC must be defined as upstream but without "extern", 
+* LUA_IFUNC must be defined as upstream but without "extern",
   revert the previous mod.
-* LUA_API must be defined as visibility default 
+* LUA_API must be defined as visibility default
 
 -------------------------------------------------------------------
 Thu Aug 16 00:34:57 UTC 2012 - crrodriguez@opensuse.org
 
 - Even after the previous update, third party modules/libraries
-  would not work because LUA_CDIR constant is wrong in x86_64 
+  would not work because LUA_CDIR constant is wrong in x86_64
 
 -------------------------------------------------------------------
 Wed Aug 15 22:34:12 UTC 2012 - crrodriguez@opensuse.org
 
-- devel package must require libluaver = %{version} 
+- devel package must require libluaver = %{version}
 
 -------------------------------------------------------------------
 Wed Aug 15 22:24:01 UTC 2012 - crrodriguez@opensuse.org
 
 - Broken lua-suse patch breaks loading third party modules
-  or scripts 
+  or scripts
 
 -------------------------------------------------------------------
 Mon Jun 18 09:09:13 UTC 2012 - pgajdos@suse.com
@@ -556,7 +565,7 @@ Wed Dec 21 13:58:22 UTC 2011 - pgajdos@suse.com
                        lua_rawgetp, lua_rawsetp, lua_upvalueid, lua_upvaluejoin,
 	               lua_version, luaL_checkversion, luaL_setmetatable,
 	               luaL_testudata, luaL_tolstring
-        [lua_pushstring] and <CODE>pushlstring</CODE> return string 
+        [lua_pushstring] and <CODE>pushlstring</CODE> return string
         [nparams] and <CODE>isvararg</CODE> available in debug API
 	new lua_Unsigned
   * Implementation
@@ -653,18 +662,18 @@ Tue Feb 19 10:37:22 CET 2008 - pgajdos@suse.cz
 - created -doc package
 - updated to version 5.1.3, bug fix release. Fixed bugs:
   * wrong error message in some concatenations
-  * too many variables in an assignment may cause a C stack 
-    overflow 
-  * an error in a module loaded through the '-l' option shows no 
+  * too many variables in an assignment may cause a C stack
+    overflow
+  * an error in a module loaded through the '-l' option shows no
     traceback
-  * gsub may go wild when wrongly called without its third 
-    argument and with a large subject 
-  * table.remove removes last element of a table when given 
-    an out-of-bound index 
+  * gsub may go wild when wrongly called without its third
+    argument and with a large subject
+  * table.remove removes last element of a table when given
+    an out-of-bound index
   * lua_setfenv may crash if called over an invalid object
-  * stand-alone interpreter shows incorrect error message when 
+  * stand-alone interpreter shows incorrect error message when
     the "message" is a coroutine.
-  * debug.sethook/gethook may overflow the thread's stack 
+  * debug.sethook/gethook may overflow the thread's stack
 
 -------------------------------------------------------------------
 Tue Jul 24 14:31:30 CEST 2007 - pgajdos@suse.cz

@@ -1,10 +1,14 @@
 Inspect errno only after failure
 
-Index: lua-5.4.6/src/lauxlib.c
+---
+ src/lauxlib.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: lua-5.4.8/src/lauxlib.c
 ===================================================================
---- lua-5.4.6.orig/src/lauxlib.c
-+++ lua-5.4.6/src/lauxlib.c
-@@ -283,7 +283,7 @@ LUALIB_API int luaL_fileresult (lua_Stat
+--- lua-5.4.8.orig/src/lauxlib.c	2025-07-15 22:59:14.411309750 +0200
++++ lua-5.4.8/src/lauxlib.c	2025-07-15 22:59:24.858384379 +0200
+@@ -286,7 +286,7 @@
  
  
  LUALIB_API int luaL_execresult (lua_State *L, int stat) {

@@ -25,6 +25,11 @@
 %endif
 %define major_version 5.4
 %define libname liblua5_4-5
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           lua54%{name_ext}
 Version:        5.4.8
 Release:        0
@@ -46,15 +51,24 @@ Patch6:         shared_link.patch
 # PATCH-FIX-UPSTREAM inspect errno only after failure
 Patch8:         execresult.patch
 Patch100:       upstream1.patch
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Conflicts:      lua
 Provides:       lua = %{version}
 Obsoletes:      lua < %{version}
 Provides:       Lua(API) = %{major_version}
+%if %{with libalternatives}
+BuildRequires:  alts
+BuildRequires:  lua-interpreter
+Requires:       alts
+Requires:       lua-interpreter
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if "%{flavor}" == "test"
 BuildRequires:  lua54
 BuildRequires:  lua54-devel
 %else
+#!BuildIgnore: lua54
 BuildRequires:  libtool
 BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
@@ -75,13 +89,11 @@ of C functions, written in ANSI C.
 
 %package devel
 Summary:        Development files for lua
-License:        MIT
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       %{name} = %{version}
 Requires:       lua-macros
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Conflicts:      lua-devel
 Provides:       lua-devel = %{version}
 Provides:       Lua(devel) = %{major_version}
 Provides:       pkgconfig(lua) = %{version}
@@ -96,7 +108,6 @@ application.
 
 %package -n %{libname}
 Summary:        The Lua integration library
-License:        MIT
 Group:          System/Libraries
 Provides:       liblua5_4 = %{version}-%{release}
 Obsoletes:      liblua5_4 < %{version}-%{release}
@@ -123,7 +134,6 @@ of C functions, written in ANSI C.
 
 %package doc
 Summary:        Documentation for Lua, a small embeddable language
-License:        MIT
 Group:          Documentation/HTML
 BuildArch:      noarch
 %if 0%{?suse_version} > 1315
@@ -151,8 +161,10 @@ mv lua-%{version}-tests testes
 %if "%{flavor}" != "test"
 cat doc/lua.1  | sed 's/TH LUA 1/TH LUA%{major_version} 1/' > doc/lua%{major_version}.1
 cat doc/luac.1 | sed 's/TH LUAC 1/TH LUAC%{major_version} 1/' > doc/luac%{major_version}.1
+%endif
 
 %build
+%if "%{flavor}" != "test"
 sed -i -e "s@lib/lua/@%{_lib}/lua/@g" src/luaconf.h
 %make_build linux-readline -C src \
     CC="cc" LIBDIR="%{_libdir}" \
@@ -184,9 +196,21 @@ Version:        %{version}
 Libs: -llua%{major_version} -lm
 Cflags: -I\${includedir}
 EOF
-
 install -D -m 644 lua%{major_version}.pc %{buildroot}%{_libdir}/pkgconfig/lua%{major_version}.pc
 
+%if %{with libalternatives}
+# alternatives - create configuration file
+mkdir -p %{buildroot}%{_datadir}/libalternatives/lua
+cat > %{buildroot}%{_datadir}/libalternatives/lua/54.conf <<EOF
+binary=%{_bindir}/lua5.4
+man=lua5.4
+EOF
+mkdir -p %{buildroot}%{_datadir}/libalternatives/luac
+cat > %{buildroot}%{_datadir}/libalternatives/luac/54.conf <<EOF
+binary=%{_bindir}/luac5.4
+man=luac5.4
+EOF
+%else
 # update-alternatives
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 for file in lua luac ; do
@@ -195,22 +219,23 @@ for file in lua luac ; do
     touch "%{buildroot}%{_sysconfdir}/alternatives/${file}.1%{ext_man}"
     ln -sf "%{_sysconfdir}/alternatives/${file}.1%{ext_man}" "%{buildroot}%{_mandir}/man1/${file}.1%{ext_man}"
 done
+%endif
 
 # Compat link with older unprefixed library and with soname 0 from deb/etc
 ln -s %{_libdir}/liblua%{major_version}.so.%{major_version}.0 %{buildroot}%{_libdir}/liblua%{major_version}.so.%{major_version}
 ln -s %{_libdir}/liblua%{major_version}.so.%{major_version}.0 %{buildroot}%{_libdir}/liblua%{major_version}.so.0
 ln -s %{_libdir}/liblua%{major_version}.so.%{major_version}.0 %{buildroot}%{_libdir}/liblua.so.%{major_version}
-# Library devel alternatives
-touch %{buildroot}%{_sysconfdir}/alternatives/liblua.so
-ln -sf %{_sysconfdir}/alternatives/liblua.so %{buildroot}%{_libdir}/liblua.so
-touch %{buildroot}%{_sysconfdir}/alternatives/lua.pc
-ln -sf %{_sysconfdir}/alternatives/lua.pc %{buildroot}%{_libdir}/pkgconfig/lua.pc
-%else
+
+# We don’t create alternatives for -devel content, just conflict those
+ln -s %{_libdir}/liblua%{major_version}.so %{buildroot}%{_libdir}/liblua.so
+ln -s %{_libdir}/pkgconfig/lua%{major_version}.pc %{buildroot}%{_libdir}/pkgconfig/lua.pc
+%endif  # flavor != "test"
 
 %check
+%if "%{flavor}" == "test"
 cd testes
 pushd libs
-make all LUA_DIR=%{_includedir}/lua%{major_version}
+%make_build all LUA_DIR=%{_includedir}/lua%{major_version}
 cp *.so ..
 popd
 LD_LIBRARY_PATH=%{_libdir} %{_bindir}/lua%{major_version} all.lua
@@ -220,6 +245,7 @@ LD_LIBRARY_PATH=%{_libdir} %{_bindir}/lua%{major_version} all.lua
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
+%if %{without libalternatives}
 %post
 %{_sbindir}/update-alternatives --install                                                 \
             %{_bindir}/lua            lua       %{_bindir}/lua%{major_version}         54 \
@@ -231,18 +257,13 @@ LD_LIBRARY_PATH=%{_libdir} %{_bindir}/lua%{major_version} all.lua
 if [ "$1" = 0 ] ; then
     %{_sbindir}/update-alternatives --remove lua %{_bindir}/lua%{major_version}
 fi
+%endif
 
-%post devel
-%{_sbindir}/update-alternatives --install                                                     \
-            %{_libdir}/liblua.so        liblua.so %{_libdir}/liblua%{major_version}.so     54 \
-    --slave %{_libdir}/pkgconfig/lua.pc lua.pc    %{_libdir}/pkgconfig/lua%{major_version}.pc
+%endif  # flavor != "test"
 
-%postun devel
-if [ "$1" = 0 ] ; then
-    %{_sbindir}/update-alternatives --remove liblua.so %{_libdir}/liblua%{major_version}.so
-fi
-
+%if "%{flavor}" != "test"
 %files
+%doc README
 %dir %{_libdir}/lua
 %dir %{_libdir}/lua/%{major_version}
 %dir %{_datadir}/lua
@@ -251,6 +272,10 @@ fi
 %{_bindir}/luac%{major_version}
 %{_mandir}/man1/lua%{major_version}.1%{?ext_man}
 %{_mandir}/man1/luac%{major_version}.1%{?ext_man}
+%if %{with libalternatives}
+%{_datadir}/libalternatives/lua/54.conf
+%{_datadir}/libalternatives/luac/54.conf
+%else
 # alternatives
 %{_bindir}/lua
 %{_bindir}/luac
@@ -260,6 +285,7 @@ fi
 %ghost %{_sysconfdir}/alternatives/luac
 %ghost %{_sysconfdir}/alternatives/lua.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/luac.1%{ext_man}
+%endif
 
 %files -n %{libname}
 %{_libdir}/liblua%{major_version}.so.*
@@ -274,15 +300,11 @@ fi
 %{_includedir}/lua%{major_version}/lualib.h
 %{_libdir}/liblua%{major_version}.so
 %{_libdir}/pkgconfig/lua%{major_version}.pc
-# alternatives
 %{_libdir}/liblua.so
 %{_libdir}/pkgconfig/lua.pc
-%ghost %{_sysconfdir}/alternatives/liblua.so
-%ghost %{_sysconfdir}/alternatives/lua.pc
 
 %files doc
 %doc doc/*
-
-%endif
+%endif  # flavor != "test"
 
 %changelog

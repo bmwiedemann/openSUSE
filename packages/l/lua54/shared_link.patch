@@ -4,8 +4,10 @@
  src/lundump.h |    2 +-
  3 files changed, 3 insertions(+), 3 deletions(-)
 
---- a/src/ldebug.h
-+++ b/src/ldebug.h
+Index: lua-5.4.8/src/ldebug.h
+===================================================================
+--- lua-5.4.8.orig/src/ldebug.h	2025-07-15 22:59:14.442309680 +0200
++++ lua-5.4.8/src/ldebug.h	2025-07-15 22:59:22.983017316 +0200
 @@ -36,7 +36,7 @@
  #endif
  
@@ -15,9 +17,11 @@
  LUAI_FUNC const char *luaG_findlocal (lua_State *L, CallInfo *ci, int n,
                                                      StkId *pos);
  LUAI_FUNC l_noret luaG_typeerror (lua_State *L, const TValue *o,
---- a/src/lmem.h
-+++ b/src/lmem.h
-@@ -81,7 +81,7 @@ LUAI_FUNC void *luaM_realloc_ (lua_State
+Index: lua-5.4.8/src/lmem.h
+===================================================================
+--- lua-5.4.8.orig/src/lmem.h	2025-07-15 22:59:14.442309680 +0200
++++ lua-5.4.8/src/lmem.h	2025-07-15 22:59:22.983203934 +0200
+@@ -81,7 +81,7 @@
                                                            size_t size);
  LUAI_FUNC void *luaM_saferealloc_ (lua_State *L, void *block, size_t oldsize,
                                                                size_t size);
@@ -26,9 +30,11 @@
  LUAI_FUNC void *luaM_growaux_ (lua_State *L, void *block, int nelems,
                                 int *size, int size_elem, int limit,
                                 const char *what);
---- a/src/lundump.h
-+++ b/src/lundump.h
-@@ -30,7 +30,7 @@
+Index: lua-5.4.8/src/lundump.h
+===================================================================
+--- lua-5.4.8.orig/src/lundump.h	2025-07-15 22:59:14.442309680 +0200
++++ lua-5.4.8/src/lundump.h	2025-07-15 22:59:22.983321338 +0200
+@@ -29,7 +29,7 @@
  LUAI_FUNC LClosure* luaU_undump (lua_State* L, ZIO* Z, const char* name);
  
  /* dump one chunk; from ldump.c */
