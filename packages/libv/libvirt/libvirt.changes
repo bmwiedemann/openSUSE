@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug  1 19:53:49 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 11.6.0
+  - Revert commit c2c165ea6c to fix build with old libattr in SLE15
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v11-6-0-2025-08-01
+
+-------------------------------------------------------------------
 Tue Jul  8 21:33:25 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - qemu: ARM: Change default SCSI controller model from 'lsilogic'

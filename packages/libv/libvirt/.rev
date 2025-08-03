@@ -4918,4 +4918,15 @@ a previous changelog entry.
   bsc#1240762</comment>
     <requestid>1291368</requestid>
   </revision>
+  <revision rev="428" vrev="1">
+    <srcmd5>84875de22df37bb1dc492fb6980868c9</srcmd5>
+    <version>11.6.0</version>
+    <time>1754220960</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to libvirt 11.6.0
+  - Revert commit c2c165ea6c to fix build with old libattr in SLE15
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v11-6-0-2025-08-01</comment>
+    <requestid>1297129</requestid>
+  </revision>
 </revisionlist>
