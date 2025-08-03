@@ -1027,4 +1027,15 @@ fix a jira reference in the changelog.
   - Add all new APIs and constants in libvirt 11.5.0</comment>
     <requestid>1289696</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>95c099ef1eafc97aab4e4cc4f04b6889</srcmd5>
+    <version>11.6.0</version>
+    <time>1754220960</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 11.6.0
+
+- Update to 11.6.0
+  - Add all new APIs and constants in libvirt 11.6.0</comment>
+    <requestid>1297130</requestid>
+  </revision>
 </revisionlist>
