@@ -2,7 +2,7 @@
 # spec file for package wget
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,13 +36,12 @@ Patch2:         wget-fix-pod-syntax.diff
 Patch3:         wget-errno-clobber.patch
 Patch4:         remove-env-from-shebang.patch
 Patch5:         wget-do-not-propagate-credentials.patch
-BuildRequires:  gpgme-devel >= 0.4.2
-BuildRequires:  libcares-devel
-BuildRequires:  libidn2-devel
-BuildRequires:  libpng-devel
 BuildRequires:  makeinfo
-BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig >= 0.9.0
+BuildRequires:  pkgconfig(gpgme) >= 0.4.2
+BuildRequires:  pkgconfig(libcares)
+BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libidn2) >= 0.14.0
 BuildRequires:  pkgconfig(libmetalink)
 BuildRequires:  pkgconfig(libpcre2-8)
 # px_proxy_factory_free_proxies added in 0.4.16

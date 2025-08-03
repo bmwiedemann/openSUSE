@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 25 15:40:26 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- adjust gpgme (and other) build dependencies for future-proofing
+- drop unused build dependency
+
+-------------------------------------------------------------------
 Tue Nov 12 09:22:09 UTC 2024 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - GNU wget 1.25.0:
