@@ -32,10 +32,10 @@ BuildArch:      noarch
 %bcond_with libalternatives
 %endif
 
-%define distversion 7.4.3
+%define distversion 7.4.4
 
 Name:           python-notebook%{psuffix}
-Version:        7.4.3
+Version:        7.4.4
 Release:        0
 Summary:        Jupyter Notebook interface
 License:        BSD-3-Clause
@@ -46,13 +46,13 @@ Source100:      python-notebook-rpmlintrc
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch-jupyter-builder >= 0.2}
 BuildRequires:  %{python_module hatchling >= 1.11}
-BuildRequires:  %{python_module jupyterlab >= 4.4.3 with %python-jupyterlab < 4.5}
+BuildRequires:  %{python_module jupyterlab >= 4.4.4 with %python-jupyterlab < 4.5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       jupyter-notebook = %{version}
 Requires:       python-tornado >= 6.2
 Requires:       (python-jupyter-server >= 2.4 with python-jupyter-server < 3)
-Requires:       (python-jupyterlab >= 4.4.3 with python-jupyterlab < 4.5)
+Requires:       (python-jupyterlab >= 4.4.4 with python-jupyterlab < 4.5)
 Requires:       (python-jupyterlab-server >= 2.27.1 with python-jupyterlab-server < 3)
 Requires:       (python-notebook-shim >= 0.2 with python-notebook-shim < 0.3)
 Provides:       python-jupyter_notebook = %{version}-%{release}
