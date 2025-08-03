@@ -1127,4 +1127,15 @@
  malformed inputs with HTMLParser (CVE-2025-6069, bsc#1244705).</comment>
     <requestid>1290033</requestid>
   </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>60476ee96a5c0cff10cb4de37bbcb4d0</srcmd5>
+    <version>3.10.18</version>
+    <time>1754221072</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2025-8194-tarfile-no-neg-offsets.patch which now
+  validates archives to ensure member offsets are non-negative
+  (gh#python/cpython#130577, CVE-2025-8194, bsc#1247249).
+</comment>
+    <requestid>1297169</requestid>
+  </revision>
 </revisionlist>

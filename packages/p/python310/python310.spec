@@ -205,6 +205,9 @@ Patch28:        sphinx-802.patch
 # PATCH-FIX-UPSTREAM CVE-2025-6069-quad-complex-HTMLParser.patch bsc#1244705 mcepl@suse.com
 # avoid quadratic complexity when processing malformed inputs with HTMLParser
 Patch29:        CVE-2025-6069-quad-complex-HTMLParser.patch
+# PATCH-FIX-UPSTREAM CVE-2025-8194-tarfile-no-neg-offsets.patch bsc#1247249 mcepl@suse.com
+# tarfile now validates archives to ensure member offsets are non-negative
+Patch30:        CVE-2025-8194-tarfile-no-neg-offsets.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
