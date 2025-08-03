@@ -1,0 +1,125 @@
+diff --git a/opensubdiv/CMakeLists.txt b/opensubdiv/CMakeLists.txt
+index eb13cc1d..e72d3475 100644
+--- a/opensubdiv/CMakeLists.txt
++++ b/opensubdiv/CMakeLists.txt
+@@ -120,63 +120,63 @@ if (NOT NO_LIB)
+ 
+     #---------------------------------------------------------------------------
+ 
+-    # Build static libs ------------------------------------
+-    add_library(osd_static_cpu
+-        STATIC
+-        version.cpp
+-        $<TARGET_OBJECTS:sdc_obj>
+-        $<TARGET_OBJECTS:vtr_obj>
+-        $<TARGET_OBJECTS:far_obj>
+-        $<TARGET_OBJECTS:bfr_obj>
+-        $<TARGET_OBJECTS:osd_cpu_obj>
+-    )
+-
+-    set_target_properties(osd_static_cpu
+-        PROPERTIES
+-            OUTPUT_NAME osdCPU
+-            EXPORT_NAME osdCPU_static
+-            CLEAN_DIRECT_OUTPUT 1
+-            FOLDER "opensubdiv"
+-    )
+-
+-    target_include_directories(osd_static_cpu
+-        INTERFACE
+-            $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+-    )
+-
+-    target_link_libraries(osd_static_cpu
+-        ${PLATFORM_CPU_LIBRARIES}
+-    )
+-
+-    install( TARGETS osd_static_cpu EXPORT opensubdiv-targets DESTINATION "${CMAKE_LIBDIR_BASE}" )
+-
+-    if( OSD_GPU )
+-        # this macro uses FindCUDA.cmake to compile .cu kernel files
+-        # the target then adds the other obj dependencies and include files
+-        osd_add_possibly_cuda_library(osd_static_gpu "opensubdiv"
+-                STATIC
+-                version.cpp
+-                $<TARGET_OBJECTS:osd_gpu_obj>
+-                ${OPENGL_LOADER_OBJS}
+-                ${CUDA_KERNEL_FILES}
+-        )
+-        set_target_properties(osd_static_gpu
+-            PROPERTIES
+-                OUTPUT_NAME osdGPU
+-                EXPORT_NAME osdGPU_static
+-                CLEAN_DIRECT_OUTPUT 1)
+-
+-        target_include_directories(osd_static_gpu
+-            INTERFACE
+-                $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+-        )
+-
+-        target_link_libraries(osd_static_gpu
+-            ${PLATFORM_CPU_LIBRARIES} ${PLATFORM_GPU_LIBRARIES}
+-        )
+-
+-        install( TARGETS osd_static_gpu EXPORT opensubdiv-targets DESTINATION "${CMAKE_LIBDIR_BASE}" )
+-    endif()
++    #   # Build static libs ------------------------------------
++    #   add_library(osd_static_cpu
++    #       STATIC
++    #       version.cpp
++    #       $<TARGET_OBJECTS:sdc_obj>
++    #       $<TARGET_OBJECTS:vtr_obj>
++    #       $<TARGET_OBJECTS:far_obj>
++    #       $<TARGET_OBJECTS:bfr_obj>
++    #       $<TARGET_OBJECTS:osd_cpu_obj>
++    #   )
++    #
++    #   set_target_properties(osd_static_cpu
++    #       PROPERTIES
++    #           OUTPUT_NAME osdCPU
++    #           EXPORT_NAME osdCPU_static
++    #           CLEAN_DIRECT_OUTPUT 1
++    #           FOLDER "opensubdiv"
++    #   )
++    #
++    #   target_include_directories(osd_static_cpu
++    #       INTERFACE
++    #           $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
++    #   )
++    #
++    #   target_link_libraries(osd_static_cpu
++    #       ${PLATFORM_CPU_LIBRARIES}
++    #   )
++    #
++    #   install( TARGETS osd_static_cpu EXPORT opensubdiv-targets DESTINATION "${CMAKE_LIBDIR_BASE}" )
++
++    #   if( OSD_GPU )
++    #       # this macro uses FindCUDA.cmake to compile .cu kernel files
++    #       # the target then adds the other obj dependencies and include files
++    #       osd_add_possibly_cuda_library(osd_static_gpu "opensubdiv"
++    #               STATIC
++    #               version.cpp
++    #               $<TARGET_OBJECTS:osd_gpu_obj>
++    #               ${OPENGL_LOADER_OBJS}
++    #               ${CUDA_KERNEL_FILES}
++    #       )
++    #       set_target_properties(osd_static_gpu
++    #           PROPERTIES
++    #               OUTPUT_NAME osdGPU
++    #               EXPORT_NAME osdGPU_static
++    #               CLEAN_DIRECT_OUTPUT 1)
++    #
++    #       target_include_directories(osd_static_gpu
++    #           INTERFACE
++    #               $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
++    #       )
++    #
++    #       target_link_libraries(osd_static_gpu
++    #           ${PLATFORM_CPU_LIBRARIES} ${PLATFORM_GPU_LIBRARIES}
++    #       )
++    #
++    #       install( TARGETS osd_static_gpu EXPORT opensubdiv-targets DESTINATION "${CMAKE_LIBDIR_BASE}" )
++    #   endif()
+ 
+ 
+     # Build dynamic libs  ----------------------------------

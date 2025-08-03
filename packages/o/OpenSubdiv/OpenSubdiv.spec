@@ -1,7 +1,8 @@
 #
 # spec file for package OpenSubdiv
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019-2020 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,17 +18,18 @@
 #
 
 
-%define pkgver 3_6_0
+%define pkgver 3_6_1
 %define libname libosdCPU%{pkgver}
 Name:           OpenSubdiv
-Version:        3.6.0
+Version:        3.6.1
 Release:        0
 Summary:        Subdivision surface evaluation library
 License:        Apache-2.0
 Group:          Productivity/Graphics/Visualization/Raytracers
 URL:            https://graphics.pixar.com/opensubdiv/docs/intro.html
-Source:         https://github.com/PixarAnimationStudios/%{name}/archive/v%{pkgver}.tar.gz#/%{name}-%{pkgver}.tar.gz
+Source:         https://github.com/PixarAnimationStudios/OpenSubdiv/archive/v%{pkgver}.tar.gz#/%{name}-%{pkgver}.tar.gz
 Patch0:         remove-rpath-fiddling.diff
+Patch1:         no-static.patch
 BuildRequires:  cmake >= 2.8.6
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -70,7 +72,7 @@ libraries for %{name}. If you would like to develop programs using %{name},
 you will need to install %{name}-devel.
 
 %prep
-%autosetup -p0 -n %{name}-%{pkgver}
+%autosetup -p1 -n %{name}-%{pkgver}
 
 # work around linking glitch
 sed -i 's/${PLATFORM_GPU_LIBRARIES}/${PLATFORM_GPU_LIBRARIES} ${CMAKE_DL_LIBS}/' opensubdiv/CMakeLists.txt
@@ -96,16 +98,12 @@ sseflags='-msse -msse2'
     -DGLEW_LOCATION=%{_prefix} \
     -DGLFW_LOCATION=%{_prefix} \
     -DOpenGL_GL_PREFERENCE=GLVND
-
 %cmake_build
 
 %install
 %cmake_install
-# remove unused build artefact
-rm %{buildroot}%{_libdir}/*.a
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license LICENSE.txt

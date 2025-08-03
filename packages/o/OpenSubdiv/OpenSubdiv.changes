@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Aug  2 00:49:26 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- convert patch to apply with -p1 remove-rpath-fiddling.diff
+- add no-static.patch:
+  disable all static libraries
+
+-------------------------------------------------------------------
+Sat Aug  2 00:25:23 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.6.1:
+  - Changes
+    - Updated CMake minimum version to 3.14 (GitHub #1349)
+    - Updated documentation regarding external dependencies (GitHub
+      #1346 #1360)
+    - Updated API and example documentation (GitHub #1351 #1362)
+    - Updated build_osd.py visual studio discovery and dependent
+      package versions (GitHub #1333 #1354 #1361)
+    - Updated azure pipelines agents (GitHub #1337 #1342 #1355
+      #1361)
+    - Updated use of OpenCL in example viewers (GitHub #1357)
+    - Addressed Clang 16 compiler warnings (GitHub #1356)
+    - Addressed some address sanitizer build warnings (GitHub
+      #1343)
+    - Added configuration options to build Osd patch shader source
+      independent of other Osd dependencies (GitHub #1359 #1363)
+  - Bug Fixes
+    - Fixed evaluation of surface patches at valence-2 darts
+      (GitHub #1336)
+    - Fixed sharpening of vertices on potential non-manifold
+      creases (GitHub #1338)
+    - Fixed sharing of Bfr::Surface topology with valence-2
+      interior vertices (GitHub #1353)
+
+-------------------------------------------------------------------
 Tue Apr 15 12:11:18 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop BuildRequires: pkgconfig(glew) as it is not used for build.
