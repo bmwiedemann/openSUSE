@@ -6368,4 +6368,15 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   --&gt;  https://docs.mesa3d.org/relnotes/25.1.6</comment>
     <requestid>1294444</requestid>
   </revision>
+  <revision rev="549" vrev="421">
+    <srcmd5>815ccd1d2e301706fd1d477923ab6a04</srcmd5>
+    <version>unknown</version>
+    <time>1754221014</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 25.1.7
+  --&gt;  https://docs.mesa3d.org/relnotes/25.1.7
+
+- Bump required versions of the wayland packages.</comment>
+    <requestid>1297044</requestid>
+  </revision>
 </revisionlist>

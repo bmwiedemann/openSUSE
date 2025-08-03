@@ -43,7 +43,7 @@
 %define glamor 1
 %define _name_archive mesa
 %ifnarch s390x
-%define _version 25.1.6
+%define _version 25.1.7
 %else
 %define _version 24.1.7
 %endif
@@ -164,7 +164,7 @@
 
 Name:           Mesa%{psuffix}
 %ifnarch s390x
-Version:        25.1.6
+Version:        25.1.7
 %else
 Version:        24.1.7
 %endif
@@ -195,8 +195,8 @@ Source9:        manual-pages.tar.bz2
 Source10:       Mesa-rpmlintrc
 Source11:       Mesa.keyring
 Source12:       README-suse-maintenance.md
-Source20:       https://archive.mesa3d.org/%{_name_archive}-25.1.6.tar.xz
-Source21:       https://archive.mesa3d.org/%{_name_archive}-25.1.6.tar.xz.sig
+Source20:       https://archive.mesa3d.org/%{_name_archive}-25.1.7.tar.xz
+Source21:       https://archive.mesa3d.org/%{_name_archive}-25.1.7.tar.xz.sig
 Patch2:         n_add-Mesa-headers-again.patch
 Patch11:        u_0001-intel-genxml-Drop-from-__future__-import-annotations.patch
 Patch12:        u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
@@ -326,9 +326,9 @@ BuildRequires:  libelf-devel
 %endif
 %endif
 # Requirements for wayland bumped up from 17.0
-BuildRequires:  pkgconfig(wayland-client) >= 1.11
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.8
-BuildRequires:  pkgconfig(wayland-server) >= 1.11
+BuildRequires:  pkgconfig(wayland-client) >= 1.18
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.41
+BuildRequires:  pkgconfig(wayland-server) >= 1.18
 %if 0%{with_llvm}
 %if 0%{?suse_version} >= 1550
 BuildRequires:  llvm-devel

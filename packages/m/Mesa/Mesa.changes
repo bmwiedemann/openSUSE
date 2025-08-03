@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug  1 11:39:07 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 25.1.7
+  -->  https://docs.mesa3d.org/relnotes/25.1.7
+
+-------------------------------------------------------------------
+Thu Jul 31 09:58:49 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Bump required versions of the wayland packages.
+
+-------------------------------------------------------------------
 Thu Jul 17 15:10:49 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Customise drivers for loongarch64
