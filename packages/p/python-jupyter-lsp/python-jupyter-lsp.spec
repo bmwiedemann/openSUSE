@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-lsp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,17 @@
 #
 
 
-%define shortversion 2.2.5
+%define pyversion 2.2.6
+%define shortversion 2.2.6
+%define jupversion 5.2.0
 Name:           python-jupyter-lsp
-Version:        2.2.5
+Version:        %{pyversion}
 Release:        0
 Summary:        LSP for Jupyter Notebook/Lab server
 License:        BSD-3-Clause
 # SourceRepository: https://github.com/jupyter-lsp/jupyterlab-lsp
 URL:            https://github.com/jupyter-lsp/jupyterlab-lsp/tree/main/python_packages/jupyter_lsp
-Source:         https://files.pythonhosted.org/packages/source/j/jupyter-lsp/jupyter-lsp-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/j/jupyter-lsp/jupyter_lsp-%{pyversion}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -37,10 +39,10 @@ BuildRequires:  %{python_module importlib_metadata >= 4.8.3 if %python-base < 3.
 BuildRequires:  %{python_module jupyter_server >= 1.1.2}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       jupyter-lsp = %{version}
+Requires:       jupyter-lsp = %{jupversion}
 Requires:       python-jupyter_server >= 1.1.2
 Requires:       (python-importlib_metadata >= 4.8.3 if python-base < 3.10)
-Provides:       python-jupyter_lsp = %{version}-%{release}
+Provides:       python-jupyter_lsp = %{pyversion}-%{release}
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,6 +50,7 @@ BuildArch:      noarch
 Multi-Language Server WebSocket proxy for Jupyter Notebook/Lab server
 
 %package -n jupyter-lsp
+Version:        %{jupversion}
 Summary:        LSP for Jupyter Notebook/Lab server - Config
 # Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
 Requires:       python3dist(jupyter-lsp) = %{shortversion}
@@ -58,7 +61,7 @@ Multi-Language Server WebSocket proxy for Jupyter Notebook/Lab server
 Jupyter config
 
 %prep
-%autosetup -p1 -n jupyter-lsp-%{version}
+%autosetup -p1 -n jupyter_lsp-%{pyversion}
 
 %build
 %pyproject_wheel
@@ -77,7 +80,7 @@ donttest="test_r_package_detection"
 %doc README.md
 %license LICENSE
 %{python_sitelib}/jupyter_lsp
-%{python_sitelib}/jupyter_lsp-%{version}.dist-info
+%{python_sitelib}/jupyter_lsp-%{pyversion}.dist-info
 
 %files -n jupyter-lsp
 %doc README.md
