@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  1 09:47:03 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update fgl to version 5.8.3.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Sep 30 06:53:01 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update fgl to version 5.8.3.0.
