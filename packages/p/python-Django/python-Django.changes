@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  1 02:09:01 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Reinstate Requires on tzdata, a lot of packages use it.
+
+-------------------------------------------------------------------
 Wed Jul 30 06:03:44 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-msgfmt-0.25.patch:
