@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jul  9 05:25:53 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to version 1.22.4:
+  * Only Enable Teardown thread on windows and remove debug on
+    success 
+  * Add testing stdout from zeInitDrivers in CI 
+  * Update Level Zero Loader and Headers to support v1.13.1 
+    of L0 Spec 
+  * Revert "Update Level Zero Loader and Headers to 
+    support v1.13.1 of L0
+  * Fix static loader to request current version as the 
+    latest APIs 
+  * fix ddi compatability to avoid assigning values which 
+    don't exist 
+  * Update Level Zero Loader and Headers to support 
+    v1.13.1 of L0 Spec 
+  * Fix zesInit to init the correct requested api version
+  * Fix sysman only init to disallow retrieval of loader
+    context due to version compatibility 
+  * Fix version update and GUID update for 1.22.2
+  * Add ability to Register a TeardownCallback to notify
+    release of L0 resources 
+  * Fix GUID gen and update to v1.22.3 
+  * Rename the static build define from DYNAMIC_LOAD_LOADER 
+    to L0_STATIC_LOADER_BUILD 
+  * Block all calls to get drivers until after init has 
+    completed to avoid race during sorting 
+
+-------------------------------------------------------------------
 Mon Jun  2 09:57:10 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Replace explicit declarations in %files with wildcards
