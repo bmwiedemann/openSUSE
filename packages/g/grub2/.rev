@@ -3116,4 +3116,16 @@ pretty much the same. The main user visible changes are
     <comment></comment>
     <requestid>1294250</requestid>
   </revision>
+  <revision rev="367" vrev="56">
+    <srcmd5>8c6bac18c8b554d0988d199716c1fa11</srcmd5>
+    <version>2.12</version>
+    <time>1754220983</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix CVE-2024-56738: side-channel attack due to not constant-time
+  algorithm in grub_crypto_memcmp (bsc#1234959)
+  * grub2-constant-time-grub_crypto_memcmp.patch
+
+- Update the bug tag for 0001-tpm2-Add-extra-RSA-SRK-types.patch</comment>
+    <requestid>1296922</requestid>
+  </revision>
 </revisionlist>
