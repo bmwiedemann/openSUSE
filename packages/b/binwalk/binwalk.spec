@@ -1,7 +1,7 @@
 #
 # spec file for package binwalk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,81 +17,46 @@
 
 
 Name:           binwalk
-Version:        2.4.2
+Version:        3.1.0
 Release:        0
 Summary:        Firmware Analysis Tool
 License:        MIT
-URL:            https://github.com/OSPG/binwalk
-Source:         https://github.com/OSPG/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/ReFirmLabs/binwalk/
+Source0:        https://github.com/ReFirmLabs/binwalk/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.zst
+BuildRequires:  cargo
+BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  help2man
-BuildRequires:  python-rpm-macros
-BuildRequires:  python3-curses
-BuildRequires:  python3-setuptools
-# Depends on libmagic.
-Requires:       file
-Requires:       python3 >= 3.8
-Requires:       python3-curses
-# Depends on libfuzzy.
-Requires:       ssdeep
-Recommends:     bzip2
-Recommends:     cabextract
-Recommends:     capstone
-Recommends:     cpio
-Recommends:     cramfs-tools
-Recommends:     cramfsswap
-Recommends:     gzip
-Recommends:     jefferson
-Recommends:     lhasa
-Recommends:     lzop
-Recommends:     sasquatch
-Recommends:     sleuthkit
-Recommends:     squashfs
-Recommends:     srecord
-Recommends:     ubi_reader
-Recommends:     unrar
-Recommends:     xz
-Recommends:     yaffshiv
-Recommends:     zlib
-Suggests:       java
-BuildArch:      noarch
-%if 0%{?suse_version} > 1500
-Recommends:     p7zip-full
-%else
-Recommends:     p7zip
-%endif
+BuildRequires:  pkgconfig
+BuildRequires:  zstd
+BuildRequires:  pkgconfig(fontconfig)
 
 %description
-Binwalk is a tool for searching a given binary image for embedded
-files and executable code. Specifically, it is designed for
-identifying files and code embedded inside of firmware images.
-Binwalk uses the libmagic library, so it is compatible with magic
-signatures created for the Unix file utility. Binwalk also includes
-a custom magic signature file which contains improved signatures
-for files that are commonly found in firmware images such as
-compressed/archived files, firmware headers, Linux kernels,
-bootloaders, filesystems, etc.
+Binwalk can identify, and optionally extract, files and data that
+have been embedded inside of other files.
+
+While its primary focus is firmware analysis, it supports a wide
+variety of file and data types.
+
+Through entropy analysis, it can even help to identify unknown
+compression or encryption!
 
 %prep
-%setup -q
+%autosetup -p1 -a1
 
 %build
-%python3_build
+%{cargo_build}
 
 %install
-%python3_install
-chmod 644 API.md
-export PYTHONPATH=%{buildroot}%{python3_sitelib}
-help2man %{buildroot}/%{_bindir}/binwalk --no-discard-stderr --version-string="%{version}" --no-info > binwalk.1
-install -Dpm 0644 %{name}.1 %{buildroot}/%{_mandir}/man1/%{name}.1
-%fdupes %{buildroot}%{python3_sitelib}
+%{cargo_install}
+
+help2man %{buildroot}%{_bindir}/binwalk --no-discard-stderr --version-string="%{version}" --no-info > binwalk.1
+install -Dpm 0644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
 %license LICENSE
-%doc API.md
 %{_bindir}/%{name}
-%{_mandir}/man1/binwalk.1%{?ext_man}
-%{python3_sitelib}/%{name}/
-%{python3_sitelib}/%{name}-*
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 31 15:09:59 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Switch upsteam to the original repository
+- Update to version 3.1.0:
+  * Rewrite in Rust
+  * Add ntfs support
+  * Add apfs support
+  * Add btrfs support
+  * Add Windows CE support
+  * Add Autel encoded firmware support
+  * Add Tplink fw rtos signatures
+  * Add full search support
+  * Full changelog:
+    https://github.com/ReFirmLabs/binwalk/compare/v2.3.4...v3.1.0
+
+-------------------------------------------------------------------
 Fri Sep 27 03:20:21 UTC 2024 - Jan Kužílek <jan.kuzilek@suse.com>
 
 - Switch upstream to a maintained fork
@@ -127,7 +143,7 @@ Wed Dec 23 18:04:53 UTC 2015 - aloisio@gmx.com
   * Removal of all C library dependencies, including
     libmagic - pure Python!
   * Native Windows support!
- 
+
 -------------------------------------------------------------------
 Mon Sep 14 10:56:52 UTC 2015 - sor.alexei@meowr.ru
 
@@ -143,7 +159,7 @@ Mon Sep 14 10:56:52 UTC 2015 - sor.alexei@meowr.ru
 -------------------------------------------------------------------
 Wed Jul  1 13:57:37 UTC 2015 - aloisio@gmx.com
 
-- Added requirement for python-curses 
+- Added requirement for python-curses
 
 -------------------------------------------------------------------
 Mon Aug  4 09:20:11 UTC 2014 - boris@steki.net
@@ -155,7 +171,7 @@ Mon Aug  4 09:20:11 UTC 2014 - boris@steki.net
   + Improved speed
   + More (and improved) signatures
   + Faster entropy scans
-- Project has moved from google code hosting to github 
+- Project has moved from google code hosting to github
 
 -------------------------------------------------------------------
 Mon Sep 23 13:13:57 UTC 2013 - vcizek@suse.com
@@ -191,5 +207,4 @@ Tue Oct 30 12:42:57 UTC 2012 - boris@steki.net
 -------------------------------------------------------------------
 Tue Aug 23 12:39:24 UTC 2011 - boris@steki.net
 
-- Initial packaging of 0.3.8 version 
-
+- Initial packaging of 0.3.8 version
