@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  1 20:09:24 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2025-8194-tarfile-no-neg-offsets.patch which now
+  validates archives to ensure member offsets are non-negative
+  (gh#python/cpython#130577, CVE-2025-8194, bsc#1247249).
+
+-------------------------------------------------------------------
 Wed Jul 23 08:05:20 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.14.0~rc1:
