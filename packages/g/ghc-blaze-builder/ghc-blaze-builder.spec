@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        Efficient buffered output
 License:        BSD-3-Clause
@@ -113,7 +113,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc CHANGES README.markdown TODO
+%doc CHANGELOG.md README.markdown
 
 %files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
 %license LICENSE
