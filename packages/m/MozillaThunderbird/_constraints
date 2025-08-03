@@ -67,4 +67,14 @@
       </memory>
     </hardware>
   </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>riscv64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">28</size>
+      </memory>
+    </hardware>
+  </overwrite>
 </constraints>
