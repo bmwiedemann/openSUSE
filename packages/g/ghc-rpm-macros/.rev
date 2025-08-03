@@ -453,4 +453,12 @@ Fix macros to generate file permissions</comment>
     <comment>version update</comment>
     <requestid>1296450</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>066027e8bfe9036c94f4fbdc3573ea2f</srcmd5>
+    <version>2.9.1.1</version>
+    <time>1754221062</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1297150</requestid>
+  </revision>
 </revisionlist>
