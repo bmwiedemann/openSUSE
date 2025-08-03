@@ -1844,4 +1844,12 @@
   * mount.nfs: retry NFSv3 mount after NFSv4 failure in auto negotiation</comment>
     <requestid>1244414</requestid>
   </revision>
+  <revision rev="186" vrev="47">
+    <srcmd5>b2d613d644539b76054004e0bca9dc04</srcmd5>
+    <version>unknown</version>
+    <time>1754220968</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1296909</requestid>
+  </revision>
 </revisionlist>

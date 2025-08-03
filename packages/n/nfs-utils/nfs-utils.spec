@@ -1,7 +1,8 @@
 #
 # spec file for package nfs-utils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +23,15 @@
 %endif
 
 Name:           nfs-utils
-Version:        2.8.2
+Version:        2.8.3
 Release:        0
 Summary:        Support Utilities for Kernel nfsd
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/NFS
 URL:            https://kernel.org/pub/linux/utils/nfs-utils/
 Source0:        https://kernel.org/pub/linux/utils/nfs-utils/%{version}/nfs-utils-%{version}.tar.xz
+Source1:        https://kernel.org/pub/linux/utils/nfs-utils/%{version}/nfs-utils-%{version}.tar.sign
+Source2:        %{name}.keyring
 Source4:        sysconfig.nfs
 Source11:       idmapd.conf
 Source12:       statd-user.conf
@@ -41,7 +44,8 @@ Source24:       rpc-statd-notify.options.conf
 Source25:       rpc-svcgssd.options.conf
 Source26:       nfs.conf
 Source27:       nfs-kernel-server.tmpfiles.conf
-Patch0:         nfs-utils-1.0.7-bind-syntax.patch
+Patch0:         nfs-utils-Fix-build-with-glibc-2.42.patch
+Patch1:         nfs-utils-nfsdctl-fix-lockd-config-during-autostart.patch
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool

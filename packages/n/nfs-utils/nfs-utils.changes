@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Jul 31 22:10:40 UTC 2025 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 2.8.3:
+  - https://kernel.org/pub/linux/utils/nfs-utils/2.8.3/2.8.3-Changelog
+  * nfs(5): Add new rdirplus functionality, clarify
+  * nfsdcld: fix cld pipe read size
+  * gssd: do not use krb5_cc_initialize
+  * gssd: unconditionally use krb5_get_init_creds_opt_alloc
+  * nfsdctl: ensure autostart honors the default nfs.conf versX.Y settings
+  * nfsdctl: dont ignore rdma listener return
+  * nfsdctl: add necessary bits to configure lockd
+  * nfsdctl: fix host-limited add listener
+  * nfsdctl: cleanup listeners if some failed
+  * nfsdctl: fix autostart
+  * nfsdctl: fix update_listeners
+  * systemd: mount nfsd after load kernel module
+  * mountstats/nfsiostat: merge and rework the infinite and counted loops
+  * mountstats/nfsiostat: Move the checks for empty mountpoint list into the print function
+  * mountstats: filter for nfs mounts in a function, each iostat iteration
+  * nfsiostat: fix crash when filtering mountstats after unmount
+  * nfsiostat: mirror how mountstats iostat prints the stats
+  * mountstats: when printing iostats, verify that old and new types are the same
+  * mountstats/nfsiostat: add a function to return the fstype
+  * nfsiostat: skip argv[0] when parsing command-line
+  * nfsd: fix version sanity check
+  * nfsdctl: tweak the nfs.conf version handling
+  * nfsdctl: tweak the version subcommand behavior
+  * NFS export symlink vulnerability fix
+  * conffile: add 'arg' argument to conf_remove_now()
+
+- Removed obsolete patch from this release:
+  - nfs-utils-1.0.7-bind-syntax.patch
+
+- Added upstream patches:
+  - nfs-utils-Fix-build-with-glibc-2.42.patch
+  - nfs-utils-nfsdctl-fix-lockd-config-during-autostart.patch
+
+-------------------------------------------------------------------
 Sat Feb  8 21:30:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.2:
