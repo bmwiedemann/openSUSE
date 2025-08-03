@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 28 15:43:58 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.74.0:
+  * Fix gRPC Python docs website layout - use spaces optimally
+    (gh#grpc/grpc#40073).
+
+-------------------------------------------------------------------
 Sun Jun 15 06:27:51 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.73.0:
