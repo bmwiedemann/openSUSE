@@ -1,0 +1,3 @@
+# Yes, there is nothing to test here
+addFilter("W: no-%check-section")
+addFilter("E: empty-libalternatives-directory /usr/share/libalternatives/")

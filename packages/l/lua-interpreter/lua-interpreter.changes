@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Mon Jul 14 13:53:43 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Initial infrastructure for using alts with Lua interpreters.
+- We have to mention lua-interpreter.rpmlintrc at least as a Source99.
