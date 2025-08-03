@@ -270,4 +270,12 @@ See Request#518161</comment>
     <comment>- Convert to libalternatives</comment>
     <requestid>1286310</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7b5207966b5af7b05f37e15de659c022</srcmd5>
+    <version>4.1.11</version>
+    <time>1754221094</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1297180</requestid>
+  </revision>
 </revisionlist>
