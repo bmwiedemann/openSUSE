@@ -1,7 +1,7 @@
 #
 # spec file for package pocketbase
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Eyad Issa <eyadlorenzo@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,12 +36,11 @@ PocketBase is an open source Go backend that includes:
 - convenient Admin dashboard UI
 - and simple REST-ish API
 
-
 %prep
 %autosetup -p1 -a1
 
 %build
-%ifarch %x86_64 %arm64 %riscv64 %power64
+%ifarch %x86_64 %arm64 %power64
 export CGO_ENABLED=0
 %endif
 

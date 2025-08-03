@@ -12,4 +12,12 @@
 -    and simple REST-ish API</comment>
     <requestid>1296605</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>018e2723afea497da7e4f024f9052d81</srcmd5>
+    <version>0.29.0</version>
+    <time>1754221057</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't disable cgo on riscv64</comment>
+    <requestid>1297131</requestid>
+  </revision>
 </revisionlist>
