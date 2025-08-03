@@ -1,7 +1,7 @@
 #
 # spec file for package python-widgetsnbextension
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define jupver 8.0.13
+%define jupver 8.0.15
 Name:           python-widgetsnbextension
-Version:        4.0.13
+Version:        4.0.14
 Release:        0
 Summary:        Jupyter interactive widgets for Jupyter Notebook
 License:        BSD-3-Clause AND MIT

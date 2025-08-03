@@ -191,4 +191,25 @@
     @s-weigand in #3862</comment>
     <requestid>1201255</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b48a31db601664142589f1f8ed291042</srcmd5>
+    <version>4.0.14</version>
+    <time>1754221076</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.15
+  # release notes from ipywidgets 8.1.7 and 8.1.6
+  * Dynamic widgets registry by @martinRenou in #3988
+  * Fix lumino and lab packages pinning by @martinRenou in #3958
+  * Typo fix by @david4096 in #3960
+  * Update lables even without MatJax/TypeSetter by @DonJayamanne
+    in #3962
+  * Fix the new line when pressing enter in textarea widget by
+    @brichet in #3982
+  * Backward compatibility on processPhosphorMessage by
+    @martinRenou in #3945
+  * Include sourcemaps in npm tarballs by @manzt in #3978
+  * Fix deprecation warning when importing the backend_inline by
+    @emolinlu in #3984</comment>
+    <requestid>1297164</requestid>
+  </revision>
 </revisionlist>
