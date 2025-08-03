@@ -1,32 +1,24 @@
-Index: grpcio-1.72.0/src/core/lib/promise/party.h
+From: Jan Engelhardt <ej@inai.de>
+Date: 2025-02-09 21:28:54.517217439 +0100
+
+Fix some terrible code.
+
+[   28s] /home/abuild/rpmbuild/BUILD/grpc-1.70.1-build/grpc-1.70.1/src/core/lib/transport/call_state.h:157:3: error: control reaches end of non-void function [-Werror=return-type]
+---
+ src/core/call/call_state.h                  |    5 +++++
+ src/core/channelz/channelz.h                |    1 +
+ src/core/lib/promise/inter_activity_mutex.h |    2 ++
+ 3 files changed, 8 insertions(+)
+
+Index: grpc-1.74.0/src/core/call/call_state.h
 ===================================================================
---- grpcio-1.72.0.orig/src/core/lib/promise/party.h
-+++ grpcio-1.72.0/src/core/lib/promise/party.h
-@@ -487,6 +487,7 @@ class Party : public Activity, private W
-           Crash(
-               "unreachable: promises should not be repolled after completion");
-       }
-+      return false;
-     }
- 
-     // Outside party poll: check whether the spawning party has completed this
-@@ -499,6 +500,7 @@ class Party : public Activity, private W
-         case State::kResult:
-           return std::move(result_);
-       }
-+      return Pending{};
-     }
- 
-     void Destroy() override { this->Unref(); }
-Index: grpcio-1.72.0/src/core/call/call_state.h
-===================================================================
---- grpcio-1.72.0.orig/src/core/call/call_state.h
-+++ grpcio-1.72.0/src/core/call/call_state.h
+--- grpc-1.74.0.orig/src/core/call/call_state.h
++++ grpc-1.74.0/src/core/call/call_state.h
 @@ -155,6 +155,7 @@ class CallState {
        case ClientToServerPullState::kTerminated:
          return "Terminated";
      }
-+    return "";
++    return "Undefined";
    }
    template <typename Sink>
    friend void AbslStringify(Sink& out, ClientToServerPullState state) {
@@ -34,7 +26,7 @@ Index: grpcio-1.72.0/src/core/call/call_state.h
        case ClientToServerPushState::kFinished:
          return "Finished";
      }
-+    return "";
++    return "Undefined";
    }
    template <typename Sink>
    friend void AbslStringify(Sink& out, ClientToServerPushState state) {
@@ -42,7 +34,7 @@ Index: grpcio-1.72.0/src/core/call/call_state.h
        case ServerToClientPullState::kTerminated:
          return "Terminated";
      }
-+    return "";
++    return "Undefined";
    }
    template <typename Sink>
    friend void AbslStringify(Sink& out, ServerToClientPullState state) {
@@ -50,7 +42,7 @@ Index: grpcio-1.72.0/src/core/call/call_state.h
        case ServerToClientPushState::kFinished:
          return "Finished";
      }
-+    return "";
++    return "Undefined";
    }
    template <typename Sink>
    friend void AbslStringify(Sink& out, ServerToClientPushState state) {
@@ -58,7 +50,32 @@ Index: grpcio-1.72.0/src/core/call/call_state.h
        case ServerTrailingMetadataState::kPulledCancel:
          return "PulledCancel";
      }
-+    return "";
++    return "Undefined";
    }
    template <typename Sink>
    friend void AbslStringify(Sink& out, ServerTrailingMetadataState state) {
+Index: grpc-1.74.0/src/core/channelz/channelz.h
+===================================================================
+--- grpc-1.74.0.orig/src/core/channelz/channelz.h
++++ grpc-1.74.0/src/core/channelz/channelz.h
+@@ -144,6 +144,7 @@ class BaseNode : public DualRefCounted<B
+       case EntityType::kCall:
+         return "call";
+     }
++    return "unknown";
+   }
+ 
+   static std::optional<EntityType> KindToEntityType(absl::string_view kind) {
+Index: grpc-1.74.0/src/core/lib/promise/inter_activity_mutex.h
+===================================================================
+--- grpc-1.74.0.orig/src/core/lib/promise/inter_activity_mutex.h
++++ grpc-1.74.0/src/core/lib/promise/inter_activity_mutex.h
+@@ -307,6 +307,8 @@ class InterActivityMutex {
+         case State::kMovedFrom:
+           LOG(FATAL) << "Mutex acquirer already moved from";
+       }
++      // Control never actually reaches here
++      return Pending{};
+     }
+ 
+    private:
