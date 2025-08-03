@@ -1,0 +1,48 @@
+From: Jan Engelhardt <ej@inai.de>
+Date: 2025-07-18 11:02:24.078457348 +0200
+References: https://bugzilla.suse.com/show_bug.cgi?id=1246537
+References: https://github.com/SSSD/sssd/issues/8041
+
+---
+ src/examples/logrotate.in            |    3 +--
+ src/sysv/systemd/sssd-kcm.service.in |    1 +
+ src/sysv/systemd/sssd.service.in     |    1 +
+ 3 files changed, 3 insertions(+), 2 deletions(-)
+
+Index: sssd-2.11.1/src/examples/logrotate.in
+===================================================================
+--- sssd-2.11.1.orig/src/examples/logrotate.in
++++ sssd-2.11.1/src/examples/logrotate.in
+@@ -8,7 +8,6 @@
+     delaycompress
+     su @SSSD_USER@ @SSSD_USER@
+     postrotate
+-        /bin/kill -HUP `cat @pidpath@/sssd.pid 2>/dev/null` 2> /dev/null || true
+-        /bin/pkill -HUP sssd_kcm 2> /dev/null || true
++        /usr/bin/systemctl try-reload-or-restart sssd sssd_kcm
+     endscript
+ }
+Index: sssd-2.11.1/src/sysv/systemd/sssd-kcm.service.in
+===================================================================
+--- sssd-2.11.1.orig/src/sysv/systemd/sssd-kcm.service.in
++++ sssd-2.11.1/src/sysv/systemd/sssd-kcm.service.in
+@@ -32,6 +32,7 @@ ExecStartPre=+-/bin/chmod -f g+x @sssdco
+ ExecStartPre=+-/bin/sh -c "/bin/chown -f -h @SSSD_USER@:@SSSD_USER@ @secdbpath@/*.ldb"
+ ExecStartPre=+-/bin/sh -c "/bin/chown -f -h @SSSD_USER@:@SSSD_USER@ @logpath@/sssd_kcm.log*"
+ ExecStart=@libexecdir@/sssd/sssd_kcm ${DEBUG_LOGGER}
++ExecReload=kill -HUP $MAINPID
+ CapabilityBoundingSet= CAP_DAC_READ_SEARCH CAP_SETGID CAP_SETUID
+ SecureBits=noroot noroot-locked
+ User=@SSSD_USER@
+Index: sssd-2.11.1/src/sysv/systemd/sssd.service.in
+===================================================================
+--- sssd-2.11.1.orig/src/sysv/systemd/sssd.service.in
++++ sssd-2.11.1/src/sysv/systemd/sssd.service.in
+@@ -21,6 +21,7 @@ ExecStartPre=+-/bin/sh -c "/bin/chown -f
+ ExecStartPre=+-/bin/chown -f -R -h @SSSD_USER@:@SSSD_USER@ @gpocachepath@
+ ExecStartPre=+-/bin/sh -c "/bin/chown -f -h @SSSD_USER@:@SSSD_USER@ @logpath@/*.log*"
+ ExecStart=@sbindir@/sssd -i ${DEBUG_LOGGER}
++ExecReload=kill -HUP $MAINPID
+ Type=notify
+ NotifyAccess=main
+ Restart=on-abnormal

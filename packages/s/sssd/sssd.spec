@@ -17,7 +17,7 @@
 
 
 Name:           sssd
-Version:        2.10.2
+Version:        2.11.1
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -28,11 +28,13 @@ Source:         https://github.com/SSSD/sssd/releases/download/%version/%name-%v
 Source2:        https://github.com/SSSD/sssd/releases/download/%version/%name-%version.tar.gz.asc
 Source3:        baselibs.conf
 Source5:        %name.keyring
+Source6:        %name-rpmlintrc
 Patch1:         0001-TOOL-Fix-build-parameter-name-omitted.patch
 Patch11:        krb-noversion.diff
 Patch12:        harden_sssd-ifp.service.patch
 Patch13:        harden_sssd-kcm.service.patch
 Patch14:        symvers.patch
+Patch15:        logrotate.patch
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
 BuildRequires:  bind-utils
@@ -88,6 +90,7 @@ BuildRequires:  pkgconfig(p11-kit-1) >= 0.23.3
 BuildRequires:  pkgconfig(popt)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(smbclient)
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(talloc)
 BuildRequires:  pkgconfig(tdb) >= 1.1.3
 BuildRequires:  pkgconfig(tevent)
@@ -438,8 +441,7 @@ autoreconf -fiv
 	--with-subid
 %else
 	--with-selinux=no \
-	--with-libsifp \
-	--with-files-provider
+	--with-libsifp
 %endif
 %make_build all
 
@@ -451,26 +453,26 @@ b="%buildroot"
 
 # Copy some defaults
 %if "%{?_distconfdir}" != ""
-install -D -p -m 0600 src/examples/sssd-example.conf "$b/%_distconfdir/sssd/sssd.conf"
-install -d -m 0755 "$b/%_distconfdir/sssd/conf.d"
+install -Dpvm 0600 src/examples/sssd-example.conf "$b/%_distconfdir/sssd/sssd.conf"
+install -dvm 0755 "$b/%_distconfdir/sssd/conf.d"
 %else
-install -D -p -m 0600 src/examples/sssd-example.conf "$b/%_sysconfdir/sssd/sssd.conf"
-install -d -m 0755 "$b/%_sysconfdir/sssd/conf.d"
+install -Dpm 0600 src/examples/sssd-example.conf "$b/%_sysconfdir/sssd/sssd.conf"
+install -dvm 0755 "$b/%_sysconfdir/sssd/conf.d"
 %endif
-install -d "$b/%_unitdir"
+install -dv "$b/%_unitdir"
 %if 0%{?suse_version} > 1500
-install -d "$b/%_distconfdir/logrotate.d"
-install -m644 src/examples/logrotate "$b/%_distconfdir/logrotate.d/sssd"
-install -d "$b/%_pam_vendordir"
+install -dv "$b/%_distconfdir/logrotate.d"
+install -vm644 src/examples/logrotate "$b/%_distconfdir/logrotate.d/sssd"
+install -dv "$b/%_pam_vendordir"
 mv "$b/%_pam_confdir/sssd-shadowutils" "$b/%_pam_vendordir"
 %else
-install -d "$b/%_sysconfdir/logrotate.d"
-install -m644 src/examples/logrotate "$b/%_sysconfdir/logrotate.d/sssd"
+install -dv "$b/%_sysconfdir/logrotate.d"
+install -vm644 src/examples/logrotate "$b/%_sysconfdir/logrotate.d/sssd"
 %endif
 
 rm -Rfv "$b/%_initddir"
 %if 0%{?suse_version} < 1600
-ln -s service "$b/%_sbindir/rcsssd"
+ln -sv service "$b/%_sbindir/rcsssd"
 %endif
 
 mkdir -pv "$b/%sssdstatedir/mc"
@@ -478,8 +480,8 @@ find "$b" -type f -name "*.la" -print -delete
 %find_lang %name --all-name
 
 # dummy target for cifs-idmap-plugin
-mkdir -p %{buildroot}%{_sysconfdir}/cifs-utils
-ln -s -f %{cifs_idmap_lib} %{buildroot}%{cifs_idmap_plugin}
+mkdir -pv %buildroot/%_sysconfdir/cifs-utils
+ln -sfv %cifs_idmap_lib %buildroot/%cifs_idmap_plugin
 
 %python3_fix_shebang
 %if 0%{?suse_version} > 1600
@@ -490,16 +492,16 @@ sed -i '1s@#!.*python.*@#!%_bindir/python3.11@' "$b/%_libexecdir/%name/sss_analy
 %endif
 
 echo 'u sssd - "System Security Services Daemon" /run/sssd /sbin/nologin' >system-user-sssd.conf
-mkdir -p "$b/%_sysusersdir"
-cp -a system-user-sssd.conf "$b/%_sysusersdir/"
+mkdir -pv "$b/%_sysusersdir"
+cp -av system-user-sssd.conf "$b/%_sysusersdir/"
 %sysusers_generate_pre system-user-sssd.conf random system-user-sssd.conf
-install -Dpm 0644 contrib/sssd-tmpfiles.conf "%buildroot/%_tmpfilesdir/%name.conf"
+install -Dpvm 0644 contrib/sssd-tmpfiles.conf "%buildroot/%_tmpfilesdir/%name.conf"
 #
 # Security considerations for capabilities, chown and stuff:
 # https://www.openwall.com/lists/oss-security/2024/12/19/1
 #
 # should match entry from %%files list
-mkdir -p "$b/%permissions_path"
+mkdir -pv "$b/%permissions_path"
 cat >"$b/%permissions_path/sssd" <<-EOF
 	%_libexecdir/sssd/sssd_pam root:sssd 0750
 	 +capabilities cap_dac_read_search=p
@@ -510,6 +512,10 @@ cat >"$b/%permissions_path/sssd" <<-EOF
 	%_libexecdir/sssd/ldap_child root:sssd 0750
 	 +capabilities cap_dac_read_search=p
 EOF
+
+mkdir -pv "$b/%_sysconfdir/krb5.conf.d"
+ln -sv %_datadir/%name/krb5-snippets/enable_sssd_conf_dir \
+       "$b/%_sysconfdir/krb5.conf.d/enable_sssd_conf_dir"
 
 %check
 # sss_config-tests fails
@@ -669,12 +675,8 @@ fi
 %_mandir/??/man1/sss_ssh_*
 %_mandir/??/man5/sss-certmap.5*
 %_mandir/??/man5/sssd-ad.5*
-%if 0%{?suse_version} < 1600
-%_mandir/??/man5/sssd-files.5*
-%endif
 %_mandir/??/man5/sssd-ldap-attributes.5*
 %_mandir/??/man5/sssd-session-recording.5*
-%_mandir/??/man5/sssd-simple.5*
 %_mandir/??/man5/sssd-sudo.5*
 %_mandir/??/man5/sssd-systemtap.5*
 %_mandir/??/man5/sssd.conf.5*
@@ -682,9 +684,6 @@ fi
 %_mandir/??/man8/sssd.8*
 %_mandir/man1/sss_ssh_*
 %_mandir/man5/sss-certmap.5*
-%if 0%{?suse_version} < 1600
-%_mandir/man5/sssd-files.5*
-%endif
 %_mandir/man5/sssd-ldap-attributes.5*
 %_mandir/man5/sssd-session-recording.5*
 %_mandir/man5/sssd-simple.5*
@@ -698,9 +697,6 @@ fi
 %_libdir/%name/libsss_cert*
 %_libdir/%name/libsss_crypt*
 %_libdir/%name/libsss_debug*
-%if 0%{?suse_version} < 1600
-%_libdir/%name/libsss_files*
-%endif
 %_libdir/%name/libsss_iface*
 %_libdir/%name/libsss_sbus*
 %_libdir/%name/libsss_simple*
@@ -727,7 +723,6 @@ fi
 %attr(755,%sssd_user,%sssd_user) %dir %pipepath/
 %attr(700,%sssd_user,%sssd_user) %dir %pipepath/private/
 %attr(755,%sssd_user,%sssd_user) %dir %pubconfpath/
-%attr(755,%sssd_user,%sssd_user) %dir %pubconfpath/krb5.include.d
 %attr(755,%sssd_user,%sssd_user) %dir %gpocachepath/
 %attr(755,%sssd_user,%sssd_user) %dir %mcpath/
 %attr(700,%sssd_user,%sssd_user) %dir %keytabdir/
@@ -754,22 +749,16 @@ fi
 %_datadir/%name/sssd.api.conf
 %dir %_datadir/%name/sssd.api.d/
 %_datadir/%name/sssd.api.d/sssd-simple.conf
-%if 0%{?suse_version} < 1600
-%_datadir/%name/sssd.api.d/sssd-files.conf
-%else
-%exclude %_mandir/*/*/sssd-files.5.gz
-%endif
 %attr(775,%sssd_user,%sssd_user) %ghost %dir %_rundir/sssd
 %doc src/examples/sssd.conf
 #
-# sssd-client
+# %%files sssd-client
 #
 %_libdir/libnss_sss.so.2
 %_pam_moduledir/pam_sss.so
 %_pam_moduledir/pam_sss_gss.so
 %_libdir/krb5/
 %_libdir/%name/modules/sssd_krb5_localauth_plugin.so
-%exclude %_libdir/%name/modules/sssd_krb5_idp_plugin.so
 %if 0%{?suse_version} >= 1600
 %_libdir/libsubid_sss.so
 %endif
@@ -781,7 +770,12 @@ fi
 %_mandir/man8/sssd_krb5_localauth_plugin.8*
 %_mandir/??/man8/sssd_krb5_localauth_plugin.8*
 %_mandir/man8/sssd_krb5_locator_plugin.8*
-
+#
+# %%files sssd-idp
+#
+%exclude %_libdir/sssd/libsss_idp.so
+%exclude %_libdir/%name/modules/sssd_krb5_idp_plugin.so
+%exclude %_mandir/man5/sssd-idp*
 
 %files ad
 %dir %_libdir/%name/
@@ -832,7 +826,6 @@ fi
 %dir %_libdir/%name/
 %_libdir/%name/libsss_krb5.so
 %dir %_datadir/%name/
-%exclude %_datadir/%name/krb5-snippets/
 %dir %_datadir/%name/sssd.api.d/
 %_datadir/%name/sssd.api.d/sssd-krb5.conf
 %dir %_mandir/??/
@@ -841,11 +834,16 @@ fi
 %_mandir/??/man5/sssd-krb5.5*
 
 %files krb5-common
+%attr(755,root,root) %dir %pubconfpath/krb5.include.d
+%config(noreplace,missingok) %{_sysconfdir}/krb5.conf.d/enable_sssd_conf_dir
 %dir %_libdir/%name/
 %_libdir/%name/libsss_krb5_common.so
 %dir %_libexecdir/%name/
 %attr(750,root,%sssd_user) %caps(cap_dac_read_search,cap_setgid,cap_setuid=p) %_libexecdir/%name/krb5_child
 %attr(750,root,%sssd_user) %caps(cap_dac_read_search=p) %_libexecdir/%name/ldap_child
+%dir %{_datadir}/sssd/krb5-snippets
+%_datadir/%name/krb5-snippets/enable_sssd_conf_dir
+%_datadir/%name/krb5-snippets/sssd_enable_idp
 
 %files ldap
 %dir %_libdir/%name/
@@ -930,16 +928,6 @@ fi
 %_includedir/sss_nss_idmap.h
 %_libdir/libsss_nss_idmap.so
 %_libdir/pkgconfig/sss_nss_idmap.pc
-
-%if 0%{?suse_version} < 1600
-%files -n libsss_simpleifp0
-%_libdir/libsss_simpleifp.so.0*
-
-%files -n libsss_simpleifp-devel
-%_includedir/sss_sifp*.h
-%_libdir/libsss_simpleifp.so
-%_libdir/pkgconfig/sss_simpleifp.pc
-%endif
 
 %files -n python3-ipa_hbac
 %dir %python3_sitearch
