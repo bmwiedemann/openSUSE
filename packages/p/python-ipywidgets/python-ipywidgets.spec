@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipywidgets
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-ipywidgets
-Version:        8.1.5
+Version:        8.1.7
 Release:        0
 Summary:        IPython HTML widgets for Jupyter
 License:        BSD-3-Clause
@@ -34,8 +34,8 @@ BuildRequires:  unzip
 Requires:       python-comm >= 0.1.3
 Requires:       python-ipython >= 6.1.0
 Requires:       python-traitlets >= 4.3.1
-Requires:       (python-jupyterlab_widgets >= 3.0.12 with python-jupyterlab_widgets < 4)
-Requires:       (python-widgetsnbextension >= 4.0.12 with python-widgetsnbextension < 5)
+Requires:       (python-jupyterlab_widgets >= 3.0.15 with python-jupyterlab_widgets < 4)
+Requires:       (python-widgetsnbextension >= 4.0.14 with python-widgetsnbextension < 5)
 Provides:       python-jupyter_ipywidgets = %{version}
 Obsoletes:      python-jupyter_ipywidgets < %{version}
 BuildArch:      noarch
@@ -44,11 +44,11 @@ BuildRequires:  %{python_module comm >= 0.1.3}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipython >= 6.1.0}
 BuildRequires:  %{python_module jsonschema}
-BuildRequires:  %{python_module jupyterlab_widgets >= 3.0.12 with %python-jupyterlab_widgets < 4}
+BuildRequires:  %{python_module jupyterlab_widgets >= 3.0.15 with %python-jupyterlab_widgets < 4}
 BuildRequires:  %{python_module pytest >= 3.6.0}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module traitlets >= 4.3.1}
-BuildRequires:  %{python_module widgetsnbextension >= 4.0.12 with %python-widgetsnbextension < 5}
+BuildRequires:  %{python_module widgetsnbextension >= 4.0.14 with %python-widgetsnbextension < 5}
 # /SECTION
 %if "%{python_flavor}" == "python3" || "%{?python_provides}"  == "python3"
 Provides:       jupyter-ipywidgets = %{version}

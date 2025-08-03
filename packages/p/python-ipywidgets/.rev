@@ -248,4 +248,27 @@ The failing packages have been resolved</comment>
 - Drop ipywidgets-pr3903-pytest.patch</comment>
     <requestid>1201256</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e9062ff1bdb0e81ec3e3bb5ddc99dbfc</srcmd5>
+    <version>8.1.7</version>
+    <time>1754221077</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.1.7
+  * Dynamic widgets registry by @martinRenou in #3988
+- Release 8.1.6
+  * Fix lumino and lab packages pinning by @martinRenou in #3958
+  * Typo fix by @david4096 in #3960
+  * Update lables even without MatJax/TypeSetter by @DonJayamanne
+    in #3962
+  * Fix the new line when pressing enter in textarea widget by
+    @brichet in #3982
+  * Backward compatibility on processPhosphorMessage by
+    @martinRenou in #3945
+  * Include sourcemaps in npm tarballs by @manzt in #3978
+  * Fix deprecation warning when importing the backend_inline by
+    @emolinlu in #3984
+
+- Update to 8.1.5</comment>
+    <requestid>1297165</requestid>
+  </revision>
 </revisionlist>

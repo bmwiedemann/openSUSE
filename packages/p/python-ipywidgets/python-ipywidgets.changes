@@ -1,7 +1,25 @@
 -------------------------------------------------------------------
+Sat Aug  2 16:14:15 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.1.7
+  * Dynamic widgets registry by @martinRenou in #3988
+- Release 8.1.6
+  * Fix lumino and lab packages pinning by @martinRenou in #3958
+  * Typo fix by @david4096 in #3960
+  * Update lables even without MatJax/TypeSetter by @DonJayamanne
+    in #3962
+  * Fix the new line when pressing enter in textarea widget by
+    @brichet in #3982
+  * Backward compatibility on processPhosphorMessage by
+    @martinRenou in #3945
+  * Include sourcemaps in npm tarballs by @manzt in #3978
+  * Fix deprecation warning when importing the backend_inline by
+    @emolinlu in #3984
+
+-------------------------------------------------------------------
 Sun Sep 15 15:49:33 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
-- Update to 4.0.13
+- Update to 8.1.5
   * More Phosphor backward compatibility by @martinRenou in #3942
   ## New features
   * Allow interact to use basic type hint annotations by
