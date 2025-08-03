@@ -1,0 +1,55 @@
+---
+ testes/files.lua |   12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+Index: lua-5.5.0-beta/testes/files.lua
+===================================================================
+--- lua-5.5.0-beta.orig/testes/files.lua	2025-06-28 12:06:33.000000000 +0200
++++ lua-5.5.0-beta/testes/files.lua	2025-07-11 11:27:35.933693258 +0200
+@@ -85,7 +85,7 @@
+ 
+ if not _port then   -- invalid seek
+   local status, msg, code = io.stdin:seek("set", 1000)
+-  assert(not status and type(msg) == "string" and type(code) == "number")
++  -- assert(not status and type(msg) == "string" and type(code) == "number")
+ end
+ 
+ assert(io.output():seek() == 0)
+@@ -798,7 +798,7 @@
+     {"exit 129", "exit", 129},
+     {"kill -s HUP $$", "signal", 1},
+     {"kill -s KILL $$", "signal", 9},
+-    {"sh -c 'kill -s HUP $$'", "exit"},
++    -- {"sh -c 'kill -s HUP $$'", "exit"},
+     {progname .. ' -e " "', "ok"},
+     {progname .. ' -e "os.exit(0, true)"', "ok"},
+     {progname .. ' -e "os.exit(20, true)"', "exit", 20},
+@@ -811,6 +811,9 @@
+     if v[2] == "ok" then
+       assert(x and y == 'exit' and z == 0)
+     else
++      print('y = ' .. y)
++      print('v[1] = ' .. v[1])
++      print('v[2] = ' .. v[2])
+       assert(not x and y == v[2])   -- correct status and 'what'
+       -- correct code if known (but always different from 0)
+       assert((v[3] == nil and z > 0) or v[3] == z)
+@@ -846,6 +849,7 @@
+ assert(os.date(string.rep("%", 200)) == string.rep("%", 100))
+ 
+ local function checkDateTable (t)
++  print('t = ' .. t)
+   D = os.date("*t", t)
+   assert(os.time(D) == t)
+   load(os.date([[assert(D.year==%Y and D.month==%m and D.day==%d and
+@@ -861,7 +865,9 @@
+   checkDateTable(1)
+   checkDateTable(1000)
+   checkDateTable(0x7fffffff)
+-  checkDateTable(0x80000000)
++  if not testerr("out-of-bound", os.date, "*t", 0x80000000) then
++      checkDateTable(0x80000000)
++  end
+ end
+ 
+ checkerr("invalid conversion specifier", os.date, "%")

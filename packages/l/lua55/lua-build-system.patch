@@ -1,0 +1,190 @@
+From: Enrico Tassi <gareuselesinge@debian.org>, Sergei Golovan <sgolovan@debian.org>
+Date: Wed, 06 May 2020 10:31:53 +0300
+Subject: build system
+
+---
+ Makefile      |   22 +++++++++++-----------
+ src/Makefile  |   45 ++++++++++++++++++++++++++-------------------
+ src/luaconf.h |    2 +-
+ 3 files changed, 38 insertions(+), 31 deletions(-)
+
+Index: lua-5.5.0-beta/Makefile
+===================================================================
+--- lua-5.5.0-beta.orig/Makefile	2025-06-26 15:04:37.000000000 +0200
++++ lua-5.5.0-beta/Makefile	2025-07-16 11:43:49.998066837 +0200
+@@ -10,18 +10,18 @@
+ # so take care if INSTALL_TOP is not an absolute path. See the local target.
+ # You may want to make INSTALL_LMOD and INSTALL_CMOD consistent with
+ # LUA_ROOT, LUA_LDIR, and LUA_CDIR in luaconf.h.
+-INSTALL_TOP= /usr/local
++INSTALL_TOP= /usr
+ INSTALL_BIN= $(INSTALL_TOP)/bin
+-INSTALL_INC= $(INSTALL_TOP)/include
+-INSTALL_LIB= $(INSTALL_TOP)/lib
+-INSTALL_MAN= $(INSTALL_TOP)/man/man1
++INSTALL_INC= $(INSTALL_TOP)/include/lua$(V)/
++INSTALL_LIB= $(INSTALL_TOP)/lib/
++INSTALL_MAN= $(INSTALL_TOP)/share/man/man1
+ INSTALL_LMOD= $(INSTALL_TOP)/share/lua/$V
+-INSTALL_CMOD= $(INSTALL_TOP)/lib/lua/$V
++INSTALL_CMOD= $(INSTALL_LIB)/lua/$V
+ 
+ # How to install. If your install program does not support "-p", then
+ # you may have to run ranlib on the installed liblua.a.
+ INSTALL= install -p
+-INSTALL_EXEC= $(INSTALL) -m 0755
++INSTALL_EXEC= $(LIBTOOL) --mode=install install -m 0755
+ INSTALL_DATA= $(INSTALL) -m 0644
+ #
+ # If you don't have "install" you can use "cp" instead.
+@@ -39,10 +39,10 @@
+ PLATS= guess aix bsd c89 freebsd generic ios linux macosx mingw posix solaris
+ 
+ # What to install.
+-TO_BIN= lua luac
++TO_BIN= lua$(V) luac$(V)
+ TO_INC= lua.h luaconf.h lualib.h lauxlib.h lua.hpp
+-TO_LIB= liblua.a
+-TO_MAN= lua.1 luac.1
++TO_LIB= liblua$(V).la
++TO_MAN= lua$(V).1 luac$(V).1
+ 
+ # Lua version and release.
+ V= 5.5
+@@ -52,13 +52,13 @@
+ all:	$(PLAT)
+ 
+ $(PLATS) help test clean:
+-	@cd src && $(MAKE) $@
++	@cd src && $(MAKE) $@ V=$(V)
+ 
+ install: dummy
+ 	cd src && $(MKDIR) $(INSTALL_BIN) $(INSTALL_INC) $(INSTALL_LIB) $(INSTALL_MAN) $(INSTALL_LMOD) $(INSTALL_CMOD)
++	cd src && $(INSTALL_EXEC) $(TO_LIB) $(INSTALL_LIB)
+ 	cd src && $(INSTALL_EXEC) $(TO_BIN) $(INSTALL_BIN)
+ 	cd src && $(INSTALL_DATA) $(TO_INC) $(INSTALL_INC)
+-	cd src && $(INSTALL_DATA) $(TO_LIB) $(INSTALL_LIB)
+ 	cd doc && $(INSTALL_DATA) $(TO_MAN) $(INSTALL_MAN)
+ 
+ uninstall:
+Index: lua-5.5.0-beta/src/Makefile
+===================================================================
+--- lua-5.5.0-beta.orig/src/Makefile	2025-06-26 14:57:29.000000000 +0200
++++ lua-5.5.0-beta/src/Makefile	2025-07-16 11:43:49.998317291 +0200
+@@ -7,7 +7,7 @@
+ PLAT= guess
+ 
+ CC= gcc -std=gnu99
+-CFLAGS= -O2 -Wall -Wextra $(SYSCFLAGS) $(MYCFLAGS)
++CFLAGS= -Wall -Wextra -DLUA_COMPAT_5_3 $(SYSCFLAGS) $(MYCFLAGS)
+ LDFLAGS= $(SYSLDFLAGS) $(MYLDFLAGS)
+ LIBS= -lm $(SYSLIBS) $(MYLIBS)
+ 
+@@ -19,6 +19,7 @@
+ SYSCFLAGS=
+ SYSLDFLAGS=
+ SYSLIBS=
++LIBDIR=/usr/lib
+ 
+ MYCFLAGS=
+ MYLDFLAGS=
+@@ -26,21 +27,36 @@
+ MYOBJS=
+ 
+ # Special flags for compiler modules; -Os reduces code size.
+-CMCFLAGS= 
++CMCFLAGS=
++
++%.o : %.c
++	$(LIBTOOL) --mode=compile --tag=CC $(CC) $(CFLAGS) -c $< -o $@
++
++# Build the compiler code with -Os to make the binaries as small as possible
++# (see https://github.com/lua/lua/commit/6a10f03ff81606e567c6891a90d70066a03c686e)
++
++llex.o: llex.c
++	$(LIBTOOL) --mode=compile --tag=CC $(CC) $(CFLAGS) -Os -c $< -o $@
++
++lparser.o: lparser.c
++	$(LIBTOOL) --mode=compile --tag=CC $(CC) $(CFLAGS) -Os -c $< -o $@
++
++lcode.o: lcode.c
++	$(LIBTOOL) --mode=compile --tag=CC $(CC) $(CFLAGS) -Os -c $< -o $@
+ 
+ # == END OF USER SETTINGS -- NO NEED TO CHANGE ANYTHING BELOW THIS LINE =======
+ 
+ PLATS= guess aix bsd c89 freebsd generic ios linux macosx mingw posix solaris
+ 
+-LUA_A=	liblua.a
++LUA_A=	liblua${V}.la
+ CORE_O=	lapi.o lcode.o lctype.o ldebug.o ldo.o ldump.o lfunc.o lgc.o llex.o lmem.o lobject.o lopcodes.o lparser.o lstate.o lstring.o ltable.o ltm.o lundump.o lvm.o lzio.o
+ LIB_O=	lauxlib.o lbaselib.o lcorolib.o ldblib.o liolib.o lmathlib.o loadlib.o loslib.o lstrlib.o ltablib.o lutf8lib.o linit.o
+ BASE_O= $(CORE_O) $(LIB_O) $(MYOBJS)
+ 
+-LUA_T=	lua
++LUA_T=	lua$(V)
+ LUA_O=	lua.o
+ 
+-LUAC_T=	luac
++LUAC_T=	luac$(V)
+ LUAC_O=	luac.o
+ 
+ ALL_O= $(BASE_O) $(LUA_O) $(LUAC_O)
+@@ -57,17 +73,16 @@
+ a:	$(ALL_A)
+ 
+ $(LUA_A): $(BASE_O)
+-	$(AR) $@ $(BASE_O)
+-	$(RANLIB) $@
++	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) -lm -ldl $(BASE_O:.o=.lo) -shared -rpath $(LIBDIR) -version-info 10:0:5 -o $(LUA_A)
+ 
+ $(LUA_T): $(LUA_O) $(LUA_A)
+-	$(CC) -o $@ $(LDFLAGS) $(LUA_O) $(LUA_A) $(LIBS)
++	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) $(LIBS) $(LUA_A) -Wl,-E lua.lo -o $@
+ 
+ $(LUAC_T): $(LUAC_O) $(LUA_A)
+-	$(CC) -o $@ $(LDFLAGS) $(LUAC_O) $(LUA_A) $(LIBS)
++	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) $(LIBS) $(LUA_A) luac.lo -o $@
+ 
+ test:
+-	./$(LUA_T) -v
++	$(LIBTOOL) --mode=execute -dlopen ./$(LUA_A) ./$(LUA_T) -v
+ 
+ clean:
+ 	$(RM) $(ALL_T) $(ALL_O)
+@@ -127,7 +142,7 @@
+ 	$(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_MACOSX -DLUA_USE_READLINE" SYSLIBS="-lreadline"
+ 
+ mingw:
+-	$(MAKE) "LUA_A=lua54.dll" "LUA_T=lua.exe" \
++	$(MAKE) "LUA_A=lua55.dll" "LUA_T=lua.exe" \
+ 	"AR=$(CC) -shared -o" "RANLIB=strip --strip-unneeded" \
+ 	"SYSCFLAGS=-DLUA_BUILD_AS_DLL" "SYSLIBS=" "SYSLDFLAGS=-s" lua.exe
+ 	$(MAKE) "LUAC_T=luac.exe" luac.exe
+@@ -142,14 +157,6 @@
+ .PHONY: all $(PLATS) help test clean default o a depend echo
+ 
+ # Compiler modules may use special flags.
+-llex.o:
+-	$(CC) $(CFLAGS) $(CMCFLAGS) -c llex.c
+-
+-lparser.o:
+-	$(CC) $(CFLAGS) $(CMCFLAGS) -c lparser.c
+-
+-lcode.o:
+-	$(CC) $(CFLAGS) $(CMCFLAGS) -c lcode.c
+ 
+ # DO NOT DELETE
+ 
+Index: lua-5.5.0-beta/src/luaconf.h
+===================================================================
+--- lua-5.5.0-beta.orig/src/luaconf.h	2025-06-28 12:06:32.000000000 +0200
++++ lua-5.5.0-beta/src/luaconf.h	2025-07-16 11:43:49.998518156 +0200
+@@ -239,7 +239,7 @@
+ 
+ #else			/* }{ */
+ 
+-#define LUA_ROOT	"/usr/local/"
++#define LUA_ROOT	"/usr/"
+ #define LUA_LDIR	LUA_ROOT "share/lua/" LUA_VDIR "/"
+ #define LUA_CDIR	LUA_ROOT "lib/lua/" LUA_VDIR "/"
+ 

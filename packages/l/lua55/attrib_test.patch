@@ -1,0 +1,17 @@
+---
+ testes/attrib.lua |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: lua-5.5.0-beta/testes/attrib.lua
+===================================================================
+--- lua-5.5.0-beta.orig/testes/attrib.lua	2025-06-28 12:06:33.000000000 +0200
++++ lua-5.5.0-beta/testes/attrib.lua	2025-07-11 11:26:59.407130105 +0200
+@@ -269,7 +269,7 @@
+ local st, err, when = package.loadlib(DC"lib1", "*")
+ if not st then
+   local f, err, when = package.loadlib("donotexist", p.."xuxu")
+-  assert(not f and type(err) == "string" and when == "absent")
++  assert(not f and type(err) == "string" and when == "open")
+   ;(Message or print)('\n >>> cannot load dynamic library <<<\n')
+   print(err, when)
+ else

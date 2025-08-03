@@ -1,0 +1,19 @@
+Inspect errno only after failure
+
+---
+ src/lauxlib.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: lua-5.5.0-beta/src/lauxlib.c
+===================================================================
+--- lua-5.5.0-beta.orig/src/lauxlib.c	2025-06-28 12:06:31.000000000 +0200
++++ lua-5.5.0-beta/src/lauxlib.c	2025-07-11 11:30:17.986882893 +0200
+@@ -289,7 +289,7 @@
+ 
+ 
+ LUALIB_API int luaL_execresult (lua_State *L, int stat) {
+-  if (stat != 0 && errno != 0)  /* error with an 'errno'? */
++  if (stat == -1)  /* error with an 'errno'? */
+     return luaL_fileresult(L, 0, NULL);
+   else {
+     const char *what = "exit";  /* type of termination */

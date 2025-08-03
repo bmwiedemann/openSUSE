@@ -1,0 +1,45 @@
+---
+ src/ldebug.h  |    2 +-
+ src/lmem.h    |    2 +-
+ src/lundump.h |    2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+Index: lua-5.5.0-beta/src/ldebug.h
+===================================================================
+--- lua-5.5.0-beta.orig/src/ldebug.h	2025-06-28 12:06:31.000000000 +0200
++++ lua-5.5.0-beta/src/ldebug.h	2025-07-11 11:30:10.749664624 +0200
+@@ -36,7 +36,7 @@
+ #endif
+ 
+ 
+-LUAI_FUNC int luaG_getfuncline (const Proto *f, int pc);
++LUA_API int luaG_getfuncline (const Proto *f, int pc);
+ LUAI_FUNC const char *luaG_findlocal (lua_State *L, CallInfo *ci, int n,
+                                                     StkId *pos);
+ LUAI_FUNC l_noret luaG_typeerror (lua_State *L, const TValue *o,
+Index: lua-5.5.0-beta/src/lmem.h
+===================================================================
+--- lua-5.5.0-beta.orig/src/lmem.h	2025-06-28 12:06:32.000000000 +0200
++++ lua-5.5.0-beta/src/lmem.h	2025-07-11 11:30:10.749922881 +0200
+@@ -84,7 +84,7 @@
+                                                           size_t size);
+ LUAI_FUNC void *luaM_saferealloc_ (lua_State *L, void *block, size_t oldsize,
+                                                               size_t size);
+-LUAI_FUNC void luaM_free_ (lua_State *L, void *block, size_t osize);
++LUA_API void luaM_free_ (lua_State *L, void *block, size_t osize);
+ LUAI_FUNC void *luaM_growaux_ (lua_State *L, void *block, int nelems,
+                                int *size, unsigned size_elem, int limit,
+                                const char *what);
+Index: lua-5.5.0-beta/src/lundump.h
+===================================================================
+--- lua-5.5.0-beta.orig/src/lundump.h	2025-06-28 12:06:32.000000000 +0200
++++ lua-5.5.0-beta/src/lundump.h	2025-07-11 11:30:10.750022048 +0200
+@@ -34,7 +34,7 @@
+                                                int fixed);
+ 
+ /* dump one chunk; from ldump.c */
+-LUAI_FUNC int luaU_dump (lua_State* L, const Proto* f, lua_Writer w,
++LUA_API int luaU_dump (lua_State* L, const Proto* f, lua_Writer w,
+                          void* data, int strip);
+ 
+ #endif
