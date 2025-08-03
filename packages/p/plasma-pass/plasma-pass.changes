@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug  1 18:26:48 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.3.0:
+  * cmake: Use ecm_set_disabled_deprecation_versions
+  * cmake: Simplify a bit after the switch to Qt6/KF6
+  * Fix KPackageStructure definition in metadata
+  * fix down key on search field focusing list view
+  * port to plasma 6
+  * Enforce passing tests on all platforms
+- Add maintainer key to plasma-pass.keyring
+- Drop patches, now upstream:
+  * 0001-port-to-plasma-6.patch
+
+-------------------------------------------------------------------
 Fri Aug 30 09:47:37 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream to port to Plasma 6, which fixes an issue

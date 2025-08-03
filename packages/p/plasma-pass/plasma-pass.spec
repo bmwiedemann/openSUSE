@@ -1,7 +1,7 @@
 #
 # spec file for package plasma-pass
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           plasma-pass
-Version:        1.2.2
+Version:        1.3.0
 Release:        0
 Summary:        Plasma widget for the pass password manager
 License:        LGPL-2.1-or-later
@@ -32,8 +32,6 @@ Source:         https://download.kde.org/stable/plasma-pass/%{name}-%{version}.t
 Source1:        https://download.kde.org/stable/plasma-pass/%{name}-%{version}.tar.xz.sig
 Source2:        plasma-pass.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-port-to-plasma-6.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
