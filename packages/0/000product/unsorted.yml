@@ -14339,6 +14339,7 @@ unsorted:
   - liblua5_1-5 
   - liblua5_1-5-32bit 
   - liblua5_4-5-32bit 
+  - liblua5_5-5 
   - libluabind0_9_1 
   - libluajit-5_1-2-32bit 
   - libluajit2-5_1-2 
@@ -15021,7 +15022,7 @@ unsorted:
   - liborigin-tools 
   - liborigin3 
   - libortp15 
-  - libosdCPU3_6_0 
+  - libosdCPU3_6_1 
   - libosg2vsg-devel 
   - libosg2vsg0 
   - libosinfo-devel 
@@ -17552,6 +17553,7 @@ unsorted:
   - lua-Hamliblua 
   - lua-clingo 
   - lua-fennel 
+  - lua-interpreter 
   - lua-language-server 
   - lua-libguestfs 
   - lua-lmod 
@@ -17768,6 +17770,9 @@ unsorted:
   - lua54-testmore 
   - lua54-vstruct 
   - lua54-zlib 
+  - lua55 
+  - lua55-devel 
+  - lua55-doc 
   - luabind-devel 
   - luajit 
   - luajit-devel 
