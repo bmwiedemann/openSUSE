@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyterlab-widgets
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define pyver 3.0.13
-%define jupver 5.0.13
+%define pyver 3.0.15
+%define jupver 5.0.15
 %{?sle15_python_module_pythons}
 Name:           python-jupyterlab-widgets
 Version:        %{pyver}
@@ -27,7 +27,9 @@ License:        BSD-3-Clause
 URL:            https://github.com/jupyter-widgets/ipywidgets
 Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_widgets/jupyterlab_widgets-%{pyver}.tar.gz
 Source99:       python-jupyterlab-widgets-rpmlintrc
-BuildRequires:  %{python_module jupyter_packaging}
+BuildRequires:  %{python_module hatch-jupyter-builder >= 0.8.1}
+BuildRequires:  %{python_module hatchling >= 1.5.0}
+BuildRequires:  %{python_module jupyterlab >= 4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
