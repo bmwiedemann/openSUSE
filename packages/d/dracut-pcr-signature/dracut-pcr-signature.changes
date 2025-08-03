@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 01 07:39:40 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.6+3:
+  * Use installkernel() only to install kernel modules
+
+-------------------------------------------------------------------
 Tue Jul 22 09:27:06 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 0.6+2 (bsc#1246322):

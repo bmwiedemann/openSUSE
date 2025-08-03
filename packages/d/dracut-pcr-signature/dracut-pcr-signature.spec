@@ -17,7 +17,7 @@
 
 
 Name:           dracut-pcr-signature
-Version:        0.6+2
+Version:        0.6+3
 Release:        0
 Summary:        Dracut module to import PCR signatures
 License:        GPL-2.0-or-later
