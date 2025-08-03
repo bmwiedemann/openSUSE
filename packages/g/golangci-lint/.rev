@@ -854,4 +854,23 @@
   * docs: update GitHub Action assets (forwarded request 1294887 from jfkw)</comment>
     <requestid>1294891</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>f86e4c181cf36f1448625ca02a7d814b</srcmd5>
+    <version>2.3.1</version>
+    <time>1754221095</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.1:
+  * chore: prepare release
+  * build(deps): bump the linter-testdata group across 3 directories with 3 updates (#5964)
+  * build(deps): bump github.com/sonatard/noctx from 0.3.5 to 0.4.0 (#5960)
+  * build(deps): bump github.com/bombsimon/wsl/v5 from 5.1.0 to 5.1.1 (#5959)
+  * build(deps): bump github.com/ldez/grignotin from 0.9.0 to 0.10.0 (#5958)
+  * build(deps): bump github.com/daixiang0/gci from 0.13.6 to 0.13.7 (#5957)
+  * tagliatelle: force upper case for custom initialisms (#5956)
+  * build(deps): bump form-data from 3.0.1 to 3.0.4 in /docs (#5954)
+  * build(deps): bump github.com/securego/gosec/v2 from 2.22.6 to 2.22.7 (#5953)
+  * docs: update GitHub Action assets (#5952)
+  * docs: update documentation assets (#5951) (forwarded request 1297183 from jfkw)</comment>
+    <requestid>1297184</requestid>
+  </revision>
 </revisionlist>
