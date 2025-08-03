@@ -167,7 +167,7 @@ Obsoletes:      %{name}-ghc-internal < 9.1202.0-%{release}
 Obsoletes:      %{name}-ghc-internal-devel < 9.1202.0-%{release}
 Obsoletes:      %{name}-ghc-internal-doc < 9.1202.0-%{release}
 Obsoletes:      %{name}-ghc-internal-prof < 9.1202.0-%{release}
-%ifarch s390x
+%ifarch %{ghc_llvm_archs}
 Requires:       clang%{llvm_major}
 Requires:       llvm%{llvm_major}
 %endif
@@ -269,8 +269,6 @@ This package provides the User Guide and Haddock manual.
 %ghc_lib_subpackage -d haddock-api-%{haddock_api_ver}
 %ghc_lib_subpackage -d file-io-0.1.5 
 
-
-
 %global version %{ghc_version_override}
 
 %package devel
@@ -300,7 +298,7 @@ Installing this package causes %{name}-*-prof packages corresponding to
 %patch -P 1 -p1
 %patch -P 2 -p1
 
-%ifarch ppc64le s390x riscv64
+%ifarch ppc64le s390x
 %patch -P 200 -p1
 %endif
 
@@ -344,12 +342,8 @@ python3 boot.source --hadrian
 %define hadrian_docs %{!?with_haddock:--docs=no-haddocks} %{!?with_manual:--docs=no-sphinx}%{?with_manual:--docs=no-sphinx-pdfs --docs=no-sphinx-man}
 
 %if 0%{?suse_version} >= 1500
-%ifarch %{unregisterised_archs} riscv64
-%if 0%{?qemu_user_space_build}
-%limit_build -m 15000
-%else
+%ifarch %{unregisterised_archs}
 %limit_build -m 8000
-%endif
 %else
 %limit_build -m 2000
 %endif

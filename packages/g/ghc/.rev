@@ -1159,4 +1159,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     <comment>version update</comment>
     <requestid>1296434</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>1f23c8fc00a51f351a589bc9fc800cf4</srcmd5>
+    <version>9.12.2</version>
+    <time>1754221060</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1297147</requestid>
+  </revision>
 </revisionlist>
