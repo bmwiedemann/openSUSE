@@ -19,7 +19,7 @@
 %global pkg_name cabal-plan
 %global pkgver %{pkg_name}-%{version}
 Name:           %{pkg_name}
-Version:        0.7.6.0
+Version:        0.7.6.1
 Release:        0
 Summary:        Library and utility for processing cabal's plan.json file
 License:        GPL-2.0-or-later
