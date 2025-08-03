@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 26 08:15:05 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Enable lldb on riscv64
+
+-------------------------------------------------------------------
 Tue Jul 15 08:26:37 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
--  Enable libcxx, openmp, lldb and thin_lto on loongarch64
+- Enable libcxx, openmp, lldb and thin_lto on loongarch64
 
 -------------------------------------------------------------------
 Mon Jul 14 07:47:53 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>

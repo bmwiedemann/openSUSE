@@ -47,7 +47,7 @@
 %bcond_without use_lld
 %endif
 
-%ifarch aarch64 loongarch64 ppc64le s390x x86_64
+%ifarch aarch64 loongarch64 ppc64le riscv64 s390x x86_64
 %bcond_without lldb
 %if %{suse_version} >= 1600 || 0%{?sle_version} >= 150600
 %bcond_without lldb_python

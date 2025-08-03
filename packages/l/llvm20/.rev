@@ -128,4 +128,12 @@
 - Enable libcxx, openmp, lldb and thin_lto on loongarch64</comment>
     <requestid>1293548</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>7e1cd1929c7cbad674939083cd4ee571</srcmd5>
+    <version>20.1.8</version>
+    <time>1754220963</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1297155</requestid>
+  </revision>
 </revisionlist>
