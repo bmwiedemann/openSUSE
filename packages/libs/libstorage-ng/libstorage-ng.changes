@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Fri Aug 1 09:59:20 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1035
+- handle exception of BlkDevice::set_name() in bindings
+- split internal file and consistent coding style
+- 4.5.271
+
+--------------------------------------------------------------------
 Thu Jul 31 10:30:36 UTC 2025 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1034
