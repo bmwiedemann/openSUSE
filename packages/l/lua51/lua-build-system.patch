@@ -3,14 +3,16 @@ Date: Sun, 1 Mar 2015 16:13:52 +0100
 Subject: build system
 
 ---
- Makefile     | 25 ++++++++++++++-----------
- src/Makefile | 31 +++++++++++++++++++------------
- 2 files changed, 33 insertions(+), 23 deletions(-)
+ Makefile             |   26 +++++++++++++++-----------
+ src/Makefile         |   28 ++++++++++++++++------------
+ src/luaconf.h        |    8 ++++++--
+ testes/libs/makefile |   11 +++++++----
+ 4 files changed, 44 insertions(+), 29 deletions(-)
 
 Index: lua-5.1.5/Makefile
 ===================================================================
---- lua-5.1.5.orig/Makefile
-+++ lua-5.1.5/Makefile
+--- lua-5.1.5.orig/Makefile	2012-02-10 10:50:23.000000000 +0100
++++ lua-5.1.5/Makefile	2025-07-19 17:02:14.322726003 +0200
 @@ -2,6 +2,8 @@
  # see INSTALL for installation instructions
  # see src/Makefile and src/luaconf.h for further customization
@@ -20,7 +22,7 @@ Index: lua-5.1.5/Makefile
  # == CHANGE THE SETTINGS BELOW TO SUIT YOUR ENVIRONMENT =======================
  
  # Your platform. See PLATS for possible values.
-@@ -9,22 +11,23 @@ PLAT= none
+@@ -9,22 +11,23 @@
  
  # Where to install. The installation starts in the src and doc directories,
  # so take care if INSTALL_TOP is not an absolute path.
@@ -48,7 +50,7 @@ Index: lua-5.1.5/Makefile
  #
  # If you don't have install you can use cp instead.
  # INSTALL= cp -p
-@@ -41,10 +44,10 @@ RANLIB= ranlib
+@@ -41,10 +44,10 @@
  PLATS= aix ansi bsd freebsd generic linux macosx mingw posix solaris
  
  # What to install.
@@ -62,7 +64,7 @@ Index: lua-5.1.5/Makefile
  
  # Lua version and release.
  V= 5.1
-@@ -53,16 +56,16 @@ R= 5.1.5
+@@ -53,16 +56,17 @@
  all:	$(PLAT)
  
  $(PLATS) clean:
@@ -75,18 +77,20 @@ Index: lua-5.1.5/Makefile
  
  install: dummy
  	cd src && $(MKDIR) $(INSTALL_BIN) $(INSTALL_INC) $(INSTALL_LIB) $(INSTALL_MAN) $(INSTALL_LMOD) $(INSTALL_CMOD)
- 	cd src && $(INSTALL_EXEC) $(TO_BIN) $(INSTALL_BIN)
+-	cd src && $(INSTALL_EXEC) $(TO_BIN) $(INSTALL_BIN)
++	cd src && $(LIBTOOL) --mode=install $(INSTALL_EXEC) $(TO_BIN) $(INSTALL_BIN)
  	cd src && $(INSTALL_DATA) $(TO_INC) $(INSTALL_INC)
 -	cd src && $(INSTALL_DATA) $(TO_LIB) $(INSTALL_LIB)
 +	cd src && $(INSTALL_LIBTOOL) $(TO_LIB) $(INSTALL_LIB)
++	rm -f $(INSTALL_LIB)/liblua$(V).a
  	cd doc && $(INSTALL_DATA) $(TO_MAN) $(INSTALL_MAN)
  
  ranlib:
 Index: lua-5.1.5/src/Makefile
 ===================================================================
---- lua-5.1.5.orig/src/Makefile
-+++ lua-5.1.5/src/Makefile
-@@ -8,7 +8,7 @@
+--- lua-5.1.5.orig/src/Makefile	2012-02-13 21:41:22.000000000 +0100
++++ lua-5.1.5/src/Makefile	2025-07-19 17:02:14.323016861 +0200
+@@ -8,32 +8,37 @@
  PLAT= none
  
  CC= gcc
@@ -95,7 +99,8 @@ Index: lua-5.1.5/src/Makefile
  AR= ar rcu
  RANLIB= ranlib
  RM= rm -f
-@@ -16,24 +16,28 @@ LIBS= -lm $(MYLIBS)
+ LIBS= -lm $(MYLIBS)
++LIBDIR=/usr/lib
  
  MYCFLAGS=
  MYLDFLAGS=
@@ -110,7 +115,7 @@ Index: lua-5.1.5/src/Makefile
  PLATS= aix ansi bsd freebsd generic linux macosx mingw posix solaris
  
 -LUA_A=	liblua.a
-+LUA_A=	liblua$(V).a
++LUA_A=	liblua$(V).la
  CORE_O=	lapi.o lcode.o ldebug.o ldo.o ldump.o lfunc.o lgc.o llex.o lmem.o \
  	lobject.o lopcodes.o lparser.o lstate.o lstring.o ltable.o ltm.o  \
 -	lundump.o lvm.o lzio.o
@@ -130,28 +135,29 @@ Index: lua-5.1.5/src/Makefile
  
  ALL_O= $(CORE_O) $(LIB_O) $(LUA_O) $(LUAC_O)
  ALL_T= $(LUA_A) $(LUA_T) $(LUAC_T)
-@@ -48,14 +52,13 @@ o:	$(ALL_O)
+@@ -48,14 +53,13 @@
  a:	$(ALL_A)
  
  $(LUA_A): $(CORE_O) $(LIB_O)
 -	$(AR) $@ $(CORE_O) $(LIB_O)	# DLL needs all object files
 -	$(RANLIB) $@
-+	$(LIBTOOL) --mode=link --tag=CC  $(CC)  $(LDFLAGS) -lm -ldl $(BASE_O:.o=.lo) -rpath /usr/lib -version-info 6:0:1 -o liblua$(V).la
++	$(LIBTOOL) --mode=link --tag=CC  $(CC)  $(LDFLAGS) -lm -ldl $(BASE_O:.o=.lo) -rpath $(LIBDIR) -version-info 6:0:1 -o $(LUA_A)
  
  $(LUA_T): $(LUA_O) $(LUA_A)
 -	$(CC) -o $@ $(MYLDFLAGS) $(LUA_O) $(LUA_A) $(LIBS)
-+	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) $(LIBS) -static liblua$(V).la -Wl,-E lua.lo -o $@
++	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) $(LIBS) $(LUA_A) -Wl,-E lua.lo -o $@
  
- $(LUAC_T): $(LUAC_O) $(LUA_A)
+-$(LUAC_T): $(LUAC_O) $(LUA_A)
 -	$(CC) -o $@ $(MYLDFLAGS) $(LUAC_O) $(LUA_A) $(LIBS)
-+	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) -static liblua$(V).la luac.lo -o $@
++$(LUAC_T): $(LUAC_O) $(BASE_O)
++	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) -o $@ $(LUAC_O:.o=.lo) $(BASE_O:.o=.lo) $(LIBS)
  
  clean:
  	$(RM) $(ALL_T) $(ALL_O)
 Index: lua-5.1.5/src/luaconf.h
 ===================================================================
---- lua-5.1.5.orig/src/luaconf.h
-+++ lua-5.1.5/src/luaconf.h
+--- lua-5.1.5.orig/src/luaconf.h	2008-02-11 17:25:08.000000000 +0100
++++ lua-5.1.5/src/luaconf.h	2025-07-19 17:02:14.323256121 +0200
 @@ -95,13 +95,17 @@
  
  #else
@@ -172,3 +178,31 @@ Index: lua-5.1.5/src/luaconf.h
  #endif
  
  
+Index: lua-5.1.5/testes/libs/makefile
+===================================================================
+--- lua-5.1.5.orig/testes/libs/makefile	2016-01-18 16:32:17.000000000 +0100
++++ lua-5.1.5/testes/libs/makefile	2025-07-19 19:41:44.657503160 +0200
+@@ -1,16 +1,19 @@
++CFLAGS ?= -Wall -O2 -ansi -fPIC
++CC = gcc
++
+ all: lib1.so lib11.so lib2.so lib21.so -lib2.so
+ 
+ lib1.so: lib1.c
+-	gcc -Wall -O2 -I../../ -ansi -shared -o lib1.so lib1.c
++	$(CC) $(CFLAGS) -shared -o lib1.so lib1.c
+ 
+ lib11.so: lib11.c
+-	gcc -Wall -O2 -I../../ -ansi -shared -o lib11.so lib11.c
++	$(CC) $(CFLAGS) -shared -o lib11.so lib11.c
+ 
+ lib2.so: lib2.c
+-	gcc -Wall -O2 -I../../ -ansi -shared -o lib2.so lib2.c
++	$(CC) $(CFLAGS) -shared -o lib2.so lib2.c
+ 
+ lib21.so: lib21.c
+-	gcc -Wall -O2 -I../../ -ansi -shared -o lib21.so lib21.c
++	$(CC) $(CFLAGS) -shared -o lib21.so lib21.c
+ 
+ -lib2.so: lib2.so
+ 	cp lib2.so ./-lib2.so

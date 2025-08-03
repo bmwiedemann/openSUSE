@@ -168,4 +168,31 @@ Refresh lua51-5.1.5-module-path.diff patch (forwarded request 204313 from ptromm
     <comment></comment>
     <requestid>720490</requestid>
   </revision>
+  <revision rev="18" vrev="16">
+    <srcmd5>709ca25c9577d096f55893e0c3390667</srcmd5>
+    <version>5.1.5</version>
+    <time>1754220947</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from update-alternatives to libalternatives (and
+  dependency on lua-interpreter)
+- improve .gitignore and overall improve the packaging.
+- this package also provides devel symlink directly and conflicts other -devel packages
+
+  They include lua51-devel and expects rpm macros to be available.
+  on the interpreter binary
+* libdl is required not librt
+* fix libraries in pkgconfig file
+- move the lua rpm macros to the devel package to avoid conflict
+- Correction in Provides and Obsolete for lua-libs
+  * too many variables in an assignment may cause a C stack
+    overflow
+  * an error in a module loaded through the '-l' option shows no
+  * gsub may go wild when wrongly called without its third
+    argument and with a large subject
+  * table.remove removes last element of a table when given
+    an out-of-bound index
+  * stand-alone interpreter shows incorrect error message when
+  * debug.sethook/gethook may overflow the thread's stack</comment>
+    <requestid>1295837</requestid>
+  </revision>
 </revisionlist>
