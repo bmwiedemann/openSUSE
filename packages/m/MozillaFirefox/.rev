@@ -7627,4 +7627,12 @@
   * CVE-2025-8033 (bmo#1973990)</comment>
     <requestid>1295686</requestid>
   </revision>
+  <revision rev="462" vrev="2">
+    <srcmd5>863c8415fed72d33e63813bc2fa0fe23</srcmd5>
+    <version>141.0</version>
+    <time>1754220985</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297007</requestid>
+  </revision>
 </revisionlist>
