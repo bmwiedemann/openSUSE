@@ -16,18 +16,27 @@
 #
 
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1600
+# EGL preferred, as required for wayland
 %bcond_without use_egl
+%if 0%{?suse_version} > 1600
+#
+%bcond_with    bundled_glew
+%else
+# Currently no GLEW with EGL available
+%bcond_without bundled_glew
+%endif
 %else
 %bcond_with    use_egl
+%bcond_with    bundled_glew
 %endif
 
 # According to upstream, kicad 9.x.y can be used with the footprint and
 # symbol libraries from version 9.0.0
 %define compatversion 9.0.0
 Name:           kicad
-Version:        9.0.2
-%define file_version 9.0.2
+Version:        9.0.3
+%define file_version 9.0.3
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
@@ -45,7 +54,9 @@ BuildRequires:  gcc11-PIE
 BuildRequires:  gcc11-c++ >= 8
 %endif
 BuildRequires:  gettext
+%if %{without bundled_glew}
 BuildRequires:  glew%{?with_use_egl:_EGL}-devel
+%endif
 BuildRequires:  glm-devel >= 0.9.8
 BuildRequires:  libboost_filesystem-devel-impl
 BuildRequires:  libboost_locale-devel-impl
@@ -146,6 +157,12 @@ sed -i -e '/SWIG/ s/4.0/3.0/' CMakeLists.txt
 sed -i -e '/SWIG_OPTS/ { s/ -O/ -py3/ ; s/ -fastdispatch//}' pcbnew/CMakeLists.txt
 %endif
 
+# Fix detection of system GLEW, and use the proper CMake targets
+%if %{without bundled_glew}
+rm cmake/FindGLEW.cmake
+sed -i -e 's/${GLEW_LIBRARIES}/GLEW::GLEW/' common/gal/CMakeLists.txt
+%endif
+
 %build
 %if 0%{?suse_version} < 1550
 export CXX=g++-11 CC=gcc-11
@@ -160,8 +177,8 @@ export CXX=g++-11 CC=gcc-11
     -DKICAD_BUILD_I18N=ON \
     -DKICAD_I18N_UNIX_STRICT_PATH:BOOL=ON \
     -DKICAD_SCRIPTING_WXPYTHON=ON \
-    -DKICAD_USE_OCC:BOOL=ON \
     -DKICAD_USE_EGL:BOOL=%{?with_use_egl:ON}%{!?with_use_egl:OFF} \
+    -DKICAD_USE_BUNDLED_GLEW:BOOL=%{?with_bundled_glew:ON}%{!?with_bundled_glew:OFF} \
     -DKICAD_PCM=ON \
     -DKICAD_SPICE=ON
 

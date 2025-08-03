@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 19 21:00:10 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 9.0.3:
+  See https://www.kicad.org/blog/2025/07/KiCad-9.0.3-Release/ for details
+- Use EGL for SLE/Leap 16.0, as wxWidgets also uses EGL. Use the
+  bundled GLEW, as the system GLEW does not use EGL.
+  Use the system GLEW for all other projects.
+- Fix date syntax for old changelog entries
+
+-------------------------------------------------------------------
 Thu May  8 22:04:47 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 9.0.2:
@@ -798,105 +808,105 @@ Mon Apr 12 18:28:47 UTC 2010 - mhopf@novell.com
   Currently only builds on 11.2
 
 -------------------------------------------------------------------
-Wed Jun 17 2009 Werner Hoch <werner.ho@gmx.de> - 2009.02.06
+Wed Jun 17 2009 - Werner Hoch <werner.ho@gmx.de> - 2009.02.06
 - new version 2009.02.06
 
 -------------------------------------------------------------------
-Sat Dec 20 2008 Werner Hoch <werner.ho@gmx.de> - 2008.08.25
+Sat Dec 20 2008 - Werner Hoch <werner.ho@gmx.de> - 2008.08.25
 - build fix for openSUSE 11.1
 - added freeglut-devel and update_desktop_file
 - directory fixes
 
 -------------------------------------------------------------------
-Sat Oct 04 2008 Werner Hoch <werner.ho@gmx.de> - 2008.08.25
+Sat Oct 04 2008 - Werner Hoch <werner.ho@gmx.de> - 2008.08.25
 - new version 2008.08.25
 
 -------------------------------------------------------------------
-Thu Mar 25 2008 Werner Hoch <werner.ho@gmx.de>
+Thu Mar 25 2008 - Werner Hoch <werner.ho@gmx.de>
 - new version 2008.03.20
 
 -------------------------------------------------------------------
-Thu Dec 25 2007 Werner Hoch <werner.ho@gmx.de>
+Thu Dec 25 2007 - Werner Hoch <werner.ho@gmx.de>
 - adapted spec file from kicad-2007.07.09-2.fc8.src.rpm
 - removed french project descriptions
 - use cmake build process
 - new version 2007.11.29
 
 -------------------------------------------------------------------
-Mon Oct 15 2007 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2007.07.09-2
+Mon Oct 15 2007 - Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2007.07.09-2
 - Update desktop file
 
 -------------------------------------------------------------------
-Thu Oct 04 2007 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2007.07.09-1
+Thu Oct 04 2007 - Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2007.07.09-1
 - New upstream version
 - Merge previous patches
 - Remove X-Fedora, Electronics and Engineering categories
 - Update desktop file
 
 -------------------------------------------------------------------
-Mon Aug 27 2007 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2007.01.15-4
+Mon Aug 27 2007 - Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2007.01.15-4
 - License tag clarification
 
 -------------------------------------------------------------------
-Thu Aug 23 2007 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2007.01.15-3
+Thu Aug 23 2007 - Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2007.01.15-3
 - Rebuild
 
 -------------------------------------------------------------------
-Wed Feb 14 2007 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2007.01.15-2
+Wed Feb 14 2007 - Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2007.01.15-2
 - Fix desktop entry. Fix #228598
 
 -------------------------------------------------------------------
-Thu Feb  8 2007 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2007.01.15-1
+Thu Feb  8 2007 - Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2007.01.15-1
 - New upstream version
 
 -------------------------------------------------------------------
-Thu Feb  8 2007 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006.08.28-4
+Thu Feb  8 2007 - Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006.08.28-4
 - Add patch to build with RPM_OPT_FLAGS and remove -s from LDFLAGS
   Contribution of Ville Skyttä <ville[DOT]skytta[AT]iki[DOT]fi>
   Fix #227757
 - Fix typo in french summary
 
 -------------------------------------------------------------------
-Thu Dec 28 2006 Jason L Tibbitts III <tibbs@math.uh.edu> 2006.08.28-3
+Thu Dec 28 2006 - Jason L Tibbitts III <tibbs@math.uh.edu> 2006.08.28-3
 - Rebuild with wxGTK 2.8.
 
 -------------------------------------------------------------------
-Thu Oct 05 2006 Christian Iseli <Christian.Iseli@licr.org> 2006.08.28-2
+Thu Oct 05 2006 - Christian Iseli <Christian.Iseli@licr.org> 2006.08.28-2
 - rebuilt for unwind info generation, broken in gcc-4.1.1-21
 
 -------------------------------------------------------------------
-Fri Sep 22 2006 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006.08.28-1
+Fri Sep 22 2006 - Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006.08.28-1
 - New upstream version
 - Use macro style instead of variable style
 - Install missing modules. Fix #206602
 
 -------------------------------------------------------------------
-Fri Sep  1 2006 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006.06.26-6
+Fri Sep  1 2006 - Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006.06.26-6
 - FE6 rebuild
 
 -------------------------------------------------------------------
-Mon Jul 10 2006 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006.06.26-5
+Mon Jul 10 2006 - Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006.06.26-5
 - Removing backup files is no more needed.
 
 -------------------------------------------------------------------
-Mon Jul 10 2006 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006.06.26-4
+Mon Jul 10 2006 - Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006.06.26-4
 - Remove BR libGLU-devel that is no more needed (bug #197501 is closed)
 - Fix files permissions.
 
 -------------------------------------------------------------------
-Mon Jul  3 2006 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006.06.26-3
+Mon Jul  3 2006 - Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006.06.26-3
 - s/mesa-libGLU-devel/libGLU-devel/
 
 -------------------------------------------------------------------
-Mon Jul  3 2006 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006.06.26-2
+Mon Jul  3 2006 - Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006.06.26-2
 - BR mesa-libGLU-devel
 
 -------------------------------------------------------------------
-Wed Jun 28 2006 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006.06.26-1
+Wed Jun 28 2006 - Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006.06.26-1
 - New upstream version
 
 -------------------------------------------------------------------
-Tue Jun 13 2006 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006.04.24-5
+Tue Jun 13 2006 - Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006.04.24-5
 - Change name
 - Use %%{_docdir} instead of %%{_datadir}/doc
 - Use %%find_lang
@@ -905,23 +915,23 @@ Tue Jun 13 2006 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006.04.24-5
 - Remove BR utrac
 
 -------------------------------------------------------------------
-Mon Jun 12 2006 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006-04-24-0-4
+Mon Jun 12 2006 - Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006-04-24-0-4
 - Patch to suppress extra qualification compile time error on FC5
 - BR utrac to convert MSDOS files before applying patch
   This will be remove for the next upstream version.
 
 -------------------------------------------------------------------
-Tue May 23 2006 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006-04-24-0-3
+Tue May 23 2006 - Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006-04-24-0-3
 - Install help in /usr/share/doc/kicad/ as the path is hardcoded
   in gestfich.cpp
 - Add desktop file
 
 -------------------------------------------------------------------
-Mon May 22 2006 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006-04-24-0-2
+Mon May 22 2006 - Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006-04-24-0-2
 - Add a second tarball that contains many things that are not included in
   the upstream source tarball such components and footprints librairies,
   help, localisation, etc.
 
 -------------------------------------------------------------------
-Sun May 21 2006 Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006-04-24-0-1
+Sun May 21 2006 - Alain Portal <aportal[AT]univ-montp2[DOT]fr> 2006-04-24-0-1
 - Initial Fedora RPM
