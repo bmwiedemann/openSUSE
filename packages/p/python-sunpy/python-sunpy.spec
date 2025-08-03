@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sunpy
-Version:        7.0.0
+Version:        7.0.1
 Release:        0
 Summary:        SunPy core package: Python for Solar Physics
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
@@ -49,7 +49,7 @@ Requires:       python-packaging >= 23.2
 Requires:       python-parfive >= 2.1.0
 Requires:       python-pyerfa >= 2.0.1.1
 Requires:       python-requests >= 2.32.0
-# pafived[ftp], ignore rpmlint's python-leftover-require
+# parfive[ftp], ignore rpmlint's python-leftover-require
 Requires:       python-aioftp >= 0.17.1
 # SECTION project.optional-dependencies:asdf
 Recommends:     python-asdf >= 3

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug  2 17:19:32 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.0.1
+  * Fixed a bug where the time format 2001-02-03T04:05:06Z was
+    being parsed through different code than 2001-02-03T04:05:06 or
+    2001-02-03T04:05:06.0Z. (#8265)
+  * Fixed a bug where sunpy.util.system_info would report sunpy as
+    an optional dependency of itself instead of properly reporting
+    all of the optional dependencies. (#8294)
+  * Fixed sunpy.util.system_info so that the version reported for a
+    development installation of sunpy itself or of a dependency is
+    accurate. (#8297)
+
+-------------------------------------------------------------------
 Sun Jul 13 13:40:00 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.0.0

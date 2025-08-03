@@ -435,4 +435,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1294599</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>39cf0008c2ebcd9e81649a80e561dbbe</srcmd5>
+    <version>7.0.1</version>
+    <time>1754221085</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.0.1
+  * Fixed a bug where the time format 2001-02-03T04:05:06Z was
+    being parsed through different code than 2001-02-03T04:05:06 or
+    2001-02-03T04:05:06.0Z. (#8265)
+  * Fixed a bug where sunpy.util.system_info would report sunpy as
+    an optional dependency of itself instead of properly reporting
+    all of the optional dependencies. (#8294)
+  * Fixed sunpy.util.system_info so that the version reported for a
+    development installation of sunpy itself or of a dependency is
+    accurate. (#8297)</comment>
+    <requestid>1297171</requestid>
+  </revision>
 </revisionlist>
