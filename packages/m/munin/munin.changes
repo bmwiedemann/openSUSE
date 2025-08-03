@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 25 13:42:56 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Update to 2.0.75
+  * replace Date::Manip with Date::Parse
+- extend munin-remove-deprecated-INET6.patch to fix IPv6
+
+-------------------------------------------------------------------
 Tue Jul  8 13:03:35 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Let munin-node use its own log and run sub-directory

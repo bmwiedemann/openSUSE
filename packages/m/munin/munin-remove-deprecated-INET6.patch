@@ -148,3 +148,33 @@ Index: munin-2.0.72/contrib/Net-Server.patch
       $prop->{_HUP}->[$i]->fdopen($fd, 'w')
         or $self->fatal("Can't open to file descriptor [$!]");
  
+
+https://github.com/munin-monitoring/munin/pull/1661
+From: Bernhard M. Wiedemann <bwiedemann suse de>
+Date: Fri, 25 Jul 2025 15:55:27 +0200
+Subject: [PATCH] Fix IPv6 node connections
+
+Commit 012b33a702155ba7c96fd62028a3559364693c7e changed from
+IO::Socket::INET6 to IO::Socket::IP but that silently changed the meaning
+of our default local_address 0 from :: to 0.0.0.0
+which made IPv6-connections fail by default.
+
+By explicitly defaulting to :: we fix IPv6 connections to munin-node.
+
+Fixes #1402
+
+https://github.com/munin-monitoring/munin/issues/1402#issuecomment-3116582211
+
+diff --git a/master/lib/Munin/Master/Config.pm b/master/lib/Munin/Master/Config.pm
+index a943ee5..ac5953b 100644
+--- a/master/lib/Munin/Master/Config.pm
++++ b/master/lib/Munin/Master/Config.pm
+@@ -146,7 +146,7 @@ my %booleans = map {$_ => 1} qw(
+ 		graph_data_size  => 'normal',
+ 		graph_strategy   => 'cron',
+ 		groups           => {},
+-		local_address    => 0,
++		local_address    => '::',
+ 		logdir           => $Munin::Common::Defaults::MUNIN_LOGDIR,
+ 		max_processes    => 16,
+ 		rundir           => $Munin::Common::Defaults::MUNIN_STATEDIR,

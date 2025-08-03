@@ -23,7 +23,7 @@
 %define plugindir %{_prefix}/lib/munin/plugins
 %define active_by_default 0
 Name:           munin
-Version:        2.0.72
+Version:        2.0.75
 Release:        0
 Summary:        Network-wide graphing framework (grapher/gatherer)
 License:        GPL-2.0-only
@@ -71,7 +71,7 @@ Requires:       perl-base = %{perl_version}
 Requires:       perl-rrdtool
 Requires:       rrdtool
 Requires:       shadow
-Requires:       perl(Date::Manip)
+Requires:       perl(Date::Parse)
 Requires:       perl(FCGI)
 Requires:       perl(File::Copy::Recursive)
 Requires:       perl(HTML::Template)
