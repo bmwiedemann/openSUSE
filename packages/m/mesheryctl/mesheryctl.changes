@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Aug  3 12:12:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.123:
+  * General
+    - add F5 entry in adopters list @MarioArriaga92 (#15282)
+    - fix: update meshkit to latest version, where connectivity
+      check is fixed @n2h9 (#15456)
+  * Meshery CLI
+    - chore(mesheryctl-registry): Update documentation for registry
+      subcommands @lekaf974 (#15453)
+    - chore: move code which writes docker compose config @n2h9
+      (#15452)
+  * Maintenance
+    - Bump next from 15.3.1 to 15.3.4 in /provider-ui @dependabot
+      (#15267)
+    - Bump github.com/go-viper/mapstructure/v2 from 2.2.1 to 2.3.0
+      @dependabot (#15240)
+    - Bump form-data from 4.0.2 to 4.0.4 in /provider-ui
+      @dependabot (#15424)
+  * Documentation
+    - Add: Component Capabilities to Docs @M-DEV-1 (#15201)
+
+-------------------------------------------------------------------
 Mon Jul 28 05:39:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.122:
