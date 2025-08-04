@@ -1,7 +1,7 @@
 #
 # spec file for package kubeshark-cli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define executable_name kubeshark
 
 Name:           kubeshark-cli
-Version:        52.7.8
+Version:        52.8.0
 Release:        0
 Summary:        CLI for the API traffic analyzer for Kubernetes
 License:        Apache-2.0

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Aug 03 12:03:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 52.8.0:
+  * Bug Fixes & New Features
+    - Resolved Helm chart issue (#1763)
+    - Implemented minor bug fix (#1767)
+    - Patched multiple vulnerabilities (#1773)
+    - Introduced PriorityClass to Helm chart (#1775)
+    - Bump the Helm chart version to 52.8.0
+    - Add priority class configuration for Kubeshark components
+      (#1775)
+    - CVE-2025-53547: Update helm to latest (#1774)
+    - Add `api2BetaEnabled` helm value (#1770)
+    - docs-changes (#1768)
+    - chore: fix some minor issues in the comments (#1767)
+    - Fix bugs in helm chart (#1765)
+    - Bump the Helm chart version to 52.7.8
+    - updated dry release target
+    - added back online support (#1764)
+    - enable support
+    - Use chart minor version for dockertag (#1762)
+
+-------------------------------------------------------------------
 Tue Jun 17 10:51:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 52.7.8:
