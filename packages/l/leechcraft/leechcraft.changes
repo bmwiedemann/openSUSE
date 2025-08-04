@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  4 06:44:40 UTC 2025 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Updated to 0.6.70-0.6.70-17739-g0d7a960ef4 snapshot:
+  * Compilation failure fix for ARMs.
+
+-------------------------------------------------------------------
 Mon Jun 16 11:13:12 UTC 2025 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Leap 16 build via gcc15.

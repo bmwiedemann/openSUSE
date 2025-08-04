@@ -28,7 +28,7 @@
 %define qml_dir %{_datadir}/leechcraft/qml6
 
 %define so_ver -qt6-0_6_75
-%define LEECHCRAFT_VERSION 0.6.70-17609-g3dde4097dd
+%define LEECHCRAFT_VERSION 0.6.70-17739-g0d7a960ef4
 
 %define db_postfix %{so_ver}
 %define gui_postfix %{so_ver}
@@ -49,7 +49,7 @@
 %define xsd_postfix %{so_ver}
 
 Name:           leechcraft
-Version:        0.6.70+git.17609.g3dde4097dd
+Version:        0.6.70+git.17739.g0d7a960ef4
 Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
