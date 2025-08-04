@@ -16,6 +16,8 @@
 #
 
 
+%bcond_without wayland
+
 Name:           xfce4-screensaver
 Version:        4.20.0
 Release:        0
@@ -53,6 +55,11 @@ BuildRequires:  pkgconfig(libxklavier) >= 5.2
 BuildRequires:  pkgconfig(x11) >= 1.6.7
 BuildRequires:  pkgconfig(xext) >= 1.0.0
 BuildRequires:  pkgconfig(xscrnsaver) >= 1.2.2
+%if %{with wayland}
+BuildRequires:  pkgconfig(libwlembed-0)
+BuildRequires:  pkgconfig(libwlembed-gtk3-0)
+BuildRequires:  pkgconfig(wayland-protocols)
+%endif
 Requires:       xfconf
 Recommends:     %{name}-lang
 Conflicts:      xscreensaver
@@ -74,6 +81,9 @@ Add xfce4-screensaver-command -l to xflock4 script for it to work properly.
     -Dpam-auth-type=common	\
     -Dsession-manager=systemd	\
     -Dx11=enabled		\
+%if %{with wayland}
+    -Dwayland=enabled		\
+%endif
     -Dlocking=true		\
     -Ddocs=disabled
 %meson_build
