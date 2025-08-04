@@ -17,16 +17,28 @@
 #
 
 
-%define   with_cloud_input   1
+%if 0%{?is_opensuse}
+%bcond_without cloud_input
+%bcond_without opencc
+%bcond_without lua
+%bcond_with    boost
+%endif
+
+%if !0%{?is_opensuse}
+%bcond_with cloud_input
+%bcond_with lua
+%bcond_with opencc
+%bcond_with boost
+%endif
 
 Name:           ibus-libpinyin
-Version:        1.16.3
+Version:        1.16.4
 Release:        0
 Summary:        Intelligent Pinyin engine based on libpinyin for IBus
 License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/libpinyin/ibus-libpinyin
-Source0:        https://github.com/libpinyin/ibus-libpinyin/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/libpinyin/ibus-libpinyin/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
@@ -35,7 +47,6 @@ BuildRequires:  ibus-devel >= 1.5.11
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  libuuid-devel
-BuildRequires:  opencc-devel >= 1.0.0
 BuildRequires:  pkgconfig
 BuildRequires:  sqlite3
 BuildRequires:  sqlite3-devel
@@ -43,8 +54,13 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gdk-3.0)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpinyin) >= 2.9.92
+%if %{with lua}
 BuildRequires:  pkgconfig(lua)
-%if %{with_cloud_input}
+%endif
+%if %{with opencc}
+BuildRequires:  opencc-devel >= 1.0.0
+%endif
+%if %{with cloud_input}
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.0
 BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0
 %endif
@@ -69,24 +85,41 @@ method based on libpinyin for IBus.
 
 %build
 NOCONFIGURE=1 ./autogen.sh
-%configure --disable-static \
+%configure  \
+%if %{with opencc}
            --enable-opencc \
+%else
+           --disable-opencc \
+%endif
+%if %{with boost}
+           --enable-boost \
+%else
            --disable-boost \
-           --libexecdir=%{_ibus_libexecdir} \
-           --libdir=%{_libdir} \
-%if %{with_cloud_input}
+%endif
+%if %{with lua}
+           --enable-lua-extension \
+%else
+           --disable-lua-extension \
+%endif
+%if %{with cloud_input}
            --enable-cloud-input-mode \
+%else
+           --disable-cloud-input-mode \
 %endif
 %if 0%{?sle_version} < 150600 && 0%{?sle_version} >= 150000
-           PYTHON=python3.10
+           PYTHON=python3.10\
 %else
-           PYTHON=python3
+           PYTHON=python3 \
 %endif
+           --libexecdir=%{_ibus_libexecdir} \
+           --libdir=%{_libdir} \
+           --datadir=%{_datadir} \
+           --disable-static
 
-%make_build
+%make_build %{?_smp_mflags}
 
 %install
-%make_install
+%make_install %{?_smp_mflags}
 
 %fdupes %{buildroot}
 %find_lang %{name}
@@ -104,8 +137,6 @@ NOCONFIGURE=1 ./autogen.sh
 %{_ibus_libexecdir}/ibus-setup-libpinyin
 %{_datadir}/applications/ibus-setup-libbopomofo.desktop
 %{_datadir}/applications/ibus-setup-libpinyin.desktop
-%{_datadir}/%{name}/base.lua
-%{_datadir}/%{name}/user.lua
 %{_datadir}/%{name}/db/english.db
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/db
@@ -118,5 +149,9 @@ NOCONFIGURE=1 ./autogen.sh
 %{_datadir}/metainfo/libpinyin.appdata.xml
 %{_datadir}/ibus
 %{_datadir}/glib-2.0/schemas/com.github.libpinyin.ibus-libpinyin.gschema.xml
+%if %{with lua}
+%{_datadir}/%{name}/base.lua
+%{_datadir}/%{name}/user.lua
+%endif
 
 %changelog

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 31 14:39:18 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 1.16.4:
+  * Fix import and export data default from program dir
+  * Disable Simplified and Traditional switch in English input mode
+  * Fix ime_get_version function
+  * Fix some warnings
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (Georgian)
+- Disable Lua opencc and cloud input in SLE:
+  openCC only affects simplified Chinese and traditional Chinese
+  conversion; Lua only affects Lua script candidates. Cloud input
+  only affects cloud pinyin candidates; These functions are seldom
+  used by SLE users, but will import many building and installation
+  requirements. Drop them to make the integration work easily.
+  (bsc#1246569)
+  
+-------------------------------------------------------------------
 Fri May 23 13:28:59 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Update to version 1.16.3:
