@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 25 05:29:51 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Add qcsxcad-cmp0020.patch to backport compatibility fix for
+  CMake 4.0
+- Remove build requirement Qt5Sql as thw whole project does not
+  use SQL. Probably added by mistake.
+
+-------------------------------------------------------------------
 Tue Apr 15 08:30:39 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop BuildRequires: glew-devel it is not used for build.

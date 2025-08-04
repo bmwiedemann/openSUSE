@@ -1,0 +1,34 @@
+From 200c9c211ee1401d6dce2bcbf2543089cdc67208 Mon Sep 17 00:00:00 2001
+From: Thorsten Liebig <Thorsten.Liebig@gmx.de>
+Date: Fri, 18 Apr 2025 16:28:51 +0200
+Subject: [PATCH] cmake: fix cmake 4.0 issues
+
+Signed-off-by: Thorsten Liebig <Thorsten.Liebig@gmx.de>
+---
+ CMakeLists.txt | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1784b97..d6b4149 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,14 +6,15 @@ ELSE()
+   SET( CMAKE_BUILD_TYPE Release CACHE STRING "Set to either \"Release\" or \"Debug\"" )
+ ENDIF()
+ 
+-PROJECT( QCSXCAD CXX)
++PROJECT( QCSXCAD CXX C)
+ 
+ cmake_minimum_required(VERSION 2.8)
+ 
++# not supported any more by cmake 4.0?
+ # https://cmake.org/cmake/help/v3.0/policy/CMP0020.html
+-if(POLICY CMP0020)
+-  cmake_policy(SET CMP0020 OLD)
+-endif()
++# if(POLICY CMP0020)
++#   cmake_policy(SET CMP0020 NEW)
++# endif()
+ 
+ IF(EXISTS ${PROJECT_SOURCE_DIR}/localConfig.cmake)
+    include(${PROJECT_SOURCE_DIR}/localConfig.cmake)

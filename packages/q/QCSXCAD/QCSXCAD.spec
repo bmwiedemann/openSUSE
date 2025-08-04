@@ -26,6 +26,7 @@ License:        LGPL-3.0-or-later
 Group:          Productivity/Graphics/CAD
 URL:            https://openems.de
 Source0:        https://github.com/thliebig/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch1:         qcsxcad-cmp0020.patch
 BuildRequires:  CSXCAD-devel
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
@@ -33,7 +34,6 @@ BuildRequires:  lzma-devel
 BuildRequires:  tinyxml-devel
 BuildRequires:  vtk-devel
 BuildRequires:  vtk-qt
-BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(eigen3)
