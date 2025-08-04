@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  4 06:57:12 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.1:
+  * Disable OSC 11 when running in tmux (#696).
+  * Follow custom theme symlinks (#692).
+
+-------------------------------------------------------------------
 Mon Jul 14 07:32:41 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.15.0:
