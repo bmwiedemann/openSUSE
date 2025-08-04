@@ -1,7 +1,7 @@
 #
 # spec file for package swag
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           swag
-Version:        1.16.4
+Version:        1.16.6
 Release:        0
 Summary:        Automatically generate RESTful API documentation with Swagger 2.0 for Go
 License:        MIT

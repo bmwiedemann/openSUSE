@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Aug 03 13:29:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.16.6:
+  * feat: allow description line continuation (#2048)
+  * Use the structs name without the @name comment (#2043)
+  * Feature: allow enum ordered const name override (2nd PR for
+    this) (#2046)
+  * fix: router with tilde #2004 (#2005)
+  * fix: prevent nil pointer dereference in getFuncDoc when parsing
+    dependencies (#2044)
+
+-------------------------------------------------------------------
+Sun Aug 03 13:28:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.16.5:
+  * feat: json:omitempty marks field as optional (#2041)
+  * fix(test): include `rune` test in enums tests (#2025)
+  * chore(deps): bump golang.org/x/crypto in /example/celler
+    (#1993)
+  * Remove redundant (default: false) for parseFuncBody flag
+    (#1961)
+  * x/text v0.21, x/tools v0.21 (#1962)
+  * non-empty stderr for `go list` is not an error in itself
+    (#1981)
+  * chore: accept event streaming (#1992)
+  * Extension: collectionFormat in struct tag (#1989)
+  * Fix typo error in README (#1954)
+  * fix: @name for recursion (#1948)
+  * chore(deps): bump golang.org/x/crypto in
+    /example/object-map-example (#1945)
+  * Fix format by goimports (#1927)
+  * Transfer golang type to swagger type with format reserved
+    (#1944)
+  * Fix compare original and formatted (#1915)
+  * support generate var-declared function doc (#1657)
+  * feat: ParseComment error to contain the comment (#1777)
+  * fix: use '&&' for security pair(AND) (#1659)
+  * feat: Add x-enum-descriptions to generated Swagger
+    documentation for Enums (#1878)
+  * Added support for @tag.x- attributes for tags (#1784) (#1785)
+
+-------------------------------------------------------------------
 Fri Oct 18 21:33:41 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.16.4:
