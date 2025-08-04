@@ -1694,4 +1694,15 @@ C API
   bsc#1243155</comment>
     <requestid>1294514</requestid>
   </revision>
+  <revision rev="57" vrev="4">
+    <srcmd5>f90ae9451f2d61b2a59c974320fbea38</srcmd5>
+    <version>3.11.13</version>
+    <time>1754313742</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2025-8194-tarfile-no-neg-offsets.patch which now
+  validates archives to ensure member offsets are non-negative
+  (gh#python/cpython#130577, CVE-2025-8194, bsc#1247249).
+</comment>
+    <requestid>1297128</requestid>
+  </revision>
 </revisionlist>
