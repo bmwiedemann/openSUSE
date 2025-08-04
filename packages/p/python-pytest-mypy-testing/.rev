@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1202276</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5b150479fcba783aff8c3c7c1310cba0</srcmd5>
+    <version>0.1.3</version>
+    <time>1754313894</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-new-mypy.patch:
+  * Support newer mypy than upstream.</comment>
+    <requestid>1297340</requestid>
+  </revision>
 </revisionlist>

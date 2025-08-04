@@ -1,7 +1,8 @@
 #
 # spec file for package python-pytest-mypy-testing
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +25,8 @@ Summary:        Pytest plugin to check mypy output
 License:        Apache-2.0 OR MIT
 URL:            https://github.com/davidfritzsche/pytest-mypy-testing
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-mypy-testing/pytest-mypy-testing-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support newer mypy
+Patch0:         support-new-mypy.patch
 BuildRequires:  %{python_module flit-core >= 2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
