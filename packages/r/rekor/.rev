@@ -461,4 +461,12 @@
     - CVE-2025-30204: rekor: github.com/golang-jwt/jwt/v5: jwt-go allows excessive memory allocation during header parsing (bsc#1240468) (forwarded request 1268973 from msmeissn)</comment>
     <requestid>1268974</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3c4d1e71b13183d9917178fb06bb7957</srcmd5>
+    <version>1.4.0</version>
+    <time>1754313883</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.4.0 (forwarded request 1297249 from ojkastl_buildservice)</comment>
+    <requestid>1297304</requestid>
+  </revision>
 </revisionlist>

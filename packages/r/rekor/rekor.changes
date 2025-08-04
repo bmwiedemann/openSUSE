@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Sun Aug 03 12:03:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.0:
+  * changelog for v1.4.0 release (#2550)
+  * enable retries and timeouts on GCP KMS calls (#2548)
+  * allow configuring gRPC default service config for trillian
+    client load balancing & timeouts (#2549)
+  * remove stable checkpoint feature (#2537)
+  * build(deps): Bump sigs.k8s.io/release-utils from 0.11.1 to
+    0.12.0
+  * build(deps): Bump golang.org/x/net from 0.41.0 to 0.42.0
+    (#2544)
+  * build(deps): Bump the all group with 3 updates (#2545)
+  * fix lints
+  * bump golangci-lint to v2.2.x
+  * use go1.24.5 to build rekor
+  * build(deps): Bump google.golang.org/api from 0.238.0 to 0.242.0
+    (#2543)
+  * build(deps): Bump golang.org/x/sync from 0.15.0 to 0.16.0
+    (#2541)
+  * build(deps): Bump github.com/spf13/pflag in the all group
+    (#2542)
+  * build(deps): Bump github.com/sigstore/protobuf-specs from 0.4.3
+    to 0.5.0
+  * move context handling in trillian RPC calls to be request based
+    and idiomatic (#2536)
+  * build(deps): Bump github.com/go-viper/mapstructure/v2 (#2522)
+  * build(deps): Bump golang from 1.24.4 to 1.24.5 in the all group
+    (#2534)
+  * build(deps): Bump the all group with 2 updates (#2518)
+  * build(deps): Bump the all group with 2 updates (#2524)
+  * build(deps): Bump sigstore/scaffolding/trillian_log_server
+    (#2527)
+  * build(deps): Bump sigstore/scaffolding/trillian_log_signer
+    (#2526)
+  * build(deps): Bump github.com/go-viper/mapstructure/v2 in
+    /hack/tools (#2523)
+  * backoff pubsub emulator to last-known good (#2535)
+  * build(deps): Bump golang from `db5d0af` to `10c1318`
+  * build(deps): Bump sigstore/cosign-installer in the all group
+  * build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+  * build(deps): Bump google.golang.org/api from 0.237.0 to 0.238.0
+  * build(deps): Bump go.step.sm/crypto from 0.66.0 to 0.67.0
+  * build(deps): Bump github/codeql-action in the all group
+  * build(deps): Bump google.golang.org/api from 0.236.0 to 0.237.0
+  * build(deps): Bump the all group with 7 updates
+  * Update GoReleaser configurations (#2511)
+  * update builder to use go1.24.4
+  * build(deps): Bump google.golang.org/grpc from 1.72.2 to 1.73.0
+  * build(deps): Bump golang.org/x/net from 0.40.0 to 0.41.0
+  * build(deps): Bump github.com/redis/go-redis/v9 from 9.9.0 to
+    9.10.0
+  * build(deps): Bump google.golang.org/api from 0.235.0 to 0.236.0
+  * build(deps): Bump golang from 1.24.3 to 1.24.4 in the all group
+  * build(deps): Bump github.com/go-swagger/go-swagger
+  * build(deps): Bump github/codeql-action in the all group
+  * build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+  * build(deps): Bump github.com/google/rpmpack from 0.6.0 to 0.7.0
+  * build(deps): Bump github.com/redis/go-redis/v9 from 9.8.0 to
+    9.9.0
+  * build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+  * build(deps): Bump go.step.sm/crypto from 0.64.0 to 0.66.0
+  * build(deps): Bump google.golang.org/api from 0.234.0 to 0.235.0
+  * build(deps): Bump golang from `4c0a181` to `81bf592`
+  * build(deps): Bump google.golang.org/api from 0.233.0 to 0.234.0
+  * build(deps): Bump golang from `86b4cff` to `4c0a181`
+  * build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+  * build(deps): Bump google.golang.org/grpc in the all group
+  * build(deps): Bump go.step.sm/crypto from 0.63.0 to 0.64.0
+  * Don't initialize index storage with stable checkpoint
+    publishing (#2486)
+  * build(deps): Bump golang from `39d9e7d` to `86b4cff`
+  * build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+  * build(deps): Bump the all group with 2 updates
+  * build(deps): Bump google.golang.org/api from 0.232.0 to 0.233.0
+  * build(deps): Bump the all group with 2 updates
+  * Fix docker compose up --wait failing when Trillian server isn't
+    healthy (#2473)
+  * build(deps): Bump golang.org/x/crypto from 0.37.0 to 0.38.0
+    (#2477)
+  * build(deps): Bump golang.org/x/net from 0.39.0 to 0.40.0
+    (#2475)
+  * build(deps): Bump golang from 1.24.2 to 1.24.3 in the all group
+    (#2480)
+  * build(deps): Bump google.golang.org/api from 0.231.0 to 0.232.0
+  * build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+    (#2478)
+  * build(deps): Bump actions/setup-go from 5.4.0 to 5.5.0 in the
+    all group (#2474)
+  * build(deps): Bump github.com/redis/go-redis/v9 from 9.7.3 to
+    9.8.0 (#2470)
+  * build(deps): Bump golangci/golangci-lint-action from 7.0.0 to
+    8.0.0 (#2471)
+  * build(deps): Bump google.golang.org/api from 0.230.0 to 0.231.0
+  * build(deps): Bump go.step.sm/crypto from 0.61.0 to 0.63.0
+    (#2468)
+  * build(deps): Bump github/codeql-action in the all group (#2467)
+  * build(deps): Bump golang from `d9db321` to `30baaea` (#2469)
+  * build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+    (#2466)
+  * build(deps): Bump the all group with 2 updates
+  * build(deps): Bump google.golang.org/api from 0.229.0 to 0.230.0
+  * build(deps): Bump the all group with 3 updates
+  * build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+    (#2462)
+  * Bump sigstore/sigstore, use shared Tink library (#2461)
+  * better mysql healthcheck (#2459)
+  * build(deps): Bump sigs.k8s.io/release-utils from 0.8.4 to
+    0.11.1
+  * build(deps): Bump google.golang.org/grpc from 1.71.1 to 1.72.0
+  * build(deps): Bump github.com/tink-crypto/tink-go/v2 from 2.3.0
+    to 2.4.0
+  * build(deps): Bump google.com/cloudsdktool/google-cloud-cli
+  * build(deps): Bump golang
+  * build(deps): Bump codecov/codecov-action in the all group
+  * build(deps): Bump go.step.sm/crypto from 0.60.0 to 0.61.0
+  * build(deps): Bump golang.org/x/crypto in /hack/tools
+  * update builder image to use go1.24.2
+  * build(deps): Bump golang from `991aa6a` to `1ecc479`
+  * build(deps): Bump ko-build/setup-ko from 0.8 to 0.9 in the all
+    group
+  * build(deps): Bump cloud.google.com/go/pubsub from 1.47.0 to
+    1.49.0
+  * build(deps): Bump github.com/prometheus/client_golang
+  * build(deps): Bump the all group with 7 updates
+  * build(deps): Bump github.com/spf13/viper from 1.19.0 to 1.20.1
+  * Add CHANGELOG for v1.3.10 (#2439)
+
+-------------------------------------------------------------------
 Fri Apr 11 18:10:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.3.10:
