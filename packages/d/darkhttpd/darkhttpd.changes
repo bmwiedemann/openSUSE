@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 29 17:00:38 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Version 1.17:
+  * Don't include ../ in the root directory list.
+  * Return a more accurate error when a directory open fails.
+  * Add mtime to directory listings and make it xbmc/kodi compatible.
+  * Add --single-file.
+  * Accept absolute-form URLs.
+  * Add --hide-dotfiles.
+- Switch source service from local to manual
+- Switch to macros for common directories
+- Refactor user/group handling to sysusers
+
+-------------------------------------------------------------------
 Wed Feb 28 23:37:03 UTC 2024 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Version 1.16:

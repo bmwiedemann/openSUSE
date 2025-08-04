@@ -1,7 +1,7 @@
 #
 # spec file for package darkhttpd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define pkg_home %{_localstatedir}/lib/%{name}
+%define pkg_home %{_sharedstatedir}/%{name}
 Name:           darkhttpd
-Version:        1.16
+Version:        1.17
 Release:        0
 Summary:        When you need a web server in a hurry
 License:        ISC
@@ -29,9 +29,11 @@ Source1:        %{name}.sysconfig
 Source2:        %{name}.service
 BuildRequires:  gcc
 BuildRequires:  make
+BuildRequires:  sysuser-tools
 Requires(post): %fillup_prereq
 Provides:       http_daemon
 Provides:       httpd
+%sysusers_requires
 
 %description
 Features:
@@ -70,20 +72,25 @@ Limitations:
 %prep
 %autosetup
 
+tee > %{name}.sysusers <<EOF
+u %{name} - '%{name} service user' %{pkg_home}
+EOF
+
 %build
 export CFLAGS="%{optflags}"
 %make_build
 
+%sysusers_generate_pre %{name}.sysusers %{name} system-user-%{name}.conf
+
 %install
 install -D -m 0755 %{name} %{buildroot}/%{_bindir}/%{name}
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_fillupdir}/sysconfig.%{name}
-install -D -m 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/systemd/system/%{name}.service
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}.service
+install -D -m 0644 %{name}.sysusers %{buildroot}%{_sysusersdir}/system-user-%{name}.conf
 mkdir -p %{buildroot}%{_sbindir}
 ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
-%pre
-%{_sbindir}/groupadd -r %{name} >/dev/null 2>&1 ||:
-%{_sbindir}/useradd  -g %{name} -s %{_sbindir}/nologin -r -c "user for %{name}" -d %{pkg_home} %{name} >/dev/null 2>&1 ||:
+%pre -f %{name}.pre
 %service_add_pre %{name}.service
 
 %post
@@ -100,7 +107,8 @@ ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %doc README.md
 %license COPYING
 %{_fillupdir}/sysconfig.%{name}
-%{_prefix}/lib/systemd/system/%{name}.service
+%{_sysusersdir}/system-user-%{name}.conf
+%{_unitdir}/%{name}.service
 %{_bindir}/%{name}
 %{_sbindir}/rcdarkhttpd
 
