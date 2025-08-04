@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 18 10:38:30 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Use file-based systemd-repart config instead of block based.
+  Eases SelfInstall process and introduces dramatic flexibility. 
+
+-------------------------------------------------------------------
 Fri Jul 12 07:23:57 UTC 2024 - Richard Brown <rbrown@suse.com>
 
 - Use key-file for encrypting root partition, to be replaced with
