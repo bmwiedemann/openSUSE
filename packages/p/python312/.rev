@@ -1826,4 +1826,15 @@
   bsc#1243155</comment>
     <requestid>1294513</requestid>
   </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>94d6f0426f10c6eca0fca963e7f7819b</srcmd5>
+    <version>3.12.11</version>
+    <time>1754313741</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2025-8194-tarfile-no-neg-offsets.patch which now
+  validates archives to ensure member offsets are non-negative
+  (gh#python/cpython#130577, CVE-2025-8194, bsc#1247249).
+</comment>
+    <requestid>1297127</requestid>
+  </revision>
 </revisionlist>
