@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Sun Aug  3 09:43:32 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Make the devel package require the library packages.
+
+-------------------------------------------------------------------
+Sun Aug  3 08:29:39 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Clean up spec file
+- Change tarballs with git id suffix
+- Split typelib subpackages
+
+-------------------------------------------------------------------
+Fri Jul 18 10:43:23 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- initial pkg: git commit 4d37dc9da9a1f699b86d4e6b05f4619b8eee4ee8
+  built with internal wlr-protocols submodule
+  (git commit a5028afbe4a1cf0daf020c4104c1565a09d6e58a)
+
