@@ -146,4 +146,13 @@
 - fixes build with openssl 3.5 (bsc#1244617) (forwarded request 1285892 from msmeissn)</comment>
     <requestid>1285893</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>e9122ef43b48ea989037f679f3822939</srcmd5>
+    <version>0.9.0</version>
+    <time>1754313881</time>
+    <user>dimstar_suse</user>
+    <comment>- disable testsuite on s390x bsc#1245315
+  (failure is real, but SL 16 needs to have it building) (forwarded request 1290830 from msmeissn)</comment>
+    <requestid>1297303</requestid>
+  </revision>
 </revisionlist>
