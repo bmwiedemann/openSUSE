@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Aug  3 14:52:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.2.0:
+  * Build System
+    - release: Use correct python-semantic-release/publish-action
+      (2f20634)
+  * Chores
+    - deps: Update all non-major dependencies (3b8fbf4)
+    - deps: Update all non-major dependencies (be25c16)
+    - deps: Update all non-major dependencies (9c095bd)
+    - deps: Update all non-major dependencies (d25b33f)
+    - deps: Update dependency furo to v2025 (b483ece)
+    - deps: Update pre-commit hook maxbrunet/pre-commit-renovate to
+      v41 (d3f31a2)
+  * Continuous Integration
+    - stale: Improve formatting of stale message (0ef20d1)
+    - stale: Increase operations-per-run to 500 (326e1a4)
+  * Features
+    - api: Add ListMixin to ProjectIssueDiscussionNoteManager
+      (f908f0e)
+    - api: Add ListMixin to
+      ProjectMergeRequestDiscussionNoteManager (865339a)
+
+-------------------------------------------------------------------
 Wed Jul 16 09:55:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.1.0:
