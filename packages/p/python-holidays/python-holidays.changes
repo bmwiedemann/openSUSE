@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Aug  1 14:07:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.77
+  * Refactor US holidays: consolidate duplicate self._year triggers (#2726)
+  * Add Cabo Verde holidays (#2654)
+  * Add Cayman Islands holidays (#2706)
+  * Add Central African Republic holidays (#2687)
+  * Add Christmas Island holidays (#2623)
+  * Add Democratic Republic of the Congo holidays (#2702)
+  * Add Faroe Islands holidays (#2719)
+  * Add Gibraltar holidays (#2720)
+  * Add Lebanon holidays (#2700)
+  * Add Mali holidays (#2725)
+  * Add Montserrat holidays (#2714)
+  * Add Niue holidays (#2737)
+  * Add Norfolk Island holidays (#2716)
+  * Add Palestine holidays (#2701)
+  * Add Saint Vincent and the Grenadines holidays (#2608)
+  * Add Tokelau holidays (#2727)
+  * Fix missing StaticHolidays in some countries (#2729)
+  * Improve some variable naming (#2708)
+  * Optimize dict in/get cases (#2707)
+  * Update Georgia holidays (#2735)
+  * Update Peru holidays: add 2023+ holidays (#2730)
+  * Document _add_holiday_* pattern (#2721)
+
+-------------------------------------------------------------------
 Sun Jul 13 13:21:56 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.76:
