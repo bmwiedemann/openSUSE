@@ -17,7 +17,7 @@
 
 
 Name:           git-town
-Version:        21.1.0
+Version:        21.4.0
 Release:        0
 Summary:        Git branches made easy
 License:        MIT
@@ -27,6 +27,7 @@ BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  golang(API) >= 1.24
 BuildRequires:  zsh
+Requires:       git-core
 
 %description
 Git Town provides additional Git commands that automate the creation,

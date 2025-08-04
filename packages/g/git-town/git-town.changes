@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Mon Aug 04 04:58:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 21.4.0:
+  * New Features
+    - The setup assistant now correctly handles existing
+      configuration settings in global Git metadata (#5201)
+    - When Git Town is unconfigured, it now runs the full setup
+      assistant instead of just asking for the main branch (#5057)
+    - git town set-parent now presents the same hierarchical branch
+      list as git town switch (#5259)
+    - When prompting for a parent branch, Git Town now also shows
+      the hierarchical list from git town switch (#5266)
+    - Added a configuration option and CLI switch to disable
+      automatic resolving of phantom merge conflicts for cases
+      where manual conflict resolution is preferred (#5317)
+  * Bug Fixes
+    - Phantom merge conflicts are now auto-resolved even when your
+      stack is rooted in a perennial branch instead of the main
+      branch (#5193)
+    - The glab connector now correctly updates merge proposal
+      targets (#5283)
+    - Git Town now also removes branch type overrides when it
+      deletes branches that were shipped at the remote (#5274)
+    - The setup assistant now cleans up local Git metadata when you
+      opt to save configuration globally (#5230)
+
+-------------------------------------------------------------------
+Mon Aug 04 04:52:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 21.3.0:
+  * New Features in setup assistant:
+    - now creates configuration files with name git-town.toml
+      instead of the deprecated git-branches.toml (#5162)
+    - now gives the user a chance to enter the observed regex and
+      contribution regex, (#5133, #5132)
+    - when entering perennial branches, the main and perennial
+      branches from the config file are now preselected and locked
+      (#5154)
+    - no longer asks for the dev remote if only one Git remote
+      exists (#5153)
+    - now updates Git metadata only if the user entered a different
+      value than already exists (#5127)
+    - no longer creates commented out entries (#5110)
+    - now explains how to run it manually (#5155)
+  * Bug Fixes
+    - updating the base branch in a stack using the gh connector
+      works now (#5163)
+    - setup assistant:
+      - now displays the entered value for the API token scope
+        (#5144)
+      - more consistent dialog captions (#5159)
+
+-------------------------------------------------------------------
+Mon Aug 04 04:48:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 21.2.0:
+  * New Features
+    - Git Town can now use GitHub's gh CLI to talk to the GitHub
+      API. No more messing with access tokens manually! (#1639)
+    - GitLab users get the same treatment: Git Town now integrates
+      with the glab CLI to access the GitLab API (#5079).
+    - Dropped the dependency on which on Unix-like systems. One
+      less external tool to worry about (#5060).
+    - Git Town is now in the official Arch Linux repositories.
+      Install with pacman -S git-town (#5015).
+    - Git Town is now also available on OpenSUSE Stable and
+      Tumbleweed.
+    - The Setup Assistant now validates the forge information you
+      enter works. If the connection fails, you get a chance to
+      enter the credentials again. No more silent
+      misconfigurations. (#3030).
+  * Bug Fixes
+    - git town diff-parent now shows only the changes introduced by
+      the current branch, even when it's behind its parent (#5053).
+    - The GitLab connector now handles the --title and --body
+      arguments correctly (#5072).
+    - Continuing a suspended Git Town command that needs forge
+      access now works correctly in all edge cases (#5098).
+    - All interactive dialogs now render properly in
+      80-character-wide terminals (#5074).
+    - The setup assistant now correctly pre-selects the token scope
+      you previously configured (#5046).
+
+-------------------------------------------------------------------
+Tue Jun 17 11:54:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Add Requires for git-core
+
+-------------------------------------------------------------------
 Mon Jun 16 05:40:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package git-town: Git branches made easy
