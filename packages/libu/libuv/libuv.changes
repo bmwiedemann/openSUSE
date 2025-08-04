@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 31 15:12:44 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Update to 1.51.0
+  * unix,win: accept NAN/INFINITY as file timestamps #4702
+  * win: add ENABLE_VIRTUAL_TERMINAL_INPUT raw tty mode #4688
+  * linux: align CPU quota calculation with Rust #4746
+  * win: fix leak in uv_os_tmpdir #4680
+  * linux: try preadv64/pwritev64 before preadv/pwritev #4683
+
+-------------------------------------------------------------------
 Mon Jul  7 13:11:03 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Unify the changelog format to make source_validator pass
