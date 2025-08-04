@@ -17,15 +17,16 @@
 
 
 Name:           hurl
-Version:        6.1.1
+Version:        7.0.0
 Release:        0
 Summary:        Run and test HTTP requests with plain text
 License:        Apache-2.0
 URL:            https://github.com/Orange-OpenSource/hurl
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-BuildRequires:  cargo >= 1.77.2
+BuildRequires:  cargo >= 1.88.0
 BuildRequires:  cargo-packaging
+BuildRequires:  clang-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  zstd

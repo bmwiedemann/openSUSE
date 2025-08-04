@@ -93,4 +93,12 @@
   * Fix predicate contains with none input #3868</comment>
     <requestid>1264655</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f99120e230f45fe1a5a67e69a16925f9</srcmd5>
+    <version>7.0.0</version>
+    <time>1754313903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297345</requestid>
+  </revision>
 </revisionlist>
