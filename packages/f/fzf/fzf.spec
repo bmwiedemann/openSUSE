@@ -1,7 +1,8 @@
 #
 # spec file for package fzf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +20,7 @@
 
 %global _lto_cflags %{nil}
 Name:           fzf
-Version:        0.65.0
+Version:        0.65.1
 Release:        0
 Summary:        A command-line fuzzy finder
 License:        MIT

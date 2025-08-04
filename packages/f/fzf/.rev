@@ -1073,4 +1073,20 @@ varienvironment able.
 </comment>
     <requestid>1295985</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>25f4d7479049138467a6d0bc9fb4ca9a</srcmd5>
+    <version>0.65.1</version>
+    <time>1754313886</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.65.1:
+  * Fixed incorrect $FZF_CLICK_HEADER_WORD and $FZF_CLICK_FOOTER_WORD
+    when the header or footer contains ANSI escape sequences and
+    tab characters.
+  * Fixed a bug where you cannot unset the default --nth using
+    change-nth action.
+  * Fixed a highlighting bug when using --color fg:dim,nth:
+    regular pattern over ANSI-colored items.
+</comment>
+    <requestid>1297323</requestid>
+  </revision>
 </revisionlist>
