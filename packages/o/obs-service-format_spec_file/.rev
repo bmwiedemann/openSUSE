@@ -809,4 +809,13 @@
   * Avoid using temporary files for tests</comment>
     <requestid>1296713</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>8a920c2f1ac8930e49f1eb8fecfa5158</srcmd5>
+    <version>20250804</version>
+    <time>1754313923</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250804:
+  * Remove more LLC and contributors also from the copyright strings</comment>
+    <requestid>1297481</requestid>
+  </revision>
 </revisionlist>
