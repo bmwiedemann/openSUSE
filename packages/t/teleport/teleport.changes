@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug  3 12:22:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.7.1:
+  * Fixed usage print for global --help flag. #57452
+  * Tctl top respects local teleport config file. #57353
+  * Fixed an issue backfilling CRLs during startup for
+    long-standing clusters. #57322
+  * Disable NLA in FIPS mode. #57308
+
+-------------------------------------------------------------------
 Fri Aug  1 13:04:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.7.0:
