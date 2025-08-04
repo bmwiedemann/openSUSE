@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 04 06:55:31 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 1.2.3:
+  * version: increment version
+  * feat: Return 1 if no dirs are found
+  * tests: add test for d0
+  * Fix multi-paths output when `depth` is `0`
+  * release: increment version
+
+-------------------------------------------------------------------
 Wed Jul 09 06:24:25 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 1.2.2:

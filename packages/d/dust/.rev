@@ -116,4 +116,17 @@
   * Fix: miscalculation of NTFS mount file sizes inside WSL (#487)</comment>
     <requestid>1291403</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>93e8b0bbb5e1878dbf43d058d986be1b</srcmd5>
+    <version>1.2.3</version>
+    <time>1754313928</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.3:
+  * version: increment version
+  * feat: Return 1 if no dirs are found
+  * tests: add test for d0
+  * Fix multi-paths output when `depth` is `0`
+  * release: increment version</comment>
+    <requestid>1297396</requestid>
+  </revision>
 </revisionlist>
