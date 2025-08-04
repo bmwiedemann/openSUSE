@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Aug 03 11:39:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.114:
+  * ignoring pull request events (#2064)
+
+-------------------------------------------------------------------
+Sun Aug 03 11:36:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.113:
+  * feat/support drift advanced mode (#2062)
+
+-------------------------------------------------------------------
+Sun Aug 03 11:31:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.112:
+  * fix docs
+  * feat/support layers (#2061)
+  * fix: critical security bug in manual mode project selection
+    (#2009)
+  * iterative caching for terragrunt configs (#2051)
+  * docs: add IaC setup steps to Helm deployment guide
+  * docs: convert quickstart guides to Steps format
+  * docs: add troubleshooting for GitHub App Invalid URL error
+  * docs: remove advanced configuration section from helm guide
+  * docs: add troubleshooting section to helm guide
+  * docs: add verification step to helm guide with visual examples
+  * docs: improve helm setup flow and clarify steps
+  * docs: add GitHub App setup screenshot
+  * docs: clarify hostname requires https:// prefix
+  * docs: improve helm setup with postgres and hostname config
+
+-------------------------------------------------------------------
 Thu Jul 24 11:48:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.111:
