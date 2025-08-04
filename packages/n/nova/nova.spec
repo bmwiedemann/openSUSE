@@ -1,7 +1,7 @@
 #
 # spec file for package nova
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nova
-Version:        3.11.6
+Version:        3.11.7
 Release:        0
 Summary:        Find outdated or deprecated Helm charts running in your cluster
 License:        Apache-2.0
