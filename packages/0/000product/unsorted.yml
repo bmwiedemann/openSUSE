@@ -16864,6 +16864,7 @@ unsorted:
   - libwinpr2-2 
   - libwireshark18 
   - libwiretap15 
+  - libwlembed-devel 
   - libwlroots-0_18 
   - libwlroots-0_19 
   - libwlroots12 
@@ -47619,8 +47620,6 @@ unsorted:
   - translate-toolkit-doc 
   - translator 
   - translator-lang 
-  - transmageddon 
-  - transmageddon-lang 
   - transmission 
   - transmission-daemon 
   - transmission-qt 
@@ -48115,6 +48114,8 @@ unsorted:
   - typelib-1_0-LibvirtGConfig-1_0 
   - typelib-1_0-LibvirtGLib-1_0 
   - typelib-1_0-LibvirtGObject-1_0 
+  - typelib-1_0-Libwlembed-0 
+  - typelib-1_0-Libxfce4libwlembed_gtk3-0 
   - typelib-1_0-Libxfce4panel-2_0 
   - typelib-1_0-Libxfce4windowing-0_0 
   - typelib-1_0-Libxfce4windowingui-0_0 
