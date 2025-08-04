@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 03 11:24:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.97.1:
+  * Bug Fixes
+    - Multiple EUS advisories where only some are fixed result in
+      unexpected vulnerabilities [#2840 #2841 @kzantow]
+
+-------------------------------------------------------------------
 Fri Aug 01 08:14:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.97.0:
