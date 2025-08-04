@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 01 08:14:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.65.0:
+  * fix(get-token): gracefully handle concurrent token cache writes
+  * feat(issue-update): add due-date functionality
+  * chore(deps): update module github.com/docker/cli to
+    v28.3.3+incompatible
+  * feat(issue): Remove --label and --not-label mutual exclusivity
+  * feat(mr): display file and line context for code comments
+  * feat(job artifact): Add --list-paths to print paths
+
+-------------------------------------------------------------------
 Thu Jul 24 07:47:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.64.0:
