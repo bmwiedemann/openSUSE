@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Aug 03 12:06:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.105.0:
+  * Features
+    - feat: support multiple yaml keys for 1 target @pkazi (#5696)
+    - feat: add Dasel v2 support for the JSON plugin @olblak
+      (#5757)
+  * Bug Fixes
+    - fix(actions) ensure HTML of change requests is valid (missing
+      closingtag for img) @dduportal (#5743)
+    - fix: remove linux/aarch64 from temurin e2e test @olblak
+      (#5698)
+  * Maintenance
+    - deps(github/action): bump all dependencies @updateclibot[bot]
+      (#5792)
+    - deps: bump buildkit && sops version @olblak (#5789)
+    - deps(go): bump module sigs.k8s.io/yaml to v1.6.0
+      @updateclibot[bot] (#5782)
+    - deps(go): bump module github.com/drone/go-scm to v1.40.3
+      @updateclibot[bot] (#5780)
+    - deps(go): bump module github.com/tomwright/dasel/v2 to v2.8.1
+      @updateclibot[bot] (#5769)
+    - chore(deps): bump github.com/docker/docker from
+      28.2.2+incompatible to 28.3.3+incompatible @dependabot[bot]
+      (#5752)
+    - deps(go): bump module github.com/yuin/goldmark to v1.7.13
+      @updateclibot[bot] (#5734)
+    - deps(github/action): bump all dependencies @updateclibot[bot]
+      (#5728)
+    - deps: bump golangci-lint to v2.3.0 @updateclibot[bot] (#5697)
+    - deps(updatecli/policies): bump all policies
+      @updateclibot[bot] (#5707)
+    - deps(github/action): bump all dependencies @updateclibot[bot]
+      (#5676)
+    - deps(go): bump module github.com/drone/go-scm to v1.40.2
+      @updateclibot[bot] (#5666)
+    - deps(go): bump module
+      github.com/testcontainers/testcontainers-go to v0.38.0
+      @updateclibot[bot] (#5665)
+
+-------------------------------------------------------------------
 Sun Jul 13 12:04:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.104.0:
