@@ -1,4 +1,347 @@
 -------------------------------------------------------------------
+Sun Aug 03 12:19:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.0:
+  * Upgrade notes
+    - Enabling ancestors for process events is now configured by a
+      new --enable-ancestors flag.
+      The following flags are being deprecarted in this (1.5) and
+      are scheduled for removal in the next (1.6):
+      - --enable-process-ancestors
+      - --enable-process-kprobe-ancestors
+      - --enable-process-tracepoint-ancestors
+      - --enable-process-uprobe-ancestors
+      - --enable-process-lsm-ancestors
+    - The logging library used by Tetragon is migrated from logrus
+      to log/slog.
+      This change is not expected to affect the end user, but it
+      may require some adjustments in custom scripts or tools that
+      parse Tetragon logs.
+      - level=warning is now level=warn
+  Changes from v1.4.1 to v1.5.0
+  * total: 391 commits, prs: 182 pr commits: 390
+  * Major Changes
+    - tetragon/windows: Support Windows create and exit process -
+      observer changes (#3577) by @ExceptionalHandler
+    - tetragon/windows: Support Windows create and exit process -
+      sensor changes (#3578) by @ExceptionalHandler
+    - tetragon/Windows: Add support for process create and exit -
+      ring-buffer (#3591) by @ExceptionalHandler
+    - tetragon/windows: Port tetragon on Windows -
+      cmd/tetragon/main.go (#3592) by @ExceptionalHandler
+  * Bugfixes
+    - helm: fix extraHookargs in rthooks (#3566) by @kkourt
+    - Fix event source pod attribution when env var
+      HUBBLE_NODE_NAME is set (#3609) by @odinuge
+    - fix(chart): correct operator securityContext values (#3681)
+      by @JefeDavis
+    - tracingpolicy: fix issue in argument order with the resolve
+      argument option (#3737) by @kkourt
+    - Fix an issue where inInitTree was not properly accounting
+      processes started before Tetragon. (#3827) by @will-isovalent
+    - tracinpolicy: respect syscall attribute in lists (#3895) by
+      @kkourt
+    - Fixes load sensor failure when mixing rate limited and non
+      rate limited kprobes. (#3903) by @mtardy
+    - bpf: fix issue with multiple inactive selectors (#3947) by
+      @kkourt
+  * Minor Changes
+    - tetragon/windows: Compilation only change to build config
+      package (#3537) by @ExceptionalHandler
+    - tetragon/windows: Port reader/namespace package to Windows
+      (#3548) by @ExceptionalHandler
+    - tetragon/windows: Port package errmetrics to Windows (#3534)
+      by @ExceptionalHandler
+    - tetragon/windows: Compilation only change for
+      pkg/metrics/syscallmetrics (#3530) by @ExceptionalHandler
+    - tetragon/windows: Port pkg/kernels to Windows (#3529) by
+      @ExceptionalHandler
+    - tetragon/windows: Compilation only change to compile cgroups
+      package (#3536) by @ExceptionalHandler
+    - tetragon/windows: Port pidfile package on Windows (#3532) by
+      @ExceptionalHandler
+    - tetragon/windows: Compilation only Change for pkg/procsyms on
+      Windows (#3533) by @ExceptionalHandler
+    - Windows: Build tetragon on Windows (Part -2) (#3488) by
+      @ExceptionalHandler
+    - tetragon/windows: Compilation only change for
+      pkg/metricconfig package on Windows (#3531) by
+      @ExceptionalHandler
+    - tetragon: add support for path offload (#3480) by @olsajiri
+    - tetragon/windows: port package sensors/exec/procevents into
+      Windows (#3561) by @ExceptionalHandler
+    - tetragon/windows: Compilation change to build testutils
+      (#3539) by @ExceptionalHandler
+    - tetragon/windows: Add default definitions for Windows (#3538)
+      by @ExceptionalHandler
+    - tetragon/widows: Add signal translation for Windows (#3547)
+      by @ExceptionalHandler
+    - tetragon/windows: Port bpf package into Windows (#3563) by
+      @ExceptionalHandler
+    - tetragon/windows: Port cmd/tetra binary into Windows (#3573)
+      by @ExceptionalHandler
+    - tetragon: rhel7 changes (#3574) by @olsajiri
+    - tetragon: fix path permissions (#3599) by @olsajiri
+    - Enhance Tetragon Events with Pod Annotations Support (#3527)
+      by @cy83rc0llect0r
+    - tetragon: add raw tracepoints (#3558) by @olsajiri
+    - PodInfo: Add .process.pod.container.privileged field (#3661)
+      by @tpapagian
+    - helm: Change default metrics scrape interval to 60s (#3675)
+      by @ghost
+    - k8s: Remove the logic to handle v1beta1 CRDs (#3677) by
+      @michi-covalent
+    - tetragon: Allow uprobes to use actions (#3676) by @olsajiri
+    - tetragon: Fix check_cap tester program call (#3688) by
+      @olsajiri
+    - helm: remove deprecated ociHookSetup section (#3704) by
+      @kkourt
+    - policyfilter: Add support for repo key in containerSelector
+      (#3709) by @tpapagian
+    - tetragon/windows: Fix observer to make it event independent
+      (#3716) by @ExceptionalHandler
+    - tracingpolicy: support IPv4-mapped IPv6 address form in
+      selectors. (#3714) by @kobrineli
+    - tetragon: Fix kprobe argument printers order (#3725) by
+      @olsajiri
+    - tetragon: Move some event_config values to arrays (#3738) by
+      @olsajiri
+    - tetragon: allow to define uprobe with offset and
+      ref_ctr_offset (#3695) by @olsajiri
+    - Tetragon events now contain Kubernetes node labels. (#3759)
+      by @michi-covalent
+    - tetragon: Remove superficial program.MapLoad.Index (#3756) by
+      @olsajiri
+    - tetragon: Deprecate enable-process-ancestors boolean flags
+      (#3581) by @t0x01
+    - tetragon: assorted fixes (#3804) by @olsajiri
+    - tetragon: do proper cleanup for uprobe and tracepoint sensors
+      (#3822) by @olsajiri
+    - tracingpolicy: allow to ignore kprobes for calls that cannot
+      be found (#3825) by @kkourt
+    - logging: Migrate from logrus to slog (#3814) by @sayboras
+    - tetragon/windows: Support multiple programs from a single
+      collection (#3832) by @ExceptionalHandler
+    - RFC tetragon: Do not rate limit exit events (#3842) by
+      @olsajiri
+    - tetragon: assorted fixes (#3846) by @olsajiri
+    - tetragon/windows: Add bind program type GUID (#3851) by
+      @ExceptionalHandler
+    - sensor: reduce logs in loading/unloading (#3853) by @kkourt
+    - tetragon: factor args processing (#3730) by @olsajiri
+    - tetragon: matchBinaries followChildren fixes (#3821) by
+      @olsajiri
+    - tetragon: Add macros for atomic instructions (#3869) by
+      @olsajiri
+    - tracingpolicies: add CapabiliitesGained operator (#3887) by
+      @kkourt
+    - helm: add tetragon.nameOverride and
+      tetragonOperator.nameOverride (#3864) by @slntopp
+    - bugtool: Collect pprof CPU profile (#3916) by @michi-covalent
+    - tetragon: add support to follow children of old process
+      (#3901) by @olsajiri
+    - tracingpolicy: return error on unsupported number of values
+      (#3934) by @kkourt
+  * CI Changes
+    - e2e: port forwarding fixes (#3555) by @kkourt
+    - ci: In "Tetragon Go Test" add vmlinux in artifact when test
+      fails (#3526) by @tdaudi
+    - Revert "renovate: add v1.2 for golang 1.23" (#3598) by
+      @mtardy
+    - Update golangci-lint to v2 and fix newly discovered issues in
+      the code base (#3607) by @mtardy
+    - linters: take the golangci-lint v2 bump opportunity to enable
+      more linters (#3608) by @mtardy
+    - tetragon/windows: Add windows compile as a ci step (#3611) by
+      @ExceptionalHandler
+    - tetragon/windows: Run unit tests on Windows (#3637) by
+      @ExceptionalHandler
+    - tetragon/windows: Build windows bpf program and smoke test
+      tetragon (#3645) by @ExceptionalHandler
+    - ci: running golangci-lint on windows (#3565) by @mtardy
+    - policyfilter/e2e: Fix e2e tests (#3733) by @tpapagian
+    - tetragon/windows: CI Fix attempt by adding -Wait switch in
+      racy steps (#3736) by @ExceptionalHandler
+    - vmtests CI: avoid running duplicate tests (#3694) by @kkourt
+    - e2e: Don't install Cilium (#3815) by @michi-covalent
+    - e2e: Capture Tetragon state on failure (#3812) by
+      @michi-covalent
+    - e2e: Make uninstalling Tetragon optional (#3835) by
+      @michi-covalent
+    - e2e/tests: Make WaitForTracingPolicy configurable (#3858) by
+      @tpapagian
+    - Fix CI (#3874) by @ExceptionalHandler
+    - CI: Push OCI Helm chart (#3915) by @michi-covalent
+  * Documentation changes
+    - feat: replace community X link (#3606) by @yasell
+    - feat: develop Tetragon Use Cases pages (#3277) by
+      @annaindistress
+    - doc: update export filtering example (#3626) by @yeongjukang
+    - doc: add events.proto link for event filters (#3641) by
+      @yeongjukang
+    - docs: improve features pages copy (#3640) by @paularah
+    - examples: use explicit wording about guarantees (#3663) by
+      @kkourt
+    - doc: fix policy-library sshd anchor link & title (#3678) by
+      @tico88612
+    - docs: update rthooks installation (#3684) by @kkourt
+    - doc: fix cgroup rate explanation not match the parameter
+      (#3699) by @tico88612
+    - doc: fix some links in documentation (#3642) by
+      @MickaelFontes
+    - docs: update homepage announcement section (#3673) by
+      @paularah
+    - docs: Replace example file for matchCapabilityChanges (#3790)
+      by @sayboras
+    - Update selectors.md (#3796) by @itsCheithanya
+    - docs: add video of KubeCon Japan 2025 (#3860) by
+      @yukinakanaka
+    - fix "security_inode_copy_up" example in docs (#3870) by
+      @simsor
+    - docs: Clarify that export filters (denylist/allowlist) only
+      apply to JSON file exports, not gRPC streaming (#3888) by
+      @f4r00q
+    - docs: add instruction to cleanup getting started network
+      policy (#3904) by @mtardy
+  * Dependency updates
+    - chore(deps): update renovatebot/github-action action to v42
+      (main) (#3754) by @cilium-renovate[bot]
+    - deps: update controller-tools to v0.18.0 and k8s to v0.33.0
+      (#3768) by @mtardy
+    - update cilium/ebpf to v0.19.0 (#3849) by @lmb
+  * Misc Changes
+    - Prepare for v1.4.1 release (#3893) by @mtardy
+    - Remove LoadBtf() and add test wrapper for single btf use
+      (#3414) by @tdaudi
+    - Starting v1.5 development (#3549) by @kkourt
+    - tetragon/windows: Use a package-level 'not supported' error
+      variable (#3562) by @ExceptionalHandler
+    - tetragon/windows: Build reader/path and reader/network
+      packages on Windows (#3559) by @ExceptionalHandler
+    - tetragon/windows: Port reader/proc package on Windows (#3560)
+      by @ExceptionalHandler
+    - tetragon/windows: Port process cache package on Windows
+      (#3575) by @ExceptionalHandler
+    - podinfo: Add spec.nodeName field (#3580) by @michi-covalent
+    - watcher: Watch namespaces (#3603) by @michi-covalent
+    - tetragon/windows: The process monitor bpf program (#3579) by
+      @ExceptionalHandler
+    - Restore proc_test.go files (#3616) by @ExceptionalHandler
+    - tetragon/windows: Port Unit Tests in cmd/tetragon on Windows
+      (#3618) by @ExceptionalHandler
+    - tetragon/windows: Exclude vmtests unit tests from being
+      compiled on Windows (#3619) by @ExceptionalHandler
+    - tetragon/windows: Exclude some unit tests for Windows (#3620)
+      by @ExceptionalHandler
+    - tetragon/windows: Port reader unit tests into Windows (#3622)
+      by @ExceptionalHandler
+    - tetragon/windows: Port unit tests in grpc package into
+      Windows (#3621) by @ExceptionalHandler
+    - tetragon/windows: Fix some logging in ringbuf and exec
+      observer implementations (#3623) by @ExceptionalHandler
+    - go.mod: Consistently add replace directives (#3638) by
+      @michi-covalent
+    - observertesthelper: Remove unused crd option (#3650) by
+      @michi-covalent
+    - Refactor Pod watcher (#3652) by @michi-covalent
+    - Use controller-runtime manager to access namespaces (#3643)
+      by @michi-covalent
+    - Get tracing policy informers from controller-runtime manager
+      (#3651) by @michi-covalent
+    - Fix / clean up repo-docker-run.sh (#3654) by @michi-covalent
+    - GetCgroupIdFromPath: add path to error (#3666) by @kkourt
+    - Refactor waitCRDs function (#3657) by @michi-covalent
+    - buf (codegen) fixes (#3683) by @kkourt
+    - fix(deps): Remove metallb dependency (#3686) by @joestringer
+    - k8s: Let controller-runtime manage the pod informer (#3679)
+      by @michi-covalent
+    - sensors: cache spec when loading maps (#3685) by @kkourt
+    - loaderCache: copy map spec before using it (#3693) by @kkourt
+    - watcher: Remove unused AddPodInformer function (#3690) by
+      @michi-covalent
+    - test: Remove duplicate fake k8s watcher (#3689) by
+      @michi-covalent
+    - watcher / k8s cleanup (#3696) by @michi-covalent
+    - Feature pages nits (#3713) by @xmulligan
+    - crdutils: Move test helpers to dedicated file and export them
+      (#3723) by @ghost
+    - Temporarily disable controller-runtime metrics (#3740) by
+      @michi-covalent
+    - tetragon/windows: Add Multiple program attach types (#3735)
+      by @ExceptionalHandler
+    - reduce image size by compressing bpf objs (#3747) by @kkourt
+    - tetragon/windows: Fix exec/exit event timestamp in event json
+      (#3748) by @ExceptionalHandler
+    - Fix "not addr" filters across address families (#3758) by
+      @kevsecurity
+    - Sensors: Use require over assert in tests (#3760) by
+      @kevsecurity
+    - deps: Remove cilium hubble package dependency (#3764) by
+      @sayboras
+    - pkg/k8s: generate deepcopy function on k8s types (#3765) by
+      @mtardy
+    - deps: Remove Cilium slim k8s package (#3766) by @sayboras
+    - linters: enable testifylints and fix issues (#3769) by
+      @mtardy
+    - deps: Remove all cilium/cilium package dependency (#3767) by
+      @sayboras
+    - refactor: Rename functions in the node package (#3786) by
+      @michi-covalent
+    - btf: Use user-provided KernelTypes if the btfSpec is nil
+      (#3773) by @tpapagian
+    - tetragon/windows: add uid to exec events in Windows (#3785)
+      by @ExceptionalHandler
+    - Do proper cleanup on maps during sensor unload (#3798) by
+      @tpapagian
+    - tools: Avoid picking protoc file randomly (#3823) by
+      @sayboras
+    - helm: fix typo in metricsLabelFilter comment (#3824) by
+      @tklauser
+    - Tracing: Convert network tests to test suite (#3830) by
+      @kevsecurity
+    - Use Go 1.19 atomic types (#3833) by @tklauser
+    - confmap: use config.FindProgramFile() (#3834) by @kkourt
+    - make gen_compile_commands for tetragon (#3698) by @0xMALVEE
+    - tetra: export common.RetryPolicy methods (#3847) by @mtardy
+    - fix mask issue for capability types (#3852) by @kkourt
+    - btf: skip arg validation if resolve is set (#3848) by @kkourt
+    - tetragon/windows: Add sockops attach type GUID to windows
+      loader (#3859) by @ExceptionalHandler
+    - tetragon/windows: Fix ancestor list (#3863) by
+      @ExceptionalHandler
+    - BTF validation updates (#3868) by @kkourt
+    - cel: Move heavy operations outside of loops (#3871) by
+      @tpapagian
+    - cel: Apply EvalCEL only on events that are related to the
+      rule (#3875) by @tpapagian
+    - Improve error messages from reading kallsyms. (#3891) by
+      @mtardy
+    - Explain why LSM attach might fail on arm64 <6.0 kernels.
+      (#3894) by @mtardy
+    - github: update issue template to use issue types (#3902) by
+      @mtardy
+    - move ExecveMapUpdater to its own package (#3907) by @kkourt
+    - cel: Remove memory allocation on every event (#3876) by
+      @tpapagian
+    - refactor: Clean up composite literals and nil comparisons
+      (#3918) by @yeongjukang
+    - helm: add action on tetragon servicemonitor (#3908) by
+      @HujinoKun
+    - contrib: Update gitignore (#3927) by @tpapagian
+    - btf validation fixes (#3929) by @kkourt
+    - feat(helm): add icon section on Chart.yaml file (#3930) by
+      @HujinoKun
+    - chore(helm): bump helm chart version (#3936) by @HujinoKun
+    - tetragon: Forgotten leftover for v6.12 variant (#3937) by
+      @olsajiri
+    - bpf: Use bpf_ktime_get_boot_ns when available (#3938) by
+      @tpapagian
+    - fix: Force remove tetragon-clang container for the
+      tetragon-bpf target in case it's still running. (#3935) by
+      @acamatcisco
+    - Prepare for v1.5.0 release (#3950) by @tpapagian
+
+-------------------------------------------------------------------
 Wed Jul 16 06:31:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.1:
