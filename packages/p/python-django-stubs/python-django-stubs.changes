@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Aug  4 06:54:44 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to version 5.2.2:
+  * Version 5.2.2 release (#2747)
+  * Fix `FormMixin` plugin (#2746)
+  * `BasePasswordHasher.safe_summary` commonly uses `_StrOrPromise` (#2742)
+  * Minor Plugin improvements and refactoring (#2745)
+  * Update mypy to 1.17.0 (#2744)
+  * Improve `.values()` types when kw expressions are used (#2739)
+  * [pre-commit.ci] pre-commit autoupdate (#2740)
+  * Don't try to patch automatically symbols in `django.contrib.auth.forms` (#2738)
+  * Fix issue introduced via #2509 (#2737)
+  * Update django to 5.2.4 (#2736)
+  * Change resolve_callables argument type to Mapping (#2735)
+  * Fix aliasing of choices in a class in choices plugin (#2734)
+  * add stubs for `QuerySet._raw_delete` (#2733)
+  * [pre-commit.ci] pre-commit autoupdate (#2730)
+  * Update dependabot.yml (#2728)
+  * [pre-commit.ci] pre-commit autoupdate (#2726)
+  * [pre-commit.ci] pre-commit autoupdate (#2722)
+  * Add `join` to `JSONObject` (#2721)
+  * Add missing instance variable declarations for `RawQuerySet` (#2718)
+  * restore iterability of ResolverMatch (#2719)
+  * fix stubs of HttpRequest read / readine (#2714)
+  * Fix reveal_type to return its argument (#2716)
+
+-------------------------------------------------------------------
 Mon Jul  7 09:26:23 UTC 2025 - Enno Gotthold <egotthold@suse.com>
 
 - Initial packaging of version 5.2.1
