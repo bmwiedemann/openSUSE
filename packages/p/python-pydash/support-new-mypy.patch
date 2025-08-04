@@ -1,0 +1,168 @@
+Index: pydash-8.0.5/pyproject.toml
+===================================================================
+--- pydash-8.0.5.orig/pyproject.toml
++++ pydash-8.0.5/pyproject.toml
+@@ -106,7 +106,7 @@ docstring-code-format = true
+ 
+ [tool.mypy]
+ mypy_path = ["src"]
+-python_version = "3.8"
++python_version = "3.9"
+ exclude = [
+     "tests/pytest_mypy_testing",
+ ]
+Index: pydash-8.0.5/tests/pytest_mypy_testing/test_arrays.py
+===================================================================
+--- pydash-8.0.5.orig/tests/pytest_mypy_testing/test_arrays.py
++++ pydash-8.0.5/tests/pytest_mypy_testing/test_arrays.py
+@@ -408,7 +408,7 @@ def test_mypy_unshift() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_unzip() -> None:
+-    reveal_type(_.unzip([(1, 4, 7), (2, 5, 8), (3, 6, 9)]))  # R: builtins.list[Tuple[builtins.int, builtins.int, builtins.int]]
++    reveal_type(_.unzip([(1, 4, 7), (2, 5, 8), (3, 6, 9)]))  # R: builtins.list[tuple[builtins.int, builtins.int, builtins.int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -446,8 +446,8 @@ def test_mypy_xor_with() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_zip_() -> None:
+-    reveal_type(_.zip_([1, 2, 3], [4, 5, 6], [7, 8, 9]))  # R: builtins.list[Tuple[builtins.int, builtins.int, builtins.int]]
+-    reveal_type(_.zip_([1, 2, 3], ["one", "two", "three"]))  # R: builtins.list[Tuple[builtins.int, builtins.str]]
++    reveal_type(_.zip_([1, 2, 3], [4, 5, 6], [7, 8, 9]))  # R: builtins.list[tuple[builtins.int, builtins.int, builtins.int]]
++    reveal_type(_.zip_([1, 2, 3], ["one", "two", "three"]))  # R: builtins.list[tuple[builtins.int, builtins.str]]
+ 
+ 
+ @pytest.mark.mypy_testing
+Index: pydash-8.0.5/tests/pytest_mypy_testing/test_functions.py
+===================================================================
+--- pydash-8.0.5.orig/tests/pytest_mypy_testing/test_functions.py
++++ pydash-8.0.5/tests/pytest_mypy_testing/test_functions.py
+@@ -21,8 +21,8 @@ def test_mypy_ary() -> None:
+         return (a, b, c, d)
+ 
+     ary_func = _.ary(func, 2)
+-    reveal_type(ary_func(1, 2, 3, 4, 5, 6))  # R: Tuple[builtins.int, builtins.int, builtins.int, builtins.int]
+-    reveal_type(ary_func(1, 2, 3, 4, 5, 6, c=10, d=20))  # R: Tuple[builtins.int, builtins.int, builtins.int, builtins.int]
++    reveal_type(ary_func(1, 2, 3, 4, 5, 6))  # R: tuple[builtins.int, builtins.int, builtins.int, builtins.int]
++    reveal_type(ary_func(1, 2, 3, 4, 5, 6, c=10, d=20))  # R: tuple[builtins.int, builtins.int, builtins.int, builtins.int]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -31,7 +31,7 @@ def test_mypy_before() -> None:
+         return (a, b, c)
+ 
+     before_func = _.before(func, 3)
+-    reveal_type(before_func(1, 2, 3))  # R: Union[Tuple[builtins.int, builtins.int, builtins.int], None]
++    reveal_type(before_func(1, 2, 3))  # R: Union[tuple[builtins.int, builtins.int, builtins.int], None]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -51,16 +51,16 @@ def test_mypy_curry() -> None:
+         return (a, b, c)
+ 
+     currier = _.curry(func)
+-    reveal_type(currier)  # R: pydash.functions.CurryThree[builtins.int, builtins.str, builtins.bytes, Tuple[builtins.int, builtins.str, builtins.bytes]]
++    reveal_type(currier)  # R: pydash.functions.CurryThree[builtins.int, builtins.str, builtins.bytes, tuple[builtins.int, builtins.str, builtins.bytes]]
+ 
+     currier1 = currier(1)
+-    reveal_type(currier1)  # R: pydash.functions.CurryTwo[builtins.str, builtins.bytes, Tuple[builtins.int, builtins.str, builtins.bytes]]
++    reveal_type(currier1)  # R: pydash.functions.CurryTwo[builtins.str, builtins.bytes, tuple[builtins.int, builtins.str, builtins.bytes]]
+ 
+     currier2 = currier1("hi")
+-    reveal_type(currier2)  # R: pydash.functions.CurryOne[builtins.bytes, Tuple[builtins.int, builtins.str, builtins.bytes]]
++    reveal_type(currier2)  # R: pydash.functions.CurryOne[builtins.bytes, tuple[builtins.int, builtins.str, builtins.bytes]]
+ 
+     currier3 = currier2(b"hi again")
+-    reveal_type(currier3)  # R: Tuple[builtins.int, builtins.str, builtins.bytes]
++    reveal_type(currier3)  # R: tuple[builtins.int, builtins.str, builtins.bytes]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -69,16 +69,16 @@ def test_mypy_curry_right() -> None:
+         return (a, b, c)
+ 
+     currier = _.curry_right(func)
+-    reveal_type(currier)  # R: pydash.functions.CurryRightThree[builtins.bytes, builtins.str, builtins.int, Tuple[builtins.int, builtins.str, builtins.bytes]]
++    reveal_type(currier)  # R: pydash.functions.CurryRightThree[builtins.bytes, builtins.str, builtins.int, tuple[builtins.int, builtins.str, builtins.bytes]]
+ 
+     currier1 = currier(b"hi again")
+-    reveal_type(currier1)  # R: pydash.functions.CurryRightTwo[builtins.str, builtins.int, Tuple[builtins.int, builtins.str, builtins.bytes]]
++    reveal_type(currier1)  # R: pydash.functions.CurryRightTwo[builtins.str, builtins.int, tuple[builtins.int, builtins.str, builtins.bytes]]
+ 
+     currier2 = currier1("hi")
+-    reveal_type(currier2)  # R: pydash.functions.CurryRightOne[builtins.int, Tuple[builtins.int, builtins.str, builtins.bytes]]
++    reveal_type(currier2)  # R: pydash.functions.CurryRightOne[builtins.int, tuple[builtins.int, builtins.str, builtins.bytes]]
+ 
+     currier3 = currier2(1)
+-    reveal_type(currier3)  # R: Tuple[builtins.int, builtins.str, builtins.bytes]
++    reveal_type(currier3)  # R: tuple[builtins.int, builtins.str, builtins.bytes]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -88,8 +88,8 @@ def test_mypy_debounce() -> None:
+ 
+     debounced = _.debounce(func, 5000)
+ 
+-    reveal_type(debounced)  # R: pydash.functions.Debounce[[a: builtins.int, b: builtins.str], Tuple[builtins.int, builtins.str]]
+-    reveal_type(debounced(5, "hi"))  # R: Tuple[builtins.int, builtins.str]
++    reveal_type(debounced)  # R: pydash.functions.Debounce[[a: builtins.int, b: builtins.str], tuple[builtins.int, builtins.str]]
++    reveal_type(debounced(5, "hi"))  # R: tuple[builtins.int, builtins.str]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -97,7 +97,7 @@ def test_mypy_delay() -> None:
+     def func(a: int, b: str) -> t.Tuple[int, str]:
+         return (a, b)
+ 
+-    reveal_type(_.delay(func, 0, 5, "hi"))  # R: Tuple[builtins.int, builtins.str]
++    reveal_type(_.delay(func, 0, 5, "hi"))  # R: tuple[builtins.int, builtins.str]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -119,7 +119,7 @@ def test_mypy_flip() -> None:
+     def func(a: int, b: str, c: bytes) -> t.Tuple[int, str, bytes]:
+         return (a, b, c)
+ 
+-    reveal_type(_.flip(func))  # R: def (builtins.bytes, builtins.str, builtins.int) -> Tuple[builtins.int, builtins.str, builtins.bytes]
++    reveal_type(_.flip(func))  # R: def (builtins.bytes, builtins.str, builtins.int) -> tuple[builtins.int, builtins.str, builtins.bytes]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -271,9 +271,9 @@ def test_mypy_unary() -> None:
+         return (a, b, c, d)
+ 
+     unary_func = _.unary(func)
+-    reveal_type(unary_func)  # R: pydash.functions.Ary[Tuple[builtins.int, builtins.int, builtins.int, builtins.int]]
+-    reveal_type(unary_func(1, 2, 3, 4, 5, 6))  # R: Tuple[builtins.int, builtins.int, builtins.int, builtins.int]
+-    reveal_type(unary_func(1, 2, 3, 4, 5, 6, c=10, d=20))  # R: Tuple[builtins.int, builtins.int, builtins.int, builtins.int]
++    reveal_type(unary_func)  # R: pydash.functions.Ary[tuple[builtins.int, builtins.int, builtins.int, builtins.int]]
++    reveal_type(unary_func(1, 2, 3, 4, 5, 6))  # R: tuple[builtins.int, builtins.int, builtins.int, builtins.int]
++    reveal_type(unary_func(1, 2, 3, 4, 5, 6, c=10, d=20))  # R: tuple[builtins.int, builtins.int, builtins.int, builtins.int]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -282,5 +282,5 @@ def test_mypy_wrap() -> None:
+         return (x, y)
+ 
+     wrapper = _.wrap('hello', as_tuple)
+-    reveal_type(wrapper)  # R: pydash.functions.Partial[Tuple[builtins.str, builtins.int]]
+-    reveal_type(wrapper(1))  # R: Tuple[builtins.str, builtins.int]
++    reveal_type(wrapper)  # R: pydash.functions.Partial[tuple[builtins.str, builtins.int]]
++    reveal_type(wrapper(1))  # R: tuple[builtins.str, builtins.int]
+Index: pydash-8.0.5/tests/pytest_mypy_testing/test_objects.py
+===================================================================
+--- pydash-8.0.5.orig/tests/pytest_mypy_testing/test_objects.py
++++ pydash-8.0.5/tests/pytest_mypy_testing/test_objects.py
+@@ -299,8 +299,8 @@ def test_mypy_to_number() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_to_pairs() -> None:
+-    reveal_type(_.to_pairs([1, 2, 3, 4]))  # R: builtins.list[Tuple[builtins.int, builtins.int]]
+-    reveal_type(_.to_pairs({"a": 1}))  # R: builtins.list[Tuple[builtins.str, builtins.int]]
++    reveal_type(_.to_pairs([1, 2, 3, 4]))  # R: builtins.list[tuple[builtins.int, builtins.int]]
++    reveal_type(_.to_pairs({"a": 1}))  # R: builtins.list[tuple[builtins.str, builtins.int]]
+     reveal_type(_.to_pairs(MyClass()))  # R: builtins.list[Any]
+ 
+ 

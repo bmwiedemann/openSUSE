@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  4 02:14:58 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-new-mypy.patch:
+  * Support newer mypy than upstream.
+
+-------------------------------------------------------------------
 Wed Feb  5 13:06:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 8.0.5

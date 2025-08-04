@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydash
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        The kitchen sink of Python functional utility libraries
 License:        MIT
 URL:            https://github.com/dgilland/pydash
 Source:         https://files.pythonhosted.org/packages/source/p/pydash/pydash-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support newer mypy
+Patch0:         support-new-mypy.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module invoke}
 BuildRequires:  %{python_module pip}
