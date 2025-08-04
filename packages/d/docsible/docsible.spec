@@ -38,7 +38,7 @@
 %endif
 
 Name:           docsible
-Version:        0.7.24
+Version:        0.7.25
 Release:        0
 Summary:        Auto documentation for Ansible roles and collections
 License:        MIT
