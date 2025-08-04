@@ -517,4 +517,14 @@
     mechanic is used.</comment>
     <requestid>1295115</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>72cfd7a20e571794ea71f0a710cc24a6</srcmd5>
+    <version>0.6.11</version>
+    <time>1754314302</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.6.11:
+  * Exclude vendor name in media.1/products file (backward compatibility)
+  * Add appstream data to repomd.xml (boo#1243078)</comment>
+    <requestid>1297422</requestid>
+  </revision>
 </revisionlist>

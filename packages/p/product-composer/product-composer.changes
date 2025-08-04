@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  4 08:03:58 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.6.11:
+  * Exclude vendor name in media.1/products file (backward compatibility)
+  * Add appstream data to repomd.xml (boo#1243078)
+
+-------------------------------------------------------------------
 Tue Jul 22 14:01:36 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.6.10:
