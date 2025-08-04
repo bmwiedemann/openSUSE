@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug  4 04:46:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.38.9:
+  * build(deps): bump github.com/anchore/grype from 0.97.0 to 0.97.1
+    by @dependabot[bot] in #1708
+
+-------------------------------------------------------------------
+Sun Aug 03 11:22:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.8:
+  * build(deps): bump github.com/anchore/grype from 0.97.0 to
+    0.97.1
+  * build(deps): bump cloud.google.com/go/storage from 1.55.0 to
+    1.56.0
+  * build(deps): bump chainguard.dev/melange in the chainguard
+    group
+
+-------------------------------------------------------------------
 Fri Aug  1 12:00:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.38.7:
