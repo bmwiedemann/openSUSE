@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Aug 03 11:43:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.12.0:
+  * Update Rancher refs to v2.12.0 (#453)
+  * Pre-release bump of dependencies for v2.12.0 (#448)
+  * Support linux/arm64 platform (#447)
+  * Bump rancher/rancher to v2.12.0-alpha11 (#444)
+  * [main] Bump dependencies (#420)
+
+-------------------------------------------------------------------
+Sun Aug 03 11:36:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.11.4:
+  * Update Rancher refs to v2.11.4 (#454)
+  * [v2.11] Support linux/arm64 platform (#451)
+  * [v2.11] Pre-release bump of dependencies for v2.11.4 (#449)
+
+-------------------------------------------------------------------
 Mon Jun 30 06:25:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.11.3:
