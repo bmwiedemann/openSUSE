@@ -30,8 +30,8 @@
 %endif
 
 Name:           incus
-Version:        6.14
-%define tag_version 6.14.0
+Version:        6.15
+%define tag_version 6.15.0
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -58,7 +58,7 @@ Source130:      %{name}-config.yml
 Source201:      %{name}.dnsmasq
 BuildRequires:  fdupes
 BuildRequires:  file
-BuildRequires:  go >= 1.22.7
+BuildRequires:  go >= 1.23.7
 BuildRequires:  golang-packaging
 BuildRequires:  libacl-devel
 BuildRequires:  libcap-devel

@@ -84,4 +84,12 @@
   * Database logic moved to our code generator</comment>
     <requestid>1290808</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4f9484bb033710f07072b45ad85dd3b8</srcmd5>
+    <version>6.15</version>
+    <time>1754313913</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297392</requestid>
+  </revision>
 </revisionlist>

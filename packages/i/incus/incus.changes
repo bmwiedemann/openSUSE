@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug  4 06:49:57 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Incus 6.15. See upstream changelog online at
+  <https://discuss.linuxcontainers.org/t/incus-6-15-has-been-released/24333>
+
+ + Authentication support for OCI registries
+ + Webhook as a logging target
+ + More control over memory hotplug behavior
+ + Persistent CD-ROM ejection in VMs
+ + Configurable WWN for VM disk devices
+ + Dynamic IPv6 network address
+ + Configurable keepalive mode in the CLI
+ + Markdown support as an output format in the CLI
+ + More server-side filtering
+ * Switched to using netlink for network configuration
+
+-------------------------------------------------------------------
 Sat Jul  5 16:29:35 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Incus 6.14. See upstream changelog online at
