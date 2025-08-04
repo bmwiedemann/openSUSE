@@ -170,4 +170,15 @@
   * comm: assert that password size is positive</comment>
     <requestid>1255510</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c352bc3b6fc0a3d8f856d9b06160e0d3</srcmd5>
+    <version>1.8.3</version>
+    <time>1754313915</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.3:
+  * Ignore SIGUSR1 in the backend child process
+  * main: change background color to #a3a3a3
+  * Correct border thickness on typing indicator</comment>
+    <requestid>1297390</requestid>
+  </revision>
 </revisionlist>

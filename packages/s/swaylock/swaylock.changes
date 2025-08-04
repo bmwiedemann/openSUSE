@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug  4 06:53:55 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.3:
+  * Ignore SIGUSR1 in the backend child process
+  * main: change background color to #a3a3a3
+  * Correct border thickness on typing indicator
+
+-------------------------------------------------------------------
 Mon Mar 24 07:00:20 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.2:
