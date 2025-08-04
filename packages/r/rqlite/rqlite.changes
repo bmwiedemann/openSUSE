@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug  3 21:45:29 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.43.1
+  * rqlite shell .dump supports limiting tables
+  * Protect table-specific dumping against SQL injection
+  * Support backing up specific tables
+  * Add "running inside Kubernetes" hint to /status
+  * Rollback transaction if restore fails
+  * Support providing backups in DELETE mode
+  * Add Raft transport-level logging
+
+-------------------------------------------------------------------
 Wed Jul 23 19:18:17 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 8.41.0:
