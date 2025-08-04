@@ -1,0 +1,65 @@
+Index: sphinx-theme-builder-0.2.0b2/tests/conftest.py
+===================================================================
+--- sphinx-theme-builder-0.2.0b2.orig/tests/conftest.py
++++ sphinx-theme-builder-0.2.0b2/tests/conftest.py
+@@ -1,5 +1,6 @@
+ import contextlib
+ import errno
++import inspect
+ import os
+ import shutil
+ import stat
+@@ -17,7 +18,10 @@ from click.testing import CliRunner
+ # Fixtures
+ @pytest.fixture
+ def runner() -> CliRunner:
+-    return CliRunner(mix_stderr=False)
++    if inspect.signature(click.testing.CliRunner).parameters.get("mix_stderr"):
++        return click.testing.CliRunner(mix_stderr=False)
++    else:
++        return click.testing.CliRunner()
+ 
+ 
+ @pytest.fixture
+Index: sphinx-theme-builder-0.2.0b2/tests/workflow/test_cli.py
+===================================================================
+--- sphinx-theme-builder-0.2.0b2.orig/tests/workflow/test_cli.py
++++ sphinx-theme-builder-0.2.0b2/tests/workflow/test_cli.py
+@@ -8,8 +8,8 @@ class TestCLIRoot:
+     def test_no_arguments(self, runner: CliRunner, cli: Group) -> None:
+         process = runner.invoke(cli, [])
+ 
+-        assert process.exit_code == 0
+-        assert process.stdout
++        assert process.exit_code in (0, 2)
++        assert process.stdout == ''
+ 
+     def test_help(self, runner: CliRunner, cli: Group) -> None:
+         process = runner.invoke(cli, ["--help"])
+@@ -23,4 +23,4 @@ class TestCLIRoot:
+         process_one = runner.invoke(cli, [])
+         process_two = runner.invoke(cli, ["--help"])
+ 
+-        assert process_one.stdout == process_two.stdout
++        assert process_two.stdout in process_one.stderr
+Index: sphinx-theme-builder-0.2.0b2/tests/workflow/test_new.py
+===================================================================
+--- sphinx-theme-builder-0.2.0b2.orig/tests/workflow/test_new.py
++++ sphinx-theme-builder-0.2.0b2/tests/workflow/test_new.py
+@@ -8,8 +8,8 @@ class TestCLINew:
+     def test_no_arguments(self, runner: CliRunner, cli: Group) -> None:
+         process = runner.invoke(cli, [])
+ 
+-        assert process.exit_code == 0
+-        assert process.stdout
++        assert process.exit_code in (0, 2)
++        assert process.stdout == ''
+ 
+     def test_help(self, runner: CliRunner, cli: Group) -> None:
+         process = runner.invoke(cli, ["--help"])
+@@ -23,4 +23,4 @@ class TestCLINew:
+         process_one = runner.invoke(cli, [])
+         process_two = runner.invoke(cli, ["--help"])
+ 
+-        assert process_one.stdout == process_two.stdout
++        assert process_two.stdout in process_one.stderr

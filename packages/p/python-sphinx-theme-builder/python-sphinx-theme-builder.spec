@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-theme-builder
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,10 @@ Version:        0.2.0b2
 Release:        0
 Summary:        A tool for authoring Sphinx themes with a simple (opinionated) workflow
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/pradyunsg/sphinx-theme-builder
 Source:         https://github.com/pradyunsg/sphinx-theme-builder/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support click 8.2 changes
+Patch0:         support-click-8.2.patch
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module packaging}
@@ -38,15 +39,17 @@ BuildRequires:  %{python_module tomli >= 1.0.0 if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-build
 Requires:       python-click
 Requires:       python-nodeenv
 Requires:       python-packaging
 Requires:       python-pyproject-metadata
 Requires:       python-rich
 Requires:       python-setuptools
+Requires:       python-sphinx-autobuild
 Requires:       (python-tomli if python-base < 3.11)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 
 %python_subpackages
@@ -85,6 +88,6 @@ existing standardised tools.
 %doc README.md
 %python_alternative %{_bindir}/stb
 %{python_sitelib}/sphinx_theme_builder
-%{python_sitelib}/sphinx_theme_builder-%{version}*-info
+%{python_sitelib}/sphinx_theme_builder-%{version}.dist-info
 
 %changelog

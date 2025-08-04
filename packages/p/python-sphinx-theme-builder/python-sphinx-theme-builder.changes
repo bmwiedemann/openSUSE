@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  4 05:30:03 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-click-8.2.patch:
+  * Support click 8.2 changes.
+
+-------------------------------------------------------------------
 Wed Sep 25 05:20:18 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
