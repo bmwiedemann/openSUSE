@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 31 06:06:04 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- RabbitMQ Node can log Basic Auth header from an HTTP request
+  (bsc#1245105, CVE-2025-50200)
+  * fix-CVE-2025-50200.patch
+- bad logrotate configuration allows potential escalation from 
+  rabbitmq to root, /var/log/rabbitmq ownership is now 750
+  (bsc#1246091)
+- Make build reproducable
+  * feature-suse-reproducable-build.patch
+
+-------------------------------------------------------------------
 Wed Apr 30 07:31:55 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - Correctly escape hostname that could lead to xss attack
