@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(json-c) >= 0.11
 BuildRequires:  pkgconfig(sexpp) >= 0.8.7
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  rubygem(asciidoctor)
-%if (0%{?suse_version} > 1600) || (0%{?sle_version} >= 150700 && 0%{?is_opensuse})
+%if (0%{?suse_version} >= 1600) || (0%{?sle_version} >= 150700 && 0%{?is_opensuse})
 BuildRequires:  pkgconfig(botan-3) >= 3.0.0
 %else
 BuildRequires:  pkgconfig(botan-2) >= 2.14.0
