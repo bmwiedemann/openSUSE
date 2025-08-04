@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jul 27 21:38:40 UTC 2025 - malcolmlewis@opensuse.org
+
+- Update to 2.12.0: 
+  * Add PSI bar graphs for CPU, memory and disks.
+  * Improved handling of raw log files.
+  * Support of parallel output streams.
+  * Security-related improvements.
+  * Modified handling of UID/GID.
+  * Recognize fake NUMA.
+  * Consistent highlighting of current sort criterium.
+  * Network interface errors added to output of flags -P and -J.
+  * Branch to end of raw log file by pressing key 'Z'.
+  * Remove double wrefresh call for memory graph that caused screen
+    flashing in bar graph mode.
+  * Improved sanity check for number of threads versus number of
+    processes.
+  * Various other bug solutions.
+  * The format of the raw file is compatible with version 2.11.
+- Rebase atop-makefile.patch.
+
+-------------------------------------------------------------------
 Mon Mar 31 07:46:12 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.11.1:

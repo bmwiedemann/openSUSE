@@ -1,13 +1,12 @@
-Index: atop-2.11.0/Makefile
-===================================================================
---- atop-2.11.0.orig/Makefile
-+++ atop-2.11.0/Makefile
-@@ -21,7 +21,7 @@ PMPATH2  = /usr/lib64/pm-utils/sleep.d
- PMPATHD  = /usr/lib/systemd/system-sleep
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2025-06-14 03:18:40.000000000 -0500
++++ b/Makefile	2025-07-27 16:41:55.970428635 -0500
+@@ -22,7 +22,7 @@
  
  PKG_CONFIG ?= pkg-config
--CFLAGS  += -O2 -I. -Wall $(shell $(PKG_CONFIG) --cflags glib-2.0)  -Wno-stringop-truncation -Wmissing-prototypes -Wmissing-declarations -Wformat-security # -DNOPERFEVENT   # -DHTTPSTATS
-+CFLAGS  += $(OPTFLAGS) -I. -Wall $(shell $(PKG_CONFIG) --cflags glib-2.0)  -Wno-stringop-truncation -Wmissing-prototypes -Wmissing-declarations -Wformat-security # -DNOPERFEVENT   # -DHTTPSTATS
- LDFLAGS += $(shell $(PKG_CONFIG) --libs glib-2.0)
- OBJMOD0  = version.o
- OBJMOD1  = various.o  deviate.o   procdbase.o
+ 
+-override CFLAGS  := -O2 -I. -Wall $(shell $(PKG_CONFIG) --cflags glib-2.0) -Wmissing-prototypes -Wmissing-declarations -Wformat-security $(CFLAGS) # -DNOPERFEVENT   # -DHTTPSTATS
++CFLAGS  := $(OPTFLAGS) -I. -Wall $(shell $(PKG_CONFIG) --cflags glib-2.0) -Wmissing-prototypes -Wmissing-declarations -Wformat-security $(CFLAGS) # -DNOPERFEVENT   # -DHTTPSTATS
+ 
+ CC_CHECK := $(shell echo | $(CC) -dM -E - | grep -q __clang__ && echo clang || echo gcc)
+ ifeq ($(CC_CHECK),gcc)
