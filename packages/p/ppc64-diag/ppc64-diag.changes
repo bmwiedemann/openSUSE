@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug  4 10:22:16 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix Factory build
+  * platform.h-fix-ifdef-guard-typo.patch
+  * Replace-custom-boolean-type-with-stdbool.h-for-C23-c.patch
+
+-------------------------------------------------------------------
+Wed Jul 23 19:49:58 UTC 2025 - Thomas Abraham <tabraham@suse.com>
+
+- ppc64_diag_mkrsrc: Fix typo to avoid syntax error (bsc#1246938)
+  * Added 0001-scripts-ppc64_diag_mkrsrc-Fix-typo-to-avoid-syntax-e.patch
+
+-------------------------------------------------------------------
 Tue Jan 21 14:09:50 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Add support for Power11 in diag_nvme (bsc#1234980 ltc#210823)
@@ -183,7 +196,7 @@ Wed Oct 19 07:48:42 UTC 2016 - jloeser@suse.com
 Mon May  9 10:25:34 UTC 2016 - dvaleev@suse.com
 
 - Update to 2.7.1 (bsc#979032)
-  - Fixed endianess issues in diagnostics code 
+  - Fixed endianess issues in diagnostics code
 
 -------------------------------------------------------------------
 Tue Mar 22 15:31:40 UTC 2016 - jloeser@suse.com
@@ -225,17 +238,17 @@ Thu Jul 23 11:45:16 UTC 2015 - jloeser@suse.com
 - removed patches:
   * ppc64-diag.add_ncurses_include_path.patch
   * ppc64-diag.rtas_errd-LE-fixes-for-extract_platdump.patch
-  * ppc64-diag-tmpraces.patch 
+  * ppc64-diag-tmpraces.patch
 
 -------------------------------------------------------------------
 Mon Jun  8 20:10:27 UTC 2015 - dvlaeev@suse.com
 
 - Update to 2.6.8
-- Cpu and memory hotplugging support for PowerKVM guest 
-- Various fixes to opal-dump-parse tool 
-- Few LE related fixes 
+- Cpu and memory hotplugging support for PowerKVM guest
+- Various fixes to opal-dump-parse tool
+- Few LE related fixes
 - Several security fixes across tools
-- Drop upstreamed patches 
+- Drop upstreamed patches
    ppc64-diag.opal-dump-parse-Add-printk-log-in-the-list-of-dump-s.patch
    ppc64-diag.rtas_errd-Fix-PRRN-Event-handling-on-LE.patch
 
@@ -246,18 +259,18 @@ Fri Sep 26 09:20:31 UTC 2014 - stefan.fent@suse.com
 - patches added:
   - ppc64-diag.opal-dump-parse-Add-printk-log-in-the-list-of-dump-s.patch
   - ppc64-diag.rtas_errd-Fix-PRRN-Event-handling-on-LE.patch
-  - ppc64-diag.rtas_errd-LE-fixes-for-extract_platdump.patch 
+  - ppc64-diag.rtas_errd-LE-fixes-for-extract_platdump.patch
 
 -------------------------------------------------------------------
 Tue Sep  9 11:44:11 UTC 2014 - dvlaeev@suse.com
 
-- Fix download service 
+- Fix download service
 
 -------------------------------------------------------------------
 Mon Sep  8 11:11:06 UTC 2014 - jloeser@suse.com
 
 - version update to 2.6.7 (BNC#894846)
-  no upstream changelog provided 
+  no upstream changelog provided
 
 - modified patches:
   * ppc64-diag-tmpraces.patch
@@ -268,7 +281,7 @@ Mon Sep  8 11:11:06 UTC 2014 - jloeser@suse.com
 -------------------------------------------------------------------
 Tue Jul 22 12:22:13 UTC 2014 - dvlaeev@suse.com
 
-- Fix download URL once again 
+- Fix download URL once again
 
 -------------------------------------------------------------------
 Tue Jul 22 11:50:30 UTC 2014 - meissner@suse.com
@@ -288,14 +301,14 @@ Fri Jul 18 13:32:25 UTC 2014 - jsegitz@suse.com
 -------------------------------------------------------------------
 Mon Jun 23 13:47:37 UTC 2014 - jloeser@suse.com
 
-- fix /tmp race (BNC#882667, CVE-2014-4038) 
+- fix /tmp race (BNC#882667, CVE-2014-4038)
 
 - added patches:
   * ppc64-diag-tmpraces.patch
 -------------------------------------------------------------------
 Fri May 23 13:47:29 UTC 2014 - dvlaeev@suse.com
 
-- Fix Source url 
+- Fix Source url
 
 -------------------------------------------------------------------
 Fri May 23 07:59:45 UTC 2014 - jsegitz@novell.com
@@ -307,7 +320,7 @@ Fri May  2 15:37:03 UTC 2014 - jloeser@suse.com
 
 - version update to 2.6.6 (BNC#875775)
   * No upstream changelog provided
-  * need to add include/ncurses path for menu.h in lpd/lp_diag.c 
+  * need to add include/ncurses path for menu.h in lpd/lp_diag.c
 
 - added patches:
   * ppc64-diag.add_ncurses_include_path.patch
@@ -322,7 +335,7 @@ Tue Mar 25 13:28:10 UTC 2014 - jloeser@suse.com
 
 - version update to 2.6.4 (BNC#869845)
   new opal error daemon added
-  No upstream changelog provided 
+  No upstream changelog provided
 - add opal_errd.service file
 - add ppc64-diag.opal_errd.patch: fix opal_errd init script
 - fix rtas_errd init script: $pid to correct pid file
@@ -337,12 +350,12 @@ Mon Mar 10 12:41:50 UTC 2014 - jloeser@suse.com
 -------------------------------------------------------------------
 Fri Jan 17 10:47:35 UTC 2014 - dvlaeev@suse.com
 
-- drop ppc64-diag.unistd.patch 
+- drop ppc64-diag.unistd.patch
 
 -------------------------------------------------------------------
 Fri Jan 10 17:44:52 UTC 2014 - jloeser@suse.com
 
-- version update to 2.6.2 (FATE#315459) 
+- version update to 2.6.2 (FATE#315459)
   - Minor bug fix in diag_encl and encl_led
 
 - drop ppc64-diag.makefile.patch
@@ -350,7 +363,7 @@ Fri Jan 10 17:44:52 UTC 2014 - jloeser@suse.com
 -------------------------------------------------------------------
 Tue Dec 10 19:27:30 UTC 2013 - dvaleev@suse.com
 
-- enable ppc64le 
+- enable ppc64le
 
 -------------------------------------------------------------------
 Sun Feb 24 16:46:41 UTC 2013 - dvaleev@suse.com
@@ -358,7 +371,7 @@ Sun Feb 24 16:46:41 UTC 2013 - dvaleev@suse.com
 - Update to 2.6.1:
   * Add Handler to handle PRRN RTAS notification
   * Drop upstreamed ppc64-diag.unistd.patch
-  * Update package desription 
+  * Update package desription
 
 -------------------------------------------------------------------
 Wed Dec 19 11:54:00 UTC 2012 - dvaleev@suse.com
@@ -367,19 +380,19 @@ Wed Dec 19 11:54:00 UTC 2012 - dvaleev@suse.com
   * Added Light Path Diagnostics code. (moved from powerpc-utils)
   * Introduced new options to diag_encl command (Jim).
   * Added bluehawk enclosure diagnostics support (Jim).
-  * Introduced new command "encl_led" to modify identify/fault 
+  * Introduced new command "encl_led" to modify identify/fault
      indicators for SCSI enclosures (Jim).
 
-- update ppc64-diag.rtas_errd.patch to not have references to 
+- update ppc64-diag.rtas_errd.patch to not have references to
   /var/lock/subsys
 
-- add ncurses-devel and libvpd2-devel to BuildRequires 
+- add ncurses-devel and libvpd2-devel to BuildRequires
 
 -------------------------------------------------------------------
 Thu Dec  6 17:30:26 UTC 2012 - dvaleev@suse.com
 
 - update to 2.5.0
-  No upstream changelog provided 
+  No upstream changelog provided
 - add systemd service for rtas_errd
 
 -------------------------------------------------------------------
@@ -394,27 +407,27 @@ Tue Apr 24 12:13:09 UTC 2012 - dvaleev@suse.com
 - Change upstream Url
 - fix build with gcc 4.7
 - update to 2.4.3
-  - Added message catalogs for the ipr, ixgb, lpfc, and qla2xxx 
+  - Added message catalogs for the ipr, ixgb, lpfc, and qla2xxx
     drivers
   - Removed obsolete ppc64_diag_servagent script
 
 -------------------------------------------------------------------
 Wed Nov  2 21:11:06 UTC 2011 - dvaleev@suse.com
 
-- update to 2.4.2 
-  - Minor modifications to GPFS catalog files 
+- update to 2.4.2
+  - Minor modifications to GPFS catalog files
     and syslog_to_svclog.cpp
-  - Added gpfs files to the catalog, updated ppc64-diag-setup 
+  - Added gpfs files to the catalog, updated ppc64-diag-setup
     notification commands
-  - Changed Makefiles and rules.mk to build for the default 
+  - Changed Makefiles and rules.mk to build for the default
     architecture rather than -m32
-  - Added ELA code to the package, made changes to the rules.mk 
+  - Added ELA code to the package, made changes to the rules.mk
     and minor changes to the spec file
   - Bug fix adding in support for -e and -l, so that root users can
     be notified of serviceable events. Addresses bug #26192
-  - Added SIGCHLD handler to clean up servicelog notification 
+  - Added SIGCHLD handler to clean up servicelog notification
     scripts
-  - Removed all absolute path references, specifically 
+  - Removed all absolute path references, specifically
     to /sbin/lsvpd and lsvpd
 
 -------------------------------------------------------------------

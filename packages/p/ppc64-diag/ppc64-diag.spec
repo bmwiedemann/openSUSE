@@ -32,6 +32,9 @@ Source4:        ppc64-diag-nvme.timer
 Patch1:         ppc64-diag.varunused.patch
 #PATCH-FIX-UPSTREAM - Added-Power11-support-for-diag_nvme.patch
 Patch2:         Added-Power11-support-for-diag_nvme.patch
+Patch3:         0001-scripts-ppc64_diag_mkrsrc-Fix-typo-to-avoid-syntax-e.patch
+Patch4:         platform.h-fix-ifdef-guard-typo.patch
+Patch5:         Replace-custom-boolean-type-with-stdbool.h-for-C23-c.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
