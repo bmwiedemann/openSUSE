@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sun Aug 03 14:23:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.7:
+  * fix: add sudo to aptly installation commands
+
+-------------------------------------------------------------------
+Sun Aug 03 14:22:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.6:
+  * feat: implement clean multi-job workflow with separate macOS
+    and Ubuntu runners
+
+-------------------------------------------------------------------
+Sun Aug 03 14:21:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.5:
+  * fix: clean Colima setup for Docker on macOS
+
+-------------------------------------------------------------------
+Sun Aug 03 14:20:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.4:
+  * fix: install both docker and colima
+
+-------------------------------------------------------------------
+Sun Aug 03 14:19:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.3:
+  * fix: use simpler Colima setup for Docker on macOS
+
+-------------------------------------------------------------------
+Sun Aug 03 14:18:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.2:
+  * fix: improve Docker startup on macOS runner
+  * add docker to release workflow
+  * fix: use Docker for createrepo_c in RPM publishing workflow
+  * add rpm publish script
+  * add rpm workflow
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.6.7 to
+    6.6.8 (#896)
+  * chore(deps): update renovatebot/github-action action to v43.0.5
+    (#897)
+  * feat(ske): add commands to trigger hibernate, wakeup
+    maintenance, and reconcile (#873)
+  * fix(deps): update stackit sdk modules (#883)
+  * docs: Add guide to install the STACKIT CLI as homebrew cask
+    (#879)
+  * feat(mongodb-flex): add readWriteAnyDatabase role (#884)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/iaas (#886)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serverbackup
+    (#885)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/objectstorage
+    (#887)
+  * feat(auth): support output format in stackit auth
+    get-access-token command (#889)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/secretsmanager
+    (#882)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mongodbflex
+    (#881)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/rabbitmq (#880)
+  * chore(deps): update renovatebot/github-action action to v43.0.4
+    (#878)
+
+-------------------------------------------------------------------
 Thu Jul 24 07:48:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.37.0:
