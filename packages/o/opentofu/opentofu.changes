@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 03 11:30:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.5:
+  * BUG FIXES:
+    - Fixed issue where usage of TF_PLUGIN_CACHE_DIR could result
+      in unexpected lock contention errors (#3090)
+      NOTE: It is still highly recommended to have valid
+      .terraform.lock.hcl files in projects using
+      TF_PLUGIN_CACHE_DIR
+
+-------------------------------------------------------------------
 Fri Aug 01 12:14:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.4:
