@@ -224,4 +224,12 @@
 (CVE-2025-7783, bsc#1246814)</comment>
     <requestid>1295545</requestid>
   </revision>
+  <revision rev="22" vrev="22">
+    <srcmd5>fd92f67a32f2cb38167098183274e702</srcmd5>
+    <version>unknown</version>
+    <time>1754313785</time>
+    <user>dimstar_suse</user>
+    <comment>(CVE-2025-7783, bsc#1246812)</comment>
+    <requestid>1297359</requestid>
+  </revision>
 </revisionlist>
