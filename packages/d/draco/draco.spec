@@ -1,7 +1,7 @@
 #
 # spec file for package draco
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Group:          Productivity/Archiving/Compression
 URL:            https://google.github.io/draco
 Source0:        https://github.com/google/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/google/googletest/archive/%{commit}.zip#/googletest-%{commit}.zip
+# https://github.com/google/draco/pull/1113
+Patch0:         draco-gcc15.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc-c++
 BuildRequires:  help2man

@@ -1,0 +1,24 @@
+From 0dae510393b2b3cf410619f87f2a00ad63837145 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Christoph=20Gr=C3=BCninger?= <foss@grueninger.de>
+Date: Sat, 2 Aug 2025 21:18:48 +0200
+Subject: [PATCH] Add include as GCC 15 is more strict
+
+---
+ src/draco/compression/attributes/point_d_vector.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/draco/compression/attributes/point_d_vector.h b/src/draco/compression/attributes/point_d_vector.h
+index 6ceb454..85c47ca 100644
+--- a/src/draco/compression/attributes/point_d_vector.h
++++ b/src/draco/compression/attributes/point_d_vector.h
+@@ -17,6 +17,7 @@
+ #define DRACO_COMPRESSION_ATTRIBUTES_POINT_D_VECTOR_H_
+ 
+ #include <cstddef>
++#include <cstdint>
+ #include <cstring>
+ #include <iterator>
+ #include <memory>
+-- 
+2.50.1
+
