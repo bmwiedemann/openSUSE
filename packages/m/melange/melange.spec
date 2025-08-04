@@ -1,7 +1,7 @@
 #
 # spec file for package melange
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           melange
-Version:        0.30.3
+Version:        0.30.4
 Release:        0
 Summary:        Build APKs from source code
 License:        Apache-2.0

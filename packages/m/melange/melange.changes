@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 04 04:44:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.4:
+  * linter.go/linter_test.go: Added `maninfo` linter (#2105)
+  * source: copy package contents when fetching source (#2106)
+  * ci: make the vuln scan simpler (#2113)
+
+-------------------------------------------------------------------
 Fri Aug 01 11:57:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.3:
