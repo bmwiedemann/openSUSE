@@ -1,7 +1,7 @@
 #
 # spec file for package reimage
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           reimage
-Version:        0.9.2
+Version:        0.10.0
 Release:        0
 Summary:        Tool for mass update of images for kubernetes manifests
 License:        Apache-2.0

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Aug 03 12:11:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.10.0:
+  * fix(ci): fix goreleaser config
+  * fix(ci): fix goreleaser config
+  * fix(ci): import update-mtime for better hashing
+  * fix(ci): add permissions fo rthe release workflow
+  * fix(ci): try and makes the workflows run
+  * chore(deps): updates for depandabot
+  * chore(deps): update tooling
+  * chore(deps): update deps
+  * chore(toolchain): update to go 1.24.1, module updates
+  * chore(deps): bump golang.org/x/net from 0.34.0 to 0.36.0
+  * chore(deps): bump github.com/go-jose/go-jose/v4 from 4.0.3 to
+    4.0.5
+  * chore(deps): update go-git for dependabot
+  * chore(deps): bump github.com/golang-jwt/jwt/v4 from 4.5.0 to
+    4.5.1
+  * chore(deps): bump github.com/docker/docker
+  * chore(ci): update download-artifact
+  * chore(deps): update deps
+  * chore(lint): clean up linter and lint options
+  * chore(licensing): update license headers
+  * chore(ci): update CI workflows
+
+-------------------------------------------------------------------
 Mon Sep 23 08:20:58 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package reimage: tool for mass update of images for
