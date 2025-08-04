@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 03 11:32:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.0:
+  * Features
+    - add werf.io/log-regex-skip annotation (3da6610)
+    - deploy, tracking: update kubedog to track prometheus
+      resources (5e7dc4a)
+  * Bug Fixes
+    - extra and some secret values wrongly propagated to subcharts
+      (8ffa419)
+
+-------------------------------------------------------------------
 Fri Aug 01 08:43:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.9.0:
