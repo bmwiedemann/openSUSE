@@ -1,0 +1,10 @@
+Index: scikit_build-0.18.1/tests/samples/issue-335-support-cmake-source-dir/CMakeLists.txt
+===================================================================
+--- scikit_build-0.18.1.orig/tests/samples/issue-335-support-cmake-source-dir/CMakeLists.txt
++++ scikit_build-0.18.1/tests/samples/issue-335-support-cmake-source-dir/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.2)
++cmake_minimum_required(VERSION 3.5.0)
+ 
+ project(hello NONE)
+ 

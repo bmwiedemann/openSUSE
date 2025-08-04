@@ -282,4 +282,13 @@
 This is for updated setuptools in Staging:B</comment>
     <requestid>1226931</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>324b278228ee1a9e4a9f4f9be592f9d6</srcmd5>
+    <version>0.18.1</version>
+    <time>1754313892</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-new-cmake.patch:
+  * Support newer version of cmake.</comment>
+    <requestid>1297341</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,8 @@
 #
 # spec file for package python-scikit-build
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +37,8 @@ Source:         https://files.pythonhosted.org/packages/source/s/scikit-build/sc
 Source99:       sample-setup.cfg
 # PATCH-FIX-UPSTREAM scikit-build-pr1120-upddistutils.patch gh#scikit-build/scikit-build#1120
 Patch0:         scikit-build-pr1120-upddistutils.patch
+# PATCH-FIX-OPENSUSE Support newer cmake
+Patch1:         support-new-cmake.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatch-vcs}
