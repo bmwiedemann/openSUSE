@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_with clipper2_testing
 %global sh_lib libClipper2_1
 %global sh_z_lib libClipper2Z_1
 
-%if 0%{?sle_version} >= 150500
+%if 0%{?suse_version} < 1600
 %global force_gcc_version 14
 %endif
 
@@ -46,6 +47,7 @@ still works very well, Clipper2 is better in just about every way.
 
 %package -n %{sh_lib}
 Summary:        Shared library for Clipper2
+
 %description -n %{sh_lib}
 The Clipper2 library performs intersection, union, difference and XOR boolean
 operations on both simple and complex polygons. It also performs polygon
@@ -55,6 +57,7 @@ still works very well, Clipper2 is better in just about every way.
 
 %package -n %{sh_z_lib}
 Summary:        Shared library for Clipper2
+
 %description -n %{sh_z_lib}
 The Clipper2 library performs intersection, union, difference and XOR boolean
 operations on both simple and complex polygons. It also performs polygon
@@ -66,13 +69,13 @@ still works very well, Clipper2 is better in just about every way.
 Summary:        Development files for Clipper2
 Requires:       %{sh_lib} = %{version}
 Requires:       %{sh_z_lib} = %{version}
+
 %description devel
 The Clipper2 library performs intersection, union, difference and XOR boolean
 operations on both simple and complex polygons. It also performs polygon
 offsetting. This is a major update of my original Clipper library that was
 written over 10 years ago. That library I'm now calling Clipper1, and while it
 still works very well, Clipper2 is better in just about every way.
-
 
 %prep
 %autosetup -p1 -n %{name}-%{name}_%{version}
@@ -83,7 +86,7 @@ export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
 %endif
 cd CPP
-%cmake -DUSE_EXTERNAL_GTEST=ON -DCLIPPER2_HI_PRECISION:BOOL=ON 
+%cmake -DUSE_EXTERNAL_GTEST=ON -DCLIPPER2_HI_PRECISION:BOOL=ON
 %cmake_build
 
 %install

@@ -7,4 +7,12 @@
     <comment>This is a dependency of manifold, which in turn is a new dependency of Blender 4.5</comment>
     <requestid>1293804</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cfe01a57142dc3d3a8ec47f31914840a</srcmd5>
+    <version>1.5.4</version>
+    <time>1754313935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297421</requestid>
+  </revision>
 </revisionlist>
