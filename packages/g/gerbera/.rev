@@ -279,4 +279,12 @@ Sorry - I missed that on the previous fixup. Now we should be good for sysusers 
     <comment></comment>
     <requestid>1251652</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>13b90c6a708b7f12d8e7ad0954e12775</srcmd5>
+    <version>2.6.0</version>
+    <time>1754313943</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297437</requestid>
+  </revision>
 </revisionlist>

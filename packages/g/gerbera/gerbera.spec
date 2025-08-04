@@ -21,7 +21,7 @@
 %endif
 
 Name:           gerbera
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        UPnP Media Server
 License:        GPL-2.0-only
@@ -49,6 +49,8 @@ BuildRequires:  pkgconfig(gmock)
 BuildRequires:  pkgconfig(gmock_main)
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(gtest_main)
+BuildRequires:  pkgconfig(icu-i18n)
+BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
@@ -217,6 +219,8 @@ chown -R gerbera:gerbera %{_sysconfdir}/%{name}
 %{_unitdir}/gerbera.service
 %{_sysusersdir}/gerbera.conf
 %{_mandir}/man?/%{name}.?%{?ext_man}
+%{_datadir}/bash-completion/completions/gerbera
+%{_datadir}/gerbera/mysql-drop.sql
 %{_datadir}/gerbera/mysql-upgrade.xml
 %{_datadir}/gerbera/mysql.sql
 %{_datadir}/gerbera/sqlite3-upgrade.xml

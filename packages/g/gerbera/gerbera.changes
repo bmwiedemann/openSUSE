@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Mon Aug  4 08:02:03 UTC 2025 - ecsos <ecsos@opensuse.org> - 2.6.0
+
+- Update to 2.6.0
+  * Deprecation Info
+    The scripting interface will soon support the import-function-approach only.
+    This means that entries like import-script and playlist-script will not work anymore
+    and the respective scripts will be loaded on startup with no argument.
+    Instead the defaults of import-function/audio-file will be applied.
+    To prepare your config file run gerbera --check-config -c <YourConfigFile>.
+    If you get deprecation warnings, run gerbera --create-config=Import and merge the output into your config file.
+  * NEW Features
+    - Support "natural" file sorting for numbers in file names
+    - Support transliteration of texts depending on device output
+    - Extract multiple stream information in ffmpeg handler including embedded subtitles
+    - Filter resources by mimetype instead of extension
+    - Artwork support for dsf files with taglib 2.0
+    - "PC Directory" can be configured with <boxlayout>
+    - MySql: Configuration of engine, charset and collation before first run
+    - User defined virtual layout sub trees
+  * FIXES
+    - Changing autoscans via ui failed in some cases
+    - Failing import including stale objects
+  * Code Improvements
+    - Use JsonCpp to generate responses in web request handlers
+    - Sql database code uses enum properties instead of column names
+    - Database initialisation does tables only, initial root values are in code
+    - Upgrade documentation build environment to sphinx 8.2 with python 3.12
+    - Update versions of npupnp (6.2.1), fmtlib (11.2.0), spdlog (1.15.3), googletest (1.17.0), pupnp (1.14.24), taglib (2.1.1)
+    - Install script for cmake
+  * Changes
+    - Gerbera 2.6.0 (#3538)
+    - some more cleanups (#3542)
+    - clang-tidy cleanups (#3541)
+    - ci: deb-s3 clean does not allow --arch (#3540)
+    - ci: fix up pruning old deb packages (#3539)
+    - Clean up builds (#3537)
+    - Code layout in ui tests (#3534)
+    - Check for LIBICONV_PLUG (#3533)
+    - Add taglib support for pcm files (#3532)
+    - Fix subdir logic (#3531)
+    - Edit SortKey on web ui (#3527)
+    - Extract metadata from substreams with ffmpeg (#3529)
+    - Bump form-data from 4.0.2 to 4.0.4 in /gerbera-web (#3528)
+    - Do not send internal subtitles as UPnP resources (#3526)
+    - Fix captionInfoCount handling (#3523)
+    - Properly support ipv6-only environments (#3517)
+    - Fix Support for non-root user in docker image (#3516)
+    - Restore owner of config file in docker (#3514)
+    - Mark some options as deprecated (#3513)
+    - Fix inotify for files (#3509)
+    - Update taglib to 2.1.1 (#3512)
+    - Fix subtitle detection in import (#3508)
+    - Execinfo for stack traces in error log (#3507)
+    - User Defined virtual tree parts (#3504)
+    - Changed OpenWRT Installation note (#3501)
+    - Allow hiding PC directory in web view (#3499)
+    - Refactor ConfigSetup code for complex types (#3497)
+    - Update PUpnp to 1.14.24 (#3495)
+    - Make ImportService stable for multiple calls (#3493)
+    - Update PUpnp to 1.14.23 (#3492)
+    - Fix issue with stale objects in autoscan (#3488)
+    - MySql: Allow configuration of engine, charset and collation (#3486)
+    - Fix upload for bionic (#3485)
+    - Fix upload for bionic (#3484)
+    - Update PUpnp to 1.14.22 and taglib to 2.1 (#3483)
+    - Fill database on startup (#3481)
+    - Configure limit of sql strings (#3476)
+    - Fix timed playlist import (#3475)
+    - Quirks for Freebox Player (#3473)
+    - Add taglib and artwork support for dsf files (#3466)
+    - Fix resources for containers (#3465)
+    - Extend details extracted by WavPack handler (#3464)
+    - Update spdlog to 1.15.3 (#3463)
+    - Filter resources by mimetype (#3462)
+    - Update fmtlib to 11.2.0 (#3458)
+    - Update googletest to 1.17.0 (#3454)
+    - Get correct ffmpeg subtitle stream (#3453)
+    - Upgrade documentation build environment (#3452)
+    - Get multiple streams in FFMpeg handler (#3451)
+    - Fix import and xml (#3447)
+    - Provide bash completion file (#3445)
+    - Limit strings to column size (#3441)
+    - Add support for transliterating device output strings (#3438)
+    - Update spdlog to 1.15.2 (#3435)
+    - Add missing jsoncpp to Dockerfiles (#3433)
+    - Remove legacy compile option SQLITE_BACKUP_ENABLED (#3430)
+    - Support "natural" file sorting (#3429)
+    - Fix SQL for changing persistent object flag in database (#3427)
+    - Improve compile info output (#3425)
+    - Tweak for old Samsung TV (#3424)
+    - Reorganise installation scripts (#3421)
+    - Update NPUPnP (#3420)
+    - Bump axios from 1.7.9 to 1.8.3 in /gerbera-web (#3419)
+    - Use JsonCpp for web JSON output (#3418)
+    - Bump master (#3417)
+
+-------------------------------------------------------------------
 Thu Mar  6 18:21:10 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.5.0
