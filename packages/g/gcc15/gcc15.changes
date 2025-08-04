@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug  1 12:33:46 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC 15 branch head, 15.1.1+git10189, GCC 15.2 RC
+
+-------------------------------------------------------------------
+Mon Jul 28 07:08:41 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Update to GCC 15 branch head, 15.1.1+gitt10077
+- Fixes PR120714, RISC-V: incorrect frame pointer CFA address for
+  stack-clash protection loops
+
+-------------------------------------------------------------------
 Thu Jul 17 09:24:30 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Fixup conflicts again.

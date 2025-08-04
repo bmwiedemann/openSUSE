@@ -169,4 +169,16 @@ since we bumped libgo SONAME as well for 15</comment>
   rv64gc_zabha_zacas</comment>
     <requestid>1294100</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0f0a63f27ea93ac63ae1b30a89cba1be</srcmd5>
+    <version>15.1.1+git10189</version>
+    <time>1754313737</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to GCC 15 branch head, 15.1.1+git10189, GCC 15.2 RC
+
+- Update to GCC 15 branch head, 15.1.1+gitt10077
+- Fixes PR120714, RISC-V: incorrect frame pointer CFA address for
+  stack-clash protection loops</comment>
+    <requestid>1297061</requestid>
+  </revision>
 </revisionlist>
