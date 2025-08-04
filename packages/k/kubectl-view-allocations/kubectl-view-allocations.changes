@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Aug 03 14:26:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.4:
+  * (cargo-release) version 0.23.4
+  * disable Windows package for krew
+
+-------------------------------------------------------------------
+Sun Aug 03 14:24:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.3:
+  * (cargo-release) version 0.23.3
+  * wip mise & release
+
+-------------------------------------------------------------------
+Sun Aug 03 14:22:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.2:
+  * (cargo-release) version 0.23.2
+  * fix mise configuration
+
+-------------------------------------------------------------------
+Sun Aug 03 14:21:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.1:
+  * (cargo-release) version 0.23.1
+  * update tasks
+  * update CHANGELOG & BOM
+  * fix bugs on mise & ci configuration
+
+-------------------------------------------------------------------
+Sun Aug 03 14:19:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.0:
+  * (cargo-release) version 0.23.0
+  * simplify/remove some tasks, remove windows pre-built
+  * migrate from cargo-make to mise
+  * move justfile's tasks into mise's tasks
+  * add flag `--kubeconfig` to set the path to kubeconfig file
+  * :arrow_up: Bump tokio from 1.46.1 to 1.47.0
+  * :arrow_up: Bump serde_json from 1.0.140 to 1.0.141
+  * :arrow_up: Bump clap from 4.5.40 to 4.5.41
+  * :arrow_up: Bump tokio from 1.45.1 to 1.46.1
+
+-------------------------------------------------------------------
 Wed Jun 25 09:19:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.22.1:
