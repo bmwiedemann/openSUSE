@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Mon Aug 04 10:57:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.43.0:
+  The most relevant changes in this release are:
+    - helm: allow setting imagePullSecrets for daemonset image by
+      @jjsiv in #4708
+    - gadgets: trace_mount: Convert to rust. by @eiffel-fl in #4636
+    - kubectl-gadget/undeploy: Don't remove namespace by @burak-ok
+      in #4713
+  * General Improvements
+    - pkg/oci: Make default URL for image based gadgets
+      configurable at build time by @burak-ok in #4698
+    - Artifact Hub: Update gadgets version to v0.42.0 by
+      @github-actions[bot] in #4696
+    - go: remove unused gopacket by @mqasimsarfraz in #4701
+    - vmlinux.h: update to Linux 6.15.5 by @alban in #4680
+    - trace_dns: Use trailing data support in ebpf operator by
+      @mauriciovasquezbernal in #4690
+    - pkg/gadgettracermanager/containers-map: Remove unused package
+      by @blanquicet in #4702
+    - wasmapi: go: syscall: Remove unused unsafe blank import. by
+      @eiffel-fl in #4705
+    - in-tree gadget build: use intree vmlinux by @alban in #4706
+    - wasmapi: rust: Use expr instead of tt for log related macros.
+      by @eiffel-fl in #4682
+    - include: Prefix names with gadget_ by @mauriciovasquezbernal
+      in #4685
+    - Remove unused package + remove unused parameter by @burak-ok
+      in #4720
+    - filter operator: filter expressions based on Expr lang by
+      @alban in #4678
+    - tree-wide: Remove DeployInfo by @mauriciovasquezbernal in
+      #4727
+    - networktracer: Remove legacy stuff by @mauriciovasquezbernal
+      in #4738
+    - tree-wide: Align local/kube manager & move k8s-related stuff
+      from GTM to kubemanager by @blanquicet in #4648
+    - traceloop: more space for the parameters column by @alban in
+      #4742
+    - undeploy: Remove known resources for version <0.43.0 by
+      @burak-ok in #4744
+    - undeploy: Skip v1/endoint if v1/endpointslices is available
+      by @burak-ok in #4748
+    - traceloop: parse struct sockaddr from connect by @alban in
+      #4743
+    - wasmapi: rust: Use references for some function arguments. by
+      @eiffel-fl in #4683
+    - go.mod: Update cilium/ebpf to main by @mauriciovasquezbernal
+      in #4759
+  * Bug Fixes
+    - wasmapi: rust: Check if map was created before dropping it.
+      by @eiffel-fl in #4692
+    - ops/snapshotter: Don't error out when the NS path doesn't
+      exist by @burak-ok in #4700
+    - trace_dns: Use correct type for per cpu map by
+      @mauriciovasquezbernal in #4689
+    - charts: Add mount for wasm-cache by @mqasimsarfraz in #4721
+    - formatters/json: Fix race condition by @burak-ok in #4707
+    - traceloop: get buf length correctly for read/write syscalls
+      by @alban in #4736
+    - operators: wasm: Add gadgetGetLogLevel() and log only if
+      level is enabled. by @eiffel-fl in #4717
+  * Testing and Continue Integration
+    - ci: Create go mod vendor archive with a versioned top-level
+      directory by @chewi in #4704
+    - tree-wide: port missing image based gadgets tests by
+      @mauriciovasquezbernal in #4635
+    - tests: Fix usage of same ocihandler instance by
+      @mauriciovasquezbernal in #4758
+
+-------------------------------------------------------------------
 Mon Jul 07 12:24:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.42.0:
