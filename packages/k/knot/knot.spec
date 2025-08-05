@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(libsystemd)
 %{?systemd_requires}
 %endif
 Name:           knot
-Version:        3.4.6
+Version:        3.4.8
 Release:        0
 Summary:        An authoritative DNS daemon
 License:        GPL-3.0-or-later
@@ -51,7 +51,7 @@ BuildRequires:  libcap-ng-devel
 BuildRequires:  libedit-devel
 BuildRequires:  libnghttp2-devel
 %if 0%{?suse_version} >= 1600
-BuildRequires:  libngtcp2-devel
+BuildRequires:  libngtcp2_crypto_gnutls-devel
 BuildRequires:  libngtcp2_crypto_gnutls8
 %endif
 BuildRequires:  liburcu-devel
@@ -64,7 +64,7 @@ BuildRequires:  pkgconfig(gnutls) >= 3.3
 BuildRequires:  pkgconfig(nettle)
 Obsoletes:      knot2 < %{version}
 %sysusers_requires
-%if 0%{?suse_version} > 1320 || 0%{?leap_version} == 420300
+%if 0%{?suse_version} > 1320
 BuildRequires:  libidn2-devel
 %else
 BuildRequires:  libidn-devel

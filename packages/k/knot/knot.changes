@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jul 29 10:38:40 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- update to version 3.4.8, see
+  https://www.knot-dns.cz/2025-07-29-version-348.html
+
+-------------------------------------------------------------------
+Tue Jul 29 09:43:16 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Use the libngtcp2_crypto_gnutls-devel instead of libngtcp2-devel
+  to account for the openssl and gnutls devel files split in ngtcp2.
+
+-------------------------------------------------------------------
+Fri Jun  6 11:11:40 UTC 2025 - Max Lin <mlin@suse.com>
+
+- Remove the usage of leap_version macro
+
+-------------------------------------------------------------------
+Wed Jun  4 09:40:43 UTC 2025 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- update to version 3.4.7, see
+  https://www.knot-dns.cz/2025-06-04-version-347.html
+
+-------------------------------------------------------------------
 Thu Apr 10 12:58:14 UTC 2025 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - update to version 3.4.6, see
