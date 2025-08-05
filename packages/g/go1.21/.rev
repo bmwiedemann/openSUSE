@@ -365,4 +365,16 @@
 Expand previous changelog entry for go1.21 boostrap with gccgo (forwarded request 1296196 from jfkw)</comment>
     <requestid>1296197</requestid>
   </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>e9f04ae811ac3d03297add0e61e1d316</srcmd5>
+    <version>1.21.13</version>
+    <time>1754396488</time>
+    <user>dimstar_suse</user>
+    <comment>Add issue refs to recent changelog entry.
+  * Refs bsc#1247326 SLFO:Main go1.21 fails to build on s390x at
+    -buildmode=shared std for some workers only
+  * Refs jsc#PED-1962 Reduce go1.x RPM installed file size by
+    splitting .so and .a files into an optional subpackage (forwarded request 1297568 from jfkw)</comment>
+    <requestid>1297569</requestid>
+  </revision>
 </revisionlist>

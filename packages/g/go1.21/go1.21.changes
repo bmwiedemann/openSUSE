@@ -3,6 +3,10 @@ Mon Jul 28 12:59:30 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - The support for -buildmode=shared only depends on the go version and
   architecture, not how it was bootstrapped
+  * Refs bsc#1247326 SLFO:Main go1.21 fails to build on s390x at
+    -buildmode=shared std for some workers only
+  * Refs jsc#PED-1962 Reduce go1.x RPM installed file size by
+    splitting .so and .a files into an optional subpackage
 
 -------------------------------------------------------------------
 Fri Jul 18 12:23:38 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
