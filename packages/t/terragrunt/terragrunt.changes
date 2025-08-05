@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 05 05:29:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.84.1:
+  * build(deps): Bump cloud.google.com/go/storage to v1.56.0 by
+    @denis256 in #4603
+  * build(deps): Bump github.com/aws/aws-sdk-go-v2 to v1.36.6 by
+    @denis256 in #4603
+  * build(deps): Bump github.com/gruntwork-io/boilerplate to v0.8.1
+    by @denis256 in #4603
+  * build(deps): Bump google.golang.org/api to v0.244.0 by
+    @denis256 in #4603
+  * build(deps): Bump google.golang.org/grpc to v1.74.2 by
+    @denis256 in #4603
+  * chore: Upgrade to Tofu 1.10.5 in CICD tests by @denis256 in
+    #4604
+
+-------------------------------------------------------------------
 Sun Aug 03 12:18:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.84.0:
