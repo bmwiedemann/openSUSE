@@ -1,4 +1,34 @@
 --------------------------------------------------------------------
+Mon Aug 4 13:29:35 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#92
+- rename mksusecd (the tool, not the package) to mkmedia
+- add missing doc link
+- 4.0
+
+--------------------------------------------------------------------
+Mon Aug 4 12:07:18 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#91
+- suse blog
+- mksusecd: add --initrd-config option
+- fix online and network image generation
+- fix rar unpacking function
+- verifymedia: report if data partition does not have a volume id
+  (bsc#1247230)
+- also check dracut config for volume label (live root) (bsc#1247230)
+- mksusecd: do not default to creating a .signature file on rh
+  style media
+- mksusecd man page update
+- prefix boot options with '-' to remove them
+- mksusecd: fix --micro and --nano image generation
+- s390x: boot options are now merged with parmfile content, not
+  replacing it
+- add package requires: file, cpio
+- add mnt/umnt helper tools for easy initrd unpacking
+- add blog post to documentation
+
+--------------------------------------------------------------------
 Mon Jun 2 16:08:29 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#89
