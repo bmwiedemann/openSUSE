@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Aug  5 05:54:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.126:
+  * Meshery CLI
+    - chore: update setup_suite script to update meshery port
+      forwarding @lekaf974 (#15525)
+  * Maintenance
+    - chore: update setup_suite script to update meshery port
+      forwarding @lekaf974 (#15525)
+
+-------------------------------------------------------------------
+Tue Aug  5 05:35:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.125:
+  no CLI-related changes
+  no dependency updates
+- update to 0.8.124:
+  * General
+    - Chore use information about meshsync deployment mode from
+      connection @n2h9 (#15510)
+    - [server] chore: rename meshsync mode env variable @n2h9
+      (#15462)
+  * Meshery CLI
+    - added e2e tests for model generate @Darshan174 (#15467)
+    - [mesheryctl] Add e2e test for component list command
+      @ShashaankS (#15451)
+    - [mesheryctl] fix: error codes @n2h9 (#15494)
+    - [mesheryctl] chore: add option to set up env variables in
+      .meshery config @n2h9 (#15450)
+    - [mesheryctl] add e2e tests for mesheryctl system stop
+      @Darshan174 (#15440)
+    - [CI] Stabilize go-testing-ci.yml Workflow by Fixing Flaky
+      Tests @yash37158 (#15429)
+  * Maintenance
+    - Bump relay-runtime from 18.2.0 to 20.1.0 in /ui @dependabot
+      (#15503)
+    - Bump relay-compiler from 18.2.0 to 20.1.0 in /ui @dependabot
+      (#15502)
+    - Bump @sistent/sistent from 0.14.203 to 0.14.211 in
+      /provider-ui @dependabot (#15507)
+    - Bump next from 15.3.4 to 15.4.5 in /provider-ui @dependabot
+      (#15504)
+    - added e2e tests for model generate @Darshan174 (#15467)
+    - [mesheryctl] Add e2e test for component list command
+      @ShashaankS (#15451)
+    - [mesheryctl] add e2e tests for mesheryctl system stop
+      @Darshan174 (#15440)
+  * Documentation
+    - [mesheryctl] chore: add option to set up env variables in
+      .meshery config @n2h9 (#15450)
+
+-------------------------------------------------------------------
 Sun Aug  3 12:12:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.123:
