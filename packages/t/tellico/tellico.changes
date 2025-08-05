@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug  4 19:57:48 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 4.1.3
+  * Updated SRU fetcher to allow POST requests (kde#507265).
+  * Updated SRU fetcher to recognize alternate Dublin Core schema.
+  * Updated OpenLibrary source to fetch work author (kde#504586).
+  * Fixed a bug with reporting correct image location.
+
+-------------------------------------------------------------------
 Mon May 12 07:08:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 4.1.2
