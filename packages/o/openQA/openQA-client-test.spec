@@ -1,7 +1,7 @@
 #
 # spec file for package openQA-client-test
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         short_name openQA-client
 Name:           %{short_name}-test
-Version:        5.1753967288.48036af4
+Version:        5.1754297241.bf37533a
 Release:        0
 Summary:        Test package for %{short_name}
 License:        GPL-2.0-or-later

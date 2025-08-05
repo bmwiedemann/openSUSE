@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 04 16:11:31 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1754297241.bf37533a:
+  * Stop flagging obs_rsync errors as failures
+  * Mention use of CRITICAL_LOAD_AVG_THRESHOLD
+
+-------------------------------------------------------------------
 Thu Jul 31 16:11:44 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1753967288.48036af4:
