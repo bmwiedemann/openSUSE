@@ -1,7 +1,7 @@
 #
 # spec file for package python-xmldiff
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Tree to tree correction between XML documents
 License:        MIT
 URL:            https://github.com/Shoobx/xmldiff
 Source:         https://files.pythonhosted.org/packages/source/x/xmldiff/xmldiff-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-error-type.patch taken from https://github.com/Shoobx/xmldiff/commit/57e16ce3d92067c6246c3de04f2d4b9803f6f25b
+Patch0:         fix-error-type.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
