@@ -1,7 +1,7 @@
 #
 # spec file for package CSXCAD
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,12 @@ URL:            https://openems.de
 Source0:        https://github.com/thliebig/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE CSXCAD-octave-AppCSXCAD-load.patch -- Fix AppCSXCAD.sh load
 Patch3:         CSXCAD-octave-AppCSXCAD-load.patch
+BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  cgal-devel
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
@@ -42,11 +48,13 @@ BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  lzma-devel
 BuildRequires:  octave-devel
-BuildRequires:  python3-devel
+BuildRequires:  python-rpm-macros
 BuildRequires:  tinyxml-devel
 BuildRequires:  vtk-devel
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Widgets)
+%define python_subpackage_only 1
+%python_subpackages
 
 %description
 CSXCAD is a C++ library to describe geometrical objects and their physical
@@ -60,12 +68,12 @@ Group:          System/Libraries
 CSXCAD is a C++ library to describe geometrical objects and their physical
 or non-physical properties.
 
-%package        devel
+%package        -n %{name}-devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
-%description    devel
+%description    -n %{name}-devel
 CSXCAD is a C++ library to describe geometrical objects and their physical
 or non-physical properties.
 
@@ -94,6 +102,16 @@ CSXCAD is a C++ library to describe geometrical objects and their physical
 or non-physical properties.
 
 This package provides MATLAB interface for CSXCAD.
+
+%package -n     python-%{name}
+Summary:        Python %{python_version} bindings for CSXCAD
+Group:          Development/Libraries/Python
+Requires:       python-matplotlib
+Requires:       python-numpy
+
+%description -n python-%{name}
+This package contains Python %{python_version} bindings for the CSXCAD
+library.
 
 %prep
 %setup -q
@@ -132,11 +150,26 @@ pushd octave_build
     %octave_pkg_build
 popd
 
+pushd python
+    mkdir -p "%{_builddir}/include"
+    ln -s "%{_builddir}/%{name}-%{version}/src" "%{_builddir}/include/CSXCAD"
+    cat >> setup.cfg << EOF
+[build_ext]
+include_dirs = %{_builddir}/include
+library_dirs = %{_builddir}/%{name}-%{version}/build/src
+EOF
+    %pyproject_wheel
+popd
+
 %install
 %cmake_install
 
 pushd octave_build
     %octave_pkg_install
+popd
+
+pushd python
+    %pyproject_install
 popd
 
 %post -n %{libname} -p /sbin/ldconfig
@@ -153,7 +186,7 @@ popd
 %doc NEWS README
 %{_libdir}/lib%{name}.so.*
 
-%files devel
+%files -n %{name}-devel
 %{_libdir}/lib%{name}.so
 %{_includedir}/%{name}/
 
@@ -163,5 +196,10 @@ popd
 %files -n %{name}-matlab
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/matlab/
+
+%files %{python_files CSXCAD}
+%license COPYING
+%{python_sitearch}/CSXCAD
+%{python_sitearch}/csxcad-*.dist-info
 
 %changelog
