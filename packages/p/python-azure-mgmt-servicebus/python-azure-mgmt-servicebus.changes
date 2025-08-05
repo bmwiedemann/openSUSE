@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  5 09:11:05 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 10.0.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 10.0.0~b1
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Apr 23 09:05:01 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

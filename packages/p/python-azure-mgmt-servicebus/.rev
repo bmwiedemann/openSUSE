@@ -173,4 +173,17 @@
 - Update Requires from setup.py (forwarded request 1272099 from glaubitz)</comment>
     <requestid>1272160</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>be9ab881dc1b079d4ea4a61e39c6784d</srcmd5>
+    <version>10.0.0~b1</version>
+    <time>1754396582</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 10.0.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 10.0.0~b1
+- Update Requires from setup.py (forwarded request 1297675 from glaubitz)</comment>
+    <requestid>1297700</requestid>
+  </revision>
 </revisionlist>
