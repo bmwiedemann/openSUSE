@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug  4 08:38:54 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 4.1.3:
+  * Fix name collisions during dlopen() on some linkers
+- Update to 4.1.2:
+  * configure.ac: Fix test of == to = to be POSIX comliant
+  * Remove use of which in favor of command -v
+- Update to 4.1.1:
+  * Fixed inclusion of .map and .def files in release tar balls
+
+-------------------------------------------------------------------
 Fri Dec 13 12:51:24 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - the post scriptlet calls udevadm but Requires(post): udev is missing,
