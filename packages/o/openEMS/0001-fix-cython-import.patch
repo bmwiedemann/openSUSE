@@ -1,0 +1,25 @@
+From bf30b7d94ab63bbe63672dd0651172410df4b044 Mon Sep 17 00:00:00 2001
+From: Tobias Oberstein <tobias.oberstein@gmail.com>
+Date: Fri, 15 Dec 2023 14:26:19 +0100
+Subject: [PATCH] fix cython import
+
+---
+ python/openEMS/_nf2ff.pxd | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/python/openEMS/_nf2ff.pxd b/python/openEMS/_nf2ff.pxd
+index 859f062..cc70367 100644
+--- a/python/openEMS/_nf2ff.pxd
++++ b/python/openEMS/_nf2ff.pxd
+@@ -20,7 +20,7 @@ from libcpp.string cimport string
+ from libcpp.vector cimport vector
+ from libcpp.complex cimport complex
+ from libcpp cimport bool
+-cimport cython.numeric
++cimport cython
+ 
+ cdef extern from "openEMS/nf2ff.h":
+     cdef cppclass cpp_nf2ff "nf2ff":
+-- 
+2.43.0
+

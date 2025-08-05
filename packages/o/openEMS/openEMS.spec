@@ -1,7 +1,7 @@
 #
 # spec file for package openEMS
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,16 @@ Patch2:         0002-Fix-openEMS.sh-load.patch
 Patch3:         0003-Fix-nf2ff-load.patch
 # PATCH-FIX-OPENSUSE openEMS-readme-octave-package.patch -- Add correct instruction about Octave and MATLAB packages
 Patch4:         0004-Add-correct-instruction-about-Octave-and-MATLAB-pack.patch
-
+# PATCH-FIX-UPSTREAM 0001-fix-cython-import.patch -- fix cython import
+Patch5:         0001-fix-cython-import.patch
+BuildRequires:  %{python_module CSXCAD}
+BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module h5py}
+BuildRequires:  %{python_module matplotlib}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  CSXCAD-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -43,6 +52,7 @@ BuildRequires:  libboost_serialization-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  octave-devel
+BuildRequires:  python-rpm-macros
 BuildRequires:  tinyxml-devel
 BuildRequires:  vtk-devel
 BuildRequires:  cmake(Qt5Sql)
@@ -50,6 +60,8 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(fparser)
 BuildRequires:  pkgconfig(python3)
 ExcludeArch:    %{ix86} s390x
+%define python_subpackage_only 1
+%python_subpackages
 
 %description
 Electromagnetic field solver using the EC-FDTD method.
@@ -68,13 +80,13 @@ Group:          System/Libraries
 %description -n libopenEMS0
 Electromagnetic field solver using the EC-FDTD method library.
 
-%package        devel
+%package -n     %{name}-devel
 Summary:        Development files for openEMS
 Group:          Development/Libraries/C and C++
 Requires:       libnf2ff0 = %{version}
 Requires:       libopenEMS0 = %{version}
 
-%description    devel
+%description -n %{name}-devel
 This package contains libraries for developing applications
 that use %{name}.
 
@@ -102,6 +114,18 @@ Requires:       CSXCAD-matlab
 Electromagnetic field solver using the EC-FDTD method.
 
 This package provides MATLAB interface for openEMS.
+
+%package -n     python-%{name}
+Summary:        Python %{python_version} bindings for openEMS
+Group:          Development/Libraries/Python
+Requires:       python-CSXCAD
+Requires:       python-h5py
+Requires:       python-matplotlib
+Requires:       python-numpy
+
+%description -n python-%{name}
+This package contains Python %{python_version} bindings for the openEMS
+library.
 
 %prep
 %setup -q
@@ -167,11 +191,28 @@ pushd octave_build
     %octave_pkg_build
 popd
 
+pushd python
+    mkdir -p "%{_builddir}/include/openEMS"
+    cp "%{_builddir}/%{name}-%{version}/openems.h" "%{_builddir}/include/openEMS"
+    cp "%{_builddir}/%{name}-%{version}/openems_global.h" "%{_builddir}/include/openEMS"
+    cp "%{_builddir}/%{name}-%{version}/nf2ff/nf2ff.h" "%{_builddir}/include/openEMS"
+    cat >> setup.cfg << EOF
+[build_ext]
+include_dirs = %{_builddir}/include
+library_dirs = %{_builddir}/%{name}-%{version}/build:%{_builddir}/%{name}-%{version}/build/nf2ff
+EOF
+    %pyproject_wheel
+popd
+
 %install
 %cmake_install
 
 pushd octave_build
     %octave_pkg_install
+popd
+
+pushd python
+    %pyproject_install
 popd
 
 %post -n libnf2ff0 -p /sbin/ldconfig
@@ -188,7 +229,7 @@ popd
 %postun -n octave-%{name}
 %octave --eval "pkg rebuild"
 
-%files
+%files -n %{name}
 %license COPYING
 %doc NEWS README
 %{_bindir}/*
@@ -199,7 +240,7 @@ popd
 %files -n libopenEMS0
 %{_libdir}/libopenEMS.so.*
 
-%files devel
+%files -n %{name}-devel
 %dir %{_prefix}/include/%{name}
 %{_prefix}/include/%{name}/*
 %{_libdir}/libnf2ff.so
@@ -212,5 +253,10 @@ popd
 %files -n %{name}-matlab
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/matlab/
+
+%files %{python_files openEMS}
+%license COPYING
+%{python_sitearch}/openEMS
+%{python_sitearch}/openems-*.dist-info
 
 %changelog
