@@ -29,7 +29,9 @@ URL:            https://lunarmodules.github.io/luaexpat/
 Source:         https://github.com/lunarmodules/luaexpat/archive/%{version}/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 # See: https://github.com/lunarmodules/luaexpat/releases/tag/1.5.0
-BuildRequires:  libexpat-devel >= 2.4.6
+# So, it requires 2.4.0, not 2.4.6, and our libexpat in SLE has
+# been patched against all those CVEs, despite having lower version number
+BuildRequires:  libexpat-devel >= 2.4.0
 BuildRequires:  lua-macros
 Requires:       %{flavor}
 %lua_provides

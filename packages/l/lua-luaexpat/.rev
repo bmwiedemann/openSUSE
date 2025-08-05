@@ -90,4 +90,15 @@
     <comment></comment>
     <requestid>1098147</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>aedc3c1e0f99efd86cecc6d7dabefe99</srcmd5>
+    <version>1.5.1</version>
+    <time>1754396551</time>
+    <user>dimstar_suse</user>
+    <comment>Lower the required libexpat version number
+
+Our library in SLE is being maintained and patched against all
+those CVEs anyway.</comment>
+    <requestid>1297672</requestid>
+  </revision>
 </revisionlist>

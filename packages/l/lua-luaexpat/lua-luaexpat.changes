@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  5 09:04:29 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Lower the required libexpat version number (our library in SLE
+  is being maintained against all those CVEs anyway).
+
+-------------------------------------------------------------------
 Tue Jul 11 11:38:13 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to version 1.5.1:
