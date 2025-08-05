@@ -1,7 +1,10 @@
 #
 # spec file for package python-tsk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,18 +18,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 
-%define timestamp 	20210419
-
 Name:           python-tsk
-Version:        0~%{timestamp}
+Version:        20250729
 Release:        0
-Summary:        Python bindings for tsk - The SleuthKit
+Summary:        Python bindings for tsk (The SleuthKit)
 # the included talloc library is LGPL 3
 License:        Apache-2.0 AND LGPL-3.0-or-later
 URL:            https://github.com/py4n6/pytsk/
-Source0:        https://files.pythonhosted.org/packages/source/p/pytsk3/pytsk3-%{timestamp}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pytsk3/pytsk3-%{version}.tar.gz
+Source2:        https://github.com/py4n6/pytsk/releases/download/%{version}/pytsk3-%{version}.tar.gz.asc
+Source3:        python-tsk.keyring
+#PATCH-FIX-UPSTREAM fix-rename-bool-variable.patch taken from https://github.com/py4n6/pytsk/pull/111/
+Patch0:         fix-rename-bool-variable.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -47,7 +53,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 The Sleuthkit is a forensic filesystem analysis framework (http://www.sleuthkit.org/). This project is a python 3 binding for the sleuthkit.
 
 %prep
-%setup -q -n pytsk3-%{timestamp}
+%autosetup -p1 -n pytsk3-%{version}
 # remove unused libraries with incompatible license, use libtalloc from main repositories
 # rm -rf pytsk talloc
 # rm -rf pytsk talloc.new
@@ -67,7 +73,6 @@ $python ./run_tests.py
 }
 
 %files %{python_files}
-%defattr(-,root,root)
 %doc README
 %license LICENSE
 %{python_sitearch}/*

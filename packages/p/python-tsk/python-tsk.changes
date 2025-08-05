@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug  1 14:49:21 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Add fix-rename-bool-variable.patch gcc 15 support
+- update to 20250729
+  * Pre-release of version 20250729, for testing purposes, based on
+    libtsk 4.14.0
+
+-------------------------------------------------------------------
 Tue Aug  1 18:49:10 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - use %{?sle15_python_module_pythons} for opensuse15.5 compatibility
