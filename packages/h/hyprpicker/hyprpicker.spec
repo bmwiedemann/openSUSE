@@ -1,7 +1,7 @@
 #
 # spec file for package hyprpicker
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hyprpicker
-Version:        0.4.1
+Version:        0.4.5
 Release:        0
 Summary:        A wlroots-compatible Wayland color picker
 License:        BSD-3-Clause
