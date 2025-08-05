@@ -458,7 +458,6 @@ unsorted:
   - aegisub 
   - aelfred 
   - aelfred-javadoc 
-  - aeon-check 
   - aer-inject 
   - aerc 
   - aespipe 
@@ -2445,7 +2444,6 @@ unsorted:
   - colormake 
   - colorpicker 
   - colorpicker-lang 
-  - combustion 
   - commandergenius 
   - commons-compiler 
   - commons-compiler-jdk 
@@ -3901,7 +3899,6 @@ unsorted:
   - fasd 
   - fast_float-devel 
   - fasterxml-oss-parent 
-  - fastfetch 
   - fastfetch-bash-completion 
   - fastfetch-fish-completion 
   - fastfetch-zsh-completion 
@@ -4030,6 +4027,7 @@ unsorted:
   - fde-tpm-helper-rpm-macros 
   - fdo-client 
   - fdo-client-devel 
+  - featherpad 
   - featherpad-lang 
   - fec-devel 
   - feedbackd 
@@ -7638,6 +7636,7 @@ unsorted:
   - google-noto-sans-manichaean-fonts 
   - google-noto-sans-marchen-fonts 
   - google-noto-sans-masaramgondi-fonts 
+  - google-noto-sans-math-fonts 
   - google-noto-sans-mayannumerals-fonts 
   - google-noto-sans-medefaidrin-fonts 
   - google-noto-sans-meeteimayek-fonts 
@@ -8771,7 +8770,6 @@ unsorted:
   - ifuse 
   - iga 
   - igerman98-doc 
-  - ignition 
   - igrep 
   - igsc 
   - igsc-devel 
@@ -9670,7 +9668,6 @@ unsorted:
   - jupyter-sidecar-jupyterlab 
   - jupyter-widgetsnbextension 
   - jurand 
-  - just 
   - just-bash-completion 
   - just-fish-completion 
   - just-zsh-completion 
@@ -13840,7 +13837,7 @@ unsorted:
   - libhwasan0-gcc14 
   - libhwloc15 
   - libhwy1-32bit 
-  - libhydrogen-core-1_2_5 
+  - libhydrogen-core-1_2_6 
   - libhydrogen-core-devel 
   - libhyphen0-32bit 
   - libhyprcursor0 
@@ -14227,8 +14224,6 @@ unsorted:
   - libldm-1_0-0-devel 
   - libleancrypto-fips1 
   - libleancrypto-fips1-32bit 
-  - libleancrypto1 
-  - libleancrypto1-32bit 
   - libled1 
   - libleechcraft-util-db-qt6-0_6_75 
   - libleechcraft-util-gui-qt6-0_6_75 
@@ -14760,8 +14755,10 @@ unsorted:
   - libngspice0 
   - libngtcp2-16 
   - libngtcp2-16-32bit 
+  - libngtcp2_crypto_gnutls-devel 
   - libngtcp2_crypto_gnutls8 
   - libngtcp2_crypto_gnutls8-32bit 
+  - libngtcp2_crypto_ossl-devel 
   - libngtcp2_crypto_ossl0 
   - libngtcp2_crypto_ossl0-32bit 
   - libnice 
@@ -16804,11 +16801,9 @@ unsorted:
   - libvtk1 
   - libvtk1-openmpi4 
   - libvulkan1-32bit 
-  - libvulkan_intel 
   - libvulkan_intel-32bit 
   - libvulkan_nouveau 
   - libvulkan_nouveau-32bit 
-  - libvulkan_radeon 
   - libvulkan_radeon-32bit 
   - libwacom-devel 
   - libwacom-tools 
@@ -17265,12 +17260,18 @@ unsorted:
   - lightmediascanner 
   - lightmediascanner-devel 
   - lighttpd 
+  - lighttpd-mod_authn_dbi 
   - lighttpd-mod_authn_gssapi 
   - lighttpd-mod_authn_ldap 
   - lighttpd-mod_authn_pam 
   - lighttpd-mod_authn_sasl 
+  - lighttpd-mod_deflate 
+  - lighttpd-mod_gnutls 
   - lighttpd-mod_magnet 
   - lighttpd-mod_maxminddb 
+  - lighttpd-mod_mbedtls 
+  - lighttpd-mod_nss 
+  - lighttpd-mod_openssl 
   - lighttpd-mod_rrdtool 
   - lighttpd-mod_vhostdb_dbi 
   - lighttpd-mod_vhostdb_ldap 
@@ -18970,6 +18971,8 @@ unsorted:
   - mpitests-mpich-ofi 
   - mpitests-mvapich2 
   - mpitests-mvapich2-psm2 
+  - mpitests-mvapich3-ofi 
+  - mpitests-mvapich3-ucx 
   - mpitests-openmpi4 
   - mpitests-openmpi5 
   - mplus-code-latin-variable-fonts 
@@ -19092,6 +19095,7 @@ unsorted:
   - munge-maven-plugin-javadoc 
   - munin 
   - munin-node 
+  - muon 
   - muparser-devel 
   - muparserx-devel 
   - muparserx-devel-doc 
@@ -23093,7 +23097,6 @@ unsorted:
   - primecount 
   - primesieve 
   - primus 
-  - printer-driver-brlaser 
   - printproto-devel 
   - prison-qt5-devel 
   - priv_wrapper 
@@ -23820,6 +23823,7 @@ unsorted:
   - python311-BitVector 
   - python311-Bottleneck 
   - python311-CCColUtils 
+  - python311-CSXCAD 
   - python311-CacheControl 
   - python311-CairoSVG 
   - python311-Cerberus 
@@ -24587,6 +24591,7 @@ unsorted:
   - python311-azure-monitor-nspkg 
   - python311-azure-monitor-opentelemetry-exporter 
   - python311-azure-monitor-query 
+  - python311-azure-monitor-querymetrics 
   - python311-azure-multiapi-storage 
   - python311-azure-nspkg 
   - python311-azure-onlineexperimentation 
@@ -26030,6 +26035,7 @@ unsorted:
   - python311-onnx 
   - python311-onnxconverter-common 
   - python311-opcodes 
+  - python311-openEMS 
   - python311-openTSNE 
   - python311-openai 
   - python311-openapi-core 
@@ -27530,6 +27536,7 @@ unsorted:
   - python312-Bottleneck 
   - python312-Brotli 
   - python312-CCColUtils 
+  - python312-CSXCAD 
   - python312-CacheControl 
   - python312-CairoSVG 
   - python312-Cerberus 
@@ -28310,6 +28317,7 @@ unsorted:
   - python312-azure-monitor-nspkg 
   - python312-azure-monitor-opentelemetry-exporter 
   - python312-azure-monitor-query 
+  - python312-azure-monitor-querymetrics 
   - python312-azure-multiapi-storage 
   - python312-azure-nspkg 
   - python312-azure-onlineexperimentation 
@@ -29790,6 +29798,7 @@ unsorted:
   - python312-onnx 
   - python312-onnxconverter-common 
   - python312-opcodes 
+  - python312-openEMS 
   - python312-openTSNE 
   - python312-openai 
   - python312-openapi-core 
@@ -31321,6 +31330,7 @@ unsorted:
   - python313-BitVector 
   - python313-Bottleneck 
   - python313-CCColUtils 
+  - python313-CSXCAD 
   - python313-CacheControl 
   - python313-CairoSVG 
   - python313-Cerberus 
@@ -32087,6 +32097,7 @@ unsorted:
   - python313-azure-monitor-nspkg 
   - python313-azure-monitor-opentelemetry-exporter 
   - python313-azure-monitor-query 
+  - python313-azure-monitor-querymetrics 
   - python313-azure-multiapi-storage 
   - python313-azure-nspkg 
   - python313-azure-onlineexperimentation 
@@ -33531,6 +33542,7 @@ unsorted:
   - python313-onnx 
   - python313-onnxconverter-common 
   - python313-opcodes 
+  - python313-openEMS 
   - python313-openTSNE 
   - python313-openai 
   - python313-openapi-core 
@@ -36782,6 +36794,8 @@ unsorted:
   - sddm 
   - sddm-conf 
   - sddm-conf-lang 
+  - sddm-kalpa 
+  - sddm-kalpa-kwin 
   - sddm-kalpa-lang 
   - sddm-kalpa-themes 
   - sddm-kalpa-wayland-generic 
@@ -48244,7 +48258,6 @@ unsorted:
   - udunits2 
   - udunits2-devel 
   - ueberzugpp 
-  - uefi_mbr 
   - ufiformat 
   - ufraw 
   - ufraw-lang 
@@ -48928,7 +48941,6 @@ unsorted:
   - winrs 
   - wipe 
   - wire 
-  - wireguard-tools 
   - wireplumber-devel 
   - wireplumber-doc 
   - wireplumber-video-only-profile 
@@ -49510,7 +49522,6 @@ unsorted:
   - yaffshiv 
   - yaics 
   - yajl 
-  - yakuake 
   - yakuake-lang 
   - yamagi-quake2 
   - yamagi-quake2-ctf 
