@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug  4 15:20:55 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Fix shell completion dependencies
+  * Add BuildRequires to prevent inclusion of folders owned by shells.
+  * Add Requires because installing completions without appropriate
+    shell is questionable.
+
+-------------------------------------------------------------------
+Tue Jul 29 20:02:25 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
+
+- Fix zsh completion location
+
+-------------------------------------------------------------------
 Wed Jul 09 04:44:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.18.4 (bsc#1246152, CVE-2025-53547):

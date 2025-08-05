@@ -27,7 +27,9 @@ Group:          Development/Languages/Other
 URL:            https://github.com/helm/helm
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  fish
 BuildRequires:  golang-packaging
+BuildRequires:  zsh
 %if 0%{?suse_version} == 1600
 # go is not available on Framework one for x86
 ExcludeArch:    %ix86
@@ -43,6 +45,7 @@ pre-configured Kubernetes resources.
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
+Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
@@ -53,6 +56,7 @@ Bash command line completion support for %{name}.
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
+Requires:       zsh
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
@@ -63,6 +67,7 @@ Zsh command line completion support for %{name}.
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
+Requires:       fish
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
@@ -94,8 +99,8 @@ export CGO_ENABLED=0
 %goinstall
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions
 %{buildroot}/%{_bindir}/helm completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d
-%{buildroot}/%{_bindir}/helm completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions
+%{buildroot}/%{_bindir}/helm completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
 %{buildroot}/%{_bindir}/helm completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
@@ -116,16 +121,12 @@ GO111MODULE=on go test -p 2 ./...
 %{_bindir}/helm
 
 %files bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{name}
 
 %files zsh-completion
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{name}
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %files fish-completion
-%dir %{_datarootdir}/fish
-%dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 %changelog

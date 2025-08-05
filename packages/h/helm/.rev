@@ -931,4 +931,12 @@ See changelog in:
   * Updating link handling 00de613 (Matt Farina)</comment>
     <requestid>1291506</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>2d056c21df6fd6f8f012e6ad2035bfa4</srcmd5>
+    <version>3.18.4</version>
+    <time>1754396485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297565</requestid>
+  </revision>
 </revisionlist>
