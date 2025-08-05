@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Aug  5 11:04:51 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 2.1.4
+  * Fix ignored selection key setting when candidate per page is
+    less than 10
+  * Fix crashes by ensuring always free chewing objects with
+    chewing_free.
+  * Always process capslock key to allow toggle ChiEng mode back.
+  * Only restore input mode from capslock keyboard state if using
+    capslock as the ChiEng toggle key.
+  * Revert "Clear pre-edit buffer before commit it to engine to
+    avoid showing
+  * both buffer on the screen." which breaks some composition events.
+
+-------------------------------------------------------------------
+Tue Aug  5 10:11:50 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Update ibus-chewing.spec:
+  Change the project URL and source name source address with current
+  project homepage to fit the SLFO:Main robot check.
+- Update ibus-chewing.changes:
+  Correct old change log to fix time format.
+  (bsc#1246569) 
+
+-------------------------------------------------------------------
 Sat Mar  1 13:06:59 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop gob2 BuildRequires: dependency was removed in version 2.0.0
@@ -94,7 +119,7 @@ Fri Nov  8 02:59:48 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
 - Use cmake-fedora in system default
 
 -------------------------------------------------------------------
--Mon Oct  7 14:55:04 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
+Mon Oct  7 14:55:04 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.5.1
   * Fix:
@@ -132,7 +157,7 @@ Fri Nov  8 02:59:48 UTC 2019 - Hillwood Yang <hillwood@opensuse.org>
     "shift-toggle-chinese"
     Thanks southernbear for providing this fix.
  
------------------------------------------------------------------- 
+-------------------------------------------------------------------
 Fri Mar  2 13:45:50 UTC 2018 - crrodriguez@opensuse.org
 
 - Change xorg-x11-devel --> pkgconfig(x11)

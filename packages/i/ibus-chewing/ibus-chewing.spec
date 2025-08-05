@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-chewing
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           ibus-chewing
-Version:        2.0.0
+Version:        2.1.4
 Release:        0
 Summary:        The Chewing engine for IBus input platform
 License:        GPL-2.0-or-later
 Group:          System/I18n/Chinese
-URL:            https://github.com/definite/ibus-chewing
-Source0:        https://github.com/definite/ibus-chewing/archive/%{version}/%{name}-%{version}.tar.gz
+URL:            https://github.com/chewing/ibus-chewing/
+Source0:        https://github.com/chewing/ibus-chewing/releases/download/v%{version}/%{name}-%{version}-Source.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake >= 2.6.2
 BuildRequires:  gcc-c++
@@ -42,7 +42,7 @@ libchewing.
 新酷音輸入法
 
 %prep
-%autosetup -p1 -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}-Source
 
 %build
 %cmake -DLIBEXEC_DIR=%{_ibus_libexecdir}
@@ -63,5 +63,6 @@ rm -rf %{buildroot}%{_datadir}/doc/packages/ibus-chewing
 %{_datadir}/ibus
 %{_datadir}/applications/ibus-setup-chewing.desktop
 %{_datadir}/glib-2.0/schemas/org.freedesktop.IBus.Chewing.gschema.xml
+%{_datadir}/icons/hicolor/scalable/apps/org.freedesktop.IBus.Chewing.Setup.svg
 
 %changelog
