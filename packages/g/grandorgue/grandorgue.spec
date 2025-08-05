@@ -1,7 +1,7 @@
 #
 # spec file for package grandorgue
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,12 @@
 %define version_suffix 1
 
 Name:           grandorgue
-Version:        3.15.4
+Version:        3.16.0
 Release:        0
 Summary:        Virtual Pipe Organ Software
 License:        GPL-2.0-or-later
 URL:            https://github.com/GrandOrgue/grandorgue
 Source:         https://github.com/GrandOrgue/grandorgue/archive/%{version}-%{version_suffix}.tar.gz#/%{name}-%{version}-%{version_suffix}.tar.gz
-# https://github.com/GrandOrgue/grandorgue/pull/2184
-Patch0:         gcc15-includes.patch
 BuildRequires:  ImageMagick
 BuildRequires:  cmake >= 3.10
 BuildRequires:  docbook-xsl-stylesheets

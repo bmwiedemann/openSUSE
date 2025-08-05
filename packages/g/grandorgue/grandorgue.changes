@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug  4 20:10:49 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.16.0.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.16.0-1
+  - Added more columns to the Initial MIDI tab of the Organ settings #1974
+  - Added capability of assigning any MIDI object events to the initial MIDI configuration #1974
+  - Added capability of setting Send, Division and Shortcut events for Initial MIDI objects #1974
+  - Changed package names for Linux: grandorgue-wx30 requires wxWidgets 3.0 and grandorgue requires wxWidgets 3.2
+  - Load pitch and show it to labels on organ load #2233
+  - Reduced decimal numbers for PitchLabel #2234
+  - Added support of exporting current midi settings to a text file and of importing them from both text and .cmb files #1199
+  - Fixed crash on reloading an organ #2185
+  - Removed support of linux distributions with GLIBC versions before 2.35 (ubuntu<22, debian<12, fedora<36, oracle linux<9)
+  - Added capability of customising minimum amplitude level of enclosures added internally by GrandOrgue #782
+  - Added resending midi events when exiting from MidiEventDialog #2062
+  - Fixed incorrect default audio channels config #2115
+  - Changed default sample rate, samples per buffer and interpolation type to 48000, 512 and Polyphase #2115
+  - Increased the maximum samples per buffer to 2048 #2115
+  - Increased the maximum supported sample rate to 192000 #2115
+  - Fixed nested scrolling in the MidiObject dialog on macOs #1972
+  - Increased the maximum number of user-defined temperaments to 999 #1982
+- Remove gcc15-includes.patch.
+
+-------------------------------------------------------------------
 Tue Jul 15 12:07:33 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - Add upstream gcc15-includes.patch to fix stricter includes from
