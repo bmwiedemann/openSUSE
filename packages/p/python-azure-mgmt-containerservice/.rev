@@ -609,4 +609,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1291420 from glaubitz)</comment>
     <requestid>1291494</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>4c47835fcb7fa0a5b213be1d86e58a56</srcmd5>
+    <version>38.0.0</version>
+    <time>1754396581</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 38.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1297669 from glaubitz)</comment>
+    <requestid>1297698</requestid>
+  </revision>
 </revisionlist>
