@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 20 05:56:51 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Adjusted Font selection to fix some rendering issues
+  (boo#1244927)
+- Make tuned-ppd the default
+- Added a few basic programs to install from RPM, rather than
+  relying on Flathub being there on first run
+
+-------------------------------------------------------------------
+Fri Jun 13 08:46:51 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add falkon and just
+
+-------------------------------------------------------------------
 Fri Mar 28 20:06:21 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add mesa-demo-egl (kde#502129)

@@ -118,4 +118,18 @@
     <comment>- Add mesa-demo-egl (kde#502129)</comment>
     <requestid>1265290</requestid>
   </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>0bd2e43fb3e83516463a89fb661517c8</srcmd5>
+    <version>6.0</version>
+    <time>1754396459</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjusted Font selection to fix some rendering issues
+  (boo#1244927)
+- Make tuned-ppd the default
+- Added a few basic programs to install from RPM, rather than
+  relying on Flathub being there on first run
+
+- Add falkon and just</comment>
+    <requestid>1297525</requestid>
+  </revision>
 </revisionlist>

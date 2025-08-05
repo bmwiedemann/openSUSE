@@ -2,7 +2,8 @@
 # spec file for package patterns-kalpa
 #
 # Copyright (c) 2025 SUSE LLC
-#
+# Copyright (c) 2025 Shawn W Dunn <sfalken@opensuse.org>
+
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
 # upon. The license for this file, and modifications and additions to the
@@ -21,12 +22,12 @@
 Name:           patterns-kalpa
 Version:        6.0
 Release:        0
-Summary:        Patterns for openSUSE Kalpa
+Summary:        Patterns for Kalpa Desktop
 License:        MIT
 Group:          Metapackages
-URL:            http://en.opensuse.org/Patterns
+URL:            https://codeberg.org/KalpaDesktop/patterns-kalpa
 Source0:        %name.rpmlintrc
-ExclusiveArch:  x86_64 %arm32 aarch64 ppc64le s390x riscv64
+ExclusiveArch:  x86_64 aarch64
 
 %description
 This is an internal package that is used to create the patterns as part
@@ -34,7 +35,7 @@ of the installation source setup. Installation of this package does
 not make sense.
 
 %package base
-Summary:        openSUSE Kalpa
+Summary:        Kalpa Desktop
 Group:          Metapackages
 Provides:       pattern() = kalpa_base
 Provides:       pattern-category() = Kalpa
@@ -45,215 +46,200 @@ Provides:       pattern-order() = 9200
 Requires:       pattern() = update_test
 %endif
 
-### Packages formerly provided by minimal_base
+### Base System Requirements
+Requires:       aaa_base
+Requires:       audit
+Requires:       bash
+Requires:       bash-completion
 Requires:       branding
 Requires:       build-key
+Requires:       busybox
+Requires:       ca-certificates
+Requires:       ca-certificates-mozilla
+Requires:       chrony
+Requires:       coreutils
+Requires:       coreutils-systemd
+# curl indirectly needed by ignition via dracut's url-lib
+Requires:       curl
 Requires:       distribution-release
 Requires:       filesystem
+Requires:       glibc
+Requires:       glibc-locale
+Requires:       glibc-locale-base
+Requires:       gzip
+Requires:       health-checker
+Requires:       health-checker-plugins-MicroOS
+Requires:       hostname
+Requires:       hwinfo
+%ifnarch s390x
+Requires:       irqbalance
+%endif
+Requires:       kernel-default
+%ifnarch %{arm}
+Requires:       kdump
+%endif
+Conflicts:      krb5-mini
+Requires:       less
+Requires:       lastlog2
+Requires:       libnss_usrfiles2
+Requires:       microos-tools
+Requires:       openSUSE-build-key
+Requires:       pam
+Requires:       pam-config
+Requires:       polkit-default-privs
+Requires:       procps
+Requires:       rpm
+Requires:       shadow
+Requires:       snapper
+Requires:       vim
+Requires:       wtmpdb
+# people are addicted to sudo
+Requires:       sudo
+Requires:       systemd
+Requires:       systemd-coredump
+Requires:       systemd-experimental
+Requires:       system-group-wheel
+Requires:       systemd-zram-service
+Requires:       terminfo-base
+Requires:       timezone
+Requires:       udisks2
+Requires:       unzip
+Requires:       upower
+Requires:       usbutils
+Requires:       util-linux
+Requires:       wget
+Requires:       wtmpdb
+Requires:       xdg-utils
+Requires:       yast2-logs
+Requires:       group(nobody)
+Requires:       user(nobody)
 
-### Packages formerly provided by bootloader
+Obsoletes:      suse-build-key < 12.1
+
+Conflicts:      gettext-runtime-mini
+
+### Bootloader Requirements
+%dnl Kalpa will be sticking with grub2 for the time being
+%dnl Requires:       dracut-pcr-signature
+%dnl Requires:       efibootmgr
+%dnl Requires:       sdbootutil-rpm-scriptlets
+%dnl Requires:       sdbootutil-snapper
+%dnl Requires:       systemd-boot
+Requires:       uefi_mbr
 Requires:       (grub2-snapper-plugin if (grub2 or grub2-common))
 Requires:       grub2-common
 %ifarch x86_64
-# XXX: not sure this really belongs here. More like a kernel
-# rather than bootloader related thing?
 Requires:       biosdevname
-%endif
-%ifnarch s390x ppc64 ppc64le
-%if 0%{?is_opensuse}
-Requires:       (grub2-branding-openSUSE if branding-openSUSE)
-%else
-%if 0%{?sle_version}
-Requires:       (grub2-branding-SLE if branding-SLE)
-%endif
-%endif
-%endif
-%ifarch x86_64
 Requires:       grub2-x86_64-efi
 %endif
 %ifarch aarch64
-Requires:       MozillaFirefox
 Requires:       grub2-arm64-efi
-%endif
-%ifarch armv7l armv7hl
-Requires:       grub2-arm-efi
-Requires:       grub2-arm-uboot
 %endif
 %ifarch aarch64 x86_64
 Requires:       mokutil
 Requires:       shim
 %endif
+Requires:       (grub2-branding-openSUSE if branding-openSUSE)
+%dnl TPM-2.0 support (boo#1211835)
+Requires:       uefi_mbr
+Requires:       tpm2.0-abrmd
+Requires:       tpm2-0-tss
+Requires:       tpm2.0-tools
 
-### Packages formerly provided by base/basesystem
-Requires:       /usr/bin/hostname
-Requires:       aaa_base
-Requires:       bash
-Requires:       branding-openSUSE
-Requires:       btrfsprogs
-Requires:       ca-certificates
-Requires:       ca-certificates-mozilla
-Requires:       coreutils
-Requires:       coreutils-systemd
-Requires:       glibc
-Suggests:       busybox-hostname
-Requires:       NetworkManager
-Requires:       NetworkManager-wifi
-Requires:       iproute2
-Requires:       lastlog2
-Requires:       libnss_usrfiles2
-Requires:       openSUSE-build-key
-Requires:       pam
-Requires:       pam-config
-Requires:       procps
-Requires:       rebootmgr
-Requires:       rpm
-Requires:       shadow
-Requires:       systemd
-Requires:       util-linux
-Requires:       group(nobody)
-Requires:       user(nobody)
 
-####
+
+
+### Filesystem Support
 Requires:       btrfsmaintenance
-Requires:       busybox
-Requires:       chrony
-# curl indirectly needed by ignition via dracut's url-lib
-Requires:       curl
-# probably needed for fsck.fat on efi partitions
-Requires:       /usr/bin/gzip
-Requires:       Kalpa-release
+Requires:       btrfsprogs
+# Support CIFS mounting via mount (boo#1225682)
+Requires:       cifs-utils
 Requires:       dosfstools
-Requires:       glibc-locale-base
-Suggests:       busybox-gzip
-Requires:       health-checker
-Requires:       health-checker-plugins-MicroOS
-Requires:       iputils
-Requires:       issue-generator
-%ifnarch %{arm}
-Requires:       kdump
-%endif
-Requires:       less
-Requires:       microos-tools
-Requires:       openssh
-Requires:       snapper
-Requires:       vim-small
-Requires:       wtmpdb
-# people are addicted to sudo
-Requires:       sudo
-Requires:       system-group-wheel
-Requires:       systemd-presets-branding-Kalpa
-Requires:       terminfo-base
-Requires:       timezone
-Conflicts:      gettext-runtime-mini
-Conflicts:      krb5-mini
-Obsoletes:      suse-build-key < 12.1
-Requires:       yast2-logs
+# exfat is an important filesystem too (boo#1222955)
+Requires:       exfatprogs
+# Add gvfs and gvfs-backends for usability with some flatpaks (boo#1216667)
+Requires:       gvfs
+Requires:       gvfs-backends
+# Add for mounting network shares in userspace (boo#1210125)
+Requires:       kdenetwork-filesharing
+Requires:       kdnssd
+Requires:       kio-fuse
+Requires:       ntfs-3g
+Requires:       ntfsprogs
 
-### Packages formerly provided by base_zypper
-Requires:       transactional-update
-Requires:       transactional-update-zypp-config
-Requires:       zypper
-# zypper ps is useless in transactional mode. It also checks for
-# /run/reboot-needed though which is created by transactional-update
-Requires:       zypper-needs-restarting
 
-### Packages formerly provided by defaults
-Requires:       audit
-Requires:       systemd-coredump
+### Firstboot Configuration
+Requires:       combustion
+Requires:       ignition-dracut
 
-### Packages formerly provided by hardware
-Requires:       ethtool
-%ifnarch s390x
-Requires:       irqbalance
-%endif
-Requires:       fcoe-utils
-Requires:       hwinfo
-Requires:       susepaste
 
-### Packages formerly provided by selinux
+### SELinux requirements
 Requires:       container-selinux
 Requires:       policycoreutils
+Requires:       policycoreutils-python-utils
 Requires:       selinux-policy-targeted
 Requires:       selinux-tools
 
-### Packages formerly provided by x11
-Requires:       xf86-input-libinput
-Requires:       xorg-x11-fonts-core
-Requires:       xorg-x11-server
-# Recommend something other than xdm, default to lightdm
-Recommends:     dejavu-fonts
-Recommends:     libyui-qt
-Recommends:     libyui-qt-pkg
-Recommends:     noto-sans-fonts
-Recommends:     tigervnc
-Recommends:     x11-tools
-Recommends:     xdmbgrd
-Recommends:     xorg-x11-Xvnc
-Recommends:     xorg-x11-driver-video
-Recommends:     xorg-x11-essentials
-Recommends:     xorg-x11-fonts
-Recommends:     xorg-x11-server-extra
-Recommends:     xterm
-Recommends:     xtermset
-Recommends:     yast2-control-center
-# bsc#1071953
-%ifnarch s390 s390x
-Recommends:     xf86-input-vmmouse
-Recommends:     xf86-input-wacom
-%endif
 
-### Packages formerly provided by desktop-common
-# PipeWire is the default sound server
+### Virtualization and container support
+Requires:       distrobox
+Requires:       podman
+Requires:       qemu-guest-agent
+Requires:       spice-vdagent
+
+### Device support requirements
+## Audio Support: Pipewire is the Default sound server
+Requires:       alsa-ucm-conf
 Requires:       gstreamer-plugin-pipewire
 Requires:       pipewire-alsa
 Requires:       pipewire-pulseaudio
-# Allow users to print (and add some common printer drivers)
-Requires:       OpenPrintingPPDs
-Requires:       bluez-cups
+Requires:       phonon-vlc-qt6
+Requires:       plasma6-pa
+## Printing and Scanning Support
 Requires:       cups
 Requires:       cups-filters
 Requires:       cups-pk-helper
+Requires:       epson-inkjet-printer-escpr
 Requires:       ghostscript
 Requires:       hplip-hpijs
+Requires:       kde-print-manager
+Requires:       OpenPrintingPPDs
+Requires:       printer-driver-brlaser
+# Scaner Support (boo#1214614)
+Requires:       sane-backends
 Requires:       system-config-printer-common
 Requires:       system-config-printer-dbus-service
 Requires:       udev-configure-printer
-# Add thunderbolt device management (boo#1208150)
+## Thunderbolt device management (boo#1208150)
 Requires:       bolt
-# Common tools
-Requires:       bash-completion
+## Bluetooth
+Requires:       bluedevil6
+Requires:       bluez-cups
 Requires:       bluez-firmware
-Requires:       glibc-locale
-Requires:       hicolor-icon-theme-branding-openSUSE
-Requires:       policycoreutils-python-utils
-Requires:       polkit-default-privs
-Requires:       systemd-icon-branding-openSUSE
-Requires:       udisks2
-Requires:       unzip
-Requires:       upower
-Requires:       usbutils
-Requires:       wget
-Requires:       xdg-utils
-# For i2c dev handling and permissions
+# Support bluetooth file transfer (boo#1225682)
+Requires:       bluez-obexd
+## For i2c dev handling and permissions
 Requires:       ddcutil-i2c-udev-rules
-# Support ntfs drives
-Requires:       ntfs-3g
-Requires:       ntfsprogs
-# More "comfortable" base package versions
-Requires:       gzip
-Requires:       hostname
-%if 0%{is_opensuse}
-Requires:       avahi
-%endif
-# Desktop notifications about transactional update succeeding/failing
-# for the masses
-Requires:       transactional-update-notifier
-# Needed by both GNOME and KDE for theming of GTK-based flatpak apps properly
-Requires:       xdg-desktop-portal-gtk
-# Needed to ensure MicroOS Desktop systems are be able to handle varied hardware out
-# of the box, and not only during the system installation.
+## Add steam-devices to negate users needing to after install
+Requires:       steam-devices
+# Needed to ensure Kalpa are able to handle varied hardware out of the box
+# and not just during installation
 Requires:       kernel-firmware-all
 Requires:       sof-firmware
+# Support screen rotation (boo#1222711)
+Requires:       iio-sensor-proxy
+## Support wacom tablets
+Requires:       libinput-udev
+# Add switcheroo-control
+Requires:       switcheroo-control
+# Support Vulkan (boo#1223443)
+Requires:       libvulkan_radeon
+Requires:       libvulkan_intel
+# Support fingerprint scanners (boo#1212071)
+Requires:       fprintd
+Requires:       fprintd-pam
+# Add Mesa-demos-egl for kinfocenter6 (kde#502129)
+Requires:       Mesa-demo-egl
 
 # from data/COMMON-DESKTOP
 Requires:       desktop-data
@@ -263,141 +249,179 @@ Requires:       desktop-file-utils
 #
 # #332596
 # Pull in plasma-branding-MicroOS for firstboot setup
-#Requires:       plasma-branding-MicroOS
 Requires:       plasma-branding-Kalpa
 
+### Power Management
+Requires:       (power-profiles-daemon or tuned-ppd)
+Suggests:       tuned-ppd
 # Some basic system tools
-Requires:       featherpad
+Requires:       ark
+Requires:       falkon
+Requires:       kate
 Requires:       konsole
 # Add KDE Partition Manager (boo#1212925)
 Requires:       partitionmanager
 
-# Add ksshaskpass5 (boo#1215407)
-Requires:       ksshaskpass6
-
-# Recommended by kde_plasma
-Requires:       bluedevil6
-Requires:       breeze6-wallpapers
-Requires:       dolphin
-Requires:       kde-print-manager
-Requires:       kgamma6
-Requires:       phonon-vlc-qt6
-Requires:       plasma6-nm
-Requires:       plasma6-workspace-wallpapers
-
-# Manually pull in baloo5-file to better support desktip search functions/desktop integration
-Requires:       kf6-baloo-file
-
-# For NetworkManager support of openVPN Connections
+### Networking requirements
+%if 0%{is_opensuse}
+Requires:       avahi
+%endif
+Requires:       ethtool
+Requires:       fcoe-utils
+Requires:       iproute2
+Requires:       iputils
+# For Mobile Broadband Support (boo#1230006)
+Requires:       libmbim
+Requires:       NetworkManager
+Requires:       NetworkManager-bluetooth
 Requires:       NetworkManager-openvpn
+Requires:       NetworkManager-wifi
 Requires:       openvpn-auth-pam-plugin
+Requires:       plasma6-nm
 Requires:       plasma6-nm-openconnect
 Requires:       plasma6-nm-openvpn
+Requires:       wireguard-tools
 
-Requires:       kdeplasma6-addons
-Requires:       kio-extras
-Requires:       kwalletmanager
-Requires:       pinentry
-Requires:       plasma5-session
-Requires:       plasma6-pa
-Requires:       sddm-kalpa
 
-# Additional Fonts to cover Unicode Symbols not provided by kde_plasma
-Requires:       noto-sans-math-fonts
-Requires:       google-noto-sans-cjk-fonts
-
-# Recommends and Supplements won't work so pull in manually
+### Package management
 Requires:       discover-backend-flatpak
 Requires:       discover-backend-fwupd
-Requires:       kde-gtk-config6
-Requires:       kde-gtk-config6-gtk3
-Requires:       plasma-browser-integration
-# Requires:       plasma5-defaults-openSUSE
-Requires:       kf6-purpose
-Requires:       kf6-qqc2-desktop-style
-Requires:       xdg-desktop-portal-kde6
-
-# Recommended by powerdevil5, but allow tlp as alternative
-Requires:       (power-profiles-daemon or tlp)
-Suggests:       power-profiles-daemon
-
-# Doesnt depend on PackageKit, but also works for other backends
 Requires:       discover6-notifier
+Requires:       transactional-update
+Requires:       transactional-update-zypp-config
+Requires:       transactional-update-notifier
+Requires:       zypper
+# zypper ps is useless in transactional mode. It also checks for
+# /run/reboot-needed though which is created by transactional-update
+Requires:       zypper-needs-restarting
 
-# Spectacle to be able to take screenshots out of the box
-Requires:       spectacle
 
-# KAccounts to be installed by default (boo#1216397)
+### Plasma requirements
+Requires:       aurorae6
+Requires:       breeze6-wallpapers
+Requires:       desktop-data
+Requires:       desktop-file-utils
+Requires:       ffmpegthumbs
+Requires:       flatpak-kcm6
 Requires:       kaccounts-integration
 Requires:       kaccounts-providers
+Requires:       kde-gtk-config6
+Requires:       kde-gtk-config6-gtk3
+Requires:       kde-inotify-survey
+Requires:       kdeconnect-kde
+Requires:       kdegraphics-thumbnailers
+Requires:       kdeplasma6-addons
+Requires:       kf6-baloo-file
+Requires:       kf6-purpose
+Requires:       kf6-qqc2-desktop-style
+Requires:       kgamma6
+Requires:       khelpcenter
+Requires:       kio-extras
 Requires:       kio-gdrive
-
-# Default Plasma app to quickly use emojis
+Requires:       ksshaskpass6
+Requires:       kwalletmanager
+Requires:       libappindicator-gtk3
+Requires:       ocean-sound-theme6
+Requires:       oxygen5-sounds
+Requires:       pam_kwallet6
+Requires:       pinentry
+Requires:       plasma-browser-integration
+Requires:       plasma6-session
 Requires:       plasma6-desktop-emojier
-Requires:       google-noto-coloremoji-fonts
+Requires:       plasma6-systemmonitor
+Requires:       plasma6-workspace-wallpapers
+Requires:       qt6-imageformats
+Requires:       sddm-qt6
+Requires:       sddm-kcm6
+# Needed for proper theming support with GTK Flatpaks
+Requires:       xdg-desktop-portal-gtk
+Requires:       xdg-desktop-portal-kde6
 
-# Breeze GTK2, GTK3, and GTK4
+
+### Themeing and Branding
+# Add Aeon-check
+Requires:       aeon-check
+Requires:       branding-openSUSE
+Requires:       distribution-logos-openSUSE-Kalpa
 Requires:       (gtk4-metatheme-breeze if gtk4)
 Requires:       (gtk2-metatheme-breeze if gtk2)
 Requires:       (gtk3-metatheme-breeze if gtk3)
+Requires:       hicolor-icon-theme-branding-openSUSE
+Requires:       Kalpa-release
+Requires:       plasma-branding-Kalpa
+Requires:       systemd-icon-branding-openSUSE
+Requires:       systemd-presets-branding-Kalpa
+%dnl Disabling for now, while sorting out the new installer
+%dnl Requires:       systemd-repart-branding-Kalpa
+%dnl Requires:       x86_64_v3-branding-Kalpa
 
-# Default Plasma sounds for applications
-Requires:       ocean-sound-theme6
-Requires:       oxygen5-sounds
 
-# Plasma system monitor
-Requires:       plasma6-systemmonitor
+### Applications
+Requires:       dolphin
+Requires:       falkon-kde
+Requires:       fastfetch
+Requires:       kate
+Requires:       just
+Requires:       konsole
+Requires:       yakuake
+# Add KDE Partition Manager (boo#1212925)
+Requires:       partitionmanager
+Requires:       spectacle
+Requires:       susepaste
+Requires:       vim
+Requires:       openssh
 
-# For seeing thumbnails in Dolphin
-Requires:       qt6-imageformats
-Requires:       ffmpegthumbs
-Requires:       kdegraphics-thumbnailers
 
-# For being able to change SDDM Settings
-Requires:       sddm-kcm6
+### Fonts
+Requires:       adobe-sourcecodepro-fonts
+Requires:       adobe-sourcesans3-fonts
+Requires:       adobe-sourcesanspro-fonts
+Requires:       adobe-sourceserifpro-fonts
+Requires:       adwaita-fonts
+Requires:       cantarell-fonts
+Requires:       dejavu-fonts
+Requires:       ghostscript-fonts-std
+Requires:       ghostscript-fonts-std-converted
+Requires:       google-carlito-fonts
+Requires:       google-noto-sans-cjk-fonts
+Requires:       google-noto-coloremoji-fonts
+Requires:       google-noto-sans-symbols-fonts
+Requires:       google-noto-sans-symbols2-fonts
+Requires:       google-opensans-fonts
+Requires:       google-roboto-fonts
+Requires:       hack-fonts
+Requires:       ibm-plex-mono-fonts
+Requires:       liberation-fonts
+Requires:       suse-fonts
 
-# Add for mounting network shares in userspace (boo#1210125)
-Requires:       kio-fuse
-Requires:       kdenetwork-filesharing
-Requires:       kdnssd
 
-# Add kcm_flatpak for managing flatpak permissions (boo#1208256)
-Requires:       flatpak-kcm6
 
-# Add pam_kwallet to unlock the password store automatically
-Requires:       pam_kwallet6
+####
+%dnl ### Packages formerly provided by x11
+%dnl Requires:       xf86-input-libinput
+%dnl Requires:       xorg-x11-fonts-core
+%dnl Requires:       xorg-x11-server
+%dnl Recommends:     dejavu-fonts
+%dnl Recommends:     libyui-qt
+%dnl Recommends:     libyui-qt-pkg
+%dnl Recommends:     noto-sans-fonts
+%dnl Recommends:     tigervnc
+%dnl Recommends:     x11-tools
+%dnl Recommends:     xdmbgrd
+%dnl Recommends:     xorg-x11-Xvnc
+%dnl Recommends:     xorg-x11-driver-video
+%dnl Recommends:     xorg-x11-essentials
+%dnl Recommends:     xorg-x11-fonts
+%dnl Recommends:     xorg-x11-server-extra
+%dnl Recommends:     xterm
+%dnl Recommends:     xtermset
+%dnl Recommends:     yast2-control-center
+# bsc#1071953
+%dnl %ifnarch s390 s390x
+%dnl Recommends:     xf86-input-vmmouse
+%dnl Recommends:     xf86-input-wacom
+%dnl %endif
 
-# KDE Connect to communicate to phone devices
-Requires:       kdeconnect-kde
-
-# Add gvfs and gvfs-backends for usability with some flatpaks (boo#1216667)
-Requires:       gvfs
-Requires:       gvfs-backends
-
-# Add steam-devices to negate users needing to after install
-Requires:       steam-devices
-
-# Warn when apps are using all inotify watches and prompts the user to raise it
-Requires:       kde-inotify-survey
-
-# For crisp status notifier systray icons
-Requires:       libappindicator-gtk3
-
-### Packages formerly provided by kiwi file
-Requires:       kernel-default
-### systemd-zram stuff
-Requires:       systemd-zram-service
-### Virtualization support
-Requires:       spice-vdagent
-Requires:       qemu-guest-agent
-
-# bug#1218439
-Requires:       tpm2.0-abrmd
-Requires:       tpm2-0-tss
-Requires:       tpm2.0-tools
-
-# Add mesa-demo-egl (kde#502129)
-Requires:       Mesa-demo-egl
 
 %description base
 This is the openSUSE Kalpa base system. It contains only fully working immutable desktop system.
