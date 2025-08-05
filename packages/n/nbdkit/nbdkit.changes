@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Aug 04 15:42:29 UTC 2025 - Charles Arnold <carnold@suse.com>
+
+- Update to version 1.44.2:
+  * Version 1.44.2.
+  * tests: Work around realpath error on BSDs
+  * server: Use debug() instead of nbdkit_debug() consistently in the server
+  * server/main.c: Factor out the function that parses key=value
+  * server/main.c: Fix comment
+  * server/main.c: Move key=value parsing to a new function
+  * server/options.h: Reject empty string ("") as a short name
+  * server/options.h: Add comment to is_short_name
+  * server/main.c: Reject empty string as a plugin name or filter name
+  * common: utils: Add const to <vector>_duplicate variable decls
+  * data: Use new vector_append_array in a couple of places
+  * common: utils: vector: Fix vector_uniq prototype and add a test
+  * common: utils: vector: Add range functions for insert, append and remove
+  * common: utils: vector: Prefer vector_reset over free()
+  * common: utils: vector: Add new vector_uniq function
+  * tests/functions: Factor out 2^63-1 constant used by a few tests
+  * tests/test-cache-block-size.sh: Remove unused socket
+  * data: Minor revisions to the documentation for clarity
+  * full: Remove reference to equivalence of nbdkit-readonly-filter
+  * tests/test-floppy.sh: Simplify this test
+  * common/include/test-once.c: Further fixes for pthread_barrier_t
+  * common/include/test-once.c: Skip test on macOS which lacks pthread_barrier_t
+  * file: trim: Don't try BLKDISCARD if earlier FALLOC_FL_PUNCH_HOLE worked
+  * file: zero: Print the debug message on the fallback path once
+  * common: Add ONCE macro to run code only once
+
+-------------------------------------------------------------------
 Mon Jul 07 17:23:58 UTC 2025 - Charles Arnold <carnold@suse.com>
 
 - Update to version 1.44.1:
