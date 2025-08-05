@@ -28,6 +28,8 @@ Source0:        https://github.com/danielknobe/blobbyvolley2/archive/v%{version}
 Patch0:         blobbyvolley2-fix-non-void-return.patch
 # PATCH-FIX-OPENSUSE don't use integrated tinyxml
 Patch1:         blobbyvolley2-1.1.1_external_tinyxml.patch
+# PATCH_FIX-UPSTREAM https://github.com/danielknobe/blobbyvolley2/pull/152 - fix compatibility with Clang 19
+Patch2:         blobbyvolley2-linked-list.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake >= 3.7
 BuildRequires:  fdupes

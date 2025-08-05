@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 26 06:36:00 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Add blobbyvolley2-linked-list.patch to fix compiler error
+  Part of https://github.com/danielknobe/blobbyvolley2/pull/152
+
+-------------------------------------------------------------------
 Fri May  2 20:23:42 UTC 2025 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - add blobbyvolley2-1.1.1_external_tinyxml.patch to use system tinyxml2
