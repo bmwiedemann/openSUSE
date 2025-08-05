@@ -26,4 +26,16 @@ Redis 8.0.0 supported atomic HGETDEL, HGETEX and HSETEX, and AGPL-3.0-only licen
     with an element.</comment>
     <requestid>1290887</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>855784ae72c4e033e6809d4540a0d7a9</srcmd5>
+    <version>8.2.0</version>
+    <time>1754396457</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 8.2.0
+  * https://github.com/redis/redis/releases/tag/8.2.0
+  * Added commands: XDELEX and XACKDEL; extension to XADD and XTRIM.
+  * Added operators: DIFF, DIFF1, ANDOR, and ONE.
+  * Added SVS-VAMANA vector index type which supports vector compression.</comment>
+    <requestid>1297514</requestid>
+  </revision>
 </revisionlist>
