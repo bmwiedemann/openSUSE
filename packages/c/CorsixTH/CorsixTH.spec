@@ -1,7 +1,7 @@
 #
 # spec file for package CorsixTH
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           CorsixTH
-Version:        0.68.0
+Version:        0.69.0
 Release:        0
 Summary:        Theme Hospital clone
 License:        MIT
@@ -29,7 +29,6 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  wxWidgets-devel
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(freetype2)
