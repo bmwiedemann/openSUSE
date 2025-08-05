@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug  4 07:46:36 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 1.2.6
+  This patch release fixes a bug introduced in 1.2.5 and other
+  minor issues.
+ 
+  Added
+
+  * The AppImage version does now provide all drumkits in 
+    /usr/share/hydrogen/data/drumkits/ and 
+    /usr/local/share/hydrogen/data/drumkits/ via the "Sound Library"
+     as session kits.
+
+  Changed
+
+  * Sample loading in songs has been made more portable.
+
+  Fixed
+
+  * Fix velocity automation for patterns that are not of size 4/4 (#2171).
+  * Fix saving and loading of sample files introduced in 1.2.5 (#2174).
+
+-------------------------------------------------------------------
 Sat Jul 19 23:23:07 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 1.2.5
