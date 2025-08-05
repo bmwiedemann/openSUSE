@@ -113,4 +113,12 @@
   * Tighten up :path validation</comment>
     <requestid>1287802</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5647d2d80c81083c27b05845c576be30</srcmd5>
+    <version>1.11.0</version>
+    <time>1754396415</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.0:</comment>
+    <requestid>1296567</requestid>
+  </revision>
 </revisionlist>

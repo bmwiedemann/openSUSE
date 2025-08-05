@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul 29 10:31:07 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.11.0:
+  * Revert "Tighten up :path validation"
+  * Implement RFC 9412 ORIGIN frame
+  * Clarify the life time of the object pointed
+  * Update doc
+  * Port ngtcp2 map changes
+  * Treat malformed HTTP message as a connection error
+  * Map seed
+  * Add nghttp3_qpack_encoder_new2
+  * Make nghttp3_rand accept uint8_t buffer
+  * Origin changes
+  * No need to zero-clear frent
+  * Use compound literals instead of filling with zeros
+  * Make macros static inline functions
+  * Remove length from nghttp3_frame
+
+-------------------------------------------------------------------
 Mon Jun 23 05:42:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10.1:
