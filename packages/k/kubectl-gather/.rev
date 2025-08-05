@@ -7,4 +7,12 @@
     <comment>new package kubectl-gather: gather data about your cluster that may help to debug issues</comment>
     <requestid>1267857</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>14c1647403977f7950e3a5850036d56e</srcmd5>
+    <version>0.10.0</version>
+    <time>1754396513</time>
+    <user>dimstar_suse</user>
+    <comment>update to 0.10.0</comment>
+    <requestid>1297602</requestid>
+  </revision>
 </revisionlist>

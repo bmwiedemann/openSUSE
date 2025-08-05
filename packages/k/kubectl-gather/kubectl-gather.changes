@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue Aug 05 05:21:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.10.0:
+  * doc: document gathering cluster scope resources
+  * cmd: add cluster-level resource gathering support
+  * e2e: add tests for --cluster flag combinations
+  * cmd: separate resource filtering from namespace logic
+  * cmd: rename cluster variables to avoid naming conflict
+  * e2e: add test for empty namespaces with --cluster=false
+  * cmd: add --cluster flag with validation and defaults
+  * build: Allow building with existing image
+  * release: Use ubuntu-latest
+  * cmd: validate empty namespaces flag
+  * e2e: Update TestGatherEmptyNamespaces
+  * e2e: export pathExists function in validate package
+  * e2e: fix lint errors in output_test.go
+  * e2e: Validate multiple resources lists
+
+-------------------------------------------------------------------
+Mon Jul 28 05:36:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.0:
+  * e2e: Test reading gathered data
+  * gather: Introduce OutputReader
+  * gather: Add constants for file suffixes
+  * e2e: Rename executable to kubectlGather
+  * e2e: Move constants to e2e.go
+  * e2e: add cluster node resource validation in gather tests
+  * ci: Move permissions up
+  * ci: Refine release workflow permissions
+  * ci: Add permissions for test workflow
+  * e2e: add and update e2e tests
+  * e2e: add validation for gathered data and JSON log format
+  * e2e: export names variable
+  * ci: Allow manual workflow run for a branch
+  * ci: Run test workflow only for PRs
+  * ci: Update to latest golangci-lint (v2)
+  * e2e: Improve commands names
+  * e2e: Deploy applications for testing
+  * build: Update to go 1.24.0
+  * deps: Update cobra to latest version
+  * build: Use GOTOOLCHAIN=auto for predictable build
+  * build: Make golang container version configurable
+  * build: Use go version from go.mod
+  * Bump golang.org/x/oauth2 in the go_modules group across 1
+    directory
+  * e2e: Keep generated files under out/
+  * release: Add release-container job
+  * release: Allow manual running for testing
+  * release: Fix workflow permissions formatting
+
+-------------------------------------------------------------------
+Mon Jul 07 04:51:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.8.0:
+  * New gather pipeline
+  * Add docs/internals.md
+  * Bump golang.org/x/net in the go_modules group across 1
+    directory
+  * Fix typos in comments and variable names
+
+-------------------------------------------------------------------
 Mon Mar 31 06:18:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package kubectl-gather: gather data about your cluster that

@@ -17,7 +17,7 @@
 
 
 Name:           kubectl-gather
-Version:        0.7.0
+Version:        0.10.0
 Release:        0
 Summary:        Kubectl plugin to gather data about your cluster
 License:        Apache-2.0
