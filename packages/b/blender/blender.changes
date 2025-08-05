@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  4 16:18:24 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.5.1
+  https://developer.blender.org/docs/release_notes/4.5/corrective_releases/
+- Drop manifold-include-fix.patch
+
+-------------------------------------------------------------------
 Wed Jul 16 16:20:42 UTC 2025 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Sync manifold-include-fix.patch with upstream fix
