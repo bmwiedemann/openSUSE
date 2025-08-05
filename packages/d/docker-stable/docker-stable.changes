@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  5 05:26:44 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Backport <https://github.com/moby/moby/pull/48517>. bsc#1247362
+  + 0015-bsc1247362-release-container-layer-on-export.patch
+
+-------------------------------------------------------------------
 Thu Jul 17 04:27:33 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to docker-buildx v0.25.0. Upstream changelog:

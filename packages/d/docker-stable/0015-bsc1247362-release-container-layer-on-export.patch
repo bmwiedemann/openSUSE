@@ -1,0 +1,55 @@
+From 8e736eda0c047c572564e95d97da19fd372f4d33 Mon Sep 17 00:00:00 2001
+From: Joan Grau <grautxo.dev@proton.me>
+Date: Tue, 17 Sep 2024 12:49:02 +0200
+Subject: [PATCH 15/15] bsc1247362: release container layer on export
+
+When running docker export command the container layer is only released
+in case there is an error.
+
+This makes the daemon not being able to remove them when using docker
+rmi or docker system prune leaving the container layer and the image
+used in an orphaned state on the docker file system.
+
+After applying this patch, the layer is always released allowing dockerd
+to remove/prune it.
+
+SUSE-Bugs: https://bugzilla.suse.com/show_bug.cgi?id=1247362
+Signed-off-by: Joan Grau <grautxo.dev@proton.me>
+(Cherry-picked from commit 1aba291cd4ad9d9d1172a72fb6371e67a1403e83.)
+Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
+---
+ daemon/images/image_exporter.go | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/daemon/images/image_exporter.go b/daemon/images/image_exporter.go
+index 88877b01c6b2..ac93b00174c5 100644
+--- a/daemon/images/image_exporter.go
++++ b/daemon/images/image_exporter.go
+@@ -24,12 +24,11 @@ func (i *ImageService) PerformWithBaseFS(ctx context.Context, c *container.Conta
+ 	if err != nil {
+ 		return err
+ 	}
++
+ 	defer func() {
++		err := i.ReleaseLayer(rwlayer)
+ 		if err != nil {
+-			err2 := i.ReleaseLayer(rwlayer)
+-			if err2 != nil {
+-				logrus.WithError(err2).WithField("container", c.ID).Warn("Failed to release layer")
+-			}
++			logrus.WithError(err).WithField("container", c.ID).Warn("Failed to release layer")
+ 		}
+ 	}()
+ 
+@@ -38,6 +37,8 @@ func (i *ImageService) PerformWithBaseFS(ctx context.Context, c *container.Conta
+ 		return err
+ 	}
+ 
++	defer rwlayer.Unmount()
++
+ 	return fn(basefs)
+ }
+ 
+-- 
+2.50.1
+
