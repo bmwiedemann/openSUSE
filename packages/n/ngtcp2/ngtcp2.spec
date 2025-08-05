@@ -30,7 +30,7 @@
 %endif
 
 Name:           ngtcp2
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        Implementation of the IETF QUIC protocol
 License:        MIT
@@ -44,7 +44,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(gnutls) >= 3
-BuildRequires:  pkgconfig(libnghttp3) >= 1.0.0
+BuildRequires:  pkgconfig(libnghttp3) >= 1.11.0
 %if %{with openssl}
 BuildRequires:  pkgconfig(openssl)
 %endif
@@ -70,6 +70,7 @@ ngtcp2 is an implementation of the QUIC protocol (RFC 9000).
 This package contains the crypto API of ngtcp2, which was built using
 GNUTLS as the cryptographic provider.
 
+%if %{with openssl}
 %package -n %{openssl_soname}%{openssl_sover}
 Summary:        The ngtcp2 crypto API with OpenSSL as a backend
 Group:          System/Libraries
@@ -78,6 +79,7 @@ Group:          System/Libraries
 ngtcp2 is an implementation of the QUIC protocol (RFC 9000).
 This package contains the crypto API of ngtcp2, which was built using
 OpenSSL as the cryptographic provider.
+%endif
 
 %package -n python3-ngtcp2
 Summary:        Python3 bindings for ngtcp2
@@ -89,16 +91,31 @@ Python bindings for the ngtcp2 implementation of the QUIC protocol.
 %package devel
 Summary:        Development files for ngtcp2
 Group:          Development/Languages/C and C++
-Requires:       %{gnutls_soname}%{gnutls_sover} = %{version}
-%if %{with openssl}
-Requires:       %{openssl_soname}%{openssl_sover} = %{version}
-%endif
 Requires:       %{soname}-%{sover} = %{version}
 Provides:       libngtcp2-devel = %{version}-%{release}
 Obsoletes:      libngtcp2-devel < %{version}-%{release}
 
 %description devel
 Development files for use with libngtcp2, which implements the
+QUIC protocol.
+
+%package -n libngtcp2_crypto_gnutls-devel
+Summary:        GnuTLS Development files for ngtcp2
+Group:          Development/Languages/C and C++
+Requires:       %{gnutls_soname}%{gnutls_sover} = %{version}
+Requires:       libngtcp2-devel = %{version}-%{release}
+
+%description -n libngtcp2_crypto_gnutls-devel
+GnuTLS as TLS backend development files for use with libngtcp2.
+
+%package -n libngtcp2_crypto_ossl-devel
+Summary:        OpenSSL Development files for ngtcp2
+Group:          Development/Languages/C and C++
+Requires:       %{openssl_soname}%{openssl_sover} = %{version}
+Requires:       libngtcp2-devel = %{version}-%{release}
+
+%description -n libngtcp2_crypto_ossl-devel
+OpenSSL as TLS backend development files for use with libngtcp2.
 QUIC protocol.
 
 %prep
@@ -154,12 +171,20 @@ rm -rf %{buildroot}%{_mandir}/man1/* \
 
 %files devel
 %dir %{_includedir}/%{name}/
-%{_includedir}/%{name}/*.h
+%{_includedir}/%{name}/ngtcp2.h
+%{_includedir}/%{name}/ngtcp2_crypto.h
+%{_includedir}/%{name}/version.h
 %{_libdir}/%{soname}.so
-%{_libdir}/%{gnutls_soname}.so
 %{_libdir}/pkgconfig/%{soname}.pc
+
+%files -n libngtcp2_crypto_gnutls-devel
+%{_includedir}/%{name}/ngtcp2_crypto_gnutls.h
+%{_libdir}/%{gnutls_soname}.so
 %{_libdir}/pkgconfig/libngtcp2_crypto_gnutls.pc
+
 %if %{with openssl}
+%files -n libngtcp2_crypto_ossl-devel
+%{_includedir}/%{name}/ngtcp2_crypto_ossl.h
 %{_libdir}/%{openssl_soname}.so
 %{_libdir}/pkgconfig/libngtcp2_crypto_ossl.pc
 %endif

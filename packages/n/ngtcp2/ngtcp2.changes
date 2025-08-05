@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jul 30 06:48:20 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Split the devel package into the gnutls and openssl parts.
+  These packages are now called libngtcp2_crypto_gnutls-devel
+  and libngtcp2_crypto_ossl-devel.
+
+-------------------------------------------------------------------
+Tue Jul 29 11:40:05 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.14.0:
+  * Add util::system_clock_now
+  * Make read_pem return std::vector<uint8_t>
+  * Refactor cubic
+  * Add ngtcp2_begin_path_validation callback
+  * ngtcp2_map: Hash key
+  * Update BBR to the current draft and simplify code
+  * Map seed
+  * ngtcp2_map: Change load factor to 7/8
+  * Fix pc files for static linkage
+  * Build with the latest nghttp3
+  * Assert that fin is set or datalen > 0
+  * Return error if too many STREAM frames are accumulated for resend
+  * Set minimum STREAM data size when serializing into a packet
+  * Avoid memset for 1-RTT ngtcp2_pktns
+  * lib: Compound Literals
+  * Bump OpenSSL to v3.5.1
+  * Run quic-interop-runner
+  * quic-interop-runner: Enhance log reduction
+  * quic-interop-runner: Add workflow_dispatch inputs
+  * Require nghttp3 >= v1.11.0
+
+-------------------------------------------------------------------
 Mon Jun 23 05:53:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.0:

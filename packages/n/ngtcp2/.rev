@@ -185,4 +185,12 @@
 - Additionally build OpenSSL backend and ship it in optional subpackage</comment>
     <requestid>1287814</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c0dbb21d7c7e0a3f714043baec3816c9</srcmd5>
+    <version>1.14.0</version>
+    <time>1754396416</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.14.0:</comment>
+    <requestid>1296602</requestid>
+  </revision>
 </revisionlist>
