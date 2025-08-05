@@ -5268,4 +5268,12 @@
   + trim trailing blanks from a few files (report by Stas Sergeev).</comment>
     <requestid>1294756</requestid>
   </revision>
+  <revision rev="306" vrev="79">
+    <srcmd5>d0105ccda1c670454474a1569040232d</srcmd5>
+    <version>unknown</version>
+    <time>1754396412</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1297451</requestid>
+  </revision>
 </revisionlist>

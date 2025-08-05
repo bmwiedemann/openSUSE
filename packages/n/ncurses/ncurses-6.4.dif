@@ -1,7 +1,7 @@
 ---
  aclocal.m4                  |   37 ++++++++-------
  configure                   |   45 +++++++++----------
- include/curses.h.in         |    5 +-
+ include/curses.h.in         |    2 
  include/termcap.h.in        |    2 
  include/tic.h               |    4 -
  man/man_db.renames.in       |    1 
@@ -15,7 +15,7 @@
  progs/Makefile.in           |    4 -
  test/test.priv.h            |    4 -
  test/tracemunch             |    2 
- 16 files changed, 199 insertions(+), 68 deletions(-)
+ 16 files changed, 197 insertions(+), 67 deletions(-)
 
 --- aclocal.m4
 +++ aclocal.m4	2025-07-21 06:56:42.687837282 +0000
@@ -144,7 +144,7 @@
  esac
  done
 --- configure
-+++ configure	2025-07-21 06:56:42.687837282 +0000
++++ configure	2025-07-28 08:25:45.891920719 +0000
 @@ -6752,7 +6752,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
@@ -174,7 +174,7 @@
  	do
  
  if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists "$cf_with_pcre2"; then
-@@ -15620,12 +15620,12 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15628,12 +15628,12 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -189,7 +189,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -15635,7 +15635,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15643,7 +15643,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -198,7 +198,7 @@
  CF_EOF
  fi
  
-@@ -15678,7 +15678,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15686,7 +15686,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_manpage_so_strip \$TMP
  	fi
  	fi
@@ -207,7 +207,7 @@
  CF_EOF
  fi
  
-@@ -15687,31 +15687,31 @@ case "$MANPAGE_FORMAT" in
+@@ -15695,31 +15695,31 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -246,7 +246,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -15721,7 +15721,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15729,7 +15729,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -255,7 +255,7 @@
  							then
  								continue
  							fi
-@@ -15731,18 +15731,18 @@ CF_EOF
+@@ -15739,18 +15739,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -277,7 +277,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_manpage_compress" ; then
-@@ -15762,9 +15762,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15770,9 +15770,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -290,7 +290,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -15785,6 +15785,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15793,6 +15793,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -299,26 +299,16 @@
  esac
  done
 --- include/curses.h.in
-+++ include/curses.h.in	2025-05-05 07:22:16.194714977 +0000
-@@ -98,7 +98,7 @@
- 
- #ifdef __cplusplus
- #else
--#if @HAVE_STDNORETURN_H@
-+#if 0
- #include <stdnoreturn.h>
- #undef GCC_NORETURN
- #define GCC_NORETURN _Noreturn
-@@ -240,6 +240,9 @@ typedef @cf_cv_typeof_chtype@ chtype;
- typedef @cf_cv_typeof_mmask_t@ mmask_t;
- #endif
- 
-+#include <features.h>
-+#include <sys/types.h>
-+
++++ include/curses.h.in	2025-07-28 08:28:12.765290832 +0000
+@@ -243,6 +243,8 @@ typedef @cf_cv_typeof_mmask_t@ mmask_t;
  /*
   * We need FILE, etc.  Include this before checking any feature symbols.
   */
++#include <features.h>
++#include <sys/types.h>
+ #include <stdio.h>
+ 
+ /*
 --- include/termcap.h.in
 +++ include/termcap.h.in	2025-05-05 07:22:16.198714905 +0000
 @@ -47,6 +47,8 @@ extern "C"

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 28 08:25:16 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250726
+  + modify configure script cases for $host_os, to accommodate 64-bit
+    big-endian POWER linux with glibc (patch by Cosima Neidahl).
+  + add warning to configure script to address conflict between the
+    --enable-lp64 option and the options for overriding the types used
+    for chtype and mmask_t.
+- Port patch ncurses-6.4.dif
+
+-------------------------------------------------------------------
 Mon Jul 21 06:56:09 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20250720
