@@ -89,6 +89,14 @@ ExcludeArch:    %{arm}
 ExclusiveArch:  x86_64
 %endif
 
+%if "%{flavor}" == "mvapich3-ofi"
+ExcludeArch:    %{arm}  %ix86
+%endif
+
+%if "%{flavor}" == "mvapich3-ucx"
+ExcludeArch:    %{arm}  %ix86
+%endif
+
 %if "%{flavor}" == "openmpi4"
 %if %{sles_pre_or_15}
 # Disable openmpi4 builds for SLES up to (including) 15

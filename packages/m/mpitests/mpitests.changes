@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  1 13:21:10 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add mvapich3 flavors
+
+-------------------------------------------------------------------
 Sat Mar 29 14:54:31 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Remove support for gnu-hpc build flavours.
