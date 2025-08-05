@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 01 14:35:38 UTC 2025 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.76.2:
+  * Refactor tab completion test
+  * Test `gh pr create --reviewer` tab completion
+  * Include org teams for PR reviewers
+  * docs(ci): delete obsolete comment
+
+-------------------------------------------------------------------
 Thu Jul 24 10:02:56 UTC 2025 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 2.76.1:
