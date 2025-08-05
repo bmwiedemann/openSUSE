@@ -503,4 +503,26 @@ because we don't need git-web and the other stuff here (forwarded request 125417
   	properly for some model architectures</comment>
     <requestid>1290234</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>7444daf12ee23eb15afee529b791b211</srcmd5>
+    <version>0.10.1</version>
+    <time>1754396503</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.1:
+  * No notable changes.
+- Update to version 0.10.0:
+  * ollama ps will now show the context length of loaded models
+  * Improved performance in gemma3n models by 2-3x
+  * Parallel request processing now defaults to 1
+  * Fixed issue where tool calling would not work correctly with
+    granite3.3 and mistral-nemo models
+  * Fixed issue where Ollama's tool calling would not work
+    correctly if a tool's name was part of of another one, such as
+    add and get_address
+  * Improved performance when using multiple GPUs by 10-30%
+  * Ollama's OpenAI-compatible API will now support WebP images
+  * Fixed issue where ollama show would report an error
+  * ollama run will more gracefully display errors</comment>
+    <requestid>1297591</requestid>
+  </revision>
 </revisionlist>
