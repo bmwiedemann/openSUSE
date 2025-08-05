@@ -79,4 +79,14 @@
   * fix: Correctly report Kernels with dashes in their names</comment>
     <requestid>1292535</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>18a69a3c45d320989a8b12b9b09f167d</srcmd5>
+    <version>5.8.7.1+git20250803.c3192d7</version>
+    <time>1754396454</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.8.7.1+git20250803.c3192d7:
+  * Fix build for Linux v6.16
+  * Rename from_timer to timer_container_of</comment>
+    <requestid>1297522</requestid>
+  </revision>
 </revisionlist>
