@@ -22,10 +22,6 @@
 %define pkg_name %{name}
 %define pkg_version %{version}
 %define tarball_version %{version}
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir %{_localstatedir}/adm/fillup-templates
-%endif
 Name:           lighttpd
 Version:        1.4.79
 Release:        0
@@ -43,6 +39,8 @@ BuildRequires:  iputils
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
+# pg_config moved to postgresql-server-devel in postgresql11* packages boo#1153722
+BuildRequires:  postgresql-server-devel
 BuildRequires:  shadow
 BuildRequires:  perl(CGI)
 BuildRequires:  pkgconfig(dbi)
@@ -53,34 +51,39 @@ BuildRequires:  pkgconfig(libpcre2-posix)
 BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzstd)
-BuildRequires:  pkgconfig(lua5.1)
+BuildRequires:  pkgconfig(lua5.4)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(nss)
+BuildRequires:  pkgconfig(libssl) pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(nettle)
+BuildRequires:  libxcrypt-devel
 Requires:       spawn-fcgi
 Requires(post): %fillup_prereq
 Requires(pre):  shadow
-Recommends:     %{name}-mod_openssl = %{version}
 Recommends:     logrotate
+# preserve installation of modules historically bundled with lighttpd package
+Recommends:     %{name}-mod_openssl
+Recommends:     %{name}-mod_deflate
 Provides:       http_daemon
 Provides:       httpd
 Provides:       group(%{name})
 Provides:       user(%{name})
 %{?systemd_requires}
-%if 0%{?suse_version} <= 1600 && 0%{?is_opensuse}
+%if 0%{?suse_version} <= 1600 && 0%{?suse_version}
 BuildRequires:  libattr-devel
 BuildRequires:  mysql-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
+BuildRequires:  mbedtls-devel
 %else
 BuildRequires:  pkgconfig(ldap)
 BuildRequires:  pkgconfig(libattr)
 BuildRequires:  pkgconfig(mysqlclient)
 BuildRequires:  pkgconfig(pam)
-%endif
-%if 0%{?suse_version} > 1500
-# pg_config moved to postgresql-server-devel in postgresql11* packages boo#1153722
-BuildRequires:  postgresql-server-devel
+BuildRequires:  pkgconfig(mbedtls)
 %endif
 
 %description
@@ -90,6 +93,24 @@ very low memory footprint compared to other Web servers and takes care
 of CPU load. Its advanced feature set (FastCGI, CGI, Auth,
 Output-Compression, URL-Rewriting, and more) makes lighttpd the perfect
 Web server software for every server that is suffering load problems.
+
+%package mod_deflate
+Summary:        Compression module for lighttpd
+Group:          Productivity/Networking/Web/Servers
+Requires:       %{name} = %{version}
+Provides:       lighttpd:%{_sysconfdir}/%{name}/conf.d/deflate.conf
+Provides:       lighttpd:%{_libdir}/%{name}/mod_deflate.so
+
+%description mod_deflate
+Compression module for lighttpd.
+
+%package mod_gnutls
+Summary:        TLS module for lighttpd that uses GnuTLS
+Group:          Productivity/Networking/Web/Servers
+Requires:       %{name} = %{version}
+
+%description mod_gnutls
+TLS module for lighttpd that uses GnuTLS.
 
 %package mod_magnet
 Summary:        A module to control the request handling in lighttpd
@@ -101,10 +122,38 @@ A module to control the request handling in lighttpd.
 
 It is the successor of mod_cml.
 
+%package mod_mbedtls
+Summary:        TLS module for lighttpd that uses mbedTLS
+Group:          Productivity/Networking/Web/Servers
+Requires:       %{name} = %{version}
+
+%description mod_mbedtls
+TLS module for lighttpd that uses mbedTLS.
+
+%package mod_nss
+Summary:        TLS module for lighttpd that uses NSS
+Group:          Productivity/Networking/Web/Servers
+Requires:       %{name} = %{version}
+
+%description mod_nss
+TLS module for lighttpd that uses NSS.
+
+%package mod_openssl
+Summary:        TLS module for lighttpd that uses OpenSSL
+Group:          Productivity/Networking/Web/Servers
+Requires:       %{name} = %{version}
+Provides:       lighttpd:%{_libdir}/%{name}/mod_openssl.so
+
+%description mod_openssl
+TLS module for lighttpd that uses OpenSSL.
+
 %package mod_vhostdb_dbi
 Summary:        DBI based virtual hosts module for Lighttpd
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}
+Suggests:       libdbi-drivers-dbd-mysql
+Suggests:       libdbi-drivers-dbd-pgsql
+Suggests:       libdbi-drivers-dbd-sqlite
 
 %description mod_vhostdb_dbi
 With DBI based vhosting you can put the information where to look for
@@ -154,6 +203,8 @@ lighttpd.
 Summary:        MaxMind GeoIP2 database support for Lighttp
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}
+Recommends:     GeoLite2
+Suggests:       geoipupdate
 
 %description mod_maxminddb
 This module supports fast ip/location lookups using MaxMind
@@ -174,6 +225,18 @@ Requires:       %{name} = %{version}
 
 %description mod_authn_gssapi
 A module to provide GSSAPI authentication in lighttpd.
+
+%package mod_authn_dbi
+Summary:        Authentication module for lighttpd that uses DBI
+Group:          Productivity/Networking/Web/Servers
+Requires:       %{name} = %{version}
+Suggests:       libdbi-drivers-dbd-mysql
+Suggests:       libdbi-drivers-dbd-pgsql
+Suggests:       libdbi-drivers-dbd-sqlite
+Provides:       lighttpd:%{_libdir}/%{name}/mod_authn_dbi.so
+
+%description mod_authn_dbi
+Authentication module for lighttpd that uses DBI
 
 %package mod_authn_ldap
 Summary:        LDAP authentication in lighttpd
@@ -208,7 +271,6 @@ autoreconf -fiv
 %configure                      \
     --bindir=%{_sbindir}        \
     --libdir=%{_libdir}/%{name} \
-    --enable-ipv6               \
     --with-ldap                 \
     --with-pam                  \
     --with-dbi                  \
@@ -223,6 +285,12 @@ autoreconf -fiv
     --with-webdav-locks         \
     --with-maxminddb            \
     --with-sasl                 \
+    --with-pcre2                \
+    --with-nettle               \
+    --with-gnutls               \
+    --with-mbedtls              \
+    --with-nss                  \
+    --with-zlib                 \
     --with-attr
 %make_build
 
@@ -247,6 +315,7 @@ diff -ur doc/config/lighttpd.conf{.orig,} ||:
 rm -vf doc/config/lighttpd.conf.orig ||:
 cp -rv doc/config/* %{buildroot}%{_sysconfdir}/%{name}/
 find %{buildroot}%{_sysconfdir}/%{name}/ -name Makefile\* -delete
+rm -vf %{buildroot}%{_sysconfdir}/%{name}/conf.d/mod.template
 #
 # sysconfig template
 #
@@ -263,6 +332,10 @@ install -D -m 0644 %{SOURCE7} \
 find %{buildroot} -type f -name "*.la" -delete -print
 # remove executable bit from doc scripts to avoid pulling dependencies
 chmod -v -x doc/scripts/*.sh
+
+mkdir -p %{buildroot}/usr/lib/modules-load.d
+echo tls > %{buildroot}/usr/lib/modules-load.d/lighttpd-mod_gnutls.conf
+echo tls > %{buildroot}/usr/lib/modules-load.d/lighttpd-mod_openssl.conf
 
 %pre
 %{_sbindir}/groupadd -r %{name} >/dev/null 2>&1 ||:
@@ -294,13 +367,11 @@ chmod -v -x doc/scripts/*.sh
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/auth.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/cgi.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/debug.conf
-%config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/deflate.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/dirlisting.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/evhost.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/expire.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/fastcgi.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/mime.conf
-%config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/mod.template
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/proxy.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/scgi.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/simple_vhost.conf
@@ -309,19 +380,15 @@ chmod -v -x doc/scripts/*.sh
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/tls.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/userdir.conf
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/vhosts.d/vhosts.template
-
-# modules
-%license COPYING
+# default modules included in main package
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/mod_accesslog.so
 %{_libdir}/%{name}/mod_auth.so
 %{_libdir}/%{name}/mod_authn_file.so
 %{_libdir}/%{name}/mod_cgi.so
-%{_libdir}/%{name}/mod_deflate.so
 %{_libdir}/%{name}/mod_dirlisting.so
 %{_libdir}/%{name}/mod_extforward.so
 %{_libdir}/%{name}/mod_h2.so
-%{_libdir}/%{name}/mod_openssl.so
 %{_libdir}/%{name}/mod_proxy.so
 %{_libdir}/%{name}/mod_ssi.so
 %{_libdir}/%{name}/mod_sockproxy.so
@@ -329,11 +396,9 @@ chmod -v -x doc/scripts/*.sh
 %{_libdir}/%{name}/mod_userdir.so
 %{_libdir}/%{name}/mod_vhostdb.so
 %{_libdir}/%{name}/mod_wstunnel.so
-%{_libdir}/%{name}/mod_authn_dbi.so
 %{_libdir}/%{name}/mod_ajp13.so
 %{_mandir}/man8/*.8%{?ext_man}
 %doc AUTHORS NEWS README
-#doc doc/*.dot
 %doc doc/outdated/accesslog.txt
 %doc doc/outdated/authentication.txt
 %doc doc/outdated/cgi.txt
@@ -357,11 +422,37 @@ chmod -v -x doc/scripts/*.sh
 %attr(751,%{name},%{name}) %{_var}/cache/%{name}/
 %dir %attr(750,%{name},%{name}) %{_var}/log/%{name}/
 
+%files mod_deflate
+%doc doc/outdated/compress.txt
+%config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/deflate.conf
+%license COPYING
+%{_libdir}/%{name}/mod_deflate.so
+
+%files mod_gnutls
+%license COPYING
+%{_libdir}/%{name}/mod_gnutls.so
+%dir /usr/lib/modules-load.d
+%config(noreplace) /usr/lib/modules-load.d/lighttpd-mod_gnutls.conf
+
 %files mod_magnet
 %license COPYING
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/magnet.conf
 %{_libdir}/%{name}/mod_magnet.so
 %doc doc/outdated/magnet.txt
+
+%files mod_mbedtls
+%license COPYING
+%{_libdir}/%{name}/mod_mbedtls.so
+
+%files mod_nss
+%license COPYING
+%{_libdir}/%{name}/mod_nss.so
+
+%files mod_openssl
+%license COPYING
+%{_libdir}/%{name}/mod_openssl.so
+%dir /usr/lib/modules-load.d
+%config(noreplace) /usr/lib/modules-load.d/lighttpd-mod_openssl.conf
 
 %files mod_vhostdb_dbi
 %license COPYING
@@ -395,6 +486,10 @@ chmod -v -x doc/scripts/*.sh
 %config(noreplace) %attr(640,root,%{name}) %{_sysconfdir}/%{name}/conf.d/webdav.conf
 %{_libdir}/%{name}/mod_webdav.so
 %doc doc/outdated/webdav.txt
+
+%files mod_authn_dbi
+%license COPYING
+%{_libdir}/%{name}/mod_authn_dbi.so
 
 %files mod_authn_gssapi
 %license COPYING

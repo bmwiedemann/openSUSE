@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul 21 09:19:33 UTC 2025 - Stefan Bühler <source@stbuehler.de>
+
+- update upstream keys (uids / expiry)
+- split some modules into separate packages, but require them in the
+  main package for now:
+  * mod_openssl
+  * mod_deflate
+  * mod_authn_dbi
+- add alternative tls modules:
+  * mod_gnutls
+  * mod_mbedtls
+  * mod_nss
+- suggest DBI drivers with dbi modules
+- suggest some geoip packages for mod_maxminddb
+- kTLS offloading support (boo#1240669):
+  * autoload tls kernel module with mod_openssl and mod_gnutls
+- use lua5.4 (upgrade from lua5.1) for mod_magnet
+- require libxcrypt-devel explicitly (for crypt_r)
+
+-------------------------------------------------------------------
 Sun May 18 18:33:42 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.79:

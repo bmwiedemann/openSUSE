@@ -640,4 +640,29 @@ lighttpd 1.4.78</comment>
     <comment></comment>
     <requestid>1287253</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>767486af8698fa16ce8bf5f646d8831e</srcmd5>
+    <version>1.4.79</version>
+    <time>1754396463</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1297527 from stbuehler
+
+- update upstream keys (uids / expiry)
+- split some modules into separate packages, but require them in the
+main package for now:
+* mod_openssl
+* mod_deflate
+* mod_authn_dbi
+- add alternative tls modules:
+* mod_gnutls
+* mod_mbedtls
+* mod_nss
+- suggest DBI drivers with dbi modules
+- suggest some geoip packages for mod_maxminddb
+- kTLS offloading support (boo#1240669):
+* autoload tls kernel module with mod_openssl and mod_gnutls
+- use lua5.4 (upgrade from lua5.1) for mod_magnet
+- require libxcrypt-devel explicitly (for crypt_r)</comment>
+    <requestid>1297532</requestid>
+  </revision>
 </revisionlist>
