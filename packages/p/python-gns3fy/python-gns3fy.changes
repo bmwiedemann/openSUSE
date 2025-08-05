@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  5 02:47:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove pin on urllib3.
+
+-------------------------------------------------------------------
 Mon Jul 31 15:34:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - pin to urllib3 < 2 for the testsuite

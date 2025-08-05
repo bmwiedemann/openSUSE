@@ -31,4 +31,12 @@
     <comment>- pin to urllib3 &lt; 2 for the testsuite</comment>
     <requestid>1101558</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>48ab516b84595920d759b8335e5b1d9d</srcmd5>
+    <version>0.8.0</version>
+    <time>1754396507</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove pin on urllib3.</comment>
+    <requestid>1297597</requestid>
+  </revision>
 </revisionlist>

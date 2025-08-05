@@ -1,7 +1,7 @@
 #
 # spec file for package python-gns3fy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,14 +17,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-gns3fy
 Version:        0.8.0
 Release:        0
 Summary:        Python wrapper around GNS3 Server API
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/davidban77/gns3fy
 Source:         https://github.com/davidban77/gns3fy/archive/v%{version}.tar.gz#/gns3fy-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
@@ -39,7 +36,6 @@ BuildRequires:  %{python_module pydantic >= 1.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.22}
 BuildRequires:  %{python_module requests-mock}
-BuildRequires:  %{python_module urllib3 < 2}
 # /SECTION
 %python_subpackages
 
@@ -66,6 +62,6 @@ https://gns3-server.readthedocs.io/en/latest/
 %license docs/content/about/license.md
 %doc README.md
 %{python_sitelib}/gns3fy
-%{python_sitelib}/gns3fy-%{version}*-info
+%{python_sitelib}/gns3fy-%{version}.dist-info
 
 %changelog
