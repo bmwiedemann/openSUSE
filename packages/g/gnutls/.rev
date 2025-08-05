@@ -1764,4 +1764,41 @@ bsc#901857 (forwarded request 493933 from AndreasStieger)</comment>
     <comment></comment>
     <requestid>1273335</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>64b78e7041cd4306ba2c361aaca1fffb</srcmd5>
+    <version>3.8.10</version>
+    <time>1754396417</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with leancrypto. The liboqs support for post-quantum
+  cryptography (PQC) has been removed and is only provided through
+  leancrypto.
+
+- Update to 3.8.10:
+  * libgnutls: Fix NULL pointer dereference when 2nd Client Hello omits PSK
+    Reported by Stefan Bühler. [GNUTLS-SA-2025-07-07-4, CVSS: medium]
+    [bsc#1246299, CVE-2025-6395]
+  * libgnutls: Fix heap read buffer overrun in parsing X.509 SCTS timestamps
+    Spotted by oss-fuzz and reported by OpenAI Security Research Team,
+    and fix developed by Andrew Hamilton. [GNUTLS-SA-2025-07-07-1,
+    CVSS: medium] [bsc#1246233, CVE-2025-32989]
+  * libgnutls: Fix double-free upon error when exporting otherName in SAN
+    Reported by OpenAI Security Research Team. [GNUTLS-SA-2025-07-07-2,
+    CVSS: low] [bsc#1246232, CVE-2025-32988]
+  * certtool: Fix 1-byte write buffer overrun when parsing template
+    Reported by David Aitel. [GNUTLS-SA-2025-07-07-3,
+    CVSS: low] [bsc#1246267, CVE-2025-32990]
+  * libgnutls: PKCS#11 modules can now be used to override the default
+    cryptographic backend. Use the [provider] section in the system-wide config
+    to specify path and pin to the module (see system-wide config Documentation).
+  * libgnutls: Linux kernel version 6.14 brings a Kernel TLS (kTLS) key update
+    support. The library running on the aforementioned version now utilizes the
+    kernel’s key update mechanism when kTLS is enabled, allowing uninterrupted
+    TLS session. The --enable-ktls configure option as well as the system-wide
+    kTLS configuration(see GnuTLS Documentation) are still required to enable
+    this feature.
+  * libgnutls: liboqs support for PQC has been removed
+    For maintenance purposes, support for post-quantum cryptography
+    (PQC) is now only provided through leancrypto. The experimental key</comment>
+    <requestid>1297470</requestid>
+  </revision>
 </revisionlist>

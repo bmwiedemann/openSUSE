@@ -2,6 +2,7 @@
 # spec file for package gnutls
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,18 +36,13 @@
 # disable for now, as our OBS builds do not work with it. Marcus 20220511
 #bcond_without kcapi
 %bcond_with kcapi
-%ifarch armv6l armv6hl
-%bcond_with liboqs
-%else
-%bcond_without liboqs
-%endif
 %else
 %bcond_with kcapi
-%bcond_with liboqs
 %endif
 %bcond_with tpm
+%bcond_without leancrypto
 Name:           gnutls
-Version:        3.8.9
+Version:        3.8.10
 Release:        0
 Summary:        The GNU Transport Layer Security Library
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -82,7 +78,8 @@ Patch106:       gnutls-fips-sonames-check.patch
 Patch107:       gnutls-FIPS-disable-mac-sha1.patch
 # PATCH-FIX-SUSE bsc#1237101 GNUTLS FIPS selfcheck is failing again on tumbleweed
 Patch108:       gnutls-FIPS-HMAC-x86_64-v3-opt.patch
-
+# PATCH-FIX-SUSE Disable test
+Patch109:       gnutls-3.8.10-disable-ktls_test.patch
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge
@@ -101,12 +98,15 @@ BuildRequires:  p11-kit-devel >= 0.23.1
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(autoopts)
+BuildRequires:  pkgconfig(libbrotlidec)
+BuildRequires:  pkgconfig(libbrotlienc)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 %if %{with kcapi}
 BuildRequires:  pkgconfig(libkcapi)
 %endif
-%if %{with liboqs}
-BuildRequires:  pkgconfig(liboqs)
+%if %{with leancrypto}
+BuildRequires:  pkgconfig(leancrypto)
 %endif
 %if 0%{?suse_version} <= 1320
 BuildRequires:  net-tools
@@ -126,8 +126,8 @@ BuildRequires:  libunbound-devel
 %endif
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 BuildRequires:  crypto-policies
-Requires:       crypto-policies
 BuildRequires:  jitterentropy-devel >= 3.4.0
+Requires:       crypto-policies
 Requires:       libjitterentropy3 >= 3.4.0
 %endif
 
@@ -252,8 +252,10 @@ autoreconf -fiv
 %if %{with srp}
         --enable-srp-authentication \
 %endif
-%if %{with liboqs}
-        --with-liboqs \
+%if %{with leancrypto}
+        --with-leancrypto \
+%else
+        --without-leancrypto \
 %endif
 %ifarch %{ix86} %{arm}
         --disable-year2038 \
@@ -262,6 +264,7 @@ autoreconf -fiv
         --enable-fips140-mode \
         --with-fips140-module-name="GnuTLS version" \
         --with-fips140-module-version="%{version}-%{release}" \
+        --enable-ktls \
         %{nil}
 
 %make_build
@@ -322,12 +325,9 @@ GNUTLS_FORCE_FIPS_MODE=1 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=
 }
 %endif
 
-%post -n libgnutls%{gnutls_sover} -p /sbin/ldconfig
-%postun -n libgnutls%{gnutls_sover} -p /sbin/ldconfig
-%post -n libgnutls-dane%{gnutls_dane_sover} -p /sbin/ldconfig
-%postun -n libgnutls-dane%{gnutls_dane_sover} -p /sbin/ldconfig
-%post -n libgnutlsxx%{gnutlsxx_sover} -p /sbin/ldconfig
-%postun -n libgnutlsxx%{gnutlsxx_sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgnutls%{gnutls_sover}
+%ldconfig_scriptlets -n libgnutls-dane%{gnutls_dane_sover}
+%ldconfig_scriptlets -n libgnutlsxx%{gnutlsxx_sover}
 
 %files -f libgnutls.lang
 %license COPYING COPYING.LESSERv2

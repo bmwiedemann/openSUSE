@@ -1,10 +1,76 @@
 -------------------------------------------------------------------
+Tue Jul 15 08:12:29 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Build with leancrypto. The liboqs support for post-quantum
+  cryptography (PQC) has been removed and is only provided through
+  leancrypto.
+
+-------------------------------------------------------------------
+Mon Jul 14 17:00:21 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 3.8.10:
+  * libgnutls: Fix NULL pointer dereference when 2nd Client Hello omits PSK
+    Reported by Stefan Bühler. [GNUTLS-SA-2025-07-07-4, CVSS: medium]
+    [bsc#1246299, CVE-2025-6395]
+  * libgnutls: Fix heap read buffer overrun in parsing X.509 SCTS timestamps
+    Spotted by oss-fuzz and reported by OpenAI Security Research Team,
+    and fix developed by Andrew Hamilton. [GNUTLS-SA-2025-07-07-1,
+    CVSS: medium] [bsc#1246233, CVE-2025-32989]
+  * libgnutls: Fix double-free upon error when exporting otherName in SAN
+    Reported by OpenAI Security Research Team. [GNUTLS-SA-2025-07-07-2,
+    CVSS: low] [bsc#1246232, CVE-2025-32988]
+  * certtool: Fix 1-byte write buffer overrun when parsing template
+    Reported by David Aitel. [GNUTLS-SA-2025-07-07-3,
+    CVSS: low] [bsc#1246267, CVE-2025-32990]
+  * libgnutls: PKCS#11 modules can now be used to override the default
+    cryptographic backend. Use the [provider] section in the system-wide config
+    to specify path and pin to the module (see system-wide config Documentation).
+  * libgnutls: Linux kernel version 6.14 brings a Kernel TLS (kTLS) key update
+    support. The library running on the aforementioned version now utilizes the
+    kernel’s key update mechanism when kTLS is enabled, allowing uninterrupted
+    TLS session. The --enable-ktls configure option as well as the system-wide
+    kTLS configuration(see GnuTLS Documentation) are still required to enable
+    this feature.
+  * libgnutls: liboqs support for PQC has been removed
+    For maintenance purposes, support for post-quantum cryptography
+    (PQC) is now only provided through leancrypto. The experimental key
+    exchange algorithm, X25519Kyber768Draft00, which is based on the
+    round 3 candidate of Kyber and only supported through liboqs has
+    also been removed altogether.
+  * libgnutls: TLS certificate compression methods can now be set with
+    cert-compression-alg configuration option in the gnutls priority file.
+  * libgnutls: All variants of ML-DSA private key formats are supported
+    While the previous implementation of ML-DSA was based on
+    draft-ietf-lamps-dilithium-certificates-04, this updates it to
+    draft-ietf-lamps-dilithium-certificates-12 with support for all 3
+    variants of private key formats: "seed", "expandedKey", and "both".
+  * libgnutls: ML-DSA signatures can now be used in TLS
+    The ML-DSA signature algorithms, ML-DSA-44, ML-DSA-65, and
+    ML-DSA-87, can now be used to digitally sign TLS handshake
+    messages.
+  * API and ABI modifications:
+    - GNUTLS_PKCS_MLDSA_SEED: New enum member of gnutls_pkcs_encrypt_flags_t
+    - GNUTLS_PKCS_MLDSA_EXPANDED: New enum member of gnutls_pkcs_encrypt_flags_t
+- Add patch gnutls-3.8.10-disable-ktls_test.patch
+- Rebased patches:
+  * gnutls-FIPS-140-3-references.patch
+  * gnutls-FIPS-disable-mac-sha1.patch
+  * gnutls-disable-flaky-test-dtls-resume.patch
+  * gnutls-skip-pqx-test.patch
+
+-------------------------------------------------------------------
+Sun Jul 13 18:54:51 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- enable ktls support
+- enable brotli and zstd compression support
+
+-------------------------------------------------------------------
 Mon Apr 28 12:49:45 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
 
 - Fix FIPS mode running on Tumbleweed [bsc#1237101]
   * When nettle or libhogweed are installed with glbic-hwcaps for x86_64-v3,
     some paths differ and we are unable to match the hmac file for the lib.
-  * Add gnutls-FIPS-HMAC-x86_64-v3-opt.patch 
+  * Add gnutls-FIPS-HMAC-x86_64-v3-opt.patch
 
 -------------------------------------------------------------------
 Thu Apr  3 10:19:59 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
@@ -22,12 +88,12 @@ Tue Mar 18 07:56:18 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
 
 - bsc#1237101, FIPS selfcheck fails on tumbleweed
   * Match dependent library names ( nettle, gmp, hogweed ) even when they include full verison in soname
-  * Add gnutls-fips-sonames-check.patch 
+  * Add gnutls-fips-sonames-check.patch
 
 -------------------------------------------------------------------
 Mon Feb 24 11:15:52 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
 
-- Update to 3.8.9 
+- Update to 3.8.9:
   - libgnutls: leancrypto was added as an interim option for PQC
     The library can now be built with leancrypto instead of liboqs for
     post-quantum cryptography (PQC), when configured with
@@ -694,7 +760,7 @@ Sun Feb 27 07:52:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - build with lto
 - build with -Wl,-z,now -Wl,-z,relro
-- build without -fanalyzer, which cuts build time in ~ half 
+- build without -fanalyzer, which cuts build time in ~ half
 
 -------------------------------------------------------------------
 Tue Jan 18 15:59:11 UTC 2022 - Pedro Monreal <pmonreal@suse.com>
@@ -848,7 +914,7 @@ Tue Jun  1 01:00:34 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
   * The priority string option DISABLE_TLS13_COMPAT_MODE was added
     to disable TLS 1.3 middlebox compatibility mode
   * The GNUTLS_NO_EXPLICIT_INIT envvar has been renamed to
-    GNUTLS_NO_IMPLICIT_INIT to reflect the purpose 
+    GNUTLS_NO_IMPLICIT_INIT to reflect the purpose
   * certtool:
     * When signing a CSR, CRL distribution point (CDP) is no
       longer copied from the signing CA by default
@@ -1585,7 +1651,7 @@ Mon Sep 18 11:47:23 UTC 2017 - astieger@suse.com
   * certtool: The option '--load-crl' can now be used when
     generating PKCS#12 files (i.e., in conjunction with '--to-p12' option).
   * certtool: Keys with provable RSA and DSA parameters are now
-    only read and exported from PKCS#8 form, following 
+    only read and exported from PKCS#8 form, following
     draft-mavrogiannopoulos-pkcs8-validated-parameters-00.txt.
     This removes support for the previous a non-standard key format.
   * certtool: Added support for generating, printing and handling
@@ -1814,7 +1880,7 @@ Sun Dec 18 12:56:15 UTC 2016 - astieger@suse.com
 
 - GnuTLS 3.4.17:
   * libgnutls: Introduced time and constraints checks in the end
-    certificate in the gnutls_x509_crt_verify_data2() and 
+    certificate in the gnutls_x509_crt_verify_data2() and
     gnutls_pkcs7_verify_direct() functions.
   * libgnutls: Set limits on the maximum number of alerts handled.
     That is, applications using gnutls could be tricked into an
@@ -1856,24 +1922,24 @@ Sun Dec 18 12:56:15 UTC 2016 - astieger@suse.com
 Sun Oct  2 16:13:59 UTC 2016 - ecsos@opensuse.org
 
 - GnuTLS 3.4.15:
-  * libgnutls: Corrected the comparison of the serial size in OCSP 
-    response. Previously the OCSP certificate check wouldn't verify 
-    the serial length and could succeed in cases it shouldn't 
+  * libgnutls: Corrected the comparison of the serial size in OCSP
+    response. Previously the OCSP certificate check wouldn't verify
+    the serial length and could succeed in cases it shouldn't
     (GNUTLS-SA-2016-3).
   * libgnutls: Fixes in gnutls_x509_crt_list_import2, which was
     ignoring flags if all certificates in the list fit within the
     initially allocated memory.
-  * libgnutls: Corrected issue which made 
-    gnutls_certificate_get_x509_crt() to return invalid pointers 
+  * libgnutls: Corrected issue which made
+    gnutls_certificate_get_x509_crt() to return invalid pointers
     when returned more than a single certificate.
   * libgnutls: Fix gnutls_pkcs12_simple_parse to always extract the
     complete chain.
-  * libgnutls: Added support for decrypting PKCS#8 files which use 
+  * libgnutls: Added support for decrypting PKCS#8 files which use
     the HMAC-SHA256 as PRF.
-  * libgnutls: Addressed issue with PKCS#11 signature generation on 
-    ECDSA keys. The signature is now written as unsigned integers 
-    into the DSASignatureValue structure. Previously signed 
-    integers could be written depending on what the underlying 
+  * libgnutls: Addressed issue with PKCS#11 signature generation on
+    ECDSA keys. The signature is now written as unsigned integers
+    into the DSASignatureValue structure. Previously signed
+    integers could be written depending on what the underlying
     module would produce. Addresses #122.
 - fix build error for 13.2, 42.1 and 42.2
 
@@ -1940,13 +2006,13 @@ Mon Apr 11 09:18:26 UTC 2016 - meissner@suse.com
 
 - Updated to 3.4.11
   * Version 3.4.11 (released 2016-04-11)
-  ** libgnutls: Fixes in gnutls_record_get/set_state() with DTLS. 
+  ** libgnutls: Fixes in gnutls_record_get/set_state() with DTLS.
      Reported by Fridolin Pokorny.
   ** libgnutls: Fixes in DSA key generation under PKCS #11. Report and
      patches by Jan Vcelak.
   ** libgnutls: Corrected behavior of ALPN extension parsing during
      session resumption. Report and patches by Yuriy M. Kaminskiy.
-  ** libgnutls: Corrected regression (since 3.4.0) in 
+  ** libgnutls: Corrected regression (since 3.4.0) in
      gnutls_server_name_set() which caused it not to accept non-null-
      terminated hostnames. Reported by Tim Ruehsen.
   ** libgnutls: Corrected printing of the IP Adress name constraints.
@@ -1963,16 +2029,16 @@ Mon Apr 11 09:18:26 UTC 2016 - meissner@suse.com
      to be used with hashing functions.
   ** libgnutls: Corrected leaks and other issues in
      gnutls_x509_crt_list_import().
-  ** libgnutls: Fixes in DSA key handling for PKCS #11. Report and 
+  ** libgnutls: Fixes in DSA key handling for PKCS #11. Report and
      patches by Jan Vcelak.
   ** libgnutls: Several fixes to prevent relying on undefined behavior
      of C (found with libubsan).
 
   * Version 3.4.9 (released 2016-02-03)
   ** libgnutls: Corrected ALPN protocol negotiation. Before GnuTLS would
-     negotiate the last commonly supported protocol, rather than the 
+     negotiate the last commonly supported protocol, rather than the
      first. Reported by Remi Denis-Courmont (#63).
-  ** libgnutls: Tolerate empty DN fields in informational output 
+  ** libgnutls: Tolerate empty DN fields in informational output
      functions.
   ** libgnutls: Corrected regression causes by incorrect fix in
      gnutls_x509_ext_export_key_usage() at 3.4.8 release.
@@ -2003,22 +2069,22 @@ Mon Jan 18 13:25:54 UTC 2016 - idonmez@suse.com
     parameters for a direct import.
   * libgnutls: Fixed issue when writing ECDSA private keys in PKCS #11
     tokens.
-  * libgnutls: Fixed out-of-bounds read in 
+  * libgnutls: Fixed out-of-bounds read in
     gnutls_x509_ext_export_key_usage()
-  * libgnutls: The CHACHA20-POLY1305 ciphersuites were updated to 
+  * libgnutls: The CHACHA20-POLY1305 ciphersuites were updated to
     conform to draft-ietf-tls-chacha20-poly1305-02.
-  * libgnutls: Several fixes in PKCS #7 signing which improve 
+  * libgnutls: Several fixes in PKCS #7 signing which improve
     compatibility with the MacOSX tools.
   * libgnutls: The max-record extension not negotiated on DTLS. This
     resolves issue with the max-record being negotiated but ignored.
   * certtool: Added the --p7-include-cert and --p7-show-data options.
   * libgnutls: Properly require TLS 1.2 in all CBC-SHA256 and CBC-SHA384
     ciphersuites. This solves an interoperability issue with openssl.
-  * libgnutls: Corrected the setting of salt size in 
+  * libgnutls: Corrected the setting of salt size in
     gnutls_pkcs12_mac_info().
-  * libgnutls: On a rehandshake allow switching from anonymous to ECDHE 
+  * libgnutls: On a rehandshake allow switching from anonymous to ECDHE
     and DHE ciphersuites.
-  * libgnutls: Corrected regression from 3.3.x which prevented 
+  * libgnutls: Corrected regression from 3.3.x which prevented
     ARCFOUR128 from using arbitrary key sizes.
   * libgnutls: Added GNUTLS_SKIP_GLOBAL_INIT macro to allow programs
     skipping the implicit global initialization.
@@ -2028,14 +2094,14 @@ Mon Jan 18 13:25:54 UTC 2016 - idonmez@suse.com
     need to install a callback to perform certificate verification. See
     doc/examples/ex-client-x509.c for usage.
   * libgnutls: Introduced the security parameter 'future' which is at
-    the 256-bit level of security, and 'ultra' was aligned to its 
+    the 256-bit level of security, and 'ultra' was aligned to its
     documented size at 192-bits.
   * libgnutls: When writing a certificate into a PKCS #11 token, ensure
     that CKA_SERIAL_NUMBER and CKA_ISSUER are written.
   * libgnutls: Allow the presence of legacy ciphers and key exchanges in
     priority strings and consider them a no-op.
-  * libgnutls: Handle the extended master secret as a mandatory 
-    extension. That fixes incompatibility issues with Chromium (#45). 
+  * libgnutls: Handle the extended master secret as a mandatory
+    extension. That fixes incompatibility issues with Chromium (#45).
   * libgnutls: Added the ability to copy a public key into a PKCS #11
     token.
   * tools: Added support for LDAP and XMPP negotiation for STARTTLS.
@@ -2089,10 +2155,10 @@ Thu Jul 30 15:39:34 UTC 2015 - vcizek@suse.com
      was done only when cryptodev was enabled).
   ** libgnutls: Removed support for pthread_atfork() as it has undefined
      semantics when used with dlopen(), and may lead to a crash.
-  ** libgnutls: corrected failure when importing plain files 
+  ** libgnutls: corrected failure when importing plain files
      with gnutls_x509_privkey_import2(), and a password was provided.
   ** libgnutls: Don't reject certificates if a CA has the URI or IP address
-     name constraints, and the end certificate doesn't have an IP address 
+     name constraints, and the end certificate doesn't have an IP address
      name or a URI set.
   ** libgnutls: set and read the hint in DHE-PSK and ECDHE-PSK ciphersuites.
   ** p11tool: Added --list-token-urls option, and print the token module name
@@ -2121,7 +2187,7 @@ Thu Jul 30 15:39:34 UTC 2015 - vcizek@suse.com
 -------------------------------------------------------------------
 Tue May  5 19:06:29 UTC 2015 - dmueller@suse.com
 
-- disable testsuite run against valgrind on aarch64 
+- disable testsuite run against valgrind on aarch64
 
 -------------------------------------------------------------------
 Tue May  5 12:40:11 UTC 2015 - meissner@suse.com
@@ -2164,7 +2230,7 @@ Sun Apr 12 10:16:33 UTC 2015 - meissner@suse.com
   ** libgnutls: Added support for Chacha20-Poly1305 ciphersuites following
   draft-mavrogiannopoulos-chacha-tls-05 and draft-irtf-cfrg-chacha20-poly1305-10.
   That is currently provided as technology preview and is not enabled by
-  default, since there are no assigned ciphersuite points by IETF and there 
+  default, since there are no assigned ciphersuite points by IETF and there
   is no guarrantee of compatibility between draft versions. The ciphersuite
   priority string to enable it is "+CHACHA20-POLY1305".
 
@@ -2219,14 +2285,14 @@ Sun Apr 12 10:16:33 UTC 2015 - meissner@suse.com
 
   ** libgnutls: If a key purpose (extended key usage) is specified for verification,
   it is applied into intermediate certificates. The verification result
-  GNUTLS_CERT_PURPOSE_MISMATCH is also introduced. 
+  GNUTLS_CERT_PURPOSE_MISMATCH is also introduced.
 
   ** libgnutls: When gnutls_certificate_set_x509_key_file2() is used in
   combination with PKCS #11, or TPM URLs, it will utilize the provided
   password as PIN if required. That removes the requirement for the
   application to set a callback for PINs in that case.
 
-  ** libgnutls: priority strings VERS-TLS-ALL and VERS-DTLS-ALL are 
+  ** libgnutls: priority strings VERS-TLS-ALL and VERS-DTLS-ALL are
   restricted to the corresponding protocols only, and the VERS-ALL
   string is introduced to catch all possible protocols.
 
@@ -2278,14 +2344,14 @@ Sun Apr 12 10:16:33 UTC 2015 - meissner@suse.com
 
   ** gnutls-cli: added options --priority-list and --save-cert.
 
-  ** guile: Deprecated priority API has been removed. The old priority API, 
+  ** guile: Deprecated priority API has been removed. The old priority API,
   which had been deprecated for some time, is now gone; use 'set-session-priorities!'
   instead.
 
-  ** guile: Remove RSA parameters and related procedures. This API had been 
-  deprecated.  
+  ** guile: Remove RSA parameters and related procedures. This API had been
+  deprecated.
 
-  ** guile: Fix compilation on MinGW. Previously only the static version of the 
+  ** guile: Fix compilation on MinGW. Previously only the static version of the
   'guile-gnutls-v-2' library would be built, preventing dynamic loading from Guile.
 
 -------------------------------------------------------------------
@@ -2440,7 +2506,7 @@ Sat Mar 21 07:17:50 UTC 2015 - meissner@suse.com
   handshake's hash buffer, in applications using the heartbeat extension
   or DTLS. Reported by Joeri de Ruiter.
 
-  ** libgnutls: When both a trust module and additional CAs are present 
+  ** libgnutls: When both a trust module and additional CAs are present
   account the latter as well; reported by David Woodhouse.
 
   ** libgnutls: added GNUTLS_TL_GET_COPY flag for
@@ -2575,7 +2641,7 @@ Sat Mar 21 07:17:50 UTC 2015 - meissner@suse.com
 
   ** libgnutls: fixed PKCS #11 ECDSA key generation.
 
-  ** libgnutls: The GNUTLS_CPUID_OVERRIDE environment variable can be used to 
+  ** libgnutls: The GNUTLS_CPUID_OVERRIDE environment variable can be used to
   explicitly enable/disable the use of certain CPU capabilities. Note that CPU
   detection cannot be overriden, i.e., VIA options cannot be enabled on an Intel
   CPU. The currently available options are:
@@ -2715,7 +2781,7 @@ Sat Mar 21 07:17:50 UTC 2015 - meissner@suse.com
   different recv and send pointers have been specified. Reported and
   investigated by JMRecio.
 
-  ** libgnutls: Fixed issue in the RSA-PSK key exchange, which would 
+  ** libgnutls: Fixed issue in the RSA-PSK key exchange, which would
   result to illegal memory access if a server hint was provided. Reported
   by André Klitzing.
 
@@ -2738,7 +2804,7 @@ Sat Mar 21 07:17:50 UTC 2015 - meissner@suse.com
   modules.
 
   ** libgnutls: The PKCS #11 subsystem is re-initialized "automatically"
-  on the first PKCS #11 API call after a fork. 
+  on the first PKCS #11 API call after a fork.
 
   ** libgnutls: certificate verification profiles were introduced
   that can be specified as flags to verification functions. They
@@ -2752,15 +2818,15 @@ Sat Mar 21 07:17:50 UTC 2015 - meissner@suse.com
   strings from. That can be used to impose system specific policies.
 
   ** libgnutls: Increased the default security level of priority
-  strings (NORMAL and PFS strings require at minimum a 1008 DH prime), 
-  and set a verification profile by default.  The LEGACY keyword is 
+  strings (NORMAL and PFS strings require at minimum a 1008 DH prime),
+  and set a verification profile by default.  The LEGACY keyword is
   introduced to set the old defaults.
 
   ** libgnutls: Added support for the name constraints PKIX extension.
   Currently only DNS names and e-mails are supported (no URIs, IPs
   or DNs).
 
-  ** libgnutls: Security parameter SEC_PARAM_NORMAL was renamed to 
+  ** libgnutls: Security parameter SEC_PARAM_NORMAL was renamed to
   SEC_PARAM_MEDIUM to avoid confusion with the priority string NORMAL.
 
   ** libgnutls: Added new API in x509-ext.h to handle X.509 extensions.
@@ -2817,7 +2883,7 @@ Sat Mar 21 07:17:50 UTC 2015 - meissner@suse.com
   That option enables (when running on FIPS140-enabled system):
    o RSA, DSA and DH key generation as in FIPS-186-4 (using provable primes)
    o The DRBG-CTR-AES256 deterministic random generator from SP800-90A.
-   o Self-tests on initialization on ciphers/MACs, public key algorithms 
+   o Self-tests on initialization on ciphers/MACs, public key algorithms
      and the random generator.
    o HMAC-SHA256 verification of the library on load.
    o MD5 is included for TLS purposes but cannot be used by the high level
@@ -2883,7 +2949,7 @@ the original. Issue found and reported by Antti Karjalainen and Matti Kamunen fr
 Codenomicon.
 
 ** API and ABI modifications:
-No changes since last version. 
+No changes since last version.
 
 Delete files: gnutls-3.2.17.tar.xz, gnutls-3.2.17.tar.xz.sig
 Add files: gnutls-3.2.18.tar.xz, gnutls-3.2.18.tar.xz.sig
@@ -2891,7 +2957,7 @@ Add files: gnutls-3.2.18.tar.xz, gnutls-3.2.18.tar.xz.sig
 -------------------------------------------------------------------
 Fri Sep 19 09:27:47 UTC 2014 - dmueller@suse.com
 
-- update list of available architectures for valgrind 
+- update list of available architectures for valgrind
 
 -------------------------------------------------------------------
 Sun Aug 31 07:01:32 UTC 2014 - citypw@gmail.com
@@ -2946,7 +3012,7 @@ types.
 ** API and ABI modifications:
 No changes since last version.
 
-delete files: gnutls-3.2.15.tar.xz, gnutls-3.2.15.tar.xz.sig, 
+delete files: gnutls-3.2.15.tar.xz, gnutls-3.2.15.tar.xz.sig,
 	audit-improve.patch( already in upstream)
 
 Add files: gnutls-3.2.16.tar.xz, gnutls-3.2.16.tar.xz.sig
@@ -2955,7 +3021,7 @@ Add files: gnutls-3.2.16.tar.xz, gnutls-3.2.16.tar.xz.sig
 Tue Jun  3 07:48:04 UTC 2014 - meissner@suse.com
 
 - Version 3.2.15 (released 2014-05-30)
-  
+
   ** libgnutls: Eliminated memory corruption issue in Server Hello parsing.
   Issue reported by Joonas Kuorilehto of Codenomicon. (CVE-2014-3466 / bnc#880730)
   ** libgnutls: Several memory leaks caused by error conditions were
@@ -2976,14 +3042,14 @@ Tue Jun  3 07:48:04 UTC 2014 - meissner@suse.com
   ** libgnutls: Fixed issue with the check of incoming data when two
   different recv and send pointers have been specified. Reported and
   investigated by JMRecio.
-  ** libgnutls: Fixed issue in the RSA-PSK key exchange, which would 
+  ** libgnutls: Fixed issue in the RSA-PSK key exchange, which would
   result to illegal memory access if a server hint was provided.
   ** libgnutls: Fixed client memory leak in the PSK key exchange, if a
   server hint was provided.
   ** libgnutls: Several small bug fixes identified using valgrind and
   the Codenomicon TLS test suite.
   ** libgnutls: Several small bug fixes found by coverity.
-  ** libgnutls-dane: Accept a certificate using DANE if there is at least one 
+  ** libgnutls-dane: Accept a certificate using DANE if there is at least one
   entry that matches the certificate. Patch by simon [at] arlott.org.
   ** configure: Added --with-nettle-mini option, which allows linking
   with a libnettle that contains gmp.
@@ -3037,7 +3103,7 @@ Wed Apr  9 17:23:15 UTC 2014 - shchang@suse.com
 -------------------------------------------------------------------
 Wed Mar  5 15:30:54 UTC 2014 - shchang@suse.com
 
-- Upgrade to 3.2.12.1; 
+- Upgrade to 3.2.12.1;
 
 ** libgnutls: Reverted change that broke ABI. Reported by Andreas
 Metzler.
@@ -3067,7 +3133,7 @@ in the OCSP response.
 ** gnutls-cli: Added --strict-tofu option; contributed by Jens
 Lechtenboerger.
 
-Delete files: CVE-2014-0092.patch( upstreamed), gnutls-3.2.11.tar.xz.sig, gnutls-3.2.11.tar.xz; 
+Delete files: CVE-2014-0092.patch( upstreamed), gnutls-3.2.11.tar.xz.sig, gnutls-3.2.11.tar.xz;
 Add files: gnutls-3.2.12.1.tar.xz, gnutls-3.2.12.1.tar.xz.sig
 
 -------------------------------------------------------------------
@@ -3229,7 +3295,7 @@ previous fix. Reported by Tomas Mraz.
 ** p11tool: Added option generate-random.
 
 ** API and ABI modifications:
-gnutls_pkcs11_token_get_random: Added 
+gnutls_pkcs11_token_get_random: Added
 
 Add: gnutls-3.2.6-noecc.patch, gnutls-3.2.6.tar.xz, gnutls-3.2.6.tar.xz.sig
 
@@ -3258,7 +3324,7 @@ fix by Christian Grothoff.
 ** srptool: Fixed index command line option. Patch by Attila Molnar.
 
 ** gnutls-cli: Added support for inline commands, using the
---inline-commands-prefix and --inline-commands options. Patch by Raj Raman.	
+--inline-commands-prefix and --inline-commands options. Patch by Raj Raman.
 
 ** certtool: pathlen constraint is now read correctly. Reported by
 Christoph Seitz.
@@ -3266,12 +3332,12 @@ Christoph Seitz.
 ** API and ABI modifications:
 gnutls_certificate_get_crt_raw: Added
 dane_verify_crt_raw: Added
-dane_raw_tlsa: Added 
+dane_raw_tlsa: Added
 
 Add files: make-obs-happy-with-gnutls_3.2.5.patch, gnutls-3.2.5.tar.xz,
 gnutls-3.2.5.tar.xz.sig, gnutls-3.2.5-noecc.patch
 
-Delete files: gnutls-3.2.4.tar.xz, gnutls-3.2.4.tar.xz.sig, 
+Delete files: gnutls-3.2.4.tar.xz, gnutls-3.2.4.tar.xz.sig,
 make-obs-happy-with-gnutls_3.2.4.patch, gnutls-3.2.4-noecc.patch
 
 -------------------------------------------------------------------
@@ -3300,7 +3366,7 @@ by Stefan Buehler.
 Reported by Petr Pisar.
 
 ** API and ABI modifications:
-gnutls_record_set_timeout: Exported 
+gnutls_record_set_timeout: Exported
 
 Add files:gnutls-3.2.4.tar.xz.sig, gnutls-3.2.4.tar.xz, gnutls-3.2.4-noecc.patch
 Delete file: gnutls-3.2.3-noecc.patch
@@ -3308,7 +3374,7 @@ Delete file: gnutls-3.2.3-noecc.patch
 -------------------------------------------------------------------
 Fri Aug 30 00:31:19 CEST 2013 - ro@suse.de
 
-- buildrequire valgrind on the same arch list that valgrind builds 
+- buildrequire valgrind on the same arch list that valgrind builds
 
 -------------------------------------------------------------------
 Thu Aug  1 13:42:11 UTC 2013 - meissner@suse.com
@@ -3399,7 +3465,7 @@ Thu Jun 27 13:44:12 UTC 2013 - meissner@suse.com
      linking to pthreads if p11-kit isn't used).
 
 - Updated to GnuTLS 3.1.10 (released 2013-03-22)
-  ** certtool: When generating PKCS #12 files use by default the 
+  ** certtool: When generating PKCS #12 files use by default the
   ARCFOUR (RC4) cipher to be compatible with devices that don't
   support AES with PKCS #12.
   ** libgnutls: Load CA certificates in android 4.x systems.
@@ -3410,16 +3476,16 @@ Thu Jun 27 13:44:12 UTC 2013 - meissner@suse.com
      cards are present.
   ** libgnutls: Corrected issue in the (deprecated) external key
      signing interface, when used with TLS 1.2. Reported by Bjorn H. Christensen.
-  ** libgnutls: Fixes in openpgp handshake with fingerprints. Reported by 
+  ** libgnutls: Fixes in openpgp handshake with fingerprints. Reported by
      Joke de Buhr.
   ** libgnutls-dane: Updated DANE verification options.
-  ** configure: Trust store file must be explicitly set or unset when 
+  ** configure: Trust store file must be explicitly set or unset when
      cross compiling.
-- Updated to GnuTLS 3.1.9 (released 2013-02-27) 
+- Updated to GnuTLS 3.1.9 (released 2013-02-27)
   ** certtool: Option --to-p12 will now ask for a password to generate
      a PKCS #12 file from an encrypted key file. Reported by Yan Fiz.
   ** libgnutls: Corrected issue in gnutls_pubkey_verify_data().
-  ** libgnutls: Corrected parsing issue in XMPP within a subject 
+  ** libgnutls: Corrected parsing issue in XMPP within a subject
      alternative name. Reported by James Cloos.
   ** libgnutls: gnutls_pkcs11_reinit() will reinitialize all PKCS #11
      modules, and not only the ones loaded via p11-kit.
@@ -3434,7 +3500,7 @@ Thu Jun 27 13:44:12 UTC 2013 - meissner@suse.com
   ** libgnutls: The minimum DH bits accepted by priorities NORMAL and
      PERFORMANCE was set to previous defaults 727 bits. Reported by Diego
      Elio Petteno.
-  ** libgnutls: Corrected issue which prevented gnutls_pubkey_verify_hash() 
+  ** libgnutls: Corrected issue which prevented gnutls_pubkey_verify_hash()
      to operate with long keys. Reported by Erik A Jensen.
 
 - Updated to GnuTLS 3.1.7 (released 2013-02-04)
@@ -3443,10 +3509,10 @@ Thu Jun 27 13:44:12 UTC 2013 - meissner@suse.com
   ** danetool: Added options: --dlv and --insecure. Suggested by Paul Wouters.
   ** libgnutls-xssl: Added a new library to simplify GnuTLS usage.
   ** libgnutls-dane: Added function to specify a DLV file.
-  ** libgnutls: Heartbeat code was made optional. 
+  ** libgnutls: Heartbeat code was made optional.
   ** libgnutls: Fixes in server side of DTLS-0.9.
   ** libgnutls: DN variable 'T' was expanded to 'title'.
-  ** libgnutls: Fixes in record padding parsing to prevent a timing attack. 
+  ** libgnutls: Fixes in record padding parsing to prevent a timing attack.
      Issue reported by Kenny Paterson and Nadhem Alfardan.
   ** libgnutls: Added functions to directly set the DN in a certificate
      or request from an RFC4514 string.
@@ -3457,15 +3523,15 @@ Thu Jun 27 13:44:12 UTC 2013 - meissner@suse.com
      by the specified priority string. The current values correspond to the
      previous defaults (727 bits), except for the SECURE128 and SECURE192
      strings which increase the minimum to 1248 and 1776 respectively.
-  ** libgnutls: Added the gnutls_record_cork() and uncork API to enable 
+  ** libgnutls: Added the gnutls_record_cork() and uncork API to enable
      buffering in sending application data.
-  ** libgnutls: Removed default random padding, and added a length-hiding interface 
-     instead.  Both the server and the client must support this extension. Whether 
+  ** libgnutls: Removed default random padding, and added a length-hiding interface
+     instead.  Both the server and the client must support this extension. Whether
      length-hiding can be used on a given session can be checked using
      gnutls_record_can_use_length_hiding(). Contributed by Alfredo Pironti.
-  ** libgnutls: Added the experimental %NEW_PADDING priority string. It enables 
+  ** libgnutls: Added the experimental %NEW_PADDING priority string. It enables
      a new padding mechanism in TLS allowing arbitrary padding in TLS records
-     in all ciphersuites, which makes length-hiding more efficient and solves 
+     in all ciphersuites, which makes length-hiding more efficient and solves
      the issues with timing attacks on CBC ciphersuites.
   ** libgnutls: Corrected gnutls_cipher_decrypt2() when used with AEAD
      ciphers (i.e., AES-GCM). Reported by William McGovern.
@@ -3494,12 +3560,12 @@ Thu Jun 27 13:44:12 UTC 2013 - meissner@suse.com
      iconv).
   ** libgnutls: Added PKCS #11 key generation function that returns the
      public key on generation.
-  ** libgnutls: Corrected bug in priority string parsing, that mostly 
+  ** libgnutls: Corrected bug in priority string parsing, that mostly
      affected combined levels. Patch by Tim Kosse.
   ** certtool: The --pubkey-info option can be combined with the
      --load-privkey or --load-request to print the corresponding public keys.
   ** certtool: It is able to set certificate policies via a template.
-  ** certtool: Added --hex-numbers option which prints big numbers in 
+  ** certtool: Added --hex-numbers option which prints big numbers in
      an easier to parse format.
   ** p11tool: After key generation, outputs the public key (useful in
      tokens that do not store the public key).
@@ -3517,7 +3583,7 @@ Thu Jun 27 13:44:12 UTC 2013 - meissner@suse.com
   ** libgnutls: Added support for extension to establish keys for SRTP.
      Contributed by Martin Storsjo.
   ** libgnutls: The X.509 verification functions check the key
-     usage bits and pathlen constraints and on failure output 
+     usage bits and pathlen constraints and on failure output
      GNUTLS_CERT_SIGNER_CONSTRAINTS_FAILURE.
   ** libgnutls: gnutls_x509_crl_verify() includes the time checks.
   ** libgnutls: Added verification flag GNUTLS_VERIFY_DO_NOT_ALLOW_UNSORTED_CHAIN
@@ -3549,7 +3615,7 @@ Thu Jun 27 13:44:12 UTC 2013 - meissner@suse.com
   ** libgnutls: Several updates in the OpenPGP code. The generating code
      is fully RFC6091 compliant and RFC5081 support is only supported in client
      mode.
-  ** libgnutls-dane: Added. It is a library to provide DANE with DNSSEC 
+  ** libgnutls-dane: Added. It is a library to provide DANE with DNSSEC
      certificate verification.
   ** gnutls-cli: Added --dane option to enable DANE certificate verification.
   ** danetool: Added tool to generate DANE TLSA Resource Records (RR).
@@ -3561,10 +3627,10 @@ Thu Jun 27 13:44:12 UTC 2013 - meissner@suse.com
   ** libgnutls: Corrected bug in OpenPGP subpacket encoding.
   ** libgnutls: Added support for DTLS/TLS heartbeats by Olga Smolenchuk.
      (the work was done during Google Summer of Code).
-  ** libgnutls: Added X.509 certificate verification flag 
+  ** libgnutls: Added X.509 certificate verification flag
      GNUTLS_VERIFY_ALLOW_UNSORTED_CHAIN. This flag allows the verification
      of unsorted certificate chains and is enabled by default for
-     TLS certificate verification (if gnutls_certificate_set_verify_flags() 
+     TLS certificate verification (if gnutls_certificate_set_verify_flags()
      does not override it).
   ** libgnutls: Prints warning on certificates that contain keys of
      an insecure level. If the %COMPAT priority flag is not specified
@@ -3586,7 +3652,7 @@ Thu Jun 27 13:44:12 UTC 2013 - meissner@suse.com
   ** gnutls-serv: Listens on IPv6. Patch by Bernhard R. Link.
   ** certtool: Changes in password handling of certtool.
      Ask password when required and only if the '--password' option is not
-     given. If the '--password' option is given during key generation then 
+     given. If the '--password' option is given during key generation then
      assume the PKCS #8 file format, instead of ignoring the password.
   ** tpmtool: No longer asks for key password in registered keys.
   ** libgnutls: Elliptic curve code was optimized by Ilya Tumaykin.
@@ -3603,7 +3669,7 @@ Thu Jun 27 13:44:12 UTC 2013 - meissner@suse.com
      me with ECDSA capable smart cards.
 
 - Updated to GnuTLS 3.1.0 (released 2012-08-15)
-  ** libgnutls: Added direct support for TPM as a cryptographic module 
+  ** libgnutls: Added direct support for TPM as a cryptographic module
      in gnutls/tpm.h. TPM keys can be used in functions accepting files
      using URLs of the following types:
        tpmkey:file=/path/to/file
@@ -3623,8 +3689,8 @@ Thu Jun 27 13:44:12 UTC 2013 - meissner@suse.com
      the whole certificate chain (if any) to the credentials structure, instead
      of only the end-user certificate.
   ** libgnutls: Key import functions such as gnutls_pkcs12_simple_parse()
-     and gnutls_x509_privkey_import_pkcs8(), return consistently 
-     GNUTLS_E_DECRYPTION_FAILED if the input structure is encrypted but no 
+     and gnutls_x509_privkey_import_pkcs8(), return consistently
+     GNUTLS_E_DECRYPTION_FAILED if the input structure is encrypted but no
      password was provided.
   ** libgnutls: Added gnutls_handshake_set_timeout() a function that
      allows to set the maximum time spent in a handshake.
@@ -3656,7 +3722,7 @@ Tue Feb  5 17:03:26 UTC 2013 - meissner@suse.com
     ciphers (i.e., AES-GCM).
   - libgnutls: Fixes in record padding parsing to prevent a timing
     attack. Issue reported by Kenny Patterson and Nadhem Alfardan.
-    bnc#802184 
+    bnc#802184
   - libgnutls: DN variable 'T' was expanded to 'title'.
 
 -------------------------------------------------------------------
@@ -3671,7 +3737,7 @@ Thu Jan 24 10:14:13 UTC 2013 - meissner@suse.com
 -------------------------------------------------------------------
 Tue Nov 27 20:31:26 UTC 2012 - crrodriguez@opensuse.org
 
-- Test suite breaks on qemu-arm some calls not implemented. 
+- Test suite breaks on qemu-arm some calls not implemented.
 
 -------------------------------------------------------------------
 Sun Nov 25 10:52:46 UTC 2012 - andreas.stieger@gmx.de
@@ -3679,7 +3745,7 @@ Sun Nov 25 10:52:46 UTC 2012 - andreas.stieger@gmx.de
 - include LGPL-3.0+ text in COPYING.LESSER
 - run regression tests, but move "make check" to %check section
 - add gnutls-3.0.26-skip-test-fwrite.patch to skip a failing test
-- no longer manipulate doc/examples tree in %install section, the 
+- no longer manipulate doc/examples tree in %install section, the
   deletion of Makefiles breaks "make check" in %check
 - install documentation, reference and examples in %install section
   to fetch them for the package without unneccessary files
@@ -3688,7 +3754,7 @@ Sun Nov 25 10:52:46 UTC 2012 - andreas.stieger@gmx.de
 Fri Nov 16 23:30:09 UTC 2012 - andreas.stieger@gmx.de
 
 - updated to GnuTLS 3.0.26:
- - libgnutls: Always tolerate key usage violation errors from the 
+ - libgnutls: Always tolerate key usage violation errors from the
    side of the peer, but also notify via an audit message.
  - libgnutls: gnutls_x509_crl_verify() includes time checks.
  - libgnutls: Increased maximum password length in the PKCS #12
@@ -3698,12 +3764,12 @@ Fri Nov 16 23:30:09 UTC 2012 - andreas.stieger@gmx.de
    GNUTLS_CERT_REVOCATION_DATA_ISSUED_IN_FUTURE: Added
 
 - includes changes from 3.0.25:
- - libgnutls: Fixed the receipt of session tickets during session 
+ - libgnutls: Fixed the receipt of session tickets during session
    resumption.
- - libgnutls: Added gnutls_ocsp_resp_check_crt() to check whether the 
+ - libgnutls: Added gnutls_ocsp_resp_check_crt() to check whether the
    OCSP response corresponds to the given certificate.
  - libgnutls: Several updates in the OpenPGP code. The generating code
-   is fully RFC6091 compliant and RFC5081 support is only supported in 
+   is fully RFC6091 compliant and RFC5081 support is only supported in
    client mode.
  - API and ABI modifications:
    gnutls_ocsp_resp_check_crt: Added
@@ -3712,10 +3778,10 @@ Fri Nov 16 23:30:09 UTC 2012 - andreas.stieger@gmx.de
  - libgnutls: The %COMPAT keyword, if specified, will tolerate
    key usage violation errors (they are far too common to ignore).
  - libgnutls: Corrected bug in OpenPGP subpacket encoding.
- - libgnutls: Added X.509 certificate verification flag 
+ - libgnutls: Added X.509 certificate verification flag
  - GNUTLS_VERIFY_ALLOW_UNSORTED_CHAIN. This flag allows the verification
    of unsorted certificate chains and is enabled by default for
-   TLS certificate verification (if gnutls_certificate_set_verify_flags() 
+   TLS certificate verification (if gnutls_certificate_set_verify_flags()
     does not override it).
  - libgnutls: Correctly restore gnutls_record_recv() in DTLS mode
    if interrupted during the retrasmition of handshake data.
@@ -3741,7 +3807,7 @@ Fri Nov 16 23:30:09 UTC 2012 - andreas.stieger@gmx.de
  - certtool: Allow the user to choose the hash algorithm
    when signing certificate request or certificate revocation list.
 
-- Refresh gnutls-implement-trust-store-dir.diff, some parts are in 
+- Refresh gnutls-implement-trust-store-dir.diff, some parts are in
   upstream sources
 
 -------------------------------------------------------------------
@@ -3784,7 +3850,7 @@ Sun Jul  1 20:00:33 UTC 2012 - coolo@suse.com
 Sat Jun 30 17:24:48 UTC 2012 - i@marguerite.su
 
 - fix 12.2 builds.
-  * replace depreciated am_prog_mkdir_p with ac_prog_mkdir_p. 
+  * replace depreciated am_prog_mkdir_p with ac_prog_mkdir_p.
 
 -------------------------------------------------------------------
 Thu Jun 21 08:02:43 UTC 2012 - meissner@suse.com
@@ -3807,7 +3873,7 @@ Thu Jun 21 08:02:43 UTC 2012 - meissner@suse.com
   certtool: Increase to 128 the maximum number of distinct options
   (e.g. dns_names) allowed.
 
-  gnutls-cli: If --print-cert is given, print the certificate, 
+  gnutls-cli: If --print-cert is given, print the certificate,
   even on verification failure.
 
   ** API and ABI modifications:
@@ -4055,7 +4121,7 @@ Sun May 13 02:44:30 UTC 2012 - Nico.Laus.2001@gmx.de
     - gnutls_ocsp_resp_import: Added.
     - gnutls_ocsp_resp_init: Added.
     - gnutls_ocsp_resp_print: Added.
-    - gnutls_ocsp_resp_verify: Added. 
+    - gnutls_ocsp_resp_verify: Added.
 - Changes from version 3.0.11:
   + libgnutls:
     - Corrected functionality of
@@ -4209,7 +4275,7 @@ in Linux as well as in BSD.
 -------------------------------------------------------------------
 Thu Apr 12 05:17:04 UTC 2012 - gjhe@suse.com
 
-- fix bug[bnc#753301] - VUL-0: gnutls/libtasn1 
+- fix bug[bnc#753301] - VUL-0: gnutls/libtasn1
   "asn1_get_length_der()" DER decoding issue
   CVE-2012-1569
   and bug[bnc#754223] - GenericBlockCipher heap corruption DoS
@@ -4218,7 +4284,7 @@ Thu Apr 12 05:17:04 UTC 2012 - gjhe@suse.com
 -------------------------------------------------------------------
 Mon Feb 13 06:09:57 UTC 2012 - gjhe@suse.com
 
-- fix Bug[bnc#739898] - VUL-1: CVE-2012-0390: GnuTLS DTLS plaintext 
+- fix Bug[bnc#739898] - VUL-1: CVE-2012-0390: GnuTLS DTLS plaintext
   recovery attack.
 
 -------------------------------------------------------------------
@@ -4345,7 +4411,7 @@ Wed Aug 17 22:29:31 UTC 2011 - crrodriguez@opensuse.org
 * Main reason for update is to support Intel AES-NI CPU extensions.
 * Bump sonames in the library package accordingly
 * C++ apps must now buildrequire libgnutls++-devel
-* Software using the openssl emulation must buildrequire 
+* Software using the openssl emulation must buildrequire
   libgnutls-openssl-devel or better use openssl directly.
 * Upstream no longer uses libgcrypt but libnettle.
 * Upstream now requires the use of p11-kit
@@ -4367,24 +4433,24 @@ Thu Jun 23 07:09:28 UTC 2011 - gjhe@novell.com
      instead of Libs.private.  From Andreas Metzler.
 
   ** gnutls-serv: Corrected a buffer overflow. Reported and patch by Tomas Mraz.
-  
+
   ** libgnutls: Use ASN1_NULL when writing parameters for RSA signatures.
      This makes us comply with RFC3279. Reported by Michael Rommel.
-  
+
   ** libgnutls: Reverted default behavior for verification and
      introduced GNUTLS_VERIFY_DO_NOT_ALLOW_X509_V1_CA_CRT. Thus by default
      V1 trusted CAs are allowed, unless the new flag is specified.
-  
+
   ** minitasn1: Updated to Libtasn1 2.9.
-  
+
   ** bgnutls: Correctly add leading zero to PKCS #8 encoded DSA key.
      Reported by Jeffrey Walton.
-  
+
   ** libgnutls: Corrected memory leak in extension data calculation.
      Reported by Mike Blumenkrantz.
-  
+
   ** libgnutls: Remove trailing comma in enums in gnutls.h and x509.h.
-  
+
   ** API and ABI modifications:
      No changes since last version.
 
@@ -4404,7 +4470,7 @@ Thu Apr 15 16:47:31 CEST 2010 - meissner@suse.de
 
 - updated to stable 2.8.6
   ** libgnutls: For CSRs, don't null pad integers for RSA/DSA value.
-     VeriSign rejected CSRs with this padding.  
+     VeriSign rejected CSRs with this padding.
 
      Note: As a side effect of this change, the "public key identifier"
      value computed for a certificate using this version of GnuTLS will be
@@ -4414,7 +4480,7 @@ Thu Apr 15 16:47:31 CEST 2010 - meissner@suse.de
      optional SignatureAlgorithm parameter field.
      VeriSign rejected these CSRs.  They are stricly speaking not needed
      since you need the signer's certificate to verify the certificate
-     signature anyway. 
+     signature anyway.
 
   ** libgnutls: When checking openpgp self signature also check the signatures
      of all subkeys.
@@ -4436,7 +4502,7 @@ Thu Apr 15 16:47:31 CEST 2010 - meissner@suse.de
 -------------------------------------------------------------------
 Tue Apr  6 19:15:22 UTC 2010 - crrodriguez@opensuse.org
 
-- use system libtasn1 instead of the bundled copy 
+- use system libtasn1 instead of the bundled copy
 
 -------------------------------------------------------------------
 Thu Feb  4 16:46:45 CET 2010 - meissner@suse.de
@@ -4458,7 +4524,7 @@ Fri Dec 25 22:11:03 CET 2009 - jengelh@medozas.de
 Wed Sep  2 05:52:45 CEST 2009 - gjhe@novell.com
 
 - update to lastest stable version 2.8.3
-  [bnc#532750] 
+  [bnc#532750]
 
 -------------------------------------------------------------------
 Fri Mar 13 13:37:15 CET 2009 - jshi@suse.de
@@ -4505,7 +4571,7 @@ Thu Jul 17 15:27:42 CEST 2008 - mkoenig@suse.de
 -------------------------------------------------------------------
 Wed Jul  2 15:49:50 CEST 2008 - mkoenig@suse.de
 
-- remove gnutls main package from baselibs.conf 
+- remove gnutls main package from baselibs.conf
 
 -------------------------------------------------------------------
 Thu Jun 26 15:08:38 CEST 2008 - mkoenig@suse.de
@@ -4513,7 +4579,7 @@ Thu Jun 26 15:08:38 CEST 2008 - mkoenig@suse.de
 - update to version 2.4.0
   * The OpenPGP sub-system has been improved and now supports subkeys
   * The PSK sub-system has been improved and now supports password
-    derivation and PSK identity hints 
+    derivation and PSK identity hints
   * The certtool --inder and --outder has been replaced
     by --inraw and --outraw
   * New APIs to access the raw X.509 Subject and Issuer DN's and
@@ -4523,7 +4589,7 @@ Thu Jun 26 15:08:38 CEST 2008 - mkoenig@suse.de
   * The function gnutls_openpgp_privkey_get_id has been renamed to
     gnutls_openpgp_privkey_get_key_id
   * API/ABI changes in GnuTLS 2.4
-    All OpenPGP related functions have been moved from 
+    All OpenPGP related functions have been moved from
     libgnutls-extra to libgnutls, and several new functions have
     been added
 - remove SRP functionality from C++ wrapper, otherwise it cannot
@@ -4536,7 +4602,7 @@ Thu Jun 26 15:08:38 CEST 2008 - mkoenig@suse.de
 -------------------------------------------------------------------
 Mon Jun 23 10:53:20 CEST 2008 - mkoenig@suse.de
 
-- disable SRP [bnc#65192] 
+- disable SRP [bnc#65192]
 
 -------------------------------------------------------------------
 Wed May 21 16:32:26 CEST 2008 - mkoenig@suse.de
@@ -4552,12 +4618,12 @@ Wed May 21 16:32:26 CEST 2008 - mkoenig@suse.de
 -------------------------------------------------------------------
 Thu May  8 14:17:41 CEST 2008 - mkoenig@suse.de
 
-- fix build 
+- fix build
 
 -------------------------------------------------------------------
 Tue Apr 29 17:43:46 CEST 2008 - cthiel@suse.de
 
-- obsolete gnutls-<arch> via baselibs.conf  
+- obsolete gnutls-<arch> via baselibs.conf
 
 -------------------------------------------------------------------
 Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
@@ -4570,9 +4636,9 @@ Thu Apr  3 17:40:32 CEST 2008 - mkoenig@suse.de
 
 - update to version 2.2.2
   * Cipher priority string handling now handle strings that
-    starts with NULL 
+    starts with NULL
   * Corrected memory leaks in session resuming and DHE ciphersuites
-  * Increased the default certificate verification chain limits and 
+  * Increased the default certificate verification chain limits and
     allowed for checks without limitation
   * Corrected the behaviour of gnutls_x509_crt_get_subject_alt_name()
     and gnutls_x509_crt_get_subject_alt_name() to not null terminate
@@ -4633,7 +4699,7 @@ Thu Jan 31 11:12:46 CET 2008 - mkoenig@suse.de
 - API and ABI modifications, library soname switch from 13 to 26
 - change package structure:
   * branch off libgnutls-extra
-    since this is now GPLv3 or later while libgnutls remains 
+    since this is now GPLv3 or later while libgnutls remains
     LGPLv2.1 or later
   * gnutls license change to GPLv3
 - build without lzo support to avoid license problems
@@ -4655,7 +4721,7 @@ Tue Oct 23 13:59:25 CEST 2007 - mkoenig@suse.de
 -------------------------------------------------------------------
 Thu Aug 30 12:35:34 CEST 2007 - mkoenig@suse.de
 
-- fix srptool [#208227] 
+- fix srptool [#208227]
 - fix some compiler warnings
 
 -------------------------------------------------------------------
@@ -4666,7 +4732,7 @@ Fri Aug  3 13:54:37 CEST 2007 - hvogel@suse.de
 -------------------------------------------------------------------
 Thu May 10 17:21:59 CEST 2007 - mkoenig@suse.de
 
-- Fix segfault on s390x [#97441] 
+- Fix segfault on s390x [#97441]
   gnutls-fix_size_t.patch
 
 -------------------------------------------------------------------
@@ -4674,7 +4740,7 @@ Tue Jan 23 17:29:00 CET 2007 - mkoenig@suse.de
 
 - update to new stable branch 1.6.1:
   * Fix the list of trusted CAs that server's send to clients.
-  * Fix gnutls_certificate_set_x509_crl to initialize the CRL 
+  * Fix gnutls_certificate_set_x509_crl to initialize the CRL
     before using it.
   * Encode UID fields in DN's as DirectoryString.
   * Fix ./configure failure with non-GCC compilers.
@@ -4685,7 +4751,7 @@ Tue Jan 23 17:29:00 CET 2007 - mkoenig@suse.de
 Tue Oct 24 19:08:36 CEST 2006 - mkoenig@suse.de
 
 - move developer related docs to devel package and remove
-  binary stuff from docs [#212454] 
+  binary stuff from docs [#212454]
 
 -------------------------------------------------------------------
 Tue Sep 19 11:06:39 CEST 2006 - mkoenig@suse.de
@@ -4699,7 +4765,7 @@ Thu Aug 31 17:40:43 CEST 2006 - mkoenig@suse.de
 
 - update to new stable branch 1.4.1:
   * The command line tools now use getaddrinfo and support IPv6.
-  * gnutls-cli can now recognize services and port numbers with 
+  * gnutls-cli can now recognize services and port numbers with
     the -p option.
   * Error messages are now translated using GNU Gettext.
   * GnuTLS now support TLS Inner application (TLS/IA).
@@ -4707,21 +4773,21 @@ Thu Aug 31 17:40:43 CEST 2006 - mkoenig@suse.de
     + Support for DHE-PSK cipher suites has been added.
     + Removed the RIPEMD ciphersuites.
     + Remove GnuTLS 0.8.x compatibility functions.
-    + Support for TLS Pre-Shared Key (TLS-PSK) ciphersuites have 
+    + Support for TLS Pre-Shared Key (TLS-PSK) ciphersuites have
       been added.
-    + Certtool now generate keys in unencrypted PKCS#8 format for 
+    + Certtool now generate keys in unencrypted PKCS#8 format for
       empty passwords.
-    + Certtool now accept --password for --key-info and encrypted 
+    + Certtool now accept --password for --key-info and encrypted
       PKCS#8 keys.
-    + gnutls_x509_privkey_import_pkcs8 now accept unencrypted 
+    + gnutls_x509_privkey_import_pkcs8 now accept unencrypted
       PEM PKCS#8 keys,
-    + New function to set a X.509 private key and certificate 
+    + New function to set a X.509 private key and certificate
       pairs, and/or CRLs, from an PKCS#12 file.
-    + New APIs to acceess the client and server random fields in 
+    + New APIs to acceess the client and server random fields in
       a session.
     + New APIs to access the TLS Pseudo-Random-Function (PRF).
     + New API to access the TLS master secret.
-    + The function gnutls_x509_crt_to_xml now return an internal 
+    + The function gnutls_x509_crt_to_xml now return an internal
       error.
   * Several bugfixes:
     + Corrected a bug in certtool for 64 bit machines.
@@ -4736,14 +4802,14 @@ Thu Aug 31 17:40:43 CEST 2006 - mkoenig@suse.de
 -------------------------------------------------------------------
 Sat Feb 18 00:18:33 CET 2006 - ro@suse.de
 
-- cleanup doc directory (.deps,.libs) 
+- cleanup doc directory (.deps,.libs)
 
 -------------------------------------------------------------------
 Fri Feb 10 13:01:55 CET 2006 - hvogel@suse.de
 
 - Update to version 1.2.10. This release fixes several serious
   bugs that would make the DER decoder in libtasn1 crash on
-  invalid input [#149897]. Including: 
+  invalid input [#149897]. Including:
 
   * Corrected a bug in certtool for 64 bit machines.
 
@@ -4765,7 +4831,7 @@ Wed Jan 25 21:36:17 CET 2006 - mls@suse.de
 -------------------------------------------------------------------
 Tue Dec 20 15:04:31 CET 2005 - ro@suse.de
 
-- do not package /usr/share/info/dir 
+- do not package /usr/share/info/dir
 
 -------------------------------------------------------------------
 Fri Dec  9 14:26:44 CET 2005 - hvogel@suse.de
@@ -4805,7 +4871,7 @@ Tue Jun  7 12:50:53 CEST 2005 - hvogel@suse.de
 -------------------------------------------------------------------
 Fri Jun  3 01:13:12 CEST 2005 - ro@suse.de
 
-- fix specfile (don't apply non-existant patch1) 
+- fix specfile (don't apply non-existant patch1)
 
 -------------------------------------------------------------------
 Thu Jun  2 18:03:17 CEST 2005 - hvogel@suse.de
@@ -4840,7 +4906,7 @@ Mon Dec 13 20:07:38 CET 2004 - hvogel@suse.de
 -------------------------------------------------------------------
 Sat Oct 23 19:41:07 CEST 2004 - hvogel@suse.de
 
-- move config script to the devel package 
+- move config script to the devel package
 
 -------------------------------------------------------------------
 Thu Oct 14 17:08:56 CEST 2004 - hvogel@suse.de
@@ -4875,7 +4941,7 @@ Thu Jul 15 18:54:57 CEST 2004 - hvogel@suse.de
 -------------------------------------------------------------------
 Wed May 19 14:58:13 CEST 2004 - hvogel@suse.de
 
-- update to version 1.0.13 
+- update to version 1.0.13
 
 -------------------------------------------------------------------
 Fri May 14 08:48:26 CEST 2004 - mmj@suse.de
@@ -4886,16 +4952,16 @@ Fri May 14 08:48:26 CEST 2004 - mmj@suse.de
 -------------------------------------------------------------------
 Mon Mar  1 18:44:58 CET 2004 - hvogel@suse.de
 
-- update to version 1.0.8 
+- update to version 1.0.8
 
 -------------------------------------------------------------------
 Tue Feb 17 15:57:15 CET 2004 - hvogel@suse.de
 
-- update to version 1.0.6  
+- update to version 1.0.6
 - fix autoconf quotations
 
 -------------------------------------------------------------------
 Wed May 14 18:31:12 CEST 2003 - schubi@suse.de
 
-- initial; Sourcecode received from XIMIAN 
+- initial; Sourcecode received from XIMIAN
 
