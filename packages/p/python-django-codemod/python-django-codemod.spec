@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-codemod
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-django-codemod
-Version:        1.11.0
+Version:        2.3.5
 Release:        0
 Summary:        Collections of libCST codemodders to upgrade Django
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/browniebroke/django-codemod
-Source:         https://files.pythonhosted.org/packages/source/d/django-codemod/django-codemod-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django-codemod/django_codemod-%{version}.tar.gz
 Source1:        conftest.py
+# PATCH-FIX-OPENSUSE Support click 8.2+
+Patch0:         support-click-8.2.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry}
 BuildRequires:  fdupes
@@ -34,10 +34,11 @@ BuildRequires:  python-rpm-macros
 Requires:       python-click
 Requires:       python-libcst
 Requires:       python-pathspec
+Requires:       python-rich
 Requires:       python-rich-click
 Recommends:     python-setuptools
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django}
@@ -54,7 +55,7 @@ BuildRequires:  %{python_module rich-click}
 Collections of libCST codemodders to upgrade Django.
 
 %prep
-%setup -q -n django-codemod-%{version}
+%autosetup -p1 -n django_codemod-%{version}
 cp %{SOURCE1} .
 sed -i 's/rich = ".*"/rich = "*"/' pyproject.toml
 sed -i '/addopts/d' pyproject.toml
@@ -80,6 +81,7 @@ sed -i '/addopts/d' pyproject.toml
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/djcodemod
-%{python_sitelib}/*django[_-]codemod*/
+%{python_sitelib}/django_codemod/
+%{python_sitelib}/django_codemod-%{version}.dist-info
 
 %changelog

@@ -48,4 +48,19 @@
 - Update to v1.11.0</comment>
     <requestid>1000763</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>898dbd5971fa0fe89ccc02f3742c0114</srcmd5>
+    <version>2.3.5</version>
+    <time>1754396535</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.5:
+  * Migrate packaging to uv
+  * drop support for Python 3.8
+  * add official support for Python 3.12
+  * Drop support for Python 3.7
+  * Officially support Python 3.11
+- Add patch support-click-8.2.patch:
+  * Support Click 8.2+ changes.</comment>
+    <requestid>1297621</requestid>
+  </revision>
 </revisionlist>

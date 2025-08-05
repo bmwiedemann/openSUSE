@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug  5 06:18:12 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.3.5:
+  * Migrate packaging to uv
+  * drop support for Python 3.8
+  * add official support for Python 3.12
+  * Drop support for Python 3.7
+  * Officially support Python 3.11
+- Add patch support-click-8.2.patch:
+  * Support Click 8.2+ changes.
+
+-------------------------------------------------------------------
 Wed Aug 31 23:03:56 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Added conftest.py from upstream
