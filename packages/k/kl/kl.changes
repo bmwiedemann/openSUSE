@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 04 04:48:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.1:
+  * chore: fmt
+  * chore: remove unnecessary method on client
+  * chore: refactor packages
+  * fix: check for nil pointers in PageLog comparison
+  * [chore] refactor k8s client
+
+-------------------------------------------------------------------
 Tue Jun 10 07:04:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package kl: an interactive Kubernetes log viewer for your

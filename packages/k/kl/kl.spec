@@ -1,7 +1,7 @@
 #
 # spec file for package kl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kl
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        An interactive Kubernetes log viewer for your terminal
 License:        MIT
@@ -26,8 +26,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  golang(API) >= 1.23
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.23
 
 %description
 An interactive Kubernetes log viewer for your terminal.
