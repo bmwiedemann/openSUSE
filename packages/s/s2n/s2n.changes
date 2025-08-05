@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Aug  1 13:58:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.5.23
+  * fix(ci): adding set -e to prevent nix develop to hide failing tests (#5393)
+  * chore: release 0.3.22 (#5397)
+  * docs: note that s2n_shutdown may keep reading (#5370)
+  * feat(aws-kms-tls-auth): add codec and parsing (#5398)
+  * ci: start codebuild jobs from github actions (#5383)
+  * ci: Migrate Duvet GitHub Action to duvet-action repo (#5400)
+  * feat(aws-kms-tls-auth): add psk identity (#5402)
+  * feat: add ML-KEM-1024 kem definition (#5367)
+  * Flip Nix integration tests to use uv/pytest (#5352)
+  * feat(aws-kms-tls-auth): add provider & receiver structs (#5408)
+  * ci: require repo write permissions for codebuild (#5421)
+  * docs(aws-kms-tls-auth): add readme (#5409)
+  * docs(aws-kms-tls-auth): clarify security impact of failure modes (#5424)
+  * ci: run rustfmt/clippy on standard crates (#5333)
+  * feat: add secp384r1_mlkem_1024 kem group (#5395)
+  * feat(bench): add generic shutdown functionality (#5426)
+  * chore: Nix Corretto version bump/upstream (#5427)
+  * feature: update default_pq to support secp384r1_mlkem_1024 (#5433)
+  * build(deps): bump cross-platform-actions/action from 0.28.0 to 0.29.0
+    in /.github/workflows in the all-gha-updates group (#5435)
+
+-------------------------------------------------------------------
 Fri Jul 11 10:59:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.5.22
