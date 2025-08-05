@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  5 08:23:17 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update URL to use the new one from codeberg
+- Add missing test requirement python-ruamel.yaml
+
+-------------------------------------------------------------------
 Mon Jun 16 13:43:24 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives

@@ -33,7 +33,9 @@ Version:        1.7.2
 Release:        0
 Summary:        ARA Records Ansible
 License:        GPL-3.0-or-later
-URL:            https://github.com/ansible-community/ara
+# Old project URL: https://github.com/ansible-community/ara
+# Project moved from github to codeberg gh#ansible-community/ara#603
+URL:            https://codeberg.org/ansible-community/ara
 Source:         https://files.pythonhosted.org/packages/source/a/ara/ara-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pbr}
@@ -65,6 +67,7 @@ BuildRequires:  %{python_module dynaconf}
 BuildRequires:  %{python_module factory_boy}
 BuildRequires:  %{python_module pyaml}
 BuildRequires:  %{python_module pygments}
+BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module tzlocal}
 BuildRequires:  %{python_module whitenoise}
 %endif

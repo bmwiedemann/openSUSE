@@ -384,4 +384,13 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1286124</requestid>
   </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>eaf6f1cae3a9e92727180f21cfb37045</srcmd5>
+    <version>1.7.2</version>
+    <time>1754396552</time>
+    <user>dimstar_suse</user>
+    <comment>- Update URL to use the new one from codeberg
+- Add missing test requirement python-ruamel.yaml</comment>
+    <requestid>1297657</requestid>
+  </revision>
 </revisionlist>
