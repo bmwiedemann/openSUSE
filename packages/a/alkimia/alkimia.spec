@@ -29,7 +29,7 @@
 
 %bcond_without released
 Name:           alkimia
-Version:        8.2.0
+Version:        8.2.1
 Release:        0
 Summary:        Library with common classes and functionality used by finance applications
 License:        LGPL-2.1-or-later

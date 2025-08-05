@@ -125,4 +125,12 @@
     <comment>Update to 8.2.0</comment>
     <requestid>1287876</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b35ba57949e791dcce9f12d5956ad27b</srcmd5>
+    <version>8.2.1</version>
+    <time>1754396850</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 8.2.1</comment>
+    <requestid>1297711</requestid>
+  </revision>
 </revisionlist>
