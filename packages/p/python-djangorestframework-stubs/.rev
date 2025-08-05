@@ -7,4 +7,16 @@
     <comment>needed by Orthos type checking</comment>
     <requestid>1293744</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7ddd2f60a81c6ddcd4f40b3636da1c6c</srcmd5>
+    <version>3.16.1</version>
+    <time>1754396538</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.16.1:
+  * Fix APIView.options() return type to Response (#788)
+  * Update mypy to 1.16 (#781)
+- Add patch support-new-mypy.patch:
+  * Support mypy 1.17.0 changes.</comment>
+    <requestid>1297636</requestid>
+  </revision>
 </revisionlist>

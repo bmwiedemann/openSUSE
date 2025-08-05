@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  5 06:45:20 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to version 3.16.1:
+  * Fix APIView.options() return type to Response (#788)
+  * Update mypy to 1.16 (#781)
+- Add patch support-new-mypy.patch:
+  * Support mypy 1.17.0 changes.
+
+-------------------------------------------------------------------
 Tue Jul 15 06:04:26 UTC 2025 - Enno Gotthold <egotthold@suse.com>
 
 - Remove runtime requirement on python-django-restframework
