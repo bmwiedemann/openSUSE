@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 28 19:43:12 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 5.5 Patch 0 - 2025-07-28
+
+- NEW FEATURE: remind:  Add the PUSH-VARS / POP-VARS commands and the
+  analogous PUSH-FUNCS / POP-FUNCS commands.  These let you localize
+  changes to variables and functions and help with writing more modular
+  reminder files.
+
+- INTERNAL CHANGES: Clean up the code following recommendations from
+  an updated "cppcheck" executable.
+
+-------------------------------------------------------------------
 Fri Jul 18 08:07:35 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 5.4 Patch 2 - 2025-07-16
