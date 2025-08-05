@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 29 12:04:01 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Account for the libngtcp2 devel split for openssl and gnutls.
+
+-------------------------------------------------------------------
 Wed Jun 25 10:43:02 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Ship manpages together with binaries

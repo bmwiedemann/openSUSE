@@ -54,7 +54,7 @@ BuildRequires:  gcc-c++
 %if %{with http3}
 BuildRequires:  pkgconfig(libevent_openssl)
 BuildRequires:  pkgconfig(libnghttp3)
-BuildRequires:  pkgconfig(libngtcp2)
+BuildRequires:  libngtcp2_crypto_ossl-devel
 %endif
 %ifnarch ppc %{arm}
 BuildRequires:  pkgconfig(jemalloc)
