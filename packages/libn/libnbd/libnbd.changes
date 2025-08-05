@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 31 17:01:32 UTC 2025 - Charles Arnold <carnold@suse.com>
+
+- Update to version 1.22.3:
+  * Version 1.22.3.
+  * ublk: Remove unused EXPECTED_VERSION
+  * todo: Remove a couple of minor features that have been implemented
+  * info: Tolerate nbdkit slop on large extents
+  * generator: Avoid const-correctness warnings in golang
+  * maint: Spelling fixes
+  * ci: Disable cross-builds of Rust
+  * rust: Allow cargo build --target $RUST_TARGET to be set
+
+-------------------------------------------------------------------
 Tue May 06 22:48:02 UTC 2025 - jfehlig@suse.com
 
 - Update to version 1.22.2:

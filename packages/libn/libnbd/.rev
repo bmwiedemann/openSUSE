@@ -168,4 +168,12 @@ Factory, SLE15-SP7:GA, and SLFO:Main.</comment>
     <comment></comment>
     <requestid>1277278</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>0a7a4cd515ce84e752f64fbf92d9270d</srcmd5>
+    <version>1.22.3</version>
+    <time>1754396470</time>
+    <user>dimstar_suse</user>
+    <comment>Update libndb to version 1.22.3</comment>
+    <requestid>1297550</requestid>
+  </revision>
 </revisionlist>
