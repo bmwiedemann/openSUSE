@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Wed Jul 23 13:03:46 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20250715.497ac5b:
+  * Enable mkosi manifest
+
+-------------------------------------------------------------------
+Wed Apr 30 12:11:28 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20250430.6c7ebdd:
+  * Rename sysext-cli to sysextmgrcli
+
+-------------------------------------------------------------------
+Tue Apr 08 14:00:37 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20250408.0216b07:
+  * Use squashfs, set SYSEXT_SCOPE=system
+
+-------------------------------------------------------------------
+Mon Mar 31 12:23:06 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20250331.4a4adf2:
+  * Use sysext-cli to create json files with dependencies
+
+-------------------------------------------------------------------
+Mon Mar 31 10:29:01 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20250331.0ba3475:
+  * Add git to package list
+
+-------------------------------------------------------------------
+Wed Mar 05 16:30:45 UTC 2025 - kukuk@suse.com
+
+- Update to version 20250305.a412542:
+  * Add git sysext image
+  * strace.transfer: add debug feature
+  * Update automatic-update findings
+
+-------------------------------------------------------------------
+Mon Feb 24 15:05:16 UTC 2025 - kukuk@suse.com
+
+- Update to version 20250224.669ff1c:
+  * k3s: make independent of OS/version (static)
+  * Remove unused mkosi.build scripts
+  * README.md: Adjust for new sysupdate.d files
+  * Add sysupdate.d transfer und feature config files
+
+-------------------------------------------------------------------
+Fri Feb 21 15:04:39 UTC 2025 - kukuk@suse.com
+
+- Update to version 20250221.a2266a8:
+  * Add k3s for arm64
+
+-------------------------------------------------------------------
+Tue Feb 18 18:24:54 UTC 2025 - kukuk@suse.com
+
+- Update to version 20250218.c05f18b:
+  * Add k3s-selinux for OBS
+
+-------------------------------------------------------------------
+Tue Feb 18 15:16:41 UTC 2025 - kukuk@suse.com
+
+- Update to version 20250218.f7b75f7:
+  * Add k3s
+  * Cleanup TODO list
+  * Add document with first thoughts about updates
+  * Update README for systemd >= 257
+
+-------------------------------------------------------------------
+Thu Oct 31 20:24:00 UTC 2024 - kukuk@suse.com
+
+- Update to version 20241031.efff525:
+  * Disable extension symlink without version number
+  * Add config for gcc image
+  * Rename gdb to debug image
+  * Remove traceroute, part of debug image
+
+-------------------------------------------------------------------
+Wed Oct 30 12:15:17 UTC 2024 - kukuk@suse.com
+
+- Update to version 20241030.76bbc49:
+  * Update README.md
+  * Remove old mkosi/README.md
+  * Rework repository layout
+
+-------------------------------------------------------------------
+Tue Oct 29 10:29:44 UTC 2024 - kukuk@suse.com
+
+- Update to version 20241029.89bcb66:
+  * Add MicroOS-release-appliance to base image
+
+-------------------------------------------------------------------
+Tue Oct 29 10:07:18 UTC 2024 - kukuk@suse.com
+
+- Update to version 20241029.d94963b:
+  * Rename gdb to debug sysext
+  * Enable SELinux
+
+-------------------------------------------------------------------
+Mon Oct 28 15:31:58 UTC 2024 - kukuk@suse.com
+
+- Update to version 20241028.f2ac033:
+  * Fix extension-release symlink
+
+-------------------------------------------------------------------
+Mon Oct 28 14:51:56 UTC 2024 - kukuk@suse.com
+
+- Update to version 20241028.672968b:
+  * Use Output name in mkosi.conf with variables
+  * Add mkosi.build/mkosi.postoutput scripts
+  * Use fix name for base directory
+  * Don't set cache directory in output section
+  * Fix mkosi name
+  * Update README.md
+  * Add all used packages to top level mkosi.conf (OBS)
+
+-------------------------------------------------------------------
+Thu Oct 10 12:14:53 UTC 2024 - kukuk@suse.com
+
+- Update to version 20241010.95b3271:
+  * Add gdb sysext image
+
+-------------------------------------------------------------------
+Thu Oct 10 11:50:54 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
+
+- Import
