@@ -1,7 +1,7 @@
 #
 # spec file for package uki
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -100,9 +100,10 @@ BuildRequires:  pesign-obs-integration
 # -------------------------
 # Needed to have the ukify tool
 # -------------------------
-BuildRequires:  systemd, systemd-experimental
+BuildRequires:  systemd
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module pefile}
+BuildRequires:  /usr/bin/ukify
 # -------------------------
 BuildRequires:  %{initrd_pkg}
 BuildRequires:  gptfdisk

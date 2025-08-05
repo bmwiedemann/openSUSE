@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  4 10:31:41 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire /usr/bin/ukify instead of systemd-experimental: on
+  Tumbleweed, ukify now lives in systemd-ukify. Using the binary
+  path allows us to be independent of the actual package name.
+
+-------------------------------------------------------------------
 Sat May 24 09:54:45 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Remove global uki extra dir
