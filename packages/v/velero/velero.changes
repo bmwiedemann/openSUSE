@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Aug 01 13:17:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.16.2:
+  * Bump the Velero and plugin image versions for the upgrade and
+    migration tests.
+  * Bump Golang, Ubuntu, and golang.org/x/oauth2 to fix CVEs.
+    (#9104)
+  * Add imagePullSecrets inheritance for VGDP pod and maintenance
+    job. (#9102)
+  * Update Backup describe string for DefaultVolumesToFSBackup flag
+    (#9105)
+  * Fix missing defaultVolumesToFsBackup flag output in Velero
+    describe backup cmd (#9056)
+  * issue 9077: don't block backup deletion on list VS error
+    (#9101)
+  * Mounted cloud credentials should not be world-readable (#8919)
+    (#9094)
+  * Allow for proper tracking of multiple hooks per container
+  * Bump golang to v1.23.10 to fix CVEs for 1.16.2 release (#9058)
+  * Add BSL status check for backup/restore operations.
+
+-------------------------------------------------------------------
 Mon May 19 04:36:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.16.1:
