@@ -1,0 +1,5 @@
+<package name="muon" project="openSUSE:Factory">
+  <title>muon</title>
+  <description> An implementation of the meson build system in c99 </description>
+  <url>https://muon.build/</url>
+</package>

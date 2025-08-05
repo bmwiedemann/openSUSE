@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Mon Aug  4 13:46:07 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.5.0:
+  * Initial LSP support: completions, diagnostics, URI handling,
+	file tracking
+  * Wrap system overhaul with async support and new subcommands
+  * Added pkg-config-exec backend, dynamic backend selection,
+	fallback improvements
+  * Enhanced subproject handling: fetch/update commands, improved
+	variable access
+  * Major analyzer improvements: location tracking,
+	go-to-definition, relaxed parsing
+  * Improved dependency handling: gtest, dl, appleframeworks,
+	libarchive, pkgconf
+  * Support for configure_file() in script mode and improved
+	ninja integration
+  * Added meson_version compatibility checks and override
+	mechanisms
+  * Cross-compilation and linker detection improvements
+  * Logging framework updates, better diagnostics and error
+	messages
+  * Numerous bug fixes, cleanups, and internal refactors 
+
+-------------------------------------------------------------------
+Sat Jun  7 01:50:02 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Initial packaging at version 0.4.0
