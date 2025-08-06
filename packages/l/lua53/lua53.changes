@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  5 07:22:08 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- interpreter should only provide, not conflict lua symbol
+  (bsc#1247521)
+
+-------------------------------------------------------------------
 Mon Sep 12 11:10:48 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add shared-link.patch: fix dynamic linking executable

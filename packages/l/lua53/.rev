@@ -66,4 +66,12 @@
   other -devel packages</comment>
     <requestid>1295838</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>04ec13858dfd39f438cdd1619d974c62</srcmd5>
+    <version>5.3.6</version>
+    <time>1754483452</time>
+    <user>dimstar_suse</user>
+    <comment>interpreter should only provide, not conflict lua symbol (bsc#1247521)</comment>
+    <requestid>1297891</requestid>
+  </revision>
 </revisionlist>
