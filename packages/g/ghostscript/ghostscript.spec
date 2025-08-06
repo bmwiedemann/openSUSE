@@ -24,25 +24,25 @@
 %bcond_without  apparmor
 %endif
 Name:           ghostscript%{psuffix}
-Version:        10.05.0
+Version:        10.05.1
 Release:        0
 Summary:        The Ghostscript interpreter for PostScript and PDF
 License:        AGPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://www.ghostscript.com/
 # Use "osc service manualrun" to fetch Source0:
-Source0:        https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10050/ghostscript-%{version}.tar.gz
+Source0:        https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10051/ghostscript-%{version}.tar.gz
 # How to manually (i.e. without "osc service") find the Source0 URL at Ghostscript upstream
 # (example for the Ghostscript 10.05.1 release):
 # Go to https://www.ghostscript.com
 # -> [Download] or "Releases" https://ghostscript.com/releases/index.html
 # -> "Ghostscript" https://ghostscript.com/releases/gsdnld.htm
-# -> "Ghostscript 10.05.0 Source for all platforms / Ghostscript AGPL Release"
-# https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10050/ghostscript-10.05.0.tar.gz
+# -> "Ghostscript 10.05.1 Source for all platforms / Ghostscript AGPL Release"
+# https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10051/ghostscript-10.05.1.tar.gz
 # and "MD5 Checksums"
-# https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10050/MD5SUMS
+# https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10051/MD5SUMS
 # and on https://ghostscript.com/releases/index.html
-# -> "release notes" https://ghostscript.readthedocs.io/en/gs10.05.0/News.html
+# -> "release notes" https://ghostscript.readthedocs.io/en/gs10.05.1/News.html
 Source10:       apparmor_ghostscript
 # Patch0...Patch9 is for patches from upstream:
 # Source10...Source99 is for sources from SUSE which are intended for upstream:
@@ -271,6 +271,25 @@ popd
 rm %{buildroot}%{_bindir}/ijs_client_example
 rm %{buildroot}%{_bindir}/ijs_server_example
 rm %{buildroot}%{_libdir}/libijs.la
+# Remove pdf2dsc which was removed in Ghostscript 10.05.0
+# because in Ghostscript 10.x pdf2dsc can no longer work as intended
+# see https://cgit.ghostscript.com/cgi-bin/cgit.cgi/ghostpdl.git/commit/?id=2c315570de78df902f8f15312728d9e1b00cac44
+# but in Ghostscript 10.05.1 pdf2dsc was put back
+# see https://cgit.ghostscript.com/cgi-bin/cgit.cgi/ghostpdl.git/commit/?id=528d324a7968ad89401ebb60dfdb22f9fdfeeb6b
+# and https://cgit.ghostscript.com/cgi-bin/cgit.cgi/ghostpdl.git/commit/?id=0e23e5009c7e2a65a2f707146f2dffe8a362ab86
+# regardless that pdf2dsc can still no longer work as intended
+# according to the git commit 528d324a7968ad89401ebb60dfdb22f9fdfeeb6b message
+# which reads (excerpts)
+# > After feedback from users (AUCTeX and gv) put back the pdf2dsc utility
+# > but note in the comments that this is now unsupported code (in truth
+# > I think it always was, but this makes it explicit).
+# > Because the PostScript program uses undocumented parts of the old
+# > 'written in PostScript' PDF interpreter portions of it probably don't
+# > work and it may fail altogether at some point.
+# Because openSUSE cannot support software which is not supported by upstream
+# the unsupported pdf2dsc is kept removed from Ghostscript:
+rm %{buildroot}%{_datadir}/ghostscript/%{version}/lib/pdf2dsc.ps
+rm %{buildroot}%{_bindir}/pdf2dsc
 # Install examples:
 EXAMPLESDIR=%{buildroot}%{_datadir}/ghostscript/%{version}/examples
 test -d $EXAMPLESDIR || install -d $EXAMPLESDIR

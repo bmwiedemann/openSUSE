@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Aug  4 07:14:46 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
+
+- Version upgrade to 10.05.1
+  See 'Recent Changes in Ghostscript' at Ghostscript upstream
+  https://ghostscript.readthedocs.io/en/gs10.05.1/News.html
+  * This release addresses CVEs:
+    + CVE-2025-46646
+    + CVE-2025-48708 (bsc#1243701)
+  * The 10.05.1 patch release addresses:
+    + An overflow issue in Freetype on platforms
+      where long is a 4 byte (rather than 8 byte) type
+      (Microsoft Windows, for example) causing corrupted
+      glyph rendering at higher resolutions
+    + An issue with embedded files, affecting Zugferd
+      format PDF creation.
+    + Broken logic in PDF Optional Content processing
+    + Potential slow down due to searching for identifiable
+      font files
+    + A small number of extreme edge case segmentation faults.
+
+-------------------------------------------------------------------
 Thu Apr 10 19:39:55 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to
