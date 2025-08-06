@@ -361,4 +361,41 @@
 - Switch from update-alternatives to libalternatives (and</comment>
     <requestid>1296995</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>c9f57a3c08c7821b017a8600655481b4</srcmd5>
+    <version>5.4.8</version>
+    <time>1754483448</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from update-alternatives to libalternatives (and
+  dependency on lua-interpreter)
+- improve .gitignore and overall improve the packaging.
+- this package also provides devel symlink directly and conflicts
+  other -devel packages
+
+- fix update-alternatives
+  * Stack overflow in vararg functions with many fixed parameters
+    called with few arguments.
+  * Wrong assert when reporting concatenation errors (manifests only
+    when Lua is compiled in debug mode).
+  * Wrong error message in some short-cut expressions.
+  * luac listings choke on long strings.
+- export luaU_dump in order to fix linking of luac binary
+* LUA_IFUNC must be defined as upstream but without &quot;extern&quot;,
+* LUA_API must be defined as visibility default
+  would not work because LUA_CDIR constant is wrong in x86_64
+- devel package must require libluaver = %{version}
+  or scripts
+        [lua_pushstring] and &lt;CODE&gt;pushlstring&lt;/CODE&gt; return string
+  * too many variables in an assignment may cause a C stack
+    overflow
+  * an error in a module loaded through the '-l' option shows no
+  * gsub may go wild when wrongly called without its third
+    argument and with a large subject
+  * table.remove removes last element of a table when given
+    an out-of-bound index
+  * stand-alone interpreter shows incorrect error message when
+  * debug.sethook/gethook may overflow the thread's stack
+- Switch from update-alternatives to libalternatives (and</comment>
+    <requestid>1297784</requestid>
+  </revision>
 </revisionlist>

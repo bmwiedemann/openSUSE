@@ -51,7 +51,6 @@ Patch6:         shared_link.patch
 # PATCH-FIX-UPSTREAM inspect errno only after failure
 Patch8:         execresult.patch
 Patch100:       upstream1.patch
-Conflicts:      lua
 Provides:       lua = %{version}
 Obsoletes:      lua < %{version}
 Provides:       Lua(API) = %{major_version}
@@ -68,9 +67,9 @@ Requires(postun): update-alternatives
 BuildRequires:  lua54
 BuildRequires:  lua54-devel
 %else
+# Ensure we can build without $self
 #!BuildIgnore: lua54
 BuildRequires:  libtool
-BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 %endif
