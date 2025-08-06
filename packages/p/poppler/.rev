@@ -2270,4 +2270,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>1295794</requestid>
   </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>b00bbd40e3f739aeab27df7dbd42f10b</srcmd5>
+    <version>25.08.0</version>
+    <time>1754483527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297696</requestid>
+  </revision>
 </revisionlist>
