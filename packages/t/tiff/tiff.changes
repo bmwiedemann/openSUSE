@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug  4 13:39:29 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1243503:
+  Fix TIFFMergeFieldInfo() read_count=write_count=0
+  + tiff-4.7.0-bsc1243503.patch
+
+-------------------------------------------------------------------
+Mon Aug  4 09:02:49 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- security update:
+  * CVE-2025-8176 [bsc#1247108]
+    Fix heap use-after-free in tools/tiffmedian.c
+    + tiff-CVE-2025-8176.patch
+  * CVE-2025-8177 [bsc#1247106]
+    Fix possible buffer overflow in tools/thumbnail.c:setrow() 
+    + tiff-CVE-2025-8177.patch
+
+-------------------------------------------------------------------
 Sat Mar 22 01:24:28 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4

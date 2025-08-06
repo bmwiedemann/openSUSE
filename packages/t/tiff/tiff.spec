@@ -46,6 +46,9 @@ Source99:       tiff.keyring
 Patch0:         tiff-4.0.3-seek.patch
 # PATCH-FIX-UPSTREAM tiff-4.7.0-test_directory.patch based on commit ea6f6bd7bccb bsc#1236834
 Patch1:         tiff-4.7.0-test_directory.patch
+Patch2:         tiff-CVE-2025-8176.patch
+Patch3:         tiff-CVE-2025-8177.patch
+Patch4:         tiff-4.7.0-bsc1243503.patch
 %if %{with tiff_manpages}
 BuildRequires:  python3-Sphinx
 %endif

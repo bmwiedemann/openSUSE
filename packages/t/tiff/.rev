@@ -1035,4 +1035,22 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     <comment></comment>
     <requestid>1255508</requestid>
   </revision>
+  <revision rev="103" vrev="7">
+    <srcmd5>538ae1f3092835826d8dc3ebef468418</srcmd5>
+    <version>4.7.0</version>
+    <time>1754483488</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1243503:
+  Fix TIFFMergeFieldInfo() read_count=write_count=0
+  + tiff-4.7.0-bsc1243503.patch
+
+- security update:
+  * CVE-2025-8176 [bsc#1247108]
+    Fix heap use-after-free in tools/tiffmedian.c
+    + tiff-CVE-2025-8176.patch
+  * CVE-2025-8177 [bsc#1247106]
+    Fix possible buffer overflow in tools/thumbnail.c:setrow() 
+    + tiff-CVE-2025-8177.patch</comment>
+    <requestid>1297516</requestid>
+  </revision>
 </revisionlist>
