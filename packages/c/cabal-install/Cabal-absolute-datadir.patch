@@ -1,0 +1,44 @@
+From 1f8f9fd08fb90bd94668ac8a81c94e179fc8ab86 Mon Sep 17 00:00:00 2001
+From: Matthew Pickering <matthewtpickering@gmail.com>
+Date: Fri, 14 Mar 2025 12:55:51 +0000
+Subject: [PATCH] Set <pkgname_datadir> to an absolute path
+
+Ticket #10717 points out that the <pkgname>_datadir environment variable
+should be set to an absolute path since the test executables may
+change directory during their invocation.
+
+This is easily fixed by using the absoluteWorkingDirLBI
+function, which was introduced in 027bddfcdf3ba298376c60be1ccf664ebc394cec,
+
+Fixes #10717
+---
+ cabal-install/src/Distribution/Client/Run.hs  |  3 ++
+
+Index: cabal-install-3.14.1.1/src/Distribution/Client/Run.hs
+===================================================================
+--- cabal-install-3.14.1.1.orig/src/Distribution/Client/Run.hs	2001-09-09 01:46:40.000000000 +0000
++++ cabal-install-3.14.1.1/src/Distribution/Client/Run.hs	2025-08-05 12:02:41.575543029 +0000
+@@ -35,6 +35,7 @@ import Distribution.Simple.Flag (fromFla
+ import Distribution.Simple.LocalBuildInfo
+   ( ComponentName (..)
+   , LocalBuildInfo (..)
++  , absoluteWorkingDirLBI
+   , buildDir
+   , depLibraryPaths
+   , interpretSymbolicPathLBI
+@@ -143,6 +144,7 @@ splitRunArgs verbosity lbi args =
+ -- | Run a given executable.
+ run :: Verbosity -> LocalBuildInfo -> Executable -> [String] -> IO ()
+ run verbosity lbi exe exeArgs = do
++  curDir <- absoluteWorkingDirLBI lbi
+   let distPref = fromFlag $ configDistPref $ configFlags lbi
+       buildPref = buildDir lbi
+       pkg_descr = localPkgDescr lbi
+@@ -155,6 +157,7 @@ run verbosity lbi exe exeArgs = do
+           , -- Include any build-tool-depends on build tools internal to the current package.
+             withPrograms =
+               addInternalBuildTools
++                curDir
+                 pkg_descr
+                 lbi
+                 (buildInfo exe)
