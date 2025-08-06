@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug  4 14:36:53 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update filepath-bytestring to version 1.5.2.0.3.
+  filepath-bytestring (1.5.2.0.3) unstable; urgency=medium
+
+    * Relax bounds to allow QuickCheck-2.15
+    * Allow base and filepath bundled with GHC 9.12
+
+   -- Joey Hess <id@joeyh.name>  Mon, 04 Aug 2025 10:35:01 -0400
+
+-------------------------------------------------------------------
 Mon Jul 28 19:15:24 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Jailbreak over-specified constraints to fix build with ghc-9.12.x.
