@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug  1 19:23:03 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.54.5:
+  + Bugs fixed:
+    - Adding GOA account fails with sonic.net IMAP service
+    - Cannot add a ProtonMail bridge with IMAP + TLS
+    - Nextcloud login does not work anymore due to OPTIONS /login
+      request
+    - Linked online accounts no longer work
+    - Invalid URI when adding Google account
+    - goamsgraphprovider: ensure a valid PresentationIdentity
+    - goadaemon: complete GTasks to avoid a scary debug warning
+
+-------------------------------------------------------------------
 Sun Jun 29 07:15:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.54.4:

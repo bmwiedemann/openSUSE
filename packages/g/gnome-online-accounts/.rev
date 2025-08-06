@@ -870,4 +870,21 @@
     <comment></comment>
     <requestid>1289805</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>0decce44d50f33d2d3e32bf93518c572</srcmd5>
+    <version>3.54.5</version>
+    <time>1754483542</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.54.5:
+  + Bugs fixed:
+    - Adding GOA account fails with sonic.net IMAP service
+    - Cannot add a ProtonMail bridge with IMAP + TLS
+    - Nextcloud login does not work anymore due to OPTIONS /login
+      request
+    - Linked online accounts no longer work
+    - Invalid URI when adding Google account
+    - goamsgraphprovider: ensure a valid PresentationIdentity
+    - goadaemon: complete GTasks to avoid a scary debug warning (forwarded request 1297117 from iznogood)</comment>
+    <requestid>1297629</requestid>
+  </revision>
 </revisionlist>
