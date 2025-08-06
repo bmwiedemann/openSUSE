@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug  4 09:29:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream pytest-warnings.patch to fix tests with pytest 8.4+
+- tests actually use pytest-asyncio, otherwise they break even with
+  the patch
+
+-------------------------------------------------------------------
 Thu Jul 17 20:38:14 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
-- skip deprecation warnings
+- switch to pytest-trio
 
 -------------------------------------------------------------------
 Fri Jun 20 12:10:38 UTC 2025 - Markéta Machová <mmachova@suse.com>

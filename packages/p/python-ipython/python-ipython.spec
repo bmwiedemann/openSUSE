@@ -40,6 +40,8 @@ License:        BSD-3-Clause
 URL:            https://github.com/ipython/ipython
 Source:         https://files.pythonhosted.org/packages/source/i/ipython/ipython-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/jupyter/qtconsole/4.0.0/qtconsole/resources/icon/JupyterConsole.svg
+# PATCH-FIX-UPSTREAM https://github.com/ipython/ipython/commit/9dc9414beec774e0857d655299231fb8e311d9b8 Fix a number of pytest warnings
+Patch0:         pytest-warnings.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
@@ -89,7 +91,7 @@ BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy >= 1.23}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pickleshare}
-BuildRequires:  %{python_module pytest-trio}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testpath}
 BuildRequires:  %{python_module trio}

@@ -1663,4 +1663,12 @@
     deactivate backslash-tab completion that may conflict with windows path.</comment>
     <requestid>1294230</requestid>
   </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>eacc974827e83f811dd978c51a54540c</srcmd5>
+    <version>8.37.0</version>
+    <time>1754483475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297454</requestid>
+  </revision>
 </revisionlist>
