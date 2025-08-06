@@ -24,4 +24,13 @@
 - Initial Package</comment>
     <requestid>1225102</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>a4437189b474a5d9ace7938a72721d9e</srcmd5>
+    <version>0.6.1</version>
+    <time>1754483659</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove Requires on mypy, it's python-mypy.
+- Skip broken test with the new mypy.</comment>
+    <requestid>1297846</requestid>
+  </revision>
 </revisionlist>
