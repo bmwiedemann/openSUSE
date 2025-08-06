@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  5 10:50:39 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.9.7
+  * Documentation fixes (StreamDeck 6 key module is also supported since 0.9.7)
+
+-------------------------------------------------------------------
 Mon Jun 16 06:12:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyroject macros.
