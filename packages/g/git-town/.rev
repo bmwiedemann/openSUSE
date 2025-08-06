@@ -15,4 +15,12 @@
     <comment>update to 21.4.0</comment>
     <requestid>1297357</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>30555237fa83a100e3ed91e57d36b1f7</srcmd5>
+    <version>21.4.1</version>
+    <time>1754483670</time>
+    <user>dimstar_suse</user>
+    <comment>update to 21.4.1</comment>
+    <requestid>1297858</requestid>
+  </revision>
 </revisionlist>

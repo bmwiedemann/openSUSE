@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 06 05:28:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 21.4.1:
+  * Bug Fixes
+    - Fixes parsing of the new Git metadata config entries that
+      disable auto-resolving phantom conflicts (#5326).
+
+-------------------------------------------------------------------
 Mon Aug 04 04:58:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 21.4.0:
