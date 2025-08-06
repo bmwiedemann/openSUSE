@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Aug  6 10:59:35 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update use-python3.patch with the upstream fix
+
+-------------------------------------------------------------------
+Wed Aug  6 09:06:17 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.2.1
+  - Bug Fixes
+    - Fix downstream builds by @pca006132 in #1302
+    - Add MANIFOLD_FOUND cmake variable by @Trzeth in #1307
+    - Fix Manifold.Simplify test on intel macos by @Trzeth and
+      @pca006132 in #1311 and #1322 (the real fix is probably the
+      one below)
+    - Fix broken halfedge pairing by @pca006132 in #1319
+    - Make batch boolean deterministic by @pca006132 in #1321
+    - Fix odr violation by @pca006132 in #1323
+  - Misc
+    - Add old version gcc to CI by @Trzeth in #1308
+    - Add Cadova to users by @tomasf in #1312
+    - Fix faceID documentation in wasm bindings by @jirihon in
+      #1317
+    - Disable async free when asan is enabled by @pca006132 in
+      #1325
+- Update to 3.2.0
+  - Bug Fixes
+    - Make GCC floating-point operations standard conforming by
+      @pca006132 in #1273
+    - Add missing Manifold.simplify() method to Python API by
+      @jonathanhogg in #1282
+    - Fixed meshID regression by @elalish in #1287
+    - Fix pyi vert_properties type by @Trzeth in #1291
+    - Update Clipper2 to 1.5.4 and fix CrossSection::Offset by
+      @Trzeth in #1292
+    - Skip halfedges that are removed by @pca006132 in #1296
+    - Fix stubgen path by @Trzeth in #1301
+    - Add cmake check for fp related options by @pca006132 in #1300
+  - Performance Improvements
+    - Misc performance improvements by @pca006132 in #1269
+    - Use union-find for winding number by @pca006132 in #1271
+    - Faster halfedge pairing for large meshes by @pca006132 in
+      #1279
+  - Misc
+    - Use cmake4 in the CI by @pca006132 in #1274
+    - Add Arcol to README.md by @prideout in #1286
+    - Add Bento3D to README.md by @sorashin in #1288
+    - Add fuzzing instructions by @pca006132 #1214
+    - Add JoinType.Bevel by @elektrohenk in #1299
+- add use-python3.patch
+  https://github.com/elalish/manifold/issues/1327
+
+-------------------------------------------------------------------
 Fri Jul 18 10:48:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - only force gcc14 on leap 15

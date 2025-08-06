@@ -1,7 +1,7 @@
 #
 # spec file for package manifold
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,12 +31,14 @@
 %global sh_c_lib libmanifoldc3
 
 Name:           manifold
-Version:        3.1.1
+Version:        3.2.1
 Release:        0
 Summary:        Geometry library for topological robustness
 License:        Apache-2.0
 URL:            https://github.com/elalish/manifold
 Source0:        %{name}-%{version}.tar.gz
+Source1:        series
+Patch1:         use-python3.patch
 BuildRequires:  cmake
 BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  gtest

@@ -19,4 +19,14 @@
   - disable python support</comment>
     <requestid>1294355</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5d8633d9a8ce7bae0a2e1db115c93e9d</srcmd5>
+    <version>3.2.1</version>
+    <time>1754483692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.2.1
+
+if blender 4.5.1 is still in staging. this can be merged into the same staging.</comment>
+    <requestid>1297935</requestid>
+  </revision>
 </revisionlist>
