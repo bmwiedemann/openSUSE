@@ -180,6 +180,10 @@ rm config/services/high-availability.xml
 %{python_expand # expanded-body:
   pushd %{_builddir}/${python_flavor}/firewalld-%{version}
   export PYTHON="%{_bindir}/$python"
+%if %{pkg_vcmp gettext-devel >= 0.25}
+# see https://lists.gnu.org/archive/html/bug-gettext/2025-06/msg00009.html
+  autopoint -f
+%endif
   autoreconf -fiv
   %configure \
     --enable-sysconfig \

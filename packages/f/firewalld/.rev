@@ -1389,4 +1389,12 @@ This is a bug fix only release.
   versions.</comment>
     <requestid>1295233</requestid>
   </revision>
+  <revision rev="95" vrev="8">
+    <srcmd5>a6196286375dd07bb74cd4fedb9ccb8e</srcmd5>
+    <version>2.1.2</version>
+    <time>1754483484</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297503</requestid>
+  </revision>
 </revisionlist>

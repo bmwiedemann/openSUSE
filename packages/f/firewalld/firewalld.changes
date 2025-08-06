@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 24 09:49:20 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Call autopoint when building against gettext-runtime 0.25 or
+  newer. (boo#1246967)
+
+-------------------------------------------------------------------
 Mon May 19 14:22:31 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Adding Python multiversion support, will enable firewalld pkg
