@@ -160,4 +160,16 @@
     <comment></comment>
     <requestid>1289800</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5229e5f7ff39442c039a8798f57c439b</srcmd5>
+    <version>1.2.3</version>
+    <time>1754483540</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.3:
+  + This release contains the following new component versions:
+    - glycin-image-rs 1.2.3
+  + Fixed: image-rs: Force at least zune-jpeg 0.4.19 to fix a JPEG
+    loading issues for images with extra data at the end. (forwarded request 1297116 from iznogood)</comment>
+    <requestid>1297628</requestid>
+  </revision>
 </revisionlist>

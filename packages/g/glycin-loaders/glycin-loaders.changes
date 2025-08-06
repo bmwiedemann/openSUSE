@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug  1 18:05:55 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.3:
+  + This release contains the following new component versions:
+    - glycin-image-rs 1.2.3
+  + Fixed: image-rs: Force at least zune-jpeg 0.4.19 to fix a JPEG
+    loading issues for images with extra data at the end.
+
+-------------------------------------------------------------------
 Fri Jun 27 16:25:30 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.2.2:
