@@ -1,0 +1,14 @@
+diff -ru coeurl-v0.3.1/lib/request.cpp ../../openSUSE:Factory/coeurl/coeurl-v0.3.1/lib/request.cpp
+--- coeurl-v0.3.1/lib/request.cpp	2024-06-02 21:32:43.000000000 +0200
++++ coeurl-v0.3.1/lib/request.cpp	2025-05-13 18:31:06.974573432 +0200
+@@ -133,8 +133,8 @@
+ #endif
+ 
+     // enable altsvc support, which allows us to switch to http3
+-    curl_easy_setopt(this->easy, CURLOPT_ALTSVC_CTRL, CURLALTSVC_H1 | CURLALTSVC_H2 | CURLALTSVC_H3);
+-    curl_easy_setopt(this->easy, CURLOPT_ALTSVC, client->alt_svc_cache_path().c_str());
++    //curl_easy_setopt(this->easy, CURLOPT_ALTSVC_CTRL, CURLALTSVC_H1 | CURLALTSVC_H2 | CURLALTSVC_H3);
++    //curl_easy_setopt(this->easy, CURLOPT_ALTSVC, client->alt_svc_cache_path().c_str());
+ 
+     // default to all supported encodings
+     curl_easy_setopt(this->easy, CURLOPT_ACCEPT_ENCODING, "");

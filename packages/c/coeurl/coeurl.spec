@@ -1,7 +1,9 @@
 #
 # spec file for package coeurl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +26,7 @@ Summary:        A simple async wrapper around CURL for C++
 License:        MIT
 URL:            https://nheko.im/nheko-reborn/coeurl
 Source:         %{url}/-/archive/v%{version}/%{name}-v%{version}.tar.gz
+Patch:          workaround_libcurl8.15_issues.patch
 BuildRequires:  meson
 %if 0%{?suse_version} < 1600
 BuildRequires:  gcc12

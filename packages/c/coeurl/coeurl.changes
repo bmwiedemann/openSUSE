@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  5 15:00:02 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Add workaround_libcurl8.15_issues.patch again as libcurl 8.15
+  broke it again
+
+-------------------------------------------------------------------
 Wed Jun  4 10:19:24 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Remove workaround_libcurl8.13_issues.patch as libcurl 8.14
