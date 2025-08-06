@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Mon Aug 4 07:10:23 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1036
+- added function Md::is_valid_name
+- moved code to Impl classes
+- 4.5.272
+
+--------------------------------------------------------------------
 Fri Aug 1 09:59:20 UTC 2025 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1035
