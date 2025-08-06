@@ -62,4 +62,14 @@
   * Update Release Scripts #27 (@blink1073)</comment>
     <requestid>1163383</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>349896a607a20c22084182c50836e66d</srcmd5>
+    <version>0.2.3</version>
+    <time>1754483456</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.3
+  * Remove traitlets dependency #32 (@davidbrochart)
+  * Add Security.md file. #29 (@Carreau)</comment>
+    <requestid>1297170</requestid>
+  </revision>
 </revisionlist>

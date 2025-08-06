@@ -1,7 +1,7 @@
 #
 # spec file for package python-comm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-comm
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        Jupyter Python Comm implementation
 License:        BSD-3-Clause
 URL:            https://github.com/ipython/comm
 Source:         https://github.com/ipython/comm/archive/refs/tags/v%{version}.tar.gz#/comm-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling >= 1.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module traitlets >= 4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-traitlets >= 4
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,9 +53,9 @@ sed -i -e 's/, "--color=yes"//' pyproject.toml
 %pytest
 
 %files %{python_files}
-%doc README.md
+%doc README.md SECURITY.md
 %license LICENSE
 %{python_sitelib}/comm
-%{python_sitelib}/comm-%{version}*-info
+%{python_sitelib}/comm-%{version}.dist-info
 
 %changelog
