@@ -11,4 +11,13 @@ v3: disable 32bit for Qt6
 v4: -devel require gpgmepp, broke plasma-pass</comment>
     <requestid>1294234</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>43162a7d7d92e77ee4103bc44fc931f2</srcmd5>
+    <version>2.0.0</version>
+    <time>1754483460</time>
+    <user>dimstar_suse</user>
+    <comment>- Specify version requirement on Qt6 Core Tools
+- wrap Qt6 build in a conditional and disable on Leap 15.6</comment>
+    <requestid>1297310</requestid>
+  </revision>
 </revisionlist>

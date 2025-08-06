@@ -1,5 +1,6 @@
 <package name="qgpgme" project="openSUSE:Factory">
   <title>Qt API bindings/wrapper for GPGME</title>
   <description>QGpgme provides a very high level Qt API around GpgMEpp.</description>
+  <devel project="security:privacy" package="qgpgme"/>
   <url>https://www.gnupg.org/software/gpgme/index.html</url>
 </package>

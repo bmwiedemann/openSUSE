@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug  3 18:20:08 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Specify version requirement on Qt6 Core Tools
+- wrap Qt6 build in a conditional and disable on Leap 15.6
+
+-------------------------------------------------------------------
 Thu Jul 17 20:57:17 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Add requirements to gpgmepp to -devel packages to avoid breaking
