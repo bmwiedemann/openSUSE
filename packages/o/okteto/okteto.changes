@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Aug 06 10:35:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.10.0:
+  * New Feature
+    - Update buildkit dependencies in go.mod and go.sum by
+      @jLopezbarb in #4737
+    - [TEST] feat: implement nodeSelector and resources inheritance
+      from Kubernetes resources by @rberrelleza in #4741
+    - Enhance DestroyPreview functionality to include timeout
+      parameter by @jLopezbarb in #4745
+  * Bug Fix
+    - Don't build images on deploy command if the calculation of
+      images to build is an empty list by @ifbyol in #4739
+    - reduce severity of JSON parsing error log, and skip parsing
+      when the log is empty by @rberrelleza in #4743
+    - Improved error handling when the backend returns a 401 error,
+      to force a new login by @ifbyol in #4747
+    - Add unit test for CreateDev function and fix TargetPort type
+      in Service translation by @jLopezbarb in #4748
+
+-------------------------------------------------------------------
 Wed Jul 02 05:31:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.9.0:
