@@ -79,4 +79,12 @@
     <comment></comment>
     <requestid>1039122</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>1e2465ed0b77e7bb7093944239d33138</srcmd5>
+    <version>20210827</version>
+    <time>1754483449</time>
+    <user>dimstar_suse</user>
+    <comment>On Factory BR lua-interpreter.</comment>
+    <requestid>1297788</requestid>
+  </revision>
 </revisionlist>

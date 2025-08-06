@@ -27,7 +27,9 @@ License:        MIT
 Group:          Development/Languages/Other
 URL:            https://www.lua.org
 Source0:        macros.lua
-%if 0%{?suse_version} >= 1500
+%if 0%{?suse_version} > 1600
+Requires:       lua-interpreter
+%elif 0%{?suse_version} >= 1500
 # on SLE 12 lua is lua5.2 unconditionally, avoid
 Requires:       lua
 %endif
@@ -38,9 +40,6 @@ RPM macros for lua packaging
 
 %prep
 cp -p %{SOURCE0} .
-%if 0%{?rhel} || 0%{?fedora}
-sed -i -e '/includedir/s!/lua!&-!' macros.lua
-%endif
 
 %build
 :
