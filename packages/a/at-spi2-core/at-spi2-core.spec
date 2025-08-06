@@ -23,7 +23,7 @@
 %define atspiconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}
 
 Name:           at-spi2-core
-Version:        2.56.3
+Version:        2.56.4
 Release:        0
 Summary:        Assistive Technology Service Provider Interface - D-Bus based implementation
 License:        LGPL-2.1-or-later
@@ -31,12 +31,7 @@ Group:          System/GUI/GNOME
 URL:            https://www.gnome.org/
 Source0:        %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM at-spi2-core-grab-memory-leak.patch mgorse@suse.com -- fix a memory leak when removing a key grab.
-Patch0:         at-spi2-core-grab-memory-leak.patch
-# PATCH-FIX-UPSTREAM at-spi2-core-key-grabs.patch mgorse@suse.com -- also send grab variants with numlock and caps lock enabled.
-Patch1:         at-spi2-core-key-grabs.patch
-# PATCH-FIX-UPSTREAM at-spi2-core-plug-crash.patch mgorse@suse.com -- don't crash when requesting a plug if not activated.
-Patch2:         at-spi2-core-plug-crash.patch
+
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.63.0
 BuildRequires:  pkgconfig

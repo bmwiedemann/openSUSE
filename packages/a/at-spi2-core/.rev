@@ -2741,4 +2741,20 @@
     <comment>Fix extra whitespace - DO NOT ACK untill cleared from staging. (forwarded request 1293425 from iznogood)</comment>
     <requestid>1293452</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>0322aa81464bdd3e212010e1d6b8d944</srcmd5>
+    <version>2.56.4</version>
+    <time>1754483550</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.56.4:
+  + Fix key grabs when num lock or caps lock are on under Wayland.
+  + atk-bridge: Don't crash when requesting a plug if not
+    activated.
+  + Add sanity checks for child indices received via DBus.
+- Drop patches fixed upstream:
+  + at-spi2-core-grab-memory-leak.patch
+  + at-spi2-core-key-grabs.patch
+  + at-spi2-core-plug-crash.patch (forwarded request 1297160 from iznogood)</comment>
+    <requestid>1297631</requestid>
+  </revision>
 </revisionlist>
