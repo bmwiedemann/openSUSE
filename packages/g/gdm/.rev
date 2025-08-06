@@ -2217,4 +2217,14 @@
   of postlogin-account (forwarded request 1293840 from favogt)</comment>
     <requestid>1295784</requestid>
   </revision>
+  <revision rev="285" vrev="12">
+    <srcmd5>fd2693d99457177f782e8d5a4381d947</srcmd5>
+    <version>48.0</version>
+    <time>1754483575</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure migration to gdm.service also happens during upgrade when
+  gdm is installed first and we thus lose the updte-alternative
+  link which would be part of tgdm-xdm-integration (boo#1247418). (forwarded request 1297641 from dimstar)</comment>
+    <requestid>1297643</requestid>
+  </revision>
 </revisionlist>

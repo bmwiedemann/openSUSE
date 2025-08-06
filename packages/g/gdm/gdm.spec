@@ -1,7 +1,7 @@
 #
 # spec file for package gdm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -360,6 +360,13 @@ install -D -m 644 %{SOURCE20} %{buildroot}%{_prefix}/share/factory/var/lib/gdm/.
 %meson_test
 
 %pre -f gdm.pre
+if [ $1 -gt 1 ]; then
+  if [ "$(systemctl is-enabled display-manager-legacy)" = "enabled" -a -x /usr/sbin/update-alternatives]; then
+    if [ "$(update-alternatives  --query default-displaymanager | awk '/Value:/ {print $2}')" = "/usr/lib/X11/displaymanagers/gdm" ]; then
+        touch /var/tmp/migrate_to_gdm
+    fi
+  fi
+fi
 
 %post
 %tmpfiles_create gdm.conf
@@ -396,10 +403,11 @@ if [ "$(systemctl is-enabled display-manager-legacy)" = "enabled" ]; then
   # display-manager is currently 'legacy mode' - if migration has already occured
   # the above command would return 'disabled'
   if [ -x /usr/sbin/update-alternatives ]; then
-    if [ "$(update-alternatives  --query default-displaymanager | awk '/Value:/ {print $2}')" = "/usr/lib/X11/displaymanagers/gdm" ]; then
+    if [ "$(update-alternatives  --query default-displaymanager | awk '/Value:/ {print $2}')" = "/usr/lib/X11/displaymanagers/gdm" ] || [ -f /var/tmp/migrate_to_gdm ]; then
       # the display-manager started by xdm is currently gdm - let's switch to the native service
       # this only force-enables gdm whenever xdm was enabled AND it was uses as wrapper to start gdm
       systemctl enable --force gdm.service
+      unlink /var/tmp/migrate_to_gdm
     fi
   fi
 fi

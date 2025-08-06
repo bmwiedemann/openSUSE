@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  5 07:10:40 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Ensure migration to gdm.service also happens during upgrade when
+  gdm is installed first and we thus lose the updte-alternative
+  link which would be part of tgdm-xdm-integration (boo#1247418).
+
+-------------------------------------------------------------------
 Wed Jul 16 14:53:57 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - gdm-fingerprint.pamd: Fix inclusion of common-account instead
