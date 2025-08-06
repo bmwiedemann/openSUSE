@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  5 07:21:48 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- interpreter should only provide, not conflict lua symbol
+  (bsc#1247521)
+
+-------------------------------------------------------------------
 Sat Jul 19 09:23:33 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch from update-alternatives to libalternatives (and

@@ -195,4 +195,12 @@ Refresh lua51-5.1.5-module-path.diff patch (forwarded request 204313 from ptromm
   * debug.sethook/gethook may overflow the thread's stack</comment>
     <requestid>1295837</requestid>
   </revision>
+  <revision rev="19" vrev="17">
+    <srcmd5>46abff8da8cd89392fe0318f16834598</srcmd5>
+    <version>5.1.5</version>
+    <time>1754483451</time>
+    <user>dimstar_suse</user>
+    <comment>interpreter should only provide, not conflict lua symbol (bsc#1247521)</comment>
+    <requestid>1297890</requestid>
+  </revision>
 </revisionlist>

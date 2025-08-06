@@ -41,7 +41,6 @@ BuildRequires:  libtool
 BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
-Conflicts:      lua
 Provides:       lua = %{version}
 Obsoletes:      lua < %{version}
 Provides:       Lua(API) = %{major_version}
