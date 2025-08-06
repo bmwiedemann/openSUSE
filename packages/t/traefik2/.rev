@@ -81,4 +81,12 @@ This is Traefik LTS version</comment>
     <comment></comment>
     <requestid>1288771</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5ef25d01b4fd334a5d8fcb7ee7870175</srcmd5>
+    <version>2.11.28</version>
+    <time>1754483584</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1297690</requestid>
+  </revision>
 </revisionlist>

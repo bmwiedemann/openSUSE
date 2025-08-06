@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jul 29 09:59:25 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Synchronized changelog with boo tickets and cve entries
+
+-------------------------------------------------------------------
+Fri Jul 25 05:45:58 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 2.11.28
+  * logs
+    - Redact logged install configuration (gh#traefik/traefik#11907 by jspdown)
+  * plugins
+    - Fix client arbitrary file access during archive extraction zipslip (gh#traefik/traefik#11911 by odaysec)
+  * server
+    - Disable MPTCP by default (gh#traefik/traefik#11918 by rtribotte)
+
+-------------------------------------------------------------------
+Tue Jul 22 13:38:51 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Disabled MPTCP which caused issues (see gh#traefik/traefik#11869)
+
+- Version 2.11.27
+
+-------------------------------------------------------------------
 Thu Jun 26 15:00:39 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 2.11.26
@@ -37,8 +60,6 @@ https://doc.traefik.io/traefik/v2.11/migration/v2/#v21125
     - Sanitize request path (#11684 by rtribotte)
 
 - Version 2.11.23
-  * Fix for boo#1239233 CVE-2025-22868
-
   * ecs,logs
     - Bump AWS SDK to v2
   * logs,tls
@@ -49,10 +70,11 @@ https://doc.traefik.io/traefik/v2.11/migration/v2/#v21125
     - Change boolean module properties default value to undefined
   * Upgrades
     - Bump golang.org/x/net to v0.38.0
-      fix for boo#1241731 CVE-2025-22872
+      Fix for boo#1241731 and boo#1241733: CVE-2025-22872
+    - Bump golang.org/x/oauth2 to v0.28.0
+      Fix for boo#1239228 CVE-2025-22868
 
 - Version 2.11.22
-  * fix for boo#1239383 CVE-2025-22869
   * logs,tls
     - Error level log for configuration-related TLS errors with backends
   * rules
@@ -61,7 +83,11 @@ https://doc.traefik.io/traefik/v2.11/migration/v2/#v21125
     - Change boolean module properties default value to undefined
   * Updates
     - Bump github.com/go-jose/go-jose/v4 to v4.0.5
-      fix boo#1237636 CVE-2025-27144
+      fix boo#1237621 CVE-2025-27144
+    - Bump github.com/golang-jwt/jwt to v4.5.2
+      fix boo#1240454 CVE-2025-30204
+    - Bump x/crypto to v0.35.0
+      fix for boo#1239383 CVE-2025-22869, boo#1239363 CVE-2025-22869
 
 - Version 2.11.21
   - middleware
@@ -101,8 +127,8 @@ Mon Jan  6 12:50:10 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
     * Fix typo in basicauth note (gh#traefik/traefik#11397)
   - service
     * Configure ErrorLog in httputil.ReverseProxy (gh#traefik/traefik#11344)
-  Bump golang.org/x/net to v0.33.0 (gh#traefik/traefik#11365) 
-  mentioned in boo#1235270 CVE-2024-45338
+  - Bump golang.org/x/net to v0.33.0 (gh#traefik/traefik#11365) 
+    mentioned in boo#1235256 CVE-2024-45338
 
 -------------------------------------------------------------------
 Mon Dec 16 13:42:39 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
@@ -121,7 +147,7 @@ Thu Nov 21 15:44:29 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - golang-jwt has been updated to version 4.5.1 to fix CVE-2024-51744 and boo#1232940
 
-- Update to version 2.11.4
+- Update to version 2.11.14
     * acme
       - Ensure defaultGeneratedCert.main as Subject's CN
       - Update go-acme/lego to v4.20.2
