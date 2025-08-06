@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Aug  5 17:10:03 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.9.3
+  * Add support for RISC-V architecture in manylinux
+    gh#PyO3/maturin#2694
+  * pyproject.toml: bump setuptools for PEP 639
+    gh#PyO3/maturin#2698
+  * Fix PEP 639 support for source distributions
+    gh#PyO3/maturin#2704
+  * Fix relative README rewrite in source distributions
+    gh#PyO3/maturin#2705
+
+-------------------------------------------------------------------
+Mon Jul 28 08:49:03 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.9.2
+  * Respect PEP 621 dynamic fields when merging Cargo.toml metadata
+    gh#PyO3/maturin#2672
+  * Only use all_features=true in sdist when local path
+    dependencies exist
+    gh#PyO3/maturin#2674
+  * auditwheel: add manylinux_2_26 policy
+    gh#PyO3/maturin#2677
+  * Use user-specified library search paths in RUSTFLAGS in
+    auditwheel
+    gh#PyO3/maturin#2676
+  * pyproject.toml: add license-files
+    gh#PyO3/maturin#2690
+  * Update manylinux/musllinux policies to the latest main
+    gh#PyO3/maturin#2693
+  * Fix PEP 639 implementation, use License-Expression over License
+    gh#PyO3/maturin#2695
+
+-------------------------------------------------------------------
 Fri Jul 11 10:58:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
