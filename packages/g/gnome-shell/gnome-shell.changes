@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug  4 06:14:34 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.4:
+  + Fix taking interactive screenshots via D-Bus.
+  + Fix pointer scaling glitches in magnifier.
+  + Fix drawing glitch in sliders in RTL locales.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Jun 29 17:27:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.3:

@@ -2534,4 +2534,17 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment></comment>
     <requestid>1289813</requestid>
   </revision>
+  <revision rev="276" vrev="1">
+    <srcmd5>271b680a20626448802fca9c1d42cd72</srcmd5>
+    <version>48.4</version>
+    <time>1754483553</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 48.4:
+  + Fix taking interactive screenshots via D-Bus.
+  + Fix pointer scaling glitches in magnifier.
+  + Fix drawing glitch in sliders in RTL locales.
+  + Misc. bug fixes and cleanups.
+  + Updated translations. (forwarded request 1297383 from iznogood)</comment>
+    <requestid>1297632</requestid>
+  </revision>
 </revisionlist>
