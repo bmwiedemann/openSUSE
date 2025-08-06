@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  5 07:37:53 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.20
+  * Fixed a crash when passing large invalid coordinates to
+    SDL_BlitSurfaceScaled()
+  * Fixed doubled mouse wheel events on X11
+  * Fixed doubled SDL_EVENT_GAMEPAD_ADDED events for controllers
+    with automatic gamepad mappings
+
+-------------------------------------------------------------------
 Mon Jul 14 20:37:59 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.18
