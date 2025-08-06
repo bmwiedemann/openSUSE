@@ -2,6 +2,7 @@
 # spec file for package pinentry
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +23,11 @@
 %if "%{flavor}" != ""
 %define nsuffix -%{flavor}
 %endif
-
-%bcond_without fltk
-%bcond_without efl
 %ifarch ppc
 %bcond_with efl
 %endif
-
+%bcond_without fltk
+%bcond_without efl
 Name:           pinentry%{?nsuffix}
 Version:        1.3.2
 Release:        0
@@ -43,26 +42,29 @@ Source1:        https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-%{version}.ta
 Source2:        pinentry.keyring
 Source3:        pinentry
 Patch1:         pinentry-0.7.2-gtk+-2.4.diff
-BuildRequires:  libassuan-devel >= 2.1.0
-BuildRequires:  libgpg-error-devel >= 1.16
-BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(gpg-error) >= 1.16
+BuildRequires:  pkgconfig(libassuan) >= 2.1.0
+BuildRequires:  pkgconfig(ncursesw)
 Provides:       pinentry-dialog
 %if "%{flavor}" == "gui"
-%if %{with fltk}
-BuildRequires:  fltk-devel >= 1.3
-%endif
-BuildRequires:  pkgconfig(Qt6Core)
-BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Core) >= 6.4.0
+BuildRequires:  pkgconfig(Qt6Gui) >= 6.4.0
 BuildRequires:  pkgconfig(Qt6Test)
-BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Widgets) >= 6.4.0
 BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gcr-base-3)
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.12.0
 BuildRequires:  pkgconfig(libsecret-1)
+%if %{with fltk}
+BuildRequires:  fltk-devel >= 1.3
+%endif
 %if %{with efl}
 BuildRequires:  pkgconfig(efl)
+%endif
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc12-c++
 %endif
 %endif
 
@@ -170,6 +172,10 @@ export CFLAGS CXXFLAGS LDFLAGS
 # moc-qt6 qt/pinentrydialog.h > qt/pinentrydialog.moc
 # moc-qt6 qt/pinentryconfirm.h > qt/pinentryconfirm.moc
 
+%if 0%{?suse_version} < 1600
+export CXX=g++-12
+%endif
+
 # build gui version with libsecret (bnc#934214)
 mkdir gui
 cd gui
@@ -235,11 +241,6 @@ cd ..
 rm -rf %{buildroot}%{_bindir}/pinentry
 install -p -m 755 -D %{SOURCE3} %{buildroot}%{_bindir}/pinentry
 
-%post
-%install_info --info-dir=.%{_infodir} .%{_infodir}/pinentry.info.gz
-
-%postun
-%install_info_delete --info-dir=.%{_infodir} .%{_infodir}/pinentry.info.gz
 %endif
 
 %if "%{flavor}" == "gui"
@@ -278,7 +279,6 @@ install -p -m 755 -D %{SOURCE3} %{buildroot}%{_bindir}/pinentry
 %{_datadir}/pixmaps/pinentry.png
 
 %else
-
 %files
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
