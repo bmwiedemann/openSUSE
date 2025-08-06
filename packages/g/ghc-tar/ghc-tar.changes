@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  4 20:52:10 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update tar to version 0.6.4.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat Mar  1 15:08:00 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update tar to version 0.6.4.0 revision 1.
