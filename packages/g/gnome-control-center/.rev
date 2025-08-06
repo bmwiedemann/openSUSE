@@ -2395,4 +2395,16 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1289799</requestid>
   </revision>
+  <revision rev="271" vrev="1">
+    <srcmd5>2532bbf29aa3b526b590747747177c20</srcmd5>
+    <version>48.4</version>
+    <time>1754483565</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 48.4:
+  + Online Accounts: Disable markup in toasts for displaying URLs
+    properly
+  + Power: Move general section above &quot;Power Saving&quot;
+  + Updated translations. (forwarded request 1297446 from dimstar)</comment>
+    <requestid>1297634</requestid>
+  </revision>
 </revisionlist>
