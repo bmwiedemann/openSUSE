@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 05 06:06:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.15.5:
+  * fix(tasks): yellow color in log
+
+-------------------------------------------------------------------
 Thu Jul 24 10:40:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.15.4 (no releases between 2.15.0 and this

@@ -1,7 +1,7 @@
 #
 # spec file for package semaphore
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           semaphore
-Version:        2.15.4
+Version:        2.15.5
 Release:        0
 Summary:        Modern UI for Ansible
 License:        MIT
