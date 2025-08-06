@@ -1,7 +1,9 @@
 -------------------------------------------------------------------
 Tue Aug  5 00:25:23 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
-- Update to version 2.48.5 (boo#1247562 boo#1247563 boo#1247564):
+- Update to version 2.48.5 (boo#1247562 boo#1247563 boo#1247564
+  boo#1247595 boo#1247596 boo#1247597 boo#1247598 boo#1247599
+  boo#1247600):
   + Fix several crashes.
   + Security fixes: CVE-2025-31273, CVE-2025-31278, CVE-2025-43211,
     CVE-2025-43212, CVE-2025-43216, CVE-2025-43227, CVE-2025-43228,

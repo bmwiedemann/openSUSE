@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Aug 01 12:25:22 UTC 2025 - david.anes@suse.com
+
+- Update to version 2.3.2:
+  * cli: change the default for --wrap-process on mac to session
+  * Manpage and completions
+  * chore(deps): bump softprops/action-gh-release from 2.0.4 to 2.2.2 (#928)
+  * remove unused dep lint from CLI due to features
+  * doc: add changelog for #908, #929, #930
+  * Use distinct `WATCHEXEC_LOG` logging filter env variable (#926)
+  * Remove unused dependencies (#930)
+  * Remove ignore-files dependency from watchexec (#929)
+  * package documentation update (#917)
+  * fix(ignore-files) dynamically create ignore entries when calling `add_globs()` and `add_file()` (#908)
+  * add install command
+  * add test tool readme
+  * use the prebuilt man and completions on release
+  * deps: update all
+  * deps: replace once-cell with std
+  * deps: replace is-terminal with std
+  * deps: update gix
+  * cross doesn't work on arm runners
+  * don't use cross for native musl
+  * omit internal things from changelog
+  * add release-notes script
+  * run linux arm builds on arm
+  * feat(cli): add --socket option for listenfd integration (#905)
+  * tweak(cli): don’t deprecate zero-value unitless time spans
+  * style: erase more warnings on windows
+  * doc(cli): manually order flags within sections
+  * doc(cli): unmark --filter-prog as experimental
+  * doc(cli): update completions and manpage
+  * test(bosion): update tests and add clap test to ci
+  * feat(cli): --only-emit-events implies --emit-events-to=json-stdio
+  * style: clear a few warnings
+  * revert: "test(supervisor): use downcasting to avoid conditional compilation in CommandState"
+  * refactor(cli): split debugging options from args
+  * refactor(cli): split output options from args
+  * refactor(cli): split events options from args
+  * refactor(cli): split command options from args
+  * refactor(cli): split filtering options from args
+  * feat(cli): stabilise --filter-prog programs
+  * Create FUNDING.yml
+  * fmt: autoformat
+  * test(supervisor): use downcasting to avoid conditional compilation in CommandState
+  * style: improve lint reasons and ignore some useless ones
+  * deps(ignore-files): use correct MSRV of 1.70
+  * deps(supervisor): upgrade process-wrap to 8.1.0
+  * deps(supervisor): use correct MSRV of 1.64
+  * style: apply autofixable clippy lints
+  * repo: move non-standard .clippy-lints to the new [lints] Cargo.toml section
+  * repo: add git-cliff config
+  * tests: remove unused TaggedHarness trait (#870)
+  * chore: Release
+  * Make project origin absolute (#887)
+
+-------------------------------------------------------------------
 Thu Oct 31 08:33:03 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
 
 - Update to version 2.2.0:

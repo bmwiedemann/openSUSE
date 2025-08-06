@@ -101,4 +101,12 @@
   * Full changelog for breaking changes in 2.0.0: https://github.com/watchexec/watchexec/releases/tag/v2.0.0</comment>
     <requestid>1220044</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3d1b5e25b216428328d6654e351859f1</srcmd5>
+    <version>2.3.2</version>
+    <time>1754496916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297942</requestid>
+  </revision>
 </revisionlist>

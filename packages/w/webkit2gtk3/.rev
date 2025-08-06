@@ -1969,4 +1969,12 @@ don't affect Linux. (forwarded request 1226975 from mgorse)</comment>
     <comment>- Update to version 2.48.5 (boo#1247562 boo#1247563 boo#1247564) (forwarded request 1297592 from mgorse)</comment>
     <requestid>1297635</requestid>
   </revision>
+  <revision rev="226" vrev="2">
+    <srcmd5>79087b868458a35733a5ac4dd1fcd1d1</srcmd5>
+    <version>2.48.5</version>
+    <time>1754496916</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297951</requestid>
+  </revision>
 </revisionlist>
