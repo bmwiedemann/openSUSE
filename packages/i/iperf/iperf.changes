@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 04 16:53:44 CEST 2025 - Arvin Schnell <aschnell@suse.com>
+
+- update to 3.19.1:
+  * SECURITY NOTE: Thanks to Han Lee with Apple Information
+    Security for finding and reporting several memory errors
+  * off-by-one heap overflow has been fixed in authentication
+    (bsc#1247519, CVE-2025-54349, ESNET-SECADV-2025-0003)
+  * assert in authentication has been removed
+    (bsc#1247520, CVE-2025-54350, ESNET-SECADV-2025-0002)
+  * a buffer overflow in the --skip-rx-copy option for zerocopy
+    has been fixed (bsc#1247522, CVE-2025-54351,
+    ESNET-SECADV-2025-0001)
+
+-------------------------------------------------------------------
 Wed May 21 16:25:34 UTC 2025 - Aeneas Jaißle <aj@ajaissle.de>
 
 - update to 3.19
@@ -580,4 +594,3 @@ Fri Aug 27 18:18:45 UTC 2010 - reddwarf@opensuse.org
 Tue Mar 30 13:03:23 UTC 2010 - poletti.marco@gmail.com
 
 - Initial package, version 2.0.4
-

@@ -465,4 +465,12 @@ from the original iperf. These include, for example, a zero-copy mode and</comme
 </comment>
     <requestid>1279942</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>3c849172eba217541a86d164b31ee7be</srcmd5>
+    <version>3.19.1</version>
+    <time>1754483593</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297697</requestid>
+  </revision>
 </revisionlist>
