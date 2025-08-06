@@ -1,4 +1,226 @@
 -------------------------------------------------------------------
+Wed Aug 06 12:58:28 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.54.1:
+  * Stop updating Jesse's homebrew tap
+  * Create a user-specific temp dir to avoid permission problems on multi-user machines
+  * Updated Fedora section in the README.md file.
+  * README.md: Update Sponsors
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.24 matching go.mod
+
+-------------------------------------------------------------------
+Wed Aug 06 12:54:49 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.54.0:
+  * Update translations from Crowdin
+  * Add breaking changes notice about hunk mode being the default now
+  * Cleanup: whitespace
+  * Show hint about hunk staging mode being the default now, and how to switch to line mode
+  * Cleanup: rely on zero values for initialization
+  * Enable hunk staging mode by default
+  * Change the "toggle hunk selection" binding description to be dynamic
+  * Add support for dynamic binding descriptions
+  * Add a GetShortDescription() method to Binding
+  * Cleanup: better receiver name
+  * Remove the kill package dependency
+  * Close the pty instead of killing the process for runAndDetectCredentialRequest
+  * Don't kill processes in RunAndProcessLines
+  * Don't kill tasks when we no longer need them
+  * Close a task's stdout pipe when we are done with it
+  * Create temp directories inside a "lazygit" folder rather than top-level in /tmp
+  * Don't exit after handling daemon mode
+  * Improve .gitignoring debug executables
+  * Use a better approach for determining pushed and merge statuses
+  * Change GetCommitsOptions.RefForPushedStatus to a models.Ref
+  * Move the Ref interface from gui/types to models
+  * Cleanup: remove the ignoringWarnings hack from GetMergeBase
+  * Draw divergence from base branch right-aligned in branches view
+  * refactor: use slices.Equal to simplify code
+  * Stage only tracked files when staging all in filter-by-tracked-files view
+  * Add test demonstrating the problem
+  * Make the minimum required git version a placeholder in the error text
+  * Revert "Add IsAnnotated field to models.Tag struct"
+  * Use a different way to check if a tag is annotated
+  * Add tests for tag information rendering
+  * Fix index out of bounds panic when repository has massive tag lists
+  * Move parentHashes and divergence fields before extraInfo in git log format
+  * Cleanup: use nil for empty slice
+  * Allow rewording and dropping commits in filtering mode
+  * Extract helper function for integration test
+  * Inline the OutsideFilterMode guard into every binding
+  * Show the key for focusing the main view ("[0]" by default) in the main view title prefix
+  * Fix display of panel jump keys for disabled bindings
+  * Allow focusing the main view for the status panel
+  * Move the "Focus main view" command to the global section of the keybindings menu
+  * Make LabelFromKey return an empty string for unset keys
+  * Include commands without keybinding in options menu
+  * Don't use hunk mode for added or deleted files
+  * Add a test case for a deleted file to TestParseAndFormatPlain
+  * Fix showing range diff across a rename when filtering by path
+  * Add test for range diff across rename
+  * Fix showing diffs for renamed file when filtering by path
+  * Refactor commit loading and reflog commit loading to extract shared code
+  * Always append -- to git show command
+  * Remove unnecessary setSubCommits indirection
+  * Fix showing only filtered reflog entries when filtering by path
+  * Use the non-filtered reflog for undoing
+  * Don't get reflog commits twice unnecessarily in filtering mode
+  * Cleanup: simplify git arguments for reflog loading
+  * Add test that demonstrates problem with showing filtered history of file with renames
+  * Make stash filtering work when filtering on a folder
+  * Make stash loading work in filtering mode
+  * Revert "chore: use null char as a stash entries divider during loading"
+  * Add integration test for filtering the stashes list by file path
+  * Refresh all affected scopes when entering/exiting filtering
+  * Allow passing SUB_COMMITS scope to Refresh when no subcommits view is showing
+  * Fix visual regression when exiting filtering mode
+  * Remove unnecessary golangci-lint install step from dev-container Dockerfile
+  * Remove unused script lint.sh
+  * Use a better way of pinning the version of golangci-lint
+  * Support Alt+Backspace for word deletion in text areas
+  * Fix `--amend` when the commit message is empty
+  * Add confirmation for nuking the working tree
+  * Fix `last branch` to `previous branch` in `TranslationSet.CheckoutByNameTooltip`
+  * Update cheatsheets and schema
+  * Add new command "Checkout previous branch"
+  * Fix search results being off by two lines during rebase or in divergence view
+  * Make prepareConversionArrays a little more concurrency safe
+  * Allow double-clicking suggestions
+  * Allow switching between confirmation and suggestions by clicking
+  * Extract helper function
+  * Allow scrolling background views with the mouse wheel when a popup is showing
+  * Cleanup: use FocusedView property for mouse bindings
+  * Make conditions easier to understand
+  * Exclude "." from file path suggestions
+  * Remove outdated comment
+  * Add proper double-click handling for list views
+  * Assert that only one controller can set click or render functions on a BaseContext
+  * Allow more than one controller to attach OnFocus/OnFocusLost functions
+  * Cleanup: use nil for empty slice
+  * Remove GetOnRenderToMain, GetOnFocus, and GetOnFocusLost from BaseContext
+  * Bump gocui
+  * Fix more unstable tests
+  * Fix stale main view content when entering/exiting filtering view
+  * Fix unstable tests
+  * Add a prompt for the sort order menus for branches
+  * Add tooltips for commit log menu
+  * Add configuration hints to existing tooltips
+  * Add breaking changes entry for the changed sort order for branches
+  * Add enum validation for Git.Log.Order and Git.Log.ShowGraph
+  * Un-deprecate UserConfig.Git.Log.Order and ShowGraph
+  * Move LocalBranchSortOrder and RemoteBranchSortOrder to user config
+  * Add missing validation tests
+  * Move DiffContextSize and RenameSimilarityThreshold to user config
+  * Move IgnoreWhitespaceInDiffView to user config
+  * Fix keybinding display for local branches sort order to indicate it's a menu
+  * Remove git version specific code for versions we no longer support
+  * Remove obsolete git version restrictions
+  * Remove obsolete tests
+  * Bump minimum required git version to 2.32
+  * Remove obsolete git version restriction in test
+  * Add confirmation for hard reset when there are uncommitted changes
+  * Use ConfirmIf where applicable
+  * Add convenience function ConfirmIf
+  * Remove deprecated edit configs
+  * Use non-deprecated 'OS.Open' config in OpenFile test on Windows
+  * Remove unused TranslationSet fields
+  * Fix wrong text being used in error message
+  * Remove some unused code
+  * Fix scrolling hunk into view when selecting next hunk
+  * Cleanup: remove unused method Focus from PatchExplorerContext
+  * Cleanup: fix comment
+  * Bring back files from vendor directory that we accidentally excluded
+  * Clean up .gitignore
+  * Remove the homebrew tap from the readme
+  * Make it run at 8am instead of in the middle of the night
+  * Create annotated tags
+  * Make the release workflow run only from stefanhaller's fork
+  * Set a default shell for all jobs
+  * Update goreleaser to v2
+  * README.md: Update Sponsors
+  * Remove redundant curlies
+  * Properly use sponsors PR token
+  * Use fine-grained sponsors PR token
+  * Try using PAT on sponsors CI
+  * Update the peter-evans/create-pull-request action to v7
+  * Move `if` to job level so that the entire thing doesn't run in forks
+  * Raise sponsors PRs as a draft
+  * fix: broken markdown by replace \n into <md>
+
+-------------------------------------------------------------------
+Sat Jul 05 03:08:17 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.53.0:
+  * Escape out of hunk mode only if it was turned on by the user
+  * Add user config to use hunk mode by default when entering staging view
+  * Cleanup: rename a badly named function
+  * In hunk staging mode, select blocks of changes rather than actual hunks
+  * Don't generate test list before running integration test
+  * Update translations from Crowdin
+  * Collapse selection after deleting a range of stashes
+  * Collapse selection after deleting a range of remote branches
+  * Fix collapsing the range selection after deleting branches
+  * Move to next stageable line after adding a line to a custom patch
+  * Toggle only added/deleted lines in patch building view
+  * Export PatchLine.isChange
+  * Render only + and - lines as included in a patch
+  * Auto-stash if necessary when reverting commits
+  * Remove unnecessary refresh
+  * Adjust selection after cherry-picking commits
+  * Add selection assertions to cherry-pick tests
+  * Use sync waiting status for cherry-picking
+  * Auto-stash if necessary when cherry-picking commits
+  * Remove unused text StashPrefix
+  * Use a better name for the auto-stash for moving a custom patch to index
+  * Use a better name for the auto-stash for creating a new branch
+  * Use a better name for the auto-stash for checking out a branch
+  * Use a better name for the auto-stash for undo
+  * Use abbreviated hash in undo confirmations
+  * Exclude vendor directory from linting
+  * Stage affected unstaged files when applying or reverting a patch
+  * Add tests for applying a patch when there's a modified file
+  * Drop stash when successfully unstashing files after moving patch to index
+  * Add test for moving patch to index when there's a modified file
+  * Cleanup: implement AllFilesInPatch using lo.Keys
+  * Show stash title in main view for selected stash entry
+  * Cleanup: add NewRunPtyTaskWithPrefix funxtion instead of setting Prefix manually
+  * Use async refresh rather than manual OnWorker call
+  * Change Refresh to not return an error
+  * Remove another unnecessary refresh
+  * Remove unnecessary refresh
+  * Cleanup: remove pointless error handling
+  * Fix formatting of a keyboard shortcut in the README.md
+  * Enable revive linter, and fix a bunch of warnings
+  * Enable errorlint linter, and fix warnings
+  * Enable intrange linter, and fix warnings
+  * Enable nolintlint linter, and fix warnings
+  * Update VS Code settings to enable staticcheck linter
+  * Update VS Code settings to use golangci-lint v2
+  * Update .golangci.yml to use version 2
+  * Fix warning QF1003: could use tagged switch
+  * Fix warning QF1004: could use strings.ReplaceAll instead
+  * Make stashEntryFromLine a free-standing function
+  * Fix warning ST1016: methods on the same type should have the same receiver name
+  * Fix warning ST1016: methods on the same type should have the same receiver name
+  * Provide a script to lint the whole working copy, and update make lint to use it
+  * Show tag information for selected tag
+  * Add IsAnnotated field to models.Tag struct
+  * Fix the CurrentBranchName function
+  * Cleanup: turn around error condition
+  * Add a test showing undesired branch icon at head commit
+  * Bump github.com/cloudflare/circl from 1.6.0 to 1.6.1
+  * fix: show GPG error before entering commit editor
+  * Add credential prompts for PKCS11-based SSH keys
+  * Fix DEFAULT_REMOTE_ICON character code
+  * Fix moving a custom patch from the very first commit of the history to a later commit
+  * Instantiate other mutexes by value
+  * Instantiate Mutexes's fields by value
+  * add bold style for border
+  * Add unambigious refs/ prefix to all stash references
+  * Add option to disable warning when amending last commit
+
+-------------------------------------------------------------------
 Sat Jun 07 02:45:51 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.52.0:

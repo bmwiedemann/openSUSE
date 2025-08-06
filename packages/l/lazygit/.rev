@@ -158,4 +158,41 @@ expertise with the git command line.</comment>
   * Pass common.Common to file trees instead of just the Log (forwarded request 1283763 from jfkw)</comment>
     <requestid>1283765</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>35d214bad2b10bc3071be602d69b27db</srcmd5>
+    <version>0.54.1</version>
+    <time>1754496924</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.54.1:
+  * Stop updating Jesse's homebrew tap
+  * Create a user-specific temp dir to avoid permission problems on multi-user machines
+  * Updated Fedora section in the README.md file.
+  * README.md: Update Sponsors
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.24 matching go.mod
+
+- Update to version 0.54.0:
+  * Update translations from Crowdin
+  * Add breaking changes notice about hunk mode being the default now
+  * Cleanup: whitespace
+  * Show hint about hunk staging mode being the default now, and how to switch to line mode
+  * Cleanup: rely on zero values for initialization
+  * Enable hunk staging mode by default
+  * Change the &quot;toggle hunk selection&quot; binding description to be dynamic
+  * Add support for dynamic binding descriptions
+  * Add a GetShortDescription() method to Binding
+  * Cleanup: better receiver name
+  * Remove the kill package dependency
+  * Close the pty instead of killing the process for runAndDetectCredentialRequest
+  * Don't kill processes in RunAndProcessLines
+  * Don't kill tasks when we no longer need them
+  * Close a task's stdout pipe when we are done with it
+  * Create temp directories inside a &quot;lazygit&quot; folder rather than top-level in /tmp
+  * Don't exit after handling daemon mode
+  * Improve .gitignoring debug executables
+  * Use a better approach for determining pushed and merge statuses
+  * Change GetCommitsOptions.RefForPushedStatus to a models.Ref
+  * Move the Ref interface from gui/types to models (forwarded request 1297970 from jfkw)</comment>
+    <requestid>1297971</requestid>
+  </revision>
 </revisionlist>
