@@ -893,4 +893,13 @@
     with latests MOTIS releases. (forwarded request 1293556 from iznogood)</comment>
     <requestid>1293760</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>003a6aa45041f9626bd662b00afdfb45</srcmd5>
+    <version>48.6</version>
+    <time>1754483563</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 48.6:
+  + Updated translations. (forwarded request 1297385 from iznogood)</comment>
+    <requestid>1297633</requestid>
+  </revision>
 </revisionlist>
