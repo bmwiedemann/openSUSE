@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 31 06:48:44 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Enable lldb for riscv64
+
+-------------------------------------------------------------------
 Thu Jul 17 14:09:55 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Enable openmp and lldb for loongarch64 

@@ -2399,4 +2399,13 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>1294241</requestid>
   </revision>
+  <revision rev="150" vrev="4">
+    <srcmd5>96a2e241e8319243ca20ea6447834ab7</srcmd5>
+    <version>20</version>
+    <time>1754483456</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable lldb for riscv64
+</comment>
+    <requestid>1297177</requestid>
+  </revision>
 </revisionlist>
