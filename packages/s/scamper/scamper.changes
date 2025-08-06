@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue Jul 29 15:29:39 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 20250729:
+  * scamper:                                                                                             
+    remove unused msec parameter from scamper_task_queue_done, remove
+    scamper_task_queue and scamper_task_queue_wait, removing unnecessary
+    gettimeofday calls.                                                                                  
+    rename time-based variables in event loop after their use to
+    make it more obvious what is going on
+    fix json rendering of pmtud traceroutes with a host-connected MTU
+    mismatch   
+  * throughout:           
+    switch to mostly timeval-based math to avoid division operations,
+    remove some timeval functions, add others (mul, div)
+    implement branchless comparison functions for address and time
+    comparison                                                                                           
+    speed up ipv4_prefix, ipv4_prefixhosts scamper_addr implementations
+    simplify string_nullterm and string_nullterm_char according to how
+    they are used in practice      
+    add slist_node_iter and dlist_node_iter functions to optimise a
+    common code pattern
+    add slist_to_dlist, dlist_to_slist, splaytree_to_slist, and
+    splaytree_to_dlist to reduce repeated code
+    silence warnings and errors when compiling with gcc 2.95          
+  * tests:                                                                                               
+    add unit tests for string_nullterm and string_nullterm_char   
+    expand timeval math tests by adding add, diff, inrange, mul, div     
+    tests, and more sub tests
+    expand scamper_addr tests to include cmp, human_cmp,        
+    prefix, first-bit-diff, and prefixhosts
+    expand trace tests to include a pmtud traceroute with a
+    host-connected MTU mismatch
+  * Python module:
+    make ScamperIcmpExts.ext_count be an attribute, consistent with
+    documentation
+    make ScamperTracelbNode near, far, length be attributes rather than
+    methods, consistent with documentation
+    fix sync=True do_* code paths
+    install scamper.pyi file alongside the compiled python module to
+    allow for static type checking analysis with mypy, and for code
+    completion in vscode
+  * hoiho:
+    learn ASN regexes where the operator controlling the PTR record uses
+    a prefix on the hostname (e.g., ^ipv4.de-cix.)
+  * documentation:
+    complete trace and ping warts(5) format descriptions
+  * libscamperfile:
+    bump revision because implementation (but not API) changed
+
+-------------------------------------------------------------------
+Tue Jul 29 15:28:52 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- Add script convert-changelog.sh to convert upstream changelog style to RPM style
+
+-------------------------------------------------------------------
 Tue Jul  1 08:47:20 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 20250630:

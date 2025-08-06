@@ -18,13 +18,15 @@
 
 
 Name:           scamper
-Version:        20250630
+Version:        20250729
 Release:        0
 Summary:        Parallel Internet measurement utility
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Diagnostic
 URL:            https://www.caida.org/catalog/software/scamper/
 Source:         https://www.caida.org/tools/measurement/%{name}/code/%{name}-cvs-%{version}.tar.gz
+# packaging utility to convert upstream changelog to RPM style
+Source1:        convert-changelog.sh
 BuildRequires:  libopenssl-devel
 # for the Python module
 BuildRequires:  python3 >= 3.8
@@ -139,6 +141,7 @@ popd
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 %{python3_sitelib}/scamper.so
+%{python3_sitelib}/scamper.pyi
 
 %files -n libscamperfile13
 %{_libdir}/libscamperfile.so.*
