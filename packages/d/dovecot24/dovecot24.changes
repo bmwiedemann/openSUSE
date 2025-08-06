@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  5 10:57:55 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- [SLFO:Main] [SLES16.0] Please lower the libldap2 dependency for dovecot24
+  (bsc#1247601)
+
+-------------------------------------------------------------------
 Thu Jun 26 09:18:32 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Update to actual version (Fri May 30 17:05:02 2025) in main branch to fix bsc#1245075

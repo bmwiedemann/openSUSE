@@ -85,12 +85,12 @@ BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(openssl)
 %if 0%{?suse_version} > 1500
-BuildRequires:  pkgconfig(ldap) >= 2.6.8
+BuildRequires:  pkgconfig(ldap) >= 2.5.0
 BuildRequires:  pkgconfig(mysqlclient)
 BuildRequires:  pkgconfig(pam)
 %else
 BuildRequires:  libmysqlclient-devel
-BuildRequires:  openldap2-devel >= 2.6.8
+BuildRequires:  openldap2-devel >= 2.5.0
 BuildRequires:  pam-devel
 %endif
 BuildRequires:  pkgconfig(libpq)
