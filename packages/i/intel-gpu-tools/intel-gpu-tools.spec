@@ -17,7 +17,7 @@
 
 
 Name:           intel-gpu-tools
-Version:        2.0
+Version:        2.1
 Release:        0
 Summary:        Collection of tools for development and testing of the Intel DRM driver
 License:        MIT
@@ -28,7 +28,7 @@ Source1:        https://xorg.freedesktop.org/releases/individual/app/igt-gpu-too
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
-BuildRequires:  meson
+BuildRequires:  meson >= 0.52.1
 BuildRequires:  peg
 BuildRequires:  pkgconfig
 BuildRequires:  python3-docutils
@@ -116,6 +116,7 @@ rm -v %{buildroot}%{_bindir}/code_cov_*
 %{_libdir}/libi915_perf.so.1.5
 %{_libdir}/libxe_oa.so.1.5
 %{_mandir}/man1/intel_*
+%{_mandir}/man1/lsgpu*
 %doc %{_datadir}/gtk-doc/html/igt-gpu-tools/
 
 %files devel

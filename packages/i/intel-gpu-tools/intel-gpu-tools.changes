@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Aug  3 20:43:27 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.01.
+- General changes:
+  * Bumped required meson version to 0.52.1 (Andrzej Hajda)
+  * Added man page for lsgpu. (Peter Senna Tschudin)
+- Library changes:
+  * Updated PCI ids for BMG/PTL. (Shekhar Chauhan and Kamil Konieczny)
+  * Improved kernel module un/binding. (Lucas De Marchi and Francois Dugast)
+  * Added user mode queues UMQ support for amdgpu. (Sunil Khatri)
+  * Improved Intel GPGPU compute libs. (Francois Dugast and Zbigniew Kempczyński)
+  * New configfs library. (José Expósito, Jim Shargo, Marius Vlad, Riana Tauro)
+  * Added PTL support in Xe OA libs. (Sushma Venkatesh Reddy)
+  * Improved capturing logs for child processes. (Pawel Sikora)
+- Tools changes:
+  * New tool intel_hdcp for printing HDCP info on connected outputs. (Santhosh
+    Reddy Guddati)
+  * Add support for gen10+ devices in intel_gtt (Tomita Moeko)
+  * Add support for Xe in intel_pm_rpm (Soham Purkait)
+
+-------------------------------------------------------------------
 Mon Mar 24 03:56:15 UTC 2025 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to version 2.00.
