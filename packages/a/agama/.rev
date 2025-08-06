@@ -444,4 +444,12 @@
   arbitrary script (bsc#1246702, gh#agama-project/agama#2589).</comment>
     <requestid>1295725</requestid>
   </revision>
+  <revision rev="26" vrev="26">
+    <srcmd5>89d428e1865857df5b6a95a0993a5789</srcmd5>
+    <version>0</version>
+    <time>1754483680</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1297889</requestid>
+  </revision>
 </revisionlist>
