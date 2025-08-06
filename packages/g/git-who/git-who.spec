@@ -1,7 +1,7 @@
 #
 # spec file for package git-who
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           git-who
-Version:        0.7
+Version:        1.2
 Release:        0
 Summary:        Git blame for file trees
 License:        MIT
@@ -45,7 +45,7 @@ individual files.
 
 %build
 # hash will be shortened by COMMIT_HASH:0:8 later
-COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+COMMIT_HASH=9ad01eb363ff2617b1e9da941ec708acc20a6967
 
 go build \
    -mod=vendor \

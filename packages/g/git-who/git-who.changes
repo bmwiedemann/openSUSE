@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Aug 04 13:47:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2:
+  * Features
+    - Git who now respects the mailmap file you have configured in
+      your git config, if you have one. This is in addition to any
+      .mailmap file that might exist at the repository root. (#32)
+  * Bug Fixes
+    - Fixed git pathspec exclude magic being useless without a
+      preceding include pathspec (#33)
+    - Fixed an issue that might have led to errors on Windows when
+      closing the cache file
+
+-------------------------------------------------------------------
+Mon Aug 04 13:43:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1:
+  * Features
+    - The output of git who table now uses alternate-row coloring
+      when more than a certain number of rows are displayed.
+  * Bug Fixes/Tweaks
+    - Better path handling for Windows (fixes #30 and #31)
+
+-------------------------------------------------------------------
+Tue Jul 01 10:47:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0:
+  * Features
+    - Binary release for Windows
+  * Bug Fixes/Tweaks
+    - Git Who can now handle filenames containing newline
+      characters (fixes #25)
+    - Better mailmap handling to avoid a situation where a user
+      could end up with a stale cache if they use a global mailimap
+      file
+    - Fixed a goroutine deadlock that can arise if there is an
+      error caching commits
+
+-------------------------------------------------------------------
 Mon Mar 31 05:43:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.7:
