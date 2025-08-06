@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/sirfz/tesserocr
 Source:         https://files.pythonhosted.org/packages/source/t/tesserocr/tesserocr-%{version}.tar.gz
+#PATCH-FIX-OPENSUSE unpin-cython.patch
+Patch:          unpin-cython.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module devel}
@@ -55,7 +57,7 @@ execution when used with Python's threading module by releasing the
 GIL while processing an image in tesseract.
 
 %prep
-%setup -q -n tesserocr-%{version}
+%autosetup -p1 -n tesserocr-%{version}
 
 %build
 %pyproject_wheel

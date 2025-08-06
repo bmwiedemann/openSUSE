@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  4 14:15:13 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- add unpin-cython.patch to unpin cython version
+
+-------------------------------------------------------------------
 Mon Mar 10 15:10:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.8.0
