@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Aug 05 06:57:04 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.90.3:
+  * fix: fixed verification endpoint and verification logic for brand fetch (#3470)
+  * Restore link field in Slack Continuous Source protobuf message (#4360)
+  * Improved and fixed A&B detectors pattern test cases (#4359)
+  * [detector] feat: added rootly detector (#3414)
+  * Improve LarkSuite Detector Accuracy and Error Handling (#4334)
+  * Do not quit TUI, if 'q' is pressed on specific pages (#4356)
+  * Missed Smartsheet Tokens (#4358)
+  * removed duplicate detector entries from engine defaults (#4357)
+  * fix(deps): update module github.com/docker/docker to v28.3.3+incompatible [security] (#4355)
+  * updated github v1 detector to ignore matches with known common prefixes (#4329)
+  * Fixed Aha detector (#4354)
+  * Scan GitLab Groups (#4320)
+  * [Detector]-Detector for tableau personal access token (#4261)
+  * fix test (#4350)
+  * Regenerate protobufs with the correct protoc (etc) version (#4349)
+  * feat: add webexbot support (#4322)
+  * fix(deps): update module github.com/brianvoe/gofakeit/v7 to v7.3.0 (#4343)
+  * updated defaults.go references (#4344)
+  * fix(deps): update module github.com/aws/smithy-go to v1.22.5 (#4339)
+  * fix(deps): update module github.com/golang-jwt/jwt/v5 to v5.2.3 (#4341)
+  * fix(deps): update module github.com/couchbase/gocb/v2 to v2.10.1 (#4340)
+  * fix(deps): update aws-sdk-go-v2 monorepo (#4338)
+  * fix(deps): update module cloud.google.com/go/secretmanager to v1.15.0 (#4310)
+  * chore(deps): update sigstore/cosign-installer action to v3.9.2 (#4337)
+  * (fix) Git Repo Cloning Error  (#4223)
+  * fix(deps): update module cloud.google.com/go/storage to v1.56.0 (#4311)
+  * arranged the detectors in alphabetical order (#4335)
+  * Support sub-unit resumption in filesystem scans (#4325)
+  * Refactored Gitlab Detectors (#4323)
+
+-------------------------------------------------------------------
 Tue Jul 29 07:34:34 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 3.90.2:
