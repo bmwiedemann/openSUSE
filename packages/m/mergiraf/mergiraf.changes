@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Thu Jul 31 12:32:19 UTC 2025 - Andrei Dziahel <develop7@develop7.info>
+
+- drop mgf_dev binary
+- Update to version 0.13.0:
+  * Features
+    + (verilog) Switch to tree-sitter-systemverilog (#514) by @come_744
+    + (Python) Merge decorated methods and inner classes (#522) by @wetneb
+    + (Haskell) More commutative parents and signatures (#488) by @maralorn
+    + Add support for GNU Make (#510) by @twz123
+  * Bug Fixes
+    + (rust) Add signature to self in use_declaration (#505) by @ada4a
+    + Improve detection of Jujutsu usage (#513) by @senekor
+    + (tests) Correct python/working/all case (#524) by @wetneb
+  * Other
+    + Add cargo shortcuts for the subcommands of mergiraf and mgf_dev (#499) by @ada4a
+  * Refactor
+    + Add submodules to merged_tree.rs (#497) by @ada4a
+    + (MergedTree) Take &Leader in methods to avoid derefs (#498) by @ada4a
+    + (RevisionNESet) Use impl Deref<Target=RevisionSet> 
+      instead of forwarding methods (#501) by @ada4a
+    + (RevisionSet) Misc changes to iter and any (#502) by @ada4a
+    + (mgf_dev) Only match on args.command once (#517) by @ada4a
+    + (fallback_to_git_merge_file) Some minor clean-up (#518) by @ada4a
+    + Simplify ParsedMerge::rev_range_to_merged_range (#525) by @wetneb
+  * Documentation
+    + Update rotten link (#504) by @ada4a
+    + Use XDG paths for git directories (#508) by @jadeprime
+  * Performance
+    + (ParsedMerge::is_empty) Don't render the whole merge just to see 
+      if it's empty (#526) by @ada4a
+  * Testing
+    + (lang_profile) Introduce helper to reduce (some) 
+      boilerplate (#506) by @ada4a
+    + Minimal environment when invoking git (#512) by @twz123
+  * Miscellaneous Tasks
+    + (lints) Also enable in mgf_dev (#500) by @ada4a
+    + (flake) Update (#515) by @ada4a
+  * New contributors
+    + @twz123 made their first contribution in #510
+    + @jadeprime made their first contribution in #508
+
+- Update to version 0.12.1
+  * Bug Fixes
+    + Language detection by full filenames (#490) by @wetneb
+    + Include full filenames in languages list (#493) by @wetneb
+  * Refactor
+    + Move priority_list to under tree_matcher (#495) by @ada4a
+  * Miscellaneous Tasks
+    + Update testing helpers to support test cases without extensions (#486) by @wetneb
+    + Update dependencies (#483) by @wetneb
+    + Fix crates.io upload (#494) by @wetneb
+    + (cli/solve) Make --keep a hidden alias of --stdout (#496) by @ada4a
+
+- Update to version 0.12.0
+  * Features
+    + (Python) Let elements of __all__ = [ … ] statements commute (#453) by @wetneb
+    + (Haskell) Let type classes commute in deriving tuples (#454) by @wetneb
+    + Support specifying full file names in language profiles (#465) by @wetneb
+    + Support for go.mod files (#474) by @wetneb
+    + Support for go.sum files (#476) by @wetneb
+  * Bug Fixes
+    + Add missing string signature to avoid duplicate elements in Python's __all__ (#455) by @wetneb
+    + Check for Jujutsu repo at conflict location (#462) by @senekor
+    + (PHP) Don't commutatively merge comments in declaration_lists (#459) by @wetneb
+    + Ignore empty nodes in AstNode::isomorphic_to_source (#480) by @wetneb
+    + Escape newlines in ascii art representation of trees (#481) by @wetneb
+  * Refactor
+    + Prepare for #448 (#452) by @ada4a
+    + Use let-chains all over the place (#470) by @ada4a
+  * Documentation
+    + (usage) Decribe merge results in example-repo (#446) by @ada4a
+  * Testing
+    + Specify the language via a dedicated file (#464) by @wetneb
+    + Update helpers to support explicit language setting (#475) by @wetneb
+    + Reorganize parsed_merge tests (#472) by @ada4a
+    + Add missing tests for go.mod support (#477) by @wetneb
+  * Miscellaneous Tasks
+    + Remove extra newlines between changelog items (#457) by @wetneb
+    + Move mgf_dev to a separate package (#458) by @senekor
+    + Add CONTRIBUTING.md (#438) by @wetneb
+    + Warn of default_trait_access (#471) by @ada4a
+    + (go.mod) Update parser to 0.4.0 (#478) by @wetneb
+    + Use Docker image with Rust already installed (#468) by @wetneb
+
+- Mergiraf 0.11.0
+* Features
+  + OCaml support (#426) by @thufschmitt
+  + Elixir support (#427) by @noaccOS
+  + Haskell support (#429) by @maralorn
+  + (Haskell) Make record updates commutative and add signatures (#431) by @maralorn
+  + (Rust) Support reordering declarations with attributes (#428) by @wetneb
+  + Resolve file revisions from git commits (#434) by @xmo
+* Bug Fixes
+  + Improve error reporting when working copy is not in a conflict state (#423) by @xmo
+* Other
+  + Update (#442) by @ada4a
+* Documentation
+  + Small improvements to "Adding a language" (#430) by @wetneb
+  + (usage) Fix typo (#432) by @ada4a
+* Performance
+  + Call checkout-index just once per file (#424) by @xmo
+* Miscellaneous Tasks
+  + Update Rust grammar to 0.7 (#435) by @wetneb
+  + Fix formatting for CI to pass again (#444) by @wetneb
+  + Make sure tests pass independently from the environment (#445) by @wetneb
+  + Update tree-sitter-rust-orchard to 0.10.0 (#447) by @wetneb
+  + Automate the release process (#433) by @wetneb
+
+- Mergiraf 0.10.0
+  * New languages
+    + INI files (.ini) by @wetneb (#404)
+    + HashiCorp Language (.hcl, .tf, .tfvars) by @maunzCache (#210)
+  * Bug fixes
+    + Be more careful when trimming newlines around the end of nodes, by @wetneb (#421)
+
+- Mergiraf 0.9.0
+  * New features
+    + Support for nested languages (#403 by @wetneb). This makes it possible to 
+      solve conflicts in different languages than the file's source, when 
+      they are embedded through code blocks (for instance in Markdown). 
+      This feature was sponsored by Stainless.
+  * New languages
+    + Markdown (.md) (#396 by @wetneb)
+  * Documentation
+    + Recommend to use * merge=mergiraf in gitattributes (#384 by @wetneb)
+  * Performance
+    + Avoid filling up MergedText with empty strings (#402 by @wetneb)
+
+-------------------------------------------------------------------
 Sat May 17 16:26:30 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.8.1
