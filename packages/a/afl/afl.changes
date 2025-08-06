@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 30 07:23:39 UTC 2025 - Max Lin <mlin@suse.com>
+
+- Fix Leap 16.0 build
+  * no dummy gcc-devel in SLFO
+
+-------------------------------------------------------------------
 Wed Jul  9 19:39:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add loongarch64 to the list of 32-bit architectures

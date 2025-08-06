@@ -41,7 +41,7 @@ BuildRequires:  (clang >= 17)
 %ifarch x86_64
 BuildRequires:  gcc-32bit
 %endif
-%if %?suse_version >= 1550
+%if %{?suse_version} != 1600 && %{?suse_version} >= 1550
 BuildRequires:  gcc-devel
 %endif
 BuildRequires:  lld
@@ -49,7 +49,11 @@ BuildRequires:  llvm-devel >= 17
 BuildRequires:  python3-devel
 Requires:       lld
 
+%if %{?suse_version} == 1600
+%define gccver %gcc_version
+%else
 %define gccver %(rpm -q --qf '%%{VERSION}' gcc)
+%endif
 %requires_eq    gcc%{gccver}
 
 %package devel
