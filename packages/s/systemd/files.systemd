@@ -110,6 +110,7 @@
 %{_bindir}/journalctl
 %{_bindir}/localectl
 %{_bindir}/loginctl
+%{_bindir}/run0
 %{_bindir}/systemctl
 %{_bindir}/systemd-ac-power
 %{_bindir}/systemd-analyze
@@ -152,6 +153,7 @@
 %{_datadir}/bash-completion/completions/localectl
 %{_datadir}/bash-completion/completions/loginctl
 %{_datadir}/bash-completion/completions/portablectl
+%{_datadir}/bash-completion/completions/run0
 %{_datadir}/bash-completion/completions/systemctl
 %{_datadir}/bash-completion/completions/systemd-analyze
 %{_datadir}/bash-completion/completions/systemd-cat
@@ -226,6 +228,7 @@
 %{_datadir}/zsh/site-functions/_journalctl
 %{_datadir}/zsh/site-functions/_localectl
 %{_datadir}/zsh/site-functions/_loginctl
+%{_datadir}/zsh/site-functions/_run0
 %{_datadir}/zsh/site-functions/_sd_hosts_or_user_at_host
 %{_datadir}/zsh/site-functions/_sd_outputmodes
 %{_datadir}/zsh/site-functions/_sd_unit_files
@@ -257,6 +260,7 @@
 %{_mandir}/man1/localectl.1.gz
 %{_mandir}/man1/loginctl.1.gz
 %{_mandir}/man1/mount.ddi.1.gz
+%{_mandir}/man1/run0.1.gz
 %{_mandir}/man1/systemctl.1.gz
 %{_mandir}/man1/systemd-ac-power.1.gz
 %{_mandir}/man1/systemd-analyze.1.gz
@@ -450,6 +454,7 @@
 %{_modprobedir}/systemd.conf
 %{_pam_moduledir}/pam_systemd.so
 %{_pam_moduledir}/pam_systemd_loadkey.so
+%{_pam_vendordir}/systemd-run0
 %{_pam_vendordir}/systemd-user
 %{_sbindir}/halt
 %{_sbindir}/init

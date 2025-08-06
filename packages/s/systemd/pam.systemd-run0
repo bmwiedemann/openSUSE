@@ -3,6 +3,10 @@
 #
 # Used by run0 session.
 
-account  include        common-account
-session  optional       pam_keyinit.so force revoke
-session  include        common-session
+account  include     common-account
+
+session  required    pam_selinux.so close
+session  required    pam_selinux.so open
+session  required    pam_loginuid.so
+session  optional    pam_keyinit.so force revoke
+session  include     common-session

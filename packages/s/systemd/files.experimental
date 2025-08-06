@@ -5,11 +5,13 @@
 # the ssh proxy will likely be promoted to systemd-container
 %dir %{_distconfdir}/ssh
 %dir %{_distconfdir}/ssh/ssh_config.d
+%if %{without bootstrap}
 %dir %{_prefix}/lib/pcrlock.d
 %dir %{_prefix}/lib/pcrlock.d/400-secureboot-separator.pcrlock.d
 %dir %{_prefix}/lib/pcrlock.d/500-separator.pcrlock.d
 %dir %{_prefix}/lib/pcrlock.d/700-action-efi-exit-boot-services.pcrlock.d
 %dir %{_sysconfdir}/systemd/oomd.conf.d
+%endif
 %if %{with upstream}
 %dir %{_unitdir}/factory-reset.target.wants
 %endif
@@ -19,17 +21,18 @@
 %if %{with upstream}
 %dir %{_unitdir}/storage-target-mode.target.wants
 %endif
+%if %{without bootstrap}
 # Main config files have been replaced in favor of drop-ins.
 %ghost %{_sysconfdir}/systemd/oomd.conf
 %{_bindir}/oomctl
-%{_bindir}/run0
+%endif
+%if %{without bootstrap}
 %if %{with upstream}
 %{_bindir}/systemd-pty-forward
 %endif
 %{_bindir}/systemd-vmspawn
 %{_bindir}/updatectl
 %{_datadir}/bash-completion/completions/oomctl
-%{_datadir}/bash-completion/completions/run0
 %{_datadir}/bash-completion/completions/systemd-vmspawn
 %{_datadir}/dbus-1/interfaces/org.freedesktop.oom1.Manager.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.portable1.Image.xml
@@ -43,10 +46,10 @@
 %{_datadir}/dbus-1/system.d/org.freedesktop.sysupdate1.conf
 %{_datadir}/polkit-1/actions/org.freedesktop.sysupdate1.policy
 %{_datadir}/zsh/site-functions/_oomctl
-%{_datadir}/zsh/site-functions/_run0
+%endif
 %{_distconfdir}/ssh/ssh_config.d/20-systemd-ssh-proxy.conf
+%if %{without bootstrap}
 %{_mandir}/man1/oomctl.1.gz
-%{_mandir}/man1/run0.1.gz
 %{_mandir}/man1/systemd-keyutil.1.gz
 %{_mandir}/man1/systemd-measure.1.gz
 %if %{with upstream}
@@ -120,7 +123,8 @@
 %if %{with upstream}
 %{_mandir}/man8/systemd-validatefs@.service.8.gz
 %endif
-%{_pam_vendordir}/systemd-run0
+%endif
+%if %{without bootstrap}
 %{_prefix}/lib/pcrlock.d/350-action-efi-application.pcrlock
 %{_prefix}/lib/pcrlock.d/400-secureboot-separator.pcrlock.d/300-0x00000000.pcrlock
 %{_prefix}/lib/pcrlock.d/400-secureboot-separator.pcrlock.d/600-0xffffffff.pcrlock
@@ -150,7 +154,9 @@
 %if %{with upstream}
 %{_systemd_util_dir}/systemd-ssh-issue
 %endif
+%endif
 %{_systemd_util_dir}/systemd-ssh-proxy
+%if %{without bootstrap}
 %{_systemd_util_dir}/systemd-storagetm
 %{_systemd_util_dir}/systemd-sysupdate
 %{_systemd_util_dir}/systemd-sysupdated
@@ -167,9 +173,11 @@
 %{_systemd_util_dir}/user/systemd-vmspawn@.service
 %{_systemdgeneratordir}/systemd-factory-reset-generator
 %endif
+%endif
 # ssh-generator: in the futur to be moved to the main package
 %{_systemdgeneratordir}/systemd-ssh-generator
 %{_systemdgeneratordir}/systemd-tpm2-generator
+%if %{without bootstrap}
 %{_sysusersdir}/systemd-oom.conf
 %{_unitdir}/dbus-org.freedesktop.sysupdate1.service
 %if %{with upstream}
@@ -255,4 +263,5 @@
 %{_unitdir}/systemd-vmspawn@.service
 %if %{with upstream}
 /usr/etc/profile.d/80-systemd-osc-context.sh
+%endif
 %endif

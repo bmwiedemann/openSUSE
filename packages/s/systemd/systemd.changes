@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Aug  4 08:54:26 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Move run0 from the experimental sub-package to the main package
+
+-------------------------------------------------------------------
+Mon Aug  4 07:44:57 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Import commit 835af70f4e4fab4746319145d9fdb1a01e33f4c8
+
+  835af70f4e core/cgroup: Properly handle aborting a pending freeze operation
+  1f96f9da13 detect-virt: add bare-metal support for GCE (bsc#1244449)
+
+----------------------------------------------------------------------------
+Mon Aug  2 11:21:30 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Update pam.systemd-run0 (in the experimental sub-package)
+
+----------------------------------------------------------------------------
+Sat Aug  2 10:40:37 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Build the experimental package for the mini flavor too
+
+  Some tools in the experimental sub-package cannot be disabled at compile
+  time. Previously, these tools were manually deleted after installation to
+  prevent rpmbuild from reporting unpackaged files. However, as the number of such
+  tools continues to grow, it's simpler to include them in the mini-experimental
+  sub-package.
+
+-------------------------------------------------------------------
 Thu Jul 31 14:59:23 UTC 2025 - Franck Bui <fbui@suse.com>
 
 - Remove the script used to help migrating the language and locale settings

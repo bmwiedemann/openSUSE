@@ -43,7 +43,9 @@
 %endif
 %{_unitdir}/systemd-mountfsd.service
 %{_unitdir}/systemd-mountfsd.socket
+%endif
 %{_unitdir}/systemd-nspawn@.service
+%if %{without bootstrap}
 %{_unitdir}/systemd-nsresourced.service
 %{_unitdir}/systemd-nsresourced.socket
 %endif

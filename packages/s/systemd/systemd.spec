@@ -33,7 +33,7 @@
 %if %{without obs_service_set_version}
 %define systemd_version    257.7
 %define systemd_release    0
-%define archive_version    +suse.20.gc3bcfc9558
+%define archive_version    +suse.22.g835af70f4e
 %endif
 
 %define _testsuitedir %{_systemd_util_dir}/tests
@@ -73,7 +73,6 @@
 %endif
 %bcond_without  selinux
 %bcond_without  sysvcompat
-%bcond_without  experimental
 %bcond_without  testsuite
 %endif
 
@@ -662,19 +661,15 @@ Requires:       pkgconfig(libarchive)
 Requires:       pkgconfig(libfido2)
 Requires:       pkgconfig(libidn2)
 Requires:       pkgconfig(libkmod)
-%if %{with experimental}
 Requires:       pkgconfig(libqrencode)
 Requires:       pkgconfig(pwquality)
-%endif
 Requires:       pkgconfig(tss2-esys)
 Requires:       pkgconfig(tss2-mu)
 Requires:       pkgconfig(tss2-rc)
 %if %{with sd_boot}
 Requires:       systemd-boot
 %endif
-%if %{with experimental}
 Requires:       systemd-experimental
-%endif
 %if %{with homed}
 Requires:       systemd-homed
 %endif
@@ -713,12 +708,15 @@ For more details on the available options to run the extended testsuite, please
 refer to %{_testsuitedir}/integration-tests/README.testsuite.
 %endif
 
-%if %{with experimental}
 %package experimental
 Summary:        Experimental systemd features
 License:        LGPL-2.1-or-later
 Requires:       %{name} = %{version}-%{release}
 %systemd_requires
+%if %{with bootstrap}
+Conflicts:      systemd-experimental
+Provides:       systemd-experimental = %{version}-%{release}
+%endif
 
 %description experimental
 This package contains optional extra services that are considered as previews
@@ -734,11 +732,10 @@ Components that turn out to be stable and considered as fully supported will be
 merged into the main package or moved into a dedicated package.
 
 Currently this package contains the following features : bsod, oomd, measure,
-pcrextend, pcrlock, run0, ssh-generator, storagetm, systemd-vmspawn, sysupdate,
+pcrextend, pcrlock, ssh-generator, storagetm, systemd-vmspawn, sysupdate,
 tpm2-setup and userwork.
 
 Have fun (at your own risk).
-%endif
 
 %if %{with sd_boot}
 %package ukify
@@ -898,18 +895,13 @@ for the C APIs.
         -Ddns-over-tls=%{when resolved openssl} \
         -Dresolve=%{when resolved} \
         \
-        -Doomd=%{when experimental} \
-%if %{with experimental}
+        -Doomd=%{when_not bootstrap} \
         -Dsshdconfdir=%{_distconfdir}/ssh/sshd_config.d \
         -Dsshconfdir=%{_distconfdir}/ssh/ssh_config.d \
-%else
-        -Dsshdconfdir=no \
-        -Dsshconfdir=no \
-%endif
         -Dsshdprivsepdir=no \
-        -Dsysupdate=%{enabled_with experimental} \
-        -Dsysupdated=%{enabled_with experimental} \
-        -Dvmspawn=%{enabled_with experimental} \
+        -Dsysupdate=%{when_not bootstrap} \
+        -Dsysupdated=%{disabled_with bootstrap} \
+        -Dvmspawn=%{disabled_with bootstrap} \
         \
         -Dtests=%{when testsuite unsafe} \
         -Dinstall-tests=%{when testsuite} \
@@ -962,9 +954,7 @@ rm -f %{buildroot}%{_sysconfdir}/systemd/system/default.target
 
 # Replace upstream PAM configuration files with openSUSE ones.
 install -m0644 -D %{SOURCE8} %{buildroot}%{_pam_vendordir}/systemd-user
-%if %{with experimental}
 install -m0644 -D %{SOURCE9} %{buildroot}%{_pam_vendordir}/systemd-run0
-%endif
 
 # Don't enable wall ask password service, it spams every console (bnc#747783).
 rm %{buildroot}%{_unitdir}/multi-user.target.wants/systemd-ask-password-wall.path
@@ -1118,11 +1108,6 @@ tar -cO \
 %else
 rm -f  %{buildroot}%{_journalcatalogdir}/*
 rm -fr %{buildroot}%{_docdir}/systemd
-rm -f %{buildroot}%{_bindir}/run0
-rm -f %{buildroot}%{_systemdgeneratordir}/systemd-ssh-generator
-rm -f %{buildroot}%{_systemdgeneratordir}/systemd-tpm2-generator
-rm -f %{buildroot}%{_unitdir}/systemd-nspawn@.service
-rm -f %{buildroot}%{_systemd_util_dir}/systemd-ssh-proxy
 %endif
 
 # Don't drop the following 'pre' section even if it becomes empty: the build
@@ -1380,21 +1365,11 @@ fi
 %systemd_postun_with_restart systemd-portabled.service
 %endif
 
-%if %{with experimental}
-%pre experimental
-%systemd_pre systemd-oomd.service systemd-oomd.socket
-
 %post experimental
 %if %{without filetriggers}
+%if %{without bootstrap}
 %sysusers_create systemd-oom.conf
 %endif
-%systemd_post systemd-oomd.service systemd-oomd.socket
-
-%preun experimental
-%systemd_preun systemd-oomd.service systemd-oomd.socket
-
-%postun experimental
-%systemd_postun systemd-oomd.service systemd-oomd.socket
 %endif
 
 # Keep the clean section until the following issue is solved:
@@ -1466,6 +1441,9 @@ rm -rf \
 %include %{SOURCE213}
 %endif
 
+%files experimental
+%include %{SOURCE207}
+
 %if %{with journal_remote}
 %files journal-remote
 %include %{SOURCE211}
@@ -1485,11 +1463,6 @@ rm -rf \
 %files testsuite
 %doc %{_testsuitedir}/integration-tests/README.md
 %{_testsuitedir}
-%endif
-
-%if %{with experimental}
-%files experimental
-%include %{SOURCE207}
 %endif
 
 %if %{with sd_boot}

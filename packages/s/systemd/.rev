@@ -7707,4 +7707,25 @@ handle manual pages that consist only of a .so directive such as
 - Build systemd-boot for riscv64</comment>
     <requestid>1296831</requestid>
   </revision>
+  <revision rev="455" vrev="6">
+    <srcmd5>092363818dc4020d4edea270e834391d</srcmd5>
+    <version>257.7</version>
+    <time>1754483515</time>
+    <user>dimstar_suse</user>
+    <comment>- Move run0 from the experimental sub-package to the main package
+
+- Import commit 835af70f4e4fab4746319145d9fdb1a01e33f4c8
+  835af70f4e core/cgroup: Properly handle aborting a pending freeze operation
+  1f96f9da13 detect-virt: add bare-metal support for GCE (bsc#1244449)
+----------------------------------------------------------------------------
+- Update pam.systemd-run0 (in the experimental sub-package)
+----------------------------------------------------------------------------
+- Build the experimental package for the mini flavor too
+  Some tools in the experimental sub-package cannot be disabled at compile
+  time. Previously, these tools were manually deleted after installation to
+  prevent rpmbuild from reporting unpackaged files. However, as the number of such
+  tools continues to grow, it's simpler to include them in the mini-experimental
+  sub-package.</comment>
+    <requestid>1297651</requestid>
+  </revision>
 </revisionlist>
