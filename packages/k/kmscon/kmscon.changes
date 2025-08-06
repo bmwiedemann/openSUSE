@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Aug 04 08:56:54 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 9.1.0+git14:
+  * Revert "Fix kmscon not restarting the login shell"
+  * Pango: move block sigchild to its own function
+  * Make sure the main thread gets SIGCHLD
+  * Fix github CI, after renaming develop to main
+  * Add warning for kms cursor setting
+  * Hide hardware cursor on vt switching
+  * kmscon-launch-gui.sh: Use $@ instead of ${@:1}
+  * Restore VT terminal on setForeground
+  * kmscon-launch-gui: Add escape sequence for tmux
+  * kmscon-launch-gui.sh: wait for tty to be active
+  * Add drmSetBackground and drmSetForeground escape codes
+  * github-ci: update package list before installing
+  * Add basic CI for all pull request
+  * Fix build of conf.c with xkbcommon
+  * Bump version to 9.1.0
+  * Update NEWS for the upcoming 9.1.0 release
+  * pixman: fix unitilized return value in alloc_indirect()
+  * Fix unitialized variable n in video_init()
+  * Change desired_width/desired_height to be one argument, "mode"
+  * Abort and log error if incomaptible options are used.
+  * Add retry logic to display activation
+  * Add arguments to set the desired resolution.
+  * Fix x11 options and toggle layout
+  * Unifont: Remove codepoint > 0xffff
+  * Update man page for --vt
+  * Add selinux permissions
+  * Revert login session tracking and add foreground check
+- Drop patches, now upstream:
+  * 0001-Revert-login-session-tracking-and-add-foreground-che.patch
+- Drop kmscon-no-date-time.patch, meanwhile replaced by SOURCE_DATE_EPOCH
+- Enable unifont again
+
+-------------------------------------------------------------------
 Wed Mar  5 14:50:11 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Replace code fix with code removal:

@@ -46,4 +46,12 @@
   * Delete 0001-Fix-systemd-monitor-initialization.patch</comment>
     <requestid>1250477</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6e5997467d59a1654c467bf8a2779a22</srcmd5>
+    <version>9.1.0+git14</version>
+    <time>1754483601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297722</requestid>
+  </revision>
 </revisionlist>

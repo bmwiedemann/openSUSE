@@ -18,16 +18,13 @@
 
 
 Name:           kmscon
-Version:        9.0.0+git42
+Version:        9.1.0+git14
 Release:        0
 Summary:        Linux KMS/DRM based virtual Console Emulator
 License:        MIT
 Group:          System/Console
 URL:            https://github.com/Aetf/kmscon/
 Source:         %{name}-%{version}.tar.xz
-Patch1:         kmscon-no-date-time.patch
-# https://github.com/Aetf/kmscon/pull/105
-Patch2:         0001-Revert-login-session-tracking-and-add-foreground-che.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libtsm-devel >= 4.0.2+git24
 BuildRequires:  meson
@@ -56,11 +53,8 @@ console.
 %autosetup -p1
 
 %build
-# Work around https://github.com/Aetf/kmscon/issues/63
-export CFLAGS="%{optflags} $(pkg-config xkbcommon --cflags) $(pkg-config libtsm --cflags) -Wno-error"
-# Disable unifont, too fat ATM (https://github.com/Aetf/kmscon/issues/102)
 # Disable 3D renderer, pulls in a dependency on Mesa into the main binary
-%meson -Dtests=false -Dfont_unifont=disabled -Drenderer_gltex=disabled -Dvideo_drm3d=disabled
+%meson -Dtests=false -Drenderer_gltex=disabled -Dvideo_drm3d=disabled
 %meson_build
 
 %install
@@ -81,14 +75,16 @@ export CFLAGS="%{optflags} $(pkg-config xkbcommon --cflags) $(pkg-config libtsm 
 %files
 %license COPYING
 %{_bindir}/%{name}
+%{_bindir}/%{name}-launch-gui
 %dir %{_libdir}/kmscon/
 %{_libdir}/kmscon/mod-bbulk.so
 %{_libdir}/kmscon/mod-pango.so
 %{_libdir}/kmscon/mod-pixman.so
-#%{_libdir}/kmscon/mod-unifont.so
+%{_libdir}/kmscon/mod-unifont.so
 %dir %{_libexecdir}/kmscon
 %{_libexecdir}/kmscon/kmscon
 %{_mandir}/man1/kmscon.1%{?ext_man}
-%{_unitdir}/*.service
+%{_unitdir}/kmscon.service
+%{_unitdir}/kmsconvt@.service
 
 %changelog
