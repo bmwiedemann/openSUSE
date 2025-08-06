@@ -1911,4 +1911,12 @@ Regularly scheduled major release. (forwarded request 1186324 from develop7)</co
     <comment>- Mercurial 7.0.3</comment>
     <requestid>1293526</requestid>
   </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>1d25178ab7eb448280705144e1008e46</srcmd5>
+    <version>7.1</version>
+    <time>1754483510</time>
+    <user>dimstar_suse</user>
+    <comment>- Mercurial 7.1</comment>
+    <requestid>1297580</requestid>
+  </revision>
 </revisionlist>

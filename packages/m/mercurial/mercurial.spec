@@ -1,7 +1,8 @@
 #
 # spec file for package mercurial
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +32,7 @@
 %endif
 
 Name:           mercurial
-Version:        7.0.3
+Version:        7.1
 Release:        0
 Summary:        Scalable Distributed SCM
 License:        GPL-2.0-or-later

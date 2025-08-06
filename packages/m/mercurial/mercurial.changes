@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Mon Aug  4 20:11:10 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Mercurial 7.1
+
+  + New Features
+    * share: add a `--share-source` argument to `hg root`
+    * fastexport: make it possible to ignore `.gitmodules` in the source repository
+  
+  + Many Rust-related changes
+    * rust-revset: support resolving `wdir()`
+    * rhg: allow `--repo` as abbreviation for `--repository`
+    * rhg: support basic aliases
+    * rhg: support -0 flag in `rhg files`
+    * rust-annotate: support `-Tjson`
+    * rust-annotate: support `--rev wdir()`
+    * rust-annotate: allow `--follow`
+    * rhg: document known rough edges for the sake of users and packagers
+  
+  + Better profiling options, Rust tracebacks and tracing framework
+    * profiling: support writing profiles to a directory
+    * tracing: add a way of calling the Rust tracing framework from Python
+    * rust-errors: add support for a runtime-configured backtrace
+    * dispatch: enable Rust traceback processing when using `--tracing`
+  
+  + Improvement to debug commands
+    * debugcommands: bring over functionality from debugshell extension
+    * debugindexdot: add flags for more control over graph
+  
+  + Other noteworthy performance work
+    * `rhg annotate` is up to 61 times faster in certain pathological cases
+    * Improved performance of the low-level Rust storage primitive
+    * Removed a lot of syscalls when listing things from storage with high-level APIs
+    * merge: save one status in certain cases
+    * merge: improve detection of subrepos in Rust fast path
+    * Improved the delta encoding algorithm by avoiding computation, using better heuristics and folding deltas
+    * hgtags-fnode-cache: fast path full warm when no tag exists
+  
+  + Developer tooling
+    * setup-dev-tools: add a first version of script that install dev tools
+    * setup-dev-tools: add make target to format the working copy using `fix`
+    * setup-dev-tools: add make target to format the current stack using `fix`
+  
+  + New Experimental Features
+    Following last version's "update from null", this is a Rust version of the update logic when all tracked files are clean and we are not merging. It is on by default if you have Rust enabled: if you encounter any problems use `rust.update-from-clean=no` to disable it, and please let us know what the problem is.
+  
+    * rust: add an "update from clean" fast-path
+  
+    New flags are being added to the revlog and transmitted over the network to help with copytracing and delta encoding.
+  
+    * revlog: introduce a `FLAG_FILELOG_META` revlog flag and requirements
+    * changegroup: use `REVIDX_HASMETA` in changegroup '04'
+    * revlog: add a delta-info-flag requirements
+    * changegroup: transmit snapshot level information in cg4
+    * delta-search: add a option to ignore suspicious delta
+  
+    A temporary store encoding that should only exist for one version of Mercurial, until we get a better solution to a very specific problem that you probably don't have.
+  
+    * store: add a first version of a "plain" encoding
+    * rust: add support for plain encoding
+  
+  + Bug Fixes
+    * diff: fix function name context detection (issue6965)
+    * merge: filter ambiguous files and/or wait for fs tick in `applyupdates`
+    * rust: handle censored revisions according to the config
+    * changelog: also disable sparse-revlog when disabling generaldelta
+    * rust-repo: unconditionally load the dirstate before loading the changelog
+    * revlog: fix a bytes vs str crash when emitting a deprecation warning
+    * rust-annotate: prefix abort messages with "abort:"
+    * debugshell: return an exit code 1 on exception
+    * dirstate: properly purge the cwd cache between commands
+    * commandserver: always restore working directory (issue6992)
+    * dispatch: always chdir back in _getlocal
+    * dispatch: `chdir` back to original `cwd` in `_dispatch`
+    * ui: avoid a str interpolation into bytes crash in `fixconfig()`
+    * contrib-hgk: use plain ascii `(C)` instead of latin1 symbol"
+  
+  + Backwards Compatibility Changes
+    * fastexport: add support for Git subrepositories (BC)
+    * pycompat: drop support for Python 3.8 (BC)
+    * annotate: use exit code 255 for missing files
+    * contrib: delete debugshell extension
+    * rust: update minimum Rust supported version to 1.85.1 for the 7.1 cycle
+  
+  + Internal API Changes
+    * revlog: add "writable" parameter to revlog
+    * revlog: enforce that filelog get the `writable` parameter passed
+  
+  + Miscellaneous
+    As with every release for a while, there were a ton of patches helping with adding typing information to our Python code, and catching bugs while doing so. The Pytype CI job itself was upgraded to be more helpful.
+  
+    We've migrated our Rust<->Python bridge from using the deprecated `rust-cpython` to the new standard `PyO3`.
+  
+    * rust: remove `hg-cpython`
+    * rust: move from `log` to `tracing`-based logging
+  
+    We've upgraded our CI to be much easier to update, more up-to-date and use smaller images
+  
+    * ci: switch the "checks" job to a "v3.0" images
+  
+    Other mentions
+    * debugnodemap: print a message when no action was specified
+    * pyproject: SPDX license expression and license-files (PEP 639)
+    * apache-server: update the setup from Wheezy to Buster
+    * apache-server: update the README, add Anubis, add notes about ProxyPass
+    * rust-pyo3: raise proper Exceptions in more cases
+    * rust-dependencies: upgrade `which` dependency
+    * rust: move README from rst to md
+    * contrib: add support for rhel10 
+
+-------------------------------------------------------------------
 Tue Jul 15 18:53:13 UTC 2025 - Sean Baggaley <me@drinkybird.net>
 
 - Mercurial 7.0.3
