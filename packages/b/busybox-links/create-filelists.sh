@@ -39,6 +39,20 @@ BINDIR=$(rpm -E %_bindir)
 SBINDIR=$(rpm -E %{_sbindir})
 DATADIR=$(rpm -E %{_datadir})
 
+#users, who, uptime are now part of coreutils-systemd,
+#so add them manually to busybox-coreutils for now
+echo -e "$BINDIR/uptime" >> filelist-coreutils.txt
+touch used/uptime
+echo -e "$BINDIR/users" >> filelist-coreutils.txt
+touch used/users
+echo -e "$BINDIR/who" >> filelist-coreutils.txt
+touch used/who
+#udhcpc subpackage
+echo -e "$SBINDIR/udhcpc" >> filelist-udhcpc.txt
+touch used/udhcpc
+echo -e "$SBINDIR/udhcpc6" >> filelist-udhcpc.txt
+touch used/udhcpc6
+
 # Merge net-tools sub-packages
 cat filelist-net-tools-deprecated.txt >> filelist-net-tools.txt
 rm filelist-net-tools-deprecated.txt
@@ -50,6 +64,7 @@ touch used/hush
 echo -e "$BINDIR/sh" >> filelist-sh.txt
 touch used/sh
 echo -e "$SBINDIR/loadfont" >> filelist-kbd.txt
+echo -e "$SBINDIR/loadkmap" >> filelist-kbd.txt
 touch used/loadkmap used/loadfont
 
 echo -e "/usr/sbin/addgroup\n/usr/sbin/adduser\n/usr/sbin/delgroup\n/usr/sbin/deluser" >> filelist-shadow.txt
@@ -87,5 +102,3 @@ sed -e 's|$prefix/bin/busybox|$prefix/usr/bin/busybox|g' \
     -e 's|"../../bin/busybox"|"../bin/busybox"|g' \
     -e "s|$DATADIR/busybox/busybox.links|filelist.txt|g" \
     $BINDIR/busybox.install > busybox.install
-
-cat filelist-*.txt | sort -u > filelist.txt

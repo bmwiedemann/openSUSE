@@ -5,4 +5,4 @@ WORKDIR /rpm/
 
 COPY create-filelists.sh .
 
-RUN ./create-filelists.sh
+RUN bash ./create-filelists.sh

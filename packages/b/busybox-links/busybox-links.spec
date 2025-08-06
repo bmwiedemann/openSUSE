@@ -81,10 +81,20 @@ Source56:       filelist-whois.txt
 Source57:       filelist-xz.txt
 Source58:       filelist-udhcpc.txt
 # used for creating the above filelists and busybox.install:
-# build the container locally and then copy filelist-*txt and busybox.install
-# out ouf WORKDIR into the package directory
+# build the container locally and then copy /rpm/filelist-*txt,
+# /rpm/busybox.install # and /usr/share/busybox/busybox.links
+# from the container into the package directory
+# I used the following commands:
+#    podman build -f Dockerfile -t busybox-links-filelists"
+#    podman run -it localhost/busybox-links-filelists
+# verify files look OK inside the container, then copy files
+# to the package directory
 Source98:       create-filelists.sh
 Source99:       Dockerfile
+#we include the busybox.links from the busybox package in the
+#container where the create-filelists.sh script was called
+#so we can compare as a sanity chech there are no changes
+Source100:      busybox.links
 BuildRequires:  busybox
 Requires:       busybox = %{version}
 Requires:       busybox-adduser = %{version}
@@ -613,17 +623,13 @@ cp %{_sourcedir}/filelist*.txt .
 %if 0%{?suse_version} < 1550
 echo "/bin/sh" >> filelist-sh.txt
 %endif
+cat filelist-*.txt | sort -u > filelist.txt
+diff %{SOURCE100} %{_datadir}/busybox/busybox.links
 
 %install
 bash %{_sourcedir}/busybox.install %{buildroot} --symlinks
-rm %{buildroot}/bin/busybox %{buildroot}%{_bindir}/[[
-# Move files to correct directories
-mv %{buildroot}%{_sbindir}/{arping,chroot,ifconfig,route,setfont,setlogcons} %{buildroot}%{_bindir}/
-mv %{buildroot}%{_bindir}/{traceroute,traceroute6} %{buildroot}%{_sbindir}/
-ln -sf %{_sbindir}/lsmod %{buildroot}%{_bindir}/lsmod
-ln -sf %{_sbindir}/ip %{buildroot}%{_bindir}/ip
-ln -sf %{_sbindir}/sestatus %{buildroot}%{_bindir}/sestatus
-ln -sf %{_bindir}/busybox %{buildroot}%{_bindir}/sh
+rm %{buildroot}%{_bindir}/busybox
+
 %if 0%{?suse_version} < 1550
 ln -sf %{_bindir}/sh   %{buildroot}/bin/sh
 %endif
