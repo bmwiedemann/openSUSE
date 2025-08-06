@@ -17,13 +17,13 @@
 
 
 Name:           dealers-choice
-Version:        0.0.6
+Version:        0.0.7
 Release:        0
 Summary:        Online Multiplayer Stud and Draw Poker
 License:        MIT
 Group:          Amusements/Games/Board/Card
 URL:            https://dealer-s-choice.github.io/
-Source:         https://github.com/Dealer-s-Choice/dealers_choice/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Source:         https://github.com/Dealer-s-Choice/dealers-choice/releases/download/v%{version}/%{name}-%{version}.tar.xz
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++

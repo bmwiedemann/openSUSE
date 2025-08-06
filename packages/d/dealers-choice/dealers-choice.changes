@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug  5 07:00:16 UTC 2025 - Andy Alt <arch_stanton5995@proton.me>
+
+- dealers-choice 0.0.7:
+  + Set default maximum raises per round to 3 (config option)
+  * Fix discard button being clickable when disabled
+  * Increase player action timeout from 20 to 30 seconds
+  + The client will now retry server connection for 60 seconds
+    before timing out if server is unavailable
+  * Fix incorrect hand wins in some cases when there are 3 or more players
+  + Add amount won to status message
+  - Remove the simulated delay when cards are initially dealt
+
+-------------------------------------------------------------------
 Mon Jul 14 07:00:16 UTC 2025 - Andy Alt <arch_stanton5995@proton.me>
 
 - Fix lint warnings
