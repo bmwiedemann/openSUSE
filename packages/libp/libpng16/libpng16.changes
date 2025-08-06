@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Aug  1 20:10:54 UTC 2025 - Petr Vorel <pvorel@suse.cz>
+
+- version update to 1.6.50:
+  * Improved the detection of the RVV Extension on the RISC-V platform.
+    (Contributed by Filip Wasil)
+  * Replaced inline ASM with C intrinsics in the RVV code.
+    (Contributed by Filip Wasil)
+  * Fixed a decoder defect in which unknown chunks trailing IDAT, set
+    to go through the unknown chunk handler, incorrectly triggered
+    out-of-place IEND errors.
+    (Contributed by John Bowler)
+  * Fixed the CMake file for cross-platform builds that require `libm`.
+- version update to 1.6.49:
+  * Added SIMD-optimized code for the RISC-V Vector Extension (RVV).
+    (Contributed by Manfred Schlaegl, Dragos Tiselice and Filip Wasil)
+  * Added various fixes and improvements to the build scripts and to
+    the sample code.
+- version update to 1.6.48:
+  * Fixed the floating-point version of the mDCv setter `png_set_mDCv`.
+    (Reported by Mohit Bakshi; fixed by John Bowler)
+  * Added #error directives to discourage the inclusion of private
+    libpng implementation header files in PNG-supporting applications.
+  * Added the CMake build option `PNG_LIBCONF_HEADER`, to be used as an
+    alternative to `DFA_XTRA`.
+  * Removed the Travis CI configuration files, with heartfelt thanks for
+    their generous support of our project over the past five years!
+- version update to 1.6.47:
+  * Modified the behaviour of colorspace chunks in order to adhere
+    to the new precedence rules formulated in the latest draft of
+    the PNG Specification.
+    (Contributed by John Bowler)
+  * Fixed a latent bug in `png_write_iCCP`.
+    This would have been a read-beyond-end-of-malloc vulnerability,
+    introduced early in the libpng-1.6.0 development, yet (fortunately!)
+    it was inaccessible before the above-mentioned modification of the
+    colorspace precedence rules, due to pre-existing colorspace checks.
+    (Reported by Bob Friesenhahn; fixed by John Bowler)
+- version update to 1.6.46:
+  * Added support for the mDCV and cLLI chunks.
+    (Contributed by John Bowler)
+  * Fixed a build issue affecting C89 compilers.
+    This was a regression introduced in libpng-1.6.45.
+    (Contributed by John Bowler)
+  * Added makefile.c89, specifically for testing C89 compilers.
+  * Cleaned up contrib/pngminus: corrected an old typo, removed an old
+    workaround, and updated the CMake file.
+- version update to 1.6.45:
+  * Added support for the cICP chunk.
+    (Contributed by Lucas Chollet and John Bowler)
+  * Adjusted and improved various checks in colorspace calculations.
+    (Contributed by John Bowler)
+  * Rearranged the write order of colorspace chunks for better conformance
+    with the PNG v3 draft specification.
+    (Contributed by John Bowler)
+  * Raised the minimum required CMake version from 3.6 to 3.14.
+  * Forked off a development branch for libpng version 1.8.
+
+-------------------------------------------------------------------
 Tue Oct 29 14:54:55 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - version update to 1.6.44:
