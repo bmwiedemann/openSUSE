@@ -1,7 +1,7 @@
 #
 # spec file for package spice-protocol
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           spice-protocol
-Version:        0.14.4
+Version:        0.14.5
 Release:        0
 Summary:        SPICE-protocol definitions
 License:        BSD-3-Clause
 Group:          Development/Languages/C and C++
 URL:            https://www.spice-space.org/
 Source:         https://www.spice-space.org/download/releases/spice-protocol-%{version}.tar.xz
-Source1:        https://www.spice-space.org/download/releases/spice-protocol-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 BuildRequires:  meson >= 0.41.0
 BuildRequires:  pkgconfig

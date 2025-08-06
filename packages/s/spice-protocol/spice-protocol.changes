@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 22 15:42:45 MDT 2025 - carnold@suse.com
+
+- Update to version 0.14.5
+  * Add SPICE_MSG_DISPLAY_GL_SCANOUT2_UNIX
+  * Fix for Windows Arm64 build
+- Drop spice-protocol-0.14.4.tar.xz.sig
+
+-------------------------------------------------------------------
 Tue Oct  4 14:00:46 MDT 2022 - carnold@suse.com
 
 - jsc#PED-2113 [Virt Tools] Refresh Virtualization Tools for Xen
