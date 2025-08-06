@@ -1,8 +1,8 @@
-Index: spice-0.15.2/server/tests/test-gst.cpp
+Index: spice-0.16.0/server/tests/test-gst.cpp
 ===================================================================
---- spice-0.15.2.orig/server/tests/test-gst.cpp
-+++ spice-0.15.2/server/tests/test-gst.cpp
-@@ -614,7 +614,9 @@ create_pipeline(const char *desc, Sample
+--- spice-0.16.0.orig/server/tests/test-gst.cpp
++++ spice-0.16.0/server/tests/test-gst.cpp
+@@ -562,7 +562,9 @@ create_pipeline(const char *desc, Sample
      }
  
      static const GstAppSinkCallbacks appsink_cbs_template =

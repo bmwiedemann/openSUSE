@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul 22 15:29:56 MDT 2025 - carnold@suse.com
+
+- Update to v0.16.0 release
+  * Added DMA-BUF encoder support for GStreamer 1.24+
+  * Implemented hardware-accelerated encoding for Intel GPUs
+  * Added environment variable SPICE_CONVERTER_PREFERRED_FORMAT to override converter format
+  * Multi-plane GL scanout support (new spice_qxl_gl_scanout2())
+  * Improved memslot to preserve address bits for ARM64 TBI/AMD UAI/Intel LAM
+  * Optimized BGR24/BGRX32 conversion when JCS_EXTENSIONS is defined
+  * Removed GStreamer 0.10 support
+  * Send real time to client, instead of synchronizing on both ends, attempting to fix latency issue
+  * Fixes a GL_DRAW cookie assertion race
+  * Add SSL_OP_NO_RENEGOTIATION fallback path, fixing w/LibreSSL 3.7.2 builds
+  * Fix Win32 builds
+  * Fix TCP_NOPUSH usage on Darwin
+- Drop patches contained in new tarball
+  spice-no-six.patch
+
+-------------------------------------------------------------------
 Tue Mar  5 19:35:03 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to fix build with gstreamer 1.24:

@@ -1,7 +1,7 @@
 #
 # spec file for package spice
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 %define libname libspice-server1
 Name:           spice
-Version:        0.15.2
+Version:        0.16.0
 Release:        0
 Summary:        SPICE client and server library
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later
@@ -32,8 +32,6 @@ Source:         https://www.spice-space.org/download/releases/spice-server/%{nam
 Source1:        https://www.spice-space.org/download/releases/spice-server/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 Source99:       %{name}.rpmlintrc
-# https://gitlab.freedesktop.org/spice/spice-common/-/commit/29dacb5f53f5183fb089a3fb02d081dd08bde8a1
-Patch0:         spice-no-six.patch
 # PATCH-FIX-UPSTREAM fix-build-with-gstreamer-1.24.patch alarrosa@suse.com
 Patch1:         fix-build-with-gstreamer-1.24.patch
 

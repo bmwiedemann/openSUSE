@@ -403,4 +403,12 @@
     <comment></comment>
     <requestid>1158262</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>704c7b40aa088d010b9b5ba2574dd3dd</srcmd5>
+    <version>0.16.0</version>
+    <time>1754483501</time>
+    <user>dimstar_suse</user>
+    <comment>Update spice to version 0.16.0</comment>
+    <requestid>1297546</requestid>
+  </revision>
 </revisionlist>
