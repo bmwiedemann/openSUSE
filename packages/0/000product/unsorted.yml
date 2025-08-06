@@ -4565,6 +4565,8 @@ unsorted:
   - gamescope 
   - gamescope-plus 
   - gamescope-session-plus 
+  - gamescope-session-steam 
+  - gamescope-session-steam-generic 
   - gammaray 
   - gammaray-devel 
   - gammaray-qt6 
@@ -5743,6 +5745,11 @@ unsorted:
   - ghc-half-devel 
   - ghc-half-doc 
   - ghc-half-prof 
+  - ghc-happy-lib 
+  - ghc-happy-lib-devel 
+  - ghc-happy-lib-doc 
+  - ghc-happy-lib-prof 
+  - ghc-happy-lib-templates 
   - ghc-hashable 
   - ghc-hashable-devel 
   - ghc-hashable-doc 
@@ -11069,12 +11076,12 @@ unsorted:
   - libIPSec_MB2 
   - libIccXML-devel 
   - libIccXML2 
-  - libIex-3_2-31-32bit 
+  - libIex-3_3-32-32bit 
   - libIlmCtl1_5_3 
   - libIlmCtlMath1_5_3 
   - libIlmCtlSimd1_5_3 
   - libIlmImfCtl1_5_3 
-  - libIlmThread-3_2-31-32bit 
+  - libIlmThread-3_3-32-32bit 
   - libImath-3_1-29-32bit 
   - libIrrlicht1_8 
   - libKChart2 
@@ -11184,11 +11191,11 @@ unsorted:
   - libOpenCL1 
   - libOpenCL1-32bit 
   - libOpenColorIO2_4 
-  - libOpenEXR-3_2-31-32bit 
-  - libOpenEXRCore-3_2-31-32bit 
-  - libOpenEXRUtil-3_2-31 
-  - libOpenEXRUtil-3_2-31-32bit 
-  - libOpenEXRUtil-3_2-31-x86-64-v3 
+  - libOpenEXR-3_3-32-32bit 
+  - libOpenEXRCore-3_3-32-32bit 
+  - libOpenEXRUtil-3_3-32 
+  - libOpenEXRUtil-3_3-32-32bit 
+  - libOpenEXRUtil-3_3-32-x86-64-v3 
   - libOpenIPMI0 
   - libOpenIPMIui1 
   - libOpenImageDenoise2 
@@ -15276,7 +15283,7 @@ unsorted:
   - libpoppler-qt5-1 
   - libpoppler-qt5-devel 
   - libpoppler-qt6-devel 
-  - libpoppler151-32bit 
+  - libpoppler152-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -26620,6 +26627,7 @@ unsorted:
   - python311-pytest-shutil 
   - python311-pytest-skip-markers 
   - python311-pytest-socket 
+  - python311-pytest-sourceorder 
   - python311-pytest-spec 
   - python311-pytest-sphinx 
   - python311-pytest-subprocess 
@@ -30398,6 +30406,7 @@ unsorted:
   - python312-pytest-shutil 
   - python312-pytest-skip-markers 
   - python312-pytest-socket 
+  - python312-pytest-sourceorder 
   - python312-pytest-spec 
   - python312-pytest-sphinx 
   - python312-pytest-subprocess 
@@ -34124,6 +34133,7 @@ unsorted:
   - python313-pytest-shutil 
   - python313-pytest-skip-markers 
   - python313-pytest-socket 
+  - python313-pytest-sourceorder 
   - python313-pytest-spec 
   - python313-pytest-sphinx 
   - python313-pytest-subprocess 
@@ -37685,6 +37695,7 @@ unsorted:
   - systemd-mini 
   - systemd-mini-container 
   - systemd-mini-devel 
+  - systemd-mini-experimental 
   - systemd-networkd 
   - systemd-portable 
   - systemd-presets-branding-transactional-server 
@@ -48672,6 +48683,7 @@ unsorted:
   - vlc-jack 
   - vm-dump-metrics 
   - vm-install 
+  - vmaf 
   - vmaf-devel 
   - vms-empire 
   - vmtouch 
