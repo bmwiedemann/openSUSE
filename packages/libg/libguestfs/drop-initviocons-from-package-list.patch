@@ -1,0 +1,15 @@
+References: bsc#1247578
+
+initviocons is no longer maintained. This patch changes the SUSE section
+of the packagelist file and should eventually go upstream.
+
+--- libguestfs-1.56.1/appliance/packagelist.in.orig	2025-08-05 13:57:20.993985224 -0600
++++ libguestfs-1.56.1/appliance/packagelist.in	2025-08-05 13:57:27.041985375 -0600
+@@ -135,7 +135,6 @@ ifelse(SUSE,1,
+   dhcp-client
+   glibc-locale
+   gptfdisk
+-  initviocons
+   iproute2
+   iputils
+   ntfsprogs

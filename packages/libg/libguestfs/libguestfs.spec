@@ -34,6 +34,7 @@ Source101:      README
 # Patches
 Patch1:         use-rtc-driftfix-slew-for-x86-only.patch
 Patch2:         reproducible-builds.patch
+Patch3:         drop-initviocons-from-package-list.patch
 Patch100:       use-fuse3-for-build.patch
 
 BuildRequires:  bison
@@ -346,7 +347,6 @@ BuildRequires:  glibc
 BuildRequires:  gptfdisk
 BuildRequires:  grep
 BuildRequires:  gzip
-BuildRequires:  initviocons
 BuildRequires:  iproute2
 BuildRequires:  jfsutils
 BuildRequires:  ldmtool

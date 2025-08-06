@@ -1294,4 +1294,12 @@
     <comment>Update libguestfs to version 1.56.1. Only build the libguestfs-inspect-icons RPM on Tumbleweed.</comment>
     <requestid>1288363</requestid>
   </revision>
+  <revision rev="126" vrev="2">
+    <srcmd5>cb47190595ee3ce27c3bc8ef743fd184</srcmd5>
+    <version>1.56.1</version>
+    <time>1754483645</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1247578 dropping use of initviocons</comment>
+    <requestid>1297831</requestid>
+  </revision>
 </revisionlist>
