@@ -372,4 +372,12 @@ required for http://www.unvanquished.net/wiki/index.php/Compiling_the_source#ope
     <comment>- Update to release 1.5.0</comment>
     <requestid>1234190</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a6f927062a8c07c777bc5ce5069e3fb9</srcmd5>
+    <version>1.6.0</version>
+    <time>1754483493</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.6.0</comment>
+    <requestid>1297741</requestid>
+  </revision>
 </revisionlist>
