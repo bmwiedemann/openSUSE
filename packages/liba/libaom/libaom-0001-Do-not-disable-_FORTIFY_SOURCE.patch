@@ -1,8 +1,7 @@
-Index: libaom-3.9.1/build/cmake/aom_configure.cmake
-===================================================================
---- libaom-3.9.1.orig/build/cmake/aom_configure.cmake
-+++ libaom-3.9.1/build/cmake/aom_configure.cmake
-@@ -392,9 +392,6 @@ else()
+diff -rub libaom-3.12.1.orig/build/cmake/aom_configure.cmake libaom-3.12.1/build/cmake/aom_configure.cmake
+--- libaom-3.12.1.orig/build/cmake/aom_configure.cmake	2025-04-12 04:37:49.000000000 +0800
++++ libaom-3.12.1/build/cmake/aom_configure.cmake	2025-08-05 17:01:20.862061300 +0800
+@@ -398,9 +398,6 @@
      add_compiler_flag_if_supported("-Werror")
    endif()
  

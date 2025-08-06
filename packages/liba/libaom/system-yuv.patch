@@ -1,8 +1,31 @@
-Index: libaom-3.11.0/CMakeLists.txt
-===================================================================
---- libaom-3.11.0.orig/CMakeLists.txt
-+++ libaom-3.11.0/CMakeLists.txt
-@@ -469,22 +469,14 @@ if(CONFIG_AV1_DECODER AND ENABLE_EXAMPLE
+diff -rub libaom-3.12.1.orig/apps/aomdec.c libaom-3.12.1/apps/aomdec.c
+--- libaom-3.12.1.orig/apps/aomdec.c	2025-04-12 04:37:49.000000000 +0800
++++ libaom-3.12.1/apps/aomdec.c	2025-08-05 18:27:51.862471098 +0800
+@@ -43,7 +43,7 @@
+ #include "common/y4menc.h"
+ 
+ #if CONFIG_LIBYUV
+-#include "third_party/libyuv/include/libyuv/scale.h"
++#include <libyuv/scale.h>
+ #endif
+ 
+ static const char *exec_name;
+diff -rub libaom-3.12.1.orig/apps/aomenc.c libaom-3.12.1/apps/aomenc.c
+--- libaom-3.12.1.orig/apps/aomenc.c	2025-04-12 04:37:49.000000000 +0800
++++ libaom-3.12.1/apps/aomenc.c	2025-08-05 18:27:51.862735438 +0800
+@@ -47,7 +47,7 @@
+ #include "stats/rate_hist.h"
+ 
+ #if CONFIG_LIBYUV
+-#include "third_party/libyuv/include/libyuv/scale.h"
++#include <libyuv/scale.h>
+ #endif
+ 
+ /* Swallow warnings about unused results of fread/fwrite */
+diff -rub libaom-3.12.1.orig/CMakeLists.txt libaom-3.12.1/CMakeLists.txt
+--- libaom-3.12.1.orig/CMakeLists.txt	2025-04-12 04:37:49.000000000 +0800
++++ libaom-3.12.1/CMakeLists.txt	2025-08-05 18:27:51.862239400 +0800
+@@ -473,22 +473,14 @@
  endif()
  
  if(CONFIG_LIBYUV OR CONFIG_TUNE_BUTTERAUGLI)
@@ -33,7 +56,7 @@ Index: libaom-3.11.0/CMakeLists.txt
  endif()
  
  if(CONFIG_AV1_ENCODER)
-@@ -610,10 +602,10 @@ if(CONFIG_AV1_ENCODER)
+@@ -611,10 +603,10 @@
        set_target_properties(aom_static PROPERTIES LINKER_LANGUAGE CXX)
      endif()
  
@@ -47,7 +70,7 @@ Index: libaom-3.11.0/CMakeLists.txt
      endif()
    endif()
  
-@@ -759,7 +751,7 @@ if(ENABLE_EXAMPLES OR ENABLE_TESTS OR EN
+@@ -763,7 +755,7 @@
    if(CONFIG_LIBYUV)
      # Add to existing targets.
      foreach(aom_app ${AOM_APP_TARGETS})
@@ -56,29 +79,3 @@ Index: libaom-3.11.0/CMakeLists.txt
        set_property(TARGET ${aom_app} PROPERTY LINKER_LANGUAGE CXX)
      endforeach()
    endif()
-Index: libaom-3.11.0/apps/aomdec.c
-===================================================================
---- libaom-3.11.0.orig/apps/aomdec.c
-+++ libaom-3.11.0/apps/aomdec.c
-@@ -43,7 +43,7 @@
- #include "common/y4menc.h"
- 
- #if CONFIG_LIBYUV
--#include "third_party/libyuv/include/libyuv/scale.h"
-+#include <libyuv/scale.h>
- #endif
- 
- static const char *exec_name;
-Index: libaom-3.11.0/apps/aomenc.c
-===================================================================
---- libaom-3.11.0.orig/apps/aomenc.c
-+++ libaom-3.11.0/apps/aomenc.c
-@@ -47,7 +47,7 @@
- #include "stats/rate_hist.h"
- 
- #if CONFIG_LIBYUV
--#include "third_party/libyuv/include/libyuv/scale.h"
-+#include <libyuv/scale.h>
- #endif
- 
- /* Swallow warnings about unused results of fread/fwrite */

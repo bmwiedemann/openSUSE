@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug  5 08:44:10 UTC 2025 - anenasa <anenasaa@yahoo.com>
+
+- Update to version 3.12.1:
+  * This release includes new codec interfaces, compression efficiency and
+    perceptual improvements, speedup and memory optimizations, and bug
+    fixes.
+- See https://aomedia.googlesource.com/aom/+/refs/tags/v3.12.1/CHANGELOG
+  for detailed changes since version 3.11.0
+- Updated patches
+
+-------------------------------------------------------------------
 Wed Jan 22 07:01:32 UTC 2025 - Timothy Brown <stimut@gmail.com>
 
 - Update to version 3.11.0:

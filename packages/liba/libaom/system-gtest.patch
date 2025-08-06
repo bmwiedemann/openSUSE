@@ -1,8 +1,7 @@
-Index: libaom-3.11.0/test/test.cmake
-===================================================================
---- libaom-3.11.0.orig/test/test.cmake
-+++ libaom-3.11.0/test/test.cmake
-@@ -14,6 +14,7 @@ endif() # AOM_TEST_TEST_CMAKE_
+diff -rub libaom-3.12.1.orig/test/test.cmake libaom-3.12.1/test/test.cmake
+--- libaom-3.12.1.orig/test/test.cmake	2025-04-12 04:37:49.000000000 +0800
++++ libaom-3.12.1/test/test.cmake	2025-08-05 18:26:19.933461978 +0800
+@@ -14,6 +14,7 @@
  set(AOM_TEST_TEST_CMAKE_ 1)
  
  include(ProcessorCount)
@@ -10,7 +9,7 @@ Index: libaom-3.11.0/test/test.cmake
  
  include("${AOM_ROOT}/test/test_data_util.cmake")
  
-@@ -411,27 +412,21 @@ if(ENABLE_TESTS)
+@@ -414,27 +415,21 @@
      set(CMAKE_MACOSX_RPATH 1)
    endif()
  

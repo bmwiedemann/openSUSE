@@ -176,4 +176,18 @@
     <comment></comment>
     <requestid>1239791</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>89b749d73ee8e23964158a26ee79ad04</srcmd5>
+    <version>3.12.1</version>
+    <time>1754483532</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.12.1:
+  * This release includes new codec interfaces, compression efficiency and
+    perceptual improvements, speedup and memory optimizations, and bug
+    fixes.
+- See https://aomedia.googlesource.com/aom/+/refs/tags/v3.12.1/CHANGELOG
+  for detailed changes since version 3.11.0
+- Updated patches</comment>
+    <requestid>1297782</requestid>
+  </revision>
 </revisionlist>
