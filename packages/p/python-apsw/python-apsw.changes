@@ -1,4 +1,120 @@
 -------------------------------------------------------------------
+Tue Aug  5 08:38:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.50.4.0
+  * PyPI binary builds are available for:
+    * Python 3.14
+    * Windows ARM
+    * Python 3.14 `free threaded`__ (no GIL).  The GIL will be
+      enabled when APSW is loaded.  APSW will be free threaded
+      in the future (#568)
+- from version 3.50.3.0
+  * preupdate_hook` is available. The `commit` and `rollback`
+    hooks let you provide multiple callbacks, multiplex by APSW.
+    `apsw.ext.Trace` can now show updates, and transaction begin,
+    commit, and rollback.
+- from version 3.50.2.0
+  * PyPi builds now use `cibuildwheel version 3` which advances
+    the minimum supported Linux distribution.  It is configured
+    to continue building both 32 and 64 bit binaries.
+- from version 3.50.1.0
+  * No user visible changes.
+- from version 3.50.0.0
+  * Full support for the `session`
+  * Added `Connection.setlk_timeout`, `apsw.mapping_setlk_timeout_flags`,
+    and enabled the timeout for amalgamation builds such as PyPI.
+  * Shell `open command <shell-cmd-open>` allows specifying flags to
+    open a connection, and `connection command <shell-cmd-connection>`
+    shows flags used for each open. (#557)
+  * Type stubs updated to `collections.abc.Buffer` (Python 3.12+)
+    wherever some bytes are taken.  `Buffers `__ have always been used,
+    but Python 3.12 added typing.
+- from version 3.49.2.0
+  * Shell dump command handles generated columns correctly. (#556)
+- from version 3.49.1.0
+  * No APSW changes.
+- from version 3.49.0.0
+  * `Connection.set_progress_handler` allows multiple callbacks
+    (multiplexed by APSW).
+  * Added `apsw.ext.query_limit` to limit total row count and execution
+    time within a block. (#520)
+  * `Connection.config` updated with new DBCONFIG options
+  * Adjustments for SQLite's new build process.
+- from version 3.48.0.0
+  * You can `pass any Python objects <pyobject>` into SQLite, and
+    return them when used as runtime values such as functions.  SQLite's
+    `pointer passing interface` is used behind the scenes. (#521)
+  * `Source releases <sources>` are also available in tar format (#548),
+    and have updated source release signing `instructions <verifydownload>`.
+    (#549)
+  * `Shared cache` (2006) is omitted when APSW includes the amalgamation
+    like PyPI builds.  This is `recommended by SQLite `, has been `discouraged
+    for a long time`. `apsw.enable_shared_cache` will raise an exception
+    if called and the shared cache has been omitted.  You can see what options
+    are in effect in `apsw.compile_options`.  If you were using it for
+    shared memory databases then `use the memdb VFS <memdb>`.
+- from version 3.47.2.0
+  * Added `apsw.ext.page_usage_to_svg` which shows database usage as
+    SVG.  Available as shell `.pages-svg command <shell-cmd-pages-svg>`.
+- from version 3.47.1.0
+  * Documentation on how to `build for packagers <packagers>` such as
+    those maintaining Linux and BSD distributions.
+  * Documentation on how to `build for pyodide>`, the Python WASM
+    implementation that runs in the browser and NPM.  PyPI does not
+    accept pyodide packages yet.
+  * A command line tool ``apsw`` is defined which invokes the `shell
+    <shell>`.  This also allows using `uvx apsw` without having to
+    explicitly install APSW.
+  * Added `apsw.ext.analyze_pages` which uses `dbstat` to provide useful
+    information about the pages making up the database, and fragmentation.
+    The shell `.pages command <shell-cmd-pages>` shows it in a pretty form.
+- from version 3.47.0.0
+  * Support for Python 3.8 removed (#539).
+  * The readonly database statistics virtual table (`dbstat`) is enabled
+    by default for PyPI builds, and when ``--enable-all-extensions`` is
+    passed to manual `builds <build>`.
+  * Added `recursive triggers <apsw.bestpractice.connection_recursive_triggers>`
+    and `optimize <apsw.bestpractice.connection_optimize>` to `apsw.bestpractice`.
+  * Multiple callbacks can be present for `Connection.trace_v2` with APSW ensuring
+    they are all called (#502)
+  * `Connection.trace_v2` callback information now has ``trigger``, ``id``,
+    and ``total_changes`` fields.
+  * Added `Connection.data_version` for getting a change counter. `pragma
+    data_version` doesn't update when changes are made on the same connection,
+    only others.
+  * Added `apsw.ext.ShowResourceUsage` for getting resource and SQLite usage
+    in a context block, and also use it for the shell `timer <shell-cmd-timer>`
+    command.
+  * Added `apsw.ext.Trace` for tracing SQL execution, row and change
+    counting, and timing per statement for use in a context block.
+  * Added `FTS5 support <textsearch>` including registering and
+    calling tokenizers, and auxiliary functions.  The `apsw.fts5`
+    module provides many additional classes and methods for working with
+    FTS5, including tokenizers for HTML, JSON, regular expressions,
+    support tokenizers for synonyms, stop words, transformers, and a
+    `~apsw.fts5.Table` class that wraps access to a FTS5 table
+    (including `creating one <apsw.fts5.Table.create>`) with
+    `~apsw.fts5.Table.search`, `~apsw.fts5.Table.more_like`,
+    and `~apsw.fts5.Table.query_suggest`.  `apsw.fts5query` can
+    parse, modify, and reconstruct queries.  The shell gets a `ftsq
+    <shell-cmd-ftsq>` command for issuing queries.
+  * Added `apsw.unicode` which implements Unicode algorithms for
+    determining codepoint groups making up a user perceived character,
+    word and sentence splitting, and where line breaks can be made.  These
+    are used to make provided FTS5 tokenizers and auxiliary functions
+    fully Unicode aware.  There are many additional methods such as
+    getting categories, stripping diacritics, case folding, width when
+    output to a terminal, text wrapping, and more.
+  * `apsw.ext.format_query_table` uses `apsw.unicode` to get widths and
+    line breaks more accurate.  As a side effect it loses the `word_wrap`
+    parameter (breaking change).
+- Add support for both update-alternatives and libalternatives
+- Include apsw binary in %files section
+- Remove shebang from all Python sources
+- Switch upstream source back to PyPi
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Sat Sep 28 19:15:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.46.1.0:
