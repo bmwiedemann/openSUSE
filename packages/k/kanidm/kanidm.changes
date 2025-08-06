@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 06 01:11:19 UTC 2025 - william.brown@suse.com
+
+- Update to version 1.7.1~git0.130a31d29:
+  * Release 1.7.1
+  * Update tracing-forest
+  * Handle SEC1 private key (#3761)
+
+-------------------------------------------------------------------
 Fri Aug 01 04:52:46 UTC 2025 - william.brown@suse.com
 
 - Update to version 1.7.0~git0.621ac7be0:
