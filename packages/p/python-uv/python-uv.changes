@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Aug  6 12:36:01 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.8.5
+ * Enhancements
+  * Enable uv run with a GitHub Gist 
+  * Improve HTTP response caching log messages 
+  * Show wheel tag hints in install plan 
+  * Support installing additional executables in uv tool install 
+ * Preview features
+  * Enable extra build dependencies to 'match runtime' versions 
+  * Remove duplicate extra-build-dependencies warnings for uv pip 
+  * Use "option" instead of "setting" in pylock warning 
+  * Respect extra build requires when reading from wheel cache 
+  * Preserve lowered extra build dependencies 
+ * Bug fixes
+  * Add Python versions to markers implied from wheels 
+  * Ensure consistent indentation when adding dependencies 
+  * Fix handling of python-preference = system when managed interpreters are on the PATH 
+  * Fix symlink preservation in virtual environment creation 
+  * Gracefully handle entrypoint permission errors 
+  * Include wheel hashes from local Simple indexes 
+  * Prefer system Python installations over managed ones when --system is used 
+  * Remove retry wrapper when matching on error kind 
+  * Revert h2 upgrade 
+ * Documentation
+  * Improve visibility of copy and line separator in dark mode 
+
+-------------------------------------------------------------------
 Thu Jul 31 15:49:55 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.8.4
