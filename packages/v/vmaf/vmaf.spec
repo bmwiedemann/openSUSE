@@ -1,7 +1,7 @@
 #
 # spec file for package vmaf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ BuildRequires:  nasm
 BuildRequires:  pkg-config
 BuildRequires:  xxd
 Provides:       bundled(libsvm) = 3.24
+Provides:       vmaf-devel:/usr/bin/vmaf
 
 %description
 VMAF is a perceptual video quality assessment algorithm.
@@ -59,34 +60,33 @@ Netflix.
 This package contains the library API definitions.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 rm -rf third_party
-pushd libvmaf/
+cd libvmaf/
 %meson -Dbuilt_in_models=true -Denable_float=true
 %meson_build
-popd
 
 %install
-pushd libvmaf/
+cd libvmaf/
 %meson_install
-popd
 rm -f "%buildroot/%_libdir"/*.a
 %fdupes %buildroot/%_prefix
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
+
+%files
+%_bindir/vmaf*
+%license LICENSE
+%doc README.md
 
 %files -n %lname
 %_libdir/libvmaf.so.%{sonum}*
 
 %files devel
-%_bindir/vmaf*
 %_includedir/libvmaf/
 %_libdir/libvmaf.so
 %_libdir/pkgconfig/*.pc
-%license LICENSE
-%doc README.md
 
 %changelog
