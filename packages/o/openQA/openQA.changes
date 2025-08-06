@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 05 13:13:43 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1754383059.0426baa1:
+  * Dependency cron 2025-08-05
+  * Fix LegacyKeyValueFormat in Dockerfiles
+
+-------------------------------------------------------------------
 Mon Aug 04 16:11:31 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1754297241.bf37533a:
