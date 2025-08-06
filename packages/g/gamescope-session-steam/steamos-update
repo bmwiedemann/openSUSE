@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+# The Steam client is known to call this script with the following parameter combinations:
+# steamos-update --supports-duplicate-detection     -- should do nothing
+# steamos-update --enable-duplicate-detection check -- should check for update
+# steamos-update check                              -- should check for update
+# steamos-update --enable-duplicate-detection       -- should perform an update
+# steamos-update                                    -- should perform an update
+
+exit 7 # tells Steam client there is no update to perform

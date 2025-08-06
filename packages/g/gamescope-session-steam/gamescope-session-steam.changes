@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Tue May 20 18:08:10 UTC 2025 - suse.snooper541@passmail.net
+
+- Initial version 1+git20250418.7104815:
+  * Support Steam cursor in gamescope
+  * split steam specific bits from gamescope-session

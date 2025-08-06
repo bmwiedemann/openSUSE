@@ -1,0 +1,15 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ababf85a0c03b0e2ac4da99e8b0fc4ca</srcmd5>
+    <version>1+git20250418.7104815</version>
+    <time>1754483648</time>
+    <user>dimstar_suse</user>
+    <comment>This package provides the Steam Big Picture Mode session based on gamescope.
+This opens Steam in the &quot;SteamOS&quot; mode.
+
+There are linting errors. I removed the polkit rules as they are not needed for the scripts in /usr/bin, they are only placeholders here for Steam to not error out. The bigger issue is the steamos-polkit-helper directory in /usr/bin. This is not allowed in general. But, as far as I'm aware, these paths are hardcoded in Steam, so I can't just move them to /usr/lib. How should I handle them?
+I already had an audit about the polkit rules here:
+https://bugzilla.opensuse.org/show_bug.cgi?id=1246766</comment>
+    <requestid>1297830</requestid>
+  </revision>
+</revisionlist>
