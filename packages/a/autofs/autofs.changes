@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 16 20:29:16 UTC 2025 - David Disseldorp <ddiss@suse.com>
+
+- Fix autofs-5.1.1-dbus-udisks-monitor.patch (bsc#1246612) to account for:
+  * d2feac6784b6 autofs-5.1.6 - make autofs.a a shared library
+  * bcd8e1b642e9 autofs-5.0.7 - use LIBS for link libraries
+
+-------------------------------------------------------------------
 Tue Jan 14 18:14:14 UTC 2025 - Goldwyn Rodrigues <rgoldwyn@suse.com>
 
 - Remove libnsl-devel dependency to remove NSL support

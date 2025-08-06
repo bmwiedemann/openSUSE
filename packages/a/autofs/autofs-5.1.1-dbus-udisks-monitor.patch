@@ -587,14 +587,13 @@ Index: autofs-5.1.9/modules/Makefile
 ===================================================================
 --- autofs-5.1.9.orig/modules/Makefile
 +++ autofs-5.1.9/modules/Makefile
-@@ -62,6 +62,14 @@ ifeq ($(SSSD), 1)
+@@ -62,6 +62,13 @@ ifeq ($(SSSD), 1)
    MODS += lookup_sss.so
  endif
  
 +ifeq ($(UDISKS), 1)
 +  UDISKS_FLAGS += $(shell pkg-config --cflags dbus-1)
 +  UDISKS_LIBS += $(shell pkg-config --libs dbus-1)
-+  UDISKS_LIBS += $(AUTOFS_LIB)
 +  SRCS += lookup_udisks.c
 +  MODS += lookup_udisks.so
 +endif
@@ -602,12 +601,13 @@ Index: autofs-5.1.9/modules/Makefile
  CFLAGS += -I../include -I../lib -fPIC -D_GNU_SOURCE
  CFLAGS += -DAUTOFS_LIB_DIR=\"$(autofslibdir)\"
  CFLAGS += -DAUTOFS_MAP_DIR=\"$(autofsmapdir)\"
-@@ -145,6 +153,10 @@ lookup_ldap.so: lookup_ldap.c dclist.o b
+@@ -145,6 +152,11 @@ lookup_ldap.so: lookup_ldap.c dclist.o b
  		$(LDFLAGS) $(LIBLDAP) $(LIBRESOLV) $(LIBS) $(AUTOFS_LIB_LINK)
  	$(STRIP) lookup_ldap.so
  
 +lookup_udisks.so: lookup_udisks.c ../include/lookup_udisks.h
-+	$(CC) $(SOLDFLAGS) $(CFLAGS) $(UDISKS_FLAGS) -o $@ $< $(UDISKS_LIBS)
++	$(CC) $(SOLDFLAGS) $(CFLAGS) $(UDISKS_FLAGS) -o $@ $< \
++		$(LDFLAGS) $(UDISKS_LIBS) $(LIBS) $(AUTOFS_LIB_LINK)
 +	$(STRIP) $@
 +
  mount_nfs.so: mount_nfs.c replicated.o
