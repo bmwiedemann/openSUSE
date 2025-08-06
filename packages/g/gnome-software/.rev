@@ -1309,4 +1309,14 @@ New stable release</comment>
     <comment></comment>
     <requestid>1289797</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>a4ba351d639aaa8cf0c05c069e7cd5e4</srcmd5>
+    <version>48.4</version>
+    <time>1754483536</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 48.4:
+  + Improve update notifications.
+  + Updated translations. (forwarded request 1296987 from iznogood)</comment>
+    <requestid>1297627</requestid>
+  </revision>
 </revisionlist>
