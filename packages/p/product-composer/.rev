@@ -527,4 +527,14 @@
   * Add appstream data to repomd.xml (boo#1243078)</comment>
     <requestid>1297422</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>26a4bb223cabb41482e69e875119cfef</srcmd5>
+    <version>0.6.12</version>
+    <time>1754483695</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.6.12:
+  * Compress appstream meta data only with gz (boo#1247510)
+  * Add appstream screenshots.tar uncompressed if available.</comment>
+    <requestid>1297947</requestid>
+  </revision>
 </revisionlist>

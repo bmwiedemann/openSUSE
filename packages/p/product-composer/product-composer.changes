@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug  6 11:46:15 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.6.12:
+  * Compress appstream meta data only with gz (boo#1247510)
+  * Add appstream screenshots.tar uncompressed if available.
+
+-------------------------------------------------------------------
 Mon Aug  4 08:03:58 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.6.11:
