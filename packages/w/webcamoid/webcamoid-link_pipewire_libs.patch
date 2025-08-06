@@ -1,0 +1,26 @@
+Index: webcamoid-9.3.0-build/webcamoid-9.3.0/libAvKys/Plugins/DesktopCapture/src/pipewire/CMakeLists.txt
+===================================================================
+--- webcamoid-9.3.0-build.orig/libAvKys/Plugins/DesktopCapture/src/pipewire/CMakeLists.txt
++++ webcamoid-9.3.0-build/libAvKys/Plugins/DesktopCapture/src/pipewire/CMakeLists.txt
+@@ -92,7 +92,7 @@ target_link_libraries(DesktopCapture_pip
+ if (PIPEWIRE_DYNLOAD)
+     add_definitions(-DUSE_PIPEWIRE_DYNLOAD)
+ else ()
+-    target_link_libraries(AudioDevice_pipewire
++    target_link_libraries(DesktopCapture_pipewire
+                           ${PIPEWIRE_LIBRARIES})
+ endif ()
+ 
+Index: webcamoid-9.3.0-build/webcamoid-9.3.0/libAvKys/Plugins/VideoCapture/src/capture/pipewire/CMakeLists.txt
+===================================================================
+--- webcamoid-9.3.0-build.orig/libAvKys/Plugins/VideoCapture/src/capture/pipewire/CMakeLists.txt
++++ webcamoid-9.3.0-build/libAvKys/Plugins/VideoCapture/src/capture/pipewire/CMakeLists.txt
+@@ -87,7 +87,7 @@ target_link_libraries(VideoCapture_pipew
+ if (PIPEWIRE_DYNLOAD)
+     add_definitions(-DUSE_PIPEWIRE_DYNLOAD)
+ else ()
+-    target_link_libraries(AudioDevice_pipewire
++    target_link_libraries(VideoCapture_pipewire
+                           ${PIPEWIRE_LIBRARIES})
+ endif ()
+ 

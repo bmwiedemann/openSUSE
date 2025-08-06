@@ -1,7 +1,7 @@
 #
 # spec file for package webcamoid
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,17 @@
 
 
 Name:           webcamoid
-Version:        9.2.3
+Version:        9.3.0
 Release:        0
 Summary:        Webcam applet for Plasma
 License:        GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            https://webcamoid.github.io/
 Source:         https://github.com/hipersayanX/Webcamoid/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM webcamoid-disable_autoupdate.patch
-Patch0:         webcamoid-disable_autoupdate.patch
+# PATCH-FIX-OPENSUSE webcamoid-link_pipewire_libs.patch aloisio@gmx.com -- links plugins to correct library
+Patch1:         webcamoid-link_pipewire_libs.patch
+# PATCH-FIX-OPENSUSE webcamoid-fix_ppc64_detection.patch aloisio@gmx.com -- add ppc64 check
+Patch2:         webcamoid-fix_ppc64_detection.patch
 BuildRequires:  bison
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -94,6 +96,11 @@ test -x "$(type -p g++-13)" && export CXX=g++-13
 %cmake_qt6 \
  -DPLUGINSDIR=%{_qt6_pluginsdir} \
  -DOUTPUT_QT_PLUGINS_DIR=%{_qt6_pluginsdir} \
+%ifarch %{ix86}
+ -DNOSIMDMMX=TRUE \
+ -DNOSIMDSSE=TRUE \
+ -DNOSIMDSSE2=TRUE \
+%endif
  -DNOCHECKUPDATES=TRUE
 %qt6_build
 
