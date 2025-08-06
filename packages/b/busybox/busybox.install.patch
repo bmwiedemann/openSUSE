@@ -1,5 +1,5 @@
 diff --git a/applets/install.sh b/applets/install.sh
-index 415896893..c1b611bfc 100755
+index 415896893..7b51fd8f3 100755
 --- a/applets/install.sh
 +++ b/applets/install.sh
 @@ -1,11 +1,11 @@
@@ -16,7 +16,7 @@ index 415896893..c1b611bfc 100755
  	echo "  TYPE is one of: --symlinks --hardlinks --binaries --scriptwrapper --none"
  	echo "  OPTS is one or more of: --cleanup --noclobber"
  	exit 1
-@@ -13,9 +13,13 @@ fi
+@@ -13,9 +13,9 @@ fi
  shift # Keep only remaining options
  
  # Source the configuration
@@ -24,19 +24,17 @@ index 415896893..c1b611bfc 100755
 +#. ./.config
  
 -h=`sort busybox.links | uniq`
-+#this is a placeholder, it will be replaced with correct list by create-filelists.sh
-+#when building the busybox-links package
-+IGNORE_APPLETS=""
-+
-+h=`sort /usr/share/busybox/busybox.links | uniq | grep -vE "${IGNORE_APPLETS// /|}"`
++h=`sort /usr/share/busybox/busybox.links | uniq`
  
  sharedlib_dir="0_lib"
  
-@@ -78,7 +82,7 @@ fi
+@@ -77,8 +77,8 @@ if [ x"$cleanup" = x"1" ] && [ -e "$prefix/bin/busybox" ]; then
+ fi
  
  rm -f "$prefix/bin/busybox" || exit 1
- mkdir -p "$prefix/bin" || exit 1
+-mkdir -p "$prefix/bin" || exit 1
 -install -m 755 busybox "$prefix/bin/busybox" || exit 1
++mkdir -p "$prefix/usr/bin" || exit 1
 +install -m 755 /usr/bin/busybox "$prefix/bin/busybox" || exit 1
  
  for i in $h; do

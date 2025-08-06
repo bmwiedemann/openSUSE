@@ -902,4 +902,12 @@
 - enable halt, poweroff, reboot commands (bsc#1243201) </comment>
     <requestid>1294032</requestid>
   </revision>
+  <revision rev="92" vrev="6">
+    <srcmd5>3a27ec5eaf7ec4adca5adc7aeac9dbb6</srcmd5>
+    <version>1.37.0</version>
+    <time>1754483464</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297404</requestid>
+  </revision>
 </revisionlist>

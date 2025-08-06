@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  1 07:36:48 UTC 2025 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- revert the change to busybox.install.patch below. The logic will be
+  needed only in busybox-links package when generating file lists.
+- fix mkdir path to point to /usr/bin instead of /bin
+
+-------------------------------------------------------------------
 Thu Jul 17 04:47:22 UTC 2025 - Radoslav Kolev <radoslav.kolev@suse.com>
 
 - add placeholder variable and ignore applet logic to busybox.install 
