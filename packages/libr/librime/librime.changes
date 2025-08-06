@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Aug  4 12:50:40 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 1.14.0:
+  * Features
+    deployer: allow disabling backup_config_files.
+    translator_commons: add dictionary_exclude to exclude words.
+    ascii_composer: set/unset_ascii_mode.
+    ascii_composer: support alt, super key press.
+    script_translator: learn new phrases automatically from
+    segmentations.
+    script_translator: update elements of phrases which are longer
+    than max_word_length.
+    script_translator: concatenate segments with a sliding window.
+  * Bug Fixes
+    test: memory leaks in unit tests
+    cmake: replace include() with find_package() to avoid calling
+    find_package_handle_standard_args() twice with different arguments.
+    crashes caused by creating empty components.
+    simplifier: return nullptr on error.
+    ascii_composer: Fix good old caps lock behavior.
+    script_translator: config max_word_length and core_word_length.
+    fix non-void function does not return a value.
+  * Continuous Integration
+    fix lint, always lint with clang-format 18.1.8.
+    update runner windows-2019 to windows-latest.
+    use the macos-15 runner image.
+    fix wrong filter on push event.
+    use clang-format from apt llvm.
+  * Chores
+    upgrade boost to 1.88.0.
+    release: 1.14.0.
+  * Commits
+    apply clang-format by make clang-format-apply.
+    add tmux-rime, rl_custom_rime, YuyanIme.
+
+-------------------------------------------------------------------
 Sun Apr  6 07:11:40 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - refactor librime-boost166.patch
