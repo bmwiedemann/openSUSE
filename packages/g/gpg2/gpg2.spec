@@ -18,7 +18,7 @@
 
 
 Name:           gpg2
-Version:        2.5.9
+Version:        2.5.11
 Release:        0
 Summary:        File encryption, decryption, signature creation and verification utility
 License:        GPL-3.0-or-later
@@ -47,21 +47,20 @@ Patch11:        gnupg-allow-large-rsa.patch
 Patch12:        gnupg-revert-rfc4880bis.patch
 #PATCH-FIX-OPENSUSE Do not pull revision info from GIT when autoconf is run
 Patch13:        gnupg-nobetasuffix.patch
-
 BuildRequires:  expect
 BuildRequires:  fdupes
-BuildRequires:  libassuan-devel >= 3.0.0
-BuildRequires:  libgcrypt-devel >= 1.11.0
-BuildRequires:  libgpg-error-devel >= 1.51
-BuildRequires:  libksba-devel >= 1.6.3
 BuildRequires:  makeinfo
-BuildRequires:  npth-devel >= 1.2
-BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(gnutls) >= 3.2
+BuildRequires:  pkgconfig(gpg-error) >= 1.51
+BuildRequires:  pkgconfig(ksba) >= 1.6.3
+BuildRequires:  pkgconfig(ldap)
+BuildRequires:  pkgconfig(libassuan) >= 3.0.0
+BuildRequires:  pkgconfig(libgcrypt) >= 1.11.0
 BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(npth) >= 1.2
+BuildRequires:  pkgconfig(readline)
 BuildRequires:  pkgconfig(sqlite3) >= 3.27
 BuildRequires:  pkgconfig(zlib)
 Requires:       pinentry
@@ -157,12 +156,13 @@ cp systemd-user/README.systemd %{buildroot}%{_docdir}/gpg2/
 %fdupes -s %{buildroot}
 
 %check
-%make_build check || :
+%make_build check
 
 %post
 %udev_rules_update
 
 %files lang -f gnupg2.lang
+%license COPYING*
 
 %files
 %license COPYING*

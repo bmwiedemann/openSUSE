@@ -1545,4 +1545,12 @@ Still valid</comment>
     <comment>gpg2 2.5.9 (forwarded request 1293215 from AndreasStieger)</comment>
     <requestid>1293223</requestid>
   </revision>
+  <revision rev="190" vrev="1">
+    <srcmd5>18f390f4dd60360aadf47eeab7f0b5c9</srcmd5>
+    <version>2.5.11</version>
+    <time>1754483478</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297466</requestid>
+  </revision>
 </revisionlist>
