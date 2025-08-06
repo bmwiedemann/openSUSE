@@ -28,6 +28,8 @@ Source0:        https://github.com/lensfun/lensfun/archive/v%{version}.tar.gz#/%
 Source1:        data-master.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         lensfun-cmake4.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         lensfun-python314.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes

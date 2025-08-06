@@ -1,0 +1,25 @@
+From aa8f9d008b9b06d357ebc2542d489a2132cc078e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C5=A0ar=C5=ABnas=20Burdulis?= <sarunas.burdulis@yahoo.com>
+Date: Fri, 27 Jun 2025 10:58:40 -0400
+Subject: [PATCH] Add filter to TarFile.extract(). (#2476)
+
+---
+ apps/lensfun-update-data | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/apps/lensfun-update-data b/apps/lensfun-update-data
+index 01de313..14517f2 100755
+--- a/apps/lensfun-update-data
++++ b/apps/lensfun-update-data
+@@ -85,7 +85,7 @@ class Location:
+     def extract(self, directory):
+         tar = tarfile.open(fileobj=urllib.request.urlopen(self.base_url + "version_{}.tar.bz2".format(self.version)),
+                            mode="r|*")
+-        tar.extractall(directory)
++        tar.extractall(directory,filter='data')
+         tar.close()
+ 
+ 
+-- 
+2.50.1
+

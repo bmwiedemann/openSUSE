@@ -441,4 +441,14 @@
   * lensfun-cmake4.patch</comment>
     <requestid>1266186</requestid>
   </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>826bbd5f8fdb94fb431dc3b844d4c0fa</srcmd5>
+    <version>0.3.4</version>
+    <time>1754483522</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change (boo#1247449)
+  * lensfun-python314.patch
+- Update lens database</comment>
+    <requestid>1297678</requestid>
+  </revision>
 </revisionlist>
