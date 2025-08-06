@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Aug  4 23:33:12 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 1.9.34:
+  * When using "--size @FILE", FILE can be a block device, and its
+    size will be used.
+  * Correct a double-free on exit when using "--watchfd".
+  * Added a --store-and-forward option to read input to a file
+    first, then write it to the output.
+  * Added a --stats option to show transfer stats at the end, like
+    "ping".
+  * --rate can now be used with --numeric.
+  * --gauge can be combined with --progress to show rate gauge when
+    size is unknown.
+  * New --extra-display option to update window and process
+    titles.
+  * New --format sequence "%nL", showing the most recent line
+    written.
+  * New --format sequences for graphical progress bars
+    "%{bar-block}", "%{bar-granular}", and "%{bar-shaded}".
+  * New --format sequence "%{sgr:colour,...}" to use ECMA-48 Select
+    Graphic Rendition codes to add colors.
+  * New --bar-style option to change the default bar style.
+  * Allow decimal values such as "1.5G" with "--size",
+    "--rate-limit", "--buffer-size", and "error-skip-block".
+  * The --format option can now be used with --numeric for
+    customised numeric output, such as JSON.
+
+-------------------------------------------------------------------
 Wed Jul 31 04:48:17 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.8.12:
@@ -342,5 +370,3 @@ Sun Feb  8 00:00:00 UTC 2004 - guru@unixtech.be
 Tue Jan  6 00:00:00 UTC 2004 - guru@unixtech.be
 
 - new spec-file
-
-
