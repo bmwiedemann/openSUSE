@@ -19,14 +19,13 @@
 %global sover   4
 %global lname   libtsm%{sover}
 Name:           libtsm
-Version:        4.0.2+git24
+Version:        4.1.0
 Release:        0
 Summary:        DEC-VT terminal emulator state machine
 License:        LGPL-2.1-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/Aetf/libtsm
-%define rev 69922bde02c7af83b4d48a414cc6036af7388626
-Source:         https://github.com/Aetf/libtsm/archive/%rev.tar.gz
+Source:         https://github.com/Aetf/libtsm/archive/refs/tags/v%version.tar.gz
 BuildRequires:  cmake
 BuildRequires:  pkg-config
 BuildRequires:  xz
@@ -67,7 +66,7 @@ This package contains the development headers for the library found
 in %{lname}.
 
 %prep
-%autosetup -p1 -n libtsm-%rev
+%autosetup -p1
 
 %build
 %cmake
