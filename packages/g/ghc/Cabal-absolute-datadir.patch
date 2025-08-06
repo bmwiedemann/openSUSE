@@ -1,0 +1,277 @@
+From 1f8f9fd08fb90bd94668ac8a81c94e179fc8ab86 Mon Sep 17 00:00:00 2001
+From: Matthew Pickering <matthewtpickering@gmail.com>
+Date: Fri, 14 Mar 2025 12:55:51 +0000
+Subject: [PATCH] Set <pkgname_datadir> to an absolute path
+
+Ticket #10717 points out that the <pkgname>_datadir environment variable
+should be set to an absolute path since the test executables may
+change directory during their invocation.
+
+This is easily fixed by using the absoluteWorkingDirLBI
+function, which was introduced in 027bddfcdf3ba298376c60be1ccf664ebc394cec,
+
+Fixes #10717
+---
+ Cabal/src/Distribution/Simple/Bench.hs        |  2 +
+ Cabal/src/Distribution/Simple/Build.hs        | 50 ++++++++++---------
+ Cabal/src/Distribution/Simple/Haddock.hs      |  3 +-
+ Cabal/src/Distribution/Simple/Test.hs         |  2 +
+ cabal-install/src/Distribution/Client/Run.hs  |  3 ++
+ .../DataDirSetupTest/cabal.cabal.out          | 13 +++++
+ .../PackageTests/DataDirSetupTest/cabal.out   | 13 +++++
+ changelog.d/pr-10830.md                       | 10 ++++
+ 8 files changed, 72 insertions(+), 24 deletions(-)
+ create mode 100644 cabal-testsuite/PackageTests/DataDirSetupTest/cabal.cabal.out
+ create mode 100644 cabal-testsuite/PackageTests/DataDirSetupTest/cabal.out
+ create mode 100644 changelog.d/pr-10830.md
+
+diff --git a/Cabal/src/Distribution/Simple/Bench.hs b/Cabal/src/Distribution/Simple/Bench.hs
+index 78f169f25..c4b4dbd2f 100644
+--- a/Cabal/src/Distribution/Simple/Bench.hs
++++ b/Cabal/src/Distribution/Simple/Bench.hs
+@@ -56,6 +56,7 @@ bench
+   -- ^ flags sent to benchmark
+   -> IO ()
+ bench args pkg_descr lbi flags = do
++  curDir <- LBI.absoluteWorkingDirLBI lbi
+   let verbosity = fromFlag $ benchmarkVerbosity flags
+       benchmarkNames = args
+       pkgBenchmarks = PD.benchmarks pkg_descr
+@@ -71,6 +72,7 @@ bench args pkg_descr lbi flags = do
+                 { -- Include any build-tool-depends on build tools internal to the current package.
+                   LBI.withPrograms =
+                     addInternalBuildTools
++                      curDir
+                       pkg_descr
+                       lbi
+                       (benchmarkBuildInfo bm)
+diff --git a/Cabal/src/Distribution/Simple/Build.hs b/Cabal/src/Distribution/Simple/Build.hs
+index 0ebd51e48..647480d35 100644
+--- a/Cabal/src/Distribution/Simple/Build.hs
++++ b/Cabal/src/Distribution/Simple/Build.hs
+@@ -187,13 +187,15 @@ build_setupHooks
+     -- dumped.
+     dumpBuildInfo verbosity distPref (configDumpBuildInfo (configFlags lbi)) pkg_descr lbi flags
+ 
++    curDir <- absoluteWorkingDirLBI lbi
++
+     -- Now do the actual building
+     (\f -> foldM_ f (installedPkgs lbi) componentsToBuild) $ \index target -> do
+       let comp = targetComponent target
+           clbi = targetCLBI target
+           bi = componentBuildInfo comp
+           -- Include any build-tool-depends on build tools internal to the current package.
+-          progs' = addInternalBuildTools pkg_descr lbi bi (withPrograms lbi)
++          progs' = addInternalBuildTools curDir pkg_descr lbi bi (withPrograms lbi)
+           lbi' =
+             lbi
+               { withPrograms = progs'
+@@ -375,17 +377,20 @@ repl_setupHooks
+ 
+     internalPackageDB <- createInternalPackageDB verbosity lbi distPref
+ 
+-    let lbiForComponent comp lbi' =
+-          lbi'
+-            { withPackageDB = withPackageDB lbi ++ [internalPackageDB]
+-            , withPrograms =
+-                -- Include any build-tool-depends on build tools internal to the current package.
+-                addInternalBuildTools
+-                  pkg_descr
+-                  lbi'
+-                  (componentBuildInfo comp)
+-                  (withPrograms lbi')
+-            }
++    let lbiForComponent comp lbi' = do
++          curDir <- absoluteWorkingDirLBI lbi'
++          return $
++            lbi'
++              { withPackageDB = withPackageDB lbi' ++ [internalPackageDB]
++              , withPrograms =
++                  -- Include any build-tool-depends on build tools internal to the current package.
++                  addInternalBuildTools
++                    curDir
++                    pkg_descr
++                    lbi'
++                    (componentBuildInfo comp)
++                    (withPrograms lbi')
++              }
+         runPreBuildHooks :: LocalBuildInfo -> TargetInfo -> IO ()
+         runPreBuildHooks lbi2 tgt =
+           let inputs =
+@@ -403,7 +408,7 @@ repl_setupHooks
+       [ do
+         let clbi = targetCLBI subtarget
+             comp = targetComponent subtarget
+-            lbi' = lbiForComponent comp lbi
++        lbi' <- lbiForComponent comp lbi
+         preBuildComponent runPreBuildHooks verbosity lbi' subtarget
+         buildComponent
+           (mempty{buildCommonFlags = mempty{setupVerbosity = toFlag verbosity}})
+@@ -420,7 +425,7 @@ repl_setupHooks
+     -- REPL for target components
+     let clbi = targetCLBI target
+         comp = targetComponent target
+-        lbi' = lbiForComponent comp lbi
++    lbi' <- lbiForComponent comp lbi
+     preBuildComponent runPreBuildHooks verbosity lbi' target
+     replComponent flags verbosity pkg_descr lbi' suffixHandlers comp clbi distPref
+ 
+@@ -925,12 +930,13 @@ createInternalPackageDB verbosity lbi distPref = do
+ --    'progOverrideEnv', so that any programs configured from now on will be
+ --    able to invoke these build tools.
+ addInternalBuildTools
+-  :: PackageDescription
++  :: AbsolutePath (Dir Pkg)
++  -> PackageDescription
+   -> LocalBuildInfo
+   -> BuildInfo
+   -> ProgramDb
+   -> ProgramDb
+-addInternalBuildTools pkg lbi bi progs =
++addInternalBuildTools pwd pkg lbi bi progs =
+   prependProgramSearchPathNoLogging
+     internalToolPaths
+     [pkgDataDirVar]
+@@ -949,13 +955,11 @@ addInternalBuildTools pkg lbi bi progs =
+                 buildDir lbi
+                   </> makeRelativePathEx (toolName' </> toolName' <.> exeExtension (hostPlatform lbi))
+       ]
+-    mbWorkDir = mbWorkDirLBI lbi
+-    rawDataDir = dataDir pkg
+-    dataDirPath
+-      | null $ getSymbolicPath rawDataDir =
+-          interpretSymbolicPath mbWorkDir sameDirectory
+-      | otherwise =
+-          interpretSymbolicPath mbWorkDir rawDataDir
++
++    -- This is an absolute path, so if a process changes directory, it can still
++    -- find the datadir (#10717)
++    dataDirPath :: FilePath
++    dataDirPath = interpretSymbolicPathAbsolute pwd (dataDir pkg)
+ 
+ -- TODO: build separate libs in separate dirs so that we can build
+ -- multiple libs, e.g. for 'LibTest' library-style test suites
+diff --git a/Cabal/src/Distribution/Simple/Haddock.hs b/Cabal/src/Distribution/Simple/Haddock.hs
+index ee2b88e76..5c534c01d 100644
+--- a/Cabal/src/Distribution/Simple/Haddock.hs
++++ b/Cabal/src/Distribution/Simple/Haddock.hs
+@@ -331,12 +331,13 @@ haddock_setupHooks
+       createInternalPackageDB verbosity lbi (flag $ setupDistPref . haddockCommonFlags)
+ 
+     (\f -> foldM_ f (installedPkgs lbi) targets') $ \index target -> do
++      curDir <- absoluteWorkingDirLBI lbi
+       let
+         component = targetComponent target
+         clbi = targetCLBI target
+         bi = componentBuildInfo component
+         -- Include any build-tool-depends on build tools internal to the current package.
+-        progs' = addInternalBuildTools pkg_descr lbi bi (withPrograms lbi)
++        progs' = addInternalBuildTools curDir pkg_descr lbi bi (withPrograms lbi)
+         lbi' =
+           lbi
+             { withPrograms = progs'
+diff --git a/Cabal/src/Distribution/Simple/Test.hs b/Cabal/src/Distribution/Simple/Test.hs
+index 5b7a6daa7..57107eef6 100644
+--- a/Cabal/src/Distribution/Simple/Test.hs
++++ b/Cabal/src/Distribution/Simple/Test.hs
+@@ -70,6 +70,7 @@ test
+   -- ^ flags sent to test
+   -> IO ()
+ test args pkg_descr lbi0 flags = do
++  curDir <- LBI.absoluteWorkingDirLBI lbi0
+   let common = testCommonFlags flags
+       verbosity = fromFlag $ setupVerbosity common
+       distPref = fromFlag $ setupDistPref common
+@@ -96,6 +97,7 @@ test args pkg_descr lbi0 flags = do
+                 { withPrograms =
+                     -- Include any build-tool-depends on build tools internal to the current package.
+                     addInternalBuildTools
++                      curDir
+                       pkg_descr
+                       lbi
+                       (PD.testBuildInfo suite)
+diff --git a/cabal-install/src/Distribution/Client/Run.hs b/cabal-install/src/Distribution/Client/Run.hs
+index 88671a9f5..1dd9db32c 100644
+--- a/cabal-install/src/Distribution/Client/Run.hs
++++ b/cabal-install/src/Distribution/Client/Run.hs
+@@ -35,6 +35,7 @@ import Distribution.Simple.Flag (fromFlag)
+ import Distribution.Simple.LocalBuildInfo
+   ( ComponentName (..)
+   , LocalBuildInfo (..)
++  , absoluteWorkingDirLBI
+   , buildDir
+   , depLibraryPaths
+   , interpretSymbolicPathLBI
+@@ -142,6 +143,7 @@ splitRunArgs verbosity lbi args =
+ -- | Run a given executable.
+ run :: Verbosity -> LocalBuildInfo -> Executable -> [String] -> IO ()
+ run verbosity lbi exe exeArgs = do
++  curDir <- absoluteWorkingDirLBI lbi
+   let distPref = fromFlag $ configDistPref $ configFlags lbi
+       buildPref = buildDir lbi
+       pkg_descr = localPkgDescr lbi
+@@ -154,6 +156,7 @@ run verbosity lbi exe exeArgs = do
+           , -- Include any build-tool-depends on build tools internal to the current package.
+             withPrograms =
+               addInternalBuildTools
++                curDir
+                 pkg_descr
+                 lbi
+                 (buildInfo exe)
+diff --git a/cabal-testsuite/PackageTests/DataDirSetupTest/cabal.cabal.out b/cabal-testsuite/PackageTests/DataDirSetupTest/cabal.cabal.out
+new file mode 100644
+index 000000000..f1e923b5c
+--- /dev/null
++++ b/cabal-testsuite/PackageTests/DataDirSetupTest/cabal.cabal.out
+@@ -0,0 +1,13 @@
++# Setup configure
++Configuring datadir-test-0.1.0.0...
++# Setup build
++Preprocessing library for datadir-test-0.1.0.0...
++Building library for datadir-test-0.1.0.0...
++Preprocessing test suite 'datadir-test' for datadir-test-0.1.0.0...
++Building test suite 'datadir-test' for datadir-test-0.1.0.0...
++# Setup test
++Running 1 test suites...
++Test suite datadir-test: RUNNING...
++Test suite datadir-test: PASS
++Test suite logged to: cabal.cabal.dist/work/dist/test/datadir-test-0.1.0.0-datadir-test.log
++1 of 1 test suites (1 of 1 test cases) passed.
+diff --git a/cabal-testsuite/PackageTests/DataDirSetupTest/cabal.out b/cabal-testsuite/PackageTests/DataDirSetupTest/cabal.out
+new file mode 100644
+index 000000000..eadbc3aea
+--- /dev/null
++++ b/cabal-testsuite/PackageTests/DataDirSetupTest/cabal.out
+@@ -0,0 +1,13 @@
++# Setup configure
++Configuring datadir-test-0.1.0.0...
++# Setup build
++Preprocessing library for datadir-test-0.1.0.0...
++Building library for datadir-test-0.1.0.0...
++Preprocessing test suite 'datadir-test' for datadir-test-0.1.0.0...
++Building test suite 'datadir-test' for datadir-test-0.1.0.0...
++# Setup test
++Running 1 test suites...
++Test suite datadir-test: RUNNING...
++Test suite datadir-test: PASS
++Test suite logged to: cabal.dist/work/dist/test/datadir-test-0.1.0.0-datadir-test.log
++1 of 1 test suites (1 of 1 test cases) passed.
+diff --git a/changelog.d/pr-10830.md b/changelog.d/pr-10830.md
+new file mode 100644
+index 000000000..9e7876144
+--- /dev/null
++++ b/changelog.d/pr-10830.md
+@@ -0,0 +1,10 @@
++---
++synopsis: Set <pkgname>_datadir to an absolute path when running tests
++packages: [Cabal]
++prs: 10828
++issues: [10717]
++---
++
++Fix a regression where `<pkgname>_datadir` was set to a relative path. This
++caused issues when running testsuites which changed the working directory and
++accessed datafiles.
+-- 
+2.50.1
+

@@ -87,6 +87,7 @@ Source7:        runghc.man
 Patch1:         ghc-gen_contents_index-haddock-path.patch
 # https://ghc.haskell.org/trac/ghc/ticket/15689
 Patch2:         ghc-Cabal-install-PATH-warning.patch
+Patch3:         Cabal-absolute-datadir.patch
 Patch200:       ghc-hadrian-s390x-rts--qg.patch
 Patch400:       gnu23-hp2ps.patch
 
@@ -297,6 +298,9 @@ Installing this package causes %{name}-*-prof packages corresponding to
 %setup -q
 %patch -P 1 -p1
 %patch -P 2 -p1
+cd libraries/Cabal
+%patch -P 3 -p1
+cd ../..
 
 %ifarch ppc64le s390x
 %patch -P 200 -p1

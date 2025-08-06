@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  4 20:57:07 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Cabal-absolute-datadir.patch: Set <pkgname_datadir> to an absolute path
+
+-------------------------------------------------------------------
 Wed Jul 30 07:38:27 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Require llvm only on ghc_llvm_archs
