@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  1 20:58:15 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to Xdebug 3.4.5
+  * Fixed bug #2332: Segmentation fault for code coverage with nested fibers
+  * Fixed bug #2356: Reading properties with get hooks may modify property value
+
+-------------------------------------------------------------------
 Sun Jun 15 20:35:18 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to Xdebug 3.4.4
