@@ -167,4 +167,12 @@
     <comment>Fix build with ghc-9.12.x.</comment>
     <requestid>1296533</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>16de8d3474c995708a25af28594fba7c</srcmd5>
+    <version>0.7.0.1</version>
+    <time>1754483639</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1297799</requestid>
+  </revision>
 </revisionlist>

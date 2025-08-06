@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.7.0.0
+Version:        0.7.0.1
 Release:        0
 Summary:        Mid-Level PostgreSQL client library
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/3.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Only-devel
 BuildRequires:  ghc-Only-prof
@@ -63,8 +62,6 @@ BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-vector-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-HUnit-devel
-BuildRequires:  ghc-HUnit-prof
 BuildRequires:  ghc-base16-bytestring-devel
 BuildRequires:  ghc-base16-bytestring-prof
 BuildRequires:  ghc-cryptohash-md5-devel
@@ -113,9 +110,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
-cabal-tweak-dep-ver base '<4.21' '< 5'
-cabal-tweak-dep-ver template-haskell '<2.23' '< 3'
 
 %build
 %ghc_lib_build

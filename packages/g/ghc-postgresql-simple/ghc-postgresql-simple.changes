@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug  2 19:12:35 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update postgresql-simple to version 0.7.0.1.
+  Upstream has not updated the file "CHANGES.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Tue Jul 29 14:08:24 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Jailbreak over-specified constraints to fix build with ghc-9.12.x.
