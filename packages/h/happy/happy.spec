@@ -1,7 +1,7 @@
 #
 # spec file for package happy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,12 @@
 
 %bcond_with tests
 Name:           happy
-Version:        1.20.1.1
+Version:        2.1.6
 Release:        0
 Summary:        Happy is a parser generator for Haskell
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  docbook-dtd
-BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-array-prof
@@ -34,11 +31,12 @@ BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-happy-lib-devel
+BuildRequires:  ghc-happy-lib-prof
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  libxml2
-BuildRequires:  libxslt
+Requires:       ghc-happy-lib-templates
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-process-devel
@@ -56,39 +54,16 @@ to the 'yacc' tool for C.
 %build
 %define cabal_configure_options -f-bootstrap
 %ghc_bin_build
-cd doc
-autoreconf
-%configure
-%make_build html
 
 %install
 %ghc_bin_install
-# drop artifacts from autoconf that differ across builds to fix build-compare
-rm -rf doc/autom4te.cache doc/config.log doc/config.status
-
-install -D --mode=444 doc/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 %check
 %cabal_test
 
 %files
 %license LICENSE
-%doc ChangeLog.md doc examples
+%doc ChangeLog.md README.md examples
 %{_bindir}/%{name}
-%dir %{_datadir}/%{name}-%{version}
-%{_mandir}/man1/*
-%{_datadir}/%{name}-%{version}/GLR_Base
-%{_datadir}/%{name}-%{version}/GLR_Lib
-%{_datadir}/%{name}-%{version}/GLR_Lib-ghc
-%{_datadir}/%{name}-%{version}/GLR_Lib-ghc-debug
-%{_datadir}/%{name}-%{version}/HappyTemplate
-%{_datadir}/%{name}-%{version}/HappyTemplate-arrays
-%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-coerce
-%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-coerce-debug
-%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-debug
-%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-ghc
-%{_datadir}/%{name}-%{version}/HappyTemplate-arrays-ghc-debug
-%{_datadir}/%{name}-%{version}/HappyTemplate-coerce
-%{_datadir}/%{name}-%{version}/HappyTemplate-ghc
 
 %changelog
