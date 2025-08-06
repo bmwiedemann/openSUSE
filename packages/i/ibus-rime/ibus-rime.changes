@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  3 11:37:30 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 1.5.1:
+  fix(rime_engine): ignore super modifier in gtk.
+- Update ibus-rime.spec:
+  Change the project URL and source name source address with current
+  project homepage to fit the SLFO:Main robot check.
+
+-------------------------------------------------------------------
 Sun Jan 21 10:35:17 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fixes for %_ibus_libexecdir moving to %_libexecdir (bsc#1174075)

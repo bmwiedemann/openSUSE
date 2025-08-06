@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-rime
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,25 @@
 
 
 Name:           ibus-rime
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Rime for Linux/IBus
 License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
-URL:            https://github.com/rime/ibus-rime
-Source:         %{URL}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  libboost_headers-devel
+URL:            https://rime.im/
+Source:         https://github.com/rime/%{name}/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig(ibus-1.0)
+BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(rime)
 
 %description
 Rime Input Method Engine for Linux/IBus
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake \
