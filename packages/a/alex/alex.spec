@@ -18,7 +18,7 @@
 
 %bcond_without tests
 Name:           alex
-Version:        3.5.3.0
+Version:        3.5.4.0
 Release:        0
 Summary:        Alex is a tool for generating lexical analysers in Haskell
 License:        BSD-3-Clause
@@ -56,7 +56,6 @@ lex or flex for C/C++.
 %ghc_bin_install
 
 %check
-export alex_datadir="%{_builddir}/%{name}-%{version}/data"
 %cabal_test
 
 %files

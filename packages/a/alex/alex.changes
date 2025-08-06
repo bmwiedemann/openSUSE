@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Aug  4 20:57:36 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Don't need to define $alex_datadir, fixed in Cabal instead
+
+-------------------------------------------------------------------
+Sun Aug  3 21:16:33 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update alex to version 3.5.4.0.
+  ## Changes in 3.5.4.0
+
+  * Fix [issue #277](https://github.com/haskell/alex/issues/277):
+    compatibility of generated code with `{-# LANGUAGE ImpredicativeTypes #-}`,
+    thanks Nadia Yvette Chambers!
+  * Simplify `cabal install` ([PR #272](https://github.com/haskell/alex/pull/272)),
+    thanks Antoine Leblanc!
+  * Document `examples/words.x`, thanks Piotr Justyna!
+  * Tested with GHC 8.0 - 9.12.2.
+
+  _Andreas Abel, 2025-08-03_
+
+-------------------------------------------------------------------
 Mon Jul 28 19:14:01 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Define $alex_datadir to fix the test suite.
