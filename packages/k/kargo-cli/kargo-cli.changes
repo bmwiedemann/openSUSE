@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed Aug 06 05:11:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.7.0:
+  Kargo 1.7.0 contains breaking changes (unrelated to the CLI), see
+  https://github.com/akuity/kargo/releases/tag/v1.7.0
+  * no CLI-related changes
+  * Dependencies
+    - chore(deps): bump argo-cd, argo-rollouts, and cert-manager to
+      latest versions (#4669)
+    - chore(deps): bump curlimages/curl from 8.14.1 to 8.15.0
+      (#4647)
+    - chore(deps): bump golang from 1.24.4-bookworm to
+      1.24.5-bookworm (#4611)
+    - chore(deps): bump google.golang.org/api from 0.241.0 to
+      0.242.0 in the go-minor group (#4653)
+    - chore(deps): bump helm.sh/helm/v3 from 3.18.3 to 3.18.4
+      (#4575)
+    - chore(deps): bump korthout/backport-action from 3.2.0 to
+      3.2.1 (#4526)
+    - chore(deps): bump library/node from 24.1.0 to 24.3.0 (#4525)
+    - chore(deps): bump sigstore/cosign-installer from 3.9.0 to
+      3.9.1 (#4527)
+    - chore(deps): bump sigstore/cosign-installer from 3.9.1 to
+      3.9.2 (#4644)
+    - chore(deps): bump the go-minor group across 1 directory with
+      2 updates (#4479)
+    - chore(deps): bump the go-minor group with 2 updates (#4553)
+    - chore(deps): bump the go-minor group with 5 updates (#4528)
+    - chore(deps): bump the go-minor group with 5 updates (#4690)
+    - chore(deps): bump the go-minor group with 8 updates (#4614)
+    - chore(deps): bump the go-patch group with 13 updates (#4652)
+    - chore(deps): bump the go-patch group with 3 updates (#4689)
+    - chore(deps): bump the js-major group in /ui with 7 updates
+      (#4651)
+    - chore(deps): bump the js-minor group across 1 directory with
+      19 updates (#4616)
+    - chore(deps): bump the js-minor group in /ui with 5 updates
+      (#4694)
+    - chore(deps): bump the js-minor group in /ui with 7 updates
+      (#4650)
+    - chore(deps): bump the js-patch group across 1 directory with
+      13 updates (#4530)
+    - chore(deps): bump the js-patch group in /ui with 2 updates
+      (#4554)
+    - chore(deps): bump the js-patch group in /ui with 5 updates
+      (#4649)
+    - chore(deps/api): bump sigs.k8s.io/yaml from 1.4.0 to 1.5.0 in
+      /api in the go-minor group (#4529)
+    - chore(deps/api): bump sigs.k8s.io/yaml from 1.5.0 to 1.6.0 in
+      /api in the go-minor group (#4696)
+    - chore(deps/api): bump the go-patch group in /api with 3
+      updates (#4645)
+    - chore(deps/pkg): bump k8s.io/apimachinery from 0.33.2 to
+      0.33.3 in /pkg in the go-patch group (#4648)
+    - chore(deps/tools): bump github.com/docker/docker from
+      28.2.2+incompatible to 28.3.3+incompatible in /hack/tools
+      (#4713)
+    - chore(deps/tools): bump github.com/go-viper/mapstructure/v2
+      from 2.2.1 to 2.3.0 in /hack/tools (#4521)
+    - chore(deps/tools): bump github.com/golangci/golangci-lint/v2
+      from 2.2.1 to 2.2.2 in /hack/tools in the go-patch group
+      (#4612)
+    - chore(deps/tools): bump helm.sh/helm/v3 from 3.18.3 to 3.18.4
+      in /hack/tools (#4574)
+    - chore(deps/tools): bump k8s.io/code-generator from 0.33.2 to
+      0.33.3 in /hack/tools in the go-patch group (#4691)
+    - chore(deps/tools): bump the go-minor group in /hack/tools
+      with 2 updates (#4692)
+    - chore(deps/tools): update `golangci-lint` to v2 (#3921)
+
+-------------------------------------------------------------------
 Fri Aug 01 12:23:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.6.2:
