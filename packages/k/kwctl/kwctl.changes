@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Aug 06 05:27:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.27.2:
+  * Bug Fixes
+    - fix: Set default rustls provider (#1301)
+    - fix: Use correct path for resource-catalog.json cache file
+      (#1300)
+  * Maintenance
+    - build(deps): update crate-ci/typos action to v1.35.1 (#1302)
+    - build(deps): update github-actions (#1296)
+    - build(deps): update rust crate tokio to v1.47.1 (#1297)
+    - build(deps): update rust crate serde_json to v1.0.142 -
+      autoclosed (#1294)
+    - build(deps): update taiki-e/install-action action to v2.57.4
+      (#1295)
+    - build(deps): update rust crate clap to v4.5.42 (#1292)
+    - build(deps): update taiki-e/install-action action to v2.57.2
+      (#1293)
+
+-------------------------------------------------------------------
 Wed Jul 30 15:10:50 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 1.27.1 (bsc#1246954, CVE-2025-53901):
