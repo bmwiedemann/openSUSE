@@ -18,7 +18,7 @@
 
 
 Name:           disk-encryption-tool
-Version:        1+git20250505.aa666d1
+Version:        1+git20250729.d86f79f
 Release:        0
 Summary:        Tool to reencrypt kiwi raw images
 License:        MIT
@@ -26,7 +26,7 @@ URL:            https://github.com/openSUSE/disk-encryption-tool
 Source:         disk-encryption-tool-%{version}.tar
 Requires:       cryptsetup
 Requires:       keyutils
-ExclusiveArch:  aarch64 x86_64
+ExclusiveArch:  aarch64 riscv64 x86_64
 BuildArch:      noarch
 
 %description
