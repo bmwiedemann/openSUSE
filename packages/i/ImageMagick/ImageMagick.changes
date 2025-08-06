@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  5 10:55:19 UTC 2025 - pgajdos@suse.com
+
+- added patches [bsc#1247475]
+  + ImageMagick-filename-placeholder-regression-1.patch
+  + ImageMagick-filename-placeholder-regression-2.patch
+  + ImageMagick-filename-placeholder-regression-3.patch
+
+-------------------------------------------------------------------
 Tue Jul 15 11:36:19 UTC 2025 - pgajdos@suse.com
 
 - version update to 7.1.2.0

@@ -4088,4 +4088,15 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
          CVE-2025-53019 [bsc#1246534]</comment>
     <requestid>1293648</requestid>
   </revision>
+  <revision rev="311" vrev="2">
+    <srcmd5>c5cf373ff648eaa393dd37ad1c320c3c</srcmd5>
+    <version>7.1.2.0</version>
+    <time>1754483494</time>
+    <user>dimstar_suse</user>
+    <comment>- added patches [bsc#1247475]
+  + ImageMagick-filename-placeholder-regression-1.patch
+  + ImageMagick-filename-placeholder-regression-2.patch
+  + ImageMagick-filename-placeholder-regression-3.patch</comment>
+    <requestid>1297742</requestid>
+  </revision>
 </revisionlist>

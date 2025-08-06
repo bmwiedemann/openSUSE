@@ -1,7 +1,8 @@
 #
 # spec file for package ImageMagick
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +31,7 @@
 %define libspec        -7_Q%{quantum_depth}HDRI
 %define config_dir     IM-7
 %define test_verbose   1
-# bsc#1088463
+# bsc#1088463, https://github.com/ImageMagick/ImageMagick/issues/8261
 %define urw_base35_fonts 0
 # do/don't pull djvulibre dependency
 %bcond_without djvu
@@ -50,6 +51,10 @@ Source3:        ImageMagick.keyring
 Patch0:         ImageMagick-configuration-SUSE.patch
 Patch2:         ImageMagick-library-installable-in-parallel.patch
 Patch5:         ImageMagick-s390x-disable-tests.patch
+# bsc#1247475 (https://github.com/ImageMagick/ImageMagick/issues/8261)
+Patch6:         ImageMagick-filename-placeholder-regression-1.patch
+Patch7:         ImageMagick-filename-placeholder-regression-2.patch
+Patch8:         ImageMagick-filename-placeholder-regression-3.patch
 
 BuildRequires:  chrpath
 BuildRequires:  dejavu-fonts
@@ -262,6 +267,9 @@ policy plus disable few other coders for reading and/or writing.
 %ifarch s390x
 %patch -P 5 -p1
 %endif
+%patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
 
 %build
 # bsc#1088463
