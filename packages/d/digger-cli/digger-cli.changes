@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 06 05:14:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.116:
+  * feat/alias for project names (#2070)
+  * fix vendoring (#2069)
+
+-------------------------------------------------------------------
+Tue Aug 05 05:23:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.115:
+  * fix args
+  * feat/support dir flag (#2067)
+  * remove page (#2066)
+
+-------------------------------------------------------------------
 Sun Aug 03 11:39:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.114:
