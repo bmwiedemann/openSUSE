@@ -1,8 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug  4 11:39:55 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix build ecross codestreams
+  * pseries_platform.h-Fix-ifdef-guard-typo.patch
+  * sys_ident-Quiet-strncpy-warning.patch
+  * nvram.c-Correct-librtas-function-prototypes.patch
+  * Remove std-gnu17.patch
+
+-------------------------------------------------------------------
 Thu Jul 17 16:29:03 UTC 2025 - Matthias Brugger <mbrugger@suse.com>
 
 - Fix inconsistent Core Online/Offline States Observed in lscpu and
-  ppc64_cpu --info Command Outputs During DLPAR Operation (bsc#1246126)
+  ppc64_cpu --info Command Outputs During DLPAR Operation (bsc#1246126 ltc#214064)
   * cpu_info_helpers-Add-helper-function-to-retrieve-pre.patch
   * ppc64_cpu-Fix-handling-of-non-contiguous-CPU-IDs.patch
   * std-gnu17.patch
@@ -39,7 +48,7 @@ Tue Mar  4 10:24:35 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 -------------------------------------------------------------------
 Mon Jan 27 17:34:47 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
-- Drop sysvinit service use (bsc#1236480 jsc#-264).
+- Drop sysvinit service use (bsc#1236480 jsc#PED-264).
 
 -------------------------------------------------------------------
 Thu Nov 21 08:10:24 UTC 2024 - Michal Suchanek <msuchanek@suse.de>

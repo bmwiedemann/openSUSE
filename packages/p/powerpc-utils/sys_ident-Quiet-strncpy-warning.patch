@@ -1,0 +1,36 @@
+From 19315c12080674e6323b5710d199140db8ea48f1 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Mon, 4 Nov 2024 11:39:06 +0100
+Subject: [PATCH] sys_ident: Quiet strncpy warning
+
+The string is terminated by explicit NUL assignement below, use memcpy
+instead of strncpy.
+---
+ src/sys_ident.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/sys_ident.c b/src/sys_ident.c
+index 2c5c06b494b9..0d88a2db315f 100644
+--- a/src/sys_ident.c
++++ b/src/sys_ident.c
+@@ -364,7 +364,7 @@ print_sys_part_id(void)
+ 	temp[2] = '\0';
+ 	prefix = atoi(temp);
+ 
+-	strncpy(cc, sys_id+6, 2);
++	memcpy(cc, sys_id+6, 2);
+ 	cc[2] = '\0';
+ 
+ 	strncpy(sssss, sys_id+8, 5);
+@@ -386,7 +386,7 @@ print_sys_part_id(void)
+ 
+ 	close(fd);
+ 
+-	strncpy(tttt, model+4, 4);
++	memcpy(tttt, model+4, 4);
+ 	tttt[4] = '\0';
+ 
+ 	fd = open("/proc/device-tree/ibm,partition-no", O_RDONLY);
+-- 
+2.50.1
+

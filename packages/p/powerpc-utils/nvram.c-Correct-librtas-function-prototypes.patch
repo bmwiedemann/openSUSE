@@ -1,0 +1,41 @@
+From 13ea9e470a3bb7a62c228126c4d7b1ed51d7b382 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Mon, 4 Aug 2025 13:25:38 +0200
+Subject: [PATCH] nvram.c: Correct librtas function prototypes
+
+---
+ src/nvram.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/src/nvram.c b/src/nvram.c
+index 1987c3d94b1f..3aad364de1c0 100644
+--- a/src/nvram.c
++++ b/src/nvram.c
+@@ -886,6 +886,8 @@ dump_errlog(struct nvram *nvram)
+     return 0;
+ }
+ 
++struct rtas_event;
++
+ /**
+  * dump_rtas_event_entry
+  * @brief Dump event-scan data.
+@@ -901,11 +903,11 @@ dump_errlog(struct nvram *nvram)
+ int
+ dump_rtas_event_entry(char *data, int len)
+ {
+-    void *rtas_event;
++    struct rtas_event *rtas_event;
+     void *handle;
+-    void *(*parse_rtas_event)();
+-    void (*rtas_print_event)();
+-    void (*cleanup_rtas_event)();
++    struct rtas_event *(*parse_rtas_event)(char *, int);
++    void (*rtas_print_event)(FILE *, struct rtas_event *, int);
++    void (*cleanup_rtas_event)(struct rtas_event *);
+ 
+     handle = dlopen("/usr/lib/librtasevent.so", RTLD_LAZY);
+     if (handle == NULL)
+-- 
+2.50.1
+
