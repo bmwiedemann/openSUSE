@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 06 08:16:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.11.4:
+  * fix(helm): properly set addresses when a list is provided
+    (backport of #14112) (#14132)
+  * chore(deps): bump envoy from v1.34.3 to v1.34.4 (#14076)
+
+-------------------------------------------------------------------
 Fri Jul 25 05:01:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.11.3:
