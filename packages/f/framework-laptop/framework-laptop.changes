@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug  3 12:43:47 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- ExcludeArch: ppc64le s390x - they are not framework laptops ;-)
+  and miss some of the required kernel symbols
+
+-------------------------------------------------------------------
 Fri Mar 07 14:57:07 UTC 2025 - suse.snooper541@passmail.net
 
 - Add SUSE boilerplate

@@ -1,5 +1,5 @@
 #
-# spec file for package keylightd
+# spec file for package framework-laptop
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -24,6 +24,7 @@ Group:          System/Kernel
 URL:            https://github.com/DHowett/framework-laptop-kmod
 Source:         %name-%version.tar.xz
 BuildRequires:  %kernel_module_package_buildreqs
+ExcludeArch:    ppc64le s390x
 
 %kernel_module_package
 

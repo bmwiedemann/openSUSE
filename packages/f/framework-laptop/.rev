@@ -7,4 +7,12 @@
     <comment>This package contains the kernel module that exposes the Framework Laptop (13, 16)'s battery charge limit and LEDs to userspace.</comment>
     <requestid>1251208</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>81524668ac44c05f0338b2aea3438880</srcmd5>
+    <version>1+git20240915.6164bc3</version>
+    <time>1754483649</time>
+    <user>dimstar_suse</user>
+    <comment>ExcludeArch: ppc64le s390x - they are not framework laptops</comment>
+    <requestid>1297828</requestid>
+  </revision>
 </revisionlist>
