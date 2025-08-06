@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Aug 06 05:10:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.0:
+  * chore(deps): bump github.com/golang-jwt/jwt/v5 from 5.2.3 to
+    5.3.0 (#901) (@dependabot[bot])
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.6.7 to
+    6.6.8 (#896) (@dependabot[bot])
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/iaas (#886)
+    (@dependabot[bot])
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mongodbflex
+    (#881) (@dependabot[bot])
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/objectstorage
+    (#887) (@dependabot[bot])
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/rabbitmq (#880)
+    (@dependabot[bot])
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/secretsmanager
+    (#882) (@dependabot[bot])
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serverbackup
+    (#885) (@dependabot[bot])
+  * chore(deps): update renovatebot/github-action action to v43.0.4
+    (#878) (@stackit-pipeline)
+  * chore(deps): update renovatebot/github-action action to v43.0.5
+    (#897) (@stackit-pipeline)
+  * feat(auth): support output format in stackit auth
+    get-access-token command (#889) (@jkroepke)
+  * feat(mongodb-flex): add readWriteAnyDatabase role (#884)
+    (@PietvanderMeulen)
+  * feat(ske): add commands to trigger hibernate, wakeup
+    maintenance, and reconcile (#873) (@h3adex)
+  * feat(ske): respect KUBECONFIG environment variable (#876)
+    (@KevinGimbel)
+  * fix(deps): update stackit sdk modules (#883)
+    (@stackit-pipeline)
+
+-------------------------------------------------------------------
 Sun Aug 03 14:23:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.37.7:
