@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Jul 29 10:00:18 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 3.5.0
+
+Please read the migration guide:
+https://doc.traefik.io/traefik/migration/v3/#v350
+
+Enhancements:
+  * acme
+    - Add acme.httpChallenge.delay option
+    - Allow configuration of ACME provider http timeout
+    - OCSP stapling
+  * healthcheck
+    - Add unhealthy Interval to the health check configuration
+    - Add url option to healthcheck command
+  * k8s/gatewayapi
+    - Bump sigs.k8s.io/gateway-api to v1.3.0
+  * k8s/ingress
+    - Make the behavior of prefix matching in Ingress consistent with
+    Kubernetes doc
+  * k8s
+    - NGINX Ingress Provider
+  * middleware,authentication
+    - Handle context canceled in ForwardAuth middleware
+  * plugins
+    - Ability to enable unsafe in yaegi through plugin manifest
+  * tls
+    - Introduce X25519MLKEM768 for Post-Quantum-Secure TLS
+  * webui
+    - Improve visualization for StatusRewrites option of errors middleware
+    - Migrate Traefik Proxy dashboard UI to React
+
+Bug fixes:
+  * healthcheck
+    - Revert 11711 adding url param to healthcheck command
+  * logs,metrics,tracing,accesslogs,otel
+    - Add missing resource attributes detectors
+  * logs,tracing,k8s,otel
+    - Add k8s resource attributes automatically
+  * metrics,otel
+    - Add resourceAttributes option to OTel metrics
+  * middleware,tracing
+    - Introduce trace verbosity config and produce less spans by default
+
+- Synchronized changelog with boo tickets and cve entries
+
+-------------------------------------------------------------------
 Fri Jul 25 05:48:31 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 3.4.5
@@ -117,16 +164,15 @@ Sat Apr 19 22:05:31 UTC 2025 - Eric Torres <eric.torres@its-et.me>
   * The incoming request path is now cleaned before being used to
     match the router rules and sent to the backends. Any /../, /./ or duplicate
     slash segments in the request path is interpreted and/or collapsed.
-
-- fix for boo#1239233 CVE-2025-22868
-- fix for boo#1241731 CVE-2025-22872
+  * Bump golang.org/x/net to v0.38.0
+    Fix for boo#1241731 and boo#1241733: CVE-2025-22872
+  - Bump golang.org/x/oauth2 to v0.28.0
+      Fix for boo#1239228 CVE-2025-22868
 
 -------------------------------------------------------------------
 Sat Apr 19 22:04:38 UTC 2025 - Eric Torres <eric.torres@its-et.me>
 
 - Please read the migration guide in regards to v3.3.5 changes
-- fix for boo#1237636 CVE-2025-27144
-- fix for boo#1239383 CVE-2025-22869
 
 - Version 3.3.5 changes
   - k8s/gatewayapi
@@ -135,6 +181,13 @@ Sat Apr 19 22:04:38 UTC 2025 - Eric Torres <eric.torres@its-et.me>
     * Revert compress middleware algorithms priority to v2 behavior (#11641 by rtribotte)
     * Do not abort request when response content-type is malformed (#11628 by kevinpollet)
     * Compress data on flush when compression is not started (#11583 by kevinpollet)
+  * Updates
+    - Bump github.com/go-jose/go-jose/v4 to v4.0.5
+      fix boo#1237621 CVE-2025-27144
+    - Bump github.com/golang-jwt/jwt to v4.5.2 and v5.2.2
+      fix boo#1240454 CVE-2025-30204
+    - Bump x/crypto to v0.35.0
+      fix for boo#1239383 CVE-2025-22869, boo#1239363 CVE-2025-22869
 
 -------------------------------------------------------------------
 Mon Mar 31 00:02:54 UTC 2025 - Eric Torres <eric.torres@its-et.me>
@@ -245,8 +298,9 @@ Mon Jan  6 12:57:27 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
     * Configure ErrorLog in httputil.ReverseProxy (gh#traefik/traefik#11344)
   - tls
     * Upgrade github.com/spiffe/go-spiffe/v2 to v2.4.0 (gh#traefik/traefik#11385)
-  Bump golang.org/x/net to v0.33.0 (gh#traefik/traefik#11365)
-  Remove duplicate github.com/coreos/go-systemd dependency (gh#traefik/traefik#11354)
+  - Remove duplicate github.com/coreos/go-systemd dependency (gh#traefik/traefik#11354)
+  - Bump golang.org/x/net to v0.33.0 (gh#traefik/traefik#11365)
+    mentioned in boo#1235256 CVE-2024-45338
 
 -------------------------------------------------------------------
 Mon Dec 16 13:27:07 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
