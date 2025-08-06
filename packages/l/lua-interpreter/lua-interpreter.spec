@@ -24,6 +24,9 @@ URL:            https://www.lua.org/
 Source99:       lua-interpreter.rpmlintrc
 BuildRequires:  alts
 Requires:       alts
+BuildRequires:  lua-macros
+Requires:       lua
+Suggests:       lua%{lua_version_default_nodots}
 BuildArch:      noarch
 
 %description

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  5 10:19:45 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Require lua symbol to close the loop.
+
+-------------------------------------------------------------------
 Mon Jul 14 13:53:43 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Initial infrastructure for using alts with Lua interpreters.

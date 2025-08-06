@@ -7,4 +7,12 @@
     <comment>New package required for using other Lua interpreters with libalternatives.</comment>
     <requestid>1296141</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>15f90a8ac27f1bc5c96f8c6bc6e80ed0</srcmd5>
+    <version>5</version>
+    <time>1754483450</time>
+    <user>dimstar_suse</user>
+    <comment>- Require lua symbol to close the loop.</comment>
+    <requestid>1297835</requestid>
+  </revision>
 </revisionlist>
