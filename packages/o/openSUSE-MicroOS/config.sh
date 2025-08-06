@@ -153,7 +153,7 @@ sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp
 consoles='console=ttyS0,115200 console=tty0'
 [[ "$kiwi_profiles" == *"RaspberryPi2"* ]] && consoles='console=ttyAMA0,115200 console=tty0'
 [[ "$kiwi_profiles" == *"Rock64"* ]] && consoles='console=ttyS2,1500000 console=tty0'
-[[ "$kiwi_profiles" == *"ppc64"* ]] && consoles='console=hvc0,115200'
+[[ "$kiwi_profiles" == *"ppc64"* ]] && consoles='console=hvc0,115200 console=tty0'
 [[ "$kiwi_profiles" == *"s390x-Cloud"* ]] && consoles='' # autodetect
 [[ "$kiwi_profiles" == *"s390x-dasd"* ]] && consoles='hvc_iucv=8'
 
