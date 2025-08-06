@@ -203,4 +203,14 @@
     <comment>- Update to release 20250329</comment>
     <requestid>1269585</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>d010091e1dbc5223e9e5a79316e649bf</srcmd5>
+    <version>20250329</version>
+    <time>1754483604</time>
+    <user>dimstar_suse</user>
+    <comment>- Update vhba-sle-kernel.diff to workaround the presence of
+  block-simplify-tag-allocation-policy-selection.patch API change
+  in SLE16 kernel [boo#1247593]</comment>
+    <requestid>1297717</requestid>
+  </revision>
 </revisionlist>

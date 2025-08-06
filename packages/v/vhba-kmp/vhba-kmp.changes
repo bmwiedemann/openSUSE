@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  5 11:43:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update vhba-sle-kernel.diff to workaround the presence of
+  block-simplify-tag-allocation-policy-selection.patch API change
+  in SLE16 kernel [boo#1247593]
+
+-------------------------------------------------------------------
 Tue Apr 15 10:23:57 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20250329

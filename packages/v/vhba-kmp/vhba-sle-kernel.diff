@@ -4,14 +4,14 @@ Date: 2023-04-20 10:58:03.045935811 +0200
 Workaround failing VHBA compilation for the SLE 15.5 kernel API.
 
 ---
- vhba.c |   10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ vhba.c |   12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-Index: vhba-module-20211218/vhba.c
+Index: vhba-module-20250329/vhba.c
 ===================================================================
---- vhba-module-20211218.orig/vhba.c
-+++ vhba-module-20211218/vhba.c
-@@ -203,7 +203,7 @@ int vhba_device_queue (struct vhba_devic
+--- vhba-module-20250329.orig/vhba.c
++++ vhba-module-20250329/vhba.c
+@@ -203,7 +203,7 @@ static int vhba_device_queue (struct vhb
      vcmd->cmd = cmd;
  
      spin_lock_irqsave(&vdev->cmd_lock, flags);
@@ -20,7 +20,7 @@ Index: vhba-module-20211218/vhba.c
      vcmd->metatag = scsi_cmd_to_rq(vcmd->cmd)->tag;
  #else
      vcmd->metatag = vcmd->cmd->request->tag;
-@@ -477,7 +477,7 @@ int vhba_queuecommand (struct Scsi_Host
+@@ -477,7 +477,7 @@ static int vhba_queuecommand (struct Scs
      int retval;
      unsigned int devnum;
  
@@ -29,7 +29,7 @@ Index: vhba-module-20211218/vhba.c
      scmd_dbg(cmd, "queue %p tag %i\n", cmd, scsi_cmd_to_rq(cmd)->tag);
  #else
      scmd_dbg(cmd, "queue %p tag %i\n", cmd, cmd->request->tag);
-@@ -489,7 +489,7 @@ int vhba_queuecommand (struct Scsi_Host
+@@ -489,7 +489,7 @@ static int vhba_queuecommand (struct Scs
          scmd_dbg(cmd, "no such device\n");
  
          cmd->result = DID_NO_CONNECT << 16;
@@ -38,7 +38,16 @@ Index: vhba-module-20211218/vhba.c
          scsi_done(cmd);
  #else
          cmd->scsi_done(cmd);
-@@ -828,7 +828,7 @@ ssize_t vhba_ctl_write (struct file *fil
+@@ -537,7 +537,7 @@ static struct scsi_host_template vhba_te
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+     .slave_alloc = vhba_slave_alloc,
+ #endif
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 14, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 14, 0) || (defined(SLE) && LINUX_VERSION_CODE == KERNEL_VERSION(6, 12, 0))
+     .tag_alloc_policy_rr = true,
+ #elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 0, 0)
+     .tag_alloc_policy = BLK_TAG_ALLOC_RR,
+@@ -830,7 +830,7 @@ static ssize_t vhba_ctl_write (struct fi
  
      spin_lock_irqsave(&vdev->cmd_lock, flags);
      if (ret >= 0) {
@@ -47,7 +56,7 @@ Index: vhba-module-20211218/vhba.c
          scsi_done(vcmd->cmd);
  #else
          vcmd->cmd->scsi_done(vcmd->cmd);
-@@ -958,7 +958,7 @@ int vhba_ctl_release (struct inode *inod
+@@ -960,7 +960,7 @@ static int vhba_ctl_release (struct inod
  
          scmd_dbg(vcmd->cmd, "device released with command %lu (%p)\n", vcmd->metatag, vcmd->cmd);
          vcmd->cmd->result = DID_NO_CONNECT << 16;

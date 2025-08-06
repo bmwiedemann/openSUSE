@@ -1,7 +1,7 @@
 #
 # spec file for package vhba-kmp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,7 @@ echo %flavors_to_build
 %autosetup -n vhba-module-%version -p1
 
 %build
-%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000
+%if 0%{?sle_version} || 0%{?suse_version} < 1650
 export KCFLAGS="-DSLE"
 %endif
 for flavor in %flavors_to_build; do
