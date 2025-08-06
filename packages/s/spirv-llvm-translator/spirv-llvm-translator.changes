@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug  3 19:36:09 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 20.1.5.
+  * Explicitly cast OCLMemOrderKind members from std::memory_order
+    in C++20 case.
+
+-------------------------------------------------------------------
 Thu Jul 10 21:42:56 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 20.1.4.
