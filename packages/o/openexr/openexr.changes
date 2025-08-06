@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Mon Aug  4 08:29:48 UTC 2025 - pgajdos@suse.com
+
+- version update 
+  3.3.5
+  * :bug: Fix for DeepScanlineInputFile read memory leak
+  * :rocket: OpenEXRCore Deep pixel unpacking optimisation
+  3.3.4
+  * :bug: Fix a crash with deep scanline input
+  * :bug: Fix a bug when reading a file with missing tiles
+  * :bug: Fix a crash in exrmetrics
+  * :hammer_and_wrench: Fix a problem with /EHsc and /MP flags that broke CUDA compilation
+  * :hammer_and_wrench: Fix a build failure on MinGW
+  * :rocket: Enable vectorisation for ZIP reconstruct stage on Windows
+  3.3.3
+  * :bug: Fix a bug involving deep tiled images
+  * :bug: Adjust the clamping on the dwa compression (Issue [1982](https://github.com/AcademySoftwareFoundation/openexr/issues/1982))
+  * :bug: Address issues with small exr files and header parse (Issue [1984](https://github.com/AcademySoftwareFoundation/openexr/issues/1984))
+  * :bug: Fix crash if user does not provide memory when filling deep framebuffer
+  * :bug: Fix bad pointer SSE math causing out-of-bounds access
+  * :bug: Fix potential buffer overwrite with zip data
+  * :bug: Fix usage of utf-8 filenames for windows
+  * :bug: Fix regression in reading EXR images on 32bit Windows involving `atomic_compare_exchange_strong`
+  * :bug: Add checks to avoid using optimizations when inappropriate (Issue [1949](https://github.com/AcademySoftwareFoundation/openexr/issues/1949))
+  * :bug: Convert dwa encoder to use algorithm quantize (Issue [1915](https://github.com/AcademySoftwareFoundation/openexr/issues/1915))
+  * :bug: Fix incorrect v3 array size validation
+  * :rocket: Add minor huf encode / decode performance optimizations
+  * :hammer_and_wrench: Add numpy dependency to python wrapper (Issue [1919](https://github.com/AcademySoftwareFoundation/openexr/issues/1919))
+  * :hammer_and_wrench: Remove duplicate cmake dependency from skbuild plugin (Issue [1958](https://github.com/AcademySoftwareFoundation/openexr/pull/1958))
+  * :hammer_and_wrench: Don't set the library postfix in the cmake cache (Issue [1981](https://github.com/AcademySoftwareFoundation/openexr/issues/1981))
+  3.3.2
+  * A recent change to CMake had the unintended consequence of
+    installing headers and libraries from `libdeflate` when doing an
+    internal build. This is now fixed.
+  * Fix custom namespaces
+  * Add thread control to `exrmetrics` tool
+  * Reintroduce single cache for successive scanline reads
+  * Allow empty filename when providing a custom stream
+  * Handle non-seekable stream in python module's `InputFile` object
+  3.3.1
+  * Fix a performance regression 3.3.0 in huf/piz compression
+  * Replace ``FetchContent_Populate`` with ``FetchContent_MakeAvailable``
+  * Build wheels for python 3.12
+  * Fix a problem with python wheel sdist that caused local build to fail
+  * Compile source files in parallel under MSVC
+  3.3.0
+  Minor release two significant changes:
+  * The C++ API now uses the OpenEXRCore library underneath.
+  * New API for accessing compression types
+  * New bin tools:
+    - ``exrmetrics`` - Read an OpenEXR image from infile, write an
+      identical copy to outfile reporting time taken to read/write and
+      file sizes. Useful for benchmarking performance in space and time.
+    - ``exrmanifest`` - Read exr files and print the contents of the
+      embedded manifest. The manifest provides a mapping between integer
+      object identifiers and human-readible strings. See [OpenEXR Deep
+  3.2.4
+  * This release also removes the unused CMake option
+    - ``OPENEXR_INSTALL_EXAMPLES``, and fixes some other compiler warnings.
+  3.2.3
+  * Fix `bswap` on NetBSD
+  * Fix issue with decompressing fp32 dwa files
+  * Support cmake config for `libdeflate`
+  * updated security policy
+  * miscelleneous website improvements
+- includes fixes for:
+  CVE-2025-48074 [bsc#1247504]
+  CVE-2025-48073 [bsc#1247550]
+  CVE-2025-48072 [bsc#1247551]
+  CVE-2025-48071 [bsc#1247552]
+
+-------------------------------------------------------------------
 Thu Dec 12 14:56:41 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Build AVX2 enabled hwcaps library for x86_64-v3

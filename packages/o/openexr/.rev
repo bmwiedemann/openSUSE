@@ -890,4 +890,41 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     <comment>- Build AVX2 enabled hwcaps library for x86_64-v3 (forwarded request 1230619 from pluskalm)</comment>
     <requestid>1230625</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>ec9b2d83113d89ea434297f229b6e47d</srcmd5>
+    <version>3.3.5</version>
+    <time>1754483486</time>
+    <user>dimstar_suse</user>
+    <comment>- version update 
+  3.3.5
+  * :bug: Fix for DeepScanlineInputFile read memory leak
+  * :rocket: OpenEXRCore Deep pixel unpacking optimisation
+  3.3.4
+  * :bug: Fix a crash with deep scanline input
+  * :bug: Fix a bug when reading a file with missing tiles
+  * :bug: Fix a crash in exrmetrics
+  * :hammer_and_wrench: Fix a problem with /EHsc and /MP flags that broke CUDA compilation
+  * :hammer_and_wrench: Fix a build failure on MinGW
+  * :rocket: Enable vectorisation for ZIP reconstruct stage on Windows
+  3.3.3
+  * :bug: Fix a bug involving deep tiled images
+  * :bug: Adjust the clamping on the dwa compression (Issue [1982](https://github.com/AcademySoftwareFoundation/openexr/issues/1982))
+  * :bug: Address issues with small exr files and header parse (Issue [1984](https://github.com/AcademySoftwareFoundation/openexr/issues/1984))
+  * :bug: Fix crash if user does not provide memory when filling deep framebuffer
+  * :bug: Fix bad pointer SSE math causing out-of-bounds access
+  * :bug: Fix potential buffer overwrite with zip data
+  * :bug: Fix usage of utf-8 filenames for windows
+  * :bug: Fix regression in reading EXR images on 32bit Windows involving `atomic_compare_exchange_strong`
+  * :bug: Add checks to avoid using optimizations when inappropriate (Issue [1949](https://github.com/AcademySoftwareFoundation/openexr/issues/1949))
+  * :bug: Convert dwa encoder to use algorithm quantize (Issue [1915](https://github.com/AcademySoftwareFoundation/openexr/issues/1915))
+  * :bug: Fix incorrect v3 array size validation
+  * :rocket: Add minor huf encode / decode performance optimizations
+  * :hammer_and_wrench: Add numpy dependency to python wrapper (Issue [1919](https://github.com/AcademySoftwareFoundation/openexr/issues/1919))
+  * :hammer_and_wrench: Remove duplicate cmake dependency from skbuild plugin (Issue [1958](https://github.com/AcademySoftwareFoundation/openexr/pull/1958))
+  * :hammer_and_wrench: Don't set the library postfix in the cmake cache (Issue [1981](https://github.com/AcademySoftwareFoundation/openexr/issues/1981))
+  3.3.2
+  * A recent change to CMake had the unintended consequence of
+    installing headers and libraries from `libdeflate` when doing an</comment>
+    <requestid>1297506</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package openexr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 %define prjname      openexr
 # perhaps you want to build against corresponding Imath build
 %define debug_build 0
-%define sonum 31
-%global so_suffix -3_2
+%define sonum 32
+%global so_suffix -3_3
 Name:           openexr
-Version:        3.2.2
+Version:        3.3.5
 Release:        0
 Summary:        Utilities for working with HDR images in OpenEXR format
 License:        BSD-3-Clause
@@ -206,6 +206,8 @@ export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}"
 %{_bindir}/exrmultiview
 %{_bindir}/exrmultipart
 %{_bindir}/exr2aces
+%{_bindir}/exrmanifest
+%{_bindir}/exrmetrics
 
 %files devel
 %{_includedir}/OpenEXR
