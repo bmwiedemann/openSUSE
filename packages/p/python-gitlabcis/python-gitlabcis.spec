@@ -17,7 +17,7 @@
 
 
 Name:           python-gitlabcis
-Version:        1.15.1
+Version:        1.15.4
 Release:        0
 Summary:        An automated tool that assesses the GitLab CIS benchmarks against a project
 License:        MIT
@@ -26,20 +26,20 @@ Source:         https://files.pythonhosted.org/packages/source/g/gitlabcis/gitla
 BuildRequires:  python-rpm-macros
 # SECTION build requirements
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 61.2}
-BuildRequires:  %{python_module setuptools_scm >= 8.1.0}
+BuildRequires:  %{python_module setuptools >= 78.0}
+BuildRequires:  %{python_module setuptools_scm >= 8.2.0}
 BuildRequires:  %{python_module wheel >= 0.42}
 BuildRequires:  %{python_module twine >= 6.1.0}
 # /SECTION
 # SECTION runtime requirements
 # https://gitlab.com/gitlab-security-oss/cis/gitlabcis/-/blob/main/pyproject.toml?ref_type=heads#L61
 BuildRequires:  %{python_module PyYAML >= 6.0.2}
-BuildRequires:  %{python_module python-gitlab >= 5.6.0}
+BuildRequires:  %{python_module python-gitlab >= 6.2.0}
 BuildRequires:  %{python_module tabulate >= 0.9.0}
 BuildRequires:  %{python_module tqdm >= 4.67.1}
 BuildRequires:  %{python_module defusedxml >= 0.7.1}
 BuildRequires:  %{python_module python-dateutil >= 2.9.0.post0}
-BuildRequires:  %{python_module gql >= 3.5.2}
+BuildRequires:  %{python_module gql >= 3.5.3}
 # /SECTION
 # SECTION test requirements
 # BuildRequires:  python_module pytest >= 8.3.4}
@@ -49,12 +49,12 @@ BuildRequires:  %{python_module gql >= 3.5.2}
 BuildRequires:  fdupes
 # https://gitlab.com/gitlab-security-oss/cis/gitlabcis/-/blob/main/pyproject.toml?ref_type=heads#L61
 Requires:       python-PyYAML >= 6.0.2
-Requires:       python-python-gitlab >= 5.6.0
+Requires:       python-python-gitlab >= 6.2.0
 Requires:       python-tabulate >= 0.9.0
 Requires:       python-tqdm >= 4.67.1
 Requires:       python-defusedxml >= 0.7.1
 Requires:       python-python-dateutil >= 2.9.0.post0
-Requires:       python-gql >= 3.5.2
+Requires:       python-gql >= 3.5.3
 BuildArch:      noarch
 %python_subpackages
 
