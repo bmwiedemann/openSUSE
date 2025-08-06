@@ -52,8 +52,6 @@ BuildRequires:  lua-interpreter
 Requires:       alts
 Requires:       lua-interpreter
 Provides:       lua = %{version}
-Conflicts:      lua
-Obsoletes:      lua < %{version}
 Provides:       Lua(API) = %{major_version}
 %if %{with test}
 BuildRequires:  lua55
