@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug  4 06:51:41 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.33:
+  * Added read support for TNEF files (eg. "winmail.dat")
+  * Added a new Canon HighlightTonePriority value (github #339)
+  * Decode Canon FocusBracketing tag (github #340)
+  * Decode more tags for newer Nikon Z models
+  * Decode a few more Olympus tags
+  * Decode a few more FujiFilm tags (github #343)
+  * Handle Olympus RawDev2IFD tag 0x8000 (named it RawDevSubIFD)
+  * Improved recognition of some Sony lenses (github #342)
+  * Enhanced the -p option to cycle through sub-subdocuments
+  * Improved extraction of GoPro timed GPS to use sub-subdocuments
+    to separate the individual fixes, allowing -p to extract all
+    fixes at sub-second resolution (althought for earlier models
+    these don't all contain timestamps)
+  * Extract EXIF information from Sigma fp MOV videos
+  * Patched to avoid "multi-segment EXIF with external pointers"
+    error when writing Olympus OM-1 JPG files converted by some utilities
+  * Fixed decoding of Panasonic LongExposureNRUsed
+  * Fixed long-standing bug when using special characters in the -d option argument
+
+-------------------------------------------------------------------
 Fri Jul  4 06:20:41 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.32:

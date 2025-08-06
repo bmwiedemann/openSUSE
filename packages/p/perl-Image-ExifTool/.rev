@@ -1043,4 +1043,12 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
     <comment></comment>
     <requestid>1290623</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>485f1d51c1113b6cbb0fb4acac7432d8</srcmd5>
+    <version>13.33</version>
+    <time>1754483525</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297679</requestid>
+  </revision>
 </revisionlist>
