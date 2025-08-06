@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 05 14:21:07 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 2.240.0:
+  * Dontaudit dac_override for iptables_t
+    * dropping rootless-docker_iptables.patch is upstream
+  * Don't allow containers by default setexec setfscreate
+  * Containers need to use hsa devices for ROCM
+
+-------------------------------------------------------------------
 Thu Jul 24 12:22:54 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Add workaround for rootless docker iptables AVCs (bsc#1246348)

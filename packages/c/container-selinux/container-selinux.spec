@@ -26,14 +26,12 @@
 # Version of SELinux we were using
 %define selinux_policyver %(rpm -q selinux-policy --qf '%%{version}')
 Name:           container-selinux
-Version:        2.239.0
+Version:        2.240.0
 Release:        0
 Summary:        SELinux policies for container runtimes
 License:        GPL-2.0-only
 URL:            https://github.com/containers/container-selinux
 Source0:        container-selinux-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM rootless-docker_iptables.patch https://github.com/containers/container-selinux/pull/388
-Patch01:        rootless-docker_iptables.patch
 BuildRequires:  selinux-policy
 BuildRequires:  selinux-policy-devel
 BuildRequires:  selinux-policy-%{selinuxtype}
@@ -50,7 +48,6 @@ SELinux policy modules for use with container runtimes.
 
 %prep
 %setup -q
-%patch -P 1 -p1
 
 %build
 %make_build
