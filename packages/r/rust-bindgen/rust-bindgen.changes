@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Thu Jul 24 01:02:06 UTC 2025 - William Brown <william.brown@suse.com>
+
+- Update to version 0.72.0:
+  * chore: Release
+  * Update changelog.
+  * Refactor item_name method to use ItemInfo struct
+  * chore: Fix some warnings with latest stable.
+  * codegen: Avoid crashing on variadic unions without layout information.
+  * Remove unused which-rustfmt feature
+  * Fix rustfmt errors
+  * Add test
+  * Use callbacks properly
+  * Use parse_callbacks from options
+  * Add callback to modify contents of macro
+  * ci: Move forward Rust for Linux version to v6.15-rc4
+  * doc: enhance desc of cpp section
+  * Generate bindings compatible with current rustc version by default
+  * ci/release: Ubuntu 20.04 being sunset
+  * Resolved unenclosed backticks for with_derive_custom_enum, with_attribute_custon_enum
+  * fix all clippy lints
+  * fix clippy issues
+  * another minor clippy lint
+  * remove stable rust installation
+  * remove check-cfg, separate clippy from nightly
+  * chore: fix new clippy lints, enforce in CI
+  * ci: use stable toolchain again
+  * ci: move forward Rust for Linux version to v6.14
+  * ci: Re-enable rust for linux test.
+  * Fix union layout when it contains 0 sized array.
+  * Refactor enum generation.
+  * Fix OpenCL vectors that use "ext_vector_type" and add test
+  * more sophisticated handling of the triple in rust_to_clang_target
+  * rename *-apple-ios-sim to ...simulator
+  * Option to represent all C++ operators.
+  * Formatting tweaks.
+  * Discovery callbacks for functions and methods.
+  * Further formatting fix.
+  * Formatting fixes.
+  * Options to generate uncallable C++ functions.
+  * Mark all format-like macros for Clippy
+  * Disable rust-for-linux test temporarily.
+  * Provide option to get real virtual fn receiver.
+  * Improve comments and docs relating to char16_t.
+  * Add extra tests.
+  * Report enums in ParseCallbacks.
+  * Distinguish char16_t.
+  * Fix bugs in --clang-macro-fallback
+  * Remove useless fallback
+  * Remove warning for opaque forward declarations
+  * Fix missed tests
+  * Add missed unsafe in the raw_set_bit function
+  * Fixes #3123
+  * Use link_name for dynamic library loading
+  * Fix `borrow_as_ptr` lint
+  * Fix `explicit_into_iter_loop` lint
+  * add "gen" to list of matches in 'rust_mangle'
+  * Fix CI to not run publish all the time
+  * use `assert_eq|_ne` instead of `assert!`
+  * Fix `flat_map_option` lint
+  * Fix `checked_conversions` lint
+  * Fix `inconsistent_struct_constructor` and `ptr_as_ptr` lints
+  * Fix `trivially_copy_pass_by_ref` lint
+  * Fix `needless_pass_by_value` lint
+  * A few minor clippy lints
+  * process_comment: Use last defined callback
+  * Fix calling convention tests
+  * Use appropriate `rustfmt --format ...` param
+  * Multiple minor lint fixes
+  * docs(book): fix deprecated bindgen constant in example
+  * Derive `Debug` and eq. comparison traits for `InvalidRustTarget` enum
+  * Update tutorial
+  * Use the latest verison of mBook to fix copy to clipboard
+  * Update `proc-macro2` version requirement to `1.0.80`
+
+-------------------------------------------------------------------
 Sat Jul 19 08:41:26 UTC 2025 - Mark Abarintos <mrkcee@protonmail.com>
 
 - Update to version 0.71.1:
