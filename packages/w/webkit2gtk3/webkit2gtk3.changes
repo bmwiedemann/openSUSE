@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  5 00:25:23 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.48.5 (boo#1247562 boo#1247563 boo#1247564):
+  + Fix several crashes.
+  + Security fixes: CVE-2025-31273, CVE-2025-31278, CVE-2025-43211,
+    CVE-2025-43212, CVE-2025-43216, CVE-2025-43227, CVE-2025-43228,
+    CVE-2025-43240, CVE-2025-43265, CVE-2025-6558.
+
+-------------------------------------------------------------------
 Wed Jul 30 18:52:46 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.48.4:
@@ -107,7 +116,8 @@ Fri Mar 14 13:05:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
     process is still used by default. The runtime flag
     UseGPUProcessForWebGL can be used to use the GPU process for
     WebGL.
-  + Security fixes: CVE-2024-44192, CVE-2024-54467, CVE-2025-24201.
+  + Security fixes: CVE-2024-44192, CVE-2024-54467, CVE-2025-24201,
+  CVE-2025-24189.
 - Drop 7d784721.patch: Fixed upstream.
 - Add flite-devel BuildRequires: New dependency.
 

@@ -1961,4 +1961,12 @@ don't affect Linux. (forwarded request 1226975 from mgorse)</comment>
     <comment></comment>
     <requestid>1296702</requestid>
   </revision>
+  <revision rev="225" vrev="1">
+    <srcmd5>84a28ce249fd7165437f68022076d49a</srcmd5>
+    <version>2.48.5</version>
+    <time>1754483573</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.48.5 (boo#1247562 boo#1247563 boo#1247564) (forwarded request 1297592 from mgorse)</comment>
+    <requestid>1297635</requestid>
+  </revision>
 </revisionlist>
