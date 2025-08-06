@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug  4 22:48:42 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Delete patch (fixed upstream): 
+  0001-kernelshark-fix-compiling-error-in-LatencyPlot.cpp.patch
+- Update to latest upstream version (2.4.0)
+  * Multi-thread the computaion of stream/combo plots
+- Replace "disabled" with "manual" in _service, as disabled is now
+  deprecated
+
+-------------------------------------------------------------------
 Wed May  7 07:35:15 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
