@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 06 08:13:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.9.2 (1.9.1 was not released):
+  * Dependency bump (#546)
+  * docs: update documentation from template (#545)
+  * docs: update documentation from template (#478)
+  * docs: fix links
+
+-------------------------------------------------------------------
 Wed Oct  2 11:32:18 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - replace "make test" with just calling "go test ./..." as no
