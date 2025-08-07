@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug  6 09:04:39 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.2.4
+  * Fix regex string to stop SyntaxWarning
+- from version 0.2.3
+  * Upgrade pytest
+  * Remove python 3.7 from tox list
+  * Remove python 3.7 from tox list
+  * Fix typo in tests: use assert_called_once_with()
+  * Fix split regex for top-level object properties
+    and props that aren't camelCase
+- Drop qstylizer-pr17-fix-py12-mock.patch, merged upstream
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Sun Jan  7 17:31:10 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add qstylizer-pr17-fix-py12-mock.patch gh#blambright/qstylizer#17

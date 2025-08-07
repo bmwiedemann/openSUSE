@@ -15,17 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-qstylizer
-Version:        0.2.2
+Version:        0.2.4
 Release:        0
 Summary:        Stylesheet Generator for PyQt{4-5}/PySide{1-2}
 License:        MIT
 URL:            https://github.com/blambright/qstylizer
 # no sdist on PyPI
 Source:         https://github.com/blambright/qstylizer/archive/refs/tags/%{version}.tar.gz#/qstylizer-%{version}-gh.tar.gz
-# PATCH-FIX-UPSTREAM qstylizer-pr17-fix-py12-mock.patch gh#blambright/qstylizer#17
-Patch0:         https://github.com/blambright/qstylizer/pull/17.patch#/qstylizer-pr17-fix-py12-mock.patch
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
