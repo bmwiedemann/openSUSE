@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-xfce
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -456,6 +456,9 @@ Recommends:     xfce4-terminal
 Recommends:     pavucontrol
 Recommends:     xfce4-pulseaudio-plugin
 
+# For screenlocking to work in xfce wayland
+Recommends:     xfce4-screensaver
+
 # Optional: authentication agent for polkit
 Recommends:     polkit-gnome
 
@@ -464,6 +467,9 @@ Recommends:     xdg-utils
 Recommends:     desktop-file-utils
 Recommends:     shared-mime-info
 Recommends:     xdg-user-dirs
+
+Recommends:     NetworkManager
+Recommends:     NetworkManager-applet
 
 Recommends:     MozillaFirefox
 
@@ -523,6 +529,8 @@ Recommends:     xfce4-battery-plugin
 Recommends:     xfce4-power-manager
 Recommends:     xfce4-power-manager-plugin
 Recommends:     xfce4-pulseaudio-plugin
+# invoked from labwc keybinding
+Recommends:     alsa-utils
 
 # Touchpad and input settings
 Recommends:     xfce4-settings
