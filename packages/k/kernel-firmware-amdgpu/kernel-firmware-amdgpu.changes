@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug  6 06:09:03 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250805 (git commit b6b0b15278c7):
+  * amdgpu: Update GCN 4.0.5 microcode
+  * amdgpu: Update SDMA 6.1.0 microcode
+  * amdgpu: Update GC 11.5.0 microcode
+
+-------------------------------------------------------------------
 Fri Jul 25 15:08:36 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250725 (git commit 4bb152fb4405):

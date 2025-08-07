@@ -274,4 +274,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: update dmcub fw for dcn314</comment>
     <requestid>1296568</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ba034145adf9d63a3c4051adae48193a</srcmd5>
+    <version>20250805</version>
+    <time>1754578105</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250805 (git commit b6b0b15278c7):
+  * amdgpu: Update GCN 4.0.5 microcode
+  * amdgpu: Update SDMA 6.1.0 microcode
+  * amdgpu: Update GC 11.5.0 microcode</comment>
+    <requestid>1297874</requestid>
+  </revision>
 </revisionlist>
