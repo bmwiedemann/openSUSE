@@ -1,13 +1,14 @@
 -------------------------------------------------------------------
-Fri May 16 06:26:25 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+Mon Aug  4 12:10:02 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 3.0.7
   * Fix: constraints not working with options having more than 2 names
     by @tylerduffin and @janluke in #188
-- 3.0.6
+- Update to 3.0.6
   * Remove support for EOL Python version (3.7) by @ulgens in #179
   * Add Python 3.12 to tests and supported versions list by @ulgens in #181
-  * click 8.2: make_metavar() takes a context parameter now by @ppentchev in #186
+  * click 8.2: make_metavar() takes a context parameter now
+    by @ppentchev in #186
 
 -------------------------------------------------------------------
 Tue Apr 16 00:01:00 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
