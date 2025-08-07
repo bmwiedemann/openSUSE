@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  6 08:19:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Revert to previous upstream version 7.0.0 to address compatibility
+  issues with azure-cli 2.76.0 due to API mismatch with the Azure SDK
+
+-------------------------------------------------------------------
 Mon Jul 21 10:17:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
