@@ -1,7 +1,7 @@
 #
 # spec file for package perl-MusicBrainz-DiscID
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,11 @@ Release:        0
 Summary:        Perl interface for the MusicBrainz libdiscid library
 License:        MIT
 Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/N/NJ/NJH/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+# PATCH-FIX-UPSTREAM https://github.com/njh/perl-musicbrainz-discid/issues/10
+Patch0:         fix-build-against-perl-ExtUtils-ParseXS.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -43,7 +45,7 @@ MusicBrainz::DiscID is a class to calculate a MusicBrainz DiscID from an
 audio CD in the drive.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -p1 -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

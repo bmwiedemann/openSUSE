@@ -1,0 +1,13 @@
+Index: MusicBrainz-DiscID-0.06/DiscID.xs
+===================================================================
+--- MusicBrainz-DiscID-0.06.orig/DiscID.xs
++++ MusicBrainz-DiscID-0.06/DiscID.xs
+@@ -113,7 +113,7 @@ discid_get_track_length( disc, track_num
+ ## Provides the TOC of a known CD.
+ ##
+ int
+-discid_put( disc, first_track, sectors, offsets ... )
++discid_put( disc, first_track, sectors, offsets, ... )
+   DiscId *disc
+   int first_track
+   int sectors
