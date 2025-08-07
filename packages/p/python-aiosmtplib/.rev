@@ -167,4 +167,13 @@
     <comment></comment>
     <requestid>1278550</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a831f9d353b31e8ee43a8414fa86d5f6</srcmd5>
+    <version>4.0.1</version>
+    <time>1754578200</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable tests, tests doesn't work with latest pytest-asyncio
+  gh#cole/aiosmtplib@3b4bd0d7048c</comment>
+    <requestid>1298125</requestid>
+  </revision>
 </revisionlist>

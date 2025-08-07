@@ -56,7 +56,15 @@ Python asyncio SMTP client.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -rs -k "not test_live and not test_tls"
+# Disable tests, broken with pytest-asyncio >= 1.0.0
+# gh#cole/aiosmtplib@3b4bd0d7048c
+# https://github.com/cole/aiosmtplib/blob/main/requirements-dev.txt#L2
+# %%pytest -rs -k "not test_live and not test_tls"
+
+%{python_expand # just test import meantime tests are broken
+export PYTHONPATH=${PYTHONPATH:+$PYTHONPATH:}%{buildroot}%{$python_sitelib}
+$python -c "import aiosmtplib; assert aiosmtplib.__version__ == '%{version}'"
+}
 
 %files %{python_files}
 %doc README.rst docs/*.rst
