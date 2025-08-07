@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 04 07:14:17 UTC 2025 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.746.g8a13fbd8:
+  * fix(systemd-sysext): enable initrd-specific units
+  * fix(systemd-udevd): handle root=gpt-auto for systemd-v258
+  * fix(dmsquash-live): erofs collision with latest util-linux
+  * fix(systemd-repart): allow partition format
+  * fix(lsinitrd): resolve initrd to real path
+  * fix(systemd-sysext): install the required kernel modules
+  * fix: let check_vol_slaves_all return 1 when checks on all slaves fail
+  * fix(dracut-functions): allow for \ in get_maj_min file path
+  * fix(dracut.spec): do not embed rebuild counter in dracut-version (bsc#1246806)
+  * fix(74nvmf): set root=nvmf (bsc#1238848)
+
+-------------------------------------------------------------------
 Wed May 21 12:47:07 UTC 2025 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.732.g739e1c2f:

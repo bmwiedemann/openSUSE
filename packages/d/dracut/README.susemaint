@@ -421,3 +421,10 @@ e8f72ed9 chore(multipath): remove `rd_NO_MULTIPATH` kernel command line option
 bb6d0c11 fix(dracut-init): assign real path to srcmods
 8674d84f fix(dracut): kernel module name normalization in drivers lists
 da099c30 fix(rngd): adjust license to match the license of the whole project
+91b1574c fix(dracut-functions): allow for \ in get_maj_min file path
+b117013b fix: let check_vol_slaves_all return 1 when checks on all slaves fail
+7f524d3d fix(systemd-sysext): install the required kernel modules
+22d93bc0 fix(lsinitrd): resolve initrd to real path
+02201361 fix(systemd-repart): allow partition format
+950475e8 fix(dmsquash-live): erofs collision with latest util-linux
+fa17b6fb fix(systemd-udevd): handle root=gpt-auto for systemd-v258
