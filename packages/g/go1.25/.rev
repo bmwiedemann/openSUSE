@@ -20,4 +20,18 @@
   * go#74380 boo#1246118 security: fix CVE-2025-4674 cmd/go: disable support for multiple vcs in one module</comment>
     <requestid>1291363</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5f0933db5434a54f9281c2780d87cfc6</srcmd5>
+    <version>1.25rc3</version>
+    <time>1754578151</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.25rc3 (released 2025-08-06) is a release candidate version of
+  go1.25 cut from the master branch at the revision tagged
+  go1.25rc3.
+  Refs boo#1244485 go1.25 release tracking
+  CVE-2025-47906 CVE-2025-47907
+  * go#74466 boo#1247719 security: fix CVE-2025-47906 os/exec: LookPath bug: incorrect expansion of &quot;&quot;, &quot;.&quot; and &quot;..&quot; in some PATH configurations
+  * go#74831 boo#1247720 security: fix CVE-2025-47907 database/sql: incorrect results returned from Rows.Scan</comment>
+    <requestid>1298040</requestid>
+  </revision>
 </revisionlist>
