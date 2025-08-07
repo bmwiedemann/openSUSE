@@ -905,4 +905,28 @@
 </comment>
     <requestid>1295374</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>192e5a47157af1794348b34fb2568d8d</srcmd5>
+    <version>2.64.0</version>
+    <time>1754578191</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.64.0:
+  - Features
+    * feat: Remove support for deprecated Hashicorp Vault Secrets
+    * feat: Add hardlink test to doctorcmd
+    * feat: Add --age-recipients-file flag to add command
+    * feat: Add --age-recipient flag to add command
+    * feat: Add automatic Bitwarden CLI unlock
+    * feat: Rename returnEmpty template function to abortEmpty
+    * feat: Add returnEmpty template function
+  - Fixes
+    * fix: Always use diff.pager if configured
+    * fix: Use external diff tool for apply and re-add previews
+    * fix: Fix bad skip instruction in test script issue4479
+  - Documentation updates
+    * docs: Add notes on edit watch and hardlink subtleties
+    * docs: Add Beyond Compare merge tool configuration
+</comment>
+    <requestid>1298086</requestid>
+  </revision>
 </revisionlist>

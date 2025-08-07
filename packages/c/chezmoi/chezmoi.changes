@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug  7 07:31:01 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.64.0:
+  - Features
+    * feat: Remove support for deprecated Hashicorp Vault Secrets
+    * feat: Add hardlink test to doctorcmd
+    * feat: Add --age-recipients-file flag to add command
+    * feat: Add --age-recipient flag to add command
+    * feat: Add automatic Bitwarden CLI unlock
+    * feat: Rename returnEmpty template function to abortEmpty
+    * feat: Add returnEmpty template function
+  - Fixes
+    * fix: Always use diff.pager if configured
+    * fix: Use external diff tool for apply and re-add previews
+    * fix: Fix bad skip instruction in test script issue4479
+  - Documentation updates
+    * docs: Add notes on edit watch and hardlink subtleties
+    * docs: Add Beyond Compare merge tool configuration
+
+-------------------------------------------------------------------
 Wed Jul 23 15:30:31 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.63.1:
