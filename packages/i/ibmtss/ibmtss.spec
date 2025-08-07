@@ -1,7 +1,7 @@
 #
 # spec file for package ibmtss
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -85,18 +85,13 @@ testfailed=0
 TPM_INTERFACE_TYPE=socsim LD_LIBRARY_PATH=.libs ./reg.sh -a || testfailed=$?
 kill "$tpm_server" || :
 [ "$testfailed" -eq 0 ]
-sed -i -e "s|$PWD|%{_datadir}/%{name}|" certificates/rootcerts.txt
 
 %install
 install -m 644 -D -t %{buildroot}%{_prefix}/lib/udev/rules.d/ %{SOURCE1}
 cd utils
 %make_install
 
-mkdir -p %{buildroot}/%{_datadir}/%{name}
-cp -a policies certificates %{buildroot}/%{_datadir}/%{name}
-
 find %{buildroot} -type f -name "*.la" -delete -print
-find %{buildroot} -name .cvsignore | xargs rm -v
 
 %post base
 %_bindir/udevadm trigger -s tpm -s tpmrm || :
@@ -116,7 +111,6 @@ find %{buildroot} -name .cvsignore | xargs rm -v
 
 %files base
 %license LICENSE
-%{_datadir}/%{name}
 %{_prefix}/lib/udev/rules.d/*
 
 %files devel

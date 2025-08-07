@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  6 15:58:27 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Do not ship test data (bsc#1239985)
+
+-------------------------------------------------------------------
 Tue Feb 25 10:42:23 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 2.4.1:
