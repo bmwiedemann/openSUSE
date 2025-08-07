@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Wed Aug  6 12:53:27 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Drop 0001-dl-load-path.patch: use GGML_BACKEND_DIR instead
+- Enable loading backends dynamically
+- Update to version 6100:
+  * llama : add gpt-oss (#15091)
+  * llama : add --n-cpu-moe option (#15077)
+  * llama : enable LLAMA_SET_ROWS=1 by default (#14959)
+  * server : add openai-style logit_bias support (#14946)
+  * server : implement universal assisted decoding (#12635)
+  * mtmd : support MiniCPM-V 4.0 (#14983)
+  * opencl: add f16 for `add`, `sub`, `mul`, `div` (#14984)
+  * model : add hunyuan dense (#14878)
+  * model : add text-only support for Kimi-VL
+  * model: support GLM 4.5 family of models (#14939)
+  * model : support Qwen3-Embedding (#15023)
+  * graph : Optimize graph operations
+  * vulkan: various bug fixes and optimizations
+  * Various bug fixes
+
+-------------------------------------------------------------------
+Wed Jul 30 20:34:21 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 6038:
+  * chat : fix kimi-k2 chat template (#14852)
+  * common : avoid logging partial messages (which can contain
+    broken UTF-8 sequences) (#14937)
+  * context : perform output reorder lazily upon access after sync
+    (#14853)
+  * context : restore preemptive sched reset when LLAMA_SET_ROWS=0
+    (#14870)
+  * convert : text-only support for GLM-4.1V-9B-Thinking (#14823)
+  * embeddings: fix extraction of CLS pooling results (#14927)
+  * ggml-cpu : deduplicate scalar implementations (#14897)
+  * ggml-cpu : disable GGML_NNPA by default due to instability
+    (#14880)
+  * ggml-cpu : remove stdlib include from repack.cpp (ggml/1276)
+  * ggml : remove invalid portPos specifiers from dot files
+    (#14838)
+  * graph : fix stack-use-after-return (#14960)
+  * llama-bench : use local GPUs along with RPC servers
+    (#14917)
+  * llama : clarify comment about pp and tg graphs [no ci]
+    (#14895)
+  * llama : fix kq_scale for the attention layers of PLaMo2
+    (#14892)
+  * llama : fix MiniCPM inference after Granite Four changes
+    (#14850)
+  * metal : fix fusion across different encoders (#14849)
+  * metal: SSM_SCAN performance (#14743)
+  * model : add support for SmallThinker series (#14898)
+  * model : make rope_yarn_log_mul optional for deepseek2
+    (#14896)
+  * mtmd : add support for Voxtral (#14862)
+  * mtmd : fix 32-bit narrowing issue in export-lora and mtmd
+    clip (#14503)
+  * opencl: add fused `rms_norm_mul` (#14841)
+  * opencl : add ops docs (#14910)
+  * quantize : fix using combined imatrix GGUFs
+    (multiple datasets) (#14973)
+  * quantize : update README.md (#14905)
+  * rpc : check for null buffers in get/set/copy tensor
+    endpoints (#14868)
+  * sched : fix multiple evaluations of the same graph with
+    pipeline parallelism (#14855)
+  * server : add support for `embd_normalize` parameter (#14964)
+  * server-bench: make seed choice configurable (#14929)
+  * vulkan : add fp16 support for the conv_2d kernel (#14872)
+  * vulkan: add ops docs (#14900)
+  * vulkan : fix 32-bit builds (ggml/1313)
+  * vulkan: skip empty set_rows to avoid invalid API usage
+    (#14860)
+
+-------------------------------------------------------------------
 Wed Jul 23 14:07:56 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 5970:
@@ -13,7 +87,7 @@ Wed Jul 23 14:07:56 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
   * graph: fix graph reuse reset of params
   * graph: pass the graph placeholder message in debug mode
   * graph: refactor context to not pass gf explicitly
-  * imatrix: add option to display importance score statistics 
+  * imatrix: add option to display importance score statistics
   	for a given imatrix file
   * imatrix: use GGUF to store importance matrices
   * kv-cache: fix k-shift for multiple streams

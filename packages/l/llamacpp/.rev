@@ -193,4 +193,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1296595</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1913fb648089dd0cc6dcdef6032efe2c</srcmd5>
+    <version>6100</version>
+    <time>1754578127</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop 0001-dl-load-path.patch: use GGML_BACKEND_DIR instead
+- Enable loading backends dynamically
+- Update to version 6100:
+  * llama : add gpt-oss (#15091)
+  * llama : add --n-cpu-moe option (#15077)
+  * llama : enable LLAMA_SET_ROWS=1 by default (#14959)
+  * server : add openai-style logit_bias support (#14946)
+  * server : implement universal assisted decoding (#12635)
+  * mtmd : support MiniCPM-V 4.0 (#14983)
+  * opencl: add f16 for `add`, `sub`, `mul`, `div` (#14984)
+  * model : add hunyuan dense (#14878)
+  * model : add text-only support for Kimi-VL
+  * model: support GLM 4.5 family of models (#14939)
+  * model : support Qwen3-Embedding (#15023)
+  * graph : Optimize graph operations
+  * vulkan: various bug fixes and optimizations
+  * Various bug fixes
+
+- Update to version 6038:
+  * chat : fix kimi-k2 chat template (#14852)
+  * common : avoid logging partial messages (which can contain
+    broken UTF-8 sequences) (#14937)
+  * context : perform output reorder lazily upon access after sync
+    (#14853)
+  * context : restore preemptive sched reset when LLAMA_SET_ROWS=0
+    (#14870)
+  * convert : text-only support for GLM-4.1V-9B-Thinking (#14823)
+  * embeddings: fix extraction of CLS pooling results (#14927)
+  * ggml-cpu : deduplicate scalar implementations (#14897)
+  * ggml-cpu : disable GGML_NNPA by default due to instability</comment>
+    <requestid>1298007</requestid>
+  </revision>
 </revisionlist>

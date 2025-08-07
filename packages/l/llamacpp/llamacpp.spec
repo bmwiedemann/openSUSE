@@ -1,7 +1,7 @@
 #
 # spec file for package llamacpp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Eyad Issa <eyadlorenzo@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,14 +17,15 @@
 #
 
 
+%global backend_dir %{_libdir}/ggml
+
 Name:           llamacpp
-Version:        5970
+Version:        6100
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT
 URL:            https://github.com/ggml-org/llama.cpp
 Source:         %{URL}/archive/b%{version}/%{name}-%{version}.tar.gz
-Patch1:         0001-dl-load-path.patch
 BuildRequires:  cmake >= 3.14
 BuildRequires:  gcc-c++
 BuildRequires:  git
@@ -63,7 +64,9 @@ that depend on libllama.so.
 
 %package -n libggml
 Summary:        A tensor library for C++
-Requires:       ggml-rt
+Requires:       libggml-cpu
+Recommends:     libggml-opencl
+Recommends:     libggml-vulkan
 
 %description -n libggml
 A tensor library for C++. It was created originally to support llama.cpp
@@ -80,7 +83,6 @@ This package includes the base shared library for ggml.
 
 %package -n libggml-cpu
 Summary:        A tensor library for C++ (CPU backend)
-Provides:       ggml-rt
 
 %description -n libggml-cpu
 A tensor library for C++. It was created originally to support llama.cpp
@@ -90,7 +92,6 @@ This package includes the CPU backend for ggml.
 
 %package -n libggml-vulkan
 Summary:        A tensor library for C++ (Vulkan backend)
-Provides:       ggml-rt
 
 %description -n libggml-vulkan
 A tensor library for C++. It was created originally to support llama.cpp
@@ -100,7 +101,6 @@ This package includes the Vulkan backend for ggml.
 
 %package -n libggml-opencl
 Summary:        A tensor library for C++ (OpenCL backend)
-Provides:       ggml-rt
 
 %description -n libggml-opencl
 A tensor library for C++. It was created originally to support llama.cpp
@@ -142,8 +142,11 @@ Library to handle multimodal inputs for llama.cpp.
 %autosetup -p1 -n llama.cpp-b%{version}
 
 %build
+
 %define _lto_cflags %{nil}
 %define __builder ninja
+
+mkdir -p %{_libdir}
 
 %cmake \
     -DCMAKE_SKIP_RPATH=ON \
@@ -155,7 +158,10 @@ Library to handle multimodal inputs for llama.cpp.
     -DGGML_CPU=ON \
     -DGGML_VULKAN=ON \
     -DGGML_OPENCL=ON \
+    -DGGML_BACKEND_DL=ON \
+    -DGGML_BACKEND_DIR="%{backend_dir}" \
     -DGGML_OPENCL_USE_ADRENO_KERNELS=OFF \
+    %{nil}
 
 %cmake_build
 
@@ -169,6 +175,13 @@ rm %{buildroot}%{_bindir}/convert_hf_to_gguf.py
 %doc README.md
 %license LICENSE
 %{_bindir}/llama-*
+
+%files devel
+%license LICENSE
+%{_includedir}/llama*
+%{_includedir}/mtmd*
+%{_libdir}/cmake/llama
+%{_libdir}/pkgconfig/llama.pc
 
 %files -n libllama
 %license LICENSE
@@ -184,22 +197,18 @@ rm %{buildroot}%{_bindir}/convert_hf_to_gguf.py
 
 %files -n libggml-cpu
 %license LICENSE
-%{_libdir}/libggml-cpu.so
+%dir %{backend_dir}
+%{backend_dir}/libggml-cpu.so
 
 %files -n libggml-vulkan
 %license LICENSE
-%{_libdir}/libggml-vulkan.so
+%dir %{backend_dir}
+%{backend_dir}/libggml-vulkan.so
 
 %files -n libggml-opencl
 %license LICENSE
-%{_libdir}/libggml-opencl.so
-
-%files devel
-%license LICENSE
-%{_includedir}/llama*
-%{_includedir}/mtmd*
-%{_libdir}/cmake/llama
-%{_libdir}/pkgconfig/llama.pc
+%dir %{backend_dir}
+%{backend_dir}/libggml-opencl.so
 
 %files -n ggml-devel
 %license LICENSE
