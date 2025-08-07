@@ -51,7 +51,11 @@ Requires:       wallpaper-branding-%{nsuffix}
 Requires:       adwaita-icon-theme
 Requires:       gio-branding-%{nsuffix}
 Requires:       papirus-icon-theme
+%if "%{nsuffix}"=="SLE"
+Requires:       distribution-logos-branding-SLE
+%else
 Requires:       systemd-icon-branding
+%endif
 Recommends:     MozillaFirefox
 # Recommend openSUSE favourited packages
 Recommends:     gnome-terminal

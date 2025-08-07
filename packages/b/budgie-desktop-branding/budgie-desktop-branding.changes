@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug  7 07:59:16 UTC 2025 - Max Lin <mlin@suse.com>
+
+- Use Requires: distribution-logos-branding-SLE for Backports/SLE build
+  * All files from distribution-logos-SLE has been merged into
+    distribution-logos-branding-SLE including the icons, and it is
+    no longer providing systemd-icon-branding capacity
+
+-------------------------------------------------------------------
 Thu Mar  6 15:37:34 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 20250305.1:
