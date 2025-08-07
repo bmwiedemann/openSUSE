@@ -243,4 +243,15 @@
     understands it</comment>
     <requestid>1294212</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>334157d2e9b7aa98776c361e2c454652</srcmd5>
+    <version>1.5.4</version>
+    <time>1754578102</time>
+    <user>dimstar_suse</user>
+    <comment>- Make tests more verbose.
+- Update to 1.5.4
+  * Fix: Ability to yield fixtures (broken in 1.5.3)
+</comment>
+    <requestid>1297810</requestid>
+  </revision>
 </revisionlist>

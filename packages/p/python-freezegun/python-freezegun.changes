@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug  5 18:46:39 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Make tests more verbose.
+
+-------------------------------------------------------------------
+Tue Aug  5 10:31:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.5.4
+  * Fix: Ability to yield fixtures (broken in 1.5.3)
+
+-------------------------------------------------------------------
 Thu Jul 17 19:18:42 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.3:

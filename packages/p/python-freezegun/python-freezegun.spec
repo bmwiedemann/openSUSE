@@ -1,7 +1,9 @@
 #
 # spec file for package python-freezegun
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +20,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-freezegun
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        Mock time date for Python
 License:        Apache-2.0
@@ -53,7 +55,7 @@ time by mocking the datetime module.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest
+%pyunittest -v
 
 %files %{python_files}
 %license LICENSE
