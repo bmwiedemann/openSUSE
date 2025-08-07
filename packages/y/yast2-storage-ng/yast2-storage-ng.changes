@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 28 10:59:39 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Do not generate grub2 error messages and proposals if a BLS
+  bootlaoder (systemd-boot/grub2-bls) bootloader is the preferred
+  bootloader.
+- Do not generate subvolumes like @/boot/grub2/x86_64-efi and
+  @/boot/grub2/i386-pc if a BLS bootloader is suggested.
+- Do not generate /boot if a BLS bootloader is suggested.
+- (bsc#1244755)
+- 5.0.35
+
+-------------------------------------------------------------------
 Thu Jul 24 10:59:19 UTC 2025 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Fixed an error when encrypting a disk that originally contains
