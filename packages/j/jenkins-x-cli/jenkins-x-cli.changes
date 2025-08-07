@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Aug 07 05:24:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.18:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.5.14
+
+-------------------------------------------------------------------
+Thu Aug 07 05:03:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.17:
+  * chore(deps): bump jenkins-x-plugins/jx-release-version
+
+-------------------------------------------------------------------
+Sun Aug 03 14:54:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.16:
+  * chore(deps): upgrade jenkins-x-plugins/jx-changelog to version
+    0.10.18
+- Update to version 3.16.15:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.5.13
+- Update to version 3.16.14:
+  * chore(deps): upgrade jenkins-x-plugins/jx-project to version
+    0.2.79
+
+-------------------------------------------------------------------
 Sun Aug 03 14:48:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.16.13:
