@@ -375,7 +375,7 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-notify
 %doc %{_docdir}/%{name}/*.txt
 %dir %doc %{_docdir}/%{name}/samples/
 %doc %{_docdir}/%{name}/samples/*.rc
-%doc %{_docdir}/%{name}/samples/ca-bundle.crt
+%exclude %doc %{_docdir}/%{name}/samples/ca-bundle.crt
 %doc %{_docdir}/%{name}/samples/colors.*
 %doc %{_docdir}/%{name}/samples/markdown2html
 %doc %{_docdir}/%{name}/samples/mutt_oauth2.py

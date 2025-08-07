@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  7 08:42:02 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Exclude sample ca-bundle.crt as it is outdated (bsc#1246321)
+
+-------------------------------------------------------------------
 Wed May 21 06:40:31 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Update to mutt 2.2.14 (Bug fix release)
