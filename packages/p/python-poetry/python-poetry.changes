@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  7 05:01:07 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip more tests that require /tmp to be mounted exec.
+
+-------------------------------------------------------------------
 Wed Mar 12 11:08:57 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Fix requirements

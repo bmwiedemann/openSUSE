@@ -1,7 +1,7 @@
 #
 # spec file for package python-poetry
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -125,6 +125,9 @@ donttest="$donttest or test_info_setup_complex_calls_script"
 donttest="$donttest or test_system_site_packages"
 # does not raise deprecationwarning
 donttest="$donttest or test_get_http_auth"
+# requires /tmp to be mounted exec
+donttest="$donttest or test_list_poetry_managed or test_find_all_with_poetry_managed"
+donttest="$donttest or test_find_poetry_managed_pythons"
 %{python_expand # pytest needs to be called from the virtualenv python interpreter gh#python-poetry/poetry#1645
 virtualenv-%{$python_bin_suffix} --system-site-packages testenv-%{$python_bin_suffix}
 source testenv-%{$python_bin_suffix}/bin/activate

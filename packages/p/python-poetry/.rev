@@ -664,4 +664,12 @@
 </comment>
     <requestid>1252482</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>f0492a962f3c206336b4ff3abd6a9664</srcmd5>
+    <version>2.1.1</version>
+    <time>1754578158</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip more tests that require /tmp to be mounted exec.</comment>
+    <requestid>1298041</requestid>
+  </revision>
 </revisionlist>
