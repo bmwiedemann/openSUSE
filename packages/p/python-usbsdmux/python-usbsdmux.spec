@@ -1,7 +1,7 @@
 #
 # spec file for package python-usbsdmux
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,12 @@
 
 %define         orig_name usbsdmux
 Name:           python-usbsdmux
-Version:        24.11.1
+Version:        25.8
 Release:        0
 Summary:        Tool to control an usb-sd-mux from the command line
 License:        LGPL-2.1-or-later
 URL:            https://github.com/linux-automation/usbsdmux
+# Broken with 25.08:
 Source0:        https://files.pythonhosted.org/packages/source/u/usbsdmux/usbsdmux-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
@@ -89,7 +90,7 @@ cp contrib/udev/99-usbsdmux.rules %{buildroot}%{_udevrulesdir}
 
 %files %{python_files}
 %doc README.rst
-%license COPYING
+%license LICENSES/LGPL-2.1-or-later.txt
 %python_alternative %{_bindir}/usbsdmux
 %python_alternative %{_bindir}/usbsdmux-configure
 %{python_sitelib}/usbsdmux

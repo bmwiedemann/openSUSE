@@ -63,4 +63,12 @@
   * usb2642i2c: Do not create if device node does not exist</comment>
     <requestid>1225340</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a6aec5891d384300c8f8b38d6e7973b5</srcmd5>
+    <version>25.8</version>
+    <time>1754578203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1298137</requestid>
+  </revision>
 </revisionlist>

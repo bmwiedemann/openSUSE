@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug  7 11:47:42 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 25.8:
+  * This release fixes a bug in which the MQTT reporting feature
+    could break the tool, if the MQTT broker is not available:
+    MQTT: Continue switching the Mux on MQTT error by @SmithChart 
+    in #96
+  * usbsdmux: sd_regs: Fix ruff error regarding the use of percent 
+    formatting by @hnez in #89
+  * CI: run checks on a schedule and allow workflow_dispatch by
+    @hnez in #90
+  * contrib/udev: explicitly load the sg module in the udev rule
+    by @hnez in #88
+  * Fix postal address in the LGPL by @SmithChart in #94 (Reported
+    by @yaneti in #91)
+  * Make License and Copyright Information compatible to Reuse 3.3
+    specification by @SmithChart in #97
+
+-------------------------------------------------------------------
 Wed Nov 20 16:31:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.11.1:
