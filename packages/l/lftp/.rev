@@ -781,4 +781,12 @@ the underlying buffer would always contain a NUL-terminated string.
     <comment>fix build on ppc64le [bsc#1242138]</comment>
     <requestid>1274701</requestid>
   </revision>
+  <revision rev="83" vrev="7">
+    <srcmd5>b2d94bd296aa04b24187b2c94cfac0dd</srcmd5>
+    <version>4.9.2</version>
+    <time>1754578114</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-download lftp-4.9.2-cdefs.patch. (forwarded request 1298025 from dimstar)</comment>
+    <requestid>1298026</requestid>
+  </revision>
 </revisionlist>

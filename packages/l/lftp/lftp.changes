@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug  6 19:14:11 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-download lftp-4.9.2-cdefs.patch.
+
+-------------------------------------------------------------------
+Wed Aug  6 13:11:24 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop usage of deprectated desktop_file_update.
+- Generate a po/LINGUAS file: gettext 0.25.x dropped the deprecated
+  ALL_LINGUAS variable, but the entire build script is so legacy,
+  that just working around with the still supported po/LINGUAS is
+  the easiest for now.
+- BuildRequire gettext nstead of gettext-tools: allow OBS to
+  shortcut through the gettext mini flavors.
+
+-------------------------------------------------------------------
 Mon May  5 19:14:02 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Apply "lftp-4.9.2-cdefs.patch" when building on ppc64le

@@ -1,7 +1,7 @@
 #
 # spec file for package lftp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -41,7 +41,7 @@ Patch100:       https://src.fedoraproject.org/rpms/lftp/raw/rawhide/f/lftp-4.9.2
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
-BuildRequires:  gettext-tools
+BuildRequires:  gettext
 BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  make
@@ -50,7 +50,6 @@ BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  update-alternatives
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libidn2)
 BuildRequires:  pkgconfig(zlib)
@@ -87,6 +86,8 @@ HTTP and FTP, and FXP transfers.
 # that we apply above.
 gettextize --force --copy --no-changelog
 autoreconf --install --force
+# with gettext >= 0.25, the logic to rely on ALL_LINGUAS is not working reliably
+(cd po && ls *.po | sed 's/\.po$//' > LINGUAS)
 %configure \
    --disable-silent-rules \
    --without-included-regex \
@@ -106,7 +107,6 @@ make %{?_smp_mflags}
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-%suse_update_desktop_file %{name} -G "FTP client" Network FileTransfer
 %find_lang %{name}
 
 %post -p /sbin/ldconfig
