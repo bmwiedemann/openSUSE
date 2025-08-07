@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug  6 06:26:58 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.33.2
+  libmpg123:
+  * Do not modify raw ID3v2 data while parsing. This used to be
+    fine before MPG123_STORE_RAW_ID3 got introduced. Not anymore.
+
+-------------------------------------------------------------------
 Sun Jul 27 18:59:58 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.33.1
