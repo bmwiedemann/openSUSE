@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 07 05:04:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.25.2:
+  * Prepare release v4.25.2
+  * tests: clean up code (#2612)
+  * tests: change the signature of the method BuildHTTPS (#2611)
+  * chore: clean up (#2610)
+  * tests: simplify fake DNS server (rfc2136) (#2609)
+  * fix: enforce HTTPS to the ACME server (#2608)
+  * tests: use better test domains (#2603)
+  * chore: clean up tests and code (#2602)
+  * fix: remove wrong env var (#2600)
+  * feat: log when dynamic renew date not yet reached (#2597)
+  * Detach v4.25.1
+
+-------------------------------------------------------------------
 Thu Jul 24 11:32:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.25.1:
