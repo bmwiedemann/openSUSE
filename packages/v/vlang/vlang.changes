@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+Wed Jul 30 20:51:53 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Do not strip executables to make debuginfo work 
+
+-------------------------------------------------------------------
+Sat Jun 21 11:00:42 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.4.11:
+  * Support a new CPU architecture s390x (#24107)
+  * Add initial support for ppc64le (#24287)
+  * Add initial support for loongarch64 (#24343)
+  * Support `js"string literal"` for JavaScript strings (#24653)
+  * VLS mode in the parser for the new language server in pure V
+  * Remove deprecations made before 2024-11-06
+  * Add a deprecation note for `any` arg, prevent `any` from being
+    used as map key,value or array type (#24277)
+  * Checker improvements/fixes
+  * Parser improvements
+  * Comptime improvements
+  * Compiler internals improvements
+  * Standard library improvements and additions
+  * Full changelog at:
+    /usr/share/doc/packages/vlang/CHANGELOG.md
+
+-------------------------------------------------------------------
+Thu Jun 12 16:44:06 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Only strip executable files
+
+-------------------------------------------------------------------
+Mon Jun  2 17:14:11 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Make examples subpackage noarch
+- Re-build a third time and check for diff between compilations
+- Remove more dev files from packaging
+
+-------------------------------------------------------------------
+Wed May 28 22:55:41 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Initial packaging at 0.4.10

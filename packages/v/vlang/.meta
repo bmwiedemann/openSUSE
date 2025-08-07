@@ -1,0 +1,6 @@
+<package name="vlang" project="openSUSE:Factory">
+  <title>The V Programming Language</title>
+  <description>V is a statically typed compiled programming language inspired
+by Go but with a more low-level approach, similar to C or Rust.</description>
+  <url>https://vlang.io/</url>
+</package>
