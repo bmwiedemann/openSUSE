@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Jul 31 10:43:14 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- add new additional signing key support+releasesigning@divested.dev 6395FC9911EDCD6158712DF7BADFCABDDBF5B694
+- Update to version 0.9.76:
+ * feature: use globbing in hardcoded numbered /dev paths (#2723 #6704)
+ * feature: add warn command (#6710)
+ * feature: use non-blocking flock calls (#6761)
+ * modif: block TPM devices & turn notpm command into keep-dev-tpm (#6698)
+ * modif: improve error messages in mountinfo.c (#6711)
+ * modif: use "Error:" in errExit message (#6716)
+ * modif: keep tss group if keep-dev-tpm is used (#6718)
+ * modif: keep /dev/tpmrm devices if keep-dev-tpm is used (#6719)
+ * modif: keep tcm/tcmrm devices if keep-dev-tpm is used (#6724)
+ * modif: improve "Failed mount" error messages in util.c (#6747)
+ * modif: improve fcopy error messages in check() (#6801)
+ * modif: fcopy: try normal case first instead of last in check() (#6804)
+ * modif: improve new network namespace error message (#6824)
+ * modif: improve error messages in sandbox.c/sbox.c (#6825)
+ * bugfix: fix flock debug messages going to stderr (#6712)
+ * bugfix: add missing selinux relabeling for /dev paths (#6734)
+ * bugfix: fix potential deadlock with flock + SIGTSTP (#6729 #6750)
+ * bugfix: fcopy: add /usr/share + "runner:root" exception to fix CI (#6797 #6803)
+ * bugfix: fcopy: allow /etc/resolv.conf owned by systemd-resolve (#4545 #6808)
+ * bugfix: fix "Not enforcing Landlock" message always being printed (#6806)
+ * bugfix: add NULL check for cmdline in find_child() (#6840)
+ * build: use TARNAME in SYSCONFDIR/VARDIR (#6713)
+ * build: add localstatedir and use in VARDIR (#6715)
+ * build: replace SYSCONFDIR with @sysconfdir@ (#6737)
+ * ci: upgrade debian:buster to debian:bullseye (#6832)
+ * docs: improve URL formatting in man pages (#6706)
+ * docs: clarify --private bug in man pages (#6805)
+ * docs: fix man formatting of landlock.enforce (#6807)
+ * profiles: split commands that increase/reduce access (#6687)
+ * profiles: firefox: add comment about creating PWA shortcuts (#6689)
+ * profiles: add more xorg paths (#6708)
+ * profiles: fix include of deprecated disable-X11.inc (uppercase) (#6709)
+ * profiles: godot: remove noinput so gamepads work (#6707)
+ * profiles: remove mkdir ~/.pki (#6732)
+ * profiles: mpv: remove mkfile ~/.netrc (#6735)
+ * profiles: curl: allow ~/.netrc (#6736)
+ * profiles: discord-common: add env to private-bin (#6738)
+ * profiles: firecfg: disable checksum programs (#6755)
+ * profiles: rssguard: allow lua (#6758 #6759)
+ * profiles: wine: allow python to fix Epic Games Launcher (#6762 #6763)
+ * profiles: wusc: add /usr/share/xkeyboard-config-2 (#6773 #6775)
+ * profiles: chafa: quiet output (#6777)
+ * profiles: ripperx/sound-juicer: fix profile name typos (#6780)
+ * profiles: ani-cli: add mpv to private-etc for plugins access (#6779)
+ * profiles: use private-etc groups in more profiles (#6783)
+ * profiles: firecfg: disable foliate (#6784)
+ * profiles: finish converting private-opt to whitelist (#6785)
+ * profiles: replace hosts.conf with host.conf in private-etc (#6791)
+ * profiles: makedeb: allow dpkg (#6816)
+ * profiles: kate: fix network access (#6815 #6823)
+ * profiles: keepassxc: add x11 group to private-etc (#6827 #6828)
+ * profiles: allow org.kde.kwalletd6 for Plasma 6 systems (#6819)
+ * profiles: xreader: disable no3d to fix startup (#6829)
+ * profiles: firefox: add alternative tridactylrc path (#6720 #6721)
+ * new profile: ansel (#6751)
+
+-------------------------------------------------------------------
 Sat Jul 19 11:11:41 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.9.74:
@@ -314,7 +375,7 @@ Sun Apr  9 14:43:39 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
   * bugfixes
 
 -------------------------------------------------------------------
-Tue Jun 14 20:21:18 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Tue Jun 14 20:21:18 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - remove patches fix-internet-access.patch and fix-CVE-2022-31214.patch
   as they are integrated upstream
@@ -356,18 +417,18 @@ Tue Jun 14 20:21:18 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - removed profiles: nvm
 
 -------------------------------------------------------------------
-Wed Jun  8 21:08:03 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Wed Jun  8 21:08:03 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - fix bsc#1199148 CVE-2022-31214 by adding patch fix-CVE-2022-31214.patch
   using commits from upstream.
 
 -------------------------------------------------------------------
-Mon Feb 28 19:38:38 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Mon Feb 28 19:38:38 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - add fix-internet-access.patch to fix boo#1196542
 
 -------------------------------------------------------------------
-Sun Feb  6 21:09:00 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Feb  6 21:09:00 UTC 2022 - Sebastian Wagner <sebix@sebix.at>
 
 - update to firejail 0.9.68:
  - security: on Ubuntu, the PPA is now recommended over the distro package
@@ -485,12 +546,12 @@ Thu Jan 28 18:35:06 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
     mdr, shotwell, qnapi, new profiles: guvcview, pkglog, kdiff3, CoyIM.
 
 -------------------------------------------------------------------
-Mon Nov  2 19:44:51 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Mon Nov  2 19:44:51 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - packaging fixes
 
 -------------------------------------------------------------------
-Sun Nov  1 16:58:56 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Nov  1 16:58:56 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 0.9.64:
   * replaced --nowrap option with --wrap in firemon
@@ -572,7 +633,7 @@ Thu Aug 13 06:13:57 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 - Remove fix-CVE-2020-17367.patch
 
 -------------------------------------------------------------------
-Sat Aug  8 16:56:43 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Aug  8 16:56:43 UTC 2020 - Sebastian Wagner <sebix@sebix.at>
 
 - Add patches fix-CVE-2020-17367.patch and fix-CVE-2020-17368.patch to fix CVE-2020-17367 and CVE-2020-17368 and boo#1174986
 
@@ -614,7 +675,7 @@ Tue Feb 11 22:32:46 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
   * new profiles: electron-mail, gist, gist-paste
 
 -------------------------------------------------------------------
-Sun Jun  2 16:30:42 UTC 2019 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sun Jun  2 16:30:42 UTC 2019 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.9.60:
  * security bug reported by Austin Morton:
@@ -672,7 +733,7 @@ Fri Feb  1 07:29:32 UTC 2019 - info@paolostivanin.com
   * bugfixes
 
 -------------------------------------------------------------------
-Sat Sep 22 09:11:21 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
+Sat Sep 22 09:11:21 UTC 2018 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 0.9.56:
   * modif: removed CFG_CHROOT_DESKTOP configuration option
@@ -711,7 +772,7 @@ Mon Sep 10 08:58:32 UTC 2018 - Markos Chandras <mchandras@suse.de>
 - Remove the rpmlintrc file since the warnings are no longer relevant.
 
 -------------------------------------------------------------------
-Thu Aug 23 19:34:44 UTC 2018 - sebix+novell.com@sebix.at
+Thu Aug 23 19:34:44 UTC 2018 - sebix@sebix.at
 
 - Changed the permissions of the firejail executable to 4750.
   Setuid mode is used, but only allowed for users in the newly
