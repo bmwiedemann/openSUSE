@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  5 12:13:38 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250804 (git commit 37b63dc35d98):
+  * linux-firmware: update firmware for MT7925 WiFi device
+  * mediatek MT7925: update bluetooth firmware to 20250721233113
+
+-------------------------------------------------------------------
 Thu Jul 10 16:43:38 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250708 (git commit 99d64b4f788c):
