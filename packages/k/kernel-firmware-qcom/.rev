@@ -172,4 +172,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Add QCS6490 symlink for QUPv3 firmware</comment>
     <requestid>1296571</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>acaeb7f04bca238f5ec7be890cc59ad3</srcmd5>
+    <version>20250804</version>
+    <time>1754578107</time>
+    <user>dimstar_suse</user>
+    <comment>- Update aliases for 6.16
+
+- Update to version 20250804 (git commit 37b63dc35d98):
+  * qcom: Add QDU100 firmware image files required for booting.
+  * qcom: Update DSP firmware for qcm6490 platform</comment>
+    <requestid>1297880</requestid>
+  </revision>
 </revisionlist>

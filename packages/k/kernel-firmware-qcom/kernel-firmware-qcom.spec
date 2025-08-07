@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 4bb152fb440528d7abb8a18c3879ea5b4be416c2
+%define git_version 37b63dc35d98e1fc5c2be95ab7468bf470c20dfd
 
 Name:           kernel-firmware-qcom
-Version:        20250725
+Version:        20250804
 Release:        0
 Summary:        Kernel firmware files for Qualcomm device drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250721.tar.gz#/kernel-firmware-tools-20250721.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250805.tar.gz#/kernel-firmware-tools-20250805.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -126,6 +126,10 @@ Supplements:    modalias(of:N*T*Cqcom%2Csa8775p-mdss)
 Supplements:    modalias(of:N*T*Cqcom%2Csa8775p-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom%2Csar2130p-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom%2Csar2130p-adsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom%2Csar2130p-dpu)
+Supplements:    modalias(of:N*T*Cqcom%2Csar2130p-dpuC*)
+Supplements:    modalias(of:N*T*Cqcom%2Csar2130p-mdss)
+Supplements:    modalias(of:N*T*Cqcom%2Csar2130p-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom%2Csc7180-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom%2Csc7180-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom%2Csc7180-dpu)
