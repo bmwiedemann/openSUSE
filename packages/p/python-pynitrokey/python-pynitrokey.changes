@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug  6 05:20:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.10.0:
+  * Remove obsolete nkfido2 commands by @robin-nitrokey in #670
+  * Remove ecdsa dependency by @robin-nitrokey in #671
+  * PIV: validate PINs to be 6 to 8 numbers by @sosthene-nitrokey
+    in #675
+  * Update Nitrokey SDK by @robin-nitrokey in #672
+  * nk3: Deprecate secrets get and register aliases by
+    @robin-nitrokey in #673
+
+-------------------------------------------------------------------
 Tue Jul 22 15:34:03 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - update to 0.9.3:

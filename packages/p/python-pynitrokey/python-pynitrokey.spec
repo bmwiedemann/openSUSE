@@ -1,7 +1,7 @@
 #
 # spec file for package python-pynitrokey
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pynitrokey
-Version:        0.9.3
+Version:        0.10.0
 Release:        0
 Summary:        Python Library for Nitrokey devices
 License:        Apache-2.0 OR MIT
@@ -28,48 +28,41 @@ Source1:        LICENSE-MIT
 Source2:        LICENSE-APACHE
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 #
 BuildRequires:  %{python_module cffi}
-BuildRequires:  %{python_module click >= 8.1.6 with %python-click < 9}
-BuildRequires:  %{python_module click-aliases >= 1.0.5 with %python-click-aliases < 2}
+BuildRequires:  %{python_module click >= 8.2 with %python-click < 9}
 BuildRequires:  %{python_module cryptography >= 43 with %python-cryptography < 46}
-BuildRequires:  %{python_module ecdsa}
 BuildRequires:  %{python_module fido2 >= 2 with %python-fido2 < 3}
 # https://github.com/Nitrokey/pynitrokey/issues/601
 BuildRequires:  %{python_module hidapi >= 0.14.0.post1 with %python-hidapi < 0.14.0.post4}
 BuildRequires:  %{python_module nethsm >= 1.4.0 with %python-nethsm < 2}
-BuildRequires:  %{python_module nitrokey >= 0.3.1 with %python-nitrokey < 0.4}
+BuildRequires:  %{python_module nitrokey >= 0.4.0 with %python-nitrokey < 0.5}
 BuildRequires:  %{python_module nkdfu}
-BuildRequires:  %{python_module protobuf >= 3.17.3}
 BuildRequires:  %{python_module pyusb}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module semver}
 BuildRequires:  %{python_module tlv8}
 BuildRequires:  %{python_module tqdm}
-BuildRequires:  fdupes
 BuildRequires:  intelhex
-BuildRequires:  python-rpm-macros
 # SECTION test
 BuildRequires:  %{python_module pytest}
 # /SECTION
 Requires:       intelhex
 Requires:       python-cffi
-Requires:       python-click >= 8.1.6
-Requires:       python-ecdsa
+Requires:       python-click >= 8.2
 Requires:       python-nkdfu
-Requires:       python-protobuf >= 3.17.3
 Requires:       python-pyusb
 Requires:       python-requests
 Requires:       python-semver
 Requires:       python-tlv8
 Requires:       python-tqdm
-Requires:       (python-click-aliases >= 1.0.5 with python-click-aliases < 2)
-Requires:       (python-cryptography >= 41.0.4 with python-cryptography < 45)
+Requires:       (python-cryptography >= 43 with python-cryptography < 46)
 Requires:       (python-fido2 >= 2 with python-fido2 < 3)
 Requires:       (python-hidapi >= 0.14.0.post1 with python-hidapi < 0.14.0.post4)
 Requires:       (python-nethsm >= 1.4.0 with python-nethsm < 2)
-Requires:       (python-nitrokey >= 0.3.1 with python-nitrokey < 0.4)
-Requires:       (python-spsdk >= 2.0 with python-spsdk < 2.2)
+Requires:       (python-nitrokey >= 0.4.0 with python-nitrokey < 0.5)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
