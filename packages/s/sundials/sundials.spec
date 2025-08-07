@@ -25,10 +25,12 @@
 %undefine DisOMPI2
 %undefine DisOMPI3
 %undefine DisOMPI4
+%undefine DisOMPI5
 %else
 %define DisOMPI1 ExclusiveArch:  do_not_build
 %define DisOMPI3 ExclusiveArch:  do_not_build
 %define DisOMPI4 ExclusiveArch:  do_not_build
+%define DisOMPI5 ExclusiveArch:  do_not_build
 %undefine DisOMPI2
 %endif
 
@@ -92,7 +94,7 @@ ExclusiveArch:  do_not_build
 %define shlib_sunnonlin libsundials_sunnonlin4%{?my_suffix}
 
 Name:           %{package_name}
-Version:        7.3.0
+Version:        7.4.0
 Release:        0
 Summary:        Suite of nonlinear solvers
 # SUNDIALS is licensed under BSD with some additional (but unrestrictive) clauses.
@@ -299,9 +301,6 @@ rm %{buildroot}%{my_incdir}/sundials/{NOTICE,LICENSE}
 %fdupes %{buildroot}
 
 %check
-# Send extremely verbose output to a log file instead of printing to screen to avoid build log bloat
-# Disable the sunlinsol tests which fail apparently due to minor floating pt issues
-# On 32-bit, also disable the sunmatrix tests which fail due to minor floating pt issues
 %if %{with mpi}
 . %{my_bindir}/mpivars.sh
 
@@ -319,44 +318,19 @@ if [ "$(grep 'core id' /proc/cpuinfo  | wc -l)" -lt 4 ]; then
     export OMPI_MCA_rmaps_base_oversubscribe=1
 fi
 %endif
-%ifarch %ix86
-%ctest --quiet --output-log test-output.log --exclude-regex "test_(sunlinsol_lapack|sunmatrix_sparse)*" || ( grep "Fail" test-output.log; exit 1 )
-%else
-%ctest --quiet --output-log test-output.log --exclude-regex "test_sunlinsol_lapack*" || ( grep "Fail" test-output.log; exit 1; )
-%endif
+%ctest
 
-%post -n %{shlib_arkode} -p /sbin/ldconfig
-%postun -n %{shlib_arkode} -p /sbin/ldconfig
-
-%post -n %{shlib_cvode} -p /sbin/ldconfig
-%postun -n %{shlib_cvode} -p /sbin/ldconfig
-
-%post -n %{shlib_cvodes} -p /sbin/ldconfig
-%postun -n %{shlib_cvodes} -p /sbin/ldconfig
-
-%post -n %{shlib_core} -p /sbin/ldconfig
-%postun -n %{shlib_core} -p /sbin/ldconfig
-
-%post -n %{shlib_ida} -p /sbin/ldconfig
-%postun -n %{shlib_ida} -p /sbin/ldconfig
-
-%post -n %{shlib_idas} -p /sbin/ldconfig
-%postun -n %{shlib_idas} -p /sbin/ldconfig
-
-%post -n %{shlib_kinsol} -p /sbin/ldconfig
-%postun -n %{shlib_kinsol} -p /sbin/ldconfig
-
-%post -n %{shlib_nvec} -p /sbin/ldconfig
-%postun -n %{shlib_nvec} -p /sbin/ldconfig
-
-%post -n %{shlib_sunlinsol} -p /sbin/ldconfig
-%postun -n %{shlib_sunlinsol} -p /sbin/ldconfig
-
-%post -n %{shlib_sunmatrix} -p /sbin/ldconfig
-%postun -n %{shlib_sunmatrix} -p /sbin/ldconfig
-
-%post -n %{shlib_sunnonlin} -p /sbin/ldconfig
-%postun -n %{shlib_sunnonlin} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib_arkode}
+%ldconfig_scriptlets -n %{shlib_cvode}
+%ldconfig_scriptlets -n %{shlib_cvodes}
+%ldconfig_scriptlets -n %{shlib_core}
+%ldconfig_scriptlets -n %{shlib_ida}
+%ldconfig_scriptlets -n %{shlib_idas}
+%ldconfig_scriptlets -n %{shlib_kinsol}
+%ldconfig_scriptlets -n %{shlib_nvec}
+%ldconfig_scriptlets -n %{shlib_sunlinsol}
+%ldconfig_scriptlets -n %{shlib_sunmatrix}
+%ldconfig_scriptlets -n %{shlib_sunnonlin}
 
 %if %{without mpi}
 %files doc

@@ -2,4 +2,5 @@
   <package>mvapich2</package>
   <package>serial</package>
   <package>openmpi4</package>
+  <package>openmpi5</package>
 </multibuild>

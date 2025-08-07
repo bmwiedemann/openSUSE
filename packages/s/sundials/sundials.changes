@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Aug  4 12:48:10 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 7.4.0:
+  * New features:
+    - ARKodeSetCFLFraction now allows cfl_frac to be greater than
+      or equal to one.
+    - Added an option to enable compensated summation of the time
+      accumulator for all of ARKODE.
+  * Bug fixes:
+    - Fixed segfaults in CVodeAdjInit and IDAAdjInit when called
+      after adjoint memory has been freed.
+    - Fixed a CMake bug that would cause the Caliper compile test
+      to fail at configure time.
+    - Fixed a bug in the CVODE/CVODES CVodeSetEtaFixedStepBounds
+      function which disallowed setting eta_min_fx or eta_max_fx
+      to 1.
+    - SUNAdjointStepper_PrintAllStats was reporting the wrong
+      quantity for the number of "recompute passes" and has been
+      fixed.
+  * Deprecation Notices: The SPRKStepSetUseCompensatedSums
+    function has been deprecated. Use the
+    ARKodeSetUseCompensatedSums function instead.
+- Enable openmpi5 flavour.
+- Replace use of %post(un) scriptlets with %ldconfig_scriplets.
+- Clean up %check section:
+  * Tests no longer dump bloated output to stdout, so no need to
+    redirect to a file any more.
+  * Floating point issues seemingly resolved upstream, so run the
+    full gamut of tests without excluding any.
+
+-------------------------------------------------------------------
 Wed Apr 30 08:10:04 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 7.3.0:

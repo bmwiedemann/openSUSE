@@ -159,4 +159,15 @@
     <comment></comment>
     <requestid>1274134</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4916b1332e8e479208aae14f6390e173</srcmd5>
+    <version>7.4.0</version>
+    <time>1754578186</time>
+    <user>dimstar_suse</user>
+    <comment>* Update to version 7.4.0.
+* Enable openmpi5 flavour.
+* Replace use of %post(un) scriptlets with %ldconfig_scriplets.
+* Clean up %check section.</comment>
+    <requestid>1298084</requestid>
+  </revision>
 </revisionlist>
