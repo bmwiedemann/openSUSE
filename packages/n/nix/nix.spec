@@ -35,7 +35,7 @@
 %endif
 
 Name:           nix
-Version:        2.30.0
+Version:        2.30.2
 Release:        0
 Summary:        The purely functional package manager
 License:        LGPL-2.1-only
