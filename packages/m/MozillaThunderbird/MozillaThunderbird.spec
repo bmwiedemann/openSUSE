@@ -1,7 +1,7 @@
 #
 # spec file for package MozillaThunderbird
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2006-2025 Wolfgang Rosenauer <wr@rosenauer.org>
 # Copyright (c) 2025 Tristan Miller <psychonaut@nothingisreal.com>
 #
@@ -30,8 +30,8 @@
 # major 69
 # mainver %%major.99
 %define major          140
-%define mainver        %major.1.0
-%define orig_version   140.1.0
+%define mainver        %major.1.1
+%define orig_version   140.1.1
 %define orig_suffix    esr
 %define update_channel esr
 %define source_prefix  thunderbird-%{orig_version}

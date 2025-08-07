@@ -5994,4 +5994,17 @@ I cannot test locally unfortunately.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1297206</requestid>
   </revision>
+  <revision rev="369" vrev="1">
+    <srcmd5>babc0d02aa610f23c62081acad6d7664</srcmd5>
+    <version>140.1.1</version>
+    <time>1754578133</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird ESR 140.1.1
+  Fixed
+  * Users with attachments open in tabs saw an error on Thunderbird restart
+  * Sending from unified or local folder failed if no default account was set
+  * Delete button could remove attachment instead of message
+  * Message list scrolled back when returning to mail tab after opening a message</comment>
+    <requestid>1298009</requestid>
+  </revision>
 </revisionlist>
