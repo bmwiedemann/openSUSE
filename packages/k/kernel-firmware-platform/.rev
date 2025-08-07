@@ -123,4 +123,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * WHENCE: extract more license statements</comment>
     <requestid>1295039</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>e0c9c6be8e5e97281e8338c095d687b4</srcmd5>
+    <version>20250717</version>
+    <time>1754578107</time>
+    <user>dimstar_suse</user>
+    <comment>- Update aliases for 6.16</comment>
+    <requestid>1297879</requestid>
+  </revision>
 </revisionlist>

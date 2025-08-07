@@ -290,6 +290,8 @@ pcnet_cs: pcmcia:m08A1cC0ABf*fn*pfn00pa*pb*pc*pd*
 pcnet_cs: pcmcia:mC001c0009f*fn*pfn*pa*pb*pc*pd*
 powervr: of:N*T*Cimg%2Cimg-axe
 powervr: of:N*T*Cimg%2Cimg-axeC*
+powervr: of:N*T*Cimg%2Cimg-rogue
+powervr: of:N*T*Cimg%2Cimg-rogueC*
 rvu_cptpf: pci:v0000177Dd0000A0F2sv*sd*bc*sc*i*
 rvu_cptpf: pci:v0000177Dd0000A0FDsv*sd*bc*sc*i*
 s2255drv: usb:v1943p2255d*dc*dsc*dp*ic*isc*ip*in*
