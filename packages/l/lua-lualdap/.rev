@@ -18,4 +18,13 @@ https://prosody.im/doc/packagers#navbar</comment>
 - Opencode %make_build to prevent build failure when not defined.</comment>
     <requestid>1061045</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>af654d7f6ffdf80c3a45a7707e32fbc4</srcmd5>
+    <version>1.3.0</version>
+    <time>1754578120</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use &quot;buildtime&quot; services for openSUSE packages, unless
+  you know what you are doing.</comment>
+    <requestid>1298121</requestid>
+  </revision>
 </revisionlist>

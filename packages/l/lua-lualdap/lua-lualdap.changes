@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  5 09:22:01 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Don't use "buildtime" services for openSUSE packages, unless
+  you know what you are doing.
+
+-------------------------------------------------------------------
 Wed Jan 25 10:52:05 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Opencode %make_build to prevent build failure when not defined.
