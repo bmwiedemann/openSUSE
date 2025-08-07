@@ -1,7 +1,9 @@
 #
 # spec file for package audacity
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +21,7 @@
 %bcond_with vst3
 
 Name:           audacity
-Version:        3.7.4
+Version:        3.7.5
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        CC-BY-3.0 AND GPL-2.0-or-later AND GPL-3.0-only
@@ -36,7 +38,6 @@ Patch0:         audacity-no_buildstamp.patch
 # PATCH-FIX-UPSTREAM audacity-no_return_in_nonvoid.patch - Fix false positive errors Two new gcc10 ones ignoring assert
 Patch1:         audacity-no_return_in_nonvoid.patch
 # PATCH-FIX-OPENSUSE vst-system-path.patch - search fo vsts in /usr/lib64 in x86_64 and ARM system
-Patch2:         Use-full-function-prototypes-in-libnyquist.patch
 Patch3:         lib64-plugins-default-path.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
@@ -126,7 +127,6 @@ physical memory size can be edited.
 %setup -q -n %{name}-Audacity-%{version}
 %patch -P 0 -p1
 %patch -P 1 -p1
-%patch -P 2 -p1
 
 %ifarch x86_64 aarch64
 %patch -P 3 -p1
