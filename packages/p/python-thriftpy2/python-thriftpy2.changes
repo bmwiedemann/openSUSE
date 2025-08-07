@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug  5 12:06:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.5.3
+  * Move dependencies from setup.py to project.toml
+  * fix tox config
+  * fix flake8 error in local test
+  * fix: sub module conflict error
+  * Use SO_REUSEPORT only for AF_INET sockets
+  * Make flake8 happy
+  * Resolve daemon warnings for threading methods
+  * Add GHA workflow to build wheels
+  * Allow for omitted FieldID in Field definitions
+  * Bump version to v0.5.3b1
+  * Requires Python3.7
+  * feat: optimize error output
+  * fix: memory leak risk
+  * Bump version 0.5.3b2
+  * Add experimental freethreading support
+  * Bump version 0.5.3
+- Drop 0001-Use-SO_REUSEPORT-only-for-AF_INET-sockets.patch, merged upstream
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Wed Feb 26 11:05:48 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add patch 0001-Use-SO_REUSEPORT-only-for-AF_INET-sockets.patch to

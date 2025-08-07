@@ -18,15 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-thriftpy2
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        Pure python implementation of Apache Thrift
 License:        MIT
 URL:            https://github.com/Thriftpy/thriftpy2
 Source0:        https://github.com/Thriftpy/thriftpy2/archive/v%{version}.tar.gz
 Source1:        new_certs.tar.xz
-# PATCH-FIX-UPSTREAM 0001-Use-SO_REUSEPORT-only-for-AF_INET-sockets.patch gh#Thriftpy/thriftpy2#303
-Patch1:         0001-Use-SO_REUSEPORT-only-for-AF_INET-sockets.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module devel}
@@ -36,6 +34,7 @@ BuildRequires:  %{python_module pytest >= 2.8}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module tornado >= 5.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
