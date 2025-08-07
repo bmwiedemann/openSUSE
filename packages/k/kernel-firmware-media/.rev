@@ -92,4 +92,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Add firmware binary for SM8750.</comment>
     <requestid>1296570</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>381a2505cc6ca8eed089159f16eb6c28</srcmd5>
+    <version>20250804</version>
+    <time>1754578106</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250804 (git commit 37b63dc35d98):
+  * qcom: update Venus firmware file for v6.0</comment>
+    <requestid>1297876</requestid>
+  </revision>
 </revisionlist>
