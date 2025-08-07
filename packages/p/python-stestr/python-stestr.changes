@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Aug  5 11:06:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.2.0
+  * Bugfix: make repo initialization respect pyproject.toml
+  * Test on Python 3.12
+  * Disable checks failure on coverage
+  * Pivot PyPI publishing to use trusted publishers
+  * Update package metadata for support Python versions
+  * Remove Python 3.7 support
+  * Bump codecov action version
+  * Remove dependency on the extras library
+  * Normalize paths
+  * Adapt to tox 4
+  * Update upload-artifact action in CI
+  * Update black to the latest version
+  * Mark Python 3.13 as supported too
+  * Adjust rst syntax in README
+  * Modernize Python packaging
+  * Update release job to work with new packaging structure
+- Add support for libalternatives
+- Remove ChangeLog from %files section
+- Update BuildRequires from pyproject.toml
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Thu Jan  4 23:06:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to singlespec cliff package

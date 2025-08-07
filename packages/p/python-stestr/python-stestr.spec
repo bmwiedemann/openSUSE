@@ -24,19 +24,35 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
+%{?sle15_python_module_pythons}
 Name:           python-stestr%{psuffix}
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        A parallel Python test runner built around subunit
 License:        Apache-2.0
 URL:            https://github.com/mtreinish/stestr
 Source:         https://files.pythonhosted.org/packages/source/s/stestr/stestr-%{version}.tar.gz
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pbr >= 2.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+%endif
 Requires:       python-PyYAML >= 3.10.0
 Requires:       python-cliff >= 2.8.0
 Requires:       python-dbm
@@ -46,8 +62,6 @@ Requires:       python-python-subunit >= 1.4.0
 Requires:       python-testtools >= 2.2.0
 Requires:       python-tomlkit >= 0.11.6
 Requires:       python-voluptuous >= 0.8.9
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module SQLAlchemy}
@@ -94,6 +108,9 @@ export LC_ALL="en_US.UTF8"
 %python_clone -a %{buildroot}%{_bindir}/stestr
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%pre
+%python_libalternatives_reset_alternative stestr
+
 %post
 %python_install_alternative stestr
 
@@ -102,7 +119,7 @@ export LC_ALL="en_US.UTF8"
 
 %files %{python_files}
 %license LICENSE
-%doc ChangeLog README.rst
+%doc README.rst
 %python_alternative %{_bindir}/stestr
 %{python_sitelib}/stestr
 %{python_sitelib}/stestr-%{version}.dist-info
