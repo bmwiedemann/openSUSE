@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-session
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,8 @@ Patch1:         xfce4-session-adapt-session-scripts.patch
 %endif
 # PATCH-FIX-OPENSUSE 0002-relax-x11-version.patch -- Allow build for Leap with its ancient but sufficient X11 packages.
 Patch2:         0002-relax-x11-version.patch
+# PATCH-FIX-OPENSUSE xfce4-session-drop-amixer-D-pulse-option.patch -- Fix audio mixer invocation on Wayland
+Patch3:         xfce4-session-drop-amixer-D-pulse-option.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
 BuildRequires:  iceauth

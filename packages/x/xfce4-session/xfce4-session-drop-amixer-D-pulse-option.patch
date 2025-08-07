@@ -1,0 +1,32 @@
+From: Takashi Iwai <tiwai@suse.de>
+Subject: Drop '-D pulse' option from amixer invocations
+References: bsc#1247640
+
+The option breaks when the system is running with pipewire without
+alsa-plugin-pulse stuff.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+
+---
+ labwc/labwc-rc.xml |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+--- a/labwc/labwc-rc.xml
++++ b/labwc/labwc-rc.xml
+@@ -33,13 +33,13 @@
+        Suggested Xfce key bindings.
+     -->
+     <keybind key="XF86_AudioLowerVolume">
+-      <action name="Execute" command="amixer -D pulse sset Master 5%-" />
++      <action name="Execute" command="amixer sset Master 5%-" />
+     </keybind>
+     <keybind key="XF86_AudioRaiseVolume">
+-      <action name="Execute" command="amixer -D pulse sset Master 5%+" />
++      <action name="Execute" command="amixer sset Master 5%+" />
+     </keybind>
+     <keybind key="XF86_AudioMute">
+-      <action name="Execute" command="amixer -D pulse sset Master toggle" />
++      <action name="Execute" command="amixer sset Master toggle" />
+     </keybind>
+     <keybind key="W-q">
+       <action name="Close" />
