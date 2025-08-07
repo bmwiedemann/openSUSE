@@ -1,7 +1,7 @@
 #
 # spec file for package python-nitrokey
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,29 +18,39 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nitrokey
-Version:        0.3.2
+Version:        0.4.0
 Release:        0
 Summary:        Nitrokey Python SDK
 License:        Apache-2.0
 URL:            https://github.com/Nitrokey/nitrokey-sdk-py
 Source0:        https://files.pythonhosted.org/packages/source/n/nitrokey/nitrokey-%{version}.tar.gz
 Source99:       python-nitrokey.rpmlintrc
-BuildRequires:  %{python_module base >= 3.9.2}
-BuildRequires:  %{python_module fido2 >= 1.1.2 with %python-fido2 < 3}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  %{python_module wheel}
+# Runtime dependencies
+BuildRequires:  %{python_module cryptography >= 41}
+BuildRequires:  %{python_module crcmod >= 1.7 with %python-crcmod < 2}
+BuildRequires:  %{python_module fido2 >= 1.1.2 with %python-fido2 < 3}
+BuildRequires:  %{python_module hidapi >= 0.14 with %python-hidapi < 0.15}
+BuildRequires:  %{python_module protobuf >= 5.26 with %python-protobuf < 7}
+BuildRequires:  %{python_module pyserial >= 3.5 with %python-pyserial < 4}
+BuildRequires:  %{python_module requests >= 2 with %python-requests < 3}
+BuildRequires:  %{python_module semver >= 3 with %python-semver < 4}
+BuildRequires:  %{python_module tlv8 >= 0.10 with %python-tlv8 < 0.11}
+#
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-crcmod
-Requires:       python-cryptography
-Requires:       python-hidapi
-Requires:       python-protobuf
-Requires:       python-pyserial
-Requires:       python-requests
-Requires:       python-semver
-Requires:       python-tlv8
+Requires:       python-cryptography >= 41
+Requires:       (python-crcmod >= 1.7 with python-crcmod < 2)
 Requires:       (python-fido2 >= 1.1.2 with python-fido2 < 3)
+Requires:       (python-hidapi >= 0.14 with python-hidapi < 0.15)
+Requires:       (python-protobuf >= 5.26 with python-protobuf < 7)
+Requires:       (python-pyserial >= 3.5 with python-pyserial < 4)
+Requires:       (python-requests >= 2 with python-requests < 3)
+Requires:       (python-semver >= 3 with python-semver < 4)
+Requires:       (python-tlv8 >= 0.10 with python-tlv8 < 0.11)
 BuildArch:      noarch
 %python_subpackages
 

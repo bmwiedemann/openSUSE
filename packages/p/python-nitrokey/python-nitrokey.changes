@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug  4 09:21:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.4.0:
+  * nitrokey.trussed.admin_app.InitStatus: add support for
+    EXT_FLASH_NEED_REFORMAT
+  * Use poetry-core v2 as build backend.
+  * Bump minimum Python version to 3.10.
+  * nitrokey.trussed.Model: Remove firmware_repository and
+    firmware_pattern properties.
+  * nitrokey.nk3.updates:
+    - Move to nitrokey.trussed.updates and prepare adding NKPK
+      support.
+    - Return device status after an update.
+    - Add model argument to get_firmware_update.
+    - Add get_firmware_repository method.
+    - Replace connection callbacks in Updater with DeviceHandler
+      class.
+- add version constraints for dependencies
+- relax constraint on protobuf, see
+  https://github.com/Nitrokey/nitrokey-sdk-py/issues/84#issuecomment-3158310783
+
+-------------------------------------------------------------------
 Wed Jul  9 04:56:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.3.2:
