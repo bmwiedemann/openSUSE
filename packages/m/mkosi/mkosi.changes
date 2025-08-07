@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug  7 11:56:38 UTC 2025 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Add 0001-Drop-microsecond-resolution-for-datetime.now.patch
+  * Backport upstream patch to address an issue in OBS, where a manifest is
+    sometimes not created if the image contains only one RPM package on
+    architectures with fast CPUs. The root cause is rounding errors when
+    comparing the RPM INSTALLTIME attribute (int) and datetime.now (float).
+
+-------------------------------------------------------------------
 Mon Jun 16 14:57:00 UTC 2025 - Antonio Feijoo <antonio.feijoo@suse.com>
 
 - Do not create /usr/local tmpfiles in mkosi-initrd images.
