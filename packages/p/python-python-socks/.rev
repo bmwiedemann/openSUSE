@@ -106,4 +106,12 @@
   * Close socket on loop.sock_connect(...) error by @aaugustin</comment>
     <requestid>1273210</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4310bb042c1c6be7de2316c1fbf483fa</srcmd5>
+    <version>2.7.2</version>
+    <time>1754578123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297994</requestid>
+  </revision>
 </revisionlist>
