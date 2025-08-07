@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sat Jul 26 12:12:15 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.19.0:
+  * Features:
+    - Changed some private attributes in MesonToolchain as public
+      ones, e.g., b_ndebug, b_staticpic (gh#conan-io/conan#18676).
+    - PremakeDeps will now correctly propagate libraries, headers
+      and binaries depending on the requirement traits
+      (gh#conan-io/conan#18663).
+    - Add cmake_target_aliases support for CMakeConfigDeps
+      (gh#conan-io/conan#18662).
+    - Add self.conan_data to the information serialized by
+      ConanFile, so it is printed in conan graph info and other
+      commands (gh#conan-io/conan#18661).
+    - Let conan source reference the backup sources it generates
+      in more cases (gh#conan-io/conan#18655).
+    - Add user channel to CycloneDX SBOM sbom_ref field
+      (gh#conan-io/conan#18649).
+    - Enable test_package_folder attribute for conan export-pkg
+      command (gh#conan-io/conan#18621).
+    - Add support for GCC 12.5 (gh#conan-io/conan#18587).
+    - New makefile parameter in Autotools make/install methods to
+      allow specifying the name of the Makefile file
+      (gh#conan-io/conan#18578).
+    - Let graph html focus on searched package when pressing Intro
+      in search box (gh#conan-io/conan#18575).
+    - Allow profile composition while using conan runners
+      (gh#conan-io/conan#18534).
+  * Bug fixes:
+    - Add explicit error when trying to export a reference with
+      channel but no user (gh#conan-io/conan#18646).
+    - Check required_conan_version before loading hooks
+      (gh#conan-io/conan#18644).
+    - Avoid logging levels hiding the login username/password
+      request messages (gh#conan-io/conan#18642).
+    - Allow cc compiler to be defined with spaces for profile auto
+      detection (gh#conan-io/conan#18628).
+    - Fixed untargz when the destination path uses the Windows
+      long paths prefix \\?\ (gh#conan-io/conan#18612).
+    - CMakeConfigDeps filter requires() to
+      package_type=application (gh#conan-io/conan#18611).
+    - Fix multithreading for self-contained Conan binaries
+      (gh#conan-io/conan#18603).
+    - Improve version detection for cc compilers
+      (gh#conan-io/conan#18600).
+    - Make package_type="configuration" packages independent of
+      the config_mode for their package_id
+      (gh#conan-io/conan#18671).
+    - PremakeDeps: ensure correct linkage on dependent libraries
+      (gh#conan-io/conan#18631).
+- Changes from version 2.18.0:
+  * See release notes at
+    <https://github.com/conan-io/conan/releases/tag/2.18.0>.
+
+-------------------------------------------------------------------
 Sun Jun 15 03:27:37 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.17.0:
