@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug  6 13:59:15 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.3.7
+  * Allow to specify openssl dependency on macos
+- from version 2.3.6
+  * Build manylinux wheels using manylinux2014 image
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Thu Jun 26 12:16:12 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.5
