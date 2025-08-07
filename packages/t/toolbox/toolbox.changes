@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 06 14:15:16 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.4+git20250806.ba48bd3:
+  * Add SCC credentials if available [bsc#1247491]
+
+-------------------------------------------------------------------
 Mon Jun 30 08:29:43 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.4+git20250630.5e08e45:

@@ -325,4 +325,13 @@
   * Forbid --user if running as root</comment>
     <requestid>1289210</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>2bdabd4053efd43119d2151553dd0155</srcmd5>
+    <version>2.4+git20250806.ba48bd3</version>
+    <time>1754578111</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4+git20250806.ba48bd3:
+  * Add SCC credentials if available [bsc#1247491]</comment>
+    <requestid>1297974</requestid>
+  </revision>
 </revisionlist>
