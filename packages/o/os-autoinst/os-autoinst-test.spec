@@ -1,7 +1,7 @@
 #
 # spec file for package os-autoinst-test
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define name_ext -test
 %define         short_name os-autoinst
 Name:           %{short_name}%{?name_ext}
-Version:        5.1753993900.1487e47
+Version:        5.1754492266.4c80bae
 Release:        0
 Summary:        test package for os-autoinst
 License:        GPL-2.0-or-later

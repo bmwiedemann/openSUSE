@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 06 18:59:47 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1754492266.4c80bae:
+  * Add wrappers for testapi variables
+  * backend: Use tpm-tis-device for TPM as default
+  * Require openssh-clients for git clone with ssh
+  * Avoid running `$basetest->parse_serial_output_qemu` without checks
+  * t: use mock not redefine for lua_set
+  * setup-multi-machine: extend network service detection
+
+-------------------------------------------------------------------
 Fri Aug 01 00:13:17 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1753993900.1487e47:
