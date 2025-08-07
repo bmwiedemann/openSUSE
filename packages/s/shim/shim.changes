@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Aug  6 06:27:40 UTC 2025 - Joey Lee <jlee@suse.com>
+
+- Building with the latest version of gcc in the codebase:
+    - We prefer that building shim with the latest version of gcc in codebase.
+    - Set the minimum version is gcc-13.
+        if gcc_version < 13
+                define gcc_version 13
+        endif
+  (bsc#1247432)
+
+-------------------------------------------------------------------
+Sat Aug  2 16:42:29 UTC 2025 - Joey Lee <jlee@suse.com>
+
+- Using gcc13 for building shim/shim-nx
+    - The gcc13 can workaround dxe_get_mem_attrs() hsi_status problem
+    - Add the following changes to shim.spec :
+        define gcc_version 13
+        global cc_compiler /usr/bin/gcc-%{gcc_version}
+        BuildRequires  gcc%{gcc_version}
+        make CC=%{cc_compiler} RELEASE=0 
+- Remove shim-disable-dxe-get-mem-attrs.patch
+    - This downstream patch can be removed after moving to gcc13 
+  (bsc#1247432)
+
+-------------------------------------------------------------------
 Thu Jul 31 12:47:58 UTC 2025 - Joey Lee <jlee@suse.com>
 
 - Add shim-disable-dxe-get-mem-attrs.patch

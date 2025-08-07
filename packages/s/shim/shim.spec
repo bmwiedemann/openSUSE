@@ -35,6 +35,11 @@
 %define shim_lib64_share_compat 1
 %endif
 %endif
+# Set gcc version, the minimum version is gcc-13
+%if %gcc_version < 13
+%define gcc_version 13
+%endif
+%global cc_compiler /usr/bin/gcc-%{gcc_version}
 
 %if 0%{?suse_version} >= 1600
 %define shim_use_fde_tpm_helper 1
@@ -99,8 +104,7 @@ Patch4:         shim-disable-export-vendor-dbx.patch
 Patch5:         shim-alloc-one-more-byte-for-sprintf.patch
 # PATCH-FIX-UPSTREAM shim: change automatically enable MOK_POLICY_REQUIRE_NX (PR #761)(bsc#1205588) - jlee@suse.com
 Patch6:         shim-change-automatically-enable-MOK_POLICY_REQUIRE_NX.patch
-# PATCH-FIX-SUSE shim-disable-dxe-get-mem-attrs.patch bsc#1247432 jlee@suse.com -- Disable DXE approach for getting memory attributes approach
-Patch7:         shim-disable-dxe-get-mem-attrs.patch
+BuildRequires:  gcc%{gcc_version}
 BuildRequires:  dos2unix
 BuildRequires:  efitools
 BuildRequires:  mozilla-nss-tools
@@ -177,7 +181,7 @@ ls -al *.esl
 
 # first, build MokManager and fallback as they don't depend on a
 # specific certificate
-make RELEASE=0 \
+make CC=%{cc_compiler} RELEASE=0 \
      MMSTEM=MokManager FBSTEM=fallback \
      POST_PROCESS_PE_FLAGS=-n \
      MokManager.efi.debug fallback.efi.debug \
@@ -246,7 +250,7 @@ for suffix in "${suffixes[@]}"; do
     fi
 
     openssl x509 -in $cert -outform DER -out shim-$suffix.der
-    make RELEASE=0 ENABLE_CODESIGN_EKU=1 SHIMSTEM=shim \
+    make CC=%{cc_compiler} RELEASE=0 ENABLE_CODESIGN_EKU=1 SHIMSTEM=shim \
          VENDOR_CERT_FILE=shim-$suffix.der ENABLE_HTTPBOOT=1 \
          DEFAULT_LOADER="\\\\\\\\grub.efi" \
          VENDOR_DBX_FILE=$vendor_dbx \
@@ -292,7 +296,7 @@ for suffix in "${suffixes[@]}"; do
     rm -f *.o
 
     # building shim.nx.efi
-    make RELEASE=0 ENABLE_CODESIGN_EKU=1 SHIMSTEM=shim.nx \
+    make CC=%{cc_compiler} RELEASE=0 ENABLE_CODESIGN_EKU=1 SHIMSTEM=shim.nx \
          VENDOR_CERT_FILE=shim-$suffix.der ENABLE_HTTPBOOT=1 \
          DEFAULT_LOADER="\\\\\\\\grub.efi" \
          VENDOR_DBX_FILE=$vendor_dbx \
