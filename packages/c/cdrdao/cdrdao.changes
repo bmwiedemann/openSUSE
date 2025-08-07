@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 27 05:12:40 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add -std=gnu11 to CFLAGS
+  * fix build with gcc15
+
+-------------------------------------------------------------------
 Fri Dec  8 16:11:08 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.2.5:

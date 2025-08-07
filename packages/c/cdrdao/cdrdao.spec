@@ -1,7 +1,7 @@
 #
 # spec file for package cdrdao
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,6 +51,7 @@ into tracks where 2 second gaps would be irritating.
 %autosetup -p1
 
 %build
+export CFLAGS="%{optflags} -std=gnu11"
 %configure \
 	--without-scglib
 %make_build
