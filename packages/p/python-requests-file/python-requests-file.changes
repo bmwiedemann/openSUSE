@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  5 12:15:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.1.0
+  * Set the request property in the returned Response object
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Fri Mar 22 05:37:11 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.0.0:

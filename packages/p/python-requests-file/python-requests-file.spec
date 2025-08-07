@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-requests-file
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        File transport adapter for Requests
 License:        Apache-2.0
 URL:            https://github.com/dashea/requests-file
-Source:         https://files.pythonhosted.org/packages/source/r/requests-file/requests-file-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/r/requests_file/requests_file-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools_scm}
@@ -40,7 +40,7 @@ Requests-File is a transport adapter for use with the Requests Python
 library to allow local filesystem access via file:// URLs.
 
 %prep
-%setup -q -n requests-file-%{version}
+%setup -q -n requests_file-%{version}
 
 %build
 %pyproject_wheel
