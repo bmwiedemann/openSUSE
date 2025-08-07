@@ -91,4 +91,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * intel_vpu: Update NPU firmware</comment>
     <requestid>1295034</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>a231fec1e4d067a9ee3c033c2bc956e1</srcmd5>
+    <version>20250718</version>
+    <time>1754578105</time>
+    <user>dimstar_suse</user>
+    <comment>- Update aliases for 6.16</comment>
+    <requestid>1297875</requestid>
+  </revision>
 </revisionlist>
