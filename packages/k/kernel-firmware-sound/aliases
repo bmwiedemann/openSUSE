@@ -69,6 +69,10 @@ snd_soc_sc8280xp: of:N*T*Cqcom%2Cqcm6490-idp-sndcard
 snd_soc_sc8280xp: of:N*T*Cqcom%2Cqcm6490-idp-sndcardC*
 snd_soc_sc8280xp: of:N*T*Cqcom%2Cqcs6490-rb3gen2-sndcard
 snd_soc_sc8280xp: of:N*T*Cqcom%2Cqcs6490-rb3gen2-sndcardC*
+snd_soc_sc8280xp: of:N*T*Cqcom%2Cqcs9075-sndcard
+snd_soc_sc8280xp: of:N*T*Cqcom%2Cqcs9075-sndcardC*
+snd_soc_sc8280xp: of:N*T*Cqcom%2Cqcs9100-sndcard
+snd_soc_sc8280xp: of:N*T*Cqcom%2Cqcs9100-sndcardC*
 snd_soc_sc8280xp: of:N*T*Cqcom%2Csc8280xp-sndcard
 snd_soc_sc8280xp: of:N*T*Cqcom%2Csc8280xp-sndcardC*
 snd_soc_sc8280xp: of:N*T*Cqcom%2Csm8450-sndcard
