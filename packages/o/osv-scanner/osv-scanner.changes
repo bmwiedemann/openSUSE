@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Aug 07 05:03:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.0:
+  OSV-Scanner now supports all OSV-Scalibr features behind
+  experimental flags (--experimental-plugins, see details here)!
+  * Features:
+    - Feature #2146 Allow manual OSV-Scalibr plugin selection.
+    - Feature #2144 Add OSV-Scalibr version to osv-scanner
+      --version output.
+    - Feature #2021 Add experimental support for running
+      OSV-Scalibr detectors.
+    - Feature #2079 Fall back to offline extractor if the
+      transitive one fails, so at least direct dependencies are
+      returned.
+    - Feature #2032 Add summary section at the top of outputs and a
+      'Fixed Version' column.
+    - Feature #2076 Support Ubuntu severity type.
+  * Fixes:
+    - Bug #2141 Fix OSV-Scanner json scans not matching with
+      correct ecosystem.
+    - Bug #2084 Show absolute paths when scanning containers.
+    - Bug #2126 Log and preserve package count before continuing on
+      db error.
+    - Bug #2095 Pass through plugin capabilities correctly.
+    - Bug #2051 Properly flag if running on Linux or Mac OSs for
+      plugin compatibility.
+    - Bug #2072 Add missing "text" property in description fields.
+    - Bug #2068 Change links in output to go to the specific
+      vulnerability page instead of the list page.
+    - Bug #2064 Fix SARIF v3 output to include results.
+  * API Changes:
+    - API Change #2096 Allow log handler to be overridden.
+  * Dependencies:
+    - chore(deps): update alpine:3.22 docker digest to 4bcff63
+      (#2089)
+    - chore(deps): update github/codeql-action action to v3.29.5
+      (#2116)
+    - chore(deps): update golang docker tag to v1.24.5 (#2062)
+    - chore(deps): update golang:1.24.5-alpine3.21 docker digest to
+      6edc205 (#2090)
+
+-------------------------------------------------------------------
 Fri Jul 11 06:54:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.0:
