@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  5 12:13:48 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250804 (git commit 37b63dc35d98):
+  * linux-firmware: Add firmware for airoha-npu driver
+
+-------------------------------------------------------------------
 Fri Jul 18 14:39:13 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250717 (git commit 6fc20e018cca):
