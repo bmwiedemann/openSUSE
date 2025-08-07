@@ -49,17 +49,16 @@
 #   needs //third_party/icu:icuuc_public(//build/toolchain/linux/unbundle:default)
 %bcond_with system_icu
 %bcond_without qt6
-%bcond_without ffmpeg_51
-%define ffmpeg_version 59
+%bcond_without system_ffmpeg
 %else
 %bcond_with system_harfbuzz
 %bcond_with system_freetype
 %bcond_with arm_bti
 %bcond_with system_icu
 %bcond_without qt6
-%bcond_with ffmpeg_51
-%define ffmpeg_version 58
+%bcond_with system_ffmpeg
 %endif
+%define ffmpeg_version 59
 %bcond_with system_zstd
 %define node_ver 22
 %define node_ver_next 23
@@ -88,7 +87,6 @@
 # Chromium built with GCC 11 and LTO enabled crashes (boo#1194055)
 %bcond_without lto
 %bcond_without pipewire
-%bcond_without system_ffmpeg
 %bcond_with system_zlib
 %bcond_with system_vpx
 %if %{pkg_vcmp libxml2-devel >= 2.12}
@@ -113,12 +111,11 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        138.0.7204.183
+Version:        139.0.7258.66
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
 URL:            https://www.chromium.org/
-#Source0:        https://commondatastorage.googleapis.com/chromium-browser-official/%{rname}-%{version}.tar.xz
 Source0:        https://github.com/chromium-linux-tarballs/chromium-tarballs/releases/download/%{version}/chromium-%{version}-linux.tar.xz
 # https://github.com/evanw/esbuild/archive/refs/tags/v%%{esbuild_version}.tar.gz
 Source1:        esbuild-%{esbuild_version}.tar.gz
@@ -145,7 +142,6 @@ Patch7:         chromium-norar.patch
 Patch9:         system-libdrm.patch
 # gentoo/fedora/arch patchset
 Patch15:        chromium-125-compiler.patch
-Patch62:        chromium-93-ffmpeg-4.4.patch
 Patch98:        chromium-102-regex_pattern-array.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
@@ -164,6 +160,7 @@ Patch373:       chromium-134-type-mismatch-error.patch
 Patch375:       chromium-131-fix-qt-ui.pach
 Patch376:       chromium-135-add_map_droppable.patch
 Patch377:       chromium-139-deterministic.patch
+Patch378:       chromium-139-pdfium-openjpeg-CVE-2025-54874.patch
 # conditionally applied patches ppc64le only
 Patch401:       ppc-fedora-add-ppc64-architecture-string.patch
 Patch402:       ppc-fedora-0001-linux-seccomp-bpf-ppc64-glibc-workaround-in-SIGSYS-h.patch
@@ -223,23 +220,16 @@ Patch455:       ppc-fedora-add-ppc64-pthread-stack-size.patch
 Patch456:       ppc-fedora-fix-ppc64-rust_png-build-error.patch
 Patch457:       ppc-chromium-136-clang-config.patch
 Patch458:       ppc-fedora-0001-add-xnn-ppc64el-support.patch
+# https://src.fedoraproject.org/rpms/chromium/blob/rawhide/f/0002-regenerate-xnn-buildgn.patch
 Patch459:       ppc-fedora-0002-regenerate-xnn-buildgn.patch
+Patch460:       ppc-debian-0003-third_party-ffmpeg-Add-ppc64-generated-config.patch
 # conditionally applied patches
-# patch where ffmpeg < 5
-Patch1002:      chromium-125-ffmpeg-5.x-reordered_opaque.patch
-Patch1003:      Cr122-ffmpeg-new-channel-layout.patch
-Patch1004:      ffmpeg-new-channel-layout.patch
-Patch1005:      chromium-106-ffmpeg-duration.patch
-Patch1006:      chromium-93-ffmpeg-4.4-rest.patch
-Patch1007:      chromium-138-revert_ffmpeg_FF_AV.patch
 # patch where libxml < 2.12
 Patch1010:      chromium-124-system-libxml.patch
 # patch where rust <= 1.85
 Patch1030:      chromium-134-revert-rust-adler2.patch
 # gtk4 is too old
 Patch1040:      gtk-414.patch
-# clang is too old
-Patch1050:      chromium-warning-suppression-mappings.patch
 # end conditionally applied patches
 BuildRequires:  SDL-devel
 BuildRequires:  bison
@@ -502,16 +492,6 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %autopatch -p1 -m 400 -M 499
 %endif
 
-%if %{without ffmpeg_51}
-# ffmpeg is too old
-%patch -p1 -R -P 1002
-%patch -p1 -R -P 1003
-%patch -p1 -R -P 1004
-%patch -p1 -P 1005
-%patch -p1 -P 1006
-%patch -p1 -P 1007
-%endif
-
 %if %{without libxml2_2_12}
 %patch -p1 -P 1010
 %endif
@@ -523,14 +503,6 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %if %{without gtk4_4_19}
 %patch -p1 -R -P 1040
 %endif
-
-clang_version="$(clang --version | sed -n 's/clang version //p')"
-if [[ $(echo ${clang_version} | cut -d. -f1) -ge 16 ]]; then
-  clang_version="$(echo ${clang_version} | cut -d. -f1)"
-fi
-if [ "$clang_version" -lt 20 ] ; then
-%patch -p1 -R -P 1050
-fi
 
 %build
 # esbuild
@@ -593,7 +565,6 @@ keeplibs=(
     buildtools/third_party/libc++
     buildtools/third_party/libc++abi
     buildtools/third_party/libunwind
-    chrome/third_party/mozilla_security_manager
     net/third_party/mozilla_security_manager
     net/third_party/nss
     net/third_party/quic
@@ -725,9 +696,9 @@ keeplibs=(
     third_party/mako
     third_party/markupsafe
     third_party/material_color_utilities
-    third_party/mesa
     third_party/metrics_proto
     third_party/minigbm
+    third_party/ml_dtypes
     third_party/modp_b64
     third_party/nasm
     third_party/nearby
@@ -759,6 +730,7 @@ keeplibs=(
     third_party/pyjson5
     third_party/pyyaml
     third_party/rapidhash
+    third_party/readability
     third_party/rnnoise
     third_party/rust
     third_party/ruy
@@ -1136,6 +1108,10 @@ myconf_gn+=" ffmpeg_branding=\"Chrome\""
 # please get your own set of keys.
 google_api_key="AIzaSyD1hTe85_a14kr1Ks8T3Ce75rvbR1_Dx7Q"
 myconf_gn+=" google_api_key=\"${google_api_key}\""
+
+if [ "$clang_version" -lt 20 ] ; then
+myconf_gn+=" clang_warning_suppression_file=\"\""
+fi
 
 # GN does not support passing cflags:
 #  https://bugs.chromium.org/p/chromium/issues/detail?id=642016

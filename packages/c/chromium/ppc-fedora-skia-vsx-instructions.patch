@@ -23,18 +23,6 @@ Index: chromium-138.0.7204.35/third_party/skia/BUILD.gn
      ":webp_decode",
      ":wuffs",
      ":xml",
-@@ -1832,7 +1839,10 @@ skia_static_library("pathkit") {
-   public_configs = [ ":skia_public" ]
-   configs = skia_library_configs
- 
--  deps = [ ":hsw" ]
-+  deps = [
-+    ":hsw",
-+    ":vsx",
-+  ]
- 
-   sources = []
-   sources += skia_pathops_sources
 Index: chromium-138.0.7204.35/third_party/skia/gn/skia/BUILD.gn
 ===================================================================
 --- chromium-138.0.7204.35.orig/third_party/skia/gn/skia/BUILD.gn

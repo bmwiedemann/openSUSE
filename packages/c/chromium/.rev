@@ -5795,4 +5795,41 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
     <comment>Chromium 138.0.7204.183 (boo#1247365)</comment>
     <requestid>1296650</requestid>
   </revision>
+  <revision rev="472" vrev="1">
+    <srcmd5>c4e46e15f79c1e4c1e3843032f46901d</srcmd5>
+    <version>139.0.7258.66</version>
+    <time>1754578119</time>
+    <user>dimstar_suse</user>
+    <comment>- add patch:
+  chromium-139-pdfium-openjpeg-CVE-2025-54874.patch
+  (CVE-2025-54874 bsc#1247661) fix missing error check in openjpeg 
+
+- re-add updated patch:
+  ppc-fedora-0002-regenerate-xnn-buildgn.patch
+  from https://src.fedoraproject.org/rpms/chromium/blob/
+               rawhide/f/0002-regenerate-xnn-buildgn.patch 
+
+- Chromium 139.0.7258.66 (boo#1247664):
+  * CVE-2025-8576: Use after free in Extensions
+  * CVE-2025-8577: Inappropriate implementation in Picture In Picture
+  * CVE-2025-8578: Use after free in Cast
+  * CVE-2025-8579: Inappropriate implementation in Gemini Live in Chrome
+  * CVE-2025-8580: Inappropriate implementation in Filesystems
+  * CVE-2025-8581: Inappropriate implementation in Extensions
+  * CVE-2025-8582: Insufficient validation of untrusted input in DOM
+  * CVE-2025-8583: Inappropriate implementation in Permissions
+ - modified patches:
+   gcc-enable-lto.patch
+   ppc-fedora-0001-sandbox-linux-Update-syscall-helpers-lists-for-ppc64.patch
+   ppc-fedora-skia-vsx-instructions.patch
+   ppc-fedora-fix-partition-alloc-compile.patch
+   ppc-fedora-0001-add-xnn-ppc64el-support.patch
+ - dropped patches:
+   chromium-warning-suppression-mappings.patch (using cmdline switch)
+   chromium-93-ffmpeg-4.4.patch
+ - dropped the ffmpeg revert patches that were only applied for 15:
+   chromium-125-ffmpeg-5.x-reordered_opaque.patch
+   Cr122-ffmpeg-new-channel-layout.patch</comment>
+    <requestid>1297930</requestid>
+  </revision>
 </revisionlist>

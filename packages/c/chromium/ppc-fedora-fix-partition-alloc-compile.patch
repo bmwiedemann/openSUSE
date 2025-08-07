@@ -1,16 +1,11 @@
-kIndex: chromium-114.0.5735.45/base/allocator/partition_allocator/partition_alloc.gni
-===================================================================
-Index: chromium-128.0.6613.113/base/allocator/partition_allocator/partition_alloc.gni
-===================================================================
---- chromium-128.0.6613.113.orig/base/allocator/partition_allocator/partition_alloc.gni
-+++ chromium-128.0.6613.113/base/allocator/partition_allocator/partition_alloc.gni
-@@ -70,7 +70,8 @@
-   has_64_bit_pointers = false
- } else if (current_cpu == "x64" || current_cpu == "arm64" ||
-            current_cpu == "arm64e" || current_cpu == "loong64" ||
--           current_cpu == "riscv64") {
-+           current_cpu == "riscv64" || current_cpu == "ppc64") {
-+
+--- chromium-139.0.7258.5/base/allocator/partition_allocator/partition_alloc.gni	2025/06/30 09:01:19	1.1
++++ chromium-139.0.7258.5/base/allocator/partition_allocator/partition_alloc.gni	2025/06/30 09:01:57
+@@ -66,7 +66,7 @@
+ # Whether 64-bit pointers are used.
+ # A static_assert in partition_alloc_config.h verifies that.
+ if (current_cpu == "x64" || current_cpu == "arm64" || current_cpu == "arm64e" ||
+-    current_cpu == "loong64" || current_cpu == "riscv64") {
++    current_cpu == "loong64" || current_cpu == "riscv64" || current_cpu == "ppc64") {
    assert(current_cpu != "arm64e" || (is_ios && target_environment == "device"))
    has_64_bit_pointers = true
  } else if (current_cpu == "x86" || current_cpu == "arm" ||

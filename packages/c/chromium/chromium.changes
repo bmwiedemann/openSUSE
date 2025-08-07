@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Aug  6 12:47:40 CEST 2025 - ro@suse.de
+
+- add patch:
+  chromium-139-pdfium-openjpeg-CVE-2025-54874.patch
+  (CVE-2025-54874 bsc#1247661) fix missing error check in openjpeg 
+
+-------------------------------------------------------------------
+Wed Aug  6 12:28:51 CEST 2025 - ro@suse.de
+
+- re-add updated patch:
+  ppc-fedora-0002-regenerate-xnn-buildgn.patch
+  from https://src.fedoraproject.org/rpms/chromium/blob/
+               rawhide/f/0002-regenerate-xnn-buildgn.patch 
+
+-------------------------------------------------------------------
+Tue Aug  5 19:55:25 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 139.0.7258.66 (boo#1247664):
+  * CVE-2025-8576: Use after free in Extensions
+  * CVE-2025-8577: Inappropriate implementation in Picture In Picture
+  * CVE-2025-8578: Use after free in Cast
+  * CVE-2025-8579: Inappropriate implementation in Gemini Live in Chrome
+  * CVE-2025-8580: Inappropriate implementation in Filesystems
+  * CVE-2025-8581: Inappropriate implementation in Extensions
+  * CVE-2025-8582: Insufficient validation of untrusted input in DOM
+  * CVE-2025-8583: Inappropriate implementation in Permissions
+ - modified patches:
+   gcc-enable-lto.patch
+   ppc-fedora-0001-sandbox-linux-Update-syscall-helpers-lists-for-ppc64.patch
+   ppc-fedora-skia-vsx-instructions.patch
+   ppc-fedora-fix-partition-alloc-compile.patch
+   ppc-fedora-0001-add-xnn-ppc64el-support.patch
+ - dropped patches:
+   chromium-warning-suppression-mappings.patch (using cmdline switch)
+   chromium-93-ffmpeg-4.4.patch
+ - dropped the ffmpeg revert patches that were only applied for 15:
+   chromium-125-ffmpeg-5.x-reordered_opaque.patch
+   Cr122-ffmpeg-new-channel-layout.patch
+   ffmpeg-new-channel-layout.patch
+   chromium-106-ffmpeg-duration.patch
+   chromium-93-ffmpeg-4.4-rest.patch
+   chromium-138-revert_ffmpeg_FF_AV.patch
+ - added patches:
+   ppc-debian-0003-third_party-ffmpeg-Add-ppc64-generated-config.patch
+ - keeplibs:
+   removed chrome/third_party/mozilla_security_manager
+   removed third_party/mesa
+   added third_party/ml_dtypes (needed in tflite/xla)
+   added third_party/readability (needed in tools/grit/grit)
+   added third_party/ffmpeg (gave up on reverting all recent
+     commits in the code using ffmpeg, need at least ffmpeg-7)
+- remove disabled ppc-fedora-0002-regenerate-xnn-buildgn.patch
+  to please factory-auto
+
+-------------------------------------------------------------------
 Wed Jul 30 10:26:40 CEST 2025 - ro@suse.de
 
 - Chromium 138.0.7204.183 (boo#1247365):
