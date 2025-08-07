@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug  6 16:34:49 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- fix changelog formatting
+
+-------------------------------------------------------------------
+Wed Aug  6 13:42:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.4.2
+  * Updated dependency constraint to be compatible with pyasn1
+    0.6.1, which removed the pyasn1.compat.octets module
+- Drop pyasn1-061.patch, merged upstream
+
+-------------------------------------------------------------------
 Mon Oct  7 15:29:49 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.4.1
@@ -282,7 +295,6 @@ Tue May  7 08:25:25 UTC 2013 - michael@stroeder.com
 - Update to upstream release 0.0.5
 
 Revision 0.0.5
---------------
 
 - License updated to vanilla BSD 2-Clause to ease package use
   (http://opensource.org/licenses/BSD-2-Clause).
