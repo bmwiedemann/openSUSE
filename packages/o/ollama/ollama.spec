@@ -2,7 +2,6 @@
 # spec file for package ollama
 #
 # Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +21,7 @@
 %endif
 
 Name:           ollama
-Version:        0.10.1
+Version:        0.11.3
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT

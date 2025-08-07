@@ -525,4 +525,14 @@ because we don't need git-web and the other stuff here (forwarded request 125417
   * ollama run will more gracefully display errors</comment>
     <requestid>1297591</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>d352ea0f3e0202cb81caa1298a0e6eea</srcmd5>
+    <version>0.11.3</version>
+    <time>1754578126</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.11.0:
+  * New model: OpenAI gpt-oss 20B and 120B
+  * Quantization - MXFP4 format</comment>
+    <requestid>1298006</requestid>
+  </revision>
 </revisionlist>
