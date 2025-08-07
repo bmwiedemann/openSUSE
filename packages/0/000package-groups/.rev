@@ -2252,4 +2252,12 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <comment></comment>
     <requestid>1296238</requestid>
   </revision>
+  <revision rev="316" vrev="314">
+    <srcmd5>42d75468e224d4e35cbb10f825f195cb</srcmd5>
+    <version>unknown</version>
+    <time>1754578109</time>
+    <user>dimstar_suse</user>
+    <comment>Move network interfaces in own issue snippet to allow admins to disable it.</comment>
+    <requestid>1297965</requestid>
+  </revision>
 </revisionlist>
