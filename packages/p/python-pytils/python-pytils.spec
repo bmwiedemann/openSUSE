@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytils
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        A Russian-specific string utility module
 License:        MIT
@@ -26,7 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/y10h/pytils
 Source:         https://files.pythonhosted.org/packages/source/p/pytils/pytils-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

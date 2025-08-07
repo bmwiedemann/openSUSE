@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug  6 14:16:16 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.4.4
+  * chore: publish a wheel (#67)
+  * chore: Switch to setuptools build backend
+  * style: formatting by ruff (#71)
+  * chore: Added type hints (#72)
+  * chore: Apply pyupgrade
+  * chore: Add ruff check
+  * chore: Fix ruff errors
+  * chore: Refactor/update numeral (#74)
+  * chore(release): 0.4.4
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Tue Apr 22 07:30:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.4.3

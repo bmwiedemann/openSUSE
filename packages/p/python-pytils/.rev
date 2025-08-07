@@ -56,4 +56,12 @@
   - Use Python 3.11 on SLE-15 by default</comment>
     <requestid>1272114</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>65fc4f25c4634863c798cdf907a9c53e</srcmd5>
+    <version>0.4.4</version>
+    <time>1754578125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1298000</requestid>
+  </revision>
 </revisionlist>
