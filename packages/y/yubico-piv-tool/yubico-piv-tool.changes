@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug  7 09:31:45 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- update to 2.7.2:
+  * ykcs11: Handle a silent verification failure when opening a PKCS11 session.
+    No impact on authentication enforcement for the usage of credentials on the
+    YubiKey
+  * ykcs11: Use "VERIFY_NONE" as PIN to skip verification when using keys with
+    PIN policy "never"
+  * ykcs11: Use "VERIFY_BIO" as PIN to trigger bio verification on the YubiKey
+  * cmd: Get public key of an existing private key
+  * cmd: Improve output of the status command to include slots with only a
+    private key stored
+  * cmd: Fix OID for attestation cross-signature extensions 
+  * cmd: Deprecate the --scp11 flag and rename it to --enc
+
+-------------------------------------------------------------------
 Sun Feb  9 21:30:04 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.1:
