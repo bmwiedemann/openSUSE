@@ -786,4 +786,15 @@
   * CI: Drop 3.6 and 3.7 versions</comment>
     <requestid>1237378</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>c87d5cdc08172b9556418b71a08e1c62</srcmd5>
+    <version>1.2.4+2</version>
+    <time>1754578182</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.4+2:
+  * Add python_group_libalternatives to excludes-bracketing
+  * Add common python macros to excludes-bracketing
+  * Update distro-copyright to be more explicit</comment>
+    <requestid>1298082</requestid>
+  </revision>
 </revisionlist>

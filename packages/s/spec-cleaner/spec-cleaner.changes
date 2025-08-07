@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug  7 07:23:47 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 1.2.4+2:
+  * Add python_group_libalternatives to excludes-bracketing
+  * Add common python macros to excludes-bracketing
+  * Update distro-copyright to be more explicit
+
+-------------------------------------------------------------------
 Mon Jan 13 10:32:20 UTC 2025 - daniel.garcia@suse.com
 
 - Update to version 1.2.3+6:

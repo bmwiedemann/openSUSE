@@ -18,7 +18,7 @@
 
 
 Name:           spec-cleaner
-Version:        1.2.3+6
+Version:        1.2.4+2
 Release:        0
 Summary:        .spec file cleaner
 License:        BSD-3-Clause
@@ -51,7 +51,7 @@ user to use spec-cleaner rather than to stick to perl based format_spec_file.
 %prep
 %autosetup -p1
 # Set correct package version, upstream has the next release number
-sed -i 's/1\.2\.4/%{version}/g' spec_cleaner/__init__.py
+sed -i 's/1\.2\.5/%{version}/g' spec_cleaner/__init__.py
 rm pytest.ini
 
 %build
