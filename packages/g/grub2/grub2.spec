@@ -494,6 +494,7 @@ Patch316:       0002-http-Return-HTTP-status-code-in-http_establish.patch
 Patch317:       0003-docs-Clarify-test-for-files-on-TFTP-and-HTTP.patch
 Patch318:       0004-tftp-Fix-hang-when-file-is-a-directory.patch
 Patch319:       grub2-constant-time-grub_crypto_memcmp.patch
+Patch320:       0001-getroot-Skip-mount-points-in-grub_find_device.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime

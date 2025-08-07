@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  4 06:44:01 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Skip mount point in grub_find_device function (bsc#1246231)
+  * 0001-getroot-Skip-mount-points-in-grub_find_device.patch
+
+-------------------------------------------------------------------
 Fri Jul 25 05:56:26 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Fix CVE-2024-56738: side-channel attack due to not constant-time

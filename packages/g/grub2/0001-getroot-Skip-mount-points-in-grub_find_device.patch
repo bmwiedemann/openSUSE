@@ -1,0 +1,66 @@
+From ff3165a3e519892ec4bf9a31f4f1132668f83394 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Tue, 15 Jul 2025 14:15:22 +0800
+Subject: [PATCH] getroot: Skip mount points in grub_find_device
+
+The grub_find_device function scans a starting directory, typically
+/dev, for device files with matching major and minor numbers. During
+this process, it recursively descends into subdirectories.
+
+However, this can significantly slow down the scan if a subdirectory is
+a mount point not related to devtmpfs, especially if it contains a large
+number of files.
+
+This patch modifies grub_find_device() to skip subdirectories that are
+mount points. A mount point is detected by comparing the st_dev of the
+subdirectory against that of the parent or starting directory. While
+this method does not catch all types of mounts, for eg bind mounts, it
+is a practical solution that avoids the need to parse /proc/self/mounts.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/osdep/unix/getroot.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/grub-core/osdep/unix/getroot.c b/grub-core/osdep/unix/getroot.c
+index dce94b52e..9759cc59b 100644
+--- a/grub-core/osdep/unix/getroot.c
++++ b/grub-core/osdep/unix/getroot.c
+@@ -353,6 +353,7 @@ grub_find_device (const char *dir, dev_t dev)
+   DIR *dp;
+   struct saved_cwd saved_cwd;
+   struct dirent *ent;
++  struct stat st_dir;
+ 
+   if (! dir)
+     dir = "/dev";
+@@ -361,6 +362,12 @@ grub_find_device (const char *dir, dev_t dev)
+   if (! dp)
+     return 0;
+ 
++  if (stat (dir, &st_dir) < 0)
++    {
++      closedir (dp);
++      return 0;
++    }
++
+   if (save_cwd (&saved_cwd) < 0)
+     {
+       grub_util_error ("%s", _("cannot save the original directory"));
+@@ -410,6 +417,13 @@ grub_find_device (const char *dir, dev_t dev)
+ 	  /* Find it recursively.  */
+ 	  char *res;
+ 
++	  /* Skip mount point */
++	  if (st.st_dev != st_dir.st_dev)
++	    {
++	      grub_util_info ("skip mount point %s/%s", dir, ent->d_name);
++	      continue;
++	    }
++
+ 	  res = grub_find_device (ent->d_name, dev);
+ 
+ 	  if (res)
+-- 
+2.50.0
+
