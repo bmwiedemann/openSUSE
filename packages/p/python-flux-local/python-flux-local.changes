@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug  7 05:28:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.8.0:
+  * fix: render out oci volume mount images by @buroa in #981
+  * chore(deps): update actions/download-artifact action to v5 by
+    @renovate[bot] in #982
+
+-------------------------------------------------------------------
 Mon Jul 28 06:02:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 7.7.1:
