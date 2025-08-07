@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Aug 04 19:13:12 UTC 2025 - Björn Kettunen <bjorn.kettunen@thaodan.de>
+
+- Remove patch to fix TexInfo references in manual as hit has been merged
+  upstream
+  * 0002-compat.texi-Fix-references-to-Emacs-30.1-in-Support-.patch
+- Update 0001-Add-install-target.patch to also install compat-macs.el
+
+- Update to version 30.1.0.1:
+  * compat-28: Fix 'named-let's TCO involving short-circuiting 'and'
+
+- Update to version 30.1.0.0
+  * compat-tests--color-approx-equal: Fix naming convention
+  * compat-30: Add oklab color functions
+  * compat-tests: Reenable disabled tests
+
+- Update to version 30.0.2.0
+  * compat-30: Rename trusted-content variable
+
+- Update to version 30.0.1.0
+  * compat-30: untrusted-content, trusted-files, trusted-content-p
+  * compat-tests: Temporarily disable require-with-check test on 30
+  * compat-30: Update require-with-check
+  * compat.texi: Fix replace-string-in-region documentation (Fix gh#emacs-compat/compat#52)
+  * compat.texi: Fix references to Emacs 30.1 in Support section (gh#emacs-compat/compat#49)
+
+-------------------------------------------------------------------
 Thu Jan  9 12:13:53 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Install also compat-mac.el as native compilation search for it 
@@ -61,7 +87,7 @@ Wed Jan 31 08:10:11 UTC 2024 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Update to version 29.1.4.4:
   * The maintainer field accepts only a single mail address
-  * fix(compat.el): Package-Requires "seq" = 2.3 -> 2.23 (#31)
+  * fix(compat.el): Package-Requires "seq" = 2.3 -> 2.23 (gh#emacs-compat/compat#31)
   * compat.texi: Fix typos
 
 -------------------------------------------------------------------

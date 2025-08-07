@@ -1,8 +1,10 @@
 #
 # spec file for package emacs-compat
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2024 Björn Bidar
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 Björn Kettunen
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +20,10 @@
 
 
 %global _name    compat
+%bcond_with check
 
 Name:           emacs-%{_name}
-Version:        30.0.0.0
+Version:        30.1.0.1
 Release:        0
 Summary:        COMPATibility Library for Emacs Lisp
 License:        GPL-3.0-or-later
@@ -41,8 +44,6 @@ Requires(preun): %install_info_prereq
 %endif
 # PATCH-FEATURE-UPSTREAM install targets PR 30
 Patch1:         0001-Add-install-target.patch
-# # PATCH-FEATURE-UPSTREAM Fix Texinfo references PR 49
-Patch2:         0002-compat.texi-Fix-references-to-Emacs-30.1-in-Support-.patch
 
 %description
 compat.el, the forwards-compatibility library for (GNU) Emacs Lisp, versions 24.4 and newer. The intended audience are package developers that are interested in using newer developments, without having to break compatibility.
@@ -55,9 +56,12 @@ compat.el, the forwards-compatibility library for (GNU) Emacs Lisp, versions 24.
 
 %install
 %make_install
-install -m 0644 compat-macs.el %{buildroot}%{_emacs_sitelispdir}
 
+%if %{with check}
 %check
+%make_build check
+%make_build test
+%endif
 
 %if 0%{?suse_version} >= 1600
 %post

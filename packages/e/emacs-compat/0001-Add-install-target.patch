@@ -8,14 +8,14 @@ Content-Transfer-Encoding: 8bit
 
 Signed-off-by: Björn Bidar <bjorn.bidar@thaodan.de>
 ---
- Makefile | 34 ++++++++++++++++++++++++++++++++--
- 1 file changed, 32 insertions(+), 2 deletions(-)
+ Makefile | 33 +++++++++++++++++++++++++++++++--
+ 1 file changed, 31 insertions(+), 2 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 3f298c9cd5f991fa394749215e4ec3665434ad9a..9d368d669d3f1d21486ed93bf3ac77c1625adde8 100644
+index d584bc3f78f00d559200c144e8a62bb84c4fd385..5a065652a1be0b1be38607ee11dcef23ed03415b 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -29,20 +29,34 @@
+@@ -29,7 +29,7 @@
  ### Code:
  
  .POSIX:
@@ -23,12 +23,17 @@ index 3f298c9cd5f991fa394749215e4ec3665434ad9a..9d368d669d3f1d21486ed93bf3ac77c1
 +.PHONY: all compile force-compile test clean check install
  .SUFFIXES: .el .elc
  
+ ifeq ($(CI),true)
+@@ -37,18 +37,31 @@ ifeq ($(CI),true)
+ else
+         STRICT =
+ endif
 +DESTDIR ?=
 +PREFIX  ?= /usr
 +DATADIR ?= $(PREFIX)/share
 +ELDIR   ?= $(DATADIR)/emacs/site-lisp
 +INFODIR	?= $(DATADIR)/info
-+
+ 
  EMACS = emacs
  MAKEINFO = makeinfo
 -BYTEC = compat-25.elc \
@@ -52,13 +57,13 @@ index 3f298c9cd5f991fa394749215e4ec3665434ad9a..9d368d669d3f1d21486ed93bf3ac77c1
  
  all: compile
  
-@@ -74,6 +88,22 @@ check:
+@@ -80,6 +93,22 @@ check:
  		sort | uniq > /tmp/compat-links
- 	@ (diff /tmp/compat-defs /tmp/compat-defs)
+ 	@diff /tmp/compat-defs /tmp/compat-links
  
 +install: $(addprefix install-,compat-runtime-el compat-info)
 +
-+install-compat-runtime-el: $(RUNTIME) $(RUNTIME:.elc=.el)
++install-compat-runtime-el: $(RUNTIME) $(RUNTIME:.elc=.el) compat-macs.el
 +
 +install-compat-info: compat.info
 +

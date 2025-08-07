@@ -1,6 +1,6 @@
 <!-- -*- xml -*- !-->
 <services>
-  <service name="obs_scm" mode="disabled">
+  <service name="obs_scm" mode="manual">
 	<param name="versionformat">@PARENT_TAG@</param>
 	<param name="url">https://github.com/emacs-compat/compat.git</param>
     <param name="filename">compat</param>
@@ -9,10 +9,10 @@
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">Björn Bidar &#60;bjorn.bidar@thaodan.de&#62;</param>
   </service>
-  <service mode="disabled" name="tar" />
-  <service mode="disabled" name="recompress">
+  <service mode="manual" name="tar" />
+  <service mode="manual" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>
