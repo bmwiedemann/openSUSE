@@ -1,7 +1,7 @@
 #
 # spec file for package python-extra-platforms
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-extra-platforms
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        Detect platforms and group them by family
 License:        GPL-2.0-or-later
@@ -32,9 +32,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 8.3.1}
+BuildRequires:  %{python_module pytest >= 8.3.5}
 BuildRequires:  %{python_module pytest-randomly >= 3.16.0}
-BuildRequires:  %{python_module pytest-xdist >= 3.6.1}
+BuildRequires:  %{python_module pytest-xdist >= 3.8.0}
 BuildRequires:  %{python_module requests >= 2.32.3 with %python-requests < 2.33}
 # /SECTION
 BuildRequires:  fdupes
