@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 07 05:02:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.25.2:
+  * Update dependencies to Kubernetes v1.33.3
+  * Update `cuelang.org/go` to v0.14.0
+  * build(deps): bump the ci group across 1 directory with 3
+    updates
+
+-------------------------------------------------------------------
 Thu Jun 12 05:16:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.25.1:
