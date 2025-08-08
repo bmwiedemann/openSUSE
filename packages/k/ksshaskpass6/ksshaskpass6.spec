@@ -1,7 +1,7 @@
 #
 # spec file for package ksshaskpass6
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define rname ksshaskpass
 %bcond_without released
 Name:           ksshaskpass6
-Version:        6.4.3
+Version:        6.4.4
 Release:        0
 Summary:        Plasma 6 version of ssh-askpass
 License:        GPL-2.0-or-later
