@@ -280,4 +280,12 @@ for the pam approval.</comment>
     <comment></comment>
     <requestid>1296206</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>42dce474341620ab097449010ee8d6e9</srcmd5>
+    <version>1.2.0+git.0.6befefc</version>
+    <time>1754658739</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1298175</requestid>
+  </revision>
 </revisionlist>

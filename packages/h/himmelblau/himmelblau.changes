@@ -1,4 +1,221 @@
 -------------------------------------------------------------------
+Thu Aug 07 14:29:19 UTC 2025 - david.mulder@suse.com
+
+- Update to version 1.2.0+git.0.6befefc:
+  * Version 1.2.0
+  * Fix Kerberos credential cache permissions; (bsc#1247735), (CVE-2025-54882)
+  * Set file owner and group before writing its content
+  * Ensure alias domains match when checking Intune device id
+  * Debian 12 doesn't support ConditionPathExists and notify-reload
+  * Write scripts policy to a readable directory
+  * Apply Intune policies right after enrollment
+  * Add more debug instrumentation
+  * Provide device_id to Intune enrollment if not cached
+  * Ensure nss cache directory is created during install
+  * Remove /var/cache/himmelblaud access from tasks daemon
+  * Resolve daemon startup absolute path warnings
+  * Version 1.1.0
+  * Delay Intune enrollment on Device Auth fail
+  * Do not leak the Intune IW service token in the logs
+
+-------------------------------------------------------------------
+Wed Jul 30 20:32:04 UTC 2025 - david.mulder@suse.com
+
+- Update to version 1.0.0+git.0.d01709b:
+  * Fix policy application
+  * Add remaining Linux password compliance policies
+  * Add custom compliance enforcement
+  * deps(rust): bump the all-cargo-updates group with 3 updates
+  * deps(rust): bump the all-cargo-updates group with 5 updates
+  * Add SLE15SP7 build target
+  * Add RHEL 10 build target
+  * Fix Intermittent auth issue AADSTSError 16000
+  * Remove old utf8proc dependency
+  * Add `fedora42` build target
+  * Handle PRT expiration and tie to offline auth
+  * Correctly delete the Hello keys on bad pin count
+  * Add ability to disable Hello PIN per-service
+  * Update NixOS support to 25.05
+  * Handle disabled device by attempting re-enrollment
+  * Always attempt confidential client creds for aad-tool
+  * Include HSM option defs in himmelblau.conf man page
+  * Update flake.nix
+  * Improve the aad-tool cache-clear command
+  * Add `mfaSshWorkaroundFlag` configuration option to Nix Flake.
+  * Add the ability to remove confidential client creds
+  * If bad PIN count is exceeded, delete the Hello key
+  * deps(rust): bump the all-cargo-updates group with 4 updates
+  * Add instructions for creating developer builds
+  * Fix GDM3 first time login password prompt
+  * Default HsmType should be soft
+  * Add himmelblaud to tss group for TPM startup
+  * Enforce strict order for the systemd units
+  * Update libhimmelblau and compact_jwt
+  * Fix builds w/tpm
+  * aad-tool Authentication flow improvements
+  * Filter out irrelevant debug in aad-tool
+  * Create a unified login experience for aad-tool
+  * Utilize confidential creds for aad-tool enumerate
+  * himmelblau should get posix attributes w/out delegate user access
+  * Always use the Object Id for mapping Group to GID
+  * Update enhancement-request.md for SPI donations
+  * Update bug_report.md with SPI donation
+  * deps(rust): bump the all-cargo-updates group with 4 updates
+  * Update build requires in README.md
+  * Enforce strict order for the systemd units
+  * Update FUNDING.yml with SPI Paypal donation button
+  * Don't break from tasks loop when policies fail
+  * Enroll in Intune as soon as it is enabled
+  * Implement `decoupled hello` behavior
+  * Cache encrypted PRT to disk for offline login SSO
+  * Update to latest hsm-crypto
+  * Enable tpm functionality
+  * Allow altering the password and PIN prompt messages
+  * Ensure Hello PIN lockout happens when online
+  * Cache the build target output to improve build times
+  * Easier build selection w/ Makefile
+  * Revert mistaken removal from Makefile
+  * Make the user wait longer with each incorrect PIN
+  * Make the bad PIN count configurable
+  * Improve aad-tool manpage
+  * aad-tool fails if the user has FIDO2 enabled
+  * Offline auth permits authentication with invalid Hello PIN
+  * PIN complexity to match Windows
+  * Update to latest SSSD idmap code
+  * Add aad-tool options for setting posix attrs
+  * Add scopes and redirect uris aad-tool application create
+  * Add aad-tool commands for managaging extension attrs
+  * deps(rust): bump the all-cargo-updates group with 4 updates
+  * cargo clippy
+  * cargo fmt
+  * Utilize the sidtoname call for object id mapping
+  * Add commands for listing/creating App registrations
+  * Potential fix for code scanning alert no. 2: Workflow does not contain permissions
+  * Potential fix for code scanning alert no. 4: Workflow does not contain permissions
+  * Potential fix for code scanning alert: Workflow does not contain permissions
+  * Never write the app_id to the server config
+  * Disable passwordless Fido by default
+  * Stop using deprecated `users` crate
+  * When group membership lookup fails, use cached groups
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 11 updates
+  * deps(rust): bump the all-cargo-updates group with 4 updates
+  * aad-tool command for enumerating users and groups
+  * Name-Based Group Matching in `pam_allow_groups` Leads to Potential Security Bypass
+  * Add the configure-pam option to aad-tool man page
+  * Add static idmap cache for on-prem to cloud migration
+  * Update bug_report.md with request for himmelblau.conf
+  * deps(rust): bump the all-cargo-updates group with 2 updates
+  * Update crates in a group
+  * Update crate bumps
+  * Utilize new Intune compliance enforcement via libhimmelblau
+  * Correct the README regarding Intune policy compliance
+  * Disable Chromium policy
+  * Re-enable Intune policy and add scripts and compliance policies
+  * himmelblau.conf alias `domain` as `domains`
+  * Support Fido auth in pam passwd
+  * Add TAP support to himmelblaud and pam passwd
+  * Mixed case names should properly identify Hello Key
+  * Update linux-entra-sso to latest version
+  * Fix group lookup for Entra Id group name
+  * Fix mixed case name lookup from PRT cache
+  * Crate updates
+  * Fix tasks daemon debug output
+  * Remove write locks where unecessary
+  * Fix deadlock in nss
+  * systemd notify fixes
+  * Console
+  * Address Feedback
+  * Order services before gdb/nss-user-target
+  * deps(rust): bump rpassword from 7.3.1 to 7.4.0
+  * deps(rust): bump tokio from 1.44.2 to 1.45.0
+  * deps(rust): bump sha2 from 0.10.8 to 0.10.9
+  * deps(rust): bump systemd-journal-logger from 2.2.0 to 2.2.2
+  * deps(rust): bump clap from 4.5.31 to 4.5.38
+  * Update notify-debouncer-full
+  * Update opentelemetry
+  * Update dependencies
+  * deps(rust): bump time from 0.3.39 to 0.3.41
+  * Replace source filter that blacklists files with filter that whitelists files.
+  * Mark himmelblau.conf as config in rpm
+  * Update README.md
+  * Ensure only the base URL is printed to log
+  * If unix_user_get fails, wait, and try again
+  * Supplying a PRT cookie to SSO doesn't require network
+  * Don't send a password prompt if the network is down
+  * Auth via MFA if Hello PIN fails 3 times
+  * Improve Hello PIN failed auth error
+  * Fix rocky9 build
+  * deps(rust): bump anyhow from 1.0.96 to 1.0.98
+  * deps(rust): bump libc from 0.2.170 to 0.2.172
+  * deps(rust): bump cc from 1.2.16 to 1.2.19
+  * Update README.md
+  * deps(rust): bump tokio from 1.43.0 to 1.44.2
+  * deps(rust): bump openssl from 0.10.71 to 0.10.72 in the cargo group
+  * deps(rust): bump reqwest from 0.12.12 to 0.12.15
+  * Update libhimmelblau in Cargo.lock
+  * Fix nss and offline checks for domain aliases
+  * Report error when MS Authenticator denies authorization
+  * Bail out of invalid offline auth
+  * Handle AADSTS errors from BeginAuth response
+  * Never dump failed reqwests to the log
+  * Update sccache-action version to use new cache service
+  * Permit daemon to start when network is down
+  * Add an nss cache for when daemon is down
+  * Additional pam info cues
+  * Proceed with Hello auth even with net down
+  * Indicate to the user what the password and PIN are
+  * Ensure pam messages are seen
+  * Display the minimum PIN length during Hello setup
+  * PAM should loop, not die on error
+  * Ensure prompt msg remains for confirmation
+  * Update bug_report.md
+  * Ignore demands for setting up MS Authenticator
+  * Login fails if Entra is configured to recommend MS authenticator
+  * Add pam configure command to aad-tool
+  * Update README.md with pam passwd instructions
+  * aad-tool authtest needs to map names
+  * Update demo video in README.md
+  * Sign RPM packages
+  * Ensure the pam module is installed correctly for SLE
+  * Improve pam error handling and messaging
+  * Only push cachix builds for stable releases
+  * Terminate linux-entra-sso when browser terminates
+  * On deb, push pam config after install
+  * Increase priority of deb PAM passwd for Himmelblau
+  * Improve offline state handling
+  * Specify request for Entra Id password in PAM
+  * QR Greeter also supports gnome-shell 47
+  * Fix profile photo loading
+  * Clarify pam_allow_groups in himmelblau.conf man page
+  * Don't hide debug for pam_allow_groups miss
+  * Handle failures in passwordless auth
+  * build all root packages
+  * split config options that can be defined per-domain from those which are global only
+  * configure cachix signing and upload in ci
+  * deps(rust): bump serde_json from 1.0.138 to 1.0.140
+  * deps(rust): bump serde from 1.0.218 to 1.0.219
+  * deps(rust): bump time from 0.3.37 to 0.3.39
+  * deps(rust): bump bytes from 1.10.0 to 1.10.1
+  * deps(rust): bump pkg-config from 0.3.31 to 0.3.32
+  * Entra Id is case insensitive, cache lookup must match
+  * deps(rust): bump ring from 0.17.9 to 0.17.13 in the cargo group
+  * Support CompanionAppsNotification mfa method
+  * QR code for gnome-shell greeter
+  * Allow tasks to start if AccountsService dir missing
+  * Remove invalid python dependency from sso package
+  * Fixes https://github.com/himmelblau-idm/himmelblau/issues/397
+  * Clear server config when clearing cache
+  * Update version in the Cargo.lock
+  * deps(rust): bump async-trait from 0.1.86 to 0.1.87
+  * deps(rust): bump chrono from 0.4.39 to 0.4.40
+  * Fix himmelblau.conf man page cn_name_mapping entry
+  * deps(rust): bump pem from 3.0.4 to 3.0.5
+  * deps(rust): bump serde from 1.0.217 to 1.0.218
+  * Version 1.0.0
+  * deps(rust): bump cc from 1.2.15 to 1.2.16
+  * Update workflow versions
+
+-------------------------------------------------------------------
 Mon Jul 28 18:53:09 UTC 2025 - david.mulder@suse.com
 
 - Update to version 0.9.21+git.0.6963ee0:
@@ -379,7 +596,7 @@ Mon Nov 25 14:45:36 UTC 2024 - david.mulder@suse.com
   * Simplify PAM get_item_string calls
   * Bug in pam which needs defended against
   * Fix deb build by adding Broker service file
-  * WIP: Install Ubuntu unix-chkpwd apparmor deps
+  * Install Ubuntu unix-chkpwd apparmor deps
   * Ensure make install places pam_himmelblau correctly
   * Add Ubuntu pam-config for pam_himmelblau
   * Never return Err(PAM_SUCCESS) from get_user

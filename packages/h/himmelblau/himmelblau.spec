@@ -17,7 +17,7 @@
 
 
 Name:           himmelblau
-Version:        0.9.21+git.0.6963ee0
+Version:        1.2.0+git.0.6befefc
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
@@ -36,12 +36,12 @@ BuildRequires:  libcap-devel
 BuildRequires:  libclang13
 BuildRequires:  libdhash-devel
 BuildRequires:  libopenssl-3-devel
+BuildRequires:  libunistring-devel
 BuildRequires:  pam-devel
 BuildRequires:  patchelf
 BuildRequires:  pcre2-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  tpm2-0-tss-devel
-BuildRequires:  utf8proc-devel
 %if 0%{?sle_version} > 150600
 BuildRequires:  atk-devel
 BuildRequires:  cairo-devel
@@ -124,6 +124,7 @@ Entra Id credentials.
 %package -n himmelblau-qr-greeter
 Summary:        Azure Entra Id DAG URL QR code GNOME Shell extension
 Requires:       gnome-shell >= 45
+BuildArch:      noarch
 
 %description -n himmelblau-qr-greeter
 GNOME Shell extension that adds a QR code to authentication prompts
@@ -183,6 +184,7 @@ install -D -d -m 0755 %{buildroot}%{_sysconfdir}/ssh/sshd_config.d
 install -m 0644 %{_builddir}/%{name}-%{version}/platform/el/sshd_config %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/himmelblau.conf
 install -D -d -m 0755 %{buildroot}%{_sysconfdir}/krb5.conf.d
 install -m 0644 %{_builddir}/%{name}-%{version}/src/config/krb5_himmelblau.conf %{buildroot}%{_sysconfdir}/krb5.conf.d/krb5_himmelblau.conf
+install -d -m 0600 %{buildroot}%{_localstatedir}/cache/himmelblau-policies
 
 # Firefox Single Sign On
 strip --strip-unneeded target/release/linux-entra-sso
@@ -222,8 +224,9 @@ install -m 0644 %{_builddir}/%{name}-%{version}/src/qr-greeter/src/msdag.png %{b
 
 %files
 %dir %{_sysconfdir}/himmelblau
+%dir %{_localstatedir}/cache/himmelblau-policies
 %config(noreplace) %{_sysconfdir}/himmelblau/himmelblau.conf
-%{_sysconfdir}/krb5.conf.d/krb5_himmelblau.conf
+%config %{_sysconfdir}/krb5.conf.d/krb5_himmelblau.conf
 %{_sbindir}/himmelblaud
 %{_sbindir}/rchimmelblaud
 %{_sbindir}/himmelblaud_tasks
