@@ -3,6 +3,7 @@ Mon Jul 28 12:59:30 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - The support for -buildmode=shared only depends on the go version and
   architecture, not how it was bootstrapped
+  * Refs boo#1247816 bootstrap go1.21 with gccgo
   * Refs bsc#1247326 SLFO:Main go1.21 fails to build on s390x at
     -buildmode=shared std for some workers only
   * Refs jsc#PED-1962 Reduce go1.x RPM installed file size by
@@ -15,6 +16,7 @@ Fri Jul 18 12:23:38 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
   * Refs bsc#1245292 go1.16 unresolveable on SLFO:Main. Recommended
     mitigation for SLFO:Main is to bootstrap go1.21 with gccgo and
     delete go1.16 through go1.20, all of which are EOL.
+  * Refs boo#1247816 bootstrap go1.21 with gccgo
   * Update %bcond_with gccgo_go121 to a version unique name from
     %bcond_with gccgo. OBS prjconf does not support a conditional
     %_with configuration to match just one package. Use a unique
@@ -40,6 +42,7 @@ Mon Jul  7 15:32:03 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
   * Rebase gcc-go.patch for go1.21
+  * Refs boo#1247816 bootstrap go1.21 with gccgo
 
 -------------------------------------------------------------------
 Thu Dec  5 08:01:10 UTC 2024 - Adrian Schröter <adrian@suse.de>
