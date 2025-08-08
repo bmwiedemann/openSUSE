@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 08 04:45:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.5:
+  * Fix and improve file permission linters; update tests to mirror
+    actual usage (#2118)
+
+-------------------------------------------------------------------
 Mon Aug 04 04:44:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.4:
