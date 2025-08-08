@@ -24,6 +24,9 @@ Summary:        A pytest plugin for managing processes across test runs
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-xprocess
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-xprocess/pytest-xprocess-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-test_process_initialization.patch gh#pytest-dev/pytest-xprocess#157
+# This patch fixes tests in slow machines
+Patch0:         fix-test_process_initialization.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest >= 2.8}
@@ -43,7 +46,7 @@ during testing. You can also use it to start and pre-configure
 test-specific databases (i.e. Postgres, Couchdb).
 
 %prep
-%setup -q -n pytest-xprocess-%{version}
+%autosetup -p1 -n pytest-xprocess-%{version}
 rm -rvf tests/__pycache__
 chmod -x README.rst
 

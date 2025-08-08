@@ -1,0 +1,46 @@
+From 75d92c89ec86da5cfc99d711a2b80cd097e7c6fa Mon Sep 17 00:00:00 2001
+From: U2FsdGVkX1 <U2FsdGVkX1@gmail.com>
+Date: Fri, 22 Nov 2024 14:32:42 +0800
+Subject: [PATCH 1/2] Add retry for request_response_cycle
+ (https://github.com/pytest-dev/pytest-xprocess/issues/154)
+
+---
+ CHANGELOG.rst                        |  7 +++++++
+ tests/test_process_initialization.py | 18 +++++++++++++-----
+ 2 files changed, 20 insertions(+), 5 deletions(-)
+
+Index: pytest-xprocess-1.0.2/tests/test_process_initialization.py
+===================================================================
+--- pytest-xprocess-1.0.2.orig/tests/test_process_initialization.py
++++ pytest-xprocess-1.0.2/tests/test_process_initialization.py
+@@ -1,5 +1,6 @@
+ import socket
+ import sys
++import time
+ from pathlib import Path
+ 
+ import pytest
+@@ -12,11 +13,18 @@ server_path = Path(__file__).parent.join
+ def request_response_cycle(tcp_port, data):
+     """test started server instance by sending
+     request and checking response"""
+-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+-        sock.connect(("localhost", tcp_port))
+-        sock.sendall(bytes(data, "utf-8"))
+-        received = str(sock.recv(1024), "utf-8")
+-        return received == data.upper()
++    for attempt in range(4):
++        try:
++            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
++                sock.connect(("localhost", tcp_port))
++                sock.sendall(bytes(data, "utf-8"))
++                received = str(sock.recv(1024), "utf-8")
++                return received == data.upper()
++        except OSError as e:
++            if attempt < 3:
++                time.sleep(1)
++            else:
++                raise e
+ 
+ 
+ @pytest.mark.parametrize("proc_name", ["s1", "s2", "s3"])

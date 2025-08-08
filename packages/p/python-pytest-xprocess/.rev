@@ -111,4 +111,13 @@ python-Werkzeug 2.0.1 (currently in Staging:F)</comment>
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1275120</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>9faebff3d09578db9e10d3cb219e6329</srcmd5>
+    <version>1.0.2</version>
+    <time>1754658597</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch fix-test_process_initialization.patch
+  gh#pytest-dev/pytest-xprocess#157 to fix tests in slow machines</comment>
+    <requestid>1298115</requestid>
+  </revision>
 </revisionlist>
