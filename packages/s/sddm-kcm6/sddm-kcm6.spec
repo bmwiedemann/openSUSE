@@ -1,7 +1,7 @@
 #
 # spec file for package sddm-kcm6
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           sddm-kcm6
-Version:        6.4.3
+Version:        6.4.4
 Release:        0
 Summary:        A sddm control module for KDE
 License:        GPL-2.0-only
