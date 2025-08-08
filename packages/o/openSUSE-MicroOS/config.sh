@@ -109,6 +109,8 @@ fi
 cat >/etc/fstab.script <<"EOF"
 #!/bin/sh
 set -eux
+# Convert ro to ro=vfs (boo#1202000)
+gawk -i inplace '$2 == "/" { sub(/ro/, "ro=vfs", $4); } { print $0 }' /etc/fstab
 
 # If /var is on a different partition than /...
 if [ "$(findmnt -snT / -o SOURCE)" != "$(findmnt -snT /var -o SOURCE)" ]; then

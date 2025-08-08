@@ -12,6 +12,11 @@ Thu Jul 17 15:22:25 UTC 2025 - Fabian Vogt <fvogt@suse.com>
   * ppc64le-512B
 
 -------------------------------------------------------------------
+Wed Jul 16 10:29:33 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- config.sh: Mount / with ro=vfs (boo#1202000)
+
+-------------------------------------------------------------------
 Tue Jun 24 13:46:11 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Add libz1 to the list of bootstrap packages to avoid libz-ng-compat1
