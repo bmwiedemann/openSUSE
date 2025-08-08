@@ -1,7 +1,7 @@
 #
 # spec file for package python-magicalimport
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,16 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-magicalimport
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Importing Python modules by physical file path
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/podhmo/magicalimport
 Source:         https://github.com/podhmo/magicalimport/archive/%{version}.tar.gz#/magicalimport-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -46,15 +48,13 @@ export LANG=en_US.UTF-8
 %install
 export LANG=en_US.UTF-8
 %pyproject_install
-%{python_expand rm -r %{buildroot}%{$python_sitelib}/examples
- %fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
 %files %{python_files}
-%doc README.rst examples/
+%doc README.md examples/
 %license LICENSE
 %{python_sitelib}/magicalimport*
 

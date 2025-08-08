@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Aug  7 16:11:09 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix fdupes (it doesn't expand automatically)
+
+-------------------------------------------------------------------
+Wed Aug  6 11:00:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.9.2
+  * Refactor: Consolidate packaging configuration to pyproject.toml (#21)
+  * Drop support for Python < 3.10 (#22)
+  * The command for running tests has been updated in both the
+    CI workflow and the Makefile. (#24)
+  * Fix: Ensure all tests pass in Makefile (#25)
+  * docs: Update README to Markdown and expand content (#26)
+  *  migrated the project to use hatch and hatchling. (#28)
+  * chore: adjust Makefile
+  * chore: bump version
+- Drop command line to remove examples folder
+- Rename README.rst to README.md in %doc section
+- Update BuildRequries from pyproject.toml
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Mon Jun  2 08:07:49 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

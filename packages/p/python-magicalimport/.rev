@@ -25,4 +25,27 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1281785</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e2ab947140ed629263f1f241d9acec49</srcmd5>
+    <version>0.9.2</version>
+    <time>1754658752</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix fdupes (it doesn't expand automatically)
+- Update to 0.9.2
+  * Refactor: Consolidate packaging configuration to pyproject.toml (#21)
+  * Drop support for Python &lt; 3.10 (#22)
+  * The command for running tests has been updated in both the
+    CI workflow and the Makefile. (#24)
+  * Fix: Ensure all tests pass in Makefile (#25)
+  * docs: Update README to Markdown and expand content (#26)
+  *  migrated the project to use hatch and hatchling. (#28)
+  * chore: adjust Makefile
+  * chore: bump version
+- Drop command line to remove examples folder
+- Rename README.rst to README.md in %doc section
+- Update BuildRequries from pyproject.toml
+- Use Python 3.11 on SLE-15 by default
+</comment>
+    <requestid>1298182</requestid>
+  </revision>
 </revisionlist>
