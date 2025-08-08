@@ -198,4 +198,12 @@
   * Only remount when [/sysroot]/etc is ro (bsc#1246021)</comment>
     <requestid>1291268</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>daccea35d51ac8cb2b37a34f5f38b797</srcmd5>
+    <version>1.0+git20250807.5b5844c</version>
+    <time>1754658608</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1298152</requestid>
+  </revision>
 </revisionlist>

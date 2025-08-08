@@ -17,7 +17,7 @@
 
 
 Name:           read-only-root-fs
-Version:        1.0+git20250708.3eed5de
+Version:        1.0+git20250807.5b5844c
 Release:        0
 Summary:        Files and Scripts for a RO root fileystem
 License:        GPL-2.0-or-later
@@ -85,6 +85,12 @@ fi
 for var in BTRFS_BALANCE_MOUNTPOINTS BTRFS_SCRUB_MOUNTPOINTS BTRFS_TRIM_MOUNTPOINTS; do
     grep -q "${var}=\"/\"" /etc/sysconfig/btrfsmaintenance && sed -i "s|${var}=.*|${var}=\"/.snapshots\"|g" /etc/sysconfig/btrfsmaintenance
 done
+
+# Replace ro with ro=vfs for / (boo#1156421)
+if [ -f %{_sysconfdir}/fstab ] && ! grep -qw "ro=vfs" %{_sysconfdir}/fstab; then
+    gawk -i inplace '$2 == "/" && match($4, /^(.*,)?ro(,.*)?$/, m) { $4 = m[1] "ro=vfs" m[2]; } { print }' %{_sysconfdir}/fstab
+fi
+
 %{?update_bootloader_posttrans}
 exit 0
 
@@ -97,8 +103,6 @@ exit 0
 %{_prefix}/lib/systemd/system-preset/*
 %dir %{_prefix}/lib/systemd/system/systemd-udevd.service.d
 %{_prefix}/lib/systemd/system/systemd-udevd.service.d/etcmount.conf
-%dir %{_prefix}/lib/systemd/system/systemd-journal-flush.service.d
-%{_prefix}/lib/systemd/system/systemd-journal-flush.service.d/afterlocalfs.conf
 %dir %{_prefix}/lib/systemd/system/systemd-remount-fs.service.d
 %{_prefix}/lib/systemd/system/systemd-remount-fs.service.d/writableagain.conf
 %dir %{_sysconfdir}/grub.d

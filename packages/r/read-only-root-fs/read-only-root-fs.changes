@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 07 13:17:48 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Migrate from ro to ro=vfs (boo#1156421)
+- Update to version 1.0+git20250807.5b5844c:
+  * Remove workarounds obsoleted by ro=vfs
+
+-------------------------------------------------------------------
 Tue Jul 08 12:47:38 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.0+git20250708.3eed5de:
