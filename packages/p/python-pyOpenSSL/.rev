@@ -652,4 +652,17 @@
     <comment></comment>
     <requestid>1270975</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>1a3a80fa84880e03bec9bf502e99d5d5</srcmd5>
+    <version>25.1.0</version>
+    <time>1754658615</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 25.1.0:
+  * Attempting using any methods that mutate an
+    OpenSSL.SSL.Context after it has been used to create an
+    OpenSSL.SSL.Connection will emit a warning. In a future
+    release, this will raise an exception.
+  * cryptography maximum version has been increased to 45.0.x.</comment>
+    <requestid>1292433</requestid>
+  </revision>
 </revisionlist>
