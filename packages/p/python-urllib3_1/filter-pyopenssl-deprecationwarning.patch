@@ -1,0 +1,133 @@
+Index: urllib3-1.26.20/test/with_dummyserver/test_https.py
+===================================================================
+--- urllib3-1.26.20.orig/test/with_dummyserver/test_https.py
++++ urllib3-1.26.20/test/with_dummyserver/test_https.py
+@@ -215,6 +215,10 @@ class TestHTTPS(HTTPSDummyServerTestCase
+             assert conn.__class__ == VerifiedHTTPSConnection
+ 
+             with warnings.catch_warnings(record=True) as w:
++                # Filter PyOpenSSL 25.1+ DeprecationWarning
++                warnings.filterwarnings(
++                    "ignore", message="Attempting to mutate a Context after", category=DeprecationWarning
++                )
+                 r = https_pool.request("GET", "/")
+                 assert r.status == 200
+ 
+@@ -245,6 +249,13 @@ class TestHTTPS(HTTPSDummyServerTestCase
+                 r = https_pool.request("GET", "/")
+                 assert r.status == 200
+ 
++                # Filter PyOpenSSL 25.1+ DeprecationWarning
++                calls = warn.call_args_list
++                calls = [
++                    call for call in calls if call[0][1] != DeprecationWarning and
++                    not call[0][0].startswith("Attempting to mutate a Context")
++                ]
++
+                 # Modern versions of Python, or systems using PyOpenSSL, don't
+                 # emit warnings.
+                 if (
+@@ -252,7 +263,7 @@ class TestHTTPS(HTTPSDummyServerTestCase
+                     or util.IS_PYOPENSSL
+                     or util.IS_SECURETRANSPORT
+                 ):
+-                    assert not warn.called, warn.call_args_list
++                    assert not calls
+                 else:
+                     assert warn.called
+                     if util.HAS_SNI:
+@@ -274,6 +285,13 @@ class TestHTTPS(HTTPSDummyServerTestCase
+                 r = https_pool.request("GET", "/")
+                 assert r.status == 200
+ 
++                # Filter PyOpenSSL 25.1+ DeprecationWarning
++                calls = warn.call_args_list
++                calls = [
++                    call for call in calls if call[0][1] != DeprecationWarning and
++                    not call[0][0].startswith("Attempting to mutate a Context")
++                ]
++
+                 # Modern versions of Python, or systems using PyOpenSSL, don't
+                 # emit warnings.
+                 if (
+@@ -281,7 +299,7 @@ class TestHTTPS(HTTPSDummyServerTestCase
+                     or util.IS_PYOPENSSL
+                     or util.IS_SECURETRANSPORT
+                 ):
+-                    assert not warn.called, warn.call_args_list
++                    assert not calls
+                 else:
+                     assert warn.called
+                     if util.HAS_SNI:
+@@ -306,6 +324,10 @@ class TestHTTPS(HTTPSDummyServerTestCase
+             assert conn.__class__ == VerifiedHTTPSConnection
+ 
+             with warnings.catch_warnings(record=True) as w:
++                # Filter PyOpenSSL 25.1+ DeprecationWarning
++                warnings.filterwarnings(
++                    "ignore", message="Attempting to mutate a Context after", category=DeprecationWarning
++                )
+                 r = https_pool.request("GET", "/")
+                 assert r.status == 200
+ 
+@@ -412,6 +434,12 @@ class TestHTTPS(HTTPSDummyServerTestCase
+                 # warnings, which we want to ignore here.
+                 calls = warn.call_args_list
+ 
++                # Filter PyOpenSSL 25.1+ DeprecationWarning
++                calls = [
++                    call for call in calls if call[0][1] != DeprecationWarning and
++                    not call[0][0].startswith("Attempting to mutate a Context")
++                ]
++
+                 # If we're using a deprecated TLS version we can remove 'DeprecationWarning'
+                 if self.tls_protocol_deprecated():
+                     calls = [call for call in calls if call[0][1] != DeprecationWarning]
+@@ -687,6 +715,11 @@ class TestHTTPS(HTTPSDummyServerTestCase
+     def _request_without_resource_warnings(self, method, url):
+         with warnings.catch_warnings(record=True) as w:
+             warnings.simplefilter("always")
++            # Filter PyOpenSSL 25.1+ DeprecationWarning
++            warnings.filterwarnings(
++                "ignore", message="Attempting to mutate a Context after",
++                category=DeprecationWarning
++            )
+             with HTTPSConnectionPool(
+                 self.host, self.port, ca_certs=DEFAULT_CA
+             ) as https_pool:
+@@ -742,6 +775,11 @@ class TestHTTPS(HTTPSDummyServerTestCase
+             conn = https_pool._get_conn()
+             try:
+                 with warnings.catch_warnings(record=True) as w:
++                    # Filter PyOpenSSL 25.1+ DeprecationWarning
++                    warnings.filterwarnings(
++                        "ignore", message="Attempting to mutate a Context after",
++                        category=DeprecationWarning
++                    )
+                     conn.connect()
+                     if not hasattr(conn.sock, "version"):
+                         pytest.skip("SSLSocket.version() not available")
+@@ -769,6 +807,11 @@ class TestHTTPS(HTTPSDummyServerTestCase
+             conn = https_pool._get_conn()
+             try:
+                 with warnings.catch_warnings(record=True) as w:
++                    # Filter PyOpenSSL 25.1+ DeprecationWarning
++                    warnings.filterwarnings(
++                        "ignore", message="Attempting to mutate a Context after",
++                        category=DeprecationWarning
++                    )
+                     conn.connect()
+             finally:
+                 conn.close()
+@@ -788,6 +831,11 @@ class TestHTTPS(HTTPSDummyServerTestCase
+             conn = https_pool._get_conn()
+             try:
+                 with warnings.catch_warnings(record=True) as w:
++                    # Filter PyOpenSSL 25.1+ DeprecationWarning
++                    warnings.filterwarnings(
++                        "ignore", message="Attempting to mutate a Context after",
++                        category=DeprecationWarning
++                    )
+                     conn.connect()
+             finally:
+                 conn.close()

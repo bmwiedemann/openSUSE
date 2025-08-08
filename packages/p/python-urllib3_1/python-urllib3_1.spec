@@ -1,7 +1,7 @@
 #
 # spec file for package python-urllib3_1
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ Source:         https://files.pythonhosted.org/packages/source/u/urllib3/urllib3
 Patch0:         remove_mock.patch
 # PATCH-FIX-UPSTREAM CVE-2025-50181 gh#urllib3/urllib3@f05b1329126d, bsc#1244925
 Patch1:         CVE-2025-50181-poolmanager-redirects.patch
+# PATCH-FIX-OPENSUSE Explicitly ignore new DeprecationWarning from PyOpenSSL 25.1+
+Patch2:         filter-pyopenssl-deprecationwarning.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
