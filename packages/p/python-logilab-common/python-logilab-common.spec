@@ -15,14 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-logilab-common
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Python lowlevel functionality shared by logilab projects
 License:        LGPL-2.1-or-later
 URL:            https://logilab-common.readthedocs.io/
-Source:         https://files.pythonhosted.org/packages/source/l/logilab-common/logilab-common-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/l/logilab_common/logilab_common-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -46,7 +46,7 @@ instance, logilab.common.db will require a db-api 2.0 compliant
 database driver.
 
 %prep
-%setup -q -n logilab-common-%{version}
+%setup -q -n logilab_common-%{version}
 
 %build
 %pyproject_wheel

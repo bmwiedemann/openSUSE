@@ -145,4 +145,18 @@
 - Fix changelog issues.</comment>
     <requestid>1291592</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>30d8f051e1ab1662372f07cecbafb2f6</srcmd5>
+    <version>2.1.0</version>
+    <time>1754658829</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1298162 from glaubitz
+
+- Update to 2.1.0
+    * support python 3.12
+    * feat(compat): remove old python2 compatibility code
+  - Adjust upstream source name in spec file
+  - Use Python 3.11 on SLE-15 by default</comment>
+    <requestid>1298367</requestid>
+  </revision>
 </revisionlist>

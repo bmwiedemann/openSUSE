@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug  7 14:22:57 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.1.0
+  * support python 3.12
+  * feat(compat): remove old python2 compatibility code
+- Adjust upstream source name in spec file
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Thu Jul 10 05:39:07 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
