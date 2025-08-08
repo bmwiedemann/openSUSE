@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9df2976493f1c2d0ed285b13a939e0eb</srcmd5>
+    <version>2.7.4</version>
+    <time>1754658754</time>
+    <user>dimstar_suse</user>
+    <comment>Required for AMD ROCm for SLE 15 SP7</comment>
+    <requestid>1298183</requestid>
+  </revision>
+</revisionlist>
