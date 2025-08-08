@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug  6 13:30:11 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.4
+- Changes since 6.4.3:
+  * Update version for new release 6.4.4
+  * kcms/tabbox: set up i18n for preview
+  * scene/itemrenderer_opengl: use the correct rendering intent for the color pipeline
+  * a11ykeyboardmanager: Send second modifier press to screenreader (kde#507545)
+  * plugins/screencast: Only offer explicit sync if the DRM device supports it
+  * autotests/screencast: make the window fullscreen, and wait for it to be presented
+  * backends/drm: avoid dropping the color pipeline cache for empty pipelines
+  * plugins/magnifier: allocate an fbo when rendering, and don't crash if it fails
+  * plugins/magnifier: actually set the initial zoom properly (kde#507248)
+  * backends/drm: never use default colorimetry of the edid
+  * tabbox: Work around QtQuick crashing kwin (kde#506502)
+
+-------------------------------------------------------------------
 Tue Jul 15 10:53:41 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.3:
