@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyfiglet
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Pure Python FIGlet implementation
 License:        MIT

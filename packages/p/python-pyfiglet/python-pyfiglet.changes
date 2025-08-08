@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug  6 10:13:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.3
+  * Fix typos in README.md
+  * __init__.py: Fix a tiny typo in a comment
+  * Update README.md
+  * Tests : Use slant instead of doh to use only fonts-contrib
+  * Added: Double-Blocky Font
+  * Big type hinting and modernization upgrade
+
+-------------------------------------------------------------------
 Sun Jan  7 20:58:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.2:

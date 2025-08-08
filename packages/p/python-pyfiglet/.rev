@@ -65,4 +65,20 @@
   * Setup auto publish</comment>
     <requestid>1137446</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>574c57debe37644769f382f49e91fd9d</srcmd5>
+    <version>1.0.3</version>
+    <time>1754658747</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1297924 from glaubitz
+
+- Update to 1.0.3
+    * Fix typos in README.md
+    * __init__.py: Fix a tiny typo in a comment
+    * Update README.md
+    * Tests : Use slant instead of doh to use only fonts-contrib
+    * Added: Double-Blocky Font
+    * Big type hinting and modernization upgrade</comment>
+    <requestid>1298179</requestid>
+  </revision>
 </revisionlist>
