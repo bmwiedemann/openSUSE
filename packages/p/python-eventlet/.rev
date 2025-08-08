@@ -684,4 +684,31 @@
     <comment></comment>
     <requestid>1278545</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>2efdac5f4d2e6e9ea6588f263ddb1be6</srcmd5>
+    <version>0.40.2</version>
+    <time>1754658617</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.40.2
+  * Fix compatibility issues identified with Python 3.14 on Linux (#1058)
+  * Make database removal safer with IF EXISTS (#1056)
+  * Prepare jobs and CI/CD for python 3.14 (#1055)
+- from version 0.40.1
+  * [fix] &quot;Fix&quot; fork() so it &quot;works&quot; on Python 3.13, and &quot;works&quot;
+    better on older Python versions (#1047)
+  * Behavior change: threads created by eventlet.green.threading.Thread
+    and threading.Thead will be visible across both modules if monkey
+    patching was used. Previously each module would only list threads
+    created in that module.
+  * Bug fix: after fork(), greenlet threads are correctly listed in
+    threading.enumerate() if monkey patching was used. You should not
+    use fork()-without-execve().
+  * [fix] Fix patching of removed URLopener class in Python 3.14 (#1053)
+  * [fix] ReferenceError except while count rlock (#1042)
+  * [fix] Replace deprecated datetime.utcfromtimestamp (#1050)
+  * [fix][env] Remove duplicate steps (#1049)
+  * [fix] Replace deprecated datetime.datetime.utcnow (#1046)
+</comment>
+    <requestid>1297430</requestid>
+  </revision>
 </revisionlist>
