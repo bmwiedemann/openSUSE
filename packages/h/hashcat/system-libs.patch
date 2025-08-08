@@ -2,10 +2,10 @@
  src/Makefile |   13 +++++++------
  1 file changed, 7 insertions(+), 6 deletions(-)
 
-Index: hashcat-6.2.6/src/Makefile
+Index: hashcat-7.0.0/src/Makefile
 ===================================================================
---- hashcat-6.2.6.orig/src/Makefile
-+++ hashcat-6.2.6/src/Makefile
+--- hashcat-7.0.0.orig/src/Makefile
++++ hashcat-7.0.0/src/Makefile
 @@ -3,7 +3,7 @@
  ## License.....: MIT
  ##
@@ -14,7 +14,7 @@ Index: hashcat-6.2.6/src/Makefile
 +SHARED                  ?= 1
  DEBUG                   := 0
  PRODUCTION              := 1
- PRODUCTION_VERSION      := v6.2.6
+ PRODUCTION_VERSION      := v7.0.0
 @@ -11,9 +11,9 @@ ENABLE_CUBIN            ?= 1
  ENABLE_BRAIN            ?= 1
  ENABLE_UNRAR            ?= 1
@@ -27,7 +27,7 @@ Index: hashcat-6.2.6/src/Makefile
  ## do not change, requires some hacks
  USE_SYSTEM_UNRAR        ?= 0
  
-@@ -102,7 +102,7 @@ VERSION_PURE            := $(shell echo
+@@ -114,7 +114,7 @@ VERSION_PURE            := $(shell echo
  ##
  
  DESTDIR                 ?=
@@ -36,7 +36,7 @@ Index: hashcat-6.2.6/src/Makefile
  
  INSTALL_FOLDER          ?= $(PREFIX)/bin
  SHARED_ROOT_FOLDER      ?= $(PREFIX)/share
-@@ -173,7 +173,7 @@ endif # MSYS2
+@@ -187,7 +187,7 @@ endif # MSYS2
  ## Misc stuff
  ##
  
@@ -45,7 +45,7 @@ Index: hashcat-6.2.6/src/Makefile
  
  ##
  ## General compiler and linker options
-@@ -181,6 +181,7 @@ COMPTIME                := $(shell date
+@@ -195,6 +195,7 @@ COMPTIME                := $(shell date
  
  LFLAGS                  := $(LDFLAGS)
  
@@ -53,7 +53,7 @@ Index: hashcat-6.2.6/src/Makefile
  ifeq ($(PRODUCTION),0)
  CFLAGS                  += -W
  CFLAGS                  += -Wall
-@@ -235,7 +236,7 @@ endif
+@@ -268,7 +269,7 @@ endif
  ifeq ($(DEBUG),0)
  CFLAGS                  += -O2
  ifneq ($(UNAME),Darwin)

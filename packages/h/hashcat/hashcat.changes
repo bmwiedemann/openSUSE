@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Aug  7 15:48:40 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Use %global instead of %define
+- Remove python3-devel from recommends
+
+-------------------------------------------------------------------
+Wed Aug  6 12:27:50 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Use %python3_fix_shebang to replace python path with the right
+  one 
+
+-------------------------------------------------------------------
+Tue Aug  5 11:14:01 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Add missing bin files to %files
+- Move bridges files to /usr/lib/hashcat/bridges and symlink
+  the old location
+- Remove -j1 from make invocation
+- Fix rpmlint warnings
+- Bump provided bundled(lzma-sdk) to 24.07
+- Add python3-devel to BuildRequires to satisfy some modules
+  build requirements
+
+-------------------------------------------------------------------
+Tue Aug  5 00:23:16 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Shorten %description
+- Add python3-devel to Recommends:
+- Update to release 7.0.0
+  * Full release notes at
+    /usr/share/doc/packages/hashcat/docs/releases_notes_v7.0.0.md
+  * Assimilation Bridge: Integrate external resources like CPUs,
+    FPGAs, embedded interpreters, and more into the cracking
+    pipeline.
+  * Python Bridge Plugin: Rapidly implement hash-matching logic in
+    Python. No recompilation needed, supports multithreading and
+    rule engine by default.
+  * Virtual Backend Devices: Internally partitions physical GPUs
+    into multiple logical devices for better bridge integration and
+    async workloads.
+  * Hash-Mode Autodetection: Omit the -m flag and let Hashcat
+    detect the hash-mode, or use --identify to list possibilities.
+  * 58 new application-specific hash types, including Argon2,
+    MetaMask, Microsoft Online Account, SNMPv3, GPG, OpenSSH, and
+    LUKS2
+  * 17 new generic hash constructions used in real-world web apps
+    and protocols
+  * 11 new primitives added to the crypto library, improving reuse
+    and plugin development
+  * 20 new tools to extract hashes from popular sources, including
+    APFS, Virtualbox, BitLocker, and various wallet formats
+  * Complete refactor of the autotuning engine for better device
+    utilization
+  * Major rewrite of memory management to eliminate previous 4GB
+    allocation caps and enable full memory usage across devices
+
+-------------------------------------------------------------------
 Thu Jun  6 18:12:31 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Amend system-libs.patch; system lzma-sdk (24.xx) is too new;

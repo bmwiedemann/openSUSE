@@ -80,4 +80,13 @@
     <comment>- Amend system-libs.patch; system lzma-sdk (24.xx) is too new; go back to using bundled lzma-sdk.</comment>
     <requestid>1179063</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>534345c9f77e029bd45522612b1065d4</srcmd5>
+    <version>7.0.0</version>
+    <time>1754658704</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %global instead of %define
+- Remove python3-devel from recommends (forwarded request 1298186 from VaiTon)</comment>
+    <requestid>1298189</requestid>
+  </revision>
 </revisionlist>
