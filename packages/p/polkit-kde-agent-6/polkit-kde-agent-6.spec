@@ -1,7 +1,7 @@
 #
 # spec file for package polkit-kde-agent-6
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define rname polkit-kde-agent-1
 %bcond_without released
 Name:           polkit-kde-agent-6
-Version:        6.4.3
+Version:        6.4.4
 Release:        0
 Summary:        PolicyKit authentication agent for Plasma
 License:        GPL-2.0-only AND LGPL-2.1-or-later
