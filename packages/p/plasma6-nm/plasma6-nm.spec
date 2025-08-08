@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-nm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %bcond_without openconnect
 %endif
 Name:           plasma6-nm
-Version:        6.4.3
+Version:        6.4.4
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
