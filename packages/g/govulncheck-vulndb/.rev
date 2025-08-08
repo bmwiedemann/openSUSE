@@ -1029,4 +1029,15 @@
   * GO-2025-3788 CVE-2025-4656 GHSA-fhc2-8qx8-6vj7 (forwarded request 1297307 from jfkw)</comment>
     <requestid>1297308</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>db12008c6a56a07ee98bdfa97a4bbf60</srcmd5>
+    <version>0.0.20250807T150727</version>
+    <time>1754658719</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.20250807T150727 2025-08-07T15:07:27Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3849 CVE-2025-47907 (forwarded request 1298234 from jfkw)</comment>
+    <requestid>1298235</requestid>
+  </revision>
 </revisionlist>
