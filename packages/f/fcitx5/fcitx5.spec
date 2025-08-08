@@ -33,10 +33,13 @@ Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}_
 Source2:        https://raw.githubusercontent.com/fcitx/fcitx-artwork/master/logo/Fcitx.svg
 Source3:        xim.d-fcitx5
 Source4:        macros.fcitx5
+Source5:        fcitx5-autostart
 Source102:      fcitx5.service
 Patch1:         fcitx5-gcc7.patch
 Patch2:         fcitx5-5.0.13-memfd.patch
 Patch3:         fcitx5-5.1.13-xcb.patch
+# PATCH-FIX-OPENSUSE fcitx5-autostart.patch ftake@geeko.jp -- check INPUT_METHOD before launch
+Patch4:         fcitx5-autostart.patch
 BuildRequires:  cmake
 BuildRequires:  dbus-1-devel
 BuildRequires:  extra-cmake-modules
@@ -170,6 +173,7 @@ pushd  %{buildroot}%{_distconfdir}/X11/xim.d/
     done
 popd
 
+install -m 755 %{SOURCE5} %{buildroot}%{_bindir}/fcitx5-autostart
 install -D -m 0644 %{SOURCE102} %{buildroot}%{_userunitdir}/fcitx5.service
 
 # install icons
@@ -240,6 +244,7 @@ fi
 %{_bindir}/fcitx5-configtool
 %{_bindir}/fcitx5-remote
 %{_bindir}/fcitx5-diagnose
+%{_bindir}/fcitx5-autostart
 %{_libdir}/fcitx5
 %{_libexecdir}/fcitx5-wayland-launcher
 %{_userunitdir}/fcitx5.service

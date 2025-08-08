@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 13 06:01:14 UTC 2025 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Add fcitx-autostart to check $INPUT_METHOD so that fcitx5 does
+  not breake the other input methods
+  * Fix boo#1246418
+  * Add fcitx5-autostart.patch
+
+-------------------------------------------------------------------
 Fri Jun 20 13:42:02 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - update version 5.1.13

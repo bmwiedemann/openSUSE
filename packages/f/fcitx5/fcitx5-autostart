@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Note:
+# systemd-inputmethod-generator rewrite $INPUT_METHOD from fcitx5 to fcitx
+# This works because fcitx and fcitx5 cannot be installed together.
+case $INPUT_METHOD in
+fcitx | fcitx5)
+    /usr/bin/fcitx5 -D
+    ;;
+esac
