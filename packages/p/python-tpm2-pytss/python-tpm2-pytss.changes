@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug  7 15:57:42 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Refresh the source tarball.
+
+-------------------------------------------------------------------
+Mon Aug  4 13:52:43 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- add patch use-c99-for-preproccessing.patch to fix build
+
+-------------------------------------------------------------------
 Wed Oct  9 04:00:45 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to version 2.3.0:

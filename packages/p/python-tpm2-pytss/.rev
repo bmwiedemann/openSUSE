@@ -60,4 +60,14 @@
 - Switch to pyproject macros.</comment>
     <requestid>1206411</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>66584fa34180b7be9ba7a139cc86ab2c</srcmd5>
+    <version>2.3.0</version>
+    <time>1754658722</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh the source tarball.
+- add patch use-c99-for-preproccessing.patch to fix build
+</comment>
+    <requestid>1298176</requestid>
+  </revision>
 </revisionlist>

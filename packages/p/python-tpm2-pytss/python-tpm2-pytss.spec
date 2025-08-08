@@ -1,7 +1,7 @@
 #
 # spec file for package python-tpm2-pytss
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ Release:        0
 Summary:        Python bindings for TSS
 License:        BSD-2-Clause
 URL:            https://github.com/tpm2-software/tpm2-pytss
-Source:         %{srcname}-%{version}.tar.gz
+Source:         https://github.com/tpm2-software/%{srcname}/archive/refs/tags/%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
+#PATCH-FIX-UPSTREAM use-c99-for-preproccessing.patch from https://github.com/tpm2-software/tpm2-pytss/commit/61d00b4dcca131b3f03f674ceabf4260bdbd6a61
+Patch:          use-c99-for-preproccessing.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module asn1crypto}
 BuildRequires:  %{python_module cffi}

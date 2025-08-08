@@ -1,0 +1,37 @@
+From 61d00b4dcca131b3f03f674ceabf4260bdbd6a61 Mon Sep 17 00:00:00 2001
+From: Christopher Byrne <salah.coronya@gmail.com>
+Date: Sun, 15 Dec 2024 17:06:13 -0600
+Subject: [PATCH] setup.py: Explicilty use C99 for preprocessing
+
+GCC 15 uses -std=c23 by default, which causes pycparser to error out
+with "pycparser.plyparser.ParseError:
+/usr/lib/gcc/x86_64-pc-linux-gnu/15/include/stddef.h:450:31:
+before: nullptr_t". As pcyparser only supports completely C99,
+this shouldn't be an issue.
+
+Signed-off-by: Christopher Byrne <salah.coronya@gmail.com>
+---
+ setup.py | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+Index: tpm2-pytss-2.3.0/setup.py
+===================================================================
+--- tpm2-pytss-2.3.0.orig/setup.py
++++ tpm2-pytss-2.3.0/setup.py
+@@ -184,7 +184,7 @@ class type_generator(build_ext):
+                 f"unable to find tss2_tpm2_types.h in {pk['include_dirs']}"
+             )
+         pdata = preprocess_file(
+-            header_path, cpp_args=["-D__extension__=", "-D__attribute__(x)="]
++            header_path, cpp_args=["-std=c99", "-D__extension__=", "-D__attribute__(x)="]
+         )
+         parser = c_parser.CParser()
+         ast = parser.parse(pdata, "tss2_tpm2_types.h")
+@@ -205,6 +205,7 @@ class type_generator(build_ext):
+                 pdata = preprocess_file(
+                     policy_header_path,
+                     cpp_args=[
++                        "-std=c99",
+                         "-D__extension__=",
+                         "-D__attribute__(x)=",
+                         "-D__float128=long double",
