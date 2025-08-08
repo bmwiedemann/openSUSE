@@ -28,7 +28,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-cryptography%{psuffix}
 # ALWAYS KEEP IN SYNC WITH python-cryptography-vectors!
-Version:        44.0.3
+Version:        45.0.5
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause
@@ -128,7 +128,6 @@ rm -v tests/wycheproof/test_chacha20poly1305.py
 %license LICENSE LICENSE.APACHE LICENSE.BSD
 %doc CONTRIBUTING.rst CHANGELOG.rst README.rst
 %{python_sitearch}/cryptography
-%{python_sitearch}/rust
 %{python_sitearch}/cryptography-%{version}.dist-info
 %endif
 

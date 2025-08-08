@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Sat Jul 12 08:36:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 45.0.5:
+  * Updated Windows, macOS, and Linux wheels to be compiled with
+    OpenSSL 3.5.1.
+  * Fixed decrypting PKCS#8 files encrypted with SHA1-RC4. (This
+    is not considered secure, and is supported only for backwards
+    compatibility.)
+  * Fixed decrypting PKCS#8 files encrypted with long salts (this
+    impacts keys encrypted by Bouncy Castle).
+  * Fixed decrypting PKCS#8 files encrypted with DES-CBC-MD5.
+    While wildly insecure, this remains prevalent.
+  * Fixed using mypy with cryptography on older versions of
+    Python.
+  * Updated Windows, macOS, and Linux wheels to be compiled with
+    OpenSSL 3.5.0.
+  * Support for Python 3.7 is deprecated and will be removed in
+    the next cryptography release.
+  * Updated the minimum supported Rust version (MSRV) to 1.74.0,
+    from 1.65.0.
+  * Added support for serialization of PKCS#12 Java truststores
+    in :func:`~cryptography.hazmat.primitives.serialization.pkcs1
+    2.serialize_java_truststore`
+  * Added :meth:`~cryptography.hazmat.primitives.kdf.argon2.Argon
+    2id.derive_phc_encoded` and :meth:`~cryptography.hazmat.primi
+    tives.kdf.argon2.Argon2id.verify_phc_encoded` methods to
+    support password hashing in the PHC string format
+  * Added support for PKCS7 decryption and encryption using
+    AES-256 as the content algorithm, in addition to AES-128.
+  * BACKWARDS INCOMPATIBLE: Made SSH private key loading more
+    consistent with other private key loading: :func:`~cryptograp
+    hy.hazmat.primitives.serialization.load_ssh_private_key` now
+    raises a TypeError if the key is unencrypted but a password
+    is provided (previously no exception was raised), and raises
+    a TypeError if the key is encrypted but no password is
+    provided (previously a ValueError was raised).
+  * Added __copy__ to the :class:`~cryptography.hazmat.primitives
+    .asymmetric.ec.EllipticCurvePrivateKey`, :class:`~cryptograph
+    y.hazmat.primitives.asymmetric.ec.EllipticCurvePublicKey`, :c
+    lass:`~cryptography.hazmat.primitives.asymmetric.ed25519.Ed25
+    519PublicKey`, :class:`~cryptography.hazmat.primitives.asymme
+    tric.ed25519.Ed25519PrivateKey`, :class:`~cryptography.hazmat
+    .primitives.asymmetric.ed448.Ed448PublicKey`, :class:`~crypto
+    graphy.hazmat.primitives.asymmetric.ed448.Ed448PrivateKey`, :
+    class:`~cryptography.hazmat.primitives.asymmetric.x25519.X255
+    19PublicKey`, :class:`~cryptography.hazmat.primitives.asymmet
+    ric.x25519.X25519PrivateKey`, :class:`~cryptography.hazmat.pr
+    imitives.asymmetric.x448.X448PublicKey`, :class:`~cryptograph
+    y.hazmat.primitives.asymmetric.x448.X448PrivateKey`, :class:`
+    ~cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey`
+    , :class:`~cryptography.hazmat.primitives.asymmetric.rsa.RSAP
+    ublicKey`, :class:`~cryptography.hazmat.primitives.asymmetric
+    .dsa.DSAPrivateKey`, :class:`~cryptography.hazmat.primitives.
+    asymmetric.dsa.DSAPublicKey`, :class:`~cryptography.hazmat.pr
+    imitives.asymmetric.dh.DHPrivateKey`, and :class:`~cryptograp
+    hy.hazmat.primitives.asymmetric.dh.DHPublicKey` abstract base
+    classes.
+  * We significantly refactored how private key loading ( :func:`
+    ~cryptography.hazmat.primitives.serialization.load_pem_privat
+    e_key` and :func:`~cryptography.hazmat.primitives.serializati
+    on.load_der_private_key`) works. This is intended to be
+    backwards compatible for all well-formed keys, therefore if
+    you discover a key that now raises an exception, please file
+    a bug with instructions for reproducing.
+  * Added unsafe_skip_rsa_key_validation keyword-argument to :fun
+    c:`~cryptography.hazmat.primitives.serialization.load_ssh_pri
+    vate_key`.
+  * Added :class:`~cryptography.hazmat.primitives.hashes.XOFHash`
+    to support repeated :meth:`~cryptography.hazmat.primitives.ha
+    shes.XOFHash.squeeze` operations on extendable output
+    functions.
+  * Added :meth:`~cryptography.x509.ocsp.OCSPResponseBuilder.add_
+    response_by_hash` method to allow creating OCSP responses
+    using certificate hash values rather than full certificates.
+  * Extended the :mod:`X.509 path validation
+    <cryptography.x509.verification>` API to support user-
+    configured extension policies via the
+    :meth:`PolicyBuilder.extension_policies <cryptography.x509.ve
+    rification.PolicyBuilder.extension_policies>` method.
+  * Deprecated the subject, verification_time and max_chain_depth
+    properties on
+    :class:`~cryptography.x509.verification.ClientVerifier` and
+    :class:`~cryptography.x509.verification.ServerVerifier` in
+    favor of a new policy property. These properties will be
+    removed in the next release of cryptography.
+  * BACKWARDS INCOMPATIBLE: The :meth:`VerifiedClient.subject
+    <cryptography.x509.verification.VerifiedClient.subjects>`
+    property can now be None since a custom extension policy may
+    allow certificates without a Subject Alternative Name
+    extension.
+  * Changed the behavior when the OpenSSL 3 legacy provider fails
+    to load. Instead of raising an exception, a warning is now
+    emitted. The CRYPTOGRAPHY_OPENSSL_NO_LEGACY environment
+    variable can still be used to disable the legacy provider at
+    runtime.
+  * Added support for the CRYPTOGRAPHY_BUILD_OPENSSL_NO_LEGACY
+    environment variable during build time, which prevents the
+    library from ever attempting to load the legacy provider.
+  * Added support for the
+    :class:`~cryptography.x509.PrivateKeyUsagePeriod` X.509
+    extension. This extension defines the period during which the
+    private key corresponding to the certificate's public key may
+    be used.
+  * Added support for compiling against `aws-lc`_.
+  * Parsing X.509 structures now more strictly enforces that Name
+    structures do not have malformed ASN.1.
+  * We now publish py311 wheels that utilize the faster
+    pyo3::buffer::PyBuffer interface, resulting in significantly
+    improved performance for operations involving small buffers.
+  * Added :func:`~cryptography.hazmat.primitives.serialization.ss
+    h_key_fingerprint` for computing fingerprints of SSH public
+    keys.
+  * Added support for deterministic ECDSA signing via the new
+    keyword-only argument ecdsa_deterministic in
+    :meth:`~cryptography.x509.CertificateBuilder.sign`, :meth:`~c
+    ryptography.x509.CertificateRevocationListBuilder.sign` and :
+    meth:`~cryptography.x509.CertificateSigningRequestBuilder.sig
+    n`.
+
+-------------------------------------------------------------------
 Wed May  7 15:45:10 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 44.0.3

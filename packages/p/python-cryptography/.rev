@@ -1246,4 +1246,41 @@
     <comment></comment>
     <requestid>1276716</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>341e80337185dcf8361d1a5633a7ad7a</srcmd5>
+    <version>45.0.5</version>
+    <time>1754658610</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 45.0.5:
+  * Updated Windows, macOS, and Linux wheels to be compiled with
+    OpenSSL 3.5.1.
+  * Fixed decrypting PKCS#8 files encrypted with SHA1-RC4. (This
+    is not considered secure, and is supported only for backwards
+    compatibility.)
+  * Fixed decrypting PKCS#8 files encrypted with long salts (this
+    impacts keys encrypted by Bouncy Castle).
+  * Fixed decrypting PKCS#8 files encrypted with DES-CBC-MD5.
+    While wildly insecure, this remains prevalent.
+  * Fixed using mypy with cryptography on older versions of
+    Python.
+  * Updated Windows, macOS, and Linux wheels to be compiled with
+    OpenSSL 3.5.0.
+  * Support for Python 3.7 is deprecated and will be removed in
+    the next cryptography release.
+  * Updated the minimum supported Rust version (MSRV) to 1.74.0,
+    from 1.65.0.
+  * Added support for serialization of PKCS#12 Java truststores
+    in :func:`~cryptography.hazmat.primitives.serialization.pkcs1
+    2.serialize_java_truststore`
+  * Added :meth:`~cryptography.hazmat.primitives.kdf.argon2.Argon
+    2id.derive_phc_encoded` and :meth:`~cryptography.hazmat.primi
+    tives.kdf.argon2.Argon2id.verify_phc_encoded` methods to
+    support password hashing in the PHC string format
+  * Added support for PKCS7 decryption and encryption using
+    AES-256 as the content algorithm, in addition to AES-128.
+  * BACKWARDS INCOMPATIBLE: Made SSH private key loading more
+    consistent with other private key loading: :func:`~cryptograp
+    hy.hazmat.primitives.serialization.load_ssh_private_key` now</comment>
+    <requestid>1292428</requestid>
+  </revision>
 </revisionlist>
