@@ -1,7 +1,7 @@
 #
 # spec file for package kscreen6
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define rname kscreen
 %bcond_without released
 Name:           kscreen6
-Version:        6.4.3
+Version:        6.4.4
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
