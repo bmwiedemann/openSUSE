@@ -47,7 +47,7 @@
 %global major_minor_ver 3.0
 
 Name:           OpenImageIO
-Version:        3.0.9.0
+Version:        3.0.9.1
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        Apache-2.0
