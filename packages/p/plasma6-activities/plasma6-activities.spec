@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-activities
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define rname plasma-activities
 %bcond_without released
 Name:           plasma6-activities
-Version:        6.4.3
+Version:        6.4.4
 Release:        0
 Summary:        Plasma Activities support
 License:        GPL-2.0-or-later
