@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  7 12:36:39 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.2
+  * Changed recurrence limits from 100 to 9999 (MR !78).
+  * Minor cleanup of log messages.
+
+-------------------------------------------------------------------
 Tue Apr  1 13:15:44 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.20.1
