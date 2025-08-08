@@ -7635,4 +7635,24 @@
     <comment></comment>
     <requestid>1297007</requestid>
   </revision>
+  <revision rev="463" vrev="1">
+    <srcmd5>5cc656d97a391c7934e7314355499f02</srcmd5>
+    <version>141.0.2</version>
+    <time>1754658559</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 141.0.2
+  * Fixed a startup crash experienced by some Linux users with outdated
+    NVIDIA drivers. (bmo#1978911)
+  * Fixed a regression that caused canvas objects to be draggable,
+    causing web compatibility issues. (bmo#1978673)
+  * Fixed a crash in the Web Developer Tools panel that could occur
+    when inspecting pages with &lt;iframe&gt; elements. (bmo#1975277)
+  * Fixed minor visual issues across the user interface.
+    (bmo#1974269, bmo#1976031, bmo#1974876, bmo#1976701)
+  * Firefox wouldn't start on some systems where GTK+ was built
+    without Wayland support. (bmo#1978620)
+  * Fixed an issue where clicking a pinned tab could steal focus from
+    the content area, disrupting keyboard navigation. (bmo#1977005)</comment>
+    <requestid>1298105</requestid>
+  </revision>
 </revisionlist>
