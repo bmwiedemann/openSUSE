@@ -16253,36 +16253,47 @@ unsorted:
   - libsundials_arkode6 
   - libsundials_arkode6-mvapich2 
   - libsundials_arkode6-openmpi4 
+  - libsundials_arkode6-openmpi5 
   - libsundials_core7 
   - libsundials_core7-mvapich2 
   - libsundials_core7-openmpi4 
+  - libsundials_core7-openmpi5 
   - libsundials_cvode7 
   - libsundials_cvode7-mvapich2 
   - libsundials_cvode7-openmpi4 
+  - libsundials_cvode7-openmpi5 
   - libsundials_cvodes7 
   - libsundials_cvodes7-mvapich2 
   - libsundials_cvodes7-openmpi4 
+  - libsundials_cvodes7-openmpi5 
   - libsundials_ida7 
   - libsundials_ida7-mvapich2 
   - libsundials_ida7-openmpi4 
+  - libsundials_ida7-openmpi5 
   - libsundials_idas6 
   - libsundials_idas6-mvapich2 
   - libsundials_idas6-openmpi4 
+  - libsundials_idas6-openmpi5 
   - libsundials_kinsol7 
   - libsundials_kinsol7-mvapich2 
   - libsundials_kinsol7-openmpi4 
+  - libsundials_kinsol7-openmpi5 
   - libsundials_nvec7 
   - libsundials_nvec7-mvapich2 
   - libsundials_nvec7-openmpi4 
+  - libsundials_nvec7-openmpi5 
   - libsundials_sunlinsol5 
   - libsundials_sunlinsol5-mvapich2 
   - libsundials_sunlinsol5-openmpi4 
+  - libsundials_sunlinsol5-openmpi5 
   - libsundials_sunmatrix5 
   - libsundials_sunmatrix5-mvapich2 
   - libsundials_sunmatrix5-openmpi4 
+  - libsundials_sunmatrix5-openmpi5 
   - libsundials_sunnonlin4 
   - libsundials_sunnonlin4-mvapich2 
   - libsundials_sunnonlin4-openmpi4 
+  - libsundials_sunnonlin4-openmpi5 
   - libsuperlu7 
   - libsuperlu7-32bit 
   - libsurgescript0_6_1 
@@ -37467,6 +37478,7 @@ unsorted:
   - sundials-doc 
   - sundials-mvapich2-devel 
   - sundials-openmpi4-devel 
+  - sundials-openmpi5-devel 
   - sunpinyin-devel 
   - sunpinyin-tools 
   - sunwait 
@@ -48678,6 +48690,8 @@ unsorted:
   - vkeybd 
   - vkmark 
   - vkquake 
+  - vlang 
+  - vlang-examples 
   - vlc-codec-fluidsynth 
   - vlc-devel 
   - vlc-jack 
