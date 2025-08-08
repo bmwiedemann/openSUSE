@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Aug 08 04:45:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.8.2:
+  No CLI-related changes in the changelog
+  * Dependencies
+    - build(deps): bump the clap group with 2 updates (#14330)
+    - build(deps): bump h2 from 0.4.11 to 0.4.12 (#14331)
+    - build(deps): bump tokio-metrics from 0.4.3 to 0.4.4 (#14332)
+    - build(deps): bump actions/download-artifact from 4.3.0 to
+      5.0.0 (#14325)
+    - build(deps): bump tj-actions/changed-files (#14323)
+    - build(deps): bump google-github-actions/auth from 2.1.11 to
+      2.1.12 (#14322)
+    - build(deps): bump tj-actions/changed-files (#14321)
+    - build(deps): bump signal-hook-registry from 1.4.5 to 1.4.6
+      (#14320)
+    - build(deps): bump cc from 1.2.30 to 1.2.31 (#14317)
+    - build(deps): bump tokio-util from 0.7.15 to 0.7.16 (#14319)
+    - build(deps): bump event-listener from 5.4.0 to 5.4.1 (#14318)
+    - build(deps): bump tokio from 1.47.0 to 1.47.1 (#14316)
+
+-------------------------------------------------------------------
 Sun Aug 03 12:04:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.8.1:
