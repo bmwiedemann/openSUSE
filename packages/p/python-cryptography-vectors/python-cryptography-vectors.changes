@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 12 08:31:50 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 45.0.5:
+  * Update test vectors to match python-cryptography 45.0.5
+- drop empty rpmlintrc
+
+-------------------------------------------------------------------
 Wed May  7 15:51:33 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 44.0.3
@@ -8,7 +15,7 @@ Wed May  7 15:51:33 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 -------------------------------------------------------------------
 Sun Mar 23 21:38:58 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
-- update to 44.0.2: 
+- update to 44.0.2:
   * Update test vectors to match python-cryptography 44.0.2
 
 -------------------------------------------------------------------

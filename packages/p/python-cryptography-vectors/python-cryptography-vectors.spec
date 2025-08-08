@@ -20,7 +20,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-cryptography-vectors
 # ALWAYS KEEP IN SYNC WITH python-cryptography!
-Version:        44.0.3
+Version:        45.0.5
 Release:        0
 Summary:        Test vectors for the cryptography package
 License:        Apache-2.0 OR BSD-3-Clause
@@ -28,7 +28,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pyca/cryptography
 Source0:        https://files.pythonhosted.org/packages/source/c/cryptography_vectors/cryptography_vectors-%{version}.tar.gz
 Source2:        %{name}.keyring
-Source3:        python-cryptography-vectors-rpmlintrc
 BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
