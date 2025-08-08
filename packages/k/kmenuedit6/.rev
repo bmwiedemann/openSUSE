@@ -215,4 +215,12 @@
     <comment>Plasma 6.4.3, untested. For now without kscreenlocker6 PAM changes (forwarded request 1293847 from Vogtinator)</comment>
     <requestid>1293907</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>e28ea0f53daf5a7d54e7d9397fc62e31</srcmd5>
+    <version>6.4.4</version>
+    <time>1754658650</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 6.4.4 (forwarded request 1298101 from Vogtinator)</comment>
+    <requestid>1298296</requestid>
+  </revision>
 </revisionlist>
