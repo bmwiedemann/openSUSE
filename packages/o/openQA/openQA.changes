@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 07 15:11:29 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1754567283.cc45a4c0:
+  * Rewrote client script from perl to bash to fix heavy tests
+  * Remove script declaration on profiles
+  * build(deps-dev): bump eslint-plugin-prettier from 5.5.3 to 5.5.4
+  * Remove test related to deprecated client script
+  * Obsolete script/client after 4 year deprecation period
+
+-------------------------------------------------------------------
 Wed Aug 06 14:14:25 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1754477962.22b1fea4:
