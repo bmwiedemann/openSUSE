@@ -535,4 +535,17 @@ because we don't need git-web and the other stuff here (forwarded request 125417
   * Quantization - MXFP4 format</comment>
     <requestid>1298006</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>c4f169fae2eddf007098fd21845231b1</srcmd5>
+    <version>0.11.4</version>
+    <time>1754658768</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.11.4:
+  * openai: allow for content and tool calls in the same message
+  * openai: when converting role=tool messages, propagate the tool
+    name
+  * openai: always provide reasoning 
+  * Bug fixes</comment>
+    <requestid>1298233</requestid>
+  </revision>
 </revisionlist>
