@@ -1,7 +1,7 @@
 #
 # spec file for package kwayland-integration6
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without released
 %define rname kwayland-integration
 Name:           kwayland-integration6
-Version:        6.4.3
+Version:        6.4.4
 Release:        0
 Summary:        Plugin to integrate KF5 KWayland into Plasma 6
 License:        LGPL-2.1-or-later
