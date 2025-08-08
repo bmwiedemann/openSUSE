@@ -1,7 +1,7 @@
 #
 # spec file for package plasma6-workspace
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-workspace
-Version:        6.4.3
+Version:        6.4.4
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later

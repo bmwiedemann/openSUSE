@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug  6 13:31:36 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.4
+- Changes since 6.4.3:
+  * Update version for new release 6.4.4
+  * KCMColors: Do not forward the output of editDialogProcess (kde#504007)
+  * Make Cachedir check concurrent
+  * Revert "Disable linux-qt6-next while the regression in Qt gets fixed"
+  * DesktopProtocol: If symlink target desktop file is unwritable, create new one to ApplicationsLocation (kde#506032)
+  * Allow to remove icon widgets from context menu (kde#503832)
+  * applets/kicker: Call OpenUrlJob with mimeType
+  * Assume a place is of type inode/directory
+  * runners/recentdocuments: Use mime type we get from the results model
+  * delete image-data from hint (kde#507304)
+  * Force keep notifications in history if they were triggered in DnD (kde#504571)
+  * Notificationmanager: Remove QConcatenateBlablaModel workaround for Qt 6.9.1 (kde#471130)
+  * Reparent menu actions to the temporarily created QMenu in global menu (kde#505876)
+  * global menu applet: fix single button mode on X11 (kde#506170)
+
+-------------------------------------------------------------------
 Tue Jul 15 10:58:31 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.3:
