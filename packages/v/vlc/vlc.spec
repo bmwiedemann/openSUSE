@@ -29,7 +29,7 @@
 %bcond_without fluidsynth
 # VNC support - the module is not really usable in most cases tested so far (e.g. against qemu-kvm -vnc :xx)
 %bcond_with vnc
-%bcond_with faad
+%bcond_without faad
 %define chromecast 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600
 %define dca        0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600 || 0%{?BUILD_ORIG}
 
@@ -231,14 +231,14 @@ BuildRequires:  pkgconfig(libchromaprint) >= 0.6.0
 %if 0%{?suse_version} >= 1320
 BuildRequires:  pkgconfig(ncursesw)
 %endif
-# Those are dependencies which are NOT provided in openSUSE, mostly for legal reasons.
-%if 0%{?BUILD_ORIG}
-BuildRequires:  libxvidcore-devel
-BuildRequires:  pkgconfig(x264) >= 0.8.6
-BuildRequires:  pkgconfig(x265)
 %if %{with faad}
 BuildRequires:  pkgconfig(faad2)
 %endif
+
+# These are dependencies which are NOT provided in openSUSE, mostly for legal reasons.
+%if 0%{?BUILD_ORIG}
+BuildRequires:  pkgconfig(x264) >= 0.8.6
+BuildRequires:  pkgconfig(x265)
 %endif
 
 %description
@@ -495,13 +495,14 @@ autoreconf -fiv
 %else
   --disable-wayland                     \
 %endif
-%if 0%{?BUILD_ORIG}
 %if %{with faad}
    --enable-faad                        \
-%endif
-   --enable-x265                        \
 %else
    --disable-faad                       \
+%endif
+%if 0%{?BUILD_ORIG}
+   --enable-x265                        \
+%else
    --disable-x265                       \
 %endif
 	%{nil}
@@ -895,6 +896,9 @@ fi
 %{_libdir}/vlc/plugins/codec/libddummy_plugin.so
 %{_libdir}/vlc/plugins/codec/libdvbsub_plugin.so
 %{_libdir}/vlc/plugins/codec/libedummy_plugin.so
+%if %{with faad}
+%{_libdir}/vlc/plugins/codec/libfaad_plugin.so
+%endif
 %{_libdir}/vlc/plugins/codec/libfdkaac_plugin.so
 %{_libdir}/vlc/plugins/codec/libflac_plugin.so
 %{_libdir}/vlc/plugins/codec/libg711_plugin.so
@@ -1221,9 +1225,6 @@ fi
 
 %if 0%{?BUILD_ORIG}
 %files codecs
-%if %{with faad}
-%{_libdir}/vlc/plugins/codec/libfaad_plugin.so
-%endif
 %{_libdir}/vlc/plugins/codec/libx264_plugin.so
 %{_libdir}/vlc/plugins/codec/libx26410b_plugin.so
 %{_libdir}/vlc/plugins/codec/libx265_plugin.so

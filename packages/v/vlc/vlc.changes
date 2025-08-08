@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  7 09:27:34 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete and unused libxvidcore-devel BuildRequires.
+- Switch faad build_cond to without and move plugin to main
+  package.
+
+-------------------------------------------------------------------
 Fri Jun 13 06:38:45 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 5590.patch: opus_header: fix channel mapping family 1 parsing
