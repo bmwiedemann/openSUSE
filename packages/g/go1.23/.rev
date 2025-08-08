@@ -252,4 +252,22 @@
   * go#74402 cmd/link: duplicated definition of symbol github.com/ebitengine/purego.syscall15XABI0 when running with ASAN (forwarded request 1291358 from jfkw)</comment>
     <requestid>1291361</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c3d55b4f745196c6dbfec4b26b085e20</srcmd5>
+    <version>1.23.12</version>
+    <time>1754658552</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.23.12 (released 2025-08-06) includes security fixes to the
+  database/sql and os/exec packages, as well as bug fixes to the
+  runtime.
+  Refs boo#1229122 go1.23 release tracking
+  CVE-2025-47906 CVE-2025-47907
+  * go#74803 go#74466 boo#1247719 security: fix CVE-2025-47906 os/exec: LookPath bug: incorrect expansion of &quot;&quot;, &quot;.&quot; and &quot;..&quot; in some PATH configurations
+  * go#74832 go#74831 boo#1247720 security: fix CVE-2025-47907 database/sql: incorrect results returned from Rows.Scan
+  * go#74415 runtime: use-after-free of allpSnapshot in findRunnable
+  * go#74693 runtime: segfaults in runtime.(*unwinder).next
+  * go#74721 cmd/go: TestScript/build_trimpath_cgo fails to decode dwarf on release-branch.go1.23
+  * go#74726 cmd/cgo/internal/testsanitizers: failures with signal: segmentation fault or exit status 66 (forwarded request 1298035 from jfkw)</comment>
+    <requestid>1298038</requestid>
+  </revision>
 </revisionlist>

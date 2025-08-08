@@ -1,7 +1,7 @@
 #
 # spec file for package go1.23
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -122,7 +122,7 @@
 %endif
 
 Name:           go1.23
-Version:        1.23.11
+Version:        1.23.12
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
