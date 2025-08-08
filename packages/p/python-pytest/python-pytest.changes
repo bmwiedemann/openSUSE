@@ -1,4 +1,400 @@
 -------------------------------------------------------------------
+Fri Jun 20 05:07:43 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 8.4.1
+  * #13461: Corrected _pytest.terminal.TerminalReporter.isatty to
+    support being called as a method. Before it was just a boolean
+    which could break correct code when using -o log_cli=true).
+  * #13477: Reintroduced pytest.PytestReturnNotNoneWarning which
+    was removed by accident in pytest 8.4.
+  * #13497: Fixed compatibility with Twisted 25+.
+
+-------------------------------------------------------------------
+Tue Jun 10 11:19:07 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.4.0:
+  * #11372: Async tests will now fail, instead of
+    warning+skipping, if you don't have any suitable plugin
+    installed.
+  * #12346: Tests will now fail, instead of raising a warning, if
+    they return any value other than None.
+  * #12874: We dropped support for Python 3.8 following its end
+    of life (2024-10-07).
+  * #12960: Test functions containing a yield now cause an
+    explicit error. They have not been run since pytest 4.0, and
+    were previously marked as an expected failure and deprecation
+    warning. See :ref:`the docs <yield tests deprecated>` for
+    more information.
+  * #10839: Requesting an asynchronous fixture without a
+    pytest_fixture_setup hook that resolves it will now give a
+    DeprecationWarning. This most commonly happens if a sync test
+    requests an async fixture. This should have no effect on a
+    majority of users with async tests or fixtures using async
+    pytest plugins, but may affect non-standard hook setups or
+    autouse=True. For guidance on how to work around this warning
+    see :ref:`sync-test-async-fixture`.
+  * #11538: Added :class:`pytest.RaisesGroup` as an equivalent to
+    :func:`pytest.raises` for expecting :exc:`ExceptionGroup`.
+    Also adds :class:`pytest.RaisesExc` which is now the logic
+    behind :func:`pytest.raises` and used as parameter to
+    :class:`pytest.RaisesGroup`. RaisesGroup includes the ability
+    to specify multiple different expected exceptions, the
+    structure of nested exception groups, and flags for emulating
+    :ref:`except* <except_star>`. See :ref:`assert-matching-
+    exception-groups` and docstrings for more information.
+  * #12081: Added :fixture:`capteesys` to capture AND pass output
+    to next handler set by --capture=.
+  * #12504: :func:`pytest.mark.xfail` now accepts
+    :class:`pytest.RaisesGroup` for the raises parameter when you
+    expect an exception group. You can also pass a
+    :class:`pytest.RaisesExc` if you e.g. want to make use of the
+    check parameter.
+  * #12713: New --force-short-summary option to force condensed
+    summary output regardless of verbosity level. This lets users
+    still see condensed summary output of failures for quick
+    reference in log files from job outputs, being especially
+    useful if non-condensed output is very verbose.
+  * #12749: pytest traditionally collects classes/functions in
+    the test module namespace even if they are imported from
+    another file. For example:  # contents of src/domain.py class
+    Testament: ...   # contents of tests/test_testament.py from
+    domain import Testament   def test_testament(): ...  In this
+    scenario with the default options, pytest will collect the
+    class Testament from tests/test_testament.py because it
+    starts with Test, even though in this case it is a production
+    class being imported in the test module namespace. This
+    behavior can now be prevented by setting the new
+    :confval:`collect_imported_tests` configuration option to
+    false, which will make pytest collect classes/functions from
+    test files only if they are defined in that file. -- by
+    :user:`FreerGit`
+  * #12765: Thresholds to trigger snippet truncation can now be
+    set with :confval:`truncation_limit_lines` and
+    :confval:`truncation_limit_chars`. See :ref:`truncation-
+    params` for more information.
+  * #13125: :confval:`console_output_style` now supports times to
+    show execution time of each test.
+  * #13192: :func:`pytest.raises` will now raise a warning when
+    passing an empty string to match, as this will match against
+    any value. Use match="^$" if you want to check that an
+    exception has no message.
+  * #13192: :func:`pytest.raises` will now print a helpful string
+    diff if matching fails and the match parameter has ^ and $
+    and is otherwise escaped.
+  * #13192: You can now pass :func:`with pytest.raises(check=fn):
+    <pytest.raises>`, where fn is a function which takes a raised
+    exception and returns a boolean. The raises fails if no
+    exception was raised (as usual), passes if an exception is
+    raised and fn returns True (as well as match and the type
+    matching, if specified, which are checked before), and
+    propagates the exception if fn returns False (which likely
+    also fails the test).
+  * #13228: :ref:`hidden-param` can now be used in id of
+    :func:`pytest.param` or in ids of
+    :py:func:`Metafunc.parametrize
+    <pytest.Metafunc.parametrize>`. It hides the parameter set
+    from the test name.
+  * #13253: New flag: :ref:`--disable-plugin-autoload
+    <disable_plugin_autoload>` which works as an alternative to
+    :envvar:`PYTEST_DISABLE_PLUGIN_AUTOLOAD` when setting
+    environment variables is inconvenient; and allows setting it
+    in config files with :confval:`addopts`.
+  * #10224: pytest's short and long traceback styles (:ref:`how-
+    to-modifying-python-tb-printing`) now have partial PEP 657
+    support and will show specific code segments in the
+    traceback.
+  * #11118: Now :confval:`pythonpath` configures $PYTHONPATH
+    earlier than before during the initialization process, which
+    now also affects plugins loaded via the -p command-line
+    option. -- by :user:`millerdev`
+  * #11381: The type parameter of the parser.addini method now
+    accepts "int" and "float" parameters, facilitating the
+    parsing of configuration values in the configuration file.
+    Example:  def pytest_addoption(parser):
+    parser.addini("int_value", type="int", default=2, help="my
+    int value")     parser.addini("float_value", type="float",
+    default=4.2, help="my float value")  The pytest.ini file:
+    [pytest] int_value = 3 float_value = 5.4
+  * #11525: Fixtures are now clearly represented in the output as
+    a "fixture object", not as a normal function as before,
+    making it easy for beginners to catch mistakes such as
+    referencing a fixture declared in the same module but not
+    requested in the test function. -- by :user:`the-compiler`
+    and :user:`glyphack`
+  * #12426: A warning is now issued when
+    :ref:`pytest.mark.usefixtures ref` is used without specifying
+    any fixtures. Previously, empty usefixtures markers were
+    silently ignored.
+  * #12707: Exception chains can be navigated when dropped into
+    Pdb in Python 3.13+.
+  * #12736: Added a new attribute name with the fixed value
+    "pytest tests" to the root tag testsuites of the junit-xml
+    generated by pytest. This attribute is part of many junit-xml
+    specifications and is even part of the junit-10.xsd
+    specification that pytest's implementation is based on.
+  * #12943: If a test fails with an exceptiongroup with a single
+    exception, the contained exception will now be displayed in
+    the short test summary info.
+  * #12958: A number of :ref:`unraisable <unraisable>`
+    enhancements:  Set the unraisable hook as early as possible
+    and unset it as late as possible, to collect the most
+    possible number of unraisable exceptions. Call the garbage
+    collector just before unsetting the unraisable hook, to
+    collect any straggling exceptions. Collect multiple
+    unraisable exceptions per test phase. Report the
+    :mod:`tracemalloc` allocation traceback (if available). Avoid
+    using a generator based hook to allow handling
+    :class:`StopIteration` in test failures. Report the
+    unraisable exception as the cause of the
+    :class:`pytest.PytestUnraisableExceptionWarning` exception if
+    raised. Compute the repr of the unraisable object in the
+    unraisable hook so you get the latest information if
+    available, and should help with resurrection of the object.
+  * Set the unraisable hook as early as possible and unset it as
+    late as possible, to collect the most possible number of
+    unraisable exceptions.
+  * Call the garbage collector just before unsetting the
+    unraisable hook, to collect any straggling exceptions.
+  * Collect multiple unraisable exceptions per test phase.
+  * Report the :mod:`tracemalloc` allocation traceback (if
+    available).
+  * Avoid using a generator based hook to allow handling
+    :class:`StopIteration` in test failures.
+  * Report the unraisable exception as the cause of the
+    :class:`pytest.PytestUnraisableExceptionWarning` exception if
+    raised.
+  * Compute the repr of the unraisable object in the unraisable
+    hook so you get the latest information if available, and
+    should help with resurrection of the object.
+  * #13010: :func:`pytest.approx` now can compare collections
+    that contain numbers and non-numbers mixed.
+  * #13016: A number of :ref:`threadexception <unraisable>`
+    enhancements:  Set the excepthook as early as possible and
+    unset it as late as possible, to collect the most possible
+    number of unhandled exceptions from threads. Collect multiple
+    thread exceptions per test phase. Report the
+    :mod:`tracemalloc` allocation traceback (if available). Avoid
+    using a generator based hook to allow handling
+    :class:`StopIteration` in test failures. Report the thread
+    exception as the cause of the
+    :class:`pytest.PytestUnhandledThreadExceptionWarning`
+    exception if raised. Extract the name of the thread object in
+    the excepthook which should help with resurrection of the
+    thread.
+  * Set the excepthook as early as possible and unset it as late
+    as possible, to collect the most possible number of unhandled
+    exceptions from threads.
+  * Collect multiple thread exceptions per test phase.
+  * Report the :mod:`tracemalloc` allocation traceback (if
+    available).
+  * Avoid using a generator based hook to allow handling
+    :class:`StopIteration` in test failures.
+  * Report the thread exception as the cause of the
+    :class:`pytest.PytestUnhandledThreadExceptionWarning`
+    exception if raised.
+  * Extract the name of the thread object in the excepthook which
+    should help with resurrection of the thread.
+  * #13031: An empty parameter set as in
+    pytest.mark.parametrize([], ids=idfunc) will no longer
+    trigger a call to idfunc with internal objects.
+  * #13115: Allows supplying ExceptionGroup[Exception] and
+    BaseExceptionGroup[BaseException] to pytest.raises to keep
+    full typing on :class:`ExceptionInfo <pytest.ExceptionInfo>`:
+    with pytest.raises(ExceptionGroup[Exception]) as exc_info:
+    some_function()  Parametrizing with other exception types
+    remains an error - we do not check the types of child
+    exceptions and thus do not permit code that might look like
+    we do.
+  * #13122: The --stepwise mode received a number of
+    improvements:  It no longer forgets the last failed test in
+    case pytest is executed later without the flag. This enables
+    the following workflow:  Execute pytest with --stepwise,
+    pytest then stops at the first failing test; Iteratively
+    update the code and run the test in isolation, without the
+    --stepwise flag (for example in an IDE), until it is fixed.
+    Execute pytest with --stepwise again and pytest will continue
+    from the previously failed test, and if it passes, continue
+    on to the next tests.  Previously, at step 3, pytest would
+    start from the beginning, forgetting the previously failed
+    test. This change however might cause issues if the
+    --stepwise mode is used far apart in time, as the state might
+    get stale, so the internal state will be reset automatically
+    in case the test suite changes (for now only the number of
+    tests are considered for this, we might change/improve this
+    on the future).  New --stepwise-reset/--sw-reset flag,
+    allowing the user to explicitly reset the stepwise state and
+    restart the workflow from the beginning.
+  * It no longer forgets the last failed test in case pytest is
+    executed later without the flag. This enables the following
+    workflow:  Execute pytest with --stepwise, pytest then stops
+    at the first failing test; Iteratively update the code and
+    run the test in isolation, without the --stepwise flag (for
+    example in an IDE), until it is fixed. Execute pytest with
+    --stepwise again and pytest will continue from the previously
+    failed test, and if it passes, continue on to the next tests.
+    Previously, at step 3, pytest would start from the beginning,
+    forgetting the previously failed test. This change however
+    might cause issues if the --stepwise mode is used far apart
+    in time, as the state might get stale, so the internal state
+    will be reset automatically in case the test suite changes
+    (for now only the number of tests are considered for this, we
+    might change/improve this on the future).
+  * Execute pytest with --stepwise, pytest then stops at the
+    first failing test;
+  * Iteratively update the code and run the test in isolation,
+    without the --stepwise flag (for example in an IDE), until it
+    is fixed.
+  * Execute pytest with --stepwise again and pytest will continue
+    from the previously failed test, and if it passes, continue
+    on to the next tests.
+  * New --stepwise-reset/--sw-reset flag, allowing the user to
+    explicitly reset the stepwise state and restart the workflow
+    from the beginning.
+  * #13308: Added official support for Python 3.14.
+  * #13380: Fix :class:`ExceptionGroup` traceback filtering to
+    exclude pytest internals.
+  * #13415: The author metadata of the BibTex example is now
+    correctly formatted with last names following first names. An
+    example of BibLaTex has been added. BibTex and BibLaTex
+    examples now clearly indicate that what is cited is software.
+    -- by :user:`willynilly`
+  * #13420: Improved test collection performance by optimizing
+    path resolution used in FSCollector.
+  * #13457: The error message about duplicate parametrization no
+    longer displays an internal stack trace.
+  * #4112: Using :ref:`pytest.mark.usefixtures
+    <pytest.mark.usefixtures ref>` on :func:`pytest.param` now
+    produces an error instead of silently doing nothing.
+  * #5473: Replace : with ; in the assertion rewrite warning
+    message so it can be filtered using standard Python warning
+    filters before calling :func:`pytest.main`.
+  *  #6985: Improved :func:`pytest.approx` to enhance the
+    readability of value ranges and tolerances between 0.001 and
+    1000.  The repr method now provides clearer output for values
+    within those ranges, making it easier to interpret the
+    results.  Previously, the output for those ranges of values
+    and tolerances was displayed in scientific notation (e.g., 42
+    ± 1.0e+00). The updated method now presents the tolerance as
+    a decimal for better readability (e.g., 42 ± 1). Example:
+    Previous Output:  >>> pytest.approx(42, abs=1) 42 ± 1.0e+00
+    Current Output:  >>> pytest.approx(42, abs=1) 42 ± 1    -- by
+    :user:`fazeelghafoor`
+  * The repr method now provides clearer output for values within
+    those ranges, making it easier to interpret the results.
+  * Previously, the output for those ranges of values and
+    tolerances was displayed in scientific notation (e.g., 42 ±
+    1.0e+00). The updated method now presents the tolerance as a
+    decimal for better readability (e.g., 42 ± 1). Example:
+    Previous Output:  >>> pytest.approx(42, abs=1) 42 ± 1.0e+00
+    Current Output:  >>> pytest.approx(42, abs=1) 42 ± 1
+  * #7683: The formerly optional pygments dependency is now
+    required, causing output always to be source-highlighted
+    (unless disabled via the --code-highlight=no CLI option).
+  * #10404: Apply filterwarnings from config/cli as soon as
+    possible, and revert them as late as possible so that
+    warnings as errors are collected throughout the pytest run
+    and before the unraisable and threadexcept hooks are removed.
+    This allows very late warnings and unraisable/threadexcept
+    exceptions to fail the test suite. This also changes the
+    warning that the lsof plugin issues from PytestWarning to the
+    new warning PytestFDWarning so it can be more easily
+    filtered.
+  * #11067: The test report is now consistent regardless if the
+    test xfailed via :ref:`pytest.mark.xfail <pytest.mark.xfail
+    ref>` or :func:`pytest.fail`. Previously, xfailed tests via
+    the marker would have the string "reason: " prefixed to the
+    message, while those xfailed via the function did not. The
+    prefix has been removed.
+  * #12008: In :pr:`11220`, an unintended change in reordering
+    was introduced by changing the way indices were assigned to
+    direct params. More specifically, before that change, the
+    indices of direct params to metafunc's callspecs were
+    assigned after all parametrizations took place. Now, that
+    change is reverted.
+  * #12863: Fix applying markers, including
+    :ref:`pytest.mark.parametrize <pytest.mark.parametrize ref>`
+    when placed above @staticmethod or @classmethod.
+  * #12929: Handle StopIteration from test cases, setup and
+    teardown correctly.
+  * #12938: Fixed --durations-min argument not respected if -vv
+    is used.
+  * #12946: Fixed missing help for :mod:`pdb` commands wrapped by
+    pytest -- by :user:`adamchainz`.
+  * #12981: Prevent exceptions in
+    :func:`pytest.Config.add_cleanup` callbacks preventing
+    further cleanups.
+  * #13047: Restore :func:`pytest.approx` handling of equality
+    checks between bool and numpy.bool_ types. Comparing bool and
+    numpy.bool_ using :func:`pytest.approx` accidentally changed
+    in version 8.3.4 and 8.3.5 to no longer match:  >>> import
+    numpy as np >>> from pytest import approx >>> [np.True_,
+    np.True_] == pytest.approx([True, True]) False  This has now
+    been fixed:  >>> [np.True_, np.True_] == pytest.approx([True,
+    True]) True
+  * #13119: Improved handling of invalid regex patterns for
+    filter warnings by providing a clear error message.
+  * #13175: The diff is now also highlighted correctly when
+    comparing two strings.
+  * #13248: Fixed an issue where passing a scope in
+    :py:func:`Metafunc.parametrize <pytest.Metafunc.parametrize>`
+    with indirect=True could result in other fixtures being
+    unable to depend on the parametrized fixture.
+  * #13291: Fixed repr of attrs objects in assertion failure
+    messages when using attrs>=25.2.
+  * #13312: Fixed a possible KeyError crash on PyPy during
+    collection of tests involving higher-scoped parameters.
+  * #13345: Fix type hints for :attr:`pytest.TestReport.when` and
+    :attr:`pytest.TestReport.location`.
+  * #13377: Fixed handling of test methods with positional-only
+    parameter syntax. Now, methods are supported that formally
+    define self as positional-only and/or fixture parameters as
+    keyword-only, e.g.:  class TestClass:      def
+    test_method(self, /, *, fixture): ...  Before, this caused an
+    internal error in pytest.
+  * #13384: Fixed an issue where pytest could report negative
+    durations.
+  * #13420: Added lru_cache to
+    nodes._check_initialpaths_for_relpath.
+  * #9037: Honor :confval:`disable_test_id_escaping_and_forfeit_a
+    ll_rights_to_community_support` when escaping ids in
+    parametrized tests.
+  * #12535: This example`<https://docs.pytest.org/en/latest/examp
+    le/simple.html#making-test-result-information-available-in-
+    fixtures> showed ``print` statements that do not exactly
+    reflect what the different branches actually do.  The fix
+    makes the example more precise.
+  * #13218: Pointed out in the :func:`pytest.approx`
+    documentation that it considers booleans unequal to numeric
+    zero or one.
+  * #13221: Improved grouping of CLI options in the --help
+    output.
+  * #6649: Added :class:`~pytest.TerminalReporter` to the
+    :ref:`api-reference` documentation page.
+  * #8612: Add a recipe for handling abstract test classes in the
+    documentation. A new example has been added to the
+    documentation to demonstrate how to use a mixin class to
+    handle abstract test classes without manually setting the
+    __test__ attribute for subclasses. This ensures that
+    subclasses of abstract test classes are automatically
+    collected by pytest.
+  * #13317: Specified minimum allowed versions of colorama,
+    iniconfig, and packaging; and bumped the minimum allowed
+    version of exceptiongroup for python_version<'3.11' from a
+    release candidate to a full release.
+  * #12017: Mixed internal improvements:  Migrate formatting to
+    f-strings in some tests. Use type-safe constructs in JUnitXML
+    tests. Moved`` MockTiming`` into _pytest.timing.  -- by
+    :user:`RonnyPfannschmidt`
+  * Migrate formatting to f-strings in some tests.
+  * Use type-safe constructs in JUnitXML tests.
+  * Moved`` MockTiming`` into _pytest.timing.
+  * #12647: Fixed running the test suite with the hypothesis
+    pytest plugin.
+  * #6649: Added :class:`~pytest.TerminalReporter` to the public
+    pytest API, as it is part of the signature of the
+    :hook:`pytest_terminal_summary` hook.
+
+-------------------------------------------------------------------
 Tue Apr 22 12:27:46 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 8.3.5

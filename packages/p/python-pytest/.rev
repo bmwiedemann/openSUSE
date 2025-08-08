@@ -1464,4 +1464,41 @@ Add python version constraints to Requires &amp; BuildRequires</comment>
 - Drop pygments.patch, because now in upstream.</comment>
     <requestid>1271899</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>f0d3ada444c870d0cb32bcf965d51399</srcmd5>
+    <version>8.4.1</version>
+    <time>1754658615</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.4.1
+  * #13461: Corrected _pytest.terminal.TerminalReporter.isatty to
+    support being called as a method. Before it was just a boolean
+    which could break correct code when using -o log_cli=true).
+  * #13477: Reintroduced pytest.PytestReturnNotNoneWarning which
+    was removed by accident in pytest 8.4.
+  * #13497: Fixed compatibility with Twisted 25+.
+
+- update to 8.4.0:
+  * #11372: Async tests will now fail, instead of
+    warning+skipping, if you don't have any suitable plugin
+    installed.
+  * #12346: Tests will now fail, instead of raising a warning, if
+    they return any value other than None.
+  * #12874: We dropped support for Python 3.8 following its end
+    of life (2024-10-07).
+  * #12960: Test functions containing a yield now cause an
+    explicit error. They have not been run since pytest 4.0, and
+    were previously marked as an expected failure and deprecation
+    warning. See :ref:`the docs &lt;yield tests deprecated&gt;` for
+    more information.
+  * #10839: Requesting an asynchronous fixture without a
+    pytest_fixture_setup hook that resolves it will now give a
+    DeprecationWarning. This most commonly happens if a sync test
+    requests an async fixture. This should have no effect on a
+    majority of users with async tests or fixtures using async
+    pytest plugins, but may affect non-standard hook setups or
+    autouse=True. For guidance on how to work around this warning
+    see :ref:`sync-test-async-fixture`.
+  * #11538: Added :class:`pytest.RaisesGroup` as an equivalent to</comment>
+    <requestid>1293771</requestid>
+  </revision>
 </revisionlist>

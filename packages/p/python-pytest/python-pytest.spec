@@ -33,7 +33,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest%{psuffix}
-Version:        8.3.5
+Version:        8.4.1
 Release:        0
 Summary:        Simple powerful testing with Python
 License:        MIT
@@ -46,8 +46,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       python-iniconfig
-Requires:       python-packaging
+Requires:       python-Pygments >= 2.7.2
+Requires:       python-iniconfig >= 1
+Requires:       python-packaging >= 20
 Requires:       python-pluggy >= 1.5
 Requires:       python-setuptools
 Recommends:     python-attrs >= 19.2.0
@@ -66,7 +67,6 @@ BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module hypothesis >= 3.56}
-BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pygments-pytest}
 BuildRequires:  %{python_module pytest >= %{version}}
