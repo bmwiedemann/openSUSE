@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug  6 18:07:24 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.24.6 (released 2025-08-06) includes security fixes to the
+  database/sql and os/exec packages, as well as bug fixes to the
+  runtime.
+  Refs boo#1236217 go1.24 release tracking
+  CVE-2025-47906 CVE-2025-47907
+  * go#74804 go#74466 boo#1247719 security: fix CVE-2025-47906 os/exec: LookPath bug: incorrect expansion of "", "." and ".." in some PATH configurations
+  * go#74833 go#74831 boo#1247720 security: fix CVE-2025-47907 database/sql: incorrect results returned from Rows.Scan
+  * go#73800 runtime: RSS seems to have increased in Go 1.24 while the runtime accounting has not
+  * go#74416 runtime: use-after-free of allpSnapshot in findRunnable
+  * go#74694 runtime: segfaults in runtime.(*unwinder).next
+  * go#74760 os/user:nolibgcc: TestGroupIdsTestUser failures
+
+-------------------------------------------------------------------
 Tue Jul  8 17:00:27 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.24.5 (released 2025-07-08) includes security fixes to the go
