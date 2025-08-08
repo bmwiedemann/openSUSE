@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Jul 31 19:47:18 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2025.8:
+  + Added:
+    - Clear buffers with /clear command
+    - Notification indicator on sidebar menu for application updates
+      and file transfers
+  + Fixed:
+    - Nicknames in query was always shown as offline
+
+-------------------------------------------------------------------
+Sun Jul 27 20:05:33 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2025.7:
+  + Added:
+    - Ability to ignore nicknames on server level or on a per-
+      channel basis
+    - Ability to truncate nicknames in buffer
+    - New option to customize the appearance of offline nicknames
+    - Specify whether nicknames in buffers appear with the user's
+      current status or status at time of sending the message
+    - Log level filtering for the log buffer (ctrl + l) and log
+      file
+    - Per toast type setting for showing content in toasts
+    - Ability to hide nick and mode change server messages
+    - Context menu item added to server-wide buffers to mark all
+      messages as read
+    - Auto-accept file transfers, with support for nick and mask
+      filtering
+    - Adjustable scrollbar sizing
+  + Fixed:
+    - Sidebar menu is now drawn with the correct offset
+    - Prevent messages with previews from shifting position on
+      hover
+    - Recognize registration completion on older servers without
+      capability negotiation (i.e. send on_connect, umodes, etc.)
+  + Changed:
+    - Optimized message loading by implementing lazy loading:
+      buffers now load only enough messages to fill the visible
+      area instead of always loading 500+ messages.
+    - The [buffer.away] section has been split into
+      [buffer.channel.nicklist] and [buffer.nickname] for greater
+      flexibility
+    - Colorize the level text in log buffer based on theme
+    - Scrollbars now use a dedicated scrollbar color instead of
+      horizontal_rule
+    - Tor is now an optional feature. Build with --features tor to
+      enable Tor proxy support
+    - Topic "set at" time is now shown with local timezone offset,
+      instead of UTC's
+
+-------------------------------------------------------------------
 Mon Jun 16 19:55:19 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2025.6:
