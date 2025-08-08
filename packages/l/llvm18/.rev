@@ -265,4 +265,14 @@
 </comment>
     <requestid>1295972</requestid>
   </revision>
+  <revision rev="15" vrev="9">
+    <srcmd5>c69f657a0a2bf36d32104b3f93169d23</srcmd5>
+    <version>18.1.8</version>
+    <time>1754658534</time>
+    <user>dimstar_suse</user>
+    <comment>- Add compiler-rt-remove-termio-interceptors.patch to fix build
+  with glibc 2.42. (boo#1247576)
+</comment>
+    <requestid>1298032</requestid>
+  </revision>
 </revisionlist>

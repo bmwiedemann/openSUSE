@@ -437,6 +437,8 @@ Patch31:        clang-shlib-symbol-versioning.patch
 Patch32:        libcxx-use-shlex-quote.patch
 # PATCH-FIX-UPSTREAM: Fix missing include necessary when building with GCC 15 libstdc++
 Patch33:        gcc15-add-necessary-includes.patch
+# PATCH-FIX-UPSTREAM: Remove interceptors for deprecated struct termio
+Patch34:        compiler-rt-remove-termio-interceptors.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -908,6 +910,10 @@ popd
 
 pushd clang-tools-extra-%{_version}.src
 %patch -P 10 -p2
+popd
+
+pushd compiler-rt-%{_version}.src
+%patch -P 34 -p2
 popd
 
 pushd openmp-%{_version}.src
