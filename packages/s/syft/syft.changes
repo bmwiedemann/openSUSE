@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Aug 01 08:13:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.29.1:
+  * Bug Fixes
+    - Missing license information for tzdata [#4102]
+    - Improve JVM Scan Accuracy for JDK and JRE Detection [#4071
+      #4046 @kzantow]
+    - Azul JDK classified as Oracle JRE [#3893 #4046 @kzantow]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#4104)
+    - chore(deps): update anchore dependencies (#4098)
+    - chore(deps): bump github.com/anchore/stereoscope (#4091)
+    - chore(deps): bump github.com/docker/docker (#4092)
+    - chore(deps): bump modernc.org/sqlite from 1.38.1 to 1.38.2
+      (#4088)
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.13
+      to 0.5.14 (#4089)
+    - chore(deps): bump github.com/bmatcuk/doublestar/v4 from 4.9.0
+      to 4.9.1 (#4087)
+    - chore(deps): bump github.com/olekukonko/tablewriter from
+      1.0.8 to 1.0.9 (#4086)
+    - chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.6.7
+      to 6.6.8 (#4085)
+    - chore(deps): bump modernc.org/sqlite from 1.38.0 to 1.38.1
+      (#4084)
+    - chore(deps): update tools to latest versions (#4082)
+    - chore(deps): update CPE dictionary index (#4083)
+    - chore(deps): update tools to latest versions (#4079)
+    - chore(deps): bump github/codeql-action from 3.29.3 to 3.29.4
+      (#4080)
+    - chore(deps): update tools to latest versions (#4076)
+    - chore(deps): update tools to latest versions (#4072)
+    - chore(deps): bump github/codeql-action from 3.29.2 to 3.29.3
+      (#4074)
+    - chore(deps): bump anchore/sbom-action from 0.20.2 to 0.20.4
+      (#4073)
+
+-------------------------------------------------------------------
 Thu Jul 24 08:03:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.29.0:
