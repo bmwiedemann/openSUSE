@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Aug  6 13:30:48 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.4:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.4
+- Changes since 6.4.3:
+  * Update version for new release 6.4.4
+  * applets/kicker: correctly position search field (kde#507397)
+  * kcms/tablet: Make pen tab scrollable
+  * Refactor panel widget editing UI for RTL (kde#505489)
+  * FolderItemDelegate: Fix "undefined" warning
+  * PositionerTest: Update tests
+  * FolderModel: If screen is not used, clear dropTargetPositions (kde#490891)
+  * FolderView: Use perStripe from positioner, fix off-by-one error (kde#506638)
+  * Positioner: Do not change anything during resolution updates (kde#490891)
+  * Fixed drag and drop behavior when desktop is scrollable (kde#506670)
+  * foldermodel: delete previous qfilesystemwatcher (kde#507239)
+  * foldermodel: init all members
+  * Only interact with file and folders when directly touching them (kde#505038)
+
+-------------------------------------------------------------------
 Tue Jul 15 10:58:13 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.3:
