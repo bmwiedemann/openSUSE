@@ -122,4 +122,12 @@
 - No more greedy globs in %files.</comment>
     <requestid>1238874</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>0d6832213c10b6e5c09d43b69c16c6c5</srcmd5>
+    <version>0.19</version>
+    <time>1754658618</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip a recalcitrant test.</comment>
+    <requestid>1297862</requestid>
+  </revision>
 </revisionlist>
