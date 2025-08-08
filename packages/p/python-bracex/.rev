@@ -49,4 +49,16 @@
   *   **FIX**: Fix PyPI landing page.</comment>
     <requestid>1217074</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>08963d860d197aea3c463d6f6ea687d9</srcmd5>
+    <version>2.6</version>
+    <time>1754658828</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1298134 from glaubitz
+
+- Update to 2.6
+    * NEW: Drop support for Python 3.8.
+    * NEW: Add support for Python 3.14.</comment>
+    <requestid>1298365</requestid>
+  </revision>
 </revisionlist>

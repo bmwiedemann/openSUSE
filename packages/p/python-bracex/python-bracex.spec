@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bracex
-Version:        2.5.post1
+Version:        2.6
 Release:        0
 Summary:        Bash style brace expander
 License:        MIT
