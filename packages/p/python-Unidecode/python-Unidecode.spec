@@ -1,7 +1,7 @@
 #
 # spec file for package python-Unidecode
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Summary:        ASCII transliterations of Unicode text
 License:        GPL-2.0-or-later
 URL:            https://pypi.python.org/pypi/Unidecode
 Source:         https://files.pythonhosted.org/packages/source/U/Unidecode/Unidecode-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
