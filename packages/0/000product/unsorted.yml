@@ -13766,7 +13766,7 @@ unsorted:
   - libharfbuzz0-32bit 
   - libharminv3 
   - libharu-devel 
-  - libhashcat6_2_6 
+  - libhashcat7_0_0 
   - libhasl0 
   - libhavege2 
   - libhdf5-310 
@@ -21730,6 +21730,7 @@ unsorted:
   - perl-Math-Random-ISAAC 
   - perl-Math-Round 
   - perl-Memoize-ExpireLRU 
+  - perl-Memory-Usage 
   - perl-Menlo 
   - perl-Menlo-Legacy 
   - perl-Meta-Builder 
@@ -23850,6 +23851,7 @@ unsorted:
   - python311-CommonMark 
   - python311-ConfigArgParse 
   - python311-ConfigUpdater 
+  - python311-CppHeaderParser 
   - python311-Cycler 
   - python311-Cython 
   - python311-Cython0 
@@ -27564,6 +27566,7 @@ unsorted:
   - python312-CommonMark 
   - python312-ConfigArgParse 
   - python312-ConfigUpdater 
+  - python312-CppHeaderParser 
   - python312-Cycler 
   - python312-Cython 
   - python312-Cython0 
@@ -31359,6 +31362,7 @@ unsorted:
   - python313-CommonMark 
   - python313-ConfigArgParse 
   - python313-ConfigUpdater 
+  - python313-CppHeaderParser 
   - python313-Cycler 
   - python313-Cython 
   - python313-Cython0 
