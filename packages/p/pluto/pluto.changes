@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 08 04:45:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.22.3:
+  * ci, feat - allow explicitly setting the container image (#577)
+
+-------------------------------------------------------------------
 Sun Aug 03 11:28:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.22.2:
