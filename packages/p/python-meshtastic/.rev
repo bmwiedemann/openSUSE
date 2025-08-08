@@ -79,4 +79,24 @@
   * protobufs updated to v2.6.12</comment>
     <requestid>1292514</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7ed8e5d7edccd9779ff17289b74d5b73</srcmd5>
+    <version>2.7.0</version>
+    <time>1754658829</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1298148 from glaubitz
+
+- Update to 2.7.0
+    * Add check for poetry install to regen-protobufs.sh
+    * Add seeed xiao esp32s3 support
+    * Plumb reply_id into sendText and sendData
+    * Allow forced UTF-8 encoding for --export-config
+    * Add handling of clientNotification on FromRadio
+    * add --set-is-unmessageable to CLI commands
+    * Add Ringtone and Canned Messages to --export-config and --configure
+    * Export missing defaults when set False
+    * Protobufs are updated to 2.7.4
+  - Replace LICENSES/GPL-3.0-only.txt with LICENSE.md in %license section</comment>
+    <requestid>1298366</requestid>
+  </revision>
 </revisionlist>

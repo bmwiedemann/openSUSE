@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug  7 13:02:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.7.0
+  * Add check for poetry install to regen-protobufs.sh
+  * Add seeed xiao esp32s3 support
+  * Plumb reply_id into sendText and sendData
+  * Allow forced UTF-8 encoding for --export-config
+  * Add handling of clientNotification on FromRadio
+  * add --set-is-unmessageable to CLI commands
+  * Add Ringtone and Canned Messages to --export-config and --configure
+  * Export missing defaults when set False
+  * Protobufs are updated to 2.7.4
+- Replace LICENSES/GPL-3.0-only.txt with LICENSE.md in %license section
+
+-------------------------------------------------------------------
 Sun Jul 13 13:42:20 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.4:

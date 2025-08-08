@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-meshtastic
-Version:        2.6.4
+Version:        2.7.0
 Release:        0
 Summary:        A Python client for use with Meshtastic devices
 License:        GPL-3.0-only
@@ -68,7 +68,7 @@ A Python client for use with Meshtastic devices. This small library (and example
 %python_libalternatives_reset_alternative meshtastic
 
 %files %{python_files}
-%license LICENSES/GPL-3.0-only.txt
+%license LICENSE.md
 %doc README.md
 %python_alternative %{_bindir}/mesh-analysis
 %python_alternative %{_bindir}/mesh-tunnel
