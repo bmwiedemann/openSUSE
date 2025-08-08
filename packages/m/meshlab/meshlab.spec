@@ -32,13 +32,13 @@
 %define glew_version %(rpm -q --queryformat='%%{version}' glew-devel | sed -nr 's/([0-9.]+).*/\\1/p')
 
 Name:           meshlab
-Version:        2023.12
+Version:        2025.07
 Release:        0
 Summary:        System for the processing and editing of unstructured 3D triangular meshes
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Graphics/3D Editors
 URL:            https://www.meshlab.net/
-Source0:        https://github.com/cnr-isti-vclab/meshlab/archive/refs/tags/MeshLab-%{version}.tar.gz#/meshlab-%{version}.tar.gz
+Source0:        https://github.com/cnr-isti-vclab/meshlab/archive/refs/tags/MeshLab-%{version}.tar.gz#/meshlab-MeshLab-%{version}.tar.gz
 # Belongs in its own package, but meshlab requires a complete source tree -- https://github.com/cnr-isti-vclab/vcglib/issues/230
 Source1:        https://github.com/cnr-isti-vclab/vcglib/archive/refs/tags/%{version}.tar.gz#/vcglib-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE -- adjust plugin and shader search path
