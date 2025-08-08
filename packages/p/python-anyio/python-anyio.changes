@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  7 09:33:03 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Increase timeout in in test_keyboardinterrupt_during_test, it helps
+  with flaky tests in i586 arches.
+
+-------------------------------------------------------------------
 Mon Jul 21 05:03:47 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Inject multibuild to break a build loop. 

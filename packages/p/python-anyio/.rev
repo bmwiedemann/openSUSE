@@ -422,4 +422,13 @@ SR for python stack proposal</comment>
   * Fixed anyio.to_thread.run_sync() needlessly holding on to references</comment>
     <requestid>1294656</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>d70f6bf40d4d62567f4e1c36bb29280f</srcmd5>
+    <version>4.9.0</version>
+    <time>1754658595</time>
+    <user>dimstar_suse</user>
+    <comment>- Increase timeout in in test_keyboardinterrupt_during_test, it helps
+  with flaky tests in i586 arches.</comment>
+    <requestid>1298106</requestid>
+  </revision>
 </revisionlist>

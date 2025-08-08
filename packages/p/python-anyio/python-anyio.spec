@@ -84,6 +84,9 @@ against it to run unmodified on asyncio, curio and trio.
 
 %if %{with test}
 %check
+# increase timeout in test_keyboardinterrupt_during_test
+sed -i 's/timeout=3/timeout=8/' tests/test_pytest_plugin.py
+
 sed -i '/filterwarnings/,/^]/ { /"error"/ d}' pyproject.toml
 # bind and resolution failures inside OBS
 donttest+=" or (TestTCPStream and (ipv4 or ipv6))"
