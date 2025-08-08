@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Aug 07 12:17:29 UTC 2025 - aplanas@suse.com
+
+- Update vendored crates (bsc#1247193, CVE-2025-58266)
+  * shlex 1.3.0
+
+- Rebase keylime-agent.conf.diff for current configuration
+
+- Drop Cargo_lock.patch patch, already present in Cargo.lock
+
+- Update to version 0.2.7+141:
+  * service: Use WantedBy=multi-user.target
+  * rpm: Add subpackage for push-attestation agent
+  * push-model: implement continuous attestation with configurable intervals
+  * Retry registration forever in the state machine
+  * Add Verifier URL to configuration
+  * Align exp.backoff to current configuration format
+  * Increase coverage of state machine (using Context)
+  * Increase coverage of struct_filler.rs
+  * Groom code (remove dead code)
+  * Fix exponential backoff (10secs, 4xx accepted)
+  * test: Add documentation test to tests/run.sh
+  * tpm: Avoid running code example during documentation tests
+  * state_machine: Always start the agent from the Unregistered state
+  * Add fixes for the URL construction
+  * Refactor evidences collection in push attestation agent
+  * push-model: refactor attestation logic into a state machine
+  * Fix body sending by allowing serializing strings (#1057)
+  * Log ResilientClient errors/response status codes (#1055)
+  * Add AK signing scheme and hash algorithm to negotiation
+  * tpm: Add method to extract signing scheme and hash algorithm from AK
+  * Allow custom content-type/accept headers
+  * Integrate exponential backoff to registration (#1052)
+  * keylime/structures: Rename ShaValues to PcrBanks
+  * Add resilient_client for exponential backoff (#1048)
+
+-------------------------------------------------------------------
 Mon Jul 14 12:56:25 UTC 2025 - aplanas@suse.com
 
 - Update vendored crates (bsc#1242623, CVE-2025-3416)

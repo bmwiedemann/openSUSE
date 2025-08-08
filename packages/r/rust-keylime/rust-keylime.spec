@@ -1,7 +1,7 @@
 #
 # spec file for package rust-keylime
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           rust-keylime
-Version:        0.2.7+117
+Version:        0.2.7+141
 Release:        0
 Summary:        Rust implementation of the keylime agent
 License:        (Apache-2.0 OR MIT) AND BSD-3-Clause AND (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND ISC AND MIT
@@ -41,7 +41,6 @@ Source7:        ima-policy.service
 Source8:        README.suse
 # PATCH-FIX-OPENSUSE keylime-agent.conf.diff
 Patch1:         keylime-agent.conf.diff
-Patch2:         Cargo_lock.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
 BuildRequires:  firewall-macros

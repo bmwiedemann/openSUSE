@@ -1,8 +1,8 @@
-Index: rust-keylime-0.2.0+git.1677002906.cf6c4f0/keylime-agent.conf
-===================================================================
---- rust-keylime-0.2.0+git.1677002906.cf6c4f0.orig/keylime-agent.conf
-+++ rust-keylime-0.2.0+git.1677002906.cf6c4f0/keylime-agent.conf
-@@ -19,13 +19,15 @@ version = "2.2"
+diff --git i/keylime-agent.conf w/keylime-agent.conf
+index d6e8615..75994c4 100644
+--- i/keylime-agent.conf
++++ w/keylime-agent.conf
+@@ -29,13 +29,15 @@ api_versions = "default"
  # of 'SHA256(public EK in PEM format)'.
  #
  # To override, set KEYLIME_AGENT_UUID environment variable.
@@ -20,7 +20,7 @@ Index: rust-keylime-0.2.0+git.1677002906.cf6c4f0/keylime-agent.conf
  port = 9002
  
  # Address and port where the verifier and tenant can connect to reach the agent.
-@@ -41,7 +43,8 @@ contact_port = 9002
+@@ -51,7 +53,8 @@ contact_port = 9002
  # To override registrar_ip, set KEYLIME_AGENT_REGISTRAR_IP environment variable.
  # To override registrar_port, set KEYLIME_AGENT_REGISTRAR_PORT environment
  # variable.
@@ -30,7 +30,7 @@ Index: rust-keylime-0.2.0+git.1677002906.cf6c4f0/keylime-agent.conf
  registrar_port = 8890
  
  # Enable mTLS communication between agent, verifier and tenant.
-@@ -151,7 +154,8 @@ revocation_actions_dir = "/usr/libexec/k
+@@ -161,7 +164,8 @@ revocation_actions_dir = "/usr/libexec/keylime"
  # KEYLIME_AGENT_REVOCATION_NOTIFICATION_IP environment variable.
  # To override revocation_notification_port, set
  # KEYLIME_AGENT_REVOCATION_NOTIFICATION_PORT environment variable.
