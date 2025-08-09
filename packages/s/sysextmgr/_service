@@ -1,4 +1,4 @@
-<services>
+<services> 
   <service mode="manual" name="tar_scm">
     <param name="url">https://github.com/thkukuk/sysextmgr.git</param>
     <param name="scm">git</param>

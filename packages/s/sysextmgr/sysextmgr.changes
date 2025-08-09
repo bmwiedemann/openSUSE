@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 07 14:48:25 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20250806.0599a82:
+  * sysextmgrd: fix mkosi manifest usage
+  * CI: add libzio and zlib devel dependencies
+  * Add support for mkosi manifest
+
+-------------------------------------------------------------------
 Fri Aug 01 15:10:36 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.0+git20250801.4978328:

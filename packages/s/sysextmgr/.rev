@@ -42,4 +42,12 @@
   * check cli: only print header if there are images</comment>
     <requestid>1297104</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>241e57610eded323f1dad02b334c5d53</srcmd5>
+    <version>0.0+git20250806.0599a82</version>
+    <time>1754762323</time>
+    <user>dimstar_suse</user>
+    <comment>Update</comment>
+    <requestid>1298168</requestid>
+  </revision>
 </revisionlist>

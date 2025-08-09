@@ -17,7 +17,7 @@
 
 
 Name:           sysextmgr
-Version:        0.0+git20250801.4978328
+Version:        0.0+git20250806.0599a82
 Release:        0
 Summary:        Tools to manage sysext-images on MicroOS
 License:        GPL-2.0-or-later
@@ -27,6 +27,8 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libeconf)
 BuildRequires:  pkgconfig(libsystemd) >= 257
+BuildRequires:  pkgconfig(zlib)
+BuildRequires:  libzio-devel
 Requires:       %{_bindir}/systemd-dissect
 #Requires:       /usr/lib/systemd/systemd-pull
 Requires:       systemd-container >= 257.6
