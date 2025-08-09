@@ -2227,4 +2227,12 @@
   link which would be part of tgdm-xdm-integration (boo#1247418). (forwarded request 1297641 from dimstar)</comment>
     <requestid>1297643</requestid>
   </revision>
+  <revision rev="286" vrev="13">
+    <srcmd5>12eb115aa59e00f12dd8878dde3e0552</srcmd5>
+    <version>48.0</version>
+    <time>1754762339</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1298359</requestid>
+  </revision>
 </revisionlist>

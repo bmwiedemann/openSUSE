@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  6 06:55:48 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gdm-plymouth-quit-wait.patch: Disable plymouth-quit-wait.service
+  (bsc#1243439).
+
+-------------------------------------------------------------------
 Tue Aug  5 07:10:40 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Ensure migration to gdm.service also happens during upgrade when
