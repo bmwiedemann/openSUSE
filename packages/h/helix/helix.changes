@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 24 10:45:04 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 25.07.1:
+  * This is a patch release which lowers the GLIBC requirements of the release artifacts published to GitHub.
+
+-------------------------------------------------------------------
 Wed Jul 16 07:48:22 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 25.07:

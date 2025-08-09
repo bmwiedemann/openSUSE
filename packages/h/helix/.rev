@@ -302,4 +302,12 @@ This will increase possible helix users.</comment>
   * Avoid inserting final newlines in empty files ([67879a1](https://github.com/helix-editor/helix/commit/67879a1))</comment>
     <requestid>1293872</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>cf8219c70d6f4cf99ccd91958ceb2d2b</srcmd5>
+    <version>25.07.1</version>
+    <time>1754762363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1298390</requestid>
+  </revision>
 </revisionlist>
