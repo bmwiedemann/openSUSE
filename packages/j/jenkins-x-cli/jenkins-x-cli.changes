@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 08 12:08:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.16.19:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.6.0
+
+-------------------------------------------------------------------
 Thu Aug 07 05:24:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.16.18:
