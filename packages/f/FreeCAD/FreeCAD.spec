@@ -42,7 +42,7 @@
 %endif
 
 Name:           FreeCAD
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        General Purpose 3D CAD Modeler
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
