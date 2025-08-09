@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug  4 06:57:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.17.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.17.0
+- Changes since 6.16.0:
+  * Update dependency version to 6.17.0
+  * [KEncodingProberTest] Add more test cases for UTF-16
+  * [KEncodingProber] Remove bogus global static state from UTF-16 probing
+  * [KEncodingProberTest] Document UTF-16 BOM probing is broken
+  * It compiles fine without qt 6.10 deprecated methods
+  * [KEncodingProber] Fix typo from automatic mass edit
+  * [KEncodingProber] Remove unused member variables
+  * [KEncodingProber] Remove unused, private `SetOp(t)ion` method from probers
+  * [KEncodingProberTest] Make probertest data driven
+  * [KEncodingProberTest] Embed small binary data test case
+  * [KEncodingProberTest] Remove unnecessary static variable, setup code
+  * [KEncodingProberTest] Move class declaration to implementation file
+  * Update version to 6.17.0
+
+-------------------------------------------------------------------
 Mon Jul  7 07:24:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.16.0
