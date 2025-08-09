@@ -740,4 +740,12 @@ Remove ancient Obsoletes/provides (forwarded request 232571 from sumski)</commen
     <comment>Update to 0.26.22</comment>
     <requestid>1283607</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>44eb8ce802b04da9a266b2ea16430d51</srcmd5>
+    <version>0.26.23</version>
+    <time>1754762392</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.26.23</comment>
+    <requestid>1298585</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug  9 08:33:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.26.23
+  * Improved: translations
+  * Changed: try to decode dropped or pasted text as byte values or
+    characters first, depending on cursor focus, before handling
+    as raw bytes
+  * Changed: add to copy data next to raw bytes also a text variant,
+    with byte values or characters depending on cursor focus
+  * Changed: add to dragged data next to raw bytes also a text variant,
+    with byte values or characters depending on cursor focus
+
+-------------------------------------------------------------------
 Fri Jun  6 10:48:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.26.22
