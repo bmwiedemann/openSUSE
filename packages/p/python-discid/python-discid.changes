@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug  8 11:15:12 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.3.0
+  * Modernized, PEP 518 compatible, build system using ``pyproject.toml``.
+  * Minimum supported Python version is now 3.9.
+  * :issue:`51` tests requiring a physical disc are not run by default anymore.
+    Set the environment variable ``DISCID_TESTS_REQUIRE_DISC`` to enable them
+    or run ``make disccheck``.
+  * Fixed :func:`put` to work with first track number greater than 1.
+  * Add :attr:`Disc.cddb_query_string` property.
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Fri Feb 14 04:06:51 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Don't use %_libdir, it doesn't work for noarch packages

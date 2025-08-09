@@ -19,7 +19,7 @@
 
 %{?sle15allpythons}
 Name:           python-discid
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Python binding of Libdiscid
 License:        LGPL-3.0-or-later
@@ -27,6 +27,7 @@ URL:            https://github.com/JonnyJD/python-discid
 Source:         https://files.pythonhosted.org/packages/source/d/discid/discid-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools >= 77.0.3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig

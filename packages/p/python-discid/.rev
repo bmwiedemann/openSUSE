@@ -75,4 +75,12 @@
     <comment>- Don't use %_libdir, it doesn't work for noarch packages</comment>
     <requestid>1245778</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>27ae10c5a7434ffcc65fb4ffbd7defba</srcmd5>
+    <version>1.3.0</version>
+    <time>1754762385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1298503</requestid>
+  </revision>
 </revisionlist>
