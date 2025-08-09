@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  6 18:16:02 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- set the minimum version of setuptools to 77.0 to match upstream
+  pyproject.toml
+
+-------------------------------------------------------------------
 Fri Jul 11 10:56:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Markdown
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@ Patch0:         markdown-3.0-python37.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module importlib-metadata >= 4.4 if %python-base < 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 77.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
 BuildRequires:  fdupes
