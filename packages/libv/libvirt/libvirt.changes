@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  6 17:55:30 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Set virt_hooks_unconfined boolean to true in libvirt-daemon-hooks
+  %post script (see comment 13 in bsc#1242998)
+
+-------------------------------------------------------------------
 Fri Aug  1 19:53:49 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 11.6.0

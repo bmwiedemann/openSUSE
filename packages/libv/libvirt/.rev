@@ -4929,4 +4929,13 @@ a previous changelog entry.
     https://libvirt.org/news.html#v11-6-0-2025-08-01</comment>
     <requestid>1297129</requestid>
   </revision>
+  <revision rev="429" vrev="2">
+    <srcmd5>16af65194c959fe3bbb859f748b40015</srcmd5>
+    <version>11.6.0</version>
+    <time>1754762322</time>
+    <user>dimstar_suse</user>
+    <comment>- Set virt_hooks_unconfined boolean to true in libvirt-daemon-hooks
+  %post script (see comment 13 in bsc#1242998)</comment>
+    <requestid>1298163</requestid>
+  </revision>
 </revisionlist>

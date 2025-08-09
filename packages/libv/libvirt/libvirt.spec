@@ -38,6 +38,7 @@
 %define with_storage_gluster  0%{!?_without_storage_gluster:1}
 %define with_storage_iscsi_direct 0%{!?_without_storage_iscsi_direct:1}
 %define with_apparmor      0%{!?_without_apparmor:1}
+%define with_selinux_unconfined_daemon_hooks	0%{!?_without_selinux:1}
 # The udev interface backend is the only one that works across SUSE distros.
 # It supports just a handful of read-only operations, has a history of
 # instability, and is insufficiently maintained. Completely disable the
@@ -113,6 +114,10 @@
     %define with_sanlock   0
     %define with_storage_gluster 0
     %define with_storage_rbd     0
+%endif
+
+%if 0%{?suse_version} < 1600
+    %define with_selinux_unconfined_daemon_hooks 0
 %endif
 
 # Factory and SLFO strive to drop iptables. The nwfilter driver has a runtime
@@ -397,6 +402,10 @@ the monolithic libvirtd
 
 %package daemon-hooks
 Summary:        Hook scripts for QEMU
+%if %{with_selinux_unconfined_daemon_hooks}
+BuildRequires:       selinux-policy-devel
+%selinux_requires
+%endif
 Requires:       %{name}-daemon-driver-qemu = %{version}-%{release}
 Requires:       python3-lxml
 
@@ -1240,6 +1249,18 @@ fi
 %postun daemon-common
 /sbin/ldconfig
 %service_del_postun_without_restart libvirt-guests.service
+
+%if %{with_selinux_unconfined_daemon_hooks}
+%post daemon-hooks
+if [ $1 -eq 1 ]; then
+    %selinux_set_booleans -s targeted virt_hooks_unconfined=1
+fi
+
+%postun daemon-hooks
+if [ $1 -eq 0 ]; then
+    %selinux_unset_booleans -s targeted virt_hooks_unconfined=1
+fi
+%endif
 
 %pre daemon-proxy
 %libvirt_daemon_systemd_pre_inet virtproxyd
