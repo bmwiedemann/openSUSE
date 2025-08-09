@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug  9 14:03:19 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- freeciv 3.2.0:
+  * Client not compatible with pre-3.2 servers and vice versa
+  * Unit orders are now executed after all the Turn Change
+    activities, and after the AIs have begun their turn. This
+    avoids "double move" issues with units executing orders with
+    replenished movement but still before the new turn
+  * Numerouus ruleset and gameplay changes as listed in
+    https://freeciv.fandom.com/wiki/NEWS-3.2.0
+- enable the SDL2 client
+- Build with Qt6 on Leap 15.6
+
+-------------------------------------------------------------------
 Fri May  9 16:16:50 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.1.5:

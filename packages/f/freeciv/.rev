@@ -220,4 +220,13 @@
     <comment></comment>
     <requestid>1276311</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>988bd0bb9df61ad70bdeb8364e376be4</srcmd5>
+    <version>3.2.0</version>
+    <time>1754762399</time>
+    <user>dimstar_suse</user>
+    <comment>freeciv 3.2.0, enable SDL2, build with Qt6 on Leap 15.6
+</comment>
+    <requestid>1298601</requestid>
+  </revision>
 </revisionlist>
