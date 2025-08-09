@@ -308,4 +308,16 @@ the go metapackage to version 1.22.</comment>
   * go#71229 cmd/compile: broken write barrier (forwarded request 1243259 from jfkw)</comment>
     <requestid>1243261</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>da3655a644fff679b000ef784edacaff</srcmd5>
+    <version>1.22.12</version>
+    <time>1754762328</time>
+    <user>dimstar_suse</user>
+    <comment>- Packaging improvements:
+  * Update go_bootstrap_version to go1.21 from go1.20 to shorten
+    the bootstrap chain. go1.21 can optionally be bootstrapped with
+    gccgo and serve as the inital version of go1.x.
+  * Refs boo#1247816 bootstrap go1.21 with gccgo (forwarded request 1298265 from jfkw)</comment>
+    <requestid>1298266</requestid>
+  </revision>
 </revisionlist>

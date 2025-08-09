@@ -1,7 +1,7 @@
 #
 # spec file for package go1.22
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,11 @@
 # Usually ahead of bootstrap version specified by upstream Go
 # Use Tumbleweed default gccgo and N-1 go1.x for testing
 %define gcc_go_version 13
-%define go_bootstrap_version go1.20
+%define go_bootstrap_version go1.21
 %else
 # Use gccgo and go1.x specified by upstream Go
 %define gcc_go_version 11
-%define go_bootstrap_version go1.20
+%define go_bootstrap_version go1.21
 %endif
 
 # Bootstrap go toolchain using existing go package go_bootstrap_version

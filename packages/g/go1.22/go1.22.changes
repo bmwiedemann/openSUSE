@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug  8 05:41:24 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Update go_bootstrap_version to go1.21 from go1.20 to shorten
+    the bootstrap chain. go1.21 can optionally be bootstrapped with
+    gccgo and serve as the inital version of go1.x.
+  * Refs boo#1247816 bootstrap go1.21 with gccgo
+
+-------------------------------------------------------------------
 Tue Feb  4 16:39:49 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.22.12 (released 2025-02-04) includes security fixes to the
