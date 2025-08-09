@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Aug  9 10:13:13 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.12.8
+ * Preview features
+  * [flake8-use-pathlib] Expand PTH201 to check all PurePath subclasses 
+ * Bug fixes
+  * [flake8-blind-except] Change BLE001 to correctly parse exception tuples 
+  * [flake8-errmsg] Exclude typing.cast from EM101 
+  * [flake8-simplify] Fix raw string handling in SIM905 for embedded quotes 
+  * [flake8-import-conventions] Avoid false positives for NFKC-normalized __debug__ import aliases in ICN001 
+  * [isort] Fix syntax error after docstring ending with backslash (I002) 
+  * [pylint] Mark PLC0207 fixes as unsafe when *args unpacking is present 
+  * [pyupgrade] Prevent infinite loop with I002 (UP010, UP035) 
+  * [ruff] Parenthesize generator expressions in f-strings (RUF010) 
+ * Rule changes
+  * [eradicate] Don't flag pyrefly pragmas as unused code (ERA001) 
+ * Documentation
+  * Replace "associative" with "commutative" in docs for RUF036 
+  * Fix copy and line separator colors in dark mode 
+  * Fix link to typing documentation 
+  * [refurb] Make more examples error out-of-the-box
+ * Other changes
+  * Include column numbers in GitLab output format 
+  * Always expand tabs to four spaces in diagnostics 
+  * Update pre-commit's ruff id 
+
+-------------------------------------------------------------------
 Wed Jul 30 09:48:46 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.7:
