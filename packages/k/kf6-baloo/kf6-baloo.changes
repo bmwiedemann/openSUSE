@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug  4 06:57:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.17.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.17.0
+- Changes since 6.16.0:
+  * Update dependency version to 6.17.0
+  * Fix build with clang
+  * Bump kf ecm_set_disabled_deprecation_versions.
+  * [TermGenerator] Check input text validity (kde#506187)
+  * Update clang-format CI image to suse-qt610
+  * [Extractor] Handle parent exit during batch
+  * [ExtractorProcess] Test extractor exit when parent quits
+  * [ExtractorProcess] Extend tests, align better with extractor code
+  * [ExtractorProcess] Fix deprecated implicit capture of this
+  * Update version to 6.17.0
+
+-------------------------------------------------------------------
 Mon Jul  7 07:24:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.16.0
