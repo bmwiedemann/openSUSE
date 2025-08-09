@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Aug  9 08:01:48 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.1.4:
+  What's Changed
+  * build(deps): bump github.com/helmfile/vals from 0.41.2 to
+    0.41.3 by @dependabot[bot] in #2100
+  * build(deps): bump k8s.io/apimachinery from 0.33.2 to 0.33.3
+    by @dependabot[bot] in #2101
+  * fix: update Helm version to v3.17.4 in CI and init.go by
+    @yxxhero in #2102
+  * build(deps): bump github.com/spf13/pflag from 1.0.6 to 1.0.7
+    by @dependabot[bot] in #2104
+  * feat(state): add missingFileHandlerConfig and related logic
+    by @yxxhero in #2105
+  * refactor(filesystem): add CopyDir method and optimize Fetch
+    function by @yxxhero in #2111
+  * Allow caching of remote files to be disabled by @jess-sol in
+    #2112
+  * refactor(yaml): switch yaml library import paths from gopkg.in
+    to go.yaml.in by @yxxhero in #2114
+  * build(deps): bump actions/download-artifact from 4 to 5 by
+    @dependabot[bot] in #2121
+  * build(deps): bump golang.org/x/term from 0.33.0 to 0.34.0 by
+    @dependabot[bot] in #2123
+
+-------------------------------------------------------------------
 Fri Jul 11 07:33:25 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.1.3:
