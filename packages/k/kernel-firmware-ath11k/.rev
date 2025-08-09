@@ -41,4 +41,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * ath11k: IPQ5018 hw1.0: update to WLAN.HK.2.6.0.1-01300-QCAHKSWPL_SILICONZ-1</comment>
     <requestid>1272715</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>98b8868aee042c39d445e1d2f0e14910</srcmd5>
+    <version>20250808</version>
+    <time>1754762351</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250808 (git commit 8f1ce114de6c):
+  * ath11k: WCN6855 hw2.0: update board-2.bin
+  * ath11k: QCA6698AQ hw2.1: update to WLAN.HSP.1.1-04650-QCAHSPSWPL_V1_V2_SILICONZ_IOE-2
+  * ath11k: QCA2066 hw2.1: update to WLAN.HSP.1.1-03926.13-QCAHSPSWPL_V2_SILICONZ_CE-2.52297.9
+  * ath11k: QCA2066 hw2.1: update board-2.bin</comment>
+    <requestid>1298506</requestid>
+  </revision>
 </revisionlist>
