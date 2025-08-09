@@ -22,27 +22,17 @@
 # Beta does not mean "before release" but a release that is considered as beta:
 %define _version %{version}
 %define _name gwenhywfar
-%define releasenumber 529
-%define checksumreleasenumber 528
+%define releasenumber 533
+%define checksumreleasenumber 532
 %bcond_without configure
 Name:           gwenhywfar-qt6
-Version:        5.12.0
+Version:        5.12.1
 Release:        0
 Summary:        Multiplatform helper library for other libraries
 License:        LGPL-2.1-or-later
 URL:            https://www.aquamaniac.de/rdm/projects/gwenhywfar
 Source:         https://www.aquamaniac.de/rdm/attachments/download/%{releasenumber}/%{_name}-%{_version}.tar.gz
 Source1:        https://www.aquamaniac.de/rdm/attachments/download/%{checksumreleasenumber}/%{_name}-%{_version}.tar.gz.asc
-# PATCH-FIX-UPSTREAM -- gcc 15 build fix
-Patch0:         gwenhywfar-gcc15.patch
-# PATCH-FEATURE-UPSTREAM -- Qt 6 support needed by KMyMoney
-Patch1:         0001-Fix-name-of-output-variable.patch
-Patch2:         0002-Support-building-for-Qt6.patch
-Patch3:         0003-Adjusted-expression-to-work-correclty-using-Qt5-and-.patch
-Patch4:         0004-Add-missing-files-to-AC_CONFIG_FILES.patch
-Patch5:         0005-Prevent-configuration-for-Qt5-and-Qt6-at-the-same-ti.patch
-Patch6:         0006-Improve-configuration-on-systems-with-Qt5-and-Qt6-in.patch
-Patch7:         0007-Remove-debug-output.patch
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1600
 BuildRequires:  gcc13

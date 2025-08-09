@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug  5 12:16:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.12.1
+  * Remove double declaration of HtmlObject_Grid_new
+  * added GWEN_Timestamp_GetWeekDay()
+  * tag16: added some tag read/write functions
+  * inetsocket: added flags (for raw dumping)
+  * Support building for Qt6
+- Drop patches, merged upstream:
+  * gwenhywfar-gcc15.patch
+  * 0001-Fix-name-of-output-variable.patch
+  * 0002-Support-building-for-Qt6.patch
+  * 0003-Adjusted-expression-to-work-correclty-using-Qt5-and-.patch
+  * 0004-Add-missing-files-to-AC_CONFIG_FILES.patch
+  * 0005-Prevent-configuration-for-Qt5-and-Qt6-at-the-same-ti.patch
+  * 0006-Improve-configuration-on-systems-with-Qt5-and-Qt6-in.patch
+  * 0007-Remove-debug-output.patch
+
+-------------------------------------------------------------------
 Tue Jun 24 22:33:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add patches for Qt 6 support:
