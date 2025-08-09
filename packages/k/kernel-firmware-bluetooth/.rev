@@ -163,4 +163,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: Update firmware file for Intel BlazarI core</comment>
     <requestid>1295033</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ab212eaba17aa178fa35d7d175183fb4</srcmd5>
+    <version>20250808</version>
+    <time>1754762352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250808 (git commit 8f1ce114de6c):
+  * qca: Update Bluetooth WCN6750 1.1.3-00069 firmware to 1.1.3-00091</comment>
+    <requestid>1298508</requestid>
+  </revision>
 </revisionlist>
