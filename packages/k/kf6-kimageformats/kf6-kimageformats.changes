@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug  4 06:57:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.17.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.17.0
+- Changes since 6.16.0:
+  * Update dependency version to 6.17.0
+  * IFF: add support for uncompressed ACBM type
+  * Bump kf ecm_set_disabled_deprecation_versions
+  * It compiles fine without qt 6.10 deprecated methods
+  * IFF: add mime types and extensions
+  * chunks.cpp - send info and warning messages to the iff logging category
+  * IFF: support for Ham8, HalfBride, Pbm and ILBM 32-bits modes
+  * tga: Be less strict about palette
+  * Fix unused param in MicroExif::toByteArray()
+  * IFF: Fix possible stack overflow
+  * Update version to 6.17.0
+
+-------------------------------------------------------------------
 Mon Jul  7 07:24:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.16.0
