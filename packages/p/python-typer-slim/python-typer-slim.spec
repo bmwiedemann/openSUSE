@@ -1,7 +1,7 @@
 #
 # spec file for package python-typer-slim
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2021 Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,10 @@ License:        MIT
 URL:            https://github.com/tiangolo/typer
 Source:         https://files.pythonhosted.org/packages/source/t/typer_slim/typer_slim-%{version}.tar.gz
 Source2:        %{name}-rpmlintrc
+# PATCH-FIX-OPENSUSE Include our own PYTHONPATH for scripted tests
 Patch0:         set-proper-pythonpath-for-tutorial-script-tests.patch
+# PATCH-FIX-OPENSUSE Handle excess whitespace in one testcase
+Patch1:         handle-excess-whitespace-not-exists.patch
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pdm-backend}

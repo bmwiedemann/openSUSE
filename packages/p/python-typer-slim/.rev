@@ -154,4 +154,13 @@ I tested the upgrade path and this will not break anybody relying on the package
 </comment>
     <requestid>1280710</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>b1f837d77a8a29ddbfc9d88458c73246</srcmd5>
+    <version>0.16.0</version>
+    <time>1754762330</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch handle-excess-whitespace-not-exists.patch:
+  * Handle excess whitespace in one testcase.</comment>
+    <requestid>1298267</requestid>
+  </revision>
 </revisionlist>

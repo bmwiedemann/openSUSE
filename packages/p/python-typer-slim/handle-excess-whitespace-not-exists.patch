@@ -1,0 +1,28 @@
+Index: typer_slim-0.16.0/tests/test_tutorial/test_parameter_types/test_path/test_tutorial002.py
+===================================================================
+--- typer_slim-0.16.0.orig/tests/test_tutorial/test_parameter_types/test_path/test_tutorial002.py
++++ typer_slim-0.16.0/tests/test_tutorial/test_parameter_types/test_path/test_tutorial002.py
+@@ -21,7 +21,8 @@ def test_not_exists(tmpdir):
+     assert result.exit_code != 0
+     assert "Invalid value for '--config'" in result.output
+     assert "File" in result.output
+-    assert "does not exist" in result.output
++    assert "does not" in result.output
++    assert "exist" in result.output
+ 
+ 
+ def test_exists(tmpdir):
+Index: typer_slim-0.16.0/tests/test_tutorial/test_parameter_types/test_path/test_tutorial002_an.py
+===================================================================
+--- typer_slim-0.16.0.orig/tests/test_tutorial/test_parameter_types/test_path/test_tutorial002_an.py
++++ typer_slim-0.16.0/tests/test_tutorial/test_parameter_types/test_path/test_tutorial002_an.py
+@@ -21,7 +21,8 @@ def test_not_exists(tmpdir):
+     assert result.exit_code != 0
+     assert "Invalid value for '--config'" in result.output
+     assert "File" in result.output
+-    assert "does not exist" in result.output
++    assert "does not" in result.output
++    assert "exist" in result.output
+ 
+ 
+ def test_exists(tmpdir):

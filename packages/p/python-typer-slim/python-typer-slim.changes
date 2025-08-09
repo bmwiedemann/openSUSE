@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  8 05:32:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch handle-excess-whitespace-not-exists.patch:
+  * Handle excess whitespace in one testcase.
+
+-------------------------------------------------------------------
 Tue May 27 19:13:12 UTC 2025 - Matthias Bach <marix@marix.org> - 0.16.0
 
 - Update to 0.16.0
