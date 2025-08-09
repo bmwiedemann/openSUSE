@@ -33,6 +33,10 @@ Patch2:         0002-Do-not-warn-about-interface-socket-not-binded.patch
 Patch4:         0004-By-default-do-not-fopen-anything-in-netrom_gr.patch
 Patch6:         0006-Allow-interface-stacking.patch
 Patch7:         0007-Introduce-T-notrim-option-in-netstat.patch
+# PATCH-FIX-SECURITY net-tools-CVE-2025-46836.patch bsc1243581 sbrabec@suse.com -- Perform bound checks when parsing interface labels in /proc/net/dev.
+Patch8:         net-tools-CVE-2025-46836.patch
+# PATCH-FIX-UPSTREAM net-tools-CVE-2025-46836-regression.patch bsc1243581 sbrabec@suse.com -- Fix regression introduced by net-tools-CVE-2025-46836.patch.
+Patch9:         net-tools-CVE-2025-46836-regression.patch
 BuildRequires:  help2man
 Recommends:     traceroute >= 2.0.0
 Provides:       net_tool = %{version}

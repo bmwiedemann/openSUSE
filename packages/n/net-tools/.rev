@@ -434,4 +434,12 @@ See see http://lists.opensuse.org/opensuse-factory/2015-06/msg00133.html</commen
 - hostname is not required anymore [bsc#1236061]</comment>
     <requestid>1240893</requestid>
   </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>ae44c03d4a2e2b8fa3145e8699a38d39</srcmd5>
+    <version>2.10</version>
+    <time>1754762332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1298353</requestid>
+  </revision>
 </revisionlist>

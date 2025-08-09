@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug  4 06:27:05 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix a regression in net-tools-CVE-2025-46836.patch (bsc#1246608).
+
+-------------------------------------------------------------------
+Thu Jul 10 03:44:15 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Perform bound checks when parsing interface labels in
+  /proc/net/dev (bsc#1243581, CVE-2025-46836,
+  net-tools-CVE-2025-46836.patch,
+  net-tools-CVE-2025-46836-regression.patch).
+
+-------------------------------------------------------------------
 Mon Jan 20 09:41:44 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - hostname is not required anymore [bsc#1236061]
@@ -850,7 +863,7 @@ Mon Oct 27 16:53:41 MET 1997 - ro@suse.de
 - added ADD_LANG in Makefile to avoid error 
 
 -------------------------------------------------------------------
-whenever-whenever - florian@suse.de
+Tue Aug 13 22:39:00 MEST 1996 - florian@suse.de
 
-new version 1.32-alpha
-mv /sbin/arp /usr/sbin/arp
+- new version 1.32-alpha
+- mv /sbin/arp /usr/sbin/arp
