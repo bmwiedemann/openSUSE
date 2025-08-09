@@ -1834,4 +1834,12 @@ fixes its regression.
     <comment></comment>
     <requestid>1291168</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>083d8d3a4f7aeb4655efd0c98875b795</srcmd5>
+    <version>3.5.2</version>
+    <time>1754762234</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297962</requestid>
+  </revision>
 </revisionlist>
