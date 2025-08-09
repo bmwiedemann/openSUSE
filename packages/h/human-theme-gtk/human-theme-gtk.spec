@@ -17,7 +17,7 @@
 
 
 Name:           human-theme-gtk
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        Human theme for GTK
 Summary(fr):    Thème Human pour GTK

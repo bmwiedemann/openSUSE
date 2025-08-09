@@ -1,105 +1,130 @@
 -------------------------------------------------------------------
+Fri Aug  8 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (2.6.0)
+   * (gtk3) fix geany statusbar (regression)
+   * (gtk3) fix separator for menu in toolbar
+   * (gtk3) fix background color for popover menu
+   * (gtk3) fix design of GNOME terminal
+   * (gtk3) fix design of Pluma statusbar
+   * (gtk4) fix menuitem height
+   * (gtk4) add styles for icons in menubar
+   * (gtk3 & 4) fix dialog layout and buttons position/margin,
+     with our without CSD dialogs,
+     so same layout between gtk3 & gtk4
+     => same as mate-appearance-properties
+     => some PR for MATE on github.com/mate-desktop
+   * add default colors for terminal (white on black)
+   * MATE users will enjoy fixed design for transparent panels
+   * MATE+Mint users will enjoy new design for mint menu applet
+     PR => github.com/linuxmint/mintmenu/pull/285
+     PR => github.com/ubuntu-mate/mate-menu/pull/89
+   * Xfce users will enjoy new design for whisker menu
+
+-------------------------------------------------------------------
 Fri Jun  6 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.5.0)
-   * (gtk 3 & 4) fix statusbar and progressbar in statusbar
-     when window is fullscreen with Mate & Xfce
-   * (gtk 3) update design for Mate panel buttons
+   * (gtk3 & 4) fix statusbar and progressbar-in-statusbar
+     when window is fullscreen
+   * (gtk3) update design for MATE panel buttons
      PR => github.com/mate-desktop/mate-panel/pull/1474
-   * (gtk 3) fix Xfce desktop icons
-   * (gtk 3) update design of caja/thunar/nemo tabs
-   * (gtk 3) add experimental support for Cinnamon desktop
-   * (gtk 3) fix headerbar for cinnamon/muffin/mutter (.ssd)
-   * (gtk 3) update design of compact menu button applet,
-     clock applet, window selector button => same as main menu bar
-   * (gtk 4) fix design of print dialog
-   * (gtk 3) ready for the future scrollbar__extra_zone.patch
+     PR => github.com/mate-desktop/mate-applets/pull/678
+   * (gtk3) fix Xfce desktop icons
+   * (gtk3) update design of Caja/Thunar/Nemo tabs
+   * (gtk3) add experimental support for Cinnamon desktop
+   * (gtk3) fix headerbar for cinnamon/muffin/mutter (.ssd)
+   * (gtk3) ready for the future scrollbar__extra_zone.patch
      for gtk3-classic
+   * (gtk4) fix design of print dialog
+   * MATE users will enjoy new common design for compact menu
+     button applet, clock applet, window selector button applet
+     => same as main menu bar applet
 
 -------------------------------------------------------------------
 Mon May  5 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.4.0)
-  * (gtk 3 & 4) fix/update design of headerbar
-  * (gtk 3 & 4) fix/update design of CSD window
-  * (gtk 3 & 4) fix position of check/radio in menuitem
-  * (gtk 3 & 4) fix rtl menu with only check/radio
-  * (gtk 3) fix/update design for Mate notifications
+  * (gtk3 & 4) fix/update design of headerbar
+  * (gtk3 & 4) fix/update design of CSD windows
+  * (gtk3 & 4) fix/update position of check/radio in menuitem
+  * (gtk3 & 4) fix/update RTL menu with only check/radio
+  * (gtk3) fix/update design for MATE notifications
     PR => github.com/mate-desktop/mate-notification-daemon/pull/232
     PR => github.com/mate-desktop/mate-notification-daemon/pull/233
     PR => github.com/mate-desktop/mate-notification-daemon/pull/234
 - It works: with or without compositor, with or without CSD windows
    and with or without gtk3-classic/gtk4-classic
 - The best with gtk3-classic and gtk4-classic
-    gist.github.com/luigifab/0fce786cdb93b5687069a82f490ea95e
-  * (gtk 3 & 4) automatic min-width/min-height from text for
+   gist.github.com/luigifab/0fce786cdb93b5687069a82f490ea95e
+  * (gtk3 & 4) automatic min-width/min-height from text for
     progressbars, with dual text color, without excessive cpu usage
 
 -------------------------------------------------------------------
 Fri Apr  4 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.3.0)
-  * (gtk 3) new design for Mate notifications
+  * (gtk3) new design for MATE notifications
     PR => github.com/mate-desktop/mate-notification-daemon/pull/232
     PR => github.com/mate-desktop/mate-notification-daemon/pull/233
     mate-notification-daemon v1.28.4+
-  * (gtk 3) fix design for Bleachbit
+  * (gtk3) fix design for Bleachbit
     PR => github.com/bleachbit/bleachbit/pull/1195
     bleachbit v?
-  * (gtk 3) update design for mate-control-center & ccsm
-  * (gtk 3) fix icon size in titlebar for xfwm4
-  * (gtk 3) fix padding in titlebar when maximized for xfwm4
-  * (gtk 3) same design between Mate and Xfce for terminal & alttab
-    PR => github.com/mate-desktop/marco/pull/789
+  * (gtk3) update design for mate-control-center & ccsm
+  * (gtk3) fix icon size in titlebar for xfwm4
+  * (gtk3) fix padding in titlebar when maximized for xfwm4
+  * (gtk3) same design between MATE and Xfce for terminal & alttab
+    PR => github.com/mate-desktop/marco/pull/796
     marco v1.28.2+
-  * (gtk 3) update font color for mate-panel
-  * (gtk 3) fix font color for mate keyboard indicator
-  * (gtk 3) fix background for disabled view for Caja (F3)
-  * (gtk 3) fix lines (treeview) for disabled view for Caja (F3)
-  * (gtk 3) fix design of progressbar in statusbar for Eom
-  * (gtk 3) fix design for Mate osd when compositor is enabled
-  * (gtk 3 & 4) fix design of progressbars with text in statusbar
-  * (gtk 3 & 4) fix and update design of progressbars with text
-  * (gtk 3 & 4) update background for selected lines in treeviews
-  * (gtk 3 & 4) add highlight effect for icons on hover
-  * (gtk 3 & 4) better contrast for progressbars/scales background
-  * (gtk 3 & 4) little enhancement for headarbar
-  * (gtk 4) fix for the stupid hover effect on menubar items
-  * (gtk 4) fix background of menu items
-  * (gtk 4) add design for listviews (open/save dialogs)
-  * (gtk 4) add design open/save dialogs
-  * (gtk 4) no changes required from 4.12 to 4.18!
+  * (gtk3) update font color for mate-panel
+  * (gtk3) fix font color for MATE keyboard indicator
+  * (gtk3) fix background for disabled view for Caja (F3)
+  * (gtk3) fix lines (treeview) for disabled view for Caja (F3)
+  * (gtk3) fix design of progressbar in statusbar for Eom
+  * (gtk3) fix design for MATE osd when compositor is enabled
+  * (gtk3 & 4) fix design of progressbars with text in statusbar
+  * (gtk3 & 4) fix and update design of progressbars with text
+  * (gtk3 & 4) update background for selected lines in treeviews
+  * (gtk3 & 4) add highlight effect for icons on hover
+  * (gtk3 & 4) better contrast for progressbars/scales background
+  * (gtk3 & 4) little enhancement for headarbar
+  * (gtk4) fix for the stupid hover effect on menubar items
+  * (gtk4) fix background of menu items
+  * (gtk4) add design for listviews (open/save dialogs)
+  * (gtk4) add design open/save dialogs
+  * (gtk4) no changes required from 4.12 to 4.18!
 - The best with gtk3-classic and gtk4-classic
-    gist.github.com/luigifab/0fce786cdb93b5687069a82f490ea95e
-  * (gtk 3) automatic min-width/min-height for progressbars
-  * (gtk 4) add dual text color for progressbars
+   gist.github.com/luigifab/0fce786cdb93b5687069a82f490ea95e
+  * (gtk3) automatic min-width/min-height for progressbars
+  * (gtk4) add dual text color for progressbars
 
 -------------------------------------------------------------------
 Mon Mar  3 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.2.1)
   * packages scripts update
-  * (gtk 3 & 4) update style for Thunar (same as Caja)
+  * (gtk3 & 4) update Thunar design (same as Caja)
 
 -------------------------------------------------------------------
 Fri Feb  2 20:00:00 UTC 2024 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.2.0)
-  * (gtk 3) dual text color for progress bars is back
+  * (gtk3) dual text color for progressbars is back
     with appearance__progress_text.gtk3.patch for gtk3-classic
-  * (gtk 3) add gtk standard color names
-  * (gtk 3 & 4) add style for statusbar in progressbar and toolbar
-  * (gtk 3 & 4) update style for progressbar in treeviews
-  * (gtk 3 & 4) update style for arrows of notebook tabs
-  * (gtk 4) compatibility only with 4.12
+  * (gtk3) add GTK standard color names
+  * (gtk3 & 4) add design for statusbar in progressbar and toolbar
+  * (gtk3 & 4) update design for progressbar in treeviews
+  * (gtk3 & 4) update design for arrows of notebook tabs
+  * (gtk4) compatibility only with 4.12+
 
 -------------------------------------------------------------------
 Tue Oct 10 20:00:00 UTC 2023 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.1.0)
-  * (gtk 3 & 4) small fix for geany messages window
-  * (gtk 3 & 4) almost same rendering between pango 1.42 and 1.51
-  * (gtk 4) compatibility with 4.12
+  * (gtk3 & 4) small fix for geany messages window
+  * (gtk3 & 4) almost same rendering between pango 1.42 and 1.51
+  * (gtk4) compatibility with 4.12
 
 -------------------------------------------------------------------
 Fri Jun 16 20:00:00 UTC 2023 - Fabrice Creuzot <code@luigifab.fr>
@@ -110,37 +135,36 @@ Fri Jun 16 20:00:00 UTC 2023 - Fabrice Creuzot <code@luigifab.fr>
 Thu Jun  6 20:00:00 UTC 2023 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.0.0)
-  * (gtk 3) alternating row colours in tree views is back
+  * (gtk3) alternating row colours in treeviews is back
   * Xfce users have now decorations for windows
-  * Mate users will enjoy better styles for lock screen and OSD
-  * Mate users have now styles for window selector and date/hour
-    applets when clicked
-  * status bar styles works with or without gtk3-classic
-  * added styles for CSD windows
+  * MATE users will enjoy better styles for lock screen and OSD
+  * MATE users have now design for window selector and date/hour
+    applets when applet is opened/clicked
+  * statusbar styles works with or without gtk3-classic
+  * add styles for CSD windows
 
 -------------------------------------------------------------------
 Thu Sep  9 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (1.5.0)
-  * (gtk 3 & 4) fix text color for image settings of print dialog
-  * (gtk 3) set background color for RTL scales
-  * (gtk 4) set vertical scale marks position
+  * (gtk3 & 4) fix text color for image settings of print dialog
+  * (gtk3) set background color for RTL scales
+  * (gtk4) set vertical scale marks position
 
 -------------------------------------------------------------------
 Wed Jul  7 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (1.4.0)
-  * (gtk 3 & 4) fix style for disabled switchs, spinbuttons, images
-  * (gtk 3 & 4) fix text color for progressbars in treeviews
-  * (gtk 3 & 4) fix credits and license borders in about dialogs
-  * (gtk 3 & 4) set same focused border color (outline)
-  * (gtk 3 & 4) add border for focused scales (outline)
-  * (gtk 3 & 4) add style for disabled toggle buttons in toolbars
-  * (gtk 3 & 4) add RTL styles
-  * (gtk 3) fix right click menu style for mate-calc and gedit
-  * (gtk 3) remove borders separators for mate window
-    selector applet
-  * (gtk 4) refactor style of toolbar buttons and scales
+  * (gtk3 & 4) fix style for disabled switchs, spinbuttons, images
+  * (gtk3 & 4) fix text color for progressbars in treeviews
+  * (gtk3 & 4) fix credits and license borders in about dialogs
+  * (gtk3 & 4) set same focused border color (outline)
+  * (gtk3 & 4) add border for focused scales (outline)
+  * (gtk3 & 4) add style for disabled toggle buttons in toolbars
+  * (gtk3 & 4) add RTL styles
+  * (gtk3) fix right click menu style for mate-calc and gedit
+  * (gtk3) remove border separator for MATE window selector applet
+  * (gtk4) refactor style of toolbar buttons and scales
 
 -------------------------------------------------------------------
 Wed May  5 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
@@ -160,4 +184,4 @@ Wed May  5 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
 -------------------------------------------------------------------
 Tue Apr  6 14:43:45 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
 
-- Initial openSUSE package release 
+- Initial openSUSE package release
