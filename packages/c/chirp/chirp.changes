@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug  8 20:59:20 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250808:
+  * Add Support for Retevis H777 V4.0
+  * uvk5: Fix band limits
+  * Remove legacy radio detection module
+
+-------------------------------------------------------------------
 Fri Aug  1 19:23:11 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250801:

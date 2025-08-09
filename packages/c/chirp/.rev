@@ -255,4 +255,12 @@
     <comment>chirp 20250801 (forwarded request 1297118 from AndreasStieger)</comment>
     <requestid>1297119</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>bb74da965058032a83e7a2f0a97c1c00</srcmd5>
+    <version>20250808</version>
+    <time>1754762375</time>
+    <user>dimstar_suse</user>
+    <comment>chirp 20250808</comment>
+    <requestid>1298456</requestid>
+  </revision>
 </revisionlist>
