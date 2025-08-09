@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-krunner
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,11 @@
 %define qt6_version 6.8.0
 
 %define rname krunner
-# Full KF6 version (e.g. 6.16.0)
+# Full KF6 version (e.g. 6.17.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-krunner
-Version:        6.16.0
+Version:        6.17.0
 Release:        0
 Summary:        KDE Framework for providing different actions given a string query
 License:        LGPL-2.1-or-later
@@ -40,6 +40,7 @@ BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{_kf6_version}
 BuildRequires:  cmake(KF6ItemModels) >= %{_kf6_version}
 BuildRequires:  cmake(KF6ThreadWeaver) >= %{_kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{_kf6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 
