@@ -1,10 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug  8 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (3.1.0)
+  * move Mint-L/Mint-X/Mint-Y themes in submenus
+  * set theme on general theme change from GLIB 2.32
+  * add Help menu and merge GtkScales menuitems
+  * move all scales into a notebook with four tabs
+
+-------------------------------------------------------------------
 Mon May  5 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (3.0.0)
   * add support for CSD window
-  * add --enable-only-gtkx and --disable-gtkx options
   * add headerbar for CSD window
+  * add --enable-only-gtkx and --disable-gtkx options
   * stop spinner and remove -n option
   * add bash autocomplete script
 
@@ -25,7 +34,7 @@ Mon Mar  3 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.8.1)
   * packages scripts update
-  * fix building error with GLIB 2.83 and/or with GCC 15
+  * fix building error from GLIB 2.83 and/or from GCC 15
 
 -------------------------------------------------------------------
 Fri Feb  2 20:00:00 UTC 2024 - Fabrice Creuzot <code@luigifab.fr>
