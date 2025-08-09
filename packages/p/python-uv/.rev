@@ -1185,4 +1185,14 @@
   * Improve visibility of copy and line separator in dark mode</comment>
     <requestid>1297963</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>28d30200de2f414d53fc7b1ffb84aadb</srcmd5>
+    <version>0.8.8</version>
+    <time>1754762394</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.8
+ - long changelog at https://github.com/astral-sh/uv/blob/main/CHANGELOG.mode
+ - fixed CVE-2025-54368 - boo#1247829</comment>
+    <requestid>1298596</requestid>
+  </revision>
 </revisionlist>
