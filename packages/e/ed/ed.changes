@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug  6 16:30:48 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU ed 1.22.1:
+  * Ed now departs from POSIX and ignores SIGPIPE to prevent
+    commands like 'w !:' or ',!:' from terminating ed. A broken
+    pipe is now detected as any other write error
+
+-------------------------------------------------------------------
+Sun Jul 27 15:20:45 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU ed 1.22:
+  * The shell escape command (!) now accepts line addresses to
+    filter the addressed lines through a shell command
+- skip tests on ARM
+
+-------------------------------------------------------------------
 Fri Apr  4 16:33:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU ed 1.21.1:

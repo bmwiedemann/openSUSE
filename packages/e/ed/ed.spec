@@ -18,7 +18,7 @@
 
 
 Name:           ed
-Version:        1.21.1
+Version:        1.22.1
 Release:        0
 Summary:        A line-oriented text editor
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -42,7 +42,7 @@ superseded by full-screen editors such as GNU Emacs or GNU Moe.
 
 %build
 %configure
-%make_build CFLAGS="%{optflags}"
+%make_build
 
 %install
 %make_install
