@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug  4 06:57:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.17.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.17.0
+- Changes since 6.16.0:
+  * Update dependency version to 6.17.0
+  * correct redo cursor position for UTF-8 text recovery
+  * Bump kf ecm_set_disabled_deprecation_versions
+  * Draw all text background ourselves instead of just selection (kde#507053)
+  * Allow skipping selection when layouting the line
+  * Properly center the screenshot pixmap (kde#506909)
+  * Update version to 6.17.0
+
+-------------------------------------------------------------------
 Mon Jul  7 07:24:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.16.0
