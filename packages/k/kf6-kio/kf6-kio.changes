@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug  4 06:57:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.17.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.17.0
+- Too many changes since 6.16.0, only listing bugfixes:
+  * KCoreDirLister: Do not list files again if the new url has same job (kde#507278)
+  * DnD: support possibleActions() coming from the drop event (kde#505247)
+  * KUrlNavigator: Set fixed width size policy on badge container (kde#501667)
+  * Special case for some protocols that we know are local (kde#506772)
+  * DropJob: Emit popupMenuAboutToShow after setting things up (kde#506188)
+
+-------------------------------------------------------------------
 Mon Jul  7 07:24:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.16.0
