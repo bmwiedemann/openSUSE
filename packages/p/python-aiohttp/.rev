@@ -760,4 +760,23 @@
     <comment></comment>
     <requestid>1296098</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>7416b6c312a5029d90cd078eeb62f515</srcmd5>
+    <version>3.12.15</version>
+    <time>1754762342</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1298128 from glaubitz
+
+- Update to 3.12.15
+    * Fixed :class:`~aiohttp.DigestAuthMiddleware` to preserve the algorithm case
+      from the server's challenge in the authorization response. This improves
+      compatibility with servers that perform case-sensitive algorithm matching
+      (e.g., servers expecting ``algorithm=MD5-sess`` instead of ``algorithm=MD5-SESS``)
+    * Remove outdated contents of ``aiohttp-devtools`` and ``aiohttp-swagger``
+      from Web_advanced docs.
+    * Started including the ``llhttp`` :file:`LICENSE` file in wheels by adding
+      ``vendor/llhttp/LICENSE`` to ``license-files`` in :file:`setup.cfg`
+    * Updated a regex in `test_aiohttp_request_coroutine` for Python 3.14.</comment>
+    <requestid>1298363</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug  7 11:36:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.12.15
+  * Fixed :class:`~aiohttp.DigestAuthMiddleware` to preserve the algorithm case
+    from the server's challenge in the authorization response. This improves
+    compatibility with servers that perform case-sensitive algorithm matching
+    (e.g., servers expecting ``algorithm=MD5-sess`` instead of ``algorithm=MD5-SESS``)
+  * Remove outdated contents of ``aiohttp-devtools`` and ``aiohttp-swagger``
+    from Web_advanced docs.
+  * Started including the ``llhttp`` :file:`LICENSE` file in wheels by adding
+    ``vendor/llhttp/LICENSE`` to ``license-files`` in :file:`setup.cfg`
+  * Updated a regex in `test_aiohttp_request_coroutine` for Python 3.14.
+
+-------------------------------------------------------------------
 Mon Jul 28 08:16:17 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Add remove-zlib-ng-test-dep.patch to remove python-zlib-ng test
