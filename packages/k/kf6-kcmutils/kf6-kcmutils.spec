@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-kcmutils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,11 @@
 # Internal QML import
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.kcmutils\\.private.*\\)
 
-# Full KF6 version (e.g. 6.16.0)
+# Full KF6 version (e.g. 6.17.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kcmutils
-Version:        6.16.0
+Version:        6.17.0
 Release:        0
 Summary:        Classes to work with KCModules
 License:        LGPL-2.1-or-later
