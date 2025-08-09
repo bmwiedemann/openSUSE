@@ -285,4 +285,41 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: Update GC 11.5.0 microcode</comment>
     <requestid>1297874</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1167af83fb13370023e49f1b9243f5b7</srcmd5>
+    <version>20250808</version>
+    <time>1754762348</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250808 (git commit 8f1ce114de6c):
+  * amdgpu: update renoir firmware
+  * amdgpu: add SMU 14.0.3 kicker firmware
+  * amdgpu: add PSP 14.0.3 firmware
+  * amdgpu: add GC 12.0.1 kicker firmware
+  * amdgpu: update navy flounder firmware
+  * amdgpu: update SDMA 6.1.2 firmware
+  * amdgpu: update PSP 14.0.4 firmware
+  * amdgpu: update GC 11.5.2 firmware
+  * amdgpu: update yellow carp firmware
+  * amdgpu: update VCN 5.0.0 firmware
+  * amdgpu: update SDMA 7.0.1 firmware
+  * amdgpu: update PSP 14.0.3 firmware
+  * amdgpu: update GC 12.0.1 firmware
+  * amdgpu: update sienna cichlid firmware
+  * amdgpu: update vega20 firmware
+  * amdgpu: update SDMA 7.0.0 firmware
+  * amdgpu: update PSP 14.0.2 firmware
+  * amdgpu: update GC 12.0.0 firmware
+  * amdgpu: update vega12 firmware
+  * amdgpu: update vega10 firmware
+  * amdgpu: update VCN 3.1.2 firmware
+  * amdgpu: update PSP 13.0.5 firmware
+  * amdgpu: update GC 10.3.6 firmware
+  * amdgpu: update VCN 4.0.4 firmware
+  * amdgpu: update SDMA 6.0.2 firmware
+  * amdgpu: update PSP 13.0.7 firmware
+  * amdgpu: update GC 11.0.2 firmware
+  * amdgpu: update navi14 firmware
+  * amdgpu: update SDMA 6.0.3 firmware</comment>
+    <requestid>1298505</requestid>
+  </revision>
 </revisionlist>
