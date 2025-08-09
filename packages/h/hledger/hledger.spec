@@ -168,6 +168,9 @@ This package provides the Haskell %{pkg_name} profiling library.
 %ghc_lib_install
 %ghc_fix_rpath %{pkg_name}-%{version}
 
+install -Dm644 embeddedfiles/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
+install -Dm644 embeddedfiles/%{name}.info %{buildroot}%{_infodir}/%{name}.info
+
 %check
 %cabal_test
 
@@ -181,6 +184,8 @@ This package provides the Haskell %{pkg_name} profiling library.
 %license LICENSE
 %doc CHANGES.md README.md
 %{_bindir}/%{name}
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_infodir}/%{name}.info%{?ext_info}
 
 %files -n ghc-%{name} -f ghc-%{name}.files
 %license LICENSE
