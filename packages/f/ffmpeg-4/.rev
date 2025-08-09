@@ -780,4 +780,14 @@
     <comment>add bugIDs</comment>
     <requestid>1286274</requestid>
   </revision>
+  <revision rev="85" vrev="5">
+    <srcmd5>187ce8b0dbd4ed8be8ea234a39d793a4</srcmd5>
+    <version>4.4.6</version>
+    <time>1754762344</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ffmpeg-4-CVE-2025-7700.patch: Add check for the return value
+  of av_malloc_array() and av_calloc() to avoid potential NULL
+  pointer dereference(CVE-2025-7700, bsc#1246790).</comment>
+    <requestid>1298437</requestid>
+  </revision>
 </revisionlist>

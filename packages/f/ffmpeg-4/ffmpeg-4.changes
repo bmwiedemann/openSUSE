@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 23 07:01:22 UTC 2025 - SongChuan Kang <sckang@suse.com>
+
+- Add ffmpeg-4-CVE-2025-7700.patch: Add check for the return value
+  of av_malloc_array() and av_calloc() to avoid potential NULL
+  pointer dereference(CVE-2025-7700, bsc#1246790).
+
+-------------------------------------------------------------------
 Fri May 30 14:28:05 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-4-CVE-2024-36618.patch:
