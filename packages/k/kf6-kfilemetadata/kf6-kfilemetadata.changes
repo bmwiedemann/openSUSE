@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Aug  4 06:57:27 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.17.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.17.0
+- Changes since 6.16.0:
+  * Update dependency version to 6.17.0
+  * [UserMetaDataWriterTest] Handle filesystem differences in XAttr size limits
+  * [EPubExtractorTest] Fix unspecified timezone handling
+  * [EPubExtractorTest] Move test class declaration to implementation file
+  * [EPubExtractor] Work around an unhandled error case in libepub
+  * [PpubExtractor] Fix memory leak in error case
+  * Move poppler include from header file to source file in popplerextractor
+  * Include qmobipocket_version.h in mobiextractor
+  * Remove unused HAVE_AVSTREAM_CODECPAR macro and unused includes in ffmpegextractor
+  * Remove unused includes in embeddedimagedata.cpp
+  * EPubExtractor: Fix memory leak
+  * [PlaintextExtractor] Verify decoded text contains printable characters (kde#506570)
+  * [PlaintextExtractor] Only add "Text" type if decoding suceeds
+  * [PlaintextExtractor] Fix various issues with UTF-16
+  * [PlaintextExtractor] Add tests for UTF-16 BE and LE with BOM
+  * [PlainTextExtractor] Lower required confidence for UTF-8
+  * Update version to 6.17.0
+
+-------------------------------------------------------------------
 Mon Jul  7 07:24:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.16.0
