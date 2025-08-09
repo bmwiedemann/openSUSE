@@ -1,7 +1,7 @@
 #
 # spec file for package joycond
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2021/22 Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %endif
 
 Name:           joycond
-Version:        0.1.0+git.51~f9a6691
+Version:        1+git20250412.39d5728
 Release:        0
 Summary:        Userspace daemon for using joy-cons with the hid-nintendo kernel driver
 Group:          Hardware/Joystick
@@ -69,8 +69,6 @@ mkdir -p %{buildroot}%{_unitdir}/
 mkdir -p %{buildroot}%{_udevrulesdir}/
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcjoycond
 mv %{buildroot}/etc/modules-load.d/%{name}.conf %{buildroot}%{_modulesloaddir}/%{name}.conf
-mv %{buildroot}/etc/systemd/system/%{name}.service %{buildroot}%{_unitdir}/%{name}.service
-mv %{buildroot}/lib/udev/rules.d/{72,89}-joycond.rules %{buildroot}%{_udevrulesdir}/
 
 %pre
 %service_add_pre %{name}.service
@@ -91,6 +89,7 @@ mv %{buildroot}/lib/udev/rules.d/{72,89}-joycond.rules %{buildroot}%{_udevrulesd
 %{_sbindir}/rcjoycond
 %{_udevrulesdir}/72-%{name}.rules
 %{_udevrulesdir}/89-%{name}.rules
+%{_datadir}/metainfo/com.github.DanielOgorchock.joycond.metainfo.xml
 %{_bindir}/%{name}
 
 %files autoload
