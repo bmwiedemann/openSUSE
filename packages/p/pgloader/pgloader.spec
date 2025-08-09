@@ -1,7 +1,7 @@
 #
 # spec file for package pgloader
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,10 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  libopenssl-devel
 %endif
 Requires:       /usr/bin/sbcl
+# keep in sync with the sbcl package
+ExcludeArch:    s390x
+# fails to build for i586
+ExcludeArch:    %{ix86}
 
 %description
 pgloader imports data from different kind of sources and COPY it into

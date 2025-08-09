@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug  8 12:07:30 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable also i586 as building fails
+
+-------------------------------------------------------------------
+Fri Aug  8 11:40:32 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- add the same excludearch as the sbcl package itself has
+
+-------------------------------------------------------------------
 Mon Nov 13 17:49:27 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Partially undo change from Wed Aug 18 07:46:37 UTC 2021 and
@@ -132,26 +142,32 @@ Tue Dec 27 14:08:22 UTC 2011 - darin@darins.net
   http://en.opensuse.org/openSUSE:Packaging_Python#Byte_Compiled_Files
 
 -------------------------------------------------------------------
-Tue Jul 28 2009 Devrim Gunduz <devrim@CommandPrompt.com> 2.3.2-1
+Tue Jul 28 12:00:00 UTC 2009 - Devrim Gunduz <devrim@CommandPrompt.com> 2.3.2-1
+
 - Update to 2.3.2
 
 -------------------------------------------------------------------
-Sun Jun 15 2008 Devrim Gunduz <devrim@CommandPrompt.com> 2.3.1-1
+Sun Jun 15 12:00:00 UTC 2008 - Devrim Gunduz <devrim@CommandPrompt.com> 2.3.1-1
+
 - Update to 2.3.1
 
 -------------------------------------------------------------------
-Wed Apr 9 2008 Devrim Gunduz <devrim@CommandPrompt.com> 2.3.0-1
+Wed Apr 9 12:00:00 UTC 2008 - Devrim Gunduz <devrim@CommandPrompt.com> 2.3.0-1
+
 - Update to 2.3.0
 - Various spec file fixes
 
 -------------------------------------------------------------------
-Fri Feb 1 2008 Devrim Gunduz <devrim@CommandPrompt.com> 2.2.6-1
+Fri Feb 1 12:00:00 UTC 2008 - Devrim Gunduz <devrim@CommandPrompt.com> 2.2.6-1
+
 - Update to 2.2.6
 
 -------------------------------------------------------------------
-Sat Jan 19 2008 Devrim Gunduz <devrim@CommandPrompt.com> 2.2.5-1
+Sat Jan 19 12:00:00 UTC 2008 - Devrim Gunduz <devrim@CommandPrompt.com> 2.2.5-1
+
 - Update to 2.2.5
 
 -------------------------------------------------------------------
-Thu Jun 21 2007 Devrim Gunduz <devrim@CommandPrompt.com> 2.2.0-1
+Thu Jun 21 12:00:00 UTC 2007 - Devrim Gunduz <devrim@CommandPrompt.com> 2.2.0-1
+
 - Initial packaging

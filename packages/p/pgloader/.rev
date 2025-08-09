@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>1126548</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8eb2cdca108761ed8b6a99207f64c09d</srcmd5>
+    <version>3.6.9</version>
+    <time>1754762357</time>
+    <user>dimstar_suse</user>
+    <comment>- disable also i586 as building fails
+
+- add the same excludearch as the sbcl package itself has
+
+also cleanup old changes entry</comment>
+    <requestid>1298377</requestid>
+  </revision>
 </revisionlist>
