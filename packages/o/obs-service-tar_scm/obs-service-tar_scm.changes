@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 01 07:05:26 UTC 2025 - Frank Schreiner <FSchreiner@suse.com>
+
+- Update to version 0.10.53:
+  * Add new --extract-rename option
+  * debian: recommend on brz instead of depending on bzr
+
+-------------------------------------------------------------------
 Mon Jun 23 15:38:37 UTC 2025 - Frank Schreiner <FSchreiner@suse.com>
 
 - Update to version 0.10.52:
