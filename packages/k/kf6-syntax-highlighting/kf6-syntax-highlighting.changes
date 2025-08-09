@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Aug  4 06:57:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.17.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.17.0
+- Changes since 6.16.0:
+  * Update dependency version to 6.17.0
+  * Add Expect syntax highlighting
+  * Tcl: fix variable and escaping char ; add new highlighting for symbols and control flow keyword
+  * Breeze Dark theme: changes the color of BuiltIn to be distinguishable from Comment (kde#458498)
+  * Bash: add new substitution commands from version 5.3: ${|cmd;} and ${ cmd;}
+  * add WebVTT syntax highlighting
+  * Agda: add opaque and unfolding keywords
+  * It compiles fine without qt 6.10 deprecated methods
+  * avoid compile warning
+  * Lua: when strings are not closed, mark only the start of the following line as an error
+  * Lua: add new function and keyword of version 5.5
+  * PERL: bracket pattern allows any character as a replacement separator
+  * PERL: add regex modifier: p, a, d, l, u and n
+  * add JSON5 highlighting
+  * JSON: add Number, String and Constant as top level value
+  * add JSONC (JSON with Comments) highlighting
+  * add NDJSON files and GeoJSON mimetype to JSON highlighting
+  * add NFTables syntax
+  * Indexer: remove check for duplicated keywords, but generate a compressed file without duplication
+  * add a dispatcher syntax for .log file
+  * add LaTeX Log File syntax
+  * Document SyntaxHighlighter
+  * add XHTML
+  * HTML generator: do not insert FindPHP and Twig/Twig rules when the context name starts with 'Find'
+  * HTML: fix comment format, Escapable raw text elements and others
+  * XML: add test for CDATA and invalid attribute in closing tag
+  * Update version to 6.17.0
+
+-------------------------------------------------------------------
 Mon Jul  7 07:24:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.16.0

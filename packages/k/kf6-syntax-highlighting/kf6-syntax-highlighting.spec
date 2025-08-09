@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-syntax-highlighting
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,11 @@
 %define qt6_version 6.8.0
 
 %define rname syntax-highlighting
-# Full KF6 version (e.g. 6.16.0)
+# Full KF6 version (e.g. 6.17.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-syntax-highlighting
-Version:        6.16.0
+Version:        6.17.0
 Release:        0
 Summary:        Syntax highlighting engine and library
 License:        LGPL-2.1-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND MIT AND BSD-3-Clause AND Artistic-1.0
