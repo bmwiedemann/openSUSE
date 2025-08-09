@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug  8 19:13:22 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 1.5.4
+  * Fixed GH-57: PHP 8.5 build failure due to usage of removed
+    zend_exception_get_default()
+  * Fixed GH-59: Failure to build with gpgme >= 2.0.0 due to romoved
+    trustlist
+- Remove 60.patch (upstreamed)
+- Remove no_uid_hint_msg.gpg that was accidentally not packaged in the
+  archive 1.5.2 available from upstream (no longer needed)
+
+-------------------------------------------------------------------
+Sat Aug  2 19:17:39 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix build with GPGME >= 2.0.0 (boo#1246848, gh#php-gnupg/php-gnupg#59)
+  + added 60.patch
+
+-------------------------------------------------------------------
 Sat Jul 19 19:24:44 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 1.5.3:

@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        PHP wrapper around the gpgme library
 License:        BSD-2-Clause
@@ -39,9 +39,9 @@ Group:          Productivity/Networking/Web/Servers
 URL:            https://pecl.php.net/gnupg
 Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 Source1:        php-%{pkg_name}-rpmlintrc
-Source2:        no_uid_hint_msg.gpg
 BuildRequires:  %{php_name}-devel
-BuildRequires:  gpgme-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gpgme)
 Requires:       php(api) = %{php_core_api}
 Requires:       php(zend-abi) = %{php_zend_api}
 Provides:       php-gnupg = %{version}
@@ -51,8 +51,7 @@ Obsoletes:      php-gnupg < %{version}
 This extension provides methods to interact with gnupg.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
-cp %{SOURCE2} tests/
+%autosetup -p1 -n %{pkg_name}-%{version}
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
