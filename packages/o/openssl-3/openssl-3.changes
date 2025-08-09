@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug  5 16:34:57 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 3.5.2:
+  * Miscellaneous minor bug fixes.
+  * The FIPS provider now performs a PCT on key import for RSA, EC and ECX.
+    This is mandated by FIPS 140-3 IG 10.3.A additional comment 1.
+- Rebase patches:
+  * openssl-FIPS-140-3-keychecks.patch
+  * openssl-FIPS-NO-DES-support.patch
+  * openssl-FIPS-enforce-EMS-support.patch
+  * openssl-disable-fipsinstall.patch
+- Move ssl configuration files to the libopenssl package [bsc#1247463]
+- Don't install unneeded NOTES
+
+-------------------------------------------------------------------
 Wed Jul 30 09:17:24 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Disable LTO for userspace livepatching [jsc#PED-13245]

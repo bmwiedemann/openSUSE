@@ -12,11 +12,11 @@ Signed-off-by: Simo Sorce <simo@redhat.com>
  test/recipes/80-test_cms.t                          |  2 +-
  5 files changed, 14 insertions(+), 13 deletions(-)
 
-Index: openssl-3.5.1/providers/fips/fipsprov.c
+Index: openssl-3.5.2/providers/fips/fipsprov.c
 ===================================================================
---- openssl-3.5.1.orig/providers/fips/fipsprov.c
-+++ openssl-3.5.1/providers/fips/fipsprov.c
-@@ -359,7 +359,8 @@ static const OSSL_ALGORITHM_CAPABLE fips
+--- openssl-3.5.2.orig/providers/fips/fipsprov.c
++++ openssl-3.5.2/providers/fips/fipsprov.c
+@@ -360,7 +360,8 @@ static const OSSL_ALGORITHM_CAPABLE fips
           ossl_cipher_capable_aes_cbc_hmac_sha256),
      ALGC(PROV_NAMES_AES_256_CBC_HMAC_SHA256, ossl_aes256cbc_hmac_sha256_functions,
           ossl_cipher_capable_aes_cbc_hmac_sha256),
@@ -26,28 +26,11 @@ Index: openssl-3.5.1/providers/fips/fipsprov.c
      ALG(PROV_NAMES_DES_EDE3_ECB, ossl_tdes_ede3_ecb_functions),
      ALG(PROV_NAMES_DES_EDE3_CBC, ossl_tdes_ede3_cbc_functions),
  #endif  /* OPENSSL_NO_DES */
-Index: openssl-3.5.1/providers/fips/self_test_data.inc
+Index: openssl-3.5.2/providers/fips/self_test_data.inc
 ===================================================================
---- openssl-3.5.1.orig/providers/fips/self_test_data.inc
-+++ openssl-3.5.1/providers/fips/self_test_data.inc
-@@ -209,6 +209,7 @@ static const ST_KAT_DIGEST st_kat_digest
- /*- CIPHER TEST DATA */
- 
- /* DES3 test data */
-+#if 0
- static const unsigned char des_ede3_cbc_pt[] = {
-     0x6B, 0xC1, 0xBE, 0xE2, 0x2E, 0x40, 0x9F, 0x96,
-     0xE9, 0x3D, 0x7E, 0x11, 0x73, 0x93, 0x17, 0x2A,
-@@ -229,7 +230,7 @@ static const unsigned char des_ede3_cbc_
-     0x51, 0x65, 0x70, 0x48, 0x1F, 0x25, 0xB5, 0x0F,
-     0x73, 0xC0, 0xBD, 0xA8, 0x5C, 0x8E, 0x0D, 0xA7
- };
--
-+#endif
- /* AES-256 GCM test data */
- static const unsigned char aes_256_gcm_key[] = {
-     0x92, 0xe1, 0x1d, 0xcd, 0xaa, 0x86, 0x6f, 0x5c,
-@@ -315,6 +316,7 @@ static const ST_KAT_CIPHER st_kat_cipher
+--- openssl-3.5.2.orig/providers/fips/self_test_data.inc
++++ openssl-3.5.2/providers/fips/self_test_data.inc
+@@ -293,6 +293,7 @@ static const ST_KAT_CIPHER st_kat_cipher
          CIPHER_MODE_DECRYPT,
          ITM(aes_128_ecb_key)
      },
@@ -55,7 +38,7 @@ Index: openssl-3.5.1/providers/fips/self_test_data.inc
  #ifndef OPENSSL_NO_DES
      {
          {
-@@ -327,6 +329,7 @@ static const ST_KAT_CIPHER st_kat_cipher
+@@ -305,6 +306,7 @@ static const ST_KAT_CIPHER st_kat_cipher
          ITM(tdes_key)
      }
  #endif
@@ -63,10 +46,10 @@ Index: openssl-3.5.1/providers/fips/self_test_data.inc
  };
  
  static const char hkdf_digest[] = "SHA256";
-Index: openssl-3.5.1/test/evp_libctx_test.c
+Index: openssl-3.5.2/test/evp_libctx_test.c
 ===================================================================
---- openssl-3.5.1.orig/test/evp_libctx_test.c
-+++ openssl-3.5.1/test/evp_libctx_test.c
+--- openssl-3.5.2.orig/test/evp_libctx_test.c
++++ openssl-3.5.2/test/evp_libctx_test.c
 @@ -831,7 +831,9 @@ int setup_tests(void)
      ADD_TEST(kem_invalid_keytype);
  #endif
@@ -78,10 +61,10 @@ Index: openssl-3.5.1/test/evp_libctx_test.c
  #endif
      return 1;
  }
-Index: openssl-3.5.1/test/recipes/30-test_evp_data/evpciph_des3_common.txt
+Index: openssl-3.5.2/test/recipes/30-test_evp_data/evpciph_des3_common.txt
 ===================================================================
---- openssl-3.5.1.orig/test/recipes/30-test_evp_data/evpciph_des3_common.txt
-+++ openssl-3.5.1/test/recipes/30-test_evp_data/evpciph_des3_common.txt
+--- openssl-3.5.2.orig/test/recipes/30-test_evp_data/evpciph_des3_common.txt
++++ openssl-3.5.2/test/recipes/30-test_evp_data/evpciph_des3_common.txt
 @@ -14,7 +14,7 @@
  Title = DES3 Tests
  
@@ -137,10 +120,10 @@ Index: openssl-3.5.1/test/recipes/30-test_evp_data/evpciph_des3_common.txt
  Cipher = DES-EDE3-ECB
  Operation = ENCRYPT
  Unapproved = 1
-Index: openssl-3.5.1/test/recipes/80-test_cms.t
+Index: openssl-3.5.2/test/recipes/80-test_cms.t
 ===================================================================
---- openssl-3.5.1.orig/test/recipes/80-test_cms.t
-+++ openssl-3.5.1/test/recipes/80-test_cms.t
+--- openssl-3.5.2.orig/test/recipes/80-test_cms.t
++++ openssl-3.5.2/test/recipes/80-test_cms.t
 @@ -398,7 +398,7 @@ my @smime_cms_tests = (
        \&final_compare
      ],

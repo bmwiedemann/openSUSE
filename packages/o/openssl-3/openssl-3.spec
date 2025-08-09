@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@
 %define livepatchable 1
 
 Name:           openssl-3
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        Apache-2.0
@@ -325,6 +325,11 @@ rm -f %{buildroot}%{_libdir}/*.a
 rm -f %{buildroot}%{ssletcdir}/openssl.cnf.dist
 rm -f %{buildroot}%{ssletcdir}/ct_log_list.cnf.dist
 
+# Remove unneeded NOTES files
+for file in NOTES-ANDROID.md NOTES-DJGPP.md NOTES-NONSTOP.md NOTES-VMS.md NOTES-WINDOWS.md ; do
+    rm -f %{_datadir}/packages/libopenssl-3-devel/${file}
+done
+
 # Make a copy of the default openssl.cnf file
 cp %{buildroot}%{ssletcdir}/openssl.cnf %{buildroot}%{ssletcdir}/openssl-orig.cnf
 
@@ -388,9 +393,21 @@ fi
 %{_libdir}/ossl-modules/legacy.so
 %{_libdir}/.libssl.so.%{sover}.hmac
 %{_libdir}/.libcrypto.so.%{sover}.hmac
+%dir %{ssletcdir}
+%attr(700,root,root) %{ssletcdir}/private
+%config %{ssletcdir}/openssl-orig.cnf
+%config (noreplace) %{ssletcdir}/openssl.cnf
+%config (noreplace) %{ssletcdir}/ct_log_list.cnf
+%dir %{_datadir}/ssl
+%{_datadir}/ssl/misc
+%dir %{_localstatedir}/lib/ca-certificates/
+%dir %{_localstatedir}/lib/ca-certificates/openssl
 
 %files -n libopenssl-3-fips-provider
 %{_libdir}/ossl-modules/fips.so
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600
+%config %{ssletcdir}/fips_local.cnf
+%endif
 
 %files -n libopenssl-3-devel
 %doc NOTES*.md CONTRIBUTING.md HACKING.md AUTHORS.md ACKNOWLEDGEMENTS.md
@@ -411,18 +428,6 @@ fi
 %files
 %license LICENSE.txt
 %doc CHANGES.md NEWS.md README.md
-%dir %{ssletcdir}
-%config %{ssletcdir}/openssl-orig.cnf
-%config (noreplace) %{ssletcdir}/openssl.cnf
-%config (noreplace) %{ssletcdir}/ct_log_list.cnf
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600
-%config %{ssletcdir}/fips_local.cnf
-%endif
-%attr(700,root,root) %{ssletcdir}/private
-%dir %{_datadir}/ssl
-%{_datadir}/ssl/misc
-%dir %{_localstatedir}/lib/ca-certificates/
-%dir %{_localstatedir}/lib/ca-certificates/openssl
 %{_bindir}/%{_rname}
 %{_bindir}/c_rehash
 %{_mandir}/man1/*

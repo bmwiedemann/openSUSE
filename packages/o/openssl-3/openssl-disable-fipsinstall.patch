@@ -23,10 +23,10 @@ From-dist-git-commit: 4334bc837fbc64d14890fdc51679a80770d498ce
  mode change 100644 => 100755 test/recipes/01-test_fipsmodule_cnf.t
  mode change 100644 => 100755 test/recipes/03-test_fipsinstall.t
 
-Index: openssl-3.5.0-beta1/apps/fipsinstall.c
+Index: openssl-3.5.2/apps/fipsinstall.c
 ===================================================================
---- openssl-3.5.0-beta1.orig/apps/fipsinstall.c
-+++ openssl-3.5.0-beta1/apps/fipsinstall.c
+--- openssl-3.5.2.orig/apps/fipsinstall.c
++++ openssl-3.5.2/apps/fipsinstall.c
 @@ -590,6 +590,9 @@ int fipsinstall_main(int argc, char **ar
      EVP_MAC *mac = NULL;
      CONF *conf = NULL;
@@ -37,14 +37,15 @@ Index: openssl-3.5.0-beta1/apps/fipsinstall.c
      if ((opts = sk_OPENSSL_STRING_new_null()) == NULL)
          goto end;
  
-Index: openssl-3.5.0-beta1/doc/man1/openssl-fipsinstall.pod.in
+Index: openssl-3.5.2/doc/man1/openssl-fipsinstall.pod.in
 ===================================================================
---- openssl-3.5.0-beta1.orig/doc/man1/openssl-fipsinstall.pod.in
-+++ openssl-3.5.0-beta1/doc/man1/openssl-fipsinstall.pod.in
-@@ -8,488 +8,9 @@ openssl-fipsinstall - perform FIPS confi
+--- openssl-3.5.2.orig/doc/man1/openssl-fipsinstall.pod.in
++++ openssl-3.5.2/doc/man1/openssl-fipsinstall.pod.in
+@@ -7,485 +7,9 @@ openssl-fipsinstall - perform FIPS confi
+ 
  =head1 SYNOPSIS
  
- B<openssl fipsinstall>
+-B<openssl fipsinstall>
 -[B<-help>]
 -[B<-in> I<configfilename>]
 -[B<-out> I<configfilename>]
@@ -274,9 +275,7 @@ Index: openssl-3.5.0-beta1/doc/man1/openssl-fipsinstall.pod.in
 -
 -=item B<-hkdf_digest_check>
 -
--Configure the module to enable a run-time digest check when deriving a key by
--HKDF.
--See NIST SP 800-56Cr2 for details.
+-This option is deprecated.
 -
 -=item B<-tls13_kdf_digest_check>
 -
@@ -298,9 +297,7 @@ Index: openssl-3.5.0-beta1/doc/man1/openssl-fipsinstall.pod.in
 -
 -=item B<-sskdf_digest_check>
 -
--Configure the module to enable a run-time digest check when deriving a key by
--SSKDF.
--See NIST SP 800-56Cr2 for details.
+-This option is deprecated.
 -
 -=item B<-x963kdf_digest_check>
 -
@@ -533,11 +530,11 @@ Index: openssl-3.5.0-beta1/doc/man1/openssl-fipsinstall.pod.in
  
  =head1 COPYRIGHT
  
-Index: openssl-3.5.0-beta1/doc/man1/openssl.pod
+Index: openssl-3.5.2/doc/man1/openssl.pod
 ===================================================================
---- openssl-3.5.0-beta1.orig/doc/man1/openssl.pod
-+++ openssl-3.5.0-beta1/doc/man1/openssl.pod
-@@ -137,10 +137,6 @@ Engine (loadable module) information and
+--- openssl-3.5.2.orig/doc/man1/openssl.pod
++++ openssl-3.5.2/doc/man1/openssl.pod
+@@ -139,10 +139,6 @@ Engine (loadable module) information and
  
  Error Number to Error String Conversion.
  
@@ -548,10 +545,10 @@ Index: openssl-3.5.0-beta1/doc/man1/openssl.pod
  =item B<gendsa>
  
  Generation of DSA Private Key from Parameters. Superseded by
-Index: openssl-3.5.0-beta1/doc/man5/config.pod
+Index: openssl-3.5.2/doc/man5/config.pod
 ===================================================================
---- openssl-3.5.0-beta1.orig/doc/man5/config.pod
-+++ openssl-3.5.0-beta1/doc/man5/config.pod
+--- openssl-3.5.2.orig/doc/man5/config.pod
++++ openssl-3.5.2/doc/man5/config.pod
 @@ -582,7 +582,6 @@ configuration files using that syntax wi
  =head1 SEE ALSO
  
@@ -560,11 +557,11 @@ Index: openssl-3.5.0-beta1/doc/man5/config.pod
  L<ASN1_generate_nconf(3)>,
  L<EVP_set_default_properties(3)>,
  L<CONF_modules_load(3)>,
-Index: openssl-3.5.0-beta1/doc/man5/fips_config.pod
+Index: openssl-3.5.2/doc/man5/fips_config.pod
 ===================================================================
---- openssl-3.5.0-beta1.orig/doc/man5/fips_config.pod
-+++ openssl-3.5.0-beta1/doc/man5/fips_config.pod
-@@ -6,230 +6,10 @@ fips_config - OpenSSL FIPS configuration
+--- openssl-3.5.2.orig/doc/man5/fips_config.pod
++++ openssl-3.5.2/doc/man5/fips_config.pod
+@@ -6,224 +6,10 @@ fips_config - OpenSSL FIPS configuration
  
  =head1 DESCRIPTION
  
@@ -624,17 +621,11 @@ Index: openssl-3.5.0-beta1/doc/man5/fips_config.pod
 -
 -=item B<install-status>
 -
--An indicator that the self-tests were successfully run.
--This should only be written after the module has
--successfully passed its self tests during installation.
--If this field is not present, then the self tests will run when the module
--loads.
+-This field is deprecated and is no longer used.
 -
 -=item B<install-mac>
 -
--A MAC of the value of the B<install-status> option, to prevent accidental
--changes to that value.
--It is written-to at the same time as B<install-status> is updated.
+-This field is deprecated and is no longer used.
 -
 -=back
 -
@@ -674,7 +665,7 @@ Index: openssl-3.5.0-beta1/doc/man5/fips_config.pod
 -
 -=item B<hkdf-digest-check>
 -
--See L<openssl-fipsinstall(1)/OPTIONS> B<-hkdf_digest_check>
+-This option is deprecated.
 -
 -=item B<tls13-kdf-digest-check>
 -
@@ -690,7 +681,7 @@ Index: openssl-3.5.0-beta1/doc/man5/fips_config.pod
 -
 -=item B<sskdf-digest-check>
 -
--See L<openssl-fipsinstall(1)/OPTIONS> B<-sskdf_digest_check>
+-This option is deprecated.
 -
 -=item B<x963kdf-digest-check>
 -
@@ -799,11 +790,11 @@ Index: openssl-3.5.0-beta1/doc/man5/fips_config.pod
  
  =head1 COPYRIGHT
  
-Index: openssl-3.5.0-beta1/doc/man7/OSSL_PROVIDER-FIPS.pod
+Index: openssl-3.5.2/doc/man7/OSSL_PROVIDER-FIPS.pod
 ===================================================================
---- openssl-3.5.0-beta1.orig/doc/man7/OSSL_PROVIDER-FIPS.pod
-+++ openssl-3.5.0-beta1/doc/man7/OSSL_PROVIDER-FIPS.pod
-@@ -575,7 +575,6 @@ want to operate in a FIPS approved manne
+--- openssl-3.5.2.orig/doc/man7/OSSL_PROVIDER-FIPS.pod
++++ openssl-3.5.2/doc/man7/OSSL_PROVIDER-FIPS.pod
+@@ -570,7 +570,6 @@ process.
  
  =head1 SEE ALSO
  
@@ -811,10 +802,10 @@ Index: openssl-3.5.0-beta1/doc/man7/OSSL_PROVIDER-FIPS.pod
  L<fips_config(5)>,
  L<OSSL_SELF_TEST_set_callback(3)>,
  L<OSSL_SELF_TEST_new(3)>,
-Index: openssl-3.5.0-beta1/test/recipes/00-prep_fipsmodule_cnf.t
+Index: openssl-3.5.2/test/recipes/00-prep_fipsmodule_cnf.t
 ===================================================================
---- openssl-3.5.0-beta1.orig/test/recipes/00-prep_fipsmodule_cnf.t
-+++ openssl-3.5.0-beta1/test/recipes/00-prep_fipsmodule_cnf.t
+--- openssl-3.5.2.orig/test/recipes/00-prep_fipsmodule_cnf.t
++++ openssl-3.5.2/test/recipes/00-prep_fipsmodule_cnf.t
 @@ -29,8 +29,10 @@ my $fipsmoduleconf = bldtop_file('test',
  
  plan tests => 1;
@@ -830,10 +821,10 @@ Index: openssl-3.5.0-beta1/test/recipes/00-prep_fipsmodule_cnf.t
 +#            '-module', $fipsmodule, '-provider_name', 'fips',
 +#            '-section_name', 'fips_sect', '-out', $fipsmoduleconf])),
 +#   "fips install");
-Index: openssl-3.5.0-beta1/test/recipes/01-test_fipsmodule_cnf.t
+Index: openssl-3.5.2/test/recipes/01-test_fipsmodule_cnf.t
 ===================================================================
---- openssl-3.5.0-beta1.orig/test/recipes/01-test_fipsmodule_cnf.t
-+++ openssl-3.5.0-beta1/test/recipes/01-test_fipsmodule_cnf.t
+--- openssl-3.5.2.orig/test/recipes/01-test_fipsmodule_cnf.t
++++ openssl-3.5.2/test/recipes/01-test_fipsmodule_cnf.t
 @@ -31,7 +31,8 @@ plan tests => 1;
  my $fipsmodule = bldtop_file('providers', platform->dso('fips'));
  my $fipsmoduleconf = bldtop_file('test', 'fipsmodule.cnf');
@@ -846,10 +837,10 @@ Index: openssl-3.5.0-beta1/test/recipes/01-test_fipsmodule_cnf.t
 +#ok(run(app(['openssl', 'fipsinstall',
 +#            '-in',  $fipsmoduleconf, '-module', $fipsmodule, '-verify'])),
 +#   "fipsinstall verify");
-Index: openssl-3.5.0-beta1/test/recipes/03-test_fipsinstall.t
+Index: openssl-3.5.2/test/recipes/03-test_fipsinstall.t
 ===================================================================
---- openssl-3.5.0-beta1.orig/test/recipes/03-test_fipsinstall.t
-+++ openssl-3.5.0-beta1/test/recipes/03-test_fipsinstall.t
+--- openssl-3.5.2.orig/test/recipes/03-test_fipsinstall.t
++++ openssl-3.5.2/test/recipes/03-test_fipsinstall.t
 @@ -22,6 +22,8 @@ use lib srctop_dir('Configurations');
  use lib bldtop_dir('.');
  use platform;
