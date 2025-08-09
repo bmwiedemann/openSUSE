@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug  4 06:57:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.17.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.17.0
+- Changes since 6.16.0:
+  * Update dependency version to 6.17.0
+  * Require less precise timing in kformattest
+  * fix crash/stack overflow on drive removal on Windows (kde#499865)
+  * QStaticPlugin is a struct, no class
+  * widen the intervals
+  * fix jobtest on Windows
+  * Fix reading of localized JSON values on Windows (and macOS)
+  * It compiles fine without qt 6.10 deprecated methods
+  * [kpluginmetadata] Tweak docs
+  * Fix since version
+  * Update version to 6.17.0
+
+-------------------------------------------------------------------
 Mon Jul  7 07:24:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.16.0
