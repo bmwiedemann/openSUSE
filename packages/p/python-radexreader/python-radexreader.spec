@@ -17,7 +17,7 @@
 
 
 Name:           python-radexreader
-Version:        1.2.5
+Version:        1.3.0
 Release:        0
 Summary:        Reader for the RADEX RD1212 and ONE Geiger counters
 License:        GPL-2.0-or-later
@@ -59,9 +59,11 @@ cd src
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 install -Dpm 755 radexreader-cli.py %{buildroot}%{_bindir}/radexreader
+install -Dpm 644 ../data/radexreader.bash %{buildroot}%{_datadir}/bash-completion/completions/radexreader
 install -Dpm 644 ../data/radexreader.1 %{buildroot}%{_mandir}/man1/radexreader.1
 install -Dpm 644 ../data/radexreader.fr.1 %{buildroot}%{_mandir}/fr/man1/radexreader.1
 %python_clone -a %{buildroot}%{_bindir}/radexreader
+%python_clone -a %{buildroot}%{_datadir}/bash-completion/completions/radexreader
 %python_clone -a %{buildroot}%{_mandir}/man1/radexreader.1
 %python_clone -a %{buildroot}%{_mandir}/fr/man1/radexreader.1
 %python_expand install -Dpm 644 ../scripts/debian/python3-radexreader.udev %{buildroot}%{_udevrulesdir}/60-python%{$python_bin_suffix}-radexreader.rules
@@ -72,6 +74,7 @@ install -Dpm 644 ../data/radexreader.fr.1 %{buildroot}%{_mandir}/fr/man1/radexre
 %{python_sitelib}/radexreader
 %{python_sitelib}/radexreader-%{version}.dist-info
 %python_alternative %{_bindir}/radexreader
+%python_alternative %{_datadir}/bash-completion/completions/radexreader
 %python_alternative %{_mandir}/man1/radexreader.1%{?ext_man}
 %python_alternative %{_mandir}/fr/man1/radexreader.1%{?ext_man}
 %{_udevrulesdir}/60-python%{python_bin_suffix}-radexreader.rules
