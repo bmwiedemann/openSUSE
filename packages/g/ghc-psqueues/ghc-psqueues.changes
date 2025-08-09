@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug  8 13:56:11 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update psqueues to version 0.2.8.2.
+  - 0.2.8.2 (2025-08-08)
+      * Use Straka's balancing algorithm for OrdPSQ (#64):
+
+        Milan Straka's paper 'Adams’ Trees Revisited' argues that Adams'
+        balancing algorithm previously did not have a correct proof. It
+        provides a proof of a slightly modified balancing algorithm that
+        prefers single rotations in many more cases. The small change
+        specified in that paper fixes the frequent quickcheck failures
+        exposed when the balance test was made more precise.
+
+      * Remove unnecessary dependencies: array, containers, ghc-prim, mtl,
+        unordered-containers
+
+-------------------------------------------------------------------
 Tue Jan 28 00:07:51 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update psqueues to version 0.2.8.1.

@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.8.1
+Version:        0.2.8.2
 Release:        0
 Summary:        Pure priority search queues
 License:        BSD-3-Clause
@@ -40,8 +40,6 @@ BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-HUnit-prof
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
-BuildRequires:  ghc-array-devel
-BuildRequires:  ghc-array-prof
 BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-tagged-prof
 BuildRequires:  ghc-tasty-devel
