@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  8 10:37:30 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add CVE-2025-50952.patch: guard against zero offset to a
+  potential nullptr (bsc#1247798,CVE-2025-50952); patch based on
+  upstream git master commit 0f3ca81 (gh#uclouvain/openjpeg#1510).
+
+-------------------------------------------------------------------
 Fri May  9 21:01:36 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to version 6.0.1:

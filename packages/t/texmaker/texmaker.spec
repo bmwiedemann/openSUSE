@@ -1,7 +1,7 @@
 #
 # spec file for package texmaker
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,12 +27,14 @@ License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            http://www.xm1math.net/texmaker/
 Source:         http://www.xm1math.net/texmaker/texmaker-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM CVE-2025-50952.patch bsc#1247798 badshah400@gmail.com -- Guard against 0 offset to nullptr in openjpeg bundled with pdfium
+Patch0:         CVE-2025-50952.patch
 BuildRequires:  cmake
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-base-private-devel
-BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(Qt6Concurrent)
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Core5Compat)
