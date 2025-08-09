@@ -20,7 +20,7 @@
 %define version_suf %{nil}
 
 Name:           openucx
-Version:        1.18.1
+Version:        1.19.0
 Release:        0
 Summary:        Communication layer for Message Passing (MPI)
 License:        BSD-3-Clause
@@ -32,13 +32,6 @@ URL:            http://openucx.org/
 Source:         https://github.com/openucx/ucx/releases/download/v%version%{?version_suf}/ucx-%version.tar.gz
 Patch1:         openucx-s390x-support.patch
 Patch2:         ucm-fix-UCX_MEM_MALLOC_RELOC.patch
-Patch3:         UCT-IB-UD-Use-GRH-to-detect-address-family-on-non-Mellanox-hardware.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         openucx-strict-headers.patch
-# additional strict-header fixes
-Patch5:         openucx-strict-headers-additional.patch
-# PATCH-FIX-UPSTREAM
-Patch6:         openucx-extern-c.patch
 BuildRequires:  autoconf >= 2.63
 BuildRequires:  automake >= 1.10
 BuildRequires:  binutils-devel
@@ -249,6 +242,7 @@ mv %buildroot/%_bindir/io_demo  %buildroot/%_libexecdir/%{name}/
 %_libdir/pkgconfig/ucx-uct.pc
 %_libdir/pkgconfig/ucx-cma.pc
 %_libdir/pkgconfig/ucx-ib.pc
+%_libdir/pkgconfig/ucx-ib-efa.pc
 %_libdir/pkgconfig/ucx-ib-mlx5.pc
 %_libdir/pkgconfig/ucx-rdmacm.pc
 

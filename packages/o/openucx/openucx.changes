@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Jun 25 15:49:50 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to ucx 1.19.0
+  - UCP
+    - Enabled multi-GPU support within a single process
+    - Added dynamic selection between strong and weak fences in RMA flush operations
+    - Improved endpoint reconfiguration capabilities
+    - Added All2All lane selection for multi-NIC-GPU systems
+    - Improved rkey debug info when config cache limit is reached
+    - Improved UCP protocol selection based on available memory types
+    - Removed dummy memory key from irrelevant transports (TCP, CMA and CUDA)
+    - Improved RNDV performance with device-local staging buffers
+    - Enabled error handling for RMA get_offload protocols
+    - Made UCX_TLS=^ib disable all transports including auxiliary
+    - Fixed send request status handling
+    - Fixed performance degradation in RNDV by optimizing md cache updates
+    - Fixed protocol selection when first lane is filtered out by fragment size
+    - Fixed rkey selection by using memory registration flag
+  - UCT
+    - Defined uct_rkey_unpack_v2 API to support passing sys-dev
+  - RDMA CORE (IB, ROCE, etc.)
+    - Added SRD transport support in EFA with reordering, AM, and control operations
+    - Removed XGVMI BF2 support (umem)
+    - Removed device memory indirect key
+    - Fixed VFS objects for DCIs and pools
+    - Added routing table cache to the reachability check
+    - Fixed strict order usage in IB auxiliary rkeys
+    - Improved various init logging messages
+    - Improved reliability of DC transport by adding DCI validation and separating connection logic
+    - Fixed segfault in DC fence operation
+  - UCS
+    - Removed compilation warnings
+    - Use UCS function for counting leading zeros on x86 architecture
+    - Fixed a compilation warning
+  - Shared Memory
+    - Fixed FIFO availability check for sm transport
+  - Tools
+    - Added name filter option (-F 'str') to ucx_info for config and feature dumps
+    - Improved ucx_info input validation
+  - Documentation
+    - Fixed open-mpi clone instruction
+  - Build
+    - Fixed enum-int-mismatch warnings with GCC 15
+- Drop patches merged upstream:
+  - UCT-IB-UD-Use-GRH-to-detect-address-family-on-non-Mellanox-hardware.patch
+  - openucx-extern-c.patch
+  - openucx-strict-headers-additional.patch
+  - openucx-strict-headers.patch
+
+-------------------------------------------------------------------
 Thu Jun 12 08:28:59 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to ucx 1.18.1
