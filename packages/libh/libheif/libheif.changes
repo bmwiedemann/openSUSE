@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug  8 00:55:54 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.20.2:
+  - When opening tiled images, do not check against maximum image
+    size immediately to allow for tile-based decoding of very large
+    images.
+  - Several smaller fixes in writing image sequences
+  - CMake option to disable building of heif-view, which pulls in
+    dependency on SDL
+  - Fixes reading/writing of GIMI content IDs
+  - Some build fixes
+
+-------------------------------------------------------------------
 Tue Jul 29 08:01:31 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Remove conditionals for openh264, we can build against noopenh264
