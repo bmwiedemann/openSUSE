@@ -4,11 +4,9 @@ Date: Tue Jun 10 09:22:10 2025 +0200:
 Git: 62f976a61b0363b9e6a0eac1fd2e8553d24d5457
 
 
-diff --git a/virtManager/storagebrowse.py b/virtManager/storagebrowse.py
-index 8e8239b4d..d8c70c925 100644
 --- a/virtManager/storagebrowse.py
 +++ b/virtManager/storagebrowse.py
-@@ -176,6 +176,7 @@ class vmmStorageBrowser(vmmGObjectUI):
+@@ -181,6 +181,7 @@ class vmmStorageBrowser(vmmGObjectUI):
          data = _BrowseReasonMetadata(self._browse_reason)
          gsettings_key = data.gsettings_key
  

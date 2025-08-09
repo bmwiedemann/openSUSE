@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 28 10:49:22 MDT 2025 - carnold@suse.com
+
+- Add support for creating TDX guests in virt-install
+  053-virtinst-add-support-for-creating-TDX-guests.patch
+
+-------------------------------------------------------------------
 Wed Jun 18 14:06:18 MDT 2025 - carnold@suse.com
 
 - bsc#1244685 - Could not find an installable distribution with
@@ -3474,7 +3480,7 @@ Wed Jan 22 11:03:50 MST 2014 - carnold@suse.com
 - Add sles12/sled12 as supported distros
 
 -------------------------------------------------------------------
-Thu Jan 07 14:25:13 MDT 2014 - carnold@suse.com
+Tue Jan 07 14:25:13 MST 2014 - carnold@suse.com
 
 - Translate virt-install.ycp to virt-install.rb
   Added virt-install.rb
@@ -3491,7 +3497,7 @@ Sat Dec 14 16:49:34 CET 2013 - ohering@suse.de
 - Pass --prefix to setup.py to fix build in 12.2 and older
 
 -------------------------------------------------------------------
-Mon Dec  9 16:35:32 MDT 2013 - carnold@suse.com
+Mon Dec  9 16:35:32 MST 2013 - carnold@suse.com
 
 - Allow vm-install to be launched from the menu as an independent
   process.
@@ -3503,7 +3509,7 @@ Mon Dec  9 18:34:01 UTC 2013 - cbosdonnat@suse.com
   virtman-support-unsafe-migration.patch
 
 -------------------------------------------------------------------
-Mon Nov 25 16:12:07 MDT 2013 - carnold@suse.com
+Mon Nov 25 16:12:07 MST 2013 - carnold@suse.com
 
 - fate#316388: virt-manager: Support the latest version (0.10.x or newer)
   virt-manager-0.10.0.tar.bz2
@@ -3938,7 +3944,7 @@ Wed Mar 23 08:31:23 MDT 2011 - carnold@novell.com
   virtman-connect-consoles-fix.diff
 
 -------------------------------------------------------------------
-Thu Mar 21 13:34:41 MST 2011 - carnold@novell.com
+Thu Mar 21 13:34:41 MDT 2011 - carnold@novell.com
 
 - Update to virt-manager 0.8.6
   * SPICE support (requires spice-gtk) (Marc-André Lureau)

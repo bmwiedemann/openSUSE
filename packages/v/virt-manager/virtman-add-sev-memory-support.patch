@@ -171,8 +171,8 @@ Index: virt-manager-5.0.0/virtinst/domain/launch_security.py
 ===================================================================
 --- virt-manager-5.0.0.orig/virtinst/domain/launch_security.py
 +++ virt-manager-5.0.0/virtinst/domain/launch_security.py
-@@ -25,8 +25,12 @@ class DomainLaunchSecurity(XMLBuilder):
-     vcek = XMLProperty("./@vcek", is_yesno=True)
+@@ -30,8 +30,12 @@ class DomainLaunchSecurity(XMLBuilder):
+     quoteGenerationSocket = XMLProperty("./quoteGenerationService/@path")
  
      def _set_defaults_sev(self, guest):
 -        if not guest.os.is_q35() or not guest.is_uefi():

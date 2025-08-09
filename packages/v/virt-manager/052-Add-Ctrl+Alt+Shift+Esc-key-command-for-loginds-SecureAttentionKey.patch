@@ -7,11 +7,9 @@ logind now supports a new key binding https://github.com/systemd/systemd/pull/29
 Ctrl+Alt+Shift+Esc that emits SecureAttentionKey to allow login managers to start
 or switch back to the greeter
 
-diff --git a/virtManager/details/console.py b/virtManager/details/console.py
-index 54b587772..e68bb9ac8 100644
 --- a/virtManager/details/console.py
 +++ b/virtManager/details/console.py
-@@ -120,6 +120,7 @@ def build_keycombo_menu(on_send_key_fn):
+@@ -119,6 +119,7 @@ def build_keycombo_menu(on_send_key_fn):
  
      make_item("<Control><Alt>BackSpace", ["Control_L", "Alt_L", "BackSpace"])
      make_item("<Control><Alt>Delete", ["Control_L", "Alt_L", "Delete"])

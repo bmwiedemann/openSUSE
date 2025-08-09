@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package virt-manager
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -86,6 +86,7 @@ Patch49:        049-virt-install-detect-wayland-in-order-to-start-virt-viewer.pa
 Patch50:        050-Validation-allow-spaces-disallow-slashes.patch
 Patch51:        051-fix-default-start_folder-to-None.patch
 Patch52:        052-Add-Ctrl+Alt+Shift+Esc-key-command-for-loginds-SecureAttentionKey.patch
+Patch53:        053-virtinst-add-support-for-creating-TDX-guests.patch
 Patch100:       revert-363fca41-virt-install-Require-osinfo-for-non-x86-HVM-case-too.patch
 # SUSE Only
 Patch150:       virtman-desktop.patch
@@ -302,6 +303,10 @@ donttest="$donttest or testCLI0458virt_clone"
 donttest="$donttest or testCLI0460virt_clone"
 donttest="$donttest or testCLI0461virt_clone"
 donttest="$donttest or testCLI0468virt_clone"
+donttest="$donttest or testCLI0472virt_clone_x86_64_launch_security_tdx"
+donttest="$donttest or testCLI0473virt_clone_x86_64_launch_security_tdx_qgs"
+donttest="$donttest or testCLI0474virt_clone_x86_64_launch_security_tdx_full"
+donttest="$donttest or testCLI0475virt_clone"
 donttest="$donttest or test_virtinstall_no_testsuite"
 donttest="$donttest or testCheckXMLBuilderProps"
 donttest="$donttest or testCheckCLISuboptions"
