@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug  4 06:57:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.17.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.17.0
+- Too many changes since 6.16.0, only listing bugfixes:
+  * Fix SoftwareRectangleNode creating QSGImageNode's without texture (kde#506991)
+- Drop patches:
+  * 0001-Revert-Fix-SoftwareRectangleNode-leaking-image-nodes.patch
+  * 0002-Revert-Fix-ShadowedTexture-crashing-with-software-re.patch
+  * 0003-Fix-SoftwareRectangleNode-creating-QSGImageNode-s-wi.patch
+
+-------------------------------------------------------------------
 Mon Jul 14 11:33:43 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Replace 0001-Fix-another-ShadowedTexture-crash-with-software-rend.patch

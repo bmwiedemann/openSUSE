@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-kirigami
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,11 @@
 %define qt6_version 6.8.0
 
 %define rname kirigami
-# Full KF6 version (e.g. 6.16.0)
+# Full KF6 version (e.g. 6.17.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kirigami
-Version:        6.16.0
+Version:        6.17.0
 Release:        0
 Summary:        Set of QtQuick components
 License:        LGPL-2.1-or-later
@@ -33,10 +33,6 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-UPSTREAM https://invent.kde.org/frameworks/kirigami/-/merge_requests/1884
-Patch1:         0001-Revert-Fix-SoftwareRectangleNode-leaking-image-nodes.patch
-Patch2:         0002-Revert-Fix-ShadowedTexture-crashing-with-software-re.patch
-Patch3:         0003-Fix-SoftwareRectangleNode-creating-QSGImageNode-s-wi.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
@@ -74,8 +70,8 @@ Based on Qt Quick Controls 2. This package contains the base shared libraries.
 %package devel
 Summary:        Development package for kirigami
 Requires:       libKirigamiPlatform6 = %{version}
-Requires:       cmake(Qt6Concurrent) >= %{qt6_version}
 Requires:       cmake(Qt6Core) >= %{qt6_version}
+Requires:       cmake(Qt6Concurrent) >= %{qt6_version}
 Requires:       cmake(Qt6Qml) >= %{qt6_version}
 Requires:       cmake(Qt6Quick) >= %{qt6_version}
 
@@ -120,6 +116,7 @@ Development files.
 %{_kf6_libdir}/libKirigamiPlatform.so.*
 %{_kf6_libdir}/libKirigamiPrimitives.so.*
 %{_kf6_libdir}/libKirigamiPolyfill.so.*
+%{_kf6_libdir}/libKirigamiTemplates.so.*
 
 %files devel
 %{_kf6_cmakedir}/KF6Kirigami/
@@ -136,6 +133,7 @@ Development files.
 %{_kf6_libdir}/libKirigamiPrimitives.so
 %{_kf6_libdir}/libKirigamiPrivate.so
 %{_kf6_libdir}/libKirigamiPolyfill.so
+%{_kf6_libdir}/libKirigamiTemplates.so
 %{_kf6_sharedir}/kdevappwizard/templates/kirigami6.tar.bz2
 
 %files lang -f libkirigami6.lang

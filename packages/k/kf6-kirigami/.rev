@@ -188,4 +188,12 @@
   * 0003-Fix-SoftwareRectangleNode-creating-QSGImageNode-s-wi.patch (forwarded request 1293125 from Vogtinator)</comment>
     <requestid>1293136</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>da36ac098a44d298b89b14cb6f620406</srcmd5>
+    <version>6.17.0</version>
+    <time>1754762285</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.17 (forwarded request 1298400 from krop)</comment>
+    <requestid>1298548</requestid>
+  </revision>
 </revisionlist>
