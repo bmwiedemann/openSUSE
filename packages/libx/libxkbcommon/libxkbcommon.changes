@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Aug  8 19:37:15 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.11.0
+  * New keymap text format, `XKB_KEYMAP_FORMAT_TEXT_V2` (not yet
+    frozen and considered a living standard).
+  * Added the new parameter `lockOnRelease` for the key action
+    `LockGroup()`.
+  * Added the new parameter `unlockOnPress` for the key modifier
+    action `SetMods()`, `LatchMods()` and `LockMods()`
+  * Added the new parameter `latchOnPress` for the key action
+    `LatchMods()`.
+  * Raised the layout count limit from 4 to 32. Requires using
+    `XKB_KEYMAP_FORMAT_TEXT_V2`.
+  * Virtual modifiers are now mapped to their_canonical encoding if
+    they are not mapped explicitly.
+  * Added support for the constants `Level<INDEX>` for any valid
+    level index.
+
+-------------------------------------------------------------------
 Wed May 21 19:27:50 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.10.0
