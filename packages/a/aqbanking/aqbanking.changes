@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  5 12:58:21 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.6.1
+  * aqhbci: fixed a reason for segfault.
+  * aqfints: only verify pin in server mode.
+  * Fix invalid PAIN file format
+
+-------------------------------------------------------------------
 Thu Jan  2 01:31:43 UTC 2025 - Nico Kruber <nico.kruber@gmail.com>
 
 - Update to 6.6.0
