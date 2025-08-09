@@ -184,4 +184,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Update DSP firmware for qcm6490 platform</comment>
     <requestid>1297880</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>164dbc34f3973cf0e7f0858dbce78ada</srcmd5>
+    <version>20250808</version>
+    <time>1754762353</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250808 (git commit 8f1ce114de6c):
+  * qcom: Add QDSP firmware file for Qualcomm QDU100 device.
+  * qcom: Update xbl_config firmware file.</comment>
+    <requestid>1298509</requestid>
+  </revision>
 </revisionlist>

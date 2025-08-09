@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug  9 07:38:46 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250808 (git commit 8f1ce114de6c):
+  * qcom: Add QDSP firmware file for Qualcomm QDU100 device.
+  * qcom: Update xbl_config firmware file.
+
+-------------------------------------------------------------------
 Tue Aug  5 12:22:51 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases for 6.16
