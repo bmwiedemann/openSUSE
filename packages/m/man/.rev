@@ -1119,4 +1119,24 @@
   * Explicit mention `export' instead of `set' for MAN_POSIXLY_CORRECT</comment>
     <requestid>1267605</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>256fca09228031943d092734cd925ff4</srcmd5>
+    <version>2.13.1</version>
+    <time>1754762237</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to man-db 2.13.1 (2 May 2025)
+  * Update various manual page translation
+  * Fix various minor formatting issues in manual pages.
+  * Tolerate additional spaces in preprocessor strings.
+  * Fix check for generated source files in out-of-tree builds.
+  * Fix building with the `musl` C library.
+  * Recognize another Ukrainian translation of the `NAME` section.
+  * Increase the maximum size of the `NAME` section from 8192 to 16384 bytes.
+- Port patches
+  * man-db-2.6.3-listall.dif
+  * man-db-2.9.4.patch
+
+- Avoid latest gettextize as it breaks build now</comment>
+    <requestid>1298345</requestid>
+  </revision>
 </revisionlist>

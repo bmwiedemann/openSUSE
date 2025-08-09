@@ -227,7 +227,7 @@ diff --git a/src/lexgrog.l b/src/lexgrog.l
  
 -#define YY_READ_BUF_SIZE	1024
 +#define YY_READ_BUF_SIZE	YY_BUF_SIZE
- #define MAX_NAME		8192
+ #define MAX_NAME		16384
  
  /* defines the ordered list of filters detected by lexgrog */
 @@ -227,15 +227,15 @@ static const struct macro perldocs[] = {
@@ -358,7 +358,7 @@ diff --git a/src/lexgrog.l b/src/lexgrog.l
  	{bol}\.Nd{blank}*			{
 diff --git a/src/man.c b/src/man.c
 --- a/src/man.c
-+++ b/src/man.c
++++ b/src/man.c	2025-08-08 06:51:32.192263735 +0000
 @@ -56,6 +56,8 @@
  #include <termios.h>
  #include <time.h>
@@ -389,7 +389,7 @@ diff --git a/src/man.c b/src/man.c
  
  #ifdef TROFF_IS_GROFF
  static bool ditroff;
-@@ -1569,6 +1573,18 @@ static void setenv_less (pipecmd *cmd, c
+@@ -1576,6 +1585,18 @@ static void setenv_less (pipecmd *cmd, c
  	free (less_opts);
  }
  
@@ -408,7 +408,7 @@ diff --git a/src/man.c b/src/man.c
  static void add_output_iconv (pipeline *p, const char *source,
                                const char *target)
  {
-@@ -1697,6 +1713,8 @@ static pipeline *make_display_command (c
+@@ -1704,6 +1725,8 @@ static pipeline *make_display_command (c
  
  	if (pager_cmd) {
  		setenv_less (pager_cmd, title);
@@ -417,7 +417,7 @@ diff --git a/src/man.c b/src/man.c
  		pipeline_command (p, pager_cmd);
  	}
  	pipeline_ignore_signals (p, 1);
-@@ -1707,6 +1725,7 @@ static pipeline *make_display_command (c
+@@ -1714,6 +1737,7 @@ static pipeline *make_display_command (c
  	return p;
  }
  
@@ -425,7 +425,7 @@ diff --git a/src/man.c b/src/man.c
  /* return a (malloced) temporary name in cat_file's directory */
  static char *tmp_cat_filename (const char *cat_file)
  {
-@@ -1808,6 +1827,7 @@ static int commit_tmp_cat (const char *c
+@@ -1815,6 +1839,7 @@ static int commit_tmp_cat (const char *c
  
  	return status;
  }
@@ -433,7 +433,7 @@ diff --git a/src/man.c b/src/man.c
  
  /* TODO: This should all be refactored after work on the decompression
   * library is complete.
-@@ -1844,7 +1864,6 @@ static void cleanup_unlink (void *arg)
+@@ -1851,7 +1876,6 @@ static void cleanup_unlink (void *arg)
  }
  
  #ifdef MAN_CATS
@@ -441,7 +441,7 @@ diff --git a/src/man.c b/src/man.c
  /* Return pipeline to write formatted manual page to for saving as cat file. */
  static pipeline *open_cat_stream (const char *cat_file, const char *encoding)
  {
-@@ -2072,6 +2091,7 @@ static void format_display (decompress *
+@@ -2079,6 +2103,7 @@ static void format_display (decompress *
  	regain_effective_privs ();
  }
  
@@ -449,7 +449,7 @@ diff --git a/src/man.c b/src/man.c
  /* "Display" a page in catman mode, which amounts to saving it. */
  /* TODO: merge with format_display_and_save? */
  static void display_catman (const char *cat_file, decompress *d,
-@@ -2117,6 +2137,7 @@ static void display_catman (const char *
+@@ -2124,6 +2149,7 @@ static void display_catman (const char *
  	pop_cleanup (cleanup_unlink, tmpcat);
  	free (tmpcat);
  }
@@ -457,7 +457,7 @@ diff --git a/src/man.c b/src/man.c
  
  #ifndef TROFF_IS_GROFF
  static void disable_hyphenation (void *data MAYBE_UNUSED)
-@@ -2327,7 +2348,7 @@ static int display (const char *dir, con
+@@ -2334,7 +2360,7 @@ static int display (const char *dir, con
  		format_cmd = NULL;
  		decomp_errno = errno;
  	}
@@ -466,7 +466,7 @@ diff --git a/src/man.c b/src/man.c
  	/* Get modification time, for commit_tmp_cat(). */
  	if (man_file && *man_file) {
  		struct stat stb;
-@@ -2337,7 +2358,7 @@ static int display (const char *dir, con
+@@ -2344,7 +2370,7 @@ static int display (const char *dir, con
  		} else
  			man_modtime = get_stat_mtime (&stb);
  	}
@@ -475,7 +475,7 @@ diff --git a/src/man.c b/src/man.c
  	display_to_stdout = troff;
  #ifdef TROFF_IS_GROFF
  	if (htmlout || gxditview)
-@@ -2474,6 +2495,7 @@ static int display (const char *dir, con
+@@ -2481,6 +2507,7 @@ static int display (const char *dir, con
  			}
  			if (printed)
  				putchar ('\n');
@@ -483,7 +483,7 @@ diff --git a/src/man.c b/src/man.c
  		} else if (catman) {
  			if (format) {
  				if (!save_cat)
-@@ -2486,6 +2508,7 @@ static int display (const char *dir, con
+@@ -2493,6 +2520,7 @@ static int display (const char *dir, con
  					                format_cmd,
  					                formatted_encoding);
  			}
@@ -491,7 +491,7 @@ diff --git a/src/man.c b/src/man.c
  		} else if (format) {
  			/* no cat or out of date */
  			pipeline *disp_cmd;
-@@ -4028,17 +4051,20 @@ static int local_man_loop (const char *a
+@@ -4037,17 +4065,20 @@ static int local_man_loop (const char *a
  		/* Check that the file exists and isn't e.g. a directory */
  		if (stat (argv, &st)) {
  			error (0, errno, "%s", argv);
@@ -512,7 +512,7 @@ diff --git a/src/man.c b/src/man.c
  			return NOT_FOUND;
  		}
  
-@@ -4102,6 +4128,11 @@ executable_out:
+@@ -4111,6 +4142,11 @@ executable_out:
  					argv_abs = xstrdup (argv);
  			}
  			lang = lang_dir (argv_abs);
@@ -524,7 +524,7 @@ diff --git a/src/man.c b/src/man.c
  			free (argv_abs);
  			if (!display (NULL, argv, NULL, argv_base, NULL)) {
  				if (local_mf)
-@@ -4158,9 +4189,25 @@ static void locate_page_in_manpath (cons
+@@ -4167,9 +4203,25 @@ static void locate_page_in_manpath (cons
  {
  	char *mp;
  
@@ -553,7 +553,7 @@ diff --git a/src/man.c b/src/man.c
  }
  
  /*
-@@ -4354,7 +4401,16 @@ int main (int argc, char *argv[])
+@@ -4363,7 +4415,16 @@ int main (int argc, char *argv[])
  	umask (022);
  	init_locale ();
  
@@ -571,7 +571,7 @@ diff --git a/src/man.c b/src/man.c
  	/* Use LANGUAGE only when LC_MESSAGES locale category is
  	 * neither "C" nor "POSIX". */
  	if (internal_locale && strcmp (internal_locale, "C") &&
-@@ -4399,7 +4455,16 @@ int main (int argc, char *argv[])
+@@ -4408,7 +4469,16 @@ int main (int argc, char *argv[])
  	if (external)
  		do_extern (argc, argv);
  

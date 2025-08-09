@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug  8 06:58:32 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Update to man-db 2.13.1 (2 May 2025)
+  * Update various manual page translation
+  * Fix various minor formatting issues in manual pages.
+  * Tolerate additional spaces in preprocessor strings.
+  * Fix check for generated source files in out-of-tree builds.
+  * Fix building with the `musl` C library.
+  * Recognize another Ukrainian translation of the `NAME` section.
+  * Increase the maximum size of the `NAME` section from 8192 to 16384 bytes.
+- Port patches
+  * man-db-2.6.3-listall.dif
+  * man-db-2.9.4.patch
+
+-------------------------------------------------------------------
+Thu Apr 10 11:53:11 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid latest gettextize as it breaks build now 
+
+-------------------------------------------------------------------
 Mon Apr  7 09:49:24 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Modify patch man-db-2.6.3-listall.dif

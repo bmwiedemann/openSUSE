@@ -26,7 +26,7 @@
 %global optflags %{optflags} %{**}
 %bcond_without  sdtimer
 Name:           man
-Version:        2.13.0
+Version:        2.13.1
 Release:        0
 Summary:        A Program for Displaying man Pages
 License:        GPL-2.0-or-later
@@ -110,7 +110,7 @@ rm -f configure
 %build
 %global optflags %{optflags} -funroll-loops -pipe -Wall
 
-gettextize --force --copy --no-changelog
+#gettextize --copy --no-changelog
 SEC=(0 1 n l 8 3 2 5 4 9 6 7
 	 1x 3x 4x 5x 6x 8x
 	 1bind 3bind 5bind 7bind 8bind
@@ -195,7 +195,7 @@ for man in $(find man/ -type f -a -name '*.[0-9]'); do
 	esac
 done
 #
-gcc $CFLAGS -I gl/lib/ -I include/ --include config.h \
+gcc $CFLAGS -I gl/lib/ -I ./ -I include/ --include config.h \
 	-D LOCALEDIR="\"%{_datarootdir}/locale\"" \
 	-D LIBEXECDIR="\"%{_libexecdir}\"" -o wrapper %{SOURCE5} -L gl/lib/.libs/ -lgnu
 
