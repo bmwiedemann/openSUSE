@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kmymoney
-Version:        5.2.0
+Version:        5.2.1
 Release:        0
 Summary:        A Personal Finance Manager by KDE
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -31,10 +31,6 @@ Source0:        https://download.kde.org/stable/kmymoney/%{version}/%{name}-%{ve
 Source1:        https://download.kde.org/stable/kmymoney/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        kmymoney.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Port-triggering-actions-to-Qt6.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Adjustments-for-port-to-Qt6.patch
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
@@ -49,6 +45,7 @@ BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6Holidays) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
@@ -63,7 +60,7 @@ BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(KPim6Akonadi)
 BuildRequires:  cmake(KPim6IdentityManagementCore)
-BuildRequires:  cmake(LibAlkimia6) >= 8.1.90
+BuildRequires:  cmake(LibAlkimia6) >= 8.2.1
 BuildRequires:  cmake(PlasmaActivities)
 BuildRequires:  cmake(QGpgmeQt6)
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
@@ -78,10 +75,10 @@ BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
-BuildRequires:  cmake(aqbanking) >= 6.5.0
+BuildRequires:  cmake(aqbanking) >= 6.6.1
 BuildRequires:  cmake(gwengui-cpp)
 BuildRequires:  cmake(gwengui-qt6)
-BuildRequires:  cmake(gwenhywfar) >= 5.10.1
+BuildRequires:  cmake(gwenhywfar) >= 5.12.1
 BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(sqlcipher)
 BuildRequires:  pkgconfig(sqlite3)
@@ -142,6 +139,7 @@ Development files and headers need to build software using KMyMoney.
 %{_kf6_iconsdir}/hicolor/*/*/*
 %{_kf6_libdir}/libkmm_base_dialogs.so.*
 %{_kf6_libdir}/libkmm_base_widgets.so.*
+%{_kf6_libdir}/libkmm_codec.so.*
 %{_kf6_libdir}/libkmm_csvimportercore.so.*
 %{_kf6_libdir}/libkmm_extended_dialogs.so.*
 %{_kf6_libdir}/libkmm_gpgfile.so.*
@@ -171,6 +169,7 @@ Development files and headers need to build software using KMyMoney.
 %{_includedir}/kmymoney/
 %{_kf6_libdir}/libkmm_base_dialogs.so
 %{_kf6_libdir}/libkmm_base_widgets.so
+%{_kf6_libdir}/libkmm_codec.so
 %{_kf6_libdir}/libkmm_csvimportercore.so
 %{_kf6_libdir}/libkmm_extended_dialogs.so
 %{_kf6_libdir}/libkmm_gpgfile.so

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  5 12:01:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.2.1
+  https://kmymoney.org/2025/08/04/kmymoney-5-2-1-released.html
+- Drop patches, merged upstream:
+  * 0001-Port-triggering-actions-to-Qt6.patch
+  * 0001-Adjustments-for-port-to-Qt6.patch
+
+-------------------------------------------------------------------
 Wed Jun 25 12:03:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add patch:

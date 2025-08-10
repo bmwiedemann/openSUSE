@@ -662,4 +662,12 @@
   * 0001-Adjustments-for-port-to-Qt6.patch</comment>
     <requestid>1288809</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>a9b09d58c328e329a67e15ccfbf68f78</srcmd5>
+    <version>5.2.1</version>
+    <time>1754857241</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 5.2.1</comment>
+    <requestid>1298593</requestid>
+  </revision>
 </revisionlist>
