@@ -12739,9 +12739,9 @@ unsorted:
   - libdca0-32bit 
   - libdcmtk19 
   - libddcutil-devel 
-  - libdeal_II9_6_2 
-  - libdeal_II9_6_2-openmpi4 
-  - libdeal_II9_6_2-openmpi5 
+  - libdeal_II9_7_0 
+  - libdeal_II9_7_0-openmpi4 
+  - libdeal_II9_7_0-openmpi5 
   - libdebuginfod-devel 
   - libdebuginfod-dummy-devel 
   - libdebuginfod1-dummy 
@@ -21731,6 +21731,7 @@ unsorted:
   - perl-Math-Random-ISAAC 
   - perl-Math-Round 
   - perl-Memoize-ExpireLRU 
+  - perl-Memory-Process 
   - perl-Memory-Usage 
   - perl-Menlo 
   - perl-Menlo-Legacy 
