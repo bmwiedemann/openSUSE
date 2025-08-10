@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug 07 06:55:50 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.57.3:
+  * project: fallback to reading HEAD when rev-parse fails
+  * hooks: verify hooks project has worktree before running
+  * sync: fix connection error on macOS for interleaved sync
+  * project: Fix GetHead to handle detached HEADs
+  * sync: Don't checkout if no worktree
+  * sync: Default to interleaved mode
+  * project: Use git rev-parse to read HEAD
+  * sync: Improve UI and error reporting for interleaved mode
+  * project: Use plumbing commands to manage HEAD
+  * progress: Make end() idempotent
+  * sync: support post-sync hook in <repo-hooks>
+  * init: Add environment variable for git-lfs
+
+-------------------------------------------------------------------
 Wed Jun 25 13:01:50 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Update to version 2.56:
