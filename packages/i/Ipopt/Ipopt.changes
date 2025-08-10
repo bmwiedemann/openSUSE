@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Aug  4 14:47:33 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.14.19:
+  * Only Windows specific changes.
+- Changes from version 3.14.18:
+  - Restricted workaround for using Pardiso to Intel MKL 2025.0.x.
+    Intel MKL 2025.1.0 has the corresponding issue fixed
+    [gh#coin-or/Ipopt#799].
+  - Fixed that Jipopt::finalize_solution did not store final
+    objective value correctly [gh#coin-or/Ipopt#820].
+  - Instead, the value of the last iterate evaluation was
+    returned, which was often the same.
+  - Added IpoptApplication::Version() (C++ interface),
+    GetIpoptVersion (C interface), and Ipopt::GetVersion() (Java
+    interface) to retrieve version of Ipopt library
+    [gh#coin-or/Ipopt#824].
+  - Fixed possible missing initialization of delta_x and delta_s
+    in PDPerturbationHandler in case ConsiderNewSystem failed
+    [gh#coin-or/Ipopt#834].
+  - Undefine max if defined after include of windows.h in
+    IpUtils.cpp [gh#coin-or/Ipopt#834].
+  - Added missing initialization of Filter Acceptor in case
+    restoration phase is called when the fallback mechanism of
+    BacktrackingLinearSearch has been activated
+    [gh#coin-or/Ipopt#834,gh#coin-or/Ipopt#837].
+  - If this happened in the first iteration, it led to the use of
+    uninitialized values.
+  - Added missing return if symbolic factorization with MA57
+    (ma57ad, ma57as) failed [gh#coin-or/Ipopt#834].
+  - Fixed application of scaling when computing violations of
+    inequality constraints in TNLP::get_curr_violations(). Added
+    OrigIpoptNLP::d_space().
+  - Fixed signature of call to MKL's Pardiso: the DPARM argument
+    does not exist in this version of Pardiso.
+- Use %ldconfig_scriptlets macro instead of post(un) ldconfig
+  scripts.
+- Install doc files as part of %install and run fdupes on them to
+  link up duplicated files.
+
+-------------------------------------------------------------------
 Wed Apr 30 08:59:17 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.14.17:

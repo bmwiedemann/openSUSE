@@ -19,7 +19,7 @@
 %define sover 3
 %define shlib libipopt%{sover}
 Name:           Ipopt
-Version:        3.14.17
+Version:        3.14.19
 Release:        0
 Summary:        A software package for large-scale nonlinear optimization methods
 License:        EPL-2.0
@@ -99,24 +99,27 @@ do
   rm %{buildroot}%{_docdir}/%{name}/${f}
 done
 
+# Install doc files here so that duplicates can be cleaned up using %%fdupes
+mkdir -p %{buildroot}%{_docdir}/%{name}
+cp -r doc/html %{buildroot}%{_docdir}/%{name}/
+
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%fdupes %{buildroot}%{_datadir}/coin/doc
+%fdupes %{buildroot}%{_docdir}/%{name}/
 
 %check
 %make_build test
 
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib}
 
 %files -n %{shlib}
 %{_libdir}/*.so.%{sover}*
 
 %files devel
 %doc README.md AUTHORS ChangeLog.md
-%doc doc/html
+%doc %{_docdir}/%{name}
 %license LICENSE
-%{_includedir}/*
+%{_includedir}/coin-or/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/ipopt.pc
 
