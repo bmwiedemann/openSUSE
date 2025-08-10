@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug 10 03:16:40 UTC 2025 - llyyr <llyyr@yukari.in>
+
+- Update to version 0.2.0:
+  * Fix WebVTT text tokenizer sometimes incorrectly assigning
+    classes
+  * Consider ruby items when calculating current line width while
+    breaking
+  * Fix WebExtension PO minting attempt sleep
+  * Implement non-nested WebVTT ruby support
+  * Switch to directly storing `InlineContent` in layout tree
+  * Completely rework inline layout
+  * Add `std::iter::Sum` impl for `Fixed`
+  * Add custom `Debug` impl for `ComputedStyle`
+  * Update WebExtension
+
+-------------------------------------------------------------------
 Sun Jul  6 17:32:24 UTC 2025 - llyyr <llyyr@yukari.in>
 
 - Inital project at 0.1.0

@@ -20,7 +20,7 @@
 %define libname libsubrandr
 
 Name:           subrandr
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        Library to render non-ASS subtitles
 Group:          Development/Libraries/Rust
@@ -67,7 +67,6 @@ cargo run --package xtask -- install \
     --libdir=lib64 \
     --prefix=%{_prefix} \
     --destdir=%{buildroot}%{_prefix}
-rm %{buildroot}/usr/lib64/lib%{name}.a
 
 %post   -n %{libname}%{sover} -p /sbin/ldconfig
 %postun -n %{libname}%{sover} -p /sbin/ldconfig
@@ -82,5 +81,6 @@ rm %{buildroot}/usr/lib64/lib%{name}.a
 %{_libdir}/pkgconfig/subrandr.pc
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/subrandr.h
+%{_includedir}/%{name}/logging.h
 
 %changelog
