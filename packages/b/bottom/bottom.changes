@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sat Aug 09 18:57:55 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Bump rust version requirement to 1.81
+
+-------------------------------------------------------------------
+Sat Aug 09 18:42:24 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.11.0~0:
+  * Features
+    * Add the ability to configure the disk widget's table columns.
+    * Support AMD GPU data collection on Linux.
+    * Support changing the widget borders.
+    * Support delete key (fn + delete on macOS) to kill processes.
+    * Support using left/right key to collapse/expand process trees respectively.
+    * Add a virtual memory column for processes.
+    * Add option to have process tree entries be collapsed by default.
+  * Bug Fixes
+    * Fix missing parent section names in default config.
+    * Fix typo in default config.
+    * Fix issue where CPU usage in basic mode looks weird if core count isn't divisible by four.
+    * Fix missing selected text background colour in default-light theme.
+    * Fix using "none" for chart legend position in configs.
+    * Fix incorrect default config definitions for chart legends.
+    * Fix support for nilfs2 file system.
+    * Fix properly cleaning up the terminal if the program is terminated due to an Err bubbling to the top.
+    * Fix network graphs using log scaling having broken lines when a point was 0.
+    * Fix for ARC/SWAP not being hidden in basic mode after refactor.
+    * Fix graph lines potentially showing up behind legends.
+    * Fix process kill dialog occasionally causing panics.
+    * Fix missing stats/incorrect mount name for certain entries in the disk widget.
+    * Fix increment for data tables if the change is greater than the number of entries left.
+  * Changes
+    * Rename --enable_gpu to --disable_gpu, and make GPU features enabled by default.
+    * Consider $XDG_CONFIG_HOME on macOS when looking for a default config path in a backwards-compatible fashion.
+    * Allow hyphenated arguments to work as well (e.g. --autohide-time).
+    * Redesign process kill dialog.
+    * Disable mouse capture when disable_click is set.
+    * Change how we calculate swap usage in Windows.
+Other
+    * Fix missing parent section names in TOML.
+    * Add Terra installation instructions.
+    * Update demo caption in docs.
+    * Update Arch install instructions.
+    * Better handle NVIDIA GPUs on Linux with only libnvidia-ml.so.1.
+    * Make it possible to override completion/manpage generation output directory via env.
+    * Rework how data is stored internally, reducing memory usage a bit.
+    * Update Nix installation instructions.
+    * Update openSUSE installation instructions.
+    * Update Alpine Linux installation instructions.
+    * Fix invalid desktop file values.
+
+-------------------------------------------------------------------
 Tue Aug  6 20:47:21 UTC 2024 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Adapt service to new cargo vendor version

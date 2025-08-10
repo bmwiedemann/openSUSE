@@ -1,7 +1,7 @@
 #
 # spec file for package bottom
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           bottom
-Version:        0.10.2~0
+Version:        0.11.0~0
 Release:        0
 Summary:        Yet another graphical process/system monitor
 License:        Apache-2.0 AND MIT
@@ -27,7 +27,7 @@ URL:            https://github.com/ClementTsang/bottom
 Source:         %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-BuildRequires:  rust >= 1.70
+BuildRequires:  rust >= 1.81
 BuildRequires:  zstd
 
 %description
