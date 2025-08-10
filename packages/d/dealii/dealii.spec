@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define __builder ninja
-%define sover 9.6.2
+%define sover 9.7.0
 %define shlibver %(echo %{sover} | tr "." "_")
 %define srcname dealii
 
@@ -83,7 +83,7 @@
 %endif
 
 Name:           %{pname}
-Version:        9.6.2
+Version:        9.7.0
 Release:        0
 Summary:        A Finite Element Differential Equations Analysis Library
 License:        LGPL-2.1-or-later
@@ -194,7 +194,8 @@ export CXXFLAGS="%{optflags}"
        -DDEAL_II_DOCHTML_RELDIR:PATH=%{_docdir}/%{name} \
        -DDEAL_II_EXAMPLES_RELDIR:PATH=%{_docdir}/%{name} \
        -DDEAL_II_COMPILE_EXAMPLES:BOOL=OFF \
-       -DDEAL_II_ALLOW_BUNDLED:BOOL=OFF
+       -DDEAL_II_ALLOW_BUNDLED:BOOL=OFF \
+       -DDEAL_II_WITH_TASKFLOW:BOOL=OFF
 
 %cmake_build
 
