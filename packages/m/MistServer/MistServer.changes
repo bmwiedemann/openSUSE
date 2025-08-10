@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Aug  7 10:41:52 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Update to new upstream release 3.8
+  * Feature: Auto-pushes can now be disabled based on specific tags (or stream names) being present on the stream
+  * Feature: Live stream processes can now be disabled based on specific tags (or stream names) being present on the stream
+  * Feature: Triggers can now be disabled based on specific tags (or stream names) being present on the stream
+  * Feature: DTSC-pulled streams are now automatically tagged with the "#replicated" tag
+  * Feature: Support for VP8/VP9/Opus codecs in MP4 input and output
+  * Feature: Support for AV1 input and output in RTP-based protocols (WebRTC, RTSP, SDP)
+  * Feature: Support for AV1 input in TS-based protocols (and partial support for AV1 output)
+  * Improvement: Improved usability of the "edit stream" page in the web interface
+  * Improvement: Updated mbedtls subproject to upstream 3.6.4 rather than the ancient fork used until now
+  * Improvement: The controller has been rewritten to use an event loop rather than threads
+  * Improvement: Custom variables API updated to be object-based rather than array-based, API calls now actually documented too
+  * Improvement: Updated more of the internal code to use more readable/modern (C++11 rather than C++98) syntax
+  * Improvement: Logs in the web interface now update in real time and contain more information
+  * Bugfix: SRT protocol remote addresses reported correctly again
+  * Bugfix: SRT input "acceptable streamid" setting works again
+  * Bugfix: ulibc-based compiles now function
+  * Bugfix: Fixed WebRTC datachannels not working if there were no metadata tracks in the stream
+  * Bugfix: Blank stream names no longer get auto-rejected before the PUSH_REWRITE trigger could rewrite them
+  * Bugfix: Fixed case-sensitivity in stream keys used with WebRTC or RTSP push input
+  * Bugfix: Fixed the built-in updater and update check code
+  * Bugfix: Fixed internal version number for libsrt subproject being incorrect
+  * Bugfix: Load balancer integration now more quickly and more correctly determines the current stream ingest status
+  * Bugfix: Fixed VP9 support input and output in RTP-based protocols (WebRTC, RTSP, SDP)
+  * Bugfix: Fixed some minor JSON parser edgecase bugs, specifically around empty arrays and objects
+  * Bugfix: HTTP-based URLs in triggers no longer contain "?stream=STREAMNAME" unless that was actually in the request URL
+- Provide MistServer reported version via DRELEASE flag
+
+-------------------------------------------------------------------
 Mon Jul 21 14:46:07 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
 
 - Suppress strict aliasing violations warnings to make build log readable.

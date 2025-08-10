@@ -17,7 +17,7 @@
 
 
 Name:           MistServer
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        Internet streaming media toolkit
 License:        Unlicense
@@ -27,10 +27,11 @@ Source1:        %{name}.service
 Source2:        mistserver.sysuser
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
+BuildRequires:  group(video)
 BuildRequires:  meson
+BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
-BuildRequires:  group(video)
 BuildRequires:  pkgconfig(librist)
 BuildRequires:  pkgconfig(libsrtp2)
 BuildRequires:  pkgconfig(mbedtls)
@@ -58,7 +59,7 @@ Development files for %{name}.
 %build
 
 # Libraries are not versioned, version on RPM side
-echo "V_%version { global: *; };" > /tmp/z.sym
+echo "V_%{version} { global: *; };" > /tmp/z.sym
 export LDFLAGS="$LDFLAGS -Wl,--version-script=/tmp/z.sym"
 
 # Disable warnings caused by certain upstream coding practices
@@ -72,7 +73,8 @@ export CXXFLAGS="$CXXFLAGS -funsigned-char"
   -DDEBUG=3 \
   -DLOCAL_GENERATORS=false \
   -DNOGA=true \
-  -DNOUPDATE=true
+  -DNOUPDATE=true \
+  -DRELEASE=%{version}
 %meson_build
 
 %sysusers_generate_pre %{SOURCE2} %{name} %{name}.conf
@@ -100,6 +102,7 @@ install -D -p -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/mistserver.conf
 %license UNLICENSE
 %doc README.md
 %ghost %config(noreplace) %attr(0644, root, mistserver) %{_sysconfdir}/%{name}.json
+%{_bindir}/MistAnalyserAV1
 %{_bindir}/MistAnalyserDTSC
 %{_bindir}/MistAnalyserEBML
 %{_bindir}/MistAnalyserFLAC

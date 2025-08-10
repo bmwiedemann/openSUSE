@@ -23,4 +23,12 @@
     <comment>Add forced symbol versions and trim redundancies from descriptions (thanks to jengelh). Suppress strict aliasing violations warnings.</comment>
     <requestid>1294865</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a1a94c4b2f77ecb988fe33107d310e0b</srcmd5>
+    <version>3.8</version>
+    <time>1754857283</time>
+    <user>dimstar_suse</user>
+    <comment>Update to new upstream release 3.8. Provide MistServer reported version.</comment>
+    <requestid>1298674</requestid>
+  </revision>
 </revisionlist>
