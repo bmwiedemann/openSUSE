@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug 10 07:34:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.9:
+  * chore(deps): update anchore dependencies (#235)
+  * chore(deps): bump github.com/anchore/syft from 1.29.0 to 1.29.1
+    (#233)
+  * chore(deps): bump github.com/anchore/stereoscope (#234)
+  * change install URL to get.anchore.io/grant (#232)
+  * chore(deps): bump github.com/docker/docker (#230)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.13
+    to 0.5.14 (#228)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.6.7 to
+    6.6.8 (#229)
+
+-------------------------------------------------------------------
 Thu Jul 24 07:29:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.8:
