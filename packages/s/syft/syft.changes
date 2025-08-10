@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Aug 10 07:04:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.30.0:
+  * Added Features
+    - add binary classifier for hashicorp vault [#4121
+      @willmurphyscode]
+  * Bug Fixes
+    - fix: update nondeterministic Java archive cataloging and
+      improve groupID [#3521 #4118 @kzantow]
+  * Dependencies
+    - chore(deps): bump golang.org/x/net from 0.42.0 to 0.43.0
+      (#4122)
+    - chore(deps): bump golang.org/x/mod from 0.26.0 to 0.27.0
+      (#4123)
+    - chore(deps): bump github/codeql-action from 3.29.7 to 3.29.8
+      (#4124)
+    - chore(deps): bump docker/login-action from 3.4.0 to 3.5.0
+      (#4115)
+    - chore(deps): bump actions/cache from 4.2.3 to 4.2.4 (#4119)
+    - chore(deps): bump actions/cache in /.github/actions/bootstrap
+      (#4120)
+    - chore(deps): update tools to latest versions (#4111)
+    - chore(deps): update CPE dictionary index (#4112)
+    - chore(deps): update tools to latest versions (#4108)
+    - chore(deps): bump github/codeql-action from 3.29.4 to 3.29.5
+      (#4096)
+
+-------------------------------------------------------------------
 Fri Aug 01 08:13:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.29.1:
