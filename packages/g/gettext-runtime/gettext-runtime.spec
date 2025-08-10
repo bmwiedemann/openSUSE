@@ -2,6 +2,7 @@
 # spec file for package gettext-runtime
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,19 +21,21 @@
 %bcond_with mini
 
 Name:           gettext-runtime
-Version:        0.22.5
+Version:        0.25.1
 Release:        0
 BuildRequires:  automake >= 1.14
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-gconv-modules-extra
 BuildRequires:  libtool
-# To get an updated linkdupes.sh (in case there are new dupes), temproarily enable:
+# To get an updated linkdupes.sh (in case there are new dupes), temporarily enable:
 #BuildRequires: fdupes
 %if %{without mini}
 BuildRequires:  glib2-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  perl-libintl-perl
 BuildRequires:  tcl
+BuildRequires:  pkgconfig(libacl)
+BuildRequires:  pkgconfig(libattr)
 # bug437293
 %ifarch ppc64
 Obsoletes:      gettext-64bit
@@ -63,19 +66,19 @@ Source2:        suse-start-po-mode.el
 Source3:        gettext-linkdupes.sh
 Source4:        baselibs.conf
 Source5:        gettext-rpmlintrc
+# pub   ed25519 2025-01-28 [SC]
+#       E0FF BD97 5397 F77A 32AB  76EC B630 1D9E 1BBE AC08
+# uid   Bruno Haible (Free Software Development) <bruno@clisp.org>
+# https://savannah.gnu.org/users/haible
 Source6:        gettext-runtime.keyring
-Patch0:         gettext-0.12.1-sigfpe.patch
 Patch1:         gettext-0.19.3-fix-bashisms.patch
 Patch2:         gettext-0.12.1-gettextize.patch
-Patch3:         use-acinit-for-libtextstyle.patch
 Patch4:         gettext-po-mode.diff
 Patch5:         gettext-initialize_vars.patch
 # PATCH-FIX-OPENSUSE gettext-dont-test-gnulib.patch -- coolo@suse.de
 Patch6:         gettext-dont-test-gnulib.patch
 # PATCH-FIX-UPSTREAM boo#941629 -- pth@suse.com
 Patch11:        boo941629-unnessary-rpath-on-standard-path.patch
-# PATCH-FIX-SUSE Bug boo#1106843
-Patch13:        reproducible.patch
 # PATCH-FEATURE bsc#1165138
 Patch14:        0001-msgcat-Add-feature-to-use-the-newest-po-file.patch
 Patch15:        0002-msgcat-Merge-headers-when-use-first.patch
@@ -276,9 +279,7 @@ make check || {
 %endif
 
 %files -f gettext-runtime.lang
-%defattr(-,root,root)
 %license COPYING
-%dir %_datadir/gettext
 %doc %dir %_docdir/%name/
 %doc %_docdir/%name/gettext.1.html
 %doc %_docdir/%name/ngettext.1.html
@@ -298,7 +299,6 @@ make check || {
 %doc %_mandir/man1/ngettext.1.gz
 %doc %_mandir/man1/msgfmt.1.gz
 %doc %_mandir/man3/*
-%_datadir/gettext/ABOUT-NLS
 %dir %_datadir/emacs
 %dir %_datadir/emacs/site-lisp
 %_datadir/emacs/site-lisp/po-compat.*
@@ -313,7 +313,6 @@ make check || {
 %doc %_docdir/%name/envsubst.1.html
 
 %files -n gettext-tools%{?with_mini:-mini} -f gettext-tools.lang
-%defattr(-,root,root)
 %_bindir/msg[a-eg-u]*
 %_bindir/msgfilter
 %_bindir/xgettext
@@ -336,7 +335,11 @@ make check || {
 %_libdir/libgettextsrc.*
 %_libdir/libgettextpo*
 %_libdir/preloadable_libintl.so
-%_libdir/gettext
+%_libexecdir/gettext
+%dir %_datadir/gettext
+%_datadir/gettext
+%exclude %_datadir/gettext/ABOUT-NLS
+%_datadir/aclocal
 %_datadir/%pacname/config.rpath
 %_datadir/%pacname/po
 %_datadir/%pacname/projects
@@ -345,12 +348,10 @@ make check || {
 %_datadir/%pacname/javaversion.class
 %_datadir/%pacname/styles
 %_datadir/%pacname/archive.dir.tar.xz
-%_datadir/aclocal
 %dir %{_datadir}/%{pacname}-%{version}
 %{_datadir}/%{pacname}-%{version}/its
 
 %files tools-doc
-%defattr(-,root,root)
 %doc %dir %_docdir/%name/
 %doc %_docdir/%name/examples/
 %doc %_docdir/%name/auto*.html
@@ -363,11 +364,9 @@ make check || {
 
 %if %{without mini}
 %files -n libtextstyle0
-%defattr(-,root,root)
 %_libdir/libtextstyle.so.*
 
 %files -n libtextstyle-devel
-%defattr(-,root,root)
 %dir %_includedir/textstyle
 %_includedir/textstyle.h
 %_includedir/textstyle/stdbool.h

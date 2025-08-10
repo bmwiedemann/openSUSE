@@ -1,4 +1,4 @@
-From df4aef6209615bdd44cd45208acfe7367451a8fe Mon Sep 17 00:00:00 2001
+From 100b03a7efe924eb5e22d2e8d6e3dadbec80c0fa Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Mark=C3=A9ta=20Cal=C3=A1bkov=C3=A1?=
  <meggy.calabkova@gmail.com>
 Date: Thu, 9 Jan 2020 14:45:49 +0100
@@ -9,18 +9,20 @@ one header line is present only in the second file.
 For example when Plural-Forms: is present only in the second file,
 msgcat could create an invalid output file.
 We also return error when Plural-Forms: values do not match.
+
+Updated for 0.24
 ---
  gettext-tools/src/message.c     |   2 -
  gettext-tools/src/msgl-cat.c    |   5 ++
- gettext-tools/src/msgl-header.c | 155 +++++++++++++++++++++++++++++---
- gettext-tools/src/msgl-header.h |   8 ++
- 4 files changed, 157 insertions(+), 13 deletions(-)
+ gettext-tools/src/msgl-header.c | 146 +++++++++++++++++++++++++++++++-
+ gettext-tools/src/msgl-header.h |  10 +++
+ 4 files changed, 158 insertions(+), 5 deletions(-)
 
-Index: gettext-0.20.1/gettext-tools/src/message.c
-===================================================================
---- gettext-0.20.1.orig/gettext-tools/src/message.c
-+++ gettext-0.20.1/gettext-tools/src/message.c
-@@ -411,7 +411,6 @@ message_list_insert_at (message_list_ty
+diff --git a/gettext-tools/src/message.c b/gettext-tools/src/message.c
+index 6e3aada..48a0268 100644
+--- a/gettext-tools/src/message.c
++++ b/gettext-tools/src/message.c
+@@ -423,7 +423,6 @@ message_list_insert_at (message_list_ty *mlp, size_t n, message_ty *mp)
  }
  
  
@@ -28,7 +30,7 @@ Index: gettext-0.20.1/gettext-tools/src/message.c
  void
  message_list_delete_nth (message_list_ty *mlp, size_t n)
  {
-@@ -431,7 +430,6 @@ message_list_delete_nth (message_list_ty
+@@ -443,7 +442,6 @@ message_list_delete_nth (message_list_ty *mlp, size_t n)
        mlp->use_hashtable = false;
      }
  }
@@ -36,19 +38,19 @@ Index: gettext-0.20.1/gettext-tools/src/message.c
  
  
  void
-Index: gettext-0.20.1/gettext-tools/src/msgl-cat.c
-===================================================================
---- gettext-0.20.1.orig/gettext-tools/src/msgl-cat.c
-+++ gettext-0.20.1/gettext-tools/src/msgl-cat.c
+diff --git a/gettext-tools/src/msgl-cat.c b/gettext-tools/src/msgl-cat.c
+index 728d685..e9a694b 100644
+--- a/gettext-tools/src/msgl-cat.c
++++ b/gettext-tools/src/msgl-cat.c
 @@ -40,6 +40,7 @@
  #include "msgl-ascii.h"
  #include "msgl-ofn.h"
  #include "msgl-equal.h"
 +#include "msgl-header.h"
  #include "msgl-iconv.h"
+ #include "xerror-handler.h"
  #include "xalloc.h"
- #include "xmalloca.h"
-@@ -286,6 +287,10 @@ catenate_msgdomain_list (string_list_ty
+@@ -290,6 +291,10 @@ catenate_msgdomain_list (string_list_ty *file_list,
          }
      }
  
@@ -59,10 +61,10 @@ Index: gettext-0.20.1/gettext-tools/src/msgl-cat.c
    /* Create list of resulting messages, but don't fill it.  Only count
       the number of translations for each message.
       If for a message, there is at least one non-fuzzy, non-empty translation,
-Index: gettext-0.20.1/gettext-tools/src/msgl-header.c
-===================================================================
---- gettext-0.20.1.orig/gettext-tools/src/msgl-header.c
-+++ gettext-0.20.1/gettext-tools/src/msgl-header.c
+diff --git a/gettext-tools/src/msgl-header.c b/gettext-tools/src/msgl-header.c
+index 611c540..e021693 100644
+--- a/gettext-tools/src/msgl-header.c
++++ b/gettext-tools/src/msgl-header.c
 @@ -26,9 +26,12 @@
  #include <string.h>
  
@@ -75,9 +77,9 @@ Index: gettext-0.20.1/gettext-tools/src/msgl-header.c
 -
 +#define _(str) gettext (str)
  
- /* The known fields in their usual order.  */
- static const struct
-@@ -50,6 +53,98 @@ known_fields[] =
+ void
+ header_set_charset (message_ty *header_mp, const char *charsetstr,
+@@ -72,6 +75,98 @@ known_fields[] =
      { "Content-Transfer-Encoding:", sizeof ("Content-Transfer-Encoding:") - 1 }
    };
  
@@ -176,7 +178,7 @@ Index: gettext-0.20.1/gettext-tools/src/msgl-header.c
  
  void
  msgdomain_list_set_header_field (msgdomain_list_ty *mdlp,
-@@ -81,8 +176,8 @@ msgdomain_list_set_header_field (msgdoma
+@@ -103,8 +198,8 @@ msgdomain_list_set_header_field (msgdomain_list_ty *mdlp,
            {
              message_ty *mp = mlp->item[j];
  
@@ -187,7 +189,7 @@ Index: gettext-0.20.1/gettext-tools/src/msgl-header.c
              char *new_header =
                XNMALLOC (strlen (header) + 1
                          + strlen (field) + 1 + strlen (value) + 1 + 1,
-@@ -230,14 +325,14 @@ message_list_read_header_field (message_
+@@ -252,6 +347,8 @@ message_list_read_header_field (message_list_ty *mlp,
    size_t field_len = strlen (field);
    size_t j;
  
@@ -196,44 +198,11 @@ Index: gettext-0.20.1/gettext-tools/src/msgl-header.c
    /* Search the header entry.  */
    for (j = 0; j < mlp->nitems; j++)
      if (is_header (mlp->item[j]) && !mlp->item[j]->obsolete)
-       {
--	/* We found the correct message. */
-+        /* We found the correct message. */
-         message_ty *mp = mlp->item[j];
--
--        /* Tag the header entry.  */
-         const char *header = mp->msgstr;
- 
-         /* Test whether the field occurs in the header entry.  */
-@@ -247,7 +342,7 @@ message_list_read_header_field (message_
-           {
-             if (strncmp (h, field, field_len) == 0)
-               break;
--	    /* Jump by lines. */
-+            /* Jump by lines. */
-             h = strchr (h, '\n');
-             if (h == NULL)
-               break;
-@@ -257,15 +352,57 @@ message_list_read_header_field (message_
-           {
-             /* We found it and it is nonempty. Read the value of the field.  */
-             h += field_len + 1;
--	    char *enh = strchr (h, '\n');
--	    if (enh != NULL && *enh != '\0')
-+            char *enh = strchr (h, '\n');
-+            if (enh != NULL && *enh != '\0')
- 	      {
- 	        *where_ptr = (char *)XNMALLOC (((enh - h) + 1), char);
-                 memcpy (*where_ptr, h, enh - h);
--	        /* Make the string null-terminated. */
-+                /* Make the string null-terminated. */
-                 (*where_ptr)[enh-h] = '\0';
--	      }
-+              }
+@@ -290,3 +387,46 @@ message_list_read_header_field (message_list_ty *mlp,
            }
        }
  }
- 
++
 +message_list_ty *
 +message_list_header_list (message_list_ty *mlp)
 +{
@@ -276,29 +245,34 @@ Index: gettext-0.20.1/gettext-tools/src/msgl-header.c
 +      }
 +  return NULL;
 +}
-Index: gettext-0.20.1/gettext-tools/src/msgl-header.h
-===================================================================
---- gettext-0.20.1.orig/gettext-tools/src/msgl-header.h
-+++ gettext-0.20.1/gettext-tools/src/msgl-header.h
-@@ -33,6 +33,11 @@ extern "C" {
- extern void
+diff --git a/gettext-tools/src/msgl-header.h b/gettext-tools/src/msgl-header.h
+index b441de2..1778791 100644
+--- a/gettext-tools/src/msgl-header.h
++++ b/gettext-tools/src/msgl-header.h
+@@ -42,6 +42,12 @@ extern void
         msgdomain_list_set_header_field (msgdomain_list_ty *mdlp,
                                          const char *field, const char *value);
+ 
 +/* Merge headers of po files.
 + */
 +extern void
 +       msgdomain_lists_merge_headers (msgdomain_list_ty **mdlps,
 +                                size_t nfiles);
- 
++
  /* Remove the given field from the header.
     The FIELD name ends in a colon.  */
-@@ -46,6 +51,9 @@ extern void
-        message_list_read_header_field (message_list_ty *mlp,
+ extern void
+@@ -55,6 +61,10 @@ extern void
                                           const char *field, char **where_ptr);
+ 
  
 +/* List all the headers from a po file. */
 +extern message_list_ty *
 +       message_list_header_list (message_list_ty *mlp);
- 
++
  #ifdef __cplusplus
  }
+ #endif
+-- 
+2.49.0
+

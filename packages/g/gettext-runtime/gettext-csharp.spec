@@ -2,6 +2,7 @@
 # spec file for package gettext-csharp
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +21,7 @@
 %global debug_package %{nil}
 %endif
 Name:           gettext-csharp
-Version:        0.22.5
+Version:        0.25.1
 Release:        0
 Summary:        Native Language Support (NLS) for C#
 License:        LGPL-2.1-or-later
@@ -31,19 +32,19 @@ Source1:        https://ftp.gnu.org/gnu/gettext/gettext-%{version}.tar.xz.sig
 Source2:        suse-start-po-mode.el
 Source3:        gettext-linkdupes.sh
 Source4:        gettext-rpmlintrc
+# pub   ed25519 2025-01-28 [SC]
+#       E0FF BD97 5397 F77A 32AB  76EC B630 1D9E 1BBE AC08
+# uid   Bruno Haible (Free Software Development) <bruno@clisp.org>
+# https://savannah.gnu.org/users/haible
 Source5:        gettext-runtime.keyring
-Patch0:         gettext-0.12.1-sigfpe.patch
 Patch1:         gettext-0.19.3-fix-bashisms.patch
 Patch2:         gettext-0.12.1-gettextize.patch
-Patch3:         use-acinit-for-libtextstyle.patch
 Patch4:         gettext-po-mode.diff
 Patch5:         gettext-initialize_vars.patch
 # PATCH-FIX-OPENSUSE gettext-dont-test-gnulib.patch -- coolo@suse.de
 Patch6:         gettext-dont-test-gnulib.patch
 # PATCH-FIX-UPSTREAM boo#941629 -- pth@suse.com
 Patch11:        boo941629-unnessary-rpath-on-standard-path.patch
-# PATCH-FIX-SUSE Bug boo#1106843
-Patch13:        reproducible.patch
 # PATCH-FEATURE bsc#1165138
 Patch14:        0001-msgcat-Add-feature-to-use-the-newest-po-file.patch
 Patch15:        0002-msgcat-Merge-headers-when-use-first.patch
@@ -58,7 +59,10 @@ BuildRequires:  libxml2-devel
 BuildRequires:  mono-devel
 BuildRequires:  perl-libintl-perl
 BuildRequires:  tcl
+BuildRequires:  pkgconfig(libacl)
+BuildRequires:  pkgconfig(libattr)
 Requires:       mono
+ExcludeArch:    i586
 
 %description
 Mono with its 'resgen' program uses a design that Microsoft created and
@@ -116,16 +120,14 @@ mv csharpdoc %{buildroot}/%{_defaultdocdir}/%{name}
 # exclude files packaged via other spec files
 rm -Rf %{buildroot}/%{_bindir}
 rm -f %{buildroot}/%{_libdir}/lib*
-rm -f %{buildroot}/%{_libdir}/gettext/hostname
-rm -f %{buildroot}/%{_libdir}/gettext/project-id
-rm -f %{buildroot}/%{_libdir}/gettext/urlget
-rm -f %{buildroot}/%{_libdir}/gettext/user-email
-rm -f %{buildroot}/%{_libdir}/gettext/cldr-plurals
+rm -rf %{buildroot}/%{_libexecdir}
 rm -Rf %{buildroot}/%{_includedir}
 rm -f %{buildroot}/%{_libdir}/preloadable_libintl.so
 
 %files
 %doc %{_defaultdocdir}/%{name}
+%exclude %{_libdir}/gettext/GNU.Gettext.dll
+%dir %{_libdir}/gettext
 %{_libdir}/GNU.Gettext.dll
 %{_libdir}/gettext/msgfmt.net.exe
 %{_libdir}/gettext/msgunfmt.net.exe

@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Wed Jul 23 12:40:45 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Do not build support for Java and C# on i586.
+
+-------------------------------------------------------------------
+Thu Jul 17 07:42:56 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to 0.25.1:
+  * Bug fixes:
+  - autopoint no longer fails if configure.ac contains no
+    AM_GNU_GETTEXT_VERSION or AM_GNU_GETTEXT_REQUIRE_VERSION invocation.
+  - nls.m4 is installed again under $PREFIX/share/aclocal/.
+
+-------------------------------------------------------------------
+Fri May 16 09:35:54 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 0.25:
+  * xgettext now supports Go
+  * xgettext now supports TypeScript and TSX
+  * Add support for the D programming language (library and tools)
+  * Add support for the Modula-2 programming language (same)
+  * xgettext has a new option '--generated' that customizes the way
+    the 'POT-Creation-Date' in the POT file is computed
+- build with libacl/libattr
+
+-------------------------------------------------------------------
+Thu May 15 16:06:29 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 0.24.1:
+  * Fix bad interactions between autoreconf and autopoint
+  * xgettext: Creating the POT file of a package under Git version
+    control is now faster. Also, the use of Git can be turned off
+    by specifying the option --no-git
+
+-------------------------------------------------------------------
+Fri May  9 06:49:21 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update upstream signing key and verify source signatures (again)
+
+-------------------------------------------------------------------
+Wed Apr  9 19:35:55 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to 0.24.0
+  * Programming languages support:
+    - C:
+      + A new example 'hello-c-http' has been added, showing the use
+        of GNU gettext in a multithreaded web server.
+    - C++:
+      + A new example 'hello-c++-gnome3' has been added.
+    - Ruby:
+      + A new example 'hello-ruby' has been added.
+  * Improvements for maintainers:
+    - When xgettext creates the POT file of a package under Git version
+      control, the 'POT-Creation-Date' in the POT file usually no longer
+      changes gratuitously each time the POT file is regenerated.
+
+- Update to 23.0
+  * Internationalized data formats:
+    - XML
+      + The escaping of characters such as & < > has been changed:
+      + No escaping is done any more by xgettext, when creating a POT file.
+      + Instead, extra escaping can be requested for the msgfmt pass, when
+        merging into an XML file.
+      + The default value of 'escape' in the <gt:escapeRule> was "yes";
+        now it is "no".
+      + This means that existing translations of older POT files may no
+        longer fully apply. As a maintainer of a package that has
+        translatable XML files, you need to regenerate the POT file and
+        pass it on to your translators.
+      + XML schemas for .its and .loc files are now provided.
+      + The value of the xml:lang attribute, inserted by msgfmt,
+        now conforms to W3C standards.
+      + 'msgfmt --xml' accept an option --replace-text, that causes
+        the output to be a mono-lingual XML file instead of a multi-lingual
+        XML file.
+      + xgettext and 'msgfmt --xml' now support DocBook XML files.
+    - Desktop: xgettext now produces POT files with correct line numbers.
+  * Programming languages support:
+    - Java:
+      + xgettext now has an improved recognition of format strings when
+        the String.formatted method is used.
+    - C#:
+      + The build system and tools now also support 'dotnet' (.NET) as
+        C# implementation.  In order to declare a preference for 'dotnet'
+        over 'mono', you can use the configure option '--enable-csharp=dotnet'.
+      + xgettext now recognizes strings with embedded expressions
+        (a.k.a. interpolated strings).
+    - Perl:
+      + xgettext now reports warnings instead of fatal errors.
+      + xgettext now recognizes strings with embedded expressions
+        (a.k.a. interpolated strings).
+  * Runtime behaviour:
+    - In the C.UTF-8 locale, like in the C locale, the *gettext() functions
+      now return the msgid untranslated. This is relevant for GNU systems,
+      Linux with musl libc, FreeBSD, NetBSD, OpenBSD, Cygwin, and Android.
+  * Documentation:
+    - The section "Preparing Strings" now gives more advice how to deal
+      with string concatenation and strings with embedded expressions.
+  * xgettext:
+    - Most of the diagnostics emitted by xgettext are now labelled as
+      "warning" or "error".
+  * msgmerge:
+    - The option '--sorted-output' is now deprecated.
+  * libgettextpo library:
+    - This library is now multithread-safe.
+    - The function 'po_message_set_format' now supports resetting a format
+      string mark.
+
+- Remove patches merged upstream:
+  * gettext-0.12.1-sigfpe.patch
+  * use-acinit-for-libtextstyle.patch
+  * reproducible.patch
+  * reproducible-jar.patch
+- Refresh patches
+  * gettext-dont-test-gnulib.patch
+  * 0001-msgcat-Add-feature-to-use-the-newest-po-file.patch
+  * 0002-msgcat-Merge-headers-when-use-first.patch
+- Update gettext-linkdupes.sh
+
+-------------------------------------------------------------------
 Wed Feb 26 03:01:34 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Fix crash while handling po files with malformed header and
