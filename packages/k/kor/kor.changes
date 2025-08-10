@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Aug 10 08:42:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.4:
+  * chore: pre version bump (#481)
+  * fix: skip kubeconfig initialization for utility and completion
+    commands (#457)
+
+-------------------------------------------------------------------
+Fri Aug 08 04:49:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.3:
+  * chore: pre version bump (#478)
+  * feat: Discover unused ClusterRoleBindings (#473)
+  * chore(deps): bump sigs.k8s.io/yaml from 1.5.0 to 1.6.0 (#474)
+  * chore(deps): bump github.com/prometheus/client_golang (#475)
+  * fix: support multiple kubeconfig files from KUBECONFIG env
+    (#453)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.33.2 to
+    0.33.3 (#468)
+  * feat: add flags to skip owner-referenced resources (#467)
+  * chore(deps): bump github.com/go-viper/mapstructure/v2 (#465)
+  * chore(deps): bump sigs.k8s.io/yaml from 1.4.0 to 1.5.0 (#464)
+  * feat: upgrade goreleaser to v2 (#458)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.33.1 to
+    0.33.2 (#460)
+
+-------------------------------------------------------------------
+Sun Jun 22 06:49:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.2:
+  * chore: prerelease bump (#456)
+  * Feat: Get plural resource kinds from K8s (#445)
+  * Update go to 1.24 in dockerfile
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.33.0 to
+    0.33.1 (#443)
+  * deprecate corev1.Endpoints (#455)
+  * Feat: add set resources for cron job (#454)
+  * Feat: Implement deletion of all unused resources using 'all
+    --delete' command (#438)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.32.3 to
+    0.33.0 (#435)
+  * chore(deps): bump github.com/prometheus/client_golang (#432)
+
+-------------------------------------------------------------------
 Tue Apr 08 04:51:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.1:
