@@ -1,3 +1,10 @@
+gpxsee (13.46) stable; urgency=low
+
+  * Fixed handling of segmented FIT tracks.
+  * Fixed popups/tooltips displaying on Wayland.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 09 Aug 2025 15:08:49 +0200
+
 gpxsee (13.45) stable; urgency=low
 
   * Vector maps styles tweaks.

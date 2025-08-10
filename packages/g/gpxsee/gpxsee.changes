@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug  9 15:04:07 CEST 2025 - tumic@cbox.cz
+
+- Update to version 13.46
+  * Fixed handling of segmented FIT tracks.
+  * Fixed popups/tooltips displaying on Wayland.
+
+-------------------------------------------------------------------
 Sun Jul 13 12:33:21 CEST 2025 - tumic@cbox.cz
 
 - Update to version 13.45
