@@ -818,4 +818,28 @@
   longer need to disable it by default (boo#1246010)</comment>
     <requestid>1294192</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>6aef83943b73d4e90a05bbbb4d145a2b</srcmd5>
+    <version>570.172.08</version>
+    <time>1754857236</time>
+    <user>dimstar_suse</user>
+    <comment>- make sure these Requires right below are not added on Tumbleweed
+
+- added Requires
+  * nvidia-modprobe &gt;= %version
+  * nvidia-persitenced &gt;= %version
+  * nvidia-modprobe-cuda-lt-sp6
+  * nvidia-persitenced-cuda-lt-sp6
+  to be provided by special versions of nvidia-modprobe and
+  nvidia-persitenced built against SP4 (bsc#1237208, jsc#PED-13295)
+
+- update CUDA variant to 580.65.06, which addresses various security
+  issues:
+  * CVE-2025-23277 (bsc#1247528)
+  * CVE-2025-23278 (bsc#1247529)
+  * CVE-2025-23286 (bsc#1247530)
+  * CVE-2025-23283 (bsc#1247531)
+  * CVE-2025-23279 (bsc#1247532)</comment>
+    <requestid>1298634</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package nvidia-open-driver-G06-signed
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define gfx_version 570.172.08
-%define cuda_version 575.57.08
+%define cuda_version 580.65.06
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 %if "%{flavor}" == "cuda"

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Aug  9 22:11:41 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- make sure these Requires right below are not added on Tumbleweed
+
+-------------------------------------------------------------------
+Tue Aug  5 09:15:58 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- added Requires
+  * nvidia-modprobe >= %version
+  * nvidia-persitenced >= %version
+  * nvidia-modprobe-cuda-lt-sp6
+  * nvidia-persitenced-cuda-lt-sp6
+  to be provided by special versions of nvidia-modprobe and
+  nvidia-persitenced built against SP4 (bsc#1237208, jsc#PED-13295)
+
+-------------------------------------------------------------------
+Mon Jul 28 12:59:03 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update CUDA variant to 580.65.06, which addresses various security
+  issues:
+  * CVE-2025-23277 (bsc#1247528)
+  * CVE-2025-23278 (bsc#1247529)
+  * CVE-2025-23286 (bsc#1247530)
+  * CVE-2025-23283 (bsc#1247531)
+  * CVE-2025-23279 (bsc#1247532)
+
+-------------------------------------------------------------------
 Fri Jul 11 08:45:55 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - update non-CUDA variant to 570.172.08 (boo#1246327)
