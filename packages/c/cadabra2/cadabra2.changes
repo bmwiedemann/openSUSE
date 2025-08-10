@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Aug  4 13:24:15 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.5.14:
+  * TeXmacs is supported again, including plotting (put the
+    config/init-cadabra2.scm file in the appropriate location).
+  * Plotting is now supported again by the Jupyter kernel.
+  * Support for plotting in Kitty and iTerm2 terminals.
+  * Group equal components when displaying component values of
+    tensors.
+  * Internal: some operations now use multiple threads (work in
+    progress).
+  * Internal: use a pool allocator for tree nodes.
+  * Internal: speedup in handling of Multiplier (test suite
+    speedup by 1.5x).
+  * Docs: add SympyBridge docs.
+  * Fix bug when subtracting two component expressions.
+  * Fix bug with NTensor broadcasting from scalar.
+  * Fix cadabra2-cli argument handling.
+  * Fix handling of code blocks in cadabra2-cli, making it
+    consistent with the notebook.
+  * Stability improvement to the SymPy bridge by walking the SymPy
+    AST directly instead of parsing printed output.
+  * Made \iu the imaginary unit, by default displaying as i .
+  * Fix loading cadabra2_defaults.py in the Jupyter kernel.
+  * Fix scrolling bug in notebook which would make the document
+    jump around for no good reason.
+  * Internal: refactor to enable cleaner insertion of related
+    properties on property declaration.
+  * Fix handling substitute with regex (gh#kpeeters/cadabra2#230).
+
+-------------------------------------------------------------------
 Fri May  9 02:49:50 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.5.12:

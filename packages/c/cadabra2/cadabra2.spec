@@ -32,7 +32,7 @@
 %bcond_with jupyter
 %endif
 Name:           cadabra2
-Version:        2.5.12
+Version:        2.5.14
 Release:        0
 Summary:        A computer algebra system for solving problems in field theory
 License:        GPL-3.0-or-later
