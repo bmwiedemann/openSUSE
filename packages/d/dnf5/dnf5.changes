@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 18 11:58:58 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Do not install polkit rules allowing privileged actions for wheel
+  bsc#1245451
+
+-------------------------------------------------------------------
+Mon Jun 23 13:43:27 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to 5.2.14.0
+  + 5.2.14.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.14.0
+
+-------------------------------------------------------------------
 Tue Apr 29 11:25:05 UTC 2025 - Neal Gompa <ngompa@opensuse.org>
 
 - Update to 5.2.13.1

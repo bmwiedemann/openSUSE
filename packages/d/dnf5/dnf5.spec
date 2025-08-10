@@ -58,7 +58,7 @@
 # ========== versions of dependencies ==========
 
 %global libmodulemd_version 2.5.0
-%global librepo_version 1.18.0
+%global librepo_version 1.20.0
 %global libsolv_version 0.7.32
 %global sqlite_version 3.35.0
 %global swig_version 4
@@ -78,7 +78,7 @@
 %global devcliname %{libcliprefix}-devel
 
 Name:           dnf5
-Version:        5.2.13.1
+Version:        5.2.14.0
 Release:        0
 Summary:        Next generation RPM package manager
 License:        GPL-2.0-or-later
@@ -97,8 +97,8 @@ Patch1002:      dnf5-Switch-default-reposdir-to-etc-dnf-repos.d.patch
 ## Disable Werror to fix bindings builds
 Patch1003:      dnf5-disable-Werror.patch
 
-Requires:       %{libname}%{?_isa} = %{version}-%{release}
 Requires:       %{libcliname}%{?_isa} = %{version}-%{release}
+Requires:       %{libname}%{?_isa} = %{version}-%{release}
 Requires:       dnf-data
 Recommends:     bash-completion
 
@@ -162,6 +162,8 @@ BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
 BuildRequires:  git-core
+BuildRequires:  toml11-devel
+BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(json-c)
@@ -172,13 +174,11 @@ BuildRequires:  pkgconfig(libsolvext) >= %{libsolv_version}
 BuildRequires:  pkgconfig(rpm) >= 4.17.0
 BuildRequires:  pkgconfig(sqlite3) >= %{sqlite_version}
 BuildRequires:  pkgconfig(systemd)
-BuildRequires:  toml11-devel
-BuildRequires:  zlib-devel
 
 %if %{with tests}
 BuildRequires:  createrepo_c
-BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  rpm-build
+BuildRequires:  pkgconfig(cppunit)
 %endif
 
 %if %{with comps}
@@ -196,8 +196,8 @@ BuildRequires:  pkgconfig(zck) >= %{zchunk_version}
 %if %{with static_libsolv}
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(liblzma)
-BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(zlib)
 %endif
 
 %if %{with html} || %{with man}
@@ -251,11 +251,11 @@ BuildRequires:  swig >= %{swig_version}
 # required for perl-libdnf5 and perl-libdnf5-cli
 BuildRequires:  perl
 %if %{with tests}
-BuildRequires:  perl(strict)
-BuildRequires:  perl(Test::More)
-BuildRequires:  perl(Test::Exception)
-BuildRequires:  perl(warnings)
 BuildRequires:  perl(FindBin)
+BuildRequires:  perl(Test::Exception)
+BuildRequires:  perl(Test::More)
+BuildRequires:  perl(strict)
+BuildRequires:  perl(warnings)
 %endif
 %endif
 
@@ -286,7 +286,6 @@ It supports RPM packages, modulemd modules, and comps groups & environments.
 
 %postun
 %systemd_postun_with_restart dnf5-makecache.timer
-
 
 %files -f dnf5.lang
 %{_bindir}/dnf5
@@ -383,8 +382,8 @@ It supports RPM packages, modulemd modules, and comps groups & environments.
 Summary:        Package management library
 License:        LGPL-2.1-or-later
 Requires:       libmodulemd2%{?_isa} >= %{libmodulemd_version}
-Requires:       libsolv1%{?_isa} >= %{libsolv_version}
 Requires:       librepo0%{?_isa} >= %{librepo_version}
+Requires:       libsolv1%{?_isa} >= %{libsolv_version}
 Requires:       libsqlite3-0%{?_isa} >= %{sqlite_version}
 
 %description -n %{libname}
@@ -443,9 +442,9 @@ Library for working with a terminal in a command-line package manager.
 %package -n dnf5-devel
 Summary:        Development files for dnf5
 License:        LGPL-2.1-or-later
-Requires:       dnf5%{?_isa} = %{version}-%{release}
-Requires:       %{devname}%{?_isa} = %{version}-%{release}
 Requires:       %{devcliname}%{?_isa} = %{version}-%{release}
+Requires:       %{devname}%{?_isa} = %{version}-%{release}
+Requires:       dnf5%{?_isa} = %{version}-%{release}
 
 %description -n dnf5-devel
 Develpment files for dnf5.
@@ -454,7 +453,6 @@ Develpment files for dnf5.
 %{_includedir}/dnf5/
 %license COPYING.md
 %license lgpl-2.1.txt
-
 
 # ========== libdnf5-devel ==========
 
@@ -477,7 +475,6 @@ Development files for libdnf.
 %license COPYING.md
 %license lgpl-2.1.txt
 
-
 # ========== libdnf5-cli-devel ==========
 
 %package -n %{devcliname}
@@ -495,7 +492,6 @@ Development files for libdnf5-cli.
 %license COPYING.md
 %license lgpl-2.1.txt
 
-
 # ========== perl-libdnf5 ==========
 
 %if %{with perl5}
@@ -503,7 +499,6 @@ Development files for libdnf5-cli.
 Summary:        Perl 5 bindings for the libdnf library
 License:        LGPL-2.1-or-later
 Requires:       %{libname}%{?_isa} = %{version}-%{release}
-
 
 %description -n perl-libdnf5
 Perl 5 bindings for the libdnf library.
@@ -515,7 +510,6 @@ Perl 5 bindings for the libdnf library.
 %license lgpl-2.1.txt
 %endif
 
-
 # ========== perl-libdnf5-cli ==========
 
 %if %{with perl5} && %{with libdnf_cli}
@@ -523,7 +517,6 @@ Perl 5 bindings for the libdnf library.
 Summary:        Perl 5 bindings for the libdnf5-cli library
 License:        LGPL-2.1-or-later
 Requires:       %{libcliname}%{?_isa} = %{version}-%{release}
-
 
 %description -n perl-libdnf5-cli
 Perl 5 bindings for the libdnf5-cli library.
@@ -534,7 +527,6 @@ Perl 5 bindings for the libdnf5-cli library.
 %license COPYING.md
 %license lgpl-2.1.txt
 %endif
-
 
 # ========== python3-libdnf5 ==========
 
@@ -555,7 +547,6 @@ Python 3 bindings for the libdnf library.
 %license lgpl-2.1.txt
 %endif
 
-
 # ========== python3-libdnf5-cli ==========
 
 %if %{with python3} && %{with libdnf_cli}
@@ -575,7 +566,6 @@ Python 3 bindings for the libdnf5-cli library.
 %license lgpl-2.1.txt
 %endif
 
-
 # ========== ruby-libdnf5 ==========
 
 %if %{with ruby}
@@ -593,7 +583,6 @@ Ruby bindings for the libdnf library.
 %license COPYING.md
 %license lgpl-2.1.txt
 %endif
-
 
 # ========== ruby-libdnf5-cli ==========
 
@@ -613,7 +602,6 @@ Ruby bindings for the libdnf5-cli library.
 %license lgpl-2.1.txt
 %endif
 
-
 # ========== libdnf5-plugin-actions ==========
 
 %if %{with plugin_actions}
@@ -632,7 +620,6 @@ Libdnf plugin that allows to run actions (external executables) on hooks.
 %{_mandir}/man8/libdnf5-actions.8.*
 %endif
 
-
 # ========== libdnf5-plugin-appstream ==========
 
 %if %{with plugin_appstream}
@@ -649,7 +636,6 @@ Libdnf5 plugin that installs repository's AppStream data, for repositories which
 %{_libdir}/libdnf5/plugins/appstream.so
 %config(noreplace) %{_sysconfdir}/dnf/libdnf5-plugins/appstream.conf
 %endif
-
 
 # ========== libdnf5-plugin-expired-pgp-keys ==========
 
@@ -669,7 +655,6 @@ Libdnf5 plugin for detecting and removing expired PGP keys.
 %{_mandir}/man8/libdnf5-expired-pgp-keys.8.*
 %endif
 
-
 # ========== python3-libdnf5-plugins-loader ==========
 
 %if %{with python_plugins_loader}
@@ -688,15 +673,14 @@ Libdnf plugin that allows loading Python plugins.
 %doc %{python3_sitelib}/libdnf_plugins/README
 %endif
 
-
 # ========== dnf5daemon-client ==========
 
 %if %{with dnf5daemon_client}
 %package -n dnf5daemon-client
 Summary:        Command-line interface for dnf5daemon-server
 License:        GPL-2.0-or-later
-Requires:       %{libname}%{?_isa} = %{version}-%{release}
 Requires:       %{libcliname}%{?_isa} = %{version}-%{release}
+Requires:       %{libname}%{?_isa} = %{version}-%{release}
 Requires:       dnf5daemon-server
 
 %description -n dnf5daemon-client
@@ -709,15 +693,14 @@ Command-line interface for dnf5daemon-server.
 %{_mandir}/man8/dnf5daemon-client.8.*
 %endif
 
-
 # ========== dnf5daemon-server ==========
 
 %if %{with dnf5daemon_server}
 %package -n dnf5daemon-server
 Summary:        Package management service with a DBus interface
 License:        GPL-2.0-or-later
-Requires:       %{libname}%{?_isa} = %{version}-%{release}
 Requires:       %{libcliname}%{?_isa} = %{version}-%{release}
+Requires:       %{libname}%{?_isa} = %{version}-%{release}
 Requires:       dbus-1-common
 Requires:       dnf-data
 Requires:       polkit
@@ -754,16 +737,15 @@ Package management service with a DBus interface.
 %{_mandir}/man8/dnf5daemon-dbus-api.8.*
 %endif
 
-
 # ========== dnf5-plugins ==========
 
 %if %{with dnf5_plugins}
 %package -n dnf5-plugins
 Summary:        Plugins for dnf5
 License:        LGPL-2.1-or-later
-Requires:       libcurl4%{?_isa} >= %{libcurl_version}
-Requires:       dnf5%{?_isa} = %{version}-%{release}
 Requires:       %{libcliname}%{?_isa} = %{version}-%{release}
+Requires:       dnf5%{?_isa} = %{version}-%{release}
+Requires:       libcurl4%{?_isa} >= %{libcurl_version}
 Provides:       dnf5-command(builddep)
 Provides:       dnf5-command(changelog)
 Provides:       dnf5-command(config-manager)
@@ -830,12 +812,10 @@ automatically and regularly from systemd timers, cron jobs or similar.
 
 %endif
 
-
 # ========== unpack, build, check & install ==========
 
 %prep
 %autosetup -S git_am -n dnf5-%{version}
-
 
 %build
 %cmake \
@@ -876,12 +856,10 @@ automatically and regularly from systemd timers, cron jobs or similar.
     %cmake_build doc-man
 %endif
 
-
 %check
 %if %{with tests}
     %ctest
 %endif
-
 
 %install
 %cmake_install
@@ -957,5 +935,7 @@ touch %{buildroot}%{_sysconfdir}/dnf/versionlock.toml
 ln -sr %{buildroot}%{_bindir}/dnf5 %{buildroot}%{_bindir}/yum
 %endif
 
+# Do not deliver polkit rule allowing privileged actions for wheel (bsc#1245451)
+rm -rf %{buildroot}%{_datadir}/polkit-1/rules.d
 
 %changelog
