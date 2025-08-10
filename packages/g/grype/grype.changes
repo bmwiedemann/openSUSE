@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Aug 10 07:04:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.97.2:
+  * Added Features
+    - new syft version adds binary classifier for hashicorp vault
+      [#4121 @willmurphyscode]
+  * Bug Fixes
+    - fix: update syft's nondeterministic Java archive purl and
+      improve groupID for better matching [#3521 #4118 @kzantow]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#2860)
+    - chore(deps): bump docker/login-action from 3.4.0 to 3.5.0
+      (#2848)
+    - chore(deps): bump actions/cache in /.github/actions/bootstrap
+      (#2854)
+    - chore(deps): bump github/codeql-action from 3.29.6 to 3.29.8
+      (#2857)
+    - chore(deps): bump golang.org/x/tools from 0.35.0 to 0.36.0
+      (#2859)
+    - chore(deps): bump actions/cache from 4.2.3 to 4.2.4 (#2855)
+    - chore(deps): bump github/codeql-action from 3.29.5 to 3.29.6
+      (#2856)
+    - chore(deps): update tools to latest versions (#2839)
+
+-------------------------------------------------------------------
 Sun Aug 03 11:24:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.97.1:
