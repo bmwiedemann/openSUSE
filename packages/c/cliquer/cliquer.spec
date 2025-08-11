@@ -1,7 +1,7 @@
 #
 # spec file for package cliquer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           cliquer
 %define lname   libcliquer1
-Version:        1.22
+Version:        1.23
 Release:        0
 Summary:        C routines for finding cliques in graphs
 License:        GPL-2.0-or-later
@@ -73,8 +73,7 @@ This subpackage provides the development headers for Cliquer's library.
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %_bindir/cl
@@ -87,5 +86,6 @@ rm -f "%buildroot/%_libdir"/*.la
 %files devel
 %_includedir/cliq*
 %_libdir/libcliquer.so
+%_libdir/pkgconfig/*.pc
 
 %changelog
