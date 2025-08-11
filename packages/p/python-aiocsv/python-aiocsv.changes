@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 11 05:06:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add BuildRequires on pytest-asyncio due to pytest 8.4.1.
+- Switch to github tarball for test files.
+- Skip a test broken by cPython changes.
+
+-------------------------------------------------------------------
 Fri Oct 11 10:35:13 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.3.2

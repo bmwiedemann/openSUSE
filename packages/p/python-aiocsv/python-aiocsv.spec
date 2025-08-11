@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiocsv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-aiocsv
 Version:        1.3.2
@@ -22,10 +23,11 @@ Release:        0
 Summary:        Asynchronous CSV reading/writing in Python
 License:        MIT
 URL:            https://github.com/MKuranowski/aiocsv
-Source:         https://files.pythonhosted.org/packages/source/a/aiocsv/aiocsv-%{version}.tar.gz
+Source:         https://github.com/MKuranowski/aiocsv/archive/refs/tags/v%{version}.tar.gz#/aiocsv-%{version}.tar.gz
 BuildRequires:  %{python_module aiofiles}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 61.0}
 BuildRequires:  %{python_module typing_extensions}
@@ -66,7 +68,8 @@ sed -i '/_parser.c/d' %{buildroot}%{$python_sitearch}/aiocsv-%{version}.dist-inf
 }
 
 %check
-%pytest_arch
+# https://github.com/MKuranowski/aiocsv/issues/33
+%pytest_arch -k 'not test_parsing_weird_quotes_nonnumeric'
 
 %files %{python_files}
 %doc readme.md
