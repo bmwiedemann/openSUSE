@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 10 20:53:28 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.8:
+  * New "profiles" providing defaults for different standards of
+    the C language, e.g. cflow --profile=gcc
+  * CFLOW_OPTIONS and CFLOWRC are deprecated
+  * Emacs cflow-mode improved
+  * Bugfixes
+- update upstream signing key
+- remove obsolete texinfo macros
+- drop cflow-gcc15.patch, no longer needed
+
+-------------------------------------------------------------------
 Tue Jun 10 07:35:25 UTC 2025 - pgajdos@suse.com
 
 - added patches

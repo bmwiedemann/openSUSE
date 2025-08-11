@@ -2,6 +2,7 @@
 # spec file for package cflow
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           cflow
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Tool to generate flowcharts for C sources
 License:        GPL-3.0-or-later
@@ -26,11 +27,7 @@ URL:            https://www.gnu.org/software/cflow
 Source0:        https://ftp.gnu.org/gnu/cflow/cflow-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/cflow/cflow-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
-# https://savannah.gnu.org/bugs/index.php?67206
-Patch0:         cflow-gcc15.patch
 BuildRequires:  flex
-Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
 
 %description
 GNU cflow analyzes a collection of C source files and prints a graph, charting
@@ -54,17 +51,12 @@ files can optionally be preprocessed before analyzing.
 %make_install
 %find_lang %{name}
 
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-
 %files -f %{name}.lang
 %license COPYING
 %doc NEWS README AUTHORS
 %{_bindir}/%{name}
 %{_infodir}/%{name}.info%{?ext_info}
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%{_datadir}/%{name}
 
 %changelog
