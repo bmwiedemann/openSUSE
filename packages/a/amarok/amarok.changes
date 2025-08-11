@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Aug  9 16:41:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.3.1
+  https://blogs.kde.org/2025/08/09/amarok-3.3.1-released/
+  * Enable saving and loading script console items, autocompletion
+    in script console, and re-enable some more scripting
+    functionality
+  * Convert the remaining main UI toolbuttons to use icons from
+    theme
+  * Clear out remnants of the now-discontinued MusicDNS service
+  * Fix example permission grant command in database settings (kde#386004)
+  * Fix equalizer gains not updating when selecting some presets (kde#463908)
+  * Fix continuing playback after timecoded tracks (cue files etc, (kde#270003)
+  * Fix MusicBrainz search
+  * Properly start CD playback if Amarok is not already running (kde#503310)
+  * Also transmit embedded cover art through MPRIS (kde#357620)
+  * Don't show transcoding dialog after canceling download (kde#275840)
+  * Load network information earlier to avoid crashes on startup (kde#507497)
+  * Try to export as-compatible-as-possible playlist files (kde#507329)
+  * Fix some random crashes during playback
+
+-------------------------------------------------------------------
 Wed Jul  9 10:12:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Recommend installing gstreamer-plugins-good for mp3 decoding
