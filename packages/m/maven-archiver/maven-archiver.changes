@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug 11 07:33:16 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to maven-archiver 3.6.4
+  * New features and improvements
+    + improve Reproducible Builds javadoc
+    + Fall back on SOURCE_DATE_EPOCH if it exists
+  * Bug Fixes
+    + Treat empty Automatic-Module-Name as no Automatic-Module-Name
+      at all
+  * Maintenance
+    + Enable GitHub Issues
+  * Dependency updates
+    + Bump org.apache.maven.shared:maven-shared-components
+      from 43 to 45
+    + Bump org.codehaus.plexus:plexus-interpolation
+      from 1.27 to 1.28
+    + Bump org.assertj:assertj-core from 3.26.0 to 3.27.3
+- Removed patches:
+  * automatic-module-name.patch
+  * reproducible-from-environment.patch
+    + integrated in this version
+
+-------------------------------------------------------------------
 Fri Jul 25 07:15:18 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:
