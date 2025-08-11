@@ -1,7 +1,7 @@
 #
 # spec file for package virtme
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %global pythons python311
 %endif
 Name:           virtme
-Version:        1.36
+Version:        1.37
 Release:        0
 Summary:        Tools for virtualize the running distro or a rootfs
 License:        GPL-2.0-only
@@ -81,6 +81,5 @@ sed -i -e /argparse-manpage/d $(find %{buildroot} -name requires.txt)
 %{python_sitelib}/%{name}_ng
 %{python_sitelib}/%{name}_ng-%{version}-py*.egg-info
 %{_datadir}/bash-completion
-%config(noreplace) %{_sysconfdir}/%{name}-ng.conf
 
 %changelog

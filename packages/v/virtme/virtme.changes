@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 11 06:27:20 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.37:
+  The most interesting feature in this new version is the initial
+  support for systemd.
+  Until now, virtme-ng didn’t support systemd because it relied on a custom
+  init system (virtme-ng-init) to speed up boot time. As a result, tests
+  requiring systemd couldn't run inside the virtme-ng session. With the new
+  --systemd option, virtme-ng can now (optionally) boot with systemd in the
+  virtualized environment, enabling full systemd interaction during testing.
+
+-------------------------------------------------------------------
 Tue May 13 05:27:10 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.36:
