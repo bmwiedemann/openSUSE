@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug  4 14:37:54 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.19.3:
+  * preload: Wrap __fstat64_time64().
+- Changes from version 0.19.2:
+  * preload: Trap dirfd access to /dev, fstat(), and open_tree().
+- Use %ldconfig_scriptlets macro for post(un) ldconfig scripts.
+
+-------------------------------------------------------------------
 Wed Apr 30 12:13:42 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.19.1:

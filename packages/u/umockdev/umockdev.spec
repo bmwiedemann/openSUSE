@@ -19,7 +19,7 @@
 %define shlib libumockdev0
 %define shlibpre libumockdev-preload0
 Name:           umockdev
-Version:        0.19.1
+Version:        0.19.3
 Release:        0
 Summary:        Mock hardware devices for creating unit tests and bug reporting
 License:        LGPL-2.1-or-later
@@ -102,15 +102,15 @@ umockdev.
 %check
 %meson_test
 
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
-%post -n %{shlibpre} -p /sbin/ldconfig
-%postun -n %{shlibpre} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib}
+%ldconfig_scriptlets -n %{shlibpre}
 
 %files
 %license COPYING
 %doc NEWS README.md
-%{_bindir}/*
+%{_bindir}/umockdev-record
+%{_bindir}/umockdev-run
+%{_bindir}/umockdev-wrapper
 
 %files -n %{shlib}
 %license COPYING
