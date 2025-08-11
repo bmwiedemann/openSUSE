@@ -1,7 +1,7 @@
 #
 # spec file for package python-certomancer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,8 @@ BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module click >= 7.1.2}
 BuildRequires:  %{python_module cryptography >= 3.4.7}
 BuildRequires:  %{python_module freezegun >= 1.1.0}
+BuildRequires:  %{python_module pyhanko-certvalidator}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.8.1}
 BuildRequires:  %{python_module requests-mock}

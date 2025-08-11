@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 11 06:24:15 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on pytest-asyncio and pyhanko-certvalidator.
+
+-------------------------------------------------------------------
 Wed Jun 25 06:57:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.13.0

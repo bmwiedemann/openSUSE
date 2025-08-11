@@ -43,4 +43,12 @@
   - Use Python 3.11 on SLE-15 by default</comment>
     <requestid>1288474</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2c0404b28b1054793835d1615fd5bdfa</srcmd5>
+    <version>0.13.0</version>
+    <time>1754913231</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires on pytest-asyncio and pyhanko-certvalidator.</comment>
+    <requestid>1298725</requestid>
+  </revision>
 </revisionlist>
