@@ -19,14 +19,13 @@
 %define libname libmatrix_client%(echo %{version} | tr . _)
 %define sover 0
 Name:           mtxclient
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        Client API library for Matrix, built on top of Boost.Asio
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/Nheko-Reborn/mtxclient
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         fix-build-with-fmt11.patch
 BuildRequires:  cmake >= 3.13
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1600

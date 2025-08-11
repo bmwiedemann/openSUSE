@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug  4 05:41:12 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.10.1:
+  * Fix v12 room ids without server name
+  * Experimental support for invite permissions
+  * Support new style join vias (instead of server_name)
+  * Redirects for media downloads (Karthik)
+  * Location messages (MTRNord)
+  * Build against fmt11 (Kefu Chai)
+  * Fix incompatibility with null aliases
+- Remove patch fix-build-with-fmt11.patch as it is fixed upstream
+
+-------------------------------------------------------------------
 Thu Mar 27 00:19:24 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Fix for 16.0
@@ -6,7 +19,7 @@ Thu Mar 27 00:19:24 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 -------------------------------------------------------------------
 Thu Jul 25 09:50:20 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
-- Adding fix-build-with-fmt11.patch to fix broken build 
+- Adding fix-build-with-fmt11.patch to fix broken build
 
 -------------------------------------------------------------------
 Mon Jun 10 23:44:56 UTC 2024 - Loren Burkholder <computersemiexpert@outlook.com>
@@ -27,7 +40,7 @@ Mon Jun 10 23:44:56 UTC 2024 - Loren Burkholder <computersemiexpert@outlook.com>
   * Redo our "effects" event types (LorenDB)
   * Server ACLs
   * Better support for unknown message types
-  * Support libolms native error codes 
+  * Support libolms native error codes
 
 -------------------------------------------------------------------
 Sat Jun  1 11:31:02 UTC 2024 - ecsos <ecsos@opensuse.org>
@@ -42,7 +55,7 @@ Mon Feb 27 05:55:14 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
   * Don't highlight everything, when an empty display name is set.
   * Document security of the default parameters to PBKDF2.
   * Fix double invokation of callback if callback throws.
-  * Clean up some duplicate symbols in the library. 
+  * Clean up some duplicate symbols in the library.
 
 -------------------------------------------------------------------
 Sun Jan 22 16:38:29 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
@@ -98,7 +111,7 @@ Fri Jul 22 16:14:07 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
   * Allow more base64 encodings for cross-signing events
   * Use spdlog for logging
   * Support reasons for knocking, joining leaving and inviting.
-  * Support initial state in createRoom 
+  * Support initial state in createRoom
 
 -------------------------------------------------------------------
 Sat Mar 12 08:17:41 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
@@ -119,7 +132,7 @@ Sat Mar 12 08:17:41 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
   * Fix ambiguous conversion of pushrule actions.
   * Reduce copies for pushrules.
   * Remove mentions of Boost.ASIO.
-  * Fix documentation. 
+  * Fix documentation.
 
 -------------------------------------------------------------------
 Wed Feb 23 13:18:37 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
@@ -186,7 +199,7 @@ Tue Oct  5 08:51:19 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
 Wed Apr 28 08:45:43 UTC 2021 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to version 0.5.1:
-  * Allow exporting a session with a specific minimum index 
+  * Allow exporting a session with a specific minimum index
     instead of all known indices.
 
 -------------------------------------------------------------------
@@ -199,7 +212,7 @@ Wed Apr 21 08:21:42 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
   * Proper TLS support
   * Support for pushers by vurpo
   * Fix crashes when using the epoll reactor on ARM
-  * Support for MSC2545, sticker and emote packs 
+  * Support for MSC2545, sticker and emote packs
 
 -------------------------------------------------------------------
 Wed Feb 24 12:19:22 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
@@ -220,7 +233,7 @@ Wed Feb 24 10:43:26 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 -------------------------------------------------------------------
 Fri Jan 22 04:35:54 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Formatting the spec file. 
+- Formatting the spec file.
 
 -------------------------------------------------------------------
 Thu Jan 21 15:20:15 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
@@ -236,16 +249,16 @@ Thu Jan 21 14:39:45 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
 Wed Jan 20 13:08:07 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.4.0:
-  * Cross signing and various E2EE bits. 
-    Also some larger refactorings around event representation. 
+  * Cross signing and various E2EE bits.
+    Also some larger refactorings around event representation.
 
 -------------------------------------------------------------------
 Sat Jun 13 13:04:19 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.3.1+0:
   * Update _service file
-  * This release contains various cleanups around to device 
-    messaging, support for presence and room tags as well as a few 
+  * This release contains various cleanups around to device
+    messaging, support for presence and room tags as well as a few
     other improvements.
 
 -------------------------------------------------------------------
@@ -261,7 +274,7 @@ Mon Apr 20 15:22:38 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
   * notification pagination
   * basic room upgrade support (fetch only)
   * improve compatibility with riots key export format
-  * use std::variant and friends instead of boost 
+  * use std::variant and friends instead of boost
 
 -------------------------------------------------------------------
 Wed Apr  8 08:23:18 UTC 2020 - wnereiz@member.fsf.org
@@ -365,9 +378,9 @@ Tue Jul 17 05:03:42 UTC 2018 - windowskaput@gmail.com
 -------------------------------------------------------------------
 Mon Jul  2 09:22:40 UTC 2018 - windowskaput@gmail.com
 
-- Update matrix-structs 
+- Update matrix-structs
 
 -------------------------------------------------------------------
 Wed Jun 27 08:26:33 UTC 2018 - windowskaput@gmail.com
 
-- New pakage 
+- New pakage

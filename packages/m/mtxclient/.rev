@@ -15,4 +15,20 @@
     <comment>fix for 16.0</comment>
     <requestid>1256444</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>985dadc20a7156d99f295720d633a74f</srcmd5>
+    <version>0.10.1</version>
+    <time>1754913248</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.1:
+  * Fix v12 room ids without server name
+  * Experimental support for invite permissions
+  * Support new style join vias (instead of server_name)
+  * Redirects for media downloads (Karthik)
+  * Location messages (MTRNord)
+  * Build against fmt11 (Kefu Chai)
+  * Fix incompatibility with null aliases
+- Remove patch fix-build-with-fmt11.patch as it is fixed upstream</comment>
+    <requestid>1298783</requestid>
+  </revision>
 </revisionlist>
