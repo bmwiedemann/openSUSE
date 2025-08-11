@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug  7 16:57:13 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.50:
+  + Themes:
+    - Add a progress-working-symbolic icon
+    - Support strokes in symbolic icons
+    - Update theme CSS
+    - Remove hardcoded Cantarell font
+  + GtkShortcutsWindow: Differentiate all keypad symbols visually
+  + GtkApplication: Register unsandboxed apps with the portals
+  + X11: Fix problems with gtk_window_get_geometry
+  + Wayland: Fix a crash
+  + Input: Make compose sequence visuals configurable
+  + Printing:
+    - Fix the build with libcups 3
+    - Support gnome-papers as previewer
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Jul  3 07:38:34 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Bump python versions in 'Requires: python3*-gobject-Gdk' for
