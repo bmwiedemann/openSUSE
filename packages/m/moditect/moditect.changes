@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 11 09:48:27 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to v1.3.0
+  * Features
+    + Use maven-archiver to parse ouputTimestamp
+    + Reduce code duplication in AddModuleInfoTest
+  * Fixes
+    + Generate multi-release directory JAR entries
+- Removed patch:
+  * 0001-Use-maven-archiver-to-parse-ouputTimestamp.patch
+    + integrated in upstream
+
+-------------------------------------------------------------------
 Wed Jul 16 14:59:10 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Do not shade dependencies

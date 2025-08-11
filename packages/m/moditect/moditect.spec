@@ -1,7 +1,7 @@
 #
 # spec file for package moditect
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           moditect
-Version:        1.2.2
+Version:        1.3.0
 Release:        0
 Summary:        Tooling for the Java Module System
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/%{name}/%{name}
 Source0:        %{url}/archive/refs/tags/%{version}.Final.tar.gz
-Patch0:         0001-Use-maven-archiver-to-parse-ouputTimestamp.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.beust:jcommander)
@@ -69,7 +68,6 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{version}.Final
-%patch -P 0 -p1
 
 %pom_remove_parent parent
 
