@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 11 06:47:00 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file (bsc#1246792) 
+  * Changed '%{release}' to '%{rbrelease}' in "DISTRELEASE=" 
+    to remove embedded build counters from the binaries
+- Re-vendor-ed vendor.tar.zst
+
+-------------------------------------------------------------------
 Mon Jul 28 08:47:52 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file for opticsmon.service (bsc#1246669)

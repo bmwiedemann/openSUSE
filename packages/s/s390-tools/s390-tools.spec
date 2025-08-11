@@ -17,7 +17,8 @@
 # needssslcertforbuild
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
+%define rbrelease $(echo %{release} | sed 's/\.[0-9][0-9]*$//' )
+
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
@@ -375,7 +376,7 @@ export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
 
 %make_build \
      ZFCPDUMP_DIR=%{_prefix}/lib/s390-tools/zfcpdump \
-     DISTRELEASE=%{release} \
+     DISTRELEASE=%{rbrelease} \
      UDEVRUNDIR=/run/udev \
      HAVE_CARGO=1 \
      HAVE_DRACUT=1 \
@@ -388,7 +389,7 @@ mkdir -p %{buildroot}/boot/zipl
 mkdir -p %{buildroot}%{_sysconfdir}/zkey/repository
 %make_install \
      ZFCPDUMP_DIR=%{_prefix}/lib/s390-tools/zfcpdump \
-     DISTRELEASE=%{release} \
+     DISTRELEASE=%{rbrelease} \
      SYSTEMDSYSTEMUNITDIR=%{_unitdir} \
      UDEVRUNDIR=/run/udev \
      HAVE_CARGO=1 \
@@ -815,7 +816,7 @@ export OPT_FLAGS="%{optflags}"
 export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
 
 %make_build \
-     DISTRELEASE=%{release} \
+     DISTRELEASE=%{rbrelease} \
      UDEVRUNDIR=/run/udev \
      HAVE_CARGO=1 \
      HAVE_DRACUT=1
@@ -823,7 +824,7 @@ export KERNELIMAGE_MAKEFLAGS="%%{?_smp_mflags}"
 %install
 
 %make_install \
-     DISTRELEASE=%{release} \
+     DISTRELEASE=%{rbrelease} \
      SYSTEMDSYSTEMUNITDIR=%{_unitdir} \
      UDEVRUNDIR=/run/udev \
      HAVE_CARGO=1 \
