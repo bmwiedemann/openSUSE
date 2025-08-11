@@ -56,4 +56,19 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1285323</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3019dfa68c61cea186ab48d840a71916</srcmd5>
+    <version>0.8.1</version>
+    <time>1754913223</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.1:
+  * Fix packaging to not install on Python 3.8.
+  * Make the library compatible with aiohttp 3.9+ and Python 3.9+
+- Drop patches, merged upstream:
+  * 0001-215-fixing-exception-message-216.patch
+  * 0001-Fix-tests.patch
+  * 278.patch
+  * 412.patch</comment>
+    <requestid>1298704</requestid>
+  </revision>
 </revisionlist>
