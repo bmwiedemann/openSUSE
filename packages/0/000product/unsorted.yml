@@ -14448,7 +14448,7 @@ unsorted:
   - libmateweather1 
   - libmatio-devel 
   - libmatio13 
-  - libmatrix_client0_10_0 
+  - libmatrix_client0_10_1 
   - libmatroska-devel 
   - libmaxminddb-devel 
   - libmbd 
@@ -14879,6 +14879,7 @@ unsorted:
   - libodraw-tools 
   - libodraw1 
   - libofa-devel 
+  - libofa0 
   - libofx 
   - libofx-devel 
   - libofx7 
@@ -24204,6 +24205,7 @@ unsorted:
   - python311-async_generator 
   - python311-async_timeout 
   - python311-asyncclick 
+  - python311-asyncio-pool 
   - python311-asyncpg 
   - python311-asyncssh 
   - python311-atlassian-python-api 
@@ -27931,6 +27933,7 @@ unsorted:
   - python312-async_generator 
   - python312-async_timeout 
   - python312-asyncclick 
+  - python312-asyncio-pool 
   - python312-asyncpg 
   - python312-asyncssh 
   - python312-atlassian-python-api 
@@ -31713,6 +31716,7 @@ unsorted:
   - python313-async_generator 
   - python313-async_timeout 
   - python313-asyncclick 
+  - python313-asyncio-pool 
   - python313-asyncpg 
   - python313-asyncssh 
   - python313-atlassian-python-api 

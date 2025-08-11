@@ -2479,7 +2479,6 @@
     <package name="libobjc4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libodbc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libodfgen-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libofa0" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
     <package name="libogg0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liboggkate1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libonig5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
