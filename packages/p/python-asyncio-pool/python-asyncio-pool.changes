@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Mon Aug 11 06:14:22 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.6.0:
+  * Minor changes to support py3.10 +
+- Fix Source URL to not hardcode the version mulitple times.
+
+-------------------------------------------------------------------
+Tue Apr 26 19:41:59 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- created new OBS package with proper name
+
+-------------------------------------------------------------------
+Mon Apr 25 20:28:58 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- rename package from python-asyncio_pool to python-asyncio-pool
+- use github source URL as it contains the tests and license file
+- execute the tests
+- specfile cleanup
+
+-------------------------------------------------------------------
+Fri Apr 22 21:12:13 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- first version of package asyncio_pool at version 0.5.2
