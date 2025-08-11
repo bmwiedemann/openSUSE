@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 11 02:24:39 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add BuildRequires on pytest-asyncio.
+- Add patch set-pytest-asyncio-mode.patch:
+  * Set asyncio-mode to auto.
+
+-------------------------------------------------------------------
 Thu Jun 12 15:53:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.16.0

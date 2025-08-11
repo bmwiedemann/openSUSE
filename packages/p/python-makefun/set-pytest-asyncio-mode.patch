@@ -1,0 +1,22 @@
+From 3d256ef2531828f131008796f68268d4c23fc2c1 Mon Sep 17 00:00:00 2001
+From: Andy Hawkins <andy@gently.org.uk>
+Date: Sun, 11 May 2025 17:43:13 +0100
+Subject: [PATCH] Specify pytest asyncio mode (there is no default in later
+ versions)
+
+---
+ setup.cfg | 1 +
+ 1 file changed, 1 insertion(+)
+
+Index: makefun-1.16.0/setup.cfg
+===================================================================
+--- makefun-1.16.0.orig/setup.cfg
++++ makefun-1.16.0/setup.cfg
+@@ -59,6 +59,7 @@ addopts =
+ 	--verbose
+ 	--doctest-modules
+ 	--ignore-glob='**/_*.py'
++    --asyncio-mode=auto
+ filterwarnings = 
+ 	always
+ 

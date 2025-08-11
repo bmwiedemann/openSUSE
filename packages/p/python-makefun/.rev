@@ -85,4 +85,14 @@
     <comment></comment>
     <requestid>1285412</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>cfad9956f42616159ec20adb3f93a625</srcmd5>
+    <version>1.16.0</version>
+    <time>1754913222</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BuildRequires on pytest-asyncio.
+- Add patch set-pytest-asyncio-mode.patch:
+  * Set asyncio-mode to auto.</comment>
+    <requestid>1298702</requestid>
+  </revision>
 </revisionlist>

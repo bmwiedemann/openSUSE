@@ -1,7 +1,7 @@
 #
 # spec file for package python-makefun
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,9 @@ Release:        0
 License:        BSD-3-Clause
 Summary:        Small library to dynamically create python functions
 URL:            https://github.com/smarie/python-makefun
-Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/m/makefun/makefun-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#smarie/python-makefun#119
+Patch0:         set-pytest-asyncio-mode.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
@@ -32,6 +33,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-asyncio}
 # /SECTION
 BuildRequires:  fdupes
 Suggests:       python-funcsigs
@@ -43,7 +45,7 @@ BuildArch:      noarch
 Small library to dynamically create python functions.
 
 %prep
-%setup -q -n makefun-%{version}
+%autosetup -p1 -n makefun-%{version}
 sed -i '/pytest-runner/d' setup.cfg
 
 %build
