@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 29 13:47:43 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix packaging to use proper Python related macros (bsc#1244547 ltc#213710)
+- Add fix_setup.patch to modernize upstream packaging
+  (gh#linux-ras/ServiceReport!32).
+
+-------------------------------------------------------------------
 Fri Jun 20 11:07:00 UTC 2025 - msuchanek@suse.de
 
-- Update to version 2.2.4+git7.8ca0fe4:
+- Update to version 2.2.4+git4.cdcbdfa:
   * [utils] update logic to parse /etc/os-release (bsc#1244547 ltc#213710)
   * Added hardening to systemd service
 

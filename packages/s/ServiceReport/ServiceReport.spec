@@ -1,7 +1,7 @@
 #
 # spec file for package ServiceReport
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,30 @@
 #
 
 
-%define libversion %(echo %{version} | sed -e "s/+git.*//")
+%define libversion %(echo %{version} | sed -e 's/\+git.*$//')
 
 # By default python 3 is used to build the package.
 %define python python3
 Name:           ServiceReport
-Version:        2.2.4+git7.8ca0fe4
+Version:        2.2.4+git4.cdcbdfa
 Release:        0
 Summary:        A tool to validate and repair First Failure Data Capture (FFDC) configuration
 License:        GPL-2.0-only
 Group:          System/Management
 URL:            https://github.com/linux-ras/ServiceReport
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  %{python}
-BuildRequires:  %{python}-setuptools
+# PATCH-FIX-UPSTREAM fix_setup.patch gh#linux-ras/ServiceReport!32 mcepl@suse.com
+# Don't install data files and modernize Python package setup
+Patch0:         fix_setup.patch
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3
+BuildRequires:  python3-pip
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  systemd-rpm-macros
-%systemd_requires
 BuildArch:      noarch
+%systemd_requires
 
 %description
 ServiceReport is a python based tool that investigates the incorrect
@@ -43,14 +49,18 @@ the incorrect configuration
 %define debug_package %{nil}
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
-%{python} setup.py build
+%python3_pyproject_wheel
 
 %install
-%{python} setup.py install --root=%{buildroot}
+%python3_pyproject_install
+install -D -m 644 man/servicereport.8 \
+    %{buildroot}%{_mandir}/man8/servicereport.8
+install -D -m 644 service/servicereport.service \
+    %{buildroot}%{_unitdir}/servicereport.service
+%fdupes %{buildroot}%{python3_sitelib}
 
 %pre
 %service_add_pre servicereport.service
@@ -66,17 +76,11 @@ the incorrect configuration
 
 %files
 %license COPYING
+%doc README.md
 %{_mandir}/man8/*
-%doc %{_datadir}/doc/*
 %{_bindir}/servicereport
 %{_unitdir}/servicereport.service
-
-%if "%{python}" == "python3"
 %{python3_sitelib}/servicereportpkg
-%{python3_sitelib}/%{name}-%{libversion}*.egg-info
-%else
-%{python_sitelib}/servicereportpkg
-%{python_sitelib}/%{name}-%{libversion}*.egg-info
-%endif
+%{python3_sitelib}/[Ss]ervice[Rr]eport-%{libversion}*-info
 
 %changelog
