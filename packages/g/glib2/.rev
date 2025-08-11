@@ -2421,4 +2421,12 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
     string (CVE-2025-6052, boo#1244596). (forwarded request 1285531 from dimstar)</comment>
     <requestid>1285782</requestid>
   </revision>
+  <revision rev="295" vrev="1">
+    <srcmd5>34aaa49e202d42085aa6a503c4ec06af</srcmd5>
+    <version>2.84.4</version>
+    <time>1754913216</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1298624</requestid>
+  </revision>
 </revisionlist>
