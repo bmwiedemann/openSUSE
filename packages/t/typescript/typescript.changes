@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug  3 20:02:36 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.9.2
+  * Minimal and Updated tsc --init
+  * Support for import defer
+  * Support for --module node20
+  * Summary Descriptions in DOM APIs
+  * Expandable Hovers (Preview)
+  * Configurable Maximum Hover Length
+  * Cache Instantiations on Mappers
+  * Avoiding Closure Creation in fileOrDirectoryExistsUsingSource
+
+see full changelog at https://devblogs.microsoft.com/typescript/announcing-typescript-5-9/
+
+-------------------------------------------------------------------
 Sat Apr 12 07:42:19 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.8.3
