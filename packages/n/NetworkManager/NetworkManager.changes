@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug  7 19:17:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.52.1:
+  + Fail early if we cannot get current FEC (Forward Error
+    Correction) value.
+  + Allow reapplying ovs-bridge and ovs-port properties.
+  + When activating a WireGuard connection to an IPv6 endpoint, now
+    NetworkManager creates firewall rules to ensure that the
+    incoming packets are not dropped by kernel reverse path
+    filtering.
+
+-------------------------------------------------------------------
 Wed Jun 11 06:59:12 UTC 2025 - Thomas Blume <thomas.blume@suse.com>
 
 - document static ip setup on boot (bsc#1244072)

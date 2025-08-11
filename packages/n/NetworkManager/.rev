@@ -2450,4 +2450,12 @@ New stable release</comment>
   add 0001-man-document-static-ip-setup-differences-to-dracut-n.patch (forwarded request 1285042 from JonathanKang)</comment>
     <requestid>1285993</requestid>
   </revision>
+  <revision rev="283" vrev="1">
+    <srcmd5>9c9242fa0311a7fe0fb39e6515234e9a</srcmd5>
+    <version>1.52.1</version>
+    <time>1754913203</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1298622</requestid>
+  </revision>
 </revisionlist>
