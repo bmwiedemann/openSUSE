@@ -1,7 +1,7 @@
 #
 # spec file for package meli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Name:           meli-with-debug-tracing
 %else
 Name:           meli
 %endif
-Version:        0.8.10
+Version:        0.8.11
 Release:        0
 Summary:        Terminal email client
 License:        GPL-3.0-or-later
@@ -35,7 +35,6 @@ URL:            https://meli-email.org/
 Source0:        https://github.com/meli/meli/archive/refs/tags/v%{version}.tar.gz#/meli-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Patch0:         release-profile.patch
-Patch1:         0001-Revert-accounts-cancel-any-previous-mailbox-fetches.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  libgpgme-devel
@@ -56,8 +55,9 @@ Terminal email client with support for multiple accounts and Maildir / mbox / no
 %build
 %if 0%{?debug_tracing_mode}
 %{cargo_build} -F debug-tracing,imap-trace
-%endif
+%else
 %{cargo_build}
+%endif
 
 %install
 mkdir -p %{buildroot}%{_bindir}

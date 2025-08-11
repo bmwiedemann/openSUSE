@@ -31,4 +31,200 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1266444</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6ff976eecf0e5e8f82c6862702aef2fb</srcmd5>
+    <version>0.8.11</version>
+    <time>1754913238</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove 0001-Revert-accounts-cancel-any-previous-mailbox-fetches.patch
+- Update to version 0.8.11:
+  * contacts: add notmuch address book support in PR #551 &quot;contacts: add notmuch address book support&quot;
+  * melib/imap: add ConnectionMutex struct
+  * melib/imap: add conn pool to ConnectionMutex
+  * melib/error: hardcode native-tls error check
+  * widgets: don't add padding by skipping cols in FormWidget
+  * melib/error: add TLSConnectionFailed kind variant in PR #578 &quot;Misc fixes&quot;
+  * notifications: add DisplayMessageBox::arm()
+  * conf: add notifications.ui_notifications setting
+  * notifications: add DisplayMessageBox::deactivate()
+  * notifications: add DisplayMessageBox::show_{prev,next}()
+  * notifications: make update_xbiff() a method in PR #581 &quot;Add notifications.ui_notifications setting to hide UI notifications or show them as system notifications&quot;
+  * melib/imap: add FIXME comment about imap-codec
+  * melib/jmap: add serde(default) to Identity::id
+  * melib/jmap: s/Id::new_uuid_v4()/Id::new_random()
+  * melib/jmap: add serde(default) to Identity::may_delete
+  * melib/jmap: Add State::new_random() method
+  * melib/notmuch: add FFI config types bindings
+  * melib/notmuch: add notmuch_database_reopen()
+  * melib/notmuch: add Message::msg_id_str() method
+  * melib/notmuch: add Message::find_message_by_path()
+  * melib/notmuch: impl From&lt;NotmuchError&gt; for Error
+  * melib/imap: add use_connection_pool conf option
+  * melib/jmap: add session object to backend metadata
+  * melib: convert MailBackend::watch into a stream
+  * melib/maildir: switch backend.rs and mod.rs
+  * melib/maildir: enhance filesystem/IO error metadata
+  * melib/maildir: add ErrorKind::NotImplemented to unimplemented errors
+  * melib/maildir: s/MaildirPathTrait/MaildirFilePathExt/
+  * melib/maildir: Add MaildirMailboxPathExt::validate_fs_subdirs()
+  * melib/smtp: add ReplyCode::value() method
+  * listing: don't forward events to self.component twice
+  * listing/offline: don't accumulate repeated messages
+  * melib/error: add ErrorKind::is_disconnected()
+  * melib/imap: add support for LITERAL- extension in PR #604 &quot;melib/imap: add support for LITERAL- extension&quot;
+  * composer: add custom_compose_hooks only once
+  * show error summary if not empty in PR #586 &quot;show error summary&quot;
+  * themes: impl BitOr&lt;Attr&gt; for ThemeAttribute
+  * Break metadata json lines in account status
+  * melib/logging: manually redact http auth info in PR #570 &quot;melib/logging: manually redact http auth info&quot;
+  * mail/listing: restore selection when refreshing same mailbox in PR #571 &quot;mail/listing: restore selection when refreshing same mailbox&quot;
+  * Makefile: fix some minor logic/UX issues in PR #559 &quot;Add some doc comments in meli crate&quot;
+  * pager: fix one-by-off error when drawing scrollbar
+  * melib/imap: fix ImapLineIterator splitting literals
+  * melib/mbox: require MboxFormat for parsing
+  * tools: fix mboxparse binary compilation
+  * melib/email: fix base36 conversion
+  * melib: fixup TryFrom&lt;&amp;[EnvelopeHash]&gt; for EnvelopeHashBatch impl
+  * melib/jmap: Fix SetResponse struct definition
+  * melib/maildir: split create_mailbox_sync()
+  * melib/datetime: parse RFC2822 date without seconds in PR #599 &quot;melib/email/parser: elaborate Address parsing errors&quot;
+  * melib/tests/jmap: fix errata from RFC in PR #602 &quot;misc-fixes&quot;
+  * melib/nntp: fix error message typos
+  * Fix clippy::sliced_string_as_bytes
+  * melib: fix encoded-word encode and add tests in PR #612 &quot;melib: fix encoded-word encode and add tests&quot;
+  * melib/mailto: fix parsing header values with '?' in PR #613 &quot;melib/mailto: fix parsing header values with '?'&quot;
+  * melib/tests: feature gate test_maildir_config
+  * melib/imap: add FETCH items variants in RequiredResponses in PR #580 &quot;IMAP fixes&quot;
+  * melib/imap: only process parsed untagged responses
+  * melib/jmap: don't abort refresh if Mailbox has no email_query_state
+  * accounts: don't return after exec refresh_command in PR #597 &quot;conf/tests: flush config file to disk&quot;
+  * terminal: disable wraparound mode in PR #616 &quot;terminal: disable wraparound mode&quot;
+  * compose: s/attachments/attachment when # is 1
+  * compose: s/Option&lt;AccountHash&gt;/AccountHash in EditAttachments
+  * utilities: respect scroll_{left,right} shortcuts in Form/Button widgets
+  * melib/imap: retry IDLE with exponential backoff
+  * compose: don't pad EditAttachments area
+  * terminal/screen: Screen::resize*() optimization in PR #568 &quot;mail/status.rs: restore AccountStatus scrolling&quot;
+  * melib/imap: impl Default for ImapProtocol
+  * melib/mbox: update totals when fetching in PR #591 &quot;melib/mbox: update totals when fetching&quot;
+  * melib/mbox: check for CRLF when parsing
+  * melib/gpgme: allow unused_unsafe on std::env stuff
+  * melib/jmap: derive Clone for MailboxObject
+  * melib/notmuch: split symbol name in call!() macro
+  * melib/imap: make keepalive at least 30 minutes in PR #592 &quot;misc-fixes&quot;
+  * melib: impl From for BackendEvent
+  * melib: impl TryFrom&lt;Vec&gt; for BackendEvent
+  * melib/maildir: validate fs path in list_mail_in_maildir_fs()
+  * melib/maildir: split MaildirPathTrait
+  * melib/maildir: log error instead of debug_assert!
+  * melib/maildir: use async channel in watch()
+  * melib/maildir: return path in save_to_mailbox()
+  * melib/maildir: calc MailboxHash from cache in watch()
+  * melib/jmap: impl Deserialize for Filter, Query
+  * melib/jmap: impl Serialize for EmailObject
+  * melib/email/parser: elaborate Address parsing errors
+  * melib/nntp: increase tcp keepalive to 30 mins
+  * melib/nntp: set appropriate ErrorKind to errors
+  * melib/nntp: convert block comments to line
+  * melib/nntp: retry fetch if disconnected
+  * melib/nntp: try connect first before attempting operations
+  * composer: allow empty default header values
+  * melib/nntp: run rustfmt
+  * composer: use rfc5536 format for User-Agent value
+  * composer: replying to self should reply to previous recipients
+  * conf: impl DotAddressable for ComposingSettings in PR #605 &quot;Misc composer stuff&quot;
+  * melib/imap: BEGIN IMMEDIATE transactions
+  * melib/imap: support server subscriptions override
+  * contacts/editor: use AccountHash instead of index
+  * view/envelope: use Context's cmd_buf in PR #615 &quot;misc&quot;
+  * melib/text: allow empty generated unicode tables
+  * melib/jmap: ser/de SetError manually in PR #594 &quot;JMAP fixups&quot;
+  * melib/jmap: fix Get ser/de
+  * melib/maildir: remove stream module
+  * Fix clippy::manual_ok_err
+  * accounts: check if online on watch errors
+  * compose: rewrite to draw attachments after headers
+  * melib/backends: remove obsolete ReadOnlyOp
+  * melib/contacts: fix formatting of a log::warn line
+  * melib/email/headers: add #[inline] to small methods
+  * melib/backend: remove BackendOp
+  * melib/imap/connection.rs: remove unnecessary let
+  * compose: rename Cursor to Focus
+  * melib/email: move imap stuff to melib::imap module
+  * main.rs: use unbounded channel for thread events in PR #565 &quot;Misc&quot;
+  * mail/status.rs: restore AccountStatus scrolling
+  * melib/imap: fix mailbox update logic on expunge in PR #567 &quot;melib/imap: fix mailbox update logic on expunge&quot;
+  * mail/listing: don't move cursor to top when refreshing in PR #572 &quot;mail/listing: don't move cursor to top when refreshing&quot;
+  * Fix new clippy complexity lint warning
+  * mail/listing.rs: forward unhandled events
+  * mail/listing.rs: fix y offset calc in menu cursor with collapsed
+  * Rename ForkType to ForkedProcess
+  * types: replace ForkedProcess::Finished with UIEvent
+  * state.rs: rewrite State::try_wait_on_child()
+  * state.rs: refactor kill_child() into method
+  * state.rs: refactor try_wait_on_child() into method
+  * state.rs: use ForkedProcess::{kill, try_wait} on State::drop
+  * main.rs: try wait on all forked process on SIGCHLD in PR #579 &quot;Refactor handling of forked processes&quot;
+  * melib/imap: remove unnecessary RequiredResponses consts
+  * melib/imap: rename {EXAMINE,SELECT}_REQUIRED
+  * melib/imap: rename NO_REQUIRED to NO
+  * tools: fix lints and compilation in PR #587 &quot;melib/mbox: check for CRLF when parsing&quot;
+  * melib/imap: allow lint on init_cache() arg
+  * melib: move base36 to utils mod
+  * melib/jmap: s/IdentityObject/Identity
+  * melib/notmuch: remove Clone derive from Message
+  * melib/jmap: process destroyed ids in Email/changes in PR #595 &quot;JMAP fixups&quot;
+  * melib/maildir: Remove root_mailbox from MaildirWatch
+  * melib/maildir: fix save_to_mailbox() error msg
+  * melib/notmuch: rewrite watching logic
+  * compose: remove extra dot from dialog message
+  * melib/email/parser: change ParsingError display
+  * composer: remove extra_identity_addresses from To:
+  * compose.rs: fix compilation error without gpgme
+  * Fix clippy::len_zero
+  * Fix clippy::literal_string_with_formatting_args
+  * Fix clippy::double_ended_iterator_last
+  * Fix clippy::needless_option_take in PR #611 &quot;compose.rs: fix compilation error without gpgme and clippy lint fixes&quot;
+  * melib/contacts: remove Contacts::{created,last_edited}
+  * accounts.rs: Remove std module imports
+  * mail/compose.rs: remove duplicate field init
+  * listing: move cmd_buf logic to Context
+  * state: make Context children field take ForkedProcess
+  * scripts/rfc_to_rs_mdoc.py: reformat
+  * version_migrations: use array in const asserts in PR #614 &quot;Misc&quot;
+  * melib/accounts: add #[inline] attribute to methods
+  * melib/collections: add #[inline] to small methods
+  * docs: add more doc comments to version_migrations mod
+  * docs: add more doc comments to conf mod
+  * docs: add more doc comments to utilities::widgets mod
+  * docs: fix example in custom_compose_hooks in PR #561 &quot;docs: fix example in custom_compose_hooks&quot;
+  * docs/meli.conf.5: describe what &quot;notifications&quot; entail
+  * docs/meli.conf.5: add missing &quot;Optional&quot; quantifier
+  * docs/meli.1: add manage-jobs command
+  * docs/meli.1: add manage-mailboxes command
+  * DEVELOPMENT.md: explain how to run CI checks locally
+  * DEVELOPMENT.md: document DCO requirement in PR #583 &quot;Minor doc additions&quot;
+  * README.md: update install instructions
+  * README.md: minor touch-ups in PR #590 &quot;README.md: update install instructions&quot;
+  * README.md: mention matrix channel in PR #603 &quot;misc-fixes-minor&quot;
+  * melib/email/headers: add documentation(s)
+  * notifications: add missing DisplayMessageBox docs
+  * notifications: add missing NotificationCommand docs
+  * melib/notmuch: add doc comments to Message methods
+  * melib/smtp: add some rustdoc comments
+  * tests/test_cli_subcommands: purge subprocess envs in PR #574 &quot;tests/test_cli_subcommands: purge subprocess envs&quot;
+  * melib: add test_imap_watch()
+  * melib: add test_jmap_refresh()
+  * melib: add test_maildir_watch()
+  * melib: add test_notmuch_watch()
+  * melib: add test_notmuch_refresh() in PR #582 &quot;Convert Backend::watch function to return Stream&quot;
+  * melib/smtp: add an SMTP transaction test
+  * conf/tests: speedup test_conf_theme_key_values() in PR #589 &quot;conf/tests: speedup test_conf_theme_key_values()&quot;
+  * conf.rs: do not run migrations in unit tests
+  * conf/tests: flush config file to disk
+  * tools: run cargo-update
+  * Revert &quot;accounts: cancel any previous mailbox fetches&quot;
+</comment>
+    <requestid>1298744</requestid>
+  </revision>
 </revisionlist>
