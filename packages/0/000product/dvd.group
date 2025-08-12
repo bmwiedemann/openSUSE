@@ -889,7 +889,7 @@
     <package name="kdoctools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kdoctools-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kdump" supportstatus="unsupported"/> <!-- reason: dvd:kdump -->
-    <package name="kernel-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="kernel-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="kernel-firmware-all" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kernel-firmware-amdgpu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kernel-firmware-ath10k" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1864,7 +1864,7 @@
     <package name="libcrypt1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcrypt1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libcryptmount0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libcrypto1_56_0" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
+    <package name="libcrypto-awslc0" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
     <package name="libcryptsetup12" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libcryptui-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcryptui-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2210,6 +2210,7 @@
     <package name="libheif-svtenc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libheif1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libhidapi-hidraw0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libhiredis1_3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libhns1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libhogweed6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libhogweed6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -2757,7 +2758,7 @@
     <package name="libssh-config" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libssh2-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libssh4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libssl1_56_0" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
+    <package name="libssl-awslc0" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
     <package name="libsss_certmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libsss_idmap0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libstaroffice-0_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3237,7 +3238,6 @@
     <package name="os-prober" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="osinfo-db" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ovmf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="ovpn-dco-kmp-default" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="p11-kit" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="p11-kit-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="p11-kit-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

@@ -466,7 +466,6 @@ unsorted:
   - afterburn 
   - afterburn-dracut 
   - agama 
-  - agama-auto 
   - agama-autoinstall 
   - agama-cli 
   - agama-cli-bash-completion 
@@ -3367,15 +3366,6 @@ unsorted:
   - dotconf-devel 
   - double-conversion-devel 
   - dovecot 
-  - dovecot23 
-  - dovecot23-backend-mysql 
-  - dovecot23-backend-pgsql 
-  - dovecot23-backend-sqlite 
-  - dovecot23-devel 
-  - dovecot23-fts 
-  - dovecot23-fts-lucene 
-  - dovecot23-fts-solr 
-  - dovecot23-fts-squat 
   - dovecot24 
   - dovecot24-backend-mysql 
   - dovecot24-backend-pgsql 
@@ -13082,7 +13072,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla47 
+  - libfilezilla48 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -13747,7 +13737,7 @@ unsorted:
   - libgwengui-qt6-79 
   - libgwenhywfar79 
   - libgwenhywfar79-plugins 
-  - libgxml0_20_4 
+  - libgxml-0_20-2_0_2 
   - libgxps-devel 
   - libgxps-tools 
   - libgxw0 
@@ -13816,7 +13806,6 @@ unsorted:
   - libhidapi-libusb0 
   - libhinawa-devel 
   - libhinawa2 
-  - libhiredis1_3_0 
   - libhivex0 
   - libhl1 
   - libhmac-devel 
@@ -15267,7 +15256,7 @@ unsorted:
   - libpocl-devices-tbb 
   - libpocl2 
   - libpodofo-devel 
-  - libpodofo2 
+  - libpodofo3 
   - libpoke1 
   - libpolkit-agent-1-0-32bit 
   - libpolkit-gobject-1-0-32bit 
@@ -16364,7 +16353,6 @@ unsorted:
   - libtcmalloc_debug4 
   - libtcmalloc_minimal4 
   - libtcmalloc_minimal_debug4 
-  - libtcmu-devel 
   - libtcmu2 
   - libtcnative-1-0 
   - libtcnative-1-0-devel 
@@ -20572,6 +20560,7 @@ unsorted:
   - ovn-docker 
   - ovn-host 
   - ovn-vtep 
+  - ovpn-dco-kmp-default 
   - owasp-modsecurity-crs 
   - owasp-modsecurity-crs-apache2 
   - owncloud-client 
@@ -26643,6 +26632,7 @@ unsorted:
   - python311-pytest-shell-utilities 
   - python311-pytest-shutil 
   - python311-pytest-skip-markers 
+  - python311-pytest-snapshot 
   - python311-pytest-socket 
   - python311-pytest-sourceorder 
   - python311-pytest-spec 
@@ -30424,6 +30414,7 @@ unsorted:
   - python312-pytest-shell-utilities 
   - python312-pytest-shutil 
   - python312-pytest-skip-markers 
+  - python312-pytest-snapshot 
   - python312-pytest-socket 
   - python312-pytest-sourceorder 
   - python312-pytest-spec 
@@ -34153,6 +34144,7 @@ unsorted:
   - python313-pytest-shell-utilities 
   - python313-pytest-shutil 
   - python313-pytest-skip-markers 
+  - python313-pytest-snapshot 
   - python313-pytest-socket 
   - python313-pytest-sourceorder 
   - python313-pytest-spec 
@@ -37802,7 +37794,6 @@ unsorted:
   - tcludp 
   - tclx 
   - tcmu-runner 
-  - tcmu-runner-handler-glusterfs 
   - tcmu-runner-handler-rbd 
   - tcmu-runner-handler-zbc 
   - tcpd 
@@ -48067,7 +48058,7 @@ unsorted:
   - typelib-1_0-GVnc-1_0 
   - typelib-1_0-GVncPulse-1_0 
   - typelib-1_0-GXPS-0_1 
-  - typelib-1_0-GXml-0_20_4 
+  - typelib-1_0-GXml-0_20 
   - typelib-1_0-Gck-1 
   - typelib-1_0-Gcr-3 
   - typelib-1_0-GcrUi-3 
