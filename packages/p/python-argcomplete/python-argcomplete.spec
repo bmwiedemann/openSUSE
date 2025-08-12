@@ -25,7 +25,11 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-argcomplete%{psuffix}
 Version:        3.6.2
@@ -40,11 +44,16 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 67.2}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if %{with test}
 BuildRequires:  %{python_module argcomplete == %{version}}
 BuildRequires:  %{python_module pexpect}
@@ -104,6 +113,16 @@ export TERM=xterm-mono
 %python_libalternatives_reset_alternative activate-global-python-argcomplete
 %python_libalternatives_reset_alternative register-python-argcomplete
 %python_libalternatives_reset_alternative python-argcomplete-check-easy-install-script
+
+%post
+%python_install_alternative activate-global-python-argcomplete
+%python_install_alternative register-python-argcomplete
+%python_install_alternative python-argcomplete-check-easy-install-script
+
+%postun
+%python_uninstall_alternative activate-global-python-argcomplete
+%python_uninstall_alternative register-python-argcomplete
+%python_uninstall_alternative python-argcomplete-check-easy-install-script
 
 %files %{python_files}
 %doc README.rst

@@ -473,4 +473,12 @@
     is broken i.e. it enters an interactive mode (REPL) instead</comment>
     <requestid>1292430</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>efe508032b4ee1275d414ef532c52cc9</srcmd5>
+    <version>3.6.2</version>
+    <time>1755011007</time>
+    <user>dimstar_suse</user>
+    <comment>- Make the libalternatives transition conditional</comment>
+    <requestid>1298824</requestid>
+  </revision>
 </revisionlist>
