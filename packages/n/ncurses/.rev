@@ -5276,4 +5276,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1297451</requestid>
   </revision>
+  <revision rev="307" vrev="80">
+    <srcmd5>52b385849a82480f763f9a615932e9eb</srcmd5>
+    <version>unknown</version>
+    <time>1755010985</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20250809
+  + add configure check for Win32 named pipes feature, using that to make
+    nc_mingw.h obsolete in favor of nc_win32.h
+  + amend limit used in alloc_pair, by applying an adjustment for default
+    colors only when the maximum number of color pairs is greater than
+    the maximum number of colors (report by &quot;Ingvix&quot;).
+
+- Add ncurses patch 20250802
+  + fixes for reading Unicode characters in MinGW/Windows port (report by
+    Axel Reinhold).</comment>
+    <requestid>1298758</requestid>
+  </revision>
 </revisionlist>
