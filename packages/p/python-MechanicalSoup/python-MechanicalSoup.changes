@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 11 12:52:15 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.4.0
+  * Added support for Python 3.12 and 3.13.
+  * Removed support for end of life python versions 3.6, 3.7, and 3.8.
+  * Minimum versions of dependencies ``urllib3`` and ``certifi`` have
+    been specified to mitigate security vulnerabilities.
+- Adjust upstream source name in spec file
+- Update BuildRequires and Requires from requirements.txt
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Tue May  6 09:10:35 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

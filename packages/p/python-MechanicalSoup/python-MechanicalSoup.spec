@@ -16,14 +16,15 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-MechanicalSoup
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        A Python library for automating interaction with websites
 License:        MIT
 URL:            https://github.com/hickford/MechanicalSoup
-Source:         https://files.pythonhosted.org/packages/source/M/MechanicalSoup/MechanicalSoup-%{version}.tar.gz
-BuildRequires:  %{python_module beautifulsoup4 >= 4.4}
+Source:         https://files.pythonhosted.org/packages/source/m/mechanicalsoup/mechanicalsoup-%{version}.tar.gz
+BuildRequires:  %{python_module beautifulsoup4 >= 4.7}
 BuildRequires:  %{python_module httpbin}
 BuildRequires:  %{python_module jsonschema >= 2.5.1}
 BuildRequires:  %{python_module lxml}
@@ -31,15 +32,15 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-httpbin}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests >= 2.0}
+BuildRequires:  %{python_module requests >= 2.22.0}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-beautifulsoup4 >= 4.4
+Requires:       python-beautifulsoup4 >= 4.7
 Requires:       python-lxml
-Requires:       python-requests >= 2.0
+Requires:       python-requests >= 2.22.0
 Recommends:     python-httpbin
 Recommends:     python-jsonschema >= 2.5.1
 BuildArch:      noarch
@@ -57,7 +58,7 @@ Python giants Requests (for http sessions) and BeautifulSoup (for
 document navigation).
 
 %prep
-%setup -q -n MechanicalSoup-%{version}
+%setup -q -n mechanicalsoup-%{version}
 # do not require cov/xdist/etc
 sed -i -e '/addopts/d' setup.cfg
 
