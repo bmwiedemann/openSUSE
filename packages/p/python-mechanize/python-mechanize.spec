@@ -25,6 +25,8 @@ Summary:        Stateful programmatic web browsing
 License:        BSD-3-Clause AND (BSD-3-Clause OR ZPL-2.1)
 URL:            https://github.com/python-mechanize/mechanize
 Source:         https://files.pythonhosted.org/packages/source/m/mechanize/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/python-mechanize/mechanize/pull/102
+Patch1:         0001-Fix-CookieTests-following-fix-for-CPython-130631.patch
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module pip}

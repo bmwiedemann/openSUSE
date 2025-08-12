@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug  9 09:42:10 UTC 2025 - Max Lin <mlin@suse.com>
+
+- Fix CookieTests
+  * Add 0001-Fix-CookieTests-following-fix-for-CPython-130631.patch
+
+-------------------------------------------------------------------
 Mon Jun  2 08:53:17 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
