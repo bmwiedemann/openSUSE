@@ -17,7 +17,11 @@
 
 
 %define mod_name argparse-manpage
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           python-argparse-manpage
 Version:        4.6
 Release:        0
@@ -29,11 +33,16 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools-wheel}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  alts
 BuildRequires:  ca-certificates
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
 Requires:       alts
+BuildRequires:  alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 %if 0%{python_version_nodots} < 311
 Requires:       python-tomli
@@ -68,6 +77,12 @@ export PIP_FIND_LINKS=$(ls -1 %{_prefix}/lib/python3.*/wheels | head -n 1)
 
 %pre
 %python_libalternatives_reset_alternative argparse-manpage
+
+%post
+%python_install_alternative argparse-manpage argparse-manpage.1
+
+%postun
+%python_uninstall_alternative argparse-manpage
 
 %files %{python_files}
 %doc README.md

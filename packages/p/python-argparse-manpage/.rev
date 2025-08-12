@@ -180,4 +180,13 @@ tools.</comment>
     <comment>- Convert to libalternatives</comment>
     <requestid>1286127</requestid>
   </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>68779c74ad3b591778e7622f84be0dc0</srcmd5>
+    <version>4.6</version>
+    <time>1755011003</time>
+    <user>dimstar_suse</user>
+    <comment>- Make the libalternatives transition conditional
+</comment>
+    <requestid>1298793</requestid>
+  </revision>
 </revisionlist>
