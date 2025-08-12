@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-appconfiguration-provider
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Microsoft App Configuration Provider Library for Python
 License:        MIT
