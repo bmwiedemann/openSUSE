@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 22 11:00:39 UTC 2025 - Noel Power <nopower@suse.com>
+
+- Avoid bsc#1222564 which breaks nsswitch.conf by instead adjusting
+  nsswitch.conf using sed rather than yast Nsswitch module using
+  augeas; (bsc#1222564.
+- 5.0.3
+
+-------------------------------------------------------------------
 Fri Feb 28 09:51:46 UTC 2025 - Noel Power <nopower@suse.com>
 
 - Fix on AD join error "Failed to join domain: failed to create
