@@ -246,4 +246,19 @@
   * fix: allow expressions in step and job uses: (forwarded request 1296897 from rrahl0)</comment>
     <requestid>1296898</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b40f084906a7b5f2b382cfeaf9a849b0</srcmd5>
+    <version>9.0.3</version>
+    <time>1755011050</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 9.0.3:
+  * feat: --health-* options are allowed in job.&lt;id&gt;.services.&lt;id&gt;.options
+  * fix: log the URL of the action when it fails schema validation
+  * fix: lingering services/volumes/networks after jobs if cleanup takes &gt;1min
+- update to version 9.0.2:
+  * PR: feat: use cache-{from,to}: type=gha in the docker/build-push-action example
+  * PR: feat: add an LXC based example of docker/build-push-action usage
+  * PR: fix: vars context is allowed in default values of action inputs (forwarded request 1298819 from rrahl0)</comment>
+    <requestid>1298820</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 11 11:51:33 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 9.0.3:
+  * feat: --health-* options are allowed in job.<id>.services.<id>.options
+  * fix: log the URL of the action when it fails schema validation
+  * fix: lingering services/volumes/networks after jobs if cleanup takes >1min
+- update to version 9.0.2:
+  * PR: feat: use cache-{from,to}: type=gha in the docker/build-push-action example
+  * PR: feat: add an LXC based example of docker/build-push-action usage
+  * PR: fix: vars context is allowed in default values of action inputs
+
+-------------------------------------------------------------------
 Thu Jul 31 17:34:08 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 9.0.1:
