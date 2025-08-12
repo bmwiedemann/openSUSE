@@ -1,7 +1,7 @@
 #
 # spec file for package lzma-sdk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define _sver   2409
-%define _maver  24
-%define _miver  09
+%define _sver   2501
+%define _maver  25
+%define _miver  01
 Name:           lzma-sdk
-Version:        24.09
+Version:        25.01
 Release:        0
 Summary:        An implementation of LZMA compression
 # Actually the site says "Public Domain". See license file.
