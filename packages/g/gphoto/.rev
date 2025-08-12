@@ -465,4 +465,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>972880</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>2454c4d83efd12a0c2a8eeb931682db2</srcmd5>
+    <version>2.5.32</version>
+    <time>1755011045</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.5.32 release
+  * --get-exif , --get-all-exif added
+  * --reverse modifier option added for fileoperations commands
+  * kill -USR2 can now stop --capture-movie
+  * translations: updated polish, ukrainian, romanian, icelandic, romanian,
+    russian, serbian, french, esperanto, hungarian, indonesian, islandic,
+    romanian, svedish</comment>
+    <requestid>1298794</requestid>
+  </revision>
 </revisionlist>
