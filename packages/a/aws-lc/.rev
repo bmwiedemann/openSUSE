@@ -61,4 +61,13 @@
     <comment></comment>
     <requestid>1295357</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7ee443aba6cb6674716707ca11355b3e</srcmd5>
+    <version>1.57.1</version>
+    <time>1755011053</time>
+    <user>dimstar_suse</user>
+    <comment>- adjust the lib names
+- add the crypto lib as a requires to the devel package (forwarded request 1298830 from rrahl0)</comment>
+    <requestid>1298831</requestid>
+  </revision>
 </revisionlist>

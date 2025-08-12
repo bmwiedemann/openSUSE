@@ -1,7 +1,7 @@
 #
 # spec file for package aws-lc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define         sover 1_56_0
+%define         sover 0
 %define         __builder ninja
 Name:           aws-lc
-Version:        1.56.0
+Version:        1.57.1
 Release:        0
 Summary:        Checksums package for AWS SDK for C
 License:        Apache-2.0
@@ -29,7 +29,6 @@ Source1:        vendor.tar.gz
 # integration test needs internet
 Patch0:         disable-integrationtest.patch
 Patch1:         vendor-fix.patch
-Patch2:         soname.patch
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
@@ -49,7 +48,8 @@ configuration, data structures, and error handling.
 
 %package devel
 Summary:        AWS-LC development headers
-Requires:       libssl%{sover} = %{version}
+Requires:       libcrypto-awslc%{sover} = %{version}
+Requires:       libssl-awslc%{sover} = %{version}
 Conflicts:      libopenssl-3-devel
 Conflicts:      libressl-devel
 
@@ -58,16 +58,16 @@ AWS-LC is a general-purpose cryptographic library maintained by the AWS
 Cryptography team for AWS and their customers. It іs based on code from the
 Google BoringSSL project and the OpenSSL project.
 
-%package -n libssl%{sover}
+%package -n libssl-awslc%{sover}
 Summary:        Library file for %{name}
 
-%description -n libssl%{sover}
+%description -n libssl-awslc%{sover}
 %{summary}.
 
-%package -n libcrypto%{sover}
+%package -n libcrypto-awslc%{sover}
 Summary:        Crypto library for %{name}
 
-%description -n libcrypto%{sover}
+%description -n libcrypto-awslc%{sover}
 %{summary}.
 
 %package benchmark
@@ -78,10 +78,9 @@ Summary:        Benchmarktool for %{name}
 
 %prep
 %autosetup -a1 -p1
-sed -i 's|project(AWSLC VERSION @@VERSION@@)|project(AWSLC VERSION %{version})|g' CMakeLists.txt
 
 %build
-%cmake -DCMAKE_C_FLAGS="-Wno-error=unused-variable -Wno-error=stringop-overflow="
+%cmake -DCMAKE_C_FLAGS="-Wno-error=unused-variable -Wno-error=stringop-overflow=" -DENABLE_PRE_SONAME_BUILD=0
 %cmake_build
 
 %install
@@ -90,8 +89,8 @@ sed -i 's|project(AWSLC VERSION @@VERSION@@)|project(AWSLC VERSION %{version})|g
 # fix shebang
 sed -i 's|/usr/bin/env bash|/usr/bin/bash|g' %{buildroot}%{_bindir}/c_rehash
 
-%ldconfig_scriptlets -n libssl%{sover}
-%ldconfig_scriptlets -n libcrypto%{sover}
+%ldconfig_scriptlets -n libssl-awslc%{sover}
+%ldconfig_scriptlets -n libcrypto-awslc%{sover}
 
 %check
 %ninja_build -C build run_tests
@@ -115,10 +114,12 @@ sed -i 's|/usr/bin/env bash|/usr/bin/bash|g' %{buildroot}%{_bindir}/c_rehash
 %{_libdir}/pkgconfig/openssl.pc
 %{_libdir}/ssl/cmake/
 
-%files -n libssl%{sover}
-%{_libdir}/libssl.so.%{version}
+%files -n libssl-awslc%{sover}
+%{_libdir}/libssl-awslc.so.%{sover}
+%{_libdir}/libssl-awslc.so.%{version}
 
-%files -n libcrypto%{sover}
-%{_libdir}/libcrypto.so.%{version}
+%files -n libcrypto-awslc%{sover}
+%{_libdir}/libcrypto-awslc.so.%{sover}
+%{_libdir}/libcrypto-awslc.so.%{version}
 
 %changelog

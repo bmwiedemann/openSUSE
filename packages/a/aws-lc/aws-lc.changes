@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug 11 11:13:59 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.57.1:
+  * Resolve issue with conflicting pkg-config variables
+- update to version 1.57.0:
+  * Preparation for Adopting SONAME and ABI Versioning
+  * Offer P521 for signature_algorithms in client Hello
+  * ML-KEM: Import AArch64 backend from mlkem-native
+  * Add back X509_STORE_get_verify_cb and X509_STORE_set_lookup_crls_cb
+  * Explicitly test that input length is as expected for ed25519ph
+  * Fix Libwebsocket Build
+  * Return NULL when a NULL or empty string is passed to NETSCAPE_SPKI_b64_decode
+  * Reimplement SSL_clear_num_renegotiations
+  * ABI monitoring GitHub workflow improvements
+  * Migrate Openssl-tool parameter parsing
+  * Add HMAC SHA3 benchmarks
+  * Re-import s2n-bignum after merge of ML-KEM/Keccak functionality
+  * Integrate formally verified AArch64 Keccak-x1 assembly
+  * Add a couple more no-ops for legacy builds
+- remove soname.patch, as upstream formally introduced a soname
+- adjust the lib names
+- add the crypto lib as a requires to the devel package
+
+-------------------------------------------------------------------
 Wed Jul 23 13:51:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.56.0:
