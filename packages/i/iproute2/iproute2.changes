@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 11 05:11:09 UTC 2025 - Petr Vorel <pvorel@suse.cz>
+
+- Update to release 6.16
+  https://lore.kernel.org/netdev/20250803143154.2d700ad4@hermes.local/
+  * bond: fix stack smash in xstats
+  * tc: Parse FQ band weights correctly
+
+-------------------------------------------------------------------
 Mon Jun  2 19:43:40 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.15
