@@ -63,4 +63,12 @@ This package contains ansible roles from linux-system-roles project: https://git
     <comment>- Add postfix role</comment>
     <requestid>1296564</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>419346ba1c10c959d7c1e1eb4d84910d</srcmd5>
+    <version>1.0.0</version>
+    <time>1755011123</time>
+    <user>dimstar_suse</user>
+    <comment>Add keylime_server role</comment>
+    <requestid>1299010</requestid>
+  </revision>
 </revisionlist>

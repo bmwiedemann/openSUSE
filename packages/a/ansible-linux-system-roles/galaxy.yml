@@ -70,6 +70,7 @@ build_ignore:
   - .README-*
   - .wokeignore-ssh
   - .packit-mssql.yaml
+  - packit-ci-keylime_server.fmf
   - .dev-tools
   - .collection
   - .gitlab-*
