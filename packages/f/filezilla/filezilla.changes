@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 12 11:03:36 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.69.3
+  * New features:
+    - For files and directories that are symbolic links,
+      a small overlay symbol is now shown on icons in local file
+      list and directory tree
+  * Bugfixes and minor changes:
+    - Fixed an issue showing attributes of symbolic links in local
+      file list
+- Changes from 3.69.2
+  * Fixed vulnerabilities:
+    - Official binaries are now linked against GnuTLS 3.8.10
+  * Bugfixes and minor changes:
+    - FTP: Retry from a different source port if establishing
+      a data connection in passive mode fails with EADDRINUSE
+
+-------------------------------------------------------------------
 Fri Jul  4 14:02:02 UTC 2025 - ecsos <ecsos@opensuse.org> - 3.69.1
 
 - Update to 3.69.1
