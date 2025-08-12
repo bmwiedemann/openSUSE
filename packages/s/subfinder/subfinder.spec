@@ -1,7 +1,7 @@
 #
 # spec file for package subfinder
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           subfinder
-Version:        2.7.1
+Version:        2.8.0
 Release:        0
 Summary:        Fast passive subdomain enumeration tool
 License:        MIT

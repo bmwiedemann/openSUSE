@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug 11 11:31:48 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 2.8.0
+  * New Features
+    - Added pugrecon.com source by @c3l3si4n in #1585
+    - Added RSECloud source by @dogancanbakir in #1604
+    - Added environment variable support for API keys by @dogancanbakir in #1607
+  *  Bug Fixes
+    - Fixed Dockerfile build by @dogancanbakir in #1583
+    - Fix paginations in Hunter and Quake sources by @dogancanbakir in #1603
+  * Other Changes
+    - Updated installation documentation by @dogancanbakir in #1591
+    - Updated GoReleaser configuration by @emmanuel-ferdman in #1596
+    - Removed dead binaryedge source by @x-stp in #1592
+    - Modernized subfinder source code by @dogancanbakir in #1601
+
+-------------------------------------------------------------------
 Tue Apr 29 02:40:35 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
