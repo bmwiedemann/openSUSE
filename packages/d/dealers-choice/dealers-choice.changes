@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 11 20:00:16 UTC 2025 - Andy Alt <arch_stanton5995@proton.me>
+
+- dealers-choice 0.0.8:
+  * Fix: Server does not send turn ids if player 0 disconnects during game
+  + Display ping times in lobby
+  + After winner declared, replace action timer with "end of game" timer
+  + Allow specifying the client/server port via config or cli
+  + Allow setting min, med, and max bets via server.conf
+
+-------------------------------------------------------------------
 Sun Aug  5 07:00:16 UTC 2025 - Andy Alt <arch_stanton5995@proton.me>
 
 - dealers-choice 0.0.7:
