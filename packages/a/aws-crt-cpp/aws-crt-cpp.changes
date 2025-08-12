@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug  1 13:46:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.33.2
+  * Expose CipherPreference to Mqtt Client Builders & Fix Windows CI D
+    disk by @xiazhvera in (#754)
+  * Change stale issue and discussion handling to run once a week by
+    @sbSteveK in (#757)
+  * Add Submodule Version Check to cmake Configuration by @sbSteveK in (#750)
+  * Add missing -fPIC flag for static library builds by @tobil4sk in (#756)
+  * Add binding for sts web identity provider by @sbiscigl in (#759)
+- Refresh patches for new version
+  * acc_fix-cmake-modules-path.patch
+
+-------------------------------------------------------------------
 Mon Jul 21 13:20:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.33.1
