@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 12 09:37:55 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- updated to version 1.1.0:
+  * add Python 3.14 support
+- remove patch include-new-header.patch, fixed upstream
+
+-------------------------------------------------------------------
 Thu Jul 10 06:20:18 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - add patch include-new-header.patch, as libheif split the header file

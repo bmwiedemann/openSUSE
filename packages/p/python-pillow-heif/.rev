@@ -76,4 +76,12 @@
     <comment>- add patch include-new-header.patch, as libheif split the header file (forwarded request 1291611 from rrahl0)</comment>
     <requestid>1291612</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9577171d03460a7b221b1076dfac311c</srcmd5>
+    <version>1.1.0</version>
+    <time>1755011119</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1298996</requestid>
+  </revision>
 </revisionlist>

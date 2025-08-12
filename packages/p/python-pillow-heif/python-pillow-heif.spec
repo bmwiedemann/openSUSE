@@ -1,7 +1,7 @@
 #
 # spec file for package python-pillow-heif
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           python-pillow-heif
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Python interface for libheif library
 License:        BSD-3-Clause
 URL:            https://github.com/bigcat88/pillow_heif
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         include-new-header.patch
 BuildRequires:  %{python_module Pillow >= 9.5.0}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module devel}
@@ -46,7 +45,7 @@ Suggests:       python-pillow-heif-doc
 Python interface for libheif library
 
 %prep
-%autosetup -p1 -n pillow_heif-%{version}
+%autosetup -n pillow_heif-%{version}
 
 %build
 %pyproject_wheel
