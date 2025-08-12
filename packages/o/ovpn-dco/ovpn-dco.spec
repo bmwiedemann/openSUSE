@@ -27,6 +27,7 @@ Source1:        ovpn-dco-preamble
 Patch0:         do-not-redefine-symbols-when-they-are-upstream.patch
 Patch1:         use-new-timer-api.patch
 Patch2:         6.15-newlink-proto.patch
+Patch10:        timer_container_of.patch
 BuildRequires:  %kernel_module_package_buildreqs
 
 # Releases prior to 15.2 don't have a new enough kernel
@@ -68,7 +69,11 @@ LIMITATIONS
 
 %prep
 echo %flavors_to_build
-%autosetup -p1
+%setup -q
+%autopatch -p1 -M9
+%if %{pkg_vcmp kernel-devel >= 6.16}
+%patch -P10 -p1
+%endif
 
 %build
 for flavor in %flavors_to_build; do

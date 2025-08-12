@@ -1,0 +1,27 @@
+from_timer() was replaced by timer_container_of() in commit 41cb08555c41
+(treewide, timers: Rename from_timer() to timer_container_of())
+
+---
+ drivers/net/ovpn-dco/peer.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/drivers/net/ovpn-dco/peer.c
++++ b/drivers/net/ovpn-dco/peer.c
+@@ -22,7 +22,7 @@
+ 
+ static void ovpn_peer_ping(struct timer_list *t)
+ {
+-	struct ovpn_peer *peer = from_timer(peer, t, keepalive_xmit);
++	struct ovpn_peer *peer = timer_container_of(peer, t, keepalive_xmit);
+ 
+ 	netdev_dbg(peer->ovpn->dev, "%s: sending ping to peer %u\n", __func__, peer->id);
+ 	ovpn_keepalive_xmit(peer);
+@@ -30,7 +30,7 @@ static void ovpn_peer_ping(struct timer_
+ 
+ static void ovpn_peer_expire(struct timer_list *t)
+ {
+-	struct ovpn_peer *peer = from_timer(peer, t, keepalive_recv);
++	struct ovpn_peer *peer = timer_container_of(peer, t, keepalive_recv);
+ 
+ 	netdev_dbg(peer->ovpn->dev, "%s: peer %u expired\n", __func__, peer->id);
+ 	ovpn_peer_del(peer, OVPN_DEL_PEER_REASON_EXPIRED);
