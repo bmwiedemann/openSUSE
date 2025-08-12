@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-alembic
 Version:        1.15.2
@@ -37,14 +41,19 @@ BuildRequires:  %{python_module pytzdata}
 BuildRequires:  %{python_module typing-extensions >= 4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-Mako
 Requires:       python-SQLAlchemy >= 2.0.0
 Requires:       python-typing-extensions >= 4
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if 0%{?python_version_nodots} < 39
 Requires:       python-importlib-metadata
 Requires:       python-importlib-resources
@@ -80,6 +89,12 @@ offers the following functionality:
 
 %pre
 %python_libalternatives_reset_alternative alembic
+
+%post
+%python_install_alternative alembic
+
+%postun
+%python_uninstall_alternative alembic
 
 %files %{python_files}
 %license LICENSE

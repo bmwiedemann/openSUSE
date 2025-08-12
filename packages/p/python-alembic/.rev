@@ -1817,4 +1817,12 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1286097</requestid>
   </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>123af9764aa1af7c4e7a84cd2d235008</srcmd5>
+    <version>1.15.2</version>
+    <time>1755011009</time>
+    <user>dimstar_suse</user>
+    <comment>- Make the libalternatives transition conditional</comment>
+    <requestid>1298832</requestid>
+  </revision>
 </revisionlist>
