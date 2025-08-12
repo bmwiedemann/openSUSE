@@ -31,4 +31,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1297428</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>c84ae84435e56182487c74852b3901e7</srcmd5>
+    <version>20240404</version>
+    <time>1755011111</time>
+    <user>dimstar_suse</user>
+    <comment>- Revert file-based systemd-repart config (Was not ready for Factory)</comment>
+    <requestid>1298980</requestid>
+  </revision>
 </revisionlist>
