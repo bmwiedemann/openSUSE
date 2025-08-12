@@ -367,4 +367,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1293795 from glaubitz)</comment>
     <requestid>1293800</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a40e95e8e8ceb0fc4e65cbe04cc256f1</srcmd5>
+    <version>1.24.0</version>
+    <time>1755011005</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.24.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1298753 from glaubitz)</comment>
+    <requestid>1298823</requestid>
+  </revision>
 </revisionlist>
