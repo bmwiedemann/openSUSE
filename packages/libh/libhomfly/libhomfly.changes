@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 11 19:40:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.03
+  * Add pkg-config file
+
+-------------------------------------------------------------------
 Sat Jan 28 00:40:58 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use the upstream versioning scheme (1.02r6) as every other
