@@ -619,4 +619,13 @@
   + Updated translations. (forwarded request 1253778 from dimstar)</comment>
     <requestid>1253788</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>4782080d1d6f7e9c1e8061e1efb1a318</srcmd5>
+    <version>48.0</version>
+    <time>1755011019</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gsettings-desktop-schemas-meson-1.9.patch: Fix build against
+  meson 1.9.0rc2 (glgo#gsettings-desktop-schemas!113) (forwarded request 1298815 from dimstar)</comment>
+    <requestid>1298878</requestid>
+  </revision>
 </revisionlist>

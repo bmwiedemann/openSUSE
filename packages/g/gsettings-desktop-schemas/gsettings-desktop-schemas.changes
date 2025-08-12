@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 11 12:07:37 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gsettings-desktop-schemas-meson-1.9.patch: Fix build against
+  meson 1.9.0rc2 (glgo#gsettings-desktop-schemas!113)
+
+-------------------------------------------------------------------
 Mon Mar 17 12:54:35 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 48.0:
