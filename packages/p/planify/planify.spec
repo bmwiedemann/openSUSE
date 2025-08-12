@@ -25,7 +25,6 @@ Summary:        Task and project manager
 License:        GPL-3.0-or-later
 URL:            https://github.com/alainm23/planify
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         correct-gxml.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
@@ -38,7 +37,7 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(granite-7) >= 7.4.0
 BuildRequires:  pkgconfig(gtk4) >= 4.14.4
 BuildRequires:  pkgconfig(gtksourceview-5) >= 5.12.1
-BuildRequires:  pkgconfig(gxml) >= 0.20.0
+BuildRequires:  pkgconfig(gxml-0.20)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.8.0
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.0
 BuildRequires:  pkgconfig(libecal-2.0) >= 3.52.4
@@ -96,7 +95,7 @@ Summary:        Library files for %{name}
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 export CFLAGS="%{optflags} -Wno-error=return-type"

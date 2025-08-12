@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1291709</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>09c872245bc7301a3e7b91ab24f152d4</srcmd5>
+    <version>4.12.2</version>
+    <time>1755011129</time>
+    <user>dimstar_suse</user>
+    <comment>- remove patch correct-gxml.patch</comment>
+    <requestid>1299030</requestid>
+  </revision>
 </revisionlist>
