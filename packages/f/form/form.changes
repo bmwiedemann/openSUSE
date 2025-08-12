@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug  7 09:30:59 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.3.1:
+  * Fixed build errors on 32-bit machines
+    (gh#vermaseren/form#422).
+  * Fixed integer overflows in moebius_ with large numbers
+    (gh#vermaseren/form#430).
+  * Fixed possible memory errors in expanding user-defined
+    preprocessor macros (gh#vermaseren/form#434).
+  * Fixed an extremely rare bug in the long division with GMP
+    (gh#vermaseren/form#439).
+- Add patches from upstream to fix building documentation:
+  * form-build-docs-without-git-repo.patch (gh#form-dev/form#497).
+  * form-fix-doxygen-failure.patch (gh#form-dev/form#467).
+- Make doc package noarch.
+- Add a %check section and run `make check`.
+
+-------------------------------------------------------------------
 Sun Nov 27 05:26:25 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.3.0:
