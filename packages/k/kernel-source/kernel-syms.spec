@@ -16,22 +16,17 @@
 #
 
 
-%define git_commit e03d052bff2e8f2b62ebe0e2a2b167c7f2f108a2
+%define git_commit 49fcd7f996db76e2b16d44155fd97d0a6c536b45
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
 Name:           kernel-syms
-Version:        6.15.8
-%if %using_buildservice
+Version:        6.16.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.ge03d052
+Release:        <RELEASE>.g49fcd7f
 %else
 Release:        0
-%endif
-%else
-%define kernel_source_release %(LC_ALL=C rpm -q kernel-devel%variant-%version --qf "%{RELEASE}" | grep -v 'not installed' || echo 0)
-Release:        %kernel_source_release
 %endif
 Summary:        Kernel Symbol Versions (modversions)
 License:        GPL-2.0-only

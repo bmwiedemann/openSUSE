@@ -7096,4 +7096,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.15.8; bugs: bsc#1012628</comment>
     <requestid>1295447</requestid>
   </revision>
+  <revision rev="793" vrev="1">
+    <srcmd5>fe1677ec3201b6fcb70078b6f813b779</srcmd5>
+    <version>6.16.0</version>
+    <time>1755010983</time>
+    <user>dimstar_suse</user>
+    <comment>6.16 &amp; fixed btrfs &amp; FIPS test fix; bugs: bsc#1241200 bsc#1244337 bsc#1244445 bsc#1245167 bsc#1245584 bsc#1245608 bsc#1246134 bsc#1246308 bsc#1246879 bsc#1246979 bsc#1247172 bsc#1247726</comment>
+    <requestid>1298723</requestid>
+  </revision>
 </revisionlist>
