@@ -1,7 +1,7 @@
 #
 # spec file for package python-circuitbreaker
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,7 @@ Python implementation of the "Circuit Breaker" Pattern
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export PYTEST_ADDOPTS="--asyncio-mode=auto"
 %pytest
 
 %files %{python_files}
