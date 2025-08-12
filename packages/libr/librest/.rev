@@ -250,4 +250,26 @@
     <comment>Fix date format in old changelog entries (forwarded request 1277786 from dimstar)</comment>
     <requestid>1278255</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1e27d51a45c4a3480c1c91cb4f5aa4ad</srcmd5>
+    <version>0.10.2</version>
+    <time>1755011016</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.2:
+  + Rename Meson project to librest
+- Changes from version 0.10.1:
+  + Allow to use the CI to publish the release
+  + Use G_DEFINE_QUARK when possible
+- Changes from version 0.10.0:
+  + Handle some potential problems in parsing oauth2 access tokens
+  + Allow to use rest and rest-extras from a single header
+  + Fix the declaration of the RestOAuth2Error quark function
+  + Name the RestOAuth2Error enum
+  + Fixes several annotation issues
+- Drop patches merged upstream:
+  + 0001-rest_proxy_call_sync-bail-out-if-no-payload.patch
+  + 0002-Handle-some-potential-problems-in-parsing-oauth2-acc.patch
+- Update URL and Source following upstream name changes. (forwarded request 1298433 from iznogood)</comment>
+    <requestid>1298875</requestid>
+  </revision>
 </revisionlist>

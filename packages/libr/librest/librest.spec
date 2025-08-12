@@ -1,7 +1,7 @@
 #
 # spec file for package librest
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,19 @@
 #
 
 
-%define _name   rest
 %define sover   0
 %define abi     1.0
 %define abi_pkg 1_0
 %define libname librest-%{abi_pkg}-%{sover}
 Name:           librest
-Version:        0.9.1
+Version:        0.10.2
 Release:        0
 Summary:        Library to access RESTful web services
 License:        LGPL-2.1-only
 Group:          Development/Libraries/GNOME
-URL:            http://git.gnome.org/browse/librest/
-Source0:        http://download.gnome.org/sources/rest/0.9/%{_name}-%{version}.tar.xz
+URL:            https://gitlab.gnome.org/GNOME/librest
+Source0:        http://download.gnome.org/sources/%{name}/0.10/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM 0001-rest_proxy_call_sync-bail-out-if-no-payload.patch -- rest_proxy_call_sync: bail out if no payload
-Patch0:         0001-rest_proxy_call_sync-bail-out-if-no-payload.patch
-# PATCH-FIX-UPSTREAM 0002-Handle-some-potential-problems-in-parsing-oauth2-acc.patch -- Handle some potential problems in parsing oauth2 access tokens
-Patch1:         0002-Handle-some-potential-problems-in-parsing-oauth2-acc.patch
-
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson
@@ -103,7 +97,7 @@ service should have urls that represent remote objects, which methods
 can then be called on.
 
 %prep
-%autosetup -p1 -n %{_name}-%{version}
+%autosetup -p1
 
 %build
 # We should be able to pass both these (though just the first should be needed) - it fails the build however
