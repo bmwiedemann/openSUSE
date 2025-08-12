@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug  5 07:34:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.6.1
+  * Filter key set with additional "alg" and "use" parameters.
+- Fix bogus version number in previous changelog entry
+- Rename README.rst to README.md in %files section
+
+-------------------------------------------------------------------
 Tue Jun  3 06:26:39 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
-- Update to 1.6.2
+- Update to 1.6.0
   * Fix issue when RFC9207 is enabled and the authorization endpoint
     response is not a redirection. pull request #733
   * Fix missing state parameter in authorization error responses.
