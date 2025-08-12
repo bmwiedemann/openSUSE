@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Aug 11 13:30:16 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20250806.00
+  * Fixed JSON identifier for the universe domain (#855)
+- from version 20250729.00
+  * Bump github.com/google/s2a-go from 0.1.8 to 0.1.9 (#828)
+- from version 20250725.02
+  * Update utils.go (#854)
+  * Upgrade golang.org/x/oauth2 package to the latest. (#853)
+  * Bump golang.org/x/time from 0.9.0 to 0.12.0 (#839)
+- from version 20250725.01
+  * Bump golang.org/x/oauth2 (#848)
+  * Port fix for debian 11 to goo package manager. (#852)
+- from version 20250725.00
+  * Update Golang version in common.sh and skip backports
+    repo for debian 11 (#850)
+- from version 20250723.01
+  * Add workflows to build package for el10 (#849)
+- from version 20250721.00
+  * Make OS Config agent TPC aware (#846)
+- from version 20250718.00
+  * Create workflows for new Debian 13. (#847)
+- Drop CVE-2025-22868.patch, merged upstream
+
+-------------------------------------------------------------------
 Fri Jul 11 11:51:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20250703.00
