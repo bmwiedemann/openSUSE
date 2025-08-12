@@ -1,7 +1,7 @@
 #
 # spec file for package unbound
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,17 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%bcond_without python3
 %bcond_without munin
 %bcond_without hardened_build
 %bcond_without dnstap
 %bcond_without systemd
+# needs openssl with quic enabled - aws-lc is sadly not a drop in as it removed some functions used by unbound
+%bcond_with unbound_quic
+%if 0%{?suse_version} > 1600
+%bcond_without unbound_redis
+%else
+%bcond_with    unbound_redis
+%endif
 
 %define _sharedstatedir /var/lib/
 %define ldns_version 1.6.16
@@ -33,7 +39,7 @@
 %define piddir /run
 
 Name:           unbound
-Version:        1.23.0
+Version:        1.23.1
 Release:        0
 BuildRequires:  flex
 BuildRequires:  ldns-devel >= %{ldns_version}
@@ -47,13 +53,17 @@ BuildRequires:  libfstrm-devel
 BuildRequires:  libprotobuf-c-devel >= 1.0.0
 BuildRequires:  protobuf-c >= 1.0.0
 %endif
-%if %{with python3}
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
 BuildRequires:  swig
-%endif
 # needed for dns over https
 BuildRequires:  pkgconfig(libnghttp2)
+%if %{with unbound_quic}
+BuildRequires:  pkgconfig(libngtcp2)
+%endif
+%if %{with unbound_redis}
+BuildRequires:  pkgconfig(hiredis)
+%endif
 Requires:       ldns >= %{ldns_version}
 # unbound-control-setup depends on /usr/bin/openssl
 Requires:       openssl
@@ -153,7 +163,6 @@ Unbound is a validating, recursive, and caching DNS(SEC) resolver.
 
 This package contains the tools to manage the anchor certs.
 
-%if %{with python3}
 %package -n python3-unbound
 Summary:        Python modules and extensions for unbound
 Group:          Applications/System
@@ -165,7 +174,6 @@ Provides:       unbound-python
 Unbound is a validating, recursive, and caching DNS(SEC) resolver.
 
 This package holds the Python modules and extensions for unbound.
-%endif
 
 %prep
 %setup
@@ -176,15 +184,15 @@ This package holds the Python modules and extensions for unbound.
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 
-%if %{with python2}
-pushd ../p2
 %configure \
   --disable-rpath \
   --with-libevent \
   --with-pthreads \
   --disable-static \
-  --with-ldns=%{_prefix} \
   --with-libnghttp2 \
+%if %{with unbound_quic}
+  --with-libngtcp2 \
+%endif
   --enable-sha2 \
   --enable-gost \
   --enable-ecdsa \
@@ -192,41 +200,19 @@ pushd ../p2
   --enable-pie \
   --enable-relro-now \
   --enable-dnscrypt \
+  --enable-tfo-client \
+  --enable-tfo-server \
+  --enable-cachedb \
+  --enable-subnet \
+%if %{with unbound_redis}
+  --with-libhiredis \
+%endif
 %if %{with dnstap}
   --enable-dnstap \
 %endif
   --with-conf-file=%{_sysconfdir}/%{name}/unbound.conf \
   --with-pidfile=%{piddir}/%{name}/%{name}.pid \
-  --with-pythonmodule --with-pyunbound PYTHON=%{__python2}\
-  --with-rootkey-file=%{_sharedstatedir}/unbound/root.key \
-  --disable-explicit-port-randomisation
-
-make %{?_smp_mflags} all streamtcp
-popd
-%endif
-
-%configure \
-  --disable-rpath \
-  --with-libevent \
-  --with-pthreads \
-  --disable-static \
-  --with-ldns=%{_prefix} \
-  --with-libnghttp2 \
-  --enable-sha2 \
-  --enable-gost \
-  --enable-ecdsa \
-  --enable-event-api \
-  --enable-pie \
-  --enable-relro-now \
-  --enable-dnscrypt \
-%if %{with dnstap}
-  --enable-dnstap \
-%endif
-  --with-conf-file=%{_sysconfdir}/%{name}/unbound.conf \
-  --with-pidfile=%{piddir}/%{name}/%{name}.pid \
-%if %{with python3}
   --with-pythonmodule --with-pyunbound PYTHON=%{__python3}\
-%endif
   --with-rootkey-file=%{_sharedstatedir}/unbound/root.key \
   --disable-explicit-port-randomisation
 
@@ -385,12 +371,10 @@ systemd-tmpfiles --create  %{_tmpfilesdir}/unbound.conf  || :
 %defattr(-,root,root,-)
 %{_libdir}/libunbound.so.*
 
-%if %{with python3}
 %files -n python3-unbound
 %{python3_sitearch}/*
 %doc libunbound/python/examples/*
 %doc pythonmod/examples/*
-%endif
 
 %if %{with munin}
 %files munin

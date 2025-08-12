@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 10 18:26:45 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.23.1:
+  Bug Fixes:
+  * Fix RebirthDay Attack CVE-2025-5994, reported by Xiang Li from
+    AOSP Lab Nankai University.
+
+-------------------------------------------------------------------
 Thu Apr 24 11:58:41 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 1.23.0:

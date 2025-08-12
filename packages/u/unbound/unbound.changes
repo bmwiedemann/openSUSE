@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Aug 11 10:19:50 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- simplify python handling. python2 support is dropped and python3
+  is built by default. Conditionals for the latter are removed.
+
+-------------------------------------------------------------------
+Mon Aug 11 10:14:25 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable EDNS subnet handling
+
+-------------------------------------------------------------------
+Sun Aug 10 18:26:45 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.23.1: (boo#1246625)
+  Bug Fixes:
+  * Fix RebirthDay Attack CVE-2025-5994, reported by Xiang Li from
+    AOSP Lab Nankai University.
+  - our package was not built with EDNS subnet support up to this
+    point and therefor was not affected.
+
+-------------------------------------------------------------------
+Sun Aug 10 18:07:02 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- prepare enabling quic support:
+  currently fails on missing quic support in openssl. aws-lc is
+  sadly not a drop in replacement for unbound.
+- enable TCP Fast Open for the server and client
+- remove unused --with-ldns option
+- enable cachedb including hiredis support on Tumbleweed
+  new BuildRequires pkgconfig(libhiredis)
+
+-------------------------------------------------------------------
 Sun Jul 20 18:17:33 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Remove leftover dependency on sudo (not required)
