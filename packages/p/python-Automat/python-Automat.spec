@@ -24,7 +24,11 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-Automat%{psuffix}
 Version:        25.4.16
@@ -37,10 +41,15 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+BuildRequires:  alts
 Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 Requires:       python-attrs >= 19.2.0
 Suggests:       python-Twisted >= 16.1.1
 Suggests:       python-graphviz > 0.5.1
@@ -78,6 +87,12 @@ automata (particularly deterministic finite-state transducers).
 %if !%{with test}
 %pre
 %python_libalternatives_reset_alternative automat-visualize
+
+%post
+%python_install_alternative automat-visualize
+
+%postun
+%python_uninstall_alternative automat-visualize
 
 %files %{python_files}
 %license LICENSE
