@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Aug  8 05:11:13 UTC 2025 - anenasa <anenasaa@yahoo.com>
+
+- Update to 2.1:
+  * Include themes from geany-themes.
+  * Fix silently truncating files containing NUL bytes.
+  * Improve compatibility focusing the editor window when opening
+    a file externally.
+  * Update placeholders for external printing command to use the
+    same ones as build commands.
+  * Improve corner-case encoding detection and conversion.
+  * Fix losing session after opening several projects.
+  * Fix emission of the "document-activate" signal, leading to
+    glitches in UI and plugins.
+  * Fix spurious CPU load after running a build command.
+  * Use a more reliable method for saving preferences and other
+    auxiliary files.
+  * Fix focusing the symbol list through key binding.
+  * Fix search entry after editing the toolbar.
+  * Fix non-deterministic anonymous symbol names.
+  * Fix displaying symbols declared out of order.
+  * Fix possible invalid memory access when generating user
+    initials on first startup.
+  * Fix replacing placeholders in filenames in build commands.
+  * Add support for searching the Messages and Compiler output.
+  * Add support for modern platform-native file selection dialogs.
+  * Regroup filetypes by letter.
+  * Add filter for open documents sidebar.
+  * Add filter for keybindings preferences.
+  * Add various pref to skip "replace in session" confirmation
+    dialog.
+  * Make it easier to wrap search when the confirmation dialog is
+    shown.
+  * Fix spurious selection when clicking an externally-modified
+    file.
+  * Fix translation of the Various preferences tab.
+  * Do not show redundant None encoding.
+  * Do not display encodings not supported on the system.
+  * Move "Virtual Spaces" preference to "Editor -> Features".
+  * Various UI tweaks.
+  * Allow pasting and autocompletion for multiple carets.
+  * Increase minimal number margin width.
+- Drop upstreamed reproducible.patch.
+- Drop upstreamed geany-2.0-gcc15.patch.
+
+-------------------------------------------------------------------
 Fri May 23 12:50:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires and macro.
