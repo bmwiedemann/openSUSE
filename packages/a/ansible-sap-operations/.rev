@@ -9,4 +9,12 @@ This package contains Ansible Automation for operating SAP landscape.
 Downstream source is located at https://github.com/SUSE/community.sap_operations</comment>
     <requestid>1269247</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a1e3ffee639d2a91892687e3d9f1386d</srcmd5>
+    <version>0.9.1</version>
+    <time>1755011121</time>
+    <user>dimstar_suse</user>
+    <comment>This is bugfix release to remove unsupported Ansible Roles and update spec file to align it with related packages.</comment>
+    <requestid>1298993</requestid>
+  </revision>
 </revisionlist>

@@ -1,12 +1,13 @@
-# Configuration file for collection changes before build.
-# Collection: community.sap_operations
+# Configuration file for changes before build.
 
-# Types of changes used by collection_update.py
-# remove_paths - Remove specific directories and files that are no longer needed.
-# remove_lines - Remove specific lines containing certain patterns from files.
-# replace_text - Replace specific text strings within files.
-# update_yaml_key - Update specific keys in YAML files with new values.
-# append_yaml_list - Append items to a list in a YAML file.
+# Types of available options for transformation:
+# - remove_paths - Removes the specified files or directories.
+# - remove_lines - Removes lines matching the patterns from the files matching specified glob patterns.
+# - replace_text - Replaces text in files matching specified glob patterns.
+# - update_yaml_key - Updates a specific key's value in the specified YAML files matching specified glob patterns.
+# - append_yaml_list - Appends a new item to a list in the specified YAML files matching specified glob patterns.
+# - set_yaml_value - Sets or replaces a specific key's value in the specified YAML files matching specified glob patterns.
+# - remove_yaml_list_items - Removes specific items from a list in the specified YAML files matching specified glob patterns.
 
 changes:
   # Main collection changes
@@ -15,31 +16,46 @@ changes:
     # Remove all unsupported roles.
     # Remove all 'meta/main.yml' files within any role directory.
     paths:
-      - "roles/sap_rhsm"
-      - "roles/sap_fapolicy"
+      - "roles/os_ansible_user"  # non-SAP
+      - "roles/os_etchosts"  # non-SAP
+      - "roles/os_knownhosts"  # non-SAP
+      - "roles/sap_fapolicy"  # non-SUSE
+      - "roles/sap_firewall"  # obsolete, replaced with posix and LSR
+      - "roles/sap_hana_backint"  # TODO: Add after rework
+      - "roles/sap_hana_sr_takeover"  # TODO: Add after rework
+      - "roles/sap_rfc"  # TODO: Add after rework
+      - "roles/sap_rhsm"  # non-SUSE
       - "roles/*/meta/main.yml"
 
   - type: remove_lines
     # Remove specific lines from README.md and all role README.md files.
     # This is used to clean up any mention of unsupported roles and leftover Ansible Lint markers.
     files:
-      - "README.md"
+      # - "README.md"
       - "roles/*/README.md"
     patterns:
-      - "sap_rhsm"
-      - "sap_fapolicy"
+      # - "sap_rhsm"
+      # - "sap_fapolicy"
       - "\\[Ansible Lint"
+      - 'param: "all"'
 
   - type: replace_text
     # Replace specific text strings in galaxy.yml and README.md files.
     # This is used to update the namespace and repository links from 'community' to 'suse'.
     files:
       - "galaxy.yml"
-      - "README.md"
+      # - "README.md"
     replacements:
       - { find: "namespace: community", replace: "namespace: suse" }
       - { find: "github.com/sap-linuxlab/community", replace: "github.com/SUSE/community" }
       - { find: "documentation:.*", replace: "documentation: https://github.com/SUSE/community.sap_operations/blob/main/README.md" }
+
+  - type: replace_text
+    # Replace obsolete plugin with sap_libs
+    files:
+      - "roles/*/README.md"
+    replacements:
+      - { find: "community.sap_operations.sap_facts:", replace: "community.sap_libs.sap_system_facts:" }
 
   - type: update_yaml_key
     # Update the 'authors' key in galaxy.yml to 'SUSE'.
@@ -57,9 +73,19 @@ changes:
     key: "build_ignore"
     value:
       - "tests"
+      - "roles/*/tests"
       - ".git*"
+      - "*/.git*"
+      - "*/*/.git*"
       - ".ansible-lint"
+      - "*/*/.ansible-lint"
       - ".yamllint*"
+      - "*/*/.yamllint*"
       - ".pylintrc*"
       - "bindep*"
       - ".pre-commit-config.yaml"
+      - "changelogs/.plugin-cache.yaml"
+      - "changelogs/fragments"
+      - "plugins"
+      - "docs/module*"
+      - "playbooks"
