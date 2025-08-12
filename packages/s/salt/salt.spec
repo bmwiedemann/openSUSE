@@ -568,6 +568,12 @@ Patch174:       several-fixes-for-security-issues.patch
 Patch175:       fix-tests-issues-in-salt-shaker-environments-721.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/722
 Patch176:       add-minion_legacy_req_warnings-option-to-avoid-noisy.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68246
+Patch177:       fix-the-tests-failing-on-almalinux-10-and-other-clon.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/66630
+Patch178:       fix-functional.states.test_user-for-sles-16-and-micr.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/68247
+Patch179:       improve-sl-micro-6.2-detection-with-grains.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END
@@ -681,7 +687,7 @@ BuildRequires:  %{python_module MarkupSafe}
 BuildRequires:  %{python_module msgpack-python > 0.3}
 BuildRequires:  %{python_module pyzmq > 2.2.0}
 %if 0%{?suse_version} >= 1500
-BuildRequires:  %{python_module M2Crypto >= 0.44.0}
+BuildRequires:  %{python_module M2Crypto}
 %else
 BuildRequires:  %{python_module pycrypto >= 2.6.1}
 %endif

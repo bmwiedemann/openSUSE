@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 11 13:57:29 UTC 2025 - Victor Zhestkov <vzhestkov@suse.com>
+
+- Revert require M2Crypto >= 0.44.0 for SUSE Family distros
+- Improve SL Micro 6.2 detection with grains
+- Fix functional.states.test_user for SLES 16 and Micro systems
+- Fix the tests failing on AlmaLinux 10 and other clones
+
+- Added:
+  * improve-sl-micro-6.2-detection-with-grains.patch
+  * fix-functional.states.test_user-for-sles-16-and-micr.patch
+  * fix-the-tests-failing-on-almalinux-10-and-other-clon.patch
+
+-------------------------------------------------------------------
 Fri Jul  4 07:55:28 UTC 2025 - Victor Zhestkov <vzhestkov@suse.com>
 
 - Add `minion_legacy_req_warnings` option to avoid noisy warnings

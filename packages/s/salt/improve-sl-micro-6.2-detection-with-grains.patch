@@ -1,0 +1,78 @@
+From 270fda818beca6cb1a8b0f79f6df33e2cb7dc2d2 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Mon, 11 Aug 2025 14:17:57 +0200
+Subject: [PATCH] Improve SL Micro 6.2 detection with grains
+
+* Add workaround for detecting SL Micro 6.2
+
+* Add SL Micro 6.2 core grains detection test
+---
+ salt/grains/core.py                    | 12 +++++++++++
+ tests/pytests/unit/grains/test_core.py | 28 ++++++++++++++++++++++++++
+ 2 files changed, 40 insertions(+)
+
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index 619969df9a..582b37de94 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -2376,6 +2376,18 @@ def _legacy_linux_distribution_data(grains, os_release, lsb_has_error):
+         grains["oscodename"] = oscodename
+     if "os" not in grains:
+         grains["os"] = _derive_os_grain(grains["osfullname"])
++    if "SUSE_SUPPORT_PRODUCT" in os_release and "SUSE_SUPPORT_PRODUCT_VERSION":
++        # It's a workaround for very specific case of SL Micro 6.2
++        # SL Micro 6.2 is different than prevoius ones and identifies itself
++        # as SLES-16, but transactional. This workaround was made to make the grains
++        # of SL Micro 6.2 aligned with the previous versions.
++        grains["oscodename"] = os_release.get(
++            "SUSE_PRETTY_NAME",
++            f"{os_release['SUSE_SUPPORT_PRODUCT']} {os_release['SUSE_SUPPORT_PRODUCT_VERSION']}",
++        )
++        grains["osrelease"] = os_release["SUSE_SUPPORT_PRODUCT_VERSION"]
++        if os_release["SUSE_SUPPORT_PRODUCT"] == "SUSE Linux Micro":
++            grains["osfullname"] = "SL-Micro"
+     # this assigns family names based on the os name
+     # family defaults to the os name if not found
+     grains["os_family"] = _OS_FAMILY_MAP.get(grains["os"], grains["os"])
+diff --git a/tests/pytests/unit/grains/test_core.py b/tests/pytests/unit/grains/test_core.py
+index c15a3b4360..135c40bc2b 100644
+--- a/tests/pytests/unit/grains/test_core.py
++++ b/tests/pytests/unit/grains/test_core.py
+@@ -841,6 +841,34 @@ def test_suse_os_grains_tumbleweed():
+     _run_suse_os_grains_tests(_os_release_data, {}, expectation)
+ 
+ 
++@pytest.mark.skip_unless_on_linux
++def test_suse_os_grains_slmicro62():
++    """
++    Test if OS grains are parsed correctly in SL Micro 6.2
++    """
++    _os_release_data = {
++        "NAME": "SLES",
++        "VERSION": "16.0",
++        "VERSION_ID": "16.0",
++        "PRETTY_NAME": "SUSE Linux Enterprise Server 16.0",
++        "ID": "sles",
++        "ANSI_COLOR": "0;32",
++        "CPE_NAME": "cpe:/o:suse:sles:16:16.0",
++        "SUSE_SUPPORT_PRODUCT": "SUSE Linux Micro",
++        "SUSE_SUPPORT_PRODUCT_VERSION": "6.2",
++        "SUSE_PRETTY_NAME": "SUSE Linux Micro 6.2",
++    }
++    expectation = {
++        "oscodename": "SUSE Linux Micro 6.2",
++        "osfullname": "SL-Micro",
++        "osrelease": "6.2",
++        "osrelease_info": (6, 2),
++        "osmajorrelease": 6,
++        "osfinger": "SL-Micro-6",
++    }
++    _run_suse_os_grains_tests(_os_release_data, {}, expectation)
++
++
+ @pytest.mark.skip_unless_on_linux
+ def test_debian_9_os_grains():
+     """
+-- 
+2.50.1
+

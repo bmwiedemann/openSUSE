@@ -2650,4 +2650,12 @@ let build start it or we will get libvirt errors.
     <comment></comment>
     <requestid>1290636</requestid>
   </revision>
+  <revision rev="179" vrev="43">
+    <srcmd5>d45d4655e917db8a0914271d87ceb732</srcmd5>
+    <version>3006.0</version>
+    <time>1755011022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1298881</requestid>
+  </revision>
 </revisionlist>

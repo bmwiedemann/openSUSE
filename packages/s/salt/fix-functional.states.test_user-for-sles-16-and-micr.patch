@@ -1,0 +1,106 @@
+From 6bab2b1bea75e240ebcb86b839a238496a235307 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Mon, 11 Aug 2025 14:17:03 +0200
+Subject: [PATCH] Fix functional.states.test_user for SLES 16 and Micro
+ systems
+
+---
+ tests/pytests/functional/states/test_user.py | 42 +++++++++++++-------
+ 1 file changed, 27 insertions(+), 15 deletions(-)
+
+diff --git a/tests/pytests/functional/states/test_user.py b/tests/pytests/functional/states/test_user.py
+index 5eac093ef4..231841ee78 100644
+--- a/tests/pytests/functional/states/test_user.py
++++ b/tests/pytests/functional/states/test_user.py
+@@ -138,7 +138,9 @@ def test_user_present_nondefault(grains, modules, states, username, user_home):
+     if not salt.utils.platform.is_darwin() and not salt.utils.platform.is_windows():
+         assert user_home.is_dir()
+ 
+-    if grains["os_family"] in ("Suse",) and not grains.get("transactional", False):
++    if grains["os_family"] == "Suse" and not (
++        grains.get("transactional", False) or grains.get("osmajorrelease", 0) >= 16
++    ):
+         expected_group_name = "users"
+     elif grains["os_family"] == "MacOS":
+         expected_group_name = "staff"
+@@ -381,11 +383,15 @@ def test_user_present_existing(states, username):
+ 
+ 
+ @pytest.mark.skip_unless_on_linux(reason="underlying functionality only runs on Linux")
+-@pytest.mark.skipif(
+-    bool(salt.utils.path.which("transactional-update")),
+-    reason="Skipping on transactional systems",
+-)
+-def test_user_present_change_groups(modules, states, username, group_1, group_2):
++def test_user_present_change_groups(
++    grains, modules, states, username, group_1, group_2
++):
++    expected_groups = [group_2.name, group_1.name]
++    if grains["os_family"] == "Suse" and (
++        grains.get("transactional", False) or grains.get("osmajorrelease", 0) >= 16
++    ):
++        expected_groups.append(username)
++
+     ret = states.user.present(
+         name=username,
+         groups=[group_1.name, group_2.name],
+@@ -394,7 +400,9 @@ def test_user_present_change_groups(modules, states, username, group_1, group_2)
+ 
+     user_info = modules.user.info(username)
+     assert user_info
+-    assert user_info["groups"] == [group_2.name, group_1.name]
++    assert sorted(user_info["groups"]) == sorted(expected_groups)
++
++    expected_groups.remove(group_2.name)
+ 
+     # run again and remove group_2
+     ret = states.user.present(
+@@ -405,17 +413,19 @@ def test_user_present_change_groups(modules, states, username, group_1, group_2)
+ 
+     user_info = modules.user.info(username)
+     assert user_info
+-    assert user_info["groups"] == [group_1.name]
++    assert sorted(user_info["groups"]) == sorted(expected_groups)
+ 
+ 
+ @pytest.mark.skip_unless_on_linux(reason="underlying functionality only runs on Linux")
+-@pytest.mark.skipif(
+-    bool(salt.utils.path.which("transactional-update")),
+-    reason="Skipping on transactional systems",
+-)
+ def test_user_present_change_optional_groups(
+-    modules, states, username, group_1, group_2
++    grains, modules, states, username, group_1, group_2
+ ):
++    expected_groups = [group_2.name, group_1.name]
++    if grains["os_family"] == "Suse" and (
++        grains.get("transactional", False) or grains.get("osmajorrelease", 0) >= 16
++    ):
++        expected_groups.append(username)
++
+     ret = states.user.present(
+         name=username,
+         optional_groups=[group_1.name, group_2.name],
+@@ -424,7 +434,9 @@ def test_user_present_change_optional_groups(
+ 
+     user_info = modules.user.info(username)
+     assert user_info
+-    assert user_info["groups"] == [group_2.name, group_1.name]
++    assert sorted(user_info["groups"]) == sorted(expected_groups)
++
++    expected_groups.remove(group_2.name)
+ 
+     # run again and remove group_2
+     ret = states.user.present(
+@@ -435,7 +447,7 @@ def test_user_present_change_optional_groups(
+ 
+     user_info = modules.user.info(username)
+     assert user_info
+-    assert user_info["groups"] == [group_1.name]
++    assert sorted(user_info["groups"]) == sorted(expected_groups)
+ 
+ 
+ @pytest.mark.skip_unless_on_linux(reason="underlying functionality only runs on Linux")
+-- 
+2.50.1
+

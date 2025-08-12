@@ -1,0 +1,70 @@
+From 4cdce6826c5dcc4b26ce9b877858aa0425d33842 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Mon, 11 Aug 2025 14:16:15 +0200
+Subject: [PATCH] Fix the tests failing on AlmaLinux 10 and other
+ clones
+
+* Fix the package manager related tests failing with AlmaLinux 10
+
+* Fix network test failing on NetworkManager only systems
+
+* Align test conditions with upstream
+---
+ tests/integration/states/test_network.py               | 7 +++++++
+ tests/pytests/functional/states/pkgrepo/test_centos.py | 6 +++++-
+ tests/pytests/functional/states/test_pkg.py            | 4 ++--
+ 3 files changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/tests/integration/states/test_network.py b/tests/integration/states/test_network.py
+index 623cde77b9..efc5768e48 100644
+--- a/tests/integration/states/test_network.py
++++ b/tests/integration/states/test_network.py
+@@ -25,6 +25,13 @@ class NetworkTest(ModuleCase, SaltReturnAssertsMixin):
+                 "Network state only supported on RedHat and Debian based systems."
+                 "The network state does not currently work on VMware Photon OS."
+             )
++        if (
++            os_family == "RedHat"
++            and self.run_function("grains.get", ["osmajorrelease"]) >= 10
++        ):
++            self.skipTest(
++                "Network state doesn't fully support NetworkManager only systems."
++            )
+ 
+     @pytest.mark.slow_test
+     def test_managed(self):
+diff --git a/tests/pytests/functional/states/pkgrepo/test_centos.py b/tests/pytests/functional/states/pkgrepo/test_centos.py
+index 6a84f96ac9..5f6e82d59f 100644
+--- a/tests/pytests/functional/states/pkgrepo/test_centos.py
++++ b/tests/pytests/functional/states/pkgrepo/test_centos.py
+@@ -242,7 +242,11 @@ def copr_pkgrepo_with_comments_name(pkgrepo, grains):
+         or grains["os"] == "VMware Photon OS"
+     ):
+         pytest.skip("copr plugin not installed on {} CI".format(grains["osfinger"]))
+-    if grains["os"] in ("CentOS Stream", "AlmaLinux") and grains["osmajorrelease"] == 9:
++    if (
++        grains["os"] in ("CentOS Stream", "AlmaLinux", "Rocky")
++        and grains["osmajorrelease"] >= 9
++        or grains["osfinger"] == "Amazon Linux-2023"
++    ):
+         pytest.skip("No repo for {} in test COPR yet".format(grains["osfinger"]))
+     pkgrepo_name = "hello-copr"
+     try:
+diff --git a/tests/pytests/functional/states/test_pkg.py b/tests/pytests/functional/states/test_pkg.py
+index 9e5a8350ad..559a91e060 100644
+--- a/tests/pytests/functional/states/test_pkg.py
++++ b/tests/pytests/functional/states/test_pkg.py
+@@ -52,8 +52,8 @@ def PKG_TARGETS(grains):
+         if grains["os"] == "VMware Photon OS":
+             _PKG_TARGETS = ["wget", "zsh-html"]
+         elif (
+-            grains["os"] in ("CentOS Stream", "AlmaLinux")
+-            and grains["osmajorrelease"] == 9
++            grains["os"] in ("CentOS Stream", "Rocky", "AlmaLinux")
++            and grains["osmajorrelease"] >= 9
+         ):
+             _PKG_TARGETS = ["units", "zsh"]
+         else:
+-- 
+2.50.1
+
