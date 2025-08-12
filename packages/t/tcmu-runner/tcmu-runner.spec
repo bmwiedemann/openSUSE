@@ -1,7 +1,7 @@
 #
 # spec file for package tcmu-runner
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%if 0%{?sle_version} == 0
-%define         build_handler_glusterfs 1
-%endif
 
 %if 0%{?sle_version} == 0 || 0%{?sle_version} >= 120300
 %ifarch aarch64 x86_64
@@ -48,9 +44,6 @@ BuildRequires:  cmake >= 3.5
 BuildRequires:  glib2-devel
 BuildRequires:  glibc-devel
 BuildRequires:  gperftools-devel
-%if 0%{?build_handler_glusterfs}
-BuildRequires:  glusterfs-devel
-%endif
 %if 0%{?build_handler_rbd}
 BuildRequires:  librbd-devel
 %endif
@@ -76,7 +69,7 @@ by regular files or block devices. But, if we want to get fancier with
 the capabilities of the device we're emulating, the kernel is not
 necessarily the right place. While there are userspace libraries for
 compression, encryption, and clustered storage solutions like
-Ceph or Gluster, these are not accessible from the kernel.
+Ceph, these are not accessible from the kernel.
 
 The TCMU userspace-passthrough backstore allows a userspace process to
 handle requests to a LUN. But since the kernel-user interface that
@@ -96,18 +89,6 @@ Summary:        Runtime libraries for tcmu-runner
 %description -n libtcmu2
 This package contains the runtime libraries for tcmu-runner.
 
-%if 0%{?build_handler_glusterfs}
-%package handler-glusterfs
-Summary:        GlusterFS handler for tcmu-runner
-Requires:       tcmu-runner = %{version}
-
-%description handler-glusterfs
-This package contains the GlusterFS handler for tcmu-runner, which
-allows for LIO/tcmu logical units to be backed by GlusterFS provisioned
-storage.
-%endif
-
-%if 0%{?build_handler_rbd}
 %package handler-rbd
 Summary:        Ceph RBD handler for tcmu-runner
 Requires:       tcmu-runner = %{version}
@@ -116,9 +97,7 @@ Requires:       tcmu-runner = %{version}
 This package contains the Ceph RADOS Block Device (RBD) handler for
 tcmu-runner, which allows for LIO/tcmu logical units to be backed by
 RBD images.
-%endif
 
-%if 0%{?build_handler_zbc}
 %package handler-zbc
 Summary:        Ceph ZBC handler for tcmu-runner
 Requires:       tcmu-runner = %{version}
@@ -126,15 +105,6 @@ Requires:       tcmu-runner = %{version}
 %description handler-zbc
 This package contains the Ceph RADOS ZBC disc emulation, using a
 file backstore in tcmu-runner.
-%endif
-
-%package -n libtcmu-devel
-Summary:        Development package for libtcmu
-Requires:       %{name} = %{version}
-Requires:       libtcmu2 = %{version}
-
-%description -n libtcmu-devel
-Development header(s) and lib(s) for developing against libtcmu.
 
 %prep
 %autosetup -p1
@@ -143,11 +113,7 @@ Development header(s) and lib(s) for developing against libtcmu.
 CMAKE_OPTIONS="\
 	-DSUPPORT_SYSTEMD=1 \
   -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-%if 0%{?build_handler_glusterfs}
-	-Dwith-glfs=1 \
-%else
 	-Dwith-glfs=0 \
-%endif
 %if 0%{?build_handler_rbd}
 	-Dwith-rbd=1 \
 %else
@@ -164,20 +130,17 @@ CMAKE_OPTIONS="\
 "
 %cmake -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now" \
 	${CMAKE_OPTIONS}
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
-install -d -m 755 %{buildroot}/%{_sbindir}
-ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctcmu-runner
+rm -f "%{buildroot}/%{_libdir}/libtcmu.so"
 
 %post
-%{run_ldconfig}
 %{service_add_post tcmu-runner.service}
 
 %postun
 %{service_del_postun tcmu-runner.service}
-%{run_ldconfig}
 
 %pre
 %{service_add_pre tcmu-runner.service}
@@ -185,14 +148,10 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctcmu-runner
 %preun
 %{service_del_preun tcmu-runner.service}
 
-%post -n libtcmu2 -p /sbin/ldconfig
-
-%postun -n libtcmu2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libtcmu2
 
 %files
-%defattr(-,root,root)
 %{_bindir}/tcmu-runner
-%{_sbindir}/rctcmu-runner
 %doc README.md
 %license LICENSE.Apache2
 %license LICENSE.LGPLv2.1
@@ -211,13 +170,7 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctcmu-runner
 %config %{_sysconfdir}/tcmu/tcmu.conf
 
 %files -n libtcmu2
-%defattr(-,root,root)
 %{_libdir}/libtcmu*.so.*
-
-%if 0%{?build_handler_glusterfs}
-%files handler-glusterfs
-%{_libdir}/tcmu-runner/handler_glfs.so
-%endif
 
 %if 0%{?build_handler_rbd}
 %files handler-rbd
@@ -228,8 +181,5 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctcmu-runner
 %files handler-zbc
 %{_libdir}/tcmu-runner/handler_file_zbc.so
 %endif
-
-%files -n libtcmu-devel
-%{_libdir}/libtcmu*.so
 
 %changelog

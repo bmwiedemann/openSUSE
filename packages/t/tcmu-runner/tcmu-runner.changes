@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  2 09:02:40 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable glusterfs backend.
+- Delete libtcmu-runner-devel; the .so file is not generally
+  usable without some headers files describing the API.
+- Delete /usr/sbin/rc* symlinks (outdated practice).
+- Trim idempotent %if..%endif guards.
+- Remove implicit %defattr, BuildRoot lines from spec.
+
+-------------------------------------------------------------------
 Sat Mar 22 01:40:04 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS in cmake4
@@ -475,5 +485,3 @@ Sat May 28 16:55:45 UTC 2016 - lduncan@suse.com
 Thu May  5 01:46:10 UTC 2016 - lduncan@suse.com
 
 - Created from upstream version 1.0.4
-
--------------------------------------------------------------------
