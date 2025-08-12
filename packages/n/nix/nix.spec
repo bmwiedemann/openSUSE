@@ -51,6 +51,7 @@ BuildRequires:  busybox-static
 BuildRequires:  cmake
 BuildRequires:  curl
 BuildRequires:  doxygen
+BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  jq
@@ -66,6 +67,7 @@ BuildRequires:  perl-DBD-SQLite
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
+BuildRequires:  (pkgconfig(readline) or readline-devel)
 BuildRequires:  cmake(toml11)
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(bdw-gc)
@@ -81,7 +83,6 @@ BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(lowdown)
 BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  (pkgconfig(readline) or readline-devel)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
 # Needed by -Dembedded-sandbox-shell
@@ -204,6 +205,8 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}.conf
 mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d
 echo "%{_libdir}/nix/" > %{buildroot}/%{_sysconfdir}/ld.so.conf.d/nix.conf
 
+%fdupes %{buildroot}
+
 %check
 %meson_test
 
@@ -245,6 +248,7 @@ echo "%{_libdir}/nix/" > %{buildroot}/%{_sysconfdir}/ld.so.conf.d/nix.conf
 %ghost %dir %attr(755,root,root) /nix%{_localstatedir}
 %ghost %dir %attr(755,root,root) /nix%{_localstatedir}/nix
 %ghost %dir %attr(755,root,root) /nix%{_localstatedir}/nix/daemon-socket
+%ghost %dir %attr(755,root,root) /nix%{_localstatedir}/nix/builds
 # manual
 %if %{with docs}
 %{_mandir}/man?/nix*

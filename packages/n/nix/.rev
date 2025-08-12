@@ -103,4 +103,13 @@ support for software auditability among other things</comment>
   - minor bug fix release</comment>
     <requestid>1296606</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>afda2556df718ab997f6b17d55ce1434</srcmd5>
+    <version>2.30.2</version>
+    <time>1755011078</time>
+    <user>dimstar_suse</user>
+    <comment>- Add /nix/var/build to %files
+- Run %fdupes on %buildroot</comment>
+    <requestid>1298912</requestid>
+  </revision>
 </revisionlist>
