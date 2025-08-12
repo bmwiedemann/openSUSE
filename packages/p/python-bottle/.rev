@@ -299,4 +299,12 @@
     <comment>- Do not put bottle.py in /usr/bin, bsc#1245790</comment>
     <requestid>1293288</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>474c887dea7cc01f9bd322a6bb8f8a06</srcmd5>
+    <version>0.13.4</version>
+    <time>1755011014</time>
+    <user>dimstar_suse</user>
+    <comment>- Make the libalternatives transition conditional</comment>
+    <requestid>1298861</requestid>
+  </revision>
 </revisionlist>

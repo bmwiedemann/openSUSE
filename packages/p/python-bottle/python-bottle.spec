@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-bottle
 Version:        0.13.4
@@ -29,10 +33,15 @@ Source1:        http://bottlepy.org/docs/0.12/bottle-docs.pdf
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+BuildRequires:  alts
 Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -79,6 +88,13 @@ rm -rf %{buildroot}%{_bindir}/bottle.py
 %pre
 %python_libalternatives_reset_alternative bottle.py
 %python_libalternatives_reset_alternative bottle
+
+%post
+%python_install_alternative bottle
+
+%postun
+%python_uninstall_alternative bottle.py
+%python_uninstall_alternative bottle
 
 %files %{python_files}
 %license LICENSE
