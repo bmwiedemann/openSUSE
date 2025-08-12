@@ -1,7 +1,7 @@
 #
 # spec file for package iio-sensor-proxy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 Name:           iio-sensor-proxy
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        Proxy for IIO and input subsystems
 License:        GPL-3.0-only
 Group:          System/Monitoring
 URL:            https://gitlab.freedesktop.org/hadess/iio-sensor-proxy
 Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
-
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(glib-2.0) >= 2.56
+BuildRequires:  pkgconfig(glib-2.0) >= 2.76
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gudev-1.0) >= 237
 BuildRequires:  pkgconfig(polkit-gobject-1)
@@ -53,7 +52,7 @@ This package contains the documentation for %{name}.
 %autosetup -p1
 
 %build
-%meson -Dgtk-tests=false \
+%meson -Dtests=false \
        -Dgtk_doc=true \
        -Dgeoclue-user=srvGeoClue
 %meson_build
