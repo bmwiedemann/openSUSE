@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 11 15:34:26 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1754924817.84ae0ae:
+  * VMWare: Use grep -F to handle fixed-strings in variables
+  * VMWare: Use POSIX shell on ESXi host that uses Busybox
+  * Add wrappers for testapi variables
+  * backend: Use tpm-tis-device for TPM as default
+  * Require openssh-clients for git clone with ssh
+  * t: use mock not redefine for lua_set
+  * t: make autotest tests pass if lua and/or python are missing
+
+-------------------------------------------------------------------
 Wed Aug 06 18:59:47 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1754492266.4c80bae:
