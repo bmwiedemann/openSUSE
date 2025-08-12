@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 11 13:12:18 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to version 2.2.4+git11.8bf0f05:
+  * Remove PrivateDevices=true
+  * remove type=oneshot
+  * add new plugin Spyre card configuration
+
+-------------------------------------------------------------------
 Tue Jul 29 13:47:43 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Fix packaging to use proper Python related macros (bsc#1244547 ltc#213710)
@@ -15,7 +23,7 @@ Fri Jun 20 11:07:00 UTC 2025 - msuchanek@suse.de
 -------------------------------------------------------------------
 Fri Apr 18 15:47:35 UTC 2025 - msuchanek@suse.de
 
-- Update to version 2.2.4+git5.e48c02c:
+- Update to version 2.2.4+git3.f65dad0:
   * Added hardening to systemd service
 - Drop upstreamed patch harden_servicereport.service.patch
 
