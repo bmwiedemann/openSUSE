@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-socketio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ Suggests:       python-websocket-client >= 0.54.0
 #Tests:
 BuildRequires:  %{python_module aiohttp >= 3.4}
 BuildRequires:  %{python_module msgpack}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.21.0}
@@ -68,6 +69,6 @@ Python implementation of the Socket.IO realtime server.
 %doc README.md
 %license LICENSE
 %{python_sitelib}/socketio
-%{python_sitelib}/python_socketio-%{version}*-info
+%{python_sitelib}/python_socketio-%{version}.dist-info
 
 %changelog
