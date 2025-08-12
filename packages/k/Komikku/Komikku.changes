@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 11 10:32:32 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.85.0:
+  * [Library] Added F9 shortcut to open Categories pane
+  * [Servers] Added Invincible ComicsVF (FR)
+  * [Servers] ComicHubFree (EN): Update
+  * [Servers] Desu (RU): Update
+  * [Servers] Perf Scan (FR): Update
+  * [Servers] MangaCrab (ES): Update
+  * [L10n] Updated Arabic, French and Russian translations
+- update to version 1.84.0:
+  * [Reader] Added ability to apply filters to pages
+  * [Reader] RTL/LTR/Vertical pager: Added keyboard zoom
+  * [Reader] Webtoon pager: Fixed weird jumps during backward scrolling
+  * [Servers] MangaWorld (IT): Update
+  * [L10n] Updated Arabic and French translations
+
+-------------------------------------------------------------------
 Mon Jul 28 22:45:12 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.83.0:
