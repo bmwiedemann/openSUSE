@@ -812,4 +812,12 @@
     <comment>- Update to kernel headers 6.15 (forwarded request 1279993 from Andreas_Schwab)</comment>
     <requestid>1279994</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>5367a2c8bfbf714752242cd0718f763e</srcmd5>
+    <version>6.16</version>
+    <time>1755010977</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to kernel headers 6.16 (forwarded request 1296192 from Andreas_Schwab)</comment>
+    <requestid>1296193</requestid>
+  </revision>
 </revisionlist>

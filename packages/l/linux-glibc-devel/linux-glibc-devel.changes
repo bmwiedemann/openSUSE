@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 28 17:36:24 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Update to kernel headers 6.16
+
+-------------------------------------------------------------------
+Wed Jun  4 11:55:43 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Rewrite preinstall scriptlet in lua
+
+-------------------------------------------------------------------
 Mon May 26 07:37:31 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Update to kernel headers 6.15

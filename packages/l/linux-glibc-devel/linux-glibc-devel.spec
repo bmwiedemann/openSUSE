@@ -17,7 +17,7 @@
 
 
 Name:           linux-glibc-devel
-Version:        6.15
+Version:        6.16
 Release:        0
 Summary:        Linux headers for userspace development
 License:        GPL-2.0-only
@@ -83,19 +83,19 @@ packages, instead.
   for i,arch in ipairs({cross_archs()}) do
     print(rpm.expand([[
 
-%package -n cross-]]..arch..[[-linux-glibc-devel
+%package -n cross-]]..arch..[[-%{name}
 Summary:        Linux headers for ]]..arch..[[ userspace cross development
 Group:          Development/Libraries/C and C++
 BuildArch:      noarch
 
-%description -n cross-]]..arch..[[-linux-glibc-devel
+%description -n cross-]]..arch..[[-%{name}
 This package provides Linux kernel headers for ]]..arch..[[, the kernel API description
 required for compilation of almost all programs.
 ]]))
   end}
 
 %prep
-%setup -q -n linux-glibc-devel-%{version}
+%setup -q -n %{name}-%{version}
 
 %build
 for karch in *; do
@@ -162,10 +162,9 @@ cd ..
 ]]))
   end}
 
-%pre
-if test -L %{_includedir}/asm; then
-  rm -f %{_includedir}/asm
-fi
+%pre -p <lua>
+link = "%{_includedir}/asm"
+if posix.readlink(link) then os.remove(link) end
 
 %files
 %{_includedir}/*
@@ -174,7 +173,7 @@ fi
   for i,arch in ipairs({cross_archs()}) do
     print(rpm.expand([[
 
-%files -n cross-]]..arch..[[-linux-glibc-devel
+%files -n cross-]]..arch..[[-%{name}
 %{_prefix}/]]..gcc_target(arch).."\n"))
   end}
 
