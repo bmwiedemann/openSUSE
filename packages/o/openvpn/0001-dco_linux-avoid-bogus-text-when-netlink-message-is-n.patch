@@ -1,0 +1,53 @@
+From: Antonio Quartulli <antonio@mandelbit.com>
+Date: Fri, 23 May 2025 09:38:41 +0200
+Subject: dco_linux: avoid bogus text when netlink message is not parsed
+References: bsc#1239783
+Git-repo: https://github.com/OpenVPN/openvpn.git
+Git-commit: 4a48841da2d4179a96348994f841661ec9e5ce1d
+Patch-mainline: v2.7.0
+
+We may bail out parsing an incoming DCO message because it may
+concern a different interface.
+In that case we print the following debug messages:
+
+    dco_do_read
+    ovpn-dco: ignoring message (type=5) for foreign ifindex 313
+    process_incoming_dco: received message of type 0 - ignoring
+
+However, the last message is confusing, because there is no message
+of type 0 being received, but the message_type was simply not
+initialized.
+
+Bail out parsing earlier and avoid printing any bogus text.
+
+Change-Id: I568faa12a5960e8b69de23c2df413b70b231592c
+Signed-off-by: Antonio Quartulli <antonio@mandelbit.com>
+Acked-by: Gert Doering <gert@greenie.muc.de>
+Message-Id: <20250523073848.20848-1-gert@greenie.muc.de>
+URL: https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg31763.html
+Signed-off-by: Gert Doering <gert@greenie.muc.de>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ src/openvpn/forward.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/openvpn/forward.c b/src/openvpn/forward.c
+index 022afdb929a3..a83b2582e7ac 100644
+--- a/src/openvpn/forward.c
++++ b/src/openvpn/forward.c
+@@ -1251,6 +1251,12 @@ process_incoming_dco(struct context *c)
+ 
+     dco_do_read(dco);
+ 
++    /* no message for us to handle - platform specific code has logged details */
++    if (dco->dco_message_type == 0)
++    {
++        return;
++    }
++
+     /* FreeBSD currently sends us removal notifcation with the old peer-id in
+      * p2p mode with the ping timeout reason, so ignore that one to not shoot
+      * ourselves in the foot and removing the just established session */
+-- 
+2.49.0
+

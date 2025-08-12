@@ -1,0 +1,124 @@
+From: Antonio Quartulli <antonio@mandelbit.com>
+Date: Sat, 17 May 2025 10:32:23 +0200
+Subject: dco_linux: fix peer stats parsing with new ovpn kernel module
+References: bsc#1239783
+Git-repo: https://github.com/OpenVPN/openvpn.git
+Git-commit: 6c33e3761ecb476d047bc14e7948ffddba800915
+Patch-mainline: v2.7.0
+
+The new ovpn kernel module has changed the netlink attribute
+type of the fields containing the pkt/bytes counters in the
+peer stats.
+
+We moved from uint64 to uint (a dynamic type can be either
+32 or 64 bits), therefore the parsing code must be adapted
+accordingly.
+
+While at it, also fix the peer object parsing in the P2P code path.
+
+The fix can be verified by enabling --status with verb 6 and
+watching the counters increasing:
+
+	2025-05-16 22:23:56 us=649488 dco_get_peer_stats_multi
+	2025-05-16 22:23:56 us=651008 dco_parse_peer_multi: parsing message...
+	2025-05-16 22:23:56 us=651734 dco_update_peer_stat / dco_read_bytes: 116280
+	2025-05-16 22:23:56 us=652682 dco_update_peer_stat / dco_write_bytes: 115776
+	2025-05-16 22:23:56 us=653467 dco_update_peer_stat / tun_read_bytes: 90048
+	2025-05-16 22:23:56 us=654110 dco_update_peer_stat / tun_write_bytes: 90048
+
+Change-Id: I104b4adeb9f65cce3487b82f35470174acba92bc
+Github: closes OpenVPN/openvpn#746
+Signed-off-by: Antonio Quartulli <antonio@mandelbit.com>
+Acked-by: Gert Doering <gert@greenie.muc.de>
+Message-Id: <20250517083231.27977-1-gert@greenie.muc.de>
+URL: https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg31666.html
+Signed-off-by: Gert Doering <gert@greenie.muc.de>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ src/openvpn/dco_linux.c |   31 +++++++++++++++++++++----------
+ 1 file changed, 21 insertions(+), 10 deletions(-)
+
+--- a/src/openvpn/dco_linux.c
++++ b/src/openvpn/dco_linux.c
+@@ -908,12 +908,26 @@ dco_do_read(dco_context_t *dco)
+     return ovpn_nl_recvmsgs(dco, __func__);
+ }
+ 
++/* libnl < 3.11.0 does not implement nla_get_uint() */
++static uint64_t
++ovpn_nla_get_uint(struct nlattr *attr)
++{
++    if (nla_len(attr) == sizeof(uint32_t))
++    {
++        return nla_get_u32(attr);
++    }
++    else
++    {
++        return nla_get_u64(attr);
++    }
++}
++
+ static void
+ dco_update_peer_stat(struct context_2 *c2, struct nlattr *tb[], uint32_t id)
+ {
+     if (tb[OVPN_A_PEER_LINK_RX_BYTES])
+     {
+-        c2->dco_read_bytes = nla_get_u64(tb[OVPN_A_PEER_LINK_RX_BYTES]);
++        c2->dco_read_bytes = ovpn_nla_get_uint(tb[OVPN_A_PEER_LINK_RX_BYTES]);
+         msg(D_DCO_DEBUG, "%s / dco_read_bytes: " counter_format, __func__,
+             c2->dco_read_bytes);
+     }
+@@ -925,7 +939,7 @@ dco_update_peer_stat(struct context_2 *c
+ 
+     if (tb[OVPN_A_PEER_LINK_TX_BYTES])
+     {
+-        c2->dco_write_bytes = nla_get_u64(tb[OVPN_A_PEER_LINK_TX_BYTES]);
++        c2->dco_write_bytes = ovpn_nla_get_uint(tb[OVPN_A_PEER_LINK_TX_BYTES]);
+         msg(D_DCO_DEBUG, "%s / dco_write_bytes: " counter_format, __func__,
+             c2->dco_write_bytes);
+     }
+@@ -937,7 +951,7 @@ dco_update_peer_stat(struct context_2 *c
+ 
+     if (tb[OVPN_A_PEER_VPN_RX_BYTES])
+     {
+-        c2->tun_read_bytes = nla_get_u64(tb[OVPN_A_PEER_VPN_RX_BYTES]);
++        c2->tun_read_bytes = ovpn_nla_get_uint(tb[OVPN_A_PEER_VPN_RX_BYTES]);
+         msg(D_DCO_DEBUG, "%s / tun_read_bytes: " counter_format, __func__,
+             c2->tun_read_bytes);
+     }
+@@ -949,7 +963,7 @@ dco_update_peer_stat(struct context_2 *c
+ 
+     if (tb[OVPN_A_PEER_VPN_TX_BYTES])
+     {
+-        c2->tun_write_bytes = nla_get_u64(tb[OVPN_A_PEER_VPN_TX_BYTES]);
++        c2->tun_write_bytes = ovpn_nla_get_uint(tb[OVPN_A_PEER_VPN_TX_BYTES]);
+         msg(D_DCO_DEBUG, "%s / tun_write_bytes: " counter_format, __func__,
+             c2->tun_write_bytes);
+     }
+@@ -1028,12 +1042,12 @@ static int
+ dco_parse_peer(struct nl_msg *msg, void *arg)
+ {
+     struct context *c = arg;
+-    struct nlattr *tb[OVPN_A_MAX];
++    struct nlattr *tb[OVPN_A_MAX + 1];
+     struct genlmsghdr *gnlh = nlmsg_data(nlmsg_hdr(msg));
+ 
+     msg(D_DCO_DEBUG, "%s: parsing message...", __func__);
+ 
+-    nla_parse(tb, OVPN_A_PEER_MAX, genlmsg_attrdata(gnlh, 0),
++    nla_parse(tb, OVPN_A_MAX, genlmsg_attrdata(gnlh, 0),
+               genlmsg_attrlen(gnlh, 0), NULL);
+ 
+     if (!tb[OVPN_A_PEER])
+@@ -1043,10 +1057,7 @@ dco_parse_peer(struct nl_msg *msg, void
+     }
+ 
+     struct nlattr *tb_peer[OVPN_A_PEER_MAX + 1];
+-
+-    nla_parse(tb_peer, OVPN_A_PEER,
+-              nla_data(tb[OVPN_A_PEER]),
+-              nla_len(tb[OVPN_A_PEER]), NULL);
++    nla_parse_nested(tb_peer, OVPN_A_PEER_MAX, tb[OVPN_A_PEER], NULL);
+ 
+     if (!tb_peer[OVPN_A_PEER_ID])
+     {

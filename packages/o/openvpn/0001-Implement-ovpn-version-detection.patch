@@ -1,0 +1,105 @@
+From: Ralf Lici <ralf@mandelbit.com>
+Date: Thu, 15 May 2025 17:00:31 +0200
+Subject: Implement ovpn version detection
+References: bsc#1239783
+Git-repo: https://github.com/OpenVPN/openvpn.git
+Git-commit: f6c95ac2ffa69a1caaf2785859c48295a3bea199
+Patch-mainline: v2.7.0
+
+Add detection of the ovpn kernel module type: if a backported
+(out-of-tree) version is loaded, the MODULE_VERSION string is read from
+sysfs; otherwise, for the in-tree module, the function reports the
+kernel release and version.
+
+Change-Id: I7fc033a7ffee73045316763356a95d75ef23f5ad
+Signed-off-by: Ralf Lici <ralf@mandelbit.com>
+Acked-by: Gert Doering <gert@greenie.muc.de>
+Message-Id: <20250515150038.30097-1-gert@greenie.muc.de>
+URL: https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg31652.html
+Signed-off-by: Gert Doering <gert@greenie.muc.de>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ src/openvpn/dco_linux.c |   69 +++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 68 insertions(+), 1 deletion(-)
+
+--- a/src/openvpn/dco_linux.c
++++ b/src/openvpn/dco_linux.c
+@@ -1117,10 +1117,77 @@ dco_available(int msglevel)
+     return true;
+ }
+ 
++/**
++ * There's no version indicator in the ovpn in-tree module, so we return a
++ * string containing info about the kernel version and release.
++ */
++static const char *
++dco_version_string_in_tree(struct gc_arena *gc)
++{
++    struct buffer buf = alloc_buf_gc(256, gc);
++    struct utsname system;
++
++    if (uname(&system))
++    {
++        return "ERR";
++    }
++
++    buf_puts(&buf, system.release);
++    buf_puts(&buf, " ");
++    buf_puts(&buf, system.version);
++    return BSTR(&buf);
++}
++
++/**
++ * When the module is loaded, the backports version of ovpn has a version file
++ * in sysfs. Read it and return the string.
++ *
++ * The caller is responsible for closing the file pointer.
++ */
++static const char *
++dco_version_string_backports(FILE *fp, struct gc_arena *gc)
++{
++    char *str = gc_malloc(PATH_MAX, false, gc);
++
++    if (!fgets(str, PATH_MAX, fp))
++    {
++        return "ERR";
++    }
++
++    /* remove potential newline at the end of the string */
++    char *nl = strchr(str, '\n');
++    if (nl)
++    {
++        *nl = '\0';
++    }
++
++    return str;
++}
++
+ const char *
+ dco_version_string(struct gc_arena *gc)
+ {
+-    return "Unknown";
++    const char *version;
++    struct stat sb;
++    FILE *fp;
++
++    if (stat("/sys/module/ovpn", &sb) != 0 || !S_ISDIR(sb.st_mode))
++    {
++        return "N/A";
++    }
++
++    /* now that we know for sure that the module is loaded, if there's no
++     * version file it means we're dealing with the in-tree version, otherwise
++     * it's backports */
++    fp = fopen("/sys/module/ovpn/version", "r");
++    if (!fp)
++    {
++        return dco_version_string_in_tree(gc);
++    }
++    version = dco_version_string_backports(fp, gc);
++
++    fclose(fp);
++    return version;
+ }
+ 
+ void

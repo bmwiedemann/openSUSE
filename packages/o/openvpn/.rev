@@ -1028,4 +1028,12 @@ behaviour fixing bsc#941569</comment>
     <comment></comment>
     <requestid>1267918</requestid>
   </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>2b4c2eae4b0c2d86b33fff70ca0a15b6</srcmd5>
+    <version>2.6.14</version>
+    <time>1755010981</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1297937</requestid>
+  </revision>
 </revisionlist>

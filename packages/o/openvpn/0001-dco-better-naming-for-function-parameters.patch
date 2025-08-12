@@ -1,0 +1,121 @@
+From: Lev Stipakov <lev@openvpn.net>
+Date: Fri, 27 Sep 2024 11:30:45 +0200
+Subject: dco: better naming for function parameters
+References: bsc#1239783
+Git-repo: https://github.com/OpenVPN/openvpn.git
+Git-commit: 95e5a0b4f0f0f45d29a5a995f151677b760ddf76
+Patch-mainline: v2.7
+
+Current naming (remote_in4/6) is confusing, since
+those are in fact VPN IPv4/v6 addresses and not
+related to remote at all.
+
+Change-Id: I101bbc9f682375ec733bca10b52da82f0abfec27
+Signed-off-by: Lev Stipakov <lev@openvpn.net>
+Acked-by: Antonio Quartulli <a@unstable.cc>
+Message-Id: <20240927093045.22753-1-frank@lichtenheld.com>
+URL: https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg29460.html
+Signed-off-by: Gert Doering <gert@greenie.muc.de>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ src/openvpn/dco_freebsd.c  | 12 ++++++------
+ src/openvpn/dco_internal.h |  2 +-
+ src/openvpn/dco_linux.c    | 10 +++++-----
+ src/openvpn/dco_win.c      |  2 +-
+ 4 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/src/openvpn/dco_freebsd.c b/src/openvpn/dco_freebsd.c
+index 2bfbda1243c8..d2b8092cb27d 100644
+--- a/src/openvpn/dco_freebsd.c
++++ b/src/openvpn/dco_freebsd.c
+@@ -75,7 +75,7 @@ sockaddr_to_nvlist(const struct sockaddr *sa)
+ int
+ dco_new_peer(dco_context_t *dco, unsigned int peerid, int sd,
+              struct sockaddr *localaddr, struct sockaddr *remoteaddr,
+-             struct in_addr *remote_in4, struct in6_addr *remote_in6)
++             struct in_addr *vpn_ipv4, struct in6_addr *vpn_ipv6)
+ {
+     struct ifdrv drv;
+     nvlist_t *nvl, *local_nvl, *remote_nvl;
+@@ -97,15 +97,15 @@ dco_new_peer(dco_context_t *dco, unsigned int peerid, int sd,
+         nvlist_add_nvlist(nvl, "remote", remote_nvl);
+     }
+ 
+-    if (remote_in4)
++    if (vpn_ipv4)
+     {
+-        nvlist_add_binary(nvl, "vpn_ipv4", &remote_in4->s_addr,
+-                          sizeof(remote_in4->s_addr));
++        nvlist_add_binary(nvl, "vpn_ipv4", &vpn_ipv4->s_addr,
++                          sizeof(vpn_ipv4->s_addr));
+     }
+ 
+-    if (remote_in6)
++    if (vpn_ipv6)
+     {
+-        nvlist_add_binary(nvl, "vpn_ipv6", remote_in6, sizeof(*remote_in6));
++        nvlist_add_binary(nvl, "vpn_ipv6", vpn_ipv6, sizeof(*vpn_ipv6));
+     }
+ 
+     nvlist_add_number(nvl, "fd", sd);
+diff --git a/src/openvpn/dco_internal.h b/src/openvpn/dco_internal.h
+index 624c11050c04..4bbcc82bbb14 100644
+--- a/src/openvpn/dco_internal.h
++++ b/src/openvpn/dco_internal.h
+@@ -62,7 +62,7 @@ dco_get_cipher(const char *cipher)
+ 
+ int dco_new_peer(dco_context_t *dco, unsigned int peerid, int sd,
+                  struct sockaddr *localaddr, struct sockaddr *remoteaddr,
+-                 struct in_addr *remote_in4, struct in6_addr *remote_in6);
++                 struct in_addr *vpn_ipv4, struct in6_addr *vpn_ipv6);
+ 
+ int dco_del_peer(dco_context_t *dco, unsigned int peerid);
+ 
+diff --git a/src/openvpn/dco_linux.c b/src/openvpn/dco_linux.c
+index 1f1907ef830c..9f3c4ca05408 100644
+--- a/src/openvpn/dco_linux.c
++++ b/src/openvpn/dco_linux.c
+@@ -220,7 +220,7 @@ mapped_v4_to_v6(struct sockaddr *sock, struct gc_arena *gc)
+ int
+ dco_new_peer(dco_context_t *dco, unsigned int peerid, int sd,
+              struct sockaddr *localaddr, struct sockaddr *remoteaddr,
+-             struct in_addr *remote_in4, struct in6_addr *remote_in6)
++             struct in_addr *vpn_ipv4, struct in6_addr *vpn_ipv6)
+ {
+     struct gc_arena gc = gc_new();
+     const char *remotestr = "[undefined]";
+@@ -263,14 +263,14 @@ dco_new_peer(dco_context_t *dco, unsigned int peerid, int sd,
+     }
+ 
+     /* Set the primary VPN IP addresses of the peer */
+-    if (remote_in4)
++    if (vpn_ipv4)
+     {
+-        NLA_PUT_U32(nl_msg, OVPN_NEW_PEER_ATTR_IPV4, remote_in4->s_addr);
++        NLA_PUT_U32(nl_msg, OVPN_NEW_PEER_ATTR_IPV4, vpn_ipv4->s_addr);
+     }
+-    if (remote_in6)
++    if (vpn_ipv6)
+     {
+         NLA_PUT(nl_msg, OVPN_NEW_PEER_ATTR_IPV6, sizeof(struct in6_addr),
+-                remote_in6);
++                vpn_ipv6);
+     }
+     nla_nest_end(nl_msg, attr);
+ 
+diff --git a/src/openvpn/dco_win.c b/src/openvpn/dco_win.c
+index b0b13592cdbe..42df1cc5acbe 100644
+--- a/src/openvpn/dco_win.c
++++ b/src/openvpn/dco_win.c
+@@ -247,7 +247,7 @@ dco_create_socket(HANDLE handle, struct addrinfo *remoteaddr, bool bind_local,
+ int
+ dco_new_peer(dco_context_t *dco, unsigned int peerid, int sd,
+              struct sockaddr *localaddr, struct sockaddr *remoteaddr,
+-             struct in_addr *remote_in4, struct in6_addr *remote_in6)
++             struct in_addr *vpn_ipv4, struct in6_addr *vpn_ipv6)
+ {
+     msg(D_DCO_DEBUG, "%s: peer-id %d, fd %d", __func__, peerid, sd);
+     return 0;
+-- 
+2.49.0
+

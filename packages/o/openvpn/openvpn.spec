@@ -1,7 +1,8 @@
 #
 # spec file for package openvpn
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +39,14 @@ Source9:        %{name}.target
 Source10:       %{name}-tmpfile.conf
 Source11:       rc%{name}
 Patch1:         %{name}-2.3-plugin-man.dif
+Patch2:         0001-dco-better-naming-for-function-parameters.patch
+Patch3:         0001-dco_linux-extend-netlink-error-cb-with-extra-info.patch
+Patch4:         0001-Handle-missing-DCO-peer-by-restarting-the-session.patch
+Patch5:         0001-dco_linux-Introduce-new-uAPIs.patch
+Patch6:         0001-Implement-ovpn-version-detection.patch
+Patch7:         0001-dco_linux-fix-peer-stats-parsing-with-new-ovpn-kerne.patch
+Patch8:         0001-dco_linux-avoid-bogus-text-when-netlink-message-is-n.patch
+Patch9:         0001-dco-linux-avoid-redefining-ovpn-enums.patch
 BuildRequires:  iproute2
 BuildRequires:  libcap-ng-devel
 BuildRequires:  liblz4-devel
@@ -55,7 +64,8 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 Requires:       iproute2
 Requires:       pkcs11-helper >= 1.11
-Recommends:     ovpn-dco-kmp
+# the former is KMP (for older distros), the latter is kernel-default
+Recommends:     (kmod(ovpn_dco_v2.ko) or kmod(ovpn.ko))
 %systemd_ordering
 
 %description
@@ -119,7 +129,7 @@ Requires:       %{name} = %{version}
 This package provides the header file to build external plugins.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 
 sed -e "s|\" __DATE__|$(date '+%%b %%e %%Y' -r version.m4)\"|g" \
     -i src/openvpn/options.c

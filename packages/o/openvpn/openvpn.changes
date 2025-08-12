@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Aug  6 10:49:15 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- add (bsc#1239783) -- fix build against 6.16
+  * 0001-dco-linux-avoid-redefining-ovpn-enums.patch
+
+-------------------------------------------------------------------
+Fri May 30 07:03:28 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- Don't recommend ovpn-dco-kmp if it is in the kernel already (newer and
+  safer version):
+  https://build.opensuse.org/requests/1255536
+- add (bsc#1239783)
+  * 0001-dco-better-naming-for-function-parameters.patch
+  * 0001-dco_linux-extend-netlink-error-cb-with-extra-info.patch
+  * 0001-Handle-missing-DCO-peer-by-restarting-the-session.patch
+  * 0001-dco_linux-Introduce-new-uAPIs.patch
+  * 0001-Implement-ovpn-version-detection.patch
+  * 0001-dco_linux-fix-peer-stats-parsing-with-new-ovpn-kerne.patch
+  * 0001-dco_linux-avoid-bogus-text-when-netlink-message-is-n.patch
+
+-------------------------------------------------------------------
 Fri Apr  4 20:24:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 2.6.14:
