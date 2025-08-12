@@ -392,4 +392,15 @@
   * Fix spelling error: &quot;explicilty&quot; -&gt; &quot;explicitly&quot; (forwarded request 1292048 from glaubitz)</comment>
     <requestid>1292056</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a6824b02e006403e3658d7dd1f98f0bb</srcmd5>
+    <version>20250807.00</version>
+    <time>1755011056</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250807.00
+  * Merge pull request #96 from rjschwei:noDupMetaData
+  * Avoid duplicate entries for the metadata server in /etc/hosts
+- Drop ggc-no-dup-metasrv-entry.patch, merged upstream</comment>
+    <requestid>1298851</requestid>
+  </revision>
 </revisionlist>

@@ -23,15 +23,13 @@
 %define _udevdir %(pkg-config --variable udev_dir udev)
 %endif
 Name:           google-guest-configs
-Version:        20250709.00
+Version:        20250807.00
 Release:        0
 Summary:        Google Cloud Guest Configs
 License:        Apache-2.0
 Group:          System/Daemons
 URL:            https://github.com/GoogleCloudPlatform/guest-configs
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-# FIXME (https://github.com/GoogleCloudPlatform/guest-configs/pull/96)
-Patch1:         ggc-no-dup-metasrv-entry.patch
 BuildRequires:  sysconfig
 BuildRequires:  sysconfig-netconfig
 BuildRequires:  systemd-rpm-macros
@@ -47,7 +45,6 @@ Google Cloud Guest Configs
 
 %prep
 %setup -q -n guest-configs-%{version}
-%patch -P 1
 
 %build
 # Nothing to build

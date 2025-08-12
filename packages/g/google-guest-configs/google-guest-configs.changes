@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 11 13:04:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20250807.00
+  * Merge pull request #96 from rjschwei:noDupMetaData
+  * Avoid duplicate entries for the metadata server in /etc/hosts
+- Drop ggc-no-dup-metasrv-entry.patch, merged upstream
+
+-------------------------------------------------------------------
 Fri Jul 11 11:36:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20250709.00
