@@ -100,4 +100,13 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1284975</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fe6209cc8f9d19ce9add3a9c43fde2df</srcmd5>
+    <version>3.9.1</version>
+    <time>1755011101</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.9.1:
+  * Made tests far more reliable and fixed python_requires</comment>
+    <requestid>1298955</requestid>
+  </revision>
 </revisionlist>

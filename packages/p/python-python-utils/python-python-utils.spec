@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-utils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 Name:           python-python-utils
-Version:        3.8.2
+Version:        3.9.1
 Release:        0
 Summary:        Utilities not included with the standard Python install
 License:        BSD-3-Clause
 URL:            https://github.com/WoLpH/python-utils
-Source:         https://files.pythonhosted.org/packages/source/p/python-utils/python-utils-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/python-utils/python_utils-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing-extensions}
@@ -34,6 +35,7 @@ Requires:       python-typing-extensions
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module loguru}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -43,7 +45,7 @@ Python Utils is a collection of Python functions and
 classes which make common patterns shorter and easier.
 
 %prep
-%setup -q -n python-utils-%{version}
+%setup -q -n python_utils-%{version}
 
 %build
 %pyproject_wheel
