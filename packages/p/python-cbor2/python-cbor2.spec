@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-cbor2
 Version:        5.6.5
@@ -32,10 +36,15 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 61}
 BuildRequires:  %{python_module setuptools_scm >= 6.4}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+BuildRequires:  alts
 Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -63,6 +72,12 @@ export LANG=en_US.UTF8
 
 %pre
 %python_libalternatives_reset_alternative cbor2
+
+%post
+%python_install_alternative cbor2
+
+%postun
+%python_uninstall_alternative cbor2
 
 %files %{python_files}
 %doc README.rst
