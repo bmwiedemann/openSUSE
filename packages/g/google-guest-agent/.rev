@@ -726,4 +726,24 @@
   * Update presets and install dependencies on systemd units (#552) (forwarded request 1291885 from glaubitz)</comment>
     <requestid>1291958</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>eefa66eaef669c060db60b0d79d900be</srcmd5>
+    <version>20250807.00</version>
+    <time>1755011054</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250718.00
+  * Update adapt script to run on startup/shutdown both (#561)
+  * Update agent_uninstall.ps1 (#558)
+  * Stop core plugin before removing agent package (#554)
+  * Startup scripts should start after agent manager instead (#553)
+  * Update presets and install dependencies on systemd units (#552)
+  * Ensure agent service is disabled (#551)
+  * Disable legacy agent to enable core plugin (#550)
+  * Final fix for RHEL packaging for routes setup (#549)
+  * Fix RHEL packaging for routes scripts (#548)
+  * Packaging changes to include routes script installation (#542)
+  * Update CLI name in packaging (#543)
+  * systemd should manage only the main process (#544) (forwarded request 1298840 from glaubitz)</comment>
+    <requestid>1298848</requestid>
+  </revision>
 </revisionlist>
