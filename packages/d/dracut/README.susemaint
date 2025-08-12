@@ -428,3 +428,4 @@ b117013b fix: let check_vol_slaves_all return 1 when checks on all slaves fail
 02201361 fix(systemd-repart): allow partition format
 950475e8 fix(dmsquash-live): erofs collision with latest util-linux
 fa17b6fb fix(systemd-udevd): handle root=gpt-auto for systemd-v258
+4f6ca33d fix(dracut-util): crash if CMDLINE ends with quotation mark

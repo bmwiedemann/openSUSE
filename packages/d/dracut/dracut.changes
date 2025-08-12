@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 11 12:37:40 UTC 2025 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.749.g280c842e:
+  * fix(dracut-util): crash if CMDLINE ends with quotation mark (bsc#1247819)
+
+-------------------------------------------------------------------
 Mon Aug 04 07:14:17 UTC 2025 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.746.g8a13fbd8:
