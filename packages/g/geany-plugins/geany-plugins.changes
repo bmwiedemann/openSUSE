@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Aug  9 09:24:54 UTC 2025 - anenasa <anenasaa@yahoo.com>
+
+- Update to 2.1:
+  * Various fixes.
+  * New plugin: LSP (Language Server Protocol) plugin
+  * Addons: Avoid status icon flickering on startup
+  * GeanyGenDoc: Add support for local variables
+  * GeanyLaTeX: Improve list insertion
+  * GeanyLua: Add single line comment support to `geany.fileinfo`
+    and rename the multi-line fields
+  * GeniusPaste: Update pastebins
+  * GeniusPaste: Ask confirmation before pasting by default
+  * ProjectOrganizer: Avoid parsing opened files when loading
+    project
+  * ProjectOrganizer: Follow Geany's native dialogs setting
+  * ProjectOrganizer: Add quick navigation popup panel
+  * ProjectOrganizer: Allow configuring external commands
+  * Numbered Bookmarks: Add options to force loading or saving
+    bookmarks
+  * Overview: Do not focus the overview
+  * Vimode: Handle clicks on the margins
+  * Vimode: Add support for fold commands
+  * WebHelper: Add support for loading the current file in the web
+    view
+- Dropped 644550babb52013d2625a3f8e789bbe94a335b6f.patch since it
+  has been upstreamed.
+- Dropped db2698cc869274aef353ba7af23d70921d944166.patch since it
+  has been upstreamed.
+- Dropped geany-plugins-2.0-gcc15.patch since it has been upstreamed.
+- Use libsoup-3.0 and webkit2gtk-4.1
+
+-------------------------------------------------------------------
 Sun Apr  6 11:20:27 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add pkgconfig(vte-2.91) BuildRequries, build debug, scope plugins

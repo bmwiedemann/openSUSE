@@ -17,7 +17,7 @@
 
 
 Name:           geany-plugins
-Version:        2.0
+Version:        2.1
 Release:        0
 # FIXME: gendoc requires ctpl (http://ctpl.tuxfamily.org/)
 Summary:        A collection of different plugins for Geany
@@ -25,18 +25,12 @@ License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://plugins.geany.org/geany-plugins/
 Source:         http://plugins.geany.org/geany-plugins/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM db2698cc869274aef353ba7af23d70921d944166.patch -- projectorganizer: fix invalid string comparison
-Patch1:         https://github.com/geany/geany-plugins/commit/db2698cc869274aef353ba7af23d70921d944166.patch
-# PATCH-FIX-UPSTREAM 644550babb52013d2625a3f8e789bbe94a335b6f.patch -- projectorganizer: Use g_pattern_spec_match_string() instead  of g_pattern_match_string()
-Patch2:         https://github.com/geany/geany-plugins/commit/644550babb52013d2625a3f8e789bbe94a335b6f.patch
-# PATCH-FIX-UPSTREAM geany-plugins-2.0-gcc15.patch -- Fix build with gcc 15
-Patch3:         geany-plugins-2.0-gcc15.patch
 
 BuildRequires:  devhelp-devel
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  intltool
-BuildRequires:  libgeany0 >= 2.0
+BuildRequires:  libgeany0 >= 2.1
 BuildRequires:  libgpgme-devel
 BuildRequires:  libtool
 BuildRequires:  lua51-devel
@@ -49,12 +43,12 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.16
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
 BuildRequires:  pkgconfig(gtkspell3-3.0)
 BuildRequires:  pkgconfig(libgit2) >= 0.21
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.4.0
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.27
 BuildRequires:  pkgconfig(vte-2.91)
-BuildRequires:  pkgconfig(webkit2gtk-4.0)
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 
-Requires:       geany >= 2.0
+Requires:       geany >= 2.1
 Requires:       lua
 Enhances:       geany
 
@@ -113,6 +107,7 @@ find %{buildroot} -size 0 -delete
 %{_libdir}/geany/geniuspaste.so
 %{_libdir}/geany/git-changebar.so
 %{_libdir}/geany/lineoperations.so
+%{_libdir}/geany/lsp.so
 %{_libdir}/geany/markdown.so
 %{_libdir}/geany/overview.so
 %{_libdir}/geany/pairtaghighlighter.so
