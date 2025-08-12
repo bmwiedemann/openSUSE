@@ -54,4 +54,24 @@
 - Lowercase metadata directory name.</comment>
     <requestid>1269110</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e849c0e4afd4acf34ee385d0a12062e9</srcmd5>
+    <version>1.5.18</version>
+    <time>1755011131</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.5.18:
+  * add CKM_EXTRACT_KEY_FROM_KEY mechanism
+  * add CKM_EDDSA and CK_EDDSA_PARAMS support
+  * C_Initialize(): allow OS locking
+  * PyKCS11.load() &amp; .unload(): make the methods tread-safe
+  * bugfix: store CKM_CONCATENATE_BASE_AND_KEY parameter in mechanism context
+  * IsNum(): CKA_HW_FEATURE_TYPE is also a numeric value
+  * improve support for multi-part encryption/decryption
+  * fix some Python typing issues
+  * Fix issue with vendor defined (CKM_VENDOR_DEFINED) mechanisms
+  * fix/ignore all pylint warnings
+  * use pytest for running tests
+  * minor improvements (forwarded request 1299014 from rrahl0)</comment>
+    <requestid>1299015</requestid>
+  </revision>
 </revisionlist>
