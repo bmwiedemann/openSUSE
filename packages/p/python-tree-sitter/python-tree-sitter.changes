@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon Aug 11 00:30:04 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Update to version 0.25.1
+  * fix: pattern_index parameter to generic predicates is incorrect
+  * build: work around GCC optimizer bug for aarch64
+  * build: bump tree_sitter/core from 58edb3a to 3624198
+  * ci(pypi): disable free-threaded builds
+
+- From skipped version 0.25.0:
+  * Additions:
+    - Language.name (getter)
+    - Language.abi_version (getter)
+    - Language.semantic_version (getter)
+    - Language.supertypes (getter)
+    - Language.subtypes(supertype)
+    - Node.first_child_for_byte(byte)
+    - Node.first_named_child_for_byte(byte)
+    - Query.string_count (getter)
+    - Query.capture_name(index)
+    - Query.capture_quantifier(pattern_index, capture_index)
+    - Query.string_value(index)
+    - QueryCursor(query)
+    - QueryCursor.match_limit (getter, setter, deleter)
+    - QueryCursor.timeout_micros (getter, setter, deleter)
+    - QueryCursor.did_exceed_match_limit (getter)
+    - QueryCursor.set_max_start_depth(depth)
+    - QueryCursor.set_byte_range(start, end)
+    - QueryCursor.set_point_range(start, end)
+    - QueryCursor.captures(node, predicate, progress_callback)
+    - QueryCursor.matches(node, predicate, progress_callback)
+    - LookaheadIterator.names()
+    - LookaheadIterator.symbols()
+  * Deprecations:
+    - Language.version: use Language.abi_version
+    - Language.query(source): use Query(language, source)
+    - Parser.timeout_micros: use the progress_callback in parse()
+    - QueryCursor.timeout_micros: use the progress_callback in matches() or captures()
+  * Removals:
+    - Node.child_containing_descendant(descendant): use Node.child_with_descendant(descendant) !
+    - Query.match_limit: moved to QueryCursor.match_limit !
+    - Query.set_match_limit(limit): moved to QueryCursor.match_limit !
+    - Query.did_exceed_match_limit: moved to QueryCursor.did_exceed_match_limit !
+    - Query.timeout_micros: moved to QueryCursor.timeout_micros !
+    - Query.set_timeout_micros(timeout): moved to QueryCursor.timeout_micros !
+    - Query.set_max_start_depth(depth): moved to QueryCursor.set_max_start_depth(depth) !
+    - Query.set_byte_range(byte_range): moved to QueryCursor.set_byte_range(start, end) !
+    - Query.set_point_range(point_range): moved to QueryCursor.set_point_range(start, end) !
+    - Query.captures(node, predicate): moved to QueryCursor.captures(node, predicate, progress_callback) !
+    - Query.matches(node, predicate): moved to QueryCursor.matches(node, predicate, progress_callback) !
+    - LookaheadIterator.iter_names(): use LookaheadIterator.names() !
+  * Changes:
+    - Parser.parse(): encoding parameter also accepts "utf16le" & "utf16be"
+    - Parser.parse(): added progress_callback parameter
+    - LookaheadIterator.__next__(): yields tuple[int, str] !
+    - LookaheadIterator.reset(state, language): renamed from reset_state !
+ 
+-------------------------------------------------------------------
 Tue Jan 28 09:15:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.24.0

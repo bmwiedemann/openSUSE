@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tree-sitter
-Version:        0.24.0
+Version:        0.25.1
 Release:        0
 Summary:        Python bindings to the Tree-sitter parsing library
 License:        MIT
