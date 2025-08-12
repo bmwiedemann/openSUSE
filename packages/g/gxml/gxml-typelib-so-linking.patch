@@ -1,0 +1,13 @@
+Index: gxml-0.20.4/gxml/meson.build
+===================================================================
+--- gxml-0.20.4.orig/gxml/meson.build
++++ gxml-0.20.4/gxml/meson.build
+@@ -154,7 +154,7 @@ if g_ir_compiler.found()
+ custom_target('libgxml-typelib',
+ 	command: [
+ 		g_ir_compiler,
+-		'--shared-library', 'lib'+PROJECT_NAME+'-@0@.so'.format (API_VERSION),
++		'--shared-library', 'lib'+PROJECT_NAME+'-@0@.so.@1@.@2@.@3@'.format (API_VERSION, LT_VERSION, LT_AGE, LT_REVISION),
+ 		'--output', '@OUTPUT@',
+ 		join_paths(meson.current_build_dir(), GIR_NAME)
+ 	],

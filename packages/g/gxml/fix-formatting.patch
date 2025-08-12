@@ -1,0 +1,27 @@
+diff -rubN gxml-0.20.4/gxml/gxml.pc.in gxml-0.20.4-patched/gxml/gxml.pc.in
+--- gxml-0.20.4/gxml/gxml.pc.in	2024-04-16 19:27:12.000000000 +0200
++++ gxml-0.20.4-patched/gxml/gxml.pc.in	2025-08-12 12:15:18.981540092 +0200
+@@ -8,6 +8,6 @@
+ Description: GObject API for XML manipulation and serialization library
+ URL: http://live.gnome.org/GXml
+ Version: @PROJECT_VERSION@
+-Requires: glib-2.0 >= 2.72 gio-2.0 >= 2.72 gobject-2.0 >= 2.72 libxml-2.0 >=2.9.13 gee-0.8 >=0.20.6
++Requires: glib-2.0 >= 2.72 gio-2.0 >= 2.72 gobject-2.0 >= 2.72 libxml-2.0 >= 2.9.13 gee-0.8 >= 0.20.6
+ Libs: -L${libdir} -lgxml-@API_VERSION@
+ Cflags: -I${includedir}/gxml-@API_VERSION@
+diff -rubN gxml-0.20.4/meson.build gxml-0.20.4-patched/meson.build
+--- gxml-0.20.4/meson.build	2024-04-16 19:27:12.000000000 +0200
++++ gxml-0.20.4-patched/meson.build	2025-08-12 12:12:46.353789459 +0200
+@@ -8,9 +8,9 @@
+ VERSIONED_CAMEL_CASE_NAME = CAMEL_CASE_NAME +'-'+ API_VERSION
+ 
+ libgxml_deps = [
+-	dependency('libxml-2.0', version: '>=2.9.13'),
+-	dependency('gio-2.0', version: '>=2.72'),
+-	dependency('gee-0.8', version:'>=0.20.5')
++	dependency('libxml-2.0', version: '>= 2.9.13'),
++	dependency('gio-2.0', version: '>= 2.72'),
++	dependency('gee-0.8', version:'>= 0.20.5')
+ 	]
+ 
+ VALADEPS = 'gee-0.8\ngio-2.0\nlibxml-2.0'

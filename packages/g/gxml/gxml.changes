@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug 12 10:23:55 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update fix-formatting.patch
+
+-------------------------------------------------------------------
+Wed Jul 16 08:10:15 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add fix-formatting.patch, as spaces were accidently left out
+
+-------------------------------------------------------------------
+Mon Jul 14 13:04:13 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove versioning.patch: Do not diverge this much from upstream
+- Add gxml-typelib-so-linking.patch: Fix the actual issue of the
+  typelib not to link the correct library
+- Do not recommend the -lang package by the devel package: the lang
+  already contains relevant supplements to automatically
+  beinstalled.
+- Rename the typelib package to properly be name
+  typelib-1_0-XGml-0_20; obsolete the old/wrong name (no provides,
+  as nothing is supposed to ever reference the package name).
+
+-------------------------------------------------------------------
 Thu Jul 10 14:00:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - create the lang package seperately, as we don't have a main package

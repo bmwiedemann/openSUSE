@@ -16,7 +16,9 @@
 #
 
 
-%define         sover 0_20_4
+%global         GXmlAPI 0.20
+%global         GXmlAPI_RPM 0_20
+%define         sover -%{GXmlAPI_RPM}-2_0_2
 %define         cname GXml
 Name:           gxml
 Version:        0.20.4
@@ -25,7 +27,8 @@ Summary:        GXml provides a GObject API for manipulating XML
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.gnome.org/GNOME/gxml
 Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.gz
-Patch0:         versioning.patch
+Patch0:         gxml-typelib-so-linking.patch
+Patch1:         fix-formatting.patch
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala
@@ -58,8 +61,7 @@ BuildArch:      noarch
 %package devel
 Summary:        Development files for %{name}
 Requires:       lib%{name}%{sover} = %{version}
-Requires:       typelib-1_0-%{cname}-%{sover} = %{version}
-Recommends:     %{name}-lang = %{version}
+Requires:       typelib-1_0-%{cname}-%{GXmlAPI_RPM} = %{version}
 
 %description devel
 %{summary}.
@@ -70,10 +72,11 @@ Summary:        Library files for %{name}
 %description -n lib%{name}%{sover}
 %{summary}.
 
-%package -n typelib-1_0-%{cname}-%{sover}
+%package -n typelib-1_0-%{cname}-%{GXmlAPI_RPM}
 Summary:        Typelib files for %{name}
+Obsoletes:      typelib-1_0-%{cname}-%{sover} <= %{version}
 
-%description -n typelib-1_0-%{cname}-%{sover}
+%description -n typelib-1_0-%{cname}-%{GXmlAPI_RPM}
 %{summary}.
 
 %prep
@@ -88,7 +91,7 @@ Summary:        Typelib files for %{name}
 
 %install
 %meson_install
-%find_lang %{cname}
+%find_lang %{cname}-%{GXmlAPI}
 
 #%%check
 #right now broken as glib-2.0 has some issue
@@ -99,23 +102,23 @@ Summary:        Typelib files for %{name}
 %files devel
 %license COPYING
 %doc AUTHORS DESIGN MAINTAINERS NEWS README
-%{_includedir}/%{name}
-%{_libdir}/lib%{name}.so
-%{_datadir}/gir-1.0/%{cname}-%{version}.gir
-%{_datadir}/vala/vapi/%{name}.{deps,vapi}
-%{_libdir}/pkgconfig/%{name}.pc
+%{_datadir}/gir-1.0/%{cname}-%{GXmlAPI}.gir
+%{_datadir}/vala/vapi/%{name}-%{GXmlAPI}.{deps,vapi}
+%{_includedir}/%{name}-%{GXmlAPI}/
+%{_libdir}/lib%{name}-%{GXmlAPI}.so
+%{_libdir}/pkgconfig/%{name}-%{GXmlAPI}.pc
 
 %files doc
 %dir %{_datadir}/devhelp
 %dir %{_datadir}/devhelp/books
-%{_datadir}/devhelp/books/%{cname}
+%{_datadir}/devhelp/books/%{cname}-%{GXmlAPI}
 
 %files -n lib%{name}%{sover}
-%{_libdir}/lib%{name}.so.%{version}
+%{_libdir}/lib%{name}-%{GXmlAPI}.so.2*
 
-%files -n typelib-1_0-%{cname}-%{sover}
-%{_libdir}/girepository-1.0/%{cname}-%{version}.typelib
+%files -n typelib-1_0-%{cname}-%{GXmlAPI_RPM}
+%{_libdir}/girepository-1.0/%{cname}-%{GXmlAPI}.typelib
 
-%files lang -f %{cname}.lang
+%files lang -f %{cname}-%{GXmlAPI}.lang
 
 %changelog

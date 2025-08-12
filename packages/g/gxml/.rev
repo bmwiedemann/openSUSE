@@ -7,4 +7,24 @@
     <comment></comment>
     <requestid>1291712</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a8beaee64bac73c724f8637442d76e37</srcmd5>
+    <version>0.20.4</version>
+    <time>1755011127</time>
+    <user>dimstar_suse</user>
+    <comment>- update fix-formatting.patch
+
+- add fix-formatting.patch, as spaces were accidently left out
+
+- Remove versioning.patch: Do not diverge this much from upstream
+- Add gxml-typelib-so-linking.patch: Fix the actual issue of the
+  typelib not to link the correct library
+- Do not recommend the -lang package by the devel package: the lang
+  already contains relevant supplements to automatically
+  beinstalled.
+- Rename the typelib package to properly be name
+  typelib-1_0-XGml-0_20; obsolete the old/wrong name (no provides,
+  as nothing is supposed to ever reference the package name).</comment>
+    <requestid>1299029</requestid>
+  </revision>
 </revisionlist>
