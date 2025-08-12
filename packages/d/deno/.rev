@@ -4140,4 +4140,41 @@
   * All other changes listed here: https://github.com/denoland/deno/compare/v2.2.2...v2.4.2</comment>
     <requestid>1294953</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>5d06e2f890c098f7c1bdf81966008306</srcmd5>
+    <version>2.4.3</version>
+    <time>1755011093</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.3:
+  * 2.4.3 (#30251)
+  * fix(tsconfig): don't use tsc-compatible defaults for deno.json compiler options (#30242)
+  * perf(buffer): optimize Buffer.subarray and Buffer.prototype.utf8Slice (#30213)
+  * fix(ext/node): use primordials in `ext/node/polyfills/internal_binding/pipe_wrap.ts` (#30241)
+  * fix: reduce change of corrupt lockfile error when updating dependencies in the config file (#30239)
+  * chore: regression where excluded path stopped being excluded (#30238)
+  * fix(http): catch more tunnel close errors (#30236)
+  * refactor: remove more allocations querying for permissions (#30237)
+  * fix: ensure coverage dir is stored absolute to prevent issues when cwd changes (#30225)
+  * fix: use 'deno_signals' crate for signal handling (#30204)
+  * fix: don't invoke `Proxy` getter trap on `console.log` (#30230)
+  * refactor: use Cow&lt;Path&gt; more in permissions (#30227)
+  * fix(publish): improve diagnostic when importing from another package using a relative import (#30203)
+  * refactor: remove usages of to_string_lossy().to_string() (#30224)
+  * chore: remove redundant operations from README.md (#30228)
+  * refactor: remove some allocations in op_require_x ops (#30212)
+  * fix(ext/node): validate `fd` is integer on `fsync` and `fdatasync` (#30215)
+  * fix(ext/node): use Zlib base for brotli handles (#30112)
+  * refactor(node): remove some duplicate code and unnecessary allocations in node_resolver (#30209)
+  * refactor: update to deno_path_util 0.5.2 (#30211)
+  * fix: update setTimeout and setInterval callback type to support strin… (#30183)
+  * fix(lib/node): change ERR_INVALID_PACKAGE_TARGET to ERR_PACKAGE_PATH_NOT_EXPORTED when no package.json#exports condition matches (#29841)
+  * chore(bench): add missing commas in Extension struct literal (#30206)
+  * fix(regression): do not error when specifying `--config` flag with `../` component (#30208)
+  * fix(ext/node): fix segmentation fault when spkac is empty (#30207)
+  * fix(bundle): don't force managed npm resolution (#30200)
+  * fix: support package.json imports in a Deno workspace (#30198)
+  * docs: Fix broken Getting Started link in CONTRIBUTING.md (#30194)
+  * test: avoid race condition on node compat test runner (#30201)</comment>
+    <requestid>1298946</requestid>
+  </revision>
 </revisionlist>

@@ -21,7 +21,7 @@
 %global _lto_cflags %nil
 %global _v8_version 137.2.1
 Name:           deno
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -128,7 +128,7 @@ export CXXFLAGS="%{optflags}"
 
 # https://www.chromium.org/developers/gn-build-configuration
 export GN_ARGS="clang_version=${CLANG_VERSION} use_lld=true enable_nacl = false blink_symbol_level = 0 v8_symbol_level = 0"
-%{__cargo} update --offline
+%{__cargo} update v8 --offline
 %{cargo_build}
 
 %install
