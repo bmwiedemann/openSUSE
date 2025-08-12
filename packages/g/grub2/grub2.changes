@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  7 06:19:53 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Fix timeout when loading initrd via http after PPC CAS reboot (bsc#1245953)
+  * 0001-tcp-Fix-TCP-port-number-reused-on-reboot.patch
+
+-------------------------------------------------------------------
 Mon Aug  4 06:44:01 UTC 2025 - Michael Chang <mchang@suse.com>
 
 - Skip mount point in grub_find_device function (bsc#1246231)
