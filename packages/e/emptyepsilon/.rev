@@ -66,4 +66,12 @@
     <comment></comment>
     <requestid>1271501</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>1e3ddd07cf56ef1eb64349bad2a2e1e0</srcmd5>
+    <version>2024.12.08</version>
+    <time>1755011037</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix GLM build errors (https://github.com/daid/EmptyEpsilon/issues/2111)</comment>
+    <requestid>1298909</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package emptyepsilon
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,9 +42,9 @@ BuildRequires:  gcc-c++
 BuildRequires:  glm-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  sfml2-devel
 BuildRequires:  xorg-x11
+BuildRequires:  pkgconfig(sdl2)
 %if 0%{?sle_version:1}
 # if sle_version is defined, this is not tumbleweed
 BuildRequires:  gcc10
@@ -82,6 +82,7 @@ popd
 export CC=gcc-10
 export CXX=g++-10
 %endif
+export CXXFLAGS="%{optflags} -DGLM_ENABLE_EXPERIMENTAL"
 %cmake -DSERIOUS_PROTON_DIR="SeriousProton-EE-%{version}" \
  -DCMAKE_BUILD_TYPE=Release \
  -DCPACK_PACKAGE_VERSION_MAJOR="$(echo %{version} | cut -d. -f1)" \

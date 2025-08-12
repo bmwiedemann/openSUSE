@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 11 11:16:25 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Fix GLM build errors (https://github.com/daid/EmptyEpsilon/issues/2111)
+
+-------------------------------------------------------------------
 Mon Apr 21 15:40:07 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Use BuildRequires pkgconfig(sdl2) instead sdl2-devel, fixes 
