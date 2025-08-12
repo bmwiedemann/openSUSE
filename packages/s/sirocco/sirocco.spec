@@ -1,7 +1,7 @@
 #
 # spec file for package sirocco
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libsirocco0
 Name:           sirocco
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Library for computing homotopy continuation of roots
 License:        GPL-3.0-or-later
@@ -72,8 +72,7 @@ developing with the sirocco library.
 %make_install
 find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %_libdir/libsirocco.so.0*
@@ -82,5 +81,6 @@ find %buildroot -type f -name "*.la" -delete -print
 %license LICENSE
 %_includedir/*
 %_libdir/libsirocco.so
+%_libdir/pkgconfig/*.pc
 
 %changelog
