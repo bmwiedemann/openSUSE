@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug  5 08:11:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.5.24
+  * refactor(bench): unify IO methods (#5434)
+  * test(bench): add api for mutual auth handshake (#5437)
+  * chore: bindings release 0.3.23 (#5439)
+  * ci: document how to manually run the codebuild jobs (#5441)
+  * chore: add Awslc fips next to CI (#5349)
+  * feat: add integration test for secp384r1_mlkem_1024 (#5438)
+  * fix(typo): fix a typo in codebuild.yml (#5445)
+  * build(deps): update criterion requirement from 0.6 to 0.7 in
+    /bindings/rust/standard (#5442)
+  * chore(ci): tell crt to not check submodule version (#5450)
+  * Add AWS-CRT-SDK-TLSv1.0-2025-PQ (#5403)
+  * chore(ci): once a week, clean the nix store for the kTLS job. (#5430)
+  * refactor(tls-harness): separate benchmark abstractions (#5444)
+
+-------------------------------------------------------------------
 Fri Aug  1 13:58:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.5.23
