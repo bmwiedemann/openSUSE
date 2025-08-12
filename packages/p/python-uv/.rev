@@ -1195,4 +1195,20 @@
  - fixed CVE-2025-54368 - boo#1247829</comment>
     <requestid>1298596</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>a8dcc3fb5e514f3f2f188001588c6ba8</srcmd5>
+    <version>0.8.9</version>
+    <time>1755011116</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.9
+ * Enhancements
+  * Add --reinstall flag to uv python upgrade 
+ * Bug fixes
+  * Include build settings in cache key for registry source distribution lookups 
+  * Avoid creating bin links on uv python upgrade if they don't already exist 
+  * Respect system proxies on macOS and Windows 
+ * Documentation
+  * Add the 3.14 classifier</comment>
+    <requestid>1298991</requestid>
+  </revision>
 </revisionlist>
