@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug  7 07:19:07 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.7.5:
+  * mean, median, std, var, and mad shadow core Octave's functions
+    before Octave 9.1.
+  * incompatibility with the nan package.
+  * There are 2 new functions and 4 new classdefs introduced in
+    this release.
+  * Several bug fixes related to various issues
+    (gh#gnu-octave/statistics#183, gh#gnu-octave/statistics#199,
+    gh#gnu-octave/statistics#200, gh#gnu-octave/statistics#203,
+    gh#gnu-octave/statistics#204, gh#gnu-octave/statistics#212,
+    gh#gnu-octave/statistics#215).
+  * Fixed the slow kd-tree implementation in knnsearch and
+    rangesearch functions.
+  * The old style cvpartition class has been deprecated in favor
+    of the newly introduced classdef implementation.
+  * crossval needs attention, see issue
+    (gh#gnu-octave/statistics#217).
+
+-------------------------------------------------------------------
 Wed Jun 12 03:48:46 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 1.6.6:
@@ -232,7 +253,7 @@ Thu May  7 18:01:05 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
   octave-bug-50365-Wrong-distance-results-from-kmeans-and-wrong-centers.patch
 
 -------------------------------------------------------------------
-Thu Jul  4 20:04:00 2019 UTC - hiwatari.seiji@gmail.com
+Thu Jul  4 20:04:00 UTC 2019 - hiwatari.seiji@gmail.com
 
 - Update to version 1.4.1:
   * update install scripts for octave 5.0 depreciated functions
