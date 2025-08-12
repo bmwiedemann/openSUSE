@@ -2,6 +2,6 @@
   <service name="cargo_vendor" mode="disabled">
      <param name="src">inputmodule-control-*.tar.gz</param>
      <param name="cargotoml">inputmodule-control/Cargo.toml</param>
-     <param name="update">false</param>
+     <param name="update">true</param>
   </service>
 </services>

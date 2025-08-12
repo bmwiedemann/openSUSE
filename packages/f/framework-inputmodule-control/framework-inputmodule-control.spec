@@ -1,7 +1,7 @@
 #
 # spec file for package framework-inputmodule-control
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,9 @@ License:        MIT
 URL:            https://github.com/FrameworkComputer/inputmodule-rs
 Source0:        https://github.com/FrameworkComputer/inputmodule-rs/archive/refs/tags/v%{version}.tar.gz#/%{shortname}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+# PATCH-FIX-OPENSUSE update-toolchain.patch to update rust edition to 2024
+# to be able to update vendored dependencies
+Patch0:         update-toolchain.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(libsystemd)
 Recommends:     framework-inputmodule-udev-rules

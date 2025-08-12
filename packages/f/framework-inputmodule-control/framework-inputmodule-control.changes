@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 11 12:16:43 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update vendor tarball to fix CVE-2023-53156 (bsc#1247082) and
+  CVE-2024-58266 (bsc#1247198)
+- Add update-toolchain.patch to update rust edition to 2024 to enable updates
+  of vendored crates
+
+-------------------------------------------------------------------
 Tue Mar 18 14:59:54 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Add udev-rules and python interface as recommended

@@ -1,0 +1,10 @@
+Index: inputmodule-rs-0.2.0/rust-toolchain.toml
+===================================================================
+--- inputmodule-rs-0.2.0.orig/rust-toolchain.toml
++++ inputmodule-rs-0.2.0/rust-toolchain.toml
+@@ -1,4 +1,4 @@
+ [toolchain]
+-channel = "1.74.0"
++channel = "1.85.0"
+ targets = ["thumbv6m-none-eabi"]
+ components = ["clippy", "rustfmt"]
