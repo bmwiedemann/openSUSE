@@ -1,7 +1,7 @@
 #
 # spec file for package python-coloredlogs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,6 +17,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-coloredlogs
 Version:        15.0.1
@@ -41,9 +46,14 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-capturer >= 2.4
 Requires:       python-humanfriendly >= 9.1
+Recommends:     python-verboselogs >= 1.7
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     python-verboselogs >= 1.7
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -66,6 +76,9 @@ using Colorama.
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/coloredlogs
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%pre
+%python_libalternatives_reset_alternative coloredlogs
 
 %post
 %python_install_alternative coloredlogs

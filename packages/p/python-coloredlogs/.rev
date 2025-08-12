@@ -115,4 +115,12 @@
   * No longer use now-removed pipes module.</comment>
     <requestid>1219237</requestid>
   </revision>
+  <revision rev="14" vrev="6">
+    <srcmd5>47c0c365efbb4ced8cd8377b65763d4f</srcmd5>
+    <version>15.0.1</version>
+    <time>1755011147</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1299071</requestid>
+  </revision>
 </revisionlist>

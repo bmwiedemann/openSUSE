@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 12 12:54:10 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Wed Oct 30 02:59:26 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-313.patch:
