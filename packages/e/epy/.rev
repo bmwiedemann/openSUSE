@@ -196,4 +196,17 @@
 - Change package name to epy as it better reflects the acutal package name on GitHub</comment>
     <requestid>1284867</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>901a52af2235594a466bfe380546ec1e</srcmd5>
+    <version>2025.5.27+git.1753549454.05f4e66</version>
+    <time>1755011091</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2025.5.27+git.1753549454.05f4e66:
+  * Update Makefile to use new setuptools setup
+  * feat: add a simple CSS processing
+  * Report currently tagged version for --version
+
+- Update to version 2025.5.27+git.1749651989.a7ba2c0:</comment>
+    <requestid>1298943</requestid>
+  </revision>
 </revisionlist>

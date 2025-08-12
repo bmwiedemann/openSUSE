@@ -17,7 +17,7 @@
 
 
 Name:           epy
-Version:        2025.5.27+git.1749648520.0d836a6
+Version:        2025.5.27+git.1753549454.05f4e66
 Release:        0
 Summary:        CLI ebook reader
 License:        GPL-3.0-only
@@ -29,6 +29,7 @@ BuildRequires:  python3-curses
 BuildRequires:  python3-pip
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-types-setuptools
 BuildRequires:  python3-wheel
 Requires:       python3-curses
 Requires:       python3-standard-imghdr
@@ -69,7 +70,7 @@ done
 %install
 %python3_pyproject_install
 %fdupes %{buildroot}/%{python3_sitelib}
-%python3_fix_shebang
+%{python3_fix_shebang}
 
 %check
 export PYTHONDONTWRITEBYTECODE=1

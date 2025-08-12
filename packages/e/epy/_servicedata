@@ -1,6 +1,4 @@
 <servicedata>
 <service name="tar_scm">
-                <param name="url">https://github.com/wustho/epy.git</param>
-              <param name="changesrevision">6b0e9fe0773f05fdf844b574f0f28df3961f60ab</param></service><service name="tar_scm">
                 <param name="url">https://git.sr.ht/~mcepl/epy</param>
-              <param name="changesrevision">0d836a6f651a6c17f1c594d956d7fa8152519d1c</param></service></servicedata>
+              <param name="changesrevision">05f4e661c4f1fa31dc36b7c5de235b8ca2e63656</param></service></servicedata>

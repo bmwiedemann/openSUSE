@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
-Wed Jun 11 13:31:52 UTC 2025 - mcepl@cepl.eu
+Mon Aug 11 18:05:54 UTC 2025 - mcepl@cepl.eu
 
-- Update to version 2025.5.27+git.1749648520.0d836a6:
+- Update to version 2025.5.27+git.1753549454.05f4e66:
+  * Update Makefile to use new setuptools setup
+  * feat: add a simple CSS processing
+  * Report currently tagged version for --version
+
+-------------------------------------------------------------------
+Wed Jun 11 14:29:06 UTC 2025 - mcepl@cepl.eu
+
+- Update to version 2025.5.27+git.1749651989.a7ba2c0:
   * chore: switch from poetry to ordinary setup (using setuptools)
   * feat: make it configurable to use colors or be terminal neutral
   * fix: remove all typing errors
