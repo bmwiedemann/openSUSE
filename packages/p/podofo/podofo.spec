@@ -1,7 +1,7 @@
 #
 # spec file for package podofo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,29 +16,24 @@
 #
 
 
-%define libver 2
-%bcond_with tools
+%define libver 3
 Name:           podofo
-Version:        0.10.4
+Version:        1.0.1
 Release:        0
-Summary:        Tools to work with PDF files
+Summary:        PDF parsing and creation library
 License:        GPL-2.0-or-later
-Group:          Productivity/Publishing/PDF
 URL:            http://podofo.sourceforge.net/
 Source0:        https://github.com/podofo/podofo/archive/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE: manuals does not build
-Patch0:         podofo-tools_man.patch
-Patch1:         podofo-CVE-2019-20093.patch
-BuildRequires:  cmake >= 2.6
+BuildRequires:  cmake >= 3.23
+BuildRequires:  dos2unix
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-%if 0%{?suse_version} <= 1500
-BuildRequires:  gcc12
-BuildRequires:  gcc12-c++
-%else
-BuildRequires:  gcc
+%if 0%{suse_version} > 1600
 BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc13-c++
 %endif
+BuildRequires:  graphviz
 BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cppunit)
@@ -53,7 +48,7 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
 
 %description
-Command line tools for working with PDF files.
+A cross platform PDF parsing and creation library.
 
 %package -n libpodofo%{libver}
 Summary:        PDF parsing and creation library
@@ -75,23 +70,22 @@ This package contains development files for podofo library.
 
 %prep
 %autosetup -p1
+dos2unix API-MIGRATION.md
 
 # Remove build time references so build-compare can do its work
 echo "HTML_TIMESTAMP = NO" >> Doxyfile
 
 %build
-%if 0%{?suse_version} <= 1500
-export CC=gcc-12
-export CXX=g++-12
-%endif
+export CXX=g++
+test -x "$(type -p g++-13)" && export CXX=g++-13
 %cmake \
   -DWANT_FONTCONFIG=ON \
   -DWANT_BOOST=ON \
-   %if %{with tools}
-  -DPODOFO_BUILD_TOOLS=TRUE \
-  %endif
   -DPODOFO_BUILD_STATIC=OFF \
-  -DPODOFO_USE_VISIBILITY=ON
+  -DPODOFO_USE_VISIBILITY=ON \
+  -DPODOFO_BUILD_TEST=OFF \
+  -DPODOFO_BUILD_TEST=OFF \
+  -DPODOFO_BUILD_UNSUPPORTED_TOOLS=OFF
 %cmake_build
 
 # Build devel doc
@@ -102,22 +96,14 @@ doxygen
 %cmake_install
 
 # Install devel docs (do it manually to fix also rpmlint warning "files-duplicate" with %%fdupes)
-mkdir -p %{buildroot}%{_docdir}/libpodofo-devel
-install -pm 0644 AUTHORS.md CHANGELOG.md README.md TODO.md %{buildroot}%{_docdir}/libpodofo-devel/
-cp -a doc/html/ %{buildroot}%{_docdir}/libpodofo-devel/
+mkdir -p %{buildroot}%{_docdir}/libpodofo-devel/doc
+install -pm 0644 API-MIGRATION.md AUTHORS.md CHANGELOG.md README.md TODO.md %{buildroot}%{_docdir}/libpodofo-devel/
+cp -a html %{buildroot}%{_docdir}/libpodofo-devel/doc/
 
 %fdupes -s %{buildroot}
 
 %post -n libpodofo%{libver} -p /sbin/ldconfig
 %postun -n libpodofo%{libver} -p /sbin/ldconfig
-
-%if %{with tools}
-%files
-%license COPYING
-%doc AUTHORS.md README.md
-%{_bindir}/*
-%{_mandir}/man1/podofo*.1%{?ext_man}
-%endif
 
 %files -n libpodofo%{libver}
 %license COPYING
@@ -129,8 +115,7 @@ cp -a doc/html/ %{buildroot}%{_docdir}/libpodofo-devel/
 %doc %{_docdir}/libpodofo-devel/
 %{_includedir}/podofo/
 %{_libdir}/libpodofo.so
+%{_libdir}/cmake/podofo
 %{_libdir}/pkgconfig/libpodofo.pc
-%dir %{_datadir}/podofo
-%{_datadir}/podofo/podofo-*.cmake
 
 %changelog
