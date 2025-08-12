@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Aug 12 10:37:02 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.51.1
+  * New features:
+    - Added fz::get_final_link_target
+  * Bugfixes and minor changes:
+    - *nix: Fixed reporting the type of file if following symlinks
+      in fz::local_filesys::get_file_info
+- Changes from 0.51.0
+  * New features:
+    - Added nocreate flag to fz::file::open::creation_flags, 
+      if set only files that already exist can be opened
+    - Added sha1 and sha512 to fz::hash_accumulator
+    - Added update_uint32_be and update_with_length to
+      fz::hash_accumulator
+    - *nix: fz::socket can now be used to connect to 
+      Unix Domain Sockets
+    - Added flag to fz::uri to assume an authority when parsing
+      schemless URIs
+    - fz::get_file_info and fz::local_filesys::set_modification_time
+      now return fz::result
+  * Bugfixes and minor changes:
+    - Improvements to timer handling if using event loops with the
+      threadless flag
+
+-------------------------------------------------------------------
 Fri Mar 28 10:40:48 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.50.0
