@@ -1,7 +1,7 @@
 #
 # spec file for package flatpak
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
 Group:          System/Packages
 URL:            https://flatpak.github.io/
-Source0:        https://github.com/flatpak/flatpak/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 Source1:        update-system-flatpaks.service
 Source2:        update-system-flatpaks.timer
 Source3:        update-user-flatpaks.service
@@ -49,6 +49,8 @@ Source4:        update-user-flatpaks.timer
 Source5:        https://flathub.org/repo/flathub.flatpakrepo
 # PATCH-FEATURE-OPENSUSE polkit_rules_usability.patch -- Make the rules comply with openSUSE expectations
 Patch0:         polkit_rules_usability.patch
+# PATCH-FIX-UPSTREAM cd80e843435df5ce70d9a2b6710098135ceb9085.patch -- session-helper: Avoid a memory leak
+Patch1:         https://github.com/flatpak/flatpak/commit/cd80e843435df5ce70d9a2b6710098135ceb9085.patch
 
 BuildRequires:  bison
 BuildRequires:  bubblewrap >= %{bubblewrap_version}

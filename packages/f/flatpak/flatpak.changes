@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 10 11:47:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add cd80e843435df5ce70d9a2b6710098135ceb9085.patch:
+  session-helper: Avoid a memory leak.
+
+-------------------------------------------------------------------
+Thu Jun  5 11:23:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Switch to source service for tarball.
+
+-------------------------------------------------------------------
 Sun May 11 11:49:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.1:

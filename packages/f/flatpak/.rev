@@ -1041,4 +1041,12 @@ As a side note Leap is affected as well by this. Might be worth back porting thi
     <comment></comment>
     <requestid>1277921</requestid>
   </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>c9d5c0401cf4a22272127b77c75a3043</srcmd5>
+    <version>1.16.1</version>
+    <time>1755011017</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1298685 from iznogood)</comment>
+    <requestid>1298877</requestid>
+  </revision>
 </revisionlist>
