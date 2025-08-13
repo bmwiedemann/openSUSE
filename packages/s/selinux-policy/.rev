@@ -1929,4 +1929,95 @@ https://build.opensuse.org/request/show/1178504 </comment>
     <comment></comment>
     <requestid>1296818</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>b0bdf6998acf0c2067e7c028dabaa928</srcmd5>
+    <version>20250812</version>
+    <time>1755094989</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250812 (bsc#1247772):
+  * Fix selinux-autorelabel-generator label after upstream changes
+  * Revert &quot;Remove the mysql module sources&quot;
+  * Revert &quot;Allow rasdaemon write access to sysfs (bsc#1229587)&quot;
+  * Reset postfix.fc to upstream, add alias instead
+  * Allow systemd-networkd to create leases directory
+  * Apply generator template to selinux-autorelabel generator
+  * Support virtqemud handle hotplug hostdev devices
+  * Allow virtstoraged create qemu /var/run files
+  * Allow unconfined_domain_type cap2_userns capabilities
+  * Label /usr/libexec/postfix/tlsproxy with postfix_smtp_exec_t
+  * Remove the mysql module sources
+  * dist/targeted/modules.conf: Enable kmscon module (bsc#1238137)
+  * Update kmscon policy module to kmscon version 9 (bsc#1238137)
+  * Allow login to getattr pidfs
+  * Allow systemd to map files under /sys
+  * systemd: drop duplicate init_nnp_daemon_domain lines
+  * Fix typo
+  * Allow logwatch stream connect to opensmtpd
+  * Allow geoclue read NetworkManager pid files
+  * Allow unconfined user a file transition for creating sudo log directory
+  * Allow virtqemud read/write inherited dri devices
+  * Allow xdm_t create user namespaces
+  * Update policy for login_userdomain
+  * Add ppd_base_profile to file transition to get tuned_rw_etc_t type
+  * Update policy for bootupd
+  * Allow logwatch work with opensmtpd
+  * Update dovecot policy for dovecot 2.4.1
+  * Allow ras-mc-ctl write to sysfs files
+- Update embedded container-selinux version to commit:
+  * 10cc7ecacd631368e23691a77dbfe63ac6ca855f (version 2.240.0)
+  The 2.239.0 was tagged incorrectly by upstream, syncing again
+  with new tag
+- Update to version 20250804:
+  * Allow anaconda-generator get attributes of all filesystems
+  * Add the rhcd_rw_fifo_files() interface
+  * Allow systemd-coredump the sys_chroot capability
+  * Allow hostapd write to socket files in /tmp
+  * Recognize /var/home as an alternate path for /home
+  * Label /var/lib/lastlog with lastlog_t
+  * Allow virtqemud write to sysfs files
+  * Allow irqbalance search sssd lib directories
+  * Allow samba-dcerpcd send sigkills to passwd
+  * Allow systemd-oomd watch dbus pid sock files
+  * Allow some confined users read and map generic log files
+  * Allow login_userdomain watch the /run/log/journal directory
+  * Allow login_userdomain dbus chat with tuned-ppd
+  * Allow login_userdomain dbus chat with switcheroo-control
+  * Allow userdomain to connect to systemd-oomd over a unix socket
+  * Add insights_client_delete_lib_dirs() interface
+  * Allow virtqemud_t use its private tmpfs files (bsc#1242998)
+  * Allow virtqemud_t setattr to /dev/userfaultfd (bsc#1242998)
+  * Allow virtqemud_t read and write /dev/ptmx (bsc#1242998)
+  * Extend virtqemud_t tcp_socket permissions (bsc#1242998)
+  * Allow virtqemud_t to read and write generic pty (bsc#1242998)
+  * Allow systemd-importd create and unlink init pid socket
+  * Allow virtqemud handle virt_content_t chr files
+  * Allow svirt read virtqemud fifo files
+  * All sblim-sfcbd the dac_read_search capability
+  * Allow sblim domain read systemd session files
+  * Allow sblim-sfcbd execute dnsdomainname
+  * Confine nfs-server generator
+  * Allow systemd-timedated start/stop timemaster services
+  * Allow &quot;hostapd_cli ping&quot; run as a systemd service
+  * Allow power-profiles-daemon get attributes of filesystems with extended attributes
+  * Allow 'oomctl dump' to interact with systemd-oomd
+  * Basic functionality for systemd-oomd
+  * Basic enablement for systemd-oomd
+  * Allow samba-bgqd send to smbd over a unix datagram socket
+  * Update kernel_secretmem_use()
+  * Add the file/watch_mountns permission
+  * Update systemd-generators policy
+  * Allow plymouthd_t read proc files of systemd_passwd_agent (bsc#1245470)
+  * Allow insights-client file transition for files in /var/tmp
+  * Allow tuned-ppd manage tuned log files
+  * Allow systemd-coredump mount on tmpfs filesystems
+  * Update sssd_dontaudit_read_public_files()
+  * Allow zram-generator raw read fixed disk device
+  * Add fs_write_cgroup_dirs() and fs_setattr_cgroup_dirs() interfaces
+- Syncing with upstream rawhide selinux-policy up to:
+  * 1de2b642cba24f493578d4c944ea8db5535e8956
+- Update embedded container-selinux version to commit:
+  * 9693071320e1f931ff825ea376926f816380873d (version 2.239.0)
+</comment>
+    <requestid>1299076</requestid>
+  </revision>
 </revisionlist>
