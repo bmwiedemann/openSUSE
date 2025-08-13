@@ -264,4 +264,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1298165</requestid>
   </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>36fdfe5f2656d3ae246ee98add8fab28</srcmd5>
+    <version>0</version>
+    <time>1755095365</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop Beta from Leap 16.0.
+  We've agreed to not use RC and simply go with Leap 16.0
+  just like on boot menu. 
+
+- Remove selinux policy from products definition as it is noop
+  after changes to agama service (bsc#1247046)</comment>
+    <requestid>1299042</requestid>
+  </revision>
 </revisionlist>
