@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Aug 12 08:28:17 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
+
+- Bug and CVE fixes:
+  * tests: Avoid dependency on padding on signal messages (boo#1246830)
+  * pcie_sriov: Fix configuration and state synchronization (bsc#1246992 CVE-2025-54566 CVE-2025-54567)
+  * [openSUSE][RPM] linux-user: restart systemd-binfmt upon changes (bsc#1247443)
+
+-------------------------------------------------------------------
+Tue Aug 10 10:32:29 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to stable release 10.0.3:
+  Full list of backports here:
+   https://lore.kernel.org/qemu-devel/1748499690.323471.13081.nullmailer@localhost/
+    
+  A selection of them is reported here too:
+   hvf: arm: Emulate ICC_RPR_EL1 accesses properly
+   target/arm: Correct encoding of Debug Communications Channel registers
+   ui: fix setting client_endian field defaults
+   hw/net/npcm_gmac.c: Send the right data for second packet in a row
+   target/i386: do not expose ARCH_CAPABILITIES on AMD CPU
+   i386/cpu: Honor maximum value for CPUID.8000001DH.EAX[25:14]
+   i386/cpu: Fix overflow of cache topology fields in CPUID.04H
+   i386/cpu: Fix cpu number overflow in CPUID.01H.EBX[23:16]
+   ui/vnc: Do not copy z_stream
+   vhost: Fix used memslot tracking when destroying a vhost device
+   roms: re-remove execute bit from hppa-firmware*
+   file-posix: Fix aio=threads performance regression after enablign FUA
+   amd_iommu: Fix truncation of oldval in amdvi_writeq
+   amd_iommu: Remove duplicated definitions
+   amd_iommu: Fix the calculation for Device Table size
+   amd_iommu: Fix mask to retrieve Interrupt Table Root Pointer from DTE
+   amd_iommu: Fix masks for various IOMMU MMIO Registers
+   amd_iommu: Update bitmasks representing DTE reserved fields
+   amd_iommu: Fix Device ID decoding for INVALIDATE_IOTLB_PAGES command
+   amd_iommu: Fix Miscellaneous Information Register 0 encoding
+   virtio-net: Add queues for RSS during migration
+   net: fix buffer overflow in af_xdp_umem_create()
+   accel/kvm: Adjust the note about the minimum required kernel version
+   ...
+
+-------------------------------------------------------------------
 Wed Jul 23 06:34:02 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
 
 - Fix bsc#1246566:

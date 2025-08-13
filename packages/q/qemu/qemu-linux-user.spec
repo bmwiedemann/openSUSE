@@ -1,7 +1,7 @@
 #
 # spec file for package qemu-linux-user
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ URL:            https://www.qemu.org/
 Summary:        CPU emulator for user space
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        10.0.2
+Version:        10.0.3
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -106,6 +106,12 @@ syscall layer occurs on the native hardware and operating system.
 %_bindir/qemu-xtensaeb
 %_sbindir/qemu-binfmt-conf.sh
 %_prefix/lib/binfmt.d/qemu-*.conf
+
+%post
+/usr/bin/systemctl try-restart systemd-binfmt.service >/dev/null 2>&1 || :
+
+%postun
+/usr/bin/systemctl try-restart systemd-binfmt.service >/dev/null 2>&1 || :
 
 %prep
 %autosetup -n qemu-%{version} -p1
