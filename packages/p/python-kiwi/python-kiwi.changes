@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Mon Aug 11 17:44:15 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.31 → 10.2.32
+
+-------------------------------------------------------------------
+Mon Aug 11 12:53:50 CEST 2025 - Josef Ottl <j.ottl@edgizer.com>
+
+- fix: resize for raid device, ensure vars like kiwi_RaidDev are loaded before setting disk variable
+
+-------------------------------------------------------------------
+Fri Aug 08 12:49:26 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Do not clobber initialize method
+
+  There was a method named initialize defined and implemented
+  differently in the dracut modules kiwi-lib and kiwi-repart.
+  kiwi-lib is expected to be shared code across all kiwi dracut
+  modules. However if one module redefines a method of the
+  same name which is used in another module and expected to
+  work differently there, this is evil. This commit cleans
+  up the name conflict and names the kiwi library init function
+  as lib_initialize. All dracut code that is expected to make
+  use of this method has been adopted too.
+
+-------------------------------------------------------------------
+Tue Aug 05 16:03:17 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Skip kiwi-repart module in install ISOs
+
+  In case the kiwi-repart module is explicitly requested in a
+  dracut.conf file and the image is also configured to build an
+  install ISO image this leads the install ISO to contain the
+  kiwi-repart module as well which is unwanted. This commit
+  explicitly omits the kiwi-repart when creating the initrd
+  for the install image
+
+-------------------------------------------------------------------
+Tue Aug 05 06:27:49 CEST 2025 - Gavin Lambert <uecasm@users.noreply.github.com>
+
+- Skip repart when booting install/live iso
+
+-------------------------------------------------------------------
+Mon Aug 04 11:30:12 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update leap test-image-disk integration test
+
+  Add test for alternative volume ID in install ISO
+
+-------------------------------------------------------------------
+Fri Aug 01 11:53:18 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.30 → 10.2.31
+
+-------------------------------------------------------------------
+Thu Jul 31 10:22:27 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Consolidate device lock into its own method
+
+  Add set_device_lock method which uses udevadm lock preferable
+  but also supports an flock fallback in case there is no lock
+  command provided via systemd/udev
+
+-------------------------------------------------------------------
+Thu Jul 31 10:00:06 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix bug in shell condition
+
+  The shell code test ... || warn A; warn B will always
+  print the warning for B despite the test result. This lead
+  to the warning message "Settings from the kiwi description will be ignored"
+  to be printed always. This commit fixes it with a clean if/then
+  condition
+
+-------------------------------------------------------------------
+Wed Jul 30 10:55:22 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix documentation rendering
+
+  There was an indentation bug which caused the docs to
+  render wrong. This commit fixes it
+
+-------------------------------------------------------------------
+Wed Jul 30 00:09:37 CEST 2025 - Adam Williamson <awilliam@redhat.com>
+
+- solver/repository: Handle zstd-compressed metadata files
+
+  `_create_solvables` assumes metadata files are gzip-compressed,
+  but modern Fedora ones are not, they are zstd-compressed.
+
+  Signed-off-by: Adam Williamson <awilliam@redhat.com>
+
+-------------------------------------------------------------------
+Tue Jul 29 23:58:13 CEST 2025 - Adam Williamson <awilliam@redhat.com>
+
+- uri: If we fail to resolve the metalink URI, log it
+
+  It's rather useful to know *what* the URI is when something goes
+  wrong, after all.
+
+  Signed-off-by: Adam Williamson <awilliam@redhat.com>
+
+-------------------------------------------------------------------
 Tue Jul 29 19:20:30 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.2.29 → 10.2.30

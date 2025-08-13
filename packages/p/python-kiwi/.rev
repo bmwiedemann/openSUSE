@@ -3063,4 +3063,40 @@
   instead of ending up in a stack trace</comment>
     <requestid>1296359</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>f11805c0121b820fef4934d540825508</srcmd5>
+    <version>10.2.32</version>
+    <time>1755094974</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 10.2.31 → 10.2.32
+
+- fix: resize for raid device, ensure vars like kiwi_RaidDev are loaded before setting disk variable
+
+- Do not clobber initialize method
+  There was a method named initialize defined and implemented
+  differently in the dracut modules kiwi-lib and kiwi-repart.
+  kiwi-lib is expected to be shared code across all kiwi dracut
+  modules. However if one module redefines a method of the
+  same name which is used in another module and expected to
+  work differently there, this is evil. This commit cleans
+  up the name conflict and names the kiwi library init function
+  as lib_initialize. All dracut code that is expected to make
+  use of this method has been adopted too.
+
+- Skip kiwi-repart module in install ISOs
+  In case the kiwi-repart module is explicitly requested in a
+  dracut.conf file and the image is also configured to build an
+  install ISO image this leads the install ISO to contain the
+  kiwi-repart module as well which is unwanted. This commit
+  explicitly omits the kiwi-repart when creating the initrd
+  for the install image
+
+- Skip repart when booting install/live iso
+
+- Update leap test-image-disk integration test
+  Add test for alternative volume ID in install ISO
+
+- Bump version: 10.2.30 → 10.2.31</comment>
+    <requestid>1298900</requestid>
+  </revision>
 </revisionlist>
