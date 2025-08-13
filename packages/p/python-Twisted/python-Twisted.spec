@@ -24,7 +24,11 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-Twisted%{psuffix}
 Version:        24.10.0
@@ -51,11 +55,9 @@ BuildRequires:  %{python_module incremental >= 24.7.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
-Requires:       alts
 # twisted[tls] is so common, let's keep it tied to the main package for the time being.
 Requires:       python-Twisted-tls = %{version}
 BuildArch:      noarch
@@ -68,6 +70,13 @@ Requires:       python-incremental >= 24.7.0
 Requires:       python-typing_extensions >= 3.6.5
 Requires:       python-zope.interface >= 4.4.2
 # /SECTION
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if %{with test}
 BuildRequires:  %{python_module Twisted-all_non_platform = %{version}}
 BuildRequires:  %{python_module Twisted-conch_nacl = %{version}}
@@ -247,6 +256,19 @@ export OPENSSL_CONF=''
 for f in cftp ckeygen conch pyhtmlizer tkconch trial twist; do
   %python_libalternatives_reset_alternative $f
 done
+
+%post
+%if !%{with libalternatives}
+# these were master alternatives until Dec 2020. Remove before the install as slave links
+for f in cftp ckeygen conch pyhtmlizer tkconch trial twist; do
+  (update-alternatives --quiet --list $f 2>&1 >/dev/null) && update-alternatives --quiet --remove-all $f
+done
+%endif
+%{python_install_alternative twistd cftp ckeygen conch pyhtmlizer tkconch trial twist
+                             twistd.1 cftp.1 ckeygen.1 conch.1 pyhtmlizer.1 tkconch.1 trial.1}
+
+%postun
+%python_uninstall_alternative twistd
 
 %if ! %{with test}
 %files %{python_files tls}
