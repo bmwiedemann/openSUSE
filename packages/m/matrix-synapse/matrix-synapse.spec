@@ -2,7 +2,6 @@
 # spec file for package matrix-synapse
 #
 # Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +37,7 @@
 %global matrix_common_max_version     2
 %global msgpack_version               1.1.0
 %global netaddr_version               1.3.0
-%global phonenumbers_version          9.0.9
+%global phonenumbers_version          9.0.10
 %global prometheus_client_version     0.20.0
 %global psutil_version                2.0.0
 %global pyOpenSSL_version             25.0.0
@@ -60,6 +59,7 @@
 # TOOD: 1.6.1
 %global Authlib_version               1.6.0
 %global lxml_version                  6.0.0
+# TODO: 2.34.1
 %global sentry_sdk_version            2.20.0
 %global PyJWT_version                 2.6.0
 %global jaeger_client_version         4.8.0
@@ -76,7 +76,7 @@
 %global Jinja2_version                3.0
 %global Pillow_version                10.0.1
 %global PyYAML_version                5.3
-%global Twisted_version               18.9.0
+%global Twisted_version               21.2.0
 %global attrs_version                 21.1.1
 %global bcrypt_version                3.1.7
 %global bleach_version                1.4.3
@@ -103,7 +103,7 @@
 %global sortedcontainers_version      1.5.2
 %global systemd_version               231
 %global typing_extensions_version     3.10.0
-%global treq_version                  15.1
+%global treq_version                  21.5.0
 %global unpaddedbase64_version        2.1.0
 %global matrix_synapse_ldap3_version  0.2.1
 %global packaging_version             20.0
@@ -157,7 +157,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.135.0
+Version:        1.136.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
