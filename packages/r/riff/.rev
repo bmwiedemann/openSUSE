@@ -279,4 +279,13 @@
   * File names mentioned in the diff can now be clicked</comment>
     <requestid>1290614</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>45e556fa6c09e21752c586219c75f5d9</srcmd5>
+    <version>3.4.1</version>
+    <time>1755095470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.1:
+  * moor is the new name for what used to be moar</comment>
+    <requestid>1299193</requestid>
+  </revision>
 </revisionlist>
