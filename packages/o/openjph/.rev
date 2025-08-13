@@ -29,4 +29,14 @@
     independent code.</comment>
     <requestid>1281735</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>afe9c627a5aafd79ff204cc8ccae2908</srcmd5>
+    <version>0.21.4</version>
+    <time>1755095488</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.21.4:
+  * Adds proper decoding of placeholder passes #191
+  * Fixes a bug in avx512 encoder #188</comment>
+    <requestid>1299223</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 13 11:56:24 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.4:
+  * Adds proper decoding of placeholder passes #191
+  * Fixes a bug in avx512 encoder #188
+
+-------------------------------------------------------------------
 Mon Jun  2 05:45:59 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.21.3:
