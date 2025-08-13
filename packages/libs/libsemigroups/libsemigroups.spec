@@ -18,7 +18,7 @@
 
 Name:           libsemigroups
 %define lname	libsemigroups3
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        Library with algorithms for computing finite and finitely presented semigroups
 License:        GPL-3.0-or-later
