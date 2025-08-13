@@ -1,7 +1,7 @@
 #
 # spec file for package python-kombu
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-kombu
-Version:        5.5.3
+Version:        5.5.4
 Release:        0
 Summary:        AMQP Messaging Framework for Python
 License:        BSD-3-Clause
@@ -38,12 +38,14 @@ BuildRequires:  %{python_module google-cloud-monitoring}
 BuildRequires:  %{python_module google-cloud-pubsub}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module msgpack}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pre-commit}
 BuildRequires:  %{python_module pycurl >= 7.43.0.5}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis >= 4.5.2}
 BuildRequires:  %{python_module setuptools >= 47}
 BuildRequires:  %{python_module vine}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  timezone
@@ -75,10 +77,10 @@ sed -i -e 's:==:>=:g' requirements/*.txt requirements/extras/*.txt
 rm t/unit/transport/test_azureservicebus.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -89,6 +91,6 @@ rm t/unit/transport/test_azureservicebus.py
 %license LICENSE
 %doc AUTHORS FAQ README.rst THANKS TODO
 %{python_sitelib}/kombu
-%{python_sitelib}/kombu-%{version}-py*.egg-info
+%{python_sitelib}/kombu-%{version}.dist-info
 
 %changelog

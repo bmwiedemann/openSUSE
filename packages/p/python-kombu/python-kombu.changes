@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 12 12:25:54 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Convert to pip-based build
+- Update to 5.5.4
+  * chore: add Codecov test analytics by @thomasrockhu-codecov in #2290
+  * Added DeepWiki to README by @Nusnus in #2295
+  * redis.connection.ConnectionPool API change: get_connection does not accept arguments by @woutdenolf in #2294
+  * Update mongodb.txt to match celery version by @auvipy in #2297
+  * Update ubuntu version as per blacksmiths update by @auvipy in #2301
+  * Resolve logger warnings by @emmanuel-ferdman in #2302
+  * Fixed lint error from kombu/transport/native_delayed_delivery.py by @Nusnus in #2308
+  * Prepare for release: v5.5.4 by @Nusnus in #2309
+
+-------------------------------------------------------------------
 Wed May 14 09:59:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 5.5.3
