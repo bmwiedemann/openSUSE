@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certbot-dns-dnsimple
-Version:        4.1.1
+Version:        4.2.0
 Release:        0
 Summary:        DNSimple Authenticator plugin for Certbot
 License:        Apache-2.0
