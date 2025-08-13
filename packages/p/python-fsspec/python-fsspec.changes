@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 13 05:40:03 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on pytest-asyncio.
+
+-------------------------------------------------------------------
 Mon Mar 25 17:26:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.3.1:

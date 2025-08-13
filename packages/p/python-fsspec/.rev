@@ -458,4 +458,12 @@ Required by the latest version of python-gcsfs</comment>
   * zip64 should be on is allowZip64 is</comment>
     <requestid>1165946</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>36f4d48a7aedfccf70d9ae4670e02b3c</srcmd5>
+    <version>2024.3.1</version>
+    <time>1755095474</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires on pytest-asyncio.</comment>
+    <requestid>1299203</requestid>
+  </revision>
 </revisionlist>

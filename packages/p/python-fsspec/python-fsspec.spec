@@ -1,7 +1,7 @@
 #
 # spec file for package python-fsspec
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,6 +75,7 @@ BuildRequires:  %{python_module pyarrow}
 %endif
 BuildRequires:  %{python_module pyftpdlib}
 BuildRequires:  %{python_module pygit2}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-snappy}
