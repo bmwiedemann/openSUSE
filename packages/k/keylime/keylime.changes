@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 12 11:48:30 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Switch to pyproject macros
+
+-------------------------------------------------------------------
 Fri Feb 14 12:59:04 UTC 2025 - aplanas@suse.com
 
 - Update to version v7.12.1 (CVE-2025-1057, bsc#1237153):

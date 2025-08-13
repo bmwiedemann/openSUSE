@@ -1,7 +1,7 @@
 #
 # spec file for package keylime
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %global srcname keylime
-%define skip_python2 1
 # Consolidate _distconfdir and _sysconfdir
 %if 0%{?_distconfdir:1}
   %define _config_norepl %{nil}
@@ -25,6 +24,7 @@
   %define _distconfdir   %{_sysconfdir}
   %define _config_norepl %config(noreplace)
 %endif
+%{?sle15_python_module_pythons}
 Name:           keylime
 Version:        7.12.1
 Release:        0
@@ -41,7 +41,9 @@ Source10:       registrar.conf.diff
 Source11:       verifier.conf.diff
 Source12:       tenant.conf.diff
 BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  python-rpm-macros
@@ -149,12 +151,12 @@ Subpackage of %{name} for logrotate for Keylime services
 %autosetup -p1 -n %{name}-v%{version}
 
 %build
-%python_build
+%pyproject_wheel
 %sysusers_generate_pre %{SOURCE2} %{name} %{name}-user.conf
 
 %install
 export VERSION=%{version}
-%python_install
+%pyproject_install
 
 rm config/agent.conf
 patch -s --fuzz=0 config/registrar.conf < %{SOURCE10}
@@ -268,7 +270,7 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 %python_alternative %{_bindir}/%{srcname}_userdata_encrypt
 %python_alternative %{_bindir}/%{srcname}_verifier
 %{python_sitelib}/keylime
-%{python_sitelib}/keylime-%{version}*-info
+%{python_sitelib}/keylime-%{version}.dist-info
 
 %files -n %{srcname}-config
 %dir %attr(0700,keylime,tss) %{_distconfdir}/%{srcname}
