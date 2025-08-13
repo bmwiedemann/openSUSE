@@ -67,4 +67,19 @@
   * added latest fixes from github project after 1.0.1 release</comment>
     <requestid>1277797</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>834e5cf6b12bd54256511d7159343467</srcmd5>
+    <version>1.0.3</version>
+    <time>1755095389</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to v1.0.2 tarball/version 1.0.3 with patches below
+  (needed by 580.76.05 driver, boo#1247907)
+- added 0001-Increment-the-version-number-to-1.0.3.patch
+- added 0002-egl-x11-Add-support-for-tegradisp-drm.patch
+- supersedes the following patches
+  * 0001-Increment-version-number-to-1.0.2.patch
+  * 0002-Don-t-close-the-syncfd-in-WaitImplicitFence.patch
+  * 0003-Fix-the-error-reporting-in-WaitTimelinePoint.patch</comment>
+    <requestid>1299155</requestid>
+  </revision>
 </revisionlist>

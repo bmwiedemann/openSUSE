@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 12 14:20:20 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- updated to v1.0.2 tarball/version 1.0.3 with patches below
+  (needed by 580.76.05 driver, boo#1247907)
+- added 0001-Increment-the-version-number-to-1.0.3.patch
+- added 0002-egl-x11-Add-support-for-tegradisp-drm.patch
+- supersedes the following patches
+  * 0001-Increment-version-number-to-1.0.2.patch
+  * 0002-Don-t-close-the-syncfd-in-WaitImplicitFence.patch
+  * 0003-Fix-the-error-reporting-in-WaitTimelinePoint.patch
+
+-------------------------------------------------------------------
 Thu May 15 13:40:54 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - use upstream URL; now that we have official version numbers of
