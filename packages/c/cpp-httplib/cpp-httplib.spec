@@ -2,6 +2,7 @@
 # spec file for package cpp-httplib
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +17,18 @@
 #
 
 
-%define         sover 0.23
-%define         libver 0_23
+%define         sover 0.24
+%define         libver 0_24
 Name:           cpp-httplib
-Version:        0.23.1
+Version:        0.24.0
 Release:        0
 Summary:        A C++11 HTTP/HTTPS server and client library
 License:        MIT
 URL:            https://github.com/yhirose/cpp-httplib
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.pc
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libbrotlienc)
@@ -68,7 +69,6 @@ sed -i 's|Version: 0.0.0|Version: %{version}|g' %{SOURCE1}
 
 %build
 %cmake \
-  -DBUILD_SHARED_LIBS=ON \
   -DHTTPLIB_REQUIRE_OPENSSL=ON \
   -DHTTPLIB_REQUIRE_ZLIB=ON \
   -DHTTPLIB_REQUIRE_BROTLI=ON \
@@ -96,6 +96,7 @@ rm -r %{buildroot}%{_datadir}/{licenses/httplib,doc/packages/cpp-httplib}
 %{_libdir}/lib%{name}.so.%{version}
 
 %files devel
+%license LICENSE
 %doc README.md example
 %{_libdir}/lib%{name}.so
 %{_includedir}/httplib.h
