@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug  8 20:05:34 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.11.2:
+  * portability fixes
+  * Support secp256k1 by KEM API.  GnuPG has recently switched to
+     use the KEM interface and a few folks are using this curve
+  * Fix a missing initialization in RSA's generate_fips.
+  * Use '.rodata' section for read-only data of poly1305-p10le
+
+-------------------------------------------------------------------
 Thu Jun  5 13:23:03 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
 
 - Security fix [bsc#1221107, CVE-2024-2236]

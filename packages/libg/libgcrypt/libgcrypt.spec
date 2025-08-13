@@ -2,6 +2,7 @@
 # spec file for package libgcrypt
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +21,7 @@
 %define libsoname %{name}%{libsover}
 %define hmac_key orboDeJITITejsirpADONivirpUkvarP
 Name:           libgcrypt
-Version:        1.11.1
+Version:        1.11.2
 Release:        0
 Summary:        The GNU Crypto Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -60,7 +61,7 @@ Patch108:       libgcrypt-rol64-redefinition.patch
 Patch109:       libgcrypt-CVE-2024-2236.patch
 
 BuildRequires:  automake >= 1.14
-BuildRequires:  libgpg-error-devel >= 1.49
+BuildRequires:  pkgconfig(gpg-error) >= 1.49
 BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
@@ -142,9 +143,9 @@ export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
 %make_build
 
 %check
-make -k check
+%make_build check
 # run the regression tests also in FIPS mode
-LIBGCRYPT_FORCE_FIPS_MODE=1 make -k check
+LIBGCRYPT_FORCE_FIPS_MODE=1 %make_build check
 
 %install
 %make_install
@@ -173,8 +174,7 @@ mkdir -p -m 0755 %{buildroot}%{_sysconfdir}/gcrypt
 install -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/gcrypt/random.conf
 install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/gcrypt/hwf.deny
 
-%post -n %{libsoname} -p /sbin/ldconfig
-%postun -n %{libsoname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libsoname}
 
 %files -n %{libsoname}
 %license COPYING COPYING.LIB LICENSES
