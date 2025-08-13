@@ -1,7 +1,8 @@
 #
 # spec file for package nut
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +56,7 @@
 %bcond_with libfreeipmi
 %endif
 Name:           nut
-Version:        2.8.3
+Version:        2.8.4
 Release:        0
 Summary:        Network UPS Tools Core (Uninterruptible Power Supply Monitoring)
 License:        GPL-2.0-or-later
@@ -74,8 +75,6 @@ Patch2:         nut-doc-fixed-date.patch
 Patch3:         harden_nut-driver.service.patch
 Patch4:         harden_nut-monitor.service.patch
 Patch5:         harden_nut-server.service.patch
-Patch6:         fix-upsd-buffer-overflow.patch
-Patch7:         fix-usbhid-ups-commands.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
@@ -165,12 +164,12 @@ Shared library for the Network UPS Tools.
 Network UPS Tools is a collection of programs which provide a common
 interface for monitoring and administering UPS hardware.
 
-%package -n libnutscan3
+%package -n libnutscan4
 Summary:        Network UPS Tools Library (Uninterruptible Power Supply Monitoring)
 Group:          System/Libraries
 Conflicts:      libupsclient1
 
-%description -n libnutscan3
+%description -n libnutscan4
 Shared library for the Network UPS Tools.
 
 Network UPS Tools is a collection of programs which provide a common
@@ -229,7 +228,7 @@ Group:          Development/Libraries/C and C++
 Requires:       libnutclient2 = %{version}-%{release}
 Requires:       libnutclientstub1 = %{version}-%{release}
 Requires:       libnutconf0 = %{version}-%{release}
-Requires:       libnutscan3 = %{version}-%{release}
+Requires:       libnutscan4 = %{version}-%{release}
 Requires:       libupsclient7 = %{version}-%{release}
 Requires:       pkgconfig(openssl)
 
@@ -442,7 +441,7 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %ldconfig_scriptlets -n libnutclient2
 %ldconfig_scriptlets -n libnutclientstub1
-%ldconfig_scriptlets -n libnutscan3
+%ldconfig_scriptlets -n libnutscan4
 %ldconfig_scriptlets -n libupsclient7
 %ldconfig_scriptlets -n libnutconf0
 %else
@@ -450,8 +449,8 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %postun -n libnutclient2 -p /sbin/ldconfig
 %post   -n libnutclientstub1 -p /sbin/ldconfig
 %postun -n libnutclientstub1 -p /sbin/ldconfig
-%post   -n libnutscan3 -p /sbin/ldconfig
-%postun -n libnutscan3 -p /sbin/ldconfig
+%post   -n libnutscan4 -p /sbin/ldconfig
+%postun -n libnutscan4 -p /sbin/ldconfig
 %post   -n libupsclient7 -p /sbin/ldconfig
 %postun -n libupsclient7 -p /sbin/ldconfig
 %post   -n libnutconf0 -p /sbin/ldconfig
@@ -465,6 +464,7 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %{_bindir}/*
 %{_datadir}/%{name}
 %{_mandir}/man5/*%{ext_man}
+%{_mandir}/man7/*%{ext_man}
 %{_mandir}/man8/*%{ext_man}
 %exclude %{_mandir}/man8/netxml-ups*.*
 %exclude %{_mandir}/man8/snmp-ups*.*
@@ -510,7 +510,7 @@ udevadm trigger --subsystem-match=usb --property-match=DEVTYPE=usb_device
 %files -n libnutclientstub1
 %{_libdir}/libnutclientstub.so.*
 
-%files -n libnutscan3
+%files -n libnutscan4
 %{_libdir}/libnutscan.so.*
 
 %files -n libupsclient7

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 12 15:13:04 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 2.8.4:
+  https://github.com/networkupstools/nut/releases/tag/v2.8.4
+  For more see NEWS.adoc and UPGRADING.adoc in /usr/share/doc/packages/nut
+- Add new manpage files
+- Remove patches included in upstream release
+  * fix-upsd-buffer-overflow.patch
+  * fix-usbhid-ups-commands.patch
+- Bump libnutscan3 suffix with new SONAME, now libnutscan4
+
+-------------------------------------------------------------------
 Thu Jul  3 14:06:13 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 2.8.3:
