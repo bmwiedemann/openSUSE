@@ -16,9 +16,9 @@
 #
 
 
-%define python python
-%if 0%{?suse_version} >= 1500
- %define python python3
+%define python python3
+%if 0%{?suse_version} >= 1600
+ %define python %{primary_python}
 %endif
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
