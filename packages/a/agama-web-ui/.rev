@@ -414,4 +414,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1297124</requestid>
   </revision>
+  <revision rev="23" vrev="23">
+    <srcmd5>8a87506ac74e886fec0e21174d697e1a</srcmd5>
+    <version>0</version>
+    <time>1755095366</time>
+    <user>dimstar_suse</user>
+    <comment>- Split progress details into two lines for better readability
+  (gh#agama-project/agama#2647).
+
+- Improve layout and accuracy of wired connection details view
+  (bsc#1247430, gh#agama-project/agama#2639).
+
+- Block UI if storage is configured by any other client
+  (gh#agama-project/agama#2640).</comment>
+    <requestid>1299043</requestid>
+  </revision>
 </revisionlist>
