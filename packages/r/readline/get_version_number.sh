@@ -5,10 +5,13 @@ sourcedir=$1
 test -n "${sourcedir}" || sourcedir=$PWD
 test -e ${sourcedir}/readline.spec  || exit 1
 version=$(sed -rn '/^%define[[:space:]]+rversion/{s/^%define[[:space:]]+rversion[[:space:]]+([0-9]+\.[0-9]+)(\.[^\.]+)?/\1/p}' ${sourcedir}/readline.spec) || exit 1
+beta=$(sed -rn '/^%define[[:space:]]+rextend/{s/^%define[[:space:]]+rextend[[:space:]]+([^[:space:]])?/\1/p}' ${sourcedir}/readline.spec) || exit 1
+test "$beta" = "%{nil}" && beta="" || version=${version}${beta}
 test -e ${sourcedir}/readline-${version}.tar.gz || exit 1
 last=($(tar Oxf ${sourcedir}/readline-${version}.tar.gz readline-${version}/configure.ac | sed -rn '/^LIBVERSION/{s/LIBVERSION=//p}')) || exit 1
 for p in ${sourcedir}/readline${last//\./}-*[0-9]
 do
+    test -e "$p" || { echo 0 ; break; }
     level=${p##*-}
 done
 shopt -s extglob

@@ -1,5 +1,5 @@
 ---
- Makefile.in        |    4 +---
+ Makefile.in        |    2 --
  complete.c         |    6 +++---
  doc/Makefile.in    |    2 +-
  doc/readline.3     |   11 +++++++++++
@@ -7,11 +7,11 @@
  history.h          |    1 +
  readline.h         |    3 ++-
  support/shobj-conf |    5 +++--
- 8 files changed, 23 insertions(+), 11 deletions(-)
+ 8 files changed, 22 insertions(+), 10 deletions(-)
 
 --- Makefile.in
-+++ Makefile.in	2022-04-28 12:16:56.148759888 +0000
-@@ -252,10 +252,8 @@ uninstall-pc:
++++ Makefile.in	2025-01-31 12:07:47.226717382 +0000
+@@ -258,10 +258,8 @@ uninstall-pc:
  maybe-uninstall-pc: uninstall-pc
  
  install-static: installdirs $(STATIC_LIBS) install-headers install-doc ${install_examples} install-pc
@@ -22,18 +22,9 @@
  	$(INSTALL_DATA) libhistory.a $(DESTDIR)$(libdir)/libhistory.a
  	-test -n "$(RANLIB)" && $(RANLIB) $(DESTDIR)$(libdir)/libhistory.a
  
-@@ -286,7 +284,7 @@ install-doc:	installdirs
- 	$(INSTALL_DATA) $(OTHER_DOCS) $(DESTDIR)$(docdir)
- 	-( if test -d doc ; then \
- 		cd doc && \
--		${MAKE} ${MFLAGS} infodir=$(infodir) DESTDIR=${DESTDIR} install; \
-+		${MAKE} infodir=$(infodir) DESTDIR=${DESTDIR} install; \
- 	  fi )
- 
- uninstall-doc:
 --- complete.c
-+++ complete.c	2022-04-28 12:16:56.148759888 +0000
-@@ -1148,7 +1148,7 @@ _rl_find_completion_word (int *fp, int *
++++ complete.c	2025-01-31 12:15:33.358146338 +0000
+@@ -1206,7 +1206,7 @@ _rl_find_completion_word (int *fp, int *
        /* We didn't find an unclosed quoted substring upon which to do
           completion, so use the word break characters to find the
           substring on which to complete. */
@@ -42,7 +33,7 @@
  	{
  	  scan = rl_line_buffer[rl_point];
  
-@@ -2232,7 +2232,7 @@ rl_completion_matches (const char *text,
+@@ -2327,7 +2327,7 @@ rl_completion_matches (const char *text,
    match_list = (char **)xmalloc ((match_list_size + 1) * sizeof (char *));
    match_list[1] = (char *)NULL;
  
@@ -51,31 +42,31 @@
      {
        if (RL_SIG_RECEIVED ())
  	{
-@@ -2304,7 +2304,7 @@ rl_username_completion_function (const c
+@@ -2396,7 +2396,7 @@ rl_username_completion_function (const c
+       setpwent ();
      }
  
- #if defined (HAVE_GETPWENT)
 -  while (entry = getpwent ())
 +  while ((entry = getpwent ()))
      {
        /* Null usernames should result in all users as possible completions. */
        if (namelen == 0 || (STREQN (username, entry->pw_name, namelen)))
 --- doc/Makefile.in
-+++ doc/Makefile.in	2022-04-28 12:16:56.148759888 +0000
-@@ -107,7 +107,7 @@ DIST_DOCS = $(DVIOBJ) $(PSOBJ) $(HTMLOBJ
++++ doc/Makefile.in	2025-01-31 12:16:13.733404009 +0000
+@@ -115,7 +115,7 @@ DIST_DOCS = $(DVIOBJ) $(PSOBJ) $(HTMLOBJ
  #	$(RM) $@
  #	-${TEXI2PDF} $<
  
--all: info dvi html ps text pdf
+-all: info html text pdf dvi
 +all: info html
  nodvi: info html text
+ everything: all ps
  
- xdist: $(DIST_DOCS)
 --- doc/readline.3
-+++ doc/readline.3	2022-04-28 12:16:56.148759888 +0000
-@@ -119,6 +119,14 @@ environment variable.  If that variable
- .IR ~/.inputrc .
- If that file  does not exist or cannot be read, the ultimate default is
++++ doc/readline.3	2025-01-31 12:18:24.554998839 +0000
+@@ -181,6 +181,14 @@ If that variable is unset, the default i
+ .IR \*~/.inputrc .
+ If that file  does not exist or cannot be read, \fBreadline\fP looks for
  .IR /etc/inputrc .
 +If both files
 +.I ~/.inputrc
@@ -85,12 +76,12 @@
 +.I /etc/inputrc
 +and then
 +.IR ~/.inputrc .
- When a program which uses the readline library starts up, the
- init file is read, and the key bindings and variables are set.
- There are only a few basic constructs allowed in the
-@@ -1564,6 +1572,9 @@ VI Command Mode functions
+ When a program that uses the \fBreadline\fP library starts up,
+ \fBreadline\fP reads the initialization file
+ and sets the key bindings and variables found there,
+@@ -1852,6 +1860,9 @@ VI Command Mode functions
  .TP
- .FN ~/.inputrc
+ .FN \*~/.inputrc
  Individual \fBreadline\fP initialization file
 +.TP
 +.FN /etc/inputrc
@@ -99,8 +90,8 @@
  .SH AUTHORS
  Brian Fox, Free Software Foundation
 --- examples/fileman.c
-+++ examples/fileman.c	2022-04-28 12:26:35.022374539 +0000
-@@ -377,7 +377,7 @@ com_stat (arg)
++++ examples/fileman.c	2025-01-31 12:07:47.230717309 +0000
+@@ -333,7 +333,7 @@ com_stat (char *arg)
  
    printf ("Statistics for `%s':\n", arg);
  
@@ -110,7 +101,7 @@
            finfo.st_nlink,
            (finfo.st_nlink == 1) ? "" : "s",
 --- history.h
-+++ history.h	2022-04-28 12:16:56.152759816 +0000
++++ history.h	2025-01-31 12:07:47.230717309 +0000
 @@ -32,6 +32,7 @@ extern "C" {
  #  include "rlstdc.h"
  #  include "rltypedefs.h"
@@ -120,7 +111,7 @@
  #  include <readline/rltypedefs.h>
  #endif
 --- readline.h
-+++ readline.h	2022-04-28 12:17:48.115828027 +0000
++++ readline.h	2025-01-31 12:07:47.230717309 +0000
 @@ -32,6 +32,7 @@ extern "C" {
  #  include "keymaps.h"
  #  include "tilde.h"
@@ -129,7 +120,7 @@
  #  include <readline/rlstdc.h>
  #  include <readline/rltypedefs.h>
  #  include <readline/keymaps.h>
-@@ -496,7 +497,7 @@ extern char *rl_filename_completion_func
+@@ -498,7 +499,7 @@ extern char *rl_filename_completion_func
  
  extern int rl_completion_mode (rl_command_func_t *);
  
@@ -139,7 +130,7 @@
  extern void free_undo_list (void);
  extern int maybe_save_line (void);
 --- support/shobj-conf
-+++ support/shobj-conf	2022-04-28 12:18:35.078985803 +0000
++++ support/shobj-conf	2025-01-31 12:07:47.230717309 +0000
 @@ -126,10 +126,11 @@ sunos5*|solaris2*)
  linux*-*|gnu*-*|k*bsd*-gnu-*|midnightbsd*|freebsd*|dragonfly*)
  	SHOBJ_CFLAGS=-fPIC

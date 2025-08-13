@@ -1,7 +1,7 @@
 #
 # spec file for package readline
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 %define rl_major 8
-%define rextend %{nil}
-%define rversion 8.2
+%define rextend  %{nil}
+%define rversion 8.3
 %define rpatchlvl %(bash %{_sourcedir}/get_version_number.sh %{_sourcedir})
 
 Name:           readline
@@ -34,34 +34,10 @@ Source1:        https://ftp.gnu.org/gnu/readline/readline-%{rversion}%{rextend}.
 Source2:        baselibs.conf
 Source3:        get_version_number.sh
 Source4:        https://tiswww.case.edu/php/chet/gpgkey.asc#/%{name}.keyring
-# signatures for official patches
 # official patches
-Patch101:       readline82-001
-Patch102:       readline82-002
-Patch103:       readline82-003
-Patch104:       readline82-004
-Patch105:       readline82-005
-Patch106:       readline82-006
-Patch107:       readline82-007
-Patch108:       readline82-008
-Patch109:       readline82-009
-Patch110:       readline82-010
-Patch111:       readline82-011
-Patch112:       readline82-012
-Patch113:       readline82-013
-Source101:      readline82-001.sig
-Source102:      readline82-002.sig
-Source103:      readline82-003.sig
-Source104:      readline82-004.sig
-Source105:      readline82-005.sig
-Source106:      readline82-006.sig
-Source107:      readline82-007.sig
-Source108:      readline82-008.sig
-Source109:      readline82-009.sig
-Source110:      readline82-010.sig
-Source111:      readline82-011.sig
-Source112:      readline82-012.sig
-Source113:      readline82-013.sig
+Patch101:       readline83-001
+# signatures for official patches
+Source101:      readline83-001.sig
 # local patches
 Patch200:       readline-%{rversion}.dif
 Patch201:       readline-6.3-input.dif
@@ -135,18 +111,6 @@ as well as programming with the interface of the readline library.
 %setup -q -n readline-%{rversion}%{rextend}
 # official patches
 %patch -P101 -p0
-%patch -P102 -p0
-%patch -P103 -p0
-%patch -P104 -p0
-%patch -P105 -p0
-%patch -P106 -p0
-%patch -P107 -p0
-%patch -P108 -p0
-%patch -P109 -p0
-%patch -P110 -p0
-%patch -P111 -p0
-%patch -P112 -p0
-%patch -P113 -p0
 # local patches
 %patch -P201 -p2 -b .zerotty
 %patch -P202 -p2 -b .conf

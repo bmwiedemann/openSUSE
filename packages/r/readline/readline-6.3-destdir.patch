@@ -5,7 +5,7 @@
 
 --- shlib/Makefile.in
 +++ shlib/Makefile.in	2020-10-12 15:18:05.027444750 +0000
-@@ -59,6 +59,7 @@ bindir = @bindir@
+@@ -61,6 +61,7 @@ bindir = @bindir@
  libdir = @libdir@
  datadir = @datadir@
  localedir = @localedir@
@@ -13,7 +13,7 @@
  
  # Support an alternate destination root directory for package building
  DESTDIR =
-@@ -192,8 +193,8 @@ installdirs: $(topdir)/support/mkdirs
+@@ -194,8 +195,8 @@ installdirs: $(topdir)/support/mkdirs
  	-$(SHELL) $(topdir)/support/mkdirs $(DESTDIR)$(bindir)
  
  install-supported: installdirs $(SHLIB_STATUS)
@@ -24,7 +24,7 @@
  	@echo install: you may need to run ldconfig
  
  install-unsupported:
-@@ -202,8 +203,8 @@ install-unsupported:
+@@ -204,8 +205,8 @@ install-unsupported:
  install: install-$(SHLIB_STATUS)
  
  uninstall-supported:
