@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Aug 12 11:07:17 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250812.13f4562:
+  * Ignore UPDATE_NVRAM (bsc#1247952)
+
+-------------------------------------------------------------------
+Mon Aug 11 20:35:27 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250811.2048838:
+  * Add easy advanced debugging
+
+-------------------------------------------------------------------
+Mon Aug 11 20:03:25 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250811.5fc14ca:
+  * Enable sdbootutil-update-predictions.service on enroll
+  * Fix device not marked as portable
+  * Fix handling of configuration UPDATE_NVRAM
+
+-------------------------------------------------------------------
+Mon Aug 11 09:36:03 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250811.2fd41f0:
+  * Clarify when the boot entries are created
+  * Measure all bootloader combinations
+  * Remove hard coded EFI boot entry name
+
+-------------------------------------------------------------------
+Tue Aug 05 13:03:35 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250805.67fa6cb:
+  * PCR#15 workaround for LVM devices
+  * Use installkernel() only to install kernel modules
+
+-------------------------------------------------------------------
 Mon Aug 04 12:14:06 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20250804.8dccab3:
