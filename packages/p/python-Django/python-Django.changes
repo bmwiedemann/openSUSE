@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 12 10:52:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.2.5
+  * Fixed a regression in Django 5.2.1 that prevented the usage of UNNEST
+    PostgreSQL strategy of QuerySet.bulk_create() with foreign keys
+  * Fixed a crash in Django 5.2 when filtering against a composite primary key
+    using a tuple containing expressions
+  * Fixed a crash in Django 5.2 when validating a model that uses
+    GeneratedField or constraints composed of Q and Case lookups
+  * Added compatibility for docutils 0.22
+  * Fixed a crash in Django 5.2 when using a ManyToManyField on a model with
+    a composite primary key, by extending the fields.E347 system check
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Fri Aug  1 02:09:01 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Reinstate Requires on tzdata, a lot of packages use it.

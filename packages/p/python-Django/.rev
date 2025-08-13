@@ -1415,4 +1415,12 @@
     <comment>- Reinstate Requires on tzdata, a lot of packages use it.</comment>
     <requestid>1296919</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>b3f24dda397c2bd61002ef4d09ce8c98</srcmd5>
+    <version>5.2.5</version>
+    <time>1755095001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1299114</requestid>
+  </revision>
 </revisionlist>

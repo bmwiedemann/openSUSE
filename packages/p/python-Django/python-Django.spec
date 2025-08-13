@@ -20,8 +20,13 @@
 %bcond_with selenium
 %bcond_with memcached
 %{?sle15_python_module_pythons}
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           python-Django
-Version:        5.2.4
+Version:        5.2.5
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
@@ -58,8 +63,6 @@ Requires:       python
 Requires:       python-asgiref >= 3.7.0
 Requires:       python-sqlparse >= 0.3.1
 Requires:       python-tzdata
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     python-Jinja2 >= 2.9.2
 Recommends:     python-Pillow >= 6.2.0
 Recommends:     python-PyYAML
@@ -73,6 +76,13 @@ Obsoletes:      python-django < %{version}
 Provides:       python-South = %{version}
 Obsoletes:      python-South < %{version}
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if %{with memcached}
 BuildRequires:  %{python_module pylibmc}
 BuildRequires:  %{python_module pymemcache}
@@ -132,6 +142,9 @@ export PATH=%{_libdir}/chromium:$PATH
 %else
 %python_expand PYTHONPATH=.:%{buildroot}%{$python_sitelib} $python tests/runtests.py -v 2
 %endif
+
+%pre
+%python_libalternatives_reset_alternative django-admin
 
 %post
 %{python_install_alternative django-admin}
