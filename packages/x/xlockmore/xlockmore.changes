@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 12 18:14:55 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 5.84:
+  * New automata mode paterson added from same article as spirolateral.
+    Initial investigation by Paterson, Conway, and Beeler.
+- 5.83:
+  * spirolateral mode added thanks to Martin Gardner's book "Knotted
+    Donuts" chapter on "Worm Paths".  This generates simple and
+    complex spirolaterals.
+  * Fixing -delay issue on VMS for x86-64.
+  * Removed a warning in snprintf for Windows.
+- 5.82:
+  * cage, moebius, morph3d updated by original author.  Found a few long
+    standing bugs and updated for larger resolution screens.  Thanks
+    to marcelofvianna AT gmail.com.
+
+-------------------------------------------------------------------
 Sun Dec  1 16:46:04 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 5.81:
