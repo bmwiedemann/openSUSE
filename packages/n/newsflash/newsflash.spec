@@ -1,7 +1,7 @@
 #
 # spec file for package newsflash
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appname io.gitlab.news_flash.NewsFlash
 Name:           newsflash
-Version:        4.1.2
+Version:        4.1.3
 Release:        0
 Summary:        The spiritual successor to FeedReader
 License:        GPL-3.0-only

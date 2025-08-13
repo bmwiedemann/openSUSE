@@ -178,4 +178,16 @@
     <comment></comment>
     <requestid>1295351</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4310ecaf61b8e31404924e53c71ecc65</srcmd5>
+    <version>4.1.3</version>
+    <time>1755095327</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.1.3:
+  * Today: use local timezone
+  * LogLevel Info by default
+  * Fix new articles notification count
+  * Local RSS: clean iframes even on summaries (forwarded request 1298817 from rrahl0)</comment>
+    <requestid>1298818</requestid>
+  </revision>
 </revisionlist>
