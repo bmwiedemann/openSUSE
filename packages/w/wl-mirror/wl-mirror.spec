@@ -1,7 +1,7 @@
 #
 # spec file for package wl-mirror
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Lorenz Holzbauer
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           wl-mirror
-Version:        0.18.2
+Version:        0.18.3
 Release:        0
 Summary:        A Wayland output mirror client
 License:        GPL-3.0-or-later

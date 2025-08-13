@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 13 09:59:33 UTC 2025 - Lorenz Holzbauer <lorenzholzbauer@ikmail.com>
+
+- Update to 0.18.3:
+  * Bugfixes:
+    - Fixed --title custom titles only applying after window creation
+      instead of during initial configure (boo#72).
+    - Fixed CMake directory variables sometimes containing trailing or
+      double slashes (harmless but corrected) (boo#71).
+  * Other changes:
+    - Allow spaces in output identifiers when using output labels from
+      --region.
+    - Use wl-mirror’s built-in output detection for ask-output-or-region
+      in wl-present instead of manual parsing.
+    - Document slurp -f syntax for the format supported by --region.
+
+-------------------------------------------------------------------
 Mon Apr 28 15:58:39 UTC 2025 - Lorenz Holzbauer <lorenzholzbauer@ikmail.com>
 
 - Update to new upstream release v0.18.2:

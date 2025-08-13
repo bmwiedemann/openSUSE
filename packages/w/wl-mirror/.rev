@@ -47,4 +47,24 @@ Therefore it would be important to have the package available in the main repos.
 </comment>
     <requestid>1273198</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>40f862e1eb9b33c219c75247d6e908c4</srcmd5>
+    <version>0.18.3</version>
+    <time>1755095480</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.3:
+  * Bugfixes:
+    - Fixed --title custom titles only applying after window creation
+      instead of during initial configure (boo#72).
+    - Fixed CMake directory variables sometimes containing trailing or
+      double slashes (harmless but corrected) (boo#71).
+  * Other changes:
+    - Allow spaces in output identifiers when using output labels from
+      --region.
+    - Use wl-mirror’s built-in output detection for ask-output-or-region
+      in wl-present instead of manual parsing.
+    - Document slurp -f syntax for the format supported by --region.
+</comment>
+    <requestid>1299214</requestid>
+  </revision>
 </revisionlist>
