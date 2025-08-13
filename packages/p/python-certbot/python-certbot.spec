@@ -16,10 +16,14 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-certbot
-Version:        4.1.1
+Version:        4.2.0
 Release:        0
 Summary:        ACME client
 License:        Apache-2.0
@@ -35,12 +39,9 @@ BuildRequires:  %{python_module parsedatetime >= 2.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyRFC3339}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytz >= 2019.3}
 BuildRequires:  %{python_module setuptools >= 41.6.0}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-acme >= %{version}
 Requires:       python-configargparse >= 1.5.3
 Requires:       python-configobj >= 5.0.6
@@ -49,9 +50,15 @@ Requires:       python-distro >= 1.0.1
 Requires:       python-josepy >= 2.0.0
 Requires:       python-parsedatetime >= 2.4
 Requires:       python-pyRFC3339
-Requires:       python-pytz >= 2019.3
 Provides:       certbot = %{version}
 Obsoletes:      certbot < %{version}
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -76,6 +83,12 @@ to lower the barriers to entry for encrypting all HTTP traffic on the internet.
 
 %pre
 %python_libalternatives_reset_alternative certbot
+
+%post
+%python_install_alternative certbot
+
+%postun
+%python_uninstall_alternative certbot
 
 %files %{python_files}
 %license LICENSE.txt

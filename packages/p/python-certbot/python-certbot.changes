@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug 12 15:53:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.2.0
+  * Added --eab-hmac-alg parameter to support custom HMAC algorithm for
+    External Account Binding.
+  * Catches and ignores errors during the directory fetch for ARI checking
+    so that these errors do not hinder the actual certificate issuance.
+  * Removed the dependency on pytz
+  * Support for Python 3.9 was deprecated and will be removed in our next
+    planned release.
+  * The Certbot snap no longer sets the environment variable PYTHONPATH
+    stopping it from picking up Python files in the current directory
+    and polluting the environment for Certbot hooks written in Python.
+  * Previously, we claimed to set FAILED_DOMAINS and RENEWED_DOMAINS env
+    variables for use by post-hooks when certificate renewals fail, but
+    we were not actually setting them. Now, we are.
+  * Certbot now always uses the server value from the renewal configuration
+    file for ARI checks instead of the server value from the current
+    invocation of Certbot. This helps prevent ARI requests from going to the
+    wrong server if the user changes CAs.
+- Make the libalternatives transition conditional
+
+-------------------------------------------------------------------
 Wed Jun 25 12:10:30 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives

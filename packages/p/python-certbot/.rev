@@ -564,4 +564,12 @@
 - Drop some ancient compatibility code</comment>
     <requestid>1288528</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>b8f1941b5e7eb8496ec6458fad5e7a7d</srcmd5>
+    <version>4.2.0</version>
+    <time>1755095433</time>
+    <user>dimstar_suse</user>
+    <comment>certbot version bump</comment>
+    <requestid>1299119</requestid>
+  </revision>
 </revisionlist>
