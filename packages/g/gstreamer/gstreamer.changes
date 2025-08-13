@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Aug 12 05:30:52 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.5:
+  + Highlighted bugfixes:
+    - audioconvert: Fix caps negotiation regression when using a
+      mix matrix
+    - cea608overlay, cea708overlay: Accept GPU memory buffers if
+      downstream supports the overlay composition meta
+    - d3d12screencapture source element and device provider fixes
+    - decodebin3: Don't error on an incoming ONVIF metadata stream
+    - uridecodebin3: Fix potential crash when adding URIs to
+      messages, e.g. if no decoder is available
+    - v4l2: Fix memory leak for dynamic resolution change
+    - VA encoder fixes
+    - videorate, imagefreeze: Add support for JPEG XS
+    - Vulkan integration fixes
+    - wasapi2 audio device monitor improvements
+    - threadshare: Many improvements and fixes to the generic
+      threadshare and RTP threadshare elements
+    - rtpbin2 improvements and fixes
+    - gst-device-monitor-1.0 command line tool improvements
+    - Various bug fixes, build fixes, memory leak fixes, and other
+      stability and reliability improvements
+  + gstreamer:
+    - aggregator: add sub_latency_min to pad queue size
+    - build: Disable C5287 warning on MSVC
+
+-------------------------------------------------------------------
 Thu Jul 24 06:52:29 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.4:
