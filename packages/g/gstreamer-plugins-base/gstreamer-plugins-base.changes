@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 12 05:39:33 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.5:
+  + audioconvert: mix-matrix causes caps negotiation failure
+  + decodebin3: Don't error on an incoming ONVIF metadata stream
+  + gloverlay: Recompute geometry when caps change, and load
+    texture after stopping and starting again
+  + uridecodebin3: Add missing locking and NULL checks when adding
+    URIs to messages
+  + uridecodebin3: segfault in update_message_with_uri() if no
+    decoder available
+  + videorate, imagefreeze: add support for JPEG XS
+  + gst-device-monitor-1.0: Add shell quoting for launch lines
+  + gst-device-monitor-1.0: Fix criticals, and also accept utf8 in
+    launch lines
+  + gst-device-monitor-1.0: Use gst_print instead of g_print
+
+-------------------------------------------------------------------
 Thu Jul 24 06:55:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.4:
