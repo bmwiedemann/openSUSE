@@ -4,7 +4,7 @@
 
 --- support/man2html.c
 +++ support/man2html.c	2010-09-03 20:49:56.288632000 +0000
-@@ -4076,7 +4076,7 @@ main(int argc, char **argv)
+@@ -4085,7 +4085,7 @@ main(int argc, char **argv)
  		if (subs)
  			fputs("</DL>\n", stdout);
  		fputs("</DL>\n", stdout);

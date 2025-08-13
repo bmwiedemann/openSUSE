@@ -5,8 +5,8 @@
  3 files changed, 18 insertions(+), 2 deletions(-)
 
 --- doc/bash.1
-+++ doc/bash.1	2018-11-29 08:09:41.735675837 +0000
-@@ -122,6 +122,12 @@ This option allows the positional parame
++++ doc/bash.1	2025-02-03 10:57:09.568975363 +0000
+@@ -159,6 +159,12 @@ This option allows the positional parame
  when invoking an interactive shell or when reading input
  through a pipe.
  .TP
@@ -17,9 +17,9 @@
 +Print commands and their arguments as they are executed.
 +.TP
  .B \-D
- A list of all double-quoted strings preceded by \fB$\fP
- is printed on the standard output.
-@@ -7667,6 +7673,11 @@ Apply the following `\fBs\fP' modifier o
+ Print a list of all double-quoted strings preceded by \fB$\fP
+ on the standard output.
+@@ -8948,6 +8954,11 @@ modifier once to each word in the event
  .SH "SHELL BUILTIN COMMANDS"
  .\" start of bash_builtins
  .zZ
@@ -31,7 +31,7 @@
  .PP
  Unless otherwise noted, each builtin command documented in this
  section as accepting options preceded by
-@@ -11543,6 +11554,11 @@ process or job waited for.
+@@ -13266,6 +13277,11 @@ the arguments as key sequences to bind.
  .SH "RESTRICTED SHELL"
  .\" rbash.1
  .zY
@@ -44,7 +44,7 @@
  If
  .B bash
 --- doc/builtins.1
-+++ doc/builtins.1	2018-11-29 08:09:41.735675837 +0000
++++ doc/builtins.1	2025-02-03 10:56:04.910169130 +0000
 @@ -19,6 +19,6 @@ shift, shopt, source, suspend, test, tim
  ulimit, umask, unalias, unset, wait \- bash built-in commands, see \fBbash\fR(1)
  .SH BASH BUILTIN COMMANDS
@@ -54,7 +54,7 @@
  .SH SEE ALSO
  bash(1), sh(1)
 --- doc/rbash.1
-+++ doc/rbash.1	2018-11-29 08:09:41.735675837 +0000
++++ doc/rbash.1	2025-02-03 10:56:04.910169130 +0000
 @@ -3,6 +3,6 @@
  rbash \- restricted bash, see \fBbash\fR(1)
  .SH RESTRICTED SHELL

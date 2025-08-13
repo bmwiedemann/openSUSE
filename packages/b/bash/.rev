@@ -2089,4 +2089,41 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
     <comment></comment>
     <requestid>1271572</requestid>
   </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>d5dd942c9c1bbf0dc94faa572774f262</srcmd5>
+    <version>5.3.MACRO</version>
+    <time>1755095018</time>
+    <user>dimstar_suse</user>
+    <comment>- Take refreshed source tar ball with uptodate (g)po files
+- Refresh (g)po files as well due our patches
+
+- Add upstream patches
+  * bash53-001
+    In posix mode, `wait -n' with pid arguments does not restrict the set of
+    processes it considers to those arguments.
+  * bash53-002
+    There are too many differences in the various implementations of shm_open(2)
+    to rely on it for bash's use.
+  * bash53-003
+    Bash leaves internal quoting in place when expanding array subscripts
+    that appear inside array subscripts in an arithmetic context, causing
+    expansion failures.
+
+- The package bash-loadables supplements a specific bash version
+
+-  Update to bash 5.3
+a. When checking whether a script file argument is a binary file, check the
+   first two lines of a script if the first line begins with `#!'.
+b. Bash does a better job of preserving user-supplied quotes around a word
+   completion, instead of requoting it.
+c. Bash reports the starting line number in an error message about an
+   unterminated compound command like `if' without a `fi'.
+d. Implement the POSIX requirement that running the `jobs' builtin removes
+   jobs from the jobs list.
+f. Call bash signal handlers while executing programmable completion commands,
+   instead of readline's.
+g. Print an error message if a regular expression used with [[ fails to compile.
+h. The `umask' builtin now has additional features for full POSIX conformance.</comment>
+    <requestid>1296985</requestid>
+  </revision>
 </revisionlist>

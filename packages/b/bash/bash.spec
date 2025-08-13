@@ -25,10 +25,10 @@
 # Unicode tests do alloc to much memory
 %bcond_with altarray
 %define rl_major 8
-%define rl_version 8.2
+%define rl_version 8.3
 
 %define         bextend %{nil}
-%define         bversion 5.2
+%define         bversion 5.3
 %define         bpatchlvl %(bash %{_sourcedir}/get_version_number.sh %{_sourcedir})
 %global         _incdir     %{_includedir}
 %global         _ldldir     %{_libdir}/bash
@@ -62,12 +62,12 @@ Source9:        bash-4.2-history-myown.dif.bz2
 Source10:       https://ftp.gnu.org/gnu/bash/bash-%{bversion}%{bextend}.tar.gz.sig
 # GPG key 7C0135FB088AAF6C66C650B9BB5869F064EA74AB Chet Ramey
 Source11:       bash.keyring
+Source99:       bash.changes
 Patch0:         bash-%{bversion}.dif
 Patch1:         bash-2.03-manual.patch
 Patch3:         bash-4.3-2.4.4.patch
 Patch4:         bash-3.0-evalexp.patch
 Patch5:         bash-3.0-warn-locale.patch
-Patch7:         bash-4.3-decl.patch
 Patch9:         bash-4.3-include-unistd.dif
 Patch10:        bash-3.2-printf.patch
 Patch11:        bash-4.3-loadables.dif
@@ -80,15 +80,12 @@ Patch40:        bash-4.1-bash.bashrc.dif
 # PATCH-FIX-SUSE For bsc#1065158 add support for broken Japanese locale Shift JIS
 Patch42:        bash-4.3-SJIS.patch
 Patch46:        man2html-no-timestamp.patch
-Patch47:        bash-4.3-perl522.patch
 # PATCH-FIX-SUSE
 Patch48:        bash-4.3-extra-import-func.patch
 # PATCH-EXTEND-SUSE Allow root to clean file system if filled up
 Patch49:        bash-4.3-pathtemp.patch
 # PATCH-FIX-SUSE
 Patch50:        quotes-man2html.patch
-# PATCH-FIX-UPSTREAM
-Patch51:        bash-5.2-gcc14.patch
 BuildRequires:  autoconf
 # latest bash uses with patch 18 the tag YYEOF
 BuildRequires:  bison
@@ -168,6 +165,7 @@ builtins for the interpreter Bash. Use the output of the command
 %package loadables
 Summary:        Loadable bash builtins
 Group:          System/Shells
+Supplements:    %{name} = %{version}
 
 %description loadables
 This package contains the examples for the ready-to-dynamic-load
@@ -268,7 +266,6 @@ set -x
 %patch -P3   -b .2.4.4
 %patch -P4   -b .evalexp
 %patch -P5   -b .warnlc
-%patch -P7   -b .decl
 %patch -P9   -b .unistd
 %patch -P10  -b .printf
 %patch -P11  -b .plugins
@@ -281,13 +278,11 @@ set -x
 %patch -P42  -b .sjis
 %endif
 %patch -P46  -b .notimestamp
-%patch -P47  -b .perl522
 %if %{with import_function}
 %patch -P48 -b .eif
 %endif
 %patch -P49  -b .pthtmp
 %patch -P50  -b .qd
-%patch -P51  -b .gcc14
 %patch -P0   -b .p0
 
 # This has to be always the same version as included in the bash its self
@@ -308,6 +303,12 @@ echo exit 0 > tests/read7.sub
 %endif
 
 %build
+  SOURCE_DATE_EPOCH="$(sed -n '/^----/n;s/ - .*$//;p;q' %{SOURCE99} | date -u -f - +%%s)"
+  TZ=UTC0
+  LANG=POSIX
+  LC_ALL=C.UTF-8
+  export SOURCE_DATE_EPOCH TZ LANG LC_ALL
+  touch -d "@${SOURCE_DATE_EPOCH}" .source_date_epoch
   LANG=POSIX
   LC_ALL=$LANG
   unset LC_CTYPE
@@ -360,8 +361,7 @@ echo exit 0 > tests/read7.sub
       set +o noclobber
   }
   LARGEFILE="$(getconf LFS_CFLAGS)"
-  # add -std=gnu17 to build w/ gcc-15; not needed for bash-5.3
-  CFLAGS="%{optflags} $LARGEFILE -D_GNU_SOURCE -DRECYCLES_PIDS -Wall -g -std=gnu17"
+  CFLAGS="%{optflags} $LARGEFILE -D_GNU_SOURCE -DRECYCLES_PIDS -Wall -g"
   LDFLAGS=""
   #
   # Never ever put -DMUST_UNBLOCK_CHLD herein as this breaks bash
@@ -510,14 +510,49 @@ echo exit 0 > tests/read7.sub
 %endif
   %make_build $makeopts "$profilecflags" all
   %make_build $makeopts -C examples/loadables/
+  %make_build $makeopts -C po/ update-po
   %make_build $makeopts documentation
   grep -F '$'\' doc/bash.html %{nil:test for boo#1203091}
 
 %check
+  SOURCE_DATE_EPOCH="$(date -u -r .source_date_epoch +%%s)"
+  TZ=UTC0
+  LANG=POSIX
+  LC_ALL=C.UTF-8
+  export SOURCE_DATE_EPOCH TZ LANG LC_ALL
   rm -vf tests/*.p0
-  %make_build -j1 check
+  SCREENDIR=$(mktemp -d ${PWD}/screen.XXXXXXXXXX) || exit 1
+  SCREENRC=${SCREENDIR}/tcsh
+  TMPDIR=$(mktemp -d /tmp/bash.XXXXXXXXXX) || exit 1
+  export SCREENRC SCREENDIR TMPDIR
+  exec 0< /dev/null
+  SCREENLOG=${SCREENDIR}/log
+  cat > $SCREENRC<<-EOF
+	deflogin off
+	deflog on
+	logfile $SCREENLOG
+	logfile flush 1
+	logtstamp off
+	log on
+	setsid on
+	scrollback 0
+	silence on
+	utf8 on
+	EOF
+  > $SCREENLOG
+  tail -q -s 0.5 -f $SCREENLOG & pid=$!
+  env -i HOME=$HOME TERM=$TERM TMPDIR=$TMPDIR PATH=$PATH \
+	SCREENRC=$SCREENRC SCREENDIR=$SCREENDIR \
+	screen -D -m %make_build -j1 check
+  sleep 1
+  kill -TERM $pid
 
 %install
+  SOURCE_DATE_EPOCH="$(date -u -r .source_date_epoch +%%s)"
+  TZ=UTC0
+  LANG=POSIX
+  LC_ALL=C.UTF-8
+  export SOURCE_DATE_EPOCH TZ LANG LC_ALL
   %make_install
   make -C examples/loadables/ install-supported DESTDIR=%{buildroot} libdir=%{_libdir}
   mv -vf %{buildroot}%{_ldldir}/*.h   %{buildroot}%{_includedir}/bash/
@@ -589,6 +624,10 @@ fi
 
 %files
 %license COPYING
+%if 0%{?suse_version} < 1550
+%dir %{_prefix}%{_sysconfdir}/
+%dir %{_prefix}%{_sysconfdir}/skel/
+%endif
 %{_prefix}%{_sysconfdir}/skel/.bashrc
 %{_prefix}%{_sysconfdir}/skel/.profile
 %if %{with alternatives}

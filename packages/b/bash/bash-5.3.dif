@@ -2,7 +2,7 @@
  Makefile.in        |    2 +-
  config-top.h       |   16 ++++++++++------
  doc/Makefile.in    |    2 +-
- doc/bash.1         |    7 +++++--
+ doc/bash.1         |    7 +++++++
  general.h          |    3 +++
  parse.y            |    6 +++++-
  shell.c            |    6 +++++-
@@ -12,11 +12,11 @@
  tests/glob.tests   |    4 ++--
  tests/run-intl     |    2 +-
  tests/run-read     |    2 +-
- 13 files changed, 41 insertions(+), 21 deletions(-)
+ 13 files changed, 43 insertions(+), 19 deletions(-)
 
 --- Makefile.in
-+++ Makefile.in	2022-06-22 06:38:20.511747259 +0000
-@@ -466,7 +466,7 @@ SOURCES	 = $(CSOURCES) $(HSOURCES) $(BUI
++++ Makefile.in	2025-01-31 14:34:48.840202425 +0000
+@@ -500,7 +500,7 @@ SOURCES	 = $(CSOURCES) $(HSOURCES) $(BUI
  # headers in top-level source directory that get installed by install-headers
  INSTALLED_HEADERS = shell.h bashjmp.h command.h syntax.h general.h error.h \
  		    variables.h array.h assoc.h arrayfunc.h quit.h dispose_cmd.h \
@@ -26,8 +26,8 @@
  		    bashintl.h bashansi.h bashjmp.h alias.h hashlib.h \
  		    conftypes.h unwind_prot.h jobs.h siglist.h \
 --- config-top.h
-+++ config-top.h	2022-04-28 11:55:03.660248012 +0000
-@@ -60,10 +60,14 @@
++++ config-top.h	2025-01-31 14:35:51.119054831 +0000
+@@ -55,10 +55,14 @@
     due to EPIPE. */
  /* #define DONT_REPORT_BROKEN_PIPE_WRITE_ERRORS */
  
@@ -43,16 +43,16 @@
  #endif
  
  /* If you want to unconditionally set a value for PATH in every restricted
-@@ -74,7 +78,7 @@
+@@ -69,7 +73,7 @@
     the Posix.2 confstr () function, or CS_PATH define are not present. */
  #ifndef STANDARD_UTILS_PATH
  #define STANDARD_UTILS_PATH \
--  "/bin:/usr/bin:/sbin:/usr/sbin:/etc:/usr/etc"
+-  "/bin:/usr/bin:/sbin:/usr/sbin"
 +  _PATH_STDPATH
  #endif
  
  /* The default path for enable -f */
-@@ -97,20 +101,20 @@
+@@ -92,20 +96,20 @@
  #define DEFAULT_BASHRC "~/.bashrc"
  
  /* System-wide .bashrc file for interactive shells. */
@@ -78,32 +78,32 @@
  /* Define if you want the case-toggling operators (~[~]) and the
     `capcase' variable attribute (declare -c). */
 --- doc/Makefile.in
-+++ doc/Makefile.in	2022-04-28 11:53:04.334380153 +0000
++++ doc/Makefile.in	2025-01-31 14:36:39.222168456 +0000
 @@ -153,7 +153,7 @@ BASHREF_FILES = $(srcdir)/bashref.texi $
  #	$(RM) $@
  #	-${TEXI2PDF} $<
  
--all: ps info dvi text html $(MAN2HTML)
+-all: info dvi text html pdf $(MAN2HTML)
 +all: info html $(MAN2HTML)
  nodvi: ps info text html
- everything: all pdf
+ everything: all ps
  
 --- doc/bash.1
-+++ doc/bash.1	2022-06-22 06:37:14.908958305 +0000
-@@ -5745,8 +5745,8 @@ file (the \fIinputrc\fP file).
- The name of this file is taken from the value of the
++++ doc/bash.1	2025-01-31 14:39:44.682751126 +0000
+@@ -2800,6 +2800,10 @@ startup file, overriding the default of
  .SM
- .B INPUTRC
--variable.  If that variable is unset, the default is
--.IR ~/.inputrc .
-+environment variable. If that variable is unset, readline will read both
-+.IR /etc/inputrc " and " ~/.inputrc .
- If that file  does not exist or cannot be read, the ultimate default is
- .IR /etc/inputrc .
- When a program which uses the readline library starts up, the
-@@ -11706,6 +11706,9 @@ command history
+ .B READLINE
+ below).
++If that variable is unset, readline will read both
++.FN /etc/inputrc
++and
++.FN \*~/.inputrc .
  .TP
- .FN ~/.inputrc
+ .B INSIDE_EMACS
+ If this variable appears in the environment when the shell starts,
+@@ -13443,6 +13447,9 @@ command history
+ .TP
+ .FN \*~/.inputrc
  Individual \fIreadline\fP initialization file
 +.TP
 +.FN /etc/inputrc
@@ -112,7 +112,7 @@
  .SH AUTHORS
  Brian Fox, Free Software Foundation
 --- general.h
-+++ general.h	2022-04-28 11:53:04.334380153 +0000
++++ general.h	2025-01-31 14:34:48.844202351 +0000
 @@ -21,10 +21,13 @@
  #if !defined (_GENERAL_H_)
  #define _GENERAL_H_
@@ -128,10 +128,10 @@
  #if defined (HAVE_SYS_RESOURCE_H) && defined (RLIMTYPE)
  #  if defined (HAVE_SYS_TIME_H)
 --- parse.y
-+++ parse.y	2022-04-28 11:53:04.334380153 +0000
-@@ -366,6 +366,10 @@ static FILE *yyerrstream;
- /* Special; never created by yylex; only set by parse_comsub and xparse_dolparen */
- %token DOLPAREN
++++ parse.y	2025-01-31 14:40:55.673443061 +0000
+@@ -405,6 +405,10 @@ static FILE *yyerrstream;
+ /* Special; never created by yylex; only set by parse_matched_pair/parse_comsub/xparse_dolparen */
+ %token DOLBRACE
  
 +/* Declare token YYEOF as older bison version fails
 +   with not defined as a token and has no rules */
@@ -140,7 +140,7 @@
  /* The types that the various syntactical units return. */
  
  %type <command> inputunit command pipeline pipeline_command
-@@ -1513,7 +1513,7 @@ input_file_descriptor ()
+@@ -1649,7 +1653,7 @@ input_file_descriptor (void)
  
  #if defined (READLINE)
  char *current_readline_prompt = (char *)NULL;
@@ -150,7 +150,7 @@
  
  static int
 --- shell.c
-+++ shell.c	2022-04-28 11:56:12.623015117 +0000
++++ shell.c	2025-01-31 14:42:34.851615639 +0000
 @@ -46,6 +46,7 @@
  #  include <sys/mman.h>
  #  include <sys/types.h>
@@ -159,7 +159,7 @@
  #endif
  
  #include "bashintl.h"
-@@ -512,7 +513,7 @@ main (argc, argv, env)
+@@ -512,7 +513,7 @@ main (int argc, char **argv, char **env)
      read_but_dont_execute = 1;
  #endif
  
@@ -168,18 +168,18 @@
      disable_priv_mode ();
  
    /* Need to get the argument to a -c option processed in the
-@@ -1342,6 +1343,9 @@ disable_priv_mode ()
- {
-   int e;
+@@ -1343,6 +1344,9 @@ disable_priv_mode (void)
+   int e, r;
  
+   r = 0;
 +  if (!current_user.user_name)
 +    get_current_user_info();
-+  initgroups (current_user.user_name, current_user.gid);
++  r = initgroups (current_user.user_name, current_user.gid);
  #if HAVE_SETRESUID
-   if (setresuid (current_user.uid, current_user.uid, current_user.uid) < 0)
- #else
+   if (current_user.euid != current_user.uid || current_user.saveuid != current_user.uid)
+     r = setresuid (current_user.uid, current_user.uid, current_user.uid) ;
 --- support/man2html.c
-+++ support/man2html.c	2022-04-28 11:53:04.338380081 +0000
++++ support/man2html.c	2025-01-31 14:34:48.848202278 +0000
 @@ -78,6 +78,7 @@
  #include <time.h>
  #include <sys/time.h>
@@ -189,7 +189,7 @@
  #define NULL_TERMINATED(n) ((n) + 1)
  
 --- support/rlvers.sh
-+++ support/rlvers.sh	2022-04-28 11:53:04.338380081 +0000
++++ support/rlvers.sh	2025-01-31 14:34:48.848202278 +0000
 @@ -27,10 +27,10 @@ TDIR=$TMPDIR/rlvers
  
  # defaults
@@ -205,7 +205,7 @@
  # cannot rely on the presence of getopts
  while [ $# -gt 0 ]; do
 --- support/shobj-conf
-+++ support/shobj-conf	2022-04-28 11:57:29.117647038 +0000
++++ support/shobj-conf	2025-01-31 14:34:48.848202278 +0000
 @@ -126,10 +126,11 @@ sunos5*|solaris2*)
  linux*-*|gnu*-*|k*bsd*-gnu-*|midnightbsd*|freebsd*|dragonfly*)
  	SHOBJ_CFLAGS=-fPIC
@@ -221,8 +221,8 @@
  
  # Darwin/MacOS X
 --- tests/glob.tests
-+++ tests/glob.tests	2022-04-28 11:53:04.338380081 +0000
-@@ -34,8 +34,8 @@ ${THIS_SH} ./glob10.sub
++++ tests/glob.tests	2025-01-31 14:34:48.848202278 +0000
+@@ -35,8 +35,8 @@ ${THIS_SH} ./glob11.sub
  
  MYDIR=$PWD	# save where we are
  
@@ -234,7 +234,7 @@
  rm -rf *
  
 --- tests/run-intl
-+++ tests/run-intl	2022-04-28 11:58:22.140698412 +0000
++++ tests/run-intl	2025-01-31 14:34:48.848202278 +0000
 @@ -2,4 +2,4 @@
  ( diff -a ./intl.right ./intl.right >/dev/null 2>&1 ) && AFLAG=-a
  
@@ -242,10 +242,30 @@
 -diff $AFLAG ${BASH_TSTOUT} intl.right && rm -f ${BASH_TSTOUT}
 +diff -w $AFLAG ${BASH_TSTOUT} intl.right && rm -f ${BASH_TSTOUT}
 --- tests/run-read
-+++ tests/run-read	2022-04-28 11:53:04.338380081 +0000
++++ tests/run-read	2025-01-31 14:34:48.848202278 +0000
 @@ -1,4 +1,4 @@
  echo "warning: please do not consider output differing only in the amount of" >&2
  echo "warning: white space to be an error." >&2
  ${THIS_SH} ./read.tests > ${BASH_TSTOUT} 2>&1
 -diff ${BASH_TSTOUT} read.right && rm -f ${BASH_TSTOUT}
 +diff -w ${BASH_TSTOUT} read.right && rm -f ${BASH_TSTOUT}
+--- configure
++++ configure	2025-07-22 11:44:32.379750615 +0000
+@@ -12749,7 +12749,6 @@ else case e in #(
+            # defined sleep(n) _sleep ((n) * 1000)
+            #endif
+            #include <fcntl.h>
+-           GL_MDA_DEFINES
+            #ifndef O_NOATIME
+             #define O_NOATIME 0
+            #endif
+--- m4/fcntl-o.m4
++++ m4/fcntl-o.m4	2025-07-22 11:54:23.317130679 +0000
+@@ -32,7 +32,6 @@ AC_DEFUN([gl_FCNTL_O_FLAGS],
+            # defined sleep(n) _sleep ((n) * 1000)
+            #endif
+            #include <fcntl.h>
+-           ]GL_MDA_DEFINES[
+            #ifndef O_NOATIME
+             #define O_NOATIME 0
+            #endif

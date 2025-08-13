@@ -1,9 +1,9 @@
 ---
- shell.c |   24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+ shell.c |   25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
 --- shell.c
-+++ shell.c	2018-09-20 08:08:34.242204532 +0000
++++ shell.c	2025-01-31 13:53:05.110369836 +0000
 @@ -43,6 +43,8 @@
  #endif
  
@@ -13,7 +13,7 @@
  #  include <unistd.h>
  #endif
  
-@@ -1888,6 +1894,28 @@ init_interactive_script ()
+@@ -1873,6 +1875,28 @@ init_interactive_script (void)
  #endif
  }
  
@@ -40,9 +40,9 @@
 +}
 +
  void
- get_current_user_info ()
+ get_current_user_info (void)
  {
-@@ -1919,6 +1946,7 @@ get_current_user_info ()
+@@ -1904,6 +1928,7 @@ get_current_user_info (void)
  #if defined (HAVE_GETPWENT)
        endpwent ();
  #endif

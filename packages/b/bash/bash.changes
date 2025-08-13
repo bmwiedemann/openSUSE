@@ -1,4 +1,147 @@
 -------------------------------------------------------------------
+Fri Aug  1 06:00:45 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Take refreshed source tar ball with uptodate (g)po files
+- Refresh (g)po files as well due our patches
+
+-------------------------------------------------------------------
+Mon Jul 28 10:41:49 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patches
+  * bash53-001
+    In posix mode, `wait -n' with pid arguments does not restrict the set of
+    processes it considers to those arguments.
+  * bash53-002
+    There are too many differences in the various implementations of shm_open(2)
+    to rely on it for bash's use.
+  * bash53-003
+    Bash leaves internal quoting in place when expanding array subscripts
+    that appear inside array subscripts in an arithmetic context, causing
+    expansion failures.
+
+-------------------------------------------------------------------
+Fri Jul 18 07:39:27 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- The package bash-loadables supplements a specific bash version
+
+-------------------------------------------------------------------
+Thu Jul 17 08:52:25 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+-  Update to bash 5.3
+a. When checking whether a script file argument is a binary file, check the
+   first two lines of a script if the first line begins with `#!'.
+b. Bash does a better job of preserving user-supplied quotes around a word
+   completion, instead of requoting it.
+c. Bash reports the starting line number in an error message about an
+   unterminated compound command like `if' without a `fi'.
+d. Implement the POSIX requirement that running the `jobs' builtin removes
+   jobs from the jobs list.
+f. Call bash signal handlers while executing programmable completion commands,
+   instead of readline's.
+g. Print an error message if a regular expression used with [[ fails to compile.
+h. The `umask' builtin now has additional features for full POSIX conformance.
+i. `type -a -P' reports both hashed pathnames and the result of a $PATH search.
+j. `trap' has a new -P option that prints the trap action associated with each
+   signal argument.
+k. The `command' builtin preceding a declaration builtin (e.g., `declare')
+   preserves the special asisgnment statement parsing for the declaration
+   builtin. This is a new POSIX requirement.
+l. `printf' uses the `alternate form' for %q and %Q to force single quoting.
+m. `printf' now interprets %ls (%S) and %lc (%C) as referring to wide strings
+   and characters, respectively, when in a multibyte locale.
+n. The shell can be compiled with a different default value for the
+   patsub_replacement option.
+o. Check for window size changes during trap commands, `bind -x' commands,
+   and programmable completion.
+p. Treat a NULL value for $PATH as equivalent to ".".
+p. New loadable builtins: kv, strptime
+q. GLOBSORT: new variable to specify how to sort the results of pathname
+   expansion (name, size, blocks, mtime, atime, ctime, numeric, none) in
+   ascending or descending order.
+r. `compgen' has a new option: -V varname. If supplied, it stores the generated
+   completions into VARNAME instead of printing them on stdout.
+s. New form of command substitution: ${ command; } or ${|command;} to capture
+   the output of COMMAND without forking a child process and using pipes.
+t. array_expand_once: new shopt option, replaces assoc_expand_once
+u. complete/compopt new option: fullquote; sets rl_full_quoting_desired so all
+   possible completions are quoted as if they were filenames.
+v. Command timing now allows precisions up to 6 digits instead of 3 in
+   $TIMEFORMAT.
+w. BASH_MONOSECONDS: new dynamic variable that returns the value of the
+   system's monotonic clock, if one is available.
+x. BASH_TRAPSIG: new variable, set to the numeric signal number of the trap
+   being executed while it's running.
+y. The checkwinsize option can be used in subshell commands started from
+   interactive shells.
+z. In posix mode, the test command < and > binary primaries compare strings
+   using the current locale.
+aa. bind -x allows new key binding syntax: separate the key sequence and the
+    command string with whitespace, but require the command string to be
+    double-quoted if this is used. This allows different quoting options for
+    the command string.
+bb. Print commands bound to key sequences using `bind -x' with the new key
+    binding syntax it allows.
+cc. `read' has a new `-E' option to use readline but with the default bash
+    completion (including programmable completion).
+dd. New bindable readline command name: `bash-vi-complete'.
+ee. New test builtin behavior when parsing a parenthesized subexpression and
+    test was given more than 4 arguments: scan forward for a closing paren and
+    call posixtest() if there are 4 or fewer arguments between the parentheses.
+    Added for compatibility with coreutils test, dependent on the shell
+    compatibility level. Such expressions remain ambiguous.
+ff. MULTIPLE_COPROCS is now enabled by default.
+gg. The `bind' builtin interprets additional non-option arguments after -p or
+    -P as bindable command names and restricts output to the bindings for
+    those names.
+hh. Bash now uses the login shell for $BASH if the shell is named `su' or `-su'.
+ii. Bash now prints job notifications if an interactive shell is running a trap,
+    even though the shell is not interactive at that moment.
+jj. Programmable completion allows a new compspec loaded after a completion
+    function returns 124 to be used in more cases.
+kk. ./source has a new -p PATH option, which makes it use the PATH argument
+    instead of $PATH to look for the file.
+ll. Documentation has been significantly updated.
+mm. `wait -n' can now return terminated process substitutions, jobs about
+    which the user has already been notified (like `wait' without options),
+nn. `wait -n' removes jobs from the jobs table or list of terminated children
+     when in posix mode.
+oo. Changed the `wait' builtin behavior regarding process substitutions to
+    match the documentation.
+pp. There is a new `bash_source_fullpath' shopt option, which makes bash put
+    full pathnames into BASH_SOURCE, and a way to set a default value for it
+    at configure time.
+qq. Posix mode now forces job notifications to occur when the new edition of
+    POSIX specifies (since it now specifies them).
+rr. Interactive shells don't print job notifications while sourcing scripts.
+ss. The parser prints more information about the command it's trying to parse
+    when it encounters EOF before completing the command.
+tt. Posix mode no longer requires function names to be valid shell identifiers.
+uu. If `exit' is run in a trap and not supplied an exit status argument, it
+    uses the value of $? from before the trap only if it's run at the trap's
+    `top level' and would cause the trap to end (that is, not in a subshell).
+    This is from Posix interp 1602.
+vv. There is a new `fltexpr' loadable builtin to perform floating-point
+    arithmetic similarly to `let'.
+ww. The `install-strip' and `strip' Makefile targets now deal with cross-
+    compiling.
+- This update includes the upstream solution for bsc#1245199
+- Drop -std=gnu17 in CFLAGS as not required anymore
+- Port patches
+  * bash-2.03-manual.patch
+  * bash-3.0-evalexp.patch
+  * bash-3.2-printf.patch
+  * bash-4.1-bash.bashrc.dif
+  * bash-4.1-completion.dif
+  * bash-4.2-nscdunmap.dif
+  * bash-4.3-sigrestart.patch
+  * bash-5.3.dif
+- Port patch bash-5.2.dif and rename it to bash-5.3.dif
+- Drop patches upstream now or not supported anymore (perl version)
+  * bash-4.3-decl.patch
+  * bash-4.3-perl522.patch
+  * bash-5.2-gcc14.patch
+
+-------------------------------------------------------------------
 Sun Apr 20 20:27:08 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu17 to CFLAGS to fix gcc15 compile time error

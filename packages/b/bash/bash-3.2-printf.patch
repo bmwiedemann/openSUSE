@@ -3,7 +3,7 @@
  1 file changed, 12 insertions(+), 1 deletion(-)
 
 --- builtins/printf.def
-+++ builtins/printf.def	2022-06-22 06:26:14.069158235 +0000
++++ builtins/printf.def	2025-01-31 13:35:58.961286087 +0000
 @@ -56,6 +56,7 @@ error occurs.
  $END
  
@@ -12,7 +12,7 @@
  
  #include "../bashtypes.h"
  
-@@ -702,7 +703,7 @@ printf_builtin (list)
+@@ -783,7 +784,7 @@ printf_builtin (WORD_LIST *list)
  	    case 'A':
  #endif
  	      {
@@ -21,10 +21,10 @@
  
  	      	if (use_Lmod || posixly_correct == 0)
  		  {
-@@ -710,7 +711,12 @@ printf_builtin (list)
+@@ -791,7 +792,12 @@ printf_builtin (WORD_LIST *list)
  
  		    p = getfloatmax ();
- 		    f = mklong (start, FLOATMAX_CONV, USE_LONG_DOUBLE);
+ 		    f = mklong (start, FLOATMAX_CONV, FLOATMAX_CONVLEN);
 +
 +		    if (lce && lcl) setlocale(LC_NUMERIC, lce);
 +
@@ -34,7 +34,7 @@
  		  }
  		else		/* posixly_correct */
  		  {
-@@ -718,7 +724,12 @@ printf_builtin (list)
+@@ -799,7 +805,12 @@ printf_builtin (WORD_LIST *list)
  
  		    p = getdouble ();
  		    f = mklong (start, "", 0);

@@ -16,12 +16,12 @@
 |other files as well even if the bash does not.
 |
 ---
- doc/bash.1 |   16 ++++++++++++----
- 1 file changed, 12 insertions(+), 4 deletions(-)
+ doc/bash.1 |   22 +++++++++++++++++++---
+ 1 file changed, 19 insertions(+), 3 deletions(-)
 
 --- doc/bash.1
-+++ doc/bash.1	2022-06-22 06:31:11.283670836 +0000
-@@ -330,6 +330,8 @@ and executes commands from the first one
++++ doc/bash.1	2025-01-31 14:07:19.026636616 +0000
+@@ -372,6 +372,8 @@ and executes commands from the first one
  The
  .B \-\-noprofile
  option may be used when the shell is started to inhibit this behavior.
@@ -30,36 +30,45 @@
  .PP
  When an interactive login shell exits,
  or a non-interactive login shell executes the \fBexit\fP builtin command,
-@@ -339,13 +341,19 @@ exists.
- .PP
+@@ -383,8 +385,10 @@ if it exists.
  When an interactive shell that is not a login shell is started,
  .B bash
--reads and executes commands from \fI~/.bashrc\fP, if that file exists.
--This may be inhibited by using the
-+reads and executes commands from \fI/etc/bash.bashrc\fP then \fI~/.bashrc\fP
-+when those files exist and are readable. This may be inhibited by using the
+ reads and executes commands from 
+-.FN \*~/.bashrc ,
+-if that file exists.
++.FN /etc/bash.bashrc
++then
++.FN \*~/.bashrc
++when those files exist and are readable.
+ The
  .B \-\-norc
- option.
- The \fB\-\-rcfile\fP \fIfile\fP option will force
+ option inhibits this behavior.
+@@ -392,6 +396,16 @@ The \fB\-\-rcfile\fP \fIfile\fP option c
  .B bash
- to read and execute commands from \fIfile\fP instead of \fI~/.bashrc\fP.
-+Please note that the file \fI/etc/bash.bashrc\fP includes an autodetection shell
+ to use \fIfile\fP instead of
+ .FN \*~/.bashrc .
++Please note that the file
++.FN /etc/bash.bashrc
++includes an autodetection shell
 +code wether it is used for by a remote OpenSSH SSH client like
 +.BR ssh (1)
 +or
 +.BR slogin (1)
-+to source the local \fI/etc/profile\fP if not already done.
++to source the local
++.FN /etc/profile
++if not already done.
  .PP
  When
  .B bash
-@@ -432,8 +440,8 @@ or the secure shell daemon \fIsshd\fP.
- If
+@@ -481,8 +495,10 @@ If
  .B bash
  determines it is being run non-interactively in this fashion,
--it reads and executes commands from \fI~/.bashrc\fP,
+ it reads and executes commands from
++.FN /etc/bash.bashrc
++then
+ .FN \*~/.bashrc ,
 -if that file exists and is readable.
-+it reads and executes commands from \fI/etc/bash.bashrc\fP then
-+\fI~/.bashrc\fP, when those files exists and are readable.
- It will not do this if invoked as \fBsh\fP.
++when those file exists and is readable.
+ .B Bash
+ does not read this file if invoked as \fBsh\fP.
  The
- .B \-\-norc
