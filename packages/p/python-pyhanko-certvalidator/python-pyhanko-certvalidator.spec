@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyhanko-certvalidator
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ BuildRequires:  %{python_module aiohttp >= 3.8}
 BuildRequires:  %{python_module cryptography >= 41.0.5}
 BuildRequires:  %{python_module freezegun >= 1.1.0}
 BuildRequires:  %{python_module oscrypto >= 1.1.0}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.31.0}
 BuildRequires:  %{python_module uritools >= 3.0.1}

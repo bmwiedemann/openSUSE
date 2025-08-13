@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1243431</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2add5cca0d4b3a8bb60f34a5378c1ffe</srcmd5>
+    <version>0.26.5</version>
+    <time>1755095462</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires on pytest-asyncio.</comment>
+    <requestid>1299182</requestid>
+  </revision>
 </revisionlist>
