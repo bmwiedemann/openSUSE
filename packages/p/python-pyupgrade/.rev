@@ -554,4 +554,12 @@
     constructs</comment>
     <requestid>1273175</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>1ecba4ee0063c22c1785edb627f2be6e</srcmd5>
+    <version>3.20.0</version>
+    <time>1755095477</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1299213</requestid>
+  </revision>
 </revisionlist>

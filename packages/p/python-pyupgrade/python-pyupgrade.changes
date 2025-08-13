@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug  6 09:28:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.20.0
+  * upgrade asottile/workflows
+  * pyupgrade fixes for python 3.14
+
+-------------------------------------------------------------------
 Mon Apr 28 14:14:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.19.1:
