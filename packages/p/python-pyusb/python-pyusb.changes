@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 12 13:34:11 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- build with python3.11 on Leap 15
+- fix changelog formatting
+
+-------------------------------------------------------------------
 Tue Mar  4 16:19:46 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - Update to 1.3.1
@@ -204,5 +210,3 @@ Tue Mar 29 13:23:31 UTC 2011 - prusnak@opensuse.org
 Mon Dec 20 20:37:31 UTC 2010 - prusnak@opensuse.org
 
 - created package (1.0.0 alpha 0)
-
--------------------------------------------------------------------
