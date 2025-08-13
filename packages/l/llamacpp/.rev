@@ -230,4 +230,35 @@
   * ggml-cpu : disable GGML_NNPA by default due to instability</comment>
     <requestid>1298007</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>38d7bbd796418272794ae26cce7fe25c</srcmd5>
+    <version>6139</version>
+    <time>1755095452</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6139:
+  * opencl: allow mixed f16/f32 `add` (#15140)
+  * mtmd : Fix MinicpmV model converter and clip to avoid using
+    hardcode. (#14750)
+  * chat : hotfix gpt-oss jinja raising an exception (#15243)
+  * server : allow specifying reasoning_format in HTTP request
+    (#15238)
+  * kv-cache : fix seq_rm with seq_id == -1 (#15226)
+  * kv-cache : log (debug) all streams in find_slot (#15176)
+  * convert : improve Mistral models integration (#14737)
+  * kleidiai: fix unsigned overflow bug (#15150)
+
+- Add LLAMA_BUILD_NUMBER and LLAMA_VERSION to the build 
+
+- Update to version 6121:
+  * Support intern-s1
+  * opencl: add swiglu_oai and add_id
+  * vulkan: support fattn sinks
+  * vulkan: Add env var to disable host visible vidmem
+  * ggml: Skip backend library linking code when GGML_BACKEND_DL=ON
+  * ggml : fix fallback to CPU for ununsupported ops
+  * Various bug fixes
+  * Full changelog:
+    https://github.com/ggml-org/llama.cpp/compare/b6100...b6121</comment>
+    <requestid>1299150</requestid>
+  </revision>
 </revisionlist>

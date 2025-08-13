@@ -20,7 +20,7 @@
 %global backend_dir %{_libdir}/ggml
 
 Name:           llamacpp
-Version:        6100
+Version:        6139
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT
@@ -161,6 +161,8 @@ mkdir -p %{_libdir}
     -DGGML_BACKEND_DL=ON \
     -DGGML_BACKEND_DIR="%{backend_dir}" \
     -DGGML_OPENCL_USE_ADRENO_KERNELS=OFF \
+    -DLLAMA_BUILD_NUMBER=%{version} \
+    -DLLAMA_VERSION="0.0.%{version}" \
     %{nil}
 
 %cmake_build
