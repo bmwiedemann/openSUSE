@@ -478,6 +478,15 @@ cp -a %{S:2} .
 %autopatch -p1
 # This test randomly fails or keeps hanging task inside build chroot (tested on 2.38).
 rm tests/ts/lsns/ioctl_ns
+# The bash-5.3 and up ignores SIGINT as well for async (co)processes,
+# rational https://lists.gnu.org/archive/html/bug-bash/2023-01/msg00050.html
+if test -n "$BASH_VERSION"
+then
+    if test ${BASH_VERSINFO[0]} -gt 5 -o \( ${BASH_VERSINFO[0]} -eq 5 -a ${BASH_VERSINFO[1]} -gt 2 \)
+    then
+	sed -ri '/^Ignored:/{ s/(HUP)/\1 INT/ }' tests/expected/kill/decode
+    fi
+fi
 
 %build
 AUTOPOINT=true GTKDOCIZE=true autoreconf -vfi

@@ -2725,4 +2725,13 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment>- agetty: Implement netlink based IP address detection</comment>
     <requestid>1291647</requestid>
   </revision>
+  <revision rev="300" vrev="3">
+    <srcmd5>eea6d20e77a838faedb79664e051580e</srcmd5>
+    <version>2.41.1</version>
+    <time>1755095017</time>
+    <user>dimstar_suse</user>
+    <comment>- For bash 5.3 add (SIG)INT tests/expected/kill/decode as ignored
+  signal for asynchronous coprocesses (boo#1246830)</comment>
+    <requestid>1295529</requestid>
+  </revision>
 </revisionlist>

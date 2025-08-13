@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 24 10:35:23 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- For bash 5.3 add (SIG)INT tests/expected/kill/decode as ignored
+  signal for asynchronous coprocesses (boo#1246830)
+
+-------------------------------------------------------------------
 Thu Jul 10 02:39:17 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - agetty: Implement netlink based IP address detection and issue
