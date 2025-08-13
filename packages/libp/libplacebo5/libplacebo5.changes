@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 12 15:25:18 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 12509c0f.patch: Fix build on python 3.13.6.
+
+-------------------------------------------------------------------
 Wed Apr 16 16:57:41 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Use python3-Jinja2 and python3-glad2 for BuildRequires instead

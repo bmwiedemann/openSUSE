@@ -1,7 +1,7 @@
 #
 # spec file for package libplacebo5
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ URL:            https://code.videolan.org/videolan/libplacebo
 Source0:        https://code.videolan.org/videolan/libplacebo/-/archive/v%{version}/libplacebo-v%{version}.tar.bz2
 Source1:        https://github.com/Immediate-Mode-UI/Nuklear/raw/c512ac886425f6b6b6c816d67f4cb1385cd4cc53/nuklear.h
 Source9:        baselibs.conf
+Patch0:         https://github.com/haasn/libplacebo/commit/12509c0f.patch
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  meson >= 0.63.0
@@ -88,7 +89,7 @@ help understand and demonstrate the various options provided by %{libname}.
 %endif
 
 %prep
-%setup -q -n %{libname}-v%{version}
+%autosetup -p1 -n %{libname}-v%{version}
 cp %{SOURCE1} ./demos/3rdparty/nuklear/
 
 %build
