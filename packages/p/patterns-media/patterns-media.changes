@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 13 06:46:03 UTC 2025 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Do not require kernel-firmware-all, but rather expand the list,
+  which allows to drop some larger, less commonly used candiates
+  like mellanox.
+
+-------------------------------------------------------------------
 Tue Jul  8 15:34:05 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add grub2-arm64-efi-bls as well - boo#1245049

@@ -488,4 +488,13 @@
     <comment></comment>
     <requestid>1293059</requestid>
   </revision>
+  <revision rev="59" vrev="59">
+    <srcmd5>7cde497c14db92b30346abd44899ab2a</srcmd5>
+    <version>20170319</version>
+    <time>1755067626</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not require kernel-firmware-all, but rather expand the list,
+  which allows to drop some larger, less commonly used candiates
+  like mellanox.</comment>
+  </revision>
 </revisionlist>

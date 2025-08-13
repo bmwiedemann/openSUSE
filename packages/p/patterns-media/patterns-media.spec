@@ -43,7 +43,37 @@ Provides:       pattern() = rest_cd_core
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 1941
 Requires:       kernel-default
-Requires:       kernel-firmware-all
+Requires:       kernel-firmware-brcm
+Requires:       kernel-firmware-amdgpu
+Requires:       kernel-firmware-ath10k
+Requires:       kernel-firmware-ath11k
+Requires:       kernel-firmware-ath12k
+Requires:       kernel-firmware-atheros
+Requires:       kernel-firmware-bluetooth
+Requires:       kernel-firmware-bnx2
+Requires:       kernel-firmware-chelsio
+Requires:       kernel-firmware-dpaa2
+Requires:       kernel-firmware-i915
+Requires:       kernel-firmware-intel
+Requires:       kernel-firmware-iwlwifi
+Requires:       kernel-firmware-liquidio
+Requires:       kernel-firmware-marvell
+Requires:       kernel-firmware-media
+Requires:       kernel-firmware-mediatek
+Requires:       kernel-firmware-mwifiex
+Requires:       kernel-firmware-network
+Requires:       kernel-firmware-nfp
+Requires:       kernel-firmware-nvidia
+Requires:       kernel-firmware-platform
+Requires:       kernel-firmware-qcom
+Requires:       kernel-firmware-qlogic
+Requires:       kernel-firmware-radeon
+Requires:       kernel-firmware-realtek
+Requires:       kernel-firmware-serial
+Requires:       kernel-firmware-sound
+Requires:       kernel-firmware-ti
+Requires:       kernel-firmware-ueagle
+Requires:       kernel-firmware-usb-network
 Requires:       pattern() = base
 Requires:       pattern() = enhanced_base
 Requires:       pattern() = fonts
