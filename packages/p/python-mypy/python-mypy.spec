@@ -19,7 +19,11 @@
 %define types_psutil_version 7.0.0.20250401
 %define types_setuptools_version 78.1.0.20250329
 %bcond_without test
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-mypy
 Version:        1.17.0
@@ -121,9 +125,7 @@ rm docs/make.bat
 %python_clone -a  %{buildroot}%{_bindir}/mypyc
 %python_clone -a  %{buildroot}%{_bindir}/stubgen
 %python_clone -a  %{buildroot}%{_bindir}/stubtest
-%if %{with libalternatives}
 %python_group_libalternatives mypy dmypy mypyc stubgen stubtest
-%endif
 # solve "W: python-doc-in-package" in 3.9, 3.10 and 3.11, but not in 3.8 (thus -f to ignore the error)
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/mypyc/doc
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -153,17 +155,14 @@ donttest+=" or PEP561Suite"
 %pytest -n auto -k "not (testallexcept ${donttest})"
 %endif
 
-%if %{with libalternatives}
 %pre
 %python_libalternatives_reset_alternative mypy
-%else
 
 %post
 %python_install_alternative mypy dmypy mypyc stubgen stubtest
 
 %postun
 %python_uninstall_alternative mypy
-%endif
 
 %files %{python_files}
 %doc docs/

@@ -566,4 +566,12 @@ reveal_type(Context[MyBot]().bot)
     <comment></comment>
     <requestid>1296148</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>ba6d2011944a62141a47db1b297eef15</srcmd5>
+    <version>1.17.0</version>
+    <time>1755094988</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the libalternatives condition</comment>
+    <requestid>1299074</requestid>
+  </revision>
 </revisionlist>
