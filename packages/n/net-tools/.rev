@@ -442,4 +442,12 @@ See see http://lists.opensuse.org/opensuse-factory/2015-06/msg00133.html</commen
     <comment></comment>
     <requestid>1298353</requestid>
   </revision>
+  <revision rev="61" vrev="5">
+    <srcmd5>4d9e0561d9fbadf995ae894cde2b5b79</srcmd5>
+    <version>2.10</version>
+    <time>1755094975</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1298935</requestid>
+  </revision>
 </revisionlist>

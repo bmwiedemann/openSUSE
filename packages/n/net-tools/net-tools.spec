@@ -37,6 +37,8 @@ Patch7:         0007-Introduce-T-notrim-option-in-netstat.patch
 Patch8:         net-tools-CVE-2025-46836.patch
 # PATCH-FIX-UPSTREAM net-tools-CVE-2025-46836-regression.patch bsc1243581 sbrabec@suse.com -- Fix regression introduced by net-tools-CVE-2025-46836.patch.
 Patch9:         net-tools-CVE-2025-46836-regression.patch
+# PATCH-FIX-UPSTREAM net-tools-CVE-2025-46836-error-reporting.patch bsc1243581 sbrabec@suse.com -- Provide more readable error for interface name size checking.
+Patch10:        net-tools-CVE-2025-46836-error-reporting.patch
 BuildRequires:  help2man
 Recommends:     traceroute >= 2.0.0
 Provides:       net_tool = %{version}

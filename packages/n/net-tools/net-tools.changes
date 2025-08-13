@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 11 12:42:17 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Provide more readable error for interface name size checking
+  introduced by net-tools-CVE-2025-46836.patch
+  (bsc#1243581, net-tools-CVE-2025-46836-error-reporting.patch).
+
+-------------------------------------------------------------------
 Mon Aug  4 06:27:05 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Fix a regression in net-tools-CVE-2025-46836.patch (bsc#1246608).
