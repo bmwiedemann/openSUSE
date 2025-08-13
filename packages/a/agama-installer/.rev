@@ -317,4 +317,20 @@
   (bsc#1246857)</comment>
     <requestid>1296551</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>f0bea54cfe35cefe6f076e5bb220f62e</srcmd5>
+    <version>17.0.0</version>
+    <time>1755095368</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix handling of Driver Update Disks when they are placed in local
+  file systems (bsc#1247682, bsc#1247776).
+
+- fix DUD application in 99-agama-dud-apply.sh (jsc#PED-13262)
+
+- Boot by default from disk to avoid endless loop in unattended
+  installation (bsc#1247438)
+
+  (gh#agama-project/agama#2617).</comment>
+    <requestid>1299044</requestid>
+  </revision>
 </revisionlist>
