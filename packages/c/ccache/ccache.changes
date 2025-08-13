@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  4 21:49:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- switch cpp-httplib requirement to cmake(httplib) as preferred and
+  supported by upstream
+
+-------------------------------------------------------------------
 Tue Jun  3 14:15:07 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to 4.11.3:

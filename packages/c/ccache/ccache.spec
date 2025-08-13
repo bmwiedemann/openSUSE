@@ -2,6 +2,7 @@
 # spec file for package ccache
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +43,7 @@ BuildRequires:  fmt-devel
 %if %{?suse_version} > 1500
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig(cpp-httplib)
+BuildRequires:  cmake(httplib)
 # SLE15 requires gcc11 for std::filesystem
 %else
 BuildRequires:  gcc11
