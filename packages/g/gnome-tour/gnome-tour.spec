@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-tour
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,15 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           gnome-tour
-Version:        48.1
+Version:        48.1.openSUSE+git20250811.6a9a0df
 Release:        0
 Summary:        GNOME Tour & Greeter
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
-URL:            https://gitlab.gnome.org/GNOME/gnome-tour
+URL:            https://github.com/openSUSE/gnome-tour
 Source0:        %{name}-%{version}.tar.zst
 Source2:        vendor.tar.zst
+Patch0:         gnome-tour-fix-vi-translation.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging

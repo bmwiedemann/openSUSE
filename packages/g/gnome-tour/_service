@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="url">https://gitlab.gnome.org/GNOME/gnome-tour.git</param>
+    <param name="url">https://github.com/openSUSE/gnome-tour.git</param>
     <param name="scm">git</param>
-    <param name="revision">48.1</param>
-    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="revision">opensuse</param>
+    <param name="versionformat">48.1.openSUSE+git%cd.%h</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
 <!--   <param name="changesgenerate">enable</param> -->
@@ -20,4 +20,3 @@
   <param name="update">true</param>
   </service>
 </services>
-

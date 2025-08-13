@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Aug 11 14:42:43 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to latest version in https://github.com/openSUSE/gnome-tour:
+  * Revert "Remove from autostart if exists in /etc/xdg", we want this
+    to be handled solely
+
+-------------------------------------------------------------------
+Mon Aug 11 13:17:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gnome-tour-fix-vi-translation.patch: Fix translation to be
+  usable in XML file.
+- Do not install autostart logic; we want this to be handled solely
+  by openSUSE-welcome-launcher.
+
+-------------------------------------------------------------------
+Wed Apr 23 06:09:40 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add .openSUSE to the version to show that it's a fork.
+
+-------------------------------------------------------------------
+Tue Apr  8 07:43:45 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build openSUSE fork from
+  https://github.com/openSUSE/gnome-tour/tree/opensuse
+- Add Gnome Tour to autostart to use as welcome app for openSUSE
+  distributions with GNOME desktop.
+
+-------------------------------------------------------------------
 Sat Mar 15 12:21:30 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.1:
