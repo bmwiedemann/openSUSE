@@ -36,6 +36,9 @@ Group:          Development/Languages/Python
 URL:            https://python-markdown.github.io/
 Source:         https://files.pythonhosted.org/packages/source/m/markdown/markdown-%{version}.tar.gz
 Patch0:         markdown-3.0-python37.patch
+# PATCH-FIX-UPSTREAM fix-py314.patch gh#Python-Markdown/markdown#1547 mcepl@suse.com
+# Fix failing cases for Python 3.14
+Patch1:         fix-py314.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module importlib-metadata >= 4.4 if %python-base < 3.10}
 BuildRequires:  %{python_module pip}

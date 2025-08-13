@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 12 18:28:43 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add fix-py314.patch to fix failing tests on 3.14.* or 3.13.6+
+  (gh#Python-Markdown/markdown#1547).
+
+-------------------------------------------------------------------
 Wed Aug  6 18:16:02 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - set the minimum version of setuptools to 77.0 to match upstream
