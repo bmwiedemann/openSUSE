@@ -1,7 +1,7 @@
 #
 # spec file for package python-identify
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,15 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?sle15_python_module_pythons}
 Name:           python-identify
-Version:        2.6.12
+Version:        2.6.13
 Release:        0
 Summary:        File identification library for Python
 License:        MIT
@@ -33,8 +39,13 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 Recommends:     python-editdistance
 BuildArch:      noarch
 %python_subpackages
@@ -56,6 +67,10 @@ File identification library for Python, including license file SPDX identifier.
 
 %check
 %pytest
+
+%pre
+# removing old update-alternatives entries
+%python_libalternatives_reset_alternative identify-cli
 
 %post
 %python_install_alternative identify-cli

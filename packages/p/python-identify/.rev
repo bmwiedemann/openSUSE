@@ -196,4 +196,15 @@
     * Identify XSLT files</comment>
     <requestid>1282362</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8e909db3b34245ebedb00a72f6f0e5aa</srcmd5>
+    <version>2.6.13</version>
+    <time>1755095373</time>
+    <user>dimstar_suse</user>
+    <comment>- migrate to libalternatives
+- Update to 2.6.13
+  * Added C++ 'ipp' and 'tpp' file extensions
+</comment>
+    <requestid>1299082</requestid>
+  </revision>
 </revisionlist>

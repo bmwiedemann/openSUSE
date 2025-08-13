@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 12 13:48:11 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- migrate to libalternatives
+
+-------------------------------------------------------------------
+Tue Aug 12 12:39:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6.13
+  * Added C++ 'ipp' and 'tpp' file extensions
+
+-------------------------------------------------------------------
 Tue Jun  3 07:34:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.6.12
