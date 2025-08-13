@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Aug 13 05:32:04 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip flaky test_keyboardinterrupt_during_test, the timeout increase
+  doesn't always help.
+- Fix build for Leap
+
+-------------------------------------------------------------------
+Tue Aug 12 08:54:42 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to 4.10.0:
+  + Added the feed_data() method to the BufferedByteReceiveStream
+    class, allowing users to inject data directly into the buffer
+  + Added various class methods to wrap existing sockets as
+    listeners or socket streams
+  + Added a hierarchy of connectable stream classes for
+    transparently connecting to various remote or local endpoints
+    for exchanging bytes or objects
+  + Added context manager mix-in classes (anyio.ContextManagerMixin
+    and anyio.AsyncContextManagerMixin) to help write classes that
+    embed other context managers, particularly cancel scopes or
+    task groups
+  + Added the ability to specify the thread name in start_blocking
+   _portal()
+  + Added anyio.notify_closing to allow waking anyio.wait_readable
+    and anyio.wait_writable before closing a socket. Among other
+    things, this prevents an OSError on the ProactorEventLoop.
+  + Incorporated several documentation improvements from the
+    EuroPython 2025 sprint
+  + Added a documentation page explaining why one might want to use
+    AnyIO's APIs instead of asyncio's
+  + Updated the to_interpreters module to use the public
+    concurrent.interpreters API on Python 3.14 or later
+  + Fixed anyio.Path.copy() and anyio.Path.copy_into() failing on
+    Python 3.14.0a7
+  + Fixed return annotation of __aexit__ on async context managers.
+  + Fixed rollover boundary check in SpooledTemporaryFile so that
+    rollover only occurs when the buffer size exceeds max_size
+  + Migrated testing and documentation dependencies from extras to
+    dependency groups
+  + Fixed compatibility of anyio.to_interpreter with Python 3.14.0
+  + Fixed SyntaxWarning on Python 3.14 about return in finally
+  + Fixed RunVar name conflicts. RunVar instances with the same
+    name should not share storage
+  + Renamed the BrokenWorkerIntepreter exception to
+    BrokenWorkerInterpreter. The old name is available as a
+    deprecated alias.
+  + Fixed an edge case in CapacityLimiter on asyncio where a task,
+    waiting to acquire a limiter gets cancelled and is subsequently
+    granted a token from the limiter, but before the cancellation
+    is delivered, and then fails to notify the next waiting task
+
+-------------------------------------------------------------------
 Thu Aug  7 09:33:03 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Increase timeout in in test_keyboardinterrupt_during_test, it helps

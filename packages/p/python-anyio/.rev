@@ -431,4 +431,43 @@ SR for python stack proposal</comment>
   with flaky tests in i586 arches.</comment>
     <requestid>1298106</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c6e2f2267edf5031a31482c6bb174532</srcmd5>
+    <version>4.10.0</version>
+    <time>1755095013</time>
+    <user>dimstar_suse</user>
+    <comment>Should fix the build in Staging:C
+
+- Skip flaky test_keyboardinterrupt_during_test, the timeout increase
+  doesn't always help.
+- Fix build for Leap
+
+- Update to 4.10.0:
+  + Added the feed_data() method to the BufferedByteReceiveStream
+    class, allowing users to inject data directly into the buffer
+  + Added various class methods to wrap existing sockets as
+    listeners or socket streams
+  + Added a hierarchy of connectable stream classes for
+    transparently connecting to various remote or local endpoints
+    for exchanging bytes or objects
+  + Added context manager mix-in classes (anyio.ContextManagerMixin
+    and anyio.AsyncContextManagerMixin) to help write classes that
+    embed other context managers, particularly cancel scopes or
+    task groups
+  + Added the ability to specify the thread name in start_blocking
+   _portal()
+  + Added anyio.notify_closing to allow waking anyio.wait_readable
+    and anyio.wait_writable before closing a socket. Among other
+    things, this prevents an OSError on the ProactorEventLoop.
+  + Incorporated several documentation improvements from the
+    EuroPython 2025 sprint
+  + Added a documentation page explaining why one might want to use
+    AnyIO's APIs instead of asyncio's
+  + Updated the to_interpreters module to use the public
+    concurrent.interpreters API on Python 3.14 or later
+  + Fixed anyio.Path.copy() and anyio.Path.copy_into() failing on
+    Python 3.14.0a7
+  + Fixed return annotation of __aexit__ on async context managers.</comment>
+    <requestid>1299192</requestid>
+  </revision>
 </revisionlist>

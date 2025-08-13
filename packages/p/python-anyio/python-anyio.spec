@@ -1,7 +1,7 @@
 #
 # spec file for package python-anyio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-anyio%{psuffix}
-Version:        4.9.0
+Version:        4.10.0
 Release:        0
 Summary:        High level compatibility layer for asynchronous event loop implementations
 License:        MIT
@@ -72,6 +72,10 @@ against it to run unmodified on asyncio, curio and trio.
 
 %prep
 %autosetup -p1 -n anyio-%{version}
+# Fix license field in pyproject.toml for older setuptools
+%if 0%{?suse_version} <= 1500
+sed -i 's/license = "MIT"/license = { text = "MIT" }/' pyproject.toml
+%endif
 
 %build
 %pyproject_wheel
@@ -106,6 +110,9 @@ donttest+=" or (test_exception_group and trio)"
 # Fail with python 3.12
 donttest+=" or (test_properties and trio)"
 donttest+=" or (test_properties and asyncio)"
+# Flaky test in i586
+donttest+=" or test_keyboardinterrupt_during_test"
+
 %pytest -m "not network" -k "not (${donttest:4})" -ra
 %endif
 
