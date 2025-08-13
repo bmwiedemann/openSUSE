@@ -218,4 +218,13 @@
     on non-Wayland EGLDisplays</comment>
     <requestid>1277515</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>433f3b27bc6338d6a9feda644ff65e8d</srcmd5>
+    <version>1.1.20</version>
+    <time>1755095009</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.1.20 (needed by 580.76.05 driver, boo#1247907)
+  * Add support for tegradisp-drm</comment>
+    <requestid>1299157</requestid>
+  </revision>
 </revisionlist>
