@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Aug  8 19:23:58 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to version 5.1.26
+  * Fixed hang introduced in apcu 5.1.25, which can occur when
+    defragmentation is triggered under load.
+  * Fixed a test on PHP 8.5.
+
+- Update to version 5.1.25
+  * If the cache is full, try to clean up expired entries based on their
+    per-entry hard TTL even if the soft apc.ttl is 0. Previously the entire
+    cache was discarded.
+  * If a new entry cannot be inserted due to fragmentation, the cache will
+    be defragmented, combining many small free blocks into one big free
+    block by moving around cache entries. This avoids the need to discard
+    the entire cache in more cases.
+  * The access time (which is used by the soft apc.ttl) is now also updated
+    when using apcu_exists().
+  * apc.entries_hint now defaults to 512 entries per 1MB of shared memory.
+    Previously the default was 4096, independent of shm_size. This could
+    lead to a large number of hash collisions if shm_size was increased
+    without also increasing entries_hint.
+  * Added apc.mmap_hugepage_size to use huge pages of a certain size for the
+    apcu shared memory segment. This requires support for huge pages to be
+    enabled in the kernel. Note that even if this option is not set, shared
+    memory is still configured to use transparent huge pages.
+  * The apc.shm_segments ini option has been removed. Multiple SHM segments
+    are no longer supported. (They were already not supported when using
+    mmap, which is the default mode of operation)
+  * The apc.smart configuration setting should now work more reliably.
+    Values > 1 can be used to increase the chance of discarding the entire
+    cache when the amount of memory freed by removing expired entries was
+    too small. This could be useful if performance degrades due to executing
+    the logic to remove expired entries (+ defragmentation) too frequently
+    during periods of high memory usage.
+  * The number of cache cleanups performed (removal of expired entries) is
+    now available in the array returned by apcu_cache_info() (via array key
+    "cleanups").
+  * The number of defragmentations performed is now available in the array
+    returned by apcu_cache_info() (via array key "defragmentations").
+  * Fixed several issues that caused inserting new entries to fail
+    unexpectedly.
+
+-------------------------------------------------------------------
 Wed Oct  2 20:00:03 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 5.1.24
