@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 12 03:03:21 UTC 2025 - Joey Lee <jlee@suse.com>
+
+- SLE shim should includes vendor-dbx-sles.esl instead of
+  vendor-dbx-opensuse.esl. Fixed it in shim.spec.
+
+        verify='SUSE Linux Enterprise Secure Boot CA1'
+-       vendor_dbx='vendor-dbx-opensuse.esl'
++       vendor_dbx='vendor-dbx-sles.esl'
+
+-------------------------------------------------------------------
 Wed Aug  6 06:27:40 UTC 2025 - Joey Lee <jlee@suse.com>
 
 - Building with the latest version of gcc in the codebase:

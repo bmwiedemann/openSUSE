@@ -228,7 +228,7 @@ for suffix in "${suffixes[@]}"; do
     elif test "$suffix" = "sles"; then
 	cert=%{SOURCE4}
 	verify='SUSE Linux Enterprise Secure Boot CA1'
-	vendor_dbx='vendor-dbx-opensuse.esl'
+	vendor_dbx='vendor-dbx-sles.esl'
 %ifarch x86_64
 	signature=%{SOURCE11}
 	signature_nx=%{SOURCE21}
