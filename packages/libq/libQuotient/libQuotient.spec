@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package libQuotient
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,17 +23,16 @@
 %define lib_suffix Qt6
 %define qt6_version 6.4
 %else
-ExclusiveArch: do_not_build
+ExclusiveArch:  do_not_build
 %endif
 %define soversion 0_9
 %define sonum 0.9
 %define rname libQuotient
 Name:           libQuotient%{?pkg_suffix}
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 Summary:        Library for Qt Matrix Clients
 License:        LGPL-2.1-only
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/quotient-im/libQuotient
 Source0:        https://github.com/quotient-im/%{rname}/archive/%{version}/%{rname}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.26
@@ -61,7 +60,6 @@ Quaternion.
 
 %package -n libQuotient%{?qt6:%{lib_suffix}-}%{soversion}
 Summary:        Library for Qt Matrix Clients
-Group:          System/Libraries
 
 %description -n libQuotient%{?qt6:%{lib_suffix}-}%{soversion}
 Library for Qt-based Matrix chat clients. It is required by
@@ -69,13 +67,12 @@ Quaternion.
 
 %package -n libQuotient%{?pkg_suffix}-devel
 Summary:        Development files for libQuotient
-Group:          Development/Libraries/C and C++
 Requires:       libQuotient%{?qt6:%{lib_suffix}-}%{soversion} = %{version}
 %if 0%{?qt6}
 Requires:       cmake(Qt6Gui) >= %{qt6_version}
+Requires:       cmake(Qt6Keychain)
 Requires:       cmake(Qt6Network) >= %{qt6_version}
 Requires:       cmake(Qt6Sql) >= %{qt6_version}
-Requires:       cmake(Qt6Keychain)
 %endif
 Requires:       cmake(Olm)
 Requires:       pkgconfig(openssl)

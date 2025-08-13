@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug 13 06:45:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.9.4
+  * Support room version 12
+  * A few tweaks and fixes that previously landed in dev are now
+   backported to 0.9
+  * Add a signal when a new thread is created
+  * Fix building with Qt 6.10 and newer
+  * Unify and fix Qt Keychain jobs handling internally
+  * Use a smaller number for syncs without timeouts to stop
+   confusing internal API
+  * Fix a crash in the readmarker code
+  * Use a standardised .part extension for in-progress downloads
+  * Improved performance in E2EE code, especially for accounts
+   with many devices
+  * Fix downloading to a temporary file
+  * Fix caching rooms with / in ids
+
+-------------------------------------------------------------------
 Thu Apr  3 20:22:52 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.9.3
