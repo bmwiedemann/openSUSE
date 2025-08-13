@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 12 06:50:11 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.5:
+  + 4l2: fix memory leak for dynamic resolution change
+  + videorate, imagefreeze: add support for JPEG XS
+
+-------------------------------------------------------------------
 Fri Jul 25 09:25:25 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Remove BuildRequires: libQt5PlatformHeaders-devel which isn't

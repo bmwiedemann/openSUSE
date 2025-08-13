@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamer-plugins-good
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %endif
 
 Name:           gstreamer-plugins-good
-Version:        1.26.4
+Version:        1.26.5
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
