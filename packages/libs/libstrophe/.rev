@@ -302,4 +302,14 @@
     + xmpp_conn_restore_sm_state()</comment>
     <requestid>1252785</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>c9cfba2ce4ca4f3d27f04f6cdc09f3c4</srcmd5>
+    <version>0.14.0</version>
+    <time>1755101763</time>
+    <user>dimstar_suse</user>
+    <comment>- fix gcc15 build, add libstrophe-0.14.0-gcc15.patch from upstream
+- add upstream signing key
+- do not bootstrap during build, and other spec file tweaks</comment>
+    <requestid>1299229</requestid>
+  </revision>
 </revisionlist>

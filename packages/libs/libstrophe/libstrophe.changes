@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 21 22:14:40 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix gcc15 build, add libstrophe-0.14.0-gcc15.patch from upstream
+- add upstream signing key
+- do not bootstrap during build, and other spec file tweaks
+
+-------------------------------------------------------------------
 Thu Mar 13 14:15:02 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.0:
