@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 12 15:18:22 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 12509c0f.patch: Fix build on python 3.13.6.
+
+-------------------------------------------------------------------
 Wed May 21 22:46:00 UTC 2025 - llyyr <llyyr@yukari.in>
 
 - Update libplacebo to version 7.351.0. See details in:
