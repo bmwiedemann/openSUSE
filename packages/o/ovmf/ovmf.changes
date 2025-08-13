@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 12 01:52:15 UTC 2025 - Richard Lyu <richard.lyu@suse.com>
+
+- Update firmware descriptors for SEV-SNP and TDX (bsc#1247847)
+  - Add 50-ovmf-x86_64-sev-snp.json to support the 'amd-sev-snp' feature.
+  - Remove the sev-snp feature from 50-ovmf-x86_64-sev.json.
+  - Update the device in 60-ovmf-x86_64-tdx.json from 'pflash' to 'memory'.
+
+-------------------------------------------------------------------
 Fri Jul  4 06:08:42 UTC 2025 - Richard Lyu <richard.lyu@suse.com>
 
 - Revert the following change due to security concerns and potential underlying issues.
