@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 12 07:45:21 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Do not register random recovery pin during FDE intallation.
+  (bsc#1247941)
+- 5.0.23
+
+-------------------------------------------------------------------
 Wed Jul 23 13:30:13 UTC 2025 - Stefan Schubert <schubi@suse.de>
 
 - Proposal cleanup: If the system supports BLS bootloader, select
