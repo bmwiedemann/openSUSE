@@ -328,4 +328,12 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1286312</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>6cddcb2188964b5eea38f2c806949b54</srcmd5>
+    <version>2.7.1</version>
+    <time>1755094964</time>
+    <user>dimstar_suse</user>
+    <comment>- Make the libalternatives transition conditional</comment>
+    <requestid>1298892</requestid>
+  </revision>
 </revisionlist>
