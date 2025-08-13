@@ -1,7 +1,7 @@
 #
 # spec file for package shotcut
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 # NOTE: Appears there are no .pc files in qt6
 #%%(pkg-config --modversion Qt6Core)
 Name:           shotcut
-Version:        25.05.11
+Version:        25.07.26
 Release:        0
 Summary:        Video and audio editor and creator
 License:        GPL-3.0-or-later
