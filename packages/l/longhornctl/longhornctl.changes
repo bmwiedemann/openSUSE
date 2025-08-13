@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Aug 06 11:44:19 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 1.9.1:
+  * release: update version file for v1.9.1
+  * fix(deps): update patch digest dependencies to v0.33.3
+  * fix(workflow): use correct token
+  * fix(workflow): create token on demand
+  * fix: fix credential eror
+  * release: update version file for v1.9.1-rc1
+  * fix(deps): update patch digest dependencies
+  * fix(deps): update github.com/longhorn/go-common-libs digest to 81fc0ee
+  * fix(deps): update patch digest dependencies
+  * fix(deps): update patch digest dependencies
+  * fix(deps): update module github.com/longhorn/longhorn-manager to v1.9.0
+  * release: update version file for v1.9.0
+  * release: update version file for v1.9.0-rc4
+  * fix(deps): update patch digest dependencies
+  * release: update version file for v1.9.0-rc3
+  * fix(deps): update patch digest dependencies to v0.33.1
+  * fix(deps): update patch digest dependencies
+  * release: update version file for v1.9.0-rc2
+  * fix(deps): update patch digest dependencies
+  * chore(deps): update docker/dockerfile docker tag to v1.15.1
+  * release: update version file for v1.9.0-rc1
+  * chore(deps): update docker/dockerfile docker tag to v1.15.0
+  * fix(deps): update patch digest dependencies
+  * fix(deps): update github.com/longhorn/go-common-libs digest to 0dd2ad3
+  * feat: update comment
+  * feat: use ID_LIKE instead of ID
+  * fix(deps): update patch digest dependencies
+  * fix(deps): update patch digest dependencies
+  * feat(installer): add support for SLE Micro OS
+  * fix(deps): update patch digest dependencies
+  * chore: update ImageBciBase to registry.suse.com/bci/bci-base:15.6
+  * chore(Dockerfile): update golangci-lint to v1.64.6
+  * chore(deps): update docker dependencies
+  * fix(deps): update module github.com/longhorn/longhorn-manager to v1.9.0-dev-20250309
+  * fix(deps): update patch digest dependencies
+  * fix(deps): update module github.com/longhorn/longhorn-manager to v1.9.0-dev-20250223
+  * fix(deps): update module github.com/spf13/cobra to v1.9.1
+  * fix(ci): fix multi-platform build env issue for gha
+  * fix(ci): fixed project name
+  * fix(deps): update module github.com/spf13/cobra to v1.9.0
+  * fix(deps): update github.com/longhorn/go-common-libs digest to 151615b
+  * chore(deps): update dependency go to v1.24.0
+  * fix(deps): update patch digest dependencies
+  * feat: self-contained container image build
+  * chore(vendor): update dependencies
+  * fix(deps): update patch digest dependencies
+  * chore(deps): update docker/dockerfile docker tag to v1.13.0
+  * fix(deps): update module sigs.k8s.io/kustomize/kyaml to v0.19.0
+  * fix(deps): update patch digest dependencies
+  * fix(deps): update github.com/longhorn/go-common-libs digest to ec79818
+  * chore(version): update version file to v1.9.0-dev
+  * fix(deps): update module github.com/otiai10/copy to v1.14.1
+  * fix(deps): update github.com/longhorn/go-common-libs digest to 5a6ca24
+  * fix(deps): update github.com/longhorn/go-common-libs digest to 3f84afe
+
+-------------------------------------------------------------------
 Mon Mar 10 06:50:16 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.8.1:
