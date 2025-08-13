@@ -33,4 +33,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1290715</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3c455bf399ccc6ab01f798988f54be2f</srcmd5>
+    <version>0.13.0</version>
+    <time>1755094986</time>
+    <user>dimstar_suse</user>
+    <comment>- Make the libalternatives transition conditional</comment>
+    <requestid>1299067</requestid>
+  </revision>
 </revisionlist>
