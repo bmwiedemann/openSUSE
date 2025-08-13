@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug 11 13:33:47 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.2:
+  + Fix bug that caused that challenge was incorrectly reused if
+    invalid or expired.
+  + Add support for "data-ciphers-fallback" option.
+  + Add GUI support for "data-ciphers" option.
+  + Fix export for password connection type that was not exporting
+    some fields.
+  + Fix mnemonics in editor's Identity - Advanced view
+  + Auth-dialog ported to GTK4
+  + Import certificates into the XDG_DATA_HOME directory.
+  + Updated translations.
+- Drop nm-openvpn-fix-crash.patch: Fixed upstream (in a slightly
+  different way).
+- Rebase fix-for-missing-whirlpool-hmac-authentication.patch with
+  quilt.
+
+-------------------------------------------------------------------
 Tue Mar  4 06:10:20 UTC 2025 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add nm-openvpn-fix-crash.patch: service: fix a crash when empty
