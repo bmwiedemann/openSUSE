@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define libname acme
 Name:           python-%{libname}
-Version:        4.1.1
+Version:        4.2.0
 Release:        0
 Summary:        Python library for the ACME protocol
 License:        Apache-2.0
@@ -31,7 +31,6 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyOpenSSL >= 25.0.0}
 BuildRequires:  %{python_module pyRFC3339}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytz >= 2019.3}
 BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -41,7 +40,6 @@ Requires:       python-cryptography >= 43.0.0
 Requires:       python-josepy >= 2.0.0
 Requires:       python-pyOpenSSL >= 25.0.0
 Requires:       python-pyRFC3339
-Requires:       python-pytz >= 2019.3
 Requires:       python-requests >= 2.20.0
 BuildArch:      noarch
 %if %{?suse_version} < 1500

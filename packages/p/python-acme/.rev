@@ -864,4 +864,18 @@
     could not be shorter than certbot's default renewal time.</comment>
     <requestid>1286019</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>d511099b4a165b765b3a04d5733a5ca1</srcmd5>
+    <version>4.2.0</version>
+    <time>1755095431</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.0
+  * Catches and ignores errors during the directory fetch for ARI checking
+    so that these errors do not hinder the actual certificate issuance.
+  * Removed the dependency on pytz.
+  * Deprecated acme.crypto_util.probe_sni
+  * Support for Python 3.9 was deprecated and will be removed in our next
+    planned release.</comment>
+    <requestid>1299118</requestid>
+  </revision>
 </revisionlist>

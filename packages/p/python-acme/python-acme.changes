@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 12 15:45:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.2.0
+  * Catches and ignores errors during the directory fetch for ARI checking
+    so that these errors do not hinder the actual certificate issuance.
+  * Removed the dependency on pytz.
+  * Deprecated acme.crypto_util.probe_sni
+  * Support for Python 3.9 was deprecated and will be removed in our next
+    planned release.
+
+-------------------------------------------------------------------
 Fri Jun 13 14:29:12 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.1.1
