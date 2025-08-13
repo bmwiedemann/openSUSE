@@ -2260,4 +2260,11 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <comment>Move network interfaces in own issue snippet to allow admins to disable it.</comment>
     <requestid>1297965</requestid>
   </revision>
+  <revision rev="317" vrev="315">
+    <srcmd5>3362b0726369399a92ec6979aea818c4</srcmd5>
+    <version>unknown</version>
+    <time>1755080355</time>
+    <user>dimstar_suse</user>
+    <comment>kernel-firmwares are pulled in explicitly onto the DVD (with more control)</comment>
+  </revision>
 </revisionlist>
