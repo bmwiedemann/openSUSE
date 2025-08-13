@@ -7,4 +7,12 @@
     <comment>LSP server for RPM Spec files.</comment>
     <requestid>1146355</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b7b40abc680121d76d6f3032da9bea07</srcmd5>
+    <version>0.0.1+git.1754294706.19064e2</version>
+    <time>1755095449</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1299141</requestid>
+  </revision>
 </revisionlist>

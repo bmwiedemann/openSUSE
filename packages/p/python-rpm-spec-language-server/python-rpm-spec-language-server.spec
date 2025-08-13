@@ -1,7 +1,10 @@
 #
 # spec file for package python-rpm-spec-language-server
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +27,14 @@
 %bcond_with libalternatives
 %endif
 Name:           python-rpm-spec-language-server
-Version:        0.0.1+git.1707722214.4c775f5
+Version:        0.0.1+git.1754294706.19064e2
 Release:        0
 Summary:        Language Server for RPM spec files
 License:        GPL-2.0-or-later
 URL:            https://github.com/dcermak/rpm-spec-language-server
 # Source:         https://files.pythonhosted.org/packages/source/r/rpm-spec-language-server/rpm_spec_language_server-%%{version}.tar.gz
 Source:         rpm-spec-language-server-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.11}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module wheel}

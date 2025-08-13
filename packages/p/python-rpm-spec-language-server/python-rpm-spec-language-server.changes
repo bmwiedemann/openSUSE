@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Aug 05 18:06:21 UTC 2025 - mcepl@cepl.eu
+
+- Update to version 0.0.1+git.1754294706.19064e2:
+  * Correct postgresql package name to not install in Fedora container
+  * drop packages which no longer exist from installing them
+  * Remove Leap 15.5 from the container builds
+  * Fix container build for Fedora 41
+  * Require at least rpm-ship 0.2.0
+  * Add elixir115 to the packages to filter out
+  * Ignore more files in the extension
+  * Add dummy publisher
+  * Add BCI based container
+  * Improve expansion of macros like %name, %version in specfiles on Hover
+  * Add tests for TEXT_DOCUMENT_HOVER
+  * Add a workaround for vscode needing completions without % in certain spec sections
+  * [leap container] add a workaround for rpm shim not working correctly
+  * [leap container] Use the correct python interpreter for launching the lang server
+  * Properly quote $IMAGE variable in LABEL
+  * Add documentation for the container mode
+  * Add containers for Tumbleweed, Leap, Fedora & CentOS
+  * Make sleep timeout in tests configurable via environment variable
+  * Update ignore files
+  * Lower python version requiremt to ^3.9
+  * Add support for an experimental container mode
+  * Add missing note that the server downloads spec.md
+  * Add documentation how to use the server with eglot
+  * Unquote paths in case they contain special characters
+  * Make parsing of markdown more robust
+  * Use specfile.constants to augment the autocompletion data
+  * Unify AutoCompleteDoc.{preamble,dependencies} into tags
+  * Don't try to read spec.md from the rpm package if it is not there
+  * Add tests for documentation extraction
+  * Extend documentation, add explicit types & use kw arguments
+  * Strip out trailing whitespaces in spec.md extraction
+  * Fetch spec.md from upstream if not in cache or on the system
+  * Add documentation how to use the server with lsp-mode in Emacs
+  * Fix codecov upload (git is missing in CI image)
+
+-------------------------------------------------------------------
 Mon Feb 12 21:58:26 UTC 2024 - mcepl@cepl.eu
 
 - Update to version 0.0.1+git.1707722214.4c775f5:
