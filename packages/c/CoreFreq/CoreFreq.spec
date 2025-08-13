@@ -25,6 +25,8 @@ URL:            https://github.com/cyring/CoreFreq
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source100:      corefreqd.service
 Source101:      preamble
+# PATCH-FIX-OPENSUSE  fix-leap16-compilation.patch bsc#1247592
+Patch:          fix-leap16-compilation.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
@@ -40,7 +42,10 @@ and superiors, and AMD Families 0Fh–17h (Zen), 18h (Hygon
 Dhyana).
 
 %prep
-%autosetup -p1
+%setup
+%if 0%{?suse_version} == 1600 && 0%{?is_opensuse}
+%patch -P 0 -p 1
+%endif
 
 %build
 %make_build

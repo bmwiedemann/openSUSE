@@ -1,0 +1,22 @@
+diff -ruN CoreFreq-2.0.8.orig/x86_64/corefreqk.h CoreFreq-2.0.8/x86_64/corefreqk.h
+--- CoreFreq-2.0.8.orig/x86_64/corefreqk.h	2025-08-06 14:14:26.771406762 +0200
++++ CoreFreq-2.0.8/x86_64/corefreqk.h	2025-08-06 15:02:28.729320262 +0200
+@@ -700,7 +700,7 @@
+ 
+ #if defined(CONFIG_AMD_NB) && LINUX_VERSION_CODE >= KERNEL_VERSION(4, 10, 0)
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 14, 0) /* asm/amd_node.h */
++
+ static u16 amd_pci_dev_to_node_id(struct pci_dev *pdev)
+ {
+ 	return PCI_SLOT(pdev->devfn) - AMD_NODE0_PCI_SLOT;
+@@ -708,9 +708,6 @@
+ 
+ #define GetRootFromNode(_node)	pci_get_domain_bus_and_slot( 0x0, 0x0,	\
+ 							PCI_DEVFN(0x0, 0x0) )
+-#else
+-#define GetRootFromNode(_node)	node_to_amd_nb(_node)->root
+-#endif
+ 
+ #define AMD_SMN_RW(node, address, value, write, indexPort, dataPort)	\
+ ({									\
