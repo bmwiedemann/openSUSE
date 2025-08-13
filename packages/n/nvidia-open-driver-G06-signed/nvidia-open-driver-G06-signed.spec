@@ -16,7 +16,7 @@
 #
 
 
-%define gfx_version 570.172.08
+%define gfx_version 580.76.05
 %define cuda_version 580.65.06
 
 %global flavor @BUILD_FLAVOR@%{?nil}
@@ -82,6 +82,7 @@ Source11:       pesign-copy-sources
 Source12:       pesign-spec-macros
 Source14:       group-source-files.pl
 Source15:       kmp-trigger.sh
+Source17:       kmp-post.sh
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -108,8 +109,11 @@ ExclusiveArch:  x86_64 aarch64
 %if 0%{!?_builddir:1}
 %define _builddir /home/abuild/rpmbuild/BUILD
 %endif
+%if 0%{!?_sourcedir:1}
+%define _sourcedir /home/abuild/rpmbuild/SOURCES
+%endif
 
-%(cat %kmp_template_name > %_builddir/nvidia-kmp-template)
+%(sed -e '/^%%post\>/ r %_sourcedir/kmp-post.sh' %kmp_template_name > %_builddir/nvidia-kmp-template)
 %(echo "%triggerin -p /bin/bash -n %%{-n*}-kmp-%1 -- nvidia-common-G06 = %{version}"      >> %_builddir/nvidia-kmp-template)
 %(cat %_sourcedir/kmp-trigger.sh                                                          >> %_builddir/nvidia-kmp-template)
 #  NOTE: kernel_module_package macro affects preference among nvidia, nvidia-open

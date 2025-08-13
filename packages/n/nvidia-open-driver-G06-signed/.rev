@@ -842,4 +842,15 @@
   * CVE-2025-23279 (bsc#1247532)</comment>
     <requestid>1298634</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>53dfb862d53bb65d19d35c4fd4c1d176</srcmd5>
+    <version>580.76.05</version>
+    <time>1755095418</time>
+    <user>dimstar_suse</user>
+    <comment>- update non-CUDA variant to 580.76.05 (boo#1247907)
+- get rid of rule of older KMPs not to load nvidia_drm module,
+  which are still installed in parallel and therefore still
+  active (boo#1247923)</comment>
+    <requestid>1299112</requestid>
+  </revision>
 </revisionlist>
