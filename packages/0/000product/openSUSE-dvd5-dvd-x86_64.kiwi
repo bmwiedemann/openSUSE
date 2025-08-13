@@ -891,7 +891,6 @@
       <repopackage name="kdoctools-lang"/>
       <repopackage name="kdump"/>
       <repopackage name="kernel-default"/>
-      <repopackage name="kernel-firmware-all"/>
       <repopackage name="kernel-firmware-amdgpu"/>
       <repopackage name="kernel-firmware-ath10k"/>
       <repopackage name="kernel-firmware-ath11k"/>
@@ -909,13 +908,11 @@
       <repopackage name="kernel-firmware-marvell"/>
       <repopackage name="kernel-firmware-media"/>
       <repopackage name="kernel-firmware-mediatek"/>
-      <repopackage name="kernel-firmware-mellanox"/>
       <repopackage name="kernel-firmware-mwifiex"/>
       <repopackage name="kernel-firmware-network"/>
       <repopackage name="kernel-firmware-nfp"/>
       <repopackage name="kernel-firmware-nvidia"/>
       <repopackage name="kernel-firmware-platform"/>
-      <repopackage name="kernel-firmware-prestera"/>
       <repopackage name="kernel-firmware-qcom"/>
       <repopackage name="kernel-firmware-qlogic"/>
       <repopackage name="kernel-firmware-radeon"/>
