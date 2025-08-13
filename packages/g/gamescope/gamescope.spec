@@ -18,7 +18,7 @@
 
 %bcond_without  intree_libs
 Name:           gamescope
-Version:        3.16.11
+Version:        3.16.15
 Release:        0
 Summary:        Micro-compositor optimized for running video games on Wayland
 License:        BSD-2-Clause
@@ -30,6 +30,7 @@ Source2:        glm-1.0.1.tar.xz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  glslang-devel
+BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 # for git describe
@@ -134,6 +135,7 @@ meson subprojects packagefiles --apply
 
 %install
 %meson_install --skip-subprojects
+%fdupes %{buildroot}/%{_datadir}
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -150,7 +152,9 @@ meson subprojects packagefiles --apply
 %{_datadir}/vulkan/implicit_layer.d/VkLayer_FROG_gamescope_wsi.%{_arch}.json
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/scripts/
+%dir %{_datadir}/%{name}/looks/
 %{_datadir}/%{name}/scripts/00-gamescope
+%{_datadir}/%{name}/looks/*.cube
 %doc %{_datadir}/%{name}/scripts/README.md
 
 %changelog
