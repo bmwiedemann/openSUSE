@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 12 12:50:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.7
+  * Change stale issue and discussion handling to run once a week
+    by @DmitriyMusatkin in (#541)
+  * [fix] Retry with checksum result in failure by @TingDaoK in (#543)
+
+-------------------------------------------------------------------
 Wed Jul 23 08:07:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.6
