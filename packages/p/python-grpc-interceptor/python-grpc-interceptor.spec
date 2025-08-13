@@ -1,7 +1,7 @@
 #
 # spec file for package python-grpc-interceptor
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,14 @@ Summary:        Simplifies gRPC interceptors
 License:        MIT
 URL:            https://github.com/d5h-foss/grpc-interceptor
 Source:         https://github.com/d5h-foss/grpc-interceptor/archive/refs/tags/v%{version}.tar.gz#/grpc-interceptor-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module grpcio >= 1.49.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module protobuf >= 4.21.9}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-grpcio >= 1.49.1
 Recommends:     python-protobuf >= 4.21.9
 BuildArch:      noarch
@@ -58,6 +59,8 @@ context.
 %pytest
 
 %files %{python_files}
+%license LICENSE
+%doc README.md
 %{python_sitelib}/grpc_interceptor
 %{python_sitelib}/grpc_interceptor-%{version}.dist-info
 
