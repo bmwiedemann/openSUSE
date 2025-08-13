@@ -167,4 +167,18 @@
   * Direct TLS: Stop connection test after failure.</comment>
     <requestid>1208075</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9d602aeb12b1bc29ec87aa3ee66a2db8</srcmd5>
+    <version>0.5.1</version>
+    <time>1755101762</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0:
+  Added:
+  * Add support for punycode domains.
+  Changed:
+  * Support ALPN for BOSH and websocket connections.
+  * BOSH + websocket: Check certificate validity for target domain not service domain.
+  * Update link relations to version of 2025-03-27.</comment>
+    <requestid>1299224</requestid>
+  </revision>
 </revisionlist>

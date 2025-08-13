@@ -1,7 +1,7 @@
 #
 # spec file for package xmpp-dns
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xmpp-dns
-Version:        0.4.3
+Version:        0.5.1
 Release:        0
 Summary:        A CLI tool to check XMPP SRV records
 License:        BSD-2-Clause
