@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug  5 18:09:48 UTC 2025 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Update to strace 6.16
+  * Added -N/--arg-names option for printing syscall argument names.
+  * Implemented setting of system call information using
+    PTRACE_SET_SYSCALL_INFO ptrace API introduced in Linux 6.16.
+  * Implemented decoding of SO_RCVPRIORITY and SO_PASSRIGHTS socket options.
+  * Implemented decoding of RTA_NH_ID and RTA_FLOWLABEL netlink attributes.
+  * Updated decoding of statx syscall.
+  * Updated lists of BR_*, CRYPTOCFGA_*, FUTEX2_*, IORING_*, IPSET_*, KVM_*,
+    MDB_*, NETDEV_*, PR_*, RXRPC_*, SW_*, THERMAL_*, and V4L2_*
+    constants.
+  * Updated lists of ioctl commands from Linux 6.16.
+
+-------------------------------------------------------------------
 Mon May 26 13:58:54 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Update to strace 6.15
