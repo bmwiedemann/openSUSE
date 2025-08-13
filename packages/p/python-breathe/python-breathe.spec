@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-breathe
 Version:        4.36.0
@@ -31,10 +35,15 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+BuildRequires:  alts
 Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 Requires:       python-Sphinx >= 7.2
 Provides:       python-sphinxcontrib-breathe = %{version}
 Obsoletes:      python-sphinxcontrib-breathe < %{version}
@@ -61,6 +70,12 @@ able to read and  render Doxygen xml output.
 
 %pre
 %python_libalternatives_reset_alternative breathe-apidoc
+
+%post
+%python_install_alternative breathe-apidoc
+
+%postun
+%python_uninstall_alternative breathe-apidoc
 
 %files %{python_files}
 %doc README.rst
