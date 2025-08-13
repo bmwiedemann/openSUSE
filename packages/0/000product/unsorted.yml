@@ -1323,7 +1323,6 @@ unsorted:
   - bash-doc 
   - bash-git-prompt 
   - bash-legacybin 
-  - bash-loadables 
   - bat 
   - bat-bash-completion 
   - bat-extras 
@@ -12586,7 +12585,7 @@ unsorted:
   - libcpluff0 
   - libcpluffxx-devel 
   - libcpluffxx0 
-  - libcpp-httplib0_23 
+  - libcpp-httplib0_24 
   - libcppunit-1_15-1 
   - libcppunit-1_15-1-32bit 
   - libcppunit_subunit0 
@@ -14830,7 +14829,7 @@ unsorted:
   - libnutclient2 
   - libnutclientstub1 
   - libnutconf0 
-  - libnutscan3 
+  - libnutscan4 
   - libnvidia-egl-gbm-devel 
   - libnvidia-egl-gbm1 
   - libnvidia-egl-gbm1-32bit 
@@ -19726,10 +19725,10 @@ unsorted:
   - nvidia-libXNVCtrl-devel 
   - nvidia-modprobe 
   - nvidia-open-driver-G06-signed-cuda-default-devel 
+  - nvidia-open-driver-G06-signed-cuda-kmp-default 
   - nvidia-open-driver-G06-signed-cuda-kmp-longterm 
   - nvidia-open-driver-G06-signed-cuda-longterm-devel 
   - nvidia-open-driver-G06-signed-default-devel 
-  - nvidia-open-driver-G06-signed-kmp-default 
   - nvidia-open-driver-G06-signed-kmp-longterm 
   - nvidia-open-driver-G06-signed-longterm-devel 
   - nvidia-settings 
@@ -21275,7 +21274,6 @@ unsorted:
   - perl-Crypt-PasswdMD5 
   - perl-Crypt-RC4 
   - perl-Crypt-Rijndael 
-  - perl-Crypt-Rot13 
   - perl-Crypt-SSLeay 
   - perl-Crypt-SaltedHash 
   - perl-Crypt-SysRandom 
@@ -23775,7 +23773,6 @@ unsorted:
   - python3-reno 
   - python3-rgw 
   - python3-rpmconf 
-  - python3-rrdtool 
   - python3-satyr 
   - python3-sbommage 
   - python3-seccomp 
@@ -34414,6 +34411,7 @@ unsorted:
   - python313-rpyc 
   - python313-rq 
   - python313-rq-scheduler 
+  - python313-rrdtool 
   - python313-rsa 
   - python313-rss2email 
   - python313-rst.linker 

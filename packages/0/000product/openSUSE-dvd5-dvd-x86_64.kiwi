@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20250812" schemaversion="4.1">
+<image name="OBS__openSUSE___20250813" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20250812</productvar>
+      <productvar name="VERSION">20250813</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250812,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250813,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250812/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250813/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -168,6 +168,7 @@
       <repopackage name="bash"/>
       <repopackage name="bash-completion"/>
       <repopackage name="bash-lang"/>
+      <repopackage name="bash-loadables"/>
       <repopackage name="bash-sh"/>
       <repopackage name="bc"/>
       <repopackage name="bcm20702a1-firmware"/>
@@ -3236,7 +3237,7 @@
       <repopackage name="numactl"/>
       <repopackage name="numlockx"/>
       <repopackage name="nvidia-libXNVCtrl"/>
-      <repopackage name="nvidia-open-driver-G06-signed-cuda-kmp-default"/>
+      <repopackage name="nvidia-open-driver-G06-signed-kmp-default"/>
       <repopackage name="nvme-cli"/>
       <repopackage name="nvme-cli-bash-completion"/>
       <repopackage name="obex-data-server"/>
