@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 12 18:33:26 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.58.0:
+  * Add EVP_PKEY_check and EVP_PKEY_public_check
+  * Rewrite 4-fold batched SHAKE to be amenable to batched Keccak-F1600 assembly
+  * Fix Win64 unwind info alignment
+  * Migrate MSVC tests to CodeBuild
+  * Add optimized + verified hybrid AArch64 assembly for batched SHA3/SHAKE
+  * target.h: more clearly check for ppc64 endianness
+  * Impl SSL_client_hello_get1_extensions_present and friends
+  * Implement SSL_set_verify_result
+  * ML-DSA constant-time hardening for caddq, poly_chknorm, decompose
+
+-------------------------------------------------------------------
 Mon Aug 11 11:13:59 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.57.1:
