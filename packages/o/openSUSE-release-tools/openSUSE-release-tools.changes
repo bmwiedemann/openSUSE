@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Aug 06 10:26:26 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250806.05cbe030:
+  * ttm/releaser.py: Fix check for config completeness
+
+-------------------------------------------------------------------
+Mon Aug 04 09:00:19 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250804.a945653f:
+  * check_source.py: Skip name validation for mkosi builds
+
+-------------------------------------------------------------------
+Tue Jul 29 12:45:22 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250729.e4cb814c:
+  * staging-installcheck: fix syntax failure introduced with 597d48be
+
+-------------------------------------------------------------------
+Tue Jul 29 08:10:45 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250729.d25df07e:
+  * osclib: core: explicitly replace OBS instance prefix in devel_project_fallback
+
+-------------------------------------------------------------------
+Mon Jul 28 15:36:37 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250728.2755573d:
+  * TTM: only publish override repos if publish_multiple_product_repo config is enabled
+
+-------------------------------------------------------------------
+Mon Jul 28 14:32:03 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250728.49d5752d:
+  * staging-installcheck: allow checking random devel projects
+
+-------------------------------------------------------------------
+Mon Jul 28 14:10:01 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250728.1772cc0c:
+  * Publish the each override repository
+  * TTM: do allow to override product_repo for ftp
+
+-------------------------------------------------------------------
+Mon Jul 28 08:47:35 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250728.12e0bdc5:
+  * tests/maintenance_tests.py: Add test cases for maintainer submissions
+  * check_maintenance_incidents.py: Expand devel pkg roles for maintainer check
+  * tests/maintenance_tests.py: Refactor and fix
+
+-------------------------------------------------------------------
+Fri Jul 25 08:48:23 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250725.9a33dc77:
+  * gocd/checkers.opensuse.gocd.yaml: Rewrite ssh://src.opensuse.org to https://
+
+-------------------------------------------------------------------
+Fri Jul 25 07:03:21 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250725.99e6a216:
+  * Make it a valid date as otherwise source_validator rejects it
+  * Fix flake8 warning
+
+-------------------------------------------------------------------
 Thu Jul 03 15:13:02 UTC 2025 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20250703.42999618:
