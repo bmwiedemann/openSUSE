@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Aug  7 11:47:55 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
+
+- Allow to "add" or "remove" patterns from the current or defined
+  user selection patterns list (bsc#1247456).
+
+-------------------------------------------------------------------
+Wed Aug  6 15:37:52 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Automatically retry registration when a network error happens
+  during autoinstallation (bsc#1246990)
+
+-------------------------------------------------------------------
+Wed Aug  6 12:52:41 UTC 2025 - José Iván López González <jlopez@suse.com>
+
+- Emit HTTP event when storage is configured, including the client
+  id (gh#agama-project/agama#2640).
+
+-------------------------------------------------------------------
+Mon Aug  4 09:29:29 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not return an Err when a connection is not activated or 
+  deactivated when adding or updating it but just log the error
+  and write the connections profiles (bsc#1245548).
+
+-------------------------------------------------------------------
+Fri Aug  1 10:10:40 UTC 2025 - Martin Vidner <mvidner@suse.com>
+
+- Fixed "agama config edit" when used with a remote --host option
+  (gh#agama-project/agama#2628).
+
+-------------------------------------------------------------------
+Thu Jul 31 11:54:49 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add support for a "questions" section in the Agama configuration
+  that allows defining how to answer questions (bsc#1246997).
+
+-------------------------------------------------------------------
+Tue Jul 29 09:50:59 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Do not complain about missing a selected product when it is not
+  required (bsc#1247248).
+
+-------------------------------------------------------------------
 Mon Jul 28 12:40:40 UTC 2025 - Martin Vidner <mvidner@suse.com>
 
 - update pam crate not to use a vulnerable users dependency
@@ -27,6 +70,17 @@ Wed Jul 23 11:37:04 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
 
 - Fix CLI connection update when using an special character in
   the connection ID (bsc#1246930, gh#agama-project/agama#2605).
+
+-------------------------------------------------------------------
+Thu Jul 22 11:00:00 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Fixed a potential race condition when deleting network connections
+  in deactivate_connection() (gh#agama-project/agama#2582).
+
+-------------------------------------------------------------------
+Tue Jul 22 10:47:36 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Log ProgressChanged events (gh#agama-project/agama#2597).
 
 -------------------------------------------------------------------
 Tue Jul 22 07:53:34 UTC 2025 - Martin Vidner <mvidner@suse.com>
