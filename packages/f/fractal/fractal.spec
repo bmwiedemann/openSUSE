@@ -1,7 +1,7 @@
 #
 # spec file for package fractal
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %{?is_beta:%bcond_without beta_build}%{!?is_beta:%bcond_with beta_build}
 
 Name:           fractal
-Version:        12.rc
+Version:        12.0
 Release:        0
 Summary:        Matrix group messaging app
 License:        GPL-3.0-or-later
