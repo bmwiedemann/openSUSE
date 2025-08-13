@@ -15,4 +15,12 @@
     <comment>- Use SourceUrls instead of services to download project sources</comment>
     <requestid>1274865</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6f6894ca2070d38f79a3bcf23cb7287c</srcmd5>
+    <version>0.3.3+git~14~gcee0d0d</version>
+    <time>1755095428</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1299105</requestid>
+  </revision>
 </revisionlist>

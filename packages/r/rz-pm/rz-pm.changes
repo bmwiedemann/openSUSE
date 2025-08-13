@@ -1,14 +1,30 @@
 -------------------------------------------------------------------
+Tue Aug  5 14:47:31 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Fix bco#1247616 (CVE-2025-21613)
+- Update to version 0.3.3+git~14~gcee0d0d:
+  * cee0d0d Bump github.com/urfave/cli/v2 from 2.27.5 to 2.27.7
+  * ebfd27f Bump github.com/go-git/go-git/v5 from 5.12.0 to 5.16.2
+  * 6ec16c4 Bump github.com/stretchr/testify from 1.9.0 to 1.10.0
+  * a9bb477 Remove deprecated ioutil import in database.go (#64)
+  * 824c612 Add a lockfile to prevent concurrent site modification
+  * 5aafd7a Create a custom fake simple plugin for testing (#60)
+  * 49f0d96 Require updated rizin in tests, refactor (#62)
+  * 4d2a480 Replace deprecated ioutil with alternatives (#58)
+  * d31b330 Add flag to disable DB update
+  * b3fedae Update all dependencies (#52)
+
+-------------------------------------------------------------------
 Tue May  6 10:46:26 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
-- Use SourceUrls instead of services to download project sources 
+- Use SourceUrls instead of services to download project sources
 
 -------------------------------------------------------------------
 Mon Mar  3 08:59:11 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
-- Require rizin 
+- Require rizin
 
 -------------------------------------------------------------------
 Sat Mar  1 02:35:43 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
-- Initial packaging at version 0.3.3 
+- Initial packaging at version 0.3.3
