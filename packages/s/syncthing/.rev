@@ -1555,4 +1555,12 @@
     <comment>Update to v1.30.0</comment>
     <requestid>1289517</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>4b054ce0129bfc7607d5b1c301c2cb8d</srcmd5>
+    <version>2.0.0</version>
+    <time>1755095479</time>
+    <user>dimstar_suse</user>
+    <comment>This is a major version update but I built and installed the rpm yesterday locally and didn't run into any issues so far.</comment>
+    <requestid>1299207</requestid>
+  </revision>
 </revisionlist>

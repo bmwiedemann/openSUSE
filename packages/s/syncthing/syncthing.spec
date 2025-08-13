@@ -17,7 +17,7 @@
 
 
 Name:           syncthing
-Version:        1.30.0
+Version:        2.0.0
 Release:        0
 Summary:        Continuous File Synchronisation
 License:        MPL-2.0
@@ -34,6 +34,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  update-desktop-files
 BuildRequires:  golang(API) >= 1.14
+BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 
@@ -71,9 +72,9 @@ export CGO_CPPFLAGS="${CPPFLAGS}" CGO_CFLAGS="${CFLAGS}" CGO_CXXFLAGS="${CXXFLAG
 export GOFLAGS="-trimpath -mod=vendor"
 
 # build and install syncthing without automatic updates
-go run build.go -no-upgrade -version v%{version} install
+go run build.go -no-upgrade -version v%{version} -tags libsqlite3 install
 # build and install strelaysrv without automatic updates
-go run build.go -no-upgrade -version v%{version} install strelaysrv
+go run build.go -no-upgrade -version v%{version} -tags libsqlite3 install strelaysrv
 popd
 
 %sysusers_generate_pre %{SOURCE3} %{name}-strelaysrv %{name}-strelaysrv-user.conf
