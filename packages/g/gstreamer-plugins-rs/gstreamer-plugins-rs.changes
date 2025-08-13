@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Aug 12 07:14:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.5:
+  + awstranscriber2, awstranslate: Handle multiple stream-start
+    event
+  + ceaX08overlay: support ANY caps features, allowing e.g.
+    memory:GLMemory if downstream supports the overlay composition
+    meta
+  + hlsmultivariantsink: Fix master playlist version
+  + rtprecv: Drop state lock before chaining RTCP packets from the
+    RTP chain function
+  + Add rtpbin2 examples
+  + rtpmp4apay2: fix payload size prefix
+  + rtp: threadshare: fix some property ranges
+  + mpegtslivesrc: Remove leftover debug message
+  + ts-audiotestsrc fixes
+  + threadshare: fix flush for ts-queue ts-proxy & ts-intersrc
+  + threadshare: fix regression in ts-proxysrc
+  + threadshare: improvements to some elements
+  + threadshare: Enable windows Win32_Networking feature
+  + threadshare: queue & proxy: fix race condition stopping
+  + threadshare: Also enable windows Win32_Networking_WinSock
+    feature
+  + tracers: pipeline-snapshot: reduce WebSocket connection log
+    level
+  + tracers: queue-levels: add support for threadshare DataQueue
+    related elements
+  + tracers: Update to etherparse 0.19
+  + transcriberbin: Fix handling of upstream latency query
+  + webrtcsink: Move videorate before videoconvert and videoscale
+    to avoid processing frames that would be dropped
+  + Fix various new clippy 1.89 warnings
+
+-------------------------------------------------------------------
 Thu Jul 24 07:32:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.4:
