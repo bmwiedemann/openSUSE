@@ -1,7 +1,7 @@
 #
 # spec file for package lhasa
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           lhasa
 %define lname	liblhasa0
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Program to unpack LHARC archives
 License:        ISC
@@ -78,7 +78,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %_libdir/liblhasa.so.0*
 
 %files devel
-%_includedir/liblhasa-1.0
+%_includedir/liblhasa-%{version}
 %_libdir/liblhasa.so
 %_libdir/pkgconfig/liblhasa.pc
 
