@@ -1,7 +1,7 @@
 #
 # spec file for package tuba
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,34 +16,39 @@
 #
 
 
-%define         appname dev.geopjr.Tuba
+%define         appid dev.geopjr.Tuba
 Name:           tuba
-Version:        0.9.2
+Version:        0.10.1
 Release:        0
 Summary:        Browse the Fediverse
 License:        GPL-3.0-only
 URL:            https://github.com/GeopJr/Tuba
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  appstream-glib
-BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
+BuildRequires:  gettext-tools
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  meson >= 0.56
+BuildRequires:  meson >= 0.60
 BuildRequires:  pkgconfig
-BuildRequires:  vala >= 0.48
-BuildRequires:  pkgconfig(clapper-0.0)
+BuildRequires:  vala >= 0.56
+BuildRequires:  pkgconfig(clapper-0.0) >= 0.8.0
+BuildRequires:  pkgconfig(clapper-gtk-0.0) >= 0.8.0
 BuildRequires:  pkgconfig(gee-0.8) >= 0.8.5
+BuildRequires:  pkgconfig(gexiv2) >= 0.14
+BuildRequires:  pkgconfig(glib-2.0) >= 2.80.0
 BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(gstreamer-base-1.0)
-BuildRequires:  pkgconfig(gtksourceview-5)
+BuildRequires:  pkgconfig(gtk4) >= 4.18.0
+BuildRequires:  pkgconfig(gtksourceview-5) >= 5.7.1
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.4.4
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.5
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.7.5
+BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsecret-1) >= 0.20
 BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(libspelling-1)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.10
+BuildRequires:  pkgconfig(webkitgtk-6.0)
 
 %lang_package
 
@@ -62,7 +67,7 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.10
 
 %install
 %meson_install
-%find_lang %{appname}
+%find_lang %{appid}
 
 %check
 %meson_test
@@ -70,16 +75,15 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.10
 %files
 %license LICENSE
 %doc CODE_OF_CONDUCT.md README.md
-%{_bindir}/%{appname}
-%{_datadir}/applications/%{appname}.desktop
+%{_bindir}/%{appid}
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/dbus-1/services/%{appid}.service
 %{_datadir}/glib-2.0/schemas/dev.geopjr.Tuba.gschema.xml
-%{_datadir}/gtksourceview-5/language-specs/fedi-*.lang
-%{_datadir}/gtksourceview-5/styles/fedi*
-%{_iconsdir}/hicolor/scalable/apps/%{appname}.svg
-%{_iconsdir}/hicolor/symbolic/apps/%{appname}-symbolic.svg
-%{_mandir}/man?/%{appname}.?%{?ext_man}
-%{_datadir}/metainfo/%{appname}.metainfo.xml
+%{_datadir}/metainfo/%{appid}.metainfo.xml
+%{_iconsdir}/hicolor/scalable/apps/%{appid}.svg
+%{_iconsdir}/hicolor/symbolic/apps/%{appid}-symbolic.svg
+%{_mandir}/man?/%{appid}.?%{?ext_man}
 
-%files lang -f %{appname}.lang
+%files lang -f %{appid}.lang
 
 %changelog

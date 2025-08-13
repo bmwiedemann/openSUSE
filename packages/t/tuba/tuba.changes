@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Tue Aug 12 14:20:53 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add a minimum version to clapper BR
+
+-------------------------------------------------------------------
+Mon Aug 11 10:36:37 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 0.10.1:
+  * Composer alt text editor should increase height with the content
+  * gexiv2-0.16 lookup to respect gexiv2 option
+  * Composer editor should have focus by default
+- update to version 0.10.0:
+  * New composer
+  * In-app web browser
+  * Collapse long posts
+  * Grouped notifications
+  * Clapper is now the default video player
+  * Clapper enhancers are now used to play media from third-party services
+  * Desktop notifications will now be withdrawn when viewing the in-app ones
+  * Polls can now display custom emojis
+  * Mastodon quotes support
+  * Iceshrimp Drive
+  * Iceshrimp Bubble Timeline
+  * Ability to forward reports to the instances of all involved parties
+  * Tab switching using alt+1/2/3/N
+  * Quit App menu entry
+  * Other apps by GeopJr in the about dialog
+  * Input hints about spellcheck and completion on text inputs
+  * More reactive scheduled and draft posts views updates
+  * More fluid convergent horizontal lists by using AdwWrapBox
+  * Use appstreamcli over appstream-glib for metadata validation
+  * Clear new notifications when scrolling to top on the Notifications view
+  * Removed UUID migration fallback
+  * Account switcher handles can now take up to two lines
+  * Enforce MATCH_NAME when searching for secrets
+  * When replying use the most private visibility between the user-default and the replying-to
+  * The proxy setting now gets instantly saved in dconf
+  * Windows ARM builds
+  * Proper URI validation and normalization when adding new accounts
+  * Ctrl+L shortcut for searching
+  * Language specs and styles are now embedded
+  * Meson options are now actual features
+  * Match Audio Visualizer's controls to Clapper's
+  * Transition post action hover style
+  * Round search bars
+  * Featured tab on profile that shows endorsed accounts and featured tags
+  * Delete & Redraft
+  * Search history
+  * Adding favorite hashtags to the sidebar
+  * Endorse account
+  * Feature hashtag
+  * Local-only posting when supported
+  * More settings in dconf, less in GUI
+  * Reveal sensitive media by default setting
+  * Hide interaction counters setting
+  * Alt text extraction from image file metadata
+  * Enabled more features for Pleroma
+  * Smooth and optimize audio visualizer updates by animating states
+  * GApplication to parse command line options
+  * D-Bus service file
+  * Long name and handles will now be ellipsized
+  * Language selector will now use the English locale name for searching
+  * Websockets not connecting right away when the instance uses a different domain for them
+  * Manually refreshing would refresh all constructed timelines instead of just the visible one
+  * Random non-reproducible crashes due to weak references by getting rid of most of them
+  * Scroll to open post when opening a thread
+  * Inability to toggle the sidebar when collapsed using gestures
+  * Removed hacks around labels with custom emojis since the bugs have been fixed upstream
+  * Freezing by attempting to create all profile fields rows allowed when editing your profile
+    when the limit was too high by dynamically appending new rows
+  * Chinese translations not being usable due to the default locale name used
+  * Embed missing icon
+  * Instantly save settings in dconf on window close when work-in-background is enabled
+  * Match libadwaita's 1.7 roundness
+  * Schedule post dialog being too close to the edges
+  * Increased (old) composer's width to fit different locales better
+  * Avatar size bugs from libadwaita 1.7.5
+  * Profile view errors and empty state never being displayed
+  * Lists appearing blank when containing reserved characters when editing them from a profile
+  * Hidden following/followers counts being displayed as -1
+  * Timelines not being able to infinite scroll when the min batch size is too small
+  * Thread open post getting memory leaked
+  * Some widgets not removing all their children when they are getting updated
+  * Open post not being selectable when opening a thread after it gets updated
+  * Spoiler being visible for a millisecond when opening a post in a thread even if it doesn't have a spoiler
+  * Uploading attachments on Windows
+  * Segfault on Windows when opening the scheduling dialog
+  * Account switcher badges being in the wrong position
+  * Sidebar badges not being centered
+  * Screen readers freezing on the timelines
+- use the more common appid as the macro, not appname
+
+-------------------------------------------------------------------
 Sat Mar  1 19:45:18 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.9.2:

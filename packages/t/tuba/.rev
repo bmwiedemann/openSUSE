@@ -116,4 +116,12 @@
   * Simplified status widget layout (forwarded request 1249424 from rrahl0)</comment>
     <requestid>1249425</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f3ed7651cce70b0ec0746c78337838c0</srcmd5>
+    <version>0.10.1</version>
+    <time>1755095341</time>
+    <user>dimstar_suse</user>
+    <comment>- add a minimum version to clapper BR (forwarded request 1299089 from rrahl0)</comment>
+    <requestid>1299090</requestid>
+  </revision>
 </revisionlist>
