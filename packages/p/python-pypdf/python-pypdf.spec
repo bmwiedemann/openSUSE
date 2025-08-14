@@ -18,19 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pypdf
-Version:        5.3.1
+Version:        6.0.0
 Release:        0
 Summary:        PDF toolkit
 License:        BSD-3-Clause
 URL:            https://github.com/py-pdf/pypdf
 Source0:        https://github.com/py-pdf/pypdf/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module flit}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-%if 0%{python_version_nodots} < 311
-Requires:       python-typing_extensions
-%endif
 Provides:       python3-PyPDF2 = %version-%release
 Obsoletes:      python3-PyPDF2 < %version-%release
 BuildArch:      noarch
