@@ -1,8 +1,8 @@
-Index: apache-tomcat-11.0.6-src/java/org/apache/jasper/compiler/JDTCompiler.java
+Index: apache-tomcat-11.0.9-src/java/org/apache/jasper/compiler/JDTCompiler.java
 ===================================================================
---- apache-tomcat-11.0.6-src.orig/java/org/apache/jasper/compiler/JDTCompiler.java
-+++ apache-tomcat-11.0.6-src/java/org/apache/jasper/compiler/JDTCompiler.java
-@@ -310,21 +310,21 @@ public class JDTCompiler extends org.apa
+--- apache-tomcat-11.0.9-src.orig/java/org/apache/jasper/compiler/JDTCompiler.java
++++ apache-tomcat-11.0.9-src/java/org/apache/jasper/compiler/JDTCompiler.java
+@@ -318,23 +318,23 @@ public class JDTCompiler extends org.apa
              } else if (opt.equals("15")) {
                  settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_15);
              } else if (opt.equals("16")) {
@@ -30,9 +30,12 @@ Index: apache-tomcat-11.0.6-src/java/org/apache/jasper/compiler/JDTCompiler.java
 -                settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_23);
 +                settings.put(CompilerOptions.OPTION_Source, "23");
              } else if (opt.equals("24")) {
+-                settings.put(CompilerOptions.OPTION_Source, CompilerOptions.VERSION_24);
++                settings.put(CompilerOptions.OPTION_Source, "24");
+             } else if (opt.equals("25")) {
                  // Constant not available in latest ECJ version shipped with
                  // Tomcat. May be supported in a snapshot build.
-@@ -337,11 +337,11 @@ public class JDTCompiler extends org.apa
+@@ -342,11 +342,11 @@ public class JDTCompiler extends org.apa
                  settings.put(CompilerOptions.OPTION_Source, "25");
              } else {
                  log.warn(Localizer.getMessage("jsp.warning.unknown.sourceVM", opt));
@@ -46,7 +49,7 @@ Index: apache-tomcat-11.0.6-src/java/org/apache/jasper/compiler/JDTCompiler.java
          }
  
          // Target JVM
-@@ -391,29 +391,29 @@ public class JDTCompiler extends org.apa
+@@ -396,32 +396,32 @@ public class JDTCompiler extends org.apa
                  settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_15);
                  settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_15);
              } else if (opt.equals("16")) {
@@ -90,9 +93,14 @@ Index: apache-tomcat-11.0.6-src/java/org/apache/jasper/compiler/JDTCompiler.java
 +                settings.put(CompilerOptions.OPTION_TargetPlatform, "23");
 +                settings.put(CompilerOptions.OPTION_Compliance, "23");
              } else if (opt.equals("24")) {
+-                settings.put(CompilerOptions.OPTION_TargetPlatform, CompilerOptions.VERSION_24);
+-                settings.put(CompilerOptions.OPTION_Compliance, CompilerOptions.VERSION_24);
++                settings.put(CompilerOptions.OPTION_TargetPlatform, "24");
++                settings.put(CompilerOptions.OPTION_Compliance, "24");
+             } else if (opt.equals("25")) {
                  // Constant not available in latest ECJ version shipped with
                  // Tomcat. May be supported in a snapshot build.
-@@ -428,12 +428,12 @@ public class JDTCompiler extends org.apa
+@@ -430,12 +430,12 @@ public class JDTCompiler extends org.apa
                  settings.put(CompilerOptions.OPTION_Compliance, "25");
              } else {
                  log.warn(Localizer.getMessage("jsp.warning.unknown.targetVM", opt));
