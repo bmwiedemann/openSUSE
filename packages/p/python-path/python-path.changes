@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 13 09:16:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 17.1.1
+  * Fixed TempDir constructor arguments. (#236)
+
+-------------------------------------------------------------------
 Mon Jan  6 11:38:57 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 17.1.0

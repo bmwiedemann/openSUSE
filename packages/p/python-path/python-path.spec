@@ -27,7 +27,7 @@
 %define modname path
 %{?sle15_python_module_pythons}
 Name:           python-path%{psuffix}
-Version:        17.1.0
+Version:        17.1.1
 Release:        0
 Summary:        A module wrapper for os.path
 License:        MIT
