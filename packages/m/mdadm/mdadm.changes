@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 21 10:53:04 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Stop emitting %release into program binaries [boo#1246806]
+
+-------------------------------------------------------------------
 Tue May 27 13:28:42 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - monitor: Add MAILFROM address to email envelope to avoid smtp auth

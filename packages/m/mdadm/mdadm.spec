@@ -65,7 +65,7 @@ mdadm is a program that can be used to control Linux md devices.
 %autosetup -p1 -a1
 
 %build
-make %{?_smp_mflags} CC="%__cc" CXFLAGS="%{optflags} -Wno-error" EXTRAVERSION="%{release}" SUSE=yes BINDIR=%{_sbindir}
+%make_build CC="%{__cc}" CXFLAGS="%{optflags} -Wno-error" SUSE=yes BINDIR="%{_sbindir}"
 cd Software-RAID.HOWTO
 sgml2html Software-RAID.HOWTO.sgml
 sgml2txt Software-RAID.HOWTO.sgml
