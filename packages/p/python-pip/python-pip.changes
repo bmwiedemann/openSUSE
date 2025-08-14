@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Aug 13 12:25:02 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 25.2
+  # 25.1
+  * Drop support for Python 3.8.
+  * On python 3.14+, the pkg_resources metadata backend cannot be used
+    anymore.
+  * Hide --no-python-version-warning from CLI help and documentation
+    as it's useless since Python 2 support was removed.
+  * A warning is emitted when the deprecated pkg_resources library is
+    used to inspect and discover installed packages.
+  * Deprecate the legacy setup.py bdist_wheel mechanism. To silence
+    the warning, and future-proof their setup, users should enable
+    --use-pep517 or add a pyproject.toml file to the projects they
+    control.
+  * Using --debug also enables verbose logging.
+  * Display a transient progress bar during package installation.
+  * Add a --group option which allows installation from PEP 735
+    Dependency Groups.
+  * Use PEP 753 "Well-known Project URLs in Metadata" normalization
+    rules when identifying an equivalent project URL to replace
+    a missing Home-Page field in pip show.
+  * Add a new, experimental, pip lock command, implementing PEP 751.
+  * Resolvelib 1.1.0 fixes a known issue where pip would report a
+    ResolutionImpossible error even though there is a valid solution.
+    However, some very complex dependency resolutions that previously
+    resolved may resolve slower or fail with an ResolutionTooDeep error.
+  # 25.2
+  * Declare support for Python 3.14
+  * Automatic download resumption and retrying is enabled by default.
+  * Requires-Python error message displays version clauses in numerical
+    order.
+  * Show time taken instead of eta 0:00:00 at download completion.
+  * Remove warning when cloning from a Git reference that does not look
+    like a commit hash.
+  * pip's own licensing metadata now follows PEP 639. In addition, the
+    licenses of pip's vendored dependencies are now included in the
+    License-File metadata field and in the wheel.
+- Drop no-longer-applicable distutils-reproducible-compile.patch
+  * distlib was trimmed https://github.com/pypa/pip/pull/13342
+- Add upstream flit-core.patch to fix build
+
+-------------------------------------------------------------------
 Thu Apr 17 12:40:51 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - update to 25.0.1

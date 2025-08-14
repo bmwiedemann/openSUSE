@@ -3,11 +3,11 @@
  tests/unit/test_options.py      |    5 +
  2 files changed, 13 insertions(+), 97 deletions(-)
 
-Index: pip-24.3.1/src/pip/_vendor/certifi/core.py
+Index: pip-25.2/src/pip/_vendor/certifi/core.py
 ===================================================================
---- pip-24.3.1.orig/src/pip/_vendor/certifi/core.py
-+++ pip-24.3.1/src/pip/_vendor/certifi/core.py
-@@ -3,112 +3,15 @@ certifi.py
+--- pip-25.2.orig/src/pip/_vendor/certifi/core.py
++++ pip-25.2/src/pip/_vendor/certifi/core.py
+@@ -3,81 +3,14 @@ certifi.py
  ~~~~~~~~~~
  
  This module returns the installation location of cacert.pem or its contents.
@@ -15,16 +15,16 @@ Index: pip-24.3.1/src/pip/_vendor/certifi/core.py
  """
 -import sys
 -import atexit
- 
--def exit_cacert_ctx() -> None:
--    _CACERT_CTX.__exit__(None, None, None)  # type: ignore[union-attr]
 +def read_text(_module=None, _path=None, encoding="ascii"):
 +    with open(where(), "r", encoding=encoding) as data:
 +        return data.read()
  
+-def exit_cacert_ctx() -> None:
+-    _CACERT_CTX.__exit__(None, None, None)  # type: ignore[union-attr]
 +def where() -> str:
 +    return "/etc/ssl/ca-bundle.pem"
  
+-
 -if sys.version_info >= (3, 11):
 -
 -    from importlib.resources import as_file, files
@@ -60,7 +60,7 @@ Index: pip-24.3.1/src/pip/_vendor/certifi/core.py
 -    def contents() -> str:
 -        return files("pip._vendor.certifi").joinpath("cacert.pem").read_text(encoding="ascii")
 -
--elif sys.version_info >= (3, 7):
+-else:
 -
 -    from importlib.resources import path as get_path, read_text
 -
@@ -95,50 +95,21 @@ Index: pip-24.3.1/src/pip/_vendor/certifi/core.py
 -
 -    def contents() -> str:
 -        return read_text("pip._vendor.certifi", "cacert.pem", encoding="ascii")
--
--else:
--    import os
--    import types
--    from typing import Union
--
--    Package = Union[types.ModuleType, str]
--    Resource = Union[str, "os.PathLike"]
--
--    # This fallback will work for Python versions prior to 3.7 that lack the
--    # importlib.resources module but relies on the existing `where` function
--    # so won't address issues with environments like PyOxidizer that don't set
--    # __file__ on modules.
--    def read_text(
--        package: Package,
--        resource: Resource,
--        encoding: str = 'utf-8',
--        errors: str = 'strict'
--    ) -> str:
--        with open(where(), encoding=encoding) as data:
--            return data.read()
--
--    # If we don't have importlib.resources, then we will just do the old logic
--    # of assuming we're on the filesystem and munge the path directly.
--    def where() -> str:
--        f = os.path.dirname(__file__)
--
--        return os.path.join(f, "cacert.pem")
--
--    def contents() -> str:
--        return read_text("pip._vendor.certifi", "cacert.pem", encoding="ascii")
 +def contents() -> str:
 +    return read_text(encoding="ascii")
-Index: pip-24.3.1/tests/unit/test_options.py
+Index: pip-25.2/tests/unit/test_options.py
 ===================================================================
---- pip-24.3.1.orig/tests/unit/test_options.py
-+++ pip-24.3.1/tests/unit/test_options.py
-@@ -1,4 +1,5 @@
+--- pip-25.2.orig/tests/unit/test_options.py
++++ pip-25.2/tests/unit/test_options.py
+@@ -1,6 +1,7 @@
+ from __future__ import annotations
+ 
  import os
 +import os.path
+ from collections.abc import Iterator
  from contextlib import contextmanager
  from optparse import Values
- from tempfile import NamedTemporaryFile
-@@ -10,6 +11,7 @@ import pip._internal.configuration
+@@ -13,6 +14,7 @@ import pip._internal.configuration
  from pip._internal.cli.main import main
  from pip._internal.commands import create_command
  from pip._internal.commands.configuration import ConfigurationCommand
@@ -146,7 +117,7 @@ Index: pip-24.3.1/tests/unit/test_options.py
  from pip._internal.exceptions import PipError
  
  from tests.lib.options_helpers import AddFakeCommandMixin
-@@ -618,6 +620,9 @@ class TestOptionsConfigFiles:
+@@ -621,6 +623,9 @@ class TestOptionsConfigFiles:
          else:
              assert expect == cmd._determine_file(options, need_value=False)
  

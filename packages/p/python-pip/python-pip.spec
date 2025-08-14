@@ -33,7 +33,7 @@
 %define mypython python
 %{?sle15_python_module_pythons}
 Name:           python-pip%{psuffix}
-Version:        25.0.1
+Version:        25.2
 Release:        0
 Summary:        A Python package management system
 License:        MIT
@@ -42,13 +42,13 @@ URL:            https://pip.pypa.io
 Source:         https://github.com/pypa/pip/archive/%{version}.tar.gz#/pip-%{version}-gh.tar.gz
 # PATCH-FIX-OPENSUSE pip-shipped-requests-cabundle.patch -- adapted patch from python-certifi package
 Patch0:         pip-shipped-requests-cabundle.patch
-# PATCH-FIX-UPSTREAM distutils-reproducible-compile.patch gh#python/cpython#8057 mcepl@suse.com
-# To get reproducible builds, byte_compile() of distutils.util now sorts filenames.
-Patch1:         distutils-reproducible-compile.patch
 # PATCH-FIX-OPENSUSE: deal missing ca-certificates as "ssl not available"
-Patch2:         disable-ssl-context-in-buildenv.patch
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module setuptools >= 40.8.0}
+Patch1:         disable-ssl-context-in-buildenv.patch
+# PATCH-FIX-UPSTREAM https://github.com/pypa/pip/pull/13473 Use flit-core to build pip distributions
+# setuptools was unable to handle the new license expression for some reason
+Patch2:         flit-core.patch
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module flit-core >= 3.11}
 # The rpm python-wheel build is bootstrap friendly since 0.42
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -73,6 +73,7 @@ BuildRequires:  %{python_module installer}
 # Test requirements:
 BuildRequires:  %{python_module pip = %{version}}
 BuildRequires:  %{python_module pretend}
+BuildRequires:  %{python_module pytest-socket}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scripttest}
