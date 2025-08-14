@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 13 17:09:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.1.1:
+  This release of CRIU (4.1.1) addresses a critical compatibility issue
+  introduced in the Linux kernel and back-ported to all stable releases.
+
+  The kernel commit (12f147ddd6de "do_change_type(): refuse to operate on
+  unmounted/not ours mounts") addressed the security issue introduced
+  almost 20 years ago. Unfortunately, this change inadvertently broke the
+  restore functionality of mount namespaces within CRIU. Users attempting
+  to restore a container on updated kernels would encounter the error:
+  "mnt-v2: Failed to make mount 476 slave: Invalid argument."
+
+  This release contains the necessary adjustments to CRIU, allowing it to
+  work seamlessly with kernels incorporating this security change.
+
+-------------------------------------------------------------------
 Mon May 26 08:18:40 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - add

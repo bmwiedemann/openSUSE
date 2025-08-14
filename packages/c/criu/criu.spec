@@ -1,7 +1,7 @@
 #
 # spec file for package criu
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
     %define prefer_nftables 0
 %endif
 Name:           criu
-Version:        4.1
+Version:        4.1.1
 Release:        0
 Summary:        Checkpoint/Restore In Userspace Tools
 License:        GPL-2.0-only
