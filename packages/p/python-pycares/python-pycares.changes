@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug  8 12:39:36 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 4.10.0 (actually fixes CVE-2025-48945, bsc#1244691)
+  * Remove unused import by @saghul in #240
+  * Fixup chunked TXT record test by @saghul in #242
+  * Remove overzealous checks by @saghul in #241
+  * Fix OpenBSD build by @saghul in #243
+  * Make result.type Final by @Dreamsorcerer in #246
+  * Idna resource reduction using a length check by @Vizonex in #247
+  * Add read & write process_fd functions by @Vizonex in #245
+  * build(deps): bump pypa/cibuildwheel from 2.23.3 to 3.0.0
+    by @dependabot[bot] in #244
+  * Remove context manager support by @saghul in #252
+  * Fixup test CI by @saghul in #254
+  * Refactor channel destruction logic by @saghul in #253
+- use system c-ares instead of bundled version
+- add python-pycares.rpmlintrc to ignore false positive of using
+  gethostbyname.
+
+-------------------------------------------------------------------
 Wed Jun 18 12:58:39 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 4.9.0 (fixes CVE-2025-48945, bsc#1244691)

@@ -133,4 +133,28 @@
     <comment></comment>
     <requestid>1286872</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9e15951346f5ea526b22e5c947100232</srcmd5>
+    <version>4.10.0</version>
+    <time>1755164166</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.10.0 (actually fixes CVE-2025-48945, bsc#1244691)
+  * Remove unused import by @saghul in #240
+  * Fixup chunked TXT record test by @saghul in #242
+  * Remove overzealous checks by @saghul in #241
+  * Fix OpenBSD build by @saghul in #243
+  * Make result.type Final by @Dreamsorcerer in #246
+  * Idna resource reduction using a length check by @Vizonex in #247
+  * Add read &amp; write process_fd functions by @Vizonex in #245
+  * build(deps): bump pypa/cibuildwheel from 2.23.3 to 3.0.0
+    by @dependabot[bot] in #244
+  * Remove context manager support by @saghul in #252
+  * Fixup test CI by @saghul in #254
+  * Refactor channel destruction logic by @saghul in #253
+- use system c-ares instead of bundled version
+- add python-pycares.rpmlintrc to ignore false positive of using
+  gethostbyname.
+</comment>
+    <requestid>1299158</requestid>
+  </revision>
 </revisionlist>

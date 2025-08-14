@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycares
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pycares
-Version:        4.9.0
+Version:        4.10.0
 Release:        0
 Summary:        Python interface for c-ares
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/saghul/pycares
-Source:         https://files.pythonhosted.org/packages/source/p/pycares/pycares-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pycares/pycares-%{version}.tar.gz
+Source99:       python-pycares.rpmlintrc
 # PATCH-FIX-UPSTREAM cleanup_tests.patch bsc#[0-9]+ mcepl@suse.com
 # Make the test suite slightly more normal
 Patch0:         cleanup_tests.patch
@@ -50,6 +51,7 @@ resolutions asynchronously
 %autosetup -p1 -n pycares-%{version}
 
 %build
+export PYCARES_USE_SYSTEM_LIB=1
 %pyproject_wheel
 
 %install
