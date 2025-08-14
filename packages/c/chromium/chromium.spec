@@ -22,6 +22,7 @@
 %define outputdir out
 # bsc#1108175
 %define __provides_exclude ^lib.*\\.so.*$
+%define __requires_exclude ^libffmpeg\\.so.*$
 # suse_version 1500 all of sle code 15, all of leap15
 # suse_version 1600 all of alp, slfo
 # suse_version 1699 tw
@@ -111,7 +112,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        139.0.7258.66
+Version:        139.0.7258.127
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later

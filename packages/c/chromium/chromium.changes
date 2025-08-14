@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 13 04:21:07 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 139.0.7258.127 (boo#1247981):
+  * CVE-2025-8879: Heap buffer overflow in libaom
+  * CVE-2025-8880: Race in V8
+  * CVE-2025-8901: Out of bounds write in ANGLE
+  * CVE-2025-8881: Inappropriate implementation in File Picker
+  * CVE-2025-8882: Use after free in Aura
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
+Thu Aug  7 15:48:37 CEST 2025 - ro@suse.de
+
+- really install libffmpeg.so if using the bundled one 
+  and block the extra dependency
+
+-------------------------------------------------------------------
 Wed Aug  6 12:47:40 CEST 2025 - ro@suse.de
 
 - add patch:

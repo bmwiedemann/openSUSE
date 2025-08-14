@@ -5832,4 +5832,12 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
    Cr122-ffmpeg-new-channel-layout.patch</comment>
     <requestid>1297930</requestid>
   </revision>
+  <revision rev="473" vrev="1">
+    <srcmd5>1f88a2f4e82360b3e808478ab01c43d3</srcmd5>
+    <version>139.0.7258.127</version>
+    <time>1755164177</time>
+    <user>dimstar_suse</user>
+    <comment>Chromium 139.0.7258.127 (boo#1247981)</comment>
+    <requestid>1299177</requestid>
+  </revision>
 </revisionlist>
