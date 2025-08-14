@@ -6,4 +6,7 @@
   <flavor>MS-HyperV</flavor>
   <flavor>Cloud</flavor>
   <flavor>RaspberryPi</flavor>
+  <flavor>s390x-Cloud</flavor>
+  <flavor>s390x-dasd</flavor>
+  <flavor>ppc64le-4096B-qcow2</flavor>
 </multibuild>

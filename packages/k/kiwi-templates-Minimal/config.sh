@@ -68,12 +68,19 @@ if [ -e /etc/cloud/cloud.cfg ]; then
         systemctl enable cloud-final
 fi
 
-# Enable jeos-firstboot
-mkdir -p /var/lib/YaST2
-touch /var/lib/YaST2/reconfig_system
-
-systemctl mask systemd-firstboot.service
-systemctl enable jeos-firstboot.service
+# Enable jeos-firstboot if installed, disabled by combustion/ignition.
+# However, on s390x without KVM the console is not capable of running
+# jeos-firstboot, use systemd-firstboot as minimal alternative.
+if [[ "$kiwi_profiles" =~ s390x-(dasd|fba|fcp) ]]; then
+        systemctl enable systemd-firstboot
+        # Enable prompting for the root password
+        echo 'root:!unprovisioned' | chpasswd -e
+elif rpm -q --whatprovides jeos-firstboot >/dev/null; then
+        mkdir -p /var/lib/YaST2
+        touch /var/lib/YaST2/reconfig_system
+        systemctl mask systemd-firstboot
+        systemctl enable jeos-firstboot.service
+fi
 
 # Enable firewalld if installed except on VMware
 if [ -x /usr/sbin/firewalld ] && [ "$kiwi_profiles" != "VMware" ]; then
@@ -120,12 +127,14 @@ fi
 #======================================
 # Add default kernel boot options
 #--------------------------------------
-cmdline=('rw' 'quiet' 'systemd.show_status=1' 'console=ttyS0,115200' 'console=tty0')
+consoles='console=ttyS0,115200 console=tty0'
+[[ "$kiwi_profiles" == *"ppc64"* ]] && consoles='console=hvc0,115200 console=tty0'
+[[ "$kiwi_profiles" == *"s390x-Cloud"* ]] && consoles='' # autodetect
+[[ "$kiwi_profiles" == *"s390x-dasd"* ]] && consoles='hvc_iucv=8'
 
-case "${kiwi_profiles}" in
-	*Cloud*) cmdline+=('net.ifnames=0') ;;
-	*HyperV*) cmdline+=('earlyprintk=ttyS0,115200' 'rootdelay=300') ;;
-esac
+cmdline=('rw' 'quiet' 'systemd.show_status=1' ${consoles})
+
+[[ "$kiwi_profiles" == *"HyperV"* ]] && cmdline+=('rootdelay=300')
 
 # Configure SELinux if installed
 # Note: Because of https://github.com/OSInside/kiwi/issues/2709, the root filesystem

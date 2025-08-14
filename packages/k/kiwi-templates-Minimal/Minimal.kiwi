@@ -9,19 +9,23 @@
         <specification>openSUSE Tumbleweed Minimal</specification>
     </description>
     <profiles>
-        <profile name="kvm-and-xen-sdboot" description="Minimal Image for KVM and Xen with systemd-boot" arch="aarch64,x86_64"/>
-        <profile name="kvm-and-xen-grub-bls" description="Minimal Image for KVM and Xen GRUB2 and bootctl" arch="aarch64,x86_64"/>
+        <profile name="kvm-and-xen-sdboot" description="Minimal Image for KVM and Xen with systemd-boot" arch="aarch64,riscv64,x86_64"/>
+        <profile name="kvm-and-xen-grub-bls" description="Minimal Image for KVM and Xen GRUB2 and bootctl" arch="aarch64,riscv64,x86_64"/>
         <profile name="kvm-and-xen" description="Minimal Image for KVM and Xen" arch="aarch64,x86_64"/>
         <profile name="VMware" description="Minimal Image for VMware" arch="x86_64"/>
         <profile name="MS-HyperV" description="Minimal Image for Hyper-V" arch="aarch64,x86_64"/>
         <profile name="Cloud" description="Minimal Image for Cloud" arch="aarch64,x86_64"/>
         <profile name="RaspberryPi" description="Minimal Image for the Raspberry Pi" arch="aarch64"/>
+        <profile name="s390x-Cloud" description="Minimal Image for Cloud" arch="s390x"/>
+        <profile name="s390x-dasd" description="Minimal Image for DASD on z Systems" arch="s390x"/>
+        <profile name="ppc64le-4096B-qcow2" description="Minimal Image for ppc64le (qcow2, 4096B sectors)" arch="ppc64le"/>
     </profiles>
     <preferences profiles="kvm-and-xen" arch="x86_64">
         <version>1.0.0</version>
         <packagemanager>zypper</packagemanager>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
         <type
             image="oem"
             filesystem="btrfs"
@@ -54,6 +58,7 @@
         <version>1.0.0</version>
         <packagemanager>zypper</packagemanager>
         <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
         <type
             image="oem"
             filesystem="btrfs"
@@ -89,6 +94,7 @@
         <version>1.0.0</version>
         <packagemanager>zypper</packagemanager>
         <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
         <type
             image="oem"
             filesystem="btrfs"
@@ -125,6 +131,7 @@
         <packagemanager>zypper</packagemanager>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
         <type
             image="oem"
             filesystem="btrfs"
@@ -157,6 +164,7 @@
         <packagemanager>zypper</packagemanager>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
         <type
             image="oem"
             filesystem="btrfs"
@@ -184,6 +192,7 @@
             <size unit="G">24</size>
             <machine memory="1024" HWversion="10" guestOS="sles-64">
                 <vmdisk id="0" controller="lsilogic"/>
+                <vmnic interface="0" driver="vmxnet3" mode="nat"/>
             </machine>
         </type>
     </preferences>
@@ -193,6 +202,7 @@
         <packagemanager>zypper</packagemanager>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
         <type
             image="oem"
             filesystem="xfs"
@@ -214,6 +224,7 @@
         <packagemanager>zypper</packagemanager>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
         <type
             image="oem"
             filesystem="btrfs"
@@ -247,6 +258,7 @@
         <packagemanager>zypper</packagemanager>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
         <type
             image="oem"
             filesystem="btrfs"
@@ -280,6 +292,7 @@
         <packagemanager>zypper</packagemanager>
         <bootloader-theme>openSUSE</bootloader-theme>
         <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
         <type
             image="oem"
             initrd_system="dracut"
@@ -309,6 +322,90 @@
               <oem-swapsize>1000</oem-swapsize>
               <oem-skip-verify>true</oem-skip-verify>
             </oemconfig>
+        </type>
+    </preferences>
+
+    <preferences profiles="s390x-dasd">
+        <version>16.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
+        <type
+            image="oem"
+            filesystem="btrfs"
+            bootpartition="true"
+            bootpartsize="300"
+            bootfilesystem="ext4"
+            devicepersistency="by-uuid"
+            target_blocksize="4096"
+            btrfs_root_is_snapshot="true"
+            btrfs_quota_groups="true"
+            bundle_format="%N-Image.%A-%M.%m.%p-%I"
+        >
+            <bootloader name="grub2_s390x_emu" timeout="3" targettype="CDL"/>
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="boot/grub2/s390x-emu" mountpoint="boot/grub2/s390x-emu"/>
+                <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
+            </systemdisk>
+            <size unit="G">2</size>
+      </type>
+    </preferences>
+
+    <preferences profiles="s390x-Cloud">
+        <version>16.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
+        <type
+            image="oem"
+            filesystem="xfs"
+            format="qcow2"
+            bootpartition="true"
+            bootpartsize="300"
+            bootfilesystem="ext4"
+            devicepersistency="by-uuid"
+            bundle_format="%N-VM.%A-%M.%m.%p-%I"
+        >
+            <bootloader name="grub2_s390x_emu" timeout="3"/>
+            <size unit="G">2</size>
+        </type>
+    </preferences>
+
+    <preferences profiles="ppc64le-4096B-qcow2">
+        <version>16.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
+        <type
+            image="oem"
+            format="qcow2"
+            filesystem="btrfs"
+            firmware="ofw"
+            devicepersistency="by-uuid"
+            btrfs_quota_groups="true"
+            btrfs_root_is_snapshot="true"
+            target_blocksize="4096"
+            bundle_format="%N-VM.%A-%M.%m.%p-%I"
+        >
+            <systemdisk>
+                <volume name="root"/>
+                <volume name="home"/>
+                <volume name="tmp"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="boot/grub2/powerpc-ieee1275"/>
+                <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
+            </systemdisk>
+            <size unit="G">24</size>
         </type>
     </preferences>
 
@@ -350,18 +447,23 @@
         <package name="combustion &gt;= 1.2"/> <!-- 1.2+ has improved firstboot detection -->
         <package name="NetworkManager"/>
         <package name="dracut-kiwi-oem-repart"/>
+        <package name="update-bootloader"/>
     </packages>
 
     <!-- GRUB everywhere except for -grub-bls and -sdboot flavors -->
-    <packages type="image" profiles="kvm-and-xen,VMware,MS-HyperV,Cloud,RaspberryPi">
+    <packages type="image" profiles="kvm-and-xen,VMware,MS-HyperV,Cloud,RaspberryPi,s390x-dasd,s390x-Cloud,ppc64le-4096B-qcow2">
         <package name="grub2"/>
         <package name="grub2-arm64-efi" arch="aarch64"/>
-        <package name="grub2-branding-openSUSE" bootinclude="true"/>
+        <!-- Not available on s390x -->
+        <package name="grub2-branding-openSUSE" arch="aarch64,ppc64le,riscv64,x86_64"/>
+        <package name="grub2-riscv64-efi" arch="riscv64"/>
+        <package name="grub2-s390x-emu" arch="s390x"/>
+        <package name="grub2-powerpc-ieee1275" arch="ppc64le"/>
         <package name="grub2-x86_64-efi" arch="x86_64"/>
     </packages>
 
     <!-- Not needed in Cloud as it uses XFS and cloud-init -->
-    <packages type="image" profiles="kvm-and-xen,kvm-and-xen-sdboot,kvm-and-xen-grub-bls,VMware,MS-HyperV,RaspberryPi">
+    <packages type="image" profiles="kvm-and-xen,kvm-and-xen-sdboot,kvm-and-xen-grub-bls,VMware,MS-HyperV,RaspberryPi,s390x-dasd,ppc64le-4096B-qcow2">
         <!-- Only for btrfs -->
         <package name="btrfsprogs"/>
         <package name="btrfsmaintenance"/>
@@ -376,7 +478,7 @@
         <package name="firewalld"/>
     </packages>
 
-    <packages type="image" profiles="kvm-and-xen,VMware,MS-HyperV,RaspberryPi">
+    <packages type="image" profiles="kvm-and-xen,VMware,MS-HyperV,RaspberryPi,s390x-dasd,ppc64le-4096B-qcow2">
         <package name="grub2-snapper-plugin"/>  <!-- snapper - grub2 - integration, "small" -->
     </packages>
 
@@ -386,11 +488,11 @@
     </packages>
 
     <packages type="image" profiles="kvm-and-xen,kvm-and-xen-sdboot,kvm-and-xen-grub-bls">
-        <package name="xen-tools-domU"/>
-        <package name="xen-libs"/>
+        <package name="xen-tools-domU" arch="aarch64,x86_64"/>
+        <package name="xen-libs" arch="aarch64,x86_64"/>
         <package name="kernel-default-base"/>
     </packages>
-    <packages type="image" profiles="kvm-and-xen,kvm-and-xen-sdboot,kvm-and-xen-grub-bls,Cloud">
+    <packages type="image" profiles="kvm-and-xen,kvm-and-xen-sdboot,kvm-and-xen-grub-bls,Cloud,s390x-Cloud,ppc64le-4096B-qcow2">
         <package name="qemu-guest-agent"/>
     </packages>
 
@@ -410,8 +512,9 @@
     </packages>
 
     <packages type="image" profiles="kvm-and-xen-grub-bls">
-        <package name="grub2-x86_64-efi-bls" arch="x86_64"/>
         <package name="grub2-arm64-efi-bls" arch="aarch64"/>
+        <package name="grub2-riscv64-efi-bls" arch="riscv64"/>
+        <package name="grub2-x86_64-efi-bls" arch="x86_64"/>
     </packages>
 
     <packages type="image" profiles="VMware">
@@ -420,16 +523,22 @@
         <package name="open-vm-tools" arch="x86_64"/>
         <package name="kernel-default-base"/>
     </packages>
-    <packages type="image" profiles="Cloud">
+    <packages type="image" profiles="Cloud,s390x-Cloud">
         <package name="cloud-init"/>
         <package name="cloud-init-config-suse"/>
         <package name="jeos-firstboot"/>
         <package name="xfsprogs"/>
+    </packages>
+    <packages type="image" profiles="Cloud">
         <package name="kernel-default-base"/>
     </packages>
     <packages type="image" profiles="MS-HyperV">
         <package name="hyper-v"/>
         <package name="kernel-default-base"/>
+    </packages>
+    <!-- No kernel-default-base for ppc64le and s390x (yet). -->
+    <packages type="image" profiles="s390x-dasd,s390x-Cloud,ppc64le-4096B-qcow2">
+        <package name="kernel-default"/>
     </packages>
     <packages type="image" profiles="RaspberryPi">
         <package name="raspberrypi-eeprom" arch="aarch64"/>
@@ -460,7 +569,7 @@
         <package name="gzip"/>
     </packages>
 
-    <packages type="bootstrap" profiles="kvm-and-xen,kvm-and-xen-sdboot,kvm-and-xen-grub-bls">
+    <packages type="bootstrap" profiles="kvm-and-xen,kvm-and-xen-sdboot,kvm-and-xen-grub-bls,s390x-Cloud,ppc64le-4096B-qcow2">
         <package name="openSUSE-release-appliance-kvm"/>
     </packages>
     <packages type="bootstrap" profiles="Cloud">
@@ -472,7 +581,7 @@
     <packages type="bootstrap" profiles="VMware">
         <package name="openSUSE-release-appliance-vmware"/>
     </packages>
-    <packages type="bootstrap" profiles="RaspberryPi">
+    <packages type="bootstrap" profiles="RaspberryPi,s390x-dasd">
         <package name="openSUSE-release-appliance-custom"/>
     </packages>
 </image>

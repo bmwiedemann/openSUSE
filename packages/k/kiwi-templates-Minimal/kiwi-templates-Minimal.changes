@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 30 12:11:29 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Add new platforms:
+  * riscv64 support for kvm-and-xen-sdboot and -grub-bls
+  * s390x-dasd and s390x-Cloud
+  * ppc64le-4096B-qcow2
+- Set the locale to en_US by default to avoid an unnecessary
+  systemd-firstboot prompt
+- Drop net.ifnames=0 (bsc#1244667)
+- Add default network configuration to VMware (bsc#1236342)
+- Install update-bootloader explicitly, was previously pulled in
+  only through shim
+
+-------------------------------------------------------------------
 Wed May  7 14:00:14 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - disk.sh: add SECURE_BOOT in /etc/sysconfig/bootloader
