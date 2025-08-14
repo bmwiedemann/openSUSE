@@ -106,4 +106,12 @@
     <comment></comment>
     <requestid>1299087</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>127d242cfd988b34e8c955e4bc85e325</srcmd5>
+    <version>12.0</version>
+    <time>1755164168</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 12 (CVE-2055-55159, boo#1248050): (forwarded request 1299261 from dimstar)</comment>
+    <requestid>1299262</requestid>
+  </revision>
 </revisionlist>
