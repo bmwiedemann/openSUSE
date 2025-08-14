@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug  4 13:34:03 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- bsc#1247093 bsc#1246858
+  Cleanup code by reverting 2 patches and get back to old
+  has_preferred_many initialization.
+  This allows to call numa_set_bind_policy early again.
+A    Cleanup-No-need-to-suppress-possible-errno-anymore.patch
+A    Cleanup-move-has_preferred_many-to-numa_init-again.patch
+
+
+-------------------------------------------------------------------
 Mon Jun 30 18:02:29 UTC 2025 - Thomas Renninger <trenn@suse.de>
 
 - Update to version 2.0.19.14.g690a72c:

@@ -25,6 +25,12 @@ Group:          System/Management
 URL:            https://github.com/numactl/numactl/releases
 Source0:        %{name}-%{version}.tar.gz
 Source2:        baselibs.conf
+#PATCH-FEATURE-UPSTREAM
+#https://github.com/numactl/numactl/pull/249
+Patch0:         Cleanup-move-has_preferred_many-to-numa_init-again.patch
+#PATCH-FEATURE-UPSTREAM
+#https://github.com/numactl/numactl/pull/249
+Patch1:         Cleanup-No-need-to-suppress-possible-errno-anymore.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool

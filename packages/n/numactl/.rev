@@ -678,4 +678,12 @@
     <comment></comment>
     <requestid>1289355</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>d0f67d338860cf5ff1401e16716c7b59</srcmd5>
+    <version>2.0.19.14.g690a72c</version>
+    <time>1755164172</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1299246</requestid>
+  </revision>
 </revisionlist>
