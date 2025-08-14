@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 13 00:29:12 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.3.0
+  * This new release adds support for the following new blocks:
+  * CTA Vendor Specific Video Block
+  * CTA HDR10+ Vendor Specific Video Block
+  * CTA Dolby Vision Vendor Specific Video Block
+  * CTA HDMI Vendor Specific Data Block
+  * CTA HDMI Forum vendor-specific data block
+  * CTA HDMI Forum Sink Capability Data Block
+  * Basic DisplayID version 2 structure
+  * Low-level API has had some function name/signature changes
+
+-------------------------------------------------------------------
 Thu Mar 20 14:42:25 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Add BuildRequires: python3-base; building for Leap 15.6 fails

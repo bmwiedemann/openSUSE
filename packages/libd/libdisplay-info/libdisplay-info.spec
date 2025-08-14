@@ -17,8 +17,8 @@
 
 
 Name:           libdisplay-info
-%define lname libdisplay-info2
-Version:        0.2.0
+%define lname libdisplay-info3
+Version:        0.3.0
 Release:        0
 Summary:        EDID and DisplayID library
 License:        MIT
