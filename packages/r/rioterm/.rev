@@ -167,4 +167,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1296686</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a2060c32bc1ea2f3982c7354375a3552</srcmd5>
+    <version>0.2.28</version>
+    <time>1755164178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.28:
+  * update deps and prepare v0.2.28
+  * update release.md
+  * fix lint
+  * remove damage
+  * drop snapshots
+  * performer
+  * Improve terminal update synchronization and reduce lock contention
+  * wip new sync logic
+  * flake.lock: Update
+  * default_disable_occluded_render as false
+  * mark 0.2.27 for metainfo.xml
+
+- Update to version 0.2.27:
+  * prepare v0.2.27
+  * add notes
+  * use borrowed ID
+  * font id should be always default to respect cell
+  * update releases.md
+  * Fix CJK characters displaying higher than Latin characters
+  * Implement consistent font metrics for CJK rendering
+  * unify clearsubregion to remove texture (ref: #709)
+  * update com.rioterm.Rio.metainfo.xml
+  * update docs about terminfo
+  * update terminfo
+  * prioritize xterm-rio if installed
+
+- Update to version 0.2.26:
+  * update dependencies
+  * Add install instructions for scoop</comment>
+    <requestid>1299257</requestid>
+  </revision>
 </revisionlist>

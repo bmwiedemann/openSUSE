@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Mon Aug 11 16:10:42 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.28:
+  * update deps and prepare v0.2.28
+  * update release.md
+  * fix lint
+  * remove damage
+  * drop snapshots
+  * performer
+  * Improve terminal update synchronization and reduce lock contention
+  * wip new sync logic
+  * flake.lock: Update
+  * default_disable_occluded_render as false
+  * mark 0.2.27 for metainfo.xml
+
+-------------------------------------------------------------------
+Thu Aug 07 18:42:59 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.27:
+  * prepare v0.2.27
+  * add notes
+  * use borrowed ID
+  * font id should be always default to respect cell
+  * update releases.md
+  * Fix CJK characters displaying higher than Latin characters
+  * Implement consistent font metrics for CJK rendering
+  * unify clearsubregion to remove texture (ref: #709)
+  * update com.rioterm.Rio.metainfo.xml
+  * update docs about terminfo
+  * update terminfo
+  * prioritize xterm-rio if installed
+
+-------------------------------------------------------------------
+Mon Aug 04 21:59:46 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.26:
+  * update dependencies
+  * Add install instructions for scoop
+  * remove route_id from machine
+  * Damage events are now emitted directly after parsing PTY data, ensuring proper batching
+  *  Only emit damage event if there's actual damage on updateTitle
+
+-------------------------------------------------------------------
+Mon Aug 04 16:00:01 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.25:
+  * fix lint
+  * prepare 0.2.25
+  * Add embedded icon for Windows
+  * fix working-dir parameter for windows (closes #1239)
+  * update README
+  * update releases
+  * use login shell for macos
+  * flake.lock: Update
+  * Apply fixes suggested by clippy
+  * update flatpak metainfo
+
+-------------------------------------------------------------------
+Fri Aug 01 21:01:15 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.24:
+  * prepare 0.2.24
+  * fix tests for hints and links
+  * fix bindings
+  * update force_full_damage
+  * migrate hint logic to new snapshot system
+  * Fix IME behavior on macOS to prevent spurious commit events
+  * fixup! fix build
+  * fix build
+  * rename to rules
+  * add configurable colors for hint
+  * hints initial implementation
+  * hints
+  * implement hyperlink hints
+  * flake.lock: Update
+  * flake: devShells: include rustfmt and rust-analyzer nightly
+  * flake: packages: rio: build with minimal toolchain
+  * flake: devShells: msrv: use rust-toolchain.toml
+  * migrate to hashmap again
+  * fix panels not being updated
+  * avoid heap for contexts
+  * update cache
+  * shutdown io when is done
+  * fix game mode
+  * fix game strategy
+  * update com.rioterm.Rio.metainfo.xml
+
+-------------------------------------------------------------------
 Thu Jul 24 04:43:21 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 0.2.23:

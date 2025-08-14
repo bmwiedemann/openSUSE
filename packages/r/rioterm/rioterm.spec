@@ -1,7 +1,7 @@
 #
 # spec file for package rioterm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rioterm
-Version:        0.2.23
+Version:        0.2.28
 Release:        0
 Summary:        A hardware-accelerated GPU terminal emulator powered by WebGPU
 License:        MIT
