@@ -17,7 +17,7 @@
 #
 
 
-%global longver 2025-07-22
+%global longver 2025-08-05
 %global shortver %(echo %{longver}|sed 's|-||g')
 %define libname libre2-11
 Name:           re2
@@ -110,7 +110,7 @@ export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:LD_LIBRARY_PATH
 
 %files devel
 %license LICENSE
-%doc README
+%doc README.md
 %{_includedir}/%{name}
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
