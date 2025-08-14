@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 11 14:37:07 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix adduser inside containers on an SELinux host
+  (boo#1247779):
+  * 0001-update_passwd-Avoid-selinux_preserve_fcontext-if-SEL.patch
+
+-------------------------------------------------------------------
+Mon Aug 11 13:15:36 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Don't throw debug info away during build, let RPM separate it
+  afterwards
+
+-------------------------------------------------------------------
 Fri Aug  1 07:36:48 UTC 2025 - Radoslav Kolev <radoslav.kolev@suse.com>
 
 - revert the change to busybox.install.patch below. The logic will be

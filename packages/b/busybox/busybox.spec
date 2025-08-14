@@ -55,6 +55,8 @@ Patch8:         busybox-1.37.0-fix-regression-n2.patch
 Patch9:         busybox-1.37.0-hexdump-fix-regression-for-uint16-on-big-endian-syst.patch
 Patch10:        busybox-1.37.0-od-make-B-test-little-endian-only-add-variant-for-bi.patch
 Patch11:        busybox-1.37.0-hexdump-add-tests-for-x-handle-little-big-endian-pro.patch
+# PATCH-FIX-UPSTREAM - Fix adduser inside containers (boo#1247779)
+Patch12:        0001-update_passwd-Avoid-selinux_preserve_fcontext-if-SEL.patch
 
 # other patches
 Patch100:       busybox.install.patch
@@ -124,6 +126,8 @@ export KBUILD_VERBOSE=1
 export CFLAGS="%{optflags} -fPIC -fno-strict-aliasing -I/usr/include/tirpc"
 export CC="gcc"
 export HOSTCC=gcc
+# Keep debug info, we take care of stripping ourselves
+export SKIP_STRIP=y
 %if %{with static}
 cat %{SOURCE3} %{SOURCE2} > .config
 %make_build -e oldconfig

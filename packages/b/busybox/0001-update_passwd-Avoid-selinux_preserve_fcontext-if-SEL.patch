@@ -1,0 +1,39 @@
+From cd887910c75f1204056173750fcd6ae607b9f215 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Mon, 11 Aug 2025 16:09:10 +0200
+Subject: [PATCH] update_passwd: Avoid selinux_preserve_fcontext if SELinux is
+ disabled
+
+Inside containers, it's possible that files have labels but otherwise
+SELinux is effectively disabled/hidden (no config or /sys/fs/selinux).
+In that setup, fgetfilecon succeeds but setfscreatecon fails.
+Just skip all of that if SELinux is disabled.
+
+This fixes the following error when running adduser inside a container:
+
+adduser: can't set default file creation context to system_u:object_r:container_file_t:s0:c292,c451: Permission denied
+
+Signed-off-by: Fabian Vogt <fvogt@suse.de>
+---
+ libbb/update_passwd.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/libbb/update_passwd.c b/libbb/update_passwd.c
+index a228075cc..186ebd122 100644
+--- a/libbb/update_passwd.c
++++ b/libbb/update_passwd.c
+@@ -133,7 +133,10 @@ int FAST_FUNC update_passwd(const char *filename,
+ 	}
+ 	old_fd = fileno(old_fp);
+ 
+-	selinux_preserve_fcontext(old_fd);
++#if ENABLE_SELINUX
++	if (is_selinux_enabled() > 0)
++		selinux_preserve_fcontext(old_fd);
++#endif
+ 
+ 	/* Try to create "/etc/passwd+". Wait if it exists. */
+ 	i = 30;
+-- 
+2.50.1
+
