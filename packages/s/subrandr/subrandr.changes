@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 13 16:06:33 UTC 2025 - llyyr <llyyr@yukari.in>
+
+- Update vendored packages to fix CVE related to slab dependency
+  (bsc#1248042)
+
+-------------------------------------------------------------------
 Sun Aug 10 03:16:40 UTC 2025 - llyyr <llyyr@yukari.in>
 
 - Update to version 0.2.0:
