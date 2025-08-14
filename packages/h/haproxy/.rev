@@ -1704,4 +1704,12 @@
   * CI: enable USE_QUIC=1 for OpenSSL versions &gt;= 3.5.0</comment>
     <requestid>1291449</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>e639d8669c329c0052cf252fa39d8280</srcmd5>
+    <version>3.2.4+git0.98813a13e</version>
+    <time>1755164185</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.4+git0.98813a13e:</comment>
+    <requestid>1299269</requestid>
+  </revision>
 </revisionlist>

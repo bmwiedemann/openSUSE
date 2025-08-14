@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Wed Aug 13 16:49:42 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.2.4+git0.98813a13e:
+  * [RELEASE] Released version 3.2.4
+  * BUG/MEDIUM: http-client: Test HTX_FL_EOM flag before commiting the HTX buffer
+  * BUG/MEDIUM: mux-quic: adjust wakeup behavior
+  * DOC: config: recommend single quoting passwords
+  * DOC: management: fix typo in commit f4f93c56
+  * BUG/MINOR: init: Initialize random seed earlier in the init process
+  * BUG/MEDIUM: ssl: fix build with AWS-LC
+  * BUG/MEDIUM: ssl: Fix 0rtt to the server
+  * MINOR: sock: update broken accept4 detection for older hardwares.
+  * BUG/MINOR: stick-table: cap sticky counter idx with tune.nb_stk_ctr instead of MAX_SESS_STKCTR
+  * BUILD: compat: always set _POSIX_VERSION to ease comparisons
+  * BUILD: compat: provide relaxed versions of the MIN/MAX macros
+  * DOC: list missing global QUIC settings
+  * CLEANUP: http-client: Remove useless indentation when sending request body
+  * BUG/MINOR: mux-quic: ensure close-spread-time is properly applied
+  * BUG/MINOR mux-quic: apply correctly timeout on output pending data
+  * BUG/MINOR: hq-interop: fix FIN transmission
+  * BUG/MINOR: logs: fix log-steps extra log origins selection
+  * BUG/MEDIUM: threads: Disable the workaround to load libgcc_s on macOS
+  * BUG/MINOR: halog: exit with error when some output filters are set simultaneosly
+  * BUG/MINOR: applet: Don't trigger BUG_ON if the tid is not on appctx init
+  * MINOR: h3: remove unused outbuf in h3_resp_headers_send()
+  * BUG/MINOR: quic: Wrong source address use on FreeBSD
+  * BUG/MEDIUM: h3: handle interim response properly on FE side
+  * MINOR: qmux: change API for snd_buf FIN transmission
+  * BUG/MINOR: h3: ensure that invalid status code are not encoded (FE side)
+  * BUG/MINOR: h3: properly realloc buffer after interim response encoding
+  * BUG/MEDIUM: h3: do not overwrite interim with final response
+  * BUG/MINOR: h1-htx: Don't forget to init flags in h1_format_htx_msg function
+  * BUG/MINOR: mux-h1: Use configured error files if possible for early H1 errors
+  * MINOR: h1-htx: Add function to format an HTX message in its H1 representation
+  * BUG/MEDIUM: http-client: Notify applet has more data to deliver until the EOM
+  * BUG/MEDIUM: http-client: Drain the request if an early response is received
+  * BUG/MINOR: http-client: Reject any 101-switching-protocols response
+  * BUG/MINOR: http-client: Ignore 1XX interim responses in non-HTX mode
+  * BUG/MEDIUM: http-client: Ask for more room when request data cannot be xferred
+  * BUG/MEDIUM: http-client: Properly inc input data when HTX blocks are xferred
+  * BUG/MEDIUM: http-client: Don't wake http-client applet if nothing was xferred
+  * BUG/MEDIUM: quic: Crash after QUIC server callbacks restoration (OpenSSL 3.5)
+  * MINOR: quic: Prevent QUIC build with OpenSSL 3.5 new QUIC API version < 3.5.1
+  * BUG/MINOR: listener: really assign distinct IDs to shards
+  * MEDIUM: ssl/cli: relax crt insertion in crt-list of type directory
+  * DOC: management: clarify usage of -V with -c
+  * MEDIUM: acme: use lowercase for challenge names in configuration
+  * BUG/MINOR: acme: possible integer underflow in acme_txt_record()
+  * MINOR: acme: update the log for DNS-01
+  * MEDIUM: acme: allow to wait and restart the task for DNS-01
+  * MINOR: acme: emit the DNS-01 challenge details on the dpapi sink
+  * MINOR: acme: emit a log for DNS-01 challenge response
+  * BUG/MEDIUM: hlua_fcn: ensure systematic watcher cleanup for server list iterator
+  * BUILD: acme: avoid declaring TRACE_SOURCE in acme-t.h
+  * CLEANUP: ssl: Rename ssl_trace-t.h to ssl_trace.h
+  * BUG/MEDIUM: mux-quic: ensure Early-data header is set
+  * BUG/MINOR: hlua: take default-path into account with lua-load-per-thread
+  * BUG/MEDIUM: logs: fix sess_build_logline_orig() recursion with options
+  * BUG/MEDIUM: dns: Reset reconnect tempo when connection is finally established
+  * BUG/MEDIUM: hlua: Report to SC when output data are blocked on a lua socket
+  * BUG/MEDIUM: hlua: Report to SC when data were consumed on a lua socket
+  * BUG/MINOR: hlua: Skip headers when a receive is performed on an HTTP applet
+  * MINOR: acme: implement traces
+  * MINOR: acme: add ACME to the haproxy -vv feature list
+  * CLEANUP: acme: fix wrong spelling of "resources"
+  * BUG/MINOR: acme: allow "processing" in challenge requests
+  * MINOR: acme: remove acme_req_auth() and use acme_post_as_get() instead
+  * BUG/MEDIUM: acme: use POST-as-GET instead of GET for resources
+  * BUG/MEDIUM: ssl/clienthello: ECDSA with ssl-max-ver TLSv1.2 and no ECDSA ciphers
+  * DOC: deviceatlas build clarifications
+
+-------------------------------------------------------------------
 Wed Jul 09 09:19:41 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.2.3+git0.1844da7c6:
