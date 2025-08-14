@@ -638,4 +638,12 @@
     <comment>Early Staging of GNOME 48.rc</comment>
     <requestid>1251372</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>16117420bd73f7608320af5cff53c724</srcmd5>
+    <version>4.1.99</version>
+    <time>1755164175</time>
+    <user>dimstar_suse</user>
+    <comment>RC, but since we already run the unstable one.... (forwarded request 1299183 from iznogood)</comment>
+    <requestid>1299267</requestid>
+  </revision>
 </revisionlist>
