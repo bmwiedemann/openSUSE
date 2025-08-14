@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 14 04:56:04 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch (bsc#1248002) 
+  * ocki-3.25-PKCSSLOTD-Remove-the-use-of-MD5.patch
+
+-------------------------------------------------------------------
 Tue Jul 29 07:27:20 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Add riscv54 to openCryptoki_64bit_arch

@@ -41,6 +41,7 @@ Source3:        openCryptoki-rpmlintrc
 # and because we don't want(?) various file and directory permissions to be 0700.
 Patch000:       ocki-3.25-remove-make-install-chgrp.patch
 #
+Patch010:       ocki-3.25-PKCSSLOTD-Remove-the-use-of-MD5.patch
 #
 BuildRequires:  bison
 BuildRequires:  dos2unix
