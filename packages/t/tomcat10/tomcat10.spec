@@ -1,7 +1,7 @@
 #
 # spec file for package tomcat10
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,7 +29,7 @@
 %define elspec %{elspec_major}.%{elspec_minor}
 %define major_version 10
 %define minor_version 1
-%define micro_version 42
+%define micro_version 43
 %define java_major 1
 %define java_minor 11
 %define java_version %{java_major}.%{java_minor}

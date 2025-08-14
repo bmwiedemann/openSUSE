@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Aug  6 12:45:13 UTC 2025 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Update to Tomcat 10.1.43
+  * Fixed CVEs:
+    + CVE-2025-52520: Align size tracking for multipart requests with
+      FileUpload's use of long. (bsc#1246388)
+    + CVE-2025-53506: Apply the initial HTTP/2 connection limits earlier.
+      (bsc#1246318)
+  * Catalina
+    + Fix: Ensure application configured welcome files override the defaults
+      when configuring an embedded web application programmatically. (markt)
+    + Fix: Allow the default servlet to set the content length when the content
+      length is known, no content has been written and a Writer is being used.
+      (markt)
+    + Fix: 69717: Correct a regression in the fix for CVE-2025-49125 that
+      prevented access to PreResources and PostResources when mounted below the
+      web application root with a path that was terminated with a file
+      separator. (remm/markt)
+    + Fix: 69731: Fix an issue that meant that the value of maxParameterCount
+      applied was smaller than intended for multipart uploads with non-file
+      parts when the parts were processed before query string parameters.
+      (markt)
+    + Fix: Align size tracking for multipart requests with FileUpload's use of
+      long. (schultz)
+  * Coyote
+    + Fix: 69710: Increase the default for maxPartCount from 10 to 50. Update
+      the documentation to provide more details on the memory requirements to
+      support multi-part uploads while avoiding a denial of service risk.
+      (markt)
+    + Fix: 69713: Correctly handle an HTTP/2 data frame that includes padding
+      when the headers include a content-length. (remm/markt)
+    + Fix: Correctly collect statistics for HTTP/2 requests and avoid counting
+      one request multiple times. Based on pull request #868 by qingdaoheze.
+      (markt)
+    + Fix: Fix JMX value for keepAliveCount on the endpoint. Also add the value
+      of useVirtualThreads in JMX. (remm)
+    + Fix: 69728: Remove incorrect warning when HTTP/2 is used with optional
+      certificate verification and improve the warnings when a web application
+      tries to use CLIENT-CERT with either HTTP/2 or a JSSE implementation of
+      TLS 1.3. (markt)
+    + Fix: When setting the initial HTTP/2 connection limit, apply those limits
+      earlier. (markt)
+  * Jasper
+    + Code: Remove IMPL_OBJ_START from EL grammar for IDENTIFIER. (markt)
+    + Code: Remove the INSTANCEOF and FUNCTIONSUFFIX definitions from the EL
+      grammar as both are unused. (markt)
+  * Web applications
+    + Add: Documentation. Provide more explicit guidance regarding the security
+      considerations for enabling write access to the web application via
+      WebDAV, HTTP PUT requests or similar. (markt)
+    + Add: Documentation. Add a section on reverse proxies to the security
+      considerations page. (markt)
+  * Other
+    + Update: Update UnboundID to 7.0.3. (markt)
+    + Update: Update Checkstyle to 10.25.1. (markt)
+    + Update: Improvements to French translations. (remm)
+    + Update: Improvements to Japanese translations provided by tak7iji. (markt)
+
+-------------------------------------------------------------------
 Tue Jun 24 09:51:59 UTC 2025 - Michele Bussolotto <michele.bussolotto@suse.com>
 
 - Update to Tomcat 10.1.42
