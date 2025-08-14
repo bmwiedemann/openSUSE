@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 14 07:54:30 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+
+- 1.2.1:
+
+## What's Changed
+* Don’t lock `thor` version to 1.3.x — remove unnecessary constraint by @rafaelfranca in pull request #600
+* Fix the devcontainer configuration — update to improve development environment by @rafaelfranca in #599
+* Set `successfully_enqueued` in `Job.enqueue` — track job enqueue status by @rosa in #603
+* Make concurrency tests less flaky — improve test reliability by @rosa in #605
+* Suppress expected warning in test suite — reduce noise during testing by @p-schlickmann in #604
+* Replace deprecated `retries` option with `timeout` in Rails 8+ — align with modern Rails APIs by @p-schlickmann in #607
+
+## New Contributors
+* @rafaelfranca made their first contribution in https://github.com/rails/solid_queue/pull/600
+* @p-schlickmann made their first contribution in https://github.com/rails/solid_queue/pull/604
+
+**Full Changelog**: https://github.com/rails/solid_queue/compare/v1.1.3...v1.2.1
+
+-------------------------------------------------------------------
 Mon Feb  3 10:38:51 UTC 2025 - Dan Čermák <dan.cermak@posteo.net>
 
 - 1.1.3:

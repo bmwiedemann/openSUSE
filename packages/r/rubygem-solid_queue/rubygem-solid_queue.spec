@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-solid_queue
-Version:        1.1.3
+Version:        1.2.1
 Release:        0
 %define mod_name solid_queue
 %define mod_full_name %{mod_name}-%{version}
