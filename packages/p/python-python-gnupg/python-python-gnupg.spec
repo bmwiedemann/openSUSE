@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-gnupg
-Version:        0.5.4
+Version:        0.5.5
 Release:        0
 Summary:        A wrapper for the GNU Privacy Guard (GPG or GnuPG)
 License:        BSD-3-Clause
