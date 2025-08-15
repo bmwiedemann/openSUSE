@@ -74,4 +74,18 @@
     <comment></comment>
     <requestid>1285424</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2db5f3b069698c6d5424210051f8f874</srcmd5>
+    <version>0.1.3</version>
+    <time>1755287559</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.3
+  * Remove `types-redis` from dev dependencies (#336)
+  * Bump redis to 6.0.0 and address async `.close()` deprecation warning (#336)
+  * Avoid race condition when unlinking files in `FileStorage`. (#334)
+  * Allow prodiving a `path_prefix` in `S3Storage` and `AsyncS3Storage`. (#342)
+- Update BuildRequires and Suggests from pyproject.toml
+</comment>
+    <requestid>1299815</requestid>
+  </revision>
 </revisionlist>

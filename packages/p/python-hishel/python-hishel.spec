@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-hishel
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 Summary:        Persistent cache implementation for httpx and httpcore
 License:        BSD-3-Clause
@@ -32,7 +32,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module httpx >= 0.28.0}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module redis}
+BuildRequires:  %{python_module redis >= 6.0.0}
 BuildRequires:  %{python_module trio}
 BuildRequires:  %{python_module typing_extensions >= 4.8.0}
 BuildRequires:  %{pythons}
@@ -40,8 +40,8 @@ BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 Requires:       python-httpx >= 0.28.0
 Requires:       python-typing_extensions >= 4.8.0
-Suggests:       python-pyyaml == 6.0.1
-Suggests:       python-redis == 5.0.1
+Suggests:       python-pyyaml >= 6.0.2
+Suggests:       python-redis >= 6.0.0
 Suggests:       python-anysqlite >= 0.0.5
 Suggests:       python-boto3 >= 1.15.0
 BuildArch:      noarch
