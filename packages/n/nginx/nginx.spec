@@ -23,7 +23,7 @@
 %bcond_with    ngx_google_perftools
 #
 Name:           nginx
-Version:        1.29.0
+Version:        1.29.1
 Release:        0
 Summary:        A HTTP server and IMAP/POP3 proxy server
 License:        BSD-2-Clause
@@ -70,7 +70,6 @@ Provides:       http_daemon
 Provides:       httpd
 %{?systemd_ordering}
 %sysusers_requires
-
 %if %{with ngx_google_perftools}
 BuildRequires:  google-perftools-devel
 %endif

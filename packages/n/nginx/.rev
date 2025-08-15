@@ -1276,4 +1276,26 @@
 - Removed root privileges when running logrotate (bsc#1246090).</comment>
     <requestid>1293972</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>b1389bcb5f03998b3a6de236a0684e63</srcmd5>
+    <version>1.29.1</version>
+    <time>1755287462</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.29.1
+  * https://nginx.org/en/CHANGES
+  * Fixed processing of a specially crafted login/password when using
+    the &quot;none&quot; authentication method in the ngx_mail_smtp_module might
+    cause worker process memory disclosure to the authentication server
+    (CVE-2025-53859).
+  * Changed TLSv1.3 certificate compression is disabled by default.
+  * Added the &quot;ssl_certificate_compression&quot; directive.
+  * Added support for 0-RTT in QUIC when using OpenSSL 3.5.1 or newer.
+  * Fixed the 103 response might be buffered when using HTTP/2 and the
+    &quot;early_hints&quot; directive.
+  * Fixed in handling &quot;Host&quot; and &quot;:authority&quot; header lines with equal
+    values when using HTTP/2; the bug had appeared in 1.17.9.
+  * Fixed in handling &quot;Host&quot; header lines with a port when using HTTP/3.
+  * Fixed in the &quot;none&quot; parameter of the &quot;smtp_auth&quot; directive.</comment>
+    <requestid>1299344</requestid>
+  </revision>
 </revisionlist>

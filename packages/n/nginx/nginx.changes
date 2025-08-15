@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 14 08:19:23 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 1.29.1
+  * https://nginx.org/en/CHANGES
+  * Fixed processing of a specially crafted login/password when using
+    the "none" authentication method in the ngx_mail_smtp_module might
+    cause worker process memory disclosure to the authentication server
+    (CVE-2025-53859).
+  * Changed TLSv1.3 certificate compression is disabled by default.
+  * Added the "ssl_certificate_compression" directive.
+  * Added support for 0-RTT in QUIC when using OpenSSL 3.5.1 or newer.
+  * Fixed the 103 response might be buffered when using HTTP/2 and the
+    "early_hints" directive.
+  * Fixed in handling "Host" and ":authority" header lines with equal
+    values when using HTTP/2; the bug had appeared in 1.17.9.
+  * Fixed in handling "Host" header lines with a port when using HTTP/3.
+  * Fixed in the "none" parameter of the "smtp_auth" directive.
+
+-------------------------------------------------------------------
 Wed Jul 16 22:29:54 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Changed nginx.logrotate and nginx-conf.patch files.
