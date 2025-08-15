@@ -276,4 +276,15 @@
     <comment></comment>
     <requestid>1277754</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8e1893f41a17201ead6ea8f9cd63c9fd</srcmd5>
+    <version>20250814</version>
+    <time>1755287544</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250814
+- Fix egrep: warning: egrep is obsolescent; using grep -E when
+  creating debug info package
+</comment>
+    <requestid>1299479</requestid>
+  </revision>
 </revisionlist>

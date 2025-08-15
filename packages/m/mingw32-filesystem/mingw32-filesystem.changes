@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 14 21:19:58 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 20250814
+- Fix egrep: warning: egrep is obsolescent; using grep -E when
+  creating debug info package
+
+-------------------------------------------------------------------
 Tue May 13 16:20:39 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Update to version 20250515

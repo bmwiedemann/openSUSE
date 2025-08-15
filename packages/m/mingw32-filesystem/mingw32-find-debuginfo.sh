@@ -20,7 +20,7 @@ host="i686-w64-mingw32"
 # extract debug info for a single file as child process
 if [[ -v RUN_SINGLE ]]; then
 	f=$1
-	case $("$host-objdump" -h "$f" 2>/dev/null | egrep -o '(debug[\.a-z_]*|gnu.version)') in
+	case $("$host-objdump" -h "$f" 2>/dev/null | grep -E -o '(debug[\.a-z_]*|gnu.version)') in
 		*debuglink*) exit 0;;
 		*debug*) ;;
 		*gnu.version*)
