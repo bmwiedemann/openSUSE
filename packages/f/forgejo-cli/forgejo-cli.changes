@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 15 14:02:30 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update vendor dependencies, fixing bsc#1248047 bsc#1242683
+
+-------------------------------------------------------------------
 Wed Jul  9 09:37:11 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update vendor tarball, fixing issues with gcc15

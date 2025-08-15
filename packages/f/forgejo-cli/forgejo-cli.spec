@@ -1,7 +1,7 @@
 #
 # spec file for package forgejo-cli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        Apache-2.0 OR MIT
 URL:            https://codeberg.org/Cyborus/forgejo-cli
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.zst
+Source2:        Cargo.lock
 BuildRequires:  cargo >= 1.82.0
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig

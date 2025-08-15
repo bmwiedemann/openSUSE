@@ -73,4 +73,12 @@
     <comment>- update vendor tarball, fixing issues with gcc15 (forwarded request 1291452 from rrahl0)</comment>
     <requestid>1291453</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>ea043b6cf25c5230fbcab2342781b876</srcmd5>
+    <version>0.3.0</version>
+    <time>1755287572</time>
+    <user>dimstar_suse</user>
+    <comment>- update vendor dependencies, fixing bsc#1248047 bsc#1242683 (forwarded request 1299835 from rrahl0)</comment>
+    <requestid>1299836</requestid>
+  </revision>
 </revisionlist>
