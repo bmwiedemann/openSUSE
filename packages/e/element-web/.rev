@@ -1275,4 +1275,41 @@ Version 1.11.101
     https://github.com/matrix-org/matrix-rust-sdk/security/advisories/GHSA-x958-rvg6-956w</comment>
     <requestid>1284516</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>f71751e5de6c2dd5976a0560067d272c</srcmd5>
+    <version>1.11.109</version>
+    <time>1755287478</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.11.109
+  This release supports the upcoming v12 (&quot;hydra&quot;) Matrix room version and is necessary to view and participate in these rooms.
+  
+  ## ✨ Features
+  
+  * https://github.com/element-hq/element-web/pull/30529). Contributed by @RiotRobot.
+  * https://github.com/element-hq/element-web/pull/30526). Contributed by @RiotRobot.
+  * New room list: change icon and label of menu item for to start a DM (https://github.com/element-hq/element-web/pull/30470). Contributed by @florianduros.
+  * Implement the member list with virtuoso (https://github.com/element-hq/element-web/pull/29869). Contributed by @langleyd.
+  * Add labs option for history sharing on invite (https://github.com/element-hq/element-web/pull/30313). Contributed by @richvdh.
+  * Bump wysiwyg to 2.39.0 adding support for pasting rich text content in the Rich Text Edtior (https://github.com/element-hq/element-web/pull/30421). Contributed by @langleyd.
+  * Support `EventShieldReason.MISMATCHED_SENDER` (https://github.com/element-hq/element-web/pull/30403). Contributed by @richvdh.
+  * Change unencrypted and public pills to blue (https://github.com/element-hq/element-web/pull/30399). Contributed by @florianduros.
+  * Change color of public room icon (https://github.com/element-hq/element-web/pull/30390). Contributed by @florianduros.
+  * Script for updating storybook screenshots (https://github.com/element-hq/element-web/pull/30340). Contributed by @dbkr.
+  * Add toggle to hide empty state in devtools (https://github.com/element-hq/element-web/pull/30352). Contributed by @toger5.
+  
+  ## 🐛 Bug Fixes
+  
+  * https://github.com/element-hq/element-web/pull/30537). Contributed by @RiotRobot.
+  * https://github.com/element-hq/element-web/pull/30536). Contributed by @RiotRobot.
+  * Update for compatibility with v12 rooms (https://github.com/element-hq/element-web/pull/30452). Contributed by @dbkr.
+  * New room list: fix tooltip on presence (https://github.com/element-hq/element-web/pull/30474). Contributed by @florianduros.
+  * New room list: add tooltip for presence and room status (https://github.com/element-hq/element-web/pull/30472). Contributed by @florianduros.
+  * Fix: Clicking on an item in the member list causes it to scroll to the top rather than show the profile view (https://github.com/element-hq/element-web/pull/30455). Contributed by @langleyd.
+  * Put the 'decrypting' tooltip back (https://github.com/element-hq/element-web/pull/30446). Contributed by @dbkr.
+  * Use server name explicitly for via. (https://github.com/element-hq/element-web/pull/30362). Contributed by @Half-Shot.
+  * fix: replace hardcoded string in poll history dialog (https://github.com/element-hq/element-web/pull/30402). Contributed by @florianduros.
+  * fix: replace hardcoded string on qr code back button (https://github.com/element-hq/element-web/pull/30401). Contributed by @florianduros.
+  * Fix color of icon button with outline (https://github.com/element-hq/element-web/pull/30361). Contributed by @florianduros.</comment>
+    <requestid>1298906</requestid>
+  </revision>
 </revisionlist>
