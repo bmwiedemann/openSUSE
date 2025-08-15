@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 11 07:18:23 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2025.08.11
+  * yt: Add player params to mweb client
+  * dash: Re-extract if using --load-info-json with
+    --live-from-start
+
+-------------------------------------------------------------------
 Tue Jul 22 00:13:54 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2025.07.21
