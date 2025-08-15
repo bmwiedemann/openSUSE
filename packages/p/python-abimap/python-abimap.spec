@@ -15,10 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 %bcond_without libalternatives
 Name:           python-abimap
-Version:        0.3.2
+Version:        0.4.0
 Release:        0
 Summary:        A helper for library maintainers to use symbol versioning
 License:        MIT

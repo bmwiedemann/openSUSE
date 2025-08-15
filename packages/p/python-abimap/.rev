@@ -81,4 +81,29 @@ exported symbols and update the symbol version linker script accordingly.</comme
     <comment>- Convert to libalternatives</comment>
     <requestid>1286086</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>515e3e2e1bb8b214732fa9e6add0c993</srcmd5>
+    <version>0.4.0</version>
+    <time>1755287510</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1299342 from glaubitz
+
+- Update to 0.4.0
+    * Fixed Makefile clean targets to properly handle both files and directories
+    * Updated build system to use modern ``python -m build`` instead of
+      deprecated ``python setup.py`` commands
+    * Fixed linting target to use ``python -m flake8`` for better reliability
+    * Added flake8 to development dependencies and requirements-test.txt
+    * Fixed documentation build by adding Sphinx dependencies and using
+      ``python -m sphinx``
+    * Made Makefile portable by using dynamic make command detection with
+      ``$(shell command -v make)``
+    * Updated development dependencies to include build tools (build, sphinx,
+      sphinx-rtd-theme, watchdog)
+    * Made documentation linkcheck non-fatal to handle broken external
+      links gracefully
+    * Improved development workflow with proper dependency management
+  - Use Python 3.11 on SLE-15 by default</comment>
+    <requestid>1299386</requestid>
+  </revision>
 </revisionlist>

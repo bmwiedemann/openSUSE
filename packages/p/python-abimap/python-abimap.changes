@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug 14 08:23:49 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.4.0
+  * Fixed Makefile clean targets to properly handle both files and directories
+  * Updated build system to use modern ``python -m build`` instead of
+    deprecated ``python setup.py`` commands
+  * Fixed linting target to use ``python -m flake8`` for better reliability
+  * Added flake8 to development dependencies and requirements-test.txt
+  * Fixed documentation build by adding Sphinx dependencies and using
+    ``python -m sphinx``
+  * Made Makefile portable by using dynamic make command detection with
+    ``$(shell command -v make)``
+  * Updated development dependencies to include build tools (build, sphinx,
+    sphinx-rtd-theme, watchdog)
+  * Made documentation linkcheck non-fatal to handle broken external
+    links gracefully
+  * Improved development workflow with proper dependency management
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Mon Jun 16 12:09:03 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
