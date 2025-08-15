@@ -8066,4 +8066,41 @@ always built-in because vim has direct perl dependencies anyway.
   * patch 9.1.1492: tests: failure when Wayland compositor fails to start</comment>
     <requestid>1290727</requestid>
   </revision>
+  <revision rev="388" vrev="1">
+    <srcmd5>9500a9b93634b1bd7be699b4d49dabf9</srcmd5>
+    <version>9.1.1629</version>
+    <time>1755287466</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 9.1.1629:
+ * patch 9.1.1629: Vim9: Not able to use more than 10 type arguments in a generic function
+ * runtime(python): highlight &quot;self&quot; and &quot;cls&quot; in syntax script
+ * runtime(vimgoto): make gf extract packadd/colo name more flexible
+ * patch 9.1.1628: fuzzy.c has a few issues
+ * runtime(doc): Adapt fuzzy doc to reflect 'fzy' algorithm
+ * patch 9.1.1627: fuzzy matching can be improved
+ * patch 9.1.1626: cindent: does not handle compound literals
+ * patch 9.1.1625: Autocompletion slow with include- and tag-completion
+ * runetime(vim): gf maybe hang and fail
+ * runtime(vim): cannot jump to :colorscheme files
+ * patch 9.1.1624: Cscope not enabled on MacOS
+ * runtime(doc): allow more C99 features
+ * runtime(python): Also sync syntax at 'async def'
+ * runtime(doc): update :call with a range and remove space
+ * runtime(doc): Fix 2 minor issues after 32d6bd6df
+ * runtime(python): Highlight f-string replacement fields in Python
+ * runtime(python): Highlight classes as structures
+ * runtime(doc): remove dead links
+ * patch 9.1.1623: Buffer menu does not handle unicode names correctly
+ * patch 9.1.1622: Patch v9.1.1432 causes performance regressions
+ * patch 9.1.1621: flicker in popup menu during cmdline autocompletion
+ * patch 9.1.1620: filetype: composer.lock and symfony.lock files not recognized
+ * patch 9.1.1619: Incorrect E535 error message
+ * runtime(doc): Fix style and typos in builtin.txt and usr_41.txt
+ * patch 9.1.1618: completion: incorrect selected index returned from complete_info()
+ * patch 9.1.1617: Vim9: some error messages can be improved
+ * runtime(doc): Tweak documentation style
+ * patch 9.1.1616: xxd: possible buffer overflow with bitwise output
+ * patch 9.1.1615: diff format erroneously detected</comment>
+    <requestid>1299374</requestid>
+  </revision>
 </revisionlist>

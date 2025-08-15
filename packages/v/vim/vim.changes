@@ -1,7 +1,269 @@
 -------------------------------------------------------------------
+Thu Aug 14 10:22:44 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.1629:
+ * patch 9.1.1629: Vim9: Not able to use more than 10 type arguments in a generic function
+ * runtime(python): highlight "self" and "cls" in syntax script
+ * runtime(vimgoto): make gf extract packadd/colo name more flexible
+ * patch 9.1.1628: fuzzy.c has a few issues
+ * runtime(doc): Adapt fuzzy doc to reflect 'fzy' algorithm
+ * patch 9.1.1627: fuzzy matching can be improved
+ * patch 9.1.1626: cindent: does not handle compound literals
+ * patch 9.1.1625: Autocompletion slow with include- and tag-completion
+ * runetime(vim): gf maybe hang and fail
+ * runtime(vim): cannot jump to :colorscheme files
+ * patch 9.1.1624: Cscope not enabled on MacOS
+ * runtime(doc): allow more C99 features
+ * runtime(python): Also sync syntax at 'async def'
+ * runtime(doc): update :call with a range and remove space
+ * runtime(doc): Fix 2 minor issues after 32d6bd6df
+ * runtime(python): Highlight f-string replacement fields in Python
+ * runtime(python): Highlight classes as structures
+ * runtime(doc): remove dead links
+ * patch 9.1.1623: Buffer menu does not handle unicode names correctly
+ * patch 9.1.1622: Patch v9.1.1432 causes performance regressions
+ * patch 9.1.1621: flicker in popup menu during cmdline autocompletion
+ * patch 9.1.1620: filetype: composer.lock and symfony.lock files not recognized
+ * patch 9.1.1619: Incorrect E535 error message
+ * runtime(doc): Fix style and typos in builtin.txt and usr_41.txt
+ * patch 9.1.1618: completion: incorrect selected index returned from complete_info()
+ * patch 9.1.1617: Vim9: some error messages can be improved
+ * runtime(doc): Tweak documentation style
+ * patch 9.1.1616: xxd: possible buffer overflow with bitwise output
+ * patch 9.1.1615: diff format erroneously detected
+ * patch 9.1.1614: Vim9: possible variable type change
+ * patch 9.1.1613: tests: test_search leaves a few swapfiles behind
+ * patch 9.1.1612: Ctrl-G/Ctrl-T do not ignore the end search delimiter
+ * patch 9.1.1611: possible undefined behaviour in mb_decompose()
+ * runtime(vim): Update ftplugin, fix option variable 'keywordprg' matching
+ * runtime(racket): update Racket runtime files
+ * translation: Generate year for MS Windows differently
+ * patch 9.1.1610: completion: hang or E684 when 'tagfunc' calls complete()
+ * runtime(doc): Update CONTRIBUTING and clarify use of Vim9 script
+ * patch 9.1.1609: complete: Heap-buffer overflow with complete function
+ * runtime(c): set omnifunc only for Vim, since it is Vim9 Script
+ * runtime(vim): add simple vimscript complete function
+ * runtime(script): Update Last Change Header
+ * patch 9.1.1608: No command-line completion for :unsilent {command}
+ * patch 9.1.1607: :apple command detected as :append
+ * patch 9.1.1606: filetype: a few more files are not recognized
+ * patch 9.1.1605: cannot specify scope for chdir()
+ * runtime(doc): Improve doc for cmdline-autocomplete
+ * runtime(doc): update develop assumptions
+ * patch 9.1.1604: completion: incsearch highlight might be lost
+ * runtime(optwin): Fix E94 when searching for the option-window
+ * patch 9.1.1603: completion: cannot use autoloaded funcs in 'complete' F{func}
+ * runtime(java): Manage byte limits for variable-width lookbehind assertions
+ * runtime(help): Unset `'comments'` and `'cms'` options
+ * runtime(netrw): netrw#BrowseX() needs to distinguish local and remote file
+ * runtime(typescript): Add syntax support for defer and arbitrary module identifiers
+ * translation: Auto-generate headers for the vim.pot file
+ * patch 9.1.1602: filetype: requirements-*.txt files are not recognized
+ * patch 9.1.1601: Patch v8.1.0425 was wrong
+ * runtime(netrw): Use correct "=~#" for the netrw_sizestyle='H' option
+ * runtime(openscad): add a filetype plugin
+ * patch 9.1.1600: using diff anchors with hidden buffers fails silently
+ * runtime(javascript): add "as" as a reserved keyword to syntax script
+ * patch 9.1.1599: :bnext doesn't go to unlisted help buffers
+ * runtime(doc): Update ft-vim-syntax documentation
+ * patch 9.1.1598: filetype: waybar config file is not recognized
+ * patch 9.1.1597: CI reports leaks in libgtk3 library
+ * patch 9.1.1596: tests: Test_search_wildmenu_iminsert() depends on help file
+ * runtime(doc): remove mentioning of netrwSettings.vim
+ * runtime(doc): fix typo at :h cmdline-autocompletion
+ * patch 9.1.1595: Wayland: non-portable use of select()
+ * patch 9.1.1594: completion: search completion throws errors
+ * runtime(doc): tweak option name notation further
+ * runtime(doc): add back bars for the '' mark
+ * runtime(vim): add gf support for import and packadd in ftplugin
+ * runtime(helptoc): add s keymap to split and jump to selected entry
+ * runtime(syntax-tests): Break up non-ASCII over-75-byte-long lines
+ * runtime(doc): fix mismatch between 'backspace' and |i_backspacing|
+ * runtime(doc): Use correct option-name tags
+ * runtime(doc): Tweak documentation style
+ * translation(uk): Fix wrong Ukrainian message translation
+ * check.vim: Further improve po message checks
+ * translation(it): Update Italian translation
+ * patch 9.1.1593: Confusing error when compiling incomplete try block
+ * runtime(misc): removing saccarosium from maintainer list
+ * patch 9.1.1592: Vim9: crash with classes and garbage collection
+ * runtime(vim): Update base syntax, match Neovim builtin functions
+ * runtime(vim): Update base syntax, fix :map termination in :command RHS
+ * CI: Manage multibyte characters in syntax tests
+ * CI: Remove the file filters for syntax tests
+ * CI(screendump): Support iterative filtering for screendump comparison
+ * CI(screendump): Move an early-return test out of the loop
+ * CI: Include provenance in names of collected artifacts
+ * runtime(vim): Cleanup syntax tests
+ * patch 9.1.1591: VMS support can be improved
+ * patch 9.1.1590: cannot perform autocompletion
+ * runtime(ccomplete): return partial results on complete_check()
+ * patch 9.1.1589: Cannot disable cscope interface using configure
+ * patch 9.1.1588: Vim9: cannot split dict inside command block
+ * runtime(netrw): upstream snapshot v184
+ * runtime(vim): fix various indentation issues
+ * runtime(doc): use correct possessive form
+ * patch 9.1.1587: Wayland: timeout not updated before select()
+ * patch 9.1.1586: Vim9: can define an enum/interface in a function
+ * runtime(vim): Update base syntax, match enum constructor type args
+ * runtime(vim): Update base syntax, match generic functions
+ * runtime(ccomplete): use complete_check() in ccomplete plugin
+ * runtime(editorconfig): drop mkzip.sh
+ * patch 9.1.1585: Wayland: gvim still needs GVIM_ENABLE_WAYLAND
+ * runtime(misc): use :hor :term to ensure new term window is split horizontally
+ * patch 9.1.1584: using ints as boolean type
+ * check.vim: Improve po message checks
+ * translation(it): Update Italian translation
+ * runtime(doc): Tweak documentation style in usr_90.txt
+ * patch 9.1.1583: gvim window lost its icons
+ * patch 9.1.1582: style issue in vim9type.c and vim9generics.c
+ * runtime(doc): remove mention of ftp.vim.org
+ * runtime(doc): Tweak documentation style
+ * runtime(doc): Fix typo in :help help-summary
+ * patch 9.1.1581: possible memory leak in vim9generics.c
+ * patch 9.1.1580: possible memory leak in vim9type.c
+ * patch 9.1.1579: Coverity complains about unchecked return value
+ * patch 9.1.1578: configure: comment still mentions autoconf 2.71
+ * patch 9.1.1577: Vim9: no generic support yet
+ * patch 9.1.1576: cannot easily trigger wildcard expansion
+ * runtime(doc): clarify C99 constraints and portability assumptions
+ * patch 9.1.1575: tabpanel not drawn correctly with wrapped lines
+ * patch 9.1.1574: Dead code in mbyte.c
+ * runtime(doc): mention the "pipefail" shell option
+ * patch 9.1.1573: Memory leak when pressing Ctrl-D in cmdline mode
+ * translation: mark vim.pot as binary
+ * translation: do not add message location as comments into vim.pot
+ * patch 9.1.1572: expanding $var does not escape whitespace for 'path'
+ * patch 9.1.1571: CmdlineChanged triggered to often
+ * runtime(rust): improve loading time
+ * runtime(doc): Update help syntax, match :autocmd options
+ * patch 9.1.1570: Copilot suggested some improvements in cmdexpand.c
+ * translation(de): Update German translations
+ * translation(it): Update Italian translations
+ * patch 9.1.1569: tests: Vim9 tests can be improved
+ * runtime(doc): Tweak documentation about tab pages
+ * runtime(uc): include uc filetype plugin
+ * translation: comment out deletion of *.pot file in Makefiles
+ * patch 9.1.1568: need a few more default highlight groups
+ * patch 9.1.1567: crash when using inline diff mode
+ * patch 9.1.1566: self-referenced enum may not get freed
+ * patch 9.1.1565: configure: does not consider tiny version for wayland
+ * runtime(lf): update syntax to support lf version r36
+ * runtime(sh): properly delete shell commands in syntax file
+ * Update editorconfig and the documented C-style for sign.c/sound.c
+ * runtime(vim): Update base syntax and generator, improve command/function distinction
+ * patch 9.1.1564: crash when opening popup to closing buffer
+ * translation: mark vim.pot as linguist-generated, ignore msg locations in vim.pot
+ * patch 9.1.1563: completion: ruler may disappear
+ * patch 9.1.1562: close button always visible in the 'tabline'
+ * runtime(python): Highlight f-strings in Python
+ * runtime(vim): Update base syntax, match "any" type distinctly
+ * patch 9.1.1561: configure: wayland test can be improved
+ * patch 9.1.1560: configure: uses $PKG_CONFIG before it is defined
+ * patch 9.1.1559: tests: Test_popup_complete_info_01() fails when run alone
+ * runtime(doc): fix claim that 'CTRL-W CTRL-C' and 'CTRL-W c' are the same
+ * runtime(doc): handle newlines in base64 string encode example
+ * runtime(vim): Update base syntax, fix incorrect function error
+ * runtime(compiler): Add PHPStan compiler
+ * translation: regenerate vim.pot, ignore version.c changes
+ * patch 9.1.1558: str2blob() treats NULL string and empty string differently
+ * patch 9.1.1557: not possible to anchor specific lines in difff mode
+ * patch 9.1.1556: string handling in cmdexpand.c can be improved
+ * patch 9.1.1555: completion: repeated insertion of leader
+ * patch 9.1.1554: crash when omni-completion opens command-line window
+ * patch 9.1.1553: Vim9: crash when accessing a variable in if condition
+ * runtime(tar): update minimum Vim version required for tar.vim
+ * patch 9.1.1552: [security]: path traversal issue in tar.vim
+ * patch 9.1.1551: [security]: path traversal issue in zip.vim
+ * patch 9.1.1550: defaults: 'showcmd' is not enabled in non-compatible mode on Unix
+ * patch 9.1.1549: filetype: pkl files are not recognized
+ * patch 9.1.1548: filetype: OpenFGA files are not recognized
+ * runtime(swig): add 'comments', 'commentstring' in filetype plugin
+ * runtime(twig): include twig filetype plugin
+ * patch 9.1.1547: Wayland: missing ifdef
+ * translation: ignore vim.pot creation date, regenerate it, rm allfiles
+ * patch 9.1.1546: Vim9: error with has() and short circuit evaluation
+ * runtime(python2): Highlight b-strings in Python 2.7
+ * runtime(doc): Tweak documentation
+ * patch 9.1.1545: typo in os_unix.c
+ * runtime(python): highlight bytes in python
+ * runtime(python2): highlight unicode strings in python2
+ * patch 9.1.1544: :retab cannot be limited to indentation only
+ * runtime(erlang): Add support for triple-quoted strings and docstrings
+ * patch 9.1.1543: Wayland: clipboard appears to not be working
+ * patch 9.1.1542: Coverity complains about uninitialized variable
+ * patch 9.1.1541: Vim9: error when last enum value ends with a comma
+ * runtime(vim): Update help syntax file, improve highlighting of included Vim examples
+ * patch 9.1.1540: completion: menu state wrong on interruption
+ * patch 9.1.1539: completion: messages don't respect 'shm' setting
+ * runtime(vim): Update base syntax, improve :match highlighting
+ * translation(it): update Italian message translations
+ * translation: include vim.pot in the repository
+ * runtime(python): update rendering of Unicode named literals in syntax script
+ * translation(ru): Update messages translation
+ * tests: string options in gen_opt_test.vim not fully sorted
+ * check.vim: detect trailing whitespace
+ * runtime(help_ru): Update help_ru syntax script
+ * runtime(vim): Update base syntax, improve function call highlighting
+ * patch 9.1.1537: helptoc: still some issues when markdown code blocks
+ * patch 9.1.1536: tests: test_plugin_comment uses wrong :Check command
+ * patch 9.1.1535: the maximum search count uses hard-coded value 99
+ * patch 9.1.1534: unnecessary code in tabpanel.c
+ * patch 9.1.1533: helptoc: does not handle code sections in markdown well
+ * runtime(doc): clarify how ex ranges are adjusted when acting on folds
+ * translation(ru): update vim-ru according to patch 9.1.1485
+ * translation(ru): update vimtutor-ru man according to commit 5bbdd0b
+ * translation(ru): Update main readme.ru.txt according to commit 2bfd1ee
+ * runtime(filetype): fix incorrect pattern and break early
+ * Revert "runtime(haskell): Add single quote to `iskeyword` in ftplugin (#8191)"
+ * patch 9.1.1532: termdebug: not enough ways to configure breakpoints
+ * patch 9.1.1531: confusing error with nested legacy function
+ * patch 9.1.1530: Missing version change in v9.1.1529
+ * patch 9.1.1529: Win32: the toolbar in the GUI is old and dated
+ * patch 9.1.1528: completion: crash with getcompletion()
+ * patch 9.1.1527: Vim9: Crash with string compound assignment
+ * runtime(filetype): improve asm heuristics and move into FTasmsyntax()
+ * patch 9.1.1526: completion: search completion match may differ in case
+ * runtime(netrw): restore blank line cleanup after file listing
+ * patch 9.1.1525: tests: testdir/ is a bit messy
+ * patch 9.1.1524: tests: too many imports in the test suite
+ * patch 9.1.1523: tests: test_clipmethod fails in non X11 environment
+ * patch 9.1.1522: tests: still some ANSI escape sequences in test output
+ * patch 9.1.1521: completion: pum does not reset scroll pos on reopen with 'noselect'
+ * patch 9.1.1520: completion: search completion doesn't handle 'smartcase' well
+ * patch 9.1.1519: tests: Test_termdebug_decimal_breakpoints() may fail
+ * runtime(doc): Add documentation style
+ * patch 9.1.1518: getcompletiontype() may crash
+ * runtime(optwin): add missing values for tabpanel option
+ * translation(tr): Update Turkish translations
+ * runtime(doc): fix a few typos introduced in 0ae9e19540dda5d
+ * runtime(autopkgtest): add ftplugin file for autopkgtest
+ * runtime(autopkgtest): add syntax file for autopkgtest
+ * runtime(debcontrol): move kernel/architecture definitions to shared/debarchitectures.vim
+ * patch 9.1.1517: filetype: autopkgtest files are not recognized
+ * patch 9.1.1516: tests: no test that 'incsearch' is updated after search completion
+ * patch 9.1.1515: Coverity complains about potential unterminated strings
+ * patch 9.1.1514: Coverity complains about the use of tmpfile()
+ * patch 9.1.1513: resizing Vim window causes unexpected internal window width
+ * runtime(doc): add a section for options influencing search
+ * tests: fix typo in comment (after v9.1.1511)
+ * runtime(vim): Update base-syntax, match :filetype in functions
+ * patch 9.1.1512: completion: can only complete from keyword characters
+ * patch 9.1.1511: tests: two edit tests change v:testing from 1 to 0
+ * patch 9.1.1510: Search completion may use invalid memory
+ * patch 9.1.1509: patch 9.1.1505 was not good
+ * runtime(vim): Update base-syntax, match escape sequences in :command blocks
+ * runtime(go): fix `b:undo_ftplugin`
+
+-------------------------------------------------------------------
+Mon Aug  4 11:49:33 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update spec file template to the new Copyright declaration string
+
+-------------------------------------------------------------------
 Fri Jul  4 18:27:09 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 9.1.1508 
+- update to 9.1.1508
   * patch 9.1.1508: string manipulation can be improved in cmdexpand.c
   * runtime(vim): Update base-syntax and generator, match all default highlight groups
   * runtime(vim): Update base-syntax and generator, generate command modifiers
@@ -1132,7 +1394,7 @@ Tue Jan  7 18:13:40 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 Sat Dec  7 12:51:41 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.1.0908
-- refresh vim-7.3-mktemp_tutor.patch 
+- refresh vim-7.3-mktemp_tutor.patch
  * 9.1.0908: not possible to configure :messages
  * 9.1.0907: printoptions:portrait does not change postscript Orientation
  * runtime(doc): Add vietnamese.txt to helps main TOC
@@ -1292,7 +1554,7 @@ Sat Dec  7 12:51:41 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Sun Nov  3 15:50:30 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 9.1.0836 
+- update to 9.1.0836
  * 9.1.0836: The vimtutor can be improved
  * 9.1.0835: :setglobal doesn't work properly for 'ffu' and 'tsrfu'
  * 9.1.0834: tests: 2html test fails
@@ -2133,7 +2395,7 @@ Thu Jun  6 00:55:27 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
   * check.vim complains about overlong comment lines
   * translation(it): Update Italian translation
   * evalc. code too complex
-  * MS-Windows Compiler warnings 
+  * MS-Windows Compiler warnings
 
 -------------------------------------------------------------------
 Wed May 29 12:49:57 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
@@ -2181,11 +2443,11 @@ Wed May 29 12:49:57 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
   * update vb indent plugin as vim9script
   * filetype: purescript files are not recognized
   * filetype: slint files are not recognized
-  * basic nim ftplugin file for comments 
-  * Add Arduino ftplugin and indent files 
-  * include basic typst ftplugin file 
-  * include basic prisma ftplugin file 
-  * include basic v ftplugin for comment support 
+  * basic nim ftplugin file for comments
+  * Add Arduino ftplugin and indent files
+  * include basic typst ftplugin file
+  * include basic prisma ftplugin file
+  * include basic v ftplugin for comment support
   * getregionpos() wrong with blockwise mode and multibyte
   * function echo_string_core() is too long
   * hyprlang files are not recognized
@@ -2197,16 +2459,16 @@ Wed May 29 12:49:57 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
   * eval.c not sufficiently tested
   * clarify why E195 is returned
   * clarify temporary file clean up
-  * fix :NoMatchParen not working 
+  * fix :NoMatchParen not working
   * Cannot move to previous/next rare word
-  * add basic ftplugin file for sshdconfig 
+  * add basic ftplugin file for sshdconfig
   * if_py: find_module has been removed in Python 3.12.0a7
   * some screen dump tests can be improved
   * Some functions are not tested
   * clarify instal instructions for comment package
   * Unable to leave long line with 'smoothscroll' and 'scrolloff'
-  * fix typo in vim9script help file 
-  * Remove trailing spaces 
+  * fix typo in vim9script help file
+  * Remove trailing spaces
   * clarify {special} argument for shellescape()
 
 -------------------------------------------------------------------
@@ -2217,23 +2479,23 @@ Thu May 16 08:19:44 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  add missing entries for the keys CTRL-W g<Tab> and <C-Tab>
  *  update vi_diff.txt: add default value for 'flash'
  *  typo in regexp_bt.c in DEBUG code
- *  allow indented commands 
- *  Fix wrong define regex in ftplugin 
- *  Filter out non-Latin-1 characters for syntax tests 
+ *  allow indented commands
+ *  Fix wrong define regex in ftplugin
+ *  Filter out non-Latin-1 characters for syntax tests
  *  prefer scp over pscp
  *  fix typo in usr_52.txt
  *  too long functions in eval.c
  *  warning about uninitialized variable
  *  too many strlen() calls in the regexp engine
- *  E16 fix, async keyword support for define 
+ *  E16 fix, async keyword support for define
  *  Stuck with long line and half-page scrolling
  *  Divide by zero with getmousepos() and 'smoothscroll'
  *  update and remove  some invalid links
  *  update translation of xxd manpage
  *  Recursively delete directories by default with netrw delete command
- *  Strive to remain compatible for at least Vim 7.0 
+ *  Strive to remain compatible for at least Vim 7.0
  *  tests: xxd buffer overflow fails on 32-bit
- *  Stop handpicking syntax groups for @javaTop 
+ *  Stop handpicking syntax groups for @javaTop
  *  [security] xxd: buffer-overflow with specific flags
  *  Vim9: not able to import file from start dir
  *  filetype: mdd files detected as zsh filetype
@@ -2256,9 +2518,9 @@ Thu May 16 08:19:44 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  Fix typos in help documents
  *  'viewdir' not respecting $XDG_CONFIG_HOME
  *  tests: Vim9 debug tests may be flaky
- *  correct getscriptinfo() example 
+ *  correct getscriptinfo() example
  *  Vim9: could improve testing
- *  test_sound fails on macos-12 
+ *  test_sound fails on macos-12
  *  update Serbian menu
  *  update Slovak menu
  *  update Slovenian menu
@@ -2276,19 +2538,19 @@ Thu May 16 08:19:44 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  update Catalan menu
  *  filetype: stylus files not recognized
  *  update spanish menu localization
- *  regenerate helptags 
+ *  regenerate helptags
  *  Vim9: crash with null_class and null_object
- *  Add tags about lazyloading of menu 
+ *  Add tags about lazyloading of menu
  *  tests: vt420 terminfo entry may not be found
  *  filetype: .out files recognized as tex files
  *  filetype: Kbuild files are not recognized
  *  cbuffer and similar commands don't accept a range
- *  Improve the recognition of the "indent" method declarations 
+ *  Improve the recognition of the "indent" method declarations
  *  Fix a typo in usr_30.txt
  *  remove undefined var s:save_cpoptions and add include setting
- *  missing setlocal in indent plugin 
+ *  missing setlocal in indent plugin
  *  Calculating line height for unnecessary amount of lines
- *  improve syntax file performance 
+ *  improve syntax file performance
  *  There are a few typos
  *  Vim9: no comments allowed after class vars
  *  CI: remove trailing white space in documentation
@@ -2296,9 +2558,9 @@ Thu May 16 08:19:44 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  Add oracular (24.10) as Ubuntu release name
  *  Vim9: Trailing commands after class/enum keywords ignored
  *  tests: 1-second delay after Test_BufEnter_botline()
- *  update helptags for jq syntax 
+ *  update helptags for jq syntax
  *  include syntax, ftplugin and compiler plugin
- *  fix typo synconcealend -> synconcealed 
+ *  fix typo synconcealend -> synconcealed
  *  include a simple comment toggling plugin
  *  wrong botline in BufEnter
  *  clarify syntax vs matching mechanism
@@ -2306,7 +2568,7 @@ Thu May 16 08:19:44 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  ops.c code uses too many strlen() calls
  *  Calling CLEAR_FIELD() on the same struct twice
  *  Vim9: compile_def_function() still too long
- *  Update Serbian messages 
+ *  Update Serbian messages
  *  clarify the effect of setting the shell to powershell
  *  Improve the recognition of the "style" method declarations
  *  Vim9: problem when importing autoloaded scripts
@@ -2315,7 +2577,7 @@ Thu May 16 08:19:44 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  Crash when typing many keys with D- modifier
  *  tests: test_vim9_builtin is a bit slow
  *  update documentation
- *  change the download URL of "libsodium" 
+ *  change the download URL of "libsodium"
  *  tests: test_winfixbuf is a bit slow
  *  Add filetype, syntax and indent plugin for Astro
  *  expanding rc config files does not work well
@@ -2327,7 +2589,7 @@ Thu May 16 08:19:44 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  Page scrolling should place cursor at window boundaries
  *  align command line table
  *  minor fixes to starting.txt
- *  fix comment definition in filetype plugin 
+ *  fix comment definition in filetype plugin
  *  filetype: flake.lock files are not recognized
  *  runtime(uci): No support for uci file types
  *  Support "g:ftplugin_java_source_path" with archived files
@@ -2369,31 +2631,31 @@ Mon Apr 15 08:47:30 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  * No support for using $XDG_CONFIG_HOME
  * filetype: some requirements files are not recognized
  * filetype: CMakeCache.txt files not recognized
- * Update base-syntax, fix nested function folding 
+ * Update base-syntax, fix nested function folding
  * filetype: some json files are not recognized
- * include new compiler, use it for '*.custom.yaml' files 
+ * include new compiler, use it for '*.custom.yaml' files
  * filetype: cabal config files may not be recognized
- * don't set compiler, update a comment for vimdoc compiler 
+ * don't set compiler, update a comment for vimdoc compiler
  * filetype: some mail tools not recognized
  * Garbled output on serial terminals with XON/XOFF flow control
- * Recognise non-ASCII identifiers 
+ * Recognise non-ASCII identifiers
  * Wrong cursor position after using setcellwidths()
  * Using heredoc in string not tested with :execute
- * use explicit version tags for macos runners 
+ * use explicit version tags for macos runners
  * filetype: translate shell config files are not recognized
  * filetype: matplotlibrc files are not recognized
  * Update base-syntax, add legacy header folding
  * filetype: some sh and confini files not recognized
  * filetype: a few more dosini files are not recognized
- * Line continuation is not detected for 'set' command 
+ * Line continuation is not detected for 'set' command
  * Vim9: Can define a class in a function
- * fix highlighting import string followed by some comment 
+ * fix highlighting import string followed by some comment
  * Crash when using heredoc with comment in command block
  * heredocs are not supported for :commands
  * filetype: Some config files are not recognized
  * Filler lines not checked properly in get_scroll_overlap()
- * include ftplugin support 
- * add include to ftplugin 
+ * include ftplugin support
+ * add include to ftplugin
  * mention :argded for :argedit
  * crash when 'textwidth' > MAX_INT
  * typo in intro.txt
@@ -2410,17 +2672,17 @@ Mon Apr 15 08:47:30 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  * add matchit support
  * filetype: some protocol buffer files not recognized
  * filetype: blueprint files are not recognized
- * Improve Vim9 and legacy-script comment highlighting 
+ * Improve Vim9 and legacy-script comment highlighting
 
 -------------------------------------------------------------------
 Wed Apr 10 18:44:04 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 9.1.0301 
+- update to 9.1.0301
  *  Vim9: heredoc start may be recognized in string
  *  Missing test for what patch v9.1.0285 fixes
  *  Vim9: return type not set for a lambda assigned to script var
- *  add runtime/doc/tags-* to ignore files 
- *  Updated translation 
+ *  add runtime/doc/tags-* to ignore files
+ *  Updated translation
  *  Update documentation
  *  Patch 9.1.0296 causes too many issues
  *  Fix a few issues with gvim.nsi
@@ -2435,9 +2697,9 @@ Wed Apr 10 18:44:04 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  Vim9: comment may be treated as heredoc start
  *  Vim9: E1027 with defcompile for abstract methods
  *  Still problems with cursor position for CTRL-D/U
- *  fix inaccuracies in pandoc compiler 
+ *  fix inaccuracies in pandoc compiler
  *  make testclean is not able to delete failed screendumps
- *  Update base-syntax, no curly-brace names in Vim9 script 
+ *  Update base-syntax, no curly-brace names in Vim9 script
  *  Several small issues in doc and tests
  *  Finding highlighting attributes is inefficient
  *  Update cuda keywords, remove uncommonly used enumeration constants
@@ -2451,16 +2713,16 @@ Wed Apr 10 18:44:04 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  autocmd may change cwd after :tcd and :lcd
  *  Update syntax generator, autocmd event list parsing
  *  Normalise builtin-function optional parameter formatting
- *  Correctly distribute libsodium with the installer 
+ *  Correctly distribute libsodium with the installer
  *  a few minor issues to fix
  *  Test for TextChanged is still flaky with ASAN
  *  Two tests in test_filechanged.vim are slow
  *  File name entered in GUI dialog is ignored
- *  fix :compiler leaving behind a g:makeprg variable 
- *  Remove more fallback :CompilerSet definitions from compiler plugins 
+ *  fix :compiler leaving behind a g:makeprg variable
+ *  Remove more fallback :CompilerSet definitions from compiler plugins
  *  filetype: earthfile files are not recognized
  *  console dialog cannot save unnamed buffers
- *  Fill in a few details regarding :enums 
+ *  Fill in a few details regarding :enums
  *  Remove fallback :CompilerSet definition from compiler plugins
  *  libgpm may delete some signal handlers
  *  Improve the matching of contextual keywords
@@ -2469,7 +2731,7 @@ Wed Apr 10 18:44:04 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  Vim9: protected class and funcrefs accessible outside the class
  *  Problems with "zb" and scrolling to new topline with 'smoothscroll'
  *  filetype not detected when editing remote files
- *  sort filetype.txt in the alphabetical order 
+ *  sort filetype.txt in the alphabetical order
  *  Normal mode TextChanged isn't tested properly
  *  half-page scrolling broke backward compatibility
  *  Vim9: :call may not find imported class members
@@ -2480,7 +2742,7 @@ Wed Apr 10 18:44:04 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  improve syntax highlighting for YAML
  *  Vim9: segfault with static in super class
  *  Filetype test fails
- *  update syntax 
+ *  update syntax
  *  filetype: ldscripts cannot be recognized
  *  filetype: rock_manifest and config.ld files are not recognized
  *  filetype: yarn lock files are not recognized
@@ -2502,11 +2764,11 @@ Wed Apr 10 18:44:04 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  Conceal test fails when rightleft feature is disabled
  *  Filetype may be undetected when SwapExists sets ft in other buf
  *  TextChanged autocommand not triggered under some circumstances
- *  ensure compiler! sets global options 
- *  Distinguish Vim9 builtin object methods from namesake builtin functions 
+ *  ensure compiler! sets global options
+ *  Distinguish Vim9 builtin object methods from namesake builtin functions
  *  add support for Debian specific @includes
  *  Error E877 is not translated
- *  fix path of uganda.nsis.txt in german.nsi file 
+ *  fix path of uganda.nsis.txt in german.nsi file
  *  Two unrelated things are tested by a single test
  *  Improve docs for empty(), len(), and string() on objects
  *  Recording may still be wrong in Select mode
@@ -2519,46 +2781,46 @@ Wed Apr 10 18:44:04 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  Few typos in source and test files
  *  Vim9: No enum support
  *  Unnecessary multiplications in backspace code
- *  Add translation for README.txt and uganda.txt 
+ *  Add translation for README.txt and uganda.txt
  *  regexp: verymagic cannot match before/after a mark
- *  Possibility to include translated license and README.txt files 
- *  Update README.txt and README.md 
+ *  Possibility to include translated license and README.txt files
+ *  Update README.txt and README.md
  *  Error on exit with EXITFREE and 'winfixbuf'
  *  Half-page scrolling does not support smooth-scrolling
- *  Update base-syntax, match empty blob and :abclear modifiers 
+ *  Update base-syntax, match empty blob and :abclear modifiers
  *  Duplicate condition in win_lbr_chartabsize()
  *  allow TODO keywords in comments
- *  add Static-Built-Using field 
- *  add basic indent support 
+ *  add Static-Built-Using field
+ *  add basic indent support
  *  page-wise scrolling does not support smooth-scrolling
  *  Motif: leaking memory when mui_mch_dialog() fails
  *  leaking memory in exe_newdict() on error
  *  winfixbuf does not allow to re-edit current buffer
  *  No autocommand when writing session file
- *  Update java[CR]_JavaLang type lists 
- *  Update README.md 
+ *  Update java[CR]_JavaLang type lists
+ *  Update README.md
  *  unused display_text_first boolean var in win_line()
  *  Cannot use modifiers before :-Ntabmove
- *  Redesigning the appearance of the vimrc settings page 
+ *  Redesigning the appearance of the vimrc settings page
  *  Backspace inserts spaces with virtual text and 'smarttab'
  *  Update options.txt
  *  build-error on GNU/Hurd
- *  Recognise the inline kind of the {@return} tag 
- *  Fix typo in netrw#NetWrite 
- *  Update nsis installer and nsis docs 
- *  update errorformat for dot and neato compiler 
+ *  Recognise the inline kind of the {@return} tag
+ *  Fix typo in netrw#NetWrite
+ *  Update nsis installer and nsis docs
+ *  update errorformat for dot and neato compiler
  *  leaking memory in add_user() on failure
  *  gM not working correctly with virt text
  *  `gj`/`gk` not skipping over outer virtual text lines
- *  allow multibyte characters as breakpoint signs 
+ *  allow multibyte characters as breakpoint signs
  *  Not enough tests for the slice() function
  *  Vim9: compound operators broken for lambdas in an object
- *  Update base-syntax, remove old unused syntax groups. 
+ *  Update base-syntax, remove old unused syntax groups.
  *  Vim9: problem evaluating negated boolean logic
- *  Fix for Sodium version 1.0.19 and MinGW 
- *  Recognise the {@snippet} documentation tag 
- *  mingw complains about unknown escape sequence: '\l', fails with libsodium 
- *  Update base-syntax, improve function definition highlighting 
+ *  Fix for Sodium version 1.0.19 and MinGW
+ *  Recognise the {@snippet} documentation tag
+ *  mingw complains about unknown escape sequence: '\l', fails with libsodium
+ *  Update base-syntax, improve function definition highlighting
  *  filetype: support for gnuplot files is lacking
  *  memleak with ex_drop, NULL dereference
  *  gcc complains about uninitialized var
@@ -2567,19 +2829,19 @@ Wed Apr 10 18:44:04 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  drop: don't rewind when editing the same file
  *  Installer does not remove all files
  *  complete_info() returns wrong order of items
- *  Add minimal ftplugin 
+ *  Add minimal ftplugin
  *  Memory leak with "above" virttext and 'relativenumber'
  *  filetype: no support for Vento files
- *  Update base-syntax, disallow '.' at start of menu item names 
+ *  Update base-syntax, disallow '.' at start of menu item names
  *  regenerate c_00 and markdown dumps
  *  include missing changes
- *  Respect no_plugin_maps and no_rust_maps globals 
+ *  Respect no_plugin_maps and no_rust_maps globals
  *  Retrofit input/c.c. with TEST_SETUP
  *  Support sourceable Vim configuration for syntax tests
  *  Support embeddable Vim configuration for syntax tests
  *  Recover some missed commas and periods in starting.txt
  *  filetype: no support for Dafny files
- *  Update base-syntax, improve :highlight command 
+ *  Update base-syntax, improve :highlight command
  *  clarify close behaviour for :term
  *  `goPackageComment` highlighting too broad
  *  cursor pos wrong on mouse click after eol with 'rl', 've' and conceal
@@ -2587,10 +2849,10 @@ Wed Apr 10 18:44:04 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  Cursor pos wrong when clicking with conceal and wrap
  *  Wrong display or screenpos() result when toggling diff mode
  *  Can define function with invalid name inside 'formatexpr'
- *  tools/rename.bat uses 'mv' and "move" 
- *  make :h tag-! more consistent 
- *  Update base-syntax, revert last change to vimUserFunc 
- *  Update base-syntax, improve :echo and :execute highlighting 
+ *  tools/rename.bat uses 'mv' and "move"
+ *  make :h tag-! more consistent
+ *  Update base-syntax, revert last change to vimUserFunc
+ *  Update base-syntax, improve :echo and :execute highlighting
  *  no overflow check for string formatting
  *  Cursor pos wrong when double-width chars are concealed
  *  'wincolor' highlight missing with "below" virtual text
@@ -2608,21 +2870,21 @@ Wed Apr 10 18:44:04 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  Re-allow curwin == prevwin, but document it instead
  *  current window number returned by tabpagewinnr may be outdated
  *  too many STRLEN() calls
- *  Update base-syntax, improve number matching 
+ *  Update base-syntax, improve number matching
  *  Changing buffer in another window causes it to show matchparen
  *  Internal error with blockwise getregion() in another buffer
- *  Update Lithuanian translation of Vim tutor to v.1.7 
- *  improve 'winfixbuf' docs 
+ *  Update Lithuanian translation of Vim tutor to v.1.7
+ *  improve 'winfixbuf' docs
  *  Update Markdown syntax, add missing configs
  *  Vim9: Importing an autoload imported script fails
  *  Internal error when passing invalid position to getregion()
  *  Calling STRLEN() to compute ml_line_textlen when not needed
  *  problem with writing extended attributes on failure
- *  Added Lithuanian translation of Tutor v. 1.4 by Laurynas Stančikas 
- *  Recognise string templates 
- *  Update base-syntax, improve :map highlighting 
+ *  Added Lithuanian translation of Tutor v. 1.4 by Laurynas Stančikas
+ *  Recognise string templates
+ *  Update base-syntax, improve :map highlighting
  *  expand() removes slash after env variable that ends with colon
- *  Update base-syntax, improve :menu{,translate} highlighting 
+ *  Update base-syntax, improve :menu{,translate} highlighting
  *  Vim9: Add support for using a class type of itself in an object method
  *  Crash in WinClosed after BufUnload closes other windows
  *  'shortmess' "F" flag doesn't work properly with 'autoread'
@@ -2647,24 +2909,24 @@ Wed Mar  6 15:36:55 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 - refreshed vim-7.3-filetype_spec.patch
  *  ml_get_buf_len() does not consider text properties
  *  Several minor 'winfixbuf' issues
- *  Update Serbian messages 
- *  Recognize "__inline" 
- *  Update base-syntax, fix escaping :syn and :hi sub-groups 
- *  Update syntax file, fix issue #962 
+ *  Update Serbian messages
+ *  Recognize "__inline"
+ *  Update base-syntax, fix escaping :syn and :hi sub-groups
+ *  Update syntax file, fix issue #962
  *  null pointer member access when accessing 'winfixbuf' property
  *  update syntax script
- *  Update base-syntax, fix issue #14135 
+ *  Update base-syntax, fix issue #14135
  *  Highlight the error message at *E1513*
- *  Update base-syntax, improve :augroup highlighting 
- *  Use unnamed register when clipboard not working 
+ *  Update base-syntax, improve :augroup highlighting
+ *  Use unnamed register when clipboard not working
  *  Vim9: can't call internal methods with objects
  *  Cannot keep a buffer focused in a window
- *  Updated Russian installer translation 
- *  Recognise text blocks 
- *  Update ftplugin, browsefilter labels 
- *  Improve the recognition of literals 
+ *  Updated Russian installer translation
+ *  Recognise text blocks
+ *  Update ftplugin, browsefilter labels
+ *  Improve the recognition of literals
  *  v:echospace wrong with invalid value of 'showcmdloc'
- *  some improvements to getregion() docs 
+ *  some improvements to getregion() docs
  *  update "Last Change header", remove trailing whitespace
  *  handle file/dir symlinks specifically in tree mode
  *  v:echospace not correct when 'showcmdloc' != last
@@ -2675,19 +2937,19 @@ Wed Mar  6 15:36:55 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  include runtime/syntax/testdir/ftplugin
  *  Put in Visual mode wrong if it replaces fold marker
  *  Fix typo under *kitty-terminal* in term.txt
- *  Update Serbian translation 
+ *  Update Serbian translation
  *  Recognise _when_ clauses in _switch_ blocks
  *  simplify code and allow filetype options
  *  Update Italian translation
  *  cursor on wrong row after 1 char 'below' virtual text when EOL is shown
- *  Update ftplugin, fix #14101 
- *  Update base-syntax, improve :echo highlighting 
- *  update Debian syntax files 
+ *  Update ftplugin, fix #14101
+ *  Update base-syntax, improve :echo highlighting
+ *  update Debian syntax files
  *  too many STRLEN calls when getting a memline
- *  Update syntax file, improve :substitute matching 
+ *  Update syntax file, improve :substitute matching
  *  <Del> in cmdline mode doesn't delete composing chars
  *  Fix typo in usr_41.txt
- *  fix inconsistent indent 
+ *  fix inconsistent indent
  *  Vim9: need more test for exists() methods
  *  clarify ':set[l] {option}<' behaviour
  *  Insufficient testing for 'delcombine'
@@ -2696,30 +2958,30 @@ Wed Mar  6 15:36:55 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  [security]: UAF if win_split_ins autocommands delete "wp"
  *  Fix truncation of text_wrap 'wrap' virt text after EOL list char
  *  runtime(doc) Update help text for matchbufline() and matchstrlist()
- *  small fixes to the zh tutor 
- *  Recognize SourceLicense tag name in RPM spec syntax 
+ *  small fixes to the zh tutor
+ *  Recognize SourceLicense tag name in RPM spec syntax
  *  win_gotoid() may abort even when not switching a window
  *  Naming a non-pointer variable "oap" is strange
  *  Internal error when using upper-case mark in getregion()
- *  Update base-syntax, fix :unabbrev highlighting 
- *  add syntax support for Java switch expressions 
+ *  Update base-syntax, fix :unabbrev highlighting
+ *  add syntax support for Java switch expressions
  *  unused init of text_prop_idxs in win_line()
  *  display of below/right virtual text with non-virtual text overlap
  *  clarify expand() for :terminal windows
  *  Some minor issues with the getregion() function
- *  Update tmux syntax 
+ *  Update tmux syntax
  *  Infinite loop or signed overflow with 'smoothscroll'
  *  hard to get visual region using Vim script
  *  can move away from cmdwin using win_splitmove()
  *  Use different restoration strategy in win_splitmove
  *  Stop split-moving from firing WinNew and WinNewPre autocommands
  *  win_split_ins may not check available room
- *  Add a place holder section for version 9.2 
- *  Modula-2 files with priority not detected 
+ *  Add a place holder section for version 9.2
+ *  Modula-2 files with priority not detected
  *  announce adoption of various runtime files
- *  Distinguish Vim9 constructor definitions from the :new ex command 
+ *  Distinguish Vim9 constructor definitions from the :new ex command
  *  Using freed memory with full tag stack and user data
- *  Fix typo in testing.txt 
+ *  Fix typo in testing.txt
  *  Setting some options may change curswant
  *  update "Last Change:" header
  *  reset readonly setting when disabling less mode
@@ -2755,7 +3017,7 @@ Thu Feb 15 09:35:46 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  runtime(gpg): Mark dangerous use-embedded-filename with WarningMsg
  *  CompletionChanged not triggered when new leader added without matches
  *  'breakindent' behaves inconsistently with 'list' and splits
- *  runtime(vim): Update syntax file 
+ *  runtime(vim): Update syntax file
  *  diff() function uses 'diffexpr'
  *  tests: test_restricted() fails
  *  xxd: buffer-overflow when writing color output
@@ -2782,49 +3044,49 @@ Thu Feb 15 09:35:46 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  Unnecessary call to redraw_for_cursorline() in nv_mousescroll()
  *  runtime(colors): color names in the v:colornames dict should be lower cased
  *  luau config file not detected
- *  runtime(vim): Update syntax file 
+ *  runtime(vim): Update syntax file
  *  insert completion not correct when adding new leader
  *  did_set_breakat() should be in optionstr.c
  *  Looping over modifier_keys_table unnecessarily
  *  Not able to build without FEAT_DIFF
- *  translation(ca): Fixe typos in Catalan translation 
+ *  translation(ca): Fixe typos in Catalan translation
  *  Need a diff() Vim script function
- *  translation(ru): Updated Russian translation of messages 
- *  runtime(vim): Update syntax file 
- *  runtime(fortran): update syntax 
+ *  translation(ru): Updated Russian translation of messages
+ *  runtime(vim): Update syntax file
+ *  runtime(fortran): update syntax
  *  ScreenLines may not be correctly initialized, causing hang
  *  Visual highlighting can still be improved
  *  gcc still complains about use of uninitialized var
- *  runtime(racket): add missing space to b:undo_indent var 
- *  runtime(Filelist): include README_vimlogo.txt 
+ *  runtime(racket): add missing space to b:undo_indent var
+ *  runtime(Filelist): include README_vimlogo.txt
  *  gcc complains about use of uninitialized var
  *  runtime(vimlogo): Include and modernize vimlogo.svg
- *  runtime(netrw): fixing remote file removal via ssh 
+ *  runtime(netrw): fixing remote file removal via ssh
  *  runtime(doc): correct Vim patch for Wayland support
- *  runtime(racket): undo some indent options only when vim9script is available 
+ *  runtime(racket): undo some indent options only when vim9script is available
  *  runtime(doc): Update help for Wayland support
  *  Segfault with CompleteChanged autocommand
  *  No Wayland support
  *  GTK code can be improved
  *  Internal error when :luado/perldo/pydo etc delete lines
  *  UX of visual highlighting can be improved
- *  runtime(netrw): Use :exec norm! <leftmouse> before :call mapping in netrw 
+ *  runtime(netrw): Use :exec norm! <leftmouse> before :call mapping in netrw
  *  Recorded register cannot be translated using keytrans()
  *  runtime(vim): Highlight string interpolation
- *  runtime(vim): Update syntax and ftplugin files 
- *  runtime(ant): Update syntax file 
+ *  runtime(vim): Update syntax and ftplugin files
+ *  runtime(ant): Update syntax file
  *  runtime(hurl): add hurl filetype plugin
- *  runtime(vim): Update syntax file 
- *  runtime(doc): style fixes in vim9.txt 
+ *  runtime(vim): Update syntax file
+ *  runtime(doc): style fixes in vim9.txt
  *  No event triggered before creating a window
  *  Cannot map Super Keys in GTK UI
  *  wrong number of trailing spaces inserted after blockwise put
  *  formatting long lines is slow
  *  'linebreak' may still apply to leading whitespace
  *  Patch 9.1.0041 causes regressions for users
- *  runtime(mail): fix #13913 
- *  runtime(netrw): Don't change global options 
- *  runtime(fortran): update syntax and documentation 
+ *  runtime(mail): fix #13913
+ *  runtime(netrw): Don't change global options
+ *  runtime(fortran): update syntax and documentation
  *  Win32 Keyboard handling is sub-optimal
  *  Make "[Command Line]" a special buffer name
  *  Abort opening cmdwin if autocmds screw things up
@@ -2832,23 +3094,23 @@ Thu Feb 15 09:35:46 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  runtime(c): Highlight user defined functions
  *  :drop does not re-use empty buffer
  *  --remote-* does not ignore `wilidignore`
- *  runtime(doc): change "VIsual mode" to "Visual mode" in :h SafeState 
- *  translation(hu): use correct encoding in header of hu po file 
- *  runtime(vim): Update syntax file 
- *  runtime(qml): Use shiftwidth() in indent plugin 
+ *  runtime(doc): change "VIsual mode" to "Visual mode" in :h SafeState
+ *  translation(hu): use correct encoding in header of hu po file
+ *  runtime(vim): Update syntax file
+ *  runtime(qml): Use shiftwidth() in indent plugin
  *  translation(it): Update Italian translation
  *  runtime(mail): updated syntax file
- *  runtime(doc): improve doc makefiles, add clean rule 
- *  runtime(lang): improve makefiles, add clean rule, fix typo 
+ *  runtime(doc): improve doc makefiles, add clean rule
+ *  runtime(lang): improve makefiles, add clean rule, fix typo
  *  po Makefiles can be improved
- *  runtime(tutor): simplify tutor makefiles 
- *  runtime(sh): Add handling for ksh93 shared-state comsubs and mksh valsubs 
+ *  runtime(tutor): simplify tutor makefiles
+ *  runtime(sh): Add handling for ksh93 shared-state comsubs and mksh valsubs
  *  ml_get: invalid lnum when :s replaces visual selection
- *  runtime(chuck): include ChucK syntax file 
- *  runtime(go): update Go syntax file 
+ *  runtime(chuck): include ChucK syntax file
+ *  runtime(go): update Go syntax file
  *  Missing test for Chuck Filetype
- *  translation(sr): Update Serbian messages translation 
- *  runtime(filetype): detect *.ck files as Chuck filetype 
+ *  translation(sr): Update Serbian messages translation
+ *  runtime(filetype): detect *.ck files as Chuck filetype
 
 -------------------------------------------------------------------
 Mon Jan 22 09:39:37 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -2858,23 +3120,23 @@ Mon Jan 22 09:39:37 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  man on AIX does not understand -l
  *  add focus_follows_mouse and smart_qaps syntax keywords
  *  remove always from `focus_follows_mouse`
- *  minor changes to fix move cmd on windows 
+ *  minor changes to fix move cmd on windows
  *  issue with prompt buffer and hidden buffer
  *  too vague errors for 'listchars'/'fillchars'
  *  Unnecessary loop in getvcol()
  *  Calling get_breakindent_win() repeatedly when computing virtcol
- *  include ftplugin, syntax and indent script 
+ *  include ftplugin, syntax and indent script
  *  i_CTRL-] triggers InsertCharPre
  *  Window scrolls unexpectedly when 'scrollbind' is set
  *  Insert mode not stopped if closing prompt buffer modifies hidden buffer
- *  update fortran syntax 
+ *  update fortran syntax
  *  regenerate helptags, fix ci help tags job failing
  *  Cannot use terminal alternate font
- *  Replace non-breaking space with normal space 
+ *  Replace non-breaking space with normal space
  *  Use "*" browsefilter pattern to match "All Files"
  *  Cannot act on various terminal response codes
- *  Check help tags for errors (duplicates, missing, etc) 
- *  delete duplicate help tag E741 
+ *  Check help tags for errors (duplicates, missing, etc)
+ *  delete duplicate help tag E741
  *  Vim is missing a foreach() func
  *  A few typos in tests and justify.vim
  *  xxd: few problems with EBCDIC for z/OS (MVS)
@@ -2883,36 +3145,36 @@ Mon Jan 22 09:39:37 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  Vim9: cannot compile all methods in a class
  *  cmdline may disappear when changing 'cmdheight'
  *  use of #if instead of #ifdef
- *  Decode multibyte percent-encoding filename correctly 
+ *  Decode multibyte percent-encoding filename correctly
  *  [security]: use-after-free in eval1_emsg()
- *  Sync with netrw 174b 
- *  Add initial support for Added/Removed/Changed highlight groups 
+ *  Sync with netrw 174b
+ *  Add initial support for Added/Removed/Changed highlight groups
  *  fix a few problems with the tar plugin
- *  accept dot in completionList for Vim9 syntax 
+ *  accept dot in completionList for Vim9 syntax
  *  default diff highlighting is too noisy
- *  Improve the documentation for Vim9 classes 
+ *  Improve the documentation for Vim9 classes
  *  i_CTRL-R- no longer works in replace mode
  *  incorrect use of W_WINROW in edit.c
  *  Modula2 filetype support lacking
  *  regression with empty inner blocks introduced
- *  Fix typos in version9.txt 
- *  Fix typos in reltime() help. 
- *  Update syntax file 
+ *  Fix typos in version9.txt
+ *  Fix typos in reltime() help.
+ *  Update syntax file
  *  regexp cannot match combining chars in collection
  *  Keymap completion is not available
  *  Cannot easily get the list of matches
  *  NSIS installer includes syntax testdir
  *  can select empty inner text blocks
  *  is*() and to*() function may be unsafe
- *  syntax and documentation updates 
+ *  syntax and documentation updates
  *  reloading colorscheme when not changing 'background'
  *  Cannot build against Ruby 33 dynamically
  *  a closing fold expr, may start a new fold
  *  when closing window, wincmd p may fail
- *  add jumpoptions to syntax file 
+ *  add jumpoptions to syntax file
  *  document that the diff filetype uses Diff hl groups
- *  Add support for <ScriptCmd> syntax 
- *  Add support for `syntax foldlevel` command 
+ *  Add support for <ScriptCmd> syntax
+ *  Add support for `syntax foldlevel` command
 
 -------------------------------------------------------------------
 Tue Jan  2 21:15:24 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -2922,13 +3184,13 @@ Tue Jan  2 21:15:24 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  regenerate synmenu
  *  proto files need update
  *  improve filetype detection for *.v (V/Verilog/Coq)
- *  Update sh syntax and add local keyword for bash 
- *  Update ftplugin and omni-complete 
- *  Update Version9.txt for release 9.1 
- *  Add help tags to items in version9.txt 
- *  Updated German translation 
- *  Improve Turkish documentation 
- *  update syntax and documentation 
+ *  Update sh syntax and add local keyword for bash
+ *  Update ftplugin and omni-complete
+ *  Update Version9.txt for release 9.1
+ *  Add help tags to items in version9.txt
+ *  Updated German translation
+ *  Improve Turkish documentation
+ *  update syntax and documentation
  *  Wrong display with 'briopt=sbr' and 'nobreakindent'
  *  Updates to indent and syntax
  *  Fix folding of code blocks
@@ -2936,112 +3198,112 @@ Tue Jan  2 21:15:24 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
  *  Updates to ftplugin and syntax
  *  Make diffs foldable
  *  Add small ftplugin
- *  add Hungarian translation 
- *  Updated Russian translation 
- *  remove coveralls, move runtime/lang/Make_mvc.mak 
- *  correct the :public example 
- *  adjust tutor/README.ru.utf-8.txt 
+ *  add Hungarian translation
+ *  Updated Russian translation
+ *  remove coveralls, move runtime/lang/Make_mvc.mak
+ *  correct the :public example
+ *  adjust tutor/README.ru.utf-8.txt
  *  Update Italian translations
  *  missing undo_ftplugin for indentkeys
  *  cursor wrong after { in single line buffer
  *  Visual not drawn with 'breakindent' when line doesn't fit
- *  add help tag multiple-constructors. 
- *  fix indentation 
- *  Syntax fix 
+ *  add help tag multiple-constructors.
+ *  fix indentation
+ *  Syntax fix
  *  LTCG compile error ARM64 for write_chars
  *  clarify behaviour of ]m and ]M motions
- *  Update default links 
- *  update ConTeXt keywords and other minor fixes 
+ *  Update default links
+ *  update ConTeXt keywords and other minor fixes
  *  Add variable categories and null related documentation
- *  Update R runtime files and docs 
- *  Update Ukrainian translation 
+ *  Update R runtime files and docs
+ *  Update Ukrainian translation
  *  Coverity complains about not checking return value
  *  Clarify that new() is not static
  *  list of new/changed features in version9.txt
- *  updates to indent, syntax and ftplugin 
- *  Add loong64 arch 
- *  add some error codes to `:help vim9class` 
+ *  updates to indent, syntax and ftplugin
+ *  Add loong64 arch
+ *  add some error codes to `:help vim9class`
  *  Vim9: inconsistent :type/:class messages
- *  add support for matchit plugin 
- *  add variants of opcodes 
+ *  add support for matchit plugin
+ *  add variants of opcodes
  *  Include Vim9 class features in version9.txt
  *  Maximum callback depth is not configurable
- *  Update Serbian messages translation 
- *  reformat and align :h ft-c-syntax 
- *  Update syntax file 
+ *  Update Serbian messages translation
+ *  reformat and align :h ft-c-syntax
+ *  Update syntax file
  *  Vim9: need a way to reserve future extension
- *  Add TODO support to syntax script 
+ *  Add TODO support to syntax script
  *  Vim9: missing error messages
  *  update helptags
  *  POSIX function name in exarg causes issues
  *  no filetype detection for execline scripts
  *  reg_executing() wrong for :normal with range
  *  Wrong cursor position when dragging out of window
- *  Update Serbian messages translation 
- *  prevent E11 on FocusGained autocommand 
- *  Update Japanese translation 
- *  updated 8th syntax 
- *  change dependabot prefix to "CI" 
- *  Update change.txt 
+ *  Update Serbian messages translation
+ *  prevent E11 on FocusGained autocommand
+ *  Update Japanese translation
+ *  updated 8th syntax
+ *  change dependabot prefix to "CI"
+ *  Update change.txt
  *  Compile error with Motif UI + mouse support
- *  Create Changelog until v9.0.2175 
+ *  Create Changelog until v9.0.2175
  *  Update Italian translations
- *  Update tmux syntax rules 
- *  Update Turkish translations 
+ *  Update tmux syntax rules
+ *  Update Turkish translations
  *  Compiler warning for uninitialized var
  *  update fortran syntax rules and doc notes
  *  Vim9: segfault when assigning to type
  *  remove deprecation warning for gdefault
  *  Vim9: crash when compiling for statement and non-existing type
  *  Vim9: compiling :defer may fail
- *  Updated Irish translation 
- *  Update Logtalk runtime files for the latest language spec 
- *  update Racket runtime files 
- *  Update colorschemes 
+ *  Updated Irish translation
+ *  Update Logtalk runtime files for the latest language spec
+ *  update Racket runtime files
+ *  Update colorschemes
  *  The options[] array is still not sorted alphabetically
  *  Vim9: no support for const/final class/objects vars
  *  Vim9: builtin funcs may accept a non-value
  *  Moving tabpages on :drop may cause an endless loop
- *  sync runtime files with upstream 
+ *  sync runtime files with upstream
  *  grammar & typo fixes
  *  add Tbreak command
  *  Vim9: not consistently using :var for declarations
  *  Memory leak in Configure Script when checking GTK
  *  Vim9: can simplify arg type checking code
  *  Vim9: can use type a func arg/return value
- *  escape curdir in BrowseUpDir 
+ *  escape curdir in BrowseUpDir
  *  Vim9: type can be assigned to list/dict
  *  Vim9: type documentation out-dated
  *  Vim9: not able to use imported interfaces and classes
- *  Fix i386 build 
+ *  Fix i386 build
  *  instanceof() should use varargs as second arg
- *  Update syntax file, fix missing for highlight 
+ *  Update syntax file, fix missing for highlight
  *  screenpos() may crash with neg. column
- *  labeler.yml: update to v5 
+ *  labeler.yml: update to v5
  *  [security]: use-after-free in check_argument_type
  *  Vim9: incorrectly parses :def func definitions
  *  Vim9: can use typealias in assignment
  *  ft detection maybe wrong if 'fic' set for *.[CH]
  *  do not set b:did_ftplugin before sourcing scala ftplugin
- *  Fix `w:netrw_bannercnt` ref error with `netrw_fastbrowse=2` 
- *  fix examples in comments for JSON formatting 
- *  Add json formating plugin (Issue #11426) 
- *  Update syntax file 
- *  link cmdline completion to to |wildcards| and fix typos 
- *  Update eval.txt 
+ *  Fix `w:netrw_bannercnt` ref error with `netrw_fastbrowse=2`
+ *  fix examples in comments for JSON formatting
+ *  Add json formating plugin (Issue #11426)
+ *  Update syntax file
+ *  link cmdline completion to to |wildcards| and fix typos
+ *  Update eval.txt
  *  Vim9: type not kept when assigning vars
  *  The option[] array is not sorted
  *  unlet b:filetype_in_cpp_family for cpp & squirrel
  *  fix typo in change.txt
  *  update syntax and ftplugins
- *  Update syntax file and syntax test 
+ *  Update syntax file and syntax test
  *  Sort options.txt alphabetically
- *  update todo items 
- *  sort option-list alphabetically 
+ *  update todo items
+ *  sort option-list alphabetically
  *  no support to build on OpenVMS
  *  Using type unknown for List/Dict containers
  *  'breakindent' is not drawn after diff filler lines
- *  remove non-existent parameter in shift-command 
+ *  remove non-existent parameter in shift-command
  *  Using int for errbuflen in option funcs
  *  [security]: use-after-free in exec_instructions()
  *  Vim does not detect pacman.log file
@@ -3051,7 +3313,7 @@ Tue Jan  2 21:15:24 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Wed Dec 20 13:54:00 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 9.0.2181: 
+- update to 9.0.2181:
  *  Vim9: missing error messages
  *  update helptags
  *  POSIX function name in exarg causes issues
@@ -3317,7 +3579,7 @@ Sat Oct 28 14:45:34 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Wed Oct 18 09:13:44 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- Update to version 9.0.2043 
+- Update to version 9.0.2043
  * Vim9: issue with funcref assignmentand varargs
  * Test_cq_zero_exmode fails without channel feature
  * trim(): hard to use default mask
@@ -3406,7 +3668,7 @@ Wed Oct 18 09:13:44 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
  * style: space before tab in optionstr.c
  * xattr: permission-denied errors on write
  * Update Russian message translation to Vim 9.0.1968
- * add missing error numbers in the help. 
+ * add missing error numbers in the help.
  * mention how to disable folding in diff mode
  * vim9: using contra-variant type-checks
  * Clean up cmdline option completion code
@@ -3930,7 +4192,7 @@ Thu Mar  2 11:29:14 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.1367, fixes the following problems
 - dropped vim-fix-sh-syntax.patch
-- fixes boo#1208828 - CVE-2023-1127 
+- fixes boo#1208828 - CVE-2023-1127
   * Using null_object results in an internal error. (Ernie Rael)
   * Compilation error with some compilers.
   * Too many "else if" statements in handling options.
@@ -5336,7 +5598,7 @@ Tue Jul 26 09:40:08 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0073, fixes the following problems
 - CVE-2022-2522 - boo#1201863
-- CVE-2022-2345 - boo#1201363 
+- CVE-2022-2345 - boo#1201363
 - CVE-2022-2343 - boo#1201356
 - CVE-2022-2344 - boo#1201359
   * In the quickfix window 'cursorline' overrules QuickFixLine highlighting.
@@ -5384,7 +5646,7 @@ Tue Jul 26 09:40:08 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 Mon Jul  4 10:06:35 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.0032, fixes the following problems
-- fix CVE-2022-2285 - boo#1201134 
+- fix CVE-2022-2285 - boo#1201134
 - fix CVE-2022-2257 - boo#1201154
   * Map functionality outside of map.c.
   * Functions are global while they could be local.
@@ -5490,7 +5752,7 @@ Mon Jun 20 08:06:56 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 - CVE-2022-2129 - boo#1200701
 - CVE-2022-2124 - boo#1200697
 - CVE-2022-2125 - boo#1200698
-- CVE-2022-2126 - boo#1200700 
+- CVE-2022-2126 - boo#1200700
   * Autocmd test still fails on MS-Windows.
   * When the GUI shows a dialog tests get stuck.
   * Gcc gives warning for signed/unsigned difference.
@@ -5542,7 +5804,7 @@ Mon Jun 13 13:00:22 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.5083, fixes the following problems
 - CVE-2022-2042 - boo#1200471
-- CVE-2022-2000 - boo#1200405 
+- CVE-2022-2000 - boo#1200405
 - CVE-2022-1968 - boo#1200270
 - CVE-2022-1942 - boo#1200125
   * A finished terminal in a popup window does not show a scrollbar.
@@ -5908,7 +6170,7 @@ Fri May  6 09:48:06 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Tue Apr 19 21:19:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- skip empty post/postun on gvim for SLE15+ 
+- skip empty post/postun on gvim for SLE15+
 
 -------------------------------------------------------------------
 Wed Apr 13 13:59:49 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -6328,7 +6590,7 @@ Sun Feb 20 12:32:08 UTC 2022 - Christian Boltz <suse-beta@cboltz.de>
 Mon Feb 14 10:32:53 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.4375, fixes the following problems
-- CVE-2022-0572 - boo#1196023 
+- CVE-2022-0572 - boo#1196023
 - CVE-2022-0554 - boo#1195846
   * Vim9: strict type checking after copy() and deepcopy().
   * Cannot assign empty list with any list type to variable with specific
@@ -6453,7 +6715,7 @@ Mon Jan 31 11:21:06 UTC 2022 - Ondřej Súkup <mimi.vx@gmail.com>
 - CVE-2022-0407 - boo#1195354
 - CVE-2022-0393 - boo#1195336
 - CVE-2022-0392 - boo#1195332
-- CVE-2022-0368 - boo#1195205 
+- CVE-2022-0368 - boo#1195205
 - CVE-2022-0361 - boo#1195202
 - CVE-2022-0359 - boo#1195203
 - CVE-2022-0351 - boo#1195126
@@ -7226,7 +7488,7 @@ Fri Nov  5 17:51:31 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
   * gj does not move properly with a wide character.
   * Reading character past end of line.
   * Reading uninitialized memory when giving spell suggestions.
-- add obsolete/conflict with nginx vim plugin 
+- add obsolete/conflict with nginx vim plugin
 
 -------------------------------------------------------------------
 Wed Nov  3 17:31:20 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -7246,12 +7508,12 @@ Wed Nov  3 17:31:20 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 Wed Nov  3 15:16:18 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Current vim seems to have timing problems with its parser to
-  distinguish between <ESC> and <ESC>[~3 at least in urxvt 
+  distinguish between <ESC> and <ESC>[~3 at least in urxvt
 
 -------------------------------------------------------------------
 Tue Nov  2 12:42:28 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- fix boo#1192225 
+- fix boo#1192225
 
 -------------------------------------------------------------------
 Tue Nov  2 11:57:45 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -7265,11 +7527,11 @@ Tue Nov  2 11:57:45 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Tue Nov  2 09:50:30 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
-- Avoid the second to parse the Delete ANSI sequence in gvim 
+- Avoid the second to parse the Delete ANSI sequence in gvim
 
 -------------------------------------------------------------------
 Sun Oct 31 10:11:52 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
- 
+
 - Updated to version 8.2.3567, fixes the following problems
   * Xxd revert does not handle end of line correctly.
   * Xxd has various way to exit.
@@ -7402,7 +7664,7 @@ Fri Oct 22 13:53:00 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 Fri Oct  1 08:42:38 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - updated vim-7.4-rpmlintrc
-- drop no-common.patch 
+- drop no-common.patch
 - Updated to version 8.2.3459, fixes the following problems
   * Can delete a numbered function. (Naohiro Ono)
   * Reading beyond end of line with invalid utf-8 character.
@@ -8566,7 +8828,7 @@ Updated to version 8.2.2411, fixes the following problems
 Fri Jan 15 13:18:59 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - remove forcing /usr/bin/vi -> vim symlink. Previous line linked to
-  /etc/alternatives already. 
+  /etc/alternatives already.
 
 -------------------------------------------------------------------
 Mon Jan 11 16:17:34 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -9579,7 +9841,7 @@ Mon Aug 31 21:33:39 UTC 2020 - Dirk Mueller <dmueller@suse.com>
   * The "r" command fails for keys with modifiers if 'esckeys' is off and
   modifyOtherKeys is used. (Lauri Tirkkonen)
   * Vim9: bufname('%') gives an error.
-  * Vim9: error for argument type does not mention the number. 
+  * Vim9: error for argument type does not mention the number.
 - disable-unreliable-tests.patch: refresh
 - vim-changelog.sh: work with bash
 
@@ -10561,7 +10823,7 @@ Tue Mar  3 12:29:31 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 Tue Feb 25 12:51:05 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.0314, fixes the following problems
-- refreshed vim-7.3-filetype_spec.patch 
+- refreshed vim-7.3-filetype_spec.patch
   * Cannot recognize a terminal in a popup window.
   * ModifyOtherKeys cannot be temporarily disabled.
   * Terminal in popup test sometimes fails.
@@ -11988,7 +12250,7 @@ Wed Jun  5 12:27:42 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
   * Allocating wrong amount of memory. (Yegappan Lakshmanan)
   * Not updating priority on existing sign.
   * Cscope test fails.
- 
+
 
 -------------------------------------------------------------------
 Tue May 14 14:49:46 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -12672,7 +12934,7 @@ Thu Jan  3 21:26:40 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
   * Placing signs can be complicated.
   * Get_tv function names are not consistent.
   * term_getjob() does not return v:null as documented.
-  * :echomsg and :echoerr do not handle List and Dict like :echo does. 
+  * :echomsg and :echoerr do not handle List and Dict like :echo does.
   * Overuling CONF_ARGS from the environment no longer works.
   * Terminal debugger does not handle unexpected debugger exit.
   * Adding quickfix items marks items as valid errors. (Daniel Hahler)
@@ -12774,7 +13036,7 @@ Thu Dec  6 11:33:06 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
   * Setting v:errors to a string give confusing error.
   * Setting v:errors to wrong type still possible.
   * Asan complains about reading before allocated block.
- 
+
 -------------------------------------------------------------------
 Thu Nov 15 08:03:42 UTC 2018 - Ondřej Súkup <mimi.vx@gmail.com>
 
@@ -13035,7 +13297,7 @@ Thu Aug  9 10:08:25 UTC 2018 - mimi.vx@gmail.com
  * Using :term ++close ++hidden closes a window
  * Insert mode completion may use an invalid buffer pointer.
  * Effect of ":tabmove N" is not clear.
- * g:actual_curbuf set in wrong scope. 
+ * g:actual_curbuf set in wrong scope.
  * Now Ruby build fails on other systems.
  * 'buftype' is cleared when using ":term ++hidden cat"
  * Ruby build fails when ruby_intern is missing
@@ -13063,7 +13325,7 @@ Mon Jul 30 15:14:57 UTC 2018 - mimi.vx@gmail.com
   * Completing shell command finds sub-directories in $PATH.
   * Ruby converts v:true and v:false to a number.
   * Expanding ## fails to escape backtick.
-  * Cannot add matches to another window. 
+  * Cannot add matches to another window.
   * Compiler warning for variable set but not used.
   * No error if configure --with-x cannot configure X.
   * +autochdir feature not reported by has() or :version.
@@ -13074,7 +13336,7 @@ Mon Jul 30 15:14:57 UTC 2018 - mimi.vx@gmail.com
   * Invalid memory access with invalid modeline.
   * :version always shows +packages.
   * Newer Python uses "importlib" instead of "imp".
- 
+
 -------------------------------------------------------------------
 Sat Jul 21 11:21:49 UTC 2018 - mimi.vx@gmail.com
 
@@ -13084,7 +13346,7 @@ Sat Jul 21 11:21:49 UTC 2018 - mimi.vx@gmail.com
   * Terminal debugger error with .gdbinit file.
   * Terminal debugger commands don't always work.
   * Possibly use of NULL pointer.
-  * Terminal debugger buttons don't always work. 
+  * Terminal debugger buttons don't always work.
   * Executing regexp recursively fails with a crash.
   * Perl refcounts are wrong.
   * getwininfo() and win_screenpos() return different numbers.
@@ -13098,13 +13360,13 @@ Sat Jul 21 11:21:49 UTC 2018 - mimi.vx@gmail.com
 Fri Jul 13 14:10:46 UTC 2018 - mimi.vx@gmail.com
 
 - update to 8.1.0179
-- add u_lua53_on_32bit.patch - fix lua53 support on 32bit 
+- add u_lua53_on_32bit.patch - fix lua53 support on 32bit
  * Redundant condition for boundary check
 
 -------------------------------------------------------------------
 Thu Jul 12 20:01:14 UTC 2018 - mimi.vx@gmail.com
 
-- update to 8.1 revision 8.1.0178 
+- update to 8.1 revision 8.1.0178
 - refresh disable-unreliable-tests.patch
    vim-7.3-filetype_changes.patch
    vim-7.3-filetype_ftl.patch
@@ -13138,14 +13400,14 @@ Thu Jul 12 20:01:14 UTC 2018 - mimi.vx@gmail.com
  * Matchit and matchparen don't handle E363.
  * Xterm and vt320 builtin termcap missing keypad keys.
  * cexpr no longer jumps to the first error.
- * Recording into a register has focus events. 
+ * Recording into a register has focus events.
  * Negative value of 'softtabstop' not used correctly.
  * Undo message delays screen update for CTRL-O u.
  * Lua interface does not support funcref.
  * tagfiles() can have duplicate entries
  * ":profdel func" does not work if func was called already
  * still some xterm-like terminals get a stray "p"
- *  Build failure when disabling the session feature. 
+ *  Build failure when disabling the session feature.
  * Various problems with 'vartabstop'.
  * Virtual edit replace with multi-byte fails at end of line.
  * has('vcon') returns true even for non-win32 terminal.
@@ -13227,7 +13489,7 @@ Mon Jun 11 21:18:38 UTC 2018 - mimi.vx@gmail.com
 -------------------------------------------------------------------
 Tue Jun  5 16:04:54 UTC 2018 - mimi.vx@gmail.com
 
-- update to 8.1 revision 0034 
+- update to 8.1 revision 0034
  * cursor not restored with ":edit #"
  * keys to stop Vim in terminal are wrong
  * BS in prompt buffer starts new line
@@ -13305,7 +13567,7 @@ Mon Mar  5 11:22:48 UTC 2018 - idonmez@suse.com
   * With 'termguicolors' Normal color doesn't work correctly.
   * When using 'termguicolors' SpellBad doesn't show.
   * Screen dumps not included in distribution.
-  * Using feedkeys() in a terminal window may trigger mappings. 
+  * Using feedkeys() in a terminal window may trigger mappings.
     (Charles Sheridan)
   * Undo in the options window makes it empty.
   * Screen dump test script not included in distribution.
@@ -13330,12 +13592,12 @@ Mon Mar  5 11:22:48 UTC 2018 - idonmez@suse.com
   * Too many #ifdefs.
   * Cannot build Win32 GUI without IME. (John Marriott)
   * Can't build on older Mac, header file is missing.
- 
+
 
 -------------------------------------------------------------------
 Fri Mar  2 12:53:09 UTC 2018 - idonmez@suse.com
 
-- Recommend vim-data so that colors can work by default 
+- Recommend vim-data so that colors can work by default
 
 -------------------------------------------------------------------
 Tue Feb 20 11:25:28 UTC 2018 - idonmez@suse.com
@@ -13433,7 +13695,7 @@ Tue Feb 20 11:25:28 UTC 2018 - idonmez@suse.com
   * Cannot write and read terminal screendumps.
   * Compiler warnings for uninitialized variables. (Tony Mechelynck)
   * Using :wqa exits even if a job runs in a terminal window. (Jason Felice)
- 
+
 -------------------------------------------------------------------
 Wed Feb 14 12:39:39 UTC 2018 - idonmez@suse.com
 
@@ -13460,7 +13722,7 @@ Wed Jan 31 10:49:07 UTC 2018 - idonmez@suse.com
   * If cscope fails a search Vim may hang.
   * Terminal window: some vterm responses are delayed.
   * Using ":undo 0" leaves undo in wrong state.
-  * Using pointer before it is set. 
+  * Using pointer before it is set.
 
 -------------------------------------------------------------------
 Wed Jan 24 11:15:08 UTC 2018 - idonmez@suse.com
@@ -13489,7 +13751,7 @@ Mon Jan  8 11:32:31 UTC 2018 - idonmez@suse.com
   * execute() does not work in completion of user command. (thinca)
   * "gf" and <cfile> don't accept ? and & in URL. (Dmitrii Tcyganok)
   * The :leftabove modifier doesn't work for :copen.
-  * Compiler warning on 64 bit MS-Windows system. 
+  * Compiler warning on 64 bit MS-Windows system.
 
 -------------------------------------------------------------------
 Mon Jan  8 11:18:32 UTC 2018 - normand@linux.vnet.ibm.com
@@ -13571,7 +13833,7 @@ Fri Dec 15 13:19:21 UTC 2017 - idonmez@suse.com
     is single width but we reserve double-width space.
   * getqflist() items are missing if not set, that makes it more difficult
     to handle the values.
-  * DirectX scrolling can be slow, vertical positioning is off. 
+  * DirectX scrolling can be slow, vertical positioning is off.
 
 -------------------------------------------------------------------
 Mon Dec  4 10:23:05 UTC 2017 - idonmez@suse.com
@@ -13613,7 +13875,7 @@ Thu Oct 12 07:56:31 UTC 2017 - idonmez@suse.com
 -------------------------------------------------------------------
 Mon Jun 19 10:57:45 UTC 2017 - idonmez@suse.com
 
-- Bump priorities so we can upgrade from 12.3 
+- Bump priorities so we can upgrade from 12.3
 
 -------------------------------------------------------------------
 Tue Jun  6 10:22:14 UTC 2017 - idonmez@suse.com
@@ -13725,7 +13987,7 @@ Tue Apr 18 10:15:22 UTC 2017 - idonmez@suse.com
   * Using freed memory in :caddbuf after clearing quickfix list.
   * Setting nocompatible for the tiny version moves the cursor.
 - Refresh and re-add vim-8.0-ttytype-test.patch
- 
+
 -------------------------------------------------------------------
 Mon Apr 10 12:17:59 UTC 2017 - idonmez@suse.com
 
@@ -13751,7 +14013,7 @@ Mon Apr 10 12:17:59 UTC 2017 - idonmez@suse.com
   * GTK: using static gravities is not useful.
   * The :ownsyntax command is not tested.
   * Setting ttytype to xxx does not always fail as expected.
-- Remove vim-8.0-ttytype-test.patch, fixed upstream. 
+- Remove vim-8.0-ttytype-test.patch, fixed upstream.
 
 -------------------------------------------------------------------
 Mon Apr 10 11:41:51 UTC 2017 - tchvatal@suse.com
@@ -13792,11 +14054,11 @@ Wed Apr  5 09:19:45 UTC 2017 - idonmez@suse.com
   * Building unit tests fails.
   * Compiler warning on MS-Windows.
   * getpos() can return a negative line number. (haya14busa)
- 
+
 -------------------------------------------------------------------
 Fri Mar 31 09:19:29 UTC 2017 - idonmez@suse.com
 
-- Update spec.skeleton with spec-cleaner 
+- Update spec.skeleton with spec-cleaner
 
 -------------------------------------------------------------------
 Mon Mar 27 10:14:04 UTC 2017 - idonmez@suse.com
@@ -13847,7 +14109,7 @@ Mon Mar 27 10:14:04 UTC 2017 - idonmez@suse.com
   * Test 45 hangs on MS-Windows.
   * If an MS-Windows tests succeeds at first and then fails in a way it does
     not produce a test.out file it looks like the test succeeded.
-  * Resetting 'compatible' in defaults.vim has unexpected side effects. 
+  * Resetting 'compatible' in defaults.vim has unexpected side effects.
     (David Fishburn)
   * Can't find executable name on Solaris and FreeBSD.
   * Off-by-one error in using :move with folding.
@@ -13905,7 +14167,7 @@ Mon Mar 27 10:14:04 UTC 2017 - idonmez@suse.com
   * Check for available characters takes too long.
   * Getting name of cleared highlight group is wrong. (Matt Wozniski)
   * Script for creating cmdidxs can be improved.
- 
+
 -------------------------------------------------------------------
 Mon Mar 20 16:46:58 CET 2017 - kukuk@suse.de
 
@@ -14049,12 +14311,12 @@ Mon Mar  6 08:40:25 UTC 2017 - idonmez@suse.com
   * Compiler warnings on MS-Windows. (Ajit Thakkar)
   * Build errors when building without folding.
 
-- Drop test87-python36.patch, fixed upstream. 
+- Drop test87-python36.patch, fixed upstream.
 
 -------------------------------------------------------------------
 Thu Feb 16 14:00:34 UTC 2017 - idonmez@suse.com
 
-- Add test87-python36.patch to update test results for Python 3.6 
+- Add test87-python36.patch to update test results for Python 3.6
 
 -------------------------------------------------------------------
 Fri Feb 10 12:10:59 UTC 2017 - idonmez@suse.com
@@ -14076,7 +14338,7 @@ Fri Feb 10 12:10:59 UTC 2017 - idonmez@suse.com
     CVE-2017-5953 bsc#1024724
   * When running the command line tests there is a one second wait.
   * Illegal memory access with "1;y".
- 
+
 
 -------------------------------------------------------------------
 Mon Feb  6 10:12:18 UTC 2017 - idonmez@suse.com
@@ -14098,13 +14360,13 @@ Mon Feb  6 10:12:18 UTC 2017 - idonmez@suse.com
     the right position in 'runtimepath'. (Dugan Chen, Norio Takagi)
   * Cannot use an empty key in json.
   * Not enough testing for GUI functionality.
-  * Linebreak tests are old style. 
+  * Linebreak tests are old style.
 
 -------------------------------------------------------------------
 Fri Feb  3 12:12:19 UTC 2017 - idonmez@suse.com
 
 - Updated to revision 296, fixes the following problems
-  * Jumping to a tag that is a static item in the current file fails. 
+  * Jumping to a tag that is a static item in the current file fails.
     (Kazunobu Kuriyama)
   * The test for :profile is slow and does not work on MS-Windows.
   * On MS-Windows the system() test skips a few parts.
@@ -14198,7 +14460,7 @@ Fri Feb  3 12:12:19 UTC 2017 - idonmez@suse.com
     that session gives an error.
   * When using an assert function one can either specify a message or get
     a message about what failed, not both.
-  * When calling setpos() with a buffer argument it often is ignored. 
+  * When calling setpos() with a buffer argument it often is ignored.
     (Matthew Malcomson)
   * Tests fail because some changes were not included.
   * The keyword test file is not included in the archive.
@@ -14257,16 +14519,16 @@ Fri Feb  3 12:12:19 UTC 2017 - idonmez@suse.com
   * Argument list is not stored correctly in a session file. (lgpasquale)
   * test_viml hangs.
   * Bracketed paste can only append, not insert.
- 
+
 -------------------------------------------------------------------
 Tue Jan 24 11:44:03 UTC 2017 - idonmez@suse.com
 
-- Improve summary bsc#1021040 
+- Improve summary bsc#1021040
 
 -------------------------------------------------------------------
 Thu Jan 19 09:55:20 UTC 2017 - idonmez@suse.com
 
-- Add missing %changelog to spec.skeleton 
+- Add missing %changelog to spec.skeleton
 
 -------------------------------------------------------------------
 Mon Jan 16 11:36:46 UTC 2017 - idonmez@suse.com
@@ -14303,7 +14565,7 @@ Mon Jan 16 11:36:46 UTC 2017 - idonmez@suse.com
   * Some systems do not have ruby_sysinit(), causing the build to fail.
   * Build fails with tiny features.
   * Accidentally removed #ifdef.
-  * Profile tests fails if total and self time are equal. 
+  * Profile tests fails if total and self time are equal.
 
 -------------------------------------------------------------------
 Thu Jan 12 11:55:45 UTC 2017 - idonmez@suse.com
@@ -14342,7 +14604,7 @@ Thu Jan 12 11:55:45 UTC 2017 - idonmez@suse.com
   * Channel test fails for using freed memory.
   * JS style JSON does not support single quotes.
   * The command selected in the command line window is not
-    executed. (Andrey Starodubtsev) 
+    executed. (Andrey Starodubtsev)
 
 -------------------------------------------------------------------
 Sun Jan  8 08:24:18 UTC 2017 - idonmez@suse.com
@@ -14367,7 +14629,7 @@ Sun Jan  8 08:24:18 UTC 2017 - idonmez@suse.com
   * Running tests on MS-Windows is a little bit noisy.
   * When using 'termguicolors' on MS-Windows the RGB definition causes
     the colors to be wrong.
-  * searchpair() does not work when 'magic' is off. 
+  * searchpair() does not work when 'magic' is off.
 
 -------------------------------------------------------------------
 Sat Dec 10 15:32:28 UTC 2016 - idonmez@suse.com
@@ -14379,7 +14641,7 @@ Sat Dec 10 15:32:28 UTC 2016 - idonmez@suse.com
   'textwidth'. (lacygoill)
   * Display test fails on MS-Windows.
   * Parallel make still doesn't work. (Lewis Muir)
-  * Configure uses "ushort" while the Vim code doesn't. 
+  * Configure uses "ushort" while the Vim code doesn't.
 
 -------------------------------------------------------------------
 Tue Dec  6 10:34:58 UTC 2016 - idonmez@suse.com
@@ -14401,7 +14663,7 @@ Tue Dec  6 10:34:58 UTC 2016 - idonmez@suse.com
   * Parallel make fails. (J. Lewis Muir)
   * No test for using CTRL-R on the command line.
   * Setting 'cursorline' changes the curswant column. (Daniel Hahler)
-  * Internal error for assert_inrange(1, 1). 
+  * Internal error for assert_inrange(1, 1).
 
 -------------------------------------------------------------------
 Sat Nov 26 09:21:03 UTC 2016 - idonmez@suse.com
@@ -14422,7 +14684,7 @@ Tue Nov 22 12:03:22 UTC 2016 - idonmez@suse.com
 
 - Updated to revision 95, fixes the following problems
   * Problems with GTK 3.22.2 fixed in 3.22.4.
- 
+
 -------------------------------------------------------------------
 Mon Nov 21 16:01:17 UTC 2016 - dimstar@opensuse.org
 
@@ -14488,7 +14750,7 @@ Fri Nov 18 08:47:34 UTC 2016 - idonmez@suse.com
   * Cursor moved after last character when using 'breakindent'.
   * Test_help_complete sometimes fails in MS-Windows console.
   * C indenting does not support nested namespaces that C++ 17 has.
-- Drop bsc-1008800.patch, fixed upstream. 
+- Drop bsc-1008800.patch, fixed upstream.
 
 -------------------------------------------------------------------
 Mon Nov  7 12:51:19 UTC 2016 - idonmez@suse.com
@@ -14517,7 +14779,7 @@ Wed Oct 19 07:49:14 UTC 2016 - idonmez@suse.com
   with CTRL-N the change is not saved for undo.  (Tommy            Allen)
   * In diff mode the cursor may end up below the last line, resulting in an
   ml_get error.
-  * Calling job_stop() right after job_start() does not work. 
+  * Calling job_stop() right after job_start() does not work.
 
 -------------------------------------------------------------------
 Fri Oct 14 07:26:14 UTC 2016 - idonmez@suse.com
@@ -14559,7 +14821,7 @@ Fri Oct 14 07:26:14 UTC 2016 - idonmez@suse.com
   * Code for MS-Windows is complicated because of the exceptions for old
   systems.
   * Mouse mode is not automatically detected for tmux.
-  * After ":bwipeout" 'fileformat' is not set to the right default. 
+  * After ":bwipeout" 'fileformat' is not set to the right default.
 
 -------------------------------------------------------------------
 Mon Sep 12 17:57:14 UTC 2016 - idonmez@suse.com
@@ -14588,7 +14850,7 @@ Mon Sep 12 13:09:03 UTC 2016 - idonmez@suse.com
   * The example that explains nested backreferences does not work properly
     with the new regexp engine. (Harm te Hennepe)
   * Regexp fails to match when using "\>\)\?". (Ramel)
-  * Reading past end of line when using previous substitute pattern. 
+  * Reading past end of line when using previous substitute pattern.
     (Dominique Pelle)
   * Attempt to read history entry while not initialized.
   * Compiler warnings with Solaris Studio when using GTK3.
@@ -14701,7 +14963,7 @@ Fri Sep  9 07:16:49 UTC 2016 - idonmez@suse.com
   * Channel sort test is flaky.
   * Normal mode tests fail on MS-Windows.
   * When 'incsearch' is not set CTRL-T and CTRL-G are not inserted as before.
-  * No way for a system wide vimrc to stop loading defaults.vim. 
+  * No way for a system wide vimrc to stop loading defaults.vim.
     (Christian Hesse)
   * Redraw problem when using 'incsearch'.
   * When a test is commented out we forget about it.
@@ -14737,7 +14999,7 @@ Fri Sep  9 07:16:49 UTC 2016 - idonmez@suse.com
   * For MinGW RUBY_API_VER_LONG isn't set correctly.  Many default version
     numbers are outdated.
   * Autocommand test fails when run directly, passes when run as part of
-    test_alot. 
+    test_alot.
 
 -------------------------------------------------------------------
 Tue Sep  6 08:03:40 UTC 2016 - idonmez@suse.com
@@ -14762,14 +15024,14 @@ Tue Sep  6 08:03:40 UTC 2016 - idonmez@suse.com
   * Accessing freed memory when a timer does not repeat.
   * Appveyor 64 bit build still using Python 3.4
   * Crash when autocommand moves to another tab. (Dominique Pelle)
-  * Crash when deleting an augroup and listing an autocommand. 
+  * Crash when deleting an augroup and listing an autocommand.
     (Dominique Pelle)
   * No error when deleting an augroup while it's the current one.
   * Insufficient testing for Normal mode commands.
   * Channel sort test is flaky.
   * Normal mode tests fail on MS-Windows.
   * When 'incsearch' is not set CTRL-T and CTRL-G are not inserted as before.
-  * No way for a system wide vimrc to stop loading defaults.vim. 
+  * No way for a system wide vimrc to stop loading defaults.vim.
     (Christian Hesse)
   * Redraw problem when using 'incsearch'.
   * When a test is commented out we forget about it.
@@ -14789,7 +15051,7 @@ Tue Sep  6 08:03:40 UTC 2016 - idonmez@suse.com
   * Crash when stop_timer() is called in a callback of a callback. Vim hangs
     when the timer callback uses too much time.
   * Outdated comments in test.
-  * On MS-Windows test_getcwd leaves Xtopdir behind. 
+  * On MS-Windows test_getcwd leaves Xtopdir behind.
 
 -------------------------------------------------------------------
 Wed Aug 31 06:44:36 UTC 2016 - idonmez@suse.com
@@ -14874,7 +15136,7 @@ Wed Aug 31 06:44:36 UTC 2016 - idonmez@suse.com
   * Modelines in source code are inconsistent.
   * Sign test fails on MS-Windows when using the distributed zip archives.
   * Cscope test fails.
- 
+
 -------------------------------------------------------------------
 Thu Aug 18 07:27:20 UTC 2016 - idonmez@suse.com
 
@@ -14889,7 +15151,7 @@ Thu Aug 18 07:27:20 UTC 2016 - idonmez@suse.com
     does not work.
   * Buffer overflow when using latin1 character with feedkeys().
   * Compiler warnings with older compiler and 64 bit numbers.
-  * Crash when placing a sign in a deleted buffer. 
+  * Crash when placing a sign in a deleted buffer.
 
 -------------------------------------------------------------------
 Tue Aug 16 07:55:28 UTC 2016 - idonmez@suse.com
@@ -14960,7 +15222,7 @@ Tue Aug 16 07:55:28 UTC 2016 - idonmez@suse.com
   * Clang warns about missing field in initializer.
   * Misplaced equal sign.
   * Netbeans test is flaky.
-  * Setting 'display' to "lastline" is a drastic change, 
+  * Setting 'display' to "lastline" is a drastic change,
     while omitting it results in lots of "@" lines.
   * When there is an CmdUndefined autocmd then the error for a missing
     command is E464 instead of E492. (Manuel Ortega)
@@ -15073,7 +15335,7 @@ Tue Aug 16 07:55:28 UTC 2016 - idonmez@suse.com
   * A font that uses ligatures messes up the screen display.
   * It's not easy to find out if a window is a quickfix or location list window.
   * Test fails without the +sign feature.
- 
+
 -------------------------------------------------------------------
 Sat Jul 16 08:09:39 UTC 2016 - idonmez@suse.com
 
@@ -15083,7 +15345,7 @@ Sat Jul 16 08:09:39 UTC 2016 - idonmez@suse.com
   * GTK: display updating is not done properly and can be slow.
   * setbufvar() causes a screen redraw.
   * filter() and map() either require a string or defining a function.
-  * Memory leak when using a function callback. 
+  * Memory leak when using a function callback.
 
 -------------------------------------------------------------------
 Thu Jul 14 08:38:51 UTC 2016 - idonmez@suse.com
@@ -15184,7 +15446,7 @@ Thu Jul 14 08:38:51 UTC 2016 - idonmez@suse.com
   * The list_lbr_utf8 test fails if ~/.vim/syntax/c.vim sets 'textwidth' to a non-zero value.
   * Build fails with 64 bit MinGW. (Axel Bender)
   * 'cscopequickfix' option does not accept new value "a".
- 
+
 -------------------------------------------------------------------
 Wed Jun 15 11:17:53 UTC 2016 - idonmez@suse.com
 
@@ -15254,7 +15516,7 @@ Wed Jun 15 11:17:53 UTC 2016 - idonmez@suse.com
 -------------------------------------------------------------------
 Fri Jun  3 18:54:57 UTC 2016 - idonmez@suse.com
 
-- Link to perl directly instead of dlopen'ing it. 
+- Link to perl directly instead of dlopen'ing it.
 
 -------------------------------------------------------------------
 Fri Jun  3 15:38:50 UTC 2016 - crrodriguez@opensuse.org
@@ -15293,7 +15555,7 @@ Wed Jun  1 07:18:35 UTC 2016 - idonmez@suse.com
   * Using a partial for timer_start() may cause a crash.
   * Compiler warnings with 64 bit compiler.
   * string() with repeated argument does not give a result usable
-    by eval(). 
+    by eval().
 
 -------------------------------------------------------------------
 Mon May 30 09:05:44 UTC 2016 - idonmez@suse.com
@@ -15314,7 +15576,7 @@ Mon May 30 09:05:44 UTC 2016 - idonmez@suse.com
     is an error but appending is done anyway.
   * When a channel writes to a buffer it doesn't find a buffer by
     the short name but re-uses it anyway.
-  * Cannot use a function reference for "exit_cb". 
+  * Cannot use a function reference for "exit_cb".
 
 -------------------------------------------------------------------
 Thu May 26 08:24:46 UTC 2016 - suse-beta@cboltz.de
@@ -15341,12 +15603,12 @@ Wed May 25 10:53:20 UTC 2016 - idonmez@suse.com
   * Cannot get the items stored in a partial.
   * When using packages an "after" directory cannot be used.
   * The code to reallocate the buffer used for quickfix is repeated.
-  * get() works for Partial but not for Funcref. 
+  * get() works for Partial but not for Funcref.
 
 -------------------------------------------------------------------
 Tue May 24 07:12:15 UTC 2016 - idonmez@suse.com
 
-- Fix build with perl 5.24 (perl-5.24.patch) 
+- Fix build with perl 5.24 (perl-5.24.patch)
 
 -------------------------------------------------------------------
 Tue May 10 07:06:48 UTC 2016 - idonmez@suse.com
@@ -15354,7 +15616,7 @@ Tue May 10 07:06:48 UTC 2016 - idonmez@suse.com
 - Updated to revision 1829, fixes the following problems
   * No error when invoking a callback when it's not safe.
   * May try to access buffer that's already freed.
-  * No message on channel log when buffer was freed. 
+  * No message on channel log when buffer was freed.
 
 -------------------------------------------------------------------
 Mon May  9 14:46:34 UTC 2016 - idonmez@suse.com
@@ -15368,7 +15630,7 @@ Mon May  9 14:46:34 UTC 2016 - idonmez@suse.com
   * Redirecting stdout of a channel to "null" doesn't work.
   * When a job is no longer referenced and does not have an exit
     callback the process may hang around in defunc state.
-  * When job writes to buffer nothing is written. 
+  * When job writes to buffer nothing is written.
   * Callbacks are invoked when it's not safe.
 
 -------------------------------------------------------------------
@@ -15412,7 +15674,7 @@ Sun Apr 24 16:15:34 UTC 2016 - idonmez@suse.com
   * synIDattr() does not respect 'guicolors'.
   * strcharpart() does not work properly with some multi-byte characters.
   * The old regexp engine doesn't handle character classes correctly.
-  * Compiled-in colors do not match rgb.txt. 
+  * Compiled-in colors do not match rgb.txt.
 
 -------------------------------------------------------------------
 Sat Apr 23 10:05:11 UTC 2016 - idonmez@suse.com
@@ -15428,7 +15690,7 @@ Sat Apr 23 10:05:11 UTC 2016 - idonmez@suse.com
   * Cannot use true color in the terminal.
   * Newly added features can escape the sandbox.
   * When using the term truecolor feature, the t_8f and t_8b termcap
-    options are not set by default. 
+    options are not set by default.
 
 -------------------------------------------------------------------
 Tue Apr 20 14:17:00 UTC 2016 - idonmez@suse.com
@@ -15437,7 +15699,7 @@ Tue Apr 20 14:17:00 UTC 2016 - idonmez@suse.com
   * When a buffer gets updated while in command line mode, the screen
     may be messed up.
   * Crash when 'tagstack' is off. (Dominique Pelle)
-  * When adding to the quickfix list the current position is reset. 
+  * When adding to the quickfix list the current position is reset.
   * "noinsert" in 'completeopt' is sometimes ignored
   * syntax not set when using ":buf" and 'filetype' set manually
 
@@ -15465,7 +15727,7 @@ Mon Apr 18 07:48:17 UTC 2016 - idonmez@suse.com
   * Memory leak in Perl.
   * Coverity: missing check for NULL pointer.
   * "gD" does not find match in first column of first line.
-  * When using GTK 3.20 there are a few warnings. 
+  * When using GTK 3.20 there are a few warnings.
 
 -------------------------------------------------------------------
 Thu Apr 14 08:03:14 UTC 2016 - idonmez@suse.com
@@ -15476,7 +15738,7 @@ Thu Apr 14 08:03:14 UTC 2016 - idonmez@suse.com
     and the tabline will be disabled.
   * Tabline test fails in GUI.
   * Compiler errors for non-ANSI compilers.
-  * ANSI compiler complains about string length. 
+  * ANSI compiler complains about string length.
 
 -------------------------------------------------------------------
 Mon Apr 11 07:53:30 UTC 2016 - idonmez@suse.com
@@ -15485,7 +15747,7 @@ Mon Apr 11 07:53:30 UTC 2016 - idonmez@suse.com
   * Leaking memory when opening a channel fails.
   * Coverity: not using return value of set_ref_in_item().
   * Leaking memory when there is a cycle involving a job and a partial.
-  * Tests fail without the job feature. 
+  * Tests fail without the job feature.
 
 -------------------------------------------------------------------
 Thu Apr  7 06:19:03 UTC 2016 - idonmez@suse.com
@@ -15498,7 +15760,7 @@ Thu Apr  7 06:19:03 UTC 2016 - idonmez@suse.com
   * GTK GUI doesn't work on Wayland.
   * Non-GUI specific settings in the gvimrc_example file.
   * Double free when a partial is in a cycle with a list or dict.
-  * 'autochdir' doesn't work for the first file. 
+  * 'autochdir' doesn't work for the first file.
 
 -------------------------------------------------------------------
 Tue Apr  5 08:26:17 UTC 2016 - idonmez@suse.com
@@ -15516,7 +15778,7 @@ Tue Apr  5 08:26:17 UTC 2016 - idonmez@suse.com
   * Using freed memory with "wincmd p". (Dominique Pelle)
   * Cannot use empty dictionary key, even though it can be useful.
   * New regexp engine does not work properly with EBCDIC.
-  * Not all output of an external command is read. 
+  * Not all output of an external command is read.
 
 -------------------------------------------------------------------
 Fri Apr  1 08:28:53 UTC 2016 - idonmez@suse.com
@@ -15546,7 +15808,7 @@ Fri Apr  1 08:28:53 UTC 2016 - idonmez@suse.com
   * Ruby interface has inconsistent coding style.
   * Can't compile with the conceal feature but without multi-byte.
   * When switching to a new buffer and an autocommand applies syntax
-    highlighting an ml_get error may occur. 
+    highlighting an ml_get error may occur.
 
 -------------------------------------------------------------------
 Mon Mar 28 07:32:06 UTC 2016 - idonmez@suse.com
@@ -15627,7 +15889,7 @@ Tue Mar 22 11:02:39 UTC 2016 - idonmez@suse.com
   * List of test targets is outdated.
   * If the help tags file was removed "make install" fails.
   * Vertical movement after CTRL-A ends up in the wrong column.
-  * Channel test is a bit flaky. 
+  * Channel test is a bit flaky.
 
 -------------------------------------------------------------------
 Sat Mar 19 06:43:42 UTC 2016 - idonmez@suse.com
@@ -15644,7 +15906,7 @@ Sat Mar 19 06:43:42 UTC 2016 - idonmez@suse.com
   * Old style test for quickfix.
   * Combining dict and args with partial doesn't always work.
   * Warning for shadowed variable.
-  * The quickfix title is truncated. 
+  * The quickfix title is truncated.
 
 -------------------------------------------------------------------
 Wed Mar 16 11:18:05 UTC 2016 - idonmez@suse.com
@@ -15701,12 +15963,12 @@ Mon Mar 14 08:22:42 UTC 2016 - idonmez@suse.com
   * List of test targets incomplete.
   * "make install" changes the help tags file, causing it to differ from the repository.
   * Windows cannot be identified.
-  * It is not easy to find out what windows display a buffer. 
+  * It is not easy to find out what windows display a buffer.
 
 -------------------------------------------------------------------
 Thu Mar 10 09:52:43 UTC 2016 - idonmez@suse.com
 
-- Switch back to GTK+2 because GTK+3 interface seems to be slower. 
+- Switch back to GTK+2 because GTK+3 interface seems to be slower.
 
 -------------------------------------------------------------------
 Wed Mar  9 08:16:44 UTC 2016 - idonmez@suse.com
@@ -15719,7 +15981,7 @@ Wed Mar  9 08:16:44 UTC 2016 - idonmez@suse.com
   * Channel with disconnected in/out/err is not supported.
   * Channel test: Waiting for a file to appear doesn't work.
   * Cannot write channel err to a buffer.
-  * On a high resolution screen the toolbar icons are too small. 
+  * On a high resolution screen the toolbar icons are too small.
 
 -------------------------------------------------------------------
 Tue Mar  8 08:11:13 UTC 2016 - idonmez@suse.com
@@ -15727,7 +15989,7 @@ Tue Mar  8 08:11:13 UTC 2016 - idonmez@suse.com
 - Updated to revision 1510, fixes the following problems
   * Crash when starting a job fails.
   * Keeping both a variable for a job and the channel it refers to is a hassle.
-  * Channel test fails on AppVeyor. 
+  * Channel test fails on AppVeyor.
 
 -------------------------------------------------------------------
 Mon Mar  7 08:16:01 UTC 2016 - idonmez@suse.com
@@ -15739,7 +16001,7 @@ Mon Mar  7 08:16:01 UTC 2016 - idonmez@suse.com
   * Crash when using ch_getjob().
   * No test for reading last-but-one line.
   * When channel log is enabled get too many "looking for messages" log entries.
-  * Job cannot read from a file. 
+  * Job cannot read from a file.
 
 -------------------------------------------------------------------
 Sun Mar  6 08:28:03 UTC 2016 - idonmez@suse.com
@@ -15755,7 +16017,7 @@ Sun Mar  6 08:28:03 UTC 2016 - idonmez@suse.com
   * clr_history() does not work properly.
   * Crash when built with GUI but it's not active.
   * Cursor drawing problem with GTK 3.
-  * Error for locked item when using json_decode(). 
+  * Error for locked item when using json_decode().
 
 -------------------------------------------------------------------
 Fri Mar  4 11:10:14 UTC 2016 - idonmez@suse.com
@@ -15770,7 +16032,7 @@ Fri Mar  4 11:10:14 UTC 2016 - idonmez@suse.com
   * "timeout" option not supported on ch_eval*().
   * A one-time callback is not used for a raw channel.
   * Channel "err-io" value "out" is not supported.
-  * Job input from buffer is not implemented. 
+  * Job input from buffer is not implemented.
 
 -------------------------------------------------------------------
 Thu Mar  3 07:56:37 UTC 2016 - idonmez@suse.com
@@ -15781,7 +16043,7 @@ Thu Mar  3 07:56:37 UTC 2016 - idonmez@suse.com
   * Coverity reports missing restore.
   * Missing out-of-memory check.  And Coverity warning.
   * Can't build without the autocommand feature.
-  * Compiler warnings without the float feature. 
+  * Compiler warnings without the float feature.
 
 -------------------------------------------------------------------
 Tue Mar  1 08:37:53 UTC 2016 - idonmez@suse.com
@@ -15814,12 +16076,12 @@ Fri Feb 26 08:21:14 UTC 2016 - idonmez@suse.com
     even though the docs say it isn't.
   * Using "u_char" intead of "char_u", which doesn't work everywhere.
   * Tests slowed down because of the "not a terminal" warning.
-  * May free a channel when a callback may need to be invoked. 
+  * May free a channel when a callback may need to be invoked.
 
 -------------------------------------------------------------------
 Wed Feb 24 19:56:00 UTC 2016 - idonmez@suse.com
 
-- Disable sniff support, its unmaintained. 
+- Disable sniff support, its unmaintained.
 
 -------------------------------------------------------------------
 Wed Feb 24 09:06:22 UTC 2016 - idonmez@suse.com
@@ -15832,7 +16094,7 @@ Wed Feb 24 09:06:22 UTC 2016 - idonmez@suse.com
   * Completion menu flickers.
   * Leaking memory in cs_print_tags_priv().
   * json_encode() does not handle NaN and inf properly.
-  * Leaking memory in cscope interface. 
+  * Leaking memory in cscope interface.
 
 -------------------------------------------------------------------
 Tue Feb 23 08:25:46 UTC 2016 - idonmez@suse.com
@@ -15992,7 +16254,7 @@ Sun Jan 11 08:11:21 UTC 2016 - idonmez@suse.com
   * CTRL-A does not work well in right-left mode.
   * Using "." to repeat CTRL-A in Visual mode increments the wrong numbers.
   * The CTRL-A and CTRL-X commands do not update the '[ and '] marks.
-  * Crash with an extremely long buffer name. 
+  * Crash with an extremely long buffer name.
   * CTRL-A and CTRL-X work badly with blockwise visual selection
 
 -------------------------------------------------------------------
@@ -16028,7 +16290,7 @@ Mon Jan  4 10:27:55 UTC 2016 - idonmez@suse.com
 Thu Dec 31 13:49:01 UTC 2015 - idonmez@suse.com
 
 - Updated to revision 1004, fixes the following problems
-  * searchpos() always starts searching in the first column, 
+  * searchpos() always starts searching in the first column,
     which is not what some people expect. (Brett Stahlman)
   * Leaking memory when hash_add() fails. Coverity error 99126.
 
@@ -16052,7 +16314,7 @@ Sun Dec 13 16:13:24 UTC 2015 - idonmez@suse.com
   * test86 and test87 are flaky in Appveyor.
   * Rare crash in getvcol(). (Timo Mihaljov)
   * The asin() function can't be used.
-  * Memory leak when there is an error in setting an option. 
+  * Memory leak when there is an error in setting an option.
 
 -------------------------------------------------------------------
 Sun Dec  6 14:47:49 UTC 2015 - idonmez@suse.com
@@ -16083,7 +16345,7 @@ Sun Dec  6 14:47:49 UTC 2015 - idonmez@suse.com
   * When setting 'term' the clipboard ownership is lost.
   * Test107 fails in some circunstances.
   * Cannot run the tests with gvim.  Cannot run individual new stests.
-  * test_listlbr_utf8 sometimes fails. 
+  * test_listlbr_utf8 sometimes fails.
 
 -------------------------------------------------------------------
 Sun Nov 22 16:27:59 UTC 2015 - idonmez@suse.com
@@ -16120,7 +16382,7 @@ Fri Nov 20 10:45:56 UTC 2015 - idonmez@suse.com
   * Ruby crashes when there is a runtime error.
   * A clientserver message interrupts handling keys of a mapping.
   * "gv" after paste selects one character less if 'selection' is "exclusive".
-  * MS-Windows: Most users appear not to like the window border. 
+  * MS-Windows: Most users appear not to like the window border.
 - Refresh vim-7.3-sh_is_bash.patch
 
 -------------------------------------------------------------------
@@ -16135,7 +16397,7 @@ Wed Oct 14 17:25:26 UTC 2015 - idonmez@suse.com
   * Custom command line completion does not work for a command containing digits.
   * Editing a URL, which netrw should handle, doesn't work.
   * Freeze and crash when there is a sleep in a remote command. (Karl Yngve Lervåg)
-  * The 'fixendofline' option is set on with ":edit". 
+  * The 'fixendofline' option is set on with ":edit".
 
 -------------------------------------------------------------------
 Wed Sep 30 09:10:28 UTC 2015 - idonmez@suse.com
@@ -16156,7 +16418,7 @@ Wed Sep 30 09:10:28 UTC 2015 - idonmez@suse.com
   * When doing an upwards search without wildcards the search fails if the initial directory doesn't exist.
   * Using uninitialized memory for regexp with back reference. (Dominique Pelle)
   * The OptionSet autocommands are not triggered from setwinvar().
-  * Triggering OptionSet from setwinvar() isn't tested. 
+  * Triggering OptionSet from setwinvar() isn't tested.
 
 -------------------------------------------------------------------
 Sat Sep 26 20:39:19 UTC 2015 - opensuse@cboltz.de
@@ -16190,7 +16452,7 @@ Thu Sep  3 12:24:50 UTC 2015 - idonmez@suse.com
   * <Esc> does not show up.
   * Saving and restoring the console buffer does not work properly.
   * "zt" in diff mode does not always work properly. (Gary Johnson)
-  * Missing information about runtime files. 
+  * Missing information about runtime files.
 
 -------------------------------------------------------------------
 Tue Sep  1 09:06:38 UTC 2015 - idonmez@suse.com
@@ -16232,7 +16494,7 @@ Wed Jul 29 08:55:32 UTC 2015 - idonmez@suse.com
   * Using freed memory when triggering CmdUndefined autocommands.
   * Test for ":diffoff" doesn't catch all potential problems.
   * Using "A" in Visual mode while 'linebreak' is set is not tested.
-  * C indent does not support C11 raw strings. (Mark Lodato) 
+  * C indent does not support C11 raw strings. (Mark Lodato)
 
 -------------------------------------------------------------------
 Tue Jul 28 08:01:33 UTC 2015 - idonmez@suse.com
@@ -16246,7 +16508,7 @@ Tue Jul 28 08:01:33 UTC 2015 - idonmez@suse.com
   * Can't specify when not to ring the bell.
   * The 'fixeol' option is not copied to a new window.
   * Warning from 64 bit compiler.
-  * Crash when using more lines for the command line than 'maxcombine'. 
+  * Crash when using more lines for the command line than 'maxcombine'.
 
 -------------------------------------------------------------------
 Sun Jul 19 12:19:20 UTC 2015 - idonmez@suse.com
@@ -16262,7 +16524,7 @@ Sun Jul 19 12:19:20 UTC 2015 - idonmez@suse.com
   * It is not possible to avoid using the first item of completion.
   * Equivalence class for 'd' does not work correctly.
   * Coverity warns for uninitialized variable.
-  * Using CTRL-A in a line without a number moves the cursor. 
+  * Using CTRL-A in a line without a number moves the cursor.
     May cause a crash when at the start of the line. (Urtica Dioica)
   * Compiler complains about uninitialized variable and clobbered variables.
   * line2byte() returns one less when 'bin' and 'noeol' are set.
@@ -16306,18 +16568,18 @@ Mon Jun 22 13:04:02 UTC 2015 - idonmez@suse.com
   * Cannot specify a vertical split when loading a buffer for a quickfix command.
   * "p" in Visual mode causes an unexpected line split.
   * No tests for Ruby and Perl.
-  * The entries added by matchaddpos() are returned by getmatches() 
+  * The entries added by matchaddpos() are returned by getmatches()
     but can't be set with setmatches(). (Lcd)
   * ":[count]tag" is not always working. (cs86661)
   * ":cnext" may jump to the wrong column when setting 'virtualedit=all'
   * For some options two consecutive commas are OK. (Nikolay Pavlov)
   * It is not obvious how to enable the address sanitizer.
-  * Unicode 8.0 not supported. 
+  * Unicode 8.0 not supported.
 
 -------------------------------------------------------------------
 Wed Jun 10 12:02:06 UTC 2015 - idonmez@suse.com
 
-- Make Perl support dynamic bsc#804070 
+- Make Perl support dynamic bsc#804070
 
 -------------------------------------------------------------------
 Fri May 22 09:06:09 UTC 2015 - idonmez@suse.com
@@ -16331,7 +16593,7 @@ Fri May 22 09:06:09 UTC 2015 - idonmez@suse.com
   * 0x202f is not recognized as a non-breaking space character.
   * For indenting, finding the C++ baseclass can be slow.
   * ":call setreg('"', [])" reports an internal error.
-  * Occasional crash with 'list' set. 
+  * Occasional crash with 'list' set.
 
 -------------------------------------------------------------------
 Mon Apr 27 10:45:14 UTC 2015 - idonmez@suse.com
@@ -16370,7 +16632,7 @@ Mon Apr 13 11:25:34 UTC 2015 - idonmez@suse.com
     redraw when using CTRL-U. (Knil Ino)
   * Can't build with MzScheme.
   * Session file is not correct when there are multiple tab pages.
-  * Running tests changes the .viminfo file. 
+  * Running tests changes the .viminfo file.
 
 -------------------------------------------------------------------
 Thu Mar 26 09:16:27 UTC 2015 - idonmez@suse.com
@@ -16439,7 +16701,7 @@ Tue Mar 10 07:58:51 UTC 2015 - idonmez@suse.com
     (Jan Parthey)
   * Missing changes for glob() in one file.
   * Compiler warnings for pointer mismatch.
-  * 'formatexpr' is evaluated too often. 
+  * 'formatexpr' is evaluated too often.
 
 -------------------------------------------------------------------
 Fri Feb 20 09:49:43 UTC 2015 - idonmez@suse.com
@@ -16455,11 +16717,11 @@ Fri Feb 20 09:49:43 UTC 2015 - idonmez@suse.com
   * If no NL or CR is found in the first block of a file then the
     'fileformat' may be set to "mac". (Issue 77)
   * A search with end offset gets stuck at end of file. (Gary Johnson)
-  * Incorrectly read the number of buffer for which an autocommand should be registered. 
+  * Incorrectly read the number of buffer for which an autocommand should be registered.
   * Can't build with Lua 5.3 on Windows.
   * Combination of linebreak and conceal doesn't work well.
   * After deleting characters in Insert mode such that lines are
-    joined undo does not work properly. (issue 324) 
+    joined undo does not work properly. (issue 324)
 
 -------------------------------------------------------------------
 Wed Feb 11 11:42:11 UTC 2015 - idonmez@suse.com
@@ -16481,7 +16743,7 @@ Wed Feb 11 11:42:11 UTC 2015 - idonmez@suse.com
   * Possible NULL pointer dereference.
   * The last screen cell is not updated.
   * Compiler warning for variable might be clobbered by longjmp.
-  * Coverity warning for Out-of-bounds read. 
+  * Coverity warning for Out-of-bounds read.
 - Remove vim-speedup-gc.patch, fixed upstream
 
 -------------------------------------------------------------------
@@ -16491,7 +16753,7 @@ Mon Feb  2 13:17:21 UTC 2015 - idonmez@suse.com
   * Compiler warnings for unitinialized variables. (John Little)
   * Can't match "%>80v" properly. (Axel Bender)
   * Range for :bdelete does not work. (Ronald Schild)
-  * Parallel building of the documentation html files is not reliable. 
+  * Parallel building of the documentation html files is not reliable.
   * Conceal does not work properly with 'linebreak'. (cs86661)
   * ":0argedit foo" puts the new argument in the second place instead
     of the first.
@@ -16515,7 +16777,7 @@ Mon Feb  2 13:17:21 UTC 2015 - idonmez@suse.com
   * The # register is not writable, it cannot be restored after
     jumping around.
   * May crash when using a small window.
-  * Compiler warnings for unused variables. 
+  * Compiler warnings for unused variables.
 
 -------------------------------------------------------------------
 Fri Jan 30 09:45:18 UTC 2015 - idonmez@suse.com
@@ -16565,7 +16827,7 @@ Thu Jan 15 11:32:14 UTC 2015 - idonmez@suse.com
     number.
   * Wrong cursor positioning when 'linebreak' is set and lines wrap.
   * ":52wincmd v" still gives an invalid range error. (Charles
-    Campbell) 
+    Campbell)
 
 -------------------------------------------------------------------
 Mon Jan  5 09:54:11 UTC 2015 - idonmez@suse.com
@@ -16597,7 +16859,7 @@ Mon Jan  5 09:54:11 UTC 2015 - idonmez@suse.com
   * When the X server restarts Vim may get stuck.
   * Appending a block in the middle of a tab does not work correctly
     when virtualedit is set.
-  * Memory leak using :wviminfo. Issue 296. 
+  * Memory leak using :wviminfo. Issue 296.
 
 -------------------------------------------------------------------
 Tue Dec 16 21:55:48 UTC 2014 - lars@linux-schulserver.de
@@ -16632,7 +16894,7 @@ Fri Nov 28 07:14:34 UTC 2014 - idonmez@suse.com
   * Warnings when compiling if_ruby.c.
   * Can't build with tiny features.
   * Test 63 fails when using a black&white terminal.
-  * Value of v:hlsearch reflects an internal variable. 
+  * Value of v:hlsearch reflects an internal variable.
 
 -------------------------------------------------------------------
 Tue Nov 18 11:50:40 UTC 2014 - idonmez@suse.com
@@ -16648,7 +16910,7 @@ Tue Nov 18 11:50:40 UTC 2014 - idonmez@suse.com
   * In a help buffer the global 'foldmethod' is used.  (Paul Marshall)
   * Completing a function name containing a # does not work.  Issue
     253.
- 
+
 -------------------------------------------------------------------
 Thu Nov  6 10:54:25 UTC 2014 - idonmez@suse.com
 
@@ -16715,11 +16977,11 @@ Mon Sep 29 11:28:00 UTC 2014 - idonmez@suse.com
   * Completion for :buf does not use 'wildignorecase'. (Akshay H)
   * 'backupcopy' is global, cannot write only some files in a
     different way.
-  * Using getchar() in an expression mapping may result in K_CURSORHOLD, 
+  * Using getchar() in an expression mapping may result in K_CURSORHOLD,
     which can't be recognized.
   * Issue 252: Cursor moves in a zero-height window.
   * Can't change the icon after building Vim.
-  * Can't build without the quickfix feature. (Erik Falor) 
+  * Can't build without the quickfix feature. (Erik Falor)
   * Error reported by ubsan when running test 72.
   * Reversed question mark not recognized as punctuation. (Issue 258)
   * Clipboard may be cleared on startup.
@@ -16767,7 +17029,7 @@ Wed Sep 10 14:16:55 UTC 2014 - idonmez@suse.com
     appear twice. (Gary Johnson)
   * Omni complete popup drawn incorrectly.
   * Endless loop and other problems when 'cedit' is set to CTRL-C.
-  * Using unitinialized variable. 
+  * Using unitinialized variable.
 
 -------------------------------------------------------------------
 Sat Aug 30 14:21:44 UTC 2014 - idonmez@suse.com
@@ -17191,7 +17453,7 @@ Wed Feb 12 09:34:44 UTC 2014 - idonmez@suse.com
   * Dictionary.update() thows an error when used without arguments.
     Python programmers don't expect that.
   * Compiler warning for unused variable. (Tony Mechelynck)
-  * The J command does not update '[ and '] marks. (William Gardner) 
+  * The J command does not update '[ and '] marks. (William Gardner)
 
 -------------------------------------------------------------------
 Fri Feb  7 09:48:35 UTC 2014 - idonmez@suse.com
@@ -17382,7 +17644,7 @@ Mon Sep 23 10:49:50 UTC 2013 - idonmez@suse.com
   * NFA engine does not match the NUL character. (Jonathon Merz)
   * When the terminal has only 20 lines test 92 and 93 overwrite the
     input file.
-  * Using "p" in Visual block mode only changes the first line. 
+  * Using "p" in Visual block mode only changes the first line.
 
 -------------------------------------------------------------------
 Mon Sep  9 10:53:43 UTC 2013 - idonmez@suse.com
@@ -17430,7 +17692,7 @@ Mon Aug 26 09:15:30 UTC 2013 - idonmez@suse.com
     messed up state. (Marius Gedminas)
   * New regexp engine can't be interrupted.
   * When a file was not decrypted (yet), writing it may destroy the
-    contents. 
+    contents.
 
 -------------------------------------------------------------------
 Sat Aug 24 23:41:27 UTC 2013 - opensuse@cboltz.de
@@ -17519,7 +17781,7 @@ Mon May  6 14:51:45 UTC 2013 - idonmez@suse.com
     events for :tablose and :tabnew.
   * Missing combining characters when putting text in a register.
   * Can't build with strict C compiler.
-  * Compiler warning for unused variable. Not freeing unused string. 
+  * Compiler warning for unused variable. Not freeing unused string.
 
 -------------------------------------------------------------------
 Thu Apr 25 09:36:37 UTC 2013 - idonmez@suse.com
@@ -17590,7 +17852,7 @@ Tue Apr  9 08:58:31 UTC 2013 - idonmez@suse.com
   * Python list does not work correctly.
   * CursorHold may trigger after receiving the termresponse.
   * Can't build with some combination of features.
-  * Compiler warning for variable shadowing another. (John Little) 
+  * Compiler warning for variable shadowing another. (John Little)
 
 -------------------------------------------------------------------
 Wed Mar 20 16:09:34 UTC 2013 - idonmez@suse.com
@@ -17703,7 +17965,7 @@ Thu Feb 21 14:29:08 UTC 2013 - idonmez@suse.com
 -------------------------------------------------------------------
 Tue Feb 12 21:51:53 UTC 2013 - mkoegler@auto.tuwien.ac.at
 
-- Reenable ACL support- 
+- Reenable ACL support-
 
 -------------------------------------------------------------------
 Mon Jan 28 11:03:55 UTC 2013 - idonmez@suse.com
@@ -17844,7 +18106,7 @@ Fri Nov  2 16:06:58 UTC 2012 - idonmez@suse.com
 -------------------------------------------------------------------
 Tue Oct  2 12:54:03 UTC 2012 - idonmez@suse.com
 
-- Add Obsoletes/Provides for vim-plugin-matchit package 
+- Add Obsoletes/Provides for vim-plugin-matchit package
 
 -------------------------------------------------------------------
 Wed Sep 12 21:27:54 UTC 2012 - idonmez@suse.com
@@ -17868,7 +18130,7 @@ Wed Sep 12 21:27:54 UTC 2012 - idonmez@suse.com
 -------------------------------------------------------------------
 Sat Sep  1 17:51:41 UTC 2012 - idonmez@suse.com
 
-- Update to patchlevel 646, fixes the following problems 
+- Update to patchlevel 646, fixes the following problems
   * Segfault with specific autocommands.
   * Not all zero-width matches handled correctly for "gn".
   * Cannot select beyond 222 columns with the mouse in xterm.
@@ -17897,7 +18159,7 @@ Fri Jul  6 08:57:31 UTC 2012 - lnussel@suse.de
 -------------------------------------------------------------------
 Tue Jun 26 09:27:19 UTC 2012 - idonmez@suse.com
 
-- Update to patchlevel 566, fixes the following problems 
+- Update to patchlevel 566, fixes the following problems
   * Redo after completion does not work correctly when refresh.
   * ":profdel" should not work when the +profile feature is disabled.
   * Crash when an autocommand wipes out a buffer when it is hidden.
@@ -17943,7 +18205,7 @@ Wed Apr 25 08:53:49 UTC 2012 - saschpe@suse.de
 -------------------------------------------------------------------
 Sat Mar 24 20:08:15 UTC 2012 - idonmez@suse.com
 
-- Try to fix bnc#753907 
+- Try to fix bnc#753907
 
 -------------------------------------------------------------------
 Fri Mar 23 17:43:36 UTC 2012 - gregkh@opensuse.org
@@ -17963,18 +18225,18 @@ Wed Feb 29 12:55:57 UTC 2012 - mvyskocil@suse.cz
 -------------------------------------------------------------------
 Tue Feb 28 12:58:08 UTC 2012 - idonmez@suse.com
 
-- Update to patchlevel 456, fixes the following problems 
+- Update to patchlevel 456, fixes the following problems
   * Using many continuation lines can be slow.
   * Pasting in the command line is slow.
   * Undo broken when pasting close to the last line.
-  * Crash when a BufWinLeave autocommand closes 
+  * Crash when a BufWinLeave autocommand closes
     the only other window.
   * ":all!" and ":sall!" give error E477, even though the
     documentation says these are valid commands.
   * Vim does not support UTF8_STRING for the X selection.
   * Compiler warnings to size casts in Perl interface.
   * Search history lines are duplicated.
-  * "it" and "at" don't work properly 
+  * "it" and "at" don't work properly
     with a dash in the tag name.
   * DBCS encoding in a user command does not always work.
   * When a user complete function returns -1 an error message
@@ -18003,7 +18265,7 @@ Fri Dec 23 11:18:17 UTC 2011 - idonmez@suse.com
   * C-indenting wrong for a function header.
   * C-indenting wrong for static enum.
   * No support for bitwise AND, OR, XOR and invert.
-  * A tags file with an extremely long name may cause 
+  * A tags file with an extremely long name may cause
     an infinite loop.
 
 -------------------------------------------------------------------
@@ -18014,11 +18276,11 @@ Wed Dec 21 10:51:09 UTC 2011 - coolo@suse.com
 -------------------------------------------------------------------
 Fri Dec  9 13:20:50 UTC 2011 - idonmez@suse.com
 
-- Update to patchlevel 372, fixes the following problems 
+- Update to patchlevel 372, fixes the following problems
   * Crash when using a large Unicode character in a file that has
     syntax highlighting.
   * :wundo and :rundo use a wrong checksum.
-  * When using a command line mapping to <Up> with file name 
+  * When using a command line mapping to <Up> with file name
     completion to go one directory up, 'wildchar' is inserted.
 
 -------------------------------------------------------------------
@@ -18037,7 +18299,7 @@ Mon Dec  5 12:45:08 UTC 2011 - idoenmez@suse.de
   * Interrupting the load of an autoload function may cause a crash.
   * Command line completion shows dict functions.
   * Using "o" with 'cindent' set may freeze Vim.
-  * ":set backspace+=eol" doesn't work when 'backspace' has a 
+  * ":set backspace+=eol" doesn't work when 'backspace' has a
     backwards compatible value of 2.
   * When completing methods dict functions and script-local functions
     get in the way.
@@ -18060,7 +18322,7 @@ Mon Dec  5 12:45:08 UTC 2011 - idoenmez@suse.de
   * When 'imdisable' is reset from an autocommand in Insert mode it
     doesn't take effect.
   * Using "." to repeat a Visual delete counts the size in bytes, not
-    characters. 
+    characters.
   * Indent after "public:" is not increased in C++ code.
   * "vit" selects wrong text when a tag name starts with the same text
     as an outer tag name.
@@ -18103,7 +18365,7 @@ Tue Nov 22 22:49:39 UTC 2011 - reddwarf@opensuse.org
 -------------------------------------------------------------------
 Mon Nov  7 12:59:21 UTC 2011 - idonmez@suse.com
 
-- Move spec skeleton functionality into /etc/vimrc (bnc#720898) 
+- Move spec skeleton functionality into /etc/vimrc (bnc#720898)
 
 -------------------------------------------------------------------
 Sun Nov  6 03:49:09 UTC 2011 - crrodriguez@opensuse.org
@@ -18154,7 +18416,7 @@ Thu Sep 22 09:14:38 UTC 2011 - idonmez@suse.com
 -------------------------------------------------------------------
 Fri Sep 16 17:53:21 UTC 2011 - opensuse@cboltz.de
 
-- apparmor.vim update 
+- apparmor.vim update
   - support "deny $filename x" rules
   - apparmor.vim generated from AppArmor 2.7 beta2
 
@@ -18211,9 +18473,9 @@ Tue Jul 11 15:00:00 UTC 2011 - idonmez@novell.com
 
 - Update to official patchlevel 243
   * Fix multiple illegal memory accesses
-  * Fix: Using CTRL-R CTRL-W on the command line may insert only 
+  * Fix: Using CTRL-R CTRL-W on the command line may insert only
     part of the word.
-  * Fix: Python corrects the cursor column without taking 
+  * Fix: Python corrects the cursor column without taking
     'virtualedit' into account.
   * Fix: Python 3 doesn't compile without +multi_byte
   * Fix: ";" gets stuck on a "t" command, it's not useful.
@@ -18222,7 +18484,7 @@ Tue Jul 11 15:00:00 UTC 2011 - idonmez@novell.com
   * Fix: "2gj" does not always move to the correct position.
   * Fix: On a 64 bit system "syn sync fromstart" is very slow.
   * Fix: Can't pass dict to sort function.
-  * Fix: Text from the clipboard is sometimes handled as linewise, 
+  * Fix: Text from the clipboard is sometimes handled as linewise,
     but not consistently.
   * Fix: Inside an "if" a ":wincmd" causes problems.
 
@@ -18235,12 +18497,12 @@ Wed Jul  6 08:11:28 UTC 2011 - aj@suse.de
 Tue May 17 07:43:45 UTC 2011 - idoenmez@novell.com
 
 - Update to official patchlevel 189
-- Drop outdated README.SUSE 
+- Drop outdated README.SUSE
 
 -------------------------------------------------------------------
 Mon Apr 18 15:00:38 UTC 2011 - idoenmez@novell.com
 
-- Run spec-cleaner and fix build on SLE 10 
+- Run spec-cleaner and fix build on SLE 10
 
 -------------------------------------------------------------------
 Mon Feb 28 21:33:24 CET 2011 - stian@viskjer.net
@@ -18386,24 +18648,24 @@ Mon Feb 16 17:15:16 CET 2009 - werner@suse.de
 -------------------------------------------------------------------
 Fri Nov 28 14:50:42 CET 2008 - mkoenig@suse.de
 
-- don't set timeout in default vimrc [bnc#449932] 
+- don't set timeout in default vimrc [bnc#449932]
 
 -------------------------------------------------------------------
 Thu Oct  9 11:42:03 CEST 2008 - mkoenig@suse.de
 
-- update apparmor.vim [bnc#425848] 
+- update apparmor.vim [bnc#425848]
 
 -------------------------------------------------------------------
 Wed Oct  1 15:00:46 CEST 2008 - mkoenig@suse.de
 
 - add directories
-  /usr/share/vim/site/{autoload,colors,doc,plugin} 
+  /usr/share/vim/site/{autoload,colors,doc,plugin}
 
 -------------------------------------------------------------------
 Fri Sep 26 12:45:48 CEST 2008 - mkoenig@suse.de
 
 - update upstream patches
-- fix code exec via K or g] [bnc#427627] 
+- fix code exec via K or g] [bnc#427627]
 - remove some offending mappings [bnc#406456]
 - set timeout [bnc#426682]
 
@@ -18412,7 +18674,7 @@ Thu Sep 11 15:29:42 CEST 2008 - mkoenig@suse.de
 
 - update to version 7.2
   * bugfixes and security enhancements
-  * support for floating point numbers 
+  * support for floating point numbers
 - fixes security vulnerabilities [bnc#400508,bnc#406693,bnc#409516]
 - fixes ada support [bnc#419506]
 - remove patches:
@@ -18424,17 +18686,17 @@ Wed May 28 13:40:09 CEST 2008 - rodrigo@suse.de
 
 - Added vim-7.1-remove-terrible-hack.patch to remove a "terrible"
   hack that was moving the mouse 100 pixels to the top left for
-  KDE 3.1 window manager (bnc#392061) 
+  KDE 3.1 window manager (bnc#392061)
 
 -------------------------------------------------------------------
 Wed Apr 30 17:34:47 CEST 2008 - mkoenig@suse.de
 
-- use Utility as primary category for the desktop file [bnc#382779] 
+- use Utility as primary category for the desktop file [bnc#382779]
 
 -------------------------------------------------------------------
 Wed Mar 12 17:09:14 CET 2008 - mkoenig@suse.de
 
-- remove ycp syntax file, moved over to yast2-devtools 
+- remove ycp syntax file, moved over to yast2-devtools
 - cleanup: move syntax files and filetype changes into
   unique patches
 
@@ -18442,7 +18704,7 @@ Wed Mar 12 17:09:14 CET 2008 - mkoenig@suse.de
 Thu Feb 28 14:30:14 CET 2008 - mkoenig@suse.de
 
 - update to patchlevel 266
-  * fixes crash on completion [bnc#361844] 
+  * fixes crash on completion [bnc#361844]
 - update ycp syntax file [bnc#364509]
 
 -------------------------------------------------------------------
@@ -18464,20 +18726,20 @@ Thu Jan 24 14:17:22 CET 2008 - mkoenig@suse.de
 -------------------------------------------------------------------
 Wed Dec 12 11:23:16 CET 2007 - mkoenig@suse.de
 
-- fix shell escaping [#332571] 
+- fix shell escaping [#332571]
 
 -------------------------------------------------------------------
 Thu Oct  4 15:19:43 CEST 2007 - mkoenig@suse.de
 
 - fix alternatives problem which resulted from linking to the
   dummy script in install process [#305790]
-- update upstream patches to 135 
+- update upstream patches to 135
 
 -------------------------------------------------------------------
 Fri Aug 31 12:37:39 CEST 2007 - mkoenig@suse.de
 
 - let vim detect a failing diff [#252901]
-- add /bin/ex symlink [#306423] 
+- add /bin/ex symlink [#306423]
 
 -------------------------------------------------------------------
 Wed Aug 22 15:40:16 CEST 2007 - mkoenig@suse.de
@@ -18499,7 +18761,7 @@ Thu Jul 26 14:28:16 CEST 2007 - mkoenig@suse.de
 -------------------------------------------------------------------
 Mon Jul  9 14:26:23 CEST 2007 - mkoenig@suse.de
 
-- fix spec syntax rules 
+- fix spec syntax rules
 
 -------------------------------------------------------------------
 Thu Jul  5 16:30:52 CEST 2007 - coolo@suse.de
@@ -18509,14 +18771,14 @@ Thu Jul  5 16:30:52 CEST 2007 - coolo@suse.de
 -------------------------------------------------------------------
 Tue Jun 19 12:13:42 CEST 2007 - mkoenig@suse.de
 
-- fix changelog ftplugin [#284970] 
+- fix changelog ftplugin [#284970]
 
 -------------------------------------------------------------------
 Wed May 23 12:05:55 CEST 2007 - mkoenig@suse.de
 
 - update to version 7.1
 - removed patches:
-  vim-7.0-fstab_match_uuid.patch   
+  vim-7.0-fstab_match_uuid.patch
   vim-7.0-fix_duplicate_key_assignment_de.patch
 - enable syntax highlighting by default [#274600]
 
@@ -18531,7 +18793,7 @@ Tue May 15 17:46:34 CEST 2007 - mrueckert@suse.de
 Wed May  9 15:10:23 CEST 2007 - mkoenig@suse.de
 
 - fix duplicate key assignment in dialog when .swp file exists
-  [#270312] 
+  [#270312]
 
 ------------------------------------------------------------------
 Mon May  7 17:23:56 CEST 2007 - mkoenig@suse.de
@@ -18542,7 +18804,7 @@ Mon May  7 17:23:56 CEST 2007 - mkoenig@suse.de
 -------------------------------------------------------------------
 Wed Apr 25 01:53:59 CEST 2007 - ro@suse.de
 
-- add prereqs for update-alternative in subpackages 
+- add prereqs for update-alternative in subpackages
 
 -------------------------------------------------------------------
 Mon Apr 23 13:48:24 CEST 2007 - mrueckert@suse.de
@@ -18558,13 +18820,13 @@ Mon Apr 23 13:48:24 CEST 2007 - mrueckert@suse.de
 -------------------------------------------------------------------
 Thu Apr  5 16:58:46 CEST 2007 - mkoenig@suse.de
 
-- Keep %ghost for gvimrc only 
+- Keep %ghost for gvimrc only
 
 -------------------------------------------------------------------
 Tue Apr  3 19:01:43 CEST 2007 - mkoenig@suse.de
 
 - change %ghost %config(missingok) to %config(noreplace)
-  for /etc/vimrc and /etc/gvimrc 
+  for /etc/vimrc and /etc/gvimrc
 
 -------------------------------------------------------------------
 Tue Mar 27 18:54:22 CEST 2007 - mrueckert@suse.de
@@ -18590,12 +18852,12 @@ Fri Feb  2 23:49:38 CET 2007 - dmueller@suse.de
 -------------------------------------------------------------------
 Wed Jan 24 16:53:04 CET 2007 - mkoenig@suse.de
 
-- move gvim and related stuff from /usr/X11R6/bin to /usr/bin 
+- move gvim and related stuff from /usr/X11R6/bin to /usr/bin
 
 -------------------------------------------------------------------
 Tue Jan 23 17:43:33 CET 2007 - mkoenig@suse.de
 
-- set default backspace functionality to a more "useful" 
+- set default backspace functionality to a more "useful"
   value [#34519]
 
 -------------------------------------------------------------------
@@ -18647,7 +18909,7 @@ Mon Jan 22 14:25:35 CET 2007 - mkoenig@suse.de
 -------------------------------------------------------------------
 Mon Nov  6 11:05:29 CET 2006 - mkoenig@suse.de
 
-- add apparmor syntax highlighting [#190084] 
+- add apparmor syntax highlighting [#190084]
 
 -------------------------------------------------------------------
 Tue Oct 31 12:22:31 CET 2006 - mkoenig@suse.de
@@ -18659,7 +18921,7 @@ Tue Oct 24 12:28:28 CEST 2006 - mkoenig@suse.de
 
 - added official patchs 077-146:
   * minor bugfixes
-- fix UUID matching in fstab syntax mode [#211238] 
+- fix UUID matching in fstab syntax mode [#211238]
 
 -------------------------------------------------------------------
 Wed Aug 30 10:36:19 CEST 2006 - kssingvo@suse.de
@@ -18719,7 +18981,7 @@ Wed Aug  9 17:30:49 CEST 2006 - kssingvo@suse.de
    * some Tcl scripts are not recognized
    * can't properly close a buffer through the NetBeans interface
 - patch for ruby output on query of LDFLAGS
-- fixed use_update_desktop_file: no longer destroys shell echo 
+- fixed use_update_desktop_file: no longer destroys shell echo
 
 -------------------------------------------------------------------
 Fri Jul 21 15:15:22 CEST 2006 - schwab@suse.de
@@ -18771,7 +19033,7 @@ Fri Feb 24 13:28:58 CET 2006 - hvogel@suse.de
 -------------------------------------------------------------------
 Thu Feb  2 21:32:01 CET 2006 - rml@suse.de
 
-- Make X selection again work in gvim (Bug #144109) 
+- Make X selection again work in gvim (Bug #144109)
 
 -------------------------------------------------------------------
 Wed Feb  1 17:40:28 CET 2006 - hvogel@suse.de
@@ -18807,7 +19069,7 @@ Wed Jan 11 16:22:47 CET 2006 - mmj@suse.de
 -------------------------------------------------------------------
 Mon Dec 19 15:24:18 CET 2005 - ro@suse.de
 
-- remove unpackaged symlinks 
+- remove unpackaged symlinks
 
 -------------------------------------------------------------------
 Mon Dec  5 15:07:01 CET 2005 - mmj@suse.de
@@ -18876,12 +19138,12 @@ Tue Dec  7 17:23:09 CET 2004 - mmj@suse.de
 -------------------------------------------------------------------
 Wed Nov 24 14:23:51 CET 2004 - ro@suse.de
 
-- use macro for python version 
+- use macro for python version
 
 -------------------------------------------------------------------
 Tue Nov 16 10:43:21 CET 2004 - hvogel@suse.de
 
-- add gvim icon 
+- add gvim icon
 
 -------------------------------------------------------------------
 Wed Nov 10 11:17:02 CET 2004 - hvogel@suse.de
@@ -19064,7 +19326,7 @@ Tue Aug 12 17:23:30 CEST 2003 - fehr@suse.de
 -------------------------------------------------------------------
 Wed Jul 16 10:34:00 CEST 2003 - fehr@suse.de
 
-- create link eview to gvim 
+- create link eview to gvim
 
 -------------------------------------------------------------------
 Tue Jun 24 17:39:00 CEST 2003 - mmj@suse.de
@@ -19086,7 +19348,7 @@ Tue May 27 11:00:38 CEST 2003 - fehr@suse.de
 -------------------------------------------------------------------
 Fri May 23 14:34:37 CEST 2003 - fehr@suse.de
 
-- add vitmp binary and man page to package 
+- add vitmp binary and man page to package
 
 -------------------------------------------------------------------
 Wed Apr  2 02:13:26 CEST 2003 - ro@suse.de
@@ -19101,25 +19363,25 @@ Mon Mar  3 13:11:19 CET 2003 - fehr@suse.de
 -------------------------------------------------------------------
 Mon Feb  3 10:38:45 CET 2003 - adrian@suse.de
 
-- remove -mminimal-toc from RPM_OPT_FLAGS for ppc 
+- remove -mminimal-toc from RPM_OPT_FLAGS for ppc
 - add patches 240 to 317 from ftp.vim.org
 
 -------------------------------------------------------------------
 Wed Jan  1 16:43:10 CET 2003 - adrian@suse.de
 
-- add a comment in the default vimrc to get the completion 
+- add a comment in the default vimrc to get the completion
   behaviour as in bash (often asked).
 
 -------------------------------------------------------------------
 Mon Dec 16 14:04:22 CET 2002 - fehr@suse.de
 
-- add "modelines=0" to default vimrc because of security 
+- add "modelines=0" to default vimrc because of security
   considerations
 
 -------------------------------------------------------------------
 Fri Dec 13 15:29:12 CET 2002 - ro@suse.de
 
-- updated neededforbuild 
+- updated neededforbuild
 
 -------------------------------------------------------------------
 Thu Nov  7 13:14:08 CET 2002 - mfabian@suse.de
@@ -19181,7 +19443,7 @@ Wed Apr 10 11:27:17 CEST 2002 - adrian@suse.de
 -------------------------------------------------------------------
 Tue Apr  2 14:28:12 CEST 2002 - fehr@suse.de
 
-- remove disable_system.patch that prevent print menue entry in 
+- remove disable_system.patch that prevent print menue entry in
   gvim from working
 
 -------------------------------------------------------------------
@@ -19201,8 +19463,8 @@ Sun Mar 10 16:36:46 CET 2002 - mfabian@suse.de
 Mon Mar  4 18:08:40 CET 2002 - mfabian@suse.de
 
 - change default fontset entry for Korean to prevent core dump
-  in Korean locale. 
-  Our previous default selected was 
+  in Korean locale.
+  Our previous default selected was
   guifontset=-*-clean-bold-r-*--16-*-*-*-*-*-*-*,
              -*-gulim-medium-r-*--16-*-*-*-*-*-*-*
   but since XFree86 4.2.0 the 'clean-bold' pattern doesn't
@@ -19253,12 +19515,12 @@ Tue Jan 29 19:48:55 CET 2002 - fehr@suse.de
 
 - add patches 094 to 154 for vim 6.0 from ftp.vim.org
 - syntax files changes.vim and ycp.vim are now separate source files
-  
+
 -------------------------------------------------------------------
 Fri Dec  7 16:17:39 CET 2001 - mfabian@suse.de
 
 - add vim-6.0-euro-menu.dif which removes @euro when looking
-  for a menu translation for gvim. Without this, 
+  for a menu translation for gvim. Without this,
   "LC_ALL=de_DE@euro gvim" will show English menus
 
 -------------------------------------------------------------------
@@ -19315,7 +19577,7 @@ Tue Aug 28 13:56:51 CEST 2001 - mfabian@suse.de
 - removed sf_warnings.dif (included upstream)
 - add --with-features=big
 - remove --enable-broken-locale
-- remove --enable-fontset 
+- remove --enable-fontset
 - add BuildRoot
 - add %{?suse_update_config:%{suse_update_config -f }}
 
@@ -19347,7 +19609,7 @@ Fri Apr  6 11:04:25 CEST 2001 - mfabian@suse.de
 
 - add tarball for nls support: vim-6.0aa-lang.tar.bz2
 - use suse_update_config
-- remove --enable-broken-locale --enable-fontset 
+- remove --enable-broken-locale --enable-fontset
 - add BuildRoot
 - bzip2 tarballs
 
@@ -19399,7 +19661,7 @@ Tue Feb 29 15:41:57 MET 2000 - fehr@suse.de
 -------------------------------------------------------------------
 Thu Feb 24 12:46:36 MET 2000 - fehr@suse.de
 
-- removed dependency on nawk 
+- removed dependency on nawk
 
 -------------------------------------------------------------------
 Tue Jan 25 19:47:28 CET 2000 - werner@suse.de
@@ -19423,11 +19685,11 @@ Fri Nov  5 17:49:28 MET 1999 - kukuk@suse.de
 -------------------------------------------------------------------
 Fri Oct 16 11:21:59 CEST 1999 - ml@suse.de
 
-- removed typo from vim-5.4.dif 
+- removed typo from vim-5.4.dif
 -------------------------------------------------------------------
 Thu Sep 16 16:21:59 CEST 1999 - ro@suse.de
 
-- added "Provides vi_clone" 
+- added "Provides vi_clone"
 
 -------------------------------------------------------------------
 Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
