@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 15 07:27:48 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 7.2.16
+  * Add account_info Admin API by @mhkarimi1383 in #1463
+  * fix mypy error by @balamurugana in #1483
+  * put_object: add append object support by @balamurugana in #1493
+  * Add append_object() API by @balamurugana in #1494
+  * fix: type wrong in commonconfig by @hlf20010508 in #1489
+  * fix pip install for ubuntu 24.04 by @balamurugana in #1502
+
+-------------------------------------------------------------------
 Thu Jan 30 14:06:53 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 7.2.15:
