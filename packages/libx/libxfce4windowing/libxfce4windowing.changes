@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Aug 14 07:42:44 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.4
+  * XfwMonitorWayland: Delay monitor finalization until gdk data are
+    set
+  * XfwSeatWayland: Store global name for matching when seat is
+    removed
+  * XfwMonitorWayland: Fix release order in _global_removed()
+  * XfwMonitorManagerWayland: Use g_hash_table_iter_remove when
+    iterating
+  * XfwMonitorWayland: Store global name for matching when output is
+    removed
+  * XfwScreenWayland: Rename id to name in registry_global(_remove)?
+  * XfwMonitorWayland: Don't make XfwScreen emit signal with null
+    monitor
+  * XfwWorkspaceGroupWayland: Connect to
+    XfwScreen::monitor-(added|removed)
+  * Add mnemonics for workspace names in workspace menu
+  * Revert "Update README after switchover to meson"
+  * Update README after switchover to meson
+  * Destroy wl_output & xdg_output together when wl_output global
+    removed
+  * XfwWorkspaceWayland: Fix typo
+  * XfwWorkspace: Fix id property management
+  * Defer binding to the workspace manager until after we have the
+    outputs
+  * I18n: Update po/LINGUAS list
+  * meson-build: Add Vala language bindings option
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri May 23 07:35:16 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Removed leftover meson conditional from spec file. We stick with
@@ -223,7 +254,7 @@ Tue Apr  2 06:11:29 UTC 2024 - Maurizio Galli <maurizio.galli@suse.com>
   * x11: use workspace number as ID
   * Use G_N_ELEMENTS()
   * XfwApplication: Fix window memory management
-  * Translation Updates 
+  * Translation Updates
 
 -------------------------------------------------------------------
 Wed Jan 31 14:29:49 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>

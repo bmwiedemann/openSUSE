@@ -40,4 +40,12 @@
   autotools for now as there are some issues with the meson builds (forwarded request 1279468 from mauriziogalli)</comment>
     <requestid>1279475</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>55daf70106bcb7aea6b977dfc7d29786</srcmd5>
+    <version>4.20.4</version>
+    <time>1755287499</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1299353</requestid>
+  </revision>
 </revisionlist>

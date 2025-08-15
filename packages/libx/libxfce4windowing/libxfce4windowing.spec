@@ -1,7 +1,7 @@
 #
 # spec file for package libxfce4windowing
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
 # upon. The license for this file, and modifications and additions to the
@@ -36,7 +36,7 @@
 
 Name:           libxfce4windowing
 Summary:        Windowing concept abstraction library for X11 and Wayland
-Version:        4.20.3
+Version:        4.20.4
 Release:        0
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
@@ -59,7 +59,7 @@ BuildRequires:  pkgconfig(libwnck-3.0) >= 3.14
 BuildRequires:  pkgconfig(wayland-client) >= 1.20
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.25
 BuildRequires:  pkgconfig(wayland-scanner) >= 1.20
-BuildRequires:  pkgconfig(x11) >= 1.6.5
+BuildRequires:  pkgconfig(x11) >= 1.6.7
 BuildRequires:  pkgconfig(xrandr) >= 1.5.0
 
 %description
