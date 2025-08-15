@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 14 08:24:51 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.32.8:
+  * do not allow the node to update it's owner reference
+  * remove failing test that depends on expired credential, remove credential, add TODOs
+  * Bump images, dependencies and versions to go 1.23.11 and distroless iptables
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.23.11`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.32.8/build/dependencies.yaml#L117-L119
+
+-------------------------------------------------------------------
 Thu Jul 17 03:57:52 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.32.7:
