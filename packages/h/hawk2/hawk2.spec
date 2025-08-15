@@ -154,6 +154,7 @@ Requires:       crmsh >= 3.0.0
 Requires:       graphviz
 Requires:       graphviz-gd
 Requires:       hawk-apiserver
+Requires:       openssl
 Requires(post): %fillup_prereq
 # Need a font of some kind for graphviz to work correctly (bsc#931950)
 Requires:       dejavu
