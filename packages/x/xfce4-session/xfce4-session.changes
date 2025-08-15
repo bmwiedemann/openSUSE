@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Aug 14 14:46:12 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Reduce the timeout for auto-start on Wayland (bsc#1247542);
+  xfce4-session-reduce-wayland-autostart-timeout.patch
+  This is a temporary workaround for the too slow start-up on Wayland
+  desktop.  Currently the error is ignored in anyway.
+- Use '?' for SUSE macro expansion, so that quilt setup works.
+
+-------------------------------------------------------------------
+Thu Aug 14 13:45:06 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.3:
+  * wayland: startxfce4: Remove definition of SDL_VIDEODRIVER variable
+  * Add xapp for Settings in xfce-portals.conf
+  * startxfce4: Add check for /etc/vconsole.conf
+  * labwc: Add some default config values
+  * xfce-portals.conf: Add wlr for ScreenCast
+  * startxfce4: Improve keyboard layout detection on wayland
+  * wayland: start a D-Bus session only if there isn't one already
+  * Use syntax compatible with most sh shells.
+  * labwc: Add window snapping range
+
+-------------------------------------------------------------------
 Tue Aug  5 13:41:07 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Fix the audio mixer invocation on Wayland (bsc#1247640):

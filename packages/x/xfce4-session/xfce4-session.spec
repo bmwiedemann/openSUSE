@@ -18,7 +18,7 @@
 
 %bcond_with git
 Name:           xfce4-session
-Version:        4.20.2
+Version:        4.20.3
 Release:        0
 Summary:        Xfce Session Manager
 License:        GPL-2.0-only
@@ -38,6 +38,8 @@ Patch1:         xfce4-session-adapt-session-scripts.patch
 Patch2:         0002-relax-x11-version.patch
 # PATCH-FIX-OPENSUSE xfce4-session-drop-amixer-D-pulse-option.patch -- Fix audio mixer invocation on Wayland
 Patch3:         xfce4-session-drop-amixer-D-pulse-option.patch
+# PATCH-FIX-OPENSUSE xfce4-session-reduce-wayland-autostart-timeout.patch -- Fix the too slow start-up on Wayland
+Patch4:         xfce4-session-reduce-wayland-autostart-timeout.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
 BuildRequires:  iceauth
@@ -103,7 +105,7 @@ BuildArch:      noarch
 %description branding-upstream
 This package provides the upstream look and feel for the Xfce Session Manager.
 
-%if 0%{is_opensuse} && 0%{suse_version} >= 1550
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1550
 %package wayland-experimental
 Summary:        Xfce Session Manager for Wayland
 Group:          System/GUI/XFCE
@@ -213,7 +215,7 @@ rmdir %{buildroot}%{_datadir}/wayland-sessions
 %files branding-upstream
 %config %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
 
-%if 0%{is_opensuse} && 0%{suse_version} >= 1550
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1550
 %files wayland-experimental
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/wayland-sessions/xfce-wayland.desktop
