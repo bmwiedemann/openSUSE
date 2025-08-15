@@ -1,7 +1,7 @@
 #
 # spec file for package postgresql13
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 13.21
+%define pgversion 13.22
 %define pgmajor 13
 %define buildlibs 0
 %define tarversion %{pgversion}

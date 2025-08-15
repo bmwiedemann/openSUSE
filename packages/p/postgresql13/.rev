@@ -498,4 +498,14 @@
   while generating pg_config_paths.h.</comment>
     <requestid>1278027</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>1a0ce97b11605dbee02b8ff28605afe3</srcmd5>
+    <version>13.22</version>
+    <time>1755287538</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1299463 from darix
+
+https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-beta-3-released-3118/</comment>
+    <requestid>1299468</requestid>
+  </revision>
 </revisionlist>
