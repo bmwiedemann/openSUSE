@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 14 07:45:25 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.33.4:
+  * do not allow the node to update it's owner reference
+  * fixes scheduler nil panic due to empty init container request&limit
+  * remove failing test that depends on expired credential, remove credential, add TODOs
+  * Bump dependencies, images and versions used to Go 1.24.5 and distroless iptables
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.24.5`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.33.4/build/dependencies.yaml#L117-L119
+
+-------------------------------------------------------------------
 Thu Jul 17 03:46:27 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.33.3:

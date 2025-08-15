@@ -31,4 +31,12 @@
     <comment>Monthly Patch Release – July, 2025: Update to version 1.33.3</comment>
     <requestid>1293983</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ae619ad85b3497e2cc11e014068c7a84</srcmd5>
+    <version>1.33.4</version>
+    <time>1755287512</time>
+    <user>dimstar_suse</user>
+    <comment>Monthly Patch Release – Aug, 2025: Update to version 1.33.4</comment>
+    <requestid>1299396</requestid>
+  </revision>
 </revisionlist>
