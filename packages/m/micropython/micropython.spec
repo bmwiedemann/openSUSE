@@ -1,7 +1,7 @@
 #
 # spec file for package micropython
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,13 @@
 %{?sle15_python_module_pythons}
 
 Name:           micropython
-Version:        1.25.0
+Version:        1.26.0
 Release:        0
 Summary:        Implementation of Python 3 with very low memory footprint
 License:        MIT
 URL:            https://micropython.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        prepare.sh
-# PATCH-FIX-UPSTREAM
-Patch0:         https://patch-diff.githubusercontent.com/raw/micropython/micropython/pull/17269.patch#/micropython-gcc15-string-initialization.patch
 BuildRequires:  openssl
 BuildRequires:  pkgconfig
 BuildRequires:  python3

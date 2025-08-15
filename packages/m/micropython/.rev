@@ -233,4 +233,23 @@
     <comment></comment>
     <requestid>1291954</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>696332b17bc34637d6696b720ab8d0f8</srcmd5>
+    <version>1.26.0</version>
+    <time>1755287557</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.26.0
+  * Added machine.I2CTarget for creating I2C target devices on multiple ports.
+  * New MCU support: STM32N6xx (800 MHz, ML accel) &amp; ESP32-C2 (WiFi + BLE).
+  * Major float accuracy boost (~28% → ~98%), constant folding in compiler.
+  * Optimized native/Viper emitters; reduced heap use for slices.
+  * Time functions standardized (1970–2099); new boards across ESP32, SAMD, STM32, Zephyr.
+  * ESP32: ESP-IDF 5.4.2, flash auto-detect, PCNT class, LAN8670 PHY.
+  * RP2: compressed errors, better lightsleep, hard IRQ timers.
+  * Zephyr v4.0.0: PWM, SoftI2C/SPI, BLE runtime services, boot.py/main.py support.
+  * mpremote adds fs tree, improved df, portable config paths.
+  * Updated lwIP, LittleFS, libhydrogen, stm32lib; expanded hardware/CI tests.
+- Removed micropython-gcc15-string-initialization.patch as included upstream</comment>
+    <requestid>1299777</requestid>
+  </revision>
 </revisionlist>
