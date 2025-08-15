@@ -1,7 +1,7 @@
 #
 # spec file for package element-desktop
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           element-desktop
-Version:        1.11.103
+Version:        1.11.109
 Release:        0
 Summary:        A glossy Matrix collaboration client - desktop
 License:        AGPL-3.0-only OR GPL-3.0-only
@@ -33,6 +33,7 @@ Patch2:         cc-link-lib-no-static.patch
 Patch3:         remove-fuses.patch
 Patch4:         no-walrus-operator.patch
 Patch5:         break-esbuild-for-good.patch
+Patch6:         fix-oxc-resolver.patch
 BuildRequires:  app-builder
 BuildRequires:  cargo
 BuildRequires:  element-web = %{version}
@@ -181,6 +182,7 @@ popd
 # Install the app content, replace the webapp with a symlink to the system package
 install -vd -m 0755 "%{buildroot}%{_datadir}/element/"
 cp -lrv dist/linux-universal-unpacked/resources/* -t "%{buildroot}%{_datadir}/element/"
+rm %{buildroot}/usr/share/element/default_app.asar
 ln -vs %{_datadir}/webapps/element "%{buildroot}%{_datadir}/element/webapp"
 
 # Install binaries to /usr/lib
