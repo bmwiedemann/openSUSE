@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Aug 14 10:19:14 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Silence reporting unavoidable duplicates.
+
+-------------------------------------------------------------------
+Wed Aug 13 16:28:13 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Switch to fork under development and update to 2.7.5
+  * test_bigfacet.py: print() is a function in Python 3
+  * remove duplicate_plugin WhitespacePlugin
+  * [RFC] Give SegmentWriter a cachable Searcher
+  * Add support for wildcard regex tokenization
+  * Fixed several errors and added support for the Sweep AI and
+    Codecov bots
+  * Update Python version in setup.py classifiers & fix indent
+  * Improved documentation deployment and added additional locations
+    where it can be found as backup
+- Drop merged patches:
+  * pytest4.patch
+  * py2encoding.patch
+  * docs-Update-intersphinx_mapping.patch
+
+-------------------------------------------------------------------
 Fri Jun 13 02:44:41 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

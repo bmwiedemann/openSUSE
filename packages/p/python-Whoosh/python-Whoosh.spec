@@ -1,7 +1,7 @@
 #
 # spec file for package python-Whoosh
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,26 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Whoosh
-Version:        2.7.4
+Version:        2.7.5
 Release:        0
 Summary:        Pure-Python full text indexing, search, and spell checking library
 License:        BSD-2-Clause
-URL:            https://github.com/whoosh-community/whoosh/
-Source:         https://files.pythonhosted.org/packages/source/W/Whoosh/Whoosh-%{version}.tar.gz
-# upstream in completely unrelated https://github.com/whoosh-community/whoosh/commit/b43e5a432109
-Patch0:         pytest4.patch
-# upstream in https://github.com/whoosh-community/whoosh/commit/f5a777572fb9
-Patch1:         py2encoding.patch
+URL:            https://github.com/Sygil-Dev/whoosh-reloaded
+Source0:        https://github.com/Sygil-Dev/whoosh-reloaded/archive/refs/tags/v%{version}.tar.gz
+Source99:       python-Whoosh.rpmlintrc
 # PATCH-FIX-UPSTREAM NullMatcherClass-hashable.patch gh#whoosh-community/whoosh#570 mcepl@suse.com
 # NullMatcherClass needs __hash__ method as well for Sphinx4 compatiblity.
-Patch2:         NullMatcherClass-hashable.patch
-# PATCH-FIX-UPSTREAM docs-Update-intersphinx_mapping.patch gh#whoosh-community/whoosh#582
-# fix intersphinx_mapping
-Patch3:         docs-Update-intersphinx_mapping.patch
+Patch0:         NullMatcherClass-hashable.patch
+BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-sphinx-jsonschema
+BuildRequires:  python3-sphinx_rtd_theme
+Requires:       python-cached-property
 BuildArch:      noarch
 # SECTION the testing dependencies
 BuildRequires:  %{python_module pytest}
@@ -72,7 +70,7 @@ This package contains the documentation.
 %endif
 
 %prep
-%autosetup -p1 -n Whoosh-%{version}
+%autosetup -p1 -n whoosh-reloaded-%{version}
 
 # Fix CRLF->LF
 sed -i -e 's/\r$//' docs/source/api/filedb/{filestore,filetables,structfile}.rst
@@ -87,14 +85,13 @@ sphinx-build -b html -d docs/build/doctrees docs/source docs/build/html
 
 %check
 export LANG=en_US.UTF8
-# test_list_corrector - depends on dict sorting thats in py3+ only
-%pytest -k 'not test_list_corrector'
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt
-%doc README.txt
+%doc README.md
 %{python_sitelib}/whoosh
-%{python_sitelib}/[Ww]hoosh-%{version}.dist-info
+%{python_sitelib}/[Ww]hoosh_[Rr]eloaded-%{version}.dist-info
 
 %if 0%{?suse_version} > 1500
 %files -n python-Whoosh-doc

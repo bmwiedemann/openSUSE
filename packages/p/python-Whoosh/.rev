@@ -105,4 +105,27 @@
 - No more greedy globs in %files.</comment>
     <requestid>1285284</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>740b0fd83ef2389ddd12ebb40630c675</srcmd5>
+    <version>2.7.5</version>
+    <time>1755287465</time>
+    <user>dimstar_suse</user>
+    <comment>- Silence reporting unavoidable duplicates.
+
+- Switch to fork under development and update to 2.7.5
+  * test_bigfacet.py: print() is a function in Python 3
+  * remove duplicate_plugin WhitespacePlugin
+  * [RFC] Give SegmentWriter a cachable Searcher
+  * Add support for wildcard regex tokenization
+  * Fixed several errors and added support for the Sweep AI and
+    Codecov bots
+  * Update Python version in setup.py classifiers &amp; fix indent
+  * Improved documentation deployment and added additional locations
+    where it can be found as backup
+- Drop merged patches:
+  * pytest4.patch
+  * py2encoding.patch
+  * docs-Update-intersphinx_mapping.patch</comment>
+    <requestid>1299365</requestid>
+  </revision>
 </revisionlist>
