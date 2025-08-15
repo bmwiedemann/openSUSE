@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyipp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        0.17.1
 Release:        0
 Summary:        Asynchronous Python client for Internet Printing Protocol (IPP)
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/ctalkington/python-ipp
 Source0:        https://files.pythonhosted.org/packages/source/p/pyipp/pyipp-%{version}.tar.gz
 Source1:        https://github.com/ctalkington/python-ipp/archive/%{version}.tar.gz#/pyipp-%{version}-gh-tests.tar.gz
@@ -33,6 +32,7 @@ BuildRequires:  %{python_module covdefaults}
 BuildRequires:  %{python_module deepmerge >= 0.1.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
@@ -42,6 +42,8 @@ BuildRequires:  %{python_module yarl >= 1.4.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiohttp >= 3.6.2
+Requires:       python-awesomeversion >= 21.10.1
+Requires:       python-backoff >= 2.2.0
 Requires:       python-deepmerge >= 0.1.0
 Requires:       python-yarl >= 1.4.2
 BuildArch:      noarch

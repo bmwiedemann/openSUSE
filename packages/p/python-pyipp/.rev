@@ -110,4 +110,13 @@
     IppFinishing @d3-ksmith</comment>
     <requestid>1273205</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2c8a4b180d2a3ce86e6c7c21673d5cef</srcmd5>
+    <version>0.17.1</version>
+    <time>1755287484</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires on pytest-asyncio.
+- Add missing Requires.</comment>
+    <requestid>1299289</requestid>
+  </revision>
 </revisionlist>
