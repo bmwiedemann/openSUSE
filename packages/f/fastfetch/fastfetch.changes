@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Aug 14 22:36:57 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to 2.50.1:
+  Bugfixes:
+   * Fixes percentage bar not displaying correctly in certain cases
+   * Fixes linglong package detection on Debian 13 
+     (gh#fastfetch-cli/fastfetch#1899)
+- Update to 2.50.0:
+  Changes:
+   * Keys in JSON configuration files are now case-sensitive, as 
+     stated in v2.49.0. 
+     - This is a breaking change, but it should not affect most 
+       users as long as your config file passes JSON schema 
+       validation.
+   * All module config flags have been removed, as stated in v2.49.0. 
+     - To configure modules via the command line
+   * The percent bar config display.bar.* options have been replaced 
+     with a more organized, nested object structure. 
+     - `display.bar.charElapsed` has been renamed to 
+       `display.bar.char.elapsed`.
+     - `display.bar.charTotal` has been renamed to 
+       `display.bar.char.total`.
+     - `display.bar.borderLeft` has been renamed to 
+       `display.bar.border.left`.
+     - `display.bar.borderRight` has been renamed to 
+       `display.bar.border.right`.
+   * The undocumented flag `--load-config` has been removed. 
+     - Use `--config` or `-c` instead.
+   * Flashfetch, a simplified fastfetch variant that used a hardcoded 
+     module list with direct function calls to reduce startup 
+     overhead, has been changed to a version that aims to match 
+     neofetch's behavior as closely as possible, for demonstration 
+     purposes. 
+     - Flashfetch is intended to be built from source (like st). We 
+       do not provide prebuilt binaries in distributions.
+  Features:
+   * Added support for reading JSON config from stdin using 
+     `--config -` or `-c -`.
+   * Added `display.bar.border.{leftElapsed,rightElapsed}` for using 
+     the border as part of the bar content. 
+     (gh#fastfetch-cli/fastfetch#1875) 
+     - `display.bar.border: null` has been added as a shorthand to 
+       disable bar borders.
+   * Added display.bar.color.{elapsed,total,border} to customize the 
+     color of the elapsed, total, and border sections of the percent 
+     bar. 
+     - `display.bar.color: null` has been added as a shorthand to 
+       disable bar colors.
+   * Improved Bedrock Linux detection 
+     (gh#fastfetch-cli/fastfetch#1881)
+   * Added the command flag `--gen-config-full`, which generates a 
+     JSON config file containing all optional module options.
+   * Improved the default IP address display when 
+     `localip.showAllIPs` is not set (LocalIP) 
+     - For IPv4, the preferred source address (if detected) is shown.
+     - For IPv6, the first GUA or ULA that is not deprecated or 
+       temporary is shown.
+   * Added detection support for Xlibre 
+     (gh#fastfetch-cli/fastfetch#1888)
+  Bugfixes:
+   * Fixed custom object inheriting a key from the previous custom 
+     object if the key is blank (gh#fastfetch-cli/fastfetch#1477)
+   * Fixed a possible segfault when parsing color strings in the 
+     JSON config (gh#fastfetch-cli/fastfetch#1878)
+   * Fixed lliurex detection (gh#fastfetch-cli/fastfetch#1882)
+   * Fixed compatibility with -ffast-math 
+     (gh#fastfetch-cli/fastfetch#1894)
+  Logos:
+   * Added ObsidianOS (gh#fastfetch-cli/fastfetch#1890)
+
+-------------------------------------------------------------------
 Thu Jul 31 15:20:29 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to 2.49.0:
