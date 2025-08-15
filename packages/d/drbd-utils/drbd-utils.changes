@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 15 07:12:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
+
+- drbd_passive didn't start due to drbd.rules returning error (bsc#1247534)
+  * remove patch
+    - bsc-1239437_drbd.rules-fix-missing-udev-device.patch
+  * add patch
+    - bsc-1247534_drbd-didnt-start-due-to-drbd_rules-returning-err.patch
+
+-------------------------------------------------------------------
 Tue Jun 17 14:38:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
 
 - merge upstream patch to fix build error 

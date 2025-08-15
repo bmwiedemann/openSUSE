@@ -73,7 +73,7 @@ Patch1005:      pie-fix.patch
 Patch1006:      bsc-1233273_drbd.ocf-replace-crm_master-with-ocf_promotion_score.patch
 Patch1007:      bsc-1233273_drbd.ocf-update-for-OCF-1.1.patch
 Patch1008:      rpmlint-build-error.patch
-Patch1009:      bsc-1239437_drbd.rules-fix-missing-udev-device.patch
+Patch1009:      bsc-1247534_drbd-didnt-start-due-to-drbd_rules-returning-err.patch
 #############################################
 
 Provides:       drbd-bash-completion = %{version}

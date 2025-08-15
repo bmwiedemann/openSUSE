@@ -1,0 +1,25 @@
+diff -Nupr a/scripts/drbd.ocf b/scripts/drbd.ocf
+--- a/scripts/drbd.ocf	2025-08-15 14:56:51.370952179 +0800
++++ b/scripts/drbd.ocf	2025-08-15 14:57:19.900056780 +0800
+@@ -1621,6 +1621,21 @@ _drbd_validate_all () {
+ 		# (as is the case here), we don't need to add "--stacked"
+ 		# anymore, even if they are stacked.
+ 		: # nothing to do.
++
++		# ref bsc#1239437 bsc#1247534
++		# For device names like drbd_tom, drbd_jerry, ... (not style: drbd[0-9]+
++		# we change the path to /dev/drbd/by-res/drbd_tom/<minor>.
++		for i in "${!DRBD_DEVICES[@]}"; do
++			dev=$(basename ${DRBD_DEVICES[$i]})
++			if [[ ! $dev =~ drbd[0-9]+ ]]; then
++				minor=$($DRBDADM dump $DRBD_RESOURCE | grep -Eo "${dev}[[:space:]]minor[[:space:]][0-9]+" | cut -d' ' -f 3)
++				if [ -n "$minor" ]; then
++					DRBD_DEVICES[$i]="/dev/drbd/by-res/${dev}/${minor}"
++				else
++					ocf_log warn "$dev doesn't have minor"
++				fi
++			fi
++		done
+ 	elif DRBD_DEVICES=($($DRBDADM --stacked sh-dev $DRBD_RESOURCE 2>/dev/null)); then
+ 		# apparently a "stacked" resource. Remember for future DRBDADM calls.
+ 		DRBDADM="$DRBDADM -S"
