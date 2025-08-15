@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 15 04:45:26 UTC 2025 - william.brown@suse.com
+
+- Update to version 1.7.2~git0.d331ea986:
+  * Release 1.7.2
+  * Resolve replication show-cert issue (#3792)
+  * Add json codec wrapper for unix integration (#3789)
+  * Trying to clean up order of operations in kanidm_unixd_tasks (#3762)
+  * Break-glass account disable command (#3780)
+  * Make it clearer why the user can't login with unixd (#3778)
+  * Improve argon2id parameter search speed (#3768)
+
+-------------------------------------------------------------------
 Wed Aug 06 01:11:19 UTC 2025 - william.brown@suse.com
 
 - Update to version 1.7.1~git0.130a31d29:
