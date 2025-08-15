@@ -665,4 +665,14 @@ main package for now:
 - require libxcrypt-devel explicitly (for crypt_r)</comment>
     <requestid>1297532</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>e8bc3e9a57545f3df83321d0710c9275</srcmd5>
+    <version>1.4.80</version>
+    <time>1755287542</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1299473 from AndreasStieger
+
+lighttpd 1.4.80</comment>
+    <requestid>1299476</requestid>
+  </revision>
 </revisionlist>

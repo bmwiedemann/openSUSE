@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug 14 20:43:34 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.80:
+  * detect and issue error trace for HTTP/2 MadeYouReset
+    CVE-2025-8671 (boo#1243888)
+  * stricter HTTP request/response header, trailer, and chunked
+    validation/parsing
+  * support HTTP response trailers
+  * support HTTP request trailers merge to headers (if not
+    streaming request body)
+  * extend TLS error log messages to include client addr if error
+    caused by client
+  * extend TLS error log messages for HTTP/2 attack detection
+  * reject path info on static files by default
+    (static-file.disable-pathinfo)
+
+-------------------------------------------------------------------
 Mon Jul 21 09:19:33 UTC 2025 - Stefan Bühler <source@stbuehler.de>
 
 - update upstream keys (uids / expiry)
