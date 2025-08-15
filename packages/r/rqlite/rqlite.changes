@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 14 18:11:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.43.3:
+  * CDC Service improvements 
+  * Add support for JSON-based CDC configuration.
+- includes changes from 8.43.2:
+  * Add Home and End key support to CLI
+  * CDC FIFO improvements
+
+-------------------------------------------------------------------
 Sun Aug  3 21:45:29 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 8.43.1
