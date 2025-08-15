@@ -1,7 +1,7 @@
 #
 # spec file for package python-fawltydeps
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?sle15_python_module_pythons}
 Name:           python-fawltydeps
 Version:        0.20.0
@@ -25,8 +31,7 @@ License:        MIT
 URL:            https://github.com/tweag/FawltyDeps
 Source:         https://github.com/tweag/FawltyDeps/archive/refs/tags/v%{version}.tar.gz#/fawltydeps-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML >= 6.0.1}
-BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module base >= 3.9.2}
 BuildRequires:  %{python_module importlib-metadata >= 6.6.0}
 BuildRequires:  %{python_module isort > 5.10}
 BuildRequires:  %{python_module nox}
@@ -35,20 +40,26 @@ BuildRequires:  %{python_module pip-requirements-parser >= 32.0.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pydantic >= 1.10.4}
-# TEST dependencies
-BuildRequires:  %{python_module pytest >= 7.1.0}
 BuildRequires:  fdupes
+# Section TEST dependencies
+BuildRequires:  %{python_module pytest >= 7.1.0}
+BuildRequires:  %{python_module hypothesis}
+#
 Requires:       python-PyYAML >= 6.0.1
 Requires:       python-importlib-metadata >= 6.6.0
 Requires:       python-isort > 5.10
+Requires:       python-packaging
 Requires:       python-pip-requirements-parser
+Requires:       python-pydantic
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 Suggests:       python-uv
 BuildArch:      noarch
-%if "%{python_flavor}" < "python311"
-BuildRequires:  %{python_module tomli >= 2.0.1}
-%endif
 %python_subpackages
 
 %description
@@ -74,6 +85,10 @@ skiptests+=" or test_resolve_dependencies_install_deps__unresolved_error_only_wa
 skiptests+=" or test_resolve_dependencies_install_deps_on_mixed_packages__raises_unresolved_error"
 skiptests+=" or test_resolve_dependencies__generates_expected_mappings"
 %pytest -k "not ($skiptests)"
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative fawltydeps
 
 %post
 %python_install_alternative fawltydeps

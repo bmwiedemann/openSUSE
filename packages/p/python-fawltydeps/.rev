@@ -23,4 +23,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1294585</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>077c9149a6003ad17257ce065030c10b</srcmd5>
+    <version>0.20.0</version>
+    <time>1755287556</time>
+    <user>dimstar_suse</user>
+    <comment>- migrate to libalternatives
+- Add missing runtime requirements
+</comment>
+    <requestid>1299776</requestid>
+  </revision>
 </revisionlist>
