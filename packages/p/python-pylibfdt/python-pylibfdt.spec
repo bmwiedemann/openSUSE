@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylibfdt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-pylibfdt
-Version:        1.7.2
+Version:        1.7.2.post1
 Release:        0
 Summary:        Python binding for libfdt
 License:        BSD-2-Clause AND GPL-2.0-only
