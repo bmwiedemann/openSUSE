@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Fri Aug 15 09:16:06 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.65.0:
+  * release: v0.65.0 [main] (#9108)
+  * fix(cli): ensure correct command is picked by telemetry (#9260)
+  * feat(flag): add schema validation for `--server` flag (#9270)
+  * chore(deps): bump github.com/docker/docker from 28.3.2+incompatible to 28.3.3+incompatible (#9274)
+  * ci: skip undefined labels in discussion triage action (#9175)
+  * feat(repo): add git repository metadata to reports (#9252)
+  * fix(license): handle WITH operator for `LaxSplitLicenses` (#9232)
+  * chore: add modernize tool integration for code modernization (#9251)
+  * fix(secret): add UTF-8 validation in secret scanner to prevent protobuf marshalling errors (#9253)
+  * chore: implement process-safe temp file cleanup (#9241)
+  * fix: prevent graceful shutdown message on normal exit (#9244)
+  * fix(misconf): correctly parse empty port ranges in google_compute_firewall (#9237)
+  * feat: add graceful shutdown with signal handling (#9242)
+  * chore: update template URL for brew formula (#9221)
+  * test: add end-to-end testing framework with image scan and proxy tests (#9231)
+  * refactor(db): use `Getter` interface with `GetParams` for trivy-db sources (#9239)
+  * ci: specify repository for `gh cache delete` in canary worklfow (#9240)
+  * ci: remove invalid `--confirm` flag from `gh cache delete` command in canary builds (#9236)
+  * fix(misconf): fix log bucket in schema (#9235)
+  * chore(deps): bump the common group across 1 directory with 24 updates (#9228)
+  * ci: move runner.os context from job-level env to step-level in canary workflow (#9233)
+  * chore(deps): bump up Trivy-kubernetes to v0.9.1 (#9214)
+  * feat(misconf): added logging and versioning to the gcp storage bucket (#9226)
+  * fix(server): add HTTP transport setup to server mode (#9217)
+  * chore: update the rpm download Update (#9202)
+  * feat(alma): add AlmaLinux 10 support (#9207)
+  * fix(nodejs): don't use prerelease logic for compare npm constraints  (#9208)
+  * fix(rootio): fix severity selection (#9181)
+  * fix(sbom): merge in-graph and out-of-graph OS packages in scan results (#9194)
+  * fix(cli): panic: attempt to get os.Args[1] when len(os.Args) < 2 (#9206)
+  * fix(misconf): correctly adapt azure storage account (#9138)
+  * feat(misconf): add private ip google access attribute to subnetwork (#9199)
+  * feat(report): add CVSS vectors in sarif report (#9157)
+  * fix(terraform): `for_each` on a map returns a resource for every key (#9156)
+  * fix: supporting .egg-info/METADATA in python.Packaging analyzer (#9151)
+  * chore: migrate protoc setup from Docker to buf CLI (#9184)
+  * ci: delete cache after artifacts upload in canary workflow (#9177)
+  * refactor: remove aws flag helper message (#9080)
+  * ci: use gh pr view to get PR number for forked repositories in auto-ready workflow (#9183)
+  * ci: add auto-ready-for-review workflow (#9179)
+  * feat(image): add Docker context resolution (#9166)
+  * ci: optimize golangci-lint performance with cache-based strategy (#9173)
+  * feat: add HTTP request/response tracing support (#9125)
+  * fix(aws): update amazon linux 2 EOL date (#9176)
+  * chore: Update release workflow to trigger version updates (#9162)
+  * chore(deps): bump helm.sh/helm/v3 from 3.18.3 to 3.18.4 (#9164)
+  * fix: also check `filepath` when removing duplicate packages (#9142)
+  * chore: add debug log to show image source location (#9163)
+  * docs: add section on customizing default check data (#9114)
+  * chore(deps): bump the common group across 1 directory with 9 updates (#9153)
+  * docs: partners page content updates (#9149)
+  * chore(license): add missed spdx exceptions: (#9147)
+  * docs: trivy partners page updates (#9133)
+  * fix: migrate from `*.list` to `*.md5sums` files for `dpkg` (#9131)
+  * ci(helm): bump Trivy version to 0.64.1 for Trivy Helm Chart 0.16.1 (#9135)
+  * feat(sbom): add SHA-512 hash support for CycloneDX SBOM (#9126)
+  * fix(misconf): skip rewriting expr if attr is nil (#9113)
+  * fix(license): add missed `GFDL-NIV-1.1` and `GFDL-NIV-1.2` into Trivy mapping (#9116)
+  * fix(cli): Add more non-sensitive flags to telemetry (#9110)
+  * fix(alma): parse epochs from rpmqa file (#9101)
+  * fix(rootio): check full version to detect `root.io` packages (#9117)
+  * chore: drop FreeBSD 32-bit support (#9102)
+  * fix(sbom): use correct field for licenses in CycloneDX reports (#9057)
+  * fix(secret): fix line numbers for multiple-line secrets (#9104)
+  * feat(license): observe pkg types option in license scanner (#9091)
+  * ci(helm): bump Trivy version to 0.64.0 for Trivy Helm Chart 0.16.0 (#9107)
+- drop CVE-2025-53547.patch (merged upstream)
+
+-------------------------------------------------------------------
 Tue Jul 22 10:27:07 UTC 2025 - Christopher Hofmann <cwh@suse.com>
 
 - remove dependency on 'rpm' which became obsolete a while ago
@@ -11,7 +83,7 @@ Wed Jul  9 15:48:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Jul 09 15:17:39 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
-- Update to version 0.64.1:
+- Update to version 0.64.1 (bsc#1243633, CVE-2025-47291):
   * release: v0.64.1 [release/v0.64] (#9122)
   * fix(misconf): skip rewriting expr if attr is nil [backport: release/v0.64] (#9127)
   * fix(cli): Add more non-sensitive flags to telemetry [backport: release/v0.64] (#9124)
@@ -124,7 +196,8 @@ Wed Jul 09 15:17:39 UTC 2025 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed May 07 15:37:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
-- Update to version 0.62.1:
+- Update to version 0.62.1 (bsc#1239225, CVE-2025-22868,
+                            bsc#1241724, CVE-2025-22872):
   * release: v0.62.1 [release/v0.62] (#8825)
   * chore(deps): bump the common group across 1 directory with 10 updates [backport: release/v0.62] (#8831)
   * fix(misconf): check if for-each is known when expanding dyn block [backport: release/v0.62] (#8826)
@@ -185,7 +258,8 @@ Wed May 07 15:37:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Apr 24 15:03:57 UTC 2025 - dmueller@suse.com
 
-- Update to version 0.61.1:
+- Update to version 0.61.1 (bsc#1239385, CVE-2025-22869,
+                            bsc#1240466, CVE-2025-30204):
   * release: v0.61.1 [release/v0.61] (#8704)
   * fix(k8s): skip passed misconfigs for the summary report [backport: release/v0.61] (#8748)
   * fix(k8s): correct compare artifact versions [backport: release/v0.61] (#8699)

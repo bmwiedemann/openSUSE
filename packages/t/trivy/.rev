@@ -1238,4 +1238,16 @@ dropped patch file
 (🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/20 by dirkmueller)</comment>
     <requestid>1295289</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>02461299c57b6ee63fe408984ae2280a</srcmd5>
+    <version>0.65.0</version>
+    <time>1755287558</time>
+    <user>dimstar_suse</user>
+    <comment>update to 0.65.0. add missing CVE references to changes file
+
+
+
+(🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/21 by dirkmueller)</comment>
+    <requestid>1299810</requestid>
+  </revision>
 </revisionlist>
