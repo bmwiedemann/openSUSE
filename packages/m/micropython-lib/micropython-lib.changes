@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 15 08:21:31 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Update to 1.26.0
+  * aiorepl: Handle stream shutdown.
+  * aiohttp: Fix partial reads by using readexactly.
+  * abc: Add ABC base class.
+  * aioble-l2cap: Raise correct error if l2cap disconnects during send.
+  * logging: Allow logging.exception helper to handle tracebacks.
+  * errno: Add ENOTCONN constant.
+  * aiorepl: Use blocking reads for raw REPL and raw paste.
+  * urllib.urequest: Add support for headers to urequest.urlopen.
+  * tools/verifygitlog.py: Sync with changes from the main repo.
+  * utop: Print IDF heap details.
+  * utop: Print MicroPython memory info.
+  * utop: Add initial implementation for ESP32.
+  * all: Apply Ruff 0.11.6 reformatting changes.
+  * top: Bump the Ruff version to 0.11.6.
+  * lora: Fix SNR value in SX126x received packets.
+
+-------------------------------------------------------------------
 Wed Apr 16 12:19:29 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Update to 1.25.0

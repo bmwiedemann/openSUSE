@@ -23,4 +23,28 @@
     <comment></comment>
     <requestid>1270569</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cb7eff31fe01b5b8206f53663e424387</srcmd5>
+    <version>1.26.0</version>
+    <time>1755287556</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.26.0
+  * aiorepl: Handle stream shutdown.
+  * aiohttp: Fix partial reads by using readexactly.
+  * abc: Add ABC base class.
+  * aioble-l2cap: Raise correct error if l2cap disconnects during send.
+  * logging: Allow logging.exception helper to handle tracebacks.
+  * errno: Add ENOTCONN constant.
+  * aiorepl: Use blocking reads for raw REPL and raw paste.
+  * urllib.urequest: Add support for headers to urequest.urlopen.
+  * tools/verifygitlog.py: Sync with changes from the main repo.
+  * utop: Print IDF heap details.
+  * utop: Print MicroPython memory info.
+  * utop: Add initial implementation for ESP32.
+  * all: Apply Ruff 0.11.6 reformatting changes.
+  * top: Bump the Ruff version to 0.11.6.
+  * lora: Fix SNR value in SX126x received packets.
+</comment>
+    <requestid>1299774</requestid>
+  </revision>
 </revisionlist>
