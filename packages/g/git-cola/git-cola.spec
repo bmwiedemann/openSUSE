@@ -1,8 +1,8 @@
 #
 # spec file for package git-cola
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024 Marcin Bajor
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 Marcin Bajor
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           git-cola
-Version:        4.8.0
+Version:        4.14.0
 Release:        0
 Summary:        A GUI for Git
 License:        GPL-2.0-or-later
@@ -64,13 +64,17 @@ python3 -m build --wheel --no-isolation
 pip install --no-deps --force-reinstall  --root=%{buildroot} --prefix="%{_prefix}" dist/*.whl
 
 make install-man prefix=%{_prefix} DESTDIR=%{buildroot} PYTHON=python3 PIP=pip
+make install-desktop-files prefix=%{_prefix} DESTDIR=%{buildroot} PYTHON=python3 PIP=pip
+make install-icons prefix=%{_prefix} DESTDIR=%{buildroot} PYTHON=python3 PIP=pip
+make install-htmldocs prefix=%{_prefix} DESTDIR=%{buildroot} PYTHON=python3 PIP=pip
+make install-metainfo prefix=%{_prefix} DESTDIR=%{buildroot} PYTHON=python3 PIP=pip
 
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/git-cola.desktop
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/git-dag.desktop
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/git-cola-folder-handler.desktop
 
 %files
-%license COPYING COPYRIGHT
+%license LICENSE
 %{_bindir}/cola
 %{_bindir}/git-cola
 %{_bindir}/git-dag

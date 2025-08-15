@@ -1,4 +1,173 @@
 -------------------------------------------------------------------
+Fri Aug 15 11:35:49 UTC 2025 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Update to 4.14.0
+- Usability, bells and whistles
+  * The clone dialog now defaults to cloning into the parent
+    directory by default. (#1402)
+  * The Reset actions now remember the last value used. (#1406)
+  * git dag --follow <filename> is now supported for viewing
+    the history of files that have been renamed. (#1328)
+  * HTTP proxies are now automatically configured on Gnome and
+    KDE Desktop Environments. (#1420) (#1431)
+  * The Git http.proxy configuration can now be edited on
+    the settings page. (#1420)
+  * The NO_COLOR environment variable is now set to 1 when running
+    the git commit, git fetch, git push and git pull commands.
+    This is done to disable ANSI color output in third-party tools 
+    that can be integrated into these commands via git hooks.
+    TERM is also set to dumb for tools that do not honor this
+    variable. (#1426)
+  * The commit message editor now has a “Set Commit Date” option 
+    that allows you to override the recorded date and time when 
+    authoring commits. (#1429)
+  * The DAG’s automatic column resizing behavior has been improved.
+    (#1432)
+  * The “Copy Commit” Alt + Ctrl + C action was added to the main
+    menu. (#1430)
+  * The DAG and main interfaces have been streamlined to reduce
+    visual clutter.
+  * The DAG viewer now displays staged and modified changes
+    alongside other commits. (#1428) (#1439)
+  * The commit message’s Summary field now resizes itself to match
+    the size of the configured font. (#1301) (#1435)
+  * Git Cola refreshes Git’s “index” (.git/index) automatically on
+    startup by default. This can now be disabled by configuring
+    cola.updateindex to false. (#1438)
+  * The “Set Upstream Branch” menu in the “Branches” tool can grow
+    too large to fit on screen when repositories contain many
+    remote branches. A new dialog with autocomplete and scrollable
+    entry fields was added for selecting a new upstream branch.
+    (#1440)
+  * The DAG viewer will now copy text into the your clipboard when
+    any of the commit ID, author, date or summary fields are
+    clicked in the commit diff view. (#1456)
+  * The DAG viewer now has an option to disable the display of
+    staged and modified changes.
+  * The commit message line length warning is no longer dependent
+    on the cursor position. The longest line in the commit message
+    is now used to enable the warning. (#1448)
+  * Most users will now default to editing the per-repo config by
+    default when opening the settings dialog. New users that do not
+    have the user.name and user.email settings configured will
+    default to editing the global user settings, which was
+    previously the default behavior for all users. (#1460)
+  * The rebase tool now honors the rebase.updateRefs git
+    configuration. The tool will only prompt you whether or not to
+    update stacked branches / refs when this configuration is
+    unset. (#1458)
+  * The rebase.updateRefs configuration can now be configured
+    through the “Update stacked branches/refs when rebasing”
+    checkbox in the settings.
+  * The branches tool would previously make its branches and tags
+    bold when text was input into its filter field. This behavior
+    has been changed so that the branches and tags are now filtered
+    so that only the matching branches and tags are displayed.
+    (#1457)
+  * The value of the Force checkbox, which causes git push --force
+    to be used in the Push tool, now persists across sessions.
+    (#1461)
+  * The push dialog will now prompt when creating new remote
+    branches when the local branch name does not match the new
+    remote branch name.
+  * The diff viewer now displays the number of removed (-) and
+    added (+) lines when the “Show filenames” tool menu option is
+    enabled. (#1471)
+  * The commit tool has a new “Set Commit Author” tool menu action
+    that temporarily switches between author identities independent
+    of your git config settings. The value specified in the dialog
+    is passed directly to git commit --author=.... (#1469)
+  * Widget layouts can now be saved and loaded to *.layout files.
+    Layouts are saved to ~/.config/git-cola/layouts by default and
+    can be saved and loaded using the View > Layouts menu actions.
+    (#1467)
+  * The status tool has been updated to launch editors with
+    multiple files when invoking its “Edit” action.
+  * The commit date tool now has a button to set the time and date
+    to the current time.
+  * The commit message editor now moves up and down visually when
+    word-wrapping is enabled. The cursor previously jumped to the
+    beginning and end of a word-wrapped line when Up and Down were
+    pressed.
+- Fixes
+  * Qt6 support was improved for the right-click context menus.
+    (#1409) (#1410)
+  * The Ctrl+C “Copy Diff” hotkey was restored in the DAG diff
+    viewer. (#1412)
+  * The repository selection startup dialog was updated to work on
+    Qt6/PyQt6. (#1422)
+  * “Open Using Default Application” now handles paths inside
+    a subdirectory correctly. (#1419)
+  * Qt6 support was improved for the Recent and Favorites filters.
+  * A regression in the tab order when tabbing from the Summary
+    field into the Extended Description field has been fixed.
+    (#1436)
+  * The file system monitoring was made more resilient on Windows
+    when using WSL. (#1441)
+  * A regression in the rebase editor which prevented the display
+    of commits was fixed. (#1442)
+  * File system monitoring on Windows when using WSL was further
+    improved. (#1441)
+  * The DAG view now updates itself when merging branches using
+    the “Branches” tool. (#1454)
+  * Proxy autodetection on KDE was improved to correctly handle
+    the host and port output from kreadconfig*. (#1450) (#1451) 
+    (#1452) (#1453)
+  * Various widgets were made more resilient to errors when
+    the Git worktree is externally deleted while Git Cola has it
+    open. (#1445)
+  * Cosmetic typos were fixed in the documentation, translations,
+    docstrings and command-line help messages. (#1446)
+  * The push dialog was fixed to use the correct refspec arguments
+    when pushing a local branch into a differently-named remote
+    branch. (#1462)
+  * The commit message length warning was not being updated in some
+    scenarios. (#1459)
+  * The “Ambiguous shortcut warning” that could be triggered in
+    rare scenarios when using the Amend hotkey has been eliminated.
+  * The “Set Upstream Branch” action in the Branches tool was fixed
+    so that it is robust to scenarios where the upstream branch is
+    renamed. (#1475)
+  * The “Prune Missing Entries” action in the startup dialog and
+    the Bookmarks and Recent tools now save the settings after
+    pruning. (#1479)
+  * The default history viewer on Windows, used by the “Visualize
+    Current Branch…” and “Visualize All Branches…” actions, was
+    updated to avoid issues when settings are edited. (#1496)
+- Packaging and Dependencies
+  * The setup.cfg file has been removed and pyproject.toml has been
+    updated to handle all of the packaging configuration. pip will
+    no longer install data files such as share/applications,
+    share/metainfo, and the hotkey html files, so the garden.yaml
+    and Makefile commands have been updated to provide this
+    functionality instead. The html files installed in the
+    cola/data/ python package area are necessary for Git Cola’s ?
+    hotkey window and should not be relocated.
+  * notify2 <https://pypi.org/project/notify2> 
+    (sudo apt install python3-notify2) is now supported and
+    preferred over notify-py for sending desktop notifications.
+    This is an optional dependency that enables additional features
+    when installed. notify-py will continue to be used if only it
+    is installed, but only notify2 will be used when both are
+    available. Support for the current notifypy API will be kept
+    around for now but if a breaking change is ever introduced then
+    support for notify-py will be dropped in favor of supporting
+    notify2 exclusively.
+  * Improved support for PySide6. PySide2 has some breaking
+    divergences from PyQt6.
+  * The vendored qtpy library was updated to v2.4.2.
+  * The Windows installer now uses Python 3.12 and PyQt 6.9.
+- Translations
+  * Updated Japanese translation. (#1411)
+  * Updated Chinese (Taiwan) translations. (#1424)
+  * Updated Japanese translation. (#1472)
+  * New Tamil translation. (#1478)
+- Development
+  * The version number reported by git cola version and the “About”
+    dialog was made more accurate when Git Cola is run directly
+    from a Git worktree. (#1425)
+
+-------------------------------------------------------------------
 Sat Jun 29 20:28:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.8.0:

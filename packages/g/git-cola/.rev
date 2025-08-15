@@ -892,4 +892,12 @@ https://github.com/git-cola/git-cola/issues/991
   * The Pull dialog now selects the remote branch automatically.</comment>
     <requestid>1184041</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>4317804d64da8054bde672de851b39bd</srcmd5>
+    <version>4.14.0</version>
+    <time>1755287565</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.14.0</comment>
+    <requestid>1299832</requestid>
+  </revision>
 </revisionlist>
