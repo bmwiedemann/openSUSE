@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Aug 14 07:47:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.12.0:
+  * Use figure_to_svg_base64 instead of figure_to_png_base64
+  * Fix two-sided image thresholding
+  * convert labels to string in labels in dataset fetchers
+  * Convert Schaeffer atlas labels to list of strings
+  * improve compliance with sklearn checks
+  * adapt surf_mesh fixture
+  * Introduce clean_args for nifti maskers to replace paramaters passed via
+    kwargs
+  * fix issues regarding using two_sided and negative plotting threshold
+    during plotting
+  * ensure datasets do not contain
+  * Do not set score=0 if all decoder.coef_ ==0
+  * update thresolding in paired / unpaired t-test example
+  * Specify output dtype of SurfaceLabelsMasker.transform
+  * ensure all nifti maskers throw warning when dealing with non finite mask
+  * return design matrices of FIAC as dataframes
+  * Update parameters to comply with run time checks
+  * Assign most frequent value in the neighborhood for atlases via
+    vol_to_surf with method='nearest_most_frequent'
+  * set xlim for plot events
+  * ensure maskers can be refitted
+  * reduce number of warning during searchligh
+  * throw warning when meshes are unequal but have compatible number of
+    vertices
+  * fix filenames when saving GLM to BIDS
+  * plot_mask_large_fmri.py oversubscribing threads
+  * use legacy=False to parse FLM filenames inputs as bids files
+  * fetch full history to append new results to older results
+  * use property region_names_ in surface label examples
+  * rely in __sklearn_tags__ for sklearn > 1.5.2 and on _more_tags otherwise
+  * Fixes extra resampling when plotting with transparency
+  * add stacklevel to warnings in plotting
+  * hide set_output from doc and raise not implemeted error if called
+  * ensure that multi maskers can clean with confounds and high variance
+    confounds
+  * avoid masking out vertices with zero-valued timepoints
+  * ensure consistent output dimension for inverse_transform of
+    NiftiMapsMasker and NiftiLabelsMasker
+  * incorrect dtype.itemsize check in _ensure_float
+  * labels do not need to be numeric for searlight
+  * prevent negative threshold for surface plots
+  * turn _sanitize_cleaning_parameters into a private method
+  * warn when some attributes passed at first level model init will be
+    ignored at fit time
+  * fix input connectivity matrices
+  * nilearn.plotting.surface function params
+- Drop patch sklearn-1.16.1.patch, included upstream.
+
+-------------------------------------------------------------------
 Tue Mar  4 12:48:20 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable again test_clean_confounds as fixed upstream

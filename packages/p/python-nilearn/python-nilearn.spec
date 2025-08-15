@@ -1,7 +1,7 @@
 #
 # spec file for package python-nilearn
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,12 @@
 # Run tests in parallel with pytest-xdist. On by default.
 %bcond_without pytest_xdist
 Name:           python-nilearn
-Version:        0.11.1
+Version:        0.12.0
 Release:        0
 Summary:        Statistical learning tool for neuroimaging
 License:        BSD-3-Clause
 URL:            https://github.com/nilearn/nilearn
 Source:         https://files.pythonhosted.org/packages/source/n/nilearn/nilearn-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/nilearn/nilearn/pull/5044 [FIX] updates to fix some tests failures with sklearn 1.6.1
-Patch:          sklearn-1.16.1.patch
 BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}

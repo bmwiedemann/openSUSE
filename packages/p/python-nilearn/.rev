@@ -85,4 +85,41 @@
     <comment></comment>
     <requestid>1250141</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>38e64e74914a5f497e33ac0efd2dad97</srcmd5>
+    <version>0.12.0</version>
+    <time>1755287494</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.0:
+  * Use figure_to_svg_base64 instead of figure_to_png_base64
+  * Fix two-sided image thresholding
+  * convert labels to string in labels in dataset fetchers
+  * Convert Schaeffer atlas labels to list of strings
+  * improve compliance with sklearn checks
+  * adapt surf_mesh fixture
+  * Introduce clean_args for nifti maskers to replace paramaters passed via
+    kwargs
+  * fix issues regarding using two_sided and negative plotting threshold
+    during plotting
+  * ensure datasets do not contain
+  * Do not set score=0 if all decoder.coef_ ==0
+  * update thresolding in paired / unpaired t-test example
+  * Specify output dtype of SurfaceLabelsMasker.transform
+  * ensure all nifti maskers throw warning when dealing with non finite mask
+  * return design matrices of FIAC as dataframes
+  * Update parameters to comply with run time checks
+  * Assign most frequent value in the neighborhood for atlases via
+    vol_to_surf with method='nearest_most_frequent'
+  * set xlim for plot events
+  * ensure maskers can be refitted
+  * reduce number of warning during searchligh
+  * throw warning when meshes are unequal but have compatible number of
+    vertices
+  * fix filenames when saving GLM to BIDS
+  * plot_mask_large_fmri.py oversubscribing threads
+  * use legacy=False to parse FLM filenames inputs as bids files
+  * fetch full history to append new results to older results
+  * use property region_names_ in surface label examples</comment>
+    <requestid>1299334</requestid>
+  </revision>
 </revisionlist>
