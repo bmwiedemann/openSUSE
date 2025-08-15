@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>1132552</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>2b6f5a30f5ff41576c19e7744533f1f1</srcmd5>
+    <version>1.1.4</version>
+    <time>1755287517</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch building to use of PEP517 backend.</comment>
+    <requestid>1299404</requestid>
+  </revision>
 </revisionlist>

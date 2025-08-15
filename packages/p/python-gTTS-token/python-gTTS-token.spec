@@ -1,7 +1,7 @@
 #
 # spec file for package python-gTTS-token
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/boudewijn26/gTTS-token
 Source:         https://files.pythonhosted.org/packages/source/g/gTTS-token/gTTS-token-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,20 +43,23 @@ of the token validation required by Google Translate when making
 a request to its API.
 
 %prep
-%setup -q -n gTTS-token-%{version}
+%autosetup -p1 -n gTTS-token-%{version}
 dos2unix README.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
 
 %files %{python_files}
 %defattr(-,root,root,-)
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/gtts_token-%{version}.dist-info
+%{python_sitelib}/gtts_token
 
 %changelog
