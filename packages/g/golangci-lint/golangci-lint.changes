@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Aug 14 01:30:06 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.4.0:
+  * chore: prepare release
+  * build(deps): bump github.com/GaijinEntertainment/go-exhaustruct from v3.3.1 to 4.0.0 (#5984)
+  * feat: go1.25 support (#5872)
+  * dev: minor doc style changes (#5999)
+  * docs: dedicated donation page (#5998)
+  * docs: add a note about formatters and run command (#5997)
+  * dev: fix website search for items with quotes (#5994)
+  * dev: add website aliases (#5991)
+  * dev: improve documentation search index (#5989)
+  * dev: better website footer (#5992)
+  * docs: fix filter bar items (#5990)
+  * dev: new way to fill the documentation (#5986)
+  * build(deps): bump golang.org/x/tools from 0.35.0 to 0.36.0 (#5988)
+  * docs: fix documentation deployment
+  * docs: fix JSONSchema deployment
+  * docs: add missing CNAME file
+  * docs: new website (#5965)
+  * godox: trim filepath from report messages (#5977)
+  * dev: improve HTTP download error handling for `wget` and `curl` (#5962)
+  * staticcheck: allow empty options (#5983)
+  * build(deps): bump golang.org/x/sys from 0.34.0 to 0.35.0 (#5980)
+  * build(deps): bump golang.org/x/mod from 0.26.0 to 0.27.0 (#5982)
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.19.0 to 2.20.0 (#5981)
+  * build(deps): bump github.com/4meepo/tagalign from 1.4.2 to 1.4.3 (#5971)
+  * build(deps): bump github.com/shirou/gopsutil/v4 from 4.25.6 to 4.25.7 (#5970)
+  * docs: update GitHub Action assets (#5967)
+
+-------------------------------------------------------------------
 Sat Aug 02 22:17:30 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.3.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package golangci-lint
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           golangci-lint
-Version:        2.3.1
+Version:        2.4.0
 Release:        0
 Summary:        A fast Go linters runner
 License:        GPL-3.0-only
