@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 13 10:26:43 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 3.0.1+git68
+  * Modernize packaging
+
+-------------------------------------------------------------------
 Sat May 28 13:17:46 UTC 2022 - Enno Gotthold <egotthold@suse.com>
 
 - Fix specfile so submissions to Factory are possible again
