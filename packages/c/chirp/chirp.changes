@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 15 17:39:41 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250815:
+  * icv80: Fix duplex/tx-inhibit setting
+  * add Baofeng BF-F8HP PRO firmware V0.44 support
+
+-------------------------------------------------------------------
 Fri Aug  8 20:59:20 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250808:
