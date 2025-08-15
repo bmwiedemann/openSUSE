@@ -1,7 +1,7 @@
 #
 # spec file for package python314
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -162,8 +162,8 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.14.0~rc1
-%define         tarversion 3.14.0rc1
+Version:        3.14.0~rc2
+%define         tarversion 3.14.0rc2
 %define         tarname    Python-%{tarversion}
 Release:        0
 Summary:        Python 3 Interpreter
@@ -222,9 +222,6 @@ Patch40:        fix-test-recursion-limit-15.6.patch
 # PATCH-FIX-UPSTREAM bsc1243155-sphinx-non-determinism.patch bsc#1243155 mcepl@suse.com
 # Doc: Generate ids for audit_events using docname
 Patch41:        bsc1243155-sphinx-non-determinism.patch
-# PATCH-FIX-UPSTREAM CVE-2025-8194-tarfile-no-neg-offsets.patch bsc#1247249 mcepl@suse.com
-# tarfile now validates archives to ensure member offsets are non-negative
-Patch42:        CVE-2025-8194-tarfile-no-neg-offsets.patch
 #### Python 3.14 DEVELOPMENT PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
