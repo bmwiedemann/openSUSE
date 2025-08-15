@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 14 07:43:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 11.4.1:
+  + Fix clang compiler warnings.
+- Changes from version 11.4.0:
+  + General shaping and subsetting speedups.
+  + Fix in Graphite shaping backend when glyph advances became
+    negative.
+  + Subsetting improvements, pruning empty mark-attachment lookups.
+  + Don't use the macro name _S, which is reserved by system
+    liberaries.
+  + Build fixes and speedup.
+  + Add a kbts shaping backend that calls into the kb_text_shape
+    single-header shaping library. This is purely for testing and
+    performance evaluation and we do NOT recommend using it for any
+    other purposes.
+
+-------------------------------------------------------------------
 Mon Jul 28 08:14:56 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 11.3.3:

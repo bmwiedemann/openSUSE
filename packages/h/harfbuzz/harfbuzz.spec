@@ -1,7 +1,7 @@
 #
 # spec file for package harfbuzz
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           harfbuzz
-Version:        11.3.3
+Version:        11.4.1
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
