@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Aug 15 17:37:36 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.8.11
+ * Enhancements
+  * Add extra-build-dependencies hint for any missing module on build failure 
+  * Make 'v' prefix cyan in overlap warnings 
+ * Bug fixes
+  * Fix missing uv version in extended Docker image tags 
+  * Persist cache info when re-installing cached wheels 
+ * Rust API
+  *Allow passing custom reqwest clients to RegistryClient
+
+-------------------------------------------------------------------
+Thu Aug 14 09:13:47 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.8.10 
+ * Enhancements
+  * Allow Python requests with missing segments, e.g., just aarch64 
+ * Preview
+  * Move warnings for conflicting modules into preview 
+
+-------------------------------------------------------------------
 Tue Aug 12 09:30:49 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.8.9
