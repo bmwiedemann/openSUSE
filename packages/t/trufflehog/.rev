@@ -2342,4 +2342,29 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
   * Refactored Gitlab Detectors (#4323) (forwarded request 1297642 from ph03nix)</comment>
     <requestid>1297845</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>7f8c46fea5f8abf640db2c54d47b68df</srcmd5>
+    <version>3.90.4</version>
+    <time>1755287530</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.90.4:
+  * added User to proto (#4378)
+  * updated the fibery detector regexes (#4385)
+  * Fixed gitlab detector (#4371)
+  * Fix error-wrapping for callback in RecoverWithHandler (#4380)
+  * Fixed and improved Clickhelp detector (#4384)
+  * Improved and fixed couchbase detector (#4383)
+  * Add option to skip binary files during filesystem source scanning (#4376)
+  * Refactored caflou detector (#4372)
+  * fixed minor grammatical and punctuation issues (#4369)
+  * Add private key id to GCP metadata (#4361)
+  * fix(deps): update module github.com/charmbracelet/glamour to v0.10.0 (#4345)
+  * Oss 133 new detector vault approle auth for hashicorp (#4362)
+  * [SCAN-81] Report ChunkUnit Panics (#4367)
+  * Improve Bitfinex Detector - Implemented API-Based Secret Validation (#4368)
+  * Fixed syslog source panic on invalid or chunked input (#4366)
+  * Expanded test coverage for binary content (#4332)
+  * Disabled besnappy detector (#4363) (forwarded request 1299405 from ph03nix)</comment>
+    <requestid>1299445</requestid>
+  </revision>
 </revisionlist>
