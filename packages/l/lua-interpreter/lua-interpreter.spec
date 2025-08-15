@@ -24,10 +24,9 @@ URL:            https://www.lua.org/
 Source99:       lua-interpreter.rpmlintrc
 BuildRequires:  alts
 Requires:       alts
-BuildRequires:  lua-macros
 Requires:       lua
-Suggests:       lua%{lua_version_default_nodots}
 BuildArch:      noarch
+%{?lua_pref:Suggests:       %{lua_pref}}
 
 %description
 Shared package owning resources shared among Lua interpreters.

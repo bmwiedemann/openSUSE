@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 14 07:33:57 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Simplify Suggests:, rely on the project configured %{lua_pref},
+  if there’s any.
+
+-------------------------------------------------------------------
 Tue Aug  5 10:19:45 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Require lua symbol to close the loop.

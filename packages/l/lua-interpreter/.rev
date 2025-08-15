@@ -15,4 +15,13 @@
     <comment>- Require lua symbol to close the loop.</comment>
     <requestid>1297835</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0fea70edd36f2c6f0e015a86c351a111</srcmd5>
+    <version>5</version>
+    <time>1755287460</time>
+    <user>dimstar_suse</user>
+    <comment>- Simplify Suggests:, rely on the project configured %{lua_pref},
+  if there’s any.</comment>
+    <requestid>1299347</requestid>
+  </revision>
 </revisionlist>
