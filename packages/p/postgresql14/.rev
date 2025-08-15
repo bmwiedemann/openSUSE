@@ -367,4 +367,14 @@ Also for older PostgreSQL versions to keep the packaging consistent.</comment>
   while generating pg_config_paths.h.</comment>
     <requestid>1278026</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3809bd3b0ead14ebd8d914a5f5d8a641</srcmd5>
+    <version>14.19</version>
+    <time>1755287539</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1299464 from darix
+
+https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-beta-3-released-3118/</comment>
+    <requestid>1299469</requestid>
+  </revision>
 </revisionlist>
