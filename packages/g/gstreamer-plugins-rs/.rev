@@ -349,4 +349,31 @@
     <comment></comment>
     <requestid>1299095</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d67d768bccee2bd522d0dba2cfec8e78</srcmd5>
+    <version>1.26.5+git11.949807a4</version>
+    <time>1755287518</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.5+git11.949807a4 (boo#1248053,
+  CVE-2025-55159):
+  + rtprecv: fix race condition on first buffer
+  + threadshare: intersink: return from blocking tasks when
+    stopping
+  + threadshare: inter: store upstream latency in InterContext
+  + threadshare: add a blocking adapter element
+  + transcriberbin: Fix settings/state lock order violation in
+    set_property()
+  + transcriberbin: Don't keep state locked while querying upstream
+    latency
+  + threadshare: audiotestsrc: fix setting samples-per-buffer...
+  + rtpgccbwe: avoid clamp() panic when min_bitrate &gt; max_bitrate
+  + fallbacksrc: Don't restart source if the element is just being
+    shut down
+  + aws: Ensure task stopping on paused-to-ready state change
+  + fallbacksrc: Don't panic during retries if the element was shut
+    down in parallel
+  + Update Cargo.lock.
+</comment>
+    <requestid>1299455</requestid>
+  </revision>
 </revisionlist>
