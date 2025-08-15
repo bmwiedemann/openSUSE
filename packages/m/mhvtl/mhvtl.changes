@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug 13 20:07:38 UTC 2025 - lduncan@suse.com
+
+- Update to version 1.72_release+13.928fc784016a:
+  * vtltape: Add ability to define LBP RSCRC byte order
+  * mhvtl.ko: Update module version 0.18.36 will work with kernel 6.10+
+  * kernel config: handle del_timer_sync() kABI rename
+  * Fix external declarations of crc32c()
+  * kernel config: put braces around debug stmnt
+  * kernel config: replace fgrep with grep -F
+  This removed these patches, as they are now upstream:
+  * 0001-kernel-config-replace-fgrep-with-grep-F.patch
+  * 0002-kernel-config-put-braces-around-debug-stmnt.patch
+  * 0003-Fix-external-declarations-of-crc32c.patch
+  * 0004-kernel-config-handle-del_timer_sync-kABI-rename.patch
+  Also added and submitted upstream, to handle breakage in factory
+  with newer kernel:
+  * mhvtl-kernel-module-handle-rename-of-from_timer.patch
+
+-------------------------------------------------------------------
 Tue Jun 03 18:16:05 UTC 2025 - lduncan@suse.com
 
 - Update to version 1.72_release+6.a11b6777660b:

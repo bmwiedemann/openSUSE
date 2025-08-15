@@ -26,7 +26,7 @@
 
 Name:           mhvtl
 URL:            http://sites.google.com/site/linuxvtl2/
-Version:        1.72_release+6.a11b6777660b
+Version:        1.72_release+13.928fc784016a
 Release:        0
 Requires:       mhvtl-kmp
 Requires:       module-init-tools
@@ -47,10 +47,7 @@ License:        GPL-2.0-only
 Group:          System/Daemons
 Source:         %{name}-%{version}.tar.xz
 Source2:        %{name}.preamble
-Patch1:         0001-kernel-config-replace-fgrep-with-grep-F.patch
-Patch2:         0002-kernel-config-put-braces-around-debug-stmnt.patch
-Patch3:         0003-Fix-external-declarations-of-crc32c.patch
-Patch4:         0004-kernel-config-handle-del_timer_sync-kABI-rename.patch
+Patch1:         mhvtl-kernel-module-handle-rename-of-from_timer.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
 

@@ -1,0 +1,52 @@
+From 27f03b01360050d3d95997fa70e845a949d5153c Mon Sep 17 00:00:00 2001
+From: Lee Duncan <lduncan@suse.com>
+Date: Wed, 13 Aug 2025 11:03:40 -0700
+Subject: [PATCH] kernel module: handle rename of from_timer()
+
+This is a 6.16 kernel change, from "from_timer()" to
+"timer_container_of()" in timer.h.
+---
+ kernel/config.sh | 11 +++++++++++
+ kernel/mhvtl.c   |  5 +++++
+ 2 files changed, 16 insertions(+)
+
+diff --git a/kernel/config.sh b/kernel/config.sh
+index 2c9da68d6eb6..a0a95cf25d45 100755
+--- a/kernel/config.sh
++++ b/kernel/config.sh
+@@ -178,4 +178,15 @@ else
+     echo "#undef USE_TIMER_DELETE_NOT_DEL_TIMER"
+ fi >> "${output}"
+ 
++#
++# has "from_timer()" been renamed to "timer_container_of()"?
++#
++if grep -F -q 'timer_container_of(' "${hdrs}/linux/timer.h"; then
++    echo "#ifndef FROM_TIMER_NOW_TIMER_CONTAINER_OF"
++    echo "#define FROM_TIMER_NOW_TIMER_CONTAINER_OF"
++    echo "#endif"
++else
++    echo "#undef FROM_TIMER_NOW_TIMER_CONTAINER_OF"
++fi >> "${output}"
++
+ printf '\n\n#endif /* _MHVTL_KERNEL_CONFIG_H */\n' >> "${output}"
+diff --git a/kernel/mhvtl.c b/kernel/mhvtl.c
+index 5c7efdc35036..eb94db9b4836 100644
+--- a/kernel/mhvtl.c
++++ b/kernel/mhvtl.c
+@@ -791,7 +791,12 @@ static void mhvtl_remove_sqcp(struct mhvtl_lu_info *lu, struct mhvtl_queued_cmd
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 15, 0)
+ static void mhvtl_timer_intr_handler(struct timer_list *t)
+ {
++#ifdef FROM_TIMER_NOW_TIMER_CONTAINER_OF
++	struct mhvtl_queued_cmd *sqcp = timer_container_of(sqcp, t,
++							   cmnd_timer);
++#else
+ 	struct mhvtl_queued_cmd *sqcp = from_timer(sqcp, t, cmnd_timer);
++#endif
+ 	unsigned long long indx = sqcp->serial_number;
+ #else
+ static void mhvtl_timer_intr_handler(unsigned long indx)
+-- 
+2.50.1
+
