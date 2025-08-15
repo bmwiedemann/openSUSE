@@ -1,5 +1,7 @@
 -- this is a base example configuration
--- for more see https://github.com/PowerDNS/pdns/blob/master/pdns/dnsdistconf.lua
+-- for more see
+--   https://github.com/PowerDNS/pdns/blob/master/pdns/dnsdistdist/dnsdistconf.lua
+--   /usr/share/doc/packages/dnsdist/docs/reference/config.rst 
 -- controlSocket("127.0.0.1")
 -- setKey(please generate a fresh private key with makeKey())
 

@@ -1,0 +1,7 @@
+<services>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srcdir">dnsdist*/dnsdist-rust-lib/rust/</param>
+    <param name="update">false</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

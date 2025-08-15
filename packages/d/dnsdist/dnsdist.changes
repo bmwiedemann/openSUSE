@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Aug 10 01:50:43 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- properly set the profilename for apparmor
+
+-------------------------------------------------------------------
+Sat Aug  9 03:26:26 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- package the docs directory so we can reference it in the example
+  config
+
+-------------------------------------------------------------------
+Fri Aug  8 22:02:53 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix url to the sample configuration
+
+-------------------------------------------------------------------
+Fri Aug  8 21:50:56 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- switch build system to meson 
+- fix code 15 build by forcing a newer gcc
+
+-------------------------------------------------------------------
+Fri Aug  8 20:58:12 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.0.0
+  https://www.dnsdist.org/changelog.html#change-2.0.0
+- new buildrequires:
+  - gnutls
+  - libebpf
+- build script needs python3-PyYAML to generate sources
+- preparation for enabling new features in the future:
+  - yaml-config:
+    - adds vendor.tar.xz to vendor the rust modules.
+      built linking fails currently
+  - xdp support
+    - not sure yet if that can be later toggled in the config
+  - quiche support which brings DoH3
+
+-------------------------------------------------------------------
 Mon May 26 11:13:10 UTC 2025 - Adam Majer <adam.majer@suse.de>
 
 - update to 1.9.10: (bsc#1243378, bsc#1242028, CVE-2025-30194, CVE-2025-30193)

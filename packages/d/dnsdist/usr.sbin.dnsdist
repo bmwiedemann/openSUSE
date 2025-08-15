@@ -1,6 +1,6 @@
 #include <tunables/global>
 
-/usr/sbin/dnsdist {
+profile dnsdist /usr/sbin/dnsdist {
   #include <abstractions/base>
   #include <abstractions/nameservice>
 

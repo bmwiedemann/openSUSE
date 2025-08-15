@@ -157,4 +157,36 @@
 - disable luajit on ppc64le for SLFO (bsc#1243566)</comment>
     <requestid>1280332</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>120ff9be0eab714bebe945c0e95d4327</srcmd5>
+    <version>2.0.0</version>
+    <time>1755287561</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1298636 from darix
+
+- properly set the profilename for apparmor
+
+- package the docs directory so we can reference it in the example
+  config
+
+- Fix url to the sample configuration
+
+- switch build system to meson 
+- fix code 15 build by forcing a newer gcc
+
+- update to 2.0.0
+  https://www.dnsdist.org/changelog.html#change-2.0.0
+- new buildrequires:
+  - gnutls
+  - libebpf
+- build script needs python3-PyYAML to generate sources
+- preparation for enabling new features in the future:
+  - yaml-config:
+    - adds vendor.tar.xz to vendor the rust modules.
+      built linking fails currently
+  - xdp support
+    - not sure yet if that can be later toggled in the config
+  - quiche support which brings DoH3</comment>
+    <requestid>1299827</requestid>
+  </revision>
 </revisionlist>

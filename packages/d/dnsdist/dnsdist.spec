@@ -1,7 +1,7 @@
 #
 # spec file for package dnsdist
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,20 @@
 
 
 %define home           %{_var}/lib/%{name}
+
+%if 0%{?suse_version} == 1500
+%global force_gcc_version 14
+%endif
 %if 0%{?suse_version}
 %bcond_without  apparmor
 %else
 %bcond_with     apparmor
 %endif
-#
-# this should only be needed if we have to patch the ragel files
-# in which case it might be faster to just run it locally and put the regenerated file into the tarball
-%bcond_with     dnsdist_ragel
-
-%if 0%{?%is_backports} || 0%{?suse_version} >= 1599
+%if 0%{?%{is_backports}} || 0%{?suse_version} >= 1599
 %bcond_without  dnsdist_re2
 %else
 %bcond_with     dnsdist_re2
 %endif
-
 %ifarch ppc64le
 %bcond_with     dnsdist_luajit
 %else
@@ -42,38 +40,51 @@
 %bcond_with     dnsdist_luajit
 %endif
 %endif
-
+#
+# this should only be needed if we have to patch the ragel files
+# in which case it might be faster to just run it locally and put the regenerated file into the tarball
+%bcond_with     dnsdist_ragel
+%bcond_with     dnsdist_yaml_config
+%bcond_with     dnsdist_quiche
+%bcond_with     dnsdist_xdp
 Name:           dnsdist
-Version:        1.9.10
+Version:        2.0.0
 Release:        0
 Summary:        A highly DNS-, DoS- and abuse-aware loadbalancer
 License:        GPL-2.0-only
 Group:          Productivity/Networking/DNS/Servers
 URL:            https://www.powerdns.com/
-Source0:        https://downloads.powerdns.com/releases/dnsdist-%{version}.tar.bz2
-Source1:        https://downloads.powerdns.com/releases/dnsdist-%{version}.tar.bz2.sig
+Source0:        https://downloads.powerdns.com/releases/dnsdist-%{version}.tar.xz
+Source1:        https://downloads.powerdns.com/releases/dnsdist-%{version}.tar.xz.sig
 Source2:        https://dnsdist.org/_static/dnsdist-keyblock.asc#/dnsdist.keyring
+Source3:        vendor.tar.xz
 Source10:       dnsdist.user
 Source11:       dnsdist.lua
 Source12:       usr.sbin.dnsdist
 Source13:       local.usr.sbin.dnsdist
 Source99:       series
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?force_gcc_version}
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  libboost_headers-devel
-BuildRequires:  libedit-devel
-BuildRequires:  libfstrm-devel
-BuildRequires:  libsodium-devel
-BuildRequires:  lmdb-devel
-BuildRequires:  net-snmp-devel
+BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  sysuser-shadow
-BuildRequires:  sysuser-tools
+BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(libbpf)
 BuildRequires:  pkgconfig(libcap)
+BuildRequires:  pkgconfig(libedit)
+BuildRequires:  pkgconfig(libfstrm)
 BuildRequires:  pkgconfig(libnghttp2)
+BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(lmdb)
+BuildRequires:  pkgconfig(netsnmp)
 BuildRequires:  pkgconfig(systemd)
-%systemd_ordering
-%sysusers_requires
+%if %{with dnsdist_yaml_config}
+BuildRequires:  cargo
+%endif
+%if %{with dnsdist_xdp}
+BuildRequires:  pkgconfig(libxdp)
+%endif
 %if %{with apparmor}
 BuildRequires:  apparmor-profiles
 %endif
@@ -81,13 +92,18 @@ BuildRequires:  apparmor-profiles
 BuildRequires:  ragel
 %endif
 %if %{with dnsdist_re2}
-BuildRequires:  re2-devel
+BuildRequires:  pkgconfig(re2)
 %endif
 %if %{with dnsdist_luajit}
 BuildRequires:  pkgconfig(luajit)
 %else
 BuildRequires:  pkgconfig(lua)
 %endif
+BuildRequires:  python3-PyYAML
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
+%systemd_ordering
+%sysusers_requires
 
 %description
 dnsdist is a highly DNS-, DoS- and abuse-aware loadbalancer. Its goal in life
@@ -98,41 +114,68 @@ dnsdist is dynamic, in the sense that its configuration can be changed at
 runtime, and that its statistics can be queried from a console-like interface.
 
 %prep
-%autosetup -p1 -n %{name}-%{version}
+%autosetup -p1 -a 3 -n %{name}-%{version}
 
 %build
-export CFLAGS="%{optflags} -Wno-error=deprecated-declarations"
-%ifarch %{arm} %{ix86}
-export CFLAGS="$CFLAGS -D__USE_TIME_BITS64"
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
 %endif
-export CXXFLAGS="$CFLAGS"
-
-%configure \
-  --enable-dnstap \
-  --enable-dns-over-tls \
-  --enable-systemd \
-  --enable-lto \
-  --enable-dnscrypt \
-  --enable-dns-over-https \
-%if %{with dnsdist_re2}
-  --with-re2 \
-%endif
-  --with-ebpf \
-  --with-net-snmp \
-  --with-libcap \
-%if %{with dnsdist_luajit}
-  --with-lua=luajit \
-%endif
-  --with-lmdb \
-  --disable-silent-rules \
+%meson \
   --bindir=%{_sbindir} \
-  --sysconfdir=%{_sysconfdir}/%{name}/
+  --sysconfdir=%{_sysconfdir}/%{name} \
+  -Ddnscrypt=enabled \
+  -Dlibcap=enabled \
+  -Dlibedit=enabled \
+  -Dlibsodium=enabled \
+  -Dtls-gnutls=enabled \
+  -Dtls-libssl-engines=true \
+  -Dtls-libssl-providers=true \
+%if %{with dnsdist_luajit}
+  -Dlua=luajit \
+%else
+  -Dlua=lua \
+%endif
+  -Dipcipher=enabled \
+  -Dreproducible=true \
+  -Dsnmp=enabled \
+  -Ddnstap=enabled \
+  -Dnghttp2=enabled \
+  -Dcdb=disabled \
+  -Dlmdb=enabled \
+%if %{with dnsdist_quiche}
+  -Dquiche=enabled \
+  -Ddns-over-http3=enabled \
+  -Ddns-over-quic=enabled \
+%else
+  -Dquiche=disabled \
+  -Ddns-over-http3=disabled \
+  -Ddns-over-quic=disabled \
+%endif
+%if %{with dnsdist_re2}
+  -Dre2=enabled \
+%else
+  -Dre2=disabled \
+%endif
+%if %{with dnsdist_xdp}
+  -Dxsk=enabled \
+%else
+  -Dxsk=disabled \
+%endif
+  -Debpf=enabled \
+%if %{with dnsdist_yaml_config}
+  -Dyaml=enabled \
+%else
+  -Dyaml=disabled \
+%endif
+  -Dman-pages=true \
+%nil
 
-%make_build
+%meson_build
 %sysusers_generate_pre %{SOURCE10} %{name}
 
 %install
-%make_install
+%meson_install
 #
 %if 0%{?suse_version}
   ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
@@ -146,6 +189,18 @@ install -Dd -m 0750    %{buildroot}%{_sysconfdir}/%{name}/ %{buildroot}%{home}/
 install -m 0640 %{SOURCE11} %{buildroot}%{_sysconfdir}/%{name}/dnsdist.conf
 
 install -D -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/dnsdist.conf
+
+rm -rv \
+  docs/*.py \
+  docs/manpages \
+  docs/requirements.* \
+  docs/_static \
+  docs/_templates
+find docs -type f -executable -print0 | xargs -r0 chmod -v a-x
+perl -p -i -e 's|\r\n|\n|g ; s|\r|\n|g' docs/reference/logging.rst
+
+%check
+%meson_test
 
 %pre -f %{name}.pre
 %service_add_pre %{name}.service %{name}@.service
@@ -161,6 +216,8 @@ install -D -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/dnsdist.conf
 
 %files
 %doc README.md
+%license COPYING
+%doc docs/
 %{_sbindir}/dnsdist
 %{_mandir}/man1/dnsdist.1%{?ext_man}
 %{_unitdir}/%{name}*.service
