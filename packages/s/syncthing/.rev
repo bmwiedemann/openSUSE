@@ -1563,4 +1563,12 @@
     <comment>This is a major version update but I built and installed the rpm yesterday locally and didn't run into any issues so far.</comment>
     <requestid>1299207</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>b8dbc671bf7c6ab9aaf06d46d0debfc1</srcmd5>
+    <version>2.0.1</version>
+    <time>1755287498</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v2.0.1</comment>
+    <requestid>1299350</requestid>
+  </revision>
 </revisionlist>

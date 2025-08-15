@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 14 08:14:17 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 2.0.1
+  * Fixes
+    allow upgrade without config dir (fixes #10240) by @calmh in #10241
+    fix various typos by @rasa in #10242
+    correct incantation to launch browser in Linux desktop file by @calmh in #10246
+    handle path names that include URL special chars (fixes #10245) by @calmh in #10247
+    increase default delete retention to 15 months by @calmh in #10252
+  * Other
+    update (most) dependencies by @calmh in #10243
+
+-------------------------------------------------------------------
 Tue Aug 12 10:22:18 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 2.0.0
