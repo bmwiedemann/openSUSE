@@ -1077,4 +1077,16 @@
   * GO-2025-3857 CVE-2025-54996 GHSA-vf84-mxrq-crqc (forwarded request 1298957 from jfkw)</comment>
     <requestid>1298958</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>113a7d3eb8884c679c032852fb192030</srcmd5>
+    <version>0.0.20250814T182633</version>
+    <time>1755287560</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.20250814T182633 2025-08-14T18:26:33Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3765 CVE-2024-44906 GHSA-h4h6-vccr-44h2
+  * GO-2025-3829 CVE-2025-54410 GHSA-4vq8-7jfc-9cvp (forwarded request 1299824 from jfkw)</comment>
+    <requestid>1299825</requestid>
+  </revision>
 </revisionlist>
