@@ -834,4 +834,23 @@
     * alsa: fixed compiler warning with alsa-lib 1.2.14</comment>
     <requestid>1290714</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>54a401245c76a99b88a764d3f5daa8e2</srcmd5>
+    <version>0.24.5</version>
+    <time>1755287511</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.24.5
+  * Changed mpd-conf.patch
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.24.5/NEWS
+  * database: fixed disappearing playlist files
+  * decoder
+    * ffmpeg: handled &quot;*.aif&quot; files
+    * mpg123
+      * added option &quot;full_scan&quot;
+      * added support seeking on remote files
+      * fixed work around libmpg123 ID3 corruption bug
+    * sidplay: addad support for PSID files
+  * output: pipewire: fixed resuming playback after it was paused by &quot;single&quot; mode</comment>
+    <requestid>1299391</requestid>
+  </revision>
 </revisionlist>

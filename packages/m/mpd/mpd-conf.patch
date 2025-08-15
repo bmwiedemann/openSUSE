@@ -1,6 +1,6 @@
-diff -Pdpru mpd-0.24.4.orig/doc/mpdconf.example mpd-0.24.4/doc/mpdconf.example
---- mpd-0.24.4.orig/doc/mpdconf.example	2025-05-20 10:57:41.000000000 +0300
-+++ mpd-0.24.4/doc/mpdconf.example	2025-07-04 17:35:56.250117517 +0300
+diff -Pdpru mpd-0.24.5.orig/doc/mpdconf.example mpd-0.24.5/doc/mpdconf.example
+--- mpd-0.24.5.orig/doc/mpdconf.example	2025-07-31 22:58:34.000000000 +0300
++++ mpd-0.24.5/doc/mpdconf.example	2025-08-14 14:24:35.546964116 +0300
 @@ -19,7 +19,7 @@
  # format. This setting defaults to playlist saving being disabled.
  #
@@ -90,7 +90,7 @@ diff -Pdpru mpd-0.24.4.orig/doc/mpdconf.example mpd-0.24.4/doc/mpdconf.example
  # of starting playback after startup.
 @@ -128,7 +128,7 @@
  # This setting enables automatic update of MPD's database when files in
- # music_directory are changed.
+ # music_directory are changed.  (Linux only)
  #
 -#auto_update	"yes"
 +auto_update	"no"
@@ -122,15 +122,6 @@ diff -Pdpru mpd-0.24.4.orig/doc/mpdconf.example mpd-0.24.4/doc/mpdconf.example
  ##	mixer_index	"0"		# optional
  #}
  #
-@@ -237,7 +237,7 @@ input {
- #
- #audio_output {
- #	type		"oss"
--#	name		"My OSS Device"
-+#	name		"OSS Device"
- ##	device		"/dev/dsp"	# optional
- ##	mixer_type      "hardware"	# optional
- ##	mixer_device	"/dev/mixer"	# optional
 @@ -249,14 +249,14 @@ input {
  #audio_output {
  #	type		"shout"

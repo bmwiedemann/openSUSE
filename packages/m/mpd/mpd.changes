@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 14 11:30:15 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 0.24.5
+  * Changed mpd-conf.patch
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.24.5/NEWS
+  * database: fixed disappearing playlist files
+  * decoder
+    * ffmpeg: handled "*.aif" files
+    * mpg123
+      * added option "full_scan"
+      * added support seeking on remote files
+      * fixed work around libmpg123 ID3 corruption bug
+    * sidplay: addad support for PSID files
+  * output: pipewire: fixed resuming playback after it was paused by "single" mode
+
+-------------------------------------------------------------------
 Fri Jul  4 15:52:54 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.24.4

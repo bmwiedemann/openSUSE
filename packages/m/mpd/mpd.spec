@@ -18,7 +18,7 @@
 
 %define ver 0.24
 Name:           mpd
-Version:        %{ver}.4
+Version:        %{ver}.5
 Release:        0
 Summary:        Music Player Daemon
 License:        GPL-2.0-or-later
