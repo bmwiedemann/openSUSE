@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 14 05:35:10 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.5:
+  * This fixes a build failure on GCC 9.3.1, and a warning #192
+
+-------------------------------------------------------------------
 Wed Aug 13 11:56:24 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.21.4:
