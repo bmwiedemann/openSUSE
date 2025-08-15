@@ -317,4 +317,14 @@
   while generating pg_config_paths.h.</comment>
     <requestid>1278025</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a6925d04cdedca0a0974a68bd8f908c7</srcmd5>
+    <version>15.14</version>
+    <time>1755287540</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1299465 from darix
+
+https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-beta-3-released-3118/</comment>
+    <requestid>1299470</requestid>
+  </revision>
 </revisionlist>
