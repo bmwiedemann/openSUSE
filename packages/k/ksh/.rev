@@ -1134,4 +1134,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1192627</requestid>
   </revision>
+  <revision rev="118" vrev="11">
+    <srcmd5>e99c98069b7a2bca4005986eee777b7d</srcmd5>
+    <version>93vu</version>
+    <time>1755287563</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch over to libalternatives for etags to provide a ksh
+  variant [bsc#1245908]</comment>
+    <requestid>1299826</requestid>
+  </revision>
 </revisionlist>

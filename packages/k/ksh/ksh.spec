@@ -1,7 +1,7 @@
 #
 # spec file for package ksh
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,11 @@ Name:           ksh
 %define libdir /%{_lib}
 %define bindir /bin
 %endif
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 BuildRequires:  bind-utils
 BuildRequires:  bison
 BuildRequires:  flex
@@ -43,7 +48,11 @@ BuildRequires:  libbz2-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  procps
 BuildRequires:  psmisc
+%if %{with libalternatives}
+BuildRequires:  alts
+%else
 BuildRequires:  update-alternatives
+%endif
 BuildRequires:  zlib-devel
 # /bin/ex and /bin/ed required for build
 BuildRequires:  awk
@@ -52,9 +61,14 @@ BuildRequires:  strace
 BuildRequires:  vim
 URL:            http://www.research.att.com/~gsf/download/
 Requires(post): /bin/ln /bin/rm /etc/bash.bashrc /bin/true
-Requires(postun):/bin/ln /bin/rm /etc/bash.bashrc /bin/true
+Requires(postun): /bin/ln /bin/rm /etc/bash.bashrc /bin/true
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
+%endif
 %if %use_suid_exe
 PreReq:         permissions
 %endif
@@ -710,6 +724,16 @@ fi
 %if %use_suid_exe
   install bin/suid_exec %{buildroot}%{libdir}/ast/bin/
 %endif
+%if %{with libalternatives}
+mkdir -p %{buildroot}%{_datadir}/libalternatives/ksh
+ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/ksh
+cat > %{buildroot}%{_datadir}/libalternatives/ksh/20.conf <<-EOF
+	binary=%{_bindir}/ksh93
+	man=ksh93.1
+	group=ksh
+	EOF
+  ln -sf ksh93.1.gz  %{buildroot}/%{_mandir}/man1/rksh.1.gz
+%else
   # create update-alternatives symlinks
   mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
   touch %{buildroot}/%{_sysconfdir}/alternatives/ksh
@@ -722,6 +746,7 @@ fi
   ln -sf %{_sysconfdir}/alternatives/ksh                %{buildroot}%{bindir}/ksh
   ln -sf %{_sysconfdir}/alternatives/ksh.1.gz   %{buildroot}/%{_mandir}/man1/ksh.1.gz
   ln -sf %{_sysconfdir}/alternatives/rksh.1.gz  %{buildroot}/%{_mandir}/man1/rksh.1.gz
+%endif
   ln -sf %{bindir}/ksh93	%{buildroot}%{_bindir}/rksh
   ln -sf ../../bin/ksh93	%{buildroot}%{libdir}/ast/ksh
   ln -sf ast			%{buildroot}%{libdir}/ksh
@@ -820,6 +845,7 @@ test -e etc/bash.bashrc && ln -sf bash.bashrc etc/ksh.kshrc || true
 %set_permissions %{libdir}/ast/bin/suid_exec
 %endif
 %endif
+%if ! %{with libalternatives}
 if test -x %{libdir}/ast/bin/ksh ; then
     %{_sbindir}/update-alternatives \
 	--quiet \
@@ -835,6 +861,7 @@ fi
 %endif
     --slave %{_mandir}/man1/ksh.1.gz ksh.1.gz %{_mandir}/man1/ksh93.1.gz \
     --slave %{_mandir}/man1/rksh.1.gz rksh.1.gz %{_mandir}/man1/ksh93.1.gz
+%endif
 
 %postun
 if test $1 -eq 0 -a ! -x bin/ksh ; then
@@ -842,9 +869,11 @@ if test $1 -eq 0 -a ! -x bin/ksh ; then
 	rm -f etc/ksh.kshrc
     fi
 fi
+%if ! %{with libalternatives}
 if [ ! -f %{bindir}/ksh93 ] ; then
     %{_sbindir}/update-alternatives --quiet --remove ksh %{bindir}/ksh93
 fi
+%endif
 
 %posttrans
 if test -x bin/ksh -o -x bin/pdksh ; then
@@ -860,6 +889,13 @@ fi
 %doc LICENSE EPL-1.0 CPL-1.0 src/cmd/ksh93/COMPATIBILITY src/cmd/ksh93/RELEASE*
 %doc Builtins PROMO OBSOLETE MEMORANDUM
 %{_bindir}/ksh
+%if %{with libalternatives}
+%dir %{_datadir}/libalternatives/
+%dir %{_datadir}/libalternatives/ksh/
+%{_datadir}/libalternatives/ksh/20.conf
+%doc %{_mandir}/man1/rksh.1.gz
+%doc %{_mandir}/man1/ksh93.1.gz
+%else
 %doc %{_mandir}/man1/ksh.1.gz
 %doc %{_mandir}/man1/rksh.1.gz
 %doc %{_mandir}/man1/ksh93.1.gz
@@ -871,6 +907,7 @@ fi
 %endif
 %ghost %{_sysconfdir}/alternatives/ksh.1.gz
 %ghost %{_sysconfdir}/alternatives/rksh.1.gz
+%endif
 %doc %{_mandir}/man1/shcomp.1ast.gz
 %if %use_opt_bins
 %doc %{_mandir}/man1/pty.1ast.gz

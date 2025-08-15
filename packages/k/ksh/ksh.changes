@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 15 12:23:01 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Switch over to libalternatives for etags to provide a ksh
+  variant [bsc#1245908]
+
+-------------------------------------------------------------------
 Thu Aug  1 14:04:27 CEST 2024 - mls@suse.de
 
 - fix segfault in variable substitution [bsc#1129288]
@@ -2082,7 +2088,7 @@ Mon May 25 15:00:58 CEST 2009 - werner@suse.de
 - Assigning to SECONDS in a subshell causes crash (bnc#502622)
 
 -------------------------------------------------------------------
-Mon Feb 16 11:11:27 CET 2009 - werner@suse.de
+Mon Feb 16 11:12:27 CET 2009 - werner@suse.de
 
 - Update to 2009-03-10 beta test of ksh93t+ for bug fixes
 
@@ -2840,4 +2846,3 @@ Wed Feb  2 19:14:49 CET 2005 - werner@suse.de
 
 - Initial version of the AT&T ksh now under CPL1.0 (bug #3698)
 
--------------------------------------------------------------------
