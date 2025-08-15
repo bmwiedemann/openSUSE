@@ -1,0 +1,26 @@
+---
+ check.t |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+--- a/check.t
++++ b/check.t	2025-07-15 08:18:18.844041945 +0000
+@@ -6627,7 +6627,7 @@ stdin:
+ 		echo FNORD-7
+ 		typeset -
+ 		echo FNORD-8
+-	} | fgrep FNORD
++	} | grep -F FNORD
+ 	fnord=(42 23)
+ 	typeset -p fnord
+ 	echo FNORD-9
+@@ -8313,8 +8313,8 @@ stdin:
+ 	(echo x; exit 12) | (cat; exit 23) | (cat; exit 42)
+ 	echo 5 $? , $PIPESTATUS , ${PIPESTATUS[0]} , ${PIPESTATUS[1]} , ${PIPESTATUS[2]} , ${PIPESTATUS[3]} .
+ 	echo 6 ${PIPESTATUS[0]} .
+-	set | fgrep PIPESTATUS
+-	echo 8 $(set | fgrep PIPESTATUS) .
++	set | grep -F PIPESTATUS
++	echo 8 $(set | grep -F PIPESTATUS) .
+ expected-stdout:
+ 	1 0 .
+ 	2 0 .

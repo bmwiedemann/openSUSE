@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 15 08:36:12 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Switch over to libalternatives for etags to provide a ksh
+  variant (bsc#1245908)
+- Add patch mksh-R59c-fgrep.patch
+  * Replace `fgrep' with `grep -F'
+
+-------------------------------------------------------------------
 Tue Mar  4 07:04:01 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Accordingly to upstream change URL and Source locator for mksh

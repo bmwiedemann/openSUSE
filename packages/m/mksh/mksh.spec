@@ -20,6 +20,11 @@
 
 # Please see OBS home:mirabile/mksh for a package for other distributions.
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           mksh
 Version:        59c
 Release:        0
@@ -30,12 +35,18 @@ URL:            https://mbsd.evolvis.org/mksh.htm
 Source:         https://mbsd.evolvis.org/MirOS/dist/mir/%{name}/%{name}-R%{version}.tgz
 # PATCH-FEATURE-OPENSUSE mksh-vendor-mkshrc.patch gber@opensuse.org -- Add support for a vendor-supplied kshrc which is read by interactive shells before $ENV or $HOME/.mkshrc are processed
 Patch0:         mksh-vendor-mkshrc.patch
+# PATCH-FEATURE-OPENSUSE There is no fgrep anymore
+Patch1:         mksh-R59c-fgrep.patch
 BuildRequires:  ed
 # for %%check
 BuildRequires:  perl
 BuildRequires:  screen
 BuildRequires:  sed
+%if %{with libalternatives}
+BuildRequires:  alts
+%else
 BuildRequires:  update-alternatives
+%endif
 Provides:       pdksh = %{version}
 Obsoletes:      pdksh < %{version}
 %if !0%{?is_opensuse}
@@ -43,8 +54,12 @@ Provides:       ksh = %{version}
 Obsoletes:      ksh < %{version}
 %endif
 Provides:       /bin/ksh
+%if %{with libalternatives}
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 
 %description
 The MirBSD Korn Shell is an actively developed free implementation of the Korn
@@ -138,6 +153,15 @@ ln -s /bin/lksh %{buildroot}/bin/pdksh
 ln -s %{_bindir}/lksh %{buildroot}%{_bindir}/pdksh
 ln -s %{_mandir}/man1/lksh.1%{ext_man} \
     %{buildroot}%{_mandir}/man1/pdksh.1%{ext_man}
+%if %{with libalternatives}
+mkdir -p %{buildroot}%{_datadir}/libalternatives/ksh
+ln -sf %{_bindir}/alts %{buildroot}%{_bindir}/ksh
+cat > %{buildroot}%{_datadir}/libalternatives/ksh/10.conf <<-EOF
+	binary=%{_bindir}/mksh
+	man=mksh.1
+	group=ksh
+	EOF
+%else
 # symlinks for update-alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/ksh \
 %if 0%{?suse_version} < 1550
@@ -152,6 +176,7 @@ ln -sf %{_sysconfdir}/alternatives/usr-bin-ksh %{buildroot}/%{_bindir}/ksh
 %endif
 ln -sf %{_sysconfdir}/alternatives/ksh.1%{ext_man} \
     %{buildroot}/%{_mandir}/man1/ksh.1%{ext_man}
+%endif
 
 %check
 # should always run in a clean environment as otherwise
@@ -187,6 +212,7 @@ then
     exit 1
 fi
 
+%if ! %{with libalternatives}
 %post
 %{_sbindir}/update-alternatives \
 %if 0%{?suse_version} >= 1550
@@ -207,6 +233,7 @@ if [ ! -f /bin/lksh ] ; then
     %{_sbindir}/update-alternatives --remove ksh /bin/lksh
 fi
 %endif
+%endif
 
 %files
 %doc examples/dot.mkshrc
@@ -218,6 +245,11 @@ fi
 %{_bindir}/pdksh
 %{_mandir}/man1/pdksh.1%{?ext_man}
 %{_bindir}/ksh
+%if %{with libalternatives}
+%dir %{_datadir}/libalternatives/
+%dir %{_datadir}/libalternatives/ksh/
+%{_datadir}/libalternatives/ksh/10.conf
+%else
 %{_mandir}/man1/ksh.1%{?ext_man}
 %ghost %{_sysconfdir}/alternatives/ksh
 %ghost %{_sysconfdir}/alternatives/ksh.1%{?ext_man}
@@ -227,6 +259,7 @@ fi
 /bin/ksh
 /bin/pdksh
 %ghost %{_sysconfdir}/alternatives/usr-bin-ksh
+%endif
 %endif
 
 %changelog

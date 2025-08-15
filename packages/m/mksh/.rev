@@ -463,4 +463,15 @@ The next upstream release (R58 most likely) will add -fno-lto to CFLAGS and LDFL
     <comment>- Accordingly to upstream change URL and Source locator for mksh</comment>
     <requestid>1249978</requestid>
   </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>c8f90107bcfa885f7e7036365475d0c5</srcmd5>
+    <version>59c</version>
+    <time>1755287562</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch over to libalternatives for etags to provide a ksh
+  variant (bsc#1245908)
+- Add patch mksh-R59c-fgrep.patch
+  * Replace `fgrep' with `grep -F'</comment>
+    <requestid>1299822</requestid>
+  </revision>
 </revisionlist>
