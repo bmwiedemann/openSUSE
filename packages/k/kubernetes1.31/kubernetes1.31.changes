@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 14 08:23:30 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.31.12:
+  * do not allow the node to update it's owner reference
+  * remove failing test that depends on expired credential, remove credential, add TODOs
+  * Bump images, dependencies and versions to go 1.23.11 and distroless iptables
+  * fix(kubelet): acquire imageRecordsLock when removing image
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires: go >= 1.23.11`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.31.12/build/dependencies.yaml#L117-L139
+
+-------------------------------------------------------------------
 Thu Jul 17 03:58:50 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.31.11:
