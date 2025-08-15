@@ -420,4 +420,15 @@
     with Clang.</comment>
     <requestid>1297855</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>82083cae8132809fe1c65bfae537ad8a</srcmd5>
+    <version>4.2.8</version>
+    <time>1755287506</time>
+    <user>dimstar_suse</user>
+    <comment>    accesses if the debug level is set sufficiently
+    high (#402, #403) bsc#1247901 (CVE-2025-8837)
+    the JPC encoder (#401) bsc#1247902 (CVE-2025-8836)
+    function (#400) bsc#1247904 (CVE-2025-8835).</comment>
+    <requestid>1299312</requestid>
+  </revision>
 </revisionlist>

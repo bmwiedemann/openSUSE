@@ -3,21 +3,22 @@ Wed Aug  6 05:37:05 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.2.8:
   * Fixed a bug in the JPC decoder that could cause bad memory
-    accesses if the debug level is set sufficiently high (#402, #403).
+    accesses if the debug level is set sufficiently
+    high (#402, #403) bsc#1247901 (CVE-2025-8837)
 
 -------------------------------------------------------------------
 Mon Aug  4 06:41:44 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.2.7:
   * Added some missing range checking on several coding parameters in
-    the JPC encoder (#401).
+    the JPC encoder (#401) bsc#1247902 (CVE-2025-8836)
 
 -------------------------------------------------------------------
 Mon Aug  4 06:41:23 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.2.6:
   * Added a check for a missing color component in the jas_image_chclrspc
-    function (#400).
+    function (#400) bsc#1247904 (CVE-2025-8835).
   * Fixed a minor build problem related to the use of -Wstrict-prototypes
     with Clang.
 
