@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Aug 15 03:27:28 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250815.8d89c3d0:
+  * Dev: ChangeLog: update ChangeLog for release 5.0.0
+
+-------------------------------------------------------------------
+Thu Aug 14 10:23:04 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250814.d6d8099f:
+  * Dev: behave: Add new case for adding diskless sbd via stage
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: sbd: Use SBDUtils.get_sbd_device_from_config for reliable diskless SBD detection
+
+-------------------------------------------------------------------
+Thu Aug 14 00:37:57 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250814.ae1e11bf:
+  * Fix: log: missing LF after a progress bar (#1886)
+
+-------------------------------------------------------------------
+Wed Aug 13 03:56:14 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250813.70bae071:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: sbd: Add with_sbd parameter for the case when sbd is not active
+  * Dev: sbd: Restart cluster after configured sbd and adjusted properties
+  * Fix: sbd: Ensure stonith-watchdog-timeout is >= 2 * SBD_WATCHDOG_TIMEOUT (bsc#1247415)
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: xmlutil: Add is_non_stonith_resource_running() and use for cluster restart checks
+
+-------------------------------------------------------------------
+Thu Jul 31 13:02:06 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250731.f29b30db:
+  * Fix: doc: Add TimeoutFormulas help topic (bsc#1242981)
+
+-------------------------------------------------------------------
 Thu Jul 31 08:47:31 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250731.d3091c0c:
