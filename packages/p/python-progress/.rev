@@ -39,4 +39,12 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1282311</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3bfd6d095185b418df8c7a5c3a912d50</srcmd5>
+    <version>1.6.1</version>
+    <time>1755287553</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1299770</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 15 07:35:28 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.6.1
+  * Add flag to override tty check
+  * Implement `write` using \r instead of \b
+  * Allow usage as a context manager.
+  * Fold the mixins in __init__.py
+  * Remove SigIntMixin
+  * Include tests in PyPI tarball
+  * Add Pypi link and instuctions to ReadMe
+  * Use time.monotonic if available
+  * Update avg/eta/eta_td less frequently
+
+-------------------------------------------------------------------
 Tue Jun  3 12:25:15 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

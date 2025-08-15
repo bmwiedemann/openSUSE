@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-progress
-Version:        1.6
+Version:        1.6.1
 Release:        0
 Summary:        Progress bars for Python
 License:        ISC
