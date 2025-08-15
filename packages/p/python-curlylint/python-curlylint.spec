@@ -1,7 +1,7 @@
 #
 # spec file for package python-curlylint
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        HTML templates linting for Jinja, Nunjucks, Django templates, Tw
 License:        MIT
 URL:            https://github.com/thibaudcolas/curlylint
 Source:         https://files.pythonhosted.org/packages/source/c/curlylint/curlylint-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#thibaudcolas/curlylint#158
+Patch0:         avoid-resourcewarning.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -75,6 +77,6 @@ HTML templates linting for Jinja, Nunjucks, Django templates, Twig, Liquid.
 %license LICENSE
 %python_alternative %{_bindir}/curlylint
 %{python_sitelib}/curlylint
-%{python_sitelib}/curlylint-%{version}*-info
+%{python_sitelib}/curlylint-%{version}.dist-info
 
 %changelog

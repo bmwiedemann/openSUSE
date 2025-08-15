@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 11 03:00:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch avoid-resourcewarning.patch:
+  * Avoid ResourceWarning in a metaclass, avoids test failures with
+    pytest 8.4.1.
+
+-------------------------------------------------------------------
 Wed Jun  4 14:26:00 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Migrate to libalternatives

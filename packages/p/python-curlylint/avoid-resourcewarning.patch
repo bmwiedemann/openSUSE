@@ -1,0 +1,27 @@
+From 9b0efb31aa77cabf1eafa99a14855f2993aec129 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Mon, 11 Aug 2025 12:44:39 +1000
+Subject: [PATCH] No warnings when parsing JSON in the test metacls
+
+Newer versions of pytest will now keep track of warnings in setup
+methods (or classes that are used in the creation of test methods), and
+may end up raising them. Avoid that by using a context manager to close
+the file when we're done with it.
+---
+ curlylint/rules/rule_test_case.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/curlylint/rules/rule_test_case.py b/curlylint/rules/rule_test_case.py
+index c4b8679..ef3d1e8 100644
+--- a/curlylint/rules/rule_test_case.py
++++ b/curlylint/rules/rule_test_case.py
+@@ -20,7 +20,8 @@ def test(self):
+ 
+             return test
+ 
+-        fixtures = json.loads(open(tests["fixtures"], "r").read())
++        with open(tests["fixtures"], "r") as data:
++            fixtures = json.loads(data.read())
+ 
+         for item in fixtures:
+             test_label = item["label"].lower().replace(" ", "_")
