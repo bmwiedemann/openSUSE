@@ -1,7 +1,7 @@
 #
 # spec file for package taradino
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           taradino
-Version:        1.1.3+git61.4404962
-%define rev 44049622bb622694cb7c532774ca271ca72ce6b3
+Version:        20250815
 Release:        0
 Summary:        SDL port of the Rise of the Triad engine
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
 #URL:            https://icculus.org/rott/
 URL:            https://github.com/fabiangreffrath/taradino
-Source:         https://github.com/fabiangreffrath/taradino/archive/%rev.tar.gz
+Source:         https://github.com/fabiangreffrath/taradino/archive/refs/tags/%version.tar.gz
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkg-config
@@ -47,7 +46,7 @@ walls, and synthetic level-over-level environments through use of
 individual collision objects.
 
 %prep
-%autosetup -p1 -n %name-%rev
+%autosetup -p1
 
 %build
 export CFLAGS="%optflags -fno-strict-aliasing"
@@ -70,8 +69,9 @@ cd "$srcdir/"
 %define __builddir huntbgin
 %cmake_install
 
-ln -s taradino "%buildroot/%_bindir/rott"
-ln -s taradino-huntbgin "%buildroot/%_bindir/rott-huntbgin"
+ln -sv taradino "%buildroot/%_bindir/rott"
+ln -sv taradino-huntbgin "%buildroot/%_bindir/rott-huntbgin"
+rm -fv "%buildroot/%_defaultdocdir/%name/COPYING"
 
 %files
 %_bindir/rott*
