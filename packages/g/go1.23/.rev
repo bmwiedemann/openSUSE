@@ -270,4 +270,23 @@
   * go#74726 cmd/cgo/internal/testsanitizers: failures with signal: segmentation fault or exit status 66 (forwarded request 1298035 from jfkw)</comment>
     <requestid>1298038</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>718e67a469bc3947c883cba6f8032782</srcmd5>
+    <version>1.23.12</version>
+    <time>1755287474</time>
+    <user>dimstar_suse</user>
+    <comment>- Packaging improvements:
+  * Remove conditional gccgo bootstrap sections and gcc-go.patch.
+    gccgo cannot be used in any version newer than go1.21. Removal
+    simplifies go1.x package code.
+  * go1.21 can optionally be bootstrapped with gccgo and serve as
+    the inital version of go1.x.
+  * go1.21 will be the initial version of Go in the bootstrap chain
+    until gcc gccgo is updated to support a language level newer
+    than go1.18.
+  * Drop gcc-go.patch
+  * Refs boo#1247816 bootstrap go1.21 with gccgo
+  * Refs boo#1248082 drop unused gccgo bootstrap code in go1.22+ (forwarded request 1299494 from jfkw)</comment>
+    <requestid>1299496</requestid>
+  </revision>
 </revisionlist>
