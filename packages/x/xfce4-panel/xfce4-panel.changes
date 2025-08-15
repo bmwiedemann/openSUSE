@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 14 13:23:20 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.5
+  * wayland: panel: Ensure panel window is shown at least once
+  * panel: Don't show panel window too early
+  * panel: Restrict X-XFCE-Unique=SCREEN to X11
+  * Fix string comparison when searching for plugin dirs
+  * wayland: Support multiple workspace groups where it makes sense
+  * tasklist: Deactivate context menu when its button is destroyed
+  * x11: Let GtkSocket expand if possible
+  * libxfce4panel: Restore possibility to oversize icons
+  * wayland: autohide: Try to trigger size_allocate() more reliably
+  * panel: Show window when new output is connected
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Mar 23 11:51:50 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.20.4

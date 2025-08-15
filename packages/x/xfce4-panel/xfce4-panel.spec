@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-panel
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,10 @@
 #
 
 
-%bcond_with git
 %define libname libxfce4panel-2_0-4
 
 Name:           xfce4-panel
-Version:        4.20.4
+Version:        4.20.5
 Release:        0
 Summary:        Panel for the Xfce Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -35,6 +34,7 @@ BuildRequires:  ed
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
 BuildRequires:  gtk-doc >= 1.9
+BuildRequires:  meson >= 0.56.0
 BuildRequires:  perl
 BuildRequires:  update-desktop-files
 
@@ -142,23 +142,14 @@ A desktop file and application launcher is provided.
 %autosetup
 
 %build
-%if %{with git}
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-    --enable-maintainer-mode \
-    --with-helper-path-prefix=%{_libexecdir} \
-    --enable-vala=yes \
-    --disable-static
-%else
-%configure \
-    --with-helper-path-prefix=%{_libexecdir} \
-    --enable-vala=yes \
-    --disable-static
-%endif
-%make_build
+%meson \
+    -Dhelper-path-prefix="%{_libexecdir}"	\
+    -Dgtk-doc=true				\
+    -Dvala=enabled
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 install -m0755 %{SOURCE2} %{buildroot}/%{_bindir}/%{name}-restore-defaults
 
@@ -185,11 +176,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%if %{with git}
 %doc AUTHORS NEWS README.md
-%else
-%doc AUTHORS ChangeLog NEWS README.md
-%endif
 %license COPYING COPYING.LIB
 %{_bindir}/xfce4-panel
 %{_bindir}/xfce4-popup-applicationsmenu
