@@ -853,4 +853,12 @@
   active (boo#1247923)</comment>
     <requestid>1299112</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>54393c722a1873da4da85b69d43bbe46</srcmd5>
+    <version>580.76.05</version>
+    <time>1755287533</time>
+    <user>dimstar_suse</user>
+    <comment>- make sure Requires to nvidia packages are not added for SLE16</comment>
+    <requestid>1299450</requestid>
+  </revision>
 </revisionlist>
