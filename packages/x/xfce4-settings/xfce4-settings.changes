@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 14 14:00:41 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.2:
+  * display: Add/improve some debug logs
+  * wayland: displays: Don't wl_display_roundtrip() on new output
+  * settings-editor: Fix -Wcomma warning
+  * common: Fix memory leak
+  * common: Be more secure when parsing pnp.ids file
+  * x11: display: Properly take XRRModeFlags into account
+  * xfsettingsd: Use 2 decimals in warning about unknown mode
+  * build: Fix resource not found at runtime
+  * build: Automate copyright year management
+  * build: Replace xdt-csource with glib-compile-resources
+  * build: Define xfce4 min version >= 4.18
+  * display-settings: Add missing update of /ActiveProfile
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Feb  9 08:01:27 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.20.1:
