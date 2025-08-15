@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 14 07:34:07 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.2
+  * clipboard-manager: Use GtkClipboard iff image-only format is
+    available
+  * I18n: Update po/LINGUAS list
+  * clipboard-manager: Fix potential leak on targets
+  * clipboard-manager: Use separate struct for each call to 
+    set_with_data()
+  * clipboard-manager: Use GtkTargetList instead of manual allocation
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Jul 11 13:27:38 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Drop extra newline above date which fails source_validator 
