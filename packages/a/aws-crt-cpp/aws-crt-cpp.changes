@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 12 12:47:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.33.5
+  * Update eventstream to v0.5.6 by @bretambrose in (#765)
+- from version 0.33.4
+  * Update web identity context to use connection options
+    instead of context by @sbiscigl in (#763)
+
+-------------------------------------------------------------------
 Fri Aug  1 13:46:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.33.2
