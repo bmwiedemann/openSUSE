@@ -1,0 +1,193 @@
+From 0ddfcc155ac06dff63158647f1e174db9a116689 Mon Sep 17 00:00:00 2001
+From: serge-sans-paille <serge.guelton@telecom-bretagne.eu>
+Date: Tue, 10 Jun 2025 07:23:03 +0200
+Subject: [PATCH] Add support for numpy.frombuffer
+
+Even though we have very partial support for bytes in Pythran
+---
+ pythran/analyses/dependencies.py              |  2 ++
+ pythran/backend.py                            |  8 +++++
+ pythran/pythonic/include/numpy/frombuffer.hpp | 26 ++++++++++++++
+ pythran/pythonic/numpy/frombuffer.hpp         | 35 +++++++++++++++++++
+ pythran/tables.py                             |  1 +
+ pythran/tests/test_numpy_func0.py             | 14 +++++++-
+ pythran/tests/test_numpy_random.py            |  4 +--
+ pythran/types/conversion.py                   |  1 +
+ 8 files changed, 88 insertions(+), 3 deletions(-)
+ create mode 100644 pythran/pythonic/include/numpy/frombuffer.hpp
+ create mode 100644 pythran/pythonic/numpy/frombuffer.hpp
+
+diff --git a/pythran/analyses/dependencies.py b/pythran/analyses/dependencies.py
+index f153558f8..e0988e103 100644
+--- a/pythran/analyses/dependencies.py
++++ b/pythran/analyses/dependencies.py
+@@ -127,6 +127,8 @@ def visit_Yield(self, node):
+     def visit_Constant(self, node):
+         if node.value is None:
+             self.result.add(('builtins', 'None'))
++        elif isinstance(node.value, bytes):
++            self.result.add(('types', 'str'))  # FIXME: using str as backend
+         elif isinstance(node.value, str):
+             self.result.add(('types', 'str'))
+         elif isinstance(node.value, complex):
+diff --git a/pythran/backend.py b/pythran/backend.py
+index e5728ab3e..7b12773fa 100644
+--- a/pythran/backend.py
++++ b/pythran/backend.py
+@@ -1012,6 +1012,14 @@ def visit_Constant(self, node):
+             ret = 'pythonic::builtins::None'
+         elif isinstance(node.value, bool):
+             ret = str(node.value).lower()
++        elif isinstance(node.value, bytes):
++            quoted = "".join('\\' + hex(b)[1:] for b in node.value)
++            # FIXME: using str type as backend
++            if len(node.value) == 1:
++                quoted = quoted.replace("'", r"\'")
++                ret = 'pythonic::types::chr(\'' + quoted + '\')'
++            else:
++                ret = 'pythonic::types::str("' + quoted + '")'
+         elif isinstance(node.value, str):
+             quoted = quote_cxxstring(node.value)
+             if len(node.value) == 1:
+diff --git a/pythran/pythonic/include/numpy/frombuffer.hpp b/pythran/pythonic/include/numpy/frombuffer.hpp
+new file mode 100644
+index 000000000..bb685d8b5
+--- /dev/null
++++ b/pythran/pythonic/include/numpy/frombuffer.hpp
+@@ -0,0 +1,26 @@
++#ifndef PYTHONIC_INCLUDE_NUMPY_FROMBUFFER_HPP
++#define PYTHONIC_INCLUDE_NUMPY_FROMBUFFER_HPP
++
++#include "pythonic/include/numpy/float64.hpp"
++#include "pythonic/include/types/list.hpp"
++#include "pythonic/include/types/ndarray.hpp"
++#include "pythonic/include/types/str.hpp"
++#include "pythonic/include/utils/functor.hpp"
++
++#include <limits>
++#include <sstream>
++
++PYTHONIC_NS_BEGIN
++
++namespace numpy
++{
++  template <class dtype = functor::float64>
++  types::ndarray<typename dtype::type, types::pshape<long>>
++  frombuffer(types::str const &string, dtype d = dtype(), long count = -1,
++             long offset = 0);
++
++  DEFINE_FUNCTOR(pythonic::numpy, frombuffer);
++} // namespace numpy
++PYTHONIC_NS_END
++
++#endif
+diff --git a/pythran/pythonic/numpy/frombuffer.hpp b/pythran/pythonic/numpy/frombuffer.hpp
+new file mode 100644
+index 000000000..c0f625142
+--- /dev/null
++++ b/pythran/pythonic/numpy/frombuffer.hpp
+@@ -0,0 +1,35 @@
++#ifndef PYTHONIC_NUMPY_FROMBUFFER_HPP
++#define PYTHONIC_NUMPY_FROMBUFFER_HPP
++
++#include "pythonic/include/numpy/frombuffer.hpp"
++
++#include "pythonic/types/list.hpp"
++#include "pythonic/types/ndarray.hpp"
++#include "pythonic/types/str.hpp"
++#include "pythonic/utils/functor.hpp"
++
++#include <limits>
++#include <sstream>
++
++PYTHONIC_NS_BEGIN
++
++namespace numpy
++{
++  template <class dtype>
++  types::ndarray<typename dtype::type, types::pshape<long>>
++  frombuffer(types::str const &string, dtype d, long count, long offset)
++  {
++    if (count < 0)
++      count = string.size() / sizeof(typename dtype::type);
++    types::pshape<long> shape = count;
++    utils::shared_ref<types::raw_array<typename dtype::type>> buffer(
++        std::get<0>(shape));
++    auto const *tstring =
++        reinterpret_cast<typename dtype::type const *>(string.c_str()) + offset;
++    std::copy(tstring, tstring + std::get<0>(shape), buffer->data);
++    return {buffer, shape};
++  }
++} // namespace numpy
++PYTHONIC_NS_END
++
++#endif
+diff --git a/pythran/tables.py b/pythran/tables.py
+index a61709d19..bf0d9b220 100644
+--- a/pythran/tables.py
++++ b/pythran/tables.py
+@@ -3752,6 +3752,7 @@ def expand_numpy_2_args(args, defaults=None, force=False):
+         "fmin": UFunc(REDUCED_BINARY_UFUNC),
+         "fmod": UFunc(BINARY_UFUNC),
+         "frexp": ConstFunctionIntr(),
++        "frombuffer": ConstFunctionIntr(),
+         "fromfunction": ConstFunctionIntr(),
+         "fromiter": ConstFunctionIntr(args=("iterable", "dtype", "count"),
+                                       defaults=(-1,)),
+diff --git a/pythran/tests/test_numpy_func0.py b/pythran/tests/test_numpy_func0.py
+index 41f716d90..a97a43c50 100644
+--- a/pythran/tests/test_numpy_func0.py
++++ b/pythran/tests/test_numpy_func0.py
+@@ -560,11 +560,23 @@ def test_fromstring1(self):
+         self.run_test("def np_fromstring1(a): from numpy import fromstring, uint8 ; a = '\x01\x02\x03\x04' ; return fromstring(a, uint8,3)", '\x01\x02\x03\x04', np_fromstring1=[str])
+ 
+     def test_fromstring2(self):
+-        self.run_test("def np_fromstring2(a): from numpy import fromstring, uint32 ; return fromstring(a, uint32,-1, ' ')", '1 2 3 4', np_fromstring2=[str])
++        self.run_test("def np_fromstring2(a): from numpy import fromstring, uint32 ; return fromstring(a, uint32,-1, ' ')", '1 20 3 40', np_fromstring2=[str])
+ 
+     def test_fromstring3(self):
+         self.run_test("def np_fromstring3(a): from numpy import fromstring, uint32 ; return fromstring(a, uint32,2, ',')", '1,2, 3, 4', np_fromstring3=[str])
+ 
++    def test_frombuffer0(self):
++        self.run_test("def np_frombuffer0(a): from numpy import frombuffer, uint8 ; return frombuffer(b'\x01\x02' * a, uint8)", 1, np_frombuffer0=[int])
++
++    def test_frombuffer1(self):
++        self.run_test("def np_frombuffer1(a): from numpy import frombuffer, uint8 ; return frombuffer(b'\x01\x02\x03\x04' * a, uint8, 3)", 1, np_frombuffer1=[int])
++
++    def test_frombuffer2(self):
++        self.run_test("def np_frombuffer2(a): from numpy import frombuffer, uint16 ; return frombuffer(a * b'\x01\x02', uint16)", 1, np_frombuffer2=[int])
++
++    def test_frombuffer3(self):
++        self.run_test("def np_frombuffer3(a): from numpy import frombuffer, int8 ; return frombuffer(a * b'\x01\x02\x03\x04', int8, 3, 1)", 1, np_frombuffer3=[int])
++
+     def test_outer0(self):
+         self.run_test("def np_outer0(x): from numpy import outer ; return outer(x, x+2)", numpy.arange(6).reshape(2,3), np_outer0=[NDArray[int,:,:]])
+ 
+diff --git a/pythran/tests/test_numpy_random.py b/pythran/tests/test_numpy_random.py
+index aa3f22815..6547a2e92 100644
+--- a/pythran/tests/test_numpy_random.py
++++ b/pythran/tests/test_numpy_random.py
+@@ -638,9 +638,9 @@ def test_numpy_random_bytes1(self):
+         self.run_test("""
+             def numpy_random_bytes1(n):
+                 from numpy.random import bytes
+-                from numpy import mean, fromstring, uint8, asarray
++                from numpy import mean, frombuffer, uint8, asarray
+                 a = bytes(n)
+-                return (abs(mean(asarray(fromstring(a, uint8), dtype=float)) - 127.5) < .05)""",
++                return (abs(mean(asarray(frombuffer(a, uint8), dtype=float)) - 127.5) < .05)""",
+                       10 ** 8, numpy_random_bytes1=[int])
+ 
+     ###########################################################################
+diff --git a/pythran/types/conversion.py b/pythran/types/conversion.py
+index e149b7fb4..b3c86b5fd 100644
+--- a/pythran/types/conversion.py
++++ b/pythran/types/conversion.py
+@@ -9,6 +9,7 @@
+ PYTYPE_TO_CTYPE_TABLE = {
+     numpy.uint: 'npy_uint',
+     #
++    bytes: 'pythonic::types::str',  # FIXME: using types::str as backend
+     complex: 'std::complex<double>',
+     bool: 'bool',
+     int: 'long',

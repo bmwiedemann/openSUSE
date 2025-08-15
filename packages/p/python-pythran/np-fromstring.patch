@@ -1,0 +1,31 @@
+From 2e4da862478a2c5b026a9066771da4dcd34a144b Mon Sep 17 00:00:00 2001
+From: serge-sans-paille <serge.guelton@telecom-bretagne.eu>
+Date: Sun, 8 Jun 2025 19:15:28 +0200
+Subject: [PATCH] Do not test binary mode of numpy.fromstring for recent numpy
+ version
+
+It's no longer supported as of numpy 2.3, see
+https://numpy.org/devdocs/release/2.3.0-notes.html and
+https://github.com/numpy/numpy/pull/28254
+
+Fix #2322
+---
+ pythran/tests/test_numpy_func0.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/pythran/tests/test_numpy_func0.py b/pythran/tests/test_numpy_func0.py
+index a97a43c50..91c37e979 100644
+--- a/pythran/tests/test_numpy_func0.py
++++ b/pythran/tests/test_numpy_func0.py
+@@ -553,9 +553,11 @@ def test_fromfile5(self):
+         finally:
+             os.remove(temp_name)
+ 
++    @unittest.skipIf(np_version > version.Version("2.2"), reason="np.fromstring no longer supports binary mode")
+     def test_fromstring0(self):
+         self.run_test("def np_fromstring0(a): from numpy import fromstring, uint8 ; return fromstring(a, uint8)", '\x01\x02', np_fromstring0=[str])
+ 
++    @unittest.skipIf(np_version > version.Version("2.2"), reason="np.fromstring no longer supports binary mode")
+     def test_fromstring1(self):
+         self.run_test("def np_fromstring1(a): from numpy import fromstring, uint8 ; a = '\x01\x02\x03\x04' ; return fromstring(a, uint8,3)", '\x01\x02\x03\x04', np_fromstring1=[str])
+ 

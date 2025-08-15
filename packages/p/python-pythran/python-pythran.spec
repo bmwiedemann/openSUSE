@@ -56,6 +56,10 @@ Source99:       python-pythran-rpmlintrc
 Patch0:         GCC15_fix_Add-missing-operators-to-nditerator.patch
 # PATCH-FIX-UPSTREAM: https://github.com/serge-sans-paille/pythran/commit/623fa5031df7ec5c3dfe6789bf608cf11ac95c36
 Patch1:         GCC15_pythran-PR2325-missing-operators.patch
+# PATCH-FIX-UPSTREAM https://github.com/serge-sans-paille/pythran/commit/2e4da862478a2c5b026a9066771da4dcd34a144b Do not test binary mode of numpy.fromstring for recent numpy version
+Patch2:         np-fromstring.patch
+# PATCH-FIX-UPSTREAM https://github.com/serge-sans-paille/pythran/commit/0ddfcc155ac06dff63158647f1e174db9a116689 Add support for numpy.frombuffer
+Patch3:         np-frombuffer.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -137,9 +141,10 @@ export PYTHRANRC=$PWD/config.pythranrc
 %endif
 # gh#serge-sans-paille/pythran#2317 -- changed AST in Py3.13
 # gh#serge-sans-paille/pythran#2326
-python313_skip_tests=("-k" "not (test_tutorial or test_utils)")
+python313_skip_tests="or test_tutorial or test_utils"
+# https://github.com/serge-sans-paille/pythran/issues/2340 test_ndarray_bool fails with numpy 2.3
 # pytest_extra_args is for debug builds with local defines on command line
-%pytest %{?jobs:-n %jobs} %{?pytest_extra_args} "${$python_skip_tests[@]}"
+%pytest %{?jobs:-n %jobs} %{?pytest_extra_args} -k "not (test_ndarray_bool ${$python_skip_tests[@]})"
 %endif
 
 %if !%{with test}
