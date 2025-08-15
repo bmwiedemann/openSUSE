@@ -1,0 +1,119 @@
+From f770cc82c3d65c65d812e96e006c17861d357d99 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Sat, 26 Apr 2025 15:07:36 +0800
+Subject: [PATCH 1/4] linux: fallback to EFI handover on x86_64
+
+On the x86_64 platform, when the shim loader protocol is unavailable and
+UEFI Secure Boot is enabled, fall back to the Linux EFI handover boot
+protocol. This legacy method supports the in-kernel EFI stub and is used
+instead of the 32-bit boot entry.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/Makefile.core.def       |  2 ++
+ grub-core/loader/efi/linux.c      | 13 +++++++------
+ grub-core/loader/i386/efi/linux.c | 30 ++++--------------------------
+ 3 files changed, 13 insertions(+), 32 deletions(-)
+
+diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
+index 80ea6656a..1811661c3 100644
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -1902,6 +1902,8 @@ module = {
+   loongarch64 = loader/efi/linux.c;
+   riscv32 = loader/efi/linux.c;
+   riscv64 = loader/efi/linux.c;
++  i386_efi = loader/efi/linux.c;
++  x86_64_efi = loader/efi/linux.c;
+   emu = loader/emu/linux.c;
+   common = loader/linux.c;
+   i386_efi = loader/efi/linux_boot.c;
+diff --git a/grub-core/loader/efi/linux.c b/grub-core/loader/efi/linux.c
+index 394df6039..b20dec404 100644
+--- a/grub-core/loader/efi/linux.c
++++ b/grub-core/loader/efi/linux.c
+@@ -71,10 +71,10 @@ static initrd_media_device_path_t initrd_lf2_device_path = {
+ };
+ 
+ extern grub_err_t
+-grub_cmd_linux_x86_legacy (grub_command_t cmd, int argc, char *argv[]);
++grub_cmd_linux_efi_fallback (grub_command_t cmd, int argc, char *argv[]);
+ 
+ extern grub_err_t
+-grub_cmd_initrd_x86_legacy (grub_command_t cmd, int argc, char *argv[]);
++grub_cmd_initrd_efi_fallback (grub_command_t cmd, int argc, char *argv[]);
+ 
+ static grub_efi_status_t __grub_efi_api
+ grub_efi_initrd_load_file2 (grub_efi_load_file2_t *this,
+@@ -389,8 +389,9 @@ grub_cmd_initrd (grub_command_t cmd __attribute__ ((unused)),
+     }
+ 
+ #if defined(__i386__) || defined(__x86_64__)
+-  if (!initrd_use_loadfile2)
+-    return grub_cmd_initrd_x86_legacy (cmd, argc, argv);
++  if (grub_is_using_legacy_shim_lock_protocol () == true ||
++      !initrd_use_loadfile2)
++    return grub_cmd_initrd_efi_fallback (cmd, argc, argv);
+ #endif
+ 
+   if (!loaded)
+@@ -474,7 +475,7 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+ #if defined(__i386__) || defined(__x86_64__)
+       grub_dprintf ("linux", "using legacy shim_lock protocol, falling back to legacy Linux kernel loader\n");
+ 
+-      err = grub_cmd_linux_x86_legacy (cmd, argc, argv);
++      err = grub_cmd_linux_efi_fallback (cmd, argc, argv);
+ 
+       if (err == GRUB_ERR_NONE)
+ 	return GRUB_ERR_NONE;
+@@ -513,7 +514,7 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+        */
+ fallback:
+       grub_file_close (file);
+-      return grub_cmd_linux_x86_legacy (cmd, argc, argv);
++      return grub_cmd_linux_efi_fallback (cmd, argc, argv);
+     }
+ #endif
+ 
+diff --git a/grub-core/loader/i386/efi/linux.c b/grub-core/loader/i386/efi/linux.c
+index ca3435a88..49e4a3f19 100644
+--- a/grub-core/loader/i386/efi/linux.c
++++ b/grub-core/loader/i386/efi/linux.c
+@@ -421,30 +421,8 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+   return grub_errno;
+ }
+ 
+-static grub_command_t cmd_linux, cmd_initrd;
+-static grub_command_t cmd_linuxefi, cmd_initrdefi;
++extern grub_err_t __attribute__((alias("grub_cmd_linux")))
++grub_cmd_linux_efi_fallback (grub_command_t cmd, int argc, char *argv[]);
+ 
+-GRUB_MOD_INIT(linux)
+-{
+-  cmd_linuxefi =
+-    grub_register_command ("linuxefi", grub_cmd_linux,
+-                           0, N_("Load Linux."));
+-  cmd_initrdefi =
+-    grub_register_command ("initrdefi", grub_cmd_initrd,
+-                           0, N_("Load initrd."));
+-  cmd_linux =
+-    grub_register_command ("linux", grub_cmd_linux,
+-                           0, N_("Load Linux."));
+-  cmd_initrd =
+-    grub_register_command ("initrd", grub_cmd_initrd,
+-                           0, N_("Load initrd."));
+-  my_mod = mod;
+-}
+-
+-GRUB_MOD_FINI(linux)
+-{
+-  grub_unregister_command (cmd_linuxefi);
+-  grub_unregister_command (cmd_initrdefi);
+-  grub_unregister_command (cmd_linux);
+-  grub_unregister_command (cmd_initrd);
+-}
++extern grub_err_t __attribute__((alias("grub_cmd_initrd")))
++grub_cmd_initrd_efi_fallback (grub_command_t cmd, int argc, char *argv[]);
+-- 
+2.50.1
+

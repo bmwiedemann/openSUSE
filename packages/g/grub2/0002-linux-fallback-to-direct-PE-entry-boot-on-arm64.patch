@@ -1,0 +1,113 @@
+From 1e5d19972bb64b0fcb39083042a69cf05e0cb783 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Sat, 26 Apr 2025 15:33:28 +0800
+Subject: [PATCH 2/4] linux: fallback to direct PE entry boot on arm64
+
+On the arm64 platform, when the shim loader protocol is unavailable and
+UEFI Secure Boot is enabled, fall back to booting via the direct PE/COFF
+image entry point instead of requesting UEFI to load and start the
+image. This fallback allows booting binaries validated by shim's vendor
+DB, even if they are not listed in the UEFI DB.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/Makefile.core.def        |  1 +
+ grub-core/loader/arm64/efi/linux.c | 26 +++++++-------------------
+ grub-core/loader/efi/linux.c       |  6 +++---
+ 3 files changed, 11 insertions(+), 22 deletions(-)
+
+diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
+index 1811661c3..2100d7ff2 100644
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -1898,6 +1898,7 @@ module = {
+   arm_coreboot = loader/arm/linux.c;
+   arm_efi = loader/efi/linux.c;
+   arm_uboot = loader/arm/linux.c;
++  arm64 = loader/efi/linux.c;
+   arm64 = loader/arm64/efi/linux.c;
+   loongarch64 = loader/efi/linux.c;
+   riscv32 = loader/efi/linux.c;
+diff --git a/grub-core/loader/arm64/efi/linux.c b/grub-core/loader/arm64/efi/linux.c
+index a9f5e05e4..8eab1dc86 100644
+--- a/grub-core/loader/arm64/efi/linux.c
++++ b/grub-core/loader/arm64/efi/linux.c
+@@ -190,8 +190,8 @@ free_params (void)
+     }
+ }
+ 
+-grub_err_t
+-grub_arch_efi_linux_boot_image (grub_addr_t addr,
++static grub_err_t
++grub_arm64_efi_linux_boot_image (grub_addr_t addr,
+ 			        grub_size_t size __attribute__ ((unused)),
+ 			        char *args)
+ {
+@@ -213,7 +213,7 @@ grub_arch_efi_linux_boot_image (grub_addr_t addr,
+ static grub_err_t
+ grub_linux_boot (void)
+ {
+-  return (grub_arch_efi_linux_boot_image ((grub_addr_t)kernel_addr, kernel_size, linux_args));
++  return (grub_arm64_efi_linux_boot_image ((grub_addr_t)kernel_addr, kernel_size, linux_args));
+ }
+ 
+ static grub_err_t
+@@ -464,20 +464,8 @@ fail:
+   return grub_errno;
+ }
+ 
++extern grub_err_t __attribute__((alias("grub_cmd_linux")))
++grub_cmd_linux_efi_fallback (grub_command_t cmd, int argc, char *argv[]);
+ 
+-static grub_command_t cmd_linux, cmd_initrd;
+-
+-GRUB_MOD_INIT (linux)
+-{
+-  cmd_linux = grub_register_command ("linux", grub_cmd_linux, 0,
+-				     N_("Load Linux."));
+-  cmd_initrd = grub_register_command ("initrd", grub_cmd_initrd, 0,
+-				      N_("Load initrd."));
+-  my_mod = mod;
+-}
+-
+-GRUB_MOD_FINI (linux)
+-{
+-  grub_unregister_command (cmd_linux);
+-  grub_unregister_command (cmd_initrd);
+-}
++extern grub_err_t __attribute__((alias("grub_cmd_initrd")))
++grub_cmd_initrd_efi_fallback (grub_command_t cmd, int argc, char *argv[]);
+diff --git a/grub-core/loader/efi/linux.c b/grub-core/loader/efi/linux.c
+index b20dec404..d29e32cba 100644
+--- a/grub-core/loader/efi/linux.c
++++ b/grub-core/loader/efi/linux.c
+@@ -388,7 +388,7 @@ grub_cmd_initrd (grub_command_t cmd __attribute__ ((unused)),
+       goto fail;
+     }
+ 
+-#if defined(__i386__) || defined(__x86_64__)
++#if defined(__i386__) || defined(__x86_64__) || defined(__aarch64__)
+   if (grub_is_using_legacy_shim_lock_protocol () == true ||
+       !initrd_use_loadfile2)
+     return grub_cmd_initrd_efi_fallback (cmd, argc, argv);
+@@ -472,7 +472,7 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+ 
+   if (grub_is_using_legacy_shim_lock_protocol () == true)
+     {
+-#if defined(__i386__) || defined(__x86_64__)
++#if defined(__i386__) || defined(__x86_64__) || defined (__aarch64__)
+       grub_dprintf ("linux", "using legacy shim_lock protocol, falling back to legacy Linux kernel loader\n");
+ 
+       err = grub_cmd_linux_efi_fallback (cmd, argc, argv);
+@@ -499,7 +499,7 @@ grub_cmd_linux (grub_command_t cmd __attribute__ ((unused)),
+   kernel_size = grub_file_size (file);
+ 
+   if (grub_arch_efi_linux_load_image_header (file, &lh) != GRUB_ERR_NONE)
+-#if !defined(__i386__) && !defined(__x86_64__)
++#if !defined(__i386__) && !defined(__x86_64__) && !defined (__aarch64__)
+     goto fail;
+ #else
+     goto fallback;
+-- 
+2.50.1
+

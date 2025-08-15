@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Aug 11 02:57:30 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- UEFI NX support and NX Linux loader using shim loader protocol (bsc#1205588)
+  (jsc#PED-13361)
+  * 0001-modules-Make-.module_license-read-only.patch
+  * 0002-modules-Strip-.llvm_addrsig-sections-and-similar.patch
+  * 0003-modules-Don-t-allocate-space-for-non-allocable-secti.patch
+  * 0004-modules-Load-module-sections-at-page-aligned-address.patch
+  * 0005-nx-Add-memory-attribute-get-set-API.patch
+  * 0006-nx-Set-page-permissions-for-loaded-modules.patch
+  * 0007-nx-Set-the-NX-compatible-flag-for-the-GRUB-EFI-image.patch
+  * 0008-efi-Provide-wrappers-for-load_image-start_image-and-.patch
+  * 0009-efi-sb-Add-support-for-the-shim-loader-protocol.patch
+  * 0010-efi-sb-Add-API-for-retrieving-shim-loader-image-hand.patch
+  * 0011-loader-efi-chainloader-Use-shim-loader-image-handle-.patch
+  * 0012-loader-efi-linux-Use-shim-loader-image-handle-where-.patch
+  * 0013-nx-Rename-GRUB_DL_ALIGN-to-DL_ALIGN.patch
+- Fallback for legacy shim lock protocol while secure boot is enabled
+  * 0001-linux-fallback-to-EFI-handover-on-x86_64.patch
+  * 0002-linux-fallback-to-direct-PE-entry-boot-on-arm64.patch
+  * 0003-efi-chainloader-fallback-to-direct-image-execution.patch
+  * 0004-efi-chainloader-fix-missing-file_path-in-loaded_imag.patch
+- Removed patch
+  * 0001-xen_boot-add-missing-grub_arch_efi_linux_load_image_.patch
+
+-------------------------------------------------------------------
 Thu Aug  7 06:19:53 UTC 2025 - Michael Chang <mchang@suse.com>
 
 - Fix timeout when loading initrd via http after PPC CAS reboot (bsc#1245953)

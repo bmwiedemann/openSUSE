@@ -1,0 +1,43 @@
+From 43b0319936f51dc6b4cba3518449195924e83dc8 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Sat, 26 Apr 2025 15:39:43 +0800
+Subject: [PATCH 3/4] efi/chainloader: fallback to direct image execution
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When the shim loader protocol is unavailable and UEFI Secure Boot is
+enabled, fall back to chainloading the PE/COFF image by manually
+relocating it to the loaded memory address and jumping to its entry
+point, rather than invoking UEFI to load and start the image. This
+fallback supports booting binaries validated by shim’s vendor DB, even
+if they are not present in the UEFI DB.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/loader/efi/chainloader.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/loader/efi/chainloader.c b/grub-core/loader/efi/chainloader.c
+index 1830de223..7e2847217 100644
+--- a/grub-core/loader/efi/chainloader.c
++++ b/grub-core/loader/efi/chainloader.c
+@@ -805,10 +805,14 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
+ 
+ #ifdef SUPPORT_SECURE_BOOT
+   /* FIXME is secure boot possible also with universal binaries? */
+-  if (debug_secureboot || (grub_efi_get_secureboot () == GRUB_EFI_SECUREBOOT_MODE_ENABLED && grub_secure_validate ((void *)address, size)))
++  if (debug_secureboot ||
++      (grub_efi_get_secureboot () == GRUB_EFI_SECUREBOOT_MODE_ENABLED &&
++       grub_is_using_legacy_shim_lock_protocol () == true &&
++       grub_secure_validate ((void *)address, size)))
+     {
+       struct grub_secureboot_chainloader_context *sb_context;
+ 
++      grub_dprintf ("chain", "Falling back to PE loader\n");
+       sb_context = grub_malloc (sizeof (*sb_context));
+       if (!sb_context)
+ 	goto fail;
+-- 
+2.50.1
+

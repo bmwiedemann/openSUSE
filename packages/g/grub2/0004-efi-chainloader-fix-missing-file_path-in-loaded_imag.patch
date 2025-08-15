@@ -1,0 +1,97 @@
+From e2a6f238920ab547d216ce96283bca6faf36378b Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Wed, 30 Apr 2025 21:16:50 +0800
+Subject: [PATCH 4/4] efi/chainloader: fix missing file_path in loaded_image
+
+The file_path field in the loaded_image protocol may be unset for
+chainloaded target images. When this occurs, populate the file_path to
+ensure the target image can use the loaded_image protocol for location
+dependent operations, such as reading configuration files from its
+directory. Without this, the chainloaded image may fail to start due to
+an inability to reconfigure itself properly.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/loader/efi/chainloader.c | 52 +++++++++++++++++-------------
+ 1 file changed, 29 insertions(+), 23 deletions(-)
+
+diff --git a/grub-core/loader/efi/chainloader.c b/grub-core/loader/efi/chainloader.c
+index 7e2847217..9b70e1e61 100644
+--- a/grub-core/loader/efi/chainloader.c
++++ b/grub-core/loader/efi/chainloader.c
+@@ -222,6 +222,29 @@ make_file_path (grub_efi_device_path_t *dp, const char *filename)
+   return file_path;
+ }
+ 
++static grub_efi_device_path_t *
++grub_efi_get_media_file_path (grub_efi_device_path_t *dp)
++{
++  while (1)
++    {
++      grub_efi_uint8_t type;
++      grub_efi_uint8_t subtype;
++
++      if (GRUB_EFI_END_ENTIRE_DEVICE_PATH (dp))
++        break;
++
++      type = GRUB_EFI_DEVICE_PATH_TYPE (dp);
++      subtype = GRUB_EFI_DEVICE_PATH_SUBTYPE (dp);
++
++      if (type == GRUB_EFI_MEDIA_DEVICE_PATH_TYPE && subtype == GRUB_EFI_FILE_PATH_DEVICE_PATH_SUBTYPE)
++	return dp;
++
++      dp = GRUB_EFI_NEXT_DEVICE_PATH (dp);
++    }
++
++  return NULL;
++}
++
+ #ifdef SUPPORT_SECURE_BOOT
+ #define SHIM_LOCK_GUID \
+   { 0x605dab50, 0xe046, 0x4300, {0xab, 0xb6, 0x3d, 0xd8, 0x10, 0xdd, 0x8b, 0x23} }
+@@ -461,29 +484,6 @@ relocate_coff (pe_coff_loader_image_context_t *context, void *data)
+   return GRUB_EFI_SUCCESS;
+ }
+ 
+-static grub_efi_device_path_t *
+-grub_efi_get_media_file_path (grub_efi_device_path_t *dp)
+-{
+-  while (1)
+-    {
+-      grub_efi_uint8_t type;
+-      grub_efi_uint8_t subtype; 
+-
+-      if (GRUB_EFI_END_ENTIRE_DEVICE_PATH (dp))
+-        break;
+-
+-      type = GRUB_EFI_DEVICE_PATH_TYPE (dp);
+-      subtype = GRUB_EFI_DEVICE_PATH_SUBTYPE (dp);
+-
+-      if (type == GRUB_EFI_MEDIA_DEVICE_PATH_TYPE && subtype == GRUB_EFI_FILE_PATH_DEVICE_PATH_SUBTYPE)
+-	return dp;
+-
+-      dp = GRUB_EFI_NEXT_DEVICE_PATH (dp);
+-    }
+-
+-  return NULL;
+-}
+-
+ static grub_efi_boolean_t
+ handle_image (struct grub_secureboot_chainloader_context *load_context)
+ {
+@@ -881,6 +881,12 @@ grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
+     }
+   loaded_image->device_handle = dev_handle;
+ 
++  if (! loaded_image->file_path)
++    {
++      grub_dprintf ("chain", "bailout file_path\n");
++      loaded_image->file_path = grub_efi_get_media_file_path (file_path);
++    }
++
+   /* Build load options with arguments from chainloader command line. */
+   if (cmdline)
+     {
+-- 
+2.50.1
+

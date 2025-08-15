@@ -369,7 +369,6 @@ Patch176:       0001-ieee1275-ofdisk-retry-on-open-and-read-failure.patch
 Patch177:       0002-Restrict-cryptsetup-key-file-permission-for-better-s.patch
 Patch178:       0001-openfw-Ensure-get_devargs-and-get_devname-functions-.patch
 Patch179:       0002-prep_loadenv-Fix-regex-for-Open-Firmware-device-spec.patch
-Patch180:       0001-xen_boot-add-missing-grub_arch_efi_linux_load_image_.patch
 Patch181:       0001-font-Try-memdisk-fonts-with-the-same-name.patch
 Patch182:       0001-Make-grub.cfg-compatible-to-old-binaries.patch
 Patch183:       grub2-change-bash-completion-dir.patch
@@ -496,6 +495,23 @@ Patch318:       0004-tftp-Fix-hang-when-file-is-a-directory.patch
 Patch319:       grub2-constant-time-grub_crypto_memcmp.patch
 Patch320:       0001-getroot-Skip-mount-points-in-grub_find_device.patch
 Patch321:       0001-tcp-Fix-TCP-port-number-reused-on-reboot.patch
+Patch322:       0001-modules-Make-.module_license-read-only.patch
+Patch323:       0002-modules-Strip-.llvm_addrsig-sections-and-similar.patch
+Patch324:       0003-modules-Don-t-allocate-space-for-non-allocable-secti.patch
+Patch325:       0004-modules-Load-module-sections-at-page-aligned-address.patch
+Patch326:       0005-nx-Add-memory-attribute-get-set-API.patch
+Patch327:       0006-nx-Set-page-permissions-for-loaded-modules.patch
+Patch328:       0007-nx-Set-the-NX-compatible-flag-for-the-GRUB-EFI-image.patch
+Patch329:       0008-efi-Provide-wrappers-for-load_image-start_image-and-.patch
+Patch330:       0009-efi-sb-Add-support-for-the-shim-loader-protocol.patch
+Patch331:       0010-efi-sb-Add-API-for-retrieving-shim-loader-image-hand.patch
+Patch332:       0011-loader-efi-chainloader-Use-shim-loader-image-handle-.patch
+Patch333:       0012-loader-efi-linux-Use-shim-loader-image-handle-where-.patch
+Patch334:       0013-nx-Rename-GRUB_DL_ALIGN-to-DL_ALIGN.patch
+Patch335:       0001-linux-fallback-to-EFI-handover-on-x86_64.patch
+Patch336:       0002-linux-fallback-to-direct-PE-entry-boot-on-arm64.patch
+Patch337:       0003-efi-chainloader-fallback-to-direct-image-execution.patch
+Patch338:       0004-efi-chainloader-fix-missing-file_path-in-loaded_imag.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime
