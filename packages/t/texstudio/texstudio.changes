@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 13 05:41:21 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
+
+- Update to 4.8.8
+  * improve handling tblr env for table manipulation
+  * small bug fixes
+  * implement macro function editor.getLineTokens, see 
+    gh#texstudio-org/texstudio#4111
+
+-------------------------------------------------------------------
 Mon May 12 13:07:15 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to 4.8.7
