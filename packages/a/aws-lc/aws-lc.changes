@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 14 12:47:07 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.58.1:
+  * Add support for EVP_PKEY_param_check
+  * Move check-linkage.sh to util
+
+-------------------------------------------------------------------
 Tue Aug 12 18:33:26 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.58.0:

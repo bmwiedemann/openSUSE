@@ -87,4 +87,14 @@
   * ML-DSA constant-time hardening for caddq, poly_chknorm, decompose (forwarded request 1299138 from rrahl0)</comment>
     <requestid>1299139</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3e1c8a4f51555fcd829208b671b09db5</srcmd5>
+    <version>1.58.1</version>
+    <time>1755287523</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.58.1:
+  * Add support for EVP_PKEY_param_check
+  * Move check-linkage.sh to util (forwarded request 1299417 from rrahl0)</comment>
+    <requestid>1299418</requestid>
+  </revision>
 </revisionlist>
