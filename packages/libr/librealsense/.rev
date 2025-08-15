@@ -124,4 +124,41 @@ D435.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1219492</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>522e397ad0bfddf36065f66ac8029b65</srcmd5>
+    <version>2.56.5</version>
+    <time>1755287496</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.56.5
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.56.5
+
+- Build all installed libraries as shared libraries to fix a problem
+  when building the monado package
+- Add patches:
+  * 0001-cmake-add-support-to-build-shared-libraries.patch
+  * 0002-cmake-Use-the-same-version-for-all-libraries-that-ca.patch
+- Rebased patches:
+  * rsutils.patch
+- Removed obsolete patches:
+  * realsense_file.patch
+
+- .spec cleanup
+  * no need for -DBUILD_SHARED_LIBS=ON, %cmake already does this
+- .changes cleanup
+  * reference new patches
+  * remove spaces at the ends of lines
+- fix shared library patches
+  * set SOVERSION properly
+  * what are the patches good for after all? The static libs were
+    included in .so already, right?
+- Update to 2.56.3
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.56.3
+
+- Update to 2.56.2
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.56.2</comment>
+    <requestid>1299323</requestid>
+  </revision>
 </revisionlist>

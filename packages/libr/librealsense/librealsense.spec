@@ -1,7 +1,8 @@
 #
 # spec file for package librealsense
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Alessandro de Oliveira Faria (A.K.A. CABELO) <cabelo@opensuse.org> or <alessandro.faria@owasp.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +20,20 @@
 %define libver %(echo %version|sed 's@^\\([0-9]*\\)\\.\\([0-9]*\\).*@\\1_\\2@')
 
 Name:           librealsense
-Version:        2.56.1
+Version:        2.56.5
 Release:        0
 Summary:        Library for Intel RealSense depth cameras
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/IntelRealSense/librealsense
 Source:         https://github.com/IntelRealSense/librealsense/archive/v%{version}.tar.gz
-Patch0:         presets_path.patch
-Patch1:         disable-pedantic.patch
-Patch2:         0001-third-party-use-nlohmann_json-from-system.patch
+# see https://github.com/IntelRealSense/librealsense/pull/14125
+Patch0:         0001-cmake-add-support-to-build-shared-libraries.patch
+Patch1:         0002-cmake-Use-the-same-version-for-all-libraries-that-ca.patch
+Patch2:         presets_path.patch
+Patch3:         disable-pedantic.patch
+Patch4:         0001-third-party-use-nlohmann_json-from-system.patch
+Patch5:         rsutils.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -109,11 +114,13 @@ install -m 644 -t %{buildroot}/%{_udevrulesdir} config/99-realsense-libusb.rules
 %files -n %{name}%{libver}
 %license LICENSE
 %{_libdir}/librealsense*.so.*
+%{_libdir}/librsutils.so.*
 
 %files devel
 %{_includedir}/librealsense2
 %{_includedir}/librealsense2-gl
 %{_libdir}/librealsense*.so
+%{_libdir}/librsutils.so
 %dir %{_libdir}/cmake/realsense2
 %dir %{_libdir}/cmake/realsense2-gl
 %{_libdir}/cmake/realsense2/*.cmake

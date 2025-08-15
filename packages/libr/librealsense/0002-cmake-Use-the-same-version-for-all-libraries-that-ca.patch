@@ -1,0 +1,39 @@
+From 682b4f8fbd96ea3e4b11e9d365faecfb1b87d6f6 Mon Sep 17 00:00:00 2001
+From: Ralf Habacker <ralf.habacker@freenet.de>
+Date: Wed, 9 Jul 2025 15:10:41 +0200
+Subject: [PATCH 2/6] cmake: Use the same version for all libraries that can be
+ created in shared mode
+
+---
+ third-party/realsense-file/CMakeLists.txt | 2 +-
+ third-party/rsutils/CMakeLists.txt        | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/third-party/realsense-file/CMakeLists.txt b/third-party/realsense-file/CMakeLists.txt
+index e33f965721fd..a53f4c37b03b 100644
+--- a/third-party/realsense-file/CMakeLists.txt
++++ b/third-party/realsense-file/CMakeLists.txt
+@@ -42,7 +42,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
+         $<$<BOOL:${USE_EXTERNAL_LZ4}>:lz4::lz4>
+ )
+ 
+-#set_target_properties(${PROJECT_NAME} PROPERTIES VERSION "${LIBVERSION}" SOVERSION "${LIBSOVERSION}")
++set_target_properties(${LRS_TARGET} PROPERTIES VERSION ${REALSENSE_VERSION_STRING} SOVERSION "${REALSENSE_VERSION_MAJOR}.${REALSENSE_VERSION_MINOR}")
+ 
+ set_target_properties (${PROJECT_NAME} PROPERTIES FOLDER Library)
+ 
+diff --git a/third-party/rsutils/CMakeLists.txt b/third-party/rsutils/CMakeLists.txt
+index bb27360b37ec..15153a1fffac 100644
+--- a/third-party/rsutils/CMakeLists.txt
++++ b/third-party/rsutils/CMakeLists.txt
+@@ -8,6 +8,7 @@ add_library( ${PROJECT_NAME} "" )
+ #target_link_libraries( ${PROJECT_NAME} PUBLIC nlohmann_json )
+ target_compile_features( ${PROJECT_NAME} PUBLIC cxx_std_14 )
+ set_target_properties( ${PROJECT_NAME} PROPERTIES FOLDER Library )
++set_target_properties( ${PROJECT_NAME} PROPERTIES VERSION ${REALSENSE_VERSION_STRING} SOVERSION "${REALSENSE_VERSION_MAJOR}.${REALSENSE_VERSION_MINOR}")
+ 
+ target_include_directories( ${PROJECT_NAME}
+     PUBLIC
+-- 
+2.50.1
+

@@ -1,0 +1,69 @@
+From cdd508256dcb0a65b6031ee11f1f91688d19cb64 Mon Sep 17 00:00:00 2001
+From: Ralf Habacker <ralf.habacker@freenet.de>
+Date: Wed, 9 Jul 2025 14:46:16 +0200
+Subject: [PATCH 1/6] cmake: add support to build shared libraries
+
+Shared libraries can be build by adding -DCMAKE_SHARED_LIBS=ON to the
+cmake configure line.
+---
+ CMakeLists.txt                            | 2 ++
+ common/fw/CMakeLists.txt                  | 2 +-
+ third-party/realsense-file/CMakeLists.txt | 2 +-
+ third-party/rsutils/CMakeLists.txt        | 2 +-
+ 4 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ae063e69d84b..5830699faeae 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,6 +4,8 @@ cmake_minimum_required(VERSION 3.8)
+ set( LRS_TARGET realsense2 )
+ project( ${LRS_TARGET} LANGUAGES CXX C )
+ 
++option(BUILD_SHARED_LIBS "Build using shared libraries" OFF)
++
+ # Allow librealsense2 and all of the nested project to include the main repo folder
+ set(REPO_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
+ include_directories(${REPO_ROOT})
+diff --git a/common/fw/CMakeLists.txt b/common/fw/CMakeLists.txt
+index 735f4d6b34c6..7b83d5d5335f 100644
+--- a/common/fw/CMakeLists.txt
++++ b/common/fw/CMakeLists.txt
+@@ -17,7 +17,7 @@ set(D4XX_FW_VERSION ${CMAKE_MATCH_1})
+ set(D4XX_FW_SHA1 e7a67224fd0bd823df03dc7f1135a59db93746fd)
+ set(D4XX_FW_URL "${REALSENSE_FIRMWARE_URL}/Releases/RS4xx/FW")
+ 
+-add_library(${PROJECT_NAME} STATIC empty.c)
++add_library(${PROJECT_NAME} empty.c)
+ 
+ # disable link time optimization for fw by adding -fno-lto to disable -flto flag
+ # jammy debian has build errors without it
+diff --git a/third-party/realsense-file/CMakeLists.txt b/third-party/realsense-file/CMakeLists.txt
+index 9ba89a0d980a..e33f965721fd 100644
+--- a/third-party/realsense-file/CMakeLists.txt
++++ b/third-party/realsense-file/CMakeLists.txt
+@@ -24,7 +24,7 @@ endif()
+ 
+ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+ 
+-add_library(${PROJECT_NAME} STATIC
++add_library(${PROJECT_NAME}
+     ${AllSources}
+     ${HEADER_FILES_ROSBAG}
+     ${SOURCE_FILES_ROSBAG}
+diff --git a/third-party/rsutils/CMakeLists.txt b/third-party/rsutils/CMakeLists.txt
+index b0fc310497aa..bb27360b37ec 100644
+--- a/third-party/rsutils/CMakeLists.txt
++++ b/third-party/rsutils/CMakeLists.txt
+@@ -3,7 +3,7 @@
+ cmake_minimum_required(VERSION 3.8.0)  # source_group(TREE)
+ project( rsutils )
+ 
+-add_library( ${PROJECT_NAME} STATIC "" )
++add_library( ${PROJECT_NAME} "" )
+ # We cannot directly interface with nlohmann_json (doesn't work on bionic)
+ #target_link_libraries( ${PROJECT_NAME} PUBLIC nlohmann_json )
+ target_compile_features( ${PROJECT_NAME} PUBLIC cxx_std_14 )
+-- 
+2.50.1
+
