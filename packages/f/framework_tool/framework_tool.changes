@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 14 11:35:24 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- regenerate vendor tarball to update slab to 0.4.11 to fix
+  CVE-2025-55159 (bsc#1248046)
+
+-------------------------------------------------------------------
 Wed Jul  9 11:23:08 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.4.5
