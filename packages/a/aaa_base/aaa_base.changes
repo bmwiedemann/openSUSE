@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Aug 05 15:28:33 UTC 2025 - Ruediger Oertel <ro@suse.com>
+
+- Update to version 84.87+git20250805.3069494:
+  * Remove initviocons for tcsh as well and
+  * Update csh.login
+  * Add missing quoting and remove unneeded uses of eval
+
+-------------------------------------------------------------------
+Fri Aug 01 09:04:06 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 84.87+git20250801.f305627:
+  * Remove sysconfig.language [bsc#1247286]
+
+-------------------------------------------------------------------
+Fri Aug 01 08:53:32 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 84.87+git20250801.b2fa3fe:
+  * Allow /etc/locale.conf to have no newline
+
+-------------------------------------------------------------------
 Tue Apr 29 16:08:04 UTC 2025 - Ruediger Oertel <ro@suse.com>
 
 - Update to version 84.87+git20250429.1cad3bc:
@@ -1105,7 +1125,7 @@ Mon Jan 26 12:30:54 UTC 2015 - werner@suse.de
 - Merge pull request #21 from arvidjaar/bnc/907873
 
 -------------------------------------------------------------------
-Fri Dec 5 10:55:09 2014 UTC arvidjaar@gmail.com
+Fri Dec 5 10:55:09 UTC 2014 - arvidjaar@gmail.com
 
 - Avoid sourcing /etc/bash_completion.d twice
 

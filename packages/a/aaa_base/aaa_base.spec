@@ -33,7 +33,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20250429.1cad3bc%{git_version}
+Version:        84.87+git20250805.3069494%{git_version}
 Release:        0
 Summary:        openSUSE Base Package
 License:        GPL-2.0-or-later
@@ -173,7 +173,6 @@ if [ -e /etc/nsswitch.conf ]; then
     done
 fi
 
-%{fillup_only -n language}
 %{fillup_only -n proxy}
 %service_add_post soft-reboot-cleanup.service
 
@@ -265,7 +264,6 @@ fi
 /usr/lib/sysctl.d/50-pid-max.conf
 %endif
 /usr/lib/sysctl.d/51-network.conf
-%{_fillupdir}/sysconfig.language
 %{_fillupdir}/sysconfig.proxy
 
 %files extras

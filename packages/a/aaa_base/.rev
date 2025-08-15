@@ -4283,4 +4283,21 @@
   * Remove alias &quot;you&quot; (boo#1242011)</comment>
     <requestid>1273488</requestid>
   </revision>
+  <revision rev="511" vrev="1">
+    <srcmd5>e14a6c20713f405f66e1b68d68b56680</srcmd5>
+    <version>84.87+git20250805.3069494</version>
+    <time>1755287476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20250805.3069494:
+  * Remove initviocons for tcsh as well and
+  * Update csh.login
+  * Add missing quoting and remove unneeded uses of eval
+
+- Update to version 84.87+git20250801.f305627:
+  * Remove sysconfig.language [bsc#1247286]
+
+- Update to version 84.87+git20250801.b2fa3fe:
+  * Allow /etc/locale.conf to have no newline</comment>
+    <requestid>1297777</requestid>
+  </revision>
 </revisionlist>
