@@ -1,7 +1,7 @@
 #
 # spec file for package messagelib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,13 +17,13 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
-%define kpim6_version 6.4.3
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
+%define kpim6_version 6.5.0
 
 %bcond_without released
 Name:           messagelib
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        KDE PIM library for e-mail message parsing and display
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-or-later
