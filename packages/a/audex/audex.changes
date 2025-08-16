@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:48 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Fix begin/end modelReset warning
+  * * Improve progress display of ripping process (make it smoother) * Improve logs of ripping process
+  * Disable isrc/mcn number writing checkbox in cue sheet writer dialog
+  * Reenable whole disc ripping
+  * Fix directory creation broken when creating FAT32 compatible file names (kde#504295)
+  * * Revert libcdio integration * New ripping engine based on libcdio-cdparanoia
+  * Apply new design of artist and label on side bar
+  * Code cleanups
+  * Fix ripping speed calculation
+  * Fix small bug with QProcess error handling
+  * Fix handling of '/' characters in metadata for generating filenames (kde#501388)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
