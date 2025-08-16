@@ -1,7 +1,7 @@
 #
 # spec file for package marble
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,8 @@
 %define _so -28
 %define _so_astro 1
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %ifarch x86_64 aarch64 riscv64
 %define with_webengine 1
@@ -28,7 +28,7 @@
 
 %bcond_without released
 Name:           marble
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Generic map viewer
 # License note: the tools directory contains GPL-3 tools, but they are neither built nor installed by the package
