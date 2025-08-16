@@ -1,7 +1,7 @@
 #
 # spec file for package postgresql17
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 17.5
+%define pgversion 17.6
 %define pgmajor 17
 %define buildlibs 1
 %define tarversion %{pgversion}
