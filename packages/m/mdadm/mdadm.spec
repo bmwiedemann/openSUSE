@@ -1,7 +1,7 @@
 #
 # spec file for package mdadm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -88,21 +88,29 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcmdmonitor
 	ln -s %{_sbindir}/mdmon %{buildroot}/sbin/mdmon
 %endif
 
-%define services mdmonitor.service mdcheck_start.service mdcheck_continue.service mdmonitor-oneshot.service
+# We need to register all (non-instiatated) systemd units with systemd.
+# The services (except mdmonitor) just wait for the kernel-side check to
+# finish and need not be restarted.
+# Restarting the timers isn't problematic because they all use OnCalendar.
+%define timers mdcheck_start.timer mdcheck_continue.timer mdmonitor-oneshot.timer
+%define norestart_services mdcheck_start.service mdcheck_continue.service mdmonitor-oneshot.service
+%define restart_services mdmonitor.service
 
 %pre
-%service_add_pre %services
+%service_add_pre %restart_services %norestart_services %timers
 
 %post
-%service_add_post %services
+%service_add_post %restart_services %norestart_services %timers
 %{?regenerate_initrd_post}
 %fillup_only
 
 %preun
-%service_del_preun %services
+%service_del_preun %restart_services %norestart_services %timers
 
 %postun
-%service_del_postun %services
+%service_del_postun_without_restart %norestart_services
+%service_del_postun %timers %restart_services
+
 %{?regenerate_initrd_post}
 
 %posttrans

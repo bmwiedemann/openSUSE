@@ -1615,4 +1615,14 @@ which haven't landed upstream yet
     <comment>- Stop emitting %release into program binaries [boo#1246806] (forwarded request 1294792 from jengelh)</comment>
     <requestid>1299252</requestid>
   </revision>
+  <revision rev="158" vrev="7">
+    <srcmd5>8397f07d4c711b1de855ea995297a9c0</srcmd5>
+    <version>4.4</version>
+    <time>1755369415</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix systemd unit file handling in spec file (boo#1207266)
+  * make all units known to systemd
+  * restart only timers and mdmonitor.service</comment>
+    <requestid>1299453</requestid>
+  </revision>
 </revisionlist>
