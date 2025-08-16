@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Drop unused ktextwidgets dependency
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:21 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Build parts with NO_CAST_FROM_ASCII
+  * FileNameSearch: Change the ripgrep options to do a case insensitive search.
+  * Filenamesearchtest: Add Filenamesearch autotests for string and phrase searches.
+  * Remove unused include of KLocalizedString in jpegcreator.cpp
+  * [thumbnail] Don't create a temporary QApplication to determine the platformtheme name (kde#504126)
+  * Filenamesearch: Separate the handling of hidden files and folders
+  * FileItemLinkingPlugin: Set rootMenu as the action parent
+  * kio_nfs, link to libnetwork for gethostbyname and inet_addr for Haiku
+  * Clear pubkey auth info after using key
+  * Add debug message
+  * Add break after pubkey partial auth
+  * Re-query available auth methods if result for pubkey auth was PARTIAL
+  * kio_filenamesearch: Do case-insensitive comparison of filenamesearch: options.
+  * thumbnail: don't use cache for mime with disabled plugin
+  * thumbnail/exeutils.cpp: Handle section size correctly
+  * Image thumbnailer: add image/tiff mime type (kde#503223)
+  * imagethumbnail: Add MIME types for PSD, QOI, DDS
+  * CMake: Use find_package(Qt6::GuiPrivate) to fix build for qtbase dev
+  * Fix build with Qt 6.10
+  * imagethumbnail: Add most of kimageformats MIME types
+  * [kcms/proxy] Port to KConfigXT
+  * Extend using offscreen platform for thumbnail creation by using original platform theme. (kde#500173)
+  * Add Nixos man-db config path (/etc/man_db.conf)
+  * Filenamesearch: Use QFlags to control the search scope.
+  * Filenamesearch: also find filename matches in a content search
+  * Improve spinbox localization
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
