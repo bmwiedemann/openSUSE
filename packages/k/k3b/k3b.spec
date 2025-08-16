@@ -1,7 +1,7 @@
 #
 # spec file for package k3b
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 %bcond_without ffmpeg
 %bcond_without lame
 %bcond_without mad
 Name:           k3b
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        CD/DVD/Blu-ray Burning Application by KDE
 License:        GPL-2.0-or-later
@@ -117,7 +117,7 @@ This package contain files needed for development with k3b.
 
 %build
 CXXFLAGS="%{optflags} -fno-strict-aliasing"
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 

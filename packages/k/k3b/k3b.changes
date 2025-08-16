@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * CI: add snap pipeline
+  * add udisks2 and other plugs and optional build/runtime deps
+  * snapcaft: Fix unbound variable
+  * snapcraft: Add webengine support
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
