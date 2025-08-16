@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Add .gersemirc
+  * Use string literals inline operators
+  * Activate yaml support
+  * Remove duplicate line
+  * Add pre-commit support
+  * Add pre-commit support
+  * Fix spell checking + cmake lint + clang-format
+  * It compiles fine without qt6.10 deprecated methods
+  * Use c++20
+  * Execute test in parallel
+  * Initialize variable
+  * Return 0 when we have a flat model
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
