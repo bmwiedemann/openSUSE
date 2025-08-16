@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:48:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * It compiles fine without qt 6.10 deprecated methods
+  * Activate check-yaml
+  * Fix pre-commit
+  * Add pre-commit CI support
+  * Increase ktextaddons to 1.6.0. Improve emoji support + add textautogenerate lib (AI support)
+  * CollectionExpiryWidget: Ensure that the "invalid date" setting is saved
+  * Reduce copypasta and other boilerplate
+  * Remove unused method
+  * Fix (admittedly entertaining) typo
+  * Fix placement of '&'
+  * A bunch of readability improvements, mostly renamings
+  * Deduplicate copy-pasted methods with one different line
+  * Use c++20
+  * Add missing KF6::ColorScheme link
+  * Add static method
+  * Not necessary to initialize default constructor
+  * Return 0 when we have a flat model
+  * Fix TranslationDomain
+  * Need to increase version
+  * Add method for extra MailCommon::CollectionExpirySettings
+  * Don't show spam folder when we disabled it
+  * Add spamscollectionfolder/folderIsSpams
+  * Fix variable
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
