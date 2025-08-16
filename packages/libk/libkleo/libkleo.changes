@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:48:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Wed Jul 30 15:01:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix build failure on 15.6:
+  * 0001-Revert-Explicitly-use-Boost-s-cmake-config-file.patch
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:50 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
