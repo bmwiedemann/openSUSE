@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 13 23:05:06 UTC 2025 - Richard Lyu <richard.lyu@suse.com>
+
+- Update firmware descriptors to remove tab whitespace (bsc#1247847)
+  - Replace tab whitespace with spaces in 50-ovmf-x86_64-sev.json
+  - Replace tab whitespace with spaces in 50-ovmf-x86_64-sev-snp.json
+
+-------------------------------------------------------------------
 Tue Aug 12 01:52:15 UTC 2025 - Richard Lyu <richard.lyu@suse.com>
 
 - Update firmware descriptors for SEV-SNP and TDX (bsc#1247847)
