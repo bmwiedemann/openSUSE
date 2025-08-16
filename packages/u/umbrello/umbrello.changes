@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:48:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Fix runtime update
+
+-------------------------------------------------------------------
+Mon Jul 14 14:26:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * [nightly flatpak] Update Runtime
+  * Fix  'Creating a new document after adding two diagrams segfaults' (kde#504940)
+  * cmake: Don't set removed policy anymore
+  * In class CsValaImportBase handle optional annotations on enum values:
+  * umbrello/codeimport/javaimport.h fixup for commit c8b87cb : revert change on destructor declaration
+  * New codeimport class JavaCsValaImportBase reduces code duplication between JavaImport and {CSharp,Vala}Import:
+  * add test/import/java/bug479224
+  * Move unittests/{csharp,java,sql}import content to test/import/
+  * remove file accidentally added in commit b120efd
+  * Start adding unittests/javaimport
+  * umbrello/codeimport/sqlimport.{h,cpp} New function equiv() abbreviates case insensitive equality test.
+  * umbrello/codeimport/csvalaimportbase.cpp : Adopt improvements from javaimport.cpp which happened since 2012. (kde#502785)
+  * codeimport/import_utils.cpp (createUMLObjectHierarchy): At `const QString scopeName` of for-loop use QString&.
+  * umbrello/umlscene.cpp : At for-loops replace breakFlag by temporary pointer used for iterating.
+  * Set window icon
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
