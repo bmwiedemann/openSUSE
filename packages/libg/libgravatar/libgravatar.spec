@@ -1,7 +1,7 @@
 #
 # spec file for package libgravatar
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
-%define kpim6_version 6.4.3
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
+%define kpim6_version 6.5.0
 
 %bcond_without released
 Name:           libgravatar
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Library to download and display gravatars
 License:        LGPL-2.1-or-later
