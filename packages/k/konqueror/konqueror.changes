@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Use qWebEngineChromiumVersion() to get the Chromium version used by QtWebEngine
+  * Fix multiple session restore bugs, add copy to clipboard of view url's
+  * Rename m_about data since it's now a local variable
+  * Work around issue preventing KBookmarkAction to pass the correct mouse buttons to openBookmark
+  * Only use one copy of KAboutData, so that '--author' works
+  * Work around a crash when showing the CaptureSourceChooserDlg (kde#502576)
+  * Replace deprecated askDeleteConfirmation by TrashOrDeleteJob
+  * Improve configuration dialog names
+  * Use a more uniform language for UI related to KWallet integration
+  * Add the "Look Again for Forms" action to the menu and always enable it except for konq URLs
+  * Add dependency on ktexteditor framework to CI
+  * Ensure that opening an URL from a locked WebEnginePart displays it in linked views
+  * Use kwalletmamanger instead of kwalletmamanger5
+  * cmake: We're linking to GuiPrivate so search for it
+  * Fix most of the failing tests
+  * Always respect the mimetype passed as command line argument
+  * Set m_createNewWindow to false before emitting the signal
+  * Ensure there's only one TemporarySaveDirCore object per window
+  * Correct Gear month in documentation
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
