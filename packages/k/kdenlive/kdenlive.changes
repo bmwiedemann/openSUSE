@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Too many changes since 25.07.80, only listing bugfixes:
+  * Correctly show custom effects when displaying video (or audio) only effects (kde#358436)
+  * Add SVT-AV1 to codecs which use `crf` option (kde#492708)
+  * Fix startup crash when QML Graphics API is set to Vulkan (kde#503162)
+  * Fix transcoding of files with missing duration. (kde#507396)
+  * Convert Keyboard schemes from .rc to xml after download since this is what is expected (kde#503526)
+  * Reduce minimum height of Speech Editor Widget (kde#465766)
+  * Fix Vosk Speech-To-Text producing garbage subtitles (kde#503985)
+  * Fix transform presets restoring incorrect frame size (kde#505964)
+  * Defang dragging subtitle clips down to create a new layer (kde#506414)
+  * Fix setting Whisper language breaks in text based editing (kde#506100)
+  * Make the subtitle edit widget resizable to adapt to lower resolutions. (kde#506899)
+- Add a _constraints file. Some arch complain when builds need
+  less than 4 GB (e.g. ppc64le)
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Too many changes since 25.04.3, only listing bugfixes:
+  * When making a sequence shorter, if the sequence is used in other sequences and the duration has to be shortened in those, inform user and correctly apply. (kde#506839)
+  * Fix crash dropping media file on subtitle track (kde#506835)
+  * Ensure effect parameter tooltips are correctly displayed (kde#506785)
+  * Add powermanagement to disable sleep while rendering and playing (kde#500615)
+  * When the transform on monitor rectangle is small, apply an offset to resize handles so rect can be moved (kde#505224)
+  * Implement cut for timeline clips (kde#505192)
+  * Add action to expand/collapse items (effects, folders) and navigate effects with arrows(kde#470987)
+  * Cleanup changing project profile and fix confusing save option(kde#505089)
+  * OTIO: put import above export (kde#504996)
+  * Fix marker dialog not allowing to add marker if only 1 category exists(kde#504993)
+  * Template clips: add informative text to make user aware of the %s requirement, use typed text as clip name, update preview live as we type (kde#407942)
+  * Make stem audio export specific to project. (kde#491162)
+  * Fix documentation link to JogShuttle (kde#502618)
+  * Add extract frame to clipboard (kde#501513)
+  * Add action and shortcut for hide all tracks (Shift+Ctrl+H)(kde#495921)
+  * Warn when exiting Kdenlive when render jobs are running, allow to terminate all jobs (kde#396519)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3

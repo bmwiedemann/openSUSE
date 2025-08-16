@@ -1,7 +1,7 @@
 #
 # spec file for package kdenlive
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %define mlt_version 7.14.0
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           kdenlive
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
@@ -48,6 +48,7 @@ BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6FileMetaData) >= %{kf6_version}
 BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
@@ -86,8 +87,6 @@ Requires:       melt >= 7
 # Required at runtime
 Requires:       kf6-qqc2-desktop-style >= %{kf6_version}
 Requires:       qt6-declarative-imports >= %{qt6_version}
-# No stable release yet
-# Recommends:     glaxnimate
 # Required by the composition and effects panel
 Requires:       kf6-knewstuff-imports >= %{kf6_version}
 Recommends:     %{_bindir}/dvdauthor
@@ -121,6 +120,8 @@ work.
 %install
 %kf6_install
 
+rm %{buildroot}%{_kf6_libdir}/libkdenliveLibplugin.a
+
 %find_lang %{name} --with-html --with-man --all-name
 
 %fdupes -s %{buildroot}
@@ -139,6 +140,7 @@ rm -r %{buildroot}%{_datadir}/doc/Kdenlive
 %{_kf6_bindir}/kdenlive_render
 %{_kf6_configkcfgdir}/kdenlivesettings.kcfg
 %{_kf6_debugdir}/kdenlive.categories
+%{_kf6_debugdir}/kdenlive.renamecategories
 %{_kf6_iconsdir}/hicolor/*/*/*
 %{_kf6_knsrcfilesdir}/kdenlive_effects.knsrc
 %{_kf6_knsrcfilesdir}/kdenlive_keyboardschemes.knsrc
@@ -150,6 +152,7 @@ rm -r %{buildroot}%{_datadir}/doc/Kdenlive
 %{_kf6_mandir}/man1/kdenlive_render.1%{ext_man}
 %{_kf6_notificationsdir}/kdenlive.notifyrc
 %{_kf6_plugindir}/kf6/thumbcreator/mltpreview.so
+%{_kf6_qmldir}/org/kde/kdenlive/
 %{_kf6_sharedir}/kdenlive/
 %{_kf6_sharedir}/mime/packages/org.kde.kdenlive.xml
 %{_kf6_sharedir}/mime/packages/westley.xml
