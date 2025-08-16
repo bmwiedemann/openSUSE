@@ -1,7 +1,7 @@
 #
 # spec file for package kamoso
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,12 @@
 #
 
 
-%define gstnum  1.0
+%define kf6_version 6.14.0
+%define qt6_version 6.7.0
+#
 %bcond_without released
 Name:           kamoso
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Application to take pictures and videos using a webcam
 License:        GPL-2.0-or-later
@@ -29,29 +31,26 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5Declarative)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5Purpose)
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5OpenGL)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.26.3
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
-BuildRequires:  pkgconfig(libudev)
 Requires:       gstreamer-plugins-bad
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
-Requires:       kirigami2
-Requires:       libqt5-qtquickcontrols
-Requires:       purpose
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       kf6-purpose >= %{kf6_version}
+Requires:       qt6-declarative-imports >= %{qt6_version}
 
 %description
 Kamoso is an application to take pictures and videos using a webcam.
@@ -64,29 +63,27 @@ YouTube.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
+%cmake_kf6
 
-%cmake_build
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-man --all-name --with-html
 
 %files
 %license LICENSES/*
 %doc AUTHORS
-%doc %lang(en) %{_kf5_htmldir}/en/kamoso/
-%{_kf5_applicationsdir}/org.kde.kamoso.desktop
-%{_kf5_appstreamdir}/org.kde.kamoso.appdata.xml
-%{_kf5_bindir}/kamoso
-%{_kf5_iconsdir}/hicolor/*/actions/*.*
-%{_kf5_iconsdir}/hicolor/*/apps/kamoso.*
-%{_kf5_notifydir}/kamoso.notifyrc
-%{_libdir}/gstreamer-%{gstnum}/gstkamosoqt5videosink.so
+%doc %lang(en) %{_kf6_htmldir}/en/kamoso/
+%{_kf6_applicationsdir}/org.kde.kamoso.desktop
+%{_kf6_appstreamdir}/org.kde.kamoso.appdata.xml
+%{_kf6_bindir}/kamoso
+%{_kf6_iconsdir}/hicolor/*/actions/*.*
+%{_kf6_iconsdir}/hicolor/*/apps/kamoso.*
+%{_kf6_notificationsdir}/kamoso.notifyrc
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/kamoso
 
 %changelog

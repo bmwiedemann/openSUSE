@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Drop unused KJobWidgets header
+  * Ensure we depend on the right GStreamer
+  * Mitigate issue where gstreamer will lock up if a video sess starts too quickly
+  * Address video recording
+  * Fix sample image handling
+  * Port away from context properties
+  * Fix scrolling of the effects view
+  * flatpak: Adapt to Qt 6 and bring qml6glsink
+  * Remove last vestiges of QtGStreamer
+  * Port to using qml6glsink
+  * Port to Qt 6
+  * ci: Use Qt6 images
+  * [nightly flatpak] Update Runtime
+  * Remove white flash
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
