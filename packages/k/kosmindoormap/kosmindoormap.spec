@@ -1,7 +1,7 @@
 #
 # spec file for package kosmindoormap
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           kosmindoormap
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        OSM multi-floor indoor map renderer
 License:        LGPL-2.0-or-later AND CC0-1.0
@@ -37,15 +37,16 @@ BuildRequires:  flex
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-base-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons) >= 1.6.0
 BuildRequires:  cmake(KOpeningHours)
 BuildRequires:  cmake(KPublicTransport)
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
-# Fails because of https://bugzilla.opensuse.org/show_bug.cgi?id=1222343
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
-BuildRequires:  pkgconfig(protobuf)
+%if 0%{?suse_version} >= 1600
+BuildRequires:  cmake(recastnavigation)
 %endif
+BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(zlib)
 
 %description

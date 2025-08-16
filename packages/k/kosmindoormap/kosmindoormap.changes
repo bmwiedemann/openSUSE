@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:49 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Expose MapData::isEmpty to QML
+  * Detect tram stops tagged with railway=tram_stop
+  * Deal with leading abbreviations when matching platform names
+  * Move PlatformDialog from Itinerary to here
+  * Set missing platform role name
+  * Expose the entire platform object in the platform model as well
+  * Be slightly more clever when fixing level tag separator errors
+  * Add a default elevator/escalator model to IndoorMapView
+  * Share platform mode of transport labels
+  * Expose Platform as a QML value type
+  * Add test for free-floating standard-compliant platform section markers
+  * Also find standard-compliant free-floating platform section signs
+  * Add IndoorMapView element
+  * Extend area rules for various elevator tagging schemes
+  * Add convenience API for centering the map on a 3d position
+  * Cancel ongoing tile downloads before starting a new map load
+  * Also cancel currently ongoing download jobs
+  * Consider empty tile files as non-existent/error
+  * Update Kirigami Addons
+  * Fix build with Qt 6.10
+  * CMakeLists.txt - Don't include quiet packages in the feature summary
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
