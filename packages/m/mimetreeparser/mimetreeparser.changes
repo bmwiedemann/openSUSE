@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:48:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:55 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * messageviewwindow: Use subject as window title
+  * It compiles fine without qt 6.10 deprecated methods
+  * Provide Kleo compliance status in window implementation
+  * Remove debug output
+  * Connect only once to attachment list double click event
+  * Improve context for file dialog filter
+  * Use static methods here
+  * We depend against 6.4.40
+  * Use QGpgME::DN instead of deprecated Kleo::DN
+  * Support compiling MimeTreeParser from git with stable version of KMime
+  * Fix two deprecation warnings
+  * Revert minimum Qt version back to 6.7
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
