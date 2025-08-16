@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * It compiles fine without qt 6.10 deprecated methods
+  * Use string literals inline operators
+  * Add yaml pre-commit support
+  * Add pre-commit CI support
+  * Use #include <csignal>
+  * Find Qt6Gui before using Qt6Gui_VERSION
+  * Fix pinentry parenting on wayland
+  * Use QT_REQUIRED_VERSION
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
