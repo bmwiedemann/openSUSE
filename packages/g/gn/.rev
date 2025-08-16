@@ -205,4 +205,12 @@
   * Unit test parser/tokenizer against double minus</comment>
     <requestid>1288703</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>54b3f442e1aa51bacfb92fb2141453d7</srcmd5>
+    <version>0.20250619</version>
+    <time>1755369558</time>
+    <user>dimstar_suse</user>
+    <comment>gn 0.20250619</comment>
+    <requestid>1299893</requestid>
+  </revision>
 </revisionlist>

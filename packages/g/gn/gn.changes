@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Jul 01 14:40:37 UTC 2025 - Ruediger Oertel <ro@suse.com>
+
+- Update to version 0.20250619:
+  * Reland #2 "Run Target::OnResolve() on background threads"
+  * Propagate module dependencies transitively via public_deps
+  * Fix bug in Grow logic in HashTableBase
+  * Apply tools/run_formatter.sh
+  * Revert "Reland "Run Target::OnResolve() on background threads""
+  * Reland "Run Target::OnResolve() on background threads"
+  * Enable ASAN & UBSAN when running tests in debug on CQ/CI
+  * Revert "Run Target::OnResolve() on background threads"
+  * Check all targets before generating shortnames
+  * [tvos] Search for `kTargetXcodePlatform` from all arguments
+  * Run Target::OnResolve() on background threads
+  * specify the gerrit listener type to be legacy poller
+  * Optimize Target::EnsureFileIsGeneratedByDependency()
+  * Fix lsan errors
+  * Add myself to OWNERS, remove xoolger addresses
+  * Revert "Use JSON escaping for JSON string output"
+  * Use JSON escaping for JSON string output
+  * [tvos] Handle a type error with target_xcode_platform
+  * [tvos] Add target_xcode_platform to set Xcode project
+  * Add `--filter-with-data` flag for `gn gen --ide=json`
+  * Handle --ide=vs2019 switch
+  * Handle hpp11 file extension.
+  * Fix `gn help --root-pattern`
+  * Build non-linkable deps async with Ninja's validaitons
+  * Generate compile_commands.json as part of build/gen.py
+  * apply the latest clang-format
+  * Add a test for source_set with modulemap
+  * Write .gitignore file to build directory
+  * Add more on how args are processed to "help execution".
+  * Make `gn_version` available in the dotfile.
+  * Tweak `help execution` wording after c0a46c5.
+  * Attempt to improve the documentation for "help execution".
+  * zos: build with -m64 and ignore unknown-pragmas
+  * Unit test parser/tokenizer against double minus
+
+-------------------------------------------------------------------
 Tue May 20 16:30:31 UTC 2025 - Ruediger Oertel <ro@suse.com>
 
 - Update to version 0.20250520:
