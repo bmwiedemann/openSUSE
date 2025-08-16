@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:27 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Add missing "regular" Linux CI job
+  * It compiles fine without qt 6.10 deprecated methods
+  * Add cppcheck support
+  * Add pre-commit CI support
+  * Execute test in parallel
+  * Remove linux-qt6 as alphin does the same => reduce CI call
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
