@@ -1,7 +1,7 @@
 #
 # spec file for package kjournald
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,12 @@
 #
 
 
-%define soname  0
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           kjournald
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Qt browser for journald database
 License:        LGPL-2.1-or-later
@@ -35,15 +34,19 @@ Source2:        applications.keyring
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(KF6KirigamiAddons)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(libsystemd)
+Requires:       kirigami-addons6
 Requires:       qt6-declarative-imports >= %{qt6_version}
 
 %description
@@ -61,7 +64,7 @@ reuseable library and application logic.
 %autosetup -p1
 
 %build
-%cmake_kf6
+%cmake_kf6 -DQT_QML_NO_CACHEGEN:BOOL=TRUE
 
 %kf6_build
 
