@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Add .gersemirc
+  * It was fixed now
+  * Fix diff-ing in autotests for Windows
+  * Fix rendering delegator/delegatee information for iTip attendees
+  * Exclude it
+  * Add pre-commit CI support
+  * Prepare to use pre-commit support
+  * incidenceformatter.cpp - manage the excepted recur dates list length
+  * Use tests-run-in-parallel: True
+  * Don't necessary here
+  * Use static here
+  * Add allow-failing-tests-on windows
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
