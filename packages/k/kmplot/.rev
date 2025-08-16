@@ -1419,4 +1419,12 @@
     <comment>KDE release gear 25.04.3 (forwarded request 1289933 from krop)</comment>
     <requestid>1290384</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>ba67af959dd74c68fb5a45efc2b1568c</srcmd5>
+    <version>25.08.0</version>
+    <time>1755369505</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 25.08.0 (forwarded request 1299260 from krop)</comment>
+    <requestid>1299653</requestid>
+  </revision>
 </revisionlist>
