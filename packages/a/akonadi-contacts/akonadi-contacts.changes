@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:46:58 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Add .gersemirc
+  * It compiles fine without qt 6.10 deprecated methods
+  * Add yaml pre-commit support
+  * Add pre-commit CI support
+  * Increase ktextaddons to 1.6.0. Improve emoji support + add textautogenerate lib (AI support)
+  * Add missing find_package(KF6ColorScheme)
+  * Use QPalette instead of KColorScheme where possible
+  * Simplify color scheme handling
+  * fix Initialize variable
+  * contactstreemodel: Expose addressee as role in model
+  * Port away from AgentInstanceCreateJob::configure
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
