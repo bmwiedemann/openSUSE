@@ -1,7 +1,7 @@
 #
 # spec file for package merkuro
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %global __requires_exclude qt6qmlimport\\((org\\.kde\\.merkuro|org\\.kde\\.raven).*
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
-%define kpim6_version 6.4.3
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
+%define kpim6_version 6.5.0
 %define plasma6_version 6.2.0
 
 %bcond_without released
 Name:           merkuro
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Calendar Application
 License:        GPL-3.0-only
@@ -138,11 +138,9 @@ This package provides a Plasma widget to view address book contacts.
 %{_kf6_bindir}/merkuro-calendar
 %{_kf6_bindir}/merkuro-contact
 %{_kf6_bindir}/merkuro-mail
-%{_kf6_debugdir}/akonadi.quick.categories
 %{_kf6_debugdir}/merkuro.categories
 %{_kf6_debugdir}/merkuro.contact.categories
 %{_kf6_iconsdir}/hicolor/*/apps/org.kde.merkuro.*.png
-%{_kf6_qmldir}/org/kde/akonadi/
 %{_kf6_qmldir}/org/kde/merkuro/
 %{_kf6_libdir}/libMerkuroComponents.so.*
 %{_kf6_libdir}/libMerkuroComponents.so
