@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * cmake: Search for KQtQuickCharts again
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Remove leftovers and dead code from the 4 and 5 era
+  * Make the X11 code also build with Qt 6.8
+  * Port to Qt6GuiPrivate to unlock KTOUCH_BUILD_WITH_X11
+  * Switch CI/CD jobs to Qt6
+  * Fix finishing a training lesson
+  * Roll back the KF::QuickCharts
+  * Fix starting a lesson
+  * Make qml works
+  * Port away from QtGraphicsEffect
+  * Port to Qt6
+  * [nightly flatpak] Update Runtime
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
