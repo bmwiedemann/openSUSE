@@ -17,34 +17,9 @@
 
 
 # Specify Go toolchain version used to bootstrap this package's Go toolchain
-# go_bootstrap_version bootstrap go toolchain with specific existing go1.x package
-# gcc_go_version       bootstrap go toolchain with specific version of gcc-go
-%if 0%{?suse_version} > 1500
-# openSUSE Tumbleweed
-# Usually ahead of bootstrap version specified by upstream Go
-# Use Tumbleweed default gccgo and N-1 go1.x for testing
-%define gcc_go_version 13
+# Upstream Go minimum boostrap version is go1.20
+# Use go1.21 as initial version bootstrapped by gccgo boo#1247816
 %define go_bootstrap_version go1.21
-%else
-# Use gccgo and go1.x specified by upstream Go
-%define gcc_go_version 11
-%define go_bootstrap_version go1.21
-%endif
-
-# Bootstrap go toolchain using existing go package go_bootstrap_version
-# To bootstrap using gccgo use '--with gccgo'
-%bcond_with gccgo
-
-# gccgo on ppc64le with default PIE enabled fails with:
-# error while loading shared libraries:
-# R_PPC64_ADDR16_HA re10143fb0c for symbol `' out of range
-# track https://github.com/golang/go/issues/28531
-# linuxppc-dev discussion:
-# "PIE binaries are no longer mapped below 4 GiB on ppc64le"
-# https://lists.ozlabs.org/pipermail/linuxppc-dev/2018-November/180862.html
-%ifarch ppc64le
-#!BuildIgnore: gcc-PIE
-%endif
 
 # Build go-race only on platforms where C++14 is supported (SLE-15)
 %if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 150000
@@ -78,14 +53,10 @@
 
 # shared library support
 %if "%{rpm_vercmp %{go_api} 1.5}" > "0"
-%if %{with gccgo}
-%define with_shared 1
-%else
 %ifarch %ix86 %arm x86_64 aarch64
 %define with_shared 1
 %else
 %define with_shared 0
-%endif
 %endif
 %else
 %define with_shared 0
@@ -138,16 +109,9 @@ Source6:        go.gdbinit
 Source100:      llvm-51bfeff0e4b0757ff773da6882f4d538996c9b04.tar.xz
 # PATCH-FIX-OPENSUSE: https://go-review.googlesource.com/c/go/+/391115
 Patch7:         dont-force-gold-on-arm64.patch
-# PATCH-FIX-UPSTREAM marguerite@opensuse.org - find /usr/bin/go-8 when bootstrapping with gcc8-go
-Patch8:         gcc-go.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # boostrap
-%if %{with gccgo}
-BuildRequires:  gcc%{gcc_go_version}-go
-%else
-# no gcc-go
 BuildRequires:  %{go_bootstrap_version}
-%endif
 BuildRequires:  fdupes
 Suggests:       %{name}-doc = %{version}
 %if 0%{?suse_version} > 1500
@@ -225,14 +189,6 @@ Go standard library compiled to a dynamically loadable shared object libstd.so
 # go
 %setup -q -n go
 %patch -P 7 -p1
-%if %{with gccgo}
-# Currently gcc-go does not manage an update-alternatives entry and will
-# never be symlinked as "go", even if gcc-go is the only installed go toolchain.
-# Patch go bootstrap scripts to find hardcoded go-(gcc-go-version) e.g. go-8
-# Substitute defined gcc_go_version into gcc-go.patch
-sed -i "s/\$gcc_go_version/%{gcc_go_version}/" $RPM_SOURCE_DIR/gcc-go.patch
-%patch -P 8 -p1
-%endif
 
 cp %{SOURCE4} .
 
@@ -252,11 +208,7 @@ cp -v "$TSAN_DIR/race_linux_%{go_arch}.syso" src/runtime/race/
 %endif
 
 # Now, compile Go.
-%if %{with gccgo}
-export GOROOT_BOOTSTRAP=%{_prefix}
-%else
 export GOROOT_BOOTSTRAP=%{_libdir}/%{go_bootstrap_version}
-%endif
 # Ensure ARM arch is set properly - boo#1169832
 %ifarch armv6l armv6hl
 export GOARCH=arm
