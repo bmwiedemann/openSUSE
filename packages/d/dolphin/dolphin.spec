@@ -1,7 +1,7 @@
 #
 # spec file for package dolphin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.6.0
+%define kf6_version 6.14.0
 %define plasma6_version 5.27.80
-%define qt6_version 6.6.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           dolphin
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
@@ -43,6 +43,7 @@ BuildRequires:  cmake(KF6Baloo) >= %{kf6_version}
 BuildRequires:  cmake(KF6BalooWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
@@ -50,6 +51,7 @@ BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6FileMetaData) >= %{kf6_version}
+BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
@@ -62,12 +64,12 @@ BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6UserFeedback) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
-BuildRequires:  cmake(Phonon4Qt6)
-BuildRequires:  cmake(PlasmaActivities) >= %{plasma6_version}
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
+BuildRequires:  cmake(Qt6MultimediaWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(packagekitqt6)
 Requires:       dolphin-part = %{version}-%{release}
@@ -75,6 +77,8 @@ Requires:       kf6-baloo-kioslaves >= %{kf6_version}
 Recommends:     kio-extras6
 Recommends:     konsole-part
 Obsoletes:      dolphin5
+Provides:       dolphin-zsh-completion = %{version}
+Obsoletes:      dolphin-zsh-completion < %{version}
 
 %description
 This package contains the default file manager of KDE Workspaces.
@@ -104,15 +108,6 @@ Provides:       dolphin5-devel = %{version}
 %description devel
 This package contains the libraries used by Dolphin and Konqueror.
 
-%package zsh-completion
-Summary:        ZSH completion for dolphin
-Requires:       dolphin = %{version}
-Supplements:    (dolphin and zsh)
-BuildArch:      noarch
-
-%description zsh-completion
-ZSH command line completion support for dolphin.
-
 %package -n dolphin-part-lang
 Summary:        Translations for package dolphin
 Requires:       dolphin-part = %{version}
@@ -140,6 +135,9 @@ Provides translations for the dolphin package.
 
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_kf6_applicationsdir}/org.kde.dolphinsu.desktop
 
+# ZSH completion script prevents running dolphin <tab> to open the application in the selected folder
+rm %{buildroot}%{_datadir}/zsh/site-functions/_dolphin
+
 %ldconfig_scriptlets
 %ldconfig_scriptlets -n libdolphinvcs6
 %ldconfig_scriptlets part
@@ -160,8 +158,8 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_kf6_applicationsdir}/org.kde.dolphi
 %{_kf6_libdir}/kconf_update_bin/dolphin_25.04_update_statusandlocationbarssettings
 %{_kf6_sharedir}/dbus-1/services/org.kde.dolphin.FileManager1.service
 %{_kf6_sharedir}/kconf_update/dolphin_detailsmodesettings.upd
-%{_kf6_sharedir}/kconf_update/dolphin_directorysizemode.py
-%{_kf6_sharedir}/kconf_update/dolphin_directorysizemode.upd
+%{_kf6_sharedir}/kconf_update/dolphin_replace_view_mode_with_view_settings_in_toolbar.py
+%{_kf6_sharedir}/kconf_update/dolphin_replace_view_mode_with_view_settings_in_toolbar.upd
 %{_kf6_sharedir}/kconf_update/dolphin_statusandlocationbarssettings.upd
 %dir %{_kf6_sharedir}/kglobalaccel
 %{_kf6_sharedir}/kglobalaccel/org.kde.dolphin.desktop
@@ -173,20 +171,16 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_kf6_applicationsdir}/org.kde.dolphi
 %{_kf6_libdir}/libdolphinprivate.so.*
 %dir %{_kf6_plugindir}/dolphin
 %dir %{_kf6_plugindir}/dolphin/kcms
-%dir %{_kf6_plugindir}/kf6/kfileitemaction/
 %{_kf6_plugindir}/dolphin/kcms/kcm_dolphin*.so
-%{_kf6_plugindir}/kf6/parts/dolphinpart.so
+%dir %{_kf6_plugindir}/kf6/kfileitemaction/
 %{_kf6_plugindir}/kf6/kfileitemaction/movetonewfolderitemaction.so
-%dir %{_kf6_sharedir}/dolphin
+%{_kf6_plugindir}/kf6/kfileitemaction/setfoldericonitemaction.so
+%{_kf6_plugindir}/kf6/parts/dolphinpart.so
 %{_kf6_sharedir}/dolphin/dolphinpartactions.desktop
+%dir %{_kf6_sharedir}/dolphin
 
 %files -n libdolphinvcs6
 %{_kf6_libdir}/libdolphinvcs.so.*
-
-%files zsh-completion
-%dir %{_datadir}/zsh
-%dir %{_datadir}/zsh/site-functions
-%{_datadir}/zsh/site-functions/_dolphin
 
 %files devel
 %{_includedir}/Dolphin/

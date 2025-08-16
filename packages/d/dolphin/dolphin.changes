@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Don't unset XDG_ACTIVATION_TOKEN manually
+- Drop the zsh completion sub-package
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:52 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Too many changes since 25.04.3, only listing bugfixes:
+  * DolphinView: display errorMessage when copy errors occurs (kde#506282)
+  * DolphinView: display errorMessage when copy errors occurs (kde#506282)
+  * Fix file names overflowing after text eliding (kde#432530)
+  * AnimatedHeightWidget: Disable scrollbars (kde#504252)
+  * Add setting to select filename eliding behavior (kde#504795)
+  * viewproperties: Fix leaking file descriptors (kde#505215)
+  * dolphinview: Add a dynamic view option (kde#491139)
+  * Add Comment to .desktop file (kde#504407)
+  * dolphinview: fix crash (kde#503610)
+  * DolphinView: Don't end anchored selection in updateSelectionState (kde#503221)
+  * DolphinStatusBar: Fix premature text squeezing (kde#503164)
+  * DolphinView: If contextmenu is requested, abort twoClicksRenaming (kde#503185)
+  * Fix session restore (kde#502770)
+  * Rewrite search integration (kde#386754)
+  * dolphinui: Set view_mode action to low priority (kde#501498)
+  * contextmenu: Use default terminal's icons for "Open Terminal" and "Open Terminal Here" actions (kde#501435)
+  * KFileItemModelRolesUpdater: reset size and count before updating folders (kde#500502)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
