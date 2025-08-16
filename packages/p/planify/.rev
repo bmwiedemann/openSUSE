@@ -15,4 +15,31 @@
     <comment>- remove patch correct-gxml.patch</comment>
     <requestid>1299030</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f068f3d2bc459dcfa6f053b0f7e6e264</srcmd5>
+    <version>4.13.2</version>
+    <time>1755369562</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.13.2:
+  * Fixed all-day events detection to use local time instead of UTC
+  * Fixed project view destruction timing during transitions
+  * Only allow valid SSL certificates
+  * Added option to manually enter Todoist token
+  * Disabled keyboard shortcuts when Entry regains focus after closing a dialog
+  * Avoided resetting TextView content when clicking while editing
+  * Limited description text area height and enabled scroll
+  * Fixed placeholder behavior in TextView
+  * Simplified time label formatting logic
+  * Added natural sort comparison for strings with numbers
+  * Fixed duplication turning notes into tasks
+  * Improved layout alignment for note-type tasks
+  * Fixed Pinboard not updating correctly
+  * Show completed tasks below pending tasks with pagination
+- update to version 4.13.0:
+  * Improved task handling in the Today view
+  * Nextcloud login flow redesigned for better UX and stability
+  * Fixed crashes caused by UTF-8 character handling
+  * Refactored utility methods and internal cleanup</comment>
+    <requestid>1299902</requestid>
+  </revision>
 </revisionlist>
