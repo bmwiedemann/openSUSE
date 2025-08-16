@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:48:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:58 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Add .gersemirc
+  * It compiles fine without qt 6.10 deprecated methods
+  * WhatsNew - allow specifying the application name
+  * Add yaml pre-commit support
+  * Add pre-commit CI support
+  * Add pre-commit CI support
+  * Increase ktextaddons to 1.6.0. Improve emoji support + add textautogenerate lib (AI support)
+  * Add missing KF6::ColorScheme link
+  * Remove unused icons
+  * KDE CI can't create a window on this platform, skipping some gui tests
+  * Remove ManageServerSideSubscriptionJob
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
