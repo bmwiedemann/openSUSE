@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 15 10:17:11 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250814 (git commit a312f85c8033):
+  * realtek: rt1321: Add patch firmware of MCU
+
+-------------------------------------------------------------------
 Fri Jul 18 14:39:38 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250717 (git commit 6fc20e018cca):
