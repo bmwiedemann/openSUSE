@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:46:58 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Make KF6DocTools optional
+  * Use KJob::exec instead of manually creating nested event loop
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
