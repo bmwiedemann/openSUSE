@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:48:05 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Add .gersemirc
+  * It compiles fine without qt 6.10 deprecated methods
+  * Fix compile on windows
+  * Fix clang format
+  * Use string literals inline operators
+  * Activate check-yaml
+  * Exclude some check
+  * Add pre-commit support
+  * Increase ktextaddons to 1.6.0. Improve emoji support + add textautogenerate lib (AI support)
+  * Increase version
+  * Increase version
+  * Allow to use TextAutoGenerateText::TextAutoGenerateMenuWidget
+  * Prepare to use TextAutoGenerateText
+  * Remove unused define
+  * Use c++20
+  * Add tests-run-in-parallel
+  * Allow failing tests on Windows
+  * Fix TranslationDomain name
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
