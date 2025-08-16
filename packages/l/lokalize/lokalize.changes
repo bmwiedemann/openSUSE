@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:48:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Open editor tab in background when Control key pressed (kde#504957)
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:52 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Too many changes since 25.04.3, only listing bugfixes:
+  * Improve HTML tag matching to reduce the false-positive colouring (kde#504749)
+  * Fix crash when doing "Find next in files" with no current selected (kde#502342)
+  * Doc: Remove mention python/js scripting (kde#502627)
+  * Set initial value of "Hide translated items" button to saved state (kde#503329)
+  * Close the tab page on middle mouse click over tab (kde#503417)
+  * Use one global synchronised editor layout across all projects and all editors (kde#503042)
+  * Single status bar using signals and slots (kde#465468)
+  * Set Project Overview tab focus proxy to its file browser widget (kde#503329)
+  * Remove all Python scripting (kde#502627)
+  * Fix editor tab state save / restore (kde#501786)
+  * Show warning when rescan clicked but no project is open (kde#501646)
+  * Do not rescan translation memory if no project is loaded (kde#501646)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
