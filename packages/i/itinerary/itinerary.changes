@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Prefer current trip group when determining the default to import into
+  * Use a slightly more reasonable default for querying departures at a hotel
+  * Add 25.08.0 release notes
+  * Set correct states on the live location sharing action
+  * Don't offer Matrix spaces in the room selection dialog for sharing
+  * Ignore Matrix rooms of unknown type
+  * Update flight seat in the timeline delegate on reservation changes
+  * Write more information about the generating app into export files
+  * Workaround gliches between journey section line segments
+  * Recover LiveData arrival and departure indices when importing
+  * Fix flight editor airport name input validation
+  * Start alternative search at start of day for unbound tickets
+  * Initialize departure time editors with departure day
+  * Handle intermediate stops not allowing boarding/alighting at all
+  * Resolve ISO 3166-2 region codes before address formatting
+  * Small cleanup in FormPlatformDelegate
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
