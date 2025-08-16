@@ -1,7 +1,7 @@
 #
 # spec file for package libkexiv2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,8 +21,8 @@
 %if "%{flavor}" == "qt6"
 %define qt6 1
 %define pkg_suffix -qt6
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 %define library_name libKExiv2Qt6
 %define so_suffix -0
 %else
@@ -34,7 +34,7 @@
 %endif
 %bcond_without released
 Name:           libkexiv2%{?pkg_suffix}
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Library to manipulate picture meta data
 License:        GPL-2.0-or-later
