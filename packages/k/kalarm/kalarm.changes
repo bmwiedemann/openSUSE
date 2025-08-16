@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Update version description
+  * Remove excess spacing in Preferences dialog
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Prevent message windows taking keyboard focus when they pop up
+  * Increase ktextaddons to 1.6.0. Improve emoji support + add textautogenerate lib (AI support)
+  * Add release description
+  * Fix build with MPV plugin only
+  * Clean up time spin box appearance in some styles, e.g. Oxygen
+  * Add documentation for audio plugin selection
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
