@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Update CHANGELOG
+  * Add permission management for unknown protocols (kde#425785)
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Enable Windows craft build
+  * Remove obsolete Windows packaging
+  * Update CHANGELOG for 25.08.0
+  * Connect signals before starting the download
+  * Port to KUiServerV2JobTracker
+  * Mark appId with current profile name (kde#439190)
+  * Remove top margin from tabbar (kde#445419)
+  * Update UserAgents (kde#505287)
+  * UserAgentDialog: Use QUrl::host on user URL input (kde#497223)
+  * Do not use "createSettings" in database updater
+  * Add webpage background color customization.
+  * Remove WebVIew style from themes
+  * Add certificate information into SSL error dialog
+  * Fix installation and startup on Windows
+  * Enable Windows CI-builds and fix compilation
+  * UPDATE CHENGELOG to 25.04.1
+  * Fix editing SiteSettings and Cookies permissions
+  * add widget for QToolTip::showText in combotabbar
+  * Port away from Qt6Core5Compat
+  * Fix issue that location bar can't use input methods when locationcompleterview popups on wayland
+  * cmake: We're linking to NetworkPrivate so search for it
+  * Fix crash when creating bookmarks toolbar. (kde#480527)
+  * Port away from deprecated QLibraryInfo::location
+  * In Qt6.9 the 'angle' backend is default
+  * PyFalkon: port away from deprecated API
+  * PyFalkon: Disable broken tests
+  * Fix crash when loading folder in bookmarks toolbar (kde#501535)
+  * Update CHANGELOG for 25.04.0 release
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
