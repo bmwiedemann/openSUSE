@@ -1,7 +1,7 @@
 #
 # spec file for package konsole
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           konsole
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        KDE Terminal
 License:        GPL-2.0-or-later
@@ -65,7 +65,6 @@ BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt6_version}
@@ -77,6 +76,8 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       konsole-part = %{version}
 Obsoletes:      konsole5 < %{version}
 Provides:       konsole5 = %{version}
+Provides:       konsole-zsh-completion = %{version}
+Obsoletes:      konsole-zsh-completion < %{version}
 
 %description
 Konsole is a terminal emulator for the K Desktop Environment.
@@ -100,15 +101,6 @@ BuildArch:      noarch
 
 %description -n konsole-part-lang
 Provides translations for the "konsole-part" package.
-
-%package zsh-completion
-Summary:        ZSH completion for konsole
-Requires:       konsole = %{version}
-Supplements:    (konsole and zsh)
-BuildArch:      noarch
-
-%description zsh-completion
-ZSH command line completion support for konsole.
 
 %prep
 %autosetup -p1
@@ -141,6 +133,9 @@ install -D -m 0644 %{SOURCE26} %{buildroot}%{_kf6_iconsdir}/hicolor/128x128/apps
 %license LICENSES/*
 %doc README.md
 %doc %lang(en) %{_kf6_htmldir}/en/konsole/
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_konsole
 %{_kf6_applicationsdir}/konsolesu.desktop
 %{_kf6_applicationsdir}/org.kde.konsole.desktop
 %{_kf6_appstreamdir}/org.kde.konsole.appdata.xml
@@ -155,10 +150,6 @@ install -D -m 0644 %{SOURCE26} %{buildroot}%{_kf6_iconsdir}/hicolor/128x128/apps
 %dir %{_kf6_sharedir}/kio/servicemenus
 %{_kf6_sharedir}/kio/servicemenus/konsolerun.desktop
 %{_kf6_sharedir}/kglobalaccel/org.kde.konsole.desktop
-%{_kf6_libdir}/kconf_update_bin/konsole_globalaccel
-%{_kf6_libdir}/kconf_update_bin/konsole_show_menubar
-%{_kf6_sharedir}/kconf_update/konsole.upd
-%{_kf6_sharedir}/kconf_update/konsole_add_hamburgermenu_to_toolbar.sh
 
 %files part
 %{_kf6_debugdir}/konsole.categories
@@ -167,11 +158,6 @@ install -D -m 0644 %{SOURCE26} %{buildroot}%{_kf6_iconsdir}/hicolor/128x128/apps
 %dir %{_kf6_plugindir}/kf6/parts
 %{_kf6_plugindir}/kf6/parts/konsolepart.so
 %{_kf6_sharedir}/konsole/
-
-%files zsh-completion
-%dir %{_datadir}/zsh
-%dir %{_datadir}/zsh/site-functions
-%{_datadir}/zsh/site-functions/_konsole
 
 %files part-lang -f %{name}.lang
 %exclude %{_kf6_htmldir}/en/konsole/

@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Fix regression: Unix locale encoding is UTF-8
+  * ensure symlinked shells don't break the tests
+- Merge the zsh completion files into the main package
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * fix OpenBSD compile
+  * don't try to add nullptr to layout
+  * typo TopBotton to TopBottom in split view signals
+  * allow all hostnames and more ports (kde#469474)
+  * Clear the arguments if the command is not found
+  * Removed alias.
+  * Fixes related to cursor artifacts (kde#483197)
+  * Fix for glitches in highgpi displays (kde#488505)
+  * optimize line match finding
+  * Hoist line position buffer calculation outside loop
+  * Move variable inwards and closer to initialization
+  * fix: set error status flag based on exit code
+  * Avoid detaching Qt containers in range-based for loops
+  * Avoid copying the object when not needed.
+  * Removed unused variables
+  * Fix build on Haiku for undefined reference to inet_aton
+  * ViewManager: Save columns, lines and working directory to tabLayout
+  * Do not return a reference to temporary
+  * Ensure hamburger menu is in the popup menu when instance is re-created (kde#476557)
+  * add comments for line drawing characters
+  * remove no longer used config update tools
+  * Delete old KF5-based kconf update script
+  * wrap output it html document & body (kde#500515)
+  * allow /path/to/file.cpp:123:123 paths (kde#501004)
+  * Fix search wrapping behavior at boundaries (kde#396510)
+  * fix: disable copy action even when semantic integration is detected
+  * feat(TerminalDisplay): Copy to X11 selection immediately on mouse release
+  * Vt102: don't interpret private mode CSI < as ECMA-48 command
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
