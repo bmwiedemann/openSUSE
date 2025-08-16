@@ -1,7 +1,7 @@
 #
 # spec file for package rocs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           rocs
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Graph Theory IDE
 License:        GPL-2.0-or-later
