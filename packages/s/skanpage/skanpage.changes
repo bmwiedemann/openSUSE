@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:48:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Truncate existing files when overwriting (kde#507174)
+
+-------------------------------------------------------------------
+Mon Jul 14 14:26:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * ensure correct url decoding when saving multiple images (kde#503787)
+  * Add missing include moc
+  * also set name filter index when saving single pages
+  * set name filter index again on each file dialog open
+  * round the stepsize for DoubleSpinbox
+  * include the file name when confirming saving a document or image
+  * add save as button to global menu
+  * update the selected file right before opening the save dialog
+  * warning and formatting fixes
+  * Improve i18n
+  * Improve i18n
+  * Add file name template
+  * simplify scan preview and selection areas (kde#499486)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
