@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:48 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Adapt tests to KF::Holidays sunrise computation changes
+  * Add unit test for leap years
+  * Fix behaviour change in Qt 6.10 regarding QCalendar::daysInMonth
+  * CMakeLists.txt - Don't include quiet packages in the feature summary
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
