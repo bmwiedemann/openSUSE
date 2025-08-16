@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 11 16:04:48 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Update to version 3.50.4:
+  * Fix two long-standings cases of the use of uninitialized
+    variables in obscure circumstances. 
+
+-------------------------------------------------------------------
 Thu Jul 17 16:17:25 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Update to version 3.50.3:

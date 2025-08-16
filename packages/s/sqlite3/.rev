@@ -1911,4 +1911,14 @@ CVE-2020-13871 boo#1172646</comment>
     operator.</comment>
     <requestid>1294396</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>99d31279b6536a1ef10aafb5ca8d4927</srcmd5>
+    <version>3.50.4</version>
+    <time>1755369424</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.50.4:
+  * Fix two long-standings cases of the use of uninitialized
+    variables in obscure circumstances.</comment>
+    <requestid>1299767</requestid>
+  </revision>
 </revisionlist>
