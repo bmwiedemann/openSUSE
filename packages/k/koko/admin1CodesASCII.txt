@@ -5,8 +5,8 @@ AD.03	Encamp	Encamp	3040684
 AD.02	Canillo	Canillo	3041203
 AD.07	Andorra la Vella	Andorra la Vella	3041566
 AD.08	Escaldes-Engordany	Escaldes-Engordany	3338529
-AE.07	Imārat Umm al Qaywayn	Imarat Umm al Qaywayn	290595
-AE.05	Raʼs al Khaymah	Imarat Ra's al Khaymah	291075
+AE.07	Umm al Qaywayn	UmmalQaywayn	290595
+AE.05	Raʼs al Khaymah	Ra's al Khaymah	291075
 AE.03	Dubai	Dubai	292224
 AE.06	Sharjah	Sharjah	292673
 AE.04	Fujairah	Fujairah	292879
@@ -482,11 +482,11 @@ CD.30	Tshopo	Tshopo	204704
 CD.29	Tanganyika	Tanganyika	205253
 CD.12	South Kivu	South Kivu	205413
 CD.27	Sankuru	Sankuru	205828
-CD.11	Nord Kivu	Nord Kivu	206938
+CD.11	North Kivu	North Kivu	206938
 CD.25	Mongala	Mongala	208741
 CD.10	Maniema	Maniema	209610
 CD.23	Kasai-Central	Kasai-Central	210596
-CD.04	Kasaï-Oriental	Kasai-Oriental	214138
+CD.04	East Kasai	East Kasai	214138
 CD.18	Kasai	Kasai	214140
 CD.17	Ituri	Ituri	215709
 CD.16	Haut-Uele	Haut-Uele	216140
@@ -1697,7 +1697,7 @@ KZ.12	Karaganda	Karaganda	1523401
 KZ.17	Zhambyl	Zhambyl	1524444
 KZ.10	Turkistan	Turkistan	1524787
 KZ.02	Almaty	Almaty	1526395
-KZ.01	Almaty Oblysy	Almaty Oblysy	1537162
+KZ.01	Almaty Region	Almaty Region	1537162
 KZ.1537272	Shymkent	Shymkent	1537272
 KZ.08	Baikonur	Baikonur	1538316
 KZ.05	Astana	Astana	1538317
@@ -2559,9 +2559,9 @@ PK.08	Islamabad	Islamabad	1162015
 PK.05	Sindh	Sindh	1164807
 PK.04	Punjab	Punjab	1167710
 PK.03	Khyber Pakhtunkhwa	Khyber Pakhtunkhwa	1168873
-PK.07	Gilgit-Baltistan(POK)	Gilgit-Baltistan(POK)	1168878
+PK.07	Gilgit-Baltistan	Gilgit-Baltistan	1168878
 PK.02	Balochistan	Balochistan	1183606
-PK.06	Azad Jammu and Kashmir(POK)	Azad Jammu and Kashmir(POK)	1184196
+PK.06	Azad Kashmir	Azad Kashmir	1184196
 PL.75	Lublin	Lublin	858785
 PL.77	Lesser Poland	Lesser Poland	858786
 PL.78	Mazovia	Mazovia	858787
@@ -3577,7 +3577,7 @@ TZ.30	Njombe	Njombe	8469241
 TZ.32	Songwe	Songwe	11124984
 UA.27	Zhytomyr	Zhytomyr	686966
 UA.26	Zaporizhzhia	Zaporizhzhia	687699
-UA.25	Transcarpathia	Transcarpathia	687869
+UA.25	Zakarpattia	Zakarpattia	687869
 UA.24	Volyn	Volyn	689064
 UA.23	Vinnytsia	Vinnytsia	689559
 UA.22	Ternopil	Ternopil	691649
@@ -3733,69 +3733,40 @@ VE.26	Vargas	Vargas	3830309
 VI.010	Saint Croix Island	Saint Croix Island	7267902
 VI.020	Saint John Island	Saint John Island	7267903
 VI.030	Saint Thomas Island	Saint Thomas Island	7267904
-VN.58	Nghệ An Province	Nghe An Province	1559969
-VN.59	Ninh Bình Province	Ninh Binh Province	1559970
-VN.60	Ninh Thuận Province	Ninh Thuan Province	1559971
-VN.65	Sóc Trăng Province	Soc Trang Province	1559972
-VN.67	Trà Vinh Province	Tra Vinh Province	1559975
-VN.68	Tuyên Quang Province	Tuyen Quang Province	1559976
-VN.69	Vĩnh Long Province	Vinh Long Province	1559977
-VN.70	Yên Bái Province	Yen Bai Province	1559978
-VN.90	Lào Cai Province	Lao Cai Province	1562412
-VN.37	Tiền Giang	Tien Giang	1564676
-VN.66	Thừa Thiên Huế Province	Thua Thien Hue Province	1565033
-VN.55	Kon Tum	Kon Tum	1565088
-VN.34	Thanh Hóa Province	Thanh Hoa Province	1566165
-VN.35	Thái Bình Province	Thai Binh Province	1566338
-VN.33	Tây Ninh Province	Tay Ninh Province	1566557
-VN.32	Sơn La Province	Son La Province	1567643
-VN.64	Quảng Trị Province	Quang Tri Province	1568733
-VN.30	Quảng Ninh	Quang Ninh	1568758
-VN.63	Quảng Ngãi Province	Quang Ngai Province	1568769
-VN.62	Quảng Bình Province	Quang Binh Province	1568839
-VN.61	Phú Yên Province	Phu Yen Province	1569805
-VN.53	Hòa Bình Province	Hoa Binh Province	1572594
-VN.24	Long An Povince	Long An Povince	1575788
-VN.39	Lạng Sơn Province	Lang Son Province	1576632
-VN.23	Lâm Đồng Province	Lam GJong Province	1577882
-VN.89	Lai Châu Province	Lai Chau Province	1577954
-VN.21	Kiên Giang Province	Kien Giang Province	1579008
-VN.54	Khánh Hòa Province	Khanh Hoa Province	1579634
-VN.20	Ho Chi Minh	Ho Chi Minh	1580578
-VN.52	Hà Tĩnh Province	Ha Tinh Province	1580700
-VN.50	Hà Giang Province	Ha Giang Province	1581030
-VN.49	Gia Lai Province	Gia Lai Province	1581088
-VN.44	Hanoi	Hanoi	1581129
-VN.87	Can Tho	Can Tho	1581188
-VN.13	Haiphong	Haiphong	1581297
-VN.47	Bình Thuận Province	Binh Thuan Province	1581882
-VN.09	Đồng Tháp Province	GJong Thap Province	1582562
-VN.43	Đồng Nai Province	GJong Nai Province	1582720
-VN.88	Đắk Lắk	GJak Lak	1584169
-VN.45	Bà Rịa–Vũng Tàu Province	Ba Ria-Vung Tau Province	1584534
-VN.05	Cao Bằng Province	Cao Bang Province	1586182
-VN.46	Bình Định Province	Binh GJinh Province	1587871
-VN.03	Bến Tre Province	Ben Tre Province	1587974
-VN.01	An Giang Province	An Giang Province	1594446
-VN.91	Đăk Nông Province	GJak Nong Province	1904987
-VN.92	Điện Biên Province	GJien Bien Province	1905099
-VN.74	Bắc Ninh Province	Bac Ninh Province	1905412
-VN.71	Bắc Giang Province	Bac Giang Province	1905419
-VN.78	Da Nang	Da Nang	1905468
-VN.75	Bình Dương Province	Binh Duong Province	1905475
-VN.76	Bình Phước Province	Binh Phuoc Province	1905480
-VN.85	Thái Nguyên Province	Thai Nguyen Province	1905497
-VN.84	Quảng Nam Province	Quang Nam Province	1905516
-VN.83	Phú Thọ Province	Phu Tho Province	1905577
-VN.82	Nam Định Province	Nam GJinh Province	1905626
-VN.80	Hà Nam Province	Ha Nam Province	1905637
-VN.72	Bắc Kạn Province	Bac Kan Province	1905669
-VN.73	Bạc Liêu Province	Bac Lieu Province	1905675
-VN.77	Cà Mau Province	Ca Mau Province	1905678
-VN.79	Hải Dương Province	Hai Duong Province	1905686
-VN.81	Hưng Yên Province	Hung Yen Province	1905699
-VN.86	Vĩnh Phúc Province	Vinh Phuc Province	1905856
-VN.93	Hậu Giang	Hau Giang	7506719
+VN.40	Nghệ An Province	Nghe An Province	1559969
+VN.46	Thừa Thiên Huế Province	Thua Thien Hue Province	1565033
+VN.38	Thanh Hóa Province	Thanh Hoa Province	1566165
+VN.14	Sơn La Province	Son La Province	1567643
+VN.22	Quảng Ninh	Quang Ninh	1568758
+VN.20	Lạng Sơn Province	Lang Son Province	1576632
+VN.12	Lai Châu Province	Lai Chau Province	1577954
+VN.42	Hà Tĩnh Province	Ha Tinh Province	1580700
+VN.01	Hanoi	Hanoi	1581129
+VN.04	Cao Bằng Province	Cao Bang Province	1586182
+VN.11	Điện Biên Province	GJien Bien Province	1905099
+VN.15	Lao Cai	Lao Cai	13494334
+VN.19	Thai Nguyen	Thai Nguyen	13494335
+VN.24	Bac Ninh	Bac Ninh	13494344
+VN.25	Phu Tho	Phu Tho	13494345
+VN.31	Hai Phong	Hai Phong	13494346
+VN.33	Hưng Yên Province	Hung Yen Province	13494347
+VN.37	Ninh Binh	Ninh Binh	13494348
+VN.44	Quang Tri	Quang Tri	13494350
+VN.48	Da Nang City	Da Nang City	13494351
+VN.51	Quang Ngai	Quang Ngai	13494352
+VN.52	Gia Lai	Gia Lai	13494353
+VN.56	Khanh Hoa	Khanh Hoa	13494354
+VN.66	Dak Lak	Dak Lak	13494355
+VN.68	Lam Dong	Lam Dong	13494356
+VN.75	Dong Nai	Dong Nai	13494357
+VN.79	Ho Chi Minh City (HCMC)	Ho Chi Minh City (HCMC)	13494358
+VN.80	Tay Ninh	Tay Ninh	13494359
+VN.82	Dong Thap	Dong Thap	13494360
+VN.86	Vinh Long	Vinh Long	13494361
+VN.91	An Giang	An Giang	13494362
+VN.92	Can Tho City	Can Tho City	13494363
+VN.96	Ca Mau	Ca Mau	13494364
+VN.08	Tuyen Quang	Tuyen Quang	13494365
 VU.15	Tafea	Tafea	2134739
 VU.13	Sanma	Sanma	2134898
 VU.07	Torba	Torba	2137421

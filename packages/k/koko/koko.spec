@@ -1,7 +1,7 @@
 #
 # spec file for package koko
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           koko
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Kirigami based gallery application
 License:        LGPL-2.1-or-later
@@ -31,6 +31,8 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-OPENSUSE -- reverted change for 15.6
+Patch0:         0001-Remove-old-libexiv2-support.patch
 # TODO Sources change daily, download updates before each release
 # https://download.geonames.org/export/dump/cities1000.zip
 Source3:        cities1000.zip
@@ -78,7 +80,10 @@ share images.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
+%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
+%patch -P 0 -p1 -R
+%endif
 
 cp %{SOURCE3} %{SOURCE4} %{SOURCE5} src/
 
