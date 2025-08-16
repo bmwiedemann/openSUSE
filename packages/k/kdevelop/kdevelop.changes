@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Never store precompiled preambles in memory to work around a crash (kde#486932)
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Too many changes since 25.04.3, only listing bugfixes:
+  * ParseSessionData: locate an installed file, not directory (kde#499888)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
