@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:46:58 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Add .gersemirc
+  * It compiles fine without qt 6.10 deprecated methods
+  * Use string literals inline operators
+  * Add pre-commit CI support
+  * Fix editing and deleting tag
+  * initialize variables in header class
+  * Return 0 when we have a flat model
+  * Fix compile
+  * Port away from deprecated AgentInstanceCreateJob::configure
+  * Add back removedTags
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
