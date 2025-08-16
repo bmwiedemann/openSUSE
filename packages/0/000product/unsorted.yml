@@ -504,6 +504,7 @@ unsorted:
   - akonadi-contacts-devel 
   - akonadi-devel 
   - akonadi-import-wizard-devel 
+  - akonadi-imports 
   - akonadi-mime-devel 
   - akonadi-search-devel 
   - akonadiconsole 
@@ -3349,7 +3350,6 @@ unsorted:
   - dolphin-emu-lang 
   - dolphin-plugins 
   - dolphin-plugins-lang 
-  - dolphin-zsh-completion 
   - dom2-core-tests 
   - dom4j 
   - dom4j-bootstrap 
@@ -9846,7 +9846,6 @@ unsorted:
   - kdeclarative-devel 
   - kdeclarative-tools 
   - kdeconnect-kde-lang 
-  - kdeconnect-kde-zsh-completion 
   - kdecoration6-devel 
   - kded-devel 
   - kded-lang 
@@ -10278,7 +10277,6 @@ unsorted:
   - konqueror-plugins 
   - konquest 
   - konquest-lang 
-  - konsole-zsh-completion 
   - konstraint 
   - kontactinterface-devel 
   - kontrast 
@@ -10298,6 +10296,7 @@ unsorted:
   - kosmindoormap-imports 
   - kosmindoormap-lang 
   - kpackage-devel 
+  - kpackage-lang 
   - kpartloader 
   - kpartloader-lang 
   - kparts-devel 
@@ -10318,6 +10317,7 @@ unsorted:
   - kpublictransport-devel 
   - kpublictransport-imports 
   - kpublictransport-lang 
+  - kqtquickcharts 
   - kquickimageeditor6-devel 
   - kquickimageeditor6-imports 
   - kraft 
@@ -11084,11 +11084,15 @@ unsorted:
   - libKF5Cddb5 
   - libKF5ConfigQml5 
   - libKF5Contacts5 
+  - libKF5Declarative5-lang 
   - libKF5Emoticons5 
   - libKF5Holidays5 
   - libKF5Holidays5-lang 
   - libKF5IdleTime5 
   - libKF5ItemModels5 
+  - libKF5KCMUtils5 
+  - libKF5KCMUtils5-lang 
+  - libKF5KCMUtilsCore5 
   - libKF5KDELibs4Support5 
   - libKF5KDcraw5 
   - libKF5NewStuff5 
@@ -13607,7 +13611,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit 
   - libgsmsd8 
-  - libgsoap-2_8_138 
+  - libgsoap-2_8_139 
   - libgssdp-1_6-0-32bit 
   - libgssdp-devel 
   - libgstadaptivedemux-1_0-0-32bit 
@@ -14063,7 +14067,7 @@ unsorted:
   - libkdecorations2private10 
   - libkdegames-devel 
   - libkdepim-devel 
-  - libkdevplatform62 
+  - libkdevplatform63 
   - libkdsingleapplication-qt6-1_2 
   - libkdsingleapplication1_2 
   - libkdsoap-server-qt6-2 
