@@ -1,7 +1,7 @@
 #
 # spec file for package libksane
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           libksane
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        KDE scanning library
 License:        LGPL-2.1-only OR LGPL-3.0-only
@@ -75,9 +75,6 @@ Summary:        Translations for libKSaneWidgets6 and libKF5Sane6
 Supplements:    libKF5Sane6 = %{version}
 Supplements:    libKSaneWidgets6 = %{version}
 Provides:       libksane-lang-all = %{version}
-# Briefly existed in the devel project
-Obsoletes:      libKF5Sane6-lang
-Obsoletes:      libKSaneWidgets6-lang
 BuildArch:      noarch
 
 %description -n libksane-lang
@@ -87,7 +84,7 @@ Provides translations for packages libKSaneWidgets6 and libKF5Sane6.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
