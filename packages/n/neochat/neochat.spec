@@ -1,7 +1,7 @@
 #
 # spec file for package neochat
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           neochat
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        A chat client for Matrix, the decentralized communication protocol
 License:        BSD-2-Clause AND GPL-3.0-only AND GPL-3.0-or-later
@@ -67,6 +67,7 @@ BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
+BuildRequires:  cmake(Qt6TextToSpeech) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WebView) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(QuotientQt6) >= 0.9

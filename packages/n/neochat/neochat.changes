@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:48:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Fix account switching on logout
+  * Fix loading
+  * Fix common crash during login
+  * Replace duplicate beginResetModel with endResetModel
+  * Fix test
+  * Prepare for new RoomId format
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Too many changes since 25.04.3, only listing bugfixes:
+  * Use ImageComponent for replies (kde#503442)
+  * Allow accepting reason dialogs with Ctrl+Enter (kde#500990)
+  * Actually position the view at the end (kde#501075)
+  * Prevent opening the non-existent "Home" space in your web browser (kde#504842)
+  * Add user menu that is opened via right-clicking/long-tapped on avatar (kde#486252)
+  * If the message body is empty, say so (kde#494093)
+  * Add share action to the maximize delegate (kde#466382)
+  * Check if RoomEvent is null before trying to insert a notification (kde#502687)
+  * Give completion popup a minimum size when editing an existing message (kde#503483)
+  * Fix crash when trying to edit your message on a wide screen (kde#503846)
+  * Elide the user ID in UserDetailDialog if it's too long (kde#501483)
+  * Yeet HoverActions into the sun (kde#503784)
+  * Restore hover actions for the cpp message delegate (kde#503843)
+  * Make sure that ChatDocumentHandler can handle the document being changed to a nullptr (kde#501950)
+  * Force the room list items to update their height when the compactRoomList setting is changed. (kde#494146)
+  * Remember the matrixId during login when moving back from password (kde#489976)
+  * MessageModel: Handle stickers in ContentModelRole (kde#501553)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
