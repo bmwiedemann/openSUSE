@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Increase coverage rating for Transitous in Italy
+  * Correctly handle different polyline encoding precisions from MOTIS
+  * Treat carrier field in SNCF onboard API responses as optional (kde#506874)
+  * Update Transitous coverage data from Transport API Repository
+  * src/tools/transport-api-sync.cpp - fix compile
+  * Fix parsing dropoff constraints from Hafas
+  * Update DE-BW coverage areas from Transport API Repository
+  * Pick preferred protocol when Transport API Repository has multiple options
+  * Try harder to find a country-wide backend for country-constraint geocoding
+  * Add scheduled arrival date role
+  * Add onboard API support for XiamenAir
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
