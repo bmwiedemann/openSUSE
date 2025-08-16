@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:49 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * whatsnew - "The current view is remembered"
+  * koviewmanager.cpp - Fix readSettings() to restore the previous view
+  * Revert "Todoview - no longer show the todolist in the sidebar in todo view"
+  * Drop unnecessary KPim6IdentityManagement dependency
+  * Whatsnew 6.5: add events without duration are displayed as 30 min long
+  * Check for valid collections
+  * kotodoview.cpp - do not call the BaseView
+  * reparentingmodel.cpp - deal with possible mapToSource failures
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Too many changes since 25.04.3, only listing bugfixes:
+  * Add "New Event" and "New To-do" on the incidence popup-menu (kde#146564)
+  * DateNavigator - add option to show/hide the week number buttons (kde#393893)
+  * Move the Agenda View date range options into a toolbutton (kde#487534)
+  * Add a new "date picker" feature (kde#151660)
+  * Add a search option to consider the current view filter (kde#499336)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3

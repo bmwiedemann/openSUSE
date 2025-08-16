@@ -1,7 +1,7 @@
 #
 # spec file for package korganizer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
-%define kpim6_version 6.4.3
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
+%define kpim6_version 6.5.0
 
 %bcond_without released
 Name:           korganizer
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Personal Organizer
 License:        GPL-2.0-only
@@ -120,7 +120,6 @@ KOrganizer is a calendar application by KDE.
 %{_kf6_iconsdir}/hicolor/scalable/apps/korganizer.svg
 %{_kf6_iconsdir}/hicolor/scalable/apps/quickview.svgz
 %{_kf6_iconsdir}/hicolor/scalable/status/*.svg
-%{_kf6_knsrcfilesdir}/korganizer.knsrc
 %{_kf6_libdir}/libkorganizer_core.so.*
 %{_kf6_libdir}/libkorganizer_interfaces.so.*
 %{_kf6_libdir}/libkorganizerprivate.so.*
