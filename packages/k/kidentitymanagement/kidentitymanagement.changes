@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Add .gersemirc
+  * Use string literals inline operators
+  * Use for(...)
+  * Use loop
+  * Use static const
+  * Add pre-commit support
+  * Increase ktextaddons to 1.6.0. Improve emoji support + add textautogenerate lib (AI support)
+  * It compiles fine without qt6.10 deprecated methods
+  * Use c++20
+  * Fix yaml
+  * Execute test in parallel
+  * Return 0 when we have a flat model
+  * Allow failing tests on Windows
+  * Use {} here
+  * Add missing [[nodiscard]]
+  * Use "using namspace" directly
+  * Allow to define spam folder support
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
