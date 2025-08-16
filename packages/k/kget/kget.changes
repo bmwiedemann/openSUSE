@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Avoid unneccessary dynamic_cast in TorrentFileTreeModel
+  * Adapt to BEncoder api changes in libktorrent
+  * Adapt to BDecoder api changes in libktorrent
+  * Fix build with GPGME++<1.24
+  * Fix build with GPGME++ 2.0
+  * flatpak: Update runtime version
+  * Fix the logic of the drop target visibility
+  * Update logo using new Breeze icon
+- Drop patch, merged upstream:
+  * 0001-Fix-build-with-GPGME-2.0.patch
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
