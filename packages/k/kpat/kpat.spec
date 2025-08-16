@@ -1,7 +1,7 @@
 #
 # spec file for package kpat
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150400
 %bcond_without bhsolver
@@ -25,7 +25,7 @@
 
 %bcond_without released
 Name:           kpat
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Patience card game
 License:        GPL-2.0-or-later

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:49 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Switch to standardised BUILD_DOC cmake option
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Added "WITH_DOC" option to disable building the documentation.
+  * Add info about Gypsy name change to documentation
+  * Rename "Gypsy" to non-offensive "Normandy" (kde#111333)
+  * Use scene devicePixelRatio rather than qApp
+  * flatpak: Update runtime version to 6.9
+  * Add Keywords to desktop file
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
