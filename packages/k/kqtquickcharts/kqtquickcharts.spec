@@ -1,7 +1,7 @@
 #
 # spec file for package kqtquickcharts
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,12 @@
 #
 
 
+%define kf6_version 6.14.0
+%define qt6_version 6.5.0
+#
 %bcond_without released
 Name:           kqtquickcharts
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Plugin to render beautiful and interactive graphs
 License:        LGPL-2.1-or-later
@@ -28,11 +31,11 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
-BuildRequires:  kf5-filesystem
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  kf6-filesystem
+BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 
 %description
 A QtQuick plugin to render beautiful and interactive graphs.
@@ -41,16 +44,17 @@ A QtQuick plugin to render beautiful and interactive graphs.
 %autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-  %kf5_makeinstall -C build
+%kf6_install
 
 %files
-%license COPYING*
-%{_kf5_includedir}/kqtquickcharts_version.h
-%{_kf5_cmakedir}/KQtQuickCharts/
-%{_kf5_qmldir}/
+%license LICENSES/*
+%{_kf6_includedir}/kqtquickcharts_version.h
+%{_kf6_cmakedir}/KQtQuickCharts/
+%{_kf6_qmldir}/org/kde/charts/
 
 %changelog

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Fix the version and dependency of the cmake config file
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Drop Qt5 support
+  * Use the m_minorTickSize/m_majorTickSize variables
+  * Make demo work with Qt6
+  * Adapt build system to support Qt6 builds as well
+  * Port away from foreach()
+  * Adapt to QQmlListProperty API changes
+  * Add missing include
+  * Add moc includes to avoid incomplete type erros from moc in Qt 6
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
