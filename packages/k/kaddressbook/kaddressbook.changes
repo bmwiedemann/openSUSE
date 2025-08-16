@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:58 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Add .gersemirc
+  * Use string literals inline operators
+  * Add WhatsNew message to the part as well.
+  * Rename folder
+  * Add pre-commit support
+  * Add pre-commit file
+  * Prepare to add pre-commit support
+  * Fix whatsnew actions
+  * It compiles fine without qt6.10 deprecated methods
+  * Fix RELEASE_VERSION_DATE
+  * Use c++20
+  * Add missing KF6::ColorScheme link
+  * Use csignal
+  * Remove unused initialize default base class
+  * Use static here
+  * Fix color scheme change
+  * mainwidget: Reorganize includes
+  * Handle errors in EntityTreeModel directly inside KAddressbook
+  * Remove server side subscription menu item in collection view
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
