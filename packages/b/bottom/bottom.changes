@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 15 20:37:17 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.11.1:
+  * Bug Fixes
+    * Fix disk.columns being incorrectly interpreted as blank.
+    * Fix issue with battery widget time and small widths.
+  * Other
+    * Speed up time between startup and displaying data.
+
+
+-------------------------------------------------------------------
 Sat Aug 09 18:57:55 UTC 2025 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Bump rust version requirement to 1.81
