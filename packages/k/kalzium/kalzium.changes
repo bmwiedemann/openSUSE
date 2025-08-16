@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:00 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Clean up CMakePresets.json
+  * Move doc to KF6DocTools_FOUND
+  * Argument can be unused
+  * Remove duplicate margin
+  * It compiles without kf6 deprecated methods
+  * Drop Qt5 support
+  * Re-enable Avogadro for Qt6
+  * Drop QGLFormat stuff
+  * Add missing include
+  * Adapt KNS code to KF6
+  * Use imported targets for Avogadro
+  * Add xml/yaml linting
+  * Fix the encoding of an XML file (utf-8)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3

@@ -1,7 +1,7 @@
 #
 # spec file for package kalzium
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.6.2
 
 %bcond_without released
 Name:           kalzium
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Periodic Table of Elements
 License:        GPL-2.0-or-later
@@ -37,12 +37,14 @@ BuildRequires:  ocaml
 BuildRequires:  ocaml-facile-devel
 BuildRequires:  openbabel-devel
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(AvogadroLibs)
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
 BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
 BuildRequires:  cmake(KF6Plotting) >= %{kf6_version}
 BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
@@ -50,7 +52,9 @@ BuildRequires:  cmake(KF6UnitConversion) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6OpenGLWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6StateMachine) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
@@ -74,10 +78,7 @@ Kalzium shows a periodic table of the elements.
 %autosetup -p1
 
 %build
-%ifarch ppc ppc64
-export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
-%endif
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
@@ -101,12 +102,15 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf6_configkcfgdir}/kalzium.kcfg
 %{_kf6_debugdir}/kalzium.categories
 %{_kf6_iconsdir}/hicolor/*/apps/kalzium.*
+%{_kf6_knsrcfilesdir}/kalzium.knsrc
+%{_kf6_libdir}/libcompoundviewer.so.*
 %{_kf6_libdir}/libscience.so.*
 %{_kf6_sharedir}/kalzium/
 %{_kf6_sharedir}/libkdeedu/
 
 %files devel
 %{_includedir}/libkdeedu/
+%{_kf6_libdir}/libcompoundviewer.so
 %{_kf6_libdir}/libscience.so
 
 %files lang -f %{name}.lang
