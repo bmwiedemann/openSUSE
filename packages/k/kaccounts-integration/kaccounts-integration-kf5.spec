@@ -1,7 +1,7 @@
 #
 # spec file for package kaccounts-integration-kf5
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define sover 2
 %bcond_without released
 Name:           kaccounts-integration-kf5
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
