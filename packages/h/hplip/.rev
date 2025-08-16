@@ -1535,4 +1535,13 @@ Fixes build in Staging_A (python 3.13) - and seems to address the real reaason w
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1295165</requestid>
   </revision>
+  <revision rev="163" vrev="3">
+    <srcmd5>a15b2838aee6a93491a8afd41345b15c</srcmd5>
+    <version>3.25.2</version>
+    <time>1755369429</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable hp-scan-utils on Leap 16.0
+  Leap does not want to ship scikit-image -&gt; python-pandas</comment>
+    <requestid>1299861</requestid>
+  </revision>
 </revisionlist>

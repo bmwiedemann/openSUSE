@@ -1,7 +1,7 @@
 #
 # spec file for package hplip
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,14 @@
 %global use_qt5 0
 %global make_build make V=1
 %global make_install make DESTDIR=%{buildroot} V=1 install
+%endif
+
+%if 0%{?suse_version} == 1600 && 0%{?is_opensuse}
+# Build without scanning support
+%bcond_with scan_utils
+%else
+# Build scanning support
+%bcond_without scan_utils
 %endif
 
 %if 0%{use_qt5}
@@ -211,6 +219,12 @@ Obsoletes:      hplip3 < 3.9.5
 # This causes the "postscriptdriver" provides to be generated.
 # To avoid that, put "Ignore: cups-devel: cups-rpm-helper in the prjconf.
 
+# Make sure we obsolete old scan-utils
+# in case we're built without scan_utils
+%if %{without scan_utils}
+Obsoletes:      hplip-scan-utils < %{version}
+%endif
+
 %description
 The Hewlett-Packard Linux Imaging and Printing project (HPLIP) provides
 a unified single and multifunction connectivity solution for HP
@@ -309,6 +323,7 @@ Supplements:    (%{name}-hpijs and sane-backends)
 This package includes the backend driver for scanning with HP scanners
 and all-in-one devices using SANE tools like xsane or scanimage.
 
+%if %{with scan_utils}
 %package scan-utils
 Summary:        HPLIP scanning frontends hp-scan and hp-uiscan
 # SLE does not provide python-pillow (PIL) (bsc#1131613)
@@ -327,6 +342,7 @@ Obsoletes:      %{name}-scan < %{version}-%{release}
 This package provides the "hp-scan" and "hp-uiscan" frontend utilities. These
 utilities are alternatives to the SANE frontends "xsane" and "scanimage". They
 expose some advanced features of certain HP scanner models.
+%endif
 
 %package udev-rules
 Summary:        HPLIP udev rules
@@ -639,6 +655,15 @@ find "%{buildroot}" -type f -name "*.la" -delete -print
 # so that fdupes can only run for specific directories where linking files is safe:
 %fdupes -s %{buildroot}%{_datadir}/hplip/data/images
 
+# Ensure we have no unpackaged files if build
+# without scan-util
+%if !%{with scan_utils}
+rm -f %{buildroot}%{_bindir}/hp-scan
+rm -f %{buildroot}%{_bindir}/hp-uiscan
+rm -f %{buildroot}%{python_sitearch}/scanext.so
+rm -f %{buildroot}%{_datadir}/applications/hp-uiscan.desktop
+%endif
+
 %post -p /bin/bash
 %udev_rules_update
 %desktop_database_post
@@ -733,6 +758,7 @@ exit 0
 %exclude %{_datadir}/hplip/base/__pycache__/imageprocessing.*
 %exclude %{_datadir}/hplip/%{ui_dir}/__pycache__/scandialog.*
 
+%if %{with scan_utils}
 # The scanning utils depend on PIL and python3-scikit-image,
 # which are not available in SLE
 %files scan-utils
@@ -750,6 +776,7 @@ exit 0
 %{_datadir}/hplip/__pycache__/scan.*
 %{_datadir}/hplip/base/__pycache__/imageprocessing.*
 %{_datadir}/hplip/%{ui_dir}/__pycache__/scandialog.*
+%endif
 %endif
 
 %files hpijs

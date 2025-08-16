@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 14 19:57:37 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Disable hp-scan-utils on Leap 16.0
+  Leap does not want to ship scikit-image -> python-pandas
+
+-------------------------------------------------------------------
 Tue Jul 15 17:52:47 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Fix ReDoS issue in  HPLIP's SLP parser (bsc#1245358)
