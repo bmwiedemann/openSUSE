@@ -91,4 +91,15 @@ war rightfully raised in my previous one.</comment>
 - Add service file to download source.</comment>
     <requestid>1267386</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dd0ae0413af450cb98918eccad4e2473</srcmd5>
+    <version>61</version>
+    <time>1755369429</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 61
+  * Add ini_parse_string_length() that avoids internal strlen().
+  * Fix bug where name only options are not processed after an
+    error has occurred.</comment>
+    <requestid>1299860</requestid>
+  </revision>
 </revisionlist>

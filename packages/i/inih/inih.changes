@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 15 12:00:00 UTC 2025 - Matthias Bach <marix@marix.org> - 61
+
+- Update to version 61
+  * Add ini_parse_string_length() that avoids internal strlen().
+  * Fix bug where name only options are not processed after an
+    error has occurred.
+
+-------------------------------------------------------------------
 Sun Apr  6 08:58:01 UTC 2025 - Matthias Bach <marix@marix.org> - 59
 
 - Update to version 59
