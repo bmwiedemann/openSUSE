@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug  1 12:15:33 UTC 2025 - Reinhard Max <max@suse.com>
+
+- bsc#1246544: Fix racy socket creation
+  * Add chrony-unix-socket.patch
+  * Add chrony-remove-chmod.patch
+- Update clknetsim to snapshot a2eb0b25.
+
+-------------------------------------------------------------------
 Wed Jul  2 17:42:22 UTC 2025 - Reinhard Max <max@suse.com>
 
-- Update to version 4.5:
+- Update to version 4.7:
   * Add opencommands directive to select remote monitoring
     commands
   * Add interval option to driftfile directive

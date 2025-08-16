@@ -33,7 +33,7 @@
 %bcond_without testsuite
 
 %define _systemdutildir %(pkg-config --variable systemdutildir systemd)
-%global clknetsim_ver 530d1a5
+%global clknetsim_ver a2eb0b25
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
@@ -70,6 +70,8 @@ Patch2:         chrony-logrotate.patch
 Patch3:         chrony-service-ordering.patch
 Patch7:         chrony-htonl.patch
 Patch8:         chrony.nm-dispatcher.dhcp.patch
+Patch9:         chrony-unix-socket.patch
+Patch10:        chrony-remove-chmod.patch
 BuildRequires:  NetworkManager-devel
 BuildRequires:  bison
 BuildRequires:  findutils
@@ -181,6 +183,8 @@ e.g. because the servers will be set via DHCP.
 %patch -P 3
 %patch -P 7
 %patch -P 8
+%patch -P 9 -p1
+%patch -P 10 -p1
 
 # Remove pool statements from the default /etc/chrony.conf. They will
 # be provided by branding packages in /etc/chrony.d/pool.conf .
