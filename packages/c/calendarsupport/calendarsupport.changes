@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:50 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Const'ify + use qCWarning
+  * Add .gersemirc
+  * Use string literals inline operators
+  * Activate yaml pre-commit support
+  * Add pre-commit support
+  * Increase ktextaddons to 1.6.0. Improve emoji support + add textautogenerate lib (AI support)
+  * It compiles fine without qt6.10 deprecated methods
+  * Use c++20
+  * Add tests-run-in-parallel
+  * add static + not necessary to initialize it
+  * codespell update and fixes
+  * Fix BUG 501637: untranslated strings in preferences dialogue (kde#501637)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
