@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * [BlenderCreator] Fix memory leak by using std::unique_ptr for gzFile
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Remove support for Qt5
+  * Remove unnecessary Messages.sh
+  * Convert license headers to SPDX
+  * Adapt to new API
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
