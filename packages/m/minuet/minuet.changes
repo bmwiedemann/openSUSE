@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:48:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * fix readme not displaying properly on gitlab
+  * README: fix minuet screenshot
+  * snapcraft: Move to core24
+  * Remove Qt5 support
+  * README: cleanup (no KF5, no invent)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
