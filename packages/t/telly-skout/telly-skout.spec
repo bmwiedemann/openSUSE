@@ -1,7 +1,7 @@
 #
 # spec file for package telly-skout
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,12 +17,12 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           telly-skout
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Kirigami TV guide
 License:        LGPL-2.1-or-later
@@ -62,7 +62,7 @@ favorite channels from TV Spielfilm or an XMLTV file.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
