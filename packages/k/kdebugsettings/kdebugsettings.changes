@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Use string literals inline operators
+  * It seems that windows/freebsd doesn't support qt6.9
+  * Time to increase version
+  * Activate check-yaml
+  * Exclude end-of-file-fixer here
+  * Add pre-commit CI support
+  * Use tests-run-in-parallel: True
+  * flatpak: Update to Sdk 6.9
+  * Remove unused method + use static
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:49 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
