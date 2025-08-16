@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * flatpak-manifest: Update dependencies
+  * Added option to disable kImageAnnotator from being integrated.
+  * Fixing Gwenview print preview window size in multi-screen setups (kde#504978)
+  * Edit CMakeLists.txt: Gwenview can open SVG files, too!
+  * Add keyboard shortcut for the "Image quality" widget in Save-As dialog
+  * Fix crash when crop area is smaller than handles (kde#481140)
+  * Allow Gwenview to open OpenRaster images (.ora)
+  * Add missing includes
+  * Fix build with Qt 6.10
+  * Fix Gwenview being unable to open OpenRaster (ora) files
+  * Replace Phonon with QtMultimedia
+  * Improve spinbox localization
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
