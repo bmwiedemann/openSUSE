@@ -1,7 +1,7 @@
 #
 # spec file for package kdegraphics-mobipocket
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           kdegraphics-mobipocket
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        E-book plugin and library
 License:        GPL-2.0-or-later
@@ -33,21 +33,20 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 
 %description
 Mobipocket E-book support for Okular.
 
-%package -n libQMobipocket6-2
+%package -n libQMobipocket6-3
 Summary:        E-book plugin and library
 
-%description -n libQMobipocket6-2
+%description -n libQMobipocket6-3
 Mobipocket E-book plugin and library.
 
 %package -n kdegraphics-mobipocket-devel
 Summary:        E-book plugin and library
-Requires:       libQMobipocket6-2 = %{version}
+Requires:       libQMobipocket6-3 = %{version}
 
 %description -n kdegraphics-mobipocket-devel
 Mobipocket E-book plugin and library.
@@ -66,11 +65,12 @@ library
 %install
 %kf6_install
 
-%ldconfig_scriptlets -n libQMobipocket6-2
+%ldconfig_scriptlets -n libQMobipocket6-3
 
-%files -n libQMobipocket6-2
-%license COPYING
+%files -n libQMobipocket6-3
+%license LICENSES/*
 %{_kf6_libdir}/libQMobipocket6.so.*
+%{_kf6_debugdir}/qmobipocket.categories
 
 %files -n kdegraphics-mobipocket-devel
 %{_includedir}/QMobipocket6/
