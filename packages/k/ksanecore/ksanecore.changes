@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * call sane_cancel when a user cancels the scan (kde#501412)
+  * always set resolution option last (kde#503336)
+  * optimize setOptions
+  * remember the actual wiggle room per page size (kde#502231)
+  * look for more values to determine multi-page scanning (kde#501367)
+  * small reformatting
+  * fix accessing wrong option in pagesizeoption
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
