@@ -1,7 +1,7 @@
 #
 # spec file for package kdnssd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %define rname kio-zeroconf
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           kdnssd
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Zeroconf Support for KIO applications
 License:        GPL-2.0-or-later
@@ -49,9 +49,6 @@ in all applications that are using KIO.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%ifarch ppc ppc64
-export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
-%endif
 %cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
 
 %kf6_build
