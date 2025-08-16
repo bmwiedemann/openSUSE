@@ -330,4 +330,12 @@ new version required for Vbox 7.1 (forwarded request 1202284 from jengelh)</comm
     <comment>- Add kbuild-gcc15.patch to fix gcc15 compile time error</comment>
     <requestid>1275030</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>246412abe2137b4471b11742aae72e6f</srcmd5>
+    <version>0.1.9998+svn3686</version>
+    <time>1755369435</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 0.1.9998+svn3686</comment>
+    <requestid>1299846</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Aug 15 13:54:37 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0.1.9998+svn3686
+  * header.kmk,footer-pass2-compiling-targets.kmk: Added EARLY_LIBS
+    and LATE_LIBS properties to better control the library order
+    when using templates. The libraries are collected from
+    EARLY_LIBS first, then LIBS, and LATE_LIBS last.
+  * header.kmk: Added KB_FN_LOAD_TOOL and KB_FN_LOAD_SDK for
+    explictly loading a tool or an sdk implementation.
+  * kmk: Automatically ascend if no makefile found and a goal was
+    given on the command line. This is to eliminating the need for
+    Makefile.kup-files as far as compiling individual source files
+    from an editor is concerned.
+  * header.kmk: Always zap the IFS variable so it won't confuse
+    kmk_ash.
+  * kmk/job.c: Deal with escape sequences inside double quotes when
+    we're using kmk_ash.
+  * kBuild/header.kmk: drop the .noarch suffix for
+    KBUILD_DEVTOOLS_TRG_NOARCH and KBUILD_DEVTOOLS_HST_NOARCH.
+
+-------------------------------------------------------------------
 Tue May  6 16:14:23 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Add kbuild-gcc15.patch to fix gcc15 compile time error

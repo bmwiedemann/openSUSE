@@ -5,10 +5,10 @@
  src/lib/kStuff/include/k/kHlpAssert.h |    2 ++
  4 files changed, 12 insertions(+), 4 deletions(-)
 
-Index: kbuild-0.1.9998+svn3613/kBuild/env.sh
+Index: kbuild-0.1.9998+svn3686/kBuild/env.sh
 ===================================================================
---- kbuild-0.1.9998+svn3613.orig/kBuild/env.sh
-+++ kbuild-0.1.9998+svn3613/kBuild/env.sh
+--- kbuild-0.1.9998+svn3686.orig/kBuild/env.sh
++++ kbuild-0.1.9998+svn3686/kBuild/env.sh
 @@ -383,6 +383,9 @@ if test -z "$KBUILD_HOST_ARCH"; then
          m68k)
              KBUILD_HOST_ARCH='m68k'
@@ -19,10 +19,10 @@ Index: kbuild-0.1.9998+svn3613/kBuild/env.sh
          mips32|mips)
              KBUILD_HOST_ARCH='mips32'
              ;;
-Index: kbuild-0.1.9998+svn3613/kBuild/header.kmk
+Index: kbuild-0.1.9998+svn3686/kBuild/header.kmk
 ===================================================================
---- kbuild-0.1.9998+svn3613.orig/kBuild/header.kmk
-+++ kbuild-0.1.9998+svn3613/kBuild/header.kmk
+--- kbuild-0.1.9998+svn3686.orig/kBuild/header.kmk
++++ kbuild-0.1.9998+svn3686/kBuild/header.kmk
 @@ -197,8 +197,8 @@ KBUILD_BLD_TYPES := release profile debu
  # build types. (PORTME)
  #
@@ -35,18 +35,18 @@ Index: kbuild-0.1.9998+svn3613/kBuild/header.kmk
  
  
 @@ -524,7 +524,7 @@ KBUILD_DEVTOOLS_HST ?= $(KBUILD_DEVTOOLS
- KBUILD_DEVTOOLS_TRG_NOARCH ?= $(KBUILD_DEVTOOLS)/$(KBUILD_TARGET).noarch
- KBUILD_DEVTOOLS_HST_NOARCH ?= $(KBUILD_DEVTOOLS)/$(KBUILD_HOST).noarch
+ KBUILD_DEVTOOLS_TRG_NOARCH ?= $(KBUILD_DEVTOOLS)/$(KBUILD_TARGET)
+ KBUILD_DEVTOOLS_HST_NOARCH ?= $(KBUILD_DEVTOOLS)/$(KBUILD_HOST)
  
 -if1of ($(KBUILD_TARGET_ARCH), amd64 hppa64 mips64 ppc64 s390x sparc64)
 +if1of ($(KBUILD_TARGET_ARCH), amd64 hppa64 mips64 ppc64 ppc64le s390x sparc64)
   ifeq ($(KBUILD_TARGET_ARCH),amd64)
    KBUILD_DEVTOOLS_TRG_ALT ?= $(KBUILD_DEVTOOLS)/$(KBUILD_TARGET).x86
   else ifeq ($(KBUILD_TARGET_ARCH),hppa64)
-Index: kbuild-0.1.9998+svn3613/src/lib/kStuff/include/k/kDefs.h
+Index: kbuild-0.1.9998+svn3686/src/lib/kStuff/include/k/kDefs.h
 ===================================================================
---- kbuild-0.1.9998+svn3613.orig/src/lib/kStuff/include/k/kDefs.h
-+++ kbuild-0.1.9998+svn3613/src/lib/kStuff/include/k/kDefs.h
+--- kbuild-0.1.9998+svn3686.orig/src/lib/kStuff/include/k/kDefs.h
++++ kbuild-0.1.9998+svn3686/src/lib/kStuff/include/k/kDefs.h
 @@ -176,6 +176,7 @@
  #define K_ARCH_POWERPC_32       ( 9 | K_ARCH_BIT_32 | K_ARCH_END_BI)
  /** 64-bit PowerPC. */
@@ -67,10 +67,10 @@ Index: kbuild-0.1.9998+svn3613/src/lib/kStuff/include/k/kDefs.h
  # elif defined(__powerpc__) || defined(__ppc__) || defined(__PPC__)
  #  define K_ARCH    K_ARCH_POWERPC_32
  # elif defined(__riscv)
-Index: kbuild-0.1.9998+svn3613/src/lib/kStuff/include/k/kHlpAssert.h
+Index: kbuild-0.1.9998+svn3686/src/lib/kStuff/include/k/kHlpAssert.h
 ===================================================================
---- kbuild-0.1.9998+svn3613.orig/src/lib/kStuff/include/k/kHlpAssert.h
-+++ kbuild-0.1.9998+svn3613/src/lib/kStuff/include/k/kHlpAssert.h
+--- kbuild-0.1.9998+svn3686.orig/src/lib/kStuff/include/k/kHlpAssert.h
++++ kbuild-0.1.9998+svn3686/src/lib/kStuff/include/k/kHlpAssert.h
 @@ -59,6 +59,8 @@ extern "C" {
  # define kHlpAssertBreakpoint() do { __asm__ __volatile__ ("unimp 0"); } while (0) /*??*/
  #elif defined(__GNUC__) && (K_ARCH == K_ARCH_SPARC_64)

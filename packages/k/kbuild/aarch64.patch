@@ -1,13 +1,12 @@
 ---
- kBuild/env.sh                    |    3 +++
- kBuild/header.kmk                |    4 ++--
- src/lib/kStuff/include/k/kDefs.h |    2 +-
- 3 files changed, 6 insertions(+), 3 deletions(-)
+ kBuild/env.sh     |    3 +++
+ kBuild/header.kmk |    4 ++--
+ 2 files changed, 5 insertions(+), 2 deletions(-)
 
-Index: kbuild-0.1.9998+svn3613/kBuild/env.sh
+Index: kbuild-0.1.9998+svn3686/kBuild/env.sh
 ===================================================================
---- kbuild-0.1.9998+svn3613.orig/kBuild/env.sh
-+++ kbuild-0.1.9998+svn3613/kBuild/env.sh
+--- kbuild-0.1.9998+svn3686.orig/kBuild/env.sh
++++ kbuild-0.1.9998+svn3686/kBuild/env.sh
 @@ -422,6 +422,9 @@ if test -z "$KBUILD_HOST_ARCH"; then
          sparc64|sparcv9)
              KBUILD_HOST_ARCH='sparc64'
@@ -18,10 +17,10 @@ Index: kbuild-0.1.9998+svn3613/kBuild/env.sh
  
          *)  echo "$0: unknown cpu/arch - $KBUILD_HOST_ARCH" 1>&${ERR_REDIR}
              sleep 1
-Index: kbuild-0.1.9998+svn3613/kBuild/header.kmk
+Index: kbuild-0.1.9998+svn3686/kBuild/header.kmk
 ===================================================================
---- kbuild-0.1.9998+svn3613.orig/kBuild/header.kmk
-+++ kbuild-0.1.9998+svn3613/kBuild/header.kmk
+--- kbuild-0.1.9998+svn3686.orig/kBuild/header.kmk
++++ kbuild-0.1.9998+svn3686/kBuild/header.kmk
 @@ -197,8 +197,8 @@ KBUILD_BLD_TYPES := release profile debu
  # build types. (PORTME)
  #
@@ -33,16 +32,3 @@ Index: kbuild-0.1.9998+svn3613/kBuild/header.kmk
  KBUILD_ARCHES_32 := x86 arm32 hppa32 m68k mips32 ppc32 riscv32 s390 sh32 sparc32
  
  
-Index: kbuild-0.1.9998+svn3613/src/lib/kStuff/include/k/kDefs.h
-===================================================================
---- kbuild-0.1.9998+svn3613.orig/src/lib/kStuff/include/k/kDefs.h
-+++ kbuild-0.1.9998+svn3613/src/lib/kStuff/include/k/kDefs.h
-@@ -219,7 +219,7 @@
- #  define K_ARCH    K_ARCH_ALPHA
- # elif defined(__arm__) || defined(__arm32__)
- #  define K_ARCH    K_ARCH_ARM_32
--# elif defined(__aarch64__) || defined(__arm64__)
-+# elif defined(__arm64__) || defined(__aarch64__)
- #  define K_ARCH    K_ARCH_ARM_64
- # elif defined(__hppa__) && defined(__LP64__)
- #  define K_ARCH    K_ARCH_PARISC_64

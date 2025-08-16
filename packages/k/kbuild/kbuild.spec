@@ -1,7 +1,7 @@
 #
 # spec file for package kbuild
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define _svnrev 3613
+%define _svnrev 3686
 Name:           kbuild
-Version:        0.1.9998+svn3613
+Version:        0.1.9998+svn3686
 Release:        0
 Summary:        Framework for writing simple makefiles for complex tasks
 License:        GPL-2.0-or-later
