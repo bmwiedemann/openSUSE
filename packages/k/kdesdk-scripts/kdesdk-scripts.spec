@@ -1,7 +1,7 @@
 #
 # spec file for package kdesdk-scripts
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define rname kde-dev-scripts
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           kdesdk-scripts
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Scripts for KDE software development
 License:        GPL-2.0-only AND GFDL-1.2-only
@@ -61,7 +61,7 @@ This package contains helper scripts to port code to Qt6 and KDE Frameworks 6.
 %ifarch ppc64
 RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %endif
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
