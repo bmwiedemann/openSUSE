@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:05 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Fix qalculate backend with recent versions of libqalculate (kde#507038)
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Add context to translatable string
+  * add missing include to fix LaTeX typesetting (kde#https://bugs.kde.org/show_bug.cgi?id=490644)
+  * Use `sage --version` instead of `sage -v`
+  * Changelog update.
+  * Fixed incorrectly named or missing settings widgets.
+  * Reduced the number of Backend::capabilities() calls by caching the number of columns in DefaultVariableModel.
+  * [python] removed the dependency on the exact size of a string boject in the Python test.
+  * Fix typo and update wording
+  * Minor wording fixes.
+  * Integrated plots on default also for Python and Scilab.
+  * Unified margins and QTabWidget's document mode in all setttings ui files and converted the enums to their Qt6 values.
+  * Added the missing hanlding of "integrated plots" settings for R, Python and Julia.
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
