@@ -1,7 +1,7 @@
 #
 # spec file for package AppStream
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ ExclusiveArch:  donotbuild
 %define libAppStreamQt_sover 3
 %define libappstream_compose_sover 0
 Name:           AppStream%{?pkg_suffix}
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        LGPL-2.1-or-later
