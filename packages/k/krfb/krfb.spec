@@ -1,7 +1,7 @@
 #
 # spec file for package krfb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           krfb
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Screen sharing using the VNC/RFB protocol
 License:        GPL-2.0-or-later
@@ -31,7 +31,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  LibVNCServer-devel
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
@@ -50,6 +49,7 @@ BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(KPipeWire) >= 5.93
 BuildRequires:  cmake(KWayland) >= 5.93
+BuildRequires:  cmake(LibVNCServer) >= 0.9.14
 BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.5.0
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
@@ -65,6 +65,16 @@ BuildRequires:  pkgconfig(xcb-shape)
 BuildRequires:  pkgconfig(xcb-shm)
 BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xdamage)
+# SECTION LibVncServer_workarounds
+# LibVNCServer-devel is lacking build dependencies in 15.6/16.0, boo#1247887
+BuildRequires:  libjpeg-devel
+BuildRequires:  libpng-devel
+BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(libgcrypt)
+BuildRequires:  pkgconfig(lzo2)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(zlib)
+# /SECTION
 
 %description
 VNC-compatible server to share KDE desktops.
