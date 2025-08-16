@@ -17,9 +17,13 @@
 
 
 %define lname libhwy1
+%ifarch riscv64
+# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110812
+%global _lto_cflags %{nil}
+%endif
 
 Name:           highway
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        C++ library providing SIMD/vector intrinsics
 License:        Apache-2.0 OR BSD-3-Clause
@@ -28,12 +32,8 @@ URL:            https://github.com/google/highway
 Source:         https://github.com/google/highway/archive/refs/tags/%version.tar.gz
 Source1:        baselibs.conf
 Patch1:         no-forced-inline.diff
-# https://github.com/google/highway/issues/776
-%if 0%{?suse_version} > 1550
+Patch2:         avx10_2.patch
 BuildRequires:  c++_compiler
-%else
-BuildRequires:  gcc10-c++
-%endif
 BuildRequires:  cmake
 BuildRequires:  memory-constraints
 BuildRequires:  pkg-config
@@ -72,20 +72,12 @@ Documentation for Highway development.
 %prep
 %autosetup -p1
 
-%ifarch riscv64
-# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110812
-%global _lto_cflags %{nil}
-%endif
-
 %build
-export CFLAGS="%optflags -DHWY_COMPILE_ALL_ATTAINABLE"
+export CFLAGS="%optflags"
 %ifarch ppc64 ppc64le
 CFLAGS="$CFLAGS -maltivec"
 %endif
 export CXXFLAGS="$CFLAGS"
-%if 0%{?suse_version} < 1550
-export CXX=g++-10
-%endif
 %limit_build -m 1400
 
 %cmake \
@@ -104,8 +96,7 @@ export CXX=g++-10
 export CTEST_PARALLEL_LEVEL=2
 %ctest --parallel 2 --verbose || :
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %_libdir/libhwy*.so.*
