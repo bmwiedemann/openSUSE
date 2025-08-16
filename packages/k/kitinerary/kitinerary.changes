@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Keeping `readDateTime` in for PkPass Pretix parser
+  * Add Cvent PkPass Extractor
+  * add eventbrite pkpass extractor
+  * Enhance ticket parsing functionality across various scripts
+  * Add Odoo PDF parsing functionality and configuration
+  * Support another (newer?) Pretix PDF ticket variant
+  * Support English B&B Hotel confirmation emails
+  * Support extracting multi-leg ZSSK tickets
+  * Add extractor for pathe.fr PkPass.
+  * Parse dates crossing a month boundary correctly in Tito tickets
+  * Add extractorscript for Northlink Ferries (Scotland)
+  * Handle German date/time formats in Eurostar PDF tickets
+  * Gopass: add SPDX headers
+  * Gopass: add i18n map
+  * Add Gopass Ticket Confirmation Extractor
+  * Extract departure date from Eurostar pkpass files
+  * Add basic globtour.com bus ticket extractor script
+  * Build Flatpak in stable branch against stable dependencies
+  * Correctly sort unbound bus tickets
+  * Add extractor script for Arriva bus tickets
+  * Handle more language variants in SCNF PDF ticket dates
+  * Support German language variant of Eurostar PDFs
+  * Support prepositions date/time format in BlablaBus tickets
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Too many changes since 25.04.3, only listing bugfixes:
+  * Add extractor script for ticket-ua railway passes (kde#505891)
+  * Fix extracting Amtrak tickets with multi-line station names (kde#501409)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
