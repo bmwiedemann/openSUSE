@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Add .gersemirc
+  * It compiles fine without qt 6.10 deprecated methods
+  * Use string literals inline operators
+  * add pre-commit support
+  * Use c++20
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
