@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Aug  8 23:08:28 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Deduplicate files in %install using %fdupes macro 
+- Make the -devel and the -doc packages noarch 
+
+-------------------------------------------------------------------
+Mon Aug  4 23:49:04 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Delete patches (upstreamed):
+  * 0001-Fix-xsimd-available_architectures-.has-for-sve-and-r.patch
+  * 0002-Fix-detection-of-SSE-AVX-AVX512-when-they-are-explic.patch
+- Update to version 13.2.0:
+  * Added broadcast overload for bool
+  * Fixed kernel::store for booleans
+  * Explicitly verify dependency between architectures
+    (like sse2 implies sse2)
+  * Use default arch alignment as default alignment for
+    xsimd::aligned_allocator
+  * sse2 version of xsimd::swizzle on [u]int16_t
+  * avx implementation of transpose for [u]int[8|16]
+  * Implement [u]int8 and [u]int16 matrix transpose for 128 bit
+    registers
+  * Fix fma4 support
+- Update to version 13.1.0:
+  * Fix rotate_left and rotate_right behavior (it was swapped!)
+  * Fix compress implementation on RISC-V
+  * Improve RISC-V CI
+  * Fix clang-17 compilation on RISC-V
+  * Validate cmake integration
+  * Provide xsimd::transpose on 64 and 32 bits on most platforms
+  * Improve documentation
+  * Provide xsimd::batch_bool::count
+  * Fix interaction between xsimd::make_sized_batch_t and
+    xsimd::batch<std::complex, ...>
+  * Fix vbmi, sve and rvv detection through
+    xsimd::available_architectures
+  * Fix compilation on MS targets where small can be defined.
+  * Change default install directory for installed headers.
+  * Support mixed-complex implementations of xsimd::pow()
+  * Improve xsimd::pow implementation for complex numbers
+  * Fix uninitialized read in lgamma implementation
+
+-------------------------------------------------------------------
 Thu Feb 27 13:55:27 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure build recipe succeeds under POSIX sh
@@ -6,7 +49,7 @@ Thu Feb 27 13:55:27 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Tue Jan 21 00:57:46 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Explicitly BuildRequires sphinx_rtd_theme. 
+- Explicitly BuildRequires sphinx_rtd_theme.
 
 -------------------------------------------------------------------
 Tue Aug 27 00:37:55 UTC 2024 - Guang Yee <gyee@suse.com>

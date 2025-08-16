@@ -1,7 +1,7 @@
 #
 # spec file for package xsimd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           xsimd
-Version:        13.0.0
+Version:        13.2.0
 Release:        0
 Summary:        C++ wrappers for SIMD intrinsics
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://xsimd.readthedocs.io/en/latest/
 Source0:        https://github.com/xtensor-stack/xsimd/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM -- https://mail.kde.org/pipermail/distributions/2024-July/001511.html
-Patch0:         0001-Fix-xsimd-available_architectures-.has-for-sve-and-r.patch
-Patch1:         0002-Fix-detection-of-SSE-AVX-AVX512-when-they-are-explic.patch
 BuildRequires:  %{python_module breathe}
 BuildRequires:  %{python_module sphinx_rtd_theme}
 BuildRequires:  cmake
 BuildRequires:  doctest-devel
 BuildRequires:  doxygen
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  make
 BuildRequires:  pkgconfig
@@ -68,11 +66,14 @@ common mathematical functions operating on batches.
 mkdir -p %{buildroot}%{_docdir}/%{name}
 cp -r %{_builddir}/%{name}-%{version}/docs/build/html/* %{buildroot}%{_docdir}/%{name}
 
+%fdupes %{buildroot}
+
 %check
 %ctest
 
 %package devel
 Summary:        Development files for xsimd
+BuildArch:      noarch
 
 %description devel
 SIMD (Single Instruction, Multiple Data) is a feature of microprocessors that
@@ -91,12 +92,13 @@ This package contains the developments files needed to use xsimd
 %files devel
 %license LICENSE
 %{_includedir}/xsimd
-%{_libdir}/cmake/xsimd
-%{_libdir}/pkgconfig/xsimd.pc
+%{_datadir}/cmake/xsimd/
+%{_datadir}/pkgconfig/xsimd.pc
 
 %package doc
 Summary:        Documentation for xsimd
 Group:          Documentation/HTML
+BuildArch:      noarch
 
 %description doc
 SIMD (Single Instruction, Multiple Data) is a feature of microprocessors that
