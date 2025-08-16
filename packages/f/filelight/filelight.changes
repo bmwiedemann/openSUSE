@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * memory: prefer shared_ptr for qobject + deleteLater on them (kde#507656)
+  * remotelister: sort folder before emitting it (kde#507228)
+  * locallister: don't convert to std::function needlessly
+  * test: make sure the unicode test actually finds the root dir
+  * windows: drop unnecessary slow api call
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Add option to hide the folders sidebar
+  * cmake: bump required Qt to 6.8.1
+  * only force a shape update on the initial ready state (kde#505730)
+  * fix zoom in/out actions with new depth logic
+  * map: fix visible depth logic when navigating upwards
+  * Fix button alignment on overview page when sandboxed (kde#495554)
+  * Fix typo: isSkipable -> isSkippable
+  * only emit urlChanged signal when value is actually changed
+  * only emit upEnabledChanged signal when value is actually changed
+  * Disable "Up" action when up URL matches current URL (kde#476718)
+  * windowswalker: don't else after return
+  * windowswalker: walk right over errors
+  * Add "Disk Usage Statistics" Service Menu
+  * don't let file groups be clickable
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
