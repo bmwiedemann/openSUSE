@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:48:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Fix possible erroneous trailing space in OAuth scope parameter
+
+-------------------------------------------------------------------
+Mon Jul 14 14:26:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Too many changes since 25.04.3, only listing bugfixes:
+  * Prevent a null access in certain timelines (kde#504215)
+  * Fix timeline streaming when the server configured it for another URL (kde#505213)
+  * Clamp contentY in both directions (kde#501936)
+  * Fix adding a second account on Android (kde#499434)
+  * Limit the poll choices to the limit set by the server (kde#487056)
+  * Add pull-to-refresh for timeline pages (kde#495996)
+  * Separate unread and previous notifications (kde#479338)
+  * Clamp contentY when using the PageUp key (kde#501936)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3

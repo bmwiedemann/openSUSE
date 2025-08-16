@@ -1,7 +1,7 @@
 #
 # spec file for package tokodon
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           tokodon
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Mastodon client by KDE
 License:        GPL-3.0-only
@@ -50,6 +50,8 @@ BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
 BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KUnifiedPush) >= 1.0.0
+BuildRequires:  cmake(QCoro6Core)
+BuildRequires:  cmake(QCoro6Network)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Keychain)
