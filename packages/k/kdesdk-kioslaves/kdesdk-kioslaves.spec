@@ -1,7 +1,7 @@
 #
 # spec file for package kdesdk-kioslaves
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 %define rname kdesdk-kio
 Name:           kdesdk-kioslaves
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        KDE SDK KIO slaves
 License:        GPL-2.0-only
@@ -46,7 +46,7 @@ This package contains additional KIO slaves.
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
