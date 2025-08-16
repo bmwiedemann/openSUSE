@@ -212,7 +212,7 @@ doxygen -u Doxyfile.in
 export PATH=%{_libqt5_bindir}:$PATH
 
 %if %{with configure}
-autoreconf -ifv
+autoreconf -ifv -I /usr/share/gettext/m4
 %endif
 %configure\
   --enable-release\

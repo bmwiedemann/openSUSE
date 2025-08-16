@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 13 10:27:39 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.19.1:
+  * Fix: Remove the definition of CMAKE_TRY_COMPILE_CONFIGURATION
+    in CMakeToolchain to avoid issues with check_function_exists()
+    legacy code in MSVC (gh#conan-io/conan#18707).
+
+-------------------------------------------------------------------
 Sat Jul 26 12:12:15 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.19.0:

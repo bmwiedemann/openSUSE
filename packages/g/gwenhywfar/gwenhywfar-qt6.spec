@@ -105,7 +105,7 @@ export CC=gcc-13 CXX=g++-13
 export PATH=%{_qt6_bindir}:$PATH
 
 %if %{with configure}
-autoreconf -ifv
+autoreconf -ifv -I /usr/share/gettext/m4
 %endif
 
 # with-guis=qt5 will build with Qt 6

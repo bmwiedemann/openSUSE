@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 13 13:47:00 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Fix build with gettext-runtime >= 0.24.1
+
+-------------------------------------------------------------------
 Tue Aug  5 12:16:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.12.1
