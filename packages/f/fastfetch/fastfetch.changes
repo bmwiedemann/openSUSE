@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug 16 18:02:02 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to 2.50.2:
+  Bugfixes:
+   * Fixes linglong package detection V2 
+     (gh#fastfetch-cli/fastfetch#1903)
+   * Fixes building with -DENABLE_SYSTEM_YYJSON=ON 
+     (gh#fastfetch-cli/fastfetch#1904)
+   * Fixes showMac does not honor defaultRouteOnly 
+     (gh#fastfetch-cli/fastfetch#1902)
+   * Fixes failing to acquire default route on Linux in certain 
+     cases (gh#fastfetch-cli/fastfetch#1902)
+
+-------------------------------------------------------------------
 Thu Aug 14 22:36:57 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to 2.50.1:
