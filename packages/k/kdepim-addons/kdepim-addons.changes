@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * We need ktextaddons 1.7.1 for this one
+  * Convert to markdown/highlighting but need new 1.7.1
+  * Use a QTextEdit
+  * Fix dialog
+  * Add manager + implement question
+  * Return error
+  * Allow to show dialogbox
+  * Use pointer here
+  * Return icon name
+  * Allow to use TextAutoGenerateQuickAskDialog
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Too many changes since 25.04.3, only listing bugfixes:
+  * Fix bug: kmail crash with segfault at start when adding "folder size check" plugin (kde#504090)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:52 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
