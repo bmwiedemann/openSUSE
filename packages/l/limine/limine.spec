@@ -15,7 +15,7 @@
 #
 
 Name:           limine
-Version:        9.5.3
+Version:        9.6.1
 Release:        0
 Summary:        Modern, advanced, portable, multiprotocol bootloader and boot manager
 License:        BSD-2-Clause
@@ -39,7 +39,7 @@ also used as the reference implementation for the Limine boot protocol.
 %setup -q
 
 %build
-%configure --enable-all --docdir=%{_docdir}/%{name} TOOLCHAIN_FOR_TARGET=llvm
+%configure --enable-all --docdir=%{_docdir}/%{name}
 %make_build
 
 %install

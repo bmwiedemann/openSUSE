@@ -103,4 +103,12 @@
     <comment>Update to 9.5.3</comment>
     <requestid>1297834</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cd5d15335a0d381ebedbf196e2e7c6f3</srcmd5>
+    <version>9.6.1</version>
+    <time>1755369561</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 9.6.1</comment>
+    <requestid>1299896</requestid>
+  </revision>
 </revisionlist>
