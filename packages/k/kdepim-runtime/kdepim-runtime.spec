@@ -1,7 +1,7 @@
 #
 # spec file for package kdepim-runtime
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
-%define kpim6_version 6.4.3
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
+%define kpim6_version 6.5.0
 
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
 %bcond_without etebase
@@ -27,7 +27,7 @@
 %bcond_with kolabxml
 %bcond_without released
 Name:           kdepim-runtime
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -144,6 +144,7 @@ use PIM applications.
 %endif
 %{_kf6_iconsdir}/hicolor/*/apps/akonadi-ews.png
 %{_kf6_iconsdir}/hicolor/*/apps/ox.png
+%{_kf6_iconsdir}/hicolor/*/apps/account*.png
 %{_kf6_libdir}/*
 %{_kf6_notificationsdir}/akonadi_*.notifyrc
 %dir %{_kf6_plugindir}/pim6
