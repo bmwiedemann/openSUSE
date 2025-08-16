@@ -1,7 +1,7 @@
 #
 # spec file for package kunifiedpush
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,31 +18,34 @@
 
 %bcond_without released
 
-%define kf6_version 6.6.0
+%define kf6_version 6.14.0
 %define qt6_version 6.5.0
 #
 Name:           kunifiedpush
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        UnifiedPush client components
 License:        LGPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/kunifiedpush/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/kunifiedpush/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 # For %%check
 BuildRequires:  dbus-1
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
 BuildRequires:  cmake(KF6Service) >= %{kf6_version}
+BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WebSockets) >= %{qt6_version}
+BuildRequires:  pkgconfig(openssl)
 # The KCM is slightly useless without the library
 Requires:       libKUnifiedPush1
 Requires:       systemsettings6
@@ -108,6 +111,9 @@ popd
 %{_kf6_configdir}/autostart/org.kde.kunifiedpush-distributor.desktop
 %{_kf6_debugdir}/org_kde_kunifiedpush.categories
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_push_notifications.so
+%dir %{_userunitdir}/graphical-session.target.wants
+%{_userunitdir}/graphical-session.target.wants/kunifiedpush-distributor.service
+%{_userunitdir}/kunifiedpush-distributor.service
 
 %files -n libKUnifiedPush1
 %license LICENSES/*
