@@ -2768,4 +2768,12 @@ we must have vb7.1.10.</comment>
     <comment>- Update to release 7.1.12</comment>
     <requestid>1295707</requestid>
   </revision>
+  <revision rev="295" vrev="1">
+    <srcmd5>9513550880ebbcae023a5701d33b61f7</srcmd5>
+    <version>7.2.0</version>
+    <time>1755369436</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.2.0</comment>
+    <requestid>1299847</requestid>
+  </revision>
 </revisionlist>

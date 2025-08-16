@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 15 14:46:51 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.2.0
+  * GUI: Moved global and VM tools from hamburger menus to global
+    tools taskbar (vertically on the left) and the VM tools tabs
+    (horizontally above the right hand panel) to make them easier
+    to reach.
+  * ARM host: Virtualization of Windows 11/ARM VMs.
+  * Linux host: Video decoding acceleration when 3D is enabled.
+  * Storage: The NVMe storage controller emulation is now part of
+    the open source base package.
+
+-------------------------------------------------------------------
 Thu Jul 24 13:07:21 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.1.12
