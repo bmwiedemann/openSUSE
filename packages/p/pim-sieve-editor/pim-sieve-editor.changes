@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:48:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Add stable to true
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Fix reuse lint
+  * Add .gersemirc
+  * increase copyright
+  * Activate check-yaml
+  * Add CI pre-commit
+  * Use 1.6 branch
+  * Allow to compile without Qt6.10 deprecated methods
+  * Fix RELEASE_VERSION_DATE
+  * Add support for whatsnew dialogs
+  * Add support for whatsnew dialogs
+  * It's autodelete
+  * Use c++20
+  * Use #include <csignal>
+  * Add tests-run-in-parallel
+  * flatpak: Update to Sdk 6.9
+  * Not necessary to initialize default constructor
+  * Use QT_REQUIRED_VERSION
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
