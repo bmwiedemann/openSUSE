@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 6fc20e018cca0ab954fe249afb60ac5af69f102a
+%define git_version 08ee93ff8ffa9e8caf2e048a47cdf010dd1bc12b
 
 Name:           kernel-firmware-platform
-Version:        20250717
+Version:        20250811
 Release:        0
 Summary:        Kernel firmware files for various platform drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only AND MPL-1.0 AND GPL-3.0-only AND MIT

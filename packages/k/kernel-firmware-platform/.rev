@@ -131,4 +131,13 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases for 6.16</comment>
     <requestid>1297879</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2b60e364f44d3e31c6c2253efb8f372d</srcmd5>
+    <version>20250811</version>
+    <time>1755369433</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250811 (git commit 08ee93ff8ffa):
+  * panthor: Add firmware for more Mali GPUs</comment>
+    <requestid>1299820</requestid>
+  </revision>
 </revisionlist>
