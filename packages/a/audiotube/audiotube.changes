@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:48 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * flatpak: Update dependencies
+  * Show 'Played songs' in the order of 'last added above'
+  * Workaround to make autoplay of next song works well
+  * Also find audio tracks with unknown acodec
+  * Make it compile with modern ECM compiler settings
+  * Require a modern version of ECM
+  * Modernize QML
+  * Fix search not opening on click
+  * flatpak: Update to Sdk 6.9
+  * Add hack to fix maximized player on Qt 6.9
+  * Remove unused kf6.json
+  * Fix loading certain artist pages
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
