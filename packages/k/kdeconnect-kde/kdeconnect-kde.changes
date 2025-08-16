@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Drop unused kconfigwidgets dependency
+- Merge the zsh completion files into the main package
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Too many changes since 25.04.3, only listing bugfixes:
+  * Fix D-Bus path typo (kde#502640)
+  * fix: copy auth code to desktop clipboard (kde#451539)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:49 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3

@@ -1,7 +1,7 @@
 #
 # spec file for package kdeconnect-kde
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           kdeconnect-kde
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
@@ -80,6 +80,8 @@ Requires:       qt6-declarative-imports >= %{qt6_version}
 Requires:       qt6-multimedia-imports >= %{qt6_version}
 Requires:       sshfs >= 3.7.2
 Conflicts:      kdeconnect-kde4
+Provides:       kdeconnect-kde-zsh-completion = %{version}
+Obsoletes:      kdeconnect-kde-zsh-completion < %{version}
 
 %description
 A package for integration of Android with Linux desktops.
@@ -95,38 +97,23 @@ Please note you will need to install KDE Connect on Android for this app to work
 https://play.google.com/store/apps/details?id=org.kde.kdeconnect_tp or
 https://f-droid.org/en/packages/org.kde.kdeconnect_tp/
 
-%package zsh-completion
-Summary:        ZSH completion for kdeconnect-kde
-Requires:       kdeconnect-kde = %{version}
-Supplements:    (kdeconnect-kde and zsh)
-BuildArch:      noarch
-
-%description zsh-completion
-ZSH command line completion support for kdeconnect-kde.
-
 %lang_package
 
 %prep
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
 %install
 %kf6_install
 
-%find_lang %{name} --with-html --all-name
+%find_lang %{name} --all-name
 
 # Remove unused static lib
 rm %{buildroot}%{_kf6_libdir}/libkdeconnectinterfaces.a
-
-%if 0%{?suse_version} < 1550
-# susefirewall config file
-install -D -m 0644 %{SOURCE100} \
-    %{buildroot}%{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/kdeconnect-kde
-%endif
 
 %pre
 # migrate old kdeconnect-kde service
@@ -179,20 +166,12 @@ fi
 true
 %endif
 
-%files zsh-completion
-%dir %{_datadir}/zsh
-%dir %{_datadir}/zsh/site-functions
-%{_datadir}/zsh/site-functions/_kdeconnect
-
 %files
 %license LICENSES/*
 %doc README*
-%doc %lang(en) %{_kf6_htmldir}/en/kdeconnect*/
-%if 0%{?suse_version} < 1550
-%config(noreplace) %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services/kdeconnect-kde
-%endif
-%{_kf6_applicationsdir}/kcm_kdeconnect.desktop
-%{_kf6_applicationsdir}/org.kde.kdeconnect-settings.desktop
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_kdeconnect
 %{_kf6_applicationsdir}/org.kde.kdeconnect.app.desktop
 %{_kf6_applicationsdir}/org.kde.kdeconnect.daemon.desktop
 %{_kf6_applicationsdir}/org.kde.kdeconnect.handler.desktop
@@ -204,7 +183,6 @@ true
 %{_kf6_bindir}/kdeconnect-cli
 %{_kf6_bindir}/kdeconnect-handler
 %{_kf6_bindir}/kdeconnect-indicator
-%{_kf6_bindir}/kdeconnect-settings
 %{_kf6_bindir}/kdeconnect-sms
 %{_kf6_bindir}/kdeconnectd
 %{_kf6_configdir}/autostart/org.kde.kdeconnect.daemon.desktop
@@ -212,14 +190,12 @@ true
 %{_kf6_iconsdir}/hicolor/*/apps/kdeconnect*.svg
 %{_kf6_iconsdir}/hicolor/*/status/*.svg
 %{_kf6_libdir}/libkdeconnectcore.so.*
-%{_kf6_libdir}/libkdeconnectpluginkcm.so.*
 %{_kf6_notificationsdir}/kdeconnect.notifyrc
 %{_kf6_plasmadir}/plasmoids/org.kde.kdeconnect/
 %{_kf6_plugindir}/kdeconnect/
 %dir %{_kf6_plugindir}/kf6/kfileitemaction
 %{_kf6_plugindir}/kf6/kfileitemaction/kdeconnectfileitemaction.so
 %{_kf6_plugindir}/kf6/kio/kdeconnect.so
-%{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_kdeconnect.so
 %{_kf6_qmldir}/org/kde/kdeconnect/
 %dir %{_kf6_sharedir}/contractor
 %{_kf6_sharedir}/contractor/kdeconnect.contract
@@ -230,7 +206,6 @@ true
 %{_kf6_sharedir}/deepin/dde-file-manager/oem-menuextensions/kdeconnect-dde.desktop
 %{_kf6_sharedir}/kdeconnect
 %{_kf6_sharedir}/kdeconnect/kdeconnect_clipboard_config.qml
-%{_kf6_sharedir}/kdeconnect/kdeconnect_findthisdevice_config.qml
 %{_kf6_sharedir}/kdeconnect/kdeconnect_pausemusic_config.qml
 %{_kf6_sharedir}/kdeconnect/kdeconnect_runcommand_config.qml
 %{_kf6_sharedir}/kdeconnect/kdeconnect_sendnotifications_config.qml
@@ -243,6 +218,5 @@ true
 %{_kf6_sharedir}/Thunar/sendto/kdeconnect-thunar.desktop
 
 %files lang -f %{name}.lang
-%exclude %{_kf6_htmldir}/en/kdeconnect*/
 
 %changelog
