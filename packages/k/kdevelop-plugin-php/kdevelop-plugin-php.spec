@@ -1,7 +1,7 @@
 #
 # spec file for package kdevelop-plugin-php
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %define rname   kdev-php
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           kdevelop-plugin-php
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        PHP plugin for Kdevelop5 Integrated Development Environment
 License:        GPL-2.0-or-later
@@ -34,7 +34,7 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KDevPlatform) >= 6.0
-BuildRequires:  cmake(KDevelop-PG-Qt) >= 2.3
+BuildRequires:  cmake(KDevelopPGQt) >= 2.4
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
 BuildRequires:  cmake(KF6TextEditor) >= %{kf6_version}
