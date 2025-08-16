@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Fix return type for KateMainWindow::showMessage
+  * tools: Make connection single shot
+  * Correct method call in UrlbarContainer::enterEvent()
+  * use the maintained https://github.com/bscan/PerlNavigator for Perl
+  * default is markdown for hover strings (kde#494139)
+  * Fixed disappearing bookmarks on document close
+  * Limit Terraform LSP to project directory (kde#507020)
+  * Use KIO::moveAs to rename file (kde#506802)
+  * Fix tab restore when "open to right of current tab" is true (kde#495419)
+  * Fix tab order restore with limited tabs (kde#495419)
+  * StashManager: allow to stash files without backing files
+  * Use darkRed/darkGreen in light mode (kde#506911)
+  * Rehighlight diff when editor theme changes (kde#506911)
+  * Fix stash dialog
+  * Fix cursor position not being restored with multiple views (kde#506956)
+  * be silent per default
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Too many changes since 25.04.3, only listing bugfixes:
+  * Automatically highlight symbol under cursor (kde#503414)
+  * add all tools, even the non-executable ones (kde#506559)
+  * remove hint to no longer existing config page (kde#506169)
+  * Save whether url navigator is editable or not (kde#504757)
+  * Fix stashing not working (kde#505135)
+  * Build: Add substitution support to run commands (kde#502788)
+  * Build: Fix creating a new set of targets (kde#505346)
+  * Fix saving & restoring last active build target index (kde#505241)
+  * Check whether item is an object (kde#505044)
+  * add copy filename action (kde#502556)
+  * update SingleApplication and use it as fallback on all systems if no dbus session bus found (kde#407288)
+  * add menu to switch between Windows (kde#499272)
+  * support +xyz line number as first argument (kde#501362)
+  * escape html entities for output view (kde#501256)
+  * only start session if we are not started from the terminal or if no are files specified (kde#446852)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
