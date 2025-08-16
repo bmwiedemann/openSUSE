@@ -1,7 +1,7 @@
 #
 # spec file for package knights
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.6.0
+%define kf6_version 6.14.0
 %define plasma6_version 5.27.80
-%define qt6_version 6.6.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           knights
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        A simple chess board
 License:        GPL-2.0-or-later
