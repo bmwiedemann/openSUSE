@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:46:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Use string literals inline operators
+  * It compiles fine without qt 6.10 deprecated methods
+  * Use std::chrono to get number of seconds in a day
+  * Propertly convert std::string to QString
+  * Fix remaining warning
+  * Port away from deprecated Xapian code
+  * Add pre-commit yaml support
+  * Add pre-commit CI support
+  * Remove extra (due to auto-spacing) spaces in debug output
+  * Increase ktextaddons to 1.6.0. Improve emoji support + add textautogenerate lib (AI support)
+  * Use c++20
+  * Use static + don't initialize default class
+  * CMakeLists.txt - Don't include quiet packages in the feature summary
+  * Coding style
+  * Use AKONADI_AGENT_CORE_MAIN
+  * Remove Qt::Widgets
+  * Make it compile with new api
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:27 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
