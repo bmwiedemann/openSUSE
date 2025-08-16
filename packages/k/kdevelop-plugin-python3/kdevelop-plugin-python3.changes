@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:27 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * kdevpdb: simplify and optimize output connections
+  * kdevpdb: adapt to removal of IDebugSession::finished() signal
+  * kdevpdb: initialize DebugSession::m_state member
+  * DebugJob: predeclare DebugSession
+  * kdevpdb: decouple DebugSession and DebugJob
+  * kdevpdb: don't construct EnvironmentProfileList twice
+  * kdevpdb: cleanup buggy and duplicated code
+  * DebugJob: shorten title and set object name
+  * PdbLauncher: don't wrap DebugJob in ExecuteCompositeJob
+  * debugger: use a split interpreter command
+  * debugger: convert script URL to local file path once
+  * DebugJob: insert missing space in the job title
+  * DebugJob: don't remove filtering strategy right after setting it
+  * Copy .clang-format from the KDevelop repository
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
