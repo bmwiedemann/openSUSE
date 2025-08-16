@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:00 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Fix bug:507808: Clicking "Help" in the Settings dialog goes to a 404 page (kde#507808)
+  * It's stable version
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Add .gersemirc
+  * Pass the application name to the WhatsNew dialog and widget.
+  * .pre-commit-config.yaml - skip .notifyrc files
+  * Add missing files
+  * Add pre-commit support
+  * Increase ktextaddons to 1.6.0. Improve emoji support + add textautogenerate lib (AI support)
+  * It compiles fine without qt6.10 deprecated methods
+  * Fix RELEASE_VERSION_DATE
+  * Use #include <csignal>
+  * Use tests-run-in-parallel
+  * Added termination signal handlers
+  * Reduce debugging verbosity, multiple "excluded feeds" on every fetch
+  * Clean forward declaration
+  * Re-register the MainWindow with the system tray icon if its window handle changes (kde#494071)
+  * Now we use qt6.8
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:27 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
