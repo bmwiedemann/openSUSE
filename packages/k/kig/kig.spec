@@ -1,7 +1,7 @@
 #
 # spec file for package kig
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,12 @@
 #
 
 
+%define kf6_version 6.14.0
+%define qt6_version 6.4.2
+
 %bcond_without released
 Name:           kig
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Interactive Geometry
 License:        GPL-2.0-or-later
@@ -28,24 +31,20 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libboost_python3-devel
 BuildRequires:  python3-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5CoreAddons)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5Parts)
-BuildRequires:  cmake(KF5TextEditor)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5XmlPatterns)
+BuildRequires:  cmake(KF6Archive)
+BuildRequires:  cmake(KF6ConfigWidgets)
+BuildRequires:  cmake(KF6Crash)
+BuildRequires:  cmake(KF6DocTools)
+BuildRequires:  cmake(KF6I18n)
+BuildRequires:  cmake(KF6IconThemes)
+BuildRequires:  cmake(KF6Parts)
+BuildRequires:  cmake(KF6TextEditor)
+BuildRequires:  cmake(KF6XmlGui)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6Svg)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
@@ -61,31 +60,31 @@ drawing mathematical figures and including them in other documents.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DBoost_NO_BOOST_CMAKE=ON
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-man --all-name --with-html
 
 %files
 %license LICENSES/*
-%doc %lang(en) %{_kf5_htmldir}/en/*/
-%dir %{_kf5_plugindir}/kf5
-%dir %{_kf5_plugindir}/kf5/parts
-%{_kf5_applicationsdir}/org.kde.kig.desktop
-%{_kf5_appstreamdir}/org.kde.kig.metainfo.xml
-%{_kf5_bindir}/kig
-%{_kf5_bindir}/pykig.py
-%{_kf5_iconsdir}/hicolor/*/*/*kig.*
-%{_kf5_mandir}/man?/*
-%{_kf5_plugindir}/kf5/parts/kigpart.so
-%{_kf5_sharedir}/katepart5/
-%{_kf5_sharedir}/kig/
+%doc %lang(en) %{_kf6_htmldir}/en/*/
+%{_kf6_applicationsdir}/org.kde.kig.desktop
+%{_kf6_appstreamdir}/org.kde.kig.metainfo.xml
+%{_kf6_bindir}/kig
+%{_kf6_bindir}/pykig.py
+%{_kf6_plugindir}/kf6/parts/kigpart.so
+%{_kf6_iconsdir}/hicolor/*/*/*kig.*
+%{_kf6_mandir}/man1/kig.1%{?ext_man}
+%dir %{_kf6_sharedir}/katepart5
+%dir %{_kf6_sharedir}/katepart5/syntax
+%{_kf6_sharedir}/katepart5/syntax/python-kig.xml
+%{_kf6_sharedir}/kig/
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en
 
 %changelog

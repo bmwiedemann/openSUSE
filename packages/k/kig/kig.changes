@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Fix for python-based kig math formulas
+  * cmake: Remove unused variable
+  * cmake: Replace obsolete QT_MAJOR_VERSION instance
+  * cmake: Remove endif(foo) in favour of endif()
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Add version to ECM find cmake call
+  * Removed unused includes of <libintl.h>.
+  * Remove trace of Qt5 support
+  * Update flatpak manifest to Qt6
+  * Use KLazyLocalizedString
+  * Updated the CI to Qt6
+  * Removed Geogebra file importing for Qt6
+  * Ported Pythonboost scripting part to Qt6 & fixing kigpartui.rc
+  * Ported main code to KDE/Qt 6.
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
