@@ -1,7 +1,7 @@
 #
 # spec file for package libkdegames
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,12 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           libkdegames
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        General Data for KDE Games
 License:        GPL-2.0-or-later
