@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:48:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:48 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Fixed building when DocTools is disabled.
+  * Remove Qt5 support
+  * Updated name for id3v1 genre 133
+- Keep a Qt5 based build until soundkonverter is dropped from factory
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
