@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 15 20:11:29 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1755247660.ecd6aa3e:
+  * Fix return code of worker in error case
+  * Prevent worker from getting stuck on fatal error during upload
+  * Describe job_settings/jobs in UsersGuide
+  * Describe job_settings/jobs in UsersGuide
+  * Add perlpod for job_settings/jobs
+  * Fix generation of PDF documentation
+  * Remove outdated comment in worker error handling
+  * tests: Extend ktap parser tests to cover TODO directive
+  * parser: ktap: Polish the ktap parser
+  * parser: ktap: Add handling of the TODO directive
+  * parser: ktap: Refactor to use internal state
+
+-------------------------------------------------------------------
 Wed Aug 13 15:15:09 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1755087548.49d62b92:
