@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:52 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * don't show distro support button inside a sandbox
+  * Control bar on overlay
+  * Give volume button an imperative label (kde#461384)
+  * port to qtquick
+  * Make KF6DocTools optional
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
