@@ -1,7 +1,7 @@
 #
 # spec file for package angelfish
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           angelfish
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Mobile web browser
 License:        GPL-2.0-or-later
@@ -33,11 +33,14 @@ Source2:        applications.keyring
 %endif
 Source3:        vendor.tar.zst
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  qt6-core-private-devel >= %{qt6_version}
+BuildRequires:  qt6-webenginequick-private-devel >= %{qt6_version}
 BuildRequires:  zstd
 BuildRequires:  cmake(Corrosion)
 BuildRequires:  cmake(FutureSQL6)
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}

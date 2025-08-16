@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Fix not being able to open a new tab
+  * Fix close button on tab delegates
+  * Drop DropShadow on mobile tab bar
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Chore: Take ownership of file
+  * Move DomDistiller to lib/
+  * Feature: Ability To Toggle Between Mobile & Desktop Modes
+  * Redesign PrintPreview
+  * Port AuthSheet to FormCardDialog
+  * Fix UrlUtils not being defined
+  * Fix angelfish-webapp with QML registration
+  * Port to QML type registration
+  * Fix building the flatpak
+  * Remove Qt major version check
+  * Feature: Add option to disable Adblock
+  * Don't link against Qt::WebEngineQuickPrivate
+  * Don't link to Qt::CorePrivate
+  * Feature: More Shortcuts
+  * Feature: Right click back/forward buttons to view full tab history
+  * Feature: Auto focus Searchbar when opening bookmarks
+  * flatpak: Update Sdk to 6.9
+  * Feature: Sort history by latest pages first
+  * Feature: Integrate with KCrash
+  * Fix opening the menu on Qt 6.9
+  * Add Ctrl Shift T shortcut to open last closed tab
+  * Fix renaming fallout
+  * Port AngelfishCore to declarative type registration
+  * tabs: tab grid fixes and improvements
+  * Fix warning when web view is not initialized yet
+  * Don't crash when favicon image provider is not available
+  * Update rust dependencies
+  * Navigation: Fix some low-hanging-fruit unqualified accesses
+  * Fix navigation coloring with breeze style
+  * mobile.qml: Remove import versioning to enable access to GraphicsInfo
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:28 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
