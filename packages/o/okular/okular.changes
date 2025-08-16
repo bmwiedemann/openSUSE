@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:48:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * textpage: Speed up space removal
+  * Fix distinguished name parser
+  * Fix crash in DocumentPrivate::evaluateKeystrokeEventChange (kde#506851)
+  * Fix crash when a JS call triggers another JS call
+  * Kill the repeated 'Modified:' in Anno Prop Dialog
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Too many changes since 25.04.3, only listing bugfixes:
+  * Number of items in recent history configurable via settings page (kde#355399)
+  * Improve scaling of stamp for annotation (kde#370382)
+  * Fix opening password protected files on builds without kwallet (kde#503852)
+  * Add option for obeying file info regarding continuous mode (kde#497715)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
