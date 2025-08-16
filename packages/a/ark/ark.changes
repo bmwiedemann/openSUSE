@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * CompressFileItemAction: stat without progress info
+  * Fixed the "removable-media" plug which was misspelled as "removeable-media"
+  * cli7zplugin: fix extraction of files with leading/trailing whitespaces
+  * Delete old KF5-based kconf update script
+  * [CreateDialog]: Check if a file with the same name already exists
+  * [addtoarchive]: Add warning dialog about existing file (kde#446782)
+  * Fix corner case of single-threaded CPU when calculating number of threads
+  * Fix lrzip file extension detection
+  * Implement Dolphin-style natural string sorting (kde#387969)
+  * Made KDocTools optional
+  * Replace QString::right() with QString::endsWith() for better readability
+  * Update description of libarchive plugin
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3

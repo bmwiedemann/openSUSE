@@ -1,7 +1,7 @@
 #
 # spec file for package ark
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           ark
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        KDE Archiver Tool
 License:        GPL-2.0-or-later
@@ -99,8 +99,6 @@ This is a KDE application to work with compressed archives.
 %{_kf6_bindir}/ark
 %{_kf6_configkcfgdir}/ark.kcfg
 %{_kf6_configdir}/arkrc
-%{_kf6_sharedir}/kconf_update/ark.upd
-%{_kf6_sharedir}/kconf_update/ark_add_hamburgermenu_to_toolbar.sh
 %{_kf6_debugdir}/ark.categories
 %{_kf6_iconsdir}/hicolor/*/apps/*
 %{_kf6_plugindir}/kf6/parts/arkpart.so
