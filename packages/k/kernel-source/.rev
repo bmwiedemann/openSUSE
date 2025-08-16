@@ -7104,4 +7104,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.16 &amp; fixed btrfs &amp; FIPS test fix; bugs: bsc#1241200 bsc#1244337 bsc#1244445 bsc#1245167 bsc#1245584 bsc#1245608 bsc#1246134 bsc#1246308 bsc#1246879 bsc#1246979 bsc#1247172 bsc#1247726</comment>
     <requestid>1298723</requestid>
   </revision>
+  <revision rev="794" vrev="1">
+    <srcmd5>27ccaf9f856e8afcdf097729be1d018b</srcmd5>
+    <version>6.16.1</version>
+    <time>1755369436</time>
+    <user>dimstar_suse</user>
+    <comment>6.16.1 &amp; enable FIPS &amp; warn about bcachefs &amp; drop nvidia workarounds &amp; CMA + CRYPTO_BENCHMARK configs updates; bugs: boo#1248109 bsc#1012628 bsc#1206264 bsc#1247895 bsc#1247996 bsc#1247998</comment>
+    <requestid>1299854</requestid>
+  </revision>
 </revisionlist>
