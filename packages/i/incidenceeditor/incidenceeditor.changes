@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Too many changes since 25.04.3, only listing bugfixes:
+  * Fix the organizer name to remove the extra angle brackets (kde#489620)
+  * templatemanagementdialog - save/restore dialog size (kde#503850)
+  * attachmenteditdialog.ui - Change "Store attachment inline" label (kde#203352)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
