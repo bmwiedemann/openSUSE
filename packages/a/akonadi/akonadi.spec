@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %define name   akonadi
 %bcond_without released
 Name:           akonadi
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
@@ -32,6 +32,8 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-opening-agent-configuration.patch
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
 BuildRequires:  doxygen
@@ -54,11 +56,13 @@ BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Designer) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
@@ -94,6 +98,13 @@ Recommends:     akonadi
 %description -n libKPim6AkonadiCore6
 This package includes the core Akonadi library, the KDE PIM storage service.
 
+%package -n libKPim6AkonadiAgentWidgetBase6
+Summary:        Akonadi Agent widget library
+Recommends:     akonadi
+
+%description -n libKPim6AkonadiAgentWidgetBase6
+This package include base widgets for Akonadi agents, part of the KDE PIM storage service.
+
 %package -n libKPim6AkonadiAgentBase6
 Summary:        Akonadi Agent base library
 Recommends:     akonadi
@@ -122,6 +133,14 @@ Recommends:     akonadi
 %description -n libKPim6AkonadiXml6
 This package includes the Akonadi Xml library for Akonadi, the KDE PIM storage service.
 
+%package imports
+Summary:       QtQuick components for Akonadi
+Requires:      libKPim6AkonadiCore6 = %{version}
+Recommends:    akonadi
+
+%description imports
+This package contains QtQuick components for the libraries part of Akonadi, the KDE PIM storage service.
+
 %package devel
 Summary:        Akonadi Framework: Build Environment
 Requires:       akonadi = %{version}
@@ -130,6 +149,8 @@ Requires:       xsltproc
 Requires:       libKPim6AkonadiAgentBase6 = %{version}
 Requires:       libKPim6AkonadiCore6 = %{version}
 Requires:       libKPim6AkonadiWidgets6 = %{version}
+Requires:       libKPim6AkonadiAgentWidgetBase6 = %{version}
+Requires:       libKPim6AkonadiXml6 = %{version}
 Requires:       cmake(KF6Config) >= %{kf6_version}
 Requires:       cmake(KF6ConfigWidgets) >= %{kf6_version}
 Requires:       cmake(KF6CoreAddons) >= %{kf6_version}
@@ -179,6 +200,7 @@ This package contains AppArmor profiles for Akonadi.
 %ldconfig_scriptlets -n libKPim6AkonadiAgentBase6
 %ldconfig_scriptlets -n libKPim6AkonadiPrivate6
 %ldconfig_scriptlets -n libKPim6AkonadiXml6
+%ldconfig_scriptlets -n libKPim6AkonadiAgentWidgetBase6
 
 %post apparmor
 %apparmor_reload %{_sysconfdir}/apparmor.d/mariadbd_akonadi %{_sysconfdir}/apparmor.d/mysqld_akonadi %{_sysconfdir}/apparmor.d/postgresql_akonadi %{_sysconfdir}/apparmor.d/usr.bin.akonadiserver
@@ -190,6 +212,7 @@ This package contains AppArmor profiles for Akonadi.
 %config %{_kf6_sysconfdir}/xdg/akonadi/mysql-global.conf
 %dir %{_kf6_iconsdir}/hicolor/256x256
 %dir %{_kf6_iconsdir}/hicolor/256x256/apps
+%{_kf6_applicationsdir}/org.kde.akonadi.configdialog.desktop
 %{_kf6_bindir}/akonadi_agent_launcher
 %{_kf6_bindir}/akonadi_agent_server
 %{_kf6_bindir}/akonadi_control
@@ -201,6 +224,7 @@ This package contains AppArmor profiles for Akonadi.
 %{_kf6_bindir}/akonadiserver
 %{_kf6_bindir}/akonaditest
 %{_kf6_bindir}/asapcat
+%{_kf6_bindir}/akonadiagentconfigdialog
 %{_kf6_configkcfgdir}/resourcebase.kcfg
 %dir %{_kf6_datadir}/akonadi/
 %{_kf6_datadir}/akonadi/akonadi-xml.xsd
@@ -212,6 +236,8 @@ This package contains AppArmor profiles for Akonadi.
 %{_kf6_iconsdir}/hicolor/*/apps/akonadi.png
 %{_kf6_iconsdir}/hicolor/scalable/apps/akonadi.svgz
 %{_kf6_plugindir}/pim6/akonadi/akonadi_test_searchplugin.so
+%dir %{_kf6_plugindir}/pim6/akonadi/config/
+%{_kf6_plugindir}/pim6/akonadi/config/knutconfig.so
 %dir %{_kf6_sharedir}/akonadi
 %dir %{_kf6_sharedir}/akonadi/agents
 %{_kf6_sharedir}/akonadi/agents/knutresource.desktop
@@ -234,6 +260,12 @@ This package contains AppArmor profiles for Akonadi.
 %files -n libKPim6AkonadiXml6
 %{_kf6_libdir}/libKPim6AkonadiXml.so.*
 
+%files -n libKPim6AkonadiAgentWidgetBase6
+%{_kf6_libdir}/libKPim6AkonadiAgentWidgetBase.so.*
+
+%files imports
+%{_kf6_qmldir}/org/kde/akonadi/
+
 %files devel
 %doc %{_kf6_qchdir}/KPim6Akonadi*
 %{_includedir}/KPim6/Akonadi/
@@ -241,6 +273,7 @@ This package contains AppArmor profiles for Akonadi.
 %{_includedir}/KPim6/AkonadiCore/
 %{_includedir}/KPim6/AkonadiWidgets/
 %{_includedir}/KPim6/AkonadiXml/
+%{_includedir}/KPim6/AkonadiAgentWidgetBase/
 %{_kf6_bindir}/akonadi2xml
 %{_kf6_cmakedir}/KPim6Akonadi/
 %{_kf6_dbusinterfacesdir}/org.freedesktop.Akonadi.*.xml
@@ -249,6 +282,7 @@ This package contains AppArmor profiles for Akonadi.
 %{_kf6_libdir}/libKPim6AkonadiPrivate.so
 %{_kf6_libdir}/libKPim6AkonadiWidgets.so
 %{_kf6_libdir}/libKPim6AkonadiXml.so
+%{_kf6_libdir}/libKPim6AkonadiAgentWidgetBase.so
 %dir %{_kf6_plugindir}/designer
 %{_kf6_plugindir}/designer/akonadi6widgets.so
 %{_kf6_sharedir}/kdevappwizard/templates/akonadiresource.tar.bz2

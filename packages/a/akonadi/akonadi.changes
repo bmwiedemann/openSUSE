@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Aug 15 10:48:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix:
+  * 0001-Fix-opening-agent-configuration.patch
+
+-------------------------------------------------------------------
+Fri Aug  8 07:46:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Fix typo: i18ndc is correct not i18ncd
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Too many changes since 25.04.3, only listing bugfixes:
+  * fix batch query operation really completing full set (kde#494807)
+  * collectioncombobox.cpp - add a connect to deal with the combobox changes (kde#498551)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
