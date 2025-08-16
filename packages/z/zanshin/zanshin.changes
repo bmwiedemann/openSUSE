@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:48:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:26:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * akonadiconfigdialog: Port away from deprecated AgentInstanceCreateJob::configure
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
