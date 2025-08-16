@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * Fix Variable 'currentCell' can be declared as pointer to const [constVariablePointer]
+  * Fix BUG 507980: Korganizer crashes on double-click on calendar header (kde#507980)
+  * agendaview.cpp - Show events with no duration as 30 minutes long (kde#61740)
+  * todoview.cpp - add/removeCalendar guard against invalid calendars
+  * monthview.cpp - addCalendar/removeCalendar invalid calendar guards
+  * agendaview.cpp - in removeCalendar(), use pointer comparison
+  * todoviewsortfilterproxymodel.cpp - filterAcceptsRows() valid QModelIndex
+  * todoview.cpp - addCalendar/removeCalendar() don't filter if no change
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Too many changes since 25.04.3, only listing bugfixes:
+  * Agenda View - add feature to display timelabels in 24-hour clock (kde#485722)
+  * todoviewsortfilterproxymodel.cpp - fix regression in filterAcceptsRow (kde#473847)
+  * src/todo/todoview.cpp - saveLayout() - also save the flatview setting (kde#417974)
+  * Monthview - no longer force new events to be allDay (in some situations) (kde#426611)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
