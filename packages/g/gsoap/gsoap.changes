@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 15 15:02:00 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.139
+  * Minor improvement of the `SOAP_XML_IGNORENS` (ignore XML
+    namespaces) logic when performing non-strict XML validation
+    (`SOAP_XML_STRICT` is not enabled) when ignoring extra XML
+    extensibility elements in an inbound SOAP/XML message; no
+    longer produces validation errors for non-serializable XML to
+    "safely" ignore, unless strict XML validation is enabled with
+    `SOAP_XML_STRICT`, as expected.
+
+-------------------------------------------------------------------
 Wed Jun  4 21:24:00 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.138
