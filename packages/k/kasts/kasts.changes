@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Fix crash when chapters don't have a title (kde#506430)
+  * Fix mobile player buttons (kde#505726)
+  * Update flatpak runtime to 6.9
+  * Make sure to restore the searchbar if there's still a filter active (kde#504181)
+  * Anchor header depending on qt version (kde#503154)
+  * Use ECM's more elaborate APK version code logic
+  * Fix header anchoring after qt6.9 update (kde#502429)
+  * Snapcraft fixes
+  * snapcraft: Move to core24
+  * Remember and restore the media backend (kde#495224)
+  * Fix dialog boxes after recent Kirigami updates (kde#501876)
+  * Check for failed libvlc_new and abort the app properly if needed
+  * Various clang-tidy suggestions and fixes
+  * Fix clazy warnings
+  * Clean up header includes
+  * Update to c++20
+  * Remember the Sort user settings the same way as filter
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
