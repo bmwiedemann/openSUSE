@@ -187,7 +187,7 @@ BuildRequires:  pkgconfig(xwayland)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  treesitter_grammar(tree-sitter-ruby)
 URL:            http://www.gnu.org/software/emacs/
-Version:        30.1
+Version:        30.2
 Release:        0
 Summary:        GNU Emacs Base Package
 License:        GPL-3.0-or-later
@@ -238,7 +238,6 @@ Patch15:        emacs-24.3-iconic.patch
 Patch16:        emacs-24.4-flyspell.patch
 Patch22:        pdump.patch
 Source23:       emacs-25.1-custom-fonts.patch
-Patch24:        emacs-parallel-compilation-53a5dada.patch
 Patch25:        emacs-26.1-xft4x11.patch
 Patch26:        emacs-27.1-pdftex.patch
 Patch27:        emacs-30.1-seccomp.patch
@@ -438,7 +437,6 @@ and most assembler-like syntaxes.
 %patch -P15 -p0 -b .iconic
 %patch -P16 -p0 -b .flyspell
 %patch -P22 -p0 -b .pd
-%patch -P24 -p0 -b .pc
 %patch -P25 -p0 -b .xft
 %patch -P26 -p0 -b .fmt
 %patch -P27 -p0 -b .console

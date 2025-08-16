@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 14 12:22:03 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Update to GNU Emacs version 30.2
+  * Mainly a bug fix version
+- Port patches
+  * 0012-Add-inhibit-native-compilation.patch
+  * 0013-Rename-to-inhibit-automatic-native-compilation.patch
+  * emacs-24.4-ps-bdf.patch
+  * emacs-29.1.dif
+  * emacs-30.1-pdumper.patch
+- Remove patch emacs-parallel-compilation-53a5dada.patch now upstream
+
+
+-------------------------------------------------------------------
 Thu Jul 24 11:51:40 UTC 2025 - Adam Majer <adam.majer@suse.de>
 
 - Remove ctags.1 that's unused with libalternatives

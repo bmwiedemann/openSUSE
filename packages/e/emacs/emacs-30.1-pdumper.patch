@@ -23,7 +23,7 @@ Werner
 -  /* Accumulate statistics.  */
 -  if (FLOATP (Vgc_elapsed))
 +  /* Accumulate statistics, but not during dump to get reproducible pdmp images.  */
-+  if (FLOATP (Vgc_elapsed) && !will_dump_p ())
++  if (FLOATP (Vgc_elapsed) && build_details)
      {
        static struct timespec gc_elapsed;
        gc_elapsed = timespec_add (gc_elapsed,
@@ -60,7 +60,7 @@ Werner
  Lisp_Object
  timespec_to_lisp (struct timespec t)
  {
-+  if (will_dump_p())	/* Use provided epoch at dump to get reproducible pdmp images */
++  if (!build_details)	/* Use provided epoch at dump to get reproducible pdmp images */
 +    {
 +      char *epoch;
 +      epoch = secure_getenv("SOURCE_DATE_EPOCH");

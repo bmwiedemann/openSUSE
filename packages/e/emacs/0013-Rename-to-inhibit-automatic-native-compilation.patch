@@ -40,7 +40,7 @@ diff --git a/lisp/startup.el b/lisp/startup.el
 index e5d6bd87cac..c6242b39e4f 100644
 --- a/lisp/startup.el
 +++ b/lisp/startup.el
-@@ -528,7 +528,7 @@ startup--xdg-or-homedot
+@@ -524,7 +524,7 @@ startup--xdg-or-homedot
       (t emacs-d-dir))))
  
  (defvar native-comp-eln-load-path)
@@ -49,7 +49,7 @@ index e5d6bd87cac..c6242b39e4f 100644
  (defvar native-comp-enable-subr-trampolines)
  
  (defvar startup--original-eln-load-path nil
-@@ -590,7 +590,8 @@ normal-top-level
+@@ -586,7 +586,8 @@ normal-top-level
      (setq android-fonts-enumerated t))
  
    ;; Allow disabling automatic .elc->.eln processing.
@@ -59,7 +59,7 @@ index e5d6bd87cac..c6242b39e4f 100644
  
    (if command-line-processed
        (message internal--top-level-message)
-@@ -610,7 +611,7 @@ normal-top-level
+@@ -606,7 +607,7 @@ normal-top-level
          ;; in this session.  This is necessary if libgccjit is not
          ;; available on MS-Windows, but Emacs was built with
          ;; native-compilation support.

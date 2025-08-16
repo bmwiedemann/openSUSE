@@ -49,7 +49,7 @@
  ifndef NO_BIN_LINK
  	rm -f "$(DESTDIR)${bindir}/$(EMACS)"
  	cd "$(DESTDIR)${bindir}" && $(LN_S_FILEONLY) "$(EMACSFULL)" "$(EMACS)"
-@@ -826,6 +826,7 @@ install-man:
+@@ -828,6 +828,7 @@ install-man:
  	umask 022; ${MKDIR_P} "$(DESTDIR)${man1dir}"
  	thisdir=`pwd -P`; \
  	cd ${mansrcdir}; \
@@ -57,7 +57,7 @@
  	for page in *.1; do \
  	  test "$$page" = ChangeLog.1 && continue; \
  	  dest=`echo "$${page}" | sed -e 's/\.1$$//' -e '$(TRANSFORM)'`.1; \
-@@ -963,7 +964,7 @@ uninstall: uninstall-$(NTDIR) uninstall-
+@@ -965,7 +966,7 @@ uninstall: uninstall-$(NTDIR) uninstall-
  	   for page in *.1; do \
  	     rm -f "$(DESTDIR)${man1dir}"/`echo "$${page}" | sed -e 's/\.1$$//' -e '$(TRANSFORM)'`.1$$ext; done; \
  	 fi)
@@ -297,7 +297,7 @@
 +;;; site-load.el ends here
 --- lisp/speedbar.el
 +++ lisp/speedbar.el	2025-03-03 14:13:31.015626331 +0000
-@@ -728,6 +728,7 @@ If you want to change this while speedba
+@@ -729,6 +729,7 @@ If you want to change this while speedba
  
      ;; Navigation.
      (define-key map "n" 'speedbar-next)
