@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-calendar
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
-%define kpim6_version 6.4.3
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
+%define kpim6_version 6.5.0
 
 %bcond_without released
 Name:           akonadi-calendar
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Akonadi calendar integration
 License:        LGPL-2.1-or-later
@@ -60,9 +60,18 @@ ExclusiveArch:  x86_64 %{x86_64} aarch64 riscv64
 %description
 This library provides calendar integration for Akonadi based Applications.
 
+%package -n libKPim6AkonadiCalendarCore6
+Summary:        KDE PIM Libraries: AkonadiCalendar
+Requires:       akonadi-calendar >= %{version}
+
+%description -n libKPim6AkonadiCalendarCore6
+This library provides calendar integration for Akonadi based applications. 
+This library is provides the core integration. 
+
 %package -n libKPim6AkonadiCalendar6
 Summary:        KDE PIM Libraries: AkonadiCalendar
 Requires:       akonadi-calendar >= %{version}
+Requires:       libKPim6AkonadiCalendarCore6 = %{version}
 Obsoletes:      libKF5AkonadiCalendar5 < %{version}
 Obsoletes:      libKPim5AkonadiCalendar5 < %{version}
 Obsoletes:      libKPim5AkonadiCalendar5-lang < %{version}
@@ -75,6 +84,7 @@ This library provides calendar integration for Akonadi based Applications.
 %package -n akonadi-plugin-calendar
 Summary:        Akonadi calendar integration - serializer plugin
 Requires:       libKPim6AkonadiCalendar6 = %{version}
+Requires:       libKPim6AkonadiCalendarCore6 = %{version}
 
 %description -n akonadi-plugin-calendar
 This package provides plugins required by PIM applications to read and write calendar data.
@@ -89,6 +99,7 @@ Kalendarac is a reminder daemon client for calendar events.
 
 %package devel
 Summary:        KDE PIM Libraries: Build Environment
+Requires:       libKPim6AkonadiCalendarCore6 = %{version}
 Requires:       libKPim6AkonadiCalendar6 = %{version}
 Requires:       cmake(KF6CalendarCore) >= %{kf6_version}
 Requires:       cmake(KF6I18n) >= %{kf6_version}
@@ -117,11 +128,15 @@ Development package for akonadi-calendar.
 %find_lang libKPim6AkonadiCalendar6 --all-name
 
 %ldconfig_scriptlets -n libKPim6AkonadiCalendar6
+%ldconfig_scriptlets -n libKPim6AkonadiCalendarCore6
 
 %files
 %license LICENSES/*
 %{_kf6_debugdir}/akonadi-calendar.categories
 %{_kf6_debugdir}/akonadi-calendar.renamecategories
+
+%files -n libKPim6AkonadiCalendarCore6
+%{_kf6_libdir}/libKPim6AkonadiCalendarCore.so.*
 
 %files -n libKPim6AkonadiCalendar6
 %{_kf6_libdir}/libKPim6AkonadiCalendar.so.*
@@ -144,9 +159,13 @@ Development package for akonadi-calendar.
 
 %files devel
 %doc %{_kf6_qchdir}/KPim6AkonadiCalendar.*
+%doc %{_kf6_qchdir}/KPim6AkonadiCalendarCore.*
 %{_includedir}/KPim6/AkonadiCalendar/
 %{_kf6_cmakedir}/KPim6AkonadiCalendar/
+%{_includedir}/KPim6/AkonadiCalendarCore/
+%{_kf6_cmakedir}/KPim6AkonadiCalendarCore/
 %{_kf6_libdir}/libKPim6AkonadiCalendar.so
+%{_kf6_libdir}/libKPim6AkonadiCalendarCore.so
 
 %files -n libKPim6AkonadiCalendar6-lang -f libKPim6AkonadiCalendar6.lang
 

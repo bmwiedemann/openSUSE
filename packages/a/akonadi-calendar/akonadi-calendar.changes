@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:46:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- Changes since 25.07.80:
+  * collectioncalendar.cpp - in hasRight(), don't assert on invalid calendar
+
+-------------------------------------------------------------------
+Mon Jul 14 14:24:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Add .gersemirc
+  * Add pre-commit ci support
+  * It compiles fine without qt 6.10 deprecated methods
+  * Use string literals inline operators
+  * Set calendar ids in the KCalendarCore calendar plugin
+  * collectioncalendar.cpp - logic improvements in updateItem()
+  * Make Akonadi::Collection::selectCollection() publicly visible
+  * todomodel.cpp - improve some logic when testing indexes and items
+  * already in public from KPim6::AkonadiCalendarCore
+  * Fix include path
+  * Fix variable
+  * Increase version
+  * Split AkonadiCalendar in a core and widget library
+  * Fix compile
+  * etmcalendar.cpp - logic improvements in updateItem()
+
+-------------------------------------------------------------------
 Tue Jul  1 15:26:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
