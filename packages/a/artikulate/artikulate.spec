@@ -1,7 +1,7 @@
 #
 # spec file for package artikulate
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,15 @@
 #
 
 
-%define kf5_version 5.105.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
+
 %bcond_without released
 Name:           artikulate
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Pronunciation Self-Teaching
 License:        LGPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause
@@ -31,30 +34,33 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  extra-cmake-modules >= %{kf5_version}
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Kirigami2)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Multimedia)
-BuildRequires:  cmake(Qt5Qml)
-BuildRequires:  cmake(Qt5Quick)
-BuildRequires:  cmake(Qt5QuickWidgets)
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5XmlPatterns)
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
+BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
+BuildRequires:  cmake(KF6NewStuff) >= %{kf6_version}
+BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  pkgconfig(libxml-2.0)
 # Runtime deps
-Requires:       kirigami2
-Requires:       knewstuff-imports
-Requires:       kqtquickcharts >= %{_kapp_version}
-Requires:       libqt5-qtquickcontrols
+# Currently commented out
+# Requires:       kqtquickcharts >= %%{_kapp_version}
+Requires:       kf6-kirigami-imports >= %{kf6_version}
+Requires:       kf6-knewstuff-imports >= %{kf6_version}
+Requires:       kirigami-addons6
+Requires:       qt6-declarative-imports >= %{qt6_version}
+Requires:       qt6-multimedia-imports >= %{qt6_version}
+Requires:       qt6-sql-sqlite >= %{qt6_version}
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
@@ -67,31 +73,31 @@ Improve your pronunciation by listening to native speakers.
 %autosetup -p1
 
 %build
-%cmake_kf5 -d build
-%cmake_build
+%cmake_kf6
+
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
+%kf6_install
 
-%find_lang %{name} --with-man --all-name
-%{kf5_find_htmldocs}
+%find_lang %{name} --with-html --all-name
 
 %ldconfig_scriptlets
 
 %files
 %license COPYING*
-%doc %lang(en) %{_kf5_htmldir}/en/artikulate/
-%{_kf5_applicationsdir}/org.kde.artikulate.desktop
-%{_kf5_appstreamdir}/org.kde.artikulate.appdata.xml
-%{_kf5_bindir}/artikulate
-%{_kf5_bindir}/artikulate_editor
-%{_kf5_configkcfgdir}/artikulate.kcfg
-%{_kf5_iconsdir}/hicolor/*/*/artikulate*.*
-%{_kf5_knsrcfilesdir}/artikulate.knsrc
-%{_kf5_libdir}/libartikulatecore.so.*
-%{_kf5_libdir}/libartikulatelearnerprofile.so.*
-%{_kf5_libdir}/libartikulatesound.so.*
+%doc %lang(en) %{_kf6_htmldir}/en/artikulate/
+%{_kf6_applicationsdir}/org.kde.artikulate.desktop
+%{_kf6_appstreamdir}/org.kde.artikulate.appdata.xml
+%{_kf6_bindir}/artikulate
+%{_kf6_bindir}/artikulate_editor
+%{_kf6_configkcfgdir}/artikulate.kcfg
+%{_kf6_iconsdir}/hicolor/*/*/artikulate.*
+%{_kf6_knsrcfilesdir}/artikulate.knsrc
+%{_kf6_libdir}/libartikulatecore.so.*
+%{_kf6_libdir}/libartikulatelearnerprofile.so.*
 
 %files lang -f %{name}.lang
+%exclude %{_kf6_htmldir}/en/artikulate/
 
 %changelog
