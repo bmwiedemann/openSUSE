@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Aug  8 07:47:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.0/
+- No code change since 25.07.80
+
+-------------------------------------------------------------------
+Mon Jul 14 14:25:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.07.80
+  * New feature release
+- Changes since 25.04.3:
+  * Show system tray icon at startup if enabled in settings BUG: 505744 (kde#505744)
+  * VncView: focus the view on successful connection BUG: 503115 (kde#503115)
+  * Rdp: rework handling for some error messages
+  * Let Mainwindow publish error messages from views When an error occurs the view gets closed, so the error never shows up
+  * Rdp host preferences: correctly load sound preferences (kde#493602)
+  * Rdp: repaint only damaged rectangles area
+  * Avoid crash when the main window is outside of any screen
+  * Make strings HIG compliant
+  * RDP Preferences: Add disambiguation to "Use Best Available" strings Qt Designer also decided to fix indentation and enums usage
+  * RdpView: avoid multiple startQuitting() calls on the same connection (kde#504622)
+  * Enable support for admin console sessions
+  * Add clipboard sharing toggle button (kde#504224)
+  * Fix parsing of user-supplied host:port preferences for proxy and gateway (kde#504282)
+  * Fix config names mismatched between Ui and kcfg
+  * cmake: Enable UTF-8 clipboard only when libvncclient >= 0.9.15
+  * VNC: Add UTF-8 clipboard support
+  * RDP: ensure rdpview gets closed on session disconnect (kde#503176)
+  * RDP: Fix passing domain from saved bookmark (kde#503174)
+  * flatpak: Update runtime version
+  * Fix scaling button not working out of the box (kde#485094)
+  * Port away from deprecated methods up to Qt 6.8 and KF 6.12
+  * Find Qt6Gui before using Qt6Gui_VERSION
+  * Fix ssh tunnel connection
+  * [SshTunnelThread]: Fix freeze when rdp or vnc connection is discarding
+  * Add option to connect via RDP through SSH tunnel
+  * Fix floatingtoolbar when moving from landscape to portrait fullscreen or viceversa
+  * Rework fullscreen mode to fix bugs related to window appearing on wrong screen and floating bar disappearing in various occasions (kde#501187)
+
+-------------------------------------------------------------------
 Tue Jul  1 15:27:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.3
