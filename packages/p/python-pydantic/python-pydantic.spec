@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydantic
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,11 +37,13 @@ Source:         https://github.com/pydantic/pydantic/archive/v%{version}.tar.gz#
 Patch0:         bump-pydantic-core-2.35.1.patch
 # PATCH-FIX-UPSTREAM field-name-validator-core-schemas.patch gh#pydantic/pydantic#11761
 Patch1:         field-name-validator-core-schemas.patch
+# PATCH-FIX-UPSTREAM Based on gh#pydantic/pydantic#11883
+Patch2:         support-pydantic-core-2.39.0.patch
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pydantic-core = 2.35.1}
+BuildRequires:  %{python_module pydantic-core = 2.39.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -62,10 +64,7 @@ BuildRequires:  %{python_module rich}
 BuildRequires:  %{python_module typing-inspection}
 %endif
 Requires:       python-annotated-types >= 0.4.0
-%if 0%{?python_version_nodots} < 310
-Requires:       python-eval-type-backport
-%endif
-Requires:       python-pydantic-core = 2.35.1
+Requires:       python-pydantic-core = 2.39.0
 Requires:       python-typing-extensions >= 4.12.2
 Requires:       python-typing-inspection
 BuildArch:      noarch

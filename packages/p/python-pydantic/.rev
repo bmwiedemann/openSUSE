@@ -607,4 +607,13 @@
 - Update BuildRequires and Requires from pyproject.toml</comment>
     <requestid>1287850</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>1a430d977ba28672b12faf9198786787</srcmd5>
+    <version>2.11.7</version>
+    <time>1755435002</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-pydantic-core-2.39.0.patch:
+  * Support pydantic-core 2.39.0.</comment>
+    <requestid>1299498</requestid>
+  </revision>
 </revisionlist>

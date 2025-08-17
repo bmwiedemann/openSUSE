@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 15 04:23:15 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pydantic-core-2.39.0.patch:
+  * Support pydantic-core 2.39.0.
+
+-------------------------------------------------------------------
 Mon Jun 23 05:56:23 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add patch bump-pydantic-core-2.35.1.patch to support latest
