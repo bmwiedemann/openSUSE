@@ -64,7 +64,7 @@
 %endif
 
 Name:           NetworkManager
-Version:        1.52.1
+Version:        1.54.0
 Release:        0
 Summary:        Standard Linux network configuration tool suite
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -95,8 +95,6 @@ Patch7:         nm-add-CAP_SYS_ADMIN-permission.patch
 Patch8:         python3.6-in-sle.patch
 # PATCH-FIX-SLE NetworkManager-dont-renew-bridge-dhcp-if-no-mac-on-wakeup.patch bsc#1225498, glfd#NetworkManager/NetworkManager#1587 -- manager: don't renew dhcp lease when software devices' MAC is empty
 Patch9:         NetworkManager-dont-renew-bridge-dhcp-if-no-mac-on-wakeup.patch
-# PATCH-FIX-UPSTREAM
-Patch10:        https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2069.patch
 # PATCH-FIX-OPENSUSE nm-initrd-generator document static ip setup bsc#1244072
 Patch11:        0001-man-document-static-ip-setup-differences-to-dracut-n.patch
 
@@ -124,6 +122,7 @@ BuildRequires:  pkgconfig(libnewt) >= 0.52.15
 BuildRequires:  pkgconfig(libnl-3.0) >= 3.2.8
 BuildRequires:  pkgconfig(libnl-genl-3.0)
 BuildRequires:  pkgconfig(libnl-route-3.0)
+BuildRequires:  pkgconfig(libnvme)
 BuildRequires:  pkgconfig(libpsl) >= 0.1
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsystemd) >= 209
@@ -322,7 +321,6 @@ This package is intended to be installed by default for server deployments.
 %patch -P 8 -p1
 %patch -P 9 -p1
 %endif
-%patch -P 10 -p1
 %patch -P 11 -p1
 
 # Fix server.conf's location, to end up in %%{_defaultdocdir}/%%{name},
@@ -487,6 +485,9 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_datadir}/dbus-1/system-services/org.freedesktop.nm_priv_helper.service
 %{_dbusconfdir}/nm-priv-helper.conf
 %{_defaultdocdir}/NetworkManager/server.conf
+%{_unitdir}/NetworkManager-config-initrd.service
+%{_unitdir}/NetworkManager-initrd.service
+%{_unitdir}/NetworkManager-wait-online-initrd.service
 
 %files devel
 %{_includedir}/libnm/

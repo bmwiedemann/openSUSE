@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Aug  7 19:29:33 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.54.0:
+  + Add support for configuring per-device IPv4 forwarding via the
+    "ipv4.forwarding" connection property.
+  + Add a new "prefix-delegation" setting containing a "subnet-id"
+    property that specifies the subnet to choose on the downstream
+    interface when using IPv6 prefix delegation.
+  + Support OCI baremetal in nm-cloud-setup
+  + When activating a WireGuard connection to an IPv6 endpoint, now
+    NetworkManager creates firewall rules to ensure that the
+    incoming packets are not dropped by kernel reverse path
+    filtering.
+  + Add support for configuring the loopback interface in nmtui.
+  + Most of the properties of ovs-bridge and ovs-port connections
+    can now be reapplied at runtime without bringing the connection
+    down.
+  + Add a new "sriov.preserve-on-down" property that controls
+    whether NetworkManager preserves the SR-IOV parameters set on
+    the device when the connection is deactivated, or whether it
+    resets them to their default value.
+  + Introduce a new "ovs-dpdk.lsc-interrupt" property to configure
+    the Link State Change (LSC) detection mode for OVS DPDK
+    interfaces.
+  + The initrd-generator now can parse the NVMe Boot Firmware Table
+    (NBFT) to configure networking during early boot.
+  + Add systemd services to provide networking in the initrd.
+- Drop 2069.patch: Fixed in an alternative way upstream.
+- Rebase patches with quilt.
+- Add pkgconfig(libnvme) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Thu Aug  7 19:17:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.52.1:

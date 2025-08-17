@@ -2458,4 +2458,39 @@ New stable release</comment>
     <comment></comment>
     <requestid>1298622</requestid>
   </revision>
+  <revision rev="284" vrev="1">
+    <srcmd5>ab7adaa3c7fb98628c45bb4def502ed6</srcmd5>
+    <version>1.54.0</version>
+    <time>1755434989</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.54.0:
+  + Add support for configuring per-device IPv4 forwarding via the
+    &quot;ipv4.forwarding&quot; connection property.
+  + Add a new &quot;prefix-delegation&quot; setting containing a &quot;subnet-id&quot;
+    property that specifies the subnet to choose on the downstream
+    interface when using IPv6 prefix delegation.
+  + Support OCI baremetal in nm-cloud-setup
+  + When activating a WireGuard connection to an IPv6 endpoint, now
+    NetworkManager creates firewall rules to ensure that the
+    incoming packets are not dropped by kernel reverse path
+    filtering.
+  + Add support for configuring the loopback interface in nmtui.
+  + Most of the properties of ovs-bridge and ovs-port connections
+    can now be reapplied at runtime without bringing the connection
+    down.
+  + Add a new &quot;sriov.preserve-on-down&quot; property that controls
+    whether NetworkManager preserves the SR-IOV parameters set on
+    the device when the connection is deactivated, or whether it
+    resets them to their default value.
+  + Introduce a new &quot;ovs-dpdk.lsc-interrupt&quot; property to configure
+    the Link State Change (LSC) detection mode for OVS DPDK
+    interfaces.
+  + The initrd-generator now can parse the NVMe Boot Firmware Table
+    (NBFT) to configure networking during early boot.
+  + Add systemd services to provide networking in the initrd.
+- Drop 2069.patch: Fixed in an alternative way upstream.
+- Rebase patches with quilt.
+- Add pkgconfig(libnvme) BuildRequires: New dependency. (forwarded request 1299771 from iznogood)</comment>
+    <requestid>1299898</requestid>
+  </revision>
 </revisionlist>

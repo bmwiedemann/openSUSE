@@ -1,8 +1,8 @@
-Index: NetworkManager-1.44.0/src/core/dns/nm-dns-manager.c
+Index: NetworkManager-1.54.0/src/core/dns/nm-dns-manager.c
 ===================================================================
---- NetworkManager-1.44.0.orig/src/core/dns/nm-dns-manager.c
-+++ NetworkManager-1.44.0/src/core/dns/nm-dns-manager.c
-@@ -760,7 +760,7 @@ again:
+--- NetworkManager-1.54.0.orig/src/core/dns/nm-dns-manager.c
++++ NetworkManager-1.54.0/src/core/dns/nm-dns-manager.c
+@@ -761,7 +761,7 @@ again:
      /* FIXME: don't write to netconfig synchronously. */
  
      /* Wait until the process exits */
