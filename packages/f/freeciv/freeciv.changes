@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 10 10:11:15 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- use meson build system
+- enable SDL3 client on Tumbleweed and Leap 16.0
+
+-------------------------------------------------------------------
 Sat Aug  9 14:03:19 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - freeciv 3.2.0:

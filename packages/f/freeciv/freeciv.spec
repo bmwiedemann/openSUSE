@@ -17,6 +17,12 @@
 #
 
 
+# SDL3 is available from Leap 16.0 and up
+%if 0%{?suse_version} >= 1600
+%bcond_without sdl3
+%else
+%bcond_with sdl3
+%endif
 Name:           freeciv
 Version:        3.2.0
 Release:        0
@@ -27,6 +33,7 @@ URL:            https://www.freeciv.org
 Source0:        https://files.freeciv.org/stable/%{name}-%{version}.tar.xz
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
+BuildRequires:  meson
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
@@ -46,11 +53,16 @@ BuildRequires:  pkgconfig(lua) >= 5.4
 BuildRequires:  pkgconfig(sqlite3) >= 3.0.0
 BuildRequires:  pkgconfig(zlib)
 Requires:       freeciv_client-%{version}
+%if %{with sdl3}
+BuildRequires:  pkgconfig(sdl3-image)
+BuildRequires:  pkgconfig(sdl3-ttf)
+%endif
 %if 0%{?suse_version} >= 1600
 BuildRequires:  pkgconfig(readline)
 %else
 BuildRequires:  readline-devel
 %endif
+# for Qt6 on Leap 15.6
 %if 0%{?suse_version} < 1600
 BuildRequires:  gcc12-c++
 %endif
@@ -103,6 +115,17 @@ Provides:       freeciv_client-%{version}
 %description sdl2
 Freeciv executable using the SDL2 library
 
+%if %{with sdl3}
+%package sdl3
+Summary:        SDL3 client for freeciv
+Group:          Amusements/Games/Strategy/Turn Based
+Requires:       freeciv = %{version}
+Provides:       freeciv_client-%{version}
+
+%description sdl3
+Freeciv executable using the SDL3 library
+%endif
+
 %prep
 %autosetup -p1
 
@@ -110,24 +133,24 @@ Freeciv executable using the SDL2 library
 %if 0%{?suse_version} < 1600
 export CXX=g++-12
 %endif
-%configure \
-	--enable-client=gtk3.22,gtk4,qt,sdl2 \
-	--enable-fcmp=gtk3,gtk4,qt \
-	--with-qtver=qt6 \
-	--enable-fcdb=sqlite3 \
-	--with-readline \
-	--with-libbz2 \
-	--with-liblzma \
-	--with-libzstd \
-	--enable-sys-lua \
-	--disable-static \
-	--docdir=%{_docdir}/freeciv \
+%meson \
+	-Dclients=gtk3.22,gtk4,qt,sdl2%{?with_sdl3:,sdl3} \
+	-Dfcmp=gtk3,gtk4,qt \
+	-Dsyslua=true \
+	-Dreadline=true \
+	-Dqtver=qt6 \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
+%meson_install
+# the meson build does not honor docdir
+mkdir -p %{buildroot}%{_docdir}
+mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
+# install via macro
 rm %{buildroot}%{_docdir}/freeciv/COPYING
+# not needed
+rm %{buildroot}%{_docdir}/freeciv/INSTALL
 find %{buildroot} -type f -name "*.a" -print -delete
 find %{buildroot} -type f -name "*.la" -delete -print
 
@@ -137,13 +160,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}/%{_datadir}/
 
 %check
-%make_build check
+%meson_test
 
 %files
 %doc %{_docdir}/freeciv
 %doc README
 %license COPYING
-%exclude %{_docdir}/freeciv/INSTALL*
 %{_mandir}/man6/freeciv.6%{?ext_man}
 %{_mandir}/man6/freeciv-*.6%{?ext_man}
 %dir %{_sysconfdir}/%{name}
@@ -159,11 +181,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/icons/hicolor/*x*/apps/freeciv-server.png
 %{_datadir}/icons/hicolor/*x*/apps/freeciv-modpack.png
 %{_datadir}/icons/hicolor/*x*/apps/freeciv-ruledit.png
-%{_datadir}/pixmaps/freeciv-client.png
-%{_datadir}/pixmaps/freeciv-modpack.png
-%{_datadir}/pixmaps/freeciv-ruledit.png
 %{_datadir}/metainfo/org.freeciv.server.metainfo.xml
 %{_datadir}/metainfo/org.freeciv.ruledit.metainfo.xml
+%{_libdir}/libfreeciv.so
 
 %files lang -f %{name}-core.lang -f %{name}-nations.lang -f %{name}-ruledit.lang
 %license COPYING
@@ -200,5 +220,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/freeciv-sdl2
 %{_datadir}/applications/org.freeciv.sdl2.desktop
 %{_datadir}/metainfo/org.freeciv.sdl2.metainfo.xml
+
+%if %{with sdl3}
+%files sdl3
+%license COPYING
+%{_bindir}/freeciv-sdl3
+%{_datadir}/applications/org.freeciv.sdl3.desktop
+%{_datadir}/metainfo/org.freeciv.sdl3.metainfo.xml
+%endif
 
 %changelog
