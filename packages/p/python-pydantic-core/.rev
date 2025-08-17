@@ -179,4 +179,23 @@
     <comment>- Skip two tests broken upstream by pytest 8.4.</comment>
     <requestid>1295195</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>875479de8fb1ed66dccbd497ba504222</srcmd5>
+    <version>2.39.0</version>
+    <time>1755434999</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.39.0:
+  * build: bump pytest to 8.4
+  * Add exclude_computed_fields serialization option
+  * Switch to PEP 639 license information
+  * Simplify ValidationError.from_exception_data() docstring
+  * feat: make TzInfo instantiable without any arguments
+  * Implement val_temporal_unit for deciding how datetimes and dates timestamps get validated.
+  * Add missing entries in missing-sentinel core schema
+  * Add MISSING sentinel
+  * Implement ser_json_temporal config option
+  * Properly coerce fractions as int
+  * Add exclude_if logic at the field level</comment>
+    <requestid>1299307</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydantic-core
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic-core%{psuffix}
-Version:        2.35.1
+Version:        2.39.0
 Release:        0
 Summary:        Core functionality for pydantic validation and serialization
 License:        MIT
@@ -80,8 +80,7 @@ Pydantic-core is currently around 17x faster than pydantic V1.
 
 %check
 %if %{with test}
-# https://github.com/pydantic/pydantic-core/issues/1755
-%pytest_arch -k 'not (test_keyword_args or test_positional_args)'
+%pytest_arch
 %endif
 
 %if %{without test}
