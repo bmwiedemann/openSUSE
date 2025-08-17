@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 16 16:32:37 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20250816
+  * Fix a rendering bug on systems with the X11 render driver
+
+-------------------------------------------------------------------
 Fri Aug 15 13:53:11 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20250815
