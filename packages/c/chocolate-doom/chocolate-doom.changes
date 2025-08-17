@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 16 21:48:17 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.1.1
+  * Use native OpenGL texture format for better performance
+  * Add option to enable or disable smooth pixel scaling
+  * Allow spaces in GUS patch folder path
+  * Add support for non-US backslash key
+  * Use $TMPDIR to find tempdir on Unix
+- Delete declare_code_as_C99_compliant.patch
+
+-------------------------------------------------------------------
 Tue Jun 10 16:18:50 UTC 2025 - Martin Jambor <mjambor@suse.com>
 
 - Add declare_code_as_C99_compliant.patch so that the package builds

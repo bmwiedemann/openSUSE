@@ -160,4 +160,12 @@
   with GCC 15. [boo#1244418]</comment>
     <requestid>1284581</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>507b5803de395d81c9220d5183bf2e38</srcmd5>
+    <version>3.1.1</version>
+    <time>1755435018</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.1.1</comment>
+    <requestid>1299967</requestid>
+  </revision>
 </revisionlist>

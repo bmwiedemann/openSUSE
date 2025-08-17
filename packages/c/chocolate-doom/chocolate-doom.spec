@@ -1,7 +1,7 @@
 #
 # spec file for package chocolate-doom
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           chocolate-doom
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        Conservative DOOM/Heretic/Hexen/Strife source port
 License:        GPL-2.0-or-later
@@ -28,7 +28,6 @@ URL:            http://chocolate-doom.org/
 Source:         https://github.com/chocolate-doom/chocolate-doom/archive/refs/tags/%name-%version.tar.gz
 Source3:        %name.keyring
 Patch1:         chdoom-iwaddir.diff
-Patch2:         declare_code_as_C99_compliant.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
