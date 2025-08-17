@@ -40,7 +40,9 @@
     rm -f %{_builddir}/mingw32-debugfiles.list; \
     bash -x /usr/lib/rpm/mingw32-find-debuginfo.sh --no-debug-source-package %{_builddir}; \
     mkdir -p %{buildroot}/usr/lib/debug%{_winelibdir}/wine/i386-windows; \
-    mv %{buildroot}%{_winelibdir}/wine/i386-windows/*.debug %{buildroot}/usr/lib/debug%{_winelibdir}/wine/i386-windows; \
+    for f in %{buildroot}%{_winelibdir}/wine/i386-windows/*.debug; do \
+        [ -e "$f" ] && mv "$f" %{buildroot}/usr/lib/debug%{_winelibdir}/wine/i386-windows/ \
+    done; \
     sed -i 's,^%{_winelibdir},/usr/lib/debug%{_winelibdir},g' %{_builddir}/mingw32-debugfiles.list; \
     mkdir -p %{buildroot}/usr/src/debug/%{name}-%{version}; \
     echo "%dir /usr/src/debug/%{name}-%{version}" >>  %{_builddir}/mingw32-debugfiles.list; \
@@ -50,7 +52,9 @@
     rm -f %{_builddir}/mingw64-debugfiles.list; \
     bash -x /usr/lib/rpm/mingw64-find-debuginfo.sh --no-debug-source-package %{_builddir}; \
     mkdir -p %{buildroot}/usr/lib/debug%{_winelibdir}/wine/x86_64-windows; \
-    mv %{buildroot}%{_winelibdir}/wine/x86_64-windows/*.debug %{buildroot}/usr/lib/debug%{_winelibdir}/wine/x86_64-windows; \
+    for f in %{buildroot}%{_winelibdir}/wine/x86_64-windows/*.debug; do \
+        [ -e "$f" ] && mv "$f" %{buildroot}/usr/lib/debug%{_winelibdir}/wine/x86_64-windows/ \
+    done; \
     sed -i 's,^%{_winelibdir},/usr/lib/debug%{_winelibdir},g' %{_builddir}/mingw64-debugfiles.list; \
     mkdir -p %{buildroot}/usr/src/debug/%{name}-%{version}; \
     echo "%dir /usr/src/debug/%{name}-%{version}" >> %{_builddir}/mingw64-debugfiles.list; \
@@ -76,8 +80,8 @@
 
 %define         _lto_cflags %{nil}
 Name:           wine%{psuffix}
-%define downloadver  10.12
-Version:        10.12
+%define downloadver  10.13
+Version:        10.13
 Release:        0
 Summary:        An MS Windows Emulator
 Group:          System/Emulators/PC
@@ -158,6 +162,10 @@ BuildRequires:  lld
 BuildRequires:  llvm
 #BuildRequires:  pkgconfig(valgrind)
 %endif
+#!BuildIgnore: mingw64-cross-binutils-utils                                                                                                                                              
+#!BuildIgnore: mingw64-cross-pkgconf-utils                                                                                                                                               
+#!BuildIgnore: mingw32-cross-binutils-utils                                                                                                                                              
+#!BuildIgnore: mingw32-cross-pkgconf-utils                                                                                                                                               
 %ifarch %{ix86}
 BuildRequires:  mingw32-cross-gcc
 BuildRequires:  mingw32-filesystem >= 20250221
@@ -319,7 +327,7 @@ echo "  +^/usr/lib/wine/.*def" >> %SOURCE97
 echo " provides \"wine-devel-<targettype> = <version>\""		>> %SOURCE97
 %endif
 echo " conflicts \"otherproviders(wine-devel-<targettype>)\""		>> %SOURCE97
-echo "wine-win-debuginfo" >> %SOURCE97
+echo "wine-32bit-win-debuginfo" >> %SOURCE97
 
 cat %SOURCE97
 %endif

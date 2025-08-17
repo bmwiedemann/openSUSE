@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Aug 16 11:28:59 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 10.13 release
+  - Windows.Gaming.Input configuration tab in the Joystick Control Panel.
+  - ECDSA_P521 and ECDH_P521 algorithms in BCrypt.
+  - OpenGL WoW64 thunks are all generated.
+  - Still more support for Windows Runtime metadata in WIDL.
+  - Various bug fixes.
+- update staging to 10.13 release
+
+-------------------------------------------------------------------
+Fri Aug 15 10:29:27 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- fix build if .debug are not present
+
+-------------------------------------------------------------------
 Sat Jul 12 07:53:27 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - updated to 10.12 release

@@ -5570,4 +5570,20 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - removed 0001-kernel32-Use-the-correct-buffer-length.patch: upstream</comment>
     <requestid>1292598</requestid>
   </revision>
+  <revision rev="467" vrev="1">
+    <srcmd5>69a5a27460e95c5428a3513cc9b61d8d</srcmd5>
+    <version>10.13</version>
+    <time>1755438276</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 10.13 release
+  - Windows.Gaming.Input configuration tab in the Joystick Control Panel.
+  - ECDSA_P521 and ECDH_P521 algorithms in BCrypt.
+  - OpenGL WoW64 thunks are all generated.
+  - Still more support for Windows Runtime metadata in WIDL.
+  - Various bug fixes.
+- update staging to 10.13 release
+
+- fix build if .debug are not present</comment>
+    <requestid>1299976</requestid>
+  </revision>
 </revisionlist>
