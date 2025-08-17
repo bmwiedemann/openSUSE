@@ -24,9 +24,13 @@
 %define psuffix %{nil}
 %bcond_with doc
 %endif
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 # Tests don't work and cause a dependency loop with python-SPARQLWrapper
 %bcond_with tests
-%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-rdflib%{psuffix}
 Version:        7.1.4
@@ -39,11 +43,16 @@ Source:         https://files.pythonhosted.org/packages/source/r/rdflib/rdflib-%
 Patch0:         sphinx8.patch
 # PATCH-FIX-OPENSUSE reproducible-doc-build.patch gh#RDFLib/rdflib#2645 -- daniel.garcia@suse.com
 Patch1:         reproducible-doc-build.patch
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if %{with tests}
 BuildRequires:  %{python_module SPARQLWrapper}
 BuildRequires:  %{python_module flake8}
@@ -123,6 +132,20 @@ popd
 %python_libalternatives_reset_alternative rdfgraphisomorphism
 %python_libalternatives_reset_alternative rdf2dot
 %python_libalternatives_reset_alternative csv2rdf
+
+%post
+%python_install_alternative rdfs2dot
+%python_install_alternative rdfpipe
+%python_install_alternative rdfgraphisomorphism
+%python_install_alternative rdf2dot
+%python_install_alternative csv2rdf
+
+%postun
+%python_uninstall_alternative rdfs2dot
+%python_uninstall_alternative rdfpipe
+%python_uninstall_alternative rdfgraphisomorphism
+%python_uninstall_alternative rdf2dot
+%python_uninstall_alternative csv2rdf
 
 %files %{python_files}
 %license LICENSE

@@ -366,4 +366,12 @@
   gh#RDFLib/rdflib#2645</comment>
     <requestid>1291244</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>0deb012861a48f28efeab2d3c60c30d3</srcmd5>
+    <version>7.1.4</version>
+    <time>1755435000</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
+    <requestid>1299413</requestid>
+  </revision>
 </revisionlist>
