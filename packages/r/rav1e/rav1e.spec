@@ -1,7 +1,7 @@
 #
 # spec file for package rav1e
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2020 Andreas Schneider <asn@cryptomilk.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define sover 0_8
 
 Name:           rav1e
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Fastest and safest AV1 encoder
 # rav1e is published under the terms of the BSD-2-Clause license,
