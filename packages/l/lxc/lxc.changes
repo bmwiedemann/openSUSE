@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Aug 16 17:20:56 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXC 6.0.5. The upstream changelog can be found at
+  <https://discuss.linuxcontainers.org/t/lxc-6-0-5-lts-has-been-released/24438>
+  * Fixes a regression introduced in LXC 6.0.4 which was causing some hooks to
+    fail due to no-new-priv handling
+  * Removed support for building with the bionic C library (Android) as it
+    hadn’t been functional for a long time
+  * Fixed handling of the container_ttys environment variable
+  + Added support for both move and nosymfollow mount options
+  * Improved testsuite coverage
+- Remove upstreamed patches:
+  - fix-apparmor.patch
+
+-------------------------------------------------------------------
 Mon May  5 19:08:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - fix apparmor according to https://github.com/lxc/lxc/pull/4536
