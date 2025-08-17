@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 16 17:17:24 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to 6.0.5. The upstream changelog can be found at
+  <https://discuss.linuxcontainers.org/t/lxcfs-6-0-5-lts-has-been-released/24437>
+
+  * No code changes, just a version bump to match the LXC and Incus LTS.
+
+-------------------------------------------------------------------
 Wed Apr 30 19:18:58 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - use fuse3 (boo#1242079)
