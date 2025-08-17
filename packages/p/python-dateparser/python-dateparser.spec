@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-dateparser
 Version:        1.2.0
@@ -30,10 +34,8 @@ Source:         https://files.pythonhosted.org/packages/source/d/dateparser/date
 Patch1:         mark-network-tests.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-python-dateutil
 Requires:       python-pytz
 Requires:       python-regex
@@ -43,6 +45,13 @@ Recommends:     python-fasttext
 Recommends:     python-langdetect
 Recommends:     python-ruamel.yaml
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module convertdate}
 BuildRequires:  %{python_module fasttext}
@@ -90,6 +99,12 @@ donttest="(not test_timezone_offset_calculation)"
 
 %pre
 %python_libalternatives_reset_alternative dateparser-download
+
+%post
+%python_install_alternative dateparser-download
+
+%postun
+%python_uninstall_alternative dateparser-download
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst

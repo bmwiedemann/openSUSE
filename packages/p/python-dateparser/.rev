@@ -271,4 +271,12 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1291193</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>70cee1b1e51108e80805f51b4d6866d2</srcmd5>
+    <version>1.2.0</version>
+    <time>1755435001</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
+    <requestid>1299414</requestid>
+  </revision>
 </revisionlist>
