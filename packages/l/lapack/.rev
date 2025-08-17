@@ -549,4 +549,12 @@ An alternative would be to use the older manpages or to pre-generate them.
     <comment></comment>
     <requestid>1283891</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>2bdc0ab1403bbc2d5ac82e0ee129c541</srcmd5>
+    <version>3.12.1</version>
+    <time>1755434997</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1299915</requestid>
+  </revision>
 </revisionlist>

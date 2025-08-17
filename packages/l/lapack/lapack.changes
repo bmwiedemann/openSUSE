@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Aug 16 11:13:52 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-download lapack-deprecated-lwork-use.patch and
+  lapack-update-patch-version.patch: github is known not to be very
+  stable on offering patches without changes (the length of the
+  references keeps on changing).
+
+-------------------------------------------------------------------
+Fri Aug 15 08:43:01 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Fix update-alternatives fallout:
+  Make sure *.cmake files point to the correct locations after
+  libraries have been moved.
+- Add tmglib-devel as requires to lapack-devel as this is needed
+  for cmake (bsc#1248134).
+
+-------------------------------------------------------------------
 Wed Jun  4 14:27:37 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.12.1:

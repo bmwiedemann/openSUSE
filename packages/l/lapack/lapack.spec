@@ -1,7 +1,7 @@
 #
 # spec file for package lapack
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -85,6 +85,9 @@ both single and double precision.
 
 
 
+
+
+
 # LAPACK
 
 %package     -n liblapack%{so_ver}
@@ -109,6 +112,7 @@ This package provides the shared library for LAPACK.
 Summary:        Linear Algebra PACKage: headers and source files for development
 Requires:       blas-devel = %{version}
 Requires:       liblapack%{so_ver} = %{version}
+Requires:       tmglib-devel = %{version}
 Recommends:     lapack-man = %{version}
 Provides:       lapack = %{version}
 Obsoletes:      lapack < %{version}
@@ -140,6 +144,9 @@ similar functionality is provided for real and complex matrices, in
 both single and double precision.
 
 This package provides the static library for LAPACK.
+
+
+
 
 
 
@@ -194,6 +201,9 @@ This package provides the static library for BLAS.
 
 
 
+
+
+
 # LAPACKE
 
 %package     -n liblapacke%{so_ver}
@@ -229,6 +239,9 @@ at www.netlib.org/lapack to facilitate usage of LAPACK functionality
 for C programmers.
 
 This package provides the static library for LAPACKE.
+
+
+
 
 
 
@@ -278,6 +291,9 @@ This package contains the CBLAS static libraries.
 
 
 
+
+
+
 # TMGLIB
 
 %package -n libtmglib%{so_ver}
@@ -302,6 +318,9 @@ Requires:       tmglib-devel
 %description -n tmglib-devel-static
 This package provides the headers and sources needed to develop against the
 tmglib as a static library.
+
+
+
 
 
 
@@ -364,8 +383,12 @@ doxygen Doxyfile.man
 # Prepare for update-alternatives
 install -d %{buildroot}%{_sysconfdir}/alternatives
 install -d %{buildroot}%{_libdir}/{lapack,blas}
+# Move files to allow update alternatives to create links instead
 mv %{buildroot}%{_libdir}/liblapack{,e}.so.* %{buildroot}%{_libdir}/lapack/
 mv %{buildroot}%{_libdir}/lib{,c}blas.so.* %{buildroot}%{_libdir}/blas/
+# Now fix the fallout for the update alternatives mess
+sed -i -e 's@\({_IMPORT_PREFIX}/lib64/\)\(liblapack.*\)@\1lapack/\2@' %{buildroot}%{_libdir}/cmake/*/*.cmake
+sed -i -e 's@\({_IMPORT_PREFIX}/lib64/\)\(libc\?blas.*\)@\1blas/\2@' %{buildroot}%{_libdir}/cmake/*/*.cmake
 
 # Create the symlinks
 for t in blas cblas lapack lapacke
