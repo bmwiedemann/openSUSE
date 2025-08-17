@@ -356,4 +356,19 @@
 </comment>
     <requestid>1294064</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fbc1a49d90218238303fe22431699eb9</srcmd5>
+    <version>1.3.1+git62.g4f130921361abcbf23159478ebb16c25c808f442</version>
+    <time>1755435005</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.1+git62.g4f130921361abcbf23159478ebb16c25c808f442:
+  * clippy: apply &quot;collapsible if&quot; suggestion here too
+  * clippy: apply more &quot;collapsible if&quot; suggestions
+  * clippy: apply &quot;collapsible if&quot; suggestion
+  * clippy: apply &quot;collapsible if&quot; suggestion
+  * clippy: apply clippy fixes
+  * fix: logic for argument `-` will not produce a file at the current directory
+</comment>
+    <requestid>1299950</requestid>
+  </revision>
 </revisionlist>
