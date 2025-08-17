@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Aug 17 07:08:31 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.11.3
+  * Removed
+    + Remove workaround for long patched CVE in javadoc
+  * New features and improvements
+    + Issue #369 Support --no-fonts option per default for jdk 23+
+  * Bug Fixes
+    + Make the legacyMode consistent (Filter out all of the
+      module-info.java files in legacy mode, do not use
+      --source-path in legacy mode)
+    + MJAVADOC-826: Don't try to modify project source roots
+  * Documentation updates
+    + Correct javadoc-no-fork description on index-page
+    + MNGSITE-529: Rename "Goals" to "Plugin Documentation"
+    + (doc) Close links tag in links parameter javadoc example
+  * Maintenance
+    + Be consistent about data encoding when copying files
+    + Clean up JavadocUtilTest
+    + Use Java 7 relativization instead of hand-rolled code
+    + Rephrase source code fix interactive messages for clarity
+    + Reduce non-debug logging
+    + Delete duplicate @throws clause
+    + Use Java 7 relativization instead of our hand-rolled code
+    + Clean up comments and argument names
+    + Issue #378 Cleanup of code related to old non supported Java
+      version
+    + Cure deprecation warning
+    + MJAVADOC-773: deprecate toRelative
+    + Issue #373 Fix JDK 23 build
+    + Fix aggregate Javadoc typo
+    + Enable GH issues
+    + MJAVADOC-825: Prefer NullPointerExceptions for null arguments
+- Removed patches:
+  * 0001-Be-consistent-about-data-encoding-when-copying-files.patch
+  * 0002-Make-the-legacyMode-consistent-and-actually-useful.patch
+    + integrated in this version
+
+-------------------------------------------------------------------
 Thu Jul 17 05:40:16 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Removed patch:

@@ -1,7 +1,7 @@
 #
 # spec file for package maven-javadoc-plugin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with bootstrap
 %endif
 %global base_name maven-javadoc-plugin
-Version:        3.11.2
+Version:        3.11.3
 Release:        0
 Summary:        Maven plugin for creating javadocs
 License:        Apache-2.0
@@ -32,8 +32,6 @@ URL:            https://maven.apache.org/plugins/maven-javadoc-plugin
 Source0:        %{base_name}-%{version}.tar.xz
 Source1:        %{base_name}-build.xml
 Patch0:         %{base_name}-bootstrap-resources.patch
-Patch1:         0001-Be-consistent-about-data-encoding-when-copying-files.patch
-Patch2:         0002-Make-the-legacyMode-consistent-and-actually-useful.patch
 BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
 BuildRequires:  apache-commons-text
@@ -115,8 +113,6 @@ API documentation for %{name}.
 cp %{SOURCE1} build.xml
 %patch -P 0 -p1
 %endif
-%patch -P 1 -p1
-%patch -P 2 -p1
 
 %pom_remove_dep :::test:
 
