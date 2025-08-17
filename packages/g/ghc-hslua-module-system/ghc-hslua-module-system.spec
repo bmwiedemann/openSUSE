@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.2.1.1
+Version:        1.2.3
 Release:        0
 Summary:        Lua module wrapper around Haskell's System module
 License:        MIT
@@ -37,6 +37,8 @@ BuildRequires:  ghc-exceptions-devel
 BuildRequires:  ghc-exceptions-prof
 BuildRequires:  ghc-hslua-core-devel
 BuildRequires:  ghc-hslua-core-prof
+BuildRequires:  ghc-hslua-list-devel
+BuildRequires:  ghc-hslua-list-prof
 BuildRequires:  ghc-hslua-marshalling-devel
 BuildRequires:  ghc-hslua-marshalling-prof
 BuildRequires:  ghc-hslua-packaging-devel
