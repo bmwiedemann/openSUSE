@@ -222,4 +222,15 @@
 - Update to 0.19.22:</comment>
     <requestid>1288633</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2c60b16f087623ef6c70742c5f1d01e9</srcmd5>
+    <version>0.19.24</version>
+    <time>1755526120</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.24:
+  * zshrc: add special code for cdt() for FreeBSD
+  * Remove is4 from etc/skel/.zshrc
+  * Fix chpwd error when DIRSTACKSIZE is unset by Claude Code</comment>
+    <requestid>1300012</requestid>
+  </revision>
 </revisionlist>
