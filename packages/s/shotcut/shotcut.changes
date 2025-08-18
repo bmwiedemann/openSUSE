@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 18 07:42:31 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 25.08.16:
+  * Fixed Gain/Volume filter from a previous version project does not show its UI or keyframes
+  * Fixed artifacts in Gain/Volume, Fade In Audio, and Fade Out Audio filters (broke in v25.07).
+  * Fixed frequent crashing in Fedora Linux RPM package (broke in v25.05).
+  * Fixed converting BT.709 color space to BT.2020.
+  * Added BT.2020 color space support to the preview.
+  * Fixed Export File with & in the path or name saves wrong name.
+  * Added Embed Markers as Chapters to export job context menu.
+
+-------------------------------------------------------------------
 Wed Aug 13 11:59:18 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 25.07.26:
