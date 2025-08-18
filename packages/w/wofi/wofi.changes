@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Aug  8 06:37:03 UTC 2025 - Jan Baier <jbaier@suse.com>
+
+- update to 1.5.1:
+  * dmenu mode will now auto-close with status 0 if no entries are provided and
+    custom entry is not allowed
+  * Added the API function wofi_no_custom_entry()
+  * update_surface_size() no longer performs a resize if width or height is 0
+  * Create a `strict-contains` matching mode for a more obvious sort order.
+  * Added {} to close_on_focus_loss if statement
+  * add close_on_focus_loss optionfor wofi to close when it loses focus
+  * Add CLI option to hide the search bar
+  * fix: Call update_surface_size() inside hide_search_first()
+  * Added drun-ignore_metadata
+  * iswlower() and iswupper() are now used when fuzzy matching so that the
+    score is correctly computed when using non-ascii characters
+  * Proper unicode support in match.c so case insensitive matching works on
+    non-ascii characters
+  * Added additional information about the semantics of shift vs non-shift
+    modifiers
+  * Moved the list of modifier names to the top of wofi-keys(7) to make it
+    easier to find
+  * Added documentation explicitly specifying how to use modifier keys
+  * Switched out the string literal "Up" for key_default to match the rest of
+    the key definitions
+  * Added documentation for how to bind multiple key combinations to a single
+    action
+  * Fixed incorrect key binding listed in wofi(5) for key_backward
+  * Hiding the search bar now disables it so you can't type into it. Fixes #234
+  * Added --no-custom-entry
+  * Greatly simplified the line size code, it works a lot better than before
+  * Added the use_search_box option
+  * Fixed hide_search=true for surfaces that don't use percent sizing
+  * The hide_search config option now behaves correctly. It does exactly the
+    same thing as key_hide_search but on launch. This now also allows you to
+    un-hide the search with key_hide_search if wofi is launched with
+    hide_search=true
+  * Fixed #216 arrow key issue. This was caused by the fix to #184. Both issues
+    should now be resolved
+  * Fixed segfault when cache is broken #213
+
+-------------------------------------------------------------------
 Mon Feb 12 08:58:20 UTC 2024 - Jan Baier <jbaier@suse.com>
 
 - update to 1.4.1:
