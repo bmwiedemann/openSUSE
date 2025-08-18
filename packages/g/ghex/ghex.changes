@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 16 19:22:33 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0:
+  + gtkhex: Improve {ascii,hex}_to_pointer accuracy
+  + common: Don't gtk_window_destroy in ::response signal in
+    AdwAlertDialog.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jun 28 13:48:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.beta2:

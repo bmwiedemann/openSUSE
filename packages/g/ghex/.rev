@@ -607,4 +607,12 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment></comment>
     <requestid>1289802</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>0b0962032a4b176688a526e7f59a35c4</srcmd5>
+    <version>48.0</version>
+    <time>1755528967</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1300057</requestid>
+  </revision>
 </revisionlist>

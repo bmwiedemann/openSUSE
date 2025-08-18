@@ -1,7 +1,7 @@
 #
 # spec file for package ghex
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define soname libgtkhex-%{ghex_abi}-%{so_ver}
 
 Name:           ghex
-Version:        48.beta2
+Version:        48.0
 Release:        0
 Summary:        GNOME Binary Editor
 License:        GPL-2.0-or-later
@@ -102,7 +102,7 @@ This package provides introspection bindings for ghex.
 %doc README.md COPYING-DOCS
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/ghex
-%{_datadir}/metainfo/org.gnome.GHex.appdata.xml
+%{_datadir}/metainfo/org.gnome.GHex.metainfo.xml
 %{_datadir}/applications/org.gnome.GHex.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.GHex.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.GHex*
