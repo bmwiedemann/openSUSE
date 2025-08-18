@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-Fabric
 Version:        3.2.2
@@ -40,10 +44,8 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-relaxed}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-Deprecated
 Requires:       python-decorator
 Requires:       python-invoke >= 2.0
@@ -54,6 +56,13 @@ Provides:       python-Fabric3 = %{version}
 Provides:       python-fabric = %{version}
 Provides:       python-fabric2 = %{version}
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -85,10 +94,17 @@ sed -i 's/from invoke.vendor\./from\ /' fabric/connection.py fabric/group.py int
 %python_clone -a %{buildroot}%{_bindir}/fab
 
 %check
-%pytest tests/
+# fake, fake_agent, no_stdin - pytest-relaxed collects fixtures for some reason
+%pytest tests/ -k "not (fake or no_stdin)"
 
 %pre
 %python_libalternatives_reset_alternative fab
+
+%post
+%python_install_alternative fab
+
+%postun
+%python_uninstall_alternative fab
 
 %files %{python_files}
 %license LICENSE
