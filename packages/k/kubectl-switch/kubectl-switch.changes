@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Aug 18 12:48:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.12:
+  * Bug Fixes
+    - go: update k8s.io/client-go ( v0.33.3 → v0.33.4 ) (85eeb2c)
+  * CI/CD
+    - github-action: update github/codeql-action ( v3.29.8 →
+      v3.29.9 ) (ffd9c5d)
+  * Chores
+    - mise: update aqua:golangci/golangci-lint ( 2.3.1 → 2.4.0 )
+      (#202) (32bd2b6)
+    - mise: update go ( 1.24.6 → 1.25.0 ) (10f4c72)
+
+-------------------------------------------------------------------
+Mon Aug 18 12:35:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.11:
+  * Bug Fixes
+    - go: update k8s.io/apimachinery ( v0.33.3 → v0.33.4 )
+      (0372f00)
+  * Chores
+    - mise: update go ( 1.24.5 → 1.24.6 ) (74f1dd6)
+    - mise: update aqua:golangci/golangci-lint ( 2.3.0 → 2.3.1 )
+      (4d3c482)
+    - mise: update aqua:goreleaser/goreleaser ( 2.11.1 → 2.11.2 )
+      (40f4c90)
+    - mise: update aqua:goreleaser/goreleaser ( 2.11.0 → 2.11.1 )
+      (0e9790f)
+    - mise: update aqua:golangci/golangci-lint ( 2.2.2 → 2.3.0 )
+      (a89034c)
+
+-------------------------------------------------------------------
 Thu Jul 24 11:33:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.10:

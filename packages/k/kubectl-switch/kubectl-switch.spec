@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-switch
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kubectl-switch
-Version:        2.2.10
+Version:        2.2.12
 Release:        0
 Summary:        Simple tool to help manage multiple kubeconfig files
 License:        MIT
