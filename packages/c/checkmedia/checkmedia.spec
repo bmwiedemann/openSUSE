@@ -20,7 +20,7 @@ Name:           checkmedia
 Summary:        Check installation or Live media
 License:        GPL-3.0-or-later
 Group:          System/Management
-Version:        6.4
+Version:        6.5
 Release:        0
 URL:            https://github.com/openSUSE/checkmedia
 Source:         %{name}-%{version}.tar.xz

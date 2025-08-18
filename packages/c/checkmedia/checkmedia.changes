@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Mon Aug 18 07:43:05 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/checkmedia#21
+- set LC_MESSAGES to C when running gpg (bsc#1248168)
+- fix minor issue when printing app_id
+- 6.5
+
+--------------------------------------------------------------------
 Tue May 13 08:29:09 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/checkmedia#20
