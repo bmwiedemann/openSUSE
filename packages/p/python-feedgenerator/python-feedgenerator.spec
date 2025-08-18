@@ -1,7 +1,7 @@
 #
 # spec file for package python-feedgenerator
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-feedgenerator
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        Standalone version of django.utilsfeedgenerator, compatible with Py3k
 License:        BSD-3-Clause
@@ -55,7 +55,7 @@ export LC_ALL=en_US.utf8
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %{python_sitelib}/feedgenerator-%{version}*-info
 %{python_sitelib}/feedgenerator
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 17 21:02:40 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 2.2.1:
+  * Restore missing content property to default item dictionary
+- change documentation to README.md to match upstream
+
+-------------------------------------------------------------------
 Mon Jul 14 17:40:27 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 2.2.0:
