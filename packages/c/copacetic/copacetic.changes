@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Aug 18 12:38:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.1:
+  * fix: os version format in tdnf install (#1215)
+  * feat: Add Parsable format for buildkit progress output within
+    Copa (#1238)
+  * chore: bump docker/login-action from 3.4.0 to 3.5.0 in the all
+    group across 1 directory (#1245)
+  * chore: bump github.com/aquasecurity/trivy from 0.64.1 to 0.65.0
+    (#1244)
+  * chore: bump github.com/docker/cli from 28.3.2+incompatible to
+    28.3.3+incompatible (#1242)
+  * chore: bump typescript from 5.8.3 to 5.9.2 in /website in the
+    all group (#1241)
+  * chore: bump github/codeql-action from 3.29.4 to 3.29.5 in the
+    all group (#1240)
+  * feat: modularize patching logic (#1228)
+  * ci: Fix osv-scanner config: replace [[ignore]] with
+    [[IgnoredVulns]] (#1214)
+  * fix: Get host platform info in single arch integration test
+    (#1197)
+  * fix: Add actionable logs and improve UX after buildkit endpoint
+    checks are exhausted (#1186)
+  * chore: bump github.com/docker/docker from 28.3.2+incompatible
+    to 28.3.3+incompatible (#1233)
+  * chore: bump the all group in /website with 3 updates (#1231)
+  * chore: bump google.golang.org/grpc from 1.73.0 to 1.74.2
+    (#1229)
+  * chore: add robbie to codeowners (#1226)
+  * fix: add almalinux to pkgmanager os type check (#1220)
+  * fix: set azurelinux base image tag (#1216)
+  * chore: bump k8s.io/apimachinery from 0.33.2 to 0.33.3 (#1217)
+  * chore: bump golang.org/x/sync from 0.15.0 to 0.16.0 (#1205)
+  * chore: bump github.com/docker/cli from 28.3.1+incompatible to
+    28.3.2+incompatible (#1204)
+  * chore: bump github.com/cpuguy83/go-docker from 0.3.1 to 0.4.0
+    (#1203)
+  * chore: bump github.com/docker/docker from 28.3.1+incompatible
+    to 28.3.2+incompatible (#1202)
+  * chore: bump the all group across 1 directory with 3 updates
+    (#1224)
+  * chore: Exempt good first issues from getting stale (#1219)
+  * chore: remove fluentbit eol img from tests (#1222)
+  * fix: Fix landing page dark mode (#1210)
+  * fix: Remove excessive token permissions (#1172)
+  * feat: Add landing page to copa docs (#1206)
+  * chore: bump dotenv from 17.0.1 to 17.2.0 in /website in the all
+    group (#1201)
+  * chore: add Robbie Cronin to maintainers (#1200)
+  * docs: optimize docs (#1189)
+  * feat: patch non-host alpine (#1194)
+  * feat: add riscv64 to validPlatforms (#1199)
+  * chore: bump github.com/docker/cli from 28.3.0+incompatible to
+    28.3.1+incompatible (#1192)
+  * chore: bump github.com/docker/docker from 28.3.0+incompatible
+    to 28.3.1+incompatible (#1191)
+  * chore: bump github.com/aquasecurity/trivy from 0.64.0 to 0.64.1
+    (#1190)
+  * docs: update tradeoffs section to reflect scanner independence
+    (#818) (#888)
+  * chore: Generate v0.11.x docs (#1182)
+  * docs: add Devtron to adopters list (#1163)
+  * feat: Add stale bot (#1180)
+
+-------------------------------------------------------------------
 Fri Jul 04 05:08:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.0:
