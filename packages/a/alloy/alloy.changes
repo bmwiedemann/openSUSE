@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Aug  7 12:04:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.10.1:
+  Full list of changes:
+  https://github.com/grafana/alloy/blob/v1.10.1/CHANGELOG.md#v1101
+  * Bugfixes
+    - Fix issue with faro.receiver cors not allowing X-Scope-OrgID
+      and traceparent headers. (@mar4uk)
+    - Fix issues with propagating cluster peers change
+      notifications to components configured with remotecfg.
+      (@dehaansa)
+    - Fix issues with statistics reporter not including components
+      only configured with remotecfg. (@dehaansa)
+    - Fix issues with prometheus.exporter.windows not propagating
+      dns collector config. (@dehaansa)
+    - Fixed a bug in prometheus.write.queue which caused retries
+      even when max_retry_attempts was set to 0. (@ptodev)
+    - Fixed a bug in prometheus.write.queue which caused labelling
+      issues when providing more than one label in external_labels.
+      (@dehaansa)
+    - Add application_host and network_inter_zone features to
+      beyla.ebpf component. (@marctc)
+    - Fix issues in loki.process where stage.multiline did not pass
+      through structured metadata. (@jan-mrm)
+    - Fix URLs in the Windows installer being wrapped in quotes.
+      (@martincostello)
+    - Fixed an issue where certain otelcol.* components could
+      prevent Alloy from shutting down when provided invalid
+      configuration. (@thampiotr)
+
+-------------------------------------------------------------------
 Thu Jul 17 06:36:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.10.0:

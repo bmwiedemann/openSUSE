@@ -1,7 +1,7 @@
 #
 # spec file for package alloy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           alloy
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 Summary:        OpenTelemetry Collector distribution with programmable pipelines
 License:        Apache-2.0
