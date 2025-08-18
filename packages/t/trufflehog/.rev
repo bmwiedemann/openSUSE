@@ -2367,4 +2367,20 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
   * Disabled besnappy detector (#4363) (forwarded request 1299405 from ph03nix)</comment>
     <requestid>1299445</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>817d6424437405f346bd116808b2e70d</srcmd5>
+    <version>3.90.5</version>
+    <time>1755531055</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.90.5:
+  * Update proto definitions for custom bitbucket oauth (#4390)
+  * Update PreCommit.md with audit mode details (#4280)
+  * Add additional unicode escape support (#4296)
+  * Utf16 bom support (#4326)
+  * fix(deps): update module github.com/sendgrid/sendgrid-go to v3.16.1+incompatible (#4232)
+  * fix(deps): update module github.com/bradleyfalzon/ghinstallation/v2 to v2.16.0 (#4342)
+  * Improved and fixed copper detector (#4394)
+  * Fixed and improved currentsapi detector (#4391) (forwarded request 1300043 from ph03nix)</comment>
+    <requestid>1300064</requestid>
+  </revision>
 </revisionlist>
