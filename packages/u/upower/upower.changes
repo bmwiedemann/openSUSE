@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Aug 11 22:52:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.90.9.28+git.903a827:
+  * linux: integration-test: the settings discovery for charge threshold
+  * linux: up-device-supply-battery: Discover the settings of charge threshold
+  * up-device-battery: set up charge-threshold-settings-supported property
+  * dbus: org.freedesktop.UPower.Device: the ChargeThresholdSettingsSupported property
+  * linux: integration-test: Switch between Long_Life, Fast, Standard, and Adaptive
+  * linux: up-device-supply-battery: Set charge_types to enable/disable the charge threshold
+  * linux: up-device-supply-battery: Using charge_types Long_Life and Standard to manage charging threshold
+  * linux: up-device-supply-battery: Set charge_types through an enum
+  * linux: integration-test: reduce the test failure for the slow system
+  * linux: integration-test: fix random test failure for test_bluetooth_hidpp_mouse
+  * linux: integration-test: Switch the charge_types between Custom and Fast with charging threshold status
+  * linux: up-device-supply-battery: Set charge_types to "Custom" when enabling charging threshold
+  * up-history: reverse preset progression
+  * openbsd: add support to fetch battery status from qcpas
+  * tools: Reorder upower(1) command-line options to match manual page
+  * docs: Document all upower(1) command-line options
+  * tools: Handle invalid command-line arguments
+  * daemon: Fix memory leak when reporting usage error
+  * linux: integration-test: Two mice were paired with a unifying receiver
+  * linux: up-enumerator-udev: Prevent reading the sysfs path from a non-GUdevDevice object
+  * linux: up-device-supply: Only update model name when the device is under the same parent
+  * linux: integration-test: Test exporting sysfs attributes
+  * lib: up-device: Expose CapacityLevel, VoltageMinDesign, and VoltageMaxDesign
+  * linux: up-device-supply-battery: read values of capacity_level and voltage_min/max
+  * up-device-battery: Define capacity-level, voltage-min-design and voltage-max-design properties
+  * dbus: Define CapacityLevel, VoltageMinDesign and VoltageMaxDesign properties
+  * linux: integration_test: Wait 5 seconds for bluez to set up the device information
+  * src: meson: extend the timeout for test_battery_state_guessing
+  * Release 1.90.9
+  * linux: up-device-supply-battery: Don't mark fully charged batteries as discharging
+  * linux: integration-test: Update test case for "state_all_discharging" support
+  * up-daemon: introduce state_all_discharging member to allow critical action dispatch on external power
+  * Revert "up-daemon: Handle the AC is online but the battery is discharging"
+  * Release 1.90.8
+  * up-device: Fix mem leak when get device id
+  * linux: up-device-supply-battery: Fix mem leak when refreshing battery info
+  * rules: 95-upower-hid.hwdb: update hwdb for HID devices
+  * linux: integration-test: Handle connecting the low-power charger
+  * linux: up-device-supply-battery: reset the status to discharging when current_now is negative
+  * up-daemon: Handle the AC is online but the battery is discharging      
+  * linux: rules: fix warnings from `udevadm verify`
+
+-------------------------------------------------------------------
 Mon Mar 24 19:15:37 UTC 2025 - Thomas Renninger <trenn@suse.de>
 
 - Make dependency on libimobile and libplist optional and disbled

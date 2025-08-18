@@ -854,4 +854,41 @@ D faa6d8a6b3dd92ab61cd3c5515dfd120ccb7e74b.patch</comment>
     <comment></comment>
     <requestid>1265195</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>96f3501c13c4989c79c3834e971f2cad</srcmd5>
+    <version>1.90.9.28+git.903a827</version>
+    <time>1755526062</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.90.9.28+git.903a827:
+  * linux: integration-test: the settings discovery for charge threshold
+  * linux: up-device-supply-battery: Discover the settings of charge threshold
+  * up-device-battery: set up charge-threshold-settings-supported property
+  * dbus: org.freedesktop.UPower.Device: the ChargeThresholdSettingsSupported property
+  * linux: integration-test: Switch between Long_Life, Fast, Standard, and Adaptive
+  * linux: up-device-supply-battery: Set charge_types to enable/disable the charge threshold
+  * linux: up-device-supply-battery: Using charge_types Long_Life and Standard to manage charging threshold
+  * linux: up-device-supply-battery: Set charge_types through an enum
+  * linux: integration-test: reduce the test failure for the slow system
+  * linux: integration-test: fix random test failure for test_bluetooth_hidpp_mouse
+  * linux: integration-test: Switch the charge_types between Custom and Fast with charging threshold status
+  * linux: up-device-supply-battery: Set charge_types to &quot;Custom&quot; when enabling charging threshold
+  * up-history: reverse preset progression
+  * openbsd: add support to fetch battery status from qcpas
+  * tools: Reorder upower(1) command-line options to match manual page
+  * docs: Document all upower(1) command-line options
+  * tools: Handle invalid command-line arguments
+  * daemon: Fix memory leak when reporting usage error
+  * linux: integration-test: Two mice were paired with a unifying receiver
+  * linux: up-enumerator-udev: Prevent reading the sysfs path from a non-GUdevDevice object
+  * linux: up-device-supply: Only update model name when the device is under the same parent
+  * linux: integration-test: Test exporting sysfs attributes
+  * lib: up-device: Expose CapacityLevel, VoltageMinDesign, and VoltageMaxDesign
+  * linux: up-device-supply-battery: read values of capacity_level and voltage_min/max
+  * up-device-battery: Define capacity-level, voltage-min-design and voltage-max-design properties
+  * dbus: Define CapacityLevel, VoltageMinDesign and VoltageMaxDesign properties
+  * linux: integration_test: Wait 5 seconds for bluez to set up the device information
+  * src: meson: extend the timeout for test_battery_state_guessing
+  * Release 1.90.9</comment>
+    <requestid>1299994</requestid>
+  </revision>
 </revisionlist>
