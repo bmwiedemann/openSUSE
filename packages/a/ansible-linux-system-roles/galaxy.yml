@@ -4,13 +4,13 @@
 # The namespace of the collection. This can be a company/brand/organization or product namespace under which all
 # content lives. May only contain alphanumeric lowercase characters and underscores. Namespaces cannot start with
 # underscores or numbers and cannot contain consecutive underscores
-namespace: suse
+namespace: "suse"
 
 # The name of the collection. Has the same character restrictions as 'namespace'
-name: linux_system_roles
+name: "linux_system_roles"
 
 # The version of the collection. Must be compatible with semantic versioning
-version: '1.0.0'
+version: "1.0.0"
 
 # The path to the Markdown (.md) readme file. This path is relative to the root of the collection
 readme: README.md

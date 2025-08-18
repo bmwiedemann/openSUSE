@@ -71,4 +71,12 @@ This package contains ansible roles from linux-system-roles project: https://git
     <comment>Add keylime_server role</comment>
     <requestid>1299010</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>1c8e9fbfb64096793b6c8ee1fa609dc8</srcmd5>
+    <version>1.0.0</version>
+    <time>1755528970</time>
+    <user>anag_factory</user>
+    <comment>Ensure galaxy.yml version is aligned with spec Version to avoid build failures</comment>
+    <requestid>1300092</requestid>
+  </revision>
 </revisionlist>

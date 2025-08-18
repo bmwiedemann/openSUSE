@@ -176,6 +176,10 @@ rm -rf %{_builddir}/roles
 
 cp %{_sourcedir}/galaxy.yml %{_builddir}/collections/ansible_collections/suse/linux_system_roles/galaxy.yml
 
+# Ensure galaxy.yml version matches spec Version
+sed -i "s/^version: .*/version: '%{version}'/" \
+  %{_builddir}/collections/ansible_collections/suse/linux_system_roles/galaxy.yml
+
 %build
 # Build Collection
 cd %{_builddir}/collections/ansible_collections/suse/linux_system_roles/
