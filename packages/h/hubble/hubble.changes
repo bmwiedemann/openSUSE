@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Aug 18 13:00:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.18.0:
+  * Minor Changes:
+    - hubble-cli: new --print-policy-names option to show the names
+      of (C)CNPs that allowed or denied traffic
+      (cilium/cilium#39453, @antonipp)
+    - hubble: send server version using metadata in gRPC responses
+      (cilium/cilium#38668, @devodev)
+    - loader: attach datapath to IPIP tunnel devices
+      (cilium/cilium#37346, @gyutaeb)
+  * Bugfixes:
+    - hubble: escape terminal special characters from observe
+      output (cilium/cilium#37401, @devodev)
+  * Misc Changes:
+    - chore(deps): update dependency helm/helm to v3.18.4 (#1695,
+      @renovate[bot])
+    - chore(deps): update golang to v1.24.5 (patch) (#1696,
+      @renovate[bot])
+    - chore(deps): update library/golang:1.24.5-alpine docker
+      digest to daae04e (#1698, @renovate[bot])
+    - chore(deps): update dependency cilium/cilium to v1.18.0
+    - chore(deps): update dependency cilium/cilium to v1.17.6
+    - chore(deps): update dependency cilium/cilium to v1.17.5
+
+-------------------------------------------------------------------
 Mon Jun 23 10:25:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.17.5 (1.17.4 was not released):
