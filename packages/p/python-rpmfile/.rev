@@ -49,4 +49,13 @@
 - Initial package</comment>
     <requestid>1273044</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>30c62222d3fc89c27baa8a3abfd9d52d</srcmd5>
+    <version>2.1.0</version>
+    <time>1755526315</time>
+    <user>anag_factory</user>
+    <comment>- Add %{?sle15_python_module_pythons}
+- Fix alternatives, and use update-alternatives in SLE-15</comment>
+    <requestid>1300053</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 18 11:34:01 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add %{?sle15_python_module_pythons}
+- Fix alternatives, and use update-alternatives in SLE-15
+
+-------------------------------------------------------------------
 Thu Apr 17 16:58:54 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.0:

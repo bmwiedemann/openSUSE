@@ -1,7 +1,7 @@
 #
 # spec file for package python-rpmfile
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,13 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
+%{?sle15_python_module_pythons}
 Name:           python-rpmfile
 Version:        2.1.0
 Release:        0
@@ -28,10 +34,15 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
 Requires:       alts
+BuildRequires:  alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 Recommends:     python-zstandard >= 0.13.0
 Conflicts:      rpmdevtools
 BuildArch:      noarch
@@ -45,7 +56,7 @@ BuildRequires:  %{python_module zstandard >= 0.13.0}
 Tools for inspecting RPM files in python. This module is modeled after the tarfile module.
 
 %prep
-%setup -q -n rpmfile-%{version}
+%autosetup -p1 -n rpmfile-%{version}
 sed -i '1{/#!/d}' rpmfile/cpiofile.py
 
 %build
@@ -59,6 +70,12 @@ sed -i '1{/#!/d}' rpmfile/cpiofile.py
 
 %pre
 %python_libalternatives_reset_alternative rpmfile
+
+%post
+%python_install_alternative rpmfile
+
+%postun
+%python_uninstall_alternative rpmfile
 
 %check
 # https://github.com/srossross/rpmfile/issues/35
