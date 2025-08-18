@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 11 15:14:49 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add b5752618.patch:
+  Backport from William Bader's request 621, Fix NULL access
+  in active_edges_to_traps().
+  https://gitlab.freedesktop.org/cairo/cairo/-/merge_requests/621/diffs
+  https://gitlab.freedesktop.org/williamb/cairo/-/commit/b5752618
+  (CVE-2025-50422, bsc#1247589)
+
+-------------------------------------------------------------------
 Wed Mar 19 07:23:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Switch back to using source service.

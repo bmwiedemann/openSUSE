@@ -30,8 +30,10 @@ Source99:       baselibs.conf
 
 # PATCH-FIX-UPSTREAM cairo-xlib-endianness.patch fdo#63461 bnc#882951 fcrozat@suse.com -- Fix crash when client and server have different endianness
 Patch0:         cairo-xlib-endianness.patch
-# PATCH-FIX-UPSTREAM cairo-get_bitmap_surface-bsc1036789-CVE-2017-7475.diff alarrosa@suse.com -- Fix segfault in get_bitmap_surface
+# PATCH-FIX-UPSTREAM cairo-get_bitmap_surface-bsc1036789-CVE-2017-7475.diff CVE-2017-7475 bsc1036789 alarrosa@suse.com -- Fix segfault in get_bitmap_surface
 Patch1:         cairo-get_bitmap_surface-bsc1036789-CVE-2017-7475.diff
+# PATCH-FIX-UPSTREAM b5752618.patch CVE-2025-50422 bsc#1247589 qzhao@suse.com -- Fix a NULL access in active_edges_to_traps().
+Patch2:         b5752618.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
