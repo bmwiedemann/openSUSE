@@ -1,7 +1,7 @@
 #
 # spec file for package dovecot24
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,8 +48,6 @@ Version:        2.4.1
 Release:        0
 Summary:        IMAP and POP3 Server Written Primarily with Security in Mind
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT
-# https://dovecot.org/mailman3/archives/list/dovecot@dovecot.org/message/PCUTU3IE6RZXQQMWCAB7UP4XN6SPFPFX/
-ExcludeArch:    %ix86 %arm
 Group:          Productivity/Networking/Email/Servers
 URL:            https://www.dovecot.org
 Source:         https://www.dovecot.org/releases/%{dovecot_branch}/%{pkg_name}-%{dovecot_version}.tar.gz

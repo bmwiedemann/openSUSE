@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 14 06:45:21 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Enable build for all arches again. The build failure on 32bit has
+  been addressed upstream.
+
+-------------------------------------------------------------------
 Tue Aug  5 10:57:55 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - [SLFO:Main] [SLES16.0] Please lower the libldap2 dependency for dovecot24
