@@ -18,7 +18,7 @@
 
 %define         short_name openQA-worker
 Name:           %{short_name}-test
-Version:        5.1755366162.ba8741a1
+Version:        5.1755504216.b51ff4b1
 Release:        0
 Summary:        Test package for %{short_name}
 License:        GPL-2.0-or-later

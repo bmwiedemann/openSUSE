@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 18 09:11:01 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1755504216.b51ff4b1:
+  * Use signatures in worker reactor error handler
+  * Use signatures in worker job code and related mocking
+
+-------------------------------------------------------------------
 Sat Aug 16 19:11:41 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1755366162.ba8741a1:
