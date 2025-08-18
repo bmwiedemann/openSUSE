@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 18 09:20:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.2+git48.4b73df015e:
+  * Fix for node-editting slow-down when Object Properties dialog open (1.4.x).
+  * Update libcroco with latest fixes
+  * Fix measure tool endpoint snapping
+  * Reduce text pick-box size to allow easier picking of background.
+  * Import preview page when using Cairo PDF import.
+  * Don't crash when importing files containing symbols or markers.
+  * Fix axis flip causing vector exports to be cropped
+  * Added GtkSource-4.typelib for Windows installation
+  * Fix crash on dropping Layer on itself in Layers and Objects dialog.
+  * Fix user interface for right-to-left. Backport.
+
+-------------------------------------------------------------------
 Fri Jul 25 11:32:29 UTC 2025 - Tobias Schula <tobias@schula.org>
 
 - Extension manager needs Python module 'appdirs', add dependency

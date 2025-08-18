@@ -1,7 +1,7 @@
 #
 # spec file for package inkscape
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           inkscape
-Version:        1.4.2+38
+Version:        1.4.2+git48.4b73df015e
 Release:        0
 Summary:        Vector Illustration Program
 License:        GPL-3.0-only
