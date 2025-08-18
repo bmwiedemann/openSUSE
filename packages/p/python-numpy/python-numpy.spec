@@ -30,8 +30,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           python-numpy
-# set %%ver and %%_ver instead above
-Version:        2.2.2
+Version:        2.3.2
 Release:        0
 Summary:        NumPy array processing for numbers, strings, records and objects
 License:        BSD-3-Clause
@@ -46,7 +45,7 @@ Patch1:         update-meson-1_5_2.patch
 # PATCH-FIX-UPSTREAM reproducible.patch https://github.com/numpy/numpy/pull/29481 bwiedemann@suse
 Patch2:         reproducible.patch
 BuildRequires:  %{python_module Cython >= 3.0}
-BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module meson-python >= 0.15}
 BuildRequires:  %{python_module pip}

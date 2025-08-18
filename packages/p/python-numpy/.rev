@@ -1384,4 +1384,12 @@ This was now merged upstream, so I added relevant metadata
   Add reproducible.patch to make debuginfo reproducible (bsc#1245203)</comment>
     <requestid>1296837</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>68c5ee4dc70269068d924071d28ee451</srcmd5>
+    <version>2.3.2</version>
+    <time>1755531047</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1299205</requestid>
+  </revision>
 </revisionlist>
