@@ -17,7 +17,7 @@
 
 
 %define build_eppic 1
-%define eppic_commit 63c2a2072464d774097a1a6cc1d2e98290f89c49
+%define eppic_commit 72da440362e20291d5ecbb04b6eb7c7b492f233c
 
 %if 0%{!?have_zstd:1}
 %if 0%{?sle_version} >= 150200 || 0%{?suse_version} > 1500
@@ -97,7 +97,6 @@ make %{?_smp_mflags} eppic_makedumpfile.so %{?ncurses_make_opts}
 install -D -m 0755 makedumpfile %{buildroot}%{_bindir}/makedumpfile
 install -D -m 0644 makedumpfile.8 %{buildroot}%{_mandir}/man8/makedumpfile.8
 install -D -m 0644 makedumpfile.conf.5 %{buildroot}%{_mandir}/man5/makedumpfile.conf.5
-install -D -m 0644 makedumpfile-R.pl %{buildroot}%{_datadir}/%{name}-%{version}/makedumpfile-R.pl
 %if %{build_eppic}
 install -D -m 0755 eppic_makedumpfile.so %{buildroot}%{_libdir}/%{name}-%{version}/eppic_makedumpfile.so
 install -d -m 0755 %{buildroot}%{_datadir}/%{name}-%{version}/eppic_scripts
@@ -119,13 +118,13 @@ install -m 0644 -t %{buildroot}%{_datadir}/%{name}-%{version}/eppic_scripts/ epp
 %defattr(-,root,root)
 %license COPYING
 %doc README IMPLEMENTATION
+%doc makedumpfile-R.pl
 %{_mandir}/man?/*
 %{_bindir}/*
-%dir %{_datadir}/%{name}-%{version}
-%{_datadir}/%{name}-%{version}/makedumpfile-R.pl
 %if %{build_eppic}
 %dir %{_libdir}/%{name}-%{version}
 %{_libdir}/%{name}-%{version}/eppic_makedumpfile.so
+%dir %{_datadir}/%{name}-%{version}
 %{_datadir}/%{name}-%{version}/eppic_scripts/
 %endif
 

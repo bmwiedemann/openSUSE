@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 13 06:22:31 UTC 2025 - Petr Tesařík <ptesarik@suse.com>
+
+- Move makedumpfile-R.pl to doc. The script is no longer needed,
+  but may serve as a useful reference implementation of reading the
+  flattened file format.
+
+-------------------------------------------------------------------
+Wed Aug 13 06:07:18 UTC 2025 - Petr Tesařík <ptesarik@suse.com>
+
+- Update bundled eppic to 72da440362e20291d5ecbb04b6eb7c7b492f233c
+  (boo#1247577).
+
+-------------------------------------------------------------------
 Fri Jul 18 12:40:21 UTC 2025 - Petr Tesařík <ptesarik@suse.com>
 
 - makedumpfile-fix-multi-threading-data-race.patch: Fix a data race
