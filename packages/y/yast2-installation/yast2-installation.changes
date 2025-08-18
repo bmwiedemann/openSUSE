@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Aug 12 13:45:09 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
+
+- Drop dependency and usage of initviocons (bsc#1247578)
+- 5.0.17
+
+-------------------------------------------------------------------
+Tue Dec 17 15:56:21 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
+
+- skip showing reboot message in autoinstallation and
+  autoupgrade mode only if not explicitly set on command line
+  (bsc#1231522)
+- 5.0.16
+
+-------------------------------------------------------------------
+Tue Dec 17 15:05:22 UTC 2024 - Ladislav Slezák <lslezak@suse.com>
+
+- Self-update fix (bsc#1234661)
+  - Properly compare the package versions from the inst-sys and
+    the self-update repository
+  - Remove the architecture suffix when reading the package version
+    from the inst-sys (the /.packages.root file)
+  - This fixes false alarm about incorrect self-update repository
+    when the installation is booted from PXE using the updated
+    tftpboot-installation-* packages (not the GA version)
+
+-------------------------------------------------------------------
 Wed Oct 23 11:18:09 UTC 2024 - Josef Reidinger <jreidinger@suse.com>
 
 - Improve handling spaces when list of blacklisted modules are
@@ -220,7 +246,7 @@ Tue Nov 15 13:42:41 UTC 2022 - José Iván López González <jlopez@suse.com>
   security policy (part of jsc#SLE-24764).
 
 -------------------------------------------------------------------
- Tue Nov 15 13:41:41 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
+Tue Nov 15 13:41:41 UTC 2022 - Knut Anderssen <kanderssen@suse.com>
 
 - Fix copy of entropy pool during installation (bsc#1204559).
 
@@ -977,8 +1003,8 @@ Fri Jun 12 16:09:32 UTC 2020 - David Diaz <dgonzalez@suse.com>
 - Improve the UX of the Previously Used Repositories dialog by
   using more accurate labels.
 
--------------------------------------------------------------------
 
+-------------------------------------------------------------------
 Fri Jun 12 15:03:11 UTC 2020 - Josef Reidinger <jreidinger@suse.com>
 
 - Remove ssh_import section from AY when cloning (bsc#1172749)
@@ -1156,8 +1182,8 @@ Sun Nov 10 18:56:53 UTC 2019 - David Diaz <dgonzalez@suse.com>
 - Improve the role selection dialog using a new scrollable widget
   to select a role (related to bsc#1084674, bsc#bsc#1086187).
 - 4.2.21
--------------------------------------------------------------------
 
+-------------------------------------------------------------------
 Thu Nov  7 09:32:00 UTC 2019 - Ladislav Slezák <lslezak@suse.cz>
 
 - Implement upgrade for the Full medium (jsc#SLE-7101)
