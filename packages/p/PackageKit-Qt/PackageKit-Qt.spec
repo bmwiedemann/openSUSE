@@ -1,7 +1,7 @@
 #
 # spec file for package PackageKit-Qt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,8 @@ URL:            https://github.com/hughsie/PackageKit-Qt
 Source:         https://github.com/hughsie/PackageKit-Qt/archive/v%{version}.tar.gz#/PackageKit-Qt-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM boo#1103678
 Patch0:         0001-Fix-PackageKit-not-emitting-network-state-changed-signal.patch
+# PATCH-FIX-UPSTREAM kde#508235
+Patch1:         0001-offline-Ensure-the-enum-is-registered.patch
 BuildRequires:  PackageKit-devel >= %{version}
 BuildRequires:  cmake
 BuildRequires:  pkgconfig

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 16 19:35:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change to fix a discover crash (kde#508235):
+  * 0001-offline-Ensure-the-enum-is-registered.patch
+
+-------------------------------------------------------------------
 Tue Jul 29 07:28:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.1.3

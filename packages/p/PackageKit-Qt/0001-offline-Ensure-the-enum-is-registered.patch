@@ -1,0 +1,29 @@
+From 173fe4008050810c0ecd06f1accfa4eef2790bfc Mon Sep 17 00:00:00 2001
+From: Aleix Pol <aleixpol@kde.org>
+Date: Fri, 15 Aug 2025 17:42:44 +0200
+Subject: [PATCH] offline: Ensure the enum is registered
+
+Otherwise we get a crash saying:
+[fatal] discover (unknown:0) - QDBusPendingReply: type
+PackageKit::Transaction::Role is not registered with QtDBus
+
+See https://bugs.kde.org/show_bug.cgi?id=508271
+---
+ src/offline.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/offline.cpp b/src/offline.cpp
+index d4eaedb..b5e4dc8 100644
+--- a/src/offline.cpp
++++ b/src/offline.cpp
+@@ -26,6 +26,7 @@ using namespace PackageKit;
+ Offline::Offline(QObject *parent) : QObject(parent)
+   , d_ptr(new OfflinePrivate(this))
+ {
++    qRegisterMetaType<Transaction::Role>();
+     QDBusConnection::systemBus().connect(PK_NAME,
+                                          PK_PATH,
+                                          DBUS_PROPERTIES,
+-- 
+2.50.1
+
