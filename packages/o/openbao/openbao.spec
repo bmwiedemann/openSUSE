@@ -1,7 +1,7 @@
 #
 # spec file for package openbao
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define short_executable_name bao
 
 Name:           openbao
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Manage, store, and distribute sensitive data
 License:        MPL-2.0
