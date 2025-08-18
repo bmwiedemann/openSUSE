@@ -1,7 +1,7 @@
 #
 # spec file for package waybar
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           waybar
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        Customizable Wayland bar for Sway and Wlroots based compositors
 License:        MIT
@@ -32,7 +32,7 @@ BuildRequires:  gcc13-c++
 BuildRequires:  gcc-c++ >= 8
 %endif
 BuildRequires:  gtk-layer-shell-devel
-BuildRequires:  meson
+BuildRequires:  meson >= 0.59.0
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 # test dependency

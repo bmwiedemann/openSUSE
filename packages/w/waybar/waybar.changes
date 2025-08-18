@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Aug 11 06:20:27 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.0:
+  * Fix default icon in tray module #4234
+  * fix hyprland/language layout parsing #4242
+  * fix: 'ethernet' network state should have precedence over 'disabled' #4258
+  * flake.lock: Update #4256
+  * Change default tooltip for the battery module. #4274
+  * enabled pango markup support for tooltip of battery and pulseaudio modules #4284
+  * fix: prevent persistent workspaces from being duplicated if they exist #4275
+  * respect gtk color scheme variant for gtk css variable #4292
+  * fix: hyprland named persistent workspaces#4272
+  * Fix #4307 #4310
+  * adding dependency command for arch #4298
+  * feat: add rfkill network setting #4260
+  * feat: add a way to override electron app tray icons #4161
+  * style: clang-format #4315
+  * fix: unable to disable upower's tooltip #4316
+  * [hyprland/workspaces] Implement workspace taskbars #3868
+  * flake.lock: Update #4337
+  * mpd: add uri and filename format arguments #3849
+  * ext/workspaces: port from wlr/workspaces to ext-workspace-v1 for a.o. labwc support #4016
+  * feat: match network interfaces by their altnames #4326
+  * feat(river): set layout name as class #4080
+  * Idempotent bar show/hide via configurable user kill signals #3930
+  * fix: hide tray when there are no non-passive icons #3833
+  * add openbsd support #4278
+  * sway/workspaces: Implement reverse-scroll #3929
+  * Relative paths in included configs #4333
+  * battery: Add support for battery level related events #4208
+  * wireplumber & backlight: fix states and support for microphone #4319
+
+-------------------------------------------------------------------
 Mon Jun 23 10:16:57 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.13.0:
