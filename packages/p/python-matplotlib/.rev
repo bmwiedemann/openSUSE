@@ -1052,4 +1052,19 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
     <comment></comment>
     <requestid>1290148</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>7e517afd8c3bcc709f7d9372dc490a70</srcmd5>
+    <version>3.10.5</version>
+    <time>1755531048</time>
+    <user>anag_factory</user>
+    <comment>This request should fix the Staging:H with newer python-numpy
+
+- Update to 3.10.5
+  * Bugfix release. No notable changes beyond the GitHub
+    statistics of merged PRs.
+    (https://matplotlib.org/stable/users/github_stats.html#github-stats)
+- Remove &quot;%python-numpy-devel &lt; 2.3&quot; BuildRequires upper limit
+- Drop not needed patch Pillow-13-compat.patch</comment>
+    <requestid>1300071</requestid>
+  </revision>
 </revisionlist>

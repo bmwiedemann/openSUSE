@@ -1,7 +1,7 @@
 #
 # spec file for package python-matplotlib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@ ExclusiveArch:  x86_64 aarch64
 
 %{?sle15_python_module_pythons}
 Name:           python-matplotlib%{psuffix}
-Version:        3.10.3
+Version:        3.10.5
 Release:        0
 Summary:        Plotting Library for Python
 License:        SUSE-Matplotlib
@@ -59,8 +59,6 @@ Source99:       https://downloads.sourceforge.net/project/freetype/freetype2/2.6
 Source100:      python-matplotlib.rpmlintrc
 # PATCH-FEATURE-OPENSUSE matplotlib-meson-options-opensuse.patch code@bnavigator.de -- Custom build options for meson-python
 Patch1:         matplotlib-meson-options-opensuse.patch
-# PATCH-FIX-UPSTREAM Pillow-13-compat.patch https://github.com/matplotlib/matplotlib/pull/30221
-Patch2:         Pillow-13-compat.patch
 Recommends:     ghostscript
 Recommends:     libxml2-tools
 Recommends:     poppler-tools
@@ -71,7 +69,7 @@ Obsoletes:      python-matplotlib-gtk < %{version}
 # SECTION build
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module meson-python >= 0.13.1}
-BuildRequires:  %{python_module numpy-devel >= 1.25 with %python-numpy-devel < 2.3}
+BuildRequires:  %{python_module numpy-devel >= 1.25}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel >= 2.6}
 BuildRequires:  %{python_module setuptools_scm >= 7}

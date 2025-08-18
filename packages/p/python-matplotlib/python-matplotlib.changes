@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 18 11:18:14 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.10.5
+  * Bugfix release. No notable changes beyond the GitHub
+    statistics of merged PRs.
+    (https://matplotlib.org/stable/users/github_stats.html#github-stats)
+- Remove "%python-numpy-devel < 2.3" BuildRequires upper limit
+- Drop not needed patch Pillow-13-compat.patch
+
+-------------------------------------------------------------------
 Thu Jul  3 07:36:25 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Add Pillow-13-compat.patch to fix tests with new Pillow version
