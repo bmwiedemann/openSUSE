@@ -13,10 +13,10 @@
 # published by the Open Source Initiative.
 
 %global selinuxtype targeted
-%global selinuxbooleans selinuxuser_execmod=1
+%global selinuxbooleans selinuxuser_execmod=1 selinuxuser_execstack=1
 
 Name:           selinux-policy-targeted-gaming
-Version:        1
+Version:        2
 Release:        0
 Summary:        SELinux policy changes for a simplified gaming experience
 License:        MIT
@@ -24,7 +24,7 @@ URL:            https://en.opensuse.org/Portal:SELinux/Common_issues#Steam_Proto
 Source1:        README.md
 BuildArch:      noarch
 BuildRequires:  selinux-policy
-BuildRequires:  selinux-policy-targeted
+BuildRequires:  selinux-policy-%{selinuxtype}
 Requires:       selinux-tools
 Requires:       selinux-policy
 Requires:       selinux-policy-%{selinuxtype}

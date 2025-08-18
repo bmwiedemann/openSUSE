@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 14 13:23:10 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Enable selinuxuser_execstack=1 for new installations as well (bsc#1247992)
+
+-------------------------------------------------------------------
 Thu May  8 11:08:19 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Add build requires for selinux-policy-targeted, to make build more
