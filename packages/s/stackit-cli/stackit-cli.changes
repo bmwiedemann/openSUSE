@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 18 12:53:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.1 (0.39.0 is on the same commit):
+  * feat(ske): show cluster errors in table output (#907)
+  * fix(deps): update stackit sdk modules (#903)
+  * chore(deps): bump actions/checkout from 4 to 5 (#920)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serviceaccount
+    (#917)
+  * chore(deps): bump renovatebot/github-action from 43.0.5 to
+    43.0.7 (#919)
+  * chore(deps): update module golang.org/x/tools to v0.36.0 (#911)
+  * fix(cli): stackit auth get-access-token does not work as
+    expected (#922)
+
+-------------------------------------------------------------------
 Wed Aug 06 05:10:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.0:
