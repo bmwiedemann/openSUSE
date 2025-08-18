@@ -186,4 +186,15 @@
     <comment></comment>
     <requestid>1252496</requestid>
   </revision>
+  <revision rev="27" vrev="109">
+    <srcmd5>72362ffa623dc3161c8f6704aad90584</srcmd5>
+    <version>0.5</version>
+    <time>1755526048</time>
+    <user>anag_factory</user>
+    <comment>- Add initviocons-glibc-2.42.patch: Fix build against glibc 2.42
+  The &lt;termio.h&gt; header and struct termio have long been
+  deprecated, and the version 2.42 of glibc drops them entirely
+  (boo#1247578). (forwarded request 1297664 from dimstar)</comment>
+    <requestid>1297766</requestid>
+  </revision>
 </revisionlist>

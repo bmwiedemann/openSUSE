@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  5 08:35:46 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add initviocons-glibc-2.42.patch: Fix build against glibc 2.42
+  The <termio.h> header and struct termio have long been
+  deprecated, and the version 2.42 of glibc drops them entirely
+  (boo#1247578).
+
+-------------------------------------------------------------------
 Wed Mar  5 09:06:39 UTC 2025 - pgajdos@suse.com
 
 - fix build with gcc15

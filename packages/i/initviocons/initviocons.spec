@@ -1,7 +1,7 @@
 #
 # spec file for package initviocons
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            http://svn.poeml.de/viewcvs/initviocons/
 Source:         initviocons-%{version}.tar.bz2
 # build with gcc15
 Patch0:         initviocons-gcc15.patch
+# Fix build with glibc 2.42
+Patch1:         initviocons-glibc-2.42.patch
 BuildRequires:  automake
 
 %description

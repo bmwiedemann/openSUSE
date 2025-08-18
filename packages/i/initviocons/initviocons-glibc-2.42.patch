@@ -1,0 +1,40 @@
+Index: initviocons-0.5/main.c
+===================================================================
+--- initviocons-0.5.orig/main.c
++++ initviocons-0.5/main.c
+@@ -16,12 +16,13 @@
+ #include "viocons.h"
+ #include <stdio.h>
+ #include <ctype.h>
+-#include <termio.h>
++#include <termios.h>
+ #include <setjmp.h>
+ #include <signal.h>
+ #include <unistd.h>
+ #include <string.h>
+ #include <fcntl.h>
++#include <sys/ioctl.h>
+ #include <sys/time.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+@@ -717,9 +718,9 @@ void strascii(register unsigned char *p)
+ *****************************************************************************/
+ void settermmode(int mode)
+ {
+-	static struct termio
++	static struct termios
+ 		oldmode;
+-	struct termio
++	struct termios
+ 		newmode;
+ 	static int currentmode = 1;
+ 
+@@ -743,7 +744,7 @@ void settermmode(int mode)
+ 	else {
+ 		//printf("+"); 
+ 		ioctl(0,TCGETA,&oldmode);			/* save mode */
+-		memcpy(&newmode,&oldmode,sizeof(struct termio));
++		memcpy(&newmode,&oldmode,sizeof(struct termios));
+ 		newmode.c_iflag |= (BRKINT|IGNPAR);
+ 		newmode.c_iflag &= ~(IGNBRK|INLCR|IGNCR|ICRNL|IUCLC|IXON);
+ 		newmode.c_lflag &= ~(ISIG|ICANON|ECHO);
