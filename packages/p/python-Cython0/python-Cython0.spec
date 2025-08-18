@@ -16,8 +16,13 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %bcond_with test
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+%{?sle15_python_module_pythons}
 Name:           python-Cython0
 Version:        0.29.37
 Release:        0
@@ -36,12 +41,17 @@ BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Provides:       python-Cython = %{version}-%{release}
-Provides:       python-cython = %{version}-%{release}
 Requires:       python-devel
 Requires:       python-xml
+Provides:       python-Cython = %{version}-%{release}
+Provides:       python-cython = %{version}-%{release}
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -68,6 +78,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 for p in cython cythonize cygdb ; do
     %python_clone -a %{buildroot}%{_bindir}/$p
 done
+%python_group_libalternatives cython cythonize cygdb
 
 %{python_expand chmod a+x %{buildroot}%{$python_sitearch}/Cython/Build/Cythonize.py
 sed -i "s|^#!%{_bindir}/env python$|#!%{__$python}|" %{buildroot}%{$python_sitearch}/Cython/Build/Cythonize.py
@@ -82,6 +93,9 @@ $python -O -m compileall -d %{$python_sitearch} %{buildroot}%{$python_sitearch}/
 $python runtests.py -v
 }
 %endif
+
+%pre
+%python_libalternatives_reset_alternative cython
 
 %post
 %python_install_alternative cython cythonize cygdb

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 14 12:49:54 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Tue Apr  1 11:48:56 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make the dist-info name case-insensitive
