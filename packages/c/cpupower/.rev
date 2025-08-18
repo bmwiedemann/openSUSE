@@ -558,4 +558,12 @@ A cpupower_fix_library_so_name.patch
     <comment></comment>
     <requestid>1285052</requestid>
   </revision>
+  <revision rev="65" vrev="13">
+    <srcmd5>dc7e9bae914c9ef0f0ecd4eafc656923</srcmd5>
+    <version>MACRO</version>
+    <time>1755526102</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1299993</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 14 10:29:52 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Package cpupower systemd service that appeared with kernel 6.16
+  (commit 9c70b77).
+
+-------------------------------------------------------------------
 Tue Jun  3 07:19:07 UTC 2025 - munix9@googlemail.com
 
 - Apply cpupower_fix_library_so_name.patch only for kernel < 6.15.0

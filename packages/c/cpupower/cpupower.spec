@@ -1,7 +1,7 @@
 #
 # spec file for package cpupower
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -144,9 +144,28 @@ mv %{buildroot}//%{_docdir}/%{name}/cpufreq-bench_script.sh %{buildroot}/%{_docd
 
 %ldconfig_scriptlets -n libcpupower1
 
+%if %{pkg_vcmp kernel-source >= 6.16}
+%pre
+%service_add_pre cpupower.service
+
+%post
+%service_add_post cpupower.service
+
+%preun
+%service_del_preun cpupower.service
+
+%postun
+%service_del_postun cpupower.service
+%endif
+
 %files
 %{_mandir}/man1/cpupower*%{?ext_man}
 %{_bindir}/cpupower
+%if %{pkg_vcmp kernel-source >= 6.16}
+%config %{_sysconfdir}/cpupower-service.conf
+%{_unitdir}/cpupower.service
+%{_libexecdir}/cpupower
+%endif
 %ifarch %{ix86} x86_64
 %{_mandir}/man8/turbostat*%{?ext_man}
 %{_bindir}/turbostat
