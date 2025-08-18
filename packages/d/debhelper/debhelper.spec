@@ -17,7 +17,7 @@
 
 
 Name:           debhelper
-Version:        13.24.2
+Version:        13.25
 Release:        0
 Summary:        Helper programs for debian/rules
 License:        GPL-2.0-or-later
@@ -57,7 +57,7 @@ as part of their build process.
 %patch -P 1 -p1
 %endif
 %if 0%{?suse_version} < 1600
-%patch -P 2 -p0
+%patch -P 2
 %endif
 
 %build
@@ -78,7 +78,73 @@ install -m 644 debhelper.7 %{buildroot}%{_mandir}/man7
 %files
 %doc doc/* examples/* debian/changelog debian/copyright
 %{_mandir}/man*/*
-%{_bindir}/*
+%{_bindir}/dh
+%{_bindir}/dh_installdirs
+%{_bindir}/dh_installwm
+%{_bindir}/dh_assistant
+%{_bindir}/dh_installdocs
+%{_bindir}/dh_installxfonts
+%{_bindir}/dh_auto_build
+%{_bindir}/dh_installemacsen
+%{_bindir}/dh_link
+%{_bindir}/dh_auto_clean
+%{_bindir}/dh_installexamples
+%{_bindir}/dh_lintian
+%{_bindir}/dh_auto_configure
+%{_bindir}/dh_installgsettings
+%{_bindir}/dh_listpackages
+%{_bindir}/dh_auto_install
+%{_bindir}/dh_installifupdown
+%{_bindir}/dh_makeshlibs
+%{_bindir}/dh_auto_test
+%{_bindir}/dh_installinfo
+%{_bindir}/dh_md5sums
+%{_bindir}/dh_bugfiles
+%{_bindir}/dh_installinit
+%{_bindir}/dh_missing
+%{_bindir}/dh_builddeb
+%{_bindir}/dh_installinitramfs
+%{_bindir}/dh_movefiles
+%{_bindir}/dh_clean
+%{_bindir}/dh_installlogcheck
+%{_bindir}/dh_movetousr
+%{_bindir}/dh_compress
+%{_bindir}/dh_installlogrotate
+%{_bindir}/dh_perl
+%{_bindir}/dh_computeautosubstvars
+%{_bindir}/dh_installman
+%{_bindir}/dh_prep
+%{_bindir}/dh_dwz
+%{_bindir}/dh_installmanpages
+%{_bindir}/dh_shlibdeps
+%{_bindir}/dh_fixperms
+%{_bindir}/dh_installmenu
+%{_bindir}/dh_strip
+%{_bindir}/dh_gencontrol
+%{_bindir}/dh_installmime
+%{_bindir}/dh_systemd_enable
+%{_bindir}/dh_icons
+%{_bindir}/dh_installmodules
+%{_bindir}/dh_systemd_start
+%{_bindir}/dh_install
+%{_bindir}/dh_installpam
+%{_bindir}/dh_testdir
+%{_bindir}/dh_installalternatives
+%{_bindir}/dh_installppp
+%{_bindir}/dh_testroot
+%{_bindir}/dh_installcatalogs
+%{_bindir}/dh_installsystemd
+%{_bindir}/dh_ucf
+%{_bindir}/dh_installchangelogs
+%{_bindir}/dh_installsystemduser
+%{_bindir}/dh_update_autotools_config
+%{_bindir}/dh_installcron
+%{_bindir}/dh_installsysusers
+%{_bindir}/dh_usrlocal
+%{_bindir}/dh_installdeb
+%{_bindir}/dh_installtmpfiles
+%{_bindir}/dh_installdebconf
+%{_bindir}/dh_installudev
 %{_datadir}/debhelper
 %{perl_vendorlib}/Debian
 

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug 18 11:40:47 UTC 2025 - Jan Baier <jbaier@suse.com>
+
+- update to 13.25
+  * debhelper-documentation.json: Correct command for `.ucf` files
+  * dh: Support `DH_OVERRIDDEN_COMMAND` variable for `override` targets
+    for cases where the original command is useful as a base.
+  * debhelper.pod: Update description on automated dependencies
+  * dh_gencontrol: Fix off-by-one compat guard affecting compat 14.
+  * In compat 14: Add `Commands` field to binaries to aid `command-not-found`
+    (Closes: #638517)
+  * dh_assistant: Explicitly use `JSON::PP::{true,false}`
+  * dh_assistant: Provide a compat upgrade checklist when upgrading from
+    compat 7 and on. This can be done via the command
+    `dh_assistant compat-upgrade-checklist`.
+  * No longer run `dh_dwz` by default in compat 14+ (Closes: 1016563)
+  * dh_installmodules: install .modprobe files in /usr/lib with compat 14+
+    (Closes: #1107373)
+  * dh_assistant: Improve wording
+  * dh_installsystemd: Always stop the service on remove (Closes: #1079181)
+- list all installed scripts explicitly in spec to avoid shared-dir-glob-in-files
+
+-------------------------------------------------------------------
 Mon Apr 14 08:39:31 UTC 2025 - Jan Baier <jbaier@suse.com>
 
 - update to 13.24.2
