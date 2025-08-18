@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-findpython
-Version:        0.6.3
+Version:        0.7.0
 Release:        0
 Summary:        Utility to find python versions on your system
 License:        MIT
@@ -26,6 +26,7 @@ URL:            https://github.com/frostming/findpython
 Source:         https://files.pythonhosted.org/packages/source/f/findpython/findpython-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module packaging >= 20}
+BuildRequires:  %{python_module platformdirs >= 4.3.6}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -35,6 +36,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
+Requires:       python-platformdirs >= 4.3.6
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Requires:       python-packaging >= 20
