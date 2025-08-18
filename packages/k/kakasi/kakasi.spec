@@ -1,7 +1,7 @@
 #
 # spec file for package kakasi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,10 +29,11 @@ Patch0:         kakasi-2.3.6-no-return-in-nonvoid-function.patch
 Patch1:         kakasi-gcc14-fix.patch
 # fix build with gcc15
 Patch2:         kakasi-gcc15.patch
+Patch3:         typedef-character.patch
 BuildRequires:  automake
+BuildRequires:  gettext-devel
 BuildRequires:  libtool
 Requires:       kakasi-dict = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 KAKASI is the language processing filter to convert Kanji characters to
@@ -68,7 +69,16 @@ Obsoletes:      kakasidi < %{version}
 The base dictionary of KAKASI
 
 %prep
+%if %{pkg_vcmp gettext-devel >= 0.25}
+%setup -q
+%autopatch -p1
+# see https://lists.gnu.org/archive/html/bug-gettext/2025-06/msg00009.html
+  autopoint -f
+  autoreconf -fvi -I %{_datadir}/gettext/m4
+%else
 %autosetup -p1
+  autoreconf -fi
+%endif
 
 # w: version-control-internal-file
 rm -rf doc/CVS
@@ -76,21 +86,18 @@ rm -rf doc/CVS
 rm -rf doc/README.*OS*
 
 %build
-autoreconf -fi
 # cp %{_datadir}/automake*/config.{guess,sub} .
 %configure --disable-static --with-pic
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS NEWS ONEWS README* THANKS TODO ChangeLog
 %doc ./doc/*
 %license COPYING
@@ -104,16 +111,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libkakasi.so.2.1.0
 %dir %{_datadir}/kakasi
 %{_datadir}/kakasi/itaijidict
-%{_mandir}/man1/kakasi.1.gz
-%{_mandir}/man1/kakasi-config.1.gz
+%{_mandir}/man1/kakasi.1%{?ext_man}
+%{_mandir}/man1/kakasi-config.1%{?ext_man}
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/libkakasi.h
 %{_libdir}/libkakasi.so
 
 %files dict
-%defattr(-,root,root)
 %{_datadir}/kakasi/kanwadict
 
 %changelog

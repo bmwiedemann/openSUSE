@@ -1,0 +1,14 @@
+diff --git a/lib/libkakasi.h b/lib/libkakasi.h
+index 54cebe0..232029c 100644
+--- a/lib/libkakasi.h
++++ b/lib/libkakasi.h
+@@ -48,4 +48,9 @@ void digest_shift PARAMS((Character *c, int s));
+ void setcharbuffer PARAMS((unsigned char *s));
+ char *getpbstr PARAMS((void));
+ 
++typedef struct character {
++    char type;
++    unsigned char c1, c2;
++} Character;
++
+ #endif /* _LIBKAKASI_H */
