@@ -130,4 +130,13 @@
     <comment></comment>
     <requestid>1275573</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f1aea2b5ed7502efa5a0e54ebe03ae0d</srcmd5>
+    <version>1.0.0~alpha7+1</version>
+    <time>1755526141</time>
+    <user>anag_factory</user>
+    <comment>- apply fix-vendor.patch and fix-Cargo.toml.patch, as we need to update
+  a dependency, so it can build against a higher version (forwarded request 1300047 from rrahl0)</comment>
+    <requestid>1300048</requestid>
+  </revision>
 </revisionlist>

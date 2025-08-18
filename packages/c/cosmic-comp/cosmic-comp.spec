@@ -1,7 +1,7 @@
 #
 # spec file for package cosmic-comp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,11 @@ License:        GPL-3.0-only
 URL:            https://github.com/pop-os/cosmic-comp
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+Source2:        Cargo.lock
+#This is a patch I use to patch the dependency, but as cargo_vendor
+#pulls in the patched dependency, we actually don't need to apply the patch
+Patch0:         fix-vendor.patch
+Patch1:         fix-Cargo.toml.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  make
 BuildRequires:  pkgconfig
@@ -47,7 +52,8 @@ Recommends:     Mesa-libGL1
 %{summary}.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -N
+%patch -P 1 -p1
 
 %build
 %make_build

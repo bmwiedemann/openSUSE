@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 16 11:27:21 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- apply fix-vendor.patch and fix-Cargo.toml.patch, as we need to update
+  a dependency, so it can build against a higher version
+
+-------------------------------------------------------------------
 Thu Apr 24 17:27:25 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.0~alpha7+1:
