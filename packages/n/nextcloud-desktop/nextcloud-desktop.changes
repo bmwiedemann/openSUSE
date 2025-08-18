@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 14 10:06:23 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.17.0:
+  * Too many changes to list, see
+    <https://github.com/nextcloud/desktop/releases/tag/v3.17.0>.
+- Install systemd user unit file; add BuildRequires:
+  systemd-rpm-macros and necessary pre(un)/post(un) scriptlets.
+- Drop doc package: documentation building is not supported any
+  more.
+
+-------------------------------------------------------------------
 Thu Jun 19 18:29:56 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.16.6:

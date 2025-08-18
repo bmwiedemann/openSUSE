@@ -1,7 +1,7 @@
 #
 # spec file for package nextcloud-desktop
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define gcc_ver 9
 %endif
 Name:           nextcloud-desktop
-Version:        3.16.6
+Version:        3.17.0
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -46,7 +46,7 @@ BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  rsvg-convert
-BuildRequires:  update-desktop-files
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  cmake(KF6Archive)
 BuildRequires:  cmake(KF6GuiAddons)
 BuildRequires:  cmake(KF6KIO)
@@ -84,13 +84,6 @@ Provides:       nextcloud-client = %{version}
 Obsoletes:      nextcloud-client < %{version}
 Provides:       nextcloud-client-lang = %{version}
 Obsoletes:      nextcloud-client-lang < %{version}
-%if 0%{?is_opensuse}
-BuildRequires:  doxygen
-#BuildRequires:  python3-MarkupSafe
-BuildRequires:  python3-Sphinx
-#BuildRequires:  python3-importlib-metadata
-Suggests:       %{name}-doc = %{version}
-%endif
 
 %description
 The Nextcloud Desktop Client is a tool to synchronise files from
@@ -103,21 +96,6 @@ the server. Simply copy a file into the directory and the desktop
 synchronisation client does the rest.
 
 %lang_package
-
-%if 0%{?is_opensuse}
-%package doc
-Summary:        Documentation for nextcloud-desktop
-Group:          Productivity/Networking/File-Sharing
-Provides:       nextcloud-client-doc = %{version}
-Obsoletes:      nextcloud-client-doc < %{version}
-BuildArch:      noarch
-
-%description doc
-The Nextcloud Desktop Client is a tool to synchronise files from
-the Nextcloud Server with your computer.
-
-This package contains the documentation.
-%endif
 
 %package -n %{soname}%{sover}
 Summary:        The Nextcloud synchronisation library
@@ -231,10 +209,6 @@ export SOURCE_DATE_EPOCH=`date -r VERSION.cmake +"%s"`
 %cmake \
   -DCMAKE_C_COMPILER=gcc%{?gcc_ver:-%{gcc_ver}} \
   -DCMAKE_CXX_COMPILER=g++%{?gcc_ver:-%{gcc_ver}} \
-%if 0%{?is_opensuse}
-  -DWITH_DOC=ON \
-  -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name} \
-%endif
 %{nil}
 %cmake_build
 
@@ -274,6 +248,18 @@ at an early experimental stage. Enable at your own risk. \
 Please read %{_docdir}/nextcloud-desktop-vfs-plugin/README.vfs.md for steps \
 needed to enable the plugin." || true
 
+%pre
+%systemd_user_pre com.nextcloud.desktopclient.nextcloud.service
+
+%post
+%systemd_user_post com.nextcloud.desktopclient.nextcloud.service
+
+%preun
+%systemd_user_preun com.nextcloud.desktopclient.nextcloud.service
+
+%postun
+%systemd_user_postun com.nextcloud.desktopclient.nextcloud.service
+
 %files
 %license COPYING*
 #%%config %%{_sysconfdir}/sysctl.d/99-%%{name}-sync-inotify.conf
@@ -284,14 +270,10 @@ needed to enable the plugin." || true
 %dir %{_datadir}/icons/hicolor/1024x1024/apps/
 %{_datadir}/icons/hicolor/*/apps/Nextcloud*.*
 %{_datadir}/mime/packages/nextcloud.xml
+%{_userunitdir}/com.nextcloud.desktopclient.nextcloud.service
 
 %files lang
 %{_datadir}/nextcloud/i18n/
-
-%if 0%{?is_opensuse}
-%files doc
-%doc %{_docdir}/%{name}/
-%endif
 
 %files -n %{soname}%{sover}
 %license COPYING*
