@@ -58,7 +58,8 @@ It can also update code examples in place to format them and insert or update pr
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k 'not test_run_example_ok_fail'
+# ruff slightly changed its error output formatting https://github.com/astral-sh/ruff/issues/19966
+%pytest -k 'not (test_run_example_ok_fail or test_ruff_offset or test_ruff_error)'
 
 %files %{python_files}
 %license LICENSE

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 18 11:40:41 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Skip tests failing with ruff 0.12.9
+
+-------------------------------------------------------------------
 Fri Jul  4 06:12:42 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.0.18:
