@@ -370,4 +370,12 @@ CVE-2025-47947 (boo#1243978) (forwarded request 1282154 from AndreasStieger)</co
   % modsecurity-fixes.patch (refreshed)</comment>
     <requestid>1290193</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>aad68c0d835ac6939231f356ea99f6b3</srcmd5>
+    <version>2.9.12</version>
+    <time>1755526136</time>
+    <user>anag_factory</user>
+    <comment>see if you woulnd't force people to submit using --noservice this would not happen (forwarded request 1300030 from AndreasStieger)</comment>
+    <requestid>1300032</requestid>
+  </revision>
 </revisionlist>

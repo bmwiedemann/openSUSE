@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug  6 18:25:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.9.12:
+ * CVE-2025-54571: Improper error handling (boo#1247674)
+ * remove unused condition from msc_status_engine.c
+ * remove unwanted '\0' string terminator from argument's valu
+- drop modsecurity-2.9.3-input_filtering_errors.patch different
+  change included upstream
+
+-------------------------------------------------------------------
 Thu Jul  3 11:13:07 UTC 2025 - pgajdos@suse.com
 
 - version update to 2.9.11 [bsc#1245620] (CVE-2025-52891)

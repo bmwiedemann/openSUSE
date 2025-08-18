@@ -18,7 +18,7 @@
 
 
 Name:           apache2-mod_security2
-Version:        2.9.11
+Version:        2.9.12
 Release:        0
 Summary:        Web Application Firewall for Apache httpd
 License:        Apache-2.0
@@ -32,8 +32,6 @@ Source4:        README_SUSE
 Patch0:         apache2-mod_security2-no_rpath.diff
 Patch1:         modsecurity-fixes.patch
 Patch2:         apache2-mod_security2_tests_conf.patch
-# https://github.com/SpiderLabs/ModSecurity/issues/2514
-Patch3:         modsecurity-2.9.3-input_filtering_errors.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  apache2-prefork
