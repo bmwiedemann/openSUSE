@@ -1,7 +1,7 @@
 #
 # spec file for package kubescape
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kubescape
-Version:        3.0.37
+Version:        3.0.38
 Release:        0
 Summary:        Tool providing a multi-cloud K8s single pane of glass
 License:        Apache-2.0
