@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Mon Aug 18 12:49:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.26.1:
+  * Bug Fixes
+    - use redis cache interface instead of concreate object for
+      urlcache init (2a958da)
+
+-------------------------------------------------------------------
+Mon Aug 18 12:34:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.26.0:
+  * Features
+    - add endpoint labels to pending and status notification
+      metrics (c501105)
+    - add event delivery and retries metrics (fa0dc43)
+    - add latency histograms for notifications subsystem (5cb127b)
+    - add storage retries metric for Azure, S3 and improve existing
+      metric fro GCS (e49688e)
+    - api/v2: enable DLB for List Repository Tags API endpoint
+      (52600c2)
+    - bbm: add WAL archive based throttling (d6e3c58)
+    - notifications queue size limits (6533604)
+  * Bug Fixes
+    - add s3 zero blon upload support (575e8c4)
+    - prevent races in backoff notifications sink (2b9058d)
+    - urlcache should use dual-cache interface (578e6ff)
+  * Performance Improvements
+    - remove redundant sentry error (f3ed0b6)
+    - remove redundant sentry error (840696d)
+  * Build
+    - deps: update module cloud.google.com/go/storage to v1.56.0
+      (c493a6c)
+    - deps: update module github.com/aws/aws-sdk-go-v2 to v1.36.6
+      (ff8ef26)
+    - deps: update module github.com/aws/aws-sdk-go-v2/config to
+      v1.29.18 (7470f29)
+    - deps: update module github.com/aws/aws-sdk-go-v2/credentials
+      to v1.17.71 (233a4b5)
+    - deps: update module github.com/aws/aws-sdk-go-v2/credentials
+      to v1.18.2 (ec93ac1)
+    - deps: update module github.com/aws/aws-sdk-go-v2/credentials
+      to v1.18.3 (0df3ae0)
+    - deps: update module
+      github.com/aws/aws-sdk-go-v2/feature/cloudfront/sign to
+      v1.8.14 (0ab3a1a)
+    - deps: update module
+      github.com/aws/aws-sdk-go-v2/feature/cloudfront/sign to
+      v1.9.1 (b137552)
+    - deps: update module
+      github.com/aws/aws-sdk-go-v2/feature/cloudfront/sign to
+      v1.9.2 (0e9b57f)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.85.0 (e812267)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.86.0 (cbbcd0b)
+    - deps: update module
+      github.com/azure/azure-sdk-for-go/sdk/azcore to v1.18.2
+      (ac3c040)
+    - deps: update module
+      github.com/azure/azure-sdk-for-go/sdk/storage/azblob to
+      v1.6.2 (6ce3a81)
+    - deps: update module github.com/olekukonko/tablewriter to
+      v1.0.9 (b16d166)
+    - deps: update module
+      github.com/testcontainers/testcontainers-go/modules/postgres
+      to v0.38.0 (653edf3)
+    - deps: update module gitlab.com/gitlab-org/api/client-go to
+      v0.137.0 (3d83581)
+    - deps: update module google.golang.org/api to v0.242.0
+      (4f86b60)
+
+-------------------------------------------------------------------
 Fri Jul 18 05:49:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.25.0:
