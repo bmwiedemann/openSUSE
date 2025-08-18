@@ -3156,4 +3156,41 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   implementation (BZ #33059) (forwarded request 1286664 from Andreas_Schwab)</comment>
     <requestid>1286665</requestid>
   </revision>
+  <revision rev="300" vrev="1">
+    <srcmd5>be7f7590c2efcbf13a917445ea2f4f5c</srcmd5>
+    <version>2.42</version>
+    <time>1755526046</time>
+    <user>anag_factory</user>
+    <comment>- Update to glibc 2.42
+  * The following ISO C23 function families (introduced in TS
+    18661-4:2015) are now supported in &lt;math.h&gt;
+    - Power and absolute-value functions: compoundn, pown, powr, rootn,
+      rsqrt
+  * On Linux, the pthread_gettid_np function has been added
+  * The ISO C2Y family of unsigned abs functions, i.e. uabs, ulabs,
+    ullabs, and uimaxabs, is now supported.
+  * On Linux, the &lt;termios.h&gt; interface now supports arbitrary baud rates
+  * The thread-local cache in malloc (tcache) now supports caching of
+    large blocks
+  * Support for lightweight stack guard pages via madvise and the
+    MADV_GUARD_INSTALL flag has been added to pthread_create
+  * Additional optimized and correctly rounded mathematical functions have
+    been imported from the CORE-MATH project, in particular acospif,
+    asinpif, atanpif, atan2pif, cospif, sinpif, tanpif
+  * The manual has been significantly extended and updated, particularly
+    the threads, terminal, filesystem, resource, and math chapters
+  * Code has been added to detect the x86-64 Intel Arrow Lake, Panther
+    Lake, Clearwater Forest, and Diamond Rapids microarchitectures
+  * Regarding S390, support for the new z17 platform has been added.
+  * The glibc.rtld.execstack tunable now supports a compatibility mode to
+    allow programs that require an executable stack through dynamically
+    loaded shared libraries
+  * On Linux, the &lt;termio.h&gt; header and the definition of struct termio
+    in &lt;sys/ioctl.h&gt; have been removed
+  * The support for TX lock elision of pthread mutexes has been deprecated
+    on all architectures and will be removed in the next release
+  * On AArch64 Linux targets supporting the Scalable Matrix Extension
+    (SME), setjmp and sigsetjmp will disable the ZA state of SME (forwarded request 1296372 from Andreas_Schwab)</comment>
+    <requestid>1296373</requestid>
+  </revision>
 </revisionlist>

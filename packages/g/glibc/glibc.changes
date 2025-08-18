@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jul 29 06:06:49 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Update to glibc 2.42
+  * The following ISO C23 function families (introduced in TS
+    18661-4:2015) are now supported in <math.h>
+    - Power and absolute-value functions: compoundn, pown, powr, rootn,
+      rsqrt
+  * On Linux, the pthread_gettid_np function has been added
+  * The ISO C2Y family of unsigned abs functions, i.e. uabs, ulabs,
+    ullabs, and uimaxabs, is now supported.
+  * On Linux, the <termios.h> interface now supports arbitrary baud rates
+  * The thread-local cache in malloc (tcache) now supports caching of
+    large blocks
+  * Support for lightweight stack guard pages via madvise and the
+    MADV_GUARD_INSTALL flag has been added to pthread_create
+  * Additional optimized and correctly rounded mathematical functions have
+    been imported from the CORE-MATH project, in particular acospif,
+    asinpif, atanpif, atan2pif, cospif, sinpif, tanpif
+  * The manual has been significantly extended and updated, particularly
+    the threads, terminal, filesystem, resource, and math chapters
+  * Code has been added to detect the x86-64 Intel Arrow Lake, Panther
+    Lake, Clearwater Forest, and Diamond Rapids microarchitectures
+  * Regarding S390, support for the new z17 platform has been added.
+  * The glibc.rtld.execstack tunable now supports a compatibility mode to
+    allow programs that require an executable stack through dynamically
+    loaded shared libraries
+  * On Linux, the <termio.h> header and the definition of struct termio
+    in <sys/ioctl.h> have been removed
+  * The support for TX lock elision of pthread mutexes has been deprecated
+    on all architectures and will be removed in the next release
+  * On AArch64 Linux targets supporting the Scalable Matrix Extension
+    (SME), setjmp and sigsetjmp will disable the ZA state of SME
+- posix: Fix double-free after allocation failure in regcomp
+  (CVE-2025-8058)
+- round-log10p1f.patch, round-sinhf.patch, nptl-stack-size-up.patch,
+  round-tanf.patch, tst-aarch64-pkey.patch, float128-sycl.patch,
+  ppc64le-revert-power10-memcmp.patch,
+  ppc64le-revert-power10-strcmp.patch: Removed
+- ulp-prologue-into-asm-functions.patch: Rebased
+
+-------------------------------------------------------------------
 Tue Jun 17 09:11:26 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - ppc64le-revert-power10-strcmp.patch: Revert optimized POWER10 strcmp,

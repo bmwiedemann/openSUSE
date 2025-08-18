@@ -186,10 +186,10 @@ Name:           glibc%{name_suffix}
 Summary:        Standard Shared Libraries (from the GNU C Library)
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0
 Group:          System/Libraries
-Version:        2.41
+Version:        2.42
 Release:        0
 %if %{without snapshot}
-%define git_id 74f59e9271
+%define git_id d2097651cc
 %define libversion %version
 %else
 %define git_id %(echo %version | sed 's/.*\.g//')
@@ -336,22 +336,6 @@ Patch306:       glibc-fix-double-loopback.diff
 %if %{without snapshot}
 ###
 # Patches from upstream
-# PATCH-FIX-UPSTREAM math: Fix log10p1f internal table value (BZ #32626)
-Patch1000:      round-log10p1f.patch
-# PATCH-FIX-UPSTREAM math: Fix sinhf for some inputs (BZ #32627)
-Patch1001:      round-sinhf.patch
-# PATCH-FIX-UPSTREAM nptl: Correct stack size attribute when stack grows up (BZ #32574)
-Patch1002:      nptl-stack-size-up.patch
-# PATCH-FIX-UPSTREAM math: Fix tanf for some inputs (BZ 32630)
-Patch1003:      round-tanf.patch
-# PATCH-FIX-UPSTREAM Fix tst-aarch64-pkey to handle ENOSPC as not supported
-Patch1004:      tst-aarch64-pkey.patch
-# PATCH-FIX-UPSTREAM x86 (__HAVE_FLOAT128): Defined to 0 for Intel SYCL compiler (BZ #32723)
-Patch1005:      float128-sycl.patch
-# PATCH-FIX-UPSTREAM Revert optimized POWER10 strcmp, strncmp implementations (CVE-2025-5745, CVE-2025-5702, BZ #33060, BZ #33056)
-Patch1006:      ppc64le-revert-power10-strcmp.patch
-# PATCH-FIX-UPSTREAM Revert optimized POWER10 memcmp (BZ #33059)
-Patch1007:      ppc64le-revert-power10-memcmp.patch
 ###
 %endif
 
