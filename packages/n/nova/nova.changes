@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 19 07:04:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.8:
+  * INS-1304: fix CVE-2025-47907 (#389)
+
+-------------------------------------------------------------------
 Sun Aug 03 12:19:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.11.7:
