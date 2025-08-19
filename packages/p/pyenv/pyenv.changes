@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 18 09:47:09 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.6.7
+
+- Update 2.6.7
+  * Skip Zlib from XCode for XCode 16+ by @native-api in #3298
+  * Don't fail the build if xcodebuild fails by @native-api in #3302
+  * Add CPython 3.14.0rc2 and 3.13.7 by @nedbat in #3303
+
+-------------------------------------------------------------------
+Mon Aug 18 09:46:01 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.6.6
+
+- Update 2.6.6
+  * Add anaconda3-2025.06-0, anaconda3-2025.06-1, miniconda3-25.3.1-1,
+    miniconda3-25.5.1-0, miniconda3-25.5.1-1 by @native-api in #3295
+  * Add CPython 3.13.6 by @cesarcoatl in #3297
+
+-------------------------------------------------------------------
 Thu Jul 24 05:00:02 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.6.5
 
 - Update 2.6.5
