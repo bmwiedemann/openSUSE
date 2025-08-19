@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 15 10:09:57 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add spdlog-catch-3_9-tests-compatibility.patch: Run tests in the
+  order they are declared in the source file for compatiblity with
+  Catch2 >= 3.9.0 (gh#gabime/spdlog#3451).
+
+-------------------------------------------------------------------
 Sun Jun 15 18:43:13 UTC 2025 - Bernd Ritter <comrad@opensuse.org>
 
 - Updated spdlog to 1.15.3 (CVE-2025-6140 [bsc#1244696])
