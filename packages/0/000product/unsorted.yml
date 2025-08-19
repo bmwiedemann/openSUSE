@@ -3,7 +3,6 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel 
   - 389-ds-snmp 
   - 3omns 
   - 3proxy 
@@ -1536,6 +1535,7 @@ unsorted:
   - bomctl-bash-completion 
   - bomctl-fish-completion 
   - bomctl-zsh-completion 
+  - bomns 
   - bonk 
   - bonnie 
   - bonnie++ 
@@ -1975,6 +1975,7 @@ unsorted:
   - cargo1.86 
   - cargo1.87 
   - cargo1.88 
+  - cargo1.89 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -3000,7 +3001,6 @@ unsorted:
   - cyrus-sasl-bdb-plain 
   - cyrus-sasl-bdb-scram 
   - cyrus-sasl-crammd5-32bit 
-  - cyrus-sasl-devel 
   - cyrus-sasl-devel-32bit 
   - cyrus-sasl-digestmd5-32bit 
   - cyrus-sasl-gs2 
@@ -3115,6 +3115,7 @@ unsorted:
   - ddnet-server 
   - ddrescueview 
   - dds2tar 
+  - ddskk-doc 
   - deadbeef 
   - deadbeef-devel 
   - deadbeef-lang 
@@ -8845,6 +8846,7 @@ unsorted:
   - infos-creator-rpm 
   - ini4j 
   - ini4j-javadoc 
+  - initviocons 
   - inkscape-extensions-fig 
   - inkscape-extensions-scribus 
   - inn-devel 
@@ -12938,7 +12940,6 @@ unsorted:
   - libevdi1 
   - libevemu3 
   - libevent-2_1-7-32bit 
-  - libevent-devel 
   - libevent-devel-static 
   - libeverest 
   - libeverest-x86-64-v3 
@@ -14928,13 +14929,13 @@ unsorted:
   - libopenblas_serial-devel-32bit 
   - libopenblas_serial0 
   - libopenblas_serial0-32bit 
-  - libopencascade-applicationframework7_8_1 
-  - libopencascade-dataexchange7_8_1 
-  - libopencascade-draw7_8_1 
-  - libopencascade-foundationclasses7_8_1 
-  - libopencascade-modelingalgorithms7_8_1 
-  - libopencascade-modelingdata7_8_1 
-  - libopencascade-visualization7_8_1 
+  - libopencascade-applicationframework7_9_1 
+  - libopencascade-dataexchange7_9_1 
+  - libopencascade-draw7_9_1 
+  - libopencascade-foundationclasses7_9_1 
+  - libopencascade-modelingalgorithms7_9_1 
+  - libopencascade-modelingdata7_9_1 
+  - libopencascade-visualization7_9_1 
   - libopencl-clang15 
   - libopencloudsync-devel 
   - libopencloudsync0 
@@ -18899,10 +18900,8 @@ unsorted:
   - mozaddon-devel 
   - mozilla-fira-fonts 
   - mozilla-nspr-32bit 
-  - mozilla-nspr-devel 
   - mozilla-nss-32bit 
   - mozilla-nss-certs-32bit 
-  - mozilla-nss-devel 
   - mozilla-nss-sysinit 
   - mozilla-nss-sysinit-32bit 
   - mozilla-zilla-slab-fonts 
@@ -20306,7 +20305,6 @@ unsorted:
   - openldap2-back-sock 
   - openldap2-back-sql 
   - openldap2-contrib 
-  - openldap2-devel 
   - openldap2-devel-32bit 
   - openldap2-devel-static 
   - openldap2-doc 
@@ -20388,7 +20386,6 @@ unsorted:
   - opensurge 
   - opensuse-migration-tool 
   - opensuse-welcome-lang 
-  - opensuse-welcome-launcher 
   - opentest4j 
   - opentest4j-javadoc 
   - opentimelineio-devel 
@@ -31674,9 +31671,11 @@ unsorted:
   - python313-arabic-reshaper 
   - python313-archmage 
   - python313-arf 
+  - python313-argcomplete 
   - python313-argh 
   - python313-argon2-cffi 
   - python313-argon2-cffi-bindings 
+  - python313-argparse-manpage 
   - python313-argparse_addons 
   - python313-arrow 
   - python313-arviz 
@@ -32477,6 +32476,7 @@ unsorted:
   - python313-distlib 
   - python313-distorm3 
   - python313-distributed 
+  - python313-distro 
   - python313-distroinfo 
   - python313-distutils-extra 
   - python313-dj-database-url 
@@ -33211,6 +33211,7 @@ unsorted:
   - python313-lazy-loader 
   - python313-lazy-object-proxy 
   - python313-lazyarray 
+  - python313-ldap 
   - python313-ldap3 
   - python313-ldapdomaindump 
   - python313-ldappool 
@@ -33855,6 +33856,8 @@ unsorted:
   - python313-pyaml 
   - python313-pyarrow 
   - python313-pyarrow-devel 
+  - python313-pyasn1 
+  - python313-pyasn1-modules 
   - python313-pyasyncore 
   - python313-pybars3 
   - python313-pybcj 
@@ -34185,6 +34188,7 @@ unsorted:
   - python313-python-crontab 
   - python313-python-daemon 
   - python313-python-datamatrix 
+  - python313-python-dateutil 
   - python313-python-dbusmock 
   - python313-python-debian 
   - python313-python-docs-theme 
@@ -34236,6 +34240,7 @@ unsorted:
   - python313-python-redmine 
   - python313-python-rpm-spec 
   - python313-python-rtmidi 
+  - python313-python-slugify 
   - python313-python-snappy 
   - python313-python-socketio 
   - python313-python-socks 
@@ -34721,6 +34726,7 @@ unsorted:
   - python313-testscenarios 
   - python313-testsuite 
   - python313-testtools 
+  - python313-text-unidecode 
   - python313-textX 
   - python313-textdistance 
   - python313-textfsm 
@@ -36590,6 +36596,8 @@ unsorted:
   - rust1.87-src 
   - rust1.88 
   - rust1.88-src 
+  - rust1.89 
+  - rust1.89-src 
   - rustdesk-server 
   - rustdesk-server-hbbr 
   - rustdesk-server-hbbs 

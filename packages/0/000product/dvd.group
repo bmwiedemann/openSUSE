@@ -2,6 +2,7 @@
   <!-- ### AUTOMATICALLY GENERATED, DO NOT EDIT ### -->
   <packagelist relationship="recommends">
     <package name="389-ds" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="389-ds-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="7zip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="AppStream" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="AppStream-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -294,6 +295,7 @@
     <package name="cyrus-imapd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="cyrus-sasl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cyrus-sasl-crammd5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="cyrus-sasl-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="cyrus-sasl-digestmd5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cyrus-sasl-gssapi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cyrus-sasl-plain" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -762,6 +764,7 @@
     <package name="ibus-libpinyin" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-libzhuyin" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-m17n" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="ibus-m17n-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-mozc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-mozc-candidate-window" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ibus-table" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -793,7 +796,6 @@
     <package name="indic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="info" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="info-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="initviocons" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="inkscape" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="inkscape-extensions-extra" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="inkscape-extensions-gimp" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -1950,6 +1952,7 @@
     <package name="libevdev2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libevdocument3-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libevent-2_1-7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libevent-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="libevview3-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libexempi8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libexif12" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -3123,8 +3126,10 @@
     <package name="mozc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="mozc-gui-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="mozilla-nspr" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="mozilla-nspr-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="mozilla-nss" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="mozilla-nss-certs" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="mozilla-nss-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="mozilla-nss-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="mpg123-openal" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mpt-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -3209,6 +3214,7 @@
     <package name="openconnect-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="openconnect-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="openldap2-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="openldap2-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="opensc" supportstatus="unsupported"/> <!-- reason: dvd:rng-tools -->
     <package name="opensc-bash-completion" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="openslp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3221,6 +3227,7 @@
     <package name="openssl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_x11 -->
     <package name="openssl-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_x11 -->
     <package name="opensuse-welcome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="opensuse-welcome-launcher" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="openvpn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="orca" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="orca-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3667,8 +3674,6 @@
     <package name="python313-Pillow" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="python313-PySocks" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python313-appdirs" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
-    <package name="python313-argcomplete" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python313-argparse-manpage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python313-base" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python313-base-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python313-bcrypt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3684,7 +3689,6 @@
     <package name="python313-dbm" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python313-dbus-python" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python313-decorator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="python313-distro" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python313-firewall" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python313-gobject" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python313-gobject-Gdk" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3694,7 +3698,6 @@
     <package name="python313-hpack" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python313-hyperframe" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python313-idna" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python313-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python313-linux-procfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python313-lxml" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="python313-mysqlclient" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3708,8 +3711,6 @@
     <package name="python313-psutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python313-ptyprocess" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="python313-pyOpenSSL" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python313-pyasn1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python313-pyasn1-modules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python313-pycairo" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python313-pycparser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python313-pycups" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3718,8 +3719,6 @@
     <package name="python313-pygit2" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python313-pyinotify" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python313-pysmbc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python313-python-dateutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python313-python-slugify" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python313-pyudev" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python313-requests" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python313-requests-gssapi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -3731,7 +3730,6 @@
     <package name="python313-setuptools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python313-six" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python313-speechd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python313-text-unidecode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python313-tinycss2" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="python313-tk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="python313-urllib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
