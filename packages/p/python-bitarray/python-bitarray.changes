@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 11 14:06:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.6.0
+  * add `util.random_k()`, see #237
+  * add `util.sum_indices()`
+  * optimize `util.xor_indices()`
+  * move development files from `examples/` to `devel/`
+- Adjust file paths for removing .gitignore files from source
+
+-------------------------------------------------------------------
 Tue Jul 22 09:53:19 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.2:

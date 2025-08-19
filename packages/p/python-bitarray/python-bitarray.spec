@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bitarray
-Version:        3.5.2
+Version:        3.6.0
 Release:        0
 Summary:        Efficient Arrays of Booleans
 License:        Python-2.0
@@ -59,7 +59,7 @@ export CFLAGS="%{optflags}"
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-rm examples/resize/.gitignore examples/puff/.gitignore
+rm devel/resize/.gitignore examples/puff/.gitignore
 
 %check
 # tests don't run from within the source directory
