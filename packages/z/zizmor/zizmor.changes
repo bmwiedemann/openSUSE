@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Aug 18 13:04:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.1:
+  * Bug Fixes
+    - Fixed a bug where the cache-poisoning would incorrectly
+      detect the opposite cases for cache enablement (#1081)
+
+-------------------------------------------------------------------
+Mon Aug 18 12:58:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.0:
+  * New Features
+    - New audit: unsound-condition detects if: conditions that
+      inadvertently always evaluate to true (#1053)
+  * Enhancements
+    - The cache-poisoning audit now supports auto-fixes for many
+      findings (#923)
+    - The known-vulnerable-actions audit now supports auto-fixes
+      for many findings (#1019)
+    - zizmor is now stricter about parsing uses: clauses. In
+      particular, zizmor will no longer accept uses: org/repo
+      without a trailing @ref, as GitHub Actions itself does not
+      accept this syntax (#1019)
+    - The use-trusted-publishing audit now detects many more
+      patterns, including cargo publish and other run: blocks that
+      make use of publishing commands directly (#1042)
+    - The insecure-commands audit now supports auto-fixes for many
+      findings (#1045)
+    - The template-injection audit now detects more action
+      injection sinks (#1059)
+  * Bug Fixes
+    - Fixed a bug where --fix would fail to preserve comments when
+      modifying block-style YAML mappings (#995)
+    - Fixed a bug where zizmor would crash when given a GitHub API
+      token with leading or trailing whitespace (#1027)
+    - Fixed a bug where template-injection findings in --fix mode
+      would be incorrectly patched when referencing an env.*
+      context (#1052)
+    - Fixed a bug where template-injection findings in --fix mode
+      would be patched with shell syntax that didn't match the
+      step's actual shell (#1064)
+
+-------------------------------------------------------------------
 Tue Jul 01 10:12:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.11.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package zizmor
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zizmor
-Version:        1.11.0
+Version:        1.12.1
 Release:        0
 Summary:        A static analysis tool for GitHub Actions
 License:        MIT
