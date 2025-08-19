@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-base
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -434,7 +434,6 @@ Recommends:     gzip
 Recommends:     hdparm
 Recommends:     hwinfo
 Recommends:     info
-Recommends:     initviocons
 # ping is required for network tests
 Recommends:     iputils
 Recommends:     irqbalance
@@ -1016,7 +1015,7 @@ Recommends:     fonts-config
 Recommends:     fribidi
 Recommends:     ghostscript-x11
 Recommends:     numlockx
-Recommends:     opensuse-welcome
+Recommends:     opensuse-welcome-launcher
 # #353229 - drag in empty replacements
 Recommends:     translation-update
 # autoconfig new printers - bnc#808014

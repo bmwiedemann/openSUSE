@@ -1160,4 +1160,16 @@
   agetty produces the needed output by itself.</comment>
     <requestid>1296328</requestid>
   </revision>
+  <revision rev="135" vrev="19">
+    <srcmd5>9335ec3ea6e0fcb5891c6e428f348dc2</srcmd5>
+    <version>20241218</version>
+    <time>1755614632</time>
+    <user>anag_factory</user>
+    <comment>- No longer recommend initviocons: this is long deprecated.
+
+- Replace opensuse-welcome with opensuse-welcome-launcher
+  which will be a session specific greeter
+  https://code.opensuse.org/leap/features/issue/208</comment>
+    <requestid>1300269</requestid>
+  </revision>
 </revisionlist>

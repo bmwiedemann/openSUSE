@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 19 08:46:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend initviocons: this is long deprecated.
+
+-------------------------------------------------------------------
+Tue Jul 29 22:21:41 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Replace opensuse-welcome with opensuse-welcome-launcher
+  which will be a session specific greeter
+  https://code.opensuse.org/leap/features/issue/208
+
+-------------------------------------------------------------------
 Tue Jul 29 13:11:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer require issue-generator on transactional systems.
