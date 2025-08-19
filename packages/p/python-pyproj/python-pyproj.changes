@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Aug 15 17:06:58 UTC 2025 - Libor Pechacek <lpechacek@gmx.com>
+
+- Update to 3.7.2
+  * Bump pypa/cibuildwheel from 2.22 to 2.23 by @dependabot[bot]
+    in #1479
+  * TST: Only import time.perf_counter by @snowman2 in #1480
+  * DEP: Minimum PROJ version 9.4 by @snowman2 in #1481
+  * DEP: Python 3.11+ by @snowman2 in #1483
+  * Bump scientific-python/upload-nightly-action from 0.6.1 to
+    0.6.2 by @dependabot[bot] in #1488
+  * DOC: update doc geometry_area_perimeter by @myl-dvl in #1489
+  * DOC: Remove 'noqa: E501' from docstrings by @adamjstewart
+    in #1492
+  * pyproj.crs: add imports to all by @adamjstewart in #1494
+  * MNT: replace black and isort with ruff format and lint by
+    @mwtoews in #1496
+  * BUILD/CI: Add win_arm64 wheel build by @khmyznikov in #1503
+  * Bump pypa/cibuildwheel from 2.23 to 3.0 by @dependabot[bot]
+    in #1502
+  * Bump pypa/cibuildwheel from 3.0.0 to 3.0.1 by
+    @dependabot[bot] in #1505
+  * BLD: Enable free-threading compatibility by @djhoese in #1512
+  * CI: Add 3.13 free-threading wheels by @djhoese in #1514
+  * Bump actions/download-artifact from 4 to 5 by
+    @dependabot[bot] in #1520
+  * TST: Remove irrelevant test with modern PROJ versions by
+    @djhoese in #1519
+  * Bump actions/checkout from 4 to 5 by @dependabot[bot]
+    in #1521
+
+-------------------------------------------------------------------
 Sun Feb 16 11:21:59 UTC 2025 - Libor Pechacek <lpechacek@gmx.com>
 
 - Update to 3.7.1
