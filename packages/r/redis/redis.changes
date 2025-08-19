@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 18 17:07:31 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Updated to 8.2.1
+  * https://github.com/redis/redis/releases/tag/8.2.1
+  - Bug fixes
+    * #14240 INFO KEYSIZES - potential incorrect histogram updates
+      on cluster mode with modules
+    * #14274 Disable Active Defrag during flushing replica
+    * #14276 XADD or XTRIM can crash the server after loading RDB
+    * #Q6601 Potential crash when running FLUSHDB (MOD-10681)
+  * Performance and resource utilization
+    * Query Engine - LeanVec and LVQ proprietary Intel
+      optimizations were removed from Redis Open Source
+    * #Q6621 Fix regression in INFO (MOD-10779)
+
+-------------------------------------------------------------------
 Mon Aug  4 11:22:27 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Updated to 8.2.0
