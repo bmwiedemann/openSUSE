@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 18 14:56:13 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+
+- bump rails version from 8.0.2 to 8.0.2.1 (bsc#1248100)
+  * actioncable-8.0.2.gem   --> actioncable-8.0.2.1.gem
+  * actionmailbox-8.0.2.gem --> actionmailbox-8.0.2.1.gem
+  * actionmailer-8.0.2.gem  --> actionmailer-8.0.2.1.gem
+  * actionpack-8.0.2.gem    --> actionpack-8.0.2.1.gem
+  * actiontext-8.0.2.gem    --> actiontext-8.0.2.1.gem
+  * actionview-8.0.2.gem    --> actionview-8.0.2.1.gem
+  * activejob-8.0.2.gem     --> activejob-8.0.2.1.gem
+  * activemodel-8.0.2.gem   --> activemodel-8.0.2.1.gem
+  * activerecord-8.0.2.gem  --> activerecord-8.0.2.1.gem
+  * activestorage-8.0.2.gem --> activestorage-8.0.2.1.gem
+  * activesupport-8.0.2.gem --> activesupport-8.0.2.1.gem
+  * rails-8.0.2.gem         --> rails-8.0.2.1.gem
+  * railties-8.0.2.gem      --> railties-8.0.2.1.gem
+
+-------------------------------------------------------------------
 Fri Aug 15 07:10:05 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
 
 - require openssl explicitelly (bsc#1247899)
