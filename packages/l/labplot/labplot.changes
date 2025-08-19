@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Aug 19 07:23:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.12.1
+  * Fix using default font for axis title
+  * Fix build with system QXlsx
+  * Fix build with system QADS 4.4
+  * Fix crash on import when no projects opened (kde#503800)
+  * Save rotation of axis title separately for x and y axis
+  * Fix disappearing axis ticks
+  * Fix crash when creating the data spreadsheet for analysis
+    curves (kde#504662)
+  * Fix crash when aspect is added and all docks in content area
+    are hidden (kde#504794, kde#502043)
+  * Fix crash when column or row was added to spreadsheet from
+    toolbar and no column or row was selected (kde#504839)
+  * Fix issue when the statistics spreadsheet was not shown if
+    the spreadsheet was a child of workbook
+  * Fix issue which caused the context menu of an aspect to not
+    be shown after being re-parented
+  * Handle Windows logical font “MS Shell Dlg 2”
+  * Fix crash when deleting a live-data source with missing
+    source file
+  * Parser: Remove not required function and reuse function
+    instead of copying (kde#506925)
+  * Fix the export of spreadsheets to SQLite, wrong format
+    was selected internally in the export dialog
+  * Fix the export to SQLite of text values in the spreadsheet
+    containing single quotes
+  * Fix FITS import and export issues
+  * Don’t show any error messages and NaN values in the process
+    behavior chart if no column or an empty column was selected
+  * Remove unwanted entries on the undo stack that were created
+    when modifying properties of the process behavior and run charts
+  * Improve the quality of the fit model preview in the properties
+    explorer and formula view in the random values dialog
+    on hi-dpi screens
+  * Initialize the parameters for the baseline subtraction with
+    reasonable values on first startup and improve the appearance
+    of the preview plot
+  * Fix save/load of the background color for the center value
+    label in the process behavior chart
+
+-------------------------------------------------------------------
 Mon Apr 28 10:48:21 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.12.0. Check the Changelog file for the full list

@@ -1,7 +1,7 @@
 #
 # spec file for package labplot
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define qt6_version 6.5
 
 Name:           labplot
-Version:        2.12.0
+Version:        2.12.1
 Release:        0
 Summary:        Data Visualization and Analysis software
 License:        GPL-2.0-or-later
