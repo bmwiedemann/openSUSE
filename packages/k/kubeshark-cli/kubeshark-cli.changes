@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug 19 07:12:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 52.8.1:
+  * Bug Fixes & New Features
+    - Fixed support for Cgroup V2 in cases where additional
+      privileges are required.
+    - Implemented a traffic processing timeout for periods of
+      complete inactivity:
+      - A new Helm value has been introduced to define the timeout
+        duration when there is no dashboard streaming traffic, no
+        active recordings, and no agents operating.
+      - In such cases, Kubeshark will transition into a Dormant
+        state until new activity is detected.
+      - During the Dormant state, traffic processing is halted, and
+        resource consumption is minimized.
+      - This ensures Kubeshark consumes negligible system resources
+        unless actively in use.
+
+-------------------------------------------------------------------
 Sun Aug 03 12:03:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 52.8.0:
