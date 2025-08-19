@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 18 19:29:05 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 4.7.1:
+  
+  Fixed
+  * relay/api: fix crash when an invalid HTTP request is received 
+    from a client
+
+-------------------------------------------------------------------
 Mon Jul 21 18:37:49 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to 4.7.0:

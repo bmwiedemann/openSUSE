@@ -932,4 +932,16 @@
 </comment>
     <requestid>1294886</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>14052793ba1c27f743ea17b0950de85b</srcmd5>
+    <version>4.7.1</version>
+    <time>1755614682</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.7.1:
+  
+  Fixed
+  * relay/api: fix crash when an invalid HTTP request is received from a client
+</comment>
+    <requestid>1300141</requestid>
+  </revision>
 </revisionlist>
