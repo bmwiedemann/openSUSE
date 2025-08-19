@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 19 06:58:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.1:
+  * Fixes
+    - Bug #2151 Filter by ecosystem before querying.
+
+-------------------------------------------------------------------
 Thu Aug 07 05:03:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.0:
