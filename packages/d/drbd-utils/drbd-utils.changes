@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 19 12:28:46 UTC 2025 - heming zhao <heming.zhao@suse.com>
+
+- drbd_passive didn't start due to drbd.rules returning error (bsc#1247534)
+  * update patch
+    - bsc-1247534_drbd-didnt-start-due-to-drbd_rules-returning-err.patch
+
+-------------------------------------------------------------------
 Fri Aug 15 07:12:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
 
 - drbd_passive didn't start due to drbd.rules returning error (bsc#1247534)

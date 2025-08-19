@@ -8,13 +8,13 @@ diff -Nupr a/scripts/drbd.ocf b/scripts/drbd.ocf
 +
 +		# ref bsc#1239437 bsc#1247534
 +		# For device names like drbd_tom, drbd_jerry, ... (not style: drbd[0-9]+
-+		# we change the path to /dev/drbd/by-res/drbd_tom/<minor>.
++		# we change the path to /dev/drbd${minor}.
 +		for i in "${!DRBD_DEVICES[@]}"; do
 +			dev=$(basename ${DRBD_DEVICES[$i]})
 +			if [[ ! $dev =~ drbd[0-9]+ ]]; then
 +				minor=$($DRBDADM dump $DRBD_RESOURCE | grep -Eo "${dev}[[:space:]]minor[[:space:]][0-9]+" | cut -d' ' -f 3)
-+				if [ -n "$minor" ]; then
-+					DRBD_DEVICES[$i]="/dev/drbd/by-res/${dev}/${minor}"
++				if [[ $minor =~ ^[0-9]+$ ]]; then
++					DRBD_DEVICES[$i]="/dev/drbd${minor}"
 +				else
 +					ocf_log warn "$dev doesn't have minor"
 +				fi
