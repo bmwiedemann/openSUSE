@@ -10,4 +10,32 @@
   based on availability</comment>
     <requestid>1285509</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>86a937368fb0b14fe7393c80ce4685d7</srcmd5>
+    <version>1.0</version>
+    <time>1755614630</time>
+    <user>anag_factory</user>
+    <comment>- Change autostart to always launch, but internally decide if we
+  already showed the greeter. This allows us to bump the version
+  for next Leap versions and have the welcome screen show at least
+  once every while.
+
+- Ensure ${HOME}/.config/autostart exists before copying to it
+  (boo#1248197).
+- Install autostart to /usr/etc/xdg/autosttart
+- Build as noarch: this package only consists of a shell script.
+
+- For the transition period let's limit scope to executing
+  opensuse-welcome. For the time being make
+  opensuse-welcome recommended as we replace it in pattern-base.
+- Use Hidden=True for .config/autostart
+  Introduce org.opensuse.opensuse_welcome_launcher-hidden.desktop
+- Remove legacy org.opensuse.opensuse_welcome.desktop
+  from .config/autostart now when it was dropped from
+  opensuse-welcome
+- Add svg files from opensuse-welcome for icon reference in
+  .desktop files. Also adds Buildrequires on hicolor icons
+- Related to code-o-o#leap/features/208</comment>
+    <requestid>1300236</requestid>
+  </revision>
 </revisionlist>

@@ -3,15 +3,25 @@
 # Mimic behavior of old openSUSE-welcome with "Show on next boot" unchecked
 
 LAUNCHER_XDG_FILE=org.opensuse.opensuse_welcome_launcher.desktop
-ORIG_XDG_FILE=/org.opensuse.opensuse_welcome.desktop
+LEGACY_XDG_FILE=org.opensuse.opensuse_welcome.desktop
+OSWL_VERSION_TAG=1
 
-# Override also the original's openSUSE-welcome startup
-if [[ -e "/etc/xdg/autostart/${LAUNCHER_XDG_FILE}" && \
-      ! -e "$HOME/.config/autostart/${LAUNCHER_XDG_FILE}" ]]; then
-    cp /etc/xdg/autostart/${LAUNCHER_XDG_FILE} ${HOME}/.config/autostart/${LAUNCHER_XDG_FILE}
-    cp /etc/xdg/autostart/${LAUNCHER_XDG_FILE} ${HOME}/.config/autostart/${ORIG_XDG_FILE}
+# The legacy autostart was dropped let's remove it from homedir
+if [[ -e "$HOME/.config/autostart/${LEGACY_XDG_FILE}" && \
+      ! -e "/etc/xdg/autostart/${LEGACY_XDG_FILE}" ]]; then
+    rm -f "$HOME/.config/autostart/${LEGACY_XDG_FILE}"
 fi
 
+# Show only once per version
+if [ -f ${HOME}/.local/share/opensuse-welcome/launched ]; then
+  if [ "$(cat ${HOME}/.local/share/opensuse-welcome/launched)" = "${OSWL_VERSION_TAG}" ]; then
+    # We have already shown the laucher at this version - skipping
+    exit 0
+  fi
+fi
+
+test -d ${HOME}/.local/share/opensuse-welcome || mkdir -p ${HOME}/.local/share/opensuse-welcome
+echo "${OSWL_VERSION_TAG}" > ${HOME}/.local/share/opensuse-welcome/launched
 
 detect_de() {
     if [ -n "$XDG_CURRENT_DESKTOP" ]; then
@@ -38,9 +48,11 @@ if [ -z "$welcome_binary" ]; then
     welcome_binary=$(command -v opensuse-welcome)
 fi
 
+# XXX: hack for the initial integration
+# keep legacy behavior and only trigger opensuse-welcome
+# rest would be the next step
+welcome_binary=$(command -v opensuse-welcome)
+
 if [ ! -z "$welcome_binary" ]; then
     $welcome_binary
-else
-    echo "No matching welcome tool is available; however, we can't leave it like this!"
-    echo "So let me at least say: Welcome, and have a lot of fun!"
 fi

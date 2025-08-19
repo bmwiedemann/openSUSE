@@ -1,30 +1,9 @@
 # Copy me to /etc/xdg/autostart and /usr/share/applications
 [Desktop Entry]
 Type=Application
-Name=Welcome
-Exec=/usr/bin/opensuse-welcome
-Icon=org.opensuse.opensuse_welcome
-Comment=The openSUSE Welcome utility.
+Name=Welcome launcher
+Exec=/usr/bin/opensuse-welcome-launcher
+Icon=org.opensuse.opensuse_welcome_launcher
+Comment=The openSUSE Welcome launcher utility.
 Categories=Qt;System;Documentation
-GenericName=Welcome Utility
-# Danish translation
-Name[da]=Velkomst
-Comment[da]=Redskabet openSUSE Velkomst.
-GenericName[da]=Velkomst-redskab
-# Spanish translation
-Name[es]=Bienvenida
-Comment[es]=La utilidad de bienvenida de openSUSE.
-GenericName[es]=Utilidad de bienvenida
-# French translation
-Name[fr]=Bienvenue
-Comment[fr]=Utilitaire de bienvenue
-GenericName[fr]=L'utilitaire de bienvenue d'openSUSE.
-# Polish translation
-Name[pl]=Witaj
-Comment[pl]=Program do powitania
-GenericName[pl]=Program do powitania w openSUSE.
-# Simplified Chinese translation
-Name[zh_CN]=欢迎
-Comment[zh_CN]=openSUSE 欢迎程序。
-GenericName[zh_CN]=欢迎程序
-NotShowIn=GNOME;
+GenericName=Welcome launcher Utility
