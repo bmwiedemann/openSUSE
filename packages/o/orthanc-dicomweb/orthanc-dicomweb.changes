@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 18 14:39:50 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.21
+  * New configuration "WadoRsLoaderThreadsCount" to configure how many threads are loading
+    files from the storage when answering to a WADO-RS query.  A value > 1 is meaningful 
+    only if the storage is a distributed network storage (e.g object storage plugin).
+    A value of 0 means reading and writing are performed in sequence (default behaviour).
+  * New configuration "EnablePerformanceLogs" to display performance logs.  Currently
+    only showing the time required to execute a WADO-RS query.  For example:
+    WADO-RS: elapsed: 26106623 us, rate: 14.86 instances/s, 155.23Mbps
+  * Fix false errors logs generated e.g when OHIF requests the /dicom-web/studies/../metadata route:
+    "dicom-web:/Configuration.cpp:643] Unsupported return MIME type: application/dicom+json, multipart/related; type=application/octet-stream; transfer-syntax=*, will return DICOM+JSON"
+
+
+-------------------------------------------------------------------
 Mon May 12 15:27:53 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.20
