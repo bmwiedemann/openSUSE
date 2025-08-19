@@ -1,0 +1,11 @@
+--- a/pyproject.toml	2025-06-27 08:29:45.000000000 +0200
++++ b/pyproject.toml	2025-08-18 21:15:04.317633319 +0200
+@@ -49,8 +49,6 @@
+ ]
+ description = "Python social authentication made simple."
+ keywords = ["oauth", "openid", "saml", "social auth"]
+-license = "BSD-3-Clause"
+-license-files = ["LICENSE"]
+ name = "social-auth-core"
+ readme = "README.md"
+ requires-python = ">=3.9"

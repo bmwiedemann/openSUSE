@@ -1,7 +1,7 @@
 #
 # spec file for package python-social-auth-core
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2017-2018 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,16 +18,18 @@
 
 
 %define modname social-core
-# saml is optional: packages in TW and Leap not compatible
-%bcond_with saml
 %{?sle15_python_module_pythons}
 Name:           python-social-auth-core
-Version:        4.5.4
+Version:        4.7.0
 Release:        0
 Summary:        Python Social Auth Core
 License:        BSD-3-Clause
 URL:            https://github.com/python-social-auth/social-core
 Source:         https://github.com/python-social-auth/%{modname}/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+%if 0%{?suse_version} < 1600
+# hack around "configuration error: `project.license` must be valid exactly by one definition"
+Patch0:         pyproject-license.patch
+%endif
 BuildRequires:  %{python_module PyJWT >= 2.7.0}
 BuildRequires:  %{python_module cryptography >= 2.1.1}
 BuildRequires:  %{python_module defusedxml >= 0.5.0}
@@ -43,20 +45,22 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module google-auth}
 BuildRequires:  %{python_module httpretty >= 0.9.6}
+BuildRequires:  %{python_module responses}
+BuildRequires:  %{python_module typing_extensions}
 #/SECTION
 # SECTION optional requirements for tests
 BuildRequires:  %{python_module python-jose >= 3.0.0}
-%if %{with saml}
-BuildRequires:  %{python_module lxml < 4.7}
-BuildRequires:  %{python_module python3-saml >= 1.2.1}
-%endif
+BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module python3-saml >= 1.5.0}
 #/SECTION
 Requires:       python-PyJWT >= 2.0.0
 Requires:       python-cryptography >= 2.1.1
 Requires:       python-defusedxml >= 0.5.0
 Requires:       python-oauthlib >= 1.0.3
 Requires:       python-python3-openid >= 3.0.10
+Requires:       python-python3-saml >= 1.5.0
 Requires:       python-requests >= 2.9.1
 Requires:       python-requests-oauthlib >= 0.6.1
 Recommends:     python-python-jose >= 3.0.0
@@ -83,10 +87,8 @@ storage solutions.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%if !%{with saml}
-donttest+=" or test_saml"
-%endif
-%pytest -k "not (dummyprefix $donttest)"
+# Steam auth tests require internet access
+%pytest -k 'not SteamOpenIdMissingSteamIdTest'
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
