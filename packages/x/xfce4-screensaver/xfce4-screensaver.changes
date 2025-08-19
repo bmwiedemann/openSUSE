@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Aug 16 18:38:20 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.1
+  * configure.py: Quote only command line args
+  * README.md: Add uninstall info
+  * Remove reference to INSTALL file from README
+  * Remove outdated INSTALL file
+  * build: Install xfce4-screensaver-configure.py in libexecdir
+  * build: Rename POTFILES.in to POTFILES
+  * Remove autotools build
+  * Update README after switchover to meson
+  * meson-build: Add "none" to authentication-scheme combo
+  * meson-build: Add "none" to session-manager combo
+  * Translation Updates
+
+-------------------------------------------------------------------
 Thu Jul 17 15:08:57 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Enable Wayland support

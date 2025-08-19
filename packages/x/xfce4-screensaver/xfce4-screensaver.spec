@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-screensaver
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without wayland
 
 Name:           xfce4-screensaver
-Version:        4.20.0
+Version:        4.20.1
 Release:        0
 Summary:        Screensaver and locker for Xfce
 License:        GPL-2.0-only
@@ -84,7 +84,6 @@ Add xfce4-screensaver-command -l to xflock4 script for it to work properly.
 %if %{with wayland}
     -Dwayland=enabled		\
 %endif
-    -Dlocking=true		\
     -Ddocs=disabled
 %meson_build
 
@@ -127,7 +126,6 @@ done
 %endif
 %{_bindir}/xfce4-screensaver
 %{_bindir}/xfce4-screensaver-command
-%{_bindir}/xfce4-screensaver-configure.py
 %{_bindir}/xfce4-screensaver-preferences
 %{_datadir}/applications/screensavers/xfce-floaters.desktop
 %{_datadir}/applications/xfce4-screensaver-preferences.desktop
