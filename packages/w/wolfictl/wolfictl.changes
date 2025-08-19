@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Aug 19 07:03:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.38.11:
+  * withdraw: add option to read from file by @javacruft in #1716
+  * build(deps): bump github.com/anchore/syft from 1.29.1 to 1.30.0
+    by @dependabot[bot] in #1718
+  * build(deps): bump actions/checkout from 4.2.2 to 5.0.0 in
+    /.github/actions by @dependabot[bot] in #1721
+  * build(deps): bump actions/checkout from 4.2.2 to 5.0.0 by
+    @dependabot[bot] in #1717
+  * build(deps): bump the chainguard group across 1 directory with
+    4 updates by @dependabot[bot] in #1722
+  * build(deps): bump chainguard-dev/actions from 1.4.8 to 1.4.9 by
+    @dependabot[bot] in #1720
+  * build(deps): bump github.com/anchore/grype from 0.97.1 to
+    0.97.2 by @dependabot[bot] in #1723
+  * build(deps): bump github.com/anchore/syft from 1.30.0 to 1.31.0
+    by @dependabot[bot] in #1724
+  * build(deps): bump github.com/anchore/grype from 0.97.2 to
+    0.98.0 by @dependabot[bot] in #1725
+  * build(deps): bump goreleaser/goreleaser-action from 6.3.0 to
+    6.4.0 by @dependabot[bot] in #1726
+  * build(deps): bump github.com/cli/go-gh/v2 from 2.12.1 to 2.12.2
+    by @dependabot[bot] in #1714
+
+-------------------------------------------------------------------
+Tue Aug 19 06:58:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.10:
+  * build(deps): bump goreleaser/goreleaser-action from 6.3.0 to
+    6.4.0 (#1726)
+  * build(deps): bump github.com/anchore/grype from 0.97.2 to
+    0.98.0
+  * update SBOM int test goldenfiles for syft 1.31.0
+  * build(deps): bump github.com/anchore/syft from 1.30.0 to 1.31.0
+  * build(deps): bump github.com/anchore/grype from 0.97.1 to
+    0.97.2
+  * build(deps): bump chainguard-dev/actions from 1.4.8 to 1.4.9
+    (#1720)
+  * build(deps): bump the chainguard group across 1 directory with
+    4 updates (#1722)
+  * build(deps): bump actions/checkout from 4.2.2 to 5.0.0 (#1717)
+  * build(deps): bump actions/checkout in /.github/actions (#1721)
+  * build(deps): bump github.com/anchore/syft from 1.29.1 to 1.30.0
+  * Refresh docs again
+  * Rename option to packages-file
+  * withdrawn-packages-file -> withdrawn-packages
+  * Refresh docs with new option for withdraw command.
+  * withdraw: add option to read from file
+  * build(deps): bump sigs.k8s.io/release-utils from 0.12.0 to
+    0.12.1 (#1715)
+  * build(deps): bump github.com/cli/go-gh/v2 from 2.12.1 to 2.12.2
+  * build(deps): bump chainguard-dev/actions from 1.4.7 to 1.4.8
+    (#1709)
+  * build(deps): bump the chainguard group with 2 updates (#1710)
+
+-------------------------------------------------------------------
 Mon Aug  4 04:46:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.38.9:
