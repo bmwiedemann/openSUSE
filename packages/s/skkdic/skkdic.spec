@@ -22,7 +22,7 @@ Name:           skkdic
 Version:        %{commit_date}
 Release:        0
 Summary:        SKK (Simple Kana-Kanji) dictionary files.
-License:        Unicode
+License:        Unicode-DFS-2016
 Group:          System/I18n/Japanese
 URL:            https://skk-dev.github.io/dict/
 Source0:        https://github.com/skk-dev/dict/archive/%{skkdic_commit}/skkdic-%{commit_date}.git%{skkdic_commit}.tar.gz

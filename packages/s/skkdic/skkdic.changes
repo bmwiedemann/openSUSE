@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 14 01:51:51 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Update skkdic.spec:
+  Change package "Licence" macro to Unicode-DFS-2016, based on
+  SLFO legal review results.
+  (bsc#1246569)
+
+-------------------------------------------------------------------
 Wed Jul 30 18:51:41 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Clean up spec file via spec-cleaner

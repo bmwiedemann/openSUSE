@@ -7,4 +7,12 @@
     <comment>resubmitted, split from ddskk package</comment>
     <requestid>1296660</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a208fd4c8e68694c6d98090d06f21e64</srcmd5>
+    <version>20240829</version>
+    <time>1755614688</time>
+    <user>anag_factory</user>
+    <comment>Update skkdic.spec: Change package Licence macro to Unicode-DFS-2016, based on SLFO legal review results. (bsc#1246569)</comment>
+    <requestid>1300153</requestid>
+  </revision>
 </revisionlist>
