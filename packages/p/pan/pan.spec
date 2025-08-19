@@ -1,7 +1,7 @@
 #
 # spec file for package pan
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,12 @@
 
 
 %define __builder ninja
+# C++ <filesystem> support is neede, so force newer GCC on 15.6 and older
+%if 0%{?suse_version} < 1600
+%define gcc_ver 11
+%endif
 Name:           pan
-Version:        0.163
+Version:        0.164
 Release:        0
 Summary:        A Newsreader for GNOME
 License:        GPL-2.0-or-later
@@ -27,7 +31,7 @@ URL:            http://pan.rebelbase.com/
 Source0:        https://gitlab.gnome.org/GNOME/pan/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  gettext >= 0.21
 BuildRequires:  itstool
 BuildRequires:  libxml2-tools
@@ -57,6 +61,8 @@ handling, multiple servers, and secure connections.
 %build
 # Build with static libs: https://gitlab.gnome.org/GNOME/pan/-/issues/190
 %cmake \
+  -DCMAKE_C_COMPILER=gcc%{?gcc_ver:-%{gcc_ver}} \
+  -DCMAKE_CXX_COMPILER=g++%{?gcc_ver:-%{gcc_ver}} \
   -DBUILD_SHARED_LIBS=OFF \
   -DBUILD_STATIC_LIBS=ON \
   -DENABLE_MANUAL=ON \
@@ -71,8 +77,6 @@ handling, multiple servers, and secure connections.
 %cmake_install
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
-
-%check
 
 %files
 %license COPYING COPYING-DOCS
