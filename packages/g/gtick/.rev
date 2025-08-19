@@ -74,4 +74,13 @@
     <comment></comment>
     <requestid>811862</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>76cba3ad67ca64f2af5f9b0cd69a35bd</srcmd5>
+    <version>0.5.5</version>
+    <time>1755614866</time>
+    <user>anag_factory</user>
+    <comment>- Workaround to compile with gcc &gt;= 15, export CFLAGS=&quot;%{optflags}
+  -std=gnu17&quot; (forwarded request 1300119 from iznogood)</comment>
+    <requestid>1300266</requestid>
+  </revision>
 </revisionlist>

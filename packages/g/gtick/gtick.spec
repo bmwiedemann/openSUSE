@@ -44,6 +44,8 @@ and speeds ranging from 10 to 1000 bpm.
 %autosetup -p1
 
 %build
+# Workaround to compile with gcc >= 15
+export CFLAGS="%{optflags} -std=gnu17"
 %configure
 %make_build
 
