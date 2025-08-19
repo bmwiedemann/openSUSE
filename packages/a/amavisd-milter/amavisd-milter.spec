@@ -40,6 +40,7 @@ protocol.
 %setup -q
 
 %build
+export CFLAGS="$CFLAGS -DSM_CONF_STDBOOL_H=1"
 %configure --localstatedir=%{_localstatedir}/spool/amavis
 %make_build
 
