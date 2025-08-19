@@ -22,20 +22,21 @@
 %bcond_with    docs
 %endif
 
-%define OCCT_TAG 7_8_1
+%define OCCT_TAG 7_9_1
 
 Name:           occt
-Version:        7.8.1
+Version:        7.9.1
 Release:        0
-%define soname 7_8_1
-%define sover  7.8.1
+%define soname 7_9_1
+%define sover  7.9.1
 %define sover_len 3
 Summary:        OpenCASCADE Official Edition
 License:        LGPL-2.1-only WITH OCCT-exception-1.0
 Group:          Productivity/Graphics/CAD
 URL:            https://www.opencascade.com/open-cascade-technology/
 Source0:        https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V%{OCCT_TAG}.tar.gz#/occt-%{version}.tar.gz
-Patch0:         https://github.com/Open-Cascade-SAS/OCCT/commit/7236e83dcc1e7284e66dc61e612154617ef715d6.patch#/fix_freetype_tag_type.patch
+# PATCH-FIX-OPENSUSE Use system installed TBB
+Patch0:         occt-use-system-tbb.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -43,6 +44,7 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  tcl-devel
 BuildRequires:  tk-devel
+BuildRequires:  cmake(TBB)
 BuildRequires:  pkgconfig(RapidJSON)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
@@ -52,7 +54,6 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xmu)
 %if %{with docs}
 BuildRequires:  doxygen
-BuildRequires:  mathjax
 %endif
 
 %description
@@ -190,22 +191,25 @@ harness executable.
 %cmake_build
 
 %if %{with docs}
+# Go back from build dir to source dir
 cd ..
-./gendoc -refman -html -mathjax="%{_datadir}/javascript/mathjax"
+
+chmod u+x ./adm/gendoc
+./adm/gendoc -refman -html
 %endif
 
 %install
 %cmake_install
 
 # Make scripts executable
-chmod 0755 %buildroot/usr/bin/*
+chmod 0755 %{buildroot}%{_bindir}/*.sh
 
 # fixing up broken files
 sed -i -e 's,'%{_lib}'\\${OCCT_INSTALL_BIN_LETTER}/,'%{_lib}'/,' %{buildroot}%{_libdir}/cmake/opencascade/*
 sed -i -e 's,/lib\$,/'%{_lib}'\$,' %{buildroot}%{_libdir}/cmake/opencascade/*
 grep -C5 -E "BIN_LETTER|/lib" %{buildroot}%{_libdir}/cmake/opencascade/*
 
-rm -rf %buildroot/usr/share/doc
+rm -rf %{buildroot}%{_datadir}/doc/opencascade/
 
 %fdupes %{buildroot}%{_datadir}
 
@@ -317,7 +321,7 @@ rm -rf %buildroot/usr/share/doc
 %{_datadir}/opencascade/data
 
 %files devel
-%doc README.txt
+%doc README.md
 %{_includedir}/opencascade
 %dir %{_libdir}/cmake
 %{_libdir}/cmake/opencascade

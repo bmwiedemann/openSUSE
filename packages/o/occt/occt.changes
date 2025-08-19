@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 15 15:10:10 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 7.9.1
+  * Details on
+    https://github.com/Open-Cascade-SAS/OCCT/releases/tag/V7_9_1
+    https://github.com/Open-Cascade-SAS/OCCT/releases/tag/V7_9_0
+- Added occt-use-system-tbb.patch
+- Removed fix_freetype_tag_type.patch
+
+-------------------------------------------------------------------
 Fri Mar  7 10:01:02 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with current freetype, add fix_freetype_tag_type.patch
