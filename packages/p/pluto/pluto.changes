@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 19 07:04:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.22.5:
+  * Fix typo (#579)
+
+-------------------------------------------------------------------
+Tue Aug 19 07:02:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.22.4:
+  * INS-1302: fix CVE-2025-47907 (#578)
+
+-------------------------------------------------------------------
 Fri Aug 08 04:45:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.22.3:
