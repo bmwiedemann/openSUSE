@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 24 05:19:43 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Update to 0.28
+  * Adjust xtensor includes
+  * Provide pkg-config file
+- Adapt 0001-Install-as-arch-independent.patch
+- Remove cxx-flags.patch as there is no longer a single place
+  to add compiler flags for tests.
+
+-------------------------------------------------------------------
 Mon Feb 17 19:15:37 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - BuildRequires: python3-sphinx_rtd_theme to fix Factory build

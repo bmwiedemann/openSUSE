@@ -31,4 +31,18 @@
     <comment></comment>
     <requestid>1248894</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7e1c2aca8a701dc077e6a8167a312a7d</srcmd5>
+    <version>0.28.0</version>
+    <time>1755614838</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.28
+  * Adjust xtensor includes
+  * Provide pkg-config file
+- Adapt 0001-Install-as-arch-independent.patch
+- Remove cxx-flags.patch as there is no longer a single place
+  to add compiler flags for tests.
+</comment>
+    <requestid>1299276</requestid>
+  </revision>
 </revisionlist>

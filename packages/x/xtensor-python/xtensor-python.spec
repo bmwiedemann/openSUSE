@@ -17,19 +17,18 @@
 
 
 Name:           xtensor-python
-Version:        0.27.0
+Version:        0.28.0
 Release:        0
 Summary:        Python bindings for the xtensor C++ multi-dimensional array library
 License:        BSD-3-Clause
 URL:            https://github.com/xtensor-stack/xtensor-python
 Source0:        https://github.com/xtensor-stack/xtensor-python/archive/refs/tags/%{version}/%{name}-%{version}.tar.gz
 Patch0:         0001-Install-as-arch-independent.patch
-Patch1:         cxx-flags.patch
 BuildRequires:  %{python_module breathe}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module sphinx_rtd_theme}
 BuildRequires:  %{pythons}
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.14
 BuildRequires:  doctest-devel
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -37,7 +36,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gtest
 BuildRequires:  make
 BuildRequires:  python-rpm-macros
-BuildRequires:  xtensor-devel >= 0.25.0
+BuildRequires:  xtensor-devel >= 0.26
 BuildRequires:  cmake(pybind11) >= 2.6.1
 Group:          Development/Libraries/C and C++
 
@@ -123,5 +122,6 @@ cp -r %{_builddir}/%{buildsubdir}/docs/build/html/* %{buildroot}/%{_docdir}/%{na
 %license LICENSE
 %{_includedir}/xtensor-python
 %{_datadir}/cmake/xtensor-python
+%{_datadir}/pkgconfig/xtensor-python.pc
 
 %changelog
