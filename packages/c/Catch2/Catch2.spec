@@ -1,7 +1,7 @@
 #
 # spec file for package Catch2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define __builder ninja
 Name:           Catch2
-Version:        3.8.1
+Version:        3.9.1
 Release:        0
 Summary:        A modern, C++-native, header-only, test framework for unit-tests, TDD and BDD
 License:        BSL-1.0
-URL:            https://github.com/catchorg/%{name}/
-Source:         https://github.com/catchorg/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/catchorg/%{name}
+Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         https://github.com/catchorg/Catch2/commit/7cad6d75390668ad2b6bec8432a2e408a992e1bf.patch#/Catch2-pkgconfig-install-destdir.patch
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++ >= 6
 BuildRequires:  ninja
@@ -51,7 +53,7 @@ It also provides basic micro-benchmarking features, and simple BDD macros.
 %cmake -DCMAKE_BUILD_TYPE=Release \
        -DBUILD_SHARED_LIBS:BOOL=OFF \
        -DCMAKE_INSTALL_DOCDIR:PATH=%{_defaultdocdir}/%{name} \
-       -DPKGCONFIG_INSTALL_DIR:PATH=%{_libdir}/pkgconfig
+       -DPKGCONFIG_INSTALL_DIR:PATH=%{_lib}/pkgconfig
 %cmake_build
 
 %install

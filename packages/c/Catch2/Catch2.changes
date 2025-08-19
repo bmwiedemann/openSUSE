@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sun Aug 10 06:46:50 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.9.1:
+  * Bug fixes:
+    - Fixed bad error reporting for multiple nested assertions
+      (gh#catchorg/Catch2#1292).
+    - Fixed W4702 (unreachable code) in the polyfill for
+      std::unreachable (gh#catchorg/Catch2#3007).
+    - Fixed decomposition of assertions comparing enum-backed
+      bitfields (gh#catchorg/Catch2#3001).
+    - Fixed StringMaker specialization for
+      time_point<system_clock> with non-default duration type
+      (gh#catchorg/Catch2#2685).
+  * Improvements.
+    - Exceptions thrown during stringification of decomposed
+      expression no longer fail the assertion
+      (gh#catchorg/Catch2#2980).
+    - The selection logic for CATCH_TRAP prefers
+      __builtin_debugtrap on all platforms when Catch2 is compiled
+      with Clang.
+- Add Catch2-pkgconfig-install-destdir.patch: Install pkgconfig
+  file to destdir (gh#catchorg/Catch2#3006); upstream commit.
+
+-------------------------------------------------------------------
+Sat Jul 26 01:13:40 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.9.0:
+  * Features:
+    - Added experimental opt-in support for thread safe
+      assertions.
+    - The default test run order has been changed to random.
+    - Passing assertions are significantly faster when the
+      reporter does not ask for assertionEnded events on passing
+      assertions.
+    - Small (2-5%) improvement if the reporter asks for
+      assertionEnded events for passing assertions.
+    - The exit code constants are part of the Session API.
+      (gh#catchorg/Catch2#2955, gh#catchorg/Catch2#2976).
+    - Suppressed unsigned integer overflow checking in locations
+      with intended overflow (gh#catchorg/Catch2#2965).
+    - Reporters flush output after writing metadata, e.g. rng seed
+      (gh#catchorg/Catch2#2964).
+    - Added unreachable after FAIL and SKIP macros
+      (gh#catchorg/Catch2#2941).
+    - Added fast path for assertionStarting event when no reporter
+      requires it.
+    - Improved last seen source location tracking to be more
+      precise.
+  * Bug fixes:
+    - Fixed formatting of tags with more than 100 tests in the
+      default --list-tags output (gh#catchorg/Catch2#2963).
+    - Fixed Clang-Tidy's
+      readability-static-accessed-through-instance in tests.
+    - Fixed most of Clang-Tidy's
+      cppcoreguidelines-avoid-non-const-global-variables
+      (gh#catchorg/Catch2#2582).
+    - The lifetime of scoped messages now strictly obeys their
+      scope (gh#catchorg/Catch2#1759, gh#catchorg/Catch2#2019,
+      gh#catchorg/Catch2#2959).
+    - TEMPLATE_TEST_CASE_SIG can handle signatures consisting of
+      only types (gh#catchorg/Catch2#2680,
+      gh#catchorg/Catch2#2995).
+    - Moved catch_test_run_info.hpp up from internal/ subfolder
+      into the main one (gh#catchorg/Catch2#2972).
+  * Miscellaneous: pkg-config files are now generated at install
+    time (gh#catchorg/Catch2#2979).
+
+-------------------------------------------------------------------
 Wed Apr 30 13:09:06 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.8.1:
