@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Aug 19 06:18:37 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.0:
+  Added:
+  * Add flag --verbose to show debug information.
+  * Add flag --recipients to specify recipients by file.
+  * Add flag --retry-connect to try after a waiting time if the connection fails.
+  * Add flag --retry-connect-max to specify the amount of retry attempts.
+  * Add flag --legacy-pgp for using XEP-0027 PGP encryption with Ox keys.
+  * Add support for punycode domains.
+  Changed:
+  * Update gopenpgp library to v3.
+  * Improve error detection for MUC joins.
+  * Don't try to connect to other SRV record targets if error contains 'auth-failure'.
+  * Remove support for old SSDP version (via go-xmpp v0.2.15).
+  * Http-upload: Stop checking other disco items after finding upload component.
+  * Increase default TLS version to 1.3.
+- bsc#1241814 (CVE-2025-22872): This update includes golang.org/x/net/html 0.43.0
+
+-------------------------------------------------------------------
 Tue Jan 28 13:22:45 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.1:

@@ -341,4 +341,27 @@
   * Update XEP-0474 to version 0.4.0 (requires go-xmpp &gt;= 0.2.10).</comment>
     <requestid>1240835</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>79ba5deee4d803ec344b2b81c59fb281</srcmd5>
+    <version>0.15.0</version>
+    <time>1755614758</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.15.0:
+  Added:
+  * Add flag --verbose to show debug information.
+  * Add flag --recipients to specify recipients by file.
+  * Add flag --retry-connect to try after a waiting time if the connection fails.
+  * Add flag --retry-connect-max to specify the amount of retry attempts.
+  * Add flag --legacy-pgp for using XEP-0027 PGP encryption with Ox keys.
+  * Add support for punycode domains.
+  Changed:
+  * Update gopenpgp library to v3.
+  * Improve error detection for MUC joins.
+  * Don't try to connect to other SRV record targets if error contains 'auth-failure'.
+  * Remove support for old SSDP version (via go-xmpp v0.2.15).
+  * Http-upload: Stop checking other disco items after finding upload component.
+  * Increase default TLS version to 1.3.
+- bsc#1241814 (CVE-2025-22872): This update includes golang.org/x/net/html 0.43.0</comment>
+    <requestid>1300182</requestid>
+  </revision>
 </revisionlist>
