@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  1 11:23:53 UTC 2025 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- add cmake4fix.patch to fix build with CMake 4.0
+
+-------------------------------------------------------------------
 Tue Apr 15 11:47:21 UTC 2025 - pgajdos@suse.com
 
 - added patches

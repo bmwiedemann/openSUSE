@@ -30,8 +30,10 @@ Source:         %{name}-%{version}+git-113be27.tar.bz2
 Patch0:         %{name}-%{name}.desktop.patch
 # PATCH-FIX-UPSTREAM - fix-missing-header.patch -- Add missing header for isspace
 Patch1:         fix-missing-header.patch
-# fix build with gcc15
+# PATCH-FIX-UPSTREAM fix build with gcc15
 Patch2:         bomns-gcc15.patch
+# PATCH-FIX-UPSTREAM Fix build with CMAKE 4
+Patch3:         cmake4fix.patch
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme

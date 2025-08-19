@@ -47,4 +47,13 @@
     <user>anag_factory</user>
     <comment>undelete</comment>
   </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>e6b496c77324bd2e2172ca089689b507</srcmd5>
+    <version>0.99.3</version>
+    <time>1755614646</time>
+    <user>anag_factory</user>
+    <comment>- add cmake4fix.patch to fix build with CMake 4.0
+</comment>
+    <requestid>1297041</requestid>
+  </revision>
 </revisionlist>

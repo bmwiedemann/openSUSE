@@ -1,0 +1,13 @@
+diff -ur Bomns-for-Linux/src/launcher/CMakeLists.txt Bomns-for-Linux_fix/src/launcher/CMakeLists.txt
+--- Bomns-for-Linux/src/launcher/CMakeLists.txt	2015-06-08 21:33:05.207501509 +0200
++++ Bomns-for-Linux_fix/src/launcher/CMakeLists.txt	2025-08-01 13:22:30.974425455 +0200
+@@ -6,9 +6,6 @@
+   callbacks.c
+ )
+ 
+-# Silence warnings from the GTK2 CMake scripts:
+-cmake_policy(SET CMP0011 OLD)
+-
+ find_package(GTK2 2.0 REQUIRED gtk)
+ 
+ include_directories(${GTK2_INCLUDE_DIRS})
