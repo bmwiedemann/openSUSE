@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug  2 19:25:57 UTC 2025 - munix9@googlemail.com
+
+- Update to 2.2.17:
+  * Bluefish 2.2.17 is a maintenance release that has only code
+    cleanup fixes to comply better with modern compiler standards.
+
+- Adapt no-python2.patch
+
+-------------------------------------------------------------------
 Thu Mar 20 15:04:27 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update BuildRequire from libpcre to libpcre2

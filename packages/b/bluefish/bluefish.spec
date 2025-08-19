@@ -17,7 +17,7 @@
 
 
 Name:           bluefish
-Version:        2.2.16
+Version:        2.2.17
 Release:        0
 Summary:        A feature-Rich HTML Editor
 License:        GPL-3.0-or-later
@@ -36,6 +36,7 @@ BuildRequires:  intltool
 BuildRequires:  jing
 BuildRequires:  man
 BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
 BuildRequires:  sgml-skel
 BuildRequires:  tidy
 BuildRequires:  pkgconfig(enchant-2)
@@ -83,7 +84,9 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
              UPDATE_DESKTOP=echo \
              UPDATE_MIME=echo
 
+%if 0%{suse_version} >= 1600
 %python3_fix_shebang_path %{buildroot}%{_datadir}/bluefish/*
+%endif
 
 %fdupes %{buildroot}%{_datadir}
 
