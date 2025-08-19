@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 19 05:29:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 10.1.1:
+  * INS-1303: fix CVE-2025-47907 (#1141)
+  * Revert "INS-1303: fix CVE-2025-47907"
+  * INS-1303: fix CVE-2025-47907
+
+-------------------------------------------------------------------
 Sun Aug 03 11:23:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 10.1.0:
