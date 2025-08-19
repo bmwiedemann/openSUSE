@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 15 14:15:41 UTC 2025 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Fix Fcitx 5 not starting on Plasma Wayland
+  * A regression of the previous fix for boo#1246418
+  * Run ibus-autostart only from the desktop file for XDG autostart
+  * Drop fcitx5-autostart.patch
+
+-------------------------------------------------------------------
 Sun Jul 13 06:01:14 UTC 2025 - Fuminobu Takeyama <ftake@geeko.jp>
 
 - Add fcitx-autostart to check $INPUT_METHOD so that fcitx5 does

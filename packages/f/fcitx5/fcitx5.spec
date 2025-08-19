@@ -38,8 +38,6 @@ Source102:      fcitx5.service
 Patch1:         fcitx5-gcc7.patch
 Patch2:         fcitx5-5.0.13-memfd.patch
 Patch3:         fcitx5-5.1.13-xcb.patch
-# PATCH-FIX-OPENSUSE fcitx5-autostart.patch ftake@geeko.jp -- check INPUT_METHOD before launch
-Patch4:         fcitx5-autostart.patch
 BuildRequires:  cmake
 BuildRequires:  dbus-1-devel
 BuildRequires:  extra-cmake-modules
@@ -153,9 +151,9 @@ export CXX=%{_bindir}/g++-13
 
 %install
 %cmake_install
-# recreate soft link
-rm -rf %{buildroot}%{_sysconfdir}/xdg/autostart/org.fcitx.Fcitx5.desktop
-ln -sf %{_datadir}/applications/org.fcitx.Fcitx5.desktop %{buildroot}%{_sysconfdir}/xdg/autostart/
+# Run fcitx5-autostart instead of fcitx5 for /etc/xdg/autostart/org.fcitx.Fcitx5.desktop
+# Note that /usr/share/applications/org.fcitx.Fcitx5.desktop executes fcitx5 directly.
+sed -i 's|Exec=%{_bindir}/fcitx5|Exec=%{_bindir}/fcitx5-autostart|' %{buildroot}%{_sysconfdir}/xdg/autostart/org.fcitx.Fcitx5.desktop
 
 # create autostart
 mkdir -p %{buildroot}%{_distconfdir}/X11/xim.d/
