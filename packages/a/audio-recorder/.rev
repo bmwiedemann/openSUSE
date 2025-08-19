@@ -141,4 +141,13 @@ Updated source. (forwarded request 729546 from ukbeast89)</comment>
     <comment>Prepare for RPM 4.20</comment>
     <requestid>1145228</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>154ab4aa7e7781156bbe470823f8ce4c</srcmd5>
+    <version>3.3.4</version>
+    <time>1755614864</time>
+    <user>anag_factory</user>
+    <comment>- Workaround to compile with gcc &gt;= 15, export CFLAGS=&quot;%{optflags}
+  -std=gnu17&quot; (forwarded request 1300118 from iznogood)</comment>
+    <requestid>1300265</requestid>
+  </revision>
 </revisionlist>

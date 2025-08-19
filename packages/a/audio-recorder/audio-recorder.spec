@@ -73,6 +73,8 @@ audio, FLAC, Opus, MP3 and WAV.
 %autosetup -n trunk -p1
 
 %build
+# Workaround to compile with gcc >= 15
+export CFLAGS="%{optflags} -std=gnu17"
 autoreconf -fi
 %configure
 %make_build
