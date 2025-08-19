@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Aug 19 05:37:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.0:
+  * Added Features
+    - Add custom compressor commands to the config [#635
+      @wagoodman]
+
+-------------------------------------------------------------------
+Tue Aug 19 05:34:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.37.0:
+  * Added Features
+    - Maximize compression for gzip [#632 @wagoodman]
+
+-------------------------------------------------------------------
+Tue Aug 19 05:31:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.36.1:
+  * Bug Fixes
+    - update generated mapping code for trixie [#626
+      @anchore-actions-token-generator]
+
+-------------------------------------------------------------------
+Tue Aug 19 05:25:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.36.0:
+  * Added Features
+    - move debian 13 (trixie) to released and debian 14 (forky) to
+      testing/sid/unstable [#628 @westonsteimel]
+  * Additional Changes
+    - migrate golangci-lint to v2 [#614 @cpanato]
+    - skip main repo workflows in forks [#618 @kzantow]
+  * Dependencies
+    - chore(deps): Bump actions/cache from 4.2.3 to 4.2.4 (#623)
+    - chore(deps): Bump actions/cache in /.github/actions/bootstrap
+      (#625)
+    - chore(deps): update tools to latest versions (#620)
+    - chore(deps): Bump github.com/anchore/grype from 0.97.0 to
+      0.97.1 (#621)
+    - chore(deps): update tools to latest versions (#613)
+    - chore(deps): Bump github.com/anchore/grype (#619)
+
+-------------------------------------------------------------------
 Thu Jul 24 07:29:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.35.0:
