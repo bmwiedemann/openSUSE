@@ -1,0 +1,39 @@
+From 9bdd3b0ee6a6fd5914fea0f56f3b754410733e53 Mon Sep 17 00:00:00 2001
+From: Paul Murphy <paumurph@redhat.com>
+Date: Thu, 10 Jul 2025 10:58:58 -0500
+Subject: [PATCH] Don't always panic if WASI_SDK_PATH is not set when detecting
+ compilers
+
+They are not always needed when building std, as is the case when
+packaging on Fedora. Panic if building from CI, but warn otherwise.
+---
+ src/bootstrap/src/utils/cc_detect.rs | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/src/bootstrap/src/utils/cc_detect.rs b/src/bootstrap/src/utils/cc_detect.rs
+index dcafeb80f90..2569f95e3ef 100644
+--- a/src/bootstrap/src/utils/cc_detect.rs
++++ b/src/bootstrap/src/utils/cc_detect.rs
+@@ -221,10 +221,15 @@ fn default_compiler(
+         }
+ 
+         t if t.contains("-wasi") => {
+-            let root = build
+-                .wasi_sdk_path
+-                .as_ref()
+-                .expect("WASI_SDK_PATH mut be configured for a -wasi target");
++            let root = if let Some(path) = build.wasi_sdk_path.as_ref() {
++                path
++            } else {
++                if build.config.is_running_on_ci {
++                    panic!("ERROR: WASI_SDK_PATH must be configured for a -wasi target on CI");
++                }
++                println!("WARNING: WASI_SDK_PATH not set, using default cc/cxx compiler");
++                return None;
++            };
+             let compiler = match compiler {
+                 Language::C => format!("{t}-clang"),
+                 Language::CPlusPlus => format!("{t}-clang++"),
+-- 
+2.49.0
+
