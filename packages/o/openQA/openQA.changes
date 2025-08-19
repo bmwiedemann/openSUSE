@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 19 13:11:46 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1755609067.e3c951fe:
+  * Stash gru_dependencies to avoid helper usage in view
+  * Move infopanel gru task link creation to the controller
+  * Create test for GRU task in test details
+  * Link minion job from openQA job with waiting task
+
+-------------------------------------------------------------------
 Mon Aug 18 09:11:01 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1755504216.b51ff4b1:
