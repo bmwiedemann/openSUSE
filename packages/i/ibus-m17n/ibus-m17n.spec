@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-m17n
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,37 +17,45 @@
 
 
 Name:           ibus-m17n
-Version:        1.4.34
+Version:        1.4.36
 Release:        0
 Summary:        The M17N engine for IBus platform
 License:        GPL-2.0-or-later
 Group:          System/Localization
-Provides:       locale(ibus:am;ar;as;bn;fa;gu;he;hi;ja;ka;kk;kn;ko;lo;ml;my;ur;ru;vi;zh)
 URL:            https://github.com/ibus/ibus-m17n
-Source:         https://github.com/ibus/ibus-m17n/releases/download/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(ibus-1.0) >= 1.4
+Source:         https://github.com/ibus/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  gtk3-devel
+BuildRequires:  ibus-devel
+BuildRequires:  libtool
 BuildRequires:  pkgconfig(m17n-shell)
 Requires:       ibus
+Provides:       locale(ibus:am;ar;as;bn;fa;gu;he;hi;ja;ka;kk;kn;ko;lo;ml;my;ur;ru;vi;zh)
 
 %description
 M17N engine for IBus input platform. It allows input of many languages using
 the input table maps from m17n-db.
 
+%lang_package
+
 %prep
 %setup -q
 
 %build
-%configure --disable-static \
-           --libexecdir=%{_libexecdir}/ibus
-%make_build
+./autogen.sh \
+           --disable-static \
+           --prefix=%{_prefix} \
+           --libexecdir=%{_ibus_libexecdir} \
+           --libdir=%{_libdir} \
+           --datadir=%{_datadir}
+
+%make_build %{?_smp_mflags}
 
 %install
-%make_install
+%make_install %{?_smp_mflags}
 
 %find_lang %{name}
 
-%files -f %{name}.lang
+%files
 %license COPYING
 %doc AUTHORS README
 %{_datadir}/ibus-*
@@ -55,8 +63,7 @@ the input table maps from m17n-db.
 %{_datadir}/ibus/component/*
 %{_datadir}/applications/ibus-setup-m17n.desktop
 %{_datadir}/glib-2.0/schemas/org.freedesktop.ibus.engine.m17n.gschema.xml
-%dir %{_datadir}/metainfo
-%{_datadir}/metainfo/m17n.appdata.xml
+%{_datadir}/metainfo/org.freedesktop.ibus.engine.m17n.metainfo.xml
 %{_datadir}/icons/hicolor/scalable/apps/ibus-m17n.svg
 %{_datadir}/icons/hicolor/16x16/apps/ibus-m17n.png
 %{_datadir}/icons/hicolor/22x22/apps/ibus-m17n.png
@@ -66,5 +73,7 @@ the input table maps from m17n-db.
 %{_datadir}/icons/hicolor/64x64/apps/ibus-m17n.png
 %{_datadir}/icons/hicolor/128x128/apps/ibus-m17n.png
 %{_datadir}/icons/hicolor/256x256/apps/ibus-m17n.png
+
+%files lang -f %{name}.lang
 
 %changelog

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 19 07:20:07 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Update to 1.4.36:
+  * Generate translations into metainfo.xml files with autotools (Related: mike-fabian#2)
+  * Rename m17n.appdata.xml to org.freedesktop.ibus.engine.m17n.metainfo.xml (Resolves: mike-fabian#2)
+  * Fix match pattern for layout for inscript
+  * Fix match pattern for rank for inscript2
+  * Translation update from Weblate (new: fi 100%, kab 100%)
+
+-------------------------------------------------------------------
 Fri Nov  8 12:55:49 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Update to 1.4.34
