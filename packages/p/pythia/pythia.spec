@@ -1,7 +1,7 @@
 #
 # spec file for package pythia
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define ver 8313
+%define ver 8315
 %define soname lib%{name}8
 Name:           pythia
-Version:        8.313
+Version:        8.315
 Release:        0
 Summary:        A simulation program for particle collisions at very high energies
 License:        GPL-2.0-or-later

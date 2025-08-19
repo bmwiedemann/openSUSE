@@ -5,11 +5,11 @@ a variant was sent via mail to phil...@cern.ch
  configure |    4 ++--
  2 files changed, 5 insertions(+), 6 deletions(-)
 
-Index: pythia8313/configure
+Index: pythia8315/configure
 ===================================================================
---- pythia8313.orig/configure
-+++ pythia8313/configure
-@@ -294,7 +294,7 @@ function error() {
+--- pythia8315.orig/configure
++++ pythia8315/configure
+@@ -296,7 +296,7 @@ function error() {
  ################################################################################
  
  # Check if help requested.
@@ -18,19 +18,19 @@ Index: pythia8313/configure
  for VAR in "$@"; do
      if [ "$VAR" = "-h" ] || [ "$VAR" = "--h" ] || [ "$VAR" = "-help" ] \
  	   || [ "$VAR" = "--help" ]; then
-@@ -305,7 +305,7 @@ done
+@@ -307,7 +307,7 @@ done
  
  # Parse the user arguments and evaluate each as a global variable.
  echo "# PYTHIA configuration file." > $CFG_FILE
--echo "# Generated on" `date` "with the user supplied options:" >> $CFG_FILE
-+echo "# Generated with the user supplied options:" >> $CFG_FILE
+-echo "# Generated on" `date` "with the following command:" >> $CFG_FILE
++echo "# Generated on with the following command:" >> $CFG_FILE
+ USER_CFG=""
  for VAR in "$@"; do
-     if [[ $OPTIONS =~ (^| )${VAR%%=*}($| ) ]]; then
- 	echo "# $VAR" >> $CFG_FILE;
-Index: pythia8313/Makefile
+     if [[ $OPTIONS =~ (^| )${VAR%%=*}($| ) ]]; then USER_CFG+=" $VAR"
+Index: pythia8315/Makefile
 ===================================================================
---- pythia8313.orig/Makefile
-+++ pythia8313/Makefile
+--- pythia8315.orig/Makefile
++++ pythia8315/Makefile
 @@ -129,11 +129,10 @@ $(LOCAL_LIB)/libpythia8powheg%.so: $(POW
  	$(LOCAL_TMP)/LHAPowheg.o $(LOCAL_LIB)/libpythia8$(LIB_SUFFIX)
  	$(CXX) $(LOCAL_TMP)/LHAPowheg.o -o $@ $(CXX_COMMON) $(CXX_SHARED)\
