@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Aug 19 05:15:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.9:
+  * Fix: login `--name` flag to `context-name` (#520)
+  * Update README.md (#529)
+  * chnage robot account to supported
+  * Typo solved (#522)
+  * Add Support for System-Level Robot Accounts (#507)
+  * build(deps): bump golang.org/x/text from 0.23.0 to 0.27.0
+    (#519)
+  * build(deps): bump github.com/charmbracelet/bubbletea from 1.3.5
+    to 1.3.6 (#515)
+  * build(deps): bump golang.org/x/term from 0.32.0 to 0.33.0
+    (#514)
+  * Increased the logs follow refresh interval to 5s as a default
+    (#516)
+  * Replication Start/Stop Management (#501)
+  * Replication Policy Management with Configuration File Support
+    (#510)
+  * feat(logs): add audit logs command with follow support (#511)
+  * build(deps): bump github.com/goharbor/go-client from 0.210.0 to
+    0.213.1 (#509)
+  * Change the print statements in func preblock() (#513)
+  * Replication Policy Management (#499)
+  * enhancing artifact view command (#485)
+  * Enhanced Robot Account Configuration Format (#504)
+
+-------------------------------------------------------------------
 Wed Jul 02 05:20:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.8:
