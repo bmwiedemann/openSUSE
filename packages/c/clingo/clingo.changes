@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jul  7 18:15:25 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to 5.8.0
+  * extend API to read/write aspif programs
+  * extend API to remove project and minimize statements
+  * fix cffi issues with python 3.12
+  * fix comment enum in Python API
+- update to 5.7.1
+  * fix comparison of theory elements
+- update to 5.7.0
+  * add AST node for comments
+  * add function to change undo mode
+  * add function to access priorities to API
+  * add Model::is_consequence to API
+  * add option to preserve facts
+  * improve hash table performance
+  * extend add_theory_atom method of backend
+  * fix add_theory_atom_with_guard in Python API
+  * fix AST bugs
+  * fix parsing of hexadecimal numbers
+  * fix assignment aggregates
+  * fix overflows in IESolver
+
+-------------------------------------------------------------------
 Tue Mar 11 10:32:51 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - BuildRequire python3-setuptools to fix build on python 3.13

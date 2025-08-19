@@ -18,7 +18,7 @@
 
 %define major 4
 Name:           clingo
-Version:        5.6.2
+Version:        5.8.0
 Release:        1.1
 Summary:        A grounder and solver for logic programs
 Group:          Development/Tools/Other
@@ -30,7 +30,7 @@ Source0:        https://github.com/potassco/clingo/archive/v%{version}/%{name}-%
 Patch0:         clingo.clasp-disable-class-memaccess-warning.patch
 
 BuildRequires:  bison
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
 BuildRequires:  re2c
 
