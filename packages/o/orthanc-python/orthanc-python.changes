@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 18 14:37:28 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 6.0
+  * The auto-generation of the Python wrapper is now part of the build,
+    to exploit the ORTHANC_PLUGIN_SINCE_SDK macro. This provides backward
+    compatibility with the SDK that is actually installed on the system
+  * Added Windows builder for Python 3.13
+  * Added Docker-based builder scripts for Debian 13 (trixie)
+
+-------------------------------------------------------------------
 Fri Jan 24 11:32:41 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - version 5.0

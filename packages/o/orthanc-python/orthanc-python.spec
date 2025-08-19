@@ -1,7 +1,7 @@
 #
 # spec file for package orthanc-python
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2020-2025 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           orthanc-python
-Version:        5.0
+Version:        6.0
 Release:        0
 Summary:        Python plugin for Orthanc
 License:        AGPL-3.0-or-later
@@ -47,6 +47,7 @@ BuildRequires:  orthanc-devel >= 1.10
 BuildRequires:  orthanc-source
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
+BuildRequires:  python3-pystache
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(python3)
 Requires:       orthanc
@@ -109,5 +110,6 @@ cp %{SOURCE11} %{buildroot}%{_docdir}/orthanc/.
 %dir %{_datadir}/orthanc
 %dir %{_datadir}/orthanc/plugins
 %{_datadir}/orthanc/plugins/*.so*
+/usr/orthanc.pyi
 
 %changelog
