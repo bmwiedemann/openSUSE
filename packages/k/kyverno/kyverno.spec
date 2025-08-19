@@ -1,7 +1,7 @@
 #
 # spec file for package kyverno
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kyverno
-Version:        1.15.0
+Version:        1.15.1
 Release:        0
 Summary:        CLI and kubectl plugin for Kyverno
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23.8
+BuildRequires:  go1.24 >= 1.24.6
 BuildRequires:  zsh
 
 %description

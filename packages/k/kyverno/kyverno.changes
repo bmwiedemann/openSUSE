@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 19 07:27:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.15.1:
+  No CLI-related changes
+  * Dependencies
+    - chore: update go.mod to 1.24.6 (latest) (#13822) (#13823)
+
+-------------------------------------------------------------------
 Fri Aug 01 12:55:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.15.0:
