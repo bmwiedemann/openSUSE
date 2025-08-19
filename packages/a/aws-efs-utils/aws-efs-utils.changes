@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 15 06:25:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.3.3 (bsc#1248055, CVE-2025-55159)
+  * Add environment variable support for AWS profiles and regions
+  * Regenerate Cargo.lock with rust 1.70.0
+  * Update circle-ci config
+  * Fix AWS Env Variable Test and Code Style Issue
+  * Remove CentOS 8 and Ubuntu 16.04 from verified Linux distribution list
+- from version 2.3.2
+  * Update version in amazon-efs-utils.spec to 2.3.1
+  * Fix incorrect package version
+
+-------------------------------------------------------------------
 Thu Jul 10 11:29:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add gcc13 and gcc13-c++ to BuildRequires for SLE-15

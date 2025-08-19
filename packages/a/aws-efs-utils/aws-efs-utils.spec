@@ -1,7 +1,7 @@
 #
 # spec file for package aws-efs-utils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %global _sitelibdir %{%{pythons}_sitelib}
 Name:           aws-efs-utils
-Version:        2.3.1
+Version:        2.3.3
 Release:        0
 Summary:        Utilities for using the EFS file systems
 License:        MIT
