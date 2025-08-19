@@ -53,14 +53,22 @@ BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
+%if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libswscale)
+%else
+BuildRequires:  pkgconfig(libavcodec) = 61.19.101
+BuildRequires:  pkgconfig(libavdevice) = 61.3.100
+BuildRequires:  pkgconfig(libavformat) = 61.7.100
+BuildRequires:  pkgconfig(libavutil) = 59.39.100
+BuildRequires:  pkgconfig(libswscale) = 8.3.100
+%endif
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(libspa-0.2)
-BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libvlc)
