@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Aug 19 05:38:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.2:
+  * Bug Fixes
+    - release namespace deletes after stopping being part of a
+      release (2bba22b)
+
+-------------------------------------------------------------------
+Tue Aug 19 05:35:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.1:
+  * Bug Fixes
+    - error "werf.io/show-logs-only-for-containers", expected
+      integer value (209bd1c)
+
+-------------------------------------------------------------------
+Tue Aug 19 05:32:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.0:
+  * Features
+    - display logs only from 1 replica by default (configured with
+      annotation werf.io/show-logs-only-for-number-of-replicas)
+      (47072bf)
+
+-------------------------------------------------------------------
+Tue Aug 19 05:24:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.11.0:
+  * Features
+    - greatly decrease Kubernetes apiserver load (7afe7ad)
+  * Bug Fixes
+    - panic "rules file not valid" (075b8e0)
+    - panic "validate rules file" (6bb4e3b)
+
+-------------------------------------------------------------------
 Sun Aug 03 11:32:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.0:
