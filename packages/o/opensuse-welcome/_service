@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/openSUSE/openSUSE-welcome.git</param>
-    <param name="parent-tag">v0.1.9</param>
+    <param name="parent-tag">v0.1.10</param>
     <param name="versionformat">@PARENT_TAG@+git.@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>

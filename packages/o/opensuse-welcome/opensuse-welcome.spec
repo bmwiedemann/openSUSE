@@ -20,7 +20,7 @@
 %define _name openSUSE-welcome
 
 Name:           opensuse-welcome
-Version:        0.1.9+git.55.08b0379
+Version:        0.1.10+git.0.e0056bf
 Release:        0
 Summary:        Welcome utility for openSUSE
 License:        GPL-3.0-or-later AND MIT
@@ -62,12 +62,15 @@ A welcome utility built to welcome new users to openSUSE.
 %python3_fix_shebang_path %{buildroot}%{_datadir}/openSUSE-Welcome/*
 %endif
 
+# Remove autostart file to disable auto-launching
+# https://code.opensuse.org/leap/features/issue/208
+rm -f %{buildroot}%{_sysconfdir}/xdg/autostart/org.opensuse.opensuse_welcome.desktop
+
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/opensuse-welcome
 %{_datadir}/applications/org.opensuse.opensuse_welcome.desktop
-%{_sysconfdir}/xdg/autostart/org.opensuse.opensuse_welcome.desktop
 %{_datadir}/icons/hicolor/scalable/apps/org.opensuse.opensuse_welcome.svg
 %{_datadir}/icons/hicolor/symbolic/apps/org.opensuse.opensuse_welcome-symbolic.svg
 %{_datadir}/metainfo/org.opensuse.opensuse_welcome.appdata.xml

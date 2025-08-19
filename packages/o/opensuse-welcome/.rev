@@ -124,4 +124,23 @@
   * Translated using Weblate (Russian) (forwarded request 1172926 from lkocman)</comment>
     <requestid>1173453</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fe0245d85709530f90afaa133b98dc10</srcmd5>
+    <version>0.1.10+git.0.e0056bf</version>
+    <time>1755614628</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.1.10+git.0.e0056bf:
+  * Drop checkbox to enable autostart code-o-o#leap/features/208
+  * Do not show in GNOME desktop
+  * Update README.md with correct ninja command
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Hebrew)
+  * Translated using Weblate (Persian)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Romanian)
+  * Translated using Weblate (Russian)
+  * Added translation using Weblate (Romanian)
+  * Fix string duplication in the Romanian translation</comment>
+    <requestid>1297001</requestid>
+  </revision>
 </revisionlist>
