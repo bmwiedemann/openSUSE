@@ -905,4 +905,12 @@ See SR#946556</comment>
     <comment></comment>
     <requestid>1289380</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>4d9ea55795419454a83c753f56ee4a8d</srcmd5>
+    <version>1.89.0</version>
+    <time>1755614618</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.89.0 - for details see the rust1.89 package</comment>
+    <requestid>1299291</requestid>
+  </revision>
 </revisionlist>
