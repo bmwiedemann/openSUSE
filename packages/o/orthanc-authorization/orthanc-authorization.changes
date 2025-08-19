@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug 18 13:53:03 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 0.10.1
+  * Fix audit-logs export in CSV format.
+  * New configuration "ExtraPermissions" to ADD new permissions to
+    the default "Permissions" entries.
+  * Improved handling of "Anonymous" user profiles (when no auth-tokens
+    are provided):  The plugin will now request the auth-service to
+    get an anonymous user profile even if there are no auth-tokens in the
+    HTTP request.
+  * The User profile can now contain a "groups" field if the auth-service
+    provides it.
+  * The User profile can now contain an "id" field if the auth-service
+    provides it.
+  * New experimental feature: audit-logs
+    - Enabled by the "EnableAuditLogs" configuration.
+    - Audit-logs are currently handled by the PostgreSQL plugin and can be 
+      browsed through the route /auth/audit-logs.
+    - New default permission "audit-logs" to grant access to the 
+      "/auth/audit-logs" route.
+  * Fix: The "server-id" field is now included in all requests sent to the
+    auth-service.
+
+-------------------------------------------------------------------
 Mon Jul 14 12:56:31 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - version 0.9.4
