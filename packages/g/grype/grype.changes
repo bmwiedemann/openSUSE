@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 19 05:14:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.98.0:
+  * chore(deps): update Syft to v1.31.0 (#2867)
+  * chore(deps): bump github/codeql-action from 3.29.8 to 3.29.9
+    (#2865)
+  * chore(deps): bump actions/checkout from 4.2.2 to 5.0.0 (#2864)
+  * feat(debian): move debian 13 (trixie) to released and debian 14
+    (forky) to testing/sid/unstable (#2861)
+
+-------------------------------------------------------------------
 Sun Aug 10 07:04:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.97.2:
