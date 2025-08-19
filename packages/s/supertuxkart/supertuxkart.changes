@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 19 07:16:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add supertuxkart-cmake4.patch: Fix build using cmake 4.
+
+-------------------------------------------------------------------
 Sat Jul  5 09:39:54 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - Make compatible to CMake 4.0 and newer until STK 1.5 will provide

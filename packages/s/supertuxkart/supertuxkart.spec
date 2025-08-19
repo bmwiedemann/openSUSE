@@ -1,7 +1,7 @@
 #
 # spec file for package supertuxkart
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,9 @@ Source9:        supertuxkart.6
 # PATCH-FIX-UPSTREAM build with gcc13
 Patch0:         gcc13.patch
 # PATCH-FIX-UPSTREAM build with gcc15
-Patch1:         add-include-work-with-gcc15.patch 
+Patch1:         add-include-work-with-gcc15.patch
+# PATCH-FIX-UPSTREAM - Fix build using cmake 4.0
+Patch2:         supertuxkart-cmake4.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -67,7 +69,7 @@ BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(xrandr)
 Requires:       %{name}-data = %{version}
 Requires(post): hicolor-icon-theme
-Requires(postun):hicolor-icon-theme
+Requires(postun): hicolor-icon-theme
 
 %description
 SuperTuxKart is a Free 3d kart racing game.
