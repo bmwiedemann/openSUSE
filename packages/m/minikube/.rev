@@ -756,4 +756,12 @@
     <comment></comment>
     <requestid>1279959</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>6c8051239c3dbd42354ee5c6101f463a</srcmd5>
+    <version>1.36.0</version>
+    <time>1755614657</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.35.0 (bsc#1234528, CVE-2024-45337):</comment>
+    <requestid>1300137</requestid>
+  </revision>
 </revisionlist>

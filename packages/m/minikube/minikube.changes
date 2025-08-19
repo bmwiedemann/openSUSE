@@ -86,7 +86,7 @@ Thu Jan 16 06:04:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 - refactor spec to fix builds errors
 - add completion subpackages for fish and zsh
 - add %check section to check version output
-- update to 1.35.0:
+- update to 1.35.0 (bsc#1234528, CVE-2024-45337):
   * Features:
     - Add support for AMD GPUs via --gpus=amd #19749
     - publish & download kicbase image in github release assets
