@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 16 15:44:21 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Split ddskk-doc out of ddskk:
+  Since too many documents files installed with the binary package,
+  seperate them to a solo doc package. User could have a choice to
+  install or not. 
+
+-------------------------------------------------------------------
 Mon Jul 28 10:09:45 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Split skkdic out of ddskk:

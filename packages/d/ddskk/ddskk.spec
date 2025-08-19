@@ -72,6 +72,16 @@ aggressively developed.
 
 %endif
 
+%package doc
+Summary:        Documentation files for the %{name} package
+Group:          Documentation/HTML
+Requires:       %{name} = %{version}
+BuildArch:      noarch
+
+%description doc
+SKK (Simple Kana to Kanji conversion program) is a Japanese input
+method for Emacs. ddskk-doc contains Changelogs and Readme files.
+
 %prep
 %autosetup -p1 -n ddskk-ddskk-17.1_Neppu
 
@@ -152,7 +162,6 @@ fi
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog* READMEs
 %{emacs_package_dir}
 %config %{emacs_sitelisp_dir}/suse-start-%{name}.el
 %dir %{_datadir}/skk/
@@ -165,12 +174,14 @@ fi
 %if %{use_xemacs}
 %files -n ddskk-xemacs
 %defattr(-,root,root)
-%doc ChangeLog* READMEs
 %dir %{xemacs_package_dir}/
 %dir %{xemacs_package_dir}/lisp/
 %dir %{xemacs_package_dir}%{_sysconfdir}/
 %{xemacs_package_dir}/lisp/*
 %{xemacs_package_dir}%{_sysconfdir}/*
 %endif
+
+%files doc
+%doc ChangeLog* READMEs
 
 %changelog
