@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 31 19:16:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.11.0
+  * dropped Python 3.9 support
+  * added py.typed and enabled mypy strict typing
+  * add get_explore
+  * fix get_charts
+  * get_album: prevent KeyError when parsing missing artist data
+  * search: fix episode parsing
+  * get_album: distinguish between "other versions" and "releases for you"
+  * Space between verification_url and comma in the OAuth Flow
+
+-------------------------------------------------------------------
 Fri Apr 18 14:07:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.10.3
