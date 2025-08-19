@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Aug 19 06:57:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.52.0:
+  * Fix
+    - [5c16d3f] vcsim: Avoid panic in QueryAvailablePerfMetric if
+      VM has no Datastore
+  * API Changes
+    - [2278e0e] Update folder.PlaceVMsXCluster to return available
+      candidate networks
+    - [28eeab9] fix comments and doc links
+    - [7a3647c] fix action parameters
+    - [8ee9995] update drafts bindings
+    - [37dd0c8] bindings for
+      esx/settings/clusters/cluster/configuration/drafts
+    - [7074655] Placement policy WSDL names changed
+    - [55501e2] add bindings for recent tasks and schema
+    - [3230765] add bindings for esx/settings/cluster/configuration
+    - [74eea10] add bindings for
+      esx/settings/cluster/enablement/configuration/transition
+    - [e61ad35] Update folder.PlaceVMsXCluster to filter clusters
+      based on candidate networks availability - Add GoVmomi
+      Bindings to CandidateNetworks - Made changes suggested by
+      Shengjie
+    - [8784335] Add "lsilogicsas" alias for "lsilogic-sas" in
+      CreateSCSIController
+  * govc (CLI)
+    - [0b0e0cc] Add vmclass configSpec options
+  * Documentation
+    - [d0143b1] update CHANGELOG.md (#3839) (#3839)
+  * Chore
+    - [e53c30d] Update version.go for v0.52.0
+
+-------------------------------------------------------------------
 Sun May 25 07:52:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.51.0:

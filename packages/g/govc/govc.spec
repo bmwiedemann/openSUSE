@@ -1,7 +1,7 @@
 #
 # spec file for package govc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           govc
-Version:        0.51.0
+Version:        0.52.0
 Release:        0
 Summary:        vSphere CLI built on top of govmomi
 License:        Apache-2.0
