@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug 18 07:49:17 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.1:
+  * render: fix drawing transparent images (49f84fd)
+
+-------------------------------------------------------------------
+Mon Aug 18 07:48:35 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.0:
+  Features:
+  * auto saving on quit app (72a511c)
+  * config: custom_color config option (726159d)
+  * i18n: add zh_CN locale (9e7f3b2)
+  * auto saving on quit app (72a511c)
+  * config: custom_color config option (726159d)
+  * i18n: add zh_CN locale (9e7f3b2)
+  Bug Fixes:
+  * config: fix segfault at exit (182322d)
+  * ui: add non-versioned fontawesome (3941fec)
+  * config: fix segfault at exit (182322d)
+  * ui: add non-versioned fontawesome (3941fec)
+
+-------------------------------------------------------------------
 Thu Dec  1 08:46:12 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.5.1:
