@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-table
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        The Table engine for IBus platform
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/mike-fabian/ibus-table/
-Source:         https://github.com/mike-fabian/ibus-table/archive/refs/tags/%{version}.tar.gz
+Source:         https://github.com/mike-fabian/ibus-table/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  docbook-utils-minimal
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools

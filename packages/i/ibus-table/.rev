@@ -483,4 +483,13 @@ feat: use _service files to automate fetching sources</comment>
     <comment></comment>
     <requestid>1296223</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>bf9c935a37ba78b002d633fd8f1a04f8</srcmd5>
+    <version>1.17.14</version>
+    <time>1755614841</time>
+    <user>anag_factory</user>
+    <comment>- Rename 1.17.14.tar.gz to ibus-table-1.17.14.tar.gz:
+  Rename source package to conform to openSUSE community practices.</comment>
+    <requestid>1300251</requestid>
+  </revision>
 </revisionlist>
