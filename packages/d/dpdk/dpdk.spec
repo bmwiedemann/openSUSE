@@ -14,7 +14,6 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# needssslcertforbuild
 
 
 %define platform generic
@@ -38,7 +37,7 @@
 # Add option to build without tools
 %bcond_without tools
 Name:           dpdk
-Version:        24.11.1
+Version:        24.11.3
 Release:        0
 Summary:        Set of libraries and drivers for fast packet processing
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-2.1-only
@@ -51,20 +50,16 @@ Patch0:         0001-fix-cpu-compatibility.patch
 Patch1:         0001-examples-vm_power_manager-add-missing-header.patch
 # Fix inline error for < gcc14 (<=SLE16)
 Patch2:         0001-always_inline-fix.patch
-# Fix reproducable builds https://bugzilla.opensuse.org/show_bug.cgi?id=1244130
-Patch3:         0001-dts-generate-random-capture_name-per-call.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pyelftools >= 0.22}
 BuildRequires:  %{pythons}
 BuildRequires:  binutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  kernel-syms
 BuildRequires:  libfdt-devel
 BuildRequires:  meson >= 0.53.2
 BuildRequires:  modutils
 BuildRequires:  patchelf
-BuildRequires:  pesign-obs-integration
 BuildRequires:  pkgconfig
 BuildRequires:  rdma-core-devel
 BuildRequires:  pkgconfig(jansson)
@@ -140,11 +135,13 @@ API programming documentation for the Data Plane Development Kit.
 %package tools
 Summary:        Tools for setting up Data Plane Development Kit environment
 Group:          System/Libraries
+BuildArch:      noarch
 Requires:       %{name} = %{version}
 Requires:       findutils
 Requires:       iproute
 Requires:       kmod
 Requires:       pciutils
+Requires:       which
 %ifarch aarch64
 Provides:       dpdk-thunderx-tools = %{version}-%{release}
 Obsoletes:      dpdk-thunderx-tools < %{version}-%{release}
@@ -201,7 +198,6 @@ for flavor in %{flavors_to_build}; do
   %endif
     -Dplatform="%{platform}" \
     -Dcpu_instruction_set=%{machine} \
-    -Denable_kmods=true \
     -Denable_driver_sdk=true \
     -Ddrivers_install_subdir=%{pmddir} \
     -Dkernel_dir="%{_prefix}/src/linux-obj/%{_target_cpu}/$flavor"

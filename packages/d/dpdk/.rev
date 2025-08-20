@@ -749,4 +749,19 @@
   [+ 0001-dts-generate-random-capture_name-per-call.patch]</comment>
     <requestid>1283587</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>3849550359a9f4d650e89c51fae16b87</srcmd5>
+    <version>24.11.3</version>
+    <time>1755689117</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 24.11.3
+  * LTS release update contains ~180 fixes from main branch up to DPDK 25.07
+  * remove patch 0001-dts-generate-random-capture_name-per-call.patch
+- Remove obsolete build option -Denable_kmods (upstream a52d472c5)
+- dpdk-tools requires &quot;which&quot; and is noarch
+
+- Drop pesign and needssslcertforbuild because we don't build a kmp anymore
+  (boo#1247389)</comment>
+    <requestid>1300321</requestid>
+  </revision>
 </revisionlist>
