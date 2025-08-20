@@ -24,7 +24,11 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-fastapi%{psuffix}
 Version:        0.115.13
@@ -38,14 +42,19 @@ Patch0:         support-starlette-0.47.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-pydantic >= 1.8.2
 Requires:       python-typing_extensions >= 4.8.0
 Requires:       (python-starlette >= 0.40.0 with python-starlette < 0.48.0)
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 # SECTION test requirements
 %if %{with test}
 BuildRequires:  %{python_module Flask >= 1.1.2}
@@ -105,6 +114,12 @@ donttest+=" or test_openapi"
 
 %pre
 %python_libalternatives_reset_alternative fastapi
+
+%post
+%python_install_alternative fastapi
+
+%postun
+%python_uninstall_alternative fastapi
 
 %if !%{with test}
 %files %{python_files}
