@@ -1,7 +1,7 @@
 #
 # spec file for package dysk
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dysk
-Version:        2.10.1
+Version:        3.0.0
 Release:        0
 Summary:        Get information on filesystems, like df but better
 License:        MIT

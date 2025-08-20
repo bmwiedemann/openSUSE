@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Aug 20 06:18:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.0:
+  * reduce number of keywords in Cargo.toml
+  * update changelog, fix deploy script
+  * remove table of direct links to executables
+  * commit the official deploy script
+  * version 3.0
+  * improve cross compilation
+  * make target.sh compatible with mac
+  * build.sh compatible with non linux local
+  * update doc to mention in runs on mac too
+  * update lfs-core to stop using stat on mac
+  * restore dev major:minor in json
+  * use lfs-core v0.13
+  * Mac: unix device id, PATH argument
+  * make / not normal on mac
+  * make /System/Volumes/Data normal
+  * use lfs-core dependency through github with branch
+  * fix unused import on mac
+  * make /boot not "normal" on linux
+  * WIP - Mac compatibility
+  * add a CONTRIBUTING.md file
+  * add RISC-V pre-built binary
+
+-------------------------------------------------------------------
 Tue May 13 11:38:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.10.1:
