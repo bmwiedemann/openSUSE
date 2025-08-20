@@ -1,4 +1,356 @@
 -------------------------------------------------------------------
+Wed Aug 20 06:20:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.1.0:
+  * CLI-related changes in the changelog
+    - docs(cli): improve `argocd actions run` docs (#23376)
+    - feat(cli): Add Plugin Support to the Argo CD CLI (#20074)
+    - feat(cli): Adding whoami alias (#23385)
+    - fix(cli): Fix for removing auto generated tag for
+      applicationset command (#22446)
+    - fix(cli): Prevent Get & Sync from Hanging on Invalid
+      Application Spec (#21702)
+    - chore(cli): fix `argocd admin repo` command usage docs and
+      examples (#23375)
+    - chore(cli): fix `argocd repo` command usage docs and
+      description (#23364)
+  * Dependencies
+    - chore(deps): Update some dependencies versions (#22228)
+      (#22260)
+    - chore(deps): bump @babel/runtime from 7.14.6 to 7.26.10 in
+      /ui (#22304)
+    - chore(deps): bump @fortawesome/fontawesome-free from 6.5.2 to
+      6.7.2 in /ui (#23105)
+    - chore(deps): bump Dex from 2.41.1 to 2.43.0 (#23088)
+    - chore(deps): bump SonarSource/sonarqube-scan-action from
+      4.2.1 to 5.2.0 (#23164)
+    - chore(deps): bump actions/cache from 4.2.0 to 4.2.3 (#23123)
+    - chore(deps): bump actions/download-artifact from 4.1.8 to
+      4.3.0 (#23153)
+    - chore(deps): bump actions/setup-go from 5.2.0 to 5.5.0
+      (#23151)
+    - chore(deps): bump actions/setup-node from 4.1.0 to 4.4.0
+      (#23108)
+    - chore(deps): bump actions/upload-artifact from 4.4.3 to 4.5.0
+      (#21231)
+    - chore(deps): bump chromedriver from 134.0.2 to 135.0.0 in
+      /ui-test (#22555)
+    - chore(deps): bump chromedriver from 135.0.0 to 135.0.1 in
+      /ui-test (#22628)
+    - chore(deps): bump chromedriver from 135.0.1 to 135.0.2 in
+      /ui-test (#22704)
+    - chore(deps): bump chromedriver from 135.0.2 to 135.0.3 in
+      /ui-test (#22774)
+    - chore(deps): bump chromedriver from 135.0.3 to 135.0.4 in
+      /ui-test (#22787)
+    - chore(deps): bump chromedriver from 135.0.4 to 136.0.0 in
+      /ui-test (#22839)
+    - chore(deps): bump chromedriver from 136.0.0 to 136.0.2 in
+      /ui-test (#22987)
+    - chore(deps): bump code.gitea.io/sdk/gitea from 0.20.0 to
+      0.21.0 (#22565)
+    - chore(deps): bump codecov/codecov-action from 4.6.0 to 5.1.2
+      (#21252)
+    - chore(deps): bump codecov/test-results-action from 1.0.1 to
+      1.1.1 (#23124)
+    - chore(deps): bump controller-gen to v0.18.0 (#23000)
+    - chore(deps): bump dario.cat/mergo from 1.0.1 to 1.0.2
+      (#22903)
+    - chore(deps): bump docker/build-push-action from 6.10.0 to
+      6.17.0 (#23122)
+    - chore(deps): bump docker/build-push-action from 6.17.0 to
+      6.18.0 (#23179)
+    - chore(deps): bump docker/login-action from 3.3.0 to 3.4.0
+      (#23110)
+    - chore(deps): bump docker/setup-buildx-action from 3.10.0 to
+      3.11.0 (#23442)
+    - chore(deps): bump docker/setup-buildx-action from 3.8.0 to
+      3.10.0 (#23152)
+    - chore(deps): bump docker/setup-qemu-action from 3.2.0 to
+      3.6.0 (#23120)
+    - chore(deps): bump
+      github.com/Azure/azure-sdk-for-go/sdk/azcore from 1.17.0 to
+      1.17.1 (#22429)
+    - chore(deps): bump
+      github.com/Azure/azure-sdk-for-go/sdk/azcore from 1.17.1 to
+      1.18.0 (#22564)
+    - chore(deps): bump
+      github.com/Azure/azure-sdk-for-go/sdk/azidentity from 1.10.0
+      to 1.10.1 (#23350)
+    - chore(deps): bump
+      github.com/Azure/azure-sdk-for-go/sdk/azidentity from 1.8.2
+      to 1.9.0 (#22614)
+    - chore(deps): bump
+      github.com/Azure/azure-sdk-for-go/sdk/azidentity from 1.9.0
+      to 1.10.0 (#22990)
+    - chore(deps): bump github.com/Azure/kubelogin from 0.1.9 to
+      0.2.3 (#22401)
+    - chore(deps): bump github.com/Azure/kubelogin from 0.2.3 to
+      0.2.6 (#22419)
+    - chore(deps): bump github.com/Azure/kubelogin from 0.2.6 to
+      0.2.7 (#22453)
+    - chore(deps): bump github.com/Azure/kubelogin from 0.2.7 to
+      0.2.8 (#22813)
+    - chore(deps): bump github.com/alicebob/miniredis/v2 from
+      2.34.0 to 2.35.0 (#23271)
+    - chore(deps): bump github.com/argoproj/pkg to v2.0.1 (#22516)
+    - chore(deps): bump github.com/aws/aws-sdk-go from 1.55.6 to
+      1.55.7 (#22761)
+    - chore(deps): bump github.com/bradleyfalzon/ghinstallation/v2
+      from 2.14.0 to 2.15.0 (#22685)
+    - chore(deps): bump github.com/bradleyfalzon/ghinstallation/v2
+      from 2.15.0 to 2.16.0 (#23221)
+    - chore(deps): bump github.com/casbin/casbin/v2 from 2.103.0 to
+      2.104.0 (#22388)
+    - chore(deps): bump github.com/casbin/casbin/v2 from 2.104.0 to
+      2.105.0 (#22732)
+    - chore(deps): bump github.com/casbin/casbin/v2 from 2.105.0 to
+      2.106.0 (#23247)
+    - chore(deps): bump github.com/casbin/casbin/v2 from 2.106.0 to
+      2.107.0 (#23322)
+    - chore(deps): bump github.com/casbin/govaluate from 1.3.0 to
+      1.6.0 (#23074)
+    - chore(deps): bump github.com/coreos/go-oidc/v3 from 3.13.0 to
+      3.14.1 (#22566)
+    - chore(deps): bump github.com/expr-lang/expr from 1.16.9 to
+      1.17.0 (#22364)
+    - chore(deps): bump github.com/expr-lang/expr from 1.17.0 to
+      1.17.1 (#22400)
+    - chore(deps): bump github.com/expr-lang/expr from 1.17.1 to
+      1.17.2 (#22477)
+    - chore(deps): bump github.com/expr-lang/expr from 1.17.2 to
+      1.17.3 (#22989)
+    - chore(deps): bump github.com/expr-lang/expr from 1.17.3 to
+      1.17.4 (#23175)
+    - chore(deps): bump github.com/expr-lang/expr from 1.17.4 to
+      1.17.5 (#23248)
+    - chore(deps): bump github.com/fsnotify/fsnotify from 1.8.0 to
+      1.9.0 (#22577)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.14.0 to
+      5.16.0 (#22684)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.16.0 to
+      5.16.1 (#23270)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.16.1 to
+      5.16.2 (#23341)
+    - chore(deps): bump github.com/go-jose/go-jose/v4 from 4.0.5 to
+      4.1.0 (#22598)
+    - chore(deps): bump github.com/go-logr/logr from 1.4.2 to 1.4.3
+      (#23194)
+    - chore(deps): bump github.com/golang-jwt/jwt/v4 from 4.5.1 to
+      4.5.2 (#22442)
+    - chore(deps): bump github.com/golang-jwt/jwt/v5 from 5.2.1 to
+      5.2.2 (#22441)
+    - chore(deps): bump github.com/google/go-jsonnet from
+      0.21.0-rc1.0.20250311032901-bc787d68ca30 to 0.21.0-rc2
+      (#22454)
+    - chore(deps): bump github.com/google/go-jsonnet from
+      0.21.0-rc2 to 0.21.0 (#22902)
+    - chore(deps): bump
+      github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus
+      from 1.0.1 to 1.1.0 (#23441)
+    - chore(deps): bump
+      github.com/grpc-ecosystem/go-grpc-middleware/v2 from 2.3.1 to
+      2.3.2 (#22868)
+    - chore(deps): bump github.com/jarcoal/httpmock from 1.3.1 to
+      1.4.0 (#22576)
+    - chore(deps): bump github.com/ktrysmt/go-bitbucket from 0.9.81
+      to 0.9.82 (#22543)
+    - chore(deps): bump github.com/ktrysmt/go-bitbucket from 0.9.82
+      to 0.9.83 (#22762)
+    - chore(deps): bump github.com/ktrysmt/go-bitbucket from 0.9.83
+      to 0.9.85 (#22866)
+    - chore(deps): bump github.com/ktrysmt/go-bitbucket from 0.9.85
+      to 0.9.86 (#23349)
+    - chore(deps): bump github.com/olekukonko/tablewriter from
+      0.0.6-0.20230925090304-df64c4bbad77 to 1.0.6 (#23030)
+    - chore(deps): bump github.com/olekukonko/tablewriter from
+      1.0.6 to 1.0.7 (#23174)
+    - chore(deps): bump github.com/prometheus/client_golang from
+      1.21.1 to 1.22.0 (#22615)
+    - chore(deps): bump github.com/prometheus/client_model from
+      0.6.1 to 0.6.2 (#22654)
+    - chore(deps): bump github.com/redis/go-redis/v9 from 9.7.1 to
+      9.7.3 (#22425)
+    - chore(deps): bump gitlab.com/gitlab-org/api/client-go from
+      0.116.0 to 0.129.0 (#23098)
+    - chore(deps): bump gitlab.com/gitlab-org/api/client-go from
+      0.129.0 to 0.130.1 (#23365)
+    - chore(deps): bump
+      go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc
+      from 0.59.0 to 0.60.0 (#22214)
+    - chore(deps): bump
+      go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
+      from 1.32.0 to 1.35.0 (#22215)
+    - chore(deps): bump
+      go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
+      from 1.35.0 to 1.36.0 (#23096)
+    - chore(deps): bump go.opentelemetry.io/otel/sdk from 1.34.0 to
+      1.35.0 (#22210)
+    - chore(deps): bump golang.org/x/net from 0.37.0 to 0.38.0
+      (#22509)
+    - chore(deps): bump golang.org/x/net from 0.38.0 to 0.39.0
+      (#22599)
+    - chore(deps): bump golang.org/x/net from 0.39.0 to 0.40.0
+      (#22874)
+    - chore(deps): bump golang.org/x/net from 0.40.0 to 0.41.0
+      (#23289)
+    - chore(deps): bump golang.org/x/oauth2 from 0.28.0 to 0.29.0
+      (#22580)
+    - chore(deps): bump golang.org/x/oauth2 from 0.29.0 to 0.30.0
+      (#22871)
+    - chore(deps): bump golang.org/x/sync from 0.14.0 to 0.15.0
+      (#23290)
+    - chore(deps): bump golang.org/x/term from 0.31.0 to 0.32.0
+      (#22873)
+    - chore(deps): bump golang.org/x/time from 0.11.0 to 0.12.0
+      (#23288)
+    - chore(deps): bump golangci/golangci-lint-action from 6.1.1 to
+      8.0.0 (#23111)
+    - chore(deps): bump google.golang.org/grpc from 1.71.0 to
+      1.71.1 (#22542)
+    - chore(deps): bump google.golang.org/grpc from 1.71.1 to
+      1.72.0 (#22742)
+    - chore(deps): bump google.golang.org/grpc from 1.72.0 to
+      1.72.1 (#22988)
+    - chore(deps): bump google.golang.org/grpc from 1.72.1 to
+      1.72.2 (#23161)
+    - chore(deps): bump google.golang.org/grpc from 1.72.2 to
+      1.73.0 (#23292)
+    - chore(deps): bump google.golang.org/protobuf from 1.36.5 to
+      1.36.6 (#22478)
+    - chore(deps): bump goreleaser/goreleaser-action from 6.1.0 to
+      6.3.0 (#23163)
+    - chore(deps): bump http-proxy-middleware from 2.0.7 to 2.0.9
+      in /ui (#22698)
+    - chore(deps): bump library/busybox from `3308bdf` to `f64ff79`
+      in /test/e2e/multiarch-container (#23145)
+    - chore(deps): bump library/busybox from `37f7b37` to `3308bdf`
+      in /test/e2e/multiarch-container (#23119)
+    - chore(deps): bump library/busybox from
+      sha256:498a000f370d8c37927118ed80afe8adc38d1edcbfc071627d17b25c88efcab0
+      to
+      sha256:37f7b378a29ceb4c551b1b5582e27747b855bbfaa73fa11914fe0df028dc581f
+      in /test/e2e/multiarch-container (#22703)
+    - chore(deps): bump library/golang from 1.24.1 to 1.24.2 in
+      /test/container (#22597)
+    - chore(deps): bump library/golang from 1.24.1 to 1.24.2 in
+      /test/remote (#22581)
+    - chore(deps): bump library/golang from 1.24.2 to 1.24.3 in
+      /test/remote (#22905)
+    - chore(deps): bump library/golang from
+      1.24.2@sha256:1ecc479bc712a6bdb56df3e346e33edcc141f469f82840bab9f4bc2bc41bf91d
+      to
+      sha256:d9db32125db0c3a680cfb7a1afcaefb89c898a075ec148fdc2f0f646cc2ed509
+      in /test/container (#22729)
+    - chore(deps): bump library/golang from `18a1f2d` to `1ecc479`
+      in /test/container (#22637)
+    - chore(deps): bump library/golang from `18a1f2d` to `1ecc479`
+      in /test/remote (#22636)
+    - chore(deps): bump library/golang from `1bcf884` to `e84f2e8`
+      in /test/remote (#23106)
+    - chore(deps): bump library/golang from `1ecc479` to `d9db321`
+      in /test/remote (#22790)
+    - chore(deps): bump library/golang from `39d9e7d` to `86b4cff`
+      in /test/remote (#22985)
+    - chore(deps): bump library/golang from `4c0a181` to `81bf592`
+      in /test/remote (#23220)
+    - chore(deps): bump library/golang from `8131d99` to `30baaea`
+      in /test/container (#22840)
+    - chore(deps): bump library/golang from `86b4cff` to `1bcf884`
+      in /test/remote (#23094)
+    - chore(deps): bump library/golang from `991aa6a` to `c0b66cf`
+      in /test/container (#22613)
+    - chore(deps): bump library/golang from `991aa6a` to `c0b66cf`
+      in /test/remote (#22618)
+    - chore(deps): bump library/golang from `c0b66cf` to `18a1f2d`
+      in /test/container (#22626)
+    - chore(deps): bump library/golang from `c0b66cf` to `18a1f2d`
+      in /test/remote (#22627)
+    - chore(deps): bump library/golang from `c5adecd` to `8678013`
+      in /test/remote (#22327)
+    - chore(deps): bump library/golang from `d9db321` to `8131d99`
+      in /test/container (#22820)
+    - chore(deps): bump library/golang from `d9db321` to `8131d99`
+      in /test/remote (#22818)
+    - chore(deps): bump library/golang from `e84f2e8` to `4c0a181`
+      in /test/remote (#23209)
+    - chore(deps): bump library/redis from 7.4.2 to 7.4.3 in
+      /test/container (#22789)
+    - chore(deps): bump library/redis from
+      7.4.2@sha256:ca65ea36ae16e709b0f1c7534bc7e5b5ac2e5bb3c97236e4fec00e3625eb678d
+      to
+      sha256:fbdbaea47b9ae4ecc2082ecdb4e1cea81e32176ffb1dcf643d422ad07427e5d9
+      in /test/container (#22702)
+    - chore(deps): bump library/redis from `8bc6664` to `d000041`
+      in /test/container (#22821)
+    - chore(deps): bump library/redis from `d000041` to `7df1eef`
+      in /test/container (#22841)
+    - chore(deps): bump library/registry from 2.8 to 3.0 in
+      /test/container (#22575)
+    - chore(deps): bump library/ubuntu from
+      24.04@sha256:80dd3c3b9c6cecb9f1667e9290b3bc61b78c2678c02cbdae5f0fea92cc6734ab
+      to
+      sha256:1e622c5f073b4f6bfad6632f2616c7f59ef256e96fe78bf6a595d1dc4376ac02
+      in /test/container (#22716)
+    - chore(deps): bump oras.land/oras-go/v2 from 2.5.0 to 2.6.0
+      (#22912)
+    - chore(deps): bump ossf/scorecard-action from 2.4.0 to 2.4.1
+      (#23149)
+    - chore(deps): bump ossf/scorecard-action from 2.4.1 to 2.4.2
+      (#23217)
+    - chore(deps): bump peter-evans/create-pull-request from 7.0.5
+      to 7.0.8 (#23107)
+    - chore(deps): bump prismjs from 1.27.0 to 1.30.0 in /ui
+      (#22296)
+    - chore(deps): bump selenium-webdriver from 4.29.0 to 4.30.0 in
+      /ui-test (#22451)
+    - chore(deps): bump selenium-webdriver from 4.30.0 to 4.31.0 in
+      /ui-test (#22574)
+    - chore(deps): bump selenium-webdriver from 4.31.0 to 4.32.0 in
+      /ui-test (#22867)
+    - chore(deps): bump selenium-webdriver from 4.32.0 to 4.33.0 in
+      /ui-test (#23147)
+    - chore(deps): bump sigs.k8s.io/controller-runtime from 0.20.1
+      to 0.20.4 (#22959)
+    - chore(deps): bump sigs.k8s.io/structured-merge-diff/v4 from
+      4.6.0 to 4.7.0 (#22653)
+    - chore(deps): bump sigstore/cosign-installer from 3.7.0 to
+      3.8.2 (#23109)
+    - chore(deps): bump sigstore/cosign-installer from 3.8.2 to
+      3.9.0 (#23467)
+    - chore(deps): bump slsa-framework/slsa-github-generator from
+      2.0.0 to 2.1.0 (#23166)
+    - chore(deps): bump softprops/action-gh-release from 2.2.1 to
+      2.2.2 (#23150)
+    - chore(deps): bump softprops/action-gh-release from 2.2.2 to
+      2.3.0 (#23340)
+    - chore(deps): bump softprops/action-gh-release from 2.3.0 to
+      2.3.2 (#23351)
+    - chore(deps): bump style-loader to v1 (#23091)
+    - chore(deps): bump tj-actions/changed-files from
+      3981e4f74104e7a4c67a835e1e5dd5d9eb0f0a57 to
+      c6634ca281a9fc05b03bee224ba00910cb78ab6e (#23165)
+    - chore(deps): bump tj-actions/changed-files from
+      bab30c2299617f6615ec02a68b9a40d10bd21366 to
+      3981e4f74104e7a4c67a835e1e5dd5d9eb0f0a57 (#23121)
+    - chore(deps): update dependency gotestyourself/gotestsum to
+      v1.12.2 (#22875)
+    - chore(deps): update dependency markdown to v3.8 (#22642)
+    - chore(deps): update dependency markdown to v3.8.1 (#23480)
+    - chore(deps): update dependency pymdown-extensions to v10.15
+      (#22811)
+    - chore(deps): update module github.com/golangci/golangci-lint
+      to v1.64.8 (#22384)
+    - chore(deps): update module github.com/golangci/golangci-lint
+      to v2.1.1 (#22458)
+    - chore(deps): update module github.com/golangci/golangci-lint
+      to v2.1.2 (#22675)
+    - chore(deps): update module github.com/golangci/golangci-lint
+      to v2.1.5 (#22783)
+    - chore(deps): update module github.com/golangci/golangci-lint
+      to v2.1.6 (#22865)
+
+-------------------------------------------------------------------
 Mon Jul 28 05:35:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.12:
