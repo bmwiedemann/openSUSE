@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-dill
 Version:        0.4.0
@@ -34,11 +38,14 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+Recommends:     python-objgraph >= 1.7.2
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 %endif
-Recommends:     python-objgraph >= 1.7.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -75,6 +82,12 @@ export PYTHONDONTWRITEBYTECODE=1
 export PYTHONPATH=%{_builddir}/dill-%{version}
 # Creative; copied from tox.ini
 %python_exec dill/tests/__main__.py
+
+%post
+%python_install_alternative undill get_gprof get_objgraph
+
+%postun
+%python_uninstall_alternative undill
 
 %pre
 %python_libalternatives_reset_alternative undill

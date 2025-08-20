@@ -258,4 +258,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1294200</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>ac740f6c2a309e1d97fd291f97764c8b</srcmd5>
+    <version>0.4.0</version>
+    <time>1755689180</time>
+    <user>anag_factory</user>
+    <comment>- Still use update-alternatives on SLE-15
+</comment>
+    <requestid>1300406</requestid>
+  </revision>
 </revisionlist>
