@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-flit
 Version:        3.12.0
@@ -31,16 +35,21 @@ BuildRequires:  %{python_module flit-core >= %{version}}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module tomli-w}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-docutils
 Requires:       python-flit-core >= %{version}
 Requires:       python-pip
 Requires:       python-requests
 Requires:       python-tomli-w
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 2.7.3}
 BuildRequires:  %{python_module responses}
@@ -73,6 +82,12 @@ export PATH=$PWD/build/testbin/:$PATH
 # https://github.com/takluyver/flit/blob/96751efce651f8bae8ccb9e7f144dac460b3f013/flit/validate.py#L126
 # "The error you get on a train, going through Oregon, without wifi"
 %pytest -k "not (test_invalid_classifier or InstallTests)"
+
+%post
+%python_install_alternative flit
+
+%postun
+%python_uninstall_alternative flit
 
 %pre
 %python_libalternatives_reset_alternative flit
