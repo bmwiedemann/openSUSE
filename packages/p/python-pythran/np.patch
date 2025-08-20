@@ -1,7 +1,31 @@
-From 0ddfcc155ac06dff63158647f1e174db9a116689 Mon Sep 17 00:00:00 2001
+From f78b07d7648a1efe543c01cc4019928791eb39e9 Mon Sep 17 00:00:00 2001
+From: serge-sans-paille <serge.guelton@telecom-bretagne.eu>
+Date: Sun, 8 Jun 2025 19:00:10 +0200
+Subject: [PATCH 1/4] Use more generic way of checking bool value of an object
+
+This avoid bad interaction with numpy.bool_ as reported in #2322
+---
+ pythran/pythonic/types/bool.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pythran/pythonic/types/bool.hpp b/pythran/pythonic/types/bool.hpp
+index 35ac01d37..1436871f1 100644
+--- a/pythran/pythonic/types/bool.hpp
++++ b/pythran/pythonic/types/bool.hpp
+@@ -28,7 +28,7 @@ inline bool from_python<bool>::convert(PyObject *obj)
+   else if (obj == Py_False)
+     return false;
+   else
+-    return PyInt_AsLong(obj);
++    return PyObject_IsTrue(obj);
+ }
+ 
+ PYTHONIC_NS_END
+
+From 2847f56dbbb388aeab5f3cab18c70fe26298d254 Mon Sep 17 00:00:00 2001
 From: serge-sans-paille <serge.guelton@telecom-bretagne.eu>
 Date: Tue, 10 Jun 2025 07:23:03 +0200
-Subject: [PATCH] Add support for numpy.frombuffer
+Subject: [PATCH 2/4] Add support for numpy.frombuffer
 
 Even though we have very partial support for bytes in Pythran
 ---
@@ -191,3 +215,129 @@ index e149b7fb4..b3c86b5fd 100644
      complex: 'std::complex<double>',
      bool: 'bool',
      int: 'long',
+
+From c01d4224ca0c34af6157ee4e82893a82f3e9bb43 Mon Sep 17 00:00:00 2001
+From: serge-sans-paille <serge.guelton@telecom-bretagne.eu>
+Date: Sun, 8 Jun 2025 19:15:28 +0200
+Subject: [PATCH 3/4] Do not test binary mode of numpy.fromstring for recent
+ numpy version
+
+It's no longer supported as of numpy 2.3, see
+https://numpy.org/devdocs/release/2.3.0-notes.html and
+https://github.com/numpy/numpy/pull/28254
+
+Fix #2322
+---
+ pythran/tests/test_numpy_func0.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/pythran/tests/test_numpy_func0.py b/pythran/tests/test_numpy_func0.py
+index a97a43c50..91c37e979 100644
+--- a/pythran/tests/test_numpy_func0.py
++++ b/pythran/tests/test_numpy_func0.py
+@@ -553,9 +553,11 @@ def test_fromfile5(self):
+         finally:
+             os.remove(temp_name)
+ 
++    @unittest.skipIf(np_version > version.Version("2.2"), reason="np.fromstring no longer supports binary mode")
+     def test_fromstring0(self):
+         self.run_test("def np_fromstring0(a): from numpy import fromstring, uint8 ; return fromstring(a, uint8)", '\x01\x02', np_fromstring0=[str])
+ 
++    @unittest.skipIf(np_version > version.Version("2.2"), reason="np.fromstring no longer supports binary mode")
+     def test_fromstring1(self):
+         self.run_test("def np_fromstring1(a): from numpy import fromstring, uint8 ; a = '\x01\x02\x03\x04' ; return fromstring(a, uint8,3)", '\x01\x02\x03\x04', np_fromstring1=[str])
+ 
+
+From ef869953fbb16a31c5eb06c72296d4f23cf73e55 Mon Sep 17 00:00:00 2001
+From: serge-sans-paille <serge.guelton@telecom-bretagne.eu>
+Date: Sun, 8 Jun 2025 19:22:49 +0200
+Subject: [PATCH 4/4] Adjust doc validation to recent python 3.13
+
+- force COLUMNS width for reproducible argparse help output
+- gast Constant pretty printing has changed
+
+Fix #2317
+---
+ .github/workflows/core.yml |  2 +-
+ docs/TUTORIAL.rst          |  6 +++---
+ pythran/tests/test_xdoc.py | 14 +++++++++++++-
+ 3 files changed, 17 insertions(+), 5 deletions(-)
+
+diff --git a/.github/workflows/core.yml b/.github/workflows/core.yml
+index 5dca25973..8609be87e 100644
+--- a/.github/workflows/core.yml
++++ b/.github/workflows/core.yml
+@@ -12,7 +12,7 @@ jobs:
+     runs-on: ubuntu-22.04
+     strategy:
+       matrix:
+-        python-version: [3.7, 3.9, 3.11, 3.12, pypy-3.9]
++        python-version: [3.7, 3.9, 3.11, 3.12, 3.13, pypy-3.9]
+         cpp-version: [g++-12, clang-13]
+     steps:
+     - uses: actions/checkout@v2
+diff --git a/docs/TUTORIAL.rst b/docs/TUTORIAL.rst
+index e1dd80c4f..31ff4fffc 100644
+--- a/docs/TUTORIAL.rst
++++ b/docs/TUTORIAL.rst
+@@ -20,7 +20,7 @@ Python ships a standard module, ``ast`` to turn Python code into an AST. For ins
+   >>> code = "a=1"
+   >>> tree = ast.parse(code)  # turn the code into an AST
+   >>> print(ast.dump(tree))  # view it as a string
+-  Module(body=[Assign(targets=[Name(id='a', ctx=Store())], value=Constant(value=1, kind=None))])
++  Module(body=[Assign(targets=[Name(id='a', ctx=Store())], value=Constant(value=1))])
+ 
+ Deciphering the above line, one learns that the single assignment is parsed as
+ a module containing a single statement, which is an assignment to a single
+@@ -33,7 +33,7 @@ Eventually, one needs to parse more complex codes, and things get a bit more cry
+   ...     return n if n< 2 else fib(n-1) + fib(n-2)"""
+   >>> tree = ast.parse(fib_src)
+   >>> print(ast.dump(tree))
+-  Module(body=[FunctionDef(name='fib', args=arguments(args=[Name(id='n', ctx=Param())]), body=[Return(value=IfExp(test=Compare(left=Name(id='n', ctx=Load()), ops=[Lt()], comparators=[Constant(value=2, kind=None)]), body=Name(id='n', ctx=Load()), orelse=BinOp(left=Call(func=Name(id='fib', ctx=Load()), args=[BinOp(left=Name(id='n', ctx=Load()), op=Sub(), right=Constant(value=1, kind=None))]), op=Add(), right=Call(func=Name(id='fib', ctx=Load()), args=[BinOp(left=Name(id='n', ctx=Load()), op=Sub(), right=Constant(value=2, kind=None))]))))])])
++  Module(body=[FunctionDef(name='fib', args=arguments(args=[Name(id='n', ctx=Param())]), body=[Return(value=IfExp(test=Compare(left=Name(id='n', ctx=Load()), ops=[Lt()], comparators=[Constant(value=2)]), body=Name(id='n', ctx=Load()), orelse=BinOp(left=Call(func=Name(id='fib', ctx=Load()), args=[BinOp(left=Name(id='n', ctx=Load()), op=Sub(), right=Constant(value=1))]), op=Add(), right=Call(func=Name(id='fib', ctx=Load()), args=[BinOp(left=Name(id='n', ctx=Load()), op=Sub(), right=Constant(value=2))]))))])])
+ 
+ The idea remains the same. The whole Python syntax is described in
+ http://docs.python.org/2/library/ast.html and is worth a glance, otherwise
+@@ -199,7 +199,7 @@ constant expressions. In the previous code, there is only two constant
+ 
+   >>> ce = pm.gather(analyses.ConstantExpressions, tree)
+   >>> sorted(map(ast.dump, ce))
+-  ["Attribute(value=Name(id='math', ctx=Load()), attr='cos', ctx=Load())", 'Constant(value=3, kind=None)']
++  ["Attribute(value=Name(id='math', ctx=Load()), attr='cos', ctx=Load())", 'Constant(value=3)']
+ 
+ One of the most critical analyse of Pythran is the points-to analysis. There
+ are two flavors of this analyse, one that computes an over-set of the aliased
+diff --git a/pythran/tests/test_xdoc.py b/pythran/tests/test_xdoc.py
+index 862dec1fa..1dddf36ca 100644
+--- a/pythran/tests/test_xdoc.py
++++ b/pythran/tests/test_xdoc.py
+@@ -20,6 +20,8 @@ class TestDoctest(unittest.TestCase):
+ 
+     @pytest.mark.skipif(sys.platform == "win32",
+                         reason="We should create a file for windows.")
++    @pytest.mark.skipif(sys.version_info < (3, 13),
++                        reason="ast output changed with 3.13")
+     def test_tutorial(self):
+         failed, _ = doctest.testfile('../../docs/TUTORIAL.rst')
+         self.assertEqual(failed, 0)
+@@ -34,9 +36,19 @@ def test_internal(self):
+ 
+     @pytest.mark.skipif(sys.platform == "win32",
+                         reason="We should create a file for windows.")
++    @pytest.mark.skipif(sys.version_info <= (3, 12),
++                        reason="argparse output changed with 3.13")
+     def test_cli(self):
+         tmpfile = self.adapt_rst('../../docs/CLI.rst')
+-        failed, _ = doctest.testfile(tmpfile, False)
++        columns = os.environ.get('COLUMNS', None)
++        os.environ['COLUMNS'] = '80'
++        try:
++            failed, _ = doctest.testfile(tmpfile, False)
++        finally:
++            if columns is None:
++                del os.environ['COLUMNS']
++            else:
++                os.environ['COLUMNS'] = columns
+         self.assertEqual(failed, 0)
+         os.remove(tmpfile)
+ 

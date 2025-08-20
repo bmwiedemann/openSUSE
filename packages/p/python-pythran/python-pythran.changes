@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 19 07:47:56 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Drop np-frombuffer.patch and np-fromstring.patch and substitute
+  them with np.patch, which is a PR which contains both of them
+  and also other fixes, unskip the previously skipped test
+
+-------------------------------------------------------------------
 Thu Aug 14 08:37:43 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream np-fromstring.patch and np-frombuffer.patch to fix 
