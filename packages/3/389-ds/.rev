@@ -797,4 +797,12 @@ RelEng emergencyfix</comment>
     <comment></comment>
     <requestid>1300252</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>ac59757cad5187bee45e498021eddadf</srcmd5>
+    <version>3.1.2~git90.2bc7250be</version>
+    <time>1755689145</time>
+    <user>anag_factory</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1248325</comment>
+    <requestid>1300474</requestid>
+  </revision>
 </revisionlist>
