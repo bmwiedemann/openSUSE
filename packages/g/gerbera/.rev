@@ -287,4 +287,12 @@ Sorry - I missed that on the previous fixup. Now we should be good for sysusers 
     <comment></comment>
     <requestid>1297437</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1ae56ac0c50c705e1d2cd0c9fce7335f</srcmd5>
+    <version>2.6.1</version>
+    <time>1755689237</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1300445</requestid>
+  </revision>
 </revisionlist>

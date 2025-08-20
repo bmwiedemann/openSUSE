@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Aug 19 08:55:26 UTC 2025 - ecsos <ecsos@opensuse.org> - 2.6.1
+
+- Update to 2.6.1
+  * FIXES
+    - Configuration error when creating MySQL from scratch
+    - Internal subtitles seem to be broken on older ffmpeg
+  * NEW Features
+    - Inotify support for script folders allows developing scripts without restarting the server
+  * Code Improvements
+    - Increased size of debug-mode config option to unsigned long long to avoid overflow. Includes new very long integer config option.
+    - Support for loading scripts in tests is dropped in preperation of dropping the feature completely.
+  * Changes
+    - Gerbera 2.6.1 (#3565), thanks @KarlStraussberger
+    - Catch exceptions from metadata handlers (#3563)
+    - Remove test support for loading scripts (#3562)
+    - Fix MySQL database upgrade from 23 to 24 (#3558)
+    - Bump docker/build-push-action from 5 to 6 (#3561)
+    - Bump peter-evans/dockerhub-description from 3 to 4 (#3560)
+    - Bump DoozyX/clang-format-lint-action from 0.18 to 0.20 (#3559)
+    - Update Actions (#3556)
+    - Fix for MultiInsert statement (#3555)
+    - Fix resource file pattern with braces (#3554)
+    - Pull config dependencies (#3549)
+    - Inotify for scripts: reload without server restart (#3548)
+    - Bump tmp from 0.2.3 to 0.2.4 in /gerbera-web (#3547)
+    - Fix MySql config load (#3545)
+    - Bump master (#3544)
+
+-------------------------------------------------------------------
 Mon Aug  4 08:02:03 UTC 2025 - ecsos <ecsos@opensuse.org> - 2.6.0
 
 - Update to 2.6.0
