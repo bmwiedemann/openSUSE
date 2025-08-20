@@ -1343,4 +1343,12 @@
 - pam_access-rework-resolving-of-tokens-as-hostname.patch got obsoleted</comment>
     <requestid>1286682</requestid>
   </revision>
+  <revision rev="146" vrev="2">
+    <srcmd5>e634b731eda81fbb6e557cf95ff9174d</srcmd5>
+    <version>1.7.1</version>
+    <time>1755689074</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1300309</requestid>
+  </revision>
 </revisionlist>

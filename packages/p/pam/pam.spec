@@ -93,6 +93,8 @@ Source22:       postlogin-account.pamd
 Source23:       postlogin-password.pamd
 Source24:       postlogin-session.pamd
 Patch1:         pam-limit-nproc.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         pam_modutil_get-overwrite-password-at-free.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  flex

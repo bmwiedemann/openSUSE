@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 19 10:12:13 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Make sure that the buffer containing encrypted passwords get's erased,
+  before free.
+  [pam_modutil_get-overwrite-password-at-free.patch, bsc#1232234,
+   CVE-20244-10041]
+
+-------------------------------------------------------------------
 Wed Jun 18 12:01:57 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - hardcode disabling elogind, meson detection is unreliable in OBS
