@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 19 14:26:32 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems only
+
+-------------------------------------------------------------------
 Thu Jul 10 08:53:50 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Set CIBUILDWHEEL to avoid spurious test failures

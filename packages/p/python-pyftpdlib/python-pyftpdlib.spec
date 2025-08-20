@@ -17,7 +17,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-pyftpdlib
 Version:        1.5.10
@@ -34,13 +38,18 @@ BuildRequires:  %{python_module pysendfile}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-pyOpenSSL
 Recommends:     python-pysendfile
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -83,6 +92,12 @@ export PYTHONDONTWRITEBYTECODE=1
 export TZ=GMT+1
 $python -m pytest
 }
+
+%post
+%python_install_alternative ftpbench
+
+%postun
+%python_uninstall_alternative ftpbench
 
 %pre
 %python_libalternatives_reset_alternative ftpbench
