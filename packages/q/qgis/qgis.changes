@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Aug 15 16:12:21 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to 3.44.2
+  * Fixes 2d => 3d sync (commits de157ab..946132f)
+  * qgis-server will now read PATCH data in addition to PUT and POST (commit 8f254e3)
+  * Fixes various other bugs or warnings
+
+-------------------------------------------------------------------
+Sun Jul 27 07:49:29 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to 3.44.1
+  * Upstream does not really provide changelogs for point releases, so the
+    bullet points below highlight potentially interesting fixes or
+    improvments as mentioned in the commits between 3.44.0 and 3.44.1
+  * Fixes a crash when exiting QGIS, caused by calling an already destroyed
+    object (commit 7ccba1e)
+  * Fixes a segmentation fault when exporting a distance/elevation table
+    caused by a function called in a way that it always returned false
+    (commit 1ba412b, qgis issue #60772)
+  * Fixes a crash that occured when the first point, when undoing digitized
+    points, is empty (commit 1241f0e)
+  * Fixes an overflow in the vectortile code, that occured due to casting
+    to a wrong integer type (commit 812de4e)
+  * When reading remote pointcloud data, store the new URL if the request
+    has been redirected (commit d3c25b6)
+  * Various other fixes and improvments
+  * Full range of commits can be viewed at
+    github.com/qgis/QGIS/compare/final-3_44_0...final-3_44_1
+
+-------------------------------------------------------------------
 Tue Jun 24 13:38:05 UTC 2025 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Update to 3.44.0
