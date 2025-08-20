@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Aug 20 07:35:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.105.1:
+  * Bug Fixes
+    - fix: correct decoding logic for GitLab clientSpec to allow
+      overwriting @hebestreit (#5811)
+  * Maintenance
+    - deps: Bump Golang version to 1.24.6 @updateclibot[bot]
+      (#5839)
+    - deps(github/action): bump all dependencies @updateclibot[bot]
+      (#5843)
+    - deps(github/action): bump all dependencies @updateclibot[bot]
+      (#5838)
+    - deps(go): bump module golang.org/x/net to v0.43.0
+      @updateclibot[bot] (#5832)
+    - deps(go): bump module golang.org/x/mod to v0.27.0
+      @updateclibot[bot] (#5823)
+    - chore: replace archived go module
+      github.com/mitchellh/mapstructure @olblak (#5817)
+    - deps: bump golangci-lint to v2.3.1 @updateclibot[bot] (#5812)
+    - deps(go): bump module cuelang.org/go to v0.14.0
+      @updateclibot[bot] (#5798)
+
+-------------------------------------------------------------------
 Sun Aug 03 12:06:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.105.0:
