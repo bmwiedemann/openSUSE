@@ -1,0 +1,31 @@
+From e20ce13a5305327b7dfec9303f1487520095f36d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B8rn=20Forsman?= <bjorn.forsman@gmail.com>
+Date: Wed, 16 Jul 2025 13:10:44 +0200
+Subject: [PATCH] Fix build with recent autotools
+
+Tell autoconf where m4 macros are, or else the build fails like this:
+
+  configure.ac:12: the top level
+  configure.ac:71: error: possibly undefined macro: AM_GNU_GETTEXT_VERSION
+        If this token and others are legitimate, please use m4_pattern_allow.
+        See the Autoconf documentation.
+  configure.ac:72: error: possibly undefined macro: AM_GNU_GETTEXT
+  autoreconf: error: /nix/store/0qmqybsb86p5g6vqxj992grj9hyh72wa-autoconf-2.72/bin/autoconf failed with exit status: 1
+
+This is a backward compatible change.
+---
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.ac b/configure.ac
+index fe95c88..1c4b370 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1,6 +1,7 @@
+ AC_INIT([spek],[0.8.5])
+ AC_CONFIG_SRCDIR([src/spek.cc])
+ AC_CONFIG_HEADERS([config.h])
++AC_CONFIG_MACRO_DIRS([m4])
+ AM_INIT_AUTOMAKE([1.11.1 foreign no-dist-gzip dist-xz serial-tests])
+ AM_SILENT_RULES([yes])
+ 

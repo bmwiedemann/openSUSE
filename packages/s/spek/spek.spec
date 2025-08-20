@@ -1,7 +1,7 @@
 #
 # spec file for package spek
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://www.spek.cc/
 Source:         https://github.com/alexkay/spek/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM spek-autotools.patch -- based on PR 333
+Patch0:         spek-autotools.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -31,7 +33,6 @@ BuildRequires:  gettext >= 0.21
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK-devel
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
@@ -61,7 +62,6 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags-only-I libavutil)"
 
 %install
 %make_install
-%suse_update_desktop_file -r %{name} AudioVideo Player
 %find_lang %{name}
 
 %files -f %{name}.lang
