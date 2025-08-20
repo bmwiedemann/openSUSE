@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  5 16:36:53 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Use BuildRequires glbinding-devel only for Tumbleweed, fixes
+  building for Leap 16.0
+
+-------------------------------------------------------------------
 Wed May  7 11:35:19 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes

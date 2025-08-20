@@ -48,10 +48,10 @@ BuildRequires:  pkgconfig(raqm)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?sle_version} >= 150600 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-BuildRequires:  pkgconfig(glew)
-%else
+%if 0%{?suse_version} > 1600
 BuildRequires:  glbinding-devel
+%else 
+BuildRequires:  pkgconfig(glew)
 %endif
 
 %description
@@ -77,11 +77,11 @@ export CFLAGS="%{optflags} -fPIC" CXXFLAGS="$CFLAGS"
   -DINSTALL_SUBDIR_BIN="$(realpath --relative-to=%{_prefix} %{_bindir})"            \
   -DINSTALL_SUBDIR_SHARE="$(realpath --relative-to=%{_prefix} %{_datadir})/%{name}" \
   -DINSTALL_SUBDIR_DOC="$(realpath --relative-to=%{_prefix} %{_docdir})/%{name}" \
-%if 0%{?sle_version} >= 150600 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-  -DENABLE_BOOST_STATIC_LIBS=OFF
-%else
+%if 0%{?suse_version} > 1600
   -DENABLE_BOOST_STATIC_LIBS=OFF \
   -DGLBINDING_ENABLED=ON
+%else
+  -DENABLE_BOOST_STATIC_LIBS=OFF
 %endif
 
 %cmake_build
