@@ -1617,4 +1617,13 @@
     given the --update-cache option. (forwarded request 1296525 from AZhou)</comment>
     <requestid>1296557</requestid>
   </revision>
+  <revision rev="100" vrev="5">
+    <srcmd5>06c465d48604b8f7e435efe536bab454</srcmd5>
+    <version>2.42.12</version>
+    <time>1755689080</time>
+    <user>anag_factory</user>
+    <comment>- Add gdk-pixbuf-jpeg-icc-data.patch: be more careful with icc data
+  (bsc#1246114 CVE-2025-7345 glgo@GNOME/gdk-pixbuf!217). (forwarded request 1300133 from mgorse)</comment>
+    <requestid>1300264</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 18 19:04:26 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Add gdk-pixbuf-jpeg-icc-data.patch: be more careful with icc data
+  (bsc#1246114 CVE-2025-7345 glgo@GNOME/gdk-pixbuf!217).
+
+-------------------------------------------------------------------
 Fri Jul 18 06:35:12 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add gdk-pixbuf-fix-decoder-written-bytes-reporting.patch: Fix

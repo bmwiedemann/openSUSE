@@ -35,6 +35,8 @@ Source99:       baselibs.conf
 Patch0:         gdk-pixbuf-jpeg-slow.patch
 # PATCH-FIX-UPSTREAM gdk-pixbuf-fix-decoder-written-bytes-reporting.patch bsc#1245227 alynx.zhou@suse.com -- Fix wrong written bytes reported by decoder
 Patch1:         gdk-pixbuf-fix-decoder-written-bytes-reporting.patch
+# PATCH-FIX-UPSTREAM gdk-pixbuf-jpeg-icc-data.patch bsc#1246114 mgorse@suse.com -- jpeg: Be more careful with icc data.
+Patch2:         gdk-pixbuf-jpeg-icc-data.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docutils
