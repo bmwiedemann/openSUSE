@@ -300,4 +300,13 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1291282</requestid>
   </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>f8a100ed23f2feaa4771ea093a9dd88f</srcmd5>
+    <version>4.0.2</version>
+    <time>1755689179</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems
+</comment>
+    <requestid>1300396</requestid>
+  </revision>
 </revisionlist>

@@ -21,7 +21,11 @@
 %else
 %bcond_with doc
 %endif
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-falcon
 Version:        4.0.2
@@ -45,10 +49,15 @@ BuildRequires:  %{python_module sphinx-tabs}
 BuildRequires:  %{python_module sphinxcontrib-copybutton}
 BuildRequires:  %{python_module websockets}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+BuildRequires:  alts
 Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 Suggests:       %{name}-doc
 BuildArch:      noarch
 # TODO: Cython support
@@ -125,6 +134,12 @@ export LANG=en_US.UTF8
 
 %pre
 %python_libalternatives_reset_alternative falcon-bench
+
+%post
+%python_install_alternative falcon-bench falcon-inspect-app falcon-print-routes
+
+%postun
+%python_uninstall_alternative falcon-bench
 
 %files %{python_files}
 %doc README.rst
