@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 12 15:12:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 8.0.4:
+  * XdgDesktopPortalPantheon: Do not access to xdg-desktop-portal
+    before its fully initialized
+- update to version 8.0.3:
+  * Screencast/SelectionRow: Use app name, style
+  * ScreenCast: respect cursor-mode option
+- update to version 8.0.2:
+  * Screenshot: include frame
+
+-------------------------------------------------------------------
 Thu May  8 16:27:58 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.0.1:
