@@ -237,4 +237,35 @@
   * CLI: fetch and render remote images of mimetype octet-stream correctly #2370 (forwarded request 1274297 from jfkw)</comment>
     <requestid>1274300</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>85e486dafa6d75b03cc38ec178df3cf3</srcmd5>
+    <version>0.7.1</version>
+    <time>1755689166</time>
+    <user>anag_factory</user>
+    <comment>- Update to Version 0.7.1:
+  * Output txt for d2 to render diagrams as ASCII art #2572
+  * cross arrowhead shape is available #2190
+  * style.underline support for class fields and methods #2544
+  * markdown, latex, and code can be used as edge labels #2545
+  * border-x label positioning functionality #2549
+  * tooltips with near set always show even without hover #2564
+  * CLI supports customizing monospace fonts with --font-mono,
+    --font-mono-bold, --font-mono-italic, and --font-mono-semibold
+    flags #2590
+  * labels on scenario/step boards can be set with primary value (like layers) #2579
+  * autoformatter preserves order of boards #2580
+  * rename &quot;Legend&quot; with a title/label of your choosing (especially
+    useful for non-English diagrams) #2582
+  * sketch mode fonts will use custom fonts if provided #2582
+  * actors in sequence diagrams with labels and icons together no
+    longer overlap, position keywords now work too #2548
+  * fix double glob behavior in scenarios (wasn't propagating correctly) #2557
+  * fix diagram bounding box not accounting for legend in some cases #2584
+  * Breaking Changes: If you are using D2 as a library/API, passing
+    in a FontFamily with sketch renders will now use the font,
+    instead of previously ignoring it.
+
+- Update to version 0.7.0: (forwarded request 1300371 from jfkw)</comment>
+    <requestid>1300372</requestid>
+  </revision>
 </revisionlist>
