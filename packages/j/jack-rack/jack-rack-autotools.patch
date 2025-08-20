@@ -1,0 +1,10 @@
+diff -up jack-rack-1.5.0/configure.ac.orig jack-rack-1.5.0/configure.ac
+--- jack-rack-1.5.0/configure.ac.orig	2025-07-12 21:22:37.000000000 +0200
++++ jack-rack-1.5.0/configure.ac	2025-08-20 10:12:58.307157096 +0200
+@@ -1,5 +1,6 @@
+ AC_INIT([JACK Rack],[1.5.0])
+ AC_CONFIG_SRCDIR([src/lock_free_fifo.h])
++AC_CONFIG_MACRO_DIRS([m4])
+ AM_INIT_AUTOMAKE([1.6])
+ 
+ AC_PROG_CC

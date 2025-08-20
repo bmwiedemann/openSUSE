@@ -214,4 +214,17 @@ Removed obsolete 10.2 patch jack-rack-gtk-old-tooltip-fix.diff
     <comment></comment>
     <requestid>1166630</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>287d121909ae033f7384e367d965f85c</srcmd5>
+    <version>1.5.0</version>
+    <time>1755693639</time>
+    <user>anag_factory</user>
+    <comment>- update to version 1.5.0
+- remove obsolete patches (fixed upstream):
+  * jack-rack-undeprec.dif
+  * jack-rack-inc-fix.diff
+  * jack-rack-ld_fix.diff
+- add jack-rack-autotools.patch (fixes build with recent autotools)</comment>
+    <requestid>1300461</requestid>
+  </revision>
 </revisionlist>

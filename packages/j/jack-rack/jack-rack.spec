@@ -1,7 +1,7 @@
 #
 # spec file for package jack-rack
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 Name:           jack-rack
-Version:        1.4.7
+Version:        1.5.0
 Release:        0
 Summary:        LADSPA Effects Rack for JACK
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://jack-rack.sf.net/
 Source:         https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
-Patch0:         jack-rack-undeprec.dif
-Patch1:         jack-rack-inc-fix.diff
-Patch3:         jack-rack-ld_fix.diff
-Patch4:         jack-rack-python3-ecarack.patch
+Patch0:         jack-rack-autotools.patch
+Patch1:         jack-rack-python3-ecarack.patch
 BuildRequires:  automake
 BuildRequires:  ladspa-devel
 BuildRequires:  pkgconfig
@@ -41,9 +39,8 @@ BuildRequires:  pkgconfig(gtk+-unix-print-2.0)
 BuildRequires:  pkgconfig(gtk+-x11-2.0)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libxml-2.0)
-#BuildRequires:  libgnomeui-devel
-#BuildRequires:  pkgconfig(lrdf)
-#BuildRequires:  pkgconfig(raptor2)
+# minimum gettext version required for the fix in jack-rack-autotools.patch
+BuildRequires:  gettext-devel >= 0.25.1
 Requires:       jack
 Requires:       ladspa
 
@@ -53,11 +50,7 @@ can insert LADSPA effects through JACK Rack. It uses GTK+ 2 for the
 GUI.
 
 %prep
-%setup -q
-%patch -P 0
-%patch -P 1
-%patch -P 3
-%patch -P 4 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
