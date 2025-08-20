@@ -1,7 +1,7 @@
 #
 # spec file for package nudoku
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           nudoku
-Version:        5.0.0
+Version:        6.0.0
 Release:        0
 Summary:        Ncurses based sudoku game
 License:        GPL-3.0-only
@@ -37,7 +37,7 @@ nudoku is a ncurses based sudoku game.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fi

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug 20 10:01:47 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.0.0:
+  * Wrap around board edges when navigating with arrow keys (pr #68)
+  * Update Turkish translation (pr #69)
+  * Print sudoku stream to stdout (pr #71)
+  * Fix build with gettext 0.24.1+ (pr #73)
+- Drop nudoku-Fix-build-with-gettext-0.24.1.patch
+
+-------------------------------------------------------------------
+Wed Aug 20 09:33:01 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Convert to %autosetup
+
+- Add nudoku-Fix-build-with-gettext-0.24.1.patch: Adds the local m4/
+  directory to the autoconf macro search patch. Fixes an issue with
+  gettext macros not being available at build time.
+
+-------------------------------------------------------------------
 Tue Aug 27 07:13:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 5.0.0:
