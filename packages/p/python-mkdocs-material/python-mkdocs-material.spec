@@ -1,7 +1,7 @@
 #
 # spec file for package python-mkdocs-material
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mkdocs-material
-Version:        9.6.16
+Version:        9.6.17
 Release:        0
 Summary:        Material theme for mkdocs
 License:        MIT
@@ -47,6 +47,10 @@ BuildRequires:  %{python_module mkdocs >= 1.5.3 with %python-mkdocs < 2}
 BuildRequires:  %{python_module mkdocs-material-extensions >= 1.3}
 BuildRequires:  %{python_module pygments >= 2.16}
 BuildRequires:  %{python_module pymdown-extensions >= 10.3}
+# https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L36
+# Temporarily pin click until this is resolved in MkDocs, see
+# https://github.com/mkdocs/mkdocs/issues/4014#issuecomment-3146508306
+BuildRequires:  %{python_module click < 8.2.2}
 # Requirements for plugins
 # https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L29
 BuildRequires:  %{python_module Babel >= 2.10}
@@ -64,6 +68,10 @@ Requires:       python-mkdocs-material-extensions >= 1.1
 Requires:       python-pygments >= 2.16
 Requires:       python-pymdown-extensions >= 10.3
 Requires:       (python-mkdocs >= 1.5.3 with python-mkdocs < 2)
+# https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L36
+# Temporarily pin click until this is resolved in MkDocs, see
+# https://github.com/mkdocs/mkdocs/issues/4014#issuecomment-3146508306
+Requires:       python-click < 8.2.2
 # Requirements for plugins
 # https://github.com/squidfunk/mkdocs-material/blob/master/requirements.txt#L29
 Requires:       python-Babel >= 2.10
