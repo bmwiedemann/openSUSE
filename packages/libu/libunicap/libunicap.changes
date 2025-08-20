@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 20 09:23:02 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Call gettextize to fix build errors on FACTORY
+
+-------------------------------------------------------------------
 Tue Aug 27 12:49:10 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Fix the build errors with gcc14:

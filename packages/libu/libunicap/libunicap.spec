@@ -1,7 +1,7 @@
 #
 # spec file for package libunicap
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -109,6 +109,7 @@ contains the API documentation of the library, too.
 
 %build
 mkdir -p m4
+gettextize -f
 autoreconf -fiv
 intltoolize --force
 %configure --disable-rpath --disable-static --enable-gtk-doc-html=no --enable-libv4l
