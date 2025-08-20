@@ -18,7 +18,11 @@
 
 %define skip_python2 1
 %define modname faust-cchardet
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-cchardet
 Version:        2.1.19
@@ -32,13 +36,18 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(uchardet)
+%if %{with libalternatives}
+BuildRequires:  alts
 Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -60,6 +69,12 @@ cChardet is high speed universal character encoding detector. - binding to `ucha
 
 %pre
 %python_libalternatives_reset_alternative cchardetect
+
+%post
+%python_install_alternative cchardetect
+
+%postun
+%python_uninstall_alternative cchardetect
 
 %files %{python_files}
 %license COPYING
