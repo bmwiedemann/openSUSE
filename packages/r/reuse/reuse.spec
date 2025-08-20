@@ -27,13 +27,14 @@ License:        Apache-2.0 AND CC-BY-SA-4.0 AND GPL-3.0-or-later AND CC0-1.0
 Group:          Development/Languages/Python
 URL:            https://git.fsfe.org/reuse/tool
 Source:         https://files.pythonhosted.org/packages/source/r/reuse/reuse-%{version}.tar.gz
+Patch:          sphinx-docs.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3 >= 3.9
 BuildRequires:  python3-pip
-BuildRequires:  python3-poetry
+BuildRequires:  python3-poetry-core
 # doc dependencies (manpage)
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-myst-parser
