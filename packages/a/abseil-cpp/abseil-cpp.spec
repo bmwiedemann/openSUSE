@@ -17,10 +17,10 @@
 #
 
 
-%global soversion so.2505.0.0
-%global lname_suffix 2505_0_0
+%global soversion so.2508.0.0
+%global lname_suffix 2508_0_0
 Name:           abseil-cpp
-Version:        20250512.1
+Version:        20250814.0
 Release:        0
 Summary:        C++ libraries which augment the C++ stdlib
 License:        Apache-2.0
@@ -75,10 +75,12 @@ library. It also provides features incorporated into later C++ standards.
 %abseil_libpackage -l libabsl_flags_usage_internal \
 %abseil_libpackage -l libabsl_graphcycles_internal \
 %abseil_libpackage -l libabsl_hash \
+%abseil_libpackage -l libabsl_hashtable_profiler \
 %abseil_libpackage -l libabsl_hashtablez_sampler \
 %abseil_libpackage -l libabsl_int128 -d \-\
 %abseil_libpackage -l libabsl_kernel_timeout_internal \
 %abseil_libpackage -l libabsl_leak_check \
+%abseil_libpackage -l libabsl_log_entry \
 %abseil_libpackage -l libabsl_log_flags \
 %abseil_libpackage -l libabsl_log_globals \
 %abseil_libpackage -l libabsl_log_initialize \
@@ -94,10 +96,10 @@ library. It also provides features incorporated into later C++ standards.
 %abseil_libpackage -l libabsl_log_internal_structured_proto \
 %abseil_libpackage -l libabsl_log_severity \
 %abseil_libpackage -l libabsl_log_sink \
-%abseil_libpackage -l libabsl_low_level_hash \
 %abseil_libpackage -l libabsl_malloc_internal \
 %abseil_libpackage -l libabsl_periodic_sampler \
 %abseil_libpackage -l libabsl_poison \
+%abseil_libpackage -l libabsl_profile_builder \
 %abseil_libpackage -l libabsl_random_distributions \
 %abseil_libpackage -l libabsl_random_internal_distribution_test_util \
 %abseil_libpackage -l libabsl_random_internal_entropy_pool \

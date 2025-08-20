@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Aug 18 20:33:28 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 20250814.0:
+  * absl::Mutex now contains lower-case method names like lock()
+    and shared_lock() to align with standard C++ mutex methods.
+    This allows absl::Mutex to be used with std::scoped_lock and
+    friends. The old names are still present but may be removed in a
+    future release.
+  * The RAII Mutex-locker types like absl::MutexLock,
+    absl::ReaderMutexLock, and friends now accept references to
+    absl::Mutex. The pointer-accepting constructors are now
+    deprecated, and may be removed in a future release.
+  * Breaking change: Nullability template types, which were
+    deprecated in the May 2025 release, have been removed.
+  * Breaking change: absl::string_view(nullptr), which is undefined
+    behavior according to the C++ standard, now triggers an assert
+    failure. Note that unless you changed absl/base/options.h,
+    absl::string_view is an alias for std::string_view, so by
+    default you will be inheriting the behavior of your standard
+    library instead of using the Abseil implementation.
+  * Breaking change: Abseil's hash tables now require a hash
+    function that has a return type with size >= sizeof(size_t).
+- added libs: libabsl_hashtable_profiler, libabsl_log_entry,
+  libabsl_profile_builder
+- dropped libs: libabsl_low_level_hash
+
+-------------------------------------------------------------------
 Wed Jun 18 15:35:54 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 20250512.1:
