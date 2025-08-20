@@ -711,4 +711,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1240004</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>6f89621e9c0a77ce16465656c8ce65fe</srcmd5>
+    <version>1.18.9</version>
+    <time>1755689086</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1300293 from darix
+
+drop macros</comment>
+    <requestid>1300294</requestid>
+  </revision>
 </revisionlist>

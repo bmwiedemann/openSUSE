@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-nokogiri
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-nokogiri
-Version:        1.18.2
+Version:        1.18.9
 Release:        0
 %define mod_name nokogiri
 %define mod_full_name %{mod_name}-%{version}
