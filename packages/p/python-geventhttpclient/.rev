@@ -115,4 +115,12 @@
   * add response cookies to cookiejar before verify_status by @onestay in #188</comment>
     <requestid>1206263</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>19295cc7fe4bc9fe1c7f2cb56499e011</srcmd5>
+    <version>2.3.1</version>
+    <time>1755689209</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1300416</requestid>
+  </revision>
 </revisionlist>

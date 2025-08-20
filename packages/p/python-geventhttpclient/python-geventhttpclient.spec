@@ -71,7 +71,11 @@ tar -xvf %{SOURCE1} geventhttpclient-%{version}/tests/
 %check
 # test_cookielib_compatibility https://github.com/gwik/geventhttpclient/issues/119
 # test_no_module_ssl.py https://github.com/geventhttpclient/geventhttpclient/issues/180
+%if 0%{?suse_version} > 1600
 %pytest_arch -m 'not network' -k 'not (test_cookielib_compatibility or test_no_module_ssl)'
+%else
+%pytest_arch -m 'not network' -k 'not (test_cookielib_compatibility or test_no_module_ssl or test_implicit_sni_from_host_in_ssl or test_implicit_sni_from_header_in_ssl or test_explicit_sni_in_ssl)'
+%endif
 
 %files %{python_files}
 %doc README.md

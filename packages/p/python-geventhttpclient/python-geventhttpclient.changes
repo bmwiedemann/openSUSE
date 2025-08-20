@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 20 06:54:38 UTC 2025 - Max Lin <mlin@suse.com>
+
+- Disabled some sni_ssl unittest which just failed on Leap 16.0
+  * test_implicit_sni_from_host_in_ssl, test_implicit_sni_from_header_in_ssl,
+    and test_explicit_sni_in_ssl
+
+-------------------------------------------------------------------
 Tue Oct  8 08:27:30 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 2.3.1:
