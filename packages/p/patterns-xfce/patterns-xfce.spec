@@ -35,9 +35,8 @@ not make sense.
 
 This particular package contains the Xfce patterns.
 
-
-
 ################################################################################
+
 %package xfce
 %pattern_graphicalenvironments
 Summary:        XFCE Desktop Environment
@@ -136,7 +135,11 @@ Recommends:     gnome-keyring
 Recommends:     gnome-keyring-pam
 # bnc#1108381
 Recommends:     gcr-ssh-askpass
+%if 0%{?suse_version} >= 1600
+Recommends:     opensuse-welcome-launcher
+%else
 Recommends:     opensuse-welcome
+%endif
 
 # from data/COMMON-DESKTOP-OPT
 # packages a GTK application
@@ -232,7 +235,11 @@ Recommends:     package-update-indicator
 Recommends:     gnome-keyring
 Recommends:     gcr-ssh-askpass
 Recommends:     gnome-keyring-pam
+%if 0%{?suse_version} >= 1600
+Recommends:     opensuse-welcome-launcher
+%else
 Recommends:     opensuse-welcome
+%endif
 
 # Useful extras
 Recommends:     gutenprint

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 20 10:08:31 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Only recommend opensuse-welcome-launcher on suse_version >= 1600.
+  This pattern is also still used on Leap 15.6, where the switch to
+  the flexible launcher is not planned to happen.
+
+-------------------------------------------------------------------
+Wed Aug 20 06:47:21 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Recommend opensuse-welcome-launcher instead of opensuse-welcome:
+  the launcher is the new tool that decides which welcome app (per
+  desktop) to use (boo#1248327).
+
+-------------------------------------------------------------------
 Tue Aug  5 12:47:30 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Add the missing NetworkManager / NetworkManager-applet to
