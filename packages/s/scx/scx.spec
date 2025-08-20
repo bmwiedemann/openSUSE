@@ -1,7 +1,7 @@
 #
 # spec file for package scx
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,15 @@
 %define llvm_min_ver 20
 
 Name:           scx
-Version:        1.0.14
+Version:        1.0.15
 Release:        0
 Summary:        Sched_ext CPU schedulers
 License:        GPL-2.0-only
 URL:            https://github.com/sched-ext/scx
 Source0:        scx-%version.tar.zst
 Source1:        vendor.tar.zst
+Patch0:         0001-scxtop-use-PT_REGS_IP-macro.patch
+Patch1:         0001-vmlinux.h-refresh-with-the-updated-script.patch
 BuildRequires:  bpftool >= 7.5.0
 BuildRequires:  cargo
 BuildRequires:  clang >= %llvm_min_ver
@@ -54,6 +56,8 @@ Header files needed to develop a sched-ext scheduler in C.
 
 %prep
 %setup -qa1
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 %build
 # meson macros use set_build_flags which makes the linker fail during build,
@@ -86,6 +90,7 @@ meson install -C build --destdir=%{buildroot}
 # exclude scx_loader because of dbus warning.
 %exclude %{_prefix}/lib/systemd/system/scx_loader.service
 %exclude %{_prefix}/share/dbus-1
+%exclude %{_prefix}/share/scx_loader
 
 %config %{_sysconfdir}/default/%{name}
 

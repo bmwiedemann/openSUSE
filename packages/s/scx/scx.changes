@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Aug 14 10:08:55 UTC 2025 - fredrik.lonnegren@suse.com
+
+- add 0001-scxtop-use-PT_REGS_IP-macro.patch:
+  * Upstream fix for building on aarch64
+  * https://github.com/sched-ext/scx/pull/2602
+- add 0001-vmlinux.h-refresh-with-the-updated-script.patch:
+  * Upstream fix for building on aarch64
+  * https://github.com/sched-ext/scx/pull/2586
+- Update to version 1.0.15:
+  * scxtop: Add power info
+  * scxtop: Add network TUI view
+  * scxtop: Add perf top mode
+  * scx_lavd: Continue to use a CPU that has tasks on its per-CPU DSQ.
+  * scx_lavd: Add per-cpu dsq support
+  * scxtop: Add memory stats
+  * scxctl: Add restart command
+  * scxctl: some Rust formatting changes to satisfy the CI
+  * scxtop: add scrolling + state to process view
+  * scxtop: add process filtering
+  * scx_lavd: Add 'slice_used' for '--monitor-sched-samples'
+  * scxtop: make process columns extensible
+  * load_balance: Refactor create_domain_hierarchy
+  * scx_layered: Add debugging for layer matching
+  * scx_p2dq: Make extern symbols weak for old kernel support
+  * scx_p2dq: Add idle CPU priority tracking
+  * scx_p2dq: Add kprobe for sched_set_itmt_core_prio
+  * scx_p2dq: Add CPU priority
+  * scxtop: add pause capability
+  * scxtop: add fields to process view
+  * scx_tickless: Add support for preferred cores
+  * scx_p2dq: Allow configuring queued wakeup
+  * scheds: Introduce scx_cosmos
+  * scx_loader: set scx_flash as default scheduler
+  * scxtop: use new freq data in app
+  * scxtop: add cpu_frequency tracking
+  * scx_p2dq: Set CPU on promise during enqueue
+  * /etc/default/scx: set scx_flash as default scheduler
+
+-------------------------------------------------------------------
 Wed Jul 09 07:53:27 UTC 2025 - fredrik.lonnegren@suse.com
 
 - Update to version 1.0.14:
