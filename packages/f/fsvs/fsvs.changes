@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 20 06:49:35 UTC 2025 - Max Lin <mlin@suse.com>
+
+- Fix build error with automake 1.18.1
+  * the name of automake libdir is automake-1.18 although the version
+    number is 1.18.1, use 'automake --print-libdir' to instead of
+    query the rpm package version
+
+-------------------------------------------------------------------
 Thu Mar 27 21:30:30 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.2.13:

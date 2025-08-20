@@ -47,7 +47,7 @@ You may think of it as some kind of tar or rsync with versioned storage.
 %autosetup -p1
 # remove dangling symlinks
 rm config.guess config.sub
-cp -v %{_datadir}/automake-`rpm -q --queryformat %%{version} automake`/config.{guess,sub} .
+cp -v `automake --print-libdir`/config.{guess,sub} .
 
 %build
 %configure
