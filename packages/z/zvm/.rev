@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>1280463</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>23fa0b368b875a1d3e826a6bed53175d</srcmd5>
+    <version>0.8.8</version>
+    <time>1755689137</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.8:
+  * added functionality to ls --all by @mipdableep in #132 (forwarded request 1300327 from lmulling)</comment>
+    <requestid>1300329</requestid>
+  </revision>
 </revisionlist>
