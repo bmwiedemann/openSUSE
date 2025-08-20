@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 19 13:59:07 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
+
+- Update to 3.17.1:
+  * fix(cfapi): set up connections before requesting hydration 
+    (gh#nextcloud/desktop#8583)
+  * fix(cfapi): only log process info if it's present 
+    (gh#nextcloud/desktop#8586)
+  * fix(i18n): Fix grammar (gh#nextcloud/desktop#8593)
+  * Updated NextcloudFileProviderKit (gh#nextcloud/desktop#8601)
+  * feat: set LocalizedResourceName for sync folders. 
+    (gh#nextcloud/desktop#8613) 
+
+-------------------------------------------------------------------
 Thu Aug 14 10:06:23 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.17.0:
