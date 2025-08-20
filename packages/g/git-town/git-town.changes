@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug 20 06:07:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 21.4.3:
+  * Bug Fixes
+    - Fewer phantom merge conflicts: Git Town now performs a
+      rebase-onto only if there are actual commits to remove. If
+      there are no commits to remove, Git Town performs a regular
+      rebase, or if there is no need to sync, no rebase at all.
+      (#5422)
+    - "git town branch" prints branches in other worktrees
+      de-emphasized (#5405)
+
+-------------------------------------------------------------------
+Wed Aug 20 06:03:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 21.4.2:
+  * Bug Fixes
+    - Git Town no longer mistakes legit file conflicts for phantom
+      conflicts (#5156, #5140)
+    - delete: Git Town now rebases onto the correct branch (#5358)
+
+-------------------------------------------------------------------
 Wed Aug 06 05:28:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 21.4.1:
