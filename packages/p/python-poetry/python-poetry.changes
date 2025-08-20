@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 19 09:07:02 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.1.4
+  * Improve performance of locking dependencies
+  * Fix many issues with markers
+  * Fix an issue where re-locking failed for incomplete
+    multiple-constraints dependencies with explicit sources
+  * Fix an issue where the --directory option did not work if a plugin,
+    which accesses the poetry instance during its activation, was installed
+  * Fix an issue where poetry env activate -v printed additional
+    information to stdout instead of stderr so that the output could
+    not be used as designed
+  * Improve the error messages for the validation of the pyproject.toml file
+  * Fix an issue where project plugins were installed even though
+    poetry install was called with --no-plugins
+
+-------------------------------------------------------------------
 Thu Aug  7 05:01:07 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip more tests that require /tmp to be mounted exec.
