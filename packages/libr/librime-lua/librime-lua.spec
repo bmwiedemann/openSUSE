@@ -1,7 +1,7 @@
 #
 # spec file for package librime-lua
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           librime-lua
-Version:        0.0.0+git20240308.20ddea9
+Version:        0.0.0+git20250809.68f9c36
 Release:        0
 Summary:        Lua plugin for librime
 License:        SUSE-Permissive
 URL:            https://github.com/hchunhui/librime-lua
 Source:         %{name}-%{version}.tar.gz
 Patch0:         glog.patch
+Patch1:         cmake.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  darts

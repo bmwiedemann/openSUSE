@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug  9 14:59:31 UTC 2025 - Chang <calad0i.fill@outlook.com>
+
+- Update to git.20250809.68f9c36
+- cmake.patch
+  Add cmake_minimum_required to patch cmake failure
+
+-------------------------------------------------------------------
 Wed May  1 09:04:44 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Update to git20240308.20ddea9:
