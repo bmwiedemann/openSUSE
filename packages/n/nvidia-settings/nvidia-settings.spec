@@ -1,7 +1,7 @@
 #
 # spec file for package nvidia-settings
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %endif
 
 Name:           nvidia-settings
-Version:        570.172.08
+Version:        580.76.05
 Release:        0
 Summary:        Configure the NVIDIA graphics driver
 License:        GPL-2.0-only

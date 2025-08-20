@@ -122,4 +122,12 @@ make use of %ldconfig_scriptlets</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1295599</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e8d08afa4c8365375a37cdbf6a322c12</srcmd5>
+    <version>580.76.05</version>
+    <time>1755689095</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1300320</requestid>
+  </revision>
 </revisionlist>
