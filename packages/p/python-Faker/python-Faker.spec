@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-Faker
 Version:        26.1.0
@@ -32,14 +36,19 @@ BuildRequires:  %{python_module python-dateutil >= 2.4}
 BuildRequires:  %{python_module text-unidecode >= 1.3}
 BuildRequires:  %{python_module validators >= 0.13.0}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-python-dateutil >= 2.4
 Requires:       python-text-unidecode >= 1.3
 Obsoletes:      python3-fake-factory < %{version}-%{release}
 Provides:       python3-fake-factory = %{version}-%{release}
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -65,6 +74,12 @@ sed -i -e 's:==:>=:g' setup.py
 
 %pre
 %python_libalternatives_reset_alternative faker
+
+%post
+%python_install_alternative faker
+
+%postun
+%python_uninstall_alternative faker
 
 %check
 %pytest
