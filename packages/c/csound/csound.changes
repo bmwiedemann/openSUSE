@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 19 11:20:11 UTC 2025 - Edgar Aichinger <edogawa@aon.at>
+
+- add csound-opadr.patch (fixes Factory/TW/Slowroll builds)
+
+-------------------------------------------------------------------
 Tue Jul 30 12:10:38 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - csound-gcc14.patch: fixed gcc14 build issues
