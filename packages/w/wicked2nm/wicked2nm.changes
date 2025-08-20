@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 18 14:30:41 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to v1.2.1
+  * bump slab from 0.4.10 to 0.4.11 to address CVE-2025-55159
+    [bsc#1248010]
+
+-------------------------------------------------------------------
 Tue Jul 29 12:07:00 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to v1.2.0

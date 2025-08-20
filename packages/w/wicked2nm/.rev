@@ -35,4 +35,14 @@
   * Add ovs support</comment>
     <requestid>1296322</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>eb2aa9e6fd260984d91efb010f051c12</srcmd5>
+    <version>1.2.1</version>
+    <time>1755689125</time>
+    <user>anag_factory</user>
+    <comment>- Update to v1.2.1
+  * bump slab from 0.4.10 to 0.4.11 to address CVE-2025-55159
+    [bsc#1248010]</comment>
+    <requestid>1300292</requestid>
+  </revision>
 </revisionlist>
