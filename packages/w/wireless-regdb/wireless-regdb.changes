@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 10 18:59:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250710 (boo#1246300):
+  * update regulatory database based on preceding changes
+  * update regulatory rules for Bosnia and Herzegovina (BA) for 6 GHz
+  * Update regulatory info for CEPT countries for 6GHz listed by WiFi Alliance
+  * update regulatory rules for Paraguay (PY) on 6 GHz for 2025
+  * Update regulatory info for Estonia (EE) for 2024
+  * Update regulatory info for Vietnam (VN) for 2025
+  * Update regulatory rules for Brazil (BR) on 6GHz
+  * Update regulatory info for Egypt (EG) for 2024
+  * Permit 320 MHz bandwidth in 6 GHz band for GB
+  * Update regulatory info for Indonesia (ID) for 2025
+
+-------------------------------------------------------------------
 Sat Mar 29 23:14:18 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250220 (boo#1240356):
