@@ -29,10 +29,10 @@
 %endif
 %define title_version 0.4.14
 %define title_version_url %{title_version}
-%define objects_version 1.7.1
-%define openmusic_version 1.6
-%define opensound_version 1.0.5
-%define openrct2_version 0.4.24
+%define objects_version 1.7.2
+%define openmusic_version 1.6.1
+%define opensound_version 1.0.6
+%define openrct2_version 0.4.25
 
 Name:           openrct2
 Version:        %{openrct2_version}
