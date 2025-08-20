@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug 20 09:03:55 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.8.12
+ * Enhancements
+  * Add an aarch64-pc-windows-msvc target for python-platform 
+  * Add fallback parent process detection to uv tool update-shell 
+  * Install non-build-isolation packages in a second phase 
+  * Add hint when virtual environments are included in source distributions 
+  * Add Docker images derived from buildpack-deps:trixie, debian:trixie-slim, alpine:3.22 
+ * Bug fixes
+  * Reject already-installed wheels built with outdated settings 
+  * Skip interpreters that are not found on query 
+  * Handle dotted package names in script path resolution 
+  * Reject match-runtime = true for dynamic packages 
+ * Documentation
+  * Document improvements to build-isolation setups 
+  * Fix reference documentation recommendation to use uv cache clean instead of clear 
+
+-------------------------------------------------------------------
 Fri Aug 15 17:37:36 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.8.11

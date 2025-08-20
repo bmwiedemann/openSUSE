@@ -1233,4 +1233,26 @@
   * Move warnings for conflicting modules into preview</comment>
     <requestid>1299855</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>c43db74083b4cccb72f5e9a5c9bd69d6</srcmd5>
+    <version>0.8.12</version>
+    <time>1755693635</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.12
+ * Enhancements
+  * Add an aarch64-pc-windows-msvc target for python-platform 
+  * Add fallback parent process detection to uv tool update-shell 
+  * Install non-build-isolation packages in a second phase 
+  * Add hint when virtual environments are included in source distributions 
+  * Add Docker images derived from buildpack-deps:trixie, debian:trixie-slim, alpine:3.22 
+ * Bug fixes
+  * Reject already-installed wheels built with outdated settings 
+  * Skip interpreters that are not found on query 
+  * Handle dotted package names in script path resolution 
+  * Reject match-runtime = true for dynamic packages 
+ * Documentation
+  * Document improvements to build-isolation setups 
+  * Fix reference documentation recommendation to use uv cache clean instead of clear</comment>
+    <requestid>1300468</requestid>
+  </revision>
 </revisionlist>
