@@ -513,4 +513,12 @@
     when running under python 3.x</comment>
     <requestid>1293763</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>1631c783f3eab2045c5c239e788be99e</srcmd5>
+    <version>7.3.0</version>
+    <time>1755689088</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
+    <requestid>1300300</requestid>
+  </revision>
 </revisionlist>
