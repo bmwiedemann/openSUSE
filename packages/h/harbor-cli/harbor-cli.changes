@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 20 06:10:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.10:
+  * Update readme for replication support (#532)
+  * Replication executions (#518)
+  * build(deps): bump golang.org/x/term from 0.33.0 to 0.34.0
+    (#527)
+  * build(deps): bump golang.org/x/text from 0.27.0 to 0.28.0
+    (#528)
+
+-------------------------------------------------------------------
 Tue Aug 19 05:15:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.9:
