@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Aug 20 06:02:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.4.0:
+  * Features
+    - add *~ (emacs backup files) to default excludes (#483)
+      (bbd722f), closes #482
+    - add go.work, and go.work.sum files to default excludes (#468)
+      (05296a5)
+  * Dependencies
+    - chore(deps): bump anchore/sbom-action from 0.20.2 to 0.20.4
+      (#478)
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.13
+      to 0.5.14 (#481)
+    - chore(deps): bump golang.org/x/text from 0.27.0 to 0.28.0
+      (#484)
+    - chore(deps): bump anchore/sbom-action from 0.20.0 to 0.20.2
+      (#476)
+    - chore(deps): bump golang.org/x/text from 0.26.0 to 0.27.0
+      (#477)
+    - chore(deps): bump golang.org/x/text from 0.25.0 to 0.26.0
+      (#474)
+    - chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.11
+      to 0.5.13 (#472)
+    - chore(deps): bump anchore/sbom-action from 0.19.0 to 0.20.0
+      (#469)
+
+-------------------------------------------------------------------
 Wed May 07 10:43:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.3.0:
