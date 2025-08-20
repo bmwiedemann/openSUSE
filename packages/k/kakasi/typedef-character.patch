@@ -1,14 +1,16 @@
 diff --git a/lib/libkakasi.h b/lib/libkakasi.h
-index 54cebe0..232029c 100644
+index 54cebe0..68685ad 100644
 --- a/lib/libkakasi.h
 +++ b/lib/libkakasi.h
-@@ -48,4 +48,9 @@ void digest_shift PARAMS((Character *c, int s));
- void setcharbuffer PARAMS((unsigned char *s));
- char *getpbstr PARAMS((void));
- 
+@@ -38,6 +38,11 @@ int kakasi_free PARAMS((char *p));
+ /*
+  * NOTE: these are internal functions. Do not use.
+  */
 +typedef struct character {
 +    char type;
 +    unsigned char c1, c2;
 +} Character;
 +
- #endif /* _LIBKAKASI_H */
+ void digest_start_copy PARAMS((Character *c, Character *r));
+ void put_separator PARAMS((void));
+ void putchars PARAMS((Character *results));

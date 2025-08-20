@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 19 13:52:40 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Fix patch typedef-character.patch
+  + need the Character typedef to be above actual usage
+
+-------------------------------------------------------------------
 Fri Aug 15 15:38:01 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Fix build using newer gettext versions
