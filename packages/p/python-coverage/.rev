@@ -918,4 +918,15 @@ update to latest version</comment>
     threading Python, closing issue 1970.</comment>
     <requestid>1294221</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>57aaa650bb287c32670a6a696da033d4</srcmd5>
+    <version>7.9.2</version>
+    <time>1755689083</time>
+    <user>anag_factory</user>
+    <comment>- Add _multibuild for running tests, it's required to call &quot;coverage&quot;
+  command when using libalternatives.
+- Convert to libalternatives on SLE-16-based and newer systems
+</comment>
+    <requestid>1300270</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 19 10:42:47 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add _multibuild for running tests, it's required to call "coverage"
+  command when using libalternatives.
+
+-------------------------------------------------------------------
+Thu Aug 14 12:33:02 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Thu Jul 17 19:35:48 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.9.2:

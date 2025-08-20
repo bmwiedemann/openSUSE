@@ -1,7 +1,7 @@
 #
 # spec file for package python-coverage
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,23 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 %{?sle15_python_module_pythons}
-Name:           python-coverage
+Name:           python-coverage%{psuffix}
 Version:        7.9.2
 Release:        0
 Summary:        Code coverage measurement for Python
@@ -31,11 +46,19 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 # coverage[toml]
 Recommends:     python-tomli
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
+
+%if %{with test}
 # SECTION test requirements
+BuildRequires:  %{python_module coverage = %{version}}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module hypothesis >= 6}
 BuildRequires:  %{python_module pytest-xdist}
@@ -44,6 +67,7 @@ BuildRequires:  %{python_module tomli}
 # for database (sqlite3) support
 BuildRequires:  %{pythons}
 # /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -58,15 +82,20 @@ library to determine which lines are executable, and which have been executed.
 sed -i -e '/addopts/d' setup.cfg
 
 %build
+%if %{without test}
 %pyproject_wheel
+%endif
 
 %install
+%if %{without test}
 %pyproject_install
 rm -vf %{buildroot}%{_bindir}/coverage{2,3}
 %python_clone -a %{buildroot}%{_bindir}/coverage
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%endif
 
 %check
+%if %{with test}
 export LANG=en_US.UTF8
 %python_flavored_alternatives
 %{python_expand # indicate a writeable .pth directory for tests
@@ -104,6 +133,10 @@ donttest+=" or test_report_wildcard or test_run_omit_vs_report_omit"
 
 %pytest_arch -n auto --no-flaky-report -k "$donttest" -rp ||:
 %pytest_arch -n auto --no-flaky-report -k "not ($donttest)"
+%endif
+
+%pre
+%python_libalternatives_reset_alternative coverage
 
 %post
 %python_install_alternative coverage
@@ -111,11 +144,13 @@ donttest+=" or test_report_wildcard or test_run_omit_vs_report_omit"
 %postun
 %python_uninstall_alternative coverage
 
+%if %{without test}
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.rst CONTRIBUTORS.txt README.rst howto.txt
 %python_alternative %{_bindir}/coverage
 %{python_sitearch}/coverage/
 %{python_sitearch}/coverage-%{version}.dist-info
+%endif
 
 %changelog
