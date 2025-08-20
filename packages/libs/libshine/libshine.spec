@@ -1,7 +1,7 @@
 #
 # spec file for package libshine
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        LGPL-2.0-only
 Group:          System/Libraries
 URL:            https://github.com/toots/shine
 Source0:        https://github.com/toots/shine/releases/download/%{version}/%{oname}-%{version}.tar.gz
+Patch1:         libshine-gcc15-fixes.patch
 BuildRequires:  pkgconfig
 
 %description
@@ -63,7 +64,7 @@ Shine is an MP3 encoding library implemented in fixed-point
 arithmetic. This package contains the shineenc command line encoder.
 
 %prep
-%setup -q -n %{oname}-%{version}
+%autosetup -p1 -n %{oname}-%{version}
 
 %build
 %configure --disable-static
