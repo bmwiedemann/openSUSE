@@ -46,7 +46,7 @@
 %endif
 
 Name:           shim
-Version:        16.0
+Version:        16.1
 Release:        0
 Summary:        UEFI shim loader
 License:        BSD-2-Clause
@@ -100,10 +100,6 @@ Patch2:         shim-change-debug-file-path.patch
 Patch3:         remove_build_id.patch
 # PATCH-FIX-SUSE shim-disable-export-vendor-dbx.patch bsc#1185261 glin@suse.com -- Disable exporting vendor-dbx to MokListXRT
 Patch4:         shim-disable-export-vendor-dbx.patch
-# PATCH-FIX-UPSTREAM shim-alloc-one-more-byte-for-sprintf.patch dennis.tseng@suse.com
-Patch5:         shim-alloc-one-more-byte-for-sprintf.patch
-# PATCH-FIX-UPSTREAM shim: change automatically enable MOK_POLICY_REQUIRE_NX (PR #761)(bsc#1205588) - jlee@suse.com
-Patch6:         shim-change-automatically-enable-MOK_POLICY_REQUIRE_NX.patch
 BuildRequires:  gcc%{gcc_version}
 BuildRequires:  dos2unix
 BuildRequires:  efitools

@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Tue Aug 19 07:48:52 UTC 2025 - Joey Lee <jlee@suse.com>
+
+- Removed the following patches because they are merged to shim 16.1:
+        - shim-alloc-one-more-byte-for-sprintf.patch
+        - shim-change-automatically-enable-MOK_POLICY_REQUIRE_NX.patch 
+
+-------------------------------------------------------------------
+Tue Aug 19 03:46:46 UTC 2025 - Joey Lee <jlee@suse.com>
+
+- Update to 16.1
+    - Patches (git log --oneline --reverse 16.0..16.1)
+        4040ec4 shim_start_image(): fix guid/handle pairing when uninstalling protocols
+        39c0aa1 str2ip6(): parsing of "uncompressed" ipv6 addresses
+        3133d19 test-mock-variables: make our filter list entries safer.
+        d44405e mock-variables: remove unused variable
+        0e8459f Update CI to use ubuntu-24.04 instead of ubuntu-20.04
+        d16a5a6 SbatLevel_Variable.txt: minor typo fix.
+        32804cf Realloc() needs one more byte for sprintf()
+        431d370 IPv6: Add more check to avoid multiple double colon and illegal char
+        5e4d93c Loader Proto: make freeing of bprop.buffer conditional.
+        33deac2 Prepare to move things from shim.c to verify.c
+        030e7df Move a bunch of stuff from shim.c to verify.c
+        f3ddda7 handle_image(): make verification conditional
+        774f226 Cache sections of a loaded image and sub-images from them.
+        eb0d20b loader-protocol: handle sub-section loading for UKIs
+        2f64bb9 loader-protocol: add workaround for EDK2 2025.02 page fault on FreePages
+        1abc7ca loader-protocol: NULL output variable in load_image on failure
+        fb77b44 Generate Authenticode for the entire PE file
+        b86b909 README: mention new loader protocol and interaction with UKIs
+        8522612 ci: add mkosi configuration and CI
+        9ebab84 mkosi workflow: fix the branch name for main.
+        72a4c41 shim: change automatically enable MOK_POLICY_REQUIRE_NX
+        a2f0dfa This is an organizational patch to move some things around in mok.c
+        54b9946 Update to the shim-16.1 branch of gnu-efi to get AsciiSPrint()
+        a5a6922 get_max_var_sz(): add more debugging for apple platforms
+        77a2922 Add a "VariableInfo" variable to mok-variables.
+        efc71c9 build: Avoid passing *FLAGS to sub-make
+        7670932 Fixes for 'make TOPDIR=... clean'
+        13ab598 add SbatLevel entry 2025051000 for PSA-2025-00012-1
+        617aed5 Update version to 16.1~rc1
+        d316ba8 format_variable_info(): fix wrong size test.
+        f5fad0e _do_sha256_sum(): Fix missing error check.
+        3a9734d doc: add howto for running mkosi locally
+        ced5f71 mkosi: remove spurious slashes from script
+        0076155 ci: update mkosi commit
+        5481105 fix http boot
+        121cddf loader-protocol: Handle UnloadImage after StartImage properly
+        6a1d1a9 loader-protocol: Fix memory leaks
+        27a5d22 gitignore: add more mkosi dirs and vscode dir
+        346ed15 mkosi: disable repository key check on Fedora
+        afc4955 Update version to 16.1
+    - 16.1 release note https://github.com/rhboot/shim/releases
+            shim_start_image(): fix guid/handle pairing when uninstalling protocols by @vathpela in #738
+            Fix uncompressed ipv6 netboot by @hrvach in #742
+            fix test segfaults caused by uninitialized memory by @Fabian-Gruenbichler in #739
+            Update CI to use ubuntu-24.04 instead of ubuntu-20.04 by @vathpela in #749
+            SbatLevel_Variable.txt: minor typo fix. by @vathpela in #751
+            Realloc() needs to allocate one more byte for sprintf() by @dennis-tseng99 in #746
+            IPv6: Add more check to avoid multiple double colon and illegal char by @dennis-tseng99 in #753
+            Loader proto v2 by @vathpela in #748
+            loader-protocol: add workaround for EDK2 2025.02 page fault on FreePages by @bluca in #750
+            Generate Authenticode for the entire PE file by @esnowberg in #604
+            README: mention new loader protocol and interaction with UKIs by @bluca in #755
+            ci: add mkosi configuration and CI by @bluca in #764
+            shim: change automatically enable MOK_POLICY_REQUIRE_NX by @vathpela in #761
+            Save var info by @vathpela in #763
+            build: Avoid passing *FLAGS to sub-make by @rosslagerwall in #758
+            Fixes for 'make TOPDIR=... clean' by @bluca in #762
+            add SbatLevel entry 2025051000 for PSA-2025-00012-1 by @Fabian-Gruenbichler in #766
+            Coverity fixes 20250804 by @vathpela in #767
+            ci: fixlets and docs for mkosi workflow by @bluca in #768
+            fix http boot by @jsetje in #770
+            Fix double free and leak in the loader protocol by @rosslagerwall in #769
+            gitignore: add more mkosi dirs and vscode dir by @bluca in #771
+    - Drop upstreamed patch:
+      The following patches are merged to 16.1
+        - shim-alloc-one-more-byte-for-sprintf.patch
+            - 32804cf5d9 Realloc() needs one more byte for sprintf()    [16.1]
+        - shim-change-automatically-enable-MOK_POLICY_REQUIRE_NX.patch 
+            - 72a4c41877 shim: change automatically enable MOK_POLICY_REQUIRE_NX [16.1]
+
+-------------------------------------------------------------------
 Tue Aug 12 03:03:21 UTC 2025 - Joey Lee <jlee@suse.com>
 
 - SLE shim should includes vendor-dbx-sles.esl instead of
