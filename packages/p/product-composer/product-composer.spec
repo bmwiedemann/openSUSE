@@ -23,13 +23,12 @@
 %endif
 
 Name:           product-composer
-Version:        0.6.12
+Version:        0.6.13
 Release:        0
 Summary:        Product Composer
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/product-composer
-#!CreateArchive: product-composer
 Source:         %name-%{version}.tar.xz
 # Should become a build option
 Patch10:        sle-15-defaults.patch

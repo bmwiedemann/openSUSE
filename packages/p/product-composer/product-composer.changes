@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 20 08:25:30 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.6.13:
+  * switching back to SHA-256 for CHECKSUMS file (boo#1247507)
+
+-------------------------------------------------------------------
 Wed Aug  6 11:46:15 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.6.12:

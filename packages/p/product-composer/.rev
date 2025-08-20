@@ -537,4 +537,13 @@
   * Add appstream screenshots.tar uncompressed if available.</comment>
     <requestid>1297947</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>5cdbf3f68fe9ad171bf02a06ccdd2d30</srcmd5>
+    <version>0.6.13</version>
+    <time>1755689233</time>
+    <user>anag_factory</user>
+    <comment>- update to version 0.6.13:
+  * switching back to SHA-256 for CHECKSUMS file (boo#1247507)</comment>
+    <requestid>1300435</requestid>
+  </revision>
 </revisionlist>
