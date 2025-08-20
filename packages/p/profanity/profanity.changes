@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Aug 19 15:55:27 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Remove the URL part from the patches.
+  For some reason GH seems to change the patches even though
+  we used them from commits on master, resulting in OBS to
+  decline the submission due to the differences
+
+-------------------------------------------------------------------
+Sat Aug 16 10:38:25 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- rework spec file to wrap bcond around optional dependencies. This
+  allows a clean generation of the -mini headless build boo#1246851
+- split the library and -devel packages
+- enable xscreensaver awareness, use gtk3
+- run some tests
+- add profanity-0.15.0-Fix-tests-with-gcc15-uintptr_t.patch
+  to fix tests with gcc15
+- package the license files
+
+-------------------------------------------------------------------
 Wed Jul 23 07:04:12 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1246850: Fix build with gpgme >= 2.0.0

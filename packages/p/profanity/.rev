@@ -679,4 +679,24 @@
   Add profanity-0.15.0-gpgme.patch</comment>
     <requestid>1295216</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>66f79b9d80963886321c0b75f1a37494</srcmd5>
+    <version>0.15.0</version>
+    <time>1755689140</time>
+    <user>anag_factory</user>
+    <comment>- Remove the URL part from the patches.
+  For some reason GH seems to change the patches even though
+  we used them from commits on master, resulting in OBS to
+  decline the submission due to the differences
+
+- rework spec file to wrap bcond around optional dependencies. This
+  allows a clean generation of the -mini headless build boo#1246851
+- split the library and -devel packages
+- enable xscreensaver awareness, use gtk3
+- run some tests
+- add profanity-0.15.0-Fix-tests-with-gcc15-uintptr_t.patch
+  to fix tests with gcc15
+- package the license files</comment>
+    <requestid>1300328</requestid>
+  </revision>
 </revisionlist>

@@ -2,6 +2,7 @@
 # spec file for package profanity
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +17,37 @@
 #
 
 
-Name:           profanity
+%global flavor @BUILD_FLAVOR@%{nil}
+%global sname profanity
+%if "%{flavor}" == ""
+%global pname %{sname}
+%else
+%global pname %{sname}-%{flavor}
+%endif
+%define sover 0
+# standard flavor
+%if "%{flavor}" == ""
+%bcond_without notifications
+%bcond_without xscreensaver
+%bcond_without icons
+%bcond_without scaled_avatars
+%bcond_without tests
+%else
+# -mini
+%bcond_with notifications
+%bcond_with xscreensaver
+%bcond_with icons
+%bcond_with scaled_avatars
+%bcond_with tests
+%endif
+# common to both
+%bcond_without python
+%bcond_without otr
+%bcond_without gpg
+%bcond_without omemo
+%bcond_without omemo_qrcode
+#
+Name:           %{pname}
 Version:        0.15.0
 Release:        0
 Summary:        Console-based XMPP client
@@ -24,129 +55,166 @@ License:        SUSE-GPL-3.0+-with-openssl-exception
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://profanity-im.github.io
 Source:         https://github.com/profanity-im/profanity/releases/download/%{version}/profanity-%{version}.tar.gz
-Source1:        profanity-rpmlintrc
 # bsc#1246850: Fix build with gpgme >= 2.0.0. See gh/profanity#2048
-Patch0:         https://github.com/profanity-im/profanity/commit/606eaac31dfb97df16b0d2ba9466a3a67bec122a.patch#/profanity-0.15.0-gpgme.patch
-BuildRequires:  glib2-devel >= 2.62
-BuildRequires:  gtk2-devel
-BuildRequires:  libcurl-devel
-BuildRequires:  libexpat-devel
-BuildRequires:  libgcrypt-devel >= 1.7.0
-BuildRequires:  libgpgme-devel
-BuildRequires:  libnotify-devel
-BuildRequires:  libotr-devel
-BuildRequires:  libsignal-protocol-c-devel >= 2.3.2
-BuildRequires:  libstrophe-devel >= 0.12.2
-BuildRequires:  libuuid-devel
-BuildRequires:  ncurses-devel
+Patch0:         profanity-0.15.0-gpgme.patch
+# fixes tests build with ggc15. See gh/profanity#2055
+Patch1:         profanity-0.15.0-Fix-tests-with-gcc15-uintptr_t.patch
+BuildRequires:  pkgconfig
+# mandatory requirements
+BuildRequires:  pkgconfig(glib-2.0) >= 2.62
+BuildRequires:  pkgconfig(libcurl) >= 7.62.0
+BuildRequires:  pkgconfig(libstrophe) >= 0.12.3
+BuildRequires:  pkgconfig(ncursesw)
+BuildRequires:  pkgconfig(sqlite3) >= 3.22.0
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(readline)
+%endif
+Conflicts:      profanity-binary
+Provides:       profanity-binary = %{version}
+# optional requirements
+%if %{with notifications}
+BuildRequires:  pkgconfig(libnotify)
+%endif
+%if %{with python}
 BuildRequires:  python3-devel
-BuildRequires:  readline-devel
-BuildRequires:  sqlite3-devel >= 3.22.0
-Requires:       libstrophe0 >= 0.12.3
-Requires:       profanity-binary = %{version}
-Suggests:       profanity-standard
+%endif
+%if %{with otr}
+BuildRequires:  pkgconfig(libotr) >= 4.0
+%endif
+%if %{with gpg}
+BuildRequires:  pkgconfig(gpgme)
+%endif
+%if %{with omemo}
+BuildRequires:  pkgconfig(libgcrypt) >= 1.7.0
+BuildRequires:  pkgconfig(libsignal-protocol-c) >= 2.3.2
+%endif
+%if %{with xscreensaver}
+BuildRequires:  pkgconfig(xscrnsaver)
+%endif
+%if %{with icons}
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
+%endif
+%if %{with scaled_avatars}
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
+%endif
+%if %{with omemo_qrcode}
+BuildRequires:  pkgconfig(libqrencode)
+%endif
+# tests requirements
+%if %{with tests}
+BuildRequires:  expect
+BuildRequires:  pkgconfig(cmocka)
+%endif
+%if "%{flavor}" == ""
+Obsoletes:      profanity-standard
+%endif
 
 %description
-Profanity is a console-based XMPP client written in C using ncurses,
-and inspired by Irssi.
-
-%package mini
-Summary:        Console-based XMPP client
-Group:          Productivity/Networking/Instant Messenger
-Requires:       profanity = %{version}
-Provides:       profanity-binary = %{version}-%{release}
-Conflicts:      profanity-binary
-Removepathpostfixes: .mini
-
-%description mini
-Profanity is a console-based XMPP client written in C using ncurses,
-and inspired by Irssi.
+Profanity is a console-based XMPP client written in C using ncurses, and
+inspired by Irssi.
+%if "%{flavor}" == "mini"
 This package holds a minimal version, with most options not compiled
 in to have fewer dependencies. It is thus well suited for headless
 servers.
+%endif
 
-%package standard
-Summary:        Console-based XMPP client
-Group:          Productivity/Networking/Instant Messenger
-Requires:       profanity = %{version}
-Provides:       profanity-binary = %{version}-%{release}
-Conflicts:      profanity-binary
-Removepathpostfixes: .standard
+# only standard flavor builds the plugin library
+%if "%{flavor}" == ""
+%package -n libprofanity%{sover}
+Summary:        Shared library for the %{name} console-based XMPP client
 
-%description standard
-Profanity is a-console based XMPP client written in C using ncurses,
-and inspired by Irssi.
+%description -n libprofanity%{sover}
+Profanity is a console-based XMPP client written in C using ncurses, and
+inspired by Irssi.
 
-This package holds the standard version.
-Including:
- * Desktop notifications (OSD)
- * Tray icon
+This package contains the shared library used by the profanity client and
+plug-ins.
+
+%package devel
+Summary:        Development files for the libprofanity XMPP client library
+Requires:       libprofanity%{sover} = %{version}
+
+%description devel
+Profanity is a console-based XMPP client written in C using ncurses, and
+inspired by Irssi.
+
+This package contains the files needed to build with libprofanity.
+%endif
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{sname}-%{version}
 sed -i -e "s/python-config/python3-config/g" configure
 
 %build
-%configure PYTHON_VERSION=3 \
+%configure \
+%if %{with notifications}
 	--enable-notifications \
-	--with-themes \
-	--enable-otr \
-	--enable-pgp \
-	--enable-omemo \
+%endif
+%if %{with python}
+	PYTHON_VERSION=3 \
 	--enable-python-plugins \
+%endif
 	--enable-c-plugins \
 	--enable-plugins \
-	--enable-icons-and-clipboard
-
-export CFLAGS="%{optflags} -fcommon"
+%if %{with otr}
+	--enable-otr \
+%endif
+%if %{with gpg}
+	--enable-pgp \
+%endif
+%if %{with omemo}
+	--enable-omemo \
+%endif
+%if %{with xscreensaver}
+	--with-xscreensaver \
+%endif
+	--with-themes \
+%if %{with icons}
+	--enable-icons-and-clipboard \
+%endif
+%if %{with scaled_avatars}
+	--enable-gdk-pixbuf \
+%endif
+%if %{with omemo_qrcode}
+	--enable-omemo-qrcode \
+%endif
+	%{nil}
 %make_build
 
 %install
 %make_install
-rm %{buildroot}%{_libdir}/libprofanity.la
+find %{buildroot} -type f -name "*.la" -delete -print
+%if "%{flavor}" == "mini"
+rm %{buildroot}%{_includedir}/profapi.h
+rm %{buildroot}%{_libdir}/libprofanity.so*
+%endif
 
-mv %{buildroot}%{_bindir}/profanity %{buildroot}%{_bindir}/profanity.standard
+%check
+%if %{with tests}
+%make_build check
+%endif
 
-make clean
-
-%configure PYTHON_VERSION=3 \
-	--disable-notifications \
-	--with-themes \
-	--enable-otr \
-	--enable-pgp \
-	--enable-omemo \
-	--enable-python-plugins \
-	--enable-c-plugins \
-	--enable-plugins \
-    --disable-icons-and-clipboard
-
-export CFLAGS="%{optflags} -fcommon"
-make %{?_smp_mflags}
-%make_install
-rm %{buildroot}%{_libdir}/libprofanity.la
-
-mv %{buildroot}%{_bindir}/profanity %{buildroot}%{_bindir}/profanity.mini
+# only standard flavor builds the plugin library
+%if "%{flavor}" == ""
+%ldconfig_scriptlets -n libprofanity%{sover}
+%endif
 
 %files
-%{_mandir}/man1/profanity.1%{?ext_man}
-%{_mandir}/man1/profanity-*.1%{?ext_man}
-%dir %{_datadir}/profanity/
-%dir %{_datadir}/profanity/themes/
-%dir %{_datadir}/profanity/icons/
-%{_datadir}/profanity/themes/*
-%{_datadir}/profanity/icons/*
-# for now we will have them here
-%{_libdir}/libprofanity.so*
+%license COPYING LICENSE.txt
+%{_bindir}/profanity
+%{_mandir}/man1/*1%{?ext_man}
+%{_datadir}/profanity/
 
+# only standard flavor builds the plugin library
+%if "%{flavor}" == ""
+%files -n libprofanity%{sover}
+%license COPYING LICENSE.txt
+%{_libdir}/libprofanity.so.%{sover}{,.*}
+
+%files devel
+%license COPYING LICENSE.txt
 %{_includedir}/profapi.h
-
-%files mini
-%{_bindir}/profanity.mini
-
-%files standard
-%{_bindir}/profanity.standard
-
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%{_libdir}/libprofanity.so
+%endif
 
 %changelog
