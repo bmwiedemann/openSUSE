@@ -849,4 +849,21 @@
     <comment>Update to 5.2.10</comment>
     <requestid>1291713</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>381ac5bb542d5dc6a0b59b1fea7e994d</srcmd5>
+    <version>5.2.11</version>
+    <time>1755693626</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.2.11
+  https://krita.org/en/posts/2025/krita-5.2.11-released/
+  * Fix an issue updating the canvas when entering/exiting
+    canvas-only mode
+  * Fix an issue in the index colors filter when trying to apply
+    the filter to a layer that has only one, non-transparent color
+  * Fix Python invalid escape sequence warnings (kde#489526)
+- Add upstream change:
+  * 0001-Fix-compilation-with-heif-1.20.2.patch
+</comment>
+    <requestid>1300466</requestid>
+  </revision>
 </revisionlist>

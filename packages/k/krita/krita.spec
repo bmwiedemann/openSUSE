@@ -1,7 +1,7 @@
 #
 # spec file for package krita
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %define pyver python311
 %endif
 Name:           krita
-Version:        5.2.10
+Version:        5.2.11
 Release:        0
 Summary:        Digital Painting Application
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.0-only
@@ -45,6 +45,8 @@ Patch0:         0004-Fix-build-with-sip6.8.patch
 Patch1:         5d44af277b005692241a09f30e11bb0d16166823.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         0001-Fix-build-with-libheif-1.20.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-Fix-compilation-with-heif-1.20.2.patch
 BuildRequires:  %{pyver}-devel
 BuildRequires:  %{pyver}-qt5-devel
 BuildRequires:  %{pyver}-sip-devel
