@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Aug 15 21:38:25 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Fix verification of HP plugin with new GPG key (lp#2120738)
+  * add hplip-hardcode-new-signing-key-AC69536A2CF3A243.patch
+- Fix python crash in hp-setup on compressed PPD file (lp#2120739)
+  * add hp-setup-fix-python-crash-when-manually-importing-gz.patch
+- Fix missing urllib.URLopener in python 3.14 (lp#2115046)
+  * add hplip-no-urlopener.patch
+- Only run cupstestppd if explicitly requested with "--with testppd"
+  build parameter
+
+-------------------------------------------------------------------
+Fri Aug 15 15:59:19 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Updated hplip gpg public key
+  fingerprint: 82FF A7C6 AA74 11D9 34BD E173 AC69 536A 2CF3 A243
+  https://developers.hp.com/hp-linux-imaging-and-printing/hplipDigitalCertificate.html
+
+- Update to hplip 3.25.6
+- Added support for new printers:
+  * HP LaserJet Enterprise Flow MFP 8601z
+  * HP LaserJet Pro MFP M126a plus
+  * HP LaserJet Pro MFP M126nw plus
+  * HP LaserJet Pro MFP M126snw plus
+  * HP Envy Photo 7200 series
+  * HP Envy Photo 7900 series
+  * HP OfficeJet Pro 9110 Series
+  * HP OfficeJet 9120 Series
+  * HP OfficeJet Pro 9120 Series
+  * HP OfficeJet Pro 9130 Series
+
+-------------------------------------------------------------------
 Thu Aug 14 19:57:37 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Disable hp-scan-utils on Leap 16.0

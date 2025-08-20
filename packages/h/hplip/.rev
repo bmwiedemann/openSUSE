@@ -1544,4 +1544,12 @@ Fixes build in Staging_A (python 3.13) - and seems to address the real reaason w
   Leap does not want to ship scikit-image -&gt; python-pandas</comment>
     <requestid>1299861</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>ff55bcbbfc8c9cefe65815709b1dfe20</srcmd5>
+    <version>3.25.6</version>
+    <time>1755689091</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1300306</requestid>
+  </revision>
 </revisionlist>

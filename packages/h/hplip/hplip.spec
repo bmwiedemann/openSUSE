@@ -44,6 +44,9 @@
 %bcond_without scan_utils
 %endif
 
+# Run cupstestppd on the generated PPDs (prints many warnings)
+%bcond_with testppd
+
 %if 0%{use_qt5}
 %global config_qt_opts --disable-qt4 --enable-qt5
 %global requires_qt %{pymod qt5}
@@ -55,7 +58,7 @@
 %endif
 
 Name:           hplip
-Version:        3.25.2
+Version:        3.25.6
 Release:        0
 Summary:        HP's Printing, Scanning, and Faxing Software
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -127,6 +130,12 @@ Patch604:       hplip-sclpml-strcasestr.patch
 Patch605:       hplip-hpaio-gcc14.patch
 Patch606:       hplip-base-fix-error-in-ConfigBase-handling.patch
 Patch607:       hplip-utils-Fix-plugin-verification-with-sha256.patch
+# lp#2120739
+Patch608:       hp-setup-fix-python-crash-when-manually-importing-gz.patch
+# lp#2120738
+Patch609:       hplip-hardcode-new-signing-key-AC69536A2CF3A243.patch
+# lp#2115046
+Patch610:       hplip-no-urlopener.patch
 # PATCH-FIX-UPSTREAM https://bugs.launchpad.net/hplip/+bug/2096650
 Patch651:       hplip-3.24.4-gcc15.patch
 # Compatibility patches for old SUSE releases
@@ -204,6 +213,8 @@ Requires:       foomatic-filters
 Requires:       ghostscript
 # hp-plugin requries lsb_release
 Requires:       lsb-release
+# hp-plugin installation fails without /etc/sane/dll.conf
+Requires:       sane-backends
 Requires(post): %{_bindir}/find
 Requires(post): /bin/grep
 Requires(post): /bin/sed
@@ -407,6 +418,9 @@ This sub-package is only required by developers.
 %patch -P 605 -p1
 %patch -P 606 -p1
 %patch -P 607 -p1
+%patch -P 608 -p1
+%patch -P 609 -p1
+%patch -P 610 -p1
 %patch -P 651 -p1
 %if 0%{?suse_version} < 1500
 # python2 compatibility
@@ -569,29 +583,13 @@ done
 # Final test by cupstestppd:
 # To save disk space gzip the files (gzipped PPDs can also be used by CUPS).
 # Future goal: Only have files which don't FAIL for cupstestppd.
-# Ignore FAILs because of errors in UIConstraints and/or NonUIConstraints
-# which are detected since cupstestppd in CUPS > 1.2.7 (i.e. in openSUSE 10.3).
-# See Novell/Suse Bugzilla bug #309822: When this bug is fixed, cupstestppd would
-# no longer result zero exit code.
-# In the long run the PPDs should be fixed but as far as we know there have been
-# no problems because of such UIConstraints errors so that it should be o.k.
-# let those PPDs pass even if they are not strictly compliant.
-# Ignore FAILs because of missing cupsFilter programs because
-# in the package build environment the usual HPLIP filters
-# like "hpcups" and "hpcupsfax" are
-# installed at an unusual place (in the BuildRoot directory).
-# For now keep all PPDs even if cupstestppd FAILs.
-# Reason:
-# With each CUPS version upgrade cupstestppd finds more and more errors
-# so that more and more PPDs would be no longer included in the RPM
-# which have been included before which results a regression.
-# As far as we know there have been no problems at all because of
-# not strictly compliant PPDs in HPLIP so that it is much better
-# to provide all HPLIP PPDs so that the matching printers can be used
-# than to be rigorous regarding enforcing compliance to the PPD specification:
-echo "Final testing by cupstestppd..."
+# Update 2025-08-15: this goal is unrealistic. Skip the testppd step unless
+# explicitly enabled with --with testppd
 for p in *.ppd
-do grep -E -v '^\*UIConstraints:|^\*NonUIConstraints:|^\*cupsFilter:' $p | cupstestppd - || true
+do
+%if %{with testppd}
+   grep -E -v '^\*UIConstraints:|^\*NonUIConstraints:|^\*cupsFilter:' $p | cupstestppd - || true
+%endif
    gzip -n -9 $p
 done
 echo "Moving PPDs that use the hpps filter to %{_datadir}/cups/model/manufacturer-PPDs/hplip-hpps..."
