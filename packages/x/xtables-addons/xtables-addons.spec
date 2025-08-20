@@ -1,7 +1,7 @@
 #
 # spec file for package xtables-addons
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           xtables-addons
-Version:        3.28
+Version:        3.29
 Release:        0
 Summary:        IP Packet Filter Administration Extensions
 License:        GPL-2.0-only AND GPL-2.0-or-later
 Group:          Productivity/Networking/Security
 URL:            http://xtables-addons.sf.net/
-
 #Git-Clone:	git://git.inai.de/xtables-addons
 Source:         https://inai.de/files/%name/%name-%version.tar.xz
 Source2:        https://inai.de/files/%name/%name-%version.tar.asc
