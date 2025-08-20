@@ -18,18 +18,24 @@
 
 
 Name:           qgit
-Version:        2.11
+Version:        2.12
 Release:        0
 Summary:        Graphical Git Repository Viewer
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Version Control
 URL:            https://github.com/tibirna/qgit
 Source:         https://github.com/tibirna/qgit/archive/%{name}-%{version}.tar.gz
+BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  cmake(Qt5Core) >= 5.14.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
+BuildRequires:  cmake(Qt6Core) >= 6.2.4
+BuildRequires:  cmake(Qt6Core5Compat) >= 6.2.4
+BuildRequires:  cmake(Qt6Gui) >= 6.2.4
+BuildRequires:  cmake(Qt6Widgets) >= 6.2.4
 Requires:       git-core >= 1.5.5
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc12-c++
+%endif
 
 %description
 QGit is a git GUI viewer built on Qt/C++.
@@ -60,6 +66,9 @@ picking single modified files.
 %autosetup -p1 -n qgit-qgit-%{version}
 
 %build
+%if 0%{?suse_version} < 1600
+export CXX=g++-12
+%endif
 %cmake
 %cmake_build
 
