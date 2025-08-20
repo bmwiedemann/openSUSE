@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry-core
-Version:        2.1.1
+Version:        2.1.3
 Release:        0
 Summary:        Poetry PEP 517 Build Backend
 License:        Apache-2.0 AND BSD-2-Clause AND MIT AND Python-2.0

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 19 08:55:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.1.3
+  * Improve performance of marker operations
+  * Fix various issues with markers
+  * Update list of supported licenses
+  * Fix an issue where optional dependencies defined in the project
+    section were treated as non-optional when a source was defined
+    for them in the tool.poetry section
+  * Fix an issue where local versions with upper case letters caused
+    an error
+  * Fix an issue where inheriting from WheelBuilder was unnecessarily
+    difficult
+
+-------------------------------------------------------------------
 Wed Mar 12 07:32:46 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.1.1
