@@ -1,7 +1,7 @@
 #
 # spec file for package git
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -43,7 +43,7 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.50.1
+Version:        2.51.0
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -70,10 +70,6 @@ Patch8:         git-asciidoc.patch
 Patch10:        setup-don-t-fail-if-commondir-reference-is-deleted.patch
 # PATCH-FIX-OPENSUSE CVE-2024-24577.patch boo#1219660 antonio.teixeira@suse.com
 Patch11:        CVE-2024-24577.patch
-# Add SHA256 support for gitk and git-gui (bsc#1239989)
-Patch20:        0001-gitk-Add-support-of-SHA256-repo.patch
-Patch21:        0001-git-gui-Replace-null_sha1-with-nullid.patch
-Patch22:        0002-git-gui-Add-support-of-SHA256-repo.patch
 BuildRequires:  fdupes
 BuildRequires:  gpg2
 BuildRequires:  libcurl-devel
@@ -415,8 +411,6 @@ install -m 644 %{SOURCE12} %{buildroot}/%{_sysconfdir}/bash_completion.d/git-pro
 %if %{with git_libsecret}
 install -m 755 -D contrib/credential/libsecret/git-credential-libsecret %{buildroot}/%{gitexecdir}/git-credential-libsecret
 %endif
-# contrib/workdir
-install -m 755 -D contrib/workdir/git-new-workdir %{buildroot}/%{_bindir}
 # process tcsh completion
 (cd contrib/completion
  mkdir -p %{buildroot}%{_datadir}/tcsh
@@ -578,7 +572,6 @@ fi
 %dir %{gitexecdir}
 %dir %{gitexecdir}/mergetools
 %{gitexecdir}/mergetools/guiffy
-%{_bindir}/git-new-workdir
 %{_datadir}/bash-completion/completions/*
 %{_sysconfdir}/bash_completion.d/git-prompt
 %{_datadir}/tcsh
