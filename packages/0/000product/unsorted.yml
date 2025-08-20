@@ -3,6 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
+  - 389-ds-devel 
   - 389-ds-snmp 
   - 3omns 
   - 3proxy 
@@ -1969,13 +1970,11 @@ unsorted:
   - cargo-credential-oo7 
   - cargo-packaging 
   - cargo-vendor-filterer 
-  - cargo1.78 
   - cargo1.84 
   - cargo1.85 
   - cargo1.86 
   - cargo1.87 
   - cargo1.88 
-  - cargo1.89 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -3001,6 +3000,7 @@ unsorted:
   - cyrus-sasl-bdb-plain 
   - cyrus-sasl-bdb-scram 
   - cyrus-sasl-crammd5-32bit 
+  - cyrus-sasl-devel 
   - cyrus-sasl-devel-32bit 
   - cyrus-sasl-digestmd5-32bit 
   - cyrus-sasl-gs2 
@@ -11638,130 +11638,135 @@ unsorted:
   - libabigail6 
   - libabiword-3_0 
   - libabiword-3_0-devel 
-  - libabsl_base2505_0_0-32bit 
-  - libabsl_city2505_0_0-32bit 
-  - libabsl_civil_time2505_0_0 
-  - libabsl_civil_time2505_0_0-32bit 
-  - libabsl_cord2505_0_0-32bit 
-  - libabsl_cord_internal2505_0_0-32bit 
-  - libabsl_cordz_functions2505_0_0-32bit 
-  - libabsl_cordz_handle2505_0_0-32bit 
-  - libabsl_cordz_info2505_0_0-32bit 
-  - libabsl_cordz_sample_token2505_0_0 
-  - libabsl_cordz_sample_token2505_0_0-32bit 
-  - libabsl_crc32c2505_0_0-32bit 
-  - libabsl_crc_cord_state2505_0_0-32bit 
-  - libabsl_crc_cpu_detect2505_0_0 
-  - libabsl_crc_cpu_detect2505_0_0-32bit 
-  - libabsl_crc_internal2505_0_0-32bit 
-  - libabsl_debugging_internal2505_0_0-32bit 
-  - libabsl_decode_rust_punycode2505_0_0-32bit 
-  - libabsl_demangle_internal2505_0_0-32bit 
-  - libabsl_demangle_rust2505_0_0-32bit 
-  - libabsl_die_if_null2505_0_0-32bit 
-  - libabsl_examine_stack2505_0_0-32bit 
-  - libabsl_exponential_biased2505_0_0-32bit 
-  - libabsl_failure_signal_handler2505_0_0 
-  - libabsl_failure_signal_handler2505_0_0-32bit 
-  - libabsl_flags_commandlineflag2505_0_0 
-  - libabsl_flags_commandlineflag2505_0_0-32bit 
-  - libabsl_flags_commandlineflag_internal2505_0_0 
-  - libabsl_flags_commandlineflag_internal2505_0_0-32bit 
-  - libabsl_flags_config2505_0_0 
-  - libabsl_flags_config2505_0_0-32bit 
-  - libabsl_flags_internal2505_0_0 
-  - libabsl_flags_internal2505_0_0-32bit 
-  - libabsl_flags_marshalling2505_0_0 
-  - libabsl_flags_marshalling2505_0_0-32bit 
-  - libabsl_flags_parse2505_0_0 
-  - libabsl_flags_parse2505_0_0-32bit 
-  - libabsl_flags_private_handle_accessor2505_0_0 
-  - libabsl_flags_private_handle_accessor2505_0_0-32bit 
-  - libabsl_flags_program_name2505_0_0 
-  - libabsl_flags_program_name2505_0_0-32bit 
-  - libabsl_flags_reflection2505_0_0 
-  - libabsl_flags_reflection2505_0_0-32bit 
-  - libabsl_flags_usage2505_0_0 
-  - libabsl_flags_usage2505_0_0-32bit 
-  - libabsl_flags_usage_internal2505_0_0 
-  - libabsl_flags_usage_internal2505_0_0-32bit 
-  - libabsl_graphcycles_internal2505_0_0 
-  - libabsl_graphcycles_internal2505_0_0-32bit 
-  - libabsl_hash2505_0_0-32bit 
-  - libabsl_hashtablez_sampler2505_0_0-32bit 
-  - libabsl_int128-2505_0_0-32bit 
-  - libabsl_kernel_timeout_internal2505_0_0-32bit 
-  - libabsl_leak_check2505_0_0-32bit 
-  - libabsl_log_flags2505_0_0 
-  - libabsl_log_flags2505_0_0-32bit 
-  - libabsl_log_globals2505_0_0-32bit 
-  - libabsl_log_initialize2505_0_0 
-  - libabsl_log_initialize2505_0_0-32bit 
-  - libabsl_log_internal_check_op2505_0_0-32bit 
-  - libabsl_log_internal_conditions2505_0_0-32bit 
-  - libabsl_log_internal_fnmatch2505_0_0 
-  - libabsl_log_internal_fnmatch2505_0_0-32bit 
-  - libabsl_log_internal_format2505_0_0-32bit 
-  - libabsl_log_internal_globals2505_0_0-32bit 
-  - libabsl_log_internal_log_sink_set2505_0_0-32bit 
-  - libabsl_log_internal_message2505_0_0-32bit 
-  - libabsl_log_internal_nullguard2505_0_0-32bit 
-  - libabsl_log_internal_proto2505_0_0-32bit 
-  - libabsl_log_internal_structured_proto2505_0_0-32bit 
-  - libabsl_log_severity2505_0_0 
-  - libabsl_log_severity2505_0_0-32bit 
-  - libabsl_log_sink2505_0_0-32bit 
-  - libabsl_low_level_hash2505_0_0-32bit 
-  - libabsl_malloc_internal2505_0_0-32bit 
-  - libabsl_periodic_sampler2505_0_0 
-  - libabsl_periodic_sampler2505_0_0-32bit 
-  - libabsl_poison2505_0_0 
-  - libabsl_poison2505_0_0-32bit 
-  - libabsl_random_distributions2505_0_0 
-  - libabsl_random_distributions2505_0_0-32bit 
-  - libabsl_random_internal_distribution_test_util2505_0_0 
-  - libabsl_random_internal_distribution_test_util2505_0_0-32bit 
-  - libabsl_random_internal_entropy_pool2505_0_0 
-  - libabsl_random_internal_entropy_pool2505_0_0-32bit 
-  - libabsl_random_internal_platform2505_0_0 
-  - libabsl_random_internal_platform2505_0_0-32bit 
-  - libabsl_random_internal_randen2505_0_0 
-  - libabsl_random_internal_randen2505_0_0-32bit 
-  - libabsl_random_internal_randen_hwaes2505_0_0 
-  - libabsl_random_internal_randen_hwaes2505_0_0-32bit 
-  - libabsl_random_internal_randen_hwaes_impl2505_0_0 
-  - libabsl_random_internal_randen_hwaes_impl2505_0_0-32bit 
-  - libabsl_random_internal_randen_slow2505_0_0 
-  - libabsl_random_internal_randen_slow2505_0_0-32bit 
-  - libabsl_random_internal_seed_material2505_0_0 
-  - libabsl_random_internal_seed_material2505_0_0-32bit 
-  - libabsl_random_seed_gen_exception2505_0_0 
-  - libabsl_random_seed_gen_exception2505_0_0-32bit 
-  - libabsl_random_seed_sequences2505_0_0 
-  - libabsl_random_seed_sequences2505_0_0-32bit 
-  - libabsl_raw_hash_set2505_0_0-32bit 
-  - libabsl_raw_logging_internal2505_0_0-32bit 
-  - libabsl_scoped_set_env2505_0_0 
-  - libabsl_scoped_set_env2505_0_0-32bit 
-  - libabsl_spinlock_wait2505_0_0-32bit 
-  - libabsl_stacktrace2505_0_0-32bit 
-  - libabsl_status2505_0_0-32bit 
-  - libabsl_statusor2505_0_0-32bit 
-  - libabsl_str_format_internal2505_0_0-32bit 
-  - libabsl_strerror2505_0_0-32bit 
-  - libabsl_string_view2505_0_0 
-  - libabsl_string_view2505_0_0-32bit 
-  - libabsl_strings2505_0_0-32bit 
-  - libabsl_strings_internal2505_0_0-32bit 
-  - libabsl_symbolize2505_0_0-32bit 
-  - libabsl_synchronization2505_0_0-32bit 
-  - libabsl_throw_delegate2505_0_0-32bit 
-  - libabsl_time2505_0_0-32bit 
-  - libabsl_time_zone2505_0_0-32bit 
-  - libabsl_tracing_internal2505_0_0-32bit 
-  - libabsl_utf8_for_code_point2505_0_0-32bit 
-  - libabsl_vlog_config_internal2505_0_0 
-  - libabsl_vlog_config_internal2505_0_0-32bit 
+  - libabsl_base2508_0_0-32bit 
+  - libabsl_city2508_0_0-32bit 
+  - libabsl_civil_time2508_0_0 
+  - libabsl_civil_time2508_0_0-32bit 
+  - libabsl_cord2508_0_0-32bit 
+  - libabsl_cord_internal2508_0_0-32bit 
+  - libabsl_cordz_functions2508_0_0-32bit 
+  - libabsl_cordz_handle2508_0_0-32bit 
+  - libabsl_cordz_info2508_0_0-32bit 
+  - libabsl_cordz_sample_token2508_0_0 
+  - libabsl_cordz_sample_token2508_0_0-32bit 
+  - libabsl_crc32c2508_0_0-32bit 
+  - libabsl_crc_cord_state2508_0_0-32bit 
+  - libabsl_crc_cpu_detect2508_0_0 
+  - libabsl_crc_cpu_detect2508_0_0-32bit 
+  - libabsl_crc_internal2508_0_0-32bit 
+  - libabsl_debugging_internal2508_0_0-32bit 
+  - libabsl_decode_rust_punycode2508_0_0-32bit 
+  - libabsl_demangle_internal2508_0_0-32bit 
+  - libabsl_demangle_rust2508_0_0-32bit 
+  - libabsl_die_if_null2508_0_0-32bit 
+  - libabsl_examine_stack2508_0_0-32bit 
+  - libabsl_exponential_biased2508_0_0-32bit 
+  - libabsl_failure_signal_handler2508_0_0 
+  - libabsl_failure_signal_handler2508_0_0-32bit 
+  - libabsl_flags_commandlineflag2508_0_0 
+  - libabsl_flags_commandlineflag2508_0_0-32bit 
+  - libabsl_flags_commandlineflag_internal2508_0_0 
+  - libabsl_flags_commandlineflag_internal2508_0_0-32bit 
+  - libabsl_flags_config2508_0_0 
+  - libabsl_flags_config2508_0_0-32bit 
+  - libabsl_flags_internal2508_0_0 
+  - libabsl_flags_internal2508_0_0-32bit 
+  - libabsl_flags_marshalling2508_0_0 
+  - libabsl_flags_marshalling2508_0_0-32bit 
+  - libabsl_flags_parse2508_0_0 
+  - libabsl_flags_parse2508_0_0-32bit 
+  - libabsl_flags_private_handle_accessor2508_0_0 
+  - libabsl_flags_private_handle_accessor2508_0_0-32bit 
+  - libabsl_flags_program_name2508_0_0 
+  - libabsl_flags_program_name2508_0_0-32bit 
+  - libabsl_flags_reflection2508_0_0 
+  - libabsl_flags_reflection2508_0_0-32bit 
+  - libabsl_flags_usage2508_0_0 
+  - libabsl_flags_usage2508_0_0-32bit 
+  - libabsl_flags_usage_internal2508_0_0 
+  - libabsl_flags_usage_internal2508_0_0-32bit 
+  - libabsl_graphcycles_internal2508_0_0 
+  - libabsl_graphcycles_internal2508_0_0-32bit 
+  - libabsl_hash2508_0_0-32bit 
+  - libabsl_hashtable_profiler2508_0_0 
+  - libabsl_hashtable_profiler2508_0_0-32bit 
+  - libabsl_hashtablez_sampler2508_0_0-32bit 
+  - libabsl_int128-2508_0_0-32bit 
+  - libabsl_kernel_timeout_internal2508_0_0-32bit 
+  - libabsl_leak_check2508_0_0-32bit 
+  - libabsl_log_entry2508_0_0 
+  - libabsl_log_entry2508_0_0-32bit 
+  - libabsl_log_flags2508_0_0 
+  - libabsl_log_flags2508_0_0-32bit 
+  - libabsl_log_globals2508_0_0-32bit 
+  - libabsl_log_initialize2508_0_0 
+  - libabsl_log_initialize2508_0_0-32bit 
+  - libabsl_log_internal_check_op2508_0_0-32bit 
+  - libabsl_log_internal_conditions2508_0_0-32bit 
+  - libabsl_log_internal_fnmatch2508_0_0 
+  - libabsl_log_internal_fnmatch2508_0_0-32bit 
+  - libabsl_log_internal_format2508_0_0-32bit 
+  - libabsl_log_internal_globals2508_0_0-32bit 
+  - libabsl_log_internal_log_sink_set2508_0_0-32bit 
+  - libabsl_log_internal_message2508_0_0-32bit 
+  - libabsl_log_internal_nullguard2508_0_0-32bit 
+  - libabsl_log_internal_proto2508_0_0-32bit 
+  - libabsl_log_internal_structured_proto2508_0_0-32bit 
+  - libabsl_log_severity2508_0_0 
+  - libabsl_log_severity2508_0_0-32bit 
+  - libabsl_log_sink2508_0_0-32bit 
+  - libabsl_malloc_internal2508_0_0-32bit 
+  - libabsl_periodic_sampler2508_0_0 
+  - libabsl_periodic_sampler2508_0_0-32bit 
+  - libabsl_poison2508_0_0 
+  - libabsl_poison2508_0_0-32bit 
+  - libabsl_profile_builder2508_0_0 
+  - libabsl_profile_builder2508_0_0-32bit 
+  - libabsl_random_distributions2508_0_0 
+  - libabsl_random_distributions2508_0_0-32bit 
+  - libabsl_random_internal_distribution_test_util2508_0_0 
+  - libabsl_random_internal_distribution_test_util2508_0_0-32bit 
+  - libabsl_random_internal_entropy_pool2508_0_0 
+  - libabsl_random_internal_entropy_pool2508_0_0-32bit 
+  - libabsl_random_internal_platform2508_0_0 
+  - libabsl_random_internal_platform2508_0_0-32bit 
+  - libabsl_random_internal_randen2508_0_0 
+  - libabsl_random_internal_randen2508_0_0-32bit 
+  - libabsl_random_internal_randen_hwaes2508_0_0 
+  - libabsl_random_internal_randen_hwaes2508_0_0-32bit 
+  - libabsl_random_internal_randen_hwaes_impl2508_0_0 
+  - libabsl_random_internal_randen_hwaes_impl2508_0_0-32bit 
+  - libabsl_random_internal_randen_slow2508_0_0 
+  - libabsl_random_internal_randen_slow2508_0_0-32bit 
+  - libabsl_random_internal_seed_material2508_0_0 
+  - libabsl_random_internal_seed_material2508_0_0-32bit 
+  - libabsl_random_seed_gen_exception2508_0_0 
+  - libabsl_random_seed_gen_exception2508_0_0-32bit 
+  - libabsl_random_seed_sequences2508_0_0 
+  - libabsl_random_seed_sequences2508_0_0-32bit 
+  - libabsl_raw_hash_set2508_0_0-32bit 
+  - libabsl_raw_logging_internal2508_0_0-32bit 
+  - libabsl_scoped_set_env2508_0_0 
+  - libabsl_scoped_set_env2508_0_0-32bit 
+  - libabsl_spinlock_wait2508_0_0-32bit 
+  - libabsl_stacktrace2508_0_0-32bit 
+  - libabsl_status2508_0_0-32bit 
+  - libabsl_statusor2508_0_0-32bit 
+  - libabsl_str_format_internal2508_0_0-32bit 
+  - libabsl_strerror2508_0_0-32bit 
+  - libabsl_string_view2508_0_0 
+  - libabsl_string_view2508_0_0-32bit 
+  - libabsl_strings2508_0_0-32bit 
+  - libabsl_strings_internal2508_0_0-32bit 
+  - libabsl_symbolize2508_0_0-32bit 
+  - libabsl_synchronization2508_0_0-32bit 
+  - libabsl_throw_delegate2508_0_0-32bit 
+  - libabsl_time2508_0_0-32bit 
+  - libabsl_time_zone2508_0_0-32bit 
+  - libabsl_tracing_internal2508_0_0-32bit 
+  - libabsl_utf8_for_code_point2508_0_0-32bit 
+  - libabsl_vlog_config_internal2508_0_0 
+  - libabsl_vlog_config_internal2508_0_0-32bit 
   - libabw-devel 
   - libabw-devel-doc 
   - libabw-tools 
@@ -12940,6 +12945,7 @@ unsorted:
   - libevdi1 
   - libevemu3 
   - libevent-2_1-7-32bit 
+  - libevent-devel 
   - libevent-devel-static 
   - libeverest 
   - libeverest-x86-64-v3 
@@ -15311,6 +15317,7 @@ unsorted:
   - libprimecount7 
   - libprimesieve-devel 
   - libprimesieve12 
+  - libprofanity0 
   - libprofiler0 
   - libproj25 
   - libprometheus-cpp0_13 
@@ -18900,8 +18907,10 @@ unsorted:
   - mozaddon-devel 
   - mozilla-fira-fonts 
   - mozilla-nspr-32bit 
+  - mozilla-nspr-devel 
   - mozilla-nss-32bit 
   - mozilla-nss-certs-32bit 
+  - mozilla-nss-devel 
   - mozilla-nss-sysinit 
   - mozilla-nss-sysinit-32bit 
   - mozilla-zilla-slab-fonts 
@@ -20305,6 +20314,7 @@ unsorted:
   - openldap2-back-sock 
   - openldap2-back-sql 
   - openldap2-contrib 
+  - openldap2-devel 
   - openldap2-devel-32bit 
   - openldap2-devel-static 
   - openldap2-doc 
@@ -23122,8 +23132,8 @@ unsorted:
   - product-builder-plugin-Tumbleweed 
   - product-composer 
   - profanity 
+  - profanity-devel 
   - profanity-mini 
-  - profanity-standard 
   - profile-sync-daemon 
   - profile-sync-daemon-zsh-completion 
   - proftpd 
@@ -31671,11 +31681,9 @@ unsorted:
   - python313-arabic-reshaper 
   - python313-archmage 
   - python313-arf 
-  - python313-argcomplete 
   - python313-argh 
   - python313-argon2-cffi 
   - python313-argon2-cffi-bindings 
-  - python313-argparse-manpage 
   - python313-argparse_addons 
   - python313-arrow 
   - python313-arviz 
@@ -32476,7 +32484,6 @@ unsorted:
   - python313-distlib 
   - python313-distorm3 
   - python313-distributed 
-  - python313-distro 
   - python313-distroinfo 
   - python313-distutils-extra 
   - python313-dj-database-url 
@@ -33211,7 +33218,6 @@ unsorted:
   - python313-lazy-loader 
   - python313-lazy-object-proxy 
   - python313-lazyarray 
-  - python313-ldap 
   - python313-ldap3 
   - python313-ldapdomaindump 
   - python313-ldappool 
@@ -33856,8 +33862,6 @@ unsorted:
   - python313-pyaml 
   - python313-pyarrow 
   - python313-pyarrow-devel 
-  - python313-pyasn1 
-  - python313-pyasn1-modules 
   - python313-pyasyncore 
   - python313-pybars3 
   - python313-pybcj 
@@ -34188,7 +34192,6 @@ unsorted:
   - python313-python-crontab 
   - python313-python-daemon 
   - python313-python-datamatrix 
-  - python313-python-dateutil 
   - python313-python-dbusmock 
   - python313-python-debian 
   - python313-python-docs-theme 
@@ -34240,7 +34243,6 @@ unsorted:
   - python313-python-redmine 
   - python313-python-rpm-spec 
   - python313-python-rtmidi 
-  - python313-python-slugify 
   - python313-python-snappy 
   - python313-python-socketio 
   - python313-python-socks 
@@ -34726,7 +34728,6 @@ unsorted:
   - python313-testscenarios 
   - python313-testsuite 
   - python313-testtools 
-  - python313-text-unidecode 
   - python313-textX 
   - python313-textdistance 
   - python313-textfsm 
@@ -36584,8 +36585,6 @@ unsorted:
   - rust-cbindgen 
   - rust-grass 
   - rust-stakeholder 
-  - rust1.78 
-  - rust1.78-src 
   - rust1.84 
   - rust1.84-src 
   - rust1.85 
@@ -36596,8 +36595,6 @@ unsorted:
   - rust1.87-src 
   - rust1.88 
   - rust1.88-src 
-  - rust1.89 
-  - rust1.89-src 
   - rustdesk-server 
   - rustdesk-server-hbbr 
   - rustdesk-server-hbbs 
