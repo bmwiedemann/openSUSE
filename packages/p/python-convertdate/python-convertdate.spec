@@ -16,8 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-convertdate
 Version:        2.4.0
@@ -28,12 +31,17 @@ URL:            https://github.com/fitnr/convertdate
 Source:         https://github.com/fitnr/convertdate/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-PyMeeus >= 0.3.6
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module PyMeeus >= 0.3.6}
 BuildRequires:  %{python_module pytest-xdist}
@@ -66,6 +74,12 @@ export LC_ALL="en_US.UTF8"
 
 %pre
 %python_libalternatives_reset_alternative censusgeocode
+
+%post
+%python_install_alternative censusgeocode
+
+%postun
+%python_uninstall_alternative censusgeocode
 
 %files %{python_files}
 %doc README.md

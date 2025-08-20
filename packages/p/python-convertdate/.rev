@@ -102,4 +102,12 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1288525</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>a4c2e49383555d4b06d6014cf1b20d62</srcmd5>
+    <version>2.4.0</version>
+    <time>1755689116</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1300246</requestid>
+  </revision>
 </revisionlist>
