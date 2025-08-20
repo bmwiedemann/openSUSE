@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 20 06:59:32 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Recommend opensuse-welcome-launcher instead of opensuse-welcome:
+  the launcher took over the autostart function and will allow to
+  run different welcome apps per desktop (e.g gnome-tour on gnome).
+
+-------------------------------------------------------------------
 Thu Jul 17 02:09:36 UTC 2025 - Yifan Jiang <yfjiang@suse.com>
 
 - Explicitly recommends Google Noto Arabic fonts in GNOME

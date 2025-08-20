@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-gnome
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,7 @@ This particular package contains all the Gnome patterns.
 
 
 ################################################################################
+
 %package gnome
 %pattern_graphicalenvironments
 Summary:        GNOME Desktop Environment (Wayland)
@@ -244,7 +245,7 @@ Recommends:     desktop-data-SLE-extra
 Recommends:     malcontent-control
 # openSUSE welcome is our 'welcome app'
 %if 0%{?is_opensuse}
-Recommends:     opensuse-welcome
+Recommends:     opensuse-welcome-launcher
 %endif
 
 %description gnome_basic
