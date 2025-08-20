@@ -16,4 +16,12 @@
   * Use new keybindings schema (forwarded request 1226357 from rrahl0)</comment>
     <requestid>1226358</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>13af91140f0d554d385993e1378a8bc4</srcmd5>
+    <version>8.1.0</version>
+    <time>1755689131</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1300330</requestid>
+  </revision>
 </revisionlist>

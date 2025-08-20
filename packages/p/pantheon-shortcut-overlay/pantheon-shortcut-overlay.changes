@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 12 15:21:44 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 8.1.0:
+  * ShortcutsView update multitasking view shortcut
+  * ShortcutsView: use listboxes
+  * MainWindow: center and keep above with Pantheon protocol
+
+-------------------------------------------------------------------
 Mon Nov 25 20:24:10 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.0.1:

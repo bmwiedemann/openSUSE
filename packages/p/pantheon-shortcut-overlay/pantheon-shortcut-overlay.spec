@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-shortcut-overlay
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.shortcut-overlay
 Name:           pantheon-shortcut-overlay
-Version:        8.0.1
+Version:        8.1.0
 Release:        0
 Summary:        A native OS-wide shortcut overlay to be launched by Gala
 License:        GPL-3.0-or-later
@@ -32,6 +32,7 @@ BuildRequires:  vala
 BuildRequires:  pkgconfig(gee-0.8)
 BuildRequires:  pkgconfig(granite-7)
 BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(pantheon-wayland-1)
 Provides:       elementary-shortcut-overlay = %{version}
 Obsoletes:      elementary-shortcut-overlay < %{version}
 
