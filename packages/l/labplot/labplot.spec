@@ -19,6 +19,11 @@
 %define kf6_version 6.3
 %define qt6_version 6.5
 
+# netcdf build was disabled on 32bit archs (sr#1266211)
+%ifnarch s390x i586 %arm
+%bcond_without netcdf
+%endif
+
 Name:           labplot
 Version:        2.12.1
 Release:        0
@@ -79,7 +84,9 @@ BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libmarkdown)
 BuildRequires:  pkgconfig(liborigin)
 BuildRequires:  pkgconfig(matio)
+%if %{with netcdf}
 BuildRequires:  pkgconfig(netcdf)
+%endif
 BuildRequires:  pkgconfig(poppler-qt6) >= 0.62.0
 BuildRequires:  pkgconfig(zlib)
 Requires:       qt6-sql-sqlite >= %{qt6_version}
