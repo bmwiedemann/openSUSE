@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Mon Aug 18 13:03:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.67.0:
+  * refactor(release download): cleanup request creation
+  * fix(release download): use unauthenticated client for
+    non-GitLab asset links
+  * feat(opentofu): add `terraform` and `tf` as aliases for the
+    `opentofu`
+  * feat(debug): support `GLAB_DEBUG_HTTP` env variable to log HTTP
+    traffic
+  * chore(deps): update module k8s.io/client-go to v0.33.4
+
+-------------------------------------------------------------------
+Mon Aug 18 12:54:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.66.0:
+  * feat(agent token): generate new token if cached token has been
+    revoked
+  * feat(agent token): lock token creation for concurrent plugin
+    calls
+  * feat(agent token): force keyring mode by default
+  * feat(opentofu): add delete command
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.139.0
+  * chore(opentofu): fix command docs
+  * fix(tests): Add missing can_create_organization to mock
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.138.0
+  * feat(state list): add OpenTofu state download command
+  * feat(state list): add OpenTofu state unlock command
+  * feat(state list): add OpenTofu state lock command
+  * feat(state list): add OpenTofu state list command
+  * refactor(release): avoid repeating calls to cmd.Flags()
+  * feat(release): support configuring name of release asset
+    package
+  * fix(git): fix git test
+  * chore: Apply 3 suggestion(s) to 3 file(s)
+  * feat(cluster/graph): support ignoring arc direction when
+    filtering by roots
+  * feat(opentofu): implement new `opentofu init` command
+  * feat(project): enhance fork handling for existing repos
+  * chore: add .vscode/launch.json for debugging configuration
+  * fix(mr checkout): respect git_protocol configuration instead of
+    hardcoding SSH
+  * fix(warnings): fix misc warnings across the code base
+  * chore(deps): update module golang.org/x/crypto to v0.41.0
+  * refactor(factory): rename GitLab client variables
+  * refactor(factory): rename misleading HttpClient func to
+    GitLabClient
+  * refactor: simplify tests with t.TempDir and t.Chdir
+  * chore(deps): bump go to v1.24.6
+  * chore(deps): update dependency golang to v1.24.6
+  * feat(cluster/graph): support filtering by roots
+  * feat: add autofill flags to mr update command
+  * docs: Add a troubleshooting subheading to the README
+  * feat(help): document -h short option
+  * chore: Add additional mocks to git package
+  * chore: don't run tests for doc changes only
+  * chore(deps): remove duplicate golangci-lint entry from
+    tools-versions
+  * chore(deps): update dependency golangci-lint to v2.3.1
+  * docs: testing against staging
+  * chore(hostname): remove h flag for hostname
+  * chore(gen-docs): run gen docs without cmdtest package
+    dependency
+  * fix(api): respect --hostname argument
+  * chore(deps): update module github.com/golang-jwt/jwt/v5 to
+    v5.3.0
+  * feat(mr-list): support "Any" user
+  * chore: simplified token validation
+  * feat(duo ask): self-hosted instance url check
+
+-------------------------------------------------------------------
 Fri Aug 01 08:14:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.65.0:

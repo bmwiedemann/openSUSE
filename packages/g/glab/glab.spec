@@ -1,7 +1,7 @@
 #
 # spec file for package glab
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2021-2022 Orville Q. Song <orville@anislet.dev>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           glab
-Version:        1.65.0
+Version:        1.67.0
 Release:        0
 Summary:        A GitLab command line tool
 License:        MIT
@@ -30,10 +30,10 @@ Source1:        vendor.tar.gz
 Patch0:         glab-disable_update_check.patch
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?almalinux_version} || 0%{?rocky_version}
 BuildRequires:  git
-BuildRequires:  golang >= 1.24.4
+BuildRequires:  golang >= 1.24.6
 %else
 BuildRequires:  git-core
-BuildRequires:  go1.24 >= 1.24.4
+BuildRequires:  go1.24 >= 1.24.6
 BuildRequires:  golang-packaging
 %endif
 BuildRequires:  bash-completion
