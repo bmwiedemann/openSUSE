@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-code
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         sover 0
 %define         appid io.elementary.code
 Name:           pantheon-code
-Version:        7.4.0
+Version:        8.1.0
 Release:        0
 Summary:        Extensible Text Editor for the Pantheon Desktop
 License:        GPL-3.0-or-later
@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(gtkspell3-3.0)
 BuildRequires:  pkgconfig(libgit2-glib-1.0)
 BuildRequires:  pkgconfig(libhandy-1)
-BuildRequires:  pkgconfig(libpeas-1.0)
+BuildRequires:  pkgconfig(libpeas-2)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libvala-0.56)
 BuildRequires:  pkgconfig(vte-2.91)

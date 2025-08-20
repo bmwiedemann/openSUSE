@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Aug 12 15:00:22 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 8.1.0:
+  * Fix build with GCC14
+  * Clone remote repository
+  * CloneRepositoryDialog: fix warning attaching null widget
+  * MainWindow: Fix missing gettext
+  * Remove trash item from project menu
+  * Markdown: Fix hang when extending list on last line
+  * No tooltip and not selectable if dummy row
+  * Symbol Pane - indicate when loading
+  * SymbolPane: Fix filter for C symbols
+  * Fix crash from highlight selection plugin
+- update to version 8.0.0:
+  * A new gutter is added for adding/removing edit marks
+  * Remote branches may now be opened from the "Branch" menu
+  * Options to overwrite or cancel are given when switching branch
+  * The branch names in the "Branch" submenus are now sorted alphabetically
+  * The extension list now has switches instead of checkboxes in order
+    to provide a larger target
+  * terminal pane now implements smart copy-paste
+  * Vala symbol pane now gives more information
+  * Launcher actions now have icons
+  * Opening and immediately closing a new document no longer prevents
+    further documents being opened
+  * The Vala symbol pane may only block the UI for a limited time if there
+    are a large number of symbols
+  * The search term now persists until editing or closing the search bar
+  * No longer allow the parent or child of an open project to be itself opened
+  * The active project dropdown now keeps in sync
+  * Numbered lists are now handled correctly by Markdown plugin
+  * The highlighting plugin now works with selections of more than one word
+  * The "Open in …" menu is now sorted and includes a "Terminal Pane" entry
+  * Folders containing may items now expand faster without blocking the UI
+  * Symbol Pane now always scrolls document to selected symbol
+  * Updated translations
+
+-------------------------------------------------------------------
 Fri Nov  1 20:58:15 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 7.0.4:
