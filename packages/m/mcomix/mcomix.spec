@@ -1,7 +1,7 @@
 #
 # spec file for package mcomix
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,10 +41,10 @@ Requires:       mupdf
 %endif
 Requires:       %{pythons}
 Requires:       %{pythons}-Pillow
+Requires:       %{pythons}-chardet
 Requires:       %{pythons}-gobject-Gdk
 Requires:       %{pythons}-pycairo
 Requires:       /usr/bin/7z
-Requires:       /usr/bin/chardetect
 Requires:       typelib-1_0-Gtk-3_0
 Recommends:     /usr/bin/lha
 Recommends:     unrar

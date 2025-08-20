@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 19 18:00:02 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- replace Requires: /usr/bin/chardetect with %{pythons}-chardet
+  * let chardetect use the same python version as mcomix
+
+-------------------------------------------------------------------
 Wed Jan 29 13:29:04 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - for Leap 16.0 requires python3 instead of python311

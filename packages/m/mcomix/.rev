@@ -110,4 +110,14 @@
 </comment>
     <requestid>1241196</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>61ad580fa4b14779590ec60a6acfad47</srcmd5>
+    <version>3.1.0</version>
+    <time>1755689146</time>
+    <user>anag_factory</user>
+    <comment>- replace Requires: /usr/bin/chardetect with %{pythons}-chardet
+  * let chardetect use the same python version as mcomix
+</comment>
+    <requestid>1300345</requestid>
+  </revision>
 </revisionlist>
