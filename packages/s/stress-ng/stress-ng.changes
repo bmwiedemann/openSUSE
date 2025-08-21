@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug  4 11:34:37 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- update to 0.19.03:
+  * More progress feedback when sending ^C (SIGINT)
+  * Clean up manual
+  * Improved portability
+  * --spinmem-yield - force sched_yield() calls in spinmem loops
+  * --ioport-port - specify x86 I/O port to exervises
+  * --stream-prefetch - enable prefetching on stream reads
+  * --llc-affinity-size - specify the lower-level-cache size
+  * --far-branch-pageout - force pages out on far branch instruction pages
+
+-------------------------------------------------------------------
 Tue Jul  1 11:12:30 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - update to 0.19.02:
