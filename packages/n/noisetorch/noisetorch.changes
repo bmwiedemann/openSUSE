@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 20 12:50:10 UTC 2025 - Michael Matz <matz@suse.com>
+
+- Use current distro go version.  Don't force CGO off, that doesn't
+  work on some architectures with PIE mode, instead use whatever
+  upstream go decides to be the correct default.
+
+-------------------------------------------------------------------
 Mon Jul  4 23:08:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use go1.18 

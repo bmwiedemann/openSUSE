@@ -1,7 +1,7 @@
 #
 # spec file for package noisetorch
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  golang(API) = 1.18
+BuildRequires:  golang(API) >= 1.18
 
 %description
 NoiseTorch is an easy to use open source application for Linux with PulseAudio.
@@ -50,7 +50,7 @@ popd
 go generate
 # -tags release would enable the auto-updater (update.go)
 
-CGO_ENABLED=0 GOOS=linux go build \
+GOOS=linux go build \
 %ifnarch ppc64
     -buildmode=pie \
 %endif
