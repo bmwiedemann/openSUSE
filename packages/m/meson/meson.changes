@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 20 10:11:40 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.8.4:
+  + compilers: move CFLAGS/CXXFLAGS handling to Environment.
+  + interpreter: rename default_project_options.
+  + options: machine_file_options keys are always OptionKeys
+  + options: tighten types for validating options
+  + interpreter: use correct type for project_default_options
+  + options: split pending subproject options into their own dictionary
+  + options: warn if subproject sets another subproject option too late
+
+-------------------------------------------------------------------
 Thu Jul 31 10:49:59 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.8.3:
