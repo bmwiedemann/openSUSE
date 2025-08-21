@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Aug 21 08:49:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.16.18:
+  * Bugfix
+    - Fixed Integrations critical bug: #3215
+
+-------------------------------------------------------------------
+Thu Aug 21 06:28:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.16.17:
+  * Bugfixes
+    - Passing correct feature flags from backend
+
+-------------------------------------------------------------------
+Thu Aug 21 06:04:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.16.16:
+  * Features
+    - Updated built-in Swagger API docs
+      (http://localhost:3000/swagger/index.html)
+    - Added button for testing project alerts
+  * Bugfixes
+    - Fixed terraform HTTP backend (PRO)
+
+-------------------------------------------------------------------
+Thu Aug 21 05:51:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.16.13:
+  * Features
+    - Updated built-in Swagger API docs
+
+-------------------------------------------------------------------
+Thu Aug 21 05:47:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.16.7 (no releases between 2.15.7 and this):
+  Semaphore 2.16 Release Details
+  https://github.com/semaphoreui/semaphore/releases/tag/v2.16.7
+  * SQLite support (BoltDB deprecated)
+  * Built-in API reference powered by Swagger
+  * UI improvements:
+    - Expandable text inputs
+    - Display of next scheduled run in multiple time zones
+  * Parallel task execution
+  * Task parameters support for Schedules and Integrations
+  * HashiCorp Vault integration (Pro only)
+
+-------------------------------------------------------------------
 Fri Aug 08 04:52:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.15.7 (2.15.6 was not released):
