@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Thu Aug 21 06:53:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.0.2:
+  No CLI-related changes
+- Update to version 2.0.1:
+  No CLI-related changes
+
+-------------------------------------------------------------------
+Thu Aug 21 06:36:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.0.0:
+  Warnings and breaking changes
+  * Backwards Compatibility with v1
+    The Crossplane maintainers have taken thoughtful consideration
+    to make major improvements and changes in v2 while maintaining
+    backwards compatibility for the vast majority of v1 workloads.
+    We expect most users to be able to upgrade to v2 without any
+    changes to their control plane. However, there is a set of 4
+    breaking changes that we have made, mostly to long deprecated
+    features and features that have remained stuck in alpha for a
+    long time.
+    If you are not using any of these 4 features, you can upgrade
+    to v2 without any issues and your existing workload should
+    continue operating as usual.
+    The following features have been removed:
+    - Native patch and transform within composition (mode:
+      Resources)
+      You can migrate your compositions to use function pipelines
+      with the crossplane beta convert pipeline-composition command
+      available in the v1 crossplane CLI. See the Crossplane docs
+      for details.
+    - ControllerConfig
+      These have been replaced by DeploymentRuntimeConfig. You can
+      migrate your existing ControllerConfig to
+      DeploymentRuntimeConfig with the crossplane beta convert
+      deployment-runtime command available in the v1 crossplane
+      CLI. See the Crossplane docs for details.
+  * login/logout removed from Crossplane CLI
+    The crossplane xpkg login and crossplane xpkg logout commands
+    have been removed from the Crossplane CLI. To login to a
+    registry before pushing a package, consider using docker login
+    locally, or the docker/login-action from CI.
+    An example of this pattern can be seen in many Community
+    Extension Projects, for example function-auto-ready.
+  * CLI-related commits
+    - Add #sig-cli to README
+    - Support Rendering Default Values from XRD in Crossplane CLI
+    - fix(render): Render CLI command ignores XR Ready state
+  * Dependencies
+    - chore(deps) bump crossplane-runtime to v2.0.0-rc.1
+    - chore(deps): bump all crossplane-runtime import paths to
+      github.com/crossplane/crossplane-runtime/v2
+    - chore(deps): bump crossplane-runtime to v1.21.0-rc.0
+    - chore(deps): bump crossplane-runtime to v2.0.0
+    - chore(deps): pin nick-fields/retry action to ce71cc2
+    - chore(deps): update actions/create-github-app-token digest to
+      d72941d
+    - chore(deps): update actions/stale digest to 5bef64f
+    - chore(deps): update actions/upload-artifact digest to ea165f8
+    - chore(deps): update bufbuild/buf-action digest to c231a1a
+    - chore(deps): update dependency earthly/earthly to v0.8.16
+    - chore(deps): update dependency golang to v1.24.5
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.2.2
+    - chore(deps): update docker/login-action digest to 74a5d14
+    - chore(deps): update gcr.io/distroless/static docker digest to
+      b7b9a69
+    - chore(deps): update github/codeql-action digest to 181d5ee
+    - chore(deps): update github/codeql-action digest to ce28f5b
+    - chore(deps): update github/codeql-action digest to fca7ace
+    - chore(deps): update mheap/require-checklist-action digest to
+      46d2ca1
+    - chore(deps): update module github.com/cloudflare/circl to
+      v1.6.1 [security]
+    - chore(deps): update module
+      github.com/go-viper/mapstructure/v2 to v2.3.0 [security]
+    - chore(deps): update renovatebot/github-action action to
+      v41.0.22
+    - fix(deps): update module dario.cat/mergo to v1.0.2
+    - fix(deps): update module github.com/emicklei/dot to v1.8.0
+    - fix(deps): update module github.com/prometheus/client_golang
+      to v1.22.0
+    - fix(deps): update module github.com/sigstore/sigstore to
+      v1.9.4
+
+-------------------------------------------------------------------
 Sun Aug 10 07:39:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.20.1:
