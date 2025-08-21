@@ -109,8 +109,7 @@ contains the API documentation of the library, too.
 
 %build
 mkdir -p m4
-gettextize -f
-autoreconf -fiv
+autoreconf -fiv -I /usr/share/gettext/m4
 intltoolize --force
 %configure --disable-rpath --disable-static --enable-gtk-doc-html=no --enable-libv4l
 make %{?_smp_mflags}
