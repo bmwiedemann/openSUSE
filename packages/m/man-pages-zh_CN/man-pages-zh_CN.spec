@@ -17,13 +17,13 @@
 
 
 Name:           man-pages-zh_CN
-Version:        1.6.4.2
+Version:        1.6.4.3
 Release:        0
 Summary:        Simplified Chinese Linux man pages
 License:        GFDL-1.3-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/man-pages-zh/manpages-zh
-Source:         %{URL}/archive/v%{version}/manpages-zh-%{version}.tar.gz
+Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  opencc
