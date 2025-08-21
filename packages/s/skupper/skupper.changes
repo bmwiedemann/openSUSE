@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug 21 04:53:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.1:
+  * update for 2.1.1
+  * Update Documented CRDs with uniform formatting (#2227)
+  * Set site status to pending when router is down (#2206)
+  * Fixes links left in error if created before a site (#2211)
+  * Removes non-canonical CRD specifications (#2205)
+  * Include documentation in RouterAccess CRD (#2222)
+  * Add documentation to AccessToken CRD (#2225)
+  * Add documentation to AccessGrant CRD (#2226)
+  * Adds documentation to Link CRD (#2210)
+  * Add descriptions to Connector crd (#2224)
+  * Adds documentation to Listener CRD (#2215)
+  * add documentation to attachedconnectorbinding crd (#2221)
+  * Add descriptions to attached connector crd (#2216)
+  * Include Documentation in Site CRD (#2208)
+  * Adding SslProfiles to AttachedConnectors (#2199)
+
+-------------------------------------------------------------------
 Thu Jul 24 12:20:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.0:
