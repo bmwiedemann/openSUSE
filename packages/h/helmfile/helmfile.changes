@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 15 05:38:26 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.1.5:
+  What's Changed
+  * build(deps): bump actions/checkout from 4 to 5 by
+    @dependabot[bot] in #2128
+  * Update recommended Helm versions in init.go and run.sh by
+    @yxxhero in #2129
+  * Add comprehensive .github/copilot-instructions.md for coding
+    agents by @Copilot in #2131
+  * refactor(state): extract getMissingFileHandler method for
+    clarity by @yxxhero in #2133
+  * Fix parseHelmVersion to handle helm versions without 'v'
+    prefix by @Copilot in #2132
+  * build(deps): bump k8s.io/apimachinery from 0.33.3 to 0.33.4
+    by @dependabot[bot] in #2136
+  * build(deps): bump github.com/helmfile/chartify from 0.24.6 to
+    0.24.7 by @dependabot[bot] in #2135
+
+-------------------------------------------------------------------
 Sat Aug  9 08:01:48 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.1.4:

@@ -17,9 +17,9 @@
 #
 
 
-%define git_commit 9dbb4a4a270c4a4ed83eafa15eb1885658cf1042
+%define git_commit 33b6fca12c91040e3197ef8cf33a76debf050179
 Name:           helmfile
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        Deploy Kubernetes Helm Charts
 License:        MIT
