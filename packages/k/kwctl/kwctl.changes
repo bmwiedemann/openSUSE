@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Aug 20 06:02:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.27.3:
+  * Bug Fixes
+    - fix: Don't fail when PolicyGroup has policies with differing
+      execution modes (#1319)
+  * Maintenance
+    - build(deps): update crate-ci/typos action to v1.35.4 (#1317)
+    - build(deps): update all patch level dependencies (#1316)
+    - chore(deps): update actions/checkout action to v5 (#1314)
+    - build(deps): update github-actions (#1313)
+    - build(deps): update all patch level dependencies (#1312)
+    - build(deps): lock file maintenance (#1311)
+    - build(deps): update taiki-e/install-action action to v2.58.6
+      (#1310)
+    - build(deps): update github-actions (#1309)
+    - build(deps): update github-actions (#1307)
+    - build(deps): update rust crate clap_complete to v4.5.56
+      (#1308)
+    - build(deps): update taiki-e/install-action action to v2.58.0
+      (#1306)
+    - build(deps): update rust crate clap to v4.5.43 (#1305)
+    - chore(deps): update actions/download-artifact action to v5
+      (#1304)
+    - build(deps): update taiki-e/install-action action to v2.57.8
+      (#1303)
+
+-------------------------------------------------------------------
 Wed Aug 06 05:27:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.27.2:
