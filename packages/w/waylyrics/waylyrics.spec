@@ -1,7 +1,7 @@
 #
 # spec file for package waylyrics
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           waylyrics
-Version:        0.3.13
+Version:        0.3.21
 Release:        0
 Summary:        The furry way to show desktop lyrics
 License:        MIT
@@ -43,11 +43,11 @@ The furry way to show desktop lyrics, and simple universal desktop lyrics made w
 
 %build
 export WAYLYRICS_THEME_PRESETS_DIR=%{_datadir}/waylyrics/themes
-%{cargo_build} --locked
+%{cargo_build}
 
 %install
 export WAYLYRICS_THEME_PRESETS_DIR=%{_datadir}/waylyrics/themes
-%{cargo_install} --locked
+%{cargo_install}
 
 install -dm755 %{buildroot}%{_datadir}/waylyrics
 cp -r themes %{buildroot}%{_datadir}/waylyrics/
@@ -69,7 +69,7 @@ cp -r res/icons %{buildroot}%{_datadir}/icons
 
 %check
 export WAYLYRICS_THEME_PRESETS_DIR=%{_datadir}/waylyrics/themes
-%{cargo_test} --locked --features=offline-test
+%{cargo_test} --features=offline-test
 
 %files
 %license LICENSE

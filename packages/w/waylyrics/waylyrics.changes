@@ -1,4 +1,157 @@
 -------------------------------------------------------------------
+Wed Aug 20 11:21:37 UTC 2025 - Edgar Aichinger <edogawa@aon.at>
+
+- remove --locked from %{cargo_[build|install]} as it's part of these macros now
+- Update to version 0.3.21:
+  * docs: update changelog [ci skip]
+  * chore: bump version to v0.3.21
+  * build: bump dependencies
+  * build(deps): bump tokio from 1.43.0 to 1.43.1
+  * build(deps): bump openssl from 0.10.71 to 0.10.72
+  * build(deps): bump rust_decimal from 1.36.0 to 1.37.1
+  * build(deps): bump async-trait from 0.1.86 to 0.1.88
+  * build(deps): bump reqwest from 0.12.12 to 0.12.15
+  * build(deps): bump rust_decimal_macros from 1.36.0 to 1.37.1
+  * build(deps): bump the serde group with 2 updates
+  * fix:.一个错误
+  * fix: 手动刷新歌词时清空歌词标签缓存
+  * style: :lipstick: cargo fmt
+  * perf: DashMap 作为歌词标签存在性缓存
+  * feat: 添加对从音乐文件元数据读取歌词的支持
+  * build(deps): bump ring from 0.17.11 to 0.17.13 (#303)
+  * chore: add script to export dup deps [ci skip]
+  * fix(CI): remove outdated test of qqmusic api initialization [ci skip]
+  * build: bump dependencies
+  * docs(readme): HotLyric, alternative on windows [ci skip]
+  * docs(readme): note on project status
+  * build(deps): bump openssl from 0.10.68 to 0.10.70 (#301)
+  * build(deps): bump serde_json from 1.0.134 to 1.0.138 in the serde group (#296)
+  * build(deps): bump thiserror from 2.0.9 to 2.0.11 (#297)
+  * build(deps): bump tokio from 1.42.0 to 1.43.0 (#298)
+  * build(deps): bump futures-lite from 2.5.0 to 2.6.0 (#299)
+  * build(deps): bump windows from 0.58.0 to 0.59.0 (#300)
+  * build(deps): bump dark-light to 2.0.0
+  * build(deps): bump reqwest from 0.12.9 to 0.12.12 (#291)
+  * build(deps): bump the serde group with 2 updates (#290)
+  * build(deps): bump gdk4-win32 from 0.9.3 to 0.9.5 (#292)
+  * build(deps): bump thiserror from 2.0.6 to 2.0.9 (#293)
+  * build(deps): bump glib-macros from 0.20.5 to 0.20.7 (#294)
+  * rust version problem (#289)
+  * enhance: switch to better tray-icon implementation for windows [ci skip]
+  * build: migrate to ksni 0.3
+  * chore: dedup code
+  * chore: fix deepsource lints
+  * refactor: extract set_by_mode
+  * ci: add .deepsource.toml
+  * docs(readme): add introduction [ci skip]
+  * docs(readme): add alternative `lyric-for-musixfox` [ci skip]
+  * docs(readme): add preview images [ci skip]
+  * docs(readme): replace text with logos
+  * docs: update changelog & metainfo
+  * chore: release v0.3.20
+  * enhance: comment for sub table in config
+  * log: capture panics
+  * fix: check if instance name used
+  * docs: update metainfo & changelog
+  * hotfix: build on windows
+  * chore: release v0.3.19
+  * chore(deps): bump dependencies
+  * build(deps): bump the serde group with 2 updates (#280)
+  * build(deps): bump tracing from 0.1.40 to 0.1.41 (#281)
+  * build(deps): bump tray-icon from 0.19.1 to 0.19.2 (#282)
+  * build(deps): bump rfd from 0.15.0 to 0.15.1 (#284)
+  * build(deps): bump url from 2.5.3 to 2.5.4 (#283)
+  * docs(build): check MSRV
+  * chore(clippy): fix clippy warnings
+  * chore: update lock file
+  * fix: setCookies for QQMusicApi
+  * fix: instance format
+  * feat: support multi-monitor setup (#278)
+  * feat: Implement color-scheme autoswitch (light/dark mode) (#277)
+  * enhance: unregister latest theme
+  * build(deps): bump rustls from 0.23.16 to 0.23.18 (#276)
+  * fix: LazyLock is not stable yet in 1.73 rustc
+  * chore: fix details URL in metainfo
+  * chore: bump version to 0.3.18
+  * test: search/query via lrclib
+  * feat: support LRCLib provider
+  * chore: apply clippy fix
+  * fix: `login_qqmusic` call was not awaited
+  * chore(deps): bump dependencies
+  * feat: show errors from providers in search_window
+  * fix: search failure dialog cannot be spawned outside GTK thread
+  * docs: fix typo in filename
+  * docs(i18n): translation for contribution.md and build guide ubuntu (#272)
+  * fix: add artists to QQMusic keyword
+  * fix(test): initialize QQMusic
+  * feat: set cookies for QQMusicApi in config
+  * chore: migrate to qqmusic-rs 0.2.0
+  * enhance: init lyric provider with any struct
+  * build(deps): bump the serde group with 2 updates (#266)
+  * build(deps): bump glib-macros from 0.20.4 to 0.20.5 (#267)
+  * build(deps): bump thiserror from 1.0.64 to 1.0.66 (#268)
+  * build(deps): bump regex from 1.11.0 to 1.11.1 (#269)
+  * build(deps): bump tray-icon from 0.19.0 to 0.19.1 (#270)
+  * chore: support nix flake (#264)
+  * fix: set text wrap to show very-long lyric
+  * docs(readme): add alternative `lyrica`
+  * chore(deps): bump once_cell to `1.20.2`
+  * chore: release v0.3.17
+  * fix(tray/unix): Avoid calling list_players() from tray thread (#262)
+  * fix(tray): export translated lyrics
+  * build(deps): bump reqwest from 0.12.7 to 0.12.8 (#261)
+  * fix(win32): crash with Motrix runnig
+  * i18n: Create Italian Translation  it_IT (#260)
+  * chore: release v0.3.16
+  * build(fix): ""desktop
+  * docs(build): fix i18n part (#259)
+  * chore(deps): bump dependencies
+  * docs(readme): intro SPlayer [ci skip]
+  * docs(readme): desktop support of desktop_lyric, #258
+  * fix: build error on linux
+  * refactor: dedup function signature
+  * docs(readme): add alternative
+  * i18n: translate tips
+  * test: add test for make_lrc_line
+  * build(fix): fix build with MSVC
+  * feat: show error dialog if search failed
+  * enhance: TrackMeta from Metadata will not fail now
+  * chore: release v0.3.15
+  * enhance: select output file after generation
+  * fix: sec field in exported lyric
+  * enhance: make import/export pormpt different
+  * chore: release v0.3.14
+  * i18n: update locale for 0.3.14
+  * build: enable export-lyric for win build [ci skip]
+  * chore(dep): bump dependencies
+  * chore: disable unused warn
+  * fix: build with export-lyric/import-lyric disabled
+  * feat: export-lyric
+  * refactor: dedup import-*-lyric
+  * enhance: dedup import-lyric
+  * build(deps): bump the serde group with 2 updates (#252)
+  * build(deps): bump opencc-rust from 1.1.18 to 1.1.19 (#253)
+  * build(deps): bump gettext-rs from 0.7.0 to 0.7.1 (#254)
+  * build(deps): bump reqwest from 0.12.5 to 0.12.7 (#255)
+  * build(deps): bump rust_decimal from 1.35.0 to 1.36.0 (#256)
+  * build(deps): bump orhun/git-cliff-action from 3 to 4 (#257)
+  * fix: build with `opencc` disabled
+  * refactor: unify naming of same component in different mod
+  * refactor: prefer lazy-binding rather than multiple `cfg` flag
+  * docs(readme): fix broken link for DeaDBeeF plugin [ci skip]
+  * build(deps): bump tokio from 1.39.1 to 1.39.2 (#248)
+  * build(deps): bump serde_json from 1.0.120 to 1.0.121 in the serde group (#247)
+  * docs: mark issue/workaround for Better Comments
+  * fix: support new type of HWND inner
+  * docs(readme): intro DeaDBeeF close #245
+  * fix: migrate to window-rs 0.58
+  * build(deps): bump openssl from 0.10.64 to 0.10.66 (#246)
+  * refactor: migrate to new-style clone!
+  * refactor: migrate to gtk4-rs clone! new style
+  * chore: bump dependencies
+  * build(deps): bump serde_json from 1.0.118 to 1.0.119 in the serde group (#244)
+
+-------------------------------------------------------------------
 Sat Jun 29 07:16:14 UTC 2024 - xtexchooser@duck.com
 
 - Update to version 0.3.13:
