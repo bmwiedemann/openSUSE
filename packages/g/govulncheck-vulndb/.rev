@@ -1120,4 +1120,15 @@
   * GO-2025-3891 CVE-2025-9039 GHSA-wm7x-ww72-r77q (forwarded request 1300314 from jfkw)</comment>
     <requestid>1300316</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>63a31bc384a9eb408f624c085c002685</srcmd5>
+    <version>0.0.20250820T174735</version>
+    <time>1755788445</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.20250820T174735 2025-08-20T17:47:35Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3783 CVE-2025-52894 GHSA-prpj-rchp-9j5h (forwarded request 1300793 from jfkw)</comment>
+    <requestid>1300796</requestid>
+  </revision>
 </revisionlist>
