@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 20 14:17:50 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.17.4
+  * detect mount-utils by checking for /run/mount/utab
+
+-------------------------------------------------------------------
 Sun Jul 20 17:49:22 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.17.3
