@@ -105,6 +105,12 @@ Mon Feb 10 16:35:33 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 - drop upstream patches:
   33ab56f55406cc3cbe3cc7c0627340da1c1f2d6a.patch
   gdb.patch
+- A vulnerability allows remote attackers to execute arbitrary
+  code on affected installations of GIMP. The specific flaw exists
+  within parsing of XWD files. An integer overflow happens before
+  allocating a buffer. This fixed in GIMP 3.0.0.
+  https://www.gimp.org/news/2025/03/16/gimp-3-0-released
+  (CVE-2025-2760, bsc#1241690)
 
 -------------------------------------------------------------------
 Wed Feb  5 08:39:04 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>

@@ -2270,4 +2270,12 @@ General:
 - Drop upstreamed gimp-3.0.2_de_shortcut_clash.patch</comment>
     <requestid>1278325</requestid>
   </revision>
+  <revision rev="155" vrev="2">
+    <srcmd5>e6d32fada72fd9c32c3ba5a8f9aa3292</srcmd5>
+    <version>3.0.4</version>
+    <time>1755788248</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1300479</requestid>
+  </revision>
 </revisionlist>
