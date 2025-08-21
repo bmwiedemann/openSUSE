@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 21 04:19:43 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.7.0:
+  * Customizable refresh rate: Added -d/--delay option to set
+    screen refresh rate in seconds
+
+-------------------------------------------------------------------
 Sat Apr 05 18:04:16 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - initial version

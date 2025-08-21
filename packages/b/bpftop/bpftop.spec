@@ -17,7 +17,7 @@
 
 
 Name:           bpftop
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Dynamic real-time view of running eBPF programs
 License:        Apache-2.0
