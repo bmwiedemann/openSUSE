@@ -1,7 +1,7 @@
 #
 # spec file for package kolourpaint
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.6.0
-%define qt6_version 6.6.0
+%define kf6_version 6.14.0
+%define qt6_version 6.8.0
 
 %bcond_without released
 Name:           kolourpaint
-Version:        25.04.3
+Version:        25.08.0
 Release:        0
 Summary:        Paint Program
 # See boo#717722 for license details
@@ -33,6 +33,8 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Install-colors-file-into-app-specific-directory.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
@@ -52,7 +54,7 @@ Provides:       kolourpaint5 = %{version}
 Obsoletes:      kolourpaint5 < %{version}
 
 %description
-Paint program by KDE
+Paint program by KDE.
 
 %lang_package
 
@@ -60,7 +62,7 @@ Paint program by KDE
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%cmake_kf6
 
 %kf6_build
 
