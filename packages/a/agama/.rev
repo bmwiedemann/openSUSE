@@ -485,4 +485,17 @@
 - Log ProgressChanged events (gh#agama-project/agama#2597).</comment>
     <requestid>1299101</requestid>
   </revision>
+  <revision rev="28" vrev="28">
+    <srcmd5>6997920c02d75fb01ea91264a55eeb29</srcmd5>
+    <version>0</version>
+    <time>1755788083</time>
+    <user>anag_factory</user>
+    <comment>- Fix software configuration cache (bsc#1247933).
+
+- Allow to specify &quot;bootloader&quot; and &quot;files&quot; section in agama
+  profile without specified product (bsc#1247248)
+
+- Do not return an Err when a connection is not activated or</comment>
+    <requestid>1300494</requestid>
+  </revision>
 </revisionlist>
