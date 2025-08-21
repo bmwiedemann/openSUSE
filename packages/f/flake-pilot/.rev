@@ -200,4 +200,41 @@ https://github.com/OSInside/flake-pilot?tab=readme-ov-file#flake-pilot</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1293445</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>048608fb25c2e784a0fd3df17553856e</srcmd5>
+    <version>3.1.21</version>
+    <time>1755801120</time>
+    <user>anag_factory</user>
+    <comment>- Bump version: 3.1.20 → 3.1.21
+
+- seed from entropy
+
+- Fix assignment of random sequence number
+  We should use a seed for the sequence as described in
+  https://rust-random.github.io/book/guide-seeding.html#a-simple-number
+  In addition the logic when a random sequence number should
+  be used was wrong and needed a fix regarding resume and
+  attach type flakes which must not use a random sequence
+
+- Pass --init option for resume type flakes
+  In resume mode a sleep command is used to keep the container
+  open. However, without the --init option there is no signal
+  handling available. This commit fixes it
+
+- Revert &quot;kill prior remove when using %remove flag&quot;
+  This reverts commit 06c7d4aa71f74865dfecba399fd08cc2fde2e1f2.
+  no hard killing needed with the event loop entrypoint
+
+- Fixed CVE-2025-55159 slab: incorrect bounds check
+  Update to slab 0.4.11 to fix the mentioned CVE.
+  This Fixes bsc#1248004
+
+- Apply clippy fixes
+
+- Create sequence number for the same invocation
+  If a flake which is not a resume or attach flake is called twice
+  with the same invocation arguments an error message is displayed
+  to give this invocation a new name via the @NAME runtime option.</comment>
+    <requestid>1300815</requestid>
+  </revision>
 </revisionlist>

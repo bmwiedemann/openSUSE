@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Thu Aug 21 16:56:12 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.20 → 3.1.21
+
+-------------------------------------------------------------------
+Thu Aug 21 16:30:01 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- seed from entropy
+
+-------------------------------------------------------------------
+Thu Aug 21 15:58:13 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix assignment of random sequence number
+
+  We should use a seed for the sequence as described in
+  https://rust-random.github.io/book/guide-seeding.html#a-simple-number
+  In addition the logic when a random sequence number should
+  be used was wrong and needed a fix regarding resume and
+  attach type flakes which must not use a random sequence
+
+-------------------------------------------------------------------
+Tue Aug 19 15:43:21 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Pass --init option for resume type flakes
+
+  In resume mode a sleep command is used to keep the container
+  open. However, without the --init option there is no signal
+  handling available. This commit fixes it
+
+-------------------------------------------------------------------
+Tue Aug 19 15:12:40 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Revert "kill prior remove when using %remove flag"
+
+  This reverts commit 06c7d4aa71f74865dfecba399fd08cc2fde2e1f2.
+  no hard killing needed with the event loop entrypoint
+
+-------------------------------------------------------------------
+Tue Aug 19 15:04:47 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed CVE-2025-55159 slab: incorrect bounds check
+
+  Update to slab 0.4.11 to fix the mentioned CVE.
+  This Fixes bsc#1248004
+
+-------------------------------------------------------------------
+Tue Aug 19 12:49:28 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Apply clippy fixes
+
+-------------------------------------------------------------------
+Tue Aug 19 12:22:51 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Create sequence number for the same invocation
+
+  If a flake which is not a resume or attach flake is called twice
+  with the same invocation arguments an error message is displayed
+  to give this invocation a new name via the @NAME runtime option.
+  This commit makes this more comfortable and automatically assigns
+  a random sequence number for the call if no @NAME is given.
+
+-------------------------------------------------------------------
+Wed Jul 09 11:20:12 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- kill prior remove when using %remove flag
+
+  In case the container instance should be removed via the %remove
+  flag, send a kill first, followed by a force remove. The reason
+  for this is because we use a never ending sleep command as entry
+  point for resume type containers. If they should be removed the
+  standard signal send on podman rm will not stop the sleep and
+  after a period of 10 seconds podman sends a kill signal itself.
+  We can speedup this process as we know the entry point command
+  and send the kill signal first followed by the remove which
+  saves us some wait time spent in podman otherwise.
+
+-------------------------------------------------------------------
 Tue Jul 08 15:10:31 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 3.1.19 → 3.1.20
