@@ -87,30 +87,27 @@ export LANG=en_US.UTF-8
 #  test_child_raises_parent_exits_cleanly
 #  i586:
 #  test_nested_loop_error_in_grandchild_resource_tracker_silent
-#  s390x:
-#  test_hash_numpy_noncontiguous
-#  test_hashes_are_different_between_c_and_fortran_contiguous_arrays
-#  test_hashes_stay_the_same_with_numpy_objects
-#  test_non_contiguous_array_pickling
 #
 # always fails:
 # test_parallel_call_cached_function_defined_in_jupyter
-DISABLED_TESTS="test_hash_numpy_noncontiguous or \
-                test_hashes_are_different_between_c_and_fortran_contiguous_arrays or \
-                test_hashes_stay_the_same_with_numpy_objects or \
-                test_non_contiguous_array_pickling or \
-                test_multithreaded_parallel_termination_resource_tracker_silent or \
+DISABLED_TESTS="test_multithreaded_parallel_termination_resource_tracker_silent or \
                 test_resource_tracker_silent_when_reference_cycles or \
                 test_child_raises_parent_exits_cleanly or \
                 test_nested_loop_error_in_grandchild_resource_tracker_silent or \
-                test_hash_numpy_noncontiguous or \
-                test_hashes_are_different_between_c_and_fortran_contiguous_arrays or \
-                test_hashes_stay_the_same_with_numpy_objects or \
-                test_non_contiguous_array_pickling or \
                 test_parallel_call_cached_function_defined_in_jupyter"
 if [ $(python3 -c 'import sys; print(sys.byteorder)') != "little" ]; then
-  DISABLED_TESTS+=" or test_joblib_pickle_across_python_versions"
+  DISABLED_TESTS+=" or test_joblib_pickle_across_python_versions or \
+		test_hash_numpy_noncontiguous or \
+                test_hashes_are_different_between_c_and_fortran_contiguous_arrays or \
+                test_hashes_stay_the_same_with_numpy_objects or \
+                test_non_contiguous_array_pickling"
 fi
+# memmaping tests fail on Python 3.13.7 https://github.com/joblib/loky/issues/459
+DISABLED_TESTS+=" or test_permission_error_windows_memmap_sent_to_parent or \
+		test_many_parallel_calls_on_same_object or \
+		test_memmapping_pool_for_large_arrays or \
+		test_memmapping_on_large_enough_dev_shm or \
+		test_memmapping_leaks"
 %pytest -k "not ($DISABLED_TESTS)"
 
 %files %{python_files}

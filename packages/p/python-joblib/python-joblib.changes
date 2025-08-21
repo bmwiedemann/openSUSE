@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 20 12:27:18 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Skip tests failing with Python 3.13.7
+
+-------------------------------------------------------------------
 Fri Jun 20 11:06:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.5.1
