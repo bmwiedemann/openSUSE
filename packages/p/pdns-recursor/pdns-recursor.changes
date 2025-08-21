@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 14 01:49:02 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 5.2.5 (CVE-2025-30192 boo#246841)
+  https://doc.powerdns.com/recursor/security-advisories/powerdns-advisory-2025-04.html
+  https://doc.powerdns.com/recursor/changelog/5.1.html#change-5.1.4
+  https://doc.powerdns.com/recursor/changelog/5.1.html#change-5.1.6
+  https://doc.powerdns.com/recursor/changelog/5.1.html#change-5.1.7
+  https://doc.powerdns.com/recursor/changelog/5.2.html#change-5.2.0
+  https://doc.powerdns.com/recursor/changelog/5.2.html#change-5.2.1
+  https://doc.powerdns.com/recursor/changelog/5.2.html#change-5.2.2
+  https://doc.powerdns.com/recursor/changelog/5.2.html#change-5.2.3
+  https://doc.powerdns.com/recursor/changelog/5.2.html#change-5.2.4
+  https://doc.powerdns.com/recursor/changelog/5.2.html#change-5.2.5
+- reenable snmp support ( we had the BR but not the configure flag)
+- add missing BR for fstrm and libcurl
+- enable NOD support (new BR libboost_filesystem-devel)
+- enable luajit where possible
+
+-------------------------------------------------------------------
 Sat Mar 22 22:54:01 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 5.1.3:

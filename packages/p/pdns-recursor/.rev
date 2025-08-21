@@ -843,4 +843,12 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
     <comment></comment>
     <requestid>1268420</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>baa6820a7a2757a401ceb06de7c7f794</srcmd5>
+    <version>5.2.5</version>
+    <time>1755788383</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1300709</requestid>
+  </revision>
 </revisionlist>

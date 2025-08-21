@@ -1,7 +1,7 @@
 #
 # spec file for package pdns-recursor
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,8 +25,18 @@
 %bcond_without systemd_separetedlibs
 %endif
 
+%ifarch ppc64le
+%bcond_with     pdns_luajit
+%else
+%if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1599
+%bcond_without  pdns_luajit
+%else
+%bcond_with     pdns_luajit
+%endif
+%endif
+
 Name:           pdns-recursor
-Version:        5.1.3
+Version:        5.2.5
 Release:        0
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -45,6 +55,7 @@ BuildRequires:  gcc-c++
 
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_context-devel
+BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
 %else
@@ -52,16 +63,22 @@ BuildRequires:  boost-devel >= 1.66
 %endif
 
 BuildRequires:  libsodium-devel
-BuildRequires:  lua-devel
+%if %{with pdns_luajit}
+BuildRequires:  pkgconfig(luajit)
+%else
+BuildRequires:  pkgconfig(lua)
+%endif
 BuildRequires:  net-snmp-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
+BuildRequires:  pkgconfig(libfstrm)
 %if 0%{?suse_version}
 PreReq:         shadow
 %else
 PreReq:         shadow-utils
 %endif
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(systemd)
 %if %{with systemd_separetedlibs}
 BuildRequires:  pkgconfig(libsystemd)
@@ -120,6 +137,8 @@ ln effective_tld_names.dat effective_tld_list.dat
   --sysconfdir=%{_sysconfdir}/pdns/  \
   --enable-dns-over-tls              \
   --with-lua                         \
+  --enable-nod                       \
+  --with-net-snmp                    \
   --with-socketdir=%{_rundir}        \
   --with-service-user=pdns           \
   --with-service-group=pdns
