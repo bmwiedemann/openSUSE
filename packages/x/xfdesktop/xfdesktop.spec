@@ -1,7 +1,7 @@
 #
 # spec file for package xfdesktop
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source0:        https://archive.xfce.org/src/xfce/xfdesktop/4.20/%{name}-%{versi
 Patch0:         xfdesktop-backgrounds-path.patch
 # PATCH-FIX-OPENSUSE 0002-relax-libyaml-version.patch -- Allow build for Leap with its ancient but sufficient libyaml packages.
 Patch2:         0002-relax-libyaml-version.patch
+# PATCH-FIX-OPENSUSE xfdesktop-wayland-get-proper-monitor-name.patch -- Fix xfdesktop monitor name on Wayland
+Patch3:         xfdesktop-wayland-get-proper-monitor-name.patch
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
 # Default gcc7 is too old for new C20 features
 BuildRequires:  gcc13
@@ -105,7 +107,7 @@ export CC=gcc-13
 %if %{with git}
 NOCONFIGURE=1 ./autogen.sh
 %configure \
-    --enable-maintainer-mode
+    --enable-maintainer-mode \
     --with-default-backdrop-filename=%{_datadir}/wallpapers/xfce/default.wallpaper
 %else
 xdt-autogen

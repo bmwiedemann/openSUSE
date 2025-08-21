@@ -499,4 +499,15 @@
     <comment></comment>
     <requestid>1246828</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>9591c2e423feed26c9e57827ef67da78</srcmd5>
+    <version>4.20.1</version>
+    <time>1755788443</time>
+    <user>anag_factory</user>
+    <comment>- Fix the monitor name pickup on Wayland, which resulted in broken
+  background picture setup (bsc#1247542):
+  xfdesktop-wayland-get-proper-monitor-name.patch
+- Fix missing backslash for building in non-git mode (forwarded request 1300794 from tiwai)</comment>
+    <requestid>1300797</requestid>
+  </revision>
 </revisionlist>

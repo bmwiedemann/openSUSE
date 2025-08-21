@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 15 14:33:48 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Fix the monitor name pickup on Wayland, which resulted in broken
+  background picture setup (bsc#1247542):
+  xfdesktop-wayland-get-proper-monitor-name.patch
+- Fix missing backslash for building in non-git mode
+
+-------------------------------------------------------------------
 Mon Feb 17 10:27:20 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.20.1:

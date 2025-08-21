@@ -1,0 +1,63 @@
+Subject: Fix the broken background picture setup on Wayland
+
+The xfdesktop-settings picks up the backdrop prefix with the monitor
+name returned from xfdesktop_get_monitor_name_from_gtk_widget(), where
+it tries to get the monitor name from gdk.  On Wayland, this returns
+the actual monitor name or model, not the connector name.
+Meanwhile, the xfdesktop itself uses the backdrop prefix with the
+connector name (e.g. "eDP-1" or "Virtual-1").  This difference made
+the setup done by xfdesktop-settings ignored.
+
+Instead of deducing the prefix name from gdk, try to guess from the
+given XfwWindow.
+
+---
+ settings/xfdesktop-background-settings.c |   23 +++++++++++++++++++++--
+ 1 file changed, 21 insertions(+), 2 deletions(-)
+
+--- a/settings/xfdesktop-background-settings.c
++++ b/settings/xfdesktop-background-settings.c
+@@ -1451,6 +1451,25 @@ xfdesktop_settings_get_active_workspace(
+     return workspace_num;
+ }
+ 
++static gchar *get_monitor_name(XfdesktopBackgroundSettings *background_settings,
++                               int monitor_num)
++{
++    GList *monitors = xfw_window_get_monitors(background_settings->xfw_window);
++
++    if (monitors) {
++        gpointer p = g_list_nth_data(monitors, monitor_num);
++
++        if (p) {
++            const gchar *name = xfw_monitor_get_connector(XFW_MONITOR(p));
++            if (name)
++                return g_strdup(name);
++        }
++    }
++
++    /* fallback */
++    return xfdesktop_get_monitor_name_from_gtk_widget(background_settings->image_iconview, monitor_num);
++}
++
+ static void
+ cb_update_background_tab(XfwWindow *xfw_window, XfdesktopBackgroundSettings *background_settings) {
+     /* If we haven't found our window return now and wait for that */
+@@ -1468,7 +1487,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
+     GdkDisplay *display = gdk_window_get_display(window);
+     GdkMonitor *monitor = gdk_display_get_monitor_at_window(display, window);
+     gint monitor_num = xfdesktop_get_monitor_num(display, monitor);
+-    gchar *monitor_name = xfdesktop_get_monitor_name_from_gtk_widget(background_settings->image_iconview, monitor_num);
++    gchar *monitor_name = get_monitor_name(background_settings, monitor_num);
+ 
+     /* Most of the time we won't change monitor, screen, or workspace so try
+      * to bail out now if we can */
+@@ -1498,7 +1517,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
+     background_settings->screen = screen_num;
+     background_settings->monitor = monitor_num;
+     g_free(background_settings->monitor_name);
+-    background_settings->monitor_name = xfdesktop_get_monitor_name_from_gtk_widget(background_settings->image_iconview, monitor_num);
++    background_settings->monitor_name = get_monitor_name(background_settings, monitor_num);
+ 
+     /* The first monitor has the option of doing the "spanning screens" style,
+      * but only if there's multiple monitors attached. Remove it in all other cases.
