@@ -1,7 +1,7 @@
 #
 # spec file for package pdns
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%ifarch ppc64le
+%bcond_with     pdns_luajit
+%else
+%if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1599
+%bcond_without  pdns_luajit
+%else
+%bcond_with     pdns_luajit
+%endif
+%endif
 
 %if 0%{?fedora_version} >= 24 || 0%{?fc24}%{?fc25}
 %bcond_with    systemd_separetedlibs
@@ -59,7 +69,7 @@ ExclusiveArch:  no-32bit-build
 %endif
 
 Name:           pdns
-Version:        4.9.4
+Version:        4.9.8
 Release:        0
 Summary:        Authoritative-only nameserver
 License:        GPL-2.0-only
@@ -105,7 +115,11 @@ BuildRequires:  yaml-cpp-devel >= 0.5
 BuildRequires:  pkgconfig(libmaxminddb)
 %endif
 %if %{with pdns_lua}
-BuildRequires:  lua-devel
+%if %{with pdns_luajit}
+BuildRequires:  pkgconfig(luajit)
+%else
+BuildRequires:  pkgconfig(lua)
+%endif
 %endif
 %if %{with pdns_tinydns}
 # FIXME: Could not find libcdb/tinycdb
