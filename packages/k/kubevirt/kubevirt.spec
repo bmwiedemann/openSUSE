@@ -1,7 +1,7 @@
 #
 # spec file for package kubevirt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,10 @@
 #
 
 
-%if 0%{?sle_version} && !0%{?is_opensuse}
-# SLE
 %define _exclusive_arch x86_64 aarch64
-%else
-%if 0%{?suse_version} == 1600
-# ALP
-%define _exclusive_arch x86_64
-%else
-# TW
-%define _exclusive_arch x86_64 aarch64
-%endif
-%endif
 
 Name:           kubevirt
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -42,8 +31,6 @@ Source2:        kubevirt_containers_meta.service
 Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
 Patch1:         Ensure-SEV-VMs-use-stateless-OVMF-firmware.patch
-Patch2:         Update-module-golang.org-x-oauth2-to-v0.27.0-SECURITY.patch
-Patch3:         Update-module-golang.org-x-net-to-v0.38.0-SECURITY.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
@@ -208,7 +195,7 @@ case "${distro}" in
     ;;
 *)
 %if 0%{?suse_version} == 1600
-    tagprefix=alp/kubevirt
+    tagprefix=kubevirt
     labelprefix=com.suse.kubevirt
     registry=registry.suse.com
 %else

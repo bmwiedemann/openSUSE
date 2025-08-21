@@ -807,4 +807,12 @@ and req#1293554
 - Reorder patches with respect to the newly added patch</comment>
     <requestid>1295401</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>26cdb2a4ef1aaef0077bb27478104c7b</srcmd5>
+    <version>1.6.0</version>
+    <time>1755801134</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1300817</requestid>
+  </revision>
 </revisionlist>

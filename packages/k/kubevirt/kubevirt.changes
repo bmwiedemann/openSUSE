@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug  6 14:58:40 UTC 2025 - Caleb Crane <caleb.crane@suse.com>
+
+- Update to version 1.6.0
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v1.6.0
+- Drop upstream patches
+  Update-module-golang.org-x-oauth2-to-v0.27.0-SECURITY.patch
+  Update-module-golang.org-x-net-to-v0.38.0-SECURITY.patch
+
+-------------------------------------------------------------------
 Wed Jul 23 19:08:18 UTC 2025 - Caleb Crane <caleb.crane@suse.com>
 
 - Replace/Supercede patch
