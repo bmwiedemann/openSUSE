@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 20 12:36:44 UTC 2025 - Michael Matz <matz@suse.com>
+
+- Use current distro go default version.
+
+-------------------------------------------------------------------
 Mon Jun 13 13:30:24 UTC 2022 - Martin Seidl <mseidl@suse.de>
 
 - Remove license file from %doc
