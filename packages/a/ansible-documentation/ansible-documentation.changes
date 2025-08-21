@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Aug 21 06:33:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.18.8:
+  * ci: refresh dev dependencies (#2977)
+  * ci: refresh dev dependencies (#2951)
+  * [stable-2.19] compile sanity test: update supported Python
+    versions (#2965) (#2970)
+  * Revert "community/maintainers_workflow.rst: improve wording and
+    formatting (#…" (#2956) (#2961)
+  * Update EOL banner for clarity (#2942) (#2946)
+  * update banner to reflect this does not apply to the product
+    (#2895) (#2940)
+  * community/maintainers_workflow.rst: improve wording and
+    formatting (#2799) (#2931)
+  * ci: refresh dev dependencies (#2910)
+  * [stable-2.18] ci: refresh docs build dependencies (#2907)
+  * Add missing comma in introduction.rst (#2914) (#2920)
+  * Update docs windows_winrm for ansible module (#2904) (#2917)
+  * playbook_guide/playbooks_variables.rst: improve style.
+    Assisted-by: AI (#2916) (#2926)
+  * rst/playbook_guide/playbooks_intro.rst: improve. Assisted-by:
+    AI (#2915) (#2923)
+  * add details on some plugin options - AI-assisted (#2813)
+    (#2900)
+  * Styleguide update for installation_distros.rst - AI-assisted
+    (#2855) (#2897)
+  * update backport instructions (#2886) (#2893)
+  * release_and_maintenance.rst: reflect that 2.16 is EOL (#2770)
+    (#2889)
+  * Fix indent for other keys like :Version Added:. (#2880) (#2883)
+  * Fixed minor grammatical errors (#2867) (#2874)
+  * dev_guide/style_guide/spelling_word_choice.rst: See vs Refer to
+    (#2868) (#2871)
+  * Ansible configuration: improve deprecation messages (#2823)
+    (#2864)
+  * Update removal/readd processes to refer to the documentation of
+    ansible-build-data (#2821) (#2860)
+  * core-2.19 prep - update versioning (#2810) (#2857)
+  * inventory_guide/intro_inventory.rst: improve style. Assisted-by
+    AI (#2834) (#2853)
+  * ci: refresh dev dependencies (#2845)
+  * [stable-2.18] ci: refresh docs build dependencies (#2840)
+  * Add more International Communities (#2833) (#2836)
+  * community/maintainers_guidelines.rst: improve the document.
+    Assisted-by: Gemini (#2808) (#2828)
+  * Merge pull request #2825 from
+    anweshadas/pr_porting_guide_11.8.0 (#2827)
+
+-------------------------------------------------------------------
 Wed Jul 16 06:45:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.18.7:
