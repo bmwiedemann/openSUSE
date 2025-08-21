@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug 21 06:32:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.18.8:
+  * Minor Changes
+    - ansible-test - Improve formatting of generated coverage
+      config file.
+    - ansible-test - Replace remote FreeBSD 13.3 with 13.5.
+    - ansible-test - Use OS packages to satisfy controller
+      requirements on FreeBSD 13.5 during managed instance
+      bootstrapping.
+  * Bugfixes
+    - ansible-test - Always exclude the tests/output/ directory
+      from a collection's code coverage. (#84244)
+    - ansible-test - Limit package install retries during managed
+      remote instance bootstrapping.
+    - ansible-test - Use a consistent coverage config for all
+      collection testing.
+    - plugins config, get_option_and_origin now correctly displays
+      the value and origin of the option.
+
+-------------------------------------------------------------------
 Wed Jul 16 06:42:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.18.7:
@@ -25,7 +46,7 @@ Mon May 26 13:03:25 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com
 
 - Add patch suse-distribution-fix.patch to fix distribution.py
   to identify the correct distribution for server-sap and micro
-  (#PED-12643) 
+  (#PED-12643)
 
 -------------------------------------------------------------------
 Tue May 20 04:53:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
