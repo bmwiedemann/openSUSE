@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 21 13:53:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.8.0:
+  * Maintenance
+    - Bump actions/checkout from 4 to 5 (#2019) @dependabot[bot]
+    - Bump actions/download-artifact from 4 to 5
+      (#2016)@dependabot[bot]
+    - Adopt coactions/upload-artifact (#1999) @ssbarnea
+
+-------------------------------------------------------------------
 Thu May 29 05:34:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.5.0:
