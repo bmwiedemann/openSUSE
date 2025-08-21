@@ -450,4 +450,15 @@
   (bsc#1247046)</comment>
     <requestid>1299041</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>64417cef4cf179fc8322c947541eff2d</srcmd5>
+    <version>17.devel253.1f9939e7b</version>
+    <time>1755788084</time>
+    <user>anag_factory</user>
+    <comment>- Removed the heuristic that used to consider some software RAID as
+  bootable devices under some circumstances (bsc#1248195).
+- Ensure that /boot/efi and /boot/zipl partitions created using the
+  web UI are never encrypted (bsc#1248189, bsc#1247447).</comment>
+    <requestid>1300495</requestid>
+  </revision>
 </revisionlist>
