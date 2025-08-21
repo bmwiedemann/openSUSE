@@ -24,7 +24,11 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-gunicorn%{psuffix}
 Version:        23.0.0
@@ -37,10 +41,8 @@ Source:         https://files.pythonhosted.org/packages/source/g/gunicorn/gunico
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 3.0}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-packaging
 Requires:       (python-importlib_metadata if python-base < 3.8)
 Suggests:       python-evenlet
@@ -49,6 +51,13 @@ Suggests:       python-gthread
 Suggests:       python-setproctitle
 Suggests:       python-tornado
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if 0%{?sle_version} >= 150500
 # Fixes the build on Leap
 BuildRequires:  %{python_module Sphinx}
@@ -110,6 +119,12 @@ sphinx-build -b html -d docs/build/doctrees docs/source docs/build/html
 
 %pre
 %python_libalternatives_reset_alternative gunicorn
+
+%post
+%python_install_alternative gunicorn
+
+%postun
+%python_uninstall_alternative gunicorn
 
 %files %{python_files}
 %license LICENSE

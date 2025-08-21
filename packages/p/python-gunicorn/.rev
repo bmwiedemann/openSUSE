@@ -305,4 +305,12 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1291310</requestid>
   </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>45a1636b61ad52de3fb6b22b3f1e9384</srcmd5>
+    <version>23.0.0</version>
+    <time>1755787971</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16+ only</comment>
+    <requestid>1300448</requestid>
+  </revision>
 </revisionlist>
