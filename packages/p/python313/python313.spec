@@ -1,7 +1,7 @@
 #
 # spec file for package python313
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -167,7 +167,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.13.5
+Version:        3.13.7
 %define         tarversion %{version}
 %define         tarname    Python-%{tarversion}
 Release:        0
@@ -231,12 +231,6 @@ Patch42:        gh126985-mv-pyvenv.cfg2getpath.patch
 # PATCH-FIX-UPSTREAM bsc1243155-sphinx-non-determinism.patch bsc#1243155 mcepl@suse.com
 # Doc: Generate ids for audit_events using docname
 Patch43:        bsc1243155-sphinx-non-determinism.patch
-# PATCH-FIX-UPSTREAM CVE-2025-6069-quad-complex-HTMLParser.patch bsc#1244705 mcepl@suse.com
-# avoid quadratic complexity when processing malformed inputs with HTMLParser
-Patch44:        CVE-2025-6069-quad-complex-HTMLParser.patch
-# PATCH-FIX-UPSTREAM CVE-2025-8194-tarfile-no-neg-offsets.patch bsc#1247249 mcepl@suse.com
-# tarfile now validates archives to ensure member offsets are non-negative
-Patch45:        CVE-2025-8194-tarfile-no-neg-offsets.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
