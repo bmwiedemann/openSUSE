@@ -36,6 +36,7 @@ BuildRequires:  ruby-macros >= 5
 URL:            https://rubyonrails.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
+Patch0:         CVE-2025-55193.patch
 Summary:        Object-relational mapper framework (part of Rails)
 License:        MIT
 
@@ -45,6 +46,10 @@ to Ruby classes. Strong conventions for associations, validations,
 aggregations, migrations, and testing come baked-in.
 
 %prep
+%gem_unpack
+%patch -P 0 -p1
+find -type f -print0 | xargs -0 touch -r %{S:0}
+%gem_build
 
 %build
 

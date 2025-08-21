@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 19 12:04:21 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Add CVE-2025-55193.patch (bsc#1248106)
+  IDs passed to `find` or similar methods may be logged without escaping 
+
+-------------------------------------------------------------------
 Mon Jan 20 16:11:50 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - disable the my_apps handling
