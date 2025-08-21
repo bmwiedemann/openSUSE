@@ -70,6 +70,9 @@ Sat Mar 22 22:02:43 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
   * Many performance improvements
   * potential integer overflow in hash container create/resize
     fixed again - boo#1236438
+  * CVE-2025-0838: heap buffer overflow in sized constructors,
+    reserve(), and rehash() methods of absl:{flat,node}hash{set,map}
+    boo#1237543
 
 -------------------------------------------------------------------
 Mon Feb 17 18:35:03 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
