@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 19 13:15:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Thu Oct 10 05:20:36 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - switch to cmake + ninja

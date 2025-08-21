@@ -1,7 +1,7 @@
 #
 # spec file for package python-fasttext
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,11 @@
 %define sover 0
 # Using annotation futures and dataclasses
 %define skip_python36 1
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-fasttext
 Version:        0.9.2
@@ -39,33 +44,32 @@ BuildRequires:  %{python_module pybind11-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
+Requires:       fasttext
+Requires:       python-numpy
+Requires:       python-pybind11 >= 2.2
+Requires:       python-setuptools >= 0.7.0
+Provides:       fasttext = %{version}
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pybind11 >= 2.2}
 BuildRequires:  %{python_module setuptools >= 0.7.0}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       fasttext
-Requires:       python-numpy
-Requires:       python-pybind11 >= 2.2
-Requires:       python-setuptools >= 0.7.0
 %python_subpackages
 
 %description
 fastText is a library for efficient learning of word
 representations and sentence classification.
-
-%package -n fasttext
-Summary:        Fast text representation and classification
-
-%description -n fasttext
-fastText is a library for efficient learning of word
-representations and sentence classification.
-
-This package provides the fasttext binary.
 
 %package -n fasttext-devel
 Summary:        Development files for fasttext
@@ -106,6 +110,7 @@ export LDFLAGS=-L%{__builddir}
 %install
 %cmake_install
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/fasttext
 %{python_expand :
 %fdupes %{buildroot}%{$python_sitearch}
 }
@@ -115,16 +120,22 @@ export LDFLAGS=-L%{__builddir}
 
 %ldconfig_scriptlets -n libfasttext%{sover}
 
+%pre
+%python_libalternatives_reset_alternative fasttext
+
+%post
+%python_install_alternative fasttext
+
+%postun
+%python_uninstall_alternative fasttext
+
 %files %{python_files}
+%doc README.md docs/
 %license LICENSE
 %{python_sitearch}/fasttext
 %{python_sitearch}/fasttext-%{version}*-info
 %{python_sitearch}/fasttext_pybind.*.so
-
-%files -n fasttext
-%doc README.md docs/
-%license LICENSE
-%{_bindir}/fasttext
+%python_alternative %{_bindir}/fasttext
 
 %files -n fasttext-devel
 %dir %{_includedir}/fasttext
