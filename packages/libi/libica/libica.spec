@@ -149,8 +149,8 @@ rm -vf %{buildroot}%{_libdir}/libica*.la
 rm -f %{buildroot}%{_datadir}/doc/libica/*
 rmdir %{buildroot}%{_datadir}/doc/libica
 ### Comment below two lines to enable FIPS config file 'openssl3-fips.cnf'
-# rm %{buildroot}/%{_sysconfdir}/libica/openssl3-fips.cnf
-# rmdir %{buildroot}/%{_sysconfdir}/libica
+rm %{buildroot}/%{_sysconfdir}/libica/openssl3-fips.cnf
+rmdir %{buildroot}/%{_sysconfdir}/libica
 
 %check
 %make_build check FIPSHMAC=fipshmac
@@ -181,8 +181,8 @@ rmdir %{buildroot}%{_datadir}/doc/libica
 %{_libdir}/.libica-cex.so.%{version}.hmac
 %{_libdir}/.libica-cex.so.%{major}.hmac
 ### Enable FIPS
-%dir %{_sysconfdir}/libica
-%{_sysconfdir}/libica/openssl3-fips.cnf
+### %dir %{_sysconfdir}/libica
+### %{_sysconfdir}/libica/openssl3-fips.cnf
 ###
 
 %files tools

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 20 09:30:10 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file(bsc#1246541)
+  * Removes file /etc/libica/openssl3-fips.cnf
+  * Removes directory /etc/libica
+
+-------------------------------------------------------------------
 Wed Jul 30 06:53:05 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a patch (bsc#1247287)
