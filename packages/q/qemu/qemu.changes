@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 12 15:21:42 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix build issues due to Python version:
+  * mkvenv: Support pip 25.2 (bsc#1247972)
+
+-------------------------------------------------------------------
 Tue Aug 12 08:28:17 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
 
 - Bug and CVE fixes:

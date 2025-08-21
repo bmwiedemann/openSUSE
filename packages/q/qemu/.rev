@@ -4543,4 +4543,15 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1299133</requestid>
   </revision>
+  <revision rev="297" vrev="2">
+    <srcmd5>60f177ec59a411540bfaf9fb5280d6e2</srcmd5>
+    <version>10.0.3</version>
+    <time>1755787637</time>
+    <user>anag_factory</user>
+    <comment>patch clearly forgotten in develprj
+
+- Fix build issues due to Python version:
+  * mkvenv: Support pip 25.2 (bsc#1247972)</comment>
+    <requestid>1300711</requestid>
+  </revision>
 </revisionlist>
