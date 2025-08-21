@@ -19,7 +19,7 @@
 %define         _peazipinstalldir %{_libdir}/peazip
 
 Name:           peazip
-Version:        10.5.0
+Version:        10.6.1
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
@@ -104,6 +104,8 @@ chmod +w res/share/lang
 dos2unix readme.txt
 mv res/share/copying/copying.txt .
 cp %{SOURCE2} peazip_help.pdf
+# set executable bit to fix rpmlint error "non-executable-script"
+chmod +x res/share/batch/freedesktop_integration/thunar-archive-plugin/peazip.tap
 
 %build
 cd dev
