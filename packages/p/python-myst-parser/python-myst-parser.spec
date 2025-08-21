@@ -16,8 +16,12 @@
 #
 
 
-%{?sle15_python_module_pythons}
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+%{?sle15_python_module_pythons}
 Name:           python-myst-parser
 Version:        3.0.1
 Release:        0
@@ -36,9 +40,22 @@ BuildRequires:  %{python_module markdown-it-py}
 BuildRequires:  %{python_module mdit-py-plugins}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Jinja2
+Requires:       python-PyYAML
+Requires:       python-Sphinx
+Requires:       python-docutils >= 0.18
+Requires:       python-markdown-it-py
+Requires:       python-mdit-py-plugins
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 # SECTION tests
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module pygments}
@@ -54,14 +71,6 @@ BuildRequires:  %{python_module pytest}
 #BuildRequires:  python3-markdown-it-py >= 1
 #BuildRequires:  python3-mdit-py-plugins < 0.4
 # /SECTION
-Requires:       alts
-Requires:       python-Jinja2
-Requires:       python-PyYAML
-Requires:       python-Sphinx
-Requires:       python-docutils >= 0.18
-Requires:       python-markdown-it-py
-Requires:       python-mdit-py-plugins
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -109,6 +118,12 @@ donttest="test_parsing or test_errors or test_render or test_html_to_nodes or te
 
 %pre
 %python_libalternatives_reset_alternative myst-anchors
+
+%post
+%python_install_alternative myst-anchors myst-docutils-html myst-docutils-html5 myst-docutils-latex myst-docutils-pseudoxml myst-docutils-xml myst-docutils-demo myst-inv
+
+%postun
+%python_uninstall_alternative myst-anchors
 
 %files %{python_files}
 %{python_sitelib}/myst_parser/
