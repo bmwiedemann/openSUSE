@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 19 20:15:13 UTC 2025 - Matthias Bach <marix@marix.org>
+
+- Update to 0.16.1
+  * Avoid printing additional output with no_args_is_help=True and
+    Click 8.2.
+
+-------------------------------------------------------------------
 Tue May 27 20:52:25 UTC 2025 - Matthias Bach <marix@marix.org> - 0.16.0
 
 - Update to 0.16.0
