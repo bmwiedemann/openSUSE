@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Wed Aug 20 12:55:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.2:
+  * Bug fixes
+    - #5067 fixes a panic on the deprecated k6 login cloud command.
+      Thanks @indygriffiths for reporting it!
+    - #5069 Fixes group order in end of test summary when scenarios
+      are used.
+    - #5070 Adds nullish check to the new getByRole and add tests
+      for other getBy* APIs nullish checks.
+
+-------------------------------------------------------------------
+Wed Aug 20 12:51:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.1:
+  https://github.com/grafana/k6/releases/tag/v1.2.1
+  Note: An old xk6-browser repo v1.2.0 tag was pushed by mistake.
+  It was left over on the machine since the merging of the two
+  repos. As such it can not be used as a go module or installed
+  with go install. For this reason v1.2.1 is released.
+
+-------------------------------------------------------------------
+Wed Aug 20 12:37:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.0:
+  The release notes contain a lot of examples and documentation on
+  new features, please check it out here:
+  https://github.com/grafana/k6/releases/tag/v1.2.0
+  * Breaking changes
+    As per our stability guarantees, breaking changes across minor
+    releases are allowed only for experimental features.
+    Breaking changes for experimental modules
+    - The experimental Open Telemetry and Prometheus outputs now
+      default to TLSv1.3. This should've been the default to
+      begin with. It is not expected that anyone should be
+      affected, apart from making it more secure for the metrics
+      output to send messages.
+  * UX improvements and enhancements
+    - #4878 Do not report NaN percentages when there are no checks
+      in the end of test summary. Thank you @Fernando-hub527 for
+      the fix.
+    - #4897 Support string-labels in locator.selectOption in the
+      browser module.
+    - #4898 Add support for authority pseudo header to the gRPC
+      module. Thank you @Oursin for the changes.
+    - #4916 Print errors more consistently and correctly.
+    - #4918 Surface navigation errors from navigation events in the
+      browser module.
+    - #4919 page.url() now doesn't make a call to the browser but
+      instead uses a cached version. Making it a lot faster and
+      aligned with playwright.
+    - #4932 Making it more clear that the requests were aborted in
+      the browser module.
+    - #4944 Add Prometheus metrics endpoint. Thank you @gouthamve.
+    - #5040 Use new expect() syntax in script templates.
+    - #4976 Align metrics in end of test summary with using less
+      dots and less horizontal space.
+  * Bug fixes
+    - #4850 Fixes incorrect conversions between integer types in
+      the browser module.
+    - #4973 Fixes panic when BrowserContext is requested before
+      creating a Page in the browser module.
+    - #4975 Fixes potential race conditions in the browser module.
+    - #5015 Fixes waitForNavigation now blocking the iteration from
+      ending if page.close is not called.
+    - #5017 Fixes potential race conditions in gRPC module, when it
+      gets protobuf defintions from remote server.
+  * Maintenance and internal improvements
+    - #4666 Lowers the log level on some cloud output logs that
+      were too noisy.
+    - #4879, #4945 Updates of software used by the internal
+      k6packager that packages k6.
+    - #4886 Prevents running Winsign for public forks to avoid
+      failing and wasting CI time.
+    - #4892, #4901, #4909, #4927, #4928, #4929, #4939, #4954,
+      #4965, #4977, #5000, #5001, #5041, #5043 Updates
+      dependencies.
+    - #4925 Configures Dependabot to update all OTel dependencies.
+    - #4914, #4967, #4974, #4990, #4991, #5007, #5008 PRs trying to
+      get the CI tests to be more stable.
+    - #4923 Mention k6 studio in the readme for more visibility.
+    - #4931 Lower the debug log on internal implementation detail
+      error.
+    - #4943, #4946, #4948 Fix the CI not checking generated files
+      and pinning versions.
+    - #4949 Updates to Linux Alpine 3.22 for building the k6 docker
+      image.
+    - #4950 Adds Dependabot rule to update the main Dockerfile
+      dependencies.
+    - #4958 Passes k6's file system to k6deps (for automatic
+      extension resolution).
+    - #4959 Copies Zizmor configuration in the repository to make
+      it work for forks.
+    - #4960 Reduces waitForNavigation complexity.
+    - #4969, #4986 Updates around semgrep scanning for security
+      issues.
+    - #4994 Configures Dependabot to update dependencies in Github
+      actions.
+    - #4996, #4997, #4998 Updates to github actions dependancies.
+    - #5014 Adds a test for running tests with the automatic
+      extension resolution disabled.
+    - #5016 Fix internal/cmd/tests with automatic extension
+      resolution enabled.
+    - #5020 Fix examples with browser using the wrong endpoints.
+
+-------------------------------------------------------------------
 Mon Jun 30 05:25:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.0:
