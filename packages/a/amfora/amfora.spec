@@ -28,7 +28,7 @@ Source:         amfora-%{version}.tar.xz
 Source1:        vendor.tar.gz
 BuildRequires:  desktop-file-utils
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.18
+BuildRequires:  golang(API) >= 1.18
 
 %description
 A fancy terminal browser for the Gemini protocol.
@@ -37,7 +37,13 @@ A fancy terminal browser for the Gemini protocol.
 %autosetup -D -a 1
 
 %build
-%make_build GOFLAGS="-buildmode=pie" \
+# amfora makefile disables CGO, but then PIE buildmode only works
+# on some architectures (in particular not on i586, riscv64, s390x,
+# arm32)
+%make_build \
+%ifarch x86_64 aarch64 ppc64le
+  GOFLAGS="-buildmode=pie" \
+%endif
   VERSION="%{version}" COMMIT="%{revision}" BUILDER="openSUSE"
 
 %check
