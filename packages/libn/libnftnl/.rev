@@ -249,4 +249,12 @@
     <comment>- Update signing key to 0x8C5F7146A1757A65E2422A94D70D1A666ACF2B21,</comment>
     <requestid>1273203</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>5d4073312d431651ee45897e4a645282</srcmd5>
+    <version>1.3.0</version>
+    <time>1755787898</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.3.0</comment>
+    <requestid>1297985</requestid>
+  </revision>
 </revisionlist>

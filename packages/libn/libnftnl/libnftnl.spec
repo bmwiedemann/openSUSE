@@ -18,7 +18,7 @@
 
 Name:           libnftnl
 %define lname	libnftnl11
-Version:        1.2.9
+Version:        1.3.0
 Release:        0
 Summary:        Userspace library to access the nftables Netlink interface
 License:        GPL-2.0-or-later
@@ -26,8 +26,8 @@ Group:          Productivity/Networking/Security
 URL:            https://netfilter.org/projects/libnftnl/
 
 #Git-Clone:	git://git.netfilter.org/libnftnl
-Source:         http://ftp.netfilter.org/pub/libnftnl/%name-%version.tar.xz
-Source2:        http://ftp.netfilter.org/pub/libnftnl/%name-%version.tar.xz.sig
+Source:         https://www.netfilter.org/projects/libnftnl/files/%name-%version.tar.xz
+Source2:        https://www.netfilter.org/projects/libnftnl/files/%name-%version.tar.xz.sig
 Source9:        %name.keyring
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libmnl) >= 1.0.4
