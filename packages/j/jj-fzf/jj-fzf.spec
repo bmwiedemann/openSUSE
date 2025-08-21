@@ -1,7 +1,7 @@
 #
 # spec file for package jj-fzf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jj-fzf
-Version:        0.25.0
+Version:        0.32.0
 Release:        0
 Summary:        Text UI for Jujutsu based on fzf
 License:        MPL-2.0
@@ -57,7 +57,16 @@ semantics.
 %autosetup -p1
 
 %build
+DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
+BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
+
 sed -i 's#env bash#bash#' %{name}
+
+# fix version output in jj-fzf,
+# so the version.sh script (which is not working) is
+# no longer required
+sed -i '/--version/ s|".*"|%{name} %{version}|' %{name}
+sed -i "/--version/ s|%{name} %{version}|%{name} %{version} ${BUILD_DATE}|" %{name}
 
 %install
 install -D -d -m 0755 %{buildroot}%{_bindir}
@@ -68,6 +77,7 @@ mkdir TEST && cd TEST
 jj git init
 # version output without leading "v"
 %{buildroot}%{_bindir}/%{name} --version | grep %{version}
+%{buildroot}%{_bindir}/%{name} --version
 
 %files
 %license LICENSE
