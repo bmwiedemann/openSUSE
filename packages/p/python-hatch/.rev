@@ -410,4 +410,12 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1291688</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>28d52f22129cfeefb3d943ec45f5c482</srcmd5>
+    <version>1.14.1</version>
+    <time>1755788393</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
+    <requestid>1300712</requestid>
+  </revision>
 </revisionlist>

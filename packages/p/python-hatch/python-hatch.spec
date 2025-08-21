@@ -24,7 +24,11 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-hatch%{psuffix}
 Version:        1.14.1
@@ -42,10 +46,8 @@ BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-vcs >= 0.3}
 BuildRequires:  %{python_module hatchling >= 1.26.3}
 BuildRequires:  %{python_module pip}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       git-core
 Requires:       python-click >= 8.0.6
 Requires:       python-hatchling >= 1.21.0
@@ -63,6 +65,13 @@ Requires:       python-zstandard < 1
 Requires:       uv
 Requires:       (python-pexpect >= 4.8 with python-pexpect < 5)
 Requires:       (python-userpath >= 1.7 with python-userpath < 2)
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if %{with test}
 BuildRequires:  %{python_module editables}
 BuildRequires:  %{python_module filelock >= 3.7.1}
@@ -135,6 +144,12 @@ donttest+=" or test_pyenv or test_no_open or test_open"
 # https://github.com/pypa/hatch/commit/e843c42da2e71468b519a3aacdfeab31b14985a3
 %pytest -v -k "not ($donttest)" --ignore tests/cli/build/test_build.py
 %endif
+
+%post
+%python_install_alternative hatch
+
+%postun
+%python_uninstall_alternative hatch
 
 %pre
 %python_libalternatives_reset_alternative hatch
