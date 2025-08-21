@@ -86,7 +86,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcsh
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
-%if 0%{?suse_version} >= 1600
+%if 0%{?suse_version} > 1600
 BuildRequires:  pkgconfig(zlib-ng)
 %else
 BuildRequires:  pkgconfig(zlib)
