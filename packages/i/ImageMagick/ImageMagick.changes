@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug 20 09:11:08 UTC 2025 - pgajdos@suse.com
+
+- version update to 7.1.2.1
+  * Add support for Simple File Format Family (SF3) images by @Shinmera in #8243
+  * Fix validation issues in SF3 by @Shinmera in #8252
+  * Fix compressed exr reading by @Hadsen in #8285
+  * Use OpenMP in ashlar by @yerlotic in #8288
+  * Bump actions/download-artifact from 4 to 5 by @dependabot[bot] in #8296
+- modified patches
+  % ImageMagick-library-installable-in-parallel.patch
+- removed patches
+  - ImageMagick-filename-placeholder-regression-1.patch (upstreamed)
+  - ImageMagick-filename-placeholder-regression-2.patch (upstreamed)
+  - ImageMagick-filename-placeholder-regression-3.patch (upstreamed)
+- fixes
+   CVE-2025-55160 [bsc#1248079], CVE-2025-55004 [bsc#1248076]
+   CVE-2025-55154 [bsc#1248078], CVE-2025-55005 [bsc#1248077]
+
+-------------------------------------------------------------------
 Tue Aug  5 10:55:19 UTC 2025 - pgajdos@suse.com
 
 - added patches [bsc#1247475]
