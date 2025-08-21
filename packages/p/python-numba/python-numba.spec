@@ -19,7 +19,7 @@
 %define plainpython python
 # upper bound is exclusive: min-numpy_ver <= numpy < max_numpy_ver
 %define min_numpy_ver 1.24
-%define max_numpy_ver 2.3
+%define max_numpy_ver 2.4
 
 %{?sle15_python_module_pythons}
 
@@ -54,7 +54,7 @@ ExcludeArch:    s390x ppc64 %ix86 %arm
 %endif
 %endif
 Name:           python-numba%{?psuffix}
-Version:        0.61.0
+Version:        0.61.2
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
@@ -62,9 +62,13 @@ URL:            https://numba.pydata.org/
 # SourceRepository: https://github.com/numba/numba
 Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE skip tests failing due to OBS specifics
-Patch3:         skip-failing-tests.patch
-# PATCH-FIX-UPSTREAM https://github.com/numba/numba/pull/9919
-Patch4:         numpy22.patch
+Patch0:         skip-failing-tests.patch
+# PATCH-FIX-UPSTREAM https://github.com/numba/numba/pull/10081
+Patch1:         np-tobytes.patch
+# PATCH-FIX-UPSTREAM https://github.com/numba/numba/pull/9926
+Patch2:         np-frombuffer.patch
+# PATCH-FIX-UPSTREAM https://github.com/numba/numba/pull/10147
+Patch3:         numpy23.patch
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module numpy-devel >= %{min_numpy_ver} with %python-numpy-devel < %{max_numpy_ver}}
 BuildRequires:  %{python_module pip}
