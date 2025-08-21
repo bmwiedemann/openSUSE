@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 20 12:45:49 UTC 2025 - Michael Matz <matz@suse.com>
+
+- Use current distro go default version.  Use auto-versioning
+  on SUSE as well.
+
+-------------------------------------------------------------------
 Tue Sep 20 12:16:07 UTC 2022 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Exclude s390 architecture (gh#SUSE/spacewalk#19050)

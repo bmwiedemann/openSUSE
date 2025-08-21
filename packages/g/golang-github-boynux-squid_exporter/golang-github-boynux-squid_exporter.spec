@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-boynux-squid_exporter
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019 João Cavalheiro <jcavalheiro@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -47,7 +47,7 @@ BuildRequires:  xz
 %if 0%{?rhel}
 BuildRequires:  golang >= 1.15
 %else
-BuildRequires:  golang(API) = 1.15
+BuildRequires:  golang(API) >= 1.15
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
@@ -66,10 +66,8 @@ Exports squid metrics in Prometheus format
 
 %build
 %goprep %{githubrepo}
-%if 0%{?rhel}
 # Fix automatic versioning
 export GO111MODULE=auto
-%endif
 %gobuild
 
 %install
