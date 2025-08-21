@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 20 12:18:34 UTC 2025 - Dave Plater <davejplater@gmail.com>
+
+- Disabled i586 build and remove oblolete statements from spec
+
+-------------------------------------------------------------------
+Wed Aug 20 09:43:39 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Fix build failures on FACTORY due to the new gettext:
+  gettext-fix.patch
+- Clean up spec file
+
+-------------------------------------------------------------------
 Mon Feb 26 07:53:10 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

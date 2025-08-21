@@ -1,7 +1,8 @@
 #
 # spec file for package dvdauthor
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +23,12 @@ Release:        0
 Summary:        Low-level DVD Authoring Tools
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
-Url:            http://dvdauthor.sourceforge.net/
+URL:            http://dvdauthor.sourceforge.net/
 Source0:        https://github.com/ldo/dvdauthor/archive/%{version}.tar.gz#/dvdauthor-%{version}.tar.gz
 #PATCH-FIX-UPSTREAM dvdauthor-0.7.0_glibc-2.20.patch avvissu@yandex.ru -- Fix build with glibc-2.20
 Patch0:         dvdauthor-0.7.0_glibc-2.20.patch
 Patch1:         dvdauthor-0.7.2-imagemagick7.patch
+Patch2:         gettext-fix.patch
 BuildRequires:  ImageMagick-devel
 BuildRequires:  bison
 BuildRequires:  docbook-utils
@@ -48,7 +50,7 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(zlib)
 Provides:       dvdauthor07 = %{version}
 Obsoletes:      dvdauthor07 <= %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+ExcludeArch:    i586
 
 %description
 dvdauthor is a program that will generate a DVD-Video movie from a
@@ -60,12 +62,6 @@ FFmpeg, or by by passing `-f 8` to `mplex`.
 %autosetup -p1
 
 %build
-%if 1 == 0
-%define gcc_version 7
-export CC=gcc-7
-export CPP=cpp-7
-export CXX=g++-7
-%endif
 ./bootstrap
 # export MAGICK_CFLAGS=`ImageMagick-config --cppflags`
 # export CFLAGS="%{optflags} $MAGICK_CFLAGS"
@@ -78,7 +74,8 @@ make %{?_smp_mflags}
 
 %files
 %defattr(-,root,root)
-%doc COPYING README TODO AUTHORS ChangeLog
+%doc README TODO AUTHORS ChangeLog
+%license COPYING
 %{_bindir}/*
 %{_mandir}/man*/*
 %dir %{_datadir}/dvdauthor
