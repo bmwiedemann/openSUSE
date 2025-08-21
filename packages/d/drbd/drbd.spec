@@ -44,6 +44,7 @@ Patch0003:  0001-compat-follow-Linux-6.14-debugfs_change_name.patch
 Patch1001:  bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch
 Patch1002:  suse-coccinelle.patch
 Patch1003:  boo1244669-fix_build_error_against_kernel_v6.15.patch
+Patch1004:  boo1248426-fix_build_error_against_kernel_v6.16.1.patch
 ########################
 
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py

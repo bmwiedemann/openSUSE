@@ -1,0 +1,75 @@
+diff -Nupr a/drbd/drbd_main.c b/drbd/drbd_main.c
+--- a/drbd/drbd_main.c	2025-08-21 14:44:46.984914125 +0800
++++ b/drbd/drbd_main.c	2025-08-21 15:10:06.446017689 +0800
+@@ -3448,7 +3448,7 @@ void drbd_flush_peer_acks(struct drbd_re
+ 
+ static void peer_ack_timer_fn(struct timer_list *t)
+ {
+-	struct drbd_resource *resource = from_timer(resource, t, peer_ack_timer);
++	struct drbd_resource *resource = timer_container_of(resource, t, peer_ack_timer);
+ 
+ 	drbd_flush_peer_acks(resource);
+ }
+@@ -5669,7 +5669,7 @@ bool drbd_md_test_peer_flag(struct drbd_
+ 
+ static void md_sync_timer_fn(struct timer_list *t)
+ {
+-	struct drbd_device *device = from_timer(device, t, md_sync_timer);
++	struct drbd_device *device = timer_container_of(device, t, md_sync_timer);
+ 	drbd_device_post_work(device, MD_SYNC);
+ }
+ 
+diff -Nupr a/drbd/drbd_receiver.c b/drbd/drbd_receiver.c
+--- a/drbd/drbd_receiver.c	2025-08-21 14:44:46.986561189 +0800
++++ b/drbd/drbd_receiver.c	2025-08-21 15:08:24.900616061 +0800
+@@ -862,7 +862,7 @@ void wait_initial_states_received(struct
+ 
+ void connect_timer_fn(struct timer_list *t)
+ {
+-	struct drbd_connection *connection = from_timer(connection, t, connect_timer);
++	struct drbd_connection *connection = timer_container_of(connection, t, connect_timer);
+ 
+ 	drbd_queue_work(&connection->sender_work, &connection->connect_timer_work);
+ }
+@@ -6334,7 +6334,7 @@ static void drbd_abort_twopc(struct drbd
+ 
+ void twopc_timer_fn(struct timer_list *t)
+ {
+-	struct drbd_resource *resource = from_timer(resource, t, twopc_timer);
++	struct drbd_resource *resource = timer_container_of(resource, t, twopc_timer);
+ 	unsigned long irq_flags;
+ 
+ 	write_lock_irqsave(&resource->state_rwlock, irq_flags);
+diff -Nupr a/drbd/drbd_req.c b/drbd/drbd_req.c
+--- a/drbd/drbd_req.c	2024-10-08 16:32:16.022936573 +0800
++++ b/drbd/drbd_req.c	2025-08-21 15:09:04.659773315 +0800
+@@ -2588,7 +2588,7 @@ static bool net_timeout_reached(struct d
+ 
+ void request_timer_fn(struct timer_list *t)
+ {
+-	struct drbd_device *device = from_timer(device, t, request_timer);
++	struct drbd_device *device = timer_container_of(device, t, request_timer);
+ 	struct drbd_resource *resource = device->resource;
+ 	struct drbd_connection *connection;
+ 	struct drbd_request *req_read, *req_write;
+diff -Nupr a/drbd/drbd_sender.c b/drbd/drbd_sender.c
+--- a/drbd/drbd_sender.c	2024-10-08 16:32:16.022936573 +0800
++++ b/drbd/drbd_sender.c	2025-08-21 15:06:05.719090321 +0800
+@@ -496,7 +496,7 @@ int w_send_uuids(struct drbd_work *w, in
+ 
+ void resync_timer_fn(struct timer_list *t)
+ {
+-	struct drbd_peer_device *peer_device = from_timer(peer_device, t, resync_timer);
++	struct drbd_peer_device *peer_device = timer_container_of(peer_device, t, resync_timer);
+ 
+ 	drbd_queue_work_if_unqueued(
+ 		&peer_device->connection->sender_work,
+@@ -2067,7 +2067,7 @@ void drbd_rs_controller_reset(struct drb
+ 
+ void start_resync_timer_fn(struct timer_list *t)
+ {
+-	struct drbd_peer_device *peer_device = from_timer(peer_device, t, start_resync_timer);
++	struct drbd_peer_device *peer_device = timer_container_of(peer_device, t, start_resync_timer);
+ 	drbd_peer_device_post_work(peer_device, RS_START);
+ }
+ 
