@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 20 12:21:25 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250820.077bd8b:
+  * Revert "Ignore UPDATE_NVRAM (bsc#1247952)"
+  * Fix dracut "No '/dev/log' or 'logger'" message
+  * Don't mount /etc in chroot with btrfs subvolume
+  * Fix issue template directory name
+
+-------------------------------------------------------------------
+Thu Aug 14 17:08:45 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250814.85181f6:
+  * Add issue templates for bugs and feature requests
+  * Use command line of target snapshot
+  * Add --no-measure-pcr to opt-out PCR15
+  * Remove README images
+
+-------------------------------------------------------------------
 Tue Aug 12 11:07:17 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20250812.13f4562:
