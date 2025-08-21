@@ -72,7 +72,7 @@ This subpackage contains the header files.
 find . -name .lock -type f -delete
 
 %build
-%global margs DOCUMENT_FOLDER="%_docdir/%name" our_CFLAGS="%optflags" LIBRARY_FOLDER="%_libdir"
+%global margs DOCUMENT_FOLDER="%_docdir/%name" our_CFLAGS="%optflags" LIBRARY_FOLDER="%_libdir" BUILD_MODE=cross
 %make_build %margs
 
 %install

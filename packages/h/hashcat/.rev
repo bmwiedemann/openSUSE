@@ -89,4 +89,12 @@
 - Remove python3-devel from recommends (forwarded request 1298186 from VaiTon)</comment>
     <requestid>1298189</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>cce40ae73e53fa8710450a974ac486a3</srcmd5>
+    <version>7.0.0</version>
+    <time>1755788226</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1300541</requestid>
+  </revision>
 </revisionlist>

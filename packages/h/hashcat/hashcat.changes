@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 20 09:30:40 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use BUILD_MODE=cross to not optimize for build machine CPU (boo#1248352)
+
+-------------------------------------------------------------------
 Thu Aug  7 15:48:40 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Use %global instead of %define
