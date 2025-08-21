@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Aug 20 11:17:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.47.0:
+  * Features
+    - build, stapel: add a possibility to import from external
+      images (import.from) (#7020) (b109e98)
+    - build, stapel: unify from and fromImage directives (#7028)
+      (9aa5ca0)
+    - deploy: display logs only from 1 replica by default
+      (configured with annotation
+      werf.io/show-logs-only-for-number-of-replicas) (36a29fa)
+    - deploy: greatly decrease Kubernetes apiserver load (e56ceed)
+  * Bug Fixes
+    - host-cleanup: clean up context archives (b65a557)
+    - include context.Cause in error handling (#7022) (1ba2129)
+
+-------------------------------------------------------------------
+Wed Aug 20 11:10:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.46.0:
+  * Features
+    - deploy: add werf.io/log-regex-skip annotation (aa327f3)
+  * Bug Fixes
+    - build: fix error when syncing submodules in worktree pool
+      (#7023) (062e0e5)
+
+-------------------------------------------------------------------
 Fri Aug 01 07:12:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.45.0:
