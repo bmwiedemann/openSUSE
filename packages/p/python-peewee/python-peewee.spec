@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-peewee
 Version:        3.18.2
@@ -32,13 +36,18 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(sqlite3)
+%if %{with libalternatives}
+BuildRequires:  alts
 Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if 0%{?suse_version} > 1500
 BuildRequires:  %{python_module apsw}
 %endif
@@ -64,6 +73,12 @@ sed -i -e '1{\@^#! *%{_bindir}.*python@d}' %{buildroot}%{$python_sitearch}/pwiz.
 
 %check
 %pytest_arch tests
+
+%post
+%python_install_alternative pwiz.py
+
+%postun
+%python_uninstall_alternative pwiz.py
 
 %pre
 %python_libalternatives_reset_alternative pwiz.py

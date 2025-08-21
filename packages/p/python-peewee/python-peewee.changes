@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 21 15:33:41 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems only
+
+-------------------------------------------------------------------
 Mon Jul 21 03:14:08 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.18.2:
