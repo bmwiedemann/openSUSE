@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Aug 21 04:58:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.27.0:
+  https://istio.io/latest/news/releases/1.27.x/announcing-1.27/
+  https://istio.io/latest/news/releases/1.27.x/announcing-1.27/change-notes/
+  * Security
+    - Added validation for the istioctl --clusterAliases command
+      argument. It should not have more than one alias per cluster.
+      (Issue #56022)
+  * Installation
+    - Fixed a panic in istioctl manifest translate when the
+      IstioOperator config contained multiple gateways. (Issue
+      #56223)
+  * Istioctl
+    - Added the --kubeclient-timeout flag to istioctl root flags.
+      May be unset, or set to a valid time.Duration string. When
+      specified, this will override the default 15s timeout for all
+      istioctl commands that use the Kubernetes client. This is
+      useful for environments with slow Kubernetes API servers,
+      such as those with high latency or low bandwidth. Note that
+      this flag is just used for the Kubernetes client, and does
+      not affect other timeouts in istioctl, such as installation
+      timeouts. (Issue #54962)
+    - Added --revision flags for istioctl dashboard controlz and
+      istioctl dashboard istiod-debug.
+    - Added support in the istioctl proxy-status command to
+      dynamically display all xDS/CRD types as columns in the
+      output table. (Issue #56005)
+    - Added support for customizing the timeout of istioctl
+      waypoint status and istioctl waypoint apply. (Issue #56453)
+    - Added support for displaying stack-trace-level in the command
+      istioctl admin log. (Issue #56465)
+    - Added support for displaying traffic type in the command
+      istioctl waypoint list.
+    - Added support for the --weight parameter in the command
+      istioctl experimental workload group create.
+    - Added support for configuring the log level of
+      ip-autoallocate in istioctl admin log. (Issue #55741)
+    - Fixed an issue where, during installation,
+      istio-revision-tag-default and MutatingWebhookConfiguration
+      were not created when the revision was not the default.
+      (Issue #55980)
+    - Fixed an issue where false positive of IST0134 were raised in
+      istioctl analyze when PILOT_ENABLE_IP_AUTOALLOCATE was set to
+      true. (Issue #56083)
+    - Fixed an issue where analysis included Kubernetes system
+      namespaces (e.g., kube-system, kube-node-lease). (Issue
+      #55022)
+    - Fixed an issue where create-remote-secret created redundant
+      RBAC resources. (Issue #56558)
+
+-------------------------------------------------------------------
 Fri Aug  1 09:01:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.26.3:
