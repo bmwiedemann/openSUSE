@@ -429,4 +429,20 @@
   (gh#agama-project/agama#2640).</comment>
     <requestid>1299043</requestid>
   </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>1119db2274943ffd0e1f0809478b8b31</srcmd5>
+    <version>0</version>
+    <time>1755788088</time>
+    <user>anag_factory</user>
+    <comment>- Refactor DASD page to make it more usable and improve its
+  performance (related to bsc#1247444, gh#agama-project/agama#2648).
+  
+
+- Enforce ESP partition id for /boot/efi partitions manually
+  defined (bsc#1248189).
+
+- Fix messages about automatic storage sizes
+  (gh#agama-project/agama#2657).</comment>
+    <requestid>1300561</requestid>
+  </revision>
 </revisionlist>
