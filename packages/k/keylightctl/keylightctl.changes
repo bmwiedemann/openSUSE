@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 20 12:39:29 UTC 2025 - Michael Matz <matz@suse.com>
+
+- Use current distro go default version.  Don't force CGO to
+  off (doesn't work on some archs), use whatever go does by default.
+
+-------------------------------------------------------------------
 Fri Feb 10 13:08:38 UTC 2023 - Thomas Renninger <trenn@suse.de>
 
 - Properly set _service modes and add obscpio and obsinfo files

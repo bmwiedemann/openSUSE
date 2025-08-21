@@ -27,7 +27,7 @@ URL:            https://github.com/endocrimes/keylightctl
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.14
+BuildRequires:  golang(API) >= 1.14
 %{go_provides}
 
 %description
@@ -38,7 +38,6 @@ A command line tool for controlling Elgato Key Lights and Key Light Airs.
 
 %build
 %goprep %{goipath}
-export CGO_ENABLED=0
 %gobuild -mod vendor -buildmode pie -ldflags "%{goipath}/internal/version.gitCommit=%{git_commit}}" 
 
 %install
