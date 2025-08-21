@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 19 10:52:39 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix the initialization of the valid iscsi offload cards not 
+  bringing up the network cards with an empty iface name 
+  (bsc#1246210).
+- 5.0.10
+
+-------------------------------------------------------------------
 Wed Jul 23 10:38:00 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Ensure to hide passwords (bsc#1246833)
