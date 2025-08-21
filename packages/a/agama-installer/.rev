@@ -333,4 +333,20 @@
   (gh#agama-project/agama#2617).</comment>
     <requestid>1299044</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>c68a6e0d8f32e7c232f79d826f12ff72</srcmd5>
+    <version>17.0.0</version>
+    <time>1755788086</time>
+    <user>anag_factory</user>
+    <comment>- Make /etc/resolv.conf available at /sysroot when applying the DUDs
+  (bsc#1248276).
+
+- Add a &quot;Boot from Hard Disk&quot; option for ppc64le and drop the
+  &quot;Other options...&quot; submenu (bsc#1248161).
+
+- Load modules even if the module.order file is not given (bsc#1248138).
+
+- Copy kernel modules from DUDs to the updates/ directory (bsc#1246061).</comment>
+    <requestid>1300498</requestid>
+  </revision>
 </revisionlist>
