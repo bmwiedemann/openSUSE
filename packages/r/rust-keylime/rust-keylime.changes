@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Aug 20 09:26:08 UTC 2025 - aplanas@suse.com
+
+- Update vendored crates (bsc#1248006, CVE-2025-55159)
+  * slab 0.4.11
+
+- Add Cargo_lock.patch patch to update slab and other dependencies
+
+- Update to version 0.2.8+12:
+  * build(deps): bump actions/checkout from 4 to 5
+  * build(deps): bump cfg-if from 1.0.0 to 1.0.1
+  * build(deps): bump openssl from 0.10.72 to 0.10.73
+  * build(deps): bump clap from 4.5.39 to 4.5.45
+  * build(deps): bump pest from 2.8.0 to 2.8.1
+  * Fix clippy warnings
+  * Use verifier-provided interval for continuous attestation timing
+  * Add meta object with seconds_to_next_attestation to evidence response
+  * Fix boot time retrieval
+  * Fix IMA log format (it must be ['text/plain']) (#1073)
+  * Remove unnecessary configuration fields
+  * cargo: Bump retry-policies to version 0.4.0
+  * Bump version to 0.2.8
+
+-------------------------------------------------------------------
 Thu Aug 07 12:17:29 UTC 2025 - aplanas@suse.com
 
 - Update vendored crates (bsc#1247193, CVE-2025-58266)
