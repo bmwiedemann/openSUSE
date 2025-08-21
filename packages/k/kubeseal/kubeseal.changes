@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Aug 20 12:57:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.31.0:
+  * Update release notes for v0.31.0 (#1772)
+  * Simplify VIB helm chart validation (#1771)
+  * Bump VIB action version and updates the service URL (#1770)
+  * helm: add watch for secrets (#1758)
+  * fix: metrics cleanup for deleted SealedSecrets (#1764)
+  * Bump golang version to latest available one for 1.24 (#1769)
+  * Bump k8s.io/client-go from 0.33.2 to 0.33.3 (#1761)
+  * Bump github.com/spf13/pflag from 1.0.6 to 1.0.7 (#1765)
+  * Bump golang.org/x/crypto from 0.40.0 to 0.41.0 (#1768)
+  * Bump k8s.io/api from 0.33.2 to 0.33.3 (#1766)
+  * Bump github.com/prometheus/client_golang from 1.22.0 to 1.23.0
+    (#1767)
+  * Bump k8s.io/code-generator from 0.33.2 to 0.33.3 (#1759)
+  * Bump github.com/onsi/gomega from 1.37.0 to 1.38.0 (#1760)
+  * Fix keyrenewperiod template chart (#1756)
+  * Fix namespace validation to prevent mismatch errors (#1754)
+  * Bump golang.org/x/crypto from 0.39.0 to 0.40.0 (#1755)
+  * Bump k8s.io/code-generator from 0.33.1 to 0.33.2 (#1752)
+  * Bump k8s.io/client-go from 0.33.1 to 0.33.2 (#1749)
+  * add watch for secrets (#1737)
+  * Release carvel package 2.17.3 (#1746)
+  * Release chart 2.17.3 (#1745)
+
+-------------------------------------------------------------------
 Fri Jun 13 05:05:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.0:
