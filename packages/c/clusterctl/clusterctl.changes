@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Aug 21 05:14:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.11.0:
+  Full changelog:
+  https://github.com/kubernetes-sigs/cluster-api/releases/tag/v1.11.0
+  * Add resource version check to clusterctl upgrade tests
+  * Cleanup clusterctl tests assets
+  * Add Scaleway infrastructure provider to clusterctl
+  * clusterctl: validate provider metadata (#12242)
+  * clusterctl: accept upper case version (#12237)
+  * Remove clusterctl alpha topology plan + Cleanup Cluster
+    topology controller
+  * Update cmd/clusterctl/client/cluster/installer.go
+  * clusterctl: clearer error messages when provider metadata is
+    missing or repo URL is stale
+  * e2e: bump main clusterctl upgrade test to 1.33
+  * e2e: bump 1.10 clusterctl upgrade test to 1.33
+  * Add filename to clusterctl error about bad YAML
+  * fix: clusterctl upgrade tests
+  * Update clusterctl version to v1.10.x in quick start
+  * Add retry for SSA requests against Kubernetes < v1.29 in
+    clusterctl upgrade tests
+  * Add support for compatible contracts to clusterctl (#12018)
+  * Enforce skip upgrade policy in clusterctl (#12017)
+  * :bug: clusterctl upgrade hangs for a time on CRD migration when
+    new version contains a number of new CRDs
+
+-------------------------------------------------------------------
 Wed Aug 20 06:56:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.5:
