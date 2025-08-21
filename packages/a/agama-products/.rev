@@ -277,4 +277,13 @@
   after changes to agama service (bsc#1247046)</comment>
     <requestid>1299042</requestid>
   </revision>
+  <revision rev="25" vrev="25">
+    <srcmd5>58717743f8c56b5ca02be8688369df85</srcmd5>
+    <version>0</version>
+    <time>1755788085</time>
+    <user>anag_factory</user>
+    <comment>- products: sles, sle-sap: remove Beta tag, switch to the final EULAs
+  (gh#agama-project/agama#2666).</comment>
+    <requestid>1300496</requestid>
+  </revision>
 </revisionlist>
