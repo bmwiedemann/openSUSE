@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-pipx
 Version:        1.7.1
@@ -28,10 +32,8 @@ Source:         pipx-%{version}.tar.gz
 BuildRequires:  %{python_module hatch-vcs >= 0.4}
 BuildRequires:  %{python_module hatchling >= 1.18}
 BuildRequires:  %{python_module pip}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python >= 3.8
 Requires:       python-argcomplete >= 1.9.4
 Requires:       python-packaging >= 20
@@ -39,6 +41,13 @@ Requires:       python-platformdirs >= 2.1
 Requires:       python-userpath >= 1.6
 Requires:       (python-tomli if python-base < 3.11)
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module argcomplete >= 1.9.4}
 BuildRequires:  %{python_module packaging >= 20}
@@ -61,6 +70,12 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pipx
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative pipx
+
+%postun
+%python_uninstall_alternative pipx
 
 %pre
 %python_libalternatives_reset_alternative pipx

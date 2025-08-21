@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 21 15:24:12 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems only
+
+-------------------------------------------------------------------
 Sat Jul 19 07:27:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
