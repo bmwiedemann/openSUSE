@@ -6007,4 +6007,38 @@ I cannot test locally unfortunately.
   * Message list scrolled back when returning to mail tab after opening a message</comment>
     <requestid>1298009</requestid>
   </revision>
+  <revision rev="370" vrev="1">
+    <srcmd5>6caf67543087190e59c1d0538070db17</srcmd5>
+    <version>140.2.0</version>
+    <time>1755788346</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Thunderbird 140.2
+  * fixed: Users were unable to use Fastmail calendars due to
+    missing OAuth settings (bmo#1978192)
+  * fixed: Account setup error handling was broken for Account
+    hub (bmo#1971303)
+  * fixed: Menu bar was hidden after updating from 128esr to
+    140esr (bmo#1979002)
+  * fixed: Security fixes
+  MFSA 2025-72 (bsc#1248162)
+  * CVE-2025-9179 (bmo#1979527)
+    Sandbox escape due to invalid pointer in the Audio/Video: GMP
+    component
+  * CVE-2025-9180 (bmo#1979782)
+    Same-origin policy bypass in the Graphics: Canvas2D component
+  * CVE-2025-9181 (bmo#1977130)
+    Uninitialized memory in the JavaScript Engine component
+  * CVE-2025-9182 (bmo#1975837)
+    Denial-of-service due to out-of-memory in the Graphics:
+    WebRender component
+  * CVE-2025-9184 (bmo#1929482, bmo#1976376, bmo#1979163,
+    bmo#1979955)
+    Memory safety bugs fixed in Firefox ESR 140.2, Thunderbird
+    ESR 140.2, Firefox 142 and Thunderbird 142
+  * CVE-2025-9185 (bmo#1970154, bmo#1976782, bmo#1977166)
+    Memory safety bugs fixed in Firefox ESR 115.27, Firefox ESR
+    128.14, Thunderbird ESR 128.14, Firefox ESR 140.2,
+    Thunderbird ESR 140.2, Firefox 142 and Thunderbird 142</comment>
+    <requestid>1300598</requestid>
+  </revision>
 </revisionlist>
