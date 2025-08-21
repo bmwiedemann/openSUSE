@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 20 11:17:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.8.1:
+  * Bugfixes
+    - Fix first-run collection discovery by enabling plugin loader
+      after prepare_environment (#4722) @cidrblock
+  * Maintenance
+    - Fix mypy and pyright type checking errors (#4724) @cidrblock
+
+-------------------------------------------------------------------
+Wed Aug 20 11:14:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.8.0:
+  * Bugfixes
+    - Lint failure in ansible.utils: src must be an absolute path fix
+      (#4712) @anusshukla
+
+-------------------------------------------------------------------
 Fri Aug  1 12:22:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.7.0:
