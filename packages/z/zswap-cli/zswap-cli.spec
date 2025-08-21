@@ -1,7 +1,7 @@
 #
 # spec file for package zswap-cli
 #
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %bcond_without systemd
 Name:           zswap-cli
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Command-line tool to control the zswap kernel module options
 License:        MIT
 URL:            https://github.com/xvitaly/zswap-cli
 Source:         https://github.com/xvitaly/zswap-cli/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  c++_compiler
-BuildRequires:  cmake >= 3.14
+BuildRequires:  cmake >= 3.28
 BuildRequires:  libboost_program_options-devel >= 1.70.0
 BuildRequires:  pandoc
 %if %{with systemd}
@@ -49,6 +49,7 @@ compressed cache is much faster than reading from a swap device.
 %build
 %cmake \
 	-DBUILD_MANPAGE:BOOL=ON \
+	-DBUILD_SHELL_COMPLETION:BOOL=ON \
 %if %{with systemd}
 	-DSYSTEMD_INTEGRATION:BOOL=ON \
 %else
@@ -85,5 +86,6 @@ compressed cache is much faster than reading from a swap device.
 %config(noreplace) %{_sysconfdir}/zswap-cli/zswap-cli.conf
 %{_prefix}/lib/systemd/system/zswap-cli.service
 %endif
+%{_datadir}/bash-completion/completions/zswap-cli
 
 %changelog

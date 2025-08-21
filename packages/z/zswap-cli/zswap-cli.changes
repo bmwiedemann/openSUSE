@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 20 17:02:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.1.0:
+  * Add swap space check to the --stats handler
+  * Implement hiding of unsupported by current kernel options from
+    the --stats output
+  * Add support of new kernel module variables
+  * Add shell completion support
+  * Document all configuration options in the default configuration
+    file
+  * Fix incorrect estimation of total RAM size on various
+    architectures
+  * Fix incorrect estimation of total swap size on various
+    architectures
+
+-------------------------------------------------------------------
 Tue Jul 29 15:30:03 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - BuildRequire pkgconfig(systemd) instead of systemd for reduced dependencies
