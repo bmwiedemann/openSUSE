@@ -1,7 +1,7 @@
 #
 # spec file for package k3sup
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           k3sup
-Version:        0.13.10
+Version:        0.13.11
 Release:        0
 Summary:        Bootstrap Kubernetes with k3s over SSH < 1 min
 License:        MIT
