@@ -46,7 +46,7 @@
 # TODO explore debundling Boost for standard
 
 Name:           python-scipy%{?psuffix}
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0
@@ -58,7 +58,7 @@ BuildRequires:  %{python_module Cython >= 3.0.8 with %python-Cython < 3.2}
 BuildRequires:  %{python_module devel >= 3.11}
 BuildRequires:  %{python_module meson-python >= 0.15.0 with %python-meson-python < 0.21}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pybind11-devel >= 2.13.2 with %python-pybind11-devel < 2.14}
+BuildRequires:  %{python_module pybind11-devel >= 2.13.2 with %python-pybind11-devel < 3.1.0}
 # Upstream's pre-emptive pin to < 0.18 is not necessary
 BuildRequires:  %{python_module pythran >= 0.14}
 BuildRequires:  fdupes

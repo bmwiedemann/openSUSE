@@ -1391,4 +1391,12 @@ bsc#1130564: Apply update from the openSUSE package
     <comment></comment>
     <requestid>1288022</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>79d91e89e51c5f7dd3f47172c2874636</srcmd5>
+    <version>1.16.1</version>
+    <time>1755788051</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1300549</requestid>
+  </revision>
 </revisionlist>
