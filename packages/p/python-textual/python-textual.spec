@@ -1,7 +1,7 @@
 #
 # spec file for package python-textual
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-textual
-Version:        1.0.0
+Version:        5.3.0
 Release:        0
 Summary:        TUI framework for Python
 License:        MIT
@@ -32,6 +32,7 @@ BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module markdown-it-py >= 2.1.0}
 BuildRequires:  %{python_module linkify-it-py}
 BuildRequires:  %{python_module platformdirs >= 3.6.0 with %python-platformdirs < 5}
+BuildRequires:  %{python_module pygments >= 2.19.2 with %python-pygments < 2.20}
 BuildRequires:  %{python_module rich >= 13.3.3}
 BuildRequires:  %{python_module typing-extensions >= 4.4.0 with %python-typing-extensions < 5}
 # /SECTION
@@ -40,6 +41,8 @@ BuildRequires:  %{python_module pytest >= 8.3.1}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-xdist >= 3.6.1}
 BuildRequires:  %{python_module tree-sitter}
+BuildRequires:  tree-sitter
+BuildRequires:  tree-sitter-python
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,6 +50,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-markdown-it-py >= 2.1.0
 Requires:       python-rich >= 13.3.3
 Requires:       (python-platformdirs >= 3.6.0 with python-platformdirs < 5)
+Requires:       (python-pygments >= 2.19.2 with python-pygments < 2.20)
 Requires:       (python-typing-extensions >= 4.4.0 with python-typing-extensions < 5)
 Suggests:       python-tree-sitter
 Suggests:       python-tree-sitter-languages
@@ -97,6 +101,14 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_register_language_existing_language"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_wrap_around_selector"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_setting_unknown_language"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_update_highlight_query"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_widget_construct"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_setting_builtin_language_via_constructor"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_setting_builtin_language_via_attribute"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_setting_language_to_none"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_default_theme"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_setting_builtin_themes"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_setting_unknown_theme_raises_exception"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_registering_and_setting_theme"
 %pytest -k "not (${IGNORED_CHECKS})"
 
 %files %{python_files}

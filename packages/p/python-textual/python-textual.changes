@@ -1,4 +1,487 @@
 -------------------------------------------------------------------
+Wed Aug 20 13:02:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 5.3.0:
+  https://github.com/Textualize/textual/releases/tag/v5.3.0
+  * Added
+    - Added Content.simplify #6023
+    - Added textual.reactive.Initialize #6023
+  * Fixed
+    - Fixed issue with IDs in markdown #6019 #6023
+- update to 5.2.0:
+  https://github.com/Textualize/textual/releases/tag/v5.2.0
+  * Added
+    - Added a 'stream' layout, which is a lot like vertical but
+      with fewer supported rules (which is why it is faster), will
+      remain undocumented for now. #6013
+- update to 5.1.1:
+  https://github.com/Textualize/textual/releases/tag/v5.1.1
+  For some reason I still don't understand, poetry included pycache
+  files in the last PyPi release. After updating Poetry, the build
+  is a more sensible size. There are no code changes in this
+  release.
+- update to 5.1.0:
+  https://github.com/Textualize/textual/releases/tag/v5.1.0
+  This release adds an :empty pseudo-class which matches widgets
+  with no children. You could use this to hide a container that
+  doesn't have any children, for example:
+
+    .container:empty {
+        display: none;
+    }
+
+  Also in this release, support for scrolling left and right via
+  the trackpad or a mouse that supports it. This was a contribution
+  from @fancidev
+  * Added
+    - Added empty pseudo class, which applies when a widget has no
+      displayed children #5999
+    - Added Screen.action_focus #5999
+    - Added support for left and right mouse scroll for terminals
+      and input devices which support it #5995
+  * Changed
+    - last-child, last-of-type, first-child, and first-of-type
+      apply to displayed children only #5999
+    - textual.compose is now public #5999
+- update to 5.0.1:
+  https://github.com/Textualize/textual/releases/tag/v5.0.1
+  * Fixed
+    - Fixed appending to Markdown widgets that were constructed
+      with an existing document #5990
+- update to 5.0.0:
+  https://github.com/Textualize/textual/releases/tag/v5.0.0
+  This is quite a large release! Fueled in part by my work on Toad.
+  Markdown rendering has been improved, with full text selection,
+  prettier code blocks and tables. Plus streaming support.Plenty of
+  other fixes and additions. Thats to everyone who contributed code
+  and issues!
+  There are two breaking changes (see below). These are unlikely to
+  affect anyone, but Semver requires bumping the major version
+  number.
+  * Added
+    - Added get_minimal_width to Visual protocol #5962
+    - Added expand and shrink attributes to GridLayout #5962
+    - Added Markdown.get_stream #5966
+    - Added textual.highlight module for syntax highlighting #5966
+    - Added MessagePump.wait_for_refresh method #5966
+    - Added Widget.container_scroll_offset e84600c
+    - Added Markdown.source attribute to MarkdownBlocks e84600c
+    - Added extension mechanism to Markdown e84600c
+    - Added index to ListView.Selected event #5973
+    - Added layout switch to Static.update #5973
+  * Fixed
+    - Fixed TextArea issue with the css theme, where the background
+      color was stuck from the previous theme #5964
+  * Changed
+    - Improved rendering of Markdown tables (replace Rich table
+      with grid) which allows text selection #5962
+    - Change look of command palette, to drop accented borders
+      #5966
+    - Some style tweaks to Markdown e84600c
+    - Content markup can now accept component classes when preceded
+      by a dot, e.g. "Hello [.my_custo_style]World[/]!" #5981
+    - Breaking change: Visual.render_strips has a new signature. If
+      you aren't explicitly building Visuals then this won't effect
+      you. #5981
+    - Breaking change: The component classes on Markdown have been
+      moved to MarkdownBlock. This won't affect you unless you have
+      customize the Markdown CSS #5981
+    - The textual-speedups library will now be imported
+      automatically if it is installed. Set TEXTUAL_SPEEDUPS=0 to
+      disable.
+- update to 4.0.0:
+  https://github.com/Textualize/textual/releases/tag/v4.0.0 The
+  highlight of this release is the new Markdown.append method which
+  can be used to efficiently stream markdown content (like you
+  might get from an LLM).
+  The Widget.anchor method has changed semantics (and also works
+  much better), which is the reason for the major version bump.
+  This will only impact you if you are actually using that method.
+  And there are a few fixes and additions. Thanks to the community
+  for these contributions.
+  * Fixed
+    - Fixed query_one and query_exactly_one not raising documented
+      WrongType exception. #5945
+    - Fixed logging to a file on Windows #5941
+    - Fixed eight bit colors crashing when applying dim style #5957
+  * Changed
+    - Breaking change: Widget.anchor now has different semantics.
+      It should be applied to a container and anchors to the bottom
+      of the scroll position. #5950
+  * Added
+    - Added Markdown.append #5950
+    - Added Widget.release_anchor #5950
+    - Added compact parameter to MaskedInput #5952
+- update to 3.7.1:
+  https://github.com/Textualize/textual/releases/tag/v3.7.1
+  * Fixed
+    - Fixed broken text selection with soft_wrap=False #5940
+- update to 3.7.0:
+  https://github.com/Textualize/textual/releases/tag/v3.7.0
+  A few enhancements, including a handy getters module for creating
+  properties to get widgets.
+  Also a potentially breaking change, see below for the details...
+  * Added
+    - Added textual.getters #5930
+    - Added a show_cursor boolean to TextArea #5934
+  * Changed
+    - Potential breaking change: Changed default query_one and
+      query_exactly_one search to breadth first #5930
+    - Cursor is now visible by default when in read only mode
+      (restoring pre 3.6.0 behavior) #5934
+  * Fixed
+    - Fixed issue with Keylines not scrolling #5936
+- update to 3.6.0:
+  https://github.com/Textualize/textual/releases/tag/v3.6.0
+  * Fixed
+    - Fixed issue with the "transparent" CSS value not being
+      transparent when set using python #5890
+    - Fixed issue with pushing screens when Input has mouse
+      captured #5900
+    - Implemented workaround for Ghostty bug which produces
+      negative mouse coordinates #5926
+  * Changed
+    - Widget.release_mouse will now only release the mouse, if it
+      was captured by self #5900
+    - Some optimizations to TextArea, which may be noticeable
+      during scrolling (note: may break snapshots with a TextArea)
+      #5925
+    - Selecting in the TextArea now hides the cursor until you
+      release the mouse #5925
+    - Read only TextAreas will no longer display a cursor #5925
+  * Added
+    - Added TextArea.highlight_cursor_line toggle #5924
+- update to 3.5.0:
+  https://github.com/Textualize/textual/releases/tag/v3.5.0
+  This release contains some optimizations to startup time, which
+  may be significant if you create a lot of widgets. There are also
+  some visual updates to Markdown.
+  This release will break your snapshots, although I don't expect
+  any visual changes. If you are using the snapshot plugin, you
+  will need to regenerate those snapshots. Even if you give them a
+  quick scan, this should only take a few minutes.
+  * Changed
+    - Optimized startup #5869
+    - New blank visual which makes background faster to render
+      (note this will break snapshots tests this version) #5869
+    - Exposed code_indent_guides boolean on Markdown widget #5874
+    - Changed code fence background to use CSS background rather
+      than its code theme #5874
+- update to 3.4.0:
+  https://github.com/Textualize/textual/releases/tag/v3.4.0
+  Mostly fixes, although there is a notable change to markup.
+  Previously anything in square brackets was considered a tag,
+  which resulted in markup errors with Python list literals. i.e.
+  [1,2,3] would be interpreted as a tag. The Content markup parser
+  has been made more lenient in these cases, and treats them as
+  literal text.
+  * Fixed
+    - Fixed issues with initial flicker in TextArea rendering
+      https://github.com/Textualize/textual/issues/5841vcomm
+    - Fixed issue with workers that have large parameter lists
+      breaking dev tools #5850
+    - Fixed post_message failing on 3.8 #5848
+    - Fixed log not working from threads #5863
+  * Added
+    - Added experimental opt-in support for
+      https://github.com/willmcgugan/textual-speedups
+  * Changed
+    - Content markup is now more lenient; if a 'tag' doesn't
+      contain a valid style it will be included verbatim. #5851
+- update to 3.3.0:
+  https://github.com/Textualize/textual/releases/tag/v3.3.0
+  The first community supported release.
+  Mostly fixes and a few helpful additions. See below for details...
+  * Fixed
+    - Fixed VERTICAL_BREAKPOINTS doesn't work #5785
+    - Fixed Button allowing text selection #5770
+    - Fixed running App.run after asyncio.run #5799
+    - Fixed triggering a deprecation warning in py >= 3.10 #5799
+    - Fixed Input invalid cursor position after updating the value
+      #5811
+    - Fixed DEFAULT_CLASSES when applied to App #5827
+    - Fixed order of implicit content tag closing #5823
+  * Added
+    - Exposed CollapsibleTitle #5810
+    - Added Color.hsv property and Color.from_hsv class method
+      #5803
+    - Added cursor_at_start and cursor_at_end properties to the
+      Input widget #5830
+  * Changed
+    - Added a few features to python -m textual.markup playground
+      #5823
+- update to 3.2.0:
+  https://github.com/Textualize/textual/releases/tag/v3.2.0
+  There are a few interesting features in this release.
+  Many widgets have grown a compact reactive. If you set this to
+  True then the widget will have a compact (borderless) style.
+  Reactives have a new toggle_class attribute, that toggles a TCSS
+  classname according to the truthyness of its value. If that
+  sounds complicated, it really isn't in practice. Let's see it in
+  action:
+    class MyWidget(Widget):
+        compact = reactive(False, toggle_class="-textual-compact")
+
+  This adds a boolean attribute to the widget. If you set
+  compact=True then it will add the class "-textual-compact". If
+  you set compact=False it will remove the class. Simples.
+  We also have breakpoint support, so you can build UIs that adjust
+  to the dimensions of the screen. This was always possible, but it
+  was a pattern before. Now it is a first class feature. See the
+  breakpoints.py example.
+  We also have two new pseudo classes: :first-child and
+  :last-child, which have the same meaning as browser CSS.
+  Contributed by @sponsfreixes
+  There is one potential breaking change. RadioSet now has a
+  default width of 1fr, meaning they will take up the full
+  available space. This makes RadioSet size like other widgets. If
+  you want the original behavior, then set the width to "auto"
+  * Fixed
+    - Fixed OptionList causing excessive redrawing #5766
+    - Log messages could be written to stdout when there was no
+      app, which could happen when using run_async or threads. Now
+      they will be suppressed, unless the env var TEXTUAL_DEBUG is
+      set #5782
+  * Added
+    - Added :first-child and :last-child pseudo classes #5776
+    - Added toggle_class parameter to reactives #5778
+    - Added compact parameter and reactive to Button, Input,
+      ToggleButton, RadioSet, OptionList, TextArea #5778
+    - Added HORIZONTAL_BREAKPOINTS and VERTICAL_BREAKPOINTS to App
+      and Screen #5779
+  * Changed
+    - RadioSet now has a default width of 1fr #5778
+- update to 3.1.1:
+  https://github.com/Textualize/textual/releases/tag/v3.1.1
+  * Fixed
+    - Fixed issue with tint filter #5757
+    - Fixed a crash when setting keymap before app mount #5742
+- update to 3.1.0:
+  https://github.com/Textualize/textual/releases/tag/v3.1.0
+  Mostly fixes, some API enhancements. See below.
+  * Fixed
+    - Fixed markup escaping edge cases #5697
+    - Fixed incorrect auto height in Collapsible #5703
+    - Fixed issue with keymaps and single-letter keys #5726
+    - Fixed OptionList size after removing or clearing options
+      #5728
+    - Fixed footer / key panel not updating when keymaps are
+      applied #5724
+    - Fixed alignment not being applied when there are min and max
+      limits on dimensions #5732
+    - Fixed issues with OptionList scrollbar not updating #5736
+    - Fixed allow_focus method not overriding can_focus() #5737
+    - Fixed overlap of Input / TextArea selection with arbitrary
+      text selection #5739
+  * Changed
+    - Collapsible title now accepts str, Text, or Content #5697
+    - Rich Text objects will be converted to Content in OptionList
+      and other widgets #5712
+    - Textual will always convert dim attributes to RGB by default
+      #5715
+    - Notifications will now use content markup (previously they
+      used Console markup) #5719
+  * Added
+    - Added TEXTUAL_DIM_FACTOR env var to set the opacity of the
+      'dim' ANSI attribute #5715
+    - notify() now accepts a markup parameter to disable rendering
+      the message as markup #5719
+    - Added Screen.text_selection_started_signal #5739
+    - Added App.clear_selection() helper method to clear arbitrary
+      text selection of active screen #5739
+- update to 3.0.1:
+  https://github.com/Textualize/textual/releases/tag/v3.0.1
+  Fixes an issue with modal dialogs not refreshing.
+  * Fixed
+    - Fixed issue with modal dialog not refreshing #5696
+- update to 3.0.0:
+  https://github.com/Textualize/textual/releases/tag/v3.0.0
+  Mostly small enhancements, and fixes. This is a major version
+  bump, due to a change in how app.query works. Previously this
+  would query the active screen, but this would yield surprising
+  results if you push a screen. Now app.query, gets results from
+  the default screen.
+  This is unlikely to impact many apps. If it does, use
+  app.screen.query where you previously used app.query.
+  * Changed
+    - Breaking change: App.query and friends will now always query
+      the default (first) screen, not necessarily the active
+      screen.
+    - Content now has a default argument of an empty string, so
+      Content() is equivalent to Content("")
+    - Assigned names to Textual-specific threads: textual-input,
+      textual-output. These should become visible in monitoring
+      tools (ps, top, htop) as of Python 3.14. #5654
+    - Tabs now accept Content or content markup #5657
+    - Breaking change: Buttons will now use Textual markup rather
+      than console markup
+    - tree-sitter languages are now loaded lazily, improving
+      cold-start time #563
+  * Fixed
+    - Static and Label now accept Content objects, satisfying type
+      checkers #5618
+    - Fixed click selection not being disabled when allow_select
+      was set to false #5627
+    - Fixed crash on clicking line API border #5641
+    - Fixed Select.selection now correctly returns None if
+      Select.BLANK is selected instead of an AssertionError
+    - Fixed additional spaces after text-wrapping #5657
+    - Added missing scroll_end parameter to the Log.write_line
+      method #5672
+    - Restored support for blink #5675
+    - Fixed scrolling breaking on DataTable with overflow: hidden
+      #5681
+  * Added
+    - Added Widget.preflight_checks to perform some debug checks
+      after a widget is instantiated, to catch common errors. #5588
+    - Added text-padding style #5657
+    - Added Content.first_line property #5657
+    - Added Content.from_text constructor #5657
+    - Added Content.empty constructor #5657
+    - Added Content.pad method #5657
+    - Added Style.has_transparent_foreground property #5657
+- update to 2.1.2:
+  https://github.com/Textualize/textual/releases/tag/v2.1.2
+  A fix for the command palette's fuzzy search. Will not affect
+  most people.
+  * Fixed
+    - Fixed command palette fuzzy search bailing too early #5579
+- update to 2.1.1:
+  https://github.com/Textualize/textual/releases/tag/v2.1.1
+  Mostly fixes here. There is a small change to behavior around
+  scroll_end. Changes below...
+  * Fixed
+    - Fixed Link binding to open the link #5564
+    - Fixed IndexError in OptionList #5574
+    - Fixed issue with clear_panes breaking tabbed content #5573
+  * Changed
+    - The user can now interrupt a scroll to end by grabbing the
+      scrollbar or scrolling in any other way. Press ++end++ or
+      scroll to the end to restore default behavior. This is more
+      intuitive that it may sound.
+- update to 2.1.0:
+  https://github.com/Textualize/textual/releases/tag/v2.1.0
+  Mostly fixes in this release, and a small feature.
+  The mouse event adds pointer_* attributes which contain the
+  pointer coordinates in pixel resolution (if supported by your
+  terminal).
+  * Fixed
+    - Fixed smooth scrolling broken on iTerm over SSH #5551
+    - Fixed height of auto container which contains auto height
+      children #5552
+    - Fixed Content.from_markup not stripping control codes #5557
+    - Fixed delta_x and delta_y in mouse events when smooth
+      scrolling is enabled #5556
+    - Fixed flipped title colors in panel border #5548
+    - Fixed detection of smooth scrolling #5558
+  * Added
+    - Added pointer_x, pointer_y, pointer_screen_x, and
+      pointer_screen_y attributes to mouse events #5556
+  * Changed
+    - Animating the scrollbar while dragging is disabled if smooth
+      scrolling is available #5558
+    - Renamed TerminalSupportsInBandWindowResize to
+      InBandWindowResize #5558
+- update to 2.0.4:
+  https://github.com/Textualize/textual/releases/tag/v2.0.4
+  * Fixed
+    - Fixed smooth scrolling breaking mouse support in VSCode (and
+      probably others) #5549
+- update to 2.0.3:
+  https://github.com/Textualize/textual/releases/tag/v2.0.3
+  * Fixed
+    - Fixed traceback from OptionList in Command Palette #5544
+- update to 2.0.2:
+  https://github.com/Textualize/textual/releases/tag/v2.0.2
+  * Fixed
+    - Fixed OptionList.add_options exhausting iterator #5540
+    - Fixed screen not refreshing after pop #5543
+- update to 2.0.1:
+  https://github.com/Textualize/textual/releases/tag/v2.0.1
+  * Fixed
+    - Fixed escape tags in Content markup #5536
+- update to 2.0.0:
+  https://github.com/Textualize/textual/releases/tag/v2.0.0
+  * This is a big release!
+    Arbitrary text selection. You can now select text, and hit
+    ctrl+c to copy it to the clipboard. This works just about
+    everywhere, although there a re a few widgets were it isn't yet
+    implemented.
+  * Breaking change: Strings returned from render() and other
+    places will now be interpreted with Content.from_markup, rather
+    than Rich.from_markup. This may result in slightly different
+    colors, and emoji codes (like ":smiley:") will no longer be
+    processed automatically. If you want to restore the old
+    behavior you can return Rich.from_markup("Your output here")
+    rather than string literal.
+  * Why 2.0.0 ?
+    It took us more than 3 years to get to 1.0. But a couple of
+    months to get to 2.0? Why?
+    We follow Semver which says that after 1.0, all breaking
+    changes bump the major version number. We have some breaking
+    changes here, which will be trivial to fix -- if they effect
+    you at all. But a breaking change is a breaking change!
+  * Added
+    - Added Select.type_to_search which allows you to type to move
+      the cursor to a matching option #5403
+    - Added from_app_focus to Focus event to indicate if a widget
+      is being focused because the app itself has regained focus or
+      not #5379
+    - Added Blurred message to Input widget (matching Submitted and
+      Changed) to make it easier to synchronize with validate_on
+      parameter when set to 'blur'.
+    - Added Offset.transpose #5409
+    - Added screen--selection component class to define style for
+      selection #5409
+    - Added Widget.select_container property #5409
+    - Added Widget.select_all #5409
+    - Added Region.bottom_right_inclusive #5409
+    - Added double click to select, triple click to select all in
+      container #5409
+    - Added arbitrary text selection #5409
+    - Added Widget.ALLOW_SELECT classvar for a per-widget switch to
+      disable text selection #5409
+    - Added Widget.allow_select method for programmatic control of
+      text selection #5409
+    - Added App.ALLOW_SELECT for a global switch to disable text
+      selection #5409
+    - Added DOMNode.query_ancestor #5409
+    - Added selection to Log widget #5467
+    - Added text-wrap and text-overflow CSS values #5485
+    - Added Textual markup to replace Rich markup #5485
+    - Added Content.from_markup #5485
+  * Fixed
+    - Fixed Pilot.click not working with times parameter #5398
+    - Fixed select refocusing itself too late #5420
+    - Fixed layout of the keys in the help panel when a key has a
+      tooltip but no description #5436
+    - The content of an Input will now only be automatically
+      selected when the widget is focused by the user, not when the
+      app itself has regained focus (similar to web browsers).
+      #5379
+    - Updated TextArea and Input behavior when there is a selection
+      and the user presses left or right #5400
+    - Footer can now be scrolled horizontally without holding shift
+      #5404
+    - Modified '_on_blur' method in Input to post a Blurred message
+    - Fixed Log widget not refreshing on resize #5460
+    - Fixed special case with calculating the height of a container
+      where all children have dynamic heights #5463
+    - Fixed scrollbars ignoring background opacity #5458
+    - Fixed Header icon showing command palette tooltip when
+      disabled #5427
+  * Changed
+    - Breaking change: OptionList no longer supports Separator, a
+      separator may be specified with None
+    - Implemented smooth (pixel perfect) scrolling on supported
+      terminals. Set TEXTUAL_SMOOTH_SCROLL=0 to disable.
+  * Removed
+    - Breaking change: Removed wrap argument from OptionList (use
+      CSS text-wrap: nowrap; text-overflow: ellipses)
+    - Breaking change: Removed tooltip argument from OptionList.
+      Use tooltip attribute or with_tooltip(...) method.
+
+-------------------------------------------------------------------
 Sun Feb 16 15:26:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.0:
