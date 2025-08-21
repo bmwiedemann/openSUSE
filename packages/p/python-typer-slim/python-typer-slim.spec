@@ -1,6 +1,7 @@
 #
 # spec file for package python-typer-slim
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2021 Matthias Bach <marix@marix.org>
 #
@@ -19,7 +20,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-typer-slim
-Version:        0.16.0
+Version:        0.16.1
 Release:        0
 Summary:        Typer, build great CLIs. Easy to code. Based on Python type hints
 License:        MIT
@@ -28,8 +29,6 @@ Source:         https://files.pythonhosted.org/packages/source/t/typer_slim/type
 Source2:        %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE Include our own PYTHONPATH for scripted tests
 Patch0:         set-proper-pythonpath-for-tutorial-script-tests.patch
-# PATCH-FIX-OPENSUSE Handle excess whitespace in one testcase
-Patch1:         handle-excess-whitespace-not-exists.patch
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pdm-backend}

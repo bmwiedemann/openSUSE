@@ -163,4 +163,18 @@ I tested the upgrade path and this will not break anybody relying on the package
   * Handle excess whitespace in one testcase.</comment>
     <requestid>1298267</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fee2462648c1b814e4ec1f492a0a17f4</srcmd5>
+    <version>0.16.1</version>
+    <time>1755787991</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.16.1
+  * Avoid printing additional output with no_args_is_help=True and
+    Click 8.2.
+- Drop patch handle-excess-whitespace-not-exists.patch.
+  * This patch is no longer needed, as the issue it fixed has been
+    resolved upstream.
+</comment>
+    <requestid>1300455</requestid>
+  </revision>
 </revisionlist>

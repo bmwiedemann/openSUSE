@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 19 19:33:07 UTC 2025 - Matthias Bach <marix@marix.org> - 0.16.1
+
+- Update to 0.16.1
+  * Avoid printing additional output with no_args_is_help=True and
+    Click 8.2.
+- Drop patch handle-excess-whitespace-not-exists.patch.
+  * This patch is no longer needed, as the issue it fixed has been
+    resolved upstream.
+
+-------------------------------------------------------------------
 Fri Aug  8 05:32:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch handle-excess-whitespace-not-exists.patch:
