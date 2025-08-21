@@ -5840,4 +5840,12 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
     <comment>Chromium 139.0.7258.127 (boo#1247981)</comment>
     <requestid>1299177</requestid>
   </revision>
+  <revision rev="474" vrev="1">
+    <srcmd5>28c77e117397b410f481931ecd0b5b30</srcmd5>
+    <version>139.0.7258.138</version>
+    <time>1755788068</time>
+    <user>anag_factory</user>
+    <comment>chromium 139.0.7258.138 (boo#1248315)</comment>
+    <requestid>1300355</requestid>
+  </revision>
 </revisionlist>

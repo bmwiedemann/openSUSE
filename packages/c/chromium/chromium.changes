@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 19 21:07:41 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 139.0.7258.138 (boo#1248315):
+  * CVE-2025-9132: Out of bounds write in V8
+
+-------------------------------------------------------------------
 Wed Aug 13 04:21:07 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 139.0.7258.127 (boo#1247981):
