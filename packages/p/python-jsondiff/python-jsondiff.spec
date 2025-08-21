@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-jsondiff
 Version:        2.2.1
@@ -32,12 +36,17 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-PyYAML
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -56,6 +65,12 @@ Package to show differences between JSON and JSON-like structures in Python
 
 %check
 %pytest
+
+%post
+%python_install_alternative jdiff
+
+%postun
+%python_uninstall_alternative jdiff
 
 %pre
 %python_libalternatives_reset_alternative jdiff
