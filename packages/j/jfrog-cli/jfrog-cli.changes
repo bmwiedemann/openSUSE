@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 21 09:27:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.78.5:
+  * Bump version from 2.78.4 to 2.78.5 (#3062)
+  * Bump go version to 1.24.6 (#3061)
+  * Bump ver from 2.78.3 to 2.78.4 (#3060)
+  * fixed build search for build names with special chars (#3056)
+
+-------------------------------------------------------------------
 Mon Aug 18 12:35:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.78.3:
