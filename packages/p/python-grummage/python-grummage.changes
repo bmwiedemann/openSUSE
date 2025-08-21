@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 21 05:12:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.0:
+  * Minor keybind and visual changes by @aciddensity in #9
+  * Check For grype Binary in $PATH by @shaunsetlock in #8
+  * Make links clickable (fixes #2) by @popey in #11
+  * Update and package by @popey in #15
+
+-------------------------------------------------------------------
 Mon Dec  2 18:37:46 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package python-grummage: interactive terminal frontend to

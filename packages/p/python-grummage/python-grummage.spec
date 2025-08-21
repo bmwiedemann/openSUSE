@@ -1,7 +1,7 @@
 #
 # spec file for package python-grummage
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,20 +23,20 @@
 %endif
 
 Name:           python-grummage
-Version:        0.1.0
+Version:        1.0.0
 Release:        0
 Summary:        Interactive terminal frontend to Grype
 License:        MIT
 URL:            https://github.com/popey/grummage
 Source:         https://github.com/popey/grummage/archive/v%{version}.tar.gz#/grummage-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module textual >= 0.85.2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-Requires:       python-textual >= 0.85.2
+BuildRequires:  python-rpm-macros
 Requires:       grype
+Requires:       python-textual >= 0.85.2
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
