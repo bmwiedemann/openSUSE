@@ -381,4 +381,17 @@
 - switched service macros from %systemd_* to %service_* (forwarded request 1275837 from VaiTon)</comment>
     <requestid>1276281</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a72df8bb10d4d30f3a9e7ab982f26aa0</srcmd5>
+    <version>0.19.2</version>
+    <time>1755788228</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.2 (2025-08-13):
+  * Security bug fixes
+    - CVE-2025-54389: Escape control characters in report and log
+      output (bsc#1247884)
+    - CVE-2025-54409: Fix null pointer dereference after reading
+      incorrectly encoded xattr attributes from database (bsc#1247885) (forwarded request 1300312 from abergmann)</comment>
+    <requestid>1300543</requestid>
+  </revision>
 </revisionlist>

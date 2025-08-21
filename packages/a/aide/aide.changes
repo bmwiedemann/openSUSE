@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 19 14:16:44 UTC 2025 - Alexander Bergmann <abergmann@suse.com>
+
+- Update to 0.19.2 (2025-08-13):
+  * Security bug fixes
+    - CVE-2025-54389: Escape control characters in report and log
+      output (bsc#1247884)
+    - CVE-2025-54409: Fix null pointer dereference after reading
+      incorrectly encoded xattr attributes from database (bsc#1247885)
+
+-------------------------------------------------------------------
 Thu May  8 18:03:43 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to 0.19.0:
