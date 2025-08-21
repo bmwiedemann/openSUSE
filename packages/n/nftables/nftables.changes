@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 20 14:07:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add json.patch
+
+-------------------------------------------------------------------
+Wed Aug  6 15:50:11 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.4
+  * Add conntrack information to monitor trace command.
+  * Add a 'check' fib result to check for routes.
+  * Better error reporting with re-declarations set/map with
+    different types.
+  * Restore meta hour matching on ranges spanning date boundaries,
+    e.g. `... meta hour "21:00"-"02:00"`
+  * Display number of set elements in rule listings.
+  * Allow deleting maps via their handle.
+
+-------------------------------------------------------------------
 Tue Apr 22 11:48:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1.3

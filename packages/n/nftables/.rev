@@ -322,4 +322,13 @@
     <comment>- Update to release 1.1.3</comment>
     <requestid>1271883</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>b755f32c87db2086843b7b235cd95b5b</srcmd5>
+    <version>1.1.4</version>
+    <time>1755788060</time>
+    <user>anag_factory</user>
+    <comment>- Add json.patch
+- Update to release 1.1.4</comment>
+    <requestid>1300560</requestid>
+  </revision>
 </revisionlist>
