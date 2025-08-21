@@ -166,6 +166,7 @@ OCFS2 filesystem.
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+export CFLAGS="%{optflags} -std=gnu11"
 export PROJECT="ocfs2-tools"
 autoreconf -fi -I /usr/share/aclocal
 

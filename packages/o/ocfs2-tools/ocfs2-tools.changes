@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 20 19:00:02 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- ocfs2-tools: Fix build error for Tumbleweed after updating GCC to v15 (boo#1248421)
+  * update ocfs2-tools.spec, add "-std=gnu11" to CFLAGS
+
+-------------------------------------------------------------------
 Tue Jul 23 05:05:00 UTC 2024 - Glass Su <glass.su@suse.com>
 
 - change BuildRequires due to corosync devel package rename
