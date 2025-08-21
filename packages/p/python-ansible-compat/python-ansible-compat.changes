@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Aug 20 11:26:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.8.1:
+  * Bugfixes
+    - Restore ansible-lint<25.8.1 behaviour for ansible-lint<25.8.1
+      (#520) @cidrblock
+- update to 25.8.0:
+  * Enhancements
+    - Bump the dependencies group in /.config with 5 updates (#507)
+      @dependabot[bot]
+    - Bump markdown-exec from 1.10.3 to 1.11.0 in /.config in the
+      dependencies group (#506) @dependabot[bot]
+    - Bump the dependencies group across 1 directory with 3 updates
+      (#505) @dependabot[bot]
+  * Bugfixes
+    - Fix first-run collection discovery by gating plugin loader
+      initialization (#516) @cidrblock
+  * Maintenance
+    - chore: pre-commit autoupdate (#508) @pre-commit-ci[bot]
+    - Bump the dependencies group in /.config with 4 updates (#503)
+      @dependabot[bot]
+    - Avoid ack failure due to dependabot labels (#502) @ssbarnea
+
+-------------------------------------------------------------------
 Thu Jun 19 12:57:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - use python3 also for Leap 16.0
