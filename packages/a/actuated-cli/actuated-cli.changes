@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 21 05:01:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.11:
+  * Show URLs in standard view all the time
+  * Show HTTP body when there is an error
+
+-------------------------------------------------------------------
 Tue Nov 12 08:27:30 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.10:

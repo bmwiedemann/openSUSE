@@ -1,7 +1,7 @@
 #
 # spec file for package actuated-cli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           actuated-cli
-Version:        0.2.10
+Version:        0.2.11
 Release:        0
 Summary:        CLI for actuated
 License:        MIT
