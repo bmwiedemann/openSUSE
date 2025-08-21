@@ -1,7 +1,7 @@
 #
 # spec file for package transactional-update
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2021 Neal Gompa
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           transactional-update
-Version:        5.0.7
+Version:        5.1.0
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -34,7 +34,6 @@ Group:          System/Base
 URL:            https://github.com/openSUSE/transactional-update
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        transactional-update.check
-Patch0:         journalmount.patch
 
 BuildRequires:  acl
 BuildRequires:  attr

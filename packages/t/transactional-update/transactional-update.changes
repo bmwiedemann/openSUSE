@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Aug 18 14:01:09 UTC 2025 - Ignaz Forster <iforster@suse.com>
+
+- Version 5.1.0
+  - tukit: signalize errors from plugins; transactions will be
+    aborted by default now
+  - t-u: Added `--keep` option; please only use this for debugging
+    or recovery when a tukit plugin is failing
+  - setup-fips: could be called multiple times now
+  - setup-fips: call update-crypto-policies in the correct context
+    [boo#1246013]
+  - reboot: Print both requested and actual reboot method for
+    [poo#163352]
+  - snapper plugin: Don't touch fstab's timestamp on every run
+  - t-u: Chaining commands will also work on BLS systems now; this
+    is also necessary for some regular commands (such as setup-fips
+    or setup-selinux)
+  - tukit: Only mount journal dir if available
+  - tukit: Return full, non-truncated error number when calling
+    external applications
+  - tests: Adopt tests to obs environment to avoid root perms
+  - t-u: Simplified various calls when changing files in /etc (made
+    possible by the new btrfs subvolume based layout), tukit is
+    called less often now
+  - t-u: optimized check for BLS systems
+- Removed journalmount.patch (part of regular release now)
+
+-------------------------------------------------------------------
 Wed Jul 23 10:54:17 UTC 2025 - Ignaz Forster <iforster@suse.com>
 
 - Add journalmount.patch to bind mount systemd journal only when
