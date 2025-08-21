@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 21 12:44:20 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch (bsc#1248264)
+  * s390-tools-sles16sp0-chpstat-Fix-scaling-of-DPU-utilization-calculation.patch 
+- Re-vendor-ed vendor.tar.zst
+
+-------------------------------------------------------------------
 Mon Aug 11 06:47:00 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file (bsc#1246792) 
