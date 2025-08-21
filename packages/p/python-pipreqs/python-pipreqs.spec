@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-pipreqs
 Version:        0.4.13
@@ -29,13 +33,18 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-docopt
 Requires:       python-yarg
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module docopt}
 BuildRequires:  %{python_module yarg}
@@ -60,6 +69,12 @@ chmod a-x pipreqs/pipreqs.py
 %check
 # Ignore tests that require network access
 %pytest -k 'not (test_get_imports_info or test_ignored_directory or test_init or test_init_overwrite or teset_init_savepath or test_omit_version or test_clean or test_dynamic_version)'
+
+%post
+%python_install_alternative pipreqs
+
+%postun
+%python_uninstall_alternative pipreqs
 
 %pre
 %python_libalternatives_reset_alternative pipreqs
