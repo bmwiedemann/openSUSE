@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 20 06:06:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.10.2:
+  Full list of changes:
+  https://github.com/grafana/alloy/blob/v1.10.2/CHANGELOG.md#v1102
+  * Bugfixes
+    - Fix issue in prometheus.write.queue causing inability to
+      increase shard count if existing WAL data was present on
+      start. (@kgeckhart)
+    - Fix issue with loki.source.gcplog when push messages sent by gcp
+      pub/sub only includes messageId. (@kalleep)
+
+-------------------------------------------------------------------
 Thu Aug  7 12:04:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.10.1:
