@@ -50,8 +50,7 @@ URL:            https://github.com/ComplianceAsCode/content
 %if "%{_vendor}" == "debbuild"
 Packager:       SUSE Security Team <security@suse.de>
 %endif
-Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
-Patch0:         ssg-remove-cis.patch
+Source:         v%{version}.tar.gz
 
 # explicit require what is needed by the detection logic in the scripts
 Requires:       coreutils
@@ -218,7 +217,13 @@ Note that the included profiles are community supplied and not officially suppor
 
 %prep
 %setup -q -n content-%version
-%patch -P 0
+
+# Fail if any cis*.profile exists in the tarball under products/
+if find products -type f -name 'cis*.profile' | grep -q .; then
+    echo "ERROR: CIS profiles found in the tarball under products/:"
+    find products -type f -name 'cis*.profile'
+    exit 1
+fi
 
 %build
 cd build

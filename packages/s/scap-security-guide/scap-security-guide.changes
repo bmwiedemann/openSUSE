@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 21 08:24:36 UTC 2025 - Boychev <svetlin.boychev@suse.com>
+
+- Remove the cis profiles from the tarball 
+
+-------------------------------------------------------------------
+Thu Aug 21 07:26:39 UTC 2025 - Boychev <svetlin.boychev@suse.com>
+
+- Remove ssg-remove-cis.patch: tarball
+- Add check if cis profiles exists in the tarball
+
+-------------------------------------------------------------------
 Wed Jul 30 07:41:26 UTC 2025 - Boychev <svetlin.boychev@suse.com>
 
 - ssg-remove-cis.patch: remove cis profiles 

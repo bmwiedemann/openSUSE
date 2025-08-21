@@ -532,4 +532,15 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
 - Update description: remove cis profiles</comment>
     <requestid>1296600</requestid>
   </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>0ec728382fb47769001dd795b8819d13</srcmd5>
+    <version>0.1.77</version>
+    <time>1755801157</time>
+    <user>anag_factory</user>
+    <comment>- Remove the cis profiles from the tarball 
+
+- Remove ssg-remove-cis.patch: tarball
+- Add check if cis profiles exists in the tarball</comment>
+    <requestid>1300811</requestid>
+  </revision>
 </revisionlist>
