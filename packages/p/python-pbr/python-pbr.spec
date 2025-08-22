@@ -24,7 +24,11 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-pbr%{psuffix}
 Version:        6.1.1
@@ -36,14 +40,19 @@ Source:         https://files.pythonhosted.org/packages/source/p/pbr/pbr-%{versi
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-setuptools >= 64.0.0
 Recommends:     git-core
 Obsoletes:      python-pbr-doc
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if %{with test}
 # Package originates from OpenStack and depends on other OpenStack packages for testing.
 # These are only available for the primary python3 interpreter in TW, but optional.
@@ -102,6 +111,12 @@ exclude+="test_handling_of_whitespace_in_data_files"
 %python_clone -a %{buildroot}%{_bindir}/pbr
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative pbr
+
+%postun
+%python_uninstall_alternative pbr
 
 %pre
 %python_libalternatives_reset_alternative pbr
