@@ -101,4 +101,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: update Venus firmware file for v6.0</comment>
     <requestid>1297876</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ee99907394a958ce5f461f02d331dbcb</srcmd5>
+    <version>20250820</version>
+    <time>1755877652</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250820 (git commit 70dda28e5098):
+  * qcom: Add firmware binary for SM8650.</comment>
+    <requestid>1300896</requestid>
+  </revision>
 </revisionlist>
