@@ -939,4 +939,41 @@
 </comment>
     <requestid>1286106</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>c737872de56b2de91689ee02996c6bb3</srcmd5>
+    <version>1.4.41</version>
+    <time>1755877782</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.41:
+  * [REM-3321] Update keyboard mapping !2646 (merged) @myheroyuki
+  * [REM-3276] Fix segfault that could happen when attempting to save a connection profile !2649 (merged) @myheroyuki
+  * [REM-3342] Add ifdef to allow compilation without libssh !2650 (merged) @myheroyuki
+  * [REM-3343] Add environment variable to prevent openssl config issue !2651 (merged) @myheroyuki
+  * [REM-3346] Update snap to latest FreeRDP version !2652 (merged) @myheroyuki
+  * [REM-3344] Toggle sending null or empty password when field is left blank !2653 (merged) @myheroyuki
+  * [REM-3363] Add checks to allow FreeRDP2 compatibility !2654 (merged) @myheroyuki
+  * Fix KeyStroke function for SPICE plugin !2655 (merged) @BobbyTheBuilder
+  * [REM-3364] Raise max length of username field to 300 from 100 !2656 (merged) @myheroyuki
+  * [REM-3186] Allow use of ssh command line arguments to create ssh connections !2657 (merged) @myheroyuki
+  * Fix use of default_value in remmina_file_get_int !2660 (merged) @rafarsa6363
+  * Implement VNC connection timeout !2659 (merged) @rafarsa6363
+  * Fix warnings !2658 (merged) @RipleyTom
+  * [REM-3123] Prevent crash when pasting an image using RDP if gdk_pixbuf_save_to_buffer fails !2661 (merged) @myheroyuki
+  * [REM-3386] Properly save and load color themes !2662 (merged) @myheroyuki
+  * [REM-3388] Fix Flatpak crash when moving floating tool bar !2663 (merged) @myheroyuki
+  * [REM-3389] Save unlock password when set outside of the preferences menu !2664 (merged) @myheroyuki
+  * [REM-3382] Update CMAKE_PREFIX_PATH in snapcraft.yaml !2665 (merged) @myheroyuki
+  * [REM-3390] Properly implement keyboard interactive ssh authentication !2666 (merged) @myheroyuki
+  * [REM-3396] Made hiding connection profile name on floating toolbar optional !2667 (merged) @myheroyuki
+  * [REM-3402] Add a local terminal plugin !2670 (merged) @myheroyuki
+  * [REM-3398] Allow Flatpak build to run commands !2669 (merged) @myheroyuki
+  * [REM-3413] Allow users to connect to multiple connections or groups of connects at once !2671 (merged) @myheroyuki
+  * Create autostart directory if it does not exist. !2672 (merged) @rafarsa6363
+  * Fix autostart directory create for flatpak. !2673 (merged) *@rafarsa6363
+  * Python Wrapper plugin: Fix typo + add comment for edge-case hinting that the plugin needs to be installed !2674 (merged) @dzatoah
+  * Several small fixes and improving group connections !2675 (merged) @myheroyuki
+- Drop upstreamed patch drop-unused-func.patch
+</comment>
+    <requestid>1300987</requestid>
+  </revision>
 </revisionlist>

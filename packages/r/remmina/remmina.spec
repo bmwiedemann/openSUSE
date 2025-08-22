@@ -1,7 +1,7 @@
 #
 # spec file for package remmina
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,15 +22,13 @@
 %bcond_with     remmina_kwallet
 %endif
 Name:           remmina
-Version:        1.4.40
+Version:        1.4.41
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://www.remmina.org/
 Source0:        https://gitlab.com/Remmina/Remmina/-/archive/v%{version}/Remmina-v%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM
-Patch0:         drop-unused-func.patch
 BuildRequires:  cmake
 BuildRequires:  cups-devel
 BuildRequires:  curl-devel
