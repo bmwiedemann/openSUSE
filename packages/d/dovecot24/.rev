@@ -152,4 +152,13 @@ bugowner: varkoly</comment>
     <comment></comment>
     <requestid>1300055</requestid>
   </revision>
+  <revision rev="12" vrev="8">
+    <srcmd5>4793afabc03d5df98edc0701261f575c</srcmd5>
+    <version>2.4.1</version>
+    <time>1755877767</time>
+    <user>anag_factory</user>
+    <comment>- Allow for %is_opensuse to be unset, following up to
+  https://src.suse.de/products/SLFO/pulls/204 (bsc#1248485). (forwarded request 1300941 from gleidi)</comment>
+    <requestid>1300953</requestid>
+  </revision>
 </revisionlist>

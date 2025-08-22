@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 22 08:30:47 UTC 2025 - Giacomo Leidi <giacomo.leidi@suse.com>
+
+ - Allow for %is_opensuse to be unset, following up to
+  https://src.suse.de/products/SLFO/pulls/204 (bsc#1248485).
+
+-------------------------------------------------------------------
 Thu Aug 14 06:45:21 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Enable build for all arches again. The build failure on 32bit has

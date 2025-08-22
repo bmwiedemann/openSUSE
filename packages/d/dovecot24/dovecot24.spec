@@ -34,7 +34,7 @@
 %bcond_without zstd
 %bcond_without xapian
 %bcond_without libstemmer
-%if %{is_opensuse}
+%if 0%{?is_opensuse}
 %bcond_without apparmor
 %bcond_without textcat
 %else
