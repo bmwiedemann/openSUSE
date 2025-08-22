@@ -11,5 +11,4 @@ Business::ISBN uses this &quot;data pack&quot; to do its work. You can update
 Business::ISBN::Data independently of the main module as the various
 ISBN organizations assign new publisher codes. The ISBN agency lists
 these data at http://www.isbn-international.org/converter/ranges.htm .</description>
-  <devel project="devel:languages:perl" package="perl-Business-ISBN-Data"/>
 </package>

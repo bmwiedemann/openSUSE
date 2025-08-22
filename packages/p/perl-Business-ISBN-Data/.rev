@@ -521,4 +521,23 @@
   	* data update for 2025-06-20</comment>
     <requestid>1291926</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>cdffde3fde40943cc5f10151e922a58c</srcmd5>
+    <version>20250815.1.0</version>
+    <time>1755877628</time>
+    <user>anag_factory</user>
+    <comment>- updated to 20250815.1.0 (20250815.001)
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+  20250815.001 2025-08-15T11:40:37Z
+  	* data update for 2025-08-14
+  20250813.001 2025-08-14T14:23:19Z
+  	* data update for 2025-08-13
+  20250801.001 2025-08-01T04:15:31Z
+  	* data update for 2025-08-01
+  20250723.001 2025-07-23T22:56:02Z
+  	* data update for 2025-07-22
+  20250722.001 2025-07-22T04:36:37Z
+  	* data update for 2025-07-22</comment>
+    <requestid>1300792</requestid>
+  </revision>
 </revisionlist>
