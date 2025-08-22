@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 22 05:05:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.47.2:
+  * Bug Fixes
+    - deploy: release namespace deletes after stopping being part
+      of a release (9374700)
+- Update to version 2.47.1:
+  * Bug Fixes
+    -  fix(deploy): error `"werf.io/show-logs-only-for-containers",
+      expected integer value`
+
+-------------------------------------------------------------------
 Wed Aug 20 11:17:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.47.0:
