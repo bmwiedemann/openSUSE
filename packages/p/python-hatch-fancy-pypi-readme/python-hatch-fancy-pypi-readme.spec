@@ -24,7 +24,11 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-hatch-fancy-pypi-readme%{psuffix}
 Version:        25.1.0
@@ -36,14 +40,19 @@ Source:         https://files.pythonhosted.org/packages/source/h/hatch_fancy_pyp
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Provides:       python-hatch_fancy_pypi_readme = %{version}-%{release}
 BuildArch:      noarch
 %{?python_enable_dependency_generator}
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if %{with test}
 # SECTION test
 BuildRequires:  %{python_module hatch-fancy-pypi-readme >= %version}
@@ -85,6 +94,12 @@ release? You've come to the right place!
 #test_end_to_end want's to have a hatchling wheel
 %pytest --ignore tests/test_end_to_end.py
 %endif
+
+%post
+%python_install_alternative hatch-fancy-pypi-readme
+
+%postun
+%python_uninstall_alternative hatch-fancy-pypi-readme
 
 %pre
 %python_libalternatives_reset_alternative hatch-fancy-pypi-readme
