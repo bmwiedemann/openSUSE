@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 22 04:48:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.119:
+  * paginate repo list, bug fix for issue #1941 by @jamesboi951 in
+    #2093
+  * remove cli-cache-step by @motatoes in #2097
+  * document caching strategies in digger by @motatoes in #2098
+  * Digger UI bug fix by @jamesboi951 in #2103
+  * remove forced lower case by @breardon2011 in #2104
+  * report no projects impacted when REPORT_BEFORE_LOADING_CONFIG
+    is set by @motatoes in #2099
+  * traverse nested directories by @breardon2011 in #2105
+
+-------------------------------------------------------------------
 Wed Aug 20 07:39:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.118:
