@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Aug 22 04:47:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.42.0:
+  * New version v0.42.0
+  * Handle nil steps and add error message
+  * fix panic when trying to read pod logs when pod is already
+    deleted
+  * Bump the go-k8s-dependencies group with 3 updates
+  * Bump github/codeql-action from 3.29.7 to 3.29.10
+  * Bump actions/checkout from 4.2.2 to 5.0.0
+  * Bump golang.org/x/term from 0.32.0 to 0.34.0
+  * Bump tektoncd/pipeline, tektoncd/triggers and tektoncd/hub
+  * Bump github.com/spf13/pflag from 1.0.6 to 1.0.7
+  * Bump the go-k8s-dependencies group with 3 updates
+  * Bump github.com/ktr0731/go-fuzzyfinder from 0.8.0 to 0.9.0
+  * Bump github.com/sigstore/cosign/v2 from 2.5.0 to 2.5.3
+  * Deprecate the chain command
+  * Bump step-security/harden-runner from 2.11.0 to 2.13.0
+  * Bump actions/setup-go from 5.3.0 to 5.5.0
+  * Bump github/codeql-action from 3.28.11 to 3.29.5
+  * Bump ko-build/setup-ko from 0.8 to 0.9
+  * Bump github.com/tektoncd/pipeline from 1.0.0 to 1.2.0
+  * Bump github.com/docker/cli
+  * Bump github.com/docker/docker
+  * Fix golang CI lint failures
+  * cleanup: update golangci-lint to v2
+  * .github/workflows: use plumbing workflow definitions.
+  * .github/workflows: add a ci workflow…
+  * .github/workflows: add slack and retest workflows
+  * .github/workflows: update codeql job
+  * Bump github.com/sigstore/sigstore from 1.9.4 to 1.9.5
+  * Bump github.com/go-viper/mapstructure/v2 from 2.2.1 to 2.3.0
+  * Bump github.com/go-chi/chi/v5 from 5.2.1 to 5.2.2
+  * Bump github.com/go-viper/mapstructure/v2 from 2.2.1 to 2.3.0 in
+    /tools
+  * Fix deadlock issue when following logs
+  * Bump github.com/cloudflare/circl from 1.3.7 to 1.6.1
+  * fix: update Pending color of PipelineRunPending
+  * Bump the go-docker-dependencies group with 2 updates
+  * Adjust pipeline logs test to align with updated output format
+  * Add unit test scripts
+  * updated the docs
+  * Add flag to prefix log lines with log source (task and step
+    name) by default
+  * Update CLI docs for tkn v0.41.0
+  * Bump the go-docker-dependencies group with 2 updates
+
+-------------------------------------------------------------------
 Tue Jul 15 06:09:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.41.1:
