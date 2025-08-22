@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonschema
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonschema%{psuffix}
-Version:        4.25.0
+Version:        4.25.1
 Release:        0
 Summary:        An implementation of JSON-Schema validation for Python
 License:        MIT

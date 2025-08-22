@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 21 04:53:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.25.1:
+  * Fix Validator protocol init to match runtime by @sirosen in
+    #1396
+
+-------------------------------------------------------------------
 Thu Jul 24 11:39:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 4.25.0:
