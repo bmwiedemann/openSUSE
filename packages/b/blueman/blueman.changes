@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 11 14:37:47 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Fix build on Leap 16.0 that has no nemo-extensions package
+  (bsc#1247915)
+
+-------------------------------------------------------------------
 Thu Jul 18 08:35:39 UTC 2024 - Jan Kužílek <jan.kuzilek@suse.com>
 
 - Update to version 2.4.2:

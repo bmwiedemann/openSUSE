@@ -1,7 +1,7 @@
 #
 # spec file for package blueman
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,13 @@
 %if 0%{?is_opensuse}
 %bcond_without caja
 %bcond_without nautilus
-%bcond_without nemo
 %else
 %bcond_with caja
 %bcond_with nautilus
+%endif
+%if 0%{?is_opensuse} && 0%{?suse_version} > 1600
+%bcond_without nemo
+%else
 %bcond_with nemo
 %endif
 Name:           blueman
