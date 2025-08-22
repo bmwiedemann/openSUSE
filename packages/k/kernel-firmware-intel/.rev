@@ -99,4 +99,13 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases for 6.16</comment>
     <requestid>1297875</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>62e8b0bc8ffcc89154b1c45bd74a48e2</srcmd5>
+    <version>20250821</version>
+    <time>1755877649</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250821 (git commit c88f7d064603):
+  * intel/ish: Add firmware for LENOVO THINKPAD X1 2-in-1 Gen 10</comment>
+    <requestid>1300894</requestid>
+  </revision>
 </revisionlist>
