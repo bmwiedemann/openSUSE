@@ -24,7 +24,11 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-keyring%{psuffix}
 Version:        25.2.1
@@ -38,16 +42,21 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-SecretStorage >= 3.2
 Requires:       python-jaraco.classes
 Requires:       python-jaraco.context
 Requires:       python-jaraco.functools
 Requires:       python-jeepney >= 0.4.2
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if 0%{python_version_nodots} < 310
 Requires:       python-importlib-resources
 %endif
@@ -88,6 +97,12 @@ sed -i '/^#!/d' keyring/cli.py
 %endif
 
 %if !%{with test}
+%post
+%python_install_alternative keyring
+
+%postun
+%python_uninstall_alternative keyring
+
 %pre
 %python_libalternatives_reset_alternative keyring
 
