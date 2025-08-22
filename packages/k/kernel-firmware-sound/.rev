@@ -216,4 +216,17 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases for 6.16</comment>
     <requestid>1297881</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>90e1aab2bc6e105ebafd5e4406c713f3</srcmd5>
+    <version>20250821</version>
+    <time>1755877654</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250821 (git commit c88f7d064603):
+  * cirrus: cs35l41: Move entries to correct driver section in WHENCE
+  * cirrus: cs35l56: Update firmware for Cirrus Amps for some Lenovo laptops
+
+- Update to version 20250820 (git commit 70dda28e5098):
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for some Lenovo laptops</comment>
+    <requestid>1300899</requestid>
+  </revision>
 </revisionlist>
