@@ -194,4 +194,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Update xbl_config firmware file.</comment>
     <requestid>1298509</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5c2422e67dd97f02669b554b97ece901</srcmd5>
+    <version>20250820</version>
+    <time>1755877652</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250820 (git commit 70dda28e5098):
+  * qcom: add CDSP firmware for x1e80100 platform</comment>
+    <requestid>1300897</requestid>
+  </revision>
 </revisionlist>
