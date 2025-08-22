@@ -1,6 +1,7 @@
 #
 # spec file for package keylime
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,6 +24,11 @@
 %else
   %define _distconfdir   %{_sysconfdir}
   %define _config_norepl %config(noreplace)
+%endif
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
 %endif
 %{?sle15_python_module_pythons}
 Name:           keylime
@@ -67,10 +73,15 @@ Requires:       python3-typing_extensions
 Requires:       tpm2-0-tss
 Requires:       tpm2.0-abrmd
 Requires:       tpm2.0-tools
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Conflicts:      rust-keylime
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -196,6 +207,19 @@ cp -r ./tpm_cert_store %{buildroot}%{_sharedstatedir}/%{srcname}/
 
 # %%check
 # %%pyunittest -v
+
+%pre
+%python_libalternatives_reset_alternative %{srcname}_attest
+%python_libalternatives_reset_alternative %{srcname}_ca
+%python_libalternatives_reset_alternative %{srcname}_convert_runtime_policy
+%python_libalternatives_reset_alternative %{srcname}_create_policy
+%python_libalternatives_reset_alternative %{srcname}-policy
+%python_libalternatives_reset_alternative %{srcname}_registrar
+%python_libalternatives_reset_alternative %{srcname}_sign_runtime_policy
+%python_libalternatives_reset_alternative %{srcname}_tenant
+%python_libalternatives_reset_alternative %{srcname}_upgrade_config
+%python_libalternatives_reset_alternative %{srcname}_userdata_encrypt
+%python_libalternatives_reset_alternative %{srcname}_verifier
 
 %post
 %python_install_alternative %{srcname}_attest
