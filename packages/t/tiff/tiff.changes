@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 21 10:31:39 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- security update:
+  * CVE-2025-8534 [bsc#1247582]
+    Fix null pointer dereference in function PS_Lvl2page
+    + tiff-CVE-2025-8534.patch
+  * CVE-2025-9165 [bsc#1248330]
+    Fix local execution manipulation can lead to memory leak
+    + tiff-CVE-2025-9165.patch
+  * CVE-2024-13978 [bsc#1247581]
+    Fix null pointer dereference in tiff2pdf
+    + tiff-CVE-2024-13978.patch
+
+-------------------------------------------------------------------
 Mon Aug  4 13:39:29 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1243503:

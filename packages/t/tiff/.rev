@@ -1053,4 +1053,21 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     + tiff-CVE-2025-8177.patch</comment>
     <requestid>1297516</requestid>
   </revision>
+  <revision rev="104" vrev="8">
+    <srcmd5>8d716f4b8e94f5b45d84f76e36e8b814</srcmd5>
+    <version>4.7.0</version>
+    <time>1755877626</time>
+    <user>anag_factory</user>
+    <comment>- security update:
+  * CVE-2025-8534 [bsc#1247582]
+    Fix null pointer dereference in function PS_Lvl2page
+    + tiff-CVE-2025-8534.patch
+  * CVE-2025-9165 [bsc#1248330]
+    Fix local execution manipulation can lead to memory leak
+    + tiff-CVE-2025-9165.patch
+  * CVE-2024-13978 [bsc#1247581]
+    Fix null pointer dereference in tiff2pdf
+    + tiff-CVE-2024-13978.patch</comment>
+    <requestid>1300783</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package tiff
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,9 @@ Patch1:         tiff-4.7.0-test_directory.patch
 Patch2:         tiff-CVE-2025-8176.patch
 Patch3:         tiff-CVE-2025-8177.patch
 Patch4:         tiff-4.7.0-bsc1243503.patch
+Patch5:         tiff-CVE-2025-8534.patch
+Patch6:         tiff-CVE-2025-9165.patch
+Patch7:         tiff-CVE-2024-13978.patch
 %if %{with tiff_manpages}
 BuildRequires:  python3-Sphinx
 %endif
