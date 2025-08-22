@@ -3900,7 +3900,6 @@ unsorted:
   - fastjet-plugin-siscone-devel 
   - fastlzlib 
   - fastlzlib-devel 
-  - fasttext 
   - fasttext-devel 
   - fatcat 
   - fatrace 
@@ -8846,7 +8845,6 @@ unsorted:
   - infos-creator-rpm 
   - ini4j 
   - ini4j-javadoc 
-  - initviocons 
   - inkscape-extensions-fig 
   - inkscape-extensions-scribus 
   - inn-devel 
@@ -48549,9 +48547,7 @@ unsorted:
   - velero-bash-completion 
   - velero-fish-completion 
   - velero-plugin-for-aws 
-  - velero-plugin-for-csi 
   - velero-plugin-for-gcp 
-  - velero-plugin-for-microsoft-azure 
   - velero-zsh-completion 
   - velociraptor 
   - velociraptor-client 
