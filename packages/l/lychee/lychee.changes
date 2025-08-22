@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri Aug 22 08:46:09 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.20.0:
+  * chore: release v0.20.0 (#1808)
+  * Bump dependencies (#1811)
+  * Skip binary and invalid UTF-8 inputs (#1810)
+  * Bump actions/checkout from 4 to 5 in the dependencies group (#1804)
+  * feat: make wikilink extraction and checking opt-in (#1803)
+  * Refactor input dumping and path retrieval with extension filtering (#1648)
+  * Replace URL to fix GitHub CI (#1800)
+  * Use a HashSet to store inputs and avoid duplicates (#1781)
+  * add `--index-files` flag, and turn off index file checking by default (#1777)
+  * snap: enable proper permissions (#1796)
+  * Cleanup input example (#1792)
+  * FIx missing identifier in snap build action; add snap install to readme (#1793)
+  * Fall back to `Cargo.toml` version for non-releases (if no git tags available)
+  * Remove unnecessary condition for release builds on snap workflow
+  * Add snap config and GitHub Action (#1786)
+  * Fix clippy lints; refactor code slightly
+  * tests: refactor `test_fragments` to clarify expected successes/fails (#1776)
+  * Fix possible outputs of 'arch' command in Alpine Linux-based Dockerfile (#1778)
+  * fix comment for `ErrorKind::InvalidFragment` (#1775)
+  * Fix test
+  * Revert to previous behaviour: linking to directories results in Status::Ok(StatusCode::OK)
+  * Remove JSON output files even on test failures
+  * Add regression test
+  * Add support for 64-bit ARM binary (#1774)
+  * Improve test
+  * Make excluded_paths part of Collector instead of Input
+  * Minor improvements
+  * Make regex field in RegexFilter private
+  * Add examples
+  * Apply clippy suggestions
+  * Test regex functionality in --exclude-path flag
+  * Update flag description & clean up
+  * Replace Vec<PathBuf> with dedicated PathExcludes type
+  * Unwrap option type
+  * fix: do not check the fragment when http response err but accepted (#1763)
+  * docs: add `fallback_extensions` to example config file (#1764)
+  * feat: skip fragment checking for unsupported MIME types (#1744)
+  * Replace unmaintained human-sort with numeric-sort (#1759)
+  * feat: add 'user-content-' prefix to support github markdown fragment (#1750)
+  * fix: treat a fragment in an empty directory as an error (#1756)
+  * fix: resolve index file inside a directory (#1752)
+  * Fix basic auth (#1748)
+  * Update 'Users' section in the README
+  * Add ProseKit to users
+  * Migrate to Clippy 1.88 (#1749)
+  * test: fix assertion in fragment checks
+  * Replace unreliable API URL
+  * docs: improve lychee.example.toml (lycheeverse#1699) (#1741)
+  * display unsupported URLs (#1727)
+  * fix: skip fragment check if website URL doesn't contain fragment (#1733)
+  * Add xml schema found in xsd files to list of exclusions (#1735)
+  * Fix docker tagging for release versions (#1738)
+
+-------------------------------------------------------------------
 Tue Jun 17 09:19:38 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 0.19.1:
