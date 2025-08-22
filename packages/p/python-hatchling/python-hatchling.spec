@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-hatchling
 Version:        1.27.0
@@ -32,16 +36,21 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pluggy >= 1.0.0}
 BuildRequires:  %{python_module tomli >= 1.2.2 if %python-base < 3.11}
 BuildRequires:  %{python_module trove-classifiers}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-packaging >= 21.3
 Requires:       python-pathspec >= 0.10.1
 Requires:       python-pluggy >= 1.0.0
 Requires:       python-trove-classifiers
 Requires:       (python-tomli >= 1.2.2 if python-base < 3.11)
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -62,6 +71,12 @@ This is the extensible, standards compliant build backend used by Hatch.
 # The tests provided in the tarball relies on internet access to run
 # (git clone, pip install ...), so they cannot work on obs
 # see tests/downstream/integrate.py for details
+
+%post
+%python_install_alternative hatchling
+
+%postun
+%python_uninstall_alternative hatchling
 
 %pre
 %python_libalternatives_reset_alternative hatchling
