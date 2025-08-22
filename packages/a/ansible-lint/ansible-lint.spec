@@ -1,7 +1,7 @@
 #
 # spec file for package ansible-lint
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright 2018 by Lars Vogdt
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,7 +40,7 @@
 %global lib_name ansiblelint
 %{?python_enable_dependency_generator}
 Name:           ansible-lint
-Version:        25.8.1
+Version:        25.8.2
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
