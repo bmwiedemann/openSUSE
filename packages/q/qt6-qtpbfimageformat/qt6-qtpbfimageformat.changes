@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 22 08:43:06 CEST 2025 - tumic@cbox.cz
+
+- Update to version 4.6
+  * Fixed bottom text-anchor rendering.
+  * Fixed searching non-string sets in filters.
+
+-------------------------------------------------------------------
 Mon Aug  4 07:44:01 CEST 2025 - tumic@cbox.cz
 
 - Update to version 4.5
