@@ -278,4 +278,12 @@
 - switched back to tarball from git checkout via source service</comment>
     <requestid>1063499</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>e6eae07ff03fa019ff1c5de04aa7c3cb</srcmd5>
+    <version>13.4.0</version>
+    <time>1755877606</time>
+    <user>anag_factory</user>
+    <comment>- removed buidrequires to xatracker</comment>
+    <requestid>1298588</requestid>
+  </revision>
 </revisionlist>

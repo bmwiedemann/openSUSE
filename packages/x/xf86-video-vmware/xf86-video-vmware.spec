@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-vmware
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig(pciaccess) >= 0.8.0
 BuildRequires:  pkgconfig(randrproto)
 BuildRequires:  pkgconfig(renderproto)
 BuildRequires:  pkgconfig(videoproto)
-BuildRequires:  pkgconfig(xatracker) >= 0.4.0
 BuildRequires:  pkgconfig(xextproto)
 BuildRequires:  pkgconfig(xineramaproto)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
