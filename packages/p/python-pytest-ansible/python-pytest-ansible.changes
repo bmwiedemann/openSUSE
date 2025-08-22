@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 22 05:57:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.8.0:
+  * Maintenance
+    - Bump actions/checkout from 4 to 5 (#491) @dependabot[bot]
+    - chore: pre-commit autoupdate (#488) @pre-commit-ci[bot]
+    - Bump the dependencies group across 1 directory with 26
+      updates (#492) @dependabot[bot]
+    - Bump the dependencies group in /.config with 8 updates (#486)
+      @dependabot[bot]
+    - Bump the dependencies group in /.config with 2 updates (#484)
+      @dependabot[bot]
+    - chore: pre-commit autoupdate (#482) @pre-commit-ci[bot]
+
+-------------------------------------------------------------------
 Tue Jul 08 04:59:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.6.3:
