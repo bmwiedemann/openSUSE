@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %if 0%{?suse_version} >= 1600
 # EGL preferred, as required for wayland
 %bcond_without use_egl
