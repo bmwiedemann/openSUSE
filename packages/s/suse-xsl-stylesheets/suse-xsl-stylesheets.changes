@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Aug 14 13:04:33 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.17
+
+- Update to 2.95.17
+  Re-created from 2.95.16, no changes
+
+-------------------------------------------------------------------
+Thu Aug 14 12:55:01 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.16
+
+- Update to 2.95.16
+  - Add Dublin Core metadata for dates in #726
+  - Hide languuage switcher #728
+
+-------------------------------------------------------------------
+Tue Aug 12 09:33:43 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.15
+
+- Update to 2.95.15
+  Parametrize URLs of SUSE header in #724
+
+-------------------------------------------------------------------
+Tue Aug 12 06:36:21 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.14
+
+- Update to 2.95.14
+  - JSON-LD: Select the nearest revision date in #718
+  - Fix #721: Integrate SUSE header in #722 
+
+-------------------------------------------------------------------
 Wed Jun 25 06:00:00 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.13
 
 - Update to 2.95.13

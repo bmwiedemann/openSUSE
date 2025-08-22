@@ -790,4 +790,12 @@ Replaces sr#890404</comment>
 /usr/lib/obs/service/source_validators/helpers/fix_changelog</comment>
     <requestid>1288448</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>0397af8474839c846d3f017793abaa40</srcmd5>
+    <version>2.95.17</version>
+    <time>1755877631</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1300804</requestid>
+  </revision>
 </revisionlist>
