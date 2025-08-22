@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-activerecord-8.0
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-activerecord-8.0
-Version:        8.0.1
+Version:        8.0.2.1
 Release:        0
 %define mod_name activerecord
 %define mod_full_name %{mod_name}-%{version}
@@ -36,7 +36,6 @@ BuildRequires:  ruby-macros >= 5
 URL:            https://rubyonrails.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
-Patch0:         CVE-2025-55193.patch
 Summary:        Object-relational mapper framework (part of Rails)
 License:        MIT
 
@@ -46,10 +45,6 @@ to Ruby classes. Strong conventions for associations, validations,
 aggregations, migrations, and testing come baked-in.
 
 %prep
-%gem_unpack
-%patch -P 0 -p1
-find -type f -print0 | xargs -0 touch -r %{S:0}
-%gem_build
 
 %build
 

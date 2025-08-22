@@ -1,8 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 21 10:20:54 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Drop CVE-2025-55193.patch:
+  it is already handled in the version update
+
+-------------------------------------------------------------------
 Tue Aug 19 12:04:21 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Add CVE-2025-55193.patch (bsc#1248106)
   IDs passed to `find` or similar methods may be logged without escaping 
+
+-------------------------------------------------------------------
+Thu Aug 14 00:25:11 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 8.0.2.1:
+  https://rubyonrails.org/2025/8/13/Rails-Versions-8-0-2-1-7-2-2-2-and-7-1-5-2-have-been-released
 
 -------------------------------------------------------------------
 Mon Jan 20 16:11:50 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
