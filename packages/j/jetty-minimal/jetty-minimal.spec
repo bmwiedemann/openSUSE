@@ -1,7 +1,7 @@
 #
 # spec file for package jetty-minimal
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,10 +18,10 @@
 
 
 %global base_name jetty
-%global addver  .v20241219
+%global addver  .v20250814
 %define src_name %{base_name}.project-%{base_name}-%{version}%{addver}
 Name:           %{base_name}-minimal
-Version:        9.4.57
+Version:        9.4.58
 Release:        0
 Summary:        Java Webserver and Servlet Container
 License:        Apache-2.0 OR EPL-1.0
@@ -401,7 +401,7 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 %pom_disable_module jetty-alpn
 %pom_disable_module jetty-home
 
-%pom_xpath_remove "pom:plugins/pom:plugin[pom:artifactId='maven-javadoc-plugin']/pom:configuration/pom:additionalJOption"
+%pom_xpath_remove "pom:project/pom:build/pom:extensions"
 
 %{mvn_file} :{*} %{base_name}/@1
 
@@ -438,7 +438,6 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 # we don't have all necessary dependencies to run tests
 # missing test dep: org.eclipse.jetty.toolchain:jetty-perf-helper
 %{mvn_build} -f -s -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
 %endif
