@@ -1017,4 +1017,12 @@ This version fixes the license naming issue.</comment>
     <comment>- Convert to libalternatives</comment>
     <requestid>1291700</requestid>
   </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>016eda7889e6759521b6ace49b43caec</srcmd5>
+    <version>6.127.8</version>
+    <time>1755877612</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
+    <requestid>1300719</requestid>
+  </revision>
 </revisionlist>

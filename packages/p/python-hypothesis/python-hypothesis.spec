@@ -23,8 +23,12 @@
 %else
 %bcond_without complete_tests
 %endif
-%bcond_with ringdisabled
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+%bcond_with ringdisabled
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
@@ -53,14 +57,19 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-attrs >= 19.2.0
 Requires:       (python-exceptiongroup >= 1.0.0 if python-base < 3.11)
 Requires:       (python-sortedcontainers >= 2.1.0 with python-sortedcontainers < 3.0)
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 # SECTION requires_extra
 Recommends:     (python-importlib_metadata >= 3.6 if python-base < 3.8)
 # consuming packages need to declare these optional dependencies explicitly
@@ -138,6 +147,12 @@ sed -i 's/assert (arr == 0.0)/assert np.asarray(arr == 0.0)/' tests/numpy/test_g
 
 %python_clone -a %{buildroot}%{_bindir}/hypothesis
 %endif
+
+%post
+%python_install_alternative hypothesis
+
+%postun
+%python_uninstall_alternative hypothesis
 
 %pre
 %python_libalternatives_reset_alternative hypothesis
