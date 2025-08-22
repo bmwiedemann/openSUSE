@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Fri Aug 22 05:40:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.85.1:
+  * Features
+    - Updated go-getter to fix CVE-2025-8959
+    - Dropped dependencies on aws-sdk-go v1
+  * Docs
+    - Switched to the new documentation site
+  * What's Changed
+    - chore: Bumping go-getter and dependencies (#4692)
+    - Tighten up Supercharge section (#4712)
+    - Remove unnecessary class (#4713)
+    - chore: rm old page deployment (#4721)
+    - fix: pass argument to version flag, e.g. `run -- version
+      -json` (#4720)
+    - fix: Adjusting `awshelper` (#4502)
+    - Swap classnames per feedback (#4710)
+    - chore: Removing Jekyll docs (#4705)
+    - chore: Tossing Jekyl docs (#4699)
+    - Cleaning animation (#4698)
+    - fix: Adding retry to ignore the flakiness of
+      `TestProviderCache` (#4676)
+    - Search polish (#4697)
+    - Lower padding margins (#4696)
+    - Bump versions (#4695)
+    - fix: Fixing text for search (#4693)
+    - fix: Adjusting patch (#4691)
+    - chore: Final pre-migration steps (#4688)
+    - fix: Adding social link info (#4677)
+    - fix: Removing Google feedback form (#4678)
+    - build(deps): bump actions/checkout from 4 to 5 (#4685)
+    - Web 818 (#4682)
+    - docs: Updating Terragrunt Homepage (#4550)
+    - Fix --report-file not created due to cross-device link
+      (#4675)
+
+-------------------------------------------------------------------
+Tue Aug 19 07:12:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.85.0:
+  * Breaking Changes
+    - Removal of legacy Terragrunt flags
+      All deprecated flags that start with --terragrunt- have been
+      removed in favor of their modern counterparts.
+      This is the next step in the removal of deprecated features
+      in
+      Terragrunt on the road to Terragrunt 1.0, with more to
+      follow. Read the CLI Redesign migration guide for future
+      breaking changes.
+    - Update of stack run directory context
+      The stack run command no longer assumes that users will have
+      a .terragrunt-stack directory present in the same directory
+      as the terragrunt.stack.hcl file. This caused issues for
+      users that were leveraging the no_dot_terragrunt_stack
+      attribute, as the run might have skipped over units generated
+      outside the .terragrunt-stack directory and thrown an error
+      if all units were generated without the .terragrunt-stack
+      directory.
+      (see example in the release notes)
+      https://github.com/gruntwork-io/terragrunt/releases/tag/v0.85.0
+  * Features
+    - The runner-pool experiment has been integrated with
+      OpenTelemetry
+      The runner-pool experiment has been updated to integrate
+      properly with OpenTelemetry.
+  * Bug Fixes
+    - stack output now respects no_dot_terragrunt_stack
+      Previously, when running the stack output command, Terragrunt
+      would incorrectly assume that all units were generated within
+      a .terragrunt-stack directory. This bug has been fixed, and
+      Terragrunt will know to look directly in the stack directory
+      for a given unit when supplied with no_dot_terragrunt_stack.
+    - The runner-pool experiment no longer parses stack files as
+      units during discovery
+      A bug in the logic for the discovery package resulted in
+      discovery errors due to terragrunt.stack.hcl files being
+      parsed as units. That bug has been fixed.
+    - Fixed filesystem context for find_in_parent_folders() when
+      used in terragrunt.stack.hcl
+      The use of find_in_parent_folders() now functions correctly
+      when run in the context of a terragrunt.stack.hcl file.
+      Previously, it relied on the current working directory of the
+      Terragrunt CLI, which incorrectly assumed that users would
+      always be generating terragrunt.stack.hcl files from the
+      current working directory.
+    - The discovery package now emits less false positive warnings
+      during parsing
+      The discovery package used by the find and list commands, and
+      the runner-pool experiment has been updated to emit less
+      unimportant warnings when parsing configurations. These
+      warnings were for early phase parsing that are known to be
+      safe to ignore.
+    - The discovery package no longer attempts to parse stack
+      configurations as units
+      A bug in the implementation of the discovery package resulted
+      in attempts from Terragrunt to parse terragrunt.stack.hcl
+      files as units. That has been remediated.
+  * Docs
+    - Edit Link Added
+      The terragrunt-v1.gruntwork.io docs now include an "Edit
+      page" button that conveniently allows the community to
+      contribute fixes to documentation from within their browsers,
+      using the GitHub UI.
+  * What's Changed
+    - chore: Addressing review feedback (#4672)
+    - docs: Updating migration guide for `--terragrunt-` flag
+      removal (#4671)
+    - feat: Sequencing workflows so that faster workflows run
+      before slower ones (#4670)
+    - chore: Remove legacy terragrunt flags (#4650)
+    - fix: Addressing provider cache test flake (#4639)
+    - fix: Fixing `find_in_parent_folders` for
+      `terragrunt.stack.hcl` files (#4669)
+    - fix: Fixing `stack run` when there are only units with
+      `no_dot_terragrunt_stack` set (#4628)
+    - chore: Getting rid of strict lint workflow (#4651)
+    - fix: Fixing bad link to `stack output` command (#4652)
+    - ensure queue-include-dir includes stack paths that have not
+      yet been generated (#4649)
+    - fix: Improve error handling for missing includes and
+      dependencies (#4637)
+    - chore: Adding error message bug report (#4638)
+    - Fix broken screenshot in logging page (#4630)
+    - feat: Discovey false positive parsing errors (#4605)
+    - fix: Make `stack output` respect `no_dot_terragrunt_stack`
+      (#4606)
+    - fix: Adding edit link back (#4629)
+    - feat: runner-pool opntelemetry integration (#4616)
+    - fix: Fixing discovery parsing stacks as units (#4615)
+
+-------------------------------------------------------------------
 Tue Aug 05 05:29:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.84.1:
