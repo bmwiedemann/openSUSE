@@ -699,4 +699,24 @@
 - package the license files</comment>
     <requestid>1300328</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>36b60a78c605de1f6b4e9edb7138d07e</srcmd5>
+    <version>0.15.1</version>
+    <time>1755877766</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.15.1:
+  * Add iso8601 as valid time format
+    /time all set iso8601 instead of manual specification
+  * Fix ignoring of roster pushes (#2035)
+  * Print location of decrypted files (#2041)
+  * Fix GPGME &gt;= 2.0.0 compatibility issue (#2048)
+  * Fix tests with gcc15 and uintptr_t (#2055)
+  * Reduce noise in log files (#1911, #2060)
+  * Cleanup, code improvement and memory fixes (#2033, #2041, #2053)
+  * Improve documentation (#2040, 18f157b, #2058)
+- Drop:
+  * profanity-0.15.0-Fix-tests-with-gcc15-uintptr_t.patch
+  * profanity-0.15.0-gpgme.patch</comment>
+    <requestid>1300911</requestid>
+  </revision>
 </revisionlist>

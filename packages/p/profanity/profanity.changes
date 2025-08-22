@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug 22 07:37:02 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15.1:
+  * Add iso8601 as valid time format
+    /time all set iso8601 instead of manual specification
+  * Fix ignoring of roster pushes (#2035)
+  * Print location of decrypted files (#2041)
+  * Fix GPGME >= 2.0.0 compatibility issue (#2048)
+  * Fix tests with gcc15 and uintptr_t (#2055)
+  * Reduce noise in log files (#1911, #2060)
+  * Cleanup, code improvement and memory fixes (#2033, #2041, #2053)
+  * Improve documentation (#2040, 18f157b, #2058)
+- Drop:
+  * profanity-0.15.0-Fix-tests-with-gcc15-uintptr_t.patch
+  * profanity-0.15.0-gpgme.patch
+
+-------------------------------------------------------------------
 Tue Aug 19 15:55:27 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Remove the URL part from the patches.

@@ -48,17 +48,13 @@
 %bcond_without omemo_qrcode
 #
 Name:           %{pname}
-Version:        0.15.0
+Version:        0.15.1
 Release:        0
 Summary:        Console-based XMPP client
 License:        SUSE-GPL-3.0+-with-openssl-exception
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://profanity-im.github.io
 Source:         https://github.com/profanity-im/profanity/releases/download/%{version}/profanity-%{version}.tar.gz
-# bsc#1246850: Fix build with gpgme >= 2.0.0. See gh/profanity#2048
-Patch0:         profanity-0.15.0-gpgme.patch
-# fixes tests build with ggc15. See gh/profanity#2055
-Patch1:         profanity-0.15.0-Fix-tests-with-gcc15-uintptr_t.patch
 BuildRequires:  pkgconfig
 # mandatory requirements
 BuildRequires:  pkgconfig(glib-2.0) >= 2.62
