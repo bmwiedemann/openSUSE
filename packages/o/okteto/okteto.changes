@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 22 11:25:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.10.1:
+  * DEV-1107: Initialize the divert deployer in the command struct
+    for up and test commands (#4756) (#4757)
+
+-------------------------------------------------------------------
 Wed Aug 06 10:35:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.10.0:
