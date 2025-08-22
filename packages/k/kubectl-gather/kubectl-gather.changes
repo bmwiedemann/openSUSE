@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 22 04:47:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.10.1:
+  * Handle non existent dirs in ListResources by @parikshithb in
+    #111
+  * Cleanups by @nirs in #112
+
+-------------------------------------------------------------------
 Tue Aug 05 05:21:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.10.0:
