@@ -2,7 +2,7 @@ From 100b03a7efe924eb5e22d2e8d6e3dadbec80c0fa Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Mark=C3=A9ta=20Cal=C3=A1bkov=C3=A1?=
  <meggy.calabkova@gmail.com>
 Date: Thu, 9 Jan 2020 14:45:49 +0100
-Subject: [PATCH 2/2] msgcat: Merge headers when --use-first
+Subject: [PATCH 2/3] msgcat: Merge headers when --use-first
 
 Merging headers line by line is especially useful when
 one header line is present only in the second file.
@@ -10,7 +10,7 @@ For example when Plural-Forms: is present only in the second file,
 msgcat could create an invalid output file.
 We also return error when Plural-Forms: values do not match.
 
-Updated for 0.24
+Updated for 0.26
 ---
  gettext-tools/src/message.c     |   2 -
  gettext-tools/src/msgl-cat.c    |   5 ++

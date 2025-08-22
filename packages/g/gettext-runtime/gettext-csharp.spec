@@ -1,7 +1,7 @@
 #
 # spec file for package gettext-csharp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %global debug_package %{nil}
 %endif
 Name:           gettext-csharp
-Version:        0.25.1
+Version:        0.26
 Release:        0
 Summary:        Native Language Support (NLS) for C#
 License:        LGPL-2.1-or-later

@@ -1,7 +1,7 @@
 #
 # spec file for package gettext-runtime
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %bcond_with mini
 
 Name:           gettext-runtime
-Version:        0.25.1
+Version:        0.26
 Release:        0
 BuildRequires:  automake >= 1.14
 BuildRequires:  gcc-c++
@@ -283,6 +283,8 @@ make check || {
 %doc %dir %_docdir/%name/
 %doc %_docdir/%name/gettext.1.html
 %doc %_docdir/%name/ngettext.1.html
+%doc %_docdir/%name/printf_gettext.1.html
+%doc %_docdir/%name/printf_ngettext.1.html
 %doc %_docdir/%name/*.3.html
 %doc %_docdir/%name/AUTHORS
 %doc %_docdir/%name/NEWS
@@ -292,12 +294,16 @@ make check || {
 %_bindir/ngettext
 %_bindir/gettext.sh
 %_bindir/msgfmt
+%_bindir/printf_gettext
+%_bindir/printf_ngettext
 %_libdir/libgettextlib-*.so
 %_libdir/libgettextsrc-*.so
 %_libdir/libasprintf.so.*
 %doc %_mandir/man1/gettext.1.gz
 %doc %_mandir/man1/ngettext.1.gz
 %doc %_mandir/man1/msgfmt.1.gz
+%doc %_mandir/man1/printf_gettext.1.gz
+%doc %_mandir/man1/printf_ngettext.1.gz
 %doc %_mandir/man3/*
 %dir %_datadir/emacs
 %dir %_datadir/emacs/site-lisp

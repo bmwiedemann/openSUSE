@@ -1,7 +1,7 @@
 #
 # spec file for package gettext-java
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           gettext-java
-Version:        0.25.1
+Version:        0.26
 Release:        0
 Summary:        Java Support for Native Language Support (NLS)
 License:        LGPL-2.1-or-later
