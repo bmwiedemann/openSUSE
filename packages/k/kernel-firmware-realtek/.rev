@@ -137,4 +137,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * realtek: rt1321: Add patch firmware of MCU</comment>
     <requestid>1299821</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bc864548cb28be1a8474b659f5cfe028</srcmd5>
+    <version>20250820</version>
+    <time>1755877653</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250820 (git commit 70dda28e5098):
+  * rtw89: 8922a: update fw to v0.35.80.3
+  * rtw89: 8852c: update fw to v0.27.129.4
+  * rtw89: 8852c: update fw to v0.27.129.3</comment>
+    <requestid>1300898</requestid>
+  </revision>
 </revisionlist>
