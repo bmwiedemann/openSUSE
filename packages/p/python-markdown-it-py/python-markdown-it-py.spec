@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-markdown-it-py
 Version:        3.0.0
@@ -29,13 +33,18 @@ BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module mdurl}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-mdurl
 Suggests:       python-mdit-py-plugins
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 # SECTION tests
 BuildRequires:  %{python_module linkify-it-py}
 BuildRequires:  %{python_module pytest-regressions}
@@ -62,6 +71,12 @@ sed -i '1{/\/usr\/bin\/env python*/d;}' markdown_it/cli/parse.py
 
 %check
 %pytest tests
+
+%post
+%python_install_alternative markdown-it
+
+%postun
+%python_uninstall_alternative markdown-it
 
 %pre
 %python_libalternatives_reset_alternative markdown-it
