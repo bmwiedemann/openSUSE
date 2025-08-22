@@ -15,4 +15,12 @@
     <comment>update to 2.53.4 (forwarded request 1279434 from ojkastl_buildservice)</comment>
     <requestid>1281005</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>79b061ea9c5d687e5761f62f63dbb56c</srcmd5>
+    <version>2.53.5</version>
+    <time>1755877777</time>
+    <user>anag_factory</user>
+    <comment>update to 2.53.5 (forwarded request 1300580 from ojkastl_buildservice)</comment>
+    <requestid>1300976</requestid>
+  </revision>
 </revisionlist>
