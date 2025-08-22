@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-natsort
 Version:        8.4.0
@@ -32,15 +36,20 @@ BuildRequires:  %{python_module pytest >= 4.3}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  help2man
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-setuptools
 Recommends:     python-PyICU >= 1.0.0
 Recommends:     python-fastnumbers >= 5.0.1
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -70,6 +79,12 @@ install -Dm0644 natsort.1 %{buildroot}%{_mandir}/man1/natsort.1
 %check
 export LANG=en_US.UTF8
 %pytest --hypothesis-profile=slow-tests
+
+%post
+%python_install_alternative natsort
+
+%postun
+%python_uninstall_alternative natsort
 
 %pre
 %python_libalternatives_reset_alternative natsort
