@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 19 06:44:03 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250818 (git commit 72a326cda491):
+  * iwlwifi: add Bz/gl FW for core97-84 release
+  * iwlwifi: update ty/So/Ma firmwares for core97-84 release
+  * iwlwifi: update cc/Qu/QuZ firmwares for core97-84 release
+
+-------------------------------------------------------------------
 Sat Jun 21 08:04:10 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases

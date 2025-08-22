@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 0d92efb540f49e0aa254f0685b8a71b82608f5c1
+%define git_version 72a326cda49109765396e08f2453c51a852e3ec6
 
 Name:           kernel-firmware-iwlwifi
-Version:        20250609
+Version:        20250818
 Release:        0
 Summary:        Kernel firmware files for Intel wireless drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250605.tar.gz#/kernel-firmware-tools-20250605.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250805.tar.gz#/kernel-firmware-tools-20250805.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases

@@ -75,4 +75,15 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases</comment>
     <requestid>1288146</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2361212de85b0628c002d77078f68276</srcmd5>
+    <version>20250818</version>
+    <time>1755877651</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250818 (git commit 72a326cda491):
+  * iwlwifi: add Bz/gl FW for core97-84 release
+  * iwlwifi: update ty/So/Ma firmwares for core97-84 release
+  * iwlwifi: update cc/Qu/QuZ firmwares for core97-84 release</comment>
+    <requestid>1300895</requestid>
+  </revision>
 </revisionlist>
