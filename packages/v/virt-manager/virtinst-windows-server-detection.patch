@@ -1,20 +1,22 @@
 References: bsc#1194323
-Windows server 2k16, 2k19, and 2k22 have the volumen ID
+Windows server 2k16, 2k19, 2k22, and 2k25 have the volume ID
 so libosinfo can't really tell them apart.
 This hack after detecting a windows ISO just looks at the
 ISO filename for an extra clue.
 
-Index: virt-manager-4.2.0/virtinst/install/installer.py
+Index: virt-manager-5.0.0/virtinst/install/installer.py
 ===================================================================
---- virt-manager-4.2.0.orig/virtinst/install/installer.py
-+++ virt-manager-4.2.0/virtinst/install/installer.py
-@@ -545,6 +545,14 @@ class Installer(object):
+--- virt-manager-5.0.0.orig/virtinst/install/installer.py
++++ virt-manager-5.0.0/virtinst/install/installer.py
+@@ -545,6 +545,16 @@ class Installer(object):
                  osguess = OSDB.guess_os_by_iso(self.cdrom)
                  if osguess:
                      ret = osguess[0]
 +                    # Hack because windows ISOs contain same volume ID
 +                    if ret and ret.startswith("win"):
-+                        if "windows_server_2022" in self.cdrom:
++                        if "windows_server_2025" in self.cdrom:
++                            ret = "win2k25"
++                        elif "windows_server_2022" in self.cdrom:
 +                            ret = "win2k22"
 +                        elif "windows_server_2019" in self.cdrom:
 +                            ret = "win2k19"

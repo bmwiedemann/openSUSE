@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 13 16:46:43 MDT 2025 - carnold@suse.com
+
+- Adjust how we detect sles16 as the media layout changes.
+  (bsc#1244685)
+  virtinst-add-sle16-detection-support.patch
+
+-------------------------------------------------------------------
+Tue Aug 12 14:23:56 MDT 2025 - carnold@suse.com
+
+- bsc#1247865 - sles 16.0 rc3 KVM virt-manager detects windows 2025
+  as 2022
+  virtinst-windows-server-detection.patch
+
+-------------------------------------------------------------------
 Mon Jul 28 10:49:22 MDT 2025 - carnold@suse.com
 
 - Add support for creating TDX guests in virt-install

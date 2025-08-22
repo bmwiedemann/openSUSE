@@ -2198,4 +2198,12 @@
     <comment>Add support for creating TDX guests in virt-install. Not useful until qemu 10.1 is released and also an updated libvirt</comment>
     <requestid>1298223</requestid>
   </revision>
+  <revision rev="278" vrev="14">
+    <srcmd5>e6d5e5bfc7249bff5268bc821a3ea8ec</srcmd5>
+    <version>5.0.0</version>
+    <time>1755877607</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1300574</requestid>
+  </revision>
 </revisionlist>
