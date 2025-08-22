@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15allpythons}
 Name:           python-nodeenv
 Version:        1.9.1
@@ -29,12 +33,17 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-setuptools
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -54,6 +63,12 @@ Node.js virtual environment builder.
 %check
 # test_smoke is an integration test requiring network access.
 %pytest -k 'not test_smoke'
+
+%post
+%python_install_alternative nodeenv
+
+%postun
+%python_uninstall_alternative nodeenv
 
 %pre
 %python_libalternatives_reset_alternative nodeenv
