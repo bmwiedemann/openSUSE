@@ -7,4 +7,5 @@ editing these catalogs (called PO files, for portable object) and
 adding translations. A special compiler turns these PO files into
 binary catalogs.</description>
   <devel project="Base:System" package="gettext-runtime"/>
+  <url>https://www.gnu.org/software/gettext/</url>
 </package>

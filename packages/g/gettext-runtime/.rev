@@ -879,4 +879,11 @@ sync the changes and spec file by actually calling pre_checkin.sh - not syncing 
     <comment></comment>
     <requestid>1300764</requestid>
   </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>e7c35a0e2a8341fd4e0c8555b18c5ffb</srcmd5>
+    <version>0.26</version>
+    <time>1755891192</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.26:</comment>
+  </revision>
 </revisionlist>
