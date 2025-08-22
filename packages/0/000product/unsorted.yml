@@ -16988,6 +16988,7 @@ unsorted:
   - libxar-devel 
   - libxar1 
   - libxatracker-devel 
+  - libxatracker2 
   - libxbase64-1 
   - libxbrz-1_8 
   - libxbsql0 
@@ -37266,8 +37267,6 @@ unsorted:
   - spicetify-cli 
   - spiel 
   - spiel-devel 
-  - spindle 
-  - spindle-devel 
   - spirv-cross 
   - spirv-cross-devel 
   - spirv-headers 
