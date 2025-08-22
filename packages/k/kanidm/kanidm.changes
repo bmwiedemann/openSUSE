@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 22 03:46:01 UTC 2025 - william.brown@suse.com
+
+- Update to version 1.7.3~git0.10847190e:
+  * Release 1.7.3
+  * Make it clearer why acceptor isnt available (#3812)
+  * Minor: reduce logging verbosity during debug (#3810)
+  * Handle IP addresses in replication SAN field (#3811)
+  * Update to use the codec properly (#3807)
+
+-------------------------------------------------------------------
 Fri Aug 15 04:45:26 UTC 2025 - william.brown@suse.com
 
 - Update to version 1.7.2~git0.d331ea986:
