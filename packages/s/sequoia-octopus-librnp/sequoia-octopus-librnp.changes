@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug  6 18:06:21 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.11.1
+  - This release fixes a DoS attack.  An attacker can create an
+    OpenPGP message that includes a zip bomb.  Instead of aborting
+    after having parsed a certain amount of data, the Octopus would
+    parse the whole message.  When processing a message that contains
+    a zip bomb, this would cause Thunderbird to freeze for an
+    unacceptably long time.  This issue was reported by codean via our
+    YesWeHack bug bounty program.
+
+-------------------------------------------------------------------
 Thu May  8 14:30:04 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
 
 - update vendored packages (boo#1242627, CVE-2025-3416)
