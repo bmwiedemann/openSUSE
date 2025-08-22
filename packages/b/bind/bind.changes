@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Aug 21 08:57:20 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Upgrade to release 9.20.12
+  New Features:
+  * Support for parsing DSYNC records has been added.
+
+  Feature Changes:
+  * Add deprecation warnings for RSASHA1, RSASHA1-NSEC3SHA1, and DS
+    digest type 1.
+
+  Bug Fixes:
+  * Stale RRsets in a CNAME chain were not always refreshed.
+  * Add RPZ extended DNS error for zones with a CNAME override
+    policy configured.
+  * Fix dig +keepopen option.
+  * Log dropped or slipped responses in the query-errors category.
+  * Fix synth-from-dnssec not working in some scenarios.
+  * Clean enough memory when adding new ADB names/entries under
+    memory pressure.
+  * Prevent spurious validation failures.
+
+-------------------------------------------------------------------
 Tue Jul 15 13:56:33 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Upgrade to release 9.20.11

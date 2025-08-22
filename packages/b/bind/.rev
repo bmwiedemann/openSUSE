@@ -2544,4 +2544,27 @@ New Features
   * Use IPv6 queries in delv +ns.</comment>
     <requestid>1294176</requestid>
   </revision>
+  <revision rev="222" vrev="1">
+    <srcmd5>b644289b95b2f0da0bb0c107b4c0f033</srcmd5>
+    <version>9.20.12</version>
+    <time>1755877614</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to release 9.20.12
+  New Features:
+  * Support for parsing DSYNC records has been added.
+  Feature Changes:
+  * Add deprecation warnings for RSASHA1, RSASHA1-NSEC3SHA1, and DS
+    digest type 1.
+  Bug Fixes:
+  * Stale RRsets in a CNAME chain were not always refreshed.
+  * Add RPZ extended DNS error for zones with a CNAME override
+    policy configured.
+  * Fix dig +keepopen option.
+  * Log dropped or slipped responses in the query-errors category.
+  * Fix synth-from-dnssec not working in some scenarios.
+  * Clean enough memory when adding new ADB names/entries under
+    memory pressure.
+  * Prevent spurious validation failures.</comment>
+    <requestid>1300729</requestid>
+  </revision>
 </revisionlist>
