@@ -16,9 +16,12 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname ephemeral-port-reserve
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-ephemeral-port-reserve
 Version:        1.1.4
@@ -32,10 +35,15 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+BuildRequires:  alts
 Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -60,6 +68,12 @@ sed -i -e '1{/env python/d}' ephemeral_port_reserve.py
 
 %pre
 %python_libalternatives_reset_alternative ephemeral-port-reserve
+
+%post
+%python_install_alternative ephemeral-port-reserve
+
+%postun
+%python_uninstall_alternative ephemeral-port-reserve
 
 %files %{python_files}
 %python_alternative %{_bindir}/ephemeral-port-reserve
