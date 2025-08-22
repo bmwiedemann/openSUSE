@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-maturin
 Version:        1.9.3
@@ -32,11 +36,16 @@ BuildRequires:  %{python_module setuptools-rust >= 1.4.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli >= 1.1.0 if %python-base < 3.11}
 BuildRequires:  %{python_module wheel >= 0.36.2}
-BuildRequires:  alts
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+BuildRequires:  alts
 Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 1.1.0
 %endif
@@ -63,6 +72,12 @@ sed -i 's/--locked/--offline/' setup.py
 %python_clone -a %{buildroot}%{_bindir}/maturin
 
 %check
+
+%post
+%python_install_alternative maturin
+
+%postun
+%python_uninstall_alternative maturin
 
 %pre
 %python_libalternatives_reset_alternative maturin

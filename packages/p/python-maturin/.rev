@@ -1340,4 +1340,12 @@
     gh#PyO3/maturin#2695</comment>
     <requestid>1297806</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>9090290da2ffeeedc12b014f90f22001</srcmd5>
+    <version>1.9.3</version>
+    <time>1755877620</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
+    <requestid>1300748</requestid>
+  </revision>
 </revisionlist>
