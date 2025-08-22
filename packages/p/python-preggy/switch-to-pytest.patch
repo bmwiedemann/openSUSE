@@ -1,0 +1,607 @@
+From 740cd9f947b2785367d517a0f97dec4240e32b63 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Fri, 22 Aug 2025 13:51:20 +1000
+Subject: [PATCH] Switch from nose to pytest
+
+nose has been unmaintained for quite some time, and pytest no longer
+supports yield tests, which are a nose feature. Switch tox to calling
+pytest, and convert all yield tests to using pytest's paramertize
+functionality.
+---
+ .gitignore                   |   1 -
+ Makefile                     |  10 ---
+ requirements.txt             |   4 +-
+ setup.py                     |   2 +-
+ tests/test_comparison.py     |  86 ++++++++++-------------
+ tests/test_emptiness.py      |  14 ++--
+ tests/test_equality.py       |  10 +--
+ tests/test_inclusion.py      |  14 ++--
+ tests/test_length.py         |  14 ++--
+ tests/test_like.py           | 131 ++++++++++++-----------------------
+ tests/types/test_boolean.py  |  26 +++----
+ tests/types/test_classes.py  |  14 ++--
+ tests/types/test_file.py     |  14 ++--
+ tests/types/test_function.py |   8 ++-
+ tests/types/test_numeric.py  |   8 ++-
+ tox.ini                      |   9 ++-
+ 16 files changed, 160 insertions(+), 205 deletions(-)
+
+
+diff --git a/setup.py b/setup.py
+index d36add0..7ff02f7 100755
+--- a/setup.py
++++ b/setup.py
+@@ -17,7 +17,7 @@
+ REQUIREMENTS = {
+     'install': ['six', 'unidecode'],
+     'extras': {
+-        'tests':['nose', 'yanc', 'coverage', 'tox',]
++        'tests':['pytest', 'pytest-cov', 'tox',]
+     }
+ }
+ 
+diff --git a/tests/test_comparison.py b/tests/test_comparison.py
+index ec81f9d..5797790 100644
+--- a/tests/test_comparison.py
++++ b/tests/test_comparison.py
+@@ -9,6 +9,8 @@
+ 
+ from preggy import expect
+ 
++import pytest
++
+ #-----------------------------------------------------------------------------
+ 
+ TEST_DATA = (
+@@ -152,65 +154,53 @@ def is_not_lesser_or_equal_to(topic):
+ #-----------------------------------------------------------------------------
+ 
+ 
+-def test_greater_than():
+-    for index, item in enumerate(TEST_DATA):
+-        expected = GREATER_THAN_DATA[index]
+-        yield is_greater_than, (item, expected)
+-
+-
+-def test_not_greater_than():
+-    for index, item in enumerate(TEST_DATA):
+-        expected = GREATER_THAN_DATA[index]
+-        yield is_not_greater_than, (expected, item)
+-
+-
+-def test_lesser_than():
+-    for index, item in enumerate(TEST_DATA):
+-        expected = LESSER_THAN_DATA[index]
+-        yield is_lesser_than, (item, expected)
++@pytest.mark.parametrize("index,item", enumerate(TEST_DATA))
++def test_greater_than(index, item):
++    is_greater_than((item, GREATER_THAN_DATA[index]))
+ 
+ 
+-def test_not_lesser_than():
+-    for index, item in enumerate(TEST_DATA):
+-        expected = LESSER_THAN_DATA[index]
+-        yield is_not_lesser_than, (expected, item)
++@pytest.mark.parametrize("index,item", enumerate(TEST_DATA))
++def test_not_greater_than(index, item):
++    is_not_greater_than((GREATER_THAN_DATA[index], item))
+ 
+ 
+-def test_greater_or_equal_to():
+-    for index, item in enumerate(TEST_DATA):
+-        expected = GREATER_OR_EQUAL_TO_DATA[index]
+-        yield is_greater_or_equal_to, (item, expected)
++@pytest.mark.parametrize("index,item", enumerate(TEST_DATA))
++def test_lesser_than(index, item):
++    is_lesser_than((item, LESSER_THAN_DATA[index]))
+ 
+-    for index, item in enumerate(TEST_DATA):
+-        expected = GREATER_OR_EQUAL_TO_DATA_2[index]
+-        yield is_greater_or_equal_to, (item, expected)
+ 
++@pytest.mark.parametrize("index,item", enumerate(TEST_DATA))
++def test_not_lesser_than(index, item):
++    is_not_lesser_than((LESSER_THAN_DATA[index], item))
+ 
+-def test_not_greater_or_equal_to():
+-    for index, item in enumerate(TEST_DATA):
+-        expected = NOT_GREATER_OR_EQUAL_TO_DATA[index]
+-        yield is_not_greater_or_equal_to, (expected, item)
+ 
+-    for index, item in enumerate(TEST_DATA):
+-        expected = GREATER_OR_EQUAL_TO_DATA_2[index]
+-        yield is_not_greater_or_equal_to, (expected, item)
++@pytest.mark.parametrize("index,item", enumerate(TEST_DATA))
++def test_greater_or_equal_to(index, item):
++    expected = GREATER_OR_EQUAL_TO_DATA[index]
++    is_greater_or_equal_to((item, expected))
++    expected = GREATER_OR_EQUAL_TO_DATA_2[index]
++    is_greater_or_equal_to((item, expected))
+ 
+ 
+-def test_lesser_or_equal_to():
+-    for index, item in enumerate(TEST_DATA):
+-        expected = LESSER_OR_EQUAL_TO_DATA[index]
+-        yield is_lesser_or_equal_to, (item, expected)
++@pytest.mark.parametrize("index,item", enumerate(TEST_DATA))
++def test_not_greater_or_equal_to(index, item):
++    expected = NOT_GREATER_OR_EQUAL_TO_DATA[index]
++    is_not_greater_or_equal_to((expected, item))
++    expected = GREATER_OR_EQUAL_TO_DATA_2[index]
++    is_not_greater_or_equal_to((expected, item))
+ 
+-    for index, item in enumerate(TEST_DATA):
+-        expected = LESSER_OR_EQUAL_TO_DATA_2[index]
+-        yield is_lesser_or_equal_to, (item, expected)
+ 
++@pytest.mark.parametrize("index,item", enumerate(TEST_DATA))
++def test_lesser_or_equal_to(index, item):
++    expected = LESSER_OR_EQUAL_TO_DATA[index]
++    is_lesser_or_equal_to((item, expected))
++    expected = LESSER_OR_EQUAL_TO_DATA_2[index]
++    is_lesser_or_equal_to((item, expected))
+ 
+-def test_not_lesser_or_equal_to():
+-    for index, item in enumerate(TEST_DATA):
+-        expected = NOT_LESSER_OR_EQUAL_TO_DATA[index]
+-        yield is_not_lesser_or_equal_to, (expected, item)
+ 
+-    for index, item in enumerate(TEST_DATA):
+-        expected = LESSER_OR_EQUAL_TO_DATA_2[index]
+-        yield is_not_lesser_or_equal_to, (expected, item)
++@pytest.mark.parametrize("index,item", enumerate(TEST_DATA))
++def test_not_lesser_or_equal_to(index, item):
++    expected = NOT_LESSER_OR_EQUAL_TO_DATA[index]
++    is_not_lesser_or_equal_to((expected, item))
++    expected = LESSER_OR_EQUAL_TO_DATA_2[index]
++    is_not_lesser_or_equal_to((expected, item))
+diff --git a/tests/test_emptiness.py b/tests/test_emptiness.py
+index 1098eb4..b843cb8 100644
+--- a/tests/test_emptiness.py
++++ b/tests/test_emptiness.py
+@@ -9,6 +9,8 @@
+ 
+ from preggy import expect
+ 
++import pytest
++
+ #-----------------------------------------------------------------------------
+ 
+ EMPTY_DATA = (
+@@ -37,11 +39,11 @@ def is_not_empty(item):
+ 
+ #-----------------------------------------------------------------------------
+ 
+-def test_emptiness_assertion_works():
+-    for empty_item in EMPTY_DATA:
+-        yield is_empty, empty_item
++@pytest.mark.parametrize("item", EMPTY_DATA)
++def test_emptiness_assertion_works(item):
++    is_empty(item)
+ 
+ 
+-def test_not_emptiness_assertion_works():
+-    for not_empty_item in NOT_EMPTY_DATA:
+-        yield is_not_empty, not_empty_item
++@pytest.mark.parametrize("item", NOT_EMPTY_DATA)
++def test_not_emptiness_assertion_works(item):
++    is_not_empty(item)
+diff --git a/tests/test_equality.py b/tests/test_equality.py
+index a0a92cc..62ea033 100644
+--- a/tests/test_equality.py
++++ b/tests/test_equality.py
+@@ -9,6 +9,8 @@
+ 
+ from preggy import expect
+ 
++import pytest
++
+ from tests import Comparable, AnotherComparable
+ 
+ #-----------------------------------------------------------------------------
+@@ -58,12 +60,12 @@ def test_unicode_equal():
+     is_equal((UNICODE_TEST_DATA[0], UNICODE_TEST_DATA[1]))
+ 
+ 
+-def test_equal():
+-    for item in TEST_DATA:
+-        yield is_equal, (item, item)
++@pytest.mark.parametrize("item", TEST_DATA)
++def test_equal(item):
++    is_equal((item, item))
+ 
+ 
+ def test_not_equal():
+     for item in TEST_DATA:
+         for unequal in UNEQUAL_DATA:
+-            yield is_not_equal, (item, unequal)
++            is_not_equal((item, unequal))
+diff --git a/tests/test_inclusion.py b/tests/test_inclusion.py
+index bf2d001..e5b6a3c 100644
+--- a/tests/test_inclusion.py
++++ b/tests/test_inclusion.py
+@@ -9,6 +9,8 @@
+ 
+ from preggy import expect
+ 
++import pytest
++
+ from tests import Comparable
+ 
+ #-----------------------------------------------------------------------------
+@@ -57,11 +59,11 @@ def is_not_included(item, expected):
+ #-----------------------------------------------------------------------------
+ 
+ 
+-def test_includes():
+-    for index, item in enumerate(TEST_DATA):
+-        yield is_included, item, INCLUDED_DATA[index]
++@pytest.mark.parametrize("index,item", enumerate(TEST_DATA))
++def test_includes(index, item):
++    is_included(item, INCLUDED_DATA[index])
+ 
+ 
+-def test_not_includes():
+-    for index, item in enumerate(TEST_DATA):
+-        yield is_not_included, item, NOT_INCLUDED_DATA[index]
++@pytest.mark.parametrize("index,item", enumerate(TEST_DATA))
++def test_not_includes(index, item):
++    is_not_included(item, NOT_INCLUDED_DATA[index])
+diff --git a/tests/test_length.py b/tests/test_length.py
+index f523a99..19f9601 100644
+--- a/tests/test_length.py
++++ b/tests/test_length.py
+@@ -13,6 +13,8 @@
+ except ImportError:
+     from queue import LifoQueue
+ 
++import pytest
++
+ from preggy import expect
+ 
+ #-----------------------------------------------------------------------------
+@@ -69,14 +71,14 @@ def is_not_expected(item, expected):
+ 
+ #-----------------------------------------------------------------------------
+ 
+-def test_length():
+-    for index, item in enumerate(TEST_DATA):
+-        yield is_expected, item, EXPECTED_DATA[index]
++@pytest.mark.parametrize("index,item", enumerate(TEST_DATA))
++def test_length(index, item):
++    is_expected(item, EXPECTED_DATA[index])
+ 
+ 
+-def test_not_includes():
+-    for index, item in enumerate(TEST_DATA):
+-        yield is_not_expected, item, NOT_EXPECTED_DATA[index]
++@pytest.mark.parametrize("index,item", enumerate(TEST_DATA))
++def test_not_includes(index, item):
++    is_not_expected(item, NOT_EXPECTED_DATA[index])
+ 
+ 
+ def test_unable_to_identify_length():
+diff --git a/tests/test_like.py b/tests/test_like.py
+index 9faecdf..cb6a8ab 100644
+--- a/tests/test_like.py
++++ b/tests/test_like.py
+@@ -11,6 +11,8 @@
+ from datetime import datetime
+ from uuid import uuid4
+ 
++import pytest
++
+ from preggy import expect
+ 
+ from tests import Comparable, AnotherComparable
+@@ -173,106 +175,63 @@ def is_not_expected(item, expected):
+ #-----------------------------------------------------------------------------
+ 
+ 
+-def test_likeness():
+-    yield is_expected, None, None
+-
+-    for expected_item in EXPECTED_STRING_TEST_DATA:
+-        yield is_expected, STRING_TEST_DATA, expected_item
+-
+-    for expected_item in EXPECTED_LIST_TEST_DATA:
+-        yield is_expected, LIST_TEST_DATA, expected_item
+-
+-    for expected_item in EXPECTED_CMP_LIST_TEST_DATA:
+-        yield is_expected, CMP_LIST_TEST_DATA, expected_item
+-
+-    for expected_item in EXPECTED_TUPLE_TEST_DATA:
+-        yield is_expected, TUPLE_TEST_DATA, expected_item
+-
+-    for expected_item in EXPECTED_SET_TEST_DATA:
+-        yield is_expected, SET_TEST_DATA, expected_item
++def pytest_generate_tests(metafunc):
++    if 'expected' in metafunc.fixturenames:
++        if 'item' in metafunc.fixturenames:
++            parameter = "item, expected"
++            data_list = (
++                (STRING_TEST_DATA, EXPECTED_STRING_TEST_DATA),
++                (LIST_TEST_DATA, EXPECTED_LIST_TEST_DATA),
++                (CMP_LIST_TEST_DATA, EXPECTED_CMP_LIST_TEST_DATA),
++                (TUPLE_TEST_DATA, EXPECTED_TUPLE_TEST_DATA),
++                (SET_TEST_DATA, EXPECTED_SET_TEST_DATA),
++                (DICT_TEST_DATA, EXPECTED_DICT_TEST_DATA),
++                (CMP_DICT_TEST_DATA, EXPECTED_CMP_DICT_TEST_DATA),
++                (DATETIME_TEST_DATA, EXPECTED_DATETIME_TEST_DATA),
++                (UUID_TEST_DATA, EXPECTED_UUID_TEST_DATA),
++                (CMPCLASS_TEST_DATA, EXPECTED_CMPCLASS_TEST_DATA))
++        elif 'not_item' in metafunc.fixturenames:
++            parameter = "not_item, expected"
++            data_list = (
++                (STRING_TEST_DATA, NOT_EXPECTED_STRING_TEST_DATA),
++                (LIST_TEST_DATA, NOT_EXPECTED_LIST_TEST_DATA),
++                (CMP_LIST_TEST_DATA, NOT_EXPECTED_CMP_LIST_TEST_DATA),
++                (TUPLE_TEST_DATA, NOT_EXPECTED_TUPLE_TEST_DATA),
++                (SET_TEST_DATA, NOT_EXPECTED_SET_TEST_DATA),
++                (DICT_TEST_DATA, NOT_EXPECTED_DICT_TEST_DATA),
++                (CMP_DICT_TEST_DATA, NOT_EXPECTED_CMP_DICT_TEST_DATA),
++                (DATETIME_TEST_DATA, NOT_EXPECTED_DATETIME_TEST_DATA),
++                (UUID_TEST_DATA, NOT_EXPECTED_UUID_TEST_DATA),
++                (CMPCLASS_TEST_DATA, NOT_EXPECTED_CMPCLASS_TEST_DATA))
++        data = []
++        for expected, items in data_list:
++            for item in items:
++                data.append((item, expected))
++        metafunc.parametrize(parameter, data)
+ 
+-    for expected_item in EXPECTED_DICT_TEST_DATA:
+-        yield is_expected, DICT_TEST_DATA, expected_item
+ 
+-    for expected_item in EXPECTED_CMP_DICT_TEST_DATA:
+-        yield is_expected, CMP_DICT_TEST_DATA, expected_item
+-
+-    for expected_item in EXPECTED_DATETIME_TEST_DATA:
+-        yield is_expected, DATETIME_TEST_DATA, expected_item
++def test_likeness():
++    is_expected(None, None)
+ 
+-    for expected_item in EXPECTED_UUID_TEST_DATA:
+-        yield is_expected, UUID_TEST_DATA, expected_item
+ 
+-    for expected_item in EXPECTED_CMPCLASS_TEST_DATA:
+-        yield is_expected, CMPCLASS_TEST_DATA, expected_item
++def test_likeness_data(item, expected):
++    is_expected(item, expected)
+ 
+ 
+ def test_likeness_fails():
+-    yield is_expected, None, None
+-
+-    for expected_item in NOT_EXPECTED_STRING_TEST_DATA:
+-        yield is_expected_to_fail, STRING_TEST_DATA, expected_item
+-
+-    for expected_item in NOT_EXPECTED_LIST_TEST_DATA:
+-        yield is_expected_to_fail, LIST_TEST_DATA, expected_item
+-
+-    for expected_item in NOT_EXPECTED_CMP_LIST_TEST_DATA:
+-        yield is_expected_to_fail, CMP_LIST_TEST_DATA, expected_item
+-
+-    for expected_item in NOT_EXPECTED_TUPLE_TEST_DATA:
+-        yield is_expected_to_fail, TUPLE_TEST_DATA, expected_item
++    is_expected_to_fail(None, 1)
+ 
+-    for expected_item in NOT_EXPECTED_SET_TEST_DATA:
+-        yield is_expected_to_fail, SET_TEST_DATA, expected_item
+ 
+-    for expected_item in NOT_EXPECTED_DICT_TEST_DATA:
+-        yield is_expected_to_fail, DICT_TEST_DATA, expected_item
+-
+-    for expected_item in NOT_EXPECTED_CMP_DICT_TEST_DATA:
+-        yield is_expected_to_fail, CMP_DICT_TEST_DATA, expected_item
+-
+-    for expected_item in NOT_EXPECTED_DATETIME_TEST_DATA:
+-        yield is_expected_to_fail, DATETIME_TEST_DATA, expected_item
+-
+-    for expected_item in NOT_EXPECTED_UUID_TEST_DATA:
+-        yield is_expected_to_fail, UUID_TEST_DATA, expected_item
+-
+-    for expected_item in NOT_EXPECTED_CMPCLASS_TEST_DATA:
+-        yield is_expected_to_fail, CMPCLASS_TEST_DATA, expected_item
++def test_likeness_fails_data(not_item, expected):
++    is_expected_to_fail(not_item, expected)
+ 
+ 
+ def test_not_likeness():
+-    yield is_not_expected, None, 1
+-
+-    for not_expected_item in NOT_EXPECTED_STRING_TEST_DATA:
+-        yield is_not_expected, STRING_TEST_DATA, not_expected_item
+-
+-    for not_expected_item in NOT_EXPECTED_LIST_TEST_DATA:
+-        yield is_not_expected, LIST_TEST_DATA, not_expected_item
+-
+-    for not_expected_item in NOT_EXPECTED_CMP_LIST_TEST_DATA:
+-        yield is_not_expected, CMP_LIST_TEST_DATA, not_expected_item
+-
+-    for not_expected_item in NOT_EXPECTED_TUPLE_TEST_DATA:
+-        yield is_not_expected, TUPLE_TEST_DATA, not_expected_item
+-
+-    for not_expected_item in NOT_EXPECTED_SET_TEST_DATA:
+-        yield is_not_expected, SET_TEST_DATA, not_expected_item
+-
+-    for not_expected_item in NOT_EXPECTED_DICT_TEST_DATA:
+-        yield is_not_expected, DICT_TEST_DATA, not_expected_item
+-
+-    for not_expected_item in NOT_EXPECTED_CMP_DICT_TEST_DATA:
+-        yield is_not_expected, CMP_DICT_TEST_DATA, not_expected_item
+-
+-    for expected_item in NOT_EXPECTED_DATETIME_TEST_DATA:
+-        yield is_not_expected, DATETIME_TEST_DATA, expected_item
++    is_not_expected(None, 1)
+ 
+-    for expected_item in NOT_EXPECTED_UUID_TEST_DATA:
+-        yield is_not_expected, UUID_TEST_DATA, expected_item
+ 
+-    for expected_item in NOT_EXPECTED_CMPCLASS_TEST_DATA:
+-        yield is_not_expected, CMPCLASS_TEST_DATA, expected_item
++def test_not_likeness_test_data(not_item, expected):
++    is_not_expected(not_item, expected)
+ 
+ 
+ def test_likeness_of_objects():
+diff --git a/tests/types/test_boolean.py b/tests/types/test_boolean.py
+index 63337e6..c0d6911 100644
+--- a/tests/types/test_boolean.py
++++ b/tests/types/test_boolean.py
+@@ -7,6 +7,8 @@
+ # http://www.opensource.org/licenses/mit-license
+ # Copyright (c) 2013 Bernardo Heynemann heynemann@gmail.com
+ 
++import pytest
++
+ from preggy import expect
+ 
+ #-----------------------------------------------------------------------------
+@@ -72,21 +74,21 @@ def is_not_false(item):
+ 
+ #-----------------------------------------------------------------------------
+ 
+-def test_to_be_true():
+-    for item in EXPECTED_TEST_DATA:
+-        yield is_true, item
++@pytest.mark.parametrize("item", EXPECTED_TEST_DATA)
++def test_to_be_true(item):
++    is_true(item)
+ 
+ 
+-def test_not_to_be_true():
+-    for item in NOT_EXPECTED_TEST_DATA:
+-        yield is_not_true, item
++@pytest.mark.parametrize("item", NOT_EXPECTED_TEST_DATA)
++def test_not_to_be_true(item):
++    is_not_true(item)
+ 
+ 
+-def test_to_be_false():
+-    for item in NOT_EXPECTED_TEST_DATA:
+-        yield is_false, item
++@pytest.mark.parametrize("item", NOT_EXPECTED_TEST_DATA)
++def test_to_be_false(item):
++    is_false(item)
+ 
+ 
+-def test_not_to_be_false():
+-    for item in EXPECTED_TEST_DATA:
+-        yield is_not_false, item
++@pytest.mark.parametrize("item", EXPECTED_TEST_DATA)
++def test_not_to_be_false(item):
++    is_not_false(item)
+diff --git a/tests/types/test_classes.py b/tests/types/test_classes.py
+index 3e8fe9f..bed65ae 100644
+--- a/tests/types/test_classes.py
++++ b/tests/types/test_classes.py
+@@ -7,6 +7,8 @@
+ # http://www.opensource.org/licenses/mit-license
+ # Copyright (c) 2013 Bernardo Heynemann heynemann@gmail.com
+ 
++import pytest
++
+ from preggy import expect
+ 
+ from tests import Comparable
+@@ -49,11 +51,11 @@ def is_not_expected(item):
+ 
+ #-----------------------------------------------------------------------------
+ 
+-def test_to_be_instance_of():
+-    for item in TEST_DATA:
+-        yield is_expected, item
++@pytest.mark.parametrize("item", TEST_DATA)
++def test_to_be_instance_of(item):
++    is_expected(item)
+ 
+ 
+-def test_not_to_be_instance_of():
+-    for item in TEST_DATA:
+-        yield is_not_expected, item
++@pytest.mark.parametrize("item", TEST_DATA)
++def test_not_to_be_instance_of(item):
++    is_not_expected(item)
+diff --git a/tests/types/test_file.py b/tests/types/test_file.py
+index 257cf88..48a8bb7 100644
+--- a/tests/types/test_file.py
++++ b/tests/types/test_file.py
+@@ -7,6 +7,8 @@
+ # http://www.opensource.org/licenses/mit-license
+ # Copyright (c) 2013 Bernardo Heynemann heynemann@gmail.com
+ 
++import pytest
++
+ from preggy import expect
+ 
+ #-----------------------------------------------------------------------------
+@@ -47,14 +49,14 @@ def is_not_expected(item):
+ 
+ #-----------------------------------------------------------------------------
+ 
+-def test_to_be_a_file():
+-    for item in TEST_DATA:
+-        yield is_expected, item
++@pytest.mark.parametrize("item", TEST_DATA)
++def test_to_be_a_file(item):
++    is_expected(item)
+ 
+ 
+-def test_not_to_be_a_file():
+-    for item in FAIL_DATA:
+-        yield is_not_expected, item
++@pytest.mark.parametrize("item", FAIL_DATA)
++def test_not_to_be_a_file(item):
++    is_not_expected(item)
+ 
+ 
+ def test_is_not_file_obj():
+diff --git a/tests/types/test_function.py b/tests/types/test_function.py
+index bf2d39c..c0145bd 100644
+--- a/tests/types/test_function.py
++++ b/tests/types/test_function.py
+@@ -7,6 +7,8 @@
+ # http://www.opensource.org/licenses/mit-license
+ # Copyright (c) 2013 Bernardo Heynemann heynemann@gmail.com
+ 
++import pytest
++
+ from preggy import expect
+ 
+ #-----------------------------------------------------------------------------
+@@ -46,9 +48,9 @@ def is_not_expected(item):
+ 
+ #-----------------------------------------------------------------------------
+ 
+-def test_to_be_a_function():
+-    for item in TEST_DATA:
+-        yield is_expected, item
++@pytest.mark.parametrize("item", TEST_DATA)
++def test_to_be_a_function(item):
++    is_expected(item)
+ 
+ 
+ def test_not_to_be_a_function():
+diff --git a/tests/types/test_numeric.py b/tests/types/test_numeric.py
+index 02e77e2..f9c92f2 100644
+--- a/tests/types/test_numeric.py
++++ b/tests/types/test_numeric.py
+@@ -7,6 +7,8 @@
+ # http://www.opensource.org/licenses/mit-license
+ # Copyright (c) 2013 Bernardo Heynemann heynemann@gmail.com
+ 
++import pytest
++
+ from preggy import expect
+ 
+ #-----------------------------------------------------------------------------
+@@ -25,6 +27,6 @@ def is_expected(item):
+ 
+ #-----------------------------------------------------------------------------
+ 
+-def test_to_be_numeric():
+-    for item in TEST_DATA:
+-        yield is_expected, item
++@pytest.mark.parametrize("item", TEST_DATA)
++def test_to_be_numeric(item):
++    is_expected(item)

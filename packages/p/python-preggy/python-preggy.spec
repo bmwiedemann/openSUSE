@@ -1,7 +1,7 @@
 #
 # spec file for package python-preggy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ URL:            https://github.com/heynemann/preggy
 Source:         https://files.pythonhosted.org/packages/source/p/preggy/preggy-%{version}.tar.gz
 # https://github.com/heynemann/preggy/issues/32 re LICENSE
 Patch0:         split-readme.patch
+# PATCH-FIX-UPSTREAM Based on gh#heynemann/preggy#38
+Patch1:         switch-to-pytest.patch
 BuildRequires:  %{python_module Unidecode}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

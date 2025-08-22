@@ -32,4 +32,13 @@
 - No more greedy globs in %files.</comment>
     <requestid>1153728</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>01e10dd2e9351f967a4dac71619f0934</srcmd5>
+    <version>1.4.4</version>
+    <time>1755877715</time>
+    <user>anag_factory</user>
+    <comment>- Add patch switch-to-pytest.patch:
+  * Use pytest features now that nose features have been removed.</comment>
+    <requestid>1300844</requestid>
+  </revision>
 </revisionlist>

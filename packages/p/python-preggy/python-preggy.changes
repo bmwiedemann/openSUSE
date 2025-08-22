@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 22 03:58:39 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch switch-to-pytest.patch:
+  * Use pytest features now that nose features have been removed.
+
+-------------------------------------------------------------------
 Fri Mar  1 04:22:23 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros.
