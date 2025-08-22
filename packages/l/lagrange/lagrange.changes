@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 21 20:36:58 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.18.7
+    - Revised handling of reserved URI characters according to RFC 3986. The
+      previous behavior did not fully conform to the standard.
+    - Fixed opening some WebP images. There was a problem checking for the
+      "image/webp" media type.
+    - Fixed removal of unexpected NUL characters from the source text.
+    - Fixed redundant mouse events when receiving touch events on the desktop.
+
+-------------------------------------------------------------------
 Wed Aug  6 18:33:19 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.18.6
