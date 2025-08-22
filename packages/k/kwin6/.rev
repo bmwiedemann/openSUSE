@@ -281,4 +281,13 @@
     <comment>Plasma 6.4.4 (forwarded request 1298101 from Vogtinator)</comment>
     <requestid>1298305</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>4209370e45f55d54ecc0b32ba8f35eb8</srcmd5>
+    <version>6.4.4</version>
+    <time>1755877629</time>
+    <user>anag_factory</user>
+    <comment>- Add patch to avoid flicker due to amdgpu driver bug (kde#508350):
+  * 0001-backends-drm-work-around-amdgpu-applying-GAMMA_LUT-i.patch (forwarded request 1300799 from Vogtinator)</comment>
+    <requestid>1300800</requestid>
+  </revision>
 </revisionlist>

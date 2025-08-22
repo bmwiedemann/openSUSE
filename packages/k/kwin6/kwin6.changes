@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 21 12:43:21 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to avoid flicker due to amdgpu driver bug (kde#508350):
+  * 0001-backends-drm-work-around-amdgpu-applying-GAMMA_LUT-i.patch
+
+-------------------------------------------------------------------
 Wed Aug  6 13:30:11 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.4:
