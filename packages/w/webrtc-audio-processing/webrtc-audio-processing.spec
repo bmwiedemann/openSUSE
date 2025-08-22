@@ -2,7 +2,7 @@
 #
 # spec file for package webrtc-audio-processing
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,6 +33,8 @@ Source:         webrtc-audio-processing-%{version}.tar.xz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM fix-build.patch alarrosa@suse.com -- Fix a number of "control reaches end of non-void function" errors
 Patch0:         fix-build.patch
+# PATCH-FIX-UPSTREAM -- Fix build with abseil-cpp 202508
+Patch1:         https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing/-/merge_requests/60.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel

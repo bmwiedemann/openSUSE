@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 22 08:12:43 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 60.patch: Fix build with abseil-cpp 202508 (boo#1248460).
+
+-------------------------------------------------------------------
 Mon Jun 23 07:41:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.1+git.4:
