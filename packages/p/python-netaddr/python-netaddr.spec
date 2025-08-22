@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-netaddr
 Version:        1.3.0
@@ -29,11 +33,16 @@ Source:         https://files.pythonhosted.org/packages/source/n/netaddr/netaddr
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 # SECTION test
 BuildRequires:  %{python_module iniconfig}
 BuildRequires:  %{python_module packaging}
@@ -73,6 +82,12 @@ sed -i "1{\@%{_bindir}/env python@d}" netaddr/{cli,ip/iana,eui/ieee}.py # Fix no
 
 %check
 %pytest
+
+%post
+%python_install_alternative netaddr
+
+%postun
+%python_uninstall_alternative netaddr
 
 %pre
 %python_libalternatives_reset_alternative netaddr
