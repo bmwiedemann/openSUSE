@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-pkginfo
 Version:        1.12.1.2
@@ -30,12 +34,17 @@ BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-setuptools
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
@@ -65,6 +74,12 @@ the *.egg-info stored in a "development checkout"
 # install wheel in tests with an explicit metadata version, looks like we have a different default (openSUSE-only)
 sed -iE "s/_make_installed('wheel')/_make_installed('wheel', metadata_version='2.3')/" pkginfo/tests/test_installed.py
 %pytest
+
+%post
+%python_install_alternative pkginfo
+
+%postun
+%python_uninstall_alternative pkginfo
 
 %pre
 %python_libalternatives_reset_alternative pkginfo
