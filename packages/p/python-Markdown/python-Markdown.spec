@@ -1,6 +1,7 @@
 #
 # spec file for package python-Markdown
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +26,11 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-Markdown%{psuffix}
 Version:        3.8.2
@@ -44,12 +49,17 @@ BuildRequires:  %{python_module importlib-metadata >= 4.4 if %python-base < 3.10
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 77.0}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       (python-importlib-metadata >= 4.4 if python-base < 3.10)
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if %{with test}
 BuildRequires:  %{python_module Markdown = %{version}}
 BuildRequires:  %{python_module PyYAML}
@@ -85,6 +95,12 @@ supported by the [Available Extensions][].
 %endif
 
 %if %{without test}
+%post
+%python_install_alternative markdown_py
+
+%postun
+%python_uninstall_alternative markdown_py
+
 %pre
 %python_libalternatives_reset_alternative markdown_py
 

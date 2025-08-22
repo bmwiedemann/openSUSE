@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 21 09:30:43 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems only
+
+-------------------------------------------------------------------
 Tue Aug 12 18:28:43 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add fix-py314.patch to fix failing tests on 3.14.* or 3.13.6+
