@@ -48,4 +48,12 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1291696</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>1dc738a2dd103164889f75ff19583d5e</srcmd5>
+    <version>0.17.3</version>
+    <time>1755877611</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
+    <requestid>1300718</requestid>
+  </revision>
 </revisionlist>

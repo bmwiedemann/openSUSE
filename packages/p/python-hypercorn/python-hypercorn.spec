@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-hypercorn
 Version:        0.17.3
@@ -39,15 +43,20 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module taskgroup if %python-base < 3.11}
 BuildRequires:  %{python_module trio >= 0.22.0}
 BuildRequires:  %{python_module wsproto >= 0.14.0}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-h11
 Requires:       python-h2 >= 3.1.0
 Requires:       python-priority
 Requires:       python-wsproto >= 0.14.0
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if %{python_version_nodots} < 311
 Requires:       python-exceptiongroup >= 1.1
 Requires:       python-taskgroup
@@ -80,6 +89,12 @@ sed -i 's/--no-cov-on-fail//' pyproject.toml
 %check
 # Broken with new trio
 %pytest -k 'not test_startup_failure'
+
+%post
+%python_install_alternative hypercorn
+
+%postun
+%python_uninstall_alternative hypercorn
 
 %pre
 %python_libalternatives_reset_alternative hypercorn
