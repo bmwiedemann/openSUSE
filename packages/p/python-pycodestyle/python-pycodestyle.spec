@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycodestyle
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-pycodestyle
 Version:        2.14.0
@@ -30,13 +34,18 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Provides:       python-pep8 = %{version}
 Obsoletes:      python-pep8 < %{version}
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -58,6 +67,12 @@ sed -ri '1s/^#!.*//' pycodestyle.py
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pycodestyle
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}
+
+%post
+%python_install_alternative pycodestyle
+
+%postun
+%python_uninstall_alternative pycodestyle
 
 %pre
 %python_libalternatives_reset_alternative pycodestyle

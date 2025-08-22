@@ -232,4 +232,12 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1294497</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>1a2dcc80a9cfac64a1609a351d717ede</srcmd5>
+    <version>2.14.0</version>
+    <time>1755877635</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
+    <requestid>1300830</requestid>
+  </revision>
 </revisionlist>
