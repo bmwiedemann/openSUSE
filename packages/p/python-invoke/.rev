@@ -217,4 +217,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1294187</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>9d8c536f062594b506de58c4cb06f359</srcmd5>
+    <version>2.2.0</version>
+    <time>1755877614</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
+    <requestid>1300724</requestid>
+  </revision>
 </revisionlist>

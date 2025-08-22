@@ -24,7 +24,11 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-invoke%{psuffix}
 Version:        2.2.0
@@ -39,14 +43,19 @@ Patch0:         remove-icecream.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools > 56}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-PyYAML
 Requires:       python-fluidity-sm
 Requires:       python-lexicon
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if %{with test}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module fluidity-sm}
@@ -95,6 +104,12 @@ skiptests+=" or overridden_fallback_affects_result_pty_value or defaults_to_bash
 skiptests+=" or may_be_overridden_when_pty_True or uses_execve_for_pty_True or stop_mutes_errors_on_pty_close"
 %pytest -s -k "not ($skiptests)" tests
 %endif
+
+%post
+%python_install_alternative inv invoke
+
+%postun
+%python_uninstall_alternative inv
 
 %pre
 %python_libalternatives_reset_alternative inv
