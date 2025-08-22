@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 21 08:40:47 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems only
+
+-------------------------------------------------------------------
 Wed May 28 12:27:02 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build and libalternatives

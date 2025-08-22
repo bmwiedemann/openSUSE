@@ -26,7 +26,6 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %bcond_with ringdisabled
 #              | Ring1 | Factory |
 # ringdisabled |   x   |         |
@@ -39,6 +38,7 @@
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150400
 %bcond_without ringdisabled
 %endif
+%bcond_with experimental
 %if %{with ringdisabled}
 %bcond_with full
 %bcond_with all
@@ -46,9 +46,11 @@
 %bcond_without full
 %bcond_without all
 %endif
-%bcond_with experimental
+%if 0%{?suse_version} > 1500
 %bcond_without libalternatives
-
+%else
+%bcond_with libalternatives
+%endif
 Name:           python-ini2toml%{psuffix}
 Version:        0.15
 Release:        0
@@ -60,10 +62,17 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-packaging >= 20.7
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if %{with test}
 BuildRequires:  %{python_module packaging >= 20.7}
 BuildRequires:  %{python_module pytest}
@@ -77,17 +86,13 @@ BuildRequires:  %{python_module ini2toml-full = %{version}}
 %if %{with all}
 BuildRequires:  %{python_module ini2toml-all = %{version}}
 %endif
-
 %if %{with full} || %{with all}
 BuildRequires:  %{python_module ConfigUpdater}
 %endif
-
 %if %{with experimental}
 BuildRequires:  %{python_module ini2toml-experimental = %{version}}
 %endif
 %endif
-BuildRequires:  fdupes
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -181,6 +186,12 @@ donttest=(-k "not test_auto_formatting")
 %endif
 %pytest "${ignoretests[@]}" "${donttest[@]}"
 %endif
+
+%post
+%python_install_alternative ini2toml
+
+%postun
+%python_uninstall_alternative ini2toml
 
 %pre
 %python_libalternatives_reset_alternative ini2toml
