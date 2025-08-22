@@ -1,7 +1,7 @@
 #
 # spec file for package capnproto
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} >= 1599
+%bcond_without clang
+%else
+%bcond_with clang
+%endif
+
 %define _libver 1_2_0
 Name:           capnproto
 Version:        1.2.0
@@ -25,7 +31,7 @@ License:        MIT
 URL:            https://capnproto.org
 Source:         https://capnproto.org/capnproto-c++-%{version}.tar.gz
 BuildRequires:  cmake
-%if 0%{?suse_version} >= 1599
+%if %{with clang}
 BuildRequires:  clang
 BuildRequires:  clang-devel
 %else
@@ -62,15 +68,20 @@ This package provides development headers for capnproto.
 %autosetup -n %{name}-c++-%{version}
 
 %build
+%if %{with clang}
+export CC=clang
+export CXX=clang++
+%else
 test -x "$(type -p g++-7)" && export CXX=g++-7
+%endif
 %if 0%{?suse_version} >= 1699
 export CXXFLAGS="${optflags} -std=c++20"
 %endif
-%configure
-%make_build
+%cmake
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 find %{buildroot}%{_libdir} -type f \( -name "*.a" -o -name "*.la" \) -delete -print
 
 %post -n libcapnp-%{_libver} -p /sbin/ldconfig
@@ -85,15 +96,15 @@ find %{buildroot}%{_libdir} -type f \( -name "*.a" -o -name "*.la" \) -delete -p
 %{_bindir}/capnpc-capnp
 
 %files -n libcapnp-%{_libver}
-%{_libdir}/libcapnp-%{version}.so
-%{_libdir}/libcapnp-rpc-%{version}.so
-%{_libdir}/libcapnpc-%{version}.so
-%{_libdir}/libcapnp-json-%{version}.so
-%{_libdir}/libcapnp-websocket-%{version}.so
-%{_libdir}/libkj-test-%{version}.so
-%{_libdir}/libkj-%{version}.so
-%{_libdir}/libkj-async-%{version}.so
-%{_libdir}/libkj-http-%{version}.so
+%{_libdir}/libcapnp.so.%{version}
+%{_libdir}/libcapnp-rpc.so.%{version}
+%{_libdir}/libcapnpc.so.%{version}
+%{_libdir}/libcapnp-json.so.%{version}
+%{_libdir}/libcapnp-websocket.so.%{version}
+%{_libdir}/libkj-test.so.%{version}
+%{_libdir}/libkj.so.%{version}
+%{_libdir}/libkj-async.so.%{version}
+%{_libdir}/libkj-http.so.%{version}
 
 %files -n libcapnp-devel
 %{_includedir}/capnp
@@ -112,6 +123,7 @@ find %{buildroot}%{_libdir} -type f \( -name "*.a" -o -name "*.la" \) -delete -p
 %{_libdir}/cmake/CapnProto/CapnProtoConfigVersion.cmake
 %{_libdir}/cmake/CapnProto/CapnProtoMacros.cmake
 %{_libdir}/cmake/CapnProto/CapnProtoTargets.cmake
+%{_libdir}/cmake/CapnProto/CapnProtoTargets-relwithdebinfo.cmake
 %{_libdir}/pkgconfig/capnp.pc
 %{_libdir}/pkgconfig/capnpc.pc
 %{_libdir}/pkgconfig/capnp-json.pc

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 18 11:52:06 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- switch to cmake for building which will actually provide the last
+  missing file for the cmake files CapnProtoTargets-relwithdebinfo.cmake
+- properly set CC/CXX based on the compiler used
+- shared library naming changes from libsomething-%{version}.so to
+  libsomething.so.%{version}
+
+-------------------------------------------------------------------
 Mon Jul 21 10:11:31 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Update capnproto.spec:
