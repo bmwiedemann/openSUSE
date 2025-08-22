@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 21 17:00:29 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Add bqplot-js.patch boo#1248431 CVE-2025-9287 CVE-2025-9288
+  * We need to keep most of the js lock (yarn.lock) because 0.12
+    is still not fully updatable with jupyterlab 4. This will
+    hopefully change with 0.13, which is at rc stage
+
+-------------------------------------------------------------------
 Sun Jul 20 16:19:08 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update node build preparation and fix jupyter extension package

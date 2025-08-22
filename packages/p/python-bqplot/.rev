@@ -190,4 +190,15 @@
   version</comment>
     <requestid>1294610</requestid>
   </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>c56cfc131c1792be7088b9bfdcb4636d</srcmd5>
+    <version>unknown</version>
+    <time>1755877656</time>
+    <user>anag_factory</user>
+    <comment>- Add bqplot-js.patch boo#1248431 CVE-2025-9287 CVE-2025-9288
+  * We need to keep most of the js lock (yarn.lock) because 0.12
+    is still not fully updatable with jupyterlab 4. This will
+    hopefully change with 0.13, which is at rc stage</comment>
+    <requestid>1300838</requestid>
+  </revision>
 </revisionlist>

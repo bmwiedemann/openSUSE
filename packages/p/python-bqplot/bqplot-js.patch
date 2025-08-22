@@ -1,0 +1,23 @@
+diff -ur a/js/package.json b/js/package.json
+--- a/js/package.json	2025-05-21 19:20:26.000000000 +0200
++++ b/js/package.json	2025-08-21 18:56:06.584707667 +0200
+@@ -35,7 +35,7 @@
+   "devDependencies": {
+     "@jupyter-widgets/base-manager": "^1.0.0",
+     "@jupyter-widgets/controls": "^5",
+-    "@jupyterlab/builder": "^3.0.0",
++    "@jupyterlab/builder": "^4.0.0",
+     "@types/chai": "^4.1.7",
+     "@types/d3": "^5.7.2",
+     "@types/expect.js": "^0.3.29",
+@@ -103,5 +103,9 @@
+     "css/",
+     "lib/",
+     "shaders/"
+-  ]
++  ],
++  "resolutions": {
++    "cipher-base": "1.0.6",
++    "sha.js": "2.4.12"
++  }
+ }

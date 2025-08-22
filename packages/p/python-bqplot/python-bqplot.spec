@@ -31,6 +31,8 @@ Source0:        https://github.com/bqplot/bqplot/archive/refs/tags/%{pyver}.tar.
 Source1:        node_modules.tar.xz
 # Script to vendor node_modules sources
 Source2:        create_node_modules.sh
+# PATCH-FIX-OPENSUSE bqplot-js.patch boo#1248431 CVE-2025-9287 CVE-2025-9288
+Patch0:         bqplot-js.patch
 BuildRequires:  %{python_module jupyter-packaging}
 BuildRequires:  %{python_module jupyterlab}
 BuildRequires:  %{python_module pip}
@@ -95,8 +97,6 @@ This package provides the jupyterlab extension.
 
 %prep
 %autosetup -p1 -n bqplot-%{pyver} -a1
-# sync with create_node_modules.sh
-sed -i '/builder/ s/\^3/\^4/' js/package.json
 rm bqplot/install.py
 
 %build
@@ -104,7 +104,6 @@ pushd js
 export PATH="${PATH}:node_modules/.bin"
 jlpm run build
 popd
-echo "IM HERE"
 %pyproject_wheel
 
 %install
