@@ -1,7 +1,7 @@
 #
 # spec file for package python-sshtunnel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-sshtunnel
 Version:        0.4.0
@@ -36,9 +41,14 @@ BuildRequires:  openssh
 BuildRequires:  python-rpm-macros
 Requires:       openssh
 Requires:       python-paramiko >= 2.7.2
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 %python_subpackages
 
 %description
@@ -65,6 +75,9 @@ sed -i '1{\,^#!%{_bindir}/env python,d}' sshtunnel.py
 sed -i 's:import mock:from unittest import mock:' tests/test_forwarder.py
 %pytest
 
+%pre
+%python_libalternatives_reset_alternative sshtunnel
+
 %post
 %python_install_alternative sshtunnel
 
@@ -77,6 +90,6 @@ sed -i 's:import mock:from unittest import mock:' tests/test_forwarder.py
 %python_alternative %{_bindir}/sshtunnel
 %pycache_only %{python_sitelib}/__pycache__/sshtunnel*pyc
 %{python_sitelib}/sshtunnel.py
-%{python_sitelib}/sshtunnel-{%version}.dist-info
+%{python_sitelib}/sshtunnel-%{version}.dist-info
 
 %changelog

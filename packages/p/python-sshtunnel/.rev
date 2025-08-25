@@ -90,4 +90,12 @@
     <comment>- Require update-alternatives for the scriptlets.</comment>
     <requestid>1163239</requestid>
   </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>da8ea978034dc204f20d979cc382d436</srcmd5>
+    <version>0.4.0</version>
+    <time>1756147186</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301296</requestid>
+  </revision>
 </revisionlist>
