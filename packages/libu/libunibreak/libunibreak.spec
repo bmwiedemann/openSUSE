@@ -2,6 +2,7 @@
 # spec file for package libunibreak
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +17,10 @@
 #
 
 
-%define         libversion 5
-%define         altver  5_1
+%define         libversion 6
+%define         altver  6_1
 Name:           libunibreak
-Version:        5.1
+Version:        6.1
 Release:        0
 Summary:        Unicode line-breaking library
 License:        Zlib
@@ -27,11 +28,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/adah1972/libunibreak
 Source0:        https://github.com/adah1972/libunibreak/releases/download/libunibreak_%{altver}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-UPSTREAM libunibreak-include-test-data.patch gh#adah1972/libunibreak#41 badshah400@gmail.com -- Include working unicode data for tests, as tests fail against upstream unicode 15 data files; upstream commits b992362 and 839f06f
-Patch0:         libunibreak-include-test-data.patch
-# Needed because Patch0 modifies Makefile.am files
-BuildRequires:  libtool
-# /
 BuildRequires:  pkgconfig
 Obsoletes:      liblinebreak < 2.1
 Provides:       liblinebreak = 2.1
@@ -70,9 +66,6 @@ Annex 29.
 %autosetup -p1
 
 %build
-# Patch0 modifies Makefile.am
-autoreconf -fvi
-# /
 %configure \
 	--disable-static
 %make_build
@@ -84,8 +77,7 @@ find %{buildroot} -name '*.*a' -print -delete
 %check
 %make_build check
 
-%post -n libunibreak%{libversion} -p /sbin/ldconfig
-%postun -n libunibreak%{libversion} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libunibreak%{libversion}
 
 %files -n libunibreak%{libversion}
 %license LICENCE
@@ -94,7 +86,13 @@ find %{buildroot} -name '*.*a' -print -delete
 %files devel
 %license LICENCE
 %doc AUTHORS NEWS README.md
-%{_includedir}/*
+%{_includedir}/eastasianwidthdef.h
+%{_includedir}/graphemebreak.h
+%{_includedir}/linebreak.h
+%{_includedir}/linebreakdef.h
+%{_includedir}/unibreakbase.h
+%{_includedir}/unibreakdef.h
+%{_includedir}/wordbreak.h
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/libunibreak.pc
 
