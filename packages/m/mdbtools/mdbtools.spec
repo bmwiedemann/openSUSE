@@ -2,6 +2,7 @@
 # spec file for package mdbtools
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,25 +20,23 @@
 %define libmdb    libmdb3
 %define libmdbsql libmdbsql3
 Name:           mdbtools
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        A Suite of Libraries and Programs to Access Microsoft Access Databases
 License:        GPL-2.0-or-later
 Group:          Productivity/Databases/Tools
 URL:            https://github.com/mdbtools
 Source0:        https://github.com/mdbtools/mdbtools/releases/download/v%{version}/mdbtools-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
-BuildRequires:  libtool
-BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  readline-devel
-BuildRequires:  txt2man
-BuildRequires:  unixODBC-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(odbc)
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(readline)
+%else
+BuildRequires:  readline-devel
+%endif
 
 %description
 Mdbtools contains:
@@ -55,9 +54,6 @@ Summary:        All files necessary for development with the MDB Tools libraries
 Group:          Development/Libraries/C and C++
 Requires:       %{libmdbsql} = %{version}
 Requires:       %{libmdb} = %{version}
-Requires:       flex
-Requires:       glib2-devel
-Requires:       unixODBC-devel
 
 %description devel
 Mdbtools contains:
@@ -85,16 +81,13 @@ Group:          Productivity/Databases/Tools
 Contains shared library %{libmdbsql} from %{name}
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
-autoreconf -fiv
 %configure \
   --disable-static \
   --with-pic \
   --with-unixodbc=%{_prefix} \
-  --disable-gmdb2 \
-  --disable-gtk-doc \
   %{nil}
 %make_build
 
@@ -105,25 +98,38 @@ autoreconf -fiv
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{libmdb} -p /sbin/ldconfig
-%post -n %{libmdbsql} -p /sbin/ldconfig
-%postun -n %{libmdb} -p /sbin/ldconfig
-%postun -n %{libmdbsql} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libmdb}
+%ldconfig_scriptlets -n %{libmdbsql}
 
 %files
-%license COPYING
+%license COPYING*
 %doc AUTHORS NEWS HACKING
-%{_bindir}/mdb-*
-%{_mandir}/man1/mdb-*.1%{?ext_man}
+%{_bindir}/mdb-array
+%{_bindir}/mdb-count
+%{_bindir}/mdb-export
+%{_bindir}/mdb-header
+%{_bindir}/mdb-hexdump
+%{_bindir}/mdb-json
+%{_bindir}/mdb-parsecsv
+%{_bindir}/mdb-prop
+%{_bindir}/mdb-queries
+%{_bindir}/mdb-schema
+%{_bindir}/mdb-sql
+%{_bindir}/mdb-tables
+%{_bindir}/mdb-ver
+%{_mandir}/man1/*.1%{?ext_man}
 %{_datadir}/bash-completion/completions/mdb-*
 
 %files -n %{libmdb}
+%license COPYING*
 %{_libdir}/libmdb.so.3*
 
 %files -n %{libmdbsql}
+%license COPYING*
 %{_libdir}/libmdbsql.so.3*
 
 %files devel
+%license COPYING*
 %{_includedir}/mdb*.h
 %{_libdir}/libmdbsql.so
 %{_libdir}/libmdb.so

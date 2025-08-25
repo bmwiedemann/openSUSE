@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Aug 23 07:45:49 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.0.1:
+  * Add index and primary key output to the sqlite schema writer
+    backend
+  * Make DSN and DBQ extraction from connection string case
+    insensitive
+  * Change mapping of MDB_DOUBLE for MySQL from float to double
+  * Add support for SQLGetData converting floating point types
+  * memory handling correctness fixes and other developer visible
+    fixes
+- spec file changes:
+  * remove unneeded bootstrapping and unneeded build dependencies,
+    this should fix all architectures and ports for Tumbleweed
+  * drop non-existent configure switches
+
+-------------------------------------------------------------------
 Tue Jan  4 22:58:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.0:
