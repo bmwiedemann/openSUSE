@@ -10,7 +10,10 @@
 # BUILDDIR                         build directory (often $HOME/rpmbuild/BUILD)
 # 
 # environment variables:
+#    OBJCOPY  - object file copy tool (optional, default is $host-objcopy)
+#    OBJDUMP  - object file dumper (optional, default is $host-objdump)
 #    ROOT_DIR - directory where to install debug sources (optional, default is <$ROOT_DIR>/src/debug)
+#    SRCFILES - tool to get debug source files from binaries (optional, default is $host-objdump-srcfiles)
 # 
 # $PWD package dir below $BUILDDIR
 
@@ -20,24 +23,39 @@ host="i686-w64-mingw32"
 # extract debug info for a single file as child process
 if [[ -v RUN_SINGLE ]]; then
 	f=$1
-	case $("$host-objdump" -h "$f" 2>/dev/null | grep -E -o '(debug[\.a-z_]*|gnu.version)') in
+	result=$("$OBJDUMP" -h "$f" 2>/dev/null | grep -E -o '(debug[\.a-z_]*|gnu.version)')
+	case $result in
 		*debuglink*) exit 0;;
 		*debug*) ;;
 		*gnu.version*)
 			echo "WARNING: "`echo $f | sed -e "s,^$RPM_BUILD_ROOT/*,/,"`" is already stripped!"
 			exit 0
-		;;
-		*) exit 0 ;;
+			;;
+		*) 
+			echo "WARNING: "`echo $f | sed -e "s,^$RPM_BUILD_ROOT/*,/,"`" unknown case, value is '$result'"
+			exit 0
+			;;
 	esac
 	echo extracting debug info from $f
 	# grep all listed source files belonging to this package into temporary source file list.
-	"$host-objdump" -Wi "$f" | "$host-objdump-srcfiles" | grep $srcdir >>"$SOURCEFILE.tmp"
-	"$host-objcopy" --only-keep-debug "$f" "$f.debug" || :
+	"$OBJDUMP" -Wi "$f" | "$SRCFILES" | grep $srcdir >>"$SOURCEFILE.tmp"
+	"$OBJCOPY" --only-keep-debug "$f" "$f.debug" || :
 	pushd `dirname $f`
-	"$host-objcopy" --add-gnu-debuglink=`basename "$f.debug"` --strip-unneeded `basename "$f"` || :
+	"$OBJCOPY" --add-gnu-debuglink=`basename "$f.debug"` --strip-unneeded `basename "$f"` || :
 	popd
 	exit 0
 fi
+
+[ -z "$OBJDUMP" ] && OBJDUMP="$host-objdump"
+[ -z "$OBJCOPY" ] && OBJCOPY="$host-objcopy"
+[ -z "$SRCFILES" ] && SRCFILES="$host-objdump-srcfiles"
+
+for i in $OBJDUMP $OBJCOPY $SRCFILES; do
+	if ! [ -x "$(command -v $i)" ]; then
+		echo "Error: $i is not installed." >&2
+		exit 1
+	fi
+done
 
 # speed up running objdump, see bug https://bugzilla.opensuse.org/show_bug.cgi?id=1202431
 export MALLOC_CHECK_=0
@@ -80,7 +98,15 @@ fi
 
 # extract debug info
 find $RPM_BUILD_ROOT -type f -name "*.exe" -or -name "*.dll" | sort | \
-	srcdir=$srcdir SOURCEFILE=$SOURCEFILE BUILDDIR=$BUILDDIR RPM_BUILD_ROOT=$RPM_BUILD_ROOT RUN_SINGLE=1 xargs --max-args=1 --max-procs=0 bash -x $0
+	BUILDDIR=$BUILDDIR \
+	OBJDUMP=$OBJDUMP \
+	OBJCOPY=$OBJCOPY \
+	RPM_BUILD_ROOT=$RPM_BUILD_ROOT \
+	RUN_SINGLE=1 \
+	SOURCEFILE=$SOURCEFILE \
+	SRCFILES=$SRCFILES \
+	srcdir=$srcdir \
+	xargs --max-args=1 --max-procs=0 bash -x $0
 
 # generate debug info file list
 find $RPM_BUILD_ROOT -type f \

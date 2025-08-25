@@ -10,6 +10,14 @@ if [ -n "$1" ]; then
 fi
 
 [ -z "$OBJDUMP" ] && OBJDUMP="$host-objdump"
+[ -z "$PKGCONF" ] && PKGCONF="$host-pkgconf"
+
+for i in $OBJDUMP $PKGCONF; do
+	if ! [ -x "$(command -v $i)" ]; then
+		echo "Error: $i is not installed." >&2
+		exit 1
+	fi
+done
 
 filelist=`sed "s/['\"]/\\\&/g"`
 
@@ -25,7 +33,7 @@ done
 
 for g in $pcs; do
     [ ! -f "$g" ] && continue
-	PKG_CONFIG_PATH="${g%/*}" "$host-pkgconf" --print-errors --print-provides "$g" | awk '{ print "'"$target"'(pkg:"$1")", $2, $3 }'
+	PKG_CONFIG_PATH="${g%/*}" "$PKGCONF" --print-errors --print-provides "$g" | awk '{ print "'"$target"'(pkg:"$1")", $2, $3 }'
 done | sort -u
 
 for h in $libs; do

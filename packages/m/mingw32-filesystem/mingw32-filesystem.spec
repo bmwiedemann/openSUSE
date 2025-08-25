@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-filesystem
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %define _rpmmacrodir %{_sysconfdir}/rpm
 %endif
 Name:           mingw32-filesystem
-Version:        20250814
+Version:        20250822
 Release:        0
 Summary:        MinGW base filesystem and environment
 License:        GPL-2.0-or-later
