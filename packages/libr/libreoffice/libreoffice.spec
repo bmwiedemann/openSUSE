@@ -1,7 +1,7 @@
 #
 # spec file for package libreoffice
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -141,6 +141,8 @@ Patch991:       libreoffice-no-destdircheck.patch
 Patch992:       python34-no-f-strings.patch
 # PATCH-FIX-OPENSUSE override date in clucene files (boo#1047218)
 Patch995:       reproducible-clucene.patch
+# Add .key (Apple Keynote) files to Bash completion (tdf#167995)
+Patch996:       bash-completion-key.patch
 BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
@@ -1104,6 +1106,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %if 0%{?suse_version} < 1550
 %patch -P 992 -p1
 %endif
+%patch -P 996 -p1
 
 # Disable some of the failing tests (some are random)
 %if 0%{?suse_version} < 1330

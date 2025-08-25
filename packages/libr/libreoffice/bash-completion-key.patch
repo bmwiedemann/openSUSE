@@ -1,0 +1,12 @@
+diff -ru libreoffice-25.2.5.2.old/bin/generate-bash-completion.py libreoffice-25.2.5.2/bin/generate-bash-completion.py
+--- libreoffice-25.2.5.2.old/bin/generate-bash-completion.py	2025-07-11 09:23:26.000000000 -0500
++++ libreoffice-25.2.5.2/bin/generate-bash-completion.py	2025-08-17 20:30:21.409061410 -0500
+@@ -31,7 +31,7 @@
+ 
+ IMPRESSDOCS = ["sxi", "sti", "ppt", "pps", "pot", "sxd", "sda", "sdd", "sdp",
+                "vor", "cgm", "odp", "otp", "fodp", "ppsm", "ppsx", "pptm", "pptx",
+-               "potm", "potx"]
++               "potm", "potx", "key"]
+ 
+ MATHDOCS = ["sxm", "smf", "mml", "odf"]
+ 

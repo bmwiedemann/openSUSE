@@ -3714,4 +3714,12 @@ Petr</comment>
   * fix_build_with_poppler_25.05.patch</comment>
     <requestid>1294466</requestid>
   </revision>
+  <revision rev="311" vrev="2">
+    <srcmd5>38f671685d458cad91cb53be48f8b9aa</srcmd5>
+    <version>25.2.5.2</version>
+    <time>1756147006</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1301201</requestid>
+  </revision>
 </revisionlist>
