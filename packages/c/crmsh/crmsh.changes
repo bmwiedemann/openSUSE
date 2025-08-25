@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Aug 25 07:40:03 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250825.21aba9d5:
+  * Fix: ui_cluster: Call crm report directly for the legacy `crm cluster health` command (bsc#1230324)
+
+-------------------------------------------------------------------
+Fri Aug 22 04:13:58 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250822.b447ae3f:
+  * Dev: run-functional-tests: Add -i option for podman exec command to support interactive mode
+
+-------------------------------------------------------------------
+Thu Aug 21 02:01:31 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250821.fb2da632:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: xmlutil: Refactor CrmMonXmlParser.get_node_list to be an instance method
+  * Dev: behave: Add funtional test for previous commits
+  * Dev: utils: Refactor validate_and_get_reachable_nodes for clearer logic
+  * Dev: xmlutil: Use a single node_type parameter instead of two mutually exclusive parameters
+  * Dev: utils: Skip reachable checking for pacemaker remote node
+  * Dev: cibquery: Remove filter condition for pacemaker remote node
+  * Dev: ui_node: Enable maintenance pacemaker remote node
+  * Dev: ui_node: Enable standby/online pacemaker remote node
+  * Dev: xmlutil: Drop xmlutil.listnodes function
+
+-------------------------------------------------------------------
+Wed Aug 20 03:55:21 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250820.2550d50a:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: bootstrap: No need to remove /var/lib/crmsh
+
+-------------------------------------------------------------------
+Mon Aug 18 06:52:37 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250818.c02d21b0:
+  * Dev: add asciidoc to the test image
+
+-------------------------------------------------------------------
 Fri Aug 15 03:27:28 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250815.8d89c3d0:
