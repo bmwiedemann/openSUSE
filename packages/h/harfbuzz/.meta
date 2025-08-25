@@ -1,0 +1,8 @@
+<package name="harfbuzz" project="openSUSE:Factory">
+  <title>An OpenType text shaping engine</title>
+  <description>HarfBuzz is an OpenType text shaping engine.
+
+</description>
+  <devel project="GNOME:Factory" package="harfbuzz"/>
+  <url>http://www.freedesktop.org/wiki/Software/HarfBuzz</url>
+</package>
