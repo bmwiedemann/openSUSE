@@ -18,7 +18,7 @@
 
 %define         major 1
 Name:           vkd3d
-Version:        1.16
+Version:        1.17
 Release:        0
 Summary:        Direct3D 12 to Vulkan translation library
 License:        LGPL-2.1-or-later
@@ -138,6 +138,7 @@ rm -rf %{buildroot}%{_libdir}/*.la
 %license COPYING LICENSE
 %{_bindir}/%{name}-gears
 %{_bindir}/%{name}-triangle
+%{_bindir}/%{name}-teapot
 
 %files devel
 %license COPYING LICENSE

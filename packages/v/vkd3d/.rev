@@ -482,4 +482,15 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 If you have any suggestions for improvement, please let me know! (forwarded request 1284966 from DarkWav)</comment>
     <requestid>1285025</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a1b98654c3ffaecb99e0580745a773b0</srcmd5>
+    <version>1.17</version>
+    <time>1756147070</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.17:
+  - Initial HLSL support for thread group shared memory.
+  - Several features have been implemented for the experimental Metal Shading Language target.
+  - Miscellaneous bug fixes. (forwarded request 1301121 from msmeissn)</comment>
+    <requestid>1301122</requestid>
+  </revision>
 </revisionlist>

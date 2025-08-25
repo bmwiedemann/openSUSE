@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 24 08:56:58 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- Update to version 1.17:
+  - Initial HLSL support for thread group shared memory.
+  - Several features have been implemented for the experimental Metal Shading Language target.
+  - Miscellaneous bug fixes.
+
+-------------------------------------------------------------------
 Thu Jun 12 02:18:29 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 1.16:
