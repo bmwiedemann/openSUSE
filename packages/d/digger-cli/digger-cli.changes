@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 25 04:48:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.120:
+  * Paginate Comment Retrieval  (#2107)
+  * enable debug logs (#2106)
+  * Feat/breardon2011/logging extended (#2100)
+
+-------------------------------------------------------------------
 Fri Aug 22 04:48:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.119:
