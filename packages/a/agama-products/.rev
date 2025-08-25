@@ -286,4 +286,13 @@
   (gh#agama-project/agama#2666).</comment>
     <requestid>1300496</requestid>
   </revision>
+  <revision rev="26" vrev="26">
+    <srcmd5>7fc3f368fa861dac21d029878e0b448c</srcmd5>
+    <version>0</version>
+    <time>1756147167</time>
+    <user>anag_factory</user>
+    <comment>- Fix failure of agama-products build after drop of is_opensuse
+  on SLE16 (bsc#1248484)</comment>
+    <requestid>1301279</requestid>
+  </revision>
 </revisionlist>
