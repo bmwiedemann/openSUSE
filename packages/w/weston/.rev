@@ -311,4 +311,12 @@ For the future don't be shy to send patches upstream ;-) (forwarded request 5806
     <comment>- Update to release 14.0.2</comment>
     <requestid>1272885</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>b8b708a655f1189cb4534108c60a791b</srcmd5>
+    <version>14.0.2</version>
+    <time>1756147039</time>
+    <user>anag_factory</user>
+    <comment>boo#1248571</comment>
+    <requestid>1301016</requestid>
+  </revision>
 </revisionlist>

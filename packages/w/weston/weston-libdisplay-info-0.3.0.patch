@@ -1,0 +1,28 @@
+From 394fcf054e3d1e94c254bf1915945fbb44551130 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Wed, 20 Aug 2025 15:27:15 +0200
+Subject: [PATCH] build: Allow libdisplay-info 0.3.0
+
+There are no breaking changes for the high-level API that Weston uses.
+
+Based on upstream change: https://gitlab.freedesktop.org/wayland/weston/-/commit/683eabb
+---
+ libweston/backend-drm/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libweston/backend-drm/meson.build b/libweston/backend-drm/meson.build
+index 002669e..a8f2ea5 100644
+--- a/libweston/backend-drm/meson.build
++++ b/libweston/backend-drm/meson.build
+@@ -4,7 +4,7 @@ endif
+ 
+ dep_libdisplay_info = dependency(
+ 	'libdisplay-info',
+-	version: ['>= 0.1.1', '< 0.3.0'],
++	version: ['>= 0.1.1', '< 0.4.0'],
+ 	fallback: ['display-info', 'di_dep'],
+ 	default_options: [
+ 		'werror=false',
+-- 
+2.50.1
+

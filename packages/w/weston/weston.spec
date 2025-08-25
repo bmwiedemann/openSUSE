@@ -29,6 +29,8 @@ URL:            https://wayland.freedesktop.org/
 #Git-Web:	https://cgit.freedesktop.org/wayland/weston/
 Source:         https://gitlab.freedesktop.org/wayland/weston/-/releases/%version/downloads/%name-%version.tar.xz
 Source2:        https://gitlab.freedesktop.org/wayland/weston/-/releases/%version/downloads/%name-%version.tar.xz.sig
+# PATCH-FIX-UPSTREAM -- weston-libdisplay-info-0.3.0.patch
+Patch0:         weston-libdisplay-info-0.3.0.patch
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel >= 2.27
