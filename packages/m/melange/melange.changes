@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 25 04:46:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.31.0:
+  * qemu_runner: Identify as qemu intentionally
+  * Download alpine kernel for local testing
+  * qemu_runner: An hour is far too long for qemu to get networking
+    working by defualt
+  * .gitignore: ignore the kernel directory
+  * feat: go bump - go work vendor (#2136)
+  * More summarize output info. (#2124)
+  * build(deps): bump the gomod group with 8 updates (#2126)
+
+-------------------------------------------------------------------
 Tue Aug 19 05:51:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.6:
