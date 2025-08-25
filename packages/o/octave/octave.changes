@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 22 14:56:24 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix macro for building of octave-forge packages:
+  + Avoid rebuild in install, use intermediate tarball from
+    build step. Also fixes reproducible-build, as it removes a
+    mktemp path from generated files (boo#1062303).
+- Fix macro for testing octave-forge packages:
+  + Fix test detection due to incorect '%' quoting
+  + Load build package before testing it
+  + Include tests defined in binary sources
+
+-------------------------------------------------------------------
 Fri Jun  6 22:16:36 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 10.2.0:

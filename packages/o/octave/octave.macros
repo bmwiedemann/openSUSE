@@ -30,31 +30,39 @@
     HOME=${PWD} \
     mkdir -p %{buildroot}%{octpackages_dir} \
     mkdir -p %{buildroot}%{octlib_dir} \
-    %octave --eval "pkg prefix %{buildroot}%{octpackages_dir} %{buildroot}%{octlib_dir}; pkg install -nodeps %{octpkg}-%{version}.tar.gz" \
+    ls -la %{octpkg}-%{version}-*-api-v*.tar.gz \
+    %octave --eval "pkg prefix %{buildroot}%{octpackages_dir} %{buildroot}%{octlib_dir}; pkg install -verbose -nodeps %{octpkg}-%{version}-*-api-v*.tar.gz" \
     rm -f %{buildroot}%{octpackages_dir}/%{octpkg}-%{version}/packinfo/.autoload
 
 # Octave package tests
 %octskiptests .*fetch.*|ga|csape|tbl(read|write)|princomp
 
 %octave_pkg_test \
-    [ -e %{octpkg}-%{version} ] || tar xaf %{octpkg}-%{version}.tar.gz \
-    for fpath in $(find %{octpkg}-%{version} -name '*.m') ; do \
-      if grep -q '^%\! *test' $fpath ; then \
+    HOME=${PWD} \
+    %octave --eval "pkg list" \
+    echo "============= Test Start ===============" \
+    [ -e %{octpkg}-%{version} ] || tar xaf %{octpkg}-%{version}-*-api-v*.tar.gz \
+    find %{octpkg}-%{version} -name '*.m' -o -name '*.*-tst' || true \
+    for fpath in $(find %{octpkg}-%{version} -name '*.m' -o -name '*.*-tst') ; do \
+      if grep -q '%%! *test' $fpath ; then \
         filename="${fpath##*/}" ; \
         basename="${filename%.m}" ; \
         if echo $basename | grep -q -v -E '^(%{octskiptests})$' ; then \
-          %octave --eval "test $basename" | ( grep test || : ) > test.log ; \
-          if grep -s 'test *failed' test.log ; then \
+          %octave --eval "pkg load %{octpkg}; test $basename" > test-${basename}.log ; \
+          if grep -s 'test *failed' test-${basename}.log ; then \
             echo "Failed tests for %{octpkg}-%{version}" ; \
-            cat test.log ; \
-            false ; \
+            cat test-${basename}.log ; \
           else \
-            grep -i test test.log || true \
-           true ; \
+            grep -i test test-${basename}.log || true \
           fi ; \
         fi ; \
       fi ; \
-    done
+    done \
+    echo "============= Test Summary =============" \
+    grep -i test test-*.log || true \
+    echo "============= End Summary ==============" \
+    ! grep -s 'test *failed' test-*.log || false \
+    %{nil}
 
 # Octave build parameters
 %octave_blas OCTAVE_BLAS_LIBRARY_NAME
