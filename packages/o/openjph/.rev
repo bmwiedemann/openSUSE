@@ -48,4 +48,16 @@
   * This fixes a build failure on GCC 9.3.1, and a warning #192</comment>
     <requestid>1299309</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1717a4e828bb23bcadfc40ba6a086828</srcmd5>
+    <version>0.22.0</version>
+    <time>1756147121</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.22.0:
+  * Add the capability to restart a codestream; restart allows the
+    decoder/encoder to re-use memory that was allocated during
+    previous usage of the codestream object.
+    This is useful for processing many similar codestream. #194</comment>
+    <requestid>1301189</requestid>
+  </revision>
 </revisionlist>

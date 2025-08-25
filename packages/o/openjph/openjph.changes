@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 25 06:46:30 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.22.0:
+  * Add the capability to restart a codestream; restart allows the
+    decoder/encoder to re-use memory that was allocated during
+    previous usage of the codestream object.
+    This is useful for processing many similar codestream. #194
+
+-------------------------------------------------------------------
 Thu Aug 14 05:35:10 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.21.5:
