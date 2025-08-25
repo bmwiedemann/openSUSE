@@ -1,7 +1,7 @@
 #
 # spec file for package vlc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -62,6 +62,18 @@ Patch7:         https://code.videolan.org/videolan/vlc/-/merge_requests/5590.pat
 Patch100:       vlc-projectM-qt5.patch
 # PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
 Patch103:       0001-Port-OpenCV-facedetect-example-to-C-API.patch
+
+# PATCH-FIX-UPSTREAM -- add support for ffmpeg 7.0 (without VAAPI)
+Patch111:       https://code.videolan.org/videolan/vlc/-/merge_requests/5574.patch
+# PATCH-FIX-UPSTREAM -- mux: avformat: fix avio callbacks signature with ffmpeg 6.1
+Patch112:       https://code.videolan.org/videolan/vlc/-/merge_requests/6168.patch
+# PATCH-FIX-UPSTREAM -- ffmpeg: backport more channel checks
+Patch113:       https://code.videolan.org/videolan/vlc/-/merge_requests/6273.patch
+# PATCH-FIX-UPSTREAM -- avcodec: vaapi: support VAAPI with latest FFmpeg
+Patch114:       https://code.videolan.org/videolan/vlc/-/merge_requests/6606.patch
+# PATCH-FIX-UPSTREAM -- nfs: fix libnfs API v2 support
+Patch115:       https://code.videolan.org/videolan/vlc/-/merge_requests/6527.patch
+
 BuildRequires:  Mesa-devel
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel >= 1.0.24
@@ -121,9 +133,6 @@ BuildRequires:  pkgconfig(libplacebo) < 6.292.0
 BuildRequires:  speex-devel >= 1.0.5
 BuildRequires:  update-desktop-files
 BuildRequires:  vcdimager-devel
-BuildRequires:  (pkgconfig(libavcodec) >= 57.37.100 with pkgconfig(libavcodec) < 60)
-BuildRequires:  (pkgconfig(libavformat) >= 53.21.0 with pkgconfig(libavformat) < 60)
-BuildRequires:  (pkgconfig(libavutil) >= 52.4.0 with pkgconfig(libavutil) < 58)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.5.0
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Svg)
@@ -137,6 +146,9 @@ BuildRequires:  pkgconfig(fdk-aac)
 BuildRequires:  pkgconfig(gnutls) >= 3.2.0
 BuildRequires:  pkgconfig(libarchive) >= 3.1.0
 BuildRequires:  pkgconfig(libass) >= 0.9.8
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libbluray) >= 0.6.2
 %if %dca
 BuildRequires:  pkgconfig(libdca) >= 0.0.5
@@ -148,11 +160,11 @@ BuildRequires:  pkgconfig(libmtp) >= 1.0.0
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(libnfs)
 %endif
-BuildRequires:  (pkgconfig(libpostproc) with pkgconfig(libpostproc) < 56)
-BuildRequires:  (pkgconfig(libswscale) with pkgconfig(libswscale) < 6)
 BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(libpostproc)
 BuildRequires:  pkgconfig(libpulse) >= 1.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
+BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libva-x11)
@@ -163,7 +175,7 @@ BuildRequires:  pkgconfig(soxr)
 BuildRequires:  pkgconfig(speexdsp)
 BuildRequires:  pkgconfig(taglib) >= 1.9
 BuildRequires:  pkgconfig(twolame)
-BuildRequires:  pkgconfig(vdpau) >= 0.6
+%dnl BuildRequires:  pkgconfig(vdpau) >= 0.6
 BuildRequires:  pkgconfig(xcb) >= 1.6
 BuildRequires:  pkgconfig(xcb-composite)
 BuildRequires:  pkgconfig(xcb-keysyms) >= 0.3.4
@@ -256,9 +268,10 @@ libraries, which may not have all codecs enabled that were just named.
 %package devel
 Summary:        Development files for the VLC media player system
 Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}
 Requires:       %{name}-jack = %{version}
 Requires:       %{name}-noX = %{version}
-Requires:       %{name}-vdpau = %{version}
+%dnl Requires:       %{name}-vdpau = %{version}
 
 %description devel
 These development headers are required if you plan on coding against VLC.
@@ -403,6 +416,12 @@ default when `vlc` is invoked from an X session.
 %endif
 %patch -P 103 -p1
 
+%patch -P 111 -p1
+%patch -P 112 -p1
+%patch -P 113 -p1
+%patch -P 114 -p1
+%patch -P 115 -p1
+
 # a52_init() < 0.8.0 doesn't take any arguments
 if pkg-config --max-version 0.8 liba52; then
 %patch -P 0 -p1
@@ -481,7 +500,7 @@ autoreconf -fiv
    --enable-twolame                     \
    --enable-v4l2                        \
    --enable-vcd                         \
-   --enable-vdpau                       \
+   --disable-vdpau                       \
    --enable-vorbis                      \
    --enable-xcb                         \
    --enable-xvideo                      \
@@ -1191,17 +1210,17 @@ fi
 %{_libdir}/vlc/plugins/codec/libfluidsynth_plugin.so
 %endif
 
-%files vdpau
-%dir %{_libdir}/vlc/plugins/vdpau
-%{_libdir}/vlc/libvlc_vdpau.so.0
-%{_libdir}/vlc/libvlc_vdpau.so.0.0.0
-%{_libdir}/vlc/plugins/vdpau/libvdpau_adjust_plugin.so
-%{_libdir}/vlc/plugins/vdpau/libvdpau_avcodec_plugin.so
-%{_libdir}/vlc/plugins/vdpau/libvdpau_chroma_plugin.so
-%{_libdir}/vlc/plugins/vdpau/libvdpau_deinterlace_plugin.so
-%{_libdir}/vlc/plugins/vdpau/libvdpau_display_plugin.so
-%{_libdir}/vlc/plugins/vdpau/libvdpau_sharpen_plugin.so
-%{_libdir}/vlc/plugins/video_output/libglconv_vdpau_plugin.so
+%dnl files vdpau
+%dnl dir %{_libdir}/vlc/plugins/vdpau
+%dnl {_libdir}/vlc/libvlc_vdpau.so.0
+%dnl {_libdir}/vlc/libvlc_vdpau.so.0.0.0
+%dnl {_libdir}/vlc/plugins/vdpau/libvdpau_adjust_plugin.so
+%dnl {_libdir}/vlc/plugins/vdpau/libvdpau_avcodec_plugin.so
+%dnl {_libdir}/vlc/plugins/vdpau/libvdpau_chroma_plugin.so
+%dnl {_libdir}/vlc/plugins/vdpau/libvdpau_deinterlace_plugin.so
+%dnl {_libdir}/vlc/plugins/vdpau/libvdpau_display_plugin.so
+%dnl {_libdir}/vlc/plugins/vdpau/libvdpau_sharpen_plugin.so
+%dnl {_libdir}/vlc/plugins/video_output/libglconv_vdpau_plugin.so
 
 %files -n libvlc%{libvlc}
 %{_libdir}/libvlc.so.%{libvlc}*
@@ -1221,7 +1240,7 @@ fi
 %{_libdir}/pkgconfig/libvlc.pc
 %{_libdir}/pkgconfig/vlc-plugin.pc
 %{_libdir}/vlc/libcompat.a
-%{_libdir}/vlc/libvlc_vdpau.so
+%dnl {_libdir}/vlc/libvlc_vdpau.so
 
 %if 0%{?BUILD_ORIG}
 %files codecs

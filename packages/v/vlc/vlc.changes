@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 20 12:54:30 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Port to current ffmpeg-7: Remove version constraints on ffmpeg
+  BuildRequires, add upstream patches and pass disable-vdpau to
+  configure, this disables build/shipping of vdpau subpackage.
+  Patches added: 5574.patch, 6168.patch, 6273.patch, 6606.patch and
+  6527.patch.
+- Add missing vlc Requires to devel sub-package, previously pulled
+  in via vlc-vdpau package.
+
+-------------------------------------------------------------------
 Thu Aug  7 09:27:34 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete and unused libxvidcore-devel BuildRequires.

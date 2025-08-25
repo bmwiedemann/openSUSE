@@ -1607,4 +1607,12 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment></comment>
     <requestid>1298149</requestid>
   </revision>
+  <revision rev="156" vrev="9">
+    <srcmd5>457b513b9ec19cd7d33d1c39ce23fcea</srcmd5>
+    <version>3.0.21</version>
+    <time>1756146972</time>
+    <user>anag_factory</user>
+    <comment>Add missing req (forwarded request 1300984 from iznogood)</comment>
+    <requestid>1300988</requestid>
+  </revision>
 </revisionlist>
