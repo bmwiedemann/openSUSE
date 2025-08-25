@@ -454,4 +454,12 @@
     <comment>New stable release (forwarded request 1252801 from iznogood)</comment>
     <requestid>1252844</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>2830a42f05a1777d85b5870a66c1d1f4</srcmd5>
+    <version>49.0</version>
+    <time>1756147143</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1301224</requestid>
+  </revision>
 </revisionlist>

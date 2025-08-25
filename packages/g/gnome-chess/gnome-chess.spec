@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-chess
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnome-chess
-Version:        48.0
+Version:        49.0
 Release:        0
 Summary:        Chess Game for GNOME
 License:        GPL-3.0-or-later
@@ -74,7 +74,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 %{_datadir}/applications/org.gnome.Chess.desktop
 %{_datadir}/dbus-1/services/org.gnome.Chess.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Chess.gschema.xml
-%{_datadir}/metainfo/org.gnome.Chess.appdata.xml
+%{_datadir}/metainfo/org.gnome.Chess.metainfo.xml
 %{_mandir}/man6/%{name}.6%{?ext_man}
 %dir %{_sysconfdir}/gnome-chess
 %config %{_sysconfdir}/gnome-chess/engines.conf
