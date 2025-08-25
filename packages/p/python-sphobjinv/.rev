@@ -94,4 +94,12 @@
     <comment>- Switch to pyroject macros.</comment>
     <requestid>1285981</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>b81f73f3967c80b3f41b702aaa989101</srcmd5>
+    <version>2.3.1.2</version>
+    <time>1756147172</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301285</requestid>
+  </revision>
 </revisionlist>

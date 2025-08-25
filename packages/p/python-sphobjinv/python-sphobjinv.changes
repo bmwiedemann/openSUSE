@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 25 13:38:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Mon Jun 16 06:28:07 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyroject macros.
