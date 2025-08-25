@@ -1,7 +1,7 @@
 #
 # spec file for package descent3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           descent3
-%define commit  c99e57cfabb16b2b428d4827eedb26b8cc20a1ee
-Version:        1.6.0~git533.c99e57c
+%define commit  c68f6b029a006f3fd927ef4905ebe3e099c60322
+Version:        1.6.0~git632.c68f6b0
 Release:        0
 Summary:        Tunnel–terrain-hybrid ship-based shooter fighting robots
 License:        GPL-3.0-or-later
@@ -27,7 +27,8 @@ URL:            https://github.com/DescentDevelopers/Descent3
 Source:         https://github.com/jengelh/descent3/archive/%commit.tar.gz
 Source2:        https://github.com/SergiusTheBest/plog/archive/e21baecd4753f14da64ede979c5a19302618b752.tar.gz
 Patch1:         system-libacm.patch
-Patch2:         fstream.patch
+Patch2:         static-order.patch
+Patch3:         httplib0_23.patch
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
 BuildRequires:  gcc13-c++
 Provides:       bundled(plog)
@@ -37,7 +38,7 @@ BuildRequires:  plog-devel
 %endif
 BuildRequires:  cmake
 BuildRequires:  libacm-devel
-BuildRequires:  pkgconfig(cpp-httplib)
+BuildRequires:  cmake(httplib)
 BuildRequires:  pkgconfig(glm)
 BuildRequires:  pkgconfig(sdl3)
 BuildRequires:  pkgconfig(zlib)
@@ -60,6 +61,9 @@ different game types.
 
 %prep
 %autosetup -p1 -n descent3-%commit -a2
+%if %{pkg_vcmp cmake(httplib) < 0.23}
+%patch -P 3 -R -p1
+%endif
 rm -Rf third_party/plog
 mv plog-* third_party/plog
 
@@ -67,8 +71,7 @@ mv plog-* third_party/plog
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
 export CXX=g++-13
 %endif
-%cmake -DCMAKE_INSTALL_BINDIR="%_libexecdir/%name" \
-	-DCMAKE_INSTALL_DATADIR="%_datadir/%name" \
+%cmake \
 	-DCMAKE_INSTALL_DOCDIR:PATH="share/doc/packages/%name" \
 	-DFORCE_PORTABLE_INSTALL=OFF \
 %if 0%{?suse_version} >= 1600
@@ -81,30 +84,38 @@ export CXX=g++-13
 %install
 %cmake_install
 b="%buildroot"
+
+mv -v "$b/%_datadir/Descent3" "$b/%_datadir/descent3"
+ln -sv descent3 "$b/%_datadir/Descent3"
+
 # packaged separately
 rm -fv "$b/%_defaultdocdir/%name/LICENSE"
-mkdir -p "$b/%_bindir"
+
+# add config wrapper
+mkdir -p "$b/%_libexecdir/%name"
+mv -v "$b/%_bindir/Descent3" "$b/%_libexecdir/%name/"
+
 cat >"$b/%_bindir/descent3" <<-EOF
 	#!/bin/sh -e
-	progdir="%_libexecdir/descent3"
-	datadir="%_datadir/descent3"
+	progdir="%_libexecdir/%name"
+	datadir="%_datadir/%name"
 
-	userdir="\$HOME/.config/descent3"
+	olduserdir="\$HOME/.config/descent3"
+	userdir="\$HOME/.local/share/Outrage Entertainment/Descent 3"
+	if [ -d "\$olduserdir" ] && [ ! -L "\$olduserdir" ] && [ ! -e "\$userdir" ]; then
+		echo "INFO: Trying to mv \$olduserdir to \$userdir"
+		mkdir -p "\${userdir%/*}"
+		mv -v "\$olduserdir" "\$userdir"
+	fi
 	mkdir -p "\$userdir/missions"
 	cd "\$userdir"
-	if [ ! -e d3-linux.hog ]; then
-		ln -s "\$datadir/d3-linux.hog" .
-	fi
-	if [ ! -e online ]; then
-		ln -s "\$datadir/online" .
-	fi
 	if [ ! -e d3.hog ]; then
 		echo "ERROR: Copy d3.hog to \$userdir, then relaunch."
 		echo "INFO: You may find this file on the D3 Linux ISO."
 		exit 1
 	fi
 	if [ ! -e extra.hog ] || [ ! -e extra13.hog ]; then
-		echo "NOTE: Copy extra.hog and extra13.hog to \$userdir, then relaunch."
+		echo "NOTE: Copy extra.hog and extra13.hog to \$userdir or /usr/share/descent3, then relaunch."
 		echo "INFO: You may find these files on the D3 Linux ISO in data.tar.gz."
 		echo "INFO: tar -C \$userdir -xf /path/to/data.tar.gz extra.hog extra13.hog"
 		exit 1
@@ -127,9 +138,9 @@ chmod a+x "%buildroot/%_bindir/descent3"
 %license LICENSE
 %_bindir/descent3
 %_datadir/descent3/
-%_defaultdocdir/%name/
+%_datadir/Descent3
 %_libexecdir/%name/
-# these are .so-like files
 %_libdir/netgames/
+%_defaultdocdir/%name/
 
 %changelog

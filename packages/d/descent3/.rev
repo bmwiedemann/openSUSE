@@ -40,4 +40,13 @@
   compiler</comment>
     <requestid>1281103</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>166a862338cf08a50464dbbe6c0362dc</srcmd5>
+    <version>1.6.0~git632.c68f6b0</version>
+    <time>1756147070</time>
+    <user>anag_factory</user>
+    <comment>- Add httplib0_23.patch
+- Update to snapshot 1.6.0~git632.c68f6b0</comment>
+    <requestid>1301115</requestid>
+  </revision>
 </revisionlist>

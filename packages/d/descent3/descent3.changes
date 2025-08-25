@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Aug 23 11:06:06 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add httplib0_23.patch
+
+-------------------------------------------------------------------
+Tue Aug  5 08:22:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 1.6.0~git632.c68f6b0
+  * Add higher resolutions, fullscreen toggle and FOV settings
+  * XDG specification is heeded; configuration now lives in
+    ~/.local/share/Outrage Entertainment/Descent3 (instead of
+    ~/.config/descent3). Data files are read from either the XDG
+    dir or from /usr/share/descent3 (can be used for global
+    installs).
+- Add static-order.patch
+- Delete fstream.patch (merged)
+
+-------------------------------------------------------------------
+Mon Aug  4 21:56:02 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- switch cpp-httplib requirement to cmake(httplib) as preferred and
+  supported by upstream
+
+-------------------------------------------------------------------
 Wed May 28 22:57:52 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add fstream.patch to resolve source build failure with new
