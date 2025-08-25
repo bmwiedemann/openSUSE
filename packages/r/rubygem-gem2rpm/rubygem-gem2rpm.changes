@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Aug 22 12:36:40 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update suse.patch
+  - use opensuse template on sles as well
+
+-------------------------------------------------------------------
+Fri Aug 22 09:35:45 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update suse.patch
+  - on newer rubies Kernel.open is no longer working with URIs.
+    use URI.open()
+  - also treat contributing as documentation.
+
+-------------------------------------------------------------------
+Fri Aug 15 05:04:28 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- cleanup the spec file:
+  drop all ruby versions we no longer care about
+
+  remaining are:
+  2.1, 2.5, 3.2, 3.3, 3.4, 3.5
+- enable 3.5 building
+
+-------------------------------------------------------------------
+Fri Aug 15 04:38:11 UTC 2025 - Marcus Rückert <mrueckert@suse.de>
+
+- instead of using %{ruby} for the buildrequires, lets expand it
+  in the spec file so we do not have to use
+  rb_build_ruby_abis/rb_build_version
+
+-------------------------------------------------------------------
 Wed Jan 29 08:48:40 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - add new gem2rpm.yml setting to have the runtime deps as

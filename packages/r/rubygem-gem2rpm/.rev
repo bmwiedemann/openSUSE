@@ -406,4 +406,28 @@ A    0033-Use-File.exist-instead-of-File.exists-which-was-remo.patch
   implements https://github.com/openSUSE/gem2rpm/issues/20</comment>
     <requestid>1241127</requestid>
   </revision>
+  <revision rev="38" vrev="27">
+    <srcmd5>09a0c0814e7946f9af592aa567f8ec77</srcmd5>
+    <version>0.10.1</version>
+    <time>1756146971</time>
+    <user>anag_factory</user>
+    <comment>- update suse.patch
+  - use opensuse template on sles as well
+
+- update suse.patch
+  - on newer rubies Kernel.open is no longer working with URIs.
+    use URI.open()
+  - also treat contributing as documentation.
+
+- cleanup the spec file:
+  drop all ruby versions we no longer care about
+  remaining are:
+  2.1, 2.5, 3.2, 3.3, 3.4, 3.5
+- enable 3.5 building
+
+- instead of using %{ruby} for the buildrequires, lets expand it
+  in the spec file so we do not have to use
+  rb_build_ruby_abis/rb_build_version</comment>
+    <requestid>1300977</requestid>
+  </revision>
 </revisionlist>

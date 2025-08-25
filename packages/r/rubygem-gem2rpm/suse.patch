@@ -1,5 +1,5 @@
 diff --git a/bin/gem2rpm b/bin/gem2rpm
-index 736a645..a794436 100755
+index 736a645..1f3ad64 100755
 --- a/bin/gem2rpm
 +++ b/bin/gem2rpm
 @@ -8,6 +8,7 @@ require 'optparse'
@@ -42,7 +42,7 @@ index 736a645..a794436 100755
 +    f.close
 +    f = nil
 +  end
-+  if template_file.match? '^"opensuse'
++  if template_file.match? '^"(opensuse|sles)'
 +    $stderr.puts 'Using template opensuse on openSUSE variant'
 +    template_file = 'opensuse'
 +  end
@@ -56,15 +56,20 @@ index 736a645..a794436 100755
        f = open(File.join(Gem2Rpm.template_dir, template_file + '.spec.erb'), "r") unless f
    rescue Errno::ENOENT
        $stderr.puts "Could not open template #{template_file}. Aborting"
-@@ -95,7 +115,7 @@ gemfile = rest[0]
+@@ -95,11 +115,11 @@ gemfile = rest[0]
  
  if fetch
    gem_uri = ''
 -  open("http://rubygems.org/api/v1/gems/#{gemfile}.json") do |f|
-+  open("https://rubygems.org/api/v1/gems/#{gemfile}.json") do |f|
++  URI.open("https://rubygems.org/api/v1/gems/#{gemfile}.json") do |f|
      gem_uri = f.read.match(/"gem_uri":\s*"(.*?)",/m)[1]
      gemfile = URI.parse(gem_uri).path.split('/').last
      open(gemfile, 'w') do |gf|
+-      gf.write(open(gem_uri).read)
++      gf.write(URI.open(gem_uri).read)
+     end
+   end
+ end
 @@ -117,13 +137,33 @@ if srpm
      end
  end
@@ -259,10 +264,10 @@ index 9a8d5a1..2e4f7b2 100644
        super.map {|d| Gem2Rpm::Dependency.new d}
 diff --git a/templates/gem_packages.spec.erb b/templates/gem_packages.spec.erb
 new file mode 100644
-index 0000000..10b1d70
+index 0000000..314b6e5
 --- /dev/null
 +++ b/templates/gem_packages.spec.erb
-@@ -0,0 +1,319 @@
+@@ -0,0 +1,320 @@
 +<%
 +
 +  begin
@@ -456,6 +461,7 @@ index 0000000..10b1d70
 +     }
 +     %w(changes
 +        copying
++        contributing
 +        history
 +        legal
 +        licence
@@ -583,7 +589,7 @@ index 0000000..10b1d70
 +   end
 +-%>
 diff --git a/templates/opensuse.spec.erb b/templates/opensuse.spec.erb
-index 37de592..dba198a 100644
+index 37de592..080e76b 100644
 --- a/templates/opensuse.spec.erb
 +++ b/templates/opensuse.spec.erb
 @@ -1,7 +1,12 @@
@@ -601,7 +607,7 @@ index 37de592..dba198a 100644
  #
  # All modifications and additions to the file contributed by third parties
  # remain the property of their copyright owners, unless otherwise agreed
-@@ -12,61 +17,236 @@
+@@ -12,61 +17,237 @@
  # license that conforms to the Open Source Definition (Version 1.9)
  # published by the Open Source Initiative.
  
@@ -729,6 +735,7 @@ index 37de592..dba198a 100644
 +     }
 +     %w(changes
 +        copying
++        contributing
 +        history
 +        legal
 +        licence
