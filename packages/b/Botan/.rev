@@ -731,4 +731,24 @@ https://botan.randombit.net/news.html#version-3-6-1-2024-10-26
 For a full changelog, see: https://botan.randombit.net/news.html#version-3-8-1-2025-05-07</comment>
     <requestid>1288498</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>0a4da9c7dd5d0bb41846f63b9fbc2598</srcmd5>
+    <version>3.9.0</version>
+    <time>1756147145</time>
+    <user>anag_factory</user>
+    <comment>  * Add SHA-1 implementation using AVX2/BMI2 (GH #4852)
+  * Add Camellia implementation using GFNI/AVX2 (GH #4848)
+  * Add SHACAL2 implementation using AVX512 (GH #4878)
+  * The eFrodoKEM TLS 1.3 ciphersuites have changed the suite code to match changes in OQS. (GH #4900)
+  * Add support for TLS 1.2 NULL cipher suites. These suites are disabled in the build by default, enable tls_null module to use. (GH #4776)
+  * Add support for X.509 extensions from RFC 3779 (GH #4699 #4883 #4884 #4886)
+  * Elliptic curve improvements (GH #4841 #4934 #4935 #4937 #4949 $4953 #4991)
+  * Add EC_Scalar::hash following RFC 9380’s hash_to_field (GH #4950)
+  * Modify the OID lookup system to use a static switch for builtin OIDs. (GH #4896 #4888)
+  * Optimizations for X448 and Ed448 (GH #5037)
+  * Modify BOTAN_CLEAR_CPUID so that clearing ssse3 also disables AVX2/AVX512 (GH #4853)
+  * Remove various internal references to “EMSA”, an obsolete term used for RSA signature padding that originates from IEEE 1363. (GH #5008 #5024)
+For full release notes, see: https://botan.randombit.net/news.html#version-3-9-0-2025-08-05</comment>
+    <requestid>1301227</requestid>
+  </revision>
 </revisionlist>
