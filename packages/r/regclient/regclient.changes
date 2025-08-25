@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 25 04:49:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.1:
+  * Features:
+    - Allow relative urls in bearer auth. (PR 963)
+    - Add "ns" query param to registry mirror requests. (PR 976)
+  * Miscellaneous:
+    - Update to SLSA v1 provenance. (PR 968)
+    - Add a "make clean" command. (PR 969)
+
+-------------------------------------------------------------------
 Mon Jun 30 14:33:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.9.0:
