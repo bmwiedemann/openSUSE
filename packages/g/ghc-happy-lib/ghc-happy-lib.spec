@@ -19,7 +19,7 @@
 %global pkg_name happy-lib
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        2.1.6
+Version:        2.1.7
 Release:        0
 Summary:        Happy is a parser generator for Haskell implemented using this library
 License:        BSD-2-Clause
