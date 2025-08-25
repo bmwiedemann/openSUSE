@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 24 13:06:45 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Edit lzma-sdk-shlib.patch to produces the same libname as Fedora.
+
+-------------------------------------------------------------------
 Tue Aug  5 14:10:05 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 25.01

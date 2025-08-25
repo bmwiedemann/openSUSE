@@ -19,6 +19,7 @@
 %define _sver   2501
 %define _maver  25
 %define _miver  01
+%define lname   liblzmasdk%_maver
 Name:           lzma-sdk
 Version:        25.01
 Release:        0
@@ -55,16 +56,16 @@ zlib's speed, and around 40%% when trading more time.
 %package devel
 Summary:        Development libraries and headers for %name
 Group:          Development/Languages/C and C++
-Requires:       libclzma-suse1 = %version
+Requires:       %lname = %version
 
 %description devel
 This package contains development libraries and headers for %name.
 
-%package -n libclzma-suse1
+%package -n %lname
 Summary:        LZMA stream encoding/decoding library from 7-Zip
 Group:          System/Libraries
 
-%description -n libclzma-suse1
+%description -n %lname
 Library for encoding/decoding LZMA streams, using the 7-Zip library
 implementation.
 
@@ -83,18 +84,18 @@ autoreconf -fi
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
-%ldconfig_scriptlets -n libclzma-suse1
+%ldconfig_scriptlets -n %lname
 
-%files -n libclzma-suse1
+%files -n %lname
 %license lzma-sdk-LICENSE.fedora
-%doc DOC/lzma.txt DOC/lzma-history.txt
-%_libdir/libclzma-suse.so.*
+%_libdir/liblzmasdk.so.*
 
 %files devel
 %license lzma-sdk-LICENSE.fedora
 %doc DOC/7z*.txt DOC/Methods.txt
-%_includedir/clzma/
-%_libdir/libclzma.so
-%_libdir/pkgconfig/clzma.pc
+%doc DOC/lzma.txt DOC/lzma-history.txt
+%_includedir/lzma-sdk/
+%_libdir/liblzmasdk.so
+%_libdir/pkgconfig/lzma-sdk.pc
 
 %changelog

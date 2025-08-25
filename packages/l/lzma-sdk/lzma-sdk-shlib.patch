@@ -5,51 +5,57 @@ This exports most of LzmaLib (minus code that does not compile because it
 requires too much Windows or Windows-like APIs) as a library for use by
 other packages.
 
+There is a Fedora patch
+<https://src.fedoraproject.org/rpms/lzma-sdk/tree/rawhide> to do something
+similar, but lacks generation of a .pc file.
 ---
- Makefile.am  |   11 +++++++++++
- clzma.pc.in  |   10 ++++++++++
- configure.ac |    6 ++++++
- 3 files changed, 27 insertions(+), 0 deletions(-)
+ Makefile.am    |   11 +++++++++++
+ configure.ac   |    9 +++++++++
+ lzma-sdk.pc.in |   10 ++++++++++
+ 3 files changed, 30 insertions(+)
 
-Index: 1/Makefile.am
+Index: 7/Makefile.am
 ===================================================================
 --- /dev/null
-+++ 1/Makefile.am
++++ 7/Makefile.am
 @@ -0,0 +1,11 @@
 +AM_CPPFLAGS = -D_7ZIP_ST -D_7ZIP_PPMD_SUPPPORT
-+lib_LTLIBRARIES = libclzma.la
++lib_LTLIBRARIES = liblzmasdk.la
 +pkgconfigdir = ${libdir}/pkgconfig
-+pkgconfig_DATA = clzma.pc
++pkgconfig_DATA = lzma-sdk.pc
 +# source list: C/Util/LzmaLib/makefile
 +#lzma.dll = C/Alloc.c C/CpuArch.c C/LzFind.c C/LzFindMt.c C/LzFindOpt.c C/LzmaDec.c C/LzmaEnc.c C/LzmaLib.c C/Threads.c
-+libclzma_la_SOURCES = C/7zAlloc.c C/7zArcIn.c C/7zBuf.c C/7zBuf2.c C/7zCrc.c C/7zCrcOpt.c C/7zDec.c C/7zFile.c C/7zStream.c C/Aes.c C/AesOpt.c C/Alloc.c C/Bcj2.c C/Bcj2Enc.c C/Bra.c C/Bra86.c C/BraIA64.c C/CpuArch.c C/Delta.c C/DllSecur.c C/LzFind.c C/LzFindMt.c C/LzFindOpt.c C/Lzma2Dec.c C/Lzma2DecMt.c C/Lzma2Enc.c C/Lzma86Dec.c C/Lzma86Enc.c C/LzmaDec.c C/LzmaEnc.c C/LzmaLib.c C/MtCoder.c C/MtDec.c C/Ppmd7.c C/Ppmd7Dec.c C/Ppmd7Enc.c C/Sha256.c C/Sha256Opt.c C/Sort.c C/SwapBytes.c C/Threads.c C/Xz.c C/XzCrc64.c C/XzCrc64Opt.c C/XzDec.c C/XzEnc.c C/XzIn.c
-+libclzma_la_LDFLAGS = -release suse -version-info 1:0:0
-+clzmadir = ${includedir}/clzma
++liblzmasdk_la_SOURCES = C/7zAlloc.c C/7zArcIn.c C/7zBuf.c C/7zBuf2.c C/7zCrc.c C/7zCrcOpt.c C/7zDec.c C/7zFile.c C/7zStream.c C/Aes.c C/AesOpt.c C/Alloc.c C/Bcj2.c C/Bcj2Enc.c C/Bra.c C/Bra86.c C/BraIA64.c C/CpuArch.c C/Delta.c C/DllSecur.c C/LzFind.c C/LzFindMt.c C/LzFindOpt.c C/Lzma2Dec.c C/Lzma2DecMt.c C/Lzma2Enc.c C/Lzma86Dec.c C/Lzma86Enc.c C/LzmaDec.c C/LzmaEnc.c C/LzmaLib.c C/MtCoder.c C/MtDec.c C/Ppmd7.c C/Ppmd7Dec.c C/Ppmd7Enc.c C/Sha256.c C/Sha256Opt.c C/Sort.c C/SwapBytes.c C/Threads.c C/Xz.c C/XzCrc64.c C/XzCrc64Opt.c C/XzDec.c C/XzEnc.c C/XzIn.c
++liblzmasdk_la_LDFLAGS = -version-info ${PACKAGE_MAJOR}:0:0
++clzmadir = ${includedir}/lzma-sdk
 +clzma_HEADERS = C/7zAlloc.h C/7zBuf.h C/7zCrc.h C/7zFile.h C/7z.h C/7zTypes.h C/7zVersion.h C/Aes.h C/Alloc.h C/Bcj2.h C/Bra.h C/Compiler.h C/CpuArch.h C/Delta.h C/DllSecur.h C/LzFind.h C/LzFindMt.h C/LzHash.h C/Lzma2Dec.h C/Lzma2Enc.h C/Lzma86.h C/LzmaDec.h C/LzmaEnc.h C/LzmaLib.h C/MtCoder.h C/Ppmd7.h C/Ppmd.h C/Precomp.h C/RotateDefs.h C/Sha256.h C/Sort.h C/Threads.h C/XzCrc64.h C/XzEnc.h C/Xz.h
 +clzma.pc: ${top_builddir}/config.status
-Index: 1/clzma.pc.in
+Index: 7/configure.ac
 ===================================================================
 --- /dev/null
-+++ 1/clzma.pc.in
++++ 7/configure.ac
+@@ -0,0 +1,9 @@
++AC_INIT([lzma-sdk], [0])
++AM_INIT_AUTOMAKE([foreign subdir-objects])
++AC_CONFIG_MACRO_DIRS([m4])
++AC_PROG_CC
++LT_INIT([disable-static])
++PACKAGE_MAJOR=$(echo "$PACKAGE_VERSION" | grep -Eo '^[[0-9]]+')
++AC_SUBST([PACKAGE_MAJOR])
++AC_CONFIG_FILES([Makefile lzma-sdk.pc])
++AC_OUTPUT
+Index: 7/lzma-sdk.pc.in
+===================================================================
+--- /dev/null
++++ 7/lzma-sdk.pc.in
 @@ -0,0 +1,10 @@
 +prefix=@prefix@
 +exec_prefix=@exec_prefix@
 +libdir=@libdir@
 +includedir=@includedir@
 +
-+Name: clzma
++Name: lzma-sdk
 +Description: 7-Zip implementation of LZMA compression
 +Version: @PACKAGE_VERSION@
-+Libs: -L${libdir} -lclzma
-+Cflags: -I${includedir}/clzma
-Index: 1/configure.ac
-===================================================================
---- /dev/null
-+++ 1/configure.ac
-@@ -0,0 +1,6 @@
-+AC_INIT([lzma-sdk], [0])
-+AM_INIT_AUTOMAKE([foreign subdir-objects])
-+AC_PROG_CC
-+LT_INIT([disable-static])
-+AC_CONFIG_FILES([Makefile clzma.pc])
-+AC_OUTPUT
++Libs: -L${libdir} -llzmasdk
++Cflags: -I${includedir}/lzma-sdk

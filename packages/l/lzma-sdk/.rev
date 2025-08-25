@@ -250,4 +250,12 @@
     <comment>- Update to release 25.01</comment>
     <requestid>1298921</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>61c9c379268666611cbf08ce4a9c7976</srcmd5>
+    <version>25.01</version>
+    <time>1756147072</time>
+    <user>anag_factory</user>
+    <comment>- Edit lzma-sdk-shlib.patch to produces the same libname as Fedora.</comment>
+    <requestid>1301133</requestid>
+  </revision>
 </revisionlist>
