@@ -39,6 +39,8 @@ License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/libpinyin/ibus-libpinyin
 Source:         https://github.com/libpinyin/ibus-libpinyin/releases/download/%{version}/%{name}-%{version}.tar.gz
+Patch0:         0001-Make-libpinyin-setup-could-response-build-config.patch
+Patch1:         0001-All-candidate-and-mode-buttons-created-in-dynamic-ar.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel

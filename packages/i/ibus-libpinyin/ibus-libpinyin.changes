@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 25 07:43:31 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add 0001-Make-libpinyin-setup-could-response-build-config.patch,
+  0001-All-candidate-and-mode-buttons-created-in-dynamic-ar.patch:
+  Backport 0e9bebe and 619f0d6 from upstream, Make libpinyin setup
+  program could response build config to disable Lua script and
+  user data input.
+  (bsc#1246569)
+
+-------------------------------------------------------------------
 Thu Jul 31 14:39:18 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Update to version 1.16.4:

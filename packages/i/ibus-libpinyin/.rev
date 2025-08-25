@@ -417,4 +417,12 @@
     <comment></comment>
     <requestid>1297438</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>ec36937ca0ef61953e9750626ea958f1</srcmd5>
+    <version>1.16.4</version>
+    <time>1756147165</time>
+    <user>anag_factory</user>
+    <comment>Add 0001-Make-libpinyin-setup-could-response-build-config.patch, 0001-All-candidate-and-mode-buttons-created-in-dynamic-ar.patch: Backport 0e9bebe and 619f0d6 from upstream, Make libpinyin setup program could response build config to disable Lua script and user data input. (bsc#1246569) (forwarded request 1301215 from qzhao)</comment>
+    <requestid>1301270</requestid>
+  </revision>
 </revisionlist>
