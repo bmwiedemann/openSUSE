@@ -474,4 +474,12 @@ It is a dependency of the spyder python graphical environment, besides by a usef
   * Add support for always-deferred annotations (PEP 749)</comment>
     <requestid>1292497</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>4e0f786775bbcc623af1b88e3298c5ac</srcmd5>
+    <version>3.4.0</version>
+    <time>1756146979</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301231</requestid>
+  </revision>
 </revisionlist>
