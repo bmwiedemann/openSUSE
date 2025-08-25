@@ -76,6 +76,9 @@ Source1:        https://github.com/opencv/opencv_contrib/archive/%{version}.tar.
 Source99:       opencv-rpmlintrc
 # PATCH-FIX-UPSTREAM opencv-qt6_9-highgui-linking-test.patch gh#opencv/opencv#27223 badshah400@gmail.com -- Fix highgui module linking against Qt 6.9; patch sent upstream
 Patch0:         opencv-qt6_9-highgui-linking-test.patch
+# PATCH-FIX-UPSTREAM opencv-ppc64le-power9.patch hillwood@opensuse.org - Fix missing vec_cvfo on POWER9 due to unavailable VSX float64 conversion
+# https://github.com/opencv/opencv/pull/27633
+Patch1:         opencv-ppc64le-power9.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel
