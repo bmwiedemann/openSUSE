@@ -646,4 +646,14 @@
     <comment></comment>
     <requestid>1297342</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>4ffe46b86cb38485f1364b20831b4cd2</srcmd5>
+    <version>10.15.0</version>
+    <time>1756147140</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1300399 from ojkastl_buildservice
+
+update to 10.15.0</comment>
+    <requestid>1301093</requestid>
+  </revision>
 </revisionlist>
