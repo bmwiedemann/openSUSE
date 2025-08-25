@@ -1,7 +1,7 @@
 #
 # spec file for package clementine
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%define rev bbda59a5f347a75bbecde0b1928e03942e367850
-
 %bcond_without git
 
 %if 0%{?suse_version} > 1500
@@ -27,9 +25,10 @@
 %endif
 %bcond_without qt5
 %define gname Clementine
+%define tag 1.4.1-50-ge281c4508
 
 Name:           clementine
-Version:        1.4.0~rc2
+Version:        1.4.1~50~ge281c4508
 Release:        0
 Summary:        A music player inspired by Amarok 1.4
 License:        GPL-3.0-or-later
@@ -38,7 +37,7 @@ URL:            https://clementine-player.org/
 %if %{without git}
 #Source:         https://github.com/clementine-player/%%{gname}/archive/%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
 %else
-Source0:        https://github.com/clementine-player/Clementine/archive/%{rev}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/clementine-player/Clementine/archive/%{tag}/%{name}-%{tag}.tar.gz
 %endif
 # PATCH-FEATURE-UPSTREAM uudisks2-support-for-devicemanager.patch
 Patch1:         clementine-udisks-headers.patch
@@ -46,12 +45,8 @@ Patch1:         clementine-udisks-headers.patch
 Patch2:         clementine-moodbar-fpic.patch
 # PATCH-FEATURE-OPENSUSE
 Patch6:         use_system_qxtglobalshortcut.patch
-# Use C++17
-Patch3:         clementine-cpp17.patch
-# Fix build with protobuf 22 and higher
-Patch4:         clementine-protobuf.patch
-# Fix build with TagLib 2
-Patch5:         clementine-taglib2.patch
+# Fix CMake compatibility issues
+Patch7:         clementine-cmake-pr7402.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
@@ -92,7 +87,6 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(cryptopp)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
@@ -146,7 +140,7 @@ Features:
 %if %{without git}
 %setup -q -n %{gname}-%{version}
 %else
-%setup -q -n %{gname}-%{rev}
+%setup -q -n %{gname}-%{tag}
 %endif
 %autopatch -p1
 
@@ -166,12 +160,13 @@ export CXXFLAGS="$CFLAGS"
   -DUSE_SYSTEM_PROJECTM=ON             \
   -DBUNDLE_PROJECTM_PRESETS=OFF        \
 %if %{with qt5}
-  -DUSE_SYSTEM_QXT=ON                 \
+  -DUSE_SYSTEM_QXT=ON                  \
 %else
   -DUSE_SYSTEM_QXT=ON                  \
 %endif
   -DENABLE_MOODBAR=ON                  \
-  -DENABLE_DBUS=ON
+  -DENABLE_DBUS=ON                     \
+  -DFORCE_GIT_REVISION:STRING=%{tag}
 make %{?_smp_mflags}
 
 %install

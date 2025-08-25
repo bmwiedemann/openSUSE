@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Aug 23 22:48:25 UTC 2025 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- Update to rolling release version tagged 1.4.1-50-ge281c4508
+- Remove clementine-protobuf.patch and clementine-cpp17.patch; similar
+  revisions now upstream per
+  https://github.com/clementine-player/Clementine/pull/7372
+- Remove clementine-taglib2.patch; similar revisions now upstream per
+  https://github.com/clementine-player/Clementine/pull/7374
+- Add clementine-cmake-pr7402.patch from
+  https://github.com/clementine-player/Clementine/pull/7402 to fix
+  CMake compatibility issues
+
+-------------------------------------------------------------------
+Tue Apr 15 12:29:09 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop BuildRequires: pkgconfig(glew) as it is not used for build
+
+-------------------------------------------------------------------
 Sun Mar 17 14:13:29 UTC 2024 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Add clementine-cpp17.patch:
