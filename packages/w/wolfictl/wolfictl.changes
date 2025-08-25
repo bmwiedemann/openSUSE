@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 25 04:46:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.12:
+  * build(deps): bump github.com/hashicorp/go-getter from 1.7.8 to
+    1.7.9 (#1731)
+  * build(deps): bump github.com/chainguard-dev/advisory-schema
+    (#1730)
+  * build(deps): bump chainguard-dev/actions from 1.4.10 to 1.4.11
+    (#1729)
+  * build(deps): bump the chainguard group with 2 updates (#1727)
+  * build(deps): bump chainguard-dev/actions from 1.4.9 to 1.4.10
+    (#1728)
+
+-------------------------------------------------------------------
 Tue Aug 19 07:03:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.38.11:
