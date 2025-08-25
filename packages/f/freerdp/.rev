@@ -746,4 +746,12 @@ This is a less intrusive change than the original https://build.opensuse.org/req
     <comment></comment>
     <requestid>1286285</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>5b70f82b99e9ade408e525e48792b552</srcmd5>
+    <version>3.17.0</version>
+    <time>1756147037</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1300996</requestid>
+  </revision>
 </revisionlist>
