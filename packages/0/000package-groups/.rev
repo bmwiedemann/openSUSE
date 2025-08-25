@@ -2267,4 +2267,11 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <user>dimstar_suse</user>
     <comment>kernel-firmwares are pulled in explicitly onto the DVD (with more control)</comment>
   </revision>
+  <revision rev="318" vrev="316">
+    <srcmd5>e34d10c4fc25e50bffd78e1f906d30c3</srcmd5>
+    <version>unknown</version>
+    <time>1756132850</time>
+    <user>dimstar_suse</user>
+    <comment>Fix more fonts according boo#1247460</comment>
+  </revision>
 </revisionlist>
