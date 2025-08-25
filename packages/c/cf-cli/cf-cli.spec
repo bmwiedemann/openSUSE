@@ -1,7 +1,7 @@
 #
-# spec file for package cf
+# spec file for package cf-cli
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@ Source2:        cf-cli-rpmlintrc
 %if 0%{?_test}
 BuildRequires:  %{short_name} = %{version}
 %else
-BuildRequires:  go1.13
+BuildRequires:  go
 BuildRequires:  golang-packaging
 BuildRequires:  xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -71,6 +71,8 @@ cp %{SOURCE1} ./
 %endif
 
 %build
+GO111MODULE=off
+export GO111MODULE
 %if 0%{?_test}
 cf --help
 %else
@@ -85,6 +87,8 @@ echo 'Test if cf can be executed'
 %endif
 
 %install
+GO111MODULE=off
+export GO111MODULE
 %if 0%{?_test}
 # disable debug packages in package test to prevent error about missing files
 %define debug_package %{nil}

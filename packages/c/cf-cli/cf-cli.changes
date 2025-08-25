@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 20 12:24:51 UTC 2025 - Michael Matz <matz@suse.com>
+
+- Use current distro go default version.  As cf-cli are oldish
+  sources, also use GO111MODULE=off.
+
+-------------------------------------------------------------------
 Tue Jan 12 09:49:55 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix install on aarch64
