@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyelftools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-pyelftools
 Version:        0.32
@@ -30,9 +35,14 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 %python_subpackages
 
 %description
@@ -63,6 +73,9 @@ pyelftools is a pure python library for analyzing ELF files and DWARF debugging 
 
 %postun
 %python_uninstall_alternative readelf.py
+
+%pre
+%python_libalternatives_reset_alternative readelf.py
 
 %files %{python_files}
 %license LICENSE

@@ -161,4 +161,12 @@
     * Describing volatile C++ datatypes (#597)</comment>
     <requestid>1254396</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>513057ac800817bb1a7395c4471e3fc1</srcmd5>
+    <version>0.32</version>
+    <time>1756146986</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301259</requestid>
+  </revision>
 </revisionlist>
