@@ -1,7 +1,7 @@
 #
 # spec file for package gzdoom
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,10 +46,10 @@ BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(sdl2) >= 2.0.6
 BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} >= 1599
-BuildRequires:  pkgconfig(clzma) >= 23.01
+%if 0%{?suse_version} >= 1650
+BuildRequires:  pkgconfig(lzma-sdk) >= 23.01
 %else
-Provides:       bundled(clzma) = 23.01
+Provides:       bundled(lzma-sdk) = 23.01
 %endif
 Provides:       qzdoom = 1.3.0
 Provides:       zdoom = 2.8.1
@@ -79,7 +79,7 @@ SSE2 is a hard requirement even on 32-bit x86.
 
 %prep
 %autosetup -n %name-g%version -p1
-%if 0%{?suse_version} < 1600
+%if 0%{?suse_version} < 1690
 # system lzma-sdk too old, use bundled copy
 %patch -P 5 -R -p1
 %endif

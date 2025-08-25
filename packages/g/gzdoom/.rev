@@ -343,4 +343,13 @@ and that one is GPL3.</comment>
     <comment>- Update to release 4.14.2</comment>
     <requestid>1274289</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>8cd668e49e3d6e65960774b946f11dd2</srcmd5>
+    <version>4.14.2</version>
+    <time>1756147073</time>
+    <user>anag_factory</user>
+    <comment>- Adjust gzdoom-lzma.patch for changes in the lzma-sdk package's
+  lzma-sdk-shlib.patch.</comment>
+    <requestid>1301134</requestid>
+  </revision>
 </revisionlist>

@@ -29,7 +29,7 @@ Index: gzdoom-g4.12.2/CMakeLists.txt
  endif()
  
 -set( LZMA_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libraries/lzma/C" )
-+pkg_check_modules(LZMA REQUIRED clzma)
++pkg_check_modules(LZMA REQUIRED lzma-sdk)
  
  if( NOT CMAKE_CROSSCOMPILING )
  	if( NOT CROSS_EXPORTS )
