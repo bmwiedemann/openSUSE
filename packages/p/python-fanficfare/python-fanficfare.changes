@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 24 21:46:47 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 4.48.0:
+  - OTW/AO3 - change to 'need to login' text, accept both old and
+    new and another string. #1229
+  - Improve error reporting for open_pages_in_browser_tries_limit
+    #1231
+  - Tweak a few defaults.ini settings.
+  - adapter_ficwadcom: Fix for site change.
+  - scribblehub: slow_down_sleep_time:5 per user recommendation
+  - Update translations.
+
+-------------------------------------------------------------------
 Thu Jul  3 20:33:09 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 4.47.0:
