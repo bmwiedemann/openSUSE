@@ -17,7 +17,7 @@
 
 
 Name:           rioterm
-Version:        0.2.28
+Version:        0.2.29
 Release:        0
 Summary:        A hardware-accelerated GPU terminal emulator powered by WebGPU
 License:        MIT

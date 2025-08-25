@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 18 13:45:57 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.29:
+  * update deps
+  * docs: update releases.md with recent fixes
+  * flake.lock: Update
+  * fix blinking cursor (closes #1269)
+  * fix Rio uses UNC (\?\) path as working directory, breaking Neovim subprocesses
+  * add NSCameraUseContinuityCameraDeviceType to plist
+  * update com.rioterm.Rio.metainfo.xml
+
+-------------------------------------------------------------------
 Mon Aug 11 16:10:42 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 0.2.28:
