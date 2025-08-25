@@ -1,7 +1,7 @@
 #
 # spec file for package switchboard-plug-display
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.settings.display
 Name:           switchboard-plug-display
-Version:        8.0.1
+Version:        8.0.2
 Release:        0
 Summary:        Switchboard Display Plug
 License:        GPL-3.0-or-later
@@ -40,7 +40,7 @@ Switchboard plug to show display information.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -n settings-display-%{version}
 
 %build
 %meson
