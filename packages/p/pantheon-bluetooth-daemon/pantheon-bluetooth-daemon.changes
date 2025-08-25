@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 16 20:52:01 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.1.0:
+  * Application: Refactoring
+  * Manager: Fix always checking whether the first adapter is discovering
+  * ObjectManager: Refactoring
+  * DeviceRow: GTK4 prep
+  * Application: move dark style support to startup
+  * SenderDialog: GTK4 prep
+  * Manager: track and set global state
+  * Fix send files by Bluetooth
+
+-------------------------------------------------------------------
 Fri Dec 13 21:26:13 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.0.1:
