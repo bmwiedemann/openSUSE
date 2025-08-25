@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 22 10:26:07 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- clean up recommends: no longer recommend inexitsing packages:
+  + ifplugd: Removed from Tumbleweed in January 2020
+  + providers: Removed from Tumbleweed in July 2017
+  + translation-update: Removed from Tumbleweed in July 2024
+  + openssh-askpass: removed in favor of the openssh internal
+    provided askpass
+
+-------------------------------------------------------------------
 Tue Aug 19 08:46:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend initviocons: this is long deprecated.

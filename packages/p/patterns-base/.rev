@@ -1172,4 +1172,20 @@
   https://code.opensuse.org/leap/features/issue/208</comment>
     <requestid>1300269</requestid>
   </revision>
+  <revision rev="136" vrev="20">
+    <srcmd5>39bc3a645d2326fb7c662c0b2bf095d3</srcmd5>
+    <version>20241218</version>
+    <time>1756146968</time>
+    <user>anag_factory</user>
+    <comment>- clean up recommends: no longer recommend inexitsing packages:
+  + ifplugd: Removed from Tumbleweed in January 2020
+  + providers: Removed from Tumbleweed in July 2017
+  + translation-update: Removed from Tumbleweed in July 2024
+  + openssh-askpass: removed in favor of the openssh internal
+    provided askpass
+
+Ultimately, this is a NO-OP change, as the recommends were simply ignored
+by zypper, as no packages with those names exist</comment>
+    <requestid>1300960</requestid>
+  </revision>
 </revisionlist>

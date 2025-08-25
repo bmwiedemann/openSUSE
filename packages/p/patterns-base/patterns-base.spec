@@ -533,7 +533,6 @@ Recommends:     powerpc32
 %if 0%{?is_opensuse}
 Recommends:     dmraid
 Recommends:     dosfstools
-Recommends:     ifplugd
 Recommends:     klogd
 Recommends:     mpt-status
 # boo#1034493
@@ -542,7 +541,6 @@ Recommends:     openldap2-client
 Recommends:     prctl
 Recommends:     procinfo
 Recommends:     procmail
-Recommends:     providers
 # fuser (psmisc) by default (#304694)
 Recommends:     psmisc
 Recommends:     sharutils
@@ -1016,8 +1014,6 @@ Recommends:     fribidi
 Recommends:     ghostscript-x11
 Recommends:     numlockx
 Recommends:     opensuse-welcome-launcher
-# #353229 - drag in empty replacements
-Recommends:     translation-update
 # autoconfig new printers - bnc#808014
 Recommends:     udev-configure-printer
 # make it possible to install firefox or chromium
@@ -1046,7 +1042,6 @@ Recommends:     desktop-data-SLE
 %if 0%{?is_opensuse}
 # people love having numlock configurable
 Recommends:     numlockx
-Recommends:     openssh-askpass
 Recommends:     susepaste
 Recommends:     susepaste-screenshot
 # needed e.g. for nvidia drivers
