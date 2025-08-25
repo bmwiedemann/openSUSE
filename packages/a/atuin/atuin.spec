@@ -1,7 +1,7 @@
 #
 # spec file for package atuin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           atuin
-Version:        18.6.0
+Version:        18.6.1
 Release:        0
 Summary:        Magical shell history
 License:        MIT
@@ -70,7 +70,7 @@ cp -v CONTRIBUTORS crates/atuin/src/command/CONTRIBUTORS
 
 %build
 # Omit feature "check-update" and disable defaults
-%{cargo_build} --locked --no-default-features -F "client,sync,server,clipboard"
+%{cargo_build} --no-default-features -F "client,sync,server,clipboard"
 
 for shell in "zsh" "bash" "fish"
 do

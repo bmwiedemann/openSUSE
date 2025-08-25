@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 23 14:04:07 UTC 2025 - Andrei Dziahel <develop7@develop7.info>
+
+- spec: fixed build failure by dropping --locked (already set by %cargo_build macro)
+
+-------------------------------------------------------------------
+Sun Jun 22 11:58:46 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 18.6.1:
+  * chore(release): prepare for release 18.6.1 (#2749)
+  * Revert "fix: selection vs render issue (#2706)" (#2748)
+
+-------------------------------------------------------------------
 Wed Jun 18 02:50:02 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 18.6.0:
@@ -745,4 +757,3 @@ Thu Oct  6 11:38:48 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 Thu Sep 29 13:32:22 UTC 2022 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Initial spec of atuin version 11.0.0
-
