@@ -1,7 +1,7 @@
 #
 # spec file for package psi+
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define __builder ninja
 
-%define version_unconverted 1.5.2076+0
+%define version_unconverted 1.5.2112+0
 
 Name:           psi+
 URL:            https://github.com/psi-plus
-Version:        1.5.2076+0
+Version:        1.5.2112+0
 Release:        0
 Summary:        Jabber client using Qt
 License:        Apache-2.0 AND GPL-2.0-or-later
@@ -51,6 +51,7 @@ BuildRequires:  cmake(Qt6WebEngineWidgets)
 BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(gpg-error)
 BuildRequires:  pkgconfig(hunspell)
+BuildRequires:  pkgconfig(libgcrypt)
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(libomemo-c)
 BuildRequires:  pkgconfig(libopenssl)

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Aug 25 06:49:01 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 1.5.2112+0
+  * tray: add more options (#926)
+  * Client icons optimize (#925)
+  * CAPTCHA dialog (#924)
+  * Fix obsolete links. Some code refactoring
+  * Updated BasicXMLSyntaxHighlighter Removed deprecated QRegExp class Code
+  * XMPP console highighting (#903)
+  * Refactoring of TextUtil.quote() to improve readability (#899)
+  * XMPP Console (#902)
+  * Minus icons (#892)
+  * passdialog: create form from ui file (#904)
+  * cmake/modules: fix BSD3 license text (#905)
+  * Misc (#901)
+  * Account modify dialog (#894)
+  * Chat menu (#895)
+  * doap: fix XEP link (#893)
+  * Updated ui-files. Hardcoded pathes removed
+  * Make windows bigger (#887)
+  * Add menu_join_groupchat to the top toolbar (#890)
+  * Enable contact list scrool bar by default (#886)
+  * Updated src/options/opt_plugins.cpp: removed not needed description
+    truncate (QHeaderView:Stretch do the stuff) some code refactoring
+  * Enable by default showing of offline contacts (#884)
+  * An attempt to fix opt_plugins tab behavior
+  * Enable by default auto connection and reconnection after sleep (#882)
+  * Plugins options: add description column (#880)
+  * Simplify status message usage (#878)
+  * Disable user join and leave notifiations by default (#877)
+  * Enable by default E2E encryption plugins and Attention plugin (#881)
+  * Fix capitalisation in duplicate process prompt (#883)
+  * INSTALL.mdL fix link to Readme-cmake.md (#875)
+  * Use short circuiting when checking if VCard fields are changed when editing
+    to improve performance (#874)
+  * Add Arch Linux repo links to README.md (#873)
+  * Fix QtKeychain package detection (#867)
+  * Broken logic fix
+  * Work with dependencies for new MXE
+  * Fix alerts for already open chats (#866)
+
+-------------------------------------------------------------------
 Mon Jun  2 06:00:20 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 1.5.2076+0

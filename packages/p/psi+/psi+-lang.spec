@@ -1,7 +1,7 @@
 #
 # spec file for package psi+-lang
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define version_unconverted 1.5.2073+1
+%define version_unconverted 1.5.2109+0
 
 Name:           psi+-lang
 URL:            https://github.com/psi-plus/psi-plus-l10n
-Version:        1.5.2073+1
+Version:        1.5.2109+0
 Release:        0
 Summary:        Translations for Psi+
 License:        GPL-2.0-or-later
