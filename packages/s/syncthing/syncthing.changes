@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 22 19:16:20 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 2.0.3
+  * Fixes
+    fix(cmd): restore --version flag for compatibility by @acolomb in #10269
+    fix(cmd): make database migration more robust to write errors by @calmh in #10278
+    fix(cmd): provide temporary GUI/API server during database migration by @calmh in #10279
+    fix(db): clean files for dropped folders at startup by @calmh in #10280
+  * Other
+    chore(slog): re-enable LOGGER_DISCARD (fixes #10262) by @rasa in #10267
+    build: downgrade gopsutil (fixes #10276) by @calmh in #10277
+  * Note that 2.0.2 didn't bring anything relevant to GNU/Linux and
+    was therefore skipped
+
+-------------------------------------------------------------------
 Thu Aug 14 08:14:17 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 2.0.1
