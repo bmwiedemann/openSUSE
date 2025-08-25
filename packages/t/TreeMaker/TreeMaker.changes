@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 23 16:11:55 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add patches, mainly to fix build with GCC 15:
+  * Fix-build-with-GCC-15.patch
+  * Fix-Wparentheses-warnings.patch
+  * Fix-Wdangling-else-warnings.patch
+- Migrate from %suse_update_desktop_file to %translate_suse_desktop
+  with translation only for GenericName. (Name is a proper name.)
+
+-------------------------------------------------------------------
 Wed May  1 16:45:29 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add patches:

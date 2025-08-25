@@ -52,4 +52,18 @@
 </comment>
     <requestid>1171161</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>3e901c316741acb1b54c330a96f5fd88</srcmd5>
+    <version>5.0.1</version>
+    <time>1756147062</time>
+    <user>anag_factory</user>
+    <comment>- Add patches, mainly to fix build with GCC 15:
+  * Fix-build-with-GCC-15.patch
+  * Fix-Wparentheses-warnings.patch
+  * Fix-Wdangling-else-warnings.patch
+- Migrate from %suse_update_desktop_file to %translate_suse_desktop
+  with translation only for GenericName. (Name is a proper name.)
+</comment>
+    <requestid>1301092</requestid>
+  </revision>
 </revisionlist>

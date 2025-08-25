@@ -1,0 +1,54 @@
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Sat, 23 Aug 2025 17:38:13 +0200
+Subject: [PATCH 3/3] Fix -Wdangling-else warnings
+
+The indentation matched how the compiler would parse the statements (the
+`else` is assigned to the innermost `if`), so we just add braces to
+clarify that this is intentional.
+---
+ Source/tmModel/tmTreeClasses/tmTree.cpp   | 3 ++-
+ Source/tmModel/tmTreeClasses/tmVertex.cpp | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/Source/tmModel/tmTreeClasses/tmTree.cpp b/Source/tmModel/tmTreeClasses/tmTree.cpp
+index 1347e8d..38d1b9f 100644
+--- a/Source/tmModel/tmTreeClasses/tmTree.cpp
++++ b/Source/tmModel/tmTreeClasses/tmTree.cpp
+@@ -777,7 +777,7 @@ void tmTree::AbsorbEdge(tmEdge* aEdge)
+     // Paths that end on killNode are deleted.
+     if (thePath->StartsOrEndsWith(killNode))
+       delete thePath;
+-    else if (thePath->mNodes.contains(killNode))
++    else if (thePath->mNodes.contains(killNode)) {
+       if (thePath->mNodes.contains(keepNode))
+         // Paths that contain killNode and keepNode get the reference to 
+         // killNode removed. 
+@@ -786,6 +786,7 @@ void tmTree::AbsorbEdge(tmEdge* aEdge)
+         // Paths that only contain killNode get the reference replaced by
+         // a reference to keepNode.
+         thePath->mNodes.replace_with(killNode, keepNode);
++    }
+     // Remove the edge from the path
+     if (thePath->mEdges.contains(aEdge))
+       thePath->mEdges.erase_remove(aEdge);
+diff --git a/Source/tmModel/tmTreeClasses/tmVertex.cpp b/Source/tmModel/tmTreeClasses/tmVertex.cpp
+index f98c533..7f75392 100644
+--- a/Source/tmModel/tmTreeClasses/tmVertex.cpp
++++ b/Source/tmModel/tmTreeClasses/tmVertex.cpp
+@@ -241,7 +241,7 @@ void tmVertex::GetAxialOrGussetCreases(tmCrease*& crease1,
+   crease1 = crease2 = 0;
+   for (size_t i = 0; i < mCreases.size(); ++i) {
+     tmCrease* theCrease = mCreases[i];
+-    if (theCrease->IsAxialOrGussetCrease())
++    if (theCrease->IsAxialOrGussetCrease()) {
+       if (!crease1)
+         crease1 = theCrease;
+       else {
+@@ -249,6 +249,7 @@ void tmVertex::GetAxialOrGussetCreases(tmCrease*& crease1,
+         crease2 = theCrease;
+         return;
+       }
++    }
+   }
+   TMFAIL("tmVertex::GetAxialOrGussetCreases(): "\
+     "couldn't find axial or gusset creases");

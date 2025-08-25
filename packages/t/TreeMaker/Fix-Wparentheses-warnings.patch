@@ -1,0 +1,37 @@
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Sat, 23 Aug 2025 17:36:40 +0200
+Subject: [PATCH 2/3] Fix -Wparentheses warnings
+
+These seem to be true positives, so I fixed the code. This could result
+in behavioral changes, but I haven't noticed anything broken yet.
+---
+ Source/tmModel/tmTreeClasses/tmConditionPathActive.cpp | 2 +-
+ Source/tmModel/tmTreeClasses/tmConditionPathCombo.cpp  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Source/tmModel/tmTreeClasses/tmConditionPathActive.cpp b/Source/tmModel/tmTreeClasses/tmConditionPathActive.cpp
+index ebbf677..551415d 100644
+--- a/Source/tmModel/tmTreeClasses/tmConditionPathActive.cpp
++++ b/Source/tmModel/tmTreeClasses/tmConditionPathActive.cpp
+@@ -46,7 +46,7 @@ void tmConditionPathActive::SetPath(tmPath* aPath)
+ {
+   TMASSERT(aPath);
+   TMASSERT(aPath->mIsLeafPath);
+-  if (mPath = aPath) return;
++  if (mPath == aPath) return;
+   tmTreeCleaner tc(mTree);
+   mPath = aPath;
+   mNode1 = aPath->mNodes.front();
+diff --git a/Source/tmModel/tmTreeClasses/tmConditionPathCombo.cpp b/Source/tmModel/tmTreeClasses/tmConditionPathCombo.cpp
+index aa34cc3..7e84b93 100644
+--- a/Source/tmModel/tmTreeClasses/tmConditionPathCombo.cpp
++++ b/Source/tmModel/tmTreeClasses/tmConditionPathCombo.cpp
+@@ -65,7 +65,7 @@ void tmConditionPathCombo::SetPath(tmPath* aPath)
+ {
+   TMASSERT(aPath);
+   TMASSERT(aPath->mIsLeafPath);
+-  if (mPath = aPath) return;
++  if (mPath == aPath) return;
+   tmTreeCleaner tc(mTree);
+   mPath = aPath;
+   mNode1 = aPath->mNodes.front();

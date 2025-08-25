@@ -1,8 +1,7 @@
 #
 # spec file for package TreeMaker
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024 Aaron Puchert <aaronpuchert@alice-dsl.net>
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +18,7 @@
 
 # We have to build hhp2cached ourselves. We take the source from a fixed version
 # of wxWidgets to not break source validation, but warn if it doesn't match.
-%global hhp2cached_ver 3.2.4
+%global hhp2cached_ver 3.2.8
 %if %{pkg_vcmp wxGTK3-devel != %{hhp2cached_ver}}
 %{warn:hhp2cached version does not match wxGTK3-devel}
 %endif
@@ -32,7 +31,7 @@ License:        GPL-2.0-only
 Group:          Productivity/Graphics/CAD
 URL:            https://www.langorigami.com/article/treemaker
 Source:         https://www.langorigami.com/wp-content/uploads/2015/09/TreeMaker_src.zip
-Source1:        com.langorigami.TreeMaker.desktop
+Source1:        com.langorigami.TreeMaker.desktop.in
 Source2:        com.langorigami.TreeMaker.metainfo.xml
 Source3:        treemaker.xml
 Source4:        https://github.com/wxWidgets/wxWidgets/raw/v%{hhp2cached_ver}/utils/hhp2cached/hhp2cached.cpp
@@ -59,11 +58,14 @@ Patch19:        Fix-crash-on-opening-help.patch
 Patch20:        Make-some-build-options-configurable.patch
 Patch21:        Don-t-run-pkg-config-wx-config-for-every-compile-job.patch
 Patch22:        Correctly-detect-64-bit-platforms.patch
+Patch23:        Fix-build-with-GCC-15.patch
+Patch24:        Fix-Wparentheses-warnings.patch
+Patch25:        Fix-Wdangling-else-warnings.patch
 BuildRequires:  c++_compiler
 BuildRequires:  make
 BuildRequires:  pkgconfig
+BuildRequires:  translate-suse-desktop
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK3-devel
 BuildRequires:  zip
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -86,6 +88,8 @@ pasted into another graphics program for further processing.
 unzip -uo %{SOURCE0} -d ..
 %autopatch -p1
 
+cp %{SOURCE1} .
+
 %build
 pushd linux/
 OPTIONS="%{optflags}" make %{?_smp_mflags} INSTALL_PREFIX=%{_prefix}
@@ -101,8 +105,8 @@ popd
 
 rm %{buildroot}%{_datadir}/TreeMaker\ 5/{Icon_app.ppm,LICENSE.txt.gz,uninstall}
 
-%suse_update_desktop_file -i %{SOURCE1}
-install -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/applications/com.langorigami.TreeMaker.desktop
+%translate_suse_desktop com.langorigami.TreeMaker.desktop
+install -D -m 644 com.langorigami.TreeMaker.desktop %{buildroot}%{_datadir}/applications/com.langorigami.TreeMaker.desktop
 install -D -m 644 %{SOURCE2} %{buildroot}%{_datadir}/metainfo/com.langorigami.TreeMaker.metainfo.xml
 install -D -m 644 %{SOURCE3} %{buildroot}%{_datadir}/mime/packages/treemaker.xml
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/{48x48,128x128}/{apps,mimetypes}
