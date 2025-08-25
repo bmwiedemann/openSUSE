@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  6 12:09:57 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add opencv-ppc64le-power9.patch, fix missing vec_cvfo on POWER9 due to
+  unavailable VSX float64 conversion
+
+-------------------------------------------------------------------
 Wed May  7 10:02:57 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes

@@ -1,7 +1,7 @@
 #
 # spec file for package opencv3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,9 @@ Source1:        https://github.com/opencv/opencv_contrib/archive/%{version}.tar.
 Patch1:         opencv-build-compare.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         https://github.com/opencv/opencv/commit/00ca8f455e6a5588d905e3a0b268f18ee3fda5dd.patch#/opencv3-drop-numpy-distutils.patch
+# PATCH-FIX-UPSTREAM opencv-ppc64le-power9.patch hillwood@opensuse.org - Fix missing vec_cvfo on POWER9 due to unavailable VSX float64 conversion
+# https://github.com/opencv/opencv/pull/27633
+Patch3:         opencv-ppc64le-power9.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel
