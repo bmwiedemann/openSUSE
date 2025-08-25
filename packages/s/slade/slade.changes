@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 24 12:41:33 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Adjust clzma.diff for changes in the lzma-sdk package's
+  lzma-sdk-shlib.patch.
+
+-------------------------------------------------------------------
 Mon Jul 21 19:48:20 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Delete accidentally committed UBSAN flags from specfile

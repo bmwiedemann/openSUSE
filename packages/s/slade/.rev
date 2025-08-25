@@ -154,4 +154,13 @@
   GLAD is used instead.</comment>
     <requestid>1294898</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>0028fa4e14b953f3e8affa752348f3a6</srcmd5>
+    <version>3.2.7</version>
+    <time>1756147074</time>
+    <user>anag_factory</user>
+    <comment>- Adjust clzma.diff for changes in the lzma-sdk package's
+  lzma-sdk-shlib.patch.</comment>
+    <requestid>1301135</requestid>
+  </revision>
 </revisionlist>

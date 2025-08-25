@@ -38,12 +38,14 @@ BuildRequires:  strip-nondeterminism
 BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK3-devel
 BuildRequires:  zip
-BuildRequires:  pkgconfig(clzma)
 BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(ftgl)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libmpg123)
+%if 0%{?suse_version} >= 1690
+BuildRequires:  pkgconfig(lzma-sdk)
+%endif
 BuildRequires:  pkgconfig(sfml-all)
 BuildRequires:  pkgconfig(x11)
 %if 0%{?suse_version} >= 1600

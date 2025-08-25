@@ -1,9 +1,7 @@
 From: Jan Engelhardt <jengelh@inai.de>
 Date: 2020-06-22 21:16:10.343429323 +0200
 
-Make use of the clzma library in openSUSE.
-[openSUSE-specific patch. I was under the impression that Debian and/or Ubuntu shipped
-lzma-sdk-dev too, but, upon checking, do not do so (anymore) as of 2024-11-27.]
+Make use of the system-provided lzma-sdk (in openSUSE, Fedora).
 ---
  thirdparty/CMakeLists.txt |    3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
@@ -25,7 +23,7 @@ Index: SLADE-3.2.7/thirdparty/CMakeLists.txt
  
  add_library(external STATIC ${EXTERNAL_SOURCES})
 -target_link_libraries(external ${ZLIB_LIBRARY} lunasvg fmt::fmt ${CMAKE_DL_LIBS})
-+target_link_libraries(external ${ZLIB_LIBRARY} -lclzma lunasvg fmt::fmt ${CMAKE_DL_LIBS})
++target_link_libraries(external ${ZLIB_LIBRARY} -llzmasdk lunasvg fmt::fmt ${CMAKE_DL_LIBS})
  set(EXTERNAL_LIBRARIES external PARENT_SCOPE)
  
  if(USE_SYSTEM_DUMB)
