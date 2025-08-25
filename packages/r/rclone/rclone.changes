@@ -1,4 +1,249 @@
 -------------------------------------------------------------------
+Fri Aug 22 20:49:49 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.71.0:
+  * Version v1.71.0
+  * fs: tls: add --client-pass support for encrypted --client-key files
+  * ftp: make TLS config default to global TLS config - Fixes #6671
+  * fshttp: return *Transport rather than http.RoundTripper from NewTransport
+  * bisync: release from beta
+  * bisync: fix markdown formatting issues flagged by linter in docs
+  * bisync: fix --no-slow-hash settings on path2
+  * Add cui to contributors
+  * docs: add code of conduct
+  * lib/mmap: convert to using unsafe.Slice to avoid deprecated reflect.SliceHeader
+  * build: bump golangci/golangci-lint-action from 6 to 8
+  * build: update golangci-lint configuration
+  * build: ignore revive lint issue var-naming: avoid meaningless package names
+  * build: fix lint issue: should omit type error from declaration
+  * Revert "build: downgrade linter to use go1.24 until it is fixed for go1.25"
+  * build: migrate golangci-lint configuration to v2 format
+  * s3: add --s3-use-arn-region flag - fixes #8686
+  * Add Binbin Qian to contributors
+  * Add Lucas Bremgartner to contributors
+  * docs: add tips about outdated certificates
+  * FAQ: specify the availability of SSL_CERT_* env vars
+  * pikpak: add file name integrity check during upload
+  * bisync: skip TestBisyncConcurrent on non-local
+  * internetarchive: fix server side copy files with &
+  * Revert "s3: set useAlreadyExists to false for Alibaba OSS"
+  * Add huangnauh to contributors
+  * smb: improve multithreaded upload performance using multiple connections
+  * bisync: fix data races on tests
+  * bisync: remove unused parameters
+  * bisync: deglobalize to fix concurrent runs via rc - fixes #8675
+  * mount: fix identification of symlinks in directory listings
+  * s3: fix Content-Type: aws-chunked causing upload errors with --metadata
+  * config: fix problem reading pasted tokens over 4095 bytes
+  * config: fix test failure on local machine with a config file
+  * log: add log rotation to --log-file - fixes #2259
+  * accounting: Fix stats (speed=0 and eta=nil) when starting jobs via rc
+  * docs: update overview table for oracle object storage
+  * Add praveen-solanki-oracle to contributors
+  * oracleobjectstorage: add read only metadata support - Fixes #8705
+  * doc: sync doesn't symlinks in dest without --link - Fixes #8749
+  * s3: sort providers in docs
+  * s3: add docs for Exaba Object Storage
+  * azureblob: fix double accounting for multipart uploads - fixes #8718
+  * pool: fix deadlock with --max-buffer-memory
+  * azureblob: fix deadlock with --max-connections with InvalidBlockOrBlob errors
+  * build: downgrade linter to use go1.24 until it is fixed for go1.25
+  * build: update all dependencies
+  * build: update to go1.25 and make go1.24 the minimum required version
+  * Add Timothy Jacobs to contributors
+  * bisync: fix time.Local data race on tests - fixes #8272
+  * googlecloudstorage: fix rateLimitExceeded error on bisync tests
+  * accounting: populate transfer snapshot with "what" value
+  * build(deps): bump actions/checkout from 4 to 5
+  * build(deps): bump actions/download-artifact from 4 to 5
+  * googlecloudstorage: enable bisync integration tests
+  * fstest: fix parsing of commas in -remotes
+  * azurefiles: fix hash getting erased when modtime is set
+  * bisync: disable --sftp-copy-is-hardlink on sftp tests
+  * local: fix --copy-links on Windows when listing Junction points
+  * operations: fix too many connections open when using --max-memory
+  * pool: fix deadlock with --max-memory and multipart transfers
+  * pool: unify memory between multipart and asyncreader to use one pool
+  * docs: update links to rcloneui
+  * docs: add MEGA S4 as a gold sponsor
+  * about: fix potential overflow of about in various backends
+  * box: fix about: cannot unmarshal number 1.0e+18 into Go struct field
+  * oauthutil: fix nil pointer crash when started with expired token
+  * rc: listremotes should send an empty array instead of nil
+  * config: add error if RCLONE_CONFIG_PASS was supplied but didn't decrypt config
+  * rc: add config/unlock to unlock the config file
+  * ftp: allow insecure TLS ciphers - fixes #8701
+  * s3: set useAlreadyExists to false for Alibaba OSS
+  * docs: update sponsors page
+  * fs: allow global variables to be overriden or set on backend creation
+  * fs: allow setting of --http_proxy from command line
+  * tests: cloudinary: remove test ignore after merging fix from #8707
+  * Add Antonin Goude to contributors
+  * Add Yu Xin to contributors
+  * Add houance to contributors
+  * Add Florent Vennetier to contributors
+  * Add n4n5 to contributors
+  * Add Albin Parou to contributors
+  * Add liubingrun to contributors
+  * sync: fix testLoggerVsLsf when backend only reads modtime
+  * sync: fix testLoggerVsLsf checking wrong fs
+  * docs: fix make opengraph tags absolute as not all sites understand relative
+  * docs: update contributing guide regarding markdown documentation
+  * build: add markdown linting to workflow
+  * build: add markdownlint configuration
+  * docs: minor format cleanup install.md
+  * docs: fix markdownlint issue md049/emphasis-style
+  * docs: fix markdownlint issue md036/no-emphasis-as-heading
+  * docs: fix markdownlint issue md033/no-inline-html
+  * docs: fix markdownlint issue md025/single-title
+  * docs: fix markdownlint issue md041/first-line-heading
+  * docs: fix markdownlint issue md001/heading-increment
+  * docs: fix markdownlint issue md003/heading-style
+  * docs: fix markdownlint issue md034/no-bare-urls
+  * docs: fix markdownlint issue md010/no-hard-tabs
+  * docs: fix markdownlint issue md013/line-length
+  * docs: fix markdownlint issue md038/no-space-in-code
+  * docs: fix markdownlint issue md040/fenced-code-language
+  * docs: fix markdownlint issue md046/code-block-style
+  * docs: fix markdownlint issue md037/no-space-in-emphasis
+  * docs: fix markdownlint issue md059/descriptive-link-text
+  * docs: fix markdownlint issues md007/ul-indent md004/ul-style
+  * docs: fix markdownlint issue md012/no-multiple-blanks
+  * docs: fix markdownlint issue md058/blanks-around-tables
+  * docs: fix markdownlint issue md022/blanks-around-headings
+  * docs: fix markdownlint issue md031/blanks-around-fences
+  * docs: fix markdownlint issue md032/blanks-around-lists
+  * docs: fix markdownlint issue md009/no-trailing-spaces
+  * docs: fix markdownlint issue md014/commands-show-output
+  * docs: fix markdownlint issues md007/ul-indent md004/ul-style (bin/update-authors.py)
+  * docs: fix markdownlint issues md007/ul-indent md004/ul-style (authors.md)
+  * docs: add opengraph tags for website social media previews
+  * mount: note that bucket based remotes can use directory markers
+  * pikpak: add docs for methods to clarify name collision handling and restrictions
+  * pikpak: enhance Copy method to handle name collisions and improve error management
+  * pikpak: enhance Move for better handling of error and name collision
+  * accounting: fix incorrect stats with --transfers=1 - fixes #8670
+  * rc: fix `operations/check` ignoring `oneWay` parameter
+  * s3: add OVHcloud Object Storage provider
+  * docs: rc: fix description of how to read local config
+  * build: limit check for edits of autogenerated files to only commits in a pull request
+  * build: extend check for edits of autogenerated files to all commits in a pull request
+  * smb: refresh Kerberos credentials when ccache file changes
+  * s3: fix multipart upload and server side copy when using bucket policy SSE-C
+  * backend/s3: Fix memory leak by cloning strings #8683
+  * purge: exit with a fatal error if filters are set on `rclone purge`
+  * docs: Add Backblaze as a Platinum sponsor
+  * Add Sam Pegg to contributors
+  * googlephotos: added warning for Google Photos compatability-fixes #8672
+  * test: remove flakey TestChunkerChunk50bYandex: test
+  * docs: Consolidate entries for Josh Soref in contributors
+  * docs: remove dead link to example of writing a plugin
+  * filescom: document that hashes need to be enabled - fixes #8674
+  * Add Sudipto Baral to contributors
+  * docs: fix incorrect json syntax in sample output
+  * docs: ignore author email piyushgarg80
+  * docs: fix header level for --dump option section
+  * docs: use stringArray as parameter type
+  * docs: use consistent markdown heading syntax
+  * imagekit: remove server side Copy method as it was downloading and uploading
+  * imagekit: don't low level retry uploads
+  * imagekit: return correct error when attempting to upload zero length files
+  * smb: add --smb-kerberos-ccache option to set kerberos ccache per smb backend
+  * test: fix smb kerberos integration tests
+  * Changelog updates from Version v1.70.3
+  * config: make parsing of duration options consistent
+  * docs: cleanup usage
+  * docs: break long lines
+  * docs: add option value type to header where missing
+  * docs: mention that identifiers in option values are case insensitive
+  * docs: rewrite dump option examples
+  * docs: use markdown inline code format for dump option headers that are real examples
+  * docs: change spelling from server side to server-side
+  * docs: cleanup header casing
+  * docs: rename OSX to macOS
+  * docs: fix list and code block issue
+  * docs: consistent markdown list format
+  * docs: split section with general description of options with that documenting actual main options
+  * docs: improve description of option types
+  * docs: use space instead of equal sign to separate option and value in headers
+  * docs: use comma to separate short and long option format in headers
+  * docs: remove use of uncommon parameter types
+  * docs: remove use of parameter type FILE
+  * docs: remove use of parameter type DIR
+  * docs: remove use of parameter type CONFIG_FILE
+  * docs: change use of parameter type N and NUMBER to int consistent with flags and cli help
+  * docs: change use of parameter type TIME to Duration consistent with flags and cli help
+  * docs: change use of parameter type BANDWIDTH_SPEC to BwTimetable consistent with flags and cli help
+  * docs: change use of parameter type SIZE to SizeSuffix consistent with flags and cli help
+  * docs: cleanup markdown header format
+  * docs: explain separated list parameters
+  * azureblob: fix server side copy error "requires exactly one scope"
+  * test: remove and ignore failing integration tests
+  * docs: explain the json log format in more detail
+  * check: fix difference report (was reporting error counts)
+  * serve sftp: add support for more hashes (crc32, sha256, blake3, xxh3, xxh128)
+  * serve sftp: extract function refactoring for handling hashsum commands
+  * sftp: add support for more hashes (crc32, sha256, blake3, xxh3, xxh128)
+  * local: configurable supported hashes
+  * hash: add support for BLAKE3, XXH3, XXH128
+  * vfs: make integration TestDirEntryModTimeInvalidation test more reliable
+  * smb: skip non integration tests when doing integration tests
+  * seafile: fix integration test errors by adding dot to encoding
+  * linkbox: fix upload error "user upload file not exist"
+  * build: remove integration tests which are too slow
+  * march: fix deadlock when using --no-traverse - fixes #8656
+  * pikpak: improve error handling for missing links and unrecoverable 500s
+  * pikpak: rewrite upload to bypass AWS S3 manager - fixes #8629
+  * test: fix TestSMBKerberos password expiring errors
+  * Add Vikas Bhansali to contributors
+  * Add Ross Smith II to contributors
+  * azureblob,azurefiles: add support for client assertion based authentication
+  * webdav: fix setting modtime to that of local object instead of remote
+  * build: set default shell to bash in build.yml
+  * docs: fix filescom/filelu link mixup
+  * Add Davide Bizzarri to contributors
+  * fix: b2 versionAt read metadata
+  * test: make TestWebdavInfiniteScale startup more reliable
+  * test_all: add _connect_delay for slow starting servers
+  * docs: update link for filescom
+  * test_all: make TestWebdav InfiniteScale integration tests run
+  * test_all: make SMB with Kerberos integration tests run properly
+  * test_all: allow an env parameter to set environment variables
+  * Changelog updates from Version v1.70.2
+  * Add Ali Zein Yousuf to contributors
+  * Add $@M@RTH_ to contributors
+  * docs: update client ID instructions to current Azure AD portal - fixes #8027
+  * s3: add Zata provider
+  * pacer: fix nil pointer deref in RetryError - fixes #8077
+  * docs: Remove Warp as a sponsor
+  * docs: add files.com as a Gold sponsor
+  * docs: add links to SecureBuild docker image
+  * Add curlwget to contributors
+  * convmv: fix moving to unicode-equivalent name - fixes #8634
+  * transform: add truncate_keep_extension and truncate_bytes
+  * convmv: make --dry-run logs less noisy
+  * sync: avoid copying dir metadata to itself
+  * docs: fix some function names in comments
+  * combine: fix directory not found errors with ListP interface - Fixes #8627
+  * local: fix --skip-links on Windows when skipping Junction points
+  * Add Marvin Rösch to contributors
+  * build: bump github.com/go-chi/chi/v5 from 5.2.1 to 5.2.2 to fix GHSA-vrw8-fxc6-2r93
+  * copy,copyto,move,moveto: implement logger flags to store result of sync
+  * log: fix deadlock when using systemd logging - fixes #8621
+  * docs: googlephotos: detail how to make your own client_id - fixes #8622
+  * Add necaran to contributors
+  * mega: fix tls handshake failure - fixes #8565
+  * Changelog updates from Version v1.70.1
+  * Add jinjingroad to contributors
+  * docs: DOI grammar error
+  * docs: lib/transform: cleanup formatting
+  * lib/transform: avoid empty charmap entry
+  * chore: fix function name
+  * convmv: fix spurious "error running command echo" on Windows
+  * docs: client-credentials is not support by all backends
+  * Start v1.71.0-DEV development
+
+-------------------------------------------------------------------
 Wed Jul 09 16:27:08 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 1.70.3:

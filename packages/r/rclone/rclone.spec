@@ -1,7 +1,7 @@
 #
 # spec file for package rclone
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           rclone
-Version:        1.70.3
+Version:        1.71.0
 Release:        0
 Summary:        Rsync for cloud storage
 License:        MIT
