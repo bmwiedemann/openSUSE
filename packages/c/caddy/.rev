@@ -433,4 +433,40 @@
     <comment></comment>
     <requestid>1271292</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>d4d5558cdf3b5ec324183bd5185e5731</srcmd5>
+    <version>2.10.2</version>
+    <time>1756147064</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.10.2:
+  * caddyfile: Fix importing nested tokens for `{block}` (#7189)
+  * httpcaddyfile: Fix `acme_dns` regression (#7199)
+  * http: Make logger first, before TLS provisioning (#7198)
+
+- Update to version 2.10.1:
+  * go.mod: Upgrade CertMagic to v0.24.0
+  * caddyhttp: use the new http.Protocols to handle h1, h2 and h2c requests (#6961)
+  * fileserver: set Range header for precompressed static files to force Content Length header to appear (#7042)
+  * fileserver: Add a few doc lines about Etag file content (#7173)
+  * ci: set proper build tags in golangci and minor cleanup (#7183)
+  * reverse_proxy: use the new KeepAliveConfig to set probe interval (#7157)
+  * http: clean up listeners if some of the listeners fail to bind (#7176)
+  * http: disable keepalive when KeepAliveInterval is negative (#7158)
+  * use a more modern writing style to simplify code (#7182)
+  * caddyhttp: refactor to use reflect.TypeFor (#7187)
+  * chore: bump Go to v1.25 (#7184)
+  * caddyhttp: Free up quic listener when stopping (#7177)
+  * caddytls: fix regression in external certificate manager support (#7179)
+  * chore: fix inconsistent function name in comment (#7174)
+  * bcrypt: wrong cost flag name (#7168)
+  * bcrypt: add cost parameter to hash-password (#7149)
+  * cmd: Allow `caddy adapt` to read from stdin (#7163)
+  * build(deps): bump the all-updates group across 1 directory with 17 updates (#7155)
+  * caddytls: Improve ECH error logging (close #7152)
+  * httpcaddyfile: Fix generated config related to ACME global options
+  * core: Use KeepAliveConfig to pass keepalive_interval to listener's accepted sockets (#7151)
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.25 matching go.mod (forwarded request 1301068 from jfkw)</comment>
+    <requestid>1301069</requestid>
+  </revision>
 </revisionlist>
