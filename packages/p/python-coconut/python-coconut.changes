@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 21 11:25:20 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix install requirements
+- Add optional tests, but disabled by default, we can use a
+  _multibuild in the future and enable some tests
+
+-------------------------------------------------------------------
+Tue Aug 12 12:55:20 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Update to 3.1.2
+  * See Coconut's documentation for more information on all of the features listed below.
+  * #851, #852: Fixed comments inside of parentheses in the Jupyter kernel.
+  * #846: reduce, takewhile, and dropwhile now support keyword arguments.
+  * #848: Class and data patterns now support keyword argument name elision.
+  * #847: New pattern-matching syntax for matching anonymous named tuples.
+  * #843: Added compiler warnings for (some cases of) undefined variables.
+
+-------------------------------------------------------------------
 Tue Sep 20 14:14:44 UTC 2022 - pgajdos@suse.com
 
 - version update to 1.6.0

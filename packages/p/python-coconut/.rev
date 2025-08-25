@@ -66,4 +66,22 @@
     <comment></comment>
     <requestid>1004997</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d019cafeecbfbf26486264c912549a29</srcmd5>
+    <version>3.1.2</version>
+    <time>1756147108</time>
+    <user>anag_factory</user>
+    <comment>- Fix install requirements
+- Add optional tests, but disabled by default, we can use a
+  _multibuild in the future and enable some tests
+
+- Update to 3.1.2
+  * See Coconut's documentation for more information on all of the features listed below.
+  * #851, #852: Fixed comments inside of parentheses in the Jupyter kernel.
+  * #846: reduce, takewhile, and dropwhile now support keyword arguments.
+  * #848: Class and data patterns now support keyword argument name elision.
+  * #847: New pattern-matching syntax for matching anonymous named tuples.
+  * #843: Added compiler warnings for (some cases of) undefined variables.</comment>
+    <requestid>1301159</requestid>
+  </revision>
 </revisionlist>
