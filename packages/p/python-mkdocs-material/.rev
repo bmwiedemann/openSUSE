@@ -749,4 +749,12 @@ update to 9.5.26</comment>
     <comment></comment>
     <requestid>1300443</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>3bd2e80c816e9ce9ef07fdc45b25d64d</srcmd5>
+    <version>9.6.18</version>
+    <time>1756147109</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1301191</requestid>
+  </revision>
 </revisionlist>
