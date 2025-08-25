@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug 12 12:05:54 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- updated version to 0.25.0
+ * ErrorLogger Support
+ * Changed 32-bit Windows support from #error to #warning
+ * Unified _WIN64 macros to _WIN32 for better compatibility
+ * Improved Windows environment support
+ * CMake Pointer Size Check #2197
+ * Winndows Version Requirements #2191, #2192
+ * Better build-time compatibility detection
+ * Fixed Chocolatey OpenSSL compatibility issues
+ * Improved SSL functionality stability on Windows
+ * Resolved Windows version check problems
+ * Enhanced platform detection
+
+-------------------------------------------------------------------
 Mon Aug  4 21:10:04 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - 0.24.0:

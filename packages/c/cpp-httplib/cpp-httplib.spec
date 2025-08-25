@@ -1,7 +1,7 @@
 #
 # spec file for package cpp-httplib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%define         sover 0.24
-%define         libver 0_24
+%define         sover 0.25
+%define         libver 0_25
 Name:           cpp-httplib
-Version:        0.24.0
+Version:        0.25.0
 Release:        0
 Summary:        A C++11 HTTP/HTTPS server and client library
 License:        MIT
