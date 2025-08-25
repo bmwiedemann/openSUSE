@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 16 19:39:25 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 8.3.1:
+  * Fix orientation lock sync
+  * Sync Wingpanel transparency to Greeter
+  * Add application shortcuts backend
+  * Cache dynamic accent color in account settings and use it in Portal
+  * Fix housekeeping
+
+-------------------------------------------------------------------
 Thu Apr 24 09:57:57 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.3.0:
