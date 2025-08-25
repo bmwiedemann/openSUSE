@@ -1,7 +1,7 @@
 #
 # spec file for package switchboard-plug-keyboard
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.settings.keyboard
 Name:           switchboard-plug-keyboard
-Version:        8.0.1
+Version:        8.1.0
 Release:        0
 Summary:        Switchboard Keyboard Plug
 License:        GPL-3.0-or-later
@@ -49,7 +49,7 @@ also part of this plug.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -n settings-keyboard-%{version}
 
 %build
 %meson

@@ -1,3 +1,14 @@
+-------------------------------------------------------------------
+Sat Aug 16 19:32:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 8.1.0:
+  * Cleanup CustomShortcutListBox
+  * Remove ConflictDialog
+  * Update POTFILES
+  * Add standard system shortcuts to list of conflicts
+  * ConflictsManager: Add comments for translators
+  * Add settings-daemon application launcher support
+
 ------------------------------------------------------------------
 Wed Nov 12 03:00:00 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
