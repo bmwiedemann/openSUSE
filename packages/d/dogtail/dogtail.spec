@@ -1,7 +1,7 @@
 #
 # spec file for package dogtail
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define pythons python3
 Name:           dogtail
 Version:        0.9.11
 Release:        0
@@ -24,10 +25,13 @@ License:        GPL-2.0-only
 URL:            https://gitlab.com/dogtail/dogtail/
 Source0:        https://gitlab.com/dogtail/dogtail/raw/released/%{name}-%{version}.tar.gz
 BuildRequires:  desktop-file-utils
+BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  python3-devel
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
 Requires:       hicolor-icon-theme
 Requires:       python3-atspi
@@ -49,12 +53,12 @@ communicate with desktop applications.
 %setup -q
 
 %build
-python3 ./setup.py build
+%pyproject_wheel
 
 %install
-python3 ./setup.py install -O2 --root=%{buildroot} --record=%{name}.files
+%pyproject_install
+%fdupes %{buildroot}%{python3_sitelib}
 rm -rf %{buildroot}/%{_docdir}/dogtail
-rm -rf %{buildroot}/%{python_sitelib}/%{name}-%{version}-py%{python_version}.egg-info
 find examples -type f -exec chmod 0644 \{\} \;
 desktop-file-install %{buildroot}/%{_datadir}/applications/sniff.desktop \
   --dir=%{buildroot}/%{_datadir}/applications \
@@ -69,6 +73,7 @@ desktop-file-install %{buildroot}/%{_datadir}/applications/sniff.desktop \
 %files
 %{_bindir}/*
 %{python3_sitelib}/dogtail/
+%{python3_sitelib}/dogtail-%{version}.dist-info
 %{_datadir}/applications/*
 %{_datadir}/dogtail/
 %{_datadir}/icons/hicolor/*/apps/%{name}*.*
