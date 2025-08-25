@@ -16,4 +16,12 @@
   * Improve support for LibAdwaita widgets (forwarded request 1225423 from rrahl0)</comment>
     <requestid>1225424</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>170175e3f349c1e59fa9fd531410b9b1</srcmd5>
+    <version>8.2.1</version>
+    <time>1756147133</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1301206</requestid>
+  </revision>
 </revisionlist>

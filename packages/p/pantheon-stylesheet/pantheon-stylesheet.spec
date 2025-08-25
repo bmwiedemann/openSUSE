@@ -1,7 +1,7 @@
 #
 # spec file for package pantheon-stylesheet
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         appid io.elementary.stylesheet
 Name:           pantheon-stylesheet
-Version:        8.2.0
+Version:        8.2.1
 Release:        0
 Summary:        The Elementary GTK theme
 License:        GPL-3.0-or-later
@@ -49,7 +49,7 @@ attractive, fast, and usable.
 %files
 %license COPYING
 %doc CONTRIBUTING.md README.md
-%{_datadir}/themes/%{appid}.{banana,blueberry,bubblegum,cocoa,grape,lime,mint,orange,slate,strawberry}
+%{_datadir}/themes/%{appid}.{banana,blueberry,bubblegum,cocoa,grape,latte,lime,mint,orange,slate,strawberry}
 %{_datadir}/metainfo/%{appid}.appdata.xml
 
 %changelog
