@@ -1,7 +1,7 @@
 #
 # spec file for package zellij
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 %bcond_with     test
 Name:           zellij
-Version:        0.42.2
+Version:        0.43.1
 Release:        0
 Summary:        Terminal workspace with batteries included
 License:        MIT
@@ -112,6 +112,12 @@ pushd default-plugins/plugin-manager
 cargo --offline build --release --target=wasm32-wasip1
 popd
 pushd default-plugins/about
+cargo --offline build --release --target=wasm32-wasip1
+popd
+pushd default-plugins/share
+cargo --offline build --release --target=wasm32-wasip1
+popd
+pushd default-plugins/multiple-select
 cargo --offline build --release --target=wasm32-wasip1
 popd
 

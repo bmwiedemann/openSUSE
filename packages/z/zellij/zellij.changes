@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Aug 08 20:14:28 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to version 0.43.1:
+  * chore(release): v0.43.1
+  * docs(changelog): KKP fix
+  * fix(terminal): handle omitted flags in kitty keyboard protocol push sequence (#4334)
+  * fix(web): use session name as initial document title (#4357)
+  * fix(compact-bar): make tooltip hints use opaque bg (#4356)
+  * docs(readme): description and roadmap update
+  * docs(changelog): resurrection fix
+  * fix(list): do not list sessions as resurrectable unless they are (#4354)
+  * docs(changelog): terminal title fix
+  * fix: terminal title (#4352)
+
+-------------------------------------------------------------------
+Fri Aug 08 20:10:44 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to version 0.43.0:
+  * chore(release): v0.43.0
+  * style: link and help fixes (#4339)
+  * fix(ci): make cross compilation work with the no-web variant (#4330)
+  * style: some cleanups (#4329)
+  * docs(about): release notes for version 0.43.0 (#4326)
+  * fix(web): focus terminal on init (#4325)
+  * fix(web): allow pasting with cmd-v (#4321)
+  * fix(web-client): theme not loading (#4265)
+  * Add gruber-darker theme (#4288)
+  * fix(web_server): Handle extracting session_token from multiple cookies (#4271)
+
+-------------------------------------------------------------------
 Mon Apr 21 11:48:49 UTC 2025 - gerald_chen@foxmail.com
 
 - Update to version 0.42.2:
