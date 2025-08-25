@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 25 04:53:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.0:
+  * Added Features
+    - Add fix availability data for OS providers [#629 @wagoodman]
+  * Bug Fixes
+    - recognize jvm versions at DB build time [#647
+      @willmurphyscode]
+  * Additional Changes
+    - move to pyyaml-include 2.x, keep legacy CWD-relative !include
+      [#642 @jamestexas]
+  * Dependencies
+    - chore(deps): Bump actions/checkout from 4.2.2 to 5.0.0 (#630)
+    - chore(deps): Bump astral-sh/setup-uv in
+      /.github/actions/bootstrap (#631)
+    - chore(deps): update tools to latest versions (#639)
+    - chore(deps): Bump github.com/hashicorp/go-getter from 1.7.8
+      to 1.7.9 (#641)
+
+-------------------------------------------------------------------
 Tue Aug 19 05:37:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.0:
