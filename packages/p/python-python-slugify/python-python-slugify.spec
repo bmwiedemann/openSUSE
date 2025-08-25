@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-slugify
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,13 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %define short_name python-slugify
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+%{?sle15_python_module_pythons}
 Name:           python-%{short_name}
 Version:        8.0.4
 Release:        0
@@ -32,11 +37,16 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-text-unidecode >= 1.3
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Suggests:       python-Unidecode >= 1.1.1
 Conflicts:      python-awesome-slugify
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -61,6 +71,9 @@ A Python Slugify application that handles Unicode.
 
 %postun
 %python_uninstall_alternative slugify
+
+%pre
+%python_libalternatives_reset_alternative slugify
 
 %files %{python_files}
 %doc CHANGELOG.md README.md

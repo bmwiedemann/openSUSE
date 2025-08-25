@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 25 12:29:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Wed Jun 11 05:49:34 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
