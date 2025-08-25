@@ -26,7 +26,7 @@ URL:            https://github.com/saltstack/libnacl
 Source0:        https://github.com/saltstack/libnacl/archive/v%{version}.tar.gz#/libnacl-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 22 09:03:41 UTC 2025 - Max Lin <mlin@suse.com>
+
+- Use BuildRequires: poetry-core to instead of BuildRequires: poetry
+
+-------------------------------------------------------------------
 Wed Jun 12 09:50:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to libsodium26
