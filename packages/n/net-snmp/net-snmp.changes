@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 30 04:38:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- Add patch net-snmp-5.9.4-setup.py-basedir-environ.patch:
+  * Also use environment variables to set the basedir.
+- Specify directories explicitly in %files.
+
+-------------------------------------------------------------------
 Wed Jan 22 15:48:36 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).

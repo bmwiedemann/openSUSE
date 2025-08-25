@@ -1,0 +1,15 @@
+Index: net-snmp-5.9.4/python/setup.py
+===================================================================
+--- net-snmp-5.9.4.orig/python/setup.py
++++ net-snmp-5.9.4/python/setup.py
+@@ -12,6 +12,10 @@ for arg in args:
+         sys.argv.remove(arg)
+         intree=1
+ 
++if os.environ.get("NET_SNMP_BASEDIR"):
++    basedir = os.environ.get("NET_SNMP_BASEDIR")
++    intree = 1
++
+ if intree:
+     netsnmp_libs = os.popen(basedir+'/net-snmp-config --libs').read()
+     libdir = os.popen(basedir+'/net-snmp-config --build-lib-dirs '+basedir).read()

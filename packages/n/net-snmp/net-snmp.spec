@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define netsnmp_logfile %{_localstatedir}/log/net-snmpd.log
 %define netsnmp_agentx_socket_dir_fhs %{_rundir}/agentx
 %define netsnmp_agentx_socket_dir_rfc %{_localstatedir}/agentx
@@ -35,7 +34,7 @@ Release:        0
 Summary:        SNMP Daemon
 License:        BSD-3-Clause AND MIT
 Group:          Productivity/Networking/Other
-URL:            https://sourceforge.net/projects/net-snmp
+URL:            https://github.com/net-snmp/net-snmp
 Source:         https://sourceforge.net/projects/net-snmp/files/net-snmp/%{version}/%{name}-%{version}.tar.gz
 Source1:        snmpd.conf
 Source2:        README.SUSE
@@ -65,8 +64,11 @@ Patch14:        net-snmp-5.9.4-subagent-set-response.patch
 Patch15:        net-snmp-5.9.4-fixed-python2-bindings.patch
 Patch16:        net-snmp-5.9.4-add-netgroups-functionality.patch
 Patch17:        net-snmp-5.9.4-systemd-no-utmp.patch
+Patch18:        net-snmp-5.9.4-setup.py-basedir-environ.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -285,7 +287,8 @@ MIBS="$MIBS ucd-snmp/lmsensorsMib"
 %make_build -j1
 
 pushd python
-%python_exec setup.py build --basedir="../"
+export NET_SNMP_BASEDIR="../"
+%pyproject_wheel
 popd
 
 %install
@@ -313,7 +316,7 @@ pushd perl
     rm -f %{buildroot}/%{perl_vendorarch}/Bundle/Makefile.subs.pl
 popd
 pushd python
-%python_install
+%pyproject_install
 popd
 grep -a -v "^#define PACKAGE" %{buildroot}%{_includedir}/net-snmp/net-snmp-config.h > \
     %{buildroot}%{_includedir}/net-snmp/net-snmp-config.h.new
@@ -460,6 +463,7 @@ done
 
 %files %{python_files %{name}}
 %doc README
-%{python_sitearch}/*
+%{python_sitearch}/netsnmp
+%{python_sitearch}/netsnmp_python-1.0a1.dist-info
 
 %changelog
