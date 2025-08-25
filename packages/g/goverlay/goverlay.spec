@@ -1,7 +1,7 @@
 #
 # spec file for package goverlay
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define real_version 1.3-3
+%define real_version 1.4.1
 
 Name:           goverlay
-Version:        1.3.3
+Version:        1.4.1
 Release:        0
 Summary:        Graphical UI to help manage overlays
 License:        GPL-3.0-or-later

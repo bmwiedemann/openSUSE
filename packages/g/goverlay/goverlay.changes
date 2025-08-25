@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Aug 21 08:48:40 UTC 2025 - Emiliano Langella <emiliano.langella@suse.com>
+
+- Update to version 1.4.1
+  * This is a small fix release
+
+-------------------------------------------------------------------
+Mon Aug  4 07:43:37 UTC 2025 - Emiliano Langella <emiliano.langella@suse.com>
+
+- Update to version 1.4.0
+  * Loopback and virtual network interfaces are now ignored
+  * Several functions refactored
+  * Intel CPU color updated to $00ff5500
+  * Low usage color for CPU/GPU now follows the preset theme
+  * Various UI improvements
+  * Fix: RAM checkbox wasn’t enabled automatically with VRAM
+  * Fix: Light themes caused unusable interface
+  * fix vkcube-wayland no longer existing
+  * use iculess packages to reduce size of appimage
+  * bundle lspci
+  * Simplify appimage script, recreate nightly tag so that it doesn't
+    get burried below newer releases
+  * fix and optimize grep
+  * declare StartupWMClass
+  * bump dwarfs block size 
+  * Optimize size of appimage, make dedicated script for dependencies,
+    prepare CI for aarch64 builds
+  * XDG, PATHs, and Fontconfig
+  * XDG user config and fixes
+  * GetUserConfig in blacklistunit.pas 
+  * Fix missing XDG_CONFIG_HOME
+ 
+
+-------------------------------------------------------------------
 Mon Mar 17 13:50:43 UTC 2025 - Emiliano Langella <emiliano.langella@suse.com>
 
 - Update to version 1.3-3
