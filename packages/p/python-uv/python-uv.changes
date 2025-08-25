@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 22 13:54:55 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.8.13
+ * Enhancements
+  * Add --no-install-* arguments to uv add 
+  * Initialize Git prior to reading author in uv init 
+  * Add CUDA 129 to available torch backends 
+  * Update Pyodide to 0.28.2 
+ * Preview features
+  * Add an experimental uv format command 
+  * Allow version specifiers in extra-build-dependencies if match-runtime is explicitly false 
+ * Bug fixes
+  * Add triton to torch-backend manifest 
+  * Avoid panicking when resolver returns stale distributions 
+  * Fix uv_build wheel hashes 
+  * Treat --upgrade-package on the command-line as overriding upgrade = false in configuration 
+
+-------------------------------------------------------------------
 Wed Aug 20 09:03:55 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.8.12
