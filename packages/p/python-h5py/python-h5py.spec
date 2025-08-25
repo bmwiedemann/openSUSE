@@ -1,7 +1,7 @@
 #
 # spec file for package python-h5py
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,7 @@
 %endif
 # /SECTION MPI DEFINITIONS
 Name:           %{pname}%{?my_suffix}
-Version:        3.12.1
+Version:        3.14.0
 Release:        0
 Summary:        Python interface to the Hierarchical Data Format library
 License:        BSD-3-Clause
@@ -57,11 +57,11 @@ URL:            https://github.com/h5py/h5py
 Source:         https://files.pythonhosted.org/packages/source/h/h5py/h5py-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 0.29 with %python-Cython < 4}
 BuildRequires:  %{python_module devel >= 3.9}
-BuildRequires:  %{python_module numpy-devel >= 1.19.3}
+BuildRequires:  %{python_module numpy-devel >= 2.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pkgconfig}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools >= 61}
+BuildRequires:  %{python_module setuptools >= 77}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  hdf5%{?my_suffix}-devel >= 1.10.6
@@ -73,7 +73,7 @@ Requires:       python-numpy >= 1.19.3
 BuildRequires:  %{mpi_flavor}%{mpi_vers}-devel
 BuildRequires:  %{python_module mpi4py >= 3.1.1 if %python-base < 3.11}
 BuildRequires:  %{python_module mpi4py >= 3.1.6 if %python-base >= 3.12}
-BuildRequires:  %{python_module pytest-mpi}
+BuildRequires:  %{python_module pytest-mpi >= 0.2}
 BuildRequires:  %{python_module mpi4py >= 3.1.4 if (%python-base >= 3.11 and %python-base < 3.12)}
 Requires:       python-mpi4py >= 3.1.1
 %endif

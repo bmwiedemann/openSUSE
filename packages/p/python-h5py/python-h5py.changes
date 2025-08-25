@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Aug 25 04:12:26 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.14.0:
+  * New Features
+    + On NumPy 2.x, it is now possible to read and write native NumPy
+      variable-width strings, a.k.a. StringDType() or dtype='T', which are
+      more efficient than arrays of Python string objects.
+    + New File.in_memory constructor to conveniently build an HDF5 file
+      structure in memory
+    + Dataset views returned by Dataset.astype, Dataset.asstr and
+      Dataset.fields have gained the .dtype, .ndim, .shape, and .size
+      attributes.
+    + Opening an existing dataset in a file is faster since it now only loads
+      the "dataset creation property list" when required.
+  * Exposing HDF5 functions
+    + h5py.h5d.DatasetID.write_direct_chunk now wraps H5Dwrite_chunk instead
+      of H5DOwrite_chunk.
+    + H5Sselect_shape_same exposed as h5py.h5s.SpaceID.select_shape_same.
+  * Bug fixes
+    + Fixed a problem with phil Lock handling in forked processes when h5py
+      is also used from other threads.
+    + Fixed an error using :meth:`.Dataset.read_direct` with a zero-size
+      selection.
+    + Fix various bugs when applying np.array or np.asarray to a Dataset view
+      returned by Dataset.astype, Dataset.asstr, or Dataset.fields.
+  * Building h5py
+    + setuptools 77 or above is now required, due to changes in the license
+      metadata in pyproject.toml.
+    + Numpy variable-width string support does not alter the build process:
+      you need NumPy 2.x to build.
+    + Fixed building h5py with Numpy 2.3.
+
+-------------------------------------------------------------------
 Fri Nov 15 19:11:37 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.12.1
