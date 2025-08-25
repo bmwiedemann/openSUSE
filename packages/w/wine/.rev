@@ -5586,4 +5586,16 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - fix build if .debug are not present</comment>
     <requestid>1299976</requestid>
   </revision>
+  <revision rev="468" vrev="2">
+    <srcmd5>93e3c38b23867e92ea2926a84451fc27</srcmd5>
+    <version>10.13</version>
+    <time>1756147067</time>
+    <user>anag_factory</user>
+    <comment>- Use objdump and objcopy instead of the required 
+  xxx-w64-mingw32 host variants to avoid build
+  dependencies on mingxx-cross-yy-utils
+- Generation of 32-bit and 64-bit debug symbol packages
+  for Windows binaries combined for simplicity (forwarded request 1301065 from rhabacker)</comment>
+    <requestid>1301070</requestid>
+  </revision>
 </revisionlist>

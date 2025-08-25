@@ -36,44 +36,32 @@
 %define         staging 1
 %endif
 
-%global _mingw32_find_debuginfo \
-    rm -f %{_builddir}/mingw32-debugfiles.list; \
-    bash -x /usr/lib/rpm/mingw32-find-debuginfo.sh --no-debug-source-package %{_builddir}; \
-    mkdir -p %{buildroot}/usr/lib/debug%{_winelibdir}/wine/i386-windows; \
-    for f in %{buildroot}%{_winelibdir}/wine/i386-windows/*.debug; do \
-        [ -e "$f" ] && mv "$f" %{buildroot}/usr/lib/debug%{_winelibdir}/wine/i386-windows/ \
+%global _mingw_find_debuginfo() \
+    rm -f %{_builddir}/%{2}-debugfiles.list; \
+    OBJCOPY=objcopy OBJDUMP=objdump bash -x /usr/lib/rpm/%{2}-find-debuginfo.sh --no-debug-source-package %{_builddir}; \
+    mkdir -p %{buildroot}/usr/lib/debug%{_winelibdir}/wine/%{1}-windows; \
+    for f in %{buildroot}%{_winelibdir}/wine/%{1}-windows/*.debug; do \
+        [ -e "$f" ] && mv "$f" %{buildroot}/usr/lib/debug%{_winelibdir}/wine/%{1}-windows/; \
     done; \
-    sed -i 's,^%{_winelibdir},/usr/lib/debug%{_winelibdir},g' %{_builddir}/mingw32-debugfiles.list; \
+    sed -i 's,^%{_winelibdir},/usr/lib/debug%{_winelibdir},g' %{_builddir}/%{2}-debugfiles.list; \
     mkdir -p %{buildroot}/usr/src/debug/%{name}-%{version}; \
-    echo "%dir /usr/src/debug/%{name}-%{version}" >>  %{_builddir}/mingw32-debugfiles.list; \
-    %{nil}
-
-%global _mingw64_find_debuginfo \
-    rm -f %{_builddir}/mingw64-debugfiles.list; \
-    bash -x /usr/lib/rpm/mingw64-find-debuginfo.sh --no-debug-source-package %{_builddir}; \
-    mkdir -p %{buildroot}/usr/lib/debug%{_winelibdir}/wine/x86_64-windows; \
-    for f in %{buildroot}%{_winelibdir}/wine/x86_64-windows/*.debug; do \
-        [ -e "$f" ] && mv "$f" %{buildroot}/usr/lib/debug%{_winelibdir}/wine/x86_64-windows/ \
-    done; \
-    sed -i 's,^%{_winelibdir},/usr/lib/debug%{_winelibdir},g' %{_builddir}/mingw64-debugfiles.list; \
-    mkdir -p %{buildroot}/usr/src/debug/%{name}-%{version}; \
-    echo "%dir /usr/src/debug/%{name}-%{version}" >> %{_builddir}/mingw64-debugfiles.list; \
+    echo "%dir /usr/src/debug/%{name}-%{version}" >> %{_builddir}/%{2}-debugfiles.list; \
     %{nil}
 
 %if %wow64
 %global __arch_install_post \
-    %_mingw32_find_debuginfo \
-    %_mingw64_find_debuginfo \
+    %_mingw_find_debuginfo x86_64 mingw64 \
+    %_mingw_find_debuginfo i386 mingw32 \
     cat %{_builddir}/mingw32-debugfiles.list >> %{_builddir}/mingw64-debugfiles.list; \
     %{nil}
 %global _win_debug_package %_mingw64_debug_package -e -C wine%{psuffix}-win-debuginfo -N wine%{psuffix}-win-debuginfo
 %else
 %ifarch %{ix86}
-%global __arch_install_post %_mingw32_find_debuginfo
+%global __arch_install_post %_mingw_find_debuginfo i386 mingw32
 %global _win_debug_package %_mingw32_debug_package -e -C wine%{psuffix}-32bit-win-debuginfo -N wine%{psuffix}-32bit-win-debuginfo
 %endif
 %ifarch x86_64
-%global __arch_install_post %_mingw64_find_debuginfo
+%global __arch_install_post %_mingw_find_debuginfo x86_64 mingw64
 %global _win_debug_package %_mingw64_debug_package -e -C wine%{psuffix}-win-debuginfo -N wine%{psuffix}-win-debuginfo
 %endif
 %endif
@@ -162,21 +150,22 @@ BuildRequires:  lld
 BuildRequires:  llvm
 #BuildRequires:  pkgconfig(valgrind)
 %endif
+# included tools replaced by objdump, objcopy
 #!BuildIgnore: mingw64-cross-binutils-utils                                                                                                                                              
 #!BuildIgnore: mingw64-cross-pkgconf-utils                                                                                                                                               
 #!BuildIgnore: mingw32-cross-binutils-utils                                                                                                                                              
-#!BuildIgnore: mingw32-cross-pkgconf-utils                                                                                                                                               
+#!BuildIgnore: mingw32-cross-pkgconf-utils  
 %ifarch %{ix86}
 BuildRequires:  mingw32-cross-gcc
-BuildRequires:  mingw32-filesystem >= 20250221
+BuildRequires:  mingw32-filesystem >= 20250822
 %endif
 %ifarch x86_64
 BuildRequires:  mingw64-cross-gcc
-BuildRequires:  mingw64-filesystem >= 20250221
+BuildRequires:  mingw64-filesystem >= 20250822
 #BuildRequires:  pkgconfig(valgrind)
 %if %{wow64}
 BuildRequires:  mingw32-cross-gcc
-BuildRequires:  mingw32-filesystem >= 20250221
+BuildRequires:  mingw32-filesystem >= 20250822
 %endif
 %endif
 %if 0%{?suse_version} < 1600

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 23 11:37:05 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Use objdump and objcopy instead of the required 
+  xxx-w64-mingw32 host variants to avoid build
+  dependencies on mingxx-cross-yy-utils
+- Generation of 32-bit and 64-bit debug symbol packages
+  for Windows binaries combined for simplicity
+  
+-------------------------------------------------------------------
 Sat Aug 16 11:28:59 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - updated to 10.13 release
