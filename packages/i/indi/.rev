@@ -156,4 +156,15 @@
 </comment>
     <requestid>1288165</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a8c0ed4166ace8b0b513e1842332d97e</srcmd5>
+    <version>2.1.5.1</version>
+    <time>1756147153</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.1.5.1:
+  * https://github.com/indilib/indi/releases/tag/v2.1.5.1
+  * https://github.com/indilib/indi/releases/tag/v2.1.5
+</comment>
+    <requestid>1301234</requestid>
+  </revision>
 </revisionlist>
