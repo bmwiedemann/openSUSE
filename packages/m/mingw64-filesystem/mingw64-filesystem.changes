@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 22 09:44:22 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 20250822
+- Add checks to shell scripts to see if host-specific executable
+  files are present and report this as an error to avoid hidden
+  problems (bsc#1248468)
+
+-------------------------------------------------------------------
 Thu Aug 14 21:19:58 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to version 20250814

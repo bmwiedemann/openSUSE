@@ -10,16 +10,24 @@ if [ -z "$RPM_BUILD_ROOT" -o "$RPM_BUILD_ROOT" = "/" ]; then
 	exit 0
 fi
 
+[ -z "$OBJDUMP" ] && OBJDUMP="$host-objdump"
+[ -z "$STRIP" ] && STRIP="$host-strip"
+
+for i in $OBJDUMP $STRIP; do
+	if ! [ -x "$(command -v $i)" ]; then
+		echo "Error: $i is not installed." >&2
+		exit 1
+	fi
+done
+
 LC_ALL=
 LANG=
 LC_TIME=POSIX
 
 cd "$RPM_BUILD_ROOT"
 
-[ -z "$STRIP" ] && STRIP="$host-strip"
-
 for f in `find . -type f -name "*.exe" -or -name "*.dll"`; do
-	case $("$host-objdump" -h "$f" 2>/dev/null | grep -E -o '(debug[\.a-z_]*|gnu.version)') in
+	case $("$OBJDUMP" -h "$f" 2>/dev/null | grep -E -o '(debug[\.a-z_]*|gnu.version)') in
 	    *debuglink*) continue ;;
 	    *debug*) ;;
 	    *gnu.version*)

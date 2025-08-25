@@ -23,7 +23,15 @@ if [ -n "$1" ]; then
 fi
 
 [ -z "$OBJDUMP" ] && OBJDUMP="$host-objdump"
+[ -z "$PKGCONF" ] && PKGCONF="$host-pkgconf"
 [ -z "$STRINGS" ] && STRINGS="$host-strings"
+
+for i in $OBJDUMP $PKGCONF $STRINGS; do
+	if ! [ -x "$(command -v $i)" ]; then
+		echo "Error: $i is not installed." >&2
+		exit 1
+	fi
+done
 
 # Get the list of files.
 
@@ -140,14 +148,14 @@ fi
 (
 for g in $pcs; do
 	dirname="${g%/*}"
-	PKG_CONFIG_PATH="$dirname" "$host-pkgconf" --print-errors --print-requires "$g" | awk '{ print "'"$target"'(pkg:"$1")", $2, $3 }'
-	PKG_CONFIG_PATH="$dirname" "$host-pkgconf" --print-errors --print-requires-private "$g" | grep -Ev "$exclude_pattern" | awk '{ print "'"$target"'(pkg:"$1")", $2, $3 }'
-	for h in $(PKG_CONFIG_PATH="$dirname" "$host-pkgconf" --libs-only-l "$g" | sed 's#^\-l##g;s# \-l# #g'); do
+	PKG_CONFIG_PATH="$dirname" "$PKGCONF" --print-errors --print-requires "$g" | awk '{ print "'"$target"'(pkg:"$1")", $2, $3 }'
+	PKG_CONFIG_PATH="$dirname" "$PKGCONF" --print-errors --print-requires-private "$g" | grep -Ev "$exclude_pattern" | awk '{ print "'"$target"'(pkg:"$1")", $2, $3 }'
+	for h in $(PKG_CONFIG_PATH="$dirname" "$PKGCONF" --libs-only-l "$g" | sed 's#^\-l##g;s# \-l# #g'); do
 		echo "$target(lib:$h)"
 	done
 done
 for k in $configs; do
-    for j in $(PKG_CONFIG="$host-pkgconf" "$k" --libs); do
+    for j in $(PKG_CONFIG="$PKGCONF" "$k" --libs); do
         case "$j" in
             -l*)
                 echo "$j" | sed 's#\-l##g' | grep -Ev "$exclude_pattern" | awk '{ print "'"$target"'(lib:"$1")" }'
