@@ -56,4 +56,12 @@
     <comment></comment>
     <requestid>1273067</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>fa1ccd34473db2a3e570363322b32bae</srcmd5>
+    <version>1.13.1</version>
+    <time>1756147114</time>
+    <user>anag_factory</user>
+    <comment>- Add missing BuildRequires on pytest-asyncio.</comment>
+    <requestid>1301154</requestid>
+  </revision>
 </revisionlist>
