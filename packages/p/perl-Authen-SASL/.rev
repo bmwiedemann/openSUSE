@@ -238,4 +238,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1295283</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1d98628670ab1887905d6e2bec20c031</srcmd5>
+    <version>2.190.0</version>
+    <time>1756147004</time>
+    <user>anag_factory</user>
+    <comment>- Remove perl-Authen-SASL-CVE-2025-40918.patch (fixed upstream)
+  CVE-2025-40918 [bsc#1246623]
+
+- updated to 2.190.0 (2.1900)
+   see /usr/share/doc/packages/perl-Authen-SASL/Changes</comment>
+    <requestid>1301194</requestid>
+  </revision>
 </revisionlist>

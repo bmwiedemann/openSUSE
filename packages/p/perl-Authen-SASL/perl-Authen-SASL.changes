@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 22 20:27:29 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Remove perl-Authen-SASL-CVE-2025-40918.patch (fixed upstream)
+  CVE-2025-40918 [bsc#1246623]
+
+-------------------------------------------------------------------
+Fri Aug 22 20:26:21 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 2.190.0 (2.1900)
+   see /usr/share/doc/packages/perl-Authen-SASL/Changes
+
+-------------------------------------------------------------------
 Mon Jul 21 10:03:21 UTC 2025 - pgajdos@suse.com
 
 - security update

@@ -18,17 +18,16 @@
 
 %define cpan_name Authen-SASL
 Name:           perl-Authen-SASL
-Version:        2.180.0
+Version:        2.190.0
 Release:        0
-# 2.1800 -> normalize -> 2.180.0
-%define cpan_version 2.1800
+# 2.1900 -> normalize -> 2.190.0
+%define cpan_version 2.1900
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        SASL Authentication framework
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/EH/EHUELS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-# CVE-2025-40918 [bsc#1246623], insecurely generated client nonce
-Patch0:         perl-Authen-SASL-CVE-2025-40918.patch
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -92,7 +91,7 @@ or if you have another plugin module that supports the Authen::SASL API
  use Authen::SASL qw(My::SASL::Plugin);
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

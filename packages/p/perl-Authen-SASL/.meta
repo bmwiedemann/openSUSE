@@ -6,5 +6,4 @@ protocols should be able to share.
 
 The framework allows different implementations of the connection class
 to be plugged in. At the time of writing there were two such plugins.</description>
-  <devel project="devel:languages:perl" package="perl-Authen-SASL"/>
 </package>
