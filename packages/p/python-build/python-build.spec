@@ -1,7 +1,7 @@
 #
 # spec file for package python-build
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,11 @@
 %endif
 # wheeldir of name build does not work well with this packagename gh#openSUSE/python-rpm-macros#157
 %define _pyproject_wheeldir distwheel
-
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-build%{psuffix}
 Version:        1.2.2
@@ -37,7 +41,7 @@ URL:            https://github.com/pypa/build
 Source0:        https://github.com/pypa/build/archive/%{version}.tar.gz#/build-%{version}.tar.gz
 # Needs the wheels for wheel, flit-core, and tomli for testing
 Source10:       https://files.pythonhosted.org/packages/py2.py3/w/wheel/wheel-0.37.1-py2.py3-none-any.whl
-Source11:       https://files.pythonhosted.org/packages/py3/f/flit-core/flit_core-3.8.0-py3-none-any.whl
+Source11:       https://files.pythonhosted.org/packages/py3/f/flit_core/flit_core-3.8.0-py3-none-any.whl
 Source12:       https://files.pythonhosted.org/packages/py3/t/tomli/tomli-2.0.1-py3-none-any.whl
 Source14:       runtests.py
 BuildRequires:  %{python_module base >= 3.7}
@@ -50,9 +54,14 @@ Requires:       python-pyproject-hooks
 Requires:       (python-importlib-metadata >= 0.22 if python-base < 3.8)
 Requires:       (python-tomli >= 1.1.0 if python-base < 3.11)
 Recommends:     python-virtualenv >= 20.0.35
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 %if %{with test}
 BuildRequires:  %{python_module build = %{version}}
 BuildRequires:  %{python_module filelock >= 3}
@@ -99,6 +108,9 @@ export PIP_FIND_LINKS="%{python3_sitelib}/../wheels $PWD/wheels"
 
 %postun
 %python_uninstall_alternative pyproject-build
+
+%pre
+%python_libalternatives_reset_alternative pyproject-build
 
 %files %{python_files}
 %doc README.md
