@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Aug 25 04:53:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.129:
+  * General
+    - Update README.md @ornate-bonzai (#15668)
+    - [server]: chore: update k8s config handler api to accept map
+      of contexts with options per context together with kubeconfig
+      @n2h9 (#15617)
+    - [server] switch meshsync deployment mode on connection PUT:
+      disconnect connect approach. @n2h9 (#15613)
+    - Update readme to match openssf regex for sbom @carlosriosilva
+      (#15605)
+    - [Ci] Update README with Meshery's SBOM @leecalcote (#15604)
+    - Add OpenSSF scorecard to Readme @hamza-mohd (#15600)
+    - Revert "Merge pull request #15568 from
+      n2h9/chore-fix-connection-pers… @n2h9 (#15577)
+    - [server] chore: return ErrContextAlreadyPersisted if
+      k8scontext already exists @n2h9 (#15568)
+    - [server] chore: remote provider SaveK8sContext: do not save
+      context if connection already persisted @n2h9 (#15569)
+    - [server]: chore: update tmp_meshkit channel broker to proper
+      channel broker from real meshkit @n2h9 (#15572)
+  * Meshery CLI
+    - docs(mesheryctl): improve help and usage for 'system context
+      view' command @ahmadu2305 (#15562)
+    - [mesheryctl] chore: fix model build and model init failing
+      tests @n2h9 (#15624)
+    - added e2e tests for system start command @Darshan174 (#15463)
+  * Maintenance
+    - build(deps): Bump github.com/go-viper/mapstructure/v2 from
+      2.3.0 to 2.4.0 @dependabot (#15651)
+    - feat: added design e2e tests @ianrwhitney (#15564)
+    - Bump brace-expansion in /provider-ui @dependabot (#15615)
+    - added e2e tests for system start command @Darshan174 (#15463)
+    - Bump helm.sh/helm/v3 from 3.18.4 to 3.18.5 @dependabot
+      (#15603)
+    - [CI] Allow OpenSSF code scanner to be run ad hoc; Stop
+      running on merge to master @carlosriosilva (#15601)
+    - [CI] Create OSSF scorecard.yml @leecalcote (#15599)
+    - chore: skip adapter tests @ianrwhitney (#15472)
+    - Bump k8s.io/apiextensions-apiserver from 0.33.2 to 0.33.3
+      @dependabot (#15501)
+  * Documentation
+    - docs(mesheryctl): improve help and usage for 'system context
+      view' command @ahmadu2305 (#15562)
+    - [BUG] Fix mastering-meshery link @Siddhi-sahu (#15575)
+    - [Docs]: Add missing Adapter Version in all adapter docs
+      @Rajesh-Nagarajan-11 (#15582)
+    - Bump activestorage from 8.0.1 to 8.0.2.1 in /docs @dependabot
+      (#15579)
+    - [Docs] Ensure that each permission key's ID is displayed in
+      the reference table @Siddhi-sahu (#15558)
+    - [docs] Add missing release entry for v0.8.109
+      @Rajesh-Nagarajan-11 (#15571)
+- update to 0.8.128:
+  * no CLI-related changes
+  * no dependency updates
+- update to 0.8.127:
+  * no CLI-related changes
+  * no dependency updates
+
+-------------------------------------------------------------------
 Tue Aug  5 05:54:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.126:
