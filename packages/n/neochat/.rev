@@ -361,4 +361,13 @@
     <comment>KDE release gear 25.08.0 (forwarded request 1299260 from krop)</comment>
     <requestid>1299735</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>97348d03fdaf7d1572ac33ac0a2c8d0c</srcmd5>
+    <version>25.08.0</version>
+    <time>1756147044</time>
+    <user>anag_factory</user>
+    <comment>- Add -DQT_QML_NO_CACHEGEN:BOOL=TRUE to the build parameters to
+  make build reproducible (boo#1248369)</comment>
+    <requestid>1301064</requestid>
+  </revision>
 </revisionlist>
