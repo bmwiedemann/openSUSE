@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 25 14:26:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Wed Feb  5 12:20:58 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Use multibuild for tests

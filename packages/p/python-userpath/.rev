@@ -75,4 +75,12 @@
     <comment>- Use multibuild for tests</comment>
     <requestid>1243367</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>6fff2582df449c1e80016aa95a588342</srcmd5>
+    <version>1.9.2</version>
+    <time>1756147187</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301304</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-userpath
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,11 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-userpath%{psuffix}
 Version:        1.9.2
@@ -38,9 +43,14 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 %if %{with test}
 # SECTION test requirements
 BuildRequires:  %{python_module click}
@@ -81,6 +91,9 @@ export LC_ALL=C.UTF-8
 
 %postun
 %python_uninstall_alternative userpath
+
+%pre
+%python_libalternatives_reset_alternative userpath
 
 %files %{python_files}
 %doc README.md
