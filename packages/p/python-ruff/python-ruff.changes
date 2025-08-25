@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Aug 22 11:09:22 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.12.10
+ * Preview features
+  * [flake8-simplify] Implement fix for maxsplit without separator (SIM905) 
+  * [flake8-use-pathlib] Add fixes for PTH102 and PTH103 
+ * Bug fixes
+  * [isort] Handle multiple continuation lines after module docstring (I002) 
+  * [pyupgrade] Avoid reporting __future__ features as unnecessary when they are used (UP010) 
+  * [pyupgrade] Handle nested Optionals (UP045) 
+ * Rule changes
+  * [pycodestyle] Make E731 fix unsafe instead of display-only for class assignments 
+  * [pyflakes] Add secondary annotation showing previous definition (F811) 
+ * Documentation
+  * Fix description of global config file discovery strategy 
+  * Update outdated links to https://typing.python.org/en/latest/source/stubs.html 
+  * [flake8-annotations] Remove unused import in example (ANN401) 
+
+-------------------------------------------------------------------
 Fri Aug 15 12:56:45 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.9:

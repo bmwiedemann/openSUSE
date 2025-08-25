@@ -2443,4 +2443,26 @@
   * Update pre-commit's ruff id</comment>
     <requestid>1299828</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>4e2ecec0299b5389dc1d9b28dfe4b93c</srcmd5>
+    <version>0.12.10</version>
+    <time>1756146969</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.12.10
+ * Preview features
+  * [flake8-simplify] Implement fix for maxsplit without separator (SIM905) 
+  * [flake8-use-pathlib] Add fixes for PTH102 and PTH103 
+ * Bug fixes
+  * [isort] Handle multiple continuation lines after module docstring (I002) 
+  * [pyupgrade] Avoid reporting __future__ features as unnecessary when they are used (UP010) 
+  * [pyupgrade] Handle nested Optionals (UP045) 
+ * Rule changes
+  * [pycodestyle] Make E731 fix unsafe instead of display-only for class assignments 
+  * [pyflakes] Add secondary annotation showing previous definition (F811) 
+ * Documentation
+  * Fix description of global config file discovery strategy 
+  * Update outdated links to https://typing.python.org/en/latest/source/stubs.html 
+  * [flake8-annotations] Remove unused import in example (ANN401)</comment>
+    <requestid>1300962</requestid>
+  </revision>
 </revisionlist>
