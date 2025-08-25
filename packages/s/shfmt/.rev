@@ -9,4 +9,41 @@
 Requested for submission to Factory by @fbonazzi</comment>
     <requestid>990060</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5f9c90458bff73c8ed6aba3a461dd976</srcmd5>
+    <version>3.12.0</version>
+    <time>1756147075</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.12.0:
+  * CHANGELOG: add entry for v3.12.0
+  * README.md: add another example to caveats
+  * interp: add HandlerContext.Builtin
+  * interp: add test cases with exit inside a process substitution
+  * interp: add HandlerContext.Pos
+  * interp: swap math/rand for math/rand/v2
+  * interp: add exitStatus.ok for `code == 0` comparisons
+  * interp: move oneIf under exitStatus
+  * interp: export IsBuiltin
+  * interp: refactor builtins to return an exitStatus
+  * interp: remove Runner.exitShell
+  * interp: simplify trapping on error
+  * interp: reduce the size of exitStatus
+  * interp: convert strings to integers as int64
+  * interp: reject return with invalid arguments
+  * syntax: skip allocating in SplitBraces when there are no braces
+  * interp: avoid always copying CallExpr.Args to expand aliases
+  * interp: move Runner.setFatalErr to exitStatus
+  * interp: forward custom exit status errors when using `wait`
+  * interp: keep custom exit status errors when using a naked `exit`
+  * interp: positional parameters are unset when missing
+  * interp: support reading $RANDOM and $SRANDOM
+  * interp: add and fix more subshell exit and errexit edge cases
+  * interp: propagate custom exit status errors in command substitutions
+  * interp: simplify code with the exitStatus type
+  * interp: use the Runner.Run context for calls to ReadDirHandlerFunc2
+  * interp: group &quot;exit status&quot; Runner fields into a type
+  * interp: add more custom exit error test cases
+  * interp: simplify returning exit codes in builtinCode (forwarded request 1301138 from alessio.biancalana)</comment>
+    <requestid>1301140</requestid>
+  </revision>
 </revisionlist>

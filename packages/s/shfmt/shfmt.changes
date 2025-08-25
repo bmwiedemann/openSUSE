@@ -1,4 +1,298 @@
 -------------------------------------------------------------------
+Sun Aug 24 14:32:07 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 3.12.0:
+  * CHANGELOG: add entry for v3.12.0
+  * README.md: add another example to caveats
+  * interp: add HandlerContext.Builtin
+  * interp: add test cases with exit inside a process substitution
+  * interp: add HandlerContext.Pos
+  * interp: swap math/rand for math/rand/v2
+  * interp: add exitStatus.ok for `code == 0` comparisons
+  * interp: move oneIf under exitStatus
+  * interp: export IsBuiltin
+  * interp: refactor builtins to return an exitStatus
+  * interp: remove Runner.exitShell
+  * interp: simplify trapping on error
+  * interp: reduce the size of exitStatus
+  * interp: convert strings to integers as int64
+  * interp: reject return with invalid arguments
+  * syntax: skip allocating in SplitBraces when there are no braces
+  * interp: avoid always copying CallExpr.Args to expand aliases
+  * interp: move Runner.setFatalErr to exitStatus
+  * interp: forward custom exit status errors when using `wait`
+  * interp: keep custom exit status errors when using a naked `exit`
+  * interp: positional parameters are unset when missing
+  * interp: support reading $RANDOM and $SRANDOM
+  * interp: add and fix more subshell exit and errexit edge cases
+  * interp: propagate custom exit status errors in command substitutions
+  * interp: simplify code with the exitStatus type
+  * interp: use the Runner.Run context for calls to ReadDirHandlerFunc2
+  * interp: group "exit status" Runner fields into a type
+  * interp: add more custom exit error test cases
+  * interp: simplify returning exit codes in builtinCode
+  * interp: forward custom non-fatal errors in pipefail and subshells
+  * interp: a non-nil fatalErr implies a non-zero exit status code
+  * interp: properly deprecate ReadDirHandlerFunc
+  * interp: a non-nil fatalErr implies exiting is true
+  * interp: add test cases for custom exit status errors being dropped
+  * interp: wait with arguments returns the status code of the last job
+  * update golang.org/x deps
+  * pattern: deduplicate the implementation of the `*` regular expression
+  * pattern: simplify the regexp flag logic
+  * all: modernize -fix
+  * pattern: skip needsEscaping loop if the mode discards the shortcut
+  * pattern: the shortcut cannot be taken when NoGlobCase is given
+  * pattern: globstar does not need `(?s)` as it does not use `.`
+  * pattern: add test cases matching newlines
+  * pattern: drop tests combining Shortest and EntireString
+  * pattern: implement Shortest via (?U)
+  * pattern: refactor Regexp to use a tiny string lexer
+  * pattern: test error strings properly
+  * pattern: allow ** to match non-leading dots
+  * pattern: allow * to match non-leading dots
+  * expand: always use pattern.NoGlobStar option
+  * expand: resolve iterator warnings spotted by gopls
+  * interp: turn flattenAssigns into an iterator
+  * interp: reuse flagParser for `declare` flags
+  * interp: allow joint flags on `declare`
+  * interp: do not panic on extglob in another scenario
+  * Revert "all: assume C.UTF-8 is available in the tests"
+  * cmd/shfmt: do not allow --write to replace non-regular files
+  * cmd/shfmt: add test case for #843
+  * fileutil: treat all non-regular files as definitely not shell scripts
+  * cmd/shfmt: improve symlink testscript tests
+  * cmd/shfmt: add support for simplify and minify via EditorConfig
+  * cmd/shfmt: test that we don't mix sibling EditorConfig file settings
+  * update dependencies
+  * interp: undo removal of "unnecessary" type conversion
+  * pattern: make the globstar "**" not match leading dots in basenames
+  * expand: rely on pattern's handling of leading dots with "*"
+  * pattern: make "*" not match leading dots in basenames
+  * pattern: tweak how **/ is transpiled as a regexp
+  * pattern: remove the broken Braces mode
+  * all: remove two unnecessary type conversions
+  * pattern: add test cases for matching dot-prefixed filenames
+  * interp: subshells in a pipe are run concurrently
+  * pattern: replace bytes.Buffer with strings.Builder
+  * pattern: "**" only acts as globstar when alone as a path element
+  * pattern: add more test cases for globstar not used on its own
+  * interp: expose ExitStatus and deprecate NewExitStatus and IsExitStatus
+  * interp: return non-fatal ExecHandler errors via Runner.Run
+  * interp: make tests reliable on MacOS
+  * interp: clarify that Runner.err is for fatal errors only at this point
+  * interp: decouple `return` from Runner.err
+  * interp: add more test cases for exec handler errors causing a stop
+  * interp: set exit status 1 as a fallback on custom exec handler errors
+  * interp: add more test cases for failing pipes
+  * interp: correct the exit statuses of commands used in tests
+  * interp: add more test cases for exec handler errors and exit statuses
+  * interp: show which errors end up in Runner.Run in the handler tests
+  * docs: `prettier-plugin-sh` now uses `sh-syntax`
+  * README: polish a few bits and add the main interpreter caveat
+  * README: actually include sh-syntax link
+  * _js: drop mvdan-sh JS package built with GopherJS
+  * pattern: add NoGlobStar mode
+  * Add README entry
+  * chore: a tiny typo in comment
+  * interp: make the new background shell tests more resilient
+  * interp: document overlayEnviron a bit more
+  * interp: make a full copy of the environment for background subshells
+  * interp: initial support for $! and wait PID
+  * interp: clarify handler docs a bit
+  * expand: tweak tilde expansion to match Bash semantics
+  * interp: add comment next to prev.Local = false
+  * interp: support modifying local vars from parent caller funcs
+  * interp: refactor overlayEnviron.Set to deduplicate map lookups
+  * interp: add more test cases for local vars and parent funcs
+  * interp: set BASH_REMATCH when doing a regular expression match with `=~`
+  * expand: clarify Variable.Set
+  * expand: heredocs unescape \$, \\, and \`, just not \"
+  * update deps
+  * all: make more use of strings.Cut and friends
+  * CHANGELOG: add entry for v3.11.0
+  * interp: skip handler test using process substitutions on Windows
+  * interp: only obey TMPDIR if it is an absolute dir
+  * update all dependencies
+  * interp: do not hard-code the use of os.TempDir for named pipes
+  * interp: do not open our own ProcSubst FIFO files via OpenHandler
+  * interp: test process substitutions with an OpenHandler
+  * fileutil: shebang detection improvements
+  * syntax: use LangError consistently and add a LangUsed field
+  * syntax: make IsIncomplete more robust
+  * syntax: cover "EOF immediately after heredoc" in Stmts via a test
+  * all: start exposing iter.Seq2[T, error] APIs
+  * all: run gopls's modernize -fix
+  * all: gofumpt
+  * interp: better support for directories in test -r, -w, -x checks
+  * all: make use of slices.Backward
+  * README: Add neoformat NeoVim / Vim plugin
+  * interp: second attempt at fixing /dev/null on Windows
+  * interp: work around apparent Go 1.24 regression with os.DevNull on Windows
+  * interp: add a test case where OpenHandler gets given a non-local path
+  * update x/sys and x/term
+  * start using range-over-func
+  * make use of maps.Keys and maps.Values from Go 1.23
+  * add Go 1.24.x, drop 1.22.x
+  * go mod tidy
+  * interp: deduplicate calls to Runner.lookupVar
+  * interp,expand: rethink setting variables
+  * interp: add more tests for 1108
+  * expand: don't unescape characters inside here-documents
+  * expand: make ValueKind a fmt.Stringer
+  * interp: process substitutions are not waited for
+  * interp: document that HandlerContext.Stdin is always a file
+  * expand: fix broken links
+  * interp: improve method signature
+  * all: add godoc links where possible
+  * pattern: fix outdated comment, and add godoc links
+  * cmd/shfmt: switch away from func() int for testscript
+  * syntax: use generics to walk nilable node fields
+  * syntax: use generics to walk over lists of nodes
+  * syntax: recover binary commands properly
+  * syntax: initial support for recovering from missing tokens
+  * interp: skip cancellable reader test on Windows
+  * interp: don't test cancelling a read via os.Stdin
+  * interp: drop muesli/cancelreader for os.File.SetReadDeadline
+  * interp: simplify context logic thanks to context.AfterFunc
+  * all: fix a few typos
+  * CI: test `go build` for plan9 and wasm
+  * all: fix build on plan9
+  * syntax: linkify syntax node godocs
+  * cmd/shfmt: support -l=0 and -f=0 flags
+  * update deps
+  * expand: fix sequential '\' in double quote literals
+  * CHANGELOG: prepare for v3.10.0
+  * cmd/shfmt: bump deps in Dockerfile
+  * interp: let HandlerContext.Stdin be nil again when there is no stdin
+  * interp: support closing stdin, stdout, and stderr files
+  * cmd/shfmt: move --filename out of parser options
+  * interp: test and fix `read` with regular files as stdin
+  * all: clarify that the "keep padding" formatting option is deprecated
+  * cmd/shfmt: report correct language read from EditorConfig in errors
+  * cmd/shfmt: show broken behavior in test for #1102
+  * update all deps
+  * interp: add an Interactive option to be used by cmd/gosh
+  * cmd/gosh: add bad test case for #1100
+  * syntax: parse all CRLF line endings as LF
+  * syntax: add a few godoc links
+  * cmd/shfmt: test that -i=0 does not skip ignore=true from EditorConfig
+  * README: clarify caveat for `declare`
+  * expand: use cmp.Or
+  * syntax: include skipped backslashes in backticks for column numbers
+  * syntax: actually use qt.CmpEquals
+  * syntax: include skipped null bytes in column numbers
+  * syntax: add test case for positions after skipped null bytes
+  * syntax: do not use %d verb for syntax.Pos
+  * all: more tweaks thanks to Go 1.22
+  * syntax/typedjson: use reflect.TypeFor
+  * go.mod: update dependencies
+  * syntax: fix a fmt.Sprintf issue spotted by the latest go vet
+  * all: swap bytes.Buffer for strings.Builder
+  * CHANGELOG: prepare for v3.9.0
+  * add Go 1.23.x, drop 1.21.x
+  * interp: add -s (silent) support to the read builtin
+  * cmd/gosh: use an os.Pipe in another interactive test
+  * interp: fix data race regression with stdin pipe changes
+  * interp: use os.Pipe when StdIO or OpenHandler produce non-file stdins
+  * interp: add a broken test for stdin draining with StdIO
+  * interp: do not include TODOs in godoc comments
+  * interp: implement here-documents via os.Pipe
+  * interp: verify tests with Bash 5.2
+  * syntax: use the min builtin
+  * update dependencies
+  * syntax: use Parser.matched consistently
+  * update editorconfig and golang.org/x deps
+  * interp: implement -O and -G tests
+  * expand: allocate fewer objects in Fields
+  * expand: replace sort.SearchStrings with slices.BinarySearchFunc
+  * update dependencies
+  * syntax: add support for the Bash 5.2 @k expansion operator
+  * expand: avoid a panic when ParamExp.Repl.Orig is nil
+  * syntax: avoid a slice bounds check on every input byte
+  * syntax: implement basic offset overflow protection
+  * syntax: reduce the amount of allocation batching again
+  * syntax: remove colOverflow conditional
+  * syntax: make Parser.reset a bit more conservative
+  * syntax: move benchmarks to a separate file
+  * syntax: quicktest can take go-cmp options now
+  * cmd/shfmt: drop SHFMT_NO_EDITORCONFIG warning
+  * cmd/shfmt: swap out pkg/diff for internal/diff
+  * cmd/shfmt: simplify with fewer globals
+  * all: update dependencies
+  * all: shadow the variable in type switches
+  * DebugPrint: Print the string value of tokens
+  * Allow case-insensitive filename globbing; add nocaseglob
+  * interp: cancellable reads; EOF on "read" sets var to ""
+  * syntax: swap frankban/quicktest for go-quicktest/qt
+  * syntax: drop go1.18 build tag for fuzz_test.go
+  * all: make use of the slices package
+  * cmd/shfmt: fix typo in shfmt.1.scd
+  * cmd/shfmt: document when --filename is needed for EditorConfig support
+  * CHANGELOG: prepare for v3.8.0
+  * all: start using Go 1.21 std APIs
+  * CI: bump bash image version
+  * add Go 1.22, drop Go 1.20
+  * CI: bump github actions
+  * bump dependencies before the next release
+  * cmd/shfmt: add --apply-ignore flag for tools and editors
+  * cmd/shfmt: support editorconfig language sections
+  * syntax: backquotes affect backslashes in single quotes too
+  * syntax: better column numbers for escapes inside backquotes
+  * cmd/shfmt: document how EditorConfig's "ignore" works
+  * syntax: detect bash 5.2 rather than 5.1
+  * update dependencies
+  * README: fix up a few links
+  * Update Arch Linux package URL in README.md
+  * interp: support subshells with FuncEnviron as Env
+  * expand: support zero-padding in brace expansions
+  * syntax: support brace expansions with uppercase letters
+  * interp: support parentheses in classic test commands
+  * interp: add TODOs about test operator precedence
+  * interp,expand: add support for fs.DirEntry
+  * appease unparam
+  * interp: determine access to a directory via unix.Access
+  * syntax: allow redirects before all arguments
+  * all: add Go 1.21, drop 1.19
+  * Update README.md
+  * syntax: better error when using "function" in POSIX mode
+  * cmd/shfmt: don't recommend inline EditorConfig comments
+  * CHANGELOG: fix formatting on the latest link references
+
+-------------------------------------------------------------------
+Sun Jul 23 16:01:14 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Re-enable binary stripping and debuginfo boo#121093
+  * Use BuildRequires: golang(API) >= 1.19 as a clearer way to
+    indicate the minimum Go toolchain version in go.mod is go1.19.
+  * Add comment embedding version info via ldflags is necessary
+    here due to upstream code choice to always return (devel).
+  * Add basic %check to execute the binary --help, also --version
+    since that is an open issue for this package.
+  * Fix rpmlint warnings to not repeat package name in
+    summary. This package currently only includes the formatter
+    binary, not the parser or interpreter. Update the summary and
+    description to reflect that.
+
+-------------------------------------------------------------------
+Sun Jul 23 01:28:01 UTC 2023 - Erefd X <zzndb001@gmail.com>
+
+- Update to version 3.7.0:
+  * prepare for v3.7.0
+  * cmd/shfmt: bump Dockerfile image versions
+  * CHANGELOG: start the release notes for v3.7.0
+  * syntax: stop embedding Pos in error struct types
+  * all: assume C.UTF-8 is available in the tests
+  * syntax: treat &> as an error in POSIX mode
+  * syntax: run "confirm" shell commands in a temp dir
+  * syntax: don't parse `$foo#bar` as a comment
+  * all: apply minor suggestions from gopls
+  * syntax: add TODO about writer methods on Printer
+- Add ldflags version info back since --version option always print (devel)
+- Update required version to BuildRequires: golang(API) > 1.18
+
+-------------------------------------------------------------------
 Mon Jul 18 15:07:45 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Revise packaging to align with Go application package patterns
