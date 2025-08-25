@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 25 13:07:21 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.25 latest table.
+    This tool requires the latest stable Go toolchain to check
+    other Go applications using that latest stable version of Go.
+  * Refs boo#1248678
+
+-------------------------------------------------------------------
 Mon Jan 13 18:11:03 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.1.4:

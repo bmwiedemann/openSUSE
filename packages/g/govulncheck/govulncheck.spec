@@ -1,7 +1,7 @@
 #
 # spec file for package govulncheck
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Group:          Development/Languages/Go
 URL:            https://github.com/golang/vuln
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.22
+BuildRequires:  golang(API) >= 1.25
 # Required to build on SLE-12
 ExcludeArch:    s390
 

@@ -255,4 +255,16 @@
   * Update to BuildRequires: golang(API) &gt;= 1.22 matching go.mod (forwarded request 1237547 from jfkw)</comment>
     <requestid>1237548</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>5d2ea4626fdd9a1b08024c31e3ae47c9</srcmd5>
+    <version>1.1.4</version>
+    <time>1756147167</time>
+    <user>anag_factory</user>
+    <comment>- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.25 latest table.
+    This tool requires the latest stable Go toolchain to check
+    other Go applications using that latest stable version of Go.
+  * Refs boo#1248678 (forwarded request 1301277 from jfkw)</comment>
+    <requestid>1301282</requestid>
+  </revision>
 </revisionlist>
