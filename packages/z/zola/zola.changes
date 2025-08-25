@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Jul 15 06:33:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.21.0:
+  * Fix .gitlab-ci.yaml with v0.20.0 having multiple different
+    build artifacts for linux available by @mb in #2799
+  * Add example: Nizzlay.com by @Nizzlay in #2804
+  * Refactor external link styling to use external_links_class by
+    @welpo in #2801
+  * Update themes gallery by @Keats in #2807
+  * Metainfo by @Ayush1325 in #2809
+  * input gitlab pages url in the CI build step by @benjaminlyng in
+    #2822
+  * Update themes gallery by @Keats in #2828
+  * Docs: adds logo SVGs; replaces the favicon.ico by @indiscipline
+    in #2827
+  * Update themes gallery by @Keats in #2846
+  * Update GitLab Pages deployment documentation by @walpox in
+    #2844
+  * Update themes gallery by @Keats in #2866
+  * docs: add section on handling preview deployments for
+    Cloudflare Pages by @welpo in #2868
+  * [docs] Fix typo in overview by @adithyabsk in #2876
+  * Update themes gallery by @Keats in #2887
+  * Update themes gallery by @Keats in #2907
+  * Update themes gallery by @Keats in #2914
+  * Update themes gallery by @Keats in #2918
+  * README: adds logo; DOCS: logo in header by @indiscipline in
+    #2904
+  * Add Lysator to examples by @sermuns in #2922
+  * Update themes gallery by @Keats in #2921
+  * Update themes gallery by @Keats in #2924
+  * Closes the paren on page count for themes by @JustusAdam in
+    #2923
+  * Next version by @Keats in #2798
+
+-------------------------------------------------------------------
 Sun Feb 16 13:20:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.20.0:
