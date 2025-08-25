@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 22 09:17:44 UTC 2025 - Giacomo Leidi <giacomo.leidi@suse.com>
+
+- Allow for %is_opensuse to be unset, following up to
+  https://src.suse.de/products/SLFO/pulls/204 (bsc#1248486).
+
+-------------------------------------------------------------------
 Mon Jun 16 08:43:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.10.1:

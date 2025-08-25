@@ -1,7 +1,7 @@
 #
 # spec file for package libtpms
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
-%if 0%{is_opensuse} && 0%{?suse_version} < 1599
+%if 0%{?is_opensuse} && 0%{?suse_version} < 1599
 BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++

@@ -235,4 +235,13 @@
     <comment></comment>
     <requestid>1287565</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>e31ac48e0bde3999017eeee70305acb0</srcmd5>
+    <version>0.10.1</version>
+    <time>1756146990</time>
+    <user>anag_factory</user>
+    <comment>- Allow for %is_opensuse to be unset, following up to
+  https://src.suse.de/products/SLFO/pulls/204 (bsc#1248486). (forwarded request 1300952 from gleidi)</comment>
+    <requestid>1301063</requestid>
+  </revision>
 </revisionlist>
