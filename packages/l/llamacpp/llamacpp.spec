@@ -20,7 +20,7 @@
 %global backend_dir %{_libdir}/ggml
 
 Name:           llamacpp
-Version:        6139
+Version:        6188
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT
