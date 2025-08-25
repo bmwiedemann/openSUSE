@@ -16,10 +16,9 @@
 #
 
 
-%define _buildshell /bin/sh
-%define lname	libtorrent25
+%define lname	libtorrent26
 Name:           libtorrent
-Version:        0.15.5
+Version:        0.15.6
 Release:        0
 Summary:        A BitTorrent library written in C++
 License:        SUSE-GPL-2.0+-with-openssl-exception

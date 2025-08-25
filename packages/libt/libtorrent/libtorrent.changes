@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 23 08:20:10 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.15.6
+  * Strict checking of d.views push_back arguments.
+  * Invert color of focus ui element.
+  * Use getaddrinfo for numeric hostname lookups in UdnsResolver.
+
+-------------------------------------------------------------------
 Sun Jun 22 20:22:30 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.15.5
