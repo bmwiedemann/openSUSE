@@ -1,0 +1,11 @@
+--- src/sql/sandboxed_vfs_file_impl.cc.orig	2025-08-15 17:32:28.681405220 +0200
++++ src/sql/sandboxed_vfs_file_impl.cc	2025-08-15 21:55:09.415178758 +0200
+@@ -9,6 +9,8 @@
+ 
+ #include "sql/sandboxed_vfs_file_impl.h"
+ 
++#include <cstring>
++
+ #include "base/notreached.h"
+ #include "sql/sandboxed_vfs.h"
+ 

@@ -21,9 +21,9 @@ Subject: [PATCH] Disable various compiler configs
  build/config/compiler/BUILD.gn | 114 +++++----------------------------
  1 file changed, 17 insertions(+), 97 deletions(-)
 
---- src/build/config/compiler/BUILD.gn.orig	2025-04-21 18:29:05.106306929 +0200
-+++ src/build/config/compiler/BUILD.gn	2025-04-22 20:59:45.689108303 +0200
-@@ -308,9 +308,7 @@ config("compiler") {
+--- src/build/config/compiler/BUILD.gn.orig	2025-07-19 11:32:29.581980058 +0200
++++ src/build/config/compiler/BUILD.gn	2025-07-19 16:12:37.505818698 +0200
+@@ -310,9 +310,7 @@ config("compiler") {
  
    configs += [
      # See the definitions below.
@@ -32,8 +32,8 @@ Subject: [PATCH] Disable various compiler configs
 -    ":compiler_cpu_abi",
      ":compiler_codegen",
      ":compiler_deterministic",
-   ]
-@@ -325,7 +323,6 @@ config("compiler") {
+     ":clang_warning_suppression",
+@@ -338,7 +336,6 @@ config("compiler") {
    # See: https://gcc.gnu.org/PR97913
    # TODO(mpdenton): remove is_clang once GCC bug is fixed.
    if ((!is_nacl || is_nacl_saigo) && !is_ubsan && is_clang) {
@@ -41,15 +41,15 @@ Subject: [PATCH] Disable various compiler configs
    }
  
    # Make signed overflow and pointer overflowdefined to wrap.
-@@ -335,7 +332,6 @@ config("compiler") {
+@@ -348,7 +345,6 @@ config("compiler") {
      if (is_win) {
-       cflags += [ "/clang:-fwrapv" ]
+       cflags += [ "/clang:-fno-strict-overflow" ]
      } else {
--      cflags += [ "-fwrapv" ]
+-      cflags += [ "-fno-strict-overflow" ]
      }
    }
  
-@@ -351,7 +347,12 @@ config("compiler") {
+@@ -364,7 +360,12 @@ config("compiler") {
    if (!is_win) {
      # Common POSIX compiler flags setup.
      # --------------------------------
@@ -63,7 +63,7 @@ Subject: [PATCH] Disable various compiler configs
  
      # Stack protection. ShadowCallStack and Stack protector address the same
      # problems. Therefore, we only enable one or the other. Clang advertises SCS as
-@@ -498,10 +499,6 @@ config("compiler") {
+@@ -500,10 +501,6 @@ config("compiler") {
    # Linux/Android/Fuchsia common flags setup.
    # ---------------------------------
    if (is_linux || is_chromeos || is_android || is_fuchsia) {
@@ -74,7 +74,7 @@ Subject: [PATCH] Disable various compiler configs
  
      if (!is_clang) {
        # Use pipes for communicating between sub-processes. Faster.
-@@ -1124,11 +1121,6 @@ config("libcxx_hardening") {
+@@ -1148,11 +1145,6 @@ config("libcxx_hardening") {
      defines = [ "_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_NONE" ]
    }
  
@@ -86,7 +86,7 @@ Subject: [PATCH] Disable various compiler configs
  }
  
  # The BUILDCONFIG file sets this config on targets by default, which means when
-@@ -1194,7 +1186,8 @@ config("thinlto_optimize_max") {
+@@ -1218,7 +1210,8 @@ config("thinlto_optimize_max") {
  # without using everything that "compiler" brings in.  Options that
  # tweak code generation for a particular CPU do not belong here!
  # See "compiler_codegen", below.
@@ -96,17 +96,17 @@ Subject: [PATCH] Disable various compiler configs
    cflags = []
    ldflags = []
    defines = []
-@@ -1824,7 +1817,8 @@ config("treat_warnings_as_errors") {
- # Collects all warning flags that are used by default.  This is used as a
- # subconfig of both chromium_code and no_chromium_code.  This way these
+@@ -1994,7 +1987,8 @@ config("tot_warnings") {
+ # Collects all warning flags that are used by default. This is used as a
+ # subconfig of both chromium_code and no_chromium_code. This way these
  # flags are guaranteed to appear on the compile command line after -Wall.
 -config("default_warnings") {
 +config("default_warnings") { }
 +config("xdefault_warnings") {
    cflags = []
-   cflags_c = []
    cflags_cc = []
-@@ -2071,11 +2065,7 @@ config("chromium_code") {
+   ldflags = []
+@@ -2262,11 +2256,7 @@ config("chromium_code") {
        defines = [ "_HAS_NODISCARD" ]
      }
    } else {
@@ -119,7 +119,7 @@ Subject: [PATCH] Disable various compiler configs
  
      # In Chromium code, we define __STDC_foo_MACROS in order to get the
      # C99 macros on Mac and Linux.
-@@ -2084,24 +2074,6 @@ config("chromium_code") {
+@@ -2275,24 +2265,6 @@ config("chromium_code") {
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -144,15 +144,15 @@ Subject: [PATCH] Disable various compiler configs
      if (is_apple) {
        cflags_objc = [ "-Wimplicit-retain-self" ]
        cflags_objcc = [ "-Wimplicit-retain-self" ]
-@@ -2268,7 +2240,6 @@ config("no_rtti") {
+@@ -2451,7 +2423,6 @@ config("no_rtti") {
+ # to heap-allocated memory are passed over shared library boundaries.
  config("export_dynamic") {
-   # TODO(crbug.com/40118868): Revisit after target_os flip is completed.
-   if (is_linux || is_chromeos_lacros || export_libcxxabi_from_executables) {
+   if (is_linux || export_libcxxabi_from_executables) {
 -    ldflags = [ "-rdynamic" ]
    }
  }
  
-@@ -2366,7 +2337,8 @@ config("wexit_time_destructors") {
+@@ -2550,7 +2521,8 @@ config("wexit_time_destructors") {
  # gcc 4.9 and earlier had no way of suppressing this warning without
  # suppressing the rest of them.  Here we centralize the identification of
  # the gcc 4.9 toolchains.
@@ -162,7 +162,7 @@ Subject: [PATCH] Disable various compiler configs
    cflags = []
    if (is_clang) {
      cflags += [ "-Wno-incompatible-pointer-types" ]
-@@ -2483,7 +2455,8 @@ if (is_win) {
+@@ -2667,7 +2639,8 @@ if (is_win) {
    common_optimize_on_cflags += [ "-fno-math-errno" ]
  }
  
@@ -172,7 +172,7 @@ Subject: [PATCH] Disable various compiler configs
    if (!is_win) {
      if (enable_frame_pointers) {
        cflags = [ "-fno-omit-frame-pointer" ]
-@@ -2524,7 +2497,8 @@ config("default_stack_frames") {
+@@ -2708,7 +2681,8 @@ config("default_stack_frames") {
  # [0]: https://pinpoint-dot-chromeperf.appspot.com/job/147634a8be0000
  # [1]: https://pinpoint-dot-chromeperf.appspot.com/job/132bc772be0000
  # [2]: https://crrev.com/c/5447532
@@ -182,7 +182,7 @@ Subject: [PATCH] Disable various compiler configs
    if (is_win) {
      # clang-cl's /O2 corresponds to clang's -O3, and really want -O2 for
      # consistency with the other platforms.
-@@ -2573,7 +2547,8 @@ config("optimize") {
+@@ -2757,7 +2731,8 @@ config("optimize") {
  }
  
  # Turn off optimizations.
@@ -192,7 +192,7 @@ Subject: [PATCH] Disable various compiler configs
    if (is_win) {
      cflags = [
        "/Od",  # Disable optimization.
-@@ -2613,7 +2588,8 @@ config("no_optimize") {
+@@ -2792,7 +2767,8 @@ config("no_optimize") {
  # Turns up the optimization level. Used to explicitly enable -O2 instead of
  # -Os for select targets on platforms that use optimize_for_size. No-op
  # elsewhere.
@@ -202,7 +202,7 @@ Subject: [PATCH] Disable various compiler configs
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2646,7 +2622,8 @@ config("optimize_max") {
+@@ -2825,7 +2801,8 @@ config("optimize_max") {
  #
  # TODO(crbug.com/41259697) - rework how all of these configs are related
  # so that we don't need this disclaimer.
@@ -212,7 +212,7 @@ Subject: [PATCH] Disable various compiler configs
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2675,7 +2652,8 @@ config("optimize_speed") {
+@@ -2854,7 +2831,8 @@ config("optimize_speed") {
    }
  }
  
@@ -222,7 +222,7 @@ Subject: [PATCH] Disable various compiler configs
    cflags = [ "-O1" ] + common_optimize_on_cflags
    rustflags = [ "-Copt-level=1" ]
    ldflags = common_optimize_on_ldflags
-@@ -2806,7 +2784,8 @@ config("win_pdbaltpath") {
+@@ -2985,7 +2963,8 @@ config("win_pdbaltpath") {
  }
  
  # Full symbols.
@@ -232,7 +232,7 @@ Subject: [PATCH] Disable various compiler configs
    rustflags = []
    configs = []
    if (is_win) {
-@@ -2968,7 +2947,8 @@ config("symbols") {
+@@ -3159,7 +3138,8 @@ config("symbols") {
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user
  # when crash happens in unittests running on buildbot.
@@ -242,7 +242,7 @@ Subject: [PATCH] Disable various compiler configs
    rustflags = []
    if (is_win) {
      # Functions, files, and line tables only.
-@@ -3053,7 +3033,8 @@ config("minimal_symbols") {
+@@ -3244,7 +3224,8 @@ config("minimal_symbols") {
  # This configuration contains function names only. That is, the compiler is
  # told to not generate debug information and the linker then just puts function
  # names in the final debug information.

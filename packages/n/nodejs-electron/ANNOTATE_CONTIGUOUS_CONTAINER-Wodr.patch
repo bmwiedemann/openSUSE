@@ -1,0 +1,229 @@
+This collides with an abseil macro causing ODR miscompiles
+
+diff '--color=auto' -urp src.old/third_party/blink/renderer/platform/heap/collection_support/heap_vector_backing.h src/third_party/blink/renderer/platform/heap/collection_support/heap_vector_backing.h
+--- src.old/third_party/blink/renderer/platform/heap/collection_support/heap_vector_backing.h	2025-08-15 17:32:29.517405064 +0200
++++ src/third_party/blink/renderer/platform/heap/collection_support/heap_vector_backing.h	2025-08-17 14:47:13.834152160 +0200
+@@ -100,9 +100,9 @@ HeapVectorBacking<T, Traits>::~HeapVecto
+   const size_t length = object_size / sizeof(T);
+   using ByteBuffer = uint8_t*;
+   ByteBuffer payload = reinterpret_cast<ByteBuffer>(this);
+-#ifdef ANNOTATE_CONTIGUOUS_CONTAINER
++#ifdef WTF_ANNOTATE_CONTIGUOUS_CONTAINER
+   ANNOTATE_CHANGE_SIZE(payload, length * sizeof(T), 0, length * sizeof(T));
+-#endif  // ANNOTATE_CONTIGUOUS_CONTAINER
++#endif  // WTF_ANNOTATE_CONTIGUOUS_CONTAINER
+   // HeapVectorBacking calls finalizers for unused slots and expects them to be
+   // no-ops.
+   if (std::is_polymorphic<T>::value) {
+@@ -176,11 +176,11 @@ struct TraceInCollectionTrait<kNoWeakHan
+         cppgc::subtle::ObjectSizeTrait<const Backing>::GetSize(
+             *reinterpret_cast<const Backing*>(self)) /
+         sizeof(T);
+-#ifdef ANNOTATE_CONTIGUOUS_CONTAINER
++#ifdef WTF_ANNOTATE_CONTIGUOUS_CONTAINER
+     // As commented above, HeapVectorBacking can trace unused slots (which are
+     // already zeroed out).
+     ANNOTATE_CHANGE_SIZE(array, length, 0, length);
+-#endif  // ANNOTATE_CONTIGUOUS_CONTAINER
++#endif  // WTF_ANNOTATE_CONTIGUOUS_CONTAINER
+     if constexpr (IsTraceable<T>::value) {
+       for (unsigned i = 0; i < length; ++i) {
+         if (!std::is_polymorphic_v<T> ||
+diff '--color=auto' -urp src.old/third_party/blink/renderer/platform/heap/test/heap_test.cc src/third_party/blink/renderer/platform/heap/test/heap_test.cc
+--- src.old/third_party/blink/renderer/platform/heap/test/heap_test.cc	2025-08-15 17:32:29.517405064 +0200
++++ src/third_party/blink/renderer/platform/heap/test/heap_test.cc	2025-08-17 14:47:13.834152160 +0200
+@@ -854,7 +854,7 @@ TEST_F(HeapTest, HeapVectorShrinkInlineC
+ // Vector inline buffers are disabled; that constraint should be attempted
+ // removed, but until that time, disable testing handling of capacities
+ // of inline buffers.
+-#if !defined(ANNOTATE_CONTIGUOUS_CONTAINER)
++#if !defined(WTF_ANNOTATE_CONTIGUOUS_CONTAINER)
+   // Shrinking switches the buffer from the external one to the inline one.
+   vector1.Shrink(kInlineCapacity - 1);
+   vector1.shrink_to_fit();
+@@ -2446,7 +2446,7 @@ class InlinedVectorObjectWithVtableWrapp
+ 
+ // TODO(Oilpan): when Vector.h's contiguous container support no longer disables
+ // Vector<>s with inline capacity, enable this test.
+-#if !defined(ANNOTATE_CONTIGUOUS_CONTAINER)
++#if !defined(WTF_ANNOTATE_CONTIGUOUS_CONTAINER)
+ TEST_F(HeapTest, VectorDestructorsWithVtable) {
+   ClearOutOldGarbage();
+   InlinedVectorObjectWithVtable::destructor_calls_ = 0;
+diff '--color=auto' -urp src.old/third_party/blink/renderer/platform/sparse_vector_test.cc src/third_party/blink/renderer/platform/sparse_vector_test.cc
+--- src.old/third_party/blink/renderer/platform/sparse_vector_test.cc	2025-08-15 17:32:29.549405057 +0200
++++ src/third_party/blink/renderer/platform/sparse_vector_test.cc	2025-08-17 14:47:13.846152160 +0200
+@@ -240,9 +240,9 @@ TEST(SparseVectorPtrTest, SettingToNullp
+   EXPECT_FALSE(sparse_vector.HasField(FieldId::kFoo));
+ }
+ 
+-// WTF::Vector always uses 0 inline capacity when ANNOTATE_CONTIGUOUS_CONTAINER
++// WTF::Vector always uses 0 inline capacity when WTF_ANNOTATE_CONTIGUOUS_CONTAINER
+ // is defined.
+-#ifndef ANNOTATE_CONTIGUOUS_CONTAINER
++#ifndef WTF_ANNOTATE_CONTIGUOUS_CONTAINER
+ TEST(SparseVectorInlineCapacityTest, Basic) {
+   SparseVector<FieldId, int, 16> sparse_vector;
+   EXPECT_EQ(16u, sparse_vector.capacity());
+diff '--color=auto' -urp src.old/third_party/blink/renderer/platform/wtf/container_annotations.h src/third_party/blink/renderer/platform/wtf/container_annotations.h
+--- src.old/third_party/blink/renderer/platform/wtf/container_annotations.h	2025-08-15 17:32:29.573405052 +0200
++++ src/third_party/blink/renderer/platform/wtf/container_annotations.h	2025-08-17 14:47:13.842152160 +0200
+@@ -18,7 +18,7 @@
+ // documentation:
+ //   https://github.com/llvm-mirror/compiler-rt/blob/master/include/sanitizer/common_interface_defs.h#L154
+ 
+-#define ANNOTATE_CONTIGUOUS_CONTAINER
++#define WTF_ANNOTATE_CONTIGUOUS_CONTAINER
+ 
+ #define ANNOTATE_NEW_BUFFER(buffer, capacity, newSize)                       \
+   if (buffer) {                                                              \
+diff '--color=auto' -urp src.old/third_party/blink/renderer/platform/wtf/size_assertions.cc src/third_party/blink/renderer/platform/wtf/size_assertions.cc
+--- src.old/third_party/blink/renderer/platform/wtf/size_assertions.cc	2025-08-15 17:32:29.577405052 +0200
++++ src/third_party/blink/renderer/platform/wtf/size_assertions.cc	2025-08-17 14:47:13.838152160 +0200
+@@ -61,7 +61,7 @@ struct SameSizeAsVectorWithInlineCapacit
+ template <typename T, unsigned inlineCapacity>
+ struct SameSizeAsVectorWithInlineCapacity {
+   SameSizeAsVectorWithInlineCapacity<T, 0> base_capacity;
+-#if !defined(ANNOTATE_CONTIGUOUS_CONTAINER)
++#if !defined(WTF_ANNOTATE_CONTIGUOUS_CONTAINER)
+   T inline_buffer[inlineCapacity];
+ #endif
+ };
+diff '--color=auto' -urp src.old/third_party/blink/renderer/platform/wtf/vector.h src/third_party/blink/renderer/platform/wtf/vector.h
+--- src.old/third_party/blink/renderer/platform/wtf/vector.h	2025-08-15 17:32:29.581405051 +0200
++++ src/third_party/blink/renderer/platform/wtf/vector.h	2025-08-17 14:47:13.842152160 +0200
+@@ -59,7 +59,7 @@
+ 
+ // For ASAN builds, disable inline buffers completely as they cause various
+ // issues.
+-#ifdef ANNOTATE_CONTIGUOUS_CONTAINER
++#ifdef WTF_ANNOTATE_CONTIGUOUS_CONTAINER
+ #define INLINE_CAPACITY 0
+ #else
+ #define INLINE_CAPACITY InlineCapacity
+@@ -471,7 +471,7 @@ class VectorBufferBase {
+   }
+ 
+   void CheckUnusedSlots(const T* from, const T* to) {
+-#if DCHECK_IS_ON() && !defined(ANNOTATE_CONTIGUOUS_CONTAINER)
++#if DCHECK_IS_ON() && !defined(WTF_ANNOTATE_CONTIGUOUS_CONTAINER)
+     if constexpr (NeedsToClearUnusedSlots()) {
+       const unsigned char* unused_area =
+           reinterpret_cast<const unsigned char*>(from);
+@@ -606,7 +606,7 @@ class VectorBuffer<T, 0, Allocator> : pr
+     DCHECK(buffer_);
+     DCHECK_LT(new_capacity, capacity());
+     size_t size_to_allocate = AllocationSize(new_capacity);
+-#ifdef ANNOTATE_CONTIGUOUS_CONTAINER
++#ifdef WTF_ANNOTATE_CONTIGUOUS_CONTAINER
+     ANNOTATE_DELETE_BUFFER(buffer_, capacity_, size_);
+ #endif
+     bool succeeded = false;
+@@ -615,7 +615,7 @@ class VectorBuffer<T, 0, Allocator> : pr
+       capacity_ = static_cast<wtf_size_t>(size_to_allocate / sizeof(T));
+       succeeded = true;
+     }
+-#ifdef ANNOTATE_CONTIGUOUS_CONTAINER
++#ifdef WTF_ANNOTATE_CONTIGUOUS_CONTAINER
+     MARKING_AWARE_ANNOTATE_NEW_BUFFER(Allocator, buffer_, capacity_, size_);
+ #endif
+     return succeeded;
+@@ -740,7 +740,7 @@ class VectorBuffer : protected VectorBuf
+     DCHECK_NE(buffer_, InlineBuffer());
+     size_t new_size = AllocationSize(new_capacity);
+     bool succeeded = false;
+-#ifdef ANNOTATE_CONTIGUOUS_CONTAINER
++#ifdef WTF_ANNOTATE_CONTIGUOUS_CONTAINER
+     ANNOTATE_DELETE_BUFFER(buffer_, capacity_, size_);
+ #endif
+     if (Allocator::ShrinkVectorBacking(buffer_, AllocationSize(capacity()),
+@@ -748,7 +748,7 @@ class VectorBuffer : protected VectorBuf
+       capacity_ = static_cast<wtf_size_t>(new_size / sizeof(T));
+       succeeded = true;
+     }
+-#ifdef ANNOTATE_CONTIGUOUS_CONTAINER
++#ifdef WTF_ANNOTATE_CONTIGUOUS_CONTAINER
+     MARKING_AWARE_ANNOTATE_NEW_BUFFER(Allocator, buffer_, capacity_, size_);
+ #endif
+     return succeeded;
+@@ -2145,7 +2145,7 @@ void Vector<T, InlineCapacity, Allocator
+     Shrink(new_capacity);
+ 
+   T* old_buffer = data();
+-#ifdef ANNOTATE_CONTIGUOUS_CONTAINER
++#ifdef WTF_ANNOTATE_CONTIGUOUS_CONTAINER
+   wtf_size_t old_capacity = capacity();
+ #endif
+   if (new_capacity > 0) {
+@@ -2160,7 +2160,7 @@ void Vector<T, InlineCapacity, Allocator
+     return;
+   }
+   Base::ResetBufferPointer();
+-#ifdef ANNOTATE_CONTIGUOUS_CONTAINER
++#ifdef WTF_ANNOTATE_CONTIGUOUS_CONTAINER
+   if (old_buffer != data()) {
+     MARKING_AWARE_ANNOTATE_NEW_BUFFER(Allocator, data(), capacity(), size_);
+     ANNOTATE_DELETE_BUFFER(old_buffer, old_capacity, size_);
+@@ -2270,7 +2270,7 @@ template <typename T, wtf_size_t InlineC
+ template <typename U>
+ ALWAYS_INLINE void Vector<T, InlineCapacity, Allocator>::UncheckedAppend(
+     U&& val) {
+-#ifdef ANNOTATE_CONTIGUOUS_CONTAINER
++#ifdef WTF_ANNOTATE_CONTIGUOUS_CONTAINER
+   // Vectors in ASAN builds don't have InlineCapacity.
+   push_back(std::forward<U>(val));
+ #else
+@@ -2460,10 +2460,10 @@ void TraceInlinedBuffer(VisitorDispatche
+                         const T* buffer_begin,
+                         size_t capacity) {
+   const T* buffer_end = buffer_begin + capacity;
+-#ifdef ANNOTATE_CONTIGUOUS_CONTAINER
++#ifdef WTF_ANNOTATE_CONTIGUOUS_CONTAINER
+   // Vector can trace unused slots (which are already zeroed out).
+   ANNOTATE_CHANGE_SIZE(buffer_begin, capacity, 0, capacity);
+-#endif  // ANNOTATE_CONTIGUOUS_CONTAINER
++#endif  // WTF_ANNOTATE_CONTIGUOUS_CONTAINER
+   for (const T* buffer_entry = buffer_begin; buffer_entry != buffer_end;
+        buffer_entry++) {
+     Allocator::template Trace<T, VectorTraits<T>>(visitor, *buffer_entry);
+@@ -2542,7 +2542,7 @@ void Vector<T, InlineCapacity, Allocator
+     }
+     // Shrinking to inline buffer from out-of-line one.
+     T *old_begin = data(), *old_end = DataEnd();
+-#ifdef ANNOTATE_CONTIGUOUS_CONTAINER
++#ifdef WTF_ANNOTATE_CONTIGUOUS_CONTAINER
+     const wtf_size_t old_capacity = capacity();
+ #endif
+     Base::ResetBufferPointer();
+diff '--color=auto' -urp src.old/third_party/blink/renderer/platform/wtf/vector_test.cc src/third_party/blink/renderer/platform/wtf/vector_test.cc
+--- src.old/third_party/blink/renderer/platform/wtf/vector_test.cc	2025-08-15 17:32:29.581405051 +0200
++++ src/third_party/blink/renderer/platform/wtf/vector_test.cc	2025-08-17 14:47:13.846152160 +0200
+@@ -377,7 +377,7 @@ TEST(VectorTest, SwapWithInlineCapacity)
+   vector_b.swap(vector_a);
+ }
+ 
+-#if defined(ANNOTATE_CONTIGUOUS_CONTAINER)
++#if defined(WTF_ANNOTATE_CONTIGUOUS_CONTAINER)
+ TEST(VectorTest, ContainerAnnotations) {
+   Vector<int> vector_a;
+   vector_a.push_back(10);
+@@ -415,7 +415,7 @@ TEST(VectorTest, ContainerAnnotations) {
+   volatile int* int_pointer_b3 = vector_b.data();
+   EXPECT_DEATH((void)int_pointer_b3[2], "container-overflow");
+ }
+-#endif  // defined(ANNOTATE_CONTIGUOUS_CONTAINER)
++#endif  // defined(WTF_ANNOTATE_CONTIGUOUS_CONTAINER)
+ 
+ class Comparable {};
+ bool operator==(const Comparable& a, const Comparable& b) {
+--- src/third_party/blink/renderer/core/html/parser/literal_buffer.h.orig	2025-08-15 17:32:29.197405123 +0200
++++ src/third_party/blink/renderer/core/html/parser/literal_buffer.h	2025-08-17 16:56:06.586499195 +0200
+@@ -22,7 +22,7 @@
+ 
+ // For ASAN builds, disable inline buffers completely as they cause various
+ // issues.
+-#ifdef ANNOTATE_CONTIGUOUS_CONTAINER
++#ifdef WTF_ANNOTATE_CONTIGUOUS_CONTAINER
+ #define BUFFER_INLINE_CAPACITY 0
+ #else
+ #define BUFFER_INLINE_CAPACITY kInlineSize

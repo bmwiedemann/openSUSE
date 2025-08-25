@@ -21,53 +21,45 @@
        "//services/strings",
        "//services/test/echo/public/mojom",
 @@ -8027,7 +8021,6 @@ test("unit_tests") {
- 
-     # Non-android deps for "unit_tests" target.
+     #
+     # TODO(crbug.com/417513088): Maybe merge with the non-android `deps` declaration above?
      deps += [
 -      "../browser/screen_ai:screen_ai_install_state",
        "//chrome/browser/apps:icon_standardizer",
        "//chrome/browser/apps/app_service",
        "//chrome/browser/apps/app_service:app_registry_cache_waiter",
 @@ -8172,7 +8165,6 @@ test("unit_tests") {
-       "//services/device/public/cpp/bluetooth",
+       "//components/webapps/browser",
        "//services/metrics/public/cpp:ukm_builders",
        "//services/network:test_support",
 -      "//services/screen_ai:test_support",
-       "//services/video_effects/test:test_support",
        "//third_party/crashpad/crashpad/util",
        "//third_party/libaddressinput",
+       "//third_party/lzma_sdk/google:unit_tests",
 @@ -8445,7 +8437,6 @@ test("unit_tests") {
        "//chrome/browser/push_notification",
        "//chrome/browser/push_notification:test_support",
        "//chrome/browser/push_notification/protos:proto",
 -      "//chrome/browser/screen_ai/public:test_support",
+       "//chrome/browser/sharesheet",
        "//chrome/browser/smart_card:smart_card",
        "//chrome/browser/task_manager:impl",
-       "//chrome/browser/ui/ash:test_support",
-@@ -8591,7 +8582,6 @@ test("unit_tests") {
-       "//chrome/browser/nearby_sharing/contacts:unit_tests",
-       "//chrome/browser/nearby_sharing/local_device_data:unit_tests",
-       "//chrome/browser/policy:unit_tests",
--      "//chrome/browser/screen_ai:unit_tests",
-       "//chrome/browser/smart_card:unit_tests",
-       "//chrome/browser/support_tool/ash:unit_tests",
-       "//chrome/browser/ui/ash:unit_tests",
 --- src/chrome/browser/BUILD.gn.orig	2025-04-11 12:13:12.927314100 +0200
 +++ src/chrome/browser/BUILD.gn	2025-04-12 13:12:42.819768051 +0200
 @@ -4228,10 +4228,6 @@ static_library("browser") {
+       "//chrome/browser/metrics/desktop_session_duration",
        "//chrome/browser/new_tab_page/chrome_colors",
        "//chrome/browser/policy:path_parser",
-       "//chrome/browser/resources:component_extension_resources",
 -      "//chrome/browser/screen_ai:prefs",
 -      "//chrome/browser/screen_ai:screen_ai_install_state",
 -      "//chrome/browser/screen_ai:screen_ai_service_router_factory",
 -      "//chrome/browser/screen_ai/public:optical_character_recognizer",
        "//chrome/browser/search/background",
+       "//chrome/browser/sharing_hub",
        "//chrome/browser/smart_card",
-       "//chrome/browser/themes",
 @@ -4357,9 +4353,6 @@ static_library("browser") {
+       "//components/webauthn/core/browser",
        "//components/webauthn/core/browser:passkey_model",
-       "//services/device/public/cpp/bluetooth",
        "//services/device/public/cpp/hid",
 -      "//services/screen_ai",
 -      "//services/screen_ai/public/cpp:utilities",
@@ -96,8 +88,8 @@
      "//skia",
      "//sql",
 @@ -145,7 +144,6 @@ static_library("utility") {
-       "//chrome/common/importer:interfaces",
        "//components/autofill/core/common",
+       "//components/user_data_importer/common",
        "//services/proxy_resolver:lib",
 -      "//services/screen_ai",
      ]
@@ -114,8 +106,8 @@
    ]
  
 @@ -68,9 +67,6 @@ source_set("screen_ai_service_router_fac
-     "//chrome/browser/profiles:profile",
      "//components/keyed_service/core",
+     "//components/performance_manager:performance_manager",
      "//content/public/browser",
 -    "//services/screen_ai/public/cpp:utilities",
 -    "//services/screen_ai/public/mojom:factory",
@@ -156,7 +148,7 @@
 --- src/chrome/browser/ui/BUILD.gn.orig	2025-04-11 12:05:17.331313863 +0200
 +++ src/chrome/browser/ui/BUILD.gn	2025-04-12 13:26:46.759762260 +0200
 @@ -1705,8 +1705,6 @@ static_library("ui") {
-       "//chrome/browser/reading_list",
+       "//chrome/browser/regional_capabilities",
        "//chrome/browser/safe_browsing",
        "//chrome/browser/safe_browsing:advanced_protection",
 -      "//chrome/browser/screen_ai:screen_ai_install_state",

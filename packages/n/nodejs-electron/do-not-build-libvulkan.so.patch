@@ -3,10 +3,10 @@ Do not try to build a private copy of a DLL which is already available on every 
 --- a/chrome/BUILD.gn
 +++ b/chrome/BUILD.gn
 @@ -1789,8 +1790,9 @@
- 
-       deps = [ "//third_party/angle:libGLESv2" ]
+         deps = [ "//third_party/angle:libGLESv2" ]
+       }
      }
--    if (!is_chromeos) {
+-    if (!is_chromeos && angle_shared_libvulkan) {
 +    source_set("angle_libvulkan_symbols") {}
 +    if (false) {
        extract_symbols("angle_libvulkan_symbols") {

@@ -1,0 +1,14 @@
+--- src/third_party/angle/src/common/vulkan/vk_headers.h.orig	2025-08-15 17:33:15.429396781 +0200
++++ src/third_party/angle/src/common/vulkan/vk_headers.h	2025-08-15 21:50:06.831979165 +0200
+@@ -16,6 +16,11 @@
+ #    include <vulkan/vulkan.h>
+ #endif
+ 
++// braindead change https://chromium-review.googlesource.com/c/angle/angle/+/5273491
++#undef Success
++#undef None
++#undef Always
++
+ #if !defined(ANGLE_SHARED_LIBVULKAN)
+ 
+ namespace rx

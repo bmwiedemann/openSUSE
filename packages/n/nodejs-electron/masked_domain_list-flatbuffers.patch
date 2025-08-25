@@ -1,0 +1,25 @@
+This code fails to build but is gated by a disabled feature flag, disabling it unconditionally
+
+
+--- src/components/ip_protection/common/masked_domain_list_manager.cc.orig	2025-08-22 20:17:46.149834100 +0200
++++ src/components/ip_protection/common/masked_domain_list_manager.cc	2025-08-23 01:07:33.078746196 +0200
+@@ -41,8 +41,7 @@ using ::masked_domain_list::ResourceOwne
+ using ::network::mojom::IpProtectionProxyBypassPolicy;
+ 
+ bool UseFlatbuffer() {
+-  return base::FeatureList::IsEnabled(
+-      network::features::kMaskedDomainListFlatbufferImpl);
++  return false;
+ }
+ 
+ bool RestrictTopLevelSiteSchemes(
+--- src/components/ip_protection/common/BUILD.gn.orig	2025-08-22 20:17:46.149834100 +0200
++++ src/components/ip_protection/common/BUILD.gn	2025-08-23 01:06:48.134754665 +0200
+@@ -479,7 +479,6 @@ source_set("masked_domain_list_manager")
+     "masked_domain_list_manager.h",
+   ]
+   public_deps = [
+-    ":masked_domain_list",
+     ":url_matcher_with_bypass",
+     "//base",
+     "//components/privacy_sandbox/masked_domain_list:masked_domain_list_proto",

@@ -78,8 +78,8 @@ Both this and the unbundle flags should be upstreamed but probably separately.
        "deps/nbytes",
 -      "deps/nghttp2",
        "deps/postject",
-       "deps/sqlite",
        "deps/uvwasi",
+       "//third_party/zlib",
 @@ -186,21 +211,36 @@ template("node_gn_build") {
          "Security.framework",
        ]

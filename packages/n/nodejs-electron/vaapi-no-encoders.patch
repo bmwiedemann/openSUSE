@@ -5,9 +5,9 @@ These encoders:
 
 The hardware *decoders*, on the other hand, are useful for Signal Messenger, and should work now.
 
---- src/media/gpu/vaapi/vaapi_video_encode_accelerator.cc.orig	2025-07-02 22:10:56.136470571 +0200
-+++ src/media/gpu/vaapi/vaapi_video_encode_accelerator.cc	2025-07-11 18:16:04.978530973 +0200
-@@ -43,13 +43,10 @@
+--- src/media/gpu/vaapi/vaapi_video_encode_accelerator.cc.orig	2025-07-19 11:32:35.717979936 +0200
++++ src/media/gpu/vaapi/vaapi_video_encode_accelerator.cc	2025-08-15 14:42:43.908933011 +0200
+@@ -46,13 +46,10 @@
  #include "media/gpu/gpu_video_encode_accelerator_helpers.h"
  #include "media/gpu/h264_dpb.h"
  #include "media/gpu/macros.h"
@@ -21,7 +21,7 @@ The hardware *decoders*, on the other hand, are useful for Signal Messenger, and
  #include "media/gpu/vp8_reference_frame_vector.h"
  #include "media/gpu/vp9_reference_frame_vector.h"
  
-@@ -230,8 +227,7 @@ bool VaapiVideoEncodeAccelerator::Initia
+@@ -233,8 +230,7 @@ EncoderStatus VaapiVideoEncodeAccelerato
    }
  
    const VideoCodec codec = VideoCodecProfileToVideoCodec(config.output_profile);
@@ -30,8 +30,8 @@ The hardware *decoders*, on the other hand, are useful for Signal Messenger, and
 +  if (codec != VideoCodec::kH264) {
      MEDIA_LOG(ERROR, media_log.get())
          << "Unsupported profile: " << GetProfileName(config.output_profile);
-     return false;
-@@ -321,11 +317,6 @@ void VaapiVideoEncodeAccelerator::Initia
+     return {EncoderStatus::Codes::kEncoderInitializationError};
+@@ -324,11 +320,6 @@ void VaapiVideoEncodeAccelerator::Initia
                       : VaapiWrapper::kEncodeVariableBitrate;
          }
          break;
@@ -43,7 +43,7 @@ The hardware *decoders*, on the other hand, are useful for Signal Messenger, and
        default:
          NotifyError({EncoderStatus::Codes::kEncoderUnsupportedCodec,
                       "Unsupported codec: " + GetCodecName(output_codec_)});
-@@ -377,24 +368,6 @@ void VaapiVideoEncodeAccelerator::Initia
+@@ -380,24 +371,6 @@ void VaapiVideoEncodeAccelerator::Initia
          }
        }
        break;
@@ -68,20 +68,20 @@ The hardware *decoders*, on the other hand, are useful for Signal Messenger, and
      default:
        NOTREACHED() << "Unsupported codec type " << GetCodecName(output_codec_);
    }
-@@ -893,19 +866,6 @@ VaapiVideoEncodeAccelerator::CreateEncod
-       picture = new VaapiH264Picture(
+@@ -896,19 +869,6 @@ VaapiVideoEncodeAccelerator::CreateEncod
+       picture = base::MakeRefCounted<VaapiH264Picture>(
            reconstructed_surface->ReleaseAsVASurfaceHandle());
        break;
 -    case VideoCodec::kVP8:
--      picture = new VaapiVP8Picture(
+-      picture = base::MakeRefCounted<VaapiVP8Picture>(
 -          reconstructed_surface->ReleaseAsVASurfaceHandle());
 -      break;
 -    case VideoCodec::kVP9:
--      picture = new VaapiVP9Picture(
+-      picture = base::MakeRefCounted<VaapiVP9Picture>(
 -          reconstructed_surface->ReleaseAsVASurfaceHandle());
 -      break;
 -    case VideoCodec::kAV1:
--      picture = new VaapiAV1Picture(
+-      picture = base::MakeRefCounted<VaapiAV1Picture>(
 -          /*display_va_surface=*/nullptr,
 -          reconstructed_surface->ReleaseAsVASurfaceHandle());
 -      break;

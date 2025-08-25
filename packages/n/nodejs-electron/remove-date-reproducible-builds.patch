@@ -12,18 +12,18 @@
  GENERATED_FILE_MESSAGE = """// GENERATED FROM THE API DEFINITION IN
  //   %s
  // by tools/json_schema_compiler.
---- a/tools/json_to_struct/json_to_struct.py
-+++ b/tools/json_to_struct/json_to_struct.py
-@@ -74,7 +74,7 @@
- import java_element_generator
+--- src/tools/json_to_struct/json_to_struct.py.orig	2025-07-19 11:32:45.069979393 +0200
++++ src/tools/json_to_struct/json_to_struct.py	2025-08-15 15:02:55.044700914 +0200
+@@ -84,7 +84,7 @@ import java_element_generator
  import struct_generator
+ 
  
 -HEAD = u"""// Copyright %d The Chromium Authors
 +HEAD = u"""// Copyright 2022 The Chromium Authors
  // Use of this source code is governed by a BSD-style license that can be
  // found in the LICENSE file.
  
-@@ -227,7 +227,7 @@
+@@ -316,7 +316,7 @@ def GenerateStruct(basepath, output_root
      year: Year to display next to the copy-right in the header.
    """
    year = int(year) if year else datetime.now().year

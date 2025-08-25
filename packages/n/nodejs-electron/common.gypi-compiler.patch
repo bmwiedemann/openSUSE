@@ -1,9 +1,9 @@
---- src/third_party/electron_node/common.gypi.orig	2025-04-10 20:07:02.154742467 +0200
-+++ src/third_party/electron_node/common.gypi	2025-04-11 11:45:57.996110023 +0200
-@@ -514,15 +514,19 @@
+--- src/third_party/electron_node/common.gypi.orig	2025-07-19 11:44:59.181882205 +0200
++++ src/third_party/electron_node/common.gypi	2025-07-19 16:21:44.297731896 +0200
+@@ -534,15 +534,19 @@
          'ldflags': [ '-pthread' ],
        }],
-       [ 'OS in "linux freebsd openbsd solaris android aix os400 cloudabi"', {
+       [ 'OS in "linux freebsd openbsd solaris android aix os400 cloudabi openharmony"', {
 -        'cflags': [ '-Wall', '-Wextra', '-Wno-unused-parameter', ],
 +        # Add some useful flags which need to be specified on all modules anyway.
 +        # `-fpic -fno-semantic-interposition` is the best relocation model for code that will live in a dlopened library
@@ -23,7 +23,7 @@
          'target_conditions': [
            # The 1990s toolchain on SmartOS can't handle thin archives.
            ['_type=="static_library" and OS=="solaris"', {
-@@ -700,29 +704,7 @@
+@@ -720,29 +724,7 @@
            '-Wl,--export-dynamic',
          ],
        }],

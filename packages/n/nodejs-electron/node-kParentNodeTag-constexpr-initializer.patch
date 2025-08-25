@@ -1,0 +1,14 @@
+--- src/third_party/blink/renderer/core/dom/node.h.orig	2025-08-15 17:32:29.121405137 +0200
++++ src/third_party/blink/renderer/core/dom/node.h	2025-08-15 23:15:58.713118795 +0200
+@@ -1259,9 +1259,9 @@ class CORE_EXPORT Node : public EventTar
+ 
+  private:
+   static constexpr struct ParentNodeTag {
+-  } kParentNodeTag;
++  } kParentNodeTag {};
+   static constexpr struct ShadowHostTag {
+-  } kShadowHostTag;
++  } kShadowHostTag {};
+ 
+   using TaggedParentOrShadowHostNode =
+       subtle::TaggedUncompressedMember<Node, ParentNodeTag, ShadowHostTag>;

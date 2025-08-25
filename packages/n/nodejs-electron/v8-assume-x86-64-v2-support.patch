@@ -1,0 +1,51 @@
+--- src/v8/src/codegen/cpu-features.h.orig	2025-08-19 18:33:53.729236588 +0200
++++ src/v8/src/codegen/cpu-features.h	2025-08-19 19:06:19.769049465 +0200
+@@ -122,6 +122,12 @@ class V8_EXPORT_PRIVATE CpuFeatures : pu
+   }
+ 
+   static bool IsSupported(CpuFeature f) {
++    if(f == SSE4_2) return true;
++    if(f == SSE4_1) return true;
++    if(f == SSSE3) return true;
++    if(f == SSE3) return true;
++    if(f == SAHF) return true;
++    if(f == POPCNT) return true;
+     return (supported_ & (1u << f)) != 0;
+   }
+ 
+--- src/v8/src/base/cpu.h.orig	2025-08-19 18:33:53.705236589 +0200
++++ src/v8/src/base/cpu.h	2025-08-19 19:09:47.921029664 +0200
+@@ -73,15 +73,15 @@ class V8_BASE_EXPORT CPU final {
+   static const int kUnknownCacheLineSize = 0;
+ 
+   // x86 features
+-  bool has_cmov() const { return has_cmov_; }
+-  bool has_sahf() const { return has_sahf_; }
+-  bool has_mmx() const { return has_mmx_; }
+-  bool has_sse() const { return has_sse_; }
+-  bool has_sse2() const { return has_sse2_; }
+-  bool has_sse3() const { return has_sse3_; }
+-  bool has_ssse3() const { return has_ssse3_; }
+-  bool has_sse41() const { return has_sse41_; }
+-  bool has_sse42() const { return has_sse42_; }
++  bool has_cmov() const { return true; }
++  bool has_sahf() const { return true; }
++  bool has_mmx() const { return true; }
++  bool has_sse() const { return true; }
++  bool has_sse2() const { return true; }
++  bool has_sse3() const { return true; }
++  bool has_ssse3() const { return true; }
++  bool has_sse41() const { return true; }
++  bool has_sse42() const { return true; }
+   bool has_osxsave() const { return has_osxsave_; }
+   bool has_avx() const { return has_avx_; }
+   bool has_avx2() const { return has_avx2_; }
+@@ -92,7 +92,7 @@ class V8_BASE_EXPORT CPU final {
+   bool has_bmi1() const { return has_bmi1_; }
+   bool has_bmi2() const { return has_bmi2_; }
+   bool has_lzcnt() const { return has_lzcnt_; }
+-  bool has_popcnt() const { return has_popcnt_; }
++  bool has_popcnt() const { return true; }
+   bool is_atom() const { return is_atom_; }
+   bool has_intel_jcc_erratum() const { return has_intel_jcc_erratum_; }
+   bool has_cetss() const { return has_cetss_; }

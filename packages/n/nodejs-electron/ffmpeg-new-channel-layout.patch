@@ -236,19 +236,6 @@ index 6f231c85729..ca5e5fb927d 100644
      frame_length_ = header_plus_packet_size;
    }
  
-diff --git a/media/filters/ffmpeg_aac_bitstream_converter_unittest.cc b/media/filters/ffmpeg_aac_bitstream_converter_unittest.cc
-index 1fd4c5ccd7d..f59bcd8fdaf 100644
---- a/media/filters/ffmpeg_aac_bitstream_converter_unittest.cc
-+++ b/media/filters/ffmpeg_aac_bitstream_converter_unittest.cc
-@@ -34,7 +34,7 @@ class FFmpegAACBitstreamConverterTest : public testing::Test {
-     memset(&test_parameters_, 0, sizeof(AVCodecParameters));
-     test_parameters_.codec_id = AV_CODEC_ID_AAC;
-     test_parameters_.profile = FF_PROFILE_AAC_MAIN;
--    test_parameters_.channels = 2;
-+    test_parameters_.ch_layout.nb_channels = 2;
-     test_parameters_.extradata = extradata_header_;
-     test_parameters_.extradata_size = sizeof(extradata_header_);
-   }
 diff --git a/media/filters/ffmpeg_audio_decoder.cc b/media/filters/ffmpeg_audio_decoder.cc
 index 6a56c675f7d..4615fdeb3fb 100644
 --- a/media/filters/ffmpeg_audio_decoder.cc
@@ -271,20 +258,6 @@ index 6a56c675f7d..4615fdeb3fb 100644
    if (channel_layout == CHANNEL_LAYOUT_UNSUPPORTED &&
        config_.channel_layout() == CHANNEL_LAYOUT_DISCRETE) {
      channel_layout = CHANNEL_LAYOUT_DISCRETE;
-@@ -348,11 +348,11 @@ bool FFmpegAudioDecoder::ConfigureDecoder(const AudioDecoderConfig& config) {
-   // Success!
-   av_sample_format_ = codec_context_->sample_fmt;
- 
--  if (codec_context_->channels != config.channels()) {
-+  if (codec_context_->ch_layout.nb_channels != config.channels()) {
-     MEDIA_LOG(ERROR, media_log_)
-         << "Audio configuration specified " << config.channels()
-         << " channels, but FFmpeg thinks the file contains "
--        << codec_context_->channels << " channels";
-+        << codec_context_->ch_layout.nb_channels << " channels";
-     ReleaseFFmpegResources();
-     state_ = DecoderState::kUninitialized;
-     return false;
 @@ -403,7 +403,7 @@ int FFmpegAudioDecoder::GetAudioBuffer(struct AVCodecContext* s,
    if (frame->nb_samples <= 0)
      return AVERROR(EINVAL);

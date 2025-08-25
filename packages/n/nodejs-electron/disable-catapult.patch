@@ -167,21 +167,21 @@ author: Michael Gilbert <mgilbert@debian.org>
        "//media/mojo/mojom:speech_recognition",
        "//ui/base",
      ]
---- src/chrome/chrome_paks.gni.orig	2024-12-08 18:34:54.604673311 +0100
-+++ src/chrome/chrome_paks.gni	2024-12-18 12:15:07.247395616 +0100
-@@ -202,8 +202,6 @@ template("chrome_extra_paks") {
+--- src/chrome/chrome_paks.gni.orig	2025-07-19 11:32:31.785979797 +0200
++++ src/chrome/chrome_paks.gni	2025-07-19 16:32:46.337623073 +0200
+@@ -230,8 +230,6 @@ template("chrome_extra_paks") {
+         "$root_gen_dir/chrome/web_app_internals_resources.pak",
          "$root_gen_dir/chrome/webui_gallery_resources.pak",
          "$root_gen_dir/chrome/whats_new_resources.pak",
-         "$root_gen_dir/content/browser/devtools/devtools_resources.pak",
 -        "$root_gen_dir/content/browser/tracing/tracing_resources.pak",
 -        "$root_gen_dir/content/traces_internals_resources.pak",
        ]
        deps += [
-         "//chrome/browser/resources:component_extension_resources",
-@@ -215,7 +213,6 @@ template("chrome_extra_paks") {
+         "//chrome/browser/resources:dev_ui_paks",
+@@ -241,7 +239,6 @@ template("chrome_extra_paks") {
          "//chrome/browser/resources/lens/shared:resources",
          "//chrome/browser/resources/search_engine_choice:resources",
-         "//content/browser/devtools:devtools_resources",
+         "//chrome/browser/resources/tabs/tab_group_home:resources",
 -        "//content/browser/tracing:resources",
        ]
        if (is_chrome_branded) {
@@ -313,8 +313,8 @@ author: Michael Gilbert <mgilbert@debian.org>
      "//third_party/perfetto/src/trace_processor:trace_processor_shell",
    ]
    data = [
---- src/electron/electron_paks.gni.orig	2025-04-11 12:02:41.243100651 +0200
-+++ src/electron/electron_paks.gni	2025-04-11 12:28:19.897748625 +0200
+--- src/electron/build/electron_paks.gni.orig	2025-04-11 12:02:41.243100651 +0200
++++ src/electron/build/electron_paks.gni	2025-04-11 12:28:19.897748625 +0200
 @@ -57,7 +57,6 @@ template("electron_extra_paks") {
        "$root_gen_dir/chrome/common_resources.pak",
        "$root_gen_dir/components/components_resources.pak",

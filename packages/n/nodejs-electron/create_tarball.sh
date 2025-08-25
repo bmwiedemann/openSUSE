@@ -221,7 +221,6 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/parsel-js
     third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/rxjs
     third_party/devtools-frontend/src/third_party/i18n #javascript
-    third_party/distributed_point_functions #not in any distro
     third_party/dom_distiller_js #javascript
     #third_party/eigen3 #Used only by tflite which is not used in electron
     third_party/electron_node #Integral part of electron
@@ -234,6 +233,11 @@ keeplibs=(
     third_party/ipcz #not in any distro
     third_party/khronos #Modified to add ANGLE definitions
     third_party/leveldatabase #use of private headers
+    third_party/libaom #15.6 too old
+    third_party/libaom/source/libaom/third_party/fastfeat
+    third_party/libaom/source/libaom/third_party/SVT-AV1
+    third_party/libaom/source/libaom/third_party/vector
+    third_party/libaom/source/libaom/third_party/x86inc
     third_party/libgav1 #Usage of private headers (ObuFrameHeader from utils/types.h)
     third_party/libsrtp #Needs to be built against boringssl, not openssl
     third_party/libsync #not yet in any distro
@@ -271,6 +275,7 @@ keeplibs=(
     third_party/pffft #not in any distro, also heavily patched
     third_party/polymer #javascript
     third_party/protobuf #Heavily forked. Apparently was officially unbundlable back in the GYP days, and may be again in the future.
+    third_party/protobuf/third_party/utf8_range # Integral part of protobuf
     third_party/rapidhash #Fork
     third_party/re2 # fedora too old
     third_party/rnnoise #use of private headers
@@ -297,7 +302,6 @@ keeplibs=(
     third_party/webrtc/modules/third_party/fft #derived code, not vendored dep
     third_party/webrtc/modules/third_party/g711 #Fork. Original is from spandsp. Might be debundled if upstream ever accepts WebRTC's patches.
     third_party/webrtc/modules/third_party/g722 #Fork. Original is from spandsp.
-    third_party/webrtc/rtc_base/third_party/base64 #derived code, not vendored dep
     third_party/webrtc/rtc_base/third_party/sigslot #derived code, not vendored dep
     third_party/webrtc_overrides #Integral part of chrome
     third_party/widevine #Integral part of chrome. Needed.

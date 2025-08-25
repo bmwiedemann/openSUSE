@@ -20,7 +20,7 @@
 
 %define mod_name electron
 # https://github.com/nodejs/node/blob/main/doc/abi_version_registry.json
-%define abi_version 133
+%define abi_version 136
 
 # Do not provide libEGL.so, etc…
 %define __provides_exclude ^lib.*\\.so.*$
@@ -74,31 +74,43 @@ ExcludeArch: %arm
 
 %bcond_with system_yuv
 
+#CPU level. Leap 16 requires x86-64-v2 so we may force it inside V8.
+%if 0%{?suse_version} >= 1550 && 0%{?suse_version} < 1650
+%bcond_without v2
+%else
+%bcond_with v2
+%endif
+
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
 %bcond_without system_vpx
+%bcond_without system_aom
 %bcond_without bro_11
 %bcond_without ffmpeg_6
 %bcond_without system_vk_headers
 %bcond_without spirv_2024
 %bcond_without cares_21
+%bcond_without nghttp_50
+%bcond_without highway_1_1
 %else
 %bcond_with system_vpx
+%bcond_with system_aom
 %bcond_with bro_11
 %bcond_with ffmpeg_6
 %bcond_with system_vk_headers
 %bcond_with spirv_2024
 %bcond_with cares_21
+%bcond_with nghttp_50
+%bcond_with highway_1_1
 %endif
 
 
 
 
 %if 0%{?fedora}
-%bcond_without system_llhttp
+
 %bcond_without system_histogram
 %bcond_without system_simdjson
 %else
-%bcond_with system_llhttp
 %bcond_with system_histogram
 %bcond_with system_simdjson
 %endif
@@ -111,17 +123,13 @@ ExcludeArch: %arm
 %endif
 
 %if 0%{?fedora} >= 43
-%bcond_without llhttp_93
+%bcond_without system_llhttp
 %else
-%bcond_with llhttp_93
+%bcond_with system_llhttp
 %endif
 
-# requires `base64_options`
-%if 0%{?fedora} >= 42
-%bcond_without system_simdutf
-%else
+# requires built with `SIMDUTF_ATOMIC_REF`
 %bcond_with system_simdutf
-%endif
 
 %if 0%{?fedora} && 0%{?fedora} < 42
 %bcond_without system_vma
@@ -132,10 +140,8 @@ ExcludeArch: %arm
 # Some chromium code assumes absl::string_view is a typedef for std::string_view. This is not true on GCC7 systems such as Leap.
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
 %bcond_without system_abseil
-%bcond_without aom_38
 %else
 %bcond_with system_abseil
-%bcond_with aom_38
 %endif
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora} >= 41
@@ -180,7 +186,7 @@ ExcludeArch: %arm
 
 
 Name:           nodejs-electron
-Version:        35.7.0
+Version:        37.3.1
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -198,20 +204,20 @@ Source400:      ffmpeg-new-channel-layout.patch
 Source401:      audio_file_reader-ffmpeg-AVFrame-duration.patch
 Source402:      Cr122-ffmpeg-new-channel-layout.patch
 Source403:      ffmpeg-7-ffmpeg_video_decoder-reordered_opaque.patch
-# and against aom 3.9
-Source410:       aom3.10-AV1E_SET_MAX_CONSEC_FRAME_DROP_MS_CBR.patch
-Source411:       aom3.10-AV1E_SET_AUTO_TILES.patch
-Source412:       webrtc-aom3.8-AV1E_SET_MAX_CONSEC_FRAME_DROP_CBR.patch
-Source413:       webrtc-aom3.8-AV1E_SET_MAX_CONSEC_FRAME_DROP_CBR-2.patch
+Source404:      ffmpeg-4-AV_PROFILE.patch
 # and abseil 2407
 Source461:      webrtc-make_ref_counted-absl2024-nullability.patch
 # and c-ares 1.19
 Source470:      node-cares-1.21.patch
 Source471:      node-cares-1.21-2.patch
 Source472:      node-cares-1.21-3.patch
+Source473:      node-cares-1.21-4.patch
 # and spirv 2023
 Source480:      angle-SPV_BINARY_TO_TEXT_OPTION_NESTED_INDENT.patch
-
+#and nghttp 1.40
+Source490:      node-nghttp-1.50.patch
+#and highway 1.0
+Source500:      v8-highway-1.1.patch
 
 
 # PATCHES for openSUSE-specific things (compiler flags, paths, etc.)
@@ -237,6 +243,11 @@ Patch97:        chromium-127-cargo_crate.patch
 Patch98:        gn-logspam-breaks-install.patch
 Patch99:        torque-debuginfo.patch
 Patch100:       reduce-gn-tree.patch
+%if %{with v2}
+Patch101:       v8-assume-x86-64-v2-support.patch
+%else
+Source101:      v8-assume-x86-64-v2-support.patch
+%endif
 
 
 # PATCHES that remove code we don't want. Most of them can be reused verbatim by other distributors,
@@ -248,7 +259,6 @@ Patch570:       disable-fuses.patch
 # https://code.qt.io/cgit/qt/qtwebengine-chromium.git/commit/?h=102-based&id=d617766b236a93749ddbb50b75573dd35238ffc9
 Patch573:       disable-webspeech.patch
 # https://sources.debian.org/patches/chromium/108.0.5359.124-1/disable/tests.patch/
-Patch576:       disable-devtools-tests.patch
 Patch581:       disable-tests.patch
 Patch583:       remove-rust.patch
 Patch585:       remove-dawn.patch
@@ -258,7 +268,6 @@ Patch589:       remove-puffin.patch
 Patch590:       remove-sync.patch
 Patch592:       fix-build-without-supervised-users.patch
 Patch593:       fix-build-without-screen-ai.patch
-Patch594:       build-without-speech-service.patch
 #patches disabling rust features from Gentoo: https://data.gpo.zugaina.org/pf4public/dev-util/electron/files/
 Patch595:       chromium-123-qrcode.patch
 Patch596:       chromium-130-fontations.patch
@@ -266,7 +275,6 @@ Patch597:       chromium-125-cloud_authenticator.patch
 Patch598:       chromium-127-crabby.patch
 Patch599:       chromium-132-no-rust.patch
 #End gentoo patches
-Patch601:       MakeSbixTypeface-null-pointer-call.patch
 Patch602:       remove-ai-language-detection-factory-which-requires-tflite-and-libphonenumber.patch
 Patch603:       build-without-mesage-center.patch
 Patch604:       disable-avif-really.patch
@@ -274,6 +282,8 @@ Patch605:       permission-gcc14.2.patch
 Patch606:       build-without-extensions.patch
 Patch607:       build-without-guest-view.patch
 Patch608:       vaapi-no-encoders.patch
+Patch609:       remove-probabilistic-token-which-uses-private-join-and-compute.patch
+Patch610:       masked_domain_list-flatbuffers.patch
 
 
 
@@ -296,7 +306,6 @@ Patch1072:      node-system-icu.patch
 Patch1073:      system-nasm.patch
 Patch1074:      no-zlib-headers.patch
 Patch1077:      system-wayland.patch
-Patch1078:      system-simdutf.patch
 Patch1079:      system-libm.patch
 Patch1085:      webp-no-sharpyuv.patch
 Patch1086:      zip_internal-missing-uLong-Z_DEFAULT_COMPRESSION.patch
@@ -308,6 +317,8 @@ Patch1092:      fix-system-highway.patch
 Patch1093:      system-sqlite.patch
 Patch1094:      absl_strings-missing-headers.patch
 Patch1095:      system-zstd-in-node.patch
+Patch1036:      node-version-ck.patch
+Patch1037:      system-dragonbox.patch
 
 
 # PATCHES to fix interaction with third-party software
@@ -331,18 +342,14 @@ Patch2059:      disable-FFmpegAllowLists.patch
 Patch2060:      chromium-129-disable-H.264-video-parser-during-demuxing.patch
 Patch2061:      private_aggregation_host-uint128.patch
 Patch2062:      wayland_version.patch
-Patch2063:      fix-building-with-pipewire-1.3.82.patch
 #Conditionably disable feature which requires new highway
 Patch2064:      blink-shape_result-highway.patch
-%if %{with system_llhttp} && %{with llhttp_93}
-Patch2065:      node-llhttp9.3.patch
-%else
-Source2065:      node-llhttp9.3.patch
-%endif
+#Patch2065:      node-llhttp9.3.patch
+Patch2066:      angle-BlobCache-Success.patch
+Patch2067:      partition_alloc-strict-aliasing.patch
+Patch2068:      llhttp-lax-vector-conversions.patch
 
 # PATCHES that should be submitted upstream verbatim or near-verbatim
-# Fix blink nodestructor
-Patch3023:      electron-13-blink-gcc-ambiguous-nodestructor.patch
 Patch3027:      electron-16-freetype-visibility-list.patch
 Patch3028:      electron-16-third_party-symbolize-missing-include.patch
 # From https://git.droidware.info/wchen342/ungoogled-chromium-fedora
@@ -352,39 +359,29 @@ Patch3096:      remove-date-reproducible-builds.patch
 Patch3133:      swiftshader-llvm18-LLVMReactor-getInt8PtrTy.patch
 Patch3134:      swiftshader-llvm18-LLVMJIT-Host.patch
 Patch3135:      swiftshader-llvm18-LLVMJIT-CodeGenOptLevel.patch
-Patch3138:      distributed_point_functions-aes_128_fixed_key_hash-missing-StrCat.patch
 Patch3144:      mt21_util-flax-vector-conversions.patch
-Patch3151:      distributed_point_functions-evaluate_prg_hwy-signature.patch
 Patch3174:      swiftshader-llvm19-LLVMJIT-getHostCPUFeatures.patch
 Patch3175:      swiftshader-llvm19-LLVMReactor-incomplete-Module.patch
 Patch3185:      bsc1224178-font-gc.patch
 Patch3186:      string_view-incomplete-CodePointIterator.patch
 Patch3187:      swiftshader-llvm20-absoluteSymbols.patch
-Patch3188:      fix-build-without-pdf.patch
-Patch3189:      raw_ptr-fpermissive.patch
-Patch3190:      exception_state-constexpr-initializer.patch
-Patch3191:      resource_response-Wchanges-meaning.patch
-Patch3192:      perfetto-ThreadTrack-Current-null-dereference.patch
-Patch3193:      resource-Wchanges-meaning.patch
-Patch3194:      string_truncator-convert.patch
-Patch3195:      object_paint_properties-explicit-specialization-in-non-namespace-scope.patch
-Patch3196:      css_shape_value-constructor.patch
-Patch3197:      xml_document_parser-Wmissing-template-keyword.patch
 Patch3198:      ax_platform_node_id-fpermissive.patch
-Patch3199:      style_scope-unqualified-To.patch
-Patch3200:      content_browser_client-incomplete-WebUIController.patch
-Patch3201:      fix-build-without-video-effects.patch
-Patch3202:      media_session_uma_helper-missing-optional.patch
-Patch3203:      picture_in_picture_window_manager_uma_helper-missing-optional.patch
 Patch3204:      browser_process_impl-fix-safe_browsing_mode-0.patch
-Patch3205:      plugin_utils-build-without-electron_extensions.patch
-Patch3206:      string-hasher-flax-vector-conversions.patch
-Patch3207:      unexportable_key_service_impl-Wlto-type-mismatch.patch
-Patch3208:      to_vector-std-projected-gcc119888.patch
 Patch3209:      file_dialog-missing-uint32_t.patch
-Patch3211:      html_permission_element_strings_map-reproducible.patch
-Patch3212:      extensions-common-assert.patch
-Patch3213:      python3.14-nodedownload-FancyURLopener.patch
+Patch3210:      webrtc-138-Wchanges-meaning.patch
+Patch3211:      sandboxed_vfs_file_impl-missing-memset.patch
+Patch3212:      lock_impl_posix-pthread_mutexattr_setprotocol-conflicting.patch
+Patch3213:      node-kParentNodeTag-constexpr-initializer.patch
+Patch3214:      pickle_traits-kIndexSequence-constexpr-initializer.patch
+Patch3215:      offscreen_canvas-incomplete-LayoutLocale.patch
+Patch3216:      identity_request_account-incomplete-IdentityProviderData.patch
+Patch3217:      xr_webgl_swap_chain-incomplete-StaticBitmapImage.patch
+Patch3218:      json_to_struct-fixed_flat_map-conflicting-declaration.patch
+Patch3219:      webgl_rendering_context_webgpu_base-incomplete-StaticBitmapImage.patch
+Patch3220:      picture_in_picture_events_info-string-constexpr.patch
+Patch3221:      event_record-optional-initializer.patch
+Patch3222:      ANNOTATE_CONTIGUOUS_CONTAINER-Wodr.patch
+Patch3223:      v8-simd-flax-vector-conversions.patch
 
 # Patches to re-enable upstream force disabled features.
 # There's no sense in submitting them but they may be reused as-is by other packagers.
@@ -398,6 +395,7 @@ BuildRequires:  c-ares-devel >= 1.21
 BuildRequires:  cmake(Crc32c)
 BuildRequires:  double-conversion-devel
 BuildRequires:  desktop-file-utils
+BuildRequires:  dragonbox-devel
 %if 0%{?fedora}
 BuildRequires:  flatbuffers-compiler
 %endif
@@ -416,21 +414,14 @@ BuildRequires:  libatomic
 %if %{with system_ada}
 BuildRequires:  cmake(ada)
 %endif
-%if %{with aom_38}
+%if %{with system_aom}
 BuildRequires:  libaom-devel >= 3.8~
 %endif
-# requires AV1E_SET_QUANTIZER_ONE_PASS
-BuildRequires:  libaom-devel >= 3.7~
 BuildRequires:  libbsd-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libXNVCtrl-devel
 %if %{with system_llhttp}
-BuildRequires:  llhttp-devel >= 8
-%if %{with llhttp_93}
 BuildRequires:  llhttp-devel >= 9.3
-%else
-BuildRequires:  llhttp-devel < 9.3
-%endif
 %endif
 %if %{with swiftshader} && %{without subzero}
 BuildRequires:  llvm-devel >= 16
@@ -572,7 +563,15 @@ BuildRequires:  pkgconfig(libbrotlienc)
 BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libdrm)
+%if %{with highway_1_1}
+# requires SumsOf2
+BuildRequires:  pkgconfig(libhwy) >= 1.1
+%endif
 BuildRequires:  pkgconfig(libhwy) >= 1
+%if %{with nghttp_50}
+# needs nghttp2_option_set_no_rfc9113_leading_and_trailing_ws_validation
+BuildRequires:  pkgconfig(libnghttp2) >= 1.50
+%endif
 BuildRequires:  pkgconfig(libnghttp2)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpci)
@@ -638,12 +637,17 @@ BuildRequires:  libjpeg-turbo-devel
 # requires VP9E_SET_QUANTIZER_ONE_PASS
 BuildRequires:  pkgconfig(vpx) >= 1.13~
 %endif
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
+%if 0%{?suse_version} >= 1650 || 0%{?fedora}
 BuildRequires:  gcc >= 14
 BuildRequires:  gcc-c++ >= 14
 %else
+%if 0%{?suse_version} >= 1550
+BuildRequires:  gcc15-PIE
+BuildRequires:  gcc15-c++
+%else
 BuildRequires:  gcc14-PIE
 BuildRequires:  gcc14-c++
+%endif
 %endif
 
 %if %{with pipewire}
@@ -729,19 +733,14 @@ providing better integration with desktop environments such as KDE.
 test $(grep ^node_module_version electron/build/args/all.gn | sed 's/.* = //') = %abi_version
 
 
-#These ones depend on an aom nightly, reverting unconditionally
-patch -R -p1 < %SOURCE411
-patch -R -p1 < %SOURCE410
 
-%if %{without aom_38}
-patch -R -p1 < %SOURCE412
-patch -R -p1 < %SOURCE413
-%endif
+
 
 %if %{without cares_21}
 patch -R -p1 < %SOURCE472
 patch -R -p1 < %SOURCE471
 patch -R -p1 < %SOURCE470
+patch -R -p1 < %SOURCE473
 %endif
 
 
@@ -751,12 +750,20 @@ patch -R -p1 < %SOURCE403
 patch -R -p1 < %SOURCE402
 patch -R -p1 < %SOURCE400
 patch -R -p1 < %SOURCE401
+patch -R -p1 < %SOURCE404
 %endif
 
 %if %{without spirv_2024}
 patch -R -p1 < %SOURCE480
 %endif
 
+%if %{without nghttp_50}
+patch -R -p1 < %SOURCE490
+%endif
+
+%if %{without highway_1_1}
+patch -R -p1 < %SOURCE500
+%endif
 
 
 # This one just removes compatibility with old abseil and does not add anything, reverting unconditionally.
@@ -807,7 +814,6 @@ gn_system_libraries=(
     highway
     icu
     jsoncpp
-    libaom
     libdrm
     libjpeg
     libpng
@@ -855,6 +861,10 @@ gn_system_libraries+=(
 %endif
 
 
+%if %{with system_aom}
+find third_party/libaom -type f ! -name "*.gn" -a ! -name "*.gni" -delete
+gn_system_libraries+=( libaom )
+%endif
 
 
 
@@ -964,6 +974,12 @@ ARCH_FLAGS="$(echo $ARCH_FLAGS | sed -e 's/ -fexceptions / /g')"
 
 # for wayland
 export CXXFLAGS="${ARCH_FLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommon"
+
+#no pkgconfig, only cmake. add the include path manually
+%if 0%{?fedora}
+export CXXFLAGS="${CXXFLAGS} -I$(echo /usr/include/dragonbox-*)"
+%endif
+
 export CFLAGS="${CXXFLAGS}"
 
 # Google has a bad coding style, using a macro `NOTREACHED()` that is not properly detected by GCC
@@ -980,6 +996,9 @@ export CXXFLAGS="${CXXFLAGS} -Wno-template-id-cdtor -Wno-non-virtual-dtor"
 
 # REDUCE DEBUG for C++ as it gets TOO large due to “heavy hemplate use in Blink”. See symbol_level below and chromium-102-compiler.patch
 export CXXFLAGS="$(echo ${CXXFLAGS} | sed -e 's/-g / /g' -e 's/-g$//g')"
+
+#Fix build with abseil < 2025
+export CXXFLAGS="$CXXFLAGS -Dabsl_nullable= -Dabsl_nonnull= "
 
 %ifarch %ix86 %arm
 export CFLAGS="$(echo ${CFLAGS} | sed -e 's/-g /-g1 /g' -e 's/-g$/-g1/g')"
@@ -1003,18 +1022,26 @@ export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
 %endif #ifarch ix86 arm
 
 
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150700 || 0%{?fedora}
+%if 0%{?suse_version} >= 1650 || 0%{?fedora}
 export CC=gcc
 export CXX=g++
 export AR=gcc-ar
 export NM=gcc-nm
 export RANLIB=gcc-ranlib
 %else
+%if 0%{?suse_version} >= 1550
+export CC=gcc-15
+export CXX=g++-15
+export AR=gcc-ar-15
+export NM=gcc-nm-15
+export RANLIB=gcc-ranlib-15
+%else
 export CC=gcc-14
 export CXX=g++-14
 export AR=gcc-ar-14
 export NM=gcc-nm-14
 export RANLIB=gcc-ranlib-14
+%endif
 %endif
 
 
@@ -1062,6 +1089,8 @@ myconf_gn+=' electron_vendor_version="microsoft-build:Electron for openSUSE"'
 myconf_gn+=" custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" use_custom_libcxx=false"
+myconf_gn+=' use_safe_libstdcxx=false'
+myconf_gn+=' use_llvm_libatomic=false'
 %ifarch %ix86
 myconf_gn+=" host_cpu=\"x86\""
 %endif
@@ -1184,12 +1213,15 @@ myconf_gn+=" enable_vr=false"
 myconf_gn+=" enable_reporting=false"
 myconf_gn+=" build_with_tflite_lib=false"
 myconf_gn+=" build_tflite_with_xnnpack=false"
+myconf_gn+=' build_tflite_with_opencl=false'
 myconf_gn+=" safe_browsing_mode=0"
+myconf_gn+=' safe_browsing_use_unrar=false'
 myconf_gn+=" enable_captive_portal_detection=false"
 myconf_gn+=" enable_browser_speech_service=false"
 myconf_gn+=" enable_speech_service=false"
 myconf_gn+=" enable_screen_ai_service=false"
 myconf_gn+=' enable_screen_ai_browsertests=false'
+myconf_gn+=' enable_constraints=false'
 myconf_gn+=" include_transport_security_state_preload_list=false"
 myconf_gn+=" enable_web_speech=false"
 myconf_gn+=" chrome_wide_echo_cancellation_supported=false"
@@ -1229,6 +1261,7 @@ myconf_gn+=' enable_on_device_translation=false'
 myconf_gn+=' enable_session_service=false'
 myconf_gn+=' enterprise_client_certificates=false'
 myconf_gn+=' enterprise_data_controls=false'
+myconf_gn+=' enterprise_telomere_reporting=false'
 
 
 
@@ -1237,8 +1270,10 @@ myconf_gn+=' enterprise_data_controls=false'
 myconf_gn+=' enable_rust=false'
 myconf_gn+=' enable_rust_png=false'
 myconf_gn+=' enable_chromium_prelude=false'
+myconf_gn+=' rtc_rusty_base64=false'
+myconf_gn+=' v8_enable_temporal_support=false'
 
-myconf_gn+=' chrome_root_store_cert_management_ui=false'
+#myconf_gn+=' chrome_root_store_cert_management_ui=false'
 myconf_gn+=' use_kerberos=false'
 
 

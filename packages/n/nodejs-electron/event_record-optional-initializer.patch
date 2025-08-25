@@ -1,0 +1,11 @@
+--- src/services/network/public/cpp/ad_auction/event_record.cc.orig	2025-08-15 17:32:28.601405234 +0200
++++ src/services/network/public/cpp/ad_auction/event_record.cc	2025-08-16 10:18:19.106421517 +0200
+@@ -49,7 +49,7 @@ std::optional<std::vector<url::Origin>>
+   const auto it = dict.find("eligible-origins");
+   if (it == dict.end()) {
+     // "eligible-origins" is optional, so just return an empty list.
+-    return {{}};
++    return std::optional<std::vector<url::Origin>>(std::in_place);
+   }
+   const net::structured_headers::ParameterizedMember& parameterized_member =
+       it->second;

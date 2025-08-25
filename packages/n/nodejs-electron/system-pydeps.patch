@@ -119,8 +119,8 @@ Unbundle assorted lexing/parsing/transpiling tools written in Python.
 --- src/mojo/public/tools/bindings/mojom.gni.orig	2025-04-11 12:05:21.530272509 +0200
 +++ src/mojo/public/tools/bindings/mojom.gni	2025-04-11 20:56:50.579500868 +0200
 @@ -802,7 +802,7 @@ template("mojom") {
-       remote_worker = "large"
-       custom_processor = "mojom_parser"
+ 
+     action("${parser_target_name}_action") {
        script = mojom_parser_script
 -      inputs = mojom_parser_sources + ply_sources + [ build_metadata_filename ]
 +      inputs = mojom_parser_sources + [ build_metadata_filename ]

@@ -21,9 +21,9 @@ Remove this dead code which brings a dependency on rustc
      # TODO(358041220): There is a circular_dependency of `cookie_controls:impl` module
      # with "//chrome/browser" due to the inclusion of //c/b/policy/profile_policy_connector.h
 @@ -1935,7 +1934,6 @@ static_library("browser") {
-     "//chrome/browser/search_engine_choice",
-     "//chrome/browser/search_engine_choice:impl",
      "//chrome/browser/search_engines",
+     "//chrome/browser/send_tab_to_self",
+     "//chrome/browser/serial",
 -    "//chrome/browser/share",
      "//chrome/browser/sharing:buildflags",
      "//chrome/browser/signin",
@@ -61,7 +61,7 @@ Remove this dead code which brings a dependency on rustc
 -    "//components/qr_code_generator:bitmap_generator",
      "//components/query_parser",
      "//components/reading_list/core",
-     "//components/reading_list/features:flags",
+     "//components/renderer_context_menu",
 --- src/chrome/test/BUILD.gn.orig	2025-04-11 12:13:12.932314099 +0200
 +++ src/chrome/test/BUILD.gn	2025-04-11 19:53:28.092504094 +0200
 @@ -2163,7 +2163,6 @@ if (!is_android) {
@@ -78,8 +78,8 @@ Remove this dead code which brings a dependency on rustc
        "//components/proxy_config",
 -      "//components/qr_code_generator:bitmap_generator",
        "//components/reading_list/core",
-       "//components/reading_list/features:flags",
        "//components/resources",
+       "//components/safe_browsing:buildflags",
 @@ -6648,7 +6646,6 @@ test("unit_tests") {
      "//components/privacy_sandbox/privacy_sandbox_attestations:test_support",
      "//components/privacy_sandbox/privacy_sandbox_attestations/proto:proto",
@@ -98,7 +98,7 @@ Remove this dead code which brings a dependency on rustc
      "//third_party/zlib/google:compression_utils",
 @@ -8115,8 +8111,6 @@ test("unit_tests") {
        "//chrome/browser/upgrade_detector:build_state_observer",
-       "//chrome/browser/user_annotations",
+       "//chrome/browser/web_applications:features",
        "//chrome/browser/web_applications:web_applications_test_support",
 -      "//chrome/browser/webauthn:test_support",
 -      "//chrome/browser/webauthn/proto",

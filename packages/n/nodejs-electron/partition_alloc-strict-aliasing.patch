@@ -1,0 +1,51 @@
+#0  partition_alloc::internal::SlotSpanMetadata<(partition_alloc::internal::MetadataKind)0>::Free(unsigned long, partition_alloc::PartitionRoot*)::{lambda()#1}::operator()() const (__closure=<optimized out>, __closure=<optimized out>)
+    at ../../base/allocator/partition_allocator/src/partition_alloc/partition_page.h:805
+#1  partition_alloc::internal::SlotSpanMetadata<(partition_alloc::internal::MetadataKind)0>::Free (this=<optimized out>, slot_start=<optimized out>,
+    root=<optimized out>, this=<optimized out>, slot_start=<optimized out>, root=<optimized out>)
+    at ../../base/allocator/partition_allocator/src/partition_alloc/partition_page.h:805
+#2  partition_alloc::PartitionRoot::FreeInSlotSpan (this=<optimized out>, slot_start=<optimized out>, slot_span=<optimized out>, this=<optimized out>,
+    slot_start=<optimized out>, slot_span=<optimized out>) at ../../base/allocator/partition_allocator/src/partition_alloc/partition_root.h:1607
+#3  partition_alloc::PartitionRoot::RawFree (this=<optimized out>, slot_start=<optimized out>, slot_span=<optimized out>, this=<optimized out>,
+    slot_start=<optimized out>, slot_span=<optimized out>) at ../../base/allocator/partition_allocator/src/partition_alloc/partition_root.h:1673
+#4  partition_alloc::PartitionRoot::RawFreeWithThreadCache (this=<optimized out>, slot_start=<optimized out>, slot_start_ptr=<optimized out>,
+    slot_span=<optimized out>, this=<optimized out>, slot_start=<optimized out>, slot_start_ptr=<optimized out>, slot_span=<optimized out>)
+    at ../../base/allocator/partition_allocator/src/partition_alloc/partition_root.h:1740
+#5  partition_alloc::PartitionRoot::FreeNoHooksImmediate (this=<optimized out>, object=<optimized out>, slot_span=<optimized out>,
+    slot_start=<optimized out>, this=<optimized out>, object=<optimized out>, slot_span=<optimized out>, slot_start=<optimized out>)
+    at ../../base/allocator/partition_allocator/src/partition_alloc/partition_root.h:1598
+#6  partition_alloc::PartitionRoot::FreeInline<(partition_alloc::internal::FreeFlags)2> (this=<optimized out>, object=<optimized out>,
+    this=<optimized out>, object=<optimized out>) at ../../base/allocator/partition_allocator/src/partition_alloc/partition_root.h:1514
+#7  partition_alloc::PartitionRoot::FreeInlineInUnknownRoot<(partition_alloc::internal::FreeFlags)2> (object=0x5a000024fa0)
+    at ../../base/allocator/partition_allocator/src/partition_alloc/partition_root.h:1446
+#8  allocator_shim::internal::PartitionAllocFunctionsInternal<(partition_alloc::internal::AllocFlags)16, (partition_alloc::internal::FreeFlags)2>::Free (
+    object=0x5a000024fa0, context=<optimized out>)
+    at ../../base/allocator/partition_allocator/src/partition_alloc/shim/allocator_shim_default_dispatch_to_partition_alloc.cc:434
+#9  0x0000555555561755 in std::__new_allocator<char>::deallocate (this=0x7fffffffdb10, __p=<optimized out>, __n=<optimized out>)
+    at /usr/include/c++/15/bits/new_allocator.h:172
+#10 std::allocator<char>::deallocate (this=0x7fffffffdb10, __p=<optimized out>, __n=<optimized out>) at /usr/include/c++/15/bits/allocator.h:215
+#11 std::allocator_traits<std::allocator<char> >::deallocate (__a=..., __p=<optimized out>, __n=<optimized out>)
+    at /usr/include/c++/15/bits/alloc_traits.h:649
+#12 std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_destroy (this=0x7fffffffdb10, __size=<optimized out>)
+    at /usr/include/c++/15/bits/basic_string.h:305
+#13 std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_dispose (this=0x7fffffffdb10)
+    at /usr/include/c++/15/bits/basic_string.h:299
+#14 std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string (this=<optimized out>, this=<optimized out>)
+    at /usr/include/c++/15/bits/basic_string.h:896
+#15 base::CommandLine::AppendSwitchesAndArguments (this=<optimized out>, argv=...) at ../../base/command_line.cc:657
+#16 base::CommandLine::InitFromArgv (this=<optimized out>, argv=...) at ../../base/command_line.cc:333
+#17 base::CommandLine::InitFromArgv (this=<optimized out>, argc=<optimized out>, argv=<optimized out>) at ../../base/command_line.cc:324
+#18 base::CommandLine::Init (argc=<optimized out>, argv=<optimized out>) at ../../base/command_line.cc:275
+#19 base::CommandLine::Init (argc=<optimized out>, argv=<optimized out>) at ../../base/command_line.cc:262
+#20 main (argc=<optimized out>, argv=<optimized out>) at ../../components/url_formatter/spoof_checks/top_domains/top_domain_generator.cc:88
+
+
+--- src/base/allocator/partition_allocator/src/partition_alloc/BUILD.gn.orig	2025-08-15 17:32:21.517406564 +0200
++++ src/base/allocator/partition_allocator/src/partition_alloc/BUILD.gn	2025-08-16 16:11:37.214993083 +0200
+@@ -266,6 +266,7 @@ if (is_clang_or_gcc) {
+   config("partition_alloc_implementation") {
+     # See also: `partition_alloc_base/component_export.h`
+     defines = [ "IS_PARTITION_ALLOC_IMPL" ]
++    cflags = ["-fno-strict-aliasing"]
+   }
+ 
+   config("partition_alloc_base_implementation") {

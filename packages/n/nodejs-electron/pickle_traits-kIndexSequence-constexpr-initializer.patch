@@ -1,0 +1,11 @@
+--- src/net/base/pickle_traits.h.orig	2025-08-15 17:32:28.209405309 +0200
++++ src/net/base/pickle_traits.h	2025-08-15 23:39:04.010398326 +0200
+@@ -563,7 +563,7 @@ struct PickleTraits<T> {
+   }
+ 
+   static constexpr std::make_index_sequence<std::tuple_size_v<T>>
+-      kIndexSequence;
++      kIndexSequence {};
+ };
+ 
+ // bool is treated specially by base::Pickle.

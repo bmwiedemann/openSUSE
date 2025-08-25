@@ -101,9 +101,9 @@ Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
    if ((is_linux || is_chromeos) && use_dbus) {
      deps += [ "//dbus" ]
    }
--- src/content/browser/browser_interface_binders.cc.orig	2025-04-11 12:05:19.980351905 +0200
-+++ src/content/browser/browser_interface_binders.cc	2025-04-11 19:48:15.944587282 +0200
-@@ -61,7 +61,9 @@
+--- src/content/browser/browser_interface_binders.cc.orig	2025-07-19 11:32:34.193979827 +0200
++++ src/content/browser/browser_interface_binders.cc	2025-07-20 14:51:05.789212478 +0200
+@@ -62,7 +62,9 @@
  #include "content/browser/renderer_host/render_process_host_impl.h"
  #include "content/browser/service_worker/service_worker_host.h"
  #include "content/browser/shared_storage/shared_storage_worklet_host.h"
@@ -113,7 +113,7 @@ Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
  #include "content/browser/storage_access/storage_access_handle.h"
  #include "content/browser/tracing/trace_report/trace_report.mojom.h"
  #include "content/browser/tracing/trace_report/trace_report_internals_ui.h"
-@@ -100,7 +102,9 @@
+@@ -101,7 +103,9 @@
  #include "media/mojo/mojom/media_metrics_provider.mojom.h"
  #include "media/mojo/mojom/media_player.mojom.h"
  #include "media/mojo/mojom/remoting.mojom.h"
@@ -123,7 +123,7 @@ Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
  #include "media/mojo/mojom/video_decode_perf_history.mojom.h"
  #include "media/mojo/mojom/video_encoder_metrics_provider.mojom.h"
  #include "media/mojo/mojom/webrtc_video_perf.mojom.h"
-@@ -206,7 +210,9 @@
+@@ -209,7 +213,9 @@
  #else  // BUILDFLAG(IS_ANDROID)
  #include "content/browser/direct_sockets/direct_sockets_service_impl.h"
  #include "media/mojo/mojom/renderer_extensions.mojom.h"
@@ -132,7 +132,7 @@ Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
 +#endif
  #include "third_party/blink/public/mojom/hid/hid.mojom.h"
  #include "third_party/blink/public/mojom/installedapp/installed_app_provider.mojom.h"
- #include "third_party/blink/public/mojom/serial/serial.mojom.h"
+ #endif  // BUILDFLAG(IS_ANDROID)
 @@ -865,11 +871,13 @@ void PopulateFrameBinders(RenderFrameHos
    map->Add<blink::mojom::SharedWorkerConnector>(
        base::BindRepeating(&BindSharedWorkerConnector, base::Unretained(host)));
@@ -147,7 +147,7 @@ Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
  
    map->Add<blink::mojom::SpeechSynthesis>(base::BindRepeating(
        &RenderFrameHostImpl::GetSpeechSynthesis, base::Unretained(host)));
-@@ -1197,6 +1205,7 @@ void PopulateBinderMapWithContext(
+@@ -1194,6 +1202,7 @@ void PopulateBinderMapWithContext(
  #if !BUILDFLAG(IS_ANDROID)
    map->Add<blink::mojom::DirectSocketsService>(
        base::BindRepeating(&DirectSocketsServiceImpl::CreateForFrame));
@@ -155,7 +155,7 @@ Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
    map->Add<media::mojom::SpeechRecognitionContext>(base::BindRepeating(
        &EmptyBinderForFrame<media::mojom::SpeechRecognitionContext>));
    map->Add<media::mojom::SpeechRecognitionClientBrowserInterface>(
-@@ -1208,6 +1217,7 @@ void PopulateBinderMapWithContext(
+@@ -1205,6 +1214,7 @@ void PopulateBinderMapWithContext(
    map->Add<media::mojom::MediaPlayerObserverClient>(base::BindRepeating(
        &EmptyBinderForFrame<media::mojom::MediaPlayerObserverClient>));
  #endif
@@ -163,13 +163,11 @@ Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
  #if BUILDFLAG(ENABLE_UNHANDLED_TAP)
    map->Add<blink::mojom::UnhandledTapNotifier>(base::BindRepeating(
        &EmptyBinderForFrame<blink::mojom::UnhandledTapNotifier>));
-diff --git a/chromium/content/browser/browser_main_loop.cc b/chromium/content/browser/browser_main_loop.cc
-index aaa752bec61..b3a1ed50d20 100644
---- a/content/browser/browser_main_loop.cc
-+++ b/content/browser/browser_main_loop.cc
-@@ -87,7 +87,9 @@
- #include "content/browser/screenlock_monitor/screenlock_monitor.h"
+--- src/content/browser/browser_main_loop.cc.orig	2025-07-19 11:32:34.193979827 +0200
++++ src/content/browser/browser_main_loop.cc	2025-07-20 14:51:05.789212478 +0200
+@@ -91,7 +91,9 @@
  #include "content/browser/screenlock_monitor/screenlock_monitor_device_source.h"
+ #include "content/browser/service_host/utility_process_host.h"
  #include "content/browser/sms/sms_provider.h"
 +#if BUILDFLAG(ENABLE_WEB_SPEECH)
  #include "content/browser/speech/speech_recognition_manager_impl.h"
@@ -177,7 +175,7 @@ index aaa752bec61..b3a1ed50d20 100644
  #include "content/browser/speech/tts_controller_impl.h"
  #include "content/browser/startup_data_impl.h"
  #include "content/browser/startup_task_runner.h"
-@@ -1114,12 +1116,14 @@ void BrowserMainLoop::ShutdownThreadsAndCleanUp() {
+@@ -1162,12 +1164,14 @@ void BrowserMainLoop::ShutdownThreadsAnd
      midi_service_->Shutdown();
    }
  
@@ -192,7 +190,7 @@ index aaa752bec61..b3a1ed50d20 100644
  
    TtsControllerImpl::GetInstance()->Shutdown();
  
-@@ -1364,13 +1368,14 @@ void BrowserMainLoop::PostCreateThreadsImpl() {
+@@ -1405,13 +1409,14 @@ void BrowserMainLoop::PostCreateThreadsI
      media_stream_manager_ =
          std::make_unique<MediaStreamManager>(audio_system_.get());
    }
@@ -235,18 +233,16 @@ index 3a2e713ccc3..6af5afde20e 100644
        {wrf::EnableScriptedSpeechSynthesis, switches::kDisableSpeechSynthesisAPI,
         false},
        {wrf::EnableSharedWorker, switches::kDisableSharedWorkers, false},
-diff --git a/chromium/media/BUILD.gn b/chromium/media/BUILD.gn
-index 01e0910666e..6ce78127e3f 100644
---- src/media/BUILD.gn	2025-04-11 12:05:21.244153535 +0200
-+++ src/media/BUILD.gn	2025-04-11 19:48:51.764578046 +0200
+--- src/media/BUILD.gn.orig	2025-07-19 11:32:35.633979930 +0200
++++ src/media/BUILD.gn	2025-07-20 14:51:07.213212462 +0200
 @@ -61,6 +61,7 @@ buildflag_header("media_buildflags") {
      "ENABLE_MSE_MPEG2TS_STREAM_PARSER=$enable_mse_mpeg2ts_stream_parser",
      "PLATFORM_HAS_OPTIONAL_HEVC_DECODE_SUPPORT=$platform_has_optional_hevc_decode_support",
      "PLATFORM_HAS_OPTIONAL_HEVC_ENCODE_SUPPORT=$platform_has_optional_hevc_encode_support",
 +    "ENABLE_WEB_SPEECH=$enable_web_speech",
      "USE_ARC_PROTECTED_MEDIA=$use_arc_protected_media",
-     "USE_CHROMEOS_MEDIA_ACCELERATION=$use_vaapi||$use_v4l2_codec",
      "USE_CHROMEOS_PROTECTED_AV1=$use_chromeos_protected_av1",
+     "USE_CHROMEOS_PROTECTED_MEDIA=$use_chromeos_protected_media",
 diff --git a/chromium/media/media_options.gni b/chromium/media/media_options.gni
 index 5667cac61f3..48ea95a99a6 100644
 --- a/media/media_options.gni

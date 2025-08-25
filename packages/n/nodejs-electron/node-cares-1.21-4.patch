@@ -1,0 +1,35 @@
+From 2be863be08ff9f16eae6bb907388c354c55c3bfc Mon Sep 17 00:00:00 2001
+From: Ethan Arrowood <ethan@arrowood.dev>
+Date: Mon, 2 Jun 2025 09:29:36 -0600
+Subject: [PATCH] dns: fix dns query cache implementation
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+PR-URL: https://github.com/nodejs/node/pull/58404
+Refs: https://github.com/nodejs/node/pull/57640
+Reviewed-By: Juan José Arboleda <soyjuanarbol@gmail.com>
+Reviewed-By: Matteo Collina <matteo.collina@gmail.com>
+Reviewed-By: Tim Perry <pimterry@gmail.com>
+---
+ src/cares_wrap.cc         | 6 +++---
+ test/parallel/test-dns.js | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/cares_wrap.cc b/src/cares_wrap.cc
+index 6290bcd37f3411..5016c3d51dac66 100644
+--- a/third_party/electron_node/src/cares_wrap.cc
++++ b/third_party/electron_node/src/cares_wrap.cc
+@@ -879,9 +879,9 @@ void ChannelWrap::Setup() {
+   }
+ 
+   /* We do the call to ares_init_option for caller. */
+-  const int optmask =
+-      ARES_OPT_FLAGS | ARES_OPT_TIMEOUTMS |
+-      ARES_OPT_SOCK_STATE_CB | ARES_OPT_TRIES;
++  const int optmask = ARES_OPT_FLAGS | ARES_OPT_TIMEOUTMS |
++                      ARES_OPT_SOCK_STATE_CB | ARES_OPT_TRIES |
++                      ARES_OPT_QUERY_CACHE;
+   r = ares_init_options(&channel_, &options, optmask);
+ 
+   if (r != ARES_SUCCESS) {

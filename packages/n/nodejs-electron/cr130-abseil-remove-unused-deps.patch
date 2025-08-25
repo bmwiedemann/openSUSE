@@ -1,6 +1,14 @@
---- src/third_party/abseil-cpp/BUILD.gn.orig	2025-04-11 12:05:22.125274194 +0200
-+++ src/third_party/abseil-cpp/BUILD.gn	2025-04-12 14:23:17.763743696 +0200
-@@ -84,13 +84,9 @@ group("absl_component_deps") {
+--- src/third_party/abseil-cpp/BUILD.gn.orig	2025-07-19 11:32:36.617980004 +0200
++++ src/third_party/abseil-cpp/BUILD.gn	2025-08-15 17:20:46.305540851 +0200
+@@ -62,7 +62,6 @@ group("absl_component_deps") {
+     "//third_party/abseil-cpp/absl/base",
+     "//third_party/abseil-cpp/absl/base:config",
+     "//third_party/abseil-cpp/absl/base:core_headers",
+-    "//third_party/abseil-cpp/absl/base:fast_type_id",
+     "//third_party/abseil-cpp/absl/base:log_severity",
+     "//third_party/abseil-cpp/absl/base:no_destructor",
+     "//third_party/abseil-cpp/absl/base:nullability",
+@@ -85,13 +84,9 @@ group("absl_component_deps") {
      "//third_party/abseil-cpp/absl/hash",
      "//third_party/abseil-cpp/absl/log:absl_check",
      "//third_party/abseil-cpp/absl/log:absl_log",
@@ -14,7 +22,23 @@
      "//third_party/abseil-cpp/absl/memory",
      "//third_party/abseil-cpp/absl/meta:type_traits",
      "//third_party/abseil-cpp/absl/numeric:bits",
-@@ -290,8 +286,6 @@ if (absl_build_tests) {
+@@ -102,7 +97,6 @@ group("absl_component_deps") {
+     "//third_party/abseil-cpp/absl/status",
+     "//third_party/abseil-cpp/absl/status:statusor",
+     "//third_party/abseil-cpp/absl/strings",
+-    "//third_party/abseil-cpp/absl/strings:charset",
+     "//third_party/abseil-cpp/absl/strings:cord",
+     "//third_party/abseil-cpp/absl/strings:has_ostream_operator",
+     "//third_party/abseil-cpp/absl/strings:str_format",
+@@ -125,7 +119,6 @@ group("absl_component_deps") {
+     "//third_party/abseil-cpp/absl/base:raw_logging_internal",
+ 
+     # absl internal utilities used by protobuf.
+-    "//third_party/abseil-cpp/absl/container:layout",
+   ]
+ 
+   if (is_component_build) {
+@@ -295,8 +288,6 @@ if (absl_build_tests) {
          "absl/container:flat_hash_set_test",
          "absl/container:hash_function_defaults_test",
          "absl/container:inlined_vector_test",
@@ -22,8 +46,8 @@
 -        "absl/container:node_hash_set_test",
          "absl/container:node_slot_policy_test",
          "absl/container:raw_hash_set_allocator_test",
-         "absl/container:raw_hash_set_test",
-@@ -300,11 +294,8 @@ if (absl_build_tests) {
+         "absl/container:raw_hash_set_resize_impl_test",
+@@ -305,11 +296,8 @@ if (absl_build_tests) {
          "absl/crc:crc_cord_state_test",
          "absl/crc:crc_memcpy_test",
          "absl/crc:non_temporal_memcpy_test",
@@ -35,7 +59,7 @@
          "absl/flags:flag_test",
          "absl/functional:any_invocable_test",
          "absl/functional:function_ref_test",
-@@ -328,7 +319,6 @@ if (absl_build_tests) {
+@@ -333,7 +321,6 @@ if (absl_build_tests) {
          "absl/log:vlog_is_on_test",
          "absl/log/internal:fnmatch_test",
          "absl/log/internal:stderr_log_sink_test",
@@ -43,7 +67,7 @@
          "absl/memory:memory_test",
          "absl/meta:type_traits_test",
          "absl/numeric:int128_test",
-@@ -336,7 +326,6 @@ if (absl_build_tests) {
+@@ -341,7 +328,6 @@ if (absl_build_tests) {
          "absl/profiling:periodic_sampler_test",
          "absl/random:distributions_test",
          "absl/random:mock_distributions_test",
@@ -51,7 +75,7 @@
          "absl/status:status_matchers_test",
          "absl/status:status_test",
          "absl/status:statusor_test",
-@@ -359,7 +348,6 @@ if (absl_build_tests) {
+@@ -367,7 +353,6 @@ if (absl_build_tests) {
          "absl/strings:has_absl_stringify_test",
          "absl/strings:has_ostream_operator_test",
          "absl/strings:match_test",
@@ -59,7 +83,7 @@
          "absl/strings:str_format_arg_test",
          "absl/strings:str_format_bind_test",
          "absl/strings:str_format_checker_test",
-@@ -370,11 +358,7 @@ if (absl_build_tests) {
+@@ -378,11 +363,7 @@ if (absl_build_tests) {
          "absl/strings:str_format_test",
          "absl/strings:str_replace_test",
          "absl/strings:string_view_test",
@@ -70,4 +94,4 @@
 -        "absl/synchronization:per_thread_sem_test",
          "absl/synchronization:waiter_test",
          "absl/time:time_test",
-         "absl/types:optional_test",
+         "absl/types:span_test",

@@ -1,0 +1,78 @@
+From 02a1505efcf7099498240e83327f7c0d71696f47 Mon Sep 17 00:00:00 2001
+From: Carlos Fuentes <me@metcoder.dev>
+Date: Thu, 5 Jun 2025 14:30:07 +0200
+Subject: [PATCH] http2: add lenient flag for RFC-9113
+
+PR-URL: https://github.com/nodejs/node/pull/58116
+Reviewed-By: Tim Perry <pimterry@gmail.com>
+Reviewed-By: Matteo Collina <matteo.collina@gmail.com>
+Reviewed-By: Benjamin Gruenbaum <benjamingr@gmail.com>
+---
+ doc/api/http2.md                              | 12 +++
+ lib/internal/http2/util.js                    | 10 ++-
+ src/node_http2.cc                             |  6 ++
+ src/node_http2_state.h                        |  1 +
+ .../test-http2-server-rfc-9113-client.js      | 80 ++++++++++++++++++
+ .../test-http2-server-rfc-9113-server.js      | 83 +++++++++++++++++++
+ .../test-http2-util-update-options-buffer.js  |  6 +-
+ 7 files changed, 196 insertions(+), 2 deletions(-)
+ create mode 100644 test/parallel/test-http2-server-rfc-9113-client.js
+ create mode 100644 test/parallel/test-http2-server-rfc-9113-server.js
+
+diff --git a/lib/internal/http2/util.js b/lib/internal/http2/util.js
+index 75312e5aa57c5f..396623d3b9d06f 100644
+--- a/third_party/electron_node/lib/internal/http2/util.js
++++ b/third_party/electron_node/lib/internal/http2/util.js
+@@ -229,7 +229,8 @@ const IDX_OPTIONS_MAX_SESSION_MEMORY = 8;
+ const IDX_OPTIONS_MAX_SETTINGS = 9;
+ const IDX_OPTIONS_STREAM_RESET_RATE = 10;
+ const IDX_OPTIONS_STREAM_RESET_BURST = 11;
+-const IDX_OPTIONS_FLAGS = 12;
++const IDX_OPTIONS_STRICT_HTTP_FIELD_WHITESPACE_VALIDATION = 12;
++const IDX_OPTIONS_FLAGS = 13;
+ 
+ function updateOptionsBuffer(options) {
+   let flags = 0;
+@@ -293,6 +294,13 @@ function updateOptionsBuffer(options) {
+     optionsBuffer[IDX_OPTIONS_STREAM_RESET_BURST] =
+       MathMax(1, options.streamResetBurst);
+   }
++
++  if (typeof options.strictFieldWhitespaceValidation === 'boolean') {
++    flags |= (1 << IDX_OPTIONS_STRICT_HTTP_FIELD_WHITESPACE_VALIDATION);
++    optionsBuffer[IDX_OPTIONS_STRICT_HTTP_FIELD_WHITESPACE_VALIDATION] =
++      options.strictFieldWhitespaceValidation === true ? 0 : 1;
++  }
++
+   optionsBuffer[IDX_OPTIONS_FLAGS] = flags;
+ }
+ 
+diff --git a/src/node_http2.cc b/src/node_http2.cc
+index 449ecdba807945..8e51129930f2cd 100644
+--- a/third_party/electron_node/src/node_http2.cc
++++ b/third_party/electron_node/src/node_http2.cc
+@@ -159,6 +159,12 @@ Http2Options::Http2Options(Http2State* http2_state, SessionType type) {
+         buffer[IDX_OPTIONS_PEER_MAX_CONCURRENT_STREAMS]);
+   }
+ 
++  // Validate headers in accordance to RFC-9113
++  if (flags & (1 << IDX_OPTIONS_STRICT_HTTP_FIELD_WHITESPACE_VALIDATION)) {
++    nghttp2_option_set_no_rfc9113_leading_and_trailing_ws_validation(
++        option, buffer[IDX_OPTIONS_STRICT_HTTP_FIELD_WHITESPACE_VALIDATION]);
++  }
++
+   // The padding strategy sets the mechanism by which we determine how much
+   // additional frame padding to apply to DATA and HEADERS frames. Currently
+   // this is set on a per-session basis, but eventually we may switch to
+diff --git a/src/node_http2_state.h b/src/node_http2_state.h
+index 2957a2827f370e..914ad011e021f1 100644
+--- a/third_party/electron_node/src/node_http2_state.h
++++ b/third_party/electron_node/src/node_http2_state.h
+@@ -60,6 +60,7 @@ namespace http2 {
+     IDX_OPTIONS_MAX_SETTINGS,
+     IDX_OPTIONS_STREAM_RESET_RATE,
+     IDX_OPTIONS_STREAM_RESET_BURST,
++    IDX_OPTIONS_STRICT_HTTP_FIELD_WHITESPACE_VALIDATION,
+     IDX_OPTIONS_FLAGS
+   };
+ 

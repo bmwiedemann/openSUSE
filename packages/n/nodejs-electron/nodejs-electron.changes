@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Sat Aug 23 18:11:15 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Update to 37.3.1 (bsc#1248464)
+  * Chromium 138.0.7204.235
+  * Node 22.18.0
+  * V8 13.8
+  * Added scriptURL property to ServiceWorkerMain.
+  * Added a CSS rule for smooth corners.
+  * Utility Process unhandled rejection behavior change
+  * process.exit() kills utility process synchronously
+  * WebUSB and WebSerial Blocklist Support
+  * Removed: null value for session property in ProtocolResponse
+  * BrowserWindow.IsVisibleOnAllWorkspaces() on Linux
+  * see https://www.electronjs.org/blog/electron-37-0
+    and https://github.com/electron/electron/releases/tag/v37.0.0 for more
+- Leap 15.6: use bundled aom
+  * drop aom3.10-AV1E_SET_MAX_CONSEC_FRAME_DROP_MS_CBR.patch
+  * drop aom3.10-AV1E_SET_AUTO_TILES.patch
+  * drop webrtc-aom3.8-AV1E_SET_MAX_CONSEC_FRAME_DROP_CBR.patch
+  * drop webrtc-aom3.8-AV1E_SET_MAX_CONSEC_FRAME_DROP_CBR-2.patch
+- Fedora <=42: use bundled llhttp
+- Fedora: use bundled simdutf
+- Merge MakeSbixTypeface-null-pointer-call.patch into chromium-130-fontations.patch'
+- drop no longer needed patches
+  * build-without-speech-service.patch
+  * content_browser_client-incomplete-WebUIController.patch
+  * css_shape_value-constructor.patch
+  * disable-devtools-tests.patch
+  * distributed_point_functions-aes_128_fixed_key_hash-missing-StrCat.patch
+  * distributed_point_functions-evaluate_prg_hwy-signature.patch
+  * electron-13-blink-gcc-ambiguous-nodestructor.patch
+  * exception_state-constexpr-initializer.patch
+  * extensions-common-assert.patch
+  * fix-building-with-pipewire-1.3.82.patch
+  * fix-build-without-pdf.patch
+  * fix-build-without-video-effects.patch
+  * html_permission_element_strings_map-reproducible.patch
+  * MakeSbixTypeface-null-pointer-call.patch
+  * media_session_uma_helper-missing-optional.patch
+  * node-llhttp9.3.patch
+  * object_paint_properties-explicit-specialization-in-non-namespace-scope.patch
+  * perfetto-ThreadTrack-Current-null-dereference.patch
+  * picture_in_picture_window_manager_uma_helper-missing-optional.patch
+  * plugin_utils-build-without-electron_extensions.patch
+  * python3.14-nodedownload-FancyURLopener.patch
+  * raw_ptr-fpermissive.patch
+  * resource_response-Wchanges-meaning.patch
+  * resource-Wchanges-meaning.patch
+  * string-hasher-flax-vector-conversions.patch
+  * string_truncator-convert.patch
+  * style_scope-unqualified-To.patch
+  * system-simdutf.patch
+  * to_vector-std-projected-gcc119888.patch
+  * unexportable_key_service_impl-Wlto-type-mismatch.patch
+  * xml_document_parser-Wmissing-template-keyword.patch
+- Conditionally revert upstream changes to fix build on 15.6
+  * ffmpeg-4-AV_PROFILE.patch
+  * node-cares-1.21-4.patch
+  * node-nghttp-1.50.patch
+  * v8-highway-1.1.patch
+- Add patches to fix build errors
+  * angle-BlobCache-Success.patch
+  * llhttp-lax-vector-conversions.patch
+  * masked_domain_list-flatbuffers.patch
+  * node-version-ck.patch
+  * partition_alloc-strict-aliasing.patch
+  * remove-probabilistic-token-which-uses-private-join-and-compute.patch
+  * system-dragonbox.patch
+- Add patches that should be upstreamed
+  * ANNOTATE_CONTIGUOUS_CONTAINER-Wodr.patch
+  * event_record-optional-initializer.patch
+  * identity_request_account-incomplete-IdentityProviderData.patch
+  * json_to_struct-fixed_flat_map-conflicting-declaration.patch
+  * lock_impl_posix-pthread_mutexattr_setprotocol-conflicting.patch
+  * node-kParentNodeTag-constexpr-initializer.patch
+  * offscreen_canvas-incomplete-LayoutLocale.patch
+  * pickle_traits-kIndexSequence-constexpr-initializer.patch
+  * picture_in_picture_events_info-string-constexpr.patch
+  * sandboxed_vfs_file_impl-missing-memset.patch
+  * v8-simd-flax-vector-conversions.patch
+  * webgl_rendering_context_webgpu_base-incomplete-StaticBitmapImage.patch
+  * webrtc-138-Wchanges-meaning.patch
+  * xr_webgl_swap_chain-incomplete-StaticBitmapImage.patch
+
+-------------------------------------------------------------------
+Tue Aug 19 17:11:54 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 35.7.5
+  * Fixed an issue where shell.openPath was not non-blocking as expected.
+- Leap 16: compile v8 code with x86-64-v2 instructions since the system requires them
+  * v8-assume-x86-64-v2-support.patch
+
+-------------------------------------------------------------------
+Wed Aug 13 16:54:43 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Fix build on Leap 16
+
+-------------------------------------------------------------------
 Fri Jul 11 17:53:15 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Enable accelerated video decoding (VAAPI)

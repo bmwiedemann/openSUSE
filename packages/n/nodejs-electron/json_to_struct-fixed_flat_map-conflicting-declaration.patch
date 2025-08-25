@@ -1,0 +1,25 @@
+--- src/tools/json_to_struct/aggregation.py.orig	2025-08-15 17:32:37.009403662 +0200
++++ src/tools/json_to_struct/aggregation.py	2025-08-16 00:58:01.264590353 +0200
+@@ -134,7 +134,9 @@ def _GenerateCCArray(type_name: str, agg
+     Returns:
+         str: The generated C++ array aggregation code.
+     """
+-  res = f'\nconst auto {aggregation.name} =\n'
++  res = '\n const '
++  res += f'std::array<const {type_name}*, {len(aggregation.elements)}> '
++  res += f'{aggregation.name} =\n'
+   res += f'    std::array<const {type_name}*, {len(aggregation.elements)}>'
+ 
+   res += '({{\n'
+@@ -157,7 +159,10 @@ def _GenerateCCMap(type_name: str, aggre
+     """
+   key_type = aggregation.map_key_type
+ 
+-  res = f'\nconst auto {aggregation.name} =\n'
++  res = f'\nconst '
++  res += f'base::fixed_flat_map<{aggregation.map_key_type}, '
++  res += f'const {type_name}*, {len(aggregation.GetSortedMapElements())}> '
++  res += f'{aggregation.name} =\n'
+   res += f'    base::MakeFixedFlatMap<{key_type}, const {type_name}*>'
+ 
+   res += '({\n'

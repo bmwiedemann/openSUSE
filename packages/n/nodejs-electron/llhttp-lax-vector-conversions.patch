@@ -1,0 +1,88 @@
+It makes no sense fixing this since llhttp's code is partly generated.
+
+../../third_party/electron_node/deps/llhttp/src/llhttp.c: In function ‘llhttp__internal__run’:
+../../third_party/electron_node/deps/llhttp/src/llhttp.c:2645:9: note: use ‘-flax-vector-conversions’ to permit conversions between vectors with differing element types or numbers of subparts
+ 2645 |         );
+      |         ^
+../../third_party/electron_node/deps/llhttp/src/llhttp.c:2643:11: error: incompatible type for argument 1 of ‘vandq_u16’
+ 2643 |           vcgeq_u8(input, vdupq_n_u8(' ')),
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |           |
+      |           uint8x16_t
+In file included from ../../third_party/electron_node/deps/llhttp/src/llhttp.c:14:
+/usr/lib64/gcc/aarch64-suse-linux/15/include/arm_neon.h:1088:23: note: expected ‘uint16x8_t’ but argument is of type ‘uint8x16_t’
+ 1088 | vandq_u16 (uint16x8_t __a, uint16x8_t __b)
+      |            ~~~~~~~~~~~^~~
+../../third_party/electron_node/deps/llhttp/src/llhttp.c:2644:11: error: incompatible type for argument 2 of ‘vandq_u16’
+ 2644 |           vcleq_u8(input, vdupq_n_u8('~'))
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |           |
+      |           uint8x16_t
+/usr/lib64/gcc/aarch64-suse-linux/15/include/arm_neon.h:1088:39: note: expected ‘uint16x8_t’ but argument is of type ‘uint8x16_t’
+ 1088 | vandq_u16 (uint16x8_t __a, uint16x8_t __b)
+      |                            ~~~~~~~~~~~^~~
+../../third_party/electron_node/deps/llhttp/src/llhttp.c:2646:26: error: incompatible type for argument 1 of ‘vorrq_u16’
+ 2646 |         mask = vorrq_u16(mask, single);
+      |                          ^~~~
+      |                          |
+      |                          uint8x16_t
+/usr/lib64/gcc/aarch64-suse-linux/15/include/arm_neon.h:1200:23: note: expected ‘uint16x8_t’ but argument is of type ‘uint8x16_t’
+ 1200 | vorrq_u16 (uint16x8_t __a, uint16x8_t __b)
+      |            ~~~~~~~~~~~^~~
+../../third_party/electron_node/deps/llhttp/src/llhttp.c:2646:32: error: incompatible type for argument 2 of ‘vorrq_u16’
+ 2646 |         mask = vorrq_u16(mask, single);
+      |                                ^~~~~~
+      |                                |
+      |                                uint8x16_t
+/usr/lib64/gcc/aarch64-suse-linux/15/include/arm_neon.h:1200:39: note: expected ‘uint16x8_t’ but argument is of type ‘uint8x16_t’
+ 1200 | vorrq_u16 (uint16x8_t __a, uint16x8_t __b)
+      |                            ~~~~~~~~~~~^~~
+../../third_party/electron_node/deps/llhttp/src/llhttp.c:2648:11: error: incompatible type for argument 1 of ‘vandq_u16’
+ 2648 |           vcgeq_u8(input, vdupq_n_u8(0x80)),
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |           |
+      |           uint8x16_t
+/usr/lib64/gcc/aarch64-suse-linux/15/include/arm_neon.h:1088:23: note: expected ‘uint16x8_t’ but argument is of type ‘uint8x16_t’
+ 1088 | vandq_u16 (uint16x8_t __a, uint16x8_t __b)
+      |            ~~~~~~~~~~~^~~
+../../third_party/electron_node/deps/llhttp/src/llhttp.c:2649:11: error: incompatible type for argument 2 of ‘vandq_u16’
+ 2649 |           vcleq_u8(input, vdupq_n_u8(0xff))
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |           |
+      |           uint8x16_t
+/usr/lib64/gcc/aarch64-suse-linux/15/include/arm_neon.h:1088:39: note: expected ‘uint16x8_t’ but argument is of type ‘uint8x16_t’
+ 1088 | vandq_u16 (uint16x8_t __a, uint16x8_t __b)
+      |                            ~~~~~~~~~~~^~~
+../../third_party/electron_node/deps/llhttp/src/llhttp.c:2651:26: error: incompatible type for argument 1 of ‘vorrq_u16’
+ 2651 |         mask = vorrq_u16(mask, single);
+      |                          ^~~~
+      |                          |
+      |                          uint8x16_t
+/usr/lib64/gcc/aarch64-suse-linux/15/include/arm_neon.h:1200:23: note: expected ‘uint16x8_t’ but argument is of type ‘uint8x16_t’
+ 1200 | vorrq_u16 (uint16x8_t __a, uint16x8_t __b)
+      |            ~~~~~~~~~~~^~~
+../../third_party/electron_node/deps/llhttp/src/llhttp.c:2651:32: error: incompatible type for argument 2 of ‘vorrq_u16’
+ 2651 |         mask = vorrq_u16(mask, single);
+      |                                ^~~~~~
+      |                                |
+      |                                uint8x16_t
+/usr/lib64/gcc/aarch64-suse-linux/15/include/arm_neon.h:1200:39: note: expected ‘uint16x8_t’ but argument is of type ‘uint8x16_t’
+ 1200 | vorrq_u16 (uint16x8_t __a, uint16x8_t __b)
+      |                            ~~~~~~~~~~~^~~
+../../third_party/electron_node/deps/llhttp/src/llhttp.c:2652:30: error: incompatible type for argument 1 of ‘vshrn_n_u16’
+ 2652 |         narrow = vshrn_n_u16(mask, 4);
+      |                              ^~~~
+      |                              |
+      |                              uint8x16_t
+
+
+--- src/third_party/electron_node/deps/llhttp/unofficial.gni.orig	2025-08-15 17:33:00.577399458 +0200
++++ src/third_party/electron_node/deps/llhttp/unofficial.gni	2025-08-18 17:28:08.494515274 +0200
+@@ -19,6 +19,7 @@ template("llhttp_gn_build") {
+     public_configs = [ ":llhttp_config" ]
+     include_dirs = [ "include" ]
+     sources = gypi_values.llhttp_sources
++    cflags = ["-flax-vector-conversions"]
+     if (is_clang || !is_win) {
+       cflags_c = [
+         "-Wno-implicit-fallthrough",

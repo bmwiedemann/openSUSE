@@ -1,6 +1,6 @@
---- src/sandbox/linux/BUILD.gn.old	2022-10-12 18:06:31.399406000 +0200
-+++ src/sandbox/linux/BUILD.gn	2022-10-22 11:55:59.621396300 +0200
-@@ -196,6 +196,27 @@
+--- src/sandbox/linux/BUILD.gn.orig	2025-08-15 17:32:28.529405249 +0200
++++ src/sandbox/linux/BUILD.gn	2025-08-16 19:07:14.523083090 +0200
+@@ -205,6 +205,26 @@ test("sandbox_linux_unittests") {
    }
  }
  
@@ -17,7 +17,6 @@
 +  deps = [
 +    ":sandbox_services",
 +    "//base",
-+    "//build:chromeos_buildflags",
 +    "//sandbox:sandbox_buildflags",
 +  ]
 +  if (gcc_lto) {
@@ -28,7 +27,7 @@
  component("seccomp_bpf") {
    sources = [
      "bpf_dsl/bpf_dsl.cc",
-@@ -227,8 +247,6 @@
+@@ -236,8 +256,6 @@ component("seccomp_bpf") {
      "seccomp-bpf/die.h",
      "seccomp-bpf/sandbox_bpf.cc",
      "seccomp-bpf/sandbox_bpf.h",
@@ -37,11 +36,11 @@
      "seccomp-bpf/trap.cc",
      "seccomp-bpf/trap.h",
    ]
-@@ -240,6 +258,7 @@
+@@ -249,6 +267,7 @@ component("seccomp_bpf") {
    ]
    deps = [
      ":sandbox_services",
 +    ":seccomp_bpf_asm",
      "//base",
-     "//build:chromeos_buildflags",
      "//sandbox:sandbox_buildflags",
+   ]

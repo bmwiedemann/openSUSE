@@ -224,12 +224,11 @@ Inspired by:
  #include "device/fido/features.h"
  #include "device/fido/fido_discovery_base.h"
  #include "device/fido/hid/fido_hid_discovery.h"
-@@ -128,12 +127,7 @@ std::vector<std::unique_ptr<FidoDiscover
+@@ -128,11 +127,7 @@ std::vector<std::unique_ptr<FidoDiscover
  
  std::optional<std::unique_ptr<FidoDiscoveryBase>>
  FidoDiscoveryFactory::MaybeCreateEnclaveDiscovery() {
--  if (!base::FeatureList::IsEnabled(kWebAuthnEnclaveAuthenticator) ||
--      !enclave_ui_request_stream_ || !network_context_factory_) {
+-  if (!enclave_ui_request_stream_ || !network_context_factory_) {
      return std::nullopt;
 -  }
 -  return std::make_unique<enclave::EnclaveAuthenticatorDiscovery>(
@@ -240,9 +239,9 @@ Inspired by:
 --- src/device/fido/fido_discovery_factory.h.orig
 +++ src/device/fido/fido_discovery_factory.h
 @@ -15,7 +15,6 @@
+ #include "base/containers/span.h"
  #include "base/memory/raw_ptr.h"
  #include "build/build_config.h"
- #include "build/chromeos_buildflags.h"
 -#include "components/sync/protocol/webauthn_credential_specifics.pb.h"
  #include "device/fido/cable/cable_discovery_data.h"
  #include "device/fido/cable/v2_constants.h"

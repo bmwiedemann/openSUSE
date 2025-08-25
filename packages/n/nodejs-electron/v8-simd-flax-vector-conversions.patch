@@ -1,0 +1,55 @@
+--- src/v8/src/objects/simd.cc.orig	2025-08-15 17:36:40.113358284 +0200
++++ src/v8/src/objects/simd.cc	2025-08-17 16:29:26.826424105 +0200
+@@ -953,7 +953,7 @@ bool Uint8ArrayFromHexWithNeon(const bas
+       uint8x16_t second_part_first_batch =
+           vld1q_u8(reinterpret_cast<const uint8_t*>(&input_vector[i + 8]));
+       first_batch =
+-          vmovn_high_u16(vmovn_u16(first_batch), second_part_first_batch);
++          vmovn_high_u16(vmovn_u16(vreinterpretq_u16_u8(first_batch)), vreinterpretq_u16_u8(second_part_first_batch));
+     }
+ 
+     // Load second batch of 16 hex characters into a Neon register
+@@ -966,20 +966,20 @@ bool Uint8ArrayFromHexWithNeon(const bas
+       uint8x16_t second_part_second_batch =
+           vld1q_u8(reinterpret_cast<const uint8_t*>(&input_vector[i + 24]));
+       second_batch =
+-          vmovn_high_u16(vmovn_u16(second_batch), second_part_second_batch);
++          vmovn_high_u16(vmovn_u16(vreinterpretq_u16_u8(second_batch)), vreinterpretq_u16_u8(second_part_second_batch));
+     }
+ 
+     // low nibbles are values with even indexes in fist_batch.
+     // (0x36, 0x00, 0x66, 0x00, 0x46, 0x00, 0x32, 0x00, 0x31, 0x00, 0x32, 0x00,
+     // 0x31, 0x00, 0x32, 0x00)
+-    uint8x16_t first_batch_lo_nibbles =
+-        vreinterpretq_u8_u16(vshrq_n_u16(vreinterpretq_u16_u8(first_batch), 8));
++    uint16x8_t first_batch_lo_nibbles =
++        vshrq_n_u16(vreinterpretq_u16_u8(first_batch), 8);
+ 
+     // low nibbles are values with even indexes in second_batch.
+     // (0x36, 0x00, 0x66, 0x00, 0x66, 0x00, 0x32, 0x00, 0x31, 0x00, 0x32, 0x00,
+     // 0x31, 0x00, 0x66, 0x00)
+-    uint8x16_t second_batch_lo_nibbles = vreinterpretq_u8_u16(
+-        vshrq_n_u16(vreinterpretq_u16_u8(second_batch), 8));
++    uint16x8_t second_batch_lo_nibbles =
++        vshrq_n_u16(vreinterpretq_u16_u8(second_batch), 8);
+ 
+     // Append low nibbles of first batch and second batch and remove 0x00s.
+     // (0x36, 0x66, 0x46, 0x32, 0x31, 0x32, 0x31, 0x32, 0x36, 0x66, 0x66, 0x32,
+@@ -992,7 +992,7 @@ bool Uint8ArrayFromHexWithNeon(const bas
+     // significant byte. (0x36, 0x36, 0x36, 0x36, 0x36, 0x37, 0x36, 0x37, 0x36,
+     // 0x36, 0x36, 0x36, 0x36, 0x37, 0x36, 0x66)
+     uint8x16_t hi_nibbles =
+-        vmovn_high_u16(vmovn_u16(first_batch), second_batch);
++        vmovn_high_u16(vmovn_u16(vreinterpretq_u16_u8(first_batch)), vreinterpretq_u16_u8(second_batch));
+ 
+     // mapping low nibbles to uint8_t values.
+     // (0x06, 0x0f, 0x0f, 0x02, 0x01, 0x02, 0x01, 0x02, 0x06, 0x0f, 0x0f, 0x02,
+@@ -1023,7 +1023,7 @@ bool Uint8ArrayFromHexWithNeon(const bas
+     // (0x60, 0x60, 0x60, 0x60, 0x60, 0x70, 0x60, 0x70, 0x60, 0x60, 0x60, 0x60,
+     // 0x60, 0x70, 0x60, 0xf0)
+     uint8x16_t uint8_shifted_high_nibbles =
+-        vshlq_n_u64(vreinterpretq_u64_u8(uint8_high_nibbles), 4);
++        vreinterpretq_u8_u64(vshlq_n_u64(vreinterpretq_u64_u8(uint8_high_nibbles), 4));
+ 
+     // final result of combining pairs of uint8_t values of low and high
+     // nibbles.
