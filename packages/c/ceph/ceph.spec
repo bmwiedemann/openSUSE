@@ -212,11 +212,11 @@ Patch7:         ceph-pybind-fix-c-type-errors-in-cython-generated-python-binding
 Patch8:         ceph-volume-fix-importlib.metadata-compat.patch
 # PATCH-FIX-UPSTREAM ceph-mgr-python-avoid-pyo3-errors.patch -- PR #62951
 Patch9:         ceph-mgr-python-avoid-pyo3-errors.patch
-# PATCH-FIX-UPSTREAM ceph-mgr-do-not-require-NOTIFY_TYPES-in-python-modules.patch -- 4589c4d8ac524206d4fb6349b07c5a4e83f926dc
-Patch10:        ceph-mgr-do-not-require-NOTIFY_TYPES-in-python-modules.patch
+# PATCH-FIX-UPSTREAM ceph-mgr-fix-module-import-by-making-NOTIFY_TYPES-in-py-m.patch
+Patch10:        ceph-mgr-fix-module-import-by-making-NOTIFY_TYPES-in-py-m.patch
 # PATCH-FIX-OPENSUSE ceph-mgr-workaround-numpy-28271.patch -- Workaround for numpy #28271
 Patch11:        ceph-mgr-workaround-numpy-28271.patch
-# PATCH-FIX-UPSTREAM ceph-mgr-do-not-require-NOTIFY_TYPES-in-python-modules.patch -- PR #63952
+# PATCH-FIX-UPSTREAM cephadm-fix-get_cluster_count_when_data_dir_is_missing.patch -- PR #63952
 Patch12:        cephadm-fix-get_cluster_count_when_data_dir_is_missing.patch
 # PATCH-FIX-OPENSUSE ceph-rocksdb-gcc15.patch -- Fix gcc15 compatibility issues
 Patch13:        ceph-rocksdb-gcc15.patch

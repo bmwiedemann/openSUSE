@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 23 13:05:12 UTC 2025 - James Oakley <jfunk@opensuse.org>
+
+- Replace ceph-mgr-do-not-require-NOTIFY_TYPES-in-python-modules.patch with
+  more correct ceph-mgr-fix-module-import-by-making-NOTIFY_TYPES-in-py-m.patch
+
+-------------------------------------------------------------------
 Fri Jul 18 14:07:16 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Drop cryptopp as potential dependency [jsc#PED-13011] and use gnutls as upstream seastar.
