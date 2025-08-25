@@ -1,7 +1,7 @@
 #
 # spec file for package python-semver
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,11 @@
 
 
 %bcond_without test
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-semver
 Version:        3.0.4
@@ -32,14 +37,19 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# SECTION tests
-BuildRequires:  %{python_module pytest}
-# /SECTIOn
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 # See https://github.com/k-bx/python-semver/issues/67 for why conflicts is needed
 Conflicts:      python-node-semver
 BuildArch:      noarch
+# SECTION tests
+BuildRequires:  %{python_module pytest}
+# /SECTIOn
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -67,6 +77,9 @@ sed -i 's/--[^ ]*cov[^ ]*//g' .pytest.ini
 
 %postun
 %python_uninstall_alternative pysemver
+
+%pre
+%python_libalternatives_reset_alternative pysemver
 
 %files %{python_files}
 %doc README.rst
