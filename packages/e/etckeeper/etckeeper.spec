@@ -2,7 +2,7 @@
 #
 # spec file for package etckeeper
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2014 Mitsutoshi NAKANO <bkbin005@rinku.zaq.ne.jp>
 # Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -34,7 +34,7 @@
 %define make_args systemddir=%{_unitdir} PYTHON=%{python_versioned} %{python_args}
 
 Name:           etckeeper
-Version:        1.18.21
+Version:        1.18.22
 Release:        0
 Summary:        Store /etc under Version Control
 License:        GPL-2.0-or-later

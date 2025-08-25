@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 13 08:04:18 UTC 2025 - ecsos <ecsos@opensuse.org> - 1.18.22
+
+- Update to 1.18.22
+  * Add /etc/cups/printers.conf{,.0} to ignore list
+
+-------------------------------------------------------------------
 Thu Aug  8 11:16:35 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.18.21
