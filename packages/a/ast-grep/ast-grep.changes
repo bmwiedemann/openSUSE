@@ -1,7 +1,90 @@
 -------------------------------------------------------------------
-Mon Jun  2 05:45:00 UTC 2025 - Michael Vetter <mvetter@suse.com>
+Mon Aug 25 09:34:11 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Remove --locked included in macro
+
+-------------------------------------------------------------------
+Mon Aug 18 07:45:19 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.39.4:
+  * Improve error messages for ast-grep test failures based on failure type #2174
+  * Add comprehensive GitHub Copilot development instructions #2152
+  * Address all code review comments: move make_rule_finder to lsp.rs,
+    simplify logic, reduce indentation, update file watchers, remove unused deps 8ef8ed6
+  * Decouple rule finding logic from LSP crate as requested 531aac3
+  * Complete LSP rule reloading implementation with tests 683f20e
+
+-------------------------------------------------------------------
+Wed Aug 13 06:36:33 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.39.3:
+  * add some tests for hcl 756499e
+  * add tree-sitter-hcl to ast-grep-language package deps 26b638a
+  * fix(deps): update rust crate clap to v4.5.42 4d047eb
+
+-------------------------------------------------------------------
+Mon Aug  4 06:58:28 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.39.2:
+  * fix(deps): update rust crate tokio to v1.47.0 #2124
+  * fix: ignore comments in relax/signature/template strictness #2122
+  * fix: prefer using env to determine bgcolor #2114
+  * fix: update rules c5fd340
+  * chore(deps): update dependency @napi-rs/cli to v3.0.4 b07e5bd
+  * fix: temporarily remove tweaking d2fedd2
+
+-------------------------------------------------------------------
+Fri Jul 25 06:32:34 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.39.1:
+  * fix: update package 8c2327b
+  * fix: fix build d59c219
+  * fix: remove json format 90369a4
+
+-------------------------------------------------------------------
+Fri Jul 25 06:32:17 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.39.0:
+  * feat: support esquery in kind #2007
+  * fix: path in files: section should be relative to config file #2101
+  * feat: add new pattern strictness: template #2097
+  * chore: bump napi-v3 d815af2
+  * feat(language): add solidity support 0afcede
+  * fix: handle whitespace 7f029fa
+
+-------------------------------------------------------------------
+Fri Jul 11 08:27:55 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.38.7:
+  * refactor: remove biome configuration and update linting tool to oxlint ed3e5b1
+  * chore(deps): update dependency @ast-grep/napi to v0.38.6 9e5f1e0
+  * Revert "fix(deps): update rust crate tower-lsp-server to 0.22.0" 7d8e872
+
+-------------------------------------------------------------------
+Tue Jun 24 07:38:26 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.38.6:
+  * fix(deps): update rust crate tower-lsp-server to 0.22.0 #2056
+  * feat: allow sgconfig.yml to not have required ruleDirs field #2059
+  * fix: ast-grep -h should not fail if sgconfig is wrong #2054
+  * chore(deps): update dependency @ast-grep/napi to v0.38.5 c7a41d6
+  * Revert "fix(deps): update rust crate tower-lsp-server to 0.22.0 #205
+  * fix(deps): update rust crate toml_edit to v0.22.27 84cff96
+
+-------------------------------------------------------------------
+Thu Jun 12 06:57:52 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.38.5:
+  * feat: add simple cli multi fix #2036
+  * fix: quit option should keep accepted changes #2031
+  * feat: add better styling handle 1a2b72c
+  * feat: add fix switching 791c9a0
+  * chore(deps): update dependency ava to v6.4.0 0e51f2b
+
+-------------------------------------------------------------------
+Mon Jun  2 05:45:00 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.38.4:
   * feat: support file level suppression #1541
   * feat: add include-off rule in sg test #2023
   * feat: add multiple fix in vscode lsp 9e9a282
@@ -11,7 +94,7 @@ Mon Jun  2 05:45:00 UTC 2025 - Michael Vetter <mvetter@suse.com>
 -------------------------------------------------------------------
 Mon Jun  2 05:44:45 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.38.4:
+- Update to 0.38.3:
   * feat: support object style libraryPath #2013
   * feat: Support Markdown rendering in CLI #1976
   * test: add more test for transform parse #902

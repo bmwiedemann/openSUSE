@@ -909,4 +909,41 @@
   * feat: add label handling in json print 33192d7</comment>
     <requestid>1281738</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>268bb1bd5e2de1fc675c6e038a000b5b</srcmd5>
+    <version>0.39.4</version>
+    <time>1756147151</time>
+    <user>anag_factory</user>
+    <comment>- Remove --locked included in macro
+
+- Update to 0.39.4:
+  * Improve error messages for ast-grep test failures based on failure type #2174
+  * Add comprehensive GitHub Copilot development instructions #2152
+  * Address all code review comments: move make_rule_finder to lsp.rs,
+    simplify logic, reduce indentation, update file watchers, remove unused deps 8ef8ed6
+  * Decouple rule finding logic from LSP crate as requested 531aac3
+  * Complete LSP rule reloading implementation with tests 683f20e
+
+- Update to 0.39.3:
+  * add some tests for hcl 756499e
+  * add tree-sitter-hcl to ast-grep-language package deps 26b638a
+  * fix(deps): update rust crate clap to v4.5.42 4d047eb
+
+- Update to 0.39.2:
+  * fix(deps): update rust crate tokio to v1.47.0 #2124
+  * fix: ignore comments in relax/signature/template strictness #2122
+  * fix: prefer using env to determine bgcolor #2114
+  * fix: update rules c5fd340
+  * chore(deps): update dependency @napi-rs/cli to v3.0.4 b07e5bd
+  * fix: temporarily remove tweaking d2fedd2
+
+- Update to 0.39.1:
+  * fix: update package 8c2327b
+  * fix: fix build d59c219
+  * fix: remove json format 90369a4
+
+- Update to 0.39.0:
+  * feat: support esquery in kind #2007</comment>
+    <requestid>1301230</requestid>
+  </revision>
 </revisionlist>
