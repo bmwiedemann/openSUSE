@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 16 19:37:00 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 8.0.2:
+  * ScreenshotBackend: check for redacted font
+  * Use Gtk.FileDialog to choose screenshots folder
+  * Fix screenshot is not saved to the selected folder if changed
+
+-------------------------------------------------------------------
 Mon Dec  2 20:54:41 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.0.1:
