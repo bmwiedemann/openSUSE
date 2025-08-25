@@ -1,7 +1,7 @@
 #
 # spec file for package python-Quart
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-Quart
 Version:        0.20.0
@@ -54,9 +59,14 @@ Requires:       python-blinker >= 1.6
 Requires:       python-click >= 8.0
 Requires:       python-hypercorn >= 0.11.2
 Requires:       python-itsdangerous
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 %python_subpackages
 
 %description
@@ -87,6 +97,9 @@ Quart is an async Python web microframework. Using Quart you can,
 
 %postun
 %python_uninstall_alternative quart
+
+%pre
+%python_libalternatives_reset_alternative quart
 
 %files %{python_files}
 %doc README.md CHANGES.md

@@ -33,4 +33,12 @@
     <comment></comment>
     <requestid>1245089</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6f95202f426ab697d86e14450eae57ab</srcmd5>
+    <version>0.20.0</version>
+    <time>1756146986</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301255</requestid>
+  </revision>
 </revisionlist>
