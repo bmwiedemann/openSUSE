@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 21 20:31:01 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update syb to version 0.7.3.
+  # 0.7.3
+
+  - Fix `gread` to recognize negative numbers (https://github.com/dreixel/syb/issues/13)
+  - Bump minimum required GHC to 8.0
+  - `Generic'` is now a newtype instead of data, add `GenericR'` and `GenericB'` (https://github.com/dreixel/syb/issues/49)
+
+-------------------------------------------------------------------
 Sun Jul 30 17:25:29 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update syb to version 0.7.2.4.
