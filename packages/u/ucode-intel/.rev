@@ -1355,4 +1355,41 @@
   - Update for functional issues. Refer to [Intel Xeon E-2300 Processor Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/709192) for details. (forwarded request 1277417 from msmeissn)</comment>
     <requestid>1277418</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>b775ca0b6916b138b5af4158276889fe</srcmd5>
+    <version>20250812</version>
+    <time>1756147005</time>
+    <user>anag_factory</user>
+    <comment>- Intel CPU Microcode was updated to the 20250812 release (bsc#1248438)
+   - Security updates for INTEL-SA-01249 https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01249.html
+     - CVE-2025-20109: Improper Isolation or Compartmentalization in the stream cache mechanism for some Intel Processors may allow an authenticated user to potentially enable escalation of privilege via local access.
+   - Security updates for INTEL-SA-01308 https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01308.html
+     - CVE-2025-22840: Sequence of processor instructions leads to unexpected behavior for some Intel Xeon 6 Scalable processors may allow an authenticated user to potentially enable escalation of privilege via local access
+   - Security updates for INTEL-SA-01310 https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01310.html
+     - CVE-2025-22839: Insufficient granularity of access control in the OOB-MSM for some Intel Xeon 6 Scalable processors may allow a privileged user to potentially enable escalation of privilege via adjacent access.
+   - Security updates for INTEL-SA-01311 https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01311.html
+     - CVE-2025-22889: Improper handling of overlap between protected memory ranges for some Intel Xeon 6 processor with Intel TDX may allow a privileged user to potentially enable escalation of privilege via local access.
+   - Security updates for INTEL-SA-01313 https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01313.html
+     - CVE-2025-20053: Improper buffer restrictions for some Intel Xeon Processor firmware with SGX enabled may allow a privileged user to potentially enable escalation of privilege via local access.
+   - Security updates for INTEL-SA-01367 https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01367.html
+     - CVE-2025-26403: Out-of-bounds write in the memory subsystem for some Intel Xeon 6 processors when using Intel SGX or Intel TDX may allow a privileged user to potentially enable escalation of privilege via local access.
+     - CVE-2025-32086: Improperly implemented security check for standard in the DDRIO configuration for some Intel Xeon 6 Processors when using Intel SGX or Intel TDX may allow a privileged user to potentially enable escalation of privilege via local access.
+   - Update for functional issues. Refer to 13th/14th Gen Intel Core Processor Specification Update for details.
+   - Update for functional issues. Refer to 3rd Gen Intel Xeon Processor Scalable Family Specification Update for details.
+   - Update for functional issues. Refer to 4th Gen Intel Xeon Scalable Processors Specification Update for details.
+   - Update for functional issues. Refer to 5th Gen Intel Xeon Scalable Processors Specification Update for details.
+   - Update for functional issues. Refer to 6th Gen Intel Xeon Scalable Processors Specification Update for details.
+   - Update for functional issues. Refer to Intel Core Ultra 200 V Series Processor for details.
+   - Update for functional issues. Refer to Intel Core Ultra Processor for details.
+   - Update for functional issues. Refer to Intel Core Ultra Processor (Series 2) for details.
+   - Update for functional issues. Refer to Intel Xeon 6700-Series Processor Specification Update for details.
+   - Update for functional issues. Refer to Intel Xeon D-2700 Processor Specification Update for details.
+  - Updated Platforms:
+  | Processor      | Stepping | F-M-S/PI    | Old Ver  | New Ver  | Products
+  |:---------------|:---------|:------------|:---------|:---------|:---------
+  | ARL-H          | A1       | 06-c5-02/82 | 00000118 | 00000119 | Core Ultra Processor (Series 2)
+  | ARL-S/HX (8P)  | B0       | 06-c6-02/82 | 00000118 | 00000119 | Core Ultra Processor (Series 2)
+  | EMR-SP         | A1       | 06-cf-02/87 | 210002a9 | 210002b3 | Xeon Scalable Gen5 (forwarded request 1301199 from msmeissn)</comment>
+    <requestid>1301200</requestid>
+  </revision>
 </revisionlist>
