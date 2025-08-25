@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 21 08:47:17 UTC 2025 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-parallel-package-downloads.patch:
+  zypp: Implement parallel downloading
+  (gh#PackageKit/PackageKit/commit/dd39d2982, bsc#1244920).
+
+-------------------------------------------------------------------
 Tue Oct 15 11:48:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks (PED-266)

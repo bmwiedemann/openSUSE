@@ -1,7 +1,7 @@
 #
 # spec file for package PackageKit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,6 +61,8 @@ Patch16:        PackageKit-dynamic-export.patch
 Patch17:        PackageKit-mark-as-compulsory.patch
 # PATCH-FIX-UPSTREAM PackageKit-zypp-dont-install-updateCandidateObj.patch bsc#1227389, gh#PackageKit/PackageKit/commit/209aa6295 sckang@suse.com -- zypp: Mark the correct packages to-be-installed
 Patch18:        PackageKit-zypp-dont-install-updateCandidateObj.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-parallel-package-downloads.patch gh#PackageKit/PackageKit/commit/dd39d2982, bsc#1244920 sckang@suse.com -- zypp: Implement parallel downloading
+Patch19:        PackageKit-zypp-parallel-package-downloads.patch
 
 # PATCH-FIX-SLE PackageKit-find-python-3-6.patch alynx.zhou@suse.com -- Build PackageKit with Python 3.6
 Patch1001:      PackageKit-find-python-3-6.patch
@@ -288,6 +290,7 @@ This package provides the upstream default configuration for PackageKit.
 %patch -P 16 -p1
 %patch -P 17 -p1
 %patch -P 18 -p1
+%patch -P 19 -p1
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
 %patch -P 1001 -p1
 %endif

@@ -2077,4 +2077,12 @@ Pushing GNOME 45.rc packages</comment>
   pk-gstreamer-install. (forwarded request 1208110 from dimstar)</comment>
     <requestid>1208158</requestid>
   </revision>
+  <revision rev="241" vrev="7">
+    <srcmd5>a4bc407569f60499961fca230e0fa2b6</srcmd5>
+    <version>1.2.8</version>
+    <time>1756146965</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1300943</requestid>
+  </revision>
 </revisionlist>
