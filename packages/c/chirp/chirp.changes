@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 22 15:56:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250822:
+  * Various models: Remove verbose debug logging and use trace
+    instead
+  * Add generic serial tracing for debug
+  * Allow hexprint with variable line length
+
+-------------------------------------------------------------------
 Fri Aug 15 17:39:41 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250815:
