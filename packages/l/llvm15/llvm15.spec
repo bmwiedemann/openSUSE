@@ -1,7 +1,7 @@
 #
 # spec file for package llvm15
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -408,6 +408,8 @@ Patch40:        lldb-support-python-3.13.patch
 Patch41:        libcxx-remove-unused-imports.patch
 # PATCH-FIX-OPENSUSE: Remove shlex.quote to fix Python 3.13 compatibility
 Patch42:        use-shlex-quote.patch
+# PATCH-FIX-UPSTREAM: Remove interceptors for deprecated struct termio
+Patch43:        compiler-rt-remove-termio-interceptors.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -869,6 +871,10 @@ popd
 
 pushd clang-tools-extra-%{_version}.src
 %patch -P 10 -p2
+popd
+
+pushd compiler-rt-%{_version}.src
+%patch -P 43 -p2
 popd
 
 pushd lld-%{_version}.src

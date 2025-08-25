@@ -251,4 +251,14 @@ without RUNPATH on libc++.so.
 </comment>
     <requestid>1295844</requestid>
   </revision>
+  <revision rev="21" vrev="15">
+    <srcmd5>7c6111dbb216c3a466499b54d28b6309</srcmd5>
+    <version>15.0.7</version>
+    <time>1756147049</time>
+    <user>anag_factory</user>
+    <comment>- Add compiler-rt-remove-termio-interceptors.patch to fix build
+  with glibc 2.42. (boo#1247576)
+</comment>
+    <requestid>1301085</requestid>
+  </revision>
 </revisionlist>
