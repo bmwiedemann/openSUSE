@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 25 04:50:09 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros from python-rpm-macros to build and install.
+
+-------------------------------------------------------------------
 Tue Oct 13 18:13:05 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Simplify %setup statement. Use noun phrase in descriptions.

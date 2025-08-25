@@ -1,7 +1,7 @@
 #
 # spec file for package folder-color
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define pythons python3
 %define _name   folder_color
 Name:           folder-color
 Version:        0.0.88
@@ -31,8 +32,11 @@ Source3:        https://launchpad.net/~costales/+archive/ubuntu/folder-color/+fi
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  python3-distutils-extra
+BuildRequires:  python3-pip
+BuildRequires:  python3-wheel
 BuildArch:      noarch
 
 %description
@@ -93,36 +97,42 @@ chmod a-x COPYING.GPL3
 sed -i '/name/s/%{name}/%{name}-nautilus/' nautilus/setup.py
 
 %build
-# Nothing to build.
+for dir in . nautilus caja nemo; do
+    pushd $dir
+    %pyproject_wheel
+    popd
+done
 
 %install
 for dir in . nautilus caja nemo; do
     pushd $dir
-    python3 setup.py install \
-      --root=%{buildroot} --prefix=%{_prefix}
+    %pyproject_install
     popd
 done
+# pyproject_install can only write to sitelib
+mv -v %{buildroot}%{python3_sitelib}/%{_datadir}/* %{buildroot}/%{_datadir}
+rm -r %{buildroot}%{python3_sitelib}/usr
 %fdupes %{buildroot}%{_datadir}
 %find_lang %{name}-common
 
 %files -n nautilus-extension-%{name}
 %license COPYING.GPL3
 %{_datadir}/nautilus-python/
-%{python3_sitelib}/%{_name}_nautilus-*
+%{python3_sitelib}/%{_name}_nautilus-%{version}.dist-info
 
 %files -n caja-extension-%{name}
 %license COPYING.GPL3
 %{_datadir}/caja-python/
-%{python3_sitelib}/%{_name}_caja-*
+%{python3_sitelib}/%{_name}_caja-%{version}.dist-info
 
 %files -n nemo-extension-%{name}
 %license COPYING.GPL3
 %{_datadir}/nemo-python/
-%{python3_sitelib}/%{_name}_nemo-*
+%{python3_sitelib}/%{_name}_nemo-%{version}.dist-info
 
 %files common
 %license COPYING.GPL3
-%{python3_sitelib}/%{_name}_common-*
+%{python3_sitelib}/%{_name}_common-%{version}.dist-info
 %{_datadir}/icons/hicolor/*/*/
 
 %files common-lang -f %{name}-common.lang
