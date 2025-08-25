@@ -127,4 +127,12 @@
 - No more greedy globs in %files.</comment>
     <requestid>1284636</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>2274b8fdc414facc5b4d247c16bf9ce9</srcmd5>
+    <version>3.0.5</version>
+    <time>1756146980</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301232</requestid>
+  </revision>
 </revisionlist>

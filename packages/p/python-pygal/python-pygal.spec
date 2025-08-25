@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygal
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-pygal
 Version:        3.0.5
@@ -23,7 +28,7 @@ Release:        0
 Summary:        A python svg graph plotting library
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
-URL:            http://pygal.org/
+URL:            https://pygal.org/
 Source:         https://files.pythonhosted.org/packages/source/p/pygal/pygal-%{version}.tar.gz
 BuildRequires:  %{python_module CairoSVG}
 BuildRequires:  %{python_module Flask}
@@ -37,10 +42,15 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata
 Requires:       python-lxml
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     python-CairoSVG
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -74,6 +84,9 @@ mv %{buildroot}%{_bindir}/pygal_gen.py %{buildroot}%{_bindir}/pygal_gen
 
 %postun
 %python_uninstall_alternative pygal_gen
+
+%pre
+%python_libalternatives_reset_alternative pygal_gen
 
 %files %{python_files}
 %doc README
