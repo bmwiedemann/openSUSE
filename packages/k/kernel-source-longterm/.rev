@@ -657,4 +657,12 @@ known issue: KMPs not yet propetly supported</comment>
     <comment>6.12.42</comment>
     <requestid>1299887</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>936996946f476b3469555cc8e393396e</srcmd5>
+    <version>6.12.43</version>
+    <time>1756146964</time>
+    <user>anag_factory</user>
+    <comment>6.12.43 + rtsync backport</comment>
+    <requestid>1300908</requestid>
+  </revision>
 </revisionlist>
