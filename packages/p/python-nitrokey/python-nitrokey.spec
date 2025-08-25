@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nitrokey
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Nitrokey Python SDK
 License:        Apache-2.0

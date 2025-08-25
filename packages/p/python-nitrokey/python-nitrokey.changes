@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 21 13:51:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.4.1:
+  * Add support for protobuf v6.
+  * nitrokey.trussed.admin_app: Fix validation of ConfigFieldType.U8
+    values.
+  * nitrokey.trussed: Add list and open functions.
+  * nitrokey.trussed.updates:
+    - Add default values for the image and update_version arguments
+      for Updater.update.
+    - Only call UpdateUi.confirm_extra_information if the passed list
+      is not empty.
+
+-------------------------------------------------------------------
 Mon Aug  4 09:21:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.4.0:
