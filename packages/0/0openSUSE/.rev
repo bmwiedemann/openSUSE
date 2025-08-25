@@ -6,4 +6,11 @@
     <user>adrianSuSE</user>
     <comment>osc copypac from project:openSUSE:Factory:ProductComposerTest package:0openSUSE revision:3</comment>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>958f5968a262797bcc851764bf54f44c</srcmd5>
+    <version>unknown</version>
+    <time>1756121370</time>
+    <user>dimstar_suse</user>
+    <comment>Cleanup blacklist: remove packages that no longer exist anyway</comment>
+  </revision>
 </revisionlist>
