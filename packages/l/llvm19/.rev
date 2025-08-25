@@ -139,4 +139,14 @@
     <comment></comment>
     <requestid>1292275</requestid>
   </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>816cfb614c71b034d83437a3ecc4e3de</srcmd5>
+    <version>19.1.7</version>
+    <time>1756147046</time>
+    <user>anag_factory</user>
+    <comment>- Add compiler-rt-remove-termio-interceptors.patch to fix build
+  with glibc 2.42. (boo#1247576)
+</comment>
+    <requestid>1301084</requestid>
+  </revision>
 </revisionlist>

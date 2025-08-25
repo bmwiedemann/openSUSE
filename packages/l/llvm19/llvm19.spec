@@ -1,7 +1,7 @@
 #
 # spec file for package llvm19
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -448,6 +448,8 @@ Patch29:        clang-fix-modules-test-riscv.patch
 Patch30:        clang-fix-openmp-test-non-x86.patch
 # PATCH-FIX-UPSTREAM: Use symbol versioning also for libclang-cpp.so.
 Patch31:        clang-shlib-symbol-versioning.patch
+# PATCH-FIX-UPSTREAM: Remove interceptors for deprecated struct termio
+Patch32:        compiler-rt-remove-termio-interceptors.patch
 BuildRequires:  %{python_pkg}-base >= 3.8
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
@@ -912,6 +914,10 @@ popd
 
 pushd clang-tools-extra-%{_version}.src
 %patch -P 10 -p2
+popd
+
+pushd compiler-rt-%{_version}.src
+%patch -P 32 -p2
 popd
 
 pushd lld-%{_version}.src
