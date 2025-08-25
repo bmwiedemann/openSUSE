@@ -26,10 +26,9 @@ BuildRequires:  alsa-devel
 BuildRequires:  autoconf213
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  fdupes
-# Use GCC 13 on Tumbleweed because builds fail with GCC 14:
-# <https://bugzilla.mozilla.org/show_bug.cgi?id=1916827>
+# Use GCC 14 on Tumbleweed because builds of 2.53.21 fail with GCC 15
 %if 0%{?suse_version} > 1600
-BuildRequires:  gcc13-c++
+BuildRequires:  gcc14-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -43,9 +42,8 @@ BuildRequires:  libproxy-devel
 #BuildRequires:  libvpx-devel # Compile errors with 1.10.0
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
 BuildRequires:  libwebp-devel >= 1.0.0
-# --system-icu builds are failing on Tumbleweed; see https://bugzilla.mozilla.org/show_bug.cgi?id=193317
-#BuildRequires:  libicu-devel >= 63.1
 %endif
+BuildRequires:  libicu-devel >= 67.1
 BuildRequires:  makeinfo
 BuildRequires:  memory-constraints
 BuildRequires:  python311-base
@@ -103,6 +101,8 @@ Patch5:         reproducible.patch
 Patch6:         mozilla-bmo531915.patch
 Patch7:         mozilla-bmo1896958.patch
 Patch8:         mach-use-python-311.patch
+Patch9:         mozilla-bmo1862601.patch
+Patch10:        seamonkey-icu.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh coreutils
 Provides:       seamonkey-mail = %{version}
@@ -241,6 +241,12 @@ cp %{SOURCE12} GNUmakefile
 %patch -P 7 -p1
 %patch -P 8 -p1
 
+# Fix --with-system-icu builds on Tumbleweed; see https://bugzilla.mozilla.org/show_bug.cgi?id=1862601 and https://bugzilla.mozilla.org/show_bug.cgi?id=1927380
+%if 0%{?suse_version} > 1600
+%patch -P 9 -p1
+%patch -P 10 -p1
+%endif
+
 cat << EOF > .mozconfig
 mk_add_options MOZILLA_OFFICIAL=1
 mk_add_options BUILD_OFFICIAL=1
@@ -279,10 +285,9 @@ ac_add_options --with-system-zlib
 
 %if 0%{?suse_version} > 1600 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
 ac_add_options --with-system-webp
-
-# --system-icu builds are failing on Tumbleweed; see https://bugzilla.mozilla.org/show_bug.cgi?id=193317
-#ac_add_options --with-system-icu
 %endif
+
+ac_add_options --with-system-icu
 
 # Compile errors with system libvpx-1.10.0
 #ac_add_options --with-system-libvpx
@@ -347,11 +352,10 @@ export BUILD_OFFICIAL=1
 
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %if 0%{?clang_build} == 0
-# Use GCC 13 on Tumbleweed because builds fail with GCC 14:
-# <https://bugzilla.mozilla.org/show_bug.cgi?id=1916827>
+# Use GCC 14 on Tumbleweed because builds of 2.53.21 fail with GCC 15
 %if 0%{?suse_version} > 1600
-export CC=gcc-13
-export CXX=g++-13
+export CC=gcc-14
+export CXX=g++-14
 %else
 export CC=gcc
 export CXX=g++

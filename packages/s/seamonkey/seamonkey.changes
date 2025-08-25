@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 24 15:11:18 UTC 2025 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- add mozilla-bmo1862601.patch and seamonkey-icu.patch to fix
+  --with-system-icu builds on Tumbleweed (bmo#1864745)
+- allow Tumbleweed builds to use GCC 14 now, since this no longer
+  fails (bmo#1916827)
+
+-------------------------------------------------------------------
 Thu Jun 05 16:43:42 UTC 2025 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - update to SeaMonkey 2.53.21
