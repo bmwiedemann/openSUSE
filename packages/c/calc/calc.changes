@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Aug 18 07:43:30 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.16.0.0:
+  * Starting with calc version 2.16.0.0, the ability to perform arithmetic
+    on addresses of values in calc objects has been greatly restricted.
+  * Most arithmetic on of value addresses could easily cause calc to
+    crash.  For example, prior to calc version 2.16.0.0, the following
+    command was likely to crash calc: calc '*((&.)+1e9)'
+  * Subtracting two value addresses is permitted, however there is NO
+    guarantee that the address of a value will remain consistent across
+    calc runs.  Addresses of values depend on the circumstances of when
+    the calc values were formed.
+  * The above restrictions and caveats apply to addresses of values.
+    Such restrictions and caveats to NOT apply to the addresses of
+    octets, NOR to the addresses within strings.  If isptr(x) == 2, then
+    x is value-pointer and the above mentioned restrictions and caveats apply.
+  * See "help address" for more information on value address arithmetic.
+  * Added E_INVALID_DEREF (10610) error code to indicate the invalid
+    dereferencing a non-variable.
+  * Added E_INVALID_ADDR_OP (10611) error code to indicate an invalid
+    arithmetic address operation.
+
+-------------------------------------------------------------------
+Thu Aug 14 05:33:26 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.15.1.2:
+  * Removed use of HAVE_MEMMOVE as well have_memmv.c.
+  * Removed the building and including of have_memmv.h.
+  * Removed the memmove() function in blkcpy.c, used when HAVE_MEMMOVE was NOT defined.
+  * The libc memmove(3) function as defined by <string.h> is now
+    required to compile calc because the replacement code in
+    blkcpy.c q was problematic, especially when regions overlap.
+  * The HAVE_MEMMOVE make symbol was removed from Makefile.config.
+
+-------------------------------------------------------------------
+Fri Apr 25 13:32:08 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.15.1.1:
+  * Change Makefile.config to, if not using not HomeBrew, then try to
+    detect macports and/or using /opt/local/{lib,include}.
+  * Put full date range (1989-2025) of calc source into version.h.
+
+-------------------------------------------------------------------
 Mon Nov 18 13:06:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Workaorund %attr(644…) setting this attribute also on the doc
