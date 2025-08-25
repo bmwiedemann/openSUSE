@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug  6 02:14:10 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Remove commented out commands in kubo.spec
+- Update to 0.36.0:
+  * Full changelog at https://github.com/ipfs/kubo/releases/tag/v0.36.0
+  * HTTP Retrieval Client Now Enabled by Default
+  * Bitswap Broadcast Reduction
+  * Update go-log to v2
+  * Kubo now uses AutoNATv2 as a client
+  * Overwrite option for files cp command
+  * Gateway now supports negative HTTP Range requests
+  * Option for filestore command to remove bad blocks
+  * ConnMgr.SilencePeriod configuration setting exposed
+  * Fix handling of EDITOR env var
+  * Dependency updates
+
+-------------------------------------------------------------------
 Thu May 22 07:33:23 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - 0.35.0

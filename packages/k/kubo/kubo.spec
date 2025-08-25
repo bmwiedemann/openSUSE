@@ -1,7 +1,7 @@
 #
 # spec file for package kubo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
-%define repo github.com/ipfs/kubo
 Name:           kubo
-Version:        0.35.0
+Version:        0.36.0
 Release:        0
 Summary:        IPFS implementation in Go
 License:        MIT
 Group:          Productivity/Networking/Other
-URL:            https://%{repo}
-Source0:        kubo-%{version}.tar
+URL:            https://github.com/ipfs/kubo
+Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.zst
 
 BuildRequires:  git
@@ -52,10 +51,8 @@ You can also mount the world at /ipfs.
 
 %build
 go build -mod=vendor -buildmode=pie -v -o ./cmd/ipfs/ipfs ./cmd/ipfs
-#make build
 
 %install
-#make install
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_userunitdir}
 mkdir -p %{buildroot}%{_unitdir}
