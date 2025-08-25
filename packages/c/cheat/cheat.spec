@@ -1,7 +1,7 @@
 #
 # spec file for package cheat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,16 +25,22 @@ Group:          Productivity/Other
 URL:            https://github.com/cheat/cheat
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang-packaging
+BuildRequires:  golang(API) >= 1.19
 
 %description
 cheat allows you to create and view interactive cheatsheets on the command-line. It was designed to help remind *nix system administrators of options for commands that they use frequently, but not frequently enough to remember.
 
 %prep
-%setup -q -a 1
+%autosetup -a 1
 
 %build
-go build -mod=vendor -buildmode=pie -o cheat ./cmd/cheat
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
+go build ./cmd/%{name}
+
+%check
+./%{name} --help
 
 %install
 install -D -m0755 %{name} %{buildroot}%{_bindir}/%{name}

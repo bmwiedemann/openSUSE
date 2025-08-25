@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Aug 22 13:12:32 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Drop Requires: golang-packaging. The recommended Go toolchain
+    dependency expression is BuildRequires: golang(API) >= 1.x or
+    optionally the metapackage BuildRequires: go
+  * Use BuildRequires: golang(API) >= 1.19 matching go.mod
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Remove go build -o output binary location and name. Default
+    binary has the same name as package of func main() and is
+    placed in the top level of the build directory.
+  * Add basic %check to execute binary --help
+
+-------------------------------------------------------------------
+Thu Aug 21 21:47:19 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Service go_modules replace dependencies with CVEs
+  * Replace github.com/cloudflare/circl=github.com/cloudflare/circl@v1.6.1
+    Fix GO-2025-3754 GHSA-2x5j-vhc8-9cwm
+  * Replace golang.org/x/net=golang.org/x/net@v0.36.0
+    Fixes GO-2025-3503 CVE-2025-22870
+  * Replace golang.org/x/crypto=golang.org/x/crypto@v0.35.0
+    Fixes GO-2023-2402 CVE-2023-48795 GHSA-45x7-px36-x8w8
+    Fixes GO-2025-3487 CVE-2025-22869
+  * Replace github.com/go-git/go-git/v5=github.com/go-git/go-git/v5@v5.13.0
+    Fixes GO-2025-3367 CVE-2025-21614 GHSA-r9px-m959-cxf4
+    Fixes GO-2025-3368 CVE-2025-21613 GHSA-v725-9546-7q7m
+  * Service tar_scm set mode manual from disabled
+  * Service tar_scm create archive from git so we can exclude
+    vendor directory upstream committed to git. Committed vendor
+    directory contents have build issues even after go mod tidy.
+  * Service tar_scm exclude dir vendor
+  * Service set_version set mode manual from disabled
+  * Service set_version remove param basename not needed
+
+-------------------------------------------------------------------
+Thu Aug 21 12:15:26 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1247629 (CVE-2025-21613):
+  * Use go-git 5.13.0 via replace in _service
+
+-------------------------------------------------------------------
 Sat Dec 16 11:27:40 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.4.2:
