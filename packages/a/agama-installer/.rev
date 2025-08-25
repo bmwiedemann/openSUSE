@@ -349,4 +349,12 @@
 - Copy kernel modules from DUDs to the updates/ directory (bsc#1246061).</comment>
     <requestid>1300498</requestid>
   </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>93f704ac4660c094edb855c855b4c8eb</srcmd5>
+    <version>17.0.0</version>
+    <time>1756147168</time>
+    <user>anag_factory</user>
+    <comment>- live-root: update final EULAs with the June 2024 delivery</comment>
+    <requestid>1301281</requestid>
+  </revision>
 </revisionlist>
