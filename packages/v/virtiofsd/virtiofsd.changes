@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 25 03:45:02 UTC 2025 - Caleb Crane <caleb.crane@suse.com>
+
+- Update to version 1.13.2:
+  * Bump version to v1.13.2
+  * README.md: expand section on non-privileged running
+  * Set guest FD limit based on actual total FD limit
+  * Handles: Track guest FD use
+  * Inodes: Track guest FD use
+  * PassthroughFs: Create GuestFdSemaphore
+  * Add GuestFdSemaphore
+
+-------------------------------------------------------------------
 Wed Jan 15 10:56:47 UTC 2025 - ddiss@suse.de
 
 - Update to version 1.13.0:
