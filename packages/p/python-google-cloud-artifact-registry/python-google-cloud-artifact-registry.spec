@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-artifact-registry
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ BuildRequires:  %{python_module google-api-core >= 1.34.1}
 BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.14.0}
 BuildRequires:  %{python_module proto-plus >= 1.22.3}
 BuildRequires:  %{python_module protobuf >= 3.20.2}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes

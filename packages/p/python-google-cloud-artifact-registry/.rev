@@ -76,4 +76,12 @@
 - from version 1.11.4 (forwarded request 1272380 from glaubitz)</comment>
     <requestid>1272429</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1fc4c9f6b0d41bcb15a53ed2a22d7532</srcmd5>
+    <version>1.16.0</version>
+    <time>1756147111</time>
+    <user>anag_factory</user>
+    <comment>- Add missing BuildRequires on pytest-asyncio.</comment>
+    <requestid>1301151</requestid>
+  </revision>
 </revisionlist>
