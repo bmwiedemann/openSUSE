@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Aug 25 13:28:00 UTC 2025 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Update to Tomcat 10.1.44
+  * Fixed CVEs:
+    + CVE-2025-48989: Update the HTTP/2 overhead documentation (bsc#1243895)
+  * Catalina
+    + Fix: Fix bloom filter population for archive indexing when using a packed
+      WAR containing one or more JAR files. (markt)
+  * Coyote
+    + Fix: 69748: Add missing call to set keep-alive timeout when using
+      HTTP/1.1 following an async request, which was present for AJP.
+      (remm/markt)
+    + Fix: 69762: Fix possible overflow during HPACK decoding of integers. Note
+      that the maximum permitted value of an HPACK decoded integer is
+      Integer.MAX_VALUE. (markt)
+    + Fix: Update the HTTP/2 overhead documentation - particularly the code
+      comments - to reflect the deprecation of the PRIORITY frame and clarify
+      that a stream reset always triggers an overhead increase. (markt)
+    + Fix: 69762: Additional overflow fix for HPACK decoding of integers. Pull
+      request #880 by Chenjp. (markt)
+  * Cluster
+    + Update: Add enableStatistics configuration attribute for the
+      DeltaManager, defaulting to true. (remm)
+  * WebSocket
+    + Fix: Align the WebSocket extension handling for WebSocket client
+      connections with WebSocket server connections. The WebSocket client now
+      only includes an extension requested by an endpoint in the opening
+      handshake if the WebSocket client supports that extension. (markt)
+  * Web applications
+    + Fix: Manager and Host Manager. Provide the Manager and Host Manager web
+      applications with a dedicated favicon file rather than using the one from
+      the ROOT web application which might not be present or may represent
+      something entirely different. Pull requests #876 and #878 by Simon Arame.
+  * Other
+    + Update: Update Checkstyle to 10.26.1. (markt)
+    + Add: Improvements to French translations. (remm)
+    + Add: Improvements to Japanese translations by tak7iji. (markt) 
+
+-------------------------------------------------------------------
 Wed Aug  6 12:45:13 UTC 2025 - Michele Bussolotto <michele.bussolotto@suse.com>
 
 - Update to Tomcat 10.1.43

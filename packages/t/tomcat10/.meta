@@ -7,6 +7,5 @@ The Java Servlet and JavaServer Pages specifications are developed by
 Sun under the Java Community Process.
 
 ATTENTION: This tomcat is built with java 1.11.0.</description>
-  <devel project="Java:packages" package="tomcat10"/>
   <url>https://tomcat.apache.org</url>
 </package>
