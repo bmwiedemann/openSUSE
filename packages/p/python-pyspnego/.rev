@@ -225,4 +225,12 @@
     * Update integration tests for 3.13.</comment>
     <requestid>1223467</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>32eb862fe0658ff94db6e08e2a9ac4a0</srcmd5>
+    <version>0.11.2</version>
+    <time>1756147162</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301254</requestid>
+  </revision>
 </revisionlist>

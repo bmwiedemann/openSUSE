@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyspnego
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-pyspnego
 Version:        0.11.2
@@ -28,23 +33,28 @@ Source:         https://github.com/jborean93/pyspnego/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
-BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest}
-# /SECTION
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-cryptography
-%if 0%{python_version_nodots} < 37
-Requires:       python-dataclasses
-%endif
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Suggests:       python-gssapi >= 1.5.0
 Suggests:       python-ruamel.yaml
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
+# /SECTION
+%if 0%{python_version_nodots} < 37
+Requires:       python-dataclasses
+%endif
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -69,6 +79,9 @@ sed -i '1{/^#!/ d}' src/spnego/__main__.py
 
 %postun
 %python_uninstall_alternative pyspnego-parse
+
+%pre
+%python_libalternatives_reset_alternative pyspnego-parse
 
 %check
 %pytest
