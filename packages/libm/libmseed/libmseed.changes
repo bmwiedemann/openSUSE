@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 23 15:42:41 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.1.7:
+  * Avoid fatal errors when v2 record blockettes contain invalid
+    time stamps. When invalid SEED "btime" values
+  * Limit float point values in extra headers to single precision
+    to avoid unrealistically high precision values in the output
+
+-------------------------------------------------------------------
 Mon Jul 28 18:29:35 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.1.6:
