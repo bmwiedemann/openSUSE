@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 21 15:49:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.1:
+  + Flatpak build fixes for Grilo changes
+  + Fix non-responsive window
+  + Fix covers not scaling with gtk 4.19
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri May  2 13:48:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:
