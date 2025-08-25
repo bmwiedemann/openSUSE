@@ -16,10 +16,10 @@
 #
 
 
-%global lname	libhashcat7_0_0
+%global lname	libhashcat7_1_2
 
 Name:           hashcat
-Version:        7.0.0
+Version:        7.1.2
 Release:        0
 Summary:        CPU-based password recovery utility
 License:        GPL-2.0-or-later AND MIT
@@ -38,10 +38,14 @@ BuildRequires:  gmp-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  xxhash-devel
-BuildRequires:  pkgconfig(clzma)
+%if 0%{?suse_version} >= 1690
+BuildRequires:  pkgconfig(lzma-sdk)
+%else
+%global sylzma USE_SYSTEM_LZMA=0
+Provides:       bundled(lzma-sdk) = 24.09
+%endif
 BuildRequires:  pkgconfig(minizip)
 BuildRequires:  pkgconfig(zlib)
-Provides:       bundled(lzma-sdk) = 24.07
 ExclusiveArch:  %ix86 x86_64
 
 %description
@@ -72,7 +76,7 @@ This subpackage contains the header files.
 find . -name .lock -type f -delete
 
 %build
-%global margs DOCUMENT_FOLDER="%_docdir/%name" our_CFLAGS="%optflags" LIBRARY_FOLDER="%_libdir" BUILD_MODE=cross
+%global margs DOCUMENT_FOLDER="%_docdir/%name" our_CFLAGS="%optflags" LIBRARY_FOLDER="%_libdir" BUILD_MODE=cross %{?sylzma}
 %make_build %margs
 
 %install

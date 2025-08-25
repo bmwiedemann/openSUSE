@@ -1,12 +1,12 @@
 ---
- src/Makefile |   13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
+ src/Makefile |   17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
 
-Index: hashcat-7.0.0/src/Makefile
+Index: hashcat-7.1.2/src/Makefile
 ===================================================================
---- hashcat-7.0.0.orig/src/Makefile
-+++ hashcat-7.0.0/src/Makefile
-@@ -3,7 +3,7 @@
+--- hashcat-7.1.2.orig/src/Makefile
++++ hashcat-7.1.2/src/Makefile
+@@ -3,17 +3,17 @@
  ## License.....: MIT
  ##
  
@@ -14,20 +14,21 @@ Index: hashcat-7.0.0/src/Makefile
 +SHARED                  ?= 1
  DEBUG                   := 0
  PRODUCTION              := 1
- PRODUCTION_VERSION      := v7.0.0
-@@ -11,9 +11,9 @@ ENABLE_CUBIN            ?= 1
+ PRODUCTION_VERSION      := v7.1.2
+ ENABLE_CUBIN            ?= 1
  ENABLE_BRAIN            ?= 1
  ENABLE_UNRAR            ?= 1
- USE_SYSTEM_LZMA         ?= 0
+-USE_SYSTEM_LZMA         ?= 0
 -USE_SYSTEM_ZLIB         ?= 0
++USE_SYSTEM_LZMA         ?= 1
 +USE_SYSTEM_ZLIB         ?= 1
  USE_SYSTEM_OPENCL       ?= 0
 -USE_SYSTEM_XXHASH       ?= 0
 +USE_SYSTEM_XXHASH       ?= 1
  ## do not change, requires some hacks
  USE_SYSTEM_UNRAR        ?= 0
- 
-@@ -114,7 +114,7 @@ VERSION_PURE            := $(shell echo
+ MAINTAINER_MODE         ?= 0
+@@ -121,7 +121,7 @@ VERSION_PURE            := $(shell echo
  ##
  
  DESTDIR                 ?=
@@ -36,7 +37,16 @@ Index: hashcat-7.0.0/src/Makefile
  
  INSTALL_FOLDER          ?= $(PREFIX)/bin
  SHARED_ROOT_FOLDER      ?= $(PREFIX)/share
-@@ -187,7 +187,7 @@ endif # MSYS2
+@@ -138,7 +138,7 @@ LIBRARY_DEV_FOLDER      ?= $(LIBRARY_DEV
+ ifeq ($(USE_SYSTEM_LZMA),0)
+ DEPS_LZMA_PATH          := deps/LZMA-SDK/C
+ else
+-DEPS_LZMA_PATH          := $(LIBRARY_DEV_ROOT_FOLDER)
++DEPS_LZMA_PATH          := /usr/include/lzma-sdk
+ endif
+ 
+ ifeq ($(USE_SYSTEM_ZLIB),0)
+@@ -194,7 +194,7 @@ endif # MSYS2
  ## Misc stuff
  ##
  
@@ -45,7 +55,7 @@ Index: hashcat-7.0.0/src/Makefile
  
  ##
  ## General compiler and linker options
-@@ -195,6 +195,7 @@ COMPTIME                := $(shell date
+@@ -202,6 +202,7 @@ COMPTIME                := $(shell date
  
  LFLAGS                  := $(LDFLAGS)
  
@@ -53,7 +63,7 @@ Index: hashcat-7.0.0/src/Makefile
  ifeq ($(PRODUCTION),0)
  CFLAGS                  += -W
  CFLAGS                  += -Wall
-@@ -268,7 +269,7 @@ endif
+@@ -277,7 +278,7 @@ endif
  ifeq ($(DEBUG),0)
  CFLAGS                  += -O2
  ifneq ($(UNAME),Darwin)

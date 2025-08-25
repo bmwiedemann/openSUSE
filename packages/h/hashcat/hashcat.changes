@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug 24 12:58:25 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1.2
+  * New algorithms: AS/400 DES, AS/400 SHA1, Cisco-ISE SHA256,
+    LUKS2-Argon2i KDF, KeePass KDBX v4, SAP CODVN H SHA512,
+    sm3crypt, BLAKE2b-256, MD6, sha224
+- Edit system-libs.patch to make use of system-provided lzma-sdk
+
+-------------------------------------------------------------------
 Wed Aug 20 09:30:40 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Use BUILD_MODE=cross to not optimize for build machine CPU (boo#1248352)
