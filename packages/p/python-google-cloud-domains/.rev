@@ -58,4 +58,12 @@
 - Update BuildRequires and Requires from setup.py</comment>
     <requestid>1272658</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6f165051445cdbd10ef8a434b57187a9</srcmd5>
+    <version>1.10.1</version>
+    <time>1756147114</time>
+    <user>anag_factory</user>
+    <comment>- Add missing BuildRequires on pytest-asyncio.</comment>
+    <requestid>1301153</requestid>
+  </revision>
 </revisionlist>
