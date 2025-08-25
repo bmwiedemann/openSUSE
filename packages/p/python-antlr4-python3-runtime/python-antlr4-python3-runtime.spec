@@ -1,7 +1,7 @@
 #
 # spec file for package python-antlr4-python3-runtime
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-antlr4-python3-runtime
 Version:        4.13.2
@@ -30,9 +35,14 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 %python_subpackages
 
 %description
@@ -61,6 +71,9 @@ sed -i 's,self.assertEquals,self.assertEqual,' tests/Test*
 
 %postun
 %python_uninstall_alternative pygrun
+
+%pre
+%python_libalternatives_reset_alternative pygrun
 
 %check
 cd %{_builddir}/antlr4-%{version}/runtime/Python3
