@@ -231,4 +231,17 @@
     <comment>Plasma 6.4.4 (forwarded request 1298101 from Vogtinator)</comment>
     <requestid>1298336</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>0a2a8bc2b3582747a1301178a4d4c044</srcmd5>
+    <version>6.4.4</version>
+    <time>1756147188</time>
+    <user>anag_factory</user>
+    <comment>- Add Requires: plymouth-plugin-script
+
+Without this, the theme can't be selected:
+
+    # plymouth-set-default-theme breeze
+    /usr/lib64/plymouth/script.so does not exist (forwarded request 1301018 from cboltz)</comment>
+    <requestid>1301306</requestid>
+  </revision>
 </revisionlist>

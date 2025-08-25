@@ -55,6 +55,7 @@ BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  plymouth-devel
 Requires:       plymouth-plugin-breeze = %{version}
 Requires:       plymouth-plugin-label-ft
+Requires:       plymouth-plugin-script
 Requires(post): plymouth-scripts
 Provides:       plymouth-theme-breeze = %{version}
 Obsoletes:      plymouth-theme-breeze < %{version}
