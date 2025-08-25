@@ -1485,4 +1485,16 @@ Please note that the boo#1226676 fix does not completely fix the issue on its ow
   * updated documentation (bsc#1246908)</comment>
     <requestid>1295604</requestid>
   </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>0f133060e2de6a5dc492f6fa49db3c16</srcmd5>
+    <version>2.1.6</version>
+    <time>1756146989</time>
+    <user>anag_factory</user>
+    <comment>- upgrade to version 2.1.6
+  * drop broken option KDUMP_NETCONFIG=&quot;&quot; from manpage
+  * prevent NetworkManager from overwriting resolv.conf (bsc#1247848)
+  * fix KDUMP_NETCONFIG=auto for NetworkManager (bsc#1247848)
+  * exclude kernel.panic_on_warn sysctl (bsc#1247355)</comment>
+    <requestid>1301015</requestid>
+  </revision>
 </revisionlist>

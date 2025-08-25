@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 22 18:33:18 UTC 2025 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 2.1.6
+  * drop broken option KDUMP_NETCONFIG="" from manpage
+  * prevent NetworkManager from overwriting resolv.conf (bsc#1247848)
+  * fix KDUMP_NETCONFIG=auto for NetworkManager (bsc#1247848)
+  * exclude kernel.panic_on_warn sysctl (bsc#1247355)
+
+-------------------------------------------------------------------
 Thu Jul 24 15:16:51 UTC 2025 - Jiri Bohac <jbohac@suse.com>
 
 - upgrade to version 2.1.5
