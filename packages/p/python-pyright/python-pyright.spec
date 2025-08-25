@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyright
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-pyright
 Version:        1.1.376
@@ -23,21 +28,26 @@ Release:        0
 Summary:        Command line wrapper for pyright
 License:        MIT
 URL:            https://github.com/RobertCraigie/pyright-python
-Source:		https://github.com/RobertCraigie/pyright-python/archive/refs/tags/v%{version}.tar.gz#/pyright-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+Source:         https://github.com/RobertCraigie/pyright-python/archive/refs/tags/v%{version}.tar.gz#/pyright-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-subprocess}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-nodeenv >= 1.6.0
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module nodeenv >= 1.6.0}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-nodeenv >= 1.6.0
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 %python_subpackages
 
 %description
@@ -62,8 +72,12 @@ Command line wrapper for pyright
 %python_clone -a %{buildroot}%{_bindir}/pyright-python
 %python_clone -a %{buildroot}%{_bindir}/pyright-langserver
 %python_clone -a %{buildroot}%{_bindir}/pyright-python-langserver
+%python_group_libalternatives pyright pyright-python pyright-langserver pyright-python-langserver
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand %fdupes %{buildroot}%{_bindir}
+
+%pre
+%python_libalternatives_reset_alternative pyright
 
 %post
 %python_install_alternative pyright pyright-python pyright-langserver pyright-python-langserver
