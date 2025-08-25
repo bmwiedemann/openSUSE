@@ -1,7 +1,7 @@
 #
 # spec file for package cnf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,13 @@
 
 Name:           cnf
 #               This will be set by osc services, that will run after this.
-Version:        0.7.1~0
+Version:        0.8.0~0
 Release:        0
 Summary:        A command-not-found handler for openSUSE
 License:        MIT
 URL:            https://github.com/openSUSE/cnf
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-# TODO: move files into git
-Source10:       command_not_found.bash
-Source11:       command_not_found.zsh
 BuildRequires:  cargo-packaging
 BuildRequires:  gettext-tools
 BuildRequires:  libsolv-devel
@@ -103,8 +100,8 @@ Locale support for %{name}
 ln -sfr %{buildroot}/%{_bindir}/cnf %{buildroot}/%{_bindir}/command-not-found
 
 # shell integrations
-install -D -m 0644 %{SOURCE10} %{buildroot}%{_sysconfdir}/bash_command_not_found
-install -D -m 0644 %{SOURCE11} %{buildroot}%{_sysconfdir}/zsh_command_not_found
+install -D -m 0644 command_not_found.bash %{buildroot}%{_sysconfdir}/bash_command_not_found
+install -D -m 0644 command_not_found.zsh %{buildroot}%{_sysconfdir}/zsh_command_not_found
 
 # i18n
 ls -1 i18n/po/ | while read LOCALE; do
