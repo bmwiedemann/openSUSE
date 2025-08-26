@@ -1,8 +1,7 @@
-diff --git a/data/org.xfce.xfdashboard.desktop.in.in b/data/org.xfce.xfdashboard.desktop.in.in
-index 7679261..fd63ac0 100644
---- a/data/org.xfce.xfdashboard.desktop.in.in
-+++ b/data/org.xfce.xfdashboard.desktop.in.in
-@@ -5,6 +5,6 @@ _Comment=Maybe a Gnome shell like dashboard for Xfce
+diff -rup a/data/org.xfce.xfdashboard.desktop.in.in b/data/org.xfce.xfdashboard.desktop.in.in
+--- a/data/org.xfce.xfdashboard.desktop.in.in	2025-08-21 16:49:26.000000000 +0200
++++ b/data/org.xfce.xfdashboard.desktop.in.in	2025-08-22 09:59:04.933378839 +0200
+@@ -6,6 +6,6 @@ GenericName=Xfdashboard
  TryExec=@bindir@/xfdashboard
  Exec=@bindir@/xfdashboard
  Icon=org.xfce.xfdashboard

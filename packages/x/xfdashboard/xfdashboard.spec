@@ -1,7 +1,7 @@
 #
 # spec file for package xfdashboard
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define so_ver 0
 Name:           xfdashboard
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        GNOME shell like dashboard for Xfce
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/apps/xfdashboard/start
-Source0:        https://archive.xfce.org/src/apps/%{name}/0.8/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/apps/%{name}/1.1/%{name}-%{version}.tar.xz
 Source8:        xfdashboard.1
 Source9:        xfdashboard-settings.1
+Source10:       xfdashboard-rpmlintrc
 
 # WARNING! Please don't add OnlyShowIn key to the desktop file
 # to save possibility to be run from under different desktop environments.
@@ -37,21 +38,28 @@ Patch0:         xfdashboard-desktop-category.diff
 # PATCH-FIX-OPENSUSE xfdashboard-desktopfile-without-binary.diff dap.darkness@gmail.com -- fixes "W: desktopfile-without-binary".
 Patch2:         xfdashboard-desktopfile-without-binary.diff
 
+# PATCH-FIX-OPENSUSE xfdashboard-relax-some-package-versions.diff manfred.h@gmx.net -- live with some older packages in Leap 15.6
+Patch3:         xfdashboard-relax-some-package-versions.diff
+
 BuildRequires:  appstream-glib
 BuildRequires:  clutter-devel
 BuildRequires:  fdupes
 BuildRequires:  libtool
-BuildRequires:  libxfce4util-devel >= 4.14.0
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  xfce4-dev-tools
-BuildRequires:  pkgconfig(garcon-1)
-BuildRequires:  pkgconfig(ice)
-BuildRequires:  pkgconfig(libwnck-3.0)
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.14.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.14.0
-BuildRequires:  pkgconfig(libxfconf-0)
-BuildRequires:  pkgconfig(xcomposite)
-BuildRequires:  pkgconfig(xdamage)
-BuildRequires:  pkgconfig(xinerama)
+BuildRequires:  pkgconfig(clutter-1.0) >= 1.24.0
+BuildRequires:  pkgconfig(clutter-cogl-1.0) >= 1.24.0
+BuildRequires:  pkgconfig(clutter-gdk-1.0) >= 1.24.0
+BuildRequires:  pkgconfig(cogl-1.0) >= 1.18.0
+BuildRequires:  pkgconfig(garcon-1) >= 4.16.0
+BuildRequires:  pkgconfig(libwnck-3.0) >= 3.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.16.0
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.16.0
+BuildRequires:  pkgconfig(x11) >= 1.6.7
+BuildRequires:  pkgconfig(xcomposite) >= 0.2
+BuildRequires:  pkgconfig(xdamage) >= 1.1.4
+BuildRequires:  pkgconfig(xinerama) >= 1.1.3
 Requires:       libcanberra-gtk-module-common
 Recommends:     %{name}-lang
 Recommends:     %{name}-themes
@@ -93,16 +101,21 @@ A library providing authenticators for Xfdashboard.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} > 0 && 0%{?suse_version} < 1600
+# Need to explicitly link with the match library
+export CFLAGS="%{optflags} -lm"
+%else
 export CFLAGS="%{optflags}"
-%configure
-%make_build
+%endif
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}%{_mandir}/man1
-gzip -c9 %{SOURCE8} | tee -a %{buildroot}%{_mandir}/man1/%{name}.1.gz
-gzip -c9 %{SOURCE9} | tee -a %{buildroot}%{_mandir}/man1/%{name}-settings.1.gz
+gzip -c9 %{SOURCE8} >> %{buildroot}%{_mandir}/man1/%{name}.1.gz
+gzip -c9 %{SOURCE9} >> %{buildroot}%{_mandir}/man1/%{name}-settings.1.gz
 %fdupes -s %{buildroot}%{_datadir}/themes/%{name}-*
 %find_lang %{name} %{?no_lang_C}
 

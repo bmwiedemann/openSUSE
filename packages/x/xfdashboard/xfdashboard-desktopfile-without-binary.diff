@@ -1,11 +1,10 @@
-diff --git a/data/org.xfce.xfdashboard-autostart.desktop.in.in b/data/org.xfce.xfdashboard-autostart.desktop.in.in
-index 16b40aa..40db7f3 100644
---- a/data/org.xfce.xfdashboard-autostart.desktop.in.in
-+++ b/data/org.xfce.xfdashboard-autostart.desktop.in.in
+diff -rup a/data/org.xfce.xfdashboard-autostart.desktop.in.in b/data/org.xfce.xfdashboard-autostart.desktop.in.in
+--- a/data/org.xfce.xfdashboard-autostart.desktop.in.in	2025-08-21 16:49:26.000000000 +0200
++++ b/data/org.xfce.xfdashboard-autostart.desktop.in.in	2025-08-22 10:00:42.357495625 +0200
 @@ -2,8 +2,8 @@
  Type=Application
- _Name=Xfdashboard
- _Comment=Start xfdashboard as daemon in background
+ Name=Xfdashboard
+ Comment=Start xfdashboard as daemon in background
 -TryExec=@bindir@/xfdashboard
 -Exec=@bindir@/xfdashboard -d
 +TryExec=xfdashboard
@@ -13,13 +12,12 @@ index 16b40aa..40db7f3 100644
  Icon=org.xfce.xfdashboard
  NotShowIn=GNOME;KDE;Unity;
  Terminal=false
-diff --git a/data/org.xfce.xfdashboard-settings.desktop.in.in b/data/org.xfce.xfdashboard-settings.desktop.in.in
-index 24f0ab8..9406a99 100644
---- a/data/org.xfce.xfdashboard-settings.desktop.in.in
-+++ b/data/org.xfce.xfdashboard-settings.desktop.in.in
+diff -rup a/data/org.xfce.xfdashboard-settings.desktop.in.in b/data/org.xfce.xfdashboard-settings.desktop.in.in
+--- a/data/org.xfce.xfdashboard-settings.desktop.in.in	2025-08-21 16:49:26.000000000 +0200
++++ b/data/org.xfce.xfdashboard-settings.desktop.in.in	2025-08-22 10:00:46.981500296 +0200
 @@ -4,8 +4,8 @@ Type=Application
- _Name=Xfdashboard settings
- _Comment=Configure xfdashboard
+ Name=Xfdashboard settings
+ Comment=Configure xfdashboard
  GenericName=Xfdashboard settings
 -TryExec=@bindir@/xfdashboard-settings
 -Exec=@bindir@/xfdashboard-settings
@@ -28,13 +26,12 @@ index 24f0ab8..9406a99 100644
  Icon=org.xfce.xfdashboard
  Categories=XFCE;GTK;Settings;DesktopSettings;X-XFCE-SettingsDialog;X-XFCE-PersonalSettings;
  NotShowIn=GNOME;KDE;Unity;
-diff --git a/data/org.xfce.xfdashboard.desktop.in.in b/data/org.xfce.xfdashboard.desktop.in.in
-index 577ecf3..a31f4e7 100644
---- a/data/org.xfce.xfdashboard.desktop.in.in
-+++ b/data/org.xfce.xfdashboard.desktop.in.in
+diff -rup a/data/org.xfce.xfdashboard.desktop.in.in b/data/org.xfce.xfdashboard.desktop.in.in
+--- a/data/org.xfce.xfdashboard.desktop.in.in	2025-08-22 09:59:42.596428133 +0200
++++ b/data/org.xfce.xfdashboard.desktop.in.in	2025-08-22 10:00:54.341509806 +0200
 @@ -3,8 +3,8 @@ Type=Application
- _Name=Xfdashboard
- _Comment=Maybe a Gnome shell like dashboard for Xfce
+ Name=Xfdashboard
+ Comment=Maybe a Gnome shell like dashboard for Xfce
  GenericName=Xfdashboard
 -TryExec=@bindir@/xfdashboard
 -Exec=@bindir@/xfdashboard

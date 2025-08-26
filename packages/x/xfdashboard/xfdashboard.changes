@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Aug 22 07:21:12 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 1.1.0
+  * Update README after switchover to meson
+  * build: Fix -Wunused-but-set-variable
+  * x11: Set wnck client type at the very first call
+  * build: Fix -Werror=undef
+  * Add meson build
+  * build: Automate copyright year management
+  * build: Unbreak example-search-provider
+  * build: Install version.h
+  * build: Drop dead code with glib 2.66
+  * build: Require clutter 1.24.0
+  * build: Require xfce 4.16.0
+  * build: Require gtk 3.22.0
+  * Replace deprecated exo with libxfce4ui 4.21.0
+  * I18n: Update po/LINGUAS list
+  * I18n: Update po/LINGUAS list
+  * I18n: Update po/LINGUAS list
+  * I18n: Update po/LINGUAS list
+  * xfdashboard: Fix translation in g_option_context_set_summary
+  * build: Fix gettext warning about empty string
+  * build: Use XDT_VERSION_INIT and get rid of configure.ac.in
+  * build: Workaround *.theme translation
+  * build: Switch from intltool to gettext
+  * build: Fix deprecation warnings from glib
+  * build: Fix redefined glib macros
+  * build: Add new debug option to AS_CASE
+  * Raise required minimum version of Glib 2.66 due to some functions
+    of Glib used without #ifdef's and alternatives
+  * Add icons at missing sizes, clean up SVG metadata
+  * Remove ENABLE_NLS ifdefs
+  * Post-release version bump to 1.1.0
+  * Translation Updates
+- Regenerate xfdashboard-desktop-category.diff and
+  xfdashboard-desktopfile-without-binary.diff
+- Add xfdashboard-relax-some-package-versions.diff
+- Rewrite the "tee -a" construct to avoid compressed binary data
+  being sent to stdout and cluttering the output
+- Add xfdashboard-rpmlintrc to avoid an unnecessary complex package
+  name for libxdashboard0
+- Add "-lm" to CFLAGS on Leap 15.6, because libxfdashboard0.so
+  doesn't get automatically linked with libm.
+
+-------------------------------------------------------------------
 Mon Feb 26 12:08:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
