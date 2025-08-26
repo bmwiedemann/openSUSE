@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 25 14:05:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Tue Mar 26 19:06:01 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch build system from setuptools to pyproject.toml

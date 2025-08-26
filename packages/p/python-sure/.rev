@@ -112,4 +112,12 @@
     <comment></comment>
     <requestid>1162365</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>8397186307187cb05a67f65c2ecbd91e</srcmd5>
+    <version>2.0.1</version>
+    <time>1756212977</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301297</requestid>
+  </revision>
 </revisionlist>
