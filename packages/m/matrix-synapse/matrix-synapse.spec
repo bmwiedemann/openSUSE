@@ -37,7 +37,7 @@
 %global matrix_common_max_version     2
 %global msgpack_version               1.1.0
 %global netaddr_version               1.3.0
-%global phonenumbers_version          9.0.10
+%global phonenumbers_version          9.0.11
 %global prometheus_client_version     0.20.0
 %global psutil_version                2.0.0
 %global pyOpenSSL_version             25.0.0
@@ -157,7 +157,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.136.0
+Version:        1.137.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
