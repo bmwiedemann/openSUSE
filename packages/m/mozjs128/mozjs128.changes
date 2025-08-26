@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 22 17:41:00 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 128.14.0:
+  + CVE-2025-9179: Sandbox escape due to invalid pointer in the
+    Audio/Video: GMP component
+  + CVE-2025-9180: Same-origin policy bypass in the Graphics:
+    Canvas2D component
+  + CVE-2025-9181: Uninitialized memory in the JavaScript Engine
+    component
+  + CVE-2025-9185: Memory safety bugs fixed in Firefox ESR 115.27,
+    Firefox ESR 128.14, Thunderbird ESR 128.14, Firefox ESR 140.2,
+    Thunderbird ESR 140.2, Firefox 142 and Thunderbird 142
+
+-------------------------------------------------------------------
 Mon Jul 21 15:13:17 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 128.13.0:
