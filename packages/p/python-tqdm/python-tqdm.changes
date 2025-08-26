@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 25 14:23:42 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Thu Jan  9 13:01:25 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove nbval build dependency

@@ -1,7 +1,7 @@
 #
 # spec file for package python-tqdm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,11 @@
 %define pkg_suffix %{nil}
 %bcond_with test
 %endif
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-tqdm%{pkg_suffix}
 Version:        4.67.1
@@ -42,15 +47,20 @@ BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Enhances:       python-ipython
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if %{with test}
 # SECTION test requirements
-BuildRequires:  %{python_module pytest-asyncio >= 0.24}
 # Conditional required for SLE-15-SP4+
 BuildRequires:  %{python_module numpy if (python-base without python36-base)}
+BuildRequires:  %{python_module pytest-asyncio >= 0.24}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tqdm = %{version}}
@@ -106,6 +116,9 @@ install -m 644 -D tqdm/completion.sh %{buildroot}%{_datadir}/bash-completion/com
 
 %postun
 %python_uninstall_alternative tqdm
+
+%pre
+%python_libalternatives_reset_alternative tqdm
 %endif
 
 %if %{with test}

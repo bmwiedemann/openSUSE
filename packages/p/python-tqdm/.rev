@@ -543,4 +543,12 @@ update to latest version</comment>
     <comment>- Remove nbval build dependency</comment>
     <requestid>1236199</requestid>
   </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>9238afdfefff277283010937a73cac15</srcmd5>
+    <version>4.67.1</version>
+    <time>1756212982</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301301</requestid>
+  </revision>
 </revisionlist>
