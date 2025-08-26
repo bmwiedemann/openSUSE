@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Aug 26 05:06:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.86.2:
+  * chore: updated dependency github.com/aws/aws-sdk-go-v2 to
+    v1.38.1 by @denis256 in #4728
+  * chore: updated dependency github.com/hashicorp/go-plugin to
+    v1.7.0 by @denis256 in #4728
+  * chore: updated dependency github.com/zclconf/go-cty to v1.16.4
+    by @denis256 in #4728
+  * chore: updated dependency google.golang.org/api to v0.248.0 by
+    @denis256 in #4728
+  * chore: updated dependency google.golang.org/grpc to v1.75.0 by
+    @denis256 in #4728
+  * chore: updated dependency google.golang.org/protobuf to v1.36.8
+    by @denis256 in #4728
+  * chore: updated dependency go.uber.org/mock to v0.6.0 by
+    @denis256 in #4728
+  * chore: updated dependency github.com/aws/aws-sdk-go-v2/config
+    to v1.31.2 by @denis256 in #4728
+  * chore: updated dependency
+    github.com/aws/aws-sdk-go-v2/service/dynamodb to v1.49.1 by
+    @denis256 in #4728
+  * chore: updated dependency
+    github.com/aws/aws-sdk-go-v2/service/iam to v1.47.1 by
+    @denis256 in #4728
+  * chore: updated dependency
+    github.com/aws/aws-sdk-go-v2/service/s3 to v1.87.1 by @denis256
+    in #4728
+  * chore: updated dependency
+    github.com/aws/aws-sdk-go-v2/service/sts to v1.38.0 by
+    @denis256 in #4728
+  * chore: updated dependency github.com/aws/smithy-go to v1.22.5
+    by @denis256 in #4728
+
+-------------------------------------------------------------------
 Mon Aug 25 06:37:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.86.1:
