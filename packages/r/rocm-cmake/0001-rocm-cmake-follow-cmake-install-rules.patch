@@ -1,0 +1,63 @@
+From 52cabe5ce281004ff277cb3044b9cb441e89cae2 Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Sat, 16 Aug 2025 13:20:36 -0700
+Subject: [PATCH] rocm-cmake follow cmake install rules
+
+Signed-off-by: Tom Rix <Tom.Rix@amd.com>
+---
+ .../cmake/ROCMInstallTargets.cmake            | 39 ++-----------------
+ 1 file changed, 3 insertions(+), 36 deletions(-)
+
+diff --git a/share/rocmcmakebuildtools/cmake/ROCMInstallTargets.cmake b/share/rocmcmakebuildtools/cmake/ROCMInstallTargets.cmake
+index 304211ba443d..9776279dbe87 100644
+--- a/share/rocmcmakebuildtools/cmake/ROCMInstallTargets.cmake
++++ b/share/rocmcmakebuildtools/cmake/ROCMInstallTargets.cmake
+@@ -131,42 +131,9 @@ function(rocm_install_targets)
+         set(EXPORT_FILE ${PARSE_EXPORT})
+     endif()
+ 
+-    if(WIN32)
+-        set(BIN_INSTALL_DIR ${CMAKE_INSTALL_BINDIR})
+-        set(LIB_INSTALL_DIR ${ROCM_INSTALL_LIBDIR})
+-        set(INCLUDE_INSTALL_DIR ${CMAKE_INSTALL_INCLUDEDIR})
+-    elseif(PARSE_PREFIX)
+-        set(PREFIX_DIR ${PARSE_PREFIX})
+-        if(PARSE_PRIVATE)
+-            set(BIN_INSTALL_DIR ${PARSE_PREFIX}/${ROCM_INSTALL_LIBDIR}/${PROJECT_NAME}/bin)
+-            set(LIB_INSTALL_DIR ${PARSE_PREFIX}/${ROCM_INSTALL_LIBDIR}/${PROJECT_NAME}/lib)
+-            set(INCLUDE_INSTALL_DIR ${PARSE_PREFIX}/${ROCM_INSTALL_LIBDIR}/${PROJECT_NAME}/include)
+-        else()
+-            set(BIN_INSTALL_DIR ${PARSE_PREFIX}/${CMAKE_INSTALL_BINDIR})
+-            set(LIB_INSTALL_DIR ${PARSE_PREFIX}/${ROCM_INSTALL_LIBDIR})
+-            set(INCLUDE_INSTALL_DIR ${PARSE_PREFIX}/${CMAKE_INSTALL_INCLUDEDIR})
+-        endif()
+-    elseif(ENABLE_ASAN_PACKAGING)
+-        if(PARSE_PRIVATE)
+-            set(BIN_INSTALL_DIR ${ROCM_INSTALL_LIBDIR}/asan/${PROJECT_NAME}/bin)
+-            set(LIB_INSTALL_DIR ${ROCM_INSTALL_LIBDIR}/asan/${PROJECT_NAME}/lib)
+-            set(INCLUDE_INSTALL_DIR ${ROCM_INSTALL_LIBDIR}/asan/${PROJECT_NAME}/include)
+-        else()
+-            set(BIN_INSTALL_DIR ${CMAKE_INSTALL_BINDIR}/asan)
+-            set(LIB_INSTALL_DIR ${ROCM_INSTALL_LIBDIR}/asan)
+-            set(INCLUDE_INSTALL_DIR ${CMAKE_INSTALL_INCLUDEDIR})
+-        endif()
+-    else()
+-        if(PARSE_PRIVATE)
+-            set(BIN_INSTALL_DIR ${ROCM_INSTALL_LIBDIR}/${PROJECT_NAME}/bin)
+-            set(LIB_INSTALL_DIR ${ROCM_INSTALL_LIBDIR}/${PROJECT_NAME}/lib)
+-            set(INCLUDE_INSTALL_DIR ${ROCM_INSTALL_LIBDIR}/${PROJECT_NAME}/include)
+-        else()
+-            set(BIN_INSTALL_DIR ${CMAKE_INSTALL_BINDIR})
+-            set(LIB_INSTALL_DIR ${ROCM_INSTALL_LIBDIR})
+-            set(INCLUDE_INSTALL_DIR ${CMAKE_INSTALL_INCLUDEDIR})
+-        endif()
+-    endif()
++    set(BIN_INSTALL_DIR ${CMAKE_INSTALL_BINDIR})
++    set(LIB_INSTALL_DIR ${ROCM_INSTALL_LIBDIR})
++    set(INCLUDE_INSTALL_DIR ${CMAKE_INSTALL_INCLUDEDIR})
+ 
+     foreach(TARGET ${PARSE_TARGETS})
+         foreach(INCLUDE ${PARSE_INCLUDE})
+-- 
+2.50.1
+
