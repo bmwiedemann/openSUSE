@@ -207,4 +207,12 @@
     * Replace %python_install with %pyproject_install</comment>
     <requestid>1289273</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>8ac5c1cf53c22aff17fd270cc1c1e8b3</srcmd5>
+    <version>1.37.1</version>
+    <time>1756213049</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301410</requestid>
+  </revision>
 </revisionlist>

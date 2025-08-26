@@ -1,7 +1,7 @@
 #
 # spec file for package python-yamllint
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-yamllint
 Version:        1.37.1
@@ -33,9 +38,14 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-pathspec >= 0.5.3
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pathspec >= 0.5.3}
@@ -73,6 +83,9 @@ export GITHUB_RUN_ID=1
 
 %postun
 %python_uninstall_alternative yamllint
+
+%pre
+%python_libalternatives_reset_alternative yamllint
 
 %files %{python_files}
 %doc README.rst
