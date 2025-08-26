@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Aug 25 14:51:36 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.4.8:
+  + New Features:
+    - Add AppStream metainfo XML with hardware provide info.
+    - Add support for -Dsystemd_root_prefix to make local building
+      easier.
+    - Install sysusers.d config file if configured user is not
+      root.
+  + Bugfixes:
+    - Add the source attribute for each man page.
+    - Drop component type from AppStream metadata XML to avoid
+      parsing error.
+    - Fix a critical warning when running the self tests.
+    - Fix USB scanners not working with RestrictAddressFamilies.
+    - Fix writing to the database with ProtectSystem=strict.
+    - Properly set the status to CD_SESSION_STATUS_RUNNING.
+    - Use g_ascii_strtod instead of atof().
+    - Use sqlite3_errmsg() to avoid getting a mutable error
+      message.
+- Changes from version 1.4.7:
+  + Bugfixes:
+    - Add various hardenings to the systemd service.
+    - Always close the ICC profile when loading fails.
+    - Avoid destructing LCMS plugin twice with lcms 2.14.
+    - Do not make state files executable in tmpfiles.d/colord.conf.
+    - Fix a double free spotted by Coverity.
+    - Fix an error check when parsing the DTP94 data.
+    - Fix a -Wincompatible-pointer-types warning.
+    - Fix potential crash when reading from broken Huey hardware.
+    - Set FILE_OFFSET_BITS explicitly.
+    - Use a 64-bit time_t.
+    - Use thread context for Gamut Alarm codes.
+- Drop colord-CVE-2021-42523.patch and
+  harden_colord.service.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Tue Oct 15 11:58:27 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks (PED-266).

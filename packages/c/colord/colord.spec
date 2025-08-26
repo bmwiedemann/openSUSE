@@ -1,7 +1,7 @@
 #
 # spec file for package colord
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d
 
 Name:           colord
-Version:        1.4.6
+Version:        1.4.8
 Release:        0
 Summary:        System Daemon for Managing Color Devices
 License:        GPL-2.0-or-later
@@ -28,14 +28,9 @@ URL:            https://github.com/hughsie/colord/
 Source0:        https://www.freedesktop.org/software/colord/releases/%{name}-%{version}.tar.xz
 Source1:        https://www.freedesktop.org/software/colord/releases/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-# PATCH-FEATURE-OPENSUSE
-Patch0:         harden_colord.service.patch
 # Apparmor profile
 Source3:        usr.lib.colord
-Source4:        colord.sysusers
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM colord-CVE-2021-42523.patch boo#1202802 mgorse@suse.com -- fix a small memory leak on db open failure.
-Patch1:         colord-CVE-2021-42523.patch
 
 BuildRequires:  argyllcms
 BuildRequires:  docbook5-xsl-stylesheets
@@ -149,7 +144,6 @@ there are no users logged in.
 %autosetup -p1
 
 %build
-%sysusers_generate_pre %{SOURCE4} %{name} %{name}.conf
 # Set ~2 GiB limit so that colprof is forced to work in chunks when
 # generating the print profile rather than trying to allocate a 3.1 GiB
 # chunk of RAM to put the entire B-to-A tables in.
@@ -180,14 +174,15 @@ ulimit -Sv 2000000
 %meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
+%sysusers_generate_pre %{buildroot}%{_sysusersdir}/%{name}-sysusers.conf colord-sysusers colord-sysusers.conf
+
 # Install Apparmor profile
 mkdir -p %{buildroot}%{_sysconfdir}/apparmor.d/
 install -c -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/apparmor.d/
 
-install -Dm0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/%{name}.conf
 %find_lang %{name}
 
-%pre -f %{name}.pre
+%pre -f %{name}-sysusers.pre
 %service_add_pre %{name}.service
 
 %preun
@@ -209,7 +204,6 @@ install -Dm0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/%{name}.conf
 %license COPYING
 %doc AUTHORS NEWS
 %{_unitdir}/colord.service
-%{_sysusersdir}/%{name}.conf
 %{_udevrulesdir}/*.rules
 %attr(755,colord,colord) %dir %{_localstatedir}/lib/colord
 %ghost %attr(755,colord,colord) %{_localstatedir}/lib/colord/icc
@@ -230,6 +224,7 @@ install -Dm0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/%{name}.conf
 %dir %{_datadir}/dbus-1/system.d
 %{_datadir}/dbus-1/system.d/org.freedesktop.ColorManager.conf
 %{_datadir}/glib-2.0/schemas/org.freedesktop.ColorHelper.gschema.xml
+%{_datadir}/metainfo/org.freedesktop.colord.metainfo.xml
 %{_datadir}/polkit-1/actions/org.freedesktop.color.policy
 %{_mandir}/man1/cd-create-profile.1%{?ext_man}
 %{_mandir}/man1/cd-fix-profile.1%{?ext_man}
@@ -241,6 +236,7 @@ install -Dm0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/%{name}.conf
 %{_libdir}/libcolordcompat.so
 %{_libdir}/colord-plugins/libcolord_sensor_camera.so
 %{_libdir}/colord-plugins/libcolord_sensor_scanner.so
+%{_sysusersdir}/colord-sysusers.conf
 %{_userunitdir}/colord-session.service
 %{_tmpfilesdir}/colord.conf
 

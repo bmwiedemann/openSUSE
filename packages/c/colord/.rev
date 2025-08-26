@@ -772,4 +772,12 @@ Note: This was reported for Leap, therefore please consider to backport this pro
     <comment>Drop SUSE specific rcFOO symlinks (forwarded request 1208118 from dimstar)</comment>
     <requestid>1208162</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>b895e240a0d28bc5174c6d0638a44075</srcmd5>
+    <version>1.4.8</version>
+    <time>1756212985</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1301314</requestid>
+  </revision>
 </revisionlist>
