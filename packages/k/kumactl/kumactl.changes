@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 26 10:59:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.11.5:
+  * chore(deps): security update (#14259)
+  * chore(deps): bump openapi-tool to v1.1.6 (backport of #14226)
+    (#14250)
+
+-------------------------------------------------------------------
 Wed Aug 06 08:16:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.11.4:
