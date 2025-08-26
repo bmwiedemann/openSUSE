@@ -2,6 +2,7 @@
 # spec file for package libuninameslist
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %define somajor 1
 Name:           libuninameslist
-Version:        20240910
+Version:        20250714
 Release:        0
 Summary:        A library providing Unicode character names and annotations
 License:        BSD-3-Clause
@@ -31,14 +32,16 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 
 %description
-libuninameslist provides Unicode name and annotation data from the official Unicode Character Database.
+libuninameslist provides Unicode name and annotation data from the official
+Unicode Character Database.
 
 %package     -n %{name}%{somajor}
 Summary:        A library providing Unicode character names and annotations
 Group:          System/Libraries
 
 %description -n %{name}%{somajor}
-libuninameslist provides Unicode name and annotation data from the official Unicode Character Database.
+libuninameslist provides Unicode name and annotation data from the official
+Unicode Character Database.
 
 %package        devel
 Summary:        Header files for %{name}
@@ -49,28 +52,38 @@ Requires:       %{name}%{somajor} = %{version}
 This package contains header files for %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fiv
-%configure --disable-static
+%configure \
+	--disable-static \
+	--enable-frenchlib \
+	%{nil}
 %make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n %{name}%{somajor} -p /sbin/ldconfig
-%postun -n %{name}%{somajor} -p /sbin/ldconfig
+%check
+%make_build check
+
+%ldconfig_scriptlets -n %{name}%{somajor}
 
 %files -n libuninameslist%{somajor}
 %license LICENSE
-%{_libdir}/libuninameslist.so.%{somajor}*
+%{_libdir}/libuninameslist.so.%{somajor}{,.*}
+%{_libdir}/libuninameslist-fr.so.%{somajor}{,.*}
 
 %files devel
+%license LICENSE
 %{_libdir}/libuninameslist.so
+%{_libdir}/libuninameslist-fr.so
 %{_libdir}/pkgconfig/libuninameslist.pc
 %{_mandir}/man3/libuninameslist.3%{?ext_man}
+%{_mandir}/man3/libuninameslist-fr.3%{?ext_man}
 %{_includedir}/uninameslist.h
+%{_includedir}/uninameslist-fr.h
 
 %changelog
