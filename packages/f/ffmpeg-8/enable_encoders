@@ -1,0 +1,195 @@
+## module name # reason for enablement in ffmpeg (usually there is another package that already got legal review)
+a64multi
+a64multi5
+aac
+ac3
+adpcm_adx
+adpcm_argo
+adpcm_g722
+adpcm_g726
+adpcm_g726le
+adpcm_ima_alp
+adpcm_ima_amv
+adpcm_ima_apm
+adpcm_ima_qt
+adpcm_ima_ssi
+adpcm_ima_wav
+adpcm_ima_ws
+adpcm_ms
+adpcm_swf
+adpcm_yamaha
+alac
+alias_pix
+amv
+anull
+apng # libpng
+ass # trivial
+asv1
+asv2
+av1_nvenc
+av1_vaapi
+ayuv # trival
+bitpacked # trivial
+bmp # trivial
+cinepak
+cljr
+dca
+dfpwm
+dnxhd
+dpx
+dvdsub
+dvvideo
+exr
+ffv1
+ffvhuff # trivial+zlib
+flac # libFLAC
+flashsv
+flashsv2
+flv
+g723_1
+gif # libpng
+h261
+h263
+h263_v4l2m2m # passthrough
+h263p
+hdr
+huffyuv # trivial+zlib
+ilbc # ilbc
+jpeg2000
+jpegls
+libaom # libaom
+libaom_av1 # libaom
+libcodec2 # codec2
+libgsm # libgsm
+libgsm_ms # libgsm
+libjxl # libjxl
+libmp3lame # lame
+libopencore_amrnb # opencore-amr
+libopenh264 # passthrough/dlopen
+libopenjpeg # openjpeg
+libopus # opus
+librav1e # rav1e
+libschroedinger # schroedinger
+libspeex # speex
+libsvtav1 # SVT-AV1
+libtheora # libtheora
+libtwolame # twolame
+libvo_amrwbenc # vo-amrwbenc
+libvorbis # libvorbis
+libvpx_vp8 # libvpx
+libvpx_vp9 # libvpx
+libwebp # libwebp
+libwebp_anim # libwebp
+libxvid # xvidcore
+mjpeg # mjpegtools
+mjpeg_qsv # passthrough
+mjpeg_vaapi # passthrough
+mlp
+mp2 # twolame
+mp2fixed # twolame
+mpeg1video
+mpeg2_qsv
+mpeg2_vaapi
+mpeg2video
+mpeg4
+mpeg4_v4l2m2m # passthrough
+msmpeg4v1
+msmpeg4v2
+msmpeg4v3
+msnsiren
+msvideo1
+nellymoser
+opus # opus
+pam
+pbm # trivial
+pcm_alaw # trivial
+pcm_f32be # trivial
+pcm_f32le # trivial
+pcm_f64be # trivial
+pcm_f64le # trivial
+pcm_mulaw # trivial
+pcm_s16be # trivial
+pcm_s16be_planar # trivial
+pcm_s16le # trivial
+pcm_s16le_planar # trivial
+pcm_s24be # trivial
+pcm_s24le # trivial
+pcm_s24le_planar # trivial
+pcm_s32be # trivial
+pcm_s32le # trivial
+pcm_s32le_planar # trivial
+pcm_s8 # trivial
+pcm_s8_planar # trivial
+pcm_u16be # trivial
+pcm_u16le # trivial
+pcm_u24be # trivial
+pcm_u24le # trivial
+pcm_u32be # trivial
+pcm_u32le # trivial
+pcm_u8 # trivial
+pcx
+pgm # trivial
+pgmyuv # trivial
+phm # trivial
+png # libpng
+ppm # trivial
+qoi
+qtrle
+r10k # trivial
+r210 # trivial
+ra_144
+rawvideo # trivial
+roq
+roq_dpcm
+rpza
+rv10
+rv20
+s302m
+sbc
+sgi # trivial
+siren
+smc
+snow
+sonic
+sonic_ls
+speedhq
+srt # trivial
+ssa # trivial
+subrip # trivial
+sunrast # trivial
+svq1
+targa # trivial
+text # trivial
+tiff # libtiff
+truehd
+tta
+ttml
+utvideo
+v210 # trivial
+v308 # trivial
+v408 # trivial
+v410 # trivial
+vc2 # dirac
+vnull # trivial
+vorbis # libvorbis
+vp8_qsv # passthrough
+vp8_v4l2m2m # passthrough
+vp8_vaapi # passthrough
+vp9_qsv # passthrough
+vp9_vaapi # passthough
+wavpack
+wbmp
+webvtt # trivial
+wmav1
+wmav2
+wmv1
+wmv2
+wrapped_avframe # passthrough
+xbm # trivial
+xface
+xsub
+xwd # xwd
+y41p # trivial
+yuv4 # trivial
+zlib # zlib
+zmbv # dosbox

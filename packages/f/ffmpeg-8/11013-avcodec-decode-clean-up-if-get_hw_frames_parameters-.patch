@@ -1,0 +1,27 @@
+From: François Cartegnie <fcvlcdev@free.fr>
+Date: Mon, 13 May 2024 11:37:27 +0000
+Subject: avcodec/decode: clean-up if get_hw_frames_parameters fails
+
+https://trac.ffmpeg.org/ticket/11013
+https://code.videolan.org/videolan/vlc/-/issues/28811
+
+Fixes the following assert:
+
+[00007f1df83d17e0] vaapi generic error: avcodec_get_hw_frames_parameters failed: -22
+Assertion p_dst->hwaccel_threadsafe || (!dst->hwaccel && !dst->internal->hwaccel_priv_data) failed at libavcodec/pthread_frame.c:349
+
+Reproduced from VLC with VAAPI, when fallbacking from hw to sw.
+
+--- a/libavcodec/pthread_frame.c
++++ b/libavcodec/pthread_frame.c
+@@ -344,6 +344,10 @@ FF_ENABLE_DEPRECATION_WARNINGS
+                 return err;
+         }
+ 
++       // hwaccel could have failed init due to some params
++       if(!dst->hwaccel && dst->internal->hwaccel_priv_data)
++           ff_hwaccel_uninit(dst);
++
+         // reset dst hwaccel state if needed
+         av_assert0(p_dst->hwaccel_threadsafe ||
+                    (!dst->hwaccel && !dst->internal->hwaccel_priv_data));

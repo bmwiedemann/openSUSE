@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Sun Aug 24 07:09:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Derive from ffmpeg-7.spec
+- Update to release 8.0
+  * New features:
+  * Native decoders (Packman builds): APV, ProRes RAW, RealVideo
+    6.0, Sanyo LD-ADPCM, G.728
+  * VVC decoder improvements: IBC, ACT, Palette Mode
+  * Vulkan compute-based codecs: FFv1 (encode and decode), ProRes
+    RAW (decode only)
+  * Hardware accelerated decoding: Vulkan VP9, VAAPI VVC,
+    OpenHarmony H264/5
+  * Hardware accelerated encoding: Vulkan AV1, OpenHarmony H264/5
+  * Filters: colordetect, pad_cuda, scale_d3d11, Whisper, and
+    others
