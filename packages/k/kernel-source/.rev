@@ -7112,4 +7112,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.16.1 &amp; enable FIPS &amp; warn about bcachefs &amp; drop nvidia workarounds &amp; CMA + CRYPTO_BENCHMARK configs updates; bugs: boo#1248109 bsc#1012628 bsc#1206264 bsc#1247895 bsc#1247996 bsc#1247998</comment>
     <requestid>1299854</requestid>
   </revision>
+  <revision rev="795" vrev="1">
+    <srcmd5>b319973a7f9bb30968eeda0476489aa7</srcmd5>
+    <version>6.16.3</version>
+    <time>1756212957</time>
+    <user>anag_factory</user>
+    <comment>revert pesign fix &amp; 6.16.3 (ext4 fix release) &amp; 6.16.2 &amp; /proc net fix &amp; kill framebuffer &amp; reenable HIGHMEM on PAE; bugs: bsc#1012628 bsc#1206264 bsc#1248108 bsc#1248148 bsc#1248156 bsc#1248270</comment>
+    <requestid>1301354</requestid>
+  </revision>
 </revisionlist>
