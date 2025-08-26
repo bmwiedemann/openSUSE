@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Aug 25 12:47:45 UTC 2025 - pgajdos@suse.com
+
+- version update to 4.0.49
+  * 4.0.49
+      - Correctly detect overlong file names, especially when
+        multibyte (UTF-8) strings are concerned
+      - Fix off-by-one error in 2 calls to native_to_wchar
+      - When changing disk label, ignore any plain file which would
+        match label
+      - Added missing newlines in error messages about disk geometry
+      - Do not print error message if getting geometry is simply not
+        supported by device type (such as for loop devices)
+      - If full geometry of a device is not available (such as for
+        loop devices), at least make use of the size
+  * 4.0.48
+      - portability fixes, mostly for Watcom compiler
+      - cleaned up some other warnings
+      - various runtime fixes for windows (/dev/tty vs CONIN$)
+      - use correct mtools (sub)command name in usage() when using -c
+      - other usage() spelling/wording fixes
+      - fix mtype'ing multiple files at once
+      - integrate mkmanpages into make system, clean it, and credit
+        texi2roff's original developer and others
+      - document compilation on less usual environments in INSTALL
+      - uninitialized buffer fix in mformat
+      - fix parameter counting error in mcd, and document that image
+        file name is not remembered
+  * 4.0.47
+      - fixed some of the manpage issues reported by manpage-l10n
+      - unix-dir copying on Windows fix
+      - new no-daemon mode for floppyd to make testing easier
+      - make floppyd independant of XauFileName (portability)
+      - autoconf fixes
+  * 4.0.46
+      - iconv buffer overflow fixes
+      - removed references to mread and mwrite (obsolete subcommands
+        from mcopy)
+      - documented mdoctorfat, and addressed 2 bugs/oversights
+      - removed references to obsolete mread and mwrite
+      - portability fixes (dietlibc and MacOS X) & simplification
+
+-------------------------------------------------------------------
 Thu Oct 24 11:54:12 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Require glibc-gconv-modules-extra only if glibc >= 2.39

@@ -17,7 +17,7 @@
 
 
 Name:           mtools
-Version:        4.0.45
+Version:        4.0.49
 Release:        0
 Summary:        Tools to access MS-DOS filesystems without kernel drivers
 License:        GPL-3.0-or-later
