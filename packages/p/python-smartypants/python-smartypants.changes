@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 25 12:30:18 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems only
+
+-------------------------------------------------------------------
 Tue Jun 17 16:46:42 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 2.0.2:

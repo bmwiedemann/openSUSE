@@ -80,4 +80,12 @@
     <comment></comment>
     <requestid>1286461</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>cfc6aa5af3360d53f3c30f874b71033e</srcmd5>
+    <version>2.0.2</version>
+    <time>1756212973</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
+    <requestid>1301265</requestid>
+  </revision>
 </revisionlist>
