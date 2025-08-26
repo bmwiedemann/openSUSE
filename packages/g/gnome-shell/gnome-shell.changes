@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 14 07:13:57 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gnome-shell-can-not-load-calendars.patch: Avoid error log
+  when can't load calendars (bsc#1247037).
+
+-------------------------------------------------------------------
 Mon Aug  4 06:14:34 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.4:

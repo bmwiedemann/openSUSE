@@ -1,6 +1,7 @@
 #
 # spec file for package gnome-shell
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -44,19 +45,21 @@ Patch1001:      gnome-shell-gdm-login-applet.patch
 # PATCH-FEATURE-SLE gnome-shell-domain.patch fate#307773 dliang@suse.com -- Active Directory Integration
 Patch1002:      gnome-shell-domain.patch
 # PATCH-FIX-SLE endSession-dialog-update-time-label-every-sec.patch bnc#886132 cxiong@suse.com -- update time label every second in end session dialog
-Patch1004:      endSession-dialog-update-time-label-every-sec.patch
+Patch1003:      endSession-dialog-update-time-label-every-sec.patch
 # PATCH-FIX-SLE gnome-shell-disable-ibus-when-not-installed.patch bsc#987360 qzhao@suse.com -- disable ibus start when outof Chinese, Japanese, Korean area
-Patch1008:      gnome-shell-disable-ibus-when-not-installed.patch
+Patch1004:      gnome-shell-disable-ibus-when-not-installed.patch
 # PATCH-FEATURE-SLE gnome-shell-fate324570-Make-GDM-background-image-configurable.patch fate#324570, glgo#GNOME/gnome-shell#680, boo#1172826 qkzhu@suse.com -- make GDM background image configurable
-Patch1009:      gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
+Patch1005:      gnome-shell-fate324570-Make-GDM-background-image-configurable.patch
 # PATCH-FIX-UPSTREAM gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch jsc#SLE-16051 glgo#GNOME/gnome-shell!1563 qzhao@suse.com -- launch recommended input engines when Gnome-shell init in CJK regions.
-Patch1010:      gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch
+Patch1006:      gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch
 # PATCH-FIX-SLE gnome-shell-disable-offline-update-dialog.patch bsc#944832 milachew@mail.lv -- Disable offline update suggestion before shutdown/reboot in SLE and openSUSE Leap.
-Patch1011:      gnome-shell-disable-offline-update-dialog.patch
+Patch1007:      gnome-shell-disable-offline-update-dialog.patch
 # PATCH-FEATURE-SLE gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch jsc#SLE-9267 qkzhu@suse.com -- Remove sessionList of endSessionDialog
-Patch1012:      gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
+Patch1008:      gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
 # PATCH-FIX-SLE gnome-shell-add-linkoption-dl.patch -- Need explicit -ldl build option with older gcc on SLE 15
-Patch1013:      gnome-shell-add-linkoption-dl.patch
+Patch1009:      gnome-shell-add-linkoption-dl.patch
+# PATCH-FIX-SLE gnome-shell-can-not-load-calendars.patch bsc#1247037 xwang@suse.com -- Avoid error log when can't load calendars
+Patch1010:      gnome-shell-can-not-load-calendars.patch
 
 # needed for directory ownership
 BuildRequires:  asciidoc

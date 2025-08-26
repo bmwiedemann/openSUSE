@@ -2547,4 +2547,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   + Updated translations. (forwarded request 1297383 from iznogood)</comment>
     <requestid>1297632</requestid>
   </revision>
+  <revision rev="277" vrev="2">
+    <srcmd5>8bf0360a5532c3b780dd98323f73554c</srcmd5>
+    <version>48.4</version>
+    <time>1756212980</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1301300</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,29 @@
+diff --git a/js/ui/calendar.js b/js/ui/calendar.js
+index 4ff0540ba..f29a7cf4c 100644
+--- a/js/ui/calendar.js
++++ b/js/ui/calendar.js
+@@ -217,6 +217,24 @@ class DBusEventSource extends EventSourceBase {
+     async _initProxy() {
+         let loaded = false;
+ 
++        try {
++            const SERVICE_NAME = 'org.gnome.Shell.CalendarServer';
++            const OBJECT_PATH = '/org/gnome/Shell/CalendarServer';
++
++            let proxy = new Gio.DBusProxy({
++                g_connection: Gio.DBus.session,
++                g_name: SERVICE_NAME,
++                g_object_path: OBJECT_PATH,
++                g_interface_name: 'org.freedesktop.DBus.Introspectable',
++                g_flags: Gio.DBusProxyFlags.NONE
++            });
++
++            proxy.call_sync('Introspect', null, Gio.DBusCallFlags.NONE, -1, null);
++        } catch (e) {
++            log(`Can not load calendars: ${e.message}`);
++            return;
++        }
++
+         try {
+             await this._dbusProxy.init_async(GLib.PRIORITY_DEFAULT, null);
+             loaded = true;
