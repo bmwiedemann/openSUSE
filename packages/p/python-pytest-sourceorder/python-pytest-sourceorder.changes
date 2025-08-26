@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 26 06:05:32 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-yield-test.patch:
+  * Remove now unsupported yield test.
+
+-------------------------------------------------------------------
 Wed Sep 01 00:00:00 UTC 2021 - Petr Viktorin <encukou@gmail.com> - 0.6.0
 Added support for decorated methods (thanks to Sergey Orlov)
 

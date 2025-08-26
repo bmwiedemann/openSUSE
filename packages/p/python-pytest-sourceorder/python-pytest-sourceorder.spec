@@ -21,9 +21,10 @@ Version:        0.6.0
 Release:        0
 Summary:        Test-ordering plugin for pytest
 License:        GPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            https://pagure.io/python-pytest-sourceorder
 Source:         pytest-sourceorder-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE https://pagure.io/python-pytest-sourceorder/issue/3
+Patch0:         remove-yield-test.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -70,6 +71,6 @@ reset the inheritance-based ordering.
 %license COPYING
 %{python_sitelib}/pytest_sourceorder.py
 %{python_sitelib}/pytest_sourceorder-%{version}.dist-info
-%pycache_only %{python_sitelib}/__pycache__
+%pycache_only %{python_sitelib}/__pycache__/pytest_sourceorder.*.pyc
 
 %changelog

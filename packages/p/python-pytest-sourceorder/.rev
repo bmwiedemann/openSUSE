@@ -7,4 +7,13 @@
     <comment>Required by FreeIPA</comment>
     <requestid>1297977</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d2e59e5d63e57a88fd65df07e66dafd0</srcmd5>
+    <version>0.6.0</version>
+    <time>1756213044</time>
+    <user>anag_factory</user>
+    <comment>- Add patch remove-yield-test.patch:
+  * Remove now unsupported yield test.</comment>
+    <requestid>1301373</requestid>
+  </revision>
 </revisionlist>
