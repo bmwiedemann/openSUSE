@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug 25 06:14:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Updtae to version 1.9.0:
+  + Array .flatten() method
+  + clang-tidy's auto-generated targets correctly select source
+    files
+  + Added Qualcomm's embedded linker, eld
+  + Added suffix function to the FS module
+  + Support response files for custom targets
+  + meson format now has a --source-file-path argument when reading
+    from stdin
+  + Added license keyword to pkgconfig.generate
+  + New experimental option rust_dynamic_std
+  + Rust and non-Rust sources in the same target
+  + Explicitly setting Swift module name is now supported
+  + Top-level statement handling in Swift libraries
+  + Swift compiler receives select C family compiler options
+  + Swift/C++ interoperability is now supported
+  + Support for MASM in Visual Studio backends
+  + Limited support for WrapDB v1
+
+-------------------------------------------------------------------
 Wed Aug 20 10:11:40 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.8.4:
