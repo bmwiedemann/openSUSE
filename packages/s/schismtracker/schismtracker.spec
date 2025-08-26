@@ -17,7 +17,7 @@
 
 
 Name:           schismtracker
-Version:        20250728
+Version:        20250825
 Release:        0
 Summary:        Music editor that matches the look and feel of Impulse Tracker
 License:        GPL-2.0-or-later

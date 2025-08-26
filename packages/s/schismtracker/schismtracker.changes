@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Aug 26 11:11:22 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20250825
+  * Increased sample position precision, fixing some weird
+    intonation problems.
+  * New "sections" of the schism-log now include a timestamp
+    notating when they were appended.
+  * AdLib VU meters are now based on the actual output volume,
+    rather than being like Scream Tracker's "emulated" VU meters.
+  * Improve mouse precision on buttons.
+  * Fixed some weird sporadic problems with sample sustain loops.
+  * Fixed bias within the nearest neighbor video blitter.
+  * Fixed Shift-Tab behavior in the pattern editor (should not
+    reset the selection).
+  * Fix a crash when loading in a sample that was already
+    pre-loaded for playback (i.e. playing a sample within the
+    sample library).
+  * Fix a memory leak when reading metadata from FLAC files.
+  * Added support for emulating old Schism playback quirks. Only a
+    few are currently implemented.
+  * MED: Implement reading song title within the file list
+  * D00: Fix note-cut count being ignored; many files now play
+    correctly.
+
+-------------------------------------------------------------------
 Mon Jul 28 16:25:59 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20250728
