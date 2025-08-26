@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 26 05:15:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.213.0:
+  * Features
+    - Add namespace configuration support for EKS addons (#8476)
+  * Bug Fixes
+    - remove namespace validation for update-addon (#8479)
+
+-------------------------------------------------------------------
 Fri Aug 01 12:22:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.212.0:
