@@ -1,5 +1,6 @@
 <package name="libkeyfinder" project="openSUSE:Factory">
   <title>Library for estimating the musical key of digital audio</title>
   <description>libkeyfinder is a small C++11 library for estimating the musical key of digital audio</description>
+  <devel project="multimedia:libs" package="libkeyfinder"/>
   <url>https://mixxxdj.github.io/libkeyfinder/</url>
 </package>

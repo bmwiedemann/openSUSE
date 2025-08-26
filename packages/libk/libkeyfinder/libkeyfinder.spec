@@ -1,7 +1,8 @@
 #
 # spec file for package libkeyfinder
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,26 +16,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define SOVERSION 2
 
+%define SOVERSION 2
 Name:           libkeyfinder
-Version:        2.2.7
+Version:        2.2.8
 Release:        0
 Summary:        Library for estimating the musical key of digital audio
 License:        GPL-3.0-or-later
 URL:            https://mixxxdj.github.io/libkeyfinder/
 Source0:        https://github.com/mixxxdj/libkeyfinder/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  gcc-c++
-BuildRequires:  fftw3-devel
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
-%if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
-BuildRequires:  Catch2-devel
-%else
-BuildRequires:  Catch2-2-devel
-%endif
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(Catch2) >= 3.0.0
+BuildRequires:  pkgconfig(fftw3)
 
 %description
-
 libkeyfinder is a small C++11 library for estimating the musical key of digital audio.
 
 %package        -n %{name}%{SOVERSION}
@@ -42,7 +39,6 @@ Summary:        Library for estimating the musical key of digital audio
 Provides:       %{name}
 
 %description    -n %{name}%{SOVERSION}
-
 libkeyfinder is a small C++11 library for estimating the musical key of digital audio
 
 %package        devel
@@ -54,29 +50,33 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
-
+%autosetup -p1
 chmod -x README.md
 
 %build
 %cmake
 %cmake_build
-%install
 
+%install
 %cmake_install
 
-%post -n %{name}%{SOVERSION} -p /sbin/ldconfig
-%postun -n %{name}%{SOVERSION} -p /sbin/ldconfig
+%check
+%ifnarch %ix86
+%ctest
+%endif
+
+%ldconfig_scriptlets -n %{name}%{SOVERSION}
 
 %files -n %{name}%{SOVERSION}
 %license LICENSE
 %doc README.md
-%{_libdir}/*.so.*
+%{_libdir}/*.so.%{SOVERSION}{,.*}
 
 %files devel
-%{_includedir}/*
+%license LICENSE
+%{_includedir}/keyfinder
 %{_libdir}/pkgconfig/*
-%{_libdir}/cmake/*
+%{_libdir}/cmake/KeyFinder
 %{_libdir}/*.so
 
 %changelog

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 24 11:55:42 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.2.8:
+  * Update tests to Catch3
+  * Bump minimum CMake version to 3.5 to avoid deprecation warning
+- run tests, fix rpmlint warnings
+
+-------------------------------------------------------------------
+Wed Jun 18 21:18:04 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile
+
+-------------------------------------------------------------------
 Fri Aug 18 17:27:30 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - fix Leap 15.5 build
