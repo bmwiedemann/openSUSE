@@ -732,7 +732,6 @@ unsorted:
   - apache-commons-jxpath-javadoc 
   - apache-commons-lang3 
   - apache-commons-lang3-javadoc 
-  - apache-commons-logging 
   - apache-commons-math 
   - apache-commons-math-javadoc 
   - apache-commons-net 
@@ -4130,6 +4129,16 @@ unsorted:
   - ffmpeg-7-libswscale-devel 
   - ffmpeg-7-mini-devel 
   - ffmpeg-7-mini-libs 
+  - ffmpeg-8 
+  - ffmpeg-8-libavcodec-devel 
+  - ffmpeg-8-libavdevice-devel 
+  - ffmpeg-8-libavfilter-devel 
+  - ffmpeg-8-libavformat-devel 
+  - ffmpeg-8-libavutil-devel 
+  - ffmpeg-8-libswresample-devel 
+  - ffmpeg-8-libswscale-devel 
+  - ffmpeg-8-mini-devel 
+  - ffmpeg-8-mini-libs 
   - ffmsindex 
   - ffnvcodec-devel 
   - fftw3-devel 
@@ -4255,7 +4264,6 @@ unsorted:
   - fluidsynth 
   - fluidsynth-devel 
   - fluidsynth-dssi 
-  - flute 
   - flute-javadoc 
   - flux2-cli 
   - flux2-cli-bash-completion 
@@ -8473,6 +8481,8 @@ unsorted:
   - himmelblau-qr-greeter 
   - himmelblau-sshd-config 
   - himmelblau-sso 
+  - hipcc 
+  - hipcc-libomp-devel 
   - hiredis 
   - hiredis-devel 
   - hitori 
@@ -9205,10 +9215,8 @@ unsorted:
   - java-21-openj9-javadoc 
   - java-21-openj9-jmods 
   - java-21-openj9-src 
-  - java-21-openjdk 
   - java-21-openjdk-demo 
   - java-21-openjdk-devel 
-  - java-21-openjdk-headless 
   - java-21-openjdk-javadoc 
   - java-21-openjdk-jmods 
   - java-21-openjdk-src 
@@ -9220,7 +9228,6 @@ unsorted:
   - java-24-openjdk-jmods 
   - java-24-openjdk-src 
   - java-atk-wrapper 
-  - java-binfmt-misc 
   - java-cup 
   - java-cup-bootstrap 
   - java-cup-manual 
@@ -9244,10 +9251,8 @@ unsorted:
   - javahelp2-manual 
   - javamail 
   - javamail-javadoc 
-  - javapackages-filesystem 
   - javapackages-ivy 
   - javapackages-local 
-  - javapackages-tools 
   - javaparser 
   - javaparser-javadoc 
   - javapoet 
@@ -11876,6 +11881,8 @@ unsorted:
   - libalure1 
   - libalut0 
   - libamd-doc 
+  - libamd_comgr3 
+  - libamd_comgr3-devel 
   - libaml0 
   - libancient2 
   - libangelscript2_37_0 
@@ -12005,16 +12012,20 @@ unsorted:
   - libavcodec58_134 
   - libavcodec58_134-32bit 
   - libavcodec61-32bit 
+  - libavcodec62 
   - libavdevice58_13 
   - libavdevice58_13-32bit 
   - libavdevice61 
   - libavdevice61-32bit 
+  - libavdevice62 
   - libavfilter10-32bit 
+  - libavfilter11 
   - libavfilter7_110 
   - libavfilter7_110-32bit 
   - libavformat58_76 
   - libavformat58_76-32bit 
   - libavformat61-32bit 
+  - libavformat62 
   - libavfs1 
   - libavif-devel 
   - libavif16-32bit 
@@ -12026,6 +12037,7 @@ unsorted:
   - libavutil56_70 
   - libavutil56_70-32bit 
   - libavutil59-32bit 
+  - libavutil60 
   - libaws-c-auth1_0_0 
   - libaws-c-cal0unstable 
   - libaws-c-common1 
@@ -12058,7 +12070,6 @@ unsorted:
   - libbandicoot1 
   - libbaresip20 
   - libbarvinok23 
-  - libbase 
   - libbase-javadoc 
   - libbaseencode-devel 
   - libbaseencode1 
@@ -13163,9 +13174,7 @@ unsorted:
   - libfontenc-devel 
   - libfontenc-devel-32bit 
   - libfontenc1-32bit 
-  - libfonts 
   - libfonts-javadoc 
-  - libformula 
   - libformula-javadoc 
   - libfparser-4_5_2 
   - libfplist-devel 
@@ -14210,7 +14219,6 @@ unsorted:
   - liblastlog2-devel 
   - liblaszip8 
   - liblaszip_api8 
-  - liblayout 
   - liblayout-javadoc 
   - liblazy-devel 
   - liblazy1 
@@ -14297,7 +14305,6 @@ unsorted:
   - liblo-devel 
   - liblo10k1-0 
   - liblo7 
-  - libloader 
   - libloader-javadoc 
   - libloadpng44-devel 
   - libloadpng4_4 
@@ -15710,7 +15717,6 @@ unsorted:
   - librelp-devel 
   - librelp0 
   - librem6 
-  - libreoffice-base 
   - libreoffice-base-drivers-postgresql 
   - libreoffice-branding-upstream 
   - libreoffice-calc-extensions 
@@ -15854,7 +15860,6 @@ unsorted:
   - libreport-web_2 
   - libreport-web_2-devel 
   - libreport_2 
-  - librepository 
   - librepository-javadoc 
   - libreproc++14 
   - libreproc14 
@@ -15999,7 +16004,6 @@ unsorted:
   - libserf-1-1 
   - libserf-devel 
   - libserialdv1 
-  - libserializer 
   - libserializer-javadoc 
   - libserialport-devel 
   - libserialport0 
@@ -16316,9 +16320,11 @@ unsorted:
   - libswresample3_9 
   - libswresample3_9-32bit 
   - libswresample5-32bit 
+  - libswresample6 
   - libswscale5_9 
   - libswscale5_9-32bit 
   - libswscale8-32bit 
+  - libswscale9 
   - libsybdb5 
   - libsybdb5-32bit 
   - libsymmetrica3 
@@ -18918,7 +18924,6 @@ unsorted:
   - mozilla-nss-32bit 
   - mozilla-nss-certs-32bit 
   - mozilla-nss-devel 
-  - mozilla-nss-sysinit 
   - mozilla-nss-sysinit-32bit 
   - mozilla-zilla-slab-fonts 
   - mozjs115 
@@ -21086,9 +21091,7 @@ unsorted:
   - pegtl-devel-doc 
   - peksystray 
   - pen 
-  - pentaho-libxml 
   - pentaho-libxml-javadoc 
-  - pentaho-reporting-flow-engine 
   - pentaho-reporting-flow-engine-javadoc 
   - pentobi 
   - percona-toolkit 
@@ -36103,6 +36106,24 @@ unsorted:
   - rocksdb-tools 
   - rocksndiamonds 
   - rocksndiamonds-data 
+  - rocm-clang 
+  - rocm-clang-devel 
+  - rocm-clang-libs 
+  - rocm-clang-runtime-devel 
+  - rocm-clang-tools-extra 
+  - rocm-clang-tools-extra-devel 
+  - rocm-cmake 
+  - rocm-compilersupport-macros 
+  - rocm-device-libs 
+  - rocm-libc++ 
+  - rocm-libc++-devel 
+  - rocm-libc++-static 
+  - rocm-lld 
+  - rocm-llvm 
+  - rocm-llvm-devel 
+  - rocm-llvm-filesystem 
+  - rocm-llvm-libs 
+  - rocm-llvm-static 
   - rocs 
   - rocs-devel 
   - rocs-lang 
@@ -36236,27 +36257,16 @@ unsorted:
   - ruby3.4-doc 
   - ruby3.4-doc-ri 
   - ruby3.4-rubygem-Ascii85 
-  - ruby3.4-rubygem-actioncable-7.0 
   - ruby3.4-rubygem-actioncable-8.0 
-  - ruby3.4-rubygem-actionmailbox-7.0 
   - ruby3.4-rubygem-actionmailbox-8.0 
-  - ruby3.4-rubygem-actionmailer-7.0 
   - ruby3.4-rubygem-actionmailer-8.0 
-  - ruby3.4-rubygem-actionpack-7.0 
   - ruby3.4-rubygem-actionpack-8.0 
-  - ruby3.4-rubygem-actiontext-7.0 
   - ruby3.4-rubygem-actiontext-8.0 
-  - ruby3.4-rubygem-actionview-7.0 
   - ruby3.4-rubygem-actionview-8.0 
-  - ruby3.4-rubygem-activejob-7.0 
   - ruby3.4-rubygem-activejob-8.0 
-  - ruby3.4-rubygem-activemodel-7.0 
   - ruby3.4-rubygem-activemodel-8.0 
-  - ruby3.4-rubygem-activerecord-7.0 
   - ruby3.4-rubygem-activerecord-8.0 
-  - ruby3.4-rubygem-activestorage-7.0 
   - ruby3.4-rubygem-activestorage-8.0 
-  - ruby3.4-rubygem-activesupport-7.0 
   - ruby3.4-rubygem-activesupport-8.0 
   - ruby3.4-rubygem-addressable 
   - ruby3.4-rubygem-aes_key_wrap 
@@ -36325,7 +36335,6 @@ unsorted:
   - ruby3.4-rubygem-erubis 
   - ruby3.4-rubygem-et-orbi 
   - ruby3.4-rubygem-eventmachine 
-  - ruby3.4-rubygem-exception_notification 
   - ruby3.4-rubygem-excon 
   - ruby3.4-rubygem-execjs 
   - ruby3.4-rubygem-fake_ftp 
@@ -36473,12 +36482,9 @@ unsorted:
   - ruby3.4-rubygem-rack-test 
   - ruby3.4-rubygem-rack-test-0_6 
   - ruby3.4-rubygem-rackup 
-  - ruby3.4-rubygem-rails-7.0 
   - ruby3.4-rubygem-rails-8.0 
   - ruby3.4-rubygem-rails-dom-testing 
   - ruby3.4-rubygem-rails-html-sanitizer 
-  - ruby3.4-rubygem-rails-i18n 
-  - ruby3.4-rubygem-railties-7.0 
   - ruby3.4-rubygem-railties-8.0 
   - ruby3.4-rubygem-rainbow 
   - ruby3.4-rubygem-rake-compiler 
@@ -36642,7 +36648,6 @@ unsorted:
   - s3fs 
   - sablot 
   - sablot-devel 
-  - sac 
   - sac-javadoc 
   - sacad 
   - sad 
@@ -49314,7 +49319,6 @@ unsorted:
   - xmgrace-devel 
   - xmh 
   - xmined 
-  - xml-commons-apis 
   - xml-commons-apis-bootstrap 
   - xml-commons-apis-javadoc 
   - xml-commons-apis-manual 
