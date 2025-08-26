@@ -1,7 +1,7 @@
 #
 # spec file for package java-11-openjdk
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -236,6 +236,7 @@ Patch200:       ppc_stack_overflow_fix.patch
 Patch201:       fix_armv6_build.patch
 #
 Patch302:       disable-doclint-by-default.patch
+Patch304:       jdk-8354941.patch
 #
 Patch500:       activation-module.patch
 Patch501:       annotation-module.patch
@@ -542,6 +543,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %endif
 
 %patch -P 302 -p1
+%patch -P 304 -p1
 
 %patch -P 500
 %patch -P 501

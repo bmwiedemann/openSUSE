@@ -639,4 +639,12 @@
     <comment>Do not embed rebuild counter (bsc#1246806)</comment>
     <requestid>1294993</requestid>
   </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>ec653e19e2ca0267c9cd2ec95c57a4bb</srcmd5>
+    <version>11.0.28.0</version>
+    <time>1756213016</time>
+    <user>anag_factory</user>
+    <comment>fix build with new glibc</comment>
+    <requestid>1301356</requestid>
+  </revision>
 </revisionlist>
