@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 26 10:57:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.78.6:
+  * Bug Fixes
+    - Fix Vulnerabilities locations in SCA for SARIF and null
+      attributes by @attiasas in jfrog/jfrog-cli-security#539
+
+-------------------------------------------------------------------
 Thu Aug 21 09:27:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.78.5:
