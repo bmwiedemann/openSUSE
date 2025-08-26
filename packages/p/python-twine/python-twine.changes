@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 25 14:24:32 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Sat Jan 25 21:08:56 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add missing Requires.
