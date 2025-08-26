@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 26 09:52:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Tue Apr  1 16:06:08 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make it compatible with older setuptools

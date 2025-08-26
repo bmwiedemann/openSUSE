@@ -256,4 +256,12 @@
     <comment>Make it compatible with new setuptools</comment>
     <requestid>1266270</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>33ed96c049b8c72ab73088fa49b4e0d0</srcmd5>
+    <version>6.6.1</version>
+    <time>1756213050</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301411</requestid>
+  </revision>
 </revisionlist>
