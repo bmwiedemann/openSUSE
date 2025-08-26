@@ -1,7 +1,7 @@
 #
 # spec file for package vtk
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,28 +32,26 @@
 %define pkgname vtk
 
 # pugixml in Leap 15.x is too old
-# fmt in Leap 15.x is too old
+# fmt in Leap 15.x and 16.x is too old
 # Need haru/hpdf version with HPDF_SHADING, i.e. >= 2.4.0
 # PEGTL >= 3.0 not supported, https://gitlab.kitware.com/vtk/vtk/-/issues/18151
+# netcdf in Leap 15.6 has hdf5 version conflicts
 %if 0%{?suse_version} <= 1500
 %bcond_with    fast_float
-%bcond_with    fmt
 %bcond_with    haru
-%if 0%{?sle_version} <= 150400
-%bcond_without system_pegtl
-%else
-%bcond_with    system_pegtl
-%endif
+%bcond_with    netcdf
+%bcond_with    fmt
 %bcond_with    pugixml
 %else
 %bcond_without fast_float
-%bcond_without fmt
 %bcond_without haru
-%bcond_with    system_pegtl
+%bcond_without netcdf
 %bcond_without pugixml
+%bcond_without fmt
 %define have_strip_nondeterminism 1
 %endif
 
+%bcond_with    system_pegtl
 %bcond_without gl2ps
 %bcond_without java
 
@@ -94,9 +92,9 @@
 %define shlib   %{vtklib}
 
 Name:           vtk%{?my_suffix}
-Version:        9.4.1
+Version:        9.5.0
 Release:        0
-%define series  9.4
+%define series  9.5
 Summary:        The Visualization Toolkit - A high level 3D visualization library
 # This is a variant BSD license, a cross between BSD and ZLIB.
 # For all intents, it has the same rights and restrictions as BSD.
@@ -108,8 +106,6 @@ Source:         https://www.vtk.org/files/release/%{series}/VTK-%{version}.tar.g
 # FIXME See if packaging can be tweaked to accommodate python-vtk's devel files in a devel package later
 # We need to use the compat conditionals here to avoid Factory's source validator from tripping up
 Source99:       vtk-rpmlintrc
-# PATCH-FIX-OPENSUSE bundled_libharu_add_missing_libm.patch stefan.bruens@rwth-aachen.de -- Add missing libm for linking (gh#libharu/libharu#213)
-Patch1:         bundled_libharu_add_missing_libm.patch
 # PATCH-FIX-OPENSUSE -- Fix building with Qt GLES builds
 Patch7:         0001-Add-missing-guard-required-for-GLES-to-disable-stere.patch
 # PATCH-FIX-UPSTREAM -- Fix building with Qt GLES builds
@@ -123,15 +119,19 @@ Patch18:        0001-Consider-VTK_PYTHON_SITE_PACKAGES_SUFFIX-for-Python-.patch
 # PATCH-FIX-UPSTREAM
 Patch19:        0001-Add-missing-libm-link-library-for-bundled-ExodusII.patch
 # PATCH-FIX-OPENSUSE
-Patch20:        0001-Fix-fmt-includes-again.patch
-# PATCH-FIX-OPENSUSE
-Patch21:        0001-Fix-missing-GLAD-symbol-mangling-in-Rendering-GL2PSO.patch
+Patch20:        0001-Fix-missing-GLAD-symbol-mangling-in-Rendering-GL2PSO.patch
+# PATCH-FIX-UPSTREAM -- Support java bindings for modules IO Avmesh and LANLX3D
+Patch21:        0001-java-support-java-bindings-IO-Avmesh-and-LANLX3D.patch
 BuildRequires:  cgns-devel
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.12
 BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
+%if 0%{?suse_version} <= 1500
+BuildRequires:  gcc14-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  hdf5-devel
 BuildRequires:  libboost_graph-devel
 BuildRequires:  libboost_graph_parallel-devel
@@ -167,7 +167,9 @@ BuildRequires:  pkgconfig(liblz4) >= 1.8.0
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libxml-2.0)
+%if %{with netcdf}
 BuildRequires:  pkgconfig(netcdf)
+%endif
 BuildRequires:  pkgconfig(proj) >= 5.0.0
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(theora)
@@ -179,7 +181,7 @@ BuildRequires:  gnuplot
 BuildRequires:  graphviz
 %endif
 %if %{with fmt}
-BuildRequires:  fmt-devel > 9.0
+BuildRequires:  fmt-devel > 11.0
 %endif
 %if %{with gl2ps}
 BuildRequires:  gl2ps-devel > 1.4.0
@@ -188,7 +190,7 @@ BuildRequires:  gl2ps-devel > 1.4.0
 BuildRequires:  libharu-devel >= 2.4.0
 %endif
 %if %{with java}
-BuildRequires:  java-devel >= 1.8
+BuildRequires:  java-devel >= 11
 %if 0%?have_strip_nondeterminism > 0
 BuildRequires:  strip-nondeterminism
 %endif
@@ -197,7 +199,9 @@ BuildRequires:  strip-nondeterminism
 BuildRequires:  %{mpi_flavor}-devel
 BuildRequires:  hdf5-%{mpi_flavor}-devel
 BuildRequires:  libboost_mpi-devel
+%if %{with netcdf}
 BuildRequires:  netcdf-%{mpi_flavor}-devel
+%endif
 BuildRequires:  python3-mpi4py-devel
 %endif
 %if %{with fast_float}
@@ -278,7 +282,9 @@ Requires:       pkgconfig(liblz4) >= 1.7.3
 Requires:       pkgconfig(liblzma)
 Requires:       pkgconfig(libpng)
 Requires:       pkgconfig(libswscale)
+%if %{with netcdf}
 Requires:       pkgconfig(netcdf)
+%endif
 Requires:       pkgconfig(theora)
 Requires:       pkgconfig(zlib)
 %if %{with pegtl}
@@ -304,7 +310,7 @@ Summary:        Develoment files for VTK Java bindings
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       %{name}-java = %{version}
-Requires:       java-devel >= 1.8
+Requires:       java-devel >= 11
 Provides:       %{name}-devel:%{my_libdir}/libvtkJava.so
 
 %description    java-devel
@@ -404,7 +410,6 @@ languages.
 
 %prep
 %setup -n VTK-%{version}
-%patch -P 1 -p1
 %if %{with gles}
 %autopatch -m 7 -M 10 -p1
 %endif
@@ -423,17 +428,23 @@ sed -i -e '/set(vtk_enable_tests "OFF")/ s/.*/#\0/' CMakeLists.txt
 # Allow other versions for fast_float
 sed -i -e '/VERSION .*/ d' ThirdParty/fast_float/CMakeLists.txt
 
-# Keep LD_LIBRARY_PATH intact from mpivars
-sed -i -e '/LD_LIBRARY_PATH/ s/"$/:$ENV{LD_LIBRARY_PATH}"/' GUISupport/QtQuick/qml/CMakeLists.txt
-
 %build
 %if %{with mpi}
 source %{mpiprefix}/bin/mpivars.sh
 export CC=mpicc
 export CXX=mpicxx
+%if 0%{?suse_version} <= 1500
+export OMPI_CC=gcc-14
+export OMPI_CXX=g++-14
+%endif
+%else
+%if 0%{?suse_version} <= 1500
+export CC=gcc-14
+export CXX=g++-14
 %else
 export CC=gcc
 export CXX=g++
+%endif
 %endif
 
 export CFLAGS="%{optflags}"
@@ -446,7 +457,6 @@ export CXXFLAGS="%{optflags}"
     -DCMAKE_INSTALL_PREFIX:PATH=%{my_prefix} \
     -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib} \
     -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name}-%{series} \
-    -DCMAKE_INSTALL_QMLDIR:PATH=%{my_libdir}/qt5/qml \
     -DVTK_FORBID_DOWNLOADS:BOOL=ON \
     -DVTK_PYTHON_OPTIONAL_LINK:BOOL=OFF \
     -DVTK_BUILD_TESTING:BOOL=%{?with_testing:ON}%{!?with_testing:OFF} \
@@ -478,8 +488,7 @@ export CXXFLAGS="%{optflags}"
     -DVTK_GROUP_ENABLE_Views=WANT \
     -DVTK_PYTHON_VERSION=3 \
     -DVTK_WRAP_JAVA:BOOL=%{?with_java:ON}%{!?with_java:OFF} \
-    -DVTK_JAVA_SOURCE_VERSION:STRING='1.8' \
-    -DVTK_JAVA_TARGET_VERSION:STRING='1.8' \
+    -DVTK_JAVA_RELEASE_VERSION:STRING='11' \
     -DVTK_WRAP_PYTHON:BOOL=ON \
     -DOpenGL_GL_PREFERENCE:STRING='GLVND' \
     -DVTK_OPENGL_USE_GLES:BOOL=%{?with_gles:ON}%{!?with_gles:OFF} \
@@ -490,6 +499,7 @@ export CXXFLAGS="%{optflags}"
     -DVTK_MODULE_USE_EXTERNAL_VTK_gl2ps=%{?with_gl2ps:ON}%{!?with_gl2ps:OFF} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_ioss:BOOL=OFF \
     -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=%{?with_haru:ON}%{!?with_haru:OFF} \
+    -DVTK_MODULE_USE_EXTERNAL_VTK_netcdf:BOOL=%{?with_netcdf:ON}%{!?with_netcdf:OFF} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=%{?with_system_pegtl:YES}%{!?with_system_pegtl:NO} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_pugixml=%{?with_pugixml:ON}%{!?with_pugixml:OFF} \
     -DVTK_MODULE_USE_EXTERNAL_VTK_token:BOOL=OFF \
@@ -666,12 +676,6 @@ find %{buildroot} . -name vtk.cpython-3*.pyc -print -delete # drop unreproducibl
 %files qt
 %license Copyright.txt
 %{my_libdir}/libvtk*Qt*.so.*
-%if %{with mpi}
-%dir %{my_libdir}/qt5
-%{my_libdir}/qt5/qml
-%else
-%{_libqt5_archdatadir}/qml
-%endif
 
 %if %{with examples}
 %if "%{flavor}" == ""
