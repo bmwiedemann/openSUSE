@@ -858,4 +858,12 @@
     <comment>Fix gcc 15 build</comment>
     <requestid>1286283</requestid>
   </revision>
+  <revision rev="108" vrev="3">
+    <srcmd5>07371d14fff5428c82437ab58b4e7530</srcmd5>
+    <version>1.8.0.452</version>
+    <time>1756213024</time>
+    <user>anag_factory</user>
+    <comment>fix build with new glibc + avoid rebuild counter</comment>
+    <requestid>1301360</requestid>
+  </revision>
 </revisionlist>

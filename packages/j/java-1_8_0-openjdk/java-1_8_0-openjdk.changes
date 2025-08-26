@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 25 10:47:33 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added paches:
+  * jdk-8354941.patch
+  * jdk-8354941-aarch32.patch
+    + JDK-8354941: Build failure with glibc 2.42 due to uabs() name
+      collision
+
+-------------------------------------------------------------------
+Mon Jul 21 10:59:48 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Do not embed rebuild counter (bsc#1246806)
+
+-------------------------------------------------------------------
 Mon Jun 16 20:40:38 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - add -std=gnu99 to CFLAGS to fix gcc15 compile time error. Since

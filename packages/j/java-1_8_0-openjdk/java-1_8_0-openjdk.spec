@@ -1,7 +1,7 @@
 #
 # spec file for package java-1_8_0-openjdk
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -203,6 +203,8 @@ Patch2001:      disable-doclint-by-default.patch
 Patch2002:      JDK_1_8_0-8208602.patch
 Patch3000:      tls13extensions.patch
 Patch4000:      riscv64-zero.patch
+Patch4001:      jdk-8354941.patch
+Patch4002:      jdk-8354941-aarch32.patch
 Patch5001:      fips.patch
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
@@ -456,7 +458,7 @@ sh autogen.sh
 %configure \
         --disable-downloading \
         --with-tzdata-dir=%{_datadir}/javazi \
-        --with-pkgversion="build %{javaver}_%{updatever}-b%{buildver} suse-%{release}-%{_arch}" \
+        --with-pkgversion="build %{javaver}_%{updatever}-b%{buildver} suse-%{suse_version}-%{_arch}" \
         --with-jdk-home="%{_sysconfdir}/alternatives/java_sdk" \
         --disable-nss \
         --enable-sysconf-nss \
@@ -544,6 +546,10 @@ patch -p0 -i %{PATCH2002}
 patch -p0 -i %{PATCH3000}
 
 patch -p0 -i %{PATCH4000}
+patch -p0 -i %{PATCH4001}
+%ifarch %{arm}
+patch -p0 -i %{PATCH4002}
+%endif
 
 patch -p0 -i %{PATCH5001}
 
