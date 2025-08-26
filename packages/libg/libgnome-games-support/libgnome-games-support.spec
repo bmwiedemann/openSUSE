@@ -1,7 +1,7 @@
 #
 # spec file for package libgnome-games-support
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define api 2
 
 Name:           libgnome-games-support
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Internal support library for GNOME games
 License:        LGPL-3.0-or-later
