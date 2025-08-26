@@ -90,4 +90,32 @@
   * Backup of .spec and _service</comment>
     <requestid>1291469</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2a121e148a71b6becd225a01fccdfcce</srcmd5>
+    <version>0.9.8</version>
+    <time>1756217641</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.9.8:
+  * Version bump to 0.9.8
+  * Don't write a default for useRpmGroups for now (Closes #112)
+  * Make the default for &quot;useRpmGroups&quot; compile-time configurable
+  * Make &quot;useRpmGroups&quot; configurable in config file
+  * Use textdomain &quot;rpm-groups&quot; for RPM groups
+  * Removed redundant initial selection
+  * Class rename for consistency
+  * Lazy RPM tree init for startup performance
+  * Filter correcty for empty RPM groups
+  * Removed ancient fallback RPM groups
+  * Consistent terminology
+  * Open only the first two levels of the RPM groups tree
+  * Suppress Qt logging spam
+  * First hacky version of RPM groups (#112)
+  * Translate RPM groups and suppress 'Unspecified'
+  * Show RPM group in technical details view (#112)
+  * Use non-breaking hyphen in read‑only
+  * Don't consider ignored missing RPM signature as failed task (Closes #110)
+  * GitHub config
+  * Added Leap 16.x community repos</comment>
+    <requestid>1301441</requestid>
+  </revision>
 </revisionlist>
