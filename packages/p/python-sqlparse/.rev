@@ -253,4 +253,12 @@
     by skryzh).</comment>
     <requestid>1248061</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>8f66bb2f1fc409023f5cb5c95fd2b0ee</srcmd5>
+    <version>0.5.3</version>
+    <time>1756212976</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301287</requestid>
+  </revision>
 </revisionlist>
