@@ -114,4 +114,12 @@
     <comment>- Update to version 12 (CVE-2055-55159, boo#1248050): (forwarded request 1299261 from dimstar)</comment>
     <requestid>1299262</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>49df3a654687fcf7142cb00cf4d2c1c6</srcmd5>
+    <version>12.0</version>
+    <time>1756212968</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 12 (CVE-2025-55159, boo#1248050):</comment>
+    <requestid>1301391</requestid>
+  </revision>
 </revisionlist>

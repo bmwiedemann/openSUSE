@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Aug 11 16:52:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update to version 12 (CVE-2055-55159, boo#1248050):
+- Update to version 12 (CVE-2025-55159, boo#1248050):
   + Requesting invites to rooms (aka knocking) is now possible, as
     is enabling such requests for room admins.
   + The upcoming room version 12 is supported, with the special
