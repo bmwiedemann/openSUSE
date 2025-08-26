@@ -281,4 +281,12 @@
 </comment>
     <requestid>1300456</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>3aefe91919e003a4269e4ee5a6609ffa</srcmd5>
+    <version>0.16.1</version>
+    <time>1756212983</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301303</requestid>
+  </revision>
 </revisionlist>

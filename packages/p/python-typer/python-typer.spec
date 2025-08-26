@@ -1,7 +1,7 @@
 #
 # spec file for package python-typer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2021 Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,6 +18,11 @@
 
 
 %define plainpython python
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-typer
 Version:        0.16.1
@@ -41,13 +46,18 @@ Requires:       %{plainpython}(abi) = %{python_version}
 Requires:       python-click
 Requires:       python-rich
 Requires:       python-shellingham
-Requires:       python-typer-slim >= %version
+Requires:       python-typer-slim >= %{version}
 Requires:       python-typing_extensions
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 # both packages provide /usr/bin/typer
 Conflicts:      erlang
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -89,6 +99,9 @@ as those that do.
 
 %postun
 %python_uninstall_alternative typer
+
+%pre
+%python_libalternatives_reset_alternative typer
 
 %files %{python_files}
 %doc README.md
