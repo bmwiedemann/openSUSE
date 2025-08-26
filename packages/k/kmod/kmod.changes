@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 23 13:39:25 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- kmod-testsuite
+  * BuildIgnore pesign-obs-integration (new runtime requirement
+    of kernel-default-devel): we don't need it for the kmod
+    testsuite, and it also breaks the build as we aren't
+    producting any binaries. (bsc#1248108) 
+
+-------------------------------------------------------------------
 Thu Jun 26 15:40:07 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix testsuite on Leap 16.0 (bsc#1240126)

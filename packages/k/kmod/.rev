@@ -803,4 +803,12 @@ This addition of patch not mentioned in changelog should have been rejected by t
     <comment>- Fix testsuite on Leap 16.0 (bsc#1240126)</comment>
     <requestid>1288749</requestid>
   </revision>
+  <revision rev="88" vrev="3">
+    <srcmd5>841dffdfb41f46a1fdb556202a80c64c</srcmd5>
+    <version>34.2</version>
+    <time>1756212956</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1301124</requestid>
+  </revision>
 </revisionlist>
