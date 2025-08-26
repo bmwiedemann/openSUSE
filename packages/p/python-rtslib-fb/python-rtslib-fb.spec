@@ -1,7 +1,7 @@
 #
 # spec file for package python-rtslib-fb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,12 @@
 %define dbdir %{_sysconfdir}/target
 %define oldpython python
 %define cpkg %{oldpython}-rtslib-fb-common
-
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
-
 Name:           python-rtslib-fb
 Version:        2.2.2
 Release:        0%{?dist}
@@ -44,6 +47,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  git
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros >= 20210929
 BuildRequires:  pkgconfig(systemd)
 Requires:       %{cpkg}
@@ -51,9 +55,13 @@ Requires:       python-pyudev
 Provides:       python-rtslib = %{version}-%{release}
 Obsoletes:      python-rtslib < %{version}
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-
+%endif
 %python_subpackages
 
 %description
@@ -101,6 +109,7 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctarget
 %{service_del_postun target.service}
 
 %pre
+%python_libalternatives_reset_alternative targetctl
 %{service_add_pre target.service}
 
 %preun

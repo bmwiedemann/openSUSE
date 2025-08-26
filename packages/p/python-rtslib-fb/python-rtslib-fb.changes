@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 25 14:10:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Wed Jul  9 08:34:22 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Add fabric-fix-search-path-for-SRPT-wwn.patch to fix
