@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20250822" schemaversion="4.1">
+<image name="OBS__openSUSE___20250825" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20250822</productvar>
+      <productvar name="VERSION">20250825</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250822,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250825,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250822/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250825/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1268,14 +1268,11 @@
       <repopackage name="libavahi-gobject0"/>
       <repopackage name="libavahi-ui-gtk3-0"/>
       <repopackage name="libavc1394-0"/>
-      <repopackage name="libavcodec58_134"/>
       <repopackage name="libavcodec61"/>
       <repopackage name="libavfilter10"/>
-      <repopackage name="libavformat58_76"/>
       <repopackage name="libavformat61"/>
       <repopackage name="libavif16"/>
       <repopackage name="libavtp0"/>
-      <repopackage name="libavutil56_70"/>
       <repopackage name="libavutil59"/>
       <repopackage name="libayatana-appindicator3-1"/>
       <repopackage name="libayatana-ido3-0_4-0"/>
@@ -2414,7 +2411,6 @@
       <repopackage name="libportal-gtk4-1"/>
       <repopackage name="libportal1"/>
       <repopackage name="libportaudio2"/>
-      <repopackage name="libpostproc55_9"/>
       <repopackage name="libpostproc58"/>
       <repopackage name="libpotrace0"/>
       <repopackage name="libppd"/>
@@ -2731,9 +2727,7 @@
       <repopackage name="libsunpinyin3"/>
       <repopackage name="libsvrcore0"/>
       <repopackage name="libSvtAv1Enc3"/>
-      <repopackage name="libswresample3_9"/>
       <repopackage name="libswresample5"/>
-      <repopackage name="libswscale5_9"/>
       <repopackage name="libswscale8"/>
       <repopackage name="libsynctex2"/>
       <repopackage name="libsysfs2"/>
@@ -2795,7 +2789,7 @@
       <repopackage name="libudisks2-0_btrfs"/>
       <repopackage name="libumfpack6"/>
       <repopackage name="libunbound8"/>
-      <repopackage name="libunibreak5"/>
+      <repopackage name="libunibreak6"/>
       <repopackage name="libunistring5"/>
       <repopackage name="libunistring5-32bit"/>
       <repopackage name="libunwind8"/>
@@ -4256,7 +4250,6 @@
       <repopackage name="vlc-lang"/>
       <repopackage name="vlc-noX"/>
       <repopackage name="vlc-qt"/>
-      <repopackage name="vlc-vdpau"/>
       <repopackage name="vlgothic-fonts"/>
       <repopackage name="vorbis-tools"/>
       <repopackage name="vorbis-tools-lang"/>

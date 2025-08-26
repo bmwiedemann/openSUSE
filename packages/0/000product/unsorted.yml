@@ -12002,6 +12002,7 @@ unsorted:
   - libavc1394-devel-32bit 
   - libavc1394-tools 
   - libavcall1 
+  - libavcodec58_134 
   - libavcodec58_134-32bit 
   - libavcodec61-32bit 
   - libavdevice58_13 
@@ -12011,6 +12012,7 @@ unsorted:
   - libavfilter10-32bit 
   - libavfilter7_110 
   - libavfilter7_110-32bit 
+  - libavformat58_76 
   - libavformat58_76-32bit 
   - libavformat61-32bit 
   - libavfs1 
@@ -12021,6 +12023,7 @@ unsorted:
   - libavresample4_0-32bit 
   - libavtp-devel 
   - libavtp0-32bit 
+  - libavutil56_70 
   - libavutil56_70-32bit 
   - libavutil59-32bit 
   - libaws-c-auth1_0_0 
@@ -12299,7 +12302,7 @@ unsorted:
   - libboost_wave1_88_0-devel 
   - libboost_wave1_88_0-x86-64-v3 
   - libboringssl1 
-  - libbotan-3-8 
+  - libbotan-3-9 
   - libbotan-devel 
   - libbox2d-devel 
   - libbpf-devel 
@@ -12361,7 +12364,7 @@ unsorted:
   - libcairo2-32bit 
   - libcaja-extension1 
   - libcal3d12 
-  - libcalc2_15_1_0 
+  - libcalc2_16_0_0 
   - libcallaudio0_1-0 
   - libcallback1 
   - libcamd-doc 
@@ -12529,8 +12532,6 @@ unsorted:
   - libcloudproviders-devel 
   - libclthreads2 
   - libclxclient3 
-  - libclzma-suse1 
-  - libclzma-suse1-x86-64-v3 
   - libcm1 
   - libcmh0 
   - libcmis-c-0_6-6 
@@ -12598,7 +12599,7 @@ unsorted:
   - libcpluff0 
   - libcpluffxx-devel 
   - libcpluffxx0 
-  - libcpp-httplib0_24 
+  - libcpp-httplib0_25 
   - libcppunit-1_15-1 
   - libcppunit-1_15-1-32bit 
   - libcppunit_subunit0 
@@ -13769,7 +13770,7 @@ unsorted:
   - libharfbuzz0-32bit 
   - libharminv3 
   - libharu-devel 
-  - libhashcat7_0_0 
+  - libhashcat7_1_2 
   - libhasl0 
   - libhavege2 
   - libhdf5-310 
@@ -14369,6 +14370,8 @@ unsorted:
   - liblz4-1-32bit 
   - liblz4-devel 
   - liblzma5-32bit 
+  - liblzmasdk25 
+  - liblzmasdk25-x86-64-v3 
   - liblzo2-2-32bit 
   - libm2cor18 
   - libm2cor18-32bit 
@@ -14971,7 +14974,7 @@ unsorted:
   - libopenhpi4 
   - libopenhtj2k0 
   - libopenjp2-7-32bit 
-  - libopenjph0_21 
+  - libopenjph0_22 
   - libopenlibm4 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
@@ -15297,6 +15300,7 @@ unsorted:
   - libportaudio2-32bit 
   - libportaudiocpp0 
   - libportmidi2 
+  - libpostproc55_9 
   - libpostproc55_9-32bit 
   - libpostproc58-32bit 
   - libpostquantumcryptoengine1 
@@ -15386,7 +15390,6 @@ unsorted:
   - libpurple-plugin-sametime 
   - libpurple-plugin-sipe 
   - libpurple-plugin-sipe-lang 
-  - libpurple-plugin-skypeweb 
   - libpurple-plugin-xmpp-http-upload 
   - libpurple-tcl 
   - libpurple0 
@@ -16310,8 +16313,10 @@ unsorted:
   - libsvn_auth_kwallet-1-0 
   - libswitchboard-3-0 
   - libsword-1_9_0 
+  - libswresample3_9 
   - libswresample3_9-32bit 
   - libswresample5-32bit 
+  - libswscale5_9 
   - libswscale5_9-32bit 
   - libswscale8-32bit 
   - libsybdb5 
@@ -16459,7 +16464,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent25 
+  - libtorrent26 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
@@ -16575,7 +16580,7 @@ unsorted:
   - libunbound-devel-mini 
   - libunibilium4 
   - libunibreak-devel 
-  - libunibreak5-32bit 
+  - libunibreak6-32bit 
   - libunicap-devel 
   - libunicap2 
   - libunicode-devel 
@@ -22642,7 +22647,6 @@ unsorted:
   - pidgin-plugin-prpltwtr 
   - pidgin-plugin-rocketchat 
   - pidgin-plugin-sipe 
-  - pidgin-plugin-skypeweb 
   - pidgin-plugin-xmpp-receipts 
   - piglit 
   - pijul 
