@@ -23,4 +23,12 @@
     <comment>Do not embed rebuild counter (bsc#1246806)</comment>
     <requestid>1294996</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>f845a8353cace343d32ba8e9f43cf6ef</srcmd5>
+    <version>24.0.2.0</version>
+    <time>1756213027</time>
+    <user>anag_factory</user>
+    <comment>fix build with new glibc</comment>
+    <requestid>1301361</requestid>
+  </revision>
 </revisionlist>
