@@ -17,7 +17,7 @@
 
 
 Name:           ulogd
-Version:        2.0.8
+Version:        2.0.9
 Release:        0
 Summary:        Userspace logging for Netfilter
 License:        GPL-2.0-only
@@ -26,8 +26,8 @@ URL:            http://netfilter.org/projects/ulogd/
 
 #Git-Clone:	git://git.netfilter.org/ulogd2
 #DL-URL:	http://netfilter.org/projects/ulogd/files/
-Source:         http://netfilter.org/projects/ulogd/files/%name-%version.tar.bz2
-Source2:        http://netfilter.org/projects/ulogd/files/%name-%version.tar.bz2.sig
+Source:         http://netfilter.org/projects/ulogd/files/%name-%version.tar.xz
+Source2:        http://netfilter.org/projects/ulogd/files/%name-%version.tar.xz.sig
 Source3:        %name.keyring
 Source4:        ulogd.service
 Source5:        ulogd.conf

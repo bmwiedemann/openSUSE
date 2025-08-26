@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 26 08:17:18 UTC 2025 - Petr Vorel <pvorel@suse.cz>
+
+- Update to release 2.0.9
+  * gprint, oprint: add support for printing IPv6 addresses
+  * sqlite3: correct binding of IPv4 addresses and 64-bit integers
+- Refresh ulogd-conf.diff
+
+-------------------------------------------------------------------
 Wed Jan 22 12:27:34 UTC 2025 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - Enable JSON output plugin in separate subpackage

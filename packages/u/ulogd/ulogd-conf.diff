@@ -1,11 +1,11 @@
 ---
- ulogd.conf.in |   29 +++++++++++------------------
- 1 file changed, 11 insertions(+), 18 deletions(-)
+ ulogd.conf.in | 21 +++++++++++----------
+ 1 file changed, 11 insertions(+), 10 deletions(-)
 
-Index: ulogd-2.0.7/ulogd.conf.in
-===================================================================
---- ulogd-2.0.7.orig/ulogd.conf.in
-+++ ulogd-2.0.7/ulogd.conf.in
+diff --git a/ulogd.conf.in b/ulogd.conf.in
+index 6e0b7c7..1239745 100644
+--- a/ulogd.conf.in
++++ b/ulogd.conf.in
 @@ -6,9 +6,10 @@
  # GLOBAL OPTIONS
  ######################################################################
@@ -18,26 +18,7 @@ Index: ulogd-2.0.7/ulogd.conf.in
  
  # loglevel: debug(1), info(3), notice(5), error(7) or fatal(8) (default 5)
  # loglevel=1
-@@ -58,9 +59,6 @@ logfile="/var/log/ulogd.log"
- # this is a stack for packet-based logging via LOGEMU
- #stack=log2:NFLOG,base1:BASE,ifi1:IFINDEX,ip2str1:IP2STR,print1:PRINTPKT,emu1:LOGEMU
- 
--# this is a stack for ULOG packet-based logging via LOGEMU
--#stack=ulog1:ULOG,base1:BASE,ip2str1:IP2STR,print1:PRINTPKT,emu1:LOGEMU
--
- # this is a stack for packet-based logging via LOGEMU with filtering on MARK
- #stack=log2:NFLOG,base1:BASE,mark1:MARK,ifi1:IFINDEX,ip2str1:IP2STR,print1:PRINTPKT,emu1:LOGEMU
- 
-@@ -175,34 +173,29 @@ numeric_label=1 # you can label the log
- #netlink_socket_buffer_maxsize=1085440
- #bind=1
- 
--[ulog1]
--# netlink multicast group (the same as the iptables --ulog-nlgroup param)
--nlgroup=1
--#numeric_label=0 # optional argument
--
- [nuauth1]
+@@ -175,25 +176,25 @@ numeric_label=1 # you can label the log info based on the packet verdict
  socket_path="/tmp/nuauth_ulogd2.sock"
  
  [emu1]
@@ -68,7 +49,7 @@ Index: ulogd-2.0.7/ulogd.conf.in
  #timestamp=0
  # device name to be used in JSON message
  #device="My awesome Netfilter firewall"
-@@ -216,7 +209,7 @@ sync=1
+@@ -218,7 +219,7 @@ sync=1
  
  [pcap1]
  #default file is /var/log/ulogd.pcap
@@ -77,7 +58,7 @@ Index: ulogd-2.0.7/ulogd.conf.in
  sync=1
  
  [mysql1]
-@@ -301,18 +294,18 @@ procedure="INSERT_PACKET_FULL"
+@@ -303,18 +304,18 @@ procedure="INSERT_PACKET_FULL"
  
  [sqlite3_ct]
  table="ulog_ct"
@@ -99,3 +80,6 @@ Index: ulogd-2.0.7/ulogd.conf.in
  
  [mark1]
  mark = 1
+-- 
+2.50.1
+
