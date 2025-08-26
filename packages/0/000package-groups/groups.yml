@@ -257,7 +257,7 @@ dvd:
   - java-1_8_0-openj9-headless: [locked]
   - java-1_8_0-openjdk-headless: [locked]
   - java-21-openj9-headless: [locked]
-  - java-21-openjdk-headless: [locked]
+  # - java-21-openjdk-headless: [locked]
   - java-24-openj9-headless: [locked]
   - java-24-openjdk-headless: [locked]
 

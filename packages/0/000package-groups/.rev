@@ -2274,4 +2274,11 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <user>dimstar_suse</user>
     <comment>Fix more fonts according boo#1247460</comment>
   </revision>
+  <revision rev="319" vrev="317">
+    <srcmd5>f8ebfe9e5ebd8fcfc6e091fce3a1ce08</srcmd5>
+    <version>unknown</version>
+    <time>1756215661</time>
+    <user>dimstar_suse</user>
+    <comment>Permit java21 - we should have space for LO-base again</comment>
+  </revision>
 </revisionlist>
