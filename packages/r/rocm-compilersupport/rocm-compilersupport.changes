@@ -1,0 +1,492 @@
+-------------------------------------------------------------------
+Tue Aug  5 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove bootstrap logic
+- Use explicit Unix Makefiles for build-comgr step
+
+-------------------------------------------------------------------
+Sun Jul 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add gfx1153 dirs
+
+-------------------------------------------------------------------
+Fri Jul 25 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.2
+
+-------------------------------------------------------------------
+Mon Jun 30 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove compat_gcc option
+- Remove suse check for ldconfig use
+- Add gfx1150,51,52 gfx1200,01 dir creation
+- Remove bundled conditional
+
+-------------------------------------------------------------------
+Mon Jun  9 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Reverse the rocm-runtime bootstrap logic
+
+-------------------------------------------------------------------
+Thu May 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.1
+
+-------------------------------------------------------------------
+Tue May 13 00:00:00 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- For SUSE address circular dependency when building in OBS.
+
+-------------------------------------------------------------------
+Fri May  9 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add gfx950 to modules
+
+-------------------------------------------------------------------
+Tue May  6 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- handle dlopen of libhsa-runtime64.so
+
+-------------------------------------------------------------------
+Thu Apr 24 00:00:00 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- earlier packaging approaches used the hip package name instead of
+  hipcc, provide/obsolete that package.
+
+-------------------------------------------------------------------
+Mon Apr 21 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix suse
+
+-------------------------------------------------------------------
+Fri Apr 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix location of extras
+
+-------------------------------------------------------------------
+Thu Apr 17 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- static link comgr
+- fix tools extra
+
+-------------------------------------------------------------------
+Wed Apr 16 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.0
+
+-------------------------------------------------------------------
+Tue Apr  8 00:00:00 UTC 2025 - Dennis Gilmore <dennis@ausil.us>
+
+- enable alt_arch in rawhide same as Fedora 42
+
+-------------------------------------------------------------------
+Tue Mar 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Workaround gcc 15 assert in array
+
+-------------------------------------------------------------------
+Fri Feb 28 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Do not use cmake CMP0053
+
+-------------------------------------------------------------------
+Wed Feb 26 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add zlib requires
+
+-------------------------------------------------------------------
+Fri Feb  7 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix Suse 15.6
+
+-------------------------------------------------------------------
+Thu Feb  6 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Enable ppc and aarch64 with alt_arch
+- Add lib,include,bin for default module in filesystem
+
+-------------------------------------------------------------------
+Sat Feb  1 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3.2
+- Do not use full path for linker
+- Enable debug info
+- Remove hipcc and hipconfig perl options
+
+-------------------------------------------------------------------
+Sat Jan 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix the fixed shebangs
+- clang is used to find the rocm install, change /opt/rocm -> /usr
+
+-------------------------------------------------------------------
+Thu Jan 23 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add git,python requires for rocm-clang
+
+-------------------------------------------------------------------
+Tue Jan 21 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add module include dirs for kokkos
+- switch from release to relwithdebinfo
+- clean up some shebangs
+
+-------------------------------------------------------------------
+Mon Jan 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- do dir creation for rocm-rpm-macros-modules
+- fix suse build
+
+-------------------------------------------------------------------
+Sat Jan 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- remove the requires gcc-c++
+- build and use the libc++ runtime
+- remove mlir
+- add rocm-llvm-filesystem package
+
+-------------------------------------------------------------------
+Thu Jan  9 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Use compat gcc, gcc 15 breaks us.
+
+-------------------------------------------------------------------
+Sun Dec 29 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove excludes,provides filter for rocm-omp
+- Fix packaging of clang extra tools
+
+-------------------------------------------------------------------
+Sat Dec 28 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Add clang-extra-tools package
+
+-------------------------------------------------------------------
+Sun Dec 22 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3.1
+
+-------------------------------------------------------------------
+Wed Dec 18 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Statically link comgr
+- Remove lld-devel
+
+-------------------------------------------------------------------
+Thu Dec 12 00:00:00 UTC 2024 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Excludes filtering
+
+-------------------------------------------------------------------
+Fri Dec  6 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+- default bundled llvm on fedora
+
+-------------------------------------------------------------------
+Wed Nov 20 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Disable bundled mlir
+
+-------------------------------------------------------------------
+Tue Nov 19 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Clean up bundled install
+
+-------------------------------------------------------------------
+Thu Nov 14 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Add mlir to bundled
+
+-------------------------------------------------------------------
+Tue Nov 12 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Split up bundled to subpackages
+
+-------------------------------------------------------------------
+Sat Nov  9 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix version
+- Rework bundle llvm to use existing package layouts.
+
+-------------------------------------------------------------------
+Fri Nov  8 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Perl is needed for RHEL.
+
+-------------------------------------------------------------------
+Thu Nov  7 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.2.4
+
+-------------------------------------------------------------------
+Wed Nov  6 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove double config check
+
+-------------------------------------------------------------------
+Mon Nov  4 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix c++ isystem.
+- Build LLVMgold.so
+- Remove link to comgr cmake
+
+-------------------------------------------------------------------
+Fri Nov  1 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Mockable rocm llvm.
+
+-------------------------------------------------------------------
+Thu Oct 31 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Change bundle llvm to build rocm llvm.
+
+-------------------------------------------------------------------
+Wed Oct 30 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- RHEL is only x86_64
+
+-------------------------------------------------------------------
+Tue Oct 29 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Use system clang with bundled llvm
+
+-------------------------------------------------------------------
+Sun Oct 27 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- bundle llvm
+
+-------------------------------------------------------------------
+Thu Oct 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix hipcc-libomp-devel
+
+-------------------------------------------------------------------
+Mon Oct  7 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Work around broken clang++-18 link
+
+-------------------------------------------------------------------
+Tue Oct  1 00:00:00 UTC 2024 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Drop compat build option (be more agnostic to llvm packaging)
+- Add hip sanity test
+- Spec cleanup
+
+-------------------------------------------------------------------
+Thu Sep 19 00:00:00 UTC 2024 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Spec cleanup
+- Add rocm-llvm-devel
+- Build with clang (fixes builds on EL9)
+
+-------------------------------------------------------------------
+Sat Sep  7 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Revert change to location of amdgcn
+
+-------------------------------------------------------------------
+Fri Sep  6 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix finding hip path
+- Fix dangling -isystem
+
+-------------------------------------------------------------------
+Thu Sep  5 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- location of amdgcn/ changed in llvm18
+- Fix the finding of the llvm root path
+
+-------------------------------------------------------------------
+Mon Sep  2 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- -mlink-builtin-bitcode-postopt is not a system clang option
+
+-------------------------------------------------------------------
+Fri Aug  9 00:00:00 UTC 2024 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Fix hipcc.bin patch for finding clang
+
+-------------------------------------------------------------------
+Thu Aug  8 00:00:00 UTC 2024 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.2
+
+-------------------------------------------------------------------
+Thu Aug  1 00:00:00 UTC 2024 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Add libomp package
+
+-------------------------------------------------------------------
+Tue Jul 23 00:00:00 UTC 2024 - Tom Rix <trix@redhat.com>
+
+- Fix AMD_DEVICE_LIBS_PREFIX
+
+-------------------------------------------------------------------
+Fri Jul 19 00:00:00 UTC 2024 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+-------------------------------------------------------------------
+Thu Jun  6 00:00:00 UTC 2024 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.1.2
+
+-------------------------------------------------------------------
+Thu May 16 00:00:00 UTC 2024 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Fix rocminfo requires
+
+-------------------------------------------------------------------
+Thu May  9 00:00:00 UTC 2024 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to ROCm 6.1.1
+- Fix devel requires (should be on rocm-comgr-devel instead of hipcc)
+
+-------------------------------------------------------------------
+Mon May  6 00:00:00 UTC 2024 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to ROCm 6.1
+- This package now owns hipcc and rocm-device-libs subpackages
+
+-------------------------------------------------------------------
+Sat Mar  9 00:00:00 UTC 2024 - Tom Rix <trix@redhat.com>
+
+- Fix mock build
+
+-------------------------------------------------------------------
+Thu Mar  7 00:00:00 UTC 2024 - Tom Rix <trix@redhat.com>
+
+- Add with compat_build for llvm17
+
+-------------------------------------------------------------------
+Fri Jan 26 00:00:00 UTC 2024 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+-------------------------------------------------------------------
+Mon Jan 22 00:00:00 UTC 2024 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+-------------------------------------------------------------------
+Thu Dec 14 00:00:00 UTC 2023 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 17.1
+
+-------------------------------------------------------------------
+Fri Oct 20 00:00:00 UTC 2023 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Rebuild against rocm-device-libs 17.1
+
+-------------------------------------------------------------------
+Wed Sep  6 00:00:00 UTC 2023 - Tulio Magno Quites Machado Filho <tuliom@redhat.com>
+
+- Rebuild against LLVM 17.0.0
+
+-------------------------------------------------------------------
+Tue Aug 15 00:00:00 UTC 2023 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 17.0
+
+-------------------------------------------------------------------
+Tue Aug  8 00:00:00 UTC 2023 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Rebuild against rocm-device-libs 16.4
+
+-------------------------------------------------------------------
+Fri Jul 21 00:00:00 UTC 2023 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_39_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jul 18 00:00:00 UTC 2023 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 16.2
+
+-------------------------------------------------------------------
+Thu May 25 00:00:00 UTC 2023 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Add fix for RHBZ#2207599
+
+-------------------------------------------------------------------
+Wed Apr 19 00:00:00 UTC 2023 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 16.1
+- Add rocm-comgr full api provides (currently 2.5.0)
+
+-------------------------------------------------------------------
+Tue Apr 11 00:00:00 UTC 2023 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Fix comgr provides (should be major api version of comgr), for RHBZ#2185838
+
+-------------------------------------------------------------------
+Wed Mar 29 00:00:00 UTC 2023 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 16.0 (forked sources for Fedora)
+
+-------------------------------------------------------------------
+Mon Feb 27 00:00:00 UTC 2023 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Use patch from Gentoo to improve test failures
+
+-------------------------------------------------------------------
+Fri Jan 20 00:00:00 UTC 2023 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_38_Mass_Rebuild
+
+-------------------------------------------------------------------
+Sun Dec 18 00:00:00 UTC 2022 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 5.4.1
+
+-------------------------------------------------------------------
+Tue Oct  4 00:00:00 UTC 2022 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 5.3.0
+
+-------------------------------------------------------------------
+Mon Sep 19 00:00:00 UTC 2022 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Rebuilt against LLVM 15
+
+-------------------------------------------------------------------
+Sat Jul 23 00:00:00 UTC 2022 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_37_Mass_Rebuild
+
+-------------------------------------------------------------------
+Sun Jul  3 00:00:00 UTC 2022 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 5.2.0
+
+-------------------------------------------------------------------
+Fri Jun 10 00:00:00 UTC 2022 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Add comgr(rocm) provide
+
+-------------------------------------------------------------------
+Tue Apr  5 00:00:00 UTC 2022 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Enable ppc64le
+
+-------------------------------------------------------------------
+Tue Mar 29 00:00:00 UTC 2022 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 5.1.0
+
+-------------------------------------------------------------------
+Fri Feb 11 00:00:00 UTC 2022 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 5.0.0
+
+-------------------------------------------------------------------
+Mon Jan 24 00:00:00 UTC 2022 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Initial package
+
