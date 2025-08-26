@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 22 06:24:58 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.41:
+  * Faster computation of some formants (because of
+    multithreading).
+  * Removed a bug that caused Praat to crash on Sound: To Formant
+    (robust).
+
+-------------------------------------------------------------------
+Mon Aug 18 15:44:04 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.4.40:
+  * Faster computation of spectrograms and formants (because of
+    multithreading).
+  * Full awareness of processors with up to 400 physical threads
+    (i.e. 200 or 400 cores).
+
+-------------------------------------------------------------------
 Sat Jul 26 03:53:23 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.39:
