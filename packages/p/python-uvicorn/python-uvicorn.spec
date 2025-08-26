@@ -1,7 +1,7 @@
 #
 # spec file for package python-uvicorn
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-uvicorn
 Version:        0.34.2
@@ -38,9 +43,14 @@ Requires:       python-h11 >= 0.8.0
 Recommends:     python-PyYAML >= 5.1
 Recommends:     python-httptools >= 0.4.0
 Recommends:     python-websockets >= 8.0
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module click >= 7.0}
@@ -54,11 +64,11 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dotenv}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module trustme}
+BuildRequires:  %{python_module websockets >= 10.4}
+BuildRequires:  %{python_module wsproto >= 1.2.0}
 %if 0%{?suse_version} > 1500
 BuildRequires:  %{python_module uvloop >= 0.14.0}
 %endif
-BuildRequires:  %{python_module websockets >= 10.4}
-BuildRequires:  %{python_module wsproto >= 1.2.0}
 # We don't want watchfiles in Ring1
 #BuildRequires:  #{python_module watchfiles >= 0.13}
 # /SECTION
@@ -84,6 +94,9 @@ It supports HTTP/1.1 and WebSockets only.
 
 %postun
 %python_uninstall_alternative uvicorn
+
+%pre
+%python_libalternatives_reset_alternative uvicorn
 
 %check
 # Required for reporting bugs

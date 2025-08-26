@@ -330,4 +330,12 @@
   * Ignore multiple classes of DeprecationWarnings.</comment>
     <requestid>1273799</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>618e04fe2ce72691f5735b674a9e92d9</srcmd5>
+    <version>0.34.2</version>
+    <time>1756212984</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301305</requestid>
+  </revision>
 </revisionlist>
