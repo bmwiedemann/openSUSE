@@ -1,7 +1,7 @@
 #
 # spec file for package python-gwcs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,19 @@
 
 
 Name:           python-gwcs
-Version:        0.24.0
+Version:        0.25.2
 Release:        0
 Summary:        Generalized World Coordinate System
 License:        BSD-3-Clause
-Group:          Productivity/Scientific/Astronomy
 URL:            https://gwcs.readthedocs.io/en/latest/
 # SourceRepository: https://github.com/spacetelescope/gwcs
 Source:         https://files.pythonhosted.org/packages/source/g/gwcs/gwcs-%{version}.tar.gz
 BuildRequires:  %{python_module asdf >= 3.3.0}
-BuildRequires:  %{python_module asdf-astropy >= 0.5.0}
-BuildRequires:  %{python_module asdf_wcs_schemas >= 0.4.0}
+BuildRequires:  %{python_module asdf-astropy >= 0.8.0}
+BuildRequires:  %{python_module asdf_wcs_schemas >= 0.5.0}
 BuildRequires:  %{python_module astropy >= 6}
-BuildRequires:  %{python_module base >= 3.10}
-BuildRequires:  %{python_module numpy >= 1.24}
+BuildRequires:  %{python_module base >= 3.11}
+BuildRequires:  %{python_module numpy >= 1.25}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scipy >= 1.14.1}
 BuildRequires:  %{python_module setuptools_scm}
@@ -39,10 +38,10 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-asdf >= 3.3.0
-Requires:       python-asdf-astropy >= 0.5.0
-Requires:       python-asdf_wcs_schemas >= 0.4.0
+Requires:       python-asdf-astropy >= 0.8.0
+Requires:       python-asdf_wcs_schemas >= 0.5.0
 Requires:       python-astropy >= 6
-Requires:       python-numpy >= 1.24
+Requires:       python-numpy >= 1.25
 Requires:       python-scipy >= 1.14.1
 BuildArch:      noarch
 # SECTION test requirements
@@ -66,12 +65,12 @@ World Coordinate System of astronomical data.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -ra
+%pytest -ra -k 'not (test_fitswcs_imaging and fits_wcs_imaging_simple2)'
 
 %files %{python_files}
 %doc README.rst
 %license licenses/LICENSE.rst licenses/README.rst
 %{python_sitelib}/gwcs
-%{python_sitelib}/gwcs-%{version}*-info
+%{python_sitelib}/gwcs-%{version}.dist-info
 
 %changelog

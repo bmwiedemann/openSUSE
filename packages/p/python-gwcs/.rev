@@ -191,4 +191,23 @@
   *  Add support for compound bounding boxes and ignored bounding</comment>
     <requestid>1245408</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5ddac911dac754edb9cbba6a2d90526e</srcmd5>
+    <version>0.25.2</version>
+    <time>1756323318</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.25.2:
+  * Fix the computation of lon_pole for Zenithal projections and declination
+    of +/-90 deg.
+  * Drop Python 3.10
+  * Fix API issue with wcs.numerical_inverse.
+  * Fix bug where &quot;vector&quot; (shape (n,) not shape (1, n)) arrays would loose
+    all their entries except the first if with_units=True was used.
+  * Bugfix for call and invert incorrectly handling units when involving
+    &quot;parameterless&quot; transforms.
+  * Bugfix for outside_footprint modifying the input coordinates.
+  * Derive the longitude of the celestial pole from the supplied projection.
+  * Add FITSImagingWCSTransform.</comment>
+    <requestid>1301518</requestid>
+  </revision>
 </revisionlist>
