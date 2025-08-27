@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 27 10:10:11 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- bump dependency slab to version 0.4.11 (bsc#1248021 CVE-2025-55159)
+
+-------------------------------------------------------------------
 Thu Aug 14 10:08:55 UTC 2025 - fredrik.lonnegren@suse.com
 
 - add 0001-scxtop-use-PT_REGS_IP-macro.patch:
