@@ -10,6 +10,11 @@ addFilter("python-leftover-require .*-gst");
 addFilter("python-leftover-require .*-pycups");
 addFilter("python-leftover-require .*-rencode");
 
+### 20250710: This (the shebang and lack of executable bit) seems to be by design
+###   The xpra-audio-server rpm from https://xpra.org/beta/Fedora/ is this way
+addFilter("non-executable-script /etc/xpra/pulse/xpra.pa");
+#####
+
 ### 20250410: This is needed when building locally, but not in OBS
 addFilter("python-bytecode-inconsistent-mtime *");
 #####

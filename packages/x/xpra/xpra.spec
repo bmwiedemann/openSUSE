@@ -30,7 +30,7 @@
 
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.4.0+git20250513.41385706
+Version:        6.4.0+git20250819.404462be66
 #Version:        6.3
 Release:        0
 Summary:        Remote display server for applications and desktops
@@ -154,6 +154,7 @@ find -name '*.py' \
   -exec sed -i '1{\@^#!/usr/bin/env python@d}' {} +
 find \( -name xpraforwarder \
   -o -name auth_dialog \
+  -o -name daemonizer \
   -o -name xdg-open \
   -o -name xpra_signal_listener \) \
   -exec sed -i 's@#!%{_bindir}/env python3$@#!%{_bindir}/python3@' {} +
@@ -297,6 +298,7 @@ done
 %dir %{_sysconfdir}/xpra/content-parent
 %dir %{_sysconfdir}/xpra/content-type
 %dir %{_sysconfdir}/xpra/http-headers
+%dir %{_sysconfdir}/xpra/pulse
 %if 0%{?suse_version} > 1500
 %{_pam_vendordir}/xpra
 %else
@@ -310,6 +312,7 @@ done
 %config(noreplace) %{_sysconfdir}/xpra/content-parent/*.conf
 %config(noreplace) %{_sysconfdir}/xpra/content-type/*.conf
 %config(noreplace) %{_sysconfdir}/xpra/http-headers/*.txt
+%config(noreplace) %{_sysconfdir}/xpra/pulse/xpra.pa
 %config(noreplace) %{_sysconfdir}/X11/xorg.conf.d/90-xpra-virtual.conf
 %{_fillupdir}/sysconfig.%{name}
 %{_bindir}/run_scaled
@@ -319,6 +322,7 @@ done
 %{_udevrulesdir}/71-xpra-virtual-pointer.rules
 %dir %{_libexecdir}/xpra
 %{_libexecdir}/xpra/auth_dialog
+%{_libexecdir}/xpra/daemonizer
 %{_libexecdir}/xpra/gnome-open
 %{_libexecdir}/xpra/gvfs-open
 %{_libexecdir}/xpra/xdg-open

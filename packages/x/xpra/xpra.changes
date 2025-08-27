@@ -1,4 +1,965 @@
 -------------------------------------------------------------------
+Tue Aug 19 15:29:49 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250819.404462be66:
+  * forgot to add x11init
+  * move screenshot pasting code to a module
+  * the xor encoding no longer exists
+  * move drm info to a subsystem
+  * remove debug logging
+  * simplify: one logger is enough
+  * forgot to update paths and add module
+  * clang is only needed for the cuda kernels
+  * oops: forgot to add new module to packaging
+  * #3871 simplify: move x11 base to submodules
+  * avoid loading X11 bindings under wayland
+  * move extension initialization to where it is used
+  * fixup cut&paste
+  * now redundant
+  * #3871 move more code to x11 subsystems
+  * #3871 move more X11 features to submodules
+  * #3871 move more functions to the keyboard device interface
+  * #3871 move more X11 device bits to modules
+  * move x11 keyboard bits to generic platform import
+  * Bump actions/checkout from 4 to 5
+  * #3871 make plain X11 backend the default
+  * #3871 avoid using get_pywindow
+  * xid should be set early, it does not change
+  * derp: X11Event uses plain attributes
+  * #3871 move loop to its own module
+  * add ability to log context checks
+  * show X11 vendor and version info
+  * oops: forgot to close display after testing
+  * duplicate import
+  * if more damage events are coming for sure, wait a bit
+  * dict cannot be None
+  * simplify
+  * the drawable is not a pixmap, XFreePixmap on it was causing X11 errors
+  * type hints
+  * use correct initial size
+  * Fedora 43 package list: just default python
+  * this may be less racy?
+  * need patch to build with newer Python / Cython
+  * run_scaled script installed should use default python interpreter
+  * oops: webp scaling errors on undefined attribute
+  * #3871 get_screen_sizes requires the ui thread
+  * errors when _NET_WORKAREA is unset or invalid
+  * #3871 listen for randr screen change events
+  * prettify
+  * remove unused vars
+  * #3871 move desktop info to gtk module
+  * #3871 no need to use gtk when we have randr
+  * simplify: xid is always valid here
+  * no need to check: the function is always defined, can be a noop
+  * make it more readable: use plain string
+  * warn if we see IntEnum
+  * IntEnum is an instance of int, so it must be checked before int
+  * DPI notification message can cause connection to drop
+  * #3871 simplify
+  * no need to duplicate depth logic, report first error
+  * #3871 move constants to core
+  * #3871 only sync on outer context, raise errors
+  * simplify
+  * #3871 make it possible to run with a pure X11 event loop
+  * cosmetic
+  * #3871 add pure x11 event loop
+  * cosmetic logging changes
+  * this method requires an X11 context check
+  * reduce code duplication
+  * prettier output
+  * show extension info
+  * unused
+  * #3871 move paint overlay functions to module
+  * #3871 use plain x11 functions for keyval lookup
+  * #3871 replace gtk with plain x11
+  * annotate constant, remove oudated docstring
+  * this is a constant
+  * add more info on source code and quality metrics
+  * cython 3.1.3
+  * yuk: cursor packet needs to use cleaner interface
+  * #3871 also block import of xpra.gtk module when XPRA_GTK=0
+  * #3871 delay gtk import - waiting to be replaced with pure x11 calls
+  * #3871 no need for gtk here
+  * 'XStringToKeysym' does not raise errors
+  * #3871 some platforms support different values for each axis
+  * #3871 use native x11 calls to get cursor size
+  * fixup import location following refactoring
+  * #3871 handle blocked gtk more gracefully
+  * #3871 xsettings is now pure X11
+  * fix type hints
+  * #3871 remove world window, wm is now pure X11
+  * #3871 convert ManagerSelection to plain X11
+  * fix debug logging
+  * use python string unless we're calling the C api
+  * type hint
+  * add debug logging
+  * honour 'XPRA_GTK' toggle here too
+  * load bindings later, and as needed
+  * oops: missed from 573ef3b851c5d9b15cac4cacb892b0eda557d070
+  * #3871 extract non-gtk bits
+  * use enum
+  * better logical split of method locations
+  * move value to where it is used
+  * split to functions
+  * also split the core clipboard module
+  * split large clipboard code into submodules
+  * honour clipboard toggle
+  * delete the temporary property after use
+  * make it possible to use the x11 clipboard without xfixes
+  * also set name on ewmh window
+  * #3871 remove 'windows' gobject attribute and use direct getter
+  * #3871 remove 'toplevel' attribute and use world-window directly
+  * constify
+  * #3871 use indirect import for get_pywindow
+  * match method signature
+  * #3871 use pure X11 calls for deriving the modifier map
+  * more complete struct definitions
+  * #4639 enumarate all the groups
+  * stronger type hints
+  * #3871 reuse xroot props module for more attributes
+  * #3871 use plain x11 utility functions to access root properties
+  * oops: forgot to update callers in 13308d47d3be88ac097a8809224693c3386fc6c1
+  * always check display status when verify_display is called
+  * #3871 don't initialize gtk early when checking display
+  * split to functions
+  * move verify_gdk_display to gtk module
+  * must have access to the display to get the screen
+  * simplify
+  * unit tests block x11, fail more gracefully
+  * add debug logging
+  * forgot to update test path
+  * #3871 simplify: the root window xid never changes
+  * #3871 move root properties to pure x11 module
+  * root window always exists and does not need an error context manager
+  * #3871 initialize X11 display source later
+  * #3871 clipboard is now (almost) pure X11
+  * #4638 add env var to override the new-stream-sound
+  * #3871 make it easier to try to start servers without gtk
+  * #3871 no longer used
+  * #3871 use plain X11 calls to create EWMH window
+  * #3871 use plain X11 calls for creating the clipboard window
+  * #3871 use plain X11 calls and window ids
+  * remove unused attribute
+  * pass the root xid in, avoids importing gtk
+  * no need for gtk here
+  * simplify
+  * the tray subsystem requires gtk for its menu
+  * move tray to common location
+  * simplify
+  * #3871 move screen info to gtk and display subsystems
+  * #4499 daemonizer changed the command form
+  * never use zero value as vertical refresh rate
+  * #3871 inject Gtk icon lookup into windowicon source module
+  * #3871 move server tray menu to a subsystem
+  * move gtk functions to where they belong
+  * #4637 fix 404 link, replace with templates
+  * incorrect in 53a90b7b95b43b928e229b48f531cee6a24764c4
+  * simplify
+  * fixup refactoring: super() already provides self
+  * ensure 'local_logging' is always a Callable
+  * unused import
+  * #3871 delay gtk import, avoid it for root xid
+  * stronger type
+  * #3871 'runner' subcommand is more like 'encoder' and does not need gtk
+  * #4636 use correct libname for noble
+  * #3871 extract constants out of gtk module
+  * remove duplicate statement
+  * help linters figure out the return type
+  * stronger type hints
+  * silence linter warning: documentation string should not be changed to https
+  * use noop to simplify type hints
+  * matcher superclass interface
+  * match new http script interface added in 09b9bb8c7073c122d82a8e2c8331228880efbb26
+  * there is only one superclass now
+  * simplify: use noop to keep 'local_logging' always callable
+  * silence linter warnings: ensure scores only contains rectangles
+  * model references to the root window were removed in 5a09fe1f04f6ee064309cc8ee5c22e9aa5c76086
+  * markdown is now rendering the trailing backslash, sometimes
+  * catch gio file monitor setup errors
+  * don't leak event receiver hooks
+  * type hint was wrong, handlers are just objects
+  * #3871 move Gdk Display initialization to gtk subsystem
+  * add docstring
+  * #3871 tray no longer uses gtk
+  * #3871 pass world window xid so composite doesn't import anything gtk related
+  * #3871 wm_check doesn't use gtk
+  * #3871 split X11 event dispatch from gtk
+  * #3871 window info no longer uses gtk
+  * #3871 property module no longer uses gtk
+  * dependency inversion: x11 calls use the generic error manager (#3871)
+  * simplify
+  * fix https linter warnings, or ignore if they're wrong
+  * match parent signature
+  * derp: typo in fallback code path
+  * minor sonarqube warnings
+  * match refactoring
+  * derp: IDE imported some random module..
+  * #3871 split glib bits from gtk
+  * #3871 move remaining gtk bits to a subsystem module
+  * #3871 remove references to root window
+  * #3871 the GLib main loop is sufficient
+  * #3871 move display name to display subsystem
+  * cosmetic
+  * missing type hints
+  * remove debug logging
+  * #4208 more flexible grouping: combine attributes with '+'
+  * #4634 try to preserve the window position during opengl reinit
+  * forgot the xkb subtype attribute, as there's only on value for now..
+  * #3871 move more keyboard code to subsystem
+  * this is already handled in GLibServer
+  * try harder to find a matching display: ':0' and ':0.0' are considered the same for matching
+  * push root window down to the capture backends that actually needed it
+  * better debug logging
+  * fixup renaming missed during refactoring
+  * #3871 make it easier to figure out what is trying to import Gtk
+  * finish refactoring power events: generic use in client
+  * automatically enable debug logging when re-running github actions
+  * #4634 make it possible to not reinitialize the windows
+  * #4631 revert 2551a32bac64aee8354c4962426e80eb9fe3a298
+  * #3871 don't use gtk for rectangles
+  * oops: remove debug logging
+  * GLibServer already takes care of this
+  * #3871 move notification bits where they belong
+  * #3871 remove unused methods
+  * #3871 split ui watcher to a server subsystem, move cursor bits where they belong
+  * avoid 'noexcept clause is ignored for function returning Python object' warning
+  * #4499 forgot packaging updates for new libexec script
+  * #4566 use accessor method
+  * #4566 this should be backwards compatible with older versions
+  * #4496 make it easier to drop legacy 'sound' prefix
+  * stricter signature
+  * #4499 record the correct pid for ibus-daemon
+  * suggest installing the client for the remote encoder
+  * remove debug logging
+  * don't bother trying to enable notification forwarding without dbus
+  * unbreak X11 shadow mode: slots prevent saving bindings instance
+  * merge 'posix' display source into main module
+  * prefer the python specific cython version
+  * include X11 bindings with fat builds
+  * remove duplicated / unused imports
+  * many cdef functions don't need exception handling wrappers
+  * add info for all windows
+  * now only returns major + minor, no event base
+  * remove winbar from RHEL 10 clones
+  * remove winbar from RHEL < 9 clones
+  * missed from 883a068e4c094f2d228b0db4870554ab3b7a2556
+  * move gobject out of gtk
+  * tweak session dir name on MS Windows, can't have ':' in it
+  * abstract sockets have restrictions on path characters
+  * support connecting to X11 displays via TCP
+  * robustify: verify display has randr before using it
+  * stronger return types
+  * make it possible to load xwayland bindings without having randr
+  * show available bindings
+  * don't assume macos or win32 don't have x11 bindings
+  * more generic keyboard and pointer device emulation
+  * add xinfo test subcommand
+  * use correct pkgconfig file for each binding
+  * minor x11 availability check refactoring
+  * split off saveset and classhints to separate bindinds
+  * shape has already been moved out
+  * xdriinfo can be useful
+  * import cleanup
+  * simplify: don't create the X11Event object in parsers
+  * use memalign via cython module for portability
+  * no xshm support on win32
+  * don't assume, check for module
+  * don't retry shmget errors
+  * bundle x11 libs if x11 is enabled
+  * more x11 bindings can be built on win32
+  * support spaces between tokens, skip empty args
+  * simplify
+  * add bufferbloat link
+  * move composite bits out of image
+  * split off XShm
+  * XFreePixmap lives in Xlib.h
+  * split more extensions
+  * split more extensions
+  * make it possible to try to build x11 bindings on win32
+  * split more extensions and inject the dependency
+  * split shape to its own module, inject the dependency
+  * merge GenericEvent in the more generic codepath
+  * use a parser registry
+  * split parsing to separate functions
+  * simplify + stronger types
+  * the shade / unshade state requires the X11 bindings, load them if needed
+  * more errors are (semi) permanent: no valid presets or cuda context
+  * #4545 missed from 5111f3b0bc19f308b2aec165f9481e6e252cc417
+  * make lossless quality more sticky
+  * #3735 configure refresh rate from gui
+  * #4618 add av1 to docs
+  * #3735 apply refresh rate modifier to all sources for vrefresh
+  * I keep getting this one wrong
+  * limit 'xpra info' output line size
+  * Use pkgconfig for libproc on Fedora
+  * #4579 convert RLE8 to RGB so mmap can handle it
+  * this extra depth attribute is not documented
+  * #4608 missed from 6322096d9900fef8d308c480a8d4ad7c5a951128
+  * reusable functions
+  * #4608 add pointer=emulate3button option
+  * don't duplicate the code
+  * #4618 wait for current image to be uploaded
+  * ping was moved to its own source module
+  * need pings for backwards compatibility
+  * #3680 bundle winloop
+  * #3680 packaging for winloop
+  * #3950 enable winloop
+  * #2767 no longer used
+  * formatting
+  * make it easier to dump X11 info
+  * #4549 remove extra URI args
+  * this is rendundant
+  * move more cursor bits to subsystem
+  * minor linter warnings
+  * suspend_event now belongs in PowerEventServer
+  * finish moving cursor bits to subsystem
+  * avoid warnings when running without pings, ie: minimal
+  * remove dependency on ping subsystem
+  * can't have dragndrop without file transfer
+  * simplify and avoid linter warnings
+  * update type hints to match new http script interface
+  * can't have printer forwarding without file-transfer
+  * socket test is now fast enough to run
+  * speedup test and avoid warnings
+  * no need for dbus either, also avoids X11 warnings
+  * runner does not need a vfb
+  * also show the file containing the test
+  * 'runner' subcommand is much faster to start
+  * 'pulseaudio' feature was split from 'audio', must also be disabled
+  * show encoder server in subcommand list
+  * rethrow more exception types
+  * silence linter warnings
+  * contrary to what pycharm says, this should not be simplified
+  * make 'checkitem' widget function reusable
+  * rename function: it doesn't do any sending
+  * http handlers can receive post data
+  * use a dedicated logger for asyncio
+  * make http functions reusable
+  * move asyncio bits to their own module
+  * split install uvloop to a function
+  * add debug logging
+  * only register switch event once, when we're ready to handle it
+  * use the plural form to match the config option
+  * must call unrealize when handling close button
+  * fixup d8c0ffeb76d9d1e15d8fb4fe6ae1d288d2304fee also remove function from tests
+  * chop test name string properly
+  * forgot to sudo
+  * install pip via apt
+  * remove unused functions
+  * silence cython warning
+  * #4484 timestamps are already unsigned ints
+  * #4465 remove dav1d, aom will do
+  * #4625 always preserve path
+  * all IP socket types support URL scheme
+  * clang 20 no longer supports no-error=unreachable-code-fallthrough
+  * timeout means the connection failed
+  * derp: unused arg
+  * don't retry forever
+  * error message should not assume this is server mode
+  * fix breakage introduced in a61c300ec3532368f23a9eeddd7300504bb6a93d
+  * stronger type hints
+  * must convert to int to be able to cythonize :(
+  * cannot use the original socket once wrapped as ssl
+  * don't poll so hard when the result is unlikely to change
+  * shortcut out when socket is not accessible
+  * typo caused connect test subcommand / request to fail
+  * cosmetic: actually log the value
+  * no point in polling if workspace support is disabled
+  * #4623 add the display to the user uuid
+  * simplify
+  * silence compilation warning
+
+-------------------------------------------------------------------
+Thu Jul 10 14:37:06 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250709.70877d0499:
+  * add 'kitty' class to /etc/xpra/50_class.conf
+  * stronger type hints
+  * this is a file attribute, not printer
+  * printer bits have been moved to PrinterMixin
+  * make linter happier
+  * #4618 split most of aom api to pxd
+  * #4618 decode to 8-bit planar format
+  * option to use show plane range in aom decoder and opengl backing
+  * python definitions must live in the pyx
+  * cosmetic: better debug logging
+  * move number of bytes to get_plane_name where it is used
+  * expose all possible pixel formats
+  * #4612 don't use Annex-B format
+  * #4621 ignore bit depth when choosing a shader
+  * the subsampling is independant of the pixel depth
+  * #4618 aom produces P16 planes
+  * #4612 tune av1 config
+  * convert to bools on entry
+  * #4620 enable _aligned_malloc + _aligned_free on win32
+  * #4620 use _aligned_malloc on win32
+  * remove i386
+  * newer versions of macos do support posix_memalign
+  * #4618 win32 packaging
+  * doh: cut&paste
+  * make it possible to enable save-to-file for nvenc only
+  * #4618 add YUV420P av1 decoder using libaom
+  * #4465 disable this codec since the test data crashes it
+  * don't force rebuild the kernels when enabling nvidia
+  * enable nvenc with av1
+  * derp: this is a decoder
+  * import should have been removed in 1e0bc6caec6a341e73774baf285139e698f504e2
+  * cosmetic
+  * cosmetic: decoders vs encoders, to vs from
+  * missed from 0af6a83baf102db52a8694199a5a6aeeadf49d48
+  * #4465 enable dav1d decoder
+  * use stronger return types
+  * remove debug logging
+  * in 'full' test mode, test decoding twice
+  * #4617 noexcept / nogil for rencodeplus
+  * #4617 use nogil / noexcept wherever possible
+  * match refactoring
+  * fix tests: use stricter types
+  * finish renaming
+  * no need to check for ancient drivers
+  * remove outdated yuv444 driver check
+  * remove unused imports
+  * remove debug code
+  * also support .jpg background images
+  * #4590 use session dir for background image
+  * call rm_session_dir explicitly when needed
+  * split process handling from socket / dirs
+  * never remove base dir if using runtime dir
+  * missing type hints
+  * getGeometry can return None if the window is gone
+  * no longer used
+  * #4615 memfd works in containers, shm does not
+  * make it easier to disable pulseaudio shm
+  * re-use whitelist function, and do return env values..
+  * derp: confused with device names
+  * use saved DISPLAY for server splash screen
+  * make it easier to figure out where the error message comes from
+  * typo
+  * quotes are no longer needed since we use the array directly
+  * private directory cannot be the session directory
+  * cosmetic logging tweaks
+  * the source must use the monitor
+  * it seems we just can't have spaces here
+  * silence the correct caller location
+  * #4615 default config object now also defaults to 'auto'
+  * #4615 'pulseaudio_configure_commands' is already a list
+  * forgot to add dir
+  * configure pulseaudio using a script rather than execing commands
+  * silence deprecation we can't fix
+  * cosmetic
+  * get_pulse_env should not modify os.environ
+  * pulseaudio server modules don't honour PULSE_COOKIE
+  * make it easier to disable xdg menus
+  * make it easier to identify callers: log backtrace
+  * constify + split server env and child env
+  * honour dbus flag here
+  * expose display name, shown in errors
+  * missed from 3c8e54574ca64fb6a0bd36e2904e7be3d80d22c9, also include example in config
+  * default pulseaudio command is now 'auto'
+  * specify display explicitly
+  * the pulseaudio command needs $XPRA_PULSE_SERVER for module-native-protocol-unix
+  * make it easier to turn on pulseaudio verbose logging
+  * add xclip to tools for debugging clipboard issues
+  * add type hints
+  * also specify the cookie location
+  * add debug logging
+  * readonly containers can return True with os.stat checks
+  * quote to avoid shell expansion
+  * tell pulseaudio not to use HOME if we can't write to it
+  * prevent confusion
+  * dbus causes server to crash!?
+  * simplify
+  * remove more unused dirs
+  * faster quic with uvloop
+  * safe to delete server.pid without first killing ourselves!
+  * try harder to find a cert
+  * add type hints
+  * we need to create /tmp/.X11-unix in advance
+  * derp: cut&paste typo
+  * expose server via mdns
+  * if unpress worked, record it
+  * simplify
+  * incorrect call arguments, this is not a logger
+  * split level function, define toggle_modifier just once
+  * split change_mask() function
+  * stronger type hints
+  * try harder to clean pid files
+  * also pass port value so we can honour it when looking up known keys
+  * clean_session_files already calls rm_session_dir
+  * try harder to clean session dirs
+  * split clean function
+  * move connect functions to utility module
+  * simplify large function using subclass attributes
+  * split connect function
+  * logging: moveresize is a geometry event
+  * log changes to _NET_WM_USER_TIME_WINDOW at debug level
+  * avoid None values
+  * ensure we convert to int before calling cython function
+  * make linters happier
+  * #4614 start removing python-avahi
+  * simplify
+  * #4359 only xpra-server should have xpra-audio-server in 'recommends'
+  * try to continue if encryption module is not available
+  * unused code triggers warnings
+  * typo failed to clear hardware decoder reference
+  * simplify: split method
+  * type hints fixes
+  * stronger type hints
+  * state is managed in the superclass
+  * simplify: split into reusable functions
+  * #4465 add to MS Windows packaging
+  * oops: missed a relative path conversion
+  * don't publish on loopback if we have another address
+  * #4613 process loopback last
+  * stronger type hints
+  * #4613 better type hints and debug logging
+  * skip gstreamer, which fails on CI
+  * fix linter warning
+  * newer kernel modules break module version parsing heuristics
+  * only LogicError is a warning, others are errors
+  * derp: remove debug logging
+  * all encoders must supply options typedict now
+  * #4465 bundle libdav1d dll with MS Windows builds
+  * make it possible to specify ssh port via env var
+  * #4465 test data causes gstreamer unit test failures
+  * forgot to update more callers with new require arg
+  * extra arg now required
+  * flush and close test file, test encode in 'full' mode
+  * #4612 try to use more compatible settings
+  * #4465 almost? working dav1d decoder
+  * simplify: use a list since we don't need the values
+  * make it possible to provide options when testing encoders
+  * import 'Atom' type since we use it
+  * use a more consistent return type
+  * add ability to save-to-file
+  * #4612 add AV1 support
+  * hide more functions as cython only
+  * simplify
+  * move nvencode ctypes glue to its own module
+  * remove unused attribute
+  * split api glue to its own module
+  * expose GPU attributes as strings
+  * #4610 ignore encoding used
+  * forgot to add protocols to packaging
+  * fix unit tests: need ssl option defined
+  * don't try to populate ssl options when ssl is disabled
+  * define protocols for codecs
+  * stronger type hints
+  * unbreak named-pipe listener
+  * split key mapping function and add stronger type hints
+  * check depth and encodings early
+  * simplify: extract ssl_wrap and split 'ws' socket handler
+  * stronger type hints
+  * instantiate the splash screen once we have the display
+  * tag backwards compatible code path
+  * derp: infinite recursion
+  * pynvml 12.575.51
+  * cosmetic renaming
+  * auto clean notification temp files
+  * prevent csc-type debug metadata from being overwritten
+  * simplify
+  * simplify and handle all 'OSError's in handle_new_connection
+  * 'xpra configure' system config when run as root
+  * fix rpm builds: just install xpra confs into install dir
+  * do check for ipv6 support
+  * zeroconf can't handle '::' causing ssh mdns records to go missing
+  * ensure the uuid is set before publishing the records
+  * add quotes around uuid string
+  * convert text dict to strings
+  * simplify and remove outdated clang workarounds
+  * must call setup on superclasses (unbreaks mdns)
+  * cosmetic
+  * we can enable mdns by default on Fedora
+  * simplify: rename
+  * stricter exception type
+  * simplify: no need for exception handler
+  * simplify
+  * use a more consistent camel case
+  * simplify callbacks must always be defined, use noop
+  * quote to make sonarqube linter happier
+  * typo
+  * use exec to keep pid 1
+  * reduce layers
+  * use a tmpfs volume for /tmp, avoids XShm errors
+  * improve error logging
+  * try to recover from xshm errors
+  * wait for port with polling loop
+  * move platform info to subsystem
+  * safer example
+  * add info on running the images
+  * install xpra-html5 from source
+  * add link to container scripts
+  * add more docs and Dockerfile examples
+  * fix linter warning
+  * core subsystems could use threaded_setup
+  * #4606 convert to bytes once at cython API boundary
+  * move podman scripts to a subdir
+  * simplify using utility functions
+  * move skeleton files to a subdir
+  * simplify + add CLEAN option
+  * can't go through 'all' with elif
+  * make it impossible to try to run enlightenment in seamless mode
+  * use a shared volume for /run
+  * always re-chmod the certs, as 'dnf update' may have reset them
+  * add seamless vs desktop toggle
+  * make all daemon mkdir calls more resilient
+  * pagers think we don't support 'show-desktop'
+  * wait for unix domain sockets to appear before testing them
+  * match stronger types
+  * derp: preserve pre-read data
+  * move pre-reading to a function
+  * split peek connection timeout
+  * simplify: rename
+  * cosmetic renaming and fix client listen mode
+  * no longer needed
+  * stronger type hints
+  * test fedora DE containers
+  * new winbar snapshot
+  * stronger type hints
+  * if there are zero workspaces, use the first one
+  * prettify
+  * error case returns wrong datatype
+  * make it easier to test new DEs
+  * fastest test first
+  * update protocol for 'named-pipe' connections
+  * use wmi to get wallpaper
+  * derp: unbreak non-local sockets
+  * exit-with-children polling was broken (ie on win32)
+  * ensure we only register signals from the main thread
+  * switch back to upstream
+  * oops: missing arg
+  * split function further
+  * split into more manageable functions
+  * split huge 'setup_local_sockets' function into smaller pieces
+  * simplify
+  * avoid another cython warning
+  * oops, missed from 0ee7f445600dc8de165fb3320f1627b2b628463c
+  * fix cython warning
+  * move idle timeout to subsystem
+  * finish moving splash process to subsystem
+  * remove top-level dependency on 'password_file' attribute
+  * move encryption to subsystem
+  * move session files handling to subsystem
+  * finish move menu provider to command subsystem
+  * child reaper is already a singleton
+  * move pid to subsystem
+  * handle hello requests using the generic handlers
+  * also call late_cleanup on all core server superclasses
+  * simplify further: use a dataclass for listeners
+  * simplify: keep attributes in closures
+  * simplify backwards compatibility using an alias
+  * try to continue even if we can't create /run/dbus
+  * avoid errors parsing empty or incomplete addresses
+  * content-type should always be a string, not None
+  * simplify / optimize: shortcut out
+  * simplify and split packet encode method
+  * split loose ip+mask matching to a function
+  * evaluate faster and shortcut out
+  * simplify: strip alpha in one place, always set optimize flag
+  * there is no transparency to preserve in BGR565 input
+  * move palette transform to a function
+  * Revert "make linter happier"
+  * silence pycharm linter warnings
+  * remove unused 'options' argument
+  * make linter happier
+  * derp: forgot args
+  * add 'update' subcommand for xpra / apps containers
+  * winbar 0.2.1: use fork to get randr patch
+  * pycuda 2025.1.1
+  * cython 3.1.2
+  * XRGB should work
+  * simplify: move code to a function
+  * move listen mode to a dedicated function
+  * make it possible to expand $DISPLAY in XPRA_LOG_DIR
+  * must state what warnings to silence
+  * mode removed would squash current mode and cause errors
+  * desktop servers should set geometry attributes
+  * simplify: move to utility functions
+  * stricter packet element validation
+  * simplify
+  * avoid linter warning
+  * simplify
+  * try harder to delete notification icon's temp files
+  * #4602 also catch ValueError and continue
+  * move uinput and depth patching to functions
+  * #4598 downgrade warning to info message
+  * more appropriate logger
+  * clear dnf cache to save space
+  * suggest close matches for invalid subcommand
+  * fix syntax
+  * #4598 'identitiesonly' should default to False
+  * #3376 add fast-open connected state debug logging
+  * always verify that the connection is established
+  * #3376 move fast-open to a connection attribute
+  * make pycharm linter happier
+  * provide gl dict to method
+  * encode_scrolling does not return a value
+  * split find_device and find_service to utility functions
+  * split cleanup function
+  * simplify by splitting into functions
+  * ugly syntax for arrays of strings with shell variables
+  * just use the system-wide ssl certificate
+  * doesn't hurt, avoids a warning
+  * match refactoring
+  * deprecate these locations, the session dir should be enough
+  * pid=1 is also a good sign we're in a container
+  * split utility functions
+  * make pycharm linter happier
+  * split private key loading to a function
+  * sonarqube linter warnings
+  * 'printing' config option is a string
+  * use consistently double-quotes
+  * fix non-standard port host key verification
+  * make it possible to override as non-root
+  * avoid some warnings when installing in a container env
+  * also start cups if needed
+  * wait for system dbus socket
+  * #4598 fix 'ResourceWarning'
+  * ignore deb build generated files
+  * #4598 compare using sha256 fingerprints
+
+-------------------------------------------------------------------
+Tue Jun 03 18:36:14 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250603.76fe7360:
+  * #4598 only try the keys specified if 'identitiesonly' is set
+  * #4523 split file and printer
+  * #4598 don't add default keyfiles when identitiesonly is set
+  * #4598 do process keys with agent, even when identitiesonly is set
+  * #4598 fixup 6ec7ce0a0324da53fd74ad15bdd6d490a1a39527: transport is now a class attribute
+  * make it easier to change auth modes
+  * #4598 try key first if one is specified, honour identitiesonly
+  * #4523 pulseaudio subsystem is now optional
+  * add missing dependency
+  * #4586 vp9 usually does not use full-range
+  * #4586 disable scroll encoding, again
+  * preserve colorspace full-range attribute
+  * when scaling, preserve full-range flag
+  * assume we will be encoding YUV420P full-range
+  * duh: get defaults before using them
+  * make metadata functions simpler
+  * split into more manageable functions
+  * better docstrings
+  * #4569 initial install test script
+  * use stronger function argument requirements
+  * use a class to more easily split the function
+  * move non-trivial calls to methods, add type hints
+  * derp: missing return value
+  * #4587 we no longer set a default resolution
+  * add utility dbus diagnostics subcommands
+  * cosmetic
+  * apparently needed: https://github.com/jmanc3/winbar/pull/85
+  * split netifaces functions out
+  * simplify, or at least make the linter think it is
+  * simplify: extract reusable functions
+  * derp: @staticmethod does not need self
+  * log connection details with the channel warning
+  * create /run/user/0 when running as root
+  * simplify: extract reusable functions
+  * split into more manageable functions
+  * use buildah for checking images
+  * #4594 cx_Freeze must use 'packages' for module directories
+  * more suitable exception type
+  * never add the xorg.conf to git here
+  * utility update scripts
+  * new winbar snapshot
+  * doh: was catching wrong exception type
+  * fix type hint
+  * make it easier to test XShm
+  * handle missing gui component more gracefully
+  * make it easier to trigger notifications
+  * create containers if needed
+  * oops: missed from 09c71bd63dda661138965e0cadaa49f678c5b9c2
+  * define XDG_RUNTIME_DIR
+  * #4523 move pulseaudio to a subsystem
+  * forgot some default config files
+  * #4593 allow display 0 with ssh modes
+  * include gtk3 client
+  * handle missing module more gracefully
+  * split pulseaudio functions
+  * bail out on error, more user config
+  * oops: forgot to include the new conf files
+  * derp: strut has already been made generic
+  * change file manager (now tunable), create winbar cache last
+  * most properties can be handled generically
+  * add ping
+  * add firefox from mozilla, not snap
+  * workspace does not use zero as default value
+  * add 'help' handler
+  * move win32 calls to utility functions
+  * stronger type hints
+  * update docstrings
+  * don't run as root
+  * #4592 workarounds for debian
+  * make it easier to update the containers in-place
+  * #4592 packaging for cyshared module
+  * expose both the host's X11 server socket and dri card
+  * install more apps
+  * #4592 use Cython 3.1 shared utility module if available
+  * do enable quic
+  * handle system tray forwarding errors more gracefully
+  * let winbar handle the system tray
+  * simplify
+  * move texture validation messages to a method
+  * match return type
+  * simplify
+  * fixup def98cc2f859da1f09832917cb54dbd8ee8771ed: sqlite bindings use varargs only
+  * split sql string arg from other varargs
+  * create the cache once
+  * pavucontrol is useful for debugging pa issues
+  * the path is not necessarily private
+  * we don't install paramiko, so avoid the ssh-upgrade warning
+  * #4523 split suspend/resume from system power events
+  * include VirtualGL in tools
+  * more type hint fixes
+  * add docstring
+  * oops: missing return statement
+  * stronger type hints
+  * derp: provide full path
+  * also create the 'pulse' dir when not using private servers
+  * support printer forwarding
+  * ignore power events since we don't install upowerd
+  * use pulseaudio logger where appropriate
+  * add very lax dbus policy
+  * create the 'pulse' dir ourselves
+  * don't add 'pulse' subdir twice
+  * add type hint
+  * pass depth / dpi / fps to all xvfb functions
+  * make sure XPRA_PULSE_SERVER is expanded to its real value
+  * #4591 ignore USPosition / PPosition and USSize / PSize
+  * always set XPRA_PULSE_SERVER socket location
+  * #4591 make it easier to debug internal properties
+  * method should always return a dict
+  * the 'container' env var is documented
+  * make it easier to enable debug logging
+  * useful to have strace for debugging
+  * no need for a private pulseaudio server in containers
+  * more helpful warning
+  * we do use _NET_WM_PID as fallback, don't say otherwise
+  * readonly is not a warning
+  * workaround for ugly dependency introduced in cbb1b3c73055591c8872d335f5a489fe0a976387
+  * add debug category for pulseaudio
+  * init_sockets isn't used for local sockets
+  * we must start dbus before accessing it
+  * if I get confused, it gets added, simples
+  * handle 'none' logging category
+  * #4590 install libjxl-utils for Fedora 42 backrgounds
+  * cosmetic type hint fixes and delay import
+  * #4590 add Fedora 42 jxl paths
+  * delay imports that aren't necessarily used
+  * derp: use correct path
+  * #4590 convert jxl background to png on the fly
+  * wait a few seconds before trying to open the connection
+  * do install default backgrounds for html5 client
+  * add debug logging
+  * specify dbus system path
+  * match lowercase
+  * generate machine_id so we can run readonly
+  * prettier formatting of commands
+  * add error handling: /var/lib may be readonly
+  * derp: also remove INTERNAL_NET here
+  * create parent directories if needed
+  * enable dbus
+  * don't run xvfb as root
+  * log some diagnostics
+  * run as a different user
+  * derp: cut&paste gone wrong
+  * create the machine_id if it doesn't exist
+  * start the system dbus server if needed
+  * move utility code to a function
+  * rename to prevent clash with local X11 session
+  * show the xpra pod session using a browser
+  * remove unused internalnet
+  * enable read-only
+  * add optional tools
+  * oops: forgot xorg.conf for Xdummy
+  * make the tools optional
+  * add toggle for tools
+  * easier to avoid using xauth
+  * constify
+  * WIP container + pod
+  * we need to be able to call this without xpra.x11 installed
+  * don't allow ssl upgrades when 'ssl' flag is disabled
+  * fix some sonarqube warnings
+  * derp: run as a regular user
+  * add winbar package
+  * #4523 forgot to enable client-side power events
+  * simplify
+  * fix win32 builds: can't import vfb module
+  * Revert "simplify: the config must use valid types"
+  * remove debug logging
+  * cython 3.1.1
+  * always update desktop geometry attributes
+  * rate limit screen size change handler calls
+  * simplify + cosmetic
+  * wait for uuid to be set to save it
+  * we can use XWayland as vfb and still use X11
+  * useful dock for desktop mode
+  * recurse when enumerating subsystems so we get all of them
+  * better backwards compatibility with html5 client
+  * parsing of NET_WM_STRUT[_PARTIAL] incorrect on 64-bit systems
+  * reduce complexity
+  * cleaner interface
+  * better diagnostic messages
+  * make functions reusable
+  * tell type check to stop moaning
+  * split into reusable functions
+  * oops: missed argument during refactoring
+  * the html5 client sends clipboard data as strings
+  * honour daemon flag with 'xvfb' subcommand
+  * remove unused queue
+  * silence ruff warning
+  * simplify: split print_interface_info to a function
+  * simplify: move loading ssh config file to function
+  * simplify basic validation should be done earlier
+  * simplify: the config must use valid types
+  * simplify: split challenge handler
+  * simplify: check for local logging once
+  * do sanitize zeroes
+  * administrators should not save configs in their home directory
+  * split key loading to a function
+  * oops: match renaming
+  * simplify
+  * #4575 make it possible to run commands on plain X11 servers
+  * #4582 this path was not updated
+  * #3560 also check at runtime before adding new switch
+  * turn off unused features for command line clients
+  * ensure menu_provider is defined
+  * re-use utility functions for OS detection
+  * most users will expect the xpra x11 server to be installed by default
+  * re-add failure handling for Debian / Ubuntu
+  * keyboard subsystem now does its own thing for ibus
+  * silence annoying warning
+  * simplify
+  * typo: there is no 'path' variable here
+  * simplify
+  * #4575 make remote server adapter reusable
+  * update tests to match attribute now parsed in subsystem
+  * reduce complexity
+  * make sonarqube linter happy
+  * root window cannot be set before the display manager is initialized
+  * simplify: replace root_window attribute with utility get_root_size function
+  * load existing windows when the main loop runs
+  * #4523 move ibus setup to keyboard subsystem
+  * remove exec_cwd override
+  * reduce function complexity by splitting it
+  * delay gtk imports as much as possible
+  * restore ugly exec_cwd setup location
+  * show notification cleanup error just once per notification
+  * reduce complexity by splitting functions
+  * #4575 handle run hello requests
+  * #4496 keyboard should not need to be specified
+  * #4496 'full-version-request' should be dropped
+  * move most of guess_session_name to a function
+  * avoid linter warnings about missing call to __init__: don't use it
+  * #4475 extend server base to get support for multiple clients
+  * #4496 move remaining instances of 'xdg-menu' behind XPRA_BACKWARDS_COMPATIBLE gate
+  * avoid warnings when using older configs
+  * missed from 61ff9e8499a41685ff8b16f2ffa01ec319ea7455
+  * simplify, slightly
+  * replace X11 calls with constant to simplify code
+
+-------------------------------------------------------------------
 Tue May 13 15:34:18 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 6.4.0+git20250513.41385706:
