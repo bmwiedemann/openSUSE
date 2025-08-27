@@ -1,7 +1,7 @@
 #
 # spec file for package fuzzel
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fuzzel
-Version:        1.12.0
+Version:        1.13.1
 Release:        0
 Summary:        A Wayland-native application launcher, similar to rofi's drun mode
 License:        MIT

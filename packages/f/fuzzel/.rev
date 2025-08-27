@@ -206,4 +206,68 @@
     <comment></comment>
     <requestid>1288894</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c137ce652250d1e66ed27bb298bcee09</srcmd5>
+    <version>1.13.1</version>
+    <time>1756323362</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.13.1:
+  * Regression: input not being returned in dmenu mode.
+  * Regression: `--password` not working.
+  * Regression: Part of the background transparency disappearing after
+    typing.
+  * Add support for fallback icons in dmenu mode using comma-separated
+  values in the icon metadata.
+  * `--namespace` command line option.
+  * Gamma-correct blending. Disabled by default. Enable with the new
+  `--gamma-correct` command line option, or by setting
+  `gamma-correct-blending=yes` in `fuzzel.ini`. Note that
+  gamma-correct blending **is not supported in cairo enabled builds of
+  fuzzel**, due to the lack of 16-bit image buffers in cairo.
+  * `scaling-filter` option (and the corresponding `--scaling-filter`
+  command line option). This option defines which scaling filter
+  fuzzel uses when down scaling PNGs.
+  * `--minimal-lines` command line and config option, causing fuzzel to
+  adjust the number of displayed lines to the minimum of `--lines` and
+  the number of input lines
+  * Touchscreen support
+  * `{cmd}` placeholder support in the `terminal` option. When `{cmd}` is
+  present in the terminal command string, it will be replaced with the
+  application command instead of appending the command at the end. Useful
+  for setting the title or app_id.
+  * `--hide-prompt` command line option to hide the prompt line, reducing
+   window size while still accepting input. This cannot be used
+  simultaneously with `--prompt-only`.
+  * `--auto-select` option. When one entry is left, automatically select
+  it.
+  * `selection-radius` option and `--selection-radius` flag to set the border
+  radius of the selected entry
+  * `enable-mouse` option and `--no-mouse` flag to disable mouse input1
+  * Crash when --match-workers &gt;= 100. 
+  * Keyboard modifiers not being reset on keyboard leave events. 
+  * --with-nth: non-selected columns still being matched. 
+  * Match highlighting being offset when --with-nth is used. 
+  * Too wide PNGs bleeding into the text. 
+  * Lookup of icon themes in ~/.icons and /usr/share/pixmans. 
+  * Missing shell completions for --launch-prefix. 
+  * Missing shell completions for --prompt-only. 
+  * Empty window being displayed despite --no-run-if-empty being used. 
+  * Fix border width and scaling for mixed-DPI environments 
+  * Some icons not found on FreeBSD (/usr/local/share/pixmaps not searched) 
+  * Segfault when “execute” action is pressed before there’s any item in the list.
+  * Scrolling speed is now line-by-line instead of page-by-page 
+  * Number of render workers is now automatically limited to the number of displayed entries. 
+  * wayland-protocols &gt;= 1.41 is now required. 
+  * pixman &gt;= 0.46.0 is now required. 
+  * fcft &gt;= 3.3.1 is now required. 
+  * In application mode (not dmenu), fuzzel now ignores icon theme directories whose Context field is not Application or Apps, or Legacy. This is for performance reasons 
+  * Default down scaling filter changed from lanczos3 to box. 
+  * Use the width of ‘o’ instead of ‘W’ when calculating the window width. 
+  * Default icon theme from hicolor to default. 
+  * Error out (with an appropriate error message) if the command line we attempt to execute has non-specification-compliant quoting. 
+  * Input text now “scrolls” with the cursor, if the string is longer than the available space. 
+  * When using the mouse, the currently selected item is only changed when the mouse is over an item. Before this release, the X coordinate was ignored.
+</comment>
+    <requestid>1301605</requestid>
+  </revision>
 </revisionlist>
