@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 22 22:37:30 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.2.7:
+  * Compatibility fixes for recent Octave versions and the
+    upcoming Octave 10
+  * Bug fixes, Matlab compatibility, and extended functionality in:    
+    decode  pamdemod  pskdemod  qamdemod  pammod  qammod
+- Add octave-forge-signal to build requires, needed by tests
+
+-------------------------------------------------------------------
 Mon Oct 30 16:00:13 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update URL to point to 'https://gnu-octave.github.io/packages/'

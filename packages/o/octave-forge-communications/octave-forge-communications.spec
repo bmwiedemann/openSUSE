@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-communications
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define octpkg  communications
 Name:           octave-forge-%{octpkg}
-Version:        1.2.6
+Version:        1.2.7
 Release:        0
 Summary:        Digital Communications for Octave
 License:        GPL-3.0-or-later
@@ -28,6 +28,7 @@ Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.ta
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
 BuildRequires:  octave-devel
+BuildRequires:  octave-forge-signal
 Requires:       octave-cli >= 3.4.0
 Requires:       octave-forge-signal >= 1.1.3
 
