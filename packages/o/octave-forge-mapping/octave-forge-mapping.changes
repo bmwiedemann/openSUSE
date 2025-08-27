@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 26 19:18:31 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.4.3:
+  * Bug fixes
+    - angl2str.m: work around issue on ppc64el (patch #10196)
+    - shaperead.m: avoid indexing error in case of empty features
+    - degrees2dm.m: avoid error on NaN input (bug #62330)
+    - degrees2dms.m, degrees2dm.m: fix incorrect output (bugs
+      #65291 and #65508)
+    - distance.m: fix incorrect results for output angles < 0.4 rad
+      (bug #66814)
+  * Code improvements
+    - The package and functions docs now integrate in the GUI doc
+      browser pane when the package is loaded
+- Add octave-forge-io build depdendency, required for tests
+
+-------------------------------------------------------------------
 Mon Feb 21 18:49:48 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.4.2:
