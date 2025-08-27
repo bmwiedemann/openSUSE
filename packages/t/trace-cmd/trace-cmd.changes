@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 25 09:55:22 UTC 2025 - Petr Pavlu <petr.pavlu@suse.com>
+
+- Update to version 3.3.3:
+  * Fix completion of trace-cmd report to show files
+  * Fix checking glob() return values
+  * Fix open file descriptors in trace-cmd split
+
+-------------------------------------------------------------------
 Tue Apr 29 11:43:04 UTC 2025 - Petr Pavlu <petr.pavlu@suse.com>
 
 - Update to version 3.3.2:

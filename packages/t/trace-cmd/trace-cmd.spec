@@ -1,7 +1,7 @@
 #
 # spec file for package trace-cmd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           trace-cmd
-Version:        3.3.2
+Version:        3.3.3
 Release:        0
 Summary:        Configuration tool for Ftrace
 License:        GPL-2.0-only
