@@ -1,7 +1,7 @@
 #
 # spec file for package colord-gtk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           colord-gtk
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        System Daemon for Managing Color Devices -- GTK Integration
 License:        LGPL-2.1-or-later
@@ -27,8 +27,6 @@ Source0:        https://www.freedesktop.org/software/colord/releases/colord-gtk-
 Source1:        https://www.freedesktop.org/software/colord/releases/colord-gtk-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM Fix-the-callback-signature-to-fix-a-crash.patch bsc#1212840 gh#hughsie/colord-gtk#22 -- Fix segfault when turning monitor back on
-Patch1:         Fix-the-callback-signature-to-fix-a-crash.patch
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  gtk-doc
 BuildRequires:  meson

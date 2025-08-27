@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 26 06:38:52 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.3.1:
+  + Fix the callback signature to fix a crash.
+- Drop Fix-the-callback-signature-to-fix-a-crash.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Thu Jun 29 07:46:18 UTC 2023 - Michal Kubecek <mkubecek@suse.cz>
 
 - fix segfault when turning monitor back on (bsc#1212840):

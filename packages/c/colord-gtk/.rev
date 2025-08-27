@@ -125,4 +125,15 @@
   Fix-the-callback-signature-to-fix-a-crash.patch</comment>
     <requestid>1095980</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a245f70b8612e21be63c9c5d4e0852c4</srcmd5>
+    <version>0.3.1</version>
+    <time>1756323206</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.3.1:
+  + Fix the callback signature to fix a crash.
+- Drop Fix-the-callback-signature-to-fix-a-crash.patch: fixed
+  upstream. (forwarded request 1301374 from dimstar)</comment>
+    <requestid>1301467</requestid>
+  </revision>
 </revisionlist>
