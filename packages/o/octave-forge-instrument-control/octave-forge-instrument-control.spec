@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-instrument-control
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define octpkg  instrument-control
 Name:           octave-forge-%{octpkg}
-Version:        0.9.2
+Version:        0.9.5
 Release:        0
 Summary:        Instrument Control for Octave
 License:        GPL-3.0-or-later
@@ -50,6 +50,9 @@ popd
 %octave_pkg_install
 
 %check
+%global octskiptests __tcp_properties__.cc-tst|__tcpclient_properties__.cc-tst|__tcpclient_read__.cc-tst|__tcpclient_write__.cc-tst
+%global octskiptests %{octskiptests}|tcp.cc-tst|tcp_close.cc-tst|tcp_read.cc-tst|tcp_timeout.cc-tst|tcp_write.cc-tst|tcpclient.cc-tst|tcpip
+echo "Skip tests requiring network connection: %{octskiptests}"
 %octave_pkg_test
 
 %post
