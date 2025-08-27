@@ -3250,7 +3250,6 @@ unsorted:
   - distcc-server 
   - distribution-gpg-keys 
   - distribution-logos-openSUSE 
-  - distribution-logos-openSUSE-Aeon 
   - distribution-logos-openSUSE-Kubic 
   - distribution-logos-openSUSE-Slowroll 
   - distribution-registry 
@@ -4562,7 +4561,6 @@ unsorted:
   - gamemode 
   - gamemoded 
   - gamescope 
-  - gamescope-plus 
   - gamescope-session-plus 
   - gamescope-session-steam 
   - gamescope-session-steam-generic 
@@ -12873,7 +12871,7 @@ unsorted:
   - libdwarf-doc 
   - libdwarf-tools 
   - libdwarf0 
-  - libdwarfs0_12_3 
+  - libdwarfs0_12_4 
   - libdwarves1 
   - libdxflib-3_26_4-1 
   - libe-book-devel 
@@ -14036,7 +14034,7 @@ unsorted:
   - libjcat-devel 
   - libjim0_82 
   - libjodycode-devel 
-  - libjodycode3 
+  - libjodycode4 
   - libjose-devel 
   - libjose0 
   - libjpeg62 
@@ -36837,11 +36835,6 @@ unsorted:
   - sddm 
   - sddm-conf 
   - sddm-conf-lang 
-  - sddm-kalpa 
-  - sddm-kalpa-kwin 
-  - sddm-kalpa-lang 
-  - sddm-kalpa-themes 
-  - sddm-kalpa-wayland-generic 
   - sddm-wayland-miriway 
   - sdl-asylum 
   - sdl-ball 
