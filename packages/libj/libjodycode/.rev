@@ -15,4 +15,26 @@
     <comment></comment>
     <requestid>1223612</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8b3a708d379c4aa57ebba81201c444a3</srcmd5>
+    <version>4.0</version>
+    <time>1756323215</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0:
+  * Add loads of new jc_* functions and constants
+  * Add jc_errno to replace errno
+  * Completely remove API feature tables
+  * Fixes for building on macOS and Hurd
+  * Add rolling hash capability to jc_block_hash()
+  * Add jc_get_d_namlen() to enable strlen() skips for directory
+    objects
+  * Add file linking functions with batch processing (incomplete,
+    do not use yet)
+  * Time functions now have nanosecond precision on Windows
+  * Add jc_str_t data type (string prefixed with its own length)
+  * Add jc_close() stub function
+  * jc_get_proc_cacheinfo() is a stub function on non-Linux for
+    future use</comment>
+    <requestid>1301485</requestid>
+  </revision>
 </revisionlist>

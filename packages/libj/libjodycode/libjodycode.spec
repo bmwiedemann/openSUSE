@@ -1,7 +1,7 @@
 #
 # spec file for package libjodycode
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define c_lib   libjodycode3
+%define c_lib   libjodycode4
 Name:           libjodycode
-Version:        3.1
+Version:        4.0
 Release:        0
 Summary:        Shared code used by several utilities written by Jody Bruchon
 License:        MIT
@@ -61,8 +61,8 @@ rm %{buildroot}%{_libdir}/libjodycode.a
 
 %files -n %{c_lib}
 %license LICENSE.txt
-%{_libdir}/libjodycode.so.3
-%{_libdir}/libjodycode.so.3.1
+%{_libdir}/libjodycode.so.4
+%{_libdir}/libjodycode.so.4.0
 
 %files -n libjodycode-devel
 %doc CHANGES.txt README.md
