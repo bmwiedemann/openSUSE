@@ -173,9 +173,6 @@ export CFLAGS="%{optflags} \
 	-DSQLITE_ENABLE_FTS3 \
 	-DSQLITE_ENABLE_FTS4 \
 	-DSQLITE_ENABLE_FTS5 \
-%if %{with icu}
-	-DSQLITE_ENABLE_ICU \
-%endif
 	-DSQLITE_ENABLE_JSON1 \
 	-DSQLITE_ENABLE_RBU \
 	-DSQLITE_ENABLE_RTREE \
@@ -195,6 +192,10 @@ export CFLAGS="%{optflags} \
   --enable-fts5 \
   --enable-update-limit \
   --enable-rtree \
+%if %{with icu}
+  --icu-collations \
+  --with-icu-config=/usr/bin/icu-config \
+%endif
   --enable-session
 %make_build sqlite3.c
 %make_build

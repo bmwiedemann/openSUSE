@@ -1921,4 +1921,12 @@ CVE-2020-13871 boo#1172646</comment>
     variables in obscure circumstances.</comment>
     <requestid>1299767</requestid>
   </revision>
+  <revision rev="168" vrev="2">
+    <srcmd5>f143d2832bb906b4aee33aebb3a7bd46</srcmd5>
+    <version>3.50.4</version>
+    <time>1756323247</time>
+    <user>anag_factory</user>
+    <comment>- bsc#1248586: Fix icu-enabled build.</comment>
+    <requestid>1301434</requestid>
+  </revision>
 </revisionlist>
