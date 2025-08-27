@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 26 12:22:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.12.3:
+  + Fix bug that caused that the challenge prompt didn't appear if
+    it contained some special characters.
+
+-------------------------------------------------------------------
 Mon Aug 11 13:33:47 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.12.2:

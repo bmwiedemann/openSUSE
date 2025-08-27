@@ -781,4 +781,14 @@
     <comment></comment>
     <requestid>1299086</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>72b53d40206e11b177eb1008cb858db3</srcmd5>
+    <version>1.12.3</version>
+    <time>1756323209</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.12.3:
+  + Fix bug that caused that the challenge prompt didn't appear if
+    it contained some special characters. (forwarded request 1301435 from iznogood)</comment>
+    <requestid>1301470</requestid>
+  </revision>
 </revisionlist>
