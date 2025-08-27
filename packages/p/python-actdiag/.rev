@@ -82,4 +82,13 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1286088</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>9af99c93cbac08581a87400e10193892</srcmd5>
+    <version>3.0.0</version>
+    <time>1756323290</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-new-fancy-blockdiag-pytest.patch:
+  * Use new methods added by new blockdiag, rather than yield tests.</comment>
+    <requestid>1301514</requestid>
+  </revision>
 </revisionlist>

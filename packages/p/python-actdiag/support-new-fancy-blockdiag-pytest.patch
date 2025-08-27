@@ -1,0 +1,29 @@
+Index: actdiag-3.0.0/src/actdiag/tests/test_generate_diagram.py
+===================================================================
+--- actdiag-3.0.0.orig/src/actdiag/tests/test_generate_diagram.py
++++ actdiag-3.0.0/src/actdiag/tests/test_generate_diagram.py
+@@ -15,17 +15,15 @@
+ 
+ import os
+ 
+-from blockdiag.tests.test_generate_diagram import (get_diagram_files,
+-                                                   testcase_generator)
++import pytest
++
++from blockdiag.tests.test_generate_diagram import (generate,
++                                                   generate_testdata)
+ 
+ import actdiag.command
+ 
+ 
+-def test_generate():
++@pytest.mark.parametrize("source,file_type,options", generate_testdata)
++def test_generate_with_separate(source, file_type, options):
+     mainfunc = actdiag.command.main
+-    basepath = os.path.dirname(__file__)
+-    files = get_diagram_files(basepath)
+-    options = []
+-
+-    for testcase in testcase_generator(basepath, mainfunc, files, options):
+-        yield testcase
++    generate(mainfunc, source, file_type, options)

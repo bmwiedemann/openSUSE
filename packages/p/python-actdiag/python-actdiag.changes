@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 27 02:55:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-new-fancy-blockdiag-pytest.patch:
+  * Use new methods added by new blockdiag, rather than yield tests.
+
+-------------------------------------------------------------------
 Mon Jun 16 12:10:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
