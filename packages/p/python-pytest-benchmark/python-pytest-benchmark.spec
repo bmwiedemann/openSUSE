@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-benchmark
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-pytest-benchmark
 Version:        5.1.0
@@ -42,13 +47,18 @@ BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       python-py-cpuinfo
 Requires:       python-pytest >= 3.8
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     python-aspectlib
 Recommends:     python-elasticsearch
 Recommends:     python-pygal
 Recommends:     python-pygaljs
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -76,6 +86,9 @@ sed -i -e '/test_fast PASSED/d' -e '/test_fast SKIPPED/d' tests/test_benchmark.p
 
 %check
 %pytest tests
+
+%pre
+%python_libalternatives_reset_alternative pytest-benchmark
 
 %post
 %{python_install_alternative pytest-benchmark py.test-benchmark}

@@ -185,4 +185,12 @@
 - drop fix-test-fast.patch, py311.patch, fix-test-fast.patch: upstream</comment>
     <requestid>1226264</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>5aa7c84a338e320cf8092e874792aaf6</srcmd5>
+    <version>5.1.0</version>
+    <time>1756323232</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1301388</requestid>
+  </revision>
 </revisionlist>

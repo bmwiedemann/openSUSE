@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 21 15:41:07 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Mon Nov 25 12:42:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.0:
