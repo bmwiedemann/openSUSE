@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 27 10:11:24 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.13+git.20250827:
+  * Add CI
+  * Update autoconf configs
+  * Add support for pam_unix_ng
+
+-------------------------------------------------------------------
+Thu Aug 21 13:55:57 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.13+git.20250819:
+  * pam_unix: fix {use|try}_first_pass and use_authtok
+
+-------------------------------------------------------------------
 Tue Jul 15 06:44:03 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.13+git.20250715:

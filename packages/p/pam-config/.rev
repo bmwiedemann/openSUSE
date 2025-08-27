@@ -887,4 +887,18 @@
   * Place himmelblau near the top of pam stack [bsc#1243418]</comment>
     <requestid>1293274</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>66c2c8723eb44595346d467449a2b647</srcmd5>
+    <version>2.13+git.20250827</version>
+    <time>1756323219</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.13+git.20250827:
+  * Add CI
+  * Update autoconf configs
+  * Add support for pam_unix_ng
+
+- Update to version 2.13+git.20250819:
+  * pam_unix: fix {use|try}_first_pass and use_authtok</comment>
+    <requestid>1301536</requestid>
+  </revision>
 </revisionlist>
