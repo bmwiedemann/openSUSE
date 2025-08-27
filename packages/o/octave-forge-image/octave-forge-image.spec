@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-image
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,17 @@
 
 %define octpkg  image
 Name:           octave-forge-%{octpkg}
-Version:        2.14.0
+Version:        2.18.0
 Release:        0
 Summary:        Image Processing for Octave
 License:        BSD-2-Clause AND GPL-3.0-or-later AND MIT
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io/%{octpkg}/index.html
+URL:            https://gnu-octave.github.io/packages/image
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
-BuildRequires:  octave-devel >= 4.2.0
-Requires:       octave-cli >= 4.2.0
+BuildRequires:  octave-devel >= 7.2.0
+Requires:       octave-cli >= 7.2.0
 
 %description
 Functions for processing images. The package also provides functions
@@ -47,6 +47,8 @@ This is part of Octave-Forge project.
 %octave_pkg_install
 
 %check
+%global octskiptests imattributes|imshowpair|montage|viscircles
+echo "Skip tests requiring graphical toolkit: %{octskiptests}"
 %octave_pkg_test
 
 %post
