@@ -1,0 +1,81 @@
+From 60ae70d05ee345b38c2d2048d36b4a4545c98b6b Mon Sep 17 00:00:00 2001
+From: Brent Westbrook <brentrwestbrook@gmail.com>
+Date: Mon, 18 Aug 2025 13:36:21 -0400
+Subject: [PATCH] Bump Ruff to 0.12.9, update regexes for new output rendering
+
+Ruff 0.12.9 updated our default `full` output rendering to split the
+header (`filename:line:column error`) over two lines, which was causing a few
+test failures. This PR bumps the Ruff dependency to `>=0.12.9` and updates the
+regular expressions affecting the failing tests to expect the new format.
+
+See https://github.com/astral-sh/ruff/issues/19966 for more details.
+---
+ pyproject.toml             |  2 +-
+ pytest_examples/lint.py    |  4 ++--
+ tests/test_lint.py         |  4 ++--
+ tests/test_run_examples.py |  4 ++--
+ uv.lock                    | 43 +++++++++++++++++++-------------------
+ 5 files changed, 29 insertions(+), 28 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index d630714..168de4f 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -34,7 +34,7 @@ classifiers = [
+     "Topic :: Software Development :: Libraries :: Python Modules",
+ ]
+ requires-python = ">=3.8"
+-dependencies = ["pytest>=7", "black>=23", "ruff>=0.5.0"]
++dependencies = ["pytest>=7", "black>=23", "ruff>=0.12.9"]
+ 
+ [project.entry-points.pytest11]
+ examples = "pytest_examples"
+diff --git a/pytest_examples/lint.py b/pytest_examples/lint.py
+index 67133d4..17b6cb4 100644
+--- a/pytest_examples/lint.py
++++ b/pytest_examples/lint.py
+@@ -57,9 +57,9 @@ def ruff_check(
+ 
+         def replace_offset(m: re.Match[str]):
+             line_number = int(m.group(1))
+-            return f'{example.path}:{line_number + example.start_line}'
++            return f' --> {example.path}:{line_number + example.start_line}'
+ 
+-        output = re.sub(r'^-:(\d+)', replace_offset, stdout, flags=re.M)
++        output = re.sub(r'^ --> -:(\d+)', replace_offset, stdout, flags=re.M)
+         raise FormatError(f'ruff failed:\n{indent(output, "  ")}')
+     elif p.returncode != 0:
+         raise RuntimeError(f'Error running ruff, return code {p.returncode}:\n{stderr or stdout}')
+diff --git a/tests/test_lint.py b/tests/test_lint.py
+index b735bb1..cfc67ed 100644
+--- a/tests/test_lint.py
++++ b/tests/test_lint.py
+@@ -24,11 +24,11 @@ def test_ruff_config():
+ def test_ruff_offset():
+     code = 'print(x)\n'
+     example = CodeExample.create(code)
+-    with pytest.raises(FormatError, match='testing.md:1:7: F821 Undefined name'):
++    with pytest.raises(FormatError, match='F821 Undefined name `x`\n   --> testing.md:1:7'):
+         ruff_check(example, ExamplesConfig())
+ 
+     example = CodeExample.create(code, start_line=10)
+-    with pytest.raises(FormatError, match='testing.md:11:7: F821 Undefined name'):
++    with pytest.raises(FormatError, match='F821 Undefined name `x`\n   --> testing.md:11:7'):
+         ruff_check(example, ExamplesConfig())
+ 
+ 
+diff --git a/tests/test_run_examples.py b/tests/test_run_examples.py
+index d9df4b2..53958cc 100644
+--- a/tests/test_run_examples.py
++++ b/tests/test_run_examples.py
+@@ -111,8 +111,8 @@ def test_find_run_examples(example: CodeExample, eval_example: EvalExample):
+         '=== FAILURES ===\n',
+         '___ test_find_run_examples[my_file.md:1-4] ___\n',
+         'ruff failed:\n',
+-        '  my_file.md:2:8: F401 [*] `sys` imported but unused\n',
+-        '  my_file.md:3:7: F821 Undefined name `missing`\n',
++        '  F401 [*] `sys` imported but unused\n   --> my_file.md:2:8\n',
++        '  F821 Undefined name `missing`\n   --> my_file.md:3:7\n',
+         '  Found 2 errors.\n',
+         '  [*] 1 fixable with the `--fix` option.\n',
+         '=== short test summary info ===\n',
