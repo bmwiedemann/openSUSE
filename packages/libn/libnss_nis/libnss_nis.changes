@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 27 08:34:42 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 3.4
+  - Fix memory leak in initgroups_dyn
+  - Remove publickey interface, no consumer left 
+
+-------------------------------------------------------------------
 Fri Jun 30 08:32:53 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 3.2

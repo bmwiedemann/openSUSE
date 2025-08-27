@@ -50,4 +50,14 @@
   - Do not call malloc_usable_size [bsc#1207551]</comment>
     <requestid>1096110</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f99195e6ed4a62cbcf5992ad889d8251</srcmd5>
+    <version>3.4</version>
+    <time>1756323324</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.4
+  - Fix memory leak in initgroups_dyn
+  - Remove publickey interface, no consumer left</comment>
+    <requestid>1301531</requestid>
+  </revision>
 </revisionlist>
