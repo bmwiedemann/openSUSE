@@ -71,4 +71,29 @@ Bugfixes
    unaffected.</comment>
     <requestid>1271206</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d7ff185094d29b83f51e9f175633edf5</srcmd5>
+    <version>0.12.4</version>
+    <time>1756323360</time>
+    <user>anag_factory</user>
+    <comment>- Replace wrong BuildRequires pkgconfig(clzma) -&gt; pkgconfig(liblzma);
+  build only succeeded previously by accident.
+
+- Update to version 0.12.4:
+Bugfixes
+  * Segfault on bad_compression_ratio_error. When recompressing a
+    filesystem where some blocks cannot be compressed using the
+    selected algorithm because of a bad_compression_ratio_error,
+    the resulting block was left empty.
+  * Add history unless --no-history is given when rewriting a file
+    system image.
+  * Allow dumping frozen_layout w/o frozen_analysis in dwarfsck.
+  * Logging timestamps should show local time.
+Features
+  * More complete breakdown of metadata in dwarfsck.
+  * Add schema_raw_dump flag to dwarfsck --detail.
+Build
+  * Update folly/fbthrift/fsst.</comment>
+    <requestid>1301602</requestid>
+  </revision>
 </revisionlist>

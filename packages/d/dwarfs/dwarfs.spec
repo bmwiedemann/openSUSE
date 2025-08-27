@@ -1,7 +1,7 @@
 #
 # spec file for package dwarfs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover %(echo %{version} | sed 's/\\./_/g;')
 %define __builder ninja
 Name:           dwarfs
-Version:        0.12.3
+Version:        0.12.4
 Release:        0
 Summary:        Deduplicating compressed read-only file system
 License:        GPL-3.0-or-later AND MIT
@@ -46,7 +46,6 @@ BuildRequires:  cmake(double-conversion)
 BuildRequires:  cmake(range-v3)
 BuildRequires:  cmake(utf8cpp)
 BuildRequires:  pkgconfig(benchmark)
-BuildRequires:  pkgconfig(clzma)
 BuildRequires:  pkgconfig(flac++)
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(fuse3)
@@ -59,6 +58,7 @@ BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(libglog)
 BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libmagic)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libunwind)
