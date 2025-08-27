@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 27 13:17:25 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.0.0
+  * Integrate the primitive groups of degree 4096 to 8191 into
+    PrimGrp
+
+-------------------------------------------------------------------
 Sat Feb 25 18:55:33 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.4.4

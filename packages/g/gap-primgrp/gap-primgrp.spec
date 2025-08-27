@@ -1,7 +1,7 @@
 #
 # spec file for package gap-primgrp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-primgrp
-Version:        3.4.4
+Version:        4.0.0
 Release:        0
 Summary:        GAP: Primitive Permutation Groups Library
 License:        GPL-2.0-or-later
