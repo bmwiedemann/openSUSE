@@ -60,6 +60,7 @@ License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/iovisor/bcc
 Source:         https://github.com/iovisor/bcc/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source100:      bcc-rpmlintrc
 Patch0:         0001-tools-filetop-fix-DNAME_INLINE_LEN-by-folding-to-int.patch
 ExcludeArch:    ppc s390
 BuildRequires:  bison

@@ -1,0 +1,2 @@
+# some bcc-tools uses /usr/share/bcc/tools/*.c for compilation at runtime, so must be shipped as-is.
+addFilter("devel-file-in-non-devel-package /usr/share/bcc/tools/.*\.c")
