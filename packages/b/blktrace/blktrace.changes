@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 27 00:00:00 CEST 2025 - dsterba@suse.cz
+
+- Update to version 1.3.0+git.20250320:
+  * blkparse: Fix a potential coredump issue
+  * doc: update RWBS descriptions
+  * iowatcher: Calculate ios_in_flight per trace
+  * fix hang when BLKTRACESETUP fails and "-o -" is used
+  * doc: btrace: fix wrong format on doc
+
+-------------------------------------------------------------------
 Thu Feb 22 10:26:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

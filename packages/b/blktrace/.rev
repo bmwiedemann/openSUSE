@@ -284,4 +284,12 @@
     <comment></comment>
     <requestid>1149210</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>dbab550a4e02cb6740ea30bfc07a9f22</srcmd5>
+    <version>1.3.0+git.20250320</version>
+    <time>1756323354</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.3.0+git.20250320: (forwarded request 1301595 from dsterba)</comment>
+    <requestid>1301596</requestid>
+  </revision>
 </revisionlist>

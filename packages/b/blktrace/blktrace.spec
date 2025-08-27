@@ -1,7 +1,7 @@
 #
 # spec file for package blktrace
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?_without_docs: %global with_docs 1}
 Name:           blktrace
-Version:        1.3.0+git.20211021
+Version:        1.3.0+git.20250320
 Release:        0
 Summary:        Block IO tracer
 License:        GPL-2.0-only
