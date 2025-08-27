@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 21 21:51:01 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.20.0 (2.02)
+   see /usr/share/doc/packages/perl-Class-Autouse/Changes
+
+  2.02      2025-08-14 18:37:11Z
+          - distribution tooling updates
+
+-------------------------------------------------------------------
 Tue Oct  3 08:11:43 UTC 2017 - coolo@suse.com
 
 - patch the Makefile to build with perl 5.26
