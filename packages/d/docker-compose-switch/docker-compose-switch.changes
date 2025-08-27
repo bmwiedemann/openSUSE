@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 20 12:49:04 UTC 2025 - Michael Matz <matz@suse.com>
+
+- Use current distro go version.
+
+-------------------------------------------------------------------
 Tue Aug  2 09:27:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - add explicit golang API dependency

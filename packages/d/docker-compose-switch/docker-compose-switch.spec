@@ -1,7 +1,7 @@
 #
 # spec file for package docker-compose-switch
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ URL:            https://github.com/docker/compose-switch
 Source:         compose-switch-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source99:       docker-compose-switch-rpmlintrc
-BuildRequires:  golang(API) = 1.18
+BuildRequires:  golang(API) >= 1.18
 Requires:       docker
 Requires:       docker-compose >= 2.0
 Requires(post): update-alternatives
