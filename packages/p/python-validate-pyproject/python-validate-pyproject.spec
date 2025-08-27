@@ -1,7 +1,7 @@
 #
 # spec file for package python-validate-pyproject
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-validate-pyproject
 Version:        0.15
@@ -31,25 +36,30 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-fastjsonschema
+Provides:       python-validate_pyproject = %{version}-%{release}
+BuildArch:      noarch
 %if 0%{python_version_nodots} < 38
 Requires:       python-importlib-metadata
 %endif
 %if 0%{python_version_nodots} < 37
 Requires:       python-importlib-resources
 %endif
-Requires:       python-fastjsonschema
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
-Provides:       python-validate_pyproject = %{version}-%{release}
+Requires(postun): update-alternatives
+%endif
 # SECTION test
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module importlib-resources if %python-base < 3.7}
 BuildRequires:  %{python_module packaging >= 20.4}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tomli >= 1.2.1 if %python-base < 3.11}
 BuildRequires:  %{python_module trove-classifiers >= 2021.10.20}
 # /SECTION
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -78,6 +88,9 @@ sed -i '/--cov/d' setup.cfg
 
 %postun
 %python_uninstall_alternative validate-pyproject
+
+%pre
+%python_libalternatives_reset_alternative validate-pyproject
 
 %files %{python_files}
 %doc AUTHORS.rst CHANGELOG.rst README.rst

@@ -72,4 +72,12 @@
   * Add support for ``repo-review``</comment>
     <requestid>1133500</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ab5ef9c34164461c0ba958018f580b0f</srcmd5>
+    <version>0.15</version>
+    <time>1756323230</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301384</requestid>
+  </revision>
 </revisionlist>
