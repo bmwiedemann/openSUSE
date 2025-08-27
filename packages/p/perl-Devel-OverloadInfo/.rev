@@ -41,4 +41,16 @@
 </comment>
     <requestid>1282370</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>374326e5f92baa1624eb8fd9bffe3840</srcmd5>
+    <version>0.8.0</version>
+    <time>1756323260</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.8.0 (0.008)
+   see /usr/share/doc/packages/perl-Devel-OverloadInfo/Changes
+  0.008     2025-08-11 17:09:58+01:00 Europe/London
+    - Generate README.md in the repository
+    - Move git repository to Codeberg</comment>
+    <requestid>1301450</requestid>
+  </revision>
 </revisionlist>

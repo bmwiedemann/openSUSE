@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 22 20:49:38 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.8.0 (0.008)
+   see /usr/share/doc/packages/perl-Devel-OverloadInfo/Changes
+
+  0.008     2025-08-11 17:09:58+01:00 Europe/London
+    - Generate README.md in the repository
+    - Move git repository to Codeberg
+
+-------------------------------------------------------------------
 Tue Jun  3 14:06:22 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version
