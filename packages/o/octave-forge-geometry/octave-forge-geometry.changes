@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 25 23:40:17 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.1.0
+  * Added new functions to detect intersetions and points inside
+    3d polygons.
+  * ispolycw that allows for two cell array inputs (px and py),
+    see https://savannah.gnu.org/patch/?10297
+  * Fixed compilation error with g++ v11, see
+    https://savannah.gnu.org/bugs/?60884
+  * Fixed failing test in joinPolygons
+- Drop compile-with-g++-v11.patch
+- Add octave-forge-matgeom build dependency required for tests
+- Exclude tests requiring a graphical toolkit
+
+-------------------------------------------------------------------
 Mon Feb 26 12:42:23 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

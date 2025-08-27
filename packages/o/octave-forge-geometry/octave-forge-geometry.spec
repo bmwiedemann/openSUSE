@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-geometry
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,15 @@
 
 %define octpkg  geometry
 Name:           octave-forge-%{octpkg}
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        Computational Geometry for Octave
-License:        GPL-3.0-or-later AND BSD-2-Clause
+License:        BSD-2-Clause AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://octave.sourceforge.io/%{octpkg}/index.html
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         compile-with-g++-v11.patch
 BuildRequires:  octave-devel >= 4.2.0
+BuildRequires:  octave-forge-matgeom >= 1.0.0
 Requires:       octave-cli >= 4.0.1
 Requires:       octave-forge-matgeom >= 1.0.0
 
@@ -39,9 +38,6 @@ This is part of Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
-pushd %{octpkg}-%{version}
-%patch -P 0 -p1
-popd
 %octave_pkg_src
 
 %build
@@ -51,6 +47,8 @@ popd
 %octave_pkg_install
 
 %check
+%global octskiptests plotShape
+echo "Skip tests requiring graphical toolkit: %{octskiptests}"
 %octave_pkg_test
 
 %post
