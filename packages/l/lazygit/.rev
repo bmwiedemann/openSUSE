@@ -195,4 +195,24 @@ expertise with the git command line.</comment>
   * Move the Ref interface from gui/types to models (forwarded request 1297970 from jfkw)</comment>
     <requestid>1297971</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>02963e82e2460dd5f7c7e6b00c336ef9</srcmd5>
+    <version>0.54.2</version>
+    <time>1756323275</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.54.2:
+  * Improve CPU usage when flicking through large diffs
+  * Fix delay with flicking through files or commits when git diff is very slow
+  * Cleanup: move UpdateWindowTitle to platform-specific source files
+  * Change color of github tag and homebrew badges to blue
+  * Update github tag badge
+  * Update homebrew link
+  * Update the badge of golangci-lint in `README.md`
+  * Update `CONTRIBUTING.md` to clarify translation contribution process
+  * Trim trailing newlines when showing confirmations
+  * Cleanup: remove duplicate test case
+  * Fix the useHunkModeInStagingView hint in the breaking changes message
+  * Stop bumping our homebrew formula (forwarded request 1301479 from ecsos)</comment>
+    <requestid>1301486</requestid>
+  </revision>
 </revisionlist>
