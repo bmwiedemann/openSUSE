@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 27 09:53:32 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add patch sphinx-build.patch now /usr/bin/sphinx-build uses alts.
+
+-------------------------------------------------------------------
 Wed Jul 16 13:28:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.1.21:

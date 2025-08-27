@@ -1,0 +1,13 @@
+/usr/bin/sphinx-build points to alts now, it doesn't work if we call it
+from the python interpreter
+--- libcomps-0.1.21/libcomps/src/python/docs/CMakeLists.txt
++++ libcomps-0.1.21/libcomps/src/python/docs/CMakeLists.txt
+@@ -27,7 +27,7 @@
+ add_custom_command(TARGET pydocs PRE_BUILD COMMAND set -E $ENV{LD_LIBRARY_PATH} "${LIBCOMPS_OUT}:$ENV{LD_LIBRARY_PATH}")
+ 
+ add_custom_command(TARGET pydocs POST_BUILD
+-                                 COMMAND ${PYTHON_EXECUTABLE} ${SPHINX_EXECUTABLE} -E -b html
++                                 COMMAND ${SPHINX_EXECUTABLE} -E -b html
+                                   "${CMAKE_CURRENT_SOURCE_DIR}/doc-sources/"
+                                   "${CMAKE_CURRENT_BINARY_DIR}/html/"
+                                  COMMENT "LDLP $ENV{LD_LIBRARY_PATH}")
