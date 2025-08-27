@@ -1,7 +1,8 @@
 #
 # spec file for package rz-cutter
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +20,7 @@
 %define appid re.rizin.cutter
 
 Name:           rz-cutter
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        GUI for Rizin reverse engineering framework
 License:        GPL-3.0-only

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 27 15:26:29 UTC 2025 - Jianhua Lu <lujianhua000@gmail.com>
+
+- Update to version 2.4.1
+  * Rizin 0.8.1
+  * Fix JSDEC plugin location in Windows release package
+  * macOS release package signing fixes
+  * Better align disassembly arrows
+
+-------------------------------------------------------------------
 Mon May  5 18:31:02 UTC 2025 - Jianhua Lu <lujianhua000@gmail.com>
 
 - Update to version 2.4.0
