@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  5 18:47:33 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Enable Grid Cluster Scheduler support (jsc#PED-13373)
+
+-------------------------------------------------------------------
 Tue Apr 15 11:17:13 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Remove bad dependency from openmpi4-testsuite to openmpi4-testsuite-libs

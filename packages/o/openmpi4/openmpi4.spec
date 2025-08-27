@@ -358,6 +358,7 @@ export HOSTNAME=OBS
            --enable-mpi-thread-multiple \
            --disable-wrapper-rpath \
            --with-slurm \
+           --with-sge \
 	   --with-libevent=external \
 %if %{with hwloc}
 	   --with-hwloc=external \
