@@ -1,7 +1,7 @@
 #
 # spec file for package python-xmlschema
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-xmlschema
 Version:        3.4.3
@@ -34,9 +39,14 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-elementpath >= 3.0.0
 Requires:       python-lxml
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 %python_subpackages
 
 %description
@@ -68,6 +78,11 @@ done
 %check
 export LANG="en_US.UTF8"
 %pytest tests/
+
+%pre
+%python_libalternatives_reset_alternative xmlschema-json2xml
+%python_libalternatives_reset_alternative xmlschema-validate
+%python_libalternatives_reset_alternative xmlschema-xml2json
 
 %post
 %python_install_alternative xmlschema-json2xml
