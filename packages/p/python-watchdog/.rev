@@ -322,4 +322,12 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1285274</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>be3647662d9118654f90c8673d70e7f8</srcmd5>
+    <version>6.0.0</version>
+    <time>1756323238</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301401</requestid>
+  </revision>
 </revisionlist>

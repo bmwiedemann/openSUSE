@@ -1,7 +1,7 @@
 #
 # spec file for package python-watchdog
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,11 @@
 
 
 %define skip_python2 1
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-watchdog
 Version:        6.0.0
@@ -34,9 +39,14 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
 Requires:       python-PyYAML >= 3.10
 Requires:       python-pathtools >= 0.1.1
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module pathtools >= 0.1.1}
 BuildRequires:  %{python_module pytest-timeout}
@@ -89,6 +99,9 @@ export LANG=en_US.UTF-8
 
 %postun
 %python_uninstall_alternative watchmedo
+
+%pre
+%python_libalternatives_reset_alternative watchmedo
 
 %files %{python_files}
 %license COPYING LICENSE
