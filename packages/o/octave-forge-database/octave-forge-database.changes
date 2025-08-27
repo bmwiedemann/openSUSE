@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 25 21:45:49 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Disable check, as a database connection is required.
+
+-------------------------------------------------------------------
 Wed Apr 19 08:28:31 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add database-drop-error_state.patch -- Drop error_state usage

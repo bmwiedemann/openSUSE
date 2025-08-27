@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package octave-forge-database
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,8 @@ popd
 %octave_pkg_install
 
 %check
+%global octskiptests pq_connect
+echo "Skip tests requiring database: %{octskiptests}"
 %octave_pkg_test
 
 %post
