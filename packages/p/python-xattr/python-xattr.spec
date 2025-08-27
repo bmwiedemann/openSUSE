@@ -1,7 +1,7 @@
 #
 # spec file for package python-xattr
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-xattr
 Version:        0.10.1
@@ -32,8 +37,13 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cffi >= 1.11
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 %ifpython2
 Provides:       pyxattr = %{version}
 Obsoletes:      pyxattr < %{version}
@@ -70,6 +80,9 @@ export LC_ALL=en_US.utf-8
 
 %postun
 %python_uninstall_alternative xattr
+
+%pre
+%python_libalternatives_reset_alternative xattr
 
 %files %{python_files}
 %license LICENSE.txt
