@@ -1,7 +1,7 @@
 #
 # spec file for package tvm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,8 +36,7 @@
 %else
 %bcond_with arm_compute_lib
 %endif
-# tests fail to build with llvm20 - https://github.com/apache/tvm/issues/17823
-%bcond_with cpptest
+%bcond_without cpptest
 # regular cmake builddir conflicts with the python singlespec
 %global __builddir build_cmake
 Name:           tvm
@@ -55,7 +54,8 @@ Patch1:         lib-finder-python-cmake.patch
 Patch2:         tvm-fix-openblas.patch
 # PATCH-FIX-OPENSUSE tvm-disable-vulkan-test-check.patch -- Cannot test in OBS despite enabled in library
 Patch3:         tvm-disable-vulkan-test-check.patch
-# PATCH-FIX-UPSTREAM CYTHON-Make-cython-compatible-with-3.0-15469.patch
+# PATCH-FIX-UPSTREAM 18202.patch -- https://github.com/apache/tvm/pull/18202
+Patch4:         18202.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module cloudpickle}
