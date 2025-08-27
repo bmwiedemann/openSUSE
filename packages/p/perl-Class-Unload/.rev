@@ -62,4 +62,16 @@ Remove no longer applying perl-Class-Unload-lower_required_makemaker_version.pat
     <comment>1</comment>
     <requestid>506082</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0a2b9f2ee7dd66bc0e20bb739da9092a</srcmd5>
+    <version>0.120.0</version>
+    <time>1756323256</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.120.0 (0.12)
+   see /usr/share/doc/packages/perl-Class-Unload/Changes
+  0.12      2025-08-11 17:20:12+01:00 Europe/London
+          - Generate README.md in the repo
+          - Move git repository to Codeberg</comment>
+    <requestid>1301447</requestid>
+  </revision>
 </revisionlist>

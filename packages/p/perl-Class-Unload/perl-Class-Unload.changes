@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 21 21:51:25 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.120.0 (0.12)
+   see /usr/share/doc/packages/perl-Class-Unload/Changes
+
+  0.12      2025-08-11 17:20:12+01:00 Europe/London
+
+          - Generate README.md in the repo
+          - Move git repository to Codeberg
+
+-------------------------------------------------------------------
 Fri Jun 23 05:13:05 UTC 2017 - coolo@suse.com
 
 - updated to 0.11
