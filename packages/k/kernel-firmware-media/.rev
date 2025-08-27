@@ -110,4 +110,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Add firmware binary for SM8650.</comment>
     <requestid>1300896</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ff04c32bea0f2b18c4ef8c2e50ae2918</srcmd5>
+    <version>20250825</version>
+    <time>1756323213</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250825 (git commit f044bc789f8e):
+  * firmware: qcom: Reorder VPU firmware entries in WHENCE</comment>
+    <requestid>1301475</requestid>
+  </revision>
 </revisionlist>
