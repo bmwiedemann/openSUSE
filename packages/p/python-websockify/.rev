@@ -270,4 +270,12 @@
 - update to 0.5.1:</comment>
     <requestid>1216939</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>f9d7ca0bf7c630dcfc9d907a14c0d2a5</srcmd5>
+    <version>0.12.0</version>
+    <time>1756323238</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301402</requestid>
+  </revision>
 </revisionlist>
