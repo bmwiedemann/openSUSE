@@ -242,4 +242,12 @@
   * Include the NTFS Boot Record backup in the cloned image by @pfrouleau in #54</comment>
     <requestid>1190855</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>bfc3b6071417120cab23379e65f50e3b</srcmd5>
+    <version>0.3.37</version>
+    <time>1756323332</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1301551</requestid>
+  </revision>
 </revisionlist>

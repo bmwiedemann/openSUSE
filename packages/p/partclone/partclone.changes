@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Aug 22 18:32:44 UTC 2025 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Update to 0.3.37:
+  * fix exfat dirty output while output is stdout (issue #272)
+  * Add some test scripts
+  * remove obsolete INSTLIBDIR because fail-mbr.bin has been
+    removed in 0.3.34
+  * remove commented out mv command
+  * add partclone.apfs manpage to %files section
+  * remove obsolete %{_datadir}/partclone from %files section
+
+- Changes in 0.3.36:
+  * update btrfs to v6.14
+
+- Changes in 0.3.34:
+  * update btrfs to v 6.13
+  * fix btrfs compile issue
+  * fix f2fs compile issue
+  * remove fail-mbr
+  * Check for byteswap.h existence for src/f2fs/f2fs_fs.h by 
+    @robert-scheck in #257
+  * Fix include path for f2fs by @blanktonio in #258
+
+- Changes in 0.3.33:
+  * fix f2fs sector size issue
+  * Prevent use of run-time floating point math functions for 
+    compile-time integer constants by @blanktonio in #252
+    ntfstime.h uses the time.h, sys/stat.h, sys/time.h headers by
+    @chewi in #254
+  * Conditionally run the reiser4 test by @chewi in #253
+
+
+-------------------------------------------------------------------
 Thu Aug  1 05:26:11 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.3.32:

@@ -1,7 +1,7 @@
 #
 # spec file for package partclone
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012 Mariusz Fik <fisiu@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           partclone
-Version:        0.3.32
+Version:        0.3.37
 Release:        0
 Summary:        File System Clone Utilities
 License:        GPL-2.0-or-later
@@ -70,10 +70,8 @@ autoreconf -fiv
 %make_build LIBS="-lncursesw -lpthread -lfuse" ||:
 
 %install
-%make_install INSTLIBDIR=%{buildroot}%{_datadir}/%{name}
+%make_install
 %fdupes -s %{buildroot}%{_datadir}
-#mv %{buildroot}%{_sysconfdir}/bash_completion.d/partclone-prompt \
-#  %{buildroot}%{_datadir}/bash-completion/completions/
 %find_lang %{name}
 
 %files
@@ -110,6 +108,7 @@ autoreconf -fiv
 %{_sbindir}/partclone.vfat
 %{_sbindir}/partclone.xfs
 %{_mandir}/man8/partclone.8%{?ext_man}
+%{_mandir}/man8/partclone.apfs.8%{?ext_man}
 %{_mandir}/man8/partclone.btrfs.8%{?ext_man}
 %{_mandir}/man8/partclone.chkimg.8%{?ext_man}
 %{_mandir}/man8/partclone.dd.8%{?ext_man}
@@ -137,7 +136,6 @@ autoreconf -fiv
 %{_mandir}/man8/partclone.restore.8%{?ext_man}
 %{_mandir}/man8/partclone.vfat.8%{?ext_man}
 %{_mandir}/man8/partclone.xfs.8%{?ext_man}
-%{_datadir}/partclone
 
 %files lang -f %{name}.lang
 
