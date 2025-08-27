@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 25 19:09:42 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.6.2:
+  * add proper LIBBPF_API annotation to bpf_object__prepare() API,
+    to make it usable in shared library mode
+  * small fix up to better handle DEVMAP/DEVMAP_HASH maps
+
+-------------------------------------------------------------------
 Mon Jul 21 03:31:14 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - update to 1.6.0:
@@ -27,7 +35,7 @@ Mon Jul 21 03:31:14 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
   * __arg_untrusted annotation for BPF global subprog arguments;
   * bpf_stream_printk() macro for working with BPF streams;
   * bpf_usdt_arg_size() API
-- update to 1.6.0:
+- update to 1.6.1:
   * fixing a possible crash when handling BPF arena global variable relocations
 - drop 0001-libbpf-Add-identical-pointer-detection-to-btf_dedup_.patch, which
   is now included

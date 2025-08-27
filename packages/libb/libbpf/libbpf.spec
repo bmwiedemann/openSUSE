@@ -2,6 +2,7 @@
 # spec file for package libbpf
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +20,7 @@
 %define sover_major 1
 %define libname libbpf%{sover_major}
 Name:           libbpf
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        C library for managing eBPF programs and maps
 License:        LGPL-2.1-only
@@ -60,17 +61,17 @@ libbpf is a C library which provides API for managing eBPF programs and maps.
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 cd src
-%make_build V=1 CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}"
 
 %install
 cd src
 %make_install V=1
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
-%{_libdir}/%{name}.so.%{sover_major}*
+%license LICENSE LICENSE.BSD-2-Clause LICENSE.LGPL-2.1
+%{_libdir}/%{name}.so.%{sover_major}{,.*}
 
 %files devel
 %license LICENSE LICENSE.BSD-2-Clause LICENSE.LGPL-2.1
