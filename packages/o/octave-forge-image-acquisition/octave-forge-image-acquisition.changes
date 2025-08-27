@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug 26 12:33:59 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.3.3
+  * Fix BIST if there is no conversion implemented for selected
+    VideoFormat to RGB3
+- Update to version 0.3.2
+  * fix missing header for Media Foundation build
+- Update to version 0.3.1
+  * videoinput: Use first available device when no adapter given.
+- Update to version 0.3.0
+  * Support for Media Foundation (MF) on MS-Windows
+  * New internal conversion routines for YCbCr -> RGB3
+- Update to version 0.2.5
+  * Bugfix release
+    Octave version >= 6 removed error_state. Bug #63136)
+    Ignore v4l2 Metadata Interface devices in imaqhwinfo.
+    Example if /dev/video0 AND /dev/video1 are created simultaneously.
+- Drop image-acquisition-error-state.patch
+- Exclude tests requiring a physical camera.
+
+-------------------------------------------------------------------
 Wed Apr 19 06:54:34 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add image-acquisition-error-state.patch -- Fix build failure

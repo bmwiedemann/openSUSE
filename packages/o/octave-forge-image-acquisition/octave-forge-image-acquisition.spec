@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-image-acquisition
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,18 @@
 
 %define octpkg  image-acquisition
 Name:           octave-forge-%{octpkg}
-Version:        0.2.2
+Version:        0.3.3
 Release:        0
 Summary:        Image Acquisition functions for Octave
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            http://octave.sourceforge.net
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM image-acquisition-error-state.patch badshah400@gmail.com -- Fix build failure against octave >= 6 by dropping use of error_state (https://savannah.gnu.org/bugs/index.php?63136)
-Patch0:         image-acquisition-error-state.patch
+URL:            https://gnu-octave.github.io/packages/image-acquisition/
+Source0:        https://github.com/Andy1978/octave-image-acquisition/releases/download/%{octpkg}-%{version}/%{octpkg}-%{version}.tar.gz
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libv4l-devel
-BuildRequires:  octave-devel
-Requires:       octave-cli >= 3.8.0
+BuildRequires:  octave-devel >= 5.1.0
+Requires:       octave-cli >= 5.1.0
 
 %description
 The Octave-forge Image Aquisition package provides functions to capture
@@ -40,9 +38,6 @@ This is part of Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
-pushd %{octpkg}-%{version}
-%autopatch -p1
-popd
 %octave_pkg_src
 
 %build
@@ -52,6 +47,8 @@ popd
 %octave_pkg_install
 
 %check
+%global octskiptests imaqhwinfo|__imaq_handler__.cc-tst
+echo "Skip tests requiring a camera device: %{octskiptests}"
 %octave_pkg_test
 
 %post
