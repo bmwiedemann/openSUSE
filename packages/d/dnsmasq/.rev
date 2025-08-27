@@ -967,4 +967,13 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
     <comment></comment>
     <requestid>1279749</requestid>
   </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>36e4a4afb29ba77388f33641937b3e3e</srcmd5>
+    <version>2.91</version>
+    <time>1756323245</time>
+    <user>anag_factory</user>
+    <comment>- bsc#1247812: Fix a segfault when setting up supplementary groups,
+  but no username was specified.</comment>
+    <requestid>1301427</requestid>
+  </revision>
 </revisionlist>

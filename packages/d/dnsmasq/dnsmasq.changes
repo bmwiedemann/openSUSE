@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 21 15:45:52 UTC 2025 - Reinhard Max <max@suse.com>
+
+- bsc#1247812: Fix a segfault when setting up supplementary groups,
+  but no username was specified.
+
+-------------------------------------------------------------------
 Sun May 18 03:21:42 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
 
 - update to 2.91:

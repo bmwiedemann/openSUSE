@@ -7,9 +7,10 @@
 -      gid_t dummy;
        
 -      /* remove all supplementary groups */
-+      /* set the supplementary groups of the daemon user */
-       if (gp && 
+-      if (gp && 
 -	  (setgroups(0, &dummy) == -1 ||
++      /* set the supplementary groups of the daemon user */
++      if (gp && daemon->username &&
 +	  (initgroups(daemon->username, gp->gr_gid) == -1 ||
  	   setgid(gp->gr_gid) == -1))
  	{
