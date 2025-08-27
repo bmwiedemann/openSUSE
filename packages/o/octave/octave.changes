@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 25 20:39:46 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix octave-forge install/check macros for noarch packages.
+
+-------------------------------------------------------------------
 Fri Aug 22 14:56:24 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix macro for building of octave-forge packages:

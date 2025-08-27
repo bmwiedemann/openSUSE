@@ -25,13 +25,22 @@
 %octave_pkg_build \
     %octave --eval "pkg build -nodeps -verbose . %{octpkg}-%{version}.tar.gz"
 
+%_octave_build_file %( \
+    if test "%{_arch}" = "noarch"; then \
+        echo %{octpkg}-%{version}-any-none.tar.gz \
+    else \
+        echo %{octpkg}-%{version}-*-api-v*.tar.gz \
+    fi \
+)
+
 # Octave package installation
 %octave_pkg_install \
     HOME=${PWD} \
     mkdir -p %{buildroot}%{octpackages_dir} \
     mkdir -p %{buildroot}%{octlib_dir} \
-    ls -la %{octpkg}-%{version}-*-api-v*.tar.gz \
-    %octave --eval "pkg prefix %{buildroot}%{octpackages_dir} %{buildroot}%{octlib_dir}; pkg install -verbose -nodeps %{octpkg}-%{version}-*-api-v*.tar.gz" \
+    ls -la %{octpkg}-%{version}*.tar.gz \
+    echo "Using %{_octave_build_file} for installation" \
+    %octave --eval "pkg prefix %{buildroot}%{octpackages_dir} %{buildroot}%{octlib_dir}; pkg install -verbose -nodeps %{_octave_build_file}" \
     rm -f %{buildroot}%{octpackages_dir}/%{octpkg}-%{version}/packinfo/.autoload
 
 # Octave package tests
@@ -41,7 +50,7 @@
     HOME=${PWD} \
     %octave --eval "pkg list" \
     echo "============= Test Start ===============" \
-    [ -e %{octpkg}-%{version} ] || tar xaf %{octpkg}-%{version}-*-api-v*.tar.gz \
+    [ -e %{octpkg}-%{version} ] || tar xaf %{_octave_build_file} \
     find %{octpkg}-%{version} -name '*.m' -o -name '*.*-tst' || true \
     for fpath in $(find %{octpkg}-%{version} -name '*.m' -o -name '*.*-tst') ; do \
       if grep -q '%%! *test' $fpath ; then \
