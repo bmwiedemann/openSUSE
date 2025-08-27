@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 27 14:49:07 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- install the right gem2rpm so that we do not have ruby 2.5 in the container
+
+-------------------------------------------------------------------
 Thu Jul 31 11:18:59 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove shadow backup from container
