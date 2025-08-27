@@ -38,8 +38,8 @@ Patch1:         xfce4-session-adapt-session-scripts.patch
 Patch2:         0002-relax-x11-version.patch
 # PATCH-FIX-OPENSUSE xfce4-session-drop-amixer-D-pulse-option.patch -- Fix audio mixer invocation on Wayland
 Patch3:         xfce4-session-drop-amixer-D-pulse-option.patch
-# PATCH-FIX-OPENSUSE xfce4-session-reduce-wayland-autostart-timeout.patch -- Fix the too slow start-up on Wayland
-Patch4:         xfce4-session-reduce-wayland-autostart-timeout.patch
+# PATCH-FIX-OPENSUSE xfce4-session-more-labwc-keybindings.patch -- Add more default labwc key bindings
+Patch5:         xfce4-session-more-labwc-keybindings.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
 BuildRequires:  iceauth

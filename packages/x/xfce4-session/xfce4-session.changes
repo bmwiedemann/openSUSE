@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 27 13:02:03 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Add more default key bindings for Wayland with labwc (bsc#1248802):
+  xfce4-session-more-labwc-keybindings.patch
+- Drop the previous workaround patch for wayland startup
+  (bsc#1247542):
+  xfce4-session-reduce-wayland-autostart-timeout.patch
+  The fix is now found in xfce4-branding-openSUSE instead
+
+-------------------------------------------------------------------
 Thu Aug 14 14:46:12 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Reduce the timeout for auto-start on Wayland (bsc#1247542);

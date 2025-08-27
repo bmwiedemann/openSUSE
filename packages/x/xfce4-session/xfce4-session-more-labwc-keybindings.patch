@@ -1,0 +1,27 @@
+Add more default key bindings for labwc
+
+- Display (VideoModeSwitch) or Super-P: display setup dialog
+- PrintScreen: screen-shooter
+
+---
+ labwc/labwc-rc.xml |    9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+--- a/labwc/labwc-rc.xml
++++ b/labwc/labwc-rc.xml
+@@ -66,6 +66,15 @@
+     <keybind key="W-4">
+       <action name="GoToDesktop" to="4" />
+     </keybind>
++    <keybind key="XF86_Display">
++      <action name="Execute" command="xfce4-display-settings --minimal" />
++    </keybind>
++    <keybind key="W-P">
++      <action name="Execute" command="xfce4-display-settings --minimal" />
++    </keybind>
++    <keybind key="Print">
++      <action name="Execute" command="xfce4-screenshooter -f" />
++    </keybind>
+   </keyboard>
+ 
+   <snapping>
