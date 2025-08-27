@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 26 19:27:56 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.4.6:
+  * Minor bug fixes and documentation improvements have been made
+    to the following functions: cheb1ap, cl2bp, decimate, firpm,
+    pwelch, residuez
+  * The following new functions have been added to the signal
+    package: poisswin, taylorwin
+- Add octave-forge-control build dependency required for tests
+
+-------------------------------------------------------------------
 Thu Oct 19 06:19:23 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.4.5:

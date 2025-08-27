@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-signal
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define octpkg  signal
 Name:           octave-forge-%{octpkg}
-Version:        1.4.5
+Version:        1.4.6
 Release:        0
 Summary:        Signal processing tools for Octave
 License:        GPL-3.0-or-later AND SUSE-Public-Domain
@@ -28,6 +28,7 @@ Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.ta
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
 BuildRequires:  octave-devel
+BuildRequires:  octave-forge-control >= 2.4.5
 Requires:       octave-cli >= 3.8.0
 Requires:       octave-forge-control >= 2.4.5
 
