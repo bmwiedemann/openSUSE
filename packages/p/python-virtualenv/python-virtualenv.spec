@@ -1,7 +1,7 @@
 #
 # spec file for package python-virtualenv
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,11 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-virtualenv%{psuffix}
 Version:        20.29.3
@@ -37,14 +41,16 @@ Source:         https://files.pythonhosted.org/packages/source/v/virtualenv/virt
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
+Requires:       (python-distlib >= 0.3.7 with python-distlib < 1)
+Requires:       (python-filelock >= 3.12.2 with python-filelock < 4)
+Requires:       (python-platformdirs >= 3.9.1 with python-platformdirs < 5)
+BuildArch:      noarch
 %if !%{with test}
 # Don't install the build requirements during testing, see setuptools_scm comment below
 BuildRequires:  %{python_module hatch-vcs >= 0.3}
 BuildRequires:  %{python_module hatchling >= 1.17.1}
 BuildRequires:  fdupes
 %else
-# Conflict with setuptools_scm giving a warning, https://github.com/pypa/virtualenv/issues/2668
-BuildConflicts: %{python_module setuptools_scm}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module flaky >= 3.7}
 BuildRequires:  %{python_module packaging >= 23.1}
@@ -56,13 +62,16 @@ BuildRequires:  %{python_module setuptools >= 68}
 BuildRequires:  %{python_module setuptools-wheel >= 68}
 BuildRequires:  %{python_module time-machine >= 2.10}
 BuildRequires:  %{python_module virtualenv = %{version}}
+# Conflict with setuptools_scm giving a warning, https://github.com/pypa/virtualenv/issues/2668
+BuildConflicts: %{python_module setuptools_scm}
 %endif
-Requires:       (python-distlib >= 0.3.7 with python-distlib < 1)
-Requires:       (python-filelock >= 3.12.2 with python-filelock < 4)
-Requires:       (python-platformdirs >= 3.9.1 with python-platformdirs < 5)
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 %if 0%{python_version_nodots} < 38
 Requires:       python-importlib-metadata >= 6.6
 %endif
@@ -115,6 +124,9 @@ export VIRTUALENV_WHEEL=bundle
 donttest+=" or test_embed_wheel_versions"
 %pytest -k "not ($donttest)"
 %endif
+
+%pre
+%python_libalternatives_reset_alternative virtualenv
 
 %post
 %python_install_alternative virtualenv

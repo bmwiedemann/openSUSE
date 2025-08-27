@@ -1680,4 +1680,12 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
   * Ignore unreadable directories in PATH</comment>
     <requestid>1265494</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>d1aa6d119c20d897decfe5c102194dba</srcmd5>
+    <version>20.29.3</version>
+    <time>1756323235</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301397</requestid>
+  </revision>
 </revisionlist>
