@@ -1,7 +1,7 @@
 #
 # spec file for package targetcli-fb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           targetcli-fb
 Version:        3.0.1
 Release:        0
@@ -43,15 +48,19 @@ Requires:       python-dbus-python
 Requires:       python-gobject
 Requires:       python-rtslib-fb
 Requires:       targetcli-fb-common
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Provides:       targetcli    = %{version}-%{release}
+Provides:       targetcli = %{version}-%{release}
 Provides:       targetcli-fb = %{version}-%{release}
 Obsoletes:      targetcli < %{version}-%{release}
 Obsoletes:      targetcli-fb < %{version}-%{release}
 BuildArch:      noarch
 %{?systemd_ordering}
-
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -88,7 +97,7 @@ install -d -m755 %{buildroot}%{_sysconfdir}/target/backup
 install -d -m755 %{buildroot}%{_sbindir}
 install -D -m644 targetcli.8 %{buildroot}%{_mandir}/man8/targetcli.8
 install -D -m644 targetclid.8 %{buildroot}%{_mandir}/man8/targetclid.8
-install -D -m644 %{S:1} %{buildroot}%{_unitdir}/targetcli.service
+install -D -m644 %{SOURCE1} %{buildroot}%{_unitdir}/targetcli.service
 install -D -m644 systemd/targetclid.service %{buildroot}%{_unitdir}/targetclid.service
 install -D -m644 systemd/targetclid.socket %{buildroot}%{_unitdir}/targetclid.socket
 %fdupes %{buildroot}
@@ -105,6 +114,8 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctargetclid
 
 %pre
 %{service_add_pre targetcli.service targetclid.socket targetclid.service}
+%python_libalternatives_reset_alternative targetcli
+%python_libalternatives_reset_alternative targetclid
 
 %preun
 %{stop_on_removal targetclid targetcli}
@@ -132,8 +143,8 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rctargetclid
 %doc README.md THANKS
 %dir %{_sysconfdir}/target
 %dir %{_sysconfdir}/target/backup
-%doc %{_mandir}/man8/targetcli.8%{ext_man}
-%doc %{_mandir}/man8/targetclid.8%{ext_man}
+%doc %{_mandir}/man8/targetcli.8%{?ext_man}
+%doc %{_mandir}/man8/targetclid.8%{?ext_man}
 %{_unitdir}/targetcli.service
 %{_unitdir}/targetclid.service
 %{_unitdir}/targetclid.socket
