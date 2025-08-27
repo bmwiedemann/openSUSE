@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Aug 26 19:57:50 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.7.0:
+  * Bug fixes:
+    - dbfread.m: rewrite code for attribute (column) selection
+      (bug #61757)
+    - fromJSON.m, toJSON.m: improve Java-based BIST (re-apply bug
+      #60040); Adapt to more stringent code checks required by
+      (experimental) bytecode interpreter (bug #66790)
+    - TexInfo header fixes (bug #62075)
+    - UNO interface: properly process .xlsx files with commas in
+      sheet names (bug #62169)
+    - xlswrite: Improve xlswrite messages in case of write errors
+      and make sure to clean up (in course of bug #64366)
+    - OCT interface: properly process dcterms:created and
+      dcterms:modified nodes (bug #64349)
+    - OCT interface: copy formulas rather than values when writing
+      into an existing sheet (bug #65624)
+    - rfsearch.m: make sure rfsearch only finds real files, rather
+      than also subdirectories
+    - Fix reading data with Named Ranges (properly distinguish
+      Named Range from ordinary spreadsheet range) (bug #66288)
+    - Fix bug when invoking odsfinfo (errored out with "not
+      enough arguments")
+    - Fix indexing error in xlswrite.m in case of very short
+      file names
+    - Avoid long delay with newer LibreOffice (UNO interface) when
+      that is waiting for printer connection.
+  * Code improvements
+    - JOD interface: now also supports jOpenDocument-1.5. Named
+      Ranges have been implemented, worked also in 1.4-rc2.
+    - POI interface: overhauled .jar detection in Java classpath,
+      POI is now supported up to release 5.2.3.
+    - OTK interface (ODF Toolkit): update support up to 0.10.0,
+      0.11.0 and 0.12.0.  Only one jar is required:
+      odfdom-java-<version>-jar-with-dependencies.jar.
+    - Help files for the GUI doc browser have been added. These
+      are loaded/unloaded automatically when loading/unloading
+      the io package.
+    - Texinfo help headers for several functions have been
+      udpated and improved for use with the GUI doc browser.
+
+-------------------------------------------------------------------
 Mon Feb 21 18:41:18 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.6.4:

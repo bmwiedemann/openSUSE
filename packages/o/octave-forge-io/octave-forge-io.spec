@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-io
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %define octpkg  io
 Name:           octave-forge-%{octpkg}
-Version:        2.6.4
+Version:        2.7.0
 Release:        0
 Summary:        Input/Output in external formats from Octave
 License:        BSD-2-Clause AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io/%{octpkg}/
+URL:            https://gnu-octave.github.io/packages/%{octpkg}/
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
@@ -55,7 +55,6 @@ This is part of Octave-Forge project.
 %octave --eval "pkg rebuild"
 
 %files
-%defattr(-,root,root)
 %{octpackages_dir}/%{octpkg}-%{version}
 %{octlib_dir}/%{octpkg}-%{version}
 
