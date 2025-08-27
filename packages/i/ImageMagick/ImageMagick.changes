@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 25 20:23:06 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- version update to 7.1.2.2
+  * Fix infinite loop when decoding JXL with -limit height/width by
+    @Elvyria in #8303
+  * Bump actions/checkout from 4 to 5 by @dependabot[bot] in #8304
+  * cache.c: Fix unused function warning by @Dave-Allured in #8309
+
+-------------------------------------------------------------------
 Wed Aug 20 09:11:08 UTC 2025 - pgajdos@suse.com
 
 - version update to 7.1.2.1

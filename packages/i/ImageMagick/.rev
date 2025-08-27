@@ -4122,4 +4122,16 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
    CVE-2025-55154 [bsc#1248078], CVE-2025-55005 [bsc#1248077]</comment>
     <requestid>1300482</requestid>
   </revision>
+  <revision rev="313" vrev="1">
+    <srcmd5>4b0c2d82adef0474921b66054befa97c</srcmd5>
+    <version>7.1.2.2</version>
+    <time>1756323225</time>
+    <user>anag_factory</user>
+    <comment>- version update to 7.1.2.2
+  * Fix infinite loop when decoding JXL with -limit height/width by
+    @Elvyria in #8303
+  * Bump actions/checkout from 4 to 5 by @dependabot[bot] in #8304
+  * cache.c: Fix unused function warning by @Dave-Allured in #8309 (forwarded request 1301329 from adkorte)</comment>
+    <requestid>1301378</requestid>
+  </revision>
 </revisionlist>
