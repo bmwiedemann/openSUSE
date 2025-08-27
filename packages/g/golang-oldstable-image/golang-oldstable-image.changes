@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 25 14:29:38 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- update go stable/oldstable to 1.24/1.25
+
+-------------------------------------------------------------------
 Fri Aug  1 14:26:25 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - zypper clean all the files
