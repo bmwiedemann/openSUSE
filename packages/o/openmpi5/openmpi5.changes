@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  5 18:48:52 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Enable Grid Cluster Scheduler support (jsc#PED-13373)
+
+-------------------------------------------------------------------
 Thu Jun 12 08:35:43 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to 5.0.8

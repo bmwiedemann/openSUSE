@@ -353,6 +353,7 @@ export HOSTNAME=OBS
            --enable-mpi-thread-multiple \
            --disable-wrapper-rpath \
            --with-slurm \
+           --with-sge \
 %if 0%{?with_ucx}
            --with-ucx \
            --with-ucx-libdir=/usr/%_lib \
