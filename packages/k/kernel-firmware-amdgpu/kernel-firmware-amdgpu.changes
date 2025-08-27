@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 26 06:12:28 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250825 (git commit f044bc789f8e):
+  * amdgpu: Update ISP FW for isp v4.1.1
+  * amdgpu: DMCUB updates for various ASICs
+
+-------------------------------------------------------------------
 Sat Aug 16 07:24:53 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250815 (git commit 07ed893df57c):
