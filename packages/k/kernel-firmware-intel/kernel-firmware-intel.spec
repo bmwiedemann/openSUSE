@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version c88f7d0646033508bc54a6be567a9965146e2899
+%define git_version f044bc789f8e7a4427593b687801644c39e3e8b7
 
 Name:           kernel-firmware-intel
-Version:        20250821
+Version:        20250825
 Release:        0
 Summary:        Kernel firmware files for Intel-platform device drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only

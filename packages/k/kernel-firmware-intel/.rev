@@ -108,4 +108,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * intel/ish: Add firmware for LENOVO THINKPAD X1 2-in-1 Gen 10</comment>
     <requestid>1300894</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>668ad13ece2faf52c51e3852af9ebe21</srcmd5>
+    <version>20250825</version>
+    <time>1756323212</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250825 (git commit f044bc789f8e):
+  * intel_vpu: Update NPU firmware</comment>
+    <requestid>1301474</requestid>
+  </revision>
 </revisionlist>
