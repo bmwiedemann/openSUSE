@@ -1,7 +1,7 @@
 #
 # spec file for package python-whey
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,11 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-whey%{psuffix}
 Version:        0.1.1
@@ -35,18 +40,8 @@ Source:         https://github.com/repo-helper/whey/archive/refs/tags/v%{version
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.6.0}
 BuildRequires:  %{python_module wheel >= 0.34.2}
-BuildRequires:  python-rpm-macros
-# SECTION test requirements
-%if %{with test}
-BuildRequires:  %{python_module editables}
-BuildRequires:  %{python_module pyproject-examples}
-BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module re-assert}
-BuildRequires:  %{python_module whey = %{version}}
-%endif
-# /SECTION
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-attrs >= 22.2.0
 Requires:       python-click >= 7.1.2
 Requires:       python-consolekit >= 1.4.1
@@ -60,9 +55,24 @@ Requires:       python-pyproject-parser >= 0.11.0
 Requires:       python-shippinglabel >= 0.16.0
 Suggests:       python-docutils >= 0.16
 Suggests:       python-editables >= 0.2
+BuildArch:      noarch
+# SECTION test requirements
+%if %{with test}
+BuildRequires:  %{python_module editables}
+BuildRequires:  %{python_module pyproject-examples}
+BuildRequires:  %{python_module pytest-timeout}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module re-assert}
+BuildRequires:  %{python_module whey = %{version}}
+%endif
+# /SECTION
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 %python_subpackages
 
 %description
@@ -87,6 +97,9 @@ A simple Python wheel builder for simple projects.
 
 %postun
 %python_uninstall_alternative whey
+
+%pre
+%python_libalternatives_reset_alternative whey
 %endif
 
 %check

@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1249630</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>da14a634c22dac7829d2b268efaad871</srcmd5>
+    <version>0.1.1</version>
+    <time>1756323240</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301405</requestid>
+  </revision>
 </revisionlist>
