@@ -2776,4 +2776,14 @@ we must have vb7.1.10.</comment>
     <comment>- Update to release 7.2.0</comment>
     <requestid>1299847</requestid>
   </revision>
+  <revision rev="296" vrev="2">
+    <srcmd5>e9e81fa9729fc551e5b70d2fc2c11fb9</srcmd5>
+    <version>7.2.0</version>
+    <time>1756323244</time>
+    <user>anag_factory</user>
+    <comment>- Disable python bindings for Leap 16.0 (bsc#1248418)
+  python3.13 is not supported by the current virtualbox version so
+  we can't build the bindings.</comment>
+    <requestid>1301424</requestid>
+  </revision>
 </revisionlist>

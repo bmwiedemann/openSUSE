@@ -55,7 +55,14 @@
 %endif
 
 # If you want to disable building Python parts, just set this to %%nil
+%if 0%{?suse_version} == 1600
+# Leap 16.0 has python3.13, currently not supported
+%global mypython %nil
+%else
+# Using python3.11 for Factory, current version doesn't support python3.13
 %global mypython python311
+%endif
+
 %if "%mypython" != ""
 %global __mypython %{expand:%%__%{mypython}}
 %global mypython_sitelib %{expand:%%%{mypython}_sitelib}

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 26 10:21:54 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable python bindings for Leap 16.0 (bsc#1248418)
+  python3.13 is not supported by the current virtualbox version so
+  we can't build the bindings.
+
+-------------------------------------------------------------------
 Fri Aug 15 14:46:51 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.2.0
