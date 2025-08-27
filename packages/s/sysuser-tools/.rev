@@ -293,4 +293,16 @@
     <comment></comment>
     <requestid>1295782</requestid>
   </revision>
+  <revision rev="35" vrev="10">
+    <srcmd5>a7a11b104fcd515a10cad47a378a89db</srcmd5>
+    <version>3.3</version>
+    <time>1756323252</time>
+    <user>anag_factory</user>
+    <comment>- Don't set TZ=UTC for chage to avoid dependency on env.
+
+- Use run macro for chage for log files/debugging.
+
+- Generate provides for &quot;u!&quot;.</comment>
+    <requestid>1301527</requestid>
+  </revision>
 </revisionlist>

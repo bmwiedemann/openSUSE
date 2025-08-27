@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 27 06:56:02 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't set TZ=UTC for chage to avoid dependency on env.
+
+-------------------------------------------------------------------
+Tue Aug 26 09:45:05 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use run macro for chage for log files/debugging.
+
+-------------------------------------------------------------------
+Mon Aug 25 07:17:30 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Generate provides for "u!".
+
+-------------------------------------------------------------------
 Wed Jul 23 18:28:04 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - disable the buildroot virus scanning, as it needs the vscan user

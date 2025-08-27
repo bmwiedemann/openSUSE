@@ -9,7 +9,7 @@ parse()
 		set -- $line
 		if [ "$1" = 'g' ]; then
 			echo "group($2)"
-		elif [ "$1" = 'u' ]; then
+		elif [ "$1" = 'u' ] || [ "$1" = 'u!' ] ; then
 			echo "user($2)"
 			echo "group($2)"
 		fi

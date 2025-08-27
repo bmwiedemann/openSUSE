@@ -94,7 +94,7 @@ else
 
 			    run /usr/sbin/useradd -r -c "$3" -d "${homedir}" $ARGUMENTS
 			    if [ -n "$EXPIRE_DATE" ]; then
-				TZ=UTC chage -E "$EXPIRE_DATE" "$1"
+				run chage -E "$EXPIRE_DATE" "$1"
 			    fi
 			elif [ -x "$busybox" ]; then
 			    if [ -n "$GROUP_ID" ] && [ "$GROUP_ID" != "-" ]; then
