@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 26 15:47:37 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.65.0:
+  - Features
+    * feat: Add docker command
+    * feat: Add ssh command
+    * feat: Add podman command
+    * feat: Add install-init-shell.sh subcommand to generate command
+    * feat: Extend the range of types accepted by quoteList template func
+    * feat: Add support for rar archives
+    * feat: Add age-keygen command
+    * feat: Apply --age-recipient and --age-recipient-file flags to all commands
+  - Documentation updates
+    * docs: Clarify scripts have to succeed to count as being run
+    * docs: Use age-keygen command in docs
+- Bump go toolchain requirement to 1.25
+
+-------------------------------------------------------------------
 Thu Aug  7 07:31:01 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.64.0:
