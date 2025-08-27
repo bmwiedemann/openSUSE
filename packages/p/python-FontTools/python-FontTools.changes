@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Aug 19 14:08:50 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.59.1
+  * [varLib] Lets not add mac names if the rest of name doesn't have them
+  * [cffLib.specializer] Add cmdline to specialize a CFF2 font
+  * [varLib.interpolatable] Support CFF2 fonts
+  * Python 3.13 support
+  * [TupleVariation] Optimize for loading speed, not size
+  * [varStore] Sort the input todo list with the same sorting key used for the opimizer's output
+  * [ttLib.__main__] Improvements around the -t flag
+  * [varLib.hvar] New module to add HVAR table to the font
+  * Drop Python 3.8, require 3.9+
+  * [HVAR, VVAR] Prune unused regions when using a direct mapping
+  * [GVAR] Add support for new GVAR table
+  * [feaLib] Remove duplicates from class pair pos classes instead of raising an error
+  * [voltLib] Add some missing functionality and fixes to voltLib and VoltToFea
+  * Removed hard-dependency on pyfilesystem2 (fs package) from fonttools[ufo] extra. This is 
+    replaced by the fontTools.misc.filesystem package, a stdlib-only, drop-in replacement for the
+    subset of the pyfilesystem2's API used by fontTools.ufoLib
+  * [xmlWriter] Replace illegal XML characters (e.g. control or non-characters) with "?" when dumping to ttx
+  * More changes, see upstream changelog
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Thu Jul 25 07:44:50 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
 
 - Update to 4.53.1

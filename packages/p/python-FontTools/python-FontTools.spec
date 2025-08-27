@@ -1,7 +1,7 @@
 #
 # spec file for package python-FontTools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,14 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-FontTools%{psuffix}
-Version:        4.53.1
+Version:        4.59.1
 Release:        0
 Summary:        Suite of Tools and Libraries for Manipulating Fonts
 License:        MIT AND OFL-1.1
@@ -41,12 +46,10 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-# some packages should require fonttools[ufo] but expect fs to be pulled in by default.
-Requires:       python-fs >= 2.2.0
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     python-Brotli >= 1.1.0
 Recommends:     python-freetype-py >= 2.4.0
+# some packages should require fonttools[ufo], but fs is not a hard dependency anymore.
+Recommends:     python-fs >= 2.2.0
 Recommends:     python-lxml
 Recommends:     python-munkres >= 1.1.4
 Recommends:     python-reportlab
@@ -56,14 +59,21 @@ Recommends:     python-ufoLib2 >= 0.16.0
 Recommends:     python-unicodedata2 >= 15.1.0
 Recommends:     python-zopfli >= 0.2.3
 Provides:       python-fonttools = %{version}-%{release}
+Obsoletes:      fonttools < %{version}-%{release}
+Provides:       fonttools = %{version}-%{release}
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if %{with test}
 BuildRequires:  %{python_module Brotli >= 1.1.0}
 BuildRequires:  %{python_module fs >= 2.4.16}
 BuildRequires:  %{python_module pytest}
 %endif
-Obsoletes:      fonttools < %{version}-%{release}
-Provides:       fonttools = %{version}-%{release}
 %python_subpackages
 
 %description
@@ -99,7 +109,11 @@ export LANG=en_US.UTF-8
 # We need these files to be installed for tests, but now we need them removed
 # not to confuse %%files checks
 %python_expand rm -r %{buildroot}%{$python_sitelib}
+%if %{with libalternatives}
+rm -r %{buildroot}%{_datadir}/libalternatives
+%else
 rm -r %{buildroot}%{_sysconfdir}/alternatives
+%endif
 rm -r %{buildroot}%{_bindir}
 rm -r %{buildroot}%{_mandir}
 %endif
@@ -116,6 +130,12 @@ rm -r %{buildroot}%{_mandir}
 %python_uninstall_alternative pyftsubset
 %python_uninstall_alternative pyftmerge
 %python_uninstall_alternative fonttools
+
+%pre
+%python_libalternatives_reset_alternative ttx
+%python_libalternatives_reset_alternative pyftsubset
+%python_libalternatives_reset_alternative pyftmerge
+%python_libalternatives_reset_alternative fonttools
 
 %files %{python_files}
 %license LICENSE LICENSE.external
