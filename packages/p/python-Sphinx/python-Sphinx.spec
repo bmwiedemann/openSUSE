@@ -1,7 +1,7 @@
 #
 # spec file for package python-Sphinx
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,11 @@
 %else
 %define psuffix %{nil}
 %bcond_with test
+%endif
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Sphinx%{psuffix}
@@ -68,13 +73,18 @@ Requires:       python-sphinxcontrib-htmlhelp >= 2.0.0
 Requires:       python-sphinxcontrib-jsmath
 Requires:       python-sphinxcontrib-qthelp >= 1.0.2
 Requires:       python-sphinxcontrib-serializinghtml >= 1.1.9
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     python-SQLAlchemy >= 0.9
 Recommends:     python-Sphinx-doc-man
 Recommends:     python-Whoosh >= 2.0
 Suggests:       python-sphinx_rtd_theme
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if %{with test}
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Sphinx = %{version}}
@@ -208,10 +218,10 @@ This package contains the documentation for Sphinx.
 Summary:        Man files for python-Sphinx
 Group:          Documentation/Man
 Requires:       python3-Sphinx = %{version}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Supplements:    python3-Sphinx
 Obsoletes:      python-Sphinx-doc-man-common <= %{version}
+BuildRequires:  alts
+Requires:       alts
 
 %description -n python-Sphinx-doc-man
 Sphinx is a tool that facilitates creating documentation for Python
@@ -266,6 +276,7 @@ $python -m sphinx -b html -j auto ./doc ./build.doc/html
 %python_clone -a %{buildroot}%{_bindir}/sphinx-autogen
 %python_clone -a %{buildroot}%{_bindir}/sphinx-build
 %python_clone -a %{buildroot}%{_bindir}/sphinx-quickstart
+%python_group_libalternatives sphinx-apidoc sphinx-autogen sphinx-build sphinx-quickstart
 
 %python_expand mkdir -p %{buildroot}%{$python_sitelib}/sphinxcontrib
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -280,6 +291,9 @@ grep -F %{$python_sitelib} ${langfile} >> %{$python_prefix}-${langfile} \
 } \
 }
 %python_find_lang sphinx
+
+# libalternatives binaries break the kernel script for determining the Sphinx version
+sed -i 's/import sys/import sys; sys.argv[0] = "sphinx-build"/' %{buildroot}%{_bindir}/sphinx-build-*
 
 %else
 %if 0%{?suse_version} > 1500
@@ -305,6 +319,9 @@ mv build.doc/man/sphinx-quickstart.1 %{buildroot}%{_mandir}/man1/sphinx-quicksta
 
 %postun
 %python_uninstall_alternative sphinx-apidoc
+
+%pre
+%python_libalternatives_reset_alternative sphinx-apidoc
 %endif
 
 %check
