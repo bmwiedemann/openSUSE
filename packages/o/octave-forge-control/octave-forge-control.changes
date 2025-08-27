@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Aug 25 22:48:31 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 4.1.2:
+  * estim: new input argument type for a delayed or current version
+    of a discrete-time estimator using last or current output
+    measurements for current state estimation
+  * kalman: adding type input argument for discrete-time filters
+    (see estim), consistent default values for input arguments
+  * added more test, like, e.g. estim, kalman and ssdata
+  * hinfsyn: more comprehensive help text
+  * margin: fix of wrong phase margin if outside +/- 180 degree
+  * rlocusx: improved colors
+- Update to version 4.1.1:
+  * more robust test in impulse and cfconred
+  * fix possibly missing deprecated LAPACK routine DGEGS
+  * input parameter checking for NaN and Inf in oct-files in order
+    to prevent Octave from hanging (bug #66669)
+  * ss: state space from MIMO transfer function 'tfsys' numerically
+    more robust (bug #66651)
+  * lyap (A,Q) also for non-symmetric Q (bug #66567)
+  * fix time responses (step, impulse, ...) if requested for
+    multiple systems and on Octave versions prior to Octave 8
+- Update to version 4.1.0:
+  * lqg, lqgtrack, lqgreg, reg: new functions for linear dynamic
+    output feedback design including estimator and state feedback
+  * lqry, lqi: new linear quadratic regulator design function,
+    output weighting and with integral part
+  * c2d: impulse invariant discrete-time models for MIMO systems
+    and state space representations
+  * New algorithm for imp_invar, also allowing MIMO systems
+  * tfdata: returning coefficient lists of same length for
+    numerator and denominator (bug #43947)
+  * allow time responses (like, e.g. stepor impulse) for
+    several systems with different sizes
+
+-------------------------------------------------------------------
 Tue Jun  4 04:02:09 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 4.0.1:
