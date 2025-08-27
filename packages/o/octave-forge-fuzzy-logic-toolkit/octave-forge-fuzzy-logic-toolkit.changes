@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Aug 25 23:20:08 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.6.2
+  * Redefined the defuzz option "centroid" using a more efficient
+    method (weighted average), and renamed the previous "centroid"
+    implementation "centroid_integral" (because it is an
+    integral-based calculation) in order to continue to provide the
+    integral-based option.
+- Update to version 0.6.1
+  * Improved many comments and updated the html documentation.
+- Update to version 0.6.0
+  * Added many built-in self tests, simplified error messages, and
+    made minor improvements to comments.
+  * Reimplemented two private functions: square_distance_matrix.m
+    and update_cluster_membership.m.  Tested for identical results
+    with previous implementation using an embedded test in each file.
+  * Added new docs directory containing html documentation for each
+    top-level function.
+- Update to version 0.5.1
+  * Updated several top-level text files (ChangeLog, DESCRIPTION, and
+    NEWS). No change to any code.
+- Update to version 0.5.0
+  * Replaced several occurrences of the deprecated '.+' and '.-'
+    operators with '+' and '-', respectively.
+- Drop fuzzy-logic-toolkit-elem-by-elem-arithmetic.patch
+
+-------------------------------------------------------------------
 Fri Nov 15 12:01:36 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - fuzzy-logic-toolkit-elem-by-elem-arithmetic.patch -- Element by

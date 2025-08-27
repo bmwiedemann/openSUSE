@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-fuzzy-logic-toolkit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %define octpkg  fuzzy-logic-toolkit
 Name:           octave-forge-%{octpkg}
-Version:        0.4.6
+Version:        0.6.2
 Release:        0
 Summary:        Fuzzy logic toolkit for Octave
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            http://octave.sourceforge.net
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fuzzy-logic-toolkit-elem-by-elem-arithmetic.patch badshah400@gmail.com -- Element by element `+` and `-` operations no longer use `.` operations
-Patch0:         fuzzy-logic-toolkit-elem-by-elem-arithmetic.patch
+Source0:        https://github.com/lmarkowsky/fuzzy-logic-toolkit/archive/refs/tags/%{version}.tar.gz#/%{octpkg}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  octave-devel
 Requires:       octave-cli >= 3.2.4
