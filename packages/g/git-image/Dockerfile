@@ -17,7 +17,7 @@
 
 #!BuildTag: opensuse/git:%%git_version%%-%RELEASE%
 #!BuildTag: opensuse/git:%%git_version%%
-#!BuildTag: opensuse/git:2.50
+#!BuildTag: opensuse/git:2.51
 #!BuildTag: opensuse/git:%%git_major_version%%
 #!BuildTag: opensuse/git:latest
 
@@ -31,7 +31,7 @@ RUN set -euo pipefail; \
 # sanity check that the version from the tag is equal to the version of git-core that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' git-core | \
-    cut -d '.' -f -2)" = "2.50" ]
+    cut -d '.' -f -2)" = "2.51" ]
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; rm -f {/target,}/etc/shadow-
 FROM opensuse/bci/bci-micro:latest
