@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Future-IO
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,25 @@
 
 %define cpan_name Future-IO
 Name:           perl-Future-IO
-Version:        0.160.0
+Version:        0.170.0
 Release:        0
-# 0.16 -> normalize -> 0.160.0
-%define cpan_version 0.16
+# 0.17 -> normalize -> 0.170.0
+%define cpan_version 0.17
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Future-returning IO methods
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Future)
-BuildRequires:  perl(Module::Build) >= 0.4004
+BuildRequires:  perl(Module::Build) >= 0.400.400
 BuildRequires:  perl(Struct::Dumb)
 BuildRequires:  perl(Test2::V0)
-BuildRequires:  perl(Test::ExpectAndCheck) >= 0.60.0
-BuildRequires:  perl(Test::Future::IO::Impl)
+BuildRequires:  perl(Test::ExpectAndCheck) >= 0.60
+BuildRequires:  perl(Test::Future::IO::Impl) >= 0.150
 Requires:       perl(Future)
 Requires:       perl(Struct::Dumb)
 Provides:       perl(Future::IO) = %{version}
@@ -55,7 +56,7 @@ this, while allowing asynchronous event systems to provide an
 implementation of these operations.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor

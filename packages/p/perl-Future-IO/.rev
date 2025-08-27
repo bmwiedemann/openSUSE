@@ -56,4 +56,19 @@
     <comment></comment>
     <requestid>1235273</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d6efcb28b2b7b815100f5ea392c8276b</srcmd5>
+    <version>0.170.0</version>
+    <time>1756323261</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.170.0 (0.17)
+   see /usr/share/doc/packages/perl-Future-IO/Changes
+  0.17    2025-07-15
+          [CHANGES]
+           * Added new `-&gt;send`, `-&gt;recv` and `-&gt;recvfrom` socket IO wrapping
+             methods
+           * Provide `-&gt;read` and `-&gt;write` as better names for what were named
+             `-&gt;sysread` and `-&gt;syswrite`</comment>
+    <requestid>1301452</requestid>
+  </revision>
 </revisionlist>
