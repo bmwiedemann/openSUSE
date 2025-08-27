@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 26 08:05:24 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5.0
+  * Previously a slow receiver would get disconnected as soon as
+    the other side encountered a writers' block. This is now worked
+    around via a larger queue.
+  * For the socket backend, the new
+    eis_backend_socket_get_client_pid() provides the client PID.
+  * ei_event_ref() and ei_event_unref() are now available to
+    clients in case the event needs to be kept outside the
+    immediate scope. This should still be handled with care.
+  * The handling of ei_pingpong and ei_sync is now that the
+    pong/sync reply is sent when the respective event is unref'd
+    (previously it was sent as soon as the event is retrieved from
+    libei(s)).
+
+-------------------------------------------------------------------
 Tue Apr  1 08:16:14 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.1

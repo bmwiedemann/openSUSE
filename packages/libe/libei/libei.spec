@@ -17,7 +17,7 @@
 
 %define lname libei1
 Name:           libei
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Library for emulated input in Wayland
 License:        MIT
@@ -74,8 +74,7 @@ libei is a library for Emulated Input, targeting the Wayland stack.
 %install
 %meson_install
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %_libdir/lib*.so.*
