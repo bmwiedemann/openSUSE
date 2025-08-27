@@ -1302,4 +1302,12 @@
     <comment>Fix for bsc#1247578 dropping use of initviocons</comment>
     <requestid>1297831</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>e3b4dd0a41e236b82602c9a6944210a8</srcmd5>
+    <version>1.56.2</version>
+    <time>1756323281</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1301509</requestid>
+  </revision>
 </revisionlist>

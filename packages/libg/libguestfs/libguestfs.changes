@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 19 16:31:54 MDT 2025 - carnold@suse.com
+
+- Update to version 1.56.2 (jsc#PED-12706)
+  * generator: Allow StringList(Pathname) parameters
+  * generator: Implement StringList for OCaml functions
+  * daemon: sysroot: Avoid copying the path every time we call sysroot ()
+  * daemon: sysroot: Avoid double-/ when creating sysroot paths in OCaml
+  * docs: Fix dead ntfs-3g doc links
+  * appliance/init: Add lsblk and blkid output to verbose log
+  * daemon: Add contents of /etc/fstab to verbose log
+  * lib: libvirt: Sleep before retrying virDomainDestroyFlags
+  * lib: libvirt: Debug error from virDomainDestroyFlags
+  * appliance: Ignore sit0 network device in the guest
+
+-------------------------------------------------------------------
 Tue Aug  5 13:58:45 MDT 2025 - carnold@suse.com
 
 - bsc#1247578 - [glibc2.42] initviocons fails to build
