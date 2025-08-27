@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 25 13:41:49 UTC 2025 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 2.18
+  * Fix issue with QMI and handling SMS message acknowledgement.
+  * Fix issue with handling SIM7100 modem ready detection.
+  * Add support for forbidden operator list.
+- Turn harden_ofono.service.patch into git patch.
+
+-------------------------------------------------------------------
 Sun May 11 08:02:02 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.17

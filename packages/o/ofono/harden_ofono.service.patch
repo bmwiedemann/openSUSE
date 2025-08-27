@@ -1,7 +1,19 @@
-Index: ofono-1.33/src/ofono.service.in
-===================================================================
---- ofono-1.33.orig/src/ofono.service.in
-+++ ofono-1.33/src/ofono.service.in
+From b5a50fc2d81875500240ad941b8998bd1e247c30 Mon Sep 17 00:00:00 2001
+From: Petr Vorel <pvorel@suse.cz>
+Date: Mon, 25 Aug 2025 15:39:34 +0200
+Subject: [PATCH] systemd: Harden ofono service
+
+https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+
+Signed-off-by: Petr Vorel <pvorel@suse.cz>
+---
+ src/ofono.service.in | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/src/ofono.service.in b/src/ofono.service.in
+index c24ac280..d397dae5 100644
+--- a/src/ofono.service.in
++++ b/src/ofono.service.in
 @@ -3,6 +3,19 @@ Description=Telephony service
  After=syslog.target
  
@@ -18,7 +30,10 @@ Index: ofono-1.33/src/ofono.service.in
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
-+# end of automatic additions 
++# end of automatic additions
  Type=dbus
  BusName=org.ofono
  ExecStart=@prefix@/sbin/ofonod -n
+-- 
+2.50.1
+

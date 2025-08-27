@@ -1,7 +1,7 @@
 #
 # spec file for package ofono
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2014 Sergey Kondakov <virtuousfox@gmail.com>.
 # Copyright (c) 2014 Bernd Wachter <bwachter@lart.info>.
 #
@@ -19,7 +19,7 @@
 
 
 Name:           ofono
-Version:        2.17
+Version:        2.18
 Release:        0
 Summary:        Mobile telephony application development framework
 License:        GPL-2.0-only
