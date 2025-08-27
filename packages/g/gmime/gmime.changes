@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 26 08:39:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.2.15:
+  + Fixed the g_mime_object_get_header API definition to note that
+    it can return null.
+  + Fixed a memory leak in address_parse().
+  + Added custom header folding logic for the Newsgroups: header.
+  + Fixed a configure issue regarding ac_cv_sys_file_offset_bits.
+  + Fixed an infinite loop in the Content-Type and
+    Content-Disposition parameter serialization logic.
+
+-------------------------------------------------------------------
 Tue Mar  5 14:13:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: the -32bit packages are no longer needed and

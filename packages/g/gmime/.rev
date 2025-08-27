@@ -607,4 +607,19 @@ Reduced to applicable license in SPDX format (forwarded request 107670 from dims
   i586 only enabled in LegacyX86). (forwarded request 1155228 from dimstar)</comment>
     <requestid>1155245</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>529dbe3d3b8176c250d88cb59b59f612</srcmd5>
+    <version>3.2.15</version>
+    <time>1756323264</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.2.15:
+  + Fixed the g_mime_object_get_header API definition to note that
+    it can return null.
+  + Fixed a memory leak in address_parse().
+  + Added custom header folding logic for the Newsgroups: header.
+  + Fixed a configure issue regarding ac_cv_sys_file_offset_bits.
+  + Fixed an infinite loop in the Content-Type and
+    Content-Disposition parameter serialization logic. (forwarded request 1301386 from dimstar)</comment>
+    <requestid>1301469</requestid>
+  </revision>
 </revisionlist>
