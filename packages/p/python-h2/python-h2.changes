@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 26 11:28:51 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 4.3.0 (fixes CVE-2025-57804, bsc#1248737)
+  * API Changes (Backward Incompatible)
+    - Reject header names and values containing illegal characters, based on
+      RFC 9113, section 8.2.1. The main Python API is compatible, but some
+      previously valid requests/response headers might now be blocked. Use the
+      `validate_inbound_headers` config option if needed. Thanks to Sebastiano
+      Sartor (sebsrt) for the report.
+  * API Changes (Backward Compatible)
+    - h2 events now have tighter type bounds, e.g. `stream_id` is guaranteed to
+      not be `None` for most events now. This simplifies downstream type
+      checking.
+    - Various typing-related improvements.
+  * Bugfixes
+    - Fix error value when opening a new stream on too many open streams.
+
+-------------------------------------------------------------------
 Tue Feb 11 09:03:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.2.0

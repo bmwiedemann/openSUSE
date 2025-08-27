@@ -1,7 +1,7 @@
 #
 # spec file for package python-h2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-h2
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        HTTP/2 State-Machine based protocol implementation
 License:        MIT
