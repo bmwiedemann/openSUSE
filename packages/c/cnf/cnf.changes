@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 26 16:41:30 UTC 2025 - michal.vyskocil@gmail.com
+
+- Update to version 0.8.0~2:
+  * (fix): dedup the results (GH #26)
+  * (refactor): unit test, less unsafe, callback smaller, lint in pool.rs
+
+-------------------------------------------------------------------
 Sun Aug 24 11:59:33 UTC 2025 - michal.vyskocil@gmail.com
 
 - Update to version 0.8.0~0:

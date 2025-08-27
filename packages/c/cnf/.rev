@@ -65,4 +65,12 @@ replaces cnf-rs</comment>
     <comment></comment>
     <requestid>1301132</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5dc195eaae9596a7e9def8cc68caa7ce</srcmd5>
+    <version>0.8.1~0</version>
+    <time>1756323213</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1301477</requestid>
+  </revision>
 </revisionlist>

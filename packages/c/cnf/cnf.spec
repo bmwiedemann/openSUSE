@@ -18,7 +18,7 @@
 
 Name:           cnf
 #               This will be set by osc services, that will run after this.
-Version:        0.8.0~0
+Version:        0.8.1~0
 Release:        0
 Summary:        A command-not-found handler for openSUSE
 License:        MIT
