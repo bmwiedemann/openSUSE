@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-matgeom
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,10 @@ Release:        0
 Summary:        Geometry toolbox for Octave
 License:        BSD-2-Clause
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io/%{octpkg}/
+URL:            https://gnu-octave.github.io/packages/matgeom/
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE -- https://github.com/mattools/matGeom/issues/191
+Patch0:         0001-Remove-references-to-removed-polynomialCurves2d.patch
 BuildRequires:  octave-devel >= 4.2.0
 BuildArch:      noarch
 Requires:       octave-cli >= 4.2.0
@@ -35,6 +37,7 @@ This is part of Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
+%patch -p1 -P0 -d %{octpkg}-%{version}
 %octave_pkg_src
 
 %build

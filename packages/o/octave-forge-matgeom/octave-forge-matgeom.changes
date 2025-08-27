@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 26 01:37:03 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix loading of package, causing errors in dependent tests, add
+  0001-Remove-references-to-removed-polynomialCurves2d.patch
+
+-------------------------------------------------------------------
 Wed Jun  5 07:46:05 UTC 2024 - ming li <mli@suse.com>
 
 - Update to 1.2.4:

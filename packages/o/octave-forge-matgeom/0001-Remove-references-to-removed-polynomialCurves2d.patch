@@ -1,0 +1,49 @@
+From 877ea695de111ce5ce008ddd6ea586643efa8af5 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 26 Aug 2025 03:32:06 +0200
+Subject: [PATCH] Remove references to removed polynomialCurves2d
+
+---
+ INDEX                               | 1 -
+ inst/Contents.m                     | 1 -
+ inst/__matgeom_package_register__.m | 2 +-
+ 3 files changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/INDEX b/INDEX
+index a262b59..d4db98c 100644
+--- a/INDEX
++++ b/INDEX
+@@ -599,5 +599,4 @@ graphs
+  relativeNeighborhoodGraph
+  voronoi2d
+  writeGraph
+-polynomialCurves2d
+ 
+diff --git a/inst/Contents.m b/inst/Contents.m
+index 4ac94f1..505d72c 100644
+--- a/inst/Contents.m
++++ b/inst/Contents.m
+@@ -36,7 +36,6 @@
+ %   geom2d              - General function in euclidean plane
+ %   polygons2d          - Functions operating on point lists 
+ %   graphs              - Manipulation of geometric graphs
+-%   polynomialCurves2d  - Representation of smooth polynomial curves
+ %   geom3d              - General function in 3D euclidean space
+ %   meshes3d            - Manipulation of 3D surfacic meshes
+ %
+diff --git a/inst/__matgeom_package_register__.m b/inst/__matgeom_package_register__.m
+index 1258759..4a45851 100644
+--- a/inst/__matgeom_package_register__.m
++++ b/inst/__matgeom_package_register__.m
+@@ -25,7 +25,7 @@
+ function subdir_paths = __matgeom_package_register__ (loading = 0)
+ 
+   subdirlist = {"utils", "geom2d", "polygons2d", "graphs",...
+-                "geom3d","meshes3d","polynomialCurves2d"};
++                "geom3d","meshes3d"};
+   ## Get full path, with luck we can retreive the package name from here
+   base_pkg_path = fileparts (make_absolute_filename (mfilename ("fullpath")));
+ 
+-- 
+2.51.0
+
