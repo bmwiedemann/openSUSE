@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 25 22:06:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 11.4.4:
+  + Fix a shaping regression affecting mark glyphs in certain
+    fonts.
+  + Fix pruning of mark filtering sets when subsetting fonts, which
+    caused changes in shaping behaviour.
+
+-------------------------------------------------------------------
 Sat Aug 23 09:46:43 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 11.4.3:

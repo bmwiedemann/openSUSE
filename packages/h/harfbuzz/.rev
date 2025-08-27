@@ -1263,4 +1263,16 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1301222</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>751c4edb361f5ab33ab9ae9b1116a22e</srcmd5>
+    <version>11.4.4</version>
+    <time>1756323201</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 11.4.4:
+  + Fix a shaping regression affecting mark glyphs in certain
+    fonts.
+  + Fix pruning of mark filtering sets when subsetting fonts, which
+    caused changes in shaping behaviour. (forwarded request 1301336 from iznogood)</comment>
+    <requestid>1301466</requestid>
+  </revision>
 </revisionlist>
