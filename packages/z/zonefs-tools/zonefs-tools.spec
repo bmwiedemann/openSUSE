@@ -1,7 +1,7 @@
 #
 # spec file for package zonefs-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020, Western Digital Corporation or its affiliates.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           zonefs-tools
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Utilities for the Zonefs filesystem
 License:        GPL-2.0-or-later
@@ -56,5 +56,6 @@ ln -s %{_sbindir}/mkzonefs %{buildroot}/%{_sbindir}/mkfs.zonefs
 %{_sbindir}/mkzonefs
 %{_mandir}/man8/mkzonefs.8%{?ext_man}
 %{_mandir}/man8/mkfs.zonefs.8%{?ext_man}
+%{_mandir}/man5/zonefs.5%{?ext_man}
 
 %changelog

@@ -43,4 +43,12 @@ This package contains the user-space tools for zonefs.</comment>
     significantly improves the test suite.</comment>
     <requestid>1083352</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>046e59d750776cbbe71dcf9473d10da9</srcmd5>
+    <version>1.7.0</version>
+    <time>1756323363</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.7.0: (forwarded request 1301608 from dsterba)</comment>
+    <requestid>1301609</requestid>
+  </revision>
 </revisionlist>
