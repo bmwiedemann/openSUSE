@@ -1,7 +1,7 @@
 #
 # spec file for package python-numexpr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-numexpr
-Version:        2.10.2
+Version:        2.11.0
 Release:        0
 Summary:        Numerical expression evaluator for NumPy
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/pydata/numexpr/
 Source:         https://files.pythonhosted.org/packages/source/n/numexpr/numexpr-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.7}
-BuildRequires:  %{python_module numpy-devel >= 1.23}
+BuildRequires:  %{python_module devel >= 3.10}
+BuildRequires:  %{python_module numpy-devel >= 2.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.23
+Requires:       python-numpy >= 2.0
 %python_subpackages
 
 %description
