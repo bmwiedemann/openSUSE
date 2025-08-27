@@ -32,9 +32,6 @@ BuildRequires:  cmake >= 3.6
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glslang-devel
-# Does not build with FFmpeg 5.0 yet
-# https://github.com/hrydgard/ppsspp/issues/15308
-BuildRequires:  libavcodec-devel < 5
 BuildRequires:  pkgconfig
 BuildRequires:  snappy-devel
 BuildRequires:  unzip
