@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Aug 26 08:09:09 UTC 2025 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 1.24.2:
+ + Core:
+   - Wait until bearers are disconnected before allowing system to suspend
+   - Fix checks for CDMA/EVDO access technology in some modems
+   - Detect old Mediatek 62xx-based devices as GSM-capable
+   - Refresh registration info after manual registration for AT-based devices
+   - Correctly report NB-IOT access technology
+   - Disable unsolicited 3GPP events during quick suspend/resume
+
+ + MBIM:
+   - Fix re-assembly of multi-part unstored SMS messages
+
+ + QMI:
+   - Fix re-assembly of multi-part unstored SMS messages
+
+ + Voice interface:
+   - Correctly start call state polling on some modems
+
+ + Plugins:
+   - fibocomm: don't assert when checking for firmware interface
+   - cinterion: allow spaces in ^SXRAT response
+
+-------------------------------------------------------------------
 Sat May 24 09:53:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.24.0:
