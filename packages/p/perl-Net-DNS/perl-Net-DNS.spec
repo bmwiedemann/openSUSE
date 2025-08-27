@@ -18,15 +18,16 @@
 
 %define cpan_name Net-DNS
 Name:           perl-Net-DNS
-Version:        1.510.0
+Version:        1.520.0
 Release:        0
-# 1.51 -> normalize -> 1.510.0
-%define cpan_version 1.51
+# 1.52 -> normalize -> 1.520.0
+%define cpan_version 1.52
 License:        MIT
 Summary:        Perl Interface to the Domain Name System
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/N/NL/NLNETLABS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -72,65 +73,65 @@ Requires:       perl(constant) >= 1.17
 Requires:       perl(overload) >= 1.06
 #Requires:       perl(warnings) >= 1.0501
 Provides:       perl(Net::DNS) = %{version}
-Provides:       perl(Net::DNS::Domain)
-Provides:       perl(Net::DNS::DomainName)
+Provides:       perl(Net::DNS::Domain) = 2002.0.0
+Provides:       perl(Net::DNS::DomainName) = 2005.0.0
 Provides:       perl(Net::DNS::DomainName1035)
 Provides:       perl(Net::DNS::DomainName2535)
-Provides:       perl(Net::DNS::Header)
-Provides:       perl(Net::DNS::Mailbox)
+Provides:       perl(Net::DNS::Header) = 2002.0.0
+Provides:       perl(Net::DNS::Mailbox) = 2002.0.0
 Provides:       perl(Net::DNS::Mailbox1035)
 Provides:       perl(Net::DNS::Mailbox2535)
-Provides:       perl(Net::DNS::Nameserver)
-Provides:       perl(Net::DNS::Packet)
-Provides:       perl(Net::DNS::Parameters)
-Provides:       perl(Net::DNS::Question)
-Provides:       perl(Net::DNS::RR)
-Provides:       perl(Net::DNS::RR::A)
-Provides:       perl(Net::DNS::RR::AAAA)
-Provides:       perl(Net::DNS::RR::AFSDB)
-Provides:       perl(Net::DNS::RR::AMTRELAY)
-Provides:       perl(Net::DNS::RR::APL)
+Provides:       perl(Net::DNS::Nameserver) = 2002.0.0
+Provides:       perl(Net::DNS::Packet) = 2003.0.0
+Provides:       perl(Net::DNS::Parameters) = 2021.0.0
+Provides:       perl(Net::DNS::Question) = 2002.0.0
+Provides:       perl(Net::DNS::RR) = 2028.0.0
+Provides:       perl(Net::DNS::RR::A) = 2003.0.0
+Provides:       perl(Net::DNS::RR::AAAA) = 2003.0.0
+Provides:       perl(Net::DNS::RR::AFSDB) = 2002.0.0
+Provides:       perl(Net::DNS::RR::AMTRELAY) = 2003.0.0
+Provides:       perl(Net::DNS::RR::APL) = 2003.0.0
 Provides:       perl(Net::DNS::RR::APL::Item)
-Provides:       perl(Net::DNS::RR::CAA)
-Provides:       perl(Net::DNS::RR::CDNSKEY)
-Provides:       perl(Net::DNS::RR::CDS)
-Provides:       perl(Net::DNS::RR::CERT)
-Provides:       perl(Net::DNS::RR::CNAME)
-Provides:       perl(Net::DNS::RR::CSYNC)
-Provides:       perl(Net::DNS::RR::DELEG)
-Provides:       perl(Net::DNS::RR::DHCID)
-Provides:       perl(Net::DNS::RR::DNAME)
-Provides:       perl(Net::DNS::RR::DNSKEY)
-Provides:       perl(Net::DNS::RR::DS)
-Provides:       perl(Net::DNS::RR::DSYNC)
-Provides:       perl(Net::DNS::RR::EUI48)
-Provides:       perl(Net::DNS::RR::EUI64)
-Provides:       perl(Net::DNS::RR::GPOS)
-Provides:       perl(Net::DNS::RR::HINFO)
-Provides:       perl(Net::DNS::RR::HIP)
-Provides:       perl(Net::DNS::RR::HTTPS)
-Provides:       perl(Net::DNS::RR::IPSECKEY)
-Provides:       perl(Net::DNS::RR::ISDN)
-Provides:       perl(Net::DNS::RR::KEY)
-Provides:       perl(Net::DNS::RR::KX)
-Provides:       perl(Net::DNS::RR::L32)
-Provides:       perl(Net::DNS::RR::L64)
-Provides:       perl(Net::DNS::RR::LOC)
-Provides:       perl(Net::DNS::RR::LP)
-Provides:       perl(Net::DNS::RR::MB)
-Provides:       perl(Net::DNS::RR::MG)
-Provides:       perl(Net::DNS::RR::MINFO)
-Provides:       perl(Net::DNS::RR::MR)
-Provides:       perl(Net::DNS::RR::MX)
-Provides:       perl(Net::DNS::RR::NAPTR)
-Provides:       perl(Net::DNS::RR::NID)
-Provides:       perl(Net::DNS::RR::NS)
-Provides:       perl(Net::DNS::RR::NSEC)
-Provides:       perl(Net::DNS::RR::NSEC3)
-Provides:       perl(Net::DNS::RR::NSEC3PARAM)
-Provides:       perl(Net::DNS::RR::NULL)
-Provides:       perl(Net::DNS::RR::OPENPGPKEY)
-Provides:       perl(Net::DNS::RR::OPT)
+Provides:       perl(Net::DNS::RR::CAA) = 2003.0.0
+Provides:       perl(Net::DNS::RR::CDNSKEY) = 2003.0.0
+Provides:       perl(Net::DNS::RR::CDS) = 2003.0.0
+Provides:       perl(Net::DNS::RR::CERT) = 2002.0.0
+Provides:       perl(Net::DNS::RR::CNAME) = 2003.0.0
+Provides:       perl(Net::DNS::RR::CSYNC) = 2003.0.0
+Provides:       perl(Net::DNS::RR::DELEG) = 2033.0.0
+Provides:       perl(Net::DNS::RR::DHCID) = 2003.0.0
+Provides:       perl(Net::DNS::RR::DNAME) = 2003.0.0
+Provides:       perl(Net::DNS::RR::DNSKEY) = 2003.0.0
+Provides:       perl(Net::DNS::RR::DS) = 2003.0.0
+Provides:       perl(Net::DNS::RR::DSYNC) = 2003.0.0
+Provides:       perl(Net::DNS::RR::EUI48) = 2003.0.0
+Provides:       perl(Net::DNS::RR::EUI64) = 2003.0.0
+Provides:       perl(Net::DNS::RR::GPOS) = 2003.0.0
+Provides:       perl(Net::DNS::RR::HINFO) = 2003.0.0
+Provides:       perl(Net::DNS::RR::HIP) = 2003.0.0
+Provides:       perl(Net::DNS::RR::HTTPS) = 2002.0.0
+Provides:       perl(Net::DNS::RR::IPSECKEY) = 2003.0.0
+Provides:       perl(Net::DNS::RR::ISDN) = 2002.0.0
+Provides:       perl(Net::DNS::RR::KEY) = 2002.0.0
+Provides:       perl(Net::DNS::RR::KX) = 2003.0.0
+Provides:       perl(Net::DNS::RR::L32) = 2003.0.0
+Provides:       perl(Net::DNS::RR::L64) = 2003.0.0
+Provides:       perl(Net::DNS::RR::LOC) = 2003.0.0
+Provides:       perl(Net::DNS::RR::LP) = 2003.0.0
+Provides:       perl(Net::DNS::RR::MB) = 2002.0.0
+Provides:       perl(Net::DNS::RR::MG) = 2002.0.0
+Provides:       perl(Net::DNS::RR::MINFO) = 2002.0.0
+Provides:       perl(Net::DNS::RR::MR) = 2002.0.0
+Provides:       perl(Net::DNS::RR::MX) = 2002.0.0
+Provides:       perl(Net::DNS::RR::NAPTR) = 2003.0.0
+Provides:       perl(Net::DNS::RR::NID) = 2003.0.0
+Provides:       perl(Net::DNS::RR::NS) = 2003.0.0
+Provides:       perl(Net::DNS::RR::NSEC) = 2002.0.0
+Provides:       perl(Net::DNS::RR::NSEC3) = 2003.0.0
+Provides:       perl(Net::DNS::RR::NSEC3PARAM) = 2003.0.0
+Provides:       perl(Net::DNS::RR::NULL) = 2002.0.0
+Provides:       perl(Net::DNS::RR::OPENPGPKEY) = 2003.0.0
+Provides:       perl(Net::DNS::RR::OPT) = 2005.0.0
 Provides:       perl(Net::DNS::RR::OPT::CHAIN)
 Provides:       perl(Net::DNS::RR::OPT::CLIENT_SUBNET)
 Provides:       perl(Net::DNS::RR::OPT::COOKIE)
@@ -145,38 +146,38 @@ Provides:       perl(Net::DNS::RR::OPT::PADDING)
 Provides:       perl(Net::DNS::RR::OPT::REPORT_CHANNEL)
 Provides:       perl(Net::DNS::RR::OPT::TCP_KEEPALIVE)
 Provides:       perl(Net::DNS::RR::OPT::ZONEVERSION)
-Provides:       perl(Net::DNS::RR::PTR)
-Provides:       perl(Net::DNS::RR::PX)
-Provides:       perl(Net::DNS::RR::RESINFO)
-Provides:       perl(Net::DNS::RR::RP)
-Provides:       perl(Net::DNS::RR::RRSIG)
-Provides:       perl(Net::DNS::RR::RT)
-Provides:       perl(Net::DNS::RR::SIG)
-Provides:       perl(Net::DNS::RR::SMIMEA)
-Provides:       perl(Net::DNS::RR::SOA)
-Provides:       perl(Net::DNS::RR::SPF)
-Provides:       perl(Net::DNS::RR::SRV)
-Provides:       perl(Net::DNS::RR::SSHFP)
-Provides:       perl(Net::DNS::RR::SVCB)
-Provides:       perl(Net::DNS::RR::TKEY)
-Provides:       perl(Net::DNS::RR::TLSA)
-Provides:       perl(Net::DNS::RR::TSIG)
-Provides:       perl(Net::DNS::RR::TXT)
-Provides:       perl(Net::DNS::RR::URI)
-Provides:       perl(Net::DNS::RR::X25)
-Provides:       perl(Net::DNS::RR::ZONEMD)
-Provides:       perl(Net::DNS::Resolver)
-Provides:       perl(Net::DNS::Resolver::Base)
-Provides:       perl(Net::DNS::Resolver::MSWin32)
-Provides:       perl(Net::DNS::Resolver::Recurse)
-Provides:       perl(Net::DNS::Resolver::UNIX)
-Provides:       perl(Net::DNS::Resolver::android)
-Provides:       perl(Net::DNS::Resolver::cygwin)
-Provides:       perl(Net::DNS::Resolver::os2)
-Provides:       perl(Net::DNS::Resolver::os390)
-Provides:       perl(Net::DNS::Text)
-Provides:       perl(Net::DNS::Update)
-Provides:       perl(Net::DNS::ZoneFile)
+Provides:       perl(Net::DNS::RR::PTR) = 2002.0.0
+Provides:       perl(Net::DNS::RR::PX) = 2003.0.0
+Provides:       perl(Net::DNS::RR::RESINFO) = 2003.0.0
+Provides:       perl(Net::DNS::RR::RP) = 2002.0.0
+Provides:       perl(Net::DNS::RR::RRSIG) = 2003.0.0
+Provides:       perl(Net::DNS::RR::RT) = 2003.0.0
+Provides:       perl(Net::DNS::RR::SIG) = 2003.0.0
+Provides:       perl(Net::DNS::RR::SMIMEA) = 2003.0.0
+Provides:       perl(Net::DNS::RR::SOA) = 2002.0.0
+Provides:       perl(Net::DNS::RR::SPF) = 2003.0.0
+Provides:       perl(Net::DNS::RR::SRV) = 2003.0.0
+Provides:       perl(Net::DNS::RR::SSHFP) = 2003.0.0
+Provides:       perl(Net::DNS::RR::SVCB) = 2033.0.0
+Provides:       perl(Net::DNS::RR::TKEY) = 2003.0.0
+Provides:       perl(Net::DNS::RR::TLSA) = 2003.0.0
+Provides:       perl(Net::DNS::RR::TSIG) = 2003.0.0
+Provides:       perl(Net::DNS::RR::TXT) = 2003.0.0
+Provides:       perl(Net::DNS::RR::URI) = 2003.0.0
+Provides:       perl(Net::DNS::RR::X25) = 2002.0.0
+Provides:       perl(Net::DNS::RR::ZONEMD) = 2003.0.0
+Provides:       perl(Net::DNS::Resolver) = 2017.0.0
+Provides:       perl(Net::DNS::Resolver::Base) = 2031.0.0
+Provides:       perl(Net::DNS::Resolver::MSWin32) = 2002.0.0
+Provides:       perl(Net::DNS::Resolver::Recurse) = 2002.0.0
+Provides:       perl(Net::DNS::Resolver::UNIX) = 2007.0.0
+Provides:       perl(Net::DNS::Resolver::android) = 2007.0.0
+Provides:       perl(Net::DNS::Resolver::cygwin) = 2002.0.0
+Provides:       perl(Net::DNS::Resolver::os2) = 2007.0.0
+Provides:       perl(Net::DNS::Resolver::os390) = 2007.0.0
+Provides:       perl(Net::DNS::Text) = 2002.0.0
+Provides:       perl(Net::DNS::Update) = 2017.0.0
+Provides:       perl(Net::DNS::ZoneFile) = 2002.0.0
 Provides:       perl(Net::DNS::ZoneFile::Generator)
 Provides:       perl(Net::DNS::ZoneFile::Text)
 %undefine       __perllib_provides

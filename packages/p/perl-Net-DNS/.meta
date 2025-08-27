@@ -3,5 +3,4 @@
   <description>Net::DNS is a Perl interface to the DNS resolver.  It allows the
 programmer to perform any type of DNS query from a Perl script. For
 details and examples, please read the Net::DNS manual page.</description>
-  <devel project="devel:languages:perl" package="perl-Net-DNS"/>
 </package>
