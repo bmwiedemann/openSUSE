@@ -27,4 +27,14 @@
   - Make multibuild</comment>
     <requestid>1157051</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b6818956296c0d0b09d9e2db4f1ee481</srcmd5>
+    <version>0.5.0</version>
+    <time>1756323317</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.5.0:
+  * Update schemas to prefer tag vs ref
+  * Add fits imaging wcs transform</comment>
+    <requestid>1301517</requestid>
+  </revision>
 </revisionlist>

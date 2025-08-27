@@ -1,7 +1,7 @@
 #
 # spec file for package python-asdf-wcs-schemas
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-asdf-wcs-schemas%{psuffix}
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        ASDF WCS Schemas
 License:        BSD-3-Clause
@@ -40,9 +40,9 @@ BuildRequires:  %{python_module setuptools_scm >= 3.4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-asdf-coordinates-schemas >= 0.3.0
+Requires:       python-asdf-coordinates-schemas >= 0.4.0
 Requires:       python-asdf-standard >= 1.1.0
-Requires:       python-asdf-transform-schemas >= 0.5.0
+Requires:       python-asdf-transform-schemas >= 0.6.0
 %if %{with test}
 BuildRequires:  %{python_module asdf >= 2.8.0}
 BuildRequires:  %{python_module asdf-astropy}
