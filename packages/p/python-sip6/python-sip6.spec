@@ -1,7 +1,7 @@
 #
 # spec file for package python-sip6
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,11 @@
 
 
 %{?sle15_python_module_pythons}
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           python-sip6
 Version:        6.12.0
 Release:        0
@@ -28,6 +33,11 @@ Source0:        https://github.com/Python-SIP/sip/archive/refs/tags/%{version}.t
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module packaging >= 24.2}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module tomli if %python-base < 3.11}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 %if 0%{?suse_version} < 1600
 BuildRequires:  %{python_module setuptools >= 75.8.1}
 BuildRequires:  %{python_module setuptools_scm >= 7}
@@ -35,17 +45,11 @@ BuildRequires:  %{python_module setuptools_scm >= 7}
 BuildRequires:  %{python_module setuptools >= 77}
 BuildRequires:  %{python_module setuptools_scm >= 8}
 %endif
-BuildRequires:  %{python_module tomli if %python-base < 3.11}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
 # SECTION test
-BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module testsuite}
 BuildRequires:  c++_compiler
 # /SECTION
-BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -63,8 +67,6 @@ Requires:       python-base >= 3.9
 Requires:       python-packaging >= 24.2
 Requires:       python-setuptools >= 75.8.1
 Requires:       (python-tomli if python-base < 3.11)
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Conflicts:      python-sip-impl
 # boo#1190441: remove erroneously created non-devel python3X-sip metapackages.
 # In order not to remove SIPv4 and possible future packages, we have to explicitly
@@ -72,6 +74,13 @@ Conflicts:      python-sip-impl
 Obsoletes:      python-sip = 6.1.1
 Provides:       python-sip-devel = %{version}-%{release}
 Provides:       python-sip-impl = %{version}-%{release}
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 
 %description devel
 SIP is a collection of tools that makes it very easy to create Python
@@ -86,7 +95,7 @@ own sip bindings.
 %prep
 %autosetup -p1 -n sip-%{version}
 # Make it work with setuptools < 77 and setuptools_scm < 8
-%if 0%{suse_version} < 1600
+%if 0%{?suse_version} < 1600
 sed -i pyproject.toml \
     -e 's/version_file/write_to/' \
     -e 's/license = .*/license = { file = "LICENSE" }/' \
@@ -104,10 +113,14 @@ sed -i pyproject.toml \
 %python_clone -a %{buildroot}%{_bindir}/sip-module
 %python_clone -a %{buildroot}%{_bindir}/sip-sdist
 %python_clone -a %{buildroot}%{_bindir}/sip-wheel
+%python_group_libalternatives sip-build sip-distinfo sip-install sip-module sip-sdist sip-wheel
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pyunittest discover -v test
+
+%pre devel
+%python_libalternatives_reset_alternative sip-build
 
 %post devel
 %python_install_alternative sip-build sip-distinfo sip-install sip-module sip-sdist sip-wheel
