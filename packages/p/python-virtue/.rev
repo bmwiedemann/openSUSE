@@ -72,4 +72,12 @@
     <comment></comment>
     <requestid>1289784</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>fc6aea71839b4ba079d7d70415db5e8b</srcmd5>
+    <version>2025.7.1</version>
+    <time>1756323236</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1301400</requestid>
+  </revision>
 </revisionlist>
