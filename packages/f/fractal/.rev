@@ -122,4 +122,12 @@
     <comment>- Update to version 12 (CVE-2025-55159, boo#1248050):</comment>
     <requestid>1301391</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>60fe5410f7713fead85484daef504c44</srcmd5>
+    <version>12.1</version>
+    <time>1756323337</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1301579</requestid>
+  </revision>
 </revisionlist>
