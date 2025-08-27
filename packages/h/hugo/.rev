@@ -1611,4 +1611,41 @@
   * releaser: Prepare repository for 0.149.0-DEV (forwarded request 1295967 from jfkw)</comment>
     <requestid>1295969</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>054b2460ffa860470b232e7ae6219d28</srcmd5>
+    <version>0.149.0</version>
+    <time>1756323365</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.149.0:
+  * releaser: Bump versions for release of 0.149.0
+  * tpl/collections: Add an integration test for collections.D
+  * misc: Update Go version to 1.24.0 in README
+  * create: Fix new content command with future dates
+  * build(deps): bump github.com/getkin/kin-openapi from 0.132.0 to 0.133.0
+  * tpl/collections: Add collections.D using Vitter's Method D for sequential random sampling
+  * build(deps): bump google.golang.org/api from 0.247.0 to 0.248.0
+  * build(deps): bump github.com/evanw/esbuild from 0.25.6 to 0.25.9
+  * build(deps): bump gocloud.dev from 0.40.0 to 0.43.0
+  * commands: Deprecate --omitEmpty on chromastyles command
+  * commands: Add --omitClassComments to the chromastyles command
+  * deps: Upgrade github.com/alecthomas/chroma/v2 v2.19.0 =&gt; v2.20.0
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/cloudfront
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.23.11 to 2.24.0
+  * all: Use slices.Equal
+  * Squashed 'docs/' changes from 60dd993a6..71f739460
+  * resources/page: Add :sectionslug and :sectionslugs permalink tokens
+  * Upgrade to Go 1.25
+  * common/hcontext: Replace with external package
+  * Fix server rebuild when adding a new leaf bundle with resources in one go
+  * resources/page: Use reflect.TypeFor
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.23.8 to 2.23.11
+  * Remove test with deprecated path usage
+  * build(deps): bump github.com/olekukonko/tablewriter from 1.0.8 to 1.0.9
+  * Update README.md
+  * Fix rebuild when deleting a content adapter file
+  * build(deps): bump google.golang.org/api from 0.237.0 to 0.247.0
+  * build(deps): bump github.com/aws/aws-sdk-go-v2 from 1.36.4 to 1.38.0
+  * build(deps): bump golang.org/x/tools from 0.35.0 to 0.36.0 (forwarded request 1301612 from jfkw)</comment>
+    <requestid>1301613</requestid>
+  </revision>
 </revisionlist>
