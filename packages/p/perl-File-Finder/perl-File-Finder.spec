@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-Finder
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define cpan_name File-Finder
 Name:           perl-File-Finder
-Version:        0.53
+Version:        1.10.0
 Release:        0
-Summary:        nice wrapper for File::Find ala find(1)
-License:        GPL-1.0+ or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/File-Finder/
-Source:         http://www.cpan.org/authors/id/M/ME/MERLYN/%{cpan_name}-%{version}.tar.gz
+# 1.01 -> normalize -> 1.10.0
+%define cpan_version 1.01
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Nice wrapper for File::Find ala find(1)
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/M/ME/MERLYN/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
+BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(ExtUtils::MakeMaker)
-BuildRequires:  perl(Test::More)
 BuildRequires:  perl(Text::Glob)
-Requires:       perl(Test::More)
 Requires:       perl(Text::Glob)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
+Provides:       perl(File::Finder) = %{version}
+Provides:       perl(File::Finder::Steps) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -127,14 +128,16 @@ That's all I can think of for now. The rest is in the detailed reference
 below.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} test
+make test
 
 %install
 %perl_make_install
@@ -142,7 +145,6 @@ make %{?_smp_mflags} test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README TODO
 
 %changelog

@@ -7,4 +7,19 @@
     <comment></comment>
     <requestid>457443</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>518cd15a5312d467a90637025c644b5d</srcmd5>
+    <version>1.10.0</version>
+    <time>1756323260</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.10.0 (1.01)
+   see /usr/share/doc/packages/perl-File-Finder/Changes
+  1.0.1  Thu Aug 21 10:00:00 2025 -0700
+      - Updated Changes file for 1.0.0 release.
+  1.0.0  Wed Aug 20 15:23:42 2025 -0700
+      - Added Windows compatibility fixes for user, group, nouser, nogroup, and ls methods.
+      - Updated POD documentation.
+      - Bumped version to 1.0.0.</comment>
+    <requestid>1301451</requestid>
+  </revision>
 </revisionlist>

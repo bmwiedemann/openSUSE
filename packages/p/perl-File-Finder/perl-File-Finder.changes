@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 22 21:33:17 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.10.0 (1.01)
+   see /usr/share/doc/packages/perl-File-Finder/Changes
+
+  1.0.1  Thu Aug 21 10:00:00 2025 -0700
+      - Updated Changes file for 1.0.0 release.
+
+  1.0.0  Wed Aug 20 15:23:42 2025 -0700
+      - Added Windows compatibility fixes for user, group, nouser, nogroup, and ls methods.
+      - Updated POD documentation.
+      - Bumped version to 1.0.0.
+
+-------------------------------------------------------------------
 Wed Feb  8 14:53:32 UTC 2017 - mimi.vx@gmail.com
 
 - spec-cleaned 
