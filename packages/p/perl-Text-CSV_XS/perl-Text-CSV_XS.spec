@@ -18,15 +18,16 @@
 
 %define cpan_name Text-CSV_XS
 Name:           perl-Text-CSV_XS
-Version:        1.600.0
+Version:        1.610.0
 Release:        0
-# 1.60 -> normalize -> 1.600.0
-%define cpan_version 1.60
+# 1.61 -> normalize -> 1.610.0
+%define cpan_version 1.61
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Comma-Separated Values manipulation routines
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{cpan_version}.tgz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 Provides:       perl(Text::CSV_XS) = %{version}
@@ -43,7 +44,7 @@ The module accepts either strings or files as input and support the use of
 user-specified characters for delimiters, separators, and escapes.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
@@ -63,6 +64,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc ChangeLog CONTRIBUTING.md examples README SECURITY.md
+%doc ChangeLog CONTRIBUTING.md examples LOVE_LETTER.md README SECURITY.md
 
 %changelog

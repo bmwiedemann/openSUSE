@@ -570,4 +570,13 @@
     <comment></comment>
     <requestid>1244956</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>44d128fc9d1c8fe3f3b4017cb16e26c3</srcmd5>
+    <version>1.610.0</version>
+    <time>1756323199</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.610.0 (1.61)
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog</comment>
+    <requestid>1301444</requestid>
+  </revision>
 </revisionlist>
