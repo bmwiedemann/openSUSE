@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 25 22:58:44 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.5.4:
+  * Update syntax to work with recent versions of Octave.
+- Drop financial-elem-by-elem-arithmetic.patch
+- Add octave-forge-statistics package as runtime and build
+  dependency.
+
+-------------------------------------------------------------------
 Fri Nov 15 11:33:23 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add financial-elem-by-elem-arithmetic.patch -- Arithmetic
