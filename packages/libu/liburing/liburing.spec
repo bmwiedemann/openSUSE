@@ -2,6 +2,7 @@
 # spec file for package liburing
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %define lname   liburing2
 Name:           liburing
-Version:        2.9
+Version:        2.11
 Release:        0
 Summary:        Linux-native io_uring I/O access library
 License:        (GPL-2.0-only AND LGPL-2.1-or-later) OR MIT
@@ -27,8 +28,6 @@ URL:            https://github.com/axboe/liburing
 Source0:        https://brick.kernel.dk/snaps/%{name}-%{version}.tar.gz
 Source1:        https://brick.kernel.dk/snaps/%{name}-%{version}.tar.gz.asc
 Source2:        https://git.kernel.org/pub/scm/docs/kernel/pgpkeys.git/plain/keys/F7D358FB2971E0A6.asc#/%{name}.keyring
-# PATCH-FIX-UPSTREAM - https://github.com/axboe/liburing/issues/1377
-Patch1:         923961c.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -98,6 +97,9 @@ declare -a TEST_EXCLUDE=( resize-rings.t )
 %if 0%{?sle_version} == 150500
 TEST_EXCLUDE+=( fallocate.t fd-pass.t fixed-buf-merge.t msg-ring-overflow.t nop.t poll-race-mshot.t reg-hint.t sqwait.t wq-aff.t )
 %endif
+%if 0%{?sle_version} == 150600
+TEST_EXCLUDE+=( register-restrictions.t )
+%endif
 %if 0%{?sle_version} == 150600 || 0%{?sle_version} == 150700
 TEST_EXCLUDE+=( accept-non-empty.t bind-listen.t fallocate.t nop.t recvsend_bundle.t recvsend_bundle-inc.t sqwait.t timeout.t )
 %endif
@@ -116,28 +118,27 @@ rm -v %{buildroot}%{_libdir}/%{name}*.a
 
 %fdupes %{buildroot}/%{_mandir}/
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
-
-%post -n liburing-ffi2 -p /sbin/ldconfig
-%postun -n liburing-ffi2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
+%ldconfig_scriptlets -n liburing-ffi2
 
 %files -n %{lname}
 %{_libdir}/liburing.so.*
 %license COPYING COPYING.GPL LICENSE
 
 %files -n liburing-ffi2
+%license COPYING COPYING.GPL LICENSE
 %{_libdir}/liburing-ffi.so.*
 
 %files devel
+%license COPYING COPYING.GPL LICENSE
 %doc README
 %{_includedir}/liburing/
 %{_includedir}/liburing.h
 %{_libdir}/liburing.so
 %{_libdir}/liburing-ffi.so
 %{_libdir}/pkgconfig/*
-%{_mandir}/man2/*
-%{_mandir}/man3/*
-%{_mandir}/man7/*
+%{_mandir}/man2/*2%{?ext_man}
+%{_mandir}/man3/*3%{?ext_man}
+%{_mandir}/man7/*7%{?ext_man}
 
 %changelog

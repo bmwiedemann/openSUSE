@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 23 18:36:26 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.11:
+  * portability and compiler fixes
+  * Fixes for io_uring_queue_init_mem()
+  * Add helpers for ring sizes required
+- includes changes from 2.10:
+  * fix io_uring_setup() parameter name mismatch
+  * syscall: update io_uring_enter2() signature
+  * documentation updates
+- drop 923961c.patch
+
+-------------------------------------------------------------------
 Wed Jun 25 07:26:44 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - disable tests on non-x86 -- they fail pretty randomly.
