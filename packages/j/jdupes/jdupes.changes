@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Aug 26 13:47:41 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove the workaround to place a symlink into libjodycode: this
+  seems useless, as build accepts a system library just fine.
+- Drop bundled(libjoydecode) Provides, as we are not linking
+  joydceode statically (and don't have an intree copy).
+
+-------------------------------------------------------------------
+Tue Aug 26 10:40:45 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- update to 1.30.0:
+  * Change -C/--chunk-size to use powers of two instead of raw KiB sizes
+  * Add '-C help' for clearer documentation of -C usage and rationale
+  * Scripts using -C must be updated; values >18 now cause an error exit
+
+-------------------------------------------------------------------
+Tue Aug 19 16:25:01 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.29.0:
+  * jdupes 1.29.0 (2025-08-15)
+  * Switch to libjodycode 4.0 API
+  * Add -Y/--hash-db-populate to force-populate a hash database
+  * Strip leading dot-slashes from file lists and hash database
+    entries
+  * Builds now run a libjodycode version check
+
+-------------------------------------------------------------------
+Fri Nov  8 08:29:29 UTC 2024 - ming li <mli@suse.com>
+
+- Update version to 1.28.0:
+  * Backport safety fixes from v2 development
+  * Fix crash on new hashdb creation
+  * Name length performance boost backported from libjodycode
+    v4 development
+  * Heavy safeguards added to interactive deletion input processing
+  * Hash db not overwritten to avoid loss of the db in low disk
+    space conditions
+
+-------------------------------------------------------------------
 Thu Feb 29 14:06:17 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Reflect upstream move to https://codeberg.org/jbruchon

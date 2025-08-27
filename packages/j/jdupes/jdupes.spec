@@ -1,7 +1,7 @@
 #
 # spec file for package jdupes
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019-2020 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           jdupes
-Version:        1.27.3
+Version:        1.30.0
 Release:        0
 Summary:        A powerful duplicate file finder and an enhanced fork of 'fdupes'
 License:        MIT
@@ -28,7 +28,7 @@ Source0:        https://codeberg.org/jbruchon/jdupes/archive/v%{version}.tar.gz#
 Source1:        macros.jdupes
 Source2:        jdupes_wrapper.cpp
 BuildRequires:  gcc-c++
-BuildRequires:  libjodycode-devel
+BuildRequires:  libjodycode-devel >= 4.0
 
 %description
 A program for identifying and taking actions upon duplicate files.
