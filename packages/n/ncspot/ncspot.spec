@@ -1,7 +1,7 @@
 #
 # spec file for package ncspot
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %define _lto_cflags %{nil}
 Name:           ncspot
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Cross-platform ncurses Spotify client written in Rust
 Group:          Productivity/Multimedia/Sound/Players
