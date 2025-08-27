@@ -100,4 +100,13 @@
 </comment>
     <requestid>1282830</requestid>
   </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>ba364a116b23eed38bc6341496723ba9</srcmd5>
+    <version>3.0.0</version>
+    <time>1756323288</time>
+    <user>anag_factory</user>
+    <comment>- Replace python-blockdiag-nose-to-pytest.patch with a different
+  upstream patch to also drop use of yield tests.</comment>
+    <requestid>1301513</requestid>
+  </revision>
 </revisionlist>

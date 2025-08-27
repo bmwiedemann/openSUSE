@@ -1,7 +1,7 @@
 #
 # spec file for package python-blockdiag
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,9 @@ Version:        3.0.0
 Release:        0
 Summary:        Program to generate block-diagram images from text
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            http://blockdiag.com/
 Source:         https://files.pythonhosted.org/packages/source/b/blockdiag/blockdiag-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-blockdiag-nose-to-pytest.patch gh#blockdiag/blockdiag#131 pgajdos@suse.com
-# Remove the last silly dependency on nose
+# PATCH-FIX-UPSTREAM Based on gh#blockdiag/blockdiag#175/commits/4f4f726252084f17ecc6c524592222af09d37da4
 Patch0:         python-blockdiag-nose-to-pytest.patch
 # PATCH-FIX-UPSTREAM https://github.com/blockdiag/blockdiag/pull/179 Add support for Pillow 10
 Patch1:         pillow10.patch
@@ -94,6 +92,6 @@ popd
 %doc CHANGES.rst README.rst
 %python_alternative %{_bindir}/blockdiag
 %{python_sitelib}/blockdiag
-%{python_sitelib}/blockdiag-%{version}*-info
+%{python_sitelib}/blockdiag-%{version}.dist-info
 
 %changelog

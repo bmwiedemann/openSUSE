@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 27 02:55:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Replace python-blockdiag-nose-to-pytest.patch with a different
+  upstream patch to also drop use of yield tests.
+
+-------------------------------------------------------------------
 Wed Jun  4 14:58:34 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - fix usage of libalternatives

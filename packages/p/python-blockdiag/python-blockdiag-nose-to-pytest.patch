@@ -1,3 +1,15 @@
+From 4f4f726252084f17ecc6c524592222af09d37da4 Mon Sep 17 00:00:00 2001
+From: Guillaume Grossetie <ggrossetie@yuzutech.fr>
+Date: Mon, 10 Jul 2023 00:31:37 +0200
+Subject: [PATCH] Switch to pytest (nose is unmaintained and does not work on
+ Python3.10)
+
+---
+ setup.py                                     |  3 +-
+ src/blockdiag/tests/test_generate_diagram.py | 95 ++++++++++----------
+ tox.ini                                      |  2 +-
+ 3 files changed, 49 insertions(+), 51 deletions(-)
+
 Index: blockdiag-3.0.0/setup.py
 ===================================================================
 --- blockdiag-3.0.0.orig/setup.py
@@ -23,39 +35,139 @@ Index: blockdiag-3.0.0/src/blockdiag/tests/test_generate_diagram.py
 ===================================================================
 --- blockdiag-3.0.0.orig/src/blockdiag/tests/test_generate_diagram.py
 +++ blockdiag-3.0.0/src/blockdiag/tests/test_generate_diagram.py
-@@ -19,8 +19,6 @@ import sys
+@@ -19,7 +19,7 @@ import sys
  import unittest
  from xml.etree import ElementTree
  
 -from nose.tools import nottest
--
++import pytest
+ 
  import blockdiag
  import blockdiag.command
- from blockdiag.tests.utils import (TemporaryDirectory, capture_stderr,
-@@ -52,7 +50,7 @@ def test_generate():
-     files = get_diagram_files(basepath)
-     options = []
+@@ -38,7 +38,7 @@ def get_diagram_files(testdir):
+     diagramsdir = os.path.join(testdir, 'diagrams')
+ 
+     skipped = ['README', 'debian-logo-256color-palettealpha.png',
+-               'errors', 'invalid.txt', 'white.gif']
++               'errors', 'invalid.txt', 'white.gif', 'node_icon.diag']
+     for file in os.listdir(diagramsdir):
+         if file in skipped:
+             pass
+@@ -46,66 +46,67 @@ def get_diagram_files(testdir):
+             yield os.path.join(diagramsdir, file)
+ 
+ 
+-def test_generate():
+-    mainfunc = blockdiag.command.main
+-    basepath = os.path.dirname(__file__)
+-    files = get_diagram_files(basepath)
+-    options = []
++base_path = os.path.dirname(__file__)
++files = get_diagram_files(base_path)
++generate_testdata = []
++generate_with_separate_testdata = []
++for file_source in files:
++    generate_testdata.append((file_source, 'svg', []))
++    generate_testdata.append((file_source, 'png', []))
++    generate_testdata.append((file_source, 'png', ['--antialias']))
++    generate_testdata.append((file_source, 'pdf', []))
++    if re.search('separate', file_source):
++        generate_with_separate_testdata.append((file_source, 'svg', ['--separate']))
++        generate_with_separate_testdata.append((file_source, 'png', ['--separate']))
++        generate_with_separate_testdata.append((file_source, 'png', ['--separate', '--antialias']))
++        generate_with_separate_testdata.append((file_source, 'pdf', ['--separate']))
++
  
 -    for testcase in testcase_generator(basepath, mainfunc, files, options):
-+    for testcase in _testcase_generator(basepath, mainfunc, files, options):
-         yield testcase
+-        yield testcase
++@pytest.mark.parametrize("source,file_type,options", generate_with_separate_testdata)
++def test_generate_with_separate_option(source, file_type, options):
++    mainfunc = blockdiag.command.main
++    generate(mainfunc, source, file_type, options)
  
  
-@@ -63,12 +61,11 @@ def test_generate_with_separate():
-     filtered = (f for f in files if re.search('separate', f))
-     options = ['--separate']
- 
+-def test_generate_with_separate():
++@pytest.mark.parametrize("source,file_type,options", generate_testdata)
++def test_generate_with_separate(source, file_type, options):
+     mainfunc = blockdiag.command.main
+-    basepath = os.path.dirname(__file__)
+-    files = get_diagram_files(basepath)
+-    filtered = (f for f in files if re.search('separate', f))
+-    options = ['--separate']
+-
 -    for testcase in testcase_generator(basepath, mainfunc, filtered, options):
-+    for testcase in _testcase_generator(basepath, mainfunc, filtered, options):
-         yield testcase
- 
- 
+-        yield testcase
+-
+-
 -@nottest
 -def testcase_generator(basepath, mainfunc, files, options):
-+def _testcase_generator(basepath, mainfunc, files, options):
-     fontpath = get_fontpath(basepath)
-     options = options + ['-f', fontpath]
+-    fontpath = get_fontpath(basepath)
+-    options = options + ['-f', fontpath]
++    generate(mainfunc, source, file_type, options)
  
+-    for source in files:
+-        yield generate, mainfunc, 'svg', source, options
+ 
++@capture_stderr
++def generate(mainfunc, source, file_type, options):
++    if file_type == 'png':
+         if not supported_pil():
+-            yield unittest.skip("Pillow is not available")(generate)
+-            yield unittest.skip("Pillow is not available")(generate)
+-        elif os.environ.get('ALL_TESTS') is None:
+-            message = "Skipped by default. To enable it, specify $ALL_TESTS=1"
+-            yield unittest.skip(message)(generate)
+-            yield unittest.skip(message)(generate)
+-        else:
+-            yield generate, mainfunc, 'png', source, options
+-            yield generate, mainfunc, 'png', source, options + ['--antialias']
+-
++            unittest.skip('Pillow is not available')
++            return
++        if os.environ.get('ALL_TESTS') is None:
++            unittest.skip('Skipped by default. To enable it, specify $ALL_TESTS=1')
++            return
++    elif file_type == 'pdf':
+         if not supported_pdf():
+-            yield unittest.skip("reportlab is not available")(generate)
+-        elif os.environ.get('ALL_TESTS') is None:
+-            message = "Skipped by default. To enable it, specify $ALL_TESTS=1"
+-            yield unittest.skip(message)(generate)
+-        else:
+-            yield generate, mainfunc, 'pdf', source, options
+-
++            unittest.skip('reportlab is not available')
++            return
++        if os.environ.get('ALL_TESTS') is None:
++            unittest.skip('Skipped by default. To enable it, specify $ALL_TESTS=1')
++            return
+ 
+-@capture_stderr
+-def generate(mainfunc, filetype, source, options):
++    tmpdir = None
+     try:
+         tmpdir = TemporaryDirectory()
+-        fd, tmpfile = tmpdir.mkstemp()
++        fd, tmp_file = tmpdir.mkstemp()
+         os.close(fd)
+-
+-        mainfunc(['--debug', '-T', filetype, '-o', tmpfile, source] +
+-                 list(options))
++        mainfunc(
++            [
++                '--debug',
++                '-T',
++                file_type,
++                '-o', tmp_file, source
++            ] + list(options)
++        )
+     finally:
+-        tmpdir.clean()
++        if tmpdir is not None:
++            tmpdir.clean()
+ 
+ 
+ def not_exist_font_config_option_test():
 Index: blockdiag-3.0.0/tox.ini
 ===================================================================
 --- blockdiag-3.0.0.orig/tox.ini
