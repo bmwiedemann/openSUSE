@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 27 14:26:30 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+ 
+- Bump github.com/stretchr/testify.v1.11.0 and gopkg.in/yaml.v3.0.1 (bsc#1248563)
+
+-------------------------------------------------------------------
 Thu Feb 27 12:42:47 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Dev: use the newest go-pacemaker and updated ToString (bsc#1237259)
