@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Tue Aug 26 09:31:03 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#768
+- initrd: add /usr/bin/chage to allow users with expiry date being
+  created
+- 17.161
+
+--------------------------------------------------------------------
 Mon Aug 25 10:01:34 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#763
