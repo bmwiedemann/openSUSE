@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-Cover
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name Devel-Cover
 Name:           perl-Devel-Cover
-Version:        1.500.0
+Version:        1.510.0
 Release:        0
-# 1.50 -> normalize -> 1.500.0
-%define cpan_version 1.50
+# 1.51 -> normalize -> 1.510.0
+%define cpan_version 1.51
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Code coverage metrics for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PJ/PJCJ/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(HTML::Entities) >= 3.690
@@ -68,6 +69,8 @@ Provides:       perl(Devel::Cover::Report::Html_minimal) = %{version}
 Provides:       perl(Devel::Cover::Report::Html_subtle) = %{version}
 Provides:       perl(Devel::Cover::Report::Html_subtle::Template::Provider) = %{version}
 Provides:       perl(Devel::Cover::Report::Json) = %{version}
+Provides:       perl(Devel::Cover::Report::Nvim) = %{version}
+Provides:       perl(Devel::Cover::Report::Nvim::Template::Provider) = %{version}
 Provides:       perl(Devel::Cover::Report::Sort) = %{version}
 Provides:       perl(Devel::Cover::Report::Text) = %{version}
 Provides:       perl(Devel::Cover::Report::Text2) = %{version}
@@ -87,7 +90,7 @@ Recommends:     perl(CPAN::Releases::Latest)
 Recommends:     perl(Capture::Tiny)
 Recommends:     perl(Class::XSAccessor)
 Recommends:     perl(HTML::Parser)
-Recommends:     perl(JSON::MaybeXS) >= 1.003003
+Recommends:     perl(JSON::MaybeXS) >= 1.3.3
 Recommends:     perl(Moo)
 Recommends:     perl(PPI::HTML) >= 1.70
 Recommends:     perl(Parallel::Iterator)
@@ -96,7 +99,7 @@ Recommends:     perl(Pod::Coverage) >= 0.60
 Recommends:     perl(Pod::Coverage::CountParents)
 Recommends:     perl(Sereal::Decoder)
 Recommends:     perl(Sereal::Encoder)
-Recommends:     perl(Template) >= 2.0.0
+Recommends:     perl(Template) >= 2.0
 Recommends:     perl(Test::Differences)
 Recommends:     perl(namespace::clean)
 %{perl_requires}
@@ -171,7 +174,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes Contributors docs README.md
+%doc Changes CLAUDE.md Contributors docs README.md
 %license LICENCE
 
 %changelog

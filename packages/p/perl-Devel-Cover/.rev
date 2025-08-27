@@ -370,4 +370,17 @@
     <comment></comment>
     <requestid>1286341</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>e4dba18fb76339bb26123aca2a90e7bf</srcmd5>
+    <version>1.510.0</version>
+    <time>1756323259</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.510.0 (1.51)
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+  1.51 - 26 July 2025
+  - Test against 5.42.0
+  - Add nvim report to show coverage in neovim
+  - Fix cover --outputdir option (Hannes Thorsell) (GH-358)</comment>
+    <requestid>1301449</requestid>
+  </revision>
 </revisionlist>

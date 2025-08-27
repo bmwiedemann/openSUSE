@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 22 20:49:13 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.510.0 (1.51)
+   see /usr/share/doc/packages/perl-Devel-Cover/Changes
+
+  1.51 - 26 July 2025
+
+  - Test against 5.42.0
+  - Add nvim report to show coverage in neovim
+  - Fix cover --outputdir option (Hannes Thorsell) (GH-358)
+
+-------------------------------------------------------------------
 Wed Jun 11 05:37:05 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.500.0 (1.50)
