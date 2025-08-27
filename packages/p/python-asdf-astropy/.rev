@@ -138,4 +138,20 @@ This is just to get rid of the build failure in d:l:p. It is not suitable for an
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1274491</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>067e7236e9fc2644d89f47a0ae67d724</srcmd5>
+    <version>0.8.0</version>
+    <time>1756323316</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.0:
+  * Drop python 3.10, numpy 1.24
+  * register blank extensions for old files with modified extension uris
+  * remove astropy_init
+  * Add support for masked quantities, angles, and coordinates
+  * fix pyproject.toml license and package defs
+  * Enable support for new transform and coordinates schemas
+  * Ignore UnitsWarnings
+  * Support new astronomy manifest</comment>
+    <requestid>1301516</requestid>
+  </revision>
 </revisionlist>
