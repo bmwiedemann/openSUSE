@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 26 16:04:41 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Add dependencies on makeinfo and po4a
+- Add fix_compilation_on_gcc_15.patch
+
+-------------------------------------------------------------------
 Thu Feb 20 13:25:08 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Remove install dependency on specific version of libguile-ssh

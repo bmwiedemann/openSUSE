@@ -264,4 +264,12 @@ I tested it manually and it looks fine when the SR above is in. Although upstrea
     <comment></comment>
     <requestid>1249898</requestid>
   </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>819e5d2ed651e5292fba97c459509b2c</srcmd5>
+    <version>1.4.0</version>
+    <time>1756323283</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1301507</requestid>
+  </revision>
 </revisionlist>

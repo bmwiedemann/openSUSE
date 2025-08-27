@@ -1,0 +1,34 @@
+Index: guix-1.4.0/nix/libstore/store-api.hh
+===================================================================
+--- guix-1.4.0.orig/nix/libstore/store-api.hh
++++ guix-1.4.0/nix/libstore/store-api.hh
+@@ -4,6 +4,7 @@
+ #include "serialise.hh"
+ 
+ #include <string>
++#include <cstdint>
+ #include <map>
+ #include <memory>
+ 
+Index: guix-1.4.0/nix/libstore/build.cc
+===================================================================
+--- guix-1.4.0.orig/nix/libstore/build.cc
++++ guix-1.4.0/nix/libstore/build.cc
+@@ -91,7 +91,7 @@ typedef std::shared_ptr<Goal> GoalPtr;
+ typedef std::weak_ptr<Goal> WeakGoalPtr;
+ 
+ struct CompareGoalPtrs {
+-    bool operator() (const GoalPtr & a, const GoalPtr & b);
++    bool operator() (const GoalPtr & a, const GoalPtr & b) const;
+ };
+ 
+ /* Set of goals. */
+@@ -189,7 +189,7 @@ protected:
+ };
+ 
+ 
+-bool CompareGoalPtrs::operator() (const GoalPtr & a, const GoalPtr & b) {
++bool CompareGoalPtrs::operator() (const GoalPtr & a, const GoalPtr & b) const {
+     string s1 = a->key();
+     string s2 = b->key();
+     return s1 < s2;

@@ -46,6 +46,8 @@ Source13:       aarch64-linux-guile-2.0.14.tar.xz.sig
 Source20:       run_guix_daemon.sh
 Source21:       run_guix_publish.sh
 Source22:       %{name}-user.conf
+# PATCH-FIX-UPSTREAM https://codeberg.org/guix/guix/commit/7b66b41ce5cee48b14eb6cce3bb4b26f5b058652
+Patch1:         fix_compilation_on_gcc_15.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gnutls-guile
 BuildRequires:  guile-charting
@@ -60,7 +62,9 @@ BuildRequires:  guile-zlib
 # this is actually just to make guile-git working
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgit2-devel
+BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
+BuildRequires:  po4a
 BuildRequires:  shepherd
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
@@ -91,7 +95,7 @@ It offers transactional upgrades, roll-backs, unprivileged package management.
 As a GNU distribution it contains only free software.
 
 %prep
-%setup -q
+%autosetup -p1
 # install service file to _unitdir
 sed -i 's@\$(libdir)/systemd/system@%{_unitdir}@' Makefile.in
 mkdir -p gnu/packages/bootstrap/{i686,x86_64,mips64el,armhf,aarch64}-linux
