@@ -43,6 +43,8 @@ This is part of Octave-Forge project.
 %octave_pkg_install
 
 %check
+%global octskiptests %{octskiptests}|ConfusionMatrixChart|confusionchart|dendrogram|ecdf|einstein|gscatter|histfit|manovacluster|violin|.*plot
+echo "Skip tests requiring graphical toolkit: %{octskiptests}"
 %octave_pkg_test
 
 %post
