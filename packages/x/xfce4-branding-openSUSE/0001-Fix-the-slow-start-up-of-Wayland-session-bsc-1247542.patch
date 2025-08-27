@@ -1,0 +1,50 @@
+From 471b722dc4dfbc11bd9a4812f1e4fec53c9bd939 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Thu, 21 Aug 2025 17:58:21 +0200
+Subject: [PATCH] Fix the slow start-up of Wayland session (bsc#1247542)
+
+It's basically a cherry-pick of the upstream commit d5c8d7ed5da0
+("wayland: Adapt failsafe startup").
+---
+ .../xfce-perchannel-xml/xfce4-session.xml     | 27 +++++++++++++++++++
+ 1 file changed, 27 insertions(+)
+
+diff --git a/base/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml b/base/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
+index 95ba9d6273c4..298e400349ca 100644
+--- a/base/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
++++ b/base/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
+@@ -44,4 +44,31 @@
+   <property name="shutdown" type="empty">
+     <property name="LockScreen" type="bool" value="true"/>
+   </property>
++  <property name="sessions" type="empty">
++    <property name="FailsafeWayland" type="empty">
++      <property name="IsFailsafe" type="bool" value="true"/>
++      <property name="Count" type="int" value="4"/>
++      <property name="Client0_Command" type="array">
++        <value type="string" value="xfsettingsd"/>
++      </property>
++      <property name="Client0_Priority" type="int" value="15"/>
++      <property name="Client0_PerScreen" type="bool" value="false"/>
++      <property name="Client1_Command" type="array">
++        <value type="string" value="xfce4-panel"/>
++      </property>
++      <property name="Client1_Priority" type="int" value="15"/>
++      <property name="Client1_PerScreen" type="bool" value="false"/>
++      <property name="Client2_Command" type="array">
++        <value type="string" value="Thunar"/>
++        <value type="string" value="--daemon"/>
++      </property>
++      <property name="Client2_Priority" type="int" value="15"/>
++      <property name="Client2_PerScreen" type="bool" value="false"/>
++      <property name="Client3_Command" type="array">
++        <value type="string" value="xfdesktop"/>
++      </property>
++      <property name="Client3_Priority" type="int" value="15"/>
++      <property name="Client3_PerScreen" type="bool" value="false"/>
++    </property>
++  </property>
+ </channel>
+-- 
+2.50.1
+

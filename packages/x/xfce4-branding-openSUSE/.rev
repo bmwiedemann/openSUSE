@@ -1416,4 +1416,14 @@
     <comment></comment>
     <requestid>1292359</requestid>
   </revision>
+  <revision rev="97" vrev="3">
+    <srcmd5>cd6dcac937c71fb219052795323e7816</srcmd5>
+    <version>4.20.0+git1.d2555b3</version>
+    <time>1756323341</time>
+    <user>anag_factory</user>
+    <comment>- Fix slow start on Wayland (bsc#1247542):
+  0001-Fix-the-slow-start-up-of-Wayland-session-bsc-1247542.patch
+- Make dependency on gtk2-metatheme-* optional (bsc#1237185) (forwarded request 1301576 from tiwai)</comment>
+    <requestid>1301580</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 27 11:46:07 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Fix slow start on Wayland (bsc#1247542):
+  0001-Fix-the-slow-start-up-of-Wayland-session-bsc-1247542.patch
+- Make dependency on gtk2-metatheme-* optional (bsc#1237185)
+
+-------------------------------------------------------------------
 Wed Jan 01 13:31:37 UTC 2025 - maurizio.galli@suse.com
 
 - Update to version 4.20.0+git1.d2555b3:

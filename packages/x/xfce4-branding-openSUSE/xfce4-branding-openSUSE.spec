@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-branding-openSUSE
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,7 @@ License:        CC-BY-SA-3.0 AND GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://github.com/openSUSE/xfce4-branding-openSUSE/tree/4.16
 Source0:        %{name}-%{version}.tar.zst
+Patch1:         0001-Fix-the-slow-start-up-of-Wayland-session-bsc-1247542.patch
 BuildRequires:  %{libxfce4ui_gtk3_libname}
 BuildRequires:  fdupes
 BuildRequires:  libgarcon-data
@@ -48,7 +49,6 @@ Requires:       libgio-2_0-0
 # for regenerating xfce-mimeapps.list
 BuildRequires:  desktop-file-utils
 BuildRequires:  adwaita-xfce-icon-theme
-BuildRequires:  gtk2-metatheme-greybird-geeko
 BuildRequires:  gtk3-metatheme-greybird-geeko
 BuildRequires:  hack-fonts
 BuildRequires:  metatheme-greybird-geeko-common
@@ -64,6 +64,7 @@ BuildRequires:  xfdesktop
 BuildRequires:  xfwm4
 BuildRequires:  xfwm4-branding-upstream
 BuildRequires:  zstd
+BuildRequires:  (gtk2-metatheme-greybird-geeko if libgtk-2_0-0)
 BuildArch:      noarch
 
 %description
@@ -95,10 +96,10 @@ Requires:       libgio-2_0-0
 # for regenerating xfce-mimeapps.list
 Requires:       desktop-file-utils
 Requires:       adwaita-xfce-icon-theme
-Requires:       gtk2-metatheme-greybird-geeko
 Requires:       gtk3-metatheme-greybird-geeko
 Requires:       metatheme-greybird-geeko-common
 Requires:       thunar-volman
+Requires:       (gtk2-metatheme-greybird-geeko if libgtk-2_0-0)
 Conflicts:      otherproviders(xfce4-session-branding)
 Provides:       xfce4-session-branding = %{xfce4_session_version}
 Supplements:    packageand(xfce4-session:branding-openSUSE)
@@ -113,14 +114,14 @@ Group:          System/GUI/XFCE
 Requires:       adwaita-xfce-icon-theme
 Requires:       adwaita-xfce-icon-theme
 Requires:       desktop-data-openSUSE
-Requires:       gtk2-metatheme-adwaita
-Requires:       gtk2-metatheme-greybird-geeko
 Requires:       gtk3-metatheme-adwaita
 Requires:       gtk3-metatheme-greybird-geeko
 Requires:       hack-fonts
 Requires:       metatheme-greybird-geeko-common
 Requires:       noto-coloremoji-fonts
 Requires:       noto-sans-fonts
+Requires:       (gtk2-metatheme-adwaita if libgtk-2_0-0)
+Requires:       (gtk2-metatheme-greybird-geeko if libgtk-2_0-0)
 Conflicts:      otherproviders(xfce4-settings-branding)
 Provides:       xfce4-settings-branding = %{xfce4_settings_version}
 Supplements:    packageand(xfce4-settings:branding-openSUSE)
@@ -217,7 +218,7 @@ Supplements:    packageand(thunar-volman:branding-openSUSE)
 This package provides the openSUSE look and feel for the Thunar Volume Manager.
 
 %prep
-%autosetup -n %{name}-%{version}
+%autosetup -n %{name}-%{version} -p1
 
 %build
 
