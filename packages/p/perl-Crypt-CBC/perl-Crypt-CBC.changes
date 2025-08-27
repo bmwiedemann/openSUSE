@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Aug 22 20:44:06 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.70.0 (3.07)
+   see /usr/share/doc/packages/perl-Crypt-CBC/Changes
+
+
+  3.07 -- Sun Jul 27 11:49:54 ADT 2025
+      [Changes Since 3.04]
+      - New maintainer
+      - Fix CVE-2025-2814 by using Crypt::URandom
+      - 3.05 Fixed bug involving manually-specified key not being used in some circumstances
+      - Fix decryption of ciphertext created with 'header' => 'randomiv'
+      - Fixed bug in which manually-specified key and -pkdf=>"none" was not having effect
+      - Converted build process to Dist::Zilla
+      - Miscellaneous minor Dist::Zilla relates changes
+      [Detailed Change Log]
+      - 74e3a10 Increment repo version
+      - feb4b31 Rename vulnerabilities file add CVE-2025-2814
+      - 236c363 Update .gitignore
+      - 4a39da8 Fix spelling error
+      - 99d336a Automate version with Dist::Zilla
+      - 89ac06d Convert build process to Dist::Zilla
+      - 784d599 Fix CVE-2025-2814 by using Crypt::URandom to read random bytes
+      - 81a8f77 Add test for github issue #7
+      - 40d0e13 Increment version
+      - 160af60 Fix decryption of ciphertext created with 'header' => 'randomiv'
+      - 524db90 Fixed bug in which manually-specified key and -pkdf=>"none" was not having effect
+  3.05	 Thu 20 May 2021 12:00:18 PM EDT
+  	 - Fixed bug involving manually-specified key not being used in some circumstances.
+
+-------------------------------------------------------------------
 Wed May 19 03:06:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.04
