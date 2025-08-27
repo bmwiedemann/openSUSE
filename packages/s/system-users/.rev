@@ -280,4 +280,12 @@ The vscan user is currently used by the amavisd-new and clamav packages, but the
   (udev: set clock group for PTP and RTC devices)</comment>
     <requestid>1252358</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>afef60a1c2ebe058dc42658f4a33f00e</srcmd5>
+    <version>20250822</version>
+    <time>1756323250</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1300997</requestid>
+  </revision>
 </revisionlist>

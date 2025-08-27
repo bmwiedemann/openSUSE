@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 22 14:27:27 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use fully locked user accounts
+- Remove daemon as second group
+
+-------------------------------------------------------------------
 Wed Mar 12 09:31:26 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - system-group-hardware: add group clock for systemd 258

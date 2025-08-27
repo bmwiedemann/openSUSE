@@ -1,7 +1,7 @@
 #
 # spec file for package system-users
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           system-users
-Version:        20170617
+Version:        20250822
 Release:        0
 Summary:        Provide system accounts
 License:        MIT
@@ -54,9 +54,7 @@ This package provides various system users and their directories
 
 %package -n system-user-bin
 Summary:        System user and group 'bin'
-#!BuildIgnore:  user(daemon)
 Group:          System/Fhs
-Requires(pre):  user(daemon)
 %{sysusers_requires}
 
 %description -n system-user-bin
@@ -178,9 +176,7 @@ This package provides the system account and group 'nobody'.
 
 %package -n system-user-upsd
 Summary:        System user upsd
-#!BuildIgnore:  group(daemon)
 Group:          System/Fhs
-Requires(pre):  group(daemon)
 %{sysusers_requires}
 
 %description -n system-user-upsd
