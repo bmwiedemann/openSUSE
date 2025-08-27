@@ -38,6 +38,14 @@
 
 %define __lib lib
 
+%if 0%{?suse_version} > 1500
+%define pamconfdir %{_pam_vendordir}
+%define pamconfig tools/cockpit.suse.pam
+%else
+%define pamconfdir %{_sysconfdir}/pam.d
+%define pamconfig tools/cockpit.pam
+%endif
+
 %if %{defined _pamdir}
 %define pamdir %{_pamdir}
 %else
@@ -50,10 +58,9 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        340
+Version:        344
 Release:        0
 Source0:        cockpit-%{version}.tar.gz
-Source1:        cockpit.pam
 Source2:        cockpit-rpmlintrc
 Source3:        cockpit-suse-theme.tar
 Source4:        cockpit-no-pamoath.pam
@@ -68,7 +75,6 @@ Patch2:         suse_docs.patch
 Patch3:         suse-microos-branding.patch
 Patch4:         css-overrides.patch
 Patch5:         storage-btrfs.patch
-Patch6:         kdump-nfs-fixes.patch
 # SLE Micro specific patches
 Patch101:       hide-pcp.patch
 Patch102:       0002-selinux-temporary-remove-setroubleshoot-section.patch
@@ -173,7 +179,6 @@ BuildRequires: xmlto
 
 %if 0%{?with_selinux}
 BuildRequires:  selinux-policy
-BuildRequires:  selinux-policy-%{selinuxtype}
 BuildRequires:  selinux-policy-devel
 %endif
 
@@ -227,7 +232,6 @@ BuildRequires:  python3-pytest-timeout
 
 %patch -P 4 -p1
 %patch -P 5 -p1
-%patch -P 6 -p1
 
 %patch -P 106 -p1
 %patch -P 109 -p1
@@ -262,11 +266,10 @@ BuildRequires:  python3-pytest-timeout
 
 %patch -P 201 -p1
 
-%if 0%{?suse_version} > 1500
-cp %SOURCE1 tools/cockpit.pam
-%else
+# If we're not using cockpit.suse.pam
+# Then we should always use source4's pam
 cp %SOURCE4 tools/cockpit.pam
-%endif
+
 #
 local-npm-registry %{_sourcedir} install --include=dev --ignore-scripts
 touch package-lock.json
@@ -302,20 +305,19 @@ bzip2 -9 cockpit.pp
 make -j$(nproc) check
 
 %if 0%{?rhel} == 0 && 0%{?suse_version} == 0
-%tox
+export NO_QUNIT=1
+%pytest
 %endif
 
 %install
+%if 0%{?suse_version}
+export NO_BRP_STALE_LINK_ERROR="yes"
+%endif
 # In obs we get  write error: stdout
 %make_install | tee make_install.log
 make install-tests DESTDIR=%{buildroot}
-%if 0%{?suse_version} > 1500
-mkdir -p $RPM_BUILD_ROOT%{_pam_vendordir}
-install -p -m 644 tools/cockpit.pam $RPM_BUILD_ROOT%{_pam_vendordir}/cockpit
-%else
-mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/pam.d
-install -p -m 644 tools/cockpit.pam $RPM_BUILD_ROOT%{_sysconfdir}/pam.d/cockpit
-%endif
+mkdir -p $RPM_BUILD_ROOT%{pamconfdir}
+install -p -m 644 %{pamconfig} $RPM_BUILD_ROOT%{pamconfdir}/cockpit
 rm -f %{buildroot}/%{_libdir}/cockpit/*.so
 install -D -p -m 644 AUTHORS COPYING README.md %{buildroot}%{_docdir}/cockpit/
 
@@ -429,14 +431,6 @@ rm -f %{buildroot}/%{pamdir}/mock-pam-conv-mod.so
 sed -i "s|%{buildroot}||" *.list
 
 %if 0%{?suse_version}
-# remove brandings with stale symlinks. Means they don't match
-# the distro.
-pushd %{buildroot}/%{_datadir}/cockpit/branding
-ls --hide={default,kubernetes,opensuse,registry,suse} | xargs rm -rv
-popd
-# need this in SUSE as post build checks dislike stale symlinks
-install -m 644 -D /dev/null %{buildroot}/run/cockpit/issue
-
 test -e %{buildroot}/usr/share/cockpit/branding/opensuse/default-1920x1200.jpg  || install -m 644 -D /dev/null %{buildroot}/usr/share/cockpit/branding/opensuse/default-1920x1200.jpg
 test -e %{buildroot}/usr/share/cockpit/branding/suse/apple-touch-icon.png  || install -m 644 -D /dev/null %{buildroot}/usr/share/cockpit/branding/suse/apple-touch-icon.png
 test -e %{buildroot}/usr/share/cockpit/branding/suse/default-1920x1200.png || install -m 644 -D /dev/null %{buildroot}/usr/share/cockpit/branding/suse/default-1920x1200.png
@@ -623,13 +617,10 @@ authentication via sssd/FreeIPA.
 %doc %{_mandir}/man8/pam_ssh_add.8.gz
 %dir %{_sysconfdir}/cockpit
 %config(noreplace) %{_sysconfdir}/cockpit/ws-certs.d
-%if 0%{?suse_version} > 1500
-%{_pam_vendordir}/cockpit
-%else
-%config(noreplace) %{_sysconfdir}/pam.d/cockpit
-%endif
-# dir is not owned by pam in openSUSE
+# dir is not owned by pam in openSUSE needed for Leap15.6
+%dir %{pamconfdir}
 %dir %{_sysconfdir}/motd.d
+%config(noreplace) %{pamconfdir}/cockpit
 # created in %post, so that users can rm the files
 %ghost %{_sysconfdir}/issue.d/cockpit.issue
 %ghost %{_sysconfdir}/motd.d/cockpit
@@ -795,7 +786,11 @@ SELinux policy module for the cockpit-ws package.
 Summary: Cockpit user interface for kernel crash dumping
 Requires: cockpit-bridge >= %{required_base}
 Requires: cockpit-shell >= %{required_base}
+%if 0%{?suse_version}
 Requires: /usr/sbin/kdumptool
+%else
+Requires: /usr/bin/kdumpctl
+%endif
 BuildArch: noarch
 
 %description kdump
@@ -805,6 +800,7 @@ The Cockpit component for configuring kernel crash dumping.
 %license COPYING
 %{_datadir}/metainfo/org.cockpit_project.cockpit_kdump.metainfo.xml
 
+# sosreport is not supported on opensuse yet
 %if !0%{?suse_version}
 %package sosreport
 Summary: Cockpit user interface for diagnostic reports
@@ -843,7 +839,6 @@ The Cockpit component for managing networking.  This package uses NetworkManager
 %endif
 
 %if 0%{?rhel} == 0 && ( 0%{?suse_version} >= 1500 || 0%{?is_smo} )
-
 %package selinux
 Summary: Cockpit SELinux package
 Requires: cockpit-bridge >= %{required_base}
@@ -853,7 +848,7 @@ Requires:       policycoreutils-python-utils >= 3.1
 %if !0%{?suse_version}  || ( 0%{?is_smo} && 0%{?sle_version} >= 150500 ) || 0%{?suse_version} >= 1600
 Requires:       setroubleshoot-server >= 3.3.3
 %endif
-BuildArch:      noarch
+BuildArch: noarch
 
 %description selinux
 This package contains the Cockpit user interface integration with the

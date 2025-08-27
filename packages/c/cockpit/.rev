@@ -758,4 +758,27 @@ For details, see https://cockpit-project.org/blog/cockpit-322.html</comment>
   firewall jsc#PED-13228</comment>
     <requestid>1296485</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>009d0131a76cf1b69bec8019c2996db5</srcmd5>
+    <version>344</version>
+    <time>1756323221</time>
+    <user>anag_factory</user>
+    <comment>- Update to 344
+  * Changes since 340
+    - 344
+      * Bug fixes and translation updates
+    - 343
+      * login: Improve error message for unsupported shells
+      * cockpit: Handle file access issues with files in machines.d
+      * Translation updates
+    - 342
+      * systemd: ensure update() is called at least once for tuned-dialog
+      * Translation updates
+    - 341
+      * services: show link to podman page for quadlets
+      * Bug fixes and translation updates
+- Remove kdump-nfs-fixes.patch as this was upstreamed
+- Fix not falling back to PRETTY_NAME in SUSE_PRETTY_NAME patches bsc#1248446</comment>
+    <requestid>1301547</requestid>
+  </revision>
 </revisionlist>

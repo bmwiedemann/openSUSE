@@ -7,11 +7,11 @@ Date:   Fri Aug 6 15:11:23 2021 +0200
 Index: cockpit/selinux/cockpit.te
 ===================================================================
 diff --git a/selinux/cockpit.te b/selinux/cockpit.te
-index 50695ee..55b1226 100644
+index 931cbd775..4a439c8d5 100644
 --- a/selinux/cockpit.te
 +++ b/selinux/cockpit.te
-@@ -224,6 +224,14 @@ optional_policy(`
-     gnome_exec_keyringd(cockpit_session_t)
+@@ -232,6 +232,14 @@ optional_policy(`
+     allow cockpit_session_t pidfs_t:filesystem getattr;
  ')
  
 +# login may read motd file through pam

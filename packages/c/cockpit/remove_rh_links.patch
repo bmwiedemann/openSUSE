@@ -66,10 +66,10 @@ index fa57de9..d4dd3be 100644
              <Button variant="plain" aria-label={_("Help")}>
                  <HelpIcon />
 diff --git a/pkg/systemd/overview-cards/tuned-dialog.jsx b/pkg/systemd/overview-cards/tuned-dialog.jsx
-index 38420ca..cd7e2a3 100644
+index 5f3c3ffc1..b36ad88e3 100644
 --- a/pkg/systemd/overview-cards/tuned-dialog.jsx
 +++ b/pkg/systemd/overview-cards/tuned-dialog.jsx
-@@ -278,36 +278,10 @@ const TunedDialog = ({
+@@ -278,40 +278,13 @@ const TunedDialog = ({
          };
      }, [tunedService]);
  
@@ -102,7 +102,12 @@ index 38420ca..cd7e2a3 100644
          <Modal position="top" variant="medium"
                 className="ct-m-stretch-body"
                 isOpen
--               help={help}
                 onClose={() => dialogResult.resolve()}
-                title={_("Change performance profile")}
-                footer={
+         >
+-            <ModalHeader title={_("Change performance profile")}
+-                help={help}
+-            />
++            <ModalHeader title={_("Change performance profile")} />
+             <ModalBody>
+                 {error && <ModalError dialogError={typeof error == 'string' ? error : error.message} />}
+                 {loading && <EmptyStatePanel loading />}

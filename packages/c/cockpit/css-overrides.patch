@@ -290,17 +290,17 @@ index f89f1fa47..5086ce1f6 100644
    <script src="../base1/po.js"></script>
    <script src="po.js"></script>
 diff --git a/pkg/systemd/services.html b/pkg/systemd/services.html
-index 74fa456d4..e9c7047ee 100644
+index a17e95e56..7eaa65efa 100644
 --- a/pkg/systemd/services.html
 +++ b/pkg/systemd/services.html
-@@ -5,6 +5,7 @@
-     <meta charset="utf-8" />
-     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <link href="services.css" type="text/css" rel="stylesheet" />
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
-     <script src="../base1/cockpit.js"></script>
+@@ -9,6 +9,7 @@
      <script src="../base1/po.js"></script>
+     <script src="../manifests.js"></script>
      <script src="services.js"></script>
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
+     <script src="po.js"></script>
+ </head>
+ 
 diff --git a/pkg/systemd/terminal.html b/pkg/systemd/terminal.html
 index ce7216e4e..63547f9d3 100644
 --- a/pkg/systemd/terminal.html
