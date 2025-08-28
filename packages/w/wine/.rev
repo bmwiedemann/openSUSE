@@ -5598,4 +5598,14 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
   for Windows binaries combined for simplicity (forwarded request 1301065 from rhabacker)</comment>
     <requestid>1301070</requestid>
   </revision>
+  <revision rev="469" vrev="3">
+    <srcmd5>7b7f4f01443835f8a831210cdc26eb09</srcmd5>
+    <version>10.13</version>
+    <time>1756394386</time>
+    <user>anag_factory</user>
+    <comment>- Remove the suffix “-32bit” from the package name for
+  Windows debug symbols for the i586 build variant, as
+  it is automatically added by mkbaselibs. (forwarded request 1301744 from rhabacker)</comment>
+    <requestid>1301761</requestid>
+  </revision>
 </revisionlist>

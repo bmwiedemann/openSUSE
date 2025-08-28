@@ -58,7 +58,7 @@
 %else
 %ifarch %{ix86}
 %global __arch_install_post %_mingw_find_debuginfo i386 mingw32
-%global _win_debug_package %_mingw32_debug_package -e -C wine%{psuffix}-32bit-win-debuginfo -N wine%{psuffix}-32bit-win-debuginfo
+%global _win_debug_package %_mingw32_debug_package -e -C wine%{psuffix}-win-debuginfo -N wine%{psuffix}-win-debuginfo
 %endif
 %ifarch x86_64
 %global __arch_install_post %_mingw_find_debuginfo x86_64 mingw64
@@ -316,7 +316,7 @@ echo "  +^/usr/lib/wine/.*def" >> %SOURCE97
 echo " provides \"wine-devel-<targettype> = <version>\""		>> %SOURCE97
 %endif
 echo " conflicts \"otherproviders(wine-devel-<targettype>)\""		>> %SOURCE97
-echo "wine-32bit-win-debuginfo" >> %SOURCE97
+echo "wine-win-debuginfo" >> %SOURCE97
 
 cat %SOURCE97
 %endif

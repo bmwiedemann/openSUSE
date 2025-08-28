@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 28 07:39:11 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Remove the suffix “-32bit” from the package name for
+  Windows debug symbols for the i586 build variant, as
+  it is automatically added by mkbaselibs.
+
+-------------------------------------------------------------------
 Sat Aug 23 11:37:05 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Use objdump and objcopy instead of the required 
