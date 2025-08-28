@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Aug 28 03:50:37 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250828.c67318b2:
+  * Dev: sbd: Check if fence-agents-sbd is installed on all nodes
+
+-------------------------------------------------------------------
+Thu Aug 28 01:50:07 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250828.79b4c2fc:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: behave: Add functional test case for previous commit
+  * Dev: bootstrap: Enable to remove pacemaker remote node
+  * Dev: xmlutil: Add instance method get_res_id_of_remote_node
+
+-------------------------------------------------------------------
+Wed Aug 27 06:33:43 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250827.272bacc8:
+  * Fix: Makefile: should uninstall man pages
+
+-------------------------------------------------------------------
+Tue Aug 26 10:33:28 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250826.ce40450f:
+  * Fix: packaging: use `CURDIR` instead of `PWD` in Makefile
+
+-------------------------------------------------------------------
+Tue Aug 26 07:48:00 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250826.57cffec0:
+  * Fix: doc: the usage parser in help2adoc should support multiline usages
+  * Dev: packaging: add some runtime deps to build deps to support running `crm help` during builds
+  * Dev: packaing: add doc subdir to Makefile
+
+-------------------------------------------------------------------
+Tue Aug 26 07:01:54 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250826.4a3e29cc:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: report: Update HA related packages for crm report to check and verify
+
+-------------------------------------------------------------------
+Tue Aug 26 02:53:07 UTC 2025 - nicholas.yang@suse.com
+
+- Update to version 5.0.0+20250826.598b3b34:
+  * Refactor: packaging: kill automake and move build steps from crmsh.spec into Makefile
+  * Dev: packaging: remove deprecated `data_files`
+
+-------------------------------------------------------------------
 Mon Aug 25 07:40:03 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250825.21aba9d5:
