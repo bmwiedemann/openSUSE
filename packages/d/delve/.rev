@@ -397,4 +397,27 @@
     Refs boo#1246767 (forwarded request 1295827 from jfkw)</comment>
     <requestid>1295828</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d92d46bc1b795ec3533458bc8fe2130a</srcmd5>
+    <version>1.25.2</version>
+    <time>1756394306</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.25.2:
+  * *: release version 1.25.2 (#4104)
+  * pkg/proc: return better error attempting to call nonexistent function (#4062)
+  * service/dap: allow clients to specify rebuild on restart (#4103)
+  * pkg/proc: add support for additional stack-switching functions on loong64 (#4100)
+  * *: fix some failing tests on go1.25 (#4089)
+  * proc: early fixes for Go 1.26 (#4070)
+  * dwarf: using maps.Clone (#4088)
+  * proc: in-progress calls must be properly terminated (#4090)
+  * pkg/proc: support ContextRegNum on loong64 (#4095)
+  * pkg/proc: add support for reading runtime.sigtrampgo context on loong64 (#4098)
+  * proc,service,terminal: add events call use it for dld notifications (#3980)
+  * service/dap: fix TestConfigurationDoneWithoutDebugSession (#4071)
+  * proc: fix nil pointer dereference loading malformed classic maps (#4067)
+  * service/dap: fix restart while the target is running (#4068)
+  * service/dap: fix panic on uninitialized debugger (#4061) (forwarded request 1301625 from jfkw)</comment>
+    <requestid>1301626</requestid>
+  </revision>
 </revisionlist>

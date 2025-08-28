@@ -1,7 +1,7 @@
 #
 # spec file for package delve
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define shortname dlv
 
 Name:           delve
-Version:        1.25.1
+Version:        1.25.2
 Release:        0
 Summary:        Debugger for the Go Programming Language
 License:        MIT
