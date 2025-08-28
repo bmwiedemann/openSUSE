@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Aug 28 05:25:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.10.7:
+  https://github.com/siderolabs/talos/releases/tag/v1.10.7
+  * no CLI-related changes in the Changelog
+  * Dependency changes
+    - github.com/siderolabs/discovery-client v0.1.11 -> v0.1.13
+    - github.com/siderolabs/pkgs v1.10.0-29-g2e6dd0a ->
+      v1.10.0-34-g88700c7
+    - github.com/siderolabs/talos/pkg/machinery v1.10.6 -> v1.10.7
+    - github.com/siderolabs/tools v1.10.0-5-g31fd099 ->
+      v1.10.0-6-g306d9d9
+    - google.golang.org/grpc v1.71.3 -> v1.73.0
+    - k8s.io/api v0.33.2 -> v0.33.4
+    - k8s.io/apiserver v0.33.2 -> v0.33.4
+    - k8s.io/client-go v0.33.2 -> v0.33.4
+    - k8s.io/component-base v0.33.2 -> v0.33.4
+    - k8s.io/kube-scheduler v0.33.2 -> v0.33.4
+    - k8s.io/kubectl v0.33.2 -> v0.33.4
+    - k8s.io/kubelet v0.33.2 -> v0.33.4
+    - k8s.io/pod-security-admission v0.33.2 -> v0.33.4
+
+-------------------------------------------------------------------
 Fri Aug  1 11:59:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.10.6:
