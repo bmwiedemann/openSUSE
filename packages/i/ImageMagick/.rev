@@ -4134,4 +4134,15 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * cache.c: Fix unused function warning by @Dave-Allured in #8309 (forwarded request 1301329 from adkorte)</comment>
     <requestid>1301378</requestid>
   </revision>
+  <revision rev="314" vrev="2">
+    <srcmd5>33291a30be1f34a53d33beac58352839</srcmd5>
+    <version>7.1.2.2</version>
+    <time>1756394340</time>
+    <user>anag_factory</user>
+    <comment>- fixes
+    CVE-2025-55298 [bsc#1248780]
+    CVE-2025-57803 [bsc#1248784]
+    CVE-2025-55212 [bsc#1248767]</comment>
+    <requestid>1301785</requestid>
+  </revision>
 </revisionlist>
