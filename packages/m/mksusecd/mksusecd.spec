@@ -18,15 +18,14 @@
 
 
 Name:           mksusecd
-Version:        4.0
+Version:        4.1
 Release:        0
 Summary:        Tool to create SUSE Linux installation ISOs
 License:        GPL-3.0+
 Group:          Hardware/Other
 URL:            https://github.com/wfeldt/mksusecd
+Provides:       mkmedia = %{version}
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  libuuid-devel
-BuildRequires:  xz
 %if 0%?suse_version >= 1500 || 0%?sle_version >= 120400
 BuildRequires:  rubygem(asciidoctor)
 %else
@@ -35,7 +34,9 @@ BuildRequires:  asciidoc
 BuildRequires:  libxslt-tools
 %endif
 %endif
-Requires:       checkmedia >= 6.0
+BuildRequires:  pkgconfig(blkid)
+BuildRequires:  pkgconfig(json-c)
+BuildRequires:  pkgconfig(uuid)
 %if %suse_version >= 1500
 Requires:       createrepo-implementation
 Requires:       mkisofs
@@ -43,17 +44,24 @@ Requires:       mkisofs
 Requires:       createrepo
 Requires:       genisoimage
 %endif
-Requires:       dosfstools
-Requires:       gpg2
-Requires:       mtools
-Requires:       squashfs
-Requires:       xz
-Requires:       perl-JSON
-Requires:       file
+Requires:       binutils
+Requires:       checkmedia >= 6.0
+Requires:       coreutils
 Requires:       cpio
-BuildRequires:  pkgconfig(blkid)
-BuildRequires:  pkgconfig(uuid)
-BuildRequires:  pkgconfig(json-c)
+Requires:       dosfstools
+Requires:       file
+Requires:       findutils
+Requires:       gpg2
+Requires:       gzip
+Requires:       kmod
+Requires:       mtools
+Requires:       perl-JSON
+Requires:       rpm
+Requires:       squashfs
+Requires:       tar
+Requires:       util-linux
+Requires:       xz
+Requires:       zstd
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
