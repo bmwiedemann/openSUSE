@@ -17,7 +17,7 @@
 
 
 Name:           gap-singular
-Version:        2024.06.03
+Version:        2025.08.26
 Release:        0
 Summary:        GAP: An interface to Singular
 License:        GPL-2.0-or-later
