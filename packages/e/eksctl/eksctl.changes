@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 28 04:46:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.214.0:
+  * Improvements
+    - add notify homebrew update workflow (#8482)
+  * Bug Fixes
+    - Add exact match check to use specified addon versions (#8478)
+
+-------------------------------------------------------------------
 Tue Aug 26 05:15:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.213.0:
