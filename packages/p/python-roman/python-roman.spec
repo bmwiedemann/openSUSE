@@ -1,7 +1,7 @@
 #
 # spec file for package python-roman
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,11 @@
 
 
 %define packagename roman
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-roman
 Version:        5.0
@@ -31,9 +36,14 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 %python_subpackages
 
 %description
@@ -51,6 +61,9 @@ This module converts from and to Roman numerals. It can convert numbers from
 %python_clone -a %{buildroot}%{_bindir}/%{packagename}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %prepare_alternative %{packagename}
+
+%pre
+%python_libalternatives_reset_alternative %{packagename}
 
 %post
 %python_install_alternative %{packagename}
