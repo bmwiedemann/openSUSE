@@ -1,7 +1,7 @@
 #
 # spec file for package python-ase
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,31 +17,29 @@
 
 
 Name:           python-ase
-Version:        3.23.0
+Version:        3.26.0
 Release:        0
 Summary:        Atomic Simulation Environment
 License:        LGPL-2.1-or-later
 URL:            https://wiki.fysik.dtu.dk/ase
 Source:         https://files.pythonhosted.org/packages/source/a/ase/ase-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM ase-mr3400-numpy2.patch https://gitlab.com/ase/ase/-/merge_requests/3400
-Patch0:         ase-mr3400-numpy2.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module matplotlib >= 3.1.0}
-BuildRequires:  %{python_module numpy >= 1.15.0}
-BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.1.0}
+BuildRequires:  %{python_module matplotlib >= 3.3.4}
+BuildRequires:  %{python_module numpy >= 1.19.5}
+BuildRequires:  %{python_module pytest >= 7}
+BuildRequires:  %{python_module pytest-xdist >= 2.1}
+BuildRequires:  %{python_module scipy >= 1.6.0}
 BuildRequires:  %{python_module tk}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-matplotlib >= 3.1.0
-Requires:       python-numpy >= 1.15.0
-Requires:       python-scipy >= 1.1.0
+Requires:       python-matplotlib >= 3.3.4
+Requires:       python-numpy >= 1.19.5
+Requires:       python-scipy >= 1.6.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch

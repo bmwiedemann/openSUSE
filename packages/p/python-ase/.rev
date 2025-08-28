@@ -70,4 +70,38 @@
     <comment></comment>
     <requestid>1198016</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>813d75f189932de673fe302b98dafa44</srcmd5>
+    <version>3.26.0</version>
+    <time>1756394329</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.26.0:
+  * Requirements
+    + The minimum supported Python version has increased to 3.9
+  * Breaking changes
+    + Removed unused IOFormat.open() method.
+    + The Optimizable interface now works in terms of arbitrary degrees of
+      freedom rather than Cartesian (Nx3) ones.
+    + ase.io.orca.read_orca_output now returns Atoms with attached
+      properties. ase.io.read() will use this function.
+    + The master parameter to each Optimizer is now passed via **kwargs and
+      so becomes keyword-only.
+    + Removed legacy read_cell and write_cell functions from ase.io.castep.
+    + Removed deprecated force_consistent option from Optimizer.
+    + ase.spectrum.band_structure.BandStructurePlot: the plot_with_colors()
+      has been removed and its features merged into the plot() method.
+  * Highlights
+   + Changed ELK based on GenericFileIOCalculator.
+   + The “heavy-weight” database backends in ase.db have been moved to a
+     separate project.
+   + Major improvements to find_optimal_cell_shape(): improve target metric;
+     ensure rotationally invariant results; avoid negative determinants;
+     improved performance via vectorisation.
+   + Added new FiniteDifferenceCalculator, which wraps other calculator for
+     finite-difference forces and strains.
+   + Added two new MD thermostats: ase.md.bussi.Bussi and
+     ase.md.nose_hoover_chain.NoseHooverChainNVT.
+- Drop patch ase-mr3400-numpy2.patch, included upstream.</comment>
+    <requestid>1301637</requestid>
+  </revision>
 </revisionlist>
