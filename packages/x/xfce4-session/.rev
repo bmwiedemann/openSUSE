@@ -871,4 +871,12 @@
   The fix is now found in xfce4-branding-openSUSE instead (forwarded request 1301577 from tiwai)</comment>
     <requestid>1301581</requestid>
   </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>42bb8530c4264f07d8ca7263832a334d</srcmd5>
+    <version>4.20.3</version>
+    <time>1756394383</time>
+    <user>anag_factory</user>
+    <comment>- Yet more default key binding for Wayland labwc (bsc#1248802) (forwarded request 1301753 from tiwai)</comment>
+    <requestid>1301757</requestid>
+  </revision>
 </revisionlist>

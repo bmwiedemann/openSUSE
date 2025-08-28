@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 28 08:15:22 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Yet more default key binding for Wayland labwc (bsc#1248802)
+
+-------------------------------------------------------------------
 Wed Aug 27 13:02:03 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Add more default key bindings for Wayland with labwc (bsc#1248802):
