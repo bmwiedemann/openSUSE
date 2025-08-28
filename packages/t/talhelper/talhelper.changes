@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Aug 28 05:19:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.33:
+  * docs: update CLI reference documentation (#1157)
+  * chore(deps): update dependency siderolabs/talos to v1.10.7
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.10.7
+  * chore(schema): update talos-extensions.yaml JSON schema (#1156)
+  * chore(github-action): update renovatebot/github-action action
+    to v43.0.9
+  * chore(schema): update talos-extensions.yaml JSON schema (#1152)
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v0.8.3
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v0.8.2
+  * chore(schema): update talconfig.yaml JSON schema (#1150)
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.11.0-rc.0
+  * feat(config): add `encryptionSpec` to `volumes`
+  * chore(schema): update talos-extensions.yaml JSON schema (#1148)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1144)
+  * chore(github-action): update renovatebot/github-action action
+    to v43.0.8
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v0.8.1
+  * chore(container): update registry.k8s.io/kubectl docker tag to
+    v1.33.4
+  * chore(github-action)!: Update actions/checkout action to v5
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.4.0
+  * chore(schema): update talos-extensions.yaml JSON schema (#1140)
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.11.0-beta.2
+  * chore(github-action): update actions/checkout action to v4.3.0
+  * chore(github-action): update renovatebot/github-action action
+    to v43.0.7
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v0.8.0
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(github-action): update actions/checkout digest to 08eba0b
+    (#1133)
+  * chore(github-action): update renovatebot/github-action action
+    to v43.0.6
+  * fix(deps): update module golang.org/x/mod to v0.27.0
+  * chore(schema): update talos-extensions.yaml JSON schema (#1130)
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.11.0-beta.1
+  * chore(schema): update talos-extensions.yaml JSON schema (#1127)
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.3.1
+  * chore(schema): update talos-extensions.yaml JSON schema (#1124)
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.32
+  * chore(schema): update talos-extensions.yaml JSON schema (#1123)
+  * feat: update Scoop for talhelper version v3.0.32
+  * feat: update flake (#1121)
+
+-------------------------------------------------------------------
 Fri Aug 01 11:56:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.32:
