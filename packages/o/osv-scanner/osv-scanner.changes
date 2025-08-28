@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug 28 04:46:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.2:
+  * Features:
+    - Feature #2113 Add support for Java reachability analysis to
+      identify uncalled vulnerabilities in JAR files.
+    - Feature #2177 Automatically parse osv-scanner-custom.json
+      files as osv-scanner.json custom lockfiles.
+  * Fixes:
+    - Bug #2204 Add a warning to guide users to the correct GitHub
+      Action.
+    - Bug #2202 Fix incorrect exit code when unimportant
+      vulnerabilities are found in non-container scans.
+    - Bug #2188 Fix handling of absolute paths on Windows.
+  * Dependencies
+    - fix(deps): update osv-scalibr (#2175)
+    - chore(deps): update golang docker tag to v1.24.6 (#2167)
+    - chore(deps): update workflows (#2165)
+    - chore(deps): lock file maintenance (#2143)
+
+-------------------------------------------------------------------
 Tue Aug 19 06:58:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.1:
