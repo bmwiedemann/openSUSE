@@ -445,4 +445,13 @@
   (gh#agama-project/agama#2657).</comment>
     <requestid>1300561</requestid>
   </revision>
+  <revision rev="25" vrev="25">
+    <srcmd5>8fb31d073b83bdeb14413b3dc7ec911d</srcmd5>
+    <version>0</version>
+    <time>1756394400</time>
+    <user>anag_factory</user>
+    <comment>- Report the underlying problem for the &quot;load.retry&quot; question
+  (related to bsc#1248779).</comment>
+    <requestid>1301802</requestid>
+  </revision>
 </revisionlist>
