@@ -498,4 +498,15 @@
 - Do not return an Err when a connection is not activated or</comment>
     <requestid>1300494</requestid>
   </revision>
+  <revision rev="29" vrev="29">
+    <srcmd5>ea547e27fce232fc21df3606c0ab5d93</srcmd5>
+    <version>0</version>
+    <time>1756394400</time>
+    <user>anag_factory</user>
+    <comment>- Update the software cache when the patterns selection changes (bsc#1248826).
+
+- Include the output of the &quot;agama config&quot; commands when
+  agama-autoinstall fails (related to bsc#1248779).</comment>
+    <requestid>1301796</requestid>
+  </revision>
 </revisionlist>
