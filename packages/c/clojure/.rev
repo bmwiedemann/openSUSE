@@ -338,4 +338,13 @@
   * No changelog provided</comment>
     <requestid>1282048</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>39d5e7815d0d7fced157820a20abdb42</srcmd5>
+    <version>1.12.2.1565</version>
+    <time>1756394395</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.12.2.1565:
+  * Update to Clojure 1.12.2</comment>
+    <requestid>1301791</requestid>
+  </revision>
 </revisionlist>
