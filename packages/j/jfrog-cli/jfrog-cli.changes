@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 28 04:46:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.78.7:
+  * Bug Fixes
+    - SARIF - Fill missing invocation attributes if needed by
+      @attiasas in #545
+
+-------------------------------------------------------------------
 Tue Aug 26 10:57:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.78.6:
