@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 28 07:44:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.9.1:
+  * feature: provide support for Amazon Linux 2023
+  * feature: surface custom inputs on cluster details page
+  * ux: improve the workload cluster template and workload module
+    user input and summary experience
+  * bugfix: address dropped connections to backend verbose logs
+    during initial provisioning
+  * bugfix: custom template in branch name with slash needs support
+  * bugfix: terraform fix to civo gpu cluster templates
+  * bugfix: intermittent failure to establish default cloud account
+    during initial provision
+
+-------------------------------------------------------------------
 Thu Aug 21 04:53:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.9.0:
