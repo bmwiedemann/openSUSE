@@ -106,7 +106,7 @@ Summary:        Photometric Calibration of HDR and LDR Cameras
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 Requires:       dcraw
-Requires:       jhead
+Recommends:     ImageMagick
 %{perl_requires}
 %{?libperl_requires}
 
