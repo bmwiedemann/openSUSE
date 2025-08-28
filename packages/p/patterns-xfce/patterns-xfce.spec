@@ -462,6 +462,8 @@ Requires:       xfdesktop
 Recommends:     xfce4-terminal
 Recommends:     pavucontrol
 Recommends:     xfce4-pulseaudio-plugin
+# invoked from labwc keybinding
+Recommends:     alsa-utils
 
 # For screenlocking to work in xfce wayland
 Recommends:     xfce4-screensaver
@@ -530,18 +532,7 @@ Provides:       patterns-openSUSE-xfce_laptop_wayland = %{version}
 Obsoletes:      patterns-openSUSE-xfce_laptop_wayland < %{version}
 
 # Laptop-specific recommendations (Wayland safe)
-Recommends:     upower
 Recommends:     brightnessctl
-Recommends:     xfce4-battery-plugin
-Recommends:     xfce4-power-manager
-Recommends:     xfce4-power-manager-plugin
-Recommends:     xfce4-pulseaudio-plugin
-# invoked from labwc keybinding
-Recommends:     alsa-utils
-
-# Touchpad and input settings
-Recommends:     xfce4-settings
-Recommends:     xfce4-notifyd
 
 %description xfce_laptop_wayland
 XFCE Laptop configuration optimized for Wayland, including power management,

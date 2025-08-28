@@ -193,4 +193,17 @@
     <comment></comment>
     <requestid>1300478</requestid>
   </revision>
+  <revision rev="25" vrev="10">
+    <srcmd5>1d0b6ff24814207e172599b3d3cc27b9</srcmd5>
+    <version>20230212</version>
+    <time>1756394384</time>
+    <user>anag_factory</user>
+    <comment>- Move alsa-utils recommends from laptop_wayland to to basis_wayland
+  patterns, as it's always used by labwc, not depending on laptop
+- Clean up superfluous entries in laptop_wayland patterns that are
+  already included in the basis pattern;
+  xfce4-battery-plugin is dropped as xfce4-power-manager already
+  provides the functionality (and it's not used as default) (forwarded request 1301743 from tiwai)</comment>
+    <requestid>1301758</requestid>
+  </revision>
 </revisionlist>
