@@ -1,7 +1,7 @@
 #
 # spec file for package python-unyt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-unyt
-Version:        3.0.3
+Version:        3.0.4
 Release:        0
 Summary:        A package for handling numpy arrays with units
 License:        BSD-3-Clause
 URL:            https://github.com/yt-project/unyt
 Source:         https://files.pythonhosted.org/packages/source/u/unyt/unyt-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM unyt-pr512-np2.1.patch gh#yt-project/unyt#512
-Patch0:         https://github.com/yt-project/unyt/pull/512.patch#/unyt-pr512-np2.1.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}

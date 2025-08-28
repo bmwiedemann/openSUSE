@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Aug 28 05:24:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.0.4:
+  * BUG: fix incompatibilities with NumPy 2.1
+  * add foe and Bethe units
+  * Fix Stephan-Boltzmann constant accuracy and add radiation constant
+  * Typo fixes and documentation fix
+  * BUG: fix return units from numpy.ftt functions
+  * STY: migrate formatting from black to ruff
+  * BUG: fix incorrect output unit for np.prod with an axis argument
+  * BUG: np.histogram* functions give correct units when weights and/or
+    density are set
+  * BUG: fix an issue where np.histogramdd could create infinite recursion on
+    some inputs
+  * BUG: linspace and logspace give incorrect results or crash with some
+    inputs
+  * BUG: apply_over_axes no longer assumes user-supplied function preserves
+    units
+  * BUG: allow subclassing in unyt_array.__array_func__
+  * BUG: fix unit handling for np.take and unyt_array.take
+  * BUG: fix a regression where np.linspace's num argument would be ignored
+    for unyt_arrays
+  * RFC: handle np.vecdot as a ufunc rather than an arrayfunc
+  * BUG: fix raising a unyt array to an array power in sensible cases
+  * Fix typo in array function implementations (ftt -> fft)
+  * BUG: fix an issue where hdf5 io wouldn't roundtrip properly for a
+    unyt_quantity object
+- Drop patch unyt-pr512-np2.1.patch, included upstream.
+
+-------------------------------------------------------------------
 Fri Nov 15 16:49:49 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add unyt-pr512-np2.1.patch for compatibility with numpy 2.1
