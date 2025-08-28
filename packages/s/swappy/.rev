@@ -103,4 +103,20 @@
     <comment></comment>
     <requestid>1300185</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4e68f1d9ba5d3ddee218d65e54b5f7a3</srcmd5>
+    <version>1.8.0</version>
+    <time>1756394394</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.8.0:
+  Features:
+  * config: add left hand friendly keybinds (e3b8bf6)
+  * ui: add transparency feature (0416812)
+  * ui: support input method when edit text (5e3808c)
+  * ui: text supports pasting using Ctrl-v (59dca02)
+  Bug Fixes:
+  * application: bring back output option (061155c), closes #202
+  * application: save twice if auto_save and -o option (e5cde68)</comment>
+    <requestid>1301789</requestid>
+  </revision>
 </revisionlist>

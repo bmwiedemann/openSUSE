@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 28 11:14:59 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.0:
+  Features:
+  * config: add left hand friendly keybinds (e3b8bf6)
+  * ui: add transparency feature (0416812)
+  * ui: support input method when edit text (5e3808c)
+  * ui: text supports pasting using Ctrl-v (59dca02)
+  Bug Fixes:
+  * application: bring back output option (061155c), closes #202
+  * application: save twice if auto_save and -o option (e5cde68)
+
+-------------------------------------------------------------------
 Mon Aug 18 07:49:17 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.7.1:
