@@ -94,7 +94,7 @@ Source23:       postlogin-password.pamd
 Source24:       postlogin-session.pamd
 Patch1:         pam-limit-nproc.patch
 # PATCH-FIX-UPSTREAM
-Patch2:         pam_modutil_get-overwrite-password-at-free.patch
+Patch2:         post-v1.7.1.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  flex
@@ -217,6 +217,7 @@ CFLAGS="$CFLAGS -fpatchable-function-entry=16,14 -fdump-ipa-clones"
        -Dhtmldir=%{_docdir}/pam/html \
        -Dpdfdir=%{_docdir}/pam/pdf \
        -Dsecuredir=%{_pam_moduledir} \
+       -Dpam_unix-try-getspnam=true \
 %if "%{flavor}" != "full"
        -Dlogind=disabled \
        -Dpam_userdb=disabled \
@@ -224,6 +225,7 @@ CFLAGS="$CFLAGS -fpatchable-function-entry=16,14 -fdump-ipa-clones"
 %else
        -Dlogind=enabled \
 %endif
+       -Dpwaccess=disabled \
        -Delogind=disabled \
        -Dexamples=false \
        -Dnis=disabled

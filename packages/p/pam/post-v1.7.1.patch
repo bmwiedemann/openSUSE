@@ -1,0 +1,1273 @@
+diff --git a/doc/specs/draft-morgan-pam.raw b/doc/specs/draft-morgan-pam.raw
+index 8fdb0502..253d7e2c 100644
+--- a/doc/specs/draft-morgan-pam.raw
++++ b/doc/specs/draft-morgan-pam.raw
+@@ -442,7 +442,7 @@ available agents on the system is implementation specific.
+ pamc_start() function returns NULL on failure. Otherwise, the return
+ value is a pointer to an opaque data type which provides a handle to
+ the libpamc library. On systems where threading is available, the
+-libpamc libraray is thread safe provided a single (pamc_handler_t *)
++libpamc library is thread safe provided a single (pamc_handler_t *)
+ is used by each thread.
+ 
+ #$$$$  Client (Applicant) selection of agents
+diff --git a/examples/check_user.c b/examples/check_user.c
+index 89cc137b..bb100bc5 100644
+--- a/examples/check_user.c
++++ b/examples/check_user.c
+@@ -6,8 +6,8 @@
+ 
+   You need to add the following (or equivalent) to the /etc/pam.conf file.
+   # check authorization
+-  check   auth       required     pam_unix_auth.so
+-  check   account    required     pam_unix_acct.so
++  check   auth       required     pam_unix.so
++  check   account    required     pam_unix.so
+ */
+ 
+ #include <security/pam_appl.h>
+diff --git a/examples/tty_conv.c b/examples/tty_conv.c
+index 59bbb3b3..2219a51e 100644
+--- a/examples/tty_conv.c
++++ b/examples/tty_conv.c
+@@ -18,26 +18,26 @@
+ static void echoOff(int fd, int off)
+ {
+     struct termios tty;
+-    if (ioctl(fd, TCGETA, &tty) < 0)
++    if (tcgetattr(fd, &tty) < 0)
+     {
+-        fprintf(stderr, "TCGETA failed: %s\n", strerror(errno));
++        fprintf(stderr, "tcgetattr failed: %s\n", strerror(errno));
+         return;
+     }
+ 
+     if (off)
+     {
+         tty.c_lflag &= ~(ECHO | ECHOE | ECHOK | ECHONL);
+-        if (ioctl(fd, TCSETAF, &tty) < 0)
++        if (tcsetattr(fd, TCSAFLUSH, &tty) < 0)
+         {
+-            fprintf(stderr, "TCSETAF failed: %s\n", strerror(errno));
++            fprintf(stderr, "tcsetattr(TCSAFLUSH) failed: %s\n", strerror(errno));
+         }
+     }
+     else
+     {
+         tty.c_lflag |= (ECHO | ECHOE | ECHOK | ECHONL);
+-        if (ioctl(fd, TCSETAW, &tty) < 0)
++        if (tcsetattr(fd, TCSADRAIN, &tty) < 0)
+         {
+-            fprintf(stderr, "TCSETAW failed: %s\n", strerror(errno));
++            fprintf(stderr, "tcsetattr(TCSADRAIN) failed: %s\n", strerror(errno));
+         }
+     }
+ }
+diff --git a/libpam/pam_modutil_cleanup.c b/libpam/pam_modutil_cleanup.c
+index 2077cbd7..46233736 100644
+--- a/libpam/pam_modutil_cleanup.c
++++ b/libpam/pam_modutil_cleanup.c
+@@ -5,8 +5,12 @@
+  */
+ 
+ #include "pam_modutil_private.h"
++#include "pam_inline.h"
+ 
++#include <grp.h>
++#include <pwd.h>
+ #include <stdlib.h>
++#include <shadow.h>
+ 
+ void
+ pam_modutil_cleanup (pam_handle_t *pamh UNUSED, void *data,
+@@ -15,3 +19,39 @@ pam_modutil_cleanup (pam_handle_t *pamh UNUSED, void *data,
+ 	/* junk it */
+ 	free(data);
+ }
++
++void
++pam_modutil_cleanup_group (pam_handle_t *pamh UNUSED, void *data,
++			   int error_status UNUSED)
++{
++	struct group *gr = data;
++
++	if (gr && gr->gr_passwd)
++		pam_overwrite_string(gr->gr_passwd);
++
++	free(data);
++}
++
++void
++pam_modutil_cleanup_passwd (pam_handle_t *pamh UNUSED, void *data,
++			    int error_status UNUSED)
++{
++	struct passwd *pw = data;
++
++	if (pw && pw->pw_passwd)
++		pam_overwrite_string(pw->pw_passwd);
++
++	free(data);
++}
++
++void
++pam_modutil_cleanup_shadow (pam_handle_t *pamh UNUSED, void *data,
++			    int error_status UNUSED)
++{
++	struct spwd *sp = data;
++
++	if (sp && sp->sp_pwdp)
++		pam_overwrite_string(sp->sp_pwdp);
++
++	free(data);
++}
+diff --git a/libpam/pam_modutil_getgrgid.c b/libpam/pam_modutil_getgrgid.c
+index 6c2bb31b..fa3436c5 100644
+--- a/libpam/pam_modutil_getgrgid.c
++++ b/libpam/pam_modutil_getgrgid.c
+@@ -62,7 +62,7 @@ pam_modutil_getgrgid(pam_handle_t *pamh, gid_t gid)
+ 		    status = PAM_NO_MODULE_DATA;
+ 	            if (pam_get_data(pamh, data_name, &ignore) != PAM_SUCCESS) {
+ 		        status = pam_set_data(pamh, data_name,
+-					      result, pam_modutil_cleanup);
++					      result, pam_modutil_cleanup_group);
+ 		    }
+ 		    free(data_name);
+ 		    if (status == PAM_SUCCESS) {
+diff --git a/libpam/pam_modutil_getgrnam.c b/libpam/pam_modutil_getgrnam.c
+index 418b9e47..533a8ce6 100644
+--- a/libpam/pam_modutil_getgrnam.c
++++ b/libpam/pam_modutil_getgrnam.c
+@@ -62,7 +62,7 @@ pam_modutil_getgrnam(pam_handle_t *pamh, const char *group)
+ 		    status = PAM_NO_MODULE_DATA;
+ 	            if (pam_get_data(pamh, data_name, &ignore) != PAM_SUCCESS) {
+ 		        status = pam_set_data(pamh, data_name,
+-					      result, pam_modutil_cleanup);
++					      result, pam_modutil_cleanup_group);
+ 		    }
+ 		    free(data_name);
+ 		    if (status == PAM_SUCCESS) {
+diff --git a/libpam/pam_modutil_getpwnam.c b/libpam/pam_modutil_getpwnam.c
+index 5701ba9c..de654aeb 100644
+--- a/libpam/pam_modutil_getpwnam.c
++++ b/libpam/pam_modutil_getpwnam.c
+@@ -62,7 +62,7 @@ pam_modutil_getpwnam(pam_handle_t *pamh, const char *user)
+ 		    status = PAM_NO_MODULE_DATA;
+ 	            if (pam_get_data(pamh, data_name, &ignore) != PAM_SUCCESS) {
+ 		        status = pam_set_data(pamh, data_name,
+-					      result, pam_modutil_cleanup);
++					      result, pam_modutil_cleanup_passwd);
+ 		    }
+ 		    free(data_name);
+ 		    if (status == PAM_SUCCESS) {
+diff --git a/libpam/pam_modutil_getpwuid.c b/libpam/pam_modutil_getpwuid.c
+index d3bb7231..6534958c 100644
+--- a/libpam/pam_modutil_getpwuid.c
++++ b/libpam/pam_modutil_getpwuid.c
+@@ -62,7 +62,7 @@ pam_modutil_getpwuid(pam_handle_t *pamh, uid_t uid)
+ 		    status = PAM_NO_MODULE_DATA;
+ 	            if (pam_get_data(pamh, data_name, &ignore) != PAM_SUCCESS) {
+ 		        status = pam_set_data(pamh, data_name,
+-					      result, pam_modutil_cleanup);
++					      result, pam_modutil_cleanup_passwd);
+ 		    }
+ 		    free(data_name);
+ 		    if (status == PAM_SUCCESS) {
+diff --git a/libpam/pam_modutil_getspnam.c b/libpam/pam_modutil_getspnam.c
+index 9aa6ac9a..9733eda0 100644
+--- a/libpam/pam_modutil_getspnam.c
++++ b/libpam/pam_modutil_getspnam.c
+@@ -62,7 +62,7 @@ pam_modutil_getspnam(pam_handle_t *pamh, const char *user)
+ 		    status = PAM_NO_MODULE_DATA;
+ 	            if (pam_get_data(pamh, data_name, &ignore) != PAM_SUCCESS) {
+ 		        status = pam_set_data(pamh, data_name,
+-					      result, pam_modutil_cleanup);
++					      result, pam_modutil_cleanup_shadow);
+ 		    }
+ 		    free(data_name);
+ 		    if (status == PAM_SUCCESS) {
+diff --git a/libpam/pam_modutil_private.h b/libpam/pam_modutil_private.h
+index 98a30f68..611c7696 100644
+--- a/libpam/pam_modutil_private.h
++++ b/libpam/pam_modutil_private.h
+@@ -20,5 +20,14 @@
+ extern void
+ pam_modutil_cleanup(pam_handle_t *pamh, void *data,
+                     int error_status);
++extern void
++pam_modutil_cleanup_group(pam_handle_t *pamh, void *data,
++			  int error_status);
++extern void
++pam_modutil_cleanup_passwd(pam_handle_t *pamh, void *data,
++			   int error_status);
++extern void
++pam_modutil_cleanup_shadow(pam_handle_t *pamh, void *data,
++			   int error_status);
+ 
+ #endif /* PAMMODUTIL_PRIVATE_H */
+diff --git a/meson.build b/meson.build
+index 0827a53e..af83cd51 100644
+--- a/meson.build
++++ b/meson.build
+@@ -53,6 +53,7 @@ cdata.set10('DEFAULT_USERGROUPS_SETTING', get_option('usergroups'))
+ cdata.set('PAM_USERTYPE_UIDMIN', get_option('uidmin'))
+ cdata.set('PAM_USERTYPE_OVERFLOW_UID', get_option('kernel-overflow-uid'))
+ cdata.set('PAM_MISC_CONV_BUFSIZE', get_option('misc-conv-bufsize'))
++cdata.set('PAM_UNIX_TRY_GETSPNAM', get_option('pam_unix-try-getspnam') ? 1 : false)
+ 
+ cdata.set_quoted('_PAM_ISA',
+   get_option('isadir') != '' ? get_option('isadir') : '../..' / fs.name(libdir) / 'security')
+@@ -150,6 +151,7 @@ add_project_link_arguments(
+   # --as-needed and --no-undefined are enabled by default
+   cc.get_supported_link_arguments([
+     '-Wl,--fatal-warnings',
++    '-Wl,--no-undefined-version',
+     '-Wl,-O1',
+   ]),
+   language: 'c')
+@@ -263,6 +265,10 @@ foreach f: ['crypt_r']
+   endif
+ endforeach
+ 
++libpwaccess = dependency('libpwaccess', required: get_option('pwaccess'))
++if libpwaccess.found()
++  cdata.set('USE_PWACCESS', 1)
++endif
+ 
+ libeconf = dependency('libeconf', version: '>= 0.5.0', required: get_option('econf'))
+ if libeconf.found()
+diff --git a/meson_options.txt b/meson_options.txt
+index a172ceea..35d979b5 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -14,6 +14,8 @@ option('elogind', type: 'feature', value: 'auto',
+        description: 'logind support in pam_issue, pam_limits, and pam_timestamp via elogind')
+ option('openssl', type: 'feature', value: 'disabled',
+        description: 'Use OpenSSL crypto libraries in pam_timestamp')
++option('pwaccess', type: 'feature', value: 'auto',
++       description: 'libpwaccess support in pam_unix')
+ option('selinux', type: 'feature', value: 'auto',
+        description: 'SELinux support')
+ option('nis', type: 'feature', value: 'auto',
+@@ -85,7 +87,7 @@ option('xauth', type: 'string',
+        description: 'Additional path to check for xauth when it is called from pam_xauth')
+ option('randomdev', type: 'string',
+        description: 'Random device to use instead of /dev/urandom')
+-option('vendordir', type: 'string',
++option('vendordir', type: 'string', value: '/usr/share/pam',
+        description: 'Distribution provided configuration files directory')
+ 
+ option('pam_userdb', type: 'feature', value: 'auto',
+@@ -99,3 +101,5 @@ option('pam_lastlog', type: 'feature', value: 'disabled',
+        description: 'pam_lastlog module')
+ option('pam_unix', type: 'feature', value: 'auto',
+        description: 'pam_unix module')
++option('pam_unix-try-getspnam', type: 'boolean', value: false,
++       description: 'Let pam_unix try getspnam to obtain shadow password file entry before falling back to invoking the helper')
+diff --git a/modules/maps/modules-account-session.map b/modules/maps/modules-account-session.map
+new file mode 100644
+index 00000000..da87def8
+--- /dev/null
++++ b/modules/maps/modules-account-session.map
+@@ -0,0 +1,7 @@
++{
++  global:
++    pam_sm_acct_mgmt;
++    pam_sm_close_session;
++    pam_sm_open_session;
++  local: *;
++};
+diff --git a/modules/maps/modules-account.map b/modules/maps/modules-account.map
+new file mode 100644
+index 00000000..2b35aeb7
+--- /dev/null
++++ b/modules/maps/modules-account.map
+@@ -0,0 +1,5 @@
++{
++  global:
++    pam_sm_acct_mgmt;
++  local: *;
++};
+diff --git a/modules/modules.map b/modules/maps/modules-auth-account-password-session.map
+similarity index 100%
+rename from modules/modules.map
+rename to modules/maps/modules-auth-account-password-session.map
+diff --git a/modules/maps/modules-auth-account-password.map b/modules/maps/modules-auth-account-password.map
+new file mode 100644
+index 00000000..1f9e00b1
+--- /dev/null
++++ b/modules/maps/modules-auth-account-password.map
+@@ -0,0 +1,8 @@
++{
++  global:
++    pam_sm_acct_mgmt;
++    pam_sm_authenticate;
++    pam_sm_chauthtok;
++    pam_sm_setcred;
++  local: *;
++};
+diff --git a/modules/maps/modules-auth-account-session.map b/modules/maps/modules-auth-account-session.map
+new file mode 100644
+index 00000000..dcc94d87
+--- /dev/null
++++ b/modules/maps/modules-auth-account-session.map
+@@ -0,0 +1,9 @@
++{
++  global:
++    pam_sm_acct_mgmt;
++    pam_sm_authenticate;
++    pam_sm_close_session;
++    pam_sm_open_session;
++    pam_sm_setcred;
++  local: *;
++};
+diff --git a/modules/maps/modules-auth-account.map b/modules/maps/modules-auth-account.map
+new file mode 100644
+index 00000000..71928f8b
+--- /dev/null
++++ b/modules/maps/modules-auth-account.map
+@@ -0,0 +1,7 @@
++{
++  global:
++    pam_sm_acct_mgmt;
++    pam_sm_authenticate;
++    pam_sm_setcred;
++  local: *;
++};
+diff --git a/modules/maps/modules-auth-session.map b/modules/maps/modules-auth-session.map
+new file mode 100644
+index 00000000..40ec74d6
+--- /dev/null
++++ b/modules/maps/modules-auth-session.map
+@@ -0,0 +1,8 @@
++{
++  global:
++    pam_sm_authenticate;
++    pam_sm_close_session;
++    pam_sm_open_session;
++    pam_sm_setcred;
++  local: *;
++};
+diff --git a/modules/maps/modules-auth.map b/modules/maps/modules-auth.map
+new file mode 100644
+index 00000000..eb970e07
+--- /dev/null
++++ b/modules/maps/modules-auth.map
+@@ -0,0 +1,6 @@
++{
++  global:
++    pam_sm_authenticate;
++    pam_sm_setcred;
++  local: *;
++};
+diff --git a/modules/maps/modules-password.map b/modules/maps/modules-password.map
+new file mode 100644
+index 00000000..b2538d45
+--- /dev/null
++++ b/modules/maps/modules-password.map
+@@ -0,0 +1,5 @@
++{
++  global:
++    pam_sm_chauthtok;
++  local: *;
++};
+diff --git a/modules/maps/modules-session.map b/modules/maps/modules-session.map
+new file mode 100644
+index 00000000..b413987f
+--- /dev/null
++++ b/modules/maps/modules-session.map
+@@ -0,0 +1,6 @@
++{
++  global:
++    pam_sm_close_session;
++    pam_sm_open_session;
++  local: *;
++};
+diff --git a/modules/meson.build b/modules/meson.build
+index 20cebdbb..68a7a63c 100644
+--- a/modules/meson.build
++++ b/modules/meson.build
+@@ -1,9 +1,3 @@
+-pam_module_map = 'modules.map'
+-pam_module_map_path = meson.current_source_dir() / pam_module_map
+-
+-pam_module_link_deps = ['..' / pam_module_map]
+-pam_module_link_args = ['-Wl,--version-script=' + pam_module_map_path]
+-
+ subdir('pam_access')
+ subdir('pam_canonicalize_user')
+ subdir('pam_debug')
+diff --git a/modules/module-meson.build b/modules/module-meson.build
+index dce38b90..7920dc8b 100644
+--- a/modules/module-meson.build
++++ b/modules/module-meson.build
+@@ -128,6 +128,12 @@ if module == 'pam_xauth'
+   pam_module_deps += [libselinux]
+ endif
+ 
++pam_module_map = 'module.map'
++pam_module_map_path = meson.current_source_dir() / pam_module_map
++
++pam_module_link_deps = [pam_module_map]
++pam_module_link_args = ['-Wl,--version-script=' + pam_module_map_path]
++
+ pam_module = shared_module(
+   module,
+   name_prefix: '',
+@@ -425,7 +431,7 @@ if module == 'pam_unix'
+              ],
+     c_args: ['-DHELPER_COMPILE="unix_chkpwd"'],
+     link_args: exe_link_args,
+-    dependencies: [libpam_internal_dep, libpam_dep, libcrypt, libselinux, libaudit],
++    dependencies: [libpam_internal_dep, libpam_dep, libcrypt, libselinux, libaudit, libpwaccess],
+     install: true,
+     install_dir: sbindir,
+   )
+@@ -441,7 +447,7 @@ if module == 'pam_unix'
+                ],
+       c_args: ['-DHELPER_COMPILE="unix_update"'],
+       link_args: exe_link_args,
+-      dependencies: [libpam_internal_dep, libpam_dep, libcrypt, libselinux, libaudit],
++      dependencies: [libpam_internal_dep, libpam_dep, libcrypt, libselinux, libaudit, libpwaccess],
+       install: true,
+       install_dir: sbindir,
+     )
+diff --git a/modules/pam_access/module.map b/modules/pam_access/module.map
+new file mode 120000
+index 00000000..894551fb
+--- /dev/null
++++ b/modules/pam_access/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account-password-session.map
+\ No newline at end of file
+diff --git a/modules/pam_canonicalize_user/module.map b/modules/pam_canonicalize_user/module.map
+new file mode 120000
+index 00000000..190be9a2
+--- /dev/null
++++ b/modules/pam_canonicalize_user/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth.map
+\ No newline at end of file
+diff --git a/modules/pam_debug/module.map b/modules/pam_debug/module.map
+new file mode 120000
+index 00000000..894551fb
+--- /dev/null
++++ b/modules/pam_debug/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account-password-session.map
+\ No newline at end of file
+diff --git a/modules/pam_deny/module.map b/modules/pam_deny/module.map
+new file mode 120000
+index 00000000..894551fb
+--- /dev/null
++++ b/modules/pam_deny/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account-password-session.map
+\ No newline at end of file
+diff --git a/modules/pam_echo/module.map b/modules/pam_echo/module.map
+new file mode 120000
+index 00000000..894551fb
+--- /dev/null
++++ b/modules/pam_echo/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account-password-session.map
+\ No newline at end of file
+diff --git a/modules/pam_env/module.map b/modules/pam_env/module.map
+new file mode 120000
+index 00000000..894551fb
+--- /dev/null
++++ b/modules/pam_env/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account-password-session.map
+\ No newline at end of file
+diff --git a/modules/pam_env/pam_env.8.xml b/modules/pam_env/pam_env.8.xml
+index c7889e0f..2bf7d7b2 100644
+--- a/modules/pam_env/pam_env.8.xml
++++ b/modules/pam_env/pam_env.8.xml
+@@ -80,8 +80,8 @@
+       pairs on separate lines. The path to this file can be specified with the
+       <emphasis>envfile</emphasis> option.
+       If this file has not been defined, the settings are read from the
+-      files <filename>/etc/security/environment</filename> and
+-      <filename>/etc/security/environment.d/*</filename>.
++      files <filename>/etc/environment</filename> and
++      <filename>/etc/environment.d/*</filename>.
+       If the file <filename>/etc/environment</filename> does not exist, the
+       settings are read from the files <filename>%vendordir%/environment</filename>,
+       <filename>%vendordir%/environment.d/*</filename> and
+diff --git a/modules/pam_env/pam_env.c b/modules/pam_env/pam_env.c
+index 496c8943..3158768e 100644
+--- a/modules/pam_env/pam_env.c
++++ b/modules/pam_env/pam_env.c
+@@ -627,10 +627,15 @@ _expand_arg(pam_handle_t *pamh, char **value)
+     if ('\\' == *orig) {
+       ++orig;
+       if ('$' != *orig && '@' != *orig && '\\' != *orig) {
+-	D(("Unrecognized escaped character: <%c> - ignoring", *orig));
+-	pam_syslog(pamh, LOG_ERR,
+-		   "Unrecognized escaped character: <%c> - ignoring",
+-		   *orig);
++	if (*orig) {
++	  D(("Unrecognized escaped character: <%c> - ignoring", *orig));
++	  pam_syslog(pamh, LOG_ERR,
++		     "Unrecognized escaped character: <%c> - ignoring",
++		     *orig);
++	} else {
++	  D(("Ignoring backslash at end of string"));
++	  pam_syslog(pamh, LOG_ERR, "Ignoring backslash at end of string");
++	}
+       } else {
+ 	/* Note the increment */
+ 	if (_strbuf_add_char(&buf, *orig++)) {
+diff --git a/modules/pam_exec/module.map b/modules/pam_exec/module.map
+new file mode 120000
+index 00000000..894551fb
+--- /dev/null
++++ b/modules/pam_exec/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account-password-session.map
+\ No newline at end of file
+diff --git a/modules/pam_faildelay/module.map b/modules/pam_faildelay/module.map
+new file mode 120000
+index 00000000..190be9a2
+--- /dev/null
++++ b/modules/pam_faildelay/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth.map
+\ No newline at end of file
+diff --git a/modules/pam_faillock/faillock.conf b/modules/pam_faillock/faillock.conf
+index 16d93df7..3e119013 100644
+--- a/modules/pam_faillock/faillock.conf
++++ b/modules/pam_faillock/faillock.conf
+@@ -33,7 +33,7 @@
+ #
+ # The length of the interval during which the consecutive
+ # authentication failures must happen for the user account
+-# lock out is <replaceable>n</replaceable> seconds.
++# lock out is n seconds.
+ # The default is 900 (15 minutes).
+ # fail_interval = 900
+ #
+@@ -56,7 +56,7 @@
+ #
+ # If a group name is specified with this option, members
+ # of the group will be handled by this module the same as
+-# the root account (the options `even_deny_root>` and
+-# `root_unlock_time` will apply to them.
++# the root account (the options `even_deny_root` and
++# `root_unlock_time` will apply to them).
+ # By default, the option is not set.
+ # admin_group = <admin_group_name>
+diff --git a/modules/pam_faillock/module.map b/modules/pam_faillock/module.map
+new file mode 120000
+index 00000000..6cc612ef
+--- /dev/null
++++ b/modules/pam_faillock/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account.map
+\ No newline at end of file
+diff --git a/modules/pam_faillock/pam_faillock.8.xml b/modules/pam_faillock/pam_faillock.8.xml
+index ce0ae050..42f87e81 100644
+--- a/modules/pam_faillock/pam_faillock.8.xml
++++ b/modules/pam_faillock/pam_faillock.8.xml
+@@ -243,6 +243,14 @@
+       user accounts allowing the adversary to infer that a particular account
+       is not existing on a system.
+     </para>
++    <para>
++      If the <option>auth</option> stack has not been run prior to the <option>account</option>
++      stack, the logic to reset the failed login counter is intentionally skipped. This prevents
++      automated services, such as <emphasis>crond</emphasis> or <emphasis>systemd-user</emphasis>,
++      which might only perform account management tasks, from inadvertently clearing a user's
++      failed attempt records. This ensures the faillock counter is only reset by a service that
++      performs a full, successful authentication.
++    </para>
+   </refsect1>
+ 
+   <refsect1 xml:id="pam_faillock-examples">
+diff --git a/modules/pam_faillock/pam_faillock.c b/modules/pam_faillock/pam_faillock.c
+index 2d847aeb..a8363b6c 100644
+--- a/modules/pam_faillock/pam_faillock.c
++++ b/modules/pam_faillock/pam_faillock.c
+@@ -62,6 +62,8 @@
+ #define FAILLOCK_ACTION_AUTHSUCC 1
+ #define FAILLOCK_ACTION_AUTHFAIL 2
+ 
++#define FAILLOCK_AUTH_EXECUTED   "pam_faillock:auth_executed"
++
+ static int
+ args_parse(pam_handle_t *pamh, int argc, const char **argv,
+ 		int flags, struct options *opts)
+@@ -478,6 +480,10 @@ pam_sm_authenticate(pam_handle_t *pamh, int flags,
+ 		goto err;
+ 	}
+ 
++	rv = pam_set_data(pamh, FAILLOCK_AUTH_EXECUTED, (void *)1, NULL);
++	if (rv != PAM_SUCCESS)
++		goto err;
++
+ 	if (!(opts.flags & FAILLOCK_FLAG_LOCAL_ONLY) ||
+ 		check_local_user (pamh, opts.user) != 0) {
+ 		switch (opts.action) {
+@@ -531,6 +537,7 @@ pam_sm_acct_mgmt(pam_handle_t *pamh, int flags,
+ 	struct options opts;
+ 	int rv, fd = -1;
+ 	struct tally_data tallies;
++	const void *auth_flag;
+ 
+ 	memset(&tallies, 0, sizeof(tallies));
+ 
+@@ -541,6 +548,12 @@ pam_sm_acct_mgmt(pam_handle_t *pamh, int flags,
+ 
+ 	opts.action = FAILLOCK_ACTION_AUTHSUCC;
+ 
++	rv = pam_get_data(pamh, FAILLOCK_AUTH_EXECUTED, &auth_flag);
++	if (rv == PAM_NO_MODULE_DATA) {
++		rv = PAM_SUCCESS;
++		goto err;
++	}
++
+ 	if ((rv=get_pam_user(pamh, &opts)) != PAM_SUCCESS) {
+ 		goto err;
+ 	}
+diff --git a/modules/pam_filter/module.map b/modules/pam_filter/module.map
+new file mode 120000
+index 00000000..894551fb
+--- /dev/null
++++ b/modules/pam_filter/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account-password-session.map
+\ No newline at end of file
+diff --git a/modules/pam_ftp/module.map b/modules/pam_ftp/module.map
+new file mode 120000
+index 00000000..190be9a2
+--- /dev/null
++++ b/modules/pam_ftp/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth.map
+\ No newline at end of file
+diff --git a/modules/pam_group/module.map b/modules/pam_group/module.map
+new file mode 120000
+index 00000000..190be9a2
+--- /dev/null
++++ b/modules/pam_group/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth.map
+\ No newline at end of file
+diff --git a/modules/pam_issue/module.map b/modules/pam_issue/module.map
+new file mode 120000
+index 00000000..190be9a2
+--- /dev/null
++++ b/modules/pam_issue/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth.map
+\ No newline at end of file
+diff --git a/modules/pam_keyinit/module.map b/modules/pam_keyinit/module.map
+new file mode 120000
+index 00000000..96519a4f
+--- /dev/null
++++ b/modules/pam_keyinit/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-session.map
+\ No newline at end of file
+diff --git a/modules/pam_lastlog/module.map b/modules/pam_lastlog/module.map
+new file mode 120000
+index 00000000..fa8c55e7
+--- /dev/null
++++ b/modules/pam_lastlog/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account-session.map
+\ No newline at end of file
+diff --git a/modules/pam_lastlog/pam_lastlog.c b/modules/pam_lastlog/pam_lastlog.c
+index 01545a69..c68b5fb0 100644
+--- a/modules/pam_lastlog/pam_lastlog.c
++++ b/modules/pam_lastlog/pam_lastlog.c
+@@ -569,7 +569,8 @@ last_login_failed(pam_handle_t *pamh, int announce, const char *user, time_t llt
+ 
+     while ((retval=pam_modutil_read(fd, (void *)&ut,
+ 			 sizeof(ut))) == sizeof(ut)) {
+-	if (ut.ut_tv.tv_sec >= lltime && strncmp(ut.ut_user, user, UT_NAMESIZE) == 0) {
++	if (zero_extend_signed_to_ull(ut.ut_tv.tv_sec) >= zero_extend_signed_to_ull(lltime)
++	    && strncmp(ut.ut_user, user, UT_NAMESIZE) == 0) {
+ 	    memcpy(&utuser, &ut, sizeof(utuser));
+ 	    failed++;
+ 	}
+diff --git a/modules/pam_limits/module.map b/modules/pam_limits/module.map
+new file mode 120000
+index 00000000..b90af7a8
+--- /dev/null
++++ b/modules/pam_limits/module.map
+@@ -0,0 +1 @@
++../maps/modules-session.map
+\ No newline at end of file
+diff --git a/modules/pam_listfile/module.map b/modules/pam_listfile/module.map
+new file mode 120000
+index 00000000..894551fb
+--- /dev/null
++++ b/modules/pam_listfile/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account-password-session.map
+\ No newline at end of file
+diff --git a/modules/pam_localuser/module.map b/modules/pam_localuser/module.map
+new file mode 120000
+index 00000000..894551fb
+--- /dev/null
++++ b/modules/pam_localuser/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account-password-session.map
+\ No newline at end of file
+diff --git a/modules/pam_loginuid/module.map b/modules/pam_loginuid/module.map
+new file mode 120000
+index 00000000..d4486c2b
+--- /dev/null
++++ b/modules/pam_loginuid/module.map
+@@ -0,0 +1 @@
++../maps/modules-account-session.map
+\ No newline at end of file
+diff --git a/modules/pam_mail/module.map b/modules/pam_mail/module.map
+new file mode 120000
+index 00000000..96519a4f
+--- /dev/null
++++ b/modules/pam_mail/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-session.map
+\ No newline at end of file
+diff --git a/modules/pam_mkhomedir/module.map b/modules/pam_mkhomedir/module.map
+new file mode 120000
+index 00000000..b90af7a8
+--- /dev/null
++++ b/modules/pam_mkhomedir/module.map
+@@ -0,0 +1 @@
++../maps/modules-session.map
+\ No newline at end of file
+diff --git a/modules/pam_motd/module.map b/modules/pam_motd/module.map
+new file mode 120000
+index 00000000..b90af7a8
+--- /dev/null
++++ b/modules/pam_motd/module.map
+@@ -0,0 +1 @@
++../maps/modules-session.map
+\ No newline at end of file
+diff --git a/modules/pam_namespace/module.map b/modules/pam_namespace/module.map
+new file mode 120000
+index 00000000..b90af7a8
+--- /dev/null
++++ b/modules/pam_namespace/module.map
+@@ -0,0 +1 @@
++../maps/modules-session.map
+\ No newline at end of file
+diff --git a/modules/pam_nologin/module.map b/modules/pam_nologin/module.map
+new file mode 120000
+index 00000000..6cc612ef
+--- /dev/null
++++ b/modules/pam_nologin/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account.map
+\ No newline at end of file
+diff --git a/modules/pam_permit/module.map b/modules/pam_permit/module.map
+new file mode 120000
+index 00000000..894551fb
+--- /dev/null
++++ b/modules/pam_permit/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account-password-session.map
+\ No newline at end of file
+diff --git a/modules/pam_pwhistory/module.map b/modules/pam_pwhistory/module.map
+new file mode 120000
+index 00000000..7df2e1b6
+--- /dev/null
++++ b/modules/pam_pwhistory/module.map
+@@ -0,0 +1 @@
++../maps/modules-password.map
+\ No newline at end of file
+diff --git a/modules/pam_rhosts/module.map b/modules/pam_rhosts/module.map
+new file mode 120000
+index 00000000..190be9a2
+--- /dev/null
++++ b/modules/pam_rhosts/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth.map
+\ No newline at end of file
+diff --git a/modules/pam_rootok/module.map b/modules/pam_rootok/module.map
+new file mode 120000
+index 00000000..175e8b86
+--- /dev/null
++++ b/modules/pam_rootok/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account-password.map
+\ No newline at end of file
+diff --git a/modules/pam_securetty/module.map b/modules/pam_securetty/module.map
+new file mode 120000
+index 00000000..6cc612ef
+--- /dev/null
++++ b/modules/pam_securetty/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account.map
+\ No newline at end of file
+diff --git a/modules/pam_selinux/module.map b/modules/pam_selinux/module.map
+new file mode 120000
+index 00000000..96519a4f
+--- /dev/null
++++ b/modules/pam_selinux/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-session.map
+\ No newline at end of file
+diff --git a/modules/pam_sepermit/module.map b/modules/pam_sepermit/module.map
+new file mode 120000
+index 00000000..6cc612ef
+--- /dev/null
++++ b/modules/pam_sepermit/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account.map
+\ No newline at end of file
+diff --git a/modules/pam_setquota/module.map b/modules/pam_setquota/module.map
+new file mode 120000
+index 00000000..b90af7a8
+--- /dev/null
++++ b/modules/pam_setquota/module.map
+@@ -0,0 +1 @@
++../maps/modules-session.map
+\ No newline at end of file
+diff --git a/modules/pam_shells/module.map b/modules/pam_shells/module.map
+new file mode 120000
+index 00000000..6cc612ef
+--- /dev/null
++++ b/modules/pam_shells/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account.map
+\ No newline at end of file
+diff --git a/modules/pam_stress/module.map b/modules/pam_stress/module.map
+new file mode 120000
+index 00000000..894551fb
+--- /dev/null
++++ b/modules/pam_stress/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account-password-session.map
+\ No newline at end of file
+diff --git a/modules/pam_succeed_if/module.map b/modules/pam_succeed_if/module.map
+new file mode 120000
+index 00000000..894551fb
+--- /dev/null
++++ b/modules/pam_succeed_if/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account-password-session.map
+\ No newline at end of file
+diff --git a/modules/pam_time/module.map b/modules/pam_time/module.map
+new file mode 120000
+index 00000000..1057580e
+--- /dev/null
++++ b/modules/pam_time/module.map
+@@ -0,0 +1 @@
++../maps/modules-account.map
+\ No newline at end of file
+diff --git a/modules/pam_timestamp/module.map b/modules/pam_timestamp/module.map
+new file mode 120000
+index 00000000..96519a4f
+--- /dev/null
++++ b/modules/pam_timestamp/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-session.map
+\ No newline at end of file
+diff --git a/modules/pam_timestamp/pam_timestamp.c b/modules/pam_timestamp/pam_timestamp.c
+index 0172d1ef..030fa2b8 100644
+--- a/modules/pam_timestamp/pam_timestamp.c
++++ b/modules/pam_timestamp/pam_timestamp.c
+@@ -244,7 +244,9 @@ check_login_time(
+ 		if (strncmp(ruser, ut->ut_user, sizeof(ut->ut_user)) != 0) {
+ 			continue;
+ 		}
+-		if (oldest_login == 0 || oldest_login > ut->ut_tv.tv_sec) {
++		if (oldest_login == 0 ||
++		    zero_extend_signed_to_ull(oldest_login)
++		    > zero_extend_signed_to_ull(ut->ut_tv.tv_sec)) {
+ 			oldest_login = ut->ut_tv.tv_sec;
+ 		}
+ 	}
+diff --git a/modules/pam_tty_audit/module.map b/modules/pam_tty_audit/module.map
+new file mode 120000
+index 00000000..b90af7a8
+--- /dev/null
++++ b/modules/pam_tty_audit/module.map
+@@ -0,0 +1 @@
++../maps/modules-session.map
+\ No newline at end of file
+diff --git a/modules/pam_umask/module.map b/modules/pam_umask/module.map
+new file mode 120000
+index 00000000..b90af7a8
+--- /dev/null
++++ b/modules/pam_umask/module.map
+@@ -0,0 +1 @@
++../maps/modules-session.map
+\ No newline at end of file
+diff --git a/modules/pam_unix/module.map b/modules/pam_unix/module.map
+new file mode 120000
+index 00000000..894551fb
+--- /dev/null
++++ b/modules/pam_unix/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account-password-session.map
+\ No newline at end of file
+diff --git a/modules/pam_unix/pam_unix_acct.c b/modules/pam_unix/pam_unix_acct.c
+index 961b7667..5afcbba9 100644
+--- a/modules/pam_unix/pam_unix_acct.c
++++ b/modules/pam_unix/pam_unix_acct.c
+@@ -63,7 +63,7 @@
+ #include "passverify.h"
+ 
+ int _unix_run_verify_binary(pam_handle_t *pamh, unsigned long long ctrl,
+-	const char *user, int *daysleft)
++	const char *user, long *daysleft)
+ {
+   int retval=0, child, fds[2];
+   struct sigaction newsa, oldsa;
+@@ -156,7 +156,7 @@ int _unix_run_verify_binary(pam_handle_t *pamh, unsigned long long ctrl,
+         rc = pam_modutil_read(fds[0], buf, sizeof(buf) - 1);
+ 	if(rc > 0) {
+ 	      buf[rc] = '\0';
+-	      if (sscanf(buf,"%d", daysleft) != 1 )
++	      if (sscanf(buf,"%ld", daysleft) != 1)
+ 	        retval = PAM_AUTH_ERR;
+ 	    }
+ 	else {
+@@ -191,7 +191,8 @@ pam_sm_acct_mgmt(pam_handle_t *pamh, int flags, int argc, const char **argv)
+ 	unsigned long long ctrl;
+ 	const void *void_uname;
+ 	const char *uname;
+-	int retval, daysleft = -1;
++	long daysleft = -1;
++	int retval;
+ 	char buf[256];
+ 
+ 	D(("called."));
+@@ -263,24 +264,24 @@ pam_sm_acct_mgmt(pam_handle_t *pamh, int flags, int argc, const char **argv)
+ 	case PAM_SUCCESS:
+ 		if (daysleft >= 0) {
+ 			pam_syslog(pamh, LOG_DEBUG,
+-				"password for user %s will expire in %d days",
++				"password for user %s will expire in %ld days",
+ 				uname, daysleft);
+ #if defined HAVE_DNGETTEXT && defined ENABLE_NLS
+ 			pam_sprintf(buf,
+ 				dngettext(PACKAGE,
+-				  "Warning: your password will expire in %d day.",
+-				  "Warning: your password will expire in %d days.",
++				  "Warning: your password will expire in %ld day.",
++				  "Warning: your password will expire in %ld days.",
+ 				  daysleft),
+ 				daysleft);
+ #else
+ 			if (daysleft == 1)
+ 			    pam_sprintf(buf,
+-				_("Warning: your password will expire in %d day."),
++				_("Warning: your password will expire in %ld day."),
+ 				daysleft);
+ 			else
+ 			    pam_sprintf(buf,
+ 			    /* TRANSLATORS: only used if dngettext is not supported */
+-				_("Warning: your password will expire in %d days."),
++				_("Warning: your password will expire in %ld days."),
+ 				daysleft);
+ #endif
+ 			_make_remark(pamh, ctrl, PAM_TEXT_INFO, buf);
+diff --git a/modules/pam_unix/pam_unix_auth.c b/modules/pam_unix/pam_unix_auth.c
+index ffb61547..e713afca 100644
+--- a/modules/pam_unix/pam_unix_auth.c
++++ b/modules/pam_unix/pam_unix_auth.c
+@@ -2,7 +2,6 @@
+  * pam_unix authentication management
+  *
+  * Copyright Alexander O. Yuriev, 1996.  All rights reserved.
+- * NIS+ support by Thorsten Kukuk <kukuk@weber.uni-paderborn.de>
+  * Copyright Jan Rękorajski, 1999.  All rights reserved.
+  *
+  * Redistribution and use in source and binary forms, with or without
+diff --git a/modules/pam_unix/pam_unix_passwd.c b/modules/pam_unix/pam_unix_passwd.c
+index cdd253e3..dbc9fb76 100644
+--- a/modules/pam_unix/pam_unix_passwd.c
++++ b/modules/pam_unix/pam_unix_passwd.c
+@@ -510,7 +510,7 @@ static int _unix_verify_shadow(pam_handle_t *pamh, const char *user, unsigned lo
+ {
+ 	struct passwd *pwent = NULL;	/* Password and shadow password */
+ 	struct spwd *spent = NULL;	/* file entries for the user */
+-	int daysleft;
++	long daysleft;
+ 	int retval;
+ 
+ 	retval = get_account_info(pamh, user, &pwent, &spent);
+diff --git a/modules/pam_unix/passverify.c b/modules/pam_unix/passverify.c
+index 85e7841e..7f758bb4 100644
+--- a/modules/pam_unix/passverify.c
++++ b/modules/pam_unix/passverify.c
+@@ -23,6 +23,9 @@
+ #ifdef HAVE_CRYPT_H
+ #include <crypt.h>
+ #endif
++#ifdef USE_PWACCESS
++#include <pwaccess.h>
++#endif
+ 
+ #include "pam_cc_compat.h"
+ #include "pam_inline.h"
+@@ -200,65 +203,51 @@ PAMH_ARG_DECL(int get_account_info,
+ 	*pwd = pam_modutil_getpwnam(pamh, name);	/* Get password file entry... */
+ 	*spwdent = NULL;
+ 
+-	if (*pwd != NULL) {
+-		if (strcmp((*pwd)->pw_passwd, "*NP*") == 0)
+-		{ /* NIS+ */
+-#ifdef HELPER_COMPILE
+-			uid_t save_euid, save_uid;
+-
+-			save_euid = geteuid();
+-			save_uid = getuid();
+-			if (save_uid == (*pwd)->pw_uid) {
+-				if (setreuid(save_euid, save_uid))
+-					return PAM_CRED_INSUFFICIENT;
+-			} else  {
+-				if (setreuid(0, -1))
+-					return PAM_CRED_INSUFFICIENT;
+-				if (setreuid(-1, (*pwd)->pw_uid)) {
+-					if (setreuid(-1, 0)
+-					    || setreuid(0, -1)
+-					    || setreuid(-1, (*pwd)->pw_uid)) {
+-						return PAM_CRED_INSUFFICIENT;
+-					}
+-				}
+-			}
+-
+-			*spwdent = pam_modutil_getspnam(pamh, name);
+-			if (save_uid == (*pwd)->pw_uid) {
+-				if (setreuid(save_uid, save_euid))
+-					return PAM_CRED_INSUFFICIENT;
+-			} else {
+-				if (setreuid(-1, 0)
+-				    || setreuid(save_uid, -1)
+-				    || setreuid(-1, save_euid))
+-					return PAM_CRED_INSUFFICIENT;
+-			}
++	if (*pwd == NULL) {
++		return PAM_USER_UNKNOWN;
++	}
+ 
+-			if (*spwdent == NULL || (*spwdent)->sp_pwdp == NULL)
+-				return PAM_AUTHINFO_UNAVAIL;
+-#else
+-			/* we must run helper for NIS+ passwords */
+-			return PAM_UNIX_RUN_HELPER;
++	if (is_pwd_shadowed(*pwd)) {
++#if defined(HELPER_COMPILE) || defined(PAM_UNIX_TRY_GETSPNAM)
++		/*
++		 * shadow password file entry for this user,
++		 * if shadowing is enabled
++		 */
++#ifdef USE_PWACCESS
++		int r;
++		bool complete = false;
++		char *error = NULL;
++
++		r = pwaccess_get_user_record(-1, name, NULL, spwdent, &complete, &error);
++		if (r < 0) {
++			if (!PWACCESS_IS_NOT_RUNNING(r))
++				pam_syslog(pamh, LOG_ERR, "%s",
++					   error ? error : strerror(-r));
++			free(error);
++		}
++		if (complete)
++			return PAM_SUCCESS;
++		struct_shadow_freep(spwdent);
+ #endif
+-		} else if (is_pwd_shadowed(*pwd)) {
+-#ifdef HELPER_COMPILE
+-			/*
+-			 * shadow password file entry for this user,
+-			 * if shadowing is enabled
+-			 */
+-			*spwdent = getspnam(name);
+-			if (*spwdent == NULL || (*spwdent)->sp_pwdp == NULL)
+-				return PAM_AUTHINFO_UNAVAIL;
+-#else
+-			/*
+-			 * The helper has to be invoked to deal with
+-			 * the shadow password file entry.
+-			 */
+-			return PAM_UNIX_RUN_HELPER;
++		*spwdent = pam_modutil_getspnam(pamh, name);
++		if (*spwdent == NULL || (*spwdent)->sp_pwdp == NULL
++# ifndef HELPER_COMPILE
++			/* synthesized entry from libnss-systemd */
++			|| (strcmp(name, "root") == 0 &&
++			    strcmp((*spwdent)->sp_pwdp, "!*") == 0)
++# endif
++		   )
++# ifdef HELPER_COMPILE
++			return PAM_AUTHINFO_UNAVAIL;
++# endif
++#endif /* HELPER_COMPILE || PAM_UNIX_TRY_GETSPNAM */
++#ifndef HELPER_COMPILE
++		/*
++		 * The helper has to be invoked to deal with
++		 * the shadow password file entry.
++		 */
++		return PAM_UNIX_RUN_HELPER;
+ #endif
+-		}
+-	} else {
+-		return PAM_USER_UNKNOWN;
+ 	}
+ 	return PAM_SUCCESS;
+ }
+@@ -284,23 +273,8 @@ PAMH_ARG_DECL(int get_pwd_hash,
+ 	return PAM_SUCCESS;
+ }
+ 
+-/*
+- * invariant: 0 <= num1
+- * invariant: 0 <= num2
+- */
+-static int
+-subtract(long num1, long num2)
+-{
+-	long value = num1 - num2;
+-	if (value < INT_MIN)
+-		return INT_MIN;
+-	if (value > INT_MAX)
+-		return INT_MAX;
+-	return (int)value;
+-}
+-
+ PAMH_ARG_DECL(int check_shadow_expiry,
+-	struct spwd *spent, int *daysleft)
++	struct spwd *spent, long *daysleft)
+ {
+ 	long int curdays, passed;
+ 	*daysleft = -1;
+@@ -331,7 +305,7 @@ PAMH_ARG_DECL(int check_shadow_expiry,
+ 			long inact = spent->sp_max < LONG_MAX - spent->sp_inact ?
+ 			    spent->sp_max + spent->sp_inact : LONG_MAX;
+ 			if (passed >= inact) {
+-				*daysleft = subtract(inact, passed);
++				*daysleft = inact - passed;
+ 				D(("authtok expired"));
+ 				return PAM_AUTHTOK_EXPIRED;
+ 			}
+@@ -344,7 +318,7 @@ PAMH_ARG_DECL(int check_shadow_expiry,
+ 			long warn = spent->sp_warn > spent->sp_max ? -1 :
+ 			    spent->sp_max - spent->sp_warn;
+ 			if (passed >= warn) {
+-				*daysleft = subtract(spent->sp_max, passed);
++				*daysleft = spent->sp_max - passed;
+ 				D(("warn before expiry"));
+ 			}
+ 		}
+diff --git a/modules/pam_unix/passverify.h b/modules/pam_unix/passverify.h
+index 1636791c..234eb8ca 100644
+--- a/modules/pam_unix/passverify.h
++++ b/modules/pam_unix/passverify.h
+@@ -73,7 +73,7 @@ PAMH_ARG_DECL(int get_pwd_hash,
+ 	const char *name, struct passwd **pwd, char **hash);
+ 
+ PAMH_ARG_DECL(int check_shadow_expiry,
+-	struct spwd *spent, int *daysleft);
++	struct spwd *spent, long *daysleft);
+ 
+ PAMH_ARG_DECL(int unix_update_passwd,
+ 	const char *forwho, const char *towhat);
+diff --git a/modules/pam_unix/support.c b/modules/pam_unix/support.c
+index b95f95e6..652e35b2 100644
+--- a/modules/pam_unix/support.c
++++ b/modules/pam_unix/support.c
+@@ -648,7 +648,7 @@ _unix_blankpasswd (pam_handle_t *pamh, unsigned long long ctrl, const char *name
+ {
+ 	struct passwd *pwd = NULL;
+ 	char *salt = NULL;
+-	int daysleft;
++	long daysleft;
+ 	int retval;
+ 	int blank = 0;
+ 	int execloop;
+@@ -863,7 +863,7 @@ int
+ _unix_verify_user(pam_handle_t *pamh,
+                   unsigned long long ctrl,
+                   const char *name,
+-                  int *daysleft)
++                  long *daysleft)
+ {
+     int retval;
+     struct spwd *spent;
+diff --git a/modules/pam_unix/support.h b/modules/pam_unix/support.h
+index e8f629d7..759b7ba0 100644
+--- a/modules/pam_unix/support.h
++++ b/modules/pam_unix/support.h
+@@ -174,9 +174,9 @@ extern int _unix_verify_password(pam_handle_t * pamh, const char *name,
+ 				 const char *p, unsigned long long ctrl);
+ 
+ extern int _unix_verify_user(pam_handle_t *pamh, unsigned long long ctrl,
+-                             const char *name, int *daysleft);
++                             const char *name, long *daysleft);
+ 
+ extern int _unix_run_verify_binary(pam_handle_t *pamh,
+ 				   unsigned long long ctrl,
+-				   const char *user, int *daysleft);
++				   const char *user, long *daysleft);
+ #endif /* _PAM_UNIX_SUPPORT_H */
+diff --git a/modules/pam_unix/unix_chkpwd.c b/modules/pam_unix/unix_chkpwd.c
+index 820136d5..dde41a3a 100644
+--- a/modules/pam_unix/unix_chkpwd.c
++++ b/modules/pam_unix/unix_chkpwd.c
+@@ -41,7 +41,7 @@ static int _check_expiry(const char *uname)
+ 	struct spwd *spent;
+ 	struct passwd *pwent;
+ 	int retval;
+-	int daysleft;
++	long daysleft;
+ 
+ 	retval = get_account_info(uname, &pwent, &spent);
+ 	if (retval != PAM_SUCCESS) {
+@@ -56,7 +56,7 @@ static int _check_expiry(const char *uname)
+ 	}
+ 
+ 	retval = check_shadow_expiry(spent, &daysleft);
+-	printf("%d\n", daysleft);
++	printf("%ld\n", daysleft);
+ 	return retval;
+ }
+ 
+diff --git a/modules/pam_userdb/module.map b/modules/pam_userdb/module.map
+new file mode 120000
+index 00000000..6cc612ef
+--- /dev/null
++++ b/modules/pam_userdb/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account.map
+\ No newline at end of file
+diff --git a/modules/pam_usertype/module.map b/modules/pam_usertype/module.map
+new file mode 120000
+index 00000000..894551fb
+--- /dev/null
++++ b/modules/pam_usertype/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account-password-session.map
+\ No newline at end of file
+diff --git a/modules/pam_warn/module.map b/modules/pam_warn/module.map
+new file mode 120000
+index 00000000..894551fb
+--- /dev/null
++++ b/modules/pam_warn/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account-password-session.map
+\ No newline at end of file
+diff --git a/modules/pam_wheel/module.map b/modules/pam_wheel/module.map
+new file mode 120000
+index 00000000..6cc612ef
+--- /dev/null
++++ b/modules/pam_wheel/module.map
+@@ -0,0 +1 @@
++../maps/modules-auth-account.map
+\ No newline at end of file
+diff --git a/modules/pam_xauth/module.map b/modules/pam_xauth/module.map
+new file mode 120000
+index 00000000..b90af7a8
+--- /dev/null
++++ b/modules/pam_xauth/module.map
+@@ -0,0 +1 @@
++../maps/modules-session.map
+\ No newline at end of file

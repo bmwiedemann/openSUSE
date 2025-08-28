@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 27 14:20:14 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to 1.7.1+git (post-v1.7.1.patch)
+  - disable unix_chkpwd by default, only used as fallback again
+- pam_modutil_get-overwrite-password-at-free.patch is included
+
+-------------------------------------------------------------------
 Tue Aug 19 10:12:13 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Make sure that the buffer containing encrypted passwords get's erased,
