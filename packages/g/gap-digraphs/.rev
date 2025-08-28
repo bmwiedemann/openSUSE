@@ -63,4 +63,12 @@
     <comment>- Add eaps4.patch</comment>
     <requestid>1290161</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6477645245fbb39140964eda3e211adf</srcmd5>
+    <version>1.10.1</version>
+    <time>1756394308</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.10.1</comment>
+    <requestid>1301616</requestid>
+  </revision>
 </revisionlist>

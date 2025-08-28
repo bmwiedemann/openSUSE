@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 27 18:43:23 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.10.1
+  * Fix a duplication bug in ArticulationPoints
+
+-------------------------------------------------------------------
 Thu Jul  3 09:19:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add eaps4.patch

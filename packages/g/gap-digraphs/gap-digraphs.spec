@@ -17,7 +17,7 @@
 
 
 Name:           gap-digraphs
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 Summary:        GAP: Digraphs and multigraphs
 License:        GPL-3.0-or-later
