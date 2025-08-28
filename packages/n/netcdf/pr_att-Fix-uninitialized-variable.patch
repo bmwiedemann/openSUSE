@@ -18,7 +18,7 @@ index d333cc37..41f44683 100644
 --- a/ncdump/ncdump.c
 +++ b/ncdump/ncdump.c
 @@ -896,6 +896,7 @@ pr_att(
- 		   value = *((uint64_t *)data + i);
+		   value = (int64_t)*((uint64_t *)data + i);
  		   break;
  	       default:
 +		   value = 0; /* GCC */

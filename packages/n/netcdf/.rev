@@ -688,4 +688,12 @@ Use SPDX- proprietary prefix until this license is accepted upstream by spdx.org
 - Add openmpi5 build flavour</comment>
     <requestid>1266211</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>b97b1499d29687826e2a0d2bb7b5ddb7</srcmd5>
+    <version>4.9.3</version>
+    <time>1756394396</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1301786</requestid>
+  </revision>
 </revisionlist>

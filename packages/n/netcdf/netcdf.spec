@@ -1,7 +1,7 @@
 #
 # spec file for package netcdf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _do_check 1
 
 %define pname netcdf
-%define sonum   19
+%define sonum   22
 
 %bcond_with valgrind_checks
 # Keep disabled until properly set up on HDF5 library side
@@ -85,15 +85,13 @@ Name:           %{package_name}
 Summary:        Command-line programs for the NetCDF scientific data format
 License:        NetCDF
 Group:          Productivity/Scientific/Other
-Version:        4.9.2
+Version:        4.9.3
 Release:        0
 URL:            https://www.unidata.ucar.edu/software/netcdf/
 Source:         https://downloads.unidata.ucar.edu/netcdf-c/%{version}/%{pname}-c-%{version}.tar.gz
 Source1:        nc-config.1.gz
-Patch6:         parseServers-Fix-uninitialized-variable-simplify-error-path.patch
 Patch8:         val_NC_check_voff-Fix-uninitialized-variable-warning.patch
 Patch9:         pr_att-Fix-uninitialized-variable.patch
-Patch10:        NCD4_dumpbytes-Add-missing-initialization-of-float-types.patch
 Patch11:        NCZ_def_var_chunking-make-sure-cs-is-set-before-used.patch
 Patch12:        Fix-spurious-uninitialized-variable-warning.patch
 

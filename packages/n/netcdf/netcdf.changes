@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 26 18:34:22 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 4.9.3:
+  * Extend the netcdf API to support programmatic changes to the
+    plugin search path.
+  * For complete changelog, see included RELEASE_NOTES.md, or
+    https://github.com/Unidata/netcdf-c/releases/tag/v4.9.3
+- Drop obsolete patches:
+  * parseServers-Fix-uninitialized-variable-simplify-error-path.patch
+  * NCD4_dumpbytes-Add-missing-initialization-of-float-types.patch
+- Rebase:
+  * pr_att-Fix-uninitialized-variable.patch
+  * Fix-spurious-uninitialized-variable-warning.patch
+
+-------------------------------------------------------------------
 Mon Mar 24 13:15:07 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Disable and remove support for gnu-hpc build flavours (bsc#1239982)
