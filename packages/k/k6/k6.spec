@@ -17,7 +17,7 @@
 
 
 Name:           k6
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Modern load testing tool, using Go and JavaScript
 License:        AGPL-3.0
