@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Aug 28 04:45:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.32.0:
+  * Added Features
+    - Catalog entire build list for Go projects, not just packages
+      listed in go.mod [#432 #4127 @spiffcs]
+    - package.json authors keyword parsing [#2250 #4003 @popey]
+    - Conda ecosystem support (basic) [#4002@SimeonStoykovQC]
+  * Bug Fixes
+    - When scanning the FFmpeg binary with Syft a new package is
+      now added [#3988 #3994 @popey]
+    - Warn loudly if SQLite driver is not present when needed
+      [#3234 #4150 @kzantow]
+  * Additional Changes
+    - Update dependencies to use go.yaml.in/yaml [#4157 @n-bes]
+    - chore(deps): update anchore dependencies (#4169)
+    - chore(deps): bump github.com/diskfs/go-diskfs (#4159)
+    - chore(deps): bump github.com/stretchr/testify from 1.10.0 to
+      1.11.0 (#4160)
+    - chore(deps): update tools to latest versions (#4154)
+    - chore(deps): bump github/codeql-action from 3.29.10 to
+      3.29.11 (#4149)
+    - chore(deps): bump github/codeql-action from 3.29.9 to 3.29.10
+      (#4145)
+    - chore(deps): update CPE dictionary index (#4143)
+    - chore(deps): bump github.com/hashicorp/go-getter from 1.7.8
+      to 1.7.9 (#4144)
+    - chore(deps): bump anchore/sbom-action from 0.20.4 to 0.20.5
+      (#4141)
+    - chore(deps): update tools to latest versions (#4139)
+
+-------------------------------------------------------------------
 Tue Aug 19 05:14:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.31.0:
