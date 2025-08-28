@@ -5848,4 +5848,13 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
     <comment>chromium 139.0.7258.138 (boo#1248315)</comment>
     <requestid>1300355</requestid>
   </revision>
+  <revision rev="475" vrev="1">
+    <srcmd5>35949445fcc5629211c914c51bcf2649</srcmd5>
+    <version>139.0.7258.154</version>
+    <time>1756394305</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 139.0.7258.154 (boo#1248769)
+  * CVE-2025-9478: Use after free in ANGLE</comment>
+    <requestid>1301538</requestid>
+  </revision>
 </revisionlist>
