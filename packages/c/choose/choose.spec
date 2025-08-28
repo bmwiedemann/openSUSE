@@ -1,7 +1,7 @@
 #
 # spec file for package choose
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           choose
-Version:        1.3.6
+Version:        1.3.7
 Release:        0
 Summary:        A human-friendly and fast alternative to cut and (sometimes) awk
 License:        MIT

@@ -28,4 +28,15 @@
   * Move linker flag to github workflow</comment>
     <requestid>1205065</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d1bc97c81f0a33503bf181a1f51af162</srcmd5>
+    <version>1.3.7</version>
+    <time>1756394399</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.3.7:
+  * name windows binary with .exe
+  * fix build warnings
+  * fix crlf messing up -1</comment>
+    <requestid>1301788</requestid>
+  </revision>
 </revisionlist>
