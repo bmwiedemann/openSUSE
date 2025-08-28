@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Aug 28 05:38:50 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.4.1:
+  * Fix off-axis rendering when center is not [0.5, 0.5, 0.5], fix
+    periodicity
+  * Ensure positions are dimensionless in plot callbacks
+  * Correctly normalize off-axis projections for octree datasets
+  * Calculate default depth for off axis projections
+  * Fix compatibility with matplotlib 3.10 for images that have both a
+    custom background color and a non-transparent 'bad' color
+  * Removing code that removes field type in set_title()
+  * Properly reference weight field in profile code for particle-based
+    datasets
+  * Fix swap_axes bug wih celledgescallback
+  * Fix nans in off-center frb slices from ds.r
+  * Make backend_specs case insensitive
+  * Update testing.integrate_kernel type hints
+  * Better behavior when cholla doesn't write "mu" attribute
+  * removing code that removes field type in set_title()
+  * Adapt ci and test suite to breaking changes in pytest 8.4.0
+  * fix an incoming incompatibility with pytest 8.5 in our test framework
+  * Filter out an indirect deprecation warning from pillow via matplotlib
+
+-------------------------------------------------------------------
 Wed Jul 30 15:55:34 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - remove version pin for Cpython

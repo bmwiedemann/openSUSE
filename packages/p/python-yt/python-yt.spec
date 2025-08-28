@@ -1,7 +1,7 @@
 #
 # spec file for package python-yt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-yt%{psuffix}
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 Summary:        An analysis and visualization toolkit for volumetric data
 License:        BSD-3-Clause
