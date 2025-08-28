@@ -224,4 +224,22 @@ AFAICT these packages aren't needed for generating the docs and the official doc
   [bsc#1246670]</comment>
     <requestid>1296356</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d1625aa38fb388b1a0f67b97e9f565eb</srcmd5>
+    <version>3.0.1</version>
+    <time>1756394402</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.0.1
+  Security Fixes:
+  * Corrected an issue in kea-dhcp4 that caused the server to abort
+    if a client sent a unicast request with a particular options,
+    and Kea failed to find an appropriate subnet for that client.
+    (CVE-2025-40779)
+    [bsc#1248801]
+  Changes:
+  * Moved Botan crypto backend support to version 3.
+  * Avoid adding the qualifying-suffix to fully qualified host
+    names specified in host reservations.</comment>
+    <requestid>1301813</requestid>
+  </revision>
 </revisionlist>

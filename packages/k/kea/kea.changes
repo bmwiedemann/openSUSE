@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Aug 28 09:03:21 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 3.0.1
+  Security Fixes:
+  * Corrected an issue in kea-dhcp4 that caused the server to abort
+    if a client sent a unicast request with a particular options,
+    and Kea failed to find an appropriate subnet for that client.
+    (CVE-2025-40779)
+    [bsc#1248801]
+
+  Changes:
+  * Moved Botan crypto backend support to version 3.
+  * Avoid adding the qualifying-suffix to fully qualified host
+    names specified in host reservations.
+
+-------------------------------------------------------------------
 Tue Jul 29 09:44:04 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Remove `/usr/share/kea/meson-info` directory because it contains
