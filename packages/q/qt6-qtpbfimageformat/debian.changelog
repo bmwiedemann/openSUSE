@@ -1,3 +1,9 @@
+qt5-pbf-image-plugin (4.7) stable; urgency=low
+
+  * Default map style tweaks.
+
+ -- Martin Tuma <tumic@cbox.cz>  Thu, 28 Aug 2025 09:17:55 +0200
+
 qt5-pbf-image-plugin (4.6) stable; urgency=low
 
   * Fixed bottom text-anchor rendering.
