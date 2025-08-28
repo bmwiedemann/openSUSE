@@ -17,7 +17,6 @@
 
 
 Name:           mkdud
-BuildRequires:  xz
 %if 0%?suse_version >= 1500 || 0%?sle_version >= 120400
 BuildRequires:  rubygem(asciidoctor)
 %else
@@ -26,11 +25,31 @@ BuildRequires:  asciidoc
 BuildRequires:  libxslt-tools
 %endif
 %endif
+%if %suse_version >= 1500
+Requires:       mkisofs
+%else
+Requires:       genisoimage
+%endif
+Requires:       binutils
+Requires:       coreutils
+Requires:       cpio
+Requires:       file
+Requires:       findutils
 Requires:       gpg2
+Requires:       grep
+Requires:       gzip
+Requires:       kmod
+Requires:       osc
+Requires:       rpm
+Requires:       rpm-build
+Requires:       tar
+Requires:       util-linux
+Requires:       xz
+Requires:       zstd
 Summary:        Create driver update from rpms
 License:        GPL-3.0-or-later
 Group:          Hardware/Other
-Version:        1.55
+Version:        2.0
 Release:        0
 Source:         %{name}-%{version}.tar.xz
 Url:            https://github.com/openSUSE/mkdud

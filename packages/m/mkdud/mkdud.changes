@@ -1,4 +1,14 @@
 --------------------------------------------------------------------
+Thu Aug 28 11:40:49 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mkdud#42
+- make mkdud SLE-16 aware (jsc#PED-13262)
+- update man page
+- documentation update
+- adjust package dependencies
+- 2.0
+
+--------------------------------------------------------------------
 Thu Sep 22 12:27:13 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mkdud#41
