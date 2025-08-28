@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 28 04:52:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.13:
+  * build(deps): bump the chainguard group with 4 updates
+  * chore(sbom): resolve warning for directory source
+  * build(deps): bump github.com/stretchr/testify from 1.10.0 to
+    1.11.0 (#1734)
+  * build(deps): bump chainguard-dev/actions from 1.4.11 to 1.4.12
+    (#1733)
+
+-------------------------------------------------------------------
 Mon Aug 25 04:46:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.12:
