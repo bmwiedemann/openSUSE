@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_jk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,7 @@ cd native
 %configure \
 	--with-pic \
 	--with-apxs=%{apache_apxs} \
-	%{nil} 
+	%{nil}
 %make_build
 
 %install

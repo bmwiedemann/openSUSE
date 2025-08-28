@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 27 15:40:51 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Minor tweak to the shipped jk.conf (boo#1239178):
+  + Set JkLogFile to /var/log/apache/jk.conf: as this is written by
+    apache, the previous location /var/log/tomcat is not permitted
+  + Set JkShmFile to /var/lib/apache2/jk-runtime-status: again,
+    /var/log/tomcat is no suitable location, as mod_jk is running
+    as apache's user. Moving it to /var/log does not make sense, as
+    SHM is not a log file.
+
+-------------------------------------------------------------------
 Wed Mar 19 15:44:20 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - drop unneeded pcre build requirement

@@ -370,4 +370,12 @@
     <comment>- drop unneeded pcre build requirement (forwarded request 1254478 from AndreasStieger)</comment>
     <requestid>1265136</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>c12c9165f3c7d796d95a3f9519bc1d77</srcmd5>
+    <version>1.2.50</version>
+    <time>1756394385</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1301760</requestid>
+  </revision>
 </revisionlist>
