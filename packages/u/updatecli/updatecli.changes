@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Aug 28 05:10:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.106.0:
+  * Features
+    - feat: add mermaidjs graph to report and remove experimental
+      requirement @olblak (#5922)
+  * Bug Fixes
+    - fix(yaml): correctly remove file protocol from file path
+      @olblak (#5921)
+  * Maintenance
+    - deps(github/action): bump all dependencies @updateclibot[bot]
+      (#5941)
+    - deps(go): bump module github.com/stretchr/testify to v1.11.1
+      @updateclibot[bot] (#5937)
+    - deps(go): bump module
+      github.com/hashicorp/terraform-registry-address to v0.4.0
+      @updateclibot[bot] (#5919)
+    - deps(go): bump module github.com/stretchr/testify to v1.11.0
+      @updateclibot[bot] (#5910)
+    - deps(go): bump module github.com/beevik/etree to v1.6.0
+      @updateclibot[bot] (#5907)
+    - deps(go): bump module github.com/zclconf/go-cty to v1.16.4
+      @updateclibot[bot] (#5903)
+    - deps(go): bump module helm.sh/helm/v3 to v3.18.6
+      @updateclibot[bot] (#5897)
+    - deps: Bump Golang version to 1.25.0 @updateclibot[bot]
+      (#5890)
+    - deps(updatecli/policies): bump all policies
+      @updateclibot[bot] (#5889)
+    - deps: bump golangci-lint to v2.4.0 @updateclibot[bot] (#5884)
+    - deps(go): bump module helm.sh/helm/v3 to v3.18.5
+      @updateclibot[bot] (#5879)
+    - deps(go): bump module github.com/drone/go-scm to v1.40.6
+      @updateclibot[bot] (#5872)
+    - deps(go): bump module github.com/drone/go-scm to v1.40.5
+      @updateclibot[bot] (#5859)
+    - deps(go): bump module cuelang.org/go to v0.14.1
+      @updateclibot[bot] (#5851)
+
+-------------------------------------------------------------------
 Wed Aug 20 07:35:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.105.1:
