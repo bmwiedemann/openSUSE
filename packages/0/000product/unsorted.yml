@@ -14100,20 +14100,20 @@ unsorted:
   - libkdumpfile-devel 
   - libkdumpfile12 
   - libkea-asiodns62 
-  - libkea-asiolink87 
+  - libkea-asiolink88 
   - libkea-cc82 
   - libkea-cfgrpt3 
   - libkea-config83 
-  - libkea-cryptolink63 
+  - libkea-cryptolink64 
   - libkea-d2srv63 
   - libkea-database76 
   - libkea-dhcp109 
   - libkea-dhcp_ddns68 
-  - libkea-dhcpsrv129 
+  - libkea-dhcpsrv130 
   - libkea-dns71 
   - libkea-eval84 
   - libkea-exceptions45 
-  - libkea-hooks118 
+  - libkea-hooks119 
   - libkea-http87 
   - libkea-log-interprocess3 
   - libkea-log75 
@@ -14726,9 +14726,9 @@ unsorted:
   - libnet-devel 
   - libnet-doc 
   - libnet9 
-  - libnetcdf19 
-  - libnetcdf19-openmpi4 
-  - libnetcdf19-openmpi5 
+  - libnetcdf22 
+  - libnetcdf22-openmpi4 
+  - libnetcdf22-openmpi5 
   - libnetcdf_c++-devel 
   - libnetcdf_c++4 
   - libnetcdf_c++4-1 
