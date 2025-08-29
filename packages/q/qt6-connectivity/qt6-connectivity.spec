@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-connectivity
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.9.1
+%define real_version 6.9.2
 %define short_version 6.9
 %define tar_name qtconnectivity-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global __requires_exclude qt6qmlimport\\((HeartRateGame|NdefEditor.*)\\)
 #
 Name:           qt6-connectivity%{?pkg_suffix}
-Version:        6.9.1
+Version:        6.9.2
 Release:        0
 Summary:        Qt 6 connectivity tools and libraries
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
