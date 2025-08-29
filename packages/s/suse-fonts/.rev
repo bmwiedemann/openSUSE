@@ -22,4 +22,25 @@
   * Files ready for GF</comment>
     <requestid>1198002</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a4ad7176e0ec75a3225d4d89b56af526</srcmd5>
+    <version>2.000</version>
+    <time>1756485292</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.000:
+  * Added Black weight to SUSE family, with matching italics.
+  * Introduced SUSE Mono variant (Thin → ExtraBold) with
+    matching italics.
+  * Added full Vietnamese coverage — total coverage now 278
+    Latin-based languages.
+  * Implemented coding ligatures in SUSE Mono, optimized for
+    terminal and coding environments.
+  * Added PUA and emoji-trigger options for chameleon logo in
+    Mono styles (easter egg).
+  * Updated vertical metrics, naming tables, and weight classes
+    for consistency across families.
+  * Refreshed Google Fonts specimen images to reflect expanded
+    family.</comment>
+    <requestid>1301603</requestid>
+  </revision>
 </revisionlist>

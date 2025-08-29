@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 27 15:37:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.000:
+  * Added Black weight to SUSE family, with matching italics.
+  * Introduced SUSE Mono variant (Thin → ExtraBold) with
+    matching italics.
+  * Added full Vietnamese coverage — total coverage now 278
+    Latin-based languages.
+  * Implemented coding ligatures in SUSE Mono, optimized for
+    terminal and coding environments.
+  * Added PUA and emoji-trigger options for chameleon logo in
+    Mono styles (easter egg).
+  * Updated vertical metrics, naming tables, and weight classes
+    for consistency across families.
+  * Refreshed Google Fonts specimen images to reflect expanded
+    family.
+
+-------------------------------------------------------------------
 Sat Aug 31 08:57:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - use embedded OFL license, drop extra copy
