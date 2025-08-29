@@ -83,6 +83,10 @@ build: $(OBJDIR)/Makefile
 	$(MAKE) -C $(OBJDIR)
 
 
+listsettings: .mozconfig
+	$(MACH_CMD) settings --list
+
+
 $(OBJDIR_TARGETS):
 	$(MAKE) -C $(OBJDIR) $@
 

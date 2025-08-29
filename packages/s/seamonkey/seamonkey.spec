@@ -17,33 +17,101 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# upstream default is clang (to use gcc for large parts set to 0)
-%define clang_build    0
+### build options
+
+# Components to include/exclude
+%bcond_without	dominspector
+%bcond_without	irc
+%bcond_without	localizations
+
+# System vs. bundled libraries
+%bcond_without	system_webp
+%bcond_without	system_icu
+%bcond_without	system_libvpx
+%bcond_without	system_ffi
+%bcond_without	system_nspr
+%bcond_without	system_nss
+%bcond_without	system_zlib
+# Disable system AV1 on Leap; as of 15.6 dav1d is not yet packaged for it
+%if 0%{?suse_version} > 1600
+%bcond_without	system_av1
+%endif
+%bcond_with     system_jpeg
+%bcond_with     system_png
+
+# Compiler/linker options
+%bcond_with     clang
+%ifarch %ix86
+# As of 2.53.3 (and still in 2.53.21) i586 builds fail with LTO
+%bcond_with     lto
+%else
+%bcond_without  lto
+%endif
+%bcond_with     gold
+
+
+%define progname %{name}
+%define sources_subdir %{name}-%{version}
+%define prefix /usr
+%define progdir %_libdir/%{progname}
+### build options end
+
+%define releasedate 20250605000000
 
 Name:           seamonkey
+Summary:        An integrated web browser, composer, mail/news client, and IRC client
+Version:        2.53.21
+Release:        0
+License:        MPL-2.0
+Group:          Productivity/Networking/Web/Browsers
+URL:            https://www.seamonkey-project.org/
+
+Source0:        https://archive.mozilla.org/pub/seamonkey/releases/%{version}/source/seamonkey-%{version}.source.tar.xz
+Source1:        https://archive.mozilla.org/pub/seamonkey/releases/%{version}/source/seamonkey-%{version}.source-l10n.tar.xz
+Source2:        seamonkey-desktop.tar.bz2
+Source3:        spellcheck.js
+Source4:        mozilla.sh.in
+Source5:        suse-default-prefs.js
+Source6:        seamonkey-rpmlintrc
+Source7:        seamonkey-appdata.tar.bz2
+Source8:        seamonkey-GNUmakefile
+
+Patch1:         seamonkey-2.0.0-nongnome-proxies.patch
+Patch2:         seamonkey-2.1.0-bmo634334.patch
+Patch3:         seamonkey-2.53.3-lto.patch
+Patch4:         seamonkey-2.53.7.1-man-page.patch
+Patch5:         seamonkey-2.53.20-boo1237231.patch
+Patch6:         seamonkey-2.53.17.1-bmo531915.patch
+Patch7:         seamonkey-2.53.19-bmo1896958.patch
+Patch8:         seamonkey-2.53.20-mach-use-python-311.patch
+Patch9:         seamonkey-2.53.21-bmo1862601.patch
+Patch10:        seamonkey-2.53.21-bmo1927380.patch
+Patch11:	seamonkey-2.53.20-system-av1.patch
+Patch12:        seamonkey-2.53.21-bmo1332139.patch
+Patch13:        seamonkey-2.53.21-bmo1662867.patch
+
 BuildRequires:  Mesa-devel
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf213
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  fdupes
-# Use GCC 14 on Tumbleweed because builds of 2.53.21 fail with GCC 15
-%if 0%{?suse_version} > 1600
-BuildRequires:  gcc14-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  hunspell-devel
-# Using system AV1 decoder depends on pending patch from
-# https://bugzilla.mozilla.org/show_bug.cgi?id=1559213
-#BuildRequires:  dav1d5-devel
+%if 0%{?suse_version} > 1600 && %{with system_av1}
+BuildRequires:  libaom-devel
+BuildRequires:  dav1d-devel
+%endif
 BuildRequires:  libiw-devel
 BuildRequires:  libnotify-devel
 BuildRequires:  libproxy-devel
-#BuildRequires:  libvpx-devel # Compile errors with 1.10.0
+%if %{with system_libvpx}
+BuildRequires:  libvpx-devel
+%endif
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
 BuildRequires:  libwebp-devel >= 1.0.0
 %endif
+%if %{with system_icu}
 BuildRequires:  libicu-devel >= 67.1
+%endif
 BuildRequires:  makeinfo
 BuildRequires:  memory-constraints
 BuildRequires:  python311-base
@@ -60,7 +128,9 @@ BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.30
 BuildRequires:  pkgconfig(gtk+-unix-print-2.0)
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
+%if %{with system_ffi}
 BuildRequires:  pkgconfig(libffi) > 3.0.9
+%endif
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(xcomposite)
 %if 0%{?suse_version} > 1600
@@ -73,38 +143,25 @@ BuildRequires:  rust >= 1.76
 BuildRequires:  rust-cbindgen
 BuildRequires:  git
 BuildRequires:  nasm >= 2.13
-#BuildRequires:  llvm-devel
 BuildRequires:  clang-devel
+%if %{with clang}
+BuildRequires:  clang
+%else
+# Use GCC 14 on Tumbleweed because builds of 2.53.21 fail with GCC 15
+%if 0%{?suse_version} > 1600
+%define gcc_version 14
+%endif
+BuildRequires:  gcc%{?gcc_version:%gcc_version}-c++
+%if %{with gold}
+BuildRequires:  binutils-gold
+%endif
+%endif
+
+PreReq:         /bin/sh coreutils
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
 Provides:       web_browser
 Provides:       browser(npapi)
-Version:        2.53.21
-Release:        0
-%define releasedate 20250605000000
-Summary:        An integrated web browser, composer, mail/news client, and IRC client
-License:        MPL-2.0
-Group:          Productivity/Networking/Web/Browsers
-Url:            https://www.seamonkey-project.org/
-Source:         https://archive.mozilla.org/pub/seamonkey/releases/%{version}/source/seamonkey-%{version}.source.tar.xz
-Source1:        seamonkey-desktop.tar.bz2
-Source2:        spellcheck.js
-Source3:        mozilla.sh.in
-Source4:        suse-default-prefs.js
-Source5:        https://archive.mozilla.org/pub/seamonkey/releases/%{version}/source/seamonkey-%{version}.source-l10n.tar.xz
-Source7:        seamonkey-rpmlintrc
-Source11:       seamonkey-appdata.tar.bz2
-Source12:       seamonkey-GNUmakefile
-Patch1:         mozilla-nongnome-proxies.patch
-Patch2:         mozilla-ntlm-full-path.patch
-Patch3:         seamonkey-lto.patch
-Patch4:         seamonkey-man-page.patch
-Patch5:         reproducible.patch
-Patch6:         mozilla-bmo531915.patch
-Patch7:         mozilla-bmo1896958.patch
-Patch8:         mach-use-python-311.patch
-Patch9:         mozilla-bmo1862601.patch
-Patch10:        seamonkey-icu.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-PreReq:         /bin/sh coreutils
 Provides:       seamonkey-mail = %{version}
 Obsoletes:      seamonkey-mail <= 2.0
 Provides:       seamonkey-spellchecker = %{version}
@@ -119,41 +176,34 @@ Recommends:     libpulse0
 # therefore the Packman version is required
 # minimum version of libavcodec is 53
 Recommends:     libavcodec-full >= 0.10.16
-%define progname %{name}
-%define sources_subdir %{name}-%{version}
-%define prefix /usr
-%define progdir %_libdir/%{progname}
-%define libgssapi libgssapi_krb5.so.2
-### build options
-%define has_system_cairo 0
-%define localize 1
-%define with_chatzilla 1
-%define with_domi 1
-### build options end
 # It no longer makes sense to include separate language packs because these
 # apply only to the main SeaMonkey suite, but not to the integrated Chatzilla
 # or Calendar
-%if %localize
+%if %{with localizations}
 Provides:       seamonkey-translations-common = %{version}
 Obsoletes:      seamonkey-translations-common < 2.53.6
 Provides:       seamonkey-translations-other = %{version}
 Obsoletes:      seamonkey-translations-other < 2.53.6
 Provides:       locale(%{name}:cs;de;el;en_GB;es_AR;es_ES;fi;fr;hu;it;ja;ka;nb_NO;nl;pl;pt_BR;pt_PT;ru;sk;sv_SE;zh_CN;zh_TW)
 %endif
-%if 0%{?with_chatzilla} == 0
+%if %{with irc}
 Provides:       seamonkey-irc = %{version}
 %endif
-%if 0%{?with_domi} == 0
+%if %{with dominspector}
 Provides:       seamonkey-dom-inspector = %{version}
 %endif
 %define __provides_exclude ^lib.*\\.so.*$
 %define __requires_exclude ^(libmoz.*|liblgpllibs.*|libxul.*|libld.*|libprldap.*)$
 # the following conditions are always met in Factory by definition
+%if %{with system_nspr}
 BuildRequires:  mozilla-nspr-devel >= 4.13.1
 PreReq:         mozilla-nspr >= %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
+%endif
+%if %{with system_nss}
 %if 0%{?sle_version} != 150500 && 0%{?is_opensuse}
 BuildRequires:  mozilla-nss-devel >= 3.28.6
 PreReq:         mozilla-nss >= %(rpm -q --queryformat '%%{VERSION}' mozilla-nss)
+%endif
 %endif
 
 %description
@@ -165,6 +215,7 @@ Communicator and Mozilla Application Suite, and (unlike its siblings,
 Firefox and Thunderbird) retains Mozilla's more traditional-looking
 interface.  Many Thunderbird and (legacy) Firefox extensions are
 compatible with SeaMonkey.
+
 
 %package irc
 Summary:        IRC for SeaMonkey
@@ -193,8 +244,8 @@ This is a tool that allows you to inspect the DOM for web pages in
 SeaMonkey. This is of great use to people who are doing SeaMonkey
 chrome development or web page development.
 
-%if %localize
 
+%if %{with localizations}
 %package translations-common
 Summary:        Common translations for SeaMonkey
 Group:          System/Localization
@@ -217,20 +268,21 @@ This package contains several optional languages for the user interface
 of SeaMonkey.
 %endif
 
+
 %prep
 
-%setup -q -b 1 -b 11 -c
+%setup -q -b 2 -b 7 -c
 
 mv %{sources_subdir} mozilla
 
-%if %localize
-%setup -q -T -D -c -n %{name}-%{version}/l10n -a 5
+%if %{with localizations}
+%setup -q -T -D -c -n %{name}-%{version}/l10n -a 1
 %setup -q -T -D
 %endif
 
 cd mozilla
 
-cp %{SOURCE12} GNUmakefile
+cp %{SOURCE8} GNUmakefile
 
 %patch -P 1 -p1
 %patch -P 2 -p2
@@ -241,90 +293,102 @@ cp %{SOURCE12} GNUmakefile
 %patch -P 7 -p1
 %patch -P 8 -p1
 
-# Fix --with-system-icu builds on Tumbleweed; see https://bugzilla.mozilla.org/show_bug.cgi?id=1862601 and https://bugzilla.mozilla.org/show_bug.cgi?id=1927380
-%if 0%{?suse_version} > 1600
+%if %{with system_icu}
+%if 0%{?suse_version} >= 1600
 %patch -P 9 -p1
 %patch -P 10 -p1
 %endif
+%endif
+
+%if 0%{?suse_version} > 1600 && %{with system_av1}
+%patch -P 11 -p1
+%endif
+
+%if %{with system_libvpx}
+%patch -P 12 -p1
+%endif
+
+%patch -P 13 -p1
+
+%define with_sys()   ac_add_options --with%%{!?with_system_%1:out}-system-%1
+%define endis_sys()  ac_add_options --%%{?with_system_%1:enable}%%{!?with_system_%1:disable}-system-%1
+%define endis()      ac_add_options --%%{?with_%1:enable}%%{!?with_%1:disable}-%1
 
 cat << EOF > .mozconfig
+### Various build options
 mk_add_options MOZILLA_OFFICIAL=1
 mk_add_options BUILD_OFFICIAL=1
 mk_add_options MOZ_MILESTONE_RELEASE=1
 mk_add_options MOZ_MAKE_FLAGS=%{?_smp_mflags}
 #mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../obj
-ac_add_options --enable-application=comm/suite
 ac_add_options --libdir=%{_libdir}
 ac_add_options --prefix=%{_prefix}
 ac_add_options --mandir=%{_mandir}
-%if %localize
-ac_add_options --with-l10n-base=$RPM_BUILD_DIR/seamonkey-%{version}/l10n
-%endif
 ac_add_options --disable-tests
 ac_add_options --disable-install-strip
 ac_add_options --enable-release
-ac_add_options --enable-default-toolkit=cairo-gtk3
-
-# Removed for SeaMonkey 2.53.20
-#ac_add_options --disable-gconf
-
-# Elfhack fails on ix86: https://bugzilla.mozilla.org/show_bug.cgi?id=1706264
-%ifarch aarch64 ppc %arm %ix86
-ac_add_options --disable-elf-hack
+%if %{with localizations}
+ac_add_options --with-l10n-base=$RPM_BUILD_DIR/seamonkey-%{version}/l10n
 %endif
 
+#ac_add_options --disable-elf-hack
+
+%{expand:%endis  gold}
+
+%ifarch %ix86
+ac_add_options --disable-debug-symbols
+%endif
 ac_add_options --disable-debug
+ac_add_options --enable-alsa
+ac_add_options --enable-default-toolkit=cairo-gtk3
+ac_add_options --enable-libproxy
 
-ac_add_options --with-system-nspr
-%if 0%{?sle_version} != 150500 && 0%{?is_opensuse}
-ac_add_options --with-system-nss
+
+### Features
+
+### Components to include
+ac_add_options --enable-application=comm/suite
+%{expand:%endis dominspector}
+%{expand:%endis irc}
+ac_add_options --disable-crashreporter
+ac_add_options --disable-updater
+
+# Calendar is always enabled as it's required to build various
+# components and addons
+ac_add_options --enable-calendar
+
+
+### System vs. bundled libraries
+
+%{expand:%with_sys   nspr}
+%{expand:%with_sys   nss}
+%{expand:%with_sys   zlib}
+%{expand:%with_sys   icu}
+%{expand:%with_sys   libvpx}
+%{expand:%with_sys   webp}
+%{expand:%endis_sys  ffi}
+%if 0%{?suse_version} > 1600
+%{expand:%with_sys   av1}
 %endif
-ac_add_options --with-system-zlib
-# Removed for SeaMonkey 2.53.20
-#ac_add_options --with-system-bz2
-
-%if 0%{?suse_version} > 1600 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
-ac_add_options --with-system-webp
-%endif
-
-ac_add_options --with-system-icu
-
-# Compile errors with system libvpx-1.10.0
-#ac_add_options --with-system-libvpx
-
-# Using system AV1 decoder depends on pending patch from
-# https://bugzilla.mozilla.org/show_bug.cgi?id=1559213
-# ac_add_options --with-system-av1
 
 # Mozilla's internal JPEG library is used because of the "turbo" patches
 # that make it more efficient than the stock system libjpeg:
-#  https://bugzilla.mozilla.org/show_bug.cgi?id=573948
-#ac_add_options --with-system-jpeg
+# https://bugzilla.mozilla.org/show_bug.cgi?id=573948
+%{expand:%with_sys  jpeg}
 
 # The stock system libpng lacks support for APNG, whereas Mozilla's
 # internal version suports APNG
-#ac_add_options--with-system-png
+%{expand:%with_sys  png}
 
-ac_add_options --disable-crashreporter
-ac_add_options --disable-updater
-# Removed for SeaMonkey 2.53.20
-#ac_add_options --enable-startup-notification
-ac_add_options --enable-alsa
-%if %has_system_cairo
-ac_add_options --enable-system-cairo
-%endif
-ac_add_options --enable-libproxy
-%if 0%{?with_chatzilla}
-ac_add_options --with-irc
-%endif
-%if %with_domi
-ac_add_options --with-dominspector
-%endif
-ac_add_options --enable-calendar
 EOF
 
 
 %build
+
+export MOZ_BUILD_DATE=%{releasedate}
+export MOZILLA_OFFICIAL=1
+export BUILD_OFFICIAL=1
+
 # no need to add build time to binaries
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
@@ -332,65 +396,60 @@ TIME="\"$(date -d "${modified}" "+%%R")\""
 find . -regex ".*\.c\|.*\.cpp\|.*\.h" \
     -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
 
-# As of 2.53.3, i586 builds are failing due to out-of-memory issues,
-# so we disable LTO.  (This workaround is still necessary as of
-# 2.53.7.1.)
+# Compiler settings
+
+MOZ_OPT_FLAGS=$RPM_OPT_FLAGS
+
+# Make compiler output less chatty
+MOZ_OPT_FLAGS=$(echo $MOZ_OPT_FLAGS | sed -e 's/-Wall//g')
+
+%if %{without clang}
+export CC=gcc%{?gcc_version:-%gcc_version}
+export CXX=g++%{?gcc_version:-%gcc_version}
+%endif
+
+# Linker settings
+
+%define _lto_cflags %{nil}
+MOZ_LD_FLAGS=$RPM_LD_FLAGS
+
+# Reduce memory consumption when building for i586
 %ifarch %ix86
-%define _lto_cflags %{nil}
+%if %{without gold}
+MOZ_LD_FLAGS="$MOZ_LD_FLAGS -Wl,--no-keep-memory -Wl,--reduce-memory-overheads -Wl,--no-map-whole-files -Wl,--hash-size=31"
 %endif
-#
-# As of 2.53.13, Tumbleweed builds are failing due to the linker
-# issue <https://bugzilla.mozilla.org/show_bug.cgi?id=1778981>
-# so we disable LTO.
-%if 0%{?suse_version} > 1600
-%define _lto_cflags %{nil}
+MOZ_OPT_FLAGS="$MOZ_OPT_FLAGS -g1"
 %endif
-export SUSE_ASNEEDED=0
-export MOZ_BUILD_DATE=%{releasedate}
-export MOZILLA_OFFICIAL=1
-export BUILD_OFFICIAL=1
 
-export CFLAGS="%{optflags} -fno-strict-aliasing"
-%if 0%{?clang_build} == 0
-# Use GCC 14 on Tumbleweed because builds of 2.53.21 fail with GCC 15
-%if 0%{?suse_version} > 1600
-export CC=gcc-14
-export CXX=g++-14
+# LTO settings
+# TODO: Perhaps just let SeaMonkey do this via --enable-lto?
+%if %{with lto}
+MOZ_LD_FLAGS=$(echo $MOZ_LD_FLAGS | sed -e 's/-flto\b//g')
+%if %{with clang}
+MOZ_OPT_FLAGS="$MOZ_OPT_FLAGS -flto=thin"
+MOZ_LD_FLAGS="$MOZ_LD_FLAGS -flto=thin -fuse-ld=lld -Wl,-plugin-opt=-import-instr-limit=10"
+export AR=llvm-ar
+export RANLIB=llvm-ranlib
 %else
-export CC=gcc
-export CXX=g++
-%endif
-%if 0%{?gcc_version:%{gcc_version}} >= 12
-export CFLAGS="$CFLAGS -fimplicit-constexpr"
+MOZ_OPT_FLAGS="$MOZ_OPT_FLAGS -flto=auto -flifetime-dse=1"
+MOZ_LD_FLAGS="$MOZ_LD_FLAGS -flto=auto -flifetime-dse=1"
+export AR=gcc-ar%{?gcc_version:-%gcc_version}
+export RANLIB=gcc-ranlib%{?gcc_version:-%gcc_version}
 %endif
 %endif
 
-if [ $(gcc -dumpversion | awk -F. '{print $1}') -ge 6 ]; then
-export CFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
-fi
-%ifarch %arm
-export CFLAGS="${CFLAGS/-g / }"
-%endif
-%ifarch %arm %ix86
-# Limit RAM usage during link
-export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
-%endif
-%ifarch ppc64 ppc64le
-%if 0%{?clang_build} == 0
-export CFLAGS="$CFLAGS -mminimal-toc"
-%endif
-%endif
-export CXXFLAGS="$CFLAGS"
+export CFLAGS=$MOZ_OPT_FLAGS
+export CXXFLAGS=$MOZ_OPT_FLAGS
+export LDFLAGS=$MOZ_LD_FLAGS
 
-#
 %limit_build -m 2000
 cd mozilla
 make %{?_smp_mflags}
 
-%if %localize
+%if %{with localizations}
 make -j1 locales
 %endif
-#
+
 
 %install
 
@@ -411,16 +470,15 @@ mkdir --parents $RPM_BUILD_ROOT%{_bindir}
 sed "s:%%PREFIX:%{prefix}:g
 s:%%PROGDIR:%{progdir}:g
 s:%%APPNAME:seamonkey:g" \
-   %{SOURCE3} > $RPM_BUILD_ROOT%{progdir}/%{progname}.sh
+   %{SOURCE4} > $RPM_BUILD_ROOT%{progdir}/%{progname}.sh
 chmod 755 $RPM_BUILD_ROOT%{progdir}/%{progname}.sh
 ln -sf ../..%{progdir}/%{progname}.sh $RPM_BUILD_ROOT%{_bindir}/%{progname}
 # apply SUSE defaults
-sed -e 's,RPM_VERSION,%{version}-%{release},g
-#s,GSSAPI,%{libgssapi},g' \
-   %{SOURCE4} > suse-default-prefs
+sed -e 's,RPM_VERSION,%{version}-%{release},g' \
+   %{SOURCE5} > suse-default-prefs
 cp suse-default-prefs $RPM_BUILD_ROOT%{progdir}/defaults/pref/all-openSUSE.js
 rm suse-default-prefs
-install -m 644 %{SOURCE2} %{buildroot}%{progdir}/defaults/pref/
+install -m 644 %{SOURCE3} %{buildroot}%{progdir}/defaults/pref/
 # Desktop definition
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 install -m 644 $RPM_BUILD_DIR/*.desktop \
@@ -484,13 +542,13 @@ install -m0644 -t %{buildroot}%{_datadir}/appdata/ $RPM_BUILD_DIR/*.appdata.xml
 %{_datadir}/appdata/*.appdata.xml
 %{_mandir}/*/*
 
-%if 0%{?with_chatzilla}
+%if %{with irc}
 %files irc
 %defattr(-,root,root)
 %{progdir}/extensions/{59c81df5-4b7a-477b-912d-4e0fdf64e5f2}.xpi
 %endif
 
-%if 0%{?with_domi}
+%if %{with dominspector}
 %files dom-inspector
 %defattr(-,root,root)
 %{progdir}/extensions/inspector*.xpi

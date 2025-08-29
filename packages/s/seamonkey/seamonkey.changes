@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Aug 27 23:34:52 UTC 2025 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- remove SUSE_ASNEEDED from spec file
+- add build options for using system jpg, png, nss, nspr, and zlib
+  libraries
+
+-------------------------------------------------------------------
+Tue Aug 26 18:27:50 UTC 2025 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- refactor spec file
+- rename patches according to their source/bug and to the
+  earliest version of the package they were applied to:
+  seamonkey-icu.patch => seamonkey-2.53.21-bmo1927380.patch
+  mozilla-bmo1862601.patch => seamonkey-2.53.21-bmo1862601.patch
+  mozilla-bmo1896958.patch => seamonkey-2.53.19-bmo1896958.patch
+  mach-use-python-311.patch => seamonkey-2.53.20-mach-use-python-311.patch
+  reproducible.patch => seamonkey-2.53.20-boo1237231.patch
+  seamonkey-man-page.patch => seamonkey-2.53.7.1-man-page.patch
+  seamonkey-lto.patch => seamonkey-2.53.3-lto.patch
+  mozilla-ntlm-full-path.patch => seamonkey-2.1.0-bmo634334.patch
+  mozilla-nongnome-proxies.patch => seamonkey-2.0.0-nongnome-proxies.patch
+  mozilla-bmo531915.patch => seamonkey-2.53.17.1-bmo531915.patch
+- remove build workarounds for Leap 15.5 (now unsupported)
+- add seamonkey-2.53.20-system-av1.patch for using system AV1
+- add seamonkey-2.53.21-bmo1332139.patch for using system VPx
+- remove spec file code specific to aarch64 and PPC; these are
+  no longer supported upstream and are difficult to get to build
+- remove spec file code that since r207 had been setting an invalid
+  value for the network.negotiate-auth.gsslib preference
+- remove (most probably obsolete) -fno-string-aliasing,
+  -fimplicit-constexpr, fno-delete-null-pointer-checks,
+  -fno-lifetime-dse, and fno-schedule-insns2 compiler options in spec
+  file
+- make compiler output less chatty by removing -Wall
+- add a listsettings recipe to the GNU Makefile that runs
+  mach settings --list
+- add seamonkey-2.53.21-bmo1662867.patch to allow mach settings
+  to run
+- import some compiler/linker settings and syntactic sugar from
+  Fedora's spec file by Dmitry Butskoy et al.
+- re-enable elf-hack since builds seem to work now
+- apply existing ICU fixes to Leap 16
+
+-------------------------------------------------------------------
 Sun Aug 24 15:11:18 UTC 2025 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - add mozilla-bmo1862601.patch and seamonkey-icu.patch to fix
