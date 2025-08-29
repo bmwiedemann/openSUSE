@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 29 10:12:48 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1756374919.f1ac1b58:
+  * build(deps): bump bootstrap from 5.3.7 to 5.3.8
+  * build(deps-dev): bump eslint from 9.33.0 to 9.34.0
+  * parser: ktap: Sanitize spaces from group name
+  * Cleanup unused parameter in streamtext
+  * build(deps): bump datatables.net-bs5 from 2.3.2 to 2.3.3
+  * Document semantics of low limits for important data
+  * Log disconnection of the livehandler due to file changes
+  * Disallow browsing HTML assets/results/logs by default
+  * Extend coverage on streamtext function of Running.pm
+  * Fix Too few arguments for subroutine error on close_connection
+  * Handle 'expand_placeholders' return value consistently
+
+-------------------------------------------------------------------
 Tue Aug 19 15:14:15 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1755616303.131c0f0a:
