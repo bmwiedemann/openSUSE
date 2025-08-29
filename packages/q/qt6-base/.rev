@@ -607,4 +607,12 @@
   * 0001-Add-clamping-to-QColorTransferGenericFunction.patch</comment>
     <requestid>1291918</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>dc99d8248f0a1bd44536f5505fe2ad06</srcmd5>
+    <version>6.9.2</version>
+    <time>1756485300</time>
+    <user>anag_factory</user>
+    <comment>Update to 6.9.2 (forwarded request 1301562 from krop)</comment>
+    <requestid>1301698</requestid>
+  </revision>
 </revisionlist>

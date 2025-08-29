@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 27 07:15:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.2:
+  * https://www.qt.io/blog/qt-6.9.2-released
+- Drop patch, merged upstream:
+  * 0001-Add-clamping-to-QColorTransferGenericFunction.patch
+
+-------------------------------------------------------------------
 Fri Jul 11 10:11:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream fix (CVE-2025-5992, boo#1246343)

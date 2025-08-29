@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-base
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.9.1
+%define real_version 6.9.2
 %define short_version 6.9
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
@@ -33,7 +33,7 @@
 %bcond_without system_md4c
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.9.1
+Version:        6.9.2
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -44,8 +44,6 @@ Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
 # PATCH-FIX-UPSTREAM 0001-Rename-variable-being-shadowed.patch alarrosa@suse.com -- https://codereview.qt-project.org/c/qt/qtbase/+/638284
 Patch0:         0001-Rename-variable-being-shadowed.patch
-# CVE-2025-5992
-Patch1:         0001-Add-clamping-to-QColorTransferGenericFunction.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
 Patch100:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
