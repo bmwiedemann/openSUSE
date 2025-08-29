@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 27 20:12:09 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 37.4.0
+  * Updated Chromium to 138.0.7204.243
+  * Fixed an issue where net.isOnline() always returned true in utilityProcesses
+
+-------------------------------------------------------------------
 Sat Aug 23 18:11:15 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Update to 37.3.1 (bsc#1248464)
