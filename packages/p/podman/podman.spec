@@ -22,7 +22,7 @@
 %bcond_without  apparmor
 
 Name:           podman
-Version:        5.5.2
+Version:        5.6.0
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -30,7 +30,6 @@ Group:          System/Management
 URL:            https://%{project}
 Source0:        %{name}-%{version}.tar.gz
 Source1:        podman.conf
-Patch1:         0001-remove-appending-rw-as-the-default-mount-option.patch
 BuildRequires:  man
 BuildRequires:  bash-completion
 BuildRequires:  device-mapper-devel

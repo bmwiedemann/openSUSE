@@ -1,4 +1,384 @@
 -------------------------------------------------------------------
+Tue Aug 19 03:52:06 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
+
+- Remove patch:
+  * 0001-remove-appending-rw-as-the-default-mount-option.patch (merged upstream)
+- Update to version 5.6.0:
+  * Bump to v5.6.0
+  * Update release notes for v5.6.0 final release
+  * [v5.6] Bump Buildah to v1.41.3
+  * [v5.6] Reverse skipped test for 26773
+  * Add a deprecation notice for users of BoltDB
+  * Bump Podman to v5.6.0-dev
+  * Bump to v5.6.0-rc2
+  * Update release notes for v5.6.0-RC2
+  * feat: add Podman artifact support to Go bindings and remote clients
+  * compat: remove deprecated VirtualSize
+  * compat: add shared-size par to GET /images/json
+  * compat: RepoTags and RepoDigest return [] and not null
+  * compat: remove GET /system/df BuilderSize
+  * compat: GET /_ping return Builder-Version: 1
+  * [v5.6] Bump Buildah to v1.41.1
+  * [v5.6] Skip failing Buildah v1.41.1 test
+  * Remove Experimental from Artifacts man pages
+  * [v5.6] Bump c/storage to v1.59.1, c/image 5.36.1, and
+  * Bump Podman to v5.6.0-dev
+  * Bump to v5.6.0-rc1
+  * Add release notes for Podman v5.6.0-rc1
+  * Temp fix for #26680
+  * Update "podman diff container and image with same name" e2e test
+  * API server: drop inherit-labels/annotations for compat builds
+  * buildah-bud tests: handle "-t oci:" and such, skip a new --output
+  * API handler: don't force the SkipUnusedStages flag
+  * API handler: don't force the CompatVolumes flag
+  * API handler: don't force the IdentityLabel flag
+  * Update compat-volumes setting for remotes
+  * Update inherit-labels setting for remotes
+  * pkg/emulation.parseBinfmtMisc(): accept empty "flags" fields
+  * build endpoint: document the "timestamp" flag
+  * remote build: relay more new flags introduced in buildah 1.41
+  * Feat: send additional build contexts for remote builds
+  * Add Buildah build's passwd test helper
+  * Add CLI updates for inherit and unset annotations
+  * Add missing manpages options for Buildah v1.41.0
+  * Bump to Buildah v1.41.0
+  * fix(deps): update module github.com/onsi/gomega to v1.38.0
+  * test/system: add quadlet drop-in regression test for subdirs
+  * Quadlet - fix dropin overwrites if different parent dirs
+  * chore(deps): update dependency golangci/golangci-lint to v2.3.0
+  * added updated state in podman-auto-update.1.md.in
+  * Initial implementation of `podman quadlet` commands
+  * fix(deps): update module github.com/containers/common to v0.64.0
+  * docs: add description about our code structure
+  * fix(deps): update common, image, and storage deps
+  * podman rm: handle case where conmon was killed
+  * podman inspect: fix error difference between local and remote
+  * Update module github.com/containers/storage to v1.59.0
+  * Update module github.com/opencontainers/cgroups to v0.0.4
+  * Fix test that checks for podman exec leaks
+  * Update common, image, and storage deps
+  * volume export: refuse to write to terminal (TTY)
+  * podman auto-update: include container in invalid policy message
+  * Update module github.com/go-viper/mapstructure/v2 to v2.3.0 [SECURITY]
+  * chore(deps): update dependency golangci/golangci-lint to v2.2.2
+  * Maintainers: add Nicola Sella as Reviewer
+  * Maintainers: add Jan Kaluza as Reviewer
+  * Maintainers: add Lewis Roy as Reviewer
+  * fix(deps): update module golang.org/x/net to v0.42.0
+  * fix(deps): update module golang.org/x/crypto to v0.40.0
+  * test/e2e: podman update make env check stricter
+  * pkg/bindings/containers: do not ignore ErrUnexpectedEOF
+  * pkg/bindings/containers: do not create sub slice
+  * pkg/bindings/containers: don't check for short read
+  * Quadlet - add support for the Policy key for .image files
+  * Clarifies error message when using an improperly formatted secret with kube
+  * Fix seccomp profile path on Windows
+  * fix(deps): update module golang.org/x/term to v0.33.0
+  * docs: replace fuse-overlayfs example with additionalimagestore
+  * hack/podman_cleanup_tracer.bt: check map before deleting keys
+  * hack/podman_cleanup_tracer.bt: clamp str size for strcontains()
+  * hack/podman_cleanup_tracer.bt: use new max str lenth
+  * libpod/build: add headers
+  * Update the journalctl function to ignore No entry message
+  * fix(deps): update common, image, and storage deps
+  * [Artifacts] Remove erroneous ArtifactListOptions var ImagePushOptions
+  * [Artifacts] Add note about ArtifactInspectOptions Remote var
+  * Quadlet - print warning when fail to parse
+  * manpages: adds example for podman system renumber
+  * Add basic locking to Libartifact
+  * Fix documentation around checkpoints
+  * cirrus: setup WSL logging
+  * fix(deps): update github.com/containers/image/v5 digest to 3532547
+  * Fix `podman inspect` to correctly handle log_size_max
+  * warn instead of error, lift logic to main.go
+  * Enforce wsl.exe UTF-8 encoded output
+  * WSL commands execution refactoring
+  * Clarify meaning of --syslog
+  * Quadlet - Error when units define User, Group, or DynamicUser in Service group
+  * fix(deps): update common, image, and storage deps
+  * fix(deps): update module github.com/shirou/gopsutil/v4 to v4.25.6
+  * Makefile: add Makefile to sources
+  * rpm: add grpcnotrace build tag
+  * Makefile: add grpcnotrace build tag
+  * Add conditional release-checking system test
+  * api: Don't HTML escape application/json responses
+  * update CI images 2025-06-27
+  * chore(deps): update dependency golangci/golangci-lint to v2.2.1
+  * vendor: update c/{common,image,storage} to main
+  * fix new lint errors from the docker update
+  * Quadlet - Do not override existing Environment in Service group for Pod units
+  * vendor: update docker to v28.3.0
+  * pkg/domain/infra/tunnel: ignore error from removeContainer()
+  * libpod: remove deadcode
+  * remove test/framework/framework.go
+  * pkg/util: remove deadcode
+  * remove pkg/util/camelcase
+  * pkg/rootless: remove deadcode
+  * pkg/parallel: remove deadcode
+  * pkg/namespaces: remove deadcode
+  * pkg/machine: remove deadcode
+  * pkg/libartifact: remove deadcode
+  * pkg/fileserver: remove deadcode
+  * pkg/farm: remove deadcode
+  * pkg/errorhandling: remove deadcode
+  * podman images --sort use ChoiceValue flag
+  * pkg/domain: remove deadcode
+  * pkg/bindings: remove deadcode
+  * pkg/api: remove deadcode
+  * remove unused ShouldRestart() code
+  * cmd/podman: remove deadcode
+  * podman images --sort autocomplete options
+  * Update Neil Smith's GitHub username in MAINTAINERS.md
+  * machine: enable nested virt on libkrun by default
+  * pkg/machine/e2e: add CVE-2025-6032 regression test
+  * test/e2e: fix podman run check dns flake
+  * Bump bundled krunkit from 0.2.1 to 0.2.2
+  * Secret create - add ignore option to allow noop
+  * cmd/podman: add --latest option to update #26380
+  * docs: document when a volume is chowned
+  * Refactor `volume import` to support the remote client
+  * update image_fix -> automation_images#407 skip test duo to rawhide know issues
+  * Podman pull - add policy flag
+  * Pod YAML: Add support for `lifecycle.stopSignal`
+  * machine init: fix tls check
+  * update podman-machine-start with examples for --no-info and --quiet
+  * test/e2e: fix "with unsafe hostPath subpaths" test
+  * quadlet: remove indirect logrus import
+  * docs: add three examples to podman-generate-spec man page
+  * fix panic on state refresh
+  * pkg/systemd: expose [Pod] ExitPolicy key for pod create --exit-policy
+  * volumes: add new --uid and --gid option
+  * docs: add an example to podman-secret-rm man page
+  * chore(deps): update dependency pytest to v8.4.1
+  * [CI:DOCS] Tweak Governace slightly
+  * remove .github/workflows/pr-title.yml
+  * remove hack/install_catatonit.sh
+  * Makefile: remove some old files from clean target
+  * remove cni/
+  * remove pkg/timetype
+  * remove contrib/modules-load.d
+  * remove contrib/snapcraft
+  * remove contrib/script/size.sh
+  * remove contrib/remote/containers.conf
+  * remove contrib/dependabot-dance
+  * remove contrib/dependencies.txt
+  * remove contrib/containers-common
+  * Removed the 'Deleted: ' prefix from each example
+  * add more exmples applying current style for each page
+  * docs: add an example to podman-network-rm man page
+  * [CI] Correct ST1005 staticcheck lint rule
+  * docs: add examples to podman-system-migrate man page
+  * Refactor `podman export` to work with the remote client
+  * artifact mount: add new name option to specify filename
+  * Fixes: #26374 add example network connect with mac address
+  * artifact mount: improve single blob behavior
+  * docs: remove bogus markdown heading in podman-ps
+  * Update podman system prune doc
+  * fix 26348: add container diff --latest doc
+  * Add missing --pod examples to podman ps manpage
+  * Move 'Examples' section down in the podman-volume-create man page
+  * fix(ci): add ST1005 linter rule
+  * Add examples of `--all` flag
+  * Manpages: podman machine init add example with --now
+  * Update docs/source/markdown/podman-secret-inspect.1.md
+  * Improve documentation for podman-secret-inspect, closes #26362
+  * Add Craig Loewen to Reviewer role
+  * man pages: Add an example about --no-prune
+  * Manpages: add podman exec missing example of detach option
+  * fix(cmd): improve ValidURL reliability
+  * Bunch of trivial manpage fixes
+  * libpod: log file doesn't need to be executable
+  * libpod: do not dereference nil pointer
+  * libpod: fix file descriptor leak
+  * podman-update: fix EXAMPLES
+  * test: check podman update errors on non-block devices
+  * pkg/specgen: error out when a block device isn't
+  * pkg/specgen: refactor FinishThrottleDevices, WeightDevices
+  * quadlet: handle generate environment params that inherit from host
+  * fix(deps): update module go.etcd.io/bbolt to v1.4.1
+  * make validate-in-container changes
+  * Clarified the consequences of --network=host
+  * podman machine: pull wsl image from machine-os
+  * remove hack/libdm_tag.sh
+  * rpm: build rpm with libsqlite3 tag
+  * Makefile: use libsqlite3 build when possible
+  * Remove bin/podman.cross Make target
+  * Allow generate-bindings on darwin
+  * Update module github.com/go-swagger/go-swagger to v0.32.3
+  * docs: replace RemapUsers=keep-id with UserNS=keep-id
+  * tmpfs: Add support for noatime mount option
+  * fix(deps): update module golang.org/x/net to v0.41.0
+  * pkg/machine: remove unsused net recover file
+  * Revert "podman machine: fix proxy test"
+  * pkg/machine: remove old fw_cfg service
+  * podman machine: fix proxy test
+  * pkg/machine/e2e: skip rosetta test
+  * RPM: Limit Epoch 102 to podman-next copr
+  * quadlet: generate RequiresMountsFor for Type=bind volumes
+  * Make podman.io update action reusable
+  * Skip layer digests for podman system check --quick
+  * test/buildah-bud: skip new build-with-two-outputs on remote
+  * test/buildah-bud: update buildah-tests.diff
+  * Build the `dumpspec` test helper for the `buildah bud` tests
+  * vendor: update buildah to latest main
+  * vendor: update c/{common,image,storage} to latest main
+  * vendor: update github.com/docker/docker to v28.2.2
+  * fix(deps): update module github.com/vbauerster/mpb/v8 to v8.10.2
+  * quadlet: add InterfaceName option to network unit
+  * fix wsl install workflow on machine init command
+  * feat: Add OCI Artifact support to the Podman REST API
+  * build: reuse parse.ContainerIgnoreFile from buildah
+  * podman buildx inspect support
+  * chore(deps): update dependency pytest to v8.4.0
+  * test/system: check --dns-option behavior
+  * podman system check: Fix error check logic
+  * libpod: don't force only network search domains
+  * fix(deps): update module github.com/shirou/gopsutil/v4 to v4.25.5
+  * update c/common to latest main
+  * play kube: never add empty alias
+  * fix(deps): update github.com/opencontainers/runtime-tools digest to 0ea5ed0
+  * Don't BuildRequires: ostree-devel
+  * Allow not specifying type with --mount flag
+  * Add "dest" as an alias for "destination" in `--mount`
+  * docs: quadlet can translate names now
+  * e2e: ref full URL for aarch64 criu precheckpoint issues
+  * specgen/generate: Fix log tag priority
+  * e2e: skip pre-checkpoint tests on aarch64
+  * Handle "Entrypoint":[] in compat containers/create API.
+  * system df --verbose don't crash
+  * Fix SQLite volume lookup queries matching too liberally
+  * vendor: update c/{buildah,common,image,storage} to main
+  * Recreate the Rootfs in mountStorage for infra-container.
+  * test: fix race conditions in /dev/kmsg tests
+  * Fix overlay volumes on Windows
+  * chore(deps): update dependency setuptools to ~=80.9.0
+  * libpod: Don't exclude running deps from the container graph inputs
+  * compat API: respect base_hosts_file containers.conf option
+  * Trigger podman.io version bump from release action
+  * Packit: remove propose-downstream for centos stream
+  * Packit: use fedora-all alias for tests
+  * Disable the tests for rootless pods
+  * Support --cpuset-<cpus/mems> in podman kube play
+  * pkg/machine: don't use dummy linger service
+  * pkg/machine: correctly enable lingering
+  * Update expected output for a machine copy test
+  * Replace alpine_nginx with TESTIMAGE in e2e tests
+  * Support '$FOCUS' env variable on winmake too
+  * pre-commit: exclude rpm/gating.yaml from check-yaml
+  * lint: Fix linter issues on TMT files
+  * Update release notes on main
+  * fix CONTRIBUTING to say reference issue number 'or' url
+  * compat: fix Container State.Status JSON values
+  * chore(deps): update dependency setuptools to ~=80.8.0
+  * libpod: fix mount order for "/" volume
+  * Update RELEASE_PROCESS.md
+  * github: remove fcos next image workflow
+  * [skip-ci] Packit: set fedora-all after F40 EOL
+  * test/e2e: do not check dns.podman
+  * compat: Add DefaultAddressPools field to GET /info
+  * Be explicit about ssh configs suitable only for localhost
+  * compat: Add CgroupnsMode to POST /containers/create
+  * Update dependency setuptools to ~=80.7.1
+  * docs: drop --pre-checkpoint requirement
+  * podman: remember hooks-dir on restarts
+  * GHA Release: Fix windows installer uploads
+  * Revert "GHA: Pin Go to 1.24.2"
+  * fix macos compile issue with go 1.24.3
+  * Packit: disable OpenScanHub scans
+  * GHA: Pin Go to 1.24.2
+  * fix(deps): update module github.com/vbauerster/mpb/v8 to v8.10.1
+  * fix issues found by nilness
+  * Bump bundled krunkit to 0.2.1
+  * chore(deps): update dependency setuptools to ~=80.4.0
+  * chore(deps): update dependency docker to v7
+  * fix(deps): update module github.com/rootless-containers/rootlesskit/v2 to v2.3.5
+  * fix(deps): update module github.com/crc-org/vfkit to v0.6.1
+  * fix(deps): update module github.com/containernetworking/plugins to v1.7.1
+  * Fix: Use SIGKILL instead of SIGTERM when ExecStopContainer timeout is 0
+  * Fix: Ensure HealthCheck exec session terminates on timeout
+  * [skip-ci] Tighten version match
+  * Quadlet - Update the docs to reflect the default naming of resources
+  * Revert "Quadlet - fix pod name to depend on the name of the generate service"
+  * Fix a shellcheck warning about word splitting
+  * fix(deps): update module github.com/vishvananda/netlink to v1.3.1
+  * Fix parsing of paths for unmask
+  * Take path for wsl instead of forcing through WindowsApps
+  * fix(deps): update module golang.org/x/net to v0.40.0
+  * Update win-installer github job for arm64
+  * Build windows arm64 artifacts
+  * Fix windows arm64 installer build
+  * README.md: add openssf passing badge
+  * fix(deps): update module github.com/containers/gvisor-tap-vsock to v0.8.6
+  * Update podman-secret-create.1.md
+  * Quadlet - fix pod name to depend on the name of the generate service
+  * fix(deps): update module golang.org/x/crypto to v0.38.0
+  * Verify the ExecSession pid before killing it.
+  * fix(deps): update module golang.org/x/term to v0.32.0
+  * fix(deps): update github.com/vishvananda/netlink digest to 9d88d83
+  * fix(deps): update module golang.org/x/sys to v0.33.0
+  * fix(deps): update module golang.org/x/sync to v0.14.0
+  * docs: fix markdown format
+  * chore(deps): update dependency golangci/golangci-lint to v2.1.6
+  * chore(deps): update dependency setuptools to ~=80.2.0
+  * Automatically bump to -dev after tag
+  * Update winmake.ps1 to build arm64 artifacts
+  * [skip-ci] TMT: system tests
+  * pkg/machinie: use TZ env for reading local timezone
+  * pkg/machine: rework getLocalTimeZone on linux
+  * pkg/machine: properly setup zoneinfo symlink
+  * pkg/machine: do not add broken localtime symlink
+  * fix(deps): update module github.com/vbauerster/mpb/v8 to v8.10.0
+  * fix(deps): update module github.com/shirou/gopsutil/v4 to v4.25.4
+  * fix(deps): update github.com/hugelgupf/p9 digest to abc96d2
+  * chore(deps): update dependency setuptools to ~=80.1.0
+  * pkg/signal: ignore SIGTOP for signal proxy
+  * pkg/signal: rework CatchAll() behavior
+  * sigproxy: ignore if container already removed
+  * ci: Load null_blk for I/O limit tests
+  * test/e2e: Use nullb0 for IO limit tests
+  * test/system: Use correct device for I/O limit tests
+  * inspect: Ignore character devices for IO limits
+  * Do not error on tz detection
+  * Stop setting btrfs_noversion build tag
+  * Remove providers checks from the Windows Installer
+  * Quadlet - remove the usage of cid and podid for container and pod files
+  * Fix running machines with volumes containing spaces
+  * Makefile: move some Go-related variable definitions up
+  * Handle signal preventing Start from completing
+  * Build documentation in a container on Win arm64
+  * Fix mach os pr release action
+  * bump main to 5.6-dev
+  * pkg/bindings: wrap image push decode error
+  * pkg/bindings: fix infinite loop/memory leak in image pull
+  * Update "check.c" to be C23 compliant
+  * feat: Add support for configuring swap in Podman machine
+  * fix(deps): update module github.com/opencontainers/cgroups to v0.0.2
+  * Quadlet - use helper function to initialize service struct
+  * Fix logging podman machine server9 output
+  * OWNERS: Fix Github handle
+  * Fix handling of "r_limits" in Podman REST API /libpod/containers/create
+  * chore(deps): update dependency setuptools to v80
+  * bug: Correct Docker compat REST API image delete endpoint
+  * update podman socket output to include also exposed ports
+  * Disable FS mount in volume only test
+  * Added tests for inheritlabel fix
+  * Fix: inheritlabels=true if query param absent
+  * Add Mohan Boddu as community manager
+  * chore(deps): update dependency golangci/golangci-lint to v2.1.5
+  * fix(deps): update module github.com/cpuguy83/go-md2man/v2 to v2.0.7
+  * Quadlet - use helper function for handling key=val type keys
+  * Add Label to quadlet pod
+  * podman start: remove container if needed
+  * remote: don't print bogus error when starting container attached
+  * [skip-ci] Packit: do not merge PR in CI
+  * [skip-ci] Packit: re-enable fedora-41 targets
+  * hack/bats: Pass --tap (-t) option to bats
+  * hack/bats: Fix to allow multiple tests
+  * Fix: Remove appending rw as the default mount option
+  * hack/bats: Allow specifying PODMAN_ROOTLESS_USER
+  * libpod: fix a confusing error message from 'podman system reset' on FreeBSD
+
+-------------------------------------------------------------------
 Wed Jun 25 04:50:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.5.2:
