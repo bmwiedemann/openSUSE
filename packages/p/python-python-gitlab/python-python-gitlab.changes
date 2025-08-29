@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 28 04:57:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.3.0:
+  * Chores
+    - deps: Update actions/checkout action to v5 (36629a4)
+    - deps: Update actions/download-artifact action to v5 (397cf39)
+    - deps: Update all non-major dependencies (d40d5d2)
+    - deps: Update all non-major dependencies (2fce144)
+    - deps: Update all non-major dependencies (2dd2e8e)
+    - deps: Update all non-major dependencies (bf7a60a)
+    - deps: Update all non-major dependencies (18c946f)
+  * Features
+    - Add sync method to force remote mirror updates (f3c6678)
+    - api: Add missing ProjectJob list filters (5fe0e71)
+    - api: Add missing ProjectPackageManager list filters (b1696be)
+    - users: Implement support for 'admins' in administrators
+      'list' (aaed51c)
+
+-------------------------------------------------------------------
 Sun Aug  3 14:52:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.2.0:
