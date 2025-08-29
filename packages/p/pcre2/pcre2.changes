@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 28 10:27:11 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 10.46:
+  * CVE-2025-58050: heap-buffer-overflow read in match_ref due to
+    missing boundary restoration in SCS (boo#1248832, boo#1248842)
+
+-------------------------------------------------------------------
 Tue Jun 10 06:41:24 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Mark profiling as non-deterministic (boo#1040589)

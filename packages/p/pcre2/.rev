@@ -323,4 +323,13 @@ Not source compatible. Installable in parallel with all packages.</comment>
     <comment>Mark profiling as non-deterministic (boo#1040589) (forwarded request 1284321 from bmwiedemann)</comment>
     <requestid>1284336</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>264e917e354b657630733df7c1d677d5</srcmd5>
+    <version>10.46</version>
+    <time>1756485351</time>
+    <user>anag_factory</user>
+    <comment>pcre2 10.46 CVE-2025-58050 boo#1248832, boo#1248842)
+</comment>
+    <requestid>1301792</requestid>
+  </revision>
 </revisionlist>
