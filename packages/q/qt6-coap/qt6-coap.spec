@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-coap
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.9.1
+%define real_version 6.9.2
 %define short_version 6.9
 %define tar_name qtcoap-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-coap%{?pkg_suffix}
-Version:        6.9.1
+Version:        6.9.2
 Release:        0
 Summary:        Qt 6 CoAP client module
 License:        GPL-3.0-or-later
@@ -36,8 +36,8 @@ Source0:        %{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-coap-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
 BuildRequires:  cmake(Qt6Network) = %{real_version}
 BuildRequires:  cmake(Qt6Qml) = %{real_version}
@@ -69,7 +69,7 @@ Development files for the Qt 6 CoAP library.
 
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 CoAP library
-Requires:       qt6-core-private-devel = %{version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6Coap) = %{real_version}
 Requires:       cmake(Qt6Network) = %{real_version}
 
