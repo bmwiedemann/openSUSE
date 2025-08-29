@@ -11,8 +11,8 @@ Index: chromium-120.0.6099.18/build/config/BUILDCONFIG.gn
    # Set to true when compiling with the Clang compiler.
    is_clang = current_os != "linux" ||
               (current_cpu != "s390x" && current_cpu != "s390" &&
-@@ -354,6 +356,12 @@ default_compiler_configs = [
-   "//build/config/sanitizers:default_sanitizer_flags",
+@@ -389,6 +389,12 @@
+   "//build/config:feature_flags",
  ]
  
 +if (gcc_lto) {
@@ -28,8 +28,8 @@ Index: chromium-120.0.6099.18/build/config/compiler/BUILD.gn
 ===================================================================
 --- chromium-120.0.6099.18.orig/build/config/compiler/BUILD.gn
 +++ chromium-120.0.6099.18/build/config/compiler/BUILD.gn
-@@ -2342,6 +2342,10 @@ if (is_win) {
-   common_optimize_on_cflags += [ "-fno-math-errno" ]
+@@ -2672,6 +2672,10 @@
+   }
  }
  
 +config("gcc_lto") {

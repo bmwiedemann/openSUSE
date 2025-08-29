@@ -2,21 +2,12 @@ Index: chromium-128.0.6613.113/chrome/browser/extensions/api/runtime/chrome_runt
 ===================================================================
 --- chromium-128.0.6613.113.orig/chrome/browser/extensions/api/runtime/chrome_runtime_api_delegate.cc
 +++ chromium-128.0.6613.113/chrome/browser/extensions/api/runtime/chrome_runtime_api_delegate.cc
-@@ -310,6 +310,8 @@
-     info->arch = extensions::api::runtime::PlatformArch::kMips;
-   } else if (strcmp(arch, "mips64el") == 0) {
+@@ -348,6 +348,8 @@
      info->arch = extensions::api::runtime::PlatformArch::kMips64;
+   } else if (strcmp(arch, "riscv64") == 0) {
+     info->arch = extensions::api::runtime::PlatformArch::kRiscv64;
 +  } else if (strcmp(arch, "ppc64") == 0) {
 +    info->arch = extensions::api::runtime::PlatformArch::kPpc64;
-   } else {
-     NOTREACHED();
-   }
-@@ -325,6 +327,8 @@
-     info->nacl_arch = extensions::api::runtime::PlatformNaclArch::kMips;
-   } else if (strcmp(nacl_arch, "mips64") == 0) {
-     info->nacl_arch = extensions::api::runtime::PlatformNaclArch::kMips64;
-+  } else if (strcmp(nacl_arch, "ppc64") == 0) {
-+    info->nacl_arch = extensions::api::runtime::PlatformNaclArch::kPpc64;
    } else {
      NOTREACHED();
    }
@@ -24,23 +15,13 @@ Index: chromium-128.0.6613.113/extensions/common/api/runtime.json
 ===================================================================
 --- chromium-128.0.6613.113.orig/extensions/common/api/runtime.json
 +++ chromium-128.0.6613.113/extensions/common/api/runtime.json
-@@ -98,7 +98,8 @@
-             {"name": "x86-32", "description": "Specifies the processer architecture as x86-32."},
+@@ -99,7 +99,8 @@
              {"name": "x86-64", "description": "Specifies the processer architecture as x86-64."},
              {"name": "mips", "description": "Specifies the processer architecture as mips."},
--            {"name": "mips64", "description": "Specifies the processer architecture as mips64."}
-+            {"name": "mips64", "description": "Specifies the processer architecture as mips64."},
+             {"name": "mips64", "description": "Specifies the processer architecture as mips64."},
+-            {"name": "riscv64", "description": "Specifies the processer architecture as riscv64."}
++            {"name": "riscv64", "description": "Specifies the processer architecture as riscv64."},
 +            {"name": "ppc64", "description": "Specifies the processer architecture as ppc64."}
           ],
          "description": "The machine's processor architecture."
        },
-@@ -111,7 +112,8 @@
-           {"name": "x86-32", "description": "Specifies the native client architecture as x86-32."},
-           {"name": "x86-64", "description": "Specifies the native client architecture as x86-64."},
-           {"name": "mips", "description": "Specifies the native client architecture as mips."},
--          {"name": "mips64", "description": "Specifies the native client architecture as mips64."}
-+          {"name": "mips64", "description": "Specifies the native client architecture as mips64."},
-+          {"name": "ppc64", "description": "Specifies the native client architecture as ppc64."}
-         ]
-       },
-       {

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Aug 28 18:06:15 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 140.0.7339.41
+  (early stable released 2025-08-27)
+- modified patches:
+  chromium-125-compiler.patch
+  chromium-libusb_interrupt_event_handler.patch
+  gcc-enable-lto.patch
+  ppc-fedora-fix-unknown-warning-option-messages.diff
+  ppc-fedora-0001-sandbox-linux-Update-syscall-helpers-lists-for-ppc64.patch 
+  ppc-fedora-add-ppc64-architecture-to-extensions.diff
+  chromium-102-regex_pattern-array.patch
+  gtk-414.patch
+  ppc-fedora-fix-study-crash.patch
+  ppc-fedora-0002-regenerate-xnn-buildgn.patch (stub, needs to be redone)
+  ppc-fedora-0001-Add-pregenerated-config-for-libaom-on-ppc64.patch
+- added patches:
+  chromium-140-keep-__rust_no_alloc_shim_is_unstable.patch
+  (revert of upstream patch
+   8393b61ba876c8e1614275c97767f9b06b889f48)
+  chromium-140-old-flac.patch (applied for flac < 1.5.0)
+- change rust_version to 1.86
+- keeplibs:
+  removed buildtools/third_party/eu-strip (gone upstream)
+  removed wasm_tts_engine (gone upstream)
+- bump gn BuildReq to 0.20250619
+- do not use system_harfbuzz for 16+ for now, unbundle is broken
+
+-------------------------------------------------------------------
 Wed Aug 27 12:12:26 CEST 2025 - ro@suse.de
 
 - Chromium 139.0.7258.154 (boo#1248769)

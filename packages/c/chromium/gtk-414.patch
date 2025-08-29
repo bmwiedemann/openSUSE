@@ -110,7 +110,7 @@ index efe6321149679..239fbf4ca69a1 100644
 -    GdkTexture* texture = GetTextureFromRenderNode(node);
      size_t nbytes = width * height * sizeof(SkColor);
      SkColor* pixels = reinterpret_cast<SkColor*>(g_malloc(nbytes));
-+    memset(pixels, 0, nbytes);
++    UNSAFE_TODO(memset(pixels, 0, nbytes));
      size_t stride = sizeof(SkColor) * width;
 -    gdk_texture_download(texture, reinterpret_cast<guchar*>(pixels), stride);
 +    if (GdkTexture* texture = GetTextureFromRenderNode(node)) {
@@ -118,7 +118,7 @@ index efe6321149679..239fbf4ca69a1 100644
 +    }
      SkColor fg = GtkStyleContextGetColor(button_context);
      for (int i = 0; i < width * height; ++i) {
-       pixels[i] = SkColorSetA(fg, SkColorGetA(pixels[i]));
+       UNSAFE_TODO(pixels[i]) =
 @@ -199,7 +201,7 @@ void CalculateUnscaledButtonSize(
      gfx::Size* button_size,
      gfx::Insets* button_margin) {

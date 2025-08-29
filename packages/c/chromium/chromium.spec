@@ -42,7 +42,7 @@
 %bcond_without swiftshader
 %endif
 %if 0%{?suse_version} >= 1600
-%bcond_without system_harfbuzz
+%bcond_with system_harfbuzz
 %bcond_without system_freetype
 %bcond_without arm_bti
 # ERROR Unresolved dependencies.
@@ -67,7 +67,7 @@
 # LLVM version
 %define llvm_version 19
 # RUST version
-%define rust_version 1.85
+%define rust_version 1.86
 # GCC version
 %define gcc_version 14
 # esbuild version
@@ -100,6 +100,11 @@
 %else
 %bcond_with gtk4_4_19
 %endif
+%if %{pkg_vcmp flac-devel >= 1.5.0}
+%bcond_without flac_1_5
+%else
+%bcond_with flac_1_5
+%endif
 # Package names
 %if %{with is_beta}
 %define chromedriver_name %{name}-chromedriver
@@ -112,7 +117,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        139.0.7258.154
+Version:        140.0.7339.41
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -162,6 +167,7 @@ Patch375:       chromium-131-fix-qt-ui.pach
 Patch376:       chromium-135-add_map_droppable.patch
 Patch377:       chromium-139-deterministic.patch
 Patch378:       chromium-139-pdfium-openjpeg-CVE-2025-54874.patch
+Patch379:       chromium-140-keep-__rust_no_alloc_shim_is_unstable.patch
 # conditionally applied patches ppc64le only
 Patch401:       ppc-fedora-add-ppc64-architecture-string.patch
 Patch402:       ppc-fedora-0001-linux-seccomp-bpf-ppc64-glibc-workaround-in-SIGSYS-h.patch
@@ -231,6 +237,8 @@ Patch1010:      chromium-124-system-libxml.patch
 Patch1030:      chromium-134-revert-rust-adler2.patch
 # gtk4 is too old
 Patch1040:      gtk-414.patch
+# flac is too old
+Patch1050:      chromium-140-old-flac.patch
 # end conditionally applied patches
 BuildRequires:  SDL-devel
 BuildRequires:  bison
@@ -240,7 +248,7 @@ BuildRequires:  elfutils
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  git
-BuildRequires:  gn >= 0.20250520
+BuildRequires:  gn >= 0.20250619
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  golang(API)
@@ -505,6 +513,10 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %patch -p1 -R -P 1040
 %endif
 
+%if %{without flac_1_5}
+%patch -p1 -P 1050
+%endif
+
 %build
 # esbuild
 rm third_party/devtools-frontend/src/third_party/esbuild/esbuild
@@ -525,9 +537,6 @@ mkdir -p third_party/node/linux/node-linux-x64/bin
 rm -f third_party/node/linux/node-linux-x64/bin/node
 ln -s %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
 sed -i -e "s@^NODE_VERSION=.*@NODE_VERSION=\"v%{node_version}\"@" third_party/node/update_node_binaries
-
-rm buildtools/third_party/eu-strip/bin/eu-strip
-ln -s %{_bindir}/eu-strip buildtools/third_party/eu-strip/bin/eu-strip
 
 # python3
 mkdir -p $HOME/bin
@@ -562,7 +571,6 @@ keeplibs=(
     base/third_party/superfasthash
     base/third_party/symbolize
     base/third_party/xdg_user_dirs
-    buildtools/third_party/eu-strip
     buildtools/third_party/libc++
     buildtools/third_party/libc++abi
     buildtools/third_party/libunwind
@@ -769,7 +777,6 @@ keeplibs=(
     third_party/utf
     third_party/vulkan
     third_party/wayland
-    third_party/wasm_tts_engine
     third_party/webdriver
     third_party/webgpu-cts
     third_party/webrtc

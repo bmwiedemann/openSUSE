@@ -16,7 +16,7 @@ Index: chromium-136.0.7103.48/sandbox/linux/seccomp-bpf-helpers/baseline_policy.
 ===================================================================
 --- chromium-136.0.7103.48.orig/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
 +++ chromium-136.0.7103.48/sandbox/linux/seccomp-bpf-helpers/baseline_policy.cc
-@@ -90,7 +90,8 @@ bool IsBaselinePolicyWatched(int sysno)
+@@ -90,7 +90,8 @@
           SyscallSets::IsPrctl(sysno) ||
           SyscallSets::IsProcessGroupOrSession(sysno) ||
  #if defined(__i386__) || \
@@ -26,7 +26,7 @@ Index: chromium-136.0.7103.48/sandbox/linux/seccomp-bpf-helpers/baseline_policy.
           SyscallSets::IsSocketCall(sysno) ||
  #endif
  #if defined(__arm__)
-@@ -259,7 +259,7 @@
+@@ -254,7 +255,7 @@
  
    // TODO(crbug.com/40528912): should i386 really be in this list?
  #if defined(__i386__) || defined(__x86_64__) || defined(__mips__) || \
@@ -35,7 +35,7 @@ Index: chromium-136.0.7103.48/sandbox/linux/seccomp-bpf-helpers/baseline_policy.
    if (sysno == __NR_mmap)
      return RestrictMmapFlags();
  #endif
-@@ -340,7 +341,8 @@ ResultExpr EvaluateSyscallImpl(int fs_de
+@@ -336,7 +337,8 @@
    }
  
  #if defined(__i386__) || \
@@ -392,7 +392,7 @@ Index: chromium-136.0.7103.48/sandbox/linux/seccomp-bpf-helpers/syscall_sets.cc
  #endif
      case __NR_write:
 @@ -650,11 +651,12 @@
-     case __NR_vmsplice:
+ #endif
  // send* syscalls need their flags filtered.
  #if defined(__arm__) || \
 -    (defined(ARCH_CPU_MIPS_FAMILY) && defined(ARCH_CPU_32_BITS))

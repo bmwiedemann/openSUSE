@@ -127,7 +127,6 @@ if [ -f "${OUTPUTDIR}/libffmpeg.so" ]; then
     install -m ${SHLIB_PERMS} "${buildfile}" "${STAGEDIR}/${INSTALLDIR}/${file}"
 fi
 
-
 # default apps
 if [ -d "${OUTPUTDIR}/default_apps" ]; then
     cp -a "${OUTPUTDIR}/default_apps" "${STAGEDIR}/${INSTALLDIR}/"

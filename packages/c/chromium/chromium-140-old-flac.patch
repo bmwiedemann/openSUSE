@@ -1,0 +1,11 @@
+--- chromium-140.0.7339.5/media/audio/flac_audio_handler.cc	2025/08/13 10:29:53	1.1
++++ chromium-140.0.7339.5/media/audio/flac_audio_handler.cc	2025/08/13 10:30:09
+@@ -166,7 +166,7 @@
+   // `FLAC__STREAM_DECODER_ERROR_STATUS_BAD_METADATA` is the last enumeration
+   // value of `FLAC__StreamDecoderErrorStatus`. The legal status value should be
+   // less than or equal to it.
+-  CHECK_LE(status, FLAC__STREAM_DECODER_ERROR_STATUS_BAD_METADATA);
++  // CHECK_LE(status, FLAC__STREAM_DECODER_ERROR_STATUS_BAD_METADATA);
+   LOG(ERROR) << "Got an error callback: "
+              // SAFETY: The above CHECK ensures that `status` does not exceed
+              // the length of `FLAC__StreamDecoderErrorStatusString`

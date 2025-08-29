@@ -1,8 +1,6 @@
-Index: chromium-123.0.6312.46/components/autofill/core/browser/BUILD.gn
-===================================================================
---- chromium-123.0.6312.46.orig/components/autofill/core/browser/BUILD.gn
-+++ chromium-123.0.6312.46/components/autofill/core/browser/BUILD.gn
-@@ -64,6 +64,11 @@
+--- chromium-140.0.7327.6/components/autofill/core/browser/BUILD.gn	2025/08/01 09:33:04	1.1
++++ chromium-140.0.7327.6/components/autofill/core/browser/BUILD.gn	2025/08/01 09:34:47
+@@ -75,6 +75,11 @@
  }
  
  static_library("browser") {
@@ -12,5 +10,5 @@ Index: chromium-123.0.6312.46/components/autofill/core/browser/BUILD.gn
 +    ]
 +  }
    sources = [
-     "autofill_browser_util.cc",
-     "autofill_browser_util.h",
+     "autofill_ai_form_rationalization.cc",
+     "autofill_ai_form_rationalization.h",

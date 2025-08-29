@@ -1,6 +1,6 @@
---- chromium-138.0.7191.0/build/config/compiler/BUILD.gn	2025/05/26 08:54:48	1.1
-+++ chromium-138.0.7191.0/build/config/compiler/BUILD.gn	2025/05/26 08:56:08
-@@ -310,9 +310,7 @@
+--- chromium-140.0.7259.2/build/config/compiler/BUILD.gn	2025/06/27 14:34:16	1.1
++++ chromium-140.0.7259.2/build/config/compiler/BUILD.gn	2025/06/27 14:36:19
+@@ -312,9 +312,7 @@
  
    configs += [
      # See the definitions below.
@@ -10,11 +10,11 @@
      ":compiler_codegen",
      ":compiler_deterministic",
      ":clang_warning_suppression",
-@@ -581,63 +579,6 @@
+@@ -603,66 +603,6 @@
      ldflags += [ "-Wl,-z,keep-text-section-prefix" ]
    }
  
--  if (is_clang && !is_nacl) {
+-  if (is_clang) {
 -    cflags += [ "-fcrash-diagnostics-dir=" + clang_diagnostic_dir ]
 -    if (save_reproducers_on_lld_crash && use_lld) {
 -      ldflags += [
@@ -65,7 +65,10 @@
 -    # Enable ELF CREL (see crbug.com/357878242) for all platforms that use ELF
 -    # (excluding toolchains that use an older version of LLVM).
 -    # TODO(crbug.com/376278218): This causes segfault on Linux ARM builds.
+-    # It also causes segfault on Linux s390x:
+-    # https://github.com/llvm/llvm-project/issues/149511
 -    if (is_linux && use_lld && !llvm_android_mainline && current_cpu != "arm" &&
+-        current_cpu != "s390x" &&
 -        default_toolchain != "//build/toolchain/cros:target") {
 -      cflags += [ "-Wa,--crel,--allow-experimental-crel" ]
 -    }
@@ -73,8 +76,8 @@
 -
    # C11/C++11 compiler flags setup.
    # ---------------------------
-   if (is_linux || is_chromeos || is_android || (is_nacl && is_clang) ||
-@@ -1596,52 +1537,6 @@
+   if (is_linux || is_chromeos || is_android || current_os == "aix") {
+@@ -1598,43 +1539,6 @@
      }
    }
  
@@ -85,26 +88,17 @@
 -    # different build directory like "out/feature_a" and "out/feature_b" if
 -    # we build same files with same compile flag.
 -    # Other paths are already given in relative, no need to normalize them.
--    if (is_nacl) {
--      # TODO(https://crbug.com/1231236): Use -ffile-compilation-dir= here.
--      cflags += [
--        "-Xclang",
--        "-fdebug-compilation-dir",
--        "-Xclang",
--        ".",
--      ]
--    } else {
--      # -ffile-compilation-dir is an alias for both -fdebug-compilation-dir=
--      # and -fcoverage-compilation-dir=.
--      cflags += [ "-ffile-compilation-dir=." ]
 -
--      # Convert absolute paths to relative paths. Expands to, for example:
--      #   -file-prefix-map /path/to/chromium/src=../..
--      swiftflags += [
--        "-file-prefix-map",
--        rebase_path("//.", "") + "=" + rebase_path("//.", root_build_dir),
--      ]
--    }
+-    # -ffile-compilation-dir is an alias for both -fdebug-compilation-dir=
+-    # and -fcoverage-compilation-dir=.
+-    cflags += [ "-ffile-compilation-dir=." ]
+-
+-    # Convert absolute paths to relative paths. Expands to, for example:
+-    #   -file-prefix-map /path/to/chromium/src=../..
+-    swiftflags += [
+-      "-file-prefix-map",
+-      rebase_path("//.", "") + "=" + rebase_path("//.", root_build_dir),
+-    ]
 -    if (!is_win) {
 -      # We don't use clang -cc1as on Windows (yet? https://crbug.com/762167)
 -      asmflags = [ "-Wa,-fdebug-compilation-dir,." ]
@@ -127,7 +121,7 @@
    # Tells the compiler not to use absolute paths when passing the default
    # paths to the tools it invokes. We don't want this because we don't
    # really need it and it can mess up the RBE cache entries.
-@@ -1660,87 +1555,6 @@
+@@ -1661,87 +1565,6 @@
    }
  }
  
@@ -215,7 +209,7 @@
  # Controls the usage of a warning suppression mapping (WSM) file to suppress
  # warnings based on the path of the file they come from. It's controlled by the
  # `clang_warning_suppression_file` gn argument , which points to a text file
-@@ -2231,10 +2045,6 @@
+@@ -2229,10 +2052,6 @@
      }
    } else {
      cflags = [ "-Wall" ]
@@ -226,7 +220,7 @@
  
      # In Chromium code, we define __STDC_foo_MACROS in order to get the
      # C99 macros on Mac and Linux.
-@@ -2243,24 +2053,6 @@
+@@ -2241,24 +2060,6 @@
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -251,7 +245,7 @@
      if (is_apple) {
        cflags_objc = [ "-Wimplicit-retain-self" ]
        cflags_objcc = [ "-Wimplicit-retain-self" ]
-@@ -2676,7 +2468,8 @@
+@@ -2673,7 +2474,8 @@
  # [0]: https://pinpoint-dot-chromeperf.appspot.com/job/147634a8be0000
  # [1]: https://pinpoint-dot-chromeperf.appspot.com/job/132bc772be0000
  # [2]: https://crrev.com/c/5447532
@@ -261,7 +255,7 @@
    if (is_win) {
      # clang-cl's /O2 corresponds to clang's -O3, and really want -O2 for
      # consistency with the other platforms.
-@@ -2725,7 +2518,8 @@
+@@ -2722,7 +2524,8 @@
  }
  
  # Turn off optimizations.
@@ -271,28 +265,28 @@
    if (is_win) {
      cflags = [
        "/Od",  # Disable optimization.
-@@ -2760,7 +2554,8 @@
+@@ -2757,7 +2560,8 @@
  # Turns up the optimization level. Used to explicitly enable -O2 instead of
  # -Os for select targets on platforms that use optimize_for_size. No-op
  # elsewhere.
 -config("optimize_max") {
 +config("optimize_max") { }
 +config("xoptimize_max") {
-   if (is_nacl && is_nacl_irt) {
-     # The NaCl IRT is a special case and always wants its own config.
-     # Various components do:
-@@ -2793,7 +2588,8 @@
+   ldflags = common_optimize_on_ldflags
+   if (is_win) {
+     # Favor speed over size, /O2 must be before the common flags.
+@@ -2778,7 +2582,8 @@
  #
  # TODO(crbug.com/41259697) - rework how all of these configs are related
  # so that we don't need this disclaimer.
 -config("optimize_speed") {
 +config("optimize_speed") { }
 +config("xoptimize_speed") {
-   if (is_nacl && is_nacl_irt) {
-     # The NaCl IRT is a special case and always wants its own config.
-     # Various components do:
-@@ -2822,7 +2618,8 @@
-   }
+   ldflags = common_optimize_on_ldflags
+   if (is_win) {
+     # Favor speed over size, /O2 must be before the common flags.
+@@ -2795,7 +2600,8 @@
+   rustflags = [ "-Copt-level=3" ]
  }
  
 -config("optimize_fuzzing") {
@@ -301,7 +295,7 @@
    cflags = [ "-O1" ] + common_optimize_on_cflags
    rustflags = [ "-Copt-level=1" ]
    ldflags = common_optimize_on_ldflags
-@@ -2953,7 +2750,8 @@
+@@ -2922,7 +2728,8 @@
  }
  
  # Full symbols.
@@ -311,7 +305,7 @@
    rustflags = []
    configs = []
    if (is_win) {
-@@ -3124,7 +2922,8 @@
+@@ -3089,7 +2896,8 @@
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user
  # when crash happens in unittests running on buildbot.
@@ -321,7 +315,7 @@
    rustflags = []
    if (is_win) {
      # Functions, files, and line tables only.
-@@ -3209,7 +3008,8 @@
+@@ -3165,7 +2973,8 @@
  # This configuration contains function names only. That is, the compiler is
  # told to not generate debug information and the linker then just puts function
  # names in the final debug information.
