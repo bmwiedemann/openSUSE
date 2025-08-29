@@ -568,4 +568,18 @@
   * [L10n] Updated Arabic and French translations (forwarded request 1298816 from rrahl0)</comment>
     <requestid>1298876</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>d06503d4e4500403e25e531647b70bb1</srcmd5>
+    <version>1.86.0</version>
+    <time>1756485437</time>
+    <user>anag_factory</user>
+    <comment>- update to version 1.86.0:
+  * [Servers] Added Annyo (FR)
+  * [Servers] Added Jen Sorensen Weekly Cartoon (EN)
+  * [Servers] Added SushiScan.net (FR)
+  * [Servers] EZManga (EN): Update
+  * [Servers] Reaper Scans (EN): Disabled
+  * [L10n] Updated German, Italian, Russian and Ukrainian translations (forwarded request 1301889 from rrahl0)</comment>
+    <requestid>1301911</requestid>
+  </revision>
 </revisionlist>
