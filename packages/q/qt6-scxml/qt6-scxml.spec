@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-scxml
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.9.1
+%define real_version 6.9.2
 %define short_version 6.9
 %define short_name qtscxml
 %define tar_name qtscxml-everywhere-src
@@ -31,7 +31,7 @@
 %global __requires_exclude qt6qmlimport\\((Calculator|InvokeExample|Mediaplayer|TrafficLightApplication)\\)
 #
 Name:           qt6-scxml%{?pkg_suffix}
-Version:        6.9.1
+Version:        6.9.2
 Release:        0
 Summary:        SCXML (state machine notation) compiler and related tools
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
