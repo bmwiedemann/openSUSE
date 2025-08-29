@@ -450,4 +450,30 @@ See see http://lists.opensuse.org/opensuse-factory/2015-06/msg00133.html</commen
     <comment></comment>
     <requestid>1298935</requestid>
   </revision>
+  <revision rev="62" vrev="6">
+    <srcmd5>2f790a19ddeae52bafe59b4a991c3a3f</srcmd5>
+    <version>2.10</version>
+    <time>1756485289</time>
+    <user>anag_factory</user>
+    <comment>- Drop old Fedora patch 0006-Allow-interface-stacking.patch. It
+  provided a fix for CVE-2025-46836 (bsc#142461), but it was fixes
+  by the upstream in 2025 in a different way. Revert interferring
+  net-tools-CVE-2025-46836.patch back to the upstream version.
+- Fix stack buffer overflow in parse_hex (bsc#1248687,
+  GHSA-h667-qrp8-gj58, net-tools-parse_hex-stack-overflow.patch).
+- Fix stack-based buffer overflow in proc_gen_fmt (bsc#1248687,
+  GHSA-w7jq-cmw2-cq59,
+  net-tools-proc_gen_fmt-buffer-overflow.patch).
+- Avoid unsafe memcpy in ifconfig (bsc#1248687,
+  net-tools-ifconfig-avoid-unsafe-memcpy.patch).
+- Prevent overflow in ax25 and netrom (bsc#1248687,
+  net-tools-ax25+netrom-overflow-1.patch,
+  net-tools-ax25+netrom-overflow-2.patch).
+- Keep possibility to enter long interface names, even if they are
+  not accepted by the kernel, because it was always possible up to
+  CVE-2025-46836 fix. But issue a warning about an interface name
+  concatenation (bsc#1248410,
+  net-tools-ifconfig-long-name-warning.patch).</comment>
+    <requestid>1301847</requestid>
+  </revision>
 </revisionlist>

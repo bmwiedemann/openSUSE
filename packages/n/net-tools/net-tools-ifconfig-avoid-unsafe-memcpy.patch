@@ -1,0 +1,26 @@
+From 28097633198312316ca99ec648fbe5856b1b58f7 Mon Sep 17 00:00:00 2001
+From: Bernd <bernd@eckenfels.net>
+Date: Sat, 17 May 2025 22:33:34 +0200
+Subject: [PATCH] Avoid memcpy (reverted from Last)
+
+It cant overflow at this place, but if we have a Safe function we might as well keep using it.
+---
+ ifconfig.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ifconfig.c b/ifconfig.c
+index 7688a79..696abb9 100644
+--- a/ifconfig.c
++++ b/ifconfig.c
+@@ -336,7 +336,7 @@ int main(int argc, char **argv)
+ 	fprintf(stderr, "%s(%lu): interface name length must be < %i\n", *spp, len, IFNAMSIZ);
+ 	return EXIT_FAILURE;
+     }
+-    memcpy(ifr.ifr_name, *spp++, len+1);
++    safe_strncpy(ifr.ifr_name, *spp++, IFNAMSIZ);
+     if (*spp == (char *) NULL) {
+ 	int err = if_print(ifr.ifr_name);
+ 	(void) close(skfd);
+-- 
+2.48.1
+

@@ -31,7 +31,6 @@ Patch0:         net-tools-configure.patch
 Patch1:         0001-Add-ether-wake-binary.patch
 Patch2:         0002-Do-not-warn-about-interface-socket-not-binded.patch
 Patch4:         0004-By-default-do-not-fopen-anything-in-netrom_gr.patch
-Patch6:         0006-Allow-interface-stacking.patch
 Patch7:         0007-Introduce-T-notrim-option-in-netstat.patch
 # PATCH-FIX-SECURITY net-tools-CVE-2025-46836.patch bsc1243581 sbrabec@suse.com -- Perform bound checks when parsing interface labels in /proc/net/dev.
 Patch8:         net-tools-CVE-2025-46836.patch
@@ -39,6 +38,18 @@ Patch8:         net-tools-CVE-2025-46836.patch
 Patch9:         net-tools-CVE-2025-46836-regression.patch
 # PATCH-FIX-UPSTREAM net-tools-CVE-2025-46836-error-reporting.patch bsc1243581 sbrabec@suse.com -- Provide more readable error for interface name size checking.
 Patch10:        net-tools-CVE-2025-46836-error-reporting.patch
+# PATCH-FIX-SECURITY net-tools-parse_hex-stack-overflow.patch bsc1248410 sbrabec@suse.com -- Fix stack buffer overflow in parse_hex.
+Patch11:        net-tools-parse_hex-stack-overflow.patch
+# PATCH-FIX-SECURITY net-tools-proc_gen_fmt-buffer-overflow.patch bsc1248410 sbrabec@suse.com -- Fix stack-based buffer overflow in proc_gen_fmt.
+Patch12:        net-tools-proc_gen_fmt-buffer-overflow.patch
+# PATCH-FIX-SECURITY net-tools-ifconfig-avoid-unsafe-memcpy.patch bsc1248410 sbrabec@suse.com -- Avoid unsafe memcpy in ifconfig.
+Patch13:        net-tools-ifconfig-avoid-unsafe-memcpy.patch
+# PATCH-FIX-SECURITY net-tools-ax25+netrom-overflow-1.patch bsc1248410 sbrabec@suse.com -- Prevent overflow in ax25 and netrom.
+Patch14:        net-tools-ax25+netrom-overflow-1.patch
+# PATCH-FIX-SECURITY net-tools-ax25+netrom-overflow-2.patch bsc1248410 sbrabec@suse.com -- Prevent overflow in ax25 and netrom.
+Patch15:        net-tools-ax25+netrom-overflow-2.patch
+# PATCH-FIX-UPSTREAM net-tools-ifconfig-long-name-warning.patch bsc1248410 sbrabec@suse.com -- Allow to enter long interface names again.
+Patch16:        net-tools-ifconfig-long-name-warning.patch
 BuildRequires:  help2man
 Recommends:     traceroute >= 2.0.0
 Provides:       net_tool = %{version}

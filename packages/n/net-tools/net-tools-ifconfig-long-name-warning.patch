@@ -1,0 +1,30 @@
+From f7a6ecf2782a96ef38477bb22c3c17713179b05f Mon Sep 17 00:00:00 2001
+From: Stanislav Brabec <sbrabec@suse.com>
+Date: Mon, 25 Aug 2025 22:51:19 +0200
+Subject: [PATCH] Change interface name length overflow to warning.
+
+Interface name is limited to IFNAMSIZ. To keep compatibility with the
+old behavior before 61f4890, change the error to warning.
+---
+ ifconfig.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/ifconfig.c b/ifconfig.c
+index 696abb9..d42a694 100644
+--- a/ifconfig.c
++++ b/ifconfig.c
+@@ -332,10 +332,7 @@ int main(int argc, char **argv)
+     spp = argv;
+     size_t len = strlen(*spp);
+     if (len >= IFNAMSIZ)
+-    {
+-	fprintf(stderr, "%s(%lu): interface name length must be < %i\n", *spp, len, IFNAMSIZ);
+-	return EXIT_FAILURE;
+-    }
++	fprintf(stderr, _("Warning: truncating interface name %s length %lu to %u\n"), *spp, len, IFNAMSIZ-1);
+     safe_strncpy(ifr.ifr_name, *spp++, IFNAMSIZ);
+     if (*spp == (char *) NULL) {
+ 	int err = if_print(ifr.ifr_name);
+-- 
+2.48.1
+

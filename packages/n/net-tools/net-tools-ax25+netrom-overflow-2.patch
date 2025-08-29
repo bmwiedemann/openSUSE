@@ -1,0 +1,27 @@
+From 139f5d85e4e93bd75bc1072349bce19bf56c058a Mon Sep 17 00:00:00 2001
+From: Adam Sampson <ats@offog.org>
+Date: Sun, 17 Aug 2025 02:33:45 +0100
+Subject: [PATCH 2/2] Fix sprintf that should be snprintf
+
+c084d1fea5de0f6dcaed4a59b38a4140bd2e9f13 ("Prevent overflow in ax25 and
+netrom") added the length argument, but didn't change the function name.
+---
+ lib/ax25.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/ax25.c b/lib/ax25.c
+index ab40e00..aee4214 100644
+--- a/lib/ax25.c
++++ b/lib/ax25.c
+@@ -64,7 +64,7 @@ static const char *AX25_print(const char *ptr)
+     i = ((ptr[6] & 0x1E) >> 1);
+     if (i != 0) {
+         int l = strlen(buff);
+-        sprintf(&buff[l], sizeof(buff)-l, "-%d", i);
++        snprintf(&buff[l], sizeof(buff)-l, "-%d", i);
+     }
+ 
+     return (buff);
+-- 
+2.48.1
+

@@ -1,0 +1,79 @@
+From c084d1fea5de0f6dcaed4a59b38a4140bd2e9f13 Mon Sep 17 00:00:00 2001
+From: Bernd Eckenfels <net-tools@lina.inka.de>
+Date: Sat, 16 Aug 2025 22:29:13 +0200
+Subject: [PATCH 1/2] Prevent overflow in ax25 and netrom
+
+Fixes sourceforge #48
+
+Thanks to Bernard Pidoux.
+---
+ lib/ax25.c   | 12 +++++++++---
+ lib/netrom.c | 10 ++++++++--
+ 2 files changed, 17 insertions(+), 5 deletions(-)
+
+diff --git a/lib/ax25.c b/lib/ax25.c
+index 80a82c4..ab40e00 100644
+--- a/lib/ax25.c
++++ b/lib/ax25.c
+@@ -47,9 +47,10 @@ static char AX25_errmsg[128];
+ 
+ extern struct aftype ax25_aftype;
+ 
++// align with NETROM_orint
+ static const char *AX25_print(const char *ptr)
+ {
+-    static char buff[8];
++    static char buff[10]; // N0CALL-15
+     int i;
+ 
+     for (i = 0; i < 6; i++) {
+@@ -58,9 +59,14 @@ static const char *AX25_print(const char *ptr)
+ 	    buff[i] = '\0';
+     }
+     buff[6] = '\0';
++
++    // add SSID
+     i = ((ptr[6] & 0x1E) >> 1);
+-    if (i != 0)
+-	sprintf(&buff[strlen(buff)], "-%d", i);
++    if (i != 0) {
++        int l = strlen(buff);
++        sprintf(&buff[l], sizeof(buff)-l, "-%d", i);
++    }
++
+     return (buff);
+ }
+ 
+diff --git a/lib/netrom.c b/lib/netrom.c
+index 6bcde2d..309e7cb 100644
+--- a/lib/netrom.c
++++ b/lib/netrom.c
+@@ -54,7 +54,7 @@ extern struct aftype netrom_aftype;
+ 
+ static const char *NETROM_print(const char *ptr)
+ {
+-    static char buff[8];
++    static char buff[10]; // N0CALL-15\0
+     int i;
+ 
+     for (i = 0; i < 6; i++) {
+@@ -63,9 +63,15 @@ static const char *NETROM_print(const char *ptr)
+ 	    buff[i] = '\0';
+     }
+     buff[6] = '\0';
++
++    // add SSID
+     i = ((ptr[6] & 0x1E) >> 1);
+     if (i != 0)
+-	sprintf(&buff[strlen(buff)], "-%d", i);
++    {
++        int l = strlen(buff); // 0-6
++        snprintf(&buff[l],sizeof(buff)-l, "-%d", i);
++    }
++
+     return (buff);
+ }
+ 
+-- 
+2.48.1
+
