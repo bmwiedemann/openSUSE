@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 28 20:05:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.43.4:
+  * Implement Broadcast on Cluster Client
+  * Expansions to unit tests
+  * protocol expansions and bug fixes
+
+-------------------------------------------------------------------
 Thu Aug 14 18:11:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 8.43.3:
