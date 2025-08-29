@@ -1,7 +1,7 @@
 #
 # spec file for package lightdm-gtk-greeter-branding-openSUSE
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012 Guido Berhoerster <gber@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
