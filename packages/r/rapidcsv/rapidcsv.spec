@@ -1,7 +1,7 @@
 #
 # spec file for package rapidcsv
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rapidcsv
-Version:        8.87
+Version:        8.88
 Release:        0
 Summary:        C++ header-only library for CSV parsing
 License:        BSD-3-Clause
