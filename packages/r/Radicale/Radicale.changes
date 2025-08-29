@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Aug 22 07:57:21 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+
+- Set "radicale" as the syslog identifier (replacing the generic "python3") when started via systemd
+- Update to 3.5.5
+  * Improve: [auth] ldap: do not read server info by bind to avoid needless network traffic
+  * Improve: add details about platform and effective user on startup
+  * Improve: display owner+permissions on directories on startup, extend error message in case of missing permissions
+  * Improve: add options [logging] trace_on_debug and trace_filter for supporting trace logging
+  * Improve: catch items having tzinfo only on dtstart or dtend set for whatever reason, overtake tzinfo from the other one
+  * Improve: conditional log level for base_prefix strip action depending on auth and web type
+  * Fix: [storage] broken support of 'folder_umask'
+  * Fix: logging ignores not retrievable get_native_id if not supported by OS
+  * Fix: report with enabled expand honors now provided filter proper
+  * Fix: catch case where getpwuid is not returning a username
+  * Fix: add support for query without comp-type
+  * Fix: expanded event with dates are missing VALUE=DATE
+  * Fix: storage hook path now added to DELETE, MKCOL, MKCALENDAR, MOVE, and PROPPATCH
+  * Feature: add hook for server-side e-mail notification
+  * Add: [hook] dryrun: option to disable real hook action for testing, add tests for email+rabbitmq
+  * Add: storage hook placeholder now supports "request" and "to_path" (MOVE only)
+
+-------------------------------------------------------------------
 Wed May 28 20:02:32 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
 
 - Update to 3.5.4
