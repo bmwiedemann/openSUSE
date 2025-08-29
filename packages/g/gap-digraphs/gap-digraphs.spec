@@ -17,7 +17,7 @@
 
 
 Name:           gap-digraphs
-Version:        1.10.1
+Version:        1.11.0
 Release:        0
 Summary:        GAP: Digraphs and multigraphs
 License:        GPL-3.0-or-later
@@ -26,6 +26,9 @@ URL:            https://digraphs.github.io/Digraphs/
 #Git-Clone:     https://github.com/digraphs/Digraphs
 Source:         https://github.com/digraphs/Digraphs/releases/download/v%version/digraphs-%version.tar.gz
 Patch1:         eaps4.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 BuildRequires:  edge-addition-planarity-suite-devel >= 4
 BuildRequires:  fdupes
 BuildRequires:  gap-devel
@@ -51,6 +54,10 @@ and multidigraphs.
 %autosetup -n digraphs-%version -p1
 
 %build
+if [ ! -e configure ]; then
+	ls -al
+	./autogen.sh
+fi
 %configure --with-gaproot="%gapdir" --without-intrinsics \
 	--with-external-planarity
 %make_build

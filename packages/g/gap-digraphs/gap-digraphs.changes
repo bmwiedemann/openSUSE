@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug 29 07:36:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.11.0
+  * Added functions `IsTwoEdgeTransitive`, `BurntPancakeGraph`,
+    `BurntPancakeGraph`, `MinimalCyclicEdgeCut`,
+    `DigraphAllChordlessCyclesOfMaximalLength`, `DigraphKings`,
+    `DigraphIsKing`, `DigraphMaximumFlow`,
+    `RandomUniqueEdgeWeightedDigraph`
+  * `RandomDigraph` is now more random
+  * Added a new optional first argument for mutability in
+    function `CayleyDigraph`
+  * Implemented Zykov's and Christofides's algorithms and made them
+    available as options for `ChromaticNumber`
+  * Sped up `OnDigraphs` for a digraph and a permutation
+  * Added dreadnaut support
+
+-------------------------------------------------------------------
 Wed Aug 27 18:43:23 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.10.1
