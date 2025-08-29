@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Aug 21 07:04:19 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 1.16.0:
+  * release v1.16.0
+  * release notes for v1.16.0
+  * [skip-ci] Update actions/checkout action to v5
+  * fix(deps): update rust crate libc to 0.2.175
+  * test: Remove empty user= directive in dnsmasq.conf to avoid SIGSEGV
+  * [skip-ci] Update actions/download-artifact action to v5
+  * fix(deps): update rust crate tokio to 1.47.1
+  * fix(deps): update rust crate tokio to 1.47.0
+  * coredns: fix typo in debug message
+  * coredns: process more than one message per tcp connection
+  * fix(deps): update rust crate tokio to 1.46.1
+  * fix(deps): update rust crate tokio to 1.46.0
+  * fix new rust 1.88 lint errors
+  * fix(deps): update rust crate clap to ~4.5.40
+  * fix(deps): update rust crate libc to 0.2.174
+  * fix(deps): update rust crate libc to 0.2.173
+  * make more use of AardvarkError
+  * fix(deps): update rust crate clap to ~4.5.39
+  * fix(deps): update rust crate tokio to 1.45.1
+  * fix github release action
+  * bump to v1.16.0-dev
+
+-------------------------------------------------------------------
 Tue May 20 05:15:12 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 1.15.0:
