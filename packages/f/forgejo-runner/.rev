@@ -296,4 +296,16 @@
 </comment>
     <requestid>1299975</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8e8af8928f59305f859c8611b8b83de7</srcmd5>
+    <version>9.1.1</version>
+    <time>1756485458</time>
+    <user>anag_factory</user>
+    <comment>- update to version 9.1.1:
+  * fix: an error from a SKIPPED job does not transform it into a FAILURE
+  * fix: artifact cache DB not using indexes for searching
+  * ix: RunsOn in jobparser is not used by the runner but it is used by Forgejo
+  * chore: fix 'false positive' data race detection in Id/Number default init (forwarded request 1301932 from rrahl0)</comment>
+    <requestid>1301933</requestid>
+  </revision>
 </revisionlist>

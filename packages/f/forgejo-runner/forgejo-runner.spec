@@ -19,7 +19,7 @@
 %define services %{name}.service
 
 Name:           forgejo-runner
-Version:        9.1.0
+Version:        9.1.1
 Release:        0
 Summary:        Daemon that connects to a Forgejo instance and runs CI jobs
 License:        MIT
