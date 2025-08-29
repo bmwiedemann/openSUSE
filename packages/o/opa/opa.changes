@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Fri Aug 29 04:16:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.8.0:
+  * This release contains a mix of new features, performance
+    improvements, and bugfixes. Notably:
+    Support for EdDSA signatures in io.jwt built-ins, including a
+    new io.jwt.verify_eddsa built-in.
+  * EdDSA Support in built-ins (#7824)
+    Support for the EdDSA signing algorithm has been added to
+    built-in functions in the io.jwt namespace.
+    This introduces the new io.jwt.verify_eddsa built-in function,
+    and adds EdDSA support for the following built-ins:
+    - io.jwt.decode_verify
+    - io.jwt.encode_sign
+    - io.jwt.encode_sign_raw
+    This feature benefited greatly from the groundwork laid by
+    @lestrrat in (#7638).
+  * Runtime
+    - cmd: Add back default cmd.RootCommand definition. (#7811)
+      authored by @philipaconrad
+    - Fixing a breaking change to the go API introduced in OPA
+      v1.7.0.
+    - cmd: Fix opa exec parameters (#7850, #7840) authored by
+      @srenatus
+    - Fixing regressions introduced in OPA v1.7.0, where the
+      --fail-non-empty and --stdin-input flags were dropped.
+    - config: accept env vars set to "", discern from unset (#7831)
+      authored by @srenatus reported by @ManuelNowackConfinale
+    - handlers: Add thread-safe initialization for gzipPool (#7828)
+      authored by @charlieegan3
+    - plugins: Address race in config access (#7825) authored by
+      @charlieegan3
+    - plugin/bundle: Correct bundle delay behavior (#7812) authored
+      by @charlieegan3
+    - runtime: Update server init check (#7818) authored by
+      @charlieegan3
+  * Topdown
+    - perf: Performance greatly improved for Object.Insert on
+      existing key (#7820) authored by @anderseknert
+    - topdown,bundle,plugins: Upgrade interned jwx (0.9.x) with
+      github.com/lestrrat-go/jwx/v3 (#7638) authored by @lestrrat
+  * Miscellaneous
+    - Update organization affiliations (#7842) authored by
+      @tsandall
+    - test/e2e: Avoid port exhaustion in concurrent tests (#7862)
+      authored by @anderseknert
+    - server: Make TestCertReloading less verbose (#7823) authored
+      by @charlieegan3
+    - cmd: Exec test wait for bundle server to start (#7821)
+      authored by @charlieegan3
+    - cmd: Update tests to run sync when ready (#7835) authored by
+      @charlieegan3
+    - cmd: Move accidental pkg var to local var (#7813) authored by
+      @philipaconrad
+    - internal/report: Allow overriding GitHub repo (#7867)
+      authored by @srenatus
+    - release: Adding Dockerfile for image used in *-patch build
+      targets (#7864) authored by @johanfylling
+    - Dependency updates; notably:
+      - build: Bump go to 1.24.6 (#7834, #7839) authored by
+        @johanfylling and @thevilledev
+      - build(deps): Bump go-viper/mapstructure/v2 from v2.3.0 to
+        v2.4.0 (#7857) authored by @deeglaze
+      - build(deps): Bump github.com/containerd/containerd/v2 from
+        2.1.3 to 2.1.4
+      - build(deps): Bump github.com/prometheus/client_golang from
+        1.22.0 to 1.23.0
+
+-------------------------------------------------------------------
 Mon Aug 04 05:39:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.7.1:
