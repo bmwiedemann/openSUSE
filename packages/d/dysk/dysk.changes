@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 29 09:15:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.1.0:
+  * default strategy on Mac is much faster (about 1000 times
+    faster...)
+  * strategy can be chosen with --strategy diskutil or --strategy
+    iokit (default)
+
+-------------------------------------------------------------------
 Wed Aug 20 06:18:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.0:
