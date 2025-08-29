@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 28 14:41:13 UTC 2025 - Jan Baier <jbaier@suse.com>
+
+- update to 13.26
+  * dh_assistant: List files with unclear config file state
+  * dh_assistant: Provide tool-assistance migration hints for compat upgrades
+  * Regenerate POT and PO files
+  * Updated Portuguese translation for debhelper's man page (Closes: #1111112)
+
+-------------------------------------------------------------------
 Mon Aug 18 11:40:47 UTC 2025 - Jan Baier <jbaier@suse.com>
 
 - update to 13.25
