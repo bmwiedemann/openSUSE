@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 27 07:15:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.2:
+  * https://www.qt.io/blog/qt-6.9.2-released
+- Drp patch, merged upstream:
+  * 0001-QDoc-Sort-non-function-nodes-by-name-then-erase-duplicates.patch
+- Recommend installing qt6-translation for the -assistant,
+  -designer and -linguist subpackages.
+
+-------------------------------------------------------------------
 Tue Jun  3 07:49:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.9.1:

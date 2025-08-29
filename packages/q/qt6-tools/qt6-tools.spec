@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-tools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.9.1
+%define real_version 6.9.2
 %define short_version 6.9
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.9.1
+Version:        6.9.2
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # Legal:
@@ -45,8 +45,6 @@ Source13:       org.qt.assistant6.desktop
 # The 48x48 icon was removed from qttools
 Source14:       linguist6.png
 Source99:       qt6-tools-rpmlintrc
-# PATCH-FIX-UPSTREAM 0001-QDoc-Sort-non-function-nodes-by-name-then-erase-duplicates.patch alarrosa@suse.com -- Fix reproducibility bsc#1243434
-Patch0:         0001-QDoc-Sort-non-function-nodes-by-name-then-erase-duplicates.patch
 # clang-devel in Leap 15 points to clang7...
 %if 0%{?suse_version} == 1500
 # Leap 15.6 has llvm 19 since 2025-02-12, we need to use it to avoid doc build issues
@@ -199,12 +197,14 @@ ABI or API guarantees.
 
 %package assistant
 Summary:        Documentation browser
+Recommends:     qt6-translations
 
 %description assistant
 Qt Assistant is a tool for viewing documentation in Qt help file format.
 
 %package designer
 Summary:        Qt graphical interface creation tool
+Recommends:     qt6-translations
 
 %description designer
 Qt Designer is a tool for designing and building graphical user interface
@@ -221,6 +221,7 @@ Qt 6 tool for generating .qch help catalogs.
 
 %package linguist
 Summary:        Translation tool for Qt applications
+Recommends:     qt6-translations
 
 %description linguist
 Qt Linguist can be used by translator to translate text in Qt applications.
