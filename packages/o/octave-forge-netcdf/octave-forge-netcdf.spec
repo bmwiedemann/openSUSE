@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-netcdf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define octpkg  netcdf
 Name:           octave-forge-%{octpkg}
-Version:        1.0.17
+Version:        1.0.18
 Release:        0
 Summary:        NetCDF interface for Octave
 License:        GPL-3.0-or-later
