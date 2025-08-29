@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 29 10:46:33 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1756120159.1bc0abb:
+  * Fix signature of test module
+  * VMWare: Use grep -F to handle fixed-strings in variables
+  * VMWare: Use POSIX shell on ESXi host that uses Busybox
+  * Add wrappers for testapi variables
+  * backend: Turn off direct-io for multi-fd migration
+
+-------------------------------------------------------------------
 Thu Aug 14 01:32:37 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1755088400.98b9a6c:
