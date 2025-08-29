@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 29 11:24:53 UTC 2025 - Reinhard Max <max@suse.com>
+
+- bsc#1247587: Fix a crash when calling "sntp -d".
+  * ntp-sntp-assert.patch
+- Update source URL.
+
+-------------------------------------------------------------------
 Wed Feb  5 15:20:57 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Update to 4.2.8p18

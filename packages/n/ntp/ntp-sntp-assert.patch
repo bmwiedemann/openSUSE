@@ -1,0 +1,10 @@
+--- sntp/main.c.orig
++++ sntp/main.c
+@@ -981,6 +981,7 @@ void sntp_addremove_fd(
+ 		return;
+ 	}
+ 
++	make_socket_nonblocking(fd);
+ 	ev = event_new(base, fd, EV_READ | EV_PERSIST,
+ 		       &worker_resp_cb, c);
+ 	if (NULL == ev) {

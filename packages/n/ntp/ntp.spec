@@ -30,7 +30,7 @@ License:        BSD-3-Clause AND MIT AND BSD-4-Clause AND GPL-2.0-only
 Group:          Productivity/Networking/Other
 URL:            http://www.ntp.org/
 # main source
-Source0:        http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-%{version}.tar.gz
+Source0:        https://downloads.nwtime.org/ntp/4.2.8/ntp-%{version}.tar.gz
 # configuration
 Source1:        conf.logrotate.ntp
 Source2:        conf.ntp.conf
@@ -59,6 +59,7 @@ Patch33:        ntp-sntp-libevent.patch
 Patch34:        testdcf-gude.diff
 Patch35:        ntp-clarify-interface.patch
 Patch36:        ntp-check-argv.patch
+Patch37:        ntp-sntp-assert.patch
 
 BuildRequires:  avahi-compat-mDNSResponder-devel
 BuildRequires:  fdupes
@@ -146,6 +147,7 @@ cp %{SOURCE12} .
 %patch -P 34 -p1
 %patch -P 35
 %patch -P 36
+%patch -P 37
 
 # fix DOS line breaks
 sed -i 's/\r//g' html/scripts/{footer.txt,style.css}

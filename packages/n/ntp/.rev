@@ -1355,4 +1355,14 @@ Properly categorise licenses and sync with Fedora declaration (forwarded request
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1245450</requestid>
   </revision>
+  <revision rev="142" vrev="2">
+    <srcmd5>72f848b710192344cccc363ceeece9b9</srcmd5>
+    <version>4.2.8p18</version>
+    <time>1756485461</time>
+    <user>anag_factory</user>
+    <comment>- bsc#1247587: Fix a crash when calling &quot;sntp -d&quot;.
+  * ntp-sntp-assert.patch
+- Update source URL.</comment>
+    <requestid>1301942</requestid>
+  </revision>
 </revisionlist>
