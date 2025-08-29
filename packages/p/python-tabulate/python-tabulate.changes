@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 25 14:08:25 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Fri May 19 07:19:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - build with setuptools_scm 

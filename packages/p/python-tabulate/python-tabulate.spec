@@ -1,7 +1,7 @@
 #
 # spec file for package python-tabulate
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-tabulate
 Version:        0.9.0
@@ -35,11 +40,16 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
 Recommends:     python-wcwidth
 Suggests:       python-pandas
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -68,6 +78,9 @@ The main use cases of the library are:
 
 %check
 %pytest
+
+%pre
+%python_libalternatives_reset_alternative tabulate
 
 %post
 %python_install_alternative tabulate
