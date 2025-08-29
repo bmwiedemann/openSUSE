@@ -237,4 +237,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1299973</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>09229ee762702ca738da3fdb8b9bc89f</srcmd5>
+    <version>3.2.0</version>
+    <time>1756485463</time>
+    <user>anag_factory</user>
+    <comment>- make build reproducible, add reproducible.patch boo#1248258
+</comment>
+    <requestid>1301963</requestid>
+  </revision>
 </revisionlist>

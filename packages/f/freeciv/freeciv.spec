@@ -31,6 +31,7 @@ License:        GPL-2.0-or-later
 Group:          Amusements/Games/Strategy/Turn Based
 URL:            https://www.freeciv.org
 Source0:        https://files.freeciv.org/stable/%{name}-%{version}.tar.xz
+Patch0:         reproducible.patch
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  meson
