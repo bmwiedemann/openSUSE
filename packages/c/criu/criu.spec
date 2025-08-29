@@ -18,7 +18,7 @@
 
 # currently broken with LTO, resulting in segfaults (bsc#1203854)
 %define _lto_cflags %{nil}
-%ifarch x86_64 aarch64
+%ifarch x86_64 aarch64 riscv64
 %define with_amdgpu_plugin 1
 %else
 %define with_amdgpu_plugin 0
@@ -60,7 +60,7 @@ BuildRequires:  protobuf-devel
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 Requires:       python3-protobuf
-ExclusiveArch:  x86_64 aarch64 ppc64le armv7l armv7hl s390x riscv
+ExclusiveArch:  x86_64 aarch64 ppc64le armv7l armv7hl s390x riscv64
 %if %{with_amdgpu_plugin}
 BuildRequires:  libdrm-devel
 %endif
