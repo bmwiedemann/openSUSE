@@ -279,4 +279,12 @@
     <comment>build with -j1 if deterministic build results are wanted (bsc#1228131) (forwarded request 1282734 from bmwiedemann)</comment>
     <requestid>1282856</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>2f21413389cb8fbff3d553eec1e5aa60</srcmd5>
+    <version>6.9.2</version>
+    <time>1756485349</time>
+    <user>anag_factory</user>
+    <comment>Update to 6.9.2</comment>
+    <requestid>1301815</requestid>
+  </revision>
 </revisionlist>

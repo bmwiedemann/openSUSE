@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-datavis3d
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,11 @@
 #
 
 
-%define real_version 6.9.1
+%define real_version 6.9.2
 %define short_version 6.9
 %define short_name qtdatavis3d
 %define tar_name qtdatavis3d-everywhere-src
 %define tar_suffix %{nil}
-%if 0%{?want_reproducible_builds}
-# workaround for bsc#1228131
-%define _smp_mflags -j1
-%endif
 #
 %global qt6_flavor @BUILD_FLAVOR@%{nil}
 %if "%{qt6_flavor}" == "docs"
@@ -35,7 +31,7 @@
 %global __requires_exclude qt6qmlimport\\((AxisHandling|SurfaceGallery)\\)
 #
 Name:           qt6-datavis3d%{?pkg_suffix}
-Version:        6.9.1
+Version:        6.9.2
 Release:        0
 Summary:        Qt 6 data visualization framework
 License:        GPL-3.0-or-later

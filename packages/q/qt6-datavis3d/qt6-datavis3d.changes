@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 28 14:10:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Pass '-DQT_QML_NO_CACHEGEN:BOOL=TRUE' to CMake to make builds
+  reproducible (related: boo#1248369)
+- Build with all available cores
+
+-------------------------------------------------------------------
+Wed Aug 27 07:15:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.2:
+  * https://www.qt.io/blog/qt-6.9.2-released
+
+-------------------------------------------------------------------
 Wed Jun  4 12:05:22 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - build with -j1 if deterministic build results are wanted (bsc#1228131)
