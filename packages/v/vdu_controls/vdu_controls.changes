@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 29 02:21:40 UTC 2025 - Michael Hamilton <michael@actrix.gen.nz>
+
+- Version 2.4.3
+  * Fix a rare TypeError when light metering.
+  * Some code cleanups for the splash screen.
+
+-------------------------------------------------------------------
 Mon Jul 28 22:00:55 UTC 2025 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Version 2.4.2
