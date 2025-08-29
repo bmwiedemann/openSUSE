@@ -119,4 +119,20 @@
     <comment></comment>
     <requestid>1244257</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fcb4681b2a9ce6339b94f176e35c0413</srcmd5>
+    <version>0.8.6</version>
+    <time>1756485390</time>
+    <user>anag_factory</user>
+    <comment>- Actually switch to using flit-core.
+- Skip a broken test.
+
+- update to 0.8.6:
+  * Plotting: fixed ASCII heatmaps (swapped axes)
+
+- Add upper bound on numpy of &lt; 2.
+  * Fixed: Typing annotations (again) passing mypy validation.
+  * Fixed: A few small bugs</comment>
+    <requestid>1301858</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 29 04:17:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Actually switch to using flit-core.
+- Skip a broken test.
+
+-------------------------------------------------------------------
+Mon Apr 28 14:10:04 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.6:
+  * Plotting: fixed ASCII heatmaps (swapped axes)
+
+-------------------------------------------------------------------
 Wed Feb  5 08:34:01 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.8.5
@@ -55,7 +67,7 @@ Fri Aug 30 13:38:42 UTC 2024 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Mon Jul  8 04:37:02 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Add upper bound on numpy of < 2. 
+- Add upper bound on numpy of < 2.
 
 -------------------------------------------------------------------
 Tue Mar  5 19:09:36 UTC 2024 - Ben Greiner <code@bnavigator.de>
@@ -82,7 +94,7 @@ Thu Feb 16 05:58:07 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
   * Changed: Reworked pandas compatibility (.to_series, .to_dataframe methods)
   * Added: .physt series/dataframe accessors (with h1, h2, histogram methods)
   * Fixed: A lot of RuntimeError's changed to more specific exceptions
-  * Fixed: Typing annotations (again) passing mypy validation. 
+  * Fixed: Typing annotations (again) passing mypy validation.
 
 -------------------------------------------------------------------
 Fri Apr 23 02:52:11 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
@@ -97,7 +109,7 @@ Fri Apr 23 02:52:11 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
   * Added: Basic tests for plotting backends
   * Support: Tested against Python 3.6-3.9
   * Fixed: Typing annotations are passing mypy validation.
-  * Fixed: A few small bugs 
+  * Fixed: A few small bugs
 - Do not build for Python 3.6, due to no NumPy.
 
 -------------------------------------------------------------------
