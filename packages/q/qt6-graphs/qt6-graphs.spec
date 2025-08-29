@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-graphs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.9.1
+%define real_version 6.9.2
 %define short_version 6.9
 %define tar_name qtgraphs-everywhere-src
 %define tar_suffix %{nil}
