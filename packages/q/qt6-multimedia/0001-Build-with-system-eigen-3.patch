@@ -1,4 +1,4 @@
-From de6655d8d81450d5da02c12e4c42c9c062ab231b Mon Sep 17 00:00:00 2001
+From a83b7447408c62147f1b3c4cf516aed380b00c80 Mon Sep 17 00:00:00 2001
 From: Christophe Marin <christophe@krop.fr>
 Date: Wed, 9 Oct 2024 14:19:49 +0200
 Subject: [PATCH] =?UTF-8?q?Build=20with=20system=20eigen=C2=A03?=
@@ -43,18 +43,18 @@ index 7690ae2..1b9762b 100644
  
  # Required by pffft on certain PowerPC archs
 diff --git a/src/spatialaudio/CMakeLists.txt b/src/spatialaudio/CMakeLists.txt
-index 7ebd02c..01126af 100644
+index b03ec7f..dc6c99a 100644
 --- a/src/spatialaudio/CMakeLists.txt
 +++ b/src/spatialaudio/CMakeLists.txt
-@@ -18,7 +18,7 @@ qt_internal_add_module(SpatialAudio
+@@ -20,7 +20,7 @@ qt_internal_add_module(SpatialAudio
          "../3rdparty/resonance-audio/resonance_audio"
          "../3rdparty/resonance-audio"
          "../resonance-audio"
 -        "../3rdparty/eigen"
 +        "/usr/include/eigen3"
-     DEFINES
-         QT_NO_CAST_FROM_ASCII
-         QT_NO_CAST_TO_ASCII
+     LIBRARIES
+         Qt::MultimediaPrivate
+         Qt::BundledResonanceAudio
 -- 
-2.49.0
+2.51.0
 

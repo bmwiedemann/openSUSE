@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-multimedia
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.9.1
+%define real_version 6.9.2
 %define short_version 6.9
 %define short_name qtmultimedia
 %define tar_name qtmultimedia-everywhere-src
@@ -31,7 +31,7 @@
 %global __requires_exclude qt6qmlimport\\((FrequencyMonitor|frequencymonitor|performancemonitor).*
 #
 Name:           qt6-multimedia%{?pkg_suffix}
-Version:        6.9.1
+Version:        6.9.2
 Release:        0
 Summary:        Qt 6 Multimedia libraries
 License:        GPL-3.0-only
@@ -44,6 +44,7 @@ Patch0:         0001-Fix-build-on-x86-arch.patch
 Patch1:         0001-Build-with-system-eigen-3.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
 BuildRequires:  cmake(Qt6Core) = %{real_version}
 BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
@@ -105,6 +106,7 @@ The Qt 6 Multimedia library.
 %package devel
 Summary:        Qt 6 Multimedia library - Development files
 Requires:       libQt6Multimedia6 = %{version}
+Requires:       cmake(Qt6Concurrent) = %{real_version}
 Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6Network) = %{real_version}
 
@@ -234,7 +236,8 @@ rm -r ./src/3rdparty/eigen
 %cmake_qt6 \
   -DQT_GENERATE_SBOM:BOOL=FALSE \
   -DINPUT_gstreamer:BOOL=TRUE \
-  -DINPUT_ffmpeg:BOOL=TRUE
+  -DINPUT_ffmpeg:BOOL=TRUE \
+  -DINPUT_pipewire:BOOL=TRUE
 
 %{qt6_build}
 
@@ -297,7 +300,6 @@ rm -r %{buildroot}%{_qt6_includedir}/QtFFmpegMediaPluginImpl
 %{_qt6_libdir}/libQt6Multimedia.so.*
 
 %files devel
-%{_qt6_cmakedir}/Qt6/FindAVFoundation.cmake
 %{_qt6_cmakedir}/Qt6/FindFFmpeg.cmake
 %{_qt6_cmakedir}/Qt6/FindGObject.cmake
 %{_qt6_cmakedir}/Qt6/FindGStreamer.cmake
