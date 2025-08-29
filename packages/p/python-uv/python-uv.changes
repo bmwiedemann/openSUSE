@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Aug 28 22:10:39 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.8.14
+ * Enhancements
+  * Add --python-platform to uv pip check 
+  * Add an environment variable for UV_ISOLATED 
+  * Add logging to the uv build backend 
+  * Allow more trailing null bytes in zip files 
+  * Allow pinning managed Python versions to specific build versions 
+  * Cache PyTorch wheels by default 
+  * Reject already-installed wheels that don't match the target platform 
+  * Add --no-install-local option to uv sync, uv add and uv export 
+  * Include cycle error message in uv pip CLI 
+ * Preview features
+  * Fix format of {version} on uv format failure 
+  * Lock during installs in uv format to prevent races 
+  * Respect --project in uv format 
+  * Run uv format in the project root 
+ * Configuration
+  * Add file-to-CLI overrides for build isolation configuration 
+  * Add file-to-CLI overrides for reinstall configuration 
+ * Performance
+  * Cache WHEEL and METADATA reads in installed distributions 
+ * Bug fixes
+  * Avoid erroring when creating venv in current working directory 
+  * Avoid introducing unnecessary system dependency on CUDA 
+  * Clear discovered site packages when creating virtual environment 
+  * Read index credentials from the environment during uv publish checks 
+  * Refuse to remove non-virtual environments in uv venv 
+  * Stop setting CLICOLOR_FORCE=1 when calling build backends 
+  * Support file or directory removal for Windows symlinks 
+ * Documentation
+  * Fix GitHub guide highlight lines 
+  * Move Resolver to new Internals section in the Reference 
+  * Split the "Authentication" page into sections 
+  * Update uninstall docs to mention uvw.exe needs to be removed 
+
+-------------------------------------------------------------------
 Fri Aug 22 13:54:55 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.8.13
