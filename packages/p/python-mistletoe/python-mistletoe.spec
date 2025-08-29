@@ -1,7 +1,7 @@
 #
 # spec file for package python-mistletoe
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-mistletoe
 Version:        1.4.0
@@ -33,9 +38,14 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-Pygments
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 %python_subpackages
 
 %description
@@ -57,6 +67,9 @@ find . -type f -print0 | xargs -0 dos2unix --
 
 %check
 %pytest
+
+%pre
+%python_libalternatives_reset_alternative mistletoe
 
 %post
 %python_install_alternative mistletoe
