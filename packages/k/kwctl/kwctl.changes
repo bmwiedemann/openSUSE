@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Aug 28 04:55:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.28.0:
+  * Maintenance
+    - build(deps): update rust crate regex to v1.11.2 (#1335)
+    - build(deps): update rust crate url to v2.5.7 (#1334)
+    - build(deps): update taiki-e/install-action action to v2.58.21
+      (#1333)
+    - build(deps): update github-actions
+    - build(deps): update rust crate url to v2.5.6 (#1332)
+    - build(deps): update github-actions
+    - build(deps): update rust crate thiserror to v2.0.16 (#1329)
+    - build(deps): update rust crate tempfile to v3.21.0
+    - build(deps): update rust crate serde_json to v1.0.143
+    - build(deps): update rust crate hyper to v1.7.0
+    - build(deps): update crate-ci/typos action to v1.35.5 (#1325)
+    - build(deps): update rust crate thiserror to v2.0.15 (#1323)
+    - build(deps): update taiki-e/install-action action to v2.58.17
+      (#1322)
+    - build(deps): update taiki-e/install-action action to v2.58.15
+      (#1321)
+    - build(deps): update taiki-e/install-action action to v2.58.12
+      (#1320)
+
+-------------------------------------------------------------------
 Wed Aug 20 06:02:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.27.3:
