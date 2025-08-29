@@ -2465,4 +2465,29 @@
   * [flake8-annotations] Remove unused import in example (ANN401)</comment>
     <requestid>1300962</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>6bb3c15d96275c390533d8076b750ff7</srcmd5>
+    <version>0.12.11</version>
+    <time>1756485287</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.12.11 
+ * Preview features
+  * [airflow] Extend AIR311 and AIR312 rules 
+  * [airflow] Replace wrong path airflow.io.storage with airflow.io.store (AIR311) 
+  * [flake8-async] Implement blocking-http-call-httpx-in-async-function (ASYNC212) 
+  * [flake8-logging-format] Add auto-fix for f-string logging calls (G004) 
+  * [flake8-use-pathlib] Add autofix for PTH211 
+  * [flake8-use-pathlib] Make PTH100 fix unsafe because it can change behavior 
+ * Bug fixes
+  * [pyflakes, pylint] Fix false positives caused by __class__ cell handling (F841, PLE0117) 
+  * [pyflakes] Fix allowed-unused-imports matching for top-level modules (F401) 
+  * [ruff] Fix false positive for t-strings in default-factory-kwarg (RUF026) 
+  * [ruff] Preserve relative whitespace in multi-line expressions (RUF033) 
+ * Rule changes
+  * [ruff] Handle empty t-strings in unnecessary-empty-iterable-within-deque-call (RUF037) 
+ * Documentation
+  * Fix incorrect D413 links in docstrings convention FAQ 
+  * [flake8-use-pathlib] Update links to the table showing the correspondence between os and pathlib</comment>
+    <requestid>1301841</requestid>
+  </revision>
 </revisionlist>
