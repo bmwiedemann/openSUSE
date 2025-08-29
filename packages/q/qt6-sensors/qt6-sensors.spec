@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-sensors
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.9.1
+%define real_version 6.9.2
 %define short_version 6.9
 %define short_name qtsensors
 %define tar_name qtsensors-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-sensors%{?pkg_suffix}
-Version:        6.9.1
+Version:        6.9.2
 Release:        0
 Summary:        Qt Sensors API to access sensor hardware
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
@@ -122,7 +122,8 @@ ABI or API guarantees.
 
 %build
 %cmake_qt6 \
-  -DQT_GENERATE_SBOM:BOOL=FALSE
+  -DQT_GENERATE_SBOM:BOOL=FALSE \
+  -DQT_QML_NO_CACHEGEN:BOOL=TRUE
 
 %{qt6_build}
 
