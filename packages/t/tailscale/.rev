@@ -339,4 +339,12 @@
     firewall (forwarded request 1296389 from rrahl0)</comment>
     <requestid>1296390</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>09dcf09f9a1635ab67d23f495604d45e</srcmd5>
+    <version>1.86.5</version>
+    <time>1756485453</time>
+    <user>anag_factory</user>
+    <comment>- add patch fix-CVE-2025-58058.patch, fixing bsc#1248920 (forwarded request 1301938 from rrahl0)</comment>
+    <requestid>1301939</requestid>
+  </revision>
 </revisionlist>

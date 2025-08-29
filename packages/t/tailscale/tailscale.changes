@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 29 12:57:59 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add patch fix-CVE-2025-58058.patch, fixing bsc#1248920
+
+-------------------------------------------------------------------
+Fri Aug 29 11:10:29 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.86.5:
+  * cmd/k8s-proxy,k8s-operator: fix serve config for userspace mode
+- update to version 1.86.4:
+  * nothing of relevance
+- update to version 1.86.3:
+  * nothing of relevance
+
+-------------------------------------------------------------------
 Tue Jul 29 21:20:47 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.86.2:

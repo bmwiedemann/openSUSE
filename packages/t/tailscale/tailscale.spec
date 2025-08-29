@@ -1,7 +1,7 @@
 #
 # spec file for package tailscale
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tailscale
-Version:        1.86.2
+Version:        1.86.5
 Release:        0
 Summary:        The easiest, most secure way to use WireGuard and 2FA
 License:        BSD-3-Clause
@@ -28,6 +28,7 @@ Source2:        %{name}d.service
 Source3:        %{name}d.defaults
 Patch0:         build-verbose.patch
 Patch1:         disable-auto-update.patch
+Patch2:         fix-CVE-2025-58058.patch
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  git-core
