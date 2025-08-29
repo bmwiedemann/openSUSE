@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-declarative
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.9.1
+%define real_version 6.9.2
 %define short_version 6.9
 %define tar_name qtdeclarative-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-declarative%{?pkg_suffix}
-Version:        6.9.1
+Version:        6.9.2
 Release:        0
 Summary:        Qt 6 Declarative Libraries and tools
 License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
@@ -36,8 +36,6 @@ Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-declarative-rpmlintrc
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-qmlimportscanner-Include-module-versions-again.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-qmlcachegen-fix-crash-on-unresolved-type-with-requir.patch
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -1002,7 +1000,8 @@ EOF
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
 %cmake_qt6 \
-  -DQT_GENERATE_SBOM:BOOL=FALSE
+  -DQT_GENERATE_SBOM:BOOL=FALSE \
+  -DQT_QML_NO_CACHEGEN:BOOL=TRUE
 
 %{qt6_build}
 
