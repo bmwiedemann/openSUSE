@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 29 07:43:54 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20250805.d1286a3:
+  * Fix check for existence of sysextmgrcli
+  * Don't call sysextmgrcli if not installed
+  * Set ImageId for sub-images (for mkosi manifest)
+  * k3s: move ID=_any from finalize to postinst
+
+-------------------------------------------------------------------
 Wed Jul 23 13:03:46 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 20250715.497ac5b:

@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>1295651</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>481fa3525004f854b074f3b05b4d841f</srcmd5>
+    <version>unknown</version>
+    <time>1756485429</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250805.d1286a3:
+  * Fix check for existence of sysextmgrcli
+  * Don't call sysextmgrcli if not installed
+  * Set ImageId for sub-images (for mkosi manifest)
+  * k3s: move ID=_any from finalize to postinst</comment>
+    <requestid>1301888</requestid>
+  </revision>
 </revisionlist>
