@@ -1,7 +1,7 @@
 #
 # spec file for package sysprof
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2016 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %define glib_version 2.76.0
 
 Name:           sysprof
-Version:        48.0
+Version:        48.1
 Release:        0
 Summary:        A system-wide Linux profiler
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 28 14:14:43 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.1:
+  + Round mapped ring buffer the shared memory boundary on hppa.
+  + Try to talk to perf with direct syscalls in the absence of a
+    D-Bus connection.
+  + Add --no-sysprofd command line option to sysprof-cli.
+  + Properly parse --no-debuginfod in sysprof-cli.
+  + Fix an uninitialized memory issue when using counters with the
+    collector API of libsysprof-capture.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Mar 23 19:15:06 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - Build with PIE when using gcc11. Add conditional gcc11-PIE
