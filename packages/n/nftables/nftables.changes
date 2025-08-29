@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 27 23:31:54 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.5
+  * Revert JSON ruleset listing, restore set flags to display
+    single item with array
+  * Fix misleading "No buffer space available" error when kernel
+    reports too many errors back to userspace.
+- Delete 0001-tools-add-a-systemd-unit-for-static-rulesets.patch,
+  json.patch (merged)
+
+-------------------------------------------------------------------
 Wed Aug 20 14:07:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add json.patch

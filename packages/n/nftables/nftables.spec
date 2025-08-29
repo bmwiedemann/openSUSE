@@ -22,7 +22,7 @@
 %define pyversion 0.1
 
 Name:           nftables
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        Userspace utility to access the nf_tables packet filter
 License:        GPL-2.0-only
@@ -33,8 +33,6 @@ Source:         http://ftp.netfilter.org/pub/%name/%name-%version.tar.xz
 Source2:        http://ftp.netfilter.org/pub/%name/%name-%version.tar.xz.sig
 Source3:        %name.keyring
 Source4:        nftables.rpmlintrc
-Patch1:         0001-tools-add-a-systemd-unit-for-static-rulesets.patch
-Patch2:         json.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -108,7 +106,8 @@ cd obj/
 %define _configure ../configure
 %configure --disable-silent-rules --disable-static --docdir="%_docdir/%name" \
 	--includedir="%_includedir/%name" --with-json \
-	--enable-python --with-python-bin="$(which python3)"
+	--enable-python --with-python-bin="$(which python3)" \
+	--with-unitdir=/usr/lib/systemd/system
 %make_build
 cd -
 cd py
