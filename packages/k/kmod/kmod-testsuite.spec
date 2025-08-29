@@ -45,11 +45,6 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  kernel-default-devel
-# pesign-obs-integration is now a runtime requirement of kernel-default-devel.
-# We don't need it for the kmod testsuite, and it also breaks the
-# build as we aren't producting any binaries.
-# See discussion on bsc#1248108 for more background on the change.
-#!BuildIgnore:  pesign-obs-integration
 BuildRequires:  libopenssl-devel >= 1.1.0
 BuildRequires:  libtool
 BuildRequires:  pkg-config >= 0.21

@@ -811,4 +811,12 @@ This addition of patch not mentioned in changelog should have been rejected by t
     <comment></comment>
     <requestid>1301124</requestid>
   </revision>
+  <revision rev="89" vrev="4">
+    <srcmd5>ad2aab7bff74ead55d048b9f830c72ad</srcmd5>
+    <version>34.2</version>
+    <time>1756485283</time>
+    <user>anag_factory</user>
+    <comment>- Revert the previous workaround</comment>
+    <requestid>1301784</requestid>
+  </revision>
 </revisionlist>
