@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug 29 11:30:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.59.0:
+  * Support other field for PKCS7
+  * Add CFI directives to armv8-mont
+  * Add back RC4_options from decrepit
+  * Apache httpd integration test
+  * Fix clang-21 compile error
+  * Fix MariaDB integration test
+  * ML-KEM: Re-import mlkem-native
+  * ML-KEM: import and enable x86_64 backend from mlkem-native
+  * X509_REQ_verify for MLDSA44 and MLDSA87
+  * Remove BIT_INTERLEAVE support
+  * ML-KEM: Fix mlkem-native importer.sh
+  * Add CFI directives in md5-armv8.pl
+
+-------------------------------------------------------------------
 Thu Aug 14 12:47:07 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 1.58.1:
