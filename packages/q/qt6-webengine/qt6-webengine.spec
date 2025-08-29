@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-webengine
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.9.1
+%define real_version 6.9.2
 %define short_version 6.9
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
@@ -55,7 +55,7 @@
 %global lts_version 6.8.0
 #
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.9.1
+Version:        6.9.2
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -110,6 +110,7 @@ BuildRequires:  cmake(Qt6Quick) >= %{lts_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{lts_version}
 BuildRequires:  cmake(Qt6QuickTest) >= %{lts_version}
 BuildRequires:  cmake(Qt6QuickWidgets) >= %{lts_version}
+BuildRequires:  cmake(Qt6Svg) >= %{lts_version}
 BuildRequires:  cmake(Qt6WebChannel) >= %{lts_version}
 BuildRequires:  cmake(Qt6WebChannelQuick) >= %{lts_version}
 BuildRequires:  cmake(Qt6WebSockets) >= %{lts_version}
