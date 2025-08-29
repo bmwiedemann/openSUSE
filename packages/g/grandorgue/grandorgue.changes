@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 28 15:28:10 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.16.1.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.16.1-1
+  - Fixed sending 'ON' strings in sysex MIDI messages https://github.com/GrandOrgue/grandorgue/issues/2260
+  - Fixed crash on exit from GrandOrgue on MacOs https://github.com/GrandOrgue/grandorgue/issues/2256
+  - Fixed playing the last sample of a loop https://github.com/GrandOrgue/grandorgue/issues/2211
+
+-------------------------------------------------------------------
 Mon Aug  4 20:10:49 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 3.16.0.
