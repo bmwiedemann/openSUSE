@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-quick3d
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.9.1
+%define real_version 6.9.2
 %define short_version 6.9
 %define tar_name qtquick3d-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global __requires_exclude qt6qmlimport\\((Quick3DAssets|VirtualAssistant\\.Constants|robotassistant|.*Example|xr_shared).*
 #
 Name:           qt6-quick3d%{?pkg_suffix}
-Version:        6.9.1
+Version:        6.9.2
 Release:        0
 Summary:        API for creating 3D content and 3D user interfaces based on Qt Quick
 License:        GPL-3.0-only
@@ -39,7 +39,6 @@ Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-quick3d-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-quicktimeline-private-devel
 BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
 BuildRequires:  cmake(Qt6Core) = %{real_version}
 BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
@@ -53,6 +52,7 @@ BuildRequires:  cmake(Qt6QuickPrivate) = %{real_version}
 # Only needed if QT_FEATURE_qml_debug is enabled
 # BuildRequires:  cmake(Qt6PacketProtocolPrivate)
 BuildRequires:  cmake(Qt6QuickTimeline) = %{real_version}
+BuildRequires:  cmake(Qt6QuickTimelinePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6ShaderTools) = %{real_version}
 BuildRequires:  cmake(Qt6ShaderToolsPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Widgets) = %{real_version}
@@ -427,6 +427,7 @@ This library does not have any ABI or API guarantees.
 
 %cmake_qt6 \
   -DQT_GENERATE_SBOM:BOOL=FALSE \
+  -DQT_QML_NO_CACHEGEN:BOOL=TRUE \
   -DFEATURE_system_assimp:BOOL=TRUE %{?extra_args}
 
 %{qt6_build}

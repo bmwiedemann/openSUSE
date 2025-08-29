@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 28 12:20:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Pass '-DQT_QML_NO_CACHEGEN:BOOL=TRUE' to CMake to make builds
+  reproducible (related: boo#1248369)
+
+-------------------------------------------------------------------
+Wed Aug 27 07:15:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.2:
+  * https://www.qt.io/blog/qt-6.9.2-released
+
+-------------------------------------------------------------------
 Tue Jun  3 07:49:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.9.1:
