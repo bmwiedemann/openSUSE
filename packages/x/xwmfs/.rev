@@ -72,4 +72,16 @@
   * ILogger: fix warn() wrapper to return actual m_warn, no m_err</comment>
     <requestid>975079</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>01d7e26f9181f56f6b27801a1622df0c</srcmd5>
+    <version>1.00</version>
+    <time>1756485428</time>
+    <user>anag_factory</user>
+    <comment>- add explicit pkgconfig(fuse3) build dependency
+
+- update to version v1.00:
+  * build against libfuse3 (bsc#1242088)
+  * stability bugfixes</comment>
+    <requestid>1301904</requestid>
+  </revision>
 </revisionlist>
