@@ -25,6 +25,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gnu-octave.github.io/packages/%{octpkg}/
 Source0:        https://github.com/carlodefalco/msh/archive/refs/tags/v%{version}.tar.gz#/%{octpkg}-%{version}.tar.gz
+Patch0:         https://patch-diff.githubusercontent.com/raw/carlodefalco/msh/pull/3.patch#/fix_line_continuations.patch
 BuildRequires:  gcc-c++
 BuildRequires:  octave-devel
 Requires:       octave-cli >= 3.0
@@ -38,6 +39,7 @@ This is part of the Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
+%patch -p1 -P0 -d %{octpkg}-%{version}
 %octave_pkg_src
 
 %build
@@ -47,6 +49,8 @@ This is part of the Octave-Forge project.
 %octave_pkg_install
 
 %check
+%global octskiptests msh2m_gmsh
+echo "Skip tests requiring gmsh: %{octskiptests}"
 %octave_pkg_test
 
 %post

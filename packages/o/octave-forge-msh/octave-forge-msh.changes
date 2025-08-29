@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 27 15:04:58 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix compatibility with current octave, add
+  fix_line_continuations.patch
+- Exclude tests requiring gmsh
+
+-------------------------------------------------------------------
 Tue Nov  8 16:26:32 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 1.0.12:
