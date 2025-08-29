@@ -1,0 +1,35 @@
+{
+  "name": "nbdime-top-repo",
+  "version": "4.0.0-rc.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "lerna run build",
+    "build:tsc": "tsc --build",
+    "build:dev": "lerna run build:dev",
+    "clean": "lerna run clean",
+    "prettier": "prettier --list-different --write \"**/*{.ts,.tsx,.js,.jsx,.css,.json,.md}\"",
+    "prettier:check": "prettier --check \"**/*{.ts,.tsx,.js,.jsx,.css,.json,.md}\"",
+    "publish": "npm run clean && npm run build && lerna publish --no-private -m \"Publish npm packages\"",
+    "test": "lerna run test",
+    "update:all": "update-dependency --lerna --minimal --regex .*",
+    "update:lab": "update-dependency --lerna --minimal --regex ^@jupyterlab/",
+    "update:lab:next": "update-dependency --lerna --minimal --regex ^@jupyterlab/ ^next",
+    "updated": "lerna updated",
+    "watch:webapp": "run-p watch:lib watch:app",
+    "watch:app": "lerna exec --stream --scope \"nbdime-webapp\" npm run watch",
+    "watch:lib": "lerna exec --stream --parallel --scope \"nbdime\" --scope \"nbdime-jupyterlab\" npm run watch"
+  },
+  "devDependencies": {
+    "@jupyterlab/buildutils": "^4.0.0",
+    "lerna": "^7.3.1",
+    "npm-run-all": "^4.1.5",
+    "npm-which": "^3.0.1",
+    "prettier": "^3.0.0"
+  },
+  "overrides": {
+    "tmp": "^0.2.5"
+  }
+}

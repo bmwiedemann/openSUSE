@@ -232,4 +232,13 @@
     <comment>(CVE-2025-7783, bsc#1246812)</comment>
     <requestid>1297359</requestid>
   </revision>
+  <revision rev="23" vrev="23">
+    <srcmd5>abff9cd6733712426e90e18fef559e5a</srcmd5>
+    <version>unknown</version>
+    <time>1756485441</time>
+    <user>anag_factory</user>
+    <comment>- Refresh javascript dependencies to update tmp
+  (CVE-2025-54798, bsc#1247788)</comment>
+    <requestid>1301908</requestid>
+  </revision>
 </revisionlist>

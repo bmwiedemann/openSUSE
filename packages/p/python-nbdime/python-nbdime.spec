@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbdime
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,8 +40,10 @@ Source0:        https://files.pythonhosted.org/packages/source/n/nbdime/nbdime-%
 # package-lock.json file generated with command:
 # npm install --package-lock-only --legacy-peer-deps --ignore-scripts
 Source1:        package-lock.json
+# From nbdime.tar.gz with custom overrides
+Source2:        package.json
 # node_modules generated using "osc service mr" with the https://github.com/openSUSE/obs-service-node_modules
-Source2:        node_modules.spec.inc
+Source3:        node_modules.spec.inc
 %include        %{_sourcedir}/node_modules.spec.inc
 BuildRequires:  %{python_module GitPython >= 2.1.6}
 BuildRequires:  %{python_module Jinja2 >= 2.9}
@@ -186,6 +188,7 @@ This package provides mercurial integration.
 
 %prep
 %autosetup -p1 -n nbdime-%{pyver}
+cp %{SOURCE2} .
 local-npm-registry %{_sourcedir} install --include=dev --include=peer
 find . -type f -name "*.py" -exec sed -i 's/\r$//' {} +
 find . -type f -name "*.ipynb" -exec sed -i 's/\r$//' {} +
