@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-quickeffectmaker
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.9.1
+%define real_version 6.9.2
 %define short_version 6.9
 %define tar_name qtquickeffectmaker-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quickeffectmaker%{?pkg_suffix}
-Version:        6.9.1
+Version:        6.9.2
 Release:        0
 Summary:        Tool for creating shader effects for Qt Quick
 License:        GPL-3.0-only
@@ -37,7 +37,6 @@ Source1:        org.qt.quickeffectmaker6.desktop
 Source2:        org.qt.quickeffectmaker.png
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt6Core) = %{real_version}
 BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
@@ -79,7 +78,7 @@ Quick applications and offers both a node editor and a code editor.
 %{qt6_link_executables}
 
 # Desktop file
-%suse_update_desktop_file -i org.qt.quickeffectmaker6
+install -D -m644 %{SOURCE1} %{buildroot}%{_datadir}/applications/org.qt.quickeffectmaker6.desktop
 install -D -m644 %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/org.qt.quickeffectmaker.png
 
 %files
