@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 10 15:05:38 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.9.8:
+  * Fixes #5936 (Unhandled exception)
+  * Minor update of fingerprinting payloads
+
+-------------------------------------------------------------------
 Sat Jun 14 15:46:35 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.9.6:
