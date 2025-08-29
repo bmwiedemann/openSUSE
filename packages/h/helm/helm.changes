@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 20 11:12:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.18.6:
+  * fix(helm-lint): fmt
+  * fix(helm-lint): Add TLSClientConfig
+  * fix(helm-lint): Add HTTP/HTTPS URL support for json schema
+    references
+
+-------------------------------------------------------------------
+Tue Aug 19 05:19:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.18.5:
+  * fix Chart.yaml handling 7799b48 (Matt Farina)
+  * Handle messy index files dd8502f (Matt Farina)
+  * json schema fix cb8595b (Robert Sirchia)
+
+-------------------------------------------------------------------
 Mon Aug  4 15:20:55 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
 
 - Fix shell completion dependencies
