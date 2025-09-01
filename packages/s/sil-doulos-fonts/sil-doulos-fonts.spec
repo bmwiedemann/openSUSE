@@ -1,7 +1,7 @@
 #
 # spec file for package sil-doulos-fonts
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,16 @@
 #
 
 
-%define fontname Doulos
-
 Name:           sil-doulos-fonts
 # Provides:       locale(vi)
-Version:        6.200
+Version:        7.000
 Release:        0
-Summary:        Doulos SIL Fonts Similar to Times
+Summary:        A font that provides complete support for the International Phonetic Alphabet
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://software.sil.org/doulos
 Source0:        https://software.sil.org/downloads/r/doulos/DoulosSIL-%{version}.zip
+BuildRequires:  dos2unix
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 %reconfigure_fonts_prereq
@@ -36,31 +35,27 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
-Doulos SIL provides glyphs for a wide range of Latin and Cyrillic
-characters. Doulos's design is similar to the design of the Times-like
-fonts, but only has a single regular face. It is intended for use alongside
-other Times-like fonts where a range of styles (italic, bold) are not
-needed.
+Doulos SIL is a Unicode-based font family that supports the wide
+range of languages that use the Latin and Cyrillic scripts, whether
+used for phonetic or orthographic needs. Linguists appreciate the
+wide range of characters and symbols useful in their work.
 
 %prep
-%setup -q -n %{fontname}SIL-%{version}
-chmod 644 *.txt *.ttf
-# Remove DOS line endings:
-for i in *.txt; do
- sed -i 's/.$//' $i
-done
+%autosetup -c
+find -type f -exec chmod -x {} +
+find -name '*.txt' -exec dos2unix {} +
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_ttfontsdir}/
-install -c -m 644 *.ttf %{buildroot}%{_ttfontsdir}
+install -c -m 644 DoulosSIL-%{version}/*.ttf %{buildroot}%{_ttfontsdir}
 
 %reconfigure_fonts_scriptlets
 
 %files
-%license OFL*.txt
-%doc README.txt documentation/pdf/*.pdf
+%license DoulosSIL-%{version}/OFL*.txt
+%doc DoulosSIL-%{version}/README.txt DoulosSIL-%{version}/documentation/pdf/*.pdf
 %{_ttfontsdir}
 
 %changelog
