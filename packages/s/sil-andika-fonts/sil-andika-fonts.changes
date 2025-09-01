@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug 31 10:53:16 UTC 2025 - MihailJP <mihailjp@gmail.com>
+
+- Update to version 7.000
+  * Andika now has additional intermediate weights.
+  * The v7 fonts do not have "Compact" variants anymore; line
+    spacing should instead be controlled through the
+    editing/publishing software.
+  * Special-purpose modified font variants were available that had
+    been ‘pre-tuned’ to turn on certain features by default for
+    some regional and special uses, are no longer shipped.
+  * Kerning has now been added to cover the full range of
+    alphabetic symbols except for small caps.
+
+-------------------------------------------------------------------
 Thu Feb  2 19:49:05 UTC 2023 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 6.200:
