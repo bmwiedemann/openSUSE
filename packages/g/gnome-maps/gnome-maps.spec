@@ -17,7 +17,7 @@
 
 
 Name:           gnome-maps
-Version:        48.6
+Version:        48.7
 Release:        0
 Summary:        Maps Application for GNOME
 License:        Apache-2.0 AND CC-BY-3.0 AND GPL-2.0-or-later AND BSD-3-Clause AND ISC AND MIT
@@ -25,7 +25,7 @@ Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Maps
 Source0:        %{name}-%{version}.tar.zst
 
-BuildRequires:  appstream-glib
+BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 # Needed for typelib() Requires
 BuildRequires:  gobject-introspection

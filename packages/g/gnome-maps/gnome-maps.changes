@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug 31 07:51:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.7:
+  + Add address formats for Austria and Paraguay.
+  + Updated translations.
+- Replace appstream-glib with AppStream BuildRequires:
+  appstream-glib is no longer used, and deprecated.
+
+-------------------------------------------------------------------
 Mon Aug  4 06:17:17 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.6:
