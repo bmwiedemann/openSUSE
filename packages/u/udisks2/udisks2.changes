@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 29 13:17:17 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
+
+- (CVE-2025-8067) VUL-0: missing bounds check can lead to out-of-bounds 
+  read in udisks daemon (bsc#1248502)
+  + add 0001-udiskslinuxmanager-Add-lower-bounds-check-to-fd_inde.patch
+
+-------------------------------------------------------------------
 Mon Jun 16 08:14:25 UTC 2025 - Stefan Schubert <schubi@suse.com>
 
 - Moved /etc/udisks2/modules.conf.d/udisks2_lsm.conf and

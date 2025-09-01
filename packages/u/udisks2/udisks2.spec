@@ -1,7 +1,7 @@
 #
 # spec file for package udisks2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,7 @@ Source0:        %{url}/releases/download/udisks-%{version}/udisks-%{version}.tar
 
 Patch0:         harden_udisks2.service.patch
 Patch1:         usr_etc.patch
+Patch2:         0001-udiskslinuxmanager-Add-lower-bounds-check-to-fd_inde.patch
 %if 0%{?suse_version} > 1500
 BuildRequires:  autoconf
 BuildRequires:  automake
