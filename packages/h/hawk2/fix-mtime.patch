@@ -1,0 +1,38 @@
+commit 3377ac69642d914584c04a9ab17ef836939753c2
+Author: Aleksei Burlakov <aburlakov@suse.com>
+Date:   Thu Aug 28 14:31:40 2025 +0200
+
+    fix mtime, so that gz files are determenistic
+
+diff --git a/hawk/vendor/gems/sprockets-4.2.1/lib/sprockets/utils/gzip.rb b/hawk/vendor/gems/sprockets-4.2.1/lib/sprockets/utils/gzip.rb
+index 3fd5228..cd2599e 100644
+--- a/hawk/vendor/gems/sprockets-4.2.1/lib/sprockets/utils/gzip.rb
++++ b/hawk/vendor/gems/sprockets-4.2.1/lib/sprockets/utils/gzip.rb
+@@ -10,13 +10,13 @@ module Sprockets
+       # writes contents to the `file` passed in. Sets `mtime` of
+       # written file to passed in `mtime`
+       module ZlibArchiver
+-        def self.call(file, source, mtime)
++        def self.call(file, source, _mtime)
+           gz = Zlib::GzipWriter.new(file, Zlib::BEST_COMPRESSION)
+-          gz.mtime = mtime
++          gz.mtime = 0
+           gz.write(source)
+           gz.close
+ 
+-          File.utime(mtime, mtime, file.path)
++          File.utime(0, 0, file.path)
+         end
+       end
+ 
+@@ -28,8 +28,8 @@ module Sprockets
+       # writes contents to the `file` passed in. Sets `mtime` of
+       # written file to passed in `mtime`
+       module ZopfliArchiver
+-        def self.call(file, source, mtime)
+-          compressed_source = Autoload::Zopfli.deflate(source, format: :gzip, mtime: mtime)
++        def self.call(file, source, _mtime)
++          compressed_source = Autoload::Zopfli.deflate(source, format: :gzip, mtime: 0)
+           file.write(compressed_source)
+           file.close
+ 

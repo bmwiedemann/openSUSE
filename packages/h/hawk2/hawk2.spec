@@ -146,6 +146,7 @@ Source100:      hawk-rpmlintrc
 Patch1:         make-sle16-compatible.patch
 Patch2:         gemfile-lock.patch
 Patch3:         update-hawk-backend-service.patch
+Patch4:         fix-mtime.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       ha-cluster-webui
 Obsoletes:      hawk <= 1.1.0
@@ -188,8 +189,23 @@ A web-based GUI for managing and monitoring the Pacemaker
 High-Availability cluster resource manager.
 
 %prep
-%autosetup -p1
+%setup -q
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
+mkdir -p hawk/vendor/cache
+install -D %{_sourcedir}/*.gem hawk/vendor/cache
+export GEM_HOME=$PWD/hawk/vendor
+export NO_DEBUGINFO=1
+
+pushd hawk
+  bundle config set force_ruby_platform true
+  bundle config set build.nokogiri --use-system-libraries=false
+  bundle install --local
+
+  %patch -P 4 -p2
+popd
 
 %build
 
@@ -197,39 +213,43 @@ mkdir -p hawk/vendor/cache
 install -D %{_sourcedir}/*.gem hawk/vendor/cache
 export GEM_HOME=$PWD/hawk/vendor
 export NO_DEBUGINFO=1
+
 pushd hawk
+  find vendor -name a.out -delete
+  find vendor -name "*.so.debug" -delete
+  find . -name ".*" ! -name "." ! -name ".." -exec rm -rf {} +
+  find vendor/gems -type f -size 0 -exec rm -rf {} +
 
-bundle config set force_ruby_platform true
-bundle config set build.nokogiri --use-system-libraries=false
+  find vendor -type f -exec sed -i -E \
+    -e '1s|^#! */usr/bin/env ruby(\.ruby3\.4)?$|#!/usr/bin/ruby|' \
+    -e '1s|^#! */usr/bin/env ruby -wKU$|#!/usr/bin/ruby -wKU|' \
+    -e '1s|^#! */usr/bin/env bash$|#!/usr/bin/bash|' {} \;
 
-bundle install --local
+  sed -i 's$#!/.*$#!%{_bindir}/ruby.%{rb_suffix}$' bin/rails
+  sed -i 's$#!/.*$#!%{_bindir}/ruby.%{rb_suffix}$' bin/rake
+  sed -i 's$#!/.*$#!%{_bindir}/ruby.%{rb_suffix}$' bin/bundle
 
-find vendor -name a.out -delete
-find vendor -name "*.so.debug" -delete
-find . -name ".*" ! -name "." ! -name ".." -exec rm -rf {} +
-find vendor/gems -type f -size 0 -exec rm -rf {} +
-
-find vendor -type f -exec sed -i -E \
-  -e '1s|^#! */usr/bin/env ruby(\.ruby3\.4)?$|#!/usr/bin/ruby|' \
-  -e '1s|^#! */usr/bin/env ruby -wKU$|#!/usr/bin/ruby -wKU|' \
-  -e '1s|^#! */usr/bin/env bash$|#!/usr/bin/bash|' {} \;
-
-sed -i 's$#!/.*$#!%{_bindir}/ruby.%{rb_suffix}$' bin/rails
-sed -i 's$#!/.*$#!%{_bindir}/ruby.%{rb_suffix}$' bin/rake
-sed -i 's$#!/.*$#!%{_bindir}/ruby.%{rb_suffix}$' bin/bundle
-
-if [ -x /usr/bin/bundle.ruby.%{rb_suffix} ]; then
-	bundlerexe=bundle.ruby.%{rb_suffix}
-else
-	bundlerexe=bundle.%{rb_suffix}
-fi
-$bundlerexe exec bin/rails version
+  if [ -x /usr/bin/bundle.ruby.%{rb_suffix} ]; then
+      bundlerexe=bundle.ruby.%{rb_suffix}
+  else
+      bundlerexe=bundle.%{rb_suffix}
+  fi
+  $bundlerexe exec bin/rails version
 popd
 export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 CFLAGS="${CFLAGS} ${RPM_OPT_FLAGS}"
 export CFLAGS
+
 ### FYI: the 'bundle install' installs puma, not puma.ruby34 (although 'gem install puma-6.6.0.gem' installs puma.ruby34)
 make WWW_BASE=%{www_base} WWW_TMP=%{www_tmp} WWW_LOG=%{www_log} INIT_STYLE=%{init_style} LIBDIR=%{_libdir} BINDIR=%{_bindir} SBINDIR=%{_sbindir} RUBY_SUFFIX=
+
+# Clean unnecessary cache to make the build deterministic (bsc#1230275)
+rm -rf ./hawk/tmp/cache/assets/sprockets
+find ./hawk -name "*_make.out" -delete
+find ./hawk -name "*.log" -delete
+find ./hawk/locale \( -name "*.po" -o -name "*.pot" \) -exec sed -i 's/^"POT-Creation-Date:.*"/"POT-Creation-Date: 2025-09-01 00:00+0000\\n"/' {} +
+find ./hawk/locale \( -name "*.po" -o -name "*.pot" \) -exec sed -i 's/^"PO-Revision-Date:.*"/"PO-Revision-Date: 2025-09-01 00:00+0000\\n"/' {} +
+
 
 %install
 
