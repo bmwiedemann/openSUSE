@@ -1,6 +1,7 @@
 #
 # spec file for package python-typer
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2021 Matthias Bach <marix@marix.org>
 #
@@ -25,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-typer
-Version:        0.16.1
+Version:        0.17.3
 Release:        0
 Summary:        Typer, build great CLIs. Easy to code. Based on Python type hints
 License:        MIT
@@ -38,7 +39,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rich}
 BuildRequires:  %{python_module shellingham}
-BuildRequires:  %{python_module typer-slim}
+BuildRequires:  %{python_module typer-slim >= %{version}}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Work around Python dependency not being auto-added as there are no modules provided

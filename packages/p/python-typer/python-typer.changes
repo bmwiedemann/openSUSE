@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 30 14:32:00 UTC 2025 - Matthias Bach <marix@marix.org>
+
+- Update to 0.17.3
+  * Allow annotated parsing with a subclass of Path.
+  * Avoid printing default: None in the help section when using
+    Rich.
+  * Fix markdown formatting in --help output.
+  * Lazy-load rich_utils to reduce startup time.
+
+-------------------------------------------------------------------
 Mon Aug 25 14:25:37 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems

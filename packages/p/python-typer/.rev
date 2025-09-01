@@ -289,4 +289,18 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
     <requestid>1301303</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2f0354a316eb00d0eb436347fdf85933</srcmd5>
+    <version>0.17.3</version>
+    <time>1756739803</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.17.3
+  * Allow annotated parsing with a subclass of Path.
+  * Avoid printing default: None in the help section when using
+    Rich.
+  * Fix markdown formatting in --help output.
+  * Lazy-load rich_utils to reduce startup time.
+</comment>
+    <requestid>1302029</requestid>
+  </revision>
 </revisionlist>
