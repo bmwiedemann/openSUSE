@@ -10,6 +10,5 @@ upstream release and apply our own changes on top of it, while keeping the
 number of maintained branches to minimum
 
 </description>
-  <devel project="Java:packages" package="netty-tcnative"/>
   <url>https://github.com/netty/netty/wiki/Forked-Tomcat-Native</url>
 </package>
