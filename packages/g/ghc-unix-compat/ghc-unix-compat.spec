@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.7.4
+Version:        0.7.4.1
 Release:        0
 Summary:        Portable POSIX-compatibility layer
 License:        BSD-3-Clause
@@ -38,8 +38,6 @@ BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-HUnit-prof
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-directory-prof
-BuildRequires:  ghc-extra-devel
-BuildRequires:  ghc-extra-prof
 BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-hspec-prof
 BuildRequires:  ghc-monad-parallel-devel
