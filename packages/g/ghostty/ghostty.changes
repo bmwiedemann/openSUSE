@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  8 14:27:28 UTC 2025 - Jan Fooken <jan.fooken@suse.com>
+
+- Fix wrong requirement on neovim for supplementary package
+  ghostty-vim
+
+-------------------------------------------------------------------
 Mon Mar 24 19:58:31 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to 1.1.3

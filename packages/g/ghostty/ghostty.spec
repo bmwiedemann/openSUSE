@@ -1,7 +1,7 @@
 #
 # spec file for package ghostty
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -123,7 +123,7 @@ Optional files for syntax highlighting for %{name} data files in neovim.
 %package vim
 Summary:        Vim syntax highlighting for %{name} data files
 Requires:       %{name} = %{version}
-Requires:       neovim
+Requires:       vim
 Supplements:    (%{name} and vim)
 BuildArch:      noarch
 
