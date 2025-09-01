@@ -38,6 +38,8 @@ Patch5:         0001-Fixed-another-issue-with-invalid-DICOM-images.patch
 Patch6:         0001-Fixed-issue-with-invalid-RLE-compressed-DICOM-images.patch
 # CVE-2025-2357
 Patch7:         CVE-2025-2357.patch
+# CVE-2025-9732
+Patch8:         CVE-2025-9732.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes

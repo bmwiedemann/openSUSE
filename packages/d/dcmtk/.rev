@@ -325,4 +325,13 @@
   * CVE-2025-2357.patch</comment>
     <requestid>1253699</requestid>
   </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>0021ac4890f899ae1547293f26804252</srcmd5>
+    <version>3.6.9</version>
+    <time>1756739901</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream change (CVE-2025-9732, boo#1248995)
+  * CVE-2025-9732.patch</comment>
+    <requestid>1302162</requestid>
+  </revision>
 </revisionlist>
