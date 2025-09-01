@@ -576,4 +576,12 @@
   symbol list text file in %_docdir.</comment>
     <requestid>1251525</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>29ebbaf8697c37730eb148f3238cd243</srcmd5>
+    <version>4.1.0</version>
+    <time>1756739940</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 4.1.0</comment>
+    <requestid>1302220</requestid>
+  </revision>
 </revisionlist>

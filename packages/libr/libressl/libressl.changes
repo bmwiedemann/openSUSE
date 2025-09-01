@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep  1 13:13:02 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Move default config to /etc/libressl.
+
+-------------------------------------------------------------------
+Thu Aug 14 18:12:19 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.1.0
+  * New: libtls has a new tls_peer_cert_common_name() API call to
+    retrieve the peer's common name without having to inspect the
+    PEM.
+  * Bugfix: Again allow the magic values -1, -2 and -3 for the salt
+    length of an RSA-PSS key in the EVP_PKEY_CTX_ctrl_str()
+    interface.
+
+-------------------------------------------------------------------
 Sat Mar  8 23:28:58 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Document absence of openssl3 APIs in descriptions and a
@@ -758,10 +774,6 @@ Wed Aug  3 10:29:40 UTC 2016 - jengelh@inai.de
   too large.
 * Correctly handle an EOF prior to completing the TLS handshake
   in libtls.
-
-
--------------------------------------------------------------------
-
 
 -------------------------------------------------------------------
 Fri Jun 10 23:10:20 UTC 2016 - jengelh@inai.de
