@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.4
+Version:        0.4.4.1
 Release:        0
 Summary:        Efficient buffered output
 License:        BSD-3-Clause
@@ -31,8 +31,6 @@ BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
-BuildRequires:  ghc-deepseq-devel
-BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
