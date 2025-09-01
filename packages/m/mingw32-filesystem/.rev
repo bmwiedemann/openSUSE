@@ -295,4 +295,14 @@
     <comment></comment>
     <requestid>1301036</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>56d704386aee2bcc735b9a09c73767c7</srcmd5>
+    <version>20250901</version>
+    <time>1756739930</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250901
+- Add providing support for metainfo and desktop files
+</comment>
+    <requestid>1302201</requestid>
+  </revision>
 </revisionlist>

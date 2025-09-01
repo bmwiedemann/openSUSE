@@ -1,0 +1,2 @@
+%__metainfo_provides	%{_rpmconfigdir}/mingw32-metainfo.prov
+%__metainfo_path	^%{_mingw32_datadir}/(appdata|metainfo)/.*\\.(appdata|metainfo)\\.xml$

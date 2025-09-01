@@ -31,7 +31,7 @@
 %define _rpmmacrodir %{_sysconfdir}/rpm
 %endif
 Name:           mingw32-filesystem
-Version:        20250822
+Version:        20250901
 Release:        0
 Summary:        MinGW base filesystem and environment
 License:        GPL-2.0-or-later
@@ -55,6 +55,10 @@ Source17:       mingw32_binaries.attr
 Source19:       mingw32_config.attr
 Source20:       mingw32_libs.attr
 Source21:       mingw32_pkgconfig.attr
+Source22:       mingw32_desktop.attr
+Source23:       mingw32_metainfo.attr
+Source24:       mingw32-desktop-file.prov
+Source25:       mingw32-metainfo.prov
 # add excluded system libraries to mingw32-find-requires.sh
 # TODO: The following provides could be removed after all packages has been rebuild
 Provides:       mingw32(bcrypt.dll)
@@ -182,12 +186,17 @@ install -m 0755 %{SOURCE4} %{buildroot}%{_rpmconfigdir}
 install -m 0755 %{SOURCE5} %{buildroot}%{_rpmconfigdir}
 install -m 0755 %{SOURCE8} %{buildroot}%{_rpmconfigdir}
 install -m 0755 %{SOURCE9} %{buildroot}%{_rpmconfigdir}
+install -m 0755 %{SOURCE24} %{buildroot}%{_rpmconfigdir}
+install -m 0755 %{SOURCE25} %{buildroot}%{_rpmconfigdir}
+
 # dependency generator support
 mkdir -p %{buildroot}%{_fileattrsdir}
 install -m 0644 %{SOURCE17} %{buildroot}%{_fileattrsdir}
 install -m 0644 %{SOURCE19} %{buildroot}%{_fileattrsdir}
 install -m 0644 %{SOURCE20} %{buildroot}%{_fileattrsdir}
 install -m 0644 %{SOURCE21} %{buildroot}%{_fileattrsdir}
+install -m 0644 %{SOURCE22} %{buildroot}%{_fileattrsdir}
+install -m 0644 %{SOURCE23} %{buildroot}%{_fileattrsdir}
 
 # Create the locale directories:
 while read LANG ; do
