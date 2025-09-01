@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Aug 31 09:07:25 UTC 2025 - MihailJP <mihailjp@gmail.com>
+
+- Fix path to PDF documentations
+
+-------------------------------------------------------------------
+Sun Aug 31 09:03:23 UTC 2025 - MihailJP <mihailjp@gmail.com>
+
+- Update to version 5.100
+  * Add mym2 OpenType support
+  * Support minority languages in OpenType
+  * Support 4 faces, book and regular in bold and regular
+  * Added font packages Namkio (Khamti) and Deemawso (Kayah Li)
+  * Added Thai Mon variant glyphs and language support
+  * Added Aiton and Phake variant glyphs and language support
+  * Added Sgaw Karen variant glyphs
+  * Added Character Variant features (cv01-07) for variant
+    selection in OpenType and Graphite
+  * Added Stylistic Set features (ss01-06) for variant selection in
+    OpenType
+  * Added glyphs to Variation Selector VS1 for Khamti and Aiton
+  * Added Pa’o and Eastern Pwo Karen digits
+  * Stack medials vertically (needed for Sanskrit)
+  * Added Tai Laing variant glyphs and language support (including
+    adding cv10 and ss10)
+  * Added Aiton and Phake language support
+
+-------------------------------------------------------------------
 Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
 
 - amend spec file to reflect new font packaging scheme
