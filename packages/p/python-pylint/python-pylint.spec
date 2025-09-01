@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylint
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,11 @@
 
 
 %bcond_without tests
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-pylint
 Version:        3.3.7
@@ -38,6 +43,7 @@ Requires:       python-tomlkit >= 0.10.1
 Requires:       (python-astroid >= 3.3.8 with python-astroid < 4.0.0~dev0)
 Requires:       (python-isort >= 4.2.5 with python-isort < 7)
 Requires:       (python-mccabe >= 0.6 with python-mccabe < 0.8)
+BuildArch:      noarch
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 1.1.0
 %endif
@@ -65,9 +71,13 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 # /SECTION
 %endif
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 %python_subpackages
 
 %description
@@ -100,6 +110,7 @@ export LC_ALL="en_US.UTF-8"
 for p in pylint pyreverse symilar pylint-config ; do
     %python_clone -a %{buildroot}%{_bindir}/$p
 done
+%python_group_libalternatives pylint pyreverse symilar pylint-config
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with tests}
@@ -115,6 +126,9 @@ donttest+=" or test_functional_relation_extraction"
 donttest+=" or test_functional"
 %pytest -n auto --ignore tests/benchmark --reruns 5 -rsfER -k "not ($donttest)"
 %endif
+
+%pre
+%python_libalternatives_reset_alternative pylint
 
 %post
 %python_install_alternative pylint pyreverse symilar pylint-config

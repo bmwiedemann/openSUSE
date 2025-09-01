@@ -793,4 +793,12 @@
     <comment>Fix .changes file, osc service runall source_validator</comment>
     <requestid>1285157</requestid>
   </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>8171f7594033a5098748ce1a8995ad2e</srcmd5>
+    <version>3.3.7</version>
+    <time>1756739910</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1302173</requestid>
+  </revision>
 </revisionlist>
