@@ -1131,4 +1131,34 @@
   * GO-2025-3783 CVE-2025-52894 GHSA-prpj-rchp-9j5h (forwarded request 1300793 from jfkw)</comment>
     <requestid>1300796</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>3209e543d416c45a4a25032dfaa0d877</srcmd5>
+    <version>0.0.20250829T154226</version>
+    <time>1756739845</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.20250829T154226 2025-08-29T15:42:26Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3884
+  * GO-2025-3892
+  * GO-2025-3893
+  * GO-2025-3894
+  * GO-2025-3895
+  * GO-2025-3896
+  * GO-2025-3897
+  * GO-2025-3900
+  * GO-2025-3901
+  * GO-2025-3902
+  * GO-2025-3903
+  * GO-2025-3904
+  * GO-2025-3905
+  * GO-2025-3906
+  * GO-2025-3907
+  * GO-2025-3909
+  * GO-2025-3910
+  * GO-2025-3911
+  * GO-2025-3912
+  * GO-2025-3913 (forwarded request 1301990 from jfkw)</comment>
+    <requestid>1301991</requestid>
+  </revision>
 </revisionlist>
