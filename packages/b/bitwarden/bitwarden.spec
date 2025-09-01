@@ -20,11 +20,11 @@
 #not running the tests on OBS — extremely flaky
 %bcond_with test_rust
 
-%global sdk_internal_req_version 0.2.0~main.225
+%global sdk_internal_req_version 0.2.0~main.242
 
 
 Name:       bitwarden
-Version:    2025.7.0
+Version:    2025.8.2
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
@@ -136,7 +136,7 @@ test $(jq -cj '.version' node_modules/@bitwarden/sdk-internal/package.json | sed
 
 
 rm -rvf node_modules/@bitwarden/sdk-internal
-ln -svT {%{nodejs_sitelib},node_modules}/@bitwarden/sdk-internal
+cp -arvLT {%{nodejs_sitelib},node_modules}/@bitwarden/sdk-internal
 
 #remove bundled font
 rm -v libs/angular/src/scss/webfonts/roboto.woff2
@@ -225,8 +225,10 @@ cp -plv -t . ../desktop_native/target/release/desktop_proxy
 cd %{_builddir}/bitwarden-%{version}/apps/desktop
 mkdir -pv %{buildroot}%{_libdir}
 cp -ar build %{buildroot}%{_libdir}/%{name}
-cmp %{_datadir}/bitwarden/*.wasm %{buildroot}%{_libdir}/%{name}/*.wasm
-ln -svf %{_datadir}/bitwarden/*.wasm %{buildroot}%{_libdir}/%{name}/*.wasm
+for i in %{buildroot}%{_libdir}/%{name}/*.wasm; do
+cmp %{_datadir}/bitwarden/*.wasm "$i"
+ln -svf %{_datadir}/bitwarden/*.wasm "$i"
+done
 for i in 16 32 64 128 256 512 1024
 do
 install -pvDm644 resources/icons/${i}x${i}.png "%{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/%{name}.png"

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 30 10:19:12 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 2025.8.2
+  * Show website icons when viewing an item
+  * Updated flow for assigning items to collections
+  * Removed setting for requiring password or PIN on app-start when using biometric unlock.
+    Password or PIN now always required on Linux
+
+-------------------------------------------------------------------
 Fri Jul 25 09:34:30 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 2025.7.0
