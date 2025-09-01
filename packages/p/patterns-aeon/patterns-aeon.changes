@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  1 14:10:46 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Remove tpm2.0-abrmd as it's deprecated (boo#1248991)
+
+-------------------------------------------------------------------
 Sat Apr  5 22:13:10 UTC 2025 - malcolmlewis@opensuse.org
 
 - Add Parental Control comment and missing package requires.

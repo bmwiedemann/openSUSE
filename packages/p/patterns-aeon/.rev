@@ -195,4 +195,12 @@
     <comment></comment>
     <requestid>1273999</requestid>
   </revision>
+  <revision rev="24" vrev="24">
+    <srcmd5>8ae81285b3e8d06f89e8df57cc7cf438</srcmd5>
+    <version>5.0</version>
+    <time>1756744093</time>
+    <user>anag_factory</user>
+    <comment>- Remove tpm2.0-abrmd as it's deprecated (boo#1248991)</comment>
+    <requestid>1302227</requestid>
+  </revision>
 </revisionlist>

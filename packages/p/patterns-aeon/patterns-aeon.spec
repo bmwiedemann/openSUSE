@@ -381,7 +381,6 @@ Requires:       distrobox
 Requires:       podman
 
 # bug#1211835 - TPM2.0 support
-Requires:       tpm2.0-abrmd
 Requires:       tpm2-0-tss
 Requires:       tpm2.0-tools
 
