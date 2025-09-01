@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 25 09:53:53 UTC 2025 - Petr Pavlu <petr.pavlu@suse.com>
+
+- Update to version 1.5.4:
+  * Fix checking glob() return values
+
+-------------------------------------------------------------------
 Tue Apr 29 12:11:08 UTC 2025 - Petr Pavlu <petr.pavlu@suse.com>
 
 - Update to 1.5.3:

@@ -95,4 +95,13 @@
     <comment></comment>
     <requestid>1273617</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>af8c09756adb58701474698c40b633f3</srcmd5>
+    <version>1.5.4</version>
+    <time>1756739883</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.4:
+  * Fix checking glob() return values (forwarded request 1301273 from PPavlu)</comment>
+    <requestid>1302092</requestid>
+  </revision>
 </revisionlist>
