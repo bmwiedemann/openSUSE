@@ -17,7 +17,7 @@
 
 
 Name:           sc-im
-Version:        0.8.4
+Version:        0.8.5
 Release:        0
 Summary:        An ncurses spreadsheet program for terminal
 License:        BSD-4-Clause
@@ -57,6 +57,7 @@ Mark Weiser, and mods were later added by Chuck Martin.
 %{_bindir}/%{name}
 %{_bindir}/scopen
 %dir %{_datadir}/%{name}
+%{_datadir}/themes/*
 %{_datadir}/%{name}/*
 %{_mandir}/man1/%{name}.1.*
 

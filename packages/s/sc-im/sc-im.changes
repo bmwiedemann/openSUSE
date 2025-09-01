@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jun 26 07:28:45 UTC 2025 - pgajdos@suse.com
+
+- version update to 0.8.5
+  * fixed ‘zip_error_to_str’ deprecated message
+  * changed do_autobackup definition
+  * FIX in paste of cells transposed. Destination position was calculated wrong.
+  * fix spurious circular deps across sheets (issue #903) thanks to DHMike57
+  * Add theme files into Makefile #930
+  * PR 921 - fix invalid chars in file name cause segfault (issue #922)
+  * PR 931 - fix issue #928 - Reproducible segfault reading python-written xlsx
+  * PR 909 - fix spurious error message with @if command (issue #910)
+  * PR 911 - fix memory leak and segfault in @replace (issue #912)
+  * PR 920 - fix in replace and sevaluate (issue #919)
+  * PR 917 - fix range not updating with getent (issue #918)
+  * PR 896 - work on issue 813 - fix in subtottal
+  * PR 898 - work on issue 897 - fix in lua evaluation
+  * PR 900 - work on issue 899 - minor modification in @dts validation
+  * PR 902 - work on issue 901 - keep sheet/cursor position when saving file
+  * PR 888 - replace all /bin/bash with a unix agnostic /usr/bin/env bash
+  * PR 887 - explicit left markdown alignment
+
+-------------------------------------------------------------------
 Wed Apr 23 02:40:31 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
 
 - Disable libxlsxwriter from build to fix build failures
