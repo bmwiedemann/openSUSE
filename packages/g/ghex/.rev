@@ -615,4 +615,14 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment></comment>
     <requestid>1300057</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>6761954d63f1655dd0353c68160d9adc</srcmd5>
+    <version>48.1</version>
+    <time>1756739848</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1:
+  + HexWidget: Add :insert-mode property
+  + This release includes libgtkhex 4.10.0 (forwarded request 1302006 from iznogood)</comment>
+    <requestid>1302013</requestid>
+  </revision>
 </revisionlist>
