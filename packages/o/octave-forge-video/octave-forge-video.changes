@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 25 23:36:57 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.1.3:
+  * fix documentation warning
+- Update to version 2.1.2:
+  * fix build on GNU Octave 10 (include cassert)
+- Exclude tests requiring full ffmpeg package
+
+-------------------------------------------------------------------
 Wed Jan  3 09:44:54 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 2.1.1:

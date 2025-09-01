@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-video
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define octpkg  video
 Name:           octave-forge-%{octpkg}
-Version:        2.1.1
+Version:        2.1.3
 Release:        0
 Summary:        A wrapper for OpenCV's CvCapture_FFMPEG and CvVideoWriter_FFMPEG
 License:        GPL-3.0-or-later
@@ -27,10 +27,10 @@ URL:            https://gnu-octave.github.io/packages/video/
 Source0:        https://github.com/Andy1978/octave-video/releases/download/%{version}/video-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
-BuildRequires:  pkgconfig(octave)
 BuildRequires:  pkgconfig(libavcodec) >= 58.35.100
 BuildRequires:  pkgconfig(libavformat) >= 58.20.100
 BuildRequires:  pkgconfig(libswscale) >= 5.3.100
+BuildRequires:  pkgconfig(octave)
 Requires:       octave-cli >= 4.4.1
 
 %description
@@ -48,6 +48,8 @@ This is part of Octave-Forge project.
 %octave_pkg_install
 
 %check
+%global octskiptests VideoWriter
+echo "Skip tests requiring full ffmpeg: %{octskiptests}"
 %octave_pkg_test
 
 %post
