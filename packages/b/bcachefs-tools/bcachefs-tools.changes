@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 29 13:13:02 UTC 2025 - Petr Vorel <pvorel@suse.cz>
+
+- Update to release 1.25.3
+  * New commands: `bcachefs image create` and
+    `bcachefs image update`
+
+-------------------------------------------------------------------
 Thu May 29 21:41:18 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.25.2 [boo#1243231]

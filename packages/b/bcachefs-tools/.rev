@@ -163,4 +163,12 @@
     <comment>- Update to release 1.25.2 [boo#1243231]</comment>
     <requestid>1281234</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5142eafb082e999c9469824481c49d83</srcmd5>
+    <version>1.25.3</version>
+    <time>1756739896</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.25.3</comment>
+    <requestid>1302209</requestid>
+  </revision>
 </revisionlist>
