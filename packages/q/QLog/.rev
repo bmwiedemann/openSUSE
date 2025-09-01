@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>1292426</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1adb26c805094e0a20c6033647f57ab3</srcmd5>
+    <version>0.45.0</version>
+    <time>1756739828</time>
+    <user>anag_factory</user>
+    <comment>Add dependency on qt6-sql-sqlite and optionally tqsl boo#1248884
+</comment>
+    <requestid>1301960</requestid>
+  </revision>
 </revisionlist>

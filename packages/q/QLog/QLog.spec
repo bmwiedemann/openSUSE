@@ -37,6 +37,8 @@ BuildRequires:  pkgconfig(Qt6WebSockets)
 BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(hamlib)
 BuildRequires:  pkgconfig(sqlite3)
+Requires:       qt6-sql-sqlite
+Recommends:     tqsl
 
 %description
 QLog is an Amateur Radio logging application. It is based on the Qt framework
