@@ -1685,4 +1685,20 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1299156</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>93859db4ad3893d9e2b2f8300ad5edfe</srcmd5>
+    <version>1.2.13</version>
+    <time>1756739888</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.13
+  + Fixed playlist alternating row colors no longer working with some styles (#1806)
+  + Fixed &quot;Open Audio CD&quot; no longer working (#1803)
+  + Fixed systemtray icon playback status not working with scaling (#1782)
+  + Fixed build without MusicBrainz (#1799)
+  + Fixed build without MTP (#1804)
+  + Added Discord status text option (#1796)
+  + Read Vorbis/FLAC &quot;Other&quot; embedded covers if front cover is not available (#1793)
+</comment>
+    <requestid>1302118</requestid>
+  </revision>
 </revisionlist>
