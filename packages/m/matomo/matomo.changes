@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Sun Aug 31 08:40:34 UTC 2025 - ecsos <ecsos@opensuse.org> - 5.4.0
+
+- Update to 5.4.0
+  * Privacy and Security
+    - #19961, #23400: Superusers can enforce strong password requirements to improve account security
+      and reduce the risk of brute-force attacks.
+    - #23356: Password input fields now automatically clear after 10 minutes of inactivity by default,
+      reducing the risk of leaving sensitive data exposed. Developers can configure the timeout per field instance if needed.
+    - #19839, #23294: Users are prevented from using their current password to set a new password.
+    - #23425, #20102: A new scheduled task notifies superusers of accounts inactive for 180 days,
+      and improvements to the password reset process prevent user enumeration by standardising error messages.
+    - #13654, #23320: Improved the password reset process to prevent possible user enumeration.
+    - #23330: Improved usability by adding automatic focus to password confirmation fields.
+    - #20677, #23335: The API now supports passing authentication tokens via the standard Authorization: Bearer token HTTP header.
+    - #23354: Token authentication has been improved with new expiry and notification features.
+    - #12278, #23321: Resolved an issue that could expose internal server IPs in redirect headers.
+    - #19480, #23317: Replaced ssl:// with tls:// in HTTP connections to strengthen security.
+    - #23318: Migration details during core updates are now protected by a token,
+      ensuring only the user performing the update (or someone with the token) can view them.
+    - #23324: Improved security by hiding sensitive parameters from stack traces on PHP 8.2+.
+    - #23304: Matomo now logs a warning for insecure HTTP requests when force_ssl is active.
+    - #3620, #23372: Error and exception handling has been restructured to improve security and clarity.
+      Stack traces are now only shown when explicitly enabled or in development mode,
+      file system paths to the Matomo root are redacted, and sensitive values are removed from exception messages.
+      The error page shown for unsupported PHP versions or missing Composer has also been improved.
+    - #23352: Improved security by redacting SMTP credentials from logs and error traces.
+    - #23385: Password confirmation fields now support custom IDs, avoiding duplicate IDs when
+      multiple password forms appear on the same page and improving accessibility.
+    - #23503: Updated the opt-out form to use event listeners instead of inline onclick attributes,
+      improving compatibility with stricter Content Security Policies.
+  * Reporting
+    - #23451: Requesting row evolution for flattened Page URL reports is now automatically redirected
+      to subtable row evolution to avoid excessive memory usage.
+    - #23505, #23506: The Hits metric is now available in the evolution graph.
+    - #21664, #23271: Goal reports now include a breakdown of conversions by individual social networks.
+    - #23347: Added a new API parameter show_dimensions that allows multi-level reports
+      to display each dimension in separate columns when using flat=1.
+    - #23456: Introduced a new copy component that enables duplicating reports and other entities such as Heatmaps.
+      This feature will be extended to additional report types in future releases.
+    - #23299: The and string in the Goal overview top dimensions is now translatable, ensuring full localisation support.
+    - #23291: Updated url_query_parameter_to_exclude_from_url to include LinkedIn clickID, preventing these parameters from appearing in Page URL reports.
+    - #19060, #23315: Resolved low-risk issue where the configuration option for email reports
+      now prevents showing the report owner’s username in the Reply-To header.
+    - #23452, #23453: Include Campaign names in Transition reports when either referer_keyword or referer_name is NULL.
+    - #23283, #23312: Fixed issue where ChatGPT visitors were showing in campaigns.
+    - #23417, #23448: Fixed eCommerce Overview comparisons that were incorrect.
+    - #23144: Remove token_auth from image graph urls in API response.
+  * Performance and Archiving
+    - #22450, #23421: New maintenance task added to clean up broken archives and keep database storage healthy.
+    - #23408: Fix invalidation processing for report specific archives for periods including today.
+    - #23309: Respect ts_archived when purging ERROR/ERROR_INVALIDATED archives
+    - #23413: Ensure partial archives are marked correctly.
+    - #23412: Metrics with zero values are now stored consistently, improving archive completeness and ensuring exports include all metrics.
+  * Measurables (Websites)
+    - #23277: Update styling and structure of the Create Measurable modal.
+    - #23488: Allow legacy/bc timezones when creating sites (through API).
+    - #23422: Allow filtering out sites by site types and allow selecting only sites for which the user has at least write access.
+  * Matomo User Interface
+    - #23496: Prevent rendering admin area when screen height or with is below 200px.
+    - #23264: Improve UI login screen.
+    - #23274: Refined dashboard top bar with new icons and consistent tooltips.
+    - #23279: Adds code to accept editURL parameter in ContentBlock.vue to link the title.
+  * Customisation
+    - #17451, #23268: Logo and favicon updates now only apply after saving, as expected.
+  * Compatibility and Requirements
+    - #23429: Matomo shows a warning when the database version in use has reached end of life.
+      This works for both MySQL and MariaDB, which now follow different versioning.
+    - #23410: Remove CASE/WHEN around aggregate function in favour of a simple boolean expression.
+    - #23220: Drop Flattr as a donation link option.
+    - #23261: Tweak regex for host checks.
+    - #23281: API responses using format=original now consistently return the Content-Type: text/plain header instead of text/html.
+    - #23336: Fix creation of MySQL optimizer hint comments for multiple hints.
+  * Matomo Tag Manager (MTM)
+    - #929, #1010: Add description for the History Change Trigger in Matomo Tag Manager.
+    - #989, #1019: Removed Save button from custom templates if a user does not have access to edit custom templates.
+    - #1011, #852: The headers for Container Components, Tags, Triggers, Variables, and Versions are now clickable, allowing quick access to each section.
+    - #1017: Adds the tooltip directive to the ContainerSelector to align with upcoming changes that standardise tooltip behaviour across dashboard headers.
+
+-------------------------------------------------------------------
 Fri May  2 13:23:33 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.3.2
