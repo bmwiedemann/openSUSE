@@ -469,4 +469,21 @@
     <comment>update to 1.4.0 (forwarded request 1297249 from ojkastl_buildservice)</comment>
     <requestid>1297304</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c6bb18ee93cc9876799500396ae54d5f</srcmd5>
+    <version>1.4.1</version>
+    <time>1756739928</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.1 (jsc#SLE-23476)::
+  * build(deps): Bump github.com/ulikunitz/xz from 0.5.12 to 0.5.14 (#2596)
+    CVE-2025-58058: rekor: github.com/ulikunitz/xz: github.com/ulikunitz/xz leaks memory: (bsc#1248910)
+  * build(deps): Bump github.com/redis/go-redis/v9 from 9.11.0 to 9.12.1
+    CVE-2025-29923: rekor: github.com/redis/go-redis: potential out of order responses when `CLIENT SETINFO` times out during connection establishment (bsc#1241153)
+  * use less expensive gRPC call to implement GetLeafAndProofByHash (#2581)
+  * move to per-shard trillian client manager (#2564)
+  * use cheaper gRPC endpoint when we already have the inclusion proof (#2580)
+  * simplify hash and signature verification in rekord type (#2579)
+  * return correct error if GetLeafAndProofByHash fails (#2574) (forwarded request 1302193 from msmeissn)</comment>
+    <requestid>1302197</requestid>
+  </revision>
 </revisionlist>

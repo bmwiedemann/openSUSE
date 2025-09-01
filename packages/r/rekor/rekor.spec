@@ -1,6 +1,7 @@
 #
 # spec file for package rekor
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +20,7 @@
 %define apps cli server
 
 Name:           rekor
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Supply Chain Transparency Log
 License:        Apache-2.0
