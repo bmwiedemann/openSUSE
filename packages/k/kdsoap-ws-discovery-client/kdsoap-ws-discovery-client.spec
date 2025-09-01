@@ -1,7 +1,7 @@
 #
 # spec file for package kdsoap-ws-discovery-client
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,18 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global sover 0
 %define qt6_version 6.5.0
 %bcond_without released
 Name:           kdsoap-ws-discovery-client
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        WS-discovery client library
 License:        GPL-3.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/unstable/%{name}/%{name}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/unstable/%{name}/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        kdsoap-ws-discovery-client.keyring
 %endif
 BuildRequires:  doxygen
