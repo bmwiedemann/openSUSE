@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.3.1.2
+Version:        1.3.2.0
 Release:        0
 Summary:        Versatile logging framework
 License:        BSD-3-Clause
@@ -39,8 +39,6 @@ BuildRequires:  ghc-network-bsd-devel
 BuildRequires:  ghc-network-bsd-prof
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-prof
-BuildRequires:  ghc-old-locale-devel
-BuildRequires:  ghc-old-locale-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-time-prof
