@@ -1,7 +1,7 @@
 #
 # spec file for package traefik2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define buildmode pie
 %endif
 Name:           traefik2
-Version:        2.11.28
+Version:        2.11.29
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT
@@ -103,17 +103,6 @@ mkdir -p %{buildroot}%{_localstatedir}/log/traefik
 %post
 %service_add_post traefik.service
 %{fillup_only -n traefik}
-# fix ownership for config and logging directory
-chown traefik: \
-	%{_sysconfdir}/traefik \
-	%{_sysconfdir}/traefik/* \
-	%{_localstatedir}/log/traefik
-if [ -d %{_sysconfdir}/traefik/conf.d ] && [ ! -L %{_sysconfdir}/traefik/conf.d ] && [ -n "`ls -A %{_sysconfdir}/traefik/conf.d`" ] ; then
-	chown traefik: %{_sysconfdir}/traefik/conf.d/*
-fi
-if [ -d %{_localstatedir}/log/traefik ] && [ ! -L %{_localstatedir}/log/traefik ] && [ -n "`ls -A %{_localstatedir}/log/traefik`" ] ; then
-	chown traefik: %{_localstatedir}/log/traefik/*
-fi
 
 %preun
 %service_del_preun traefik.service

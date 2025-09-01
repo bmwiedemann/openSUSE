@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 29 14:38:09 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Removed old update scripts which fixes boo#1245204 for traefik reloease v2.
+
+- Version 2.11.29
+  * acme
+    - Bump github.com/go-acme/lego/v4 to v4.25.2 (gh#traefik/traefik#11983 by ldez)
+  * docker
+    - Bump github.com/docker/docker to v28.3.3 (gh#traefik/traefik#12007 by kevinpollet)
+
+-------------------------------------------------------------------
 Tue Jul 29 09:59:25 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Synchronized changelog with boo tickets and cve entries
@@ -20,6 +31,7 @@ Tue Jul 22 13:38:51 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 - Disabled MPTCP which caused issues (see gh#traefik/traefik#11869)
 
 - Version 2.11.27
+  * Bump github.com/go-viper/mapstructure/v2 to v2.3.0 (gh#traefik/traefik#11880 by kevinpollet)
 
 -------------------------------------------------------------------
 Thu Jun 26 15:00:39 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
@@ -584,6 +596,7 @@ Tue Jun 07 08:27:42 UTC 2022 - alexandre.vicenzi@suse.com
     * [middleware,tls] Use CNAME for SNI check on host header
     * [middleware,tracing] Rename Datadog span tags
     * [tls] Apply the same approach as the rules system on the TLS configuration choice
+  * Includes a update to gopkg.in/yaml.v3 v3.0.1 which fixes CVE-2022-28948 resp. boo#1248536
 
 -------------------------------------------------------------------
 Fri Feb 04 13:37:58 UTC 2022 - alexandre.vicenzi@suse.com

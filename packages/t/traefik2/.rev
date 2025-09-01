@@ -89,4 +89,13 @@ This is Traefik LTS version</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1297690</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bc5b617fdc968d1d2348dd58a7933399</srcmd5>
+    <version>2.11.29</version>
+    <time>1756739831</time>
+    <user>anag_factory</user>
+    <comment>- Removed old update scripts which fixes boo#1245204 for traefik reloease v2.
+- Version 2.11.29</comment>
+    <requestid>1301968</requestid>
+  </revision>
 </revisionlist>
