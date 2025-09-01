@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug 24 13:04:33 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 3.13.11:
+ - Better abstraction for when inheriting from `mockhttp.Entry`
+ - Define an alternative `can_handle` logic by passing a callable
+
+-------------------------------------------------------------------
 Tue Jul 15 21:26:22 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
-- Update to versionn 3.13.10:
+- Update to version 3.13.10:
   * Adding socket methods used by trio
 
 -------------------------------------------------------------------

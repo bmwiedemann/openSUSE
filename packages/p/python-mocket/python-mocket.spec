@@ -1,7 +1,7 @@
 #
 # spec file for package python-mocket
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mocket%{psuffix}
-Version:        3.13.10
+Version:        3.13.11
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
