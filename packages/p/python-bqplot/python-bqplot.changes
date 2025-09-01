@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  1 10:06:50 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update "tmp" js vendored package to 0.2.5
+  (CVE-2025-54798, bsc#1247788)
+
+-------------------------------------------------------------------
 Thu Aug 21 17:00:29 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Add bqplot-js.patch boo#1248431 CVE-2025-9287 CVE-2025-9288

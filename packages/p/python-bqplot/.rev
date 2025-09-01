@@ -201,4 +201,13 @@
     hopefully change with 0.13, which is at rc stage</comment>
     <requestid>1300838</requestid>
   </revision>
+  <revision rev="19" vrev="13">
+    <srcmd5>dbfd4dbd125dc8ed399b22cf8496b349</srcmd5>
+    <version>unknown</version>
+    <time>1756739921</time>
+    <user>anag_factory</user>
+    <comment>- Update &quot;tmp&quot; js vendored package to 0.2.5
+  (CVE-2025-54798, bsc#1247788)</comment>
+    <requestid>1302183</requestid>
+  </revision>
 </revisionlist>
