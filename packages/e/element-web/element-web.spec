@@ -17,7 +17,7 @@
 
 
 Name:           element-web
-Version:        1.11.109
+Version:        1.11.110
 Release:        0
 Summary:        A glossy Matrix collaboration client - web files
 License:        AGPL-3.0-only OR GPL-3.0-only
