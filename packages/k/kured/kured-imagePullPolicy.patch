@@ -15,7 +15,7 @@ index 6baf7c1..aac5c46 100644
 @@ -39,7 +39,7 @@ spec:
            # If you find yourself here wondering why there is no
            # :latest tag on Docker Hub,see the FAQ in the README
-           image: ghcr.io/kubereboot/kured:1.17.1
+           image: ghcr.io/kubereboot/kured:1.20.0
 -          imagePullPolicy: IfNotPresent
 +          imagePullPolicy: Always
            securityContext:

@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Sat Aug 30 16:25:31 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.20.0:
+  * chore: update release
+  * Fix incorrect break
+  * Add package comments to pass linters
+  * fix lint of files
+  * add golangci lint
+  * Update Kured to support kubernetes 1.34
+  * Fix bad formatting
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.24 matching go.mod
+  * Rebase kured-imagePullPolicy.patch
+  * Rebase systemctl-path.patch
+
+-------------------------------------------------------------------
+Sat Aug 30 08:44:52 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.19.0:
+  * chore: update release manifests
+  * bump kubernetes 0.32 libraries
+  * build(deps): bump github/codeql-action from 3.29.10 to 3.29.11
+  * build(deps): bump lycheeverse/lychee-action from 2.5.0 to 2.6.1
+  * build(deps): bump github.com/stretchr/testify from 1.10.0 to 1.11.1
+  * build(deps): bump actions/dependency-review-action from 4.7.2 to 4.7.3
+  * build(deps): bump aquasecurity/trivy-action from 0.32.0 to 0.33.0
+  * build(deps): bump actions/dependency-review-action from 4.7.1 to 4.7.2
+  * build(deps): bump github/codeql-action from 3.29.9 to 3.29.10
+  * Reduce periodics frequency
+  * Validate external links for md updates only on PR
+  * build(deps): bump docker/metadata-action from 5.7.0 to 5.8.0
+  * build(deps): bump docker/login-action from 3.4.0 to 3.5.0
+  * build(deps): bump lycheeverse/lychee-action from 2.4.1 to 2.5.0
+  * build(deps): bump github/codeql-action from 3.29.2 to 3.29.8
+  * build(deps): bump actions/checkout from 4.2.2 to 5.0.0
+  * Manual bump
+  * build(deps): bump step-security/harden-runner from 2.12.2 to 2.13.0
+  * build(deps): bump alpine from 3.22.0 to 3.22.1
+  * Update to go 1.23.1 to fix CVE-2024-34156
+  * Update k8s for 1.32
+  * build(deps): bump aquasecurity/trivy-action from 0.31.0 to 0.32.0
+  * build(deps): bump github/codeql-action from 3.29.0 to 3.29.2
+  * build(deps): bump step-security/harden-runner from 2.12.1 to 2.12.2
+  * build(deps): bump docker/setup-buildx-action from 3.10.0 to 3.11.1
+  * build(deps): bump step-security/harden-runner from 2.12.0 to 2.12.1
+  * build(deps): bump github/codeql-action from 3.28.19 to 3.29.0
+  * build(deps): bump aquasecurity/trivy-action from 0.30.0 to 0.31.0 (#1139)
+  * build(deps): bump github/codeql-action from 3.28.18 to 3.28.19 (#1138)
+  * build(deps): bump alpine from 3.21.3 to 3.22.0 (#1137)
+  * build(deps): bump ossf/scorecard-action from 2.4.1 to 2.4.2 (#1134)
+  * build(deps): bump github/codeql-action from 3.28.17 to 3.28.18
+  * build(deps): bump docker/build-push-action from 6.17.0 to 6.18.0
+  * build(deps): bump actions/dependency-review-action from 4.7.0 to 4.7.1 (#1125)
+  * build(deps): bump docker/build-push-action from 6.16.0 to 6.17.0 (#1126)
+  * build(deps): bump actions/dependency-review-action from 4.6.0 to 4.7.0 (#1124)
+  * build(deps): bump lycheeverse/lychee-action from 2.4.0 to 2.4.1 (#1123)
+  * build(deps): bump actions/setup-go from 5.4.0 to 5.5.0 (#1122)
+  * build(deps): bump docker/build-push-action from 6.15.0 to 6.16.0 (#1120)
+  * build(deps): bump github/codeql-action from 3.28.16 to 3.28.17 (#1121)
+  * build(deps): bump github/codeql-action from 3.28.15 to 3.28.16 (#1119)
+  * build(deps): bump step-security/harden-runner from 2.11.1 to 2.12.0 (#1118)
+  * build(deps): bump github.com/prometheus/client_golang (#1114)
+  * build(deps): bump github/codeql-action from 3.28.13 to 3.28.15 (#1115)
+  * build(deps): bump step-security/harden-runner from 2.11.0 to 2.11.1 (#1111)
+  * build(deps): bump actions/dependency-review-action from 4.5.0 to 4.6.0 (#1110)
+  * build(deps): bump lycheeverse/lychee-action from 2.3.0 to 2.4.0 (#1109)
+  * build(deps): bump github/codeql-action from 3.28.12 to 3.28.13 (#1107)
+  * build(deps): bump github/codeql-action from 3.28.11 to 3.28.12 (#1105)
+  * build(deps): bump actions/upload-artifact from 4.6.1 to 4.6.2 (#1106)
+  * build(deps): bump actions/setup-go from 5.3.0 to 5.4.0 (#1104)
+  * build(deps): bump docker/login-action from 3.3.0 to 3.4.0 (#1101)
+  * build(deps): bump aquasecurity/trivy-action from 0.29.0 to 0.30.0 (#1100)
+  * build(deps): bump github/codeql-action from 3.28.10 to 3.28.11
+  * dholbach steps down (#1096)
+  * build(deps): bump github.com/prometheus/client_golang
+  * update k8s for 1.31
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.23 matching go.mod
+
+-------------------------------------------------------------------
 Mon Mar  3 17:31:18 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.17.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package kured
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           kured
-Version:        1.17.1
+Version:        1.20.0
 Release:        0
 Summary:        Kubernetes daemonset to perform safe automatic node reboots
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Patch0:         systemctl-path.patch
 Patch1:         kured-imagePullPolicy.patch
-BuildRequires:  golang(API) >= 1.22
+BuildRequires:  golang(API) >= 1.24
 
 %description
 Kured (KUbernetes REboot Daemon) is a Kubernetes daemonset that

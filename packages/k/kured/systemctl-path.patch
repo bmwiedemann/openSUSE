@@ -12,7 +12,7 @@ diff --git a/cmd/kured/main.go b/cmd/kured/main.go
 index a6b1c0e..a490348 100644
 --- a/cmd/kured/main.go
 +++ b/cmd/kured/main.go
-@@ -160,7 +160,7 @@ func main() {
+@@ -163,7 +163,7 @@ func main() {
  		"Taint name applied during pending node reboot (to prevent receiving additional pods from other rebooting nodes). Disabled by default. Set e.g. to \"weave.works/kured-node-reboot\" to enable tainting.")
  	flag.StringVar(&rebootSentinelCommand, "reboot-sentinel-command", "",
  		"command for which a zero return code will trigger a reboot command")
