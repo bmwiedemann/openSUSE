@@ -1,0 +1,98 @@
+From 8fc2ccb9ead8dd57b92049313ec9577133e607b7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 22 Nov 2024 06:26:45 +0100
+Subject: [PATCH] Fix CMAKE_MODULE_PATH breakage due to find_dependency
+
+The `find_dependency(...)` macro uses `return()` on failure, and the
+calling code fails to restore the CMAKE_MODULE_PATH then.
+
+Wrap the call in a `function()`, and handle failures from there.
+
+Fixes #1122.
+---
+ CMakeLists.txt                |  4 ++--
+ cmake/CeresConfig.cmake.in    | 24 +++++++++++++++++-------
+ internal/ceres/CMakeLists.txt |  2 +-
+ 3 files changed, 20 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8e49c19..dfdf8eb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -295,7 +295,7 @@ if (SUITESPARSE)
+   find_package(SuiteSparse 4.5.6 COMPONENTS CHOLMOD SPQR
+     OPTIONAL_COMPONENTS Partition)
+   if (SuiteSparse_FOUND)
+-    set(SuiteSparse_DEPENDENCY "find_dependency(SuiteSparse ${SuiteSparse_VERSION})")
++    set(SuiteSparse_DEPENDENCY "_ceres_find_dep_wrapper(SuiteSparse ${SuiteSparse_VERSION})")
+     # By default, if all of SuiteSparse's dependencies are found, Ceres is
+     # built with SuiteSparse support.
+     message("-- Found SuiteSparse ${SuiteSparse_VERSION}, "
+@@ -329,7 +329,7 @@ if (EIGENMETIS)
+     # link-only METIS::METIS target to avoid undefined linker errors in projects
+     # relying on Ceres. We do not actually need to propagate anything besides
+     # the link libraries (such as include directories.)
+-    set(METIS_DEPENDENCY "find_dependency(METIS ${METIS_VERSION})")
++    set(METIS_DEPENDENCY "_ceres_find_dep_wrapper(METIS ${METIS_VERSION})")
+     # METIS find module must be installed unless a package config is being used.
+     if (NOT METIS_DIR)
+       install(FILES ${Ceres_SOURCE_DIR}/cmake/FindMETIS.cmake
+diff --git a/cmake/CeresConfig.cmake.in b/cmake/CeresConfig.cmake.in
+index ceb7e26..5e258d5 100644
+--- a/cmake/CeresConfig.cmake.in
++++ b/cmake/CeresConfig.cmake.in
+@@ -79,14 +79,10 @@ macro(CERES_REPORT_NOT_FOUND REASON_MSG)
+ 
+   # Note <package>_FIND_[REQUIRED/QUIETLY] variables defined by
+   # FindPackage() use the camelcase library name, not uppercase.
+-  if (Ceres_FIND_QUIETLY)
+-    message(STATUS "Failed to find Ceres - " ${REASON_MSG} ${ARGN})
+-  elseif (Ceres_FIND_REQUIRED)
++  if (Ceres_FIND_REQUIRED)
+     message(FATAL_ERROR "Failed to find Ceres - " ${REASON_MSG} ${ARGN})
+-  else()
+-    # Neither QUIETLY nor REQUIRED, use SEND_ERROR which emits an error
+-    # that prevents generation, but continues configuration.
+-    message(SEND_ERROR "Failed to find Ceres - " ${REASON_MSG} ${ARGN})
++  elseif (NOT Ceres_FIND_QUIETLY)
++    message(STATUS "Failed to find Ceres - " ${REASON_MSG} ${ARGN})
+   endif ()
+   return()
+ endmacro(CERES_REPORT_NOT_FOUND)
+@@ -177,6 +173,20 @@ set(CERES_VERSION @CERES_VERSION@)
+ 
+ include(CMakeFindDependencyMacro)
+ # Optional dependencies
++macro(_ceres_find_dep_wrapper)
++  function(_ceres_find_dep_wrapper_wrapper)
++    find_dependency(${ARGN})
++    set(${ARGV0}_FOUND TRUE PARENT_SCOPE)
++    return()
++  endfunction()
++  _ceres_find_dep_wrapper_wrapper(${ARGN})
++  if (NOT ${ARGV0}_FOUND)
++    CERES_REPORT_NOT_FOUND("${ARGV0} not found")
++  elseif (NOT Ceres_FIND_QUIETLY)
++    message(STATUS "Found ${ARGV0}")
++  endif()
++endmacro()
++
+ @METIS_DEPENDENCY@
+ @SuiteSparse_DEPENDENCY@
+ @CUDAToolkit_DEPENDENCY@
+diff --git a/internal/ceres/CMakeLists.txt b/internal/ceres/CMakeLists.txt
+index f9fc241..9ff6469 100644
+--- a/internal/ceres/CMakeLists.txt
++++ b/internal/ceres/CMakeLists.txt
+@@ -35,7 +35,7 @@
+ find_package(Threads REQUIRED)
+ list(APPEND CERES_LIBRARY_PRIVATE_DEPENDENCIES Threads::Threads)
+ # Make dependency visible to the parent CMakeLists.txt
+-set(Threads_DEPENDENCY "find_dependency (Threads)" PARENT_SCOPE)
++set(Threads_DEPENDENCY "_ceres_find_dep_wrapper(Threads)" PARENT_SCOPE)
+ 
+ # Source files that contain public symbols and live in the ceres namespaces.
+ # Such symbols are expected to be marked with CERES_EXPORT and the files below
+-- 
+2.47.0
+
