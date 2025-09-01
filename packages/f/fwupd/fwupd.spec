@@ -1,7 +1,7 @@
 #
 # spec file for package fwupd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%ifarch %{ix86} x86_64 %{arm} aarch64 riscv64
+%ifarch %{ix86} x86_64 aarch64 riscv64
 %bcond_without efi_fw_update
 %else
 %bcond_with efi_fw_update
@@ -30,6 +30,10 @@
 %bcond_with dell_support
 %endif
 
+%ifarch %{ix86} x86_64 aarch64
+%bcond uefi_dbx 1
+%endif
+
 %if 0%{?suse_version} > 1500
 %bcond_without fish_support
 %else
@@ -40,7 +44,7 @@
 %define docs 0
 
 Name:           fwupd
-Version:        2.0.13
+Version:        2.0.14
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -292,7 +296,9 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_libexecdir}/fwupd
 %{_bindir}/fwupdmgr
 %{_bindir}/fwupdtool
+%if %{with uefi_dbx}
 %{_bindir}/dbxtool
+%endif
 %{_datadir}/dbus-1/system.d/org.freedesktop.fwupd.conf
 %{_datadir}/dbus-1/interfaces/org.freedesktop.fwupd.xml
 %{_datadir}/dbus-1/system-services/org.freedesktop.fwupd.service

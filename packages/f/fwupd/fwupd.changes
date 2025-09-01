@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Aug 29 13:36:08 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.14:
+  + This release adds the following features:
+    - Add support for ignoring the network connectivity requirement
+    - Allow building on RHEL-9 and RHEL-10
+    - Allow plugins to know the firmware version during update
+    - Allow UEFI capsule devices to opt-out of Capsule-on-Disk
+    - Allow unsetting HwID plugin context flags
+    - Allow upgrading from a zero "empty" UEFI dbx
+  + This release fixes the following bugs:
+    - Add an automatic firehose counterpart to the QCDM modem device
+    - Disable signature time checks when verifying firmware
+    - Do not add a vendor ID of UNKNOWN when the signature has no vendor
+    - Do not discover ThunderBolt retimer devices when run in single-shot mode
+    - Do not use deprecated libflashrom API
+    - Enhance firmware metadata generation in firmware_packager
+    - Ensure Lexar NVMe drives use a proper version number
+    - Fix parsing and writing UF2 extension sections
+    - Fix Synaptics RMI initialization for new devices
+    - Fix updating DFOTA and MBIM modem devices
+    - Move some vendor name fixups to the quirk file
+    - Remove CapsuleOnDisk HwID match for Dell
+    - Return a sensible error when using build-cabinet wrong
+    - Set the firehose loader filename in a more permissive way
+    - Update the mapping for TPM vendor names
+    - Verify the checksum of the serialized data in tests
+    - Work around a libmbim bug when detaching
+  + This release adds support for the following hardware:
+    - Egis MoC devices
+    - Framework QMK devices
+    - ILITEK touch controllers
+    - SteelSeries Arctis Nova 3P
+
+
+-------------------------------------------------------------------
 Fri Jul 25 15:57:05 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - drop unneeded gpgme build dependency. GPG support is provided
