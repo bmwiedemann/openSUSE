@@ -59,7 +59,7 @@
 %endif
 %bcond_without ldap
 Name:           postfix-bdb
-Version:        3.10.3
+Version:        3.10.4
 Release:        0
 Summary:        A fast, secure, and flexible mailer
 License:        EPL-2.0 OR IPL-1.0
@@ -525,7 +525,8 @@ fi
 %dir %{pf_shlib_directory}/systemd
 %attr(0755,root,root) %{pf_shlib_directory}/systemd/*
 %{_unitdir}/postfix.service
-%{_bindir}/*
+%{_bindir}/mailq
+%{_bindir}/newaliases
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postdrop
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postlog
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postqueue
