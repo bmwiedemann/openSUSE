@@ -1,0 +1,21 @@
+diff -rubN yyjson-0.12.0/CMakeLists.txt yyjson-0.12.0-patched/CMakeLists.txt
+--- yyjson-0.12.0/CMakeLists.txt	2025-08-18 20:44:14.000000000 +0200
++++ yyjson-0.12.0-patched/CMakeLists.txt	2025-08-31 22:37:11.266253348 +0200
+@@ -174,7 +174,7 @@
+             FILE yyjson-config.cmake
+             NAMESPACE yyjson::
+             DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/yyjson")
+-    install(FILES src/yyjson.h DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
++    install(FILES src/yyjson.h DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/yyjson")
+ 
+     configure_file(yyjson.pc.in ${CMAKE_BINARY_DIR}/yyjson.pc @ONLY)
+     install(FILES ${CMAKE_BINARY_DIR}/yyjson.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+diff -rubN yyjson-0.12.0/yyjson.pc.in yyjson-0.12.0-patched/yyjson.pc.in
+--- yyjson-0.12.0/yyjson.pc.in	2025-08-18 20:44:14.000000000 +0200
++++ yyjson-0.12.0-patched/yyjson.pc.in	2025-08-31 22:36:59.582696161 +0200
+@@ -7,4 +7,4 @@
+ Description: Fastest JSON library in C
+ Version: @PROJECT_VERSION@
+ Libs: -L${libdir} -lyyjson
+-Cflags: -I${includedir}
++Cflags: -I${includedir}/yyjson
