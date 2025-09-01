@@ -1882,4 +1882,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>1301409</requestid>
   </revision>
+  <revision rev="235" vrev="1">
+    <srcmd5>0d4ae0f5a6b380cc954c495566a845c9</srcmd5>
+    <version>17.162</version>
+    <time>1756739825</time>
+    <user>anag_factory</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>1302194</requestid>
+  </revision>
 </revisionlist>

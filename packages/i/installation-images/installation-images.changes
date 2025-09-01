@@ -1,4 +1,17 @@
 --------------------------------------------------------------------
+Mon Sep 1 11:14:04 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#770
+- etc: fix path for onboard_usb_dev in module.list (bsc#1244269)
+- 17.162
+
+--------------------------------------------------------------------
+Mon Sep 1 11:13:13 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#769
+- etc: add qnoc-sa8775p kernel module for Qualcomm RB8 device
+
+--------------------------------------------------------------------
 Tue Aug 26 09:31:03 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#768
