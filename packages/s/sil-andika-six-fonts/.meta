@@ -1,0 +1,17 @@
+<package name="sil-andika-six-fonts" project="openSUSE:Factory">
+  <title>Sans serif, Unicode-compliant Font For Literacy Use</title>
+  <description>Andika Six is renamed version of Andika v6.200 with no other
+changes. Andika version 7 includes metrics changes that
+could cause lines, paragraphs, and pages to reflow. Because
+of this we wanted to provide a font that reproduced the
+exact metrics and behavior of Andika v6.200 and could be
+installed at the same time as the newest Andika (v7 and beyond).
+Andika v7 is still the best font for most people to use.
+But if you have documents prepared with Andika v6.200 and
+need to preserve the spacing, you can install Andika Six,
+change the doc to use it instead of Andika, and avoid any
+issues with reflow. Then you can use Andika v7 for new
+documents and benefit from the many improvements in this and
+future versions.</description>
+  <url>https://software.sil.org/andika/</url>
+</package>
