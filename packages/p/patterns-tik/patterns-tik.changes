@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  1 14:10:19 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Remove tpm2.0-abrmd as it's deprecated (boo#1248991) 
+
+-------------------------------------------------------------------
 Fri May  2 12:47:33 UTC 2025 - Richard Brown <rbrown@suse.com>
 
 - Use systemd-boot 

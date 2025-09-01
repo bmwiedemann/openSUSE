@@ -91,4 +91,12 @@
     <comment>- Use systemd-boot</comment>
     <requestid>1274009</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>bf64d381430d5e57d0b88cf0a43f4eb8</srcmd5>
+    <version>1.0</version>
+    <time>1756744093</time>
+    <user>anag_factory</user>
+    <comment>- Remove tpm2.0-abrmd as it's deprecated (boo#1248991)</comment>
+    <requestid>1302228</requestid>
+  </revision>
 </revisionlist>
