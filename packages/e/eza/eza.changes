@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep  1 08:47:07 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.23.1:
+  Bug Fixes:
+  * Restore unsafe blocks for libc major/minor device id
+  * cargo deb metadata to LICENSE.txt
+  Documentation:
+  * Improve man page description of flags with default values
+  * "default behavior" means eza's default behavior, not an option's
+    default value
+  Features:
+  * Added completion
+
+-------------------------------------------------------------------
 Fri Jul 25 06:21:06 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.23.0:

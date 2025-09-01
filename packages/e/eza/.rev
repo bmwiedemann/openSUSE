@@ -1218,4 +1218,21 @@
   * Use CHANGES icon for CHANGELOG as well</comment>
     <requestid>1295678</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>4346bc9a57e9183f4e28c8a52c6e5741</srcmd5>
+    <version>0.23.1</version>
+    <time>1756739897</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.23.1:
+  Bug Fixes:
+  * Restore unsafe blocks for libc major/minor device id
+  * cargo deb metadata to LICENSE.txt
+  Documentation:
+  * Improve man page description of flags with default values
+  * &quot;default behavior&quot; means eza's default behavior, not an option's
+    default value
+  Features:
+  * Added completion</comment>
+    <requestid>1302165</requestid>
+  </revision>
 </revisionlist>

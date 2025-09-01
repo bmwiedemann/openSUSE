@@ -1,7 +1,7 @@
 #
 # spec file for package eza
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           eza
-Version:        0.23.0
+Version:        0.23.1
 Release:        0
 Summary:        Replacement for ls written in Rust
 License:        EUPL-1.2
