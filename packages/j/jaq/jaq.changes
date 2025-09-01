@@ -1,4 +1,372 @@
 -------------------------------------------------------------------
+Sat Aug 23 06:40:52 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 2.3.0:
+  * Remove outdated remark.
+  * Downgrade `once_cell` to make jaq-core compile with MSRV.
+  * Dependency updates.
+  * Update benchmark results for jaq 2.3.
+  * Document `bsearch`.
+  * Merge pull request #303 from 01mf02/repl
+  * Comment.
+  * Merge pull request #302 from 01mf02/join-string
+  * Update differences between jq and jaq for `join/1`.
+  * Implement history loading/saving for REPL.
+  * Indent nested REPLs.
+  * Make REPL work with stdin --- thanks a lot to @gwenn!
+  * Merge pull request #300 from fgimian/avoid-open-handles-during-persist
+  * Small import reorganisation.
+  * Add `repl` filter and split main file into smaller modules.
+  * Add rustyline dependency.
+  * Increase MSRV of jaq from 1.65 to 1.66.
+  * Adapt tests to new `join` semantics.
+  * Convert inputs of `join` to strings.
+  * Ensure no file handles remain open during in-place persist (closes #292).
+  * Merge pull request #301 from 01mf02/label-inside-fun
+  * Correctly handle labels inside of native function arguments.
+  * Merge pull request #299 from 01mf02/bsearch
+  * Merge pull request #298 from 01mf02/neg-after-bin
+  * Implement `bsearch`.
+  * Allow negation directly after a binary operator.
+  * Make `Debug` format `load::parse::Def` like a tuple.
+  * Remove unnecessary trait bound.
+  * Add @urid format
+  * Remove reference.
+  * Format.
+  * New update semantics for `..` (recursion).
+  * Implement `try`-`catch` without `label $x | ...`.
+  * Cast epoch timestamp to i64 to prevent overflow on 32-bit architectures.
+  * Merge pull request #283 from dnelson-1901/timefuncs
+  * Thanks, clippy!
+  * Reject negative date-time components.
+  * Make it compile with Rust 1.65 & simplify array construction.
+  * Omit multiplication.
+  * Unix is capital.
+  * Avoid double calls and be more explicit about truncation.
+  * Code deduplication.
+  * mktime: handle fractional seconds
+  * Shorten formatting.
+  * Make `strftime` a bit more performant.
+  * Clippy.
+  * Comments.
+  * Simplify `array_to_datetime`.
+  * Simplify `datetime_to_array`.
+  * Simplify timezone passing.
+  * Make chrono imports explicit.
+  * Document implementation of "More time filters"
+  * allow strftime/strflocaltime to handle incoming arrays
+  * add mktime function
+  * add strptime function
+  * add helper function for creating a date-time array
+  * add localtime, and collapse gmtime and localtime into one function
+  * collapse strftime and strflocaltime into one function
+  * add helper function for parsing an epoch timestamp
+  * gmtime: handle fractional seconds
+  * Add gmtime function
+  * Add strftime and strflocaltime functions
+  * Update security audit link.
+  * Do not compress with UPX because of "bad DT_GNU_HASH" error.
+  * Scoop version is 9 months old and severely outdated.
+  * Update to Ubuntu 22.04.
+  * Bump versions.
+  * Downgrade `once_cell`.
+  * Update dependencies.
+  * Update dependencies.
+  * Merge pull request #280 from 01mf02/path-values
+  * Document.
+  * Test `paths/1`.
+  * Test `path_values`.
+  * Merge pull request #281 from 01mf02/fold-update
+  * Remove slow `getpath` implementation.
+  * Revert "Implement `getpath` natively."
+  * Revert "Support updating with `getpath` on LHS."
+  * Move `getpath` to standard library.
+  * Test fold updates.
+  * Move folding code.
+  * Remove superfluous clone.
+  * Implement updates with folding operators (reduce/foreach) on LHS.
+  * Simplified and faster implementation of `getpath/1`.
+  * Support updating with `getpath` on LHS.
+  * Implement `getpath` natively.
+  * Implement `paths/0` natively.
+  * Correct definition of `paths/1`.
+  * Shorten `path_values` a bit.
+  * Implement `getpath/1`.
+  * Implement new native filter `path_values`.
+  * Format.
+  * Buffer write operations when stdout is not a terminal.
+  * Remove useless `io::`.
+  * Buffer write operations when stdout is not a terminal.
+  * Format.
+  * Remove unused dependency.
+  * Write about security in README.
+  * Add fuzzing targets for jaq-core, thanks to @pcwizz!
+  * Add check to maintain fuzzing targets buildable.
+  * Simplify fuzzing.
+  * Document arbitrary token generation.
+  * Debugging code.
+  * Remove superfluous comment.
+  * Match empty strings to words or numbers in arbitrary token generation.
+  * Document constraint for `Tok::Var`.
+  * Document lexer type invariants.
+  * Do not panic on invalid UTF-8 characters.
+  * Formatting.
+  * Create initial corpus and review README.
+  * Actually compile fuzz target.
+  * Trim token string.
+  * Document.
+  * Use new arbitrary token generation and use in fuzz targets.
+  * Generate arbitrary tokens.
+  * Simplify load_and_compile.
+  * Simplify `data` fuzzer.
+  * Ignore Cargo.lock.
+  * Remove Cargo.lock from fuzzer to decrease duplication.
+  * Add a harness for fuzzing def parsing
+  * Improve punctuation in fuzzing README
+  * Add a fuzz target to harness the parser directly
+  * Make lex::Tok globally public
+  * Create initial fuzz targets
+  * Bump a few dependencies.
+  * Update badge link.
+  * Bump versions.
+  * Handle break labels like variables.
+  * Move `Ctx` into `filter`, and handle bindings nicer during compilation.
+  * Merge pull request #259 from 01mf02/obj-key-fmt
+  * Comment.
+  * Correct test.
+  * Handle break labels like variables.
+  * Correct printing of special Unicode characters in objects keys.
+  * Include packaging status.
+  * Read/write filter & input from/to URL search parameters.
+  * Bump version to 2.1.
+  * Replace `atty` by `is-terminal` and update a few dependencies.
+  * Bump a few dependencies.
+  * Shorten `--argjson` handling.
+  * Update `wasm-bindgen` to address test failures on recent Rust version.
+  * Give precise source of parse error.
+  * Avoid type annotation.
+  * Avoid allocation.
+  * Reformat test.
+  * Merge pull request #250 from wader/argjson
+  * Merge pull request #252 from bluescreen303/lifetime-strictness
+  * Document dependency on `serde_json` feature for main example (#251).
+  * jaq-core/loader: be specific about input parameter for reader
+  * Add --argjson support
+  * Show how to include standard library.
+  * Amazing brace.
+  * Handle comparison between NaN and non-NaN values.
+  * More cache restoration.
+  * Only restore cache for playground.
+  * Use closest matching cache as base for MSRV.
+  * Reindent and use cache.
+  * Try again for if.
+  * Remove if.
+  * Move if.
+  * Use cache for tests.
+  * Use cache for release.
+  * Remove OS from cache key.
+  * Try using a cache for MSRV checking.
+  * Do not install own Rust toolchain when running checks.
+  * Rename workflow.
+  * Merge pull request #247 from simonrupf/32bit-build
+  * Merge pull request #248 from 01mf02/nan-compat
+  * Remove NaN difference.
+  * Handle NaN like in jq, i.e. `nan < nan`. This should close #243.
+  * Harden tests wrt NaN.
+  * Apply the tested changes to the release pipeline.
+  * Attempt to apply the new cross-compile actions to a release build.
+  * Address warning when using `--no-default-features`.
+  * Split workflows into check and tests.
+  * Bump checkout action to v4.
+  * Implement cross compile to validate i686 in addition to x86_64 tests.
+  * Merge pull request #245 from simonrupf/32bit
+  * Replace NUL by `"\0"` in @tsv, closes #246.
+  * Changing test to pass on 32 bit architecture.
+  * Update to macos-13 because macos-12 is deprecated.
+  * Clippy.
+  * Bump version to 2.0.1.
+  * Merge branch 'main' of github.com:01mf02/jaq
+  * Address compiler warning.
+  * Actually implement `--from-file` (closes #244).
+  * Merge pull request #242 from null-dev/patch-2
+  * Merge pull request #241 from null-dev/patch-1
+  * Fix --slurpfile flag
+  * Fix --null-input flag
+  * Update MSRV in README.
+  * Linux download instructions.
+  * Bump version to 2.0.
+  * Update benchmark results.
+  * Run `--run-tests` with stdin if no args given, else with last file.
+  * Format.
+  * Remove vanished differences between jq and jaq.
+  * Merge branch 'main' of github.com:01mf02/jaq
+  * Implement `--sort-keys` / `-S`.
+  * Remove unused package from Lockfile.
+  * Merge pull request #229 from wader/math-int-rem
+  * Add reminder op for floats
+  * Merge pull request #239 from 01mf02/general-fold
+  * Remove outdated comment.
+  * Unify reduce/foreach logic and turn panic into error.
+  * Renaming & clippy.
+  * Merge pull request #238 from 01mf02/handmade-cli
+  * Merge branch 'main' into handmade-cli
+  * Comments.
+  * Disable default features for dependencies of jaq-json.
+  * Merge branch 'main' of github.com:01mf02/jaq
+  * Merge pull request #237 from tranzystorekk/foldhash
+  * Remove final flush after locking, as it should not be necessary.
+  * Test `--raw-output`.
+  * Test `--join-output`.
+  * Flush writer after each value when using `--join-output`.
+  * Generalise folding.
+  * Clippy.
+  * Correct error message.
+  * Make a CLI by hand.
+  * Make `--join-output` imply `--raw-output`, like in jq.
+  * Correct name for `halt_error(5)`.
+  * perf: switch jaq-json hasher to foldhash
+  * Bump version to 2.0.0-epsilon.
+  * More updates.
+  * More package updates.
+  * Update a few dependencies.
+  * Make it compile with MSRV again.
+  * Improve error message for folding with wrong number of arguments.
+  * Simplify fold-parsing code.
+  * Make all functions in jaq-std strict!
+  * Potentially make `first` a little faster.
+  * Do not export `ow!` and `once_with` in jaq-std.
+  * Make many jaq-json builtins more strict.
+  * Evaluate `min`, `max`, and `last` more strictly.
+  * Benchmark for `last`.
+  * Implement `last/1` natively.
+  * Remove note about jq 1.6.
+  * Add four new benchmarks and update numbers.
+  * Do not panic on invalid UTF-8.
+  * Interpret search paths via -L as relative to working directory (#228)
+  * Enable jaq to deal with non-UTF-8 file paths (on the command-line). (#234)
+  * Capitalisation.
+  * Make third argument of `foreach` tail-recursive.
+  * Interpret `--args` as flag like in jq.
+  * Correction: use `-L` instead of `-l` for library path.
+  * Permit `--library-path` as long form for `-L`.
+  * Make handling of `-f` more flexible and similar to jq.
+  * Merge pull request #226 from 01mf02/flat-map-then-strict
+  * Rename and document `next_if_one`.
+  * Show necessity of special case for `limit(0; f)`.
+  * Make `flat_map_then` strict.
+  * Do not run filter when `limit` is called with `0`.
+  * Bump version to 2.0.0-delta.
+  * Merge pull request #224 from 01mf02/args
+  * Document `--` behaviour for `--args`.
+  * Filter out only the first `--` after `--args` to improve compatibility.
+  * Support `--args`.
+  * Make it compile with MSRV (1.65) again.
+  * Refactor comment escaping.
+  * Implement multi-line comments when escaped with backslash.
+  * Correct tail recursion & improve compiler complexity (#223)
+  * jq playground now also processes data locally.
+  * More robust character offset calculation for regexes; closes #221.
+  * Merge pull request #222 from wader/math-gamma
+  * Add missing gamma/0 math function
+  * Raise MSRV for jaq-json as well.
+  * Replace `regex` by `regex-lite`.
+  * Test that destructuring preserves original input.
+  * Run RHS of pattern binding with original input.
+  * Test for laziness.
+  * Refactoring.
+  * Save a clone when `l |= f` returns single output in `l, r |= f`.
+  * Document pattern binding.
+  * Correct jaq version in benchmark results.
+  * Bump version to 2.0.0-gamma.
+  * Merge pull request #220 from 01mf02/lazy-concat
+  * Actually round floats to integers, thanks to @null-dev (#219).
+  * Do not use `once_with` in core anymore.
+  * Evaluate RHS of `,` (concatenation) lazily.
+  * Patterns in variable bindings. (#218)
+  * Add new example showing exponential time usage for jq/gojq.
+  * Remove version from dev-dependencies to allow publishing.
+  * Hide a few methods.
+  * Remove more outdated criticism of jq 1.6.
+  * jaq now expands `~` and `$ORIGIN` in module paths.
+  * Specify `foreach/3`.
+  * Remove paragraph about old jq bug.
+  * Update implemented features.
+  * Generate valid JSON.
+  * Generate valid JSON in `bench.sh`.
+  * Update benchmark.
+  * Merge pull request #215 from wader/less-jq-surprises
+  * Clippy.
+  * Bump version to 2.0.0-beta.
+  * Implement `skip` via `foreach/3`.
+  * Comment.
+  * Make `Error::path_expr` public again; it is used in a test.
+  * Comment.
+  * Remove `run_if_ok`.
+  * Privatise.
+  * Privatise.
+  * Comment.
+  * Renaming.
+  * Remove `for/2` and `for/3`.
+  * Implement `foreach/3` and `for/3`.
+  * Demand that `ValT` must implement `Default`.
+  * Implement `skip/2`.
+  * Omit clones in `.[f] |= g`.
+  * Short-circuit on errors in `try ... catch ...`.
+  * Comment.
+  * Implement `stderr` via `log`.
+  * Make `debug` have an effect in jaq-play.
+  * Make `error` more compact.
+  * Print values rawly to stderr.
+  * Implement `stderr`.
+  * Implement `debug/1`.
+  * Reimplement `debug/0`.
+  * Define `error(f)` by `error` instead of other way around.
+  * Write "DEBUG:" instead of "DEBUG".
+  * Restore microsecond precision for date filters.
+  * Truncate timestamps to milliseconds; see #214.
+  * Update on surprising jq behaviours
+  * Format debug messages such as `["DEBUG", [1, 2, 3]]`.
+  * Format.
+  * Do not allocate memory when string is already trimmed.
+  * Merge pull request #212 from wader/trim
+  * Add `trim/0`, `ltrim/0` and `rtrim/0`
+  * Omit version from released files (#211).
+  * Remove `jaq_json::Val::arr`.
+  * Expand `~` and `$ORIGIN` at the start of search paths.
+  * Properly escape characters, including \u200b (closes #209).
+  * 100,000 definitions benchmark.
+  * Reenable dev dependencies, bump to alpha.1.
+  * Temporarily disable dev dependency on jaq-json to publish it.
+  * Add include/import tests.
+  * Correct interpretation of search path array.
+  * Reinstate version number for jaq-play.
+  * Bump version numbers.
+  * Remove jaq-play version.
+  * Tests for alternation update.
+  * Implement `l // r |= f`.
+  * Add `add/1`, closing #206.
+  * Document new features.
+  * New test for label-break.
+  * Consider metadata during file loading  (#207)
+  * Merge pull request #205 from thecaralice/ipa
+  * docs: Add IPA pronunciation
+  * Implement `abs`.
+  * Check jaq-json for compatibility with Rust 1.63
+  * Move JSON-specific filters from jaq-std into jaq-json.
+  * Format.
+  * Implement `halt` and `halt_error`.
+  * Make `error` work on LHS of assignments.
+  * Support import/include directives with trailing metadata.
+  * Reorganisation & new error type (#204)
+  * New native filter & exception API (#203)
+  * Simplify.
+  * Store terms and funs in compiler directly in lookup table.
+  * Shorten.
+  * Rewrite compiler (#202)
+  * jaq-parse is not maintained anymore.
+  * Remove x86_64-pc-windows-gnu target.
+
+-------------------------------------------------------------------
 Sat Sep  7 16:39:56 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 1.6.0
