@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 29 13:27:13 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20250829.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20250829
+  * Add support for pkg-config by @baarde in #2547
+  * Fix regression in JRuby 9.3 by @mislav in #2560
+  * Fix linking to Homebrew OpenSSL by @mislav in #2562
+  * Bump actions/checkout from 4 to 5 by @dependabot[bot] in #2563
+  * Add JRuby 9.4.14.0 by @headius in #2564
+
+-------------------------------------------------------------------
 Mon Aug 11 22:11:35 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20250811.
