@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Sun Aug 31 09:43:19 UTC 2025 - MihailJP <mihailjp@gmail.com>
+
+- Do not obsolete sil-mondulkiri-fonts because of different font name
+  (their 'Khmer Busra' vs our 'Busra')
+
+-------------------------------------------------------------------
+Sun Aug 31 09:39:28 UTC 2025 - MihailJP <mihailjp@gmail.com>
+
+- First packaging for openSUSE
