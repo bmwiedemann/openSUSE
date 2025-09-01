@@ -123,7 +123,8 @@ ABI or API guarantees.
 
 %build
 %cmake_qt6 \
-  -DQT_GENERATE_SBOM:BOOL=FALSE
+  -DQT_GENERATE_SBOM:BOOL=FALSE \
+  -DQT_QML_NO_CACHEGEN:BOOL=TRUE
 
 %{qt6_build}
 

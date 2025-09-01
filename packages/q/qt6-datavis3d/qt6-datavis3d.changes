@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 31 09:17:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add the missing build flag
+
+-------------------------------------------------------------------
 Thu Aug 28 14:10:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Pass '-DQT_QML_NO_CACHEGEN:BOOL=TRUE' to CMake to make builds
