@@ -25,7 +25,7 @@
 %endif
 
 Name:           s3backer
-Version:        2.1.5
+Version:        2.1.6
 Release:        0
 Summary:        FUSE and NBD single file backing store via Amazon S3
 License:        GPL-2.0-or-later

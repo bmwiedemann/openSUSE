@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 22 19:42:49 UTC 2025 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Upgrade to release 2.1.6
+    - Fix realloc() crash with newer libfuse when "--filename" is used.
+
+-------------------------------------------------------------------
 Thu May 22 18:07:25 UTC 2025 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Upgrade to release 2.1.5
