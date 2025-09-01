@@ -6,5 +6,4 @@ TuxGuitar provides include autoscrolling while playing, note
 duration management, bend/slide/vibrato/hammer-on/pull-off effects,
 support for tuplets, time signature management, tempo management,
 gp3/gp4/gp5 import and export.</description>
-  <devel project="Java:packages" package="tuxguitar"/>
 </package>

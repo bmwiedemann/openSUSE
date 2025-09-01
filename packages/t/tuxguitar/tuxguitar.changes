@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 31 19:45:37 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * 0004-startscript.patch
+    + temporary fix for bsc#1248990. The file command ends in
+      bad system call with the stderr and/or stdout are redirected
+
+-------------------------------------------------------------------
 Fri Mar 28 21:25:55 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Fix pom errors that are fatal with Maven 4

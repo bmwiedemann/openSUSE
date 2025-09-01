@@ -177,4 +177,12 @@
     <comment></comment>
     <requestid>1265309</requestid>
   </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>0adb0d091a84ef61af12832741004329</srcmd5>
+    <version>1.6.6</version>
+    <time>1756739886</time>
+    <user>anag_factory</user>
+    <comment>bsc#1248990</comment>
+    <requestid>1302113</requestid>
+  </revision>
 </revisionlist>
