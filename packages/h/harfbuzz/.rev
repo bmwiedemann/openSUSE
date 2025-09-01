@@ -1275,4 +1275,14 @@ New stable rel</comment>
     caused changes in shaping behaviour. (forwarded request 1301336 from iznogood)</comment>
     <requestid>1301466</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>08aebd37f6670c9d38a0a928c4be1c44</srcmd5>
+    <version>11.4.5</version>
+    <time>1756739797</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 11.4.5:
+  + Bug fixes for “AAT” shaping, and other shaping micro
+    optimizations. (forwarded request 1302007 from iznogood)</comment>
+    <requestid>1302016</requestid>
+  </revision>
 </revisionlist>
