@@ -17,7 +17,7 @@
 
 
 Name:           bitwarden-sdk-internal
-Version:        0.2.0~main.225
+Version:        0.2.0~main.242
 %global toolchain clang
 # Remove requires on type_fest
 %global __requires_exclude ^npm(.*)
@@ -28,7 +28,7 @@ License:        Apache-2.0 AND (Apache-2.0 OR BSL-1.0) AND BSD-3-Clause AND GPL-
 Group:          System/Libraries
 Url:            https://github.com/bitwarden/sdk-internal
 # Created by create-tarball.sh
-Source0:        sdk-internal-0.2.0-main.225.tar.zst
+Source0:        sdk-internal-0.2.0-main.242.tar.zst
 Patch0:         remove-nonfree.patch
 
 #Is applied before vendor step as it adds additional dependencies.
@@ -72,6 +72,7 @@ This package does not provide a stable API and is only intended for building the
 
 %prep
 %autosetup -p1 -n sdk-internal
+rm -v vendor/slab/src/lib.rs
 
 # https://blogs.gnome.org/mcatanzaro/2020/05/18/patching-vendored-rust-dependencies/
 for i in \
@@ -79,6 +80,7 @@ aes-gcm \
 chacha20poly1305 \
 pkcs5 \
 walrus \
+slab \
 ; do
 pushd vendor/$i
 jq -cj '.files={}' .cargo-checksum.json >tmp && mv tmp .cargo-checksum.json && popd
@@ -139,6 +141,11 @@ export RUSTFLAGS="$RUSTFLAGS --cfg getrandom_backend=\"wasm_js\""
 
 export RUSTFLAGS="$(echo " $RUSTFLAGS"|sed 's/ -Clink-arg=-Wl,-z,relro,-z,now //g')"
 export RUST_BACKTRACE=full
+
+# /usr/bin/wasm-opt: error while loading shared libraries: libbinaryen.so: cannot open shared object file: No such file or directory
+%if 0%{?suse_version} < 1550
+export LD_LIBRARY_PATH=%{_libdir}/binaryen
+%endif
 
 cargo -vv $auditable build -p bitwarden-wasm-internal  --target wasm32-unknown-unknown --release
 

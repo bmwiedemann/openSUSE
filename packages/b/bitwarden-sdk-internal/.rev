@@ -18,4 +18,12 @@ The tarball must be currently downloaded like this because upstream misses some 
 </comment>
     <requestid>1295722</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>dcfbb5f3c4bb2258f5321a9ca45a21f4</srcmd5>
+    <version>0.2.0~main.242</version>
+    <time>1756739856</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1302012</requestid>
+  </revision>
 </revisionlist>

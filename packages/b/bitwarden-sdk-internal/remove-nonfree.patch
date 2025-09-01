@@ -1,5 +1,5 @@
---- sdk-internal/Cargo.toml.orig	2025-06-14 19:19:36.087115685 +0200
-+++ sdk-internal/Cargo.toml	2025-06-14 19:22:13.575092055 +0200
+--- sdk-internal/Cargo.toml.orig	2025-08-30 11:48:09.270823748 +0200
++++ sdk-internal/Cargo.toml	2025-08-30 11:51:50.094753750 +0200
 @@ -1,6 +1,6 @@
  [workspace]
  resolver = "2"
@@ -8,11 +8,11 @@
  
  # Global settings for all crates should be defined here
  [workspace.package]
-@@ -29,7 +29,6 @@ bitwarden-fido = { path = "crates/bitwar
+@@ -33,7 +33,6 @@ bitwarden-fido = { path = "crates/bitwar
+ bitwarden-generators = { path = "crates/bitwarden-generators", version = "=1.0.0" }
+ bitwarden-ipc = { path = "crates/bitwarden-ipc", version = "=1.0.0" }
  bitwarden-send = { path = "crates/bitwarden-send", version = "=1.0.0" }
- bitwarden-state = { path = "crates/bitwarden-state", version = "=1.0.0" }
- bitwarden-threading = { path = "crates/bitwarden-threading", version = "=1.0.0" }
 -bitwarden-sm = { path = "bitwarden_license/bitwarden-sm", version = "=1.0.0" }
  bitwarden-ssh = { path = "crates/bitwarden-ssh", version = "=1.0.0" }
- bitwarden-uuid = { path = "crates/bitwarden-uuid", version = "=1.0.0" }
- bitwarden-uuid-macro = { path = "crates/bitwarden-uuid-macro", version = "=1.0.0" }
+ bitwarden-state = { path = "crates/bitwarden-state", version = "=1.0.0" }
+ bitwarden-test = { path = "crates/bitwarden-test", version = "=1.0.0" }
