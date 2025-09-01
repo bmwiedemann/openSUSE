@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  1 13:16:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.5.4
+  * A technical change for compatibility with gap-digraphs 1.11.0.
+  * Removed the use of the SmallGroup package in the test suite.
+
+-------------------------------------------------------------------
 Fri Jul 18 09:42:27 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.5.3
