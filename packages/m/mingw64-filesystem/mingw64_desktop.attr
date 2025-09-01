@@ -1,0 +1,2 @@
+%__desktop_provides	%{_rpmconfigdir}/mingw64-desktop-file.prov
+%__desktop_path	^%{_mingw64_datadir}/applications/.*\\.desktop$
