@@ -111,4 +111,12 @@
     <comment>Update to 9.6.1</comment>
     <requestid>1299896</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fbfa3d9abdb08ef7fdb3963477298b0b</srcmd5>
+    <version>9.6.5</version>
+    <time>1756739860</time>
+    <user>anag_factory</user>
+    <comment>Update to 9.6.5</comment>
+    <requestid>1302031</requestid>
+  </revision>
 </revisionlist>

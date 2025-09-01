@@ -15,12 +15,12 @@
 #
 
 Name:           limine
-Version:        9.6.1
+Version:        9.6.5
 Release:        0
 Summary:        Modern, advanced, portable, multiprotocol bootloader and boot manager
 License:        BSD-2-Clause
 Group:          System/Boot
-URL:            https://github.com/limine-bootloader/limine
+URL:            https://codeberg.org/limine/limine
 Source:         %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  make
 BuildRequires:  autoconf
