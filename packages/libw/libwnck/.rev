@@ -711,4 +711,15 @@
     <comment></comment>
     <requestid>1278556</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>734e561c71382e35da81a385d58c583a</srcmd5>
+    <version>43.3</version>
+    <time>1756739796</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 43.3:
+  + Fix clang warnings.
+  + Fix regression with class group and application names.
+- Drop libwnck-fix-compiler-error.patch: Merged upstream. (forwarded request 1301894 from iznogood)</comment>
+    <requestid>1302015</requestid>
+  </revision>
 </revisionlist>

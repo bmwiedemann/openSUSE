@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 29 08:10:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 43.3:
+  + Fix clang warnings.
+  + Fix regression with class group and application names.
+- Drop libwnck-fix-compiler-error.patch: Merged upstream.
+
+-------------------------------------------------------------------
 Tue May 20 08:28:45 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add libwnck-fix-compiler-error.patch: Fix declaration after label
