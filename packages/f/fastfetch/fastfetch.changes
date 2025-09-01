@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sun Aug 31 22:45:01 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to 2.51.1:
+  Bugfixes:
+   * Fix building on macOS 14 or older; no functional changes 
+- Update to 2.51.0:
+  Changes:
+   * Fastfetch now requires yyjson 0.12 to build when using 
+     `-DENABLE_SYSTEM_YYJSON=ON`
+   * The Disk module no longer shows hyperlink mountpoints by 
+     default, which cause issues on some real consoles (Disk) 
+     - Instead, the custom key for the Disk module now supports 
+       `{mountpoint-link}` and `{name-link}` to show hyperlinks 
+       for mountpoints and names. For example, `{ "type": "disk", 
+       "key": "Disk ({mountpoint-link})" }` can be used to restore 
+       the old behavior.
+  Features:
+   * Adds `succeeded` module condition to JSONC config. When set 
+     to `false`, the module will only run if the last module failed 
+     (gh#fastfetch-cli/fastfetch#1908) 
+   * By upgrading to yyjson 0.12, fastfetch now adds JSON5 format 
+     support for configuration files (gh#fastfetch-cli/fastfetch#1907) 
+     - JSON5 is a superset of JSONC that allows unquoted keys, single 
+       quotes, multi-line strings, etc., and is fully compatible with 
+       JSONC and strict JSON.
+     - To use JSON5, simply name your config file with a .json5 
+       extension. The .jsonc extension is still supported and used 
+       as the default extension for better IDE syntax highlighting 
+       support.
+   * Fastfetch has been ported to GNU/Hurd 
+     (gh#fastfetch-cli/fastfetch#1895) 
+   * Built-in logos now honor logo.width  
+     (gh#fastfetch-cli/fastfetch#1905) 
+     - When its value is larger than the actual logo width, the 
+       logo will be padded with spaces to the right
+   * Adds Trinity DE version detection 
+     (gh#fastfetch-cli/fastfetch#1917)
+   * Adds formatted free and available disk size fields 
+     (gh#fastfetch-cli/fastfetch#1929) 
+     - `{size-free}`: free size of the disk
+     - `{size-available}`: available size of the disk
+     - See askubuntu.com for the difference between free and 
+       available size
+   * Adds x86_64 micro-architecture level detection 
+     (gh#fastfetch-cli/fastfetch#1928) 
+     - Useful when installing software that requires or is 
+       optimized for specific CPU features. E.g., CachyOS
+     - Exposed via `{march}` in custom format
+   * Adds Aarch64 micro-architecture level detection (CPU) 
+     - Supported on Linux (including Android), macOS and Windows
+     - This is not fully accurate because there are many optional 
+       features across different levels, and not all levels are 
+       detectable.
+     - Exposed via `{march}` in custom format.
+   * Adds shepherd detection support (InitSystem, Linux)
+  Bugfixes:
+   * Fixes possible default route detection failure when the route 
+     table is very large (gh#fastfetch-cli/fastfetch#1919)
+   * Fixes twin WM detection (gh#fastfetch-cli/fastfetch#1917)
+   * Various fixes for Android support 
+     - Corrects WM name for Android (WM, Android)
+     - Fixes battery temperature detection when running in ADB 
+       (Battery, Android)
+     - Adds CPU and GPU temperature detection support (CPU, Android)
+  Logos:
+     * Adds AerynOS
+
+-------------------------------------------------------------------
 Sat Aug 16 18:02:02 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to 2.50.2:
