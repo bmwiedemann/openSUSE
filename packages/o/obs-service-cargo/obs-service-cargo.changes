@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  1 13:17:24 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Switch back dependency to openssl from libressl. Otherwise, this will
+  cause it to have conflicting ssl dependencies between `cargo`
+  and itself.
+
+-------------------------------------------------------------------
 Tue Aug 05 23:50:28 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 7.1.0:

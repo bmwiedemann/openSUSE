@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-cargo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,12 +28,8 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
-%if 0%{?suse_version} > 1600
-BuildRequires:  libressl-devel
-%else
-BuildRequires:  openssl-devel
-%endif
 BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(openssl)
 # Version with fixed vendor filterer
 Requires:       cargo-vendor-filterer >= 0.5.16
 Requires:       (cargo or rustup)

@@ -1211,4 +1211,15 @@ packages. This library is fasted, easier to maintain and easier for a user to co
 </comment>
     <requestid>1297860</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>40047c615fabc2f6c968704e3c46723b</srcmd5>
+    <version>7.1.0</version>
+    <time>1756744091</time>
+    <user>anag_factory</user>
+    <comment>- Switch back dependency to openssl from libressl. Otherwise, this will
+  cause it to have conflicting ssl dependencies between `cargo`
+  and itself.
+</comment>
+    <requestid>1302222</requestid>
+  </revision>
 </revisionlist>
