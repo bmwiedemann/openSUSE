@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 30 14:18:00 UTC 2025 - Matthias Bach <marix@marix.org>
+
+- Update to 0.17.3
+  * Allow annotated parsing with a subclass of Path.
+  * Avoid printing default: None in the help section when using
+    Rich.
+  * Fix markdown formatting in --help output.
+  * Lazy-load rich_utils to reduce startup time.
+
+-------------------------------------------------------------------
 Tue Aug 19 19:33:07 UTC 2025 - Matthias Bach <marix@marix.org> - 0.16.1
 
 - Update to 0.16.1

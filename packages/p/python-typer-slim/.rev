@@ -177,4 +177,18 @@ I tested the upgrade path and this will not break anybody relying on the package
 </comment>
     <requestid>1300455</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2ffcbac3566244a055abc11ab55d2f78</srcmd5>
+    <version>0.17.3</version>
+    <time>1756739802</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.17.3
+  * Allow annotated parsing with a subclass of Path.
+  * Avoid printing default: None in the help section when using
+    Rich.
+  * Fix markdown formatting in --help output.
+  * Lazy-load rich_utils to reduce startup time.
+</comment>
+    <requestid>1302028</requestid>
+  </revision>
 </revisionlist>
