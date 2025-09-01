@@ -14,5 +14,6 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="manual">
+    <param name="replace">github.com/ulikunitz/xz=github.com/ulikunitz/xz@v0.5.14</param>
   </service>
 </services>

@@ -1,7 +1,7 @@
 #
 # spec file for package sbctl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,6 @@ Summary:        Secure Boot key manager
 License:        MIT
 Group:          System/Boot
 URL:            https://github.com/Foxboron/sbctl
-%if "%{_vendor}" == "debbuild"
-# Needed to set Maintainer in output debs
-Packager:       Jan Loeser <jan.loeser@posteo.de>
-%endif
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        %{name}-rpmlintrc

@@ -47,4 +47,13 @@
     <comment></comment>
     <requestid>1274530</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>e730ca45de3898c2138c297d88bab241</srcmd5>
+    <version>0.17</version>
+    <time>1756739923</time>
+    <user>anag_factory</user>
+    <comment>- bsc#1248949 (CVE-2025-58058):
+  Bump xz to 0.5.14</comment>
+    <requestid>1302168</requestid>
+  </revision>
 </revisionlist>
