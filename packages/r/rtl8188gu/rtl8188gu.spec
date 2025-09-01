@@ -1,7 +1,7 @@
 #
 # spec file for package rtl8188gu
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define   shortcommit     c2b79fc
 
 Name:           rtl8188gu
-Version:        6.15
+Version:        6.16
 Release:        0
 Summary:        Driver for Linux RTL8188GU
 License:        GPL-2.0-or-later

@@ -47,4 +47,13 @@
   rtl8188gu-rename-get_ra-to-rtw_get_ra-to-fix-ppc64le-build.patch, merged</comment>
     <requestid>1284189</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cf82a1bfe3c7df0b10e417f333ab3931</srcmd5>
+    <version>6.16</version>
+    <time>1756739884</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 6.16
+  - Replace from_timer() with timer_container_of() for kernel 6.16 (forwarded request 1302030 from hillwood)</comment>
+    <requestid>1302091</requestid>
+  </revision>
 </revisionlist>
