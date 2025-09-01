@@ -1,8 +1,8 @@
-Index: vim-9.1.0330/runtime/filetype.vim
+Index: vim-9.1.1706/runtime/filetype.vim
 ===================================================================
---- vim-9.1.0330.orig/runtime/filetype.vim
-+++ vim-9.1.0330/runtime/filetype.vim
-@@ -2313,6 +2313,10 @@ au BufNewFile,BufRead *.stp			setf stp
+--- vim-9.1.1706.orig/runtime/filetype.vim
++++ vim-9.1.1706/runtime/filetype.vim
+@@ -2569,6 +2569,10 @@ au BufNewFile,BufRead *.stp			setf stp
  " Standard ML
  au BufNewFile,BufRead *.sml			setf sml
  
@@ -13,10 +13,10 @@ Index: vim-9.1.0330/runtime/filetype.vim
  " Sratus VOS command macro
  au BufNewFile,BufRead *.cm			setf voscm
  
-Index: vim-9.1.0330/runtime/syntax/ftl.vim
+Index: vim-9.1.1706/runtime/syntax/ftl.vim
 ===================================================================
 --- /dev/null
-+++ vim-9.1.0330/runtime/syntax/ftl.vim
++++ vim-9.1.1706/runtime/syntax/ftl.vim
 @@ -0,0 +1,36 @@
 +" Vim syntax file
 +" Language:	FreeMarker Template Language (FTL)

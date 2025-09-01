@@ -1,8 +1,8 @@
-Index: vim-9.1.0908/src/vimtutor
+Index: vim-9.1.1706/src/vimtutor
 ===================================================================
---- vim-9.1.0908.orig/src/vimtutor
-+++ vim-9.1.0908/src/vimtutor
-@@ -158,9 +158,8 @@ done
+--- vim-9.1.1706.orig/src/vimtutor
++++ vim-9.1.1706/src/vimtutor
+@@ -159,9 +159,8 @@ done
  
  
  # We need a temp file for the copy.  First try using a standard command.

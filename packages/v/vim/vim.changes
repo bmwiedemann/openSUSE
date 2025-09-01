@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Fri Aug 29 11:16:52 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.1706
+ + refreshed patches:
+  * vim-7.3-filetype_changes.patch
+  * vim-7.3-filetype_ftl.patch
+  * vim-7.3-filetype_spec.patch
+  * vim-7.3-gvimrc_fontset.patch
+  * vim-7.3-mktemp_tutor.patch
+  * vim-7.3-name_vimrc.patch
+  * vim-7.3-sh_is_bash.patch
+  * vim-7.4-disable_lang_no.patch
+  * vim-7.4-filetype_apparmor.patch
+  * vim-7.4-filetype_mine.patch
+  * vim-8.0.1568-defaults.patch
+  * vim-8.2.2411-globalvimrc.patch
+  * vim-9.1.1134-revert-putty-terminal-colors.patch
+  * vim73-no-static-libpython.patch
+ + changes:
+ * patch 9.1.1706: MS-Windows: Compile error when building with if_ruby
+ * patch 9.1.1705: time.h include is available on all platforms
+ * runtime(tutor): Add a section on text objects and special registers to Chapter 2
+ * patch 9.1.1704: Cannot determine non-X11/Wayland clipmethods
+ * patch 9.1.1703: Cannot react to terminal OSC responses
+ * runtime(vim): update vim syntax generator for patch v9.1.1692
+ * patch 9.1.1701: tests: failure on CI with GUI and ASAN in test_edit.res
+ * patch 9.1.1700: Multiline ignorecase specific pattern does not match with 'ignorecase'
+ * patch 9.1.1699: Fuzzy completion disabled for 'findfunc' and customlist
+ * runtime(debversions): Move bullseye, focal, and oracular to "unsupported"
+ * patch 9.1.1698: Some error numbers are not documented
+ * runtime(vimcomplete): Try catch completion of `pack_jobs->add({`
+ * patch 9.1.1697: tests: no test for aclocal.m4
+ * runtime(indent-tests): Use silent write of resulting files
+ * translation: Remove outdated rule for nl.po
+ * patch 9.1.1696: tabnr from getwininfo() for popup windows is always 0
+ * runtime(tutor): remove duplicate tutor1.zh
+ * runtime(tutor): fix language selection for zh
+ * patch 9.1.1695: Need more Vim script specific tests
+ * patch 9.1.1694: filetype: Buck eXtension Lang files are not recognized
+ * patch 9.1.1693: tests: test_filetype fails in shadow dir
+ * patch 9.1.1692: global_functions are not constant
+ * patch 9.1.1691: over-allocation in ga_concat_strings()
+ * patch 9.1.1690: Missing recursion guard in dos/unix_expandpath()
+ * patch 9.1.1689: CmdlineChanged not triggered by <Del>
+ * patch 9.1.1688: potential buffer overrun in bufwrite.c
+ * patch 9.1.1687: filetype: autoconf filetype not always correct
+ * runtime(lf): update syntax to support lf version r37
+ * patch 9.1.1686: if_ruby: unknown pragma when not using gcc
+ * patch 9.1.1685: Missing changes from PR 18068
+ * patch 9.1.1684: min()/max() does not handle float data types
+ * patch 9.1.1683: xxd: Avoid null dereference in autoskip colorless
+ * runtime(python): support 'type's soft keyword form
+ * patch 9.1.1682: tests: Test_wildtrigger_update_screen() creates unused mapping
+ * patch 9.1.1681: tests: no test for actually moving cursor with 'acl'
+ * runtime(termdebug): Remove load guard
+ * runtime(doc): update termguicolors default description
+ * patch 9.1.1680: MS-Windows: possible buffer-under run in if_cscope
+ * patch 9.1.1679: unclear what key causes CmdlineLeave autocommand
+ * runtime(netrw): fix :Explore command in terminal
+ * patch 9.1.1678: Amiga: cannot handle large undo files
+ * patch 9.1.1677: wrong ifdef in message.c
+ * patch 9.1.1676: completion: long line shown twice
+ * runtime(sh): add syntax highlighting support for ${ cmd;} and ${|cmd;}
+ * patch 9.1.1675: MS-Windows: Makefiles can be refactored
+ * patch 9.1.1674: Patch v9.1.1666 causes problems on kitty
+ * patch 9.1.1673: if_python: still support for Python 1
+ * patch 9.1.1672: completion: cannot add timeouts for 'cpt' sources
+ * runtime(fstab): Added mtab support to fstab syntax.
+ * patch 9.1.1671: configure: missing comment about AC_CONFIG_SRCDIR
+ * patch 9.1.1670: completion: autocomplete breaks second completion
+ * patch 9.1.1669: Vim script: no support for URI de-/encoding
+ * patch 9.1.1668: items() does not work for Blobs
+ * patch 9.1.1667: Another outdated comment in eval.c
+ * patch 9.1.1666: no support for terminal primary device attributes
+ * patch 9.1.1665: Outdated comment in eval.c
+ * runtime(doc): Fix missing heading in remote.txt
+ * patch 9.1.1664: configure: can use any autoconf
+ * runtime(doc): Tweak documentation style
+ * runtime(colors): Update colorschemes
+ * patch 9.1.1663: xxd: 9.1.0023 introduced additional dependency
+ * runtime(systemverilog): Add syntax highlighting for 1800-2023 block strings
+ * patch 9.1.1662: Issues with proto files: missing or inconsistent prototypes.
+ * patch 9.1.1661: Coverity finds a few issues in clientserver.c
+ * patch 9.1.1660: popups without decoration are positioned wrong at bottom of screen
+ * patch 9.1.1659: configure: uses AC_INIT without args
+ * patch 9.1.1658: Missing includes for Wayland headers
+ * patch 9.1.1657: Autocompletion adds delay
+ * runtime(doc): correct another problem in :h items()
+ * patch 9.1.1656: MS-Windows: Patch v9.1.1652 breaks clipboard
+ * patch 9.1.1655: Build-failure in do_mouse()
+ * patch 9.1.1654: build failure when FEAT_DIFF is not defined
+ * patch 9.1.1653: Coverity complains about Null pointer dereference
+ * translation(it): Update Italian translation
+ * translation(it): update Italian manpage
+ * patch 9.1.1652: cannot determine non-X11/Wayland clipmethods
+ * patch 9.1.1651: Cannot use clientserver over socket
+ * patch 9.1.1650: popup: window may not properly resize
+ * patch 9.1.1649: attrs allocation and fuzzy growarray could leak
+ * runtime(python): optimize pythonSync pattern
+ * patch 9.1.1648: MS-Windows: some style issues with patch v9.1.1646
+ * runtime(doc): fix style and clarify items() function for String type
+ * patch 9.1.1647: filetype: Cangjie files are not recognized
+ * patch 9.1.1646: MS-Windows: completion cannot handle implicit drive letters
+ * patch 9.1.1645: fuzzy.c can be further improved
+ * patch 9.1.1644: configure: doesn't separate CPPFLAGS and CFLAGS
+ * runtime(doc): Update help for the items() function
+ * patch 9.1.1643: tabpanel: mouse code too complicated
+ * patch 9.1.1642: configure: wrong C99 feature test
+ * patch 9.1.1641: a few compiler warnings are output
+ * patch 9.1.1640: Unicode has deprecated some code-points
+ * patch 9.1.1639: completion: popup may be misplaced
+ * patch 9.1.1638: completion: not possible to delay the autcompletion
+ * runtime(vim): set 'comments' based on script type (legacy/Vim9)
+ * runtime(vim9): Disable shellslash for shellescape() in Open()
+ * patch 9.1.1637: FEAT_DIFF used in diff.pro
+ * translation(sr): Update Serbian messages translation
+ * runtime(diff): fix mixed translations in zh_CN
+ * patch 9.1.1636: style issues
+ * patch 9.1.1635: tabpanel: cannot drag inactive tabs
+ * patch 9.1.1634: Clipboard code can be improved
+ * patch 9.1.1633: Search pattern shown incorrectly with negative offset
+ * patch 9.1.1632: memory leak in fuzzy.c
+ * patch 9.1.1631: proto files are outdated
+ * patch 9.1.1630: tests: fuzzy bufname completion test doesn't match successfully
+
+-------------------------------------------------------------------
 Thu Aug 14 10:22:44 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.1.1629:

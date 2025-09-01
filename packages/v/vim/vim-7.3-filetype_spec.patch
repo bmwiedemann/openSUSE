@@ -1,8 +1,8 @@
-Index: vim-9.1.0151/runtime/filetype.vim
+Index: vim-9.1.1706/runtime/filetype.vim
 ===================================================================
---- vim-9.1.0151.orig/runtime/filetype.vim
-+++ vim-9.1.0151/runtime/filetype.vim
-@@ -2122,7 +2122,7 @@ au BufRead,BufNewFile *.sol			setf solid
+--- vim-9.1.1706.orig/runtime/filetype.vim
++++ vim-9.1.1706/runtime/filetype.vim
+@@ -2495,7 +2495,7 @@ au BufRead,BufNewFile *.sol			setf solid
  au BufNewFile,BufRead *.rq,*.sparql		setf sparql
  
  " Spec (Linux RPM)
@@ -11,11 +11,11 @@ Index: vim-9.1.0151/runtime/filetype.vim
  
  " Speedup (AspenTech plant simulator)
  au BufNewFile,BufRead *.speedup,*.spdata,*.spd	setf spup
-Index: vim-9.1.0151/runtime/syntax/spec.vim
+Index: vim-9.1.1706/runtime/syntax/spec.vim
 ===================================================================
---- vim-9.1.0151.orig/runtime/syntax/spec.vim
-+++ vim-9.1.0151/runtime/syntax/spec.vim
-@@ -102,7 +102,7 @@ syn case ignore
+--- vim-9.1.1706.orig/runtime/syntax/spec.vim
++++ vim-9.1.1706/runtime/syntax/spec.vim
+@@ -104,7 +104,7 @@ syn case ignore
  "%% PreAmble Section %%
  "Copyright and Serial were deprecated by License and Epoch
  syn region specPreAmbleDeprecated oneline matchgroup=specError start='^\(Copyright\|Serial\)' end='$' contains=specEmail,specURL,specURLMacro,specLicense,specColon,specVariables,specSpecialChar,specMacroIdentifier

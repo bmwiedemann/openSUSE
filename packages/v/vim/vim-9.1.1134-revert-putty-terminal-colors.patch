@@ -12,10 +12,10 @@ This reverts commit 2abec431e1ab5f4f6e21c2bb490241732622a8c5.
  src/testdir/test_cmdline.vim |  2 --
  4 files changed, 7 insertions(+), 20 deletions(-)
 
-Index: vim-9.1.1176/runtime/defaults.vim
+Index: vim-9.1.1706/runtime/defaults.vim
 ===================================================================
---- vim-9.1.1176.orig/runtime/defaults.vim
-+++ vim-9.1.1176/runtime/defaults.vim
+--- vim-9.1.1706.orig/runtime/defaults.vim
++++ vim-9.1.1706/runtime/defaults.vim
 @@ -112,11 +112,6 @@ if 1
        \ |   execute "normal! g`\""
        \ | endif
@@ -28,11 +28,11 @@ Index: vim-9.1.1176/runtime/defaults.vim
    augroup END
  
    " Quite a few people accidentally type "q:" instead of ":q" and get confused
-Index: vim-9.1.1176/runtime/doc/autocmd.txt
+Index: vim-9.1.1706/runtime/doc/autocmd.txt
 ===================================================================
---- vim-9.1.1176.orig/runtime/doc/autocmd.txt
-+++ vim-9.1.1176/runtime/doc/autocmd.txt
-@@ -1260,19 +1260,10 @@ TerminalWinOpen			Just after a terminal
+--- vim-9.1.1706.orig/runtime/doc/autocmd.txt
++++ vim-9.1.1706/runtime/doc/autocmd.txt
+@@ -1291,19 +1291,10 @@ TerminalWinOpen			Just after a terminal
  TermResponse			After the response to |t_RV| is received from
  				the terminal.  The value of |v:termresponse|
  				can be used to do things depending on the
@@ -55,12 +55,12 @@ Index: vim-9.1.1176/runtime/doc/autocmd.txt
 +				anything else that takes time is involved.
  							*TermResponseAll*
  TermResponseAll			After the response to |t_RV|, |t_RC|, |t_RS|,
- 				|t_RB|, |t_RF|, or |t_u7| are received from
-Index: vim-9.1.1176/src/testdir/test_cmdline.vim
+ 				|t_u7| or any OSC command are received from
+Index: vim-9.1.1706/src/testdir/test_cmdline.vim
 ===================================================================
---- vim-9.1.1176.orig/src/testdir/test_cmdline.vim
-+++ vim-9.1.1176/src/testdir/test_cmdline.vim
-@@ -1843,8 +1843,6 @@ func Test_verbose_option()
+--- vim-9.1.1706.orig/src/testdir/test_cmdline.vim
++++ vim-9.1.1706/src/testdir/test_cmdline.vim
+@@ -1899,8 +1899,6 @@ func Test_verbose_option()
    CheckScreendump
  
    let lines =<< trim [SCRIPT]

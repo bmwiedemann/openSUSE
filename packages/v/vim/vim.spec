@@ -18,7 +18,7 @@
 
 
 %define pkg_version 9.1
-%define patchlevel 1629
+%define patchlevel 1706
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim91
 %define site_runtimepath %{_datadir}/vim/site
@@ -76,7 +76,7 @@ Patch12:        %{name}73-no-static-libpython.patch
 Patch13:        %{name}-8.0.1568-defaults.patch
 Patch14:        %{name}-8.2.2411-globalvimrc.patch
 Patch15:        %{name}-9.1.1134-revert-putty-terminal-colors.patch
-BuildRequires:  autoconf
+BuildRequires:  autoconf >= 2.71
 BuildRequires:  db-devel
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
@@ -277,7 +277,7 @@ export NOGUI_OPTIONS="\
     "
 
 pushd src
-autoconf
+make autoconf
 popd
 
 # build smaller vim

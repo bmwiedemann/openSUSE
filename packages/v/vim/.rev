@@ -8103,4 +8103,41 @@ always built-in because vim has direct perl dependencies anyway.
  * patch 9.1.1615: diff format erroneously detected</comment>
     <requestid>1299374</requestid>
   </revision>
+  <revision rev="389" vrev="1">
+    <srcmd5>0dfe76ff588464e8e47e3905c26c768d</srcmd5>
+    <version>9.1.1706</version>
+    <time>1756739814</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.1.1706
+ + refreshed patches:
+  * vim-7.3-filetype_changes.patch
+  * vim-7.3-filetype_ftl.patch
+  * vim-7.3-filetype_spec.patch
+  * vim-7.3-gvimrc_fontset.patch
+  * vim-7.3-mktemp_tutor.patch
+  * vim-7.3-name_vimrc.patch
+  * vim-7.3-sh_is_bash.patch
+  * vim-7.4-disable_lang_no.patch
+  * vim-7.4-filetype_apparmor.patch
+  * vim-7.4-filetype_mine.patch
+  * vim-8.0.1568-defaults.patch
+  * vim-8.2.2411-globalvimrc.patch
+  * vim-9.1.1134-revert-putty-terminal-colors.patch
+  * vim73-no-static-libpython.patch
+ + changes:
+ * patch 9.1.1706: MS-Windows: Compile error when building with if_ruby
+ * patch 9.1.1705: time.h include is available on all platforms
+ * runtime(tutor): Add a section on text objects and special registers to Chapter 2
+ * patch 9.1.1704: Cannot determine non-X11/Wayland clipmethods
+ * patch 9.1.1703: Cannot react to terminal OSC responses
+ * runtime(vim): update vim syntax generator for patch v9.1.1692
+ * patch 9.1.1701: tests: failure on CI with GUI and ASAN in test_edit.res
+ * patch 9.1.1700: Multiline ignorecase specific pattern does not match with 'ignorecase'
+ * patch 9.1.1699: Fuzzy completion disabled for 'findfunc' and customlist
+ * runtime(debversions): Move bullseye, focal, and oracular to &quot;unsupported&quot;
+ * patch 9.1.1698: Some error numbers are not documented
+ * runtime(vimcomplete): Try catch completion of `pack_jobs-&gt;add({`
+ * patch 9.1.1697: tests: no test for aclocal.m4</comment>
+    <requestid>1301941</requestid>
+  </revision>
 </revisionlist>

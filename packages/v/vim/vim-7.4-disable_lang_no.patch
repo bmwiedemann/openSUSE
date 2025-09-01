@@ -1,8 +1,8 @@
-Index: vim-8.2.2411/src/po/Make_all.mak
+Index: vim-9.1.1706/src/po/Make_all.mak
 ===================================================================
---- vim-8.2.2411.orig/src/po/Make_all.mak
-+++ vim-8.2.2411/src/po/Make_all.mak
-@@ -24,7 +24,6 @@ LANGUAGES = \
+--- vim-9.1.1706.orig/src/po/Make_all.mak
++++ vim-9.1.1706/src/po/Make_all.mak
+@@ -26,7 +26,6 @@ LANGUAGES = \
  		lv \
  		nb \
  		nl \
@@ -10,7 +10,7 @@ Index: vim-8.2.2411/src/po/Make_all.mak
  		pl \
  		pl.UTF-8 \
  		pl.cp1250 \
-@@ -109,7 +108,6 @@ MOFILES = \
+@@ -114,7 +113,6 @@ MOFILES = \
  		lv.mo \
  		nb.mo \
  		nl.mo \
@@ -18,7 +18,7 @@ Index: vim-8.2.2411/src/po/Make_all.mak
  		pl.mo \
  		pt_BR.mo \
  		ru.mo \
-@@ -159,7 +157,6 @@ CHECKFILES = \
+@@ -167,7 +165,6 @@ CHECKFILES = \
  		lv.ck \
  		nb.ck \
  		nl.ck \

@@ -1,8 +1,8 @@
-Index: vim-8.2.2411/runtime/gvimrc_example.vim
+Index: vim-9.1.1706/runtime/gvimrc_example.vim
 ===================================================================
---- vim-8.2.2411.orig/runtime/gvimrc_example.vim
-+++ vim-8.2.2411/runtime/gvimrc_example.vim
-@@ -15,9 +15,6 @@
+--- vim-9.1.1706.orig/runtime/gvimrc_example.vim
++++ vim-9.1.1706/runtime/gvimrc_example.vim
+@@ -16,9 +16,6 @@
  " Make external commands work through a pipe instead of a pseudo-tty
  "set noguipty
  
@@ -12,7 +12,7 @@ Index: vim-8.2.2411/runtime/gvimrc_example.vim
  set ch=2		" Make command line two lines high
  
  set mousehide		" Hide the mouse when typing text
-@@ -53,3 +50,29 @@ if version >= 500
+@@ -54,3 +51,29 @@ if version >= 500
    highlight Special gui=NONE guibg=grey95
  
  endif
