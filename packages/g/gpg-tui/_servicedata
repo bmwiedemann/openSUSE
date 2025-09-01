@@ -1,0 +1,6 @@
+<servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/orhun/gpg-tui.git</param>
+    <param name="changesrevision">ca8df3d1738df681a6fca11b5e55da73641a2dad</param>
+  </service>
+</servicedata>
