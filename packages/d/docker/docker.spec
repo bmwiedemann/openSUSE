@@ -26,12 +26,14 @@
 %if 0%{?is_opensuse} == 0 && 0%{?suse_version} < 1600
 # SUSEConnect support ("SUSE secrets") only makes sense for SLES hosts.
 %bcond_without  suseconnect
-# There is currently a known bug between buildx and SUSE secrets, so we don't
-# package docker-buildx for SLES<16. bsc#1233819
-%bcond_with     buildx
 %else
 %bcond_with     suseconnect
+%endif
+# BuildKit (docker-buildx) is only provided for SLE >= 15 and openSUSE.
+%if 0%{?is_opensuse} || 0%{?suse_version} >= 1500
 %bcond_without  buildx
+%else
+%bcond_with     buildx
 %endif
 
 # The flavour is defined with a macro to try to keep docker and docker-stable
@@ -99,6 +101,8 @@ Source900:      docker-integration.sh
 Patch100:       0001-SECRETS-SUSE-always-clear-our-internal-secrets.patch
 Patch101:       0002-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
 Patch102:       0003-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+Patch901:       cli-0001-openSUSE-point-users-to-docker-buildx-package.patch
+Patch902:       cli-0002-SECRETS-SUSE-default-to-DOCKER_BUILDKIT-0-for-docker.patch
 # UPSTREAM: Revert of upstream patch to keep SLE-12 build working.
 Patch200:       0004-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
 # UPSTREAM: Backport of <https://github.com/moby/moby/pull/41954>.
@@ -330,6 +334,13 @@ Fish command line completion support for %{name}.
 %define cli_builddir %{_builddir}/docker-cli-%{docker_version}
 %setup -q -T -b 1 -n docker-cli-%{docker_version}
 [ "%{cli_builddir}" = "$PWD" ]
+%if %{with buildx}
+%patch -P901 -p1
+%if %{with suseconnect}
+# PATCH-SUSE: Secrets patch for docker-build.
+%patch -P902 -p1
+%endif
+%endif
 
 %if %{with buildx}
 # docker-buildx

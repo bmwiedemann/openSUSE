@@ -1,0 +1,44 @@
+From bc7d40e1e670f81b252a8c8d62a4aecc936ff339 Mon Sep 17 00:00:00 2001
+From: Aleksa Sarai <cyphar@cyphar.com>
+Date: Mon, 1 Sep 2025 16:05:24 +1000
+Subject: [PATCH 1/2] openSUSE: point users to docker-buildx package
+
+The reference to a "buildx component" is a little confusing in the
+context of (open)SUSE packaging and might confuse users, as they just
+need to install the "docker-buildx" package.
+
+Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
+---
+ cmd/docker/builder.go | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/cmd/docker/builder.go b/cmd/docker/builder.go
+index cccae304fe5e..cc597f0fd5a7 100644
+--- a/cmd/docker/builder.go
++++ b/cmd/docker/builder.go
+@@ -19,7 +19,7 @@
+ const (
+ 	builderDefaultPlugin = "buildx"
+ 	buildxMissingWarning = `DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+-            Install the buildx component to build images with BuildKit:
++            Install the docker-buildx package to build images with BuildKit:
+             https://docs.docker.com/go/buildx/`
+ 
+ 	buildkitDisabledWarning = `DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+@@ -27,11 +27,11 @@
+             environment-variable.`
+ 
+ 	buildxMissingError = `ERROR: BuildKit is enabled but the buildx component is missing or broken.
+-       Install the buildx component to build images with BuildKit:
++       Install the docker-buildx package to build images with BuildKit:
+        https://docs.docker.com/go/buildx/`
+ 
+ 	bakeMissingError = `ERROR: docker bake requires the buildx component but it is missing or broken.
+-       Install the buildx component to use bake:
++       Install the docker-buildx package to use bake:
+        https://docs.docker.com/go/buildx/`
+ )
+ 
+-- 
+2.51.0
+
