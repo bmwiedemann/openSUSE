@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Tue Aug 26 09:25:56 UTC 2025 - Robert Munteanu <rombert@apache.org>
+
+- Fix for bsc#1248702
+- Update to version 1.1.4:
+  * make linter happy
+  * remove tailscale integration since dependency used is deprecated
+  * chore(deps): upgrade dependencies
+  * feat: add fwmark support
+  * Bump golang.org/x/net in the go_modules group across 1 directory
+  * feat(ping_exporter): add dns resolution timeout option
+  * Refactor token validation
+  * Update lint.yml
+  * Update lint.yml
+  * Update test.yml
+  * Update lint.yml
+  * Bump golang.org/x/net in the go_modules group across 1 directory
+  * go 1.24
+  * upgrade to go 1.23, update dependencies
+  * Bump golang.org/x/crypto from 0.21.0 to 0.31.0 in the go_modules group
+  * feat: add nodeSelector, affinity, and tolerations to test-connection manifest
+  * add metric token
+  * Tweak threshold as it is too sensitive
+  * Add Prometheus alerting rules
+  * Add serviceMonitor
+  * Fix "size" to "payload-size" in README.md
+  * Update labels and Descs on config update
+  * Bump golang.org/x/net in the go_modules group across 1 directory
+  * bump version
+  * Update docker_tag.yml
+  * Update docker_latest.yml
+  * bump version
+  * Refactor ping collector to support updates of target labels
+  * Fix call to logger
+  * Fix edge cases if big files are created and truncated.
+  * Make configuration serializable
+  * update github actions
+  * upgrade dependencies, go 1.22
+  * Update main.go
+  * Implement hot reloading of configuration file for changed list of targets
+  * Bump google.golang.org/protobuf from 1.28.1 to 1.33.0
+  * Add package to index for version 1.1.0
+  * Add configmap checksum to deployment annotations
+  * Bump the go_modules group across 1 directories with 1 update
+  * Create dependabot.yml
+  * Bump app version in Helm chart
+  * Bump golang.org/x/crypto from 0.14.0 to 0.17.0
+  * Bump golang.org/x/net from 0.7.0 to 0.17.0
+  * go 1.21
+  * Update values.yaml
+  * update helm chart package
+  * Update README.md and replace master branch
+  * Update README.md
+  * move tailscale to own go file, will be refactored into generic service discovery module in the future
+  * go module update
+  * go mod tidy
+  * refactoring to get rid of the type assertions
+  * code cleanup (remove bool parameters)
+  * Update lint.yml
+  * Update test.yml
+  * Update release.yml
+  * add missing flag2config lines
+  * Add option to disable IPv4 dns resolution
+  * Update docker_latest.yml
+  * Create CODEOWNERS
+  * fix CI
+  * bump golang.org/x/net from 0.5.0 to 0.7.0
+  * auto discover targets using tailscale API
+  * add SPDX-License-Identifier
+  * upgrade to go 1.20
+  * Update README.md
+  * fix goreleaser (empty_dir was deprecated)
+  * update goreleaser github action
+  * use new golangci-lint version
+  * update dependencies, use go 1.19
+  * added web server HTTPS support
+  * Update README.md
+  * helm: add strategy and podLabels
+  * implement custom labels for targets
+  * fix helm chart default imageTag
+  * remove test results
+  * prepare merge
+  * update `Test` action go-version to 1.17
+  * increase lint action `GO_VERSION` to accomodate the new 1.17
+  * Fix description of `metrics.rttunit` flag
+  * remove deprecated `todo` from `target.go`
+  * minor update to `README.md`
+  * implemented disableIPv6 option
+  * Minor cleanup in functions/test
+  * update .gitignore
+  * add `options.disableIPv6`, refactor target functions
+  * Update dependencies and golang version
+  * Update `Dockerfile` to build with golang 1.17.5
+  * Update `README.md` with helm chart documentation
+  * build chart for distribution via githubusercontent
+  * Add helm chart `ping-exporter` for K8S deployments
+  * Bump version to 1.0.0
+  * Change/remove deprecated metrics/units [#22/#58]
+  * Fix missed reference to prometheus/common/log [#60]
+  * feat: Build with CAP_NET_RAW by default to simplify rootless use
+  * Fix mistaken DNS resolution error message
+  * Split CMD and ENTRYPOINT
+  * Add docker build for ARM architectures
+  * document required capabilities for linux, closes #23
+  * dep upgrade
+  * Update docker_tag.yml
+  * Update docker_latest.yml
+  * move docker build to github actions
+  * move to logrus since prometheus log package is deprecated
+  * remove duplicate unit from metric definition
+  * Update README.md
+  * release: support various architectures and systemd versions
+  * Update main.go
+  * ci: improve Github actions
+  * metrics: allow for best practices
+  * cleanup: satisfy linter
+  * cleanup: remove Gopkg configuration
+  * Fix defaults when using config file
+  * fix goreleaser
+  * bump version
+  * add releae workflow
+  * Update test.yml
+  * Update README.md
+  * github workflows
+
+-------------------------------------------------------------------
 Tue Feb 27 11:12:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

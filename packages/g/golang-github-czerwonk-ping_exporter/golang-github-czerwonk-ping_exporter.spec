@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-czerwonk-ping_exporter
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{go_nostrip}
 
 Name:           golang-github-czerwonk-ping_exporter
-Version:        0.4.5
+Version:        1.1.4
 Release:        0
 Summary:        Prometheus exporter for ICMP echo requests
 License:        MIT

@@ -5,7 +5,7 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">0.4.5</param>
+    <param name="revision">1.1.4</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="recompress" mode="disabled">
@@ -16,6 +16,6 @@
     <param name="basename">golang-github-czerwonk-ping_exporter</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">golang-github-czerwonk-ping_exporter-0.4.5.tar.gz</param>
+    <param name="archive">golang-github-czerwonk-ping_exporter-1.1.4.tar.gz</param>
   </service>
 </services>
