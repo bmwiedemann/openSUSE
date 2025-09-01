@@ -96,6 +96,8 @@ rm %{buildroot}%{_libdir}/share/orthanc/plugins/*.so
 
 cp %{SOURCE11} %{buildroot}%{_docdir}/orthanc/.
 
+rm %{buildroot}/usr/orthanc.pyi
+
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
@@ -110,6 +112,5 @@ cp %{SOURCE11} %{buildroot}%{_docdir}/orthanc/.
 %dir %{_datadir}/orthanc
 %dir %{_datadir}/orthanc/plugins
 %{_datadir}/orthanc/plugins/*.so*
-/usr/orthanc.pyi
 
 %changelog

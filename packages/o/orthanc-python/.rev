@@ -87,4 +87,13 @@
     <comment>version update (forwarded request 1300101 from DocB)</comment>
     <requestid>1300261</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>959e7dafbce63efe145759f79510d6be</srcmd5>
+    <version>6.0</version>
+    <time>1756739857</time>
+    <user>anag_factory</user>
+    <comment>- remove /usr/orthanc.pyi - unneeded
+</comment>
+    <requestid>1302009</requestid>
+  </revision>
 </revisionlist>
