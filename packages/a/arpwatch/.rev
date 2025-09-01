@@ -331,4 +331,12 @@
     <comment>- arpwatch-gcc14.patch: fixed gcc14 issue (forwarded request 1189632 from msmeissn)</comment>
     <requestid>1190277</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a94b9ec6c1fe1095295ca03d9b7cd3ab</srcmd5>
+    <version>3.8</version>
+    <time>1756739925</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1302187</requestid>
+  </revision>
 </revisionlist>

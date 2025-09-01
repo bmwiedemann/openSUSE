@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 31 14:53:38 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 3.8:
+  * update-ethercodes.sh: exit when curls fails.
+- Update to version 3.7:
+  * Complete switch to python massagevendor.
+
+-------------------------------------------------------------------
 Thu Jul 25 15:14:28 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - arpwatch-gcc14.patch: fixed gcc14 issue
@@ -54,13 +62,13 @@ Mon Jan 10 16:16:16 UTC 2022 - olaf@aepfle.de
 -------------------------------------------------------------------
 Fri Sep  3 13:31:51 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
-- Remove accidentially checked in manpage (arpwatch.8) 
+- Remove accidentially checked in manpage (arpwatch.8)
 
 -------------------------------------------------------------------
 Fri Sep  3 07:37:27 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
-- Update to version 3.1 (bsc#1185939) 
-  * Dropped 
+- Update to version 3.1 (bsc#1185939)
+  * Dropped
     + arpwatch-2.1a11-emailaddr.dif, this is now supported upstream.
       Incompatible change: Flags change from -e and -s to -w and -W
     + arpwatch-2.1a11-hname-overflow.dif: included upstream
@@ -97,7 +105,7 @@ Tue Jun 29 07:10:40 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 -------------------------------------------------------------------
 Tue Feb  9 08:36:27 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
-- Fix arp2ethers script (bsc#1181936). Added arp2ethers.patch to 
+- Fix arp2ethers script (bsc#1181936). Added arp2ethers.patch to
   inline the awk fragments. I tried hard to do this in a script
   but no matter if sed, awk or perl is used something always breaks
 
@@ -209,7 +217,7 @@ Sat Sep 17 12:17:44 UTC 2011 - jengelh@medozas.de
 -------------------------------------------------------------------
 Fri Nov 27 13:33:41 UTC 2009 - mseben@novell.com
 
-- added ARPDIR to build section in spec file, to fix error message 
+- added ARPDIR to build section in spec file, to fix error message
   in logs
 
 -------------------------------------------------------------------
@@ -318,7 +326,7 @@ Wed Sep 18 09:15:17 MEST 2002 - draht@suse.de
 -------------------------------------------------------------------
 Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
 
-- removed bogus self-provides 
+- removed bogus self-provides
 
 -------------------------------------------------------------------
 Thu Aug 22 14:12:22 CEST 2002 - draht@suse.de
@@ -353,7 +361,7 @@ Mon Oct 15 17:26:40 MEST 2001 - draht@suse.de
 -------------------------------------------------------------------
 Wed Aug  8 15:33:50 CEST 2001 - sgf@suse.de
 
-- removed libpcapn from neededforbuild and added libpcap 
+- removed libpcapn from neededforbuild and added libpcap
 
 -------------------------------------------------------------------
 Thu Jan 11 02:29:47 MET 2001 - draht@suse.de
@@ -368,16 +376,16 @@ Tue Aug  8 20:46:11 CEST 2000 - olh@suse.de
 -------------------------------------------------------------------
 Thu Jun  1 09:47:41 CEST 2000 - kukuk@suse.de
 
-- Use doc macro 
+- Use doc macro
 
 -------------------------------------------------------------------
 Fri Feb 18 14:09:29 CET 2000 - dipa@suse.de
 
 - Changed path for manuals to /usr/share/man and /usr/lib/arpwatch
   to /var/lib/arpwatch for arp.dat and /usr/share/arpwatch for
-  ethercodes.dat 
+  ethercodes.dat
 
--------------------------------------------------------------------                                 
+-------------------------------------------------------------------
 Fri Sep 17 11:28:09 MEST 1999 - kettner@suse.de
 
 - Reinserted old # Commandline: line.
