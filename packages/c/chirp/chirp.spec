@@ -19,7 +19,7 @@
 
 %define pythons python3
 Name:           chirp
-Version:        20250822
+Version:        20250829
 Release:        0
 Summary:        Tool for programming amateur radio sets
 License:        GPL-3.0-only
@@ -40,12 +40,13 @@ Requires:       python3-requests
 Requires:       python3-suds
 Requires:       python3-wxPython
 Requires:       python3-yattag
+Recommends:     python3-ipython
+BuildArch:      noarch
 %if 0%{?suse_version} > 1600
 Requires:       python3-lark
 %else
 Requires:       python3-lark-parser
 %endif
-BuildArch:      noarch
 
 %description
 CHIRP is a free, open-source tool for programming your amateur radio. It
