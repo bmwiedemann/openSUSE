@@ -1,7 +1,7 @@
 #
 # spec file for package texlive
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -186,7 +186,7 @@ BuildRequires:  unzip
 BuildRequires:  xaw3d-devel
 BuildRequires:  xz
 BuildRequires:  zip
-%if 0%{?suse_version} > 1550 && 0%{is_opensuse}
+%if 0%{?suse_version} > 1550 && 0%{?is_opensuse}
 BuildRequires:  zlib-ng-compat-devel
 %else
 BuildRequires:  zlib-devel

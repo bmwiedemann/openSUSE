@@ -1277,4 +1277,13 @@
     <comment>- Avoid embedding randomness into rpm headers (boo#1237231)</comment>
     <requestid>1286253</requestid>
   </revision>
+  <revision rev="106" vrev="109">
+    <srcmd5>2b05bedab29aba164a59efd7eb1fabea</srcmd5>
+    <version>unknown</version>
+    <time>1756739811</time>
+    <user>anag_factory</user>
+    <comment>- Allow for %is_opensuse to be unset, following up to
+  https://src.suse.de/products/SLFO/pulls/204 (bsc#1248487). (forwarded request 1300954 from gleidi)</comment>
+    <requestid>1302150</requestid>
+  </revision>
 </revisionlist>
