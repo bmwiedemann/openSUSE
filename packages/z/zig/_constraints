@@ -7,12 +7,9 @@
 <constraints>
   <hardware>
     <jobs>6</jobs>
-    <physicalmemory>
-      <size unit="G">16</size>
-    </physicalmemory>
-    <disk>
-      <size unit="G">35</size>
-    </disk>
+    <memory>
+      <size unit="G">8</size>
+    </memory>
   </hardware>
   <overwrite>
     <!-- 
@@ -22,7 +19,6 @@
     <conditions>
       <arch>ppc</arch>
       <arch>s390</arch>
-      <arch>riscv64</arch>
     </conditions>
     <hardware>
       <disk>

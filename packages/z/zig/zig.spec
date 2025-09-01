@@ -1,7 +1,7 @@
 #
 # spec file for package zig
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %bcond_without  test
 
 Name:           zig
-Version:        0.13.0
+Version:        0.15.1
 Release:        0
 Summary:        Compiler for the Zig language
 License:        MIT
@@ -30,23 +30,40 @@ Group:          Development/Languages/Other
 URL:            https://ziglang.org/
 Source0:        https://ziglang.org/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        macros.%{name}
-Source2:        zig-rpmlintrc
+# The vendored tarball is for tests. This contains the
+# cached deps. See https://en.opensuse.org/Zig#Packaging
+Source2:        vendor.tar.zst
+Source3:        zig-rpmlintrc
 Patch0:         0000-remove-lld-in-cmakelist.patch
 Patch1:         0001-invoke-lld.patch
 Patch2:         0002-no-lld-libs-and-includes.patch
-BuildRequires:  clang18
-BuildRequires:  clang18-devel
+# Just copying from Archlinux. Thanks
+Patch3:         https://gitlab.archlinux.org/archlinux/packaging/packages/zig/-/raw/main/skip-localhost-test.patch
+# to improve reproducible-builds -- https://github.com/ziglang/zig/pull/22673
+Patch4:         reproducible.patch
+BuildRequires:  clang20
+BuildRequires:  clang20-devel
 BuildRequires:  cmake
-BuildRequires:  gcc
+BuildRequires:  elfutils
 BuildRequires:  gcc-c++
 BuildRequires:  glibc
 BuildRequires:  glibc-devel
+BuildRequires:  glibc-devel-32bit
 BuildRequires:  help2man
-BuildRequires:  lld18
-BuildRequires:  llvm18-devel
+BuildRequires:  libelf-devel
+BuildRequires:  liburing-devel
+BuildRequires:  lld20
+BuildRequires:  lldb20-debuginfo
+BuildRequires:  llvm20-devel
+BuildRequires:  llvm20-devel-debuginfo
+BuildRequires:  mold
 BuildRequires:  ninja
 BuildRequires:  zlib-devel
-Requires:       lld18
+BuildRequires:  zstd
+BuildRequires:  (gcc13-c++ if gcc13)
+BuildRequires:  (gcc14-c++ if gcc14)
+BuildRequires:  (gcc15-c++ if gcc15)
+Requires:       lld20
 
 # llvm-config is missing targets for ppc and arm architectures.
 # ExcludeArch:    ppc64 ppc64le %%arm %%ix86
@@ -85,23 +102,48 @@ This package contains common RPM macros for %{name}.
 %endif
 
 %prep
-%autosetup -n %{name}-%{version} -p1
+%autosetup -n %{name}-%{version} -p1 -a2
 
 %build
-# NOTE: ix86 architectures will still fail to build due to OOM. Once 0.11.x lands,
-# this won't be an issue anymore since that version does not use much memory
+# CMAKE on Tumbleweed has the CMAKE_LINKER_TYPE option
+%if 0%{?suse_version} > 1600
+
 %cmake \
 %ifarch aarch64 s390x
   -DCMAKE_BUILD_TYPE=Release \
 %endif
   -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-  -DCMAKE_C_COMPILER="clang-18" \
-  -DCMAKE_CXX_COMPILER="clang++-18" \
+  -DCMAKE_C_COMPILER="clang-20" \
+  -DCMAKE_CXX_COMPILER="clang++-20" \
+  -DCMAKE_LINKER_TYPE=MOLD \
   -DZIG_SHARED_LLVM=On \
+  -DZIG_USE_LLVM_CONFIG=ON \
   -DZIG_TARGET_MCPU="baseline" \
   -DZIG_VERSION:STRING="%{version}"
 
+%else
+
+%cmake \
+%ifarch aarch64 s390x
+  -DCMAKE_BUILD_TYPE=Release \
+%endif
+  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  -DCMAKE_C_COMPILER="clang-20" \
+  -DCMAKE_CXX_COMPILER="clang++-20" \
+  -DZIG_SHARED_LLVM=On \
+  -DZIG_USE_LLVM_CONFIG=ON \
+  -DZIG_TARGET_MCPU="baseline" \
+  -DZIG_VERSION:STRING="%{version}"
+
+%endif
+
+# Workaround since CMAKE on Leap does not have
+# the CMAKE_LINKER_TYPE option
+%if 0%{?suse_version} > 1600
 %cmake_build
+%else
+mold -run %cmake_build
+%endif
 
 %install
 %cmake_install
@@ -114,6 +156,18 @@ install -p -m644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}
 sed -i -e "s|@@ZIG_VERSION@@|%{version}|"  %{buildroot}%{_rpmmacrodir}/macros.%{name}
 
 mv -v doc/langref.html.in doc/langref.html
+
+%if 0%{?with test}
+%check
+./build/stage3/bin/zig build test -Dconfig_h=build/config.h \
+	-Dcpu=baseline \
+	-Dskip-debug \
+	-Dskip-release-safe \
+	-Dskip-release-small \
+        -Dstatic-llvm=false \
+	-Denable-llvm=true \
+	-Dskip-non-native=true
+%endif
 
 %files
 %license LICENSE

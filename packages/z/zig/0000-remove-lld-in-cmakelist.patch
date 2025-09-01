@@ -3,10 +3,10 @@ diff -ruN zig-0.13.0.orig/CMakeLists.txt zig-0.13.0/CMakeLists.txt
 +++ zig-0.13.0/CMakeLists.txt	2024-06-08 02:07:26.458213443 +0800
 @@ -139,7 +139,7 @@
  
- find_package(llvm 18)
- find_package(clang 18)
--find_package(lld 18)
-+# find_package(lld 18)
+ find_package(llvm 20)
+ find_package(clang 20)
+-find_package(lld 20)
++# find_package(lld 20)
  
  if(ZIG_STATIC_ZLIB)
      if (MSVC)

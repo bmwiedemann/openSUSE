@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Aug 27 14:05:32 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.15.1:
+  ** CHANGELOG TOO LONG **
+  See https://ziglang.org/download/0.15.1/release-notes.html
+
+-------------------------------------------------------------------
+Fri Jan 31 03:58:41 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to fix reproducible-builds issues (boo#1100677)
+  https://github.com/ziglang/zig/issues/22663
+
+-------------------------------------------------------------------
+Sun Jun 23 08:41:29 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
+
+- Cleanup specfile
+- Workaround for test
+  * add vendored cache dependencies.
+- Fix check section for tests
+- Add -DZIG_USE_LLVM_CONFIG=ON option
+- Add patch skip-localhost-test.patch
+- Add liburing-devel for test suites
+- Set mold as linker. Efficient and fast at utilising computer resources
+  unlike GNU ld.
+- Enable tests
+- remove some outdated comments in specfile
+
+-------------------------------------------------------------------
+Wed Jun 12 11:45:34 UTC 2024 - Andreas Schwab <schwab@suse.de>
+
+- Reduce constraints
+
+-------------------------------------------------------------------
 Fri Jun  7 17:56:48 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update patchsets for llvm18 changes
@@ -10,7 +43,7 @@ Fri Jun  7 17:35:24 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncom
 
 - Update to version 0.13.0:
   ** CHANGELOG TOO LONG **
-  See https://ziglang.org/download/0.12.0/release-notes.html
+  See https://ziglang.org/download/0.13.0/release-notes.html
   * Release focuses more on the LLVM18 support
 
 -------------------------------------------------------------------
