@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  1 06:01:39 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.40.3
+  * [SECURITY] Fix request smuggling vulnerability by discarding
+    trailers (#1062) (CVE-2025-58068, bsc#1248994)
+
+-------------------------------------------------------------------
 Fri Aug  1 08:17:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.40.2
