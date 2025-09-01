@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 31 18:10:04 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update resolv to version 0.2.0.3.
+  ## 0.2.0.3
+
+  _2025-08-31, Andreas Abel_
+
+  * Drop support for GHC 7
+  * Tested with GHC 8.0 - 9.14 alpha1
+
+-------------------------------------------------------------------
 Tue Mar 11 09:18:55 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update resolv to version 0.2.0.2 revision 5.
