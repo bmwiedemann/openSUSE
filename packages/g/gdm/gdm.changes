@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  1 11:02:31 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move migration marker from /var/tmp to /run/gdm (boo#1249017).
+
+-------------------------------------------------------------------
+Fri Aug 29 10:18:55 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix syntax error in gdm's %pre script.
+
+-------------------------------------------------------------------
 Tue Aug  6 06:55:48 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gdm-plymouth-quit-wait.patch: Disable plymouth-quit-wait.service

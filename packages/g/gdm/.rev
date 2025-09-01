@@ -2235,4 +2235,14 @@
     <comment></comment>
     <requestid>1298359</requestid>
   </revision>
+  <revision rev="287" vrev="14">
+    <srcmd5>ae4e07cb939bc8901473ca42e7fe530a</srcmd5>
+    <version>48.0</version>
+    <time>1756739826</time>
+    <user>anag_factory</user>
+    <comment>- Move migration marker from /var/tmp to /run/gdm (boo#1249017).
+
+- Fix syntax error in gdm's %pre script.</comment>
+    <requestid>1302195</requestid>
+  </revision>
 </revisionlist>
