@@ -1,8 +1,8 @@
-diff -ubr fsnotify-0.4.2.0-orig/fsnotify.cabal fsnotify-0.4.2.0-new/fsnotify.cabal
---- fsnotify-0.4.2.0-orig/fsnotify.cabal	2025-03-26 13:13:59.110671555 +0100
-+++ fsnotify-0.4.2.0-new/fsnotify.cabal	2025-03-26 13:15:41.998116889 +0100
-@@ -84,6 +84,7 @@
-         hfsevents >=0.1.8
+diff -ub fsnotify-0.4.4.0-old/fsnotify.cabal fsnotify-0.4.4.0-new/fsnotify.cabal
+--- fsnotify-0.4.4.0-old/fsnotify.cabal	2025-08-26 01:36:06.000000000 +0200
++++ fsnotify-0.4.4.0-new/fsnotify.cabal	2025-09-01 11:43:01.226384902 +0200
+@@ -81,6 +81,7 @@
+         hinotify >=0.4.1
  
  executable example
 +  buildable: False

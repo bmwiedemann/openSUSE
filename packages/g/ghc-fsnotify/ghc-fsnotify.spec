@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.3.0
+Version:        0.4.4.0
 Release:        0
 Summary:        Cross platform library for file change notification
 License:        BSD-3-Clause
