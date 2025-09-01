@@ -2570,4 +2570,12 @@
   * client: legacy: Initialise --wait to false (forwarded request 1279863 from iznogood)</comment>
     <requestid>1280052</requestid>
   </revision>
+  <revision rev="166" vrev="2">
+    <srcmd5>0ff00faa25643aaa5f2ae7547071c781</srcmd5>
+    <version>3.56.2</version>
+    <time>1756739926</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1302196</requestid>
+  </revision>
 </revisionlist>

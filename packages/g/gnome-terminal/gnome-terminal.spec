@@ -31,10 +31,6 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-# Needed for search provider. It should not be needed in my opinion,
-# we have to take this up with upstream, or just provide search
-# provider interface definition file as source.
-BuildRequires:  gnome-shell
 BuildRequires:  meson >= 0.62.0
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
