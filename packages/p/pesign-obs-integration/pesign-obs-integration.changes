@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 29 13:55:40 UTC 2025 - jlee@suse.com
+
+- Update to version 10.2+git20250829.fe238ff:
+  * Skip signing when there are no files to sign (bsc#1248618).
+  * Create archive first
+
+-------------------------------------------------------------------
 Wed Feb 19 13:44:04 UTC 2025 - dmueller@suse.com
 
 - Update to version 10.2+git20250219.c99462c:

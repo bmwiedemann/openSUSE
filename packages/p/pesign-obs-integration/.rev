@@ -542,4 +542,12 @@ Otherwise, &quot;modsign-verify&quot; will be missing.
   * Add filecaps support</comment>
     <requestid>1247099</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>b74c916859575805f3525cf914157a5e</srcmd5>
+    <version>10.2+git20250829.fe238ff</version>
+    <time>1756739817</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1301965</requestid>
+  </revision>
 </revisionlist>
