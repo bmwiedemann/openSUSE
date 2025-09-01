@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 20 12:33:19 UTC 2025 - Michael Matz <matz@suse.com>
+
+- Use current distro go default version.  As these are oldish
+  sources, also use GO111MODULE=off.
+
+-------------------------------------------------------------------
 Sat Jun  5 19:54:39 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Use golang 1.13 for Tumbleweed to workaround build issues
