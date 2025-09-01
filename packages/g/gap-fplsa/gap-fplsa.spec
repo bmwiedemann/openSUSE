@@ -17,7 +17,7 @@
 
 
 Name:           gap-fplsa
-Version:        1.2.6
+Version:        1.2.7
 Release:        0
 Summary:        GAP: Finitely Presented Lie Algebras
 License:        GPL-2.0-or-later
@@ -25,7 +25,6 @@ Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/FPLSA/
 #Git-Clone:     https://github.com/gap-packages/FPLSA
 Source:         https://github.com/gap-packages/FPLSA/releases/download/v%version/FPLSA-%version.tar.gz
-Patch1:         c99.patch
 BuildRequires:  c_compiler
 BuildRequires:  gap-devel >= 4.8
 BuildRequires:  gap-rpm-devel

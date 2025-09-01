@@ -31,4 +31,12 @@
     <comment>- Add c99.patch</comment>
     <requestid>1287202</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7cbeb8cf539df6fa4b6c6d4608bf64a7</srcmd5>
+    <version>1.2.7</version>
+    <time>1756744090</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.2.7</comment>
+    <requestid>1302218</requestid>
+  </revision>
 </revisionlist>
