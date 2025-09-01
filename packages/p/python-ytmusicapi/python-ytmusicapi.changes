@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 31 08:29:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.11.1
+  * search: added a fallback for top result parsing to fix a
+    KeyError
+  * get_home: fix song artist parsing
+  * get_home: parse recommended channels
+  * get_playlist/get_episodes_playlist: fix metadata
+  * get_library_playlists: Don't throw an error if playlist
+    title is missing
+
+-------------------------------------------------------------------
 Thu Jul 31 19:16:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.11.0
