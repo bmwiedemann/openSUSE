@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 20 12:30:09 UTC 2025 - Michael Matz <matz@suse.com>
+
+- Use current distro go default version.  As these are oldish
+  sources, also use GO111MODULE=off.
+
+-------------------------------------------------------------------
 Wed Jul  7 18:03:48 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fix conflicts for python3-jmespath on TW
