@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 29 14:34:42 UTC 2025 - Tobias Görgens <suse.snooper541@passmail.net>
+
+- Publish 32bit version in 64bit repo
+  Steam is a 32bit application, so extest can only work when it's
+  32bit build is used, even on x86_64 machines.
+
+-------------------------------------------------------------------
 Mon May 26 20:02:15 UTC 2025 - suse.snooper541@passmail.net
 
 - Initial version 1+git20241105.1a419a1:

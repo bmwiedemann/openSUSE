@@ -24,6 +24,7 @@ License:        MIT
 URL:            https://github.com/Supreeeme/extest
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.zst
+Source99:       baselibs.conf
 BuildRequires:  rust
 BuildRequires:	cargo
 BuildRequires:  cargo-packaging

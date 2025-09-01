@@ -8,4 +8,16 @@
 Extest is a drop in replacement for the X11 XTEST extension. It creates a virtual device with the uinput kernel module. It's been primarily developed for allowing the desktop functionality on the Steam Controller to work while Steam is open on Wayland.</comment>
     <requestid>1287216</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1de67587191c2f35ff28aecedc3a9339</srcmd5>
+    <version>1+git20241105.1a419a1</version>
+    <time>1756739858</time>
+    <user>anag_factory</user>
+    <comment>Steam is a 32bit application, so extest can only work when it's 32bit build is used, even on x86_64 machines. Therefore, this change is required for Steam to actually make use of the library.
+
+I added the baselibs.conf to the sources :)
+
+I added the reason for this change in the changelog</comment>
+    <requestid>1302018</requestid>
+  </revision>
 </revisionlist>
