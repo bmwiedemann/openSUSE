@@ -288,4 +288,14 @@
   * /usr/share/doc/packages/mame/whatsnew-0.279.txt</comment>
     <requestid>1297030</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>1e62e774af923872c5fb3bd3b936ef1e</srcmd5>
+    <version>0.280</version>
+    <time>1756739865</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 0.280
+  * /usr/share/doc/packages/mame/whatsnew-0.280.txt
+</comment>
+    <requestid>1302043</requestid>
+  </revision>
 </revisionlist>
