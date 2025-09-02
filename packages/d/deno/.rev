@@ -4177,4 +4177,41 @@
   * test: avoid race condition on node compat test runner (#30201)</comment>
     <requestid>1298946</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>af6b0c194366e1a77be5c900fadbb50b</srcmd5>
+    <version>2.4.4</version>
+    <time>1756828766</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.4:
+  * 2.4.4 (#30396)
+  * fix(unstable): lint node properties should be enumerable (#30391)
+  * chore: update lint PR title name and job name (#30370)
+  * feat(kv): implement custom inspect for AtomicOperation (#30077)
+  * fix(tests): use correct path separator on unix for code_cache cleanup.ts (#30378)
+  * fix: android build (#30360)
+  * fix(unstable): update deno_tunnel for better reconnect errors (#30381)
+  * fix(ext/node): make some `os` exported properties read only (#30374)
+  * fix: upgrade deno_core to 0.355.0 (#30352)
+  * chore: improve pr title verification (#30367)
+  * fix(ext/node): accept `base64url` encoding on StringDecoder (#30366)
+  * fix(ext/node): handle large buffer correctly (#30369)
+  * chore: Rust 1.89.0 (#30364)
+  * fix: upgrade @node/types to 24 (#30343)
+  * fix: reduce progress bar flickering (#30349)
+  * chore: cleanup unused dependencies (#30059)
+  * fix(io): do not autoClose stdin readable stream (#30345)
+  * chore: remove zlib feature from flate2 dep in npm_cache (#30348)
+  * perf: reduce heap allocations and memory creating cjs wrapper module (#30344)
+  * fix(publish): remove incorrect `relative-package-import` diagnostic when root of workspace is package (#30333)
+  * refactor: improve getting WatchFlags/WatchFlagsWithPaths (#30337)
+  * refactor: move fill_graph into deno_resolver (#30338)
+  * fix(compile): ensure `Deno.build.standalone` is set in workers (#30335)
+  * fix(ext/node): avoid panic when `crypto.randomInt` has no arguments (#30314)
+  * fix(lsp): use referrer compiler options for node_modules files (#30275)
+  * feat(ext/kv): allow specifying default path and path prefix (#30320)
+  * fix(ext/node): use primordials in `ext/node/polyfills/internal_binding/buffer.ts` (#30287)
+  * feat(unstable): add json repl (#30307)
+  * fix(ext/node): use custom allocator for brotli (#30277)</comment>
+    <requestid>1302351</requestid>
+  </revision>
 </revisionlist>
