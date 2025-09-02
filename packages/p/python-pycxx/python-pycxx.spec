@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-pycxx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,20 @@
 # Note PyPI 'pycxx' is a different package,
 # and this package is not 'cxx' or 'CXX' on PyPI
 %global modname pycxx
-%{?sle15_python_module_pythons}
 %define oldpython python
+%{?sle15_python_module_pythons}
 Name:           python-%{modname}
 Version:        7.1.8
 Release:        0
 Summary:        Python extensions in C++
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
-URL:            http://CXX.sourceforge.net/
+URL:            https://CXX.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/cxx/%{modname}-%{version}.tar.gz
 Patch1:         python-pycxx-7.0.3-change-include-paths.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
@@ -75,7 +77,7 @@ of Python extension modules in C++.
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 %ifpython2
 rm -r Doc/Python3 && mv Doc/Python2 Doc/Python
 %else
@@ -83,13 +85,19 @@ rm -r Doc/Python2 && mv Doc/Python3 Doc/Python
 %endif
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%{python_expand mkdir -p %{buildroot}%{_datadir}/python%{$python_bin_suffix}
+cp -r %{buildroot}/usr/CXX %{buildroot}%{_datadir}/python%{$python_bin_suffix}
+}
+rm -r %{buildroot}/usr/CXX
 
 %files %{python_files}
 %license COPYRIGHT
 %doc README.html
 %{python_sitelib}/CXX*
+%{python_sitelib}/[Cc][Xx][Xx]-%{version}*-info
 
 %files %{python_files devel}
 %doc Doc/Python/
