@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Sep 02 05:46:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.13:
+  * Bug Fixes
+    - go: update kubernetes packages ( v0.33.4 → v0.34.0 ) (#205)
+      (f5b5e5f)
+  * CI/CD
+    - github-action: update aquasecurity/trivy-action ( 0.32.0 →
+      0.33.0 ) (370f9d9)
+    - pin mise action to consistent version comment across all
+      workflows (#207) (eb0a72b)
+    - github-action: Update jdx/mise-action (#204) (0265601)
+    - github-action: update renovatebot/github-action ( v43.0.8 →
+      v43.0.9 ) (991b85f)
+    - github-action: update github/codeql-action ( v3.29.10 →
+      v3.29.11 ) (bf0f0ae)
+    - github-action: update jdx/mise-action ( v3.0.2 → v3.1.0 )
+      (7fadfe1)
+    - github-action: Update jdx/mise-action ( v2.4.4 → v3.0.2 )
+      (#203) (35610fe)
+    - github-action: update github/codeql-action ( v3.29.9 →
+      v3.29.10 ) (ee5a865)
+    - github-action: update renovatebot/github-action ( v43.0.7 →
+      v43.0.8 ) (54856dd)
+
+-------------------------------------------------------------------
 Mon Aug 18 12:48:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.12:
