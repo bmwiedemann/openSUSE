@@ -454,4 +454,13 @@ Stop storing build machine kernel version (boo#1101107)</comment>
   https://github.com/timescale/timescaledb/releases/tag/2.21.3</comment>
     <requestid>1298999</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5e18abd2c6def31f20b1bb4742257e3f</srcmd5>
+    <version>2.22.0</version>
+    <time>1756828839</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.22.0
+  https://github.com/timescale/timescaledb/releases/tag/2.22.0</comment>
+    <requestid>1302420</requestid>
+  </revision>
 </revisionlist>
