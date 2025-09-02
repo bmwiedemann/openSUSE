@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  2 13:46:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.33.0
+  * Managed Identity on Service Fabric supports specifying
+    client_capabilities and claims_challenge (#791)
+  * Broker support on Linux and WSL. (#766)
+  * A byproduct of this is that broker on all platforms will
+    support Python 3.13. (#823)
+
+-------------------------------------------------------------------
 Wed Jul  9 07:32:59 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.33.0b1

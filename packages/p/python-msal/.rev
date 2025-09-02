@@ -421,4 +421,17 @@
 - Override upstream version with 1.33.0~b1 (forwarded request 1291414 from glaubitz)</comment>
     <requestid>1291492</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9e1ecdc1ef52c0159ca9068b8ad2518b</srcmd5>
+    <version>1.33.0</version>
+    <time>1756836157</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.33.0
+  * Managed Identity on Service Fabric supports specifying
+    client_capabilities and claims_challenge (#791)
+  * Broker support on Linux and WSL. (#766)
+  * A byproduct of this is that broker on all platforms will
+    support Python 3.13. (#823)</comment>
+    <requestid>1302468</requestid>
+  </revision>
 </revisionlist>
