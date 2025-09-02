@@ -17,9 +17,9 @@
 #
 
 
-%define rev a1469432d44f95e3f685fe294c49ecf3517c1c7e
+%define rev dcdd8192c3a7a6f17ef756a4aafb4736a94a8f5a
 Name:           biome
-Version:        2.1.3
+Version:        2.2.2
 Release:        0
 Summary:        A JavaScript and TypeScript toolchain
 License:        Apache-2.0 AND MIT
@@ -27,7 +27,7 @@ Group:          Productivity/Other
 URL:            https://github.com/biomejs/biome
 Source0:        https://github.com/biomejs/biome/archive/refs/tags/@biomejs/biome@%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-BuildRequires:  cargo >= 1.53.0
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  zstd
 ExclusiveArch:  %{rust_tier1_arches}

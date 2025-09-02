@@ -80,4 +80,41 @@
   * chore(deps): update dependency @types/node to v22.16.5 (#6956)</comment>
     <requestid>1296910</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>03e88e4f120ced38402a1f1604254bc2</srcmd5>
+    <version>2.2.2</version>
+    <time>1756828836</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.2.2:
+  * ci: release (#7303)
+  * chore: remove changeset, fix version number
+  * chore: revert version number
+  * ci: release (#7238)
+  * fix(lint/useNamingConvention): detects ts property parameter with modifier (#7298)
+  * fix(noExtraBooleanCast): preserve parentheses to maintain operator precedence (#7244)
+  * feat(grit): add JSX node name mappings for GritQL patterns (#7285)
+  * fix(migrate): jsonc configuration files (#7283)
+  * fix(module_graph): limit flattening to hardcoded value (#7266)
+  * fix(semantic): missing references in namespaces (#7282)
+  * fix(wasm): `scanProject` being stuck (#7281)
+  * docs(lint): improve noUndeclaredDependencies (#7272)
+  * chore: unduplicate branch (#7274)
+  * fix(linter): fix `useImportExtensions` handling of index files (#7209)
+  * chore: remove duplicated fixture (#7273)
+  * fix(core): resolve issue with rest params in type inference (#7270)
+  * fix(cli): pretty logger (#7264)
+  * feat(linter): auto add Svelte globals for .svelte.test/spec files (#7239)
+  * fix(lsp): unsafe fixes when pulling code actions (#7249)
+  * chore(deps): update dependency @changesets/cli to v2.29.6 (#7255)
+  * chore(deps): update rust:1.89.0-bullseye docker digest to 5b0defc (#7254)
+  * chore(deps): update rust:1.89.0-bookworm docker digest to e090f7b (#7252)
+  * chore(deps): update github-actions (#7251)
+  * docs: fix CHANGELOG to reflect operatorLinebreak (#7253)
+  * chore: fix image sponsor (#7250)
+  * fix(changelog): correct dead links in 2.2 (#7243)
+  * fix: correct error message in useIndexOf rule (#7234)
+  * chore: add repository dispatch to kick off docker image build on release (#7235)
+  * chore: use `divan` for module graph benchmarks (#7231)</comment>
+    <requestid>1302424</requestid>
+  </revision>
 </revisionlist>
