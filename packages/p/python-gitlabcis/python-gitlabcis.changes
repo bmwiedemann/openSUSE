@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Sep  2 08:35:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.15.12:
+  * Fix
+    - fix(deps): update dependency tox to ~=4.29.0 (20972ea)
+- update to 1.15.11:
+  * Fix
+    - fix(deps): update dependency coverage to v7.10.6 (0289a97)
+
+-------------------------------------------------------------------
+Thu Aug 28 05:11:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.15.10:
+  * Fix
+    - fix(deps): update dependency python-gitlab to v6.3.0
+      (88572b9)
+
+-------------------------------------------------------------------
+Mon Aug 25 05:23:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.15.9:
+  * Fix
+    - fix(deps): update dependency coverage to v7.10.5 (1b3d1d0)
+
+-------------------------------------------------------------------
+Thu Aug 21 05:15:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.15.8:
+  * Fix
+    - fix(deps): update dependency pre-commit to ~=4.3.0 (15dc9d0)
+- update to 1.15.7:
+  * Fix
+    - fix(deps): update dependency coverage to v7.10.4 (64a0b87)
+- update to 1.15.6:
+  * Fix
+    - fix(deps): update dependency setuptools-scm to v9 (673e173)
+- update to 1.15.5:
+  * Fix
+    - fix(deps): update dependency coverage to v7.10.3 (18b3b42)
+
+-------------------------------------------------------------------
 Sun Aug  3 11:41:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.15.4:
