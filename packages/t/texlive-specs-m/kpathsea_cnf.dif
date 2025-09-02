@@ -348,10 +348,10 @@
 +stack_size.xmltex = 1500
 +hash_extra.xmltex = 50000
 +string_vacancies.xmltex = 45000
-+pool_free.xmltex = 47500
++pool_free.xmltex = 200000
 +nest_size.xmltex = 500
 +save_size.xmltex = 10000
-+pool_size.xmltex = 500000
++pool_size.xmltex = 700000
 +max_strings.xmltex = 55000
 +
 +% These are pdfxmltex specific
@@ -360,10 +360,10 @@
 +stack_size.pdfxmltex = 1500
 +hash_extra.pdfxmltex = 50000
 +string_vacancies.pdfxmltex = 45000
-+pool_free.pdfxmltex = 47500
++pool_free.pdfxmltex = 200000
 +nest_size.pdfxmltex = 500
 +save_size.pdfxmltex = 10000
-+pool_size.pdfxmltex = 500000
++pool_size.pdfxmltex = 700000
 +max_strings.pdfxmltex = 55000
 +
 +% These are jadetex specific

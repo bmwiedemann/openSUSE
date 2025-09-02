@@ -569,4 +569,16 @@
     <comment>Update to TeXLive 2025</comment>
     <requestid>1254615</requestid>
   </revision>
+  <revision rev="57" vrev="60">
+    <srcmd5>02378016bb3a7ffd6dd3a0d0eb124940</srcmd5>
+    <version>unknown</version>
+    <time>1756828687</time>
+    <user>anag_factory</user>
+    <comment>- Increase pool_size and pool_free for both xmltex and pdfxmltex
+  to get formats created and xmlto runing again (boo#1248830)
+
+- Add patch eolang_pl.dif
+  * Resolve missing local perl package tools.pm with upstream fix</comment>
+    <requestid>1302357</requestid>
+  </revision>
 </revisionlist>
