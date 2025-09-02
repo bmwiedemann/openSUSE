@@ -17,7 +17,7 @@
 
 
 Name:           ibus-typing-booster
-Version:        2.27.72
+Version:        2.27.73
 Release:        0
 Summary:        An input completion utility
 License:        GPL-3.0-or-later
@@ -25,6 +25,7 @@ Group:          System/X11/Utilities
 URL:            https://mike-fabian.github.io/ibus-typing-booster/
 Source0:        https://github.com/mike-fabian/ibus-typing-booster/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://releases.pagure.org/inscript2/inscript2-20210820.tar.gz
+BuildRequires:  wl-clipboard
 BuildRequires:  AppStream
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -80,6 +81,9 @@ Recommends:     python3-regex
 Recommends:     python3-simpleaudio
 # To make emoji and Unicode symbol matching faster:
 Recommends:     python3-rapidfuzz
+# To get the primary selection on Wayland when getting it using
+# surrounding text fails:
+Recommends:     wl-clipboard
 BuildRequires:  python3-pyxdg
 BuildRequires:  myspell-de
 BuildRequires:  myspell-de_DE
