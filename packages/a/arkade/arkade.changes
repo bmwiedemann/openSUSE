@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 02 06:01:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.43:
+  * Add system app to install zvol-snapshotter
+  * refactor: tidy up install command
+  * Minor changes for kubeval
+  * chore: bump kubeseal version to 0.30.0
+  * Enable manual kick-off for e2e-url-checker job
+  * Implement tablewriter v1.0.9
+  * Update dependencies
+  * Bump golang.org/x/crypto from 0.38.0 to 0.40.0
+  * fix: address tablewriter breaking changes
+  * Update dependencies
+
+-------------------------------------------------------------------
 Tue Aug 19 06:42:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.41:
