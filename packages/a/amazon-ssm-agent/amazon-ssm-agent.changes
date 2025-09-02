@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Sep  2 10:55:44 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.3050.0
+  * Add EU sovereign cloud S3 endpoint for DownloadContent plugin
+  * Add configurable credential rotation max backoff interval
+- from version 3.3.2958.0
+  * Migrate from twinj/uuid to google/uuid library
+  * Allow newer agent versions to be installed when deploying on Greengrass
+  * Harden function to remove non-admin run command documents in execution path
+  * Fix macOS credential refresher test issue due to missing Debugf from serialport skip file
+  * Enhance testability of custom certificate usage in debug SSM Agent builds
+  * Decouple serial port from startup and add credential refresher serialport logging
+  * Add GlobalEnhancedTelemetryEnabled config to README
+  * Add cloudwatch logs endpoint configuration to optional config for agent
+  * Update Greengrass component version
+- from version 3.3.2746.0
+  * Add file privilege check before processing document state file
+  * Storing AWS document interpolation ENV_VAR types as environment variables
+  * Throw explicit error when running local cli as non-priviledged user
+  * Harden telemetry dynamic config folder permissions
+  * Add configuration option for HandshakeTimeout
+- from version 3.3.2656.0
+  * Improve unit tests
+  * Add setup for emitting telemetry logs and metrics
+  * Add initial selection of error logs to emit to telemetry
+  * Simplify checkstyle and import organization in build scripts
+  * Update golang.org/x/net from v0.37.0 to v0.38.0
+
+-------------------------------------------------------------------
 Mon Jun  2 09:26:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.2471.0
