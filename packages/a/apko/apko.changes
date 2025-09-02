@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 02 05:39:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.7:
+  * build(deps): bump github/codeql-action from 3.29.10 to 3.29.11
+    (#1834)
+  * build(deps): bump github/codeql-action from 3.29.9 to 3.29.10
+    (#1824)
+  * build(deps): bump go.step.sm/crypto from 0.69.0 to 0.70.0
+    (#1827)
+  * build(deps): bump chainguard.dev/sdk from 0.1.37 to 0.1.41
+    (#1831)
+  * build(deps): bump github.com/stretchr/testify from 1.11.0 to
+    1.11.1 (#1832)
+  * build(deps): bump github.com/stretchr/testify from 1.10.0 to
+    1.11.0 (#1829)
+  * build(deps): bump chainguard-dev/actions from 1.4.11 to 1.4.12
+    (#1830)
+
+-------------------------------------------------------------------
 Mon Aug 25 04:45:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.6:
