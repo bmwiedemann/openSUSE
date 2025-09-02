@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  2 05:19:53 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
+
+- update to release 7.2.5
+  + Fixed a bug in the pitch plugin that made the cents and the octaves control to not be reapplied when EasyEffects was restarted
+- update to release 7.2.4
+  + The Pitch plugin has new cents and octaves parameters.
+  + The client-rt.conf is ignored on 1.4.0 or newer PipeWire versions.
+  + APO export does not crash anymore when an unsupported LSP Equalizer filter is set.
+  + Fixed a bug in LADSPA wrapper.
+
+
+-------------------------------------------------------------------
 Sat Jan 11 06:22:28 UTC 2025 - Gerald Chen <gerald_chen@foxmail.com>
 
 - update to release 7.2.3
@@ -23,7 +35,7 @@ Tue Dec  3 08:58:05 UTC 2024 - Gerald Chen <gerald_chen@foxmail.com>
   + The loudness plugin exposes the ISO 226:2023 standard that is now available in the LSP plugin.
   + Updated translations
   + Performance optmizations to the spectrum plugin and the LADSPA wrapper
-  + We were not locking PipeWire's thread main loop before setting a  stream volume and mute controls. THis could cause these operations to fail in some situations 
+  + We were not locking PipeWire's thread main loop before setting a  stream volume and mute controls. THis could cause these operations to fail in some situations
 - update to release 7.1.7
   + Community Presets have been implemented. Users can install packages containing multiple Easy Effects presets to be imported and applied inside the application. These packages will be maintained and shipped by volunteers. You can search them on the repositories of your favorite distribution.
   + Added the ability of collapsing the sidebar to hide the effects list and expand the area of the effects user interface.
@@ -39,16 +51,16 @@ Tue Dec  3 08:58:05 UTC 2024 - Gerald Chen <gerald_chen@foxmail.com>
 Sun Apr 21 13:30:56 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to release 7.1.6
-  + Improved the pipeline management system. Non-limiter effects are placed before the limiter 
+  + Improved the pipeline management system. Non-limiter effects are placed before the limiter
     even if the last two plugins in the pipeline are a limiter followed by a level meter.
   + Fixed a regression that prevented the level meters to be updated under certain conditions.
   + Updated translations
 - update to release 7.1.5
-  + We now set monitor.passthrough = true in our virtual devices. This will allow latency offset 
+  + We now set monitor.passthrough = true in our virtual devices. This will allow latency offset
     to be properly applied by video players when PipeWire > 1.0.3 is released.
 - update to release 7.1.4
-  + EasyEffects will try to avoid moving to its virtual sources streams for which the user has 
-    set a custom target.object that is different from the mic EE is recording from. The stream 
+  + EasyEffects will try to avoid moving to its virtual sources streams for which the user has
+    set a custom target.object that is different from the mic EE is recording from. The stream
     has to be started when EE is already running for this logic to take effect.
   + The equalizer can export basic APO preset files
   + Our players/recorders tab will show the audio client binary name in the cases were no app name is defined.
@@ -90,7 +102,7 @@ Fri Nov 10 10:43:33 UTC 2023 - Boris Manojlovic <boris@steki.net>
 -------------------------------------------------------------------
 Sun Aug  6 19:18:19 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
 
-- update to release 7.0.6 
+- update to release 7.0.6
 - Features:
   + An "Experimental Features" section was added to our preferences window.
   + The native window of the LSP plugins can be used. This is an experimental feature intended only for advanced users. So expect some bugs.
@@ -101,7 +113,7 @@ Sun Aug  6 19:18:19 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
 -------------------------------------------------------------------
 Sun Aug  6 19:17:13 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
 
-- update to release 7.0.5 
+- update to release 7.0.5
 - Features:
   + A new Level Meter plugin based on libebur128 has been added.
   + The Pitch plugin now uses the library SoundTouch instead of Rubberband. Hopefully some of the mysterious crashes that were happening with Rubbernand are not going to happen anymore.
@@ -122,7 +134,7 @@ Sun Aug  6 19:14:51 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
 - Other notes:
   + Speex is no longer incorrectly listed as a build dependency (speexdsp is still a build dependency)
   + RNNoise is no longer an autodependency. It is now required by default, if not available it must be explicitly disabled with -Denable-rnnoise=false
- 
+
 -------------------------------------------------------------------
 Fri Apr 21 09:02:51 UTC 2023 - Boris Manojlovic <boris@steki.net>
 
@@ -177,7 +189,7 @@ Fri Feb  3 10:31:57 UTC 2023 - Boris Manojlovic <boris@steki.net>
 - Other notes:
   + Because of the new multiple instances feature, the preset format has changed, but the old one is still compatible to be loaded.
     Anyway take in consideration that saving the current preset will always write it in the new format.
- 
+
 
 -------------------------------------------------------------------
 Tue Oct 11 06:44:27 UTC 2022 - Boris Manojlovic <boris@steki.net>
@@ -233,12 +245,12 @@ Thu May 12 13:34:00 UTC 2022 - Boris Manojlovic <boris@steki.net>
   + Our application icon is now compatible with desktops that uses QT
   + Our blocklist code will use the `application.id` tag if the stream sets it
   + In order to avoid problems with the mouse scroll the entries in the applications list shown in our `Players/Recorders`
-    tab do not show a volume scale anymore. More details about the problem and the solution for it can be found on #1211 
+    tab do not show a volume scale anymore. More details about the problem and the solution for it can be found on #1211
     and #1427
   + When no application is available for display in the `Players/Recorders` a message will be shown to the user
   + Many translation updates
 - Bugfixes:
-  + Fixed a bug where EasyEffeects crashed when the number of points displayed in the spectrum was changed while 
+  + Fixed a bug where EasyEffeects crashed when the number of points displayed in the spectrum was changed while
     our pipeline was active and the spectrum widget was visible
   + The pipeline latency value displayed in our window could be wrong in some situations. This was fixed.
 
@@ -277,13 +289,13 @@ Wed Feb  2 17:47:05 UTC 2022 - Boris Manojlovic <boris@steki.net>
     Jumps in volume level should not happen anymore in these situations.
   + We added an option that allows the volume and mute state of our virtual devices to be reset when EasyEffects starts.
     It should help with the cases were our devices are muted by the audio server for unknown reasons.
-  + Better support for computer suspending. 
+  + Better support for computer suspending.
   + Updated translations
 
 - Bugfixes:
   + Fixed a bug that prevented mono microphones from properly working with EasyEffects
   +  Fixed a bug where trying to create an autoloading profile without having presets caused the application to crash.
- 
+
 
 -------------------------------------------------------------------
 Tue Jan 11 10:42:00 UTC 2022 - Boris Manojlovic <boris@steki.net>
@@ -334,7 +346,7 @@ Sat Dec  4 14:29:10 UTC 2021 - Boris Manojlovic <boris@steki.net>
     after changing the order of the plugins in the pipeline. It should be working now.
 - dependency
   + The tbb library is a new dependency https://www.threadingbuildingblocks.org
-   
+
 
 -------------------------------------------------------------------
 Sun Oct  3 23:07:07 UTC 2021 - Boris Manojlovic <boris@steki.net>
@@ -342,7 +354,7 @@ Sun Oct  3 23:07:07 UTC 2021 - Boris Manojlovic <boris@steki.net>
 - updated to latest release 6.1.3
   * Prevented a case in which Spectrum were crashing.
   * Hopefully crashes like the one reported
-    at https://github.com/wwmm/easyeffects/issues/1172 are fixed 
+    at https://github.com/wwmm/easyeffects/issues/1172 are fixed
 - cleanup of multiple old requirements (gstreamer ladspa ...)
 
 -------------------------------------------------------------------
@@ -354,17 +366,17 @@ Mon Sep 20 16:37:54 UTC 2021 - Boris Manojlovic <boris@steki.net>
   + Improved compatibility with WirePlumber.
     This is needed to run on systems that decided to use it instead
     of the built-in PipeWire session manager.
-    More information at https://github.com/wwmm/easyeffects/issues/1144 
+    More information at https://github.com/wwmm/easyeffects/issues/1144
 
 -------------------------------------------------------------------
 Mon Sep 20 12:29:17 UTC 2021 - Boris Manojlovic <boris@steki.net>
 
-- add upstream patch PR-1159-App-info-UI-management-improved.patch 
+- add upstream patch PR-1159-App-info-UI-management-improved.patch
 
 -------------------------------------------------------------------
 Mon Sep 20 08:38:57 UTC 2021 - Boris Manojlovic <boris@steki.net>
 
-- updated to latest release 6.1.1 
+- updated to latest release 6.1.1
 - Added:
   * When trying to add an autoloading profile for a device already
     in the list its target preset will be updated. This way we can change
@@ -427,7 +439,7 @@ Wed Jul 21 23:50:29 UTC 2021 - Boris Manojlovic <boris@steki.net>
 
 - removed Recommends handling for -lang package
 - moved documentation into -docs package
-- spec cleanup 
+- spec cleanup
 
 -------------------------------------------------------------------
 Sat Jul 17 14:02:22 UTC 2021 - Boris Manojlovic <boris@steki.net>
@@ -453,14 +465,14 @@ Sat Jul 17 14:02:22 UTC 2021 - Boris Manojlovic <boris@steki.net>
   + fixing the deesser and gate interface
   + fixing the compressor interface
   + fixing the gtkscale locale
- 
+
 
 -------------------------------------------------------------------
 Tue Jul 13 10:06:40 UTC 2021 - Boris Manojlovic <boris@steki.net>
 
 - update to latest release 6.0.2
   + removal of boost dependencies
-  + removal of gstreamer dependencies 
+  + removal of gstreamer dependencies
   + added gtk4 dependencies
   + for now gcc10 only build
   + pipewire requirements added
@@ -471,7 +483,7 @@ Sat May 15 00:18:19 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 - Update to version 4.8.5
   Added:
   * Improved compatibility with dconf 0.40. Now our plugins should
-    be enabled when using this version. 
+    be enabled when using this version.
 
 -------------------------------------------------------------------
 Wed Mar  3 17:55:24 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
@@ -493,7 +505,7 @@ Fri Jan  8 07:01:05 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
   Added:
   * Added Allpass filter in Equalizer plugin.
   Fixed:
-  * The equalizer UI is now correctly shown when a profile with 
+  * The equalizer UI is now correctly shown when a profile with
     30 bands is loaded at startup.
   * Added a workaround for systems that were crashing because the
     locale is not correctly set at system level.
@@ -508,7 +520,7 @@ Fri Jan  8 07:01:05 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
   * New Noise Reduction plugin based on the RNNoise library.
   * Band Quality factor exposed in the Equalizer main interface.
   * A new settings was added to the general section of our settings
-    menu: Activity Timeout. It is the time during which 
+    menu: Activity Timeout. It is the time during which
     PulseEffects monitors if there is any application playing audio.
     If there is none we stop our playback stream in order to save
     cpu usage. This timeout has been in place for a long time but
@@ -523,7 +535,7 @@ Fri Jan  8 07:01:05 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
     locale settings.
   * Applying APO Equalizer preset when locale is different than "C"
     is now working properly.
-  * Equalizer and Crystalizer UI redesigned: band wrapper is 
+  * Equalizer and Crystalizer UI redesigned: band wrapper is
     extended to fit all the available horizontal space; homogeneous
     property has been applied to get the same space between band sliders.
   * App info and plugin interfaces made scrollable: now PulseEffects
@@ -531,7 +543,7 @@ Fri Jan  8 07:01:05 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
   * Loudness plugin: removed reference signal button (test signals can
     be used in its stead); input value is now saved to preset.
   Note to packagers:
-  * The Noise Reduction is an optional plugin. For it to be 
+  * The Noise Reduction is an optional plugin. For it to be
     available to the user the library RNNoise
     https://github.com/xiph/rnnoise has to be installed when
     PulseEffects is compiled.
@@ -540,23 +552,23 @@ Fri Jan  8 07:01:05 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 Mon Sep 21 16:06:01 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Update to version 4.8.2.
-  * Fix when importing Equalizer APO presets the bands were not 
+  * Fix when importing Equalizer APO presets the bands were not
     being set to the APO mode.
 - Changelog from 4.8.1.
   * Blocklist adopted and related command modified as a checkbutton
     inside the app info ui.
   * Pulseaudio’s media name property is shown for each application
     in the Applications section.
-  * Deesser UI redesigned and applied homogeneous property to all 
-    plugin UI to get same space between controls and make them fit 
+  * Deesser UI redesigned and applied homogeneous property to all
+    plugin UI to get same space between controls and make them fit
     all the available horizontal space.
-  * Modified Applications row in the left side plugin list to show 
-    an icon according to input/output effects while the pipeline 
-    global level meter is only shown when something is 
+  * Modified Applications row in the left side plugin list to show
+    an icon according to input/output effects while the pipeline
+    global level meter is only shown when something is
     recording/playing
-  * The feature that shows the last used preset in the preset menu 
-    button label was improved. When seeing input effects widget it 
-    shows the last used input preset. And when seeing output 
+  * The feature that shows the last used preset in the preset menu
+    button label was improved. When seeing input effects widget it
+    shows the last used input preset. And when seeing output
     effects widgets it shows the last used output preset.
   * New application icon.
 
@@ -621,7 +633,7 @@ Wed May 20 08:28:36 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
     impulse files.
   * Checking exceptions in the main function.
   * Headers deprecated in Boost 1.72 were replaced.
-  Notes to package maintainers: 
+  Notes to package maintainers:
   * As the `bypass` property in Linux Studio Plugins `1.1.14`
     was renamed to `enabled` this new PulseEffects version
     won't work with older Linux Studio Plugins versions.
@@ -649,18 +661,18 @@ Mon Jan 13 12:31:38 UTC 2020 - andy great <andythe_great@pm.me>
  * Improved Italian translations.
  * Do not open the main window when listing the available presets
   through command line options.
-  This will also help third party tools like 
+  This will also help third party tools like
   https://github.com/boomshop/pulseffectstray
 
 -------------------------------------------------------------------
 Mon Sep 23 12:02:15 UTC 2019 - Aaron Stern <ukbeast89@protonmail.com>
 
-- Update to version 4.6.8 (see CHANGELOG.md) 
-  * It is now possible to set different buffer and latency values 
-    for the pulsesrc 
-    and the pulsesink plugins. 
-    This means that there is more room to reduce the overall latency. 
-    Pulsesrc is at the start of the effects pipeline and 
+- Update to version 4.6.8 (see CHANGELOG.md)
+  * It is now possible to set different buffer and latency values
+    for the pulsesrc
+    and the pulsesink plugins.
+    This means that there is more room to reduce the overall latency.
+    Pulsesrc is at the start of the effects pipeline and
     pulsesink at its end.
 
 -------------------------------------------------------------------
