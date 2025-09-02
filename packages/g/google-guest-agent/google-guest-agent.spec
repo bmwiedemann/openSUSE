@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           google-guest-agent
-Version:        20250807.00
+Version:        20250901.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
@@ -34,10 +34,8 @@ Source0:        %{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        rpmlintrc
 Patch0:         disable_google_dhclient_script.patch
-# PATCH-FIX-UPSTREAM - Fix unexpected memory consumption during token parsing in golang.org/x/oauth2
-Patch1:         CVE-2025-22868.patch
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.23
+BuildRequires:  golang(API) = 1.25
 Requires:       google-guest-configs
 Requires:       google-guest-oslogin >= 20231003
 Provides:       google-compute-engine-init = %{version}
@@ -53,9 +51,6 @@ Google Cloud Guest Agent
 %prep
 %setup -n %{repo}-%{version} -a1
 %patch -P 0 -p1
-pushd vendor/golang.org/x/oauth2
-%patch -P 1 -p1
-popd
 
 %build
 %goprep %{import_path}

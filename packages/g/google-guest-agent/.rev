@@ -746,4 +746,41 @@
   * systemd should manage only the main process (#544) (forwarded request 1298840 from glaubitz)</comment>
     <requestid>1298848</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>97d69f584a3bbd3897755777b305ceb3</srcmd5>
+    <version>20250901.00</version>
+    <time>1756828846</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250901.00
+  * Update go version to 1.25 (#565)
+  * Add compat adapt script to windows in agent sysprep (#569)
+  * Fix adapt to use more portable shebang line (#567)
+  * Remove routes script from packaging (#566)
+  * Update adapt script to run on startup/shutdown both (#561)
+  * Update agent_uninstall.ps1 (#558)
+  * Stop core plugin before removing agent package (#554)
+  * Startup scripts should start after agent manager instead (#553)
+  * Update presets and install dependencies on systemd units (#552)
+  * Ensure agent service is disabled (#551)
+  * Disable legacy agent to enable core plugin (#550)
+  * Final fix for RHEL packaging for routes setup (#549)
+  * Fix RHEL packaging for routes scripts (#548)
+  * Packaging changes to include routes script installation (#542)
+  * Update CLI name in packaging (#543)
+  * systemd should manage only the main process (#544)
+- from version 20250831.03
+  * Update go version for stable branch to 1.25 (#571)
+  * Add adapt script in stable branch as per #569 (#570)
+  * Backport fix from #567 to stable branch (#568)
+  * Revert compat behavior and call known binary directly (#560)
+  * Revert compat behavior and call known binary directly (#559)
+  * Build rollforward package to re-enable original agent and
+    disable core plugin (#557)
+- from version 20250831.02
+  * Update go version to 1.25 (#565)
+  * Add compat adapt script to windows in agent sysprep (#569)
+  * Fix adapt to use more portable shebang line (#567)
+  * Remove routes script from packaging (#566)</comment>
+    <requestid>1302448</requestid>
+  </revision>
 </revisionlist>
