@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  2 10:42:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.100.0
+  * Merge main to develop by @vicheey in (#3783)
+  * chore: Add policies for new partition by @valerena in (#3789)
+  * chore(schema): update by @github-actions[bot] in (#3780)
+  * chore(schema): update by @github-actions[bot] in (#3787)
+  * chore(schema): update by @github-actions[bot] in (#3790)
+  * chore(schema): update by @github-actions[bot] in (#3793)
+  * Updating Cloudformation Schema by @Vandita2020 in (#3797)
+
+-------------------------------------------------------------------
 Mon Jun 23 14:53:34 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.99.0
