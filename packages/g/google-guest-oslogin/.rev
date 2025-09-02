@@ -362,4 +362,15 @@
     <comment></comment>
     <requestid>1292590</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>1c574d55c29b171728413b5a2bf5b92d</srcmd5>
+    <version>20250821.00</version>
+    <time>1756828842</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250821.00
+  * Check policy uses adminLogin for cloud run (#165)
+- from version 20250807.00
+  * Extract the principal from certs when cloud_run enabled (#164) (forwarded request 1302426 from glaubitz)</comment>
+    <requestid>1302435</requestid>
+  </revision>
 </revisionlist>

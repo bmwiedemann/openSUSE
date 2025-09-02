@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  2 12:50:52 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20250821.00
+  * Check policy uses adminLogin for cloud run (#165)
+- from version 20250807.00
+  * Extract the principal from certs when cloud_run enabled (#164)
+
+-------------------------------------------------------------------
 Fri Jul 11 11:30:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20250710.00
