@@ -1,7 +1,7 @@
 #
 # spec file for package libgpiod
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 # Enable python
 %bcond_without libgpiod_python
 Name:           libgpiod
-Version:        2.2.1
+Version:        2.2.2
 Release:        0
 Summary:        C library and tools for interacting with the linux GPIO character device
 License:        LGPL-2.1-or-later
@@ -173,7 +173,7 @@ Python binding part.
 %package        manager
 Summary:        DBus manager for GPIO
 Requires:       %{name}%{?_isa} = %{version}-%{release}
- 
+
 %description manager
 DBus manager for interacting with GPIO character devices.
 
@@ -237,10 +237,10 @@ find %{buildroot} -name '*.la' -delete
 
 %post manager
 %service_add_post gpio-manager.service
- 
+
 %preun manager
 %service_del_preun gpio-manager.service
- 
+
 %postun manager
 %service_del_postun  gpio-manager.service
 

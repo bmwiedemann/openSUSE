@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  2 13:32:45 UTC 2025 - pgajdos@suse.com
+
+- version update to 2.2.2
+  * don't implicity unquote unnamed lines in gpioinfo
+  * remove useless variable in reconfigure example
+  * don't let struct line_config balloon out of control and trigger an OOM
+  * drop python3-config check from configure.ac
+
+-------------------------------------------------------------------
 Mon Jun 16 14:42:34 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Upgrade to 2.2.1
