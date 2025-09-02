@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-optim
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,17 @@ Release:        0
 Summary:        Non-linear optimization toolkit for Octave
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io/optim/index.html
-Source0:        http://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+URL:            https://gnu-octave.github.io/packages/optim/
+Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         https://file.savannah.gnu.org/file/optim-1.6.2.patch?file_id=55686#/fix_octave9_compat.patch
 BuildRequires:  blas-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hdf5-devel
 BuildRequires:  lapack-devel
 BuildRequires:  octave-devel
+BuildRequires:  octave-forge-statistics
+BuildRequires:  octave-forge-struct >= 1.0.12
 Requires:       octave-cli >= 3.6.0
 Requires:       octave-forge-parallel >= 3.0.4
 Requires:       octave-forge-statistics
@@ -41,6 +45,7 @@ This is part of the Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
+%patch -P0 -p1 -d %{octpkg}-%{version}
 %octave_pkg_src
 
 %build
