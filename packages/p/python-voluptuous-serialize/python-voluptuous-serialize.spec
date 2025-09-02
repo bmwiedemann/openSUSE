@@ -1,7 +1,7 @@
 #
 # spec file for package python-voluptuous-serialize
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-voluptuous-serialize
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        Python module to convert voluptuous schemas to dictionaries
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/balloob/voluptuous-serialize
-Source:         https://files.pythonhosted.org/packages/source/v/voluptuous-serialize/voluptuous-serialize-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/v/voluptuous-serialize/voluptuous_serialize-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -41,7 +41,7 @@ BuildRequires:  %{python_module voluptuous}
 A Python module to convert voluptuous schemas to dictionaries.
 
 %prep
-%setup -q -n voluptuous-serialize-%{version}
+%setup -q -n voluptuous_serialize-%{version}
 
 %build
 %pyproject_wheel

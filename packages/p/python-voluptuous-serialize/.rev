@@ -59,4 +59,23 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1285493</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>39a2ee5f78e851d4ac8dac5515d1cc0d</srcmd5>
+    <version>2.7.0</version>
+    <time>1756828764</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.7.0
+  * Add type annotations (#160) @farmio
+  * Consistently mark required fields of mapping schemas (#159) @farmio
+  * Check for nested mapping schemas raise properly (#155) @farmio
+  * Add tests for unsupported validators (#154) @farmio
+  * Improve README example (#153) @farmio
+  * Fix TypeError in convert function when schema is not a class (#140)
+    @philippwaller
+  * Improve error handling for unsupported object (#152) @farmio
+  * Remove support for Python 3.8 (#146) @MartinHjelmare
+- updated source link
+</comment>
+    <requestid>1302343</requestid>
+  </revision>
 </revisionlist>
