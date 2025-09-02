@@ -268,4 +268,12 @@
   * Fix infinite in loop QuickSceneGraphModel::itemForSgNode()</comment>
     <requestid>1293834</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>aa7abdb9f2c617b5a1d6c22a66c8f9af</srcmd5>
+    <version>3.2.2</version>
+    <time>1756828753</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1302332</requestid>
+  </revision>
 </revisionlist>
