@@ -2141,6 +2141,7 @@ unsorted:
   - chntpw 
   - chocolate-doom 
   - choose 
+  - chromaprint-devel 
   - chromaprint-fpcalc 
   - chromedriver 
   - chromium 
@@ -3812,7 +3813,6 @@ unsorted:
   - exempi-tools 
   - exif 
   - exiftool 
-  - exiftran 
   - exim 
   - eximon 
   - eximstats-html 
@@ -3903,8 +3903,6 @@ unsorted:
   - fatrace 
   - fatsort 
   - fbcat 
-  - fbi 
-  - fbpdf 
   - fbreader 
   - fbterm 
   - fcft-devel 
@@ -12487,7 +12485,6 @@ unsorted:
   - libchipcard-devel 
   - libchipcard6 
   - libchm0 
-  - libchromaprint-devel 
   - libchromaprint1-32bit 
   - libcilkrts5 
   - libcilkrts5-32bit 
@@ -13297,10 +13294,10 @@ unsorted:
   - libgaminggear0 
   - libgaminggearfx0 
   - libgaminggearwidget0 
-  - libgammaray-3_2_1 
-  - libgammaray-qt6-3_2_1 
-  - libgammaray-shared-3_2_1 
-  - libgammaray-shared-qt6-3_2_1 
+  - libgammaray-3_2_2 
+  - libgammaray-qt6-3_2_2 
+  - libgammaray-shared-3_2_2 
+  - libgammaray-shared-qt6-3_2_2 
   - libgap9 
   - libgarcon-branding-upstream 
   - libgarcon-devel 
@@ -21710,6 +21707,7 @@ unsorted:
   - perl-Log-Message 
   - perl-Log-Message-Simple 
   - perl-MCE 
+  - perl-MCP 
   - perl-MIME-Charset 
   - perl-MIME-EncWords 
   - perl-MIME-Lite 
@@ -22298,6 +22296,7 @@ unsorted:
   - perl-Text-Glob 
   - perl-Text-Hunspell 
   - perl-Text-Iconv 
+  - perl-Text-Kakasi 
   - perl-Text-Levenshtein 
   - perl-Text-Markdown 
   - perl-Text-Patch 
