@@ -339,7 +339,7 @@
  
 --- man/man_db.renames.in
 +++ man/man_db.renames.in	2025-05-05 07:22:16.198714905 +0000
-@@ -305,6 +305,7 @@ wtimeout.3x			wtimeout.3ncurses
+@@ -310,6 +310,7 @@ wtimeout.3x			wtimeout.3ncurses
  wunctrl.3x			wunctrl.3ncurses
  #
  # Other:
@@ -349,7 +349,7 @@
  ttys.5				ttys.4
 --- man/ncurses.3x
 +++ man/ncurses.3x	2025-05-05 07:22:16.198714905 +0000
-@@ -363,6 +363,10 @@ they permit overlapping windows and ease
+@@ -364,6 +364,10 @@ they permit overlapping windows and ease
  with
  .IR curses .
  .SS "Initialization"
@@ -780,7 +780,7 @@
  
 --- test/test.priv.h
 +++ test/test.priv.h	2025-07-14 07:33:47.039416894 +0000
-@@ -1164,12 +1164,12 @@ extern char *_nc_strstr(const char *, co
+@@ -1171,12 +1171,12 @@ extern char *_nc_strstr(const char *, co
  #endif
  
  /* out-of-band values for representing absent capabilities */

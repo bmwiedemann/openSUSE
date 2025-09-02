@@ -750,7 +750,7 @@ export CFLAGS_SHARED
 	pushd ../tack/
 	    OCFLAGS="$CFLAGS"
 	    OLDFLAGS="$LDFLAGS"
-	    CFLAGS="$CFLAGS -I%{root}%{_incdir}/ncursesw/ -I%{root}%{_incdir}/ -fPIE" \
+	    CFLAGS="$CFLAGS -I%{root}%{_incdir}/ncursesw/ -I%{root}%{_incdir}/ -fPIE -DNCURSES_INTERNALS" \
 	    LDFLAGS="$LDFLAGS  -Wl,-rpath-link=%{root}%{_libdir} -L%{root}%{_libdir} -pie" \
 	    %configback --with-ncursesw --disable-rpath-hack
 	    make %{?_smp_mflags}

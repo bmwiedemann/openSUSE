@@ -5293,4 +5293,29 @@
     Axel Reinhold).</comment>
     <requestid>1298758</requestid>
   </revision>
+  <revision rev="308" vrev="81">
+    <srcmd5>89be09f7675511a7973e18fd9adf69fa</srcmd5>
+    <version>unknown</version>
+    <time>1756828695</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20250830
+  + in-progress work to merge MinGW/Windows port.
+  + build-fix for experimental Windows configuration (report by Kirill
+    Makurin).
+  + improve pattern used for configure --with-xterm-kbs option.
+- Add ncurses patch 20250823
+  + improve style of MKterminfo.sh script (patches by Branden Robinson).
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + remove redundant definition of ConsoleInfo.
+  + change scope of TTY, GET_TTY and SET_TTY to ncurses-internals
+- Add ncurses patch +20250816
+  + remove redundant reference to compiler in libtool configuration of
+    mk-1st.awk (report by Lorinczy Zsigmond).
+  + build-fixes for --enable-exp-win32 configuration
+  + improve formatting/style of manpages (patches by Branden Robinson).
+- Fix build of tack as with patch 20250823 some parts of term.h
+  became ncurses internal (including termios.h e.g.)
+- Correct hunk offsets of patch ncurses-6.4.dif</comment>
+    <requestid>1302199</requestid>
+  </revision>
 </revisionlist>

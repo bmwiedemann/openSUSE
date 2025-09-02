@@ -1,4 +1,3 @@
 addFilter(".*files-duplicate.*")
 addFilter(".*non-etc-or-var-file-marked-as-conffile.*")
-addFilter(".*macro-in-comment.*jobs.*")
 addFilter(".*terminfo.*E:.no-binary.*")
