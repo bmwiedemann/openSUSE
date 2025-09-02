@@ -1,7 +1,7 @@
 #
 # spec file for package gom
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gom
-Version:        0.5.3
+Version:        0.5.4
 Release:        0
 Summary:        GObject Data Mapper
 License:        LGPL-2.1-or-later
@@ -56,7 +56,7 @@ This package provides the GObject Introspection bindings for gom.
 %package -n python3-gom
 Summary:        Python3 binding for the GObject Dara Mapper
 Group:          Development/Languages/Python
-Supplements:    packageand(python3:typelib-1_0-Gom-1_0)
+Supplements:    (python3 and typelib-1_0-Gom-1_0)
 
 %description -n python3-gom
 This is a DataMapper for GObject.
@@ -71,25 +71,22 @@ Requires:       python3-gom = %{version}
 Requires:       typelib-1_0-Gom-1_0 = %{version}
 
 %description  devel
-This is a DataMapper for GObject.
+Development files for the GObject Data Mapper.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson
 %meson_build
 
 %check
-# Temp disable tests while we figure out why it times out on x86_64
-#meson_test
+%meson_test
 
 %install
 %meson_install
-find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libgom-1_0-0 -p /sbin/ldconfig
-%postun -n libgom-1_0-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgom-1_0-0
 
 %files -n libgom-1_0-0
 %license COPYING

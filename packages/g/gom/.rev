@@ -96,4 +96,17 @@
     <comment></comment>
     <requestid>1193416</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>939762c15bea8f32dd7c03493af23e77</srcmd5>
+    <version>0.5.4</version>
+    <time>1756828680</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.5.4:
+  + Build system improvements.
+- Modernize spec, use ldconfig_scriptles and autosetup macros and
+  modern Supplements. Further enable the previously disabled
+  meson_test macro, run tests during build. Also drop now obsolete
+  removal of la files, no longer built since port to meson. (forwarded request 1302108 from iznogood)</comment>
+    <requestid>1302230</requestid>
+  </revision>
 </revisionlist>
