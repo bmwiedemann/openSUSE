@@ -1286,4 +1286,13 @@
   https://src.suse.de/products/SLFO/pulls/204 (bsc#1248487). (forwarded request 1300954 from gleidi)</comment>
     <requestid>1302150</requestid>
   </revision>
+  <revision rev="107" vrev="110">
+    <srcmd5>41cb483e5338901572a4a137919f1389</srcmd5>
+    <version>unknown</version>
+    <time>1756828689</time>
+    <user>anag_factory</user>
+    <comment>- Increase pool_size and pool_free for both xmltex and pdfxmltex
+  to get formats created and xmlto runing again (boo#1248830)</comment>
+    <requestid>1302358</requestid>
+  </revision>
 </revisionlist>
