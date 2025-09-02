@@ -99,8 +99,9 @@ License:        LGPL-2.1-or-later
 Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
 Requires:       xz
-# autopoint requires find
+# autopoint requires find, diff and cmp
 Requires:       findutils
+Requires:       diffutils
 # For non-UTF encodings
 Requires:       glibc-gconv-modules-extra
 %if %{without mini}
