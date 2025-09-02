@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Tue Sep  2 09:14:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.11.0:
+  https://github.com/siderolabs/talos/releases/tag/v1.11.0
+  * no CLI-related changes in the Changelog
+  * Dependency changes
+    - cloud.google.com/go/compute/metadata v0.6.0 -> v0.7.0
+    - github.com/Azure/azure-sdk-for-go/sdk/azcore
+      v1.18.0 -> v1.18.1
+    - github.com/Azure/azure-sdk-for-go/sdk/azidentity
+      v1.9.0 -> v1.10.1
+    - github.com/Azure/azure-sdk-for-go/sdk/security/keyvault/azcertificates
+      v1.3.1 -> v1.4.0
+    - github.com/Azure/azure-sdk-for-go/sdk/security/keyvault/azkeys
+      v1.3.1 -> v1.4.0
+    - github.com/aws/aws-sdk-go-v2/config v1.29.14 -> v1.29.17
+    - github.com/aws/aws-sdk-go-v2/feature/ec2/imds
+      v1.16.30 -> v1.16.32
+    - github.com/aws/aws-sdk-go-v2/service/kms v1.38.3 -> v1.41.2
+    - github.com/aws/smithy-go v1.22.3 -> v1.22.4
+    - github.com/containerd/containerd/api v1.8.0 -> v1.9.0
+    - github.com/containerd/containerd/v2 v2.0.5 -> v2.1.4
+    - github.com/containernetworking/plugins v1.6.2 -> v1.7.1
+    - github.com/cosi-project/runtime v0.10.2 -> v1.10.7
+    - github.com/detailyang/go-fallocate 432fa640bd2e new
+    - github.com/docker/cli v28.0.4 -> v28.3.3
+    - github.com/docker/docker v28.0.4 -> v28.3.3
+    - github.com/equinix-ms/go-vmw-guestrpc v0.1.1 new
+    - github.com/foxboron/go-uefi 69fb7dba244f -> a3183a1bfc84
+    - github.com/g0rbe/go-chattr v1.0.1 new
+    - github.com/google/cadvisor v0.52.1 -> v0.53.0
+    - github.com/google/cel-go v0.24.1 -> v0.26.0
+    - github.com/google/go-containerregistry v0.20.3 -> v0.20.6
+    - github.com/google/go-tpm v0.9.3 -> v0.9.5
+    - github.com/grpc-ecosystem/go-grpc-middleware/v2
+      v2.3.1 -> v2.3.2
+    - github.com/hetznercloud/hcloud-go/v2 v2.21.0 -> v2.22.0
+    - github.com/jsimonetti/rtnetlink/v2 v2.0.3 -> v2.0.5
+    - github.com/klauspost/cpuid/v2 v2.2.10 -> v2.3.0
+    - github.com/linode/go-metadata v0.2.1 -> v0.2.2
+    - github.com/miekg/dns v1.1.65 -> v1.1.67
+    - github.com/pkg/xattr v0.4.10 -> v0.4.12
+    - github.com/prometheus/procfs v0.16.0 -> v0.17.0
+    - github.com/rivo/tview 949945f8d922 -> a4a78f1e05cb
+    - github.com/safchain/ethtool v0.5.10 -> v0.6.1
+    - github.com/scaleway/scaleway-sdk-go
+      v1.0.0-beta.33 -> v1.0.0-beta.34
+    - github.com/siderolabs/crypto v0.5.1 -> v0.6.3
+    - github.com/siderolabs/discovery-client v0.1.11 -> v0.1.13
+    - github.com/siderolabs/gen v0.8.0 -> v0.8.5
+    - github.com/siderolabs/go-api-signature v0.3.6 -> v0.3.7
+    - github.com/siderolabs/go-blockdevice/v2 v2.0.16 -> v2.0.19
+    - github.com/siderolabs/go-circular v0.2.2 -> v0.2.3
+    - github.com/siderolabs/go-kubernetes v0.2.21 -> v0.2.26
+    - github.com/siderolabs/go-pcidb v0.3.1 -> v0.3.2
+    - github.com/siderolabs/pkgs
+      v1.10.0-5-g48dba3e -> v1.11.0-15-g2ac857a
+    - github.com/siderolabs/siderolink v0.3.13 -> v0.3.15
+    - github.com/siderolabs/talos/pkg/machinery v1.10.0 -> v1.11.0
+    - github.com/siderolabs/tools v1.10.0 -> v1.11.0-2-g8556c73
+    - github.com/spf13/pflag v1.0.6 -> v1.0.7
+    - github.com/ulikunitz/xz v0.5.12 -> v0.5.15
+    - go.etcd.io/etcd/api/v3 v3.5.21 -> v3.6.4
+    - go.etcd.io/etcd/client/pkg/v3 v3.5.21 -> v3.6.4
+    - go.etcd.io/etcd/client/v3 v3.5.21 -> v3.6.4
+    - go.etcd.io/etcd/etcdutl/v3 v3.5.21 -> v3.6.4
+    - golang.org/x/net v0.39.0 -> v0.42.0
+    - golang.org/x/oauth2 v0.29.0 -> v0.30.0
+    - golang.org/x/sync v0.13.0 -> v0.16.0
+    - golang.org/x/sys v0.32.0 -> v0.34.0
+    - golang.org/x/term v0.31.0 -> v0.33.0
+    - golang.org/x/text v0.24.0 -> v0.27.0
+    - golang.org/x/time v0.11.0 -> v0.12.0
+    - google.golang.org/grpc v1.71.1 -> v1.73.0
+    - k8s.io/api v0.33.0 -> v0.34.0
+    - k8s.io/apiextensions-apiserver v0.34.0 new
+    - k8s.io/apimachinery v0.33.0 -> v0.34.0
+    - k8s.io/apiserver v0.33.0 -> v0.34.0
+    - k8s.io/client-go v0.33.0 -> v0.34.0
+    - k8s.io/component-base v0.33.0 -> v0.34.0
+    - k8s.io/cri-api v0.33.0 -> v0.34.0
+    - k8s.io/kube-scheduler v0.33.0 -> v0.34.0
+    - k8s.io/kubectl v0.33.0 -> v0.34.0
+    - k8s.io/kubelet v0.33.0 -> v0.34.0
+    - k8s.io/pod-security-admission v0.33.0 -> v0.34.0
+    - k8s.io/utils 4c0f3b243397 new
+    - sigs.k8s.io/hydrophone b92baf7e0b04 -> v0.7.0
+
+-------------------------------------------------------------------
 Thu Aug 28 05:25:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.10.7:
