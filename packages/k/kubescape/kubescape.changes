@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 02 05:39:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.39:
+  * don't read services from configmap, use file
+  * Bump github.com/hashicorp/go-getter from 1.7.8 to 1.7.9
+  * new approach of fix implemented
+
+-------------------------------------------------------------------
 Mon Aug 18 13:00:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.38:
