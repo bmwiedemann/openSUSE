@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Sep  2 08:44:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.132:
+  * General
+    - chore: update meshkit to v0.8.41 @n2h9 (#15724)
+  * Meshery CLI
+    - fix(mesheryctl): update tests after upgrade to tablewriter
+      v1.0.x @lekaf974 (#15720)
+    - chore(mesheryctl): update list table output implementation
+      after upgrade to v1.0.x @lekaf974 (#15718)
+  * Maintenance
+    - added mesheryctl error data @saurabhraghuvanshii (#15716)
+  * Documentation
+    - added mesheryctl error data @saurabhraghuvanshii (#15716)
+- update to 0.8.131:
+  * Bump cuelang.org/go from 0.12.1 to 0.14.0 by @dependabot[bot]
+    in #15499
+  * Bump github.com/olekukonko/tablewriter from 0.0.5 to 1.0.9 by
+    @dependabot[bot] in #15498
+  * Fix: Database Summary Table Scrolling Behavior Problem by
+    @yash37158 in #15633
+  * Fixed linting Error by @ARYANSHAH1567 in #15708
+  * add: Enhance empty state message in MeshSync data table by
+    @FaheemOnHub in #15679
+  * build(deps): Bump form-data in /install/docker-extension/ui by
+    @dependabot[bot] in #15655
+  * build(deps): Bump gopkg.in/yaml.v3 from 3.0.0 to 3.0.1 in
+    /install/docker-extension by @dependabot[bot] in #15697
+  * chore(mesheryctl-e2e): Skip mesheryctl system stop and start
+    test cases temporary by @lekaf974 in #15632
+  * chore: upgrade meshkit to v0.8.40: fix mesheryctl system start
+    -p kubernetes command certificate error by @n2h9 in #15710
+  * fix(msheryctl): update tablewriter after renovate bot upgrade
+    by @lekaf974 in #15705
+  * fix: using same data source for all k8 connection chips. by
+    @FaheemOnHub in #15674
+
+-------------------------------------------------------------------
 Fri Aug 29 04:19:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.130:
