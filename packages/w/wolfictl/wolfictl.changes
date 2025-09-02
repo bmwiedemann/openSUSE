@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 02 05:39:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.38.14:
+  * build(deps): bump github.com/ulikunitz/xz from 0.5.12 to 0.5.14
+  * build(deps): bump cloud.google.com/go/storage from 1.56.0 to
+    1.56.1 (#1732)
+  * build(deps): bump github.com/stretchr/testify from 1.11.0 to
+    1.11.1 (#1738)
+
+-------------------------------------------------------------------
 Thu Aug 28 04:52:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.38.13:
