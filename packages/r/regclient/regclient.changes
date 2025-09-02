@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 02 05:48:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.2:
+  * Security:
+    - xz upgrade fixes CVE-2025-58058 (PR 989)
+  * Miscellaneous:
+    - Fix CLI lint errors. (PR 983)
+    - Cleanup version output. (PR 985)
+    - Dockerfile cleanup. (PR 986)
+
+-------------------------------------------------------------------
 Mon Aug 25 04:49:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.9.1:
