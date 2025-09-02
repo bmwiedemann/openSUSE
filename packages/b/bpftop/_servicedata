@@ -1,6 +1,6 @@
 <servicedata>
   <service name="tar_scm">
     <param name="url">https://github.com/Netflix/bpftop.git</param>
-    <param name="changesrevision">4239270b9b42115530d4595819ee553462de46a2</param>
+    <param name="changesrevision">42bd6a9b33ed3ca193caea1f275731060517fc97</param>
   </service>
 </servicedata>

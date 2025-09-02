@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  2 04:48:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.7.1:
+  * CVE-2025-58160: Update tracing-subscriber to version 0.3.20
+    (boo#1249007)
+  * The BPF iterator program that tracks which process loaded each
+    BPF program now fails gracefully instead of preventing bpftop
+    from starting
+
+-------------------------------------------------------------------
 Thu Aug 21 04:19:43 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.7.0:

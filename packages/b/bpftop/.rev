@@ -15,4 +15,13 @@
     <comment>bpftop 0.7.0</comment>
     <requestid>1300738</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4ba4ee9705b6e35d2e506070f2c95fec</srcmd5>
+    <version>0.7.1</version>
+    <time>1756828817</time>
+    <user>anag_factory</user>
+    <comment>bpftop 0.7.1 CVE-2025-58160 boo#1249007
+</comment>
+    <requestid>1302386</requestid>
+  </revision>
 </revisionlist>
