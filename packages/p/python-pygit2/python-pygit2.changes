@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Sep  2 10:47:35 UTC 2025 - Sangeetha Thackarajan <sangeetha.thackarajan@suse.com>
+
+- Update to 1.18.2
+  1.18.2 (2025-08-16)
+  -------------------------
+  - Add support for almost all global options
+  - Now it's possible to set `Submodule.url = url`
+  - New `RemoteCallbacks.push_negotiation(...)`
+  - New optional boolean argument `connect` in `Remote.ls_remotes(...)`
+  - New `Remote.list_heads(...)` returns a list of `RemoteHead` objects
+  - Documentation fixes
+  - Typing improvements
+  Deprecations:
+  - `Remote.ls_remotes(...)` is deprecated, use `Remote.list_heads(...)`
+
+  1.18.1 (2025-07-26)
+  -------------------------
+  - Update wheels to libgit2 1.9.1 and OpenSSL 3.3
+  - New `Index.remove_directory(...)`
+  - New `Index.add_conflict(...)`
+  - Now `Repository.merge_file_from_index(...)` returns a `MergeFileResult` object when
+    called with `use_deprecated=False`
+  - Typing improvements
+  Deprecations:
+  - At some point in the future `use_deprecated=False` in `Repository.merge_file_from_index(..., use_deprecated=False)` will be the default.
+
+  1.18.0 (2025-04-24)
+  -------------------------
+  - Upgrade Linux Glibc wheels to `manylinux_2_28`
+  - Add `RemoteCallbacks.push_transfer_progress(...)` callback
+  - New `bool(oid)`
+  - Now `Repository.merge(...)` accepts a commit or reference object
+  - New `threads` optional argument in `Remote.push(...)`
+  - New `proxy` optional argument in `clone_repository(...)`
+  - New optional arguments `context_lines` and `interhunk_lines` in `Blob.diff(...)` ; and
+    now `Repository.diff(...)` honors these two arguments when the objects diffed are blobs.
+  - Now `Tree.diff_to_workdir(...)` accepts keyword arguments, not just positional.
+  - Fix when a reference name has non UTF-8 chars
+  - Fix condition check in `Repository.remotes.rename(...)`
+  - Add codespell workflow, fix a number of typos
+  - Documentation and typing
+  - CI: Use ARM runner for tests and wheels
+  - Build and CI updates
+  Deprecations:
+  - Passing str to `Repository.merge(...)` is deprecated,
+    instead pass an oid object (or a commit, or a reference)
+  Breaking changes:
+  - Keyword argument `flag` has been renamed to `flags` in `Blob.diff(...)` and
+    `Blob.diff_to_buffer(...)` 
+
+-------------------------------------------------------------------
 Wed Jan 29 13:52:23 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Remove upstreamed const-parents.patch.

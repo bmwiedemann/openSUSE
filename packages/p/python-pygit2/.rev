@@ -510,4 +510,12 @@ Update to pygit2 1.17.0 and make sure it builds with libgit2 1.9.
 (🤖: Submission of python-pygit2 via https://src.opensuse.org/pool/python-pygit2/pulls/3 by mcepl)</comment>
     <requestid>1241225</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>f17aa0eac5e14053b9302d890f553ede</srcmd5>
+    <version>1.18.2</version>
+    <time>1756828844</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1302433</requestid>
+  </revision>
 </revisionlist>

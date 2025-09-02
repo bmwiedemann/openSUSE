@@ -1,7 +1,8 @@
 #
 # spec file for package python-pygit2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +20,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pygit2
-Version:        1.17.0
+Version:        1.18.2
 Release:        0
 Summary:        Python bindings for libgit2
 License:        GPL-2.0-only
@@ -36,7 +37,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  ca-certificates
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  fdupes
-BuildRequires:  libgit2-devel >= 1.1
+BuildRequires:  libgit2-devel >= 1.9.0
 BuildRequires:  libopenssl-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-cached-property
