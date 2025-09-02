@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Aug 25 13:29:14 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 6269:
+  * Model and conversion: support for Seed-OSS, GPT-OSS 
+  	response_format, interns1-mini, Ernie 4.5, gpt-oss type 
+  	strings, improved Mistral templates, new model conversion 
+  	tool/example with torch-cpu.
+  * Vulkan backend: multiple optimizations (rms_norm, mul_mat_id,
+    synchronization, conv2d, subgroup ops), new ops (exp, 
+    conv_2d_dw f16, ggml_mean).
+  * GGML/CPU: added conv3d op, WebGPU quantization support, 
+  	Q5_0/Q5_1 on s390x, mxfp4 intrinsics on ppc64le.
+  * Server and chat: multimodal completion and embeddings 
+  	JSON support, improved OpenAI API compatibility and usage 
+  	statistics, disabled context shift by default, fixed ordering 
+  	of tasks, webui issues, debug assertions, clarified 
+  	reasoning_format.
+  * KV cache: unified handling improvements, support for reuse, 
+  	removal of deprecated APIs, simplifications.
+  * Miscellaneous: fixed logging of non-ASCII characters, removed 
+  	deprecated or unused code and build artifacts.
+  * Full commit log:
+    https://github.com/ggml-org/llama.cpp/compare/b6188...b6269
+
+-------------------------------------------------------------------
 Sun Aug 17 22:17:38 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 6188:
