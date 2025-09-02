@@ -7809,6 +7809,7 @@ unsorted:
   - gperftools-doc 
   - gperiodic 
   - gperiodic-lang 
+  - gpg-tui 
   - gpg2-tpm 
   - gpgme-devel 
   - gpgmepp-devel 
@@ -12457,6 +12458,8 @@ unsorted:
   - libcephfs2 
   - libcephsqlite 
   - libcephsqlite-devel 
+  - libceres-devel 
+  - libceres4 
   - libcerf-devel 
   - libcerf2 
   - libcerror-devel 
@@ -12630,7 +12633,7 @@ unsorted:
   - libcroco 
   - libcroco-devel 
   - libcryptmount-devel 
-  - libcrypto55 
+  - libcrypto56 
   - libcryptopp-devel 
   - libcryptopp8_9_0 
   - libcryptsetup-devel 
@@ -16189,7 +16192,7 @@ unsorted:
   - libssh2-1-32bit 
   - libssh2-devel 
   - libssh4-32bit 
-  - libssl58 
+  - libssl59 
   - libssr-glinject 
   - libsss_certmap-devel 
   - libsss_idmap-devel 
@@ -16442,7 +16445,7 @@ unsorted:
   - libtinyxml2-11 
   - libtirpc-devel 
   - libtirpc3-32bit 
-  - libtls31 
+  - libtls32 
   - libtmglib3 
   - libtntdb-devel 
   - libtntdb5 
@@ -17210,6 +17213,7 @@ unsorted:
   - libyuv-devel 
   - libyuv-tools 
   - libyuv0-32bit 
+  - libyyjson0 
   - libz-ng-compat1-32bit 
   - libz-ng2 
   - libz-ng2-32bit 
@@ -25330,6 +25334,7 @@ unsorted:
   - python311-gevent-websocket 
   - python311-geventhttpclient 
   - python311-gfloat 
+  - python311-gherkin-official 
   - python311-ghostscript 
   - python311-ghp-import 
   - python311-girder-client 
@@ -29076,6 +29081,7 @@ unsorted:
   - python312-gevent-websocket 
   - python312-geventhttpclient 
   - python312-gfloat 
+  - python312-gherkin-official 
   - python312-ghostscript 
   - python312-ghp-import 
   - python312-girder-client 
@@ -32843,6 +32849,7 @@ unsorted:
   - python313-gevent-websocket 
   - python313-geventhttpclient 
   - python313-gfloat 
+  - python313-gherkin-official 
   - python313-ghostscript 
   - python313-ghp-import 
   - python313-girder-client 
@@ -36078,7 +36085,6 @@ unsorted:
   - rke2-1.31 
   - rke2-1.32 
   - rke2-selinux 
-  - rkhunter 
   - rkward 
   - rmail 
   - rmedigicontrol 
@@ -36981,6 +36987,8 @@ unsorted:
   - sigrok-firmware-fx2lafw 
   - sil-abyssinica-fonts 
   - sil-andika-fonts 
+  - sil-andika-six-fonts 
+  - sil-busra-fonts 
   - sil-doulos-fonts 
   - sil-gentium-fonts 
   - sil-mondulkiri-fonts 
@@ -49671,6 +49679,7 @@ unsorted:
   - yudit 
   - yum 
   - yum-utils 
+  - yyjson-devel 
   - z 
   - z3 
   - z3-devel 
