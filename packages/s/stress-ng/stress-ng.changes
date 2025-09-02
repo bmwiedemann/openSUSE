@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep  1 11:46:50 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- update to 0.19.04:
+  * mmaprandom - extensive memory map random page mapping/unmapping stressor
+  * chyperbolic - complex hyperbolic math function exerciser
+  * ctrig - complex trigonometric math function exerciser
+  * --limit-as - limit virtual memory (address space)
+  * --limit-data - limit data segment (initialized data, uninitialized data, and heap)
+  * --limit-stack - limit stack size
+
+-------------------------------------------------------------------
 Mon Aug  4 11:34:37 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - update to 0.19.03:
