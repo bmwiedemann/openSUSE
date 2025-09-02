@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep  2 07:34:40 UTC 2025 - pgajdos@suse.com
+
+- version update to 1.6.0
+  * Added support for FFmpeg 8.0
+  * Added chromaprint_decode_fingerprint_header function
+  * Added missing chromaprint_get_algorithm function implementation
+  * Optimized simhash calculation and fingerprint decoding
+  * Improved fingerprint compression performance by pre-allocating vector storage
+  * CMake improvements: updated minimum version to 3.10, use GNUInstallDirs, install config targets
+  * Build Linux ARM64 binaries
+  * Allow build to exclude internal avresample
+- removed patches
+  - 0005-Fix-compatibility-with-ffmpeg-7.0.patch (upstreamed)
+
+-------------------------------------------------------------------
+Mon Mar 31 09:54:14 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- More precise ffmpeg BuildRequires to nudge bs_sched for 15.6
+
+-------------------------------------------------------------------
+Sat Mar 29 11:53:17 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Use pkgconfig(libavcodec) to allow building with ffmpeg-*-mini
+- Rename %soname to %sover to reflect actual use of the variable
+- Use the SRPM base name for the devel subpackage
+
+-------------------------------------------------------------------
 Sat Jan 25 08:50:23 UTC 2025 - Dave Plater <davejplater@gmail.com>
 
 - Add 0005-Fix-compatibility-with-ffmpeg-7.0.patch and force build
