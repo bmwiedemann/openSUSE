@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  2 08:27:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.21.4
+  * Scheduled Iteration Mem-release Order by @sbSteveK in (#752)
+- from version 0.21.3
+  * Change stale issue and discussion handling to run once a week
+    by @DmitriyMusatkin in (#747)
+  * Fix warnings found by the Undefined Behavior Sanitizer by @bjosv in (#748)
+  * Fix memory leaks in NW socket by @sfod in (#749)
+  * Fix Dispatch Queue Leak by @xiazhvera in (#750)
+
+-------------------------------------------------------------------
 Tue Jul 22 08:28:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.21.2
