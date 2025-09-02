@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  1 19:49:15 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Specify sources utf-8 encoding for javadoc generation
+
+-------------------------------------------------------------------
 Thu May  1 08:30:09 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Rewrite the build system for ANT: to be able to use early
