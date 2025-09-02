@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Tue Sep  2 10:37:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.179.0
+  * **admin:** Update the api
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **analyticshub:** Update the api
+  * **androidpublisher:** Update the api
+  * **apigee:** Update the api
+  * **backupdr:** Update the api
+  * **bigtableadmin:** Update the api
+  * **cloudbuild:** Update the api
+  * **cloudidentity:** Update the api
+  * **cloudkms:** Update the api
+  * **cloudsupport:** Update the api
+  * **compute:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **displayvideo:** Update the api
+  * **file:** Update the api
+  * **firebaseappdistribution:** Update the api
+  * **firebasedataconnect:** Update the api
+  * **firebaseml:** Update the api
+  * **managedkafka:** Update the api
+  * **merchantapi:** Update the api
+  * **mybusinessverifications:** Update the api
+  * **networkservices:** Update the api
+  * **paymentsresellersubscription:** Update the api
+  * **redis:** Update the api
+  * **run:** Update the api
+  * **texttospeech:** Update the api
+  * **walletobjects:** Update the api
+- from version 2.178.0
+  * **aiplatform:** Update the api
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **analyticsadmin:** Update the api
+  * **androidenterprise:** Update the api
+  * **androidpublisher:** Update the api
+  * **apihub:** Update the api
+  * **backupdr:** Update the api
+  * **bigquery:** Update the api
+  * **bigquery:** Update the api
+  * **bigtableadmin:** Update the api
+  * **chat:** Update the api
+  * **chat:** Update the api
+  * **chromemanagement:** Update the api
+  * **cloudbuild:** Update the api
+  * **compute:** Update the api
+  * **connectors:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **container:** Update the api
+  * **dataplex:** Update the api
+  * **datastream:** Update the api
+  * **dfareporting:** Update the api
+  * **discoveryengine:** Update the api
+  * **discoveryengine:** Update the api
+  * **displayvideo:** Update the api
+  * **drive:** Update the api
+  * **file:** Update the api
+  * **firebaseml:** Update the api
+  * **firebaseml:** Update the api
+  * **gkebackup:** Update the api
+  * **iam:** Update the api
+  * **integrations:** Update the api
+  * **looker:** Update the api
+  * **merchantapi:** Update the api
+  * **merchantapi:** Update the api
+  * **mybusinessbusinessinformation:** Update the api
+  * **mybusinessverifications:** Update the api
+  * **networkmanagement:** Update the api
+  * **networkmanagement:** Update the api
+  * **networksecurity:** Update the api
+  * **osconfig:** Update the api
+  * **redis:** Update the api
+  * **redis:** Update the api
+  * **retail:** Update the api
+  * **retail:** Update the api
+  * **searchads360:** Update the api
+  * **securitycenter:** Update the api
+  * **serviceconsumermanagement:** Update the api
+  * **servicenetworking:** Update the api
+  * **serviceusage:** Update the api
+  * **storage:** Update the api
+  * **transcoder:** Update the api
+  * **videointelligence:** Update the api
+  * **workloadmanager:** Update the api
+  * **workloadmanager:** Update the api
+  * **workstations:** Update the api
+  * **iamcredentials:** Update the api
+  * **migrationcenter:** Update the api
+
+-------------------------------------------------------------------
 Fri Aug  1 09:49:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.177.0
