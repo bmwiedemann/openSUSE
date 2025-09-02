@@ -1,7 +1,7 @@
 #
 # spec file for package diun
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           diun
-Version:        4.29.0
+Version:        4.30.0
 Release:        0
 Summary:        Receive notifications when an image is updated on a Docker registry
 License:        MIT
@@ -28,8 +26,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source11:       %{name}.service
 Source12:       %{name}.sysusers
-BuildRequires:  go >= 1.22
 BuildRequires:  sysuser-tools
+BuildRequires:  golang(API) >= 1.24
 %{sysusers_requires}
 
 %description
