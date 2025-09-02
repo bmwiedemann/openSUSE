@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep 02 05:51:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.0:
+  * Added Features
+    - Add fix date processing for OSV transformers [#649
+      @wagoodman]
+    - Add fix date processing to NVD transformer [#651 @wagoodman]
+    - Add fix available date to GHSA entries [#646 @wagoodman]
+  * Dependencies
+    - chore(deps): Bump astral-sh/setup-uv in
+      /.github/actions/bootstrap (#643)
+    - chore(deps): Bump github.com/ulikunitz/xz from 0.5.13 to
+      0.5.14 (#656)
+    - chore(deps): Bump github.com/anchore/grype (#652)
+    - chore(deps): update tools to latest versions (#645)
+
+-------------------------------------------------------------------
 Mon Aug 25 04:53:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.0:
