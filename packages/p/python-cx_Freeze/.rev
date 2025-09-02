@@ -269,4 +269,12 @@
 - Normalize metadata directory name.</comment>
     <requestid>1266734</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>f45fc719f9d4eef83cfb280c51b0ba1d</srcmd5>
+    <version>8.0.0</version>
+    <time>1756836167</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives</comment>
+    <requestid>1302465</requestid>
+  </revision>
 </revisionlist>

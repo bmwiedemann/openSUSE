@@ -1,7 +1,7 @@
 #
 # spec file for package python-cx_Freeze
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %define oldpython python
+%bcond_without libalternatives
 Name:           python-cx_Freeze
 Version:        8.0.0
 Release:        0
@@ -38,21 +39,21 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 65}
 BuildRequires:  %{python_module tomli >= 2.0.1 if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  patchelf
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       patchelf
 Requires:       python-filelock >= 3.12
 Requires:       python-packaging >= 24
 Requires:       python-setuptools >= 65
+# we provide same binary like the deprecated py2 variant
+Conflicts:      %{oldpython}-cx_Freeze
 %if 0%{python_version_nodots} < 311
 Requires:       python-tomli >= 2.0.1
 %endif
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-# we provide same binary like the deprecated py2 variant
-Conflicts:      %{oldpython}-cx_Freeze
 %python_subpackages
 
 %description
@@ -85,15 +86,12 @@ export CFLAGS="%{optflags}"
 
 %check
 # bdist_rpm is not long for this world, and it always execs the default Python
-%pytest_arch -k 'not (test_command_bdist_rpm or test_command_build_exe or test_command_build or test_bdist_appimage)'
+# test_bdist_deb_simple_pyproject runs the binary, which is currently complicated with libalternatives: https://github.com/openSUSE/python-rpm-macros/pull/196
+%pytest_arch -k 'not (test_command_bdist_rpm or test_command_build_exe or test_command_build or test_bdist_appimage or test_bdist_deb_simple_pyproject)'
 
-%post
-%python_install_alternative cxfreeze-quickstart
-%python_install_alternative cxfreeze
-
-%postun
-%python_uninstall_alternative cxfreeze-quickstart
-%python_uninstall_alternative cxfreeze
+%pre
+%python_libalternatives_reset_alternative cxfreeze-quickstart
+%python_libalternatives_reset_alternative cxfreeze
 
 %files %{python_files}
 %doc README.md
