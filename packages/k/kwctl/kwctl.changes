@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 02 05:46:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.28.1:
+  * chore: bump policy-evaluator version.
+  * build(deps): update github-actions
+  * build(deps): update taiki-e/install-action action to v2.58.24
+  * build(deps): update rust crate clap to v4.5.46 (#1338)
+
+-------------------------------------------------------------------
 Thu Aug 28 04:55:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.28.0:
