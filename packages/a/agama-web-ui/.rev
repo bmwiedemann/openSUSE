@@ -454,4 +454,12 @@
   (related to bsc#1248779).</comment>
     <requestid>1301802</requestid>
   </revision>
+  <revision rev="26" vrev="26">
+    <srcmd5>cd1d94545952e4459e9b909d916930d5</srcmd5>
+    <version>0</version>
+    <time>1756828750</time>
+    <user>anag_factory</user>
+    <comment>- The Chinese languages do not include the territory (bsc#1248826).</comment>
+    <requestid>1302320</requestid>
+  </revision>
 </revisionlist>
