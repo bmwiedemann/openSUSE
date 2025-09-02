@@ -16,9 +16,9 @@
 #
 
 
-%bcond_without test
+%bcond_with test
 Name:           xwayland-satellite
-Version:        0.6
+Version:        0.7
 Release:        0
 Summary:        Rootless Xwayland integration for Wayland compositors
 License:        MPL-2.0
