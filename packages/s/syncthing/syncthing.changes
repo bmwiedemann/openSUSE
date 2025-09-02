@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Sep  2 08:02:23 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 2.0.4
+  * Fixes
+    fix(cmd): only start temporary API server during migration if it's enabled by @pixelspark in #10284
+    fix(model): consider MaxFolderConcurrency when calculating number of hashers by @tomasz1986 in #10285
+    fix(model): consider number of CPU cores when calculating hashers on interactive OS (#10284) by @tomasz1986 in #10286
+    fix(db): apply all migrations and schema in one transaction by @calmh in #10323
+    fix(model): correctly handle block-aligned empty sparse files by @calmh in #10332
+    fix(syncthing): apply folder migrations with temporary API/GUI server by @calmh in #10330
+  * Other
+    chore(db): adjust db bench name to improve benchstat grouping by @imsodin in #10283
+    chore(db): cleanup DB in tests and remove OpenTemp by @imsodin in #10282
+    build: use Go 1.24 tools pattern by @calmh in #10281
+    chore(db): avoid rowid for blocks and blocklists by @bt90 in #10315
+    refactor(db): slightly improve insert performance by @calmh in #10318
+    chore(gui): use steps of 1024 KiB for bandwidth rate limits by @tomasz1986 in #10316
+    chore(gui): use step of 3600 for versions cleanup interval by @tomasz1986 in #10317
+    chore(db): benchmark output, migration blocks/s output by @calmh in #10320
+    chore(db): update schema version in the same transaction as migration by @imsodin in #10321
+    chore(db): migration for previous commits by @calmh in #10319 
+
+-------------------------------------------------------------------
 Fri Aug 22 19:16:20 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 2.0.3
