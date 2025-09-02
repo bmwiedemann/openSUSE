@@ -1,7 +1,7 @@
 #
 # spec file for package python-bandit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,10 +26,15 @@
 %endif
 # CLI tool, no module
 %define pythons python3
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %bcond_without  builddocs
 %{?sle15_python_module_pythons}
 Name:           python-bandit
-Version:        1.8.3
+Version:        1.8.6
 Release:        0
 Summary:        Security oriented static analyser for Python code
 License:        Apache-2.0
@@ -42,9 +47,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-GitPython
 Requires:       python-GitPython >= 1.0.1
-Requires:       python-PyYAML
 Requires:       python-PyYAML >= 5.3.1
 Requires:       python-jschema-to-python >= 1.2.3
 Requires:       python-rich
@@ -52,9 +55,14 @@ Requires:       python-sarif-om
 Requires:       python-stestr >= 1.0.0
 Requires:       python-stevedore >= 1.20.0
 Requires:       (python-tomli >= 1.2.3 if python-base < 3.11)
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 %if %{python_version_nodots} < 311
 Requires:       python-tomli
 %endif
@@ -102,6 +110,11 @@ sed -i '/^#!/d' bandit/__main__.py
 %python_clone -a %{buildroot}%{_bindir}/bandit
 %python_clone -a %{buildroot}%{_bindir}/bandit-config-generator
 %python_clone -a %{buildroot}%{_bindir}/bandit-baseline
+%python_group_libalternatives bandit bandit-config-generator bandit-baseline
+# libalternatives binaries break the tests
+%if %{with libalternatives}
+sed -i 's/import sys/import sys; sys.argv[0] = "bandit"/' %{buildroot}%{_bindir}/bandit-3*
+%endif
 %endif
 
 %if %{with test}
@@ -110,19 +123,24 @@ sed -i '/^#!/d' bandit/__main__.py
 %endif
 
 %if !%{with test}
-%post
-%{python_install_alternative bandit bandit-config-generator bandit-baseline }
 %endif
 
 %if !%{with test}
+%post
+%python_install_alternative bandit bandit.1 bandit-config-generator bandit-baseline
+
 %postun
 %python_uninstall_alternative bandit
+
+%pre
+%python_libalternatives_reset_alternative bandit
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS ChangeLog README.rst
+%{_mandir}/man1/bandit.1%{?ext_man}
 %python_alternative %{_bindir}/bandit
 %python_alternative %{_bindir}/bandit-config-generator
 %python_alternative %{_bindir}/bandit-baseline

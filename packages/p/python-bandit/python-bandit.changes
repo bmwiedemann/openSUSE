@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Sep  1 12:44:09 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems only
+- Fix tests with libalternatives
+
+-------------------------------------------------------------------
+Wed Jul 23 07:18:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.8.6
+  * Bump sigstore/cosign-installer from 3.8.2 to 3.9.0
+    by @dependabot in (#1279)
+  * Bump docker/setup-buildx-action from 3.10.0 to 3.11.1
+    by @dependabot in (#1278)
+  * Added hint to FreeBSD package in doc/source/integrations.rst
+    by @daniel-mohr in (#1282)
+  * Bump sigstore/cosign-installer from 3.9.0 to 3.9.1
+    by @dependabot in (#1284)
+  * Huggingface revision pinning by @lukehinds in (#1281)
+
+-------------------------------------------------------------------
+Wed Jun 25 10:03:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.8.5
+  * Fix the rendering of the CI/CD doc (#1274)
+  * Fix for publish to PyPI failure (#1273)
+- from version 1.8.4
+  * Add more random functions to B311 check (#1235)
+  * Metadata: rename classifier to classifiers (#1237)
+  * Bump sigstore/cosign-installer from 3.8.0 to 3.8.1 (#1239)
+  * Bump docker/build-push-action from 6.13.0 to 6.14.0 (#1238)
+  * Bump docker/build-push-action from 6.14.0 to 6.15.0 (#1240)
+  * Bump docker/setup-buildx-action from 3.9.0 to 3.10.0 (#1241)
+  * Bump docker/login-action from 3.3.0 to 3.4.0 (#1245)
+  * Bump bandit version in bug template (#1247)
+  * Fix traceback from trojansource plugin (#1248)
+  * Ensure the man page is built (#1257)
+  * Update documentation to cover `--severity-level` and `--confidence-level` (#1254)
+  * Use license property in lieu of classifier (#1259)
+  * Fix up some of the warnings when building docs (#1258)
+  * Add a doc describing various integrations (#1253)
+  * Use ubuntu latest for readthedocs build (#1260)
+  * Bump docker/build-push-action from 6.15.0 to 6.16.0 (#1261)
+  * Bump sigstore/cosign-installer from 3.8.1 to 3.8.2 (#1262)
+  * Remove etc from list of temp paths (#1263)
+  * Bump docker/build-push-action from 6.16.0 to 6.17.0 (#1265)
+  * [pre-commit.ci] pre-commit autoupdate (#1266)
+  * Bump docker/build-push-action from 6.17.0 to 6.18.0 (#1268)
+  * Add github-actions documentation (#1172)
+- Add bandit manpage to %files section
+
+-------------------------------------------------------------------
+Mon Jun 16 14:45:04 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives
+
+-------------------------------------------------------------------
 Mon Feb 24 10:23:19 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.8.3
