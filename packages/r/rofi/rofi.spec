@@ -1,7 +1,7 @@
 #
 # spec file for package rofi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,28 @@
 
 
 Name:           rofi
-Version:        1.7.9
-%define ARCHIVE_VERSION %{version}.1
+Version:        2.0.0
 Release:        0
 Summary:        A window switcher, run dialog and dmenu replacement
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/davatorium/rofi
-Source:         https://github.com/davatorium/%{name}/releases/download/%{version}/%{name}-%{ARCHIVE_VERSION}.tar.xz
+Source:         https://github.com/davatorium/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Patch0:         xdg-terminal.patch
-# Required version 0.11 is not yet in TW BuildRequires:  check-devel
 BuildRequires:  bison
 BuildRequires:  cairo-devel
+BuildRequires:  check-devel
 BuildRequires:  flex >= 2.5.39
 BuildRequires:  glib2-devel >= 2.36
 BuildRequires:  libjpeg8-devel
 BuildRequires:  librsvg-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  libxkbcommon-x11-devel
-BuildRequires:  make
+BuildRequires:  meson
 BuildRequires:  pango-devel
 BuildRequires:  startup-notification-devel
+BuildRequires:  wayland-devel
+BuildRequires:  wayland-protocols-devel
 BuildRequires:  xcb-util-cursor-devel
 BuildRequires:  xcb-util-devel
 BuildRequires:  xcb-util-keysyms-devel
@@ -63,16 +64,16 @@ Group:          Development/Libraries/C and C++
 Development files and headers for rofi
 
 %prep
-%autosetup -p1 -n %{name}-%{ARCHIVE_VERSION}
+%autosetup -p1
 
 %build
 sed -i "s|%{_bindir}/env bash|/bin/bash|g" ./script/rofi-sensible-terminal
 sed -i "s|%{_bindir}/env bash|/bin/bash|g" ./script/rofi-theme-selector
-%configure --disable-check
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %license COPYING

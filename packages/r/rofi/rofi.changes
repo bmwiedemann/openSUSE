@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  2 05:12:07 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.0:
+  * Removal of autotools build system
+  * To help bug reports, we added the command rofi -info
+  * Redraw on startup #2165
+  * Close on click out of window #2158
+  * No IMDKIT support in wayland
+
+-------------------------------------------------------------------
 Mon May 26 06:34:12 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to. 1.7.9:

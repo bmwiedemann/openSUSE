@@ -474,4 +474,17 @@
     <comment></comment>
     <requestid>1282040</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f1a684579332bdd62ad350fb6ac32146</srcmd5>
+    <version>2.0.0</version>
+    <time>1756828722</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.0.0:
+  * Removal of autotools build system
+  * To help bug reports, we added the command rofi -info
+  * Redraw on startup #2165
+  * Close on click out of window #2158
+  * No IMDKIT support in wayland</comment>
+    <requestid>1302274</requestid>
+  </revision>
 </revisionlist>
