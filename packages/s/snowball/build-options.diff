@@ -1,20 +1,24 @@
-Description: Honor build flags passed as command line arguments
-Author: Stefano Rivera <stefanor@debian.org>
-Forwarded: not-needed
-Last-Update: 2019-10-17
+From: Stefano Rivera <stefanor@debian.org>
+Date: Sun, 24 Jan 2021 19:07:24 -0700
+Subject: Honor build flags passed as command line arguments
 
-Index: snowball-2.2.0/GNUmakefile
-===================================================================
---- snowball-2.2.0.orig/GNUmakefile
-+++ snowball-2.2.0/GNUmakefile
-@@ -170,8 +170,8 @@ C_OTHER_OBJECTS = $(C_OTHER_SOURCES:.c=.
+Forwarded: not-needed
+---
+ GNUmakefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/GNUmakefile b/GNUmakefile
+index e1403be..8c50ec5 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -190,8 +190,8 @@ C_OTHER_OBJECTS = $(C_OTHER_SOURCES:.c=.o)
  JAVA_CLASSES = $(JAVA_SOURCES:.java=.class)
  JAVA_RUNTIME_CLASSES=$(JAVARUNTIME_SOURCES:.java=.class)
  
--CFLAGS=-O2 -W -Wall -Wmissing-prototypes -Wmissing-declarations
+-CFLAGS=-g -O2 -W -Wall -Wmissing-prototypes -Wmissing-declarations -Wshadow $(WERROR)
 -CPPFLAGS=
-+override_CFLAGS += -O2 -W -Wall -Wmissing-prototypes -Wmissing-declarations
-+ovveride_CPPFLAGS +=
++override CFLAGS += -g -O2 -W -Wall -Wmissing-prototypes -Wmissing-declarations -Wshadow $(WERROR)
++CPPFLAGS?=
  
  INCLUDES=-Iinclude
  

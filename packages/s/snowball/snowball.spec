@@ -1,7 +1,7 @@
 #
 # spec file for package snowball
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,18 @@
 %define library_name libstemmer1d
 
 Name:           snowball
-Version:        2.2.0
+Version:        3.0.1
 Release:        0
 Summary:        Snowball compiler and stemming algorithms
 License:        BSD-3-Clause
 URL:            https://snowballstem.org
 Source:         https://github.com/snowballstem/snowball/archive/v%{version}.tar.gz#/snowball-%{version}.tar.gz
 Source1:        libstemmer.ver
-# PATCH-FIX-OPENSUSE
+# PATCH-FIX-OPENSUSE build-options.diff Stefano Rivera <stefanor@debian.org> -- Honor build flags passed as command line arguments.
 Patch0:         build-options.diff
-# PATCH-FIX-OPENSUSE
+# PATCH-FIX-OPENSUSE shared-library.diff Stefano Rivera <stefanor@debian.org> -- Build libstemmer as a shared library.
 Patch1:         shared-library.diff
-# PATCH-FIX-OPENSUSE
+# PATCH-FIX-OPENSUSE python-dist.diff Dmitry Shachnev <mitya57@debian.org> -- Preserve the Python source directory instead of deleting it.
 Patch2:         python-dist.diff
 Provides:       libstemmer-tools = %{version}-%{release}
 
@@ -93,13 +93,15 @@ This package holds the development files for libstemmer.
 
 %prep
 %autosetup -p1
+mkdir -p debian
+cp %{S:1} debian/
 
 %build
 %make_build CFLAGS="%{optflags}"
 
 %install
 install -D -m 0755 -d                   %{buildroot}%{_libdir}
-cp -a              libstemmer.so*       %{buildroot}%{_libdir}
+cp -a libstemmer.so*                    %{buildroot}%{_libdir}
 install -D -m 0644 include/libstemmer.h %{buildroot}%{_includedir}/libstemmer.h
 install -D -m 0755 stemwords            %{buildroot}%{_bindir}/stemwords
 

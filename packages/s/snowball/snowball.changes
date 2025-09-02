@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep  1 20:39:44 UTC 2025 - malcolmlewis@opensuse.org
+
+- Updated to version 3.0.1:
+  + The __init__.py in 3.0.0 was incorrectly generated due to a
+    missing build dependency and the list of algorithms was empty,
+    (gh#snowballstem/snowball#229, gh#snowballstem/snowball#230
+    and gh#snowballstem/snowball#231).
+  + Add trove classifiers for Armenian and Yiddish which have now
+    been registered with PyPI, (gh#snowballstem/snowball#228).
+- Changes from version 3.0.0:
+  + Numerous bug fixes and improvements, see full details in
+    /usr/share/doc/packages/snowball/NEWS.
+- Rebase build-options.diff, python-dist.diff and
+  shared-library.diff.
+- Spec file clean up and add patch attributions.
+
+-------------------------------------------------------------------
 Thu Apr  4 13:43:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Properly tag patches as PATCH-FIX-OPENSUSE.
