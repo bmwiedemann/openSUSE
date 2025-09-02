@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Sep 02 05:57:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.43.1:
+  * Bug fixes
+    - 409e8c9: fix: dir ownership when type: dir (@caarlos0)
+    - 0b3c28f: fix: symlink with empty mtime (#955) (@caarlos0)
+  * Other work
+    - 4497fb3: docs: corrected amd64 name for deb in
+      goarch-to-pkg.md (#945) (@BCMM)
+    - 83fcc7d: docs: improve version extraction of systemctl (#961)
+      (@supcik)
+    - 9c3ba6b: docs: update cmd docs (@caarlos0)
+    - b2a1c0e: refactor: move it around a bit (@caarlos0)
+    - d0d7d06: refactor: use stdlib maps (#942) (@scop)
+  * Dependencies
+    - chore(deps): bump github.com/ulikunitz/xz from 0.5.14 to
+      0.5.15 (#965)
+    - chore(deps): bump github.com/ulikunitz/xz from 0.5.13 to
+      0.5.14 (#964)
+    - chore(deps): bump github.com/stretchr/testify from 1.11.0 to
+      1.11.1 (#963)
+    - chore(deps): bump github.com/stretchr/testify from 1.10.0 to
+      1.11.0 (#962)
+    - chore(deps): bump github.com/ulikunitz/xz from 0.5.12 to
+      0.5.13 (#960)
+    - chore(deps): bump anchore/sbom-action from 0.20.4 to 0.20.5
+      (#959)
+    - chore(deps): bump actions/checkout from 4 to 5 (#958)
+    - chore(deps): bump actions/cache from 4.2.3 to 4.2.4 (#957)
+    - chore(deps): bump github.com/google/rpmpack from 0.7.0 to
+      0.7.1 (#951)
+    - chore(deps): bump anchore/sbom-action from 0.20.2 to 0.20.4
+      (#950)
+    - chore(deps): bump sigstore/cosign-installer from 3.9.1 to
+      3.9.2 (#949)
+    - chore(deps): bump anchore/sbom-action from 0.20.1 to 0.20.2
+      (#947)
+    - chore(deps): bump github.com/Masterminds/semver/v3 from 3.3.1
+      to 3.4.0 (#946)
+    - chore(deps): bump github.com/caarlos0/go-version from 0.2.0
+      to 0.2.1 (#944)
+    - chore(deps): bump sigstore/cosign-installer from 3.8.2 to
+      3.9.1 (#943)
+    - chore(deps): bump anchore/sbom-action from 0.20.0 to 0.20.1
+      (#940)
+    - chore(deps): bump stefanzweifel/git-auto-commit-action from 5
+      to 6 (#937)
+    - chore(deps): bump github.com/goreleaser/chglog from 0.7.0 to
+      0.7.3 (#936)
+
+-------------------------------------------------------------------
 Sun Jun 08 06:10:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.43.0:
