@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 02 05:39:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.78.8:
+  * Fix github.com/ulikunitz/xz see
+    https://github.com/ulikunitz/xz/issues/65 (#3073)
+  * Bump ver from 2.78.7 to 2.78.8 (#3072)
+
+-------------------------------------------------------------------
 Thu Aug 28 04:46:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.78.7:
