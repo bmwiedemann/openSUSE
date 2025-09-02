@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 28 10:01:52 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Invoke meson macro
+- Disable LTO:
+  * fixes compilation with meson macro
+- Reduce min libbpf version to 1.4
+- Reduce min llvm version to 1.7
+- Reduce min meson version to 1.2.0
+- Requires rust+cargo >= 1.82
+
+-------------------------------------------------------------------
 Thu Aug 28 09:46:32 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add _constraints file to avoid OOM errors

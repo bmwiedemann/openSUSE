@@ -16,33 +16,35 @@
 #
 
 
-%define libbpf_min_ver 1.5.0
-%define llvm_min_ver 20
-
+%define _lto_cflags %{nil}
+%define libbpf_min_ver 1.4
+%define llvm_min_ver 17
 Name:           scx
 Version:        1.0.15
 Release:        0
 Summary:        Sched_ext CPU schedulers
 License:        GPL-2.0-only
 URL:            https://github.com/sched-ext/scx
-Source0:        scx-%version.tar.zst
+Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.zst
 Patch0:         0001-scxtop-use-PT_REGS_IP-macro.patch
 Patch1:         0001-vmlinux.h-refresh-with-the-updated-script.patch
 BuildRequires:  bpftool >= 7.5.0
-BuildRequires:  cargo
-BuildRequires:  clang >= %llvm_min_ver
+BuildRequires:  clang >= %{llvm_min_ver}
 BuildRequires:  jq
-BuildRequires:  libbpf-devel >= %libbpf_min_ver
+BuildRequires:  libbpf-devel >= %{libbpf_min_ver}
 BuildRequires:  lld
-BuildRequires:  llvm >= %llvm_min_ver
-BuildRequires:  meson >= 1.3.0
+BuildRequires:  llvm >= %{llvm_min_ver}
+BuildRequires:  meson >= 1.2.0
 BuildRequires:  ninja
-BuildRequires:  protobuf-devel
+BuildRequires:  pkgconfig
+BuildRequires:  rust+cargo >= 1.82
 BuildRequires:  zstd
-BuildRequires:  pkgconfig(libbpf) >= %libbpf_min_ver
+BuildRequires:  pkgconfig(libbpf) >= %{libbpf_min_ver}
 BuildRequires:  pkgconfig(libseccomp)
+BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(systemd)
+ExclusiveArch:  %{rust_arches}
 
 %description
 sched_ext is a Linux kernel feature which enables implementing kernel thread schedulers in BPF and dynamically loading them. This package contains various scheduler implementations and support utilities.
@@ -55,18 +57,20 @@ BuildArch:      noarch
 Header files needed to develop a sched-ext scheduler in C.
 
 %prep
-%setup -qa1
-%patch -P 0 -p1
-%patch -P 1 -p1
+%autosetup -p1 -a1
 
 %build
-# meson macros use set_build_flags which makes the linker fail during build,
-# using without macros for now.
-meson setup --prefix=%{_prefix} -Doffline=true -Dbpftool=/usr/sbin/bpftool -Dlibbpf_a=disabled -Dopenrc=disabled --buildtype=release build
-meson compile -C build -v
+%meson \
+  -Doffline=true \
+  -Dbpftool=%{_sbindir}/bpftool \
+  -Dlibbpf_a=disabled \
+  -Dopenrc=disabled \
+  -Denable_stress=false \
+  %{?nil}
+%meson_build
 
 %install
-meson install -C build --destdir=%{buildroot}
+%meson_install
 
 %pre
 %service_add_pre scx.service
@@ -82,22 +86,20 @@ meson install -C build --destdir=%{buildroot}
 
 %files
 %license LICENSE
-%doc README.md
-
-%{_bindir}/*
-%{_prefix}/lib/systemd/system/scx.service
+%doc README.md OVERVIEW.md
+%{_bindir}/scx{ctl,top,_*}
+%{_bindir}/vmlinux_docify
+%{_unitdir}/scx.service
+%config(noreplace) %{_sysconfdir}/default/%{name}
 
 # exclude scx_loader because of dbus warning.
 %exclude %{_prefix}/lib/systemd/system/scx_loader.service
-%exclude %{_prefix}/share/dbus-1
-%exclude %{_prefix}/share/scx_loader
-
-%config %{_sysconfdir}/default/%{name}
+%exclude %{_datadir}/dbus-1
+%exclude %{_datadir}/scx_loader
 
 %files devel
 %license LICENSE
-%doc README.md
-
-%{_prefix}/include/scx
+%doc README.md BREAKING_CHANGES.md DEVELOPER_GUIDE.md
+%{_includedir}/%{name}
 
 %changelog
