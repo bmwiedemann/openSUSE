@@ -79,4 +79,14 @@
     <comment>New stable rel (forwarded request 1253463 from iznogood)</comment>
     <requestid>1253711</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>08b62229c4cbb5b4bdd63beeb25b1f90</srcmd5>
+    <version>1.10.1</version>
+    <time>1756828699</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.10.1:
+  + UI fix for using GtkStackPage.
+  + Documentation fixes. (forwarded request 1302063 from iznogood)</comment>
+    <requestid>1302229</requestid>
+  </revision>
 </revisionlist>
