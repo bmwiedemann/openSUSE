@@ -149,4 +149,12 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="22" vrev="165">
+    <srcmd5>fb136321ec01ec79a7c49b4efe56e13c</srcmd5>
+    <version>2.04</version>
+    <time>1756828707</time>
+    <user>anag_factory</user>
+    <comment>- Add manual dependencies and license</comment>
+    <requestid>1302238</requestid>
+  </revision>
 </revisionlist>

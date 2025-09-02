@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Text-Kakasi
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,45 +12,53 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define cpan_name Text-Kakasi
 Name:           perl-Text-Kakasi
-BuildRequires:  kakasi-devel
-Requires:       kakasi >= 2.3.4
 Version:        2.04
 Release:        0
-Url:            http://www.daionet.gr.jp/~knok/kakasi/
-Source0:        http://search.cpan.org/CPAN/authors/id/D/DA/DANKOGAI/Text-Kakasi-2.04.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Summary:        Perl binding for KAKASI, the kanji kana simple inverter
-License:        GPL-2.0+
-Group:          Development/Libraries/Perl
-%{perl_requires}
+#Upstream:  (C) 1998, 1999, 2000 NOKUBI Takatsugu <knok@daionet.gr.jp> (C) 2003 Dan Kogai <dankogai@dan.co.jp> There is no warranty for this free software. Anyone can modify and/or redistribute this module under GNU GENERAL PUBLIC LICENSE. See COPYING file that is included in the archive for more details.
+License:        GPL-2.0-or-later
+Summary:        Perl frontend to kakasi
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/D/DA/DANKOGAI/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
-# Summary(ja): KAKASIを perlから利用するためのモジュールです。
-# %description -l ja
-# このモジュールは、高橋裕信さんの作成されたソフトウェアKAKASIを
-# perlから用いるためのものです。
-# 
-# このモジュールを使うためには、最新版のKAKASI(2.3.0以降)が必要です。最
-# 新版に関しては、<http://kakasi.namazu.org/>を参照してください。
+%{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  glibc-devel
+BuildRequires:  kakasi-devel
+BuildRequires:  kakasi-dict
+Requires:       kakasi >= 2.3.4
+# MANUAL END
 
 %description
-This module provides libkakasi interface for perl. libkakasi is a part
-of KAKASI.  KAKASI is the language processing filter to convert Kanji
-characters to Hiragana, Katakana or Romaji and may be helpful to read
-Japanese documents.  More information about KAKASI is available at
-<http://kakasi.namazu.org/>.
+This module provides interface to kakasi (kanji kana simple inverter).
+kakasi is a set of programs and libraries which does what Japanese input
+methods do in reverse order. You feed Japanese and kakasi converts it to
+phonetic representation thereof. kakasi can also be used to tokenizing
+Japanese text. To find more about kakasi, see http://kakasi.namazu.org/ .
+
+Text::Kakasi now features both functional and object-oriented APIs.
+functional APIs are 100% compatible with ver. 1.05. But to take advantage
+of "Perl 5.8 Features", you should use OOP APIs instead.
+
+See Text::Kakasi::JP for the Japanese version of this document.
 
 %prep
-%setup -n Text-Kakasi-%{version} 
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" perl Makefile.PL
-make %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%make_build
+
+%check
+make test
 
 %install
 %perl_make_install
@@ -58,7 +66,7 @@ make %{?_smp_mflags}
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root)
-%doc COPYING Changes ChangeLog* MANIFEST README*
+%doc ChangeLog.1 Changes README README.jp
+%license COPYING
 
 %changelog
