@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  2 06:55:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Cherry-pick mupen64plus-CVE-2025-9688.patch from upstream to fix
+  integer overflow in write_is_viewer() (bsc#1249035, CVE-2025-9688)
+- Add Mesa-libGL-devel and glu-devel to BuildRequires
+
+-------------------------------------------------------------------
 Sat Mar  1 00:43:02 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to version 2.6.0

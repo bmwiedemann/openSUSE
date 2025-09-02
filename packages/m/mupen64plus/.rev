@@ -43,4 +43,12 @@
 - drop mupen64plus-libboost-1.85.patch</comment>
     <requestid>1249941</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>491654f75511c9acc2a7a0110277e522</srcmd5>
+    <version>2.6.0</version>
+    <time>1756828751</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1302324</requestid>
+  </revision>
 </revisionlist>

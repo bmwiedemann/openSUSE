@@ -1,7 +1,7 @@
 #
 # spec file for package mupen64plus
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,8 +28,11 @@ Patch0:         %{name}-fix-cflags.patch
 Patch1:         %{name}-use-system-font.patch
 Patch2:         %{name}-binutils-2_29.patch
 Patch3:         %{name}-ppc64le-aarch64.patch
+Patch4:         %{name}-CVE-2025-9688.patch
+BuildRequires:  Mesa-libGL-devel
 BuildRequires:  binutils-devel
 BuildRequires:  gcc-c++
+BuildRequires:  glu-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_system-devel
