@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 02 06:02:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.8:
+  no CLI-related changes
+  * Fix deps (#3343)
+
+-------------------------------------------------------------------
 Mon Aug 04 04:43:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.7:
