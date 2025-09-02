@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 02 05:39:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.31.1:
+  * config.go: Remove no-vendored-cross-package-deps stanza by
+    @sergiodj in #2145
+
+-------------------------------------------------------------------
 Mon Aug 25 04:46:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.31.0:
