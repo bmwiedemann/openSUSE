@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep  2 08:18:36 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.5.25
+  * chore: bindings release 0.3.24 by @johubertj in (#5455)
+  * chore: apply clippy fixes by @johubertj in (#5459)
+  * Add fixed version of the rfc9151 policy by @Mark-Simulacrum in (#5277)
+  * test(integration): add record padding test by @jmayclin in (#5451)
+  * refactor(stuffer): Rename s2n_stuffer_has_pem_encapsulated_block
+    by @alice-aws in (#5465)
+  * ci: don't include tls/extensions in SAW build by @lrstewart in (#5466)
+  * ci: fix wikipedia network test + better error message by @lrstewart in (#5470)
+  * refactor: setup replacement default policies by @lrstewart in (#5464)
+  * Add TLSv1.3 (classical + PQ) policies for CloudFront Upstream
+    by @WillChilds-Klein in (#5460)
+
+-------------------------------------------------------------------
 Tue Aug  5 08:11:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.5.24
