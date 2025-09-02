@@ -1,0 +1,23 @@
+From c858a7805946d4002dbd8ab4a2f7416b7a0aefdb Mon Sep 17 00:00:00 2001
+From: Marius Grossu <mgrossu@localhost.localdomain>
+Date: Mon, 1 Sep 2025 12:56:34 +0200
+Subject: [PATCH] Change fromstring to frombuffer because the binary mode was
+ removed
+
+---
+ blosc/toplevel.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/blosc/toplevel.py b/blosc/toplevel.py
+index 4d2d413..3ef2327 100644
+--- a/blosc/toplevel.py
++++ b/blosc/toplevel.py
+@@ -513,7 +513,7 @@ def compress_ptr(address, items, typesize=8, clevel=9, shuffle=blosc.SHUFFLE,
+     >>> c = blosc.compress_ptr(np_array.__array_interface__['data'][0], \
+         items, np_array.dtype.itemsize)
+     >>> d = blosc.decompress(c)
+-    >>> np_ans = numpy.fromstring(d, dtype=np_array.dtype)
++    >>> np_ans = numpy.frombuffer(d, dtype=np_array.dtype)
+     >>> bool((np_array == np_ans).all())
+     True
+

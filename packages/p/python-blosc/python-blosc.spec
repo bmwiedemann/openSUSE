@@ -1,7 +1,7 @@
 #
 # spec file for package python-blosc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Blosc/python-blosc
 Source:         https://files.pythonhosted.org/packages/source/b/blosc/blosc-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM use-frombuffer.patch gh#Blosc/python-blosc#342
+Patch0:         use-frombuffer.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scikit-build >= 0.11.1}

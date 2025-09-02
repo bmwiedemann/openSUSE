@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  2 08:42:43 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
+
+- Add the use-frombuffer.patch: It fix the building due to binary mode of fromstring being removed
+  (gh#Blosc/python-blosc#342)
+
+-------------------------------------------------------------------
 Sat Jul 12 11:41:45 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11.3:
