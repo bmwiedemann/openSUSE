@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 02 06:02:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.8:
+  * fix: close the `syncResult` channel by any goroutine that
+    receives the data (#3348)
+  * fix: gc for untagged docker manifests (#3349)
+  * Fix deps (#3343)
+  * chore: fix dependabot alerts (#3328)
+  * chore: update notation version (#3316)
+  * chore: fix dependabot alerts (#3312)
+  * ci: selectively revert this runner (#3297)
+  * chore(ci): update github runners to oci gh arc runners (#3293)
+  * chore: fix dependabot alerts (#3292)
+
+-------------------------------------------------------------------
 Mon Aug 04 04:44:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.7:

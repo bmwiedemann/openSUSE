@@ -23,7 +23,7 @@
 %define zui_version commit-d25abda
 
 Name:           zot-registry
-Version:        2.1.7
+Version:        2.1.8
 Release:        0
 Summary:        Scale-out production-ready vendor-neutral OCI-native container image registry
 License:        Apache-2.0
