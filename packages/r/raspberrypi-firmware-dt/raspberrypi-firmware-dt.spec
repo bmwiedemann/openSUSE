@@ -1,7 +1,7 @@
 #
 # spec file for package raspberrypi-firmware-dt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           raspberrypi-firmware-dt
-Version:        2023.11.21
+Version:        2025.05.14
 Release:        0
 Summary:        Device trees for the Raspberry Pi firmware loader
 License:        GPL-2.0-only
@@ -29,10 +29,16 @@ Source2:        uboot-bcm2835-pl011-overlay.dts
 Source3:        disable-v3d-overlay.dts
 Source4:        enable-bt-overlay.dts
 Source5:        smbios-overlay.dts
+Source6:        fixup-blconfig-overlay.dts
 Source100:      get-from-git.sh
 Patch0:         0001-ARM-dts-bcm2711-rpi-Reuse-bcm2836-vchiq-driver.patch
 Patch1:         0001-ARM-dts-bcm27xx-Use-better-name-for-spidev.patch
 Patch2:         0001-Revert-bcm2711-rpi-ds-Switch-to-dma40-channel-for-hd.patch
+Patch3:         0002-ARM-dts-bcm2711-Fix-xHCI-power-domain.patch
+Patch4:         0001-dts-rp1-Wrap-RP1-node-into-nexus-node-as-expected-by.patch
+Patch5:         0001-ARM-dts-bcm2712-Remove-DMA-support.patch
+Patch6:         0001-ARM-dts-bcm2712-Slow-down-eMMC-interface.patch
+Patch7:         bcm2712-fix-compatible.patch
 Requires:       raspberrypi-firmware
 BuildRequires:  dtc
 BuildRequires:  raspberrypi-firmware
@@ -56,16 +62,16 @@ PPDIR=`pwd`/pp
 export DTC_FLAGS="-R 4 -p 0x1000 -@ -H epapr"
 for dts in arch/arm/boot/dts/broadcom/bcm27*dts arch/arm64/boot/dts/broadcom/bcm27*dts; do
     target=$(basename ${dts%*.dts})
-    cpp -x assembler-with-cpp -undef -D__DTS__ -nostdinc -I. -I$SRCDIR/include/ -I$SRCDIR/scripts/dtc/include-prefixes/ -P $dts -o $PPDIR/$target.dts
+    cpp -x assembler-with-cpp -undef -D__DTS__ -DFIRMWARE_UPDATED -nostdinc -I. -I$SRCDIR/include/ -I$SRCDIR/scripts/dtc/include-prefixes/ -P $dts -o $PPDIR/$target.dts
     dtc $DTC_FLAGS -I dts -O dtb -i ./$(dirname $dts) -o $PPDIR/$target.dtb $PPDIR/$target.dts
 done
 
 export DTC_FLAGS="-R 0 -p 0 -@ -H epapr"
-for dts in arch/arm/boot/dts/overlays/*dts %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5}; do
+for dts in arch/arm/boot/dts/overlays/*dts %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6}; do
     target=$(basename ${dts%*.dts})
     target=${target%*-overlay}
     mkdir -p $PPDIR/overlays
-    cpp -x assembler-with-cpp -undef -D__DTS__ -nostdinc -I. -I$SRCDIR/include/ -I$SRCDIR/scripts/dtc/include-prefixes/ -P $dts -o $PPDIR/overlays/$target.dts
+    cpp -x assembler-with-cpp -undef -D__DTS__ -DFIRMWARE_UPDATED -nostdinc -I. -I$SRCDIR/include/ -I$SRCDIR/scripts/dtc/include-prefixes/ -P $dts -o $PPDIR/overlays/$target.dts
     dtc $DTC_FLAGS -I dts -O dtb -i ./$(dirname $dts) -o $PPDIR/overlays/$target.dtbo $PPDIR/overlays/$target.dts
 done
 # Include README file
