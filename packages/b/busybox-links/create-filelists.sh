@@ -56,6 +56,9 @@ touch used/udhcpc6
 # Merge net-tools sub-packages
 cat filelist-net-tools-deprecated.txt >> filelist-net-tools.txt
 rm filelist-net-tools-deprecated.txt
+# ether-wake was dropped from net-tools
+echo -e "$SBINDIR/ether-wake" >> filelist-ether-wake.txt
+touch used/ether-wake
 # Create some extra sub-packages
 echo -e "$BINDIR/ash" > filelist-sh.txt
 touch used/ash

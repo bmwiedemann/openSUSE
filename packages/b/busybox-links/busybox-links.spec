@@ -80,6 +80,7 @@ Source55:       filelist-which.txt
 Source56:       filelist-whois.txt
 Source57:       filelist-xz.txt
 Source58:       filelist-udhcpc.txt
+Source59:       filelist-ether-wake.txt
 # used for creating the above filelists and busybox.install:
 # build the container locally and then copy /rpm/filelist-*txt,
 # /rpm/busybox.install # and /usr/share/busybox/busybox.links
@@ -107,6 +108,7 @@ Requires:       busybox-cpio = %{version}
 Requires:       busybox-diffutils = %{version}
 Requires:       busybox-dos2unix = %{version}
 Requires:       busybox-ed = %{version}
+Requires:       busybox-ether-wake = %{version}
 Requires:       busybox-findutils = %{version}
 Requires:       busybox-gawk = %{version}
 Requires:       busybox-grep = %{version}
@@ -217,6 +219,15 @@ Conflicts:      diffutils
 
 %description -n busybox-diffutils
 This package contains the symlinks to replace diffutils with busybox.
+
+%package -n busybox-ether-wake
+Summary:        Busybox applets replacing ether-wake from net-tools
+Requires:       busybox = %{version}
+Conflicts:      net-tools < 2.10.0.0.1
+Obsoletes:      net-tools-dummy-ether-wake
+
+%description -n busybox-ether-wake
+This package contains the symlinks to replace findutils with busybox.
 
 %package -n busybox-findutils
 Summary:        Busybox applets replacing findutils
@@ -658,6 +669,8 @@ install -m 755 %{SOURCE3} %{buildroot}%{_bindir}/zgrep
 %files -n busybox-dos2unix -f filelist-dos2unix.txt
 
 %files -n busybox-ed -f filelist-ed.txt
+
+%files -n busybox-ether-wake -f filelist-ether-wake.txt
 
 %files -n busybox-findutils -f filelist-findutils.txt
 

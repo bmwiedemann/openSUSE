@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  1 17:42:59 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Add busybox-ether-wake replacing downstream ether-wake from
+  net-tools (boo#1249034).
+- Provide support for net-tools-dummy-ether-wake (bsc#1242048).
+
+-------------------------------------------------------------------
 Fri Aug  1 14:57:55 UTC 2025 - Radoslav Kolev <radoslav.kolev@suse.com>
 
 - fix generation of file lists via Dockerfile 
