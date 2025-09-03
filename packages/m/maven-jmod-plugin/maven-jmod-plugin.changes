@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  2 18:14:36 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Explicit dependency on maven-compat
+
+-------------------------------------------------------------------
 Wed Feb 21 10:50:29 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

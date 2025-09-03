@@ -23,4 +23,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148609</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7c37dbb878c728ca03732a9307fb74f2</srcmd5>
+    <version>3.0.0~alpha1</version>
+    <time>1756926461</time>
+    <user>anag_factory</user>
+    <comment>Explicit dependency on maven-compat</comment>
+    <requestid>1302485</requestid>
+  </revision>
 </revisionlist>
