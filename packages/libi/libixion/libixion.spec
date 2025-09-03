@@ -1,7 +1,7 @@
 #
 # spec file for package libixion
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,15 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%define libname libixion-0_18-0
+%define libname libixion-0_20-0
 Name:           libixion
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        Threaded multi-target formula parser & interpreter
 License:        MIT
 URL:            https://gitlab.com/ixion/ixion
-Source:         http://kohei.us/files/ixion/src/%{name}-%{version}.tar.xz
+Source:         https://gitlab.com/api/v4/projects/ixion%2Fixion/packages/generic/source/%{version}/%{name}-%{version}.tar.xz
 Patch0:         libixion-boost-system.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-_WIN32-is-not-defined-when-not-on-Windows.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         libixion-0.19.0-gcc15-cstdint.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  coreutils
@@ -38,7 +34,7 @@ BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(mdds-2.1)
+BuildRequires:  pkgconfig(mdds-3.0)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(spdlog) >= 0.16.0
 %if 0%{?suse_version} > 1325

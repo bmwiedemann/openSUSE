@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Aug 30 14:40:35 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Remove obsolete patches:
+  * 0001-Fix-_WIN32-is-not-defined-when-not-on-Windows.patch
+  * libixion-0.19.0-gcc15-cstdint.patch
+- Update to 0.20.0.
+  * C++ API
+    * changed the return type of model_context::get_sheet_name() to
+      std::string_view.  It was previously std::string.
+    * ixion::celltype_t has been renamed to ixion::cell_t.
+  * formula interpreter
+    * added support for using an error token as an assignable value.  With this
+      change, you can use an expression such as '=#REF!'.
+    * ISERR function is now implemented as a built-in function.
+  * misc
+    * enabled building of Python module on Windows via CMake, but it is not
+      installed as part of the install target.
+    * switched to mdds 3.0 and adjusted all uses of mdds::sorted_string_map to its
+      new API.
+    * parsing of error values is more precise via use of mdds::packed_trie_map.
+- Fix main source tarball URL.
+
+-------------------------------------------------------------------
 Thu Apr 10 19:51:52 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add libixion-0.19.0-gcc15-cstdint.patch to fix gcc15 compile time
