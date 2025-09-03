@@ -1,7 +1,7 @@
 #
 # spec file for package gperftools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,17 @@
 
 
 Name:           gperftools
-Version:        2.15
+Version:        2.17.2
 Release:        0
 Summary:        Performance Tools for C++
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/gperftools/gperftools
 Source0:        %{url}/releases/download/gperftools-%{version}/gperftools-%{version}.tar.gz
-Patch1:         %{name}_fix_unassigned_malloc_in_unittest.patch
 Patch2:         %{name}_gcc46.patch
+# profiledata_unittest fails (aborts) during osc build, but succeeds
+# after chroot to buildroot & make check
+Patch3:         gperftools-no-profiledata_unittest.patch
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -156,6 +158,11 @@ export CFLAGS="%{optflags} -fno-strict-aliasing $VALGRIND_FL"
   --docdir=%{_defaultdocdir}/%{name}
 %make_build
 
+%check
+%ifnarch i586
+make check
+%endif
+
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
@@ -174,7 +181,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n libtcmalloc_and_profiler4 -p /sbin/ldconfig
 
 %files
-%{_bindir}/pprof-symbolize
 
 %files -n libprofiler0
 %{_libdir}/libprofiler.so.0*
@@ -195,7 +201,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libtcmalloc_and_profiler.so.4*
 
 %files devel
-%{_includedir}/google
 %{_includedir}/gperftools
 %{_libdir}/libprofiler.so
 %{_libdir}/libtcmalloc.so

@@ -1,8 +1,8 @@
-Index: gperftools-2.13/src/base/elf_mem_image.h
+Index: gperftools-2.17.2/src/base/elf_mem_image.h
 ===================================================================
---- gperftools-2.13.orig/src/base/elf_mem_image.h
-+++ gperftools-2.13/src/base/elf_mem_image.h
-@@ -47,6 +47,7 @@
+--- gperftools-2.17.2.orig/src/base/elf_mem_image.h
++++ gperftools-2.17.2/src/base/elf_mem_image.h
+@@ -44,6 +44,7 @@
  
  #define HAVE_ELF_MEM_IMAGE 1
  
