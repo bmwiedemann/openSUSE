@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Sep  2 22:08:01 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to version 1.24.2:
+  * Enable DDI Driver Path by Default by @nrspruit in #361
+  * Add tests for Loader Driver interaction conformance for Sysman
+    VF Management API's by @vishnu-khanth in #360
+  * level-zero: Changes to get ze_loader loaded for Android by 
+    @JeevakaPrabu in #365
+  * Update Changelog and version to v1.24.1 by @nrspruit in #366
+  * Check if compile flags are supported: /GL, /QSpectre, 
+    /guard:cf by @KseniyaTikhomirova in #368
+  * Add build instructions for Windows by @ivorobts in #58
+  * Add repo_token to scorecard.yml by @lisanna-dettwyler in #159
+  * Update Changelog and version to v1.24.2 with fix for dynamic
+    flag assignment by @nrspruit in #369
+
+-------------------------------------------------------------------
+Sat Aug 16 04:01:14 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Change - level-zero-1.22.4.tar.gz (original link)
+
+-------------------------------------------------------------------
 Wed Jul  9 05:25:53 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Update to version 1.22.4:
