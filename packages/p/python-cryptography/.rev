@@ -1283,4 +1283,13 @@
     hy.hazmat.primitives.serialization.load_ssh_private_key` now</comment>
     <requestid>1292428</requestid>
   </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>e0047afc83dfb9fdd1de7aaa6efee5c3</srcmd5>
+    <version>45.0.5</version>
+    <time>1756926431</time>
+    <user>anag_factory</user>
+    <comment>- Add Make-unsafe-subinterpreter-support-available-via-cfg.patch
+  to allow ceph-mgr to load modules (boo#1248987) (forwarded request 1302241 from jimfunk)</comment>
+    <requestid>1302472</requestid>
+  </revision>
 </revisionlist>

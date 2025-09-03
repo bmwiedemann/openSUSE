@@ -1,7 +1,7 @@
 #
 # spec file for package python-cryptography
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,8 @@ Source4:        python-cryptography.keyring
 # PATCH-FEATURE-OPENSUSE no-pytest_benchmark.patch mcepl@suse.com
 # We don't need no benchmarking and coverage measurement
 Patch4:         no-pytest_benchmark.patch
+# PATCH-FIX-OPENSUSE Make-unsafe-subinterpreter-support-available-via-cfg.patch boo#1248987
+Patch5:         Make-unsafe-subinterpreter-support-available-via-cfg.patch
 BuildRequires:  %{python_module cffi >= 1.12}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module exceptiongroup}
@@ -94,7 +96,8 @@ export CARGO_PROFILE_RELEASE_SPLIT_DEBUGINFO=off
 # https://pyo3.rs/main/building-and-distribution#configuring-the-python-version
 %python_expand export PYO3_PYTHON="%{_bindir}/$python"
 %global _lto_cflags %{nil}
-export RUSTFLAGS=%{rustflags}
+RUSTFLAGS=%{rustflags}
+export RUSTFLAGS="$RUSTFLAGS --cfg pyo3_unsafe_allow_subinterpreters"
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %pyproject_wheel
 
