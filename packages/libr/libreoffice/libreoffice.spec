@@ -85,7 +85,7 @@
 %global with_gcc 12
 %endif
 Name:           libreoffice
-Version:        25.2.5.2
+Version:        25.8.1.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -114,11 +114,11 @@ Source2005:     %{external_url}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zi
 Source2006:     https://dev-www.libreoffice.org/extern/8249374c274932a21846fa7629c2aa9b-officeotron-0.7.4-master.jar
 Source2007:     https://dev-www.libreoffice.org/extern/odfvalidator-0.9.0-RC2-SNAPSHOT-jar-with-dependencies-2726ab578664434a545f8379a01a9faffac0ae73.jar
 # PDFium is bundled everywhere
-Source2008:     %{external_url}/pdfium-6764.tar.bz2
+Source2008:     %{external_url}/pdfium-7012.tar.bz2
 # Single C file with patches from LO
 Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
-Source2010:     %{external_url}/skia-m130-3c64459d5df2fa9794b277f0959ed8a92552bf4c.tar.xz
+Source2010:     %{external_url}/skia-m136-28685d899b0a35894743e2cedad4c9f525e90e1e.tar.xz
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
 # to avoid BerkleyDB incompatibility with the plain build
 Patch1:         scp2-user-config-suse.diff
@@ -257,7 +257,7 @@ BuildRequires:  pkgconfig(libmspub-0.1) >= 0.1
 BuildRequires:  pkgconfig(libmwaw-0.3) >= 0.3.21
 BuildRequires:  pkgconfig(libnumbertext) >= 1.0.6
 BuildRequires:  pkgconfig(libodfgen-0.1) >= 0.1.4
-BuildRequires:  pkgconfig(liborcus-0.18) >= 0.19.0
+BuildRequires:  pkgconfig(liborcus-0.20) >= 0.20.0
 BuildRequires:  pkgconfig(libpagemaker-0.0)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpq)
@@ -272,7 +272,7 @@ BuildRequires:  pkgconfig(libwps-0.4) >= 0.4.11
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(libzmf-0.0)
-BuildRequires:  pkgconfig(mdds-2.1)
+BuildRequires:  pkgconfig(mdds-3.0)
 BuildRequires:  pkgconfig(mythes)
 BuildRequires:  pkgconfig(nspr) >= 4.8
 BuildRequires:  pkgconfig(nss) >= 3.9.3
@@ -1743,7 +1743,6 @@ exit 0
 %dir %{_libdir}/%{name}/share
 %dir %{_libdir}/%{name}/share/extensions
 %{_libdir}/%{name}/share/extensions/nlpsolver
-%{_libdir}/%{name}/share/extensions/numbertext
 
 %files writer-extensions
 %dir %{_libdir}/%{name}

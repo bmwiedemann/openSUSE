@@ -3722,4 +3722,21 @@ Petr</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1301201</requestid>
   </revision>
+  <revision rev="312" vrev="1">
+    <srcmd5>78d8a8910f34c130e5044e00e3b68ce4</srcmd5>
+    <version>25.8.1.1</version>
+    <time>1756926364</time>
+    <user>anag_factory</user>
+    <comment>- Update to 25.8.1.1:
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/25.8.0/RC1
+    https://wiki.documentfoundation.org/Releases/25.8.0/RC2
+    https://wiki.documentfoundation.org/Releases/25.8.0/RC3
+    https://wiki.documentfoundation.org/Releases/25.8.0/RC4
+    https://wiki.documentfoundation.org/Releases/25.8.1/RC1
+- Update bundled libraries:
+  * pdfium-6764.tar.bz2 -&gt; pdfium-7012.tar.bz2
+  * skia-m130-3c64459d5df2fa9794b277f0959ed8a92552bf4c.tar.xz -&gt; skia-m136-28685d899b0a35894743e2cedad4c9f525e90e1e.tar.xz</comment>
+    <requestid>1302375</requestid>
+  </revision>
 </revisionlist>

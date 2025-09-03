@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep  1 02:31:25 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 25.8.1.1:
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/25.8.0/RC1
+    https://wiki.documentfoundation.org/Releases/25.8.0/RC2
+    https://wiki.documentfoundation.org/Releases/25.8.0/RC3
+    https://wiki.documentfoundation.org/Releases/25.8.0/RC4
+    https://wiki.documentfoundation.org/Releases/25.8.1/RC1
+- Update bundled libraries:
+  * pdfium-6764.tar.bz2 -> pdfium-7012.tar.bz2
+  * skia-m130-3c64459d5df2fa9794b277f0959ed8a92552bf4c.tar.xz -> skia-m136-28685d899b0a35894743e2cedad4c9f525e90e1e.tar.xz
+
+-------------------------------------------------------------------
 Mon Aug 18 01:50:18 UTC 2025 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - Add bash-completion-key.patch: Bash completion support for Apple
