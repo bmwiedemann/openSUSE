@@ -4938,4 +4938,14 @@ a previous changelog entry.
   %post script (see comment 13 in bsc#1242998)</comment>
     <requestid>1298163</requestid>
   </revision>
+  <revision rev="430" vrev="1">
+    <srcmd5>8e3a1ddeed24be37708adeecc4bb5a83</srcmd5>
+    <version>11.7.0</version>
+    <time>1756926439</time>
+    <user>anag_factory</user>
+    <comment>- Update to libvirt 11.7.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v11-7-0-2025-09-01</comment>
+    <requestid>1302506</requestid>
+  </revision>
 </revisionlist>
