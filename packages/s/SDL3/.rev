@@ -1,0 +1,171 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>295d17103df9dfc0009dae67965c2b71</srcmd5>
+    <version>3.1.1</version>
+    <time>1713205024</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1167587</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>de252b99806f45c8f6b17e46b20637a2</srcmd5>
+    <version>3.1.2</version>
+    <time>1714686445</time>
+    <user>anag+factory</user>
+    <comment>- Update to preview release 3.1.2</comment>
+    <requestid>1171178</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9a4744463e6648ce8a5bdabdfb64ccdc</srcmd5>
+    <version>3.1.2</version>
+    <time>1724163235</time>
+    <user>anag+factory</user>
+    <comment>- Add gcc14.patch</comment>
+    <requestid>1194778</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>27fdf769c97be0d6e810a3a547dbd4ba</srcmd5>
+    <version>3.1.3</version>
+    <time>1728229972</time>
+    <user>anag+factory</user>
+    <comment>- Update to preview release 3.1.3</comment>
+    <requestid>1205858</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>54a8289206c007ab3b135f76f47a089b</srcmd5>
+    <version>3.1.6</version>
+    <time>1730560341</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to preview release 3.1.6</comment>
+    <requestid>1220188</requestid>
+  </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>45bff530c364fde3e262d852944a393d</srcmd5>
+    <version>3.1.6</version>
+    <time>1734373019</time>
+    <user>anag+factory</user>
+    <comment>- Add baselibs.conf</comment>
+    <requestid>1231277</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1dcbf26227ec3cbf19b8e823c690fd39</srcmd5>
+    <version>3.1.8</version>
+    <time>1736431895</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.1.8</comment>
+    <requestid>1236051</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4de84a288d79162877a6e83c14607f78</srcmd5>
+    <version>3.2.0</version>
+    <time>1737560310</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.2.0</comment>
+    <requestid>1239488</requestid>
+  </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>83a764d0acb91091d732e395d76eb588</srcmd5>
+    <version>3.2.0</version>
+    <time>1737651918</time>
+    <user>anag+factory</user>
+    <comment>deactivate fcitx</comment>
+    <requestid>1239805</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ae37ecdf3b834f6a9b0992ade74214f7</srcmd5>
+    <version>3.2.2</version>
+    <time>1738615448</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.2.2</comment>
+    <requestid>1242217</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3213898020c555b2fb9f8093f9adfbf9</srcmd5>
+    <version>3.2.4</version>
+    <time>1738966017</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.2.4</comment>
+    <requestid>1244101</requestid>
+  </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>719ef67a812be45d6137d0cdb6ffa00b</srcmd5>
+    <version>3.2.4</version>
+    <time>1740586567</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-pipewire-Ensure-that-the-correct-struct-is-used-for-.patch
+  for pipewire-1.3.x</comment>
+    <requestid>1248439</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0e1e81b73a6b7b9d977483051f65b6d2</srcmd5>
+    <version>3.2.6</version>
+    <time>1740925374</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.2.6</comment>
+    <requestid>1249520</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b7a336c843f7c5befc49f76ecf68bdb9</srcmd5>
+    <version>3.2.8</version>
+    <time>1741268940</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.2.8</comment>
+    <requestid>1250501</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c86b070fa6d7f7db0ba36905426696f6</srcmd5>
+    <version>3.2.8</version>
+    <time>1742051709</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim extraneous X11 dependencies from SDL3-devel [boo#1239635]</comment>
+    <requestid>1253146</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dc54bac4a0c887b754c43cc9851af025</srcmd5>
+    <version>3.2.10</version>
+    <time>1743698437</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.2.10</comment>
+    <requestid>1266284</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0ed3c1d62499ed9157488c9ca8b5a021</srcmd5>
+    <version>3.2.12</version>
+    <time>1746542310</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.2.12</comment>
+    <requestid>1274284</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>daec16f04cfe4f0a3453b44c68a97ecb</srcmd5>
+    <version>3.2.14</version>
+    <time>1747321169</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.2.14</comment>
+    <requestid>1277488</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9693a9dd6ec68d07be555e50a18c7ecc</srcmd5>
+    <version>3.2.18</version>
+    <time>1752765439</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.2.18</comment>
+    <requestid>1293228</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>dd34900de020b35bb85f9a8a9a941b60</srcmd5>
+    <version>3.2.20</version>
+    <time>1754483518</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.2.20</comment>
+    <requestid>1297652</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1b9ded17dda4bba4fef329148c60db9f</srcmd5>
+    <version>3.2.22</version>
+    <time>1756926415</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.2.22</comment>
+    <requestid>1302407</requestid>
+  </revision>
+</revisionlist>

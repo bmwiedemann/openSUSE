@@ -1,0 +1,266 @@
+-------------------------------------------------------------------
+Tue Sep  2 11:27:22 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.22
+  * A bunch of changes for non-Linux platforms only
+
+-------------------------------------------------------------------
+Tue Aug  5 07:37:53 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.20
+  * Fixed a crash when passing large invalid coordinates to
+    SDL_BlitSurfaceScaled()
+  * Fixed doubled mouse wheel events on X11
+  * Fixed doubled SDL_EVENT_GAMEPAD_ADDED events for controllers
+    with automatic gamepad mappings
+
+-------------------------------------------------------------------
+Mon Jul 14 20:37:59 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.18
+  * Added SDL_PROP_WINDOW_CREATE_CONSTRAIN_POPUP_BOOLEAN to support
+    non-constrained and non-grabbing popups
+  * Fixed a crash in SDL_GetAudioDeviceChannelMap()
+  * Fixed duplicate mouse events when using a pen under X11
+  * Improved thumbstick range for Nintendo Switch Pro Controllers
+  * Fixed loading user calibration for Nintendo Switch Pro
+    Controllers
+  * Added support for the ZEROPLUS P4 Wired Gamepad
+  * Fixed input from the MayFlash GameCube adapter with version 7
+    firmware
+
+-------------------------------------------------------------------
+Tue Jun  3 07:55:36 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.16
+  * Fixed a rare crash in SDL_WaitEvent()
+  * Fixed entering fullscreen mode on some X11 window managers
+  * Fixed hang processing mouse input on Wayland
+  * Fixed occasionally corrupt text input on Wayland
+  * Respect the application text input area on Wayland
+
+-------------------------------------------------------------------
+Wed May 14 18:15:30 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.14
+  * Fixed crash querying the name of logical audio devices.
+  * Fixed thread-local storage related black screen issue when
+    pulseaudio audio output is active.
+  * Reverted dead key reporting on X11, which introduced bugs with
+    IME handling.
+  * Fixed incorrect destination usage mode for storage buffer
+    read/write bindings on Vulkan.
+
+-------------------------------------------------------------------
+Mon May  5 03:31:11 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.12
+  * Fixed crash if SDL_BlitSurfaceScaled() is used with a surface
+    that has no pixels
+  * Allow rendering a zero sized source rectangle in the SDL render
+    API
+  * Added support for the share button on the GameSir-K1 FLUX
+    controller
+  * Added support for the PowerA Battle Dragon Advanced Wireless
+    Controller
+  * Added support for the HORI Taiko No Tatsujin Drum Controller
+  * Fixed the Keychron K1 Pro System Control keyboard being
+    detected as a joystick
+  * Fixed right mouse button emulation when using a Wacom tablet in
+    Windows Ink mode
+  * Fixed missing simulated mouse events using a Wacom tablet when
+    Windows Ink mode is disabled
+  * Key events are now sent for dead keys on X11
+  * Improved handling of window management edge conditions on X11
+  * Fixed message box location on multi-monitor configurations on
+    X11
+  * Fixed XInput2 mouse tracking outside the window on X11
+
+-------------------------------------------------------------------
+Tue Apr  1 17:20:44 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.10
+  * Added support for SDL_PIXELFORMAT_MJPG to SDL_DuplicateSurface()
+  * Added SIMD blitters for 8888 to 8888 swizzled format conversion
+  * Added mappings for the Nintendo Switch Online N64/SEGA/SNES
+    controllers on Linux
+  * Added SDL_HINT_VIDEO_X11_EXTERNAL_WINDOW_INPUT to control
+    whether XSelectInput() should be called on external windows
+
+-------------------------------------------------------------------
+Fri Mar 14 17:37:06 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim extraneous X11 dependencies from SDL3-devel [boo#1239635]
+
+-------------------------------------------------------------------
+Wed Mar  5 20:06:38 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.8
+  * Fixed a bug restoring the desktop mode on X11
+  * Fixed being unable to get message box fonts on some Linux systems
+  * Fixed a potential crash unplugging a HIDAPI controller
+  * Fixed the 2D clip rect when logical presentation is enabled
+
+-------------------------------------------------------------------
+Sun Mar  2 09:48:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.6
+  * Added support for Motion JPEG camera capture
+  * Allow 2D render targets to use logical presentation
+  * Fixed audio glitch when resampling between large frequency
+    differences
+  * Fixed pen generated mouse events not having SDL_PEN_MOUSEID
+  * Added support for the 8BitDo Micro gamepad
+  * Added SDL_HINT_JOYSTICK_HAPTIC_AXES to specify how many haptic
+    axes a device has
+  * Fixed SDL_GetRelativeMouseState() returning no motion when not
+    in relative mouse mode
+  * Added SDL_PROP_SURFACE_HOTSPOT_X_NUMBER and
+    SDL_PROP_SURFACE_HOTSPOT_Y_NUMBER to allow storing cursor
+    hotspot positions directly in an SDL_Surface
+  * Added support for high DPI icons on Wayland
+  * Added color management protocol support on Wayland
+  * Fixed flushing audio forever in some cases when recording
+    PulseAudio on Linux
+  * Fixed a rare deadlock when opening an audio device using
+    PipeWire on Linux
+- Delete 0001-pipewire-Ensure-that-the-correct-struct-is-used-for-.patch
+  (merged) 
+-------------------------------------------------------------------
+Tue Feb 25 16:16:00 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-pipewire-Ensure-that-the-correct-struct-is-used-for-.patch
+  for pipewire-1.3.x
+
+-------------------------------------------------------------------
+Fri Feb  7 09:00:53 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.4
+  * Fixed decoding 4-bit RLE encoded BMP files
+  * Fixed setting the position of X11 windows before they are shown
+  * Fixed D-Pad not working when using SDL2 controller mappings
+  * Fixed SDL_OpenHapticFromJoystick() not returning a valid
+    haptic handle
+  * Added SDL_StretchSurface() as a replacement for SDL2
+    SDL_SoftStretch() and SDL_SoftStretchLinear()
+  * Fixed several memory leaks
+
+-------------------------------------------------------------------
+Sun Feb  2 12:05:46 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.2
+  * Fixed mouse motion while the mouse is grabbed on Linux
+  * Fixed audio gain not applying in some cases
+  * Fixed a potential crash when applying audio gain
+  * Removed audio resampling frequency limit
+  * Fixed a crash on Windows if a tray is created without any menus
+  * Allow the window manager to position windows that do not
+    specify a position on Linux
+
+-------------------------------------------------------------------
+Thu Jan 23 10:11:20 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Cherry pick change 6cf087f53a05 from SDL2.spec:
+
+  Thu Aug 29 09:07:45 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
+
+  Don't build with fcitx support. fcitx support was just added
+  because of a bug (boo#1025413) that could be fixed by building
+  with fcitx support but upstream SDL2 developers fixed it
+  in 2.0.5 when building without fcitx support too. Also fcitx
+  support has always been disabled in SLE/Leap and in Factory
+  it's built against fcitx 4.2.9.9, not the newer fcitx5 so
+  let's disable it in order to reduce dependencies.
+
+-------------------------------------------------------------------
+Wed Jan 22 10:29:54 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.0
+  * audio: added ``SDL_AudioDeviceStreamPaused`` function
+  * x11/wl: added support for Mod3 and more esoteric Xkb
+    configurations
+  * keyboard: added some SDL keycodes for common Xkb keys
+  * Use XIM for IME input on X11
+  * Added support for displaying XIM composition strings
+  * Added SDL_ClickTrayEntry()
+  * audio: Allow streams to change the device-side channels maps
+  * Fix incorrect hotspot calculation for cursor positioning
+  * Added support for the 8BitDo Ultimate 2C Wireless in
+    Bluetooth mode
+  * Added Linux evdev mappings for the Wireless HORIPAD For Steam
+  * tray: renamed function ``SDL_HasNoActiveTrays`` to
+    ``SDL_HasActiveTrays``
+  * vulkan: Fixes for swapchain resize crash on X11
+  * render: SDL_HINT_RENDER_DRIVER now accepts a comma-separated
+    list
+
+-------------------------------------------------------------------
+Wed Jan  8 20:52:55 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.1.8
+  * This update adds asynchronous I/O, main thread dispatching, a
+    desktop tray API, debug text rendering and other features.
+
+-------------------------------------------------------------------
+Sun Dec 15 22:03:59 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Add baselibs.conf
+
+-------------------------------------------------------------------
+Sat Nov  2 11:30:26 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to preview release 3.1.6
+  * New functions ``SDL_CalculateGPUTextureFormatSize``,
+    ``SDL_CancelGPUCommandBuffer``, ``SDL_DelayPrecise``,
+    ``SDL_GetSandbox``, ``SDL_RenderDebugText``,
+    ``SDL_StepBackUTF8``
+- Delete gcc14.patch (merged)
+
+-------------------------------------------------------------------
+Sat Oct  5 21:04:22 UTC 2024 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to preview release 3.1.3
+  * New GPU API for modern 3D rendering and GPU compute in a
+    cross-platform manner
+  * Various new cross-platform APIs around dialogs / filesystems /
+    storage / camera / pen access, new example programs, audio
+    streams, color-space support
+  * More HiDPI support
+  * Better keyboard input handling
+  * Prefer PipeWire over PulseAudio
+
+-------------------------------------------------------------------
+Mon Aug 19 21:05:37 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Add gcc14.patch
+
+-------------------------------------------------------------------
+Wed May  1 19:06:37 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to preview release 3.1.2
+  * Added SDL_GlobDirectory() and SDL_GlobStorageDirectory()
+  * Reduced startup time when scanning for game controllers on
+    Linux
+  * Removed SDL_RENDERER_ACCELERATED, SDL_RENDERER_SOFTWARE,
+    SDL_HINT_RENDER_SCALE_QUALITY, SDL_quit.h
+  * Renamed SDL_eventaction to SDL_EventAction
+
+-------------------------------------------------------------------
+Thu Apr 11 16:15:42 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to preview release 3.1.1
+  * Fixed a crash when rendering lots of content using the Vulkan
+    renderer
+  * Fixed text input being delivered when SDL_StartTextInput()
+    has not been called
+  * Fixed a performance regression initializing controllers on Linux
+  * Separated the joystick power state into battery status and
+    percentage
+  * Added an optional user parameter to main callback entry points
+  * Case insensitive string comparison functions are no longer
+    affected by locale
+
+-------------------------------------------------------------------
+Fri Dec  2 21:18:51 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (3.0~git251.1a890808a) for build.opensuse.org
