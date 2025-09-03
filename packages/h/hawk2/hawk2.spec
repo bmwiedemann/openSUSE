@@ -249,7 +249,8 @@ find ./hawk -name "*_make.out" -delete
 find ./hawk -name "*.log" -delete
 find ./hawk/locale \( -name "*.po" -o -name "*.pot" \) -exec sed -i 's/^"POT-Creation-Date:.*"/"POT-Creation-Date: 2025-09-01 00:00+0000\\n"/' {} +
 find ./hawk/locale \( -name "*.po" -o -name "*.pot" \) -exec sed -i 's/^"PO-Revision-Date:.*"/"PO-Revision-Date: 2025-09-01 00:00+0000\\n"/' {} +
-
+find ./hawk/public -name "manifest.json" -exec sed -i 's/"mtime":"[^"]*"/"mtime":"2025-09-01T00:00:00+00:00"/g' {} +
+rm ./hawk/tmp/session_secret # if there is no session_secret, it's automatically generated when starting puma
 
 %install
 
