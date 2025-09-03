@@ -19,7 +19,7 @@
 %define sover %(echo %{version} | sed 's/\\./_/g;')
 %define __builder ninja
 Name:           dwarfs
-Version:        0.12.4
+Version:        0.13.0
 Release:        0
 Summary:        Deduplicating compressed read-only file system
 License:        GPL-3.0-or-later AND MIT

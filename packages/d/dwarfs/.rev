@@ -96,4 +96,41 @@ Build
   * Update folly/fbthrift/fsst.</comment>
     <requestid>1301602</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2c9b5df38191c866a5aa255d0319e5f0</srcmd5>
+    <version>0.13.0</version>
+    <time>1756926471</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.13.0:
+Bugfixes:
+  * Made section index discovery more robust.
+    gh#mhx/dwarfs#264
+  * A recent kernel change (https://lkml.org/lkml/2025/5/5/2868)
+    caused the tools_test to fail on Linux 6.14 and later.
+    This has been fixed by accepting both EPERM and ENOSYS as
+    valid error codes for link() calls.
+Features:
+  * Support for big-endian architectures.
+    This is still experimental, even though all unit tests pass
+    with QEMU, and the benchmark suite runs fine on real hardware.
+    This currently requires forked versions of folly and fsst.
+    The changes are small and the pull requests will hopefully be
+    merged upstream soon.
+  * Experimental support for 32-bit architectures.
+    While DwarFS should mostly &quot;just work&quot; on 32-bit when using
+    small images (a few hundred megabytes), the limited address
+    space is a problem for the extensive use of memory-mapped
+    files inside DwarFS. There will be changes to limit the use of
+    mmap in the future (mainly due to other issues), which should
+    help 32-bit compatibility as a side-effect.
+    gh#mhx/dwarfs#268.
+  * The category metadata for categorized blocks is now stored in
+    the metadata block by default. This allows re-compressing the
+    blocks with a metadata-dependent algorithm (e.g. FLAC) even if
+    they were previously compressed using a metadata-independent
+    algorithm.
+    This can be disabled using the --no-category-metadata option.
+    See the mkdwarfs man page for more details.</comment>
+    <requestid>1302510</requestid>
+  </revision>
 </revisionlist>
