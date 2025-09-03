@@ -1,7 +1,7 @@
 #
 # spec file for package wpewebkit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,10 +23,10 @@
 
 Name:           wpewebkit
 ### FIXME ### Drop the disabling of LTO on next release/versionbump
-%ifarch %{ix86} ppc64le
+%ifarch %{ix86} %{arm}
 %define _lto_cflags %{nil}
 %endif
-Version:        2.46.6
+Version:        2.48.5
 Release:        0
 Summary:        Library for rendering web content, WPE Port
 License:        BSD-3-Clause AND LGPL-2.1-only
@@ -36,6 +36,7 @@ Source:         %{url}/releases/%{name}-%{version}.tar.xz
 
 BuildRequires:  bubblewrap
 BuildRequires:  cmake
+BuildRequires:  flite-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gperf >= 3.0.1
 BuildRequires:  libbacktrace-devel
@@ -125,15 +126,6 @@ WPE allows embedders to create simple and performant systems based on
 Web platform technologies. It is designed with hardware acceleration
 in mind, leveraging common 3D graphics APIs for best performance.
 
-%package -n libWPEWebInspectorResources
-Summary:        WPEWebInspectorResources tool
-Group:          System/Libraries
-
-%description -n libWPEWebInspectorResources
-WPE allows embedders to create simple and performant systems based on
-Web platform technologies. It is designed with hardware acceleration
-in mind, leveraging common 3D graphics APIs for best performance.
-
 %package -n WPEWebDriver
 Summary:        WebDriver service implementation for WPE  WebKit
 Group:          System/Libraries
@@ -207,9 +199,6 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags wayland-client xkbcommon)"
 %dir %{_libdir}/wpe-webkit-%{_apiver}/injected-bundle
 %{_libdir}/wpe-webkit-%{_apiver}/injected-bundle/libWPEInjectedBundle.so
 
-%files -n libWPEWebInspectorResources
-%{_libdir}/wpe-webkit-%{_apiver}/libWPEWebInspectorResources.so
-
 %files -n WPEWebDriver
 %{_bindir}/WPEWebDriver
 
@@ -218,6 +207,8 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags wayland-client xkbcommon)"
 %{_libdir}/libWPEWebKit-%{_apiver}.so
 %{_libdir}/pkgconfig/wpe-webkit-%{_apiver}.pc
 %{_libdir}/pkgconfig/wpe-web-process-extension-%{_apiver}.pc
+%dir %{_datadir}/wpe-webkit-%{_apiver}
+%{_datadir}/wpe-webkit-%{_apiver}/inspector.gresource
 
 %files minibrowser
 %{_libexecdir}/libWPEWebKit-%{_wksover}/MiniBrowser

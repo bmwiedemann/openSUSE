@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Mon Sep  1 15:20:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.48.5:
+  + Fix several crashes.
+- Changes from version 2.48.4:
+  + Improve emoji font selection with USE_SKIA=ON.
+  + Improve playback of multimedia streams from blob URLs.
+  + Integrate with the system logging service on Android, allowing
+    configuring the overall log level and log channels using the
+    log.tag.WPEWebKit and debug.log.WPEWebKit system properties.
+  + Fall back to display-wide DMA-BUF formats when failing to get
+    the preferred formats for a given WPEToplevel.
+  + Fall back to using libdrm to detect device nodes to use in the
+    WPEPlatform headless and Wayland backends.
+  + Fix WebGL initialization when using WPEPlatform in some setups
+    i.e. Mali GPUs with the proprietary driver.
+  + Fix the build with USE_SKIA_OPENTYPE_SVG=ON and
+    USE_SYSPROF_CAPTURE=ON.
+  + Fix the build on LoongArch with USE_SKIA=ON.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.48.3:
+  + Fix a crash introduced by the new threaded rendering
+    implementation using Skia API.
+  + Improve rendering performance by recording layers once and
+    replaying every dirty region in different worker threads.
+  + Fix a crash when setting WEBKIT_SKIA_GPU_PAINTING_THREADS=0.
+  + Fix a reference cycle in webkitmediastreamsrc preventing its
+    disposal.
+- Changes from version 2.48.2:
+  + Enable CSS Overscroll Behavior by default.
+  + Change threaded rendering implementation to use Skia API
+    instead of WebCore display lists that were not thread safe.
+  + Fix rendering when device scale factor change comes before the
+    web view geometry update.
+  + Fix network process crash on exit.
+  + Fix the build with ENABLE_RESOURCE_USAGE=OFF.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.48.1:
+  + Limit the data stored in session state.
+  + Remove the empty area below the title bar in Web Inspector when
+    not docked.
+  + Improve the robustness of WebAudio and WebCodecs multimedia
+    support.
+  + Fix the build with GST_DISABLE_GST_DEBUG.
+  + Fix the build with GStreamer versions older than 1.20.
+  + Fix the build with libc++ version 19 or newer.
+  + Fix the build with video support disabled (ENABLE_VIDEO=OFF).
+  + Fix the build with Clang 20.
+- Changes from version 2.48.0:
+  + Fix YouTube playback by using a different User-Agent quirk.
+  + Avoid adding redundant tracks to MediaPlayer.
+  + Propagate the font's computed locale to HarfBuzz.
+  + Fix missing default values for the key repeat delay, key repeat
+    interval, and drag threshold in WPESettings.
+  + Fix missing registration for the DRM scale setting in
+    WPESettings.
+  + Fix the build on non-Linux platforms.
+  + Fix several crashes and rendering issues.
+- Add flite-devel BuildRequires: New dependency.
+- Drop libWPEWebInspectorResources sub-package, no longer built.
+- No longer disable LTO for ppc64le, disable LTO for 32bit arm.
+
+-------------------------------------------------------------------
 Wed Feb 19 13:34:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.46.6:
