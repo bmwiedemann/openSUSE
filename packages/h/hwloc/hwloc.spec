@@ -1,7 +1,7 @@
 #
 # spec file for package hwloc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,13 +29,12 @@
 
 %global lname libhwloc15
 Name:           hwloc
-Version:        2.11.2
+Version:        2.12.2
 Release:        0
 Summary:        Portable Hardware Locality
 License:        BSD-3-Clause
 URL:            https://www.open-mpi.org/projects/hwloc/
-Source0:        https://download.open-mpi.org/release/hwloc/v2.11/hwloc-%{version}.tar.bz2
-Patch0:         0001-x86-work-around-legacy_max_proc-being-0-while-HTT-fe.patch
+Source0:        https://download.open-mpi.org/release/hwloc/v2.12/hwloc-%{version}.tar.bz2
 
 BuildRequires:  autoconf
 BuildRequires:  automake

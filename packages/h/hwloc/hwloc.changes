@@ -1,4 +1,204 @@
 -------------------------------------------------------------------
+Wed Sep  3 08:11:15 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
+
+- removed patches (fixed upstream)
+  * 0001-x86-work-around-legacy_max_proc-being-0-while-HTT-fe.patch
+
+- update to 2.12.2
+  * .ignore: update
+  * API
+    + add hwloc_topology_get_default_nodeset()
+    + bump HWLOC_API_VERSION to 0x20c00
+    + document that distances may only group if latencies
+    + fix a comment about weighted interleave support bit
+    + fix some typos in doxygen syntax and refs
+  * Do not treat INTERSECT_LOCALITY as a superset of LARGER and SMALLER
+  * Duplicate distance grouping info in hwloc_internal_distances_dup
+  * Fix lstopo man page
+  * Make hwloc_distances_get_by_name accept empty kinds 
+  * NEWS
+    +: add distances bullet
+    + add hwloc-calc improvement bullet
+    + bullet about manpages
+    + bullet about memattr fixes
+    + bullet about syscalls
+    + bullet about x86/flsl issues
+    + bullets about L0 rework
+    + bullets about heterogeneous memory improvements 
+    + mention systemd-dbus-api changes in hwloc-calc
+    + reorder and improve 2.11.2 bullets
+    + some fixes in 2.11 bullets
+    + update about CUDA and NVML
+  * Set the `obj` pointer of `hwloc_internal_location_s` in `to_internal_location()`
+  * VERSION: bump lib soname from 23:0:8 to 23:1:8 for 2.11.2
+  * bitmap.h: fix/improve the doc about return values
+  * bitmap: improve sscanf/snprintf doc
+  * ci.inria.fr: move the v2.11 nightly build to a different time
+  * ci.inria.fr: move the v2.12 nightly build to a different time
+  * completion/bash: add missing INPUT_FORMAT definition in some functions
+  * completion/bash: always initialize COMP_REPLY to empty
+  * completion/bash: don't always return kind=* when completing --ancestor etc
+  * completion/bash: fix the completion of lstopo --palette
+  * completion/bash: hwloc-patch -R instead of --R
+  * completion/test: only enable if bash is available
+  * configure: error out if --with-foo doesn't have its mandatory argument
+  * configure: hwloc-devel is dead, and add a link to github issues
+  * contrib/android: add a link to the privacy policy inside the app
+  * contrib/android: bump APK from 1.5.3 to 1.6.0
+  * contrib/android: bump APK to 1.6.1
+  * contrib/android: fix a typo in the website link box
+  * contrib/android: fix case expressions must be constants expressions
+  * contrib/android: force enable BuildConfig
+  * contrib/android: merge privacy/website/github/ci links inside the main text
+  * contrib/android: require cmake 3.18.1
+  * contrib/android: stop overriding versionCode with ABI's ones
+  * contrib/android: update gradle, gradle plugin and ndk versions
+  * contrib/android: update the namespace definition
+  * contrib/ci.inria.fr/browse_jenkins_logs.sh: update to current jenkins webpages
+  * contrib/ci.inria.fr/sonarqube: improve the matching of the github repo
+  * contrib/ci.inria.fr/sonarqube: more updates to the config
+  * contrib/ci.inria.fr: remove buildDiscarder option
+  * contrib/ci.inria.fr: use a node with tag 'android2024' for android builds
+  * contrib/ci/sonarqube: Fix some warnings
+  * contrib/completion: add a test for bash completion
+  * contrib/contrib: bump compile/targetSdkVersion to 34
+  * core+linux: generalize and improve Die filtering vs Packages
+  * core: merge hwloc_topology_reconnect() and hwloc_filter_levels_keep_structure()
+  * core: remove "from the OS" from the main insert error message
+  * core: remove obsolete code about Machine object being ignored
+  * cpukinds: fix register() after dup()
+  * cuda: add FP32perCore info for CUDA capability 10.x and 12.0
+  * debug: check that !topology->modified during checks
+  * distances: check internal distances NULLity before dereferencing
+  * distances: clarify that distances must have one FROM and one MEANS kind
+  * distances: clarify the general description of the structure
+  * distances: don't enforce the matrix name for NVLink operations
+  * distances: relax constraints on distance kinds
+  * distances: transitive closure doesn't overwrite the existing direct bandwidth
+  * doc+contrib: switch the website doc to doxygen layout
+  * doc/readthedocs: move the doxygen doc to a subdirectory and redirect to it
+  * doxy: NVIDIA Grace Hopper memory is also marked as GPUMemory
+  * doxy: minor improvements to heteromem part
+  * doxy: update build with CMake
+  * doxygen: ignore the static keyword
+  * fix#676 use hwloc_access instead of hwloc_accessat
+  * fix(cmake): support win-arm64
+  * fix: multiple syntax errors / missing quotes in hwloc bash completions
+  * freebsd: fix a node array leak when distances are available but ignored
+  * gather-cpuid: update for latest intel leaves
+  * gather-cpuid: update to Intel x86 manuel 2024/10
+  * hwloc/plugins.h: distances backend API shouldn't be in the PCI group
+  * hwloc/plugins.h: merge discovery component and backend groups
+  * hwloc/plugins.h: move hwloc_plugin_check_namespace() to the generic components group
+  * hwloc_distrib(): error out if 0 is given
+  * hwloc_type_sscanf: fix test when host has several levels with same type
+  * include: fix the formatting of ending \0 in comments
+  * levelzero.h+tests: update to both ZE and ZES API
+  * levelzero.h: fix the lookup of parent pci devices
+  * levelzero.h: we always return the root/parent device, not a subdevice
+  * levelzero: abstract-out the querying of drivers/devices
+  * levelzero: don't enforce ZES_ENABLE_SYSMAN=1 in the environment
+  * levelzero: don't get device properties twice
+  * levelzero: only get memory info from sysman
+  * levelzero: remove the is_integrated variable
+  * levelzero: require zesDriverGetDeviceByUuidExp()
+  * levelzero: separate ZE and ZES device handles
+  * levelzero: use zesDriverGetDeviceByUuidExp() to get ZES device handles
+  * linux/arm: identify aarch64 as arm too
+  * linux/cpukinds/freq: use acpi_cppc/nominal_freq when available
+  * linux/cpukinds: add Intel "LowPower" PMU set
+  * linux/cpukinds: fix support for offline CPUs
+  * linux: add NUMA syscalls for hppa, s390, alpha, cris and m68k
+  * linux: add affinity+NUMA syscalls for 3 MIPS common ABIs
+  * linux: add affinity+NUMA syscalls for loongarch
+  * linux: fix a verbose message about failure to read DMI memory info
+  * linux: fix some NUMA syscall numbers on x86
+  * linux: move some common code out of the /proc/cpuinfo parsing loop
+  * linux: move sparc NUMA syscalls above
+  * linux: update Cray Slingshot detection to hsn->hsi device renaming
+  * lstopo.1: fix a typo
+  * lstopo.1: improve the COLORS section
+  * memattr: document that locality and capacity values cannot be modified
+  * memattr: locality requires a cpuset, capacity requires a NUMA node
+  * memattr: make sure target_node parameter isn't NULL on input
+  * memattrs.h: clarify the set of predefined+custom attribute IDs
+  * memattrs.h: move get_targets/get_initiators to the main section
+  * memattrs.h: some clarification in get_flags/name and register
+  * memattrs: add INTERSECT flag for getting local NUMA nodes
+  * memtiers: clarify a comment about using subtypes for sorting nodes in tiers
+  * misc: reactivate GNUC conditional
+  * nvml: cleanup NVLink version bandwidths and add Blackwell/v5
+  * rename.h: Add missed macro for hwloc_internal_memattr_set_value
+  * rsmi: fix some unused variable warnings
+  * rsmi: fix the PCI locality of partitioned devices
+  * scripts: don't put "fi fi fi" on the same line
+  * test-gather-topology: disable Misc objects
+  * tests/cpukinds: duplicate the topology between register()s
+  * tests/levelzero: don't mix up a ZES and ZE function
+  * tests/levelzero: remove some checks for ZES devices
+  * tests/memattrs: check capacity/locality with different/invalid targets
+  * tests/rename: don't ignore all lines containing hwloc_uint64_t
+  * tests/type_sscanf: test a synthetic case with 2 levels of groups
+  * tests/xml: add a NVIDIA DGX-2
+  * utils/annotate.1: sectionize EXAMPLES
+  * utils/annotate/test: test transitive-closure and merge-switch-ports on the DGX2 xml
+  * utils/bind.1: fix a "processor" instead of "core" in examples
+  * utils/bind.1: sectionize EXAMPLES
+  * utils/bind: add --default-nodes
+  * utils/bind: fix binding CPU and memory on different locations
+  * utils/bind: only enable binding verbose messages, not all
+  * utils/calc.1: clarify that filters are applied on input only
+  * utils/calc.1: document that --cof applies to both cpuset and nodeset outputs
+  * utils/calc.1: sectionize EXAMPLES
+  * utils/calc.1: split output conversion options out of others
+  * utils/calc/tests: check that we properly find NUMA nodes if heterogeneous memory
+  * utils/calc: --no isn't needed anymore for converting NUMA node indexes etc
+  * utils/calc: abstract-out a hwloc_utils_cpuset_format_sscanf()
+  * utils/calc: accumulate both cpuset and nodeset of locations
+  * utils/calc: add cpukind/memorytier to -I and -N
+  * utils/calc: add the systemd-dbus-api cpuset output format
+  * utils/calc: fix the computing of command-line locations
+  * utils/calc: fix the warning about --nodeset and --largest
+  * utils/calc: remove nodeset_output where it's now unneeded
+  * utils/calc: rename some variables to ease next commits
+  * utils/calc: rework --cpuset-output-format for the systemd-dbus-api
+  * utils/calc: split options into I/O set/object and formatting options
+  * utils/calc: switch to intersecting local NUMA nodes by default
+  * utils/calc: use HWLOC_TYPE_DEPTH_UNKNOWN instead of -1
+  * utils/calc: use memory object directly instead of walking up to normal objects
+  * utils/gather-cpuid: update leaf 0x23
+  * utils/gather-topology.1: --proclist obsolete and removed long time ago
+  * utils/gather-topology.1: fix formatting of command-line examples
+  * utils/gather-topology: fix a grep warning when matching octal sequence
+  * utils/hwloc-calc: add systemd-dbus-api to --cof usage and completion
+  * utils/info: add --default-nodes
+  * utils/info: fix sub-index prefix for local memory
+  * utils/lstopo.1: fix formatting of command-line examples
+  * utils/lstopo.1: remove a dumb example
+  * utils/lstopo.1: remove an outdated note about size units
+  * utils/lstopo.1: sectionize EXAMPLES
+  * utils/lstopo: don't build lstopo-win with MSVC
+  * utils/lstopo: remove -mwindows with MSVC
+  * utils/ps.1: sectionize EXAMPLES
+  * utils: improve "default" --best-memattr fallback in corner cases
+  * utils: return our new "default" nodes in the default --best-memattr fallback
+  * utils: uniformize checks after hwloc_calc_parse_level_size()
+  * utils: warn if we failed to find best nodes
+  * windows: add support for Die and Module topology levels
+  * windows: don't use uninitialized memory for selecting group kinds
+  * windows: promote a warning about 32-bit processor groups to critical
+  * x86: allow windows CPUID dump import on Linux
+  * x86: re-enable the gathering of topoext node IDs
+  * x86: work around legacy_max_proc being 0 while HTT feature bit is set
+    (bsc#1236038)
+  * xml/import: add missing xml prefix to some error messages
+  * xml/import: disable the currently unused importing of future types
+  * xml/import: forward compat with distances changes in 3.0
+  * xml/import: ignore numanode_type for now
+  * xml/import: support a possible future Cluster type
+  * xml/nolibxml/import: allow windows XMLs
+
+-------------------------------------------------------------------
 Mon Apr 28 07:32:19 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
 
 - fix division by zero exception with recent versions of GCC 
