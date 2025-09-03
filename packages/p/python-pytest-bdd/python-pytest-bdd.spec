@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-bdd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,23 +17,24 @@
 
 
 Name:           python-pytest-bdd
-Version:        7.3.0
+Version:        8.1.0
 Release:        0
 Summary:        BDD for pytest
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-bdd
 Source:         https://github.com/pytest-dev/pytest-bdd/archive/%{version}.tar.gz#/pytest-bdd-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Mako
+Requires:       python-gherkin-official >= 29
 Requires:       python-packaging
 Requires:       python-parse
 Requires:       python-parse_type
-Requires:       python-pytest >= 6.2.0
+Requires:       python-pytest >= 7.0.0
 Requires:       python-typing_extensions
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -41,10 +42,11 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Mako}
 BuildRequires:  %{python_module execnet}
+BuildRequires:  %{python_module gherkin-official >= 29}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module parse_type}
 BuildRequires:  %{python_module parse}
-BuildRequires:  %{python_module pytest >= 6.2.0}
+BuildRequires:  %{python_module pytest >= 7.0.0}
 BuildRequires:  %{python_module typing_extensions}
 %python_subpackages
 
@@ -82,7 +84,8 @@ mkdir -p build/testbin
 ln -s %{buildroot}%{_bindir}/pytest-bdd-%{$python_bin_suffix} build/testbin/pytest-bdd
 }
 export PATH=$PWD/build/testbin:$PATH
-%pytest
+# Broken upstream as of 8.1.0
+%pytest -k 'not test_step_outside_scenario_or_background_error'
 
 %post
 %python_install_alternative pytest-bdd

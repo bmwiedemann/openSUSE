@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Sep  3 01:15:42 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 8.1.0:
+  * Added
+    + Gherkin keyword aliases can now be used and correctly reported in json
+      and terminal output.
+    + Added localization support.
+    + Rule keyword can be used in feature files.
+    + Added support for multiple example tables
+    + Added filtering by tags against example tables
+    + Tags can now be on multiple lines (stacked)
+    + Continuation of steps using asterisks instead of And/But supported.
+    + Added ``datatable`` argument for steps that contain a datatable.
+  * Changed
+    + Step arguments "datatable" and "docstring" are now reserved, and they
+      can't be used as step argument names.
+    + Scenario description field is now set for Cucumber JSON output.
+    + Text after the # character is no longer stripped from the Scenario and
+      Feature name.
+    + Use the gherkin-official parser, replacing the custom parsing logic.
+    + Multiline steps must now always use triple-quotes for the additional
+      lines.
+    + All feature files must now use the keyword Feature: to be considered
+      valid.
+    + Tags can no longer have spaces.
+    + Text after the # character is no longer stripped from the Step name.
+    + Fixed an issue with the upcoming pytest release related to the use of
+      @pytest.mark.usefixtures with an empty list.
+  * Removed
+    + Dropped support for python 3.8.
+    + Drop compatibility with pytest < 7.0.0.
+
+-------------------------------------------------------------------
 Tue Oct  1 13:36:26 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.3.0:
