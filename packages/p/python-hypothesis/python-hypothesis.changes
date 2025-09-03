@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Sep  2 08:34:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.138.13
+  * text() now occasionally generates from a preselected list of strings
+    which are likely to find bugs.
+  * Improves input validation for several strategies in our pandas extra,
+    so that they raise a helpful InvalidArgument rather than OverflowError.
+  * New "hypothesis-urandom" backend, which draws randomness from
+    /dev/urandom instead of Python’s PRNG.
+  * randoms() no longer produces 1.0, matching the exclusive upper bound
+    of random.Random.random
+  * Nesting @given inside of @given is now a HealthCheck failure.
+  * Add is_hypothesis_test(), for third-party libraries which want to
+    determine whether a test has been defined with Hypothesis.
+  * Add on_observation() to the internal alternative backends interface.
+  * New hypothesis.extra.django.SimpleTestCase
+  * New run_conformance_test(), for use in testing implementations of
+    alternative backends.
+  * Fixes a substantial performance regression in stateful tests from
+    computing string representations, present since version 6.131.20.
+  * Improves the thread safety of many functions and decorators.
+  * Before this release, Hypothesis did not require that super().__init__()
+    be called in SearchStrategy subclasses. Subclassing SearchStrategy is
+    not supported or part of the public API, but if you are subclassing it
+    anyway, you will need to make sure to call super().__init__().
+  * When a failure found by an alternative backend does not reproduce under
+    the Hypothesis backend, we now raise FlakyBackendFailure.
+  * When a test is executed concurrently from multiple threads, DeadlineExceeded
+    is now disabled.
+  * Add specified callback methods to the observability interface. The previous
+    TESTCASE_CALLBACKS is deprecated.
+  * Add support for Python 3.14.
+
+-------------------------------------------------------------------
 Thu Aug 21 08:32:53 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only

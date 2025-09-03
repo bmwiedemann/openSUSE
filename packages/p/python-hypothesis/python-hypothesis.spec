@@ -1,7 +1,7 @@
 #
 # spec file for package python-hypothesis
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,7 +43,7 @@ ExclusiveArch:  do_not_build
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hypothesis%{psuffix}
-Version:        6.127.8
+Version:        6.138.13
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
@@ -74,7 +74,7 @@ Requires(postun): update-alternatives
 Recommends:     (python-importlib_metadata >= 3.6 if python-base < 3.8)
 # consuming packages need to declare these optional dependencies explicitly
 Recommends:     python-Django >= 4.2
-Recommends:     python-black >= 19.10
+Recommends:     python-black >= 20.8
 Recommends:     python-click >= 7.0
 Recommends:     python-dpcontracts >= 0.4
 Recommends:     python-lark >= 0.10.1
@@ -91,7 +91,7 @@ Recommends:     python-rich >= 9.0
 BuildRequires:  %{python_module hypothesis = %{version}}
 # SECTION test requirements
 BuildRequires:  %{python_module backports.zoneinfo >= 0.2.1 if %python-base < 3.9}
-BuildRequires:  %{python_module black >= 19.10}
+BuildRequires:  %{python_module black >= 20.8}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module dpcontracts >= 0.4}
 BuildRequires:  %{python_module flaky}
@@ -106,7 +106,7 @@ BuildRequires:  %{python_module rich >= 9.0.0}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module watchdog}
 %if %{with complete_tests}
-BuildRequires:  %{python_module Django >= 3.2}
+BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module fakeredis}
 BuildRequires:  %{python_module pandas >= 1.1}
 %endif
@@ -165,28 +165,19 @@ donttest="test_updating_the_file_include_new_shrinkers"
 donttest+=" or test_can_learn_to_normalize_the_unnormalized"
 # requires a git checkout
 donttest+=" or test_observability"
-# Fail because typing comparison
-donttest+=" or test_ghostwriter_on_hypothesis"
 if [ $(getconf LONG_BIT) -eq 32 ]; then
 donttest+=" or test_gets_right_dtype_for_empty_indices"
 fi
-# https://github.com/HypothesisWorks/hypothesis/issues/3704
-donttest+=" or (test_make_full_patch and covering)"
-donttest+=" or test_overflowing_integers_are_deprecated"
 # suddenly does not raise InvalidArgument with Numpy 2
 donttest+=" or test_unrepresentable_elements_are_deprecated"
 # we're disabling the healthcheck below, obs is too flaky with it
-donttest+=" or fails_health_check or slow_tests or on_healthcheck or a_health_check"
-donttest+=" or test_statistics_with_events_and_target"
-donttest+=" or test_self_ref_regression"
-# flaky test
-donttest+=" or test_has_string_of_max_length"
-# Test not working with 3.13.2
-# gh#HypothesisWorks/hypothesis#4276
-# https://github.com/python/cpython/issues/125553
-donttest+=" or test_clean_source[case-5]"
-# Requires latest black
-donttest+=" or test_ghostwriter_example_outputs[union_sequence_parameter]"
+donttest+=" or fails_health_check or slow_tests or on_healthcheck or a_health_check or test_health_check_too_slow"
+# and we are overriding the default deadline as well
+donttest+=" or test_backend_deadline_exceeded_raised_as_flaky_backend_failure or test_deadline_exceeded_can_be_raised_after_threads"
+# flaky tests
+donttest+=" or test_has_string_of_max_length or test_database_listener_directory"
+# drop tests testing functionality we don't have
+rm tests/crosshair/test_crosshair.py
 # adapted from pytest.ini in github repo toplevel dir (above hypothesis-python)
 echo '[pytest]
 addopts=
@@ -227,9 +218,6 @@ hypothesis.settings.register_profile(
 " >> tests/conftest.py
 %if %{without complete_tests}
 export PYTEST_ADDOPTS="--ignore=tests/pandas/ --ignore=tests/redis/test_redis_exampledatabase.py"
-# gh#HypothesisWorks/hypothesis#4185
-# pytest < 8.0 doesn't support __notes__ in pytest.raises()
-donttest+=" or test_adds_note_showing_which_strategy"
 %endif
 %pytest -c pytest.ini -k "not ($donttest)" tests; rm -rf .pytest_cache
 %endif
