@@ -878,4 +878,16 @@
     planned release.</comment>
     <requestid>1299118</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>380b7409d2063063c0e7e3637c3f63e9</srcmd5>
+    <version>5.0.0</version>
+    <time>1756926510</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.0.0
+  * Removed acme.crypto_util.SSLSocket and acme.crypto_util.probe_sni
+  * Removed a number of deprecated classes/interfaces in acme.challenges
+  * Python 3.9 support was removed.
+  * Migrated most functionality from setup.py to pyproject.toml</comment>
+    <requestid>1302581</requestid>
+  </revision>
 </revisionlist>

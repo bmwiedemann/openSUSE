@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep  3 12:06:41 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.0.0
+  * Removed acme.crypto_util.SSLSocket and acme.crypto_util.probe_sni
+  * Removed a number of deprecated classes/interfaces in acme.challenges
+  * Python 3.9 support was removed.
+  * Migrated most functionality from setup.py to pyproject.toml
+
+-------------------------------------------------------------------
 Tue Aug 12 15:45:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.2.0
