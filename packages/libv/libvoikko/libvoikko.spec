@@ -1,7 +1,7 @@
 #
 # spec file for package libvoikko
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 Name:           libvoikko
-Version:        4.3.2
+Version:        4.3.3
 Release:        0
 Summary:        Library of free natural language processing tools
 License:        GPL-2.0-or-later

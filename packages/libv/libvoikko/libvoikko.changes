@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  2 14:34:12 UTC 2025 - pgajdos@suse.com
+
+- version update to 4.3.3
+
+  * Update C++ standard from C++14 to C++17.
+  * Compilation fixes for recent versions of GCC and Emscripten.
+  * Link time optimisation (LTO) is now supported during build.
+  * Test suite that was run during "make check" has been disabled, as it
+    required a specific, undocumented set of dictionaries to be present.
+  * Fix memory leak in hyphenator code.
+
+-------------------------------------------------------------------
 Mon Aug  7 20:05:10 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build on older distributions by requiring gcc/g++ >= 7
