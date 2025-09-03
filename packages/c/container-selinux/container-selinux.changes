@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 02 11:06:14 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 2.241.0:
+  * Allow domains that trans to container_runtime_t bpf:prog_run
+
+-------------------------------------------------------------------
 Tue Aug 05 14:21:07 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 2.240.0:

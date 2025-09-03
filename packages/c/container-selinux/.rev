@@ -251,4 +251,12 @@
     <comment>update to 2.240.0</comment>
     <requestid>1297768</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>af605adfef0fce76166fbac76da2032d</srcmd5>
+    <version>2.241.0</version>
+    <time>1756926418</time>
+    <user>anag_factory</user>
+    <comment>container-selinux update</comment>
+    <requestid>1302416</requestid>
+  </revision>
 </revisionlist>
