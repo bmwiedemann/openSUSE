@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  3 12:26:27 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to version 5.0.0
+  * Python 3.9 support was removed
+  * Migrated most functionality from setup.py to pyproject.toml
+  * certbot-nginx no longer uses socket.gethostname when generating self-signed
+    certificates for use as a temporary step of installing certificates as it
+    would sometimes result in strings that are too long to be used in the common
+    name of a certificate. The static domain "temp-certbot-nginx.invalid" is now
+    used instead
+
+-------------------------------------------------------------------
 Tue Aug 12 16:04:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to version 4.2.0
