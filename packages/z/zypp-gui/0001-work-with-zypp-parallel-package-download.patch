@@ -1,0 +1,25 @@
+From 91e82b7324b2a9530923f36e1a8ace6156635d10 Mon Sep 17 00:00:00 2001
+From: Xiaoguang Wang <sun.wxg@gmail.com>
+Date: Tue, 2 Sep 2025 14:52:56 +0800
+Subject: [PATCH] work with zypp parallel package download
+
+---
+ zypp-gui/src/packagekit.rs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/zypp-gui/src/packagekit.rs b/zypp-gui/src/packagekit.rs
+index 032e56c..e3c388c 100644
+--- a/zypp-gui/src/packagekit.rs
++++ b/zypp-gui/src/packagekit.rs
+@@ -148,7 +148,7 @@ pub fn download_updates(sender: async_channel::Sender<PKmessage>) {
+             sender1
+                 .send_blocking(PKmessage::Progress((
+                     progress.percentage(),
+-                    Some(progress.get_item_package()),
++                    Some("".to_string()),
+                 )))
+                 .expect("Couldn't send data to channel");
+         }
+-- 
+2.51.0
+
