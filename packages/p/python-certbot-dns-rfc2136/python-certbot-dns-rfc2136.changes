@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  3 12:26:10 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to version 5.0.0
+  * Python 3.9 support was removed
+  * Migrated most functionality from setup.py to pyproject.toml
+
+-------------------------------------------------------------------
 Tue Aug 12 16:04:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to version 4.2.0
