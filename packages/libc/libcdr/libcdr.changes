@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  2 13:17:44 UTC 2025 - pgajdos@suse.com
+
+- version update to 0.1.8
+  * fix build with ICU 75 and ICU 76
+  * Upgrade m4 macros from autoconf-archive.git v2023.02.20
+  * Fix crash appear with format CDR 14 and Gradients
+
+-------------------------------------------------------------------
 Fri Mar 26 13:58:39 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Version update to 0.1.7
