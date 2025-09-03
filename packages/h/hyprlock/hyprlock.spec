@@ -1,7 +1,7 @@
 #
 # spec file for package hyprlock
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           hyprlock
-Version:        0.4.1
+Version:        0.9.1
 Release:        0
 Summary:        Hyprland's screen locking utility
 License:        BSD-3-Clause
@@ -36,6 +36,12 @@ BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  hyprgraphics-devel
+BuildRequires:  hyprland
+BuildRequires:  hyprland-protocols-devel
+BuildRequires:  hyprlang-devel
+BuildRequires:  hyprutils-devel
+BuildRequires:  hyprwayland-scanner
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
@@ -47,6 +53,7 @@ BuildRequires:  pkgconfig(libmagic)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(pam)
 BuildRequires:  pkgconfig(pango)
+BuildRequires:  pkgconfig(sdbus-c++)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(xkbcommon)
@@ -79,5 +86,6 @@ install -Dm 0644 %{SOURCE1} %{buildroot}/%{_docdir}/%{name}/hyprlock.conf.exampl
 %doc README.md hyprlock.conf.example
 %_config_norepl %{_pam_confdir}/hyprlock
 %{_bindir}/hyprlock
+%{_datadir}/hypr/hyprlock.conf
 
 %changelog

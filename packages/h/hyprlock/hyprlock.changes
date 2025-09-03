@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  2 19:52:38 UTC 2025 - Ali Q <ovmmu0ik7@mozmail.com>
+
+- Update to version 0.9.1:
+   * core: limit onClick to down events
+   * seat: restore cursor shape to default
+   * asyncResourceGatherer: fix conditions for skipping screencopy
+   * background: fix mismatched asset sizes and transforms
+
+-------------------------------------------------------------------
 Mon Aug 12 09:24:26 UTC 2024 - Krzysztof Wiktorczyk <magu44@gmail.com>
 
 - Update to version 0.4.0:
