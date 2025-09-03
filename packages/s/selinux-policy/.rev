@@ -2020,4 +2020,36 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1299076</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>cebf965d39334e81a195070f1acc5dad</srcmd5>
+    <version>20250902</version>
+    <time>1756926416</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250902:
+  * Label /usr/lib/systemd/systemd-ssh-issue with systemd_ssh_issue_exec_t
+  * Allow stalld map sysfs files
+  * Allow NetworkManager-dispatcher-winbind get pidfs attributes
+  * Allow openvpn create and use generic netlink socket
+  * policy_capabilities: remove estimated from released versions
+  * policy_capabilities: add stub for userspace_initial_context
+  * add netlink_xperm policy capability and nlmsg permission definitions
+  * policy_capabilities: add ioctl_skip_cloexec
+  * selinux-policy: add allow rule for tuned_ppd_t
+  * selinux-policy: add allow rule for switcheroo_control_t
+  * Label /run/audit with auditd_var_run_t
+  * Allow virtqemud start a vm which uses nbdkit
+  * Add nbdkit_signal() and nbdkit_signull() interfaces
+  * Fix insights_client interfaces names
+  * Add insights_core and insights_client interfaces
+  * dist/targeted/modules.conf: enable slrnpull module
+  * Allow bootupd delete symlinks in the /boot directory
+  * Allow systemd-coredumpd capabilities in the user namespace
+  * Allow openvswitch read virtqemud process state
+- Syncing with upstream rawhide selinux-policy up to:
+  * 17956d28c011c35560e75a7293ac5924df57a1ee
+- Update embedded container-selinux version to commit:
+  * 5997aa524734886d35e187f52de2546f25c9f500 (version 2.241.0)
+</comment>
+    <requestid>1302415</requestid>
+  </revision>
 </revisionlist>
