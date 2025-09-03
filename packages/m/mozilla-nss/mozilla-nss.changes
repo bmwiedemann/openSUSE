@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri Aug 22 07:38:07 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- update to NSS 3.115.1
+  * bmo#1982742 - restore support for finding certificates by decoded serial number.
+  * bmo#1984165 - avoid CKR_BUFFER_TO_SMALL error in trust lookups.
+
+-------------------------------------------------------------------
+Mon Aug 18 15:05:26 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- update to NSS 3.115
+  * bmo#1970304 - CID 1648399 - Resource leak in shlibsign.c
+  * bmo#1981034 - CKA_SEED needs to be marked as a private attribute
+  * bmo#1981518 - Fix bad syntax on Windows in softoken_gtest.cc
+  * bmo#1974505 - Key private/public/secret keys by key type in softoken keydb
+  * bmo#1980990 - add PK11_HPKE_GetSharedSecret to abi-check expected report
+  * bmo#1980429 - remove NetscapeStepUpMatchesServerAuth from mozpkix TrustDomain
+  * bmo#1927351 - Fixup ABI
+  * bmo#1927351 - add ECH_SECRET and ECH_CONFIG to SSLKEYLOG for both client and server
+  * bmo#1900841 - ECH fuzz target
+  * bmo#1965331 - Implement PKCS #11 v3.2 FIPS indicator and validation objects
+  * bmo#1978677 - remove expired explicitly distrusted DigiNotar lookalike root
+  * bmo#1965329 - Implement PKCS #11 v3.2 functions
+
+- update to NSS 3.114
+  * bmo#1977376 - NSS 3.114 source distribution should include NSPR 4.37
+  * bmo#1970079 - Prevent leaks during pkcs12 decoding
+  * bmo#1953731 - Remove redundant assert in p7local.c
+  * bmo#1974515 - Bump nssckbi version to 2.80
+  * bmo#1961848 - Remove expired Baltimore CyberTrust Root
+  * bmo#1972391 - Add TrustAsia Dedicated Roots to NSS
+  * bmo#1974511 - Add SwissSign 2022 Roots to NSS
+  * bmo#1836559 - Add backwards compatibility for CK_PKCS5_PBKD2_PARAMS
+  * bmo#1965328 - Implement PKCS #11 v3.2 trust objects in softoken
+  * bmo#1965328 - Implement PKCS #11 v3.2 trust objects - nss proper
+  * bmo#1974331 - remove dead code in ssl3con.c
+  * bmo#1934867 - DTLS (excl DTLS1.3) Changing Holddown timer logic
+  * bmo#1974299 - Bump nssckbi version to 2.79
+  * bmo#1967826 - remove unneccessary assertion
+  * bmo#1948485 - Update mechanisms for Softoken PCT
+  * bmo#1974299 - convert Chunghwa Telecom ePKI Root removal to a distrust after
+  * bmo#1973925 - Ensure ssl_HaveRecvBufLock and friends respect opt.noLocks
+  * bmo#1973930 - use -O2 for asan build
+  * bmo#1973187 - Fix leaking locks when toggling SSL_NO_LOCKS
+  * bmo#1973105 - remove out-of-function semicolon
+  * bmo#1963009 - Extend pkcs8 fuzz target
+  * bmo#1963008 - Extend pkcs7 fuzz target
+  * bmo#1908763 - Remove unused assignment to pageno
+  * bmo#1908762 - Remove unused assignment to nextChunk
+  * bmo#1973490 - don't run commands as part of shell `local` declarations
+  * bmo#1973490 - fix sanitizer setup
+  * bmo#1973187 - don't silence ssl_gtests output when running with coverage
+  * bmo#1967411 - Release docs and housekeeping
+  * bmo#1972768 - migrate to new linux tester pool
+
+- rebase FIPS patches to adjust for upstream FIPS work
+
+-------------------------------------------------------------------
 Mon Jul 21 13:51:01 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - update to NSS 3.113

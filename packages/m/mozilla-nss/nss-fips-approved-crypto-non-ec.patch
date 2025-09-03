@@ -87,7 +87,7 @@ Index: nss/lib/freebl/arcfour.c
  
  /* Architecture-dependent defines */
  
-@@ -162,7 +163,9 @@ RC4_InitContext(RC4Context *cx, const un
+@@ -161,7 +162,9 @@ RC4_InitContext(RC4Context *cx, const un
  RC4Context *
  RC4_CreateContext(const unsigned char *key, int len)
  {
@@ -368,27 +368,27 @@ Index: nss/lib/softoken/pkcs11c.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11c.c
 +++ nss/lib/softoken/pkcs11c.c
-@@ -539,7 +539,7 @@ sftk_InitGeneric(SFTKSession *session, C
-     context->blockSize = 0;
+@@ -541,7 +541,7 @@ sftk_InitGeneric(SFTKSession *session, C
      context->maxLen = 0;
+     context->signature = NULL;
      context->isFIPS = sftk_operationIsFIPS(session->slot, pMechanism,
 -                                           operation, key);
 +                                           operation, key, 0);
      *contextPtr = context;
      return CKR_OK;
  }
-@@ -4990,6 +4990,10 @@ NSC_GenerateKey(CK_SESSION_HANDLE hSessi
+@@ -5136,6 +5136,10 @@ NSC_GenerateKey(CK_SESSION_HANDLE hSessi
          goto loser;
      }
  
-+    key->isFIPS = sftk_operationIsFIPS(slot, pMechanism, CKA_KEY_GEN_MECHANISM,
-+                                       key, key_length * PR_BITS_PER_BYTE);
-+    session->lastOpWasFIPS = key->isFIPS;
++    sftk_setFIPS(key, sftk_operationIsFIPS(slot, pMechanism, CKA_KEY_GEN_MECHANISM,
++                                       key, key_length * PR_BITS_PER_BYTE));
++    session->lastOpWasFIPS = sftk_hasFIPS(key);
 +
      /*
       * handle the base object stuff
       */
-@@ -5004,6 +5008,7 @@ NSC_GenerateKey(CK_SESSION_HANDLE hSessi
+@@ -5150,6 +5154,7 @@ NSC_GenerateKey(CK_SESSION_HANDLE hSessi
      if (crv == CKR_OK) {
          *phKey = key->handle;
      }
@@ -396,7 +396,7 @@ Index: nss/lib/softoken/pkcs11c.c
  loser:
      PORT_Memset(buf, 0, sizeof buf);
      sftk_FreeObject(key);
-@@ -5475,7 +5480,7 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
+@@ -5638,7 +5643,7 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
      CK_OBJECT_CLASS privClass = CKO_PRIVATE_KEY;
      int i;
      SFTKSlot *slot = sftk_SlotFromSessionHandle(hSession);
@@ -405,7 +405,7 @@ Index: nss/lib/softoken/pkcs11c.c
  
      /* RSA */
      int public_modulus_bits = 0;
-@@ -6081,11 +6086,11 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
+@@ -6253,11 +6258,11 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
       * created and linked.
       */
      crv = sftk_handleObject(publicKey, session);
@@ -418,7 +418,7 @@ Index: nss/lib/softoken/pkcs11c.c
          return crv;
      }
      if (sftk_isTrue(privateKey, CKA_SENSITIVE)) {
-@@ -6129,12 +6134,20 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
+@@ -6301,12 +6306,20 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
          sftk_FreeObject(publicKey);
          NSC_DestroyObject(hSession, privateKey->handle);
          sftk_FreeObject(privateKey);
@@ -426,9 +426,9 @@ Index: nss/lib/softoken/pkcs11c.c
          return crv;
      }
 +
-+    publicKey->isFIPS = sftk_operationIsFIPS(slot, pMechanism, CKA_KEY_PAIR_GEN_MECHANISM, publicKey, 0);
-+    privateKey->isFIPS = sftk_operationIsFIPS(slot, pMechanism, CKA_KEY_PAIR_GEN_MECHANISM, privateKey, 0);
-+    session->lastOpWasFIPS = privateKey->isFIPS;
++    sftk_setFIPS(publicKey, sftk_operationIsFIPS(slot, pMechanism, CKA_KEY_PAIR_GEN_MECHANISM, publicKey, 0));
++    sftk_setFIPS(privateKey, sftk_operationIsFIPS(slot, pMechanism, CKA_KEY_PAIR_GEN_MECHANISM, privateKey, 0));
++    session->lastOpWasFIPS = sftk_hasFIPS(privateKey);
 +    
      *phPrivateKey = privateKey->handle;
      *phPublicKey = publicKey->handle;
@@ -439,7 +439,7 @@ Index: nss/lib/softoken/pkcs11c.c
  
      return CKR_OK;
  }
-@@ -7326,6 +7339,14 @@ sftk_HKDF(CK_HKDF_PARAMS_PTR params, CK_
+@@ -7529,6 +7542,14 @@ sftk_HKDF(CK_HKDF_PARAMS_PTR params, CK_
          return CKR_TEMPLATE_INCONSISTENT;
      }
  
@@ -454,17 +454,16 @@ Index: nss/lib/softoken/pkcs11c.c
      /* sourceKey is NULL if we are called from the POST, skip the
       * sensitiveCheck */
      if (sourceKey != NULL) {
-@@ -7374,7 +7395,8 @@ sftk_HKDF(CK_HKDF_PARAMS_PTR params, CK_
-                     mech.pParameter = params;
+@@ -7578,7 +7599,7 @@ sftk_HKDF(CK_HKDF_PARAMS_PTR params, CK_
                      mech.ulParameterLen = sizeof(*params);
-                     key->isFIPS = sftk_operationIsFIPS(saltKey->slot, &mech,
--                                                       CKA_DERIVE, saltKey);
-+                                                       CKA_DERIVE, saltKey,
-+                                                       keySize*PR_BITS_PER_BYTE);
+                     sftk_setFIPS(key, sftk_operationIsFIPS(saltKey->slot,
+                                                            &mech, CKA_DERIVE,
+-                                                           saltKey));
++                                                           saltKey, keySize*PR_BITS_PER_BYTE));
                  }
                  saltKey_att = sftk_FindAttribute(saltKey, CKA_VALUE);
                  if (saltKey_att == NULL) {
-@@ -7416,7 +7438,7 @@ sftk_HKDF(CK_HKDF_PARAMS_PTR params, CK_
+@@ -7620,7 +7641,7 @@ sftk_HKDF(CK_HKDF_PARAMS_PTR params, CK_
      /* HKDF-Expand */
      if (!params->bExpand) {
          okm = prk;
@@ -473,17 +472,17 @@ Index: nss/lib/softoken/pkcs11c.c
      } else {
          /* T(1) = HMAC-Hash(prk, "" | info | 0x01)
           * T(n) = HMAC-Hash(prk, T(n-1) | info | n
-@@ -7640,7 +7662,8 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
-             return CKR_KEY_HANDLE_INVALID;
+@@ -7845,7 +7866,8 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
          }
      }
--    key->isFIPS = sftk_operationIsFIPS(slot, pMechanism, CKA_DERIVE, sourceKey);
-+    key->isFIPS = sftk_operationIsFIPS(slot, pMechanism, CKA_DERIVE, sourceKey,
-+                                       keySize*PR_BITS_PER_BYTE);
+     sftk_setFIPS(key, sftk_operationIsFIPS(slot, pMechanism,
+-                                           CKA_DERIVE, sourceKey));
++                                           CKA_DERIVE, sourceKey,
++                                           keySize*PR_BITS_PER_BYTE));
  
      switch (mechanism) {
          /* get a public key from a private key. nsslowkey_ConvertToPublickey()
-@@ -7841,7 +7864,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
+@@ -8050,7 +8072,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
              } else {
                  /* now allocate the hash contexts */
                  md5 = MD5_NewContext();
@@ -492,11 +491,11 @@ Index: nss/lib/softoken/pkcs11c.c
                      PORT_Memset(crsrdata, 0, sizeof crsrdata);
                      crv = CKR_HOST_MEMORY;
                      break;
-@@ -8230,6 +8253,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
+@@ -8439,6 +8461,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
                  PORT_Assert(i <= sizeof key_block);
              }
  
-+            session->lastOpWasFIPS = key->isFIPS;
++            session->lastOpWasFIPS = sftk_hasFIPS(key);
              crv = CKR_OK;
  
              if (0) {
@@ -728,8 +727,7 @@ Index: nss/lib/softoken/fips_algorithms.h
      { CKM_SHA224_HMAC, { 112, 224, CKF_SGN }, 1, SFTKFIPSNone },
 @@ -141,46 +192,88 @@ SFTKFIPSAlgorithmList sftk_fips_mechs[]
      /* --------------------- Secret Key Operations ------------------------ */
--    { CKM_GENERIC_SECRET_KEY_GEN, { 8, 256, CKF_GEN }, 1, SFTKFIPSNone },
-+    { CKM_GENERIC_SECRET_KEY_GEN, { 112, 512, CKF_GEN }, 1, SFTKFIPSNone },
+     { CKM_GENERIC_SECRET_KEY_GEN, { 8, 256, CKF_GEN }, 1, SFTKFIPSNone },
      /* ---------------------- SSL/TLS operations ------------------------- */
 +#if 0
 +    /* Non-approved: SP 800-1400 - bsc#1222833 */
@@ -836,7 +834,7 @@ Index: nss/lib/softoken/pkcs11u.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11u.c
 +++ nss/lib/softoken/pkcs11u.c
-@@ -2251,6 +2251,12 @@ sftk_AttributeToFlags(CK_ATTRIBUTE_TYPE
+@@ -2315,6 +2315,12 @@ sftk_AttributeToFlags(CK_ATTRIBUTE_TYPE
          case CKA_NSS_MESSAGE | CKA_VERIFY:
              flags = CKF_MESSAGE_VERIFY;
              break;
@@ -849,7 +847,7 @@ Index: nss/lib/softoken/pkcs11u.c
          default:
              break;
      }
-@@ -2327,7 +2333,7 @@ sftk_quickGetECCCurveOid(SFTKObject *sou
+@@ -2391,7 +2397,7 @@ sftk_quickGetECCCurveOid(SFTKObject *sou
  static int
  sftk_getKeyLength(SFTKObject *source)
  {
@@ -858,7 +856,7 @@ Index: nss/lib/softoken/pkcs11u.c
      CK_ATTRIBUTE_TYPE keyAttribute;
      CK_ULONG keyLength = 0;
      SFTKAttribute *attribute;
-@@ -2347,7 +2353,7 @@ sftk_getKeyLength(SFTKObject *source)
+@@ -2411,7 +2417,7 @@ sftk_getKeyLength(SFTKObject *source)
           * key length is CKA_VALUE, which is the default */
          keyType = CKK_INVALID_KEY_TYPE;
      }
@@ -867,7 +865,7 @@ Index: nss/lib/softoken/pkcs11u.c
          SECOidTag curve = sftk_quickGetECCCurveOid(source);
          switch (curve) {
              case SEC_OID_CURVE25519:
-@@ -2389,14 +2395,55 @@ sftk_getKeyLength(SFTKObject *source)
+@@ -2453,14 +2459,55 @@ sftk_getKeyLength(SFTKObject *source)
      return keyLength;
  }
  
@@ -924,7 +922,7 @@ Index: nss/lib/softoken/pkcs11u.c
      switch (mechInfo->special) {
          case SFTKFIPSDH: {
              SECItem dhPrime;
-@@ -2425,10 +2472,27 @@ sftk_handleSpecial(SFTKSlot *slot, CK_ME
+@@ -2489,10 +2536,27 @@ sftk_handleSpecial(SFTKSlot *slot, CK_ME
          }
          case SFTKFIPSNone:
              return PR_FALSE;
@@ -953,7 +951,7 @@ Index: nss/lib/softoken/pkcs11u.c
          case SFTKFIPSAEAD: {
              if (mech->ulParameterLen == 0) {
                  /* AEAD ciphers are only in FIPS mode if we are using the
-@@ -2456,11 +2520,44 @@ sftk_handleSpecial(SFTKSlot *slot, CK_ME
+@@ -2520,11 +2584,44 @@ sftk_handleSpecial(SFTKSlot *slot, CK_ME
              if (hashObj == NULL) {
                  return PR_FALSE;
              }
@@ -998,7 +996,7 @@ Index: nss/lib/softoken/pkcs11u.c
          default:
              break;
      }
-@@ -2471,7 +2568,7 @@ sftk_handleSpecial(SFTKSlot *slot, CK_ME
+@@ -2535,7 +2632,7 @@ sftk_handleSpecial(SFTKSlot *slot, CK_ME
  
  PRBool
  sftk_operationIsFIPS(SFTKSlot *slot, CK_MECHANISM *mech, CK_ATTRIBUTE_TYPE op,
@@ -1007,23 +1005,21 @@ Index: nss/lib/softoken/pkcs11u.c
  {
  #ifndef NSS_HAS_FIPS_INDICATORS
      return PR_FALSE;
-@@ -2484,18 +2581,35 @@ sftk_operationIsFIPS(SFTKSlot *slot, CK_
+@@ -2548,9 +2645,6 @@ sftk_operationIsFIPS(SFTKSlot *slot, CK_
      if (!sftk_isFIPS(slot->slotID)) {
          return PR_FALSE;
      }
--    if (source && !source->isFIPS) {
+-    if (source && !sftk_hasFIPS(source)) {
 -        return PR_FALSE;
 -    }
      if (mech == NULL) {
          return PR_FALSE;
      }
--
-     /* now get the calculated values */
-     opFlags = sftk_AttributeToFlags(op);
+@@ -2560,6 +2654,27 @@ sftk_operationIsFIPS(SFTKSlot *slot, CK_
      if (opFlags == 0) {
          return PR_FALSE;
      }
-+    if (source && !source->isFIPS
++    if (source && !sftk_hasFIPS(source)
 +        && !((mech->mechanism == CKM_DSA_SHA224
 +              || mech->mechanism == CKM_DSA_SHA256
 +              || mech->mechanism == CKM_DSA_SHA384
@@ -1047,7 +1043,7 @@ Index: nss/lib/softoken/pkcs11u.c
      keyLength = sftk_getKeyLength(source);
  
      /* check against our algorithm array */
-@@ -2503,13 +2617,15 @@ sftk_operationIsFIPS(SFTKSlot *slot, CK_
+@@ -2567,13 +2682,15 @@ sftk_operationIsFIPS(SFTKSlot *slot, CK_
          SFTKFIPSAlgorithmList *mechs = &sftk_fips_mechs[i];
          /* if we match the number of records exactly, then we are an
           * approved algorithm in the approved mode with an approved key */
@@ -1073,7 +1069,7 @@ Index: nss/lib/util/pkcs11t.h
 ===================================================================
 --- nss.orig/lib/util/pkcs11t.h
 +++ nss/lib/util/pkcs11t.h
-@@ -576,6 +576,7 @@ typedef CK_ULONG CK_JAVA_MIDP_SECURITY_D
+@@ -617,6 +617,7 @@ typedef CK_ULONG CK_JAVA_MIDP_SECURITY_D
  
  /* CKA_KEY_GEN_MECHANISM is new for v2.11 */
  #define CKA_KEY_GEN_MECHANISM 0x00000166UL
@@ -1085,7 +1081,7 @@ Index: nss/lib/softoken/pkcs11.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11.c
 +++ nss/lib/softoken/pkcs11.c
-@@ -575,17 +575,17 @@ static const struct mechanismList mechan
+@@ -596,17 +596,17 @@ static const struct mechanismList mechan
      { CKM_TLS_MASTER_KEY_DERIVE, { 48, 48, CKF_DERIVE }, PR_FALSE },
      { CKM_TLS12_MASTER_KEY_DERIVE, { 48, 48, CKF_DERIVE }, PR_FALSE },
      { CKM_NSS_TLS_MASTER_KEY_DERIVE_SHA256,
@@ -1112,13 +1108,13 @@ Index: nss/lib/softoken/pkcs11i.h
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11i.h
 +++ nss/lib/softoken/pkcs11i.h
-@@ -968,7 +968,8 @@ CK_FLAGS sftk_AttributeToFlags(CK_ATTRIB
+@@ -975,7 +975,8 @@ CK_FLAGS sftk_AttributeToFlags(CK_ATTRIB
  /* check the FIPS table to determine if this current operation is allowed by
   * FIPS security policy */
  PRBool sftk_operationIsFIPS(SFTKSlot *slot, CK_MECHANISM *mech,
 -                            CK_ATTRIBUTE_TYPE op, SFTKObject *source);
 +                            CK_ATTRIBUTE_TYPE op, SFTKObject *source,
 +                            CK_ULONG targetKeySize);
- /* add validation objects to the slot */
- CK_RV sftk_CreateValidationObjects(SFTKSlot *slot);
- 
+ /* manage the fips flag on objects */
+ void sftk_setFIPS(SFTKObject *obj, PRBool isFIPS);
+ PRBool sftk_hasFIPS(SFTKObject *obj);

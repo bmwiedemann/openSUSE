@@ -92,7 +92,7 @@ Index: nss/lib/freebl/dh.c
 ===================================================================
 --- nss.orig/lib/freebl/dh.c
 +++ nss/lib/freebl/dh.c
-@@ -192,6 +192,10 @@ cleanup:
+@@ -194,6 +194,10 @@ cleanup:
          rv = SECFailure;
      }
      if (rv) {

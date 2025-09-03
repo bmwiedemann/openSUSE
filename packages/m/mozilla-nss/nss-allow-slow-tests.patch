@@ -2,7 +2,7 @@ Index: nss/tests/sdr/sdr.sh
 ===================================================================
 --- nss.orig/tests/sdr/sdr.sh
 +++ nss/tests/sdr/sdr.sh
-@@ -146,7 +146,8 @@ sdr_main()
+@@ -162,7 +162,8 @@ sdr_main()
    RARRAY=($dtime)
    TIMEARRAY=(${RARRAY[1]//./ })
    echo "${TIMEARRAY[0]} seconds"

@@ -5,9 +5,9 @@ Index: nss/lib/softoken/pkcs11c.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11c.c
 +++ nss/lib/softoken/pkcs11c.c
-@@ -5132,6 +5132,88 @@ pairwise_signverify_mech (CK_SESSION_HAN
-     return crv;
- }
+@@ -5093,6 +5093,88 @@ loser:
+ 
+ #define PAIRWISE_MESSAGE_LENGTH 20 /* 160-bits */
  
 +/* This function regenerates a public key from a private key 
 + * (not simply returning the saved public key) and compares it
@@ -92,9 +92,9 @@ Index: nss/lib/softoken/pkcs11c.c
 +}
 +
  /*
-  * FIPS 140-2 pairwise consistency check utilized to validate key pair.
+  * FIPS 140-3 pairwise consistency check utilized to validate key pair.
   *
-@@ -5484,6 +5566,30 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
+@@ -5550,6 +5632,30 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
          }
      }
  

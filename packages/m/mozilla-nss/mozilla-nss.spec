@@ -1,7 +1,7 @@
 #
 # spec file for package mozilla-nss
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2006-2025 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,15 +17,15 @@
 #
 
 
-%global nss_softokn_fips_version 3.113
+%global nss_softokn_fips_version 3.115
 %define NSPR_min_version 4.36
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 %global crypto_policies_version 20210218
 Name:           mozilla-nss
-Version:        3.113
+Version:        3.115.1
 Release:        0
-%define underscore_version 3_113
+%define underscore_version 3_115_1
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries

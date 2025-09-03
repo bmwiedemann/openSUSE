@@ -14,18 +14,7 @@ Index: nss/lib/softoken/pkcs11c.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11c.c
 +++ nss/lib/softoken/pkcs11c.c
-@@ -5009,8 +5009,8 @@ loser:
-     return crv;
- }
- 
--#define PAIRWISE_DIGEST_LENGTH SHA1_LENGTH /* 160-bits */
--#define PAIRWISE_MESSAGE_LENGTH 20         /* 160-bits */
-+#define PAIRWISE_DIGEST_LENGTH SHA224_LENGTH /* 224-bits */
-+#define PAIRWISE_MESSAGE_LENGTH 20           /* 160-bits */
- 
- /*
-  * FIPS 140-2 pairwise consistency check utilized to validate key pair.
-@@ -6077,6 +6077,7 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
+@@ -6165,6 +6165,7 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
                              (PRUint32)crv);
                  sftk_LogAuditMessage(NSS_AUDIT_ERROR, NSS_AUDIT_SELF_TEST, msg);
              }
