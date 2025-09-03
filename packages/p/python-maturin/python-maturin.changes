@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep  2 14:23:38 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.9.4
+  * downgrade manylinux version for riscv64 by @ffgan in #2709
+  * Fix calculation of platform tag for FreeBSD by @michael-o in #2711
+  * Add builtin sysconfigs for GraalPy by @msimacek in #2716
+  * Add use-base-python option to pyproject.toml by @SquidDev in #2717
+  * fix clippy warnings by @alex in #2724
+  * Fix Target::get_python_arch comment (#2712) by @michael-o in #2726
+  * Set PYO3_BUILD_EXTENSION_MODULE env var when building pyo3 extension
+    modules by @alex in #2723
+- regenerate vendor tarball to fix CVE-2025-58160 (bsc#1249011)
+
+-------------------------------------------------------------------
 Thu Aug 21 09:31:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only

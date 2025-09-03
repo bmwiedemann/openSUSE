@@ -1,7 +1,7 @@
 #
 # spec file for package python-maturin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-maturin
-Version:        1.9.3
+Version:        1.9.4
 Release:        0
 Summary:        Rust/Python Interoperability
 License:        Apache-2.0 OR MIT
