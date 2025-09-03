@@ -1,7 +1,7 @@
 #
 # spec file for package certmonger
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2020 Stasiek Michalski <stasiek@michalski.cc>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,17 +18,16 @@
 
 
 Name:           certmonger
-Version:        0.79.19
+Version:        0.79.20
 Release:        0
 Summary:        Certificate status monitor and PKI enrollment client
 License:        GPL-3.0-or-later
 
 URL:            https://pagure.io/certmonger/
 Source0:        https://pagure.io/certmonger/archive/%{version}/certmonger-%{version}.tar.gz
-Patch0001:      0001-Update-tests-to-be-compatible-with-OpenSSL-3.2.patch
-Patch0002:      certmonger-c99-01.patch
-Patch0003:      certmonger-c99-02.patch
-Patch0004:      cm_dont_restart_external.patch
+Patch01:        cm_dont_restart_external.patch
+Patch02:        add_some_missing_tests.patch
+Patch03:        disable_some_tests.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake

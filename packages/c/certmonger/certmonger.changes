@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Sep  3 09:38:31 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Disable failing tests with NSS 3.115.1: 007-certsave-dbm
+  and 007-certsave-sql 025-casave-dbm
+  * patch disable_some_tests.patch
+
+-------------------------------------------------------------------
+Mon Aug 25 08:20:51 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to 0.79.20
+  * Fix type error in cm_tdbusm_get_vn
+  * Adjust parameter type for util_EVP_PKEY_id
+  * Update tests to be compatible with OpenSSL 3.2
+  * Switch BR from /usr/include/popt.h to popt-devel
+  * getcert: return 2 when trying to create a duplicate entry
+  * getcert: add NULL check to duplicate string compare
+  * Use correct object path for 'ca' property of request objects in D-Bus API
+  * Move shell_escape function to util.c
+  * Add more environment variables to be passed on to the notification command
+  * Translated using Weblate (Chinese (Simplified) (zh_CN))
+  * Translated using Weblate (Georgian)
+  * Translated using Weblate (Russian)
+- Remove patches merged upstream
+  * 0001-Update-tests-to-be-compatible-with-OpenSSL-3.2.patch
+  * certmonger-c99-01.patch
+  * certmonger-c99-02.patch
+- New patch
+  * add_some_missing_tests.patch
+
+-------------------------------------------------------------------
 Thu Jul 11 17:22:28 UTC 2024 - David Mulder <david.mulder@suse.com>
 
 - Add cm_dont_restart_external.patch (a SUSE specific patch) which

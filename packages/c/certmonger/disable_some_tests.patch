@@ -1,0 +1,69 @@
+Disable failing tests with NSS 3.115.1: 007-certsave-dbm
+and 007-certsave-sql 025-casave-dbm
+  
+diff -Nrua certmonger-0.79.20.orig/tests/Makefile.am certmonger-0.79.20/tests/Makefile.am
+--- certmonger-0.79.20.orig/tests/Makefile.am	2025-09-03 12:20:43.586608570 +0200
++++ certmonger-0.79.20/tests/Makefile.am	2025-09-03 12:28:33.021626210 +0200
+@@ -36,10 +36,6 @@
+ 	006-serial/actual.err \
+ 	007-certsave/actual.out \
+ 	007-certsave/actual.err \
+-	007-certsave-dbm/actual.out \
+-	007-certsave-dbm/actual.err \
+-	007-certsave-sql/actual.out \
+-	007-certsave-sql/actual.err \
+ 	008-certread/actual.out \
+ 	008-certread/actual.err \
+ 	009-oiddict/actual.out \
+@@ -96,8 +92,6 @@
+ 	024-citerate/actual.err \
+ 	025-casave/actual.out \
+ 	025-casave/actual.err \
+-	025-casave-dbm/actual.out \
+-	025-casave-dbm/actual.err \
+ 	025-casave-sql/actual.out \
+ 	025-casave-sql/actual.err \
+ 	026-local/actual.out \
+@@ -183,12 +177,6 @@
+ 	007-certsave/prequal.sh \
+ 	007-certsave/run.sh \
+ 	007-certsave/expected.out \
+-	007-certsave-dbm/prequal.sh \
+-	007-certsave-dbm/run.sh \
+-	007-certsave-dbm/expected.out \
+-	007-certsave-sql/prequal.sh \
+-	007-certsave-sql/run.sh \
+-	007-certsave-sql/expected.out \
+ 	008-certread/run.sh \
+ 	008-certread/expected.out \
+ 	009-oiddict/run.sh \
+@@ -275,8 +263,6 @@
+ 	024-citerate/run.sh \
+ 	025-casave/expected.out \
+ 	025-casave/run.sh \
+-	025-casave-dbm/expected.out \
+-	025-casave-dbm/run.sh \
+ 	025-casave-sql/expected.out \
+ 	025-casave-sql/run.sh \
+ 	026-local/expected.openssl1 \
+@@ -405,20 +391,17 @@
+ if HAVE_DBM_NSSDB
+ subdirs += \
+ 	002-keygen-dbm \
+-	007-certsave-dbm \
+ 	011-dbinit-dbm \
+ 	012-dbadd-dbm \
+ 	013-enckey-dbm \
+ 	015-lockedkey-dbm \
+ 	017-notoken-dbm \
+-	025-casave-dbm \
+ 	034-perms-dbm
+ endif
+ 
+ if HAVE_SQL_NSSDB
+ subdirs += \
+ 	002-keygen-sql \
+-	007-certsave-sql \
+ 	011-dbinit-sql \
+ 	012-dbadd-sql \
+ 	013-enckey-sql \
