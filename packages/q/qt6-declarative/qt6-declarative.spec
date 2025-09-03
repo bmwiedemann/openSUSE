@@ -15,6 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# boo#1249054 - LTO fails on armv6/7 with 6.9.2
+%ifarch %{arm}
+%define _lto_cflags %{nil}
+%endif
 
 %define real_version 6.9.2
 %define short_version 6.9

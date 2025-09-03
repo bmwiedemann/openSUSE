@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  2 11:02:12 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO on armv6/7 as a workaround - boo#1249054
+
+-------------------------------------------------------------------
 Thu Aug 28 12:22:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Pass '-DQT_QML_NO_CACHEGEN:BOOL=TRUE' to CMake to make builds
