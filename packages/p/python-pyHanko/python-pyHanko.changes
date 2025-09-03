@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep  3 05:21:44 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.30.0:
+  * Bump python-pkcs11 to 0.9.x.
+  * Introduce signxml>=4.2.0 into [etsi] dependency group.
+  * Allow custom text and stamp border colours.
+  * Correct buggy behaviour when reauthenticating with a security handler.
+  * Fix registration of multiple extensions in encrypted files.
+  * Tolerate key usage violations when the signer is a trust anchor.
+  * Remove unnecessary 3.8 compatibility code.
+  * Make it easier to customise PKCS#11 queries
+  * The root pyhanko package is now a namespace package.
+  * Drop dependency on click in pyhanko distribution, move CLI code into
+    pyhanko-cli instead.
+  * Make the dependency on qrcode optional (in the new [qr] dependency group)
+  * Replace defusedxml with a dependency on lxml.
+- Subsume pyhanko-certvalidator into this package, upstream has intertwined
+  all of the packages into one repo.
+- Ship docs and license in the built packages.
+
+-------------------------------------------------------------------
 Mon Apr 28 14:08:25 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.26.0:

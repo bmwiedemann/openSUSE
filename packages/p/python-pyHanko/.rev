@@ -46,4 +46,28 @@ Requires python-setuptools 78 to build successfully.
 - Initial release of 0.25.1.</comment>
     <requestid>1273170</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e0217f19ed9882de23a3fa5150b389ce</srcmd5>
+    <version>0.30.0</version>
+    <time>1756926482</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.30.0:
+  * Bump python-pkcs11 to 0.9.x.
+  * Introduce signxml&gt;=4.2.0 into [etsi] dependency group.
+  * Allow custom text and stamp border colours.
+  * Correct buggy behaviour when reauthenticating with a security handler.
+  * Fix registration of multiple extensions in encrypted files.
+  * Tolerate key usage violations when the signer is a trust anchor.
+  * Remove unnecessary 3.8 compatibility code.
+  * Make it easier to customise PKCS#11 queries
+  * The root pyhanko package is now a namespace package.
+  * Drop dependency on click in pyhanko distribution, move CLI code into
+    pyhanko-cli instead.
+  * Make the dependency on qrcode optional (in the new [qr] dependency group)
+  * Replace defusedxml with a dependency on lxml.
+- Subsume pyhanko-certvalidator into this package, upstream has intertwined
+  all of the packages into one repo.
+- Ship docs and license in the built packages.</comment>
+    <requestid>1302533</requestid>
+  </revision>
 </revisionlist>
