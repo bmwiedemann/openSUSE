@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Sep  2 07:42:56 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.9.0:
+  * This release has a new dependency: libXcursor. The dependency
+    on libXpm is no longer required.
+  * Features:
+    - If a theme doesn't define a cursor, prefer the system Xcursor
+      theme.
+    - Add support for themed cursors to gdk-pixbuf without
+      requiring libXpm.
+    - Add support for Xcursor files as an alternative to XPM
+      cursors.
+    - Add new -kovered filter to icesh to test if a client is
+      covered.
+  * Fixes:
+    - When lseek on /proc/net/dev fails, avoid it for the future.
+    - Ensure that _NET_CLIENT_LIST_STACKING is always up-to-date.
+    - Correct red and blue colors in icesh for loadicon and
+      saveicon.
+    - When truncating a title in icesh, respect UTF-8 codepoint
+      boundaries.
+  * Changes: When the cursor X/Y-hotspot is absent in a XPM, smart
+    guess it.
+  * Updated translations.
+- Replace pkgconfig(xpm) with pkgconfig(xcursor) BuildRequires
+  following upstream changes.
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Tue Apr 15 07:14:37 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.7.3:

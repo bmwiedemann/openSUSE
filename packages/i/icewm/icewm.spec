@@ -1,7 +1,7 @@
 #
 # spec file for package icewm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global lites icewm icewmhint icewmbg icesh icewm-session
 Name:           icewm
-Version:        3.7.3
+Version:        3.9.0
 Release:        0
 Summary:        Window Manager with a Taskbar
 License:        LGPL-2.1-or-later
@@ -51,12 +51,12 @@ BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
+BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xinerama)
-BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(xrandr)
 Requires:       alsa-utils
 Requires:       desktop-data
