@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep  3 12:15:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.0.0
+  * Certbot now stores the Retry-After value given by ACME Renewal Info (ARI)
+    so the value can be respected across multiple Certbot runs.
+  * Added uv as a test dependency, and switched most pip invocations to uv pip
+    for faster installs.
+  * certbot.ocsp.RevocationChecker.__init__ no longer accepts the parameter
+    enforce_openssl_binary_usage and always uses the cryptography library
+    for OCSP checking.
+  * Python 3.9 support was removed.
+  * Migrated most functionality from setup.py to pyproject.toml
+
+-------------------------------------------------------------------
 Tue Aug 12 15:53:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.2.0
