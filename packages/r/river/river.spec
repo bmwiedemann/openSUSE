@@ -1,7 +1,7 @@
 #
 # spec file for package river
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           river
-Version:        0.3.7
+Version:        0.3.12
 Release:        0
 Summary:        A dynamic tiling Wayland compositor
 License:        GPL-3.0-only
@@ -33,8 +33,8 @@ BuildRequires:  libevdev-devel
 BuildRequires:  libpixman-1-0-devel
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc >= 1.9.2
-BuildRequires:  zig = 0.13.0
-BuildRequires:  zig-rpm-macros = 0.13.0
+BuildRequires:  zig = 0.15.1
+BuildRequires:  zig-rpm-macros = 0.15.1
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1) >= 1.10
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
 BuildRequires:  pkgconfig(wayland-server) >= 1.20.0
-BuildRequires:  pkgconfig(wlroots-0.18) >= 0.18.0
+BuildRequires:  pkgconfig(wlroots-0.19) >= 0.19.0
 BuildRequires:  pkgconfig(xkbcommon)
 Recommends:     xorg-x11-server-wayland
 # To make Qt apps work somewhat okay on Wayland and auto use it
@@ -151,27 +151,15 @@ setting up sane environmental variables before running river in
 sed -i 's|/bin/env |/bin/|' contrib/*
 
 %build
-%ifarch aarch64
 %zig_build -Dpie -Dxwayland --global-cache-dir vendor/
-%else
-%zig_build -Dno-llvm -Dpie -Dxwayland --global-cache-dir vendor/
-%endif
 
 %check
-%ifarch aarch64
 %zig_test -Dpie -Dxwayland --global-cache-dir vendor/
-%else
-%zig_test -Dno-llvm -Dpie -Dxwayland --global-cache-dir vendor/
-%endif
 
 %install
 mkdir -p %{buildroot}%{_datadir}/wayland-sessions
 mkdir -p %{buildroot}%{_datadir}/river
-%ifarch aarch64
 %zig_install -Dpie -Dxwayland --global-cache-dir vendor/
-%else
-%zig_install -Dno-llvm -Dpie -Dxwayland --global-cache-dir vendor/
-%endif
 
 # Installing the desktop file for easy login manager access
 sed -i 's|Exec=river|Exec=river-run.sh|' contrib/river.desktop

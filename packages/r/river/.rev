@@ -402,4 +402,46 @@ Fix specfile to not let river own `/usr/share/pkgconfig`</comment>
     <comment>- Set zig version to 0.13.0</comment>
     <requestid>1289384</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>ade02b345ede570d6fba96ad7f27343e</srcmd5>
+    <version>0.3.12</version>
+    <time>1756926502</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.3.12:
+  * build: bump version to 0.3.12
+  * Cursor: clear pointer focus on hide
+  * river: run 0.15 zig fmt
+  * build: update to Zig 0.15
+  * build: bump zig-wlroots version
+  * build: bump version to 0.3.12-dev
+  * build: bump version to 0.3.11
+  * build: switch to zig-wlroots tag
+  * ext-foreign-toplevel-list-v1: implement protocol
+  * Seat: ignore virtual keyboards until keymap set
+  * Keyboard: don't add virtual keyboards to group
+  * Cursor: fix formatting
+  * build: bump version to 0.3.11-dev
+  * build: bump version to 0.3.10
+  * View: workaround wlr_box_intersect() quirk
+  * XwaylandView: remove set_decorations listener on unmap
+  * XwaylandView: drop set_decorations link in handleDestroy()
+  * LayerSurface: drop new_popup link in handleDestroy()
+  * river: drop wl_drm support
+  * linux-drm-syncobj: implement protocol
+  * linux-dmabuf: re-enable per-surface feedback
+  * build: update to wlroots 0.19
+  * Seat: put all keyboards in a single group
+  * Cursor: restore previous image on unhide
+  * build: bump version to 0.3.10-dev
+  * build: bump version to 0.3.9
+  * build: eliminate duplicate version string
+  * security-context: fix assertion failure
+  * build: bump version to 0.3.9-dev
+  * build: bump version to 0.3.8
+  * build: update to zig 0.14.0
+  * Xwayland: don't inherit rlimit changes from river
+  * build: bump version to 0.3.8-dev
+</comment>
+    <requestid>1302570</requestid>
+  </revision>
 </revisionlist>
