@@ -1370,4 +1370,16 @@ Update to version 4.7.1 (forwarded request 1115956 from danishprakash)</comment>
     <comment></comment>
     <requestid>1301895</requestid>
   </revision>
+  <revision rev="163" vrev="2">
+    <srcmd5>364674328f60d79635eb28751a501e9d</srcmd5>
+    <version>5.6.0</version>
+    <time>1756926436</time>
+    <user>anag_factory</user>
+    <comment>- Do not recommend apparmor-parser and apparmor-abstractions: if
+  the system is using apparmor, those packages will be present. If
+  the system is selinux enabled, we don't want to recommend those
+  packages just becuase we build support for apparmor into the
+  package. (forwarded request 1302152 from dimstar)</comment>
+    <requestid>1302250</requestid>
+  </revision>
 </revisionlist>

@@ -52,10 +52,6 @@ BuildRequires:  golang(API) >= 1.23
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
-%if %{with apparmor}
-Recommends:     apparmor-abstractions
-Recommends:     apparmor-parser
-%endif
 # requirement for `podman machine`
 Recommends:     gvisor-tap-vsock
 Requires:       catatonit >= 0.1.7

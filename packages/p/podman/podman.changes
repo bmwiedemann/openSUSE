@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep  1 07:27:55 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not recommend apparmor-parser and apparmor-abstractions: if
+  the system is using apparmor, those packages will be present. If
+  the system is selinux enabled, we don't want to recommend those
+  packages just becuase we build support for apparmor into the
+  package.
+
+-------------------------------------------------------------------
 Tue Aug 19 03:52:06 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
 
 - Remove patch:
