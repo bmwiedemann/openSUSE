@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Sep  3 04:43:08 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.107.0:
+  * Watch out for new `watch` features!
+  * Making `find` more cohesive.
+  * `query xml` improvements.
+  * Breaking changes:
+    - find is now case-sensitive by default.
+    - New behavior for `find --multiline`.
+    - `each` now passes through `null` input.
+    - Change the output of format bits to big endian instead 
+      of native endian.
+    - Execution Order of Hooks Changed: `env_change` 
+      before `pre_prompt`.
+    - `query xml` returns scalar results when possible.
+    - Use fixed column name for `query xml` output.
+    - Add active column to `overlay list`.
+  * Additions:
+    - `watch` streams events.
+    - New `watch --debounce` option.
+    - `get`, `select`, `reject` can `--ignore-case` of cell-path.
+    - `--endian` flag for `into binary`.
+    - Spread `null` into collections or arguments.
+    - `http` subcommands now keep track of redirects.
+    - New `random choice` command in `std-rfc`.
+    - Add `str align` to `std-rfc/str`.
+    - JSON column support for `stor` and `query db`.
+    - Extend nodeset output formats for `query xml`.
+    - New keybinding: `vichangemode`.
+    - Add `-h/--help` flag to testbin.
+    - Other additions.
+  * Deprecations:
+    - Built-in random dice deprecated.
+    - Deprecate watch --debounce-ms.
+  * Other changes:
+    - `random dice` moved to `std`.
+    - `http` commands will now fail on invalid headers.
+    - `http post` now sends body serialized as pretty json.
+    - Improved error messages for misspelled flags.
+    - Improved default color theme.
+    - Reset content type for commands returning partial input.
+    - Additional changes.
+  * Bug fixes:
+    - Fix highlighting of aliases to external commands.
+    - `input list` Plays Nicely With Styled Input.
+    - Fixed spacing of `help` examples.
+    - Prevent `detect columns` from creating invalid records with 
+      duplicate keys.
+    - Improvements to errors.
+    - Other fixes.
+  * For a full list of changes with detailed descriptions, see:
+    - https://www.nushell.sh/blog/2025-09-02-nushell_0_107_0.html
+
+-------------------------------------------------------------------
 Wed Jul 30 03:18:23 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.106.1:
