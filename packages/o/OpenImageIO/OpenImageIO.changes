@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  1 18:16:45 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.0.10.0
+  - exr: Support for OpenEXR 3.4's new compression types for HTJ2K
+    #4871 (by Todica Ionut)
+  - deps: Ffmpeg 8 support #4870
+  - ci: Add a VFX Platform 2026 CI job #4856
+  - ci: Bump webp and openexr for "latest versions" test #4861
+
+-------------------------------------------------------------------
 Fri Aug  8 00:49:29 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.0.9.1
