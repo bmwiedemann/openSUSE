@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Sat Aug 30 22:01:42 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Remove patches, as they've been merged upstream:
+  * liborcus-0.19.2-gcc15-cstdint.patch
+- Fix source tarball URL.
+- Upgrade to 0.20.2.
+- Changes from 0.20.2:
+  * The base JSON parser class (orcus::json_parser) now allows primitive string,
+    numeric and boolean values to be document root as it should per JSON
+    specification.
+  * added to the command-line programs proper support for Unicode filepath
+    handling on Windows which still uses UTF-16 with code pages.  Relevant
+    public API has been updated to add support for Unicode filepaths on Windows.
+  * added to the import_sheet interface a variant of set_string() that takes a
+    non-indexed string value.  This is used to handle cells with inline strings
+    in the xlsx import filter.  However, orcus's own document store backend does
+    not yet handle cells with non-indexed strings, so when importing xlsx
+    documents containing cells with inline strings, those cells will be ignored
+    for now.
+  * added to the orcus::format_t enum type json and xml as its members.  With
+    that change, you can now instantiate import filter adapters for these two
+    new format types to import generic JSON and XML documents.  These two
+    adapter filters will auto-detect tabular structures and map them to sheets
+    if they exist.
+  * orcus::detect() can now detect generic JSON and XML documents.
+  * fixed a bug where orcus-xml generated incorrect map file in map-gen mode
+    when the source document contained multiple tabular structures.
+- Changes from 0.20.1:
+  * fixed an assertion failure when importing a document in Excel 2003 XML
+    format containing an autofilter with no filtering applied to it.
+  * added a set of new interfaces to support importing pivot table definitions
+    from xlsx documents.
+  * added support for dumping the internal state of pivot caches and pivot table
+    definitions as part of the debug state output.
+  * added clarification on the return value of import_sheet::get_sheet_size()
+    interface method in the documentation.
+  * C++ API reference has been restructured to show each symbol in a separate
+    page, and have their header information also included.
+  * added test cases for testing expected string labels for enum types.
+  * fixed orcus-json's map mode which would previously fail when built with
+    CMake.
+- Changes from 0.20.0:
+  * import filters
+    * added support for more format types in formatted strings in xlsx, xls-xml
+      and gnumeric filters.  The following format types are now supported:
+      * superscript
+      * subscript
+      * strikethrough
+      * underline
+    * strikethrough format applied to cells are now supported in xlsx and
+      xls-xml.
+    * importing of underline format applied to cells in gnumeric have been
+      revised to fix issues.
+    * interface for autofilter import has been revamped to properly import
+      autofilter properties from xlsx, xls-xml, gnumeric and ods.
+    * import_sheet_properties::set_row_height() now takes a row span as opposed
+      to a single row position.
+    * fixed a bug in the ods filter to properly separate styles in different
+      style families.  Previously, all styles were stored without style-family
+      segregation which resulted in collision of styles with the same name.
+  * document model
+    * format run storage in orcus::spreadsheet::format_run now correctly
+      differentiates a format not being applied from a negative format being
+      applied.  For instance, the previous storage could not differentiate the
+      state of a bold format not being specified from a non-bold state being
+      intentionally applied.
+  * json
+    * added support for custom indent when formatting JSON document.
+      orcus::json::document_tree::dump() now takes an additional indent
+      parameter to control the amount of indentation in the output.
+    * orcus::json::subtree class has been added to allow referencing of subtree
+      in an existing document_tree instance.
+    * parser has been revised to properly handle escaped unicode characters.
+      The parser now propertly converts escaped unicode characters to proper
+      UTF-8 characters.
+  * tools
+    * orcus-json now has a new subtree mode to allow extraction of subtree from
+      an existing JSON document.  The root of a subtree is to be specified as a
+      subset of JSONPath expression.  Both bracket notation and dot notation are
+      supported.  Wildcard selector is also supported.
+    * orcus-json now has a lint mode to allow reformatting of a JSON document
+      with custom indent length via --indent option.
+
+-------------------------------------------------------------------
 Thu Apr 10 20:00:36 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add liborcus-0.19.2-gcc15-cstdint.patch to fix gcc15 compile time

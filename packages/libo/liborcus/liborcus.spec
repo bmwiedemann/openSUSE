@@ -1,7 +1,7 @@
 #
 # spec file for package liborcus
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,16 @@
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %bcond_without tests
-%define libname liborcus-0_18-0
+%define libname liborcus-0_20-0
 Name:           liborcus
-Version:        0.19.2
+Version:        0.20.2
 Release:        0
 Summary:        Spreadsheet file processing library
 License:        MPL-2.0
 URL:            https://gitlab.com/orcus/orcus/
-Source:         http://kohei.us/files/orcus/src/%{name}-%{version}.tar.xz
+Source:         https://gitlab.com/api/v4/projects/orcus%2Forcus/packages/generic/source/%{version}/%{name}-%{version}.tar.xz
 Patch2:         0003-Allow-running-tests-with-python-3.4.patch
 # PATCH-FIX-UPSTREAM
-Patch3:         liborcus-0.19.2-gcc15-cstdint.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  coreutils
@@ -36,8 +35,8 @@ BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3-xml
-BuildRequires:  pkgconfig(libixion-0.18) >= 0.19.0
-BuildRequires:  pkgconfig(mdds-2.1) >= 2.0.99
+BuildRequires:  pkgconfig(libixion-0.20) >= 0.20.0
+BuildRequires:  pkgconfig(mdds-3.0)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1500
