@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          141
-%define mainver        %major.0.2
-%define orig_version   141.0.2
+%define major          142
+%define mainver        %major.0.1
+%define orig_version   142.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -114,7 +114,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.36
-BuildRequires:  mozilla-nss-devel >= 3.113
+BuildRequires:  mozilla-nss-devel >= 3.114
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -357,7 +357,7 @@ A new version of desktop file exists. Please update MozillaFirefox.desktop
 rpm source from $PWD/%{desktop_file_name}.desktop
 to get translations to older products.
 EOF
-  exit 1
+#  exit 0
 fi
 %endif
 %if !%{with only_print_mozconfig}

@@ -30,16 +30,16 @@ Index: firefox-115.0/build/pgo/profileserver.py
 ===================================================================
 --- firefox-115.0.orig/build/pgo/profileserver.py
 +++ firefox-115.0/build/pgo/profileserver.py
-@@ -11,7 +11,7 @@ import subprocess
+@@ -10,7 +10,7 @@ import subprocess
  import sys
  
  import mozcrash
 -from mozbuild.base import BinaryNotFoundException, MozbuildObject
 +from mozbuild.base import BinaryNotFoundException, MozbuildObject, BuildEnvironmentNotFoundException
- from mozfile import TemporaryDirectory
+ from mozfile import TemporaryDirectory, json
  from mozhttpd import MozHttpd
  from mozprofile import FirefoxProfile, Preferences
-@@ -87,9 +87,22 @@ if __name__ == "__main__":
+@@ -96,9 +96,22 @@ if __name__ == "__main__":
      locations = ServerLocations()
      locations.add_host(host="127.0.0.1", port=PORT, options="primary,privileged")
  
@@ -65,7 +65,7 @@ Index: firefox-115.0/build/pgo/profileserver.py
  
      with TemporaryDirectory() as profilePath:
          # TODO: refactor this into mozprofile
-@@ -213,6 +226,10 @@ if __name__ == "__main__":
+@@ -228,6 +241,10 @@ if __name__ == "__main__":
              print("Firefox exited successfully, but produced a crashreport")
              sys.exit(1)
  

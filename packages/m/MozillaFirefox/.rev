@@ -7655,4 +7655,41 @@
     the content area, disrupting keyboard navigation. (bmo#1977005)</comment>
     <requestid>1298105</requestid>
   </revision>
+  <revision rev="464" vrev="1">
+    <srcmd5>c0d20ba449c4aeffba59c2f29dd8f614</srcmd5>
+    <version>142.0.1</version>
+    <time>1756926391</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Firefox 142.0.1
+  * Dragging multiple non-adjacent tabs in horizontal tab strip mode
+    now correctly moves them together as a group. (bmo#1982933)
+  * Dragging multiple tabs no longer causes toolbar unresponsiveness
+    or visual glitches. (bmo#1984342)
+  * Fixed an issue where the text cursor appeared in the wrong
+    location. (bmo#1984045)
+  * Fixed a crash related to gamepad use, particularly on macOS
+    (bmno#1870379)
+  * Fixed an issue where the expand on hover feature in the sidebar
+    would sometimes stop working. (bmo#1982129)
+  * Fixed a crash in KDE Plasma when using certain custom window
+    decorations. (bmo#1984823)
+
+- Mozilla Firefox 142
+  https://www.mozilla.org/en-US/firefox/142.0/releasenotes/
+  MFSA 2025-64 (bsc#1248162)
+  * CVE-2025-9179 (bmo#1979527)
+    Sandbox escape due to invalid pointer in the Audio/Video: GMP
+    component
+  * CVE-2025-9180 (bmo#1979782)
+    Same-origin policy bypass in the Graphics: Canvas2D component
+  * CVE-2025-9181 (bmo#1977130)
+    Uninitialized memory in the JavaScript Engine component
+  * CVE-2025-9186 (bmo#1445758)
+    Spoofing issue in the Address Bar component of Firefox Focus
+    for Android
+  * CVE-2025-9182 (bmo#1975837)
+    Denial-of-service due to out-of-memory in the Graphics:
+    WebRender component</comment>
+    <requestid>1302096</requestid>
+  </revision>
 </revisionlist>
