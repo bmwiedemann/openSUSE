@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  1 15:46:57 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.0:
+  + Fix the build with GCC 15.
+- Drop wpebackend-fdo-gcc15.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Wed Feb 19 13:26:55 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.14.3:
