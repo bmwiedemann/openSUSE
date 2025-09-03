@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  2 14:24:53 UTC 2025 - pgajdos@suse.com
+
+- version update to 0.1.8
+  * tests: Fix build with libxml 2.12
+  * Add support for simple solid fill styles
+  * Add support for TextBackground from SheetStyle (tdf136564)
+  * Improve Arrowheads appearance (tdf#126402)
+  * Fix reading FillStyleLst and TextBkgnd from shape (tdf#154379)
+  * Add support to DrawingUnits types (tdf#154379)
+  * Visio5: Provide cellType to collector in readTextField
+
+-------------------------------------------------------------------
 Sat Oct 26 22:52:59 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - libvisio testsuite in combination with ICU 76.1 requires UTF-8

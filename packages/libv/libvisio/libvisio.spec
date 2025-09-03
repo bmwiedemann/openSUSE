@@ -1,7 +1,7 @@
 #
 # spec file for package libvisio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname libvisio-0_1-1
 Name:           libvisio
-Version:        0.1.7
+Version:        0.1.8
 Release:        0
 Summary:        Library for parsing the MS Visio file format structure
 License:        MPL-2.0
