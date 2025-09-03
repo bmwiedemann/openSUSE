@@ -1,7 +1,7 @@
 #
 # spec file for package icon-naming-utils
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -34,21 +34,21 @@ A script for creating a symlink mapping for deprecated icon names to
 the new icon naming specification names for desktop icon themes.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure\
-	--libexecdir=%{_prefix}/lib/icon-naming-utils
-make %{?_smp_mflags}
+%configure
+%make_build
 
 %install
 %make_install
 
 %files
+%license COPYING
 %doc AUTHORS ChangeLog NEWS README
-%{_prefix}/lib/icon-naming-utils
+%{_libexecdir}/icon-name-mapping
 %{_datadir}/dtds
-%{_datadir}/icon-naming-utils
+%{_datadir}/%{name}
 %{_datadir}/pkgconfig/*.pc
 
 %changelog

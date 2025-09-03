@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  1 17:59:55 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Modernize spec-file by calling spec-cleaner yet again + add
+  missing license file.
+- Stop passing libexecdir to configure, we now uselibexecdir in
+  distro.
+
+-------------------------------------------------------------------
 Wed Feb 28 16:33:32 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner
