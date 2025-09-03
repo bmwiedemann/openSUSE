@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Tue Aug 26 14:43:44 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 10.3.0:
+  * release: 10.3
+  * build: Update OSes for github actions
+  * build(deps): bump actions/checkout from 4 to 5
+  * filesystem: Fix a clippy warning about lifetime elision
+  * build(deps): bump clap_complete from 4.5.54 to 4.5.55
+  * build(deps): bump clap from 4.5.40 to 4.5.42
+  * build(deps): bump libc from 0.2.172 to 0.2.174
+  * chore: Update several packages
+  * fix: Remove duplicate nix from lockfile
+  * build(deps): bump ctrlc from 3.4.6 to 3.4.7
+  * build(deps): bump argmax from 0.3.1 to 0.4.0
+  * build(deps): bump clap_complete from 4.5.52 to 4.5.54
+  * build(deps): bump clap from 4.5.39 to 4.5.40
+  * Remove test_invalid_cwd on illumos
+  * Make test be excluded at compile time rather than at run-time.
+  * Use printf in a test rather than echo -n
+  * Do not use jemalloc on Illumos
+  * Update README.md to RHEL 10
+  * build(deps): bump clap from 4.5.37 to 4.5.39
+  * build(deps): bump clap_complete from 4.5.48 to 4.5.52
+  * build(deps): bump jiff from 0.2.10 to 0.2.14
+  * build(deps): bump tempfile from 3.19.1 to 3.20.0
+  * Update tikv-jemallocator to 0.6
+  * Depend on jemallocator as tikv-jemallocator
+  * docs(security): add initial security policy
+  * Fix typo
+  * docs: Clarify option positions in README
+  * docs: Mention how to end --exec-batch args
+  * docs: Better specify that if path is given, pattern must be as well.
+  * Add aarch64 Windows to CI.
+  * Update to crossbeam-channel 0.5.15
+  * Update etcetera from 0.9 to 0.10
+  * ci: Use Ubuntu 22.04 runners
+  * Use next_back() instead of last()
+  * Disambiguate modification time vs timestamp
+  * build(deps): bump jiff from 0.2.4 to 0.2.5
+  * build(deps): bump clap_complete from 4.5.44 to 4.5.47
+  * build(deps): bump anyhow from 1.0.96 to 1.0.97
+  * build(deps): bump clap from 4.5.31 to 4.5.35
+  * build(deps): bump tempfile from 3.16.0 to 3.19.1
+  * Fix broken Arch Linux link
+  * Use guard to ensure cleanup of test time
+  * refactor: Simplify time filter code
+  * refactor: Avoid passing in current time just for tests
+  * docs: More description of jiff change in changelog
+  * chore(deps): Replace `chrono` with `jiff`
+  * chore: Change to use `jiff::Zoned`
+  * chore(deps): Replace `humantime` with `jiff`
+  * build(deps): bump clap from 4.5.27 to 4.5.31
+  * build(deps): bump libc from 0.2.169 to 0.2.170
+  * build(deps): bump globset from 0.4.15 to 0.4.16
+  * build(deps): bump anyhow from 1.0.95 to 1.0.96
+  * build(deps): bump etcetera from 0.8.0 to 0.9.0
+  * chore: Use macos-13 instead of 12
+  * build(deps): bump tempfile from 3.14.0 to 3.16.0
+  * build(deps): bump clap from 4.5.23 to 4.5.27
+  * build(deps): bump clap_complete from 4.5.38 to 4.5.44
+  * chore: Fix clippy lints
+  * docs: Mention --full-path in troubleshooting
+  * build(deps): bump clap from 4.5.21 to 4.5.23
+  * build(deps): bump crossbeam-channel from 0.5.13 to 0.5.14
+  * build(deps): bump chrono from 0.4.38 to 0.4.39
+  * build(deps): bump anyhow from 1.0.93 to 1.0.95
+  * build(deps): bump libc from 0.2.167 to 0.2.169
+  * Update Cargo.toml
+  * add documentation
+  * build(deps): bump clap_complete from 4.5.28 to 4.5.38
+  * build(deps): bump clap from 4.5.20 to 4.5.21
+  * build(deps): bump anyhow from 1.0.89 to 1.0.93
+  * build(deps): bump libc from 0.2.161 to 0.2.167
+  * build(deps): bump tempfile from 3.13.0 to 3.14.0
+  * build(deps): bump regex from 1.10.6 to 1.11.1
+  * build(deps): bump clap from 4.5.16 to 4.5.20
+  * build(deps): bump lscolors from 0.19.0 to 0.20.0
+  * build(deps): bump tempfile from 3.12.0 to 3.13.0
+  * fix: formatting in `src/` and `tests/`
+  * style: simplify string formatting for readability
+  * Add a hidden `--mindepth` alias for `--min-depth`
+  * build(deps): bump anyhow from 1.0.86 to 1.0.89
+  * build(deps): bump ignore from 0.4.22 to 0.4.23
+  * build(deps): bump libc from 0.2.158 to 0.2.159
+  * build(deps): bump globset from 0.4.14 to 0.4.15
+  * build(deps): bump clap_complete from 4.5.24 to 4.5.28
+  * Fix a new clippy warning
+  * build(deps): bump clap_complete from 4.5.19 to 4.5.24
+  * build(deps): bump filetime from 0.2.24 to 0.2.25
+
+-------------------------------------------------------------------
 Sun Sep  1 07:41:50 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - _service: use manual instead of disabled as suggested by osc
