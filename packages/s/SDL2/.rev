@@ -7,4 +7,12 @@
     <comment>Provide classic SDL as a drop-in solution, as compat layers are not fully functional, e.g. https://github.com/libsdl-org/sdl2-compat/issues/496</comment>
     <requestid>1286990</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3ec127b53d5bd219d7d44ae480681596</srcmd5>
+    <version>2.32.10</version>
+    <time>1756926504</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2.32.10</comment>
+    <requestid>1302574</requestid>
+  </revision>
 </revisionlist>

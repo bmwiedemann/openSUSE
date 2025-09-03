@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           SDL2
-Version:        2.32.8
+Version:        2.32.10
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib
@@ -28,6 +28,7 @@ Source:         https://libsdl.org/release/%name-%version.tar.gz
 Source2:        https://libsdl.org/release/%name-%version.tar.gz.sig
 Source3:        %name.keyring
 Patch1:         sdl2-symvers.patch
+Patch2:         alsa-sig.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libdecor-devel

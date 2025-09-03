@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  1 22:07:50 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.32.10
+  * Report the correct device audio format when using Pipewire.
+  * Support the "ambient" value for SDL_HINT_AUDIO_CATEGORY on
+    iOS.
+  * Improved thumbstick range for Nintendo Switch Pro Controllers.
+  * Fixed loading user calibration for Nintendo Switch Pro
+    Controllers.
+- Add alsa-sig.patch to cure a build failure
+
+-------------------------------------------------------------------
 Thu Jun  5 19:28:29 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Reduce the SDL2 package to produce just the binary, for rare
