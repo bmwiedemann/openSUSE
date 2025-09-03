@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 03 14:13:20 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1756905114.bb4fa746:
+  * Fix syntax error in nginx config
+  * Mark unconfigured api route log as uncoverable statement
+  * Increase test coverage for lib/OpenQA/WebAPI/Description.pm
+  * parser: ktap: Don't write diagnostic data into $subtest_name
+  * Extend tests for configuring subdomain to serve files
+  * Avoid job terminated unexpectedly with signal handler in delete needles
+  * Allow configuring subdomain for serving logs/assets more securely
+  * Do not invoke Mojo::IOLoop->remove twice
+  * Add support for Bearer token authentication
+  * Worker::Engines::isotovideo: Simplify using more Mojo::File
+  * Worker::Engines::isotovideo: Remove obsolete comment
+
+-------------------------------------------------------------------
 Fri Aug 29 17:11:31 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1756479924.9488e2cc:

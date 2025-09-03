@@ -97,7 +97,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1756479924.9488e2cc
+Version:        5.1756905114.bb4fa746
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -593,6 +593,8 @@ fi
 %dir %{_sysconfdir}/nginx
 %dir %{_sysconfdir}/nginx/vhosts.d
 %config %{_sysconfdir}/nginx/vhosts.d/openqa.conf.template
+%config(noreplace) %{_sysconfdir}/nginx/vhosts.d/openqa-assets.inc
+%config(noreplace) %{_sysconfdir}/nginx/vhosts.d/openqa-endpoints.inc
 %config(noreplace) %{_sysconfdir}/nginx/vhosts.d/openqa-locations.inc
 %config(noreplace) %{_sysconfdir}/nginx/vhosts.d/openqa-upstreams.inc
 # apparmor profile
