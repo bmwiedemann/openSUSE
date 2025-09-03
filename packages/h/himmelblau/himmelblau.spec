@@ -17,7 +17,7 @@
 
 
 Name:           himmelblau
-Version:        1.2.0+git.0.6befefc
+Version:        1.2.2+git.0.2d04bca
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
@@ -64,6 +64,7 @@ Provides:       authd
 Provides:       authd-msentraid
 Suggests:       himmelblau-sso
 Requires:       man
+Requires:       system-user-tss
 
 %description
 Himmelblau is an interoperability suite for Microsoft Azure Entra Id,

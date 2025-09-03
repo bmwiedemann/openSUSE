@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 02 18:58:34 UTC 2025 - david.mulder@suse.com
+
+- Update to version 1.2.2+git.0.2d04bca:
+  * Include latest branch in CI
+  * Self hosted runners
+  * Version 1.2.2
+  * deps(rust): bump tracing-subscriber in the cargo group; (bsc#1249013), (CVE-2025-58160)
+  * Version 1.2.1
+  * Automatically append to nsswitch.conf in postinst
+  * Correct the RPM postinst script syntax
+
+-------------------------------------------------------------------
 Thu Aug 07 14:29:19 UTC 2025 - david.mulder@suse.com
 
 - Update to version 1.2.0+git.0.6befefc:
