@@ -17,7 +17,7 @@
 
 
 Name:           cdogs-sdl
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Classic overhead run-and-gun game
 License:        BSD-2-Clause AND GPL-2.0-only AND CC-BY-3.0 AND CC-BY-SA-3.0
