@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep  3 05:01:28 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.4.0
+  * Use fps match for scoring subtitles
+  * Refactor cli.py into folder
+  * show all entries from towncrier
+  * Fix guessit title str
+  * Add a section to README about using --debug
+
+-------------------------------------------------------------------
 Fri May  9 04:27:21 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.3.2
