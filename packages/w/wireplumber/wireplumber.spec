@@ -22,7 +22,7 @@
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.5.10
+Version:        0.5.11
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -241,6 +241,8 @@ fi
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-logind.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-lua-scripting.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-mixer-api.so
+%{_libdir}/wireplumber-%{apiver}/libwireplumber-module-modem-manager.so
+%{_libdir}/wireplumber-%{apiver}/libwireplumber-module-mpris.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-portal-permissionstore.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-reserve-device.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-settings.so
@@ -248,7 +250,6 @@ fi
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-si-node.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-si-standard-link.so
 %{_libdir}/wireplumber-%{apiver}/libwireplumber-module-standard-event-source.so
-
 %{_userunitdir}/wireplumber.service
 %{_userunitdir}/wireplumber@.service
 %dir %{_datadir}/doc/wireplumber
