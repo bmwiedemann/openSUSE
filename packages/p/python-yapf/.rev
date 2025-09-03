@@ -208,4 +208,12 @@
 - Add missing {Build,}Requires on tomli and importlib-metadata.</comment>
     <requestid>1225352</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>a43c00d902773bf712d453d392d12053</srcmd5>
+    <version>0.43.0</version>
+    <time>1756926413</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1302389</requestid>
+  </revision>
 </revisionlist>

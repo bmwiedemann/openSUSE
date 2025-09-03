@@ -1,7 +1,7 @@
 #
 # spec file for package python-yapf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-yapf
 Version:        0.43.0
@@ -28,19 +33,17 @@ BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tomli if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-platformdirs
-%if 0%{?python_version_nodots} < 311
-Requires:       python-tomli
-%endif
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
-%ifpython2
-Recommends:     python-futures
 %endif
 %python_subpackages
 
@@ -66,10 +69,14 @@ be reformatted.
 
 %python_clone -a %{buildroot}%{_bindir}/yapf
 %python_clone -a %{buildroot}%{_bindir}/yapf-diff
+%python_group_libalternatives yapf yapf-diff
 %python_expand rm -r %{buildroot}%{$python_sitelib}/yapftests
 
 %check
 %pytest --capture=no
+
+%pre
+%python_libalternatives_reset_alternative yapf
 
 %post
 %python_install_alternative yapf yapf-diff
