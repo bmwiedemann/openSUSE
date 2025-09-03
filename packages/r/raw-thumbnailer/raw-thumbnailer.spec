@@ -1,7 +1,7 @@
 #
 # spec file for package raw-thumbnailer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           raw-thumbnailer
-Version:        47.0.1
+Version:        48.0.0+git5.e8f0079
 Release:        0
 Summary:        RAW images thumbnailer for GNOME
 License:        GPL-2.0-or-later
