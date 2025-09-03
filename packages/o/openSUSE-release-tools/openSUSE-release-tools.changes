@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Aug 27 11:53:58 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250827.0ffb3bb3:
+  * TTM: allow to override test_project attribute from config
+
+-------------------------------------------------------------------
+Wed Aug 27 09:22:29 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250827.458e4747:
+  * docker_publisher.py: Add Leap 16.0
+
+-------------------------------------------------------------------
+Tue Aug 26 10:22:44 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250826.91831b4d:
+  * gocd: adjust pkglistgen for the Leap 16.0 product build setup
+  * gocd: adjust TTM for the Leap 16.0 product setup
+  * Adjust skippkg-finder for the changed Leap 16.0 product build setup
+
+-------------------------------------------------------------------
 Wed Aug 06 10:26:26 UTC 2025 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20250806.05cbe030:
