@@ -2490,4 +2490,12 @@
   * [flake8-use-pathlib] Update links to the table showing the correspondence between os and pathlib</comment>
     <requestid>1301841</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>018b3945acd57675b0661a44c98bb25a</srcmd5>
+    <version>0.12.11</version>
+    <time>1756926429</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1302462</requestid>
+  </revision>
 </revisionlist>
