@@ -45,4 +45,13 @@
 - Skip some tests failing with python &gt; 3.11</comment>
     <requestid>1272353</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e7ee2b19c6cdd04b7418871b449d1574</srcmd5>
+    <version>1.0.5</version>
+    <time>1756926473</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.5:
+  * Support pytest 8.4+</comment>
+    <requestid>1302512</requestid>
+  </revision>
 </revisionlist>

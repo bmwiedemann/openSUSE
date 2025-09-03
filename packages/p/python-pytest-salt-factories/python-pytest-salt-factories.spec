@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-salt-factories
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define _version 1.0.4
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
@@ -24,12 +23,12 @@
 %endif
 
 Name:           python-pytest-salt-factories
-Version:        %{_version}
+Version:        1.0.5
 Release:        0
 Summary:        A pytest plugin for testing Salt
 License:        Apache-2.0
 URL:            https://pytest-salt-factories.readthedocs.io/en/latest/
-Source0:        https://files.pythonhosted.org/packages/source/p/pytest-salt-factories/pytest_salt_factories-%{_version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pytest-salt-factories/pytest_salt_factories-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE fix_unit_tests.patch  this patch is removing the workaround in the unit test implementation so the test can pass when using our openSUSE Salt 3006.0 package
 Patch1:         fix_unit_tests.patch
 BuildRequires:  %{python_module PyYAML}
@@ -77,7 +76,7 @@ Requires(postun): update-alternatives
 A pytest plugin for testing Salt.
 
 %prep
-%autosetup -p1 -n pytest_salt_factories-%{_version}
+%autosetup -p1 -n pytest_salt_factories-%{version}
 
 %build
 %pyproject_wheel
@@ -88,7 +87,6 @@ A pytest plugin for testing Salt.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
 # Run test and exclude some that doesn't work fine in OBS.
 donttest="ssh or echoext"
 # Flaky tests for aarch64, ppc, arm
@@ -125,7 +123,7 @@ python313_donttest=$python312_donttest
 %license LICENSE
 %doc README.rst CHANGELOG.rst
 %{python_sitelib}/saltfactories
-%{python_sitelib}/pytest_salt_factories-%{_version}*-info
+%{python_sitelib}/pytest_salt_factories-%{version}.dist-info
 %python_alternative %{_bindir}/salt-factories
 
 %changelog
