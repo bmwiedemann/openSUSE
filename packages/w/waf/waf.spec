@@ -17,7 +17,7 @@
 
 
 Name:           waf
-Version:        2.1.2
+Version:        2.1.4
 Release:        0
 Summary:        The Waf build system
 License:        BSD-3-Clause
