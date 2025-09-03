@@ -255,4 +255,122 @@
   * chore: auto-update generated files (forwarded request 1296827 from ph03nix)</comment>
     <requestid>1296828</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9664754445c05752fcfc65f4d31550d7</srcmd5>
+    <version>2.12.0</version>
+    <time>1756926530</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.12.0:
+  * docs: update for v2.12
+  * chore(deps): bump code.gitea.io/sdk/gitea from 0.21.0 to 0.22.0 (#6029)
+  * docs: update
+  * docs: update
+  * docs: update
+  * fix(docker/v2): custom publisher
+  * docs: update
+  * chore(deps): bump github.com/charmbracelet/fang from 0.3.0 to 0.4.0 (#6042)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from 1.87.2 to 1.87.3 (#6041)
+  * chore(deps): bump github.com/goreleaser/nfpm/v2 from 2.43.0 to 2.43.1 (#6040)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.142.4 to 0.142.5 (#6039)
+  * chore(deps): bump github.com/ulikunitz/xz from 0.5.13 to 0.5.15 (#6038)
+  * chore(deps): bump actions/attest-build-provenance from 2 to 3 (#6037)
+  * docs: update
+  * fix(makeself): lint issues
+  * test: improve makeself tests
+  * feat: makeself  (#6023)
+  * Revert &quot;chore(deps): bump github.com/ulikunitz/xz from 0.5.13 to 0.5.14 in the go_modules group&quot; (#6036)
+  * chore(deps): bump github.com/ulikunitz/xz from 0.5.13 to 0.5.14 in the go_modules group (#6035)
+  * chore(deps): update lipgloss (#6034)
+  * chore(deps): bump mkdocs-include-markdown-plugin from 7.1.6 to 7.1.7 in /www (#6031)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from 1.87.1 to 1.87.2 (#6033)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.142.2 to 0.142.4 (#6032)
+  * chore(deps): bump github.com/stretchr/testify from 1.11.0 to 1.11.1 (#6030)
+  * refactor: simplify function call
+  * refactor: improved artifact filters (#6024)
+  * docs: fix typo
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.142.1 to 0.142.2 (#6025)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.142.0 to 0.142.1 (#6021)
+  * test(docker/v2): fix broken test
+  * fix(docker/v2): lint issues
+  * feat(bun): support more targets (#6019)
+  * test: fix
+  * fix(docker/v2): tag suffix on windows
+  * test(docker/v2): more tests
+  * fix(docker/v2): dockerfile not being copied properly
+  * refactor(docker/v2): move build to another func
+  * refactor(docker/v2): rename func
+  * fix(docker/v2): remove unneeded if
+  * fix(digest): double space
+  * chore(deps): bump mkdocs-material from 9.6.17 to 9.6.18 in /www (#6017)
+  * chore(deps): bump github/codeql-action from 3.29.10 to 3.29.11 (#6018)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.141.2 to 0.142.0 (#6016)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from 1.87.0 to 1.87.1 (#6015)
+  * docs: update
+  * docs: update
+  * ci: fix windows build
+  * fix(docker/v2): several fixes (#6013)
+  * feat(docker/v2): support annotations (#6011)
+  * feat(docker/v2): support arbitrary flags (#6012)
+  * docs: improvements
+  * chore: schema update
+  * feat(docker/v2): initial implementation (#5793)
+  * chore: update
+  * docs: improve help around termux
+  * feat: remove uber-go/automaxprocs (#6006)
+  * chore(deps): bump github.com/go-viper/mapstructure/v2 from 2.3.0 to 2.4.0 in the go_modules group (#6009)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.141.1 to 0.141.2 (#6008)
+  * chore(deps): bump codecov/codecov-action from 5.4.3 to 5.5.0 (#6007)
+  * feat(docker): create images digest file for attestation (#6001)
+  * fix(cask): conflicts_with formula was deprecated (#5996)
+  * chore(deps): bump github.com/ulikunitz/xz from 0.5.12 to 0.5.13 (#6004)
+  * chore(deps): bump github.com/mark3labs/mcp-go from 0.37.0 to 0.38.0 (#6003)
+  * chore(deps): bump golang from `77dd832` to `f18a072` (#6002)
+  * chore(deps): bump mkdocs-material from 9.6.16 to 9.6.17 in /www (#6000)
+  * chore(deps): bump github.com/jarcoal/httpmock from 1.4.0 to 1.4.1 (#5999)
+  * chore(deps): bump github/codeql-action from 3.29.9 to 3.29.10 (#5998)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.139.2 to 0.141.1 (#5997)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from 1.86.0 to 1.87.0 (#5969)
+  * sec: update rekor to main for GHSA-vrw8-fxc6-2r93 (#5990)
+  * test(cask): update golden file
+  * docs(cask): improve example of homebrew casks (#5944)
+  * fix(cask): pass audit (#5987)
+  * fix(scoop): add newline to eof (#5985)
+  * fix(brew): use &amp;&amp; instead of and (#5986)
+  * chore(deps): bump anchore/sbom-action from 0.20.4 to 0.20.5 (#5988)
+  * fix(golang): only warn experimental/unstable targets if not filtered out
+  * docs: Python in the homepage (#5984)
+  * docs: update
+  * ci: improve get-releases.sh
+  * feat: retry docker manifest, retry configurations (#5978)
+  * feat: update to go 1.25 (#5971)
+  * chore(deps): bump golang from 1.24.6-alpine to 1.25.0-alpine (#5981)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.139.0 to 0.139.2 (#5980)
+  * chore(deps): bump github/codeql-action from 3.29.8 to 3.29.9 (#5973)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.137.0 to 0.139.0 (#5972)
+  * ci: use go-version-file (#5976)
+  * chore(deps): bump actions/checkout from 4 to 5 (#5968)
+  * chore(deps): bump github/codeql-action from 3.29.7 to 3.29.8 (#5966)
+  * chore(deps): bump golang.org/x/tools from 0.35.0 to 0.36.0 (#5959)
+  * chore(deps): bump golang.org/x/text from 0.27.0 to 0.28.0 (#5961)
+  * chore(deps): bump golang.org/x/crypto from 0.40.0 to 0.41.0 (#5960)
+  * chore(deps): bump actions/cache from 4.2.3 to 4.2.4 (#5958)
+  * chore(deps): bump golang from 1.24.5-alpine to 1.24.6-alpine (#5957)
+  * docs: fix link
+  * docs: update
+  * feat(upload,artifactory): allow to set a password field, tmpl username (#5949)
+  * docs: update
+  * chore: fix lint
+  * docs: update
+  * fix(mcp): brews is not deprecated anymore
+  * feat(mcp): goreleaser_check gives instructions on how to fix deprecations (#5896)
+  * feat(tmpl): readFile and mustReadFile (#5948)
+  * feat(golang): update allowed targets (#5951)
+  * chore(deps): bump github.com/mark3labs/mcp-go from 0.36.0 to 0.37.0 (#5956)
+  * chore(deps): bump docker/login-action from 3.4.0 to 3.5.0 (#5953)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from 1.85.1 to 1.86.0 (#5952)
+  * fix(gitlab): missing PR footer (#5950)
+  * chore: auto-update generated files
+  * chore: auto-update generated files (forwarded request 1302603 from ph03nix)</comment>
+    <requestid>1302605</requestid>
+  </revision>
 </revisionlist>
