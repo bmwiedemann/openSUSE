@@ -1,7 +1,7 @@
 #
 # spec file for package QMPlay2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,11 @@
 %define __builder Ninja
 %bcond_without qt6
 
-%define _mtime 1750971138
-%define _commit 67c701f0
+%define _mtime 1756926879
+%define _commit 24a65998
 
 Name:           QMPlay2
-Version:        25.06.27
+Version:        25.09.03
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
@@ -64,7 +64,7 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(libass)
 BuildRequires:  pkgconfig(libavcodec) >= 58.18.100
 BuildRequires:  pkgconfig(libavdevice)
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1699
 BuildRequires:  pkgconfig(libavfilter) >= 8.44.100
 %endif
 BuildRequires:  pkgconfig(libavformat) >= 58.12.100
@@ -80,7 +80,7 @@ BuildRequires:  pkgconfig(libswscale) >= 5.1.100
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(portaudio-2.0)
 # Enable rubberband support on openSUSE Tumbleweed and openSUSE Leap 15.5, SLE15SP5+
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
+%if 0%{?suse_version} >= 1699 || 0%{?sle_version} >= 150500
 BuildRequires:  pkgconfig(rubberband) >= 3.0.0
 %endif
 BuildRequires:  pkgconfig(shaderc)
@@ -127,7 +127,7 @@ It's a development package for %{name}.
   -DSOLID_ACTIONS_INSTALL_PATH="%{_datadir}/solid/actions" \
   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
   -DUSE_PCH=ON \
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1699
   -DUSE_AUDIOFILTERS=ON \
 %else
   -DUSE_AUDIOFILTERS=OFF \
@@ -143,7 +143,7 @@ It's a development package for %{name}.
 %endif
   -DUSE_PORTAUDIO=ON \
   -DUSE_PIPEWIRE=ON \
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
+%if 0%{?suse_version} >= 1699 || 0%{?sle_version} >= 150500
   -DUSE_RUBBERBAND=ON \
 %else
   -DUSE_RUBBERBAND=OFF \

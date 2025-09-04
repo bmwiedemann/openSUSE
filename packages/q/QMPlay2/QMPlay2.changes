@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  4 01:56:18 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 25.09.03:
+  * add support for YouTube audio multi-language and DRC streams,
+  * add VP9 Vulkan decoder (requires FFmpeg 8.0),
+  * yt-dlp fixes.
+
+-------------------------------------------------------------------
 Sat Jun 28 15:05:27 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 25.06.27:
