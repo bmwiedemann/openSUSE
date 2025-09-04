@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Thu Sep  4 04:59:39 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.10.0:
+  * Add extra-animations plugin.
+  * Add suitable headers to various plugins.
+  * json: switch to yyjson.
+  * Update filters subproject.
+  * Add option 'names' to workspace-names.
+  * update for new wayfire rendering API.
+  * plugins: s/mediump/highp/.
+  * water: Only change blend state once instead of each pass.
+  * water: Free extra buffers when plugin is unloaded.
+  * workspace-names: Fix stuck rendering on screen.
+  * annotate: fix unloading.
+  * Update subprojects.
+  * showrepaint: use new render-agnostic APIs in core.
+  * ghost: Drop redundant ipc- prefix from script file name.
+  * view-shot: Add ipc script.
+  * extra-animations: Add melt animation.
+  * extra-animations: Reduce melt animation damage area to improve 
+    performance.
+  * extra-animations: Use sigmoid for melt alpha fade.
+  * obs: Fix rendering.
+  * Add workspace-names setter script and update plugin to allow 
+    usage.
+  * workspace-names fixup.
+  * scripts: Add more scripts to drive workspace-names plugin.
+
+-------------------------------------------------------------------
+Mon Aug 26 03:46:06 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.9.0:
+  * No changelog was made available. 
+
+-------------------------------------------------------------------
+Fri Mar 15 10:13:15 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.1:
+  * Del wayfire-plugins-extra-track-wlroots-0.17-changes.patch.
+  * No changelog was made available. 
+
+-------------------------------------------------------------------
+Thu Mar 14 05:14:13 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Add wayfire-plugins-extra-track-wlroots-0.17-changes.patch.
+- Enable windecor plugin.
+- Enable wayfire shadows plugin.
+- Enable wayfire focus-request plugin.
+
+-------------------------------------------------------------------
+Mon Oct  9 06:11:55 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.0:
+  * No changelog was made available.
+
+-------------------------------------------------------------------
+Fri Dec  2 03:34:51 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.7.5:
+  * Wayfire extra plugins.
+    Compatible with wayfire 0.7.5 and wlroots 0.16.x.
+
+-------------------------------------------------------------------
+Wed Feb  3 04:54:56 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.7.0:
+  * Compatible with Wayfire 0.7.x 
+
+-------------------------------------------------------------------
+Mon Nov  9 09:15:14 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.6.0:
+  * No changelog was made available. 
+
+-------------------------------------------------------------------
+Mon Aug 17 03:26:24 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.5.0:
+  * No changelog was made available. 
+
+-------------------------------------------------------------------
+Mon Mar 23 05:56:32 UTC 2020 - dead_mozay@opensuse.org
+
+- Update to version 0.1.git~20200321.3eed212:
+  * make network keyboard optional
+  * Add background view plugin
+
+-------------------------------------------------------------------
+Tue Mar 17 08:15:31 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Initial package 
