@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Sep 04 06:43:51 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250904.957a78bf:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: sbd: Minor refactor enable_sbd_service method in SBDManager
+
+-------------------------------------------------------------------
+Mon Sep 01 08:11:16 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250901.a7c653f5:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: sbd: Check if fence-agents-sbd is installed on join node
+  * Dev: sbd: Check if fence-agents-sbd is installed on interactive mode
+  * Dev: sbd: Check if fence-agents-sbd is installed for non sbd stage
+
+-------------------------------------------------------------------
+Mon Sep 01 06:16:36 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250901.263ead3c:
+  * Dev: testcases: Adjust testcases for previous commit
+  * Dev: ui_node: Don't unpack node info from node_state for `node show` command
+
+-------------------------------------------------------------------
+Fri Aug 29 04:13:06 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250829.acc43479:
+  * Fix: sbd: Ensure proper cluster restart when adding diskless SBD (bsc#1248874)
+
+-------------------------------------------------------------------
 Thu Aug 28 03:50:37 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250828.c67318b2:
