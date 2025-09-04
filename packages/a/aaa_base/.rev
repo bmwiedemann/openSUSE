@@ -4300,4 +4300,13 @@
   * Allow /etc/locale.conf to have no newline</comment>
     <requestid>1297777</requestid>
   </revision>
+  <revision rev="512" vrev="1">
+    <srcmd5>cf387a80a5889da292af684a0b49af22</srcmd5>
+    <version>84.87+git20250903.33e5ba4</version>
+    <time>1757001531</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 84.87+git20250903.33e5ba4:
+  * Correct fix for boo#1247495 (boo#1248158)</comment>
+    <requestid>1302580</requestid>
+  </revision>
 </revisionlist>
