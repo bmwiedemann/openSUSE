@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycdlib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,20 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 Name:           python-pycdlib
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        Pure python ISO manipulation library
 License:        LGPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/clalancette/pycdlib
-Source:         https://files.pythonhosted.org/packages/source/p/pycdlib/pycdlib-%{version}.tar.gz
+Source:         %{URL}/archive/v%{version}.tar.gz#/pycdlib-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -32,6 +38,15 @@ BuildRequires:  fdupes
 BuildRequires:  mkisofs
 BuildRequires:  python-rpm-macros
 BuildRequires:  timezone
+
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
+
 Requires:       mkisofs
 Requires:       python3-pycdlib-common
 BuildArch:      noarch
@@ -71,11 +86,16 @@ This package includes the common files.
 %python_clone -a %{buildroot}%{_bindir}/pycdlib-explorer
 %python_clone -a %{buildroot}%{_bindir}/pycdlib-extract-files
 %python_clone -a %{buildroot}%{_bindir}/pycdlib-genisoimage
+%python_group_libalternatives pycdlib-explorer pycdlib-extract-files pycdlib-genisoimage
 
 %check
 export LC_ALL=ja_JP.UTF-8
 export TZ=Asia/Tokyo
 %pytest -k unit
+
+%pre
+# removing old update-alternatives entries
+%python_libalternatives_reset_alternative pycdlib-explorer
 
 %post
 %{python_install_alternative pycdlib-explorer pycdlib-extract-files pycdlib-genisoimage}

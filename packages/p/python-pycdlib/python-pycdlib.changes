@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 28 10:23:04 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use libalternatives in TW and Leap 16.0
+- Change source to github tag archive, the last tag is not released in
+  pypi.
+- update to 1.15.0:
+  * Remove Python 2 compatibility
+  * Add an encoding parameter to the walk API so non-standard ISOs can be used
+  * Fix ISOs that only have a single extent for Path Tables
+  * Add the 'udf_path' argument to add_file so UDF ISOs can add paths
+  * Fix timestamps for UDF
+
+-------------------------------------------------------------------
 Wed Jun  4 09:27:02 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
