@@ -86,4 +86,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * iwlwifi: update cc/Qu/QuZ firmwares for core97-84 release</comment>
     <requestid>1300895</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c620d2c06ae6bcf0c8459571d8950930</srcmd5>
+    <version>20250829</version>
+    <time>1757001545</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250829 (git commit 64596902d2db):
+  * Move all iwlwifi top level files to intel/ directory</comment>
+    <requestid>1302683</requestid>
+  </revision>
 </revisionlist>
