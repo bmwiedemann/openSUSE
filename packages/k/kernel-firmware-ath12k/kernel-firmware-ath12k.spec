@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 8f1ce114de6cf9c20a47aca5ad487e8d272e4014
+%define git_version 577ee67ffca254fe7ee3a7dc5bcf0b8f749f2902
 
 Name:           kernel-firmware-ath12k
-Version:        20250808
+Version:        20250903
 Release:        0
 Summary:        Kernel firmware files for Atheros Qualcomm WiFi 7 chipset drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
