@@ -1,7 +1,7 @@
 #
 # spec file for package wf-config
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define so_ver 0.9
+
+%define so_ver 0.10
 %define libname libwf-config1
 Name:           wf-config
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        A library for managing configuration files
 License:        MIT
@@ -30,8 +31,8 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(doctest)
 BuildRequires:  pkgconfig(glm)
-BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libevdev)
+BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(wlroots) >= 0.17.0
 
 %description

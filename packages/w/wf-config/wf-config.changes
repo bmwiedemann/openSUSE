@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  1 05:55:17 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.10.0:
+  * Use safe list for updated handlers.
+  * safe-list.hpp: remove unused includes.
+  * use ISO date format for log timestamps.
+
+-------------------------------------------------------------------
 Wed Nov 13 16:14:50 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Changed pkgconfig(wlroots) to >= 0.17.0 to clear buildfailure,
