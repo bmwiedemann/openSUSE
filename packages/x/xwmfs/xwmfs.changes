@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep  4 08:28:02 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- update to version v1.10:
+  * fix bad stat (size) information for directories, issue was
+    introduced in version 1.00.
+  * major refactoring of the codebase based on newly introduced
+    libcosmos and libxpp Git sub-modules:
+    *   this should not cause much user visible changes.
+    *   switch to C++20.
+    *   adjusted coding style to the one found in libcosmos.
+    *   improved spelling in comments and type names.
+    *   use strong types from libcosmos and libxpp to increase robustness.
+    *   drop redundant xwmfs code portions no longer needed.
+
+-------------------------------------------------------------------
 Fri Aug 29 10:06:16 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - add explicit pkgconfig(fuse3) build dependency

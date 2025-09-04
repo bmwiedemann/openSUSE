@@ -84,4 +84,22 @@
   * stability bugfixes</comment>
     <requestid>1301904</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>370ec09b8b07e0149cbfe475ffdf3599</srcmd5>
+    <version>1.10</version>
+    <time>1757001579</time>
+    <user>anag_factory</user>
+    <comment>- update to version v1.10:
+  * fix bad stat (size) information for directories, issue was
+    introduced in version 1.00.
+  * major refactoring of the codebase based on newly introduced
+    libcosmos and libxpp Git sub-modules:
+    *   this should not cause much user visible changes.
+    *   switch to C++20.
+    *   adjusted coding style to the one found in libcosmos.
+    *   improved spelling in comments and type names.
+    *   use strong types from libcosmos and libxpp to increase robustness.
+    *   drop redundant xwmfs code portions no longer needed.</comment>
+    <requestid>1302693</requestid>
+  </revision>
 </revisionlist>

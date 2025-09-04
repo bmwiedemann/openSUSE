@@ -24,7 +24,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libX11-devel
 BuildRequires:  pkgconfig(fuse3)
 Requires:       fuse3
-Version:        1.00
+Version:        1.10
 Release:        0
 URL:            https://github.com/gerstner-hub/xwmfs
 Summary:        A file system for accessing X server and window manager features
