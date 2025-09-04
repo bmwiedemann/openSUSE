@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  2 12:54:28 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add automatic dependency on octave API for arch-dependent
+  octave-forge packages, add octave.attr dependency generator.
+  Add "Provides: octave(api-v60)" on octave-cli package.
+- Relax glob in build macro, noarch octave bindings may be
+  built as part of a arch-dependent package.
+
+-------------------------------------------------------------------
 Mon Aug 25 20:39:46 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix octave-forge install/check macros for noarch packages.

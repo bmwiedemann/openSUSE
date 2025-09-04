@@ -59,6 +59,7 @@ URL:            https://www.octave.org/
 Source0:        https://ftp.gnu.org/gnu/octave/%{name}-%{src_ver}.tar.lz
 Source1:        octave.macros
 Source2:        %{name}-rpmlintrc
+Source3:        %{name}.attr
 # PATCH-FIX-OPENSUSE
 Patch0:         octave_tools_pie.patch
 # PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?54607
@@ -181,6 +182,7 @@ Recommends:     octave-doc = %{version}
 # SECTION Resolve degeneracy between multiple libsundials_{sunlinsol,ida}.so providers from serial and parallel flavours of sundials
 Requires:       %(rpm -qR sundials-devel | grep -oP "libsundials_ida[0-9]")
 Requires:       %(rpm -qR sundials-devel | grep -oP "libsundials_sunlinsol[0-9_]+")
+Provides:       octave(api-%{apiver})
 # /SECTION
 %if %{with native_graphics}
 Recommends:     epstool
@@ -283,6 +285,7 @@ rm -rf %{buildroot}/%{_datadir}/applications/
 install -Dm 644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.octave
 # substitute correct values for octave_blas macros
 sed -i 's/OCTAVE_BLAS_LIBRARY_NAME/%{blas_library}/g' %{buildroot}%{_rpmmacrodir}/macros.octave
+install -Dm 644 %{SOURCE3} %{buildroot}%{_fileattrsdir}/octave.attr
 
 # increase stack size set by the JVM, affects the whole octave process
 echo "-Xss8m" >  %{buildroot}/%{_datadir}/%{name}/%{src_ver}/m/java/java.opts
@@ -356,6 +359,7 @@ xvfb-run -a -s "-screen 0 640x480x16" \
 %{_libdir}/pkgconfig/octinterp.pc
 %{_libdir}/pkgconfig/octmex.pc
 %{_rpmmacrodir}/macros.octave
+%{_fileattrsdir}/octave.attr
 
 %files doc
 %doc doc/interpreter/octave.pdf

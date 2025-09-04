@@ -1,0 +1,4 @@
+%__octave_requires() %{lua:
+  print(string.format("octave(%s)\\n", rpm.expand("%{octave_api}")))
+}
+%__octave_path ^%{octlib_dir}/.*\\.oct$
