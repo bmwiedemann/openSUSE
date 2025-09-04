@@ -201,4 +201,12 @@ Hope, the changelog is correct now.</comment>
 - Remove munge key on uninstall (forwarded request 1234711 from eeich)</comment>
     <requestid>1234712</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>ba448079023ec9cc2d9cf4ba26a6cb4d</srcmd5>
+    <version>0.5.16</version>
+    <time>1757001582</time>
+    <user>anag_factory</user>
+    <comment>- Improved match (forwarded request 1302322 from eeich)</comment>
+    <requestid>1302706</requestid>
+  </revision>
 </revisionlist>

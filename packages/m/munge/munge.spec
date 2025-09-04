@@ -1,7 +1,7 @@
 #
 # spec file for package munge
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -134,6 +134,7 @@ rm -f %{buildroot}%{_libdir}/*.a
 mkdir -p %{buildroot}%{_datarootdir}/licenses
 
 install -m 0755 -d %{buildroot}%{_fillupdir}
+sed -i -e "/missingok/a\ \ \ \ su munge munge" %{buildroot}/%{_sysconfdir}/logrotate.d/munge
 # We don't want systemd file on SLE 11
 %if 0%{!?have_systemd:1}
    test -d %{buildroot}%{_prefix}/lib/systemd && \
@@ -215,6 +216,9 @@ then
     %{fixperm %{_localstatedir}/log/munge/munged.log}
     %{fixperm %munge_run}
 fi
+# This matches ' su  foo bar' as well as '  su=foo bar
+grep -qE "^ *su" %{_sysconfdir}/logrotate.d/munge || \
+    sed -i -e "/missingok/a\ \ \ \ su munge munge" %{_sysconfdir}/logrotate.d/munge
 unset tmpfile
 tmpdir=$(mktemp -d /tmp/tmpdir-XXXXXXXXX)
 if [ -e %{_sysconfdir}/munge/munge.key ]; then
