@@ -1775,6 +1775,7 @@ unsorted:
   - busybox-bzip2 
   - busybox-cpio 
   - busybox-dos2unix 
+  - busybox-ether-wake 
   - busybox-findutils 
   - busybox-hexedit 
   - busybox-iproute2 
@@ -4450,6 +4451,7 @@ unsorted:
   - frescobaldi 
   - fribidi-devel 
   - fritzing 
+  - fritzing-lang 
   - fritzing-parts 
   - frizbee 
   - frizbee-bash-completion 
@@ -11519,7 +11521,6 @@ unsorted:
   - libWN3 
   - libWPEBackend-fdo-1_0-1 
   - libWPEBackend-fdo-1_0-1-32bit 
-  - libWPEWebInspectorResources 
   - libWPEWebKit-2_0-1 
   - libWildMidi2 
   - libX11-6-32bit 
@@ -12871,7 +12872,7 @@ unsorted:
   - libdwarf-doc 
   - libdwarf-tools 
   - libdwarf0 
-  - libdwarfs0_12_4 
+  - libdwarfs0_13_0 
   - libdwarves1 
   - libdxflib-3_26_4-1 
   - libe-book-devel 
@@ -18423,6 +18424,7 @@ unsorted:
   - mdbtools 
   - mdbtools-devel 
   - mdds-2_1-devel 
+  - mdds-devel 
   - meabo 
   - meanwhile-devel 
   - meanwhile-doc 
@@ -26728,6 +26730,7 @@ unsorted:
   - python311-python-openid-teams 
   - python311-python-oxmsg 
   - python311-python-pam 
+  - python311-python-pkcs11 
   - python311-python-poppler 
   - python311-python-pptx 
   - python311-python-prctl 
@@ -27019,6 +27022,7 @@ unsorted:
   - python311-sidpy 
   - python311-sievelib 
   - python311-signedjson 
+  - python311-signxml 
   - python311-sigstore 
   - python311-sigstore-protobuf-specs 
   - python311-sigstore-rekor-types 
@@ -27490,6 +27494,7 @@ unsorted:
   - python311-xmltodict 
   - python311-xpybutil 
   - python311-xrootd 
+  - python311-xsdata 
   - python311-xsge_gui 
   - python311-xsge_lighting 
   - python311-xsge_particle 
@@ -30512,6 +30517,7 @@ unsorted:
   - python312-python-openid-teams 
   - python312-python-oxmsg 
   - python312-python-pam 
+  - python312-python-pkcs11 
   - python312-python-poppler 
   - python312-python-pptx 
   - python312-python-prctl 
@@ -30811,6 +30817,7 @@ unsorted:
   - python312-sidpy 
   - python312-sievelib 
   - python312-signedjson 
+  - python312-signxml 
   - python312-sigstore 
   - python312-sigstore-protobuf-specs 
   - python312-sigstore-rekor-types 
@@ -31288,6 +31295,7 @@ unsorted:
   - python312-xmltodict 
   - python312-xpybutil 
   - python312-xrootd 
+  - python312-xsdata 
   - python312-xsge_gui 
   - python312-xsge_lighting 
   - python312-xsge_particle 
@@ -34243,6 +34251,7 @@ unsorted:
   - python313-python-openid-teams 
   - python313-python-oxmsg 
   - python313-python-pam 
+  - python313-python-pkcs11 
   - python313-python-poppler 
   - python313-python-pptx 
   - python313-python-prctl 
@@ -34531,6 +34540,7 @@ unsorted:
   - python313-sidpy 
   - python313-sievelib 
   - python313-signedjson 
+  - python313-signxml 
   - python313-sigstore 
   - python313-sigstore-protobuf-specs 
   - python313-sigstore-rekor-types 
@@ -35005,6 +35015,7 @@ unsorted:
   - python313-xmltodict 
   - python313-xpybutil 
   - python313-xrootd 
+  - python313-xsdata 
   - python313-xsge_gui 
   - python313-xsge_lighting 
   - python313-xsge_particle 
