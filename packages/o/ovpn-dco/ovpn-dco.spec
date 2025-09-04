@@ -1,7 +1,7 @@
 #
 # spec file for package ovpn-dco
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,12 @@ BuildRequires:  %kernel_module_package_buildreqs
 
 # Releases prior to 15.2 don't have a new enough kernel
 %if 0%{?sle_version} > 0 && 0%{?sle_version} < 150200
+ExclusiveArch:  do_not_build
+%endif
+
+# In Tumbleweed kernel 6.16 is used which has the module included
+# https://blog.openvpn.net/openvpn-dco-added-to-linux-kernel-2025
+%if 0%{?suse_version} > 1600
 ExclusiveArch:  do_not_build
 %endif
 
