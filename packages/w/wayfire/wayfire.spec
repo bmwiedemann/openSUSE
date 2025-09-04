@@ -1,7 +1,7 @@
 #
 # spec file for package wayfire
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,7 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define major_ver 0.9
+
+%define major_ver 0.10
 %define minor_ver 0
 %define libname libwf-utils0
 Name:           wayfire
@@ -37,6 +38,7 @@ BuildRequires:  hwdata
 BuildRequires:  inotify-tools-devel
 BuildRequires:  meson >= 0.56.0
 BuildRequires:  pkgconfig
+BuildRequires:  wlroots-devel >= 0.19.0
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(doctest)
 BuildRequires:  pkgconfig(egl)
@@ -56,9 +58,9 @@ BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.12
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(wf-config) >= %{major_ver}
-BuildRequires:  pkgconfig(wlroots) >= 0.17.0
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xwayland)
+BuildRequires:  pkgconfig(yyjson)
 Recommends:     wayfire-config-manager
 Recommends:     wayfire-plugins-extra
 Recommends:     wcm
@@ -113,6 +115,8 @@ find %{buildroot} -type f -name "*.a" -delete -print0
 %{_datadir}/%{name}
 %{_datadir}/wayland-sessions/
 %{_datadir}/wayland-sessions/*.desktop
+%dir %{_datadir}/xdg-desktop-portal/
+%{_datadir}/xdg-desktop-portal/wayfire-portals.conf
 %{_mandir}/man1/wayfire.1%{?ext_man}
 
 %files -n %{libname}

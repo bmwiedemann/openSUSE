@@ -7,4 +7,12 @@
     <comment>New Package, provides wayland compositor, Supplements lxqt-wayland-session</comment>
     <requestid>1224003</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>37bd046527b843b056b27371890997ce</srcmd5>
+    <version>0.10.0</version>
+    <time>1757001564</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1302645</requestid>
+  </revision>
 </revisionlist>

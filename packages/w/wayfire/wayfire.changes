@@ -1,4 +1,160 @@
 -------------------------------------------------------------------
+Thu Sep  4 04:09:46 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.10.0:
+  * animate: Add squeezimize animation.
+  * core: improve gesture and touch focus APIs.
+  * animate: Add zap animation.
+  * animate: Add spin animation.
+  * core: Make exit binding configurable.
+  * core: Add wlroots version to wayfire --version output.
+  * fix ipc not writeable.
+  * Fix clicking on open dialogs in scale and expo.
+  * core: Add legacy wayland drm option.
+  * ender-manager: Don't paint when session is not active.
+  * Enable session-lock plugin by default.
+  * render-manager: do not crash if running nested
+    (no wlr_session).
+  * Make socket path unique.
+  * Input method: update input method popup positions
+    on text input commit.
+  * window-manager: Ignore fullscreen requests
+    for current state.
+  * move: Use post input signal for touch move grabs.
+  * grid: restore unfulscreened views to their
+    correct position.
+  * layer-shell: save the initial state when a view is mapped.
+  * animate: allow 3rd party plugins to provide additional
+    animations.
+  * Wayfire.ini.
+  * squeezimize: remove transformer at the appropriate time.
+  * layer-shell: do not grab focus if keyboard interactivity
+    is set to ON_DEMAND.
+  * xdg-shell: fix potential crash with inert popups.
+  * foreign-toplevel: Fix potential crash when app-id mode
+    is 'full'.
+  * core: Bump plugin API/ABI version.
+  * view-impl: add view dummy node when setting the surface
+    root node.
+  * nonstd: fix source file encoding.
+  * animate: Respect minimize duration setting.
+  * core: Add option to run as root.
+  * Small fixes.
+  * workarounds: Add force frame sync option.
+  * Update subprojects/wf-touch.
+  * Add to log message which plugin failed to load.
+  * resize: Respect client minimum and maximum sizes.
+  * Handle syscall failures in
+    wf::compositor_core_impl_t::run.
+  * Fixes #2582.
+  * Input device updates.
+  * decoration: do not schedule unnecessary transactions.
+  * config-backend: fallback to normal [input].
+  * Allow Vendored Configuration File.
+  * plugin-loader: check API/ABI version with
+    RTLD_LAZY|RTLD_LOCAL.
+  * Add an option to disable tap-and-drag gesture.
+  * xdg-activation: add options to make it more strict.
+  * Add an option to enable 3fg/4fg drag gesture.
+  * session-lock: lock the screen even if the client provides
+    no lock surface.
+  * Decoration plugin optionally force decorations.
+  * add get_cursor_position ipc method to fetch
+    cursor coordinates.
+  * ipc-rules: fix wset-index garbage values.
+  * Fix crash when applying window rules
+    to constrained dialogs.
+  * layer-shell: notify scenegraph of geometry changes.
+  * resize: handle overflow due to margins.
+  * Fix the ipc header include paths.
+  * Bugfix: use view_id.value() instead
+    of view_id.has_value() when finding the view.
+  * animate: Improve squeezimize shader.
+  * ipc-rules: Fix view-fullscreen event.
+  * Misc improvements.
+  * ipc-rules: add events and methods to query keyboard layout.
+  * Vulkan & Pixman support.
+  * ipc-rules: Only allow subscriptions for valid signal names.
+  * improve owned texture.
+  * unmapped-view-node: report bbox with logical size,
+    not physical.
+  * Try to avoid crashing when loading a plugin with invaERROR:
+    Automatic wrap-based subproject downloading
+    is disabledlid options.
+  * xwayland: add core option for XWayland startup script.
+  * Extend wayfire/get-config-option to return compound
+    options.
+  * squeezimize: create gles2 texture before gles2 subpass.
+  * Optimize setting cursors.
+  * wayfire-portals.conf for xdg-desktop-portal.
+  * wayfire-portals.conf: Fix idle inhibit.
+  * workaround to disable middle click.
+  * scene-render: update a docstring comment to match
+    function parameters.
+  * Add min-width and min-height options to the resize plugin.
+  * avoid scheduling a configure for an uninitialized
+    xdg_surface.
+  * fix: decoration plugin title-bar/border height
+    size issue.
+  * workarounds: add focus_main_surface_instead_of_popup.
+  * idle: Fix disable-initially option functionality.
+  * don't try uninitialized surfaces
+    in wlr_layer_surface_v1_configure.
+  * Add ipc method to send view to workspace.
+  * Fix double slash in XDG metadata path construction.
+  * Decoration plugin - add font color option.
+  * Rendering fixes.
+  * standardized warnings when GLES2 plugins attempt to run
+    on unsupported renderers.
+  * Add an option "core/auto_reload" to control whether
+    to auto reload the config file.
+  * expo: handle workspace grid changes when expo
+    is active.
+  * zoom: add safety checks for texture source box.
+  * oswitch add directions to output switching.
+  * core: set state to running a bit earlier.
+  * render-manager: set output damage properly.
+  * feat: Add config reload delay option and refactor
+    reload logic.
+  * animate: Improve squeezimize animation.
+  * cube: Invert y input coordinate.
+  * output-layout: Use the same transform for output
+    as configured.
+  * core: plugins: s/mediump/highp/.
+  * Squeezimize: horizontal version.
+  * render: fix auxiliary buffer move constructor.
+  * core: handle suggested output for virtual-pointer.
+  * layer-shell: disconnect from unmapped commit handler
+    on destroy.
+  * only bring toplevels to front.
+  * xdg-toplevel: guard request_native_size for non-existent
+    or not initialized toplevels.
+  * wsets: handle null old wset in send_view_to_wset.
+  * window-manager: add function to directly store windowed
+    geometry.
+  * fix 2734.
+  * surface-node: do not send frame events to unmapped surfaces.
+  * workarounds: add keep_last_toplevel_activated option.
+  * output-node: auto-set limit region.
+  * window-manager: do not ignore fullscreen requests
+    when already fullscreen.
+  * window-manager: Ignore unfullscreen requests
+    if already windowed.
+  * move-drag-interface: Fix move drag maximize snap off.
+  * Add an extra app-id to full mode which is the same as
+    the ID used for….
+  * Fix drawing tablets not mapping to output.
+  * subsurfaces: Only damage where the client requests.
+  * core: Print the same full version string for log, -h and -v.
+  * xwayland: offer focus in global active cases.
+  * scene: add helper for managing render instances.
+  * output-layout: Move output request state handler from
+    render-manager to output-layout.
+  * output/layout: move 'loaded mode' message to debug logging.
+  * pointer: re-start implicit grab on subsequent button press.
+
+
+-------------------------------------------------------------------
 Wed Nov 13 00:37:13 UTC 2024 - Shawn Dunn <sfalken@opensuse.org>
 
 - Change BuildRequires: to wlroots >= 0.17.0 to clear unresolvable
@@ -27,18 +183,18 @@ Thu Mar 14 04:13:00 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
     - shortcuts-inhibit-v1
     - fractional-scale-v1
     - wlr_drm_lease_v1 for non-desktop outputs.
-    - input-method-v1 for better fcitx5 support (#2172). 
-      Note that the older support for input-method-v2 has also 
-      been improved, but is now disabled by default, 
-      because input-method-v1 works better in most cases. 
-      Nonetheless, it can be enabled again by setting 
+    - input-method-v1 for better fcitx5 support (#2172).
+      Note that the older support for input-method-v2 has also
+      been improved, but is now disabled by default,
+      because input-method-v1 works better in most cases.
+      Nonetheless, it can be enabled again by setting
       workarounds/enable_input_method_v2 = true.
   * Wayfire's IPC has been extended with many new signals and commands:
-    - Has methods to get view, output and workspace (and workspace-set) 
+    - Has methods to get view, output and workspace (and workspace-set)
       information.
-    - Signals for view-mapped, unmapped, 
+    - Signals for view-mapped, unmapped,
       plugin-activation-state-changed and several others.
-    - More plugins can be activated via the IPC, check the full 
+    - More plugins can be activated via the IPC, check the full
       commit log for details.
   * Wayfire supports SIGINT, SIGTERM for graceful shutdown.
   * Oswitch has binding to switch in the other direction.
@@ -56,31 +212,31 @@ Mon Oct  9 04:57:48 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
 -------------------------------------------------------------------
 Tue Jul  4 19:23:26 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
-- Added 0001-wf-utils.patch (gh#WayfireWM/wayfire#1790) 
+- Added 0001-wf-utils.patch (gh#WayfireWM/wayfire#1790)
 
 -------------------------------------------------------------------
 Fri Dec  2 03:26:16 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.7.5:
   * Wayfire bug-fix release.
-    Compatible with wf-config and wf-shell 0.7.x, wlroots 0.16.x. 
+    Compatible with wf-config and wf-shell 0.7.x, wlroots 0.16.x.
 
 -------------------------------------------------------------------
 Wed Nov 30 03:01:12 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Set wlroots max version to spec. 
+- Set wlroots max version to spec.
 
 -------------------------------------------------------------------
 Mon Aug  1 04:43:24 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.7.4:
-  * No changelog was made available. 
+  * No changelog was made available.
 
 -------------------------------------------------------------------
 Mon Apr 18 03:39:45 UTC 2022 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.7.3:
-  * Wayfire bug-fix release. Compatible with wf-config 
+  * Wayfire bug-fix release. Compatible with wf-config
     and wf-shell 0.7.x, wlroots 0.15.x.
   * Added BuildRequires: pango
 
@@ -97,13 +253,13 @@ Sat Aug 14 13:07:53 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
 -------------------------------------------------------------------
 Fri Jun 25 05:23:56 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Downgrading wlroots minimum version to spec. 
+- Downgrading wlroots minimum version to spec.
 
 -------------------------------------------------------------------
 Fri Jun 25 05:17:22 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.7.2:
-  * No changelog was made available. 
+  * No changelog was made available.
 
 -------------------------------------------------------------------
 Sat Jun 19 13:24:25 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
@@ -116,24 +272,24 @@ Sat Jun 19 13:24:25 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 Wed Feb  3 04:42:20 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.7.0:
-  * Compatible with wf-config 0.7.x and wlroots 0.12.x 
+  * Compatible with wf-config 0.7.x and wlroots 0.12.x
 
 -------------------------------------------------------------------
 Mon Nov  9 06:42:34 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.6.0:
-  * Compatible with wlroots 0.12.0 
+  * Compatible with wlroots 0.12.0
 
 -------------------------------------------------------------------
 Mon Aug 17 04:03:38 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.5.0:
-  * Compatible with wlroots 0.11 
+  * Compatible with wlroots 0.11
 
 -------------------------------------------------------------------
 Thu Apr 30 04:59:18 UTC 2020 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Remove _service 
+- Remove _service
 
 -------------------------------------------------------------------
 Mon Mar 23 03:56:14 UTC 2020 - dead_mozay@opensuse.org
@@ -169,4 +325,4 @@ Thu Oct 03 11:02:21 UTC 2019 - dead_mozay@opensuse.org
 -------------------------------------------------------------------
 Thu Oct  3 09:43:09 UTC 2019 - Dead Mozay <dead_mozay@opensuse.org>
 
-- Initial package 
+- Initial package
