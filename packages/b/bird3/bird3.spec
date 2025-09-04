@@ -17,7 +17,7 @@
 
 %define bird_runtimedir %{_rundir}/bird
 Name:           bird3
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        The BIRD Internet Routing Daemon
 License:        GPL-2.0-or-later
