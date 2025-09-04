@@ -52,6 +52,8 @@ Patch1:         extend-test-timeout-on-qemu-builds.patch
 Patch2:         14001.patch
 # PATCH-FIX-UPSTREAM https://github.com/mesonbuild/meson/pull/14580
 Patch3:         reproducible.patch
+# PATCH-FIX-UPSTREAM -- rpm macros do not allow to override verbosity
+Patch4:         meson-issue-15992.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

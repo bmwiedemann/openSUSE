@@ -1117,4 +1117,14 @@ Smoketest in GNOME:Next passed</comment>
     <comment></comment>
     <requestid>1301220</requestid>
   </revision>
+  <revision rev="131" vrev="2">
+    <srcmd5>443f2924a0967bb8e18badab02d20d76</srcmd5>
+    <version>1.9.0</version>
+    <time>1757001533</time>
+    <user>anag_factory</user>
+    <comment>- Add meson-issue-15992.patch: allow packagers and obs projects to
+  toggle verbosity of the meson commands (__meson_verbose 0|1).
+</comment>
+    <requestid>1302650</requestid>
+  </revision>
 </revisionlist>
