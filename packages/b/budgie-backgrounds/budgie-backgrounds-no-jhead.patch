@@ -1,0 +1,70 @@
+From 82067426f1dde366e9c9038fdbe457c2527525dd Mon Sep 17 00:00:00 2001
+From: Julius Enriquez <win8linux@gmail.com>
+Date: Thu, 22 May 2025 03:25:39 +0800
+Subject: [PATCH] Convert images to JXL, add submission format policy, drop
+ jhead dep (#59)
+
+* Use jxl format in mogrify, remove jhead dep
+
+* Use JXL as output format
+
+* README: Add base format policy for submissions
+---
+ README.md                      |  1 +
+ backgrounds/meson.build        |  3 +--
+ scripts/optimizeImage.sh       |  4 +---
+ 5 files changed, 23 insertions(+), 26 deletions(-)
+
+diff --git a/README.md b/README.md
+index 260f9ac..ca6e271 100644
+--- a/README.md
++++ b/README.md
+@@ -15,6 +15,7 @@ Below is a list of requirements that submissions must satisfy before they are re
+ 
+ - Must be licensed under CC0 or Public Domain. Specify which license the artwork is under.
+ - Image must be 3840x2160 or higher.
++- Image must be in the JPEG format; other formats may be considered in the future.
+ - If you are not the original author, you must provide the source: URL to the webpage hosting the image, direct download (if possible) to the image, name of author.
+ - No brand names, trademarks, or logos.
+ - No branding assets should be used as it should be assumed these works will be used across many installations of Budgie Desktop, regardless of the operating system.
+diff --git a/backgrounds/meson.build b/backgrounds/meson.build
+index 9396a5b..484ccfa 100644
+--- a/backgrounds/meson.build
++++ b/backgrounds/meson.build
+@@ -23,7 +23,6 @@ backgrounds = [
+ backgrounds_dir = join_paths(path_datadir, 'backgrounds', 'budgie')
+ 
+ mogrify = find_program('mogrify')
+-jhead = find_program('jhead')
+ 
+ script = find_program(join_paths(meson.source_root(), 'scripts', 'optimizeImage.sh'))
+ 
+@@ -31,7 +30,7 @@ optimized_background_targets = []
+ foreach background : backgrounds
+     optimized_background_targets += custom_target(background,
+         input: background,
+-        output: '@BASENAME@.jpg',
++        output: '@BASENAME@.jxl',
+         command: [script, '@INPUT@', '@OUTPUT@'],
+         install: true,
+         install_dir: backgrounds_dir
+diff --git a/scripts/optimizeImage.sh b/scripts/optimizeImage.sh
+index 7c96757..fb8bc48 100644
+--- a/scripts/optimizeImage.sh
++++ b/scripts/optimizeImage.sh
+@@ -5,7 +5,7 @@ OUTPUT="$2"
+ 
+ cp "$INPUT" "$OUTPUT" || exit 1
+ 
+-mogrify -format jpg "$OUTPUT" || exit 2
++mogrify -format jxl -strip "$OUTPUT" || exit 2
+ mogrify -resize 3840x2160^ "$OUTPUT" || exit 3
+ 
+ QUALITY=$(identify -format %Q  $OUTPUT) 
+@@ -13,5 +13,3 @@ QUALITY=$(identify -format %Q  $OUTPUT)
+ if [ $QUALITY -gt 90 ]; then
+     mogrify -quality 90 "$OUTPUT" || exit 4
+ fi
+-
+-jhead -autorot -de -di -du -c "$OUTPUT" || exit 5
+

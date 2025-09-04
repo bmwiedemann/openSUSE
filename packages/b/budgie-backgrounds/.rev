@@ -46,4 +46,15 @@
 </comment>
     <requestid>1167018</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>20dd460103e79b9669c3cb3f97818bba</srcmd5>
+    <version>3.0</version>
+    <time>1757001588</time>
+    <user>anag_factory</user>
+    <comment>- added patches [bsc#1243819]
+  https://github.com/BuddiesOfBudgie/budgie-backgrounds/commit/82067426f1dde366e9c9038fdbe457c2527525dd
+  + budgie-backgrounds-no-jhead.patch
+</comment>
+    <requestid>1302711</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package budgie-backgrounds
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,9 @@ License:        CC0-1.0
 Group:          System/GUI/Other
 URL:            https://github.com/BuddiesOfBudgie/budgie-backgrounds
 Source0:        %{name}-%{version}.tar.xz
+# https://github.com/BuddiesOfBudgie/budgie-backgrounds/commit/82067426f1dde366e9c9038fdbe457c2527525dd
+Patch0:         budgie-backgrounds-no-jhead.patch
 BuildRequires:  ImageMagick
-BuildRequires:  jhead
 BuildRequires:  meson
 BuildArch:      noarch
 
