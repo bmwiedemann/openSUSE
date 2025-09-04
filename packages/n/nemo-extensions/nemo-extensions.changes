@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 19 20:05:37 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Drop build requirement mhash-devel, no longer needed.
+
+-------------------------------------------------------------------
 Mon Jul 21 21:02:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build with gpgme >= 2.0.0 (boo#1246849), add

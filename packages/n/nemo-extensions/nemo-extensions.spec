@@ -35,7 +35,6 @@ BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  meld
 BuildRequires:  meson
-BuildRequires:  mhash-devel
 BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
 BuildRequires:  python3-distutils-extra
