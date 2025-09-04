@@ -5865,4 +5865,12 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
     <comment>chromium 140.0.7339.41 (early stable released 2025-08-27)</comment>
     <requestid>1301836</requestid>
   </revision>
+  <revision rev="477" vrev="1">
+    <srcmd5>efd9cb067be3544b08af26e0198a1622</srcmd5>
+    <version>140.0.7339.80</version>
+    <time>1757001550</time>
+    <user>anag_factory</user>
+    <comment>security update to chromium 140.0.7339.80 boo#1249093</comment>
+    <requestid>1302629</requestid>
+  </revision>
 </revisionlist>
