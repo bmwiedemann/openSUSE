@@ -1,7 +1,7 @@
 #
 # spec file for package freetds
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           freetds
-Version:        1.4.17
+Version:        1.4.27
 Release:        0
 Summary:        A free re-implementation of the TDS (Tabular Data Stream) protocol
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

@@ -411,4 +411,12 @@ License labeling issues should be fixed.  The (hopefully) LGPL libraries and GPL
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1180933</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b20d66dc6384d624c22d5242d92f7531</srcmd5>
+    <version>1.4.27</version>
+    <time>1757001535</time>
+    <user>anag_factory</user>
+    <comment>- version update to 1.4.27</comment>
+    <requestid>1302602</requestid>
+  </revision>
 </revisionlist>

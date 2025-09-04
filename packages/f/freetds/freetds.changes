@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Sep  2 09:35:45 UTC 2025 - pgajdos@suse.com
+
+- version update to 1.4.27
+  * dblib: Fix dbreadtext crash on NULL values
+  * fix signature mismatch for tds_convert_int1
+  * Merge fix for SQL_C_STINYINT
+  * odbc: Add test for SQL_C_STINYINT type
+  * Fix handling of SQL_C_STINYINT
+  * tds: Add support for SYBSINT1 type conversion
+  * Merge support for BLK_HINTS calling blk_props
+  * ctlib: Add support for setting hints for bulk copy 
+  * Make TDSBCPINFO::hint a DSTR
+  * Merge fix for connection to no Sybase servers
+  * Ignore query errors during connection initial setup
+  * tds_setup_connection: Further conditionalize queries by product.
+  * tds_setup_connection: Skip nvc/uvc check under OpenServer.
+  * pool: Ignore extension in login packet
+  * odbc: Fix bug cancelling not active statements
+  * Merge leak fix for odbc_parse_connect_string
+  * odbc: Reuse cleanup code parsing connection string, check for error
+  * odbc: Use tds_dstr_buf to retrieve internal string buffer
+  * odbc: Reuse code in connection_string_parse test
+  * odbc: Add test for connection string parsing
+  * tds_convert_to_binary: Don't leak allocations on syntax errors.
+  * _cs_convert: Cap binary/image copying to the destination length.
+- modified patches
+  % configure-return-void-fix.patch (refreshed)
+
+-------------------------------------------------------------------
 Fri Jun  7 14:02:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.17:
@@ -406,31 +435,31 @@ Fri Jul 15 21:19:35 UTC 2011 - crrodriguez@opensuse.org
 
 
 -------------------------------------------------------------------
-Thu May 13 00:00:00 UTC 2010 Matthias Eckermann <mge@arcor.de>
+Thu May 13 00:00:00 UTC 2010 - Matthias Eckermann <mge@arcor.de>
 
 - update to 0.83.dev.20100512
 
 
 -------------------------------------------------------------------
-Fri Feb 19 00:00:00 UTC 2010 Matthias Eckermann <mge@arcor.de>
+Fri Feb 19 00:00:00 UTC 2010 - Matthias Eckermann <mge@arcor.de>
 
 - update to 0.82.1.dev.20091223
 
 
 -------------------------------------------------------------------
-Thu May  8 00:00:00 UTC 2008 Matthias Eckermann <mge@arcor.de>
+Thu May  8 00:00:00 UTC 2008 - Matthias Eckermann <mge@arcor.de>
 
 - adopted for openSUSE buildservice
 
 
 -------------------------------------------------------------------
-Wed Mar 28 00:00:00 UTC 2007 Frediano Ziglio <freddy77@gmail.com>
+Wed Mar 28 00:00:00 UTC 2007 - Frediano Ziglio <freddy77@gmail.com>
 
 - removed libtdssrv
 
 
 -------------------------------------------------------------------
-Thu Sep 09 00:00:00 UTC 2004 Frediano Ziglio <freddy77@angelfire.com>
+Thu Sep 09 00:00:00 UTC 2004 - Frediano Ziglio <freddy77@angelfire.com>
 
 - remove dependency from freetds-unixodbc
 - fix field name (Copyright instead of License)
@@ -438,36 +467,36 @@ Thu Sep 09 00:00:00 UTC 2004 Frediano Ziglio <freddy77@angelfire.com>
 
 
 -------------------------------------------------------------------
-Sun Mar 30 21:19:35 UTC 2003 Frediano Ziglio <freddy77@angelfire.com>
+Sun Mar 30 21:19:35 UTC 2003 - Frediano Ziglio <freddy77@angelfire.com>
 
 - add reference to doc package
 
 
 -------------------------------------------------------------------
-Wed Feb  5 00:00:00 UTC 2003 Ian Grant <Ian.Grant@cl.cam.ac.uk>
+Wed Feb  5 00:00:00 UTC 2003 - Ian Grant <Ian.Grant@cl.cam.ac.uk>
 
 - 0.61 tweaked. Added libtdssrv libraries and tools in /usr/bin + man pages
 
 
 -------------------------------------------------------------------
-Sun Dec 30 21:19:35 UTC 2002 David Hollis <dhollis@davehollis.com>
+Sun Dec 30 21:19:35 UTC 2002 - David Hollis <dhollis@davehollis.com>
 
 - 0.60 tweaked.  Move .a & .la files to -devel package
 
 
 -------------------------------------------------------------------
-Thu Dec 20 00:00:00 UTC 2001 Brian Bruns <camber@ais.org>
+Thu Dec 20 00:00:00 UTC 2001 - Brian Bruns <camber@ais.org>
 
 - Modifications for 0.53 ver and removing interfaces file
 
 
 -------------------------------------------------------------------
-Wed Jun 28 00:00:00 UTC 2001 Brian Bruns <camber@ais.org>
+Wed Jun 28 00:00:00 UTC 2001 - Brian Bruns <camber@ais.org>
 
 - Modifications for 0.52 ver and ODBC drivers
 
 
 -------------------------------------------------------------------
-Wed Feb 14 00:00:00 UTC 2001 David Hollis <dhollis@emagisoft.com>
+Wed Feb 14 00:00:00 UTC 2001 - David Hollis <dhollis@emagisoft.com>
 
 - First stab at RPM for 0.51 ver
