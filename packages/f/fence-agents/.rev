@@ -1231,4 +1231,14 @@
   * fence_virtd: fix linkage of server modules (#624)</comment>
     <requestid>1288231</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>95490eb07a96327a777e17d6f6b1ef43</srcmd5>
+    <version>4.16.0+git.1755594293.5cf006ff</version>
+    <time>1757001576</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.16.0+git.1755594293.5cf006ff:
+  * fence_aws: Add new skip_os_shutdown flag (#632)
+  * fence_ibm_vpc: add apikey file support</comment>
+    <requestid>1302690</requestid>
+  </revision>
 </revisionlist>
