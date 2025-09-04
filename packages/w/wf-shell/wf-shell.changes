@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  4 04:36:34 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.10.0:
+  * fix(example): show proper way to change panel background color.
+  * Fix & refactor notifications.
+
+-------------------------------------------------------------------
 Mon Jan  6 00:26:01 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Changed pkgconfig(wlroots) to >= 0.17.0

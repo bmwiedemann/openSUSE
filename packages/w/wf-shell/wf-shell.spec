@@ -1,7 +1,7 @@
 #
 # spec file for package wf-shell
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,7 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define major_ver 0.9
+
+%define major_ver 0.10
 %define minor_ver 0
 Name:           wf-shell
 Version:        %{major_ver}.%{minor_ver}
@@ -30,6 +31,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  wlroots-devel >= 0.19.0
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
 BuildRequires:  pkgconfig(gtk-layer-shell-0)
@@ -39,7 +41,6 @@ BuildRequires:  pkgconfig(wayfire)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wf-config) >= %{major_ver}
-BuildRequires:  pkgconfig(wlroots) >= 0.17.0
 
 %description
 wf-shell is a repository which contains the various components needed to built a fully functional DE based around wayfire. Currently it has only a GTK-based panel and background client.
