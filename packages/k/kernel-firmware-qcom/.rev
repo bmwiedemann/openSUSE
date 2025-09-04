@@ -203,4 +203,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: add CDSP firmware for x1e80100 platform</comment>
     <requestid>1300897</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d85e2d2369269475fc131179121de8f1</srcmd5>
+    <version>20250903</version>
+    <time>1757001549</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250903 (git commit c784990ba3d2):
+  * qcom: add ADSP firmware for qcs615 platform</comment>
+    <requestid>1302686</requestid>
+  </revision>
 </revisionlist>
