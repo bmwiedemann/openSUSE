@@ -23,4 +23,12 @@
     <comment>disable the broken build for i586 (bsc#1246933)</comment>
     <requestid>1296153</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>40712f5b14025fba36cf1532a05f8e11</srcmd5>
+    <version>3.9.0</version>
+    <time>1757001588</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1302709</requestid>
+  </revision>
 </revisionlist>

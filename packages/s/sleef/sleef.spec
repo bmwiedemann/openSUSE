@@ -76,6 +76,9 @@ These are the development files for SLEEF.
 %define __builder ninja
 %cmake \
     -DCMAKE_BUILD_TYPE=Release \
+%ifarch aarch64
+    -DCOMPILER_SUPPORTS_SVE=OFF \
+%endif
     -DSLEEF_ENABLE_TLFLOAT=OFF
 %cmake_build
 

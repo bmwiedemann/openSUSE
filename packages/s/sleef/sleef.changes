@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 28 09:47:16 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable SVE on aarch64 to fix build
+
+-------------------------------------------------------------------
 Mon Jul 28 12:48:21 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Disable the broken build for i586 (bsc#1246933)
