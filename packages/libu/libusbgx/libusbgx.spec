@@ -1,7 +1,7 @@
 #
 # spec file for package libusbgx
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,15 @@
 #
 
 
-%define sover   2
+%define sover   3
 Name:           libusbgx
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        USB gadget device configuration library
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Kernel
 URL:            https://github.com/libusbgx/libusbgx
 Source:         https://github.com/libusbgx/libusbgx/archive/libusbgx-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-libusbgx-Fix-out-of-tree-compilation.patch
-Patch2:         0002-libusbgx-Fix-doc-build-with-new-doxygen-version.patch
-Patch3:         0003-libusbgx-fix-build-with-glibc-2.28-since-sys-sysmacr.patch
-Patch4:         0004-libusbgx-fix-without-libconfig-build-against-glibc-2.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -113,6 +108,9 @@ make %{?_smp_mflags} check
 %{_includedir}/%{name}/
 %{_libdir}/libusbgx.so
 %{_libdir}/pkgconfig/libusbgx.pc
+%dir %{_libdir}/cmake
+%dir %{_libdir}/cmake/LibUsbgx
+%{_libdir}/cmake/LibUsbgx/LibUsbgxConfig.cmake
 
 %files tools
 %license COPYING
