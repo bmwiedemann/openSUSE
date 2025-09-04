@@ -89,7 +89,7 @@ BuildRequires:  liberation-fonts
 BuildRequires:  libmtp-devel >= 1.1.21
 # Upstream use libopenssl-devel >= 3.1.7
 BuildRequires:  libopenssl-3-devel >= 3.1.4
-BuildRequires:  libpodofo-devel >= 0.10.3
+BuildRequires:  (libpodofo-0_10-devel >= 0.10.3 and libpodofo-0_10-devel < 1.0.0)
 BuildRequires:  libpoppler-devel >= 23.08.0
 BuildRequires:  libstemmer-devel >= 2.2.0
 BuildRequires:  libwmf-devel >= 0.2.8
