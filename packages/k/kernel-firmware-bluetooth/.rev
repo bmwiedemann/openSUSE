@@ -181,4 +181,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * Link rtl8723b_config.bin to rtl8723bs</comment>
     <requestid>1300893</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>71ccb635da48da9112adfa64f2a85def</srcmd5>
+    <version>20250903</version>
+    <time>1757001542</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250903 (git commit c784990ba3d2):
+  * rtl_bt: Update RTL8822C BT USB firmware to 0x2B66_D962</comment>
+    <requestid>1302680</requestid>
+  </revision>
 </revisionlist>
