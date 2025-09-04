@@ -170,4 +170,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * mediatek: Add MT8189 SCP firmware</comment>
     <requestid>1299819</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>82ff91426ca1b0f0fb8a38c67cd9dcfd</srcmd5>
+    <version>20250903</version>
+    <time>1757001547</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250903 (git commit 577ee67ffca2):
+  * linux-firmware: update firmware for MT7925 WiFi device
+  * mediatek MT7925:update bluetooth firmware to 20250825220109 Update binary firmware for MT7925 BT devices.</comment>
+    <requestid>1302685</requestid>
+  </revision>
 </revisionlist>
