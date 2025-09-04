@@ -117,4 +117,20 @@ After this PR, there will be a delete request for kernel-firmware.
   * intel_vpu: Update NPU firmware</comment>
     <requestid>1301474</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f75832a90f1b094219c54e424ec986ad</srcmd5>
+    <version>20250903</version>
+    <time>1757001543</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250903 (git commit c784990ba3d2):
+  * intel_vpu: Update NPU firmware
+
+- Update to version 20250829 (git commit 993ff19b553c):
+  * Fix link entry for qat_895xcc.bin
+
+- Update to version 20250829 (git commit 64596902d2db):
+  * Move QAT firmware to intel/ subdirectory
+  * Revert &quot;intel/ish: Add firmware for LENOVO THINKPAD X1 2-in-1 Gen 10&quot;</comment>
+    <requestid>1302682</requestid>
+  </revision>
 </revisionlist>
