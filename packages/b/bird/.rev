@@ -185,4 +185,14 @@
     <comment></comment>
     <requestid>1281767</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>030f227b2a609d44b6f9a49a7cf87375</srcmd5>
+    <version>2.17.2</version>
+    <time>1757001595</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.17.2
+  * ASPA check fix for AS_SET
+  * Invalid check fix in text_or_ipa grammar</comment>
+    <requestid>1302726</requestid>
+  </revision>
 </revisionlist>

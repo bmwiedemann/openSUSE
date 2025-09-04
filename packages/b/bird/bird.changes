@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep  4 08:28:24 UTC 2025 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- Update to version 2.17.2
+  * ASPA check fix for AS_SET
+  * Invalid check fix in text_or_ipa grammar
+
+-------------------------------------------------------------------
+Mon Jul  7 17:57:06 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- redownloaded tarballs
+
+-------------------------------------------------------------------
 Mon Jun  2 04:56:31 UTC 2025 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - redownload sources, seem like they changed a little
