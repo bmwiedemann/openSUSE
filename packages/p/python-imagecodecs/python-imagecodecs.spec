@@ -1,7 +1,7 @@
 #
 # spec file for package python-imagecodecs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-imagecodecs%{psuffix}
-Version:        2025.3.30
+Version:        2025.8.2
 Release:        0
 Summary:        Image transformation, compression, and decompression codecs
 License:        BSD-3-Clause
@@ -36,8 +36,8 @@ Source1:        imagecodecs_distributor_setup.py
 # PATCH-FIX-OPENSUSE Remove h5lookup tests that cause failed assertions
 Patch0:         no-length-assertion-aborts.patch
 ExcludeArch:    %ix86 %arm32 ppc s390
-BuildRequires:  %{python_module Cython >= 3.0.11}
-BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module Cython >= 3.1.0}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -105,7 +105,7 @@ BuildRequires:  pkgconfig(blosc2) >= 2.7.1
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(lcms2) >= 2.16
-BuildRequires:  pkgconfig(libavif) >= 1.0.0
+BuildRequires:  pkgconfig(libavif) >= 1.3.0
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(libheif)
 BuildRequires:  pkgconfig(libjxl) >= 0.9

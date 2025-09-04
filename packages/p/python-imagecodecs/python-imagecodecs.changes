@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep  3 07:58:08 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2025.8.2
+  * Pass 7339 tests.
+  * Fix szip_encode default output buffer might be too small (#128).
+  * Fix minor bugs in LZ4H5 codec (#127).
+  * Avoid grayscale-to-RGB conversions in AVIF codecs.
+  * Improve AVIF error messages.
+  * Add flag for free-threading compatibility (#113).
+  * Do not use zlib uncompress2, which is not available on manylinux.
+  * Do not build unstable BRUNSLI, PCODEC, SPERR, and SZ3 codecs.
+  * Require libavif >= 1.3 and Cython >= 3.1.
+  * Support Python 3.14 and 3.14t.
+  * Drop support for Python 3.10 and PyPy.
+
+-------------------------------------------------------------------
 Thu Apr  3 04:06:59 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2025.3.30:
