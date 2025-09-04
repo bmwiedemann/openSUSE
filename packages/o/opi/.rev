@@ -758,4 +758,18 @@
   * Add rustdesk plugin</comment>
     <requestid>1281865</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>880180e7214a2eafc9cb20455a7986d7</srcmd5>
+    <version>5.8.7</version>
+    <time>1757001581</time>
+    <user>anag_factory</user>
+    <comment>- Version 5.8.7
+  * Fix ocenaudio url
+  * Add LocalSend plugin
+  * Run all tests in verbose mode
+  * Print written repo files in verbose mode
+  * Increase timeouts in test/06_install_non_interactive.py
+  * Remove DNF references from README.md</comment>
+    <requestid>1302701</requestid>
+  </revision>
 </revisionlist>
