@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep  4 04:50:39 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.10.0:
+  * Fix typo in desktop file.
+  * Patch to add cli option for launching wcm directly to plugins.
+  * Use default app-id for .desktop file name.
+  * Do not bundle wdisplays by default for packaging reasons.
+  * Get rid of redundant wdisplays subproject.
+  * Don't show 'not found' icon for plugins without an icon. 
+
+-------------------------------------------------------------------
 Tue Jan  7 18:01:56 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -Denable_wldisplays=false to build.
