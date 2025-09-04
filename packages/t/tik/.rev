@@ -310,4 +310,13 @@
   * [15-encrypt] Populate /var in both encryption modes</comment>
     <requestid>1298911</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>5eb6a184fe84aedcd157a82567f39d23</srcmd5>
+    <version>1.3.17</version>
+    <time>1757001603</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.3.17:
+  * [15-encrypt] Add new tpm2-measure-pcr=yes crypttab opt for sdbootutil</comment>
+    <requestid>1302741</requestid>
+  </revision>
 </revisionlist>
