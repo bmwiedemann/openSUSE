@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Sep  4 13:32:56 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.1.6:
+  What's Changed
+  * build(deps): bump github.com/hashicorp/go-getter from 1.7.8 to
+    1.7.9 by @dependabot[bot] in #2139
+  * build(deps): bump github.com/zclconf/go-cty from 1.16.3 to
+    1.16.4 by @dependabot[bot] in #2145
+  * build: update helm to v3.18.6 by @yxxhero in #2144
+  * build(deps): bump github.com/stretchr/testify from 1.10.0 to
+    1.11.0 by @dependabot[bot] in #2150
+  * Add missing --timeout flag to helmfile sync command with
+    documentation by @Copilot in #2148
+  * Fix enableDNS flag missing in diff command and refactor
+    duplicate logic by @Copilot in #2147
+  * build(deps): bump github.com/stretchr/testify from 1.11.0 to
+    1.11.1 by @dependabot[bot] in #2151
+  * build(deps): bump github.com/ulikunitz/xz from 0.5.10 to 0.5.14
+    by @dependabot[bot] in #2154
+  * Bump github.com/ulikunitz/xz from v0.5.14 to v0.5.15 by @Copilot
+    in #2159
+  * build(deps): bump github.com/helmfile/vals from 0.42.0 to
+    0.42.1 by @dependabot[bot] in #2161
+  * build(deps): bump github.com/spf13/pflag from 1.0.7 to 1.0.9
+    by @dependabot[bot] in #2160
+  * build(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+    by @dependabot[bot] in #2162
+  * Fix error propagation in helmfile diff when Kubernetes is
+    unreachable by @Copilot in #2149
+
+-------------------------------------------------------------------
 Fri Aug 15 05:38:26 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.1.5:
