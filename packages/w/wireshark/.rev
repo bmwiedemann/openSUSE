@@ -2037,4 +2037,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment>wireshark 4.4.9</comment>
     <requestid>1302387</requestid>
   </revision>
+  <revision rev="239" vrev="2">
+    <srcmd5>3c39f1951004a70e81fc21ff70656850</srcmd5>
+    <version>4.4.9</version>
+    <time>1757001536</time>
+    <user>anag_factory</user>
+    <comment>wireshark 4.4.9: add references for SLE</comment>
+    <requestid>1302604</requestid>
+  </revision>
 </revisionlist>
