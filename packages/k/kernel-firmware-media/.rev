@@ -119,4 +119,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * firmware: qcom: Reorder VPU firmware entries in WHENCE</comment>
     <requestid>1301475</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>75afe7af7f58f5ca84d5b1c094473a94</srcmd5>
+    <version>20250903</version>
+    <time>1757001546</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250903 (git commit 577ee67ffca2):
+  * qcom: vpu: update firmware binaries to fix encoder drain handling</comment>
+    <requestid>1302684</requestid>
+  </revision>
 </revisionlist>

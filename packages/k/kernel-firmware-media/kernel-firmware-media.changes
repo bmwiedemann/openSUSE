@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  4 06:54:31 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250903 (git commit 577ee67ffca2):
+  * qcom: vpu: update firmware binaries to fix encoder drain handling
+
+-------------------------------------------------------------------
 Tue Aug 26 06:12:54 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250825 (git commit f044bc789f8e):
