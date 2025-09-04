@@ -1321,4 +1321,27 @@
     <comment></comment>
     <requestid>1302463</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>864db3eb9a1ba8d242ee2d8d9744fdcc</srcmd5>
+    <version>0.8.15</version>
+    <time>1757001592</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.15
+ * Enhancements
+  * Add uv auth commands for credential management 
+  * Add pyx support to uv auth commands 
+  * Add uv tree --show-sizes to show package sizes 
+  * Add --python-platform riscv64-unknown-linux 
+  * Add --python-platform to uv run and uv tool 
+  * Add uv publish --dry-run 
+  * Add zstandard support for wheels 
+  * Allow registries to pre-provide core metadata 
+  * Retry streaming Python and binary download errors 
+ * Bug fixes
+  * Fix settings rendering for extra-build-dependencies 
+  * Skip non-existent directories in bytecode compilation 
+ * Error messages
+  * Add error trace to invalid package format</comment>
+    <requestid>1302718</requestid>
+  </revision>
 </revisionlist>

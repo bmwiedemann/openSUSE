@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep  4 11:03:52 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.8.15
+ * Enhancements
+  * Add uv auth commands for credential management 
+  * Add pyx support to uv auth commands 
+  * Add uv tree --show-sizes to show package sizes 
+  * Add --python-platform riscv64-unknown-linux 
+  * Add --python-platform to uv run and uv tool 
+  * Add uv publish --dry-run 
+  * Add zstandard support for wheels 
+  * Allow registries to pre-provide core metadata 
+  * Retry streaming Python and binary download errors 
+ * Bug fixes
+  * Fix settings rendering for extra-build-dependencies 
+  * Skip non-existent directories in bytecode compilation 
+ * Error messages
+  * Add error trace to invalid package format 
+
+-------------------------------------------------------------------
 Tue Sep  2 14:56:39 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update vendor tarball to fix CVE-2025-58160 (bsc#1249011) 
