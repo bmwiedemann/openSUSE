@@ -62,4 +62,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * ath11k: WCN6855 hw2.0@nfa765: add to WLAN.HSP.1.1-04685-QCAHSPSWPL_V1_V2_SILICONZ_IOE-1</comment>
     <requestid>1300892</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a246d773ca9999a5c7bb5abf8f9b968b</srcmd5>
+    <version>20250829</version>
+    <time>1757001539</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250829 (git commit 64596902d2db):
+  * ath11k: Support WCN6855 hw2.1 with NFA firmware variant</comment>
+    <requestid>1302678</requestid>
+  </revision>
 </revisionlist>
