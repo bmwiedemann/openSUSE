@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Aug 27 08:40:20 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Rename binaries/man-files that may conflict with those from
+  other packages: mtst -> mtst-scotch, gpart -> gpart-scotch.
+- Pass `--parallel` to %ctest to avoid conditionally
+  re/un-defining smp_mflags.
+
+-------------------------------------------------------------------
+Tue Jul 22 16:55:52 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 7.0.8:
+  * Undocumented bug fixes.
+- Changes from version 7.0.0 through 7.0.7:
+  * See release highlights at
+    https://gitlab.inria.fr/scotch/scotch/-/tags
+- Use cmake for builds; implies dropping of additional source
+  scotch-Makefile.inc.in).
+- Use -D_FORTIFY_SOURCE=2 instead of oS Factory default of 3; this
+  fixes several test failures and is as recommended by upstream
+  (see
+  https://gitlab.inria.fr/scotch/scotch/-/blob/master/INSTALL.txt)
+- Build without rpath support to avoid rpaths in final binaries.
+  This is as the upstream default, but our cmake macro defaults to
+  `CMAKE_SKIP_RPATH=OFF`, so we pass the option to turn in on
+  explicitly.
+- Run tests as part of %check, but do not run them in parallel,
+  see https://gitlab.inria.fr/scotch/scotch/-/issues/50.
+- Disable testing for mvapich2 flavour, whose initialisation seems
+  to be broken in :Factory.
+- Remove `-Wl,no-undefined` from linker flags in cmake macro, as
+  builds fail with `undefined reference` errors when linking
+  otherwise.
+- Bump so version in shared lib name.
+- No more upstream support for static libraries, drop
+  -devel-static package.
+
+-------------------------------------------------------------------
 Mon Mar 24 13:19:29 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Disable and remove support for gnu-hpc build flavours (bsc#1239982)

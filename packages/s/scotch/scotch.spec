@@ -1,7 +1,7 @@
 #
 # spec file for package scotch
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define base_pname scotch
-%define so_ver 0
+%define so_ver 7_0
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
 %if "%{flavor}" == ""
@@ -34,6 +34,13 @@ ExclusiveArch:  do_not_build
 
 %if "%{flavor}" == "openmpi5"
 ExcludeArch:    %{ix86} %{arm}
+%endif
+
+# mvapich2 seems to be broken in :Factory, causing tests to fail
+%if "%{flavor}" == "mvapich2" && 0%{?suse_version} > 1650
+%bcond_with tests
+%else
+%bcond_without tests
 %endif
 
 %bcond_without mumps
@@ -73,22 +80,21 @@ Summary:        Graph, mesh and hypergraph partitioning library
 License:        CECILL-C
 Group:          Productivity/Scientific/Math
 Name:           %{package_name}
-Version:        6.1.0
+Version:        7.0.8
 Release:        0
 URL:            https://gitlab.inria.fr/scotch/scotch
 Source0:        https://gitlab.inria.fr/scotch/scotch/-/archive/v%{version}/%{base_pname}-v%{version}.tar.gz
-Source1:        scotch-Makefile.inc.in
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  bison
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-BuildRequires:  libbz2-devel
 BuildRequires:  make
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(zlib)
  %if %{with mpi}
 BuildRequires:  %{mpi_flavor}-devel
  %endif
@@ -146,82 +152,51 @@ This package contains the devel libraries and header file in the case
 scotch is used as a replacement of the metis library.
 
 %prep
-%setup -q -n scotch-v%{version}
-cp %SOURCE1 src/Makefile.inc
+%autosetup -n scotch-v%{version}
 
 %build
 export CC=gcc
 %{?with_mpi:source %{my_bindir}/mpivars.sh}
 %{?with_mpi:export CC=mpicc}
 
-export SUSE_ASNEEDED=0
+# Must not be compiled with -D_FORTIFY_SOURCE=3, see
+# https://gitlab.inria.fr/scotch/scotch/-/blob/master/INSTALL.txt
+export RPMOPTFLAGS="%(echo '%{optflags}' | sed 's/-D_FORTIFY_SOURCE=3/-D_FORTIFY_SOURCE=2/')"
+%global optflags $RPMOPTFLAGS
 
-%define CCP mpicc
-%define CCD mpicc
-%define CFLAGS %{optflags} -fPIC -O3 -Drestrict=__restrict -DCOMMON_FILE_COMPRESS_GZ -DCOMMON_PTHREAD -DCOMMON_RANDOM_FIXED_SEED -DSCOTCH_DETERMINISTIC -DSCOTCH_RENAME
-%define LDFLAGS -pie -pthread -lz -lbz2 -lm -lrt
-cd src/
-make %{?_smp_mflags} %{pname} %{?with_mumps:%{?pt_pref}esmumps} CFLAGS="%CFLAGS" LDFLAGS="%LDFLAGS" CC=$CC CCP=%CCP CCD=%CCD
-$CC %{LDFLAGS} -shared -Wl,-soname=lib%{pname}err.so.0 -o ../lib/lib%{pname}err.so.0.0	\
-	libscotch/library_error.o
-$CC %{LDFLAGS} -shared -Wl,-soname=lib%{pname}errexit.so.0 -o	\
-	../lib/lib%{pname}errexit.so.0.0	libscotch/library_error_exit.o
-rm -f libscotch/library_error*.o
-$CC %{LDFLAGS} -shared -Wl,-soname=lib%{pname}.so.0 -o ../lib/lib%{pname}.so.0.0	\
-	libscotch/*.o ../lib/lib%{pname}err.so.0.0 -lpthread -lgfortran -lz -lrt
-$CC %{LDFLAGS} -shared -Wl,-soname=lib%{pname}%{metis}.so.0 -o ../lib/lib%{pname}%{metis}.so.0.0\
-	libscotchmetis/*.o ../lib/lib%{pname}.so.0.0 ../lib/lib%{pname}err.so.0.0 -lz -lm -lrt
-%if %{with mumps}
-$CC %{LDFLAGS} -shared -Wl,-soname=lib%{?pt_pref}esmumps.so.0 -o ../lib/lib%{?pt_pref}esmumps.so.0.0	\
-	esmumps/*.o
-%endif
-cd ..
+# Note: We need to re-define the linker flag options to cmake because
+# compilation fails with `-Wl,no-undefined`, passed as part of cmake macro
+%cmake \
+  -DCMAKE_INSTALL_PREFIX=%{my_prefix} \
+  -DBUILD_LIBESMUMPS=%{?with_mumps:ON}%{!?with_mumps:OFF} \
+  -DBUILD_PTSCOTCH=%{?with_mpi:ON}%{!?with_mpi:OFF} \
+  -DBUILD_LIBSCOTCHMETIS=ON \
+  -DCMAKE_SKIP_RPATH=ON \
+  -DCMAKE_EXE_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now" \
+  -DCMAKE_MODULE_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now" \
+  -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now" \
+  -DENABLE_TESTS=%{?with_tests:ON}%{!?with_tests:OFF} \
+  %{nil}
+%cmake_build
 
 %install
-export CC=gcc
 %{?with_mpi:source %{my_bindir}/mpivars.sh}
 %{?with_mpi:export CC=mpicc}
 
-pushd src/
-make install prefix=%{buildroot}%{my_prefix} libdir=%{buildroot}%{my_libdir}
-popd
-for static_libs in lib/lib%{pname}*.a %{?with_mumps:lib/lib%{?pt_pref}esmumps.a}; do
-	libs=`basename $static_libs .a`
-	ln -s $libs.so.0.0 lib/$libs.so.0
-	ln -s $libs.so.0.0 lib/$libs.so
-done
-pushd %{buildroot}%{my_libdir}
-ln -s lib%{?pt_pref}scotch%{metis}.a lib%{metis}.a
-ln -s lib%{?pt_pref}scotch%{metis}.so lib%{metis}.so
-%if %{with mpi}
-	# We create link in order to have the serial libs available in the
-	# same directory as the parallel libs. A lot of software using scotch
-        # can't manage different dirs for serial and parallel files during
-	# their build process.
-	for libs in libscotch libscotcherr libscotcherrexit libscotchmetis %{?with_mumps:libesmumps} ; do
-		ln -sf %{_libdir}/$libs.so $libs.so
-		ln -sf %{_libdir}/$libs.so.%{so_ver} $libs.so.%{so_ver}
-		ln -sf %{_libdir}/$libs.so.%{so_ver}.0 $libs.so.%{so_ver}.0
-	done
-%endif
-popd
+%cmake_install
+
 %if %{without mpi}
-# Add "scotch_" prefix to binaries and man pages to avoid name conficts
-pushd %{buildroot}%{my_bindir}
-for prog in *; do
-    mv $prog scotch_${prog}
-    chmod 755 scotch_$prog
+# Rename conflicting or confusing binaries/man-files:
+# * Package `mt-st` also provides `/usr/bin/mtst` and its man file; rename to avoid conflict
+# * Package `gpart` installs `/usr/sbin/gpart`; rename to avoid confusion (no conflict)
+# re-named so that, e.g. mtst<TAB> completes the binary name when in PATH
+for exe in mtst gpart;
+do
+  mv %{buildroot}%{_bindir}/${exe} %{buildroot}%{_bindir}/${exe}-scotch
 done
-popd
-pushd %{buildroot}%{my_mandir}/man1/
-for man in *; do
-    mv ${man} scotch_${man}
-done
-popd
-%endif # without mpi
-cp -dp lib/lib*scotch*.so* %{?with_mumps:lib/lib*esmumps.*} %{buildroot}%{my_libdir}/
-%{?with_mumps:cp include/esmumps.h %{buildroot}%{my_incdir}/}
-cp src/libscotchmetis/%{metis}.h %{buildroot}%{my_incdir}/
+mv %{buildroot}%{_mandir}/man1/mtst.1 %{buildroot}%{_mandir}/man1/mtst-scotch.1
+# /Section
+%endif
 
 # Convert the license files to utf8
 pushd doc
@@ -234,9 +209,21 @@ popd
 %fdupes %{buildroot}%{my_bindir}
 %fdupes %{buildroot}%{my_mandir}
 
+# Section Tests
+%if %{with tests}
+%check
+%{?with_mpi:source %{my_bindir}/mpivars.sh}
+%{?with_mpi:export CC=mpicc}
+
+# Checks are un-reliable when run in parallel, see https://gitlab.inria.fr/scotch/scotch/-/issues/50
+export LD_LIBRARY_PATH+=:%{buildroot}%{my_libdir}
+%ctest --parallel 1
+
+%endif
+# /Section Tests
+
 %if %{without mpi}
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 %else
 
 # MPI package install to non-standard locations: don't update cache
@@ -255,9 +242,9 @@ popd
 
 %files -n %{libname}
 %{my_libdir}/libscotch.so.*
+%{my_libdir}/libscotchmetis*.so.*
 %{my_libdir}/libscotcherr.so.*
 %{my_libdir}/libscotcherrexit.so.*
-%{my_libdir}/libscotchmetis.so.*
 %if %{with mumps}
 %{my_libdir}/libesmumps.so.*
 %endif
@@ -265,48 +252,28 @@ popd
 %{my_libdir}/libptscotch.so.*
 %{my_libdir}/libptscotcherr.so.*
 %{my_libdir}/libptscotcherrexit.so.*
-%{my_libdir}/libptscotchparmetis.so.*
+%{my_libdir}/libptscotchparmetis*.so.*
 %{?with_mumps:%{my_libdir}/libptesmumps.so.*}
 %endif
 
 %files devel
 %{my_libdir}/libscotch.so
+%{my_libdir}/libscotchmetis*.so
 %{my_libdir}/libscotcherr.so
 %{my_libdir}/libscotcherrexit.so
-%{my_libdir}/libscotchmetis.so
+%{my_libdir}/cmake/scotch/
 %if %{with mumps}
 %{my_libdir}/libesmumps.so
 %endif
 %if %{with mpi}
+%dir %{my_libdir}/cmake
 %{my_libdir}/libptscotch.so
 %{my_libdir}/libptscotcherr.so
 %{my_libdir}/libptscotcherrexit.so
-%{my_libdir}/libptscotchparmetis.so
+%{my_libdir}/libptscotchparmetis*.so
 %{?with_mumps:%{my_libdir}/libptesmumps.so}
 %endif
 %{my_incdir}/*.h
 %exclude %{my_incdir}/%{metis}.h
-
-%files -n %{pname}-%{metis}%{?my_suffix}-devel
-%{my_libdir}/lib%{metis}.so
-%{my_incdir}/%{metis}.h
-
-%files devel-static
-%{my_libdir}/libscotch.a
-%{my_libdir}/libscotcherr.a
-%{my_libdir}/libscotcherrexit.a
-%{my_libdir}/libscotchmetis.a
-%if %{with mpi}
-%{my_libdir}/libptscotch.a
-%{my_libdir}/libptscotcherr.a
-%{my_libdir}/libptscotcherrexit.a
-%{my_libdir}/libptscotchparmetis.a
-%{my_libdir}/libparmetis.a
-%else
-%{my_libdir}/libmetis.a
-%endif
-%if %{with mumps}
-%{my_libdir}/lib%{?pt_pref}esmumps.a
-%endif
 
 %changelog
