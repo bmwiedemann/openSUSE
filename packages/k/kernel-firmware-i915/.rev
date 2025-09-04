@@ -116,4 +116,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * i915: Xe3LPD DMC v2.29</comment>
     <requestid>1296569</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1eaba9f49c067c2dfe1d3f91d8d76dca</srcmd5>
+    <version>20250903</version>
+    <time>1757001542</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250903 (git commit c784990ba3d2):
+  * xe: Update GUC to v70.49.4 for BMG, LNL, PTL
+  * i915: Update GUC to v70.49.4 for ADL-P, DG1, DG2, MTL, TGL</comment>
+    <requestid>1302681</requestid>
+  </revision>
 </revisionlist>

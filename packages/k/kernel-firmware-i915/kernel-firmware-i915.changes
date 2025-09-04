@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  3 15:22:23 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250903 (git commit c784990ba3d2):
+  * xe: Update GUC to v70.49.4 for BMG, LNL, PTL
+  * i915: Update GUC to v70.49.4 for ADL-P, DG1, DG2, MTL, TGL
+
+-------------------------------------------------------------------
 Wed Jul 30 10:52:41 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250730 (git commit 910c19074091):
