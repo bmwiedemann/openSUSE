@@ -1,0 +1,24 @@
+update_checker isn't packaged for openSUSE and last release > 5 years
+Index: gitlabci_local-13.0.1/requirements/runtime.txt
+===================================================================
+--- gitlabci_local-13.0.1.orig/requirements/runtime.txt
++++ gitlabci_local-13.0.1/requirements/runtime.txt
+@@ -8,4 +8,3 @@ PyYAML>=6.0
+ questionary>=2.0.1
+ requests>=2.26.0
+ setuptools>=45.1.0
+-update_checker>=0.18.0
+Index: gitlabci_local-13.0.1/src/cli/main.py
+===================================================================
+--- gitlabci_local-13.0.1.orig/src/cli/main.py
++++ gitlabci_local-13.0.1/src/cli/main.py
+@@ -465,8 +465,7 @@ def main() -> None:
+ 
+     # Check for current updates
+     if options.update_check:
+-        if not updates.check():
+-            updates.check(older=True)
++        print("Not supported")
+         sys_exit(0)
+ 
+     # CLI entrypoint

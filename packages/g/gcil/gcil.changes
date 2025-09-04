@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Tue Sep  2 11:42:55 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Initial package of gcil 13.0.1 for openSUSE
+- Add gcil-no-update.patch to remove checking for updates
