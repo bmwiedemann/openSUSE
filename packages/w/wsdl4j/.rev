@@ -192,4 +192,12 @@
     <comment>License fix</comment>
     <requestid>1245549</requestid>
   </revision>
+  <revision rev="27" vrev="14">
+    <srcmd5>0e7cb1f29d4c152d56a79f5be69b1197</srcmd5>
+    <version>1.6.3</version>
+    <time>1757101432</time>
+    <user>anag_factory</user>
+    <comment>Do not require the jaxp_parser_impl, but xerces-j2 directly</comment>
+    <requestid>1302876</requestid>
+  </revision>
 </revisionlist>

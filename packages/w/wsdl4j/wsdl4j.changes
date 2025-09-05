@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  5 07:04:29 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Do not require the jaxp_parser_impl, but xerces-j2 directly
+
+-------------------------------------------------------------------
 Thu Feb 13 06:52:45 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Fix license: IPL-1.0 -> CPL-1.0

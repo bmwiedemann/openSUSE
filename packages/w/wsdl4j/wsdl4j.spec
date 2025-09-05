@@ -31,7 +31,7 @@ BuildRequires:  javapackages-local >= 6
 BuildRequires:  unzip
 BuildRequires:  xml-apis
 Requires:       java
-Requires:       jaxp_parser_impl
+Requires:       xerces-j2
 BuildArch:      noarch
 
 %description

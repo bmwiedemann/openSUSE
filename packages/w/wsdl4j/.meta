@@ -4,5 +4,4 @@
 the creation, representation, and manipulation of WSDL documents
 describing services.  This codebase will eventually serve as a
 reference implementation of the standard created by JSR110.</description>
-  <devel project="Java:packages" package="wsdl4j"/>
 </package>
