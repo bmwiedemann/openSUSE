@@ -17,6 +17,7 @@
 
 
 %define oldpython python
+%bcond_without libalternatives
 Name:           python-bugzillatools
 Version:        0.5.5
 Release:        0
@@ -35,16 +36,16 @@ Patch2:         python312.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       alts
 # We want to conflict even package literally called python-bugzilla
 # without the python version number
 Conflicts:      %{oldpython}-bugzilla
 #Recommends:     bzr
-# File conflict for /usr/bin/bugzilla:
-Conflicts:      python-bugzilla
+# File conflict for /usr/bin/bugzilla with all lang flavours:
+Conflicts:      %{python_module bugzilla}
 BuildArch:      noarch
 %python_subpackages
 
@@ -69,11 +70,8 @@ sed -i "/.bugzillarc.sample/d" setup.py
 %check
 %pyunittest
 
-%post
-%python_install_alternative bugzilla
-
-%postun
-%python_uninstall_alternative bugzilla
+%pre
+%python_libalternatives_reset_alternative bugzilla
 
 %files %{python_files}
 %doc CHANGES README.rst gpl-3.0.txt
