@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  5 12:58:18 UTC 2025 - Sai Karthik Karra <kskarthik@disroot.org>
+
+- spec: mv web-browser to Suggests so that the user need not explicitely invoke the zypper --recommends flag
+
+-------------------------------------------------------------------
 Mon Jun 23 07:02:54 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.40:

@@ -1,7 +1,7 @@
 #
 # spec file for package newsboat
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,7 @@ BuildRequires:  sqlite3-devel >= 3.5
 BuildRequires:  zlib-devel
 BuildRequires:  rubygem(asciidoctor)
 Recommends:     %{name}-lang
-Recommends:     web_browser
+Suggests:       web_browser
 Provides:       newsbeuter = %{version}
 Obsoletes:      newsbeuter <= 2.9
 

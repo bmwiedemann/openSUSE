@@ -1199,4 +1199,12 @@ run -osc service localrun format_spec_file to fix copyright
     don't have a URL</comment>
     <requestid>1287855</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>badbc9b69c7fd4fcae7fc3792a3f8f6d</srcmd5>
+    <version>2.40</version>
+    <time>1757101479</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1302937</requestid>
+  </revision>
 </revisionlist>
