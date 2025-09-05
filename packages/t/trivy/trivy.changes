@@ -83,7 +83,8 @@ Wed Jul  9 15:48:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Jul 09 15:17:39 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
-- Update to version 0.64.1 (bsc#1243633, CVE-2025-47291):
+- Update to version 0.64.1 (bsc#1243633, CVE-2025-47291,
+                           (bsc#1246730, CVE-2025-46569):
   * release: v0.64.1 [release/v0.64] (#9122)
   * fix(misconf): skip rewriting expr if attr is nil [backport: release/v0.64] (#9127)
   * fix(cli): Add more non-sensitive flags to telemetry [backport: release/v0.64] (#9124)
