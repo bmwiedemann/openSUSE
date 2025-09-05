@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep  5 11:44:58 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-libsanitizer-termio.patch, removing uses of termio from
+  libsanitizer to fix build with glibc 2.24
+
+-------------------------------------------------------------------
+Mon Aug 25 08:29:44 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-pr81103.patch, removing uses of termio.h to fix Ada build
+  with glibc 2.42
+
+-------------------------------------------------------------------
 Thu Jul 17 09:26:06 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Fixup conflicts again. 

@@ -713,4 +713,16 @@ This is in preparation of Pointer Authentication enablement in Tumbleweed. (forw
     <comment>- Fixup conflicts again.</comment>
     <requestid>1294073</requestid>
   </revision>
+  <revision rev="48" vrev="23">
+    <srcmd5>8b886933e67251f6d1b0a37be2b3dda4</srcmd5>
+    <version>7.5.0+r278197</version>
+    <time>1757101473</time>
+    <user>anag_factory</user>
+    <comment>- Add gcc7-libsanitizer-termio.patch, removing uses of termio from
+  libsanitizer to fix build with glibc 2.24
+
+- Add gcc7-pr81103.patch, removing uses of termio.h to fix Ada build
+  with glibc 2.42</comment>
+    <requestid>1302934</requestid>
+  </revision>
 </revisionlist>
