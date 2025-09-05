@@ -11,18 +11,14 @@ correct value of TCGETS aka _IOR('t', 19, struct termios).
 diff --git a/src/seccomp.c b/src/seccomp.c
 --- a/src/seccomp.c
 +++ b/src/seccomp.c
-@@ -33,9 +33,13 @@ FILE_RCSID("@(#)$File: seccomp.c,v 1.29
+@@ -33,9 +33,9 @@ FILE_RCSID("@(#)$File: seccomp.c,v 1.29
  #if HAVE_LIBSECCOMP
  #include <seccomp.h> /* libseccomp */
  #include <sys/prctl.h> /* prctl */
 -#include <sys/ioctl.h>
  #include <sys/socket.h>
 -#include <termios.h>
-+#ifdef __powerpc64__
-+# include <asm/termbits.h>
-+#else
-+# include <termios.h>
-+#endif
++#include <asm/termbits.h>
 +#include <sys/ioctl.h>
  #include <fcntl.h>
  #include <stdlib.h>

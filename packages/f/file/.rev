@@ -1748,4 +1748,16 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
     based on https://github.com/file/file/commit/60b2032b96fc185b37fb0f2152e834efb2edad6e (forwarded request 1279890 from munix9)</comment>
     <requestid>1279982</requestid>
   </revision>
+  <revision rev="143" vrev="5">
+    <srcmd5>efa6b36cb4639265924ea121e1dc64ba</srcmd5>
+    <version>5.46</version>
+    <time>1757101360</time>
+    <user>anag_factory</user>
+    <comment>- Add patch file-5.46-tcgets2.patch from https://bugs.astron.com/view.php?id=678
+  but disable hunk 1 to avoid conflict with file-seccomp-ppc.patch
+  This should fix bug boo#1249071 
+- Modify patch file-seccomp-ppc.patch that is use &lt;asm/termbits.h&gt;
+  on all architectures</comment>
+    <requestid>1302713</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep  4 09:29:33 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch file-5.46-tcgets2.patch from https://bugs.astron.com/view.php?id=678
+  but disable hunk 1 to avoid conflict with file-seccomp-ppc.patch
+  This should fix bug boo#1249071 
+- Modify patch file-seccomp-ppc.patch that is use <asm/termbits.h>
+  on all architectures
+
+-------------------------------------------------------------------
 Sun May 25 06:23:18 UTC 2025 - munix9@googlemail.com
 
 - Add file-zipdata.patch
