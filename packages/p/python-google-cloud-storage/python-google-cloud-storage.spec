@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-storage
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-storage%{pkg_suffix}
-Version:        3.1.0
+Version:        3.3.1
 Release:        0
 Summary:        Google Cloud Storage API python client library
 License:        Apache-2.0
@@ -45,10 +45,10 @@ BuildRequires:  python-rpm-macros
 Requires:       python-google-api-core >= 2.15.0
 Requires:       python-google-auth >= 2.26.1
 Requires:       python-google-cloud-core >= 2.4.2
-Requires:       python-google-crc32c >= 1.0
+Requires:       python-google-crc32c >= 1.1.3
 Requires:       python-google-resumable-media >= 2.7.2
 Requires:       python-googleapis-common-protos
-Requires:       python-requests >= 2.18.0
+Requires:       python-requests >= 2.22.0
 BuildArch:      noarch
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-google-cloud-storage < %{version}
@@ -58,13 +58,15 @@ Obsoletes:      python3-google-cloud-storage < %{version}
 BuildRequires:  %{python_module google-api-core >= 2.15.0}
 BuildRequires:  %{python_module google-auth >= 2.26.1}
 BuildRequires:  %{python_module google-cloud-core >= 2.4.2}
+BuildRequires:  %{python_module google-cloud-iam}
 BuildRequires:  %{python_module google-cloud-storage}
-BuildRequires:  %{python_module google-crc32c >= 1.0}
+BuildRequires:  %{python_module google-crc32c >= 1.1.3}
 BuildRequires:  %{python_module google-resumable-media >= 2.7.2}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests >= 2.18.0}
+BuildRequires:  %{python_module requests >= 2.22.0}
 %endif
 # /SECTION
 %python_subpackages
@@ -119,6 +121,7 @@ export GOOGLE_CLOUD_PROJECT="PROJECT"
 %dir %{python_sitelib}/google
 %dir %{python_sitelib}/google/cloud
 %{python_sitelib}/google/cloud/storage
+%{python_sitelib}/google/cloud/storage_v2
 %{python_sitelib}/google_cloud_storage-%{version}*-info
 %endif
 
