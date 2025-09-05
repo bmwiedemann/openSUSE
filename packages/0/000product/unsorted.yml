@@ -3828,6 +3828,7 @@ unsorted:
   - extension-manager 
   - extension-manager-lang 
   - extest 
+  - extest-32bit 
   - extra166y 
   - extra166y-javadoc 
   - extrace 
@@ -4862,6 +4863,7 @@ unsorted:
   - gccmakedep 
   - gcdemu 
   - gcdemu-lang 
+  - gcil 
   - gcin-anthy 
   - gcin-branding-upstream 
   - gcolor2 
@@ -15276,7 +15278,9 @@ unsorted:
   - libpocl-devices-levelzero 
   - libpocl-devices-tbb 
   - libpocl2 
+  - libpodofo-0_10-devel 
   - libpodofo-devel 
+  - libpodofo2 
   - libpodofo3 
   - libpoke1 
   - libpolkit-agent-1-0-32bit 
@@ -15360,10 +15364,10 @@ unsorted:
   - libpsx2-32bit 
   - libptexenc1 
   - libptl2 
-  - libptscotch0-mpich 
-  - libptscotch0-mvapich2 
-  - libptscotch0-openmpi4 
-  - libptscotch0-openmpi5 
+  - libptscotch7_0-mpich 
+  - libptscotch7_0-mvapich2 
+  - libptscotch7_0-openmpi4 
+  - libptscotch7_0-openmpi5 
   - libptytty-devel 
   - libptytty0 
   - libpugixml1 
@@ -15965,7 +15969,7 @@ unsorted:
   - libschroedinger-1_0-0-32bit 
   - libscintilla-devel 
   - libscintilla5 
-  - libscotch0 
+  - libscotch7_0 
   - libscrypt-devel 
   - libscrypt0 
   - libscrypt0-x86-64-v3 
@@ -16631,7 +16635,7 @@ unsorted:
   - libusbguard1 
   - libusbgx-devel 
   - libusbgx-tools 
-  - libusbgx2 
+  - libusbgx3 
   - libusbmuxd-2_0-7-32bit 
   - libusbmuxd-devel 
   - libusbmuxd-tools 
@@ -20583,7 +20587,6 @@ unsorted:
   - ovn-docker 
   - ovn-host 
   - ovn-vtep 
-  - ovpn-dco-kmp-default 
   - owasp-modsecurity-crs 
   - owasp-modsecurity-crs-apache2 
   - owncloud-client 
@@ -22889,6 +22892,7 @@ unsorted:
   - podman-docker 
   - podman-remote 
   - podmansh 
+  - podofo-0_10 
   - poedit 
   - poedit-lang 
   - poezio 
@@ -23304,20 +23308,12 @@ unsorted:
   - ptpd 
   - ptscotch-mpich 
   - ptscotch-mpich-devel 
-  - ptscotch-mpich-devel-static 
   - ptscotch-mvapich2 
   - ptscotch-mvapich2-devel 
-  - ptscotch-mvapich2-devel-static 
   - ptscotch-openmpi4 
   - ptscotch-openmpi4-devel 
-  - ptscotch-openmpi4-devel-static 
   - ptscotch-openmpi5 
   - ptscotch-openmpi5-devel 
-  - ptscotch-openmpi5-devel-static 
-  - ptscotch-parmetis-mpich-devel 
-  - ptscotch-parmetis-mvapich2-devel 
-  - ptscotch-parmetis-openmpi4-devel 
-  - ptscotch-parmetis-openmpi5-devel 
   - ptyxis 
   - ptyxis-lang 
   - pueue 
@@ -26833,6 +26829,7 @@ unsorted:
   - python311-qtwebengine-qt5-devel 
   - python311-quantities 
   - python311-quart-trio 
+  - python311-questionary 
   - python311-queuelib 
   - python311-quicktions 
   - python311-quimb 
@@ -30621,6 +30618,7 @@ unsorted:
   - python312-qtwebengine-qt5-devel 
   - python312-quantities 
   - python312-quart-trio 
+  - python312-questionary 
   - python312-queuelib 
   - python312-quicktions 
   - python312-quimb 
@@ -34352,6 +34350,7 @@ unsorted:
   - python313-qtwebengine-qt5-devel 
   - python313-quantities 
   - python313-quart-trio 
+  - python313-questionary 
   - python313-queuelib 
   - python313-quicktions 
   - python313-quimb 
@@ -36805,8 +36804,6 @@ unsorted:
   - scons 
   - scotch 
   - scotch-devel 
-  - scotch-devel-static 
-  - scotch-metis-devel 
   - scream 
   - screen-message 
   - screencast 
@@ -48863,6 +48860,7 @@ unsorted:
   - wayclip 
   - wayfire 
   - wayfire-devel 
+  - wayfire-plugins-extra 
   - wayland-devel 
   - wayland-devel-32bit 
   - wayland-protocols-devel 
@@ -49100,8 +49098,6 @@ unsorted:
   - wxWidgets-3_2-doc-xml 
   - wxWidgets-3_2-nostl-devel 
   - wxWidgets-3_2-plugin-sound_sdlu-3_2 
-  - wxhexeditor 
-  - wxhexeditor-lang 
   - wxlua 
   - wxlua-devel 
   - wxmp3gain 
