@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9d08ba9d9d8b266b8a4e1ff68d17b8cc</srcmd5>
+    <version>0.9</version>
+    <time>1757101485</time>
+    <user>anag_factory</user>
+    <comment>This package provides utilities for setting and reading mura correction on Galileo. Galileo is the OLED version of the Steam Deck with certain displays from Samsung that have mura issues. The tools here fix that.</comment>
+    <requestid>1302822</requestid>
+  </revision>
+</revisionlist>
