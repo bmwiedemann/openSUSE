@@ -1,7 +1,7 @@
 #
 # spec file for package boost
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -917,6 +917,7 @@ This package contains the Boost::URL runtime library.
 Summary:        Development headers for Boost.URL library
 Group:          Development/Libraries/C and C++
 Provides:       libboost_url-devel-impl = %{version}
+Requires:       libboost_url%{library_version} = %{version}
 
 %description -n libboost_url%{library_version}-devel
 This package contains development headers for Boost.URL library.
