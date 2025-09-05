@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep  3 18:52:33 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.0.2:
+  * PdfTokenizer: Fixed free-after-use after failing to parse
+    content while reading literal tokens (boo#1249105)
+  * PdfFont: Improved heursitic for word spacing
+  * PdfDifferenceEncoding: Fixed handling of ligatures in AGL
+    character names
+  * PdfXMPPAcket: Make GetDescription() const correct
+  * PdfMemDocument: Fixed upgrade to PDF2.0 in a incremental update
+- drop cmake variables unused in the project
+
+-------------------------------------------------------------------
 Sat Aug  9 15:14:09 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.0.1

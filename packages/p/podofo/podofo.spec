@@ -2,6 +2,7 @@
 # spec file for package podofo
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +19,16 @@
 
 %define libver 3
 Name:           podofo
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        PDF parsing and creation library
 License:        GPL-2.0-or-later
-URL:            http://podofo.sourceforge.net/
+URL:            https://podofo.sourceforge.net/
 Source0:        https://github.com/podofo/podofo/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.23
 BuildRequires:  dos2unix
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-%if 0%{suse_version} > 1600
-BuildRequires:  gcc-c++
-%else
-BuildRequires:  gcc13-c++
-%endif
 BuildRequires:  graphviz
 BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig
@@ -46,6 +42,11 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
+%if 0%{?suse_version} > 1600
+BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc13-c++
+%endif
 
 %description
 A cross platform PDF parsing and creation library.
@@ -79,11 +80,7 @@ echo "HTML_TIMESTAMP = NO" >> Doxyfile
 export CXX=g++
 test -x "$(type -p g++-13)" && export CXX=g++-13
 %cmake \
-  -DWANT_FONTCONFIG=ON \
-  -DWANT_BOOST=ON \
   -DPODOFO_BUILD_STATIC=OFF \
-  -DPODOFO_USE_VISIBILITY=ON \
-  -DPODOFO_BUILD_TEST=OFF \
   -DPODOFO_BUILD_TEST=OFF \
   -DPODOFO_BUILD_UNSUPPORTED_TOOLS=OFF
 %cmake_build
@@ -102,8 +99,7 @@ cp -a html %{buildroot}%{_docdir}/libpodofo-devel/doc/
 
 %fdupes -s %{buildroot}
 
-%post -n libpodofo%{libver} -p /sbin/ldconfig
-%postun -n libpodofo%{libver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libpodofo%{libver}
 
 %files -n libpodofo%{libver}
 %license COPYING
