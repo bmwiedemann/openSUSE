@@ -91,4 +91,64 @@
 - No more greedy globs in %files.</comment>
     <requestid>1288110</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a557b0cff83e1f6b6e2c77bd35e765da</srcmd5>
+    <version>7.3.2</version>
+    <time>1757101441</time>
+    <user>anag_factory</user>
+    <comment>- Explain why we cannot run tests.
+- Update to version 7.3.2:
+  * Updated version to 7.3.2
+  * Release notes for 7.3.2
+  * Fix --flattenkeywords with JSON outputs
+  * Consistent naming
+  * Enhance JsonLoader config
+  * Fix `include_keywords=False` with JSON.
+  * Nicer signature to ExecutionResult
+  * Make JsonDumber configurable.
+  * Don't access suite.teardown unnecessarily.
+  * Fix handling failing suite teardowns with JSON
+  * Fix --flattenkeywords with VAR, GROUP and RETURN
+  * Enhance tests
+  * Refactor keyword used in tests
+  * Enhance/cleanup flattening output.xml
+  * Fix test on PyPy
+  * Fix listener end_test overriding body when using JSON
+  * Try all matching BDD prefixes, not only longest.
+  * Fix embedded args related regression
+  * Enhance tests for setup/teardown with embedded args
+  * Fix formatting
+  * Back to dev version
+  * Fixes
+  * Updated version to 7.3.1
+  * Release notes for 7.3.1
+  * Refactor test toggle logic.
+  * Fix expand icons for failed and skipped tests (#5322) (#5445)
+  * New section about inline comments, fixes and adjustments
+  * Two spaces before an inline comment.
+  * Use `# fmt: skip` instead of `# fmt: off/on`.
+  * Remove unnecessary `.readlines()`.
+  * Update CONTRIBUTING.rst (#5452)
+  * Update contribution guidelines.
+  * Update release instructions.
+  * reformat
+  * Prefer exact match over embedded match with setup/teardown and Run Keyword
+  * Shorter timeouts in tests
+  * Fix handling invalid UK argspec with types
+  * Update issue title
+  * Back to dev version
+- Update to version 7.3:
+  * UG: Fix internal link
+  * Updated version to 7.3
+  * Release notes for 7.3
+  * Update contribution guidelines (#5375)
+  * Enhance variable type conversion documentation
+  * Enhance tests
+  * Enhance user keyword argument conversion errors
+  * Change embedded argument syntax with type and regexp
+  * UG: General cleanup to Variables section
+  * Don't use deprecated Default Tags in example
+</comment>
+    <requestid>1302900</requestid>
+  </revision>
 </revisionlist>

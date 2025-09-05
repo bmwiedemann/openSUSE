@@ -1,7 +1,7 @@
 #
 # spec file for package python-robotframework
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,14 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-robotframework
-Version:        7.1.1
+Version:        7.3.2
 Release:        0
 Summary:        Generic test automation framework for acceptance testing and ATDD
 License:        Apache-2.0
 URL:            https://robotframework.org/
-Source:         https://files.pythonhosted.org/packages/source/r/robotframework/robotframework-%{version}.zip
+Source:         robotframework-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -42,7 +43,7 @@ automation (RPA). It has simple plain text syntax and it can be extended easily
 with libraries implemented using Python or Java.
 
 %prep
-%setup -q -n robotframework-%{version}
+%autosetup -p1 -n robotframework-%{version}
 
 # Fix rpmlint error "This script uses 'env' as an interpreter"
 for file in $(grep -l '#!%{_bindir}/env python' src/robot/*.py); do
@@ -59,6 +60,10 @@ for p in robot rebot libdoc; do
 done
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+# We cannot run tests in OBS, because the real browser and access
+# to the network is required.
 
 %post
 %python_install_alternative robot rebot libdoc
