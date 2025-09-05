@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep 04 20:50:44 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.149.1:
+  * releaser: Bump versions for release of 0.149.1
+  * Remove noindex meta tag from alias.html
+  * Fix nilpointer on ToC heading
+  * tpl/collections: Require collections.D args to be ints
+  * Upgrade to Go 1.25.1
+  * Fix config env handling for some slice options
+  * minifiers: Update deprecation handling
+  * Update README.md
+  * releaser: Prepare repository for 0.150.0-DEV
+
+-------------------------------------------------------------------
 Wed Aug 27 16:18:55 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.149.0:

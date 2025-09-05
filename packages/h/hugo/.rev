@@ -1648,4 +1648,21 @@
   * build(deps): bump golang.org/x/tools from 0.35.0 to 0.36.0 (forwarded request 1301612 from jfkw)</comment>
     <requestid>1301613</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>f27ac17f16d0371d92a8ef7c09eff303</srcmd5>
+    <version>0.149.1</version>
+    <time>1757101409</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.149.1:
+  * releaser: Bump versions for release of 0.149.1
+  * Remove noindex meta tag from alias.html
+  * Fix nilpointer on ToC heading
+  * tpl/collections: Require collections.D args to be ints
+  * Upgrade to Go 1.25.1
+  * Fix config env handling for some slice options
+  * minifiers: Update deprecation handling
+  * Update README.md
+  * releaser: Prepare repository for 0.150.0-DEV (forwarded request 1302812 from jfkw)</comment>
+    <requestid>1302815</requestid>
+  </revision>
 </revisionlist>
