@@ -17,7 +17,7 @@
 
 
 Name:           amdgpu_top
-Version:        0.10.5
+Version:        0.11.0
 Release:        0
 Summary:        Tool that displays AMD GPU utilization
 License:        MIT

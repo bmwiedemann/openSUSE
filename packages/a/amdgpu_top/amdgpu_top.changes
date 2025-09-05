@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 03 05:52:04 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to version 0.11.0:
+  * v0.11.0
+  * update dependencies
+  * remove dependency on anyhow
+  * update README.md
+  * update docs/dump.json
+  * json: add some info to json_info dump
+  * lib: fix get_rocm_version for TheRock
+  * lib: add supports_gpu_metrics field to AppDeviceInfo
+  * lib: fix logic for transitioning to D3hot
+  * lib: update logic for dropping device handle
+
+-------------------------------------------------------------------
 Tue May 27 18:51:36 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to version 0.10.5:
