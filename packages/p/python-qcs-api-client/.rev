@@ -40,4 +40,19 @@
   back to the old version of Pydantic.</comment>
     <requestid>1158847</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fb080ee3f15c28779a8cb85a2afad7cc</srcmd5>
+    <version>0.26.5</version>
+    <time>1757101427</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to 0.26.5:
+  * Switch to pydantic v2, including pydantic-settings.
+  * Use tenacity rather than retrying.
+- Drop patch continue-to-use-pydantic-1.patch, no longer required.
+- Refresh switch-to-pyrfc3339.patch, make it smaller and easier to rebase.
+- Add patches:
+  * switch-to-poetry-core.patch
+  * support-new-pydantic-settings.patch</comment>
+    <requestid>1302858</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,25 @@
+From 39799162944eb77b66c6523831a4dbdefd036f61 Mon Sep 17 00:00:00 2001
+From: Po-Chuan Hsieh <sunpoet@sunpoet.net>
+Date: Tue, 5 Sep 2023 23:58:05 +0800
+Subject: [PATCH] Fix PEP517 build backend
+
+Poetry is a packing and dependency management utility for Python.
+poetry-core is the PEP 517 build backend intended to be a light weight,
+fully compliant, self-contained package allowing PEP 517 compatible build
+frontends to build Poetry managed projects.
+---
+ pyproject.toml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 315a0c6..138c5a0 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -53,5 +53,5 @@ multi_line_output = 3
+ include_trailing_comma = true
+ 
+ [build-system]
+-requires = ["poetry>=1.0"]
+-build-backend = "poetry.masonry.api"
++requires = ["poetry-core>=1.0.0"]
++build-backend = "poetry.core.masonry.api"

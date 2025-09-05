@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep  5 06:21:40 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Upgrade to 0.26.5:
+  * Switch to pydantic v2, including pydantic-settings.
+  * Use tenacity rather than retrying.
+- Drop patch continue-to-use-pydantic-1.patch, no longer required.
+- Refresh switch-to-pyrfc3339.patch, make it smaller and easier to rebase.
+- Add patches:
+  * switch-to-poetry-core.patch
+  * support-new-pydantic-settings.patch
+
+-------------------------------------------------------------------
 Mon Mar 18 03:11:38 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch continue-to-use-pydantic-1.patch, use pydantic.v1 to fall

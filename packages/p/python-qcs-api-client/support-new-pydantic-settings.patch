@@ -1,0 +1,28 @@
+From bdb1088de41220e9d8ec0862978895f7f78d2e4d Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Fri, 5 Sep 2025 16:04:00 +1000
+Subject: [PATCH] Support pydantic-settings 2.10
+
+pydantic-settings 2.10 has refactored the sources module into a
+submodule, attempt to import from the new location, falling back if
+required to support both the old and the new.
+---
+ qcs_api_client/client/_configuration/environment.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/qcs_api_client/client/_configuration/environment.py b/qcs_api_client/client/_configuration/environment.py
+index 249b723..3120bb4 100644
+--- a/qcs_api_client/client/_configuration/environment.py
++++ b/qcs_api_client/client/_configuration/environment.py
+@@ -3,7 +3,10 @@
+ 
+ from pydantic import BaseModel
+ from pydantic.v1.utils import deep_update
+-from pydantic_settings.sources import _annotation_is_complex
++try:
++    from pydantic_settings.sources.utils import _annotation_is_complex
++except ImportError:
++    from pydantic_settings.sources import _annotation_is_complex
+ 
+ 
+ class _EnvironmentBaseModel(BaseModel):
