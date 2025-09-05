@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 29 11:14:47 UTC 2025 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.100:
+  * Allow server admins manage server notes (#619)
+
+-------------------------------------------------------------------
+Thu Aug 28 06:27:43 UTC 2025 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.099:
+  * Fix task mirror_probe_project always failing for https-only servers (#617)
+  * Tolarate mirrors with disabled directory listing in mirror_probe_projects (#617)
+  * Partition task mirror_probe_projects for each region (#617)
+  * Fix primary key on server_projects table for mariadb (#617)
+
+-------------------------------------------------------------------
 Mon Aug 11 09:44:36 UTC 2025 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.098:
