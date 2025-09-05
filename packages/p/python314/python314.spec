@@ -716,7 +716,7 @@ rm -r %{buildroot}%{sitedir}/site-packages
 rm %{buildroot}%{sitedir}/*.*
 
 for module in \
-    asyncio ctypes collections concurrent email encodings \
+    asyncio compression ctypes collections concurrent email encodings \
     ensurepip html http re pathlib _pyrepl \
     importlib json logging multiprocessing pydoc_data unittest \
     urllib venv wsgiref test string sysconfig tomllib turtledemo \
@@ -792,7 +792,7 @@ install -d -m 755 %{buildroot}%{sitedir}/site-packages/__pycache__
 mkdir -p %{buildroot}%{_prefix}/lib/python%{python_abi}/site-packages/__pycache__
 
 # cleanup parts that don't belong
-for dir in curses dbm compression sqlite3 tkinter idlelib; do
+for dir in curses dbm sqlite3 tkinter idlelib; do
     find "%{buildroot}/%{sitedir}/$dir"/* -maxdepth 0 -name "test" -o -exec rm -rf {} +
 done
 
@@ -912,7 +912,6 @@ fi
 %files -n %{python_pkg_name}
 %dir %{sitedir}
 %dir %{sitedir}/lib-dynload
-%{sitedir}/compression
 %{sitedir}/sqlite3
 %{dynlib readline}
 %{dynlib _sqlite3}
@@ -1101,6 +1100,7 @@ fi
 # %%exclude %%{sitedir}/*/tests
 %{sitedir}/*.py
 %{sitedir}/asyncio
+%{sitedir}/compression
 %{sitedir}/ctypes
 %{sitedir}/collections
 %{sitedir}/concurrent

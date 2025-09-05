@@ -2482,4 +2482,13 @@
 </comment>
     <requestid>1299840</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>9a15b00339094153d69e9482291f8080</srcmd5>
+    <version>3.14.0~rc2</version>
+    <time>1757101434</time>
+    <user>anag_factory</user>
+    <comment>- Move compression folder to python-base where it should be. This
+  module is used internally in gzip.py.</comment>
+    <requestid>1302884</requestid>
+  </revision>
 </revisionlist>

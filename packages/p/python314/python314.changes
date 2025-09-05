@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  5 06:47:57 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Move compression folder to python-base where it should be. This
+  module is used internally in gzip.py.
+
+-------------------------------------------------------------------
 Fri Aug 15 14:12:35 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.14.0~rc2:
