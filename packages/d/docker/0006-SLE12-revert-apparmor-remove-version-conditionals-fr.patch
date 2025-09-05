@@ -1,4 +1,4 @@
-From 993356d0603739961b62a8010d96f412e56b9196 Mon Sep 17 00:00:00 2001
+From 7bd32fa91ed29b32d42991304b9a55a1f7db2ece Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Wed, 11 Oct 2023 21:19:12 +1100
 Subject: [PATCH 6/6] SLE12: revert "apparmor: remove version-conditionals from
@@ -17,11 +17,11 @@ apparmor_parser version is quite old.
 
 Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
 ---
- contrib/apparmor/main.go      | 16 ++++++-
- contrib/apparmor/template.go  | 16 +++++++
- pkg/aaparser/aaparser.go      | 86 +++++++++++++++++++++++++++++++++++
- profiles/apparmor/apparmor.go | 16 ++++++-
- profiles/apparmor/template.go |  4 ++
+ contrib/apparmor/main.go                      | 16 +++-
+ contrib/apparmor/template.go                  | 16 ++++
+ pkg/aaparser/aaparser.go                      | 86 +++++++++++++++++++
+ .../moby/profiles/apparmor/apparmor.go        | 16 +++-
+ .../moby/profiles/apparmor/template.go        |  4 +
  5 files changed, 134 insertions(+), 4 deletions(-)
  create mode 100644 pkg/aaparser/aaparser.go
 
@@ -248,10 +248,10 @@ index 000000000000..89b48b2dba58
 +	numericVersion := majorVersion*1e5 + minorVersion*1e3 + patchLevel
 +	return numericVersion, nil
 +}
-diff --git a/profiles/apparmor/apparmor.go b/profiles/apparmor/apparmor.go
+diff --git a/vendor/github.com/moby/profiles/apparmor/apparmor.go b/vendor/github.com/moby/profiles/apparmor/apparmor.go
 index 445eed64e979..871b1f7d63c2 100644
---- a/profiles/apparmor/apparmor.go
-+++ b/profiles/apparmor/apparmor.go
+--- a/vendor/github.com/moby/profiles/apparmor/apparmor.go
++++ b/vendor/github.com/moby/profiles/apparmor/apparmor.go
 @@ -11,10 +11,14 @@ import (
  	"path"
  	"strings"
@@ -291,11 +291,11 @@ index 445eed64e979..871b1f7d63c2 100644
  	return compiled.Execute(out, p)
  }
  
-diff --git a/profiles/apparmor/template.go b/profiles/apparmor/template.go
-index 35c75300f8f0..b7a0299af2b8 100644
---- a/profiles/apparmor/template.go
-+++ b/profiles/apparmor/template.go
-@@ -23,6 +23,7 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
+diff --git a/vendor/github.com/moby/profiles/apparmor/template.go b/vendor/github.com/moby/profiles/apparmor/template.go
+index 2ebcc218a702..682425f71e64 100644
+--- a/vendor/github.com/moby/profiles/apparmor/template.go
++++ b/vendor/github.com/moby/profiles/apparmor/template.go
+@@ -22,6 +22,7 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
    capability,
    file,
    umount,
@@ -303,7 +303,7 @@ index 35c75300f8f0..b7a0299af2b8 100644
    # Host (privileged) processes may send signals to container processes.
    signal (receive) peer=unconfined,
    # runc may send signals to container processes (for "docker stop").
-@@ -33,6 +34,7 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
+@@ -32,6 +33,7 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
    signal (receive) peer={{.DaemonProfile}},
    # Container processes may send signals amongst themselves.
    signal (send,receive) peer={{.Name}},
@@ -311,7 +311,7 @@ index 35c75300f8f0..b7a0299af2b8 100644
  
    deny @{PROC}/* w,   # deny write for all files directly in /proc (not in a subdir)
    # deny write to files not in /proc/<number>/** or /proc/sys/**
-@@ -53,7 +55,9 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
+@@ -52,7 +54,9 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
    deny /sys/devices/virtual/powercap/** rwklx,
    deny /sys/kernel/security/** rwklx,
  
@@ -322,5 +322,5 @@ index 35c75300f8f0..b7a0299af2b8 100644
  }
  `
 -- 
-2.50.0
+2.51.0
 

@@ -53,8 +53,8 @@
 %endif
 
 # MANUAL: This needs to be updated with every docker update.
-%define docker_real_version 28.3.3
-%define docker_git_version bea959c7b
+%define docker_real_version 28.4.0
+%define docker_git_version 249d679a6
 %define docker_version %{docker_real_version}_ce
 # This "nice version" is so that docker --version gives a result that can be
 # parsed by other people. boo#1182476
@@ -62,7 +62,7 @@
 
 %if %{with buildx}
 # MANUAL: This needs to be updated with every docker-buildx update.
-%define buildx_version 0.26.1
+%define buildx_version 0.28.0
 %endif
 
 # Used when generating the "build" information for Docker version. The value of
@@ -70,7 +70,7 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_commit_epoch 1752057183
+%define git_commit_epoch 1756931329
 
 Name:           docker%{flavour}
 Version:        %{docker_version}

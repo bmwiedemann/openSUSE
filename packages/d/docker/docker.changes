@@ -1,11 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep  4 08:37:24 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to docker-buildx v0.28.0. Upstream changelog:
+  <https://github.com/docker/buildx/releases/tag/v0.28.0>
+- Update to Docker 28.4.0-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/28/#2840>
+- Rebased patches:
+  * 0001-SECRETS-SUSE-always-clear-our-internal-secrets.patch
+  * 0002-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0003-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0004-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  * 0005-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * 0006-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+  * cli-0001-openSUSE-point-users-to-docker-buildx-package.patch
+  * cli-0002-SECRETS-SUSE-default-to-DOCKER_BUILDKIT-0-for-docker.patch
+
+-------------------------------------------------------------------
 Mon Sep  1 05:48:29 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update warnings and errors related to "docker buildx ..." so that they
   reference our openSUSE docker-buildx packages.
   + cli-0001-openSUSE-point-users-to-docker-buildx-package.patch
-- Enable building docker-buildx for SLE systems with SUSEConnect secret
-  injection enabled (i.e., SLE15 and earlier). PED-12534 PED-8905 bsc#1247594
+- Enable building docker-buildx for SLE15 systems with SUSEConnect secret
+  injection enabled. PED-12534 PED-8905 bsc#1247594
 
   As docker-buildx does not support our SUSEConnect secret injection (and some
   users depend "docker build" working transparently), patch the docker CLI so

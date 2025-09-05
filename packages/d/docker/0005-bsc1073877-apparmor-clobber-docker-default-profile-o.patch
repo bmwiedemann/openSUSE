@@ -1,4 +1,4 @@
-From 1d73fe8e91b3f27e93affe5e8257b79627587875 Mon Sep 17 00:00:00 2001
+From f6e33b35f540cc1ac3c7cc6403916e23239fdb23 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Fri, 29 Jun 2018 17:59:30 +1000
 Subject: [PATCH 5/6] bsc1073877: apparmor: clobber docker-default profile on
@@ -22,7 +22,7 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
  3 files changed, 17 insertions(+), 6 deletions(-)
 
 diff --git a/daemon/apparmor_default.go b/daemon/apparmor_default.go
-index d5737e5a75a3..d77c714d266b 100644
+index a1048e303c1e..e087f6b9265f 100644
 --- a/daemon/apparmor_default.go
 +++ b/daemon/apparmor_default.go
 @@ -23,6 +23,15 @@ func DefaultApparmorProfile() string {
@@ -85,5 +85,5 @@ index 2e0a36eb102b..f28c6e061fa9 100644
  	}
  
 -- 
-2.50.0
+2.51.0
 

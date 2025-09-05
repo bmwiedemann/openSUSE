@@ -1,4 +1,4 @@
-From bc7d40e1e670f81b252a8c8d62a4aecc936ff339 Mon Sep 17 00:00:00 2001
+From 02b49739668ea5ffb0b240c2a264eb9bb378f56f Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
 Date: Mon, 1 Sep 2025 16:05:24 +1000
 Subject: [PATCH 1/2] openSUSE: point users to docker-buildx package
@@ -13,10 +13,10 @@ Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/cmd/docker/builder.go b/cmd/docker/builder.go
-index cccae304fe5e..cc597f0fd5a7 100644
+index 00fc1b40f1ab..ff3becd1c9e7 100644
 --- a/cmd/docker/builder.go
 +++ b/cmd/docker/builder.go
-@@ -19,7 +19,7 @@
+@@ -20,7 +20,7 @@
  const (
  	builderDefaultPlugin = "buildx"
  	buildxMissingWarning = `DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
@@ -25,7 +25,7 @@ index cccae304fe5e..cc597f0fd5a7 100644
              https://docs.docker.com/go/buildx/`
  
  	buildkitDisabledWarning = `DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
-@@ -27,11 +27,11 @@
+@@ -28,11 +28,11 @@
              environment-variable.`
  
  	buildxMissingError = `ERROR: BuildKit is enabled but the buildx component is missing or broken.
