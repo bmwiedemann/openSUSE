@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Sat Aug 30 12:20:15 UTC 2025 - Tobias Görgens <suse.snooper541@passmail.net>
+
+- Initial version 2.1.1:
+  * Increased no-gyro detection cooldown time
+  * Enable Gyro when data is not present
+

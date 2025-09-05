@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1182dba0de8f8dede27481d243b13413</srcmd5>
+    <version>2.1.1</version>
+    <time>1757101420</time>
+    <user>anag_factory</user>
+    <comment>This package provides the DSU (cemuhook protocol) server for motion data running on the Steam Deck. It is needed to use the gyro of the Steam Deck in emulators.</comment>
+    <requestid>1302829</requestid>
+  </revision>
+</revisionlist>

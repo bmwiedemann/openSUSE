@@ -1,0 +1,11 @@
+--- pkg/sdgyrodsu.service	2023-06-30 16:01:59.551968249 -0700
++++ pkg/sdgyrodsu.service	2023-07-01 00:09:40.598922020 -0700
+@@ -7,7 +7,7 @@
+ Type=simple
+ Restart=always
+ RestartSec=1
+-ExecStart=%h/sdgyrodsu/sdgyrodsu
++ExecStart=/usr/bin/sdgyrodsu
+ 
+ [Install]
+ WantedBy=default.target
