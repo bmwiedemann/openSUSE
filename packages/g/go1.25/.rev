@@ -71,4 +71,35 @@
     documentation server showing documentation for the requested</comment>
     <requestid>1299279</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4033eed8ba9ffdbf9d17e6f6e536e7d8</srcmd5>
+    <version>1.25.1</version>
+    <time>1757101402</time>
+    <user>anag_factory</user>
+    <comment>- go1.25.1 (released 2025-09-03) includes security fixes to the
+  net/http package, as well as bug fixes to the go command, and the
+  net, os, os/exec, and testing/synctest packages.
+  Refs boo#1244485 go1.25 release tracking
+  CVE-2025-47910
+  * go#75160 go#75054 boo#1249141 security: fix CVE-2025-47910 net/http: CrossOriginProtection insecure bypass patterns not limited to exact matches
+  * go#74822 cmd/go: &quot;get toolchain@latest&quot; should ignore release candidates
+  * go#74999 net: WriteMsgUDPAddrPort should accept IPv4-mapped IPv6 destination addresses on IPv4 UDP sockets
+  * go#75008 os/exec: TestLookPath fails on plan9 after CL 685755
+  * go#75021 testing/synctest: bubble not terminating
+  * go#75083 os: File.Seek doesn't set the correct offset with Windows overlapped handles
+
+- Packaging improvements:
+  * Remove conditional gccgo bootstrap sections and gcc-go.patch.
+    gccgo cannot be used in any version newer than go1.21. Removal
+    simplifies go1.x package code.
+  * go1.21 can optionally be bootstrapped with gccgo and serve as
+    the inital version of go1.x.
+  * go1.21 will be the initial version of Go in the bootstrap chain
+    until gcc gccgo is updated to support a language level newer
+    than go1.18.
+  * Drop gcc-go.patch
+  * Refs boo#1247816 bootstrap go1.21 with gccgo
+  * Refs boo#1248082 drop unused gccgo bootstrap code in go1.22+</comment>
+    <requestid>1302806</requestid>
+  </revision>
 </revisionlist>
