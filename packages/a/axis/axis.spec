@@ -76,7 +76,7 @@ Requires:       glassfish-activation-api
 Requires:       jakarta-commons-discovery
 Requires:       java >= 1.8
 Requires:       javamail
-Requires:       jaxp_parser_impl
+Requires:       xerces-j2
 Requires:       reload4j
 Requires:       wsdl4j
 Obsoletes:      %{name}-javadoc
@@ -136,7 +136,7 @@ ant -Dcompile.ime=true \
     -Dlog4j-core.jar=$(build-classpath reload4j/reload4j) \
     -Dactivation.jar=$(build-classpath glassfish-activation-api) \
     -Dmailapi.jar=$(build-classpath javamail/mailapi) \
-    -Dxerces.jar=$(build-classpath jaxp_parser_impl) \
+    -Dxerces.jar=$(build-classpath xerces-j2) \
     -Dservlet.jar=$(build-classpath servletapi5) \
     -Dregexp.jar=$(build-classpath oro 2>/dev/null) \
     -Djunit.jar=$(build-classpath junit 2>/dev/null) \

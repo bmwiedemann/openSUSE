@@ -315,4 +315,12 @@
     <comment></comment>
     <requestid>1147896</requestid>
   </revision>
+  <revision rev="43" vrev="310">
+    <srcmd5>d2e25df8698bd0647de024461d09b6df</srcmd5>
+    <version>1.4</version>
+    <time>1757101433</time>
+    <user>anag_factory</user>
+    <comment>Do not require the jaxp_parser_impl, but xerces-j2 directly</comment>
+    <requestid>1302883</requestid>
+  </revision>
 </revisionlist>
