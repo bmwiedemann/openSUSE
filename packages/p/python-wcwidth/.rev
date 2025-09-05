@@ -216,4 +216,13 @@ add explicit Requires for python-importlib_metadata for Python &lt; 3.8</comment
 - No more greedy globs in %files.</comment>
     <requestid>1285276</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>72b0cc821c23487fb04b0a00e8d3c42f</srcmd5>
+    <version>0.2.13</version>
+    <time>1757101357</time>
+    <user>anag_factory</user>
+    <comment>- add 0001-Don-t-use-codecs.open-on-Python-3.patch to fix
+  deprecations for python 3.14</comment>
+    <requestid>1302928</requestid>
+  </revision>
 </revisionlist>
