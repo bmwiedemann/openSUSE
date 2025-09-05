@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep  2 15:08:41 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.8:
+  * Improved the behavior of selection tools.
+  * Fixed various visual artifacts.
+  * Fixed some behavior of Mouse+Keyboard combo devices.
+  * Fixed filename extension stripping.
+  * Fixed CLI using relative paths.
+  * Fixed various crashes.
+  * Made using GtkSourceView and Plugins proper CMake options.
+  * Updated translations.
+- Drop xournalpp-return.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Sun May 11 06:57:35 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.2.7:

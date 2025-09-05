@@ -1,7 +1,7 @@
 #
 # spec file for package xournalpp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           xournalpp
-Version:        1.2.7
+Version:        1.2.8
 Release:        0
 Summary:        Notetaking software designed around a tablet
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://github.com/xournalpp/xournalpp
 Source0:        https://github.com/xournalpp/xournalpp/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM xournalpp-return.patch -- Fix control reaches end of non-void function
-Patch0:         xournalpp-return.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
