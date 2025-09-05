@@ -4558,6 +4558,7 @@ unsorted:
   - galaxis 
   - galera-4 
   - galera-4-wsrep-provider 
+  - galileo-mura 
   - gama 
   - gamemode 
   - gamemoded 
@@ -12303,6 +12304,7 @@ unsorted:
   - libboost_type_erasure1_88_0-32bit 
   - libboost_type_erasure1_88_0-devel 
   - libboost_type_erasure1_88_0-x86-64-v3 
+  - libboost_url-devel 
   - libboost_url1_88_0 
   - libboost_url1_88_0-32bit 
   - libboost_url1_88_0-devel 
@@ -14537,7 +14539,6 @@ unsorted:
   - libmgl-wx8 
   - libmgl8 
   - libmgmt_be_nb0 
-  - libmhash2 
   - libmicro 
   - libmicrodns-devel 
   - libmicrodns1-32bit 
@@ -14566,9 +14567,9 @@ unsorted:
   - libmirevdev10 
   - libmirisdr-devel 
   - libmirisdr0 
-  - libmiroil7 
-  - libmirplatform31 
-  - libmirserver64 
+  - libmiroil8 
+  - libmirplatform32 
+  - libmirserver65 
   - libmirserverplatform23 
   - libmirwayland5 
   - libmjpegutils-2_2-0-32bit 
@@ -16473,7 +16474,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent26 
+  - libtorrent30 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
@@ -18534,7 +18535,6 @@ unsorted:
   - mg 
   - mgdiff 
   - mgetty 
-  - mhash-devel 
   - mhvtl 
   - mhvtl-kmp-default 
   - miao-fonts 
@@ -20184,6 +20184,7 @@ unsorted:
   - openQA-devel 
   - openQA-doc 
   - openQA-local-db 
+  - openQA-mcp 
   - openQA-munin 
   - openQA-python-scripts 
   - openQA-single-instance 
@@ -31455,6 +31456,8 @@ unsorted:
   - python313-Markdown 
   - python313-MarkupPy 
   - python313-Markups 
+  - python313-Mathics 
+  - python313-Mathics-Django 
   - python313-Mathics-Scanner 
   - python313-MechanicalSoup 
   - python313-MiniMock 
@@ -33371,6 +33374,7 @@ unsorted:
   - python313-material-color-utilities-python 
   - python313-mathgl 
   - python313-mathics-pygments 
+  - python313-mathicsscript 
   - python313-matplotlib 
   - python313-matplotlib-cairo 
   - python313-matplotlib-gtk-common 
@@ -36849,6 +36853,7 @@ unsorted:
   - sddm-conf 
   - sddm-conf-lang 
   - sddm-wayland-miriway 
+  - sdgyrodsu 
   - sdl-asylum 
   - sdl-ball 
   - sdl12_compat-devel 
@@ -49432,6 +49437,7 @@ unsorted:
   - xosview 
   - xournalpp 
   - xournalpp-lang 
+  - xpad-noone-kmp-default 
   - xpadneo 
   - xpadneo-kmp-default 
   - xpadneo-kmp-longterm 
