@@ -17,7 +17,7 @@
 
 
 Name:           rtorrent
-Version:        0.15.6
+Version:        0.16.0
 Release:        0
 Summary:        Console-based BitTorrent client
 License:        SUSE-GPL-2.0+-with-openssl-exception
@@ -39,7 +39,6 @@ BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cppunit) >= 1.9.6
-BuildRequires:  pkgconfig(libcurl) >= 7.15.4
 BuildRequires:  pkgconfig(libtorrent) >= %version
 BuildRequires:  sysuser-tools
 Provides:       bundled(tinyxml2) = 10.0.0
@@ -96,6 +95,7 @@ cp -a system-user-rtorrent.conf "$b/%_sysusersdir/"
 %license COPYING
 %_bindir/rtorrent
 %_datadir/applications/%name.desktop
+%_datadir/%name/
 %_mandir/man1/rtorrent.1*
 %_unitdir/rtorrent.service
 %_sysusersdir/*

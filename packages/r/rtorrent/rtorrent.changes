@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep  5 11:36:00 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.0
+  * Added ``network.block.ipv4in6.set`` command.
+  * Inverted color of focus ui element.
+  * Block ipv4/6 now sets the resolve type.
+  * Fix file descriptor leak in session file saving with
+    ``system.files.session.fdatasync`` set to no.
+  * Fixed DHT bind address and converted to using sockaddr.
+  * Fixed uninitialized rpc slots when SCGI is not used.
+  * Fixed closing of external fd's and potential race-conditions in
+    CurlStack::close_get().
+
+-------------------------------------------------------------------
 Sat Aug 23 09:22:37 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.15.6
