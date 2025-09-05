@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep  5 10:31:41 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to libalternatives on SLE-16-based and newer systems
+- Hotfix the installcheck failure
+
+-------------------------------------------------------------------
+Thu Sep  4 10:07:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.2.24 (bsc#1248810)
+  * CVE-2025-57833: Potential SQL injection in FilteredRelation column aliases
+- Add upstream patches test_strip_tags.patch and support-msgfmt-0.25.patch
+  to fix build
+
+-------------------------------------------------------------------
 Thu Jul  3 13:01:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.2.23

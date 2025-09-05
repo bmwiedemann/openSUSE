@@ -1,7 +1,7 @@
 #
 # spec file for package python-Django4
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,18 @@
 
 %define skip_python2 1
 %define skip_python36 1
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 # Selenium and memcached are not operational
 %bcond_with selenium
 %bcond_with memcached
 %{?sle15_python_module_pythons}
 Name:           python-Django4
 # We want support LTS versions of Django -  numbered 2.2 -> 3.2 -> 4.2 etc
-Version:        4.2.23
+Version:        4.2.24
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
@@ -42,6 +47,11 @@ Patch1:         dirty-hack-remove-assert.patch
 Patch2:         py313.patch
 # PATCH-FIX-UPSTREAM https://github.com/django/django/pull/16459 fix tests afte r year 2038
 Patch3:         fix2038.patch
+# PATCH-FIX-UPSTREAM https://github.com/django/django/pull/19639 Fixed #36499 -- Adjusted utils_tests.test_html.TestUtilsHtml.test_strip_tags following Python's HTMLParser new behavior.
+# fixed and refined upstream, but some of our interpreters weren't updated to a new version yet and still only carry the patch, so providing the non-conditional version
+Patch4:         test_strip_tags.patch
+# PATCH-FIX-UPSTREAM https://github.com/django/django/pull/19530 Fixed #36421 -- Made test_msgfmt_error_including_non_ascii compatible with with msgfmt 0.25.
+Patch5:         support-msgfmt-0.25.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow >= 6.2.0}
 BuildRequires:  %{python_module PyYAML}
@@ -70,20 +80,25 @@ Requires:       python-bcrypt
 Requires:       python-pytz
 Requires:       python-setuptools
 Requires:       python-sqlparse >= 0.3.1
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     python-Jinja2 >= 2.9.2
 Recommends:     python-PyYAML
 Recommends:     python-geoip2
 Recommends:     python-pylibmc
 Recommends:     python-pymemcache
 Provides:       python-Django = %{version}
-Conflicts:      python-Django > %{version}
+Conflicts:      %{python_module Django > %{version}}
 Provides:       python-django = %{version}
 Obsoletes:      python-django < %{version}
 Provides:       python-South = %{version}
 Obsoletes:      python-South < %{version}
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %if %{with memcached}
 BuildRequires:  %{python_module pylibmc}
 BuildRequires:  %{python_module pymemcache}
@@ -128,7 +143,7 @@ echo "`grep -e '^[0-9a-f]\{64\}  django-%{version}.tar.gz' %{SOURCE1} | cut -c1-
 sed -i "s|^#!%{_bindir}/env python$|#!%{_bindir}/$python|" \
   %{buildroot}%{$python_sitelib}/django/conf/project_template/manage.py-tpl
 }
-%python_compileall
+%{python_compileall}
 %{python_expand #
 %fdupes %{buildroot}%{$python_sitelib}/django/
 %fdupes %{buildroot}%{$python_sitelib}/Django-%{version}-py*.egg-info/
@@ -143,6 +158,9 @@ export PATH=%{_libdir}/chromium:$PATH
 %else
 %python_expand PYTHONPATH=.:%{buildroot}%{$python_sitelib} $python tests/runtests.py -v 2
 %endif
+
+%pre
+%python_libalternatives_reset_alternative django-admin
 
 %post
 %{python_install_alternative django-admin}
