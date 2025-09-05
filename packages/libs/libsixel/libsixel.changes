@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  5 12:46:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- add 0001-Fix-a-heap-buffer-overflow-problem-reported-by-err2z.patch
+  (bsc#1248454, CVE-2025-9300)
+
+-------------------------------------------------------------------
 Thu Feb 27 20:25:06 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to version 1.10.5:

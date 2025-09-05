@@ -15,4 +15,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1251041</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>8ca7eafa2fa40388bdf7a72246f9385d</srcmd5>
+    <version>1.10.5</version>
+    <time>1757101469</time>
+    <user>anag_factory</user>
+    <comment>- add 0001-Fix-a-heap-buffer-overflow-problem-reported-by-err2z.patch
+  (bsc#1248454, CVE-2025-9300)</comment>
+    <requestid>1302932</requestid>
+  </revision>
 </revisionlist>
