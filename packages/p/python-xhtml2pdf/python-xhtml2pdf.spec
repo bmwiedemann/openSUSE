@@ -1,7 +1,7 @@
 #
 # spec file for package python-xhtml2pdf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,8 +32,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Pillow >= 8.1.1
 Requires:       python-arabic-reshaper >= 3.0.0
 Requires:       python-html5lib >= 1.1
-Requires:       python-pyHanko >= 0.12.1
-Requires:       python-pyhanko-certvalidator >= 0.19.5
+Requires:       python-pyHanko >= 0.19.5
 Requires:       python-pypdf >= 3.1.0
 Requires:       python-python-bidi >= 0.5.0
 Requires:       python-reportlab >= 4.0.4
@@ -46,8 +45,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Pillow >= 8.1.1}
 BuildRequires:  %{python_module arabic-reshaper >= 3.0.0}
 BuildRequires:  %{python_module html5lib >= 1.1}
-BuildRequires:  %{python_module pyHanko >= 0.12.1}
-BuildRequires:  %{python_module pyhanko-certvalidator >= 0.19.5}
+BuildRequires:  %{python_module pyHanko >= 0.19.5}
 BuildRequires:  %{python_module pypdf >= 3.1.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-bidi >= 0.5.0}

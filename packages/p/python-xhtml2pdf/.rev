@@ -110,4 +110,12 @@
     <comment></comment>
     <requestid>1251964</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>e6328249cde450da2d9763554ad682d1</srcmd5>
+    <version>0.2.17</version>
+    <time>1757101460</time>
+    <user>anag_factory</user>
+    <comment>- python-pyhanko-cert-validator is included in python-pyHanko now</comment>
+    <requestid>1302922</requestid>
+  </revision>
 </revisionlist>
