@@ -4,6 +4,5 @@
 XML document to a test document or the result of a transformation, validates
 documents against a DTD, and (from v0.5) compares the results of XPath
 expressions.</description>
-  <devel project="Java:packages" package="xmlunit"/>
   <url>http://xmlunit.sourceforge.net/</url>
 </package>

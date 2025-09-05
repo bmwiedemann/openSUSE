@@ -185,4 +185,12 @@
     <comment>Cleanup</comment>
     <requestid>1138307</requestid>
   </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>5e0e0c1ab11626123b63a3c97f4b4546</srcmd5>
+    <version>1.6</version>
+    <time>1757101432</time>
+    <user>anag_factory</user>
+    <comment>bsc#1245931 and bsc#1245914</comment>
+    <requestid>1302877</requestid>
+  </revision>
 </revisionlist>

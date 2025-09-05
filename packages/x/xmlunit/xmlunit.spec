@@ -76,7 +76,7 @@ db5.xsl=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/
 EOF
 
 export CLASSPATH=
-export OPT_JAR_LIST="junit ant/ant-junit jaxp_transform_impl ant/ant-trax xalan-j2-serializer"
+export OPT_JAR_LIST="junit ant/ant-junit xalan-j2 ant/ant-trax xalan-j2-serializer"
 ant -Djavac.source=1.8 -Djavac.target=1.8 -Dbuild.compiler=modern -Dhaltonfailure=yes jar javadocs
 
 %install
