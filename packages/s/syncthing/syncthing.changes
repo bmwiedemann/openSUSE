@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep  5 12:03:54 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 2.0.7
+  * Fixes
+    fix(model): earlier free-space check (fixes #10347) by @calmh in #10348
+    fix(api): redact device encryption passwords in support bundle config by @pixelspark in #10359
+    fix(sqlite): revert to default page cache size by @calmh in #10362
+    fix(tlsutil): support HTTP/2 on GUI/API connections by @calmh in #10366
+    fix(sqlite): avoid rowid on kv table by @calmh in #10367
+  * Other
+    chore(model): adjust folder state logging (fixes #10350) by @calmh in #10353
+    build: package for illumos using vmactions/omnios-vm by @trisk in #10328
+    chore(slogutil): add configurable logging format (fixes #10352) by @calmh in #10354
+
+-------------------------------------------------------------------
 Wed Sep  3 08:32:43 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 2.0.6
