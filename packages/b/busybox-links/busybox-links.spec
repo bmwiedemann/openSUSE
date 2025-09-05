@@ -223,7 +223,7 @@ This package contains the symlinks to replace diffutils with busybox.
 %package -n busybox-ether-wake
 Summary:        Busybox applets replacing ether-wake from net-tools
 Requires:       busybox = %{version}
-Conflicts:      net-tools < 2.10.0.0.1
+Conflicts:      net-tools < 2.10+1
 Obsoletes:      net-tools-dummy-ether-wake
 
 %description -n busybox-ether-wake

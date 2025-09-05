@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  4 11:56:15 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Set net-tools conflict version properly.
+
+-------------------------------------------------------------------
 Mon Sep  1 17:42:59 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Add busybox-ether-wake replacing downstream ether-wake from
