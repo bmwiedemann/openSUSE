@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep 04 17:13:00 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1757005118.aac56dbc:
+  * CI: Fix SLE_15_SP6_Backports repo lookup order
+  * Add perl(MCP) dependency in preparation for AI support
+  * build(deps-dev): bump @humanfs/node from 0.16.6 to 0.16.7
+  * Revert "MCP: Add MCP support as an optional feature"
+  * Fix typo on Contributing documentation
+  * Add MCP support as an optional feature
+  * Reword `can't write` to `Cannot write` as suggested by review comment
+  * Ensure destination dir for asset downloads exists when cloning jobs
+  * build(deps): bump ace-builds from 1.43.2 to 1.43.3
+
+-------------------------------------------------------------------
 Thu Sep 04 05:13:28 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1756962167.74f0204f:
