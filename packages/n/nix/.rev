@@ -112,4 +112,12 @@ support for software auditability among other things</comment>
 - Run %fdupes on %buildroot</comment>
     <requestid>1298912</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>74f9f2516c1aa24cd30b513779b963d5</srcmd5>
+    <version>2.31.1</version>
+    <time>1757101428</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.31.1:</comment>
+    <requestid>1302792</requestid>
+  </revision>
 </revisionlist>

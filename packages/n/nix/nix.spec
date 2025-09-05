@@ -35,7 +35,7 @@
 %endif
 
 Name:           nix
-Version:        2.30.2
+Version:        2.31.1
 Release:        0
 Summary:        The purely functional package manager
 License:        LGPL-2.1-only
@@ -59,6 +59,7 @@ BuildRequires:  libboost_container%{?force_boost_version}-devel
 BuildRequires:  libboost_context%{?force_boost_version}-devel
 BuildRequires:  libboost_coroutine%{?force_boost_version}-devel
 BuildRequires:  libboost_iostreams%{?force_boost_version}-devel
+BuildRequires:  libboost_url%{?force_boost_version}-devel
 BuildRequires:  libtool
 BuildRequires:  lowdown
 BuildRequires:  lsof
