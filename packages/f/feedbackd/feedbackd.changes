@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep  4 12:12:47 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.8.1:
+  + Avoid critical when `lfb_uninit()` isn't paired with `lfb_init()`
+- Changes from version 0.8.0:
+  + New `VibraPattern` feedbackd
+  + Allow to configure max haptic strength
+  + Allow to configure magnitude of `VibraRumble` feedback
+  + Use `[0.0, 1.0]` as magnitude in `VibraPeriodic` too
+  + Add haptic event for `notification-new-generic`
+  + Make `button-press` feedback less intrusive
+  + More internal fixes
+- Changes from version 0.7.0:
+  + Allow clients to pass a custom sound file for events. Useful
+    for custom ring tone feedback or custom notification sounds.
+- Changes from version 0.6.0
+  + feedbackd: Add vibration API
+  + spec: Clarify use of notification related events
+  + Fix crash in fbd-lectrl when group doesn't exist
+  + Don't fail tests with newer json-glib
+  + Allow to use (camera) flash LEDs as notification LED
+
+-------------------------------------------------------------------
 Sat Nov 16 23:15:01 UTC 2024 - Adrian Campos Garrido <adriancampos@teachelp.com>
 
 - Update to version 0.5.0
