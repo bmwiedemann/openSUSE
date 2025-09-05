@@ -1,7 +1,7 @@
 #
 # spec file for package boost-defaults
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -393,6 +393,14 @@ This package contains development headers for Boost.Wave library.
 
 This package installs the default Boost version of the library.
 
+%package     -n libboost_url-devel
+Summary:        Development headers for Boost.URL library
+Group:          Development/Libraries/C and C++
+Requires:       libboost_url%{boost_version}-devel
+
+%description -n libboost_url-devel
+This package contains development headers for Boost.URL library.
+
 %package     -n libboost_regex-devel
 Summary:        Development headers for Boost.Regex library
 Group:          Development/Libraries/C and C++
@@ -556,6 +564,9 @@ cp %{SOURCE1} .
 %doc README
 
 %files -n libboost_wave-devel
+%doc README
+
+%files -n libboost_url-devel
 %doc README
 
 %files -n libboost_regex-devel
