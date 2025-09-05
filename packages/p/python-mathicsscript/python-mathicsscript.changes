@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Aug 31 18:52:05 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 9.0.0:
+  * Add Python 3.13 support; drop 3.8 and 3.9 support.
+  * Track API changes in Mathics3 Scanner 9.0.0
+  * Make CLI options more like wolframscript.
+  * Option --read with alias -r is now -code and short option -c.
+  * Toggling Autobrace using the function key F4 has been fixed.
+    Function key F1 provides some rudimentary help in the bottom
+    bar.
+  * Match \( with \) in prompt-toolkit mode
+  * Bugs Fixed
+    - [gh#Mathics3/mathicsscript#82] Work around a bug giving
+      Set:setraw error
+    - [gh#Mathics3/mathicsscript#87] Exception 'Rule' object has
+      no attribute 'to_python'
+    - [gh#Mathics3/mathicsscript#104] Respect environment variable
+      NO_COLOR
+    - [gh#Mathics3/mathicsscript#105] Pygments-style None is not
+      disabling pygments style.
+- Enable builds for python 3.13.
+
+-------------------------------------------------------------------
 Thu Feb  6 11:46:05 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 8.0.0:
