@@ -1,8 +1,8 @@
 #
 # spec file for package 7zip
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 #
 
 
-%define stripped_version 2409
+%define stripped_version 2501
 Name:           7zip
-Version:        24.09
+Version:        25.01
 Release:        0
 Summary:        Command-line file archiver with high compression ratio
 # CPP/7zip/Compress/LzfseDecoder.cpp is under the BSD-3-Clause
