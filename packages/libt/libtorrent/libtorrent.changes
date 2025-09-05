@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep  5 11:31:57 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.0
+  * The ``network.block.*`` commands now work properly for IPv4/6,
+    although IPv6 support still has some issues.
+  * Converted curl/http to be thread-safe.
+
+-------------------------------------------------------------------
 Sat Aug 23 08:20:10 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.15.6
