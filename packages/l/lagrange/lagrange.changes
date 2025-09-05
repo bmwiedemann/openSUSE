@@ -1,13 +1,67 @@
 -------------------------------------------------------------------
+Thu Sep  4 20:02:53 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.19.0
+  - New features:
+    - Sidebar tab for exploring the directory structure of a capsule. All known
+      URLs (from page links, history, feed entries) are compiled into one
+      navigable hierarchy. This provides an alternative view of capsule
+      contents, for quick access and an overview.
+    - Sidebar tab for listing all open tabs ("vertical tabs"). The list
+      indicates which tabs have not been seen yet. Drag-and-drop can be used to
+      reorder tabs. There are status icons for page loading and audio playback.
+    - Filter text field in the Bookmarks sidebar: filters bookmarks based on
+      titles, URLs, and tags. Built-in tags like ".subscribed" can be used to
+      find bookmarks with special behavior (see Help section 1.4.4).
+    - Sidebar tab for managing feed subscriptions. Unlike the Feeds tab that
+      shows feed entries, the Subscriptions tab shows higher-level information
+      about each subscription, like the latest post date.
+    - Subscriptions sidebar context menu action "Reset Known Entries" for
+      clearing the local cache of known entries. On next refresh, only the
+      entries present in the source(s) are stored. (This is equivalent to
+      manually deleting the "feeds.txt" file.)
+    - Setting for permanently hiding the horizontal tab bar. You can manage open
+      tabs using the sidebar.
+    - Setting for showing quote text without italics.
+    - Link context menu action for copying the label text.
+    - Keyboard shortcuts for sidebar modes and moving current tab to a new
+      window.
+    - JPEG XL image decoding is supported via libjxl (optional). (Courtesy of
+      Christoph Liebender.)
+  - Changes and enhancements:
+    - Individual sidebar tabs can be shown and hidden. You can configure the
+      tabs separately for the left and right bars.
+    - The left and right sidebars have different tabs by default (previously the
+      same tabs were on both sides).
+    - A dropdown menu in the sidebar header allows switching to any mode.
+    - Reorganized settings: the Fonts tab has returned, and there is now a Theme
+      tab for page theme settings.
+    - X11: Restore window positions in their previous workspaces. (Courtesy of
+      @norayr.)
+  - Fixes:
+    - Moving a tab to a new window or opening a link in a new window sometimes
+      confused which window was the target.
+    - Clearing history did not update sidebars.
+    - Updating navbar back/forward buttons when switching tabs.
+    - Update link numbers/keys after a scroll stops, if numbering was activated
+      during the scroll.
+    - When parsing a username from a URL, require the name appears at the start
+      of the path.
+    - Crash when opening a malformed Titan URI.
+    - Potential crash when minimizing a window.
+    - Gopher: Encode % in the selector when forming a link URI.
+    - TUI: Handling non-printable characters in the text renderer.
+
+-------------------------------------------------------------------
 Thu Aug 21 20:36:58 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.18.7
-    - Revised handling of reserved URI characters according to RFC 3986. The
-      previous behavior did not fully conform to the standard.
-    - Fixed opening some WebP images. There was a problem checking for the
-      "image/webp" media type.
-    - Fixed removal of unexpected NUL characters from the source text.
-    - Fixed redundant mouse events when receiving touch events on the desktop.
+  - Revised handling of reserved URI characters according to RFC 3986. The
+    previous behavior did not fully conform to the standard.
+  - Fixed opening some WebP images. There was a problem checking for the
+    "image/webp" media type.
+  - Fixed removal of unexpected NUL characters from the source text.
+  - Fixed redundant mouse events when receiving touch events on the desktop.
 
 -------------------------------------------------------------------
 Wed Aug  6 18:33:19 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
