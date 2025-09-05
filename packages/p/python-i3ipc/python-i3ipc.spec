@@ -1,7 +1,7 @@
 #
 # spec file for package python-i3ipc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,11 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/altdesktop/i3ipc-python
 Source0:        https://github.com/altdesktop/i3ipc-python/archive/v%{version}.tar.gz#/i3ipc-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE https://github.com/altdesktop/i3ipc-python/issues/217
+Patch0:         test-aio.patch
 BuildRequires:  %{python_module asyncio}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-xlib}
 BuildRequires:  %{python_module setuptools}
@@ -51,7 +54,7 @@ also features a publish/subscribe mechanism for notifying interested parties of
 window manager events.
 
 %prep
-%setup -q -n i3ipc-python-%{version}
+%autosetup -p1 -n i3ipc-python-%{version}
 sed -i "s/'enum-compat'//" setup.py
 
 # Remove shebang which is not needed (that script cannot be executed
@@ -69,13 +72,15 @@ find examples/ -name \*.py -exec chmod -x '{}' \;
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+
 # test_shutdown_event_reconnect always fails
 # test_restart fails on openSUSE/SLE 15
 # test_window_event is intermittent
 # test_detailed_window_event stucks in obs, not with the local build (https://github.com/altdesktop/i3ipc-python/issues/192)
+# test_workspace gets stuck, test_event_exception and test_tick_event get lost in new asyncio loops https://github.com/altdesktop/i3ipc-python/issues/217
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
 xvfb-run --server-args "-screen 0 1920x1080x24" \
-  $python -m pytest -k 'not (test_shutdown_event_reconnect or test_restart or test_window_event or test_detailed_window_event)'
+  $python -m pytest -k 'not (test_shutdown_event_reconnect or test_restart or test_window_event or test_detailed_window_event or test_workspace or test_event_exception or test_tick_event)'
 }
 
 %files %{python_files}

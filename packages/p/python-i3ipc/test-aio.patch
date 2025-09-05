@@ -1,0 +1,28 @@
+Index: i3ipc-python-2.2.1/test/aio/ipctest.py
+===================================================================
+--- i3ipc-python-2.2.1.orig/test/aio/ipctest.py
++++ i3ipc-python-2.2.1/test/aio/ipctest.py
+@@ -1,5 +1,9 @@
+ from subprocess import Popen
+ import pytest
++try:
++    from pytest_asyncio import fixture
++except ImportError:
++    from pytest import fixture
+ 
+ from i3ipc.aio import Connection
+ from i3ipc import CommandReply
+@@ -15,11 +19,11 @@ class IpcTest:
+     timeout_thread = None
+     i3_conn = None
+ 
+-    @pytest.fixture(scope='class')
++    @fixture(scope='class')
+     def event_loop(self):
+         return asyncio.get_event_loop()
+ 
+-    @pytest.fixture(scope='class')
++    @fixture(scope='class')
+     async def i3(self):
+         process = Popen(['i3', '-c', 'test/i3.config'])
+         # wait for i3 to start up

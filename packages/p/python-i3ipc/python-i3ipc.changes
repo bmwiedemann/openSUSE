@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  5 15:21:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add pytest-asyncio dependency and test-aio.patch to fix tests
+- Skip some misbehaving tests
+
+-------------------------------------------------------------------
 Wed May 28 11:44:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
