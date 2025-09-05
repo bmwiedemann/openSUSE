@@ -1,12 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep  5 09:18:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2025.9.11:
+  * Git PR 585: Fix AttributeError: 'AnyAll' object has no attribute
+    '_key'
+
+-------------------------------------------------------------------
 Thu Jan  9 16:03:02 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 2024.11.06:
-  * Git issue 546: Partial match not working in some instances 
+  * Git issue 546: Partial match not working in some instances
     with non-greedy capture
 - from 2024.9.14:
-  * Reverted to actions/download-artifact@v3 and 
-    actions/upload-artifact@v3 in main.yml because GitHub Actions 
+  * Reverted to actions/download-artifact@v3 and
+    actions/upload-artifact@v3 in main.yml because GitHub Actions
     failed when using them.
 - from 2024.9.13:
   * Updated to actions/upload-artifact@v4 in main.yml.
@@ -17,7 +24,7 @@ Thu Jan  9 16:03:02 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 - from 2024.7.24:
   * Git issue 539: Bug: Partial matching fails on a simple example
 - from 2024.6.22:
-  * Git issue 535: Regex fails Unicode 15.1 GraphemeBreakTest due 
+  * Git issue 535: Regex fails Unicode 15.1 GraphemeBreakTest due
     to missing new GB9c rule implementation
 
 -------------------------------------------------------------------

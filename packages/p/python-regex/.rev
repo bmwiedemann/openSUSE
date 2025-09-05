@@ -265,4 +265,19 @@
     <comment></comment>
     <requestid>1236756</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>490f5d3b192998d21fc779c912025d21</srcmd5>
+    <version>2025.9.1</version>
+    <time>1757101353</time>
+    <user>anag_factory</user>
+    <comment>- update to 2025.9.11:
+  * Git PR 585: Fix AttributeError: 'AnyAll' object has no attribute
+    '_key'
+
+  * Git issue 546: Partial match not working in some instances
+  * Reverted to actions/download-artifact@v3 and
+    actions/upload-artifact@v3 in main.yml because GitHub Actions
+  * Git issue 535: Regex fails Unicode 15.1 GraphemeBreakTest due</comment>
+    <requestid>1302893</requestid>
+  </revision>
 </revisionlist>
