@@ -23,4 +23,37 @@
     <comment></comment>
     <requestid>1252350</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4220b53a33313c27177b32166a838547</srcmd5>
+    <version>1.20.3</version>
+    <time>1757101438</time>
+    <user>anag_factory</user>
+    <comment>- Add run-dir.patch:
+  *  let the systemd unit file create /run/stalld with the proper
+     permissions
+
+- Add systemd-execstart.patch:
+  * fix &quot;Service has more than one ExecStart= setting&quot; error
+    introduced in 9f2e4fc3
+- Add util-linux to the dependencies due to chrt
+
+- update to 1.20.3:
+  * stalld.service: Fix failure to set FIFO scheduling class
+  * bpf: Improve task tracking in sched_switch
+  * bpf/stalld: Introduce compute_ctxswc helper and update ctxswc
+    on sched_switch
+  * stalld: Automatically switch to log-only mode if DL-server
+    present
+  * bpf/stalld: Implement and use find_queued_task helper in
+    dequeue_task
+  * bpf/stalld: Introduce and use for_each_task_entry/
+    for_each_queued_task macros
+  * stalld: sched_attr: Do not define for glibc &gt;= 2.41
+  * stalld: Refactor verbose logging with dedicated macros
+  * bpf/stalld: Introduce generic 'log' macro for BPF debug prints
+  * bpf/stalld: Unify and generalize debug macro to DEBUG_STALLD
+
+- build with BPF support on aarch64/x86_64</comment>
+    <requestid>1302888</requestid>
+  </revision>
 </revisionlist>

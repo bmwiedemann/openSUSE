@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Aug 19 17:11:49 UTC 2025 - Marco Chiappero <marco.chiappero@suse.com>
+
+- Add run-dir.patch:
+  *  let the systemd unit file create /run/stalld with the proper
+     permissions
+
+-------------------------------------------------------------------
+Mon Aug 18 19:10:36 UTC 2025 - Marco Chiappero <marco.chiappero@suse.com>
+
+- Add systemd-execstart.patch:
+  * fix "Service has more than one ExecStart= setting" error
+    introduced in 9f2e4fc3
+- Add util-linux to the dependencies due to chrt
+
+-------------------------------------------------------------------
+Mon Aug 18 13:17:38 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.20.3:
+  * stalld.service: Fix failure to set FIFO scheduling class
+  * bpf: Improve task tracking in sched_switch
+  * bpf/stalld: Introduce compute_ctxswc helper and update ctxswc
+    on sched_switch
+  * stalld: Automatically switch to log-only mode if DL-server
+    present
+  * bpf/stalld: Implement and use find_queued_task helper in
+    dequeue_task
+  * bpf/stalld: Introduce and use for_each_task_entry/
+    for_each_queued_task macros
+  * stalld: sched_attr: Do not define for glibc >= 2.41
+  * stalld: Refactor verbose logging with dedicated macros
+  * bpf/stalld: Introduce generic 'log' macro for BPF debug prints
+  * bpf/stalld: Unify and generalize debug macro to DEBUG_STALLD
+
+-------------------------------------------------------------------
+Mon Aug 18 10:28:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- build with BPF support on aarch64/x86_64
+
+-------------------------------------------------------------------
 Mon Mar 10 11:04:00 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.19.8. Check https://gitlab.com/rt-linux-tools/stalld/-/releases

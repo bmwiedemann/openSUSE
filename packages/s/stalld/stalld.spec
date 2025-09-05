@@ -1,7 +1,7 @@
 #
 # spec file for package stalld
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,25 @@
 
 
 Name:           stalld
-Version:        1.19.8
+Version:        1.20.3
 Release:        0
 Summary:        Daemon that finds starving tasks and gives them a temporary boost
 License:        GPL-2.0-only AND GPL-2.0-or-later
 URL:            https://gitlab.com/rt-linux-tools/%{name}/%{name}.git
-Source0:        https://gitlab.com/rt-linux-tools/stalld/-/archive/v%{version}/stalld-v%{version}.tar.bz2
+Source0:        https://git.kernel.org/pub/scm/utils/stalld/stalld.git/snapshot/stalld-%{version}.tar.gz
+Patch0:         systemd-execstart.patch
+Patch1:         run-dir.patch
+%ifarch aarch64 x86_64
+BuildRequires:  bpftool
+BuildRequires:  clang
+BuildRequires:  llvm
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libbpf)
+%endif
 BuildRequires:  systemd-rpm-macros
 %{?systemd_requires}
 Requires(post): %fillup_prereq
+Requires:       util-linux
 
 %description
 The stalld program monitors the set of system threads,
@@ -36,13 +46,23 @@ boost using the SCHED_DEADLINE policy. The default is to
 allow 10 microseconds of runtime for 1 second of clock time.
 
 %prep
-%autosetup -v -p1 -n %{name}-v%{version}
+%autosetup -v -p1
 
 %build
-%make_build USE_BPF=0 SOPTS="" CFLAGS="%{optflags} %{build_cflags} -DVERSION=\\\"%{version}\\\"" stalld
+
+%make_build \
+%ifnarch aarch64 x86_64
+    USE_BPF=0 \
+%endif
+    DEFAULT_BPFTOOL=%{_sbindir}/bpftool SOPTS="" MOPTS="" FOPTS="%{optflags}" stalld
 
 %install
-%make_install USE_BPF=0 DOCDIR=%{_docdir} MANDIR=%{_mandir} BINDIR=%{_bindir} DATADIR=%{_datadir} VERSION=%{version}
+%make_install \
+%ifnarch aarch64 x86_64
+    USE_BPF=0 \
+%endif
+    DEFAULT_BPFTOOL=%{_sbindir}/bpftool DOCDIR=%{_docdir} MANDIR=%{_mandir} BINDIR=%{_bindir} DATADIR=%{_datadir}
+
 %make_install -C systemd UNITDIR=%{_unitdir}
 mkdir -p %{buildroot}%{_fillupdir}
 mv %{buildroot}%{_sysconfdir}/sysconfig/%{name} %{buildroot}%{_fillupdir}/sysconfig.%{name}
@@ -53,7 +73,7 @@ mv %{buildroot}%{_sysconfdir}/sysconfig/%{name} %{buildroot}%{_fillupdir}/syscon
 %{_unitdir}/%{name}.service
 %{_fillupdir}/sysconfig.%{name}
 %doc %{_docdir}/README.md
-%doc %{_mandir}/man8/stalld.8*
+%{_mandir}/man8/stalld.8%{?ext_man}
 %license gpl-2.0.txt
 
 %pre
