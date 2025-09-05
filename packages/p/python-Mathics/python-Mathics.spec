@@ -1,7 +1,7 @@
 #
 # spec file for package python-Mathics
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,20 +26,18 @@
 %define psuffix %{nil}
 %endif
 
-%define skip_python313 1
 %define pyname Mathics3
-%define src_ver 8.0.1
 Name:           python-Mathics%{psuffix}
-Version:        8.0.1
+Version:        9.0.0
 Release:        0
 Summary:        A general-purpose computer algebra system
 # Mathics itself is licensed as GPL-3.0 but it includes third-party software with MIT, BSD-3-Clause, and Apache-2.0 Licensing; also includes data from wikipedia licensed under CC-BY-SA-3.0 and GFDL-1.3
 License:        Apache-2.0 AND BSD-3-Clause AND GPL-3.0-only AND MIT
 URL:            https://mathics.github.io/
 Source0:        https://github.com/Mathics3/mathics-core/releases/download/%{version}/%{pyname}-%{version}.tar.gz
-BuildRequires:  %{python_module Mathics-Scanner >= 1.4.1}
+BuildRequires:  %{python_module Mathics-Scanner >= 2.0.0}
 BuildRequires:  %{python_module colorama}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module mpmath >= 0.19}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pexpect}
@@ -50,7 +48,7 @@ BuildRequires:  %{python_module sympy >= 1.13.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Mathics-Scanner >= 1.4.1
+Requires:       python-Mathics-Scanner >= 2.0.0
 Requires:       python-Pint
 Requires:       python-Pympler
 Requires:       python-mpmath >= 0.19
@@ -69,7 +67,7 @@ BuildArch:      noarch
 %if %{with test}
 # SECTION For tests
 BuildRequires:  %{python_module Mathics = %{version}}
-BuildRequires:  %{python_module Pillow >= 9.2 if %python-base >= 3.7}
+BuildRequires:  %{python_module Pillow >= 9.2}
 BuildRequires:  %{python_module Pint}
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module llvmlite}

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 31 04:44:06 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 9.0.0:
+  * Long list of changes, see
+    <https://github.com/Mathics3/mathics-core/releases/tag/9.0.0>
+- Enable python 3.13 support.
+
+-------------------------------------------------------------------
 Thu Jul 10 12:38:54 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Fix build failures due to change in dist-info dir naming scheme.
