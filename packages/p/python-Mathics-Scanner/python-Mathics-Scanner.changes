@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Aug 31 04:48:13 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.0:
+  * Support for saving token position information was started.
+  * Scanning was revised to handle more kinds of escape sequences
+    and to be sensitive to their placement inside and outside a
+    string.
+  * Tokenization support for Box Input operator \* was added.
+  * Small YML changes were made to reflect a better understanding
+    of boxing operators. In particular, \* is not a (prefix)
+    operator.
+  * Internals: Mathics3 scanner exceptions of class TranslateError
+    are incompatible with previous versions, and now store error
+    parameters, "name", "tag", and "args".
+  * Bugs fixed:
+    - gh#Mathics3/mathics-scanner#125
+    - gh#Mathics3/mathics-scanner#136
+
+-------------------------------------------------------------------
 Thu May 29 11:24:05 UTC 2025 - Max Lin <mlin@suse.com>
 
 - Fix Leap 16.0 build

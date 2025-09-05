@@ -1,7 +1,7 @@
 #
 # spec file for package python-Mathics-Scanner
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define skip_python2 1
 %define modname mathics_scanner
 Name:           python-Mathics-Scanner
-Version:        1.4.1
+Version:        2.0.0
 Release:        0
 Summary:        Character Tables and Tokenizer for Mathics and the Wolfram Language
 License:        GPL-3.0-only
 URL:            https://mathics.org/
 Source:         https://files.pythonhosted.org/packages/source/M/Mathics-Scanner/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
