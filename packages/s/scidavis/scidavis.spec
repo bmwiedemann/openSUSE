@@ -1,7 +1,7 @@
 #
 # spec file for package scidavis
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012 Quentin Denis <quentin@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,8 +40,7 @@ BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-qt5-devel
-BuildRequires:  python3-sip4
-BuildRequires:  python3-sip4-devel
+BuildRequires:  python3-sip-devel >= 6
 BuildRequires:  qwtplot3d-devel
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Network)

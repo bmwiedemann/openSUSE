@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 27 14:49:01 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Switch to a recent sip: It is supported since v2.4.2
+  gh#SciDAVis/scidavis#14
+
+-------------------------------------------------------------------
 Tue May  6 11:27:05 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Switch to building with cmake and ninja; this magically fixes
