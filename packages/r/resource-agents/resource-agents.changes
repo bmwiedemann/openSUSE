@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 04 08:05:12 UTC 2025 - varkoly@suse.com
+
+- Update to version 4.16.0+git92.52e588f2:
+  * Fix shellcheck errors on output redirection [SC2328]
+
+-------------------------------------------------------------------
 Thu Jul 24 07:38:20 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Update to version 4.16.0+git90.968ad701:

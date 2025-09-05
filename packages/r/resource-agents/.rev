@@ -1963,4 +1963,13 @@
   package ldirectord</comment>
     <requestid>1295449</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>ab581b4ea9ca4dbe05443dc011494627</srcmd5>
+    <version>4.16.0+git92.52e588f2</version>
+    <time>1757101333</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.16.0+git92.52e588f2:
+  * Fix shellcheck errors on output redirection [SC2328]</comment>
+    <requestid>1302689</requestid>
+  </revision>
 </revisionlist>
