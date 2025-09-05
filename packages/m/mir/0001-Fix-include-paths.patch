@@ -1,12 +1,28 @@
-From 9e7d2d41325fd09e89308101c67fd791a50c98c5 Mon Sep 17 00:00:00 2001
+From 1c8373885a30c70fa90256875c20cb08ca494981 Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Tue, 29 Oct 2024 17:57:08 -0700
 Subject: [PATCH 1/2] Fix include paths
 
 ---
- tests/include/mir/test/doubles/mock_libinput.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ src/platform/graphics/display_configuration.cpp | 4 ++--
+ tests/include/mir/test/doubles/mock_libinput.h  | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
+diff --git a/src/platform/graphics/display_configuration.cpp b/src/platform/graphics/display_configuration.cpp
+index 53054f0..9c09974 100644
+--- a/src/platform/graphics/display_configuration.cpp
++++ b/src/platform/graphics/display_configuration.cpp
+@@ -20,8 +20,8 @@
+ 
+ extern "C"
+ {
+-#include <libdisplay-info/edid.h>
+-#include <libdisplay-info/info.h>
++#include <libdisplay-info/libdisplay-info/edid.h>
++#include <libdisplay-info/libdisplay-info/info.h>
+ }
+ 
+ #include <ostream>
 diff --git a/tests/include/mir/test/doubles/mock_libinput.h b/tests/include/mir/test/doubles/mock_libinput.h
 index 4487f82..b59a438 100644
 --- a/tests/include/mir/test/doubles/mock_libinput.h
@@ -21,5 +37,5 @@ index 4487f82..b59a438 100644
  namespace mir
  {
 -- 
-2.48.1
+2.51.0
 

@@ -143,4 +143,41 @@ Will be a requirement for forthcoming miriway submission</comment>
     <comment></comment>
     <requestid>1292100</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>003093a84d1670e42573b476a0d30c39</srcmd5>
+    <version>2.22.0</version>
+    <time>1757101367</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.22.0:
+  * Breaking Changes:
+    - Consolidation of EDID Parsing
+      * User-.. and DisplayConfigurationOutput::edid replaced with
+        ::display_info
+      * mir::graphics::Edid removed
+      * miroil::Edid::Descriptor removed
+    - Nvidia 565+ breaks EGLStream support (gh#canonical/mir#4147)
+      * Use --platform-display-libs mir:atomic-kms
+        --platform-rendering-libs mir:gbm-kms to use our (unstable)
+        Nvidia-on-GBM support.  We'll follow up with a point
+        release to make this the default
+  * ABI summary:
+    - miral ABI unchanged at 7
+    - mircommon ABI unchanged at 11
+    - mircore ABI unchanged at 2
+    - miroil ABI bumped to 8
+    - mirplatform ABI bumped to 32
+    - mirserver ABI bumped to 65
+    - mirwayland ABI unchanged at 5
+    - mirplatformgraphics ABI unchanged at 23
+    - mirinputplatform ABI unchanged at 10
+  * Enhancements:
+    - static_config_display: add property-based display config
+      support (gh#canonical/mir#3872)
+    - Implement Simulated Secondary Click (gh#canonical/mir#3873)
+    - DRM: Explicit Synchronization Support (gh#canonical/mir#3717)
+    - live configuration facilites (gh#canonical/mir#3995)
+    - Atomic KMS: enable bypass (gh#canonical/mir#3595)
+    - fix: move minimized windows to the back of the Z stack</comment>
+    <requestid>1302775</requestid>
+  </revision>
 </revisionlist>

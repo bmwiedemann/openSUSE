@@ -27,16 +27,16 @@
 # Set globals for easier future maintenance
 %global commonlibsover 11
 %global mircoresover 2
-%global mirplatformsover 31
-%global lomirisover 7
+%global mirplatformsover 32
+%global lomirisover 8
 %global miralsover 7
-%global mirserversover 64
+%global mirserversover 65
 %global mirwaylandsover 5
 %global mirserverplatformsover 23
 %global mirevdevsover 10
 
 Name:           mir
-Version:        2.21.1
+Version:        2.22.0
 Release:        0
 Summary:        Libraries for building Wayland shells
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
@@ -82,6 +82,7 @@ BuildRequires:  pkgconfig(gflags)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtest) >= 1.8.0
+BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(libinput)
@@ -323,8 +324,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/miral-shell.desktop
 %{_bindir}/mir-*test*
 %{_bindir}/mir_*test*
 %{_libdir}/mir/tools/libmirserverlttng.so
-%{_libdir}/mir/server-platform/graphics-dummy.so
-%{_libdir}/mir/server-platform/input-stub.so
+%{_libdir}/mir/server-platform/graphics-dummy.so.%{mirserverplatformsover}
+%{_libdir}/mir/server-platform/input-stub.so.%{mirevdevsover}
 
 %files test-libs-static
 %license COPYING.GPL*
