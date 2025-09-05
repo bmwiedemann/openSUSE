@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep  4 15:38:55 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update version 25.10:
+  * New miriway-shell.settings configuration file to contain
+    configuration options that will be reloaded when the file is
+    updated. If the file does not exist when miriway starts, it
+    will be populated with comments describing the available
+    options.
+  * Support for Wayland protocol extension ext-workspace-v1
+  * All the accessibility options supported by Mir 2.22 are
+    available via the miriway-shell.settings configuration file.
+  * Miriway Changes:
+    - ext-workspace-v1 integrates Miriway's workspaces with shell
+      components (gh#Miriway/Miriway#160)
+    - Wire up "live config" options for accessibility, input and
+      keymap (gh#Miriway/Miriway#168)
+
+-------------------------------------------------------------------
 Thu Jul  3 20:54:59 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Switch from sddm-kalpa to sddm, now that sddm is capable of
