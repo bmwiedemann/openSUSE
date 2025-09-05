@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Aug 29 14:44:19 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Removed old update scripts which fixes boo#1245204 for traefik reloease v3.
+
+- Version 3.5.1
+
+  Bug fixes:
+    * accesslogs,otel
+      - Provide Log Body in OTEL access Log 
+    * acme
+      - Bump github.com/go-acme/lego/v4 to v4.25.2
+    * k8s/gatewayapi
+      - Make app protocol case insensitive
+    * otel
+      - Fix misspelling in docs
+    * server
+      - Bump to github.com/pires/go-proxyproto v0.8.1
+      - Silent expected errors on receiving sigterm signal
+    * tracing
+      - Fix capturedRequestHeaders and capturedResponseHeaders headers
+      options not being canonicalized in tracing
+      - Follow OTel semantic conventions for root span naming
+    * webui
+      - Update Traefik Proxy dashboard UI development deps
+    * docker
+      - Bump github.com/docker/docker to v28.3.3 (#12007 by kevinpollet)
+    * Refactor to use reflect.TypeFor
+
+-------------------------------------------------------------------
 Tue Jul 29 10:00:18 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 3.5.0
@@ -627,6 +656,8 @@ Fri May  3 15:14:17 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 - Removed traefik-fix-int-overflow-with-go-generate-10452.patch
 
 - Update to version 2.11.2
+  * Fix for boo#1235167 CVE-2024-28180
+  
   * Important
     * Read the migration guide at https://doc.traefik.io/traefik/migration/v2/#v2112
 
@@ -938,6 +969,7 @@ Tue Jun 07 08:27:42 UTC 2022 - alexandre.vicenzi@suse.com
     * [middleware,tls] Use CNAME for SNI check on host header
     * [middleware,tracing] Rename Datadog span tags
     * [tls] Apply the same approach as the rules system on the TLS configuration choice
+  * Includes a update to gopkg.in/yaml.v3 v3.0.1 which fixes CVE-2022-28948 resp. boo#1248536
 
 -------------------------------------------------------------------
 Fri Feb 04 13:37:58 UTC 2022 - alexandre.vicenzi@suse.com
@@ -1012,3 +1044,4 @@ Thu Jan 10 14:50:22 UTC 2019 - pgeorgiadis@suse.com
  * Allow empty path with App-root annotation
  * kubernetes: sort and uniq TLS secrets
  * Skip TLS section with no secret in Kubernetes ingress
+

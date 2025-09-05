@@ -1,7 +1,7 @@
 #
 # spec file for package traefik
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define buildmode pie
 %endif
 Name:           traefik
-Version:        3.5.0
+Version:        3.5.1
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT
@@ -115,48 +115,6 @@ install -m 644 %{SOURCE6} %{buildroot}/%{_sysconfdir}/logrotate.d/traefik
 %post
 %service_add_post %{name}.service
 %{fillup_only -n %{name}}
-
-# prepare ownership for operations as root user
-chown -R root: %{_sysconfdir}/%{name}
-chown root: %{_localstatedir}/lib/%{name}
-
-if [ -e "%{_sysconfdir}/%{name}/acme.json" ] ; then
-	# try to move acme.json file from old directory to the new location
-	if [ -L "%{_sysconfdir}/%{name}/acme.json" ] ; then
-		echo "Delete the symbolic link %{_sysconfdir}/%{name}/acme.json" 1>&2
-		echo "The ACME file must be placed in %{_localstatedir}/lib/traefik" 1>&2
-		exit 0
-	fi
-	if [ -s "%{_sysconfdir}/%{name}/acme.json" ] ; then
-		if [ -s "%{_localstatedir}/lib/%{name}/acme.json" ] ; then
-			# if not-empty acme.json files exists on old and new location, write warning
-			echo "A non-empty acme.json file exists in:" 1>&2
-			echo "%{_sysconfdir}/%{name} and %{_localstatedir}/lib/%{name}" 1>&2
-			echo "Please clean up this situation and place the correct file in %{_localstatedir}/lib/%{name}" 1>&2
-		else
-			# if not-empty acme.json exists on old location and no file or empty file exists on new location
-			# move it to the new location
-			mv %{_sysconfdir}/%{name}/acme.json %{_localstatedir}/lib/%{name}/acme.json
-			sed -i -e 's|%{_sysconfdir}/traefik/acme.json|%{_localstatedir}/lib/traefik/acme.json|' %{_sysconfdir}/%{name}/%{name}.yml
-		fi
-	else
-		# remove empty acme.json file from old location
-		rm "%{_sysconfdir}/%{name}/acme.json"
-		sed -i -e 's|%{_sysconfdir}/traefik/acme.json|%{_localstatedir}/lib/traefik/acme.json|' %{_sysconfdir}/%{name}/%{name}.yml
-	fi
-fi
-# set correct permissions
-chmod 0750 %{_sysconfdir}/%{name} %{_sysconfdir}/%{name}/conf.d
-find %{_sysconfdir}/%{name} -type d -exec chmod 0750 {} \;
-find %{_sysconfdir}/%{name} -type f -exec chmod 0640 {} \;
-
-chmod 0700 %{_localstatedir}/lib/%{name}
-chmod 0600 %{_localstatedir}/lib/%{name}/*
-
-# set ownership for normal operation
-chown -R root:traefik %{_sysconfdir}/%{name}
-chown -R traefik: %{_localstatedir}/lib/%{name}
-chown -R traefik: %{_localstatedir}/log/%{name}
 
 # update traefik user's home directory
 sysuser_homedir="$(getent passwd traefik | cut -d: -f6)"
