@@ -1026,4 +1026,14 @@ of the last blockers as we're still waiting for an upstream fix. (forwarded requ
     <comment></comment>
     <requestid>1272939</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>9401adac2d7fc83dc9a719317c39c5c1</srcmd5>
+    <version>5.15.19</version>
+    <time>1757101334</time>
+    <user>anag_factory</user>
+    <comment>- Change the way we pin to ffmpeg-7: set maximum versions for the
+  libav* buildrequires insteaf of hardcoding ffmpeg-7-*devel. This
+  allows OBS to still shortcut through the mini packages. (forwarded request 1302712 from dimstar)</comment>
+    <requestid>1302714</requestid>
+  </revision>
 </revisionlist>

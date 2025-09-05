@@ -1,7 +1,7 @@
 #
 # spec file for package libqt5-qtwebengine
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,6 +22,7 @@
 %bcond_without system_ffmpeg
 %bcond_without system_minizip
 %bcond_without pipewire
+
 # The default python version is too old on Leap 15
 %{?sle15_python_module_pythons}
 %if 0%{?suse_version} == 1500
@@ -35,15 +36,15 @@
 %global _qtwebengine_dictionaries_dir %{_libqt5_datadir}/qtwebengine_dictionaries
 
 Name:           libqt5-qtwebengine
-Version:        5.15.18
+Version:        5.15.19
 Release:        0
 Summary:        Qt 5 WebEngine Library
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.15.18
-%define so_version 5.15.18
+%define real_version 5.15.19
+%define so_version 5.15.19
 %define tar_version qtwebengine-everywhere-src-%{version}
 Source:         %{tar_version}.tar.xz
 Source99:       libqt5-qtwebengine-rpmlintrc
@@ -64,16 +65,12 @@ Patch6:         Add-missing-dependencies.patch
 # PATCH-FIX-UPSTREAM -- ICU 75 compatibility
 Patch7:         qt5-webengine-icu-75.patch
 Patch8:         0001-Use-default-constructor-in-place-of-self-delegation-.patch
-# PATCH-FIX-UPSTREAM -- python >= 3.12 compat
-Patch9:         python3.12-imp.patch
-Patch10:        python3.12-six.patch
-Patch11:        python3.13-pipes.patch
 # PATCH-FIX-UPSTREAM https://bugreports.qt.io/browse/QTBUG-57709?focusedId=427082#comment-427082
-Patch12:        sandbox_recvmsg.patch
+Patch9:         sandbox_recvmsg.patch
 # PATCH-FIX-UPSTREAM -- selected backported upstream changes to support gcc-15
-Patch13:        qtwebengine-5.15.18-gcc15-cstdint.patch
+Patch10:        qtwebengine-5.15.18-gcc15-cstdint.patch
 ### Patch 50-99 are applied conditionally
-# PATCH-FIX-OPENSUSE -- allow building qtwebengine with ffmpeg5
+# PATCH-FIX-UPSTREAM -- allow building qtwebengine with ffmpeg 5
 Patch50:        qtwebengine-ffmpeg5.patch
 Patch51:        qt5-webengine-ffmpeg7.patch
 ###
@@ -154,9 +151,9 @@ BuildRequires:  pkgconfig(icu-uc) >= 65.0
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(lcms2)
 %if %{with system_ffmpeg}
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libavcodec) < 62
+BuildRequires:  pkgconfig(libavformat) < 62
+BuildRequires:  pkgconfig(libavutil) < 60
 %endif
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libdrm)
@@ -314,9 +311,6 @@ Examples for the libqt5-qtpdf module.
 %patch -P8 -p1
 %patch -P9 -p1
 %patch -P10 -p1
-%patch -P11 -p1
-%patch -P12 -p1
-%patch -P13 -p1
 
 # FFmpeg 5
 %if %{with system_ffmpeg}

@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Sep  4 09:03:35 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Change the way we pin to ffmpeg-7: set maximum versions for the
+  libav* buildrequires insteaf of hardcoding ffmpeg-7-*devel. This
+  allows OBS to still shortcut through the mini packages.
+
+-------------------------------------------------------------------
+Tue Sep 02 07:23:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to version 5.15.19:
+  * Bump version to 5.15.19
+  * qmake: Fix qmake2cmake parsing issue for 5.15 SBOM
+  * Update Chromium (patched with security updates up to
+    135.0.7049.95):
+  * [Backport] CVE-2024-10229: Inappropriate implementation in Extensions
+  * [Backport] CVE-2024-10827: Use after free in Serial
+  * [Backport] Security bug 378701682
+  * [Backport] CVE-2024-12694: Use after free in Compositing
+  * [Backport] Security bug 382135228
+  * [Backport] Security bug 384565015
+  * [Backport] CVE-2025-0436: Integer overflow in Skia
+  * [Backport] CVE-2024-11477 / Security bug 383772517
+  * [Backport] CVE-2025-0996: Inappropriate implementation in Browser UI
+  * [Backport] CVE-2025-1426: Heap buffer overflow in GPU
+  * [Backport] Security bug 396481096
+  * [Backport] CVE-2025-0762: Use after free in DevTools
+  * [Backport] CVE-2025-0999: Heap buffer overflow in V8
+  * [Backport] CVE-2024-55549: Fix UAF related to excluded namespaces
+  * [Backport] CVE-2025-24855 Fix use-after-free of XPath context node
+  * [backport] CVE-2025-1919
+  * [Backport] CVE-2025-2783: Incorrect handle provided in
+    unspecified circumstances in Mojo on Windows
+  * [backport] CVE-2025-24201
+  * [backport] CVE-2025-2136
+  * [Backport] Security bug 399002829
+  * [Backport] Security bug 396460489
+  * [Backport] CVE-2025-3619
+  * Various python fixes
+- Drop patches:
+  * python3.12-imp.patch
+  * python3.12-six.patch
+  * python3.13-pipes.patch
+- Don't try to build with ffmpeg >= 8 on factory
+
+-------------------------------------------------------------------
 Thu Apr 24 21:13:27 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Add some backported upstream changes to fix gcc-15 compile time
