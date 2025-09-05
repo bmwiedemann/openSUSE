@@ -50,6 +50,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  timezone
 Requires:       python-amqp >= 5.1.1
+Requires:       python-packaging
 Requires:       python-tzdata
 Requires:       python-vine
 Recommends:     python-Brotli >= 1.0.9

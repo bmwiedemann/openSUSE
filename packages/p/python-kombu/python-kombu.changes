@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  5 02:43:28 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Refresh support-pyro-5.patch to no longer use Pyro 4 compatability.
+
+-------------------------------------------------------------------
 Tue Aug 12 12:25:54 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - Convert to pip-based build

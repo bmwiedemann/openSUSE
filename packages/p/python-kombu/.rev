@@ -1029,4 +1029,12 @@
     <comment></comment>
     <requestid>1299117</requestid>
   </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>4836e0670617a85e821822480354ef8f</srcmd5>
+    <version>5.5.4</version>
+    <time>1757101422</time>
+    <user>anag_factory</user>
+    <comment>- Refresh support-pyro-5.patch to no longer use Pyro 4 compatability.</comment>
+    <requestid>1302835</requestid>
+  </revision>
 </revisionlist>
