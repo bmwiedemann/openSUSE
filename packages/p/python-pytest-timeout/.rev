@@ -159,4 +159,14 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1275114</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8a7ffebb9050f232aa3d3cd6fcd1166c</srcmd5>
+    <version>2.4.0</version>
+    <time>1757101349</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.0:
+  * Detect debuggers registered with sys.monitoring.
+  * Make it clear the timeout message comes from pytest-timeout.</comment>
+    <requestid>1302886</requestid>
+  </revision>
 </revisionlist>
