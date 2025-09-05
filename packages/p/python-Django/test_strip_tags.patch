@@ -10,11 +10,11 @@ Subject: [PATCH] Fixed #36499 -- Adjusted
  tests/utils_tests/test_html.py | 4 ++--
  2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/tests/test_utils/tests.py b/tests/test_utils/tests.py
-index 494a0ea8d384..0de19eae9072 100644
---- a/tests/test_utils/tests.py
-+++ b/tests/test_utils/tests.py
-@@ -959,10 +959,10 @@ def test_parsing_errors(self):
+Index: django-5.2.6/tests/test_utils/tests.py
+===================================================================
+--- django-5.2.6.orig/tests/test_utils/tests.py
++++ django-5.2.6/tests/test_utils/tests.py
+@@ -945,10 +945,10 @@ class HTMLEqualTests(SimpleTestCase):
              self.assertHTMLEqual("", "<p>")
          error_msg = (
              "First argument is not valid HTML:\n"
@@ -22,25 +22,28 @@ index 494a0ea8d384..0de19eae9072 100644
 +            "('Unexpected end tag `div` (Line 1, Column 0)', (1, 0))"
          )
          with self.assertRaisesMessage(AssertionError, error_msg):
--            self.assertHTMLEqual("< div></ div>", "<div></div>")
+-            self.assertHTMLEqual("< div></div>", "<div></div>")
 +            self.assertHTMLEqual("</div>", "<div></div>")
          with self.assertRaises(HTMLParseError):
              parse_html("</p>")
  
-diff --git a/tests/utils_tests/test_html.py b/tests/utils_tests/test_html.py
-index 4ce552e79a0d..205eaeca1668 100644
---- a/tests/utils_tests/test_html.py
-+++ b/tests/utils_tests/test_html.py
-@@ -142,10 +142,10 @@ def test_strip_tags(self):
-             ("&gotcha&#;<>", "&gotcha&#;<>"),
-             ("<sc<!-- -->ript>test<<!-- -->/script>", "ript>test"),
+Index: django-5.2.6/tests/utils_tests/test_html.py
+===================================================================
+--- django-5.2.6.orig/tests/utils_tests/test_html.py
++++ django-5.2.6/tests/utils_tests/test_html.py
+@@ -162,13 +162,13 @@ class TestUtilsHtml(SimpleTestCase):
              ("<script>alert()</script>&h", "alert()h"),
--            ("><!" + ("&" * 16000) + "D", "><!" + ("&" * 16000) + "D"),
-+            ("><!" + ("&" * 16000) + "D", ">"),
+             (
+                 "><!" + ("&" * 16000) + "D",
+-                ">" if htmlparser_fixed else "><!" + ("&" * 16000) + "D",
++                ">",
+             ),
              ("X<<<<br>br>br>br>X", "XX"),
              ("<" * 50 + "a>" * 50, ""),
--            (">" + "<a" * 500 + "a", ">" + "<a" * 500 + "a"),
-+            (">" + "<a" * 500 + "a", ">"),
+             (
+                 ">" + "<a" * 500 + "a",
+-                ">" if htmlparser_fixed else ">" + "<a" * 500 + "a",
++                ">",
+             ),
              ("<a" * 49 + "a" * 951, "<a" * 49 + "a" * 951),
              ("<" + "a" * 1_002, "<" + "a" * 1_002),
-         )

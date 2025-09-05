@@ -1,7 +1,7 @@
 #
 # spec file for package python-Django
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-Django
-Version:        5.2.5
+Version:        5.2.6
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
@@ -36,6 +36,7 @@ Source1:        https://www.djangoproject.com/m/pgp/Django-%{version}.checksum.t
 Source2:        %{name}.keyring
 Source99:       python-Django-rpmlintrc
 # PATCH-FIX-UPSTREAM https://github.com/django/django/pull/19639 Fixed #36499 -- Adjusted utils_tests.test_html.TestUtilsHtml.test_strip_tags following Python's HTMLParser new behavior.
+# fixed and refined upstream, but some of our interpreters weren't updated to a new version yet and still only carry the patch, so providing the non-conditional version
 Patch0:         test_strip_tags.patch
 # PATCH-FIX-UPSTREAM https://github.com/django/django/pull/19530 Fixed #36421 -- Made test_msgfmt_error_including_non_ascii compatible with with msgfmt 0.25.
 Patch1:         support-msgfmt-0.25.patch

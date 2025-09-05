@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep  4 10:02:00 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.2.6 (bsc#1248810)
+  * CVE-2025-57833: Potential SQL injection in FilteredRelation column aliases
+  * Fixed a bug where using QuerySet.values() or values_list() with a ForeignObject
+    composed of multiple fields returned incorrect results instead of tuples of
+    the referenced fields
+- Rebased test_strip_tags.patch
+
+-------------------------------------------------------------------
 Tue Aug 12 10:52:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.2.5
