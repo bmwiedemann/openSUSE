@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep  4 11:58:27 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Set net-tools conflict version properly.
+
+-------------------------------------------------------------------
+Mon Sep  1 21:00:13 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Drop ether-wake binary in favor of wol. It was never part of the
+  upstream net-tools, and we have ether-wake in busybox. Bump rpm
+  version to 2.10.0.0.1 to make a seamless update possible
+  (boo#1249034, drop 0001-Add-ether-wake-binary.patch).
+- Provide support for net-tools-dummy (bsc#1242048).
+- Remove net_tool Provides/Obsoletes for SuSE Linux 7 and SLES 7.
+
+-------------------------------------------------------------------
 Thu Aug 28 18:46:35 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Drop old Fedora patch 0006-Allow-interface-stacking.patch. It

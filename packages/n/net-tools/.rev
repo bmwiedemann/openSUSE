@@ -476,4 +476,12 @@ See see http://lists.opensuse.org/opensuse-factory/2015-06/msg00133.html</commen
   net-tools-ifconfig-long-name-warning.patch).</comment>
     <requestid>1301847</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>b08bdf1d8066457370bbbff5a2fd6596</srcmd5>
+    <version>2.10+1</version>
+    <time>1757101339</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1302736</requestid>
+  </revision>
 </revisionlist>

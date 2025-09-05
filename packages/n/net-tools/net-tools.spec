@@ -17,18 +17,20 @@
 
 
 Name:           net-tools
-Version:        2.10
+# The real version is 2.10. But we dropped downstream ether-wake, so bump version to detect this change.
+# When an upstream update will appear, return back lines marked with #E#
+%define _version 2.10
+Version:        2.10+1
 Release:        0
 Summary:        Important Programs for Networking
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://sourceforge.net/projects/net-tools/
-Source:         https://sourceforge.net/projects/net-tools/files/net-tools-%{version}.tar.xz
+#E#Source:         https://sourceforge.net/projects/net-tools/files/net-tools-%%{version}.tar.xz
+Source:         https://sourceforge.net/projects/net-tools/files/net-tools-%{_version}.tar.xz
 # PATCH-FEATURE-SUSE: set configure values to our liking as we do not need
 # everything here
 Patch0:         net-tools-configure.patch
-# Git formatted patches described in each patch
-Patch1:         0001-Add-ether-wake-binary.patch
 Patch2:         0002-Do-not-warn-about-interface-socket-not-binded.patch
 Patch4:         0004-By-default-do-not-fopen-anything-in-netrom_gr.patch
 Patch7:         0007-Introduce-T-notrim-option-in-netstat.patch
@@ -52,31 +54,36 @@ Patch15:        net-tools-ax25+netrom-overflow-2.patch
 Patch16:        net-tools-ifconfig-long-name-warning.patch
 BuildRequires:  help2man
 Recommends:     traceroute >= 2.0.0
-Provides:       net_tool = %{version}
-Obsoletes:      net_tool < %{version}
 
 %description
 This package contains programs for network administration and maintenance.
 Most of the utilities formerly contained in this package (netstat, arp,
-ifconfig, rarp, route) are obsoleted by the tools from iproute2 package (ip, ss)
-and have been moved to net-tools-deprecated.
+ifconfig, rarp, route, ether-wake) are obsoleted by the tools from iproute2
+package (ip, ss) and have been moved to net-tools-deprecated.
 
 %package deprecated
 Summary:        Deprecated Networking Utilities
 Group:          Productivity/Networking/Other
+Obsoletes:      %{name}-dummy
 
 %description deprecated
-This package contains the deprecated network utilities arp, ifconfig, netstat and route,
-which have been replaced by tools from the iproute2 package:
+This package contains the deprecated network utilities arp, ifconfig,
+netstat and route, which have been replaced by tools from the iproute2
+package:
   * arp -> ip [-r] neigh
-  * ifconfig -> ip a
+  * ether-wake -> wol
+    or use busybox-ether-wake
+  * ifconfig -> ip addr
+  * ipmaddr -> ip maddress
+  * iptunnel -> ip tunnel
   * netstat -> ss [-r]
-  * route -> ip r
+  * route -> ip route
 
 %lang_package
 
 %prep
-%setup -q
+#E#%%setup -q
+%setup -q -n %{name}-%{_version}
 %autopatch -p1
 
 %build
@@ -86,7 +93,6 @@ make %{?_smp_mflags}
 
 %install
 %make_install BINDIR=%{_bindir} SBINDIR=%{_sbindir}
-
 # remove rarp as it is not usefull with our kernel
 rm -fv %{buildroot}%{_prefix}/*bin/rarp
 rm -fv %{buildroot}/%{_mandir}/man*/rarp.*
@@ -115,12 +121,10 @@ done
 %files
 %license COPYING
 %doc README ABOUT-NLS
-%{_sbindir}/ether-wake
 %{_sbindir}/nameif
 %{_sbindir}/plipconfig
 %{_sbindir}/slattach
 %if 0%{?suse_version} < 1550
-/sbin/ether-wake
 /sbin/nameif
 /sbin/plipconfig
 /sbin/slattach
@@ -132,7 +136,6 @@ done
 %{_mandir}/fr/man8/plipconfig.8%{?ext_man}
 %{_mandir}/fr/man8/slattach.8%{?ext_man}
 %{_mandir}/man5/ethers.5%{?ext_man}
-%{_mandir}/man8/ether-wake.8%{?ext_man}
 %{_mandir}/man8/nameif.8%{?ext_man}
 %{_mandir}/man8/plipconfig.8%{?ext_man}
 %{_mandir}/man8/slattach.8%{?ext_man}
