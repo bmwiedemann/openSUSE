@@ -255,4 +255,16 @@
 - Update Requires from setup.py (forwarded request 1286586 from glaubitz)</comment>
     <requestid>1287948</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>43348e36e2e86994f622acc8ced97088</srcmd5>
+    <version>10.0.0</version>
+    <time>1757101475</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 10.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1302855 from glaubitz)</comment>
+    <requestid>1302933</requestid>
+  </revision>
 </revisionlist>
