@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Sep  5 09:19:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.12:
+  * Show fixes by default
+  * [`airflow`] Convert `DatasetOrTimeSchedule(datasets=...)`
+    to `AssetOrTimeSchedule(assets=...)` (`AIR311`)
+  * [`airflow`] Improve the `AIR002` error message
+  * [`airflow`] Move
+    `airflow.operators.postgres_operator.Mapping` from `AIR302`
+    to `AIR301`
+  * [`flake8-async`] Implement `blocking-input` rule
+    (`ASYNC250`)
+  * [`flake8-use-pathlib`] Make `PTH119` and `PTH120` fixes
+    unsafe because they can change behavior
+  * [`pylint`] Add U+061C to `PLE2502`
+  * [`ruff`] Fix false negative for empty f-strings in `deque`
+    calls (`RUF037`)
+  * Less confidently mark f-strings as empty when inferring
+    truthiness
+  * [`fastapi`] Fix false positive for paths with spaces around
+    parameters (`FAST003`)
+  * [`flake8-comprehensions`] Skip `C417` when lambda contains
+    `yield`/`yield from`
+  * [`perflint`] Handle tuples in dictionary comprehensions
+    (`PERF403`)
+
+-------------------------------------------------------------------
 Tue Sep  2 14:04:47 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update vendor tarball to fix CVE-2025-58160 (bsc#1249011)
@@ -6,43 +33,43 @@ Tue Sep  2 14:04:47 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 -------------------------------------------------------------------
 Thu Aug 28 21:53:00 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.12.11 
+- update to 0.12.11
  * Preview features
-  * [airflow] Extend AIR311 and AIR312 rules 
-  * [airflow] Replace wrong path airflow.io.storage with airflow.io.store (AIR311) 
-  * [flake8-async] Implement blocking-http-call-httpx-in-async-function (ASYNC212) 
-  * [flake8-logging-format] Add auto-fix for f-string logging calls (G004) 
-  * [flake8-use-pathlib] Add autofix for PTH211 
-  * [flake8-use-pathlib] Make PTH100 fix unsafe because it can change behavior 
+  * [airflow] Extend AIR311 and AIR312 rules
+  * [airflow] Replace wrong path airflow.io.storage with airflow.io.store (AIR311)
+  * [flake8-async] Implement blocking-http-call-httpx-in-async-function (ASYNC212)
+  * [flake8-logging-format] Add auto-fix for f-string logging calls (G004)
+  * [flake8-use-pathlib] Add autofix for PTH211
+  * [flake8-use-pathlib] Make PTH100 fix unsafe because it can change behavior
  * Bug fixes
-  * [pyflakes, pylint] Fix false positives caused by __class__ cell handling (F841, PLE0117) 
-  * [pyflakes] Fix allowed-unused-imports matching for top-level modules (F401) 
-  * [ruff] Fix false positive for t-strings in default-factory-kwarg (RUF026) 
-  * [ruff] Preserve relative whitespace in multi-line expressions (RUF033) 
+  * [pyflakes, pylint] Fix false positives caused by __class__ cell handling (F841, PLE0117)
+  * [pyflakes] Fix allowed-unused-imports matching for top-level modules (F401)
+  * [ruff] Fix false positive for t-strings in default-factory-kwarg (RUF026)
+  * [ruff] Preserve relative whitespace in multi-line expressions (RUF033)
  * Rule changes
-  * [ruff] Handle empty t-strings in unnecessary-empty-iterable-within-deque-call (RUF037) 
+  * [ruff] Handle empty t-strings in unnecessary-empty-iterable-within-deque-call (RUF037)
  * Documentation
-  * Fix incorrect D413 links in docstrings convention FAQ 
-  * [flake8-use-pathlib] Update links to the table showing the correspondence between os and pathlib 
+  * Fix incorrect D413 links in docstrings convention FAQ
+  * [flake8-use-pathlib] Update links to the table showing the correspondence between os and pathlib
 
 -------------------------------------------------------------------
 Fri Aug 22 11:09:22 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.12.10
  * Preview features
-  * [flake8-simplify] Implement fix for maxsplit without separator (SIM905) 
-  * [flake8-use-pathlib] Add fixes for PTH102 and PTH103 
+  * [flake8-simplify] Implement fix for maxsplit without separator (SIM905)
+  * [flake8-use-pathlib] Add fixes for PTH102 and PTH103
  * Bug fixes
-  * [isort] Handle multiple continuation lines after module docstring (I002) 
-  * [pyupgrade] Avoid reporting __future__ features as unnecessary when they are used (UP010) 
-  * [pyupgrade] Handle nested Optionals (UP045) 
+  * [isort] Handle multiple continuation lines after module docstring (I002)
+  * [pyupgrade] Avoid reporting __future__ features as unnecessary when they are used (UP010)
+  * [pyupgrade] Handle nested Optionals (UP045)
  * Rule changes
-  * [pycodestyle] Make E731 fix unsafe instead of display-only for class assignments 
-  * [pyflakes] Add secondary annotation showing previous definition (F811) 
+  * [pycodestyle] Make E731 fix unsafe instead of display-only for class assignments
+  * [pyflakes] Add secondary annotation showing previous definition (F811)
  * Documentation
-  * Fix description of global config file discovery strategy 
-  * Update outdated links to https://typing.python.org/en/latest/source/stubs.html 
-  * [flake8-annotations] Remove unused import in example (ANN401) 
+  * Fix description of global config file discovery strategy
+  * Update outdated links to https://typing.python.org/en/latest/source/stubs.html
+  * [flake8-annotations] Remove unused import in example (ANN401)
 
 -------------------------------------------------------------------
 Fri Aug 15 12:56:45 UTC 2025 - Dirk Müller <dmueller@suse.com>

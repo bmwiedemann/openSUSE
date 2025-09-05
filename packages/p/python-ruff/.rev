@@ -2498,4 +2498,41 @@
     <comment></comment>
     <requestid>1302462</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>69c3cf31f18be2b9ac09d4446a1ad03f</srcmd5>
+    <version>0.12.12</version>
+    <time>1757101354</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.12.12:
+  * Show fixes by default
+  * [`airflow`] Convert `DatasetOrTimeSchedule(datasets=...)`
+    to `AssetOrTimeSchedule(assets=...)` (`AIR311`)
+  * [`airflow`] Improve the `AIR002` error message
+  * [`airflow`] Move
+    `airflow.operators.postgres_operator.Mapping` from `AIR302`
+    to `AIR301`
+  * [`flake8-async`] Implement `blocking-input` rule
+    (`ASYNC250`)
+  * [`flake8-use-pathlib`] Make `PTH119` and `PTH120` fixes
+    unsafe because they can change behavior
+  * [`pylint`] Add U+061C to `PLE2502`
+  * [`ruff`] Fix false negative for empty f-strings in `deque`
+    calls (`RUF037`)
+  * Less confidently mark f-strings as empty when inferring
+    truthiness
+  * [`fastapi`] Fix false positive for paths with spaces around
+    parameters (`FAST003`)
+  * [`flake8-comprehensions`] Skip `C417` when lambda contains
+    `yield`/`yield from`
+  * [`perflint`] Handle tuples in dictionary comprehensions
+    (`PERF403`)
+
+- update to 0.12.11
+  * [airflow] Extend AIR311 and AIR312 rules
+  * [airflow] Replace wrong path airflow.io.storage with airflow.io.store (AIR311)
+  * [flake8-async] Implement blocking-http-call-httpx-in-async-function (ASYNC212)
+  * [flake8-logging-format] Add auto-fix for f-string logging calls (G004)
+  * [flake8-use-pathlib] Add autofix for PTH211</comment>
+    <requestid>1302894</requestid>
+  </revision>
 </revisionlist>
