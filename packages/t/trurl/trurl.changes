@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 19 14:27:03 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Add trurl-395-exculdes-uppercase.patch to fix failing test,
+  upstream from https://github.com/curl/trurl/pull/395
+
+-------------------------------------------------------------------
 Sun May 18 08:13:12 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.16.1

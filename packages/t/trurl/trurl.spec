@@ -26,6 +26,8 @@ Group:          Productivity/Networking/Web/Utilities
 #Git-Clone:     https://github.com/curl/trurl.git
 URL:            https://curl.se/trurl
 Source:         https://github.com/curl/trurl/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM exclude tests with uppercase
+Patch0:         trurl-395-exculdes-uppercase.patch
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(libcurl) >= 7.62.0
