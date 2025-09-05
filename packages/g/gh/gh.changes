@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Aug 25 15:13:05 UTC 2025 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.78.0:
+  * Add `--force` flag to `gh run cancel` (#11513)
+  * Update third-party license versions (#11557)
+  * chore(deps): bump github.com/go-viper/mapstructure/v2 (#11556)
+  * Merge pull request #11536 from cli/copilot/fix-11535
+  * chore(deps): bump github.com/cli/go-gh/v2 from 2.12.1 to 2.12.2
+  * Update pkg/cmd/release/verify/verify.go
+  * Update pkg/cmd/release/verify-asset/verify_asset.go
+  * Hidden trusted root flag for release verify
+  * Update Go dependencies to latest versions
+  * chore(deps): bump actions/checkout from 4 to 5
+  * udpate the test
+  * replace /git/refs/tags/ to /git/ref/tags/
+  * Update feature_detection.go
+  * Update PR tests for v2 projects
+  * Base changes for PR project items
+  * Update `gh issue view` to show v2 projects
+  * PR feedback from @bagtoad
+  * Update v1 project detection logic
+  * Update govulncheck workflow to scan source code
+  * add test for FetchRefSHA
+  * Apply suggestion from @Copilot
+  * Update docs/install_windows.md
+  * Consolidate repo profile, fix headings
+  * chore(deps): bump google.golang.org/grpc from 1.73.0 to 1.74.2
+  * chore(deps): bump github.com/yuin/goldmark from 1.7.12 to 1.7.13
+  * Update docs on contributing new install methods
+  * markdown lint fixes
+  * Formatting
+  * Initial installation doc refactor
+  * Pushing empty commit to run CI
+  * Bump Go to 1.24.6
+  * Fix linter
+  * Update pkg/cmd/search/search.go
+  * chore(deps): bump actions/download-artifact from 4 to 5
+  * Update docs/triage.md
+  * Update docs/triage.md
+  * Update issue triage guidelines and label usage
+  * fix error for ErrReleaseNotFound when fetching ref
+  * Apply suggestion from @Copilot
+  * Update .github/workflows/scripts/spam-detection/process-issue.sh
+  * docs(search): move search syntax note to `gh search --help`
+  * Update spam detection to comment on and close issue
+  * Update permissions and events for workflow
+  * ci: use `help wanted` label link in comment
+  * ci: anchor regexp for `help wanted` label
+  * Improve spam detection evals (#11419)
+  * v1 project feature detection spike using version
+  * docs(help): rename `search-syntax` help topic
+  * docs(search): add reference to `gh help search`
+  * Add help topic for search syntax in gh commands
+  * docs(search): add note for exclusion search syntax
+  * Regenerate third-party licenses on trunk pushes
+  * chore(deps): bump github.com/spf13/pflag from 1.0.6 to 1.0.7
+
+-------------------------------------------------------------------
 Fri Aug 01 14:35:38 UTC 2025 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 2.76.2:
