@@ -73,4 +73,38 @@ replaces cnf-rs</comment>
     <comment></comment>
     <requestid>1301477</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a2855fd8ba4b123feae3a2bb7acba209</srcmd5>
+    <version>0.9.0~0</version>
+    <time>1757101351</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.9.0~0:
+  * mark 0.9.0 version
+  * Documented what configuration variables are relied on.
+  * Change rust code to say 'dnf' instead of 'dnf4'
+  * Fixed some grammar errors in README.md
+  * (ci): run zypper dnf5 and dnf integration tests in a parallel
+  * Added fish support.
+  * Added instructions for .zsh
+  * Updated documentation to mention dnf5 support
+  * Updated documentation examples.
+  * Check if zypper is installed.
+  * Look for dnf5 repos in /etc/dnf/repos.d
+  * Add CI tests for dnf4
+  * Updated documentation to mention dnf4 support
+  * Adds support for dnf4.
+  * Added CI tests for dnf5.
+  * Rename docker images with -zypper suffix.
+  * Allow manually triggering the ci tests.
+  * Added fish support.
+  * Added instructions for .zsh
+  * Updated documentation to mention dnf5 support
+  * Updated documentation examples.
+  * Check if zypper is installed.
+  * Look for dnf5 repos in /etc/dnf/repos.d
+  * Use dnf5 if it's installed.
+  * Translated using Weblate (Portuguese (Brazil))
+</comment>
+    <requestid>1302891</requestid>
+  </revision>
 </revisionlist>
