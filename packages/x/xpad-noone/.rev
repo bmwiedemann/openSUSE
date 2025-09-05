@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f730bf40064f07f80e32e2c6a3a37d67</srcmd5>
+    <version>0+git20250526.b8e98f3</version>
+    <time>1757101462</time>
+    <user>anag_factory</user>
+    <comment>This is the original xpad kernel driver with support for Xbox One controllers removed.
+If you are running the xone driver you will have to replace the xpad kernel module with
+this one to retain the functionality of Xbox and Xbox 360 controllers.
+
+Added missing copyright notice (sorry)</comment>
+    <requestid>1302924</requestid>
+  </revision>
+</revisionlist>
