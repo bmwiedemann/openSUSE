@@ -10,6 +10,7 @@ Wed Jun 11 14:55:45 UTC 2025 - Tina Müller <timueller+perl@suse.de>
           - fix #120 Create SECURITY.md
           - fix #121 Failures on ARM after upgrading libtommath
           - security fix CVE-2025-40914 https://github.com/DCIT/perl-CryptX/security/advisories/GHSA-6fh3-7qjq-8v22
+            (boo#1244472)
 
 -------------------------------------------------------------------
 Sat May  3 05:34:24 UTC 2025 - Tina Müller <timueller+perl@suse.de>
