@@ -1,10 +1,22 @@
 -------------------------------------------------------------------
+Sun Sep  7 13:13:05 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2025.6:
+  + Deduplicate repo+sysroot syncfs logic
+  + libostree: remove OSTREE_SUPPRESS_SYNCFS
+  + ostree-finalize-staged.service: RequiresMountsFor=/etc
+  + fix: double free in checkout_tree_at_recurse
+  + Add ostree-shutdown.service: hide /sysroot and make /etc read-only
+  + Move dracut module from 98 ordering to the recommended 50 ordering
+  + Rework mounts to fix sysroot.mount umount
+
+-------------------------------------------------------------------
 Fri Aug 29 06:32:54 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2025.5:
-  * Fix ostree boot links getting out of sync
-  * soft-reboot: Also handle /boot
-  * Fix path to aboot.cfg in BLS files
+  + Fix ostree boot links getting out of sync
+  + soft-reboot: Also handle /boot
+  + Fix path to aboot.cfg in BLS files
 
 -------------------------------------------------------------------
 Wed Jul 23 19:32:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>

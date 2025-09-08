@@ -24,7 +24,7 @@
 %bcond_without     ed25519
 %bcond_with        tests
 Name:           libostree
-Version:        2025.5
+Version:        2025.6
 Release:        0
 Summary:        Git for operating system binaries
 License:        LGPL-2.0-or-later
@@ -201,7 +201,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_libexecdir}/libostree
 %{_prefix}/lib/ostree/ostree-prepare-root
 %{_prefix}/lib/ostree/ostree-remount
-%{_dracutmodulesdir}/98ostree/
+%{_dracutmodulesdir}/50ostree/
 %{_unitdir}/ostree-prepare-root.service
 %{_unitdir}/ostree-remount.service
 %{_unitdir}/ostree-finalize-staged.service
