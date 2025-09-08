@@ -63,6 +63,7 @@ Patch20:        festival-null-fragile.patch
 Patch21:        festival-configure-c99.patch
 Patch22:        speech_tools-remove-externs.patch
 Patch23:        speech_tools-explicit-func-match.patch
+Patch24:        speech_tools-substrcmp-size_t.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
@@ -113,6 +114,7 @@ cd ../festival
 cd ../speech_tools
 %patch -P 22 -p1
 %patch -P 23 -p1
+%patch -P 24 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

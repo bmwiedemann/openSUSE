@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  8 03:36:35 UTC 2025 - Yasuhiko Kamata <belphegor@belbel.or.jp>
+
+- Added patch speech_tools-substrcmp-size_t.patch to fix a
+  build failure in Tumbleweed/i586 (because "long unsigned int"
+  != size_t).
+
+-------------------------------------------------------------------
 Tue Jul  1 00:23:42 UTC 2025 - Yasuhiko Kamata <belphegor@belbel.or.jp>
 
 - Added patch speech_tools-remove-externs.patch to remove
