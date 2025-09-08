@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 05 21:38:11 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.52.0:
+  * Doc: update changelog
+  * Global: renames `fractionTrailingZeros` enum to `always/never`
+    for consistance
+  * Fastfetch: removes redundant assignment in display config parsing
+  * Release: v2.52.0
+  * Btrfs (Linux): refactors Btrfs allocation to use profile string
+  * Btrfs (Linux): adds tracking of Btrfs data copy counts
+  * Terminal: ignores WSL2 unknown process for terminal detection
+  * WMTheme (Linux): supports labwc on XFCE4
+  * CPU (Linux): add cpu name detection for ia64
+- Switched to _service usage
+
+-------------------------------------------------------------------
 Sun Aug 31 22:45:01 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to 2.51.1:

@@ -17,12 +17,12 @@
 
 
 Name:           fastfetch
-Version:        2.51.1
+Version:        2.52.0
 Release:        0
 Summary:        Neofetch-like tool written mostly in C
 License:        MIT
 URL:            https://github.com/fastfetch-cli/fastfetch
-Source:         https://github.com/fastfetch-cli/fastfetch/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
 BuildRequires:  gcc

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="filename">fastfetch</param>
+    <param name="url">https://github.com/fastfetch-cli/fastfetch.git</param>
+    <param name="scm">git</param>
+    <param name="version">master</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">2.52.0</param>
+    <!-- <param name="changesgenerate">enable</param> -->
+    <!-- <param name="changesauthor">RN</param> -->
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>
