@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 06 09:45:45 CEST 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2025.09.05
+  * Fix --id deprecation warning
+  * charlierose: Fix extractor
+  * googledrive: Fix subtitles extraction
+  * itvbtcc: Fix extractor
+  * kick: vod: Support ongoing livestream VODs
+  * lrt: Fix extractors
+  * tver: Extract more metadata
+  * vevo: Restore extractors
+  * build: Overhaul Linux builds and refactor release workflow
+
+-------------------------------------------------------------------
 Thu Aug 28 00:09:55 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2025.08.27

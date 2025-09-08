@@ -1,7 +1,7 @@
 #
 # spec file for package yt-dlp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           yt-dlp
-Version:        2025.08.27
+Version:        2025.09.05
 Release:        0
 Summary:        Enhanced fork of youtube-dl, a video site downloader for offline watching
 License:        CC-BY-SA-3.0 AND SUSE-Public-Domain
