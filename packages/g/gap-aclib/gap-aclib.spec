@@ -17,7 +17,7 @@
 
 
 Name:           gap-aclib
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        GAP: Almost Crystallographic Groups
 License:        Artistic-2.0
