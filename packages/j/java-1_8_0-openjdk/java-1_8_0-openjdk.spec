@@ -18,7 +18,7 @@
 
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm}
-%global icedtea_version 3.35.0
+%global icedtea_version 3.36.0
 %global buildoutputdir openjdk.build/
 # Convert an absolute path to a relative path.  Each symbolic link is
 # specified relative to the directory in which it is installed so that
@@ -31,8 +31,8 @@
 # priority must be 6 digits in total
 %global priority        1805
 %global javaver         1.8.0
-%global updatever       452
-%global buildver        09
+%global updatever       462
+%global buildver        08
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
 %global archname        %{sdklnk}
@@ -805,8 +805,6 @@ update-alternatives \
   --slave %{_bindir}/rmiregistry rmiregistry %{jrebindir}/rmiregistry \
   --slave %{_bindir}/servertool servertool %{jrebindir}/servertool \
   --slave %{_bindir}/tnameserv tnameserv %{jrebindir}/tnameserv \
-  --slave %{_bindir}/pack200 pack200 %{jrebindir}/pack200 \
-  --slave %{_bindir}/unpack200 unpack200 %{jrebindir}/unpack200 \
   --slave %{_mandir}/man1/java.1$ext java.1$ext \
   %{_mandir}/man1/java-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/keytool.1$ext keytool.1$ext \
@@ -823,10 +821,6 @@ update-alternatives \
   %{_mandir}/man1/servertool-%{sdklnk}.1$ext \
   --slave %{_mandir}/man1/tnameserv.1$ext tnameserv.1$ext \
   %{_mandir}/man1/tnameserv-%{sdklnk}.1$ext  \
-  --slave %{_mandir}/man1/pack200.1$ext pack200.1$ext \
-  %{_mandir}/man1/pack200-%{sdklnk}.1$ext \
-  --slave %{_mandir}/man1/unpack200.1$ext unpack200.1$ext \
-  %{_mandir}/man1/unpack200-%{sdklnk}.1$ext \
   --slave %{_datadir}/applications/policytool.desktop policytool.desktop \
   %{_jvmdir}/%{jredir}/lib/desktop/policytool.desktop \
   || :

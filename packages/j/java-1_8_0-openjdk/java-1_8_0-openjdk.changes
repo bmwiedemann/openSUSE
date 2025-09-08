@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sun Sep  7 16:23:11 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u462 (icedtea-3.36.0)
+  * CVEs
+    + JDK-8348989, CVE-2025-30749, bsc#1246595: Better Glyph drawing
+    + JDK-8349594, CVE-2025-30754, bsc#1246598: Enhance TLS protocol
+      support
+    + JDK-8351422, CVE-2025-30761, bsc#1246580: Improve scripting
+      supports
+    + JDK-8360147, CVE-2025-50106, bsc#1246584: Better Glyph drawing
+      redux
+  * Import of OpenJDK 8 u462 build 08
+    + JDK-8026976: ECParameters, Point does not match field size
+    + JDK-8028998: [TEST_BUG] [macosx]
+      java/awt/dnd/DropTargetEnterExitTest/MissedDragExitTest.java
+      failed
+    + JDK-8046883: com/sun/jdi/ProcessAttachTest.sh gets
+      "java.io.IOException: Invalid process identifier" on windows
+    + JDK-8071996: split_if accesses NULL region of ConstraintCast
+    + JDK-8159694: HiDPI, Unity,
+      java/awt/dnd/DropTargetEnterExitTest/MissedDragExitTest.java
+    + JDK-8186143: keytool -ext option doesn't accept wildcards for
+      DNS subject alternative names
+    + JDK-8186787: clang-4.0 SIGSEGV in Unsafe_PutByte
+    + JDK-8240235: jdk.test.lib.util.JarUtils updates jar files
+      incorrectly
+    + JDK-8248001: javadoc generates invalid HTML pages whose
+      ftp:// links are broken
+    + JDK-8274597: Some of the dnd tests time out and fail
+      intermittently
+    + JDK-8274606: Fix
+      jaxp/javax/xml/jaxp/unittest/transform/SurrogateTest.java test
+    + JDK-8278472: Invalid value set to CANDIDATEFORM structure
+    + JDK-8293107: GHA: Bump to Ubuntu 22.04
+    + JDK-8296631: NSS tests failing on OL9 linux-aarch64 hosts
+    + JDK-8303770: Remove Baltimore root certificate expiring in
+      May 2025
+    + JDK-8309841: Jarsigner should print a warning if an entry is
+      removed
+    + JDK-8339810: Clean up the code in sun.tools.jar.Main to
+      properly close resources and use ZipFile during extract
+    + JDK-8341946: [8u] sun/security/pkcs11/ec/ tests fail on RHEL9
+    + JDK-8345133: Test
+      sun/security/tools/jarsigner/TsacertOptionTest.java failed:
+      Warning found in stdout
+    + JDK-8345625: Better HTTP connections
+    + JDK-8346887: DrawFocusRect() may cause an assertion failure
+    + JDK-8349111: Enhance Swing supports
+    + JDK-8350498: Remove two Camerfirma root CA certificates
+    + JDK-8351098: Bump update version of OpenJDK: 8u462
+    + JDK-8351439: [8u] test/java/util/TimeZone/tools/share/Makefile
+      use wrong path to tzdb
+    + JDK-8352716: (tz) Update Timezone Data to 2025b
+    + JDK-8353433: XCG currency code not recognized in JDK 8u
+    + JDK-8356096: ISO 4217 Amendment 179 Update
+    + JDK-8359170: Add 2 TLS and 2 CS Sectigo roots
+* Backports
+    + JDK-8358538: Update GHA Windows runner to 2025
+
+-------------------------------------------------------------------
+Sat Aug 30 15:06:42 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Remove pack200 and unpack200 from alternatives
+
+-------------------------------------------------------------------
 Mon Aug 25 10:47:33 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added paches:

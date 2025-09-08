@@ -866,4 +866,12 @@
     <comment>fix build with new glibc + avoid rebuild counter</comment>
     <requestid>1301360</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>aaa480c7318cd7defbde0e729f26c998</srcmd5>
+    <version>1.8.0.462</version>
+    <time>1757318320</time>
+    <user>anag_factory</user>
+    <comment>Oracle July 2025 CPU (finally :( )</comment>
+    <requestid>1303090</requestid>
+  </revision>
 </revisionlist>
