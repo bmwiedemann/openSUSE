@@ -2005,4 +2005,12 @@ Changes:
 - generate_sbom: make sure that no package is listed twice in product mode</comment>
     <requestid>1291258</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>eb9cef46180a624798ff5381262a299e</srcmd5>
+    <version>20250829</version>
+    <time>1757318200</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1302869</requestid>
+  </revision>
 </revisionlist>
