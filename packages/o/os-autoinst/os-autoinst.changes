@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 05 21:31:05 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1757071172.ffc94dc:
+  * Add ping dependency to allow runtime IPv6 detection on workers
+  * baseclass: Fix missing error details on failed SSH connection attempts
+  * baseclass: Extend error details on failed ssh attempts
+  * consoles: Improve error reporting on unavailable VNC
+  * backend::svirt: Extract methods for serial_console command
+  * backend::svirt: Extract method for serial_grab command
+  * backend::svirt: Combine and simplify save_snapshot commands
+
+-------------------------------------------------------------------
 Wed Sep 03 14:26:51 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1756894972.736fbfd:
