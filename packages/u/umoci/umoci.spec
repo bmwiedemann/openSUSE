@@ -1,7 +1,7 @@
 #
 # spec file for package umoci
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define project github.com/opencontainers/umoci
 
 Name:           umoci
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Open Container Image manipulation tool
 License:        Apache-2.0
@@ -29,6 +29,8 @@ URL:            https://umo.ci
 Source0:        https://github.com/opencontainers/umoci/releases/download/v%{version}/umoci.tar.xz#/%{name}-%{version}.tar.xz
 Source1:        https://github.com/opencontainers/umoci/releases/download/v%{version}/umoci.tar.xz.asc#/%{name}-%{version}.tar.xz.asc
 Source2:        https://umo.ci/%{name}.keyring
+# UPSTREAM-FIX: <https://github.com/opencontainers/umoci/pull/617>
+Patch1:         https://github.com/opencontainers/umoci/commit/44f6ab82ea71aefaf979d0e0d0626f2f2685f80b.patch#/0001-oci-config-gracefully-fallback-if-etc-resolv.conf-do.patch
 BuildRequires:  fdupes
 BuildRequires:  go >= 1.23
 BuildRequires:  go-go-md2man
@@ -41,15 +43,11 @@ provided by the OCI.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
-export VERSION="$(cat ./VERSION)"
-if [ "$VERSION" != "%{version}" ]; then
-  # Append "_suse" if the version is not an upstream one.
-  VERSION="%{version}_suse"
-fi
 # Build umoci and docs.
-make VERSION="$VERSION" umoci docs
+make umoci docs
 
 # Make sure that our keyring copy is identical to upstream.
 our_keyring=$(sha256sum <"%{SOURCE2}")
@@ -70,6 +68,14 @@ for file in doc/man/*.1; do
 done
 
 %fdupes %{buildroot}
+
+%check
+# make sure umoci --version is useful
+tmpfile="$(mktemp --tmpdir umoci-version.XXXXXX)"
+./umoci --version | tee "$tmpfile"
+grep -q '^umoci version %{version}$' "$tmpfile"
+# unit tests
+go test -timeout 3m -v ./...
 
 %files
 %defattr(-,root,root)
