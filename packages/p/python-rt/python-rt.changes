@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep  5 20:03:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.6:
+  * Catch *TransportError* from httpx and re-raise as
+    *ConnectionError* so that httpx transport error exceptions do
+    not leak (fixes #109).
+  * There was still a comparison issue, fix bad date comparison
+    (fixes #107)
+
+-------------------------------------------------------------------
 Mon Mar 10 14:25:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.3.4
