@@ -338,4 +338,23 @@
   * kmp.attr: Run scripts for all modules (bsc#1237308). (forwarded request 1272600 from dimstar)</comment>
     <requestid>1272601</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>55a4405cecc7a2f2b4e8287583edbef5</srcmd5>
+    <version>20250904</version>
+    <time>1757318177</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250904:
+  * kernel.attr: Fix module match regex (bsc#1246561)
+  * find-provides.ksyms: Support vmlinux in /usr
+
+- Update to version 20250820:
+  * Consolidate kernel and KMP fileattrs.
+  * kmp.attr: Exclude kernel modules from kmp dependency generation (bsc#1246561).
+  * make %sbat_distro* more robust for different %is_opensuse values (bsc#1247741)
+
+- Update to version 20250502:
+  * Add rpm-config-SUSE-reproducible-builds
+  * Add macro for reproducible-builds</comment>
+    <requestid>1302705</requestid>
+  </revision>
 </revisionlist>

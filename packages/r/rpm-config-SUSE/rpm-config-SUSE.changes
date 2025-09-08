@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep 04 09:12:47 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to version 20250904:
+  * kernel.attr: Fix module match regex (bsc#1246561)
+  * find-provides.ksyms: Support vmlinux in /usr
+
+-------------------------------------------------------------------
+Wed Aug 20 13:22:57 UTC 2025 - Michael Schröder <mls@suse.de>
+
+- Update to version 20250820:
+  * Consolidate kernel and KMP fileattrs.
+  * kmp.attr: Exclude kernel modules from kmp dependency generation (bsc#1246561).
+  * make %sbat_distro* more robust for different %is_opensuse values (bsc#1247741)
+
+-------------------------------------------------------------------
+Wed Jul 16 11:53:21 UTC 2025 - Michael Schröder <mls@suse.de>
+
+- Update to version 20250502:
+  * Add rpm-config-SUSE-reproducible-builds
+  * Add macro for reproducible-builds
+
+-------------------------------------------------------------------
 Fri Apr 25 08:11:22 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 20250423:

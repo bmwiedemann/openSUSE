@@ -1,7 +1,7 @@
 #
 # spec file for package rpm-config-SUSE
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2018 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 # ignore the explicit bash requires from the kernel mod scripts
 %define __requires_exclude ^/bin/bash$
 Name:           rpm-config-SUSE
-Version:        20250423
+Version:        20250904
 Release:        0
 Summary:        SUSE specific RPM configuration files
 License:        GPL-2.0-or-later
@@ -36,6 +36,13 @@ BuildArch:      noarch
 %description
 This package contains the RPM configuration data for the SUSE and
 openSUSE distribution families.
+
+%package reproducible-builds
+Summary:        RPM macros for reproducible-builds
+
+%description reproducible-builds
+This package contains the RPM macros for normalizing
+more details about a build (e.g. buildhost, buildtime)
 
 %prep
 %setup -q
@@ -82,6 +89,7 @@ cp -a macros.d %{buildroot}%{_rpmconfigdir}
 %doc README.md
 %{_rpmconfigdir}/suse/
 %{_rpmconfigdir}/macros.d/macros.*
+%exclude %{_rpmconfigdir}/macros.d/macros.reproducible-builds
 %{_rpmconfigdir}/fileattrs/*
 %{_rpmconfigdir}/brp-suse
 %{_rpmconfigdir}/firmware.prov
@@ -91,5 +99,8 @@ cp -a macros.d %{buildroot}%{_rpmconfigdir}
 %{_rpmconfigdir}/find-provides.ksyms
 %{_rpmconfigdir}/find-requires.ksyms
 %{_rpmconfigdir}/find-supplements.ksyms
+
+%files reproducible-builds
+%{_rpmconfigdir}/macros.d/macros.reproducible-builds
 
 %changelog
