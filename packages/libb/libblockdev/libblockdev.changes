@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Thu Sep  4 13:39:04 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
+
+- update to 3.3.1
+  - added smart and smartmontools plugin
+
+  - Dropped merged upstream patches:
+    0001-dont-allow-suid-and-dev-set-on-fs-resize.patch
+
+  * Add cache size ratio to the output of lvm-cache-stats
+  * Don't allow suid and dev set on fs resize
+    (bsc#1243285)
+  * Fix pylint possibly-used-before-assignment warning in BlockDev.py
+  * Makefile: Fix generating RPM log during bumpver
+  * NEWS: add preliminary release notes for the smart plugin
+  * New SMART plugin
+  * README: Update supported technologies
+  * Skip tests for plugins disabled during compile time
+  * build: Fix linking with LLD
+  * build: Install lvm.h when only lvm_dbus enabled
+  * ci: Add a simple GH action to run spelling tools on our code
+  * ci: Add a simple tmt test and run it via packit
+  * ci: Do not try to install test dependencies for CodeQL analysis
+  * ci: Fix bumping release for Packit builds
+  * ci: Get version for packit from the SPEC file
+  * ci: Install 'python3-libdnf5' for TMT test plans
+  * ci: Manually download blivet playbooks for revdeps tests
+  * ci: Manually download udisks playbooks for revdeps tests
+  * ci: Remove amazon-ec2-utils if installed
+  * ci: Remove priority from Testing farm repositories
+  * ci: Run Blivet reverse dependency tests on pull requests
+  * ci: Run UDisks reverse dependency tests on pull requests
+  * ci: Set custom release number for Packit
+  * ci: Use Ubuntu 24.04 in GitHub actions
+  * crypto: Add a function to check for OPAL support for a device
+  * crypto: Add a function to run OPAL PSID reset
+  * crypto: Add a function to wipe a LUKS HW-OPAL device
+  * crypto: Add information about HW encryption to BDCryptoLUKSInfo
+  * crypto: Add support for creating new LUKS HW-OPAL devices
+  * crypto: Check for kernel SED OPAL support for OPAL operations
+  * crypto: Fix GType macro for crypto context
+  * crypto: Fix double free in bd_crypto_luks_remove_key
+  * crypto: Fix name of bd_crypto_opal_wipe_device in crypto.h
+  * crypto: Fixing missing quotation marks in some error messages
+  * crypto: Show error when trying using an invalid DM name
+  * crypto: check that IOC_OPAL_GET_STATUS is defined
+  * dist: Fix source URL in spec
+  * dist: Sync spec with downstream
+  * docs: Add BDCryptoLUKSHWEncryptionType to libblockdev-sections.txt
+  * docs: Fix documentation for the SMART plugin
+  * docs: Fix link to Python bindings documentation
+  * fixed md_create issue #1013
+  * fs: Add filesystem size limits to BDFSFeatures
+  * fs: Fix docstring for bd_fs_ext?_get_min_size functions
+  * fs: Fix ignoring errors from libext2fs
+  * fs: Ignore shift-count-overflow warning in FS plugin
+  * fs: Ignore unused-parameter warning in the FS plugin
+  * infra: Add dependabot to automatically update GH actions
+  * infra: bump actions/upload-artifact from 3 to 4
+  * lvm-dbus: Add support for repairing RAID LVs
+  * lvm-dbus: Fix leaking error in bd_lvm_init
+  * lvm-dbus: Fix potential segfault in bd_lvm_init
+  * lvm: Add support for reading lvm.conf
+  * lvm: Check for dm-vdo instead of kvdo module for VDO support
+  * lvm: Clarify the global config functionallity in libblockdev
+  * lvm: Fix check for BD_LVM_TECH_CONFIG availability in CLI plugin
+  * lvm: Get VDO stats from device mapper instead of /sys/kvdo
+  * lvm: Require higher version of LVM for lvm.conf parsing
+  * misc: Add build and test dependecies for CentOS
+  * misc: Add kernel-modules-extra to test dependencies
+  * misc: Add vdo to test dependencies on Fedora
+  * misc: Do not use "with_items" when installing packages
+  * misc: Fix enabling source repositories on latest Ubuntu
+  * misc: Fix installing test dependencies on Debian/Ubuntu
+  * misc: Fix typos
+  * misc: Remove CentOS 8 Stream from Vagrantfile and test dependencies
+  * misc: Separate Ansible tasks into a different file
+  * misc: Vagrantfile update
+  * nvme: Avoid element-type g-i annotations
+  * nvme: Fix potential memory leak
+  * packit: Fix generating spec from template
+  * packit: Fix replacement of placeholders in post-upstream-clone
+  * part: Add human readable partition type to BDPartSpec
+  * part: Document type_name in BDPartSpec docstring
+  * part: Fix copy-paste bug in bd_part_spec_copy
+  * smart: Add BDExtraArg arguments
+  * smart: Add SCSI/SAS status retrieval
+  * smart: Add bd_smart_device_self_test()
+  * smart: Add bd_smart_set_enabled()
+  * smart: Add documentation
+  * smart: Clarify ID_ATA_SMART_ACCESS udev property values
+  * smart: Clarify use of ID_ATA_SMART_ACCESS udev property
+  * smart: Implement bd_smart_ata_get_info_from_data()
+  * smart: Introduce new libatasmart plugin
+  * smart: Introduce well-known attribute names, validation and pretty values
+  * smart: Mark drivedb integration as experimental
+  * smart: Refactor and split into libbd_smartmontools
+  * smart: Remove the ATA low-power mode detection
+  * smart: Rework libatasmart temperature reporting
+  * smart: Use smartmontools drivedb.h for libatasmart validation
+  * tests: Adapt smart plugin tests for the added extra arguments
+  * tests: Add KINGSTON SA400S37240G SSD skdump
+  * tests: Add SCSI SMART tests
+  * tests: Add SMART tests over supplied JSON dumps
+  * tests: Add SiliconPower SSD skdump reporting incorrect temp
+  * tests: Add a simple test case for LUKS HW-OPAL support
+  * tests: Add a simple test case for bd_crypto_device_seems_encrypted
+  * tests: Add basic SMART tests
+  * tests: Add bd_utils_exec_and_capture_output_no_progress() tests
+  * tests: Add more libatasmart skdump samples
+  * tests: Add tests for bd_smart_device_self_test()
+  * tests: Add tests for bd_smart_set_enabled()
+  * tests: Enable LVM VDO tests on Debian
+  * tests: Fix running tests without ntfsprogs
+  * tests: Fix skipping VDO tests on Debian and CentOS 10
+  * tests: Fix smartmontools plugin parsing of /dev/random
+  * tests: No longer need to skip exfat UUID tests on Fedora
+  * tests: Skip ExFAT UUID tests with recent exfatprogs
+  * tests: Skip escrow tests in FIPS mode
+  * tests: Skip exFAT UUID tests also on Fedora 39
+  * tests: Skip filesystem tests if kernel module is not available
+  * tests: Skip lvm_dbus_tests.LvmTestPartialLVs for now
+  * tests: Split libatasmart and smartmontool tests
+  * tests: Temporarily skip LVM VDO tests on RHEL/CentOS 10
+  * utils/exec: Add bd_utils_exec_and_capture_output_no_progress()
+  * utils/exec: Refactor extra args append out
+  * utils: Check also for aliases in bd_utils_have_kernel_module
+  * utils: Clarify usage of version in bd_utils_check_util_version
+
+-------------------------------------------------------------------
 Mon Jun 23 13:50:50 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
 
 - suppress privilege escalation during xfs fs resize (CVE-2025-6019)

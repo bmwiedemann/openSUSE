@@ -1,7 +1,7 @@
 #
 # spec file for package libblockdev
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@
 %bcond_without  nvme_plugin
 %bcond_without  part_plugin
 %bcond_without  swap_plugin
+%bcond_without  smart_plugin
+%bcond_without  smartmontools_plugin
 ###
 %bcond_without  gi_bindings
 %bcond_without  gtk_doc
@@ -41,15 +43,14 @@
 %define         soversion  3
 
 Name:           libblockdev
-Version:        3.1.1
+Version:        3.3.1
 Release:        0
 Summary:        A library for low-level manipulation with block devices
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/storaged-project/libblockdev
-Source0:        %{url}/releases/download/%{version}-1/libblockdev-%{version}.tar.gz
-Source1:        %{url}/raw/%{version}-1/NEWS.rst
-Patch0:         0001-dont-allow-suid-and-dev-set-on-fs-resize.patch
+Source0:        %{url}/releases/download/%{version}/libblockdev-%{version}.tar.gz
+Source1:        %{url}/raw/%{version}/NEWS.rst
 
 ###############################################################################
 #                          M A I N  P A C K A G E
@@ -606,6 +607,77 @@ with the libbd_part plugin/library.
 %endif
 
 ###############################################################################
+#                           S M A R T  P L U G I N S
+###############################################################################
+%if %{with smart_plugin}
+%package -n     libbd_smart%{soversion}
+Summary:        The smart plugin for the LibBlockDev library
+Group:          System/Libraries
+Requires:       libbd_utils%{soversion} >= %{version}
+Requires:       util-linux
+Provides:       libblockdev-smart = %{version}
+BuildRequires:  libatasmart-devel >= 0.17
+
+%description -n libbd_smart%{soversion}
+The libblockdev library plugin (and in the same time a standalone library)
+providing S.M.A.R.T. monitoring and testing functionality, based
+on libatasmart.
+
+%ldconfig_scriptlets -n libbd_smart%{soversion}
+
+%files -n libbd_smart%{soversion} -f smart-plugin.filelist
+
+%package -n     libbd_smart-devel
+Summary:        Development files for the libblockdev-smart plugin/library
+Group:          Development/Libraries/C and C++
+Requires:       glib2-devel
+Requires:       libbd_smart%{soversion} = %{version}
+Requires:       libbd_utils-devel >= %{version}
+Provides:       libblockdev-smart-devel = %{version}
+
+%description -n libbd_smart-devel
+This package contains header files and pkg-config files needed for development
+with the libblockdev-smart plugin/library.
+
+%files -n libbd_smart-devel -f smart-plugin-devel.filelist
+%dir %{_includedir}/blockdev
+%endif
+
+%if %{with smartmontools_plugin}
+%package -n     libbd_smartmontools%{soversion}
+Summary:        The smartmontools plugin for the libblockdev library
+Group:          System/Libraries
+Requires:       libbd_utils%{soversion} >= %{version}
+Requires:       smartmontools >= 7.0
+Provides:       libblockdev-smartmontools = %{version}
+BuildRequires:  json-glib-devel
+
+%description -n libbd_smartmontools%{soversion}
+The libblockdev library plugin (and in the same time a standalone library)
+providing S.M.A.R.T. monitoring and testing functionality, based
+on smartmontools.
+
+%ldconfig_scriptlets -n libbd_smartmontools%{soversion}
+
+%files -n libbd_smartmontools%{soversion} -f smartmontools-plugin.filelist
+
+%package -n     libbd_smartmontools-devel
+Summary:        Development files for the libblockdev-smart plugin/library
+Group:          Development/Libraries/C and C++
+Requires:       glib2-devel
+Requires:       libbd_smartmontools%{soversion} = %{version}
+Requires:       libbd_utils-devel >= %{version}
+Provides:       libblockdev-smartmontools-devel = %{version}
+
+%description -n libbd_smartmontools-devel
+This package contains header files and pkg-config files needed for development
+with the libblockdev-smart plugin/library.
+%endif
+
+%files -n libbd_smartmontools-devel -f smartmontools-plugin-devel.filelist
+%dir %{_includedir}/blockdev
+
+###############################################################################
 #                            S W A P  P L U G I N
 ###############################################################################
 
@@ -709,6 +781,8 @@ fi
     --with%{!?with_mpath_plugin:out}-mpath \
     --with%{!?with_part_plugin:out}-part \
     --with%{!?with_swap_plugin:out}-swap \
+    --with%{!?with_smart_plugin:out}-smart \
+    --with%{!?with_smartmontools_plugin:out}-smartmontools \
     ;
 
 %make_build
@@ -731,6 +805,8 @@ find %{buildroot} -name "*.la" -print -type f -delete
 %{?with_mpath_plugin:   %global plugins %{?plugins} mpath}
 %{?with_part_plugin:    %global plugins %{?plugins} part}
 %{?with_swap_plugin:    %global plugins %{?plugins} swap}
+%{?with_smart_plugin:   %global plugins %{?plugins} smart}
+%{?with_smartmontools_plugin:    %global plugins %{?plugins} smartmontools}
 %{?with_utils:          %global plugins %{?plugins} utils}
 
 echo %{?plugins}
@@ -743,13 +819,15 @@ for plugin in %{?plugins}; do
 
   test "${plugin}" = lvm-dbus && continue
 
-  ls -1 %{buildroot}%{_includedir}/blockdev/${plugin}.h \
-    >> ${plugin}-plugin-devel.filelist
-
   if [ "${plugin}" = fs ]; then
     ls -1 %{buildroot}%{_includedir}/blockdev/${plugin}/* \
       >> ${plugin}-plugin-devel.filelist
   fi
+
+  test "${plugin}" = smartmontools && continue
+
+  ls -1 %{buildroot}%{_includedir}/blockdev/${plugin}.h \
+    >> ${plugin}-plugin-devel.filelist
 done
 
 sed -i -r 's,%{buildroot}(.*),\1,' ./*.filelist
