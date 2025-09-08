@@ -1,7 +1,8 @@
 -------------------------------------------------------------------
 Mon Aug 25 22:38:58 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
-- Update to version 1.1.8
+- Update to version 1.1.8: 
+  * No upstream changes.
 - Update to version 1.1.7:
   * Long awaited bug fix release and addition of docs
 - Add octave-forge-msh build depdendency, required for tests
