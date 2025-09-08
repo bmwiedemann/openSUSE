@@ -1,7 +1,7 @@
 #
 # spec file for package clazy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define release_ver 1.15
+%define release_ver v1.16
 Name:           clazy
-Version:        1.15.0
+Version:        1.16.0
 Release:        0
 Summary:        Qt oriented code checker based on the Clang framework
 License:        LGPL-2.0-or-later
@@ -31,8 +31,8 @@ BuildRequires:  clang
 BuildRequires:  clang-devel >= 19.0
 BuildRequires:  cmake >= 3.13
 %if 0%{?suse_version} == 1500
-BuildRequires:  gcc13-PIE
-BuildRequires:  gcc13-c++
+BuildRequires:  gcc14-PIE
+BuildRequires:  gcc14-c++
 %endif
 BuildRequires:  libstdc++-devel
 Requires:       clang
@@ -56,10 +56,13 @@ sed -i "s#CLANGXX:-clang++#CLANGXX:-clang++-%{_llvm_sonum}#" clazy.cmake
 %define _lto_cflags %{nil}
 
 %if 0%{?suse_version} == 1500
-export CXX=g++-13
+export CXX=g++-14
 %endif
 
-%cmake -DCMAKE_INSTALL_DOCDIR=%{_datadir}/doc/clazy
+# ClangTidyModule.h doesn't exist in the openSUSE package
+%cmake \
+  -DCMAKE_INSTALL_DOCDIR=%{_datadir}/doc/clazy \
+  -DCLAZY_BUILD_CLANG_TIDY:BOOL=FALSE
 
 %cmake_build
 
