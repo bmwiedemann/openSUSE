@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep  6 15:35:13 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Drop 0004-By-default-do-not-fopen-anything-in-netrom_gr.patch. It
+  was net-tools-1.60 specific leak fix and breaks netrom in
+  net-tools-2.10 (bnc#544339#c2).
+
+-------------------------------------------------------------------
 Thu Sep  4 11:58:27 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Set net-tools conflict version properly.

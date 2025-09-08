@@ -32,7 +32,6 @@ Source:         https://sourceforge.net/projects/net-tools/files/net-tools-%{_ve
 # everything here
 Patch0:         net-tools-configure.patch
 Patch2:         0002-Do-not-warn-about-interface-socket-not-binded.patch
-Patch4:         0004-By-default-do-not-fopen-anything-in-netrom_gr.patch
 Patch7:         0007-Introduce-T-notrim-option-in-netstat.patch
 # PATCH-FIX-SECURITY net-tools-CVE-2025-46836.patch bsc1243581 sbrabec@suse.com -- Perform bound checks when parsing interface labels in /proc/net/dev.
 Patch8:         net-tools-CVE-2025-46836.patch
