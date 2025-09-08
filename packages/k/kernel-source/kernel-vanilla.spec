@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.16
-%define patchversion 6.16.3
-%define git_commit b954ff418da5325017c14ca31d570db1a6e055cf
+%define patchversion 6.16.5
+%define git_commit 642f24db59528e4f2ce79f318b09f033519e68a8
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-vanilla
-Version:        6.16.3
+Version:        6.16.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb954ff4
+Release:        <RELEASE>.g642f24d
 %else
 Release:        0
 %endif
@@ -745,6 +745,7 @@ Provides:       %name-devel = %version-%source_rel
 Provides:       multiversion(kernel)
 %if ! %build_vanilla && ! %vanilla_only
 Requires:       kernel-devel%variant = %version-%source_rel
+Requires:       pesign-obs-integration
 Recommends:     make
 Recommends:     gcc
 Recommends:     perl
