@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 22 13:20:41 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC 15.2 release
+  * the GCC 15.2 release contains regression fixes accumulated since
+    the GCC 15.1 release
+
+-------------------------------------------------------------------
 Fri Aug  1 12:33:46 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Update to GCC 15 branch head, 15.1.1+git10189, GCC 15.2 RC

@@ -1,6 +1,6 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="versionformat">@PARENT_TAG@.1.1+git@TAG_OFFSET@</param>
+    <param name="versionformat">@PARENT_TAG@.2.1+git@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">basepoints/gcc-(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="match-tag">basepoints/gcc-*</param>

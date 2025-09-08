@@ -181,4 +181,14 @@ since we bumped libgo SONAME as well for 15</comment>
   stack-clash protection loops</comment>
     <requestid>1297061</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>10aedd20316f99e3effac0520d88d5d4</srcmd5>
+    <version>15.2.0+git10201</version>
+    <time>1757318209</time>
+    <user>anag_factory</user>
+    <comment>- Update to GCC 15.2 release
+  * the GCC 15.2 release contains regression fixes accumulated since
+    the GCC 15.1 release</comment>
+    <requestid>1300985</requestid>
+  </revision>
 </revisionlist>
