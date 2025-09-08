@@ -512,6 +512,9 @@ Patch335:       0001-linux-fallback-to-EFI-handover-on-x86_64.patch
 Patch336:       0002-linux-fallback-to-direct-PE-entry-boot-on-arm64.patch
 Patch337:       0003-efi-chainloader-fallback-to-direct-image-execution.patch
 Patch338:       0004-efi-chainloader-fix-missing-file_path-in-loaded_imag.patch
+Patch339:       0001-lib-crypto-Introduce-new-HMAC-functions-to-reuse-buf.patch
+Patch340:       0002-lib-pbkdf2-Optimize-PBKDF2-by-reusing-HMAC-handle.patch
+Patch341:       0001-kern-misc-Implement-faster-grub_memcpy-for-aligned-b.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  2 07:46:46 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Optimize PBKDF2 to reduce the decryption time
+  * 0001-lib-crypto-Introduce-new-HMAC-functions-to-reuse-buf.patch
+  * 0002-lib-pbkdf2-Optimize-PBKDF2-by-reusing-HMAC-handle.patch
+  * 0001-kern-misc-Implement-faster-grub_memcpy-for-aligned-b.patch
+
+-------------------------------------------------------------------
 Mon Aug 11 02:57:30 UTC 2025 - Michael Chang <mchang@suse.com>
 
 - UEFI NX support and NX Linux loader using shim loader protocol (bsc#1205588)
