@@ -4,7 +4,9 @@
                 <param name="url">https://github.com/ddiss/opensuse-kernel</param>
                 <param name="revision">SLE15-SP6-LKL</param>
                 <param name="filename">lkl</param>
-                <param name="versionformat">0.6.4+git.%h</param>
+                <param name="versionformat">@PARENT_TAG@+git.@TAG_OFFSET@.%h</param>
+                <param name="versionrewrite-pattern">lkl-rpm-(.*)</param>
+                <param name="versionrewrite-replacement">\1</param>
                 <param name="changesgenerate">disable</param>
         </service>
         <service name="recompress" mode="manual">

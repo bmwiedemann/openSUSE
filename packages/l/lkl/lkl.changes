@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep  8 07:23:35 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- kabi: drop page_counter size assertion for non-SMP (bsc#1249252)
+  * 0001-kabi-drop-page_counter-size-assertion-for-non-SMP.patch
+
+-------------------------------------------------------------------
+Fri Sep  5 07:44:05 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- Use git tag and offset for version string
+- Merge opensuse-kernel/SLE15-SP6 68036e061fb1a
+- lkl: link tests against common private library
+- lkl: fix hijack and zpoline parallel builds
+- lkl: tests: fix net setup_backend return status
+- lkl: tests: drop sleep before lklfuse unmount
+- Add ID_FS_UUID based locking to avoid duplicate mounts (bsc#1237471)
+  * lkl: tests: add lklfuse_lock_conflict test
+  * lkl: systemd: use lklfuse lock parameter
+  * lklfuse: add lock parameter to avoid duplicate mounts
+- Drop upstreamed patches:
+  * 0001-lkl-tests-drop-unused-lkl_test.fn-parameters.patch
+  * 0001-lkl-hijack-explicitly-build-with-std-gnu11.patch
+
+-------------------------------------------------------------------
 Wed Jun 25 07:02:35 UTC 2025 - David Disseldorp <ddiss@suse.de>
 
 - Merge opensuse-kernel/SLE15-SP6 76bb7b85d869d

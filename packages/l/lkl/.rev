@@ -94,4 +94,12 @@ https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/S4HJD
   * 0001-lkl-hijack-explicitly-build-with-std-gnu11.patch (forwarded request 1288670 from dmdiss)</comment>
     <requestid>1288671</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>299bb29cf5d924f4b614b9179b05fc49</srcmd5>
+    <version>0.6.4+git.1675.efd0ae33d9e</version>
+    <time>1757329528</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1303152</requestid>
+  </revision>
 </revisionlist>
