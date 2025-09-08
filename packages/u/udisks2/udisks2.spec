@@ -17,10 +17,10 @@
 
 
 %define soversion 0
-%define libblockdev_version 3.0
+%define libblockdev_version 3.3.1
 
 Name:           udisks2
-Version:        2.10.1
+Version:        2.10.91
 Release:        0
 Summary:        Disk Manager
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -34,8 +34,7 @@ Source0:        %{url}/releases/download/udisks-%{version}/udisks-%{version}.tar
 # an exception will be silently removed with the next version update.
 
 Patch0:         harden_udisks2.service.patch
-Patch1:         usr_etc.patch
-Patch2:         0001-udiskslinuxmanager-Add-lower-bounds-check-to-fd_inde.patch
+Patch1:         0001-move-config-files-to-usr-etc.patch
 %if 0%{?suse_version} > 1500
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -50,6 +49,7 @@ BuildRequires:  libblockdev-loop-devel >= %{libblockdev_version}
 BuildRequires:  libblockdev-mdraid-devel >= %{libblockdev_version}
 BuildRequires:  libblockdev-nvme-devel >= %{libblockdev_version}
 BuildRequires:  libblockdev-part-devel >= %{libblockdev_version}
+BuildRequires:  libblockdev-smart-devel >= %{libblockdev_version}
 BuildRequires:  libblockdev-swap-devel >= %{libblockdev_version}
 BuildRequires:  lvm2-devel
 BuildRequires:  pkgconfig
@@ -91,6 +91,7 @@ Requires:       libblockdev-loop >= %{libblockdev_version}
 Requires:       libblockdev-mdraid >= %{libblockdev_version}
 Requires:       libblockdev-nvme >= %{libblockdev_version}
 Requires:       libblockdev-part >= %{libblockdev_version}
+Requires:       libblockdev-smart >= %{libblockdev_version}
 Requires:       libblockdev-swap >= %{libblockdev_version}
 # Needed to pull in the udev daemon
 Requires:       udev >= 208

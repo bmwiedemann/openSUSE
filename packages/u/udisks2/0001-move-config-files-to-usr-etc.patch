@@ -1,7 +1,26 @@
-diff -ur a/configure.ac b/configure.ac
---- a/configure.ac	2023-09-07 14:25:58.000000000 +0200
-+++ b/configure.ac	2025-06-13 15:14:59.846832219 +0200
-@@ -246,6 +246,37 @@
+From 80ec4f57cc92654518d830a2d2db79934eb812f9 Mon Sep 17 00:00:00 2001
+From: Thomas Blume <Thomas.Blume@suse.com>
+Date: Thu, 4 Sep 2025 12:32:53 +0200
+Subject: [PATCH] move config files to /usr/etc
+
+---
+ configure.ac                         |  33 +++++
+ doc/man/Makefile.am                  |  12 +-
+ doc/man/udisks2.conf.5.xml.in.in     |  10 ++
+ doc/man/udisks2_lsm.conf.5.xml.in.in |   6 +
+ modules/lsm/Makefile.am              |   9 +-
+ modules/lsm/lsm_data.c               |  30 +++-
+ src/Makefile.am                      |  18 ++-
+ src/udisksconfigmanager.c            | 207 +++++++++++++++++++++++----
+ udisks/Makefile.am                   |   4 +
+ udisks/modules.conf.d/Makefile.am    |   5 +-
+ 10 files changed, 292 insertions(+), 42 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 3aeb3669..51ef2a02 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -247,6 +247,37 @@ if test "x$with_tmpfilesdir" != "xno"; then
    AC_SUBST([tmpfilesdir], [$with_tmpfilesdir])
  fi
  
@@ -39,7 +58,7 @@ diff -ur a/configure.ac b/configure.ac
  # kernel modules
  AC_ARG_WITH([modloaddir],
    [AS_HELP_STRING([--with-modloaddir=DIR], [Directory for configuring kernel modules to load at boot])],
-@@ -673,6 +704,7 @@
+@@ -676,6 +707,7 @@ echo "
          sbindir:                    ${sbindir}
          datadir:                    ${datadir}
          sysconfdir:                 ${sysconfdir}
@@ -47,7 +66,7 @@ diff -ur a/configure.ac b/configure.ac
          localstatedir:              ${localstatedir}
          docdir:                     ${docdir}
          introspection:              ${found_introspection}
-@@ -684,6 +716,7 @@
+@@ -687,6 +719,7 @@ echo "
          using libelogind:           ${have_libelogind}
          use /media for mounting:    ${fhs_media}
          acl support:                ${have_acl}
@@ -55,10 +74,11 @@ diff -ur a/configure.ac b/configure.ac
  
          compiler:                   ${CC}
          cflags:                     ${CFLAGS}
-diff -ur a/doc/man/Makefile.am b/doc/man/Makefile.am
---- a/doc/man/Makefile.am	2023-09-07 14:11:56.000000000 +0200
-+++ b/doc/man/Makefile.am	2025-06-13 15:14:59.858832219 +0200
-@@ -22,6 +22,12 @@
+diff --git a/doc/man/Makefile.am b/doc/man/Makefile.am
+index 32593cea..be934a5c 100644
+--- a/doc/man/Makefile.am
++++ b/doc/man/Makefile.am
+@@ -22,6 +22,12 @@ man_MANS += udisks2_lsm.conf.5
  endif # HAVE_LSM
  endif # ENABLE_MAN
  
@@ -71,7 +91,7 @@ diff -ur a/doc/man/Makefile.am b/doc/man/Makefile.am
  udisksctl.1 : udisksctl.xml
  	$(XSLTPROC) -path "$(builddir)/.." -nonet http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl $<
  
-@@ -40,7 +46,8 @@
+@@ -40,7 +46,8 @@ udisks2.conf.5.xml: udisks2.conf.5.xml.in
  	$(SED) "s|\$${prefix}|${prefix}|" $< > $@
  
  udisks2.conf.5 : udisks2.conf.5.xml
@@ -81,7 +101,7 @@ diff -ur a/doc/man/Makefile.am b/doc/man/Makefile.am
  
  if HAVE_LSM
  # Hack: Autotools expand @sysconfdir@ as %{prefix}/etc; that's why we sed this
-@@ -49,7 +56,8 @@
+@@ -49,7 +56,8 @@ udisks2_lsm.conf.5.xml: udisks2_lsm.conf.5.xml.in
  	$(SED) "s|\$${prefix}|${prefix}|" $< > $@
  
  udisks2_lsm.conf.5 : udisks2_lsm.conf.5.xml
@@ -91,9 +111,10 @@ diff -ur a/doc/man/Makefile.am b/doc/man/Makefile.am
  endif # HAVE_LSM
  
  EXTRA_DIST =                                                                   \
-diff -ur a/doc/man/udisks2.conf.5.xml.in.in b/doc/man/udisks2.conf.5.xml.in.in
---- a/doc/man/udisks2.conf.5.xml.in.in	2023-09-07 14:11:56.000000000 +0200
-+++ b/doc/man/udisks2.conf.5.xml.in.in	2025-06-13 15:14:59.858832219 +0200
+diff --git a/doc/man/udisks2.conf.5.xml.in.in b/doc/man/udisks2.conf.5.xml.in.in
+index be364a8b..caae2f62 100644
+--- a/doc/man/udisks2.conf.5.xml.in.in
++++ b/doc/man/udisks2.conf.5.xml.in.in
 @@ -37,6 +37,16 @@
        the configuration file placed at
        <emphasis>@sysconfdir@/udisks2/udisks2.conf</emphasis>.
@@ -111,9 +132,10 @@ diff -ur a/doc/man/udisks2.conf.5.xml.in.in b/doc/man/udisks2.conf.5.xml.in.in
    </refsect1>
  
    <refsect1>
-diff -ur a/doc/man/udisks2_lsm.conf.5.xml.in.in b/doc/man/udisks2_lsm.conf.5.xml.in.in
---- a/doc/man/udisks2_lsm.conf.5.xml.in.in	2023-09-07 14:11:56.000000000 +0200
-+++ b/doc/man/udisks2_lsm.conf.5.xml.in.in	2025-06-13 15:14:59.858832219 +0200
+diff --git a/doc/man/udisks2_lsm.conf.5.xml.in.in b/doc/man/udisks2_lsm.conf.5.xml.in.in
+index 8115b9e8..efbdf67a 100644
+--- a/doc/man/udisks2_lsm.conf.5.xml.in.in
++++ b/doc/man/udisks2_lsm.conf.5.xml.in.in
 @@ -35,6 +35,12 @@
        Some storage systems require extra configuration in
        <emphasis>@sysconfdir@/udisks2/modules.conf.d/udisks2_lsm.conf</emphasis>.
@@ -127,9 +149,30 @@ diff -ur a/doc/man/udisks2_lsm.conf.5.xml.in.in b/doc/man/udisks2_lsm.conf.5.xml
    </refsect1>
  
    <refsect1>
-diff -ur a/modules/lsm/lsm_data.c b/modules/lsm/lsm_data.c
---- a/modules/lsm/lsm_data.c	2023-09-07 14:11:56.000000000 +0200
-+++ b/modules/lsm/lsm_data.c	2025-06-13 15:14:59.862832219 +0200
+diff --git a/modules/lsm/Makefile.am b/modules/lsm/Makefile.am
+index b9866028..fc27a1ba 100644
+--- a/modules/lsm/Makefile.am
++++ b/modules/lsm/Makefile.am
+@@ -20,8 +20,13 @@ AM_CPPFLAGS =                                                                  \
+ 	$(GIO_CFLAGS)                                                          \
+ 	$(GUDEV_CFLAGS)                                                        \
+ 	$(BLOCKDEV_CFLAGS)                                                     \
+-	$(WARN_CFLAGS)                                                         \
+-	$(NULL)
++	$(WARN_CFLAGS)
++if USE_VENDORDIR
++CPPFLAGS += \
++       -D_PATH_VENDORDIR=\"${vendordir}\"
++endif
++
++CPPFLAGS += $(NULL)
+ 
+ if ENABLE_DAEMON
+ 
+diff --git a/modules/lsm/lsm_data.c b/modules/lsm/lsm_data.c
+index 55165408..b3319dbb 100644
+--- a/modules/lsm/lsm_data.c
++++ b/modules/lsm/lsm_data.c
 @@ -33,6 +33,7 @@
  #include <libconfig.h>
  #include <string.h>
@@ -138,7 +181,7 @@ diff -ur a/modules/lsm/lsm_data.c b/modules/lsm/lsm_data.c
  
  #define _STD_LSM_SIM_URI "sim://"
  #define _STD_LSM_HPSA_URI "hpsa://"
-@@ -177,8 +178,21 @@
+@@ -177,8 +178,21 @@ _lsm_raid_type_to_str (lsm_volume_raid_type raid_type)
      }
  }
  
@@ -161,7 +204,7 @@ diff -ur a/modules/lsm/lsm_data.c b/modules/lsm/lsm_data.c
  {
    UDisksConfigManager *config_manager;
  
-@@ -211,6 +225,9 @@
+@@ -211,6 +225,9 @@ _load_module_conf (UDisksDaemon *daemon, GError **error)
    char *conf_path;
    int i;
    gboolean ret = TRUE;
@@ -171,7 +214,7 @@ diff -ur a/modules/lsm/lsm_data.c b/modules/lsm/lsm_data.c
  
    udisks_debug ("LSM: loading config file");
  
-@@ -221,7 +238,16 @@
+@@ -221,7 +238,16 @@ _load_module_conf (UDisksDaemon *daemon, GError **error)
      }
  
    /* Get the abs config file path. */
@@ -189,29 +232,11 @@ diff -ur a/modules/lsm/lsm_data.c b/modules/lsm/lsm_data.c
  
    config_init (&cfg);
    if (config_read_file (&cfg, conf_path) != CONFIG_TRUE)
-diff -ur a/modules/lsm/Makefile.am b/modules/lsm/Makefile.am
---- a/modules/lsm/Makefile.am	2023-09-07 14:11:56.000000000 +0200
-+++ b/modules/lsm/Makefile.am	2025-06-13 15:14:59.862832219 +0200
-@@ -20,8 +20,13 @@
- 	$(GIO_CFLAGS)                                                          \
- 	$(GUDEV_CFLAGS)                                                        \
- 	$(BLOCKDEV_CFLAGS)                                                     \
--	$(WARN_CFLAGS)                                                         \
--	$(NULL)
-+	$(WARN_CFLAGS)
-+if USE_VENDORDIR
-+CPPFLAGS += \
-+       -D_PATH_VENDORDIR=\"${vendordir}\"
-+endif
-+
-+CPPFLAGS += $(NULL)
- 
- if ENABLE_DAEMON
- 
-diff -ur a/src/Makefile.am b/src/Makefile.am
---- a/src/Makefile.am	2023-09-07 14:11:56.000000000 +0200
-+++ b/src/Makefile.am	2025-06-13 15:14:59.874832218 +0200
-@@ -27,8 +27,13 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 63b2250c..9f7aed82 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -27,8 +27,13 @@ AM_CPPFLAGS =                                                                  \
  	$(GIO_CFLAGS)                                                          \
  	$(GMODULE_CFLAGS)                                                      \
  	$(BLOCKDEV_CFLAGS)                                                     \
@@ -227,7 +252,7 @@ diff -ur a/src/Makefile.am b/src/Makefile.am
  
  # ------------------------------------------------------------------------------
  
-@@ -148,8 +153,13 @@
+@@ -146,8 +151,13 @@ libudisks_daemon_la_LIBADD =                                                   \
  	$(LIBELOGIND_LIBS)                                                     \
  	$(PART_LDFLAGS)                                                        \
  	$(SWAP_LIBS)                                                           \
@@ -243,9 +268,10 @@ diff -ur a/src/Makefile.am b/src/Makefile.am
  
  # ------------------------------------------------------------------------------
  
-diff -ur a/src/udisksconfigmanager.c b/src/udisksconfigmanager.c
---- a/src/udisksconfigmanager.c	2023-09-07 14:11:56.000000000 +0200
-+++ b/src/udisksconfigmanager.c	2025-06-13 15:14:59.874832218 +0200
+diff --git a/src/udisksconfigmanager.c b/src/udisksconfigmanager.c
+index ae612335..77562484 100644
+--- a/src/udisksconfigmanager.c
++++ b/src/udisksconfigmanager.c
 @@ -22,6 +22,10 @@
  
  #include <string.h>
@@ -257,7 +283,7 @@ diff -ur a/src/udisksconfigmanager.c b/src/udisksconfigmanager.c
  
  #include "udiskslogging.h"
  #include "udisksdaemontypes.h"
-@@ -91,6 +95,43 @@
+@@ -91,6 +95,43 @@ udisks_config_manager_get_property (GObject    *object,
      }
  }
  
@@ -301,23 +327,27 @@ diff -ur a/src/udisksconfigmanager.c b/src/udisksconfigmanager.c
  static const gchar *
  get_encryption_config (const gchar *encryption)
  {
-@@ -138,6 +179,136 @@
+@@ -138,20 +179,148 @@ udisks_config_manager_set_property (GObject      *object,
      }
  }
  
 +#if defined (HAVE_LIBECONF) && defined (USE_VENDORDIR)
 +
-+static void
-+parse_config_file (UDisksConfigManager         *manager,
-+                   UDisksModuleLoadPreference  *out_load_preference,
-+                   const gchar                **out_encryption,
-+                   GList                      **out_modules)
-+{
+ static void
+ parse_config_file (UDisksConfigManager         *manager,
+                    UDisksModuleLoadPreference  *out_load_preference,
+                    const gchar                **out_encryption,
+                    GList                      **out_modules)
+ {
+-  GKeyFile *config_file;
 +  gchar *conf_dir;
-+  gchar *conf_filename;
-+  gchar *load_preference;
-+  gchar *encryption;
-+  gchar **modules;
+   gchar *conf_filename;
+   gchar *load_preference;
+   gchar *encryption;
+-  gchar *module_i;
+   gchar **modules;
+-  gchar **modules_tmp;
+   GError *l_error = NULL;
 +  econf_err econf_ret = ECONF_SUCCESS;
 +  econf_file *key_file = NULL;
 +  gchar *val;
@@ -435,20 +465,21 @@ diff -ur a/src/udisksconfigmanager.c b/src/udisksconfigmanager.c
 +
 +#else /* using vendordir and libeconf */
 +
- static void
- parse_config_file (UDisksConfigManager         *manager,
-                    UDisksModuleLoadPreference  *out_load_preference,
-@@ -148,9 +319,7 @@
-   gchar *conf_filename;
-   gchar *load_preference;
-   gchar *encryption;
--  gchar *module_i;
-   gchar **modules;
--  gchar **modules_tmp;
++static void
++parse_config_file (UDisksConfigManager         *manager,
++                   UDisksModuleLoadPreference  *out_load_preference,
++                   const gchar                **out_encryption,
++                   GList                      **out_modules)
++{
++  GKeyFile *config_file;
++  gchar *conf_filename;
++  gchar *load_preference;
++  gchar *encryption;
++  gchar **modules;
  
    /* Get modules and means of loading */
    conf_filename = g_build_filename (G_DIR_SEPARATOR_S,
-@@ -171,18 +340,7 @@
+@@ -172,18 +341,7 @@ parse_config_file (UDisksConfigManager         *manager,
            /* Read the list of modules to load. */
            if (modules)
              {
@@ -468,7 +499,7 @@ diff -ur a/src/udisksconfigmanager.c b/src/udisksconfigmanager.c
                g_strfreev (modules);
              }
          }
-@@ -193,28 +351,14 @@
+@@ -194,28 +352,14 @@ parse_config_file (UDisksConfigManager         *manager,
            load_preference = g_key_file_get_string (config_file, MODULES_GROUP_NAME, MODULES_LOAD_PREFERENCE_KEY, NULL);
            if (load_preference)
              {
@@ -499,7 +530,7 @@ diff -ur a/src/udisksconfigmanager.c b/src/udisksconfigmanager.c
            encryption = g_key_file_get_string (config_file, DEFAULTS_GROUP_NAME, DEFAULTS_ENCRYPTION_KEY, NULL);
            if (encryption)
              {
-@@ -231,6 +375,7 @@
+@@ -241,6 +385,7 @@ parse_config_file (UDisksConfigManager         *manager,
    g_key_file_free (config_file);
    g_free (conf_filename);
  }
@@ -507,10 +538,11 @@ diff -ur a/src/udisksconfigmanager.c b/src/udisksconfigmanager.c
  
  static void
  udisks_config_manager_constructed (GObject *object)
-diff -ur a/udisks/Makefile.am b/udisks/Makefile.am
---- a/udisks/Makefile.am	2023-09-07 14:11:56.000000000 +0200
-+++ b/udisks/Makefile.am	2025-06-13 15:15:29.930832035 +0200
-@@ -5,7 +5,11 @@
+diff --git a/udisks/Makefile.am b/udisks/Makefile.am
+index 59365008..f9c846da 100644
+--- a/udisks/Makefile.am
++++ b/udisks/Makefile.am
+@@ -5,7 +5,11 @@ SUBDIRS = modules.conf.d
  NULL =
  
  if ENABLE_DAEMON
@@ -522,9 +554,10 @@ diff -ur a/udisks/Makefile.am b/udisks/Makefile.am
  
  moduleconf_DATA = udisks2.conf mount_options.conf
  endif
-diff -ur a/udisks/modules.conf.d/Makefile.am b/udisks/modules.conf.d/Makefile.am
---- a/udisks/modules.conf.d/Makefile.am	2023-09-07 14:11:56.000000000 +0200
-+++ b/udisks/modules.conf.d/Makefile.am	2025-06-13 15:15:14.250832131 +0200
+diff --git a/udisks/modules.conf.d/Makefile.am b/udisks/modules.conf.d/Makefile.am
+index b3abb6c6..70cb0fe8 100644
+--- a/udisks/modules.conf.d/Makefile.am
++++ b/udisks/modules.conf.d/Makefile.am
 @@ -1,6 +1,9 @@
  ## Process this file with automake to produce Makefile.in
 -
@@ -536,3 +569,6 @@ diff -ur a/udisks/modules.conf.d/Makefile.am b/udisks/modules.conf.d/Makefile.am
  
  
  if ENABLE_DAEMON
+-- 
+2.51.0
+

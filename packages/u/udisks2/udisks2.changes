@@ -1,4 +1,154 @@
 -------------------------------------------------------------------
+Thu Sep  4 11:15:39 UTC 2025 - Thomas Blume <thomas.blume@suse.com>
+
+- update to version 2.10.91
+  - dropped merged upstream patches:
+    0001-udiskslinuxmanager-Add-lower-bounds-check-to-fd_inde.patch
+  - ported patch to upstream code:
+    usr_etc.patch -> 0001-move-config-files-to-usr-etc.patch
+
+  - Add gzipped log files to .gitignore
+  - Add option to specify metadata version when creating MD RAID
+  - Add support for specifying extra PBKDF options for LUKS format
+  - Add support for specifying label when creating LUKS devices
+  - Allow using key files with BITLK devices
+  - Change several log levels from NOTICE to INFO
+  - Core: Add support for LUKS header backup.
+  - Do not overwrite CPPFLAGS
+  - Do not use label for DM name when unlocking BitLocker devices
+  - Fix docstring for udisks_spawned_job_start
+  - Fix using label as DM name when unlocking encrypted devices
+  - Include error message when loading config file fails
+  - Remove beakerlib tests
+  - Update Brazilian Portuguese translation
+  - Update French translation
+  - Update Georgian translation
+  - Update German translation
+  - Update Hindi translation
+  - Update Indonesian translation
+  - Update Polish translation
+  - Update Russian translation
+  - Update Slovenian translation
+  - Update Swedish translation
+  - Use label for DM device name when unlocking encrypted devices
+  - Use udisks_info() for (un)mount messages
+  - build: Fix 'make shortlog'
+  - build: use -export-dynamic instead of -export_dynamic
+  - ci: Add a simple tmt test and run it via packit
+  - ci: Bump actions/checkout from v3 to v4
+  - ci: Fix running Cockpit reverse dependency tests
+  - ci: Install 'python3-libdnf5' for TMT test plans
+  - ci: Packit: Enable failure notifications for cockpit tests
+  - ci: Remove amazon-ec2-utils if installed
+  - ci: Remove priority from Testing farm repositories
+  - ci: Remove the custom GH action for RPM builds
+  - client: document NULL return for udisks_client_get_partition_table
+  - core: Add Encrypted.Convert method
+  - daemon: Add a logging function for libblockdev
+  - daemon: Align to the no_inhibit job argument change
+  - doc: Fix a typo
+  - doc: add missing closing bracket
+  - doc: fix docstring for udisks_client_get_partition_table_subtype_for_display
+  - doc: fix docstring for udisks_threaded_job_start
+  - doc: fix typos
+  - doc: remove duplicate dot
+  - docs(mdraid): update link to kernel docs
+  - helpers: fixed memleak and misprint check for creating second BDCrypto context
+  - infra: Add dependabot to automatically update GH actions
+  - infra: bump actions/checkout from 4 to 5
+  - infra: bump actions/upload-artifact from 3 to 4
+  - integration-test: Adapt to the new libmount context error messages
+  - integration-test: Fix change label test with exfatprogs 1.2.5
+  - lvm2: Add a sync udev trigger after removing PV signatures
+  - lvm2: Align to the no_inhibit job argument change
+  - lvm2: Refactor udisks_daemon_util_lvm2_wipe_block()
+  - lvm2: Try opening for unused device detection harder
+  - lvm: Also look at symlinks for segment PVs
+  - lvm: Change the known keys for GetStatistics for VDO volumes
+  - lvm: Manually remove removed PVs from the LVM devices file
+  - lvm: Use pvremove when removing PVs after deleting a VG
+  - man: Document ID_ATA_SMART_ACCESS
+  - mdraid: Expose "consistency_policy" sysfs value
+  - misc: Add CentOS to the install-test-dependencies playbook
+  - misc: Add cryptsetup to test dependencies
+  - misc: Add parted to test dependencies
+  - misc: Add python3-packaging to test dependencies
+  - misc: Add vdo to the test dependencies
+  - misc: Do not use "with_items" when installing packages
+  - misc: Force DNF to enable C10S Copr instead of EPEL
+  - misc: Separate Ansible tasks into a different file
+  - modules/btrfs: add GetDefaultSubvolumeID
+  - modules/btrfs: add SetDefaultSubvolumeID
+  - modules/btrfs: fix copy paste typo in auth message
+  - mount options: Add 'map' and 'check' ISO9660 options
+  - mount options: Add some more f2fs options to the allow list
+  - mount options: Allow 'commit' option for ext3/ext4
+  - objectinfo: adjust translator comment
+  - spec: Use SPDX license tags for subpackages
+  - tests: Adapt to clang differences when causing a segfault
+  - tests: Add Manager.LoopSetup() invalid fd test case
+  - tests: Add NVMe persistent discovery controller tests
+  - tests: Add a more robust test case for LVM devices file
+  - tests: Add locked LUKS teardown test
+  - tests: Add property name to failed asserts in test_40_drive
+  - tests: Allow adding optional message to failed assert calls
+  - tests: Avoid creating intermediary loop devices for nvme target devices
+  - tests: Backport safe_dbus.py from blivet
+  - tests: Check for dm-vdo kernel module instead of kvdo
+  - tests: Compress the flight_recorder.log when running tests
+  - tests: Enable Exfat UUID tests on Fedora
+  - tests: Enable LVM VDO tests on CentOS/RHEL 10
+  - tests: Fix expected error message with util-linux 2.41
+  - tests: Fix expected rotation rate for SCSI debug drives in tests
+  - tests: Fix running tests on systems without /etc/fstab
+  - tests: Fix running tests on systems without fstab and crypttab
+  - tests: Fix targetcli_config.json
+  - tests: Force Python to use 'fork' method to start child processes
+  - tests: Make sure /etc/iscsi/initiatorname.iscsi exists for tests
+  - tests: Move creation of the test devices after arguments parsing
+  - tests: Remove unused helper functions
+  - tests: Remove usage of python-six
+  - tests: Rework nvme revision check
+  - tests: Skip ExFAT UUID tests with recent exfatprogs
+  - tests: Skip exFAT UUID tests also on Fedora 39
+  - tests: Skip vdo tests on RHEL/CentOS 10
+  - tests: Stop trying to fully fill the VG in LVM tests
+  - tests: Use seek_realtime when saving journal data
+  - tests: Use sfdisk instead of parted to create partitions in tests
+  - tests: Various small Python fixes
+  - udisksata: Fix sense code format check
+  - udisksbasejob: Keep the original data when adding object path
+  - udisksdaemon: Add 'no_inhibit' argument for job creation functions
+  - udiskslinuxblock: Fix leaking string
+  - udiskslinuxblock: Survive a missing /etc/fstab
+  - udiskslinuxblockobject: Try issuing BLKRRPART ioctl harder
+  - udiskslinuxdevice: Fix dm-multipath ATA drives handling
+  - udiskslinuxdevice: Ignore ID_ATA on USB devices
+  - udiskslinuxdevice: Lower the severity of ATA IDENTIFY command errors
+  - udiskslinuxdrive: Mark external NVMe removable
+  - udiskslinuxdriveata: Port to libblockdev SMART plugin
+  - udiskslinuxdriveata: Prefer udev ID_ATA_* attributes
+  - udiskslinuxdriveata: Respect ID_ATA_SMART_ACCESS=none
+  - udiskslinuxdriveata: Trigger uevent after enabling/disabling SMART
+  - udiskslinuxdriveobject: Avoid refreshing NVMe health data on non-I/O controllers
+  - udiskslinuxdriveobject: Only refresh health information on live NVMe controllers
+  - udiskslinuxfilesystem: Add squashfs to well_known_filesystems
+  - udiskslinuxfilesystemhelpers: Add 'noexec' to the default take-ownership mount options
+  - udiskslinuxfilesystemhelpers: Mount private mounts with 'nodev,nosuid'
+  - udiskslinuxloop: Fix GError use-after-free
+  - udiskslinuxmanager: Add lower bounds check to fd_index
+    (bsc#1248502)
+  - udiskslinuxmanager:use dbus interface after free
+  - udiskslinuxmdraid: Add 'no-inhibit-lock' RequestSyncAction() option
+  - udiskslinuxmdraid: Avoid putting inhibit lock for externally started operations
+  - udiskslinuxmdraid: Refactor error reporting
+  - udiskslinuxnvmecontroller: Check for controller type on fetching health info
+  - udiskslinuxprovider: Move udev monitor in a separate thread
+  - udiskslinuxprovider: Properly finalize GTaskThreadFunc
+  - udisksstate: Always allocate store buffer for empty variants
+  - update Docbook DTD version to latest stable 4.5
+
+-------------------------------------------------------------------
 Fri Aug 29 13:17:17 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
 
 - (CVE-2025-8067) VUL-0: missing bounds check can lead to out-of-bounds 
