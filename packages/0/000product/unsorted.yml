@@ -124,7 +124,6 @@ unsorted:
   - Mesa-dri-devel 
   - Mesa-dri-nouveau 
   - Mesa-dri-nouveau-32bit 
-  - Mesa-gallium-32bit 
   - Mesa-libEGL-devel 
   - Mesa-libEGL-devel-32bit 
   - Mesa-libEGL1-32bit 
@@ -136,12 +135,7 @@ unsorted:
   - Mesa-libGLESv2-devel 
   - Mesa-libGLESv2-devel-32bit 
   - Mesa-libGLESv3-devel 
-  - Mesa-libOpenCL 
   - Mesa-libRusticlOpenCL 
-  - Mesa-libd3d 
-  - Mesa-libd3d-32bit 
-  - Mesa-libd3d-devel 
-  - Mesa-libd3d-devel-32bit 
   - Mesa-libva-32bit 
   - Mesa-vulkan-device-select-32bit 
   - Mesa-vulkan-overlay 
@@ -1707,6 +1701,7 @@ unsorted:
   - build-compare 
   - build-helper-maven-plugin 
   - build-helper-maven-plugin-javadoc 
+  - build-initvm-i586 
   - build-initvm-x86_64 
   - build-mkbaselibs 
   - build-mkdrpms 
@@ -3252,6 +3247,7 @@ unsorted:
   - distcc-server 
   - distribution-gpg-keys 
   - distribution-logos-openSUSE 
+  - distribution-logos-openSUSE-Aeon 
   - distribution-logos-openSUSE-Kubic 
   - distribution-logos-openSUSE-Slowroll 
   - distribution-registry 
@@ -12095,6 +12091,9 @@ unsorted:
   - libbd_mpath3 
   - libbd_nvme-devel 
   - libbd_part-devel 
+  - libbd_smart-devel 
+  - libbd_smartmontools-devel 
+  - libbd_smartmontools3 
   - libbd_swap-devel 
   - libbd_utils-devel 
   - libbde-devel 
@@ -12415,6 +12414,8 @@ unsorted:
   - libcapnp-devel 
   - libcapstone-devel 
   - libcapstone-devel-static 
+  - libcaption 
+  - libcaption-devel 
   - libcares2-32bit 
   - libcaribou0 
   - libcasacore8 
@@ -15011,14 +15012,14 @@ unsorted:
   - libopentimelineio0 
   - libopentracing-cpp1 
   - libopenvdb12_0 
-  - libopenvino2520 
-  - libopenvino_c2520 
-  - libopenvino_ir_frontend2520 
-  - libopenvino_onnx_frontend2520 
-  - libopenvino_paddle_frontend2520 
-  - libopenvino_pytorch_frontend2520 
-  - libopenvino_tensorflow_frontend2520 
-  - libopenvino_tensorflow_lite_frontend2520 
+  - libopenvino2530 
+  - libopenvino_c2530 
+  - libopenvino_ir_frontend2530 
+  - libopenvino_onnx_frontend2530 
+  - libopenvino_paddle_frontend2530 
+  - libopenvino_pytorch_frontend2530 
+  - libopenvino_tensorflow_frontend2530 
+  - libopenvino_tensorflow_lite_frontend2530 
   - libopenvswitch-3_6-0 
   - liboping-devel 
   - liboping0 
@@ -17005,8 +17006,6 @@ unsorted:
   - libxapp1 
   - libxar-devel 
   - libxar1 
-  - libxatracker-devel 
-  - libxatracker2 
   - libxbase64-1 
   - libxbrz-1_8 
   - libxbsql0 
@@ -36170,6 +36169,7 @@ unsorted:
   - rpi-imager 
   - rpm-32bit 
   - rpm-build 
+  - rpm-config-SUSE-reproducible-builds 
   - rpm-devel 
   - rpm-plugin-unshare 
   - rpm-repo-keys-openSUSE 
@@ -37405,6 +37405,7 @@ unsorted:
   - stax2-api-javadoc 
   - stb-devel 
   - stdman 
+  - steam-powerbuttond 
   - steampipe 
   - steinberg-bravura-fonts 
   - stellarbatchsolver 

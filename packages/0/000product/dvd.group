@@ -11,7 +11,6 @@
     <package name="Mesa-demo-egl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="Mesa-demo-x" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_x11 -->
     <package name="Mesa-dri" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="Mesa-gallium" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="Mesa-libEGL1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="Mesa-libGL1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="Mesa-libva" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -730,6 +729,7 @@
     <package name="gvfs" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gvfs-backend-afc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gvfs-backend-goa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="gvfs-backend-gphoto" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="gvfs-backend-samba" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gvfs-backends" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="gvfs-fuse" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1738,6 +1738,7 @@
     <package name="libbd_mdraid3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libbd_nvme3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libbd_part3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libbd_smart3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libbd_swap3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libbd_utils3" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libblack_hole_solver1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1799,7 +1800,7 @@
     <package name="libcapstone5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libcares2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libcblas3" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
-    <package name="libcbor0_11" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libcbor0_13" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libccolamd3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcdda_interface0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcdda_paranoia0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1952,7 +1953,7 @@
     <package name="libevent-2_1-7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libevview3-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libexempi8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libexif12" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libexif12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libexiv2-28" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libexiv2-28-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libexo-2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2098,9 +2099,9 @@
     <package name="libgpg-error0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libgpgme45" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgpgmepp7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libgphoto2-6" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libgphoto2-6-lang" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="libgphoto2_port12" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="libgphoto2-6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libgphoto2-6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libgphoto2_port12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libgpm2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgpod-lang" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
     <package name="libgpod-tools" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
@@ -2915,7 +2916,7 @@
     <package name="libwayland-client0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwayland-cursor0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwayland-egl1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libwayland-server0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libwayland-server0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwebkit2gtk-4_1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwebp-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libwebp7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
