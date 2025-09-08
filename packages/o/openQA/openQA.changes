@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 05 21:13:12 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1757084700.fad3731d:
+  * Ensure no untracked files in unit test run part 2
+  * Dependency cron 2025-09-05
+  * Add MCP support as an optional feature
+  * Allow specifying a full domain via `file_security_policy`
+  * Allow using a different subdomain via `file_security_policy`
+  * t: Ensure no leftover files in git directory
+  * ci: Ensure clean git status with Test::CheckGitStatus
+
+-------------------------------------------------------------------
 Thu Sep 04 17:13:00 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1757005118.aac56dbc:
