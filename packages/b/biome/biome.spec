@@ -17,9 +17,9 @@
 #
 
 
-%define rev dcdd8192c3a7a6f17ef756a4aafb4736a94a8f5a
+%define rev daa4a66e7971800a5e15024f5b5535d072087ac9
 Name:           biome
-Version:        2.2.2
+Version:        2.2.3
 Release:        0
 Summary:        A JavaScript and TypeScript toolchain
 License:        Apache-2.0 AND MIT

@@ -117,4 +117,13 @@
   * chore: use `divan` for module graph benchmarks (#7231)</comment>
     <requestid>1302424</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fdf7a41abf763ad1c35e17349eca4b80</srcmd5>
+    <version>2.2.3</version>
+    <time>1757318218</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.2.3:
+  * see https://github.com/biomejs/biome/releases/tag/%40biomejs%2Fbiome%402.2.3</comment>
+    <requestid>1302961</requestid>
+  </revision>
 </revisionlist>
