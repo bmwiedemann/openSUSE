@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Sep 3 12:08:48 UTC 2025 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1038
+- use make_unique instead of new
+- 4.5.274
+
+--------------------------------------------------------------------
 Thu Aug 7 10:05:26 UTC 2025 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1037
