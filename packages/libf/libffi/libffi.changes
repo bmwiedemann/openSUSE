@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Sep  4 07:14:03 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 3.5.2
+  * Changes
+    + fix: enable FFI_MMAP_EXEC_WRIT for DragonFly BSD
+    + Emscripten: Add wasm64 target
+    + fix: Ensure trampoline file descriptors are closed on exec.
+
+-------------------------------------------------------------------
+Thu Sep  4 07:12:20 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 3.5.1
+  * Changes
+    + Downgrade Autoconf requirement to version 2.68
+    + Fix symbol versioning error.
+
+-------------------------------------------------------------------
+Thu Sep  4 07:10:42 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 3.5.0
+  * Changes
+    + Add FFI_VERSION_STRING and FFI_VERSION_NUMBER macros, as well
+      as ffi_get_version() and ffi_get_version_number() functions.
+    + Add ffi_get_default_abi() and ffi_get_closure_size() functions.
+    + Fix closures on powerpc64-linux when statically linking.
+    + Mark the PA stack as non-executable.
+
+-------------------------------------------------------------------
+Wed Sep  3 11:40:13 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 3.4.8
+  * Changes
+    + aarch64: add PAC to GNU Notes
+    + MIPS: Dont import asm/sgidefs.h on linux
+    + Update the Simple Example from the Docs to fix a compile error
+    + Fix bugs in the x86-64 and x32 target (#887)
+    + Add the "ABI_ATTR" attribute to called functions (#891)
+    + powerpc: Add static trampoline support (#894)
+    + testsuite: add two tests to Makefile.am
+
+-------------------------------------------------------------------
 Wed Mar 19 17:40:33 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Update to 3.4.7:
