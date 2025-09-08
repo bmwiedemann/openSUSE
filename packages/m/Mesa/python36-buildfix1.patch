@@ -1,10 +1,10 @@
-Index: mesa-25.1.0/src/nouveau/headers/class_parser.py
+Index: mesa-25.2.0/src/nouveau/headers/class_parser.py
 ===================================================================
---- mesa-25.1.0.orig/src/nouveau/headers/class_parser.py
-+++ mesa-25.1.0/src/nouveau/headers/class_parser.py
-@@ -11,6 +11,16 @@ import subprocess
+--- mesa-25.2.0.orig/src/nouveau/headers/class_parser.py
++++ mesa-25.2.0/src/nouveau/headers/class_parser.py
+@@ -14,6 +14,16 @@ from mako.template import Template
+ import util
  
- from mako.template import Template
  
 +def removeprefix(s, prefix):
 +    if s.startswith(prefix):
@@ -19,16 +19,16 @@ Index: mesa-25.1.0/src/nouveau/headers/class_parser.py
  METHOD_ARRAY_SIZES = {
      'BIND_GROUP_CONSTANT_BUFFER'                            : 16,
      'CALL_MME_DATA'                                         : 256,
-@@ -467,7 +477,7 @@ def parse_header(nvcl, f):
-                 if ":" in list[2]:
+@@ -478,7 +488,7 @@ def parse_header(nvcl, f):
                      state = 1
                  elif teststr in list[1]:
--                    curfield.defs[list[1].removeprefix(teststr)] = list[2]
-+                    curfield.defs[removeprefix(list[1],teststr)] = list[2]
+                     if not SKIP_FIELD[0] in list[1]:
+-                        curfield.defs[list[1].removeprefix(teststr)] = list[2]
++                        curfield.defs[removeprefix(list[1],teststr)] = list[2]
                  else:
                      state = 1
  
-@@ -477,7 +487,7 @@ def parse_header(nvcl, f):
+@@ -488,7 +498,7 @@ def parse_header(nvcl, f):
                      if ("0x" in list[2]):
                          state = 1
                      else:
@@ -37,7 +37,7 @@ Index: mesa-25.1.0/src/nouveau/headers/class_parser.py
                          bitfield = list[2].split(":")
                          f = Field(field, bitfield[1], bitfield[0])
                          curmthd.fields.append(f)
-@@ -497,13 +507,13 @@ def parse_header(nvcl, f):
+@@ -508,13 +518,13 @@ def parse_header(nvcl, f):
                  is_array = 0
                  if (':' in list[2]):
                      continue
@@ -54,7 +54,7 @@ Index: mesa-25.1.0/src/nouveau/headers/class_parser.py
  
                  curmthd = Method(name, list[2], is_array)
                  methods[name] = curmthd
-@@ -512,8 +522,8 @@ def parse_header(nvcl, f):
+@@ -523,8 +533,8 @@ def parse_header(nvcl, f):
      return (version, methods)
  
  def nvcl_for_filename(name):
@@ -65,7 +65,7 @@ Index: mesa-25.1.0/src/nouveau/headers/class_parser.py
      return "NV" + name.upper()
  
  def main():
-@@ -542,7 +552,7 @@ def main():
+@@ -553,7 +563,7 @@ def main():
      if args.prev_in_h is not None:
          prev_clheader = os.path.basename(args.prev_in_h)
          prev_nvcl = nvcl_for_filename(prev_clheader)
@@ -74,3 +74,26 @@ Index: mesa-25.1.0/src/nouveau/headers/class_parser.py
          with open(args.prev_in_h, 'r', encoding='utf-8') as f:
              (prev_version, prev_methods) = parse_header(prev_nvcl, f)
  
+--- mesa-25.2.0/src/compiler/nir/nir_algebraic.py.orig	2025-08-08 14:53:23.002148943 +0200
++++ mesa-25.2.0/src/compiler/nir/nir_algebraic.py	2025-08-08 14:57:34.748734069 +0200
+@@ -31,6 +31,11 @@
+ 
+ from nir_opcodes import opcodes, type_sizes
+ 
++def removeprefix(s, prefix):
++    if s.startswith(prefix):
++        return s[len(prefix):]
++    return s
++
+ # This should be the same as NIR_SEARCH_MAX_COMM_OPS in nir_search.c
+ nir_search_max_comm_ops = 8
+ 
+@@ -395,7 +400,7 @@
+       self.nnan = cond.pop('nnan', False)
+       self.ninf = cond.pop('ninf', False)
+       self.contract = cond.pop('contract', False)
+-      self.swizzle = -1 if m.group('swizzle') is None else swizzles[m.group('swizzle').removeprefix('.')]
++      self.swizzle = -1 if m.group('swizzle') is None else swizzles[removeprefix(m.group('swizzle'),'.')]
+ 
+       assert len(cond) <= 1
+       self.cond = cond.popitem()[0] if cond else None

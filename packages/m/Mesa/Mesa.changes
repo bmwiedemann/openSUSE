@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Sat Sep  6 18:49:08 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+-  Update to release 25.2.2
+  -->  https://docs.mesa3d.org/relnotes/25.2.2
+
+-------------------------------------------------------------------
+Sat Sep  6 17:59:24 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 25.2.1
+  -->  https://docs.mesa3d.org/relnotes/25.2.1
+
+-------------------------------------------------------------------
+Mon Aug 11 08:30:36 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove %package definitions of no longer existing packages:
+  Mesa-gallium, Mesa-libd3d, Mesa-libd3d-devel, Mesa-libOpenCL,
+  libxatracker2, and libxatracker-devel
+- Fix baselibs to no longer require Mesa-gallium, and clean up no
+  longer existing packages.
+
+-------------------------------------------------------------------
+Mon Aug 11 07:52:05 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- removed Requires to dropped Mesa-gallium
+- minor specfile cleanup
+
+-------------------------------------------------------------------
+Sat Aug  9 09:24:41 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- removed Provides for packages which functionality has been
+  dropped with the update to 25.2.0, so just obsolete them
+  * libxatracker2/libxatracker-devel
+  * Mesa-gallium
+  * Mesa-libd3d/Mesa-libd3d-devel
+  * Mesa-libOpenCL
+
+-------------------------------------------------------------------
+Fri Aug  8 13:04:51 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update python36-buildfix1.patch with removeprefix use fix in
+  src/compiler/nir/nir_algebraic.py
+
+-------------------------------------------------------------------
+Fri Aug  8 12:18:54 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- added Provides/Obsoletes for packages, which I removed with the
+  update to 25.2.0
+  * libxatracker2/libxatracker-devel
+  * Mesa-gallium
+  * Mesa-libd3d/Mesa-libd3d-devel
+  * Mesa-libOpenCL
+
+-------------------------------------------------------------------
+Fri Aug  8 08:24:46 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- switch to rust crate tarballs from http://crates.io, which have
+  different checksums; seems Mesa uses these and not the one of
+  the easier to find tarballs on github
+- the above supersedes fix-crates-checksums.patch
+
+-------------------------------------------------------------------
+Thu Aug  7 21:01:59 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- re-apply u_mesa-CVE-2023-45913-s390x.patch on s390x
+
+-------------------------------------------------------------------
+Thu Aug  7 09:19:44 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 25.2.0
+  -->  https://docs.mesa3d.org/relnotes/25.2.0
+- removed DRI2 build reqs since DRI2 drivers are no longer supported
+- added 'rustc-hash' crate from github now needed by NVK; updated
+  rust crates from github
+  * check with 'grep -r crates' in Mesa sources below subprojects/
+    folder for the needed versions! Versions needs to match; it's not
+    the minimum!
+- fix-crates-checksums.patch
+  * fixed checksums of new/updated rush crates
+- supersedes u_mesa-CVE-2023-45913.patch
+- supersedes revert_8c91624614c1f939974fe0d2d1a3baf83335cecb.patch
+- adjusted python36-buildfix1.patch
+- adjusted u_dep_xcb.patch
+- shared-glapi deprecated
+- gallium-nine (D3D), gallium-opencl (Clover OpenCL), gallium-xa dropped
+- require meson >= 1.4.0
+- require rust-bindgen >= 0.71.1
+- intel-rt no longer supported on 32bit
+- removed libxatracker2/libxatracker-devel packages
+- removed Mesa-gallium package
+- removed Mesa-libd3d/Mesa-libd3d-devel packages
+- removed Mesa-libOpenCL package
+
+-------------------------------------------------------------------
 Fri Aug  1 11:39:07 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to release 25.1.7

@@ -6379,4 +6379,73 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - Bump required versions of the wayland packages.</comment>
     <requestid>1297044</requestid>
   </revision>
+  <revision rev="550" vrev="422">
+    <srcmd5>64f363e8899799db561ba029f788e324</srcmd5>
+    <version>25.2.2</version>
+    <time>1757329501</time>
+    <user>anag_factory</user>
+    <comment>-  Update to release 25.2.2
+  --&gt;  https://docs.mesa3d.org/relnotes/25.2.2
+
+- Update to release 25.2.1
+  --&gt;  https://docs.mesa3d.org/relnotes/25.2.1
+
+- Remove %package definitions of no longer existing packages:
+  Mesa-gallium, Mesa-libd3d, Mesa-libd3d-devel, Mesa-libOpenCL,
+  libxatracker2, and libxatracker-devel
+- Fix baselibs to no longer require Mesa-gallium, and clean up no
+  longer existing packages.
+
+- removed Requires to dropped Mesa-gallium
+- minor specfile cleanup
+
+- removed Provides for packages which functionality has been
+  dropped with the update to 25.2.0, so just obsolete them
+  * libxatracker2/libxatracker-devel
+  * Mesa-gallium
+  * Mesa-libd3d/Mesa-libd3d-devel
+  * Mesa-libOpenCL
+
+- Update python36-buildfix1.patch with removeprefix use fix in
+  src/compiler/nir/nir_algebraic.py
+
+- added Provides/Obsoletes for packages, which I removed with the
+  update to 25.2.0
+  * libxatracker2/libxatracker-devel
+  * Mesa-gallium
+  * Mesa-libd3d/Mesa-libd3d-devel
+  * Mesa-libOpenCL
+
+- switch to rust crate tarballs from http://crates.io, which have
+  different checksums; seems Mesa uses these and not the one of
+  the easier to find tarballs on github
+- the above supersedes fix-crates-checksums.patch
+
+- re-apply u_mesa-CVE-2023-45913-s390x.patch on s390x
+
+- Update to release 25.2.0
+  --&gt;  https://docs.mesa3d.org/relnotes/25.2.0
+- removed DRI2 build reqs since DRI2 drivers are no longer supported
+- added 'rustc-hash' crate from github now needed by NVK; updated
+  rust crates from github
+  * check with 'grep -r crates' in Mesa sources below subprojects/
+    folder for the needed versions! Versions needs to match; it's not
+    the minimum!
+- fix-crates-checksums.patch
+  * fixed checksums of new/updated rush crates
+- supersedes u_mesa-CVE-2023-45913.patch
+- supersedes revert_8c91624614c1f939974fe0d2d1a3baf83335cecb.patch
+- adjusted python36-buildfix1.patch
+- adjusted u_dep_xcb.patch
+- shared-glapi deprecated
+- gallium-nine (D3D), gallium-opencl (Clover OpenCL), gallium-xa dropped
+- require meson &gt;= 1.4.0
+- require rust-bindgen &gt;= 0.71.1
+- intel-rt no longer supported on 32bit
+- removed libxatracker2/libxatracker-devel packages
+- removed Mesa-gallium package
+- removed Mesa-libd3d/Mesa-libd3d-devel packages
+- removed Mesa-libOpenCL package</comment>
+    <requestid>1303039</requestid>
+  </revision>
 </revisionlist>

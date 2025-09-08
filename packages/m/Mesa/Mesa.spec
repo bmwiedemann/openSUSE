@@ -43,7 +43,7 @@
 %define glamor 1
 %define _name_archive mesa
 %ifnarch s390x
-%define _version 25.1.7
+%define _version 25.2.2
 %else
 %define _version 24.1.7
 %endif
@@ -70,10 +70,6 @@
 %ifarch %{ix86} x86_64
   %define vdpau_d3d12 1
 %endif
-%endif
-
-%ifarch %{ix86} x86_64
-  %define with_nine 1
 %endif
 
 %if 0%{gallium_loader}
@@ -112,12 +108,6 @@
   %define with_llvm 1
 %endif
 
-%if 0%{with_opencl}
-%define have_gallium 1
-%else
-%define have_gallium 0
-%endif
-
 %if "%{flavor}" == "drivers"
   %define glamor 1
 %if 0%{?suse_version} >= 1550 && 0%{with_opencl}
@@ -129,9 +119,6 @@
 
   # OpenCL requires clang (LLVM)
   %define with_opencl 0
-
-  # nine requires at least one non-swrast gallium driver
-  %define with_nine 0
 
   # Not built because radeon driver is not built.
   %define vdpau_radeon 0
@@ -151,10 +138,11 @@
 
 # NVK aka Vulkan Nouveau dependencies
 %global _unicode_ident_crate_ver 1.0.12
-%global _syn_crate_ver 2.0.68
-%global _quote_crate_ver 1.0.33
+%global _syn_crate_ver 2.0.87
+%global _quote_crate_ver 1.0.35
 %global _proc_macro2_ver 1.0.86
 %global _paste_crate_ver 1.0.14
+%global _rustc_hash_crate_ver 2.1.1
 
 # Leap 15 and SLES 15 defaults to GCC 7, which does not have stable C++17 ABI.
 # See https://bugzilla.suse.com/show_bug.cgi?id=1235697
@@ -164,7 +152,7 @@
 
 Name:           Mesa%{psuffix}
 %ifnarch s390x
-Version:        25.1.7
+Version:        25.2.2
 %else
 Version:        24.1.7
 %endif
@@ -184,6 +172,7 @@ Source1:        https://archive.mesa3d.org/%{_name_archive}-%{_version}.tar.xz.s
 # Hence, do not be scared if the dependencies are done like this
 # To check new crates or update the versions, just go to the subprojects folder and
 # run `grep -r crates .` then set versions appropriately.
+# download with 'osc service runall download_files'; github tarballs have different checksums!
 Source2:        http://crates.io/api/v1/crates/unicode-ident/%{_unicode_ident_crate_ver}/download#/unicode-ident-%{_unicode_ident_crate_ver}.tar.gz
 Source3:        http://crates.io/api/v1/crates/syn/%{_syn_crate_ver}/download#/syn-%{_syn_crate_ver}.tar.gz
 Source4:        http://crates.io/api/v1/crates/quote/%{_quote_crate_ver}/download#/quote-%{_quote_crate_ver}.tar.gz
@@ -195,8 +184,10 @@ Source9:        manual-pages.tar.bz2
 Source10:       Mesa-rpmlintrc
 Source11:       Mesa.keyring
 Source12:       README-suse-maintenance.md
-Source20:       https://archive.mesa3d.org/%{_name_archive}-25.1.7.tar.xz
-Source21:       https://archive.mesa3d.org/%{_name_archive}-25.1.7.tar.xz.sig
+Source20:       https://archive.mesa3d.org/%{_name_archive}-25.2.2.tar.xz
+Source21:       https://archive.mesa3d.org/%{_name_archive}-25.2.2.tar.xz.sig
+# download with 'osc service runall download_files'; github tarballs have different checksums!
+Source22:       http://crates.io/api/v1/crates/rustc-hash/%{_rustc_hash_crate_ver}/download#/rustc-hash-%{_rustc_hash_crate_ver}.tar.gz
 Patch2:         n_add-Mesa-headers-again.patch
 Patch11:        u_0001-intel-genxml-Drop-from-__future__-import-annotations.patch
 Patch12:        u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
@@ -218,18 +209,11 @@ Patch500:       u_dep_xcb-s390x.patch
 %ifnarch s390x
 Patch700:       u_meson-lower-python-version-requirement.patch
 %endif
-%ifnarch s390x
-Patch1222040:   u_mesa-CVE-2023-45913.patch
-%else
+%ifarch s390x
 Patch1222040:   u_mesa-CVE-2023-45913-s390x.patch
 %endif
 Patch1222041:   u_mesa-CVE-2023-45919.patch
 Patch1222042:   u_mesa-CVE-2023-45922.patch
-
-# Reverts a possible regression
-# https://gitlab.freedesktop.org/mesa/mesa/-/commit/8c91624614c1f939974fe0d2d1a3baf83335cecb
-# https://bugzilla.opensuse.org/show_bug.cgi?id=1239657
-Patch2000000:   revert_8c91624614c1f939974fe0d2d1a3baf83335cecb.patch
 
 %ifarch %{ix86} x86_64
 BuildRequires:  DirectX-Headers >= 1.613.0
@@ -244,11 +228,7 @@ BuildRequires:  glslang-devel
 BuildRequires:  imake
 BuildRequires:  libtool
 BuildRequires:  memory-constraints
-%if 0%{with_rusticl}
 BuildRequires:  meson >= 1.4.0
-%else
-BuildRequires:  meson >= 1.1.0
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 # dataclasses is in standard library of python >= 3.7
@@ -258,7 +238,6 @@ BuildRequires:  python3-dataclasses
 BuildRequires:  python3-Mako
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-xml
-BuildRequires:  pkgconfig(dri2proto)
 BuildRequires:  pkgconfig(dri3proto)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(glproto)
@@ -280,7 +259,6 @@ BuildRequires:  pkgconfig(vulkan)
 %endif
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
-BuildRequires:  pkgconfig(xcb-dri2)
 BuildRequires:  pkgconfig(xcb-dri3)
 BuildRequires:  pkgconfig(xcb-glx)
 BuildRequires:  pkgconfig(xcb-present)
@@ -309,6 +287,10 @@ Provides:       libXvMC_r600 = %{version}
 Obsoletes:      libXvMC_r600 < %{version}
 Provides:       libtxc_dxtn = %{version}
 Obsoletes:      libtxc_dxtn < %{version}
+Obsoletes:      libxatracker2 < %{version}
+Obsoletes:      Mesa-gallium < %{version}
+Obsoletes:      Mesa-libd3d < %{version}
+Obsoletes:      Mesa-libOpenCL < %{version}
 %ifarch %{arm} aarch64
 %if 0%{?suse_version} >= 1550
 BuildRequires:  python3-pycparser >= 2.20
@@ -358,7 +340,7 @@ BuildRequires:  rust-cbindgen >= 0.25
 %endif
 %if 0%{with_rusticl}
 BuildRequires:  rust
-BuildRequires:  rust-bindgen
+BuildRequires:  rust-bindgen >= 0.71.1
 %endif
 %endif
 
@@ -366,13 +348,10 @@ Requires:       Mesa-libEGL1 = %{version}
 Requires:       Mesa-libGL1 = %{version}
 Requires:       libglvnd >= 0.1.0
 
-# This dependency on Mesa-dri and Mesa-gallium is here to make sure users that
+# This dependency on Mesa-dri is here to make sure users that
 # do not install recommends on their system still get working Mesa. It is
 # ignored in obs when Mesa is installed as build dependency.
 Requires:       Mesa-dri = %{version}
-%if 0%{have_gallium}
-Requires:       Mesa-gallium = %{version}
-%endif
 
 %description
 Mesa is a 3-D graphics library with an API which is very similar to
@@ -413,6 +392,8 @@ Provides:       s2tc-devel = %{version}
 Obsoletes:      s2tc-devel < %{version}
 Provides:       libtxc_dxtn-devel = %{version}
 Obsoletes:      libtxc_dxtn-devel < %{version}
+Obsoletes:      libxatracker-devel < %{version}
+Obsoletes:      Mesa-libd3d-devel < %{version}
 
 %description devel
 Mesa is a 3-D graphics library with an API which is very similar to
@@ -625,15 +606,6 @@ This package contains vc4_dri.so, which is necessary for 3D
 acceleration on the Raspberry Pi to work. It is packaged separately
 since it is still experimental.
 
-%package -n Mesa-gallium
-Summary:        Mesa Gallium GPU drivers
-Group:          System/Libraries
-Requires:       Mesa = %{version}
-Supplements:    Mesa
-
-%description -n Mesa-gallium
-This package contains Mesa Gallium drivers for 3D acceleration.
-
 %package -n libgbm1
 Summary:        Generic buffer management API
 Group:          System/Libraries
@@ -661,27 +633,6 @@ openwfd.
 
 This package provides the development environment for compiling
 programs against the GBM library.
-
-%package -n Mesa-libd3d
-Summary:        Mesa Direct3D9 state tracker
-# Manually provide d3d library (bnc#918294)
-Group:          System/Libraries
-%ifarch x86_64 s390x ppc64 ppc64le aarch64 riscv64
-Provides:       d3dadapter9.so.1()(64bit)
-%else
-Provides:       d3dadapter9.so.1
-%endif
-
-%description -n Mesa-libd3d
-Mesa Direct3D9 state tracker
-
-%package -n Mesa-libd3d-devel
-Summary:        Mesa Direct3D9 state tracker development package
-Group:          Development/Libraries/C and C++
-Requires:       Mesa-libd3d = %{version}
-
-%description -n Mesa-libd3d-devel
-Mesa Direct3D9 state tracker development package
 
 %package -n libvdpau_nouveau
 Summary:        VDPAU state tracker for Nouveau
@@ -721,18 +672,6 @@ Group:          System/Libraries
 
 %description -n libvdpau_d3d12
 This package contains the VDPAU state tracker for d3d12
-
-%package -n Mesa-libOpenCL
-Summary:        Mesa OpenCL implementation (Clover)
-Group:          System/Libraries
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
-Requires:       libclc(llvm%{_llvm_sonum})
-%else
-Requires:       libclc
-%endif
-
-%description -n Mesa-libOpenCL
-This package contains the Mesa OpenCL implementation or GalliumCompute.
 
 %package -n Mesa-libRusticlOpenCL
 Summary:        Mesa OpenCL implementation (Rusticl)
@@ -831,32 +770,6 @@ Group:          System/Libraries
 %description -n Mesa-vulkan-overlay
 This package contains the VK_MESA_Overlay Vulkan layer
 
-%package -n libxatracker2
-Version:        1.0.0
-Summary:        XA state tracker
-Group:          System/Libraries
-
-%description -n libxatracker2
-This package contains the XA state tracker for gallium3D driver.
-It superseeds the Xorg state tracker and provides an infrastructure
-to accelerate Xorg 2D operations. It is currently used by vmwgfx
-video driver.
-
-%package -n libxatracker-devel
-Version:        1.0.0
-Summary:        Development files for the XA API
-Group:          Development/Libraries/C and C++
-Requires:       libxatracker2 = %{version}
-
-%description -n libxatracker-devel
-This package contains the XA state tracker for gallium3D driver.
-It superseeds the Xorg state tracker and provides an infrastructure
-to accelerate Xorg 2D operations. It is currently used by vmwgfx
-video driver.
-
-This package provides the development environment for compiling
-programs against the XA state tracker.
-
 %prep
 %setup -q -n %{_name_archive}-%{_version} -b9
 # remove some docs
@@ -869,6 +782,7 @@ cp %{SOURCE3} subprojects/packagecache/
 cp %{SOURCE4} subprojects/packagecache/
 cp %{SOURCE5} subprojects/packagecache/
 cp %{SOURCE6} subprojects/packagecache/
+cp %{SOURCE22} subprojects/packagecache/
 
 %patch -P 2 -p1
 # fixes build against python 3.6
@@ -886,12 +800,11 @@ cp %{SOURCE6} subprojects/packagecache/
 %ifnarch s390x
 %patch -P 700 -p1
 %endif
+%ifarch s390x
 %patch -P 1222040 -p1
+%endif
 %patch -P 1222041 -p1
 %patch -P 1222042 -p1
-%ifnarch s390x
-%patch -P 2000000 -p1
-%endif
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...
 %if 0%{?with_vulkan} == 0
@@ -935,15 +848,13 @@ egl_platforms=x11,wayland
             -Degl=enabled \
             -Dallow-kcmp=enabled \
             -Dplatforms=$egl_platforms \
+%ifarch s390x
             -Dshared-glapi=enabled \
-%if 0%{?with_nine}
-            -Dgallium-nine=true \
 %endif
 %if %{glamor}
             -Dgbm=enabled \
 %endif
 %if 0%{with_opencl}
-            -Dgallium-opencl=icd \
 %if 0%{?suse_version} >= 1550
             --sysconfdir=%{_datadir} \
 %endif
@@ -963,7 +874,6 @@ egl_platforms=x11,wayland
 %if %{gallium_loader}
             -Dgallium-vdpau=enabled \
             -Dgallium-va=enabled \
-            -Dgallium-xa=enabled \
 %endif
 %if 0%{with_vulkan}
             -Dvulkan-drivers=%{?vulkan_drivers} \
@@ -978,7 +888,9 @@ egl_platforms=x11,wayland
             -Dgallium-d3d12-video=enabled \
           %endif
             -Dgallium-d3d12-graphics=enabled \
+          %ifarch x86_64
             -Dintel-rt=enabled \
+          %endif
   %else
   %ifarch %{arm} aarch64
 %if 0%{?suse_version} >= 1550
@@ -1109,16 +1021,14 @@ done
 
 %if "%{flavor}" != "drivers"
 # Use dummy README file that can be included in both Mesa and Mesa-32bit. This way Mesa-32bit will be build (otherwise it would be skipped as empty) and it can be used by the other *-32bit packages.
-echo "The \"Mesa\" package does not have the ability to render, but is supplemented by \"Mesa-dri\" and \"Mesa-gallium\" which contain the drivers for rendering" > docs/README.package.%{_arch}
+echo "The \"Mesa\" package does not have the ability to render, but is supplemented by \"Mesa-dri\" which contains the drivers for rendering" > docs/README.package.%{_arch}
 %endif
 
 %ldconfig_scriptlets
 %ldconfig_scriptlets libEGL1
 %ldconfig_scriptlets libGL1
 %ldconfig_scriptlets -n libgbm1
-%ldconfig_scriptlets -n libxatracker2
 %ldconfig_scriptlets libglapi0
-%ldconfig_scriptlets -n Mesa-libd3d
 
 %if "%{flavor}" != "drivers"
 %files
@@ -1172,16 +1082,6 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %endif
 
 %if "%{flavor}" == "drivers"
-%ifarch aarch64 %{ix86} x86_64 %{arm} loongarch64 ppc64 ppc64le riscv64
-%files -n libxatracker2
-%{_libdir}/libxatracker.so.2*
-
-%files -n libxatracker-devel
-%{_includedir}/xa_*.h
-%{_libdir}/libxatracker.so
-%{_libdir}/pkgconfig/xatracker.pc
-
-%endif
 
 %if %{vdpau_nouveau}
 %files -n libvdpau_nouveau
@@ -1250,13 +1150,6 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %{_libdir}/gbm/dri_gbm.so
 %endif
 
-%if 0%{with_opencl}
-# only built with opencl
-%files -n Mesa-gallium
-%dir %{_libdir}/gallium-pipe/
-%{_libdir}/gallium-pipe/pipe_*.so
-%endif
-
 %ifarch %{ix86} x86_64 aarch64 %{arm} loongarch64 ppc64 ppc64le riscv64
 %files -n Mesa-dri-nouveau
 %{_libdir}/dri/nouveau_dri.so
@@ -1279,31 +1172,6 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %doc docs/*.rst
 
 # !drivers
-%endif
-
-%if 0%{?with_nine}
-%files -n Mesa-libd3d
-%dir %{_libdir}/d3d/
-%{_libdir}/d3d/*.so.*
-
-%files -n Mesa-libd3d-devel
-%{_libdir}/pkgconfig/d3d.pc
-%{_includedir}/d3dadapter/
-%{_libdir}/d3d/*.so
-%endif
-
-%if 0%{with_opencl}
-%files -n Mesa-libOpenCL
-%if 0%{?suse_version} >= 1550
-%dir %{_datadir}/OpenCL
-%dir %{_datadir}/OpenCL/vendors
-%{_datadir}/OpenCL/vendors/mesa.icd
-%else
-%dir %{_sysconfdir}/OpenCL
-%dir %{_sysconfdir}/OpenCL/vendors
-%{_sysconfdir}/OpenCL/vendors/mesa.icd
-%endif
-%{_libdir}/libMesaOpenCL.so*
 %endif
 
 %if 0%{with_rusticl}
