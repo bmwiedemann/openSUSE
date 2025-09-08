@@ -1,7 +1,7 @@
 #
 # spec file for package xalan-j2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,10 +53,7 @@ BuildRequires:  xml-commons-apis-bootstrap
 #!BuildIgnore:  xml-commons-apis
 #!BuildIgnore:  xml-commons-jaxp-1.3-apis
 #!BuildIgnore:  xml-commons-resolver
-Requires:       jaxp_parser_impl
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Provides:       jaxp_transform_impl
+Requires:       xerces-j2
 BuildArch:      noarch
 %if %{with extras}
 Name:           %{base_name}-extras
@@ -89,9 +86,9 @@ Summary:        Java XSLT compiler
 Group:          Development/Libraries/Java
 Requires:       bcel
 Requires:       java_cup
-Requires:       jaxp_parser_impl
 Requires:       jlex
 Requires:       regexp
+Requires:       xerces-j2
 
 %description    -n %{base_name}-xsltc
 The XSLT Compiler is a Java-based tool for compiling XSLT stylesheets
@@ -210,10 +207,6 @@ install -d -m 755 %{buildroot}%{_mavenpomdir}
 %{mvn_install_pom} %{SOURCE2} %{buildroot}%{_mavenpomdir}/%{base_name}-serializer.pom
 %add_maven_depmap %{base_name}-serializer.pom %{base_name}-serializer.jar
 
-# alternatives
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -sf %{_sysconfdir}/alternatives/jaxp_transform_impl.jar %{buildroot}%{_javadir}/jaxp_transform_impl.jar
-
 # bnc#485299
 install -d -m 0755 %{buildroot}/%{_sysconfdir}/ant.d/
 echo xalan-j2-serializer > %{buildroot}/%{_sysconfdir}/ant.d/serializer
@@ -236,23 +229,11 @@ cp -pr samples %{buildroot}%{_datadir}/%{base_name}
 %endif
 
 %if %{without extras}
-%post
-update-alternatives --install %{_javadir}/jaxp_transform_impl.jar \
-  jaxp_transform_impl %{_javadir}/%{base_name}.jar 30
-
-%preun
-{
-  [ $1 = 0 ] || exit 0
-  update-alternatives --remove jaxp_transform_impl %{_javadir}/%{base_name}.jar
-} >/dev/null 2>&1 || :
-
 %files -f .mfiles
 %defattr(0644,root,root,0755)
 %license LICENSE.txt
 %doc KEYS NOTICE.txt
 %config %{_sysconfdir}/ant.d/serializer
-%ghost %{_sysconfdir}/alternatives/jaxp_transform_impl.jar
-%{_javadir}/jaxp_transform_impl.jar
 
 %else
 

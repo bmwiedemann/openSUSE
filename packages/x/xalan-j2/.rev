@@ -255,4 +255,12 @@
     <comment>reproducible build + packaging overhaul</comment>
     <requestid>1202691</requestid>
   </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>18a3d37fec6a489c21f8a70b4d9f5147</srcmd5>
+    <version>2.7.3</version>
+    <time>1757318207</time>
+    <user>anag_factory</user>
+    <comment>Do not require the jaxp_parser_impl, but xerces-j2 directly</comment>
+    <requestid>1302882</requestid>
+  </revision>
 </revisionlist>

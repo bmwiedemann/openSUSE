@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep  5 06:55:25 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Do not require the jaxp_parser_impl, but xerces-j2 directly
+
+-------------------------------------------------------------------
+Fri Sep  5 06:23:04 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Do not provide the jaxp_transform_impl alternative (bsc#1245931)
+
+-------------------------------------------------------------------
 Sun Sep 22 07:00:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use SOURCE_DATE_EPOCH for reproducible builds
