@@ -530,4 +530,12 @@
 * support chunked bodies with negative length passed to</comment>
     <requestid>1244403</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>781296ac2ec86e63790ec5eb4e71f8e8</srcmd5>
+    <version>0.35.0</version>
+    <time>1757318208</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.35.0:</comment>
+    <requestid>1302927</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep  4 19:15:30 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.35.0:
+  * API and ABI backwards-compatible with 0.27.x and later
+  * pakchois-based PKCS#11 support is now deprecated
+- includes changes from release 0.34.2:
+  * Fix regression in NTLM auth in 0.34.0
+- includes changes from 0.34.1:
+  * Fix regression in 207 parsing of elements which omit a
+    reason-phrase
+- more developer visible bug fixes and interface clarifications
+- Fix the license declaration: Library is LGPL, manual/tests are
+  GPL, macros are permissive
+
+-------------------------------------------------------------------
 Sat Feb  8 20:59:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.34.0:

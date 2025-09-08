@@ -2,7 +2,7 @@
 # spec file for package neon
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,13 @@
 
 %define sover 27
 Name:           neon
-Version:        0.34.0
+Version:        0.35.0
 Release:        0
 Summary:        An HTTP and WebDAV Client Library
-License:        GPL-2.0-or-later
+# library is LGPL see src/COPYING.LIB
+# manual, tests are GPL, see test/COPYING
+# macros are under various individual less restrictive licenses
+License:        LGPL-2.0-or-later AND GPL-2.0-or-later
 Group:          Development/Libraries/Other
 URL:            https://notroj.github.io/neon/
 Source0:        https://notroj.github.io/neon/neon-%{version}.tar.gz
@@ -43,6 +46,7 @@ neon is an HTTP and WebDAV client library with a C interface.
 
 %package -n libneon%{sover}
 Summary:        An HTTP and WebDAV Client Library
+License:        LGPL-2.0-or-later
 # Drop the main package. It avoids the lib from being installed in different versions
 # and generally only contained coders doc anyhow.
 Group:          Development/Libraries/Other
@@ -54,6 +58,7 @@ neon is an HTTP and WebDAV client library with a C interface.
 
 %package -n libneon-devel
 Summary:        An HTTP and WebDAV Client Library
+License:        LGPL-2.0-or-later AND GPL-2.0-or-later
 Group:          Development/Libraries/Other
 Requires:       libneon%{sover} = %{version}
 # renamed after openSUSE 10.3
@@ -86,19 +91,17 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes -s %{buildroot}/%{_mandir}
 
 %check
-export TEST_QUIET=0
 %make_build check
 
 %ldconfig_scriptlets -n libneon%{sover}
 
 %files -n libneon%{sover}
 %license src/COPYING.LIB
-%doc AUTHORS BUGS NEWS THANKS TODO
-%{_libdir}/*.so.%{sover}
-%{_libdir}/*.so.%{sover}.*
+%doc AUTHORS NEWS THANKS TODO
+%{_libdir}/*.so.%{sover}{,.*}
 
 %files -n libneon-devel
-%license src/COPYING.LIB
+%license src/COPYING.LIB test/COPYING
 %doc %{_defaultdocdir}/%{name}
 %{_bindir}/neon-config
 %{_includedir}/neon
