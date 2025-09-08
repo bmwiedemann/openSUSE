@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun Sep  7 01:21:19 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to 2025.3.0
+- More GenAI coverage and framework integrations to minimize code
+  changes
+  * New models supported: Phi-4-mini-reasoning, AFM-4.5B, 
+    Gemma-3-1B-it, Gemma-3-4B-it, and Gemma-3-12B,
+  * NPU support added for: Qwen3-1.7B, Qwen3-4B, and Qwen3-8B.
+  * LLMs optimized for NPU now available on OpenVINO Hugging
+    Face collection.
+- Broader LLM model support and more model compression techniques
+  * The NPU plug-in adds support for longer contexts of up to 
+    8K tokens, dynamic prompts, and dynamic LoRA for improved 
+    LLM performance.
+  * The NPU plug-in now supports dynamic batch sizes by reshaping
+    the model to a batch size of 1 and concurrently managing
+    multiple inference requests, enhancing performance and
+    optimizing memory utilization.
+  * Accuracy improvements for GenAI models on both built-in 
+    and discrete graphics achieved through the implementation 
+    of the key cache compression per channel technique, in 
+    addition to the existing KV cache per-token compression
+    method.
+  * OpenVINO™ GenAI introduces TextRerankPipeline for improved
+    retrieval relevance and RAG pipeline accuracy, plus 
+    Structured Output for enhanced response reliability and 
+    function calling while ensuring adherence to predefined
+    formats.
+- More portability and performance to run AI at the edge,
+  in the cloud, or locally.
+  * Announcing support for Intel® Arc™ Pro B-Series 
+    (B50 and B60).
+  * Preview: Hugging Face models that are GGUF-enabled for 
+    OpenVINO GenAI are now supported by the OpenVINO™ Model
+    Server for popular LLM model architectures such as 
+    DeepSeek Distill, Qwen2, Qwen2.5, and Llama 3. 
+    This functionality reduces memory footprint and 
+    simplifies integration for GenAI workloads.
+  * With improved reliability and tool call accuracy, 
+    the OpenVINO™ Model Server boosts support for 
+    agentic AI use cases on AI PCs, while enhancing 
+    performance on Intel CPUs, built-in GPUs, and NPUs.
+  * int4 data-aware weights compression, now supported in the
+    Neural Network Compression Framework (NNCF) for ONNX 
+    models, reduces memory footprint while maintaining 
+    accuracy and enables efficient deployment in 
+    resource-constrained environments.
+
+-------------------------------------------------------------------
 Wed Jun 25 01:09:14 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - openSUSE Leap 16.0 compatibility 
