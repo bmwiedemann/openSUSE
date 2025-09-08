@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  8 07:36:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 1.2.2
+  * Compability with newer versions of libqpdf.
+  * Compile with C++17.
+  * Automatic page rotation based on the /Rotate key.
+  * Fixed bugs in selectors that walk pages backwards.
+- Refreshed reproducible.patch and stop_using_obsolete_standards.patch
+
+-------------------------------------------------------------------
 Wed Mar  1 13:48:10 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - stop_using_obsolete_standards.patch: stop forcing obsolete C++

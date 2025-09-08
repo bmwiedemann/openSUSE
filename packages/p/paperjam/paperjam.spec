@@ -1,7 +1,7 @@
 #
 # spec file for package paperjam
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           paperjam
-Version:        1.1.1
+Version:        1.2.2
 Release:        0
 Summary:        A tool for transforming PDF documents
 License:        GPL-2.0-or-later
@@ -28,7 +28,7 @@ Patch1:         stop_using_obsolete_standards.patch
 BuildRequires:  asciidoc
 BuildRequires:  gcc-c++
 BuildRequires:  libpaper-devel
-BuildRequires:  qpdf-devel
+BuildRequires:  qpdf-devel >= 11
 
 %description
 PaperJam is a tool for processing PDF documents: re-ordering pages,

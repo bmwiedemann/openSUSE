@@ -15,7 +15,7 @@ Index: paperjam-1.1.1/Makefile
 +BINDIR?=$(PREFIX)/bin
 +MANDIR?=$(PREFIX)/share/man
  
--CXXFLAGS=-O2 -Wall -Wextra -Wno-parentheses -std=gnu++11 -g
+-CXXFLAGS=-O2 -Wall -Wextra -Wno-parentheses -std=gnu++17 -g
 +CXXFLAGS?=-O2 -Wall -Wextra -Wno-parentheses -g
  
  all: paperjam paperjam.1 paperjam.1.html
