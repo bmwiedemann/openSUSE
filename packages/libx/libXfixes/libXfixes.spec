@@ -1,7 +1,7 @@
 #
 # spec file for package libXfixes
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libXfixes3
 Name:           libXfixes
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        X11 miscellaneous "fixes" extension library
 License:        MIT
@@ -27,10 +27,8 @@ URL:            https://xorg.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXfixes
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXfixes/
 Source:         https://xorg.freedesktop.org/archive/individual/lib/%name-%version.tar.xz
-Source1:        https://xorg.freedesktop.org/archive/individual/lib/%name-%version.tar.xz.sig
-Source2:        libXfixes.keyring
 Source3:        baselibs.conf
-#git#BuildRequires:	autoconf >= 2.60, automake, libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fixesproto) >= 5.0
 BuildRequires:  pkgconfig(x11) >= 1.6
@@ -72,12 +70,11 @@ in %lname.
 %setup -q
 
 %build
-%configure --disable-static
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-rm -f "%buildroot/%_libdir"/*.la
+%meson_install
 
 %post -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig

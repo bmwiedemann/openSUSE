@@ -123,4 +123,17 @@
     <comment></comment>
     <requestid>1079398</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c58d7d7172969c2a01630464e776d753</srcmd5>
+    <version>6.0.2</version>
+    <time>1757318189</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 6.0.2
+  * meson: Add option to build with meson
+  * Improve man page formatting
+- switched to meson build
+
+- modernize spec file. install license and documentation</comment>
+    <requestid>1303017</requestid>
+  </revision>
 </revisionlist>
