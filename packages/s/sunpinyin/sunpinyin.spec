@@ -1,7 +1,7 @@
 #
 # spec file for package sunpinyin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,6 +58,7 @@ model the Chinese language, it use a backoff bigram and trigram language model.
 %package data
 Summary:        Data files for Sunpinyin
 Group:          System/I18n/Chinese
+BuildArch:      noarch
 
 %description data
 Sunpinyin is a statistical language model based Chinese input method engine. to

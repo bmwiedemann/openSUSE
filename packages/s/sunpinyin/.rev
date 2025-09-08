@@ -133,4 +133,12 @@ When I sr'ed it the blasted sourceservice kicked in, and pulled down the source 
     <comment>- Remove unneeded BuildRequires on Python 2. (forwarded request 1040115 from StevenK)</comment>
     <requestid>1040254</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>6bcbada9e8dd06567271621f95526c4c</srcmd5>
+    <version>2.0.99.2</version>
+    <time>1757318306</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1303079</requestid>
+  </revision>
 </revisionlist>

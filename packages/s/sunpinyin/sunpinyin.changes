@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep  6 05:34:10 UTC 2025 - Yunhe Guo <i@guoyunhe.me>
+
+- Changed sunpinyin-data BuildArch to noarch
+
+-------------------------------------------------------------------
 Mon Dec  5 04:58:54 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on Python 2. 
