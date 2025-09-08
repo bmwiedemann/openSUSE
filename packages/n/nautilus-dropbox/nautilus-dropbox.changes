@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep  4 06:07:59 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2025.05.20:
+  + Add package validation workflow
+  + Update dependencies to include GdkPixbuf and related libraries
+  + Upgrade to python 3.9
+  + Use gtk in build_dropbox.py
+  + Turn off display before importing gtk
+  + Changed to gtk version 4
+  + Remove 32bit support from nautilus-dropbox
+- Exclusively build for x86_64: the platform code returns
+  FatalVisibleError("Platform not supported") for anything but
+  x86_64.
+ 
+-------------------------------------------------------------------
 Tue Nov 12 09:26:46 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2024.04.17:

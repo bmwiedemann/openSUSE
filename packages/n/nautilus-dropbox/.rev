@@ -172,4 +172,22 @@
     <comment></comment>
     <requestid>1223638</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f7402dc30fed6ca183e84174c8e9ca90</srcmd5>
+    <version>2025.05.20</version>
+    <time>1757329520</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2025.05.20:
+  + Add package validation workflow
+  + Update dependencies to include GdkPixbuf and related libraries
+  + Upgrade to python 3.9
+  + Use gtk in build_dropbox.py
+  + Turn off display before importing gtk
+  + Changed to gtk version 4
+  + Remove 32bit support from nautilus-dropbox
+- Exclusively build for x86_64: the platform code returns
+  FatalVisibleError(&quot;Platform not supported&quot;) for anything but
+  x86_64. (forwarded request 1302687 from iznogood)</comment>
+    <requestid>1303129</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 
 %global nautilus_extdir %( pkg-config libnautilus-extension-4 --variable extensiondir )
 Name:           nautilus-dropbox
-Version:        2024.04.17
+Version:        2025.05.20
 Release:        0
 Summary:        Dropbox client integrated into Nautilus
 License:        GPL-3.0-or-later AND CC-BY-ND-3.0
@@ -33,6 +33,7 @@ BuildRequires:  python3-docutils
 BuildRequires:  python3-gobject
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libnautilus-extension-4) >= 43.rc
+ExclusiveArch:  x86_64
 
 %description
 Dropbox is a free service that lets you bring your photos, docs, and videos anywhere
