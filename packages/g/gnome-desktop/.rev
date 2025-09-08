@@ -1412,4 +1412,14 @@
     <comment></comment>
     <requestid>1281937</requestid>
   </revision>
+  <revision rev="188" vrev="1">
+    <srcmd5>631228a38854e73dd49da36d9d1a2155</srcmd5>
+    <version>44.4</version>
+    <time>1757329511</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 44.4:
+  + Support TryExec for thumbnailers.
+  + Updated translations. (forwarded request 1302857 from iznogood)</comment>
+    <requestid>1303128</requestid>
+  </revision>
 </revisionlist>
