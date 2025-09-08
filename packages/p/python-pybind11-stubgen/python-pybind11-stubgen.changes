@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Aug 29 16:15:17 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.5.5
+  * Fix the type annotation for __all__
+  * Handle boolean numpy arrays
+  * Fix qualname prefix in pybind11 3.0.0
+- Update to version 2.5.4
+  * Add argv to main() to simplify use as a library
+  * Improve package detection
+- Update to version 2.5.3
+  * Ignore technical dunder Python 3.13 fields
+    (__static_attributes__ and __firstlineno__)
+  For details, see
+  https://github.com/sizmailov/pybind11-stubgen/releases
+
+-------------------------------------------------------------------
+Fri Aug 29 16:02:17 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.5.1
+  For details, see
+  https://github.com/sizmailov/pybind11-stubgen/releases
+
+-------------------------------------------------------------------
 Fri Jun 20 13:03:32 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

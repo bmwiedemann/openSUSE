@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybind11-stubgen
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-%{pypiname}
-Version:        0.12.0
+Version:        2.5.5
 Release:        0
 Summary:        PEP 561 type stubs generator for pybind11 modules
 License:        BSD-3-Clause
 URL:            https://github.com/sizmailov/pybind11-stubgen
-Source:         https://pypi.io/packages/source/p/%{pypiname}/%{pypiname}-%{version}.tar.gz
+Source:         https://github.com/sizmailov/pybind11-stubgen/archive/refs/tags/v%{version}.tar.gz#/%{pypiname}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -63,7 +63,7 @@ specifically modules compiled using pybind11
 # pytest does not produce anything useful
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/pybind11-stubgen
 %{python_sitelib}/pybind11_stubgen
