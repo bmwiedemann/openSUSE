@@ -1,7 +1,7 @@
 #
 # spec file for package gvfs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -116,6 +116,17 @@ Supplements:    (gvfs and %{smb_client_package})
 
 %description backend-samba
 This package provides a gvfs backend that supports Samba.
+
+%package backend-gphoto
+%define gphoto_package %(rpm -q --qf "%%{name}" -f $(readlink -f %{_libdir}/libgphoto2.so))
+Summary:        VFS functionality for GLib -- gPhoto Support
+License:        LGPL-2.0-or-later
+Group:          Development/Libraries/C and C++
+Requires:       %{name} = %{version}
+Supplements:    (gvfs and %{gphoto_package})
+
+%description backend-gphoto
+This package provides a gvfs backend that supports gPhoto.
 
 %package backends
 Summary:        VFS functionality for GLib
@@ -281,16 +292,20 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %{_datadir}/gvfs/mounts/onedrive.mount
 %endif
 
+%files backend-gphoto
+%{_libexecdir}/%{name}/gvfs-gphoto2-volume-monitor
+%{_userunitdir}/gvfs-gphoto2-volume-monitor.service
+%{_datadir}/dbus-1/services/org.gtk.vfs.GPhoto2VolumeMonitor.service
+%{_datadir}/%{name}/remote-volume-monitors/gphoto2.monitor
+%{_libexecdir}/%{name}/gvfsd-gphoto2
+%{_datadir}/%{name}/mounts/gphoto2.mount
+
 %files backends
 %doc monitor/udisks2/what-is-shown.txt
 %{_datadir}/dbus-1/services/org.gtk.vfs.UDisks2VolumeMonitor.service
 %{_datadir}/%{name}/remote-volume-monitors/udisks2.monitor
 %{_libexecdir}/%{name}/gvfs-udisks2-volume-monitor
 %{_userunitdir}/gvfs-udisks2-volume-monitor.service
-%{_libexecdir}/%{name}/gvfs-gphoto2-volume-monitor
-%{_userunitdir}/gvfs-gphoto2-volume-monitor.service
-%{_datadir}/dbus-1/services/org.gtk.vfs.GPhoto2VolumeMonitor.service
-%{_datadir}/%{name}/remote-volume-monitors/gphoto2.monitor
 %{_libexecdir}/%{name}/gvfsd-admin
 %{_datadir}/%{name}/mounts/admin.mount
 %{_datadir}/polkit-1/actions/org.gtk.vfs.file-operations.policy
@@ -317,8 +332,6 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %{_datadir}/%{name}/mounts/ftp.mount
 %{_datadir}/%{name}/mounts/ftps.mount
 %{_datadir}/%{name}/mounts/ftpis.mount
-%{_libexecdir}/%{name}/gvfsd-gphoto2
-%{_datadir}/%{name}/mounts/gphoto2.mount
 %{_libexecdir}/%{name}/gvfsd-http
 %{_datadir}/%{name}/mounts/http.mount
 %{_libexecdir}/%{name}/gvfsd-localtest

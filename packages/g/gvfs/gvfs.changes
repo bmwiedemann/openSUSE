@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  2 16:54:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Split out new gvfs-backend-gphoto sub-package.
+- Supplement this new package to gvfs and the libgphoto2 library.
+
+-------------------------------------------------------------------
 Mon Feb 24 14:23:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.57.2 (Unstable):
