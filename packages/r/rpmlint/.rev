@@ -5288,4 +5288,24 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1291704</requestid>
   </revision>
+  <revision rev="509" vrev="1">
+    <srcmd5>5169cf5476ea4e1fd676e1efd1c3693a</srcmd5>
+    <version>2.7.0+git20250905.7717a72c</version>
+    <time>1757318210</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.7.0+git20250905.7717a72c:
+  * whitelistings: add new GNOME49 D-Bus/Polkit digests (bsc#1248881, bsc#1249067, bsc#1248979)
+  * scoring: raise badness for logrotate-user-writable-log-dir (bsc#1245961)
+  * word-writable-whitelist: remove postfix-bdb /var/spool/mail no longer packaged
+  * pam-modules: drop pam_csync no longer packaged in Factory
+  * dbus-services: drop passim which never reached Factory
+  * dbus-services: drop rebootmgr (is now using varlink)
+  * dbus-services: drop no longer needed deepin whitelistings
+  * Added the SMTP Daemon (_smtpd) and the SMTPD Queue (_smtpq) users and groups for OpenSMTPD.
+  * configs/openSUSE/users-groups.toml: add user opencloud-server
+  * configs/openSUSE/users-groups.toml: add group opencloud-server
+  * Update users-groups.toml redis
+</comment>
+    <requestid>1302949</requestid>
+  </revision>
 </revisionlist>
