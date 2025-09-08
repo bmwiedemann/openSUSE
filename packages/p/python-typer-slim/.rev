@@ -191,4 +191,92 @@ I tested the upgrade path and this will not break anybody relying on the package
 </comment>
     <requestid>1302028</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4c1a52e09d4e4f4bea4ef76886b0ecd2</srcmd5>
+    <version>0.17.4</version>
+    <time>1757318185</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.17.4
+  * Make sure rich.markup is imported when rendering help text.
+- Update to 0.17.3
+  * Allow annotated parsing with a subclass of Path.
+  * Avoid printing default: None in the help section when using
+    Rich.
+  * Fix markdown formatting in --help output.
+  * Lazy-load rich_utils to reduce startup time.
+- Update to 0.16.1
+  * Avoid printing additional output with no_args_is_help=True and
+    Click 8.2.
+- Drop patch handle-excess-whitespace-not-exists.patch.
+  * This patch is no longer needed, as the issue it fixed has been
+    resolved upstream.
+- Add patch handle-excess-whitespace-not-exists.patch:
+  * Handle excess whitespace in one testcase.
+- Update to 0.16.0
+  * Add compatibility with Click 8.2.
+- Remove support-click-8.2.patch as it is no longer needed.
+- Add patch support-click-8.2.patch:
+  * Support both click 8.1 and 8.2.
+- Switch to autosetup macros.
+- Update to 0.15.3
+  * Ensure that autocompletion works for Path arguments/options.
+  * Fix newline after header in help text.
+- Update to 0.15.2
+  * Allow custom styles for commands in help output.
+  * Avoid the unnecessary import of typing_extensions in newer
+    Python versions.
+  * Fix shell completions for the fish shell.
+- Update to 0.15.1
+  * Deprecate shell_complete and continue to use autocompletion for
+    CLI parameters.
+- Update to 0.15.0
+  * Add support for extending typer apps without passing a name,
+    add commands to the top level.
+  * Breaking change:  Remove auto naming of groups added via
+    add_typer based on the group's callback function name.
+- update to 0.13.1:
+  * Remove Rich tags when showing completion text.
+  * Render Rich markup as HTML in Markdown docs.
+  * Support cp850 encoding for auto-completion in PowerShell.
+  * Allow gettext translation of help message.
+  * Fix printing HTML from Rich output.
+- update to 0.13.0:
+  * Handle `KeyboardInterrupt` separately from other
+    exceptions.
+  * Update `launch` to not print anything when opening urls.
+  * Fix equality check for custom classes. PR #979 by @AryazE.
+  * Allow colon in zsh autocomplete values and descriptions. PR
+  * Deprecate support for `is_flag` and `flag_value`
+    parameters.
+  * Remove unused functionality from `_typing.py` file.
+  * Fix typo in function name `_make_rich_text`.
+  * Only run completion installation tests when the env var
+    `_TYPER_RUN_INSTALL_COMPLETION_TESTS` is set.
+- Switch PDM dependency from python3-pdm to python3-pdm-backend to
+  account for changes in that package's structure.
+- Update to upstream version 0.12.5
+  * Unify the width of the Rich console for help and errors.
+  * Improve assertion error message if a group is not a valid subclass.
+  * Ensure rich_markup_mode=None disables Rich formatting.
+- Update to upstream version 0.12.4
+  * Fix support for UnionType (e.g. str | None) with Python 3.11.
+  * Fix zsh autocompletion installation.
+  * Fix usage of Annotated with future annotations in Python 3.7+.
+  * Fix shell_complete not working for Arguments.
+- Update to upstream version 0.12.3
+  * Fix Rich formatting with no commands.
+  * Improve column help display, ensure commands column width is
+    the same on all panels.
+  * Add support for an argument of type Optional[Tuple] and default
+    value None.
+- Update to upstream version 0.12.1
+  * No functional changes, only changes to upstream package
+    structure.
+- Provide ustream version 0.12.0
+  * Extract core functionality into a separate slim package.
+- Add set-proper-pythonpath-for-tutorial-script-tests.patch to fix
+  issues with import failures in tests.
+</comment>
+    <requestid>1303003</requestid>
+  </revision>
 </revisionlist>
