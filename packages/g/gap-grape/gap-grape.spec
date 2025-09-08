@@ -17,7 +17,7 @@
 
 
 Name:           gap-grape
-Version:        4.9.2
+Version:        4.9.3
 Release:        0
 Summary:        GAP: GRaph Algorithms using PErmutation groups
 License:        GPL-2.0-or-later
