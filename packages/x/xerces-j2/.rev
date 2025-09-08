@@ -353,4 +353,12 @@
     <comment>Simplify the spec file: remove old macros</comment>
     <requestid>1170986</requestid>
   </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>1c55ad89a5413407719b4c3c6526d71d</srcmd5>
+    <version>2.12.2</version>
+    <time>1757318204</time>
+    <user>anag_factory</user>
+    <comment>Do not provide the jaxp_parser_impl</comment>
+    <requestid>1302878</requestid>
+  </revision>
 </revisionlist>

@@ -18,5 +18,4 @@ Xerces 2 also provides a partial implementation of Document Object
 Model Level 3 Core, Load and Save and Abstract Schemas [deprecated]
 Working Drafts. For more information, refer to the DOM Level 3
 Implementation page.</description>
-  <devel project="Java:packages" package="xerces-j2"/>
 </package>

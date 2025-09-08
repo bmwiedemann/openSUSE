@@ -43,14 +43,13 @@ BuildRequires:  javapackages-local >= 6
 BuildRequires:  xalan-j2 >= 2.7.1
 BuildRequires:  xml-commons-apis >= 1.4.01
 BuildRequires:  xml-commons-resolver >= 1.2
-#!BuildIgnore:  jaxp_parser_impl
+#!BuildIgnore:  xerces-j2
 #!BuildIgnore:  osgi(org.apache.xerces)
 #!BuildIgnore:  xerces-j2
 # Explicit javapackages-tools requires since scripts use
 # /usr/share/java-utils/java-functions
 Requires:       javapackages-tools
 Provides:       %{name}-scripts = %{version}-%{release}
-Provides:       jaxp_parser_impl = 1.4
 Obsoletes:      %{name}-scripts < %{version}-%{release}
 BuildArch:      noarch
 
@@ -108,7 +107,6 @@ ant -Djavac.source=1.8 -Djavac.target=1.8 \
 # jar
 install -dm 755 %{buildroot}%{_javadir}
 install -pm 644 build/xercesImpl.jar %{buildroot}%{_javadir}/%{name}.jar
-(cd %{buildroot}%{_javadir} && ln -s %{name}.jar jaxp_parser_impl.jar)
 
 # pom
 install -dm 755 %{buildroot}%{_mavenpomdir}
@@ -142,17 +140,11 @@ install -p -m 644 %{SOURCE4} %{buildroot}%{_mandir}/man1
 install -pD -T build/xercesSamples.jar %{buildroot}%{_datadir}/%{name}/%{name}-samples.jar
 cp -pr data %{buildroot}%{_datadir}/%{name}
 
-%post
-update-alternatives --remove jaxp_parser_impl %{_javadir}/%{name}.jar >/dev/null 2>&1 || :
-# it deletes the link, set it up again
-ln -sf %{name}.jar %{_javadir}/jaxp_parser_impl.jar
-
 %files -f .mfiles
 %license LICENSE
 %doc NOTICE README
 %{_bindir}/*
 %{_mandir}/*/*
-%{_javadir}/jaxp_parser_impl.jar
 
 %files javadoc
 %{_javadocdir}/%{name}
