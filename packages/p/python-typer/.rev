@@ -303,4 +303,155 @@
 </comment>
     <requestid>1302029</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f932598b17f0498e23386803649035c8</srcmd5>
+    <version>0.17.4</version>
+    <time>1757318186</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.17.4
+  * Make sure rich.markup is imported when rendering help text.
+- Update to 0.17.3
+  * Allow annotated parsing with a subclass of Path.
+  * Avoid printing default: None in the help section when using
+    Rich.
+  * Fix markdown formatting in --help output.
+  * Lazy-load rich_utils to reduce startup time.
+- Convert to libalternatives on SLE-16-based and newer systems
+- Update to 0.16.1
+  * Avoid printing additional output with no_args_is_help=True and
+    Click 8.2.
+- Update to 0.16.0
+  * Add compatibility with Click 8.2.
+- Remove support-click-8.2.patch as it is no longer needed.
+- Add patch support-click-8.2.patch:
+  * Support both click 8.1 and 8.2.
+- Switch to autosetup macro.
+- Update to 0.15.3
+  * Ensure that autocompletion works for Path arguments/options.
+  * Fix newline after header in help text.
+- Update to 0.15.2
+  * Allow custom styles for commands in help output.
+  * Avoid the unnecessary import of typing_extensions in newer
+    Python versions.
+  * Fix shell completions for the fish shell.
+- Update to 0.15.1
+  * Deprecate shell_complete and continue to use autocompletion for
+    CLI parameters.
+- Update to 0.15.0
+  * Add support for extending typer apps without passing a name,
+    add commands to the top level.
+  * Breaking change:  Remove auto naming of groups added via
+    add_typer based on the group's callback function name.
+- update to 0.13.1:
+  * Remove Rich tags when showing completion text.
+  * Render Rich markup as HTML in Markdown docs.
+  * Support cp850 encoding for auto-completion in PowerShell.
+  * Allow gettext translation of help message.
+  * Fix printing HTML from Rich output. PR #1055 by @tiangolo.
+  * Update markdown includes to use the new simpler format. PR
+- update to 0.13.0:
+  * Handle `KeyboardInterrupt` separately from other
+    exceptions.
+  * Update `launch` to not print anything when opening urls.
+  * Show help items in order of definition.
+  * Fix equality check for custom classes.
+  * Allow colon in zsh autocomplete values and descriptions.
+  * Deprecate support for `is_flag` and `flag_value`
+    parameters.
+  * Remove unused functionality from `_typing.py` file.
+  * Fix typo in function name `_make_rich_text`.
+- Switch PDM dependency from python3-pdm to python3-pdm-backend to
+  account for changes in that package's structure.
+- Update to upstream version 0.12.5
+  * Unify the width of the Rich console for help and errors.
+  * Improve assertion error message if a group is not a valid subclass.
+  * Ensure rich_markup_mode=None disables Rich formatting.
+- Update to upstream version 0.12.4
+  * Fix support for UnionType (e.g. str | None) with Python 3.11.
+  * Fix zsh autocompletion installation.
+  * Fix usage of Annotated with future annotations in Python 3.7+.
+  * Fix shell_complete not working for Arguments.
+- Add conflict declaration with Erlang as both packages provide
+  /usr/bin/typer
+- Update to upstream version 0.12.3
+  * Fix Rich formatting with no commands.
+  * Improve column help display, ensure commands column width is
+    the same on all panels.
+  * Add support for an argument of type Optional[Tuple] and default
+- Update to upstream version 0.12.1
+  * The core functionality has been extracted into
+    python-typer-slim.
+  * The typer command is now provided as part of the main typer
+    package.
+  * Formerly optional dependencies required for full
+    functionality are now automatically installed. If they are not
+    required, the slim package can be used.
+- Drop set-proper-pythonpath-for-tutorial-script-tests.patch as it
+  is now applied in python-typer-slim.
+- Update to upstream version 0.10.1
+  * Internal and dependency changes
+- Fix missing requirement specification on
+  python-typing_extensions.
+- Update to upstream version 0.10.0
+  * Fix default value of None for CLI Parameters when the type is
+    list | None and the default value is None.
+  * Improve support for CLI translations using gettext.
+  * Fix evaluating stringified annotations in Python 3.10.
+  * Fix display of default value for Enum parameters inside of a
+    list, include docs and tests.
+  * Update type annotations for show_default parameter and update
+    docs for setting a &quot;Custom default string&quot;.
+  * Add missing default_factory in Argument overloads.
+  * Fix preserving case in enum values.
+- Fix sle15_python_module_python being on wrong line post spec
+  auto-format.
+- add sle15_python_module_python
+- Update to upstream version 0.9.0
+  * Add support for PEP-593 Annotated for specifying options and
+    arguments.
+  * Add support for custom types and parsers.
+- Drop patch run-subprocesses-with-correct-python.patch that got
+  included upstream.
+- Adapt set-proper-pythonpath-for-tutorial-script-tests.patch to
+  also work for Python 3.11.
+- Update to upstream version 0.7.0
+  * Make typer.run() not add completion scripts by default, it only
+    makes sense in installed apps.
+  * Add support for Python 3.11.
+- Update to upstream version 0.6.1
+  * Adds deep integrations with Rich. If Rich is available, it will
+    be used to show the content from --help options, validation
+    errors, and even errors in apps.
+  * Support for Rich Markup and Markdown in docstrings, CLI
+    parameters, help, and epilog.
+  * Fix type conversion for List and Tuple.
+  * Fix context_settings for a Typer apps with a single command.
+  * Fix setting FORCE_TERMINAL with colors.
+- Refreshed patches
+- Add run-subprocesses-with-correct-python.patch to ensure tests
+  aren't accidentally running subprocesses using the wrong Python
+  version.
+- Add set-proper-pythonpath-for-tutorial-script-tests.patch to fix
+  issue with build failing due to import failures.
+- Update to upstream version 0.4.1
+  * Fix import of get_terminal_size for Click 8.1.0 support.
+- Switch from traditional setup.py installation to pyproject macros
+  as upstream no longer ships its setup.py compability wrapper.
+- Update to upstream version 0.4.0
+  * Add support for Click 8 while keeping compatibility with
+    Click 7.
+- Remove basic-click8-compat.patch as Click 8 compatibility is now
+  provided upstream.
+- Resolve Typer no longer working since Click got bumped to version
+  8.
+  * This removes support for autocompletion.
+- Add basic-click8-compat.patch
+- Properly specify package group.
+- Suppress false-positive detection of empty file in rpmlint.
+- Properly declare minimum version requirement vs. python-click to
+  avoid broken installation on Leap.
+- Initial package release
+</comment>
+    <requestid>1303004</requestid>
+  </revision>
 </revisionlist>

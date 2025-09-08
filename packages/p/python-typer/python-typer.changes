@@ -1,5 +1,11 @@
 -------------------------------------------------------------------
-Sat Aug 30 14:32:00 UTC 2025 - Matthias Bach <marix@marix.org>
+Sat Sep  6 09:01:49 UTC 2025 - Matthias Bach <marix@marix.org> - 0.17.4
+
+- Update to 0.17.4
+  * Make sure rich.markup is imported when rendering help text.
+
+-------------------------------------------------------------------
+Sat Aug 30 14:32:00 UTC 2025 - Matthias Bach <marix@marix.org> - 0.17.3
 
 - Update to 0.17.3
   * Allow annotated parsing with a subclass of Path.
