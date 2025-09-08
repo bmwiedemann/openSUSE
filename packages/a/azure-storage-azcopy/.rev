@@ -7,4 +7,12 @@
     <comment>Tool to copy files across Azure storage services</comment>
     <requestid>1290644</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>69898b4a67abc104b1727b4eb92a16c2</srcmd5>
+    <version>10.30.0</version>
+    <time>1757318304</time>
+    <user>anag_factory</user>
+    <comment>Command line tool to handle Azure storage copy operations</comment>
+    <requestid>1303064</requestid>
+  </revision>
 </revisionlist>

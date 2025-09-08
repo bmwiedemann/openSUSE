@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Sep  6 09:13:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 10.30.0
+  * For transfers involving Azure Files (NFS or SMB), AzCopy will not auto
+    create file shares.
+  * AzCopy binaries and latest version information will now be distributed
+    from Github releases instead of the static website. (#3014)
+  * Azure Files NFS Support via REST.
+    - Support for transferring data between local Linux systems and Azure Files
+      NFS using REST. To use this feature, please explicitly specify the --from-to
+      flag.
+      - Transfer from local Linux to Azure Files NFS. (--from-to=LocalFileNFS)
+      - Transfer from Azure Files NFS to local Linux. (--from-to=FileNFSLocal)
+      - Transfer between Azure Files NFS shares from. (--from-to=FileNFSFileNFS)
+        - Note:
+          - Azure Files NFS to Azure Files NFS transfers (FileNFSFileNFS) are
+	    supported on Windows, Linux, and macOS.
+          - Transfers from local to NFS (LocalFileNFS) and NFS to local (FileNFSLocal)
+	    are supported only on Linux systems.
+  * Added support to retry on copy source error code and status code for service
+    to service copies. (#3105)
+  * Added support for service to service copies from Azure Files to Blob Storage
+    using EntraID. (#3053)
+  * Fixed a bug where when copying a file that has already been deleted with
+    --trailing-dot=Disable resulted in the wrong error instead of a 404. (#3092)
+  * Removed the warning message when failing to create a container. This message
+    can be misleading when there is insufficient permissions to create a container
+    and the container already exists. (#3045)
+  * Improved the error message returned when block size is larger than bandwidth
+    limit. (#3051)
+  * Warn user if transfer is going to exceed 10M objects. (#3111)
+  * Warn user if multiple AzCopy processes are running. (#3128)
+- from version 10.30.0~preview.2
+  * Golang 1.24.2 -> 1.24.4 (#3085)
+- from version 10.30.0-preview.1
+  * Azure Files NFS Support via REST API
+    - Support for transferring data between local Linux systems and Azure Files
+      NFS using REST.
+      - Transfer from local Linux to Azure Files NFS.
+      - Transfer from Azure Files NFS to local Linux.
+      - Transfer between Azure Files NFS shares.
+- Disable changesgenerate in _service file
+- Pass '-v' and '-x' to 'go build' to make build more verbose
+
+-------------------------------------------------------------------
 Fri Jul  4 09:17:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Remove upstream URL from Source field

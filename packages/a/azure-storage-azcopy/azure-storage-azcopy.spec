@@ -23,7 +23,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           azure-storage-azcopy
-Version:	10.29.1
+Version:	10.30.0
 Release:        0
 License:        MIT
 Summary:        Microsoft Azure Storage data transfer utility
@@ -53,7 +53,7 @@ popd
 
 %build
 %goprep %{import_path}
-CGO_ENABLED=0 go build -buildmode=pie -ldflags="-s -w -X main.version=%{version}" -mod=vendor
+CGO_ENABLED=0 go build -v -x -buildmode=pie -ldflags="-s -w -X main.version=%{version}" -mod=vendor
 
 %install
 install -d %{buildroot}%{_bindir}
