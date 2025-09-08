@@ -2016,4 +2016,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-01/msg00544.html for more co
     <comment></comment>
     <requestid>1283657</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>2169884e29b864f9146dcaafded935d5</srcmd5>
+    <version>11.8.3</version>
+    <time>1757318197</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1302811</requestid>
+  </revision>
 </revisionlist>
