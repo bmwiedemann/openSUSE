@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Sun Sep  7 18:46:30 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.8:
+  * Fixing bug in vtt and adding scc2vtt example
+  * This runs against the existing ToS scc file and outputs vtt to
+    stdout
+- fix file conflinct with the rollup package
+
+-------------------------------------------------------------------
+Mon Apr 21 15:58:07 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- initial version

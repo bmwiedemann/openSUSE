@@ -1,0 +1,7 @@
+<package name="libcaption" project="openSUSE:Factory">
+  <title>CEA608 / CEA708 closed-caption encoder/decoder</title>
+  <description>libcaption is a library written in C to aid in the creating and parsing of
+closed caption data, open sourced under the MIT license to use within community
+developed broadcast tools.</description>
+  <url>https://github.com/szatmary/libcaption</url>
+</package>
