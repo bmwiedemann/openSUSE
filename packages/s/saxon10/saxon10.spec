@@ -1,7 +1,7 @@
 #
 # spec file for package saxon10
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,10 +56,7 @@ BuildRequires:  unzip
 BuildRequires:  xml-commons-apis
 BuildRequires:  xml-commons-resolver
 BuildRequires:  xom
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Recommends:     %{name}-scripts
-Provides:       jaxp_transform_impl = %{version}
 BuildArch:      noarch
 
 %description
@@ -134,8 +131,8 @@ Summary:        Utility scripts for %{name}
 Group:          Productivity/Publishing/XML
 Requires:       %{name} = %{version}-%{release}
 Requires:       javapackages-tools
-Requires:       jaxp_parser_impl
 Requires:       jline
+Requires:       xerces-j2
 Requires:       xml-commons-apis
 Recommends:     icu4j
 Recommends:     jdom
@@ -209,10 +206,6 @@ install -m0755 %{SOURCE12} %{buildroot}%{_bindir}/gizmo%{saxon_version}
 install -dm0755 %{buildroot}%{_mandir}/man1
 install -Dm0644 {%{name}{,q},gizmo%{saxon_version}}.1 %{buildroot}%{_mandir}/man1/
 
-# jaxp_transform_impl ghost symlink
-install -dm0755 %{buildroot}%{_sysconfdir}/alternatives/
-ln -sf %{_sysconfdir}/alternatives/jaxp_transform_impl.jar %{buildroot}%{_javadir}/jaxp_transform_impl.jar
-
 # Manual
 install -dm0755 %{buildroot}%{_defaultdocdir}/%{name}/{doc,source-userdoc}
 cp -rf doc/{index.html,img} %{buildroot}%{_defaultdocdir}/%{name}/doc
@@ -235,18 +228,7 @@ find %{buildroot}%{_defaultdocdir}/%{name} \
 	|xargs -0 dos2unix
 %fdupes %{buildroot}%{_defaultdocdir}/%{name}
 
-%post
-update-alternatives --install %{_javadir}/jaxp_transform_impl.jar \
-	jaxp_transform_impl %{_javadir}/%{name}.jar 25
-
-%postun
-if [ $1 -eq 0 ] ; then
-	update-alternatives --remove jaxp_transform_impl %{_javadir}/%{name}.jar
-fi
-
 %files -f .mfiles
-%{_javadir}/jaxp_transform_impl.jar
-%ghost %{_sysconfdir}/alternatives/jaxp_transform_impl.jar
 %license notices/{ASM,ICU-J,JAMESCLARK,JLINE2,LICENSE,THAI,UNICODE}.txt
 
 %files manual

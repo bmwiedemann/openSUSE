@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep  5 07:06:47 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Do not require the jaxp_parser_impl, but xerces-j2 directly
+
+-------------------------------------------------------------------
+Fri Sep  5 06:26:56 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Do not provide the jaxp_transform_impl alternative (bsc#1245914)
+
+-------------------------------------------------------------------
 Wed Sep 27 12:20:49 UTC 2023 - Gus Kenion <gkenion@suse.com>
 
 - Remove nonfree code from javadoc.

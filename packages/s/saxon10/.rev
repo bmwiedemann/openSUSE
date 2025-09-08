@@ -31,4 +31,12 @@
     <comment>revert a fix that was not one</comment>
     <requestid>1207398</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>762b611c806f56a050864cd1d23f42a9</srcmd5>
+    <version>10.9</version>
+    <time>1757318206</time>
+    <user>anag_factory</user>
+    <comment>Do not require the jaxp_parser_impl, but xerces-j2 directly</comment>
+    <requestid>1302881</requestid>
+  </revision>
 </revisionlist>
