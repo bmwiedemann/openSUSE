@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep  4 17:40:37 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.48.6:
+  + Fix emojis incorrectly rendered in their text variant.
+  + Add support for font collection / fragment identifiers.
+  + Fix web process deadlock on exit.
+  + Fix stuttering when playing WebP animations.
+  + Fix CSS animations with cubic-bezier timing function.
+  + Do not start the MemoryPressureMonitor if it's disabled.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
 Tue Aug  5 00:25:23 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.48.5 (boo#1247562 boo#1247563 boo#1247564
