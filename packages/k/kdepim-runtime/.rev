@@ -1121,4 +1121,13 @@
     <comment>KDE release gear 25.08.0 (forwarded request 1299260 from krop)</comment>
     <requestid>1299598</requestid>
   </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>31b3788ec76c3db208bb886c07023795</srcmd5>
+    <version>25.08.0</version>
+    <time>1757329502</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream fix (kde#508715)
+  * 0001-Mail-dispatcher-agent-needs-widgets.patch</comment>
+    <requestid>1303067</requestid>
+  </revision>
 </revisionlist>

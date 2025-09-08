@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep  7 12:59:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix (kde#508715)
+  * 0001-Mail-dispatcher-agent-needs-widgets.patch
+
+-------------------------------------------------------------------
 Fri Aug  8 07:47:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.0

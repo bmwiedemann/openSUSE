@@ -1,0 +1,76 @@
+From a32a5fea481930f3af6a58492396ef3680190883 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Fri, 22 Aug 2025 21:50:11 +0200
+Subject: [PATCH] Mail dispatcher agent needs widgets
+
+The agent might have to ask for the SMTP password and this dialog is
+a QWidget.
+
+BUG: 508521
+(cherry picked from commit 65e4e1a377b30d7c1c1af6a10458c4a9e5d92717)
+---
+ agents/maildispatcher/CMakeLists.txt          | 2 +-
+ agents/maildispatcher/maildispatcheragent.cpp | 4 ++--
+ agents/maildispatcher/maildispatcheragent.h   | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/agents/maildispatcher/CMakeLists.txt b/agents/maildispatcher/CMakeLists.txt
+index c3b6fa446..39e37ed75 100644
+--- a/agents/maildispatcher/CMakeLists.txt
++++ b/agents/maildispatcher/CMakeLists.txt
+@@ -47,7 +47,7 @@ target_link_libraries(akonadi_maildispatcher_agent
+     KPim6::AkonadiMime
+     KPim6::Mime
+     KPim6::MailTransport
+-    KPim6::AkonadiAgentBase
++    KPim6::AkonadiAgentWidgetBase
+     KF6::I18n
+     KF6::Notifications
+ )
+diff --git a/agents/maildispatcher/maildispatcheragent.cpp b/agents/maildispatcher/maildispatcheragent.cpp
+index 0ed0bb7d6..e9cd299d9 100644
+--- a/agents/maildispatcher/maildispatcheragent.cpp
++++ b/agents/maildispatcher/maildispatcheragent.cpp
+@@ -117,7 +117,7 @@ void MailDispatcherAgent::dispatch()
+ }
+ 
+ MailDispatcherAgent::MailDispatcherAgent(const QString &id)
+-    : AgentBase(id)
++    : AgentWidgetBase(id)
+     , mQueue(new OutboxQueue(this))
+     , mSentActionHandler(new SentActionHandler(this))
+ {
+@@ -284,7 +284,7 @@ void MailDispatcherAgent::emitStatusReady()
+ }
+ 
+ #ifndef KDEPIM_PLUGIN_AGENT
+-AKONADI_AGENT_CORE_MAIN(MailDispatcherAgent)
++AKONADI_AGENT_MAIN(MailDispatcherAgent)
+ #endif
+ 
+ #include "moc_maildispatcheragent.cpp"
+diff --git a/agents/maildispatcher/maildispatcheragent.h b/agents/maildispatcher/maildispatcheragent.h
+index 3ac887ca4..62f994234 100644
+--- a/agents/maildispatcher/maildispatcheragent.h
++++ b/agents/maildispatcher/maildispatcheragent.h
+@@ -7,7 +7,7 @@
+ 
+ #pragma once
+ 
+-#include <Akonadi/AgentBase>
++#include <Akonadi/AgentWidgetBase>
+ #include <Akonadi/Item>
+ 
+ class OutboxQueue;
+@@ -16,7 +16,7 @@ class SentActionHandler;
+ /**
+  * @short This agent dispatches mail put into the outbox collection.
+  */
+-class MailDispatcherAgent : public Akonadi::AgentBase
++class MailDispatcherAgent : public Akonadi::AgentWidgetBase
+ {
+     Q_OBJECT
+ 
+-- 
+2.51.0
+
