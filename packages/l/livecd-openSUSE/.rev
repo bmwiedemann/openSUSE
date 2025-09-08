@@ -2166,4 +2166,12 @@
     <user>dimstar_suse</user>
     <comment>Fix x11 image when hwdb does not exist</comment>
   </revision>
+  <revision rev="273" vrev="273">
+    <srcmd5>9fd72d93237ecc2a99b5eb6575d4c720</srcmd5>
+    <version>unknown</version>
+    <time>1757331703</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer attempt to uninstall Mesa-gallium: package has been
+  dropped.</comment>
+  </revision>
 </revisionlist>
