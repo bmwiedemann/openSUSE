@@ -1235,4 +1235,17 @@
   * Added completion</comment>
     <requestid>1302165</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>d4312f4a9cf77f1b941dc74efa9e825c</srcmd5>
+    <version>0.23.2</version>
+    <time>1757329517</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.23.2:
+  Styling:
+  * Update nix style
+  Build:
+  * Update cargo
+  * Update flake</comment>
+    <requestid>1303124</requestid>
+  </revision>
 </revisionlist>
