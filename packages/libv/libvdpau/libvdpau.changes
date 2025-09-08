@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 21 11:20:41 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add U_av1-trace.patch: Add tracing for AV1 picture info.
+
+-------------------------------------------------------------------
 Fri Mar  1 10:17:39 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

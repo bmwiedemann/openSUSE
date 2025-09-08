@@ -1,7 +1,7 @@
 #
 # spec file for package libvdpau
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 Patch0:         n_UsrEtc.patch
 Patch1:         U_Support-AV1.patch
+Patch2:         U_av1-trace.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -92,6 +93,7 @@ Its usage is documented in the README.
 pushd ../vdpauinfo-*
 %patch -P 1 -p1
 popd
+%patch -P 2 -p1
 
 %build
 %meson
