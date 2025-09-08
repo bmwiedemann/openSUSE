@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  5 16:46:07 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Pass '-DQT_QML_NO_CACHEGEN:BOOL=TRUE' to CMake to make builds
+  reproducible (related: boo#1248369) 
+
+-------------------------------------------------------------------
 Mon Aug  4 06:57:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.17.0

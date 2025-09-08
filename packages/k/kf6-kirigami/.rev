@@ -196,4 +196,12 @@
     <comment>KDE Frameworks 5.17 (forwarded request 1298400 from krop)</comment>
     <requestid>1298548</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>bdf0d0389901871fea0c292353520de2</srcmd5>
+    <version>6.17.0</version>
+    <time>1757329515</time>
+    <user>anag_factory</user>
+    <comment>Pass '-DQT_QML_NO_CACHEGEN:BOOL=TRUE' to CMake to make builds reproducible (related: boo#1248369) (forwarded request 1302953 from bmwiedemann)</comment>
+    <requestid>1303135</requestid>
+  </revision>
 </revisionlist>
