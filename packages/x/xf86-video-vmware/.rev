@@ -286,4 +286,14 @@
     <comment>- removed buidrequires to xatracker</comment>
     <requestid>1298588</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>52ec401f8d7e5127c0cd5c1c5fe5a61e</srcmd5>
+    <version>13.4.0</version>
+    <time>1757318186</time>
+    <user>anag_factory</user>
+    <comment>- no longer install by default on appropriate hardware, i.e. remove
+  PCI HW supplements; instead let X fall back to modeset driver
+  (boo#1248739)</comment>
+    <requestid>1303007</requestid>
+  </revision>
 </revisionlist>

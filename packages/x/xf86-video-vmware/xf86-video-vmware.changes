@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep  6 13:04:13 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer install by default on appropriate hardware, i.e. remove
+  PCI HW supplements; instead let X fall back to modeset driver
+  (boo#1248739)
+
+-------------------------------------------------------------------
 Sat Aug  9 09:32:05 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - removed buidrequires to xatracker
