@@ -78,4 +78,19 @@
     from AddressSanitizer.</comment>
     <requestid>1119105</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2c0d73351ebd498742f6311d39de0704</srcmd5>
+    <version>0.1.6</version>
+    <time>1757318188</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.1.5
+  * This release updates the default cursor path to match the
+    changes made to the default cursor path in libXcursor 1.2.0,
+    including the addition of ~/.local/share/icons to the default
+    path. It also makes the default path depend on the --prefix
+    setting instead of hardcoding /usr - builders can still
+    override the defaults by passing --with-cursorpath=... to
+    configure.</comment>
+    <requestid>1303014</requestid>
+  </revision>
 </revisionlist>

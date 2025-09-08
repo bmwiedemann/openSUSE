@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep  6 17:26:49 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 0.1.5
+  * This release updates the default cursor path to match the
+    changes made to the default cursor path in libXcursor 1.2.0,
+    including the addition of ~/.local/share/icons to the default
+    path. It also makes the default path depend on the --prefix
+    setting instead of hardcoding /usr - builders can still
+    override the defaults by passing --with-cursorpath=... to
+    configure.
+
+-------------------------------------------------------------------
 Thu Oct 19 21:11:52 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 0.1.5
