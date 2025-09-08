@@ -24,4 +24,12 @@
     <comment>- Add static-decls.patch</comment>
     <requestid>1220365</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3593c83cd478f274c141bb05ab633651</srcmd5>
+    <version>5.22.8</version>
+    <time>1757318314</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 5.22.8</comment>
+    <requestid>1303085</requestid>
+  </revision>
 </revisionlist>

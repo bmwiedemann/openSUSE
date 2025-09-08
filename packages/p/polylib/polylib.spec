@@ -18,14 +18,14 @@
 
 %define lname	libpolylibgmp8
 Name:           polylib
-Version:        5.22.5
+Version:        5.22.8
 Release:        0
 Summary:        Library for computing homotopy continuation of roots
-License:        GPL-3.0-or-later
+License:        MIT
 Group:          Productivity/Scientific/Math
 URL:            https://icps.u-strasbg.fr/polylib/
+#Git-Clone:     https://github.com/vincentloechner/polylib
 Source:         https://icps.u-strasbg.fr/polylib/polylib_src/%name-%version.tar.gz
-Patch1:         static-decls.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ntl-devel
 BuildRequires:  pkg-config
