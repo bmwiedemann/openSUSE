@@ -673,4 +673,12 @@ known issue: KMPs not yet propetly supported</comment>
     <comment>6.12.44</comment>
     <requestid>1302005</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>0bfb8b95b00f313068d99f75712ec6a4</srcmd5>
+    <version>6.12.45</version>
+    <time>1757318205</time>
+    <user>anag_factory</user>
+    <comment>6.12.44</comment>
+    <requestid>1302879</requestid>
+  </revision>
 </revisionlist>
