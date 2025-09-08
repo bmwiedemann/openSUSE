@@ -48,6 +48,7 @@ BuildRequires:  pkgconfig(gstreamer-video-1.0)
 Requires:       gstreamer-plugins-bad
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
+Requires:       gstreamer-plugins-good-qtqml6
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-purpose >= %{kf6_version}
 Requires:       qt6-declarative-imports >= %{qt6_version}

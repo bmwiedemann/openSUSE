@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  8 07:15:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add missing gstreamer-plugins-good-qtqml6 dependency (boo#1249244)
+
+-------------------------------------------------------------------
 Fri Aug  8 07:47:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.0
