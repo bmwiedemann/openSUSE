@@ -215,4 +215,41 @@ expertise with the git command line.</comment>
   * Stop bumping our homebrew formula (forwarded request 1301479 from ecsos)</comment>
     <requestid>1301486</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f56534f1b0a76ce90458a93f41ebc12d</srcmd5>
+    <version>0.55.0</version>
+    <time>1757318243</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.55.0:
+  * Update README.md
+  * Update translations from crowdin
+  * Remove keybindings for menu items that are the same as the menu confirm key
+  * Add separate keybindings for confirmMenu and confirmSuggestion
+  * Hard-code &quot;enter&quot; for adding lines in integration tests
+  * Fix &lt;enter&gt; keybinding for switching to a worktree
+  * Hard-code &quot;enter&quot; for search prompt
+  * Hard-code &quot;enter&quot; for editable prompts
+  * Update cheatsheets for the previous commit
+  * Refactor: add a separate Prompt view
+  * Bump git-todo-parser
+  * docs(VISION): fix &quot;Dicoverability&quot; typo
+  * Log hashes when dropping/popping stashes
+  * Fix command log for stash commands
+  * Add hash field to models.StashEntry
+  * Cleanup: bring stash loader test up to date
+  * Fix dropping a range of stashes in filtered mode
+  * Add test demonstrating problem with dropping stashes in filtering mode
+  * Cleanup: remove unnecessary ToggleRangeSelect
+  * Don't auto-forward branches that are checked out by another worktree
+  * Add test for auto-forwarding branches that are checked out by another worktree
+  * Add a user config for using git's external diff command for paging
+  * Add breaking changes notice about git.paging.useConfig option
+  * Remove the git.paging.useConfig option
+  * Use external diff command in stashes panel
+  * Run label check workflow only on label events and open pr event
+  * Enhance PR/Issue templates readability
+  * Run `go generate ./...`
+  * Add &quot;CopyToClipboard&quot; command to `ConfirmationController` (forwarded request 1303015 from jfkw)</comment>
+    <requestid>1303016</requestid>
+  </revision>
 </revisionlist>

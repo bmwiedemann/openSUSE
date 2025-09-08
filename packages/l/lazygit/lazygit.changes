@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Sat Sep 06 17:29:44 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.55.0:
+  * Update README.md
+  * Update translations from crowdin
+  * Remove keybindings for menu items that are the same as the menu confirm key
+  * Add separate keybindings for confirmMenu and confirmSuggestion
+  * Hard-code "enter" for adding lines in integration tests
+  * Fix <enter> keybinding for switching to a worktree
+  * Hard-code "enter" for search prompt
+  * Hard-code "enter" for editable prompts
+  * Update cheatsheets for the previous commit
+  * Refactor: add a separate Prompt view
+  * Bump git-todo-parser
+  * docs(VISION): fix "Dicoverability" typo
+  * Log hashes when dropping/popping stashes
+  * Fix command log for stash commands
+  * Add hash field to models.StashEntry
+  * Cleanup: bring stash loader test up to date
+  * Fix dropping a range of stashes in filtered mode
+  * Add test demonstrating problem with dropping stashes in filtering mode
+  * Cleanup: remove unnecessary ToggleRangeSelect
+  * Don't auto-forward branches that are checked out by another worktree
+  * Add test for auto-forwarding branches that are checked out by another worktree
+  * Add a user config for using git's external diff command for paging
+  * Add breaking changes notice about git.paging.useConfig option
+  * Remove the git.paging.useConfig option
+  * Use external diff command in stashes panel
+  * Run label check workflow only on label events and open pr event
+  * Enhance PR/Issue templates readability
+  * Run `go generate ./...`
+  * Add "CopyToClipboard" command to `ConfirmationController`
+  * Cleanup: remove unnecessary code in test
+  * Update donation wording so that it's clear there's no strings attached
+  * Add a breaking changes notice for the changed keybinding
+  * Update cheatsheets, config docs, and schema
+  * Implement suspending the app using ctrl-z
+  * Extract methods suspend/resume on Gui struct
+  * Rebind redo from <c-z> to Z
+  * Cleanup: remove stale comment
+  * Clean up build tags
+  * Don't append "Disabled: " to menu tooltip if disabled reason is empty
+  * Show "Close/Cancel: <esc>" for menus like we do for confirmations
+  * Show context-specific labels for <esc> in staging and patch building view
+  * Show escape binding for staging and patch building in the status bar
+  * Move global escape handler to before the keybindings menu handler
+  * Show context-specific labels for the global <esc> binding
+  * Rename ModeStatus.Description to InfoLabel
+  * Avoid showing <esc> in options map when it doesn't do anything
+  * Cleanup: remove dead code
+  * Avoid duplicate key bindings in options map
+  * Show "Exit back to side panel" in options status bar for focused main view
+  * fix(hosting_service): support Azure DevOps vs-ssh.visualstudio.com SSH remotes
+  * test: TDD - support Azure DevOps vs-ssh.visualstudio.com SSH remotes
+  * Allow filterable contexts to customize the filter label
+  * Allow filtering for keybindings by prepending filter string with '@'
+  * Allow filtered lists to preprocess the filter string
+  * Strengthen text expectation
+  * Fix right-alignment of divergence from base branch for branch checked out in a worktree
+  * docs: Add installation with gah
+  * Pass only Git-tracked Go files to gofumpt
+
+-------------------------------------------------------------------
 Tue Aug 26 17:05:35 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to version 0.54.2:
