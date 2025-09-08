@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Sep  3 17:46:07 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.24.7 (released 2025-09-03) includes fixes to the go command,
+  and the net and os/exec packages.
+  Refs boo#1236217 go1.24 release tracking
+  * go#75007 os/exec: TestLookPath fails on plan9 after CL 685755
+  * go#74821 cmd/go: "get toolchain@latest" should ignore release candidates
+  * go#74818 net: WriteMsgUDPAddrPort should accept IPv4-mapped IPv6 destination addresses on IPv4 UDP sockets
+
+-------------------------------------------------------------------
+Thu Aug 14 14:52:35 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Remove conditional gccgo bootstrap sections and gcc-go.patch.
+    gccgo cannot be used in any version newer than go1.21. Removal
+    simplifies go1.x package code.
+  * go1.21 can optionally be bootstrapped with gccgo and serve as
+    the inital version of go1.x.
+  * go1.21 will be the initial version of Go in the bootstrap chain
+    until gcc gccgo is updated to support a language level newer
+    than go1.18.
+  * Drop gcc-go.patch
+  * Refs boo#1247816 bootstrap go1.21 with gccgo
+  * Refs boo#1248082 drop unused gccgo bootstrap code in go1.22+
+
+-------------------------------------------------------------------
 Wed Aug  6 18:07:24 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.24.6 (released 2025-08-06) includes security fixes to the
