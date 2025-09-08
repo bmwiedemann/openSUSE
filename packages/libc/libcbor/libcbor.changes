@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Sep  2 12:59:34 UTC 2025 - pgajdos@suse.com
+
+- version update to 0.13.0
+  0.13.0
+  * Fix small typo in release script by @PJK in #350
+  * Fix failing 32 bit tests due to cmocka macro repeating stack pushes by @PJK in #354
+  * Set cmake_minimum_required to 3.5 by @PJK in #355
+  * Fix float_ctrl ctrl assertions failing in debug mode by @PJK in #353
+  * Check in vscode setup by @PJK in #357
+  * Add CBOR sequences example by @PJK in #358
+  * Add riscv64 config to CircleCI by @PJK in #359
+  * Add a test for malformed definite maps by @PJK in #360
+  * Add [[nodiscard]] support and auto-update to C23 in cmake by @PJK in #361
+  * Configure ctest on to export the test results to CircleCI by @PJK in #362
+  * Revamp the introduction doc into a more useful crash course by @PJK in #363
+  * Add OSX asan/lsan supression config by @PJK in #366
+  * Add cbor_copy_definite by @PJK in #364
+  * Improve handling and coverage reporting of exhaustive enum switches by @PJK in #367
+  * Add references to readme by @PJK in #368
+  * Update python deps and related docs by @PJK in #369
+  * Link tutorial in readme (and fix embedded RST formatting) by @PJK in #370
+  * Add a doc note on lto linking by @PJK in #373
+  * Add a doc for the reference count in cbor_array_set(). by @hglee in #375
+  * Add gh link to docs by @PJK in #374
+  * Add #355 to changelog by @PJK in #376
+  * Bump version to 0.13.0 by @PJK in #377
+  0.12.0
+  * Tag documentation and general doxygen style improvements by @PJK in #309
+  * Rename API docs to be more helpful by @PJK in #310
+  * Make MSVC w/ /sdl work by @PJK in #312
+  * Respect CMAKE_INTERPROCEDURAL_OPTIMIZATION by @PJK in #316
+  * Nicer cmakes by @PJK in #317
+  * Fixed code coverage option typo in CMakeLists.txt by @jonathanmarvens in #318
+  * Bump jinja2 from 3.1.2 to 3.1.3 in /doc/source by @dependabot in #306
+  * Update CI configs by @PJK in #332
+  * Fix wrong fopen mode in fuzzer by @PJK in #331
+  * Update OSX CI version by @PJK in #333
+  * Fix NaN handling on mips/mipsel and Windows; disable value propagation for signaling NaNs; add mips CI by @PJK in #335
+  * Export and install CMake targets by @dg0yt in #337
+  * Update cirrus FreeBSD to 14.2 by @PJK in #339
+  * Update Bazel setup to Bzlmod by @PJK in #340
+  * In cbor2cjson.c example, add missing cbor_move to cbor_array_get call by @whitehse in #338
+  * Update python requirements by @PJK in #343
+  * Fix mips/el CI by @PJK in #342
+  * include project directory with target instead of globally by @Jan200101 in #341
+  * Update more python packages by @PJK in #344
+  * Update example formatting (clang changed) by @PJK in #345
+  * Remove no-op pragma clang lines by @brooksdavis in #321
+  * Fix mutiple "pedantic" compiler warnings, mostly around unused parameters by @PJK in #347
+  * Bump jinja2 from 3.1.5 to 3.1.6 in /doc/source by @dependabot in #346
+  * Update changelog, improve release script to automate version bump PRs by @PJK in #348
+  * Bump version to 0.12.0 by @PJK in #349
+
+-------------------------------------------------------------------
 Tue Jan 21 00:44:42 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Explicitly BuildRequire sphinx_rtd_theme. 
