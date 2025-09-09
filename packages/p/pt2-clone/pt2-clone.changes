@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep  7 19:09:51 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.77
+  * Re-added audio dithering for 16-bit audio output.
+  * Bugfix: Songs rendered with MOD2WAV would not have the exact
+    same data integrity for every render.
+- Update to version 1.76
+  * Bugfix: Some WAVs from MOD2WAV would not play in some
+    players/editors.
+  * Fixed SDL2 thread resource leaks (Disk Op. and MOD2WAV).
+
+-------------------------------------------------------------------
 Wed May 21 18:58:31 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.75

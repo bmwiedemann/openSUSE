@@ -1,7 +1,7 @@
 #
 # spec file for package pt2-clone
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pt2-clone
-Version:        1.75
+Version:        1.77
 Release:        0
 Summary:        ProTracker 2 clone
 License:        BSD-3-Clause AND CC-BY-NC-SA-4.0
