@@ -1,7 +1,7 @@
 #
 # spec file for package compsize
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,8 @@ Group:          System/Filesystems
 URL:            https://github.com/kilobyte/compsize
 Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM compsize-1.5-fix-build-btrfsprogs-0.6.1.patch -- gh#kilobyte/compsize!54
-Patch:          compsize-1.5-fix-build-btrfsprogs-0.6.1.patch
+Patch0:         compsize-1.5-fix-build-btrfsprogs-0.6.1.patch
+Patch1:         bigendian.patch
 BuildRequires:  gcc
 BuildRequires:  libbtrfs-devel
 

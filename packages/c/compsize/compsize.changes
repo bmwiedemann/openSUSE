@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  1 13:12:11 UTC 2025 - Berthold Gunreben <azouhr@opensuse.org>
+
+- Add bigendian.patch: Fix program to work on bigendian. Original commit on
+  gh#kilobyte/compsize is d79eacf, there was no release since.
+
+-------------------------------------------------------------------
 Mon Dec  2 16:28:31 UTC 2024 - antoine.belvire@opensuse.org
 
 - Add compsize-1.5-fix-build-btrfsprogs-0.6.1.patch: Fix build with
