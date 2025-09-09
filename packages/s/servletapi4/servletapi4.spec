@@ -1,7 +1,7 @@
 #
 # spec file for package servletapi4
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ BuildRequires:  ant >= 1.2
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  xml-commons-apis
-Requires(post): %{_sbindir}/update-alternatives
 Provides:       servlet = %{version}
 Obsoletes:      servlet22 < %{version}
 Obsoletes:      servlet4 < %{version}
@@ -62,29 +61,15 @@ ant dist -Dservletapi.build=build -Dservletapi.dist=dist
 %install
 # jars
 install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 dist/lib/servlet.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} `echo $jar| sed  "s|-%{version}||g"`; done)
+install -m 644 dist/lib/servlet.jar %{buildroot}%{_javadir}/%{name}.jar
 # javadoc
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr build/docs/api/* %{buildroot}%{_javadocdir}/%{name}
-# alternatives
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
-ln -sf %{_sysconfdir}/alternatives/servlet.jar %{buildroot}%{_javadir}/servlet.jar
-
-%post
-update-alternatives --install %{_javadir}/servlet.jar servlet %{_javadir}/%{name}-%{version}.jar 40
-
-%postun
-if [ "$1" = "0" ]; then
-	update-alternatives --remove servlet %{_javadir}/%{name}-%{version}.jar
-fi
 
 %files
 %license LICENSE
 %doc README.txt
 %{_javadir}/*
-%{_javadir}/servlet.jar
-%ghost %{_sysconfdir}/alternatives/servlet.jar
 
 %files javadoc
 %{_javadocdir}/%{name}
