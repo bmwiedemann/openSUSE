@@ -90,7 +90,7 @@
 %global pkg_name blender
 
 Name:           blender
-Version:        4.5.1
+Version:        4.5.2
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later

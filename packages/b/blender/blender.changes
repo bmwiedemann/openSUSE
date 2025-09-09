@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep  7 01:57:21 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.5.2
+  https://developer.blender.org/docs/release_notes/4.5/corrective_releases/#blender-452
+
+-------------------------------------------------------------------
 Mon Aug  4 16:18:24 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.5.1
-  https://developer.blender.org/docs/release_notes/4.5/corrective_releases/
+  https://developer.blender.org/docs/release_notes/4.5/corrective_releases/#blender-451
 - Drop manifold-include-fix.patch
 
 -------------------------------------------------------------------
