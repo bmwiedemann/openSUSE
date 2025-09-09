@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Sep 08 08:37:38 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.90.6:
+  * Added feature flag to configure projects per page in gitlab enumeration (#4437)
+  * pkg: fix some typos in comment (#4440)
+  * Changes to fix Enterprise UI filtering of Github Hosted Scanner Repositories to Include (#4430)
+  * Fix legacy json flag for Github and Gitlab private repos (#4386)
+  * fix(deps): update module github.com/jedib0t/go-pretty/v6 to v6.6.8 (#4396)
+  * fix(deps): update module github.com/brianvoe/gofakeit/v7 to v7.5.1 (#4425)
+  * Scan Github Private Repositories With Token (#4426)
+  * [Feature] Added Detector for the Photoroom API (#4414)
+  * Fix error propagation and a typo in verification logic (#4427)
+  * Ignore known common prefix matches for Github V1 detector (#4379)
+  * Added support for additional validation rules in custom detector (#4413)
+  * [GitHub] Add a GraphQL client to the connector  (#3837)
+  * fix(deps): update module github.com/gabriel-vasile/mimetype to v1.4.10 (#4424)
+  * fix(deps): update aws-sdk-go-v2 monorepo (#4422)
+  * Recover logger if wrapped by a non-logging context implementation (#4406)
+  * Fix git tests if run with global commit.gpgsign=true (#4415)
+  * Added a dedicated optional flag to ignore gists during scan (#4423)
+  * added flyio detector (#2381)
+  * fix(deps): update module cloud.google.com/go/storage to v1.56.1 (#4412)
+  * fix(deps): update module google.golang.org/protobuf to v1.36.8 (#4397)
+  * Enable cloning repository to a specified location with retention option (#4408)
+  * Add support for AWS account allow and deny lists (#4407)
+  * [Feature] Updated Dotmailer Detector To Dotdigital (#4331)
+  * Added explicit secrets manager write flag to Bitbucket source (#4403)
+  * [Detector] rippling detector for phrase api tokens (#4348)
+  * Added support for indeterminate verification for letter Q detectors (#4398)
+
+-------------------------------------------------------------------
 Mon Aug 18 08:26:46 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 3.90.5:
