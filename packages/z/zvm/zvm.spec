@@ -27,6 +27,7 @@ Source1:        vendor.tar.xz
 # PATCH-FIX-UPSTREAM: Disable auto upgrade features
 Patch0:         disable-auto-upgrade.patch
 BuildRequires:  golang(API) >= 1.22
+Requires:       tar
 
 %description
 Zig Version Manager (zvm) is a tool for managing your Zig installs. With std

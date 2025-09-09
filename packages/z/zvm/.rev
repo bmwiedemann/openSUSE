@@ -32,4 +32,12 @@
   * added functionality to ls --all by @mipdableep in #132 (forwarded request 1300327 from lmulling)</comment>
     <requestid>1300329</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6b526edb2474f1ba3bb3ec7051d6fd50</srcmd5>
+    <version>0.8.8</version>
+    <time>1757442657</time>
+    <user>anag_factory</user>
+    <comment>- Require tar (forwarded request 1303273 from lmulling)</comment>
+    <requestid>1303375</requestid>
+  </revision>
 </revisionlist>
