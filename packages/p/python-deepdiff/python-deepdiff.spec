@@ -1,7 +1,7 @@
 #
 # spec file for package python-deepdiff
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-deepdiff
-Version:        8.5.0
+Version:        8.6.1
 Release:        0
 Summary:        Deep Difference and Search of any Python object/data
 License:        MIT
@@ -40,6 +40,7 @@ BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli-w}
 BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module uuid6}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
