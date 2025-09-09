@@ -17,4 +17,16 @@
     changes</comment>
     <requestid>1189983</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e4ca61485a65e9132d74761ba30d0f81</srcmd5>
+    <version>0.15.0</version>
+    <time>1757442553</time>
+    <user>anag_factory</user>
+    <comment>- Remove non-existent flag `--Dversion_data_path`
+- Update to version 0.15.0:
+  * Release intended for Zig 0.15.x. See https://zigtools.org/zls/releases/0.15.0/
+  * Some changes are not included since we skipped over versions of zig.
+</comment>
+    <requestid>1303154</requestid>
+  </revision>
 </revisionlist>

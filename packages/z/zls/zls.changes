@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  8 06:42:37 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Remove non-existent flag `--Dversion_data_path`
+
+-------------------------------------------------------------------
+Fri Sep  5 11:50:32 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.15.0:
+  * Release intended for Zig 0.15.x. See https://zigtools.org/zls/releases/0.15.0/
+  * Some changes are not included since we skipped over versions of zig.
+
+-------------------------------------------------------------------
 Sun Jul 28 12:21:35 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update to version 0.13.0:
