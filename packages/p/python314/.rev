@@ -2491,4 +2491,12 @@
   module is used internally in gzip.py.</comment>
     <requestid>1302884</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>a49a62a1484e5411851238980483aa4e</srcmd5>
+    <version>3.14.0~rc2</version>
+    <time>1757442635</time>
+    <user>anag_factory</user>
+    <comment>- fix import_failed.map for python 3.14</comment>
+    <requestid>1303308</requestid>
+  </revision>
 </revisionlist>

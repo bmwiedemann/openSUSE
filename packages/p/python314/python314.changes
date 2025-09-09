@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  9 07:48:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- fix import_failed.map for python 3.14
+
+-------------------------------------------------------------------
 Fri Sep  5 06:47:57 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Move compression folder to python-base where it should be. This
