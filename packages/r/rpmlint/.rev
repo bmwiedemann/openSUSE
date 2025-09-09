@@ -5308,4 +5308,27 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1302949</requestid>
   </revision>
+  <revision rev="510" vrev="1">
+    <srcmd5>5ce94431a74fe91a7d391be0389bb39a</srcmd5>
+    <version>2.8.0+git20250908.1aa5d478</version>
+    <time>1757442541</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.8.0+git20250908.1aa5d478:
+  * Resolve `superfluous-parens`
+  * Resolve `use-implicit-booleaness-not-len`
+  * Resolve `redefined-outer-name`
+  * Resolve `consider-using-in`
+  * Resolve `consider-merging-isinstance`
+  * Simplify `AbstractPkg._gather_aux` to resolve `consider-using-enumerate`
+  * Resolve `no-else-raise`
+  * Resolve `no-else-return`
+  * Use list comprehensions
+  * Resolve `consider-using-sys-exit`
+  * Simplify code by using `sorted()`
+  * Release 2.8.0
+  * AlternativesCheck: detect update-alternatives on Fedora
+  * Run only once the validate_filters per call
+  * ZipCheck: fix utf8 decoding erros in jarfile manifest</comment>
+    <requestid>1303173</requestid>
+  </revision>
 </revisionlist>

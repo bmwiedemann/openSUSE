@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep 08 10:00:16 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 2.8.0+git20250908.1aa5d478:
+  * Resolve `superfluous-parens`
+  * Resolve `use-implicit-booleaness-not-len`
+  * Resolve `redefined-outer-name`
+  * Resolve `consider-using-in`
+  * Resolve `consider-merging-isinstance`
+  * Simplify `AbstractPkg._gather_aux` to resolve `consider-using-enumerate`
+  * Resolve `no-else-raise`
+  * Resolve `no-else-return`
+  * Use list comprehensions
+  * Resolve `consider-using-sys-exit`
+  * Simplify code by using `sorted()`
+  * Release 2.8.0
+  * AlternativesCheck: detect update-alternatives on Fedora
+  * Run only once the validate_filters per call
+  * ZipCheck: fix utf8 decoding erros in jarfile manifest
+
+-------------------------------------------------------------------
 Fri Sep 05 14:05:55 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.7.0+git20250905.7717a72c:
