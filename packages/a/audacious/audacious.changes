@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  8 20:43:22 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Update to version 4.5.1
+  * Support all numeric ID3v1 genres
+  * Parse ID3 genre tag Blues correctly
+  * Try to decode invalid Opus image tags manually
+  * Update Transifex URL
+  * Update translations
+
+-------------------------------------------------------------------
 Wed Jul 16 04:54:57 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - Update to version 4.5
