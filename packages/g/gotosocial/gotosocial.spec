@@ -1,7 +1,7 @@
 #
 # spec file for package gotosocial
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gotosocial
-Version:        0.19.1
+Version:        0.19.2
 Release:        0
 Summary:        An ActivityPub social network server, written in Golang
 License:        AGPL-3.0-only
@@ -28,6 +28,11 @@ Source1:        %{name}-%{version}-vendor.tar.xz
 Source2:        vendor_yarn.sh
 Source3:        gotosocial.sysusers
 Patch0:         default-settings.patch
+# Upstream backports
+Patch1:         4052_support_focus_point.patch
+Patch2:         4154_Add_extra_opengraph_meta_tags.patch
+Patch3:         4169_Allow_exposing_allows.patch
+Patch4:         4193_Add_Instance_Info_settings_panel_section.patch
 BuildRequires:  apparmor-profiles
 BuildRequires:  apparmor-rpm-macros
 BuildRequires:  golang-packaging

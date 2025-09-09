@@ -1,0 +1,643 @@
+From a20f906dd6a36edafa0ae4d08ee3a1bdee93ebfd Mon Sep 17 00:00:00 2001
+From: tobi <tobi.smethurst@protonmail.com>
+Date: Thu, 8 May 2025 11:11:25 +0000
+Subject: [PATCH] [feature] Add extra opengraph meta tags (#4154)
+
+# Description
+
+> If this is a code change, please include a summary of what you've coded, and link to the issue(s) it closes/implements.
+>
+> If this is a documentation change, please briefly describe what you've changed and why.
+
+Update our opengraph meta tag code stuff:
+
+- Use `audio` and `video` types where appropriate.
+- Include fall back to `image` types.
+- Include `twitter:card=summary` or `twitter:card=summary_large_image` where appropriate (closes https://codeberg.org/superseriousbusiness/gotosocial/issues/2776)
+- Include avatar description where possible.
+- Include mime type for media.
+- Set `modified_time` properly based on latest edit time.
+
+Examples
+
+Status with one image attachment, that's been edited:
+
+```html
+<meta property="og:locale" content="en">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Post by Kip Van Den Bos, salad enjoyer, @tobi@goblin.technology">
+<meta property="og:url" content="https://goblin.technology/@tobi/statuses/01JE3BQPNHWNHSNM0KS78X321Q">
+<meta property="og:site_name" content="goblin.technology">
+<meta property="og:description" content="cowards: &#34;I&#39;ll be a few minutes late, sorry!&#34; me:">
+<meta property="og:article:publisher" content="https://goblin.technology/@tobi">
+<meta property="og:article:author" content="https://goblin.technology/@tobi">
+<meta property="og:article:modified_time" content="2025-04-22T07:24:49.773Z">
+<meta property="og:article:published_time" content="2024-12-02T09:37:58.449Z">
+<meta property="og:image" content="https://goblin.technology/fileserver/016T5Q3SQKBT337DAKVSKNXXW1/attachment/original/01JE3BPJ1TGMV6H6E8VY0ED5XA.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1224">
+<meta property="og:image:height" content="368">
+<meta property="og:image:alt" content="Screenshot of a signal conversation where I wrote &#34;Just gonna smash out a quick poo&#34; and my friend responded with a sad face.">
+<meta property="og:image" content="https://goblin.technology/fileserver/016T5Q3SQKBT337DAKVSKNXXW1/attachment/original/01J4YBM16ES6C1ENKZC8MC04BD.gif">
+<meta property="og:image:type" content="image/gif">
+<meta property="og:image:width" content="38">
+<meta property="og:image:height" content="49">
+<meta property="og:image:alt" content="Avatar for tobi: A 90&#39;s style gif of a black and white skull chattering happily.">
+<meta property="og:image" content="https://goblin.technology/fileserver/01BPSX2MKCRVMD4YN4D71G9CP5/attachment/original/01J387PFPNKQWWNY9YQM67WA1T.gif">
+<meta property="og:image:type" content="image/gif">
+<meta property="og:image:alt" content="Little green peglin goblin bouncing happily.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://goblin.technology/fileserver/016T5Q3SQKBT337DAKVSKNXXW1/attachment/original/01JE3BPJ1TGMV6H6E8VY0ED5XA.png">
+<meta name="twitter:image:alt" content="Screenshot of a signal conversation where I wrote &#34;Just gonna smash out a quick poo&#34; and my friend responded with a sad face.">
+```
+
+Status with one audio file (with thumbnail):
+
+```html
+<meta property="og:locale" content="en">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Post by Kip Van Den Bos, salad enjoyer, @tobi@goblin.technology">
+<meta property="og:url" content="https://goblin.technology/@tobi/statuses/01JSV5BQ585HB4R8NPK4ANTG91">
+<meta property="og:site_name" content="goblin.technology">
+<meta property="og:description" content="service top anthem imo">
+<meta property="og:article:publisher" content="https://goblin.technology/@tobi">
+<meta property="og:article:author" content="https://goblin.technology/@tobi">
+<meta property="og:article:modified_time" content="2025-04-27T08:21:00.712Z">
+<meta property="og:article:published_time" content="2025-04-27T08:21:00.712Z">
+<meta property="og:audio" content="https://goblin.technology/fileserver/016T5Q3SQKBT337DAKVSKNXXW1/attachment/original/01JSV5AJ4RF3E6DATCSW8SAY93.mp3">
+<meta property="og:audio:secure_url" content="https://goblin.technology/fileserver/016T5Q3SQKBT337DAKVSKNXXW1/attachment/original/01JSV5AJ4RF3E6DATCSW8SAY93.mp3">
+<meta property="og:audio:type" content="audio/mpeg">
+<meta property="og:audio:alt" content="Sanctified by Nine Inch Nails, from Pretty Hate Machine">
+<meta property="og:image" content="https://goblin.technology/fileserver/016T5Q3SQKBT337DAKVSKNXXW1/attachment/small/01JSV5AJ4RF3E6DATCSW8SAY93.webp">
+<meta property="og:image:type" content="image/webp">
+<meta property="og:image:width" content="500">
+<meta property="og:image:height" content="500">
+<meta property="og:image:alt" content="Sanctified by Nine Inch Nails, from Pretty Hate Machine">
+<meta property="og:image" content="https://goblin.technology/fileserver/016T5Q3SQKBT337DAKVSKNXXW1/attachment/original/01J4YBM16ES6C1ENKZC8MC04BD.gif">
+<meta property="og:image:type" content="image/gif">
+<meta property="og:image:width" content="38">
+<meta property="og:image:height" content="49">
+<meta property="og:image:alt" content="Avatar for tobi: A 90&#39;s style gif of a black and white skull chattering happily.">
+<meta property="og:image" content="https://goblin.technology/fileserver/01BPSX2MKCRVMD4YN4D71G9CP5/attachment/original/01J387PFPNKQWWNY9YQM67WA1T.gif">
+<meta property="og:image:type" content="image/gif">
+<meta property="og:image:alt" content="Little green peglin goblin bouncing happily.">
+<meta name="twitter:card" content="summary">
+```
+
+## Checklist
+
+Please put an x inside each checkbox to indicate that you've read and followed it: `[ ]` -> `[x]`
+
+If this is a documentation change, only the first checkbox must be filled (you can delete the others if you want).
+
+- [x] I/we have read the [GoToSocial contribution guidelines](https://codeberg.org/superseriousbusiness/gotosocial/src/branch/main/CONTRIBUTING.md).
+- [x] I/we have discussed the proposed changes already, either in an issue on the repository, or in the Matrix chat.
+- [x] I/we have not leveraged AI to create the proposed changes.
+- [x] I/we have performed a self-review of added code.
+- [x] I/we have written code that is legible and maintainable by others.
+- [x] I/we have commented the added code, particularly in hard-to-understand areas.
+- [ ] I/we have made any necessary changes to documentation.
+- [x] I/we have added tests that cover new code.
+- [x] I/we have run tests and they pass locally with the changes.
+- [x] I/we have run `go fmt ./...` and `golangci-lint run`.
+
+Reviewed-on: https://codeberg.org/superseriousbusiness/gotosocial/pulls/4154
+Reviewed-by: Daenney <daenney@noreply.codeberg.org>
+Co-authored-by: tobi <tobi.smethurst@protonmail.com>
+Co-committed-by: tobi <tobi.smethurst@protonmail.com>
+---
+ internal/api/util/opengraph.go      | 243 +++++++++++++++++++++-------
+ internal/api/util/opengraph_test.go |  67 +++++---
+ web/template/page_ogmeta.tmpl       |  36 ++++-
+ 3 files changed, 257 insertions(+), 89 deletions(-)
+
+diff --git a/internal/api/util/opengraph.go b/internal/api/util/opengraph.go
+index 321b0f92d..5e1bdf3d2 100644
+--- a/internal/api/util/opengraph.go
++++ b/internal/api/util/opengraph.go
+@@ -19,20 +19,21 @@
+ 
+ import (
+ 	"html"
++	"slices"
+ 	"strconv"
+ 	"strings"
+ 
+ 	apimodel "code.superseriousbusiness.org/gotosocial/internal/api/model"
+ 	"code.superseriousbusiness.org/gotosocial/internal/text"
++	"code.superseriousbusiness.org/gotosocial/internal/util"
+ )
+ 
+-const maxOGDescriptionLength = 300
+-
+ // OGMeta represents supported OpenGraph Meta tags
+ //
+ // see eg https://ogp.me/
+ type OGMeta struct {
+-	// vanilla og tags
++	/* Vanilla og tags */
++
+ 	Title       string // og:title
+ 	Type        string // og:type
+ 	Locale      string // og:locale
+@@ -40,26 +41,57 @@ type OGMeta struct {
+ 	SiteName    string // og:site_name
+ 	Description string // og:description
+ 
+-	// image tags
+-	Image       string // og:image
+-	ImageWidth  string // og:image:width
+-	ImageHeight string // og:image:height
+-	ImageAlt    string // og:image:alt
++	// Zero or more media entries of type image,
++	// video, or audio (https://ogp.me/#array).
++	Media []OGMedia
++
++	/* Article tags. */
+ 
+-	// article tags
+ 	ArticlePublisher     string // article:publisher
+ 	ArticleAuthor        string // article:author
+ 	ArticleModifiedTime  string // article:modified_time
+ 	ArticlePublishedTime string // article:published_time
+ 
+-	// profile tags
++	/* Profile tags. */
++
+ 	ProfileUsername string // profile:username
++
++	/*
++		Twitter card stuff
++		https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards
++	*/
++
++	// Set to media URL for media posts.
++	TwitterSummaryLargeImage string
++	TwitterImageAlt          string
++}
++
++func (o *OGMeta) prependMedia(i ...OGMedia) {
++	if len(o.Media) == 0 {
++		// Set as
++		// only entries.
++		o.Media = i
++	} else {
++		// Prepend as higher
++		// priority entries.
++		o.Media = slices.Insert(o.Media, 0, i...)
++	}
++}
++
++// OGMedia represents one OpenGraph media
++// entry of type image, video, or audio.
++type OGMedia struct {
++	OGType   string // image/video/audio
++	URL      string // og:${type}
++	MIMEType string // og:${type}:type
++	Width    string // og:${type}:width
++	Height   string // og:${type}:height
++	Alt      string // og:${type}:alt
+ }
+ 
+ // OGBase returns an *ogMeta suitable for serving at
+ // the base root of an instance. It also serves as a
+-// foundation for building account / status ogMeta on
+-// top of.
++// foundation for building account / status ogMeta.
+ func OGBase(instance *apimodel.InstanceV1) *OGMeta {
+ 	var locale string
+ 	if len(instance.Languages) > 0 {
+@@ -73,9 +105,14 @@ func OGBase(instance *apimodel.InstanceV1) *OGMeta {
+ 		URL:         instance.URI,
+ 		SiteName:    instance.AccountDomain,
+ 		Description: ParseDescription(instance.ShortDescription),
+-
+-		Image:    instance.Thumbnail,
+-		ImageAlt: instance.ThumbnailDescription,
++		Media: []OGMedia{
++			{
++				OGType:   "image",
++				URL:      instance.Thumbnail,
++				Alt:      instance.ThumbnailDescription,
++				MIMEType: instance.ThumbnailType,
++			},
++		},
+ 	}
+ 
+ 	return og
+@@ -84,67 +121,154 @@ func OGBase(instance *apimodel.InstanceV1) *OGMeta {
+ // WithAccount uses the given account to build an ogMeta
+ // struct specific to that account. It's suitable for serving
+ // at account profile pages.
+-func (og *OGMeta) WithAccount(account *apimodel.WebAccount) *OGMeta {
+-	og.Title = AccountTitle(account, og.SiteName)
+-	og.Type = "profile"
+-	og.URL = account.URL
+-	if account.Note != "" {
+-		og.Description = ParseDescription(account.Note)
++func (o *OGMeta) WithAccount(acct *apimodel.WebAccount) *OGMeta {
++	o.Title = AccountTitle(acct, o.SiteName)
++	o.ProfileUsername = acct.Username
++	o.Type = "profile"
++	o.URL = acct.URL
++	if acct.Note != "" {
++		o.Description = ParseDescription(acct.Note)
+ 	} else {
+-		og.Description = `content="This GoToSocial user hasn't written a bio yet!"`
++		const desc = "This GoToSocial user hasn't written a bio yet!"
++		o.Description = desc
+ 	}
+ 
+-	og.Image = account.Avatar
+-	og.ImageAlt = "Avatar for " + account.Username
++	// Add avatar image.
++	o.prependMedia(ogImgForAcct(acct))
+ 
+-	og.ProfileUsername = account.Username
++	return o
++}
+ 
+-	return og
++// util funct to return OGImage using account.
++func ogImgForAcct(account *apimodel.WebAccount) OGMedia {
++	ogMedia := OGMedia{
++		OGType: "image",
++		URL:    account.Avatar,
++		Alt:    "Avatar for " + account.Username,
++	}
++
++	if desc := account.AvatarDescription; desc != "" {
++		ogMedia.Alt += ": " + desc
++	}
++
++	// Add extra info if not default avi.
++	if a := account.AvatarAttachment; a != nil {
++		ogMedia.MIMEType = a.MIMEType
++		ogMedia.Width = strconv.Itoa(a.Meta.Original.Width)
++		ogMedia.Height = strconv.Itoa(a.Meta.Original.Height)
++	}
++
++	return ogMedia
+ }
+ 
+ // WithStatus uses the given status to build an ogMeta
+ // struct specific to that status. It's suitable for serving
+ // at status pages.
+-func (og *OGMeta) WithStatus(status *apimodel.WebStatus) *OGMeta {
+-	og.Title = "Post by " + AccountTitle(status.Account, og.SiteName)
+-	og.Type = "article"
++func (o *OGMeta) WithStatus(status *apimodel.WebStatus) *OGMeta {
++	o.Title = "Post by " + AccountTitle(status.Account, o.SiteName)
++	o.Type = "article"
+ 	if status.Language != nil {
+-		og.Locale = *status.Language
++		o.Locale = *status.Language
+ 	}
+-	og.URL = status.URL
++	o.URL = status.URL
+ 	switch {
+ 	case status.SpoilerText != "":
+-		og.Description = ParseDescription("CW: " + status.SpoilerText)
++		o.Description = ParseDescription("CW: " + status.SpoilerText)
+ 	case status.Text != "":
+-		og.Description = ParseDescription(status.Text)
++		o.Description = ParseDescription(status.Text)
+ 	default:
+-		og.Description = og.Title
++		o.Description = o.Title
+ 	}
+ 
+-	if !status.Sensitive && len(status.MediaAttachments) > 0 {
+-		a := status.MediaAttachments[0]
++	// Prepend account image.
++	o.prependMedia(ogImgForAcct(status.Account))
+ 
+-		og.ImageWidth = strconv.Itoa(a.Meta.Small.Width)
+-		og.ImageHeight = strconv.Itoa(a.Meta.Small.Height)
++	if l := len(status.MediaAttachments); l != 0 && !status.Sensitive {
+ 
+-		if a.PreviewURL != nil {
+-			og.Image = *a.PreviewURL
+-		}
++		// Take first not "unknown"
++		// attachment as the "main" one.
++		for _, a := range status.MediaAttachments {
++			if a.Type == "unknown" {
++				// Skip unknown.
++				continue
++			}
++
++			// Start with
++			// common media tags.
++			desc := util.PtrOrZero(a.Description)
++			ogMedia := OGMedia{
++				URL:      *a.URL,
++				MIMEType: a.MIMEType,
++				Alt:      desc,
++			}
++
++			// Gather ogMedias for
++			// this attachment.
++			ogMedias := []OGMedia{}
++
++			// Add further tags
++			// depending on type.
++			switch a.Type {
++
++			case "image":
++				ogMedia.OGType = "image"
++				ogMedia.Width = strconv.Itoa(a.Meta.Original.Width)
++				ogMedia.Height = strconv.Itoa(a.Meta.Original.Height)
++
++				// If this image is the only piece of media,
++				// set TwitterSummaryLargeImage to indicate
++				// that a large image summary is preferred.
++				if l == 1 {
++					o.TwitterSummaryLargeImage = *a.URL
++					o.TwitterImageAlt = desc
++				}
+ 
+-		if a.Description != nil {
+-			og.ImageAlt = *a.Description
++			case "audio":
++				ogMedia.OGType = "audio"
++
++			case "video", "gifv":
++				ogMedia.OGType = "video"
++				ogMedia.Width = strconv.Itoa(a.Meta.Original.Width)
++				ogMedia.Height = strconv.Itoa(a.Meta.Original.Height)
++			}
++
++			// Add this to our gathered entries.
++			ogMedias = append(ogMedias, ogMedia)
++
++			if a.Type != "image" {
++				// Add static/thumbnail
++				// for non-images.
++				ogMedias = append(
++					ogMedias,
++					OGMedia{
++						OGType:   "image",
++						URL:      *a.PreviewURL,
++						MIMEType: a.PreviewMIMEType,
++						Width:    strconv.Itoa(a.Meta.Small.Width),
++						Height:   strconv.Itoa(a.Meta.Small.Height),
++						Alt:      util.PtrOrZero(a.Description),
++					},
++				)
++			}
++
++			// Prepend gathered entries.
++			//
++			// This will cause the full-size
++			// entry to appear before its
++			// thumbnail entry (if set).
++			o.prependMedia(ogMedias...)
++
++			// Done!
++			break
+ 		}
+-	} else {
+-		og.Image = status.Account.Avatar
+-		og.ImageAlt = "Avatar for " + status.Account.Username
+ 	}
+ 
+-	og.ArticlePublisher = status.Account.URL
+-	og.ArticleAuthor = status.Account.URL
+-	og.ArticlePublishedTime = status.CreatedAt
+-	og.ArticleModifiedTime = status.CreatedAt
++	o.ArticlePublisher = status.Account.URL
++	o.ArticleAuthor = status.Account.URL
++	o.ArticlePublishedTime = status.CreatedAt
++	o.ArticleModifiedTime = util.PtrOrValue(status.EditedAt, status.CreatedAt)
+ 
+-	return og
++	return o
+ }
+ 
+ // AccountTitle parses a page title from account and accountDomain
+@@ -159,26 +283,27 @@ func AccountTitle(account *apimodel.WebAccount, accountDomain string) string {
+ }
+ 
+ // ParseDescription returns a string description which is
+-// safe to use as a template.HTMLAttr inside templates.
++// safe to use as the content of a `content="..."` attribute.
+ func ParseDescription(in string) string {
+ 	i := text.StripHTMLFromText(in)
+ 	i = strings.ReplaceAll(i, "\n", " ")
+ 	i = strings.Join(strings.Fields(i), " ")
+ 	i = html.EscapeString(i)
+ 	i = strings.ReplaceAll(i, `\`, "&bsol;")
+-	i = truncate(i, maxOGDescriptionLength)
+-	return `content="` + i + `"`
++	return truncate(i)
+ }
+ 
+-// truncate trims given string to
+-// specified length (in runes).
+-func truncate(s string, l int) string {
++// truncate trims string
++// to maximum 160 runes.
++func truncate(s string) string {
++	const truncateLen = 160
++
+ 	r := []rune(s)
+-	if len(r) < l {
++	if len(r) < truncateLen {
+ 		// No need
+ 		// to trim.
+ 		return s
+ 	}
+ 
+-	return string(r[:l]) + "..."
++	return string(r[:truncateLen-3]) + "…"
+ }
+diff --git a/internal/api/util/opengraph_test.go b/internal/api/util/opengraph_test.go
+index 821aabaff..dc463c041 100644
+--- a/internal/api/util/opengraph_test.go
++++ b/internal/api/util/opengraph_test.go
+@@ -18,7 +18,6 @@
+ package util
+ 
+ import (
+-	"fmt"
+ 	"testing"
+ 
+ 	apimodel "code.superseriousbusiness.org/gotosocial/internal/api/model"
+@@ -40,7 +39,7 @@ func (suite *OpenGraphTestSuite) TestParseDescription() {
+ 	for _, tt := range tests {
+ 		tt := tt
+ 		suite.Run(tt.name, func() {
+-			suite.Equal(fmt.Sprintf("content=\"%s\"", tt.exp), ParseDescription(tt.in))
++			suite.Equal(tt.exp, ParseDescription(tt.in))
+ 		})
+ 	}
+ }
+@@ -49,6 +48,8 @@ func (suite *OpenGraphTestSuite) TestWithAccountWithNote() {
+ 	baseMeta := OGBase(&apimodel.InstanceV1{
+ 		AccountDomain: "example.org",
+ 		Languages:     []string{"en"},
++		Thumbnail:     "https://example.org/instance-avatar.webp",
++		ThumbnailType: "image/webp",
+ 	})
+ 
+ 	acct := &apimodel.Account{
+@@ -57,21 +58,31 @@ func (suite *OpenGraphTestSuite) TestWithAccountWithNote() {
+ 		URL:         "https://example.org/@example_account",
+ 		Note:        "<p>This is my profile, read it and weep! Weep then!</p>",
+ 		Username:    "example_account",
++		Avatar:      "https://example.org/avatar.jpg",
+ 	}
+ 
+ 	accountMeta := baseMeta.WithAccount(&apimodel.WebAccount{Account: acct})
+ 
+ 	suite.EqualValues(OGMeta{
+-		Title:                "example person!!, @example_account@example.org",
+-		Type:                 "profile",
+-		Locale:               "en",
+-		URL:                  "https://example.org/@example_account",
+-		SiteName:             "example.org",
+-		Description:          "content=\"This is my profile, read it and weep! Weep then!\"",
+-		Image:                "",
+-		ImageWidth:           "",
+-		ImageHeight:          "",
+-		ImageAlt:             "Avatar for example_account",
++		Title:       "example person!!, @example_account@example.org",
++		Type:        "profile",
++		Locale:      "en",
++		URL:         "https://example.org/@example_account",
++		SiteName:    "example.org",
++		Description: "This is my profile, read it and weep! Weep then!",
++		Media: []OGMedia{
++			{
++				OGType: "image",
++				Alt:    "Avatar for example_account",
++				URL:    "https://example.org/avatar.jpg",
++			},
++			{
++				// Instance avatar.
++				OGType:   "image",
++				URL:      "https://example.org/instance-avatar.webp",
++				MIMEType: "image/webp",
++			},
++		},
+ 		ArticlePublisher:     "",
+ 		ArticleAuthor:        "",
+ 		ArticleModifiedTime:  "",
+@@ -84,6 +95,8 @@ func (suite *OpenGraphTestSuite) TestWithAccountNoNote() {
+ 	baseMeta := OGBase(&apimodel.InstanceV1{
+ 		AccountDomain: "example.org",
+ 		Languages:     []string{"en"},
++		Thumbnail:     "https://example.org/instance-avatar.webp",
++		ThumbnailType: "image/webp",
+ 	})
+ 
+ 	acct := &apimodel.Account{
+@@ -92,21 +105,31 @@ func (suite *OpenGraphTestSuite) TestWithAccountNoNote() {
+ 		URL:         "https://example.org/@example_account",
+ 		Note:        "", // <- empty
+ 		Username:    "example_account",
++		Avatar:      "https://example.org/avatar.jpg",
+ 	}
+ 
+ 	accountMeta := baseMeta.WithAccount(&apimodel.WebAccount{Account: acct})
+ 
+ 	suite.EqualValues(OGMeta{
+-		Title:                "example person!!, @example_account@example.org",
+-		Type:                 "profile",
+-		Locale:               "en",
+-		URL:                  "https://example.org/@example_account",
+-		SiteName:             "example.org",
+-		Description:          "content=\"This GoToSocial user hasn't written a bio yet!\"",
+-		Image:                "",
+-		ImageWidth:           "",
+-		ImageHeight:          "",
+-		ImageAlt:             "Avatar for example_account",
++		Title:       "example person!!, @example_account@example.org",
++		Type:        "profile",
++		Locale:      "en",
++		URL:         "https://example.org/@example_account",
++		SiteName:    "example.org",
++		Description: "This GoToSocial user hasn't written a bio yet!",
++		Media: []OGMedia{
++			{
++				OGType: "image",
++				Alt:    "Avatar for example_account",
++				URL:    "https://example.org/avatar.jpg",
++			},
++			{
++				// Instance avatar.
++				OGType:   "image",
++				URL:      "https://example.org/instance-avatar.webp",
++				MIMEType: "image/webp",
++			},
++		},
+ 		ArticlePublisher:     "",
+ 		ArticleAuthor:        "",
+ 		ArticleModifiedTime:  "",
+diff --git a/web/template/page_ogmeta.tmpl b/web/template/page_ogmeta.tmpl
+index 82bb4bbfb..8be10280d 100644
+--- a/web/template/page_ogmeta.tmpl
++++ b/web/template/page_ogmeta.tmpl
+@@ -25,14 +25,14 @@
+ 
+ {{- with .ogMeta }}
+ {{- if .Locale }}
+-<meta name="og:locale" content="{{- .Locale -}}">
++<meta property="og:locale" content="{{- .Locale -}}">
+ {{- else }}
+ {{- end }}
+ <meta property="og:type" content="{{- .Type -}}">
+ <meta property="og:title" content="{{- demojify .Title | noescape -}}">
+ <meta property="og:url" content="{{- .URL -}}">
+ <meta property="og:site_name" content="{{- .SiteName -}}">
+-<meta property="og:description" {{ demojify .Description | noescapeAttr -}}>
++<meta property="og:description" content="{{- demojify .Description | noescape -}}">
+ {{- if .ArticlePublisher }}
+ <meta property="og:article:publisher" content="{{ .ArticlePublisher }}">
+ <meta property="og:article:author" content="{{ .ArticleAuthor }}">
+@@ -44,14 +44,34 @@
+ <meta property="og:profile:username" content="{{- .ProfileUsername -}}">
+ {{- else }}
+ {{- end }}
+-<meta property="og:image" content="{{- .Image -}}">
+-{{- if .ImageAlt }}
+-<meta property="og:image:alt" content="{{- .ImageAlt -}}">
++{{- range $i, $m := .Media }}
++<meta property="og:{{- $m.OGType -}}" content="{{- $m.URL -}}">
++{{- if or (eq $m.OGType "video") (eq $m.OGType "audio") }}
++<meta property="og:{{- $m.OGType -}}:secure_url" content="{{- $m.URL -}}">
+ {{- else }}
+ {{- end }}
+-{{- if .ImageWidth }}
+-<meta property="og:image:width" content="{{ .ImageWidth }}">
+-<meta property="og:image:height" content="{{ .ImageHeight }}">
++{{- if $m.MIMEType }}
++<meta property="og:{{- $m.OGType -}}:type" content="{{ $m.MIMEType }}">
+ {{- else }}
+ {{- end }}
++{{- if $m.Width }}
++<meta property="og:{{- $m.OGType -}}:width" content="{{ $m.Width }}">
++<meta property="og:{{- $m.OGType -}}:height" content="{{ $m.Height }}">
++{{- else }}
++{{- end }}
++{{- if $m.Alt }}
++<meta property="og:{{- $m.OGType -}}:alt" content="{{ $m.Alt }}">
++{{- else }}
++{{- end }}
++{{- end }}
++{{- if .TwitterSummaryLargeImage }}
++<meta name="twitter:card" content="summary_large_image">
++<meta name="twitter:image" content="{{- .TwitterSummaryLargeImage -}}">
++{{- if .TwitterImageAlt }}
++<meta name="twitter:image:alt" content="{{- .TwitterImageAlt -}}">
++{{- else }}
++{{- end }}
++{{- else }}
++<meta name="twitter:card" content="summary">
++{{- end }}
+ {{- end }}
+\ No newline at end of file
+-- 
+2.49.0
+

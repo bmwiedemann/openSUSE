@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Sep  5 08:50:49 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 0.19.2
+  * Fixed an issue with interaction policy parsing that made
+    GtS users unable to reply to people on instances that use the
+    canQuote interaction sub-policy.
+
+-------------------------------------------------------------------
+Mon Jun 16 12:23:40 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Backport fix for blocklist only showing nil
+  * add 4169_Allow_exposing_allows.patch
+  * add 4193_Add_Instance_Info_settings_panel_section.patch
+
+-------------------------------------------------------------------
+Mon Jun  9 16:38:56 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Add 4154_Add_extra_opengraph_meta_tags.patch
+  * Backport additional OG metadata for better link previews on
+    other platforms
+
+-------------------------------------------------------------------
+Fri Jun  6 16:54:22 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Add 4052_support_focus_point.patch
+  * Backport support for sending and receiving focus point
+
+-------------------------------------------------------------------
 Tue May  6 15:45:25 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Update to version 0.19.1

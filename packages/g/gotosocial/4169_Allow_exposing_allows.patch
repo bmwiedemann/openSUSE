@@ -1,0 +1,3406 @@
+From 6c59ba46168954585ef3702b9ef51b01958f74e6 Mon Sep 17 00:00:00 2001
+From: tobi <tobi.smethurst@protonmail.com>
+Date: Tue, 20 May 2025 11:47:40 +0200
+Subject: [PATCH 1/2] [feature] Allow exposing allows, implement
+ `/api/v1/domain_blocks` and `/api/v1/domain_allows` (#4169)
+
+- adds config flags `instance-expose-allowlist` and `instance-expose-allowlist-web` to allow instance admins to expose their allowlist via the web + api.
+- renames `instance-expose-suspended` and `instance-expose-suspended-web` to  `instance-expose-blocklist` and `instance-expose-blocklist-web`.
+- deprecates the `suspended` filter on `/api/v1/instance/peers` endpoint and adds `blocked` and `allowed` filters
+- adds the `flat` query param to `/api/v1/instance/peers` to allow forcing return of a flat list of domains
+- implements `/api/v1/instance/domain_blocks` and `/api/v1/instance/domain_allows` endpoints with or without auth depending on config
+- rejigs the instance about page to include a general section on domain permissions, with block and allow subsections (and appropriate links)
+
+Closes https://codeberg.org/superseriousbusiness/gotosocial/issues/3847
+Closes https://codeberg.org/superseriousbusiness/gotosocial/issues/4150
+
+Prerequisite to https://codeberg.org/superseriousbusiness/gotosocial/issues/3711
+
+Reviewed-on: https://codeberg.org/superseriousbusiness/gotosocial/pulls/4169
+Co-authored-by: tobi <tobi.smethurst@protonmail.com>
+Co-committed-by: tobi <tobi.smethurst@protonmail.com>
+---
+ docs/admin/domain_blocks.md                   |    4 +-
+ docs/api/swagger.yaml                         |  111 +-
+ docs/configuration/instance.md                |   54 +-
+ example/config.yaml                           |   54 +-
+ internal/api/client/instance/domainperms.go   |  172 ++
+ internal/api/client/instance/instance.go      |    7 +-
+ .../api/client/instance/instancepeersget.go   |  110 +-
+ .../client/instance/instancepeersget_test.go  |   81 +-
+ internal/api/model/domain.go                  |    7 +-
+ internal/config/config.go                     |   11 +-
+ internal/config/defaults.go                   |    4 +-
+ internal/config/flags.go                      |    6 +-
+ internal/config/helpers.gen.go                | 1632 ++++++++++++++++-
+ internal/processing/instance.go               |  145 +-
+ internal/web/about.go                         |    3 +-
+ internal/web/domain-blocklist.go              |   75 -
+ internal/web/domainperms.go                   |  136 ++
+ internal/web/web.go                           |    3 +-
+ test/envparsing.sh                            |   12 +-
+ testrig/config.go                             |    6 +-
+ web/source/css/base.css                       |    4 +-
+ web/template/about.tmpl                       |   45 +-
+ web/template/domain-allowlist.tmpl            |   48 +
+ web/template/domain-blocklist.tmpl            |   17 +-
+ 24 files changed, 2486 insertions(+), 261 deletions(-)
+ create mode 100644 internal/api/client/instance/domainperms.go
+ delete mode 100644 internal/web/domain-blocklist.go
+ create mode 100644 internal/web/domainperms.go
+ create mode 100644 web/template/domain-allowlist.tmpl
+
+diff --git a/docs/admin/domain_blocks.md b/docs/admin/domain_blocks.md
+index f89c84a10..98d532481 100644
+--- a/docs/admin/domain_blocks.md
++++ b/docs/admin/domain_blocks.md
+@@ -41,9 +41,9 @@ With this in mind, you should only ever treat domain blocking as *one layer* of
+ 
+ Unfortunately, the Fediverse has its share of trolls, many of whom see domain blocking as an adversary to be defeated. To achieve this, they often target instances which use domain blocks to protect users.
+ 
+-As such, there are bots on the Fediverse which scrape instance domain blocks and announce any discovered blocks to the followers of the bot, opening the admin of the blocking instance up to harassment. These bots use the `api/v1/instance/peers?filter=suspended` endpoint of GoToSocial instances to gather domain block information.
++As such, there are bots on the Fediverse which scrape instance domain blocks and announce any discovered blocks to the followers of the bot, opening the admin of the blocking instance up to harassment. These bots use the `api/v1/instance/peers?filter=suspended`, `api/v1/instance/peers?filter=blocked`, and/or `api/v1/instance/domain_blocks` endpoints of GoToSocial instances to gather domain block information.
+ 
+-By default, GoToSocial does not expose this endpoint publicly, so your instance will be safe from such scraping. However, if you set `instance-expose-suspended` to `true` in your config.yaml file, you may find that this endpoint gets scraped occasionally, and you may see your blocks being announced by troll bots.
++By default, GoToSocial does not expose these endpoints publicly, so your instance will be safe from such scraping. However, if you set `instance-expose-blocklist` to `true` in your config.yaml file, you may find that these endpoints gets scraped occasionally, and you may see your blocks being announced by troll bots.
+ 
+ ## What are the side effects of creating a domain block
+ 
+diff --git a/docs/api/swagger.yaml b/docs/api/swagger.yaml
+index 851106398..f5b297077 100644
+--- a/docs/api/swagger.yaml
++++ b/docs/api/swagger.yaml
+@@ -1101,7 +1101,7 @@ definitions:
+         properties:
+             comment:
+                 description: |-
+-                    If the domain is blocked, what's the publicly-stated reason for the block.
++                    If the domain is blocked or allowed, what's the publicly-stated reason (if any).
+                     Alternative to `public_comment` to be used when serializing/deserializing via /api/v1/instance.
+                 example: they smell
+                 type: string
+@@ -1113,11 +1113,17 @@ definitions:
+                 x-go-name: Domain
+             public_comment:
+                 description: |-
+-                    If the domain is blocked, what's the publicly-stated reason for the block.
++                    If the domain is blocked or allowed, what's the publicly-stated reason (if any).
+                     Alternative to `comment` to be used when serializing/deserializing NOT via /api/v1/instance.
+                 example: they smell
+                 type: string
+                 x-go-name: PublicComment
++            severity:
++                description: |-
++                    Severity of this entry.
++                    Only ever set for domain blocks, and if set, always="suspend".
++                type: string
++                x-go-name: Severity
+             silenced_at:
+                 description: Time at which this domain was silenced. Key will not be present on open domains.
+                 example: "2021-07-30T09:20:25+00:00"
+@@ -1135,7 +1141,7 @@ definitions:
+         properties:
+             comment:
+                 description: |-
+-                    If the domain is blocked, what's the publicly-stated reason for the block.
++                    If the domain is blocked or allowed, what's the publicly-stated reason (if any).
+                     Alternative to `public_comment` to be used when serializing/deserializing via /api/v1/instance.
+                 example: they smell
+                 type: string
+@@ -1179,11 +1185,17 @@ definitions:
+                 x-go-name: PrivateComment
+             public_comment:
+                 description: |-
+-                    If the domain is blocked, what's the publicly-stated reason for the block.
++                    If the domain is blocked or allowed, what's the publicly-stated reason (if any).
+                     Alternative to `comment` to be used when serializing/deserializing NOT via /api/v1/instance.
+                 example: they smell
+                 type: string
+                 x-go-name: PublicComment
++            severity:
++                description: |-
++                    Severity of this entry.
++                    Only ever set for domain blocks, and if set, always="suspend".
++                type: string
++                x-go-name: Severity
+             silenced_at:
+                 description: Time at which this domain was silenced. Key will not be present on open domains.
+                 example: "2021-07-30T09:20:25+00:00"
+@@ -8914,37 +8926,105 @@ paths:
+             summary: Update your instance information and/or upload a new avatar/header for the instance.
+             tags:
+                 - instance
++    /api/v1/instance/domain_allows:
++        get:
++            description: OAuth token may need to be provided depending on setting `instance-expose-allowlist`.
++            operationId: instanceDomainAllowsGet
++            produces:
++                - application/json
++            responses:
++                "200":
++                    description: List of explicitly allowed domains.
++                    schema:
++                        items:
++                            $ref: '#/definitions/domain'
++                        type: array
++                "400":
++                    description: bad request
++                "401":
++                    description: unauthorized
++                "403":
++                    description: forbidden
++                "404":
++                    description: not found
++                "406":
++                    description: not acceptable
++                "500":
++                    description: internal server error
++            security:
++                - OAuth2 Bearer: []
++            summary: List explicitly allowed domains.
++            tags:
++                - instance
++    /api/v1/instance/domain_blocks:
++        get:
++            description: OAuth token may need to be provided depending on setting `instance-expose-blocklist`.
++            operationId: instanceDomainBlocksGet
++            produces:
++                - application/json
++            responses:
++                "200":
++                    description: List of blocked domains.
++                    schema:
++                        items:
++                            $ref: '#/definitions/domain'
++                        type: array
++                "400":
++                    description: bad request
++                "401":
++                    description: unauthorized
++                "403":
++                    description: forbidden
++                "404":
++                    description: not found
++                "406":
++                    description: not acceptable
++                "500":
++                    description: internal server error
++            security:
++                - OAuth2 Bearer: []
++            summary: List blocked domains.
++            tags:
++                - instance
+     /api/v1/instance/peers:
+         get:
+             operationId: instancePeersGet
+             parameters:
+-                - default: open
++                - default: flat
+                   description: |-
+                     Comma-separated list of filters to apply to results. Recognized filters are:
+-                      - `open` -- include peers that are not suspended or silenced
+-                      - `suspended` -- include peers that have been suspended.
++                      - `open` -- include known domains that are not in the domain blocklist
++                      - `allowed` -- include domains that are in the domain allowlist
++                      - `blocked` -- include domains that are in the domain blocklist
++                      - `suspended` -- DEPRECATED! Use `blocked` instead. Same as `blocked`: include domains that are in the domain blocklist;
++
++                    If filter is `open`, only domains that aren't in the blocklist will be shown.
+ 
+-                    If filter is `open`, only instances that haven't been suspended or silenced will be returned.
++                    If filter is `blocked`, only domains that *are* in the blocklist will be shown.
+ 
+-                    If filter is `suspended`, only suspended instances will be shown.
++                    If filter is `allowed`, only domains that are in the allowlist will be shown.
+ 
+-                    If filter is `open,suspended`, then all known instances will be returned.
++                    If filter is `open,blocked`, then blocked domains and known domains not on the blocklist will be shown.
++
++                    If filter is `open,allowed`, then allowed domains and known domains not on the blocklist will be shown.
+ 
+                     If filter is an empty string or not set, then `open` will be assumed as the default.
+                   in: query
+                   name: filter
+                   type: string
++                - default: false
++                  description: If true, a "flat" array of strings will be returned corresponding to just domain names.
++                  in: query
++                  name: flat
++                  type: boolean
+             produces:
+                 - application/json
+             responses:
+                 "200":
+                     description: |-
+-                        If no filter parameter is provided, or filter is empty, then a legacy, Mastodon-API compatible response will be returned. This will consist of just a 'flat' array of strings like `["example.com", "example.org"]`, which corresponds to domains this instance peers with.
+-
+-                        If a filter parameter is provided, then an array of objects with at least a `domain` key set on each object will be returned.
+-
++                        If no filter parameter is provided, or filter is empty, then a legacy, Mastodon-API compatible response will be returned. This will consist of just a 'flat' array of strings like `["example.com", "example.org"]`, which corresponds to setting a filter of `open` and flat=true.
++                        If a filter parameter is provided and flat is not true, then an array of objects with at least a `domain` key set on each object will be returned.
+                         Domains that are silenced or suspended will also have a key `suspended_at` or `silenced_at` that contains an iso8601 date string. If one of these keys is not present on the domain object, it is open. Suspended instances may in some cases be obfuscated, which means they will have some letters replaced by `*` to make it more difficult for bad actors to target instances with harassment.
+-
+                         Whether a flat response or a more detailed response is returned, domains will be sorted alphabetically by hostname.
+                     schema:
+                         items:
+@@ -8964,6 +9044,7 @@ paths:
+                     description: internal server error
+             security:
+                 - OAuth2 Bearer: []
++            summary: List peer domains.
+             tags:
+                 - instance
+     /api/v1/instance/rules:
+diff --git a/docs/configuration/instance.md b/docs/configuration/instance.md
+index 2a945eed2..1b8282a27 100644
+--- a/docs/configuration/instance.md
++++ b/docs/configuration/instance.md
+@@ -76,29 +76,61 @@ instance-federation-mode: "blocklist"
+ # Default: false
+ instance-federation-spam-filter: false
+ 
+-# Bool. Allow unauthenticated users to make queries to /api/v1/instance/peers?filter=open in order
+-# to see a list of instances that this instance 'peers' with. Even if set to 'false', then authenticated
+-# users (members of the instance) will still be able to query the endpoint.
++# Bool. Allow unauthenticated users to make queries to /api/v1/instance/peers?filter=open
++# in order to see a list of domains that this instance 'peers' with.
++#
++# Even if set to 'false', then authenticated users (members of the instance)
++# will still be able to query these endpoints using an OAuth token.
++#
+ # Options: [true, false]
+ # Default: false
+ instance-expose-peers: false
+ 
+-# Bool. Allow unauthenticated users to make queries to /api/v1/instance/peers?filter=suspended in order
+-# to see a list of instances that this instance blocks/suspends. Even if set to 'false', then authenticated
+-# users (members of the instance) will still be able to query the endpoint.
++# Bool. Allow unauthenticated users to make queries to the following instance API
++# endpoints in order to see a list of domains that this instance explicitly blocks,
++# including the public reason for each block:
+ #
+-# WARNING: Setting this variable to 'true' may result in your instance being scraped by blocklist scrapers.
++# - /api/v1/instance/peers?filter=blocklist
++# - /api/v1/instance/peers?filter=suspended (deprecated)
++# - /api/v1/instance/domain_blocks
++#
++# Even if set to 'false', then authenticated users (members of the instance)
++# will still be able to query these endpoints using an OAuth token.
++#
++# WARNING: Setting to 'true' may result in your instance being targeted by blocklist scrapers.
+ # See: https://docs.gotosocial.org/en/latest/admin/domain_blocks/#block-announce-bots
+ #
+ # Options: [true, false]
+ # Default: false
+-instance-expose-suspended: false
++instance-expose-blocklist: false
++
++# Bool. Allow unauthenticated users to view /about/domain_blocks,
++# which shows an HTML-rendered list of domains that this instance blocks,
++# including the public reason for each block.
++# Options: [true, false]
++# Default: false
++instance-expose-blocklist-web: false
++
++# Bool. Allow unauthenticated users to make queries to the following instance API
++# endpoints in order to see a list of domains that this instance explicitly allows
++# including the public reason for each allow:
++#
++# - /api/v1/instance/peers?filter=allowlist
++# - /api/v1/instance/domain_allows
++#
++# Even if set to 'false', then authenticated users (members of the instance)
++# will still be able to query these endpoints using an OAuth token.
++#
++# Options: [true, false]
++# Default: false
++instance-expose-allowlist: false
+ 
+-# Bool. Allow unauthenticated users to view /about/suspended,
+-# showing the HTML rendered list of instances that this instance blocks/suspends.
++# Bool. Allow unauthenticated users to view /about/domain_allows,
++# which shows an HTML-rendered list of domains that this instance allows,
++# including the public reason for each allow.
+ # Options: [true, false]
+ # Default: false
+-instance-expose-suspended-web: false
++instance-expose-blocklist-web: false
+ 
+ # Bool. Allow unauthenticated users to make queries to /api/v1/timelines/public in order
+ # to see a list of public posts on this server. Even if set to 'false', then authenticated
+diff --git a/example/config.yaml b/example/config.yaml
+index 17a57b857..8d8011d14 100644
+--- a/example/config.yaml
++++ b/example/config.yaml
+@@ -362,29 +362,61 @@ instance-federation-mode: "blocklist"
+ # Default: false
+ instance-federation-spam-filter: false
+ 
+-# Bool. Allow unauthenticated users to make queries to /api/v1/instance/peers?filter=open in order
+-# to see a list of instances that this instance 'peers' with. Even if set to 'false', then authenticated
+-# users (members of the instance) will still be able to query the endpoint.
++# Bool. Allow unauthenticated users to make queries to /api/v1/instance/peers?filter=open
++# in order to see a list of domains that this instance 'peers' with.
++#
++# Even if set to 'false', then authenticated users (members of the instance)
++# will still be able to query these endpoints using an OAuth token.
++#
+ # Options: [true, false]
+ # Default: false
+ instance-expose-peers: false
+ 
+-# Bool. Allow unauthenticated users to make queries to /api/v1/instance/peers?filter=suspended in order
+-# to see a list of instances that this instance blocks/suspends. Even if set to 'false', then authenticated
+-# users (members of the instance) will still be able to query the endpoint.
++# Bool. Allow unauthenticated users to make queries to the following instance API
++# endpoints in order to see a list of domains that this instance explicitly blocks,
++# including the public reason for each block:
+ #
+-# WARNING: Setting this variable to 'true' may result in your instance being scraped by blocklist scrapers.
++# - /api/v1/instance/peers?filter=blocklist
++# - /api/v1/instance/peers?filter=suspended (deprecated)
++# - /api/v1/instance/domain_blocks
++#
++# Even if set to 'false', then authenticated users (members of the instance)
++# will still be able to query these endpoints using an OAuth token.
++#
++# WARNING: Setting to 'true' may result in your instance being targeted by blocklist scrapers.
+ # See: https://docs.gotosocial.org/en/latest/admin/domain_blocks/#block-announce-bots
+ #
+ # Options: [true, false]
+ # Default: false
+-instance-expose-suspended: false
++instance-expose-blocklist: false
++
++# Bool. Allow unauthenticated users to view /about/domain_blocks,
++# which shows an HTML-rendered list of domains that this instance blocks,
++# including the public reason for each block.
++# Options: [true, false]
++# Default: false
++instance-expose-blocklist-web: false
++
++# Bool. Allow unauthenticated users to make queries to the following instance API
++# endpoints in order to see a list of domains that this instance explicitly allows
++# including the public reason for each allow:
++#
++# - /api/v1/instance/peers?filter=allowlist
++# - /api/v1/instance/domain_allows
++#
++# Even if set to 'false', then authenticated users (members of the instance)
++# will still be able to query these endpoints using an OAuth token.
++#
++# Options: [true, false]
++# Default: false
++instance-expose-allowlist: false
+ 
+-# Bool. Allow unauthenticated users to view /about/suspended,
+-# showing the HTML rendered list of instances that this instance blocks/suspends.
++# Bool. Allow unauthenticated users to view /about/domain_allows,
++# which shows an HTML-rendered list of domains that this instance allows,
++# including the public reason for each allow.
+ # Options: [true, false]
+ # Default: false
+-instance-expose-suspended-web: false
++instance-expose-blocklist-web: false
+ 
+ # Bool. Allow unauthenticated users to make queries to /api/v1/timelines/public in order
+ # to see a list of public posts on this server. Even if set to 'false', then authenticated
+diff --git a/internal/api/client/instance/domainperms.go b/internal/api/client/instance/domainperms.go
+new file mode 100644
+index 000000000..6503388a5
+--- /dev/null
++++ b/internal/api/client/instance/domainperms.go
+@@ -0,0 +1,172 @@
++// GoToSocial
++// Copyright (C) GoToSocial Authors admin@gotosocial.org
++// SPDX-License-Identifier: AGPL-3.0-or-later
++//
++// This program is free software: you can redistribute it and/or modify
++// it under the terms of the GNU Affero General Public License as published by
++// the Free Software Foundation, either version 3 of the License, or
++// (at your option) any later version.
++//
++// This program is distributed in the hope that it will be useful,
++// but WITHOUT ANY WARRANTY; without even the implied warranty of
++// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++// GNU Affero General Public License for more details.
++//
++// You should have received a copy of the GNU Affero General Public License
++// along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++package instance
++
++import (
++	"errors"
++	"net/http"
++
++	apiutil "code.superseriousbusiness.org/gotosocial/internal/api/util"
++	"code.superseriousbusiness.org/gotosocial/internal/config"
++	"code.superseriousbusiness.org/gotosocial/internal/gtserror"
++	"github.com/gin-gonic/gin"
++)
++
++// InstanceDomainBlocksGETHandler swagger:operation GET /api/v1/instance/domain_blocks instanceDomainBlocksGet
++//
++// List blocked domains.
++//
++// OAuth token may need to be provided depending on setting `instance-expose-blocklist`.
++//
++//	---
++//	tags:
++//	- instance
++//
++//	produces:
++//	- application/json
++//
++//	security:
++//	- OAuth2 Bearer: []
++//
++//	responses:
++//		'200':
++//			description: List of blocked domains.
++//			schema:
++//				type: array
++//				items:
++//					"$ref": "#/definitions/domain"
++//		'400':
++//			description: bad request
++//		'401':
++//			description: unauthorized
++//		'403':
++//			description: forbidden
++//		'404':
++//			description: not found
++//		'406':
++//			description: not acceptable
++//		'500':
++//			description: internal server error
++func (m *Module) InstanceDomainBlocksGETHandler(c *gin.Context) {
++	authed, errWithCode := apiutil.TokenAuth(c,
++		false, false, false, false,
++	)
++	if errWithCode != nil {
++		apiutil.ErrorHandler(c, errWithCode, m.processor.InstanceGetV1)
++		return
++	}
++
++	if _, err := apiutil.NegotiateAccept(c, apiutil.JSONAcceptHeaders...); err != nil {
++		apiutil.ErrorHandler(c, gtserror.NewErrorNotAcceptable(err, err.Error()), m.processor.InstanceGetV1)
++		return
++	}
++
++	if (authed.Account == nil || authed.User == nil) && !config.GetInstanceExposeBlocklist() {
++		const errText = "domain blocks endpoint requires an authenticated account/user"
++		errWithCode := gtserror.NewErrorUnauthorized(errors.New(errText), errText)
++		apiutil.ErrorHandler(c, errWithCode, m.processor.InstanceGetV1)
++		return
++	}
++
++	data, errWithCode := m.processor.InstancePeersGet(
++		c.Request.Context(),
++		true,  // Include blocked.
++		false, // Don't include allowed.
++		false, // Don't include open.
++		false, // Don't flatten.
++		true,  // Include severity.
++	)
++	if errWithCode != nil {
++		apiutil.ErrorHandler(c, errWithCode, m.processor.InstanceGetV1)
++		return
++	}
++
++	apiutil.JSON(c, http.StatusOK, data)
++}
++
++// InstanceDomainAllowsGETHandler swagger:operation GET /api/v1/instance/domain_allows instanceDomainAllowsGet
++//
++// List explicitly allowed domains.
++//
++// OAuth token may need to be provided depending on setting `instance-expose-allowlist`.
++//
++//	---
++//	tags:
++//	- instance
++//
++//	produces:
++//	- application/json
++//
++//	security:
++//	- OAuth2 Bearer: []
++//
++//	responses:
++//		'200':
++//			description: List of explicitly allowed domains.
++//			schema:
++//				type: array
++//				items:
++//					"$ref": "#/definitions/domain"
++//		'400':
++//			description: bad request
++//		'401':
++//			description: unauthorized
++//		'403':
++//			description: forbidden
++//		'404':
++//			description: not found
++//		'406':
++//			description: not acceptable
++//		'500':
++//			description: internal server error
++func (m *Module) InstanceDomainAllowsGETHandler(c *gin.Context) {
++	authed, errWithCode := apiutil.TokenAuth(c,
++		false, false, false, false,
++	)
++	if errWithCode != nil {
++		apiutil.ErrorHandler(c, errWithCode, m.processor.InstanceGetV1)
++		return
++	}
++
++	if _, err := apiutil.NegotiateAccept(c, apiutil.JSONAcceptHeaders...); err != nil {
++		apiutil.ErrorHandler(c, gtserror.NewErrorNotAcceptable(err, err.Error()), m.processor.InstanceGetV1)
++		return
++	}
++
++	if (authed.Account == nil || authed.User == nil) && !config.GetInstanceExposeAllowlist() {
++		const errText = "domain allows endpoint requires an authenticated account/user"
++		errWithCode := gtserror.NewErrorUnauthorized(errors.New(errText), errText)
++		apiutil.ErrorHandler(c, errWithCode, m.processor.InstanceGetV1)
++		return
++	}
++
++	data, errWithCode := m.processor.InstancePeersGet(
++		c.Request.Context(),
++		false, // Don't include blocked.
++		true,  // Include allowed.
++		false, // Don't include open.
++		false, // Don't flatten.
++		false, // Don't include severity.
++	)
++	if errWithCode != nil {
++		apiutil.ErrorHandler(c, errWithCode, m.processor.InstanceGetV1)
++		return
++	}
++
++	apiutil.JSON(c, http.StatusOK, data)
++}
+diff --git a/internal/api/client/instance/instance.go b/internal/api/client/instance/instance.go
+index cd6c438c8..0e06941cc 100644
+--- a/internal/api/client/instance/instance.go
++++ b/internal/api/client/instance/instance.go
+@@ -29,7 +29,10 @@
+ 	InstanceInformationPathV2 = "/v2/instance"
+ 	InstancePeersPath         = InstanceInformationPathV1 + "/peers"
+ 	InstanceRulesPath         = InstanceInformationPathV1 + "/rules"
++	InstanceBlocklistPath     = InstanceInformationPathV1 + "/domain_blocks"
++	InstanceAllowlistPath     = InstanceInformationPathV1 + "/domain_allows"
+ 	PeersFilterKey            = "filter" // PeersFilterKey is used to provide filters to /api/v1/instance/peers
++	PeersFlatKey              = "flat"   // PeersFlatKey is used to set "flat=true" in /api/v1/instance/peers
+ )
+ 
+ type Module struct {
+@@ -45,9 +48,9 @@ func New(processor *processing.Processor) *Module {
+ func (m *Module) Route(attachHandler func(method string, path string, f ...gin.HandlerFunc) gin.IRoutes) {
+ 	attachHandler(http.MethodGet, InstanceInformationPathV1, m.InstanceInformationGETHandlerV1)
+ 	attachHandler(http.MethodGet, InstanceInformationPathV2, m.InstanceInformationGETHandlerV2)
+-
+ 	attachHandler(http.MethodPatch, InstanceInformationPathV1, m.InstanceUpdatePATCHHandler)
+ 	attachHandler(http.MethodGet, InstancePeersPath, m.InstancePeersGETHandler)
+-
+ 	attachHandler(http.MethodGet, InstanceRulesPath, m.InstanceRulesGETHandler)
++	attachHandler(http.MethodGet, InstanceBlocklistPath, m.InstanceDomainBlocksGETHandler)
++	attachHandler(http.MethodGet, InstanceAllowlistPath, m.InstanceDomainAllowsGETHandler)
+ }
+diff --git a/internal/api/client/instance/instancepeersget.go b/internal/api/client/instance/instancepeersget.go
+index 7afeb7104..d9f7610b7 100644
+--- a/internal/api/client/instance/instancepeersget.go
++++ b/internal/api/client/instance/instancepeersget.go
+@@ -18,8 +18,10 @@
+ package instance
+ 
+ import (
++	"errors"
+ 	"fmt"
+ 	"net/http"
++	"strconv"
+ 	"strings"
+ 
+ 	apiutil "code.superseriousbusiness.org/gotosocial/internal/api/util"
+@@ -31,6 +33,8 @@
+ 
+ // InstancePeersGETHandler swagger:operation GET /api/v1/instance/peers instancePeersGet
+ //
++// List peer domains.
++//
+ //	---
+ //	tags:
+ //	- instance
+@@ -44,19 +48,32 @@
+ //		type: string
+ //		description: |-
+ //			Comma-separated list of filters to apply to results. Recognized filters are:
+-//				- `open` -- include peers that are not suspended or silenced
+-//				- `suspended` -- include peers that have been suspended.
++//				- `open` -- include known domains that are not in the domain blocklist
++//				- `allowed` -- include domains that are in the domain allowlist
++//				- `blocked` -- include domains that are in the domain blocklist
++//				- `suspended` -- DEPRECATED! Use `blocked` instead. Same as `blocked`: include domains that are in the domain blocklist;
++//
++//			If filter is `open`, only domains that aren't in the blocklist will be shown.
+ //
+-//			If filter is `open`, only instances that haven't been suspended or silenced will be returned.
++//			If filter is `blocked`, only domains that *are* in the blocklist will be shown.
+ //
+-//			If filter is `suspended`, only suspended instances will be shown.
++//			If filter is `allowed`, only domains that are in the allowlist will be shown.
+ //
+-//			If filter is `open,suspended`, then all known instances will be returned.
++//			If filter is `open,blocked`, then blocked domains and known domains not on the blocklist will be shown.
++//
++//			If filter is `open,allowed`, then allowed domains and known domains not on the blocklist will be shown.
+ //
+ //			If filter is an empty string or not set, then `open` will be assumed as the default.
+ //		in: query
+ //		required: false
+-//		default: "open"
++//		default: flat
++//	-
++//		name: flat
++//		type: boolean
++//		description: If true, a "flat" array of strings will be returned corresponding to just domain names.
++//		in: query
++//		required: false
++//		default: false
+ //
+ //	security:
+ //	- OAuth2 Bearer: []
+@@ -67,12 +84,10 @@
+ //				If no filter parameter is provided, or filter is empty, then a legacy,
+ //				Mastodon-API compatible response will be returned. This will consist of
+ //				just a 'flat' array of strings like `["example.com", "example.org"]`,
+-//				which corresponds to domains this instance peers with.
+-//
+-//
+-//				If a filter parameter is provided, then an array of objects with at least
+-//				a `domain` key set on each object will be returned.
++//				which corresponds to setting a filter of `open` and flat=true.
+ //
++//				If a filter parameter is provided and flat is not true, then an array
++//				of objects with at least a `domain` key set on each object will be returned.
+ //
+ //				Domains that are silenced or suspended will also have a key
+ //				`suspended_at` or `silenced_at` that contains an iso8601 date string.
+@@ -81,7 +96,6 @@
+ //				will have some letters replaced by `*` to make it more difficult for
+ //				bad actors to target instances with harassment.
+ //
+-//
+ //				Whether a flat response or a more detailed response is returned, domains
+ //				will be sorted alphabetically by hostname.
+ //			schema:
+@@ -116,45 +130,85 @@ func (m *Module) InstancePeersGETHandler(c *gin.Context) {
+ 		return
+ 	}
+ 
+-	var includeSuspended bool
+-	var includeOpen bool
+-	var flat bool
++	var (
++		includeBlocked bool
++		includeAllowed bool
++		includeOpen    bool
++		flatten        bool
++	)
++
+ 	if filterParam := c.Query(PeersFilterKey); filterParam != "" {
+ 		filters := strings.Split(filterParam, ",")
+ 		for _, f := range filters {
+ 			trimmed := strings.TrimSpace(f)
+ 			switch {
+-			case strings.EqualFold(trimmed, "suspended"):
+-				includeSuspended = true
++			case strings.EqualFold(trimmed, "blocked") || strings.EqualFold(trimmed, "suspended"):
++				includeBlocked = true
++			case strings.EqualFold(trimmed, "allowed"):
++				includeAllowed = true
+ 			case strings.EqualFold(trimmed, "open"):
+ 				includeOpen = true
+ 			default:
+-				err := fmt.Errorf("filter %s not recognized; accepted values are 'open', 'suspended'", trimmed)
++				err := fmt.Errorf("filter %s not recognized; accepted values are 'open', 'blocked', 'allowed', and 'suspended' (deprecated)", trimmed)
+ 				apiutil.ErrorHandler(c, gtserror.NewErrorBadRequest(err, err.Error()), m.processor.InstanceGetV1)
+ 				return
+ 			}
+ 		}
+ 	} else {
+-		// default is to only include open domains, and present
++		// Default is to only include open domains, and present
+ 		// them in a 'flat' manner (just an array of strings),
+-		// to maintain compatibility with mastodon API
++		// to maintain compatibility with the Mastodon API.
+ 		includeOpen = true
+-		flat = true
++		flatten = true
+ 	}
+ 
+-	if includeOpen && !config.GetInstanceExposePeers() && isUnauthenticated {
+-		err := fmt.Errorf("peers open query requires an authenticated account/user")
+-		apiutil.ErrorHandler(c, gtserror.NewErrorUnauthorized(err, err.Error()), m.processor.InstanceGetV1)
++	if includeBlocked && isUnauthenticated && !config.GetInstanceExposeBlocklist() {
++		const errText = "peers blocked query requires an authenticated account/user"
++		errWithCode := gtserror.NewErrorUnauthorized(errors.New(errText), errText)
++		apiutil.ErrorHandler(c, errWithCode, m.processor.InstanceGetV1)
+ 		return
+ 	}
+ 
+-	if includeSuspended && !config.GetInstanceExposeSuspended() && isUnauthenticated {
+-		err := fmt.Errorf("peers suspended query requires an authenticated account/user")
+-		apiutil.ErrorHandler(c, gtserror.NewErrorUnauthorized(err, err.Error()), m.processor.InstanceGetV1)
++	if includeAllowed && isUnauthenticated && !config.GetInstanceExposeAllowlist() {
++		const errText = "peers allowed query requires an authenticated account/user"
++		errWithCode := gtserror.NewErrorUnauthorized(errors.New(errText), errText)
++		apiutil.ErrorHandler(c, errWithCode, m.processor.InstanceGetV1)
+ 		return
+ 	}
+ 
+-	data, errWithCode := m.processor.InstancePeersGet(c.Request.Context(), includeSuspended, includeOpen, flat)
++	if includeOpen && isUnauthenticated && !config.GetInstanceExposePeers() {
++		const errText = "peers open query requires an authenticated account/user"
++		errWithCode := gtserror.NewErrorUnauthorized(errors.New(errText), errText)
++		apiutil.ErrorHandler(c, errWithCode, m.processor.InstanceGetV1)
++		return
++	}
++
++	if includeBlocked && includeAllowed {
++		const errText = "cannot include blocked + allowed filters at the same time"
++		errWithCode := gtserror.NewErrorBadRequest(errors.New(errText), errText)
++		apiutil.ErrorHandler(c, errWithCode, m.processor.InstanceGetV1)
++		return
++	}
++
++	if flatStr := c.Query(PeersFlatKey); flatStr != "" {
++		var err error
++		flatten, err = strconv.ParseBool(flatStr)
++		if err != nil {
++			err := fmt.Errorf("error parsing 'flat' key as boolean: %w", err)
++			errWithCode := gtserror.NewErrorBadRequest(err, err.Error())
++			apiutil.ErrorHandler(c, errWithCode, m.processor.InstanceGetV1)
++			return
++		}
++	}
++
++	data, errWithCode := m.processor.InstancePeersGet(
++		c.Request.Context(),
++		includeBlocked,
++		includeAllowed,
++		includeOpen,
++		flatten,
++		false, // Don't include severity.
++	)
+ 	if errWithCode != nil {
+ 		apiutil.ErrorHandler(c, errWithCode, m.processor.InstanceGetV1)
+ 		return
+diff --git a/internal/api/client/instance/instancepeersget_test.go b/internal/api/client/instance/instancepeersget_test.go
+index a18e30875..3c7f1f665 100644
+--- a/internal/api/client/instance/instancepeersget_test.go
++++ b/internal/api/client/instance/instancepeersget_test.go
+@@ -136,13 +136,14 @@ func (suite *InstancePeersGetTestSuite) TestInstancePeersGetOnlySuspended() {
+   {
+     "domain": "replyguys.com",
+     "suspended_at": "2020-05-13T13:29:12.000Z",
+-    "comment": "reply-guying to tech posts"
++    "comment": "reply-guying to tech posts",
++    "severity": "suspend"
+   }
+ ]`, dst.String())
+ }
+ 
+ func (suite *InstancePeersGetTestSuite) TestInstancePeersGetOnlySuspendedUnauthorized() {
+-	config.SetInstanceExposeSuspended(false)
++	config.SetInstanceExposeBlocklist(false)
+ 
+ 	recorder := httptest.NewRecorder()
+ 	baseURI := fmt.Sprintf("%s://%s", config.GetProtocol(), config.GetHost())
+@@ -159,11 +160,11 @@ func (suite *InstancePeersGetTestSuite) TestInstancePeersGetOnlySuspendedUnautho
+ 	b, err := io.ReadAll(result.Body)
+ 	suite.NoError(err)
+ 
+-	suite.Equal(`{"error":"Unauthorized: peers suspended query requires an authenticated account/user"}`, string(b))
++	suite.Equal(`{"error":"Unauthorized: peers blocked query requires an authenticated account/user"}`, string(b))
+ }
+ 
+ func (suite *InstancePeersGetTestSuite) TestInstancePeersGetOnlySuspendedAuthorized() {
+-	config.SetInstanceExposeSuspended(false)
++	config.SetInstanceExposeBlocklist(false)
+ 
+ 	recorder := httptest.NewRecorder()
+ 	baseURI := fmt.Sprintf("%s://%s", config.GetProtocol(), config.GetHost())
+@@ -186,7 +187,8 @@ func (suite *InstancePeersGetTestSuite) TestInstancePeersGetOnlySuspendedAuthori
+   {
+     "domain": "replyguys.com",
+     "suspended_at": "2020-05-13T13:29:12.000Z",
+-    "comment": "reply-guying to tech posts"
++    "comment": "reply-guying to tech posts",
++    "severity": "suspend"
+   }
+ ]`, dst.String())
+ }
+@@ -219,11 +221,33 @@ func (suite *InstancePeersGetTestSuite) TestInstancePeersGetAll() {
+   {
+     "domain": "replyguys.com",
+     "suspended_at": "2020-05-13T13:29:12.000Z",
+-    "comment": "reply-guying to tech posts"
++    "comment": "reply-guying to tech posts",
++    "severity": "suspend"
+   }
+ ]`, dst.String())
+ }
+ 
++func (suite *InstancePeersGetTestSuite) TestInstancePeersGetAllowed() {
++	recorder := httptest.NewRecorder()
++	baseURI := fmt.Sprintf("%s://%s", config.GetProtocol(), config.GetHost())
++	requestURI := fmt.Sprintf("%s/%s?filter=allowed", baseURI, instance.InstancePeersPath)
++	ctx := suite.newContext(recorder, http.MethodGet, requestURI, nil, "", false)
++
++	suite.instanceModule.InstancePeersGETHandler(ctx)
++
++	suite.Equal(http.StatusOK, recorder.Code)
++
++	result := recorder.Result()
++	defer result.Body.Close()
++
++	b, err := io.ReadAll(result.Body)
++	suite.NoError(err)
++	dst := new(bytes.Buffer)
++	err = json.Indent(dst, b, "", "  ")
++	suite.NoError(err)
++	suite.Equal(`[]`, dst.String())
++}
++
+ func (suite *InstancePeersGetTestSuite) TestInstancePeersGetAllWithObfuscated() {
+ 	err := suite.db.Put(context.Background(), &gtsmodel.DomainBlock{
+ 		ID:                 "01G633XTNK51GBADQZFZQDP6WR",
+@@ -263,16 +287,55 @@ func (suite *InstancePeersGetTestSuite) TestInstancePeersGetAllWithObfuscated()
+   {
+     "domain": "o*g.*u**.t**.*or*t.*r**ev**",
+     "suspended_at": "2021-06-09T10:34:55.000Z",
+-    "comment": "just absolutely the worst, wowza"
++    "comment": "just absolutely the worst, wowza",
++    "severity": "suspend"
+   },
+   {
+     "domain": "replyguys.com",
+     "suspended_at": "2020-05-13T13:29:12.000Z",
+-    "comment": "reply-guying to tech posts"
++    "comment": "reply-guying to tech posts",
++    "severity": "suspend"
+   }
+ ]`, dst.String())
+ }
+ 
++func (suite *InstancePeersGetTestSuite) TestInstancePeersGetAllWithObfuscatedFlat() {
++	err := suite.db.Put(context.Background(), &gtsmodel.DomainBlock{
++		ID:                 "01G633XTNK51GBADQZFZQDP6WR",
++		CreatedAt:          testrig.TimeMustParse("2021-06-09T12:34:55+02:00"),
++		UpdatedAt:          testrig.TimeMustParse("2021-06-09T12:34:55+02:00"),
++		Domain:             "omg.just.the.worst.org.ever",
++		CreatedByAccountID: "01F8MH17FWEB39HZJ76B6VXSKF",
++		PublicComment:      "just absolutely the worst, wowza",
++		Obfuscate:          util.Ptr(true),
++	})
++	suite.NoError(err)
++
++	recorder := httptest.NewRecorder()
++	baseURI := fmt.Sprintf("%s://%s", config.GetProtocol(), config.GetHost())
++	requestURI := fmt.Sprintf("%s/%s?filter=suspended,open&flat=true", baseURI, instance.InstancePeersPath)
++	ctx := suite.newContext(recorder, http.MethodGet, requestURI, nil, "", false)
++
++	suite.instanceModule.InstancePeersGETHandler(ctx)
++
++	suite.Equal(http.StatusOK, recorder.Code)
++
++	result := recorder.Result()
++	defer result.Body.Close()
++
++	b, err := io.ReadAll(result.Body)
++	suite.NoError(err)
++	dst := new(bytes.Buffer)
++	err = json.Indent(dst, b, "", "  ")
++	suite.NoError(err)
++	suite.Equal(`[
++  "example.org",
++  "fossbros-anonymous.io",
++  "o*g.*u**.t**.*or*t.*r**ev**",
++  "replyguys.com"
++]`, dst.String())
++}
++
+ func (suite *InstancePeersGetTestSuite) TestInstancePeersGetFunkyParams() {
+ 	recorder := httptest.NewRecorder()
+ 	baseURI := fmt.Sprintf("%s://%s", config.GetProtocol(), config.GetHost())
+@@ -289,7 +352,7 @@ func (suite *InstancePeersGetTestSuite) TestInstancePeersGetFunkyParams() {
+ 	b, err := io.ReadAll(result.Body)
+ 	suite.NoError(err)
+ 
+-	suite.Equal(`{"error":"Bad Request: filter aaaaaaaaaaaaaaaaa not recognized; accepted values are 'open', 'suspended'"}`, string(b))
++	suite.Equal(`{"error":"Bad Request: filter aaaaaaaaaaaaaaaaa not recognized; accepted values are 'open', 'blocked', 'allowed', and 'suspended' (deprecated)"}`, string(b))
+ }
+ 
+ func TestInstancePeersGetTestSuite(t *testing.T) {
+diff --git a/internal/api/model/domain.go b/internal/api/model/domain.go
+index 8d94321d0..b793d77b0 100644
+--- a/internal/api/model/domain.go
++++ b/internal/api/model/domain.go
+@@ -32,14 +32,17 @@ type Domain struct {
+ 	// Time at which this domain was silenced. Key will not be present on open domains.
+ 	// example: 2021-07-30T09:20:25+00:00
+ 	SilencedAt string `json:"silenced_at,omitempty"`
+-	// If the domain is blocked, what's the publicly-stated reason for the block.
++	// If the domain is blocked or allowed, what's the publicly-stated reason (if any).
+ 	// Alternative to `public_comment` to be used when serializing/deserializing via /api/v1/instance.
+ 	// example: they smell
+ 	Comment *string `form:"comment" json:"comment,omitempty"`
+-	// If the domain is blocked, what's the publicly-stated reason for the block.
++	// If the domain is blocked or allowed, what's the publicly-stated reason (if any).
+ 	// Alternative to `comment` to be used when serializing/deserializing NOT via /api/v1/instance.
+ 	// example: they smell
+ 	PublicComment *string `form:"public_comment" json:"public_comment,omitempty"`
++	// Severity of this entry.
++	// Only ever set for domain blocks, and if set, always="suspend".
++	Severity string `form:"severity" json:"severity,omitempty"`
+ }
+ 
+ // DomainPermission represents a permission applied to one domain (explicit block/allow).
+diff --git a/internal/config/config.go b/internal/config/config.go
+index b9804d404..bbef77bc6 100644
+--- a/internal/config/config.go
++++ b/internal/config/config.go
+@@ -43,7 +43,10 @@ func fieldtag(field, tag string) string {
+ //
+ // Please note that if you update this struct's fields or tags, you
+ // will need to regenerate the global Getter/Setter helpers by running:
+-// `go run ./internal/config/gen/ -out ./internal/config/helpers.gen.go`
++// `go run ./internal/config/gen/ -out ./internal/config/helpers.gen.go`.
++//
++// You will need to have gofumpt installed in order for this to work:
++// https://github.com/mvdan/gofumpt.
+ type Configuration struct {
+ 	LogLevel           string   `name:"log-level" usage:"Log level to run at: [trace, debug, info, warn, fatal]"`
+ 	LogTimestampFormat string   `name:"log-timestamp-format" usage:"Format to use for the log timestamp, as supported by Go's time.Layout"`
+@@ -81,8 +84,10 @@ type Configuration struct {
+ 	InstanceFederationMode            string             `name:"instance-federation-mode" usage:"Set instance federation mode."`
+ 	InstanceFederationSpamFilter      bool               `name:"instance-federation-spam-filter" usage:"Enable basic spam filter heuristics for messages coming from other instances, and drop messages identified as spam"`
+ 	InstanceExposePeers               bool               `name:"instance-expose-peers" usage:"Allow unauthenticated users to query /api/v1/instance/peers?filter=open"`
+-	InstanceExposeSuspended           bool               `name:"instance-expose-suspended" usage:"Expose suspended instances via web UI, and allow unauthenticated users to query /api/v1/instance/peers?filter=suspended"`
+-	InstanceExposeSuspendedWeb        bool               `name:"instance-expose-suspended-web" usage:"Expose list of suspended instances as webpage on /about/suspended"`
++	InstanceExposeBlocklist           bool               `name:"instance-expose-blocklist" usage:"Expose list of blocked domains via web UI, and allow unauthenticated users to query /api/v1/instance/peers?filter=blocked and /api/v1/instance/domain_blocks"`
++	InstanceExposeBlocklistWeb        bool               `name:"instance-expose-blocklist-web" usage:"Expose list of explicitly blocked domains as webpage on /about/domain_blocks"`
++	InstanceExposeAllowlist           bool               `name:"instance-expose-allowlist" usage:"Expose list of allowed domains via web UI, and allow unauthenticated users to query /api/v1/instance/peers?filter=allowed and /api/v1/instance/domain_allows"`
++	InstanceExposeAllowlistWeb        bool               `name:"instance-expose-allowlist-web" usage:"Expose list of explicitly allowed domains as webpage on /about/domain_allows"`
+ 	InstanceExposePublicTimeline      bool               `name:"instance-expose-public-timeline" usage:"Allow unauthenticated users to query /api/v1/timelines/public"`
+ 	InstanceDeliverToSharedInboxes    bool               `name:"instance-deliver-to-shared-inboxes" usage:"Deliver federated messages to shared inboxes, if they're available."`
+ 	InstanceInjectMastodonVersion     bool               `name:"instance-inject-mastodon-version" usage:"This injects a Mastodon compatible version in /api/v1/instance to help Mastodon clients that use that version for feature detection"`
+diff --git a/internal/config/defaults.go b/internal/config/defaults.go
+index 57c64db44..938efebe1 100644
+--- a/internal/config/defaults.go
++++ b/internal/config/defaults.go
+@@ -61,8 +61,8 @@
+ 	InstanceFederationMode:            InstanceFederationModeDefault,
+ 	InstanceFederationSpamFilter:      false,
+ 	InstanceExposePeers:               false,
+-	InstanceExposeSuspended:           false,
+-	InstanceExposeSuspendedWeb:        false,
++	InstanceExposeBlocklist:           false,
++	InstanceExposeBlocklistWeb:        false,
+ 	InstanceDeliverToSharedInboxes:    true,
+ 	InstanceLanguages:                 make(language.Languages, 0),
+ 	InstanceSubscriptionsProcessFrom:  "23:00",        // 11pm,
+diff --git a/internal/config/flags.go b/internal/config/flags.go
+index eaf16990c..3a6804c44 100644
+--- a/internal/config/flags.go
++++ b/internal/config/flags.go
+@@ -86,8 +86,10 @@ func (s *ConfigState) AddServerFlags(cmd *cobra.Command) {
+ 		cmd.Flags().String(InstanceFederationModeFlag(), cfg.InstanceFederationMode, fieldtag("InstanceFederationMode", "usage"))
+ 		cmd.Flags().Bool(InstanceFederationSpamFilterFlag(), cfg.InstanceFederationSpamFilter, fieldtag("InstanceFederationSpamFilter", "usage"))
+ 		cmd.Flags().Bool(InstanceExposePeersFlag(), cfg.InstanceExposePeers, fieldtag("InstanceExposePeers", "usage"))
+-		cmd.Flags().Bool(InstanceExposeSuspendedFlag(), cfg.InstanceExposeSuspended, fieldtag("InstanceExposeSuspended", "usage"))
+-		cmd.Flags().Bool(InstanceExposeSuspendedWebFlag(), cfg.InstanceExposeSuspendedWeb, fieldtag("InstanceExposeSuspendedWeb", "usage"))
++		cmd.Flags().Bool(InstanceExposeBlocklistFlag(), cfg.InstanceExposeBlocklist, fieldtag("InstanceExposeBlocklist", "usage"))
++		cmd.Flags().Bool(InstanceExposeBlocklistWebFlag(), cfg.InstanceExposeBlocklistWeb, fieldtag("InstanceExposeBlocklistWeb", "usage"))
++		cmd.Flags().Bool(InstanceExposeAllowlistFlag(), cfg.InstanceExposeAllowlist, fieldtag("InstanceExposeAllowlist", "usage"))
++		cmd.Flags().Bool(InstanceExposeAllowlistWebFlag(), cfg.InstanceExposeAllowlistWeb, fieldtag("InstanceExposeAllowlistWeb", "usage"))
+ 		cmd.Flags().Bool(InstanceDeliverToSharedInboxesFlag(), cfg.InstanceDeliverToSharedInboxes, fieldtag("InstanceDeliverToSharedInboxes", "usage"))
+ 		cmd.Flags().StringSlice(InstanceLanguagesFlag(), cfg.InstanceLanguages.TagStrs(), fieldtag("InstanceLanguages", "usage"))
+ 		cmd.Flags().String(InstanceSubscriptionsProcessFromFlag(), cfg.InstanceSubscriptionsProcessFrom, fieldtag("InstanceSubscriptionsProcessFrom", "usage"))
+diff --git a/internal/config/helpers.gen.go b/internal/config/helpers.gen.go
+index f063cbf93..491ca6712 100644
+--- a/internal/config/helpers.gen.go
++++ b/internal/config/helpers.gen.go
+@@ -19,12 +19,1543 @@
+ package config
+ 
+ import (
++	"fmt"
+ 	"time"
+ 
+ 	"code.superseriousbusiness.org/gotosocial/internal/language"
+ 	"codeberg.org/gruf/go-bytesize"
++	"github.com/spf13/cast"
++	"github.com/spf13/pflag"
+ )
+ 
++func (cfg *Configuration) RegisterFlags(flags *pflag.FlagSet) {
++	flags.String("log-level", cfg.LogLevel, "Log level to run at: [trace, debug, info, warn, fatal]")
++	flags.String("log-timestamp-format", cfg.LogTimestampFormat, "Format to use for the log timestamp, as supported by Go's time.Layout")
++	flags.Bool("log-db-queries", cfg.LogDbQueries, "Log database queries verbosely when log-level is trace or debug")
++	flags.Bool("log-client-ip", cfg.LogClientIP, "Include the client IP in logs")
++	flags.String("request-id-header", cfg.RequestIDHeader, "Header to extract the Request ID from. Eg.,'X-Request-Id'.")
++	flags.String("config-path", cfg.ConfigPath, "Path to a file containing gotosocial configuration. Values set in this file will be overwritten by values set as env vars or arguments")
++	flags.String("application-name", cfg.ApplicationName, "Name of the application, used in various places internally")
++	flags.String("landing-page-user", cfg.LandingPageUser, "the user that should be shown on the instance's landing page")
++	flags.String("host", cfg.Host, "Hostname to use for the server (eg., example.org, gotosocial.whatever.com). DO NOT change this on a server that's already run!")
++	flags.String("account-domain", cfg.AccountDomain, "Domain to use in account names (eg., example.org, whatever.com). If not set, will default to the setting for host. DO NOT change this on a server that's already run!")
++	flags.String("protocol", cfg.Protocol, "Protocol to use for the REST api of the server (only use http if you are debugging or behind a reverse proxy!)")
++	flags.String("bind-address", cfg.BindAddress, "Bind address to use for the GoToSocial server (eg., 0.0.0.0, 172.138.0.9, [::], localhost). For ipv6, enclose the address in square brackets, eg [2001:db8::fed1]. Default binds to all interfaces.")
++	flags.Int("port", cfg.Port, "Port to use for GoToSocial. Change this to 443 if you're running the binary directly on the host machine.")
++	flags.StringSlice("trusted-proxies", cfg.TrustedProxies, "Proxies to trust when parsing x-forwarded headers into real IPs.")
++	flags.String("software-version", cfg.SoftwareVersion, "")
++	flags.String("db-type", cfg.DbType, "Database type: eg., postgres")
++	flags.String("db-address", cfg.DbAddress, "Database ipv4 address, hostname, or filename")
++	flags.Int("db-port", cfg.DbPort, "Database port")
++	flags.String("db-user", cfg.DbUser, "Database username")
++	flags.String("db-password", cfg.DbPassword, "Database password")
++	flags.String("db-database", cfg.DbDatabase, "Database name")
++	flags.String("db-tls-mode", cfg.DbTLSMode, "Database tls mode")
++	flags.String("db-tls-ca-cert", cfg.DbTLSCACert, "Path to CA cert for db tls connection")
++	flags.Int("db-max-open-conns-multiplier", cfg.DbMaxOpenConnsMultiplier, "Multiplier to use per cpu for max open database connections. 0 or less is normalized to 1.")
++	flags.String("db-sqlite-journal-mode", cfg.DbSqliteJournalMode, "Sqlite only: see https://www.sqlite.org/pragma.html#pragma_journal_mode")
++	flags.String("db-sqlite-synchronous", cfg.DbSqliteSynchronous, "Sqlite only: see https://www.sqlite.org/pragma.html#pragma_synchronous")
++	flags.String("db-sqlite-cache-size", cfg.DbSqliteCacheSize.String(), "Sqlite only: see https://www.sqlite.org/pragma.html#pragma_cache_size")
++	flags.Duration("db-sqlite-busy-timeout", cfg.DbSqliteBusyTimeout, "Sqlite only: see https://www.sqlite.org/pragma.html#pragma_busy_timeout")
++	flags.String("db-postgres-connection-string", cfg.DbPostgresConnectionString, "Full Database URL for connection to postgres")
++	flags.String("web-template-base-dir", cfg.WebTemplateBaseDir, "Basedir for html templating files for rendering pages and composing emails.")
++	flags.String("web-asset-base-dir", cfg.WebAssetBaseDir, "Directory to serve static assets from, accessible at example.org/assets/")
++	flags.String("instance-federation-mode", cfg.InstanceFederationMode, "Set instance federation mode.")
++	flags.Bool("instance-federation-spam-filter", cfg.InstanceFederationSpamFilter, "Enable basic spam filter heuristics for messages coming from other instances, and drop messages identified as spam")
++	flags.Bool("instance-expose-peers", cfg.InstanceExposePeers, "Allow unauthenticated users to query /api/v1/instance/peers?filter=open")
++	flags.Bool("instance-expose-blocklist", cfg.InstanceExposeBlocklist, "Expose list of blocked domains via web UI, and allow unauthenticated users to query /api/v1/instance/peers?filter=blocked and /api/v1/instance/domain_blocks")
++	flags.Bool("instance-expose-blocklist-web", cfg.InstanceExposeBlocklistWeb, "Expose list of explicitly blocked domains as webpage on /about/domain_blocks")
++	flags.Bool("instance-expose-allowlist", cfg.InstanceExposeAllowlist, "Expose list of allowed domains via web UI, and allow unauthenticated users to query /api/v1/instance/peers?filter=allowed and /api/v1/instance/domain_allows")
++	flags.Bool("instance-expose-allowlist-web", cfg.InstanceExposeAllowlistWeb, "Expose list of explicitly allowed domains as webpage on /about/domain_allows")
++	flags.Bool("instance-expose-public-timeline", cfg.InstanceExposePublicTimeline, "Allow unauthenticated users to query /api/v1/timelines/public")
++	flags.Bool("instance-deliver-to-shared-inboxes", cfg.InstanceDeliverToSharedInboxes, "Deliver federated messages to shared inboxes, if they're available.")
++	flags.Bool("instance-inject-mastodon-version", cfg.InstanceInjectMastodonVersion, "This injects a Mastodon compatible version in /api/v1/instance to help Mastodon clients that use that version for feature detection")
++	flags.String("instance-subscriptions-process-from", cfg.InstanceSubscriptionsProcessFrom, "Time of day from which to start running instance subscriptions processing jobs. Should be in the format 'hh:mm:ss', eg., '15:04:05'.")
++	flags.Duration("instance-subscriptions-process-every", cfg.InstanceSubscriptionsProcessEvery, "Period to elapse between instance subscriptions processing jobs, starting from instance-subscriptions-process-from.")
++	flags.String("instance-stats-mode", cfg.InstanceStatsMode, "Allows you to customize the way stats are served to crawlers: one of '', 'serve', 'zero', 'baffle'. Home page stats remain unchanged.")
++	flags.Bool("instance-allow-backdating-statuses", cfg.InstanceAllowBackdatingStatuses, "Allow local accounts to backdate statuses using the scheduled_at param to /api/v1/statuses")
++	flags.Bool("accounts-registration-open", cfg.AccountsRegistrationOpen, "Allow anyone to submit an account signup request. If false, server will be invite-only.")
++	flags.Bool("accounts-reason-required", cfg.AccountsReasonRequired, "Do new account signups require a reason to be submitted on registration?")
++	flags.Int("accounts-registration-daily-limit", cfg.AccountsRegistrationDailyLimit, "Limit amount of approved account sign-ups allowed per 24hrs before registration is closed. 0 or less = no limit.")
++	flags.Int("accounts-registration-backlog-limit", cfg.AccountsRegistrationBacklogLimit, "Limit how big the 'accounts pending approval' queue can grow before registration is closed. 0 or less = no limit.")
++	flags.Bool("accounts-allow-custom-css", cfg.AccountsAllowCustomCSS, "Allow accounts to enable custom CSS for their profile pages and statuses.")
++	flags.Int("accounts-custom-css-length", cfg.AccountsCustomCSSLength, "Maximum permitted length (characters) of custom CSS for accounts.")
++	flags.Int("media-description-min-chars", cfg.MediaDescriptionMinChars, "Min required chars for an image description")
++	flags.Int("media-description-max-chars", cfg.MediaDescriptionMaxChars, "Max permitted chars for an image description")
++	flags.Int("media-remote-cache-days", cfg.MediaRemoteCacheDays, "Number of days to locally cache media from remote instances. If set to 0, remote media will be kept indefinitely.")
++	flags.String("media-emoji-local-max-size", cfg.MediaEmojiLocalMaxSize.String(), "Max size in bytes of emojis uploaded to this instance via the admin API.")
++	flags.String("media-emoji-remote-max-size", cfg.MediaEmojiRemoteMaxSize.String(), "Max size in bytes of emojis to download from other instances.")
++	flags.String("media-image-size-hint", cfg.MediaImageSizeHint.String(), "Size in bytes of max image size referred to on /api/v_/instance endpoints (else, local max size)")
++	flags.String("media-video-size-hint", cfg.MediaVideoSizeHint.String(), "Size in bytes of max video size referred to on /api/v_/instance endpoints (else, local max size)")
++	flags.String("media-local-max-size", cfg.MediaLocalMaxSize.String(), "Max size in bytes of media uploaded to this instance via API")
++	flags.String("media-remote-max-size", cfg.MediaRemoteMaxSize.String(), "Max size in bytes of media to download from other instances")
++	flags.String("media-cleanup-from", cfg.MediaCleanupFrom, "Time of day from which to start running media cleanup/prune jobs. Should be in the format 'hh:mm:ss', eg., '15:04:05'.")
++	flags.Duration("media-cleanup-every", cfg.MediaCleanupEvery, "Period to elapse between cleanups, starting from media-cleanup-at.")
++	flags.Int("media-ffmpeg-pool-size", cfg.MediaFfmpegPoolSize, "Number of instances of the embedded ffmpeg WASM binary to add to the media processing pool. 0 or less uses GOMAXPROCS.")
++	flags.String("storage-backend", cfg.StorageBackend, "Storage backend to use for media attachments")
++	flags.String("storage-local-base-path", cfg.StorageLocalBasePath, "Full path to an already-created directory where gts should store/retrieve media files. Subfolders will be created within this dir.")
++	flags.String("storage-s3-endpoint", cfg.StorageS3Endpoint, "S3 Endpoint URL (e.g 'minio.example.org:9000')")
++	flags.String("storage-s3-access-key", cfg.StorageS3AccessKey, "S3 Access Key")
++	flags.String("storage-s3-secret-key", cfg.StorageS3SecretKey, "S3 Secret Key")
++	flags.Bool("storage-s3-use-ssl", cfg.StorageS3UseSSL, "Use SSL for S3 connections. Only set this to 'false' when testing locally")
++	flags.String("storage-s3-bucket", cfg.StorageS3BucketName, "Place blobs in this bucket")
++	flags.Bool("storage-s3-proxy", cfg.StorageS3Proxy, "Proxy S3 contents through GoToSocial instead of redirecting to a presigned URL")
++	flags.String("storage-s3-redirect-url", cfg.StorageS3RedirectURL, "Custom URL to use for redirecting S3 media links. If set, this will be used instead of the S3 bucket URL.")
++	flags.String("storage-s3-bucket-lookup", cfg.StorageS3BucketLookup, "S3 bucket lookup type to use. Can be 'auto', 'dns' or 'path'. Defaults to 'auto'.")
++	flags.Int("statuses-max-chars", cfg.StatusesMaxChars, "Max permitted characters for posted statuses, including content warning")
++	flags.Int("statuses-poll-max-options", cfg.StatusesPollMaxOptions, "Max amount of options permitted on a poll")
++	flags.Int("statuses-poll-option-max-chars", cfg.StatusesPollOptionMaxChars, "Max amount of characters for a poll option")
++	flags.Int("statuses-media-max-files", cfg.StatusesMediaMaxFiles, "Maximum number of media files/attachments per status")
++	flags.Bool("letsencrypt-enabled", cfg.LetsEncryptEnabled, "Enable letsencrypt TLS certs for this server. If set to true, then cert dir also needs to be set (or take the default).")
++	flags.Int("letsencrypt-port", cfg.LetsEncryptPort, "Port to listen on for letsencrypt certificate challenges. Must not be the same as the GtS webserver/API port.")
++	flags.String("letsencrypt-cert-dir", cfg.LetsEncryptCertDir, "Directory to store acquired letsencrypt certificates.")
++	flags.String("letsencrypt-email-address", cfg.LetsEncryptEmailAddress, "Email address to use when requesting letsencrypt certs. Will receive updates on cert expiry etc.")
++	flags.String("tls-certificate-chain", cfg.TLSCertificateChain, "Filesystem path to the certificate chain including any intermediate CAs and the TLS public key")
++	flags.String("tls-certificate-key", cfg.TLSCertificateKey, "Filesystem path to the TLS private key")
++	flags.Bool("oidc-enabled", cfg.OIDCEnabled, "Enabled OIDC authorization for this instance. If set to true, then the other OIDC flags must also be set.")
++	flags.String("oidc-idp-name", cfg.OIDCIdpName, "Name of the OIDC identity provider. Will be shown to the user when logging in.")
++	flags.Bool("oidc-skip-verification", cfg.OIDCSkipVerification, "Skip verification of tokens returned by the OIDC provider. Should only be set to 'true' for testing purposes, never in a production environment!")
++	flags.String("oidc-issuer", cfg.OIDCIssuer, "Address of the OIDC issuer. Should be the web address, including protocol, at which the issuer can be reached. Eg., 'https://example.org/auth'")
++	flags.String("oidc-client-id", cfg.OIDCClientID, "ClientID of GoToSocial, as registered with the OIDC provider.")
++	flags.String("oidc-client-secret", cfg.OIDCClientSecret, "ClientSecret of GoToSocial, as registered with the OIDC provider.")
++	flags.StringSlice("oidc-scopes", cfg.OIDCScopes, "OIDC scopes.")
++	flags.Bool("oidc-link-existing", cfg.OIDCLinkExisting, "link existing user accounts to OIDC logins based on the stored email value")
++	flags.StringSlice("oidc-allowed-groups", cfg.OIDCAllowedGroups, "Membership of one of the listed groups allows access to GtS. If this is empty, all groups are allowed.")
++	flags.StringSlice("oidc-admin-groups", cfg.OIDCAdminGroups, "Membership of one of the listed groups makes someone a GtS admin")
++	flags.Bool("tracing-enabled", cfg.TracingEnabled, "Enable OTLP Tracing")
++	flags.Bool("metrics-enabled", cfg.MetricsEnabled, "Enable OpenTelemetry based metrics support.")
++	flags.String("smtp-host", cfg.SMTPHost, "Host of the smtp server. Eg., 'smtp.eu.mailgun.org'")
++	flags.Int("smtp-port", cfg.SMTPPort, "Port of the smtp server. Eg., 587")
++	flags.String("smtp-username", cfg.SMTPUsername, "Username to authenticate with the smtp server as. Eg., 'postmaster@mail.example.org'")
++	flags.String("smtp-password", cfg.SMTPPassword, "Password to pass to the smtp server.")
++	flags.String("smtp-from", cfg.SMTPFrom, "Address to use as the 'from' field of the email. Eg., 'gotosocial@example.org'")
++	flags.Bool("smtp-disclose-recipients", cfg.SMTPDiscloseRecipients, "If true, email notifications sent to multiple recipients will be To'd to every recipient at once. If false, recipients will not be disclosed")
++	flags.Bool("syslog-enabled", cfg.SyslogEnabled, "Enable the syslog logging hook. Logs will be mirrored to the configured destination.")
++	flags.String("syslog-protocol", cfg.SyslogProtocol, "Protocol to use when directing logs to syslog. Leave empty to connect to local syslog.")
++	flags.String("syslog-address", cfg.SyslogAddress, "Address:port to send syslog logs to. Leave empty to connect to local syslog.")
++	flags.StringSlice("http-client-allow-ips", cfg.HTTPClient.AllowIPs, "")
++	flags.StringSlice("http-client-block-ips", cfg.HTTPClient.BlockIPs, "")
++	flags.Duration("http-client-timeout", cfg.HTTPClient.Timeout, "")
++	flags.Bool("http-client-tls-insecure-skip-verify", cfg.HTTPClient.TLSInsecureSkipVerify, "")
++	flags.String("cache-memory-target", cfg.Cache.MemoryTarget.String(), "")
++	flags.Float64("cache-account-mem-ratio", cfg.Cache.AccountMemRatio, "")
++	flags.Float64("cache-account-note-mem-ratio", cfg.Cache.AccountNoteMemRatio, "")
++	flags.Float64("cache-account-settings-mem-ratio", cfg.Cache.AccountSettingsMemRatio, "")
++	flags.Float64("cache-account-stats-mem-ratio", cfg.Cache.AccountStatsMemRatio, "")
++	flags.Float64("cache-application-mem-ratio", cfg.Cache.ApplicationMemRatio, "")
++	flags.Float64("cache-block-mem-ratio", cfg.Cache.BlockMemRatio, "")
++	flags.Float64("cache-block-ids-mem-ratio", cfg.Cache.BlockIDsMemRatio, "")
++	flags.Float64("cache-boost-of-ids-mem-ratio", cfg.Cache.BoostOfIDsMemRatio, "")
++	flags.Float64("cache-client-mem-ratio", cfg.Cache.ClientMemRatio, "")
++	flags.Float64("cache-conversation-mem-ratio", cfg.Cache.ConversationMemRatio, "")
++	flags.Float64("cache-conversation-last-status-ids-mem-ratio", cfg.Cache.ConversationLastStatusIDsMemRatio, "")
++	flags.Float64("cache-domain-permission-draft-mem-ratio", cfg.Cache.DomainPermissionDraftMemRation, "")
++	flags.Float64("cache-domain-permission-subscription-mem-ratio", cfg.Cache.DomainPermissionSubscriptionMemRation, "")
++	flags.Float64("cache-emoji-mem-ratio", cfg.Cache.EmojiMemRatio, "")
++	flags.Float64("cache-emoji-category-mem-ratio", cfg.Cache.EmojiCategoryMemRatio, "")
++	flags.Float64("cache-filter-mem-ratio", cfg.Cache.FilterMemRatio, "")
++	flags.Float64("cache-filter-keyword-mem-ratio", cfg.Cache.FilterKeywordMemRatio, "")
++	flags.Float64("cache-filter-status-mem-ratio", cfg.Cache.FilterStatusMemRatio, "")
++	flags.Float64("cache-follow-mem-ratio", cfg.Cache.FollowMemRatio, "")
++	flags.Float64("cache-follow-ids-mem-ratio", cfg.Cache.FollowIDsMemRatio, "")
++	flags.Float64("cache-follow-request-mem-ratio", cfg.Cache.FollowRequestMemRatio, "")
++	flags.Float64("cache-follow-request-ids-mem-ratio", cfg.Cache.FollowRequestIDsMemRatio, "")
++	flags.Float64("cache-following-tag-ids-mem-ratio", cfg.Cache.FollowingTagIDsMemRatio, "")
++	flags.Float64("cache-in-reply-to-ids-mem-ratio", cfg.Cache.InReplyToIDsMemRatio, "")
++	flags.Float64("cache-instance-mem-ratio", cfg.Cache.InstanceMemRatio, "")
++	flags.Float64("cache-interaction-request-mem-ratio", cfg.Cache.InteractionRequestMemRatio, "")
++	flags.Float64("cache-list-mem-ratio", cfg.Cache.ListMemRatio, "")
++	flags.Float64("cache-list-ids-mem-ratio", cfg.Cache.ListIDsMemRatio, "")
++	flags.Float64("cache-listed-ids-mem-ratio", cfg.Cache.ListedIDsMemRatio, "")
++	flags.Float64("cache-marker-mem-ratio", cfg.Cache.MarkerMemRatio, "")
++	flags.Float64("cache-media-mem-ratio", cfg.Cache.MediaMemRatio, "")
++	flags.Float64("cache-mention-mem-ratio", cfg.Cache.MentionMemRatio, "")
++	flags.Float64("cache-move-mem-ratio", cfg.Cache.MoveMemRatio, "")
++	flags.Float64("cache-notification-mem-ratio", cfg.Cache.NotificationMemRatio, "")
++	flags.Float64("cache-poll-mem-ratio", cfg.Cache.PollMemRatio, "")
++	flags.Float64("cache-poll-vote-mem-ratio", cfg.Cache.PollVoteMemRatio, "")
++	flags.Float64("cache-poll-vote-ids-mem-ratio", cfg.Cache.PollVoteIDsMemRatio, "")
++	flags.Float64("cache-report-mem-ratio", cfg.Cache.ReportMemRatio, "")
++	flags.Float64("cache-sin-bin-status-mem-ratio", cfg.Cache.SinBinStatusMemRatio, "")
++	flags.Float64("cache-status-mem-ratio", cfg.Cache.StatusMemRatio, "")
++	flags.Float64("cache-status-bookmark-mem-ratio", cfg.Cache.StatusBookmarkMemRatio, "")
++	flags.Float64("cache-status-bookmark-ids-mem-ratio", cfg.Cache.StatusBookmarkIDsMemRatio, "")
++	flags.Float64("cache-status-edit-mem-ratio", cfg.Cache.StatusEditMemRatio, "")
++	flags.Float64("cache-status-fave-mem-ratio", cfg.Cache.StatusFaveMemRatio, "")
++	flags.Float64("cache-status-fave-ids-mem-ratio", cfg.Cache.StatusFaveIDsMemRatio, "")
++	flags.Float64("cache-tag-mem-ratio", cfg.Cache.TagMemRatio, "")
++	flags.Float64("cache-thread-mute-mem-ratio", cfg.Cache.ThreadMuteMemRatio, "")
++	flags.Float64("cache-token-mem-ratio", cfg.Cache.TokenMemRatio, "")
++	flags.Float64("cache-tombstone-mem-ratio", cfg.Cache.TombstoneMemRatio, "")
++	flags.Float64("cache-user-mem-ratio", cfg.Cache.UserMemRatio, "")
++	flags.Float64("cache-user-mute-mem-ratio", cfg.Cache.UserMuteMemRatio, "")
++	flags.Float64("cache-user-mute-ids-mem-ratio", cfg.Cache.UserMuteIDsMemRatio, "")
++	flags.Float64("cache-webfinger-mem-ratio", cfg.Cache.WebfingerMemRatio, "")
++	flags.Float64("cache-web-push-subscription-mem-ratio", cfg.Cache.WebPushSubscriptionMemRatio, "")
++	flags.Float64("cache-web-push-subscription-ids-mem-ratio", cfg.Cache.WebPushSubscriptionIDsMemRatio, "")
++	flags.Float64("cache-visibility-mem-ratio", cfg.Cache.VisibilityMemRatio, "")
++}
++
++func (cfg *Configuration) UnmarshalMap(cfgmap map[string]any) error {
++
++	if ival, ok := cfgmap["log-level"]; ok {
++		var err error
++		cfg.LogLevel, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'log-level': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["log-timestamp-format"]; ok {
++		var err error
++		cfg.LogTimestampFormat, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'log-timestamp-format': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["log-db-queries"]; ok {
++		var err error
++		cfg.LogDbQueries, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'log-db-queries': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["log-client-ip"]; ok {
++		var err error
++		cfg.LogClientIP, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'log-client-ip': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["request-id-header"]; ok {
++		var err error
++		cfg.RequestIDHeader, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'request-id-header': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["config-path"]; ok {
++		var err error
++		cfg.ConfigPath, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'config-path': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["application-name"]; ok {
++		var err error
++		cfg.ApplicationName, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'application-name': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["landing-page-user"]; ok {
++		var err error
++		cfg.LandingPageUser, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'landing-page-user': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["host"]; ok {
++		var err error
++		cfg.Host, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'host': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["account-domain"]; ok {
++		var err error
++		cfg.AccountDomain, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'account-domain': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["protocol"]; ok {
++		var err error
++		cfg.Protocol, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'protocol': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["bind-address"]; ok {
++		var err error
++		cfg.BindAddress, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'bind-address': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["port"]; ok {
++		var err error
++		cfg.Port, err = cast.ToIntE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> int for 'port': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["software-version"]; ok {
++		var err error
++		cfg.SoftwareVersion, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'software-version': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["db-type"]; ok {
++		var err error
++		cfg.DbType, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'db-type': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["db-address"]; ok {
++		var err error
++		cfg.DbAddress, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'db-address': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["db-port"]; ok {
++		var err error
++		cfg.DbPort, err = cast.ToIntE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> int for 'db-port': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["db-user"]; ok {
++		var err error
++		cfg.DbUser, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'db-user': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["db-password"]; ok {
++		var err error
++		cfg.DbPassword, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'db-password': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["db-database"]; ok {
++		var err error
++		cfg.DbDatabase, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'db-database': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["db-tls-mode"]; ok {
++		var err error
++		cfg.DbTLSMode, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'db-tls-mode': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["db-tls-ca-cert"]; ok {
++		var err error
++		cfg.DbTLSCACert, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'db-tls-ca-cert': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["db-max-open-conns-multiplier"]; ok {
++		var err error
++		cfg.DbMaxOpenConnsMultiplier, err = cast.ToIntE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> int for 'db-max-open-conns-multiplier': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["db-sqlite-journal-mode"]; ok {
++		var err error
++		cfg.DbSqliteJournalMode, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'db-sqlite-journal-mode': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["db-sqlite-synchronous"]; ok {
++		var err error
++		cfg.DbSqliteSynchronous, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'db-sqlite-synchronous': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["db-sqlite-cache-size"]; ok {
++		t, err := cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'db-sqlite-cache-size': %w", ival, err)
++		}
++		cfg.DbSqliteCacheSize = 0x0
++		if err := cfg.DbSqliteCacheSize.Set(t); err != nil {
++			return fmt.Errorf("error parsing %#v for 'db-sqlite-cache-size': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["db-sqlite-busy-timeout"]; ok {
++		var err error
++		cfg.DbSqliteBusyTimeout, err = cast.ToDurationE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> time.Duration for 'db-sqlite-busy-timeout': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["db-postgres-connection-string"]; ok {
++		var err error
++		cfg.DbPostgresConnectionString, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'db-postgres-connection-string': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["web-template-base-dir"]; ok {
++		var err error
++		cfg.WebTemplateBaseDir, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'web-template-base-dir': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["web-asset-base-dir"]; ok {
++		var err error
++		cfg.WebAssetBaseDir, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'web-asset-base-dir': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["instance-federation-mode"]; ok {
++		var err error
++		cfg.InstanceFederationMode, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'instance-federation-mode': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["instance-federation-spam-filter"]; ok {
++		var err error
++		cfg.InstanceFederationSpamFilter, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'instance-federation-spam-filter': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["instance-expose-peers"]; ok {
++		var err error
++		cfg.InstanceExposePeers, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'instance-expose-peers': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["instance-expose-blocklist"]; ok {
++		var err error
++		cfg.InstanceExposeBlocklist, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'instance-expose-blocklist': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["instance-expose-blocklist-web"]; ok {
++		var err error
++		cfg.InstanceExposeBlocklistWeb, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'instance-expose-blocklist-web': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["instance-expose-allowlist"]; ok {
++		var err error
++		cfg.InstanceExposeAllowlist, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'instance-expose-allowlist': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["instance-expose-allowlist-web"]; ok {
++		var err error
++		cfg.InstanceExposeAllowlistWeb, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'instance-expose-allowlist-web': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["instance-expose-public-timeline"]; ok {
++		var err error
++		cfg.InstanceExposePublicTimeline, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'instance-expose-public-timeline': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["instance-deliver-to-shared-inboxes"]; ok {
++		var err error
++		cfg.InstanceDeliverToSharedInboxes, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'instance-deliver-to-shared-inboxes': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["instance-inject-mastodon-version"]; ok {
++		var err error
++		cfg.InstanceInjectMastodonVersion, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'instance-inject-mastodon-version': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["instance-subscriptions-process-from"]; ok {
++		var err error
++		cfg.InstanceSubscriptionsProcessFrom, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'instance-subscriptions-process-from': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["instance-subscriptions-process-every"]; ok {
++		var err error
++		cfg.InstanceSubscriptionsProcessEvery, err = cast.ToDurationE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> time.Duration for 'instance-subscriptions-process-every': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["instance-stats-mode"]; ok {
++		var err error
++		cfg.InstanceStatsMode, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'instance-stats-mode': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["instance-allow-backdating-statuses"]; ok {
++		var err error
++		cfg.InstanceAllowBackdatingStatuses, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'instance-allow-backdating-statuses': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["accounts-registration-open"]; ok {
++		var err error
++		cfg.AccountsRegistrationOpen, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'accounts-registration-open': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["accounts-reason-required"]; ok {
++		var err error
++		cfg.AccountsReasonRequired, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'accounts-reason-required': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["accounts-registration-daily-limit"]; ok {
++		var err error
++		cfg.AccountsRegistrationDailyLimit, err = cast.ToIntE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> int for 'accounts-registration-daily-limit': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["accounts-registration-backlog-limit"]; ok {
++		var err error
++		cfg.AccountsRegistrationBacklogLimit, err = cast.ToIntE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> int for 'accounts-registration-backlog-limit': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["accounts-allow-custom-css"]; ok {
++		var err error
++		cfg.AccountsAllowCustomCSS, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'accounts-allow-custom-css': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["accounts-custom-css-length"]; ok {
++		var err error
++		cfg.AccountsCustomCSSLength, err = cast.ToIntE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> int for 'accounts-custom-css-length': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["media-description-min-chars"]; ok {
++		var err error
++		cfg.MediaDescriptionMinChars, err = cast.ToIntE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> int for 'media-description-min-chars': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["media-description-max-chars"]; ok {
++		var err error
++		cfg.MediaDescriptionMaxChars, err = cast.ToIntE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> int for 'media-description-max-chars': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["media-remote-cache-days"]; ok {
++		var err error
++		cfg.MediaRemoteCacheDays, err = cast.ToIntE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> int for 'media-remote-cache-days': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["media-emoji-local-max-size"]; ok {
++		t, err := cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'media-emoji-local-max-size': %w", ival, err)
++		}
++		cfg.MediaEmojiLocalMaxSize = 0x0
++		if err := cfg.MediaEmojiLocalMaxSize.Set(t); err != nil {
++			return fmt.Errorf("error parsing %#v for 'media-emoji-local-max-size': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["media-emoji-remote-max-size"]; ok {
++		t, err := cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'media-emoji-remote-max-size': %w", ival, err)
++		}
++		cfg.MediaEmojiRemoteMaxSize = 0x0
++		if err := cfg.MediaEmojiRemoteMaxSize.Set(t); err != nil {
++			return fmt.Errorf("error parsing %#v for 'media-emoji-remote-max-size': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["media-image-size-hint"]; ok {
++		t, err := cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'media-image-size-hint': %w", ival, err)
++		}
++		cfg.MediaImageSizeHint = 0x0
++		if err := cfg.MediaImageSizeHint.Set(t); err != nil {
++			return fmt.Errorf("error parsing %#v for 'media-image-size-hint': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["media-video-size-hint"]; ok {
++		t, err := cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'media-video-size-hint': %w", ival, err)
++		}
++		cfg.MediaVideoSizeHint = 0x0
++		if err := cfg.MediaVideoSizeHint.Set(t); err != nil {
++			return fmt.Errorf("error parsing %#v for 'media-video-size-hint': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["media-local-max-size"]; ok {
++		t, err := cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'media-local-max-size': %w", ival, err)
++		}
++		cfg.MediaLocalMaxSize = 0x0
++		if err := cfg.MediaLocalMaxSize.Set(t); err != nil {
++			return fmt.Errorf("error parsing %#v for 'media-local-max-size': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["media-remote-max-size"]; ok {
++		t, err := cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'media-remote-max-size': %w", ival, err)
++		}
++		cfg.MediaRemoteMaxSize = 0x0
++		if err := cfg.MediaRemoteMaxSize.Set(t); err != nil {
++			return fmt.Errorf("error parsing %#v for 'media-remote-max-size': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["media-cleanup-from"]; ok {
++		var err error
++		cfg.MediaCleanupFrom, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'media-cleanup-from': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["media-cleanup-every"]; ok {
++		var err error
++		cfg.MediaCleanupEvery, err = cast.ToDurationE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> time.Duration for 'media-cleanup-every': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["media-ffmpeg-pool-size"]; ok {
++		var err error
++		cfg.MediaFfmpegPoolSize, err = cast.ToIntE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> int for 'media-ffmpeg-pool-size': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["storage-backend"]; ok {
++		var err error
++		cfg.StorageBackend, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'storage-backend': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["storage-local-base-path"]; ok {
++		var err error
++		cfg.StorageLocalBasePath, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'storage-local-base-path': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["storage-s3-endpoint"]; ok {
++		var err error
++		cfg.StorageS3Endpoint, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'storage-s3-endpoint': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["storage-s3-access-key"]; ok {
++		var err error
++		cfg.StorageS3AccessKey, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'storage-s3-access-key': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["storage-s3-secret-key"]; ok {
++		var err error
++		cfg.StorageS3SecretKey, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'storage-s3-secret-key': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["storage-s3-use-ssl"]; ok {
++		var err error
++		cfg.StorageS3UseSSL, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'storage-s3-use-ssl': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["storage-s3-bucket"]; ok {
++		var err error
++		cfg.StorageS3BucketName, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'storage-s3-bucket': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["storage-s3-proxy"]; ok {
++		var err error
++		cfg.StorageS3Proxy, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'storage-s3-proxy': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["storage-s3-redirect-url"]; ok {
++		var err error
++		cfg.StorageS3RedirectURL, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'storage-s3-redirect-url': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["storage-s3-bucket-lookup"]; ok {
++		var err error
++		cfg.StorageS3BucketLookup, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'storage-s3-bucket-lookup': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["statuses-max-chars"]; ok {
++		var err error
++		cfg.StatusesMaxChars, err = cast.ToIntE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> int for 'statuses-max-chars': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["statuses-poll-max-options"]; ok {
++		var err error
++		cfg.StatusesPollMaxOptions, err = cast.ToIntE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> int for 'statuses-poll-max-options': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["statuses-poll-option-max-chars"]; ok {
++		var err error
++		cfg.StatusesPollOptionMaxChars, err = cast.ToIntE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> int for 'statuses-poll-option-max-chars': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["statuses-media-max-files"]; ok {
++		var err error
++		cfg.StatusesMediaMaxFiles, err = cast.ToIntE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> int for 'statuses-media-max-files': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["letsencrypt-enabled"]; ok {
++		var err error
++		cfg.LetsEncryptEnabled, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'letsencrypt-enabled': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["letsencrypt-port"]; ok {
++		var err error
++		cfg.LetsEncryptPort, err = cast.ToIntE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> int for 'letsencrypt-port': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["letsencrypt-cert-dir"]; ok {
++		var err error
++		cfg.LetsEncryptCertDir, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'letsencrypt-cert-dir': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["letsencrypt-email-address"]; ok {
++		var err error
++		cfg.LetsEncryptEmailAddress, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'letsencrypt-email-address': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["tls-certificate-chain"]; ok {
++		var err error
++		cfg.TLSCertificateChain, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'tls-certificate-chain': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["tls-certificate-key"]; ok {
++		var err error
++		cfg.TLSCertificateKey, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'tls-certificate-key': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["oidc-enabled"]; ok {
++		var err error
++		cfg.OIDCEnabled, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'oidc-enabled': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["oidc-idp-name"]; ok {
++		var err error
++		cfg.OIDCIdpName, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'oidc-idp-name': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["oidc-skip-verification"]; ok {
++		var err error
++		cfg.OIDCSkipVerification, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'oidc-skip-verification': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["oidc-issuer"]; ok {
++		var err error
++		cfg.OIDCIssuer, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'oidc-issuer': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["oidc-client-id"]; ok {
++		var err error
++		cfg.OIDCClientID, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'oidc-client-id': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["oidc-client-secret"]; ok {
++		var err error
++		cfg.OIDCClientSecret, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'oidc-client-secret': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["oidc-link-existing"]; ok {
++		var err error
++		cfg.OIDCLinkExisting, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'oidc-link-existing': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["tracing-enabled"]; ok {
++		var err error
++		cfg.TracingEnabled, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'tracing-enabled': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["metrics-enabled"]; ok {
++		var err error
++		cfg.MetricsEnabled, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'metrics-enabled': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["smtp-host"]; ok {
++		var err error
++		cfg.SMTPHost, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'smtp-host': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["smtp-port"]; ok {
++		var err error
++		cfg.SMTPPort, err = cast.ToIntE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> int for 'smtp-port': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["smtp-username"]; ok {
++		var err error
++		cfg.SMTPUsername, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'smtp-username': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["smtp-password"]; ok {
++		var err error
++		cfg.SMTPPassword, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'smtp-password': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["smtp-from"]; ok {
++		var err error
++		cfg.SMTPFrom, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'smtp-from': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["smtp-disclose-recipients"]; ok {
++		var err error
++		cfg.SMTPDiscloseRecipients, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'smtp-disclose-recipients': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["syslog-enabled"]; ok {
++		var err error
++		cfg.SyslogEnabled, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'syslog-enabled': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["syslog-protocol"]; ok {
++		var err error
++		cfg.SyslogProtocol, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'syslog-protocol': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["syslog-address"]; ok {
++		var err error
++		cfg.SyslogAddress, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'syslog-address': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["http-client-timeout"]; ok {
++		var err error
++		cfg.HTTPClient.Timeout, err = cast.ToDurationE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> time.Duration for 'http-client-timeout': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["http-client-tls-insecure-skip-verify"]; ok {
++		var err error
++		cfg.HTTPClient.TLSInsecureSkipVerify, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'http-client-tls-insecure-skip-verify': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-memory-target"]; ok {
++		t, err := cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'cache-memory-target': %w", ival, err)
++		}
++		cfg.Cache.MemoryTarget = 0x0
++		if err := cfg.Cache.MemoryTarget.Set(t); err != nil {
++			return fmt.Errorf("error parsing %#v for 'cache-memory-target': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-account-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.AccountMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-account-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-account-note-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.AccountNoteMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-account-note-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-account-settings-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.AccountSettingsMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-account-settings-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-account-stats-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.AccountStatsMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-account-stats-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-application-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.ApplicationMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-application-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-block-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.BlockMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-block-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-block-ids-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.BlockIDsMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-block-ids-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-boost-of-ids-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.BoostOfIDsMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-boost-of-ids-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-client-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.ClientMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-client-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-conversation-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.ConversationMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-conversation-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-conversation-last-status-ids-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.ConversationLastStatusIDsMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-conversation-last-status-ids-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-domain-permission-draft-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.DomainPermissionDraftMemRation, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-domain-permission-draft-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-domain-permission-subscription-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.DomainPermissionSubscriptionMemRation, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-domain-permission-subscription-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-emoji-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.EmojiMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-emoji-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-emoji-category-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.EmojiCategoryMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-emoji-category-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-filter-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.FilterMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-filter-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-filter-keyword-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.FilterKeywordMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-filter-keyword-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-filter-status-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.FilterStatusMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-filter-status-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-follow-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.FollowMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-follow-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-follow-ids-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.FollowIDsMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-follow-ids-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-follow-request-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.FollowRequestMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-follow-request-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-follow-request-ids-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.FollowRequestIDsMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-follow-request-ids-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-following-tag-ids-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.FollowingTagIDsMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-following-tag-ids-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-in-reply-to-ids-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.InReplyToIDsMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-in-reply-to-ids-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-instance-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.InstanceMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-instance-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-interaction-request-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.InteractionRequestMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-interaction-request-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-list-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.ListMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-list-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-list-ids-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.ListIDsMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-list-ids-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-listed-ids-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.ListedIDsMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-listed-ids-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-marker-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.MarkerMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-marker-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-media-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.MediaMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-media-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-mention-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.MentionMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-mention-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-move-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.MoveMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-move-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-notification-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.NotificationMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-notification-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-poll-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.PollMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-poll-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-poll-vote-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.PollVoteMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-poll-vote-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-poll-vote-ids-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.PollVoteIDsMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-poll-vote-ids-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-report-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.ReportMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-report-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-sin-bin-status-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.SinBinStatusMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-sin-bin-status-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-status-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.StatusMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-status-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-status-bookmark-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.StatusBookmarkMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-status-bookmark-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-status-bookmark-ids-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.StatusBookmarkIDsMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-status-bookmark-ids-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-status-edit-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.StatusEditMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-status-edit-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-status-fave-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.StatusFaveMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-status-fave-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-status-fave-ids-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.StatusFaveIDsMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-status-fave-ids-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-tag-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.TagMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-tag-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-thread-mute-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.ThreadMuteMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-thread-mute-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-token-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.TokenMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-token-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-tombstone-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.TombstoneMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-tombstone-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-user-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.UserMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-user-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-user-mute-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.UserMuteMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-user-mute-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-user-mute-ids-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.UserMuteIDsMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-user-mute-ids-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-webfinger-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.WebfingerMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-webfinger-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-web-push-subscription-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.WebPushSubscriptionMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-web-push-subscription-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-web-push-subscription-ids-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.WebPushSubscriptionIDsMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-web-push-subscription-ids-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["cache-visibility-mem-ratio"]; ok {
++		var err error
++		cfg.Cache.VisibilityMemRatio, err = cast.ToFloat64E(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> float64 for 'cache-visibility-mem-ratio': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["username"]; ok {
++		var err error
++		cfg.AdminAccountUsername, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'username': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["email"]; ok {
++		var err error
++		cfg.AdminAccountEmail, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'email': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["password"]; ok {
++		var err error
++		cfg.AdminAccountPassword, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'password': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["path"]; ok {
++		var err error
++		cfg.AdminTransPath, err = cast.ToStringE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> string for 'path': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["dry-run"]; ok {
++		var err error
++		cfg.AdminMediaPruneDryRun, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'dry-run': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["local-only"]; ok {
++		var err error
++		cfg.AdminMediaListLocalOnly, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'local-only': %w", ival, err)
++		}
++	}
++
++	if ival, ok := cfgmap["remote-only"]; ok {
++		var err error
++		cfg.AdminMediaListRemoteOnly, err = cast.ToBoolE(ival)
++		if err != nil {
++			return fmt.Errorf("error casting %#v -> bool for 'remote-only': %w", ival, err)
++		}
++	}
++
++	return nil
++}
++
++// LogLevelFlag returns the flag name for the 'LogLevel' field
++func LogLevelFlag() string { return "log-level" }
++
+ // GetLogLevel safely fetches the Configuration value for state's 'LogLevel' field
+ func (st *ConfigState) GetLogLevel() (v string) {
+ 	st.mutex.RLock()
+@@ -41,9 +1572,6 @@ func (st *ConfigState) SetLogLevel(v string) {
+ 	st.reloadToViper()
+ }
+ 
+-// LogLevelFlag returns the flag name for the 'LogLevel' field
+-func LogLevelFlag() string { return "log-level" }
+-
+ // GetLogLevel safely fetches the value for global configuration 'LogLevel' field
+ func GetLogLevel() string { return global.GetLogLevel() }
+ 
+@@ -850,55 +2378,105 @@ func GetInstanceExposePeers() bool { return global.GetInstanceExposePeers() }
+ // SetInstanceExposePeers safely sets the value for global configuration 'InstanceExposePeers' field
+ func SetInstanceExposePeers(v bool) { global.SetInstanceExposePeers(v) }
+ 
+-// GetInstanceExposeSuspended safely fetches the Configuration value for state's 'InstanceExposeSuspended' field
+-func (st *ConfigState) GetInstanceExposeSuspended() (v bool) {
++// InstanceExposeBlocklistFlag returns the flag name for the 'InstanceExposeBlocklist' field
++func InstanceExposeBlocklistFlag() string { return "instance-expose-blocklist" }
++
++// GetInstanceExposeBlocklist safely fetches the Configuration value for state's 'InstanceExposeBlocklist' field
++func (st *ConfigState) GetInstanceExposeBlocklist() (v bool) {
++	st.mutex.RLock()
++	v = st.config.InstanceExposeBlocklist
++	st.mutex.RUnlock()
++	return
++}
++
++// SetInstanceExposeBlocklist safely sets the Configuration value for state's 'InstanceExposeBlocklist' field
++func (st *ConfigState) SetInstanceExposeBlocklist(v bool) {
++	st.mutex.Lock()
++	defer st.mutex.Unlock()
++	st.config.InstanceExposeBlocklist = v
++	st.reloadToViper()
++}
++
++// GetInstanceExposeBlocklist safely fetches the value for global configuration 'InstanceExposeBlocklist' field
++func GetInstanceExposeBlocklist() bool { return global.GetInstanceExposeBlocklist() }
++
++// SetInstanceExposeBlocklist safely sets the value for global configuration 'InstanceExposeBlocklist' field
++func SetInstanceExposeBlocklist(v bool) { global.SetInstanceExposeBlocklist(v) }
++
++// InstanceExposeBlocklistWebFlag returns the flag name for the 'InstanceExposeBlocklistWeb' field
++func InstanceExposeBlocklistWebFlag() string { return "instance-expose-blocklist-web" }
++
++// GetInstanceExposeBlocklistWeb safely fetches the Configuration value for state's 'InstanceExposeBlocklistWeb' field
++func (st *ConfigState) GetInstanceExposeBlocklistWeb() (v bool) {
+ 	st.mutex.RLock()
+-	v = st.config.InstanceExposeSuspended
++	v = st.config.InstanceExposeBlocklistWeb
+ 	st.mutex.RUnlock()
+ 	return
+ }
+ 
+-// SetInstanceExposeSuspended safely sets the Configuration value for state's 'InstanceExposeSuspended' field
+-func (st *ConfigState) SetInstanceExposeSuspended(v bool) {
++// SetInstanceExposeBlocklistWeb safely sets the Configuration value for state's 'InstanceExposeBlocklistWeb' field
++func (st *ConfigState) SetInstanceExposeBlocklistWeb(v bool) {
+ 	st.mutex.Lock()
+ 	defer st.mutex.Unlock()
+-	st.config.InstanceExposeSuspended = v
++	st.config.InstanceExposeBlocklistWeb = v
+ 	st.reloadToViper()
+ }
+ 
+-// InstanceExposeSuspendedFlag returns the flag name for the 'InstanceExposeSuspended' field
+-func InstanceExposeSuspendedFlag() string { return "instance-expose-suspended" }
++// GetInstanceExposeBlocklistWeb safely fetches the value for global configuration 'InstanceExposeBlocklistWeb' field
++func GetInstanceExposeBlocklistWeb() bool { return global.GetInstanceExposeBlocklistWeb() }
+ 
+-// GetInstanceExposeSuspended safely fetches the value for global configuration 'InstanceExposeSuspended' field
+-func GetInstanceExposeSuspended() bool { return global.GetInstanceExposeSuspended() }
++// SetInstanceExposeBlocklistWeb safely sets the value for global configuration 'InstanceExposeBlocklistWeb' field
++func SetInstanceExposeBlocklistWeb(v bool) { global.SetInstanceExposeBlocklistWeb(v) }
+ 
+-// SetInstanceExposeSuspended safely sets the value for global configuration 'InstanceExposeSuspended' field
+-func SetInstanceExposeSuspended(v bool) { global.SetInstanceExposeSuspended(v) }
++// InstanceExposeAllowlistFlag returns the flag name for the 'InstanceExposeAllowlist' field
++func InstanceExposeAllowlistFlag() string { return "instance-expose-allowlist" }
+ 
+-// GetInstanceExposeSuspendedWeb safely fetches the Configuration value for state's 'InstanceExposeSuspendedWeb' field
+-func (st *ConfigState) GetInstanceExposeSuspendedWeb() (v bool) {
++// GetInstanceExposeAllowlist safely fetches the Configuration value for state's 'InstanceExposeAllowlist' field
++func (st *ConfigState) GetInstanceExposeAllowlist() (v bool) {
+ 	st.mutex.RLock()
+-	v = st.config.InstanceExposeSuspendedWeb
++	v = st.config.InstanceExposeAllowlist
+ 	st.mutex.RUnlock()
+ 	return
+ }
+ 
+-// SetInstanceExposeSuspendedWeb safely sets the Configuration value for state's 'InstanceExposeSuspendedWeb' field
+-func (st *ConfigState) SetInstanceExposeSuspendedWeb(v bool) {
++// SetInstanceExposeAllowlist safely sets the Configuration value for state's 'InstanceExposeAllowlist' field
++func (st *ConfigState) SetInstanceExposeAllowlist(v bool) {
+ 	st.mutex.Lock()
+ 	defer st.mutex.Unlock()
+-	st.config.InstanceExposeSuspendedWeb = v
++	st.config.InstanceExposeAllowlist = v
+ 	st.reloadToViper()
+ }
+ 
+-// InstanceExposeSuspendedWebFlag returns the flag name for the 'InstanceExposeSuspendedWeb' field
+-func InstanceExposeSuspendedWebFlag() string { return "instance-expose-suspended-web" }
++// GetInstanceExposeAllowlist safely fetches the value for global configuration 'InstanceExposeAllowlist' field
++func GetInstanceExposeAllowlist() bool { return global.GetInstanceExposeAllowlist() }
++
++// SetInstanceExposeAllowlist safely sets the value for global configuration 'InstanceExposeAllowlist' field
++func SetInstanceExposeAllowlist(v bool) { global.SetInstanceExposeAllowlist(v) }
++
++// InstanceExposeAllowlistWebFlag returns the flag name for the 'InstanceExposeAllowlistWeb' field
++func InstanceExposeAllowlistWebFlag() string { return "instance-expose-allowlist-web" }
++
++// GetInstanceExposeAllowlistWeb safely fetches the Configuration value for state's 'InstanceExposeAllowlistWeb' field
++func (st *ConfigState) GetInstanceExposeAllowlistWeb() (v bool) {
++	st.mutex.RLock()
++	v = st.config.InstanceExposeAllowlistWeb
++	st.mutex.RUnlock()
++	return
++}
++
++// SetInstanceExposeAllowlistWeb safely sets the Configuration value for state's 'InstanceExposeAllowlistWeb' field
++func (st *ConfigState) SetInstanceExposeAllowlistWeb(v bool) {
++	st.mutex.Lock()
++	defer st.mutex.Unlock()
++	st.config.InstanceExposeAllowlistWeb = v
++	st.reloadToViper()
++}
+ 
+-// GetInstanceExposeSuspendedWeb safely fetches the value for global configuration 'InstanceExposeSuspendedWeb' field
+-func GetInstanceExposeSuspendedWeb() bool { return global.GetInstanceExposeSuspendedWeb() }
++// GetInstanceExposeAllowlistWeb safely fetches the value for global configuration 'InstanceExposeAllowlistWeb' field
++func GetInstanceExposeAllowlistWeb() bool { return global.GetInstanceExposeAllowlistWeb() }
+ 
+-// SetInstanceExposeSuspendedWeb safely sets the value for global configuration 'InstanceExposeSuspendedWeb' field
+-func SetInstanceExposeSuspendedWeb(v bool) { global.SetInstanceExposeSuspendedWeb(v) }
++// SetInstanceExposeAllowlistWeb safely sets the value for global configuration 'InstanceExposeAllowlistWeb' field
++func SetInstanceExposeAllowlistWeb(v bool) { global.SetInstanceExposeAllowlistWeb(v) }
+ 
+ // GetInstanceExposePublicTimeline safely fetches the Configuration value for state's 'InstanceExposePublicTimeline' field
+ func (st *ConfigState) GetInstanceExposePublicTimeline() (v bool) {
+diff --git a/internal/processing/instance.go b/internal/processing/instance.go
+index 87fe1e3ef..e1a3785e9 100644
+--- a/internal/processing/instance.go
++++ b/internal/processing/instance.go
+@@ -19,8 +19,10 @@
+ 
+ import (
+ 	"context"
++	"errors"
+ 	"fmt"
+-	"sort"
++	"slices"
++	"strings"
+ 
+ 	apimodel "code.superseriousbusiness.org/gotosocial/internal/api/model"
+ 	"code.superseriousbusiness.org/gotosocial/internal/config"
+@@ -31,6 +33,7 @@
+ 	"code.superseriousbusiness.org/gotosocial/internal/text"
+ 	"code.superseriousbusiness.org/gotosocial/internal/typeutils"
+ 	"code.superseriousbusiness.org/gotosocial/internal/util"
++	"code.superseriousbusiness.org/gotosocial/internal/util/xslices"
+ 	"code.superseriousbusiness.org/gotosocial/internal/validate"
+ )
+ 
+@@ -62,70 +65,126 @@ func (p *Processor) InstanceGetV2(ctx context.Context) (*apimodel.InstanceV2, gt
+ 	return ai, nil
+ }
+ 
+-func (p *Processor) InstancePeersGet(ctx context.Context, includeSuspended bool, includeOpen bool, flat bool) (interface{}, gtserror.WithCode) {
+-	domains := []*apimodel.Domain{}
++func (p *Processor) InstancePeersGet(
++	ctx context.Context,
++	includeBlocked bool,
++	includeAllowed bool,
++	includeOpen bool,
++	flatten bool,
++	includeSeverity bool,
++) (any, gtserror.WithCode) {
++	var (
++		domainPerms []gtsmodel.DomainPermission
++		apiDomains  []*apimodel.Domain
++	)
++
++	if includeBlocked {
++		blocks, err := p.state.DB.GetDomainBlocks(ctx)
++		if err != nil && !errors.Is(err, db.ErrNoEntries) {
++			err := gtserror.Newf("db error getting domain blocks: %w", err)
++			return nil, gtserror.NewErrorInternalError(err)
++		}
+ 
+-	if includeOpen {
+-		instances, err := p.state.DB.GetInstancePeers(ctx, false)
+-		if err != nil && err != db.ErrNoEntries {
+-			err = fmt.Errorf("error selecting instance peers: %s", err)
++		for _, block := range blocks {
++			domainPerms = append(domainPerms, block)
++		}
++
++	} else if includeAllowed {
++		allows, err := p.state.DB.GetDomainAllows(ctx)
++		if err != nil && !errors.Is(err, db.ErrNoEntries) {
++			err := gtserror.Newf("db error getting domain allows: %w", err)
+ 			return nil, gtserror.NewErrorInternalError(err)
+ 		}
+ 
+-		for _, i := range instances {
+-			// Domain may be in Punycode,
+-			// de-punify it just in case.
+-			d, err := util.DePunify(i.Domain)
+-			if err != nil {
+-				log.Errorf(ctx, "couldn't depunify domain %s: %s", i.Domain, err)
+-				continue
+-			}
++		for _, allow := range allows {
++			domainPerms = append(domainPerms, allow)
++		}
++	}
+ 
+-			domains = append(domains, &apimodel.Domain{Domain: d})
++	for _, domainPerm := range domainPerms {
++		// Domain may be in Punycode,
++		// de-punify it just in case.
++		domain := domainPerm.GetDomain()
++		depunied, err := util.DePunify(domain)
++		if err != nil {
++			log.Errorf(ctx, "couldn't depunify domain %s: %v", domain, err)
++			continue
+ 		}
++
++		if util.PtrOrZero(domainPerm.GetObfuscate()) {
++			// Obfuscate the de-punified version.
++			depunied = obfuscate(depunied)
++		}
++
++		apiDomain := &apimodel.Domain{
++			Domain:  depunied,
++			Comment: util.Ptr(domainPerm.GetPublicComment()),
++		}
++
++		if domainPerm.GetType() == gtsmodel.DomainPermissionBlock {
++			const severity = "suspend"
++			apiDomain.Severity = severity
++			suspendedAt := domainPerm.GetCreatedAt()
++			apiDomain.SuspendedAt = util.FormatISO8601(suspendedAt)
++		}
++
++		apiDomains = append(apiDomains, apiDomain)
+ 	}
+ 
+-	if includeSuspended {
+-		domainBlocks := []*gtsmodel.DomainBlock{}
+-		if err := p.state.DB.GetAll(ctx, &domainBlocks); err != nil && err != db.ErrNoEntries {
++	if includeOpen {
++		instances, err := p.state.DB.GetInstancePeers(ctx, false)
++		if err != nil && !errors.Is(err, db.ErrNoEntries) {
++			err = gtserror.Newf("db error getting instance peers: %w", err)
+ 			return nil, gtserror.NewErrorInternalError(err)
+ 		}
+ 
+-		for _, domainBlock := range domainBlocks {
++		for _, instance := range instances {
+ 			// Domain may be in Punycode,
+ 			// de-punify it just in case.
+-			d, err := util.DePunify(domainBlock.Domain)
++			domain := instance.Domain
++			depunied, err := util.DePunify(domain)
+ 			if err != nil {
+-				log.Errorf(ctx, "couldn't depunify domain %s: %s", domainBlock.Domain, err)
++				log.Errorf(ctx, "couldn't depunify domain %s: %v", domain, err)
+ 				continue
+ 			}
+ 
+-			if *domainBlock.Obfuscate {
+-				// Obfuscate the de-punified version.
+-				d = obfuscate(d)
+-			}
+-
+-			domains = append(domains, &apimodel.Domain{
+-				Domain:      d,
+-				SuspendedAt: util.FormatISO8601(domainBlock.CreatedAt),
+-				Comment:     &domainBlock.PublicComment,
+-			})
++			apiDomains = append(
++				apiDomains,
++				&apimodel.Domain{
++					Domain: depunied,
++				},
++			)
+ 		}
+ 	}
+ 
+-	sort.Slice(domains, func(i, j int) bool {
+-		return domains[i].Domain < domains[j].Domain
+-	})
+-
+-	if flat {
+-		flattened := []string{}
+-		for _, d := range domains {
+-			flattened = append(flattened, d.Domain)
+-		}
+-		return flattened, nil
++	// Sort a-z.
++	slices.SortFunc(
++		apiDomains,
++		func(a, b *apimodel.Domain) int {
++			return strings.Compare(a.Domain, b.Domain)
++		},
++	)
++
++	// Deduplicate.
++	apiDomains = xslices.DeduplicateFunc(
++		apiDomains,
++		func(v *apimodel.Domain) string {
++			return v.Domain
++		},
++	)
++
++	if flatten {
++		// Return just the domains.
++		return xslices.Gather(
++			[]string{},
++			apiDomains,
++			func(v *apimodel.Domain) string {
++				return v.Domain
++			},
++		), nil
+ 	}
+ 
+-	return domains, nil
++	return apiDomains, nil
+ }
+ 
+ func (p *Processor) InstanceGetRules(ctx context.Context) ([]apimodel.InstanceRule, gtserror.WithCode) {
+diff --git a/internal/web/about.go b/internal/web/about.go
+index e899bcb84..23af503ac 100644
+--- a/internal/web/about.go
++++ b/internal/web/about.go
+@@ -57,7 +57,8 @@ func (m *Module) aboutGETHandler(c *gin.Context) {
+ 		Stylesheets: []string{cssAbout},
+ 		Extra: map[string]any{
+ 			"showStrap":        true,
+-			"blocklistExposed": config.GetInstanceExposeSuspendedWeb(),
++			"blocklistExposed": config.GetInstanceExposeBlocklistWeb(),
++			"allowlistExposed": config.GetInstanceExposeAllowlistWeb(),
+ 			"languages":        config.GetInstanceLanguages().DisplayStrs(),
+ 		},
+ 	}
+diff --git a/internal/web/domain-blocklist.go b/internal/web/domain-blocklist.go
+deleted file mode 100644
+index 34e23d899..000000000
+--- a/internal/web/domain-blocklist.go
++++ /dev/null
+@@ -1,75 +0,0 @@
+-// GoToSocial
+-// Copyright (C) GoToSocial Authors admin@gotosocial.org
+-// SPDX-License-Identifier: AGPL-3.0-or-later
+-//
+-// This program is free software: you can redistribute it and/or modify
+-// it under the terms of the GNU Affero General Public License as published by
+-// the Free Software Foundation, either version 3 of the License, or
+-// (at your option) any later version.
+-//
+-// This program is distributed in the hope that it will be useful,
+-// but WITHOUT ANY WARRANTY; without even the implied warranty of
+-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-// GNU Affero General Public License for more details.
+-//
+-// You should have received a copy of the GNU Affero General Public License
+-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-
+-package web
+-
+-import (
+-	"context"
+-	"fmt"
+-
+-	apimodel "code.superseriousbusiness.org/gotosocial/internal/api/model"
+-	apiutil "code.superseriousbusiness.org/gotosocial/internal/api/util"
+-	"code.superseriousbusiness.org/gotosocial/internal/config"
+-	"code.superseriousbusiness.org/gotosocial/internal/gtserror"
+-	"github.com/gin-gonic/gin"
+-)
+-
+-const (
+-	domainBlockListPath = aboutPath + "/suspended"
+-)
+-
+-func (m *Module) domainBlockListGETHandler(c *gin.Context) {
+-	instance, errWithCode := m.processor.InstanceGetV1(c.Request.Context())
+-	if errWithCode != nil {
+-		apiutil.WebErrorHandler(c, errWithCode, m.processor.InstanceGetV1)
+-		return
+-	}
+-
+-	// Return instance we already got from the db,
+-	// don't try to fetch it again when erroring.
+-	instanceGet := func(ctx context.Context) (*apimodel.InstanceV1, gtserror.WithCode) {
+-		return instance, nil
+-	}
+-
+-	// We only serve text/html at this endpoint.
+-	if _, err := apiutil.NegotiateAccept(c, apiutil.TextHTML); err != nil {
+-		apiutil.WebErrorHandler(c, gtserror.NewErrorNotAcceptable(err, err.Error()), instanceGet)
+-		return
+-	}
+-
+-	if !config.GetInstanceExposeSuspendedWeb() {
+-		err := fmt.Errorf("this instance does not publicy expose its blocklist")
+-		apiutil.WebErrorHandler(c, gtserror.NewErrorUnauthorized(err, err.Error()), instanceGet)
+-		return
+-	}
+-
+-	domainBlocks, errWithCode := m.processor.InstancePeersGet(c.Request.Context(), true, false, false)
+-	if errWithCode != nil {
+-		apiutil.WebErrorHandler(c, errWithCode, instanceGet)
+-		return
+-	}
+-
+-	page := apiutil.WebPage{
+-		Template:    "domain-blocklist.tmpl",
+-		Instance:    instance,
+-		OGMeta:      apiutil.OGBase(instance),
+-		Stylesheets: []string{cssFA},
+-		Extra:       map[string]any{"blocklist": domainBlocks},
+-	}
+-
+-	apiutil.TemplateWebPage(c, page)
+-}
+diff --git a/internal/web/domainperms.go b/internal/web/domainperms.go
+new file mode 100644
+index 000000000..24608e1fd
+--- /dev/null
++++ b/internal/web/domainperms.go
+@@ -0,0 +1,136 @@
++// GoToSocial
++// Copyright (C) GoToSocial Authors admin@gotosocial.org
++// SPDX-License-Identifier: AGPL-3.0-or-later
++//
++// This program is free software: you can redistribute it and/or modify
++// it under the terms of the GNU Affero General Public License as published by
++// the Free Software Foundation, either version 3 of the License, or
++// (at your option) any later version.
++//
++// This program is distributed in the hope that it will be useful,
++// but WITHOUT ANY WARRANTY; without even the implied warranty of
++// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++// GNU Affero General Public License for more details.
++//
++// You should have received a copy of the GNU Affero General Public License
++// along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++package web
++
++import (
++	"context"
++	"errors"
++
++	apimodel "code.superseriousbusiness.org/gotosocial/internal/api/model"
++	apiutil "code.superseriousbusiness.org/gotosocial/internal/api/util"
++	"code.superseriousbusiness.org/gotosocial/internal/config"
++	"code.superseriousbusiness.org/gotosocial/internal/gtserror"
++	"github.com/gin-gonic/gin"
++)
++
++const (
++	domainBlocklistPath = aboutPath + "/domain_blocks"
++	domainAllowlistPath = aboutPath + "/domain_allows"
++)
++
++func (m *Module) domainBlocklistGETHandler(c *gin.Context) {
++	instance, errWithCode := m.processor.InstanceGetV1(c.Request.Context())
++	if errWithCode != nil {
++		apiutil.WebErrorHandler(c, errWithCode, m.processor.InstanceGetV1)
++		return
++	}
++
++	// Return instance we already got from the db,
++	// don't try to fetch it again when erroring.
++	instanceGet := func(ctx context.Context) (*apimodel.InstanceV1, gtserror.WithCode) {
++		return instance, nil
++	}
++
++	// We only serve text/html at this endpoint.
++	if _, err := apiutil.NegotiateAccept(c, apiutil.TextHTML); err != nil {
++		errWithCode := gtserror.NewErrorNotAcceptable(err, err.Error())
++		apiutil.WebErrorHandler(c, errWithCode, instanceGet)
++		return
++	}
++
++	if !config.GetInstanceExposeBlocklistWeb() {
++		const errText = "this instance does not expose its blocklist via the web"
++		errWithCode := gtserror.NewErrorUnauthorized(errors.New(errText), errText)
++		apiutil.WebErrorHandler(c, errWithCode, instanceGet)
++		return
++	}
++
++	domainBlocks, errWithCode := m.processor.InstancePeersGet(
++		c.Request.Context(),
++		true,  // Include blocked.
++		false, // Don't include allowed.
++		false, // Don't include open.
++		false, // Don't flatten list.
++		false, // Don't include severity.
++	)
++	if errWithCode != nil {
++		apiutil.WebErrorHandler(c, errWithCode, instanceGet)
++		return
++	}
++
++	page := apiutil.WebPage{
++		Template:    "domain-blocklist.tmpl",
++		Instance:    instance,
++		OGMeta:      apiutil.OGBase(instance),
++		Stylesheets: []string{cssFA},
++		Extra:       map[string]any{"blocklist": domainBlocks},
++	}
++
++	apiutil.TemplateWebPage(c, page)
++}
++
++func (m *Module) domainAllowlistGETHandler(c *gin.Context) {
++	instance, errWithCode := m.processor.InstanceGetV1(c.Request.Context())
++	if errWithCode != nil {
++		apiutil.WebErrorHandler(c, errWithCode, m.processor.InstanceGetV1)
++		return
++	}
++
++	// Return instance we already got from the db,
++	// don't try to fetch it again when erroring.
++	instanceGet := func(ctx context.Context) (*apimodel.InstanceV1, gtserror.WithCode) {
++		return instance, nil
++	}
++
++	// We only serve text/html at this endpoint.
++	if _, err := apiutil.NegotiateAccept(c, apiutil.TextHTML); err != nil {
++		errWithCode := gtserror.NewErrorNotAcceptable(err, err.Error())
++		apiutil.WebErrorHandler(c, errWithCode, instanceGet)
++		return
++	}
++
++	if !config.GetInstanceExposeAllowlistWeb() {
++		const errText = "this instance does not expose its allowlist via the web"
++		errWithCode := gtserror.NewErrorUnauthorized(errors.New(errText), errText)
++		apiutil.WebErrorHandler(c, errWithCode, instanceGet)
++		return
++	}
++
++	domainAllows, errWithCode := m.processor.InstancePeersGet(
++		c.Request.Context(),
++		false, // Don't include blocked.
++		true,  // Include allowed.
++		false, // Don't include open.
++		false, // Don't flatten list.
++		false, // Don't include severity.
++	)
++	if errWithCode != nil {
++		apiutil.WebErrorHandler(c, errWithCode, instanceGet)
++		return
++	}
++
++	page := apiutil.WebPage{
++		Template:    "domain-allowlist.tmpl",
++		Instance:    instance,
++		OGMeta:      apiutil.OGBase(instance),
++		Stylesheets: []string{cssFA},
++		Extra:       map[string]any{"allowlist": domainAllows},
++	}
++
++	apiutil.TemplateWebPage(c, page)
++}
+diff --git a/internal/web/web.go b/internal/web/web.go
+index ab440ab2f..6614dbc18 100644
+--- a/internal/web/web.go
++++ b/internal/web/web.go
+@@ -121,7 +121,8 @@ func (m *Module) Route(r *router.Router, mi ...gin.HandlerFunc) {
+ 	everythingElseGroup.Handle(http.MethodPost, confirmEmailPath, m.confirmEmailPOSTHandler)
+ 	everythingElseGroup.Handle(http.MethodGet, aboutPath, m.aboutGETHandler)
+ 	everythingElseGroup.Handle(http.MethodGet, loginPath, m.loginGETHandler)
+-	everythingElseGroup.Handle(http.MethodGet, domainBlockListPath, m.domainBlockListGETHandler)
++	everythingElseGroup.Handle(http.MethodGet, domainBlocklistPath, m.domainBlocklistGETHandler)
++	everythingElseGroup.Handle(http.MethodGet, domainAllowlistPath, m.domainAllowlistGETHandler)
+ 	everythingElseGroup.Handle(http.MethodGet, tagsPath, m.tagGETHandler)
+ 	everythingElseGroup.Handle(http.MethodGet, signupPath, m.signupGETHandler)
+ 	everythingElseGroup.Handle(http.MethodPost, signupPath, m.signupPOSTHandler)
+diff --git a/test/envparsing.sh b/test/envparsing.sh
+index 088ffc0b3..2e64587b1 100755
+--- a/test/envparsing.sh
++++ b/test/envparsing.sh
+@@ -109,10 +109,12 @@ EXPECT=$(cat << "EOF"
+     },
+     "instance-allow-backdating-statuses": true,
+     "instance-deliver-to-shared-inboxes": false,
++    "instance-expose-allowlist": true,
++    "instance-expose-allowlist-web": true,
++    "instance-expose-blocklist": true,
++    "instance-expose-blocklist-web": true,
+     "instance-expose-peers": true,
+     "instance-expose-public-timeline": true,
+-    "instance-expose-suspended": true,
+-    "instance-expose-suspended-web": true,
+     "instance-federation-mode": "allowlist",
+     "instance-federation-spam-filter": true,
+     "instance-inject-mastodon-version": true,
+@@ -244,8 +246,10 @@ GTS_DB_TLS_CA_CERT='' \
+ GTS_WEB_TEMPLATE_BASE_DIR='/root' \
+ GTS_WEB_ASSET_BASE_DIR='/root' \
+ GTS_INSTANCE_EXPOSE_PEERS=true \
+-GTS_INSTANCE_EXPOSE_SUSPENDED=true \
+-GTS_INSTANCE_EXPOSE_SUSPENDED_WEB=true \
++GTS_INSTANCE_EXPOSE_BLOCKLIST=true \
++GTS_INSTANCE_EXPOSE_BLOCKLIST_WEB=true \
++GTS_INSTANCE_EXPOSE_ALLOWLIST=true \
++GTS_INSTANCE_EXPOSE_ALLOWLIST_WEB=true \
+ GTS_INSTANCE_EXPOSE_PUBLIC_TIMELINE=true \
+ GTS_INSTANCE_FEDERATION_MODE='allowlist' \
+ GTS_INSTANCE_FEDERATION_SPAM_FILTER=true \
+diff --git a/testrig/config.go b/testrig/config.go
+index ec7b72faa..40c041b00 100644
+--- a/testrig/config.go
++++ b/testrig/config.go
+@@ -88,8 +88,10 @@ func testDefaults() config.Configuration {
+ 		InstanceFederationMode:         config.InstanceFederationModeDefault,
+ 		InstanceFederationSpamFilter:   true,
+ 		InstanceExposePeers:            true,
+-		InstanceExposeSuspended:        true,
+-		InstanceExposeSuspendedWeb:     true,
++		InstanceExposeBlocklist:        true,
++		InstanceExposeBlocklistWeb:     true,
++		InstanceExposeAllowlist:        true,
++		InstanceExposeAllowlistWeb:     true,
+ 		InstanceDeliverToSharedInboxes: true,
+ 		InstanceLanguages: language.Languages{
+ 			{
+diff --git a/web/source/css/base.css b/web/source/css/base.css
+index 615616725..c9ff21d74 100644
+--- a/web/source/css/base.css
++++ b/web/source/css/base.css
+@@ -599,7 +599,7 @@ section.oob-token {
+ 	}
+ }
+ 
+-.domain-blocklist {
++.domain-perm-list {
+ 	box-shadow: $boxshadow;
+ 
+ 	.entry {
+@@ -632,7 +632,7 @@ section.oob-token {
+ }
+ 
+ @media screen and (max-width: 30rem) {
+-	.domain-blocklist .entry {
++	.domain-perm-list .entry {
+ 		grid-template-columns: 1fr;
+ 		gap: 0;
+ 	}
+diff --git a/web/template/about.tmpl b/web/template/about.tmpl
+index 37d115256..7caec5500 100644
+--- a/web/template/about.tmpl
++++ b/web/template/about.tmpl
+@@ -94,7 +94,7 @@ Polls can have up to
+                 <li><a href="#signup">Register an Account on {{ .instance.Title -}}</a></li>
+                 <li><a href="#rules">Rules</a></li>
+                 <li><a href="#terms">Terms and Conditions</a></li>
+-                <li><a href="#moderated-servers">Moderated Servers</a></li>
++                <li><a href="#domain-permissions">Domain permissions</a></li>
+             </ol>
+         </div>
+     </nav>
+@@ -166,25 +166,50 @@ Polls can have up to
+             {{- end }}
+         </div>
+     </section>
+-    <section class="about-section" role="region" aria-labelledby="moderated-servers">
+-        <h3 id="moderated-servers">Moderated servers</h3>
++    <section class="about-section" role="region" aria-labelledby="domain-permissions">
++        <h3 id="domain-permissions">Domain permissions</h3>
+         <div class="about-section-contents">
+             <p>
+                 ActivityPub instances federate with other instances by exchanging data with them over the network.
+                 Exchanged data includes things like accounts, statuses, likes, boosts, and media attachments.
+-                This exchange of data can be prevented for instances on specific domains via a domain block created
+-                by an instance admin. When an instance is domain blocked by another instance:
++            </p>
++            <p>
++                This exchange of data is open by default but can be <strong>blocked</strong> for instances
++                on specific domains via a domain block created by an instance admin.
++            </p>
++            <p>
++                Alternatively, if this instance is running in allowlist mode, exchange of data with remote
++                instances must be explicitly <strong>allowed</strong> via a domain allow entry.
++            </p>
++            <p>
++                For more information on domain blocks, domain allows, etc, see the following pages (all links open in a new tab):
+             </p>
+             <ul>
+-                <li>Any existing data from the blocked instance is deleted from the storage of the instance doing the blocking.</li>
+-                <li>Interaction between the two instances is cut off in both directions; neither instance can interact with the other.</li>
+-                <li>No new data from the blocked instance will be created on the instance that blocks it.</li>
++                <li><a href="https://docs.gotosocial.org/en/latest/admin/federation_modes/" target="_blank" rel="noreferrer">Federation modes</a></li>
++                <li><a href="https://docs.gotosocial.org/en/latest/admin/domain_blocks/" target="_blank" rel="noreferrer">Domain blocks</a></li>
++                <li><a href="https://docs.gotosocial.org/en/latest/admin/domain_permission_subscriptions/" target="_blank" rel="noreferrer">Domain permission subscriptions</a></li>
++            </ul>
++            <h4>Blocked domains</h4>
++            <p>When a domain block entry is created on this instance:</p>
++            <ul>
++                <li>No new data from instances on the blocked domain will be created on this instance.</li>
++                <li>Interaction between this instance and blocked instances is cut off in both directions.</li>
++                <li>(In case of an exact match): Any existing data from blocked instances are deleted from the storage of this instance.</li>
+             </ul>
+             <p>
+                 {{- if .blocklistExposed }}
+-                <a href="/about/suspended">View the list of domains blocked by this instance</a>
++                <a href="/about/domain_blocks">View the list of domains blocked by this instance</a>
++                {{- else }}
++                This instance does not publically share its list of blocked domains.
++                {{- end }}
++            </p>
++            <h4>Allowed domains</h4>
++            <p>When an admin adds an explicit domain allow entry, instances on the domain and its subdomains are allowed to federate with this instance.</p>
++            <p>
++                {{- if .allowlistExposed }}
++                <a href="/about/domain_allows">View the list of domains explicitly allowed by this instance</a>
+                 {{- else }}
+-                This instance does not publically share their list of blocked domains.
++                This instance does not publically share its list of explicitly allowed domains.
+                 {{- end }}
+             </p>
+         </div>
+diff --git a/web/template/domain-allowlist.tmpl b/web/template/domain-allowlist.tmpl
+new file mode 100644
+index 000000000..b7db87bce
+--- /dev/null
++++ b/web/template/domain-allowlist.tmpl
+@@ -0,0 +1,48 @@
++{{- /*
++// GoToSocial
++// Copyright (C) GoToSocial Authors admin@gotosocial.org
++// SPDX-License-Identifier: AGPL-3.0-or-later
++//
++// This program is free software: you can redistribute it and/or modify
++// it under the terms of the GNU Affero General Public License as published by
++// the Free Software Foundation, either version 3 of the License, or
++// (at your option) any later version.
++//
++// This program is distributed in the hope that it will be useful,
++// but WITHOUT ANY WARRANTY; without even the implied warranty of
++// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++// GNU Affero General Public License for more details.
++//
++// You should have received a copy of the GNU Affero General Public License
++// along with this program.  If not, see <http://www.gnu.org/licenses/>.
++*/ -}}
++
++{{- with . }}
++<main>
++    <section>
++        <h1>Instance Allowlist</h1>
++        <p>
++            The following list of domains has been explicitly allowed by the administrator(s) of this instance.
++        </p>
++        <p>
++            This extends to subdomains, so an allowlist entry for domain 'example.com' includes domain 'social.example.com' etc as well.
++        </p>
++        <div class="list domain-perm-list">
++            <div class="header entry">
++                <div class="domain">Domain</div>
++                <div class="public_comment">Public comment</div>
++            </div>
++            {{- range .allowlist }}
++            <div class="entry" id="{{- .Domain -}}">
++                <div class="domain">
++                    <a class="text-cutoff" href="#{{- .Domain -}}" title="{{- .Domain -}}">{{- .Domain -}}</a>
++                </div>
++                <div class="public_comment">
++                    <p>{{- .Comment -}}</p>
++                </div>
++            </div>
++            {{- end }}
++        </div>
++    </section>
++</main>
++{{- end }}
+\ No newline at end of file
+diff --git a/web/template/domain-blocklist.tmpl b/web/template/domain-blocklist.tmpl
+index 9a21796f9..e3ebfca1b 100644
+--- a/web/template/domain-blocklist.tmpl
++++ b/web/template/domain-blocklist.tmpl
+@@ -20,18 +20,17 @@
+ {{- with . }}
+ <main>
+     <section>
+-        <h1>Suspended Instances</h1>
++        <h1>Instance Blocklist</h1>
+         <p>
+-            The following list of domains have been suspended
+-            by the administrator(s) of this server.
++            The following list of domains has been blocked by the administrator(s) of this instance.
+         </p>
+         <p>
+-            All current and future accounts on these instances are
+-            blocked, and no more data is federated to the remote servers.
+-            This extends to subdomains, so an entry for 'example.com'
+-            includes 'social.example.com' as well.
++            All past, present, and future accounts at blocked domains are forbidden from interacting
++            with this instance or accounts on this instance. No data will be sent to the server at the
++            remote domain, and no data will be received from it. This extends to subdomains, so a
++            blocklist entry for domain 'example.com' includes domain 'social.example.com' etc as well.
+         </p>
+-        <div class="list domain-blocklist">
++        <div class="list domain-perm-list">
+             <div class="header entry">
+                 <div class="domain">Domain</div>
+                 <div class="public_comment">Public comment</div>
+@@ -42,7 +41,7 @@
+                     <a class="text-cutoff" href="#{{- .Domain -}}" title="{{- .Domain -}}">{{- .Domain -}}</a>
+                 </div>
+                 <div class="public_comment">
+-                    <p>{{- .PublicComment -}}</p>
++                    <p>{{- .Comment -}}</p>
+                 </div>
+             </div>
+             {{- end }}
+-- 
+2.49.0
+
