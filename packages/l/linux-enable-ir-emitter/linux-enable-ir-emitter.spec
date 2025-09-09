@@ -21,7 +21,7 @@
 %define gcc_ver 13
 %endif
 Name:           linux-enable-ir-emitter
-Version:        6.1.1
+Version:        6.1.2
 Release:        0
 Summary:        Support for infrared cameras that are not directly enabled out-of-the box
 License:        MIT
@@ -33,6 +33,7 @@ BuildRequires:  meson
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(argparse)
+BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(opencv4)
 BuildRequires:  pkgconfig(yaml-cpp)
@@ -50,7 +51,11 @@ emitter.
 %if 0%{?gcc_ver}
 export CXX=g++-%{gcc_ver}
 %endif
-%meson
+%meson \
+  -Dcreate_config_dir=true \
+  -Dcreate_log_dir=true \
+  -Dtests=true \
+  %{nil}
 %meson_build
 
 %install
@@ -63,6 +68,9 @@ mv %{buildroot}%{_sysconfdir}/systemd/system/%{name}.service \
 sed -Ei "1{\@/bin/bash@d}" %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 
 rm -fr %{buildroot}%{_datadir}/doc/*
+
+%check
+%meson_test linux-enable-ir-emitter
 
 %pre
 %service_add_pre %{name}.service
