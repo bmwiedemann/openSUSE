@@ -125,4 +125,18 @@
   * Fix bugs (forwarded request 1285516 from hillwood)</comment>
     <requestid>1285517</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bdca61e526426662849dfb03c3cebb98</srcmd5>
+    <version>1.23.5</version>
+    <time>1757442651</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 1.23.5
+  * Updated once_cell::sync::Lazy to std::sync::LazyLock
+  * ACL supported outbound_allow_list
+  * Allow customizable SocketProtect trait for Android VpnService
+  * Fix bugs
+
+- Update version to 1.23.4 (forwarded request 1303370 from hillwood)</comment>
+    <requestid>1303372</requestid>
+  </revision>
 </revisionlist>

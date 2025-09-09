@@ -1,7 +1,7 @@
 #
 # spec file for package shadowsocks-rust
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           shadowsocks-rust
-Version:        1.23.4
+Version:        1.23.5
 Release:        0
 Summary:        Rust port of Shadowsocks
 License:        MIT
@@ -58,7 +58,7 @@ directory = './vendor'
 EOF
 
 %build
-%cargo_build
+cargo auditable build -j12 --offline --release
 
 %install
 %cargo_install

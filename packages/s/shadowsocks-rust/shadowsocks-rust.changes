@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  9 14:04:47 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.23.5
+  * Updated once_cell::sync::Lazy to std::sync::LazyLock
+  * ACL supported outbound_allow_list
+  * Allow customizable SocketProtect trait for Android VpnService
+  * Fix bugs
+
+-------------------------------------------------------------------
 Fri Jun 13 13:20:04 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
-- Update version to 1.24.4
+- Update version to 1.23.4
   * online-config: SIP008 online configuration supports adding plugin whitelist
     (see README for details)
   * Fix bugs
