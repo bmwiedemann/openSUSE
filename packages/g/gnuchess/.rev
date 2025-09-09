@@ -215,4 +215,30 @@
     <comment></comment>
     <requestid>955866</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>1a49584e830cc08cb5bc4db1e11bb56f</srcmd5>
+    <version>6.3.0</version>
+    <time>1757442578</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.3.0:
+  - Look for gnuchess.ini in XDG_CONFIG_HOME or ~/.config/.
+  - Dynamically configure gnuchess.ini from gnuchess.ini.in.
+  - Disable engine book on 'book off'.
+  - Improve style of some help messages.
+  - More graceful program termination if book does not exist.
+  - Bug fix in (epd)load command.
+  - Fix potential buffer overflows in the pipes read/write.
+- Remove xgnuchess, it is non-functional (we don’t package xboard
+  any more). For the same reason, we don’t package gnuchessx
+  either.
+
+- Add txtJ07eHdR0m6.patch to fix CVE-2021-30184 (reported upstream on
+  + Book file allowed to be read only unless the BookLearn
+- change generation of recent book dat from source during build
+  from glibc
+- remove NoSource tag
+- added flex,bison to buildreq
+- man to /usr/share/man</comment>
+    <requestid>1303161</requestid>
+  </revision>
 </revisionlist>

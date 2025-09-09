@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep  7 16:40:14 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 6.3.0:
+  - Look for gnuchess.ini in XDG_CONFIG_HOME or ~/.config/.
+  - Dynamically configure gnuchess.ini from gnuchess.ini.in.
+  - Disable engine book on 'book off'.
+  - Improve style of some help messages.
+  - More graceful program termination if book does not exist.
+  - Bug fix in (epd)load command.
+  - Fix potential buffer overflows in the pipes read/write.
+- Remove xgnuchess, it is non-functional (we don’t package xboard
+  any more). For the same reason, we don’t package gnuchessx
+  either.
+
+-------------------------------------------------------------------
 Fri Feb 18 12:34:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Only require info and call its macros on suse_version < 1550:
@@ -21,7 +36,7 @@ Fri May 14 12:42:17 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 -------------------------------------------------------------------
 Thu Apr  8 20:46:21 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
-- Add txtJ07eHdR0m6.patch to fix CVE-2021-30184 (reported upstream on 
+- Add txtJ07eHdR0m6.patch to fix CVE-2021-30184 (reported upstream on
   https://lists.gnu.org/archive/html/bug-gnu-chess/2021-04/msg00000.html )
   (boo#1184531)
 
@@ -132,7 +147,7 @@ Fri Oct 26 11:15:22 UTC 2012 - lars@linux-schulserver.de
 - update gnuchess to 6.0.2:
   + New option --addbook to compile a book.
   + Maximum file name length of EPD files extended to 127 characters.
-  + Book file allowed to be read only unless the BookLearn 
+  + Book file allowed to be read only unless the BookLearn
     option is set.
 - new upstream Url
 - removed upstreamed gnuchess-return-nonvoid.patch
@@ -143,7 +158,7 @@ Tue Nov 29 12:08:41 UTC 2011 - jreidinger@suse.com
 
 - update gnuchess to official version 6.0.1
 - clean up patches
-- change generation of recent book dat from source during build 
+- change generation of recent book dat from source during build
 
 -------------------------------------------------------------------
 Wed Aug  4 17:37:37 UTC 2010 - packman@links2linux.de
@@ -172,17 +187,17 @@ Fri Oct 16 11:16:01 CEST 2009 - marek.belisko@open-nandra.com
 Sun Jun  7 12:00:28 CEST 2009 - ro@suse.de
 
 - rename getline to my_getline to avoid conflict with function
-  from glibc 
+  from glibc
 
 -------------------------------------------------------------------
 Thu Nov  6 15:28:52 CET 2008 - ro@suse.de
 
-- remove NoSource tag 
+- remove NoSource tag
 
 -------------------------------------------------------------------
 Fri Mar 30 02:02:57 CEST 2007 - ro@suse.de
 
-- added flex,bison to buildreq 
+- added flex,bison to buildreq
 
 -------------------------------------------------------------------
 Wed Jan 25 21:36:15 CET 2006 - mls@suse.de
@@ -245,7 +260,7 @@ Tue Apr 11 13:20:37 CEST 2000 - vinil@suse.cz
 -------------------------------------------------------------------
 Thu Jan 20 18:09:54 CET 2000 - ro@suse.de
 
-- man to /usr/share/man 
+- man to /usr/share/man
 
 -------------------------------------------------------------------
 Wed Oct 13 01:39:09 CEST 1999 - ro@suse.de

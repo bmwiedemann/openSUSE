@@ -1,7 +1,7 @@
 #
 # spec file for package gnuchess
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%define book_ver 1.02
 Name:           gnuchess
-Version:        6.2.9
+Version:        6.3.0
 Release:        0
 Summary:        GNU Chess Program
 License:        GPL-3.0-or-later
@@ -25,24 +26,21 @@ Group:          Amusements/Games/Board/Chess
 URL:            https://www.gnu.org/software/chess/
 Source0:        https://ftp.gnu.org/gnu/chess/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/chess/%{name}-%{version}.tar.gz.sig
-# WARNING: Don't forget to re-generate book.dat manually before submit!
-# Simply remove the source and build, updated book will be generated.
-Source2:        book_1.02.pgn.bz2
+Source2:        book_%{book_ver}.pgn.bz2
 Source3:        genbook.sh
-Source4:        xgnuchess
 Source5:        http://savannah.gnu.org/project/memberlist-gpgkeys.php?group=chess&download=1#/gnuchess.keyring
 BuildRequires:  expect
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  help2man
 BuildRequires:  readline-devel
-%if 0%{?suse_version} && 0%{?suse_version} < 1550
-Requires(post): info
-Requires(preun):info
-%endif
 Suggests:       xboard
 Provides:       chess_backend
 Provides:       gchess
+%if 0%{?suse_version} && 0%{?suse_version} < 1550
+Requires(post): info
+Requires(preun): info
+%endif
 
 %description
 A worthy chess opponent that runs in text mode. Find an X11 interface
@@ -54,13 +52,13 @@ in the xboard package.
 %build
 %configure
 %make_build
-sed -i 's/^Book[[:space:]]*=[[:space:]]*false/Book = true/;s/^OwnBook[[:space:]]=[[:space:]]*false/OwnBook = true/' src/gnuchess.ini
+sed -i 's/^Book[[:space:]]*=[[:space:]]*false/Book = true/;s/^OwnBook[[:space:]]=[[:space:]]*false/OwnBook = true/' doc/gnuchess.ini
 sh %{SOURCE3} %{SOURCE2}
 
 %install
 %make_install
-# install xgnuchess
-install -m 755 %{SOURCE4} %{buildroot}/%{_bindir}
+install -m 644 -D -t %{buildroot}%{_datadir}/gnuchess src/book.bin
+rm -v %{buildroot}%{_bindir}/gnuchessx
 %find_lang %{name}
 
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
@@ -72,10 +70,11 @@ install -m 755 %{SOURCE4} %{buildroot}/%{_bindir}
 %endif
 
 %files -f %{name}.lang
-%doc AUTHORS ChangeLog NEWS README TODO
+%doc AUTHORS ChangeLog NEWS README TODO doc/gnuchess.ini
 %license COPYING
-%{_bindir}/*
-%{_mandir}/man*/*
+%{_bindir}/gnuchess
+%{_bindir}/gnuchessu
+%{_mandir}/man1/gnuchess.1%{?ext_man}
 %{_infodir}/gnuchess.info%{?ext_info}
 %{_datadir}/gnuchess
 %dir %{_datadir}/games/plugins
