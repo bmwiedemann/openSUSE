@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 08 15:08:50 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.150.0:
+  * releaser: Bump versions for release of 0.150.0
+  * build(deps): bump golang.org/x/mod from 0.27.0 to 0.28.0
+  * modules: Add support for direct version module imports in hugo.toml
+  * resources/page: Fix truncated summary logic
+  * config/security: Add PROGRAMDATA to the osenv allowlist
+  * releaser: Prepare repository for 0.150.0-DEV
+
+-------------------------------------------------------------------
 Thu Sep 04 20:50:44 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.149.1:
