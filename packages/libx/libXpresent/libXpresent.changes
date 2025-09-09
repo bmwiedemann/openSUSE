@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep  8 09:24:14 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 1.0.2
+  * configure: Use LT_INIT from libtool 2 instead of deprecated
+    AC_PROG_LIBTOOL
+  * XPresentWireToCookie: avoid writing to NULL pointer if
+    malloc() fails
+  * meson: Add option to build with meson
+  * Improve man page formatting
+
+-------------------------------------------------------------------
 Tue May  2 14:26:01 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Add -32bit package

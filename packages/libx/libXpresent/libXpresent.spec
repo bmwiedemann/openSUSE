@@ -1,7 +1,7 @@
 #
 # spec file for package libXpresent
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
 Name:           libXpresent
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        An X Window System client interface to the Present extension to the X protocol
 License:        MIT
@@ -34,9 +34,9 @@ BuildRequires:  pkgconfig(xrandr)
 %if 0%{?suse_version} < 01550 && 0%{?is_opensuse}
 BuildRequires:  pkgconfig(presentproto)
 %endif
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  fdupes
+BuildRequires:  meson
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 
 %description
@@ -73,11 +73,11 @@ This package contains header files and documentation for the Xpresent library.
 %setup -q
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 rm -f %{buildroot}%{_libdir}/*.la
 %fdupes %{buildroot}%{_mandir}
 
