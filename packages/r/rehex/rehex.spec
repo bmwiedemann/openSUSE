@@ -1,7 +1,7 @@
 #
 # spec file for package rehex
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           rehex
-Version:        0.63.2
+Version:        0.63.3
 Release:        0
 Summary:        Reverse Engineers' Hex Editor
 License:        GPL-2.0-only
