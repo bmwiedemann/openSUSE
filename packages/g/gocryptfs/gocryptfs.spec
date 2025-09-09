@@ -1,7 +1,7 @@
 #
 # spec file for package gocryptfs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,7 +28,7 @@
 %endif
 
 Name:           gocryptfs
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        Encrypted overlay filesystem written in Go
 License:        MIT

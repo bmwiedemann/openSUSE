@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  9 09:30:27 UTC 2025 - munix9@googlemail.com
+
+- Update to version 2.6.1:
+  * Fix warnings 'cipherSize X: incomplete last block (Y bytes),
+    padding to Z bytes' (harmless but annoying, #951)
+
+-------------------------------------------------------------------
 Sat Jul 26 12:56:21 UTC 2025 - munix9@googlemail.com
 
 - Update to version 2.6.0:

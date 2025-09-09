@@ -77,4 +77,14 @@
 - Add tests (forwarded request 1295933 from munix9)</comment>
     <requestid>1295936</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4b0642de9de3566791f927b1f6bf9fca</srcmd5>
+    <version>2.6.1</version>
+    <time>1757442655</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.6.1:
+  * Fix warnings 'cipherSize X: incomplete last block (Y bytes),
+    padding to Z bytes' (harmless but annoying, #951) (forwarded request 1303325 from munix9)</comment>
+    <requestid>1303385</requestid>
+  </revision>
 </revisionlist>
