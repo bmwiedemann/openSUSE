@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  9 06:46:58 UTC 2025 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 2.9:
+  https://lore.kernel.org/linux-rt-users/20250701144306.32234-1-jkacur@redhat.com/
+- Remove patch rt-tests_glibc_2.41.patch (fix was reverted during 2.9 release
+  cycle and replaced with a different fix 30644ea ("sched_attr: Do not define
+  for glibc >= 2.41")).
+
+-------------------------------------------------------------------
 Mon Mar 10 11:40:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:

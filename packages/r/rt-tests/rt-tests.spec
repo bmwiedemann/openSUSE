@@ -17,15 +17,13 @@
 
 
 Name:           rt-tests
-Version:        2.8
+Version:        2.9
 Release:        0
 Summary:        Realtime Kernel Testsuite
 License:        GPL-2.0-only
 Group:          System/Benchmark
 URL:            https://git.kernel.org/pub/scm/utils/rt-tests/rt-tests.git
 Source0:        https://git.kernel.org/pub/scm/utils/rt-tests/rt-tests.git/snapshot/rt-tests-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         rt-tests_glibc_2.41.patch
 BuildRequires:  libnuma-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
