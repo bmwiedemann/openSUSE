@@ -1,7 +1,7 @@
 #
 # spec file for package fstl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fstl
-Version:        0.11.0
+Version:        0.11.1
 Release:        0
 Summary:        Fast stl file viewer
 License:        AGPL-3.0-only
@@ -25,7 +25,7 @@ Group:          Productivity/Graphics/3D Editors
 URL:            https://github.com/mkeeter/fstl.git
 Source0:        https://github.com/fstl-app/fstl/archive/refs/tags/v%{version}.tar.gz
 Source1:        %{name}.desktop
-BuildRequires:  cmake >= 2.8.12
+BuildRequires:  cmake >= 3.10
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  icoutils
 BuildRequires:  update-desktop-files

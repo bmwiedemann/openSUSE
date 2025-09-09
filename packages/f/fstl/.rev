@@ -40,4 +40,15 @@
   * Feature/open external #126</comment>
     <requestid>1240834</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>252a62da040f72bc605549c3a1d5b625</srcmd5>
+    <version>0.11.1</version>
+    <time>1757442547</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.11.1:
+  * fix: opening files with cyrillic symbols from command line #129
+  * fix: minor incompatibilties with qt 5.12 #134
+  * chore: update to cmake 3.10, enforce formatting with tooling #135</comment>
+    <requestid>1303123</requestid>
+  </revision>
 </revisionlist>
