@@ -1890,4 +1890,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>1302194</requestid>
   </revision>
+  <revision rev="236" vrev="1">
+    <srcmd5>c570f4951168043eda4012bab91d127e</srcmd5>
+    <version>17.163</version>
+    <time>1757442540</time>
+    <user>anag_factory</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>1303349</requestid>
+  </revision>
 </revisionlist>
