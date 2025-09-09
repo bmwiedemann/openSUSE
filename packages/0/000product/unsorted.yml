@@ -17229,7 +17229,7 @@ unsorted:
   - libzbc6 
   - libzck-devel 
   - libzdb-devel 
-  - libzdb13 
+  - libzdb17 
   - libze_intel_gpu1 
   - libzeitgeist-1_0-1 
   - libzeitgeist-devel 
@@ -25713,6 +25713,7 @@ unsorted:
   - python311-lazr.restfulclient 
   - python311-lazr.uri 
   - python311-lazy 
+  - python311-lazy-imports 
   - python311-lazy-loader 
   - python311-lazy-object-proxy 
   - python311-lazyarray 
@@ -27369,6 +27370,7 @@ unsorted:
   - python311-user_agent 
   - python311-userpath 
   - python311-usfm2osis 
+  - python311-uuid6 
   - python311-uv 
   - python311-uv-bash-completion 
   - python311-uv-fish-completion 
@@ -29479,6 +29481,7 @@ unsorted:
   - python312-lazr.restfulclient 
   - python312-lazr.uri 
   - python312-lazy 
+  - python312-lazy-imports 
   - python312-lazy-loader 
   - python312-lazy-object-proxy 
   - python312-lazyarray 
@@ -31171,6 +31174,7 @@ unsorted:
   - python312-user_agent 
   - python312-userpath 
   - python312-usfm2osis 
+  - python312-uuid6 
   - python312-uv 
   - python312-uv-bash-completion 
   - python312-uv-fish-completion 
@@ -33236,6 +33240,7 @@ unsorted:
   - python313-lazr.restfulclient 
   - python313-lazr.uri 
   - python313-lazy 
+  - python313-lazy-imports 
   - python313-lazy-loader 
   - python313-lazy-object-proxy 
   - python313-lazyarray 
@@ -34897,6 +34902,7 @@ unsorted:
   - python313-user_agent 
   - python313-userpath 
   - python313-usfm2osis 
+  - python313-uuid6 
   - python313-uv 
   - python313-uv-bash-completion 
   - python313-uv-fish-completion 
