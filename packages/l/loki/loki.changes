@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Sep 04 12:42:22 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.5.4:
+  * fix: Upgrade go version 1.24.6 in release-3.5.x (#19096)
+  * chore: Add ingester_chunks_flush_requests_total (backport release-3.5.x) (#19088)
+  * docs: prep OTEL shared content (backport release-3.5.x) (#19057)
+  * docs: backport typo to 3.5 branch (#19047)
+  * docs: Adding link to learning journey (backport release-3.5.x) (#19006)
+  * docs: Update deployment to point to new repo (backport release-3.5.x) (#18970)
+  * docs: Clarify that Distributed = Microservices (backport release-3.5.x) (#18968)
+  * docs: backport add note to retention topic (#18924)
+  * docs: Remove port number from OTEL endpoint (backport release-3.5.x) (#18922)
+  * docs: remove Jaeger from troubleshooting (backport release-3.5.x) (#18920)
+  * docs: Add note to LIDS template (backport release-3.5.x) (#18885)
+  * docs: Adding a note for Cloud customers (backport release-3.5.x) (#18883)
+  * docs: backport typo fix to 3.5 (#18827)
+  * docs: backport link fix 3.5 (#18823)
+  * docs: update heading to match example (backport release-3.5.x) (#18771)
+  * docs: fix typo in Bloom Filters topic (backport release-3.5.x) (#18766)
+  * fix(docs): added instructions for how to upgrade zone-aware ingesters… (#18663)
+  * docs: fix broken link (backport release-3.5.x) (#18627)
+  * docs(fix): Updated port expose for Alloy (backport release-3.5.x) (#18611)
+  * docs: Update Release Notes for 3.5.3 (backport release-3.5.x) (#18557)
+  * ci: backport 18538 to 3.5 (#18560)
+  * chore(release-3.5.x): release 3.5.3 (#18424)
+  * docs: Fix navigation for drilldown (backport release-3.5.x) (#18492)
+
+-------------------------------------------------------------------
 Wed Jul 23 09:42:01 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.5.3:

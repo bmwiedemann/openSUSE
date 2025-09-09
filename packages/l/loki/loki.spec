@@ -1,7 +1,7 @@
 #
 # spec file for package loki
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global promtail_datadir /var/lib/promtail
 
 Name:           loki
-Version:        3.5.3
+Version:        3.5.4
 Release:        0
 Summary:        Loki: like Prometheus, but for logs
 License:        Apache-2.0
