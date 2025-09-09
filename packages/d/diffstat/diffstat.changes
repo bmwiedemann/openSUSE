@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  9 10:35:57 UTC 2025 - pgajdos@suse.com
+
+- version update to 1.68
+  + correct len parameter of mbsrtowcs (Redhat #2362049).
+
+-------------------------------------------------------------------
 Wed Dec  4 13:18:54 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.77:

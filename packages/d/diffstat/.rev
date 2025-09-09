@@ -298,4 +298,13 @@
     <comment></comment>
     <requestid>1229157</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7e125286e86b3f55b76a5ad85d3359c2</srcmd5>
+    <version>1.68</version>
+    <time>1757442644</time>
+    <user>anag_factory</user>
+    <comment>- version update to 1.68
+  + correct len parameter of mbsrtowcs (Redhat #2362049).</comment>
+    <requestid>1303335</requestid>
+  </revision>
 </revisionlist>
