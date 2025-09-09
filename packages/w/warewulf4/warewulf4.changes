@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Sep 08 09:45:51 UTC 2025 - Christian Goll <cgoll@suse.com>
+
+- Update to version 4.6.4:
+  * v4.6.4 release updates
+  * Convert disk booleans from wwbool to *bool which allows bools in 
+    disk to be set to false via command line (bsc#1248768)
+  * Update NetworkManager Overlay
+    * Disable ipv4 in NetworkManager if no address or route is specified
+  * fix(wwctl): Create overlay edit tempfile in tmpdir
+  * Add default for systemd name for warewulf in warewulf.conf
+  * Atomic overlay file application in wwclient
+  * Simpler names for overlay methods
+  * Fix warewulfd api behavior when deleting distribution overlay
+- renamed siwtched-to-dnsmasq-as-default-dhcp-and-tftp-service.patch
+  to switched-to-dnsmasq-as-default-dhcp-and-tftp-service.patch
+- added fix-CVE-2025-58058.patch (bsc#1248906)
+
+-------------------------------------------------------------------
+Mon Aug 04 07:55:28 UTC 2025 - Christian Goll <cgoll@suse.com>
+
+- Update to version 4.6.3:
+  * v4.6.3 release
+  * IPv6 iPXE support
+  * Fix a syntax error in the RPM specfile
+  * Fix a race condition in wwctl overlay edit
+  * Fixed handling of comma-separated mount options in `fstab` and `ignition` overlays
+  * Move reexec.Init() to beginning of wwctl
+  * Add documentation for using tmpfs to distribute across numa nodes
+  * added warewuld configure option
+  * Fix wwctl upgrade nodes to handle kernel argument lists (bsc#1227686 bsc#1227465)
+  * Address copilot review from #1945
+  * Refactor wwapi tests for proper isolation
+  * Bugfix: cloning a site overlay when parent dir does not exist
+  * Clone to a site overlay when adding files in wwapi
+  * Consolidated createOverlayFile and updateOverlayFile to addOverlayFile
+  * Support for creating and updating overlay file in wwapi
+  * Only return overlay files that refer to a path within the overlay
+  * add overlay file deletion support
+  * DELETE /api/overlays/{id}?force=true can delete overlays in use
+  * Restore idempotency of PUT /api/nodes/{id}
+  * Simplify overlay mtime api and add tests
+  * add node overlay buildtime
+  * Improved netplan support
+  * Rebuild overlays for discovered nodes
+  * Restrict userdocs from building during pr when not modified
+  * Update to v4.6.2 GitHub release notes
+
+-------------------------------------------------------------------
+Thu Jul 24 15:06:07 UTC 2025 - Christian Goll <cgoll@suse.com>
+
+- moved project provided overlays to /usr/share/warewulf/overlays,
+  user created overlays go to /var/lib/warewulf/overlays
+- added switched-to-dnsmasq-as-default-dhcp-and-tftp-service.patch
+  which switches to dnsmasq as default dhcp and tftp provider
+- warewulf.conf will now be replaced, as old dhcpd config won't work 
+  any more
+
+-------------------------------------------------------------------
 Thu Jul 10 07:00:04 UTC 2025 - cgoll@suse.com
 
 - update to 4.6.2 which contains the (preview) support for 
@@ -10,7 +68,7 @@ Thu Jul 10 07:00:04 UTC 2025 - cgoll@suse.com
   * security-fixes.patch
   * udev-regression.patch
 - marked slurm as recommeneded in the warewulf4-overlay-slurm
-  package bsc#124608
+  package bsc#1246082
 
 -------------------------------------------------------------------
 Fri Mar 28 09:59:27 UTC 2025 - Christian Goll <cgoll@suse.com>
