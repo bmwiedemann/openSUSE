@@ -111,4 +111,41 @@
     <comment>- Use pyproject macros from python-rpm-macros to build and install. (forwarded request 1287030 from StevenK)</comment>
     <requestid>1287135</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>62083f637b131567266c79897ab859d3</srcmd5>
+    <version>1.4.3.7</version>
+    <time>1757442593</time>
+    <user>anag_factory</user>
+    <comment>- version update to 1.4.3-7
+  * consistant versioning pip -&gt; dpkg
+  * prevent package not found error
+  * new version update logic: updatechangelog.sh
+  * bugfix bad shebang after install
+  * debian buildfile changes from latest ubuntu source
+  * now generating metadata file Packages instead of Packages.gz
+  * removed every thing releated to the USER_INSTALL_DIR, existing installations may be buggy
+  * Workaround for wayland support use GDK_BACKEND x11
+  * Legacy gnome extension support
+  * initProxy with retrys and launch onboard once as fallback if the DBus connection failed
+  1.4.2.2
+  * updated README.md
+  * new build_debs.sh and apt_install_debs.sh
+  1.4.2-1
+  * now the onboard version can be checked '--version'
+  * updated README.md
+  * new build_debs.sh and install_debs_with_local_repo.sh
+  * new check for GNOME Accessibility Toolkit
+  1.4.2
+  * fixed crash when pressing a key or mouseover (thread-state.patch for Python 3.12)
+  * fixed missing utf8 support since python3.12 ('u' format is removed in python 3.12, switched to PyUnicode_AsWideCharString)
+  * fixed SyntaxWarning: 'str' object is not callable; perhaps you missed a comma?'
+  * fixed: backslash escaping for python 3.12 support
+  * fixed many deprecation warnings
+- modified patches
+  % onboard-fix-crash-on-hover.patch (refreshed)
+- deleted patches
+  - onboard-Onboard-Config.py-Check-desktop-env-before-requestin.patch (upstreamed)
+  - onboard-remove-dep-typelib-appindicator3.patch (upstreamed)</comment>
+    <requestid>1303184</requestid>
+  </revision>
 </revisionlist>
