@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Tue Sep 02 06:05:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.13.1:
+  * Fixed
+    - #5418: Fixed typo in Swagger definition of MmdsConfig, where
+      the property imds_compat was spelled as imds_comat. This
+      caused auto-generated client to create bad requests.
+
+-------------------------------------------------------------------
+Fri Aug 29 04:06:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.13.0:
+  * Added
+    - #5139: Added support for PVTime. This is used to support
+      steal time on ARM machines.
+    - #5175: Allow including a custom cpu template directly in the
+      json configuration file passed to --config-file under the
+      cpu_config key.
+    - #5274: Allow taking diff snapshots even if dirty page
+      tracking is disabled, by using mincore(2) to overapproximate
+      the set of dirty pages. Only works if swap is disabled.
+    - #5290: Extended MMDS to support the EC2 IMDS-compatible
+      session token headers (i.e. "X-aws-ec2-metadata-token" and
+      "X-aws-ec2-metadata-token-ttl-seconds") alongside the
+      MMDS-specific ones.
+    - #5290: Added mmds.rx_invalid_token and mmds.rx_no_token
+      metrics to track the number of GET requests that were
+      rejected due to token validation failures in MMDS version 2.
+      These metrics also count requests that would be rejected in
+      MMDS version 2 when MMDS version 1 is configured. They helps
+      users assess readiness for migrating to MMDS version 2.
+    - #5310: Added an optional imds_compat field (default to false
+      if not provided) to PUT requests to /mmds/config to enforce
+      MMDS to always respond plain text contents in the IMDS format
+      regardless of the Accept header in requests. Users need to
+      regenerate snapshots.
+    - #5364: Added PCI support in Firecracker. PCI support is
+      optional. Users can enable it passing the --enable-pci flag
+      when launching the Firecracker process. When Firecracker
+      process is launched with PCI support, it will create all
+      VirtIO devices using a PCI VirtIO transport. If not enabled,
+      Firecracker will use the MMIO transport instead.
+  * Changed
+    - #5165: Changed Firecracker snapshot feature from developer
+      preview to generally available. Incremental snapshots remain
+      in developer preview.
+    - #5282: Updated jailer to no longer require the executable
+      file name to contain firecracker.
+    - #5290: Changed MMDS to validate the value of
+      "X-metadata-token-ttl-seconds" header only if it is a PUT
+      request to /latest/api/token, as in EC2 IMDS.
+    - #5290: Changed MMDS version 1 to support the session oriented
+      method as in version 2, allowing easier migration to version
+      2. Note that MMDS version 1 accepts a GET request even with
+      no token or an invalid token so that existing workloads
+      continue to work.
+  * Deprecated
+    - #5274: Deprecated the enable_diff_snapshots parameter of the
+      /snapshot/load API. Use track_dirty_pages instead.
+  * Removed
+    - #5411: Removed official support for Intel Skylake instances.
+      Firecracker will continue to work on those instances, but we
+      will no longer perform automated testing on them.
+  * Fixed
+    - #5222: Fixed network and rng devices locking up on hosts with
+      non 4K pages.
+    - #5226: Fixed MMDS to set Content-Type header correctly (i.e.
+      Content-Type: text/plain for IMDS-formatted or error
+      responses and Content-Type: application/json for
+      JSON-formatted responses).
+    - #5260: Fixed a bug allowing the block device to starve all
+      other devices when backed by a sufficiently slow drive.
+    - #4207: Fixed GSI numbering on aarch64 to correctly allow up
+      to 96 devices being attached simultaneously.
+    - #5290: Fixed MMDS to reject PUT requests containing
+      X-Forwarded-For header regardless of its casing (e.g.
+      x-forwarded-for).
+    - #5328: Fixed MMDS to set the token TTL header (i.e.
+      "X-metadata-token-ttl-seconds" or
+      "X-aws-ec2-metadata-token-ttl-seconds") in the response to
+      "PUT /latest/api/token", as EC2 IMDS does.
+
+-------------------------------------------------------------------
 Wed Jun 25 04:40:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.12.1:
@@ -589,7 +672,7 @@ Tue Oct 10 14:01:39 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
     * Fixed feature flags in T2S CPU template on Intel Ice Lake.
     * Fixed CPUID leaf 0xb to be exposed to guests running on AMD host.
     * Fixed a performance regression in the jailer logic for closing open file
-      descriptors. 
+      descriptors.
     * A race condition that has been identified between the API thread and the VMM
       thread due to a misconfiguration of the api_event_fd.
     * Fixed CPUID leaf 0x1 to disable perfmon and debug feature on x86 host.
@@ -640,7 +723,7 @@ Mon Dec 19 10:44:16 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
   * Made the T2 template more robust by explicitly disabling additional
     CPUID flags that should be off
   * Now MAC address is correctly displayed when queried with GET /vm/config
-  * Fixed a self-DoS scenario in the virtio-queue code 
+  * Fixed a self-DoS scenario in the virtio-queue code
   * Fixed the bad handling of kernel cmdline parameters when init arguments were
     provided via JSON PUT /boot-source request
   * Fixed a bug on ARM64 hosts  where the upper 64bits of the V0-V31 FL/SIMD
@@ -650,7 +733,7 @@ Mon Dec 19 10:44:16 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 Sat Oct  1 17:55:05 UTC 2022 - Liang Yan <lyan@opensuse.org>
 
 - Update firecracker to version 1.1.1
-  https://github.com/firecracker-microvm/firecracker/releases/tag/v1.1.1 
+  https://github.com/firecracker-microvm/firecracker/releases/tag/v1.1.1
   https://github.com/firecracker-microvm/firecracker/releases/tag/v1.1.0
 - Add build depenceny clang
 - Update cargo_config based on new vendor
@@ -681,28 +764,28 @@ Mon Feb 14 01:02:21 UTC 2022 - Liang Yan <ly@xryan.net>
 
 - Update firecracker to version 1.0.0
   Detail could be found below:
-  https://github.com/firecracker-microvm/firecracker/releases/tag/v1.0.0 
-  
+  https://github.com/firecracker-microvm/firecracker/releases/tag/v1.0.0
+
 * Patches dropped:
   0001-dependencies-Included-vm-fdt-crate.patch
   0002-vm-fdt-Replace-libfdt-with-vm-fdt.patch
   0003-libfdt-bindings-Deleted-libfdt-bindings-crate.patch
-  
+
 -------------------------------------------------------------------
 Tue Sep 14 23:45:26 UTC 2021 - Liang Yan <lyan@suse.com>
 
 - Replace libfdt with vm-fdt.
   0001-dependencies-Included-vm-fdt-crate.patch
   0002-vm-fdt-Replace-libfdt-with-vm-fdt.patch
-  0003-libfdt-bindings-Deleted-libfdt-bindings-crate.patch 
+  0003-libfdt-bindings-Deleted-libfdt-bindings-crate.patch
 
 -------------------------------------------------------------------
 Wed Sep  8 22:16:33 UTC 2021 - Liang Yan <lyan@suse.com>
 
 - Update firecracker to version 0.25.0
-  Add workspace to firecracker. The workspace has three packages, 
+  Add workspace to firecracker. The workspace has three packages,
   firecracker,jailer,seccompiler
-  
+
   Detail could be found below:
   https://github.com/firecracker-microvm/firecracker/blob/main/CHANGELOG.md
 
@@ -729,7 +812,7 @@ Mon May 25 11:54:18 UTC 2020 - Liang Yan <lyan@suse.com>
   Removed:
     * Removed experimental support for vhost-based vsock devices.
     * Removed unused 'Halting' and 'Halted' instance states.
- 
+
 -------------------------------------------------------------------
 Mon May 25 11:11:56 UTC 2020 - Liang Yan <lyan@suse.com>
 

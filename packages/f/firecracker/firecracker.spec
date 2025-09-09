@@ -1,7 +1,7 @@
 #
 # spec file for package firecracker
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           firecracker
-Version:        1.12.1
+Version:        1.13.1
 Release:        0
 Summary:        Virtual Machine Monitor for creating microVMs
 License:        Apache-2.0
