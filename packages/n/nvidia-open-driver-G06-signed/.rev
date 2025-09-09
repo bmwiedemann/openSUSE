@@ -861,4 +861,17 @@
     <comment>- make sure Requires to nvidia packages are not added for SLE16</comment>
     <requestid>1299450</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>fe5d0ab262ad5d33829f85d48fe9ef89</srcmd5>
+    <version>580.82.07</version>
+    <time>1757442546</time>
+    <user>anag_factory</user>
+    <comment>- let conflict CUDA and non-CUDA -devel packages; this is needed
+  if both have the same version
+
+- update non-CUDA variant to 580.82.07 (boo#1249235)
+
+- update CUDA variant to 580.82.07</comment>
+    <requestid>1303203</requestid>
+  </revision>
 </revisionlist>

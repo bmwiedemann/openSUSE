@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep  8 08:21:42 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- let conflict CUDA and non-CUDA -devel packages; this is needed
+  if both have the same version
+
+-------------------------------------------------------------------
+Sun Sep  7 02:48:26 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA variant to 580.82.07 (boo#1249235)
+
+-------------------------------------------------------------------
+Sat Sep  6 21:31:45 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update CUDA variant to 580.82.07
+
+-------------------------------------------------------------------
 Thu Aug 14 17:10:25 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - make sure Requires to nvidia packages are not added for SLE16

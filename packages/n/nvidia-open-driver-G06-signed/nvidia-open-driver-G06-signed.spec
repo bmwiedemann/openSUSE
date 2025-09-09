@@ -16,8 +16,8 @@
 #
 
 
-%define gfx_version 580.76.05
-%define cuda_version 580.65.06
+%define gfx_version 580.82.07
+%define cuda_version 580.82.07
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 %if "%{flavor}" == "cuda"
@@ -125,6 +125,8 @@ ExclusiveArch:  x86_64 aarch64
       for f in %{flavors_to_build}; do \
 	  echo "%package -n %{name}-${f}-devel"; \
 	  echo "Summary:      Devel Package to %name"; \
+	  echo "Provides:  nvidia-open-driver-G06-signed-${f}-devel(%mykind)"; \
+	  echo "Conflicts: nvidia-open-driver-G06-signed-${f}-devel(%otherkind)"; \
 	  echo "%description -n %{name}-${f}-devel"; \
 	  echo "Provide build requiresments to build against %{name}"; \
 	  echo "%files -n %{name}-${f}-devel -f files-${f}"; \
