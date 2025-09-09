@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep  8 22:14:36 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 3.4.1
+  * This update adds the ability to see and enqueue .m3u playlists
+    from the library view, fixes a few minor bugs and removes ALAC
+    decoding support.
+- add faad2 BuildRequires: enable aac support
+- add gcc-c++ BuildRequires: needed for build v3
+- add libogg-devel BuildRequires: enable ogg support
+- add libtag-devel BuildRequires: enable tag support
+- remove unneeded BuildRequires: 
+  * freeimage-devel
+  * pkgconfig(libavformat)
+
+-------------------------------------------------------------------
 Sat Sep 21 19:08:26 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.8.1

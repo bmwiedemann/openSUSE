@@ -208,4 +208,23 @@
 </comment>
     <requestid>1202423</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>abcacc1a9b158c075b46b7a63bdbbce0</srcmd5>
+    <version>3.4.1</version>
+    <time>1757442624</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.4.1
+  * This update adds the ability to see and enqueue .m3u playlists
+    from the library view, fixes a few minor bugs and removes ALAC
+    decoding support.
+- add faad2 BuildRequires: enable aac support
+- add gcc-c++ BuildRequires: needed for build v3
+- add libogg-devel BuildRequires: enable ogg support
+- add libtag-devel BuildRequires: enable tag support
+- remove unneeded BuildRequires: 
+  * freeimage-devel
+  * pkgconfig(libavformat)
+</comment>
+    <requestid>1303265</requestid>
+  </revision>
 </revisionlist>

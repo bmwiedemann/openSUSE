@@ -1,6 +1,7 @@
 #
 # spec file for package kew
 #
+# Copyright (c) 2025 mantarimay
 # Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,24 +17,28 @@
 #
 
 
+%bcond_without aac
 Name:           kew
-Version:        2.8.1
+Version:        3.4.1
 Release:        0
 Summary:        A command-line music player
 License:        GPL-2.0-only
 URL:            https://github.com/ravachol/kew
 Source:         %{url}/archive/v%{version}/kew-%{version}.tar.gz
-BuildRequires:  freeimage-devel
-BuildRequires:  libnotify-devel
+BuildRequires:  libnotify-devel 
+BuildRequires:  libogg-devel
+BuildRequires:  libtag-devel
+%if %{with aac}
+BuildRequires:  faad2
+%endif
 %if 0%{?suse_version} < 1600
 BuildRequires:  clang >= 17
 %else
-BuildRequires:  gcc >= 13
+BuildRequires:  gcc-c++
 %endif
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(chafa)
 BuildRequires:  pkgconfig(fftw3)
-BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(vorbisfile)
 
@@ -50,11 +55,11 @@ sed -i '1s|gcc|clang|' Makefile
 %make_build
 
 %install
-%make_install
+%make_install PREFIX=%_prefix MAN_DIR=%_mandir
 
 %files
 %license LICENSE
-%doc README*
+%doc README* CHANGELOG.md
 %{_bindir}/kew
 %{_mandir}/man1/kew.1%{?ext_man}
 
