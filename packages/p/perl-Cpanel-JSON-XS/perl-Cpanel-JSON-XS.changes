@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  8 17:01:48 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 4.400.0 (4.40)
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.40 2025-09-07 (rurban)
+  - Fix CVE-2025-40929 overflow with overlong numbers, fuzzing only.
+  - Detect more malformed numbers, with two decimal points.
+  - Pin github actions to latest @v via pinact run -u
+  (bsc#1249331)
+
+-------------------------------------------------------------------
 Fri Dec 13 05:33:30 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.390.0 (4.39)

@@ -319,4 +319,18 @@
     <comment></comment>
     <requestid>1236286</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>5a4b4769bf6ca2f557e3334dca89b3ef</srcmd5>
+    <version>4.400.0</version>
+    <time>1757442617</time>
+    <user>anag_factory</user>
+    <comment>- updated to 4.400.0 (4.40)
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+  4.40 2025-09-07 (rurban)
+  - Fix CVE-2025-40929 overflow with overlong numbers, fuzzing only.
+  - Detect more malformed numbers, with two decimal points.
+  - Pin github actions to latest @v via pinact run -u
+  (bsc#1249331)</comment>
+    <requestid>1303255</requestid>
+  </revision>
 </revisionlist>
