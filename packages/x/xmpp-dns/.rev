@@ -181,4 +181,14 @@
   * Update link relations to version of 2025-03-27.</comment>
     <requestid>1299224</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e1d91b0d93b05a1b4962ff0b2f050bb2</srcmd5>
+    <version>0.5.2</version>
+    <time>1757442548</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.5.2:
+  Added:
+  * Print TLS version after successful connection.</comment>
+    <requestid>1303132</requestid>
+  </revision>
 </revisionlist>

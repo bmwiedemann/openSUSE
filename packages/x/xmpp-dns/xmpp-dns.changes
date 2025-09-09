@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  8 06:57:01 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.2:
+  Added:
+  * Print TLS version after successful connection.
+
+-------------------------------------------------------------------
 Wed Aug 13 12:01:06 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.0:
