@@ -946,4 +946,20 @@
   * feat: support esquery in kind #2007</comment>
     <requestid>1301230</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>4ddfdbb027c0e2c7526b18effd698749</srcmd5>
+    <version>0.39.5</version>
+    <time>1757442632</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.39.5:
+  * Allowing LSP clients without publish diagnostics data support
+    to support code fixes #2209
+  * fix: store client cap and do not send workspace folder req #2211
+  * fix: comment after node should be ignored in strictness=relax #2216
+  * fix: apply_all_code_actions function disallow multi-line #2222
+  * chore(deps): update dependency oxlint to v1.13.0 4be8252
+  * chore(deps): update dependency @ast-grep/napi to v0.39.4 3187d39
+  * chore(deps): update dependency oxlint to v1.14.0 7405f99</comment>
+    <requestid>1303281</requestid>
+  </revision>
 </revisionlist>
