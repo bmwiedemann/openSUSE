@@ -1,0 +1,5 @@
+<package name="python-lazy-imports" project="openSUSE:Factory">
+  <title></title>
+  <description>Utility package to create lazy modules, deferring associated imports until attribute access</description>
+  <url>https://github.com/bachorp/lazy-imports</url>
+</package>
