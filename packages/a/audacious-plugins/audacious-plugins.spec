@@ -27,7 +27,7 @@
 %endif
 
 Name:           audacious-plugins
-Version:        4.5
+Version:        4.5.1
 Release:        0
 Summary:        Plugins for Audacious
 License:        BSD-2-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only AND MIT
