@@ -1,135 +1,142 @@
+gpxsee (13.47) stable; urgency=low
+
+  * Added support for Mapsforge maps layers.
+  * Added "Outdoor" and "Winter" layers to the Mapsforge style.
+
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 08 Sep 2025 22:09:07 +0200
+
 gpxsee (13.46) stable; urgency=low
 
   * Fixed handling of segmented FIT tracks.
   * Fixed popups/tooltips displaying on Wayland.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 09 Aug 2025 15:08:49 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 09 Aug 2025 15:08:49 +0200
 
 gpxsee (13.45) stable; urgency=low
 
   * Vector maps styles tweaks.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 13 Jul 2025 12:35:41 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 13 Jul 2025 12:35:41 +0200
 
 gpxsee (13.44) stable; urgency=low
 
   * Added tracks/routes/areas legend option.
   * Various minor fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 07 Jun 2025 19:17:47 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 07 Jun 2025 19:17:47 +0200
 
 gpxsee (13.43) stable; urgency=low
 
   * Improved marine charts (ENC,IMG) style/rendering.
   * Added OpenFreeMap to the default maps list.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 20 May 2025 22:44:23 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 20 May 2025 22:44:23 +0200
 
 gpxsee (13.42) stable; urgency=low
 
   * Significantly improved marine charts (ENC,IMG) style/rendering.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 07 May 2025 23:33:37 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 07 May 2025 23:33:37 +0200
 
 gpxsee (13.41) stable; urgency=low
 
   * Fixed switched ENC maps units multipliers (broken in 13.40).
 
- -- Martin Tuma <tumic@cbox.cz>  Thu, 24 Apr 2025 06:32:21 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Thu, 24 Apr 2025 06:32:21 +0200
 
 gpxsee (13.40) stable; urgency=high
 
   * Fixed Vakaros VKX MIME magic detection.
   * Improved ENC maps style/rendering.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 23 Apr 2025 22:52:03 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 23 Apr 2025 22:52:03 +0200
 
 gpxsee (13.39) stable; urgency=low
 
   * Added support for Vakaros VKX files.
   * Improved ENC maps rendering performance.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 19 Apr 2025 18:05:11 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 19 Apr 2025 18:05:11 +0200
 
 gpxsee (13.38) stable; urgency=low
 
   * Added support for Velocitek VTK files.
   * Improved Mapsforge maps render theme.
 
- -- Martin Tuma <tumic@cbox.cz>  Fri, 21 Mar 2025 22:42:28 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Fri, 21 Mar 2025 22:42:28 +0100
 
 gpxsee (13.37) stable; urgency=low
 
   * Added support for 70mai cameras GPS logs.
   * Improved multi-level ENC atlases rendering.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 08 Mar 2025 12:20:43 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 08 Mar 2025 12:20:43 +0100
 
 gpxsee (13.36) stable; urgency=low
 
   * Improved IMG nautical charts rendering.
 
- -- Martin Tuma <tumic@cbox.cz>  Fri, 21 Feb 2025 00:23:03 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Fri, 21 Feb 2025 00:23:03 +0100
 
 gpxsee (13.35) stable; urgency=low
 
   * Added support for geo URIs (RFC 5870).
   * Significantly improved nautical charts rendering (ENC & IMG).
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 12 Feb 2025 23:10:57 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 12 Feb 2025 23:10:57 +0100
 
 gpxsee (13.34) stable; urgency=low
 
   * Improved ENC maps style/rendering.
   * Minor IMG maps fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 05 Jan 2025 09:41:30 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 05 Jan 2025 09:41:30 +0100
 
 gpxsee (13.33) stable; urgency=low
 
   * Improved IMG & Mapsforge maps rendering performance.
   * Improved Mapsforge map render theme.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 10 Dec 2024 19:57:23 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 10 Dec 2024 19:57:23 +0100
 
 gpxsee (13.32) stable; urgency=low
 
   * Improved Mapsforge maps rendering performance.
   * Improved Mapsforge map render theme.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 24 Nov 2024 15:25:16 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 24 Nov 2024 15:25:16 +0100
 
 gpxsee (13.31) stable; urgency=low
 
   * Improved Mapsforge maps rendering performance.
   * Improved Mapsforge map render theme.
 
- -- Martin Tuma <tumic@cbox.cz>  Fri, 22 Nov 2024 08:28:50 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Fri, 22 Nov 2024 08:28:50 +0100
 
 gpxsee (13.30) stable; urgency=low
 
   * Improved Mapsforge map render theme.
   * Improved Mapsforge map render engine.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 20 Nov 2024 20:58:11 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 20 Nov 2024 20:58:11 +0100
 
 gpxsee (13.29) stable; urgency=low
 
   * Fixed broken Mapsforge theme in Qt5 builds.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 18 Nov 2024 11:15:07 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 18 Nov 2024 11:15:07 +0100
 
 gpxsee (13.28) stable; urgency=low
 
   * New Mapsforge (OpenAndroMaps) render theme.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 18 Nov 2024 01:41:37 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 18 Nov 2024 01:41:37 +0100
 
 gpxsee (13.27) stable; urgency=low
 
   * Multiple vector maps rendering improvements/fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 04 Nov 2024 22:01:44 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 04 Nov 2024 22:01:44 +0100
 
 gpxsee (13.26) stable; urgency=low
 
@@ -138,14 +145,14 @@ gpxsee (13.26) stable; urgency=low
   * Fixed display artifacts in the graph tab bar (Qt6.7).
   * Improved graphs and paths rendering performance.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 21 Sep 2024 15:47:53 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 21 Sep 2024 15:47:53 +0200
 
 gpxsee (13.25) stable; urgency=low
 
   * Fixed map artifacts in PNG exports under Qt6.
   * Improved IMG marine charts rendering.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 17 Sep 2024 21:54:50 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 17 Sep 2024 21:54:50 +0200
 
 gpxsee (13.24) stable; urgency=low
 
@@ -153,14 +160,14 @@ gpxsee (13.24) stable; urgency=low
   * Various minor GUI fixes and enhancements.
   * Various minor map rendering (IMG & Mapsforge) fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 08 Sep 2024 22:31:26 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 08 Sep 2024 22:31:26 +0200
 
 gpxsee (13.23) stable; urgency=low
 
   * Improved ENC maps rendering.
   * Various minor fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 28 Jul 2024 14:06:36 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 28 Jul 2024 14:06:36 +0200
 
 gpxsee (13.22) stable; urgency=low
 
@@ -168,7 +175,7 @@ gpxsee (13.22) stable; urgency=low
   * Fixed multiple IMG DEM/hilshading issues.
   * Added (zoomed) graph scrolling using the mouse.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 15 Jun 2024 13:55:14 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 15 Jun 2024 13:55:14 +0200
 
 gpxsee (13.21) stable; urgency=low
 
@@ -176,7 +183,7 @@ gpxsee (13.21) stable; urgency=low
   * Fixed render issues with Qt 6.7.
   * Fixed issues with dates not respecting the system format.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 29 May 2024 21:28:02 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 29 May 2024 21:28:02 +0200
 
 gpxsee (13.20) stable; urgency=low
 
@@ -185,7 +192,7 @@ gpxsee (13.20) stable; urgency=low
   * Added support for TCX course points icons.
   * Various DEM related fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 22 May 2024 22:48:44 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 22 May 2024 22:48:44 +0200
 
 gpxsee (13.19) stable; urgency=low
 
@@ -194,7 +201,7 @@ gpxsee (13.19) stable; urgency=low
   * Added support for GPX water temperature extension.
   * Multiple minor map fixes (IMG & Mapsforge).
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 20 Apr 2024 21:38:39 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 20 Apr 2024 21:38:39 +0200
 
 gpxsee (13.18) stable; urgency=low
 
@@ -202,7 +209,7 @@ gpxsee (13.18) stable; urgency=low
   * Added support for GeoJSON Coordinate Properties extension.
   * CRS database consolidation.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 23 Mar 2024 21:25:49 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 23 Mar 2024 21:25:49 +0100
 
 gpxsee (13.17) stable; urgency=low
 
@@ -210,21 +217,21 @@ gpxsee (13.17) stable; urgency=low
   * Fixed broken "recent files" under KDE/Plasma6 style.
   * Minor fixes (Mapsforge, IMG and ENC maps).
 
- -- Martin Tuma <tumic@cbox.cz>  Thu, 07 Mar 2024 21:37:16 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Thu, 07 Mar 2024 21:37:16 +0100
 
 gpxsee (13.16) stable; urgency=low
 
   * Improved vector maps rendering.
   * Minor fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 12 Feb 2024 23:43:37 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 12 Feb 2024 23:43:37 +0100
 
 gpxsee (13.15) stable; urgency=low
 
   * Removed qt5compat dependency from Qt6 builds.
   * Multiple minor fixes (GUI). 
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 21 Jan 2024 23:49:41 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 21 Jan 2024 23:49:41 +0100
 
 gpxsee (13.14) stable; urgency=low
 
@@ -232,7 +239,7 @@ gpxsee (13.14) stable; urgency=low
   * Added mtbmap.cz map source. 
   * Multiple minor map formats fixes/improvements (TrekBuddy, IMG).
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 01 Jan 2024 23:34:15 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 01 Jan 2024 23:34:15 +0100
 
 gpxsee (13.13) stable; urgency=low
 
@@ -241,7 +248,7 @@ gpxsee (13.13) stable; urgency=low
     rendering. 
   * Increase the default pixmap cache size on Android to 384MB.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 18 Dec 2023 21:52:33 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 18 Dec 2023 21:52:33 +0100
 
 gpxsee (13.12) stable; urgency=low
 
@@ -250,7 +257,7 @@ gpxsee (13.12) stable; urgency=low
   * Vector (MVT) online maps now rendered asynchronous. 
   * Fixed vector MBTiles not loading in Qt6 builds issue.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 11 Dec 2023 23:51:19 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 11 Dec 2023 23:51:19 +0100
 
 gpxsee (13.11) stable; urgency=low
 
@@ -261,7 +268,7 @@ gpxsee (13.11) stable; urgency=low
   * Vector MBTiles maps now rendered asynchronous.
   * Fixed map bounds limiting.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 19 Nov 2023 11:52:02 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 19 Nov 2023 11:52:02 +0100
 
 gpxsee (13.10) stable; urgency=low
 
@@ -269,7 +276,7 @@ gpxsee (13.10) stable; urgency=low
   * Added "Open directory" action for desktop systems.
   * Fixed/improved vector maps path label layout algorithm.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 28 Oct 2023 14:03:12 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 28 Oct 2023 14:03:12 +0200
 
 gpxsee (13.9) stable; urgency=low
 
@@ -278,7 +285,7 @@ gpxsee (13.9) stable; urgency=low
   * Improved/fixed TrekBuddy maps/atlases support.
   * Improved ENC maps rendering style.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 24 Sep 2023 23:45:47 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 24 Sep 2023 23:45:47 +0200
 
 gpxsee (13.8) stable; urgency=low
 
@@ -286,7 +293,7 @@ gpxsee (13.8) stable; urgency=low
   * Fixed broken "Use styles" persistent configuration.
   * Fixed broken opening of files from "content:" URLs (Android).
 
- -- Martin Tuma <tumic@cbox.cz>  Thu, 07 Sep 2023 22:32:07 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Thu, 07 Sep 2023 22:32:07 +0200
 
 gpxsee (13.7) stable; urgency=low
 
@@ -295,7 +302,7 @@ gpxsee (13.7) stable; urgency=low
   * Switched to Android SDK 33.
   * Added missing Windows quiet uninstaller entry.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 27 Aug 2023 18:27:57 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 27 Aug 2023 18:27:57 +0200
 
 gpxsee (13.6) stable; urgency=low
 
@@ -303,7 +310,7 @@ gpxsee (13.6) stable; urgency=low
   * Improved Mapsforge and Garmin IMG maps rendering.
   * Added option to suppress file open errors.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 13 Aug 2023 13:31:04 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 13 Aug 2023 13:31:04 +0200
 
 gpxsee (13.5) stable; urgency=low
 
@@ -311,14 +318,14 @@ gpxsee (13.5) stable; urgency=low
   * Display one-way street info in IMG maps.
   * Use 512px tiles in Mapsforge maps rendering.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 30 Jul 2023 11:45:38 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 30 Jul 2023 11:45:38 +0200
 
 gpxsee (13.4) stable; urgency=low
 
   * Extended Mapsforge render themes support.
   * Improved ENC maps rendering.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 10 Jun 2023 10:01:40 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 10 Jun 2023 10:01:40 +0200
 
 gpxsee (13.3) stable; urgency=low
 
@@ -326,21 +333,21 @@ gpxsee (13.3) stable; urgency=low
   * Added support for custom HTTP headers in map tile requests.
   * Improved Mapsforge maps rendering.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 21 May 2023 13:49:01 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 21 May 2023 13:49:01 +0200
 
 gpxsee (13.2) stable; urgency=medium
 
   * Fixed crash on empty routes (introduced in 12.4).
   * Minor fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Fri, 12 May 2023 20:50:11 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Fri, 12 May 2023 20:50:11 +0200
 
 gpxsee (13.1) stable; urgency=low
 
   * Fixed wrong date info on tracks with segments.
   * Fixed display issues of Mapsforge and KMZ maps in HiDPI mode.
 
- -- Martin Tuma <tumic@cbox.cz>  Fri, 05 May 2023 19:28:35 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Fri, 05 May 2023 19:28:35 +0200
 
 gpxsee (13.0) stable; urgency=low
 
@@ -348,21 +355,21 @@ gpxsee (13.0) stable; urgency=low
   * Improved Mapsforge maps rendering performance.
   * Minor fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Thu, 27 Apr 2023 23:56:43 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Thu, 27 Apr 2023 23:56:43 +0200
 
 gpxsee (12.4) stable; urgency=medium
 
   * Fixed/improved Mapsforge maps rendering.
   * Minor fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 10 Apr 2023 18:47:49 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 10 Apr 2023 18:47:49 +0200
 
 gpxsee (12.3) stable; urgency=low
 
   * Improved ENC maps rendering.
   * Minor fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 26 Mar 2023 11:01:15 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 26 Mar 2023 11:01:15 +0200
 
 gpxsee (12.2) stable; urgency=low
 
@@ -372,7 +379,7 @@ gpxsee (12.2) stable; urgency=low
   * Added support for 0.5" (7201x7201) DEM tiles.
   * Made the DEM cache configurable.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 04 Mar 2023 18:15:15 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 04 Mar 2023 18:15:15 +0100
 
 gpxsee (12.1) stable; urgency=medium
 
@@ -380,14 +387,14 @@ gpxsee (12.1) stable; urgency=medium
   * Fixed GeoJSON parser.
   * Fixed NMEA parser.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 18 Feb 2023 14:19:41 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 18 Feb 2023 14:19:41 +0100
 
 gpxsee (12.0) stable; urgency=low
 
   * Android "desktop" integration.
   * Minor fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Fri, 10 Feb 2023 00:48:49 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Fri, 10 Feb 2023 00:48:49 +0100
 
 gpxsee (11.12) stable; urgency=medium
 
@@ -397,40 +404,40 @@ gpxsee (11.12) stable; urgency=medium
   * Improved marine maps (ENC, IMG) render style.
   * Added Korean localization.
 
- -- Martin Tuma <tumic@cbox.cz>  Thu, 26 Jan 2023 23:49:44 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Thu, 26 Jan 2023 23:49:44 +0100
 
 gpxsee (11.11) stable; urgency=low
 
   * Improved ENC maps render style.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 10 Dec 2022 19:11:52 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 10 Dec 2022 19:11:52 +0100
 
 gpxsee (11.10) stable; urgency=low
 
   * Fixed broken Inland ECDIS rendering.
   * Improved ENC maps render style.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 26 Nov 2022 20:15:41 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 26 Nov 2022 20:15:41 +0100
 
 gpxsee (11.9) stable; urgency=low
 
   * Improved ENC maps render style.
 
- -- Martin Tuma <tumic@cbox.cz>  Thu, 17 Nov 2022 13:40:20 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Thu, 17 Nov 2022 13:40:20 +0100
 
 gpxsee (11.8) stable; urgency=low
 
   * Fixed crash on ENC maps unload.
   * Improved ENC maps render style.
 
- -- Martin Tuma <tumic@cbox.cz>  Fri, 11 Nov 2022 01:46:11 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Fri, 11 Nov 2022 01:46:11 +0100
 
 gpxsee (11.7) stable; urgency=low
 
   * Added support for ENC charts.
   * Improved IMG maps marine style.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 06 Nov 2022 18:19:12 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 06 Nov 2022 18:19:12 +0100
 
 gpxsee (11.6) stable; urgency=low
 
@@ -438,7 +445,7 @@ gpxsee (11.6) stable; urgency=low
     11.5).
   * Fixed KML StyleMap handling.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 10 Oct 2022 01:00:08 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 10 Oct 2022 01:00:08 +0200
 
 gpxsee (11.5) stable; urgency=low
 
@@ -448,7 +455,7 @@ gpxsee (11.5) stable; urgency=low
   * Fixed broken map zoom 0 on HiDPI displays.
   * Updated USGS maps (added zoom 16).
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 28 Sep 2022 09:01:31 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 28 Sep 2022 09:01:31 +0200
 
 gpxsee (11.4) stable; urgency=low
 
@@ -456,14 +463,14 @@ gpxsee (11.4) stable; urgency=low
   * Multiple KML format parser fixes and improvements.
   * Added support for non-SQL Orux maps.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 04 Sep 2022 22:41:45 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 04 Sep 2022 22:41:45 +0200
 
 gpxsee (11.3) stable; urgency=low
 
   * Added support for Orux maps.
   * Android PDF/PNG export dialogues fixes/improvements.
 
- -- Martin Tuma <tumic@cbox.cz>  Thu, 11 Aug 2022 00:51:48 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Thu, 11 Aug 2022 00:51:48 +0200
 
 gpxsee (11.2) stable; urgency=low
 
@@ -472,7 +479,7 @@ gpxsee (11.2) stable; urgency=low
   * Various minor map parsers fixes/improvements.
   * Multiple Android GUI fixes/improvements.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 31 Jul 2022 12:33:49 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 31 Jul 2022 12:33:49 +0200
 
 gpxsee (11.1) stable; urgency=low
 
@@ -480,7 +487,7 @@ gpxsee (11.1) stable; urgency=low
     11.0)
   * Now using asynchronous tiles rendering in IMG maps.
 
- -- Martin Tuma <tumic@cbox.cz>  Thu, 02 Jun 2022 22:27:58 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Thu, 02 Jun 2022 22:27:58 +0200
 
 gpxsee (11.0) stable; urgency=low
 
@@ -488,19 +495,19 @@ gpxsee (11.0) stable; urgency=low
   * Various map provider fixes (Mapsforge, IMG, JNX).
   * Fixed broken PNG/PDF exports on systems with HiDPI displays.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 30 May 2022 19:06:21 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 30 May 2022 19:06:21 +0200
 
 gpxsee (10.7) stable; urgency=low
 
   * Multiple IMG maps loading/rendering fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 24 Apr 2022 17:57:28 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 24 Apr 2022 17:57:28 +0200
 
 gpxsee (10.6) stable; urgency=low
 
   * Improved marine charts rendering.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 13 Apr 2022 00:00:09 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 13 Apr 2022 00:00:09 +0200
 
 gpxsee (10.5) stable; urgency=low
 
@@ -509,21 +516,21 @@ gpxsee (10.5) stable; urgency=low
   * Fixed broken loading of some IMG maps.
   * Added a basic IMG nautical charts style.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 27 Mar 2022 16:59:24 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 27 Mar 2022 16:59:24 +0200
 
 gpxsee (10.4) stable; urgency=low
 
   * Improved POI labels handling in IMG maps.
   * Fixed position/motion info output in exports/printing.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 13 Feb 2022 23:34:05 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 13 Feb 2022 23:34:05 +0100
 
 gpxsee (10.3) stable; urgency=low
 
   * Improved/fixed GPI parser.
   * Significantly improved areas loading performance.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 02 Feb 2022 21:17:18 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 02 Feb 2022 21:17:18 +0100
 
 gpxsee (10.2) stable; urgency=low
 
@@ -533,14 +540,14 @@ gpxsee (10.2) stable; urgency=low
   * Added a default DEM tiles download source.
   * Multiple minor fixes and enhancements.
 
- -- Martin Tuma <tumic@cbox.cz>  Fri, 21 Jan 2022 01:01:34 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Fri, 21 Jan 2022 01:01:34 +0100
 
 gpxsee (10.1) stable; urgency=low
 
   * Added support for TwoNav data files (TRK, RTE, WPT).
   * Extended waypoint icon set.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 02 Jan 2022 15:09:29 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 02 Jan 2022 15:09:29 +0100
 
 gpxsee (10.0) stable; urgency=low
 
@@ -548,7 +555,7 @@ gpxsee (10.0) stable; urgency=low
   * Added workaround for broken FIT files exported by Strava.
   * Fixed Mapsforge maps crash when Qt-SVG is missing.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 08 Dec 2021 00:09:07 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 08 Dec 2021 00:09:07 +0100
 
 gpxsee (9.12) stable; urgency=low
 
@@ -556,7 +563,7 @@ gpxsee (9.12) stable; urgency=low
   * Fixed broken app icons install in "make install" on linux.
   * Minor IMG maps fixes and enhancements.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 17 Nov 2021 08:50:19 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 17 Nov 2021 08:50:19 +0100
 
 gpxsee (9.11) stable; urgency=low
 
@@ -564,7 +571,7 @@ gpxsee (9.11) stable; urgency=low
     encodings where possible.
   * Fixed IMG map labels handling.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 31 Oct 2021 16:13:53 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 31 Oct 2021 16:13:53 +0100
 
 gpxsee (9.10) stable; urgency=low
 
@@ -572,21 +579,21 @@ gpxsee (9.10) stable; urgency=low
   * Various GPI parser fixes/improvements (icons related).
   * Added support for East Asian encodings in Garmin formats.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 25 Oct 2021 12:40:48 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 25 Oct 2021 12:40:48 +0200
 
 gpxsee (9.9) stable; urgency=medium
 
   * Fixed scroll wheel zooming on devices with "fine-resolution
     wheels".
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 16 Oct 2021 11:07:31 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 16 Oct 2021 11:07:31 +0200
 
 gpxsee (9.8) stable; urgency=low
 
   * Added support for Waypoint/POI icons.
   * Various minor bugfixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 13 Oct 2021 21:11:16 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 13 Oct 2021 21:11:16 +0200
 
 gpxsee (9.7) stable; urgency=low
 
@@ -596,7 +603,7 @@ gpxsee (9.7) stable; urgency=low
   * Added DEM tiles overview.
   * Multiple settings handling fixes and enhancements.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 26 Sep 2021 12:17:10 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 26 Sep 2021 12:17:10 +0200
 
 gpxsee (9.6) stable; urgency=medium
 
@@ -604,14 +611,14 @@ gpxsee (9.6) stable; urgency=medium
   * Fixed map tiles/files download timeout handling.
   * Various GUI polishing (mostly macOS).
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 05 Sep 2021 16:33:30 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 05 Sep 2021 16:33:30 +0200
 
 gpxsee (9.5) stable; urgency=low
 
   * Added support for ONmove (Decathlon) watch log files.
   * Fixed/improved IMG labels handling.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 22 Aug 2021 17:56:58 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 22 Aug 2021 17:56:58 +0200
 
 gpxsee (9.4) stable; urgency=low
 
@@ -619,7 +626,7 @@ gpxsee (9.4) stable; urgency=low
   * Fixed Mapsforge styles parsing/rendering.
   * Improved IMG maps performance.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 08 Aug 2021 14:37:11 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 08 Aug 2021 14:37:11 +0200
 
 gpxsee (9.3) stable; urgency=medium
 
@@ -627,14 +634,14 @@ gpxsee (9.3) stable; urgency=medium
   * Removed the artificial POI zoom level limits in IMG maps.
   * Added initial open file paths configuration.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 17 Jul 2021 15:09:11 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 17 Jul 2021 15:09:11 +0200
 
 gpxsee (9.2) stable; urgency=low
 
   * Added support for World-File georeferenced images.
   * Fixed SML and CSV parser issues.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 29 Jun 2021 23:40:55 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 29 Jun 2021 23:40:55 +0200
 
 gpxsee (9.1) stable; urgency=low
 
@@ -643,13 +650,13 @@ gpxsee (9.1) stable; urgency=low
   * Mapsforge maps rendering fixes/improvements.
   * Some more minor fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 29 May 2021 10:43:54 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 29 May 2021 10:43:54 +0200
 
 gpxsee (9.0) stable; urgency=low
 
   * Added support for Mapsforge maps.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 20 Apr 2021 00:49:16 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 20 Apr 2021 00:49:16 +0200
 
 gpxsee (8.9) stable; urgency=low
 
@@ -658,13 +665,13 @@ gpxsee (8.9) stable; urgency=low
   * Added workaround for broken CRS urns used by Swisstopo.
   * Fixed possible crash on JNX maps.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 23 Mar 2021 23:31:35 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 23 Mar 2021 23:31:35 +0100
 
 gpxsee (8.8) stable; urgency=low
 
   * Fixed disappearing marker with some graphs combinations.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 01 Mar 2021 00:40:10 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 01 Mar 2021 00:40:10 +0100
 
 gpxsee (8.7) stable; urgency=low
 
@@ -673,7 +680,7 @@ gpxsee (8.7) stable; urgency=low
   * Fixed window geometry save/restore.
   * Improved Full-screen layout.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 21 Feb 2021 10:52:22 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 21 Feb 2021 10:52:22 +0100
 
 gpxsee (8.6) stable; urgency=low
 
@@ -681,13 +688,13 @@ gpxsee (8.6) stable; urgency=low
   * Add Coordinates display option to position info.
   * Minor AQM maps display fix.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 14 Feb 2021 22:47:45 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 14 Feb 2021 22:47:45 +0100
 
 gpxsee (8.5) stable; urgency=medium
 
   * Fixed crash on areas/polygons (introduced in 8.2).
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 08 Feb 2021 21:44:38 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 08 Feb 2021 21:44:38 +0100
 
 gpxsee (8.4) stable; urgency=low
 
@@ -695,13 +702,13 @@ gpxsee (8.4) stable; urgency=low
   * Added position date display option.
   * IMG format compatability and performance improvements.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 07 Feb 2021 13:12:06 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 07 Feb 2021 13:12:06 +0100
 
 gpxsee (8.3) stable; urgency=medium
 
   * Fixed crash on empty paths (introduced in 8.2).
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 23 Jan 2021 21:48:29 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 23 Jan 2021 21:48:29 +0100
 
 gpxsee (8.2) stable; urgency=medium
 
@@ -709,7 +716,7 @@ gpxsee (8.2) stable; urgency=medium
   * Improved graph slider/path marker handling.
   * Minor UI/UX enhancements.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 19 Jan 2021 20:55:37 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 19 Jan 2021 20:55:37 +0100
 
 gpxsee (8.1) stable; urgency=low
 
@@ -718,14 +725,14 @@ gpxsee (8.1) stable; urgency=low
   * Added support for ZIPed DEM files.
   * Minor fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 02 Jan 2021 11:09:35 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 02 Jan 2021 11:09:35 +0100
 
 gpxsee (8.0) stable; urgency=low
 
   * Added support for KMZ maps.
   * Added Qt6 support, dropped Qt4 support.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 28 Dec 2020 23:37:55 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 28 Dec 2020 23:37:55 +0100
 
 gpxsee (7.38) stable; urgency=low
 
@@ -734,7 +741,7 @@ gpxsee (7.38) stable; urgency=low
   * Added support for BSB nautical charts.
   * Added support for polyconic projections.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 15 Dec 2020 23:35:47 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 15 Dec 2020 23:35:47 +0100
 
 gpxsee (7.37) stable; urgency=low
 
@@ -744,7 +751,7 @@ gpxsee (7.37) stable; urgency=low
   * Improved IMG maps drawing performance.
   * Improved GeoTIFF compatability.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 24 Nov 2020 23:20:54 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 24 Nov 2020 23:20:54 +0100
 
 gpxsee (7.36) stable; urgency=low
 
@@ -752,7 +759,7 @@ gpxsee (7.36) stable; urgency=low
   * Added workaround for broken IMG maps produced by mkgmap.
   * Added workaround for broken FIT files produced by gpsbabel.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 11 Nov 2020 21:47:28 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 11 Nov 2020 21:47:28 +0100
 
 gpxsee (7.35) stable; urgency=low
 
@@ -760,19 +767,19 @@ gpxsee (7.35) stable; urgency=low
   * Fixed CRS entries parsing (WMS, WMTS)
   * Various minor bug fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 27 Oct 2020 21:39:44 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 27 Oct 2020 21:39:44 +0100
 
 gpxsee (7.34) stable; urgency=medium
 
   * Fixed application icons paths.
 
- -- Martin Tuma <tumic@cbox.cz>  Fri, 09 Oct 2020 05:35:15 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Fri, 09 Oct 2020 05:35:15 +0200
 
 gpxsee (7.33) stable; urgency=low
 
   * Added PNG export.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 07 Oct 2020 23:23:59 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 07 Oct 2020 23:23:59 +0200
 
 gpxsee (7.32) stable; urgency=low
 
@@ -781,7 +788,7 @@ gpxsee (7.32) stable; urgency=low
   * Some more IMG format compatability improvements.
   * "Multi-size" application icons.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 21 Sep 2020 00:07:56 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 21 Sep 2020 00:07:56 +0200
 
 gpxsee (7.31) stable; urgency=low
 
@@ -789,7 +796,7 @@ gpxsee (7.31) stable; urgency=low
   * Fixed build with Qt 5 versions <= 5.5.
   * Various IMG format compatability and performance improvements.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 30 Jun 2020 16:22:57 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 30 Jun 2020 16:22:57 +0200
 
 gpxsee (7.30) stable; urgency=low
 
@@ -799,14 +806,14 @@ gpxsee (7.30) stable; urgency=low
   * Updated Antarctica map URL.
   * Minor fixes (KML, CRS format).
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 30 May 2020 15:33:23 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 30 May 2020 15:33:23 +0200
 
 gpxsee (7.29) stable; urgency=low
 
   * Added support for FIT course points.
   * Minor IMG maps fixes/tweaks.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 19 Apr 2020 15:07:13 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 19 Apr 2020 15:07:13 +0200
 
 gpxsee (7.28) stable; urgency=medium
 
@@ -814,14 +821,14 @@ gpxsee (7.28) stable; urgency=medium
   * Fixed broken map enable condition (selecting such map crashes
     GPXSee).
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 05 Apr 2020 12:52:29 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 05 Apr 2020 12:52:29 +0200
 
 gpxsee (7.27) stable; urgency=low
 
   * Fixed builds with -Werror=format-security (Fedora, RHEL,
     Mageia). No real issue.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 28 Mar 2020 19:44:25 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 28 Mar 2020 19:44:25 +0100
 
 gpxsee (7.26) stable; urgency=low
 
@@ -829,7 +836,7 @@ gpxsee (7.26) stable; urgency=low
   * Asynchronous WMS/WMTS map loading (fixes crash on OS X).
   * Various minor bug fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 28 Mar 2020 18:44:31 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 28 Mar 2020 18:44:31 +0100
 
 gpxsee (7.25) stable; urgency=low
 
@@ -837,27 +844,27 @@ gpxsee (7.25) stable; urgency=low
   * A better WMS format parameter handling (partialy broken in
     7.24)
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 04 Mar 2020 20:40:00 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 04 Mar 2020 20:40:00 +0100
 
 gpxsee (7.24) stable; urgency=low
 
   * Multiple WMS maps fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 01 Mar 2020 15:24:38 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 01 Mar 2020 15:24:38 +0100
 
 gpxsee (7.23) stable; urgency=low
 
   * Fixed various IMG maps rendering issues.
   * Improved the default IMG map style.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 17 Feb 2020 20:37:41 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 17 Feb 2020 20:37:41 +0100
 
 gpxsee (7.22) stable; urgency=low
 
   * Fixed loading of GMAP maps when Garmin BaseCamp has associated
     them (OS X issue).
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 12 Feb 2020 23:11:19 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 12 Feb 2020 23:11:19 +0100
 
 gpxsee (7.21) stable; urgency=low
 
@@ -865,14 +872,14 @@ gpxsee (7.21) stable; urgency=low
   * Various IMG/GMAP maps fixes/improvements.
   * Hungarian localization.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 11 Feb 2020 23:12:31 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 11 Feb 2020 23:12:31 +0100
 
 gpxsee (7.20) stable; urgency=low
 
   * Added support for Suunto SML files.
   * Various IMG maps improvements.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 26 Jan 2020 17:27:23 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 26 Jan 2020 17:27:23 +0100
 
 gpxsee (7.19) stable; urgency=medium
 
@@ -883,7 +890,7 @@ gpxsee (7.19) stable; urgency=medium
   * Fixed/improved tooltip/popups handling.
   * Translations updates.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 12 Jan 2020 18:43:02 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 12 Jan 2020 18:43:02 +0100
 
 gpxsee (7.18) stable; urgency=low
 
@@ -892,7 +899,7 @@ gpxsee (7.18) stable; urgency=low
   * Improved GPI support (images, safety cameras).
   * Added Ukrainian translation.
 
- -- Martin Tuma <tumic@cbox.cz>  Fri, 15 Nov 2019 22:54:50 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Fri, 15 Nov 2019 22:54:50 +0100
 
 gpxsee (7.17) stable; urgency=low
 
@@ -900,7 +907,7 @@ gpxsee (7.17) stable; urgency=low
   * Fixed broken DEM value reading on S/W coordinates.
   * Various GPI parser fixes & improvements.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 02 Nov 2019 10:10:33 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 02 Nov 2019 10:10:33 +0100
 
 gpxsee (7.16) stable; urgency=low
 
@@ -908,7 +915,7 @@ gpxsee (7.16) stable; urgency=low
   * Hyperlink + copy&paste enabled tool tips.
   * Various minor bug fixes in data loading.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 28 Oct 2019 22:34:24 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 28 Oct 2019 22:34:24 +0100
 
 gpxsee (7.15) stable; urgency=low
 
@@ -917,7 +924,7 @@ gpxsee (7.15) stable; urgency=low
   * Increased the default tile cache size value to 256MB.
   * IMG maps text layout tweaking and optimization.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 05 Oct 2019 19:11:08 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 05 Oct 2019 19:11:08 +0200
 
 gpxsee (7.14) stable; urgency=low
 
@@ -925,14 +932,14 @@ gpxsee (7.14) stable; urgency=low
     files.
   * Added support for pseudo-NT IMG maps (e.g. TopoHispania).
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 29 Sep 2019 15:48:50 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 29 Sep 2019 15:48:50 +0200
 
 gpxsee (7.13) stable; urgency=low
 
   * Added support for graph zooming.
   * Several minor bug fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 01 Sep 2019 18:54:58 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 01 Sep 2019 18:54:58 +0200
 
 gpxsee (7.12) stable; urgency=low
 
@@ -940,27 +947,27 @@ gpxsee (7.12) stable; urgency=low
   * Added support for Geographic 2D projection in vector maps.
   * Fixed lat/lon reference parsing in big endian EXIF entries.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 17 Aug 2019 22:24:57 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 17 Aug 2019 22:24:57 +0200
 
 gpxsee (7.11) stable; urgency=low
 
   * Improved IMG maps loading performance and memory footprint.
   * Improved road shields layout on IMG maps.
 
- -- Martin Tuma <tumic@cbox.cz>  Thu, 18 Jul 2019 21:34:52 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Thu, 18 Jul 2019 21:34:52 +0200
 
 gpxsee (7.10) stable; urgency=low
 
   * Various IMG maps fixes and improvements.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 07 Jul 2019 19:31:24 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 07 Jul 2019 19:31:24 +0200
 
 gpxsee (7.9) stable; urgency=low
 
   * Removed the annoying map view re-zooming on window resize.
   * Improved POI handling and text rendering in IMG maps.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 15 Jun 2019 22:44:41 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 15 Jun 2019 22:44:41 +0200
 
 gpxsee (7.8) stable; urgency=low
 
@@ -970,7 +977,7 @@ gpxsee (7.8) stable; urgency=low
   * Fixed broken zoom fit on IMG maps.
   * Fixed broken WMS scale denominators to zoom levels transition.
 
- -- Martin Tuma <tumic@cbox.cz>  Thu, 30 May 2019 00:28:22 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Thu, 30 May 2019 00:28:22 +0200
 
 gpxsee (7.7) stable; urgency=low
 
@@ -979,7 +986,7 @@ gpxsee (7.7) stable; urgency=low
   * Added support for user defined TYP files for Garmin IMG maps.
   * Removed obsolete "Always show the map" setting.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 18 May 2019 20:55:20 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 18 May 2019 20:55:20 +0200
 
 gpxsee (7.6) stable; urgency=low
 
@@ -988,13 +995,13 @@ gpxsee (7.6) stable; urgency=low
   * Fixed rendering of large areas using OpenGL.
   * Fixed broken speed type switch.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 12 May 2019 17:59:24 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 12 May 2019 17:59:24 +0200
 
 gpxsee (7.5) stable; urgency=low
 
   * Added support for geotagged JPEG images.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 16 Mar 2019 19:40:01 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 16 Mar 2019 19:40:01 +0100
 
 gpxsee (7.4) stable; urgency=low
 
@@ -1002,7 +1009,7 @@ gpxsee (7.4) stable; urgency=low
   * Fixed broken projection equations (multiple corner cases).
   * Fixed IGC date handling issues.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 10 Mar 2019 21:04:08 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 10 Mar 2019 21:04:08 +0100
 
 gpxsee (7.3) stable; urgency=low
 
@@ -1013,7 +1020,7 @@ gpxsee (7.3) stable; urgency=low
   * Added Portuguese (Brazil) localization.
   * Minor bug fixes (GPX parser, GUI).
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 19 Feb 2019 00:01:29 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 19 Feb 2019 00:01:29 +0100
 
 gpxsee (7.2) stable; urgency=low
 
@@ -1024,14 +1031,14 @@ gpxsee (7.2) stable; urgency=low
   * Added support for GeoJSON files.
   * Added Spanish localization.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 28 Jan 2019 21:53:35 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 28 Jan 2019 21:53:35 +0100
 
 gpxsee (7.1) stable; urgency=low
 
   * Fixed build with Qt5 <= 5.4
   * Minor bug fixes & updates (TCX, localization)
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 01 Jan 2019 23:43:09 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 01 Jan 2019 23:43:09 +0100
 
 gpxsee (7.0) stable; urgency=low
 
@@ -1040,7 +1047,7 @@ gpxsee (7.0) stable; urgency=low
   * Added Turkish localization.
   * Minor bug fixes (WMTS, graphs)
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 08 Dec 2018 12:29:37 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 08 Dec 2018 12:29:37 +0100
 
 gpxsee (6.3) stable; urgency=low
 
@@ -1048,13 +1055,13 @@ gpxsee (6.3) stable; urgency=low
   * Fixed broken cleanup on exit (introduced in 6.1).
   * Added Danish localization.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 13 Oct 2018 21:29:10 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 13 Oct 2018 21:29:10 +0200
 
 gpxsee (6.2) stable; urgency=low
 
   * Fixed Norwegian localization language code.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 07 Oct 2018 22:54:50 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 07 Oct 2018 22:54:50 +0200
 
 gpxsee (6.1) stable; urgency=low
 
@@ -1063,7 +1070,7 @@ gpxsee (6.1) stable; urgency=low
   * Fixed "enable HTTP2" configuration handling.
   * Added Norwegian localization.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 07 Oct 2018 18:27:07 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 07 Oct 2018 18:27:07 +0200
 
 gpxsee (6.0) stable; urgency=low
 
@@ -1072,7 +1079,7 @@ gpxsee (6.0) stable; urgency=low
   * Added support for local file URLs (OSM, TMS, WMTS maps).
   * Minor bugfixes (localization, WMTS, date-line crossing).
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 23 Sep 2018 12:58:13 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 23 Sep 2018 12:58:13 +0200
 
 gpxsee (5.18) stable; urgency=low
 
@@ -1084,7 +1091,7 @@ gpxsee (5.18) stable; urgency=low
   * Fixed Garmin CSV parser (wrong coordinates order).
   * Some more minor bugfixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 15 Sep 2018 16:42:41 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 15 Sep 2018 16:42:41 +0200
 
 gpxsee (5.17) stable; urgency=low
 
@@ -1092,7 +1099,7 @@ gpxsee (5.17) stable; urgency=low
   * Added support for SIGMA SPORT SLF files.
   * Added support for Geocaching.com LOC files.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 18 Aug 2018 21:54:50 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 18 Aug 2018 21:54:50 +0200
 
 gpxsee (5.16) stable; urgency=low
 
@@ -1100,7 +1107,7 @@ gpxsee (5.16) stable; urgency=low
   * Added support for HTTP/2 (Qt>=5.10.1)
   * Various minor bugfixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 08 Aug 2018 00:51:41 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 08 Aug 2018 00:51:41 +0200
 
 gpxsee (5.15) stable; urgency=low
 
@@ -1109,7 +1116,7 @@ gpxsee (5.15) stable; urgency=low
   * Added support for obscure Bryton Rider FIT files.
   * Some more minor bugfixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 03 Jul 2018 23:38:03 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 03 Jul 2018 23:38:03 +0200
 
 gpxsee (5.14) stable; urgency=low
 
@@ -1120,7 +1127,7 @@ gpxsee (5.14) stable; urgency=low
   * Added speed data source setting.
   * Several minor bugfixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 23 Jun 2018 16:17:21 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 23 Jun 2018 16:17:21 +0200
 
 gpxsee (5.13) stable; urgency=low
 
@@ -1128,7 +1135,7 @@ gpxsee (5.13) stable; urgency=low
     in 5.12)
   * Added support for Krovak projections (EPSG:1041 and EPSG:9819)
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 29 May 2018 22:13:28 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 29 May 2018 22:13:28 +0200
 
 gpxsee (5.12) stable; urgency=low
 
@@ -1136,7 +1143,7 @@ gpxsee (5.12) stable; urgency=low
   * Added support for GPX Garmin route extension.
   * Several performance improvements.
 
- -- Martin Tuma <tumic@cbox.cz>  Fri, 25 May 2018 18:34:34 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Fri, 25 May 2018 18:34:34 +0200
 
 gpxsee (5.11) stable; urgency=low
 
@@ -1147,7 +1154,7 @@ gpxsee (5.11) stable; urgency=low
   * Fixed broken time-based graphs for files with duplicit
     timestamps.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 14 May 2018 23:41:12 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 14 May 2018 23:41:12 +0200
 
 gpxsee (5.10) stable; urgency=low
 
@@ -1156,7 +1163,7 @@ gpxsee (5.10) stable; urgency=low
   * Added missing EST97 GCS/PCS.
   * Several minor bugfixes and improvements.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 09 May 2018 18:52:57 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 09 May 2018 18:52:57 +0200
 
 gpxsee (5.9) stable; urgency=high
 
@@ -1164,7 +1171,7 @@ gpxsee (5.9) stable; urgency=high
   * Proper fix of the zoom changes/offset bugs (resolved only
     partialy in 5.8).
 
- -- Martin Tuma <tumic@cbox.cz>  Thu, 19 Apr 2018 20:06:35 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Thu, 19 Apr 2018 20:06:35 +0200
 
 gpxsee (5.8) stable; urgency=low
 
@@ -1172,27 +1179,27 @@ gpxsee (5.8) stable; urgency=low
     the 1px map center offset bug.
   * Added Polish translation.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 18 Apr 2018 01:56:50 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 18 Apr 2018 01:56:50 +0200
 
 gpxsee (5.7) stable; urgency=low
 
   * Added OziExplorer data files (plt, rte, wpt) support.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 17 Apr 2018 00:51:24 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 17 Apr 2018 00:51:24 +0200
 
 gpxsee (5.6) stable; urgency=low
 
   * Added WMS support.
   * Several minor bugfixes and improvements (mostly WMTS).
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 08 Apr 2018 21:18:43 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 08 Apr 2018 21:18:43 +0200
 
 gpxsee (5.5) stable; urgency=high
 
   * Fixed deadlocks caused by infinite HTTP timeout.
   * Several minor bugfixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 19 Mar 2018 23:42:57 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 19 Mar 2018 23:42:57 +0100
 
 gpxsee (5.4) stable; urgency=low
 
@@ -1205,7 +1212,7 @@ gpxsee (5.4) stable; urgency=low
     the ellipsoid only.
   * Fixed broken (case-sensitive) WMTS parameters handling.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 11 Mar 2018 22:00:45 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 11 Mar 2018 22:00:45 +0100
 
 gpxsee (5.3) stable; urgency=low
 
@@ -1215,14 +1222,14 @@ gpxsee (5.3) stable; urgency=low
   * Added some more GCS/PCS definitions.
   * Fixed invalid memory access.
 
- -- Martin Tuma <tumic@cbox.cz>  Thu, 01 Mar 2018 20:24:35 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Thu, 01 Mar 2018 20:24:35 +0100
 
 gpxsee (5.2) stable; urgency=low
 
   * Fixed broken GeoTIFF (Web) Mercator projection.
   * Several minor bug fixes.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 17 Feb 2018 15:09:52 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 17 Feb 2018 15:09:52 +0100
 
 gpxsee (5.1) stable; urgency=high
 
@@ -1230,7 +1237,7 @@ gpxsee (5.1) stable; urgency=high
   * Added coordinates format setting.
   * Added nautical units setting.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 12 Feb 2018 08:39:17 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 12 Feb 2018 08:39:17 +0100
 
 gpxsee (5.0) stable; urgency=low
 
@@ -1238,21 +1245,21 @@ gpxsee (5.0) stable; urgency=low
   * Online map sources are now defined using XML files.
   * Added Finnish, French and Russian localization.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 10 Feb 2018 21:06:13 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 10 Feb 2018 21:06:13 +0100
 
 gpxsee (4.19) stable; urgency=high
 
   * Fixed missing cached content cleanup causing huge draw areas
     (causing system memory exhaustion) issue.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 08 Jan 2018 02:37:46 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 08 Jan 2018 02:37:46 +0100
 
 gpxsee (4.18) stable; urgency=low
 
   * Fixed broaken A records parsing in IGC files.
   * Added support for negative altitudes in IGC files.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 06 Jan 2018 22:55:49 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 06 Jan 2018 22:55:49 +0100
 
 gpxsee (4.17) stable; urgency=low
 
@@ -1263,7 +1270,7 @@ gpxsee (4.17) stable; urgency=low
   * Fixed offline map scale computation issue.
   * Fixed some corner case map drawing issues.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 09 Dec 2017 21:07:06 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 09 Dec 2017 21:07:06 +0100
 
 gpxsee (4.16) stable; urgency=low
 
@@ -1274,7 +1281,7 @@ gpxsee (4.16) stable; urgency=low
     files.
   * Added support for TCX multi-sport activities.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 18 Oct 2017 00:12:16 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 18 Oct 2017 00:12:16 +0200
 
 gpxsee (4.15) stable; urgency=low
 
@@ -1282,7 +1289,7 @@ gpxsee (4.15) stable; urgency=low
   * Improved graph slider info.
   * Graph items are now selecteble like path items (+ tool tips).
 
- -- Martin Tuma <tumic@cbox.cz>  Fri, 06 Oct 2017 19:07:05 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Fri, 06 Oct 2017 19:07:05 +0200
 
 gpxsee (4.14) stable; urgency=low
 
@@ -1297,13 +1304,13 @@ gpxsee (4.14) stable; urgency=low
   * Adjusted the scale bar (text) size to the remaining content
     in print/PDF export output.
 
- -- Martin Tuma <tumic@cbox.cz>  Fri, 15 Sep 2017 23:35:38 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Fri, 15 Sep 2017 23:35:38 +0200
 
 gpxsee (4.13) stable; urgency=low
 
   * Added support for high-resolution printing.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 03 Sep 2017 21:33:01 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 03 Sep 2017 21:33:01 +0200
 
 gpxsee (4.12) stable; urgency=low
 
@@ -1312,13 +1319,13 @@ gpxsee (4.12) stable; urgency=low
   * Added map opacity (brightness) setting.
   * Added 4UMaps to map sources.
 
- -- Martin Tuma <tumic@cbox.cz>  Thu, 24 Aug 2017 23:17:35 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Thu, 24 Aug 2017 23:17:35 +0200
 
 gpxsee (4.11) stable; urgency=low
 
   * Fixed QT4 build.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 15 Aug 2017 15:22:12 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 15 Aug 2017 15:22:12 +0200
 
 gpxsee (4.10) stable; urgency=low
 
@@ -1326,7 +1333,7 @@ gpxsee (4.10) stable; urgency=low
   * Added support for maps with only 2 reference points.
   * Various map loading/displaying improvements.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 15 Aug 2017 14:15:41 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 15 Aug 2017 14:15:41 +0200
 
 gpxsee (4.9) stable; urgency=low
 
@@ -1335,14 +1342,14 @@ gpxsee (4.9) stable; urgency=low
     files if available).
   * Optimized POI handling.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 11 Jul 2017 23:48:15 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 11 Jul 2017 23:48:15 +0200
 
 gpxsee (4.8) stable; urgency=low
 
   * Added data filtering settings.
   * Fixed broken units handling in track info tooltips.
 
- -- Martin Tuma <tumic@cbox.cz>  Thu, 25 May 2017 11:52:28 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Thu, 25 May 2017 11:52:28 +0200
 
 gpxsee (4.7) stable; urgency=low
 
@@ -1353,14 +1360,14 @@ gpxsee (4.7) stable; urgency=low
   * Added support for offline maps with projections defined as
     British, Irish and Swedish grid and NZTM2000.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 09 May 2017 01:00:34 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 09 May 2017 01:00:34 +0200
 
 gpxsee (4.6) stable; urgency=low
 
   * Fixed broken PDF export/printing (broken map scale/waypoints size).
   * Improved path projection performance when an atlas is used.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 02 May 2017 00:25:11 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 02 May 2017 00:25:11 +0200
 
 gpxsee (4.5) stable; urgency=low
 
@@ -1368,7 +1375,7 @@ gpxsee (4.5) stable; urgency=low
   * Fixed atlas zoom fitting.
   * Fixed various minor offline map loading issues.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 23 Apr 2017 21:17:11 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 23 Apr 2017 21:17:11 +0200
 
 gpxsee (4.4) stable; urgency=low
 
@@ -1376,7 +1383,7 @@ gpxsee (4.4) stable; urgency=low
   * Added full support for non-WGS84 datum based offline maps.
   * Added German localization.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 17 Apr 2017 23:10:50 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 17 Apr 2017 23:10:50 +0200
 
 gpxsee (4.3) stable; urgency=high
 
@@ -1384,7 +1391,7 @@ gpxsee (4.3) stable; urgency=high
     (causing memory exhaustion) issue.
   * Fixed map file defined datum not set for UTM maps issue.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 12 Apr 2017 18:39:32 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 12 Apr 2017 18:39:32 +0200
 
 gpxsee (4.2) stable; urgency=low
 
@@ -1392,20 +1399,20 @@ gpxsee (4.2) stable; urgency=low
   * Fixed atlas map fitting algorithm.
   * Completed Swedish translation.
 
- -- Martin Tuma <tumic@cbox.cz>  Thu, 06 Apr 2017 20:38:50 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Thu, 06 Apr 2017 20:38:50 +0200
 
 gpxsee (4.1) stable; urgency=low
 
   * Added support for Lambert conformal conic projection.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 03 Apr 2017 00:02:22 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 03 Apr 2017 00:02:22 +0200
 
 gpxsee (4.0) stable; urgency=low
 
   * Added support for offline maps.
   * Fixed zoom issues on touchpads.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 01 Apr 2017 19:16:13 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 01 Apr 2017 19:16:13 +0200
 
 gpxsee (3.9) stable; urgency=low
 
@@ -1413,7 +1420,7 @@ gpxsee (3.9) stable; urgency=low
   * Added moving time info.
   * Improved pause detection/handling.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 12 Feb 2017 23:47:30 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 12 Feb 2017 23:47:30 +0100
 
 gpxsee (3.8) stable; urgency=low
 
@@ -1421,48 +1428,48 @@ gpxsee (3.8) stable; urgency=low
   * Added moving time info.
   * Improved pause detection/handling.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 24 Jan 2017 18:41:51 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 24 Jan 2017 18:41:51 +0100
 
 gpxsee (3.7) stable; urgency=high
 
   * Fixed tile downloading issues (multiple downloads, redirect loop).
   * Enabled free map scroll.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 23 Jan 2017 09:25:56 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 23 Jan 2017 09:25:56 +0100
 
 gpxsee (3.5) stable; urgency=low
 
   * Fixed broken NMEA latitude parsing.
   * Added print/export options.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 20 Dec 2016 22:46:00 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 20 Dec 2016 22:46:00 +0100
 
 gpxsee (3.4) stable; urgency=low
 
   * Fixed QT5 < 5.4 builds (Debian 8).
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 10 Dec 2016 01:23:48 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 10 Dec 2016 01:23:48 +0100
 
 gpxsee (3.3) stable; urgency=low
 
   * Added options dialog with basic appearance settings.
   * Added OpenGL support.
 
- -- Martin Tuma <tumic@cbox.cz>  Fri, 09 Dec 2016 21:18:12 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Fri, 09 Dec 2016 21:18:12 +0100
 
 gpxsee (3.2) stable; urgency=low
 
   * Added support for NMEA files.
   * Fixed path marker inaccuracy bug.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 22 Nov 2016 09:47:00 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 22 Nov 2016 09:47:00 +0100
 
 gpxsee (3.1) stable; urgency=low
 
   * Added support for IGC files.
   * Fixed zoom level computation bugs.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 12 Nov 2016 11:55:01 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 12 Nov 2016 11:55:01 +0100
 
 gpxsee (3.0) stable; urgency=low
 
@@ -1472,7 +1479,7 @@ gpxsee (3.0) stable; urgency=low
   * GUI polishing.
   * Improved print output.
 
- -- Martin Tuma <tumic@cbox.cz>  Mon, 07 Nov 2016 00:09:28 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Mon, 07 Nov 2016 00:09:28 +0100
 
 gpxsee (2.20) stable; urgency=low
 
@@ -1481,7 +1488,7 @@ gpxsee (2.20) stable; urgency=low
   * Fixed POI loading performance issue.
   * GUI polishing.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 16 Oct 2016 00:08:59 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 16 Oct 2016 00:08:59 +0200
 
 gpxsee (2.19) stable; urgency=low
 
@@ -1490,7 +1497,7 @@ gpxsee (2.19) stable; urgency=low
   * Added support for proxy connections (using the system-defined proxy).
   * Fixed PDF output in QT4 builds.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 28 Sep 2016 23:45:19 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 28 Sep 2016 23:45:19 +0200
 
 gpxsee (2.18) stable; urgency=low
 
@@ -1498,14 +1505,14 @@ gpxsee (2.18) stable; urgency=low
   * Added various data display options.
   * Improved performance.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 31 Aug 2016 09:27:40 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 31 Aug 2016 09:27:40 +0200
 
 gpxsee (2.17) stable; urgency=low
 
   * Added waypoint/track info tooltips.
   * Improved POI handling.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 03 Aug 2016 00:39:12 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 03 Aug 2016 00:39:12 +0200
 
 gpxsee (2.16) stable; urgency=high
 
@@ -1513,14 +1520,14 @@ gpxsee (2.16) stable; urgency=high
   * Fixed handling of GPX files with inconsistent track point entries.
   * Added support for temperature graphs.
 
- -- Martin Tuma <tumic@cbox.cz>  Thu, 16 Jun 2016 21:35:14 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Thu, 16 Jun 2016 21:35:14 +0200
 
 gpxsee (2.14) stable; urgency=low
 
   * Added print support.
   * Many fixes & improvements in PDF export (e.g. map support).
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 28 May 2016 10:06:06 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 28 May 2016 10:06:06 +0200
 
 gpxsee (2.13) stable; urgency=low
 
@@ -1528,21 +1535,21 @@ gpxsee (2.13) stable; urgency=low
   * File info in window title.
   * Persistent program settings.
 
- -- Martin Tuma <tumic@cbox.cz>  Tue, 3 May 2016 20:09:06 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 3 May 2016 20:09:06 +0200
 
 gpxsee (2.12) stable; urgency=low
 
   * Added fullscreen mode.
   * Polished GUI.
 
- -- Martin Tuma <tumic@cbox.cz>  Thu, 14 Apr 2016 07:54:37 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Thu, 14 Apr 2016 07:54:37 +0200
 
 gpxsee (2.11) stable; urgency=low
 
   * Added "clear tile cache" option.
   * Lots of minor bug fixes and enhancements.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 2 Apr 2016 17:52:12 +0200
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 2 Apr 2016 17:52:12 +0200
 
 gpxsee (2.10) stable; urgency=low
 
@@ -1551,21 +1558,21 @@ gpxsee (2.10) stable; urgency=low
   * Redesigned map/POI data sources handling.
   * Lots of minor bug fixes and enhancements.
 
- -- Martin Tuma <tumic@cbox.cz>  Fri, 25 Mar 2016 13:32:27 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Fri, 25 Mar 2016 13:32:27 +0100
 
 gpxsee (2.9) stable; urgency=low
 
   * Added support for displaying waypoints.
   * Minor bug fixes and enhancements.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 20 Mar 2016 21:14:33 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 20 Mar 2016 21:14:33 +0100
 
 gpxsee (2.8) stable; urgency=low
 
   * Improved POI files control.
   * Minor bug fixes and enhancements.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 6 Mar 2016 17:29:07 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 6 Mar 2016 17:29:07 +0100
 
 gpxsee (2.7) stable; urgency=low
 
@@ -1573,18 +1580,18 @@ gpxsee (2.7) stable; urgency=low
   * Added support for POIs in GPX format.
   * Added support for GPX files with multiple tracks.
 
- -- Martin Tuma <tumic@cbox.cz>  Sat, 13 Feb 2016 12:39:16 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 13 Feb 2016 12:39:16 +0100
 
 gpxsee (2.6) stable; urgency=low
 
   * Added map scale info.
   * Improved PDF export.
 
- -- Martin Tuma <tumic@cbox.cz>  Wed, 3 Feb 2016 16:05:17 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Wed, 3 Feb 2016 16:05:17 +0100
 
 gpxsee (2.5) stable; urgency=low
 
   * Added support for imperial units.
   * Fixed track view resizing issues.
 
- -- Martin Tuma <tumic@cbox.cz>  Sun, 20 Dec 2015 16:42:00 +0100
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 20 Dec 2015 16:42:00 +0100

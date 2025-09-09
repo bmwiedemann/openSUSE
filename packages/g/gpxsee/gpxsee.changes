@@ -1,138 +1,145 @@
 -------------------------------------------------------------------
-Sat Aug  9 15:04:07 CEST 2025 - tumic@cbox.cz
+Mon Sep  8 21:56:08 CEST 2025 - tumic@gpxsee.org
+
+- Update to version 13.47
+  * Added support for Mapsforge maps layers.
+  * Added "Outdoor" and "Winter" layers to the Mapsforge style.
+
+-------------------------------------------------------------------
+Sat Aug  9 15:04:07 CEST 2025 - tumic@gpxsee.org
 
 - Update to version 13.46
   * Fixed handling of segmented FIT tracks.
   * Fixed popups/tooltips displaying on Wayland.
 
 -------------------------------------------------------------------
-Sun Jul 13 12:33:21 CEST 2025 - tumic@cbox.cz
+Sun Jul 13 12:33:21 CEST 2025 - tumic@gpxsee.org
 
 - Update to version 13.45
   * Vector maps styles tweaks.
 
 -------------------------------------------------------------------
-Sat Jun  7 19:15:08 CEST 2025 - tumic@cbox.cz
+Sat Jun  7 19:15:08 CEST 2025 - tumic@gpxsee.org
 
 - Update to version 13.44
   * Added tracks/routes/areas legend option.
   * Various minor fixes.
 
 -------------------------------------------------------------------
-Tue May 20 22:41:25 CEST 2025 - tumic@cbox.cz
+Tue May 20 22:41:25 CEST 2025 - tumic@gpxsee.org
 
 - Update to version 13.43
   * Improved marine charts (ENC,IMG) style/rendering.
   * Added OpenFreeMap to the default maps list.
 
 -------------------------------------------------------------------
-Wed May  7 23:29:26 CEST 2025 - tumic@cbox.cz
+Wed May  7 23:29:26 CEST 2025 - tumic@gpxsee.org
 
 - Update to version 13.42
   * Significantly improved marine charts (ENC,IMG) style/rendering.
 
 -------------------------------------------------------------------
-Thu Apr 24 06:30:36 CEST 2025 - tumic@cbox.cz
+Thu Apr 24 06:30:36 CEST 2025 - tumic@gpxsee.org
 
 - Update to version 13.41
   * Fixed switched ENC maps units multipliers (broken in 13.40)
 
 -------------------------------------------------------------------
-Wed Apr 23 22:48:04 CEST 2025 - tumic@cbox.cz
+Wed Apr 23 22:48:04 CEST 2025 - tumic@gpxsee.org
 
 - Update to version 13.40
   * Fixed Vakaros VKX MIME magic detection.
   * Improved ENC maps style/rendering.
 
 -------------------------------------------------------------------
-Sat Apr 19 18:02:51 CEST 2025 - tumic@cbox.cz
+Sat Apr 19 18:02:51 CEST 2025 - tumic@gpxsee.org
 
 - Update to version 13.39
   * Added support for Vakaros VKX files.
   * Improved ENC maps rendering performance.
 
 -------------------------------------------------------------------
-Fri Mar 21 22:40:35 CET 2025 - tumic@cbox.cz
+Fri Mar 21 22:40:35 CET 2025 - tumic@gpxsee.org
 
 - Update to version 13.38
   * Added support for Velocitek VTK files.
   * Improved Mapsforge maps render theme.
 
 -------------------------------------------------------------------
-Sat Mar  8 12:18:01 CET 2025 - tumic@cbox.cz
+Sat Mar  8 12:18:01 CET 2025 - tumic@gpxsee.org
 
 - Update to version 13.37
   * Added support for 70mai cameras GPS logs.
   * Improved multi-level ENC atlases rendering.
 
 -------------------------------------------------------------------
-Fri Feb 21 00:20:11 CET 2025 - tumic@cbox.cz
+Fri Feb 21 00:20:11 CET 2025 - tumic@gpxsee.org
 
 - Update to version 13.36
   * Improved IMG nautical charts rendering.
 
 -------------------------------------------------------------------
-Wed Feb 12 23:06:42 CET 2025 - tumic@cbox.cz
+Wed Feb 12 23:06:42 CET 2025 - tumic@gpxsee.org
 
 - Update to version 13.35
   * Added support for geo URIs (RFC 5870).
   * Significantly improved nautical charts rendering (ENC & IMG).
 
 -------------------------------------------------------------------
-Sun Jan  5 09:37:13 CET 2025 - tumic@cbox.cz
+Sun Jan  5 09:37:13 CET 2025 - tumic@gpxsee.org
 
 - Update to version 13.34
   * Improved ENC maps style/rendering.
   * Minor IMG maps fixes.
 
 -------------------------------------------------------------------
-Tue Dec 10 19:52:02 CET 2024 - tumic@cbox.cz
+Tue Dec 10 19:52:02 CET 2024 - tumic@gpxsee.org
 
 - Update to version 13.33
   * Improved IMG & Mapsforge maps rendering performance.
   * Improved Mapsforge map render theme.
 
 -------------------------------------------------------------------
-Sun Nov 24 15:23:35 CET 2024 - tumic@cbox.cz
+Sun Nov 24 15:23:35 CET 2024 - tumic@gpxsee.org
 
 - Update to version 13.32
   * Improved Mapsforge maps rendering performance.
   * Improved Mapsforge map render theme.
 
 -------------------------------------------------------------------
-Fri Nov 22 08:27:01 CET 2024 - tumic@cbox.cz
+Fri Nov 22 08:27:01 CET 2024 - tumic@gpxsee.org
 
 - Update to version 13.31
   * Improved Mapsforge maps rendering performance.
   * Improved Mapsforge map render theme.
 
 -------------------------------------------------------------------
-Wed Nov 20 20:55:12 CET 2024 - tumic@cbox.cz
+Wed Nov 20 20:55:12 CET 2024 - tumic@gpxsee.org
 
 - Update to version 13.30
   * Improved Mapsforge map render theme.
   * Improved Mapsforge map render engine.
 
 -------------------------------------------------------------------
-Mon Nov 18 11:06:05 CET 2024 - tumic@cbox.cz
+Mon Nov 18 11:06:05 CET 2024 - tumic@gpxsee.org
 
 - Update to version 13.29
   * Fixed broken Mapsforge theme in Qt5 builds.
 
 -------------------------------------------------------------------
-Mon Nov 18 01:39:01 CET 2024 - tumic@cbox.cz
+Mon Nov 18 01:39:01 CET 2024 - tumic@gpxsee.org
 
 - Update to version 13.28
   * New Mapsforge (OpenAndroMaps) render theme.
 
 -------------------------------------------------------------------
-Mon Nov  4 21:56:21 CET 2024 - tumic@cbox.cz
+Mon Nov  4 21:56:21 CET 2024 - tumic@gpxsee.org
 
 - Update to version 13.27
   * Multiple vector maps rendering improvements/fixes.
 
 -------------------------------------------------------------------
-Sat Sep 21 15:35:56 CEST 2024 - tumic@cbox.cz
+Sat Sep 21 15:35:56 CEST 2024 - tumic@gpxsee.org
 
 - Update to version 13.26
   * Disabled fractional GUI scaling in Qt6 (fixes all the rendering
@@ -141,14 +148,14 @@ Sat Sep 21 15:35:56 CEST 2024 - tumic@cbox.cz
   * Improved graphs and paths rendering performance.
 
 -------------------------------------------------------------------
-Tue Sep 17 21:50:48 CEST 2024 - tumic@cbox.cz
+Tue Sep 17 21:50:48 CEST 2024 - tumic@gpxsee.org
 
 - Update to version 13.25
   * Fixed map artifacts in PNG exports under Qt6.
   * Improved IMG marine charts rendering.
 
 -------------------------------------------------------------------
-Sun Sep  8 22:22:28 CEST 2024 - tumic@cbox.cz
+Sun Sep  8 22:22:28 CEST 2024 - tumic@gpxsee.org
 
 - Update to version 13.24
   * Added support for FIT laps.
@@ -156,14 +163,14 @@ Sun Sep  8 22:22:28 CEST 2024 - tumic@cbox.cz
   * Various minor map rendering (IMG & Mapsforge) fixes.
 
 -------------------------------------------------------------------
-Sun Jul 28 14:03:19 CEST 2024 - tumic@cbox.cz
+Sun Jul 28 14:03:19 CEST 2024 - tumic@gpxsee.org
 
 - Update to version 13.23
   * Improved ENC maps rendering.
   * Various minor fixes.
 
 -------------------------------------------------------------------
-Sat Jun 15 13:51:35 CEST 2024 - tumic@cbox.cz
+Sat Jun 15 13:51:35 CEST 2024 - tumic@gpxsee.org
 
 - Update to version 13.22
   * Improved marine maps (ENC & IMG) rendering.
@@ -171,7 +178,7 @@ Sat Jun 15 13:51:35 CEST 2024 - tumic@cbox.cz
   * Added (zoomed) graph scrolling using the mouse.
 
 -------------------------------------------------------------------
-Wed May 29 21:19:29 CEST 2024 - tumic@cbox.cz
+Wed May 29 21:19:29 CEST 2024 - tumic@gpxsee.org
 
 - Update to version 13.21
   * Added hillshading settings.
@@ -179,7 +186,7 @@ Wed May 29 21:19:29 CEST 2024 - tumic@cbox.cz
   * Fixed issues with dates not respecting the system format.
 
 -------------------------------------------------------------------
-Wed May 22 22:43:05 CEST 2024 - tumic@cbox.cz
+Wed May 22 22:43:05 CEST 2024 - tumic@gpxsee.org
 
 - Update to version 13.20
   * Improved hillshading rendering.
@@ -189,7 +196,7 @@ Wed May 22 22:43:05 CEST 2024 - tumic@cbox.cz
   * Switched to Qt6.
 
 -------------------------------------------------------------------
-Sat Apr 20 21:32:42 CEST 2024 - tumic@cbox.cz
+Sat Apr 20 21:32:42 CEST 2024 - tumic@gpxsee.org
 
 - Update to version 13.19
   * Added support for FIT course icons.
@@ -198,7 +205,7 @@ Sat Apr 20 21:32:42 CEST 2024 - tumic@cbox.cz
   * Multiple minor map fixes (IMG & Mapsforge).
 
 -------------------------------------------------------------------
-Sat Mar 23 21:19:19 CET 2024 - tumic@cbox.cz
+Sat Mar 23 21:19:19 CET 2024 - tumic@gpxsee.org
 
 - Update to version 13.18
   * Added support for arbitrary CRSs in GeoJSON files.
@@ -206,7 +213,7 @@ Sat Mar 23 21:19:19 CET 2024 - tumic@cbox.cz
   * CRS database consolidation.
 
 -------------------------------------------------------------------
-Thu Mar  7 21:30:38 CET 2024 - tumic@cbox.cz
+Thu Mar  7 21:30:38 CET 2024 - tumic@gpxsee.org
 
 - Update to version 13.17
   * Added support for hillshading (IMG & Mapsforge maps).
@@ -214,21 +221,21 @@ Thu Mar  7 21:30:38 CET 2024 - tumic@cbox.cz
   * Minor fixes (Mapsforge, IMG and ENC maps).
 
 -------------------------------------------------------------------
-Mon Feb 12 23:38:57 CET 2024 - tumic@cbox.cz
+Mon Feb 12 23:38:57 CET 2024 - tumic@gpxsee.org
 
 - Update to version 13.16
   * Improved vector maps rendering.
   * Minor fixes.
 
 -------------------------------------------------------------------
-Sun Jan 21 23:45:47 CET 2024 - tumic@cbox.cz
+Sun Jan 21 23:45:47 CET 2024 - tumic@gpxsee.org
 
 - Update to version 13.15
   * Removed qt5compat dependency from Qt6 builds.
   * Multiple minor fixes (GUI). 
 
 -------------------------------------------------------------------
-Mon Jan  1 23:25:38 CET 2024 - tumic@cbox.cz
+Mon Jan  1 23:25:38 CET 2024 - tumic@gpxsee.org
 
 - Update to version 13.14
   * Removed 4Umaps map source (map service discontinued).
@@ -236,7 +243,7 @@ Mon Jan  1 23:25:38 CET 2024 - tumic@cbox.cz
   * Multiple minor map formats fixes/improvements (TrekBuddy, IMG).
 
 -------------------------------------------------------------------
-Mon Dec 18 21:46:45 CET 2023 - tumic@cbox.cz
+Mon Dec 18 21:46:45 CET 2023 - tumic@gpxsee.org
 
 - Update to version 13.13
   * Fixed broken map scale (ruler) on HiDPI maps.
@@ -245,7 +252,7 @@ Mon Dec 18 21:46:45 CET 2023 - tumic@cbox.cz
   * Increase the default pixmap cache size on Android to 384MB.
 
 -------------------------------------------------------------------
-Mon Dec 11 23:37:06 CET 2023 - tumic@cbox.cz
+Mon Dec 11 23:37:06 CET 2023 - tumic@gpxsee.org
 
 - Update to version 13.12
   * Added support for overzoom in MVT vector maps (MBTiles/online).
@@ -254,7 +261,7 @@ Mon Dec 11 23:37:06 CET 2023 - tumic@cbox.cz
   * Fixed vector MBTiles not loading in Qt6 builds issue.
 
 -------------------------------------------------------------------
-Sun Nov 19 11:42:43 CET 2023 - tumic@cbox.cz
+Sun Nov 19 11:42:43 CET 2023 - tumic@gpxsee.org
 
 - Update to version 13.11
   * Added support for GPSDump WPT files.
@@ -265,7 +272,7 @@ Sun Nov 19 11:42:43 CET 2023 - tumic@cbox.cz
   * Fixed map bounds limiting.
 
 -------------------------------------------------------------------
-Sat Oct 28 13:52:06 CEST 2023 - tumic@cbox.cz
+Sat Oct 28 13:52:06 CEST 2023 - tumic@gpxsee.org
 
 - Update to version 13.10
   * New GUI icons that fit the current platform styles.
@@ -273,7 +280,7 @@ Sat Oct 28 13:52:06 CEST 2023 - tumic@cbox.cz
   * Fixed/improved vector maps path label layout algorithm.
 
 -------------------------------------------------------------------
-Sun Sep 24 23:36:15 CEST 2023 - tumic@cbox.cz
+Sun Sep 24 23:36:15 CEST 2023 - tumic@gpxsee.org
 
 - Update to version 13.9
   * Fixed storing of WMTS tiles with file system incompatible tile
@@ -282,7 +289,7 @@ Sun Sep 24 23:36:15 CEST 2023 - tumic@cbox.cz
   * Improved ENC maps rendering style.
 
 -------------------------------------------------------------------
-Thu Sep  7 22:22:05 CEST 2023 - tumic@cbox.cz
+Thu Sep  7 22:22:05 CEST 2023 - tumic@gpxsee.org
 
 - Update to version 13.8
   * Added support for ENC atlases (catalogues).
@@ -290,7 +297,7 @@ Thu Sep  7 22:22:05 CEST 2023 - tumic@cbox.cz
   * Fixed broken opening of files from "content:" URLs (Android).
 
 -------------------------------------------------------------------
-Sun Aug 27 18:23:03 CEST 2023 - tumic@cbox.cz
+Sun Aug 27 18:23:03 CEST 2023 - tumic@gpxsee.org
 
 - Update to version 13.7
   * Fixed/improved map info background rendering settings.
@@ -299,7 +306,7 @@ Sun Aug 27 18:23:03 CEST 2023 - tumic@cbox.cz
   * Added missing Windows quiet uninstaller entry.
 
 -------------------------------------------------------------------
-Sun Aug 13 13:24:32 CEST 2023 - tumic@cbox.cz
+Sun Aug 13 13:24:32 CEST 2023 - tumic@gpxsee.org
 
 - Update to version 13.6
   * Fixed Garmin GPI parser rejecting some valid files.
@@ -307,7 +314,7 @@ Sun Aug 13 13:24:32 CEST 2023 - tumic@cbox.cz
   * Added option to suppress file open errors.
 
 -------------------------------------------------------------------
-Sun Jul 30 11:40:20 CEST 2023 - tumic@cbox.cz
+Sun Jul 30 11:40:20 CEST 2023 - tumic@gpxsee.org
 
 - Update to version 13.5
   * Added graph pinch zooming.
@@ -315,14 +322,14 @@ Sun Jul 30 11:40:20 CEST 2023 - tumic@cbox.cz
   * Use 512px tiles in Mapsforge maps rendering.
 
 -------------------------------------------------------------------
-Sat Jun 10 09:59:25 CEST 2023 - tumic@cbox.cz
+Sat Jun 10 09:59:25 CEST 2023 - tumic@gpxsee.org
 
 - Update to version 13.4
   * Extended Mapsforge render themes support.
   * Improved ENC maps rendering.
 
 -------------------------------------------------------------------
-Sun May 21 13:44:24 CEST 2023 - tumic@cbox.cz
+Sun May 21 13:44:24 CEST 2023 - tumic@gpxsee.org
 
 - Update to version 13.3
   * Improved vector maps zooming speed/performance.
@@ -330,21 +337,21 @@ Sun May 21 13:44:24 CEST 2023 - tumic@cbox.cz
   * Improved Mapsforge maps rendering.
 
 -------------------------------------------------------------------
-Fri May 12 20:47:05 CEST 2023 - tumic@cbox.cz
+Fri May 12 20:47:05 CEST 2023 - tumic@gpxsee.org
 
 - Update to version 13.2
   * Fixed crash on empty routes (introduced in 12.4).
   * Minor fixes.
 
 -------------------------------------------------------------------
-Fri May  5 19:24:12 CEST 2023 - tumic@cbox.cz
+Fri May  5 19:24:12 CEST 2023 - tumic@gpxsee.org
 
 - Update to version 13.1
   * Fixed wrong date info on tracks with segments.
   * Fixed display issues of Mapsforge and KMZ maps in HiDPI mode.
 
 -------------------------------------------------------------------
-Thu Apr 27 23:56:20 CEST 2023 - tumic@cbox.cz
+Thu Apr 27 23:56:20 CEST 2023 - tumic@gpxsee.org
 
 - Update to version 13.0
   * Reworked coordinate reference systems (CRS) handling.
@@ -352,21 +359,21 @@ Thu Apr 27 23:56:20 CEST 2023 - tumic@cbox.cz
   * Minor fixes.
 
 -------------------------------------------------------------------
-Mon Apr 10 18:43:06 CEST 2023 - tumic@cbox.cz
+Mon Apr 10 18:43:06 CEST 2023 - tumic@gpxsee.org
 
 - Update to version 12.4
   * Fixed/improved Mapsforge maps rendering.
   * Minor fixes.
 
 -------------------------------------------------------------------
-Sun Mar 26 10:58:32 CEST 2023 - tumic@cbox.cz
+Sun Mar 26 10:58:32 CEST 2023 - tumic@gpxsee.org
 
 - Update to version 12.3
   * Improved ENC maps rendering.
   * Minor fixes.
 
 -------------------------------------------------------------------
-Sat Mar  4 18:08:31 CET 2023 - tumic@cbox.cz
+Sat Mar  4 18:08:31 CET 2023 - tumic@gpxsee.org
 
 - Update to version 12.2
   * Fixed broken handling of IMG "multi-maps" (maps with overviews).
@@ -376,7 +383,7 @@ Sat Mar  4 18:08:31 CET 2023 - tumic@cbox.cz
   * Made the DEM cache configurable.
 
 -------------------------------------------------------------------
-Sat Feb 18 14:11:19 CET 2023 - tumic@cbox.cz
+Sat Feb 18 14:11:19 CET 2023 - tumic@gpxsee.org
 
 - Update to version 12.1
   * Fixed areas rendering.
@@ -384,14 +391,14 @@ Sat Feb 18 14:11:19 CET 2023 - tumic@cbox.cz
   * Fixed NMEA parser.
 
 -------------------------------------------------------------------
-Fri Feb 10 00:46:51 CET 2023 - tumic@cbox.cz
+Fri Feb 10 00:46:51 CET 2023 - tumic@gpxsee.org
 
 - Update to version 12.0
   * Android "desktop" integration.
   * Minor fixes.
 
 -------------------------------------------------------------------
-Thu Jan 26 23:43:07 CET 2023 - tumic@cbox.cz
+Thu Jan 26 23:43:07 CET 2023 - tumic@gpxsee.org
 
 - Update to version 11.12
   * Fixed broken parsing of KML tracks with empty coordinates.
@@ -401,40 +408,40 @@ Thu Jan 26 23:43:07 CET 2023 - tumic@cbox.cz
   * Added Korean localization.
 
 -------------------------------------------------------------------
-Sat Dec 10 19:10:30 CET 2022 - tumic@cbox.cz
+Sat Dec 10 19:10:30 CET 2022 - tumic@gpxsee.org
 
 - Update to version 11.11
   * Improved ENC maps render style.
 
 -------------------------------------------------------------------
-Sat Nov 26 20:10:40 CET 2022 - tumic@cbox.cz
+Sat Nov 26 20:10:40 CET 2022 - tumic@gpxsee.org
 
 - Update to version 11.10
   * Fixed broken Inland ECDIS rendering.
   * Improved ENC maps render style.
 
 -------------------------------------------------------------------
-Thu Nov 17 13:38:08 CET 2022 - tumic@cbox.cz
+Thu Nov 17 13:38:08 CET 2022 - tumic@gpxsee.org
 
 - Update to version 11.9
   * Improved ENC maps render style.
 
 -------------------------------------------------------------------
-Fri Nov 11 01:44:12 CET 2022 - tumic@cbox.cz
+Fri Nov 11 01:44:12 CET 2022 - tumic@gpxsee.org
 
 - Update to version 11.8
   * Fixed crash on ENC maps unload.
   * Improved ENC maps render style.
 
 -------------------------------------------------------------------
-Sun Nov  6 18:16:34 CET 2022 - tumic@cbox.cz
+Sun Nov  6 18:16:34 CET 2022 - tumic@gpxsee.org
 
 - Update to version 11.7
   * Added support for ENC charts.
   * Improved IMG maps marine style.
 
 -------------------------------------------------------------------
-Mon Oct 10 00:56:00 CEST 2022 - tumic@cbox.cz
+Mon Oct 10 00:56:00 CEST 2022 - tumic@gpxsee.org
 
 - Update to version 11.6
   * Fixed tracks/routes line style configuration (introduced in
@@ -442,7 +449,7 @@ Mon Oct 10 00:56:00 CEST 2022 - tumic@cbox.cz
   * Fixed KML StyleMap handling.
 
 -------------------------------------------------------------------
-Wed Sep 28 08:55:08 CEST 2022 - tumic@cbox.cz
+Wed Sep 28 08:55:08 CEST 2022 - tumic@gpxsee.org
 
 - Update to version 11.5
   * Added support for data styles.
@@ -452,7 +459,7 @@ Wed Sep 28 08:55:08 CEST 2022 - tumic@cbox.cz
   * Updated USGS maps (added zoom 16).
 
 -------------------------------------------------------------------
-Sun Sep  4 22:38:13 CEST 2022 - tumic@cbox.cz
+Sun Sep  4 22:38:13 CEST 2022 - tumic@gpxsee.org
 
 - Update to version 11.4
   * Added support for KMZ data files.
@@ -460,14 +467,14 @@ Sun Sep  4 22:38:13 CEST 2022 - tumic@cbox.cz
   * Added support for non-SQL Orux maps.
 
 -------------------------------------------------------------------
-Thu Aug 11 00:49:04 CEST 2022 - tumic@cbox.cz
+Thu Aug 11 00:49:04 CEST 2022 - tumic@gpxsee.org
 
 - Update to version 11.3
   * Added support for Orux maps.
   * Android PDF/PNG export dialogues fixes/improvements.
 
 -------------------------------------------------------------------
-Sun Jul 31 12:26:50 CEST 2022 - tumic@cbox.cz
+Sun Jul 31 12:26:50 CEST 2022 - tumic@gpxsee.org
 
 - Update to version 11.2
   * Added support for Osmdroid SQLite maps.
@@ -476,7 +483,7 @@ Sun Jul 31 12:26:50 CEST 2022 - tumic@cbox.cz
   * Multiple Android GUI fixes/improvements.
 
 -------------------------------------------------------------------
-Thu Jun  2 22:24:38 CEST 2022 - tumic@cbox.cz
+Thu Jun  2 22:24:38 CEST 2022 - tumic@gpxsee.org
 
 - Update to version 11.1
   * Fixed broken map zooming using the mouse wheel (introduced in
@@ -484,7 +491,7 @@ Thu Jun  2 22:24:38 CEST 2022 - tumic@cbox.cz
   * Now using asynchronous tiles rendering in IMG maps.
 
 -------------------------------------------------------------------
-Mon May 30 18:56:55 CEST 2022 - tumic@cbox.cz
+Mon May 30 18:56:55 CEST 2022 - tumic@gpxsee.org
 
 - Update to version 11.0
   * Added Android build.
@@ -492,19 +499,19 @@ Mon May 30 18:56:55 CEST 2022 - tumic@cbox.cz
   * Fixed broken PNG/PDF exports on systems with HiDPI displays.
 
 -------------------------------------------------------------------
-Sun Apr 24 17:54:41 CEST 2022 - tumic@cbox.cz
+Sun Apr 24 17:54:41 CEST 2022 - tumic@gpxsee.org
 
 - Update to version 10.7
   * Multiple IMG maps loading/rendering fixes.
 
 -------------------------------------------------------------------
-Tue Apr 12 23:59:10 CEST 2022 - tumic@cbox.cz
+Tue Apr 12 23:59:10 CEST 2022 - tumic@gpxsee.org
 
 - Update to version 10.6
   * Improved marine charts rendering.
 
 -------------------------------------------------------------------
-Sun Mar 27 16:50:26 CEST 2022 - tumic@cbox.cz
+Sun Mar 27 16:50:26 CEST 2022 - tumic@gpxsee.org
 
 - Update to version 10.5
   * Improved handling of MBTiles maps with nonconsecutive zoom
@@ -513,21 +520,21 @@ Sun Mar 27 16:50:26 CEST 2022 - tumic@cbox.cz
   * Added a basic IMG nautical charts style.
 
 -------------------------------------------------------------------
-Sun Feb 13 23:31:55 CET 2022 - tumic@cbox.cz
+Sun Feb 13 23:31:55 CET 2022 - tumic@gpxsee.org
 
 - Update to version 10.4
   * Improved POI labels handling in IMG maps.
   * Fixed position/motion info output in exports/printing.
 
 -------------------------------------------------------------------
-Wed Feb  2 21:11:28 CET 2022 - tumic@cbox.cz
+Wed Feb  2 21:11:28 CET 2022 - tumic@gpxsee.org
 
 - Update to version 10.3
   * Improved/fixed GPI parser.
   * Significantly improved areas loading performance.
 
 -------------------------------------------------------------------
-Fri Jan 21 00:55:42 CET 2022 - tumic@cbox.cz
+Fri Jan 21 00:55:42 CET 2022 - tumic@gpxsee.org
 
 - Update to version 10.2
   * Improved/fixed TwoNav data files parser.
@@ -537,14 +544,14 @@ Fri Jan 21 00:55:42 CET 2022 - tumic@cbox.cz
   * Multiple minor fixes and enhancements.
 
 -------------------------------------------------------------------
-Sun Jan  2 15:05:54 CET 2022 - tumic@cbox.cz
+Sun Jan  2 15:05:54 CET 2022 - tumic@gpxsee.org
 
 - Update to version 10.1
   * Added support for TwoNav data files (TRK, RTE, WPT).
   * Extended waypoint icon set.
 
 -------------------------------------------------------------------
-Wed Dec  8 00:03:04 CET 2021 - tumic@cbox.cz
+Wed Dec  8 00:03:04 CET 2021 - tumic@gpxsee.org
 
 - Update to version 10.0
   * Added support for (GPS) positioning.
@@ -552,7 +559,7 @@ Wed Dec  8 00:03:04 CET 2021 - tumic@cbox.cz
   * Fixed Mapsforge maps crash when Qt-SVG is missing.
 
 -------------------------------------------------------------------
-Wed Nov 17 08:43:50 CET 2021 - tumic@cbox.cz
+Wed Nov 17 08:43:50 CET 2021 - tumic@gpxsee.org
 
 - Update to version 9.12
   * Added support for QCT maps.
@@ -560,7 +567,7 @@ Wed Nov 17 08:43:50 CET 2021 - tumic@cbox.cz
   * Minor IMG maps fixes and enhancements.
 
 -------------------------------------------------------------------
-Sun Oct 31 16:08:47 CET 2021 - tumic@cbox.cz
+Sun Oct 31 16:08:47 CET 2021 - tumic@gpxsee.org
 
 - Update to version 9.11
   * Switched to core5compat in Qt6 builds to support East Asian
@@ -568,7 +575,7 @@ Sun Oct 31 16:08:47 CET 2021 - tumic@cbox.cz
   * Fixed IMG map labels handling.
 
 -------------------------------------------------------------------
-Mon Oct 25 12:35:14 CEST 2021 - tumic@cbox.cz
+Mon Oct 25 12:35:14 CEST 2021 - tumic@gpxsee.org
 
 - Update to version 9.10
   * Added waypoint icons highlighting.
@@ -576,21 +583,21 @@ Mon Oct 25 12:35:14 CEST 2021 - tumic@cbox.cz
   * Added support for East Asian encodings in Garmin formats.
 
 -------------------------------------------------------------------
-Sat Oct 16 11:05:33 CEST 2021 - tumic@cbox.cz
+Sat Oct 16 11:05:33 CEST 2021 - tumic@gpxsee.org
 
 - Update to version 9.9
   * Fixed scroll wheel zooming on devices with "fine-resolution
     wheels".
 
 -------------------------------------------------------------------
-Wed Oct 13 21:07:45 CEST 2021 - tumic@cbox.cz
+Wed Oct 13 21:07:45 CEST 2021 - tumic@gpxsee.org
 
 - Update to version 9.8
   * Added support for Waypoint/POI icons.
   * Various minor bugfixes.
 
 -------------------------------------------------------------------
-Sun Sep 26 12:09:32 CEST 2021 - tumic@cbox.cz
+Sun Sep 26 12:09:32 CEST 2021 - tumic@gpxsee.org
 
 - Update to version 9.7
   * Added Chinese translation.
@@ -600,7 +607,7 @@ Sun Sep 26 12:09:32 CEST 2021 - tumic@cbox.cz
   * Multiple settings handling fixes and enhancements.
 
 -------------------------------------------------------------------
-Sun Sep  5 16:29:19 CEST 2021 - tumic@cbox.cz
+Sun Sep  5 16:29:19 CEST 2021 - tumic@gpxsee.org
 
 - Update to version 9.6
   * Added support for downloading DEM files.
@@ -608,14 +615,14 @@ Sun Sep  5 16:29:19 CEST 2021 - tumic@cbox.cz
   * Various GUI polishing (mostly macOS).
 
 -------------------------------------------------------------------
-Sun Aug 22 17:53:18 CEST 2021 - tumic@cbox.cz
+Sun Aug 22 17:53:18 CEST 2021 - tumic@gpxsee.org
 
 - Update to version 9.5
   * Added support for ONmove (Decathlon) watch log files.
   * Fixed/improved IMG labels handling.
 
 -------------------------------------------------------------------
-Sun Aug  8 14:33:15 CEST 2021 - tumic@cbox.cz
+Sun Aug  8 14:33:15 CEST 2021 - tumic@gpxsee.org
 
 - Update to version 9.4
   * Rotate JPEG thumbnails according to EXIF data.
@@ -623,7 +630,7 @@ Sun Aug  8 14:33:15 CEST 2021 - tumic@cbox.cz
   * Improved IMG maps performance.
 
 -------------------------------------------------------------------
-Sat Jul 17 15:05:22 CEST 2021 - tumic@cbox.cz
+Sat Jul 17 15:05:22 CEST 2021 - tumic@gpxsee.org
 
 - Update to version 9.3
   * Fixed crash with certain Mapsforge styles.
@@ -631,14 +638,14 @@ Sat Jul 17 15:05:22 CEST 2021 - tumic@cbox.cz
   * Added initial open file paths configuration.
 
 -------------------------------------------------------------------
-Tue Jun 29 23:36:00 CEST 2021 - tumic@cbox.cz
+Tue Jun 29 23:36:00 CEST 2021 - tumic@gpxsee.org
 
 - Update to version 9.2
   * Added support for World-File georeferenced images.
   * Fixed SML and CSV parser issues.
 
 -------------------------------------------------------------------
-Sat May 29 10:32:56 CEST 2021 - tumic@cbox.cz
+Sat May 29 10:32:56 CEST 2021 - tumic@gpxsee.org
 
 - Update to version 9.1
   * Added support for TomTom OV2 and ITN files.
@@ -647,13 +654,13 @@ Sat May 29 10:32:56 CEST 2021 - tumic@cbox.cz
   * Some more minor fixes.
 
 -------------------------------------------------------------------
-Tue Apr 20 00:46:33 CEST 2021 - tumic@cbox.cz
+Tue Apr 20 00:46:33 CEST 2021 - tumic@gpxsee.org
 
 - Update to version 9.0
   * Added support for Mapsforge maps.
 
 -------------------------------------------------------------------
-Tue Mar 23 23:24:21 CET 2021 - tumic@cbox.cz
+Tue Mar 23 23:24:21 CET 2021 - tumic@gpxsee.org
 
 - Update to version 8.9
   * Preserve the directory structure when loading maps/POIs.
@@ -662,13 +669,13 @@ Tue Mar 23 23:24:21 CET 2021 - tumic@cbox.cz
   * Fixed possible crash on JNX maps.
 
 -------------------------------------------------------------------
-Mon Mar  1 00:37:43 CET 2021 - tumic@cbox.cz
+Mon Mar  1 00:37:43 CET 2021 - tumic@gpxsee.org
 
 - Update to version 8.8
   * Fixed disappearing marker with some graphs combinations.
 
 -------------------------------------------------------------------
-Sun Feb 21 10:48:37 CET 2021 - tumic@cbox.cz
+Sun Feb 21 10:48:37 CET 2021 - tumic@gpxsee.org
 
 - Update to version 8.7
   * Fixed broken marker date/coordinates when time graphs are
@@ -677,7 +684,7 @@ Sun Feb 21 10:48:37 CET 2021 - tumic@cbox.cz
   * Improved Full-screen layout.
 
 -------------------------------------------------------------------
-Sun Feb 14 22:41:55 CET 2021 - tumic@cbox.cz
+Sun Feb 14 22:41:55 CET 2021 - tumic@gpxsee.org
 
 - Update to version 8.6
   * Added support for Locus/OsmAnd/RMaps SQLite maps.
@@ -685,13 +692,13 @@ Sun Feb 14 22:41:55 CET 2021 - tumic@cbox.cz
   * Minor AQM maps display fix.
 
 -------------------------------------------------------------------
-Mon Feb  8 21:42:21 CET 2021 - tumic@cbox.cz
+Mon Feb  8 21:42:21 CET 2021 - tumic@gpxsee.org
 
 - Update to version 8.5
   * Fixed crash on areas/polygons (introduced in 8.2).
 
 -------------------------------------------------------------------
-Sun Feb  7 13:08:31 CET 2021 - tumic@cbox.cz
+Sun Feb  7 13:08:31 CET 2021 - tumic@gpxsee.org
 
 - Update to version 8.4
   * Added support for AlpineQuest AQM maps.
@@ -699,13 +706,13 @@ Sun Feb  7 13:08:31 CET 2021 - tumic@cbox.cz
   * IMG format compatability and performance improvements.
 
 -------------------------------------------------------------------
-Sat Jan 23 21:45:59 CET 2021 - tumic@cbox.cz
+Sat Jan 23 21:45:59 CET 2021 - tumic@gpxsee.org
 
 - Update to version 8.3
   * Fixed crash on empty paths (introduced in 8.2).
 
 -------------------------------------------------------------------
-Tue Jan 19 20:45:47 CET 2021 - tumic@cbox.cz
+Tue Jan 19 20:45:47 CET 2021 - tumic@gpxsee.org
 
 - Update to version 8.2
   * Fixed crash on broken KMZ maps.
@@ -713,7 +720,7 @@ Tue Jan 19 20:45:47 CET 2021 - tumic@cbox.cz
   * Minor UI/UX enhancements.
 
 -------------------------------------------------------------------
-Sat Jan  2 11:05:30 CET 2021 - tumic@cbox.cz
+Sat Jan  2 11:05:30 CET 2021 - tumic@gpxsee.org
 
 - Update to version 8.1
   * Fixed digital zoom on OS X.
@@ -722,14 +729,14 @@ Sat Jan  2 11:05:30 CET 2021 - tumic@cbox.cz
   * Minor fixes.
 
 -------------------------------------------------------------------
-Mon Dec 28 23:33:36 CET 2020 - tumic@cbox.cz
+Mon Dec 28 23:33:36 CET 2020 - tumic@gpxsee.org
 
 - Update to version 8.0
   * Added support for KMZ maps.
   * Added Qt6 support, dropped Qt4 support.
 
 -------------------------------------------------------------------
-Tue Dec 15 23:29:47 CET 2020 - tumic@cbox.cz
+Tue Dec 15 23:29:47 CET 2020 - tumic@gpxsee.org
 
 - Update to version 7.38
   * Maps can now be opened like data files (program parameter,
@@ -738,7 +745,7 @@ Tue Dec 15 23:29:47 CET 2020 - tumic@cbox.cz
   * Added support for polyconic projections.
 
 -------------------------------------------------------------------
-Tue Nov 24 23:12:22 CET 2020 - tumic@cbox.cz
+Tue Nov 24 23:12:22 CET 2020 - tumic@gpxsee.org
 
 - Update to version 7.37
   * Added "copy coordinates to clipboard" feature.
@@ -748,7 +755,7 @@ Tue Nov 24 23:12:22 CET 2020 - tumic@cbox.cz
   * Improved GeoTIFF compatability.
 
 -------------------------------------------------------------------
-Wed Nov 11 21:39:56 CET 2020 - tumic@cbox.cz
+Wed Nov 11 21:39:56 CET 2020 - tumic@gpxsee.org
 
 - Update to version 7.36
   * IMG format fixes/improvements (mostly labels related).
@@ -756,7 +763,7 @@ Wed Nov 11 21:39:56 CET 2020 - tumic@cbox.cz
   * Added workaround for broken FIT files produced by gpsbabel.
 
 -------------------------------------------------------------------
-Tue Oct 27 21:32:16 CET 2020 - tumic@cbox.cz
+Tue Oct 27 21:32:16 CET 2020 - tumic@gpxsee.org
 
 - Update to version 7.35
   * IMG format compatability, performance and layout improvements.
@@ -764,19 +771,19 @@ Tue Oct 27 21:32:16 CET 2020 - tumic@cbox.cz
   * Various minor bug fixes.
 
 -------------------------------------------------------------------
-Fri Oct  9 05:31:15 CEST 2020 - tumic@cbox.cz
+Fri Oct  9 05:31:15 CEST 2020 - tumic@gpxsee.org
 
 - Update to version 7.34
   * Fixed application icons paths.
 
 -------------------------------------------------------------------
-Wed Oct  7 23:21:38 CEST 2020 - tumic@cbox.cz
+Wed Oct  7 23:21:38 CEST 2020 - tumic@gpxsee.org
 
 - Update to version 7.33
   * Added PNG export.
 
 -------------------------------------------------------------------
-Mon Sep 21 00:01:38 CEST 2020 - tumic@cbox.cz
+Mon Sep 21 00:01:38 CEST 2020 - tumic@gpxsee.org
 
 - Update to version 7.32
   * Configurable (GPX) segments handling.
@@ -785,7 +792,7 @@ Mon Sep 21 00:01:38 CEST 2020 - tumic@cbox.cz
   * "Multi-size" application icons.
 
 -------------------------------------------------------------------
-Tue Jun 30 16:19:34 CEST 2020 - tumic@cbox.cz
+Tue Jun 30 16:19:34 CEST 2020 - tumic@gpxsee.org
 
 - Update to version 7.31
   * Added Italian translation.
@@ -793,7 +800,7 @@ Tue Jun 30 16:19:34 CEST 2020 - tumic@cbox.cz
   * Various IMG format compatability and performance improvements.
 
 -------------------------------------------------------------------
-Sat May 30 15:24:14 CEST 2020 - tumic@cbox.cz
+Sat May 30 15:24:14 CEST 2020 - tumic@gpxsee.org
 
 - Update to version 7.30
   * Added time zone configuration.
@@ -803,14 +810,14 @@ Sat May 30 15:24:14 CEST 2020 - tumic@cbox.cz
   * Minor fixes (KML, CRS format).
 
 -------------------------------------------------------------------
-Sun Apr 19 15:01:07 CEST 2020 - tumic@cbox.cz
+Sun Apr 19 15:01:07 CEST 2020 - tumic@gpxsee.org
 
 - Update to version 7.29
   * Added support for FIT course points.
   * Minor IMG maps fixes/tweaks.
 
 -------------------------------------------------------------------
-Sun Apr  5 12:48:01 CEST 2020 - tumic@cbox.cz
+Sun Apr  5 12:48:01 CEST 2020 - tumic@gpxsee.org
 
 - Update to version 7.28
   * Fixed broken graph color change when secondary graphs present.
@@ -818,14 +825,14 @@ Sun Apr  5 12:48:01 CEST 2020 - tumic@cbox.cz
     GPXSee).
 
 -------------------------------------------------------------------
-Sat Mar 28 19:39:12 CET 2020 - tumic@cbox.cz
+Sat Mar 28 19:39:12 CET 2020 - tumic@gpxsee.org
 
 - Update to version 7.27
   * Fixed builds with -Werror=format-security (Fedora, RHEL,
     Mageia). No real issue.
 
 -------------------------------------------------------------------
-Sat Mar 28 18:38:45 CET 2020 - tumic@cbox.cz
+Sat Mar 28 18:38:45 CET 2020 - tumic@gpxsee.org
 
 - Update to version 7.26
   * Enable simultaneous display of GPS and DEM data.
@@ -833,7 +840,7 @@ Sat Mar 28 18:38:45 CET 2020 - tumic@cbox.cz
   * Various minor bug fixes.
 
 -------------------------------------------------------------------
-Wed Mar  4 20:35:11 CET 2020 - tumic@cbox.cz
+Wed Mar  4 20:35:11 CET 2020 - tumic@gpxsee.org
 
 - Update to version 7.25
   * Added missing OnlineResources URLs handling in WMS maps.
@@ -841,27 +848,27 @@ Wed Mar  4 20:35:11 CET 2020 - tumic@cbox.cz
     7.24)
 
 -------------------------------------------------------------------
-Sun Mar  1 15:21:52 CET 2020 - tumic@cbox.cz
+Sun Mar  1 15:21:52 CET 2020 - tumic@gpxsee.org
 
 - Update to version 7.24
   * Multiple WMS maps fixes.
 
 -------------------------------------------------------------------
-Mon Feb 17 20:34:50 CET 2020 - tumic@cbox.cz
+Mon Feb 17 20:34:50 CET 2020 - tumic@gpxsee.org
 
 - Update to version 7.23
   * Fixed various IMG maps rendering issues.
   * Improved the default IMG map style.
 
 -------------------------------------------------------------------
-Wed Feb 12 23:06:23 CET 2020 - tumic@cbox.cz
+Wed Feb 12 23:06:23 CET 2020 - tumic@gpxsee.org
 
 - Update to version 7.22
   * Fixed loading of GMAP maps when Garmin BaseCamp has associated
     them (OS X issue).
 
 -------------------------------------------------------------------
-Tue Feb 11 23:09:17 CET 2020 - tumic@cbox.cz
+Tue Feb 11 23:09:17 CET 2020 - tumic@gpxsee.org
 
 - Update to version 7.21
   * Added support for Garmin GMAP maps.
@@ -869,14 +876,14 @@ Tue Feb 11 23:09:17 CET 2020 - tumic@cbox.cz
   * Hungarian localization.
 
 -------------------------------------------------------------------
-Sun Jan 26 17:24:23 CET 2020 - tumic@cbox.cz
+Sun Jan 26 17:24:23 CET 2020 - tumic@gpxsee.org
 
 - Update to version 7.20
   * Added support for Suunto SML files.
   * Various IMG maps improvements.
 
 -------------------------------------------------------------------
-Sun Jan 12 18:33:57 CET 2020 - tumic@cbox.cz
+Sun Jan 12 18:33:57 CET 2020 - tumic@gpxsee.org
 
 - Update to version 7.19
   * Fixed/improved pause detection.
@@ -887,7 +894,7 @@ Sun Jan 12 18:33:57 CET 2020 - tumic@cbox.cz
   * Translations updates.
 
 -------------------------------------------------------------------
-Fri Nov 15 22:49:20 CET 2019 - tumic@cbox.cz
+Fri Nov 15 22:49:20 CET 2019 - tumic@gpxsee.org
 
 - Update to version 7.18
   * Added support for waypoint addresses.
@@ -896,7 +903,7 @@ Fri Nov 15 22:49:20 CET 2019 - tumic@cbox.cz
   * Added Ukrainian translation.
 
 -------------------------------------------------------------------
-Sat Nov  2 10:03:40 CET 2019 - tumic@cbox.cz
+Sat Nov  2 10:03:40 CET 2019 - tumic@gpxsee.org
 
 - Update to version 7.17
   * Fixed program crash on empty GPX segment.
@@ -904,7 +911,7 @@ Sat Nov  2 10:03:40 CET 2019 - tumic@cbox.cz
   * Various GPI parser fixes & improvements.
 
 -------------------------------------------------------------------
-Mon Oct 28 22:26:16 CET 2019 - tumic@cbox.cz
+Mon Oct 28 22:26:16 CET 2019 - tumic@gpxsee.org
 
 - Update to version 7.16
   * Added support for Garmin GPI files.
@@ -912,7 +919,7 @@ Mon Oct 28 22:26:16 CET 2019 - tumic@cbox.cz
   * Various minor bug fixes in data loading.
 
 -------------------------------------------------------------------
-Sat Oct  5 19:03:32 CEST 2019 - tumic@cbox.cz
+Sat Oct  5 19:03:32 CEST 2019 - tumic@gpxsee.org
 
 - Update to version 7.15
   * Fixed broken align of zoom level 0 with tiles of a different
@@ -921,7 +928,7 @@ Sat Oct  5 19:03:32 CEST 2019 - tumic@cbox.cz
   * IMG maps text layout tweaking and optimization.
 
 -------------------------------------------------------------------
-Sun Sep 29 15:42:25 CEST 2019 - tumic@cbox.cz
+Sun Sep 29 15:42:25 CEST 2019 - tumic@gpxsee.org
 
 - Update to version 7.14
   * Added support for enchanced altitude and speed records in FIT
@@ -929,14 +936,14 @@ Sun Sep 29 15:42:25 CEST 2019 - tumic@cbox.cz
   * Added support for pseudo-NT IMG maps (e.g. TopoHispania).
 
 -------------------------------------------------------------------
-Sun Sep  1 18:50:26 CEST 2019 - tumic@cbox.cz
+Sun Sep  1 18:50:26 CEST 2019 - tumic@gpxsee.org
 
 - Update to version 7.13
   * Added support for graph zooming.
   * Several minor bug fixes.
 
 -------------------------------------------------------------------
-Sat Aug 17 22:20:31 CEST 2019 - tumic@cbox.cz
+Sat Aug 17 22:20:31 CEST 2019 - tumic@gpxsee.org
 
 - Update to version 7.12
   * Added support for SeeYou CUP files.
@@ -944,27 +951,27 @@ Sat Aug 17 22:20:31 CEST 2019 - tumic@cbox.cz
   * Fixed lat/lon reference parsing in big endian EXIF entries.
 
 -------------------------------------------------------------------
-Thu Jul 18 21:31:34 CEST 2019 - tumic@cbox.cz
+Thu Jul 18 21:31:34 CEST 2019 - tumic@gpxsee.org
 
 - Update to version 7.11
   * Improved IMG maps loading performance and memory footprint.
   * Improved road shields layout on IMG maps.
 
 -------------------------------------------------------------------
-Sun Jul  7 19:28:34 CEST 2019 - tumic@cbox.cz
+Sun Jul  7 19:28:34 CEST 2019 - tumic@gpxsee.org
 
 - Update to version 7.10
   * Various IMG maps fixes and improvements.
 
 -------------------------------------------------------------------
-Sat Jun 15 22:36:58 CEST 2019 - tumic@cbox.cz
+Sat Jun 15 22:36:58 CEST 2019 - tumic@gpxsee.org
 
 - Update to version 7.9
   * Removed the annoying map view re-zooming on window resize.
   * Improved POI handling and text rendering in IMG maps.
 
 -------------------------------------------------------------------
-Thu May 30 00:19:37 CEST 2019 - tumic@cbox.cz
+Thu May 30 00:19:37 CEST 2019 - tumic@gpxsee.org
 
 - Update to version 7.8
   * Added support for QuadTiles maps.
@@ -974,7 +981,7 @@ Thu May 30 00:19:37 CEST 2019 - tumic@cbox.cz
   * Fixed broken WMS scale denominators to zoom levels transition.
 
 -------------------------------------------------------------------
-Sat May 18 20:50:07 CEST 2019 - tumic@cbox.cz
+Sat May 18 20:50:07 CEST 2019 - tumic@gpxsee.org
 
 - Update to version 7.7
   * Fixed build & display issues with Qt < 5.4.
@@ -983,7 +990,7 @@ Sat May 18 20:50:07 CEST 2019 - tumic@cbox.cz
   * Removed obsolete "Always show the map" setting.
 
 -------------------------------------------------------------------
-Sun May 12 17:55:57 CEST 2019 - tumic@cbox.cz
+Sun May 12 17:55:57 CEST 2019 - tumic@gpxsee.org
 
 - Update to version 7.6
   * Added support for Garmin IMG maps.
@@ -992,13 +999,13 @@ Sun May 12 17:55:57 CEST 2019 - tumic@cbox.cz
   * Fixed broken speed type switch.
 
 -------------------------------------------------------------------
-Sat Mar 16 19:38:53 CET 2019 - tumic@cbox.cz
+Sat Mar 16 19:38:53 CET 2019 - tumic@gpxsee.org
 
 - Update to version 7.5
   * Added support for geotagged JPEG images.
 
 -------------------------------------------------------------------
-Sun Mar 10 20:59:05 CET 2019 - tumic@cbox.cz
+Sun Mar 10 20:59:05 CET 2019 - tumic@gpxsee.org
 
 - Update to version 7.4
   * Added support for TwoNav RMaps.
@@ -1006,7 +1013,7 @@ Sun Mar 10 20:59:05 CET 2019 - tumic@cbox.cz
   * Fixed IGC date handling issues.
 
 -------------------------------------------------------------------
-Mon Feb 18 23:52:54 CET 2019 - tumic@cbox.cz
+Mon Feb 18 23:52:54 CET 2019 - tumic@gpxsee.org
 
 - Update to version 7.3
   * Added support for area (polygon) objects.
@@ -1017,7 +1024,7 @@ Mon Feb 18 23:52:54 CET 2019 - tumic@cbox.cz
   * Minor bug fixes (GPX parser, GUI).
 
 -------------------------------------------------------------------
-Mon Jan 28 21:40:21 CET 2019 - tumic@cbox.cz
+Mon Jan 28 21:40:21 CET 2019 - tumic@gpxsee.org
 
 - Update to version 7.2
   * Added support for DEM data (SRTM HGT files).
@@ -1028,14 +1035,14 @@ Mon Jan 28 21:40:21 CET 2019 - tumic@cbox.cz
   * Added Spanish localization.
 
 -------------------------------------------------------------------
-Tue Jan  1 23:33:40 CET 2019 - tumic@cbox.cz
+Tue Jan  1 23:33:40 CET 2019 - tumic@gpxsee.org
 
 - Update to version 7.1
   * Fixed build with Qt5 <= 5.4
   * Minor bug fixes & updates (TCX, localization)
 
 -------------------------------------------------------------------
-Sat Dec  8 12:15:28 CET 2018 - tumic@cbox.cz
+Sat Dec  8 12:15:28 CET 2018 - tumic@gpxsee.org
 
 - Update to version 7.0
   * Added support for PBF vector maps (requires QtPbfImagePlugin).
@@ -1044,7 +1051,7 @@ Sat Dec  8 12:15:28 CET 2018 - tumic@cbox.cz
   * Minor bug fixes (WMTS, graphs)
 
 -------------------------------------------------------------------
-Sat Oct 13 21:23:27 CEST 2018 - tumic@cbox.cz
+Sat Oct 13 21:23:27 CEST 2018 - tumic@gpxsee.org
 
 - Update to version 6.3
   * Fixed broken OSM maps non-default bounds handling.
@@ -1052,13 +1059,13 @@ Sat Oct 13 21:23:27 CEST 2018 - tumic@cbox.cz
   * Added Danish localization.
 
 -------------------------------------------------------------------
-Sun Oct  7 22:52:34 CEST 2018 - tumic@cbox.cz
+Sun Oct  7 22:52:34 CEST 2018 - tumic@gpxsee.org
 
 - Update to version 6.2
   * Fixed Norwegian localization language code.
 
 -------------------------------------------------------------------
-Sun Oct  7 18:20:41 CEST 2018 - tumic@cbox.cz
+Sun Oct  7 18:20:41 CEST 2018 - tumic@gpxsee.org
 
 - Update to version 6.1
   * Fixed broken tiles rendering on OSM/TMS map borders (broken in
@@ -1067,7 +1074,7 @@ Sun Oct  7 18:20:41 CEST 2018 - tumic@cbox.cz
   * Added Norwegian localization.
 
 -------------------------------------------------------------------
-Sun Sep 23 12:47:50 CEST 2018 - tumic@cbox.cz
+Sun Sep 23 12:47:50 CEST 2018 - tumic@gpxsee.org
 
 - Update to version 6.0
   * Added MBTiles maps support.
@@ -1076,7 +1083,7 @@ Sun Sep 23 12:47:50 CEST 2018 - tumic@cbox.cz
   * Minor bugfixes (localization, WMTS, date-line crossing).
 
 -------------------------------------------------------------------
-Sat Sep 15 16:42:41 CEST 2018 - tumic@cbox.cz
+Sat Sep 15 16:42:41 CEST 2018 - tumic@gpxsee.org
 
 - Update to version 5.18
   * Made the HiDPI display mode (of non-HiDPI maps) configurable.
@@ -1088,7 +1095,7 @@ Sat Sep 15 16:42:41 CEST 2018 - tumic@cbox.cz
   * Some more minor bugfixes.
 
 -------------------------------------------------------------------
-Sat Aug 18 21:50:36 CEST 2018 - tumic@cbox.cz
+Sat Aug 18 21:50:36 CEST 2018 - tumic@gpxsee.org
 
 - Update to version 5.17
   * Added support for HiDPI/Retina displays & maps.
@@ -1101,7 +1108,7 @@ Wed Aug  8 13:06:37 UTC 2018 - jengelh@inai.de
 - Fixup grammar of summary.
 
 -------------------------------------------------------------------
-Wed Aug  8 00:38:35 CEST 2018 - tumic@cbox.cz
+Wed Aug  8 00:38:35 CEST 2018 - tumic@gpxsee.org
 
 - Update to version 5.16
   * Added statistics report.
@@ -1109,7 +1116,7 @@ Wed Aug  8 00:38:35 CEST 2018 - tumic@cbox.cz
   * Various minor bugfixes.
 
 -------------------------------------------------------------------
-Tue Jul  3 23:33:30 CEST 2018 - tumic@cbox.cz
+Tue Jul  3 23:33:30 CEST 2018 - tumic@gpxsee.org
 
 - Update to version 5.15
   * Added gear ratio/shifts graphs (Shimano Di2).
@@ -1118,7 +1125,7 @@ Tue Jul  3 23:33:30 CEST 2018 - tumic@cbox.cz
   * Some more minor bugfixes.
 
 -------------------------------------------------------------------
-Sat Jun 23 16:16:12 CEST 2018 - tumic@cbox.cz
+Sat Jun 23 16:16:12 CEST 2018 - tumic@gpxsee.org
 
 - Update to version 5.14
   * Improved outlier detection (now based on acceleration rather
@@ -1129,7 +1136,7 @@ Sat Jun 23 16:16:12 CEST 2018 - tumic@cbox.cz
   * Several minor bugfixes.
 
 -------------------------------------------------------------------
-Tue May 29 22:09:25 CEST 2018 - tumic@cbox.cz
+Tue May 29 22:09:25 CEST 2018 - tumic@gpxsee.org
 
 - Update to version 5.13
   * Fixed broken automatic loading of OziExplorer maps (introduced
@@ -1137,7 +1144,7 @@ Tue May 29 22:09:25 CEST 2018 - tumic@cbox.cz
   * Added support for Krovak projections (EPSG:1041 and EPSG:9819)
 
 -------------------------------------------------------------------
-Fri May 25 18:30:22 CEST 2018 - tumic@cbox.cz
+Fri May 25 18:30:22 CEST 2018 - tumic@gpxsee.org
 
 - Update to version 5.12
   * Added support for Garmin JNX maps.
@@ -1145,7 +1152,7 @@ Fri May 25 18:30:22 CEST 2018 - tumic@cbox.cz
   * Several performance improvements.
 
 -------------------------------------------------------------------
-Mon May 14 23:33:21 CEST 2018 - tumic@cbox.cz
+Mon May 14 23:33:21 CEST 2018 - tumic@gpxsee.org
 
 - Update to version 5.11
   * Added support for EPSG:9606 and 9607 datum transformations.
@@ -1156,7 +1163,7 @@ Mon May 14 23:33:21 CEST 2018 - tumic@cbox.cz
     timestamps.
 
 -------------------------------------------------------------------
-Wed May  9 18:46:50 CEST 2018 - tumic@cbox.cz
+Wed May  9 18:46:50 CEST 2018 - tumic@gpxsee.org
 
 - Update to version 5.10
   * Improved track loading performance.
@@ -1165,7 +1172,7 @@ Wed May  9 18:46:50 CEST 2018 - tumic@cbox.cz
   * Several minor bugfixes and improvements.
 
 -------------------------------------------------------------------
-Thu Apr 19 20:03:00 CEST 2018 - tumic@cbox.cz
+Thu Apr 19 20:03:00 CEST 2018 - tumic@gpxsee.org
 
 - Update to version 5.9
   * Fixed HTTP redirects handling.
@@ -1173,7 +1180,7 @@ Thu Apr 19 20:03:00 CEST 2018 - tumic@cbox.cz
     partialy in 5.8).
 
 -------------------------------------------------------------------
-Wed Apr 18 01:51:29 CEST 2018 - tumic@cbox.cz
+Wed Apr 18 01:51:29 CEST 2018 - tumic@gpxsee.org
 
 - Update to version 5.8
   * Fixed the irritating map zoom changes on OSM maps switching and
@@ -1181,27 +1188,27 @@ Wed Apr 18 01:51:29 CEST 2018 - tumic@cbox.cz
   * Added Polish translation.
 
 -------------------------------------------------------------------
-Tue Apr 17 00:49:45 CEST 2018 - tumic@cbox.cz
+Tue Apr 17 00:49:45 CEST 2018 - tumic@gpxsee.org
 
 - Update to version 5.7
   * Added OziExplorer data files (plt, rte, wpt) support.
 
 -------------------------------------------------------------------
-Sun Apr  8 21:12:19 CEST 2018 - tumic@cbox.cz
+Sun Apr  8 21:12:19 CEST 2018 - tumic@gpxsee.org
 
 - Update to version 5.6
   * Added WMS support.
   * Several minor bugfixes and improvements (mostly WMTS).
 
 -------------------------------------------------------------------
-Mon Mar 19 23:39:34 CET 2018 - tumic@cbox.cz
+Mon Mar 19 23:39:34 CET 2018 - tumic@gpxsee.org
 
 - Update to version 5.5
   * Fixed deadlocks caused by infinite HTTP timeout.
   * Several minor bugfixes.
 
 -------------------------------------------------------------------
-Sun Mar 11 21:48:20 CET 2018 - tumic@cbox.cz
+Sun Mar 11 21:48:20 CET 2018 - tumic@gpxsee.org
 
 - Update to version 5.4
   * Added pace info.
@@ -1214,7 +1221,7 @@ Sun Mar 11 21:48:20 CET 2018 - tumic@cbox.cz
   * Fixed broken (case-sensitive) WMTS parameters handling.
 
 -------------------------------------------------------------------
-Thu Mar  1 20:23:38 CET 2018 - tumic@cbox.cz
+Thu Mar  1 20:23:38 CET 2018 - tumic@gpxsee.org
 
 - Update to version 5.3
   * Added support for WMTS maps.
@@ -1224,14 +1231,14 @@ Thu Mar  1 20:23:38 CET 2018 - tumic@cbox.cz
   * Fixed invalid memory access.
 
 -------------------------------------------------------------------
-Sat Feb 17 15:06:06 CET 2018 - tumic@cbox.cz
+Sat Feb 17 15:06:06 CET 2018 - tumic@gpxsee.org
 
 - Update to version 5.2
   * Fixed broken GeoTIFF (Web) Mercator projection.
   * Several minor bug fixes.
 
 -------------------------------------------------------------------
-Mon Feb 12 08:35:13 CET 2018 - tumic@cbox.cz
+Mon Feb 12 08:35:13 CET 2018 - tumic@gpxsee.org
 
 - Update to version 5.1
   * Fixed crash during static data initialization.
@@ -1239,7 +1246,7 @@ Mon Feb 12 08:35:13 CET 2018 - tumic@cbox.cz
   * Added nautical units setting.
 
 -------------------------------------------------------------------
-Sat Feb 10 20:58:20 CET 2018 - tumic@cbox.cz
+Sat Feb 10 20:58:20 CET 2018 - tumic@gpxsee.org
 
 - Update to version 5.0
   * Added support for GeoTIFF images.
@@ -1247,21 +1254,21 @@ Sat Feb 10 20:58:20 CET 2018 - tumic@cbox.cz
   * Added Finnish, French and Russian localization.
 
 -------------------------------------------------------------------
-Mon Jan  8 02:35:38 CET 2018 - tumic@cbox.cz
+Mon Jan  8 02:35:38 CET 2018 - tumic@gpxsee.org
 
 - Update to version 4.19
   * Fixed missing cached content cleanup causing huge draw areas
     (causing system memory exhaustion) issue.
 
 -------------------------------------------------------------------
-Sat Jan  6 22:48:36 CET 2018 - tumic@cbox.cz
+Sat Jan  6 22:48:36 CET 2018 - tumic@gpxsee.org
 
 - Update to version 4.18
   * Fixed broaken A records parsing in IGC files.
   * Added support for negative altitudes in IGC files.
 
 -------------------------------------------------------------------
-Sat Dec  9 20:56:35 CET 2017 - tumic@cbox.cz
+Sat Dec  9 20:56:35 CET 2017 - tumic@gpxsee.org
 
 - Update to version 4.17
   * Added support for Lambert Azimuthal Equal Area projections.
@@ -1272,7 +1279,7 @@ Sat Dec  9 20:56:35 CET 2017 - tumic@cbox.cz
   * Fixed some corner case map drawing issues.
 
 -------------------------------------------------------------------
-Wed Oct 18 00:06:27 CEST 2017 - tumic@cbox.cz
+Wed Oct 18 00:06:27 CEST 2017 - tumic@gpxsee.org
 
 - Update to version 4.16
   * Fixed broken loading of KML files with folder elements outside
@@ -1283,7 +1290,7 @@ Wed Oct 18 00:06:27 CEST 2017 - tumic@cbox.cz
   * Added support for TCX multi-sport activities.
 
 -------------------------------------------------------------------
-Fri Oct  6 19:02:15 CEST 2017 - tumic@cbox.cz
+Fri Oct  6 19:02:15 CEST 2017 - tumic@gpxsee.org
 
 - Update to version 4.15
   * Fixed the 1px content offset on zoom/map change issue.
@@ -1291,7 +1298,7 @@ Fri Oct  6 19:02:15 CEST 2017 - tumic@cbox.cz
   * Graph items are now selecteble like path items (+ tool tips).
 
 -------------------------------------------------------------------
-Fri Sep 15 23:24:48 CEST 2017 - tumic@cbox.cz
+Fri Sep 15 23:24:48 CEST 2017 - tumic@gpxsee.org
 
 - Update to version 4.14
   * Fixed broken parsing of TCX files with heart rate data.
@@ -1306,13 +1313,13 @@ Fri Sep 15 23:24:48 CEST 2017 - tumic@cbox.cz
     in print/PDF export output.
 
 -------------------------------------------------------------------
-Sun Sep  3 21:31:18 CEST 2017 - tumic@cbox.cz
+Sun Sep  3 21:31:18 CEST 2017 - tumic@gpxsee.org
 
 - Update to version 4.13
   * Added support for high-resolution printing.
 
 -------------------------------------------------------------------
-Thu Aug 24 23:10:30 CEST 2017 - tumic@cbox.cz
+Thu Aug 24 23:10:30 CEST 2017 - tumic@gpxsee.org
 
 - Update to version 4.12
   * Fixed broken LCC projection on southern hemisphere.
@@ -1321,13 +1328,13 @@ Thu Aug 24 23:10:30 CEST 2017 - tumic@cbox.cz
   * Added 4UMaps to map sources.
 
 -------------------------------------------------------------------
-Tue Aug 15 15:20:59 CEST 2017 - tumic@cbox.cz
+Tue Aug 15 15:20:59 CEST 2017 - tumic@gpxsee.org
 
 - Update to version 4.11
   * Fixed QT4 build.
 
 -------------------------------------------------------------------
-Tue Aug 15 14:09:21 CEST 2017 - tumic@cbox.cz
+Tue Aug 15 14:09:21 CEST 2017 - tumic@gpxsee.org
 
 - Update to version 4.10
   * Added support for OZF zoom levels.
@@ -1335,7 +1342,7 @@ Tue Aug 15 14:09:21 CEST 2017 - tumic@cbox.cz
   * Various map loading/displaying improvements.
 
 -------------------------------------------------------------------
-Tue Jul 11 23:37:00 CEST 2017 - tumic@cbox.cz
+Tue Jul 11 23:37:00 CEST 2017 - tumic@gpxsee.org
 
 - Update to version 4.9
   * Improved map switching (no more track resizing on map change).
@@ -1344,14 +1351,14 @@ Tue Jul 11 23:37:00 CEST 2017 - tumic@cbox.cz
   * Optimized POI handling.
 
 -------------------------------------------------------------------
-Thu May 25 11:48:18 CEST 2017 - tumic@cbox.cz
+Thu May 25 11:48:18 CEST 2017 - tumic@gpxsee.org
 
 - Update to version 4.8
   * Added data filtering settings.
   * Fixed broken units handling in track info tooltips.
 
 -------------------------------------------------------------------
-Tue May  9 00:52:35 CEST 2017 - tumic@cbox.cz
+Tue May  9 00:52:35 CEST 2017 - tumic@gpxsee.org
 
 - Update to version 4.7
   * Fixed broken offline maps on southern hemisphere.
@@ -1362,7 +1369,7 @@ Tue May  9 00:52:35 CEST 2017 - tumic@cbox.cz
     British, Irish and Swedish grid and NZTM2000.
 
 -------------------------------------------------------------------
-Tue May  2 00:15:47 CEST 2017 - tumic@cbox.cz
+Tue May  2 00:15:47 CEST 2017 - tumic@gpxsee.org
 
 - Update to version 4.6
   * Fixed broken PDF export/printing (broken map scale/waypoints
@@ -1370,7 +1377,7 @@ Tue May  2 00:15:47 CEST 2017 - tumic@cbox.cz
   * Improved path projection performance when an atlas is used.
 
 -------------------------------------------------------------------
-Sun Apr 23 21:11:50 CEST 2017 - tumic@cbox.cz
+Sun Apr 23 21:11:50 CEST 2017 - tumic@gpxsee.org
 
 - Update to version 4.5
   * Added support for "runtime" loading of offline maps.
@@ -1378,7 +1385,7 @@ Sun Apr 23 21:11:50 CEST 2017 - tumic@cbox.cz
   * Fixed various minor offline map loading issues.
 
 -------------------------------------------------------------------
-Mon Apr 17 23:05:00 CEST 2017 - tumic@cbox.cz
+Mon Apr 17 23:05:00 CEST 2017 - tumic@gpxsee.org
 
 - Update to version 4.4
   * Added support for ozf2 image files.
@@ -1386,7 +1393,7 @@ Mon Apr 17 23:05:00 CEST 2017 - tumic@cbox.cz
   * Added German localization.
 
 -------------------------------------------------------------------
-Wed Apr 12 18:29:30 CEST 2017 - tumic@cbox.cz
+Wed Apr 12 18:29:30 CEST 2017 - tumic@gpxsee.org
 
 - Update to version 4.3
   * Fixed missing cached content cleanup causing huge draw areas
@@ -1394,7 +1401,7 @@ Wed Apr 12 18:29:30 CEST 2017 - tumic@cbox.cz
   * Fixed map file defined datum not set for UTM maps issue.
 
 -------------------------------------------------------------------
-Thu Apr  6 20:34:53 CEST 2017 - tumic@cbox.cz
+Thu Apr  6 20:34:53 CEST 2017 - tumic@gpxsee.org
 
 - Update to version 4.2
   * Added digital zoom.
@@ -1402,20 +1409,20 @@ Thu Apr  6 20:34:53 CEST 2017 - tumic@cbox.cz
   * Completed Swedish translation.
 
 -------------------------------------------------------------------
-Sun Apr  2 23:59:35 CEST 2017 - tumic@cbox.cz
+Sun Apr  2 23:59:35 CEST 2017 - tumic@gpxsee.org
 
 - Update to version 4.1
   * Added support for Lambert conformal conic projection.
 
 -------------------------------------------------------------------
-Sat Apr  1 19:15:59 CEST 2017 - tumic@cbox.cz
+Sat Apr  1 19:15:59 CEST 2017 - tumic@gpxsee.org
 
 - Update to version 4.0
   * Added support for offline maps.
   * Fixed zoom issues on touchpads.
 
 -------------------------------------------------------------------
-Sun Feb 12 23:40:21 CET 2017 - tumic@cbox.cz
+Sun Feb 12 23:40:21 CET 2017 - tumic@gpxsee.org
 
 - Update to version 3.9
   * Fixed broken POI radius computation.
@@ -1423,14 +1430,14 @@ Sun Feb 12 23:40:21 CET 2017 - tumic@cbox.cz
   * Improved pause detection/handling.
 
 -------------------------------------------------------------------
-Tue Jan 24 18:38:56 CET 2017 - tumic@cbox.cz
+Tue Jan 24 18:38:56 CET 2017 - tumic@gpxsee.org
 
 - Update to version 3.8
   * Fixed graph info not redrawing issue.
   * Added Swedish localization.
 
 -------------------------------------------------------------------
-Mon Jan 23 09:20:50 CET 2017 - tumic@cbox.cz
+Mon Jan 23 09:20:50 CET 2017 - tumic@gpxsee.org
 
 - Update to version 3.7
   * Fixed tile downloading issues (multiple downloads, redirect
@@ -1438,41 +1445,41 @@ Mon Jan 23 09:20:50 CET 2017 - tumic@cbox.cz
   * Enabled free map scroll.
 
 -------------------------------------------------------------------
-Tue Dec 20 22:46:00 CET 2016 - tumic@cbox.cz
+Tue Dec 20 22:46:00 CET 2016 - tumic@gpxsee.org
 
 - Update to version 3.5
   * Fixed broken NMEA latitude parsing.
   * Added print/export options.
 
 -------------------------------------------------------------------
-Sat Dec 10 01:25:34 CET 2016 - tumic@cbox.cz
+Sat Dec 10 01:25:34 CET 2016 - tumic@gpxsee.org
 
 - Update to version 3.4
   * Fixed QT5 < 5.4 builds (Debian 8).
 
 -------------------------------------------------------------------
-Fri Dec  9 21:12:58 CET 2016 - tumic@cbox.cz
+Fri Dec  9 21:12:58 CET 2016 - tumic@gpxsee.org
 
 - Update to version 3.3
   * Added options dialog with basic appearance settings.
   * Added OpenGL support.
 
 -------------------------------------------------------------------
-Tue Nov 22 09:47:00 CET 2016 - tumic@cbox.cz
+Tue Nov 22 09:47:00 CET 2016 - tumic@gpxsee.org
 
 - Update to version 3.2
   * Added support for NMEA files.
   * Fixed path marker inaccuracy bug.
 
 -------------------------------------------------------------------
-Sat Nov 12 11:50:48 CET 2016 - tumic@cbox.cz
+Sat Nov 12 11:50:48 CET 2016 - tumic@gpxsee.org
 
 - Update to version 3.1
   * Added support for IGC files.
   * Fixed zoom level computation bugs.
 
 -------------------------------------------------------------------
-Mon Nov  7 09:28:00 CET 2016 - tumic@cbox.cz
+Mon Nov  7 09:28:00 CET 2016 - tumic@gpxsee.org
 
 - Update to version 3.0
   * Added support for TCX, KML and FIT files.
@@ -1482,7 +1489,7 @@ Mon Nov  7 09:28:00 CET 2016 - tumic@cbox.cz
   * Improved print output.
 
 -------------------------------------------------------------------
-Sat Oct 16 00:08:59 CEST 2016 - tumic@cbox.cz
+Sat Oct 16 00:08:59 CEST 2016 - tumic@gpxsee.org
 
 - Update to version 2.20
   * Added support for drag&drop.
@@ -1491,7 +1498,7 @@ Sat Oct 16 00:08:59 CEST 2016 - tumic@cbox.cz
   * GUI polishing.
 
 -------------------------------------------------------------------
-Wed Sep 28 23:45:19 CEST 2016 - tumic@cbox.cz
+Wed Sep 28 23:45:19 CEST 2016 - tumic@gpxsee.org
 
 - Update to version 2.19
   * Added time-based graphs.
@@ -1501,7 +1508,7 @@ Wed Sep 28 23:45:19 CEST 2016 - tumic@cbox.cz
   * Fixed PDF output in QT4 builds.
 
 -------------------------------------------------------------------
-Wed Aug 31 09:27:40 CEST 2016 - tumic@cbox.cz
+Wed Aug 31 09:27:40 CEST 2016 - tumic@gpxsee.org
 
 - Update to version 2.18
   * Added support for GPX routes.
@@ -1509,14 +1516,14 @@ Wed Aug 31 09:27:40 CEST 2016 - tumic@cbox.cz
   * Improved performance.
 
 -------------------------------------------------------------------
-Wed Aug  3 00:39:28 CEST 2016 - tumic@cbox.cz
+Wed Aug  3 00:39:28 CEST 2016 - tumic@gpxsee.org
 
 - Update to version 2.17
   * Added waypoint/track info tooltips.
   * Improved POI handling.
 
 -------------------------------------------------------------------
-Thu Jun 16 21:29:46 CEST 2016 - tumic@cbox.cz
+Thu Jun 16 21:29:46 CEST 2016 - tumic@gpxsee.org
 
 - Update to version 2.16
   * Fixed infinite download loop on HTTP redirects (and broken
@@ -1526,14 +1533,14 @@ Thu Jun 16 21:29:46 CEST 2016 - tumic@cbox.cz
   * Added support for temperature graphs.
 
 -------------------------------------------------------------------
-Sat May 28 10:06:25 CEST 2016 - tumic@cbox.cz
+Sat May 28 10:06:25 CEST 2016 - tumic@gpxsee.org
 
 - Update to version 2.14
   * Added print support.
   * Many fixes & improvements in PDF export (e.g. map support).
 
 -------------------------------------------------------------------
-Tue May  3 20:09:06 CEST 2016 - tumic@cbox.cz
+Tue May  3 20:09:06 CEST 2016 - tumic@gpxsee.org
 
 - Update to version 2.13
   * Fixed broken opening of non-ASCII named files as program
@@ -1542,21 +1549,21 @@ Tue May  3 20:09:06 CEST 2016 - tumic@cbox.cz
   * Persistent program settings.
 
 -------------------------------------------------------------------
-Thu Apr 14 07:54:37 CEST 2016 - tumic@cbox.cz
+Thu Apr 14 07:54:37 CEST 2016 - tumic@gpxsee.org
 
 - Update to version 2.12
   * Added fullscreen mode.
   * Polished GUI.
 
 -------------------------------------------------------------------
-Sat Apr  2 17:52:12 CEST 2016 - tumic@cbox.cz
+Sat Apr  2 17:52:12 CEST 2016 - tumic@gpxsee.org
 
 - Update to version 2.11
   * Added "clear tile cache" option.
   * Lots of minor bug fixes and enhancements.
 
 -------------------------------------------------------------------
-Fri Mar 25 13:32:27 CET 2016 - tumic@cbox.cz
+Fri Mar 25 13:32:27 CET 2016 - tumic@gpxsee.org
 
 - Update to version 2.10
   * Added heart rate graphs.
@@ -1565,21 +1572,21 @@ Fri Mar 25 13:32:27 CET 2016 - tumic@cbox.cz
   * Lots of minor bug fixes and enhancements.
 
 -------------------------------------------------------------------
-Sun Mar 20 21:14:33 CET 2016 - tumic@cbox.cz
+Sun Mar 20 21:14:33 CET 2016 - tumic@gpxsee.org
 
 - Update to version 2.9
   * Added support for displaying waypoints.
   * Minor bug fixes and enhancements.
 
 -------------------------------------------------------------------
-Sun Mar 6 17:29:07 CET 2016 - tumic@cbox.cz
+Sun Mar 6 17:29:07 CET 2016 - tumic@gpxsee.org
 
 - Update to version 2.8
   * Improved POI files control.
   * Minor bug fixes and enhancements.
 
 -------------------------------------------------------------------
-Sat Feb 13 12:39:16 CET 2016 - tumic@cbox.cz
+Sat Feb 13 12:39:16 CET 2016 - tumic@gpxsee.org
 
 - Update to version 2.7
   * Added default map sources (OSM, Thunderforest).
@@ -1587,14 +1594,14 @@ Sat Feb 13 12:39:16 CET 2016 - tumic@cbox.cz
   * Added support for GPX files with multiple tracks.
 
 -------------------------------------------------------------------
-Wed Feb 3 16:05:17 CET 2016 - tumic@cbox.cz
+Wed Feb 3 16:05:17 CET 2016 - tumic@gpxsee.org
 
 - Update to version 2.6
   * Added map scale info.
   * Improved PDF export.
 
 -------------------------------------------------------------------
-Sun Dec 20 17:42:00 CET 2015 - tumic@cbox.cz
+Sun Dec 20 17:42:00 CET 2015 - tumic@gpxsee.org
 
 - Update to version 2.5
   * Added support for imperial units.
