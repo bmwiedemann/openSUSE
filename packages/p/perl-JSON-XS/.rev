@@ -216,4 +216,21 @@
     <comment></comment>
     <requestid>844527</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0ca702325ccd2303be6e1210e2873375</srcmd5>
+    <version>4.40.0</version>
+    <time>1757442616</time>
+    <user>anag_factory</user>
+    <comment>- updated to 4.40.0 (4.04)
+   see /usr/share/doc/packages/perl-JSON-XS/Changes
+  4.04 Fri 05 Sep 2025 23:59:48 CEST
+          - fix heap overflow causing crashes, possibly information
+            disclosure or worse (CVE-2025-40928), and causes JSON::XS to
+            accept invalid JSON texts as valid in some cases. Thanks to
+            Michael Hudak for finding this, the CPAN Security Group for
+            coordinating this, and Reini Urban for double-checking the patch
+            (and Peter Juhasz for potentially reporting this much earlier).
+  (bsc#1249330)</comment>
+    <requestid>1303253</requestid>
+  </revision>
 </revisionlist>
