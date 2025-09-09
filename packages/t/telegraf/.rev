@@ -616,4 +616,16 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
     <comment>- Update to version 1.35.4: (forwarded request 1300241 from darix)</comment>
     <requestid>1300287</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>008444a0751e6b97ba3fbcfac96994ce</srcmd5>
+    <version>1.36.1</version>
+    <time>1757442626</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.36.1:
+  * Telegraf v1.36.1
+  * Update changelog for v1.36.1
+  * Update build_version.txt for v1.36.1
+  * fix(outputs.influxdb): Fix crash on init (#17605) (forwarded request 1303321 from darix)</comment>
+    <requestid>1303384</requestid>
+  </revision>
 </revisionlist>
