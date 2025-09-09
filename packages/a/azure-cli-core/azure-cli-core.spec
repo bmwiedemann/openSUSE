@@ -24,7 +24,7 @@
 %global _sitelibdir %{%{pythons}_sitelib}
 
 Name:           azure-cli-core
-Version:        2.76.0
+Version:        2.77.0
 Release:        0
 Summary:        Microsoft Azure CLI Core Module
 License:        MIT
@@ -41,6 +41,8 @@ BuildRequires:  python-rpm-macros
 Requires:       %{pythons}-PyJWT >= 2.1.0
 Requires:       %{pythons}-argcomplete < 4.0
 Requires:       %{pythons}-argcomplete >= 3.5.2
+Requires:       %{pythons}-azure-core >= 1.35.0
+Requires:       %{pythons}-azure-core < 2.0.0
 Requires:       %{pythons}-azure-mgmt-core < 2.0.0
 Requires:       %{pythons}-azure-mgmt-core >= 1.2.0
 Requires:       %{pythons}-azure-nspkg >= 3.0.0
@@ -52,7 +54,7 @@ Requires:       %{pythons}-knack < 1.0.0
 Requires:       %{pythons}-knack >= 0.11.0
 Requires:       %{pythons}-microsoft-security-utilities-secret-masker >= 1.0.0~b4
 Requires:       %{pythons}-msal < 2.0.0
-Requires:       %{pythons}-msal >= 1.33.0~b1
+Requires:       %{pythons}-msal >= 1.34.0~b1
 Requires:       %{pythons}-msal-extensions < 2.0.0
 Requires:       %{pythons}-msal-extensions >= 1.2.0
 Requires:       %{pythons}-packaging >= 20.9

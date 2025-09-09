@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep  5 09:29:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.77.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Aug  5 08:54:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
