@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  9 06:49:57 UTC 2025 - munix9@googlemail.com
+
+- Add fix-build-with-boost-1_89.patch
+  * In the upcoming Boost 1.89.0 release, the Boost.System stub
+    library introduced back in 1.69 has been removed, which causes
+    a CMake error when system component is required.
+    The component can just be dropped cryfs has a minimum of Boost
+    1.84.0.
+
+-------------------------------------------------------------------
 Thu May  1 06:32:49 UTC 2025 - munix9@googlemail.com
 
 - Migration to fuse 3 and deprecation of fuse (1)

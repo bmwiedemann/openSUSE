@@ -1,7 +1,7 @@
 #
 # spec file for package cryfs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,15 +34,16 @@ Source1:        https://github.com/cryfs/cryfs/releases/download/%{version}/%{na
 Source2:        %{name}.keyring
 # PATCH-FIX-UPSTREAM fix-build-with-boost-1_88.patch -- based on PR 494
 Patch0:         fix-build-with-boost-1_88.patch
+# PATCH-FIX-UPSTREAM fix-build-with-boost-1_89.patch -- based on PR 500
+Patch1:         fix-build-with-boost-1_89.patch
 # PATCH-FIX-UPSTREAM fix-feature-fuse3.patch -- based on branch feature/fuse3
-Patch1:         fix-feature-fuse3.patch
+Patch2:         fix-feature-fuse3.patch
 BuildRequires:  cmake >= 3.25
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_atomic-devel-impl >= 1.84.0
 BuildRequires:  libboost_chrono-devel-impl >= 1.84.0
 BuildRequires:  libboost_filesystem-devel-impl >= 1.84.0
 BuildRequires:  libboost_program_options-devel-impl >= 1.84.0
-BuildRequires:  libboost_system-devel-impl >= 1.84.0
 BuildRequires:  libboost_thread-devel-impl >= 1.84.0
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
