@@ -165,4 +165,12 @@
     bug for main frame and x86.</comment>
     <requestid>1244407</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ed7fbf1dddfe9e7dcb72f28fd64a275f</srcmd5>
+    <version>16q</version>
+    <time>1757442603</time>
+    <user>anag_factory</user>
+    <comment>- add nmon-incrase-cpumax-to-support-2048-cpus.patch (bsc#1247368)</comment>
+    <requestid>1303197</requestid>
+  </revision>
 </revisionlist>

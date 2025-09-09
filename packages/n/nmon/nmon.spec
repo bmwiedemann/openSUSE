@@ -1,7 +1,7 @@
 #
 # spec file for package nmon
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2011-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,7 @@ License:        GPL-3.0-only
 URL:            https://nmon.sourceforge.io/pmwiki.php
 Source0:        https://sourceforge.net/projects/nmon/files/lmon%{version}.c
 Source1:        https://www.gnu.org/licenses/gpl-3.0.txt
+Patch1:         nmon-incrase-cpumax-to-support-2048-cpus.patch
 BuildRequires:  ncurses-devel
 Provides:       lmon = %{version}
 
@@ -53,6 +54,8 @@ important performance information in one go. It can output the data in two ways
 
 %prep
 %setup -q -T -c %{name}-%{version}
+install -m 644 %{SOURCE0} lmon%{version}.c
+%autopatch -p1
 
 %build
 export CFLAGS="%{optflags} \
@@ -64,7 +67,7 @@ export CFLAGS="%{optflags} \
   %if !0%{?is_opensuse}
   -D SLES12 \
   %endif
-  %{SOURCE0}"
+  lmon%{version}.c"
 export LDFLAGS="-o nmon \
   -lncurses \
   -lm \

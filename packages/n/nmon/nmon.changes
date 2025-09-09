@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  8 12:24:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- add nmon-incrase-cpumax-to-support-2048-cpus.patch (bsc#1247368)
+
+-------------------------------------------------------------------
 Sat Feb  8 21:10:01 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 16q:
