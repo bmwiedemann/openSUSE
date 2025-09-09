@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 04 12:19:25 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.1.99:
+  * README: add deprecation notice
+  * libcallaudio: deprecate the library
+  * Do not do routing when wireplumber is in charge of it
+- Add pkgconfig(appstream) BuildRequires: new dependency
+
+-------------------------------------------------------------------
 Sun Oct 06 15:17:55 UTC 2024 - andrea.manzini@suse.com
 
 - Update to version 0.1.10:
