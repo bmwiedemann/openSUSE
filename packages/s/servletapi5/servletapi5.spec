@@ -1,7 +1,7 @@
 #
 # spec file for package servletapi5
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,19 +24,18 @@ Release:        0
 Summary:        Java servlet and JSP implementation classes
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://jakarta.apache.org/tomcat/
+URL:            https://jakarta.apache.org/tomcat/
 Source:         %{full_name}-5-src.tar.gz
-#!BuildIgnore:  xml-commons xml-commons-resolver xerces-j2 xml-commons-apis
-#!BuildIgnore:  xml-commons-jaxp-1.3-apis
 BuildRequires:  ant
 BuildRequires:  java-devel >= 1.8
-%if !0%{?rhel}
-Requires(post): update-alternatives
-%endif
+#!BuildIgnore:  xerces-j2
+#!BuildIgnore:  xml-commons
+#!BuildIgnore:  xml-commons-apis
+#!BuildIgnore:  xml-commons-jaxp-1.3-apis
+#!BuildIgnore:  xml-commons-resolver
 Provides:       servlet = %{version}
 Provides:       servlet24 = %{version}
 Provides:       servlet5 = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -64,26 +63,11 @@ popd
 cd jakarta-tomcat-%{version}-src/jakarta-servletapi-5
 # jars
 install -d -m 755 %{buildroot}%{_javadir}
-install -m 644 jsr152/dist/lib/jsp-api.jar %{buildroot}%{_javadir}/jspapi-%{version}.jar
-install -m 644 jsr154/dist/lib/servlet-api.jar %{buildroot}%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}*; do ln -sf ${jar} `echo $jar| sed  "s|-%{version}||g"`; done)
-# alternatives
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
-ln -sf %{_sysconfdir}/alternatives/servlet.jar %{buildroot}%{_javadir}/servlet.jar
-
-%post
-update-alternatives --install %{_javadir}/servlet.jar servlet %{_javadir}/%{name}-%{version}.jar 50
-
-%postun
-if [ "$1" = "0" ]; then
-    update-alternatives --remove servlet %{_javadir}/%{name}-%{version}.jar
-fi
+install -m 644 jsr152/dist/lib/jsp-api.jar %{buildroot}%{_javadir}/jspapi.jar
+install -m 644 jsr154/dist/lib/servlet-api.jar %{buildroot}%{_javadir}/%{name}.jar
 
 %files
-%defattr(-,root,root)
-%doc LICENSE
+%license LICENSE
 %{_javadir}/*
-%{_javadir}/servlet.jar
-%ghost %{_sysconfdir}/alternatives/servlet.jar
 
 %changelog

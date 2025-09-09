@@ -155,4 +155,12 @@
     <comment>Build with source/target levels 8</comment>
     <requestid>963027</requestid>
   </revision>
+  <revision rev="23" vrev="289">
+    <srcmd5>f4d1cd8a659b2431c52195ad0bed72e0</srcmd5>
+    <version>5.0.18</version>
+    <time>1757442606</time>
+    <user>anag_factory</user>
+    <comment>bsc#1245918</comment>
+    <requestid>1303200</requestid>
+  </revision>
 </revisionlist>
