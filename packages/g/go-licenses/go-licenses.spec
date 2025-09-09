@@ -1,7 +1,7 @@
 #
 # spec file for package go-licenses
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           go-licenses
-Version:        2.0.0alpha1
+Version:        2.0.1
 Release:        0
 Summary:        CLI tool to report the licenses used by a Go package and its dependencies
 License:        Apache-2.0
@@ -25,6 +25,7 @@ Group:          Development/Languages/Go
 URL:            https://github.com/google/go-licenses
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Patch0:         pr329-fix-detect-stdlib-modules.patch
 BuildRequires:  golang(API) >= 1.19
 
 %description
@@ -34,7 +35,7 @@ also collect all of the license documents, copyright notices and source code
 into a directory in order to comply with license terms on redistribution.
 
 %prep
-%autosetup -a 1
+%autosetup -a 1 -p 1
 
 %build
 %ifnarch ppc64

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep 08 13:10:51 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.0.1:
+  * chore: update golang.org/x/tools to v0.36.0 to resolve the build error (#334)
+  * fix: Update README.md for go install command (#336)
+  * doc: update install instructions for v2. (#331)
+- Packaging improvements:
+  * Add upstream pr329-fix-detect-stdlib-modules.patch
+
+-------------------------------------------------------------------
+Tue Sep  2 02:47:40 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.0.0:
+  * No source changes. Upstream tagged a stable release and marked
+    the project as looking for a new maintainer.
+
+-------------------------------------------------------------------
 Mon Oct 07 21:10:53 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Initial package version 2.0.0alpha1:

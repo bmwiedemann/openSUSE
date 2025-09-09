@@ -1,0 +1,40 @@
+From 2e99d4044f9acaef1a9375b5e2a7c6c634a6f3d3 Mon Sep 17 00:00:00 2001
+From: Adam Connelly <adam.rpconnelly@gmail.com>
+Date: Fri, 30 May 2025 15:18:02 +0100
+Subject: [PATCH] fix: problem detecting stdlib modules when using toolchains
+
+If the pkg.Module is `nil`, it's either part of the stdlib or it's not something that go-licenses can analyze correctly. Let's just skip modules like this instead of reporting an error.
+
+The problem with the existing check is that it assumes that stdlib packages will have source files under `build.Default.GOROOT`. But if the module you're trying to analyze has a `toolchain` directive in its go.mod file that differs from the version of Go installed, the package will have a path outside of this directory.
+---
+ licenses/library.go | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/licenses/library.go b/licenses/library.go
+index fa59120f..b26bcbd7 100644
+--- a/licenses/library.go
++++ b/licenses/library.go
+@@ -154,12 +154,6 @@ func Libraries(ctx context.Context, classifier Classifier, includeTests bool, ig
+ 				return true
+ 			}
+ 
+-			if p.Module == nil {
+-				otherErrorOccurred = true
+-				klog.Errorf("Package %s does not have module info. Non go modules projects are no longer supported. For feedback, refer to https://github.com/google/go-licenses/issues/128.", p.PkgPath)
+-				return false
+-			}
+-
+ 			module := newModule(p.Module)
+ 
+ 			if module.Dir == "" {
+@@ -411,6 +405,10 @@ func (l *Library) Version() string {
+ 
+ // isStdLib returns true if this package is part of the Go standard library.
+ func isStdLib(pkg *packages.Package) bool {
++	if pkg.Module == nil {
++		return true
++	}
++
+ 	if pkg.Name == "unsafe" {
+ 		// Special case unsafe stdlib, because it does not contain go files.
+ 		return true

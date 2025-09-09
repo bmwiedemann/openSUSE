@@ -3,11 +3,10 @@
     <param name="url">https://github.com/google/go-licenses.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v2.0.0-alpha.1</param>
+    <param name="revision">v2.0.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
-    <param name="versionrewrite-pattern">v(.*)-alpha.1</param>
-    <param name="versionrewrite-replacement">\1alpha1</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service name="set_version" mode="manual">
   </service>
