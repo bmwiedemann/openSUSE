@@ -1,7 +1,7 @@
 #
 # spec file for package minio-client
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           minio-client
-Version:        20250721T052808Z
+Version:        20250813T083541Z
 Release:        0
 Summary:        Client for MinIO
 License:        AGPL-3.0-only

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 07 14:47:53 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 20250813T083541Z:
+  * feat: beautify output for the ping command (#5237)
+  * Update links to new docs site (#5242)
+  * Fix the abnormal exit of the ping command (#5233)
+  * chore: clear error message with unauthorized credentials (#5236)
+
+-------------------------------------------------------------------
 Wed Jul 23 22:52:10 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 20250721T052808Z:

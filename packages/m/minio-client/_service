@@ -5,7 +5,7 @@
     <param name="exclude">.git</param>
     <param name="changesgenerate">enable</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">RELEASE.2025-07-21T05-28-08Z</param>
+    <param name="revision">RELEASE.2025-08-13T08-35-41Z</param>
     <param name="match-tag">RELEASE.*</param>
     <param name="versionrewrite-pattern">RELEASE\.(.*)-(.*)-(.*)-(.*)-(.*)</param>
     <param name="versionrewrite-replacement">\1\2\3\4\5</param>
