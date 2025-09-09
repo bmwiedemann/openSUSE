@@ -17,10 +17,10 @@
 
 
 Name:           gtypist
-Version:        2.9.5
+Version:        2.10.1
 Release:        0
 Summary:        Universal typing tutor
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 Group:          Amusements/Teaching/Other
 URL:            http://gnu.org/software/gtypist/
 Source:         http://ftp.gnu.org/gnu/gtypist/%name-%version.tar.xz

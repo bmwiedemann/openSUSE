@@ -6,29 +6,16 @@ gtypist.c:2208:12: error: lvalue required as left operand of assignment
  2208 |   ESCDELAY = 1;
 
 ---
- src/cursmenu.c |    1 +
  src/gtypist.c  |    2 +-
- src/script.h   |    2 +-
- src/utf8.c     |    1 +
- 4 files changed, 4 insertions(+), 2 deletions(-)
+ src/infoview.c |    2 +-
+ src/utf8.c     |    2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-Index: gtypist-2.9.5/src/cursmenu.c
+Index: gtypist-2.10.1/src/gtypist.c
 ===================================================================
---- gtypist-2.9.5.orig/src/cursmenu.c
-+++ gtypist-2.9.5/src/cursmenu.c
-@@ -20,6 +20,7 @@
- #include "config.h"
- #include "cursmenu.h"
- #include "script.h"
-+#include "utf8.h"
- 
- #ifdef HAVE_PDCURSES
- #include <curses.h>
-Index: gtypist-2.9.5/src/gtypist.c
-===================================================================
---- gtypist-2.9.5.orig/src/gtypist.c
-+++ gtypist-2.9.5/src/gtypist.c
-@@ -2205,7 +2205,7 @@ int main( int argc, char **argv )
+--- gtypist-2.10.1.orig/src/gtypist.c
++++ gtypist-2.10.1/src/gtypist.c
+@@ -1815,7 +1815,7 @@ int main( int argc, char **argv )
  
    // Quick hack to get rid of the escape delays
  #ifdef __NCURSES_H
@@ -37,28 +24,29 @@ Index: gtypist-2.9.5/src/gtypist.c
  #endif
  
    /* set up colour pairs if possible */
-Index: gtypist-2.9.5/src/script.h
+Index: gtypist-2.10.1/src/infoview.c
 ===================================================================
---- gtypist-2.9.5.orig/src/script.h
-+++ gtypist-2.9.5/src/script.h
-@@ -89,7 +89,7 @@ extern char *buffer_command( FILE *scrip
- extern void seek_label( FILE *script, char *label, char *ref_line );
- extern int hash_label( char *label );
- extern void do_exit( FILE *script );
--
-+extern void check_script_file_with_current_encoding(FILE *script);
+--- gtypist-2.10.1.orig/src/infoview.c
++++ gtypist-2.10.1/src/infoview.c
+@@ -171,7 +171,7 @@ int do_beginner_infoview()
+   int numUsableLines, numMsgLines, i, j;
+   int width, height, xOffset, yOffset;
+   int firstLine, lastLine, msgLen;
+-  wchar_t ch;
++  int ch;
  
- extern void bind_F12 (const char *);	// Defined in gtypist.c
- 
-Index: gtypist-2.9.5/src/utf8.c
+   msg = strdup(constMsg);
+   msgLen = strlen( msg );
+Index: gtypist-2.10.1/src/utf8.c
 ===================================================================
---- gtypist-2.9.5.orig/src/utf8.c
-+++ gtypist-2.9.5/src/utf8.c
-@@ -19,6 +19,7 @@
+--- gtypist-2.10.1.orig/src/utf8.c
++++ gtypist-2.10.1/src/utf8.c
+@@ -225,7 +225,7 @@ wchar_t towideupper(wchar_t c)
  
- #include "config.h"
- #include "utf8.h"
-+#include "error.h"
+ int get_widech(int* c)
+ {
+-  int ch;
++  wint_t ch;
  
- #ifdef HAVE_PDCURSES
- #include <curses.h>
+   if (isUTF8Locale)
+   {
