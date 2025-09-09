@@ -193,4 +193,30 @@
   * build(deps): bump the github-actions-updates group with 3 updates (forwarded request 1283883 from pjbgf)</comment>
     <requestid>1283894</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>36780a07f77ad00782d3ccd78275ca88</srcmd5>
+    <version>0.0.12</version>
+    <time>1757442603</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.12:
+  * build(deps): bump the golang-org group with 2 updates
+  * build(deps): bump the github-actions-updates group with 5 updates
+  * build(deps): bump github.com/stretchr/testify from 1.11.0 to 1.11.1
+  * build(deps): bump github.com/urfave/cli/v3 from 3.3.8 to 3.4.1
+  * build(deps): bump google.golang.org/grpc from 1.74.2 to 1.75.0
+  * build(deps): bump google.golang.org/protobuf from 1.36.7 to 1.36.8
+  * build(deps): bump github.com/stretchr/testify from 1.10.0 to 1.11.0
+  * build(deps): bump the golang-org group with 2 updates
+  * build(deps): bump google.golang.org/protobuf from 1.36.6 to 1.36.7
+  * build(deps): bump the github-actions-updates group with 3 updates
+  * build(deps): bump google.golang.org/grpc from 1.73.0 to 1.74.2
+  * build(deps): bump the golang-org group with 2 updates
+  * build(deps): bump the github-actions-updates group with 4 updates
+  * Bump go-git to v6
+  * build: Update branch target
+  * build(deps): bump github.com/urfave/cli/v3 from 3.3.3 to 3.3.8
+  * build(deps): bump google.golang.org/grpc from 1.72.2 to 1.73.0
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.16.0 to 5.16.2 (forwarded request 1303191 from pjbgf)</comment>
+    <requestid>1303193</requestid>
+  </revision>
 </revisionlist>
