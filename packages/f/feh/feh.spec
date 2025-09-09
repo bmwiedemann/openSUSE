@@ -17,7 +17,7 @@
 
 
 Name:           feh
-Version:        3.10.3
+Version:        3.11.1
 Release:        0
 Summary:        X11 image viewer
 License:        LGPL-2.0-or-later AND MIT
@@ -32,7 +32,6 @@ Source99:       feh-rpmlintrc
 Patch1:         feh-makefile_optflags.patch
 # PATCH-FIX-UPSTREAM https://github.com/derf/feh/pull/337
 Patch6:         feh-makefile_app.patch
-
 Patch7:         feh-add_jxl_support.patch
 BuildRequires:  curl-devel
 BuildRequires:  libpng-devel

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  1 16:54:24 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to 3.11.1:
+  * Correctly center images in fullscreen mode
+    (fixes regression introduced in 3.11.0)
+  * option --tap-zones enables support for prev/next tap zones
+  * Fix --scale-down not scaling down the first image
+    in floating i3 windows and similar setups
+
+-------------------------------------------------------------------
 Tue Jul  2 19:08:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.10.3:
