@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  8 10:18:33 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Fix build error for Leap.
+
+-------------------------------------------------------------------
 Thu Mar 13 03:32:49 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add BuildRequires on python3-setuptools, needed for Python 3.12+.

@@ -29,7 +29,14 @@ Source0:        libopenshot-%{version}.tar.xz
 BuildRequires:  babl-devel
 BuildRequires:  cmake
 BuildRequires:  cppzmq-devel
+%if 0%{?suse_version} < 1600
+BuildRequires:  ffmpeg-4-private-devel
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+%else
+BuildRequires:  gcc
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  opencv-devel
 BuildRequires:  pkgconfig
 BuildRequires:  protobuf-devel
@@ -107,6 +114,10 @@ This package provides the Python bindings for the OpenShot library.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} < 1600
+export CC=gcc-13
+export CXX=g++-13
+%endif
 # operators of base classes are not supposed to be used here, we can ignore it therefore.
 sed -i '/^set(CMAKE_CXX_FLAGS/d' CMakeLists.txt
 export CXXFLAGS="%{optflags} -Wno-return-type"
