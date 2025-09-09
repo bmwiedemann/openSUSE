@@ -528,4 +528,23 @@ Bugfixes
   * allow adding a prefix to the cache (section) key through environment variable OIDC_CACHE_PREFIX</comment>
     <requestid>1288215</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>f60d5375217deb8c24440d118db59777</srcmd5>
+    <version>2.4.18</version>
+    <time>1757442638</time>
+    <user>anag_factory</user>
+    <comment>- version update to 2.4.18
+  * add Valgrind target to Makefile and to Github Build action
+  * release 2.4.18
+  * revise test/check and code coverage functions
+  * revise autoconf/automake, split over subdirs now
+  * add tests for memcache TTL
+  * fix check OIDC_CONFIG_POS_TIMEOUT_UNSET for memcache TTL getter; #1345
+  * bump to 2.4.18dev
+  * fix parsing the value set via OIDCMemCacheConnectionsTTL and interpret it in
+    seconds correctly now (instead of microseconds); see #1345; thanks @rpluem
+  * use the server process pool for static variable allocation rather than the pconf pool
+    to prevents possible segmentation faults after (graceful) restarting the same process</comment>
+    <requestid>1303323</requestid>
+  </revision>
 </revisionlist>
