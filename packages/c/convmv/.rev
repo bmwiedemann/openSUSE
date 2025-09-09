@@ -182,4 +182,13 @@
     <comment></comment>
     <requestid>664647</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4786ac917ffa9fc715c7446d518bea00</srcmd5>
+    <version>2.06</version>
+    <time>1757442643</time>
+    <user>anag_factory</user>
+    <comment>- version update to 2.06
+  * - allow IMAPUTF7 encoding if the Perl Encode pakage is installed, too</comment>
+    <requestid>1303360</requestid>
+  </revision>
 </revisionlist>

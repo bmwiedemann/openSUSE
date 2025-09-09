@@ -1,7 +1,7 @@
 #
 # spec file for package convmv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           convmv
-Version:        2.05
+Version:        2.06
 Release:        0
 Summary:        Utility to convert file names between encodings
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
-Url:            http://j3e.de/linux/convmv/
+URL:            http://j3e.de/linux/convmv/
 Source:         http://j3e.de/linux/convmv/%{name}-%{version}.tar.gz
+Recommends:     perl(Encode)
 BuildArch:      noarch
 
 %description

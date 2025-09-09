@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  9 10:07:22 UTC 2025 - pgajdos@suse.com
+
+- version update to 2.06
+  * - allow IMAPUTF7 encoding if the Perl Encode pakage is installed, too
+
+-------------------------------------------------------------------
 Wed Jan  9 01:10:07 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary. Fix NFD acronym expansion.
