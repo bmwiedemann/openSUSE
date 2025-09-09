@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.76.0
+Version:        2.77.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -59,9 +59,9 @@ Requires:       %{pythons}-azure-batch >= 15.0.0~b1
 Requires:       %{pythons}-azure-cosmos >= 3.0.2
 Requires:       %{pythons}-azure-data-tables >= 12.4.0
 Requires:       %{pythons}-azure-datalake-store >= 1.0.1
-Requires:       %{pythons}-azure-keyvault-administration >= 4.4.0~b2
+Requires:       %{pythons}-azure-keyvault-administration >= 4.4.0
 Requires:       %{pythons}-azure-keyvault-certificates >= 4.7.0
-Requires:       %{pythons}-azure-keyvault-keys >= 4.11.0~b1
+Requires:       %{pythons}-azure-keyvault-keys >= 4.11.0
 Requires:       %{pythons}-azure-keyvault-secrets >= 4.7.0
 Requires:       %{pythons}-azure-keyvault-securitydomain >= 1.0.0~b1
 Requires:       %{pythons}-azure-mgmt-advisor >= 9.0.0
@@ -69,7 +69,7 @@ Requires:       %{pythons}-azure-mgmt-apimanagement >= 4.0.0
 Requires:       %{pythons}-azure-mgmt-appconfiguration >= 5.0.0
 Requires:       %{pythons}-azure-mgmt-appcontainers >= 2.0.0
 Requires:       %{pythons}-azure-mgmt-applicationinsights >= 1.0.0
-Requires:       %{pythons}-azure-mgmt-authorization >= 4.0.0
+Requires:       %{pythons}-azure-mgmt-authorization >= 5.0.0~b1
 Requires:       %{pythons}-azure-mgmt-batch >= 17.3.0
 Requires:       %{pythons}-azure-mgmt-batchai >= 7.0.0b1
 Requires:       %{pythons}-azure-mgmt-billing >= 6.0.0
@@ -79,9 +79,8 @@ Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 13.5.0
 Requires:       %{pythons}-azure-mgmt-compute >= 34.1.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.2.0~b1
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 14.1.0~b1
-Requires:       %{pythons}-azure-mgmt-containerservice >= 38.0.0
+Requires:       %{pythons}-azure-mgmt-containerservice >= 39.1.0
 Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.8.0
-Requires:       %{pythons}-azure-mgmt-databoxedge >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-datalake-store >= 1.1.0~b1
 Requires:       %{pythons}-azure-mgmt-datamigration >= 10.0.0
 Requires:       %{pythons}-azure-mgmt-devtestlabs >= 2.2
@@ -131,7 +130,7 @@ Requires:       %{pythons}-azure-mgmt-synapse >= 2.1.0b5
 Requires:       %{pythons}-azure-mgmt-trafficmanager >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-web >= 9.0.0
 Requires:       %{pythons}-azure-monitor-query >= 1.2.0
-Requires:       %{pythons}-azure-multiapi-storage >= 1.4.1
+Requires:       %{pythons}-azure-multiapi-storage >= 1.5.0
 Requires:       %{pythons}-azure-storage-common >= 1.4
 Requires:       %{pythons}-azure-synapse-accesscontrol >= 0.5.0
 Requires:       %{pythons}-azure-synapse-artifacts >= 0.19.0
