@@ -298,4 +298,12 @@
 </comment>
     <requestid>1302043</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>0bbd8d05a2f92ce0b8a311eb1aee934b</srcmd5>
+    <version>0.280</version>
+    <time>1757442618</time>
+    <user>anag_factory</user>
+    <comment>- _constraints: build on s390x needs at least 11 GB of RAM</comment>
+    <requestid>1303260</requestid>
+  </revision>
 </revisionlist>
