@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 28 15:16:04 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fallback to useradd if systemd is older than v257 [bsc#1248855]
+
+-------------------------------------------------------------------
 Wed Aug 27 06:56:02 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Don't set TZ=UTC for chage to avoid dependency on env.

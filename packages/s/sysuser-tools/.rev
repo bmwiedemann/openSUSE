@@ -305,4 +305,12 @@
 - Generate provides for &quot;u!&quot;.</comment>
     <requestid>1301527</requestid>
   </revision>
+  <revision rev="36" vrev="11">
+    <srcmd5>d34cdcca45783ac43c1f5fc38189bb90</srcmd5>
+    <version>3.3</version>
+    <time>1757442539</time>
+    <user>anag_factory</user>
+    <comment>- Fallback to useradd if systemd is older than v257 [bsc#1248855]</comment>
+    <requestid>1301825</requestid>
+  </revision>
 </revisionlist>

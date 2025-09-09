@@ -7,15 +7,19 @@ run() {
 	"$@"
 }
 
+SYSTEMD_VERSION=0
 if [ -x /usr/bin/systemd-sysusers ] && [ -e /proc/version ]; then
+	SYSTEMD_VERSION=$(systemd-sysusers --version | head -n1 | sed 's|systemd \([0-9]\+\).*|\1|g')
+fi
+
+# "u!" is only supported with systemd-sysusers v257 or newer
+if [ -x /usr/bin/systemd-sysusers ] && [ -e /proc/version ] && [ $SYSTEMD_VERSION -ge 257 ]; then
 
 	if [ -n "$1" ] && [ "$1" != "%3" ]; then
 		REPLACE_ARG="--replace=/usr/lib/sysusers.d/$1"
 	fi
 	# Use systemd-sysusers and let it read the input directly from stdin
-	if ! run /usr/bin/systemd-sysusers $REPLACE_ARG - ; then
-		run /usr/bin/systemd-sysusers -
-	fi
+	run /usr/bin/systemd-sysusers $REPLACE_ARG -
 else
 	# Absolute path to busybox, if found
 	busybox=
