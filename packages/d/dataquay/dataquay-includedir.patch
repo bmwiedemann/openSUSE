@@ -1,10 +1,26 @@
-Index: dataquay-0.9.1/deploy/dataquay.pc.in
+Index: dataquay-0.9.5/deploy/dataquay.pc.in
 ===================================================================
---- dataquay-0.9.1.orig/deploy/dataquay.pc.in
-+++ dataquay-0.9.1/deploy/dataquay.pc.in
-@@ -7,4 +7,4 @@ Name: dataquay
+--- dataquay-0.9.5.orig/deploy/dataquay.pc.in
++++ dataquay-0.9.5/deploy/dataquay.pc.in
+@@ -5,6 +5,6 @@ includedir=${prefix}/include
+ 
+ Name: dataquay
  Version: 0.9.1
- Description: C++ API for an RDF data store using Qt4 classes and containers
+-Description: C++ API for an RDF data store using Qt4 classes and containers
++Description: C++ API for an RDF data store using Qt5/Qt6 classes and containers
  Libs: -L${libdir} -ldataquay %EXTRALIBS%
 -Cflags: -I${includedir} 
 +Cflags: -I${includedir} -I${includedir}/dataquay
+Index: dataquay-0.9.5/lib.pro
+===================================================================
+--- dataquay-0.9.5.orig/lib.pro
++++ dataquay-0.9.5/lib.pro
+@@ -77,7 +77,7 @@ linux* {
+         includes.files = dataquay
+         pkgconfig.path = $${LIBDIR}/pkgconfig
+         pkgconfig.files = deploy/dataquay.pc
+-        pkgconfig.extra = sed -e "'"s.%PREFIX%.$${PREFIX}."'" -e "'"s.%LIBDIR%.$${LIBDIR}."'" -e "'"s.%EXTRALIBS%.$${EXTRALIBS}."'" deploy/dataquay.pc.in > deploy/dataquay.pc
++        pkgconfig.extra = sed -e "'"s.%PREFIX%.$${PREFIX}."'" -e "'"s.%LIBDIR%.$${LIBDIR}."'" -e "'"s.%EXTRALIBS%.$${EXTRALIBS}."'" -e "'"s,Version:.*,Version: $${VERSION},"'" deploy/dataquay.pc.in > deploy/dataquay.pc
+         INSTALLS += target includes pkgconfig
+ }
+ 

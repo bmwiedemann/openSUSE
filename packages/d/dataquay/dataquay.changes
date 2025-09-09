@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  9 17:44:45 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.5
+  * Update to support Qt6
+  * Add importString methods
+- Refresh dataquay-redland.patch, dataquay-sharedlib.patch
+  and dataquay-includedir.patch
+- Switch to qt6
+
+-------------------------------------------------------------------
 Mon Feb 26 07:44:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

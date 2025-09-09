@@ -1,7 +1,7 @@
 #
 # spec file for package dataquay
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,33 +13,34 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define soname  0
 Name:           dataquay
-Version:        0.9.1
+Version:        0.9.5
 Release:        0
 Summary:        C++ API for RDF data stores
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://breakfastquay.com/dataquay/
-Source:         http://breakfastquay.com/files/releases/%{name}-%{version}.tar.bz2
+URL:            https://breakfastquay.com/dataquay/
+Source:         https://breakfastquay.com/files/releases/%{name}-%{version}.tar.bz2
 Patch1:         dataquay-lib64.patch
 Patch2:         dataquay-redland.patch
 Patch4:         dataquay-sharedlib.patch
-# PATCH-FIX-OPENSUSE dataquay-includedir.patch aloisio@gmx.co -- add dataquay subdir to include path
+# PATCH-FIX-OPENSUSE dataquay-includedir.patch aloisio@gmx.com -- add dataquay subdir to include path
 Patch5:         dataquay-includedir.patch
 BuildRequires:  gcc-c++
-BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Test)
+BuildRequires:  pkgconfig(raptor2)
 BuildRequires:  pkgconfig(redland)
 
 %description
 Dataquay is a library that provides a C++ API for an
-RDF data store using Qt5 classes and containers.
+RDF data store using Qt6 classes and containers.
 
 %package     -n lib%{name}%{soname}
 Summary:        C++ API for RDF data stores
@@ -47,7 +48,7 @@ Group:          System/Libraries
 
 %description -n lib%{name}%{soname}
 Dataquay is a library that provides a C++ API for an
-RDF data store using Qt5 classes and containers.
+RDF data store using Qt6 classes and containers.
 
 %package devel
 Summary:        Development files for dataquay, an RDF data store library
@@ -56,7 +57,7 @@ Requires:       libdataquay%{soname} = %{version}
 
 %description devel
 Dataquay is a library that provides a C++ API for an
-RDF data store using Qt5 classes and containers.
+RDF data store using Qt6 classes and containers.
 
 This subpackage contains the header files for developing
 applications that want to make use of dataquay.
@@ -65,10 +66,11 @@ applications that want to make use of dataquay.
 %autosetup -p1
 
 %build
-%qmake5 PREFIX=%{_prefix} LIBDIR=%{_libdir} dataquay.pro
+%qmake6 PREFIX=%{_prefix} LIBDIR=%{_libdir} dataquay.pro
+%qmake6_build
 
 %install
-%qmake5_install
+%qmake6_install
 install -D -m0644 deploy/%{name}.pc %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
 
 %post   -n lib%{name}%{soname} -p /sbin/ldconfig
@@ -76,7 +78,8 @@ install -D -m0644 deploy/%{name}.pc %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
 
 %files -n lib%{name}%{soname}
 %defattr(-,root,root,-)
-%doc CHANGELOG COPYING README.txt
+%license COPYING
+%doc CHANGELOG README.txt
 %{_libdir}/lib%{name}.so.%{soname}
 %{_libdir}/lib%{name}.so.%{soname}.*
 

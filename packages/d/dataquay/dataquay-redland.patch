@@ -1,13 +1,15 @@
-Index: dataquay-0.9.1/config.pri
+Index: dataquay-0.9.5/config.pri
 ===================================================================
---- dataquay-0.9.1.orig/config.pri
-+++ dataquay-0.9.1/config.pri
-@@ -3,7 +3,7 @@ CONFIG += release
+--- dataquay-0.9.5.orig/config.pri
++++ dataquay-0.9.5/config.pri
+@@ -3,8 +3,8 @@ CONFIG += release
  
  # Define these to use the Redland datastore (http://librdf.org/)
  DEFINES += USE_REDLAND
 -QMAKE_CXXFLAGS += -I/usr/include/rasqal -I/usr/include/raptor2
-+QMAKE_CXXFLAGS += `pkg-config --cflags redland`
- EXTRALIBS += -lrdf
+-EXTRALIBS += -lrdf
++QMAKE_CXXFLAGS += `pkg-config --cflags redland raptor2`
++EXTRALIBS += -lrdf -lraptor2
  
  # Define this to use the Sord datastore (http://drobilla.net/software/sord/)
+ #DEFINES += USE_SORD
