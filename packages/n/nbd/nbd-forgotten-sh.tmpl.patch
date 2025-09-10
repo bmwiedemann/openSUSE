@@ -1,0 +1,13 @@
+Index: nbd-3.26.1/man/sh.tmpl
+===================================================================
+--- /dev/null
++++ nbd-3.26.1/man/sh.tmpl
+@@ -0,0 +1,8 @@
++#!/bin/sh
++
++prefix=@prefix@
++exec_prefix=@exec_prefix@
++sysconfdir=@sysconfdir@
++
++cat <<EOF
++

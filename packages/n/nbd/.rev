@@ -494,4 +494,12 @@ Should go into 12.2 as well. (forwarded request 127441 from a_jaeger)</comment>
   * nbd-server and nbd-client now no longer have compile-time support for the SDP protocol. Support for this was old and probably not functional; the protocol in itself is also deprecated.</comment>
     <requestid>1093915</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>f73061ec2e5c2d297603987424869444</srcmd5>
+    <version>3.26.1</version>
+    <time>1757518222</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1303524</requestid>
+  </revision>
 </revisionlist>

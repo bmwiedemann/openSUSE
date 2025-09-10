@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep  3 12:35:50 UTC 2025 - pgajdos@suse.com
+
+- version update to 3.26.1
+  * fix missing -F short-option for certfile by @panarom in #151
+  * add option for gnutls priority string by @panarom in #152
+  * fix port setting from nbdtab by @felixonmars in #154
+  * Fix for a synchronization bug in the handling of errors in NBD_OPT_GO by @ebblake
+  * Various fixes for issues found by a number of static analyzers, by Łukasz Stelmach and the Tizen team
+  * fix the building of man pages
+- deleted patches
+  - 0001_fix_setgroup.patch (upstreamed)
+- added patches
+  https://github.com/NetworkBlockDevice/nbd/commit/f8d7d3dbf1ef2ef84c92fe375ebc8674a79e25c2
+  + nbd-forgotten-sh.tmpl.patch
+
+-------------------------------------------------------------------
 Tue Jun 20 08:27:42 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.25:
