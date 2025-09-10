@@ -1,7 +1,7 @@
 #
 # spec file for package python-autocommand
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/Lucretiel/autocommand
 Source:         https://files.pythonhosted.org/packages/source/a/autocommand/autocommand-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM setuptools-dynamic-license.patch gh#Lucretiel/autocommand#31
 Patch0:         setuptools-dynamic-license.patch
+# PATCH-FIX-UPSTREAM https://github.com/Lucretiel/autocommand/pull/40 Fix tests for Python 3.14+
+Patch1:         py314.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

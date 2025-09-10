@@ -37,4 +37,12 @@ Please, put in  openSUSE:Factory:Staging:adi:18 </comment>
     <comment></comment>
     <requestid>1134635</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>da3149c2454b3515c8c46aa9bf0d9f63</srcmd5>
+    <version>2.2.2</version>
+    <time>1757518190</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1303306</requestid>
+  </revision>
 </revisionlist>

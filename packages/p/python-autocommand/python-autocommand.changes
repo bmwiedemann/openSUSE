@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  8 12:51:14 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add py314.patch to fix tests with Python 3.14
+
+-------------------------------------------------------------------
 Fri Dec 22 13:12:16 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Add setuptools-dynamic-license.patch gh#Lucretiel/autocommand#31
