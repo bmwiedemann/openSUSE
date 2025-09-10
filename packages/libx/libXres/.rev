@@ -91,4 +91,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1042322</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b916153c6e3a1d5ab025ff95d2a7343e</srcmd5>
+    <version>1.2.3</version>
+    <time>1757518177</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.3
+  * Remove &quot;All rights reserved&quot; from Oracle copyright notices
+  * configure: Use LT_INIT from libtool 2 instead of deprecated
+    AC_PROG_LIBTOOL
+  * configure: add xproto to pkg-config dependencies list
+  * xres.pc: list minimum version of 1.6 for libX11 dependency
+  * meson: Add option to build with meson
+  * Improve man page formatting
+- switch to meson</comment>
+    <requestid>1303208</requestid>
+  </revision>
 </revisionlist>

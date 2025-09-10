@@ -1,7 +1,7 @@
 #
 # spec file for package libXres
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libXRes1
 Name:           libXres
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        X Resource extension client library
 License:        MIT
@@ -28,6 +28,7 @@ URL:            https://xorg.freedesktop.org/
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXRes/
 Source:         https://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(resourceproto) >= 1.0
 BuildRequires:  pkgconfig(x11)
@@ -69,12 +70,11 @@ in %{lname}.
 %setup -q
 
 %build
-%configure --disable-static
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
