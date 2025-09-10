@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiounittest
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-aiounittest
 Version:        1.5.0
 Release:        0
@@ -26,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/kwarunek/aiounittest
 Source:         https://github.com/kwarunek/aiounittest/archive/%{version}.tar.gz#/aiounittest-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/kwarunek/aiounittest/pull/29 asyncio.get_event_loop() doesn't create a new loop since Python 3.14
+Patch0:         py314-wip.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -46,7 +47,7 @@ test of the asynchronous code (asyncio). You can test:
   asyncio.coroutine/yield from (Python 3.4)
 
 %prep
-%setup -q -n aiounittest-%{version}
+%autosetup -p1 -n aiounittest-%{version}
 
 %build
 %pyproject_wheel

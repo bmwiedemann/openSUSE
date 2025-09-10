@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  8 12:22:04 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add py314-wip.patch to fix build with Python 3.14
+
+-------------------------------------------------------------------
 Sat Jul 12 11:42:38 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.0:
