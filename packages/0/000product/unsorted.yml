@@ -835,13 +835,7 @@ unsorted:
   - aqute-bnd 
   - aqute-bnd-javadoc 
   - aqute-bndlib 
-  - arabic-ae-fonts 
   - arabic-amiri-fonts 
-  - arabic-bitmap-fonts 
-  - arabic-fonts 
-  - arabic-kacst-fonts 
-  - arabic-kacstone-fonts 
-  - arabic-naqsh-fonts 
   - arandr 
   - aranym 
   - aravis 
@@ -900,7 +894,6 @@ unsorted:
   - arphic-gbsn00lp-fonts 
   - arphic-gkai00mp-fonts 
   - arphic-ukai-fonts 
-  - arphic-uming-fonts 
   - arping2 
   - arprec-devel 
   - arptables 
@@ -1119,7 +1112,6 @@ unsorted:
   - autoconf-el 
   - autoconf213 
   - autocutsel 
-  - autofs 
   - autogen 
   - autojump 
   - automake 
@@ -1951,7 +1943,6 @@ unsorted:
   - camsource-devel 
   - canberra-gtk-play-gnome 
   - canlock 
-  - canokey-qemu 
   - canokey-qemu-devel 
   - cantata 
   - cantata-lang 
@@ -3556,7 +3547,6 @@ unsorted:
   - edk2-Shell 
   - eduvpn-client 
   - ee4j 
-  - eekboard 
   - eekboard-devel 
   - eeyek-fonts 
   - efitools 
@@ -6967,7 +6957,6 @@ unsorted:
   - gio-sharp 
   - gio-sharp-devel 
   - girara-devel 
-  - git 
   - git-absorb 
   - git-absorb-bash-completion 
   - git-absorb-fish-completion 
@@ -6989,7 +6978,6 @@ unsorted:
   - git-cliff-fish-completion 
   - git-cliff-zsh-completion 
   - git-cola 
-  - git-core 
   - git-credential-keepassxc 
   - git-credential-libsecret 
   - git-credential-oauth 
@@ -7000,10 +6988,8 @@ unsorted:
   - git-deps 
   - git-deps-html 
   - git-doc 
-  - git-email 
   - git-filter-repo 
   - git-fzlog 
-  - git-gui 
   - git-lfs 
   - git-merge-changelog 
   - git-mr 
@@ -7022,14 +7008,12 @@ unsorted:
   - git-town-bash-completion 
   - git-town-fish-completion 
   - git-town-zsh-completion 
-  - git-web 
   - git-who 
   - gitea-tea 
   - gitea-tea-bash-completion 
   - gitea-tea-zsh-completion 
   - gitg 
   - gitg-lang 
-  - gitk 
   - gitlab-container-registry 
   - gitleaks 
   - gitleaks-bash-completion 
@@ -7422,7 +7406,6 @@ unsorted:
   - gnustep-base 
   - gnustep-base-devel 
   - gnustep-make 
-  - gnutls 
   - go 
   - go-containerregistry 
   - go-doc 
@@ -8861,7 +8844,6 @@ unsorted:
   - indi 
   - indi-devel 
   - indi-plugins 
-  - indic-fonts 
   - indriya 
   - indriya-javadoc 
   - ineffassign 
@@ -9462,7 +9444,6 @@ unsorted:
   - jgmenu 
   - jgraphx 
   - jgraphx-javadoc 
-  - jhead 
   - jhighlight 
   - jhighlight-javadoc 
   - jigdo 
@@ -10104,7 +10085,6 @@ unsorted:
   - khealthcertificate 
   - khealthcertificate-devel 
   - khealthcertificate-imports 
-  - khmeros-fonts 
   - kholidays 
   - kholidays-devel 
   - khunphan 
@@ -10206,7 +10186,6 @@ unsorted:
   - kitty-terminfo 
   - kiwi-bash-completion 
   - kiwi-man-pages 
-  - kiwi-pxeboot 
   - kiwi-systemdeps 
   - kiwi-systemdeps-bootloaders 
   - kiwi-systemdeps-containers 
@@ -10665,7 +10644,6 @@ unsorted:
   - kvantum-qt6 
   - kvantum-themes 
   - kvirc 
-  - kvm_stat 
   - kvm_stat-rebuild 
   - kwallet-devel 
   - kwave 
@@ -10821,7 +10799,6 @@ unsorted:
   - ldc-runtime-devel 
   - ldirectord 
   - ldmtool 
-  - ldns 
   - ldns-devel 
   - leafnode 
   - leafpad 
@@ -11054,7 +11031,6 @@ unsorted:
   - libFLAC++11-32bit 
   - libFLAC++11-x86-64-v3 
   - libFLAC14-32bit 
-  - libFLAC14-x86-64-v3 
   - libFOX-1_6-0 
   - libFcitx5Config6 
   - libFcitx5Core7 
@@ -11099,13 +11075,11 @@ unsorted:
   - libIccXML-devel 
   - libIccXML2 
   - libIex-3_3-32-32bit 
-  - libIex-3_3-32-x86-64-v3 
   - libIlmCtl1_5_3 
   - libIlmCtlMath1_5_3 
   - libIlmCtlSimd1_5_3 
   - libIlmImfCtl1_5_3 
   - libIlmThread-3_3-32-32bit 
-  - libIlmThread-3_3-32-x86-64-v3 
   - libImath-3_1-29-32bit 
   - libIrrlicht1_8 
   - libKChart2 
@@ -11220,9 +11194,7 @@ unsorted:
   - libOpenCL1-32bit 
   - libOpenColorIO2_4 
   - libOpenEXR-3_3-32-32bit 
-  - libOpenEXR-3_3-32-x86-64-v3 
   - libOpenEXRCore-3_3-32-32bit 
-  - libOpenEXRCore-3_3-32-x86-64-v3 
   - libOpenEXRUtil-3_3-32 
   - libOpenEXRUtil-3_3-32-32bit 
   - libOpenEXRUtil-3_3-32-x86-64-v3 
@@ -12091,7 +12063,6 @@ unsorted:
   - libb2-devel 
   - libb64 
   - libb64-devel 
-  - libbabl-0_1-0-x86-64-v3 
   - libbacktrace-devel 
   - libbamf3-2 
   - libbandicoot1 
@@ -12235,7 +12206,6 @@ unsorted:
   - libboost_filesystem-devel 
   - libboost_filesystem1_88_0-32bit 
   - libboost_filesystem1_88_0-devel 
-  - libboost_filesystem1_88_0-x86-64-v3 
   - libboost_graph-devel 
   - libboost_graph1_88_0 
   - libboost_graph1_88_0-32bit 
@@ -12250,7 +12220,6 @@ unsorted:
   - libboost_iostreams-devel 
   - libboost_iostreams1_88_0-32bit 
   - libboost_iostreams1_88_0-devel 
-  - libboost_iostreams1_88_0-x86-64-v3 
   - libboost_json1_88_0 
   - libboost_json1_88_0-32bit 
   - libboost_json1_88_0-devel 
@@ -12258,7 +12227,6 @@ unsorted:
   - libboost_locale-devel 
   - libboost_locale1_88_0-32bit 
   - libboost_locale1_88_0-devel 
-  - libboost_locale1_88_0-x86-64-v3 
   - libboost_log-devel 
   - libboost_log1_88_0 
   - libboost_log1_88_0-devel 
@@ -12294,7 +12262,6 @@ unsorted:
   - libboost_program_options1_88_0-x86-64-v3 
   - libboost_python-py3-1_88_0-32bit 
   - libboost_python-py3-1_88_0-devel 
-  - libboost_python-py3-1_88_0-x86-64-v3 
   - libboost_python3-devel 
   - libboost_random-devel 
   - libboost_random1_88_0 
@@ -12329,7 +12296,6 @@ unsorted:
   - libboost_thread-devel 
   - libboost_thread1_88_0-32bit 
   - libboost_thread1_88_0-devel 
-  - libboost_thread1_88_0-x86-64-v3 
   - libboost_timer-devel 
   - libboost_timer1_88_0 
   - libboost_timer1_88_0-devel 
@@ -12369,11 +12335,8 @@ unsorted:
   - libbrotli-devel 
   - libbrotli-devel-32bit 
   - libbrotlicommon1-32bit 
-  - libbrotlicommon1-x86-64-v3 
   - libbrotlidec1-32bit 
-  - libbrotlidec1-x86-64-v3 
   - libbrotlienc1-32bit 
-  - libbrotlienc1-x86-64-v3 
   - libbs2b-devel 
   - libbs2b0-32bit 
   - libbsd-ctor-static 
@@ -12391,7 +12354,6 @@ unsorted:
   - libburn-devel 
   - libbytesize-devel 
   - libbz2-1-32bit 
-  - libbz2-1-x86-64-v3 
   - libbz2-devel 
   - libbz2-devel-32bit 
   - libbzip3-1 
@@ -12453,7 +12415,6 @@ unsorted:
   - libcapnp-devel 
   - libcapstone-devel 
   - libcapstone-devel-static 
-  - libcapstone5 
   - libcaption 
   - libcaption-devel 
   - libcares2-32bit 
@@ -12610,7 +12571,6 @@ unsorted:
   - libcoap3-3 
   - libcob4 
   - libcodec2-1_2-32bit 
-  - libcodec2-1_2-x86-64-v3 
   - libcodecore0 
   - libcoeurl0_3 
   - libcogl-gles2-20 
@@ -12675,7 +12635,6 @@ unsorted:
   - libcriterion3 
   - libcriu2 
   - libcroco 
-  - libcroco-0_6-3 
   - libcroco-devel 
   - libcryptmount-devel 
   - libcrypto56 
@@ -12759,7 +12718,6 @@ unsorted:
   - libdb-4_8-32bit 
   - libdb-4_8-devel 
   - libdb-4_8-devel-32bit 
-  - libdb-4_8-x86-64-v3 
   - libdb_java-4_8 
   - libdb_java-4_8-devel 
   - libdbh2 
@@ -12958,7 +12916,6 @@ unsorted:
   - libedit0-32bit 
   - libeditorconfig-devel 
   - libeduvpn_common-3_0_0 
-  - libefa1 
   - libefa1-32bit 
   - libei-devel 
   - libeiskaltdcpp2_4 
@@ -13030,7 +12987,6 @@ unsorted:
   - libexif-gtk-devel 
   - libexif-gtk5 
   - libexif12-32bit 
-  - libexiv2-28-x86-64-v3 
   - libexiv2-devel 
   - libexmdbpp-devel 
   - libexmdbpp0 
@@ -13116,7 +13072,6 @@ unsorted:
   - libfdk-aac2-32bit 
   - libfdt-devel 
   - libfdt-devel-32bit 
-  - libfdt1 
   - libfdt1-32bit 
   - libfec3 
   - libfeedback-0_0-0 
@@ -13185,7 +13140,6 @@ unsorted:
   - libflite_cmulex1 
   - libflite_usenglish1 
   - libflom0 
-  - libfltk1_3 
   - libfltk1_3-32bit 
   - libfluidsynth3 
   - libfluidsynth3-32bit 
@@ -13360,7 +13314,6 @@ unsorted:
   - libgbm-devel-32bit 
   - libgbm1-32bit 
   - libgcalc-2-1_0_1 
-  - libgcc_s1-32bit 
   - libgcc_s1-gcc13 
   - libgcc_s1-gcc13-32bit 
   - libgcc_s1-gcc14 
@@ -13388,7 +13341,6 @@ unsorted:
   - libgcrypt-devel 
   - libgcrypt-devel-32bit 
   - libgcrypt-devel-x86-64-v3 
-  - libgcrypt20-x86-64-v3 
   - libgd3-32bit 
   - libgda-6_0-6_0_0 
   - libgda-6_0-6_0_0-lang 
@@ -13600,7 +13552,6 @@ unsorted:
   - libgnuradio-iqbalance3_9_0 
   - libgnuradio-osmosdr0_2_0 
   - libgnutls-dane-devel 
-  - libgnutls-dane0 
   - libgnutls-devel 
   - libgnutls-devel-32bit 
   - libgnutls-devel-doc 
@@ -13882,14 +13833,11 @@ unsorted:
   - libhidapi-libusb0 
   - libhinawa-devel 
   - libhinawa2 
-  - libhiredis1_3_0 
   - libhivex0 
   - libhl1 
   - libhmac-devel 
   - libhmac-tools 
   - libhmac1 
-  - libhns1 
-  - libhogweed6-x86-64-v3 
   - libhomfly-devel 
   - libhomfly0 
   - libhowl0 
@@ -13931,10 +13879,8 @@ unsorted:
   - libibumad3 
   - libibumad3-32bit 
   - libibus-1_0-5-32bit 
-  - libibverbs 
   - libibverbs-32bit 
   - libibverbs-utils 
-  - libibverbs1 
   - libibverbs1-32bit 
   - libical-devel 
   - libical-doc 
@@ -14048,9 +13994,7 @@ unsorted:
   - libiscsi-devel 
   - libiscsi-test 
   - libiscsi-utils 
-  - libiscsi10 
   - libiscsi10-32bit 
-  - libiscsi10-x86-64-v3 
   - libisds-devel 
   - libisds5 
   - libisl23-32bit 
@@ -14105,7 +14049,6 @@ unsorted:
   - libjpeg8-32bit 
   - libjpeg8-devel 
   - libjpeg8-devel-32bit 
-  - libjpeg8-x86-64-v3 
   - libjpegxr0 
   - libjpgalleg44-devel 
   - libjpgalleg4_4 
@@ -14122,7 +14065,6 @@ unsorted:
   - libjxl-devel 
   - libjxl-tools 
   - libjxl0_11-32bit 
-  - libjxl0_11-x86-64-v3 
   - libjxrglue0 
   - libkColorPicker-Qt5-0 
   - libkImageAnnotator-Qt5-0 
@@ -14303,7 +14245,6 @@ unsorted:
   - libldl3 
   - libldm-1_0-0 
   - libldm-1_0-0-devel 
-  - libldns3 
   - libleancrypto-fips1 
   - libleancrypto-fips1-32bit 
   - libled1 
@@ -14411,7 +14352,6 @@ unsorted:
   - liblttng-ctl0 
   - liblttng-ust-ctl5 
   - liblttng-ust-python-agent1 
-  - liblttng-ust1 
   - liblttoolbox3 
   - liblua5_1-5 
   - liblua5_1-5-32bit 
@@ -14440,14 +14380,11 @@ unsorted:
   - liblxqt-wallet6_0_0 
   - liblxqt2 
   - liblz4-1-32bit 
-  - liblz4-1-x86-64-v3 
   - liblz4-devel 
   - liblzma5-32bit 
-  - liblzma5-x86-64-v3 
   - liblzmasdk25 
   - liblzmasdk25-x86-64-v3 
   - liblzo2-2-32bit 
-  - liblzo2-2-x86-64-v3 
   - libm2cor18 
   - libm2cor18-32bit 
   - libm2cor19 
@@ -14492,7 +14429,6 @@ unsorted:
   - libmaliit-devel 
   - libmaliit-glib2 
   - libmaliit-plugins2 
-  - libmana1 
   - libmanette-devel 
   - libmanifold3 
   - libmanifoldc3 
@@ -14621,7 +14557,6 @@ unsorted:
   - libminizinc-devel 
   - libminizip-ng4 
   - libminizip1-32bit 
-  - libminizip1-x86-64-v3 
   - libmirage-3_2 
   - libmirage-data 
   - libmirage-devel 
@@ -14647,14 +14582,11 @@ unsorted:
   - libmlt7-data 
   - libmlt7-module-qt6 
   - libmlt7-modules 
-  - libmlx4-1 
   - libmlx4-1-32bit 
-  - libmlx5-1 
   - libmlx5-1-32bit 
   - libmms-devel 
   - libmms0 
   - libmng-devel 
-  - libmng2-x86-64-v3 
   - libmnl-devel 
   - libmnl-doc 
   - libmnl0-32bit 
@@ -14688,7 +14620,6 @@ unsorted:
   - libmozjs-115-0 
   - libmp3lame-devel 
   - libmp3lame0-32bit 
-  - libmp3lame0-x86-64-v3 
   - libmp4tag-devel 
   - libmp4tag-tools 
   - libmp4tag2_0_0 
@@ -14788,7 +14719,6 @@ unsorted:
   - libncurses_c++6 
   - libncurses_c++6-compat 
   - libndctl-devel 
-  - libndctl6 
   - libndp 
   - libndp-devel 
   - libndpi-devel 
@@ -14828,7 +14758,6 @@ unsorted:
   - libnetpbm11-32bit 
   - libnettle-devel 
   - libnettle-devel-32bit 
-  - libnettle8-x86-64-v3 
   - libnewt0_52-32bit 
   - libnextcloudsync-devel 
   - libnextcloudsync0 
@@ -15056,7 +14985,6 @@ unsorted:
   - libopenhpi4 
   - libopenhtj2k0 
   - libopenjp2-7-32bit 
-  - libopenjp2-7-x86-64-v3 
   - libopenjph0_22 
   - libopenlibm4 
   - libopenmpt-devel 
@@ -15082,7 +15010,6 @@ unsorted:
   - libopenssl-3-fips-provider-x86-64-v3 
   - libopenssl-devel 
   - libopenssl-fips-provider 
-  - libopenssl3-x86-64-v3 
   - libopentimelineio0 
   - libopentracing-cpp1 
   - libopenvdb12_0 
@@ -15324,11 +15251,9 @@ unsorted:
   - libplutovg1 
   - libply-boot-client5 
   - libpmem-devel 
-  - libpmem1 
   - libpmem2-1 
   - libpmem2-devel 
   - libpmemobj-devel 
-  - libpmemobj1 
   - libpmempool-devel 
   - libpmempool1 
   - libpmi0 
@@ -15344,7 +15269,6 @@ unsorted:
   - libpng12-devel 
   - libpng12-devel-32bit 
   - libpng16-16-32bit 
-  - libpng16-16-x86-64-v3 
   - libpng16-compat-devel 
   - libpng16-compat-devel-32bit 
   - libpng16-compat-devel-x86-64-v3 
@@ -15491,12 +15415,10 @@ unsorted:
   - libpython3_10-1_0 
   - libpython3_10-1_0-32bit 
   - libpython3_11-1_0-32bit 
-  - libpython3_11-1_0-x86-64-v3 
   - libpython3_12-1_0 
   - libpython3_12-1_0-32bit 
   - libpython3_12-1_0-x86-64-v3 
   - libpython3_13-1_0-32bit 
-  - libpython3_13-1_0-x86-64-v3 
   - libpython3_13t1_0 
   - libpython3_14-1_0 
   - libpython3_14-1_0-x86-64-v3 
@@ -15507,8 +15429,6 @@ unsorted:
   - libqaccessibilityclient-qt5-devel 
   - libqaccessibilityclient-qt6-devel 
   - libqalculate-devel 
-  - libqat4 
-  - libqatzip3 
   - libqb-devel 
   - libqb-devel-32bit 
   - libqb-tests 
@@ -15738,7 +15658,6 @@ unsorted:
   - librabbitmq4 
   - libradcli6 
   - librados-devel 
-  - librados2 
   - libradospp-devel 
   - libraft0 
   - libraptor-devel 
@@ -15762,7 +15681,6 @@ unsorted:
   - libraw23-32bit 
   - libraylib550 
   - librbd-devel 
-  - librbd1 
   - librbio4 
   - librbl1 
   - librcc-devel 
@@ -15772,7 +15690,6 @@ unsorted:
   - librdkafka-devel 
   - librdkafka1 
   - librdmacm-utils 
-  - librdmacm1 
   - librdmacm1-32bit 
   - libre2-11 
   - libre32 
@@ -16102,7 +16019,6 @@ unsorted:
   - libsfml2-2_6 
   - libsgutils-devel 
   - libsha1detectcoll-devel 
-  - libsha1detectcoll1 
   - libshaderc_shared1-32bit 
   - libshadowsocks-libev2 
   - libsharp-devel 
@@ -16251,7 +16167,6 @@ unsorted:
   - libsphinxclient-0_0_1 
   - libsphinxclient-devel 
   - libspice-server-devel 
-  - libspice-server1 
   - libspiro-devel 
   - libspiro1 
   - libspirv-cross-c-shared0 
@@ -16267,7 +16182,6 @@ unsorted:
   - libsqlcipher-3_46_1-0 
   - libsqlcipher-3_46_1-0-x86-64-v3 
   - libsqlite3-0-32bit 
-  - libsqlite3-0-x86-64-v3 
   - libsqlitecpp0 
   - libsqlparser1 
   - libsquashfuse0 
@@ -16296,7 +16210,6 @@ unsorted:
   - libstatgrab10 
   - libstdc++-devel 
   - libstdc++-devel-32bit 
-  - libstdc++6-32bit 
   - libstdc++6-devel-gcc13 
   - libstdc++6-devel-gcc13-32bit 
   - libstdc++6-devel-gcc14 
@@ -16314,7 +16227,6 @@ unsorted:
   - libstdc++6-gcc7 
   - libstdc++6-gcc7-32bit 
   - libstdc++6-gcc7-locale 
-  - libstdc++6-pp-32bit 
   - libstdc++6-pp-gcc13 
   - libstdc++6-pp-gcc13-32bit 
   - libstdc++6-pp-gcc14 
@@ -16456,7 +16368,6 @@ unsorted:
   - libtag2-32bit 
   - libtag_c2-32bit 
   - libtalloc-devel 
-  - libtalloc2-x86-64-v3 
   - libtar 
   - libtar-devel 
   - libtar1 
@@ -16557,7 +16468,6 @@ unsorted:
   - libtomlplusplus3 
   - libtommath-devel 
   - libtommath-examples 
-  - libtommath1-x86-64-v3 
   - libtomoe-gtk0 
   - libtool 
   - libtool-32bit 
@@ -16574,7 +16484,6 @@ unsorted:
   - libtpm2-totp0-devel 
   - libtpm_unseal1 
   - libtpms-devel 
-  - libtpms0 
   - libtqsllib2_6 
   - libtracecmd-devel 
   - libtracecmd1 
@@ -16590,7 +16499,6 @@ unsorted:
   - libtre5 
   - libtre5-lang 
   - libtree 
-  - libtree-sitter0_25-x86-64-v3 
   - libtrng4-27 
   - libts0-32bit 
   - libtsan0 
@@ -16627,7 +16535,6 @@ unsorted:
   - libtukit-devel 
   - libtun6-0 
   - libturbojpeg0-32bit 
-  - libturbojpeg0-x86-64-v3 
   - libturris-spectator-devel 
   - libturris-spectator0 
   - libtutf-devel 
@@ -16684,7 +16591,6 @@ unsorted:
   - libuna1 
   - libuna1-mini 
   - libunbound-devel-mini 
-  - libunbound8 
   - libunibilium4 
   - libunibreak-devel 
   - libunibreak6-32bit 
@@ -16737,7 +16643,6 @@ unsorted:
   - libusbmuxd-2_0-7-32bit 
   - libusbmuxd-devel 
   - libusbmuxd-tools 
-  - libusdm0 
   - libuser 
   - libuser-devel 
   - libuser-docs 
@@ -16802,7 +16707,6 @@ unsorted:
   - libvdemgmt-devel 
   - libvdemgmt0 
   - libvdeplug-devel 
-  - libvdeplug3 
   - libvdesnmp-devel 
   - libvdesnmp0 
   - libvdpau-devel 
@@ -16840,46 +16744,24 @@ unsorted:
   - libvigraimpex11 
   - libvips-devel 
   - libvips42 
-  - libvirglrenderer1 
   - libvirt 
-  - libvirt-client 
   - libvirt-client-qemu 
   - libvirt-daemon 
-  - libvirt-daemon-common 
-  - libvirt-daemon-config-network 
   - libvirt-daemon-config-nwfilter 
   - libvirt-daemon-driver-libxl 
   - libvirt-daemon-driver-lxc 
-  - libvirt-daemon-driver-network 
-  - libvirt-daemon-driver-nodedev 
   - libvirt-daemon-driver-nwfilter 
-  - libvirt-daemon-driver-qemu 
-  - libvirt-daemon-driver-secret 
-  - libvirt-daemon-driver-storage 
-  - libvirt-daemon-driver-storage-core 
-  - libvirt-daemon-driver-storage-disk 
   - libvirt-daemon-driver-storage-gluster 
-  - libvirt-daemon-driver-storage-iscsi 
-  - libvirt-daemon-driver-storage-iscsi-direct 
-  - libvirt-daemon-driver-storage-logical 
-  - libvirt-daemon-driver-storage-mpath 
-  - libvirt-daemon-driver-storage-rbd 
-  - libvirt-daemon-driver-storage-scsi 
   - libvirt-daemon-hooks 
-  - libvirt-daemon-lock 
-  - libvirt-daemon-log 
   - libvirt-daemon-lxc 
-  - libvirt-daemon-plugin-lockd 
   - libvirt-daemon-plugin-sanlock 
   - libvirt-daemon-proxy 
-  - libvirt-daemon-qemu 
   - libvirt-daemon-xen 
   - libvirt-dbus 
   - libvirt-devel 
   - libvirt-doc 
   - libvirt-glib-1_0-0 
   - libvirt-glib-devel 
-  - libvirt-libs 
   - libvirt-nss 
   - libvirt-ssh-proxy 
   - libvisio-devel 
@@ -16916,11 +16798,8 @@ unsorted:
   - libvorbis-devel-32bit 
   - libvorbis-doc 
   - libvorbis0-32bit 
-  - libvorbis0-x86-64-v3 
   - libvorbisenc2-32bit 
-  - libvorbisenc2-x86-64-v3 
   - libvorbisfile3-32bit 
-  - libvorbisfile3-x86-64-v3 
   - libvoro++0 
   - libvotca2025 
   - libvpd-2_2-3 
@@ -16973,7 +16852,6 @@ unsorted:
   - libwapcaplet0 
   - libwasmedge0 
   - libwavpack1-32bit 
-  - libwavpack1-x86-64-v3 
   - libwayland-client0-32bit 
   - libwayland-cursor0-32bit 
   - libwayland-egl1-32bit 
@@ -17189,7 +17067,6 @@ unsorted:
   - libxdg-basedir-devel 
   - libxdg-basedir1 
   - libxdp-devel 
-  - libxdp1 
   - libxeme0 
   - libxerces-c-3_3 
   - libxerces-c-devel 
@@ -17246,7 +17123,6 @@ unsorted:
   - libxml2-devel-32bit 
   - libxml2-doc 
   - libxmlb-devel 
-  - libxmlb2-x86-64-v3 
   - libxmlbird1 
   - libxmlrpc++9 
   - libxmlrpc3 
@@ -17305,7 +17181,7 @@ unsorted:
   - libyaml-devel 
   - libyang-devel 
   - libyang-doc 
-  - libyang2 
+  - libyang3 
   - libyara-devel 
   - libyara10 
   - libyara10-x86-64-v3 
@@ -17345,7 +17221,6 @@ unsorted:
   - libz-ng-compat1-32bit 
   - libz-ng2 
   - libz-ng2-32bit 
-  - libz1-x86-64-v3 
   - libz3-4_15 
   - libzarchive0_1 
   - libzbar-devel 
@@ -17398,7 +17273,6 @@ unsorted:
   - libzstd-devel-32bit 
   - libzstd-devel-static 
   - libzstd1-32bit 
-  - libzstd1-x86-64-v3 
   - libzvbi-chains0 
   - libzvbi-chains0-32bit 
   - libzvbi0-32bit 
@@ -17528,7 +17402,6 @@ unsorted:
   - lkl-devel 
   - lkl-test 
   - lklfuse 
-  - lklug-fonts 
   - lksctp-tools 
   - lksctp-tools-devel 
   - llamacpp 
@@ -18558,7 +18431,6 @@ unsorted:
   - mdbtools-devel 
   - mdds-2_1-devel 
   - mdds-devel 
-  - mdevctl 
   - meabo 
   - meanwhile-devel 
   - meanwhile-doc 
@@ -19514,7 +19386,6 @@ unsorted:
   - nautilus-image-converter-lang 
   - nauty 
   - nauty-devel 
-  - nbd 
   - nbdfuse 
   - nbdkit 
   - nbdkit-bash-completion 
@@ -19888,7 +19759,6 @@ unsorted:
   - nvidia-open-driver-G06-signed-cuda-kmp-longterm 
   - nvidia-open-driver-G06-signed-cuda-longterm-devel 
   - nvidia-open-driver-G06-signed-default-devel 
-  - nvidia-open-driver-G06-signed-kmp-default 
   - nvidia-open-driver-G06-signed-kmp-longterm 
   - nvidia-open-driver-G06-signed-longterm-devel 
   - nvidia-settings 
@@ -19898,7 +19768,6 @@ unsorted:
   - nvim-treesitter 
   - nvimpager 
   - nvimpager-zsh-completion 
-  - nvme-cli-bash-completion 
   - nvme-cli-regress-script 
   - nvme-cli-zsh-completion 
   - nvme-stas 
@@ -20527,7 +20396,6 @@ unsorted:
   - openslide-doc 
   - openslide-tools 
   - openslp-devel 
-  - openslp-server 
   - opensm 
   - opensm-devel 
   - opensp 
@@ -20713,7 +20581,6 @@ unsorted:
   - otter-browser 
   - otter-browser-lang 
   - ouch 
-  - ovmf 
   - ovmf-tools 
   - ovn 
   - ovn-central 
@@ -20990,8 +20857,6 @@ unsorted:
   - patterns-cinnamon-cinnamon 
   - patterns-cinnamon-cinnamon_basis 
   - patterns-cockpit 
-  - patterns-desktop-books 
-  - patterns-desktop-mobile 
   - patterns-desktop-technical_writing 
   - patterns-devel-C-C++-devel_C_C++ 
   - patterns-devel-base-devel_basis 
@@ -21009,7 +20874,6 @@ unsorted:
   - patterns-devel-tcl-devel_tcl 
   - patterns-devel-vulkan-devel_vulkan 
   - patterns-enlightenment-enlightenment 
-  - patterns-glibc-hwcaps-x86_64_v3 
   - patterns-gnome-devel_gnome 
   - patterns-gnome-gnome_ide 
   - patterns-kde-devel_kde_frameworks 
@@ -21035,7 +20899,6 @@ unsorted:
   - patterns-mate-mate_office 
   - patterns-mate-mate_office_opt 
   - patterns-mate-mate_utilities 
-  - patterns-media-rest_dvd 
   - patterns-network-network_admin 
   - patterns-openSUSEway 
   - patterns-rpm-macros 
@@ -21044,7 +20907,6 @@ unsorted:
   - patterns-server-file_server-32bit 
   - patterns-server-gateway_server 
   - patterns-server-gateway_server-32bit 
-  - patterns-server-kvm_server 
   - patterns-server-kvm_tools 
   - patterns-server-lamp_server-32bit 
   - patterns-server-mail_server-32bit 
@@ -21320,7 +21182,6 @@ unsorted:
   - perl-Business-ISMN 
   - perl-Business-ISSN 
   - perl-CDDB_get 
-  - perl-CGI 
   - perl-CGI-Ajax 
   - perl-CGI-Application 
   - perl-CGI-FastTemplate 
@@ -21692,7 +21553,6 @@ unsorted:
   - perl-Getopt-ArgvFile 
   - perl-Getopt-Long-Descriptive 
   - perl-Getopt-Tabular 
-  - perl-Git 
   - perl-Git-Repository 
   - perl-Git-Repository-Plugin-Log 
   - perl-Git-Version-Compare 
@@ -21943,6 +21803,7 @@ unsorted:
   - perl-Mojolicious-Plugin-CHI 
   - perl-Mojolicious-Plugin-NYTProf 
   - perl-Mojolicious-Plugin-OAuth2 
+  - perl-Mojolicious-Plugin-OpenAPI 
   - perl-Mojolicious-Plugin-RenderFile 
   - perl-Mojolicious-Plugin-Status 
   - perl-Mojolicious-Plugin-Webpack 
@@ -22050,7 +21911,6 @@ unsorted:
   - perl-Net-OpenStack-Compute 
   - perl-Net-Oping 
   - perl-Net-Pcap 
-  - perl-Net-SMTP-SSL 
   - perl-Net-SNMP 
   - perl-Net-SSH2 
   - perl-Net-SSLGlue 
@@ -22958,7 +22818,6 @@ unsorted:
   - plotutils-doc 
   - plowshare 
   - plplay 
-  - plplay5 
   - pluma 
   - pluma-devel 
   - pluma-lang 
@@ -22987,7 +22846,6 @@ unsorted:
   - pmacct 
   - pmbootstrap 
   - pmccabe 
-  - pmdk 
   - pmdk-convert 
   - pmdk-devel-doc 
   - pmdk-tools 
@@ -23221,7 +23079,6 @@ unsorted:
   - postquantumcryptoengine 
   - postquantumcryptoengine-devel 
   - postsrsd 
-  - pothana2000-fonts 
   - potrace 
   - potrace-devel 
   - pounce 
@@ -23953,7 +23810,6 @@ unsorted:
   - python3-swiftclient 
   - python3-talloc-32bit 
   - python3-talloc-devel 
-  - python3-talloc-x86-64-v3 
   - python3-tdb-32bit 
   - python3-tevent-32bit 
   - python3-tooz 
@@ -24808,7 +24664,6 @@ unsorted:
   - python311-backrefs 
   - python311-baron 
   - python311-base-32bit 
-  - python311-base-x86-64-v3 
   - python311-base58 
   - python311-bashate 
   - python311-beartype 
@@ -27613,7 +27468,6 @@ unsorted:
   - python311-wurlitzer 
   - python311-wxPython 
   - python311-wyoming 
-  - python311-x86-64-v3 
   - python311-xapian 
   - python311-xapian-haystack 
   - python311-xapp 
@@ -32343,7 +32197,6 @@ unsorted:
   - python313-backrefs 
   - python313-baron 
   - python313-base-32bit 
-  - python313-base-x86-64-v3 
   - python313-base58 
   - python313-bashate 
   - python313-beartype 
@@ -35145,7 +34998,6 @@ unsorted:
   - python313-wurlitzer 
   - python313-wxPython 
   - python313-wyoming 
-  - python313-x86-64-v3 
   - python313-xapian 
   - python313-xapian-haystack 
   - python313-xapp 
@@ -35316,7 +35168,6 @@ unsorted:
   - qdox-javadoc 
   - qelectrotech 
   - qemacs 
-  - qemu 
   - qemu-SLOF 
   - qemu-accel-qtest 
   - qemu-arm 
@@ -35326,56 +35177,27 @@ unsorted:
   - qemu-audio-oss 
   - qemu-audio-pa 
   - qemu-audio-pipewire 
-  - qemu-audio-spice 
-  - qemu-block-curl 
   - qemu-block-dmg 
   - qemu-block-gluster 
   - qemu-block-iscsi 
-  - qemu-block-nfs 
-  - qemu-block-rbd 
   - qemu-block-ssh 
   - qemu-chardev-baum 
-  - qemu-chardev-spice 
   - qemu-doc 
   - qemu-extra 
   - qemu-headless 
-  - qemu-hw-display-qxl 
-  - qemu-hw-display-virtio-gpu 
-  - qemu-hw-display-virtio-gpu-pci 
-  - qemu-hw-display-virtio-vga 
   - qemu-hw-s390x-virtio-gpu-ccw 
-  - qemu-hw-usb-host 
-  - qemu-hw-usb-redirect 
-  - qemu-hw-usb-smartcard 
-  - qemu-img 
-  - qemu-ipxe 
   - qemu-ivshmem-tools 
-  - qemu-ksm 
-  - qemu-lang 
   - qemu-linux-user 
-  - qemu-microvm 
-  - qemu-ovmf-x86_64 
   - qemu-ovmf-x86_64-debug 
   - qemu-ppc 
-  - qemu-pr-helper 
   - qemu-s390x 
-  - qemu-seabios 
   - qemu-skiboot 
   - qemu-spice 
-  - qemu-tools 
   - qemu-uefi-aarch32 
   - qemu-uefi-aarch64 
   - qemu-uefi-riscv64 
-  - qemu-ui-curses 
   - qemu-ui-dbus 
-  - qemu-ui-gtk 
-  - qemu-ui-opengl 
-  - qemu-ui-spice-app 
-  - qemu-ui-spice-core 
-  - qemu-vgabios 
   - qemu-vhost-user-gpu 
-  - qemu-vmsr-helper 
-  - qemu-x86 
   - qgis 
   - qgis-devel 
   - qgis-lang 
@@ -36040,14 +35862,11 @@ unsorted:
   - rcs 
   - rcshist 
   - rdap 
-  - rdesktop 
   - rdfind 
   - rdiff 
   - rdiff-backup 
-  - rdma-core 
   - rdma-core-devel 
   - rdma-core-devel-32bit 
-  - rdma-ndd 
   - rds-tools 
   - rds-tools-devel 
   - rdtk0-devel 
@@ -37174,7 +36993,6 @@ unsorted:
   - sidplayfp 
   - siege 
   - sierra-gtk-theme 
-  - siga 
   - sigil 
   - signify 
   - signon-plugin-oauth2-devel 
@@ -37513,7 +37331,6 @@ unsorted:
   - sqliteodbc-doc 
   - sqlmap 
   - sqtop 
-  - squashfs 
   - squashfuse 
   - squashfuse-devel 
   - squashfuse-tools 
@@ -37826,9 +37643,7 @@ unsorted:
   - sword 
   - sword-devel 
   - swtcalendar 
-  - swtpm 
   - swtpm-devel 
-  - swtpm-selinux 
   - swww 
   - swww-bash-completion 
   - swww-fish-completion 
@@ -37890,7 +37705,6 @@ unsorted:
   - sysprof-lang 
   - sysstat 
   - sysstat-isag 
-  - system-group-libvirt 
   - system-group-ne 
   - system-group-obsolete 
   - system-group-sudo 
@@ -37919,7 +37733,6 @@ unsorted:
   - system-user-pgadmin 
   - system-user-postorius 
   - system-user-prometheus 
-  - system-user-qemu 
   - system-user-rustdesk 
   - system-user-transmission 
   - system-user-uuidd 
@@ -37927,7 +37740,6 @@ unsorted:
   - system-user-velociraptor 
   - system-user-woodpecker 
   - system-user-zabbix 
-  - systemd-container 
   - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
   - systemd-devel 
@@ -47665,7 +47477,6 @@ unsorted:
   - tftpboot-installation-openSUSE-Tumbleweed-x86_64 
   - tfupdate 
   - tgt 
-  - thai-fonts 
   - thermal-monitor 
   - thermald 
   - thessalonica-oldstandard-ttf-fonts 
@@ -47702,7 +47513,6 @@ unsorted:
   - tig-zsh-completion 
   - tiger-types 
   - tiger-types-javadoc 
-  - tigervnc 
   - tigervnc-x11vnc 
   - tik 
   - tik-config-Aeon 
@@ -48553,9 +48363,6 @@ unsorted:
   - umoci 
   - umockdev 
   - umockdev-devel 
-  - un-fonts 
-  - unbound 
-  - unbound-anchor 
   - unbound-devel 
   - unbound-munin 
   - unclutter 
@@ -48577,7 +48384,6 @@ unsorted:
   - unifraktur-fonts 
   - unionfs-fuse 
   - unique-factory-devel 
-  - unison 
   - unison-doc 
   - unison-text 
   - unit-api 
@@ -48900,7 +48706,6 @@ unsorted:
   - virt-v2v-man-pages-uk 
   - virt-viewer 
   - virt-win-reg 
-  - virtiofsd 
   - virtme 
   - virtualbox 
   - virtualbox-devel 
@@ -49712,7 +49517,6 @@ unsorted:
   - xstream-benchmark 
   - xstream-javadoc 
   - xstream-parent 
-  - xstroke 
   - xsv 
   - xsv-bash-completion 
   - xsynth-dssi 
@@ -49815,10 +49619,8 @@ unsorted:
   - yast2-geo-cluster 
   - yast2-gpmc 
   - yast2-installation-control 
-  - yast2-instserver 
   - yast2-iplb 
   - yast2-iscsi-lio-server 
-  - yast2-isns 
   - yast2-multipath 
   - yast2-rdp 
   - yast2-rear 
@@ -49829,74 +49631,34 @@ unsorted:
   - yast2-schema-default 
   - yast2-schema-micro 
   - yast2-slide-show 
-  - yast2-slp-server 
   - yast2-squid 
   - yast2-support 
   - yast2-testsuite 
   - yast2-theme-oxygen 
   - yast2-trans 
-  - yast2-trans-af 
   - yast2-trans-allpacks 
   - yast2-trans-am 
-  - yast2-trans-ar 
   - yast2-trans-ast 
   - yast2-trans-be 
-  - yast2-trans-bg 
-  - yast2-trans-bn 
-  - yast2-trans-bs 
-  - yast2-trans-ca 
-  - yast2-trans-cy 
   - yast2-trans-eo 
   - yast2-trans-es_AR 
-  - yast2-trans-et 
   - yast2-trans-eu 
-  - yast2-trans-fa 
-  - yast2-trans-fi 
-  - yast2-trans-gl 
-  - yast2-trans-gu 
   - yast2-trans-he 
-  - yast2-trans-hi 
-  - yast2-trans-hr 
-  - yast2-trans-id 
-  - yast2-trans-jv 
-  - yast2-trans-ka 
   - yast2-trans-kab 
-  - yast2-trans-km 
   - yast2-trans-kn 
-  - yast2-trans-ko 
   - yast2-trans-ku 
-  - yast2-trans-lo 
-  - yast2-trans-lt 
   - yast2-trans-lv 
-  - yast2-trans-mk 
-  - yast2-trans-mr 
   - yast2-trans-ms 
   - yast2-trans-my 
-  - yast2-trans-nb 
   - yast2-trans-nds 
   - yast2-trans-ne 
-  - yast2-trans-nl 
   - yast2-trans-nn 
-  - yast2-trans-pa 
   - yast2-trans-ps 
-  - yast2-trans-ro 
-  - yast2-trans-si 
-  - yast2-trans-sk 
-  - yast2-trans-sl 
   - yast2-trans-sq 
-  - yast2-trans-sr 
   - yast2-trans-sr-latin 
   - yast2-trans-sw 
-  - yast2-trans-ta 
   - yast2-trans-tg 
-  - yast2-trans-th 
   - yast2-trans-tk 
-  - yast2-trans-tr 
-  - yast2-trans-uk 
-  - yast2-trans-vi 
-  - yast2-trans-wa 
-  - yast2-trans-xh 
-  - yast2-trans-zu 
   - yast2-update-FACTORY 
   - yast2-usbauth 
   - yast2-widget-demo 
