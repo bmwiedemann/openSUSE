@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Sep  9 18:19:33 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.20
+  * Adjusted use of libdvdread to log to stderr not stdout, to
+    avoid generating invalid json, xml, etc when not supporting
+    encrypted DVD.
+  * Fixed JSON/Perl/Python formatting error for multitrack DVDs.
+  * Extended test suite to check both PAL and NTSC for every
+    format.
+  * Improved and corrected perl output.
+  version 0.19
+  * Corrected automake setup of testsuite to include scripts in
+    tarball.
+  version 0.18:
+  * Simplified autoconf setup, dropped --enable-debug option.
+  * Improved video resolution reporting.
+  * Corrected Perl output.
+  * Adjusted Pan and Scan entries to produce valid XML.
+  * Changed --help output from stderr to stdout.
+  * Corrected aspect ratio and audio format formatting.
+  * Avoid segfault when hitting a NULL pointer in the IFO
+    structure.
+  * Change build rules to supress compiler flags, to make it
+    easier to spot warnings.
+  * Set default DVD device based on OS.
+  * Added libdvdread DVDDiscID to output.
+  * Corrected typo in longest track value in XML format.
+  * Switched XML output to use libxml to avoid string encoding
+    issues.
+  * Added simple build time test suite.
+  * Cleaned up language code handling and adding missing mapping
+    for language codes 'nb' and 'nn'.
+  * Added JSON output support using -Oj.
+- Add _service
+- Drop lsdvd-rpmlintrc
+
+-------------------------------------------------------------------
 Sun Nov 19 11:08:01 UTC 2017 - aloisio@gmx.com
 
 - Update to version 0.17
