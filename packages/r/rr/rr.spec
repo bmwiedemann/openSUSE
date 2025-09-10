@@ -2,6 +2,7 @@
 # spec file for package rr
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Anreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://rr-project.org/
 Source:         https://github.com/mozilla/%{name}/archive/%{version}.tar.gz
+# https://github.com/rr-debugger/rr/issues/3995
+Patch0:         rr-5.9.0-fix-glibc-2-42.patch
 BuildRequires:  capnproto
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
@@ -39,6 +42,9 @@ BuildRequires:  pkgconfig(zlib)
 ExclusiveArch:  x86_64 aarch64
 %ifarch x86_64
 BuildRequires:  gcc-c++-32bit
+%endif
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc12-c++
 %endif
 
 %package zsh-completion
@@ -63,13 +69,15 @@ data watchpoints and quickly reverse-execute to where they were hit.
 %build
 # Fix incorrect path to bash
 sed -i "s|%{_bindir}/bash|/bin/bash|g" ./scripts/signal-rr-recording.sh
+%if 0%{?suse_version} < 1600
+export CXX=g++-12
+%endif
 %cmake \
   -DBUILD_TESTS=OFF \
 %ifarch aarch64
   -Ddisable32bit=true \
 %endif
-  -DCMAKE_BUILD_TYPE=Release \
-  -DCMAKE_CXX_STANDARD=17
+  %{nil}
 %cmake_build
 
 %install
@@ -96,6 +104,7 @@ sed -i "s|%{_bindir}/bash|/bin/bash|g" ./scripts/signal-rr-recording.sh
 %{_datadir}/bash-completion/completions/rr
 
 %files zsh-completion
+%license LICENSE
 %{_datadir}/zsh
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  9 21:02:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build, add rr-5.9.0-fix-glibc-2-42.patch from upstream
+
+-------------------------------------------------------------------
 Fri Feb 14 08:25:25 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 5.9.0:
