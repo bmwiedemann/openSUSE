@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Sep 10 07:01:06 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Update to version 2.26.0.0+git.181472a:
+  * new release (2.26.0)
+  * new release (2.26.0-rc.1)
+  * fix: add no_turbo option in profiles where boost is used
+  * If plugin isn't supported, log details why it isn't supported
+  * Fixed instance priority inheritance
+  * functions: Make calc_isolated_cores return CPU ranges
+  * Allow overriding the no_turbo setting
+  * udev: fix possible traceback in device matcher
+  * vm: Deprecate dirty_ratio in favour of dirty_bytes with %
+  * tuned-ppd: Pin virtual files in memory for inotify
+  * tuned-ppd: Fix indentation
+  * tuned-ppd: Fix inotify watch for performance degradation
+  * Dockerfile: New to build on a bootc image
+  * bootloader: Remove previously appended rpm-ostree kargs
+  * bootloader: Simplify tuning of rpm-ostree kargs
+  * udev-settle: obey udev buffer size and handle possible tracebacks
+  * plugins: Support MMC devices
+  * CI: build and test for c10s
+  * tests/beakerlib: remove old API call.
+  * spec: minor spec cleanup and enabled doc install on RHEL
+  * tuned-main.conf: added startup_udev_settle_wait option
+  * consts: fixed whitespaces
+  * Re-raise daemon init exception in no-daemon mode
+  * scsi: Do not set ALPM on external SATA ports
+  * realtime: Disable appropriate P-State drivers
+  * beakerlib: Use ncat explicitly instead of nc
+  * hotplug: fixed device remove race condition
+  * perf: dropped from irqbalance and improved detection in scheduler
+  * variables: Add an option to prepend child variables before parent ones
+  * ppd: Enable sysfs_acpi_monitor by default
+  * GUI: Fix the profile deleter script
+  * functions: Silence errors if module kvm_intel does not exist
+  * ppd: Rename thinkpad_function_keys as sysfs_acpi_monitor
+  * network_latency: Set non-zero rcutree.nohz_full_patience_delay
+  * profiles: use `med_power_with_dipm` for SATA ALPM Using `min_power` can lead to data loss, and `med_power_with_dipm` delivers similar power savings without the chance of data loss. [1]
+  * plugins: document `med_power_with_dipm` SATA ALPM option The use of `min_power` can lead to data corruption[1] and has been replaced in the documentation, and an example using `medium_power` was updated to use `med_power_with_dipm` (the kernel default[2] with better better power savings than `medium_power`).
+
+-------------------------------------------------------------------
 Mon Jun  2 08:53:25 UTC 2025 - Thomas Renninger <trenn@suse.de>
 
 - Fix newlines in changelog

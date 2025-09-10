@@ -19,7 +19,7 @@
 %define         system_dir %{_prefix}/lib/%{name}/
 %define         profile_dir %{system_dir}profiles/
 Name:           tuned
-Version:        2.25.1.0+git.889387b
+Version:        2.26.0.0+git.181472a
 Release:        0
 Summary:        A dynamic adaptive system tuning daemon
 License:        GPL-2.0-or-later

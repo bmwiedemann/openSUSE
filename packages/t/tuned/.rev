@@ -446,4 +446,41 @@ openSUSE:Factory
 A 0001-hardened-Introduce-hardened-profile.patch</comment>
     <requestid>1281893</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>c8f3f46301ac772f4741f667bf630b85</srcmd5>
+    <version>2.26.0.0+git.181472a</version>
+    <time>1757528561</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.26.0.0+git.181472a:
+  * new release (2.26.0)
+  * new release (2.26.0-rc.1)
+  * fix: add no_turbo option in profiles where boost is used
+  * If plugin isn't supported, log details why it isn't supported
+  * Fixed instance priority inheritance
+  * functions: Make calc_isolated_cores return CPU ranges
+  * Allow overriding the no_turbo setting
+  * udev: fix possible traceback in device matcher
+  * vm: Deprecate dirty_ratio in favour of dirty_bytes with %
+  * tuned-ppd: Pin virtual files in memory for inotify
+  * tuned-ppd: Fix indentation
+  * tuned-ppd: Fix inotify watch for performance degradation
+  * Dockerfile: New to build on a bootc image
+  * bootloader: Remove previously appended rpm-ostree kargs
+  * bootloader: Simplify tuning of rpm-ostree kargs
+  * udev-settle: obey udev buffer size and handle possible tracebacks
+  * plugins: Support MMC devices
+  * CI: build and test for c10s
+  * tests/beakerlib: remove old API call.
+  * spec: minor spec cleanup and enabled doc install on RHEL
+  * tuned-main.conf: added startup_udev_settle_wait option
+  * consts: fixed whitespaces
+  * Re-raise daemon init exception in no-daemon mode
+  * scsi: Do not set ALPM on external SATA ports
+  * realtime: Disable appropriate P-State drivers
+  * beakerlib: Use ncat explicitly instead of nc
+  * hotplug: fixed device remove race condition
+  * perf: dropped from irqbalance and improved detection in scheduler
+  * variables: Add an option to prepend child variables before parent ones</comment>
+    <requestid>1303530</requestid>
+  </revision>
 </revisionlist>
