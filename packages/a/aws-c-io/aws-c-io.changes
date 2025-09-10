@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  9 11:12:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.21.5
+  * Fix a memory leak from error handling in s2n tls handler
+    by @TingDaoK in (#753)
+  * Fix win build when lean and mean specified
+    by @DmitriyMusatkin in (#755)
+
+-------------------------------------------------------------------
 Tue Sep  2 08:27:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.21.4
