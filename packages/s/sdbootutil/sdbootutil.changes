@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 09 07:22:59 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250909.8b2878e:
+  * Check KEY for LUKS2 password
+
+-------------------------------------------------------------------
 Wed Sep 03 14:46:15 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20250903.f5a076b:
