@@ -1,7 +1,6 @@
 #
 # spec file for package python-Markdown
 #
-# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,7 +32,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Markdown%{psuffix}
-Version:        3.8.2
+Version:        3.9
 Release:        0
 Summary:        Python implementation of Markdown
 License:        BSD-3-Clause
@@ -41,10 +40,7 @@ Group:          Development/Languages/Python
 URL:            https://python-markdown.github.io/
 Source:         https://files.pythonhosted.org/packages/source/m/markdown/markdown-%{version}.tar.gz
 Patch0:         markdown-3.0-python37.patch
-# PATCH-FIX-UPSTREAM fix-py314.patch gh#Python-Markdown/markdown#1547 mcepl@suse.com
-# Fix failing cases for Python 3.14
-Patch1:         fix-py314.patch
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module importlib-metadata >= 4.4 if %python-base < 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 77.0}
