@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep  7 08:21:07 UTC 2025 - munix9@googlemail.com
+
+- Add usbguard.logrotate based on
+  https://salsa.debian.org/birger/usbguard/-/blob/debian/sid/debian/usbguard.logrotate
+
+-------------------------------------------------------------------
 Tue Jul 15 13:19:25 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - update to 1.1.4

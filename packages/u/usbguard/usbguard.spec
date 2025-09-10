@@ -1,7 +1,7 @@
 #
 # spec file for package usbguard
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Source1:        https://github.com/USBGuard/usbguard/releases/download/usbguard-
 Source2:        usbguard.keyring
 Source3:        usbguard-daemon.conf
 Source4:        usbguard-rpmlintrc
+Source5:        usbguard.logrotate
 Patch0:         usbguard-pthread.patch
 BuildRequires:  asciidoc
 BuildRequires:  audit-devel
@@ -55,6 +56,7 @@ BuildRequires:  polkit-devel
 BuildRequires:  protobuf-devel
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
+Requires:       logrotate
 %{?systemd_requires}
 
 %description
@@ -137,6 +139,9 @@ install -p -m 644 scripts/usbguard-zsh-completion %{buildroot}%{_datadir}/zsh/si
   sed -i '/^SystemCallFilter=@system-service/d' %{buildroot}%{_unitdir}/usbguard.service
 %endif
 
+# logrotate
+install -D -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/logrotate.d/usbguard
+
 # Cleanup
 find %{buildroot} \( -name '*.la' -o -name '*.a' \) -delete
 
@@ -166,6 +171,7 @@ find %{buildroot} \( -name '*.la' -o -name '*.a' \) -delete
 %dir %{_sysconfdir}/usbguard/IPCAccessControl.d
 %config(noreplace) %attr(0600,-,-) %{_sysconfdir}/usbguard/usbguard-daemon.conf
 %config(noreplace) %attr(0600,-,-) %{_sysconfdir}/usbguard/rules.conf
+%config(noreplace) %{_sysconfdir}/logrotate.d/usbguard
 %{_unitdir}/usbguard.service
 %{_unitdir}/usbguard-dbus.service
 %{_mandir}/man8/usbguard-daemon.8%{?ext_man}
