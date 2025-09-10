@@ -33,4 +33,16 @@ Required by ffmpeg-6 after https://build.opensuse.org/request/show/1101501 makes
     <comment></comment>
     <requestid>1299145</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>792662892005b4ac67df92ff74b6b642</srcmd5>
+    <version>5.264.1</version>
+    <time>1757518205</time>
+    <user>anag_factory</user>
+    <comment>- Disabled tests and dropped plplay5 package, as this package only
+  exists to provide libplacebo264 for VLC. We don't need the demos
+  or run tests.
+
+Allows building with ffmpeg-8 (see https://bugzilla.suse.com/show_bug.cgi?id=1249045)</comment>
+    <requestid>1303333</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  9 10:21:05 UTC 2025 - llyyr <llyyr@yukari.in>
+
+- Disabled tests and dropped plplay5 package, as this package only
+  exists to provide libplacebo264 for VLC. We don't need the demos
+  or run tests.
+
+-------------------------------------------------------------------
 Tue Aug 12 15:25:18 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 12509c0f.patch: Fix build on python 3.13.6.
