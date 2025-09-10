@@ -29,7 +29,7 @@ BuildRequires:  libnotify-devel
 BuildRequires:  libogg-devel
 BuildRequires:  libtag-devel
 %if %{with aac}
-BuildRequires:  faad2
+BuildRequires:  faad2-devel
 %endif
 %if 0%{?suse_version} < 1600
 BuildRequires:  clang >= 17
@@ -52,7 +52,12 @@ sed -i '1s|gcc|clang|' Makefile
 %endif
 
 %build
-%make_build
+%make_build \
+   USE_DBUS=1 \
+%if %{with aac}
+   USE_FAAD=1 \
+%endif
+   %{nil}
 
 %install
 %make_install PREFIX=%_prefix MAN_DIR=%_mandir

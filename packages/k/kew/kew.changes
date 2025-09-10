@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 10 04:56:02 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Fix enable aac support: change BuildRequires faad2 to faad2-devel
+
+-------------------------------------------------------------------
 Mon Sep  8 22:14:36 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 3.4.1

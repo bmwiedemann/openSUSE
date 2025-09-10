@@ -227,4 +227,13 @@
 </comment>
     <requestid>1303265</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>287cd1d0c8f7d32e34bbcce34abc427f</srcmd5>
+    <version>3.4.1</version>
+    <time>1757518218</time>
+    <user>anag_factory</user>
+    <comment>- Fix enable aac support: change BuildRequires faad2 to faad2-devel
+</comment>
+    <requestid>1303425</requestid>
+  </revision>
 </revisionlist>
