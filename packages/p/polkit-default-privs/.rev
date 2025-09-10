@@ -2362,4 +2362,19 @@ for 12.3</comment>
 </comment>
     <requestid>1295589</requestid>
   </revision>
+  <revision rev="255" vrev="1">
+    <srcmd5>1de06253b355c86540e5c5ea846e5d97</srcmd5>
+    <version>1550+20250904.99b438e</version>
+    <time>1757518182</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1550+20250904.99b438e:
+  * profiles: add mutter backlight-helper (bsc#1248851)
+  * Add CODEOWNERS file
+  * Pin actions to specific version SHA
+  * Add explicit read-only permission on repo contents
+  * profiles: drop no longer used deepin whitelistings
+  * build(deps): bump actions/checkout from 4 to 5
+</comment>
+    <requestid>1303220</requestid>
+  </revision>
 </revisionlist>
