@@ -36,7 +36,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20250902
+Version:        20250909
 Release:        0
 Source0:        %{name}-%{version}.tar.xz
 Source1:        container.fc
@@ -376,6 +376,7 @@ make %common_params UNK_PERMS=allow NAME=targeted TYPE=mcs DESTDIR=%{buildroot} 
 make %common_params UNK_PERMS=allow NAME=targeted TYPE=mcs DESTDIR=%{buildroot} PKGNAME=%{name} install-headers
 mkdir %{buildroot}%{_datadir}/selinux/devel/
 mv %{buildroot}%{_datadir}/selinux/targeted/include %{buildroot}%{_datadir}/selinux/devel/include
+mkdir %{buildroot}%{_datadir}/selinux/devel/include/distributed
 install -m 644 %{SOURCE91} %{buildroot}%{_datadir}/selinux/devel/Makefile
 install -m 644 doc/example.* %{buildroot}%{_datadir}/selinux/devel/
 install -m 644 doc/policy.* %{buildroot}%{_datadir}/selinux/devel/
@@ -487,6 +488,7 @@ SELinux policy development package
 %dir %{_datadir}/selinux/devel/html/
 %doc %{_datadir}/selinux/devel/html/*
 %dir %{_datadir}/selinux/devel/include
+%dir %{_datadir}/selinux/devel/include/distributed
 %{_datadir}/selinux/devel/include/*
 %{_datadir}/selinux/devel/Makefile
 %{_datadir}/selinux/devel/example.*

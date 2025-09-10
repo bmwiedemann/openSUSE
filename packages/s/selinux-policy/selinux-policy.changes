@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Sep 09 15:39:38 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20250909 (bsc#1249209):
+  * Allow gdm create /etc/.pwd.lock with a file transition
+  * Allow gdm bind a socket in the /run/systemd/userdbd directory
+  * Allow nsswitch_domain connect to xdm over a unix domain socket
+
+-------------------------------------------------------------------
+Mon Sep  8 13:35:34 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- selinux-policy-devel needs to own /usr/share/selinux/devel/include/distributed
+  otherwise packages that follow this guideline can not build without owning
+  the directory themselves:
+  https://fedoraproject.org/wiki/SELinux/IndependentPolicy#Using_custom_interfaces
+
+-------------------------------------------------------------------
+Thu Sep 04 15:45:30 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20250904:
+  * Allow systemd homed getattr all tmpfs files (bsc#1240883)
+  * Allow systemd (PID 1) create lastlog entries
+  * Allow systemd_homework_t transition pid files to lvm_var_run_t (bsc#1240883)
+  * Allow gnome-remote-desktop speak with tabrmd over dbus (bsc#1244573)
+  * Allow nm-dispatcher iscsi and sendmail plugins get pidfs attributes
+  * Allow systemd-oomd watch tmpfs dirs
+  * Allow chronyc the setgid and setuid capabilities
+
+-------------------------------------------------------------------
 Tue Sep 02 11:18:02 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20250902:
