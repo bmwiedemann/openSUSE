@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep  7 19:40:16 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.2
+  * Fixed bug that could cause a message to pingpong between two
+    servers indefinitely.
+
+-------------------------------------------------------------------
 Wed Jul 16 16:00:25 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6.1
