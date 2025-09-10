@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep  8 10:52:02 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v9.8.80
+  - RM #4607536 Improve VMA stability
+  - RM #4446285 Replace linux list with BSD list
+  - RM #4337575 Init VMA in vma_thread_offload()
+  - RM #4260620 infinite loop latency spec
+  - RM #4251780 SocketXtreme API for external allocator
+  - RM #4223310 VMA support for kernel 6.10
+  - RM #4233101 header licensing for 2025
+- Drop Fix-compilation-with-GCC-14.patch as it was fixed upstream.
+
+-------------------------------------------------------------------
 Mon Nov  4 16:18:15 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to v9.8.60 (jsc#PED-11338 jsc#PED-11339)

@@ -1,7 +1,7 @@
 #
 # spec file for package libvma
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,18 @@
 
 
 #
-%define git_ver .0.536ca51fb61b
+%define git_ver .0.0dc96e02
 %define lib_major 9
 
 Name:           libvma
 Summary:        A library for boosting TCP and UDP traffic (over RDMA hardware)
 License:        BSD-2-Clause OR GPL-2.0-only
 Group:          Development/Libraries/C and C++
-Version:        9.8.60
+Version:        9.8.80
 Release:        0
 Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        vma.service
 Patch1:         harden_vma.service.patch
-Patch2:         Fix-compilation-with-GCC-14.patch
 URL:            https://github.com/Mellanox/libvma
 BuildRequires:  autoconf
 BuildRequires:  automake
