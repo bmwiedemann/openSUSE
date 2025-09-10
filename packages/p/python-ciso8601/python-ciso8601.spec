@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ciso8601
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
 Summary:        Fast ISO8601 date time parser for Python written in C
 License:        MIT

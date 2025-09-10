@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 10 07:43:19 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.3.3
+  * Added Python 3.14 support
+  * Added PyPy 3.11 support
+  * Fixed memory leak in `FixedOffset_fromutc` (#172)
+  * Migrated some CI testing to GHA
+
+-------------------------------------------------------------------
 Thu Jan  9 09:22:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.3.2
