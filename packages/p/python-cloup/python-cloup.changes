@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 10 06:41:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.0.8
+  * Add show_subcommand_aliases to overloads for group
+    by @ntessman-capsule in (#191)
+
+-------------------------------------------------------------------
 Mon Aug  4 12:10:02 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 3.0.7
