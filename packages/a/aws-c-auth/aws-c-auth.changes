@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  9 11:07:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.9.1
+  * Make exports consistent by @DmitriyMusatkin in (#269)
+  * Remove clang-3 from CI by @sbSteveK in (#270)
+  * Remove Windows 2019 and add Windows 2025 with MSVC-17 by @TingDaoK in (#271)
+  * Change stale issue and discussion handling to run once a week
+    by @DmitriyMusatkin in (#273)
+  * Fix sts_web_identity credentials provider by @TingDaoK in (#275)
+
+-------------------------------------------------------------------
 Wed Apr  2 15:10:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.0
