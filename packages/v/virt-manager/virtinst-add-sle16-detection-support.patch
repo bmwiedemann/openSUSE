@@ -1,8 +1,8 @@
-Index: virt-manager-5.0.0/virtinst/install/urldetect.py
+Index: virt-manager-5.1.0/virtinst/install/urldetect.py
 ===================================================================
---- virt-manager-5.0.0.orig/virtinst/install/urldetect.py
-+++ virt-manager-5.0.0/virtinst/install/urldetect.py
-@@ -279,6 +279,14 @@ class _SUSEContent(object):
+--- virt-manager-5.1.0.orig/virtinst/install/urldetect.py
++++ virt-manager-5.1.0/virtinst/install/urldetect.py
+@@ -283,6 +283,14 @@ class _SUSEContent:
              else:
                  if "SUSE SL Micro" in self.product_name:
                      sle_version = self.product_name.strip().rsplit(' ')[3]
@@ -34,18 +34,18 @@ Index: virt-manager-5.0.0/virtinst/install/urldetect.py
                  if media_str:
                      media_arch = "x86_64"
                      if 'aarch64' in media_str:
-@@ -582,6 +596,10 @@ class _SuseDistro(_RHELDistro):
-                 self._kernel_paths.append(
-                     ("suseboot/linux64", "suseboot/initrd64"))
+@@ -580,6 +594,10 @@ class _SuseDistro(_RHELDistro):
+             if tree_arch == "ppc64":
+                 self._kernel_paths.append(("suseboot/linux64", "suseboot/initrd64"))
  
 +        # Tested with SLES 16
 +        self._kernel_paths.append(
 +            ("../boot/%s/loader/linux" % tree_arch,
 +             "../boot/%s/loader/initrd" % tree_arch))
          # Tested with SLES 12 for ppc64le, all s390x
-         self._kernel_paths.append(
-             ("boot/%s/linux" % tree_arch,
-@@ -675,7 +693,7 @@ class _SLESDistro(_SuseDistro):
+         self._kernel_paths.append(("boot/%s/linux" % tree_arch, "boot/%s/initrd" % tree_arch))
+         # Tested with Opensuse 10.0
+@@ -669,7 +687,7 @@ class _SLESDistro(_SuseDistro):
      PRETTY_NAME = "SLES"
      matching_distros = ["sles"]
      _variant_prefix = "sles"

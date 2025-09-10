@@ -1,10 +1,10 @@
 References: bsc#1192238, jsc#SLE-17764
 
-Index: virt-manager-3.3.0/virtinst/install/urldetect.py
+Index: virt-manager-5.1.0/virtinst/install/urldetect.py
 ===================================================================
---- virt-manager-3.3.0.orig/virtinst/install/urldetect.py
-+++ virt-manager-3.3.0/virtinst/install/urldetect.py
-@@ -724,6 +724,26 @@ class _OESDistro(_SuseDistro):
+--- virt-manager-5.1.0.orig/virtinst/install/urldetect.py
++++ virt-manager-5.1.0/virtinst/install/urldetect.py
+@@ -718,6 +718,26 @@ class _OESDistro(_SuseDistro):
      famregex = ".*Open Enterprise Server.*"
  
  
@@ -31,7 +31,7 @@ Index: virt-manager-3.3.0/virtinst/install/urldetect.py
  class _DebianDistro(_DistroTree):
      # ex. http://ftp.egr.msu.edu/debian/dists/sarge/main/installer-i386/
      # daily builds: https://d-i.debian.org/daily-images/amd64/
-@@ -950,6 +970,7 @@ def _build_distro_list(osobj):
+@@ -945,6 +965,7 @@ def _build_distro_list(osobj):
          _FedoraDistro,
          _RHELDistro,
          _CentOSDistro,

@@ -1,11 +1,11 @@
 If booted Xen, don't try connecting to local qemu
 Likewise if booted native, don't try connecting to local xen
 
-Index: virt-manager-2.2.0/virtManager/connmanager.py
+Index: virt-manager-5.1.0/virtManager/connmanager.py
 ===================================================================
---- virt-manager-2.2.0.orig/virtManager/connmanager.py
-+++ virt-manager-2.2.0/virtManager/connmanager.py
-@@ -26,11 +26,17 @@ class vmmConnectionManager(vmmGObject):
+--- virt-manager-5.1.0.orig/virtManager/connmanager.py
++++ virt-manager-5.1.0/virtManager/connmanager.py
+@@ -27,11 +27,17 @@ class vmmConnectionManager(vmmGObject):
  
      def __init__(self):
          vmmGObject.__init__(self)

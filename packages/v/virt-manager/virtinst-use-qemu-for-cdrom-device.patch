@@ -2,11 +2,11 @@ References: bsc#989639
 When the device added is a cdrom device (/dev/sr0), don't use
 "phy" as the driver name but instead use "qemu".
 
-Index: virt-manager-5.0.0/virtinst/devices/disk.py
+Index: virt-manager-5.1.0/virtinst/devices/disk.py
 ===================================================================
---- virt-manager-5.0.0.orig/virtinst/devices/disk.py
-+++ virt-manager-5.0.0/virtinst/devices/disk.py
-@@ -567,7 +567,8 @@ class DeviceDisk(Device):
+--- virt-manager-5.1.0.orig/virtinst/devices/disk.py
++++ virt-manager-5.1.0/virtinst/devices/disk.py
+@@ -590,7 +590,8 @@ class DeviceDisk(Device):
          # Recommended xen defaults from here:
          # https://bugzilla.redhat.com/show_bug.cgi?id=1171550#c9
          # If type block, use name=phy. Otherwise do the same as qemu

@@ -38,7 +38,7 @@
 %endif
 
 Name:           virt-manager%{psuffix}
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        Virtual Machine Manager
 License:        GPL-2.0-or-later
@@ -49,45 +49,6 @@ Source1:        virt-install.rb
 Source2:        virt-install.desktop
 Source3:        virt-manager-supportconfig
 # Upstream Patches
-Patch1:         001-cli-Support-cpu-maximum.patch
-Patch2:         002-gui-Support-maximum-CPU-mode.patch
-Patch3:         003-cpu-Prefer-maximum-mode-for-many-emulated-guests.patch
-Patch4:         004-domcaps-get-list-of-supported-panic-device-models.patch
-Patch5:         005-tests-Update-capabilities-for-advertisting-panic-device-models.patch
-Patch6:         006-addhardware-panic-Fill-in-model-combo-with-advertised-values-by-libvirt.patch
-Patch7:         007-cli-man-Always-list-osinfo-before-os-variant.patch
-Patch8:         008-snapshots-default-to-same-snapshot-mode-as-currently-used-snapshot.patch
-Patch9:         009-snapshots-warn-users-to-not-mix-snapshot-modes.patch
-Patch10:        010-virtManager-domain-fix-indentation.patch
-Patch21:        021-cli-Add-memdev-target.dynamicMemslots-support-for-virtio-mem.patch
-Patch22:        022-cli-add-target.memReserve-for-pci-bridge-and-pcie-root-port-controllers.patch
-Patch23:        023-cli-Add-disk-driver.queue_size-support.patch
-Patch24:        024-cli-Add-poll-settings-for-iothread.patch
-Patch25:        025-test_cli-Fix-a-pycodestyle-E261-issue.patch
-Patch26:        026-gitignore-Ignore-coverage.xml.patch
-Patch27:        027-cli-Add-tpm-backend.profile.source-removeDisabled-support.patch
-Patch28:        028-cli-Add-nvram.templateFormat-to-indicate-template-format.patch
-Patch29:        029-cli-Add-features-hyperv.xmm_input.state-on-off.patch
-Patch30:        030-cli-Add-features-hyperv.emsr_bitmap.state-on-off.patch
-Patch31:        031-cli-Add-features-hyperv.tlbflush.direct.state-on-off.patch
-Patch32:        032-cli-Add-features-hyperv.tlbflush.extended.state-on-off.patch
-Patch33:        033-createvm-prioritize-riscv64.patch
-Patch34:        034-tests-uitests-handle-linux2020-going-EOL.patch
-Patch40:        040-virtinst-add-pstore-backend-support.patch
-Patch41:        041-tests-add-pstore-test.patch
-Patch42:        042-man-virt-install-Document-pstore-device.patch
-Patch43:        043-tests-Increase-virtio-mem-block-size.patch
-Patch44:        044-tests-test_urls-fix-dead-URL.patch
-Patch45:        045-urlfetcher-add-riscv64-architecture-for-Debian.patch
-Patch46:        046-virt-manager-list-virtual-networks-when-creating-new-QEMU-Session-VM.patch
-Patch47:        047-virt-install-add-support-for-vDPA-network-device.patch
-Patch48:        048-virt-manager-add-support-for-vDPA-network-device.patch
-Patch49:        049-virt-install-detect-wayland-in-order-to-start-virt-viewer.patch
-Patch50:        050-Validation-allow-spaces-disallow-slashes.patch
-Patch51:        051-fix-default-start_folder-to-None.patch
-Patch52:        052-Add-Ctrl+Alt+Shift+Esc-key-command-for-loginds-SecureAttentionKey.patch
-Patch53:        053-virtinst-add-support-for-creating-TDX-guests.patch
-Patch100:       revert-363fca41-virt-install-Require-osinfo-for-non-x86-HVM-case-too.patch
 # SUSE Only
 Patch150:       virtman-desktop.patch
 Patch151:       virtman-kvm.patch
@@ -258,58 +219,61 @@ chmod -x %{buildroot}%{_datadir}/virt-manager/virtManager/virtmanager.py
 
 %if %{with test}
 %check
-# TODO: check if these are genuine failures or due to the non-upstream patches
-# different device names
+# XML contains hda instead of hdc
 donttest="test_disk_numtotarget"
+# XML contains sd{a,b,c,d} instead of sda{a,b,c,d}
 donttest="$donttest or testCLI0001virt_install_many_devices"
-donttest="$donttest or testCLI0003virt_install_singleton_config_2"
-donttest="$donttest or testCLI0004virt_install_singleton_config_2"
-donttest="$donttest or testCLI0101virt_install_cloud_init_default"
-donttest="$donttest or testCLI0101virt_install_cloud_init_options1"
-donttest="$donttest or testCLI0102virt_install_cloud_init_options1"
-donttest="$donttest or testCLI0113virt_install_reinstall_cdrom"
-donttest="$donttest or testCLI0117virt_install_reinstall_cdrom"
-donttest="$donttest or testCLI0147virt_install_win11"
-donttest="$donttest or testCLI0147virt_install_win11_no_uefi"
-donttest="$donttest or testCLI0148virt_install_win11_no_uefi"
-donttest="$donttest or testCLI0151virt_install_location_iso_and_cloud_init"
-donttest="$donttest or testCLI0165virt_install"
-donttest="$donttest or testCLI0173virt_install"
-donttest="$donttest or testCLI0172virt_install_s390x_cdrom"
-donttest="$donttest or testCLI0180virt_install_s390x_cdrom"
-donttest="$donttest or testCLI0186virt_install_riscv64_cloud_init"
-donttest="$donttest or testCLI0187virt_install_riscv64_cdrom"
-donttest="$donttest or testCLI0188virt_install_riscv64_unattended"
-donttest="$donttest or testCLI0200virt_install_aarch64_cloud_init"
-donttest="$donttest or testCLI0204virt_install_loongarch64_cloud_init"
-donttest="$donttest or testCLI0205virt_install_loongarch64_cdrom"
-donttest="$donttest or testCLI0206virt_install_loongarch64_unattended"
-donttest="$donttest or testCLI0193virt_install_xen_default"
-donttest="$donttest or testCLI0216virt_install_xen_default"
-donttest="$donttest or testCLI0217virt_install_xenpvh"
-donttest="$donttest or testCLI0218virt_install_xen_pv"
-donttest="$donttest or testCLI0219virt_install_xen_hvm"
-donttest="$donttest or testCLI0220virt_install_xen_hvm"
-donttest="$donttest or testCLI0227virt_install_bhyve_default_f27"
-donttest="$donttest or testCLI0307virt_xml_build_disk_domain"
-donttest="$donttest or testCLI0315virt_xml_edit_cpu_host_copy"
-donttest="$donttest or testCLI0316virt_xml_build_pool_logical_disk"
-donttest="$donttest or testCLI0416virt_xml_add_disk_create_storage_start"
-donttest="$donttest or testCLI0438virt_clone_auto_unmanaged"
-donttest="$donttest or testCLI0442virt_clone"
-donttest="$donttest or testCLI0443virt_clone"
-donttest="$donttest or testCLI0457virt_clone"
-donttest="$donttest or testCLI0458virt_clone"
-donttest="$donttest or testCLI0460virt_clone"
-donttest="$donttest or testCLI0461virt_clone"
-donttest="$donttest or testCLI0468virt_clone"
-donttest="$donttest or testCLI0472virt_clone_x86_64_launch_security_tdx"
-donttest="$donttest or testCLI0473virt_clone_x86_64_launch_security_tdx_qgs"
-donttest="$donttest or testCLI0474virt_clone_x86_64_launch_security_tdx_full"
-donttest="$donttest or testCLI0475virt_clone"
-donttest="$donttest or test_virtinstall_no_testsuite"
+# There are XML properties that are untested in the test suite.
 donttest="$donttest or testCheckXMLBuilderProps"
+# There are command line arguments or aliases are not checked in the test suite.
 donttest="$donttest or testCheckCLISuboptions"
+# We insert cache="unsafe" during installation
+donttest="$donttest or testCLI0007virt_install_singleton_config_2"
+donttest="$donttest or testCLI0105virt_install_cloud_init_default"
+donttest="$donttest or testCLI0106virt_install_cloud_init_options1"
+donttest="$donttest or testCLI0111virt_install_cloud_init_options6"
+donttest="$donttest or testCLI0123virt_install_reinstall_cdrom"
+donttest="$donttest or testCLI0153virt_install_win11"
+donttest="$donttest or testCLI0154virt_install_win11_no_uefi"
+donttest="$donttest or testCLI0157virt_install_location_iso_and_cloud_init"
+# RuntimeError: SEV launch security requires a Q35 machine
+donttest="$donttest or testCLI0179virt_install"
+# Size must be specified for non existent volume '__virtinst_cli_exist1.img'
+donttest="$donttest or testCLI0186virt_install_s390x_cdrom"
+# We insert cache="unsafe" during installation
+donttest="$donttest or testCLI0192virt_install_riscv64_cloud_init"
+donttest="$donttest or testCLI0193virt_install_riscv64_cdrom"
+donttest="$donttest or testCLI0194virt_install_riscv64_unattended"
+donttest="$donttest or testCLI0207virt_install_aarch64_cloud_init"
+# We default to 4 vcpus instead of 1
+donttest="$donttest or testCLI0208virt_install_aarch64_win11"
+# We insert cache="unsafe" during installation
+donttest="$donttest or testCLI0212virt_install_loongarch64_cloud_init"
+donttest="$donttest or testCLI0213virt_install_loongarch64_cdrom"
+donttest="$donttest or testCLI0214virt_install_loongarch64_unattended"
+# We use grub.xen instead of pygrub
+donttest="$donttest or testCLI0228virt_install_xen_default"
+donttest="$donttest or testCLI0229virt_install_xenpvh"
+donttest="$donttest or testCLI0230virt_install_xen_pv"
+# We use qemu-system-i386 instead of the ancient qemu-dm and also no e1000 nic
+donttest="$donttest or testCLI0231virt_install_xen_hvm"
+donttest="$donttest or testCLI0232virt_install_xen_hvm"
+# foobhyve.qcow2 used instead of foobhyve.img
+donttest="$donttest or testCLI0239virt_install_bhyve_default_f27"
+# We use vda instead of vdaf
+donttest="$donttest or testCLI0319virt_xml_build_disk_domain"
+donttest="$donttest or testCLI0328virt_xml_build_pool_logical_disk"
+# We use hda instead of hdd
+donttest="$donttest or testCLI0428virt_xml_add_disk_create_storage_start"
+# Disk path '/tmp/__virtinst_cli_exist1.img' does not exist.
+donttest="$donttest or testCLI0450virt_clone_auto_unmanaged"
+donttest="$donttest or testCLI0454virt_clone"
+donttest="$donttest or testCLI0455virt_clone"
+donttest="$donttest or testCLI0469virt_clone"
+donttest="$donttest or testCLI0470virt_clone"
+donttest="$donttest or testCLI0472virt_clone"
+donttest="$donttest or testCLI0473virt_clone"
+donttest="$donttest or testCLI0480virt_clone"
 #
 pytest -v -rfEs -k "not ($donttest)"
 %endif

@@ -1,11 +1,11 @@
 References: bsc#1010060
 
-Index: virt-manager-3.3.0/virtinst/install/urldetect.py
+Index: virt-manager-5.1.0/virtinst/install/urldetect.py
 ===================================================================
---- virt-manager-3.3.0.orig/virtinst/install/urldetect.py
-+++ virt-manager-3.3.0/virtinst/install/urldetect.py
-@@ -278,6 +278,12 @@ class _SUSEContent(object):
-                         self.product_name.strip().rsplit(' ')[5][2])
+--- virt-manager-5.1.0.orig/virtinst/install/urldetect.py
++++ virt-manager-5.1.0/virtinst/install/urldetect.py
+@@ -281,6 +281,12 @@ class _SUSEContent:
+                 sle_version = sle_version + "." + self.product_name.strip().rsplit(" ")[5][2]
              distro_version = sle_version
  
 +        # SUSE Container as a Service Platform
@@ -17,17 +17,17 @@ Index: virt-manager-3.3.0/virtinst/install/urldetect.py
          return distro_version
  
  
-@@ -564,6 +570,9 @@ class _SuseDistro(_RHELDistro):
+@@ -560,6 +566,9 @@ class _SuseDistro(_RHELDistro):
  
-         version = distro_version.split('.', 1)[0].strip()
+         version = distro_version.split(".", 1)[0].strip()
  
 +        if self._variant_prefix.startswith(("caasp")):
 +            return self._variant_prefix + distro_version
 +
          if str(self._variant_prefix).startswith(("sles", "sled", "oes")):
              sp_version = ""
-             if len(distro_version.split('.', 1)) == 2:
-@@ -633,6 +642,14 @@ class _OpensuseDistro(_SuseDistro):
+             if len(distro_version.split(".", 1)) == 2:
+@@ -629,6 +638,14 @@ class _OpensuseDistro(_SuseDistro):
      famregex = ".*openSUSE.*"
  
  
@@ -42,7 +42,7 @@ Index: virt-manager-3.3.0/virtinst/install/urldetect.py
  class _OESDistro(_SuseDistro):
      PRETTY_NAME = "OES"
      matching_distros = ["oes"]
-@@ -870,6 +887,7 @@ def _build_distro_list(osobj):
+@@ -867,6 +884,7 @@ def _build_distro_list(osobj):
          _SLESDistro,
          _SLEDDistro,
          _OpensuseDistro,

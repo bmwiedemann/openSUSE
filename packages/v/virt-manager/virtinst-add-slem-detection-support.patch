@@ -1,22 +1,22 @@
 Add support for detecting SUSE Linux Enterprise Micro.
 See also the osinfo-db package for the description file.
 
-Index: virt-manager-3.3.0/virtinst/install/urldetect.py
+Index: virt-manager-5.1.0/virtinst/install/urldetect.py
 ===================================================================
---- virt-manager-3.3.0.orig/virtinst/install/urldetect.py
-+++ virt-manager-3.3.0/virtinst/install/urldetect.py
-@@ -276,7 +276,7 @@ class _SUSEContent(object):
+--- virt-manager-5.1.0.orig/virtinst/install/urldetect.py
++++ virt-manager-5.1.0/virtinst/install/urldetect.py
+@@ -280,7 +280,7 @@ class _SUSEContent:
                  sle_version = self.product_name.strip().rsplit(' ')[7]
              else:
                  sle_version = self.product_name.strip().rsplit(' ')[4]
--            if len(self.product_name.strip().rsplit(' ')) > 5:
+-            if len(self.product_name.strip().rsplit(" ")) > 5:
 +            if len(self.product_name.strip().rsplit(' ')) > 5 and not " Micro " in self.product_name:
                  if " SAP " in self.product_name:
-                     sle_version = (sle_version + '.' +
-                         self.product_name.strip().rsplit(' ')[8][2])
-@@ -597,6 +597,9 @@ class _SuseDistro(_RHELDistro):
+                     sle_version = (sle_version + '.' + self.product_name.strip().rsplit(' ')[8][2])
+                 else:
+@@ -592,6 +592,9 @@ class _SuseDistro(_RHELDistro):
  
-         version = distro_version.split('.', 1)[0].strip()
+         version = distro_version.split(".", 1)[0].strip()
  
 +        if self._variant_prefix.startswith(("slem")):
 +            return self._variant_prefix + distro_version
@@ -24,7 +24,7 @@ Index: virt-manager-3.3.0/virtinst/install/urldetect.py
          if self._variant_prefix.startswith(("caasp")):
              return self._variant_prefix + distro_version
  
-@@ -684,6 +687,14 @@ class _OpensuseDistro(_SuseDistro):
+@@ -679,6 +682,14 @@ class _OpensuseDistro(_SuseDistro):
      famregex = ".*openSUSE.*"
  
  
@@ -39,7 +39,7 @@ Index: virt-manager-3.3.0/virtinst/install/urldetect.py
  class _CAASPDistro(_SuseDistro):
      PRETTY_NAME = "SLES"
      matching_distros = ["caasp"]
-@@ -930,6 +941,7 @@ def _build_distro_list(osobj):
+@@ -926,6 +937,7 @@ def _build_distro_list(osobj):
          _SLESDistro,
          _SLEDDistro,
          _OpensuseDistro,

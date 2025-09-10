@@ -5,12 +5,12 @@ temporarily dropped from the Micro version name, then added
 back as the official name upon release but the ISO media does not
 have the word Enterprise.
 
-Index: virt-manager-4.1.0/virtinst/install/urldetect.py
+Index: virt-manager-5.1.0/virtinst/install/urldetect.py
 ===================================================================
---- virt-manager-4.1.0.orig/virtinst/install/urldetect.py
-+++ virt-manager-4.1.0/virtinst/install/urldetect.py
-@@ -271,13 +271,16 @@ class _SUSEContent(object):
-                     ",", 1)[0].strip().rsplit(":")[4]
+--- virt-manager-5.1.0.orig/virtinst/install/urldetect.py
++++ virt-manager-5.1.0/virtinst/install/urldetect.py
+@@ -275,13 +275,16 @@ class _SUSEContent:
+             distro_version = self.content_dict["DISTRO"].rsplit(",", 1)[0].strip().rsplit(":")[4]
          distro_version = distro_version.strip()
  
 -        if "Enterprise" in self.product_name or "SLES" in self.product_name:
@@ -27,8 +27,8 @@ Index: virt-manager-4.1.0/virtinst/install/urldetect.py
 +                    sle_version = self.product_name.strip().rsplit(' ')[4]
              if len(self.product_name.strip().rsplit(' ')) > 5 and not " Micro " in self.product_name:
                  if " SAP " in self.product_name:
-                     sle_version = (sle_version + '.' +
-@@ -704,7 +707,7 @@ class _MICRODistro(_SuseDistro):
+                     sle_version = (sle_version + '.' + self.product_name.strip().rsplit(' ')[8][2])
+@@ -698,7 +701,7 @@ class _MICRODistro(_SuseDistro):
      PRETTY_NAME = "SLES"
      matching_distros = ["slem"]
      _variant_prefix = "slem"

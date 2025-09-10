@@ -2206,4 +2206,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1300574</requestid>
   </revision>
+  <revision rev="279" vrev="1">
+    <srcmd5>365c10b9e37e5d4b7140520ef63e75bf</srcmd5>
+    <version>5.1.0</version>
+    <time>1757518187</time>
+    <user>anag_factory</user>
+    <comment>Update virt-manager to version 5.1.0</comment>
+    <requestid>1303252</requestid>
+  </revision>
 </revisionlist>

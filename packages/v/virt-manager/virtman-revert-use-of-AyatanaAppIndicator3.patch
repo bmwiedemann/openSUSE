@@ -1,10 +1,10 @@
 While AyatanaAppIndicator3 is available on Tumbleweed,
 it is not available on SLE15.
 
-Index: virt-manager-4.2.0/virtManager/systray.py
+Index: virt-manager-5.1.0/virtManager/systray.py
 ===================================================================
---- virt-manager-4.2.0.orig/virtManager/systray.py
-+++ virt-manager-4.2.0/virtManager/systray.py
+--- virt-manager-5.1.0.orig/virtManager/systray.py
++++ virt-manager-5.1.0/virtManager/systray.py
 @@ -6,7 +6,6 @@
  
  import os
@@ -20,7 +20,7 @@ Index: virt-manager-4.2.0/virtManager/systray.py
 -# pylint: disable=ungrouped-imports
 -try:  # pragma: no cover
 -    # pylint: disable=no-name-in-module
--    gi.require_version('AyatanaAppIndicator3', '0.1')
+-    gi.require_version("AyatanaAppIndicator3", "0.1")
 -    from gi.repository import AyatanaAppIndicator3 as AppIndicator3
 +try:
 +    # pylint: disable=ungrouped-imports

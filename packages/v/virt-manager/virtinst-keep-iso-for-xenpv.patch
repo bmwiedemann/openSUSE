@@ -2,14 +2,14 @@ References: bsc#1180897
 Removing the cdrom iso file from the device prevents booting
 with a qemu error.
 
-Index: virt-manager-3.3.0/virtinst/install/installer.py
+Index: virt-manager-5.1.0/virtinst/install/installer.py
 ===================================================================
---- virt-manager-3.3.0.orig/virtinst/install/installer.py
-+++ virt-manager-3.3.0/virtinst/install/installer.py
-@@ -175,8 +175,9 @@ class Installer(object):
+--- virt-manager-5.1.0.orig/virtinst/install/installer.py
++++ virt-manager-5.1.0/virtinst/install/installer.py
+@@ -184,8 +184,9 @@ class Installer:
+             return
          for disk in guest.devices.disk:
-             if (disk.is_cdrom() and
-                 disk.get_source_path() == self._cdrom_path()):
+             if disk.is_cdrom() and disk.get_source_path() == self._cdrom_path():
 -                disk.set_source_path(None)
 -                disk.sync_path_props()
 +                if not guest.os.is_xenpv():
