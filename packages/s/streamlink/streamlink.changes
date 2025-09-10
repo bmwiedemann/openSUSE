@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 10 09:04:47 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 7.6.0:
+  * Added: official support for Python 3.14
+  * Added: --skip for stopping on existing file outputs without user prompts
+  * Added: CDPClientSession.{apply,retrieve}_cookies() for copying cookies
+    between Streamlink's HTTP session and the web browser
+  * Updated plugins:
+      - chzzk: added support for live streams with a wider content availability window
+      - indihometv: removed plugin
+      - kick: added --kick-low-latency
+      - lrt: fixed plugin
+      - mediaklikk: fixed plugin
+      - vkvideo: renamed to vkvideolive, added VOD support
+  * Docs: fixed compatibility with docutils>=0.22
+- remove Sphinx and furo from BR, as we don't build the Documentation
+
+-------------------------------------------------------------------
 Thu Jul 10 17:48:55 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 7.5.0:

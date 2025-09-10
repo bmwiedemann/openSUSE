@@ -1,7 +1,7 @@
 #
 # spec file for package streamlink
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 %{?sle15_python_module_pythons}%{!?sle15_python_module_pythons:%define pythons python3}
 Name:           streamlink%{psuffix}
-Version:        7.5.0
+Version:        7.6.0
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        Apache-2.0 AND BSD-2-Clause
@@ -33,10 +33,8 @@ Source:         https://github.com/%{name}/%{name}/releases/download/%{version}/
 Source1:        https://github.com/%{name}/%{name}/releases/download/%{version}/streamlink-%{version}.tar.gz.asc
 Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xcdac41b9122470faf357a9d344448a298d5c3618#/streamlink.keyring
 BuildRequires:  %{python_module PySocks >= 1.5.6}
-BuildRequires:  %{python_module Sphinx >= 6.0.0}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module devel >= 3.9}
-BuildRequires:  %{python_module furo}
 BuildRequires:  %{python_module isodate}
 BuildRequires:  %{python_module lxml >= 4.6.4}
 BuildRequires:  %{python_module myst-parser >= 1.0.0}
@@ -108,15 +106,15 @@ enjoy various streamed content.
 %files
 %license LICENSE
 %doc AUTHORS CHANGELOG.md MANIFEST.in README.md
-%{_bindir}/%{name}
-%{python3_sitelib}/%{name}
-%{python3_sitelib}/%{name}_cli
-%{python3_sitelib}/%{name}-%{version}*-info
-%_mandir/man*/*
-%{_datadir}/bash-completion/completions/streamlink
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
-%{_datadir}/zsh/site-functions/_streamlink
+%{_bindir}/%{name}
+%{_datadir}/bash-completion/completions/%{name}
+%{_datadir}/zsh/site-functions/_%{name}
+%{_mandir}/man?/%{name}.?%{?ext_man}
+%{python3_sitelib}/%{name}
+%{python3_sitelib}/%{name}-%{version}.dist-info
+%{python3_sitelib}/%{name}_cli
 %endif
 
 %changelog
