@@ -40,11 +40,8 @@ BuildRequires:  javapackages-local >= 6
 BuildRequires:  jdbc-stdext >= 2.0
 BuildRequires:  junit >= 3.8.1
 BuildRequires:  xerces-j2
-Requires(post): update-alternatives
-Requires(preun): update-alternatives
 Provides:       %{short_name} = %{version}-%{release}
 Obsoletes:      %{short_name} < %{version}-%{release}
-Provides:       hibernate_jdbc_cache
 Provides:       jakarta-%{short_name} = %{version}-%{release}
 Obsoletes:      jakarta-%{short_name} < %{version}-%{release}
 BuildArch:      noarch
@@ -105,24 +102,10 @@ install -d -m 0755 %{buildroot}%{_mavenpomdir}
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr dist/docs/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
-# hibernate_jdbc_cache ghost symlink
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
-ln -sf %{_sysconfdir}/alternatives/hibernate_jdbc_cache.jar %{buildroot}%{_javadir}/hibernate_jdbc_cache.jar
-
-%post
-update-alternatives --install %{_javadir}/hibernate_jdbc_cache.jar \
-  hibernate_jdbc_cache %{_javadir}/%{name}2.jar 60
-
-%preun
-if [ $1 -eq 0 ] ; then
-  update-alternatives --remove hibernate_jdbc_cache %{_javadir}/%{name}2.jar
-fi
 
 %files -f .mfiles
 %license LICENSE.txt
 %{_javadir}/%{short_name}.jar
-%{_javadir}/hibernate_jdbc_cache.jar
-%ghost %{_sysconfdir}/alternatives/hibernate_jdbc_cache.jar
 
 %files javadoc
 %{_javadocdir}/%{name}

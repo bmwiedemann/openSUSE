@@ -64,4 +64,12 @@
     <comment>Simplify spec: remove old macros and avoid versioned jars</comment>
     <requestid>1170957</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>85941786b664d2888b7170d13354eb39</srcmd5>
+    <version>2.1.1</version>
+    <time>1757528568</time>
+    <user>anag_factory</user>
+    <comment>Do not provide the hibernate_jdbc_cache alternative</comment>
+    <requestid>1303616</requestid>
+  </revision>
 </revisionlist>

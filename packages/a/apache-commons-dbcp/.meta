@@ -8,5 +8,4 @@ multiple database systems, reclamation of stale or dead connections,
 testing for valid connections, PreparedStatement pooling, and other
 features.
 </description>
-  <devel project="Java:packages" package="apache-commons-dbcp"/>
 </package>

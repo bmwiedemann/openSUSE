@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  5 07:37:40 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Do not provide the hibernate_jdbc_cache alternative
+
+-------------------------------------------------------------------
 Tue Apr 30 10:54:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Simplify spec: remove old macros and avoid versioned jars
