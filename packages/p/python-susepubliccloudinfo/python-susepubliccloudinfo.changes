@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  5 18:40:41 UTC 2025 - chajain <cjain@suse.com>
+
+- Update to version 1.4.2
+  + Uses compression APIs by default 
+
+-------------------------------------------------------------------
 Mon May  5 13:44:50 UTC 2025 - Alexander Osthof <aosthof@suse.com>
 
 - Fix python version of packages in 'Requires:' (bsc#1242059)
