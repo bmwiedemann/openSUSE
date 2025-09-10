@@ -1070,4 +1070,15 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     + tiff-CVE-2024-13978.patch</comment>
     <requestid>1300783</requestid>
   </revision>
+  <revision rev="105" vrev="9">
+    <srcmd5>08fddd046b7f5c432fc495b531943417</srcmd5>
+    <version>4.7.0</version>
+    <time>1757518176</time>
+    <user>anag_factory</user>
+    <comment>- security update:
+  * CVE-2025-8961 [bsc#1248117]
+    Fix segmentation fault via main function of tiffcrop utility
+    + tiff-CVE-2025-8961.patch</comment>
+    <requestid>1303201</requestid>
+  </revision>
 </revisionlist>

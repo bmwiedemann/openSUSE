@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  8 12:34:59 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- security update:
+  * CVE-2025-8961 [bsc#1248117]
+    Fix segmentation fault via main function of tiffcrop utility
+    + tiff-CVE-2025-8961.patch
+
+-------------------------------------------------------------------
 Thu Aug 21 10:31:39 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - security update:

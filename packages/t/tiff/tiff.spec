@@ -52,6 +52,7 @@ Patch4:         tiff-4.7.0-bsc1243503.patch
 Patch5:         tiff-CVE-2025-8534.patch
 Patch6:         tiff-CVE-2025-9165.patch
 Patch7:         tiff-CVE-2024-13978.patch
+Patch8:         tiff-CVE-2025-8961.patch
 %if %{with tiff_manpages}
 BuildRequires:  python3-Sphinx
 %endif
