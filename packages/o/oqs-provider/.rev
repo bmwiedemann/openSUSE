@@ -155,4 +155,12 @@
   (failure is real, but SL 16 needs to have it building) (forwarded request 1290830 from msmeissn)</comment>
     <requestid>1297303</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>feafcc265b50030d18e2814e50730fa9</srcmd5>
+    <version>0.9.0</version>
+    <time>1757528579</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1303590</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  3 10:34:10 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- disable openssl.cnf which blocks some of our tests (bsc#1249081)
+
+-------------------------------------------------------------------
 Tue Jul  1 13:36:12 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - disable testsuite on s390x bsc#1245315

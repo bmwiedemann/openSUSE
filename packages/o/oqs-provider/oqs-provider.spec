@@ -49,6 +49,7 @@ cmake -DBUILD_SHARED_LIBS=ON ..
 %check
 # s390x failure is real, but we will skip it for now (likely comes from liboqs)
 %ifnarch s390x
+export OPENSSL_CONF=/dev/null
 %ctest .
 %endif
 
