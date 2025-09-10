@@ -1,7 +1,7 @@
 #
 # spec file for package libyang
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019-2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%global sover 2
+%global sover 3
 Name:           libyang
-Version:        2.1.148
+Version:        3.13.5
 Release:        0
 Summary:        Parser toolkit for IETF YANG data modeling
 License:        BSD-3-Clause
@@ -109,6 +109,7 @@ This is the API documentation of libyang.
     -DGEN_LANGUAGE_BINDINGS=ON \
     -DENABLE_BUILD_TESTS=ON
 %make_build
+cp -r ../doc .
 doxygen
 
 %install

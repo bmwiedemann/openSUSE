@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep  2 15:08:20 UTC 2025 - pgajdos@suse.com
+
+- version update to 3.13.5
+  3.1.0
+  * lots of improvements and bugfixes in various parts of the library
+  3.4.2
+  * data handling optimizations
+  * 32b build fixes
+  * various bugfixes
+  3.7.8
+  * yanglint UTF8 support
+  * validation optimizations
+  * lots of bugfixes
+  3.12.2
+  * optional xxhash faster hasing function
+  * support for metadata in diff
+  * lots of optimizations and fixes
+  3.13.5
+  * yanglint extension-instance YANG data validation support
+  * compatibility fixes for FreeBSD
+  * minor LYB data format improvements
+  * lots of other bugfixes and improvements
+
+-------------------------------------------------------------------
 Wed Apr  3 10:40:40 UTC 2024 - pgajdos@suse.com
 
 - version update to 2.1.148
