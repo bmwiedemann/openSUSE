@@ -303,4 +303,20 @@
   * feat: Better Windows Support #616</comment>
     <requestid>1245238</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2a2324814d0397f6b7240b34b0efaabc</srcmd5>
+    <version>0.10.5</version>
+    <time>1757528572</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.10.5:
+  * various windows build imporvements #624
+  * Handle default device change on windows #652
+  * various pipewire improvements #662
+  * eq support in Windows #679
+  * horzontal gradient and color theme files #620 #632
+  * support for running in dumb terminals
+  * general FFT improvements #672
+  * various bugfixes</comment>
+    <requestid>1303426</requestid>
+  </revision>
 </revisionlist>

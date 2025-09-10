@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 10 05:40:14 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.5:
+  * various windows build imporvements #624
+  * Handle default device change on windows #652
+  * various pipewire improvements #662
+  * eq support in Windows #679
+  * horzontal gradient and color theme files #620 #632
+  * support for running in dumb terminals
+  * general FFT improvements #672
+  * various bugfixes
+
+-------------------------------------------------------------------
 Wed Feb 12 07:39:54 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.10.4:
