@@ -118,7 +118,7 @@ Sun Nov 20 06:18:35 UTC 2011 - coolo@suse.com
 - add libtool as buildrequire to avoid implicit dependency
 
 -------------------------------------------------------------------
-Tue Aug 23 14:34:00 CEST 2011 - pth@suse.de
+Tue Aug 23 12:34:00 UTC 2011 - pth@suse.de
 
 - Use packageand to pull in librcc0 if aspell and unzip are
   installed (bnc#710609).
@@ -156,7 +156,7 @@ Mon Mar  8 18:46:02 UTC 2010 - lazy.kent.suse@gmail.com
 - don't build GTK UI
 
 -------------------------------------------------------------------
-Sat Feb 13 00:00:00 MSK 2010 - csa@dside.dyndns.org
+Sat Feb 12 21:00:00 UTC 2010 - csa@dside.dyndns.org
 
  New version
 
