@@ -49,7 +49,7 @@ Requires:       zstd
 Summary:        Create driver update from rpms
 License:        GPL-3.0-or-later
 Group:          Hardware/Other
-Version:        2.0
+Version:        2.2
 Release:        0
 Source:         %{name}-%{version}.tar.xz
 Url:            https://github.com/openSUSE/mkdud

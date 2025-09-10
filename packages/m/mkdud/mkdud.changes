@@ -1,4 +1,21 @@
 --------------------------------------------------------------------
+Wed Sep 10 16:25:06 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mkdud#45
+- fix "How to apply" output
+- 2.2
+
+--------------------------------------------------------------------
+Wed Sep 10 16:02:20 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mkdud#44
+- support expressing installation ISO changes in DUDs
+  (jsc#PED-13262)
+- add --dracut-hook option
+- update documentation
+- 2.1
+
+--------------------------------------------------------------------
 Thu Aug 28 11:40:49 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mkdud#42
