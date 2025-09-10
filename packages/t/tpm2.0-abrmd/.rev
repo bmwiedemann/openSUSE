@@ -381,4 +381,18 @@ etc.
   operations are denied. Include SLE-16 to fix this. (forwarded request 1256178 from mgerstner)</comment>
     <requestid>1256179</requestid>
   </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>37dad7a41baf3dd51af4f8a7dd9e6a6d</srcmd5>
+    <version>3.0.0</version>
+    <time>1757518205</time>
+    <user>anag_factory</user>
+    <comment>- also package new /usr/share/selinux/devel/include/distributed directory to
+  fix build error.
+
+- Move tabrmd interface file from /usr/share/selinux/devel/include/contrib/tabrmd.if
+  to /usr/share/selinux/devel/include/distributed/tabrmd.if
+  This is necessary to allow upstream drop-in interface replacements:
+  https://github.com/fedora-selinux/selinux-policy/blob/rawhide/policy/modules/contrib/tabrmd.if</comment>
+    <requestid>1303322</requestid>
+  </revision>
 </revisionlist>

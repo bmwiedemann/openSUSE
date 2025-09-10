@@ -2,6 +2,7 @@
 # spec file for package tpm2.0-abrmd
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -136,6 +137,8 @@ rm %{buildroot}/%{_datadir}/dbus-1/system-services/com.intel.tss2.Tabrmd.service
 %if %{with selinux}
 mkdir %{buildroot}%{_datadir}/selinux/packages/targeted
 mv %{buildroot}%{_datadir}/selinux/packages/tab* %{buildroot}%{_datadir}/selinux/packages/targeted
+install -p -m 644 -D %{buildroot}%{_datadir}/selinux/devel/include/contrib/tabrmd.if %{buildroot}%{_datadir}/selinux/devel/include/distributed/tabrmd.if
+rm %{buildroot}%{_datadir}/selinux/devel/include/contrib/tabrmd.if
 %endif
 
 %pre
@@ -194,7 +197,8 @@ fi
 %{_libdir}/pkgconfig/*.pc
 %{_mandir}/man3/Tss2*
 %if %{with selinux}
-%{_datadir}/selinux/devel/include/contrib/tabrmd.if
+%dir %{_datadir}/selinux/devel/include/distributed
+%{_datadir}/selinux/devel/include/distributed/tabrmd.if
 %endif
 
 %files -n libtss2-tcti-tabrmd0
