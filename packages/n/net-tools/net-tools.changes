@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep  8 15:38:28 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Drop 0002-Do-not-warn-about-interface-socket-not-binded.patch. It
+  worked around a net-tools-1.60 specific problem, that does not
+  happen in net-tools-2.10. It is more harmful than useful, as it
+  can hide real problems. (bsc#430864#c15,
+  https://github.com/ecki/net-tools/issues/32#issuecomment-3265471116).
+
+-------------------------------------------------------------------
 Sat Sep  6 15:35:13 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Drop 0004-By-default-do-not-fopen-anything-in-netrom_gr.patch. It
