@@ -42,10 +42,6 @@ BuildRequires:  mvn(org.eclipse.jetty:jetty-jmx) >= %{version}
 BuildRequires:  mvn(org.eclipse.jetty:jetty-server) >= %{version}
 BuildRequires:  mvn(org.eclipse.jetty:jetty-util) >= %{version}
 BuildArch:      noarch
-# missing gcc13 to build conscrypt's (for jetty-alpn) dependencies
-%if 0%{?sle_version} && 0%{?sle_version} < 150400
-ExclusiveArch:  do-not-build
-%endif
 
 %description
 

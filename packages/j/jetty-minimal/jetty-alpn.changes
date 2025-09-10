@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 10 09:30:50 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Build also on SLE15-SP2, since we have the required compiler now.
+
+-------------------------------------------------------------------
 Fri Aug 22 05:02:35 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 9.4.58.v20250814

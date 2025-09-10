@@ -37,10 +37,6 @@ BuildRequires:  mvn(org.eclipse.jetty.alpn:alpn-api)
 BuildRequires:  mvn(org.eclipse.jetty:jetty-io) >= %{version}
 BuildRequires:  mvn(org.eclipse.jetty:jetty-server) >= %{version}
 BuildArch:      noarch
-# missing gcc13 to build conscrypt's dependencies
-%if 0%{?sle_version} && 0%{?sle_version} < 150400
-ExclusiveArch:  do-not-build
-%endif
 
 %description
 

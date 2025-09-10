@@ -231,4 +231,12 @@
     <comment>CVE-2025-5115, bsc#1244252</comment>
     <requestid>1300906</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>eb5e67f02b228a02e53932bbd6712ec6</srcmd5>
+    <version>9.4.58</version>
+    <time>1757528569</time>
+    <user>anag_factory</user>
+    <comment>Build also on SLE15-SP2, since we have the required compiler now</comment>
+    <requestid>1303620</requestid>
+  </revision>
 </revisionlist>
