@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 10 09:00:38 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.7.1
+  * Fix --set-owner by calling setOwner!
+  * protobufs: v2.7.5
+
+-------------------------------------------------------------------
 Thu Aug  7 13:02:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.7.0
