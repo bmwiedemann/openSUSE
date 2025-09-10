@@ -2281,4 +2281,10 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <user>dimstar_suse</user>
     <comment>Permit java21 - we should have space for LO-base again</comment>
   </revision>
+  <revision rev="320" vrev="318">
+    <srcmd5>d5342a4d60ef87e37f44e717be31e524</srcmd5>
+    <version>unknown</version>
+    <time>1757506041</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>

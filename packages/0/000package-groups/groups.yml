@@ -269,10 +269,17 @@ dvd:
   - google-noto-serif-jp-fonts: [locked]
   - google-noto-serif-sc-fonts: [locked]
   - google-noto-serif-tc-fonts: [locked]
+  # https://bugzilla.opensuse.org/show_bug.cgi?id=1249232
+  - arphic-ukai-fonts: [locked]
+  - arphic-uming-fonts: [locked]
+  - wqy-zenhei-fonts: [locked]
 
   ## Amarok is needed in the staging tests, but -lang is too large - dimstar - 20180419
   - amarok
   - amarok-lang: [locked]
+
+  # https://bugzilla.opensuse.org/show_bug.cgi?id=1249231
+  - fcitx-sunpinyin: [locked]
 
   ## and more space needed - dimstar - 20220112
   - gutenprint: [locked]
