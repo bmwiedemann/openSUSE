@@ -66,6 +66,7 @@ Source99:       qt6-webengine-rpmlintrc
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
 Patch101:       QtWebEngine_6.8_skip_xnnpack.patch
+Patch102:       QtWebEngine_6.9.2_QTBUG-139424.patch
 BuildRequires:  %{pyver}
 BuildRequires:  %{pyver}-devel
 BuildRequires:  %{pyver}-html5lib

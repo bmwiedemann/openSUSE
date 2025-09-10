@@ -368,4 +368,13 @@
     <comment>Update to 6.9.2 (forwarded request 1301562 from krop)</comment>
     <requestid>1301735</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>83f8278e00bd669eb7eaccf3d720345b</srcmd5>
+    <version>6.9.2</version>
+    <time>1757518192</time>
+    <user>anag_factory</user>
+    <comment>- Add patch:
+  * QtWebEngine_6.9.2_QTBUG-139424.patch (QTBUG-139424, boo#1249354)</comment>
+    <requestid>1303309</requestid>
+  </revision>
 </revisionlist>

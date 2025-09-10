@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  5 14:49:50 UTC 2025 - llyyr <llyyr@yukari.in>
+
+- Add patch:
+  * QtWebEngine_6.9.2_QTBUG-139424.patch (QTBUG-139424, boo#1249354)
+
+-------------------------------------------------------------------
 Wed Aug 27 07:16:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.9.2:
