@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep  7 16:49:09 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.31:
+  * Fixed check of error conditions with the --read-envelope-from
+    option
+  * Fixed handling of null bytes in the input by msmtpd (msmtp
+    handled them correctly)
+  * Fixed tests when msmtpd is not built
+  * Fixed handling of very long OAuth tokens
+
+-------------------------------------------------------------------
 Fri Jun  6 19:21:07 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.30:
