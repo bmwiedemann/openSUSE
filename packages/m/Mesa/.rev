@@ -6448,4 +6448,12 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - removed Mesa-libOpenCL package</comment>
     <requestid>1303039</requestid>
   </revision>
+  <revision rev="551" vrev="423">
+    <srcmd5>a3e3c8a8f5935484c9acaf9ba470a142</srcmd5>
+    <version>25.2.2</version>
+    <time>1757518184</time>
+    <user>anag_factory</user>
+    <comment>- baselibs.conf: let Mesa-32bit obsolete Mesa-gallium-32bit</comment>
+    <requestid>1303236</requestid>
+  </revision>
 </revisionlist>
