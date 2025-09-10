@@ -114,6 +114,8 @@ Patch5:         static_lib.patch
 Patch6:         util-linux-lib-netlink.patch
 # PATCH-FEATURE-UPSTREAM util-linux-agetty-netlink.patch boo1139983 jsc#PED-8734 sbrabec@suse.com -- Implement netlink based IP address detection and issue reload.
 Patch7:         util-linux-agetty-netlink.patch
+# PATCH-FEATURE-OPENSUSE util-linux-agetty-ssh-host-keys.patch sbrabec@suse.com -- Implement escape code for printing of ssh host keys in agetty issue file.
+Patch8:         util-linux-agetty-ssh-host-keys.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel

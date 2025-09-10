@@ -1,8 +1,7 @@
-From 1ddc84875c150ca7c142adba9bfcd4bf4323a3c4 Mon Sep 17 00:00:00 2001
+From bf7c46ef9158f3baae6b637ebb73a24d8460d394 Mon Sep 17 00:00:00 2001
 From: Stanislav Brabec <sbrabec@suse.cz>
 Date: Wed, 9 Jul 2025 14:35:28 +0200
 Subject: [PATCH 2/2] agetty: Implement netlink based IP processing
-References: https://github.com/util-linux/util-linux/pull/3649
 
 The current \4 and \6 issue file escapes implementation is inferior. It
 uses get getifaddrs() to get a list of IP addresses. This function does not
@@ -48,8 +47,8 @@ so bad, as \a automatically skips interfaces without reliable addresses
 Signed-off-by: Stanislav Brabec <sbrabec@suse.cz>
 ---
  term-utils/agetty.8.adoc |   6 +
- term-utils/agetty.c      | 414 ++++++++++++++++++++++-----------------
- 2 files changed, 244 insertions(+), 176 deletions(-)
+ term-utils/agetty.c      | 417 ++++++++++++++++++++++-----------------
+ 2 files changed, 246 insertions(+), 177 deletions(-)
 
 diff --git a/term-utils/agetty.8.adoc b/term-utils/agetty.8.adoc
 index a33f12a3f..6670498f5 100644
@@ -69,7 +68,7 @@ index a33f12a3f..6670498f5 100644
  Insert the baudrate of the current line.
  
 diff --git a/term-utils/agetty.c b/term-utils/agetty.c
-index f65e511ca..1f5d937e4 100644
+index 5e564c4f0..c37417e1e 100644
 --- a/term-utils/agetty.c
 +++ b/term-utils/agetty.c
 @@ -32,10 +32,7 @@
@@ -109,7 +108,15 @@ index f65e511ca..1f5d937e4 100644
  	char *mem_old;
  #endif
  	unsigned int do_tcsetattr : 1,
-@@ -1603,81 +1603,7 @@ done:
+@@ -364,6 +364,7 @@ int main(int argc, char **argv)
+ 	};
+ 	struct issue issue = {
+ 		.mem = NULL,
++		.nl.fd = -1
+ 	};
+ 	char *login_argv[LOGIN_ARGV_MAX + 1];
+ 	int login_argc = 0;
+@@ -1603,81 +1604,7 @@ done:
  }
  
  #ifdef AGETTY_RELOAD
@@ -192,7 +199,7 @@ index f65e511ca..1f5d937e4 100644
  {
  	char buffer[sizeof(struct inotify_event) + NAME_MAX + 1];
  	fd_set rfds;
-@@ -1711,9 +1637,9 @@ static int wait_for_term_input(int fd)
+@@ -1711,9 +1638,9 @@ static int wait_for_term_input(int fd)
  			FD_SET(inotify_fd, &rfds);
  			nfds = max(nfds, inotify_fd);
  		}
@@ -205,7 +212,7 @@ index f65e511ca..1f5d937e4 100644
  		}
  
  		/* If waiting fails, just fall through, presumably reading input will fail */
-@@ -1725,9 +1651,10 @@ static int wait_for_term_input(int fd)
+@@ -1725,9 +1652,10 @@ static int wait_for_term_input(int fd)
  
  		}
  
@@ -219,7 +226,7 @@ index f65e511ca..1f5d937e4 100644
  
  		/* Just drain the inotify buffer */
  		} else if (inotify_fd >= 0 && FD_ISSET(inotify_fd, &rfds)) {
-@@ -1937,11 +1864,44 @@ static void eval_issue_file(struct issue *ie,
+@@ -1937,11 +1865,44 @@ static void eval_issue_file(struct issue *ie,
  			    struct options *op,
  			    struct termios *tp)
  {
@@ -241,7 +248,7 @@ index f65e511ca..1f5d937e4 100644
 +	netlink_groups = RTMGRP_IPV4_IFADDR | RTMGRP_IPV6_IFADDR;
 +
 +	/* Already initialized? */
-+	if (ie->nl.fd)
++	if (ie->nl.fd >= 0)
 +		goto skip;
 +	/* Prepare netlink. */
 +	ul_nl_init(&(ie->nl));
@@ -261,13 +268,13 @@ index f65e511ca..1f5d937e4 100644
 +	/* In case of any error, the addrq list is just empty, and we can use
 +	 * the code without any error checking. */
 +	ul_nl_close(&(ie->nl));
-+	ie->nl.fd = 0;
++	ie->nl.fd = -1;
 +skip:
 +#endif
  	/*
  	 * The custom issue file or directory list specified by:
  	 *   agetty --issue-file <path[:path]...>
-@@ -1986,11 +1946,6 @@ static void eval_issue_file(struct issue *ie,
+@@ -1986,11 +1947,6 @@ static void eval_issue_file(struct issue *ie,
  	issuedir_read(ie, _PATH_SYSCONFSTATICDIR "/" _PATH_ISSUE_DIRNAME, op, tp);
  
  done:
@@ -279,7 +286,16 @@ index f65e511ca..1f5d937e4 100644
  	if (ie->output) {
  		fclose(ie->output);
  		ie->output = NULL;
-@@ -2032,13 +1987,19 @@ again:
+@@ -2002,7 +1958,7 @@ done:
+  */
+ static void show_issue(struct options *op)
+ {
+-	struct issue ie = { .output = NULL };
++	struct issue ie = { .output = NULL, .nl.fd = -1 };
+ 	struct termios tp;
+ 
+ 	memset(&tp, 0, sizeof(struct termios));
+@@ -2032,13 +1988,19 @@ again:
  		puts(_("[press ENTER to login]"));
  #ifdef AGETTY_RELOAD
  		/* reload issue */
@@ -293,15 +309,15 @@ index f65e511ca..1f5d937e4 100644
 -				goto again;
 +				{
 +					/* TODO: Close to set netlink_groups again using pass 1 */
-+					/* if (ie->nl.fd) ul_nl_close(&(ie->nl));
-+					 * ie->nl.fd = NULL; */
++					/* if (ie->nl.fd >= 0) ul_nl_close(&(ie->nl));
++					 * ie->nl.fd = -1; */
 +
 +					goto again;
 +				}
  			}
  		}
  #endif
-@@ -2168,7 +2129,7 @@ static char *get_logname(struct issue *ie, struct options *op, struct termios *t
+@@ -2168,7 +2130,7 @@ static char *get_logname(struct issue *ie, struct options *op, struct termios *t
  
  	no_reload:
  #ifdef AGETTY_RELOAD
@@ -310,16 +326,16 @@ index f65e511ca..1f5d937e4 100644
  			/* refresh prompt -- discard input data, clear terminal
  			 * and call do_prompt() again
  			 */
-@@ -2177,6 +2138,8 @@ static char *get_logname(struct issue *ie, struct options *op, struct termios *t
+@@ -2177,6 +2139,8 @@ static char *get_logname(struct issue *ie, struct options *op, struct termios *t
  			eval_issue_file(ie, op, tp);
  			if (!issue_is_changed(ie))
  				goto no_reload;
-+			/* if (ie->nl.fd) ul_nl_close(&(ie->nl));
-+			 * ie->nl.fd = NULL; */
++			/* if (ie->nl.fd >= 0) ul_nl_close(&(ie->nl));
++			 * ie->nl.fd = -1; */
  			tcflush(STDIN_FILENO, TCIFLUSH);
  			if ((op->flags & F_VCONSOLE)
  			    && (op->flags & F_NOCLEAR) == 0)
-@@ -2576,92 +2539,170 @@ static void log_warn(const char *fmt, ...)
+@@ -2576,92 +2540,170 @@ static void log_warn(const char *fmt, ...)
  	va_end(ap);
  }
  
@@ -560,7 +576,7 @@ index f65e511ca..1f5d937e4 100644
  }
  
  /*
-@@ -2860,26 +2901,47 @@ static void output_special_char(struct issue *ie,
+@@ -2860,26 +2902,47 @@ static void output_special_char(struct issue *ie,
  	case '4':
  	case '6':
  	{

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 11 23:54:47 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Implement escape code for printing of ssh host keys in agetty
+  issue file (util-linux-agetty-ssh-host-keys.patch.
+- Include fixes from
+  https://github.com/util-linux/util-linux/pull/3649 (jsc#PED-8734,
+  util-linux-lib-netlink.patch, util-linux-agetty-netlink.patch).
+
+-------------------------------------------------------------------
 Thu Jul 24 10:35:23 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - For bash 5.3 add (SIG)INT tests/expected/kill/decode as ignored

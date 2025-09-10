@@ -1,8 +1,7 @@
-From 7d11ab55ce140cb03ffebb55856c0a766853d83e Mon Sep 17 00:00:00 2001
+From 02b917ba6fa43908a39f15c9496de04910044c0e Mon Sep 17 00:00:00 2001
 From: Stanislav Brabec <sbrabec@suse.cz>
 Date: Wed, 9 Jul 2025 14:29:10 +0200
 Subject: [PATCH 1/2] New netlink library
-References: https://github.com/util-linux/util-linux/pull/3649
 
 To support netlink and IP address processing, two new library files were
 added:
@@ -18,13 +17,13 @@ etc.
 Signed-off-by: Stanislav Brabec <sbrabec@suse.cz>
 ---
  include/Makemodule.am |   2 +
- include/netaddrq.h    | 124 +++++++
+ include/netaddrq.h    | 124 ++++++++
  include/netlink.h     | 171 ++++++++++
  lib/Makemodule.am     |  11 +
  lib/meson.build       |   2 +
- lib/netaddrq.c        | 729 ++++++++++++++++++++++++++++++++++++++++++
+ lib/netaddrq.c        | 716 ++++++++++++++++++++++++++++++++++++++++++
  lib/netlink.c         | 465 +++++++++++++++++++++++++++
- 7 files changed, 1504 insertions(+)
+ 7 files changed, 1491 insertions(+)
  create mode 100644 include/netaddrq.h
  create mode 100644 include/netlink.h
  create mode 100644 lib/netaddrq.c
@@ -406,10 +405,10 @@ index 25febbc19..8734108a3 100644
  	randutils.c
 diff --git a/lib/netaddrq.c b/lib/netaddrq.c
 new file mode 100644
-index 000000000..11730cf07
+index 000000000..67a43cb85
 --- /dev/null
 +++ b/lib/netaddrq.c
-@@ -0,0 +1,729 @@
+@@ -0,0 +1,716 @@
 +/*
 + * Netlink address quality rating list builder
 + *
@@ -503,7 +502,7 @@ index 000000000..11730cf07
 +
 +#define DBG_CASE(x) case x: str = #x; break
 +#define DBG_CASE_DEF8(x) default: snprintf(strx+2, 3, "%02hhx", x); str = strx; break
-+static char *ip_rating(enum ul_netaddrq_ip_rating q)
++static char *ip_rating_as_string(enum ul_netaddrq_ip_rating q)
 +{
 +	char *str;
 +	static char strx[5] = "0x";
@@ -565,11 +564,7 @@ index 000000000..11730cf07
 +			DBG(LIST, ul_debugobj(addrq,
 +					       "new ifa_index in addrq"));
 +			if (!(ifaceq = malloc(sizeof(struct ul_netaddrq_iface))))
-+			{
-+				DBG(LIST, ul_debugobj(addrq,
-+						       "malloc() 1 failed"));
-+				return -1;
-+			}
++				return -ENOMEM;
 +			INIT_LIST_HEAD(&(ifaceq->ip_quality_list_4));
 +			INIT_LIST_HEAD(&(ifaceq->ip_quality_list_6));
 +			ifaceq->ifa_index = nl->addr.ifa_index;
@@ -602,7 +597,7 @@ index 000000000..11730cf07
 +	list_for_each(li, ipq_list) {
 +		ipq = list_entry(li, struct ul_netaddrq_ip, entry);
 +		if (ipq->addr->address_len == nl->addr.address_len)
-+			if (memcmp(ipq->addr->address, nl->addr.address,
++			if (!memcmp(ipq->addr->address, nl->addr.address,
 +				   nl->addr.address_len))
 +				break;
 +	}
@@ -618,17 +613,13 @@ index 000000000..11730cf07
 +
 +		addr = ul_nl_addr_dup(&(nl->addr));
 +		if (!addr) {
-+			DBG(LIST, ul_debugobj(addrq,
-+					       "ul_nl_addr_dup() failed"));
-+			rc = -1;
++			rc = -ENOMEM;
 +			goto error;
 +		}
 +		if (ipq == NULL) {
 +			if (!(ipq = malloc(sizeof(struct ul_netaddrq_ip))))
 +			{
-+				DBG(LIST, ul_debugobj(addrq,
-+						       "malloc() 3 failed"));
-+				rc = -1;
++				rc = -ENOMEM;
 +				ul_nl_addr_free(addr);
 +				goto error;
 +			}
@@ -645,7 +636,7 @@ index 000000000..11730cf07
 +		DBG(ADDRQ,
 +		    ul_debugobj(addrq, "%s rating: %s",
 +				ul_nl_addr_ntop_address(&(nl->addr)),
-+				ip_rating(ipq->quality)));
++				ip_rating_as_string(ipq->quality)));
 +	} else {
 +		/* UL_NL_RTM_DEL */
 +		if (ipq == NULL)
@@ -689,18 +680,14 @@ index 000000000..11730cf07
 +	struct ul_netaddrq_data *addrq;
 +
 +	netaddrq_init_debug();
-+	if (!(nl->data_addr = malloc(sizeof(struct ul_netaddrq_data))))
-+		return -1;
++	if (!(nl->data_addr = calloc(1, sizeof(struct ul_netaddrq_data))))
++		return -ENOMEM;
 +	nl->callback_addr = callback_addrq;
 +	addrq = UL_NETADDRQ_DATA(nl);
 +	addrq->callback_pre = callback_pre;
 +	addrq->callback_post = callback_post;
 +	addrq->callback_data = data;
-+	addrq->nifaces = 0;
-+	addrq->overflow = false;
 +	INIT_LIST_HEAD(&(addrq->ifaces));
-+	addrq->ifaces_change_4 = false;
-+	addrq->ifaces_change_6 = false;
 +	DBG(LIST, ul_debugobj(addrq, "callback initialized"));
 +	return 0;
 +}
@@ -725,7 +712,7 @@ index 000000000..11730cf07
 +			DBG(BEST,
 +			    ul_debugobj((*best), "%s -> best[%s]",
 +					ul_nl_addr_ntop_address(ipq->addr),
-+					ip_rating(ipq->quality)));
++					ip_rating_as_string(ipq->quality)));
 +			(*best)[ipq->quality] = ipq;
 +		}
 +
@@ -733,7 +720,7 @@ index 000000000..11730cf07
 +		{
 +			threshold = ipq->quality;
 +			DBG(BEST,
-+			    ul_debug("threshold %s", ip_rating(threshold)));
++			    ul_debug("threshold %s", ip_rating_as_string(threshold)));
 +
 +		}
 +	}
@@ -793,8 +780,7 @@ index 000000000..11730cf07
 +	*threshold = ul_netaddrq_bestaddr(nl, best_ifaceq, &best, ifa_family);
 +	if (best[*threshold])
 +		return ul_nl_addr_ntop_address(best[*threshold]->addr);
-+	else
-+		return NULL;
++	return NULL;
 +}
 +
 +struct ul_netaddrq_iface *ul_netaddrq_iface_by_name(const struct ul_nl_data *nl,
@@ -1141,7 +1127,7 @@ index 000000000..11730cf07
 +#endif /* TEST_PROGRAM_NETADDRQ */
 diff --git a/lib/netlink.c b/lib/netlink.c
 new file mode 100644
-index 000000000..c57be4ce0
+index 000000000..fbe04dd4c
 --- /dev/null
 +++ b/lib/netlink.c
 @@ -0,0 +1,465 @@
@@ -1373,7 +1359,7 @@ index 000000000..c57be4ce0
 +
 +int ul_nl_process(struct ul_nl_data *nl, bool async, bool loop)
 +{
-+	char buf[4096];
++	char buf[BUFSIZ];
 +	struct sockaddr_nl snl;
 +	struct nlmsghdr *nh;
 +	int rc;
@@ -1476,20 +1462,21 @@ index 000000000..c57be4ce0
 +
 +struct ul_nl_addr *ul_nl_addr_dup (struct ul_nl_addr *addr) {
 +	struct ul_nl_addr *newaddr;
-+	newaddr = malloc(sizeof(struct ul_nl_addr));
-+	if (!newaddr) goto error1;
++	newaddr = calloc(1, sizeof(struct ul_nl_addr));
++	if (!newaddr)
++		goto error;
 +	memcpy(newaddr, addr, sizeof(struct ul_nl_addr));
 +	if (addr->ifa_address_len) {
 +		newaddr->ifa_address = malloc(addr->ifa_address_len);
 +		if (!newaddr->ifa_address)
-+			goto error2;
++			goto error;
 +		memcpy(newaddr->ifa_address, addr->ifa_address,
 +		       addr->ifa_address_len);
 +	}
 +	if (addr->ifa_local_len) {
 +		newaddr->ifa_local = malloc(addr->ifa_local_len);
 +		if (!newaddr->ifa_local)
-+			goto error3;
++			goto error;
 +		memcpy(newaddr->ifa_local, addr->ifa_local,
 +		       addr->ifa_local_len);
 +	}
@@ -1497,22 +1484,21 @@ index 000000000..c57be4ce0
 +		newaddr->address = newaddr->ifa_local;
 +	else
 +		newaddr->address = newaddr->ifa_address;
-+	if ((newaddr->ifname = strdup(addr->ifname)))
-+		return newaddr;
-+	free(newaddr->ifa_local);
-+error3:
-+	free(newaddr->ifa_address);
-+error2:
-+	free(newaddr);
-+error1:
++	if (!(newaddr->ifname = strdup(addr->ifname)))
++		goto error;
++	return newaddr;
++error:
++	ul_nl_addr_free(newaddr);
 +	return NULL;
 +}
 +
 +void ul_nl_addr_free (struct ul_nl_addr *addr) {
-+	free(addr->ifa_address);
-+	free(addr->ifa_local);
-+	free(addr->ifname);
-+	free(addr);
++	if (addr) {
++		free(addr->ifa_address);
++		free(addr->ifa_local);
++		free(addr->ifname);
++		free(addr);
++	}
 +}
 +
 +const char *ul_nl_addr_ntop (const struct ul_nl_addr *addr, int addrid) {

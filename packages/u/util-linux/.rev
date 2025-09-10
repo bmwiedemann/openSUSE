@@ -2734,4 +2734,16 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
   signal for asynchronous coprocesses (boo#1246830)</comment>
     <requestid>1295529</requestid>
   </revision>
+  <revision rev="301" vrev="4">
+    <srcmd5>e0754e070a3680b1fdbd0c98bb8972d9</srcmd5>
+    <version>2.41.1</version>
+    <time>1757518210</time>
+    <user>anag_factory</user>
+    <comment>- Implement escape code for printing of ssh host keys in agetty
+  issue file (util-linux-agetty-ssh-host-keys.patch.
+- Include fixes from
+  https://github.com/util-linux/util-linux/pull/3649 (jsc#PED-8734,
+  util-linux-lib-netlink.patch, util-linux-agetty-netlink.patch).</comment>
+    <requestid>1303156</requestid>
+  </revision>
 </revisionlist>
