@@ -991,4 +991,13 @@
     <comment>KDE release gear 25.08.0 (forwarded request 1299260 from krop)</comment>
     <requestid>1299546</requestid>
   </revision>
+  <revision rev="125" vrev="2">
+    <srcmd5>25ddbf06ae182d88cf3e9e9fba04e598</srcmd5>
+    <version>25.08.0</version>
+    <time>1757518172</time>
+    <user>anag_factory</user>
+    <comment>- Add patch:
+  * ffmpegthumbs-ffmpeg8.patch</comment>
+    <requestid>1303151</requestid>
+  </revision>
 </revisionlist>
