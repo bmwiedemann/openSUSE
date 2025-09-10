@@ -146,4 +146,20 @@
     <comment></comment>
     <requestid>1151692</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>54c6ba00d13ddfc4f3359edd4a59217e</srcmd5>
+    <version>1.0.9</version>
+    <time>1757518180</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0.9
+  * remove autoconf build system
+  * gitlab CI: remove diffutils &amp; jq from required packages
+  * meson: Use proper option for encodings
+  * hurd: Add amd64 definitions
+  * Also fix incompatibility issue of GNU binutils 2.36 and later on GNU/Hurd
+  * gnu, linux: Change -D_BSD_SOURCE and -D_SVID_SOURCE to -D_DEFAULT_SOURCE
+    [Debian bug #870836]
+- supersedes u_xorg-cf-files-D_DEFAULT_SOURCE.patch</comment>
+    <requestid>1303218</requestid>
+  </revision>
 </revisionlist>
