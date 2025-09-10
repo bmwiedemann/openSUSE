@@ -40,4 +40,12 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1284803</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>b9d01b003147195320ad1bf7da938590</srcmd5>
+    <version>0.9.2</version>
+    <time>1757518242</time>
+    <user>anag_factory</user>
+    <comment>- Skip test_highlight, it's failing with latest pygments</comment>
+    <requestid>1303638</requestid>
+  </revision>
 </revisionlist>
