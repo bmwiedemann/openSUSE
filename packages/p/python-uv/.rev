@@ -1344,4 +1344,35 @@
   * Add error trace to invalid package format</comment>
     <requestid>1302718</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3f19f973b97ebb9d2ef3e694120ff62b</srcmd5>
+    <version>0.8.16</version>
+    <time>1757518238</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.16
+ * Enhancements
+  * Allow --editable to override editable = false annotations 
+  * Allow editable = false for workspace sources 
+  * Show a dedicated error for virtual environments in source trees on build 
+  * Support Android platform tags 
+  * Support iOS platform tags 
+  * Support scripts with inline metadata in --with-requirements and --requirements 
+ * Preview features
+  * Support --no-project in uv format 
+  * Allow uv format in unmanaged projects 
+ * Bug fixes
+  * Avoid erroring when match-runtime target is optional 
+  * Ban empty usernames and passwords in uv auth 
+  * Error early for parent path in build backend 
+  * Retry on IO errors during HTTP/2 streaming 
+  * Support recursive requirements and constraints inclusion 
+  * Use token store credentials for uv publish 
+  * Fix virtual environment activation script compatibility with latest nushell 
+  * Skip Python interpreters that cannot be queried with permission errors 
+ * Documentation
+  * Clarify that uv auth commands take a URL 
+  * Improve the CLI help for options that accept requirements files 
+  * Adds example for caching for managed Python downloads in Docker builds</comment>
+    <requestid>1303630</requestid>
+  </revision>
 </revisionlist>
