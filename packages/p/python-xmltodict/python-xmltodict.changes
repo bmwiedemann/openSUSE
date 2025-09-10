@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep  9 07:46:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.15.1
+  * Security: Further harden XML injection prevention during unparse (follow-up
+    to v0.15.0). In addition to '<'/'>' rejection, now also reject element and
+    attribute names (including `@xmlns` prefixes) that:
+    - start with '?' or '!'
+    - contain '/' or any whitespace
+    - contain quotes (' or ") or '='
+    - are non-strings (names must be `str`; no coercion)
+
+-------------------------------------------------------------------
+Mon Sep  8 11:26:39 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.15.0
+  * Security: Prevent XML injection (CVE-2025-9375) by rejecting '<'/'>' in
+    element and attribute names (including `@xmlns` prefixes) during unparse.
+    This limits validation to avoiding tag-context escapes; attribute values
+    continue to be escaped by the SAX `XMLGenerator`. (bsc#1249036, CVE-2025-9375)
+
+-------------------------------------------------------------------
 Tue Oct 29 16:11:13 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.14.2
