@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 10 06:04:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.7.1
+  * fix type hinting for memoryviews, see #241
+  * add [bit-endianness](endianness.rst) documentation
+  * improve testing, including debug mode test for `digit_to_int()`
+- from version 3.7.0
+  * add `util.gen_primes()`, generate bitarrays in which active indices are
+    prime numbers
+  * improve `.buffer_info()` to return named tuple
+  * add optional `mode` argument to `util.sum_indices()` to sum square of
+    active indices
+  * improve internal `_sysinfo()` to include `Py_DEBUG`
+  * add [Dubner's conjecture](../examples/dubner.rst) (in memory of Harvey
+    Dubner)
+  * add [dynamically growing sieve](../examples/dyn_sieve.py)
+- from version 3.6.1
+  * add development files for statistical tests in `devel/random/`
+  * optimize `util.sum_indices()`
+  * fix RecursionError in `util.random_k()`, see #239
+  * add `devel/test_sum_indices.py`
+
+-------------------------------------------------------------------
 Mon Aug 11 14:06:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.6.0
