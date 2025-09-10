@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  2 12:50:09 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update cassava to version 0.5.4.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/cassava-0.5.4.1/src/CHANGES.md
+
+-------------------------------------------------------------------
 Wed Jun 18 10:33:30 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update cassava to version 0.5.4.0 revision 1.
