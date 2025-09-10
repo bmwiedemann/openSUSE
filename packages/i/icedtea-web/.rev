@@ -326,4 +326,12 @@
     <comment>Reproducibility of mtimes</comment>
     <requestid>1287941</requestid>
   </revision>
+  <revision rev="42" vrev="9">
+    <srcmd5>bb4bd8eb08dd81aeed8217621ce12a89</srcmd5>
+    <version>1.8.8</version>
+    <time>1757518216</time>
+    <user>anag_factory</user>
+    <comment>Allow building without the pack200 support</comment>
+    <requestid>1303422</requestid>
+  </revision>
 </revisionlist>

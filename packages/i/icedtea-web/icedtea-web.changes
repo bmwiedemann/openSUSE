@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 10 05:22:48 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * remove-pack200-support.patch
+    + allow building without pack200 support (disabled by default)
+
+-------------------------------------------------------------------
 Mon Jun 23 13:08:45 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Bit-to-bit reproducibility work

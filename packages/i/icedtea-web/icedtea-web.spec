@@ -17,6 +17,7 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags} V=1}
+%bcond_without pack200
 Name:           icedtea-web
 Version:        1.8.8
 Release:        0
@@ -29,9 +30,10 @@ Patch0:         icedtea-web-suse-desktop-files.patch
 Patch1:         more-java-versions.patch
 Patch2:         reproducible-timestamps.patch
 Patch3:         standalone-pack200.patch
-Patch4:         java17.patch
-Patch5:         java21.patch
-Patch6:         javaws-policy.patch
+Patch4:         remove-pack200-support.patch
+Patch5:         java17.patch
+Patch6:         java21.patch
+Patch7:         javaws-policy.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
@@ -42,7 +44,9 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-tools
 BuildRequires:  junit
 BuildRequires:  libtool
+%if %{with pack200}
 BuildRequires:  pack200
+%endif
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  procps
 BuildRequires:  rhino
@@ -82,7 +86,19 @@ This package contains API documentation for the %{name} Java Web Start
 and plugin implementation.
 
 %prep
-%autosetup -p1
+%setup -q
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%if %{with pack200}
+%patch -P 3 -p1
+%else
+%patch -P 4 -p1
+%endif
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
+
 
 rm -rf netx/net/sourceforge/jnlp/NetxPanel.java netx/sun
 
@@ -92,6 +108,9 @@ rm -f netx/net/sourceforge/jnlp/util/WindowsDesktopEntry.java
 autoreconf -fiv
 export bashcompdir=%{_datadir}/bash-completion/completions
 %configure \
+%if %{with pack200}
+    --with-pack200=%{_bindir}/pack200 \
+%endif
     --bindir=%{_datadir}/%{name} \
     --disable-native-plugin \
     --disable-pluginjar \
@@ -99,8 +118,7 @@ export bashcompdir=%{_datadir}/bash-completion/completions
     --enable-docs \
     --enable-shell-launchers \
     --with-itw-libs=BUNDLED \
-    --with-modularjdk-file=%{_datadir}/%{name} \
-    --with-pack200=%{_bindir}/pack200
+    --with-modularjdk-file=%{_datadir}/%{name}
 
 %make_build
 
