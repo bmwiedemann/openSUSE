@@ -1,7 +1,7 @@
 #
 # spec file for package datefudge
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           datefudge
-Version:        1.26
+Version:        1.27
 Release:        0
 Summary:        A preload library to fake system time
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://packages.qa.debian.org/d/datefudge.html
 Source:         http://cdn.debian.net/debian/pool/main/d/datefudge/%{name}_%{version}.tar.xz
-Source2:        http://cdn.debian.net/debian/pool/main/d/datefudge/%{name}_%{version}.dsc#/%{name}.asc
+Source2:        http://cdn.debian.net/debian/pool/main/d/datefudge/%{name}_%{version}.dsc#/%{name}-%{version}.asc
 Source3:        https://db.debian.org/fetchkey.cgi?fingerprint=35E876FAB4D3732E93B4D237631DE7553BE8AFD4#/%{name}.keyring
 
 %description

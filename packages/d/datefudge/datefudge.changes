@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  9 10:31:32 UTC 2025 - pgajdos@suse.com
+
+- version update to 1.27
+ * Fix FTBFS by explicitly passing "abi=-time64" to DEB_BUILD_MAINT_OPTIONS
+    in debian/rules, so that we can still override both 32- and 64-bit time
+    functions on architectures that support it (closes: #1069478).
+  * Standards-Version: 4.7.0 (no changes).
+
+-------------------------------------------------------------------
 Fri Jan 26 05:57:59 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 1.26

@@ -42,4 +42,16 @@
     <comment></comment>
     <requestid>1143015</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>34a105c782d19770b1f42034e6db86f8</srcmd5>
+    <version>1.27</version>
+    <time>1757518206</time>
+    <user>anag_factory</user>
+    <comment>- version update to 1.27
+ * Fix FTBFS by explicitly passing &quot;abi=-time64&quot; to DEB_BUILD_MAINT_OPTIONS
+    in debian/rules, so that we can still override both 32- and 64-bit time
+    functions on architectures that support it (closes: #1069478).
+  * Standards-Version: 4.7.0 (no changes).</comment>
+    <requestid>1303334</requestid>
+  </revision>
 </revisionlist>
