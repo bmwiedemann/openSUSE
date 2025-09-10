@@ -1,7 +1,7 @@
 #
 # spec file for package fx
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2022-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           fx
-Version:        36.0.3
+Version:        39.1.0
 Release:        0
 Summary:        Terminal JSON viewer
 License:        MIT

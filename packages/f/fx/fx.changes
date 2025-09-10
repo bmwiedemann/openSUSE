@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Mon Sep  8 17:23:24 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 39.1.0
+  * Added filter shortcut: ?.foo > 42 (transformed to
+    .filter(x => x.foo > 42)).
+  * Added delete with dd in interactive mode.
+  * Added TOML support with --toml flag.
+  * Added 3 new themes.
+  * Better autocomplete for zsh.
+  * Fixed stringify now returns null for undefined.
+  * Fixed quoted fields in autocomplete.
+- Update to version 39.0.4
+  * Added FX_INDENT env variable.
+- Update to version 39.0.3
+  * Fixed bug with goto ref on collapsed nodes.
+- Update to version 39.0.2
+  * Fixed: only check escape chars in --strict mode.
+  * Fixed --slurp tailing whitespace parsing.
+- Update to version 39.0.1
+  * Fixed $ref view pretty printing.
+  * Fixed parsing of whitespaces at eof.
+- Update to version 39.0.0
+  * Add support for "Inlining"
+    + fx will inline (printing object in single line) some objects
+      and arrays for improved readability.
+  * Added yank of key + value.
+  * Added search caching.
+  * Fixed waiting of first JSON object in JSONL parsing.
+  * Fixed panic of missing JSON object.
+  * Improved speed of bash autocomplete on huge JSON files.
+  * Fixed keys autocompletion in some cases.
+- Update to version 38.0.0
+  * Added support for undefined values in interactive JSON mode.
+  * Improved error messages: better newline handling and clearer
+    JSON errors in interactive mode.
+  * Fixed line number parsing in --raw mode.
+- Update to version 37.0.1
+  * Goto line centers screen in the middle.
+- Update to version 37.0.0
+  * Add "Go To Line" (Vim-Style)
+    Quickly jump to any line using :42 syntax.
+  * JSON Parsing Enhancements
+    + Support for special values: Infinity, -Infinity, NaN.
+    + New --strict flag to enforce standard-compliant JSON only.
+  * Fixes & Improvements
+    + Corrected object node previews.
+    + More precise error messages.
+  * Data Utilities
+    + Added walk function for recursive data transformation
+  * The map function now supports object mapping.
+- Update to version 36.0.4
+  small but meaningful improvements to fx:
+  * When opening an empty file, the spinner now stops
+    immediately—making it clear that the file is, in fact, empty.
+  * No more pointless spinning.
+  * Removed a confusing indexing label from the status bar when
+    loading large files.
+  * The spinner has been relocated to the right corner for better
+    clarity.
+  * Additionally, in streaming mode, the spinner will now keep
+    spinning until the end of the file is reached.
+
+-------------------------------------------------------------------
 Wed Jun 18 13:58:20 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 36.0.3
