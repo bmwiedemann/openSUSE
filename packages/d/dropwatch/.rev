@@ -40,4 +40,12 @@
     <comment>fix Leap build (forwarded request 1161625 from mlin7442)</comment>
     <requestid>1162281</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>27bf45216affc9ee1716aa6275653ead</srcmd5>
+    <version>1.5.5</version>
+    <time>1757518236</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1303594</requestid>
+  </revision>
 </revisionlist>

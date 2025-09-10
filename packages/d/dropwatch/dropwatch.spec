@@ -1,7 +1,7 @@
 #
 # spec file for package dropwatch
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dropwatch
-Version:        1.5.4
+Version:        1.5.5
 Release:        0
 Summary:        Kernel dropped packet monitor
 License:        GPL-2.0-only
@@ -25,7 +25,6 @@ Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/nhorman/dropwatch
 Source:         https://github.com/nhorman/dropwatch/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         old-readline.diff
-Patch2:         https://github.com/nhorman/dropwatch/pull/83.patch
 Patch3:         bfd-link-statically.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -46,7 +45,6 @@ are dropped by the kernel
 %if 0%{?suse_version} <= 1590
 %patch -P 1 -p1
 %endif
-%patch -P 2 -p1
 %patch -P 3 -p1
 ./autogen.sh
 %configure

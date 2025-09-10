@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  2 08:50:25 UTC 2025 - pgajdos@suse.com
+
+- version update to 1.5.5
+  * Added abilty to build and run in a docker container
+  * kas is the default symbol lookup method now
+  * Fix building without libtool installed
+  * Misc fixes for kas lookup logic
+- deleted patches
+  - 83.patch (upstreamed)
+
+-------------------------------------------------------------------
 Tue Mar 26 07:07:24 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add BuildRequires:  pkgconfig(libzstd)
