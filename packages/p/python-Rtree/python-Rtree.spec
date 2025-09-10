@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Rtree
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        R-Tree spatial index for Python GIS
 License:        MIT

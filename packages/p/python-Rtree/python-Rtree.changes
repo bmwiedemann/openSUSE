@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 10 05:53:17 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.4.1
+  * Rename main branch references by :user:`mwtoews` in (#356)
+  * Fixing an incorrect reassignment in nearest_v and intersection_v
+    by @Atilleusz in (#358)
+  * Add spatialindex version to tests, add common pytest configuration
+    by @mwtoews in (#360)
+  * Refactor array-loading methods, add tests by @mwtoews in (#361)
+  * Minor refactor of code blocks in docs by @mwtoews in (#362)
+  * Resolve some issues in the batch API by @FreddieWitherden in (#367)
+  * Fix #369 (load libspatialindex without changing cwd)
+    by @remicres in (#370)
+  * arm64 wheels on Windows by @w8sl in (#378) and (#371)
+
+-------------------------------------------------------------------
 Tue Jun  3 07:16:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.4.0

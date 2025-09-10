@@ -50,4 +50,12 @@ Requires python-setuptools 78 to build successfully.
   - Refresh Rtree-opensuse-noarch.patch</comment>
     <requestid>1282361</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ba1b88d208e5e1379c5f92d7aa9a63d9</srcmd5>
+    <version>1.4.1</version>
+    <time>1757518232</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1303574</requestid>
+  </revision>
 </revisionlist>
