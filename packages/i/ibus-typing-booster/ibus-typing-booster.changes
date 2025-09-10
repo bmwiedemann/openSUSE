@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 8 20:47:22 UTC 2025 - Mike FABIAN <maiku.fabian@gmail.com>
+
+- Update to 2.27.74
+- Experimental support for ollama chat
+- Call `ibus write-cache` when the inputmodetruesymbol is changed or cache is out of date
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/788)
+- Remove <path>~/.config/dconf/</path> from <observed-paths> in the component file again
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/792)
+- Make setup tool more compact to fit on a 1024x768 pixel Gnome session again
+- Entries for input mode true/false symbols in the setup tool should not expand
+- Put tabs in the setup tool on the left side
+- Make the popovers smaller in the setup tool
+- Update emoji annotations from CLDR
+- Translation update from Weblate (fi 100%, ru 63.8%)
+
+-------------------------------------------------------------------
 Tue Sep  2 09:32:49 UTC 2025 - Mike FABIAN <maiku.fabian@gmail.com>
 
 - Update to 2.27.73
