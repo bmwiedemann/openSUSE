@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  9 11:10:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.34.1
+  * Error handling added to EnforceSubmoduleVersions by @sbSteveK in (#772)
+  * Latest submodules for Fix sts_web_identity credentials provider
+    by @TingDaoK in (#773)
+- from version 0.34.0
+  * CI Jobs fail-fast False by @sbSteveK in (#767)
+  * Update aws-c-io to fix dispatch queue memory leak
+    by @xiazhvera in (#769)
+
+-------------------------------------------------------------------
 Tue Aug 12 12:47:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.33.5
