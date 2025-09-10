@@ -1,7 +1,7 @@
 #
 # spec file for package libXScrnSaver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libXScrnSaver
 %define lname	libXss1
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        X11 Screen Saver extension client library
 License:        MIT
@@ -30,8 +30,8 @@ URL:            http://xorg.freedesktop.org/
 Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-#git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  fdupes
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(scrnsaverproto) >= 1.2
 BuildRequires:  pkgconfig(x11)
@@ -79,12 +79,11 @@ in %lname.
 %setup -q
 
 %build
-%configure --disable-static
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-make install DESTDIR="%buildroot"
-rm -f "%buildroot/%_libdir"/*.la
+%meson_install
 %fdupes %buildroot/%_prefix
 
 %post -n %lname -p /sbin/ldconfig

@@ -106,4 +106,18 @@
   * Handle implicit conversion warnings from clang</comment>
     <requestid>1040223</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3b38c5aa5b9d129cd88caa3b78e73787</srcmd5>
+    <version>1.2.5</version>
+    <time>1757518179</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.5
+  * Remove &quot;All rights reserved&quot; from Oracle copyright notices
+  * configure: Use LT_INIT from libtool 2 instead of deprecated
+    AC_PROG_LIBTOOL
+  * meson: Add option to build with meson
+  * Improve man page formatting
+- switch to meson</comment>
+    <requestid>1303212</requestid>
+  </revision>
 </revisionlist>
