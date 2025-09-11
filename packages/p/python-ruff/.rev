@@ -2535,4 +2535,41 @@
   * [flake8-use-pathlib] Add autofix for PTH211</comment>
     <requestid>1302894</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>2d05291d68fefbb1e695023413973395</srcmd5>
+    <version>0.13.0</version>
+    <time>1757594302</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.13.0
+ * Breaking changes
+  * Several rules can now add from __future__ import annotations automatically
+  * Full module paths are now used to verify first-party modules
+  * Deprecated rules must now be selected by exact rule code
+  * The deprecated macOS configuration directory fallback has been removed
+ * Removed Rules
+  * pandas-df-variable-name (PD901)
+  * non-pep604-isinstance (UP038)
+ * Stabilization
+  * airflow-dag-no-schedule-argument (AIR002)
+  * airflow3-removal (AIR301)
+  * airflow3-moved-to-provider (AIR302)
+  * airflow3-suggested-update (AIR311)
+  * airflow3-suggested-to-move-to-provider (AIR312)
+  * long-sleep-not-forever (ASYNC116)
+  * f-string-number-format (FURB116)
+  * os-symlink (PTH211)
+  * generic-not-last-base-class (PYI059)
+  * redundant-none-literal (PYI061)
+  * pytest-raises-ambiguous-pattern (RUF043)
+  * unused-unpacked-variable (RUF059)
+  * useless-class-metaclass-type (UP050)
+  * assert-raises-exception (B017) now checks for direct calls to unittest.TestCase.assert_raises
+      and pytest.raises instead of only the context manager forms.
+  * missing-trailing-comma (COM812) and prohibited-trailing-comma (COM819) now check
+      for trailing commas in PEP 695 type parameter lists.
+  * raw-string-in-exception (EM101) now also checks for byte strings in exception messages.
+  * invalid-mock-access (PGH005) now checks for AsyncMock methods like
+      not_awaited in addition to the synchronous variants.</comment>
+    <requestid>1303737</requestid>
+  </revision>
 </revisionlist>

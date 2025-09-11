@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Sep 11 00:23:58 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.13.0
+ * Breaking changes
+  * Several rules can now add from __future__ import annotations automatically
+  * Full module paths are now used to verify first-party modules
+  * Deprecated rules must now be selected by exact rule code
+  * The deprecated macOS configuration directory fallback has been removed
+ * Removed Rules
+  * pandas-df-variable-name (PD901)
+  * non-pep604-isinstance (UP038)
+ * Stabilization
+  * airflow-dag-no-schedule-argument (AIR002)
+  * airflow3-removal (AIR301)
+  * airflow3-moved-to-provider (AIR302)
+  * airflow3-suggested-update (AIR311)
+  * airflow3-suggested-to-move-to-provider (AIR312)
+  * long-sleep-not-forever (ASYNC116)
+  * f-string-number-format (FURB116)
+  * os-symlink (PTH211)
+  * generic-not-last-base-class (PYI059)
+  * redundant-none-literal (PYI061)
+  * pytest-raises-ambiguous-pattern (RUF043)
+  * unused-unpacked-variable (RUF059)
+  * useless-class-metaclass-type (UP050)
+  * assert-raises-exception (B017) now checks for direct calls to unittest.TestCase.assert_raises
+      and pytest.raises instead of only the context manager forms.
+  * missing-trailing-comma (COM812) and prohibited-trailing-comma (COM819) now check
+      for trailing commas in PEP 695 type parameter lists.
+  * raw-string-in-exception (EM101) now also checks for byte strings in exception messages.
+  * invalid-mock-access (PGH005) now checks for AsyncMock methods like
+      not_awaited in addition to the synchronous variants.
+  * useless-import-alias (PLC0414) no longer applies to __init__.py files, where
+      it conflicted with one of the suggested fixes for unused-import (F401).
+  * bidirectional-unicode (PLE2502) now also checks for U+061C (Arabic Letter Mark).
+  * The fix for multiple-with-statements (SIM117) is now marked as always safe.
+ * Preview features
+  * [pyupgrade] Enable UP043 in stub files 
+ * Bug fixes
+  * [pyupgrade] Apply UP008 only when the __class__ cell exists 
+  * [ruff] Fix empty f-string detection in in-empty-collection (RUF060) 
+ * Server
+  * Add support for using uv as an alternative formatter backend 
+ * Documentation
+  * [pep8-naming] Fix formatting of __all__ (N816) 
+
+-------------------------------------------------------------------
 Fri Sep  5 09:19:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.12:
