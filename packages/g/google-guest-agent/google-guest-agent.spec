@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           google-guest-agent
-Version:        20250901.00
+Version:        20250908.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
@@ -54,7 +54,7 @@ Google Cloud Guest Agent
 
 %build
 %goprep %{import_path}
-for bin in google_guest_agent google_metadata_script_runner; do
+for bin in gce_workload_cert_refresh google_guest_agent google_metadata_script_runner; do
     pushd "$bin"
     CGO_ENABLED=0 go build -buildmode=pie -ldflags="-s -w -X main.version=%{version}" -mod=vendor
     popd
@@ -62,15 +62,17 @@ done
 
 %install
 install -d %{buildroot}%{_bindir}
+install -p -m 0755 gce_workload_cert_refresh/gce_workload_cert_refresh %{buildroot}%{_bindir}/gce_workload_cert_refresh
 install -p -m 0755 google_guest_agent/google_guest_agent %{buildroot}%{_bindir}/google_guest_agent
 install -p -m 0755 google_metadata_script_runner/google_metadata_script_runner %{buildroot}%{_bindir}/google_metadata_script_runner
-install -p -m 0755 google_metadata_script_runner/google_metadata_script_runner %{buildroot}%{_bindir}/google_metadata_script_runner_adapt
+install -p -m 0755 google_metadata_script_runner_adapt %{buildroot}%{_bindir}/google_metadata_script_runner_adapt
 install -d %{buildroot}/usr/share/google-guest-agent
 install -p -m 0644 instance_configs.cfg %{buildroot}/usr/share/google-guest-agent/instance_configs.cfg
 install -d %{buildroot}%{_unitdir}
 install -p -m 0644 %{name}.service %{buildroot}%{_unitdir}
 install -p -m 0644 google-startup-scripts.service %{buildroot}%{_unitdir}
 install -p -m 0644 google-shutdown-scripts.service %{buildroot}%{_unitdir}
+install -p -m 0644 gce-workload-cert-refresh.service %{buildroot}%{_unitdir}
 mkdir -p %{buildroot}%{_sbindir}
 for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.service' $srv_name); ln -s service %{buildroot}%{_sbindir}/rc$rc_name; done
 
@@ -83,10 +85,10 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
         systemctl stop --no-block google-network-setup
         systemctl disable google-network-setup.service
     fi
-    %service_add_pre google-guest-agent.service google-shutdown-scripts.service google-startup-scripts.service
+    %service_add_pre google-guest-agent.service google-shutdown-scripts.service google-startup-scripts.service gce-workload-cert-refresh.service
 
 %preun
-    %service_del_preun google-guest-agent.service google-shutdown-scripts.service google-startup-scripts.service
+    %service_del_preun google-guest-agent.service google-shutdown-scripts.service google-startup-scripts.service gce-workload-cert-refresh.service
 
 %post
     # Handle enabling of services during an upgrade from the old google-compute-engine-init package
@@ -103,7 +105,7 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
 	mktemp --suffix ".google-shutdown-scripts"
     fi
 
-    %service_add_post google-guest-agent.service google-shutdown-scripts.service google-startup-scripts.service
+    %service_add_post google-guest-agent.service google-shutdown-scripts.service google-startup-scripts.service gce-workload-cert-refresh.service
 
 %posttrans
     if ! [ -e /.buildenv ] && [ -f /tmp/tmp\.[A-Z,a-z,0-9]*\.google-accounts-daemon-enabled ] ; then
@@ -125,7 +127,7 @@ for srv_name in %{buildroot}%{_unitdir}/*.service; do rc_name=$(basename -s '.se
     fi
 
 %postun
-    %service_del_postun google-guest-agent.service google-shutdown-scripts.service google-startup-scripts.service
+    %service_del_postun google-guest-agent.service google-shutdown-scripts.service google-startup-scripts.service gce-workload-cert-refresh.service
 
 %files
 %defattr(0644,root,root,0755)
