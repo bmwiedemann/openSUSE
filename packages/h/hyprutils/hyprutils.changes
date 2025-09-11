@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 10 19:44:04 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.8.4:
+  - add setStdinFD to CProcess by @ikalco in #74
+- Changes from version 0.8.3:
+  - Add C++ cast aliases; replace existing casts and remove
+    redundant casts by @Kam1k4dze in #71
+  - smart pointer factories should not be static by @lukasx999 in
+    #72
+- Changes from version 0.8.2:
+  - introduce CRegion foreach and cleanup clangd warnings by
+    @gulafaran in #65
+  - some minor optimisations by @gulafaran in #66
+  - memory: fix CAtomicSharedPointer mutex unlock and lifetime
+    issues by @PaideiaDilemma in #68
+  - memory: add missing lock by @PaideiaDilemma in #69
+  - mat3x3: check for finite in toString by @gulafaran in #70
+
+-------------------------------------------------------------------
 Wed Jul 16 12:23:15 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.8.1:
