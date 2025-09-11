@@ -832,4 +832,25 @@ M email.patch
     <comment></comment>
     <requestid>1269206</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>91165ee684586aa55eed44d6a1b03a45</srcmd5>
+    <version>206</version>
+    <time>1757594295</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 206:
+  * mcelog: Fix the MCCHAN bank number check for Granite Rapids
+  * mcelog: Don't print &quot;arstate&quot; when PCC=1
+  * mcelog: Add a --binary option for reading records saved to pstore
+- Sync with mainline and remove old AMD models which never made it mainline
+D    Start-consolidating-AMD-specific-stuff.patch
+D    add_new_amd_cpu_defines
+D    add-f10h-support.patch
+D    add-f11h-support.patch
+D    add-f12h-support.patch
+D    add-f14h-support.patch
+D    add-f15h-support.patch
+D    add-f16h-support.patch
+- Fix a date issue in changelog (YEKT timezone unknown)</comment>
+    <requestid>1303645</requestid>
+  </revision>
 </revisionlist>

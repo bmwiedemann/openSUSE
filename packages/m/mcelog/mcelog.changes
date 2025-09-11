@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 10 07:04:03 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Update to version 206:
+  * mcelog: Fix the MCCHAN bank number check for Granite Rapids
+  * mcelog: Don't print "arstate" when PCC=1
+  * mcelog: Add a --binary option for reading records saved to pstore
+- Sync with mainline and remove old AMD models which never made it mainline
+D    Start-consolidating-AMD-specific-stuff.patch
+D    add_new_amd_cpu_defines
+D    add-f10h-support.patch
+D    add-f11h-support.patch
+D    add-f12h-support.patch
+D    add-f14h-support.patch
+D    add-f15h-support.patch
+D    add-f16h-support.patch
+- Fix a date issue in changelog (YEKT timezone unknown)
+
+-------------------------------------------------------------------
 Fri Apr 11 12:34:24 UTC 2025 - trenn@suse.de
 
 - Update to version 204:
@@ -529,7 +547,7 @@ Wed Jul 18 12:49:43 UTC 2012 - trenn@suse.de
 - Also build mcelog packages for i386 (bnc#770726)
 
 -------------------------------------------------------------------
-Tue Apr 24 23:43:56 YEKT 2012 - avm-xandry@yandex.ru
+Tue Apr 25 04:43:56 UTC 2012 - avm-xandry@yandex.ru
 
 - Fixed description in init-file.
 

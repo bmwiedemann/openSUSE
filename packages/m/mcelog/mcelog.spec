@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           mcelog
-Version:        204
+Version:        206
 Release:        0
 Summary:        Log Machine Check Events
 License:        GPL-2.0-only
@@ -34,14 +34,6 @@ Source5:        mcelog.tmpfiles
 Source6:        README.email_setup
 Patch1:         email.patch
 Patch2:         mcelog_invert_prefill_db_warning.patch
-Patch3:         Start-consolidating-AMD-specific-stuff.patch
-Patch4:         add_new_amd_cpu_defines
-Patch5:         patches/add-f10h-support.patch
-Patch6:         patches/add-f11h-support.patch
-Patch7:         patches/add-f12h-support.patch
-Patch8:         patches/add-f14h-support.patch
-Patch9:         patches/add-f15h-support.patch
-Patch10:        patches/add-f16h-support.patch
 Patch11:        mcelog-socket-path.patch
 Patch12:        fix_setgroups_missing_call.patch
 BuildRequires:  libesmtp-devel
