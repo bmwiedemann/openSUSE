@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep  8 12:59:18 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.7.0
+  * removed support for Python 3.8
+  * Added support for Python 3.14
+  * Added new Cmd.ppretty() method for pretty printing arbitrary
+    Python data structures
+  * Clarified help text for -t/--transcript argument to the history
+    command
+  * Added explicit support for free-threaded versions of Python,
+    starting with version 3.14
+  * Integrated rich-argparse with cmd2's default argparse help
+    formatter (Cmd2HelpFormatter).
+
+-------------------------------------------------------------------
 Fri Jul  4 09:05:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.11:
