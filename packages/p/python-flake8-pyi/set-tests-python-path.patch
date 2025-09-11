@@ -1,7 +1,7 @@
-Index: flake8_pyi-23.11.0/tests/test_pyi_files.py
+Index: flake8_pyi-25.5.0/tests/test_pyi_files.py
 ===================================================================
---- flake8_pyi-23.11.0.orig/tests/test_pyi_files.py
-+++ flake8_pyi-23.11.0/tests/test_pyi_files.py
+--- flake8_pyi-25.5.0.orig/tests/test_pyi_files.py
++++ flake8_pyi-25.5.0/tests/test_pyi_files.py
 @@ -43,6 +43,9 @@ def test_pyi_file(path: str) -> None:
          option = flag.split("=")[0]
          assert option not in {"--ignore", "--select"}, bad_flag_msg(option[2:])
@@ -14,10 +14,10 @@ Index: flake8_pyi-23.11.0/tests/test_pyi_files.py
      # For DeprecationWarnings coming from flake8-pyi itself,
 @@ -51,6 +54,8 @@ def test_pyi_file(path: str) -> None:
      # but the test failure report that pytest gives is much easier to read
-     # if we use `-Wdefault:::pyi`
+     # if we use `-Wdefault:::flake8_pyi`
      flake8_invocation = [
 +        "env",
 +        pythonpath,
          sys.executable,
          "-Wignore",
-         "-Wdefault:::pyi",
+         "-Wdefault:::flake8_pyi",

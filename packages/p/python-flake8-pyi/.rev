@@ -415,4 +415,24 @@ Other changes:
    `ast_decompiler` package.</comment>
     <requestid>1219188</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c6d5fcc8eadf3fdacf41f0101f371bd5</srcmd5>
+    <version>25.5.0</version>
+    <time>1757594395</time>
+    <user>anag_factory</user>
+    <comment>- update to 25.5.0
+  * Introduce Y067: Don't use Incomplete | None = None.
+  * Introduce Y091: Protocol method parameters should not be
+    positional-or-keyword.
+  * Y011/Y015 will now allow all defaults that include an attribute
+    access, for example math.inf or enum members.
+  * Development-only dependencies are now declared using dependency
+    groups rather than optional dependencies.
+  * The plugin now exists as a flake8_pyi package rather than a
+    single pyi.py file.
+  * Declare support for Python 3.14
+- Add fix-tests.patch cleaning up the code for old detritus,
+  which broke tests.</comment>
+    <requestid>1303701</requestid>
+  </revision>
 </revisionlist>

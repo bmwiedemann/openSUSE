@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep  5 15:02:05 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 25.5.0
+  * Introduce Y067: Don't use Incomplete | None = None.
+  * Introduce Y091: Protocol method parameters should not be
+    positional-or-keyword.
+  * Y011/Y015 will now allow all defaults that include an attribute
+    access, for example math.inf or enum members.
+  * Development-only dependencies are now declared using dependency
+    groups rather than optional dependencies.
+  * The plugin now exists as a flake8_pyi package rather than a
+    single pyi.py file.
+  * Declare support for Python 3.14
+- Add fix-tests.patch cleaning up the code for old detritus,
+  which broke tests.
+
+-------------------------------------------------------------------
 Tue Oct 29 21:15:28 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.9.0:

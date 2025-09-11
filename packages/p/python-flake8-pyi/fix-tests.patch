@@ -1,0 +1,38 @@
+From 0197415ebccb6558350822e15f4bb9a0f9b758bb Mon Sep 17 00:00:00 2001
+From: Sebastian Rittau <srittau@rittau.biz>
+Date: Sun, 31 Aug 2025 03:56:30 +0200
+Subject: [PATCH] Fix tests to reflect the current state (#526)
+
+---
+ tests/forward_refs_annassign.pyi                | 4 ++--
+ tests/vanilla_flake8_not_clean_forward_refs.pyi | 4 +++-
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/tests/forward_refs_annassign.pyi b/tests/forward_refs_annassign.pyi
+index 51f94791..41887e4e 100644
+--- a/tests/forward_refs_annassign.pyi
++++ b/tests/forward_refs_annassign.pyi
+@@ -50,7 +50,7 @@ class Child(Parent): ...
+ 
+ class MyClass:
+     foo: int
+-    bar = foo
++    bar = foo  # F821 undefined name 'foo'
+ 
+ baz: MyClass
+-eggs = baz
++eggs = baz  # F821 undefined name 'baz'
+diff --git a/tests/vanilla_flake8_not_clean_forward_refs.pyi b/tests/vanilla_flake8_not_clean_forward_refs.pyi
+index 98ec183f..6c9d5208 100644
+--- a/tests/vanilla_flake8_not_clean_forward_refs.pyi
++++ b/tests/vanilla_flake8_not_clean_forward_refs.pyi
+@@ -3,6 +3,8 @@ from typing import TypeAlias, Union
+ 
+ ManyStr: TypeAlias = list[EitherStr]  # F821 undefined name 'EitherStr'
+ EitherStr: TypeAlias = Union[str, bytes]
+-def function(accepts: EitherStr) -> None: ...
++# The following line reports "F821 undefined name 'EitherStr'" on Python 3.14+
++# but not on earlier versions.
++# def function(accepts: EitherStr) -> None: ...  # F821 undefined name 'EitherStr'
+ 
+ del EitherStr  # private name, not exported
