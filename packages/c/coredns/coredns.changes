@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Thu Sep 11 06:35:54 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.12.4:
+  * bump deps
+  * fix(transfer): goroutine leak on axfr err (#7516)
+  * plugin/etcd: fix import order for ttl test (#7515)
+  * fix(grpc): check proxy list length in policies (#7512)
+  * fix(https): propagate HTTP request context (#7491)
+  * fix(plugin): guard nil lookups across plugins (#7494)
+  * lint: add missing prealloc to backend lookup test (#7510)
+  * fix(grpc): span leak on error attempt (#7487)
+  * test(plugin): improve backend lookup coverage (#7496)
+  * lint: enable prealloc (#7493)
+  * lint: enable durationcheck (#7492)
+  * Add Sophotech to adopters list (#7495)
+  * plugin: Use %w to wrap user error (#7489)
+  * fix(metrics): add timeouts to metrics HTTP server (#7469)
+  * chore(ci): restrict token permissions (#7470)
+  * chore(ci): pin workflow dependencies (#7471)
+  * fix(forward): use netip package for parsing (#7472)
+  * test(plugin): improve test coverage for pprof (#7473)
+  * build(deps): bump github.com/go-viper/mapstructure/v2 (#7468)
+  * plugin/file: fix label offset problem in ClosestEncloser (#7465)
+  * feat(trace): migrate dd-trace-go v1 to v2 (#7466)
+  * test(multisocket): deflake restart by using a fresh port and coordinated cleanup (#7438)
+  * chore: update Go version to 1.24.6 (#7437)
+  * plugin/header: Remove deprecated syntax (#7436)
+  * plugin/loadbalance: support prefer option (#7433)
+  * Improve caddy.GracefulServer conformance checks (#7416)
+
+-------------------------------------------------------------------
+Sun Aug 31 14:18:42 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.12.3:
+  * chore: Minor changes to `Dockerfile` (#7428)
+  * Properly create hostname from IPv6 (#7431)
+  * Bump deps
+  * fix: handle cached connection closure in forward plugin (#7427)
+  * plugin/test: fix TXT record comparison for multi-chunk vs multiple records
+  * plugin/file: preserve case in SRV record names and targets per RFC 6763
+  * fix(auto/file): return REFUSED when no next plugin is available (#7381)
+  * Port to AWS Go SDK v2 (#6588)
+  * fix(cache): data race when refreshing cached messages (#7398)
+  * fix(cache): data race when updating the TTL of cached messages (#7397)
+  * chore: fix docs incompatibility (#7390)
+  * plugin/rewrite: Add EDNS0 Unset Action (#7380)
+  * add args: startup_timeout for kubernetes plugin (#7068)
+  * [plugin/cache] create a copy of a response to ensure original data is never
+     modified
+  * Add support for fallthrough to the grpc plugin (#7359)
+  * view: Add IPv6 example match (#7355)
+  * chore: enable more rules from revive (#7352)
+  * chore: enable early-return and superfluous-else from revive (#7129)
+  * test(plugin): improve tests for auto (#7348)
+  * fix(proxy): flaky dial tests (#7349)
+  * test: add t.Helper() calls to test helper functions (#7351)
+  * fix(kubernetes): multicluster DNS race condition (#7350)
+  * lint: enable wastedassign linter (#7340)
+  * test(plugin): add tests for any (#7341)
+  * Actually invoke make release -f Makefile.release during test (#7338)
+  * Keep golang to 1.24.2 due to build issues in 1.24.3 (#7337)
+  * lint: enable protogetter linter (#7336)
+  * lint: enable nolintlint linter (#7332)
+  * fix: missing intrange lint fix (#7333)
+  * perf(kubernetes): optimize AutoPath slice allocation (#7323)
+  * lint: enable intrange linter (#7331)
+  * feat(plugin/file): fallthrough (#7327)
+  * lint: enable canonicalheader linter (#7330)
+  * fix(proxy): avoid Dial hang after Transport stopped (#7321)
+  * test(plugin): add tests for pkg/rand (#7320)
+  * test(dnsserver): add unit tests for gRPC and QUIC servers (#7319)
+  * fix: loop variable capture and linter (#7328)
+  * lint: enable usetesting linter (#7322)
+  * test: skip certain network-specific tests on non-Linux (#7318)
+  * test(dnsserver): improve core/dnsserver test coverage (#7317)
+  * fix(metrics): preserve request size from plugins (#7313)
+  * fix: ensure DNS query name reset in plugin.NS error path (#7142)
+  * feat: enable plugins via environment during build (#7310)
+  * fix(plugin/bind): remove zone for link-local IPv4 (#7295)
+  * test(request): improve coverage across package (#7307)
+  * test(coremain): Add unit tests (#7308)
+  * ci(test-e2e): add Go version setup to workflow (#7309)
+  * kubernetes: add multicluster support (#7266)
+  * chore: Add new maintainer thevilledev (#7298)
+  * Update golangci-lint (#7294)
+  * feat: limit concurrent DoQ streams and goroutines (#7296)
+  * docs: add man page for multisocket plugin (#7297)
+  * Prepare for the k8s api upgrade (#7293)
+  * fix(rewrite): truncated upstream response (#7277)
+  * fix(plugin/secondary): make transfer property mandatory (#7249)
+  * plugin/bind: remove macOS bug mention in docs (#7250)
+  * Remove `?bla=foo:443` for `POST` DoH (#7257)
+  * Do not interrupt querying readiness probes for plugins (#6975)
+  * Added `SetProxyOptions` function for `forward` plugin (#7229)
+- removed patch fixquic-go.patch  as already included in upstream
+
+-------------------------------------------------------------------
 Mon May  5 06:21:40 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Added patch fixquic-go.patch 

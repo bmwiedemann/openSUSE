@@ -1,7 +1,7 @@
 #
 # spec file for package coredns
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define project github.com/coredns/coredns
 Name:           coredns
-Version:        1.12.1
+Version:        1.12.4
 Release:        0
 Summary:        DNS server written in Go
 License:        Apache-2.0
@@ -29,9 +29,8 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source10:       Corefile
 Source11:       coredns.service
-Patch12:        fixquic-go.patch
 BuildRequires:  fdupes
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.24.5
 
 %description
 CoreDNS is a DNS server in Go. It has a plugin architecture for
