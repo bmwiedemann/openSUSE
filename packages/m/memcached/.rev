@@ -644,4 +644,31 @@ bsc#1007869) (CVE-2016-8706)</comment>
 - disable ssl_session_resumption.t for s390x [bsc#1243673]</comment>
     <requestid>1289073</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>8308a2700a267b3ac3344f6e637fde6d</srcmd5>
+    <version>1.6.39</version>
+    <time>1757594242</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1303359 from pgajdos
+
+- version update to 1.6.39
+  * tests: improve extstore-tiered2 reliability
+  * proxy: very limited flagcopyall function
+  * proxy: flagcopy removes flag if source is nil
+  * restart: Fix typecast on setting stop_time during restart
+  * tests: make slabs-mover test more resilient
+  * proxy: fix memory corruption from bad set uploads
+  * core: fix pipelined set failures on pending reads
+  * proxy: fix subrctx issues during error handling
+  * tls: minor fix when tls disabled
+  * tls: fix potential hang when pipelining sets
+  * proxy: missing error handling in some situations
+  * proxy: fix double logging with sub requests's
+  * tests: attempt to make extstore tests less flaky
+  * crawler: fix issue with strict alignment (ARM)
+  * proxy: fix time_*_millis overflow on 32bit sys
+  * crawler: speedup and extstore info
+  * mcmc: upstream updates</comment>
+    <requestid>1303362</requestid>
+  </revision>
 </revisionlist>

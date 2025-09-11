@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Sep  9 13:33:24 UTC 2025 - pgajdos@suse.com
+
+- version update to 1.6.39
+  * tests: improve extstore-tiered2 reliability
+  * proxy: very limited flagcopyall function
+  * proxy: flagcopy removes flag if source is nil
+  * restart: Fix typecast on setting stop_time during restart
+  * tests: make slabs-mover test more resilient
+  * proxy: fix memory corruption from bad set uploads
+  * core: fix pipelined set failures on pending reads
+  * proxy: fix subrctx issues during error handling
+  * tls: minor fix when tls disabled
+  * tls: fix potential hang when pipelining sets
+  * proxy: missing error handling in some situations
+  * proxy: fix double logging with sub requests's
+  * tests: attempt to make extstore tests less flaky
+  * crawler: fix issue with strict alignment (ARM)
+  * proxy: fix time_*_millis overflow on 32bit sys
+  * crawler: speedup and extstore info
+  * mcmc: upstream updates
+
+-------------------------------------------------------------------
 Wed Jun 25 13:58:12 UTC 2025 - pgajdos@suse.com
 
 - disable ssl_session_resumption.t for s390x [bsc#1243673]
