@@ -9,11 +9,11 @@ Many users rely on this functionality.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/kmail/plugins/expertplugin/kmail_expertplugin.json b/kmail/plugins/expertplugin/kmail_expertplugin.json
-index 6ee5329..8319cc9 100644
+index 723202b..8fe5096 100644
 --- a/kmail/plugins/expertplugin/kmail_expertplugin.json
 +++ b/kmail/plugins/expertplugin/kmail_expertplugin.json
-@@ -36,7 +36,7 @@
-         "Description[x-test]": "xxThis plugin activates some expert actions.xx",
+@@ -38,7 +38,7 @@
+         "Description[uk]": "За допомогою цього додатка можна увімкнути деякі дії для досвідчених користувачів.",
          "Description[zh_CN]": "此插件激活一些专家操作。",
          "Description[zh_TW]": "這個外掛程式會啟用一些專家動作。",
 -        "EnabledByDefault": false,
