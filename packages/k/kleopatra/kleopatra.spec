@@ -18,11 +18,11 @@
 
 %define kf6_version 6.14.0
 %define qt6_version 6.8.0
-%define kpim6_version 6.5.0
+%define kpim6_version 6.5.1
 
 %bcond_without released
 Name:           kleopatra
-Version:        25.08.0
+Version:        25.08.1
 Release:        0
 Summary:        Certificate manager and GUI for OpenPGP and CMS cryptography
 License:        GPL-2.0-or-later
