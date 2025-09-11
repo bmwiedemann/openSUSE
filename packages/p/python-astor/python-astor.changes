@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  8 12:44:02 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add py314.patch to support Python 3.14
+
+-------------------------------------------------------------------
 Fri Jun 13 05:37:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

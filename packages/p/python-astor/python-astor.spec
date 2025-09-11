@@ -1,7 +1,7 @@
 #
 # spec file for package python-astor
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Patch0:         remove_nose.patch
 # https://github.com/berkerpeksag/astor/commit/8342d6aa5dcdcf20f89a19057527510c245c7a2e
 Patch1:         lower-huge-int.patch
 Patch2:         support-match.patch
+# PATCH-FIX-UPSTREAM https://github.com/berkerpeksag/astor/pull/233 Fix compatibility with Python 3.14 (mostly)
+Patch3:         py314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -38,10 +40,6 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-%if %{with python2}
-# The tests use it internally, even when called from pytest-2
-BuildRequires:  python-unittest2
-%endif
 # /SECTION
 %python_subpackages
 
