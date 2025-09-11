@@ -309,4 +309,15 @@
 - renamed macro _realname</comment>
     <requestid>1133209</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>d8766b4bb08c3d087a9d58d8c1e1194f</srcmd5>
+    <version>1.9.23</version>
+    <time>1757594388</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.9.23:
+  * Python 3.13 support
+  * Build binary kits for Windows and macOS
+  * No longer build svn 1.10 kits as subversion LTS is 1.14 now</comment>
+    <requestid>1303658</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 10 12:56:37 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- update to 1.9.23:
+  * Python 3.13 support
+  * Build binary kits for Windows and macOS
+  * No longer build svn 1.10 kits as subversion LTS is 1.14 now
+
+-------------------------------------------------------------------
 Thu Dec 14 21:38:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.22:

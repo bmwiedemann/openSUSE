@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysvn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define packagename pysvn
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pysvn
-Version:        1.9.22
+Version:        1.9.23
 Release:        0
 Summary:        Highlevel Subversion Python Bindings
 License:        Apache-1.1
@@ -72,7 +72,16 @@ rm -rf Import
 export CFLAGS="%{optflags}"
 %{python_expand #
 pushd build/Source
-$python setup.py configure --enable-debug --verbose --fixed-module-name --norpath
+
+# Copy cxx to CXX because sources look for (Uppercase) CXX
+rm -rf CXX
+if [ -d "%{_includedir}/python%{$python_bin_suffix}/cxx" ]
+then
+  cp -r %{_includedir}/python%{$python_bin_suffix}/cxx CXX
+  extraargs="--pycxx-dir=."
+fi
+
+$python setup.py configure --enable-debug --verbose --fixed-module-name --norpath $extraargs
 
 sed -i -e 's@-Wall -fPIC -fexceptions -frtti@%{optflags} -fPIC -frtti@' Makefile
 %make_build
