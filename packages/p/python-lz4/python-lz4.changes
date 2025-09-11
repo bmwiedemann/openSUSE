@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  9 14:55:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.4.4
+  * Various doc fixes
+  * Update CI to newest actions and Python 3.13
+  * Revert artifact renaming
+- Add py314.patch to fix tests with Python 3.14
+
+-------------------------------------------------------------------
 Sat Jan 13 20:41:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.3:

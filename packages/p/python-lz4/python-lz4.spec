@@ -1,7 +1,7 @@
 #
 # spec file for package python-lz4
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lz4
-Version:        4.3.3
+Version:        4.4.4
 Release:        0
 Summary:        LZ4 Bindings for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/python-lz4/python-lz4
 Source:         https://files.pythonhosted.org/packages/source/l/lz4/lz4-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/python-lz4/python-lz4/pull/303 Correct the import of _compression for Python 3.14
+Patch0:         py314.patch
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pkgconfig}
@@ -42,7 +44,7 @@ BuildRequires:  python-rpm-macros
 This package provides python bindings for the lz4 compression library.
 
 %prep
-%setup -q -n lz4-%{version}
+%autosetup -p1 -n lz4-%{version}
 
 %build
 # not neccessary, but ensure we use system lib
