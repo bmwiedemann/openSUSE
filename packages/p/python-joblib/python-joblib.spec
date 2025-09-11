@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-joblib
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Module for using Python functions as pipeline jobs
 License:        BSD-3-Clause
@@ -102,12 +102,6 @@ if [ $(python3 -c 'import sys; print(sys.byteorder)') != "little" ]; then
                 test_hashes_stay_the_same_with_numpy_objects or \
                 test_non_contiguous_array_pickling"
 fi
-# memmaping tests fail on Python 3.13.7 https://github.com/joblib/loky/issues/459
-DISABLED_TESTS+=" or test_permission_error_windows_memmap_sent_to_parent or \
-		test_many_parallel_calls_on_same_object or \
-		test_memmapping_pool_for_large_arrays or \
-		test_memmapping_on_large_enough_dev_shm or \
-		test_memmapping_leaks"
 %pytest -k "not ($DISABLED_TESTS)"
 
 %files %{python_files}

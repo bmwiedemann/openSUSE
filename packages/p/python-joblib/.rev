@@ -389,4 +389,15 @@
     <comment></comment>
     <requestid>1300700</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>287ff59e89b0c43190ea2a2f77996855</srcmd5>
+    <version>1.5.2</version>
+    <time>1757594295</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.5.2
+  * Vendor ``loky3.5.6`` fixing the resource tracker for python 3.13.7+
+    https://github.com/joblib/joblib/pull/1740
+</comment>
+    <requestid>1303623</requestid>
+  </revision>
 </revisionlist>
