@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep  9 21:17:14 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.58.0:
+  + mtp: Allow cancelling ongoing folder enumerations
+  + wsdd: Use socket-activated service if available
+  + onedrive: Set emblem for remote data
+  + fix: Add file rename support in MTP backend move operation
+  + mtp: Fix -Wmaybe-uninitialized warning in pad_file
+  + fuse: use fuse_(un)set_feature_flag for libfuse 3.17+
+  + smbbrowse: Purge server cache for next auth try
+  + metatree: Open files with O_CLOEXEC
+  + cdda: Fix incorrect track duration for 99-track CDs
+  + metadata: Fix journal file permissions inconsistency
+  + dav: recognize 308 Permanent Redirect
+
+-------------------------------------------------------------------
 Tue Sep  2 16:54:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Split out new gvfs-backend-gphoto sub-package.
