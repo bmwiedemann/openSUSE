@@ -295,4 +295,21 @@
     <comment></comment>
     <requestid>1183244</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>efce7b5a307bb324c5d263569dcf60c9</srcmd5>
+    <version>0.12.6</version>
+    <time>1757594357</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.12.6
+  Changes since 0.12.5
+  * Dvaered Negotiation 1: update the location of the target on
+    the map
+  * Dvaered Sabotage: no longer fail the mission if the target
+    jumps out after boarding
+  * Fixed point defense turning off all the time
+  * Minor typo fixes and translation updates
+- Add BuildRequires pkgconfig(libcmark), pkgconfig(nfd),
+  pkgconfig(yaml-0.1) (forwarded request 1302992 from Kieltux)</comment>
+    <requestid>1303024</requestid>
+  </revision>
 </revisionlist>

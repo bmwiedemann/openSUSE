@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep  6 07:50:53 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 0.12.6
+  Changes since 0.12.5
+  * Dvaered Negotiation 1: update the location of the target on
+    the map
+  * Dvaered Sabotage: no longer fail the mission if the target
+    jumps out after boarding
+  * Fixed point defense turning off all the time
+  * Minor typo fixes and translation updates
+- Add BuildRequires pkgconfig(libcmark), pkgconfig(nfd),
+  pkgconfig(yaml-0.1)
+
+-------------------------------------------------------------------
 Sat Jun 15 15:13:04 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 0.11.5

@@ -1,7 +1,7 @@
 #
 # spec file for package naev
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           naev
-Version:        0.11.5
+Version:        0.12.6
 Release:        0
 Summary:        2D action RPG space game
 License:        GPL-3.0-only
@@ -30,7 +30,7 @@ BuildRequires:  glpk-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  luajit-devel
-BuildRequires:  meson
+BuildRequires:  meson >= 1.4.0
 BuildRequires:  openal-soft-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
@@ -41,14 +41,17 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(libcmark)
 BuildRequires:  pkgconfig(libenet)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libunibreak)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(nfd)
 BuildRequires:  pkgconfig(physfs)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vorbis)
+BuildRequires:  pkgconfig(yaml-0.1)
 
 %description
 Naev is a 2D space trading and combat game, in a similar vein to Escape Velocity.
