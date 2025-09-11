@@ -1,7 +1,7 @@
 #
 # spec file for package hyprcursor
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2024 Florian "sp1rit" <sp1rit@disroot.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define sover 0
 
 Name:           hyprcursor
-Version:        0.1.12
+Version:        0.1.13
 Release:        0
 Summary:        Library and utilities for the hyprland cursor format
 License:        BSD-3-Clause
