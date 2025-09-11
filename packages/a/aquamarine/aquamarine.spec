@@ -1,7 +1,7 @@
 #
 # spec file for package aquamarine
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Aquamarine is a very light linux rendering backend library. It
 provides basic abstractions for an application to render on a Wayland
 session (in a window) or a native DRM session.}
 Name:           aquamarine
-Version:        0.9.1
+Version:        0.9.4
 Release:        0
 Summary:        Rendering backend library
 License:        BSD-3-Clause
