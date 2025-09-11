@@ -1,7 +1,7 @@
 #
 # spec file for package python-distlib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Distribution utilities
 License:        Python-2.0
 URL:            https://github.com/pypa/distlib
 Source:         https://files.pythonhosted.org/packages/source/d/distlib/distlib-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pypa/distlib/commit/6286442857de9f734686d08f0e59ca8048ee357a Fix #251: Use more appropriate function in test.
+Patch0:         py314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testsuite}
