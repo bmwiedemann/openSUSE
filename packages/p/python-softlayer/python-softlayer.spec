@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-softlayer
-Version:        6.2.6
+Version:        6.2.7
 Release:        0
 Summary:        A set of Python libraries that assist in calling the SoftLayer API
 License:        MIT
 URL:            https://github.com/softlayer/softlayer-python
 Source:         https://github.com/softlayer/softlayer-python/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#softlayer/softlayer-python#2222
-Patch0:         support-click-8.2.patch
 BuildRequires:  %{python_module click >= 8.0.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module prettytable >= 2.5.0}
@@ -33,7 +31,7 @@ BuildRequires:  %{python_module prompt_toolkit >= 2}
 BuildRequires:  %{python_module pygments >= 2.0.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.20.0}
-BuildRequires:  %{python_module rich >= 12.5.1}
+BuildRequires:  %{python_module rich >= 14.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module softlayer-zeep >= 5.0.0}
 BuildRequires:  %{python_module testtools}
