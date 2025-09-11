@@ -1,10 +1,32 @@
 -------------------------------------------------------------------
+Wed Sep  3 13:50:00 CEST 2025 - jbeulich@suse.com
+
+- Upstream bug fixes (bsc#1027519)
+  687a40ac-x86-C6-eoi_errata-include-NEHALEM_EX.patch
+  68931694-x86-HPET-defer-LAPIC-EOI.patch
+  689b0c0c-EFI-cond-FreePages.patch
+  68a2e770-x86-mkelf32-pad-segment-to-2Mb.patch
+  68a2e7c8-x86-HVM-ioreq-inverted-condition.patch
+  68a6ed85-x86-setup-MMCFG-ahead-of-IOMMU.patch
+  68ac5f69-x86-adjustments-to-intel_init_ppin.patch
+
+-------------------------------------------------------------------
+Fri Aug 29 13:29:53 MDT 2025 - carnold@suse.com
+
+- bsc#1248807 - VUL-0: CVE-2025-27466, CVE-2025-58142,
+  CVE-2025-58143: xen: Mutiple vulnerabilities in the Viridian
+  interface (XSA-472)
+  xsa472-1.patch
+  xsa472-2.patch
+  xsa472-3.patch
+
+-------------------------------------------------------------------
 Thu Jul 10 05:25:48 MDT 2025 - carnold@suse.com
 
 - Update to Xen 4.20.1 bug fix release (jsc#PED-8907)
   * No upstream changelog found in sources or webpage
-- bsc#1246112 - VUL-0: xen: More AMD transient execution attacks
-  (XSA-471)
+- bsc#1246112, bsc#1238896 - VUL-0: xen: More AMD transient
+  execution attack (CVE-2024-36350, CVE-2024-36357, XSA-471)
   Patches contained in new tarball for 4.20.1
 - Drop patches contained in new tarball
   67c818d4-x86-log-unhandled-mem-accesses-for-PVH-dom0.patch

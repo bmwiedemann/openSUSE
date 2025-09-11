@@ -3102,4 +3102,12 @@
     <comment>Update Xen to bug fix release 4.20.1. Fixes for security bugs bsc#1244644, CVE-2025-27465, XSA-470 and bsc#1246112, CVE-2024-36350, XSA-471.</comment>
     <requestid>1291787</requestid>
   </revision>
+  <revision rev="366" vrev="1">
+    <srcmd5>d17476e56145691d359b1d677801fce1</srcmd5>
+    <version>4.20.1_04</version>
+    <time>1757594244</time>
+    <user>anag_factory</user>
+    <comment>Security and Maintenance Update. Fix for bsc#1248807 CVE-2025-27466, CVE-2025-58142, CVE-2025-58143, XSA-472</comment>
+    <requestid>1303382</requestid>
+  </revision>
 </revisionlist>
