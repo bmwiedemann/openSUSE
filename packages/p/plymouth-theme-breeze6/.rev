@@ -244,4 +244,12 @@ Without this, the theme can't be selected:
     /usr/lib64/plymouth/script.so does not exist (forwarded request 1301018 from cboltz)</comment>
     <requestid>1301306</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d0cedbfe44abf0498d0d0b12ebb65faf</srcmd5>
+    <version>6.4.5</version>
+    <time>1757594381</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1303396 from Vogtinator)</comment>
+    <requestid>1303506</requestid>
+  </revision>
 </revisionlist>
