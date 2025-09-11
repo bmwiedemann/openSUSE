@@ -22,7 +22,7 @@
 %define name   akonadi
 %bcond_without released
 Name:           akonadi
-Version:        25.08.0
+Version:        25.08.1
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
@@ -32,8 +32,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-opening-agent-configuration.patch
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
 BuildRequires:  doxygen
