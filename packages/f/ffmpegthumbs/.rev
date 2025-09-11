@@ -1000,4 +1000,12 @@
   * ffmpegthumbs-ffmpeg8.patch</comment>
     <requestid>1303151</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>1742b8594858f157cad89585baa70cad</srcmd5>
+    <version>25.08.1</version>
+    <time>1757594316</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.08.1</comment>
+    <requestid>1303802</requestid>
+  </revision>
 </revisionlist>
