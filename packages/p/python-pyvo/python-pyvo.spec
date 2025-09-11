@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyvo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-pyvo
-Version:        1.5.2
+Version:        1.7
 Release:        0
 Summary:        Astropy affiliated package for accessing Virtual Observatory data and services
 License:        BSD-3-Clause
@@ -61,6 +61,12 @@ Astropy affiliated package for accessing Virtual Observatory data and services
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# Custom configuration to add current directory to sys.path when running tests
+cat << EOF > pytest.ini
+[pytest]
+path = "."
+EOF
+
 %pytest
 
 %files %{python_files}

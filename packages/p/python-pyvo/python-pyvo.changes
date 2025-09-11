@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Wed Sep 10 11:45:20 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.7:
+  * Enhancements and Fixes
+    - Extend the MIVOT module with the ability to build annotations
+      component by component and put them into a VOTable. [#627]
+    - Add an API helping to map VOtable data in the Mango data model
+      by using MIVOT [#664]
+    - Make deletion of TAP jobs optional via a new delete kwarg.
+      [#640]
+    - Correctly delete jobs in TAPService.run_async even when the
+      server returns an error. [#667]
+    - Change AsyncTAPJob.result to return None if no result is found
+      explicitly. [#644]
+    - Add a UAT constraint to the registry interface for constraining
+      subjects [#649]
+    - Fixed AttributeError when a capability has None standardID in
+      SIA2Service. [#669]
+  * Deprecations and Removals
+    - Versions of Python <3.9 are no longer supported. [#639]
+- 1.6.2 (2025-04-07)
+  * Bug Fixes
+    - Fix performance issues with datalink results. [#654]
+    - More careful NULL value handling in tapregext data limits. [#659]
+- 1.6.1 (2025-02-12)
+  * Bug Fixes
+    - Fix propagating some previously swallowed exceptions. [#614]
+    - Fix string literal generation for SQL query when using numpy
+      >=2.0. [#624]
+    - Switch to do minimal VOSI tables downloads for TAP metadata.
+      [#634]
+    - Provide more informative exception message when requests to
+      endpoints fail. [#641]
+- 1.6 (2024-11-01)
+  * Enhancements and Fixes
+    - Add method list_interfaces to
+      pyvo.registry.regtap.RegistryResource that returns the list of
+      available interfaces linked to services. Add keyword parameter
+      in get_service which should match capability_description. [#505,
+      #525]
+    - Add list of access points to services in
+      pyvo.registry.regtap.RegistryResource.describe when there is
+      more than one service available [#525]
+    - Add optional capability_description parameter and a __repr__ to
+      pyvo.dal.query.DALService abstract base class [#505]
+    - Make lax parameter default to False in registry get_service
+      method [#505]
+    - Making optional parameters keyword only throughout the public
+      API. [#507]
+    - registry.Ivoid now accepts multiple ivoids and will then match
+      any of them. [#517]
+    - Introducing the new MIVOT module, enabling processed VOTable
+      data mapped to any model serialized in VO-DML. This package
+      dynamically generates python objects whose structure corresponds
+      to the classes of the mapped models. [#497]
+    - MIVOT module: the model references in the dictionaries that are
+      used to build MivotInstance objects are made more consistent
+      [#551]
+    - RegTAP constraints involving tables other than rr.resource are
+      now done via subqueries for less duplication of interfaces.
+      [#562, #572]
+    - MIVOT module: If the MIVOT annotation block contains a valid
+      instance of the mango:EpochPosition class, the dynamic object
+      describing the mapped data can generate a valid SkyCoord
+      instance. [#591]
+    - New sub-package discover for global dataset discovery. [#470]
+    - Updated getdatalink to be consistent with iter_datalinks. [#613]
+  * Deprecations and Removals
+    - SodaRecordMixin no longer will use a datalink#links endpoint for
+      soda [#580]
+    - Deprecating the use of "image" and "spectrum" in registry
+      Servicetype constraints [#449]
+- 1.5.3 (2024-10-14)
+  * Bug Fixes
+    - cachedataset() and friends again produce reasonable file
+      extensions. [#553]
+    - Path separators are no longer taken over from image titles to
+      file system paths. [#557]
+    - Added 'sia1' as servicetype for registry searches. [#583]
+    - Adding session kwarg to allow to pass a session along when
+      turning an Interface into a service via Interface.to_service.
+      [#590]
+    - Include port number if it is present in endpoint access URL.
+      [#582]
+    - Where datalink records are made from table rows, the table row
+      is now accessible as datalinks.original_row. [#559]
+    - Tables returned by RegistryResource.get_tables() now have a
+      utype attribute. [#576]
+    - Registry Spatial constraint now supports Astropy Quantities for
+      the radius argument. [#594]
+    - iter_metadata() no longer crashes on tables with a datalink
+      RESOURCE and without obscore attributes. [#599]
+    - Avoid assuming that 'access_url' always exits. [#570]
+  * Deprecations and Removals
+    - Removed usage of the astropy TestRunner, therefore the
+      unadvertised pyvo.test() functionality. [#606]
+
+-------------------------------------------------------------------
 Fri Aug 16 04:16:18 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.5.2:

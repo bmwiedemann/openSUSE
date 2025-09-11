@@ -59,4 +59,41 @@
 - Initial version</comment>
     <requestid>1194204</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c6996454867b746de0dd528c40b382fe</srcmd5>
+    <version>1.7</version>
+    <time>1757594386</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.7:
+  * Enhancements and Fixes
+    - Extend the MIVOT module with the ability to build annotations
+      component by component and put them into a VOTable. [#627]
+    - Add an API helping to map VOtable data in the Mango data model
+      by using MIVOT [#664]
+    - Make deletion of TAP jobs optional via a new delete kwarg.
+      [#640]
+    - Correctly delete jobs in TAPService.run_async even when the
+      server returns an error. [#667]
+    - Change AsyncTAPJob.result to return None if no result is found
+      explicitly. [#644]
+    - Add a UAT constraint to the registry interface for constraining
+      subjects [#649]
+    - Fixed AttributeError when a capability has None standardID in
+      SIA2Service. [#669]
+  * Deprecations and Removals
+    - Versions of Python &lt;3.9 are no longer supported. [#639]
+- 1.6.2 (2025-04-07)
+  * Bug Fixes
+    - Fix performance issues with datalink results. [#654]
+    - More careful NULL value handling in tapregext data limits. [#659]
+- 1.6.1 (2025-02-12)
+  * Bug Fixes
+    - Fix propagating some previously swallowed exceptions. [#614]
+    - Fix string literal generation for SQL query when using numpy
+      &gt;=2.0. [#624]
+    - Switch to do minimal VOSI tables downloads for TAP metadata.
+      [#634]
+    - Provide more informative exception message when requests to</comment>
+    <requestid>1303649</requestid>
+  </revision>
 </revisionlist>
