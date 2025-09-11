@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  9 19:42:25 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- remove libboost_system-devel for TW (removed in boost 1.89)
+
+-------------------------------------------------------------------
 Mon Aug 18 10:11:18 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.12.9

@@ -57,7 +57,9 @@ BuildRequires:  libboost_filesystem-devel >= 1.66
 BuildRequires:  libboost_iostreams-devel >= 1.66
 BuildRequires:  libboost_locale-devel >= 1.66
 BuildRequires:  libboost_regex-devel >= 1.66
+%if 0%{?suse_version} <= 1600
 BuildRequires:  libboost_system-devel >= 1.66
+%endif
 BuildRequires:  libboost_thread-devel >= 1.66
 BuildRequires:  protobuf-devel
 #Workaround for boo#1180359
