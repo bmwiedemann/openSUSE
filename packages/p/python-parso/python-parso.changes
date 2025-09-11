@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  9 15:49:36 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.8.5
+  * Add a fallback grammar for Python 3.14+
+
+-------------------------------------------------------------------
 Fri Aug  2 08:36:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Skip test_python_exception_matches on Python 3.13 as well
