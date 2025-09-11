@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           picmi
-Version:        25.08.0
+Version:        25.08.1
 Release:        0
 Summary:        Nonogram Logic game
 License:        GPL-2.0-or-later
