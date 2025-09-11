@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Sep 10 06:20:03 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 0.9.1:
+  * fix: parse modified git tree flag correctly
+  * fix: include version number in tarballs
+  * docs: update man page
+  * fix: allow manually supplying version/commit again
+  * feat: migrate rest of goreleaser config
+  * fix: 9p path parse error with WSL2 (#300)
+  * chore: align happy path to left edge in bar rendering
+  * docs: update man page
+  * fix: off-by-one error in bar rendering
+  * fix: move background colors to theme
+  * fix: recompute widths to account for changed bar size
+  * feat: don't waste space for chars we never print
+  * feat: use unicode chars for bar
+  * feat: dynamically resize bars
+  * feat: adjust table width to avail space
+  * docs: update man page
+  * build(deps): bump actions/setup-go from 5.5.0 to 6.0.0
+  * docs: update man page
+  * feat: read build info from runtime
+  * docs: update man page
+  * fix: deduplicate list of mounts (#209)
+  * build(deps): bump actions/checkout from 3 to 5
+  * build(deps): bump goreleaser/goreleaser-action from 4 to 6
+  * build(deps): bump golang.org/x/term from 0.7.0 to 0.34.0
+  * build(deps): bump golang.org/x/sys from 0.7.0 to 0.35.0
+  * build(deps): bump github.com/muesli/termenv from 0.15.1 to 0.16.0
+  * chore: require Go 1.23+
+  * build(deps): bump actions/setup-go from 4.0.0 to 5.5.0
+  * docs: update man page
+  * chore: require Go 1.18+
+  * build(deps): bump github.com/jedib0t/go-pretty/v6 from 6.4.6 to 6.6.8
+  * ci: deadcode linter is no longer used
+  * ci: update linter configs
+  * Add Solus to repo packages installation instructions
+  * Add Fedora to the installation instructions
+  * docs: update man page
+  * build(deps): bump github.com/mattn/go-runewidth from 0.0.14 to 0.0.15
+  * fix: update golangci-lint actions
+  * fix: update goreleaser config
+  * docs: update man page
+  * Update README.md: Now in Debian Stable, Debian Unstable is no longer required
+  * docs: update man page
+  * Correct a typo
+
+-------------------------------------------------------------------
 Mon May 22 21:51:10 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Use _service mode manual as better alias name than disabled

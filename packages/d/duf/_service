@@ -4,8 +4,8 @@
     <param name="scm">git</param>
     <param name="url">https://github.com/muesli/duf.git</param>
     <param name="filename">duf</param>
-    <param name="revision">master</param>
-    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+    <param name="revision">v0.9.1</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
   </service>

@@ -22,7 +22,7 @@
 %global debug_package   %{nil}
 
 Name:           duf
-Version:        0.8.1+git64.24c3369
+Version:        0.9.1
 Release:        0
 License:        MIT
 Summary:        Disk Usage/Free Utility

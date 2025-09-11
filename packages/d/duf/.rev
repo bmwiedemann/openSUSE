@@ -7,4 +7,41 @@
     <comment>New package duf (Disk Usage/Free) utility is a df alternative.</comment>
     <requestid>1088476</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>716551e938f328e0e9c567d064471f1e</srcmd5>
+    <version>0.9.1</version>
+    <time>1757594401</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.9.1:
+  * fix: parse modified git tree flag correctly
+  * fix: include version number in tarballs
+  * docs: update man page
+  * fix: allow manually supplying version/commit again
+  * feat: migrate rest of goreleaser config
+  * fix: 9p path parse error with WSL2 (#300)
+  * chore: align happy path to left edge in bar rendering
+  * docs: update man page
+  * fix: off-by-one error in bar rendering
+  * fix: move background colors to theme
+  * fix: recompute widths to account for changed bar size
+  * feat: don't waste space for chars we never print
+  * feat: use unicode chars for bar
+  * feat: dynamically resize bars
+  * feat: adjust table width to avail space
+  * docs: update man page
+  * build(deps): bump actions/setup-go from 5.5.0 to 6.0.0
+  * docs: update man page
+  * feat: read build info from runtime
+  * docs: update man page
+  * fix: deduplicate list of mounts (#209)
+  * build(deps): bump actions/checkout from 3 to 5
+  * build(deps): bump goreleaser/goreleaser-action from 4 to 6
+  * build(deps): bump golang.org/x/term from 0.7.0 to 0.34.0
+  * build(deps): bump golang.org/x/sys from 0.7.0 to 0.35.0
+  * build(deps): bump github.com/muesli/termenv from 0.15.1 to 0.16.0
+  * chore: require Go 1.23+
+  * build(deps): bump actions/setup-go from 4.0.0 to 5.5.0
+  * docs: update man page (forwarded request 1303439 from ph03nix)</comment>
+    <requestid>1303743</requestid>
+  </revision>
 </revisionlist>
