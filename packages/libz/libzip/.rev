@@ -538,4 +538,14 @@
   CMake targets for zipcmp, zipmerge and ziptool. (forwarded request 1272422 from krop)</comment>
     <requestid>1272433</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>71cc6820d71af6971ea583ac0514417c</srcmd5>
+    <version>1.11.4</version>
+    <time>1757594246</time>
+    <user>anag_factory</user>
+    <comment>- version update to 1.11.4
+  * Use separate cmake package files for library and programs.
+  * Improve documentation. (forwarded request 1303357 from pgajdos)</comment>
+    <requestid>1303446</requestid>
+  </revision>
 </revisionlist>

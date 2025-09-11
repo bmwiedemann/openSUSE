@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  9 13:27:20 UTC 2025 - pgajdos@suse.com
+
+- version update to 1.11.4
+  * Use separate cmake package files for library and programs.
+  * Improve documentation.
+
+-------------------------------------------------------------------
 Thu Apr 24 12:21:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Fix libzip-devel dependencies. libzip-targets*.cmake create
