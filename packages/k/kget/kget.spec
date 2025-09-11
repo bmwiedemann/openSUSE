@@ -20,7 +20,7 @@
 %define qt6_version 6.8.0
 %bcond_without released
 Name:           kget
-Version:        25.08.0
+Version:        25.08.1
 Release:        0
 Summary:        Download Manager
 License:        GPL-2.0-or-later
