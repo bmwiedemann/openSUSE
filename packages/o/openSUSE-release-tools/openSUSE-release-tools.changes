@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 04 13:25:15 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250904.5c7b6442:
+  * check_maintenance_incidents.py: Fall back to review by the devel prj only
+
+-------------------------------------------------------------------
 Wed Aug 27 11:53:58 UTC 2025 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20250827.0ffb3bb3:
