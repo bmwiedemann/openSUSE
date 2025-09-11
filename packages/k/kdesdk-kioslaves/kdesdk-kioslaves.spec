@@ -22,7 +22,7 @@
 %bcond_without released
 %define rname kdesdk-kio
 Name:           kdesdk-kioslaves
-Version:        25.08.0
+Version:        25.08.1
 Release:        0
 Summary:        KDE SDK KIO slaves
 License:        GPL-2.0-only
