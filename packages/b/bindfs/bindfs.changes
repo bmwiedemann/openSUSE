@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  9 21:27:02 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.18.2
+  * Added `-osubtype=argv[0]` to prevent some systems from
+    auto-unmounting bindfs when the network goes down.
+
+-------------------------------------------------------------------
 Thu Jun  5 19:15:17 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.18
