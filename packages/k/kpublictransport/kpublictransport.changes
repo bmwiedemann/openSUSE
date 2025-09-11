@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep 10 09:24:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.1/
+- Changes since 25.08.0:
+  * Use the maximum occupancy of any stop if we have none at the departure
+  * Sort location history locale-aware
+  * Add support for two new EFA modes for on-demand and long distance busses
+  * ltglink: Also produce a result if no journeys are found
+  * ltglink: Create constant for identifier type
+  * Fix two QML mistakes found by qmllint
+  * Fix generating update manifest for files changed after a release
+  * Allow to generate online update data matching a release tarball exactly
+  * Remove configuration for discontinued BBNavi
+  * Add company code for ltglink
+  * Tweak coverage ratings for NL
+  * ltglink, srbijavoz: Implement fetching earlier / later trips
+  * ltglink: Show trip number instead of line number
+
+-------------------------------------------------------------------
 Fri Aug  8 07:47:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.0
