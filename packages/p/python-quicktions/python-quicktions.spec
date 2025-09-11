@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-quicktions
-Version:        1.21
+Version:        1.22
 Release:        0
 Summary:        Fast fractions data type for rational numbers
 License:        Python-2.0
