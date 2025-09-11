@@ -1,7 +1,7 @@
 #
 # spec file for package python-feedparser
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-feedparser
-Version:        6.0.11
+Version:        6.0.12
 Release:        0
 Summary:        Universal Feed Parser Module for Python
 License:        BSD-2-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/kurtmckee/feedparser
 Source:         https://files.pythonhosted.org/packages/source/f/feedparser/feedparser-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 304_python310-crash.patch gh#kurtmckee/feedparser#304 mcepl@suse.com
-# Fix crash on Python 3.10
-Patch0:         304_python310-crash.patch
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

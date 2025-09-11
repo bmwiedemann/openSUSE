@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 10 19:04:09 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 6.0.11:
+  * Fix an AssertionError crash that occurs with Python 3.10 and
+    higher. (#304)
+  * Fix a DeprecationWarning thrown during calls to re.sub. (#389)
+  * Add a Read the Docs configuration.
+- drop 304_python310-crash.patch: fixed upstream
+
+-------------------------------------------------------------------
 Tue May 27 11:44:14 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
