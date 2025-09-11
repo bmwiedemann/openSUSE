@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-mock
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-mock
-Version:        3.14.0
+Version:        3.15.0
 Release:        0
 Summary:        Thin-wrapper around the mock package for easier use with pytest
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-mock
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-mock/pytest-mock-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-mock/pytest_mock-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 5}
@@ -43,7 +43,7 @@ provided by the `mock` package, but with the benefit of not having to worry abou
 patches at the end of a test
 
 %prep
-%autosetup -p1 -n pytest-mock-%{version}
+%autosetup -p1 -n pytest_mock-%{version}
 
 %build
 %pyproject_wheel

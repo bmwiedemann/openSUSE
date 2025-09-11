@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 10 17:13:40 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.15.0:
+  * Python 3.8 (EOL) is no longer supported.
+  * #524: Added spy_return_iter to mocker.spy, which contains a
+    duplicate of the return value of the spied method if it is an
+    Iterator.
+  * #503: Python 3.14 is now officially supported.
+
+-------------------------------------------------------------------
 Mon Sep  2 01:46:28 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Drop python-py requirement, no longer required. 
+- Drop python-py requirement, no longer required.
 
 -------------------------------------------------------------------
 Mon Jul  8 10:47:18 UTC 2024 - Dirk Müller <dmueller@suse.com>

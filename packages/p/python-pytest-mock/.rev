@@ -330,4 +330,19 @@
     <comment>- Drop python-py requirement, no longer required.</comment>
     <requestid>1198186</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3190445dd87c7e5284d05bfaf4e16e71</srcmd5>
+    <version>3.15.0</version>
+    <time>1757594297</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.15.0:
+  * Python 3.8 (EOL) is no longer supported.
+  * #524: Added spy_return_iter to mocker.spy, which contains a
+    duplicate of the return value of the spied method if it is an
+    Iterator.
+  * #503: Python 3.14 is now officially supported.
+
+- Drop python-py requirement, no longer required.</comment>
+    <requestid>1303678</requestid>
+  </revision>
 </revisionlist>
