@@ -7128,4 +7128,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.16.5 &amp; 6.16.4 &amp; asus-wmi fix &amp; local-broadcast routes fix &amp; pesign reapplied; bugs: bsc#1012628 bsc#1246924 bsc#1248239 bsc#1248594</comment>
     <requestid>1302777</requestid>
   </revision>
+  <revision rev="797" vrev="1">
+    <srcmd5>59abb30053c90a95d8b89a55bdb61707</srcmd5>
+    <version>6.16.6</version>
+    <time>1757594252</time>
+    <user>anag_factory</user>
+    <comment>6.16.6 &amp; other fixes; bugs: bsc#1012628 bsc#1233640 bsc#1241353 bsc#1243677 bsc#1248156 bsc#1249346</comment>
+    <requestid>1303394</requestid>
+  </revision>
 </revisionlist>

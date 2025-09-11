@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.16
-%define patchversion 6.16.5
-%define git_commit 642f24db59528e4f2ce79f318b09f033519e68a8
+%define patchversion 6.16.6
+%define git_commit ad8b04f0f117450e075d87f288567848190dfa36
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-default
-Version:        6.16.5
+Version:        6.16.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g642f24d
+Release:        <RELEASE>.gad8b04f
 %else
 Release:        0
 %endif
@@ -353,11 +353,18 @@ Requires(post): modutils
 # installation of bootloader and dracut related tools as if they were
 # required. This will ensure they're there for post scripts without hard
 # requiring them. (boo#1228659, boo#1240785)
+# But OrderWithRequires is not correctly implemented (bsc#1241513, bsc#1241353)
+# Workaround: Add extra suggests for the ordered package
 OrderWithRequires(post): udev
+Suggests: udev
 OrderWithRequires(post): systemd-boot
+Suggests: systemd-boot
 OrderWithRequires(post): perl-Bootloader
+Suggests: perl-Bootloader
 OrderWithRequires(post): update-bootloader
+Suggests: update-bootloader
 OrderWithRequires(post): dracut
+Suggests: dracut
 # Install the package providing /etc/SuSE-release early enough, so that
 # the grub entry has correct title (bnc#757565)
 Requires(post): distribution-release
@@ -529,11 +536,18 @@ Requires(post): modutils
 # installation of bootloader and dracut related tools as if they were
 # required. This will ensure they're there for post scripts without hard
 # requiring them. (boo#1228659, boo#1240785)
+# But OrderWithRequires is not correctly implemented (bsc#1241513, bsc#1241353)
+# Workaround: Add extra suggests for the ordered package
 OrderWithRequires(post): udev
+Suggests: udev
 OrderWithRequires(post): systemd-boot
+Suggests: systemd-boot
 OrderWithRequires(post): perl-Bootloader
+Suggests: perl-Bootloader
 OrderWithRequires(post): update-bootloader
+Suggests: update-bootloader
 OrderWithRequires(post): dracut
+Suggests: dracut
 # Install the package providing /etc/SuSE-release early enough, so that
 # the grub entry has correct title (bnc#757565)
 Requires(post): distribution-release

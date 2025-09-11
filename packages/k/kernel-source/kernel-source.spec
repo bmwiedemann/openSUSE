@@ -17,8 +17,8 @@
 
 
 %define srcversion 6.16
-%define patchversion 6.16.5
-%define git_commit 642f24db59528e4f2ce79f318b09f033519e68a8
+%define patchversion 6.16.6
+%define git_commit ad8b04f0f117450e075d87f288567848190dfa36
 %define variant %{nil}
 %define gcc_package gcc
 %define gcc_compiler gcc
@@ -28,9 +28,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-source
-Version:        6.16.5
+Version:        6.16.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g642f24d
+Release:        <RELEASE>.gad8b04f
 %else
 Release:        0
 %endif
