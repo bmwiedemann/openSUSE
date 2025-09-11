@@ -18,19 +18,19 @@
 
 Name:           libHX
 %define lname   libHX32
-Version:        4.27
+Version:        4.28
 Release:        0
 Summary:        Collection of routines for C and C++ programming
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://inai.de/projects/libhx/
 
-Source:         https://inai.de/files/libhx/libHX-%version.tar.xz
+Source:         https://inai.de/files/libhx/libHX-%version.tar.zst
 Source2:        https://inai.de/files/libhx/libHX-%version.tar.asc
 Source4:        %name.keyring
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
-BuildRequires:  xz
+BuildRequires:  zstd
 
 %description
 libHX is a C library (with some C++ bindings available) that provides
