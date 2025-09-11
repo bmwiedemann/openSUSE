@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-beautifulsoup4
-Version:        4.13.4
+Version:        4.13.5
 Release:        0
 Summary:        HTML/XML Parser for Quick-Turnaround Applications Like Screen-Scraping
 License:        MIT
