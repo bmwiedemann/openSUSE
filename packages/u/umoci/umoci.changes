@@ -15,7 +15,7 @@ Sat Sep  6 18:01:57 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 Sat Sep  6 17:20:18 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to umoci v0.5.1. Upstream changelog is available from
-  <https://github.com/opencontainers/umoci/releases/tag/v0.5.1>
+  <https://github.com/opencontainers/umoci/releases/tag/v0.5.1> bsc#1249450
 
   * For images with an empty index.json, umoci will no longer incorrectly set
     the manifests entry to null.
