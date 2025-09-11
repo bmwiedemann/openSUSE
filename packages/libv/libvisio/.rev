@@ -300,4 +300,12 @@
     <comment></comment>
     <requestid>1302457</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>2100075bb8e27b1cc13a982bdfd5a358</srcmd5>
+    <version>0.1.8</version>
+    <time>1757594307</time>
+    <user>anag_factory</user>
+    <comment>Extend the possibility of this to be built on wider range of systems</comment>
+    <requestid>1303740</requestid>
+  </revision>
 </revisionlist>

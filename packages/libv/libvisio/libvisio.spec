@@ -18,6 +18,9 @@
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname libvisio-0_1-1
+%if 0%{?suse_version} < 1500 || 0%{?gcc_version} < 13
+%define with_gcc 13
+%endif
 Name:           libvisio
 Version:        0.1.8
 Release:        0
@@ -26,9 +29,11 @@ License:        MPL-2.0
 Group:          Productivity/Publishing/Word
 URL:            https://www.freedesktop.org/wiki/Software/libvisio
 Source0:        http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
+Patch0:         libvisio-optional.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?with_gcc}
+BuildRequires:  gcc%{?with_gcc}-c++
 BuildRequires:  gperf
 BuildRequires:  help2man
 BuildRequires:  pkgconfig
@@ -85,9 +90,13 @@ Group:          Productivity/Publishing/Word
 This package contains tools to work with documents in MS Visio file-format.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+%if 0%{?with_gcc}
+export CXX=g++-%{with_gcc}
+export CC=gcc-%{with_gcc}
+%endif
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
 %configure \
 	--disable-werror \
