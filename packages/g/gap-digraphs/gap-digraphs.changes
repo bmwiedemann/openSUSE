@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 11 07:53:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.12.1
+  * Fix an inconsistency in ``IsConnectedDigraph`` for a digraph
+    with no vertices.
+  * Fixed incorrect properties getting set in ``CirculantGraph``.
+
+-------------------------------------------------------------------
 Sun Sep  7 16:05:48 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.12.0
