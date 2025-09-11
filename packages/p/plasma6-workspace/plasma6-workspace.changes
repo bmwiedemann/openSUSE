@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Sep  9 11:29:35 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.5
+- Changes since 6.4.4:
+  * Update version for new release 6.4.5
+  * kioworkers/applications: Set UDS_TARGET_URL for applications
+  * kcms/fonts: notify after adjusting all fonts (kde#508738)
+  * applets/notifications: add missing translation domain for speed chart strings (kde#508490)
+  * kcms/kfontinst: Explicitly set i18n domain
+  * timezoneselector: When programmatically opening location popup, move focus too
+  * Emit config changed signal for system tray upon panel cloning (kde#508355)
+  * klipper: ignore file previews from network mounts
+  * Fix devicenotifiertest in CI by checking for something that's there
+  * appiumtests: make kcm_colors_test and kcm_cursortheme_test less flaky
+  * applets/devicenotifier: handle camera (ptp) devices (kde#508285)
+  * kcms/notifications: Do not show System Notifications page for apps (kde#506236)
+  * kcms/notifications: Fix broken "configure notification" page
+  * kcm_regionandlang: fix locale list item background is not highlighted (kde#507451)
+  * imagefinder: add missing image format check in run()
+  * [plasma-apply-desktoptheme] Notify config change (kde#507681)
+  * applets/kicker: Resolve symlinks when possible (kde#505247)
+  * applets/notifications: Use a proper component for the speed chart
+
+-------------------------------------------------------------------
 Wed Aug  6 13:31:36 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.4:
