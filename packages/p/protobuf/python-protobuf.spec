@@ -17,7 +17,7 @@
 #
 
 
-%define baseversion 31.1
+%define baseversion 32.0
 %{?sle15_python_module_pythons}
 Name:           python-protobuf
 Version:        6.%{baseversion}
@@ -27,7 +27,6 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/protocolbuffers/protobuf
 Source0:        https://files.pythonhosted.org/packages/source/p/protobuf/protobuf-%{version}.tar.gz
-Patch0:         https://github.com/protocolbuffers/protobuf/commit/8351926380c7cc91aae6df5695c91426e209f958.patch#/protobuf-fix-google-imports.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil}
