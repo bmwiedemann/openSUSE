@@ -1,7 +1,7 @@
 #
 # spec file for package python-exceptiongroup
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,12 +29,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-exceptiongroup%{psuffix}
-Version:        1.2.2
+Version:        1.3.0
 Release:        0
 Summary:        Backport of PEP 654 (exception groups)
 License:        MIT AND Python-2.0
 URL:            https://github.com/agronholm/exceptiongroup
 Source:         https://github.com/agronholm/exceptiongroup/archive/refs/tags/%{version}.tar.gz#/exceptiongroup-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/agronholm/exceptiongroup/commit/a0da94dadfb39c0b52c0cd5c87ace166b00f74c1 Fixed test failures on Python 3.14
+Patch0:         py314.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-scm}
 BuildRequires:  %{python_module pip}
