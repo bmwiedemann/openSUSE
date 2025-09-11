@@ -1,7 +1,7 @@
 #
 # spec file for package python-propcache
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        Apache-2.0
 URL:            https://github.com/aio-libs/propcache
 Source:         https://files.pythonhosted.org/packages/source/p/propcache/propcache-%{version}.tar.gz
 Patch0:         reproducible.patch
+# PATCH-FIX-UPSTREAM https://github.com/aio-libs/propcache/commit/b97e7e37cbe8329e2a4d8383166c094f471a0d6a Test on Python 3.14
+Patch1:         py314.patch
 BuildRequires:  %{python_module Cython >= 3.0.11}
 BuildRequires:  %{python_module covdefaults}
 BuildRequires:  %{python_module expandvars}

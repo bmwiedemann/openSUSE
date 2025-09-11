@@ -1,0 +1,46 @@
+From b97e7e37cbe8329e2a4d8383166c094f471a0d6a Mon Sep 17 00:00:00 2001
+From: Kumar Aditya <kumaraditya@python.org>
+Date: Fri, 22 Aug 2025 05:07:08 +0530
+Subject: [PATCH] Test on Python 3.14 (#140)
+
+* add 3.14 CI
+
+* add news
+
+* use ctrace
+
+* code review
+
+* [pre-commit.ci] auto fixes from pre-commit.com hooks
+
+for more information, see https://pre-commit.ci
+
+* fix coverage
+
+* sort
+
+---------
+
+Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+---
+ .coveragerc                 | 3 +++
+ .github/workflows/ci-cd.yml | 2 ++
+ CHANGES/140.contrib.rst     | 1 +
+ setup.cfg                   | 1 +
+ 4 files changed, 7 insertions(+)
+ create mode 100644 CHANGES/140.contrib.rst
+
+diff --git a/.coveragerc b/.coveragerc
+index fb414a8..520a945 100644
+--- a/.coveragerc
++++ b/.coveragerc
+@@ -25,6 +25,9 @@ show_missing = true
+ 
+ [run]
+ branch = true
++# Cython.Coverage plugin is not supported on sysmon core which is default on
++# Python 3.14+ so always use ctrace core
++core = ctrace
+ cover_pylib = false
+ # https://coverage.rtfd.io/en/latest/contexts.html#dynamic-contexts
+ # dynamic_context = test_function  # conflicts with `pytest-cov` if set here
