@@ -1,7 +1,7 @@
 #
 # spec file for package python-graphviz
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Python interface for Graphviz
 License:        MIT
 URL:            https://github.com/xflr6/graphviz
 Source:         https://files.pythonhosted.org/packages/source/g/graphviz/graphviz-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/xflr6/graphviz/pull/238 fix tests on Python 3.14
+Patch0:         py314.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pip}

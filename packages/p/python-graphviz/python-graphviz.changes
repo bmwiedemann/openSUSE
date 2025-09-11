@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  9 14:31:30 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add py314.patch to fix tests with Python 3.14
+
+-------------------------------------------------------------------
 Wed Jul  2 07:55:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.21
