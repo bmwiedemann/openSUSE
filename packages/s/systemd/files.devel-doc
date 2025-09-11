@@ -122,6 +122,7 @@
 %{_mandir}/man3/sd-journal.3.gz
 %{_mandir}/man3/sd-json.3.gz
 %{_mandir}/man3/sd-login.3.gz
+%{_mandir}/man3/sd-path.3.gz
 %{_mandir}/man3/sd-varlink.3.gz
 %{_mandir}/man3/sd_booted.3.gz
 %{_mandir}/man3/sd_bus_add_fallback.3.gz

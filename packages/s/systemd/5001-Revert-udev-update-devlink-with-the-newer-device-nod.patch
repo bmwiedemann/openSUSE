@@ -1,8 +1,8 @@
-From f847d3d3b73c22c674bb713f179522cef8ddabb7 Mon Sep 17 00:00:00 2001
+From 6b03bc81cccec72f6e6ee31e8b08816713c42dac Mon Sep 17 00:00:00 2001
 From: Franck Bui <fbui@suse.com>
 Date: Fri, 12 Jan 2024 10:54:57 +0100
-Subject: [PATCH 5001/5002] Revert "udev: update devlink with the newer device
- node even when priority is equivalent"
+Subject: [PATCH] Revert "udev: update devlink with the newer device node
+ even when priority is equivalent"
 
 This reverts commit 277cb24ffb7a520f640eb36d11340f11bf0c7c4f.
 ---
@@ -10,27 +10,27 @@ This reverts commit 277cb24ffb7a520f640eb36d11340f11bf0c7c4f.
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/src/udev/udev-node.c b/src/udev/udev-node.c
-index 673f723ff2..6e2fff72e9 100644
+index 412775b38b..94149d7115 100644
 --- a/src/udev/udev-node.c
 +++ b/src/udev/udev-node.c
-@@ -457,13 +457,13 @@ static int link_update(sd_device *dev, const char *slink, bool add) {
-                                 /* The devlink priority is downgraded. Another device may have a higher
-                                  * priority now. Let's find the device node with the highest priority. */
-                         } else {
--                                if (current_prio > prio)
--                                        /* The devlink with a higher priority already exists and is owned by
--                                         * another device. Hence, it is not necessary to recreate it. */
-+                                if (current_prio >= prio)
-+                                        /* The devlink with equal or higher priority already exists and is
-+                                         * owned by another device. Hence, it is not necessary to recreate it. */
-                                         return 0;
+@@ -538,13 +538,13 @@ static int link_update(sd_device *dev, const char *slink, bool add) {
+                 return link_search_and_update(dev, slink, dirfd, add);
+         }
  
--                                /* This device has the equal or a higher priority than the current. Let's
--                                 * create the devlink to our device node. */
-+                                /* This device has a higher priority than the current. Let's create the
-+                                 * devlink to our device node. */
-                                 return node_create_symlink(dev, /* devnode = */ NULL, slink);
-                         }
+-        if (current_prio > prio)
+-                /* The devlink with a higher priority already exists and is owned by another device. Hence,
+-                 * it is not necessary to recreate it. */
++        if (current_prio >= prio)
++                /* The devlink with equal or higher priority already exists and is owned by another
++                 * device. Hence, it is not necessary to recreate it. */
+                 return 0;
+ 
+-        /* This device has the equal or a higher priority than the current. Let's create the devlink to our
+-         * device node. */
++        /* This device has a higher priority than the current. Let's create the devlink to our device
++         * node. */
+         return node_create_symlink(dev, /* devnode = */ NULL, slink);
+ }
  
 -- 
 2.43.0

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  9 08:30:35 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Import commit c139debf2c6e9556df8ee6eca77ae18d5b98f027 (merge of v257.9)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/835af70f4e4fab4746319145d9fdb1a01e33f4c8...c139debf2c6e9556df8ee6eca77ae18d5b98f027
+
+- Rebase 5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch
+
+-------------------------------------------------------------------
 Mon Aug  4 08:54:26 UTC 2025 - Franck Bui <fbui@suse.com>
 
 - Move run0 from the experimental sub-package to the main package

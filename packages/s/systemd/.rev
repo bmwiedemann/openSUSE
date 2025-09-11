@@ -7728,4 +7728,15 @@ handle manual pages that consist only of a .so directive such as
   sub-package.</comment>
     <requestid>1297651</requestid>
   </revision>
+  <revision rev="456" vrev="1">
+    <srcmd5>c1078df3fc21c07bcb99dac7408cb8dd</srcmd5>
+    <version>257.9</version>
+    <time>1757594240</time>
+    <user>anag_factory</user>
+    <comment>- Import commit c139debf2c6e9556df8ee6eca77ae18d5b98f027 (merge of v257.9)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/835af70f4e4fab4746319145d9fdb1a01e33f4c8...c139debf2c6e9556df8ee6eca77ae18d5b98f027
+- Rebase 5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch</comment>
+    <requestid>1303345</requestid>
+  </revision>
 </revisionlist>
