@@ -1,7 +1,7 @@
 #
 # spec file for package hyprgraphics
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2024 Florian "sp1rit" <sp1rit@disroot.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,10 +16,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define sover 0
 
 Name:           hyprgraphics
-Version:        0.1.3
+Version:        0.1.5
 Release:        0
 Summary:        Hyprland graphics / resource utilities
 License:        BSD-3-Clause
@@ -35,9 +36,9 @@ BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libjxl_cms)
 BuildRequires:  pkgconfig(libjxl_threads)
 BuildRequires:  pkgconfig(libmagic)
+BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(pixman-1)
-BuildRequires:  pkgconfig(spng)
 
 %define _description %{expand:
 Hyprgraphics is a small C++ library with graphics / resource related

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 10 19:58:48 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.1.5:
+  - Fixes
+    - png: libpng is straight alpha but cairo is premult
+  - MRs
+    - Add Image Embedding Support by @salfel in #24
+    - image: include span header by @LinuxUserGD in #26
+    - fix style as determined by clang by @salfel in #27
+    - formats: fix format selection and some safeguards by
+      @PaideiaDilemma in #28
+- Changes from version 0.1.4:
+  - Notes for packagers
+    - spng -> libpng
+  - Fixes
+    - images/png: mark surface dirty after copy
+
+-------------------------------------------------------------------
 Fri May  9 09:59:41 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.1.3:
