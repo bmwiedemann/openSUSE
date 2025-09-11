@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep  9 11:28:55 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.5
+- Changes since 6.4.4:
+  * Update version for new release 6.4.5
+  * Handle esc key press in panel edit mode (kde#508269,kde#508312)
+  * applets/kicker: show runner results with no favorites
+  * applets/kicker: remove unnecessary LayoutProxyItem
+  * FolderView: Simplify dir.onMove, make sure we dont create items outside of perStripe values
+  * FolderView: Update perStripe when moving items
+  * FolderModel: Use availableRelativeScreenRect instead of screenGeometry (kde#495047)
+  * applets/Kickoff: Ask for only copy and link to be supported
+
+-------------------------------------------------------------------
 Wed Aug  6 13:30:48 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.4.4:

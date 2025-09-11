@@ -34,7 +34,7 @@
 %bcond_without scim
 %endif
 Name:           plasma6-desktop
-Version:        6.4.4
+Version:        6.4.5
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
