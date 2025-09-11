@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 10 12:29:34 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.5.0
+  * Remove support for Python 3.8
+  * Added support for Python 3.12 & 3.13
+  * Upgrade to pyasn1 0.5.1+
+  * Upgrade to pytest and other dependencies
+  * Add RTD config file to silence emailed deprecation warnings
+  * Remove get_random_bytes from cryptography backend
+  * Do not use utc_now on module level
+  * Remove key data (sensitive information) from JWKError exceptions
+  * Added possibility to call jwk.construct() with a private RSA key
+
+-------------------------------------------------------------------
 Wed Jun 11 05:49:33 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-jose
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,12 +38,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-jose%{psuffix}
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        JOSE implementation in Python
 License:        MIT
 URL:            https://github.com/mpdavis/python-jose
-Source:         https://files.pythonhosted.org/packages/source/p/python-jose/python-jose-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/python-jose/python_jose-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 39.2.0}
 BuildRequires:  %{python_module wheel}
@@ -93,7 +93,7 @@ python-jose implements three different cryptographic backends.
 This package provides the python-jose[cryptography] extra.
 
 %prep
-%autosetup -p1 -n python-jose-%{version}
+%autosetup -p1 -n python_jose-%{version}
 
 %if ! %{with test}
 %build
