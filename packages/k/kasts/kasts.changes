@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 10 09:23:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.1/
+- Changes since 25.08.0:
+  * Fix VLC being default backend (kde#508871)
+
+-------------------------------------------------------------------
 Fri Aug  8 07:47:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.0
