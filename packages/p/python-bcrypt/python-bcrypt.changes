@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 10 15:35:15 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- add PYO3_USE_ABI3_FORWARD_COMPATIBILITY to build with python 3.14
+
+-------------------------------------------------------------------
 Fri Mar 21 07:03:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update 4.3.0

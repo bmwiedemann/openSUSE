@@ -1,7 +1,7 @@
 #
 # spec file for package python-bcrypt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -54,6 +54,7 @@ rm -v src/_bcrypt/Cargo.lock
 %build
 export RUSTFLAGS=%{rustflags}
 export CFLAGS="%{optflags} -fno-strict-aliasing"
+export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
 %pyproject_wheel
 
 %install
