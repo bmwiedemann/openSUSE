@@ -1,7 +1,7 @@
 #
 # spec file for package python-rpds-py
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %{?sle15_python_module_pythons}
 Name:           python-rpds-py
-Version:        0.22.3
+Version:        0.27.1
 Release:        0
 Summary:        Python bindings to Rust's persistent data structures (rpds)
 License:        MIT

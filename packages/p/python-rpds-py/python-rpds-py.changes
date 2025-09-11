@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed Sep 10 12:53:51 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 0.27.1:
+  * Download packages to subdirectory in PyPI publish CI job
+  * Bump github/codeql-action from 3.29.10 to 3.29.11
+  * Bump astral-sh/setup-uv from 6.5.0 to 6.6.0
+  * Specify packages directory for PyPI publish action
+  * Tag a release.
+  * Switch to PyPA's PyPI-publish action in CI
+  * Bump PyO3/maturin-action from 1.49.3 to 1.49.4
+  * Bump astral-sh/setup-uv from 6.4.3 to 6.5.0
+  * Bump github/codeql-action from 3.29.8 to 3.29.10
+  * Bump github/codeql-action from 3.29.3 to 3.29.8
+  * Bump actions/checkout from 4 to 5
+  * Bump actions/download-artifact from 4 to 5
+  * Bump astral-sh/setup-uv from 6.4.1 to 6.4.3
+  * [pre-commit.ci] pre-commit autoupdate
+  * Tag a release for RISC
+  * fix format error
+  * downgrade riscv64 manylinux version
+  * Allow packaging of wheels for riscv64 architecture
+  * Bump github/codeql-action from 3.29.2 to 3.29.3
+  * Bump astral-sh/setup-uv from 6.3.1 to 6.4.1
+  * Tag a release.
+  * Update requirements.
+  * Require maturin>=1.9.0 to ensure support for PEP 639
+  * Bump astral-sh/setup-uv from 6.3.0 to 6.3.1
+  * Bump github/codeql-action from 3.29.0 to 3.29.2
+  * Bump PyO3/maturin-action from 1.49.1 to 1.49.3
+  * Bump astral-sh/setup-uv from 6.1.0 to 6.3.0
+  * Bump github/codeql-action from 3.28.19 to 3.29.0
+  * Bump softprops/action-gh-release from 2.2.2 to 2.3.2
+  * Bump pyo3 from 0.25.0 to 0.25.1
+  * Bump github/codeql-action from 3.28.18 to 3.28.19
+  * Build CPython 3.14 wheels
+  * Bump astral-sh/setup-uv from 6.0.1 to 6.1.0
+  * Release v0.25.1 for Windows ARM.
+  * Properly pin hashes in workflows.
+  * remove trailing whitespace
+  * fix indentation
+  * pin maturin-action steps to hash
+  * Release v0.25.0.
+  * Update dependencies.
+  * Bump PyO3 to 0.25
+  * remove trailing whitespace
+  * add windows-arm to release needs
+  * Add windows arm64 builds
+  * Bump pyo3 from 0.24.1 to 0.24.2
+  * Bump rpds from 1.1.0 to 1.1.1
+  * Bump pyo3 from 0.24.0 to 0.24.1
+  * Release v0.24.0
+  * PyPy3.11 appears not to work even on Windows x64 quite yet.
+  * Build for PyPy 3.11
+  * Don't fail fast on wheel builds.
+  * Update requirements.
+  * noxfile: mark pypy 3.11 as supported
+  * replace quansight-labs/setup-python with actions/setup-python
+  * Bump pyo3 from 0.23.4 to 0.24.0
+  * v0.23.1 to fix the license file naming.
+  * update license file
+  * Tag v0.23.0 for release.
+  * Declare license via (the accepted) PEP 639.
+  * Update requirements.
+  * Also limit permissions globally.
+  * Disable caching for release builds as per zizmor recommendation.
+  * Run nox via uvx.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump pyo3 from 0.23.3 to 0.23.4
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
 Fri Jan 17 08:24:56 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.22.3:
