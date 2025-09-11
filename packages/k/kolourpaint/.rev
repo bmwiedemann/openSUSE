@@ -1415,4 +1415,12 @@
     <comment>Update to 25.08</comment>
     <requestid>1300689</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>f40e781255cdecf9ac80d980e65ba8d6</srcmd5>
+    <version>25.08.1</version>
+    <time>1757594457</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.08.1</comment>
+    <requestid>1303916</requestid>
+  </revision>
 </revisionlist>

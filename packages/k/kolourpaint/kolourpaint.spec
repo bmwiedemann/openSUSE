@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kolourpaint
-Version:        25.08.0
+Version:        25.08.1
 Release:        0
 Summary:        Paint Program
 # See boo#717722 for license details
@@ -33,8 +33,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Install-colors-file-into-app-specific-directory.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
