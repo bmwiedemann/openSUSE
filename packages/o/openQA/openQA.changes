@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 11 10:13:00 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1757512851.666d7dc7:
+  * build(deps): bump datatables.net-bs5 from 2.3.3 to 2.3.4
+  * Fix regression handling retention of important jobs
+  * Use newly introduced `_all_parents` function in `_sort_dep` as well
+  * Include parallel children when scheduling with `_INCLUDE_CHILDREN=1`
+  * build(deps-dev): bump eslint from 9.34.0 to 9.35.0
+  * Fix typos in PosgreSQL related documentation
+  * Use autoyast ERB helper to detect disk dynamically
+  * Use find_or_create when registering assets
+  * Stop logging confusing exception when GruTask is gone
+  * parser: ktap: Don't add skipped subtests to output
+  * t: Use proper test description strings in 03-auth.t
+  * t: Condense variable assignment with ok-check
+
+-------------------------------------------------------------------
 Mon Sep 08 08:13:22 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1757135418.ec726f9c:
