@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 10 09:24:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.1/
+- Changes since 25.08.0:
+  * Fix invalid parsing of UDP tracker scrape response
+
+-------------------------------------------------------------------
 Fri Aug  8 07:48:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.0
