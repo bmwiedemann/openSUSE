@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep  9 12:42:46 UTC 2025 - pgajdos@suse.com
+
+- Update to release 0.5.2
+  * This release substantial development on gstreamer.
+  * In core we can see development that cleans up ProcessManager
+    in a drive to reduce singleton patterns throughout libcamera.
+  * Pipelines are now able to limit the number of requests queued
+    into the pipeline handler which helps prevent issues when
+    applications desire to use a larger request queue.
+  * It's now possible to check if controls exist with new macros
+    defined for every control to help codebases compile against
+    multiple versions.
+- see https://gitlab.freedesktop.org/camera/libcamera/-/releases/v0.5.2
+  for details
+
+-------------------------------------------------------------------
 Wed Jul  9 11:32:16 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Add reproducible.patch to skip module signing (boo#1217690)

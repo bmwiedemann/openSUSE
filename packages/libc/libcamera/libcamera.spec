@@ -24,7 +24,7 @@
 %define extname %nil
 %endif
 Name:           libcamera%extname
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        A complex camera support library in C++
 License:        CC-BY-SA-4.0 AND GPL-2.0-or-later AND LGPL-2.1-or-later

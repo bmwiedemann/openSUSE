@@ -256,4 +256,12 @@
     <comment>- Add reproducible.patch to skip module signing (boo#1217690)</comment>
     <requestid>1291502</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>92d618211d1e3bc21580deabca63703c</srcmd5>
+    <version>0.5.2</version>
+    <time>1757594242</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 0.5.2</comment>
+    <requestid>1303358</requestid>
+  </revision>
 </revisionlist>
