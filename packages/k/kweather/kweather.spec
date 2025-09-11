@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kweather
-Version:        25.08.0
+Version:        25.08.1
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Weather application for Plasma
