@@ -17,20 +17,25 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%bcond_without tests
 %define libname liborcus-0_20-0
+%if 0%{?gcc_version} < 13
+%define with_gcc 13
+%endif
+%bcond_without tests
 Name:           liborcus
 Version:        0.20.2
 Release:        0
 Summary:        Spreadsheet file processing library
 License:        MPL-2.0
 URL:            https://gitlab.com/orcus/orcus/
-Source:         https://gitlab.com/api/v4/projects/orcus%2Forcus/packages/generic/source/%{version}/%{name}-%{version}.tar.xz
+Source:         https://gitlab.com/api/v4/projects/orcus%%2Forcus/packages/generic/source/%{version}/%{name}-%{version}.tar.xz
 Patch2:         0003-Allow-running-tests-with-python-3.4.patch
 # PATCH-FIX-UPSTREAM
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  coreutils
+BuildRequires:  gcc%{?with_gcc}
+BuildRequires:  gcc%{?with_gcc}-c++
 BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -40,16 +45,12 @@ BuildRequires:  pkgconfig(mdds-3.0)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1500
-BuildRequires:  gcc >= 7
-BuildRequires:  gcc-c++ >= 7
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_iostreams-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_system-devel
 %else
 BuildRequires:  boost-devel
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
 %endif
 
 %package -n %{libname}
@@ -95,14 +96,14 @@ Python 3 bindings for %{name}.
 # The test-suite of the package expects the precision of FP operations
 # to be lower than that of internal representation of 80387.  Use
 # option -ffloat-store to mitigate that.
-%ifarch i386 i486 i586 i686
+%ifarch %{ix86}
 %global optflags %{optflags} -ffloat-store
 %endif
 
 NOCONFIGURE=indeed ./autogen.sh
-%if 0%{?suse_version} < 1500
-export CC=gcc-7
-export CXX=g++-7
+%if 0%{?with_gcc}
+export CXX=g++-%{with_gcc}
+export CC=gcc-%{with_gcc}
 %endif
 %configure \
 	--disable-silent-rules \

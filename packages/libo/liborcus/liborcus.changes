@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 10 20:23:47 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Use the %%gcc_version macro to detect whether gcc13 is needed
+
+-------------------------------------------------------------------
+Mon Sep  8 11:08:24 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Fix build error for Leap.
+
+-------------------------------------------------------------------
 Sat Aug 30 22:01:42 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Remove patches, as they've been merged upstream:

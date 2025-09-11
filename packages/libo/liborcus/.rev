@@ -478,4 +478,12 @@
     from xlsx documents.</comment>
     <requestid>1302129</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>5de79b1ca42f9e1b1a054d382b50ae16</srcmd5>
+    <version>0.20.2</version>
+    <time>1757594301</time>
+    <user>anag_factory</user>
+    <comment>Fix build error for Leap</comment>
+    <requestid>1303730</requestid>
+  </revision>
 </revisionlist>
