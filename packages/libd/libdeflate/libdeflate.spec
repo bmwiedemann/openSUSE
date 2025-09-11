@@ -1,7 +1,7 @@
 #
 # spec file for package libdeflate
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define major 0
 %define libname %{name}%{major}
 Name:           libdeflate
-Version:        1.23
+Version:        1.24
 Release:        0
 Summary:        Library for DEFLATE/zlib/gzip compression and decompression
 License:        BSD-2-Clause
