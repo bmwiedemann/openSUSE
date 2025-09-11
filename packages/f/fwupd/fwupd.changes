@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep 10 17:10:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.15:
+  + This release adds the following features:
+    - Allow child devices to use the parent name as a prefix
+  + This release fixes the following bugs:
+    - Add newer commands and options for Fish completion
+    - Allow installing archives named as .CAB rather than .cab
+    - Erase Firehose modem devices correctly
+    - Fix Goodix enumeration issues
+    - Fix sending firmware reports without --force
+    - Fix the FreeBSD build
+    - Fix version number of BnR MTD devices
+    - Require additional requirements for the default PS5512 devboard
+    - Require a full system shutdown for all Micron NVMe updates
+    - Use a better name for Elan touchpad and Intel PCH SPI devices
+  + This release adds support for the following hardware:
+    - Foxconn SDX61 Modem
+    - Jabra Evolve2 child devices
+    - NVIDIA ConnectX-6, ConnectX-7 and ConnectX-8 NICs
+
+-------------------------------------------------------------------
 Fri Aug 29 13:36:08 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.0.14:
