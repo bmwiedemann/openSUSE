@@ -1,6 +1,7 @@
 #
-# spec file for package orthanc-neuro
+# spec file for package orthanc-stl
 #
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,8 +38,8 @@ BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  googletest-devel
 BuildRequires:  dcmtk-devel
+BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_atomic-devel >= 1.66
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -46,14 +47,16 @@ BuildRequires:  libboost_filesystem-devel >= 1.66
 BuildRequires:  libboost_iostreams-devel >= 1.66
 BuildRequires:  libboost_locale-devel >= 1.66
 BuildRequires:  libboost_regex-devel >= 1.66
+%if 0%{?suse_version} <= 1600
 BuildRequires:  libboost_system-devel >= 1.66
+%endif
 BuildRequires:  libboost_thread-devel >= 1.66
 BuildRequires:  libcurl-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  orthanc-devel
 BuildRequires:  orthanc-source
 # Only needed for Leap 15.6
-%if 0%{?suse_version} == 1500 
+%if 0%{?suse_version} == 1500
 BuildRequires:  python311
 %endif
 BuildRequires:  unzip
