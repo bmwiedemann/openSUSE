@@ -1,7 +1,7 @@
 #
 # spec file for package orthanc-gdcm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2020-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@ Name:           orthanc-gdcm
 Summary:        GDCM plugin for Orthanc
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        1.6
+Version:        1.7
 Release:        0
 URL:            http://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/orthanc-gdcm/OrthancGdcm-%{version}.tar.gz
@@ -41,7 +41,9 @@ BuildRequires:  libboost_filesystem-devel >= 1.66
 BuildRequires:  libboost_iostreams-devel >= 1.66
 BuildRequires:  libboost_locale-devel >= 1.66
 BuildRequires:  libboost_regex-devel >= 1.66
+%if 0%{?suse_version} <= 1600
 BuildRequires:  libboost_system-devel >= 1.66
+%endif
 BuildRequires:  libboost_thread-devel >= 1.66
 #Workaround for boo#1180359
 BuildRequires:  libbz2-devel

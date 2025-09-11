@@ -79,4 +79,12 @@
     <comment>updated build info (forwarded request 1158437 from DocB)</comment>
     <requestid>1159340</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6ef4c390cf3cec15a433cd6e824a25e8</srcmd5>
+    <version>1.7</version>
+    <time>1757601641</time>
+    <user>anag_factory</user>
+    <comment>preparation for boost 1.89 (forwarded request 1303606 from DocB)</comment>
+    <requestid>1304025</requestid>
+  </revision>
 </revisionlist>

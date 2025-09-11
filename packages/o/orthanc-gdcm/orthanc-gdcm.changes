@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 10 09:23:38 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- remove libboost_system-devel for TW (removed in boost 1.89) 
+
+-------------------------------------------------------------------
+Mon May 13 13:28:54 UTC 2024 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.7
+  * Upgrade to GDCM 3.0.24 for static builds. Fixes:
+    - CVE-2024-22373: https://nvd.nist.gov/vuln/detail/CVE-2024-22373
+    - CVE-2024-22391: https://nvd.nist.gov/vuln/detail/CVE-2024-22391
+    - CVE-2024-25569: https://nvd.nist.gov/vuln/detail/CVE-2024-25569 
+
+-------------------------------------------------------------------
 Wed Mar 13 13:02:21 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - enable gcc13 for Leap 15
