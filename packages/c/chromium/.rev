@@ -5873,4 +5873,12 @@ Thu Jun  12 09:05:12 UTC 2025 - Bernhard Wiedemann &lt;bwiedemann@suse.com&gt;
     <comment>security update to chromium 140.0.7339.80 boo#1249093</comment>
     <requestid>1302629</requestid>
   </revision>
+  <revision rev="478" vrev="1">
+    <srcmd5>49728a2cec311cbc4f04c2bb4d7e256f</srcmd5>
+    <version>140.0.7339.127</version>
+    <time>1757594385</time>
+    <user>anag_factory</user>
+    <comment>chromium 140.0.7339.127 (boo#1249388)</comment>
+    <requestid>1303512</requestid>
+  </revision>
 </revisionlist>

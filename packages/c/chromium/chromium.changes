@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 10 07:04:34 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 140.0.7339.127 (boo#1249388)
+  * CVE-2025-10200: Use after free in Serviceworker
+  * CVE-2025-10201: Inappropriate implementation in Mojo
+
+-------------------------------------------------------------------
 Tue Sep  2 22:29:06 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 140.0.7339.80 (boo#1249093):
