@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.0.1
+Version:        0.8.0.2
 Release:        0
 Summary:        Parsing and evaluating typst syntax
 License:        BSD-3-Clause
