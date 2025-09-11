@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Fri Aug 16 10:35:33 UTC 2024 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.2.1
+  This is a bugfix release that fixes a crash in the GTK backend
+  that is caused by GTK creating a dialog window on X11 even
+  though the parent window is on Wayland, or vice versa. The
+  build script also received a fix that improves usability when
+  this library is set up as a dependency of another project.
+  What's Changed
+  * Build: Add alias target for dependent project CMake
+    consumption
+  * GTK: Open the dialog window on the same GdkScreen (and
+    GdkDisplay) as the parent
+  version 1.2.0:
+  This release brings two new features: Opening a folder picker
+  that allows multiple selection (PickFolderMultiple), and giving
+  the dialog a parent window (only X11 support is currently
+  implemented; Wayland support will likely be added in the
+  future). A bunch of new functions have also been added to nfd.h
+  in a backward compatible manner to support passing a parent
+  window and allow for adding more new optional parameters in the
+  future. There are also various code cleanups and improved code
+  comments in Doxygen syntax.
+  What's Changed
+  * Test: Add tests with NFD_NATIVE
+  * Replace Macros with Aliases
+  * Doxygen Syntax
+  * Add versioned API
+  * New feature: Implement PickFolderMultiple
+  * New feature: Accept native parent window handle and
+    implement glue code to major platform abstraction frameworks
+  * README: Add versioned API, PickFolderMultiple, and parent
+    handle
+  version 1.1.1:
+  What's Changed
+  * Build: Update minimum CMake version to 3.5
+  version 1.1.0:
+  This release brings support for setting a default folder for
+  OpenDialog(), OpenDialogMultiple(), and PickFolder() in the
+  Portal backend on a sufficiently new version of
+  xdg-desktop-portal.
+  This relies on flatpak/xdg-desktop-portal#1045, which has been
+  merged and will be included in their next feature release. With
+  older versions of xdg-desktop-portal, setting a default folder
+  will have no effect, as is currently the case.
+  In addition, the install target now generates and installs an
+  nfd-config.cmake file, which makes for better CMake
+  integration.
+  What's Changed
+  * Install CMake config script.
+  * Portal: Support defaultPath for OpenDialog,
+    OpenDialogMultiple, and PickFolder
+  version 1.0.3:
+  This release brings two improvements to the Portal
+  implementation: better error messages, and a runtime check in
+  NFD_PickFolder() for whether the installed xdg-desktop-portal
+  service supports a folder picker.
+  What's Changed
+  * README: Remove untested portal warning and link OpenFile()
+    current_folder PR
+  * Portal: Support formatted error messages using sprintf()
+  * Portal: Make PickFolder() check that portal interface
+    version is >=3
+  version 1.0.2:
+  The Portal backend supports more older versions of glibc now.
+  Code using NFDe that could previously build correctly should
+  not encounter any behavioural changes.
+  What's Changed
+  * Build: Set target_include_directories correctly when NFDe is
+    added as a subdirectory
+  * ClangFormat: Force ClangFormat 13 for now
+  * Build: Use XXX_LINK_LIBRARIES for linking to support *BSD
+  * Portal: Add getrandom fallback for versions of GLIBC < 2.25
+- Add nfd-use_correct_cmake_folder.patch
+
+-------------------------------------------------------------------
+Fri Nov 25 00:00:00 UTC 2022 - jonathan@almalinux.org
+
+- Update to 1.0.1 rhbz#2148493
+
+
+-------------------------------------------------------------------
+Sat Aug 13 00:00:00 UTC 2022 - jonathan@almalinux.org
+
+- Initial package build
+

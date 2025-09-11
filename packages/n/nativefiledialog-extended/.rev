@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f7e872a2efde787b3db83836c0c5d4da</srcmd5>
+    <version>1.2.1</version>
+    <time>1757594368</time>
+    <user>anag_factory</user>
+    <comment>nfd is needed for newer versions of naev: https://build.opensuse.org/request/show/1303024</comment>
+    <requestid>1303421</requestid>
+  </revision>
+</revisionlist>
