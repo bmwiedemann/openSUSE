@@ -727,4 +727,12 @@
     <comment>- Add missing gstreamer-plugins-good-qtqml6 dependency (boo#1249244)</comment>
     <requestid>1303134</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>7dbeb559d9d06d28a57609f7c8872287</srcmd5>
+    <version>25.08.1</version>
+    <time>1757594421</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.08.1</comment>
+    <requestid>1303824</requestid>
+  </revision>
 </revisionlist>
