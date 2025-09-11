@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 11 12:04:28 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to  0.8.17
+ * Enhancements
+  * Improve error message for HTTP validation in auth services 
+  * Respect PYX_API_URL when suggesting uv auth login on 401 
+  * Add pyx as a supported PyTorch index URL 
+ * Bug fixes
+  * Avoid initiating login flow for invalid API keys 
+  * Do not search for a password for requests with a token attached already 
+  * Filter pre-release Python versions in uv init --script 
+
+-------------------------------------------------------------------
 Wed Sep 10 11:03:40 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.8.16

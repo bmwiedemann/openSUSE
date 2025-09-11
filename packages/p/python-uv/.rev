@@ -1375,4 +1375,20 @@
   * Adds example for caching for managed Python downloads in Docker builds</comment>
     <requestid>1303630</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>76e433f325d4beece902030b36f686af</srcmd5>
+    <version>0.8.17</version>
+    <time>1757601636</time>
+    <user>anag_factory</user>
+    <comment>- update to  0.8.17
+ * Enhancements
+  * Improve error message for HTTP validation in auth services 
+  * Respect PYX_API_URL when suggesting uv auth login on 401 
+  * Add pyx as a supported PyTorch index URL 
+ * Bug fixes
+  * Avoid initiating login flow for invalid API keys 
+  * Do not search for a password for requests with a token attached already 
+  * Filter pre-release Python versions in uv init --script</comment>
+    <requestid>1304077</requestid>
+  </revision>
 </revisionlist>
