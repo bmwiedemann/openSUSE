@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           libkmahjongg
-Version:        25.08.0
+Version:        25.08.1
 Release:        0
 Summary:        General Data for KDE Games
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
