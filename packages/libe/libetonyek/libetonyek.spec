@@ -1,7 +1,7 @@
 #
 # spec file for package libetonyek
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,26 @@
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname libetonyek-0_1-1
+%if 0%{?suse_version} < 1500 || 0%{?gcc_version} < 13
+%define with_gcc 13
+%endif
 Name:           libetonyek
-Version:        0.1.10
+Version:        0.1.12
 Release:        0
 Summary:        Library for Apple Keynote presentations
 License:        MPL-2.0
 Group:          Productivity/Publishing/Word
 URL:            https://wiki.documentfoundation.org/DLP/Libraries/libetonyek
 Source0:        http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
-Patch0:         resolve-ambiguities.patch
-Patch1:         stdcxx17.patch
+Patch0:         libetonyek-mdds-3.0.patch
+Patch1:         libetonyek-deprecated-boost.patch
+Patch2:         libetonyek-memcmp.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
+BuildRequires:  gcc%{?with_gcc}
+BuildRequires:  gcc%{?with_gcc}-c++
 BuildRequires:  glm-devel
 BuildRequires:  gperf
 BuildRequires:  help2man
@@ -42,19 +48,12 @@ BuildRequires:  xz
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(librevenge-0.0)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mdds-2.1)
+BuildRequires:  pkgconfig(mdds-3.0)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
 %else
 BuildRequires:  boost-devel
-%endif
-%if 0%{?suse_version} < 1500
-BuildRequires:  gcc7
-BuildRequires:  gcc7-c++
-%else
-BuildRequires:  gcc >= 7
-BuildRequires:  gcc-c++ >= 7
 %endif
 
 %description
@@ -102,12 +101,12 @@ This package contains tools to work with Apple Keynote presentations
 %build
 autoreconf -fvi
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
-%if 0%{?suse_version} < 1500
-export CC="gcc-7"
-export CXX="g++-7"
+%if 0%{?with_gcc}
+export CXX=g++-%{with_gcc}
+export CC=gcc-%{with_gcc}
 %endif
 %configure \
-	--with-mdds="2.1" \
+	--with-mdds="3.0" \
 	--disable-silent-rules \
 	--disable-werror \
 	--disable-static \

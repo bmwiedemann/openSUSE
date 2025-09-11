@@ -224,4 +224,12 @@
     <comment>Require C++17 capable compiler</comment>
     <requestid>1102775</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bca27c23de581e3aa8bb356c23e31bca</srcmd5>
+    <version>0.1.12</version>
+    <time>1757594303</time>
+    <user>anag_factory</user>
+    <comment>Fix build on all supported openSUSE/SUSE versions</comment>
+    <requestid>1303739</requestid>
+  </revision>
 </revisionlist>

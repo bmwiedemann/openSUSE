@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Sep 11 00:49:22 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * libetonyek-memcmp.patch
+    + missing include of <cstring>
+
+-------------------------------------------------------------------
+Thu Sep 11 00:32:27 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Make gcc >= 13 the baseline
+
+-------------------------------------------------------------------
+Mon Sep  8 14:31:52 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.1.12:
+  + Fix detectImageDimension causing error in Libreoffice
+- Changes from version 0.1.11:
+  + Upgrade m4 macros.
+  + Fix compiler warnings.
+  + Update documentation and convert it to MarkDown.
+  + Make image dimensions more compatible with LibreOffice
+  + Retrieve more background colors.
+  + Add support for simple image cropping.
+  + Pages: Fixes for retrieving page styles.
+  + Numbers: Use workspace name to create sheet's name.
+  + Numbers: Read more that 256 rows.
+  + Fix build with MSVC.
+- Build against mdds-3.0, like the rest of LibreOffice
+- Build against system default mdds version (mdds-devel, no suffix)
+- Drop stdcxx17.patch and  resolve-ambiguities.patch: fixed
+  upstream
+- Add libetonyek-deprecated-boost.patch: Fix build with recent
+  boost
+- Add libetonyek-mdds-3.0.patch: Allow building against mdds-3.0
+
+-------------------------------------------------------------------
 Mon Aug  7 09:09:48 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Build against mdds-2.1
