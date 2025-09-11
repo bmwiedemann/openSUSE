@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 10 09:24:56 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- remove libboost_system-devel for TW (removed in boost 1.89) 
+
+-------------------------------------------------------------------
 Wed Mar 13 13:03:35 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - enable gcc13 for Leap 15
