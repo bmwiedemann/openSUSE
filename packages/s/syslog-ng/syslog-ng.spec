@@ -108,6 +108,10 @@ Source2:        syslog-ng.conf.default
 Source3:        syslog-ng.service
 Source4:        syslog-ng-service-prepare
 Patch0:         syslog-ng-reproducible-jar-mtime.patch
+Patch1:         0001-Merge-pull-request-5437-from-HofiOne-fix-ack-tracker.patch
+Patch2:         0002-Merge-pull-request-5441-from-HofiOne-fix-mem-leaks.patch
+Patch3:         0003-Merge-pull-request-5445-from-beni-atlnz-log-writer-c.patch
+Patch4:         0004-Merge-pull-request-5447-from-therandomstring-s3-fix-.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -409,6 +413,10 @@ This package provides MQTT support for syslog-ng
 %patch -P 0 -p1
 %endif
 %endif
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
 # fill out placeholders in the config,
 # systemd service and prepare script.
 for file in \

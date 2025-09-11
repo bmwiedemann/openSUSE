@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 11 08:23:19 UTC 2025 - peter czanik <peter@czanik.hu>
+
+- backport major bug fixes from development branch fixing various
+  crashes and message loss
+  * 0001-Merge-pull-request-5437-from-HofiOne-fix-ack-tracker.patch
+  * 0002-Merge-pull-request-5441-from-HofiOne-fix-mem-leaks.patch
+  * 0003-Merge-pull-request-5445-from-beni-atlnz-log-writer-c.patch
+  * 0004-Merge-pull-request-5447-from-therandomstring-s3-fix-.patch
+
+-------------------------------------------------------------------
 Wed Jul 16 13:00:05 UTC 2025 - peter czanik <peter@czanik.hu>
 
 - update to 4.9.0
