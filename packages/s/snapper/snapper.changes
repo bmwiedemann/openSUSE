@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Sep 05 12:52:07 CEST 2025 - aschnell@suse.com
+
+- do not link with stub libboost_system
+- version 0.13.0
+
+-------------------------------------------------------------------
+Tue Sep 02 14:29:41 CEST 2025 - aschnell@suse.com
+
+- added generic plugin action used when setting snapshot read-only
+  (bsc#1246172)
+
+-------------------------------------------------------------------
+Mon Aug 04 17:00:45 CEST 2025 - Arvin Schnell <aschnell@suse.com>
+
+- fixed memory leak in DBus Marshalling
+
+-------------------------------------------------------------------
+Wed Jul 23 10:35:22 CEST 2025 - aschnell@suse.com
+
+- allow to send log to system logger (gh#openSUSE/snapper#1030)
+- removed deprecated functions
+
+-------------------------------------------------------------------
+Fri Jul 04 12:52:34 CEST 2025 - aschnell@suse.com
+
+- split off lang package
+
+-------------------------------------------------------------------
+Fri Jun 13 11:52:02 CEST 2025 - aschnell@suse.com
+
+- check that path for mksubvolume is an absolute path
+  (gh#openSUSE/snapper#1016)
+
+-------------------------------------------------------------------
 Thu Apr 24 12:20:13 CEST 2025 - aschnell@suse.com
 
 - pick boost process v1 when compiling with boost 1.88 or higher
@@ -815,7 +849,6 @@ Tue Sep 22 14:55:10 CEST 2015 - shundhammer@suse.de
 - version 0.2.9
 
 -------------------------------------------------------------------
-
 Tue Sep 22 12:20:28 CEST 2015 - aschnell@suse.com
 
 - added program to create btrfs subvolume suitable for systems
