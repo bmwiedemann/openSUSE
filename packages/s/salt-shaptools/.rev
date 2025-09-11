@@ -217,4 +217,12 @@ Mon Feb  25 10:22:24 UTC 2019 - dakechi@suse.com
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1101541</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>55437a3c48e1a7cc094972a7bc2adbee</srcmd5>
+    <version>0.3.19+git.1757585149.46def27</version>
+    <time>1757594512</time>
+    <user>anag_factory</user>
+    <comment>New version of salt-shaptools released</comment>
+    <requestid>1304060</requestid>
+  </revision>
 </revisionlist>

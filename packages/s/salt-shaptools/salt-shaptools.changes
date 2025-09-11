@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 10 09:31:31 UTC 2025 - Xabier Arbulu <xarbulu@suse.com>
+
+- Version 0.3.19
+  * Fix crmsh import usage using python3 absolute path. This enables
+    salt modules/states correct usage when the Salt Bundle is
+    used (bsc#1248174) 
+
+-------------------------------------------------------------------
 Tue Jul 11 15:03:17 UTC 2023 - Eike Waldt <waldt@b1-systems.de>
 
 - Version 0.3.18
