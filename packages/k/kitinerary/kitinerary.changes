@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Sep 10 09:23:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.1/
+- Changes since 25.08.0:
+  * Strip off leading zeros of flight numbers
+  * Cleanup airport names extracted from Finnair eticket receipts
+  * Handle Finnair etickets which already have a seat assigned on the first leg
+  * Extract FCB ticket validity times in more cases
+  * Use Aztec barcodes for MÁV domestic tickets
+  * Support extracting RegioJet seat reservation PDFs
+  * Limit the number of CPU cores used during compilation
+  * Yet more fixes for the United Airlines parser
+  * Add extractor script for Center Parcs PDFs
+  * Add extractor script for edreams hotel bookings
+  * Unwrap arrays in Place names and address properties
+  * Fix extraction of Coloseum pkpasses without a seat reservation
+  * Add additional Pretix PDF extractor trigger
+  * Ignore abbreviation for "international" in generic airport name detection
+  * Add uic company code for LTG Link
+  * Handle German booking.com emails without hotel email addresses
+  * Handle English booking.com emails with extra long hotel names
+  * Don't skip HTML booking.com parsing if we got results from plain text data
+  * Handle Pretix PDF tickets without location and/or reservation number
+  * Add LTG Link pkpass extractor script
+  * Fix extracting LTG Link Interrail tickets
+  * Remove hardcoded THA prefix for Thalys services
+
+-------------------------------------------------------------------
 Fri Aug  8 07:47:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.0
