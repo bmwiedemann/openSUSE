@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep  8 14:28:00 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 37.6.0
+  * Re-introduce part_of_speech argument to words() method.
+  * Add Swahili (sw) provider for generating Swahili names.
+  * Fix pydecimal handling of positive keyword.
+  * Fix pydecimal distribution when called with a range across 0.
+  * Force the slug always be generated with ASCII characters.
+  * Remove Collection[str] type from ElementTypes.
+  * Drop Python 3.8 support.
+  * Fix: es_ES doi() to use standard DOI format.
+  * Many more fixes and improvements in various locales, see
+    upstream changelog.
+
+-------------------------------------------------------------------
 Tue Aug 19 12:11:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only

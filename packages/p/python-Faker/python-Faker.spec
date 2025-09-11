@@ -1,7 +1,7 @@
 #
 # spec file for package python-Faker
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,23 +23,21 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Faker
-Version:        26.1.0
+Version:        37.6.0
 Release:        0
 Summary:        Python package that generates fake data
 License:        MIT
 URL:            https://github.com/joke2k/faker
-Source:         https://files.pythonhosted.org/packages/source/F/Faker/Faker-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/f/faker/faker-%{version}.tar.gz
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6.0.1}
-BuildRequires:  %{python_module python-dateutil >= 2.4}
-BuildRequires:  %{python_module text-unidecode >= 1.3}
+BuildRequires:  %{python_module tzdata}
 BuildRequires:  %{python_module validators >= 0.13.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-python-dateutil >= 2.4
-Requires:       python-text-unidecode >= 1.3
+Requires:       python-tzdata
 Obsoletes:      python3-fake-factory < %{version}-%{release}
 Provides:       python3-fake-factory = %{version}-%{release}
 %if %{with libalternatives}
@@ -58,7 +56,7 @@ database bootstrapping, creating XML documents, persistence stress
 testing, and data anonymization from production services.
 
 %prep
-%setup -q -n Faker-%{version}
+%setup -q -n faker-%{version}
 # Remove pre-existing bytecode files in the sdist
 find . -name '*.py[co]' -delete
 # do not hardcode versions

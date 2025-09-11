@@ -762,4 +762,12 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems only</comment>
     <requestid>1300283</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>b4caf62479f82e7205ee6e737f2d4c98</srcmd5>
+    <version>37.6.0</version>
+    <time>1757594293</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1303585</requestid>
+  </revision>
 </revisionlist>
