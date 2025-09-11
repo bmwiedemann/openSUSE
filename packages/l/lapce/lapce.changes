@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Aug 31 15:45:33 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.4.4:
+  * fix: mismatched_lifetime_syntaxes
+  * bump deps
+
+-------------------------------------------------------------------
+Mon Aug 04 14:05:40 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.4.3:
+  * Use Diff syntax for files with .diff/.patch extensions by default.
+  * Update titles of file dialogs for better clarity
+  * Bump to Rust 2024 Edition
+  * Implement "Find References" panel
+  * Implement "Go To Implementation" panel
+  * Fix pointer event not working on plugin panel
+  * Fix rename/new file editor in file explorer is too small
+
+-------------------------------------------------------------------
 Mon Aug 26 07:07:24 UTC 2024 - pirateclip@protonmail.com
 
 - Update to version 0.4.2:
