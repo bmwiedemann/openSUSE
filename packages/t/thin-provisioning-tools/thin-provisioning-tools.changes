@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Sep 03 07:18:45 UTC 2025 - Petr Gajdos <pgajdos@suse.com>
+
+- Update to version 1.2.1:
+  * Bump version to 1.2.1
+  * [doc] Update CHANGES
+  * [build] Update dependencies to latest patch releases
+  * [build] Update dependencies to compatible minor versions
+  * [all] Do not elide inferred output lifetime to reduce confusion
+  * [thin_shrink] Replace custom helper with standard library method
+  * [thin_shrink] Add negative tests for build_remaps()
+  * [thin_shrink] Fix incorrect number of data blocks in output superblock
+  * Bump version to 1.2.0
+  * [doc] Note new repository location in README
+  * [doc] Update CHANGES
+  * [build] Update dependencies to latest patch releases
+  * [build] Update dependencies' major/minor versions without code changes
+  * [build] Update roaring to 0.11.0
+  * [build] Update rand to 0.9.1
+  * [build] Update nom to 8.0.0
+  * [build] Update clap and the expected help text in tests accordingly
+  * [cache_writeback] Fix a typo
+  * [tests] Ignore false-positive manual_div_ceil linter warnings
+  * [pdata/bitset] Avoid manual Result to Option conversion
+  * [io_engine] Shortcut the io::ErrorKind::Other creation
+  * [commands] Apply cargo fmt
+  * [build] Update fixedbitset to v0.5.7
+  * [io_engine] Remove unmaintained safemem dependency
+  * [commands] Remove unmaintained atty dependency
+  * [all] Fix clippy warnings
+  * Update Cargo.lock
+  * [all] Fix clippy warning of elided lifetime parameters
+  * [thin/stat] pass io engines by reference
+  * [space map/checker] Pass io engine by reference
+  * [btree lookup] pass io engine by reference
+  * [pdata/bitset] pass io engine by reference
+  * [array walker] pass io engine by reference
+  * [space map/allocated_blocks] pass io engine by reference
+  * Squash some warnings about elided lifetimes
+  * [btree walker] pass io engine by reference rather than by Arc
+  * Knock out thread btree walk code (unused)
+  * [doc] Update introductory text in README
+
+-------------------------------------------------------------------
 Tue Feb 18 14:24:42 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Enable internal testsuite
@@ -435,4 +478,3 @@ Tue Jul 31 14:44:47 CEST 2012 - fehr@suse.de
 - Make initial version of package from version 0.1.5 of 
   thin-provisioning-tools
 
--------------------------------------------------------------------

@@ -1,7 +1,7 @@
 #
 # spec file for package thin-provisioning-tools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           thin-provisioning-tools
-Version:        1.1.0
+Version:        1.2.1
 Release:        0
 Summary:        Thin Provisioning Tools
 License:        GPL-3.0-only
