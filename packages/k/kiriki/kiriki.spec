@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kiriki
-Version:        25.08.0
+Version:        25.08.1
 Release:        0
 Summary:        Yahtzee-like Game
 License:        GPL-2.0-or-later
