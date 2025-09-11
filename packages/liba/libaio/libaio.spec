@@ -78,8 +78,7 @@ rm %{buildroot}%{_libdir}/*.a
 CFLAGS="%{optflags}" %make_build partcheck
 %endif
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files -n %{lname}
 %license COPYING

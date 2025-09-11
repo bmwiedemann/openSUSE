@@ -320,4 +320,12 @@
     <comment></comment>
     <requestid>1153456</requestid>
   </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>6a5e8dc57003920af158cee476497cd4</srcmd5>
+    <version>0.3.113</version>
+    <time>1757594243</time>
+    <user>anag_factory</user>
+    <comment>- Switch to %ldconfig_scriptlets</comment>
+    <requestid>1303368</requestid>
+  </revision>
 </revisionlist>

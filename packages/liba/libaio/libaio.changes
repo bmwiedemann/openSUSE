@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  9 14:25:29 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Switch to %ldconfig_scriptlets
+
+-------------------------------------------------------------------
 Thu Feb 29 15:09:20 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
@@ -292,5 +297,3 @@ Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
 Wed Sep  4 12:39:46 CEST 2002 - fehr@suse.de
 
 - make package from  libaio-0.3.15-2.5
-
--------------------------------------------------------------------
