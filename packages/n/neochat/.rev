@@ -370,4 +370,12 @@
   make build reproducible (boo#1248369)</comment>
     <requestid>1301064</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>51b5819ec7bfa910fe3a3484ee8e5bb4</srcmd5>
+    <version>25.08.1</version>
+    <time>1757594482</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.08.1</comment>
+    <requestid>1303991</requestid>
+  </revision>
 </revisionlist>
