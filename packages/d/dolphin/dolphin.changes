@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 10 09:23:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.1/
+- Changes since 25.08.0:
+  * Double scroll distance (kde#508290)
+  * Fix crash between selection mode and folder icon chooser (kde#508648)
+  * DolphinTrash: Only play emptied sound when it was emptied without error
+  * DolphinContextMenu: Don't parent new file menu to the menu
+  * Make create folder use selected directory !1026 (kde#508196)
+  * DolphinMainWindow: Notify current selection changed when changing tabs
+
+-------------------------------------------------------------------
 Fri Aug  8 07:47:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.0
