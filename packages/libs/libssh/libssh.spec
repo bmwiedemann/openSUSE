@@ -1,7 +1,7 @@
 #
 # spec file for package libssh
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@
 %endif
 
 Name:           libssh%{pkg_suffix}
-Version:        0.11.2
+Version:        0.11.3
 Release:        0
 Summary:        The SSH library
 License:        LGPL-2.1-or-later

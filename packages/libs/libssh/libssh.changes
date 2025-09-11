@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  9 15:19:24 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 0.11.3
+  * Security:
+    * CVE-2025-8114: Fix NULL pointer dereference after allocation failure (bsc#1246974)
+    * CVE-2025-8277: Fix memory leak of ephemeral key pair during repeated wrong KEX (bsc#1249375)
+    * Potential UAF when send() fails during key exchange
+  * Bugfixes:
+    * Fix possible timeout during KEX if client sends authentication too early
+    * Cleanup OpenSSL PKCS#11 provider when loaded
+    * Zeroize buffers containing private key blobs during export
+
+-------------------------------------------------------------------
 Tue Jun 24 14:36:44 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 0.11.2
