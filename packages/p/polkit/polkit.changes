@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jul 15 14:30:09 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- Updated to version 126:
+  + Highlights:
+    - many code fixes detected either by CI or the author himself (Frantisek Sumsal)
+    - shellcheck and dependabot integration (Jan Macku)
+    - search for rules in /usr/local/share rather than /usr/local/lib (Luca Boccassi)
+    - Implement LogControl1 protocol for dynamic log level changes (Luca Boccassi)
+    - read actions also from /etc/, /run/ and /usr/local/share/ (Luca Boccassi)
+    - mozjs dropped in favor of duktape (Xi Ruoyao)
+    - many other fixes in build system and polkit code (Many thanks to all the authors.)
+- Updated to version 125:
+  + Highlights:
+    - introduction of CodeQL and a new integration test suite (Frantisek Sumsal)
+    - dropped mocklibc (Frantisek Sumsal)
+    - syslog-style log-levels introduction (Jan Rybar)
+    - LogControl integration (Luca Boccassi)
+    - pkexec: "No session for cookie" finally fixed (huxiaodong)
+    - resources optimizations: only instances affected by sessions-change recalculate authorizations (Jan Rybar, thanks to Michal Sekletar and Milan Crha)
+    - meson tweaks (Alyssa Ross, Luca Boccassi, Michael Biebl, Michael Olbrich)
+    - build warnings cleanup (peelz)
+    - Packit service configuration for the new upstream platform (Vincent Mihalkovic)
+    - systemd-tmpfiles.d integration (Vincent Mihalkovic)
+    - other fixes and changes (Gleb Popov, heather7283, Tianyu Chen, Tobias Stoeckmann)
+    - internationalization: Slovenian (filmsi), Hindi (Scrambled777)
+- Updated to version 124:
+  + Highlights:
+    - PIDFDs are used if available to track processes
+    - pidfd parameter available for CheckAuthorization()
+    - systemd-sysuser enabled for polkit
+- polkit-actions-in-etc.patch: done upstream in commit 9958c259f82b066f613d171d2934c1bd829e31a4
+- polkit-fix-implicit.patch: not needed anymore
+- revert upstream change to have /etc/polkit-1/rules.d as tempdir
+
+-------------------------------------------------------------------
 Wed Aug 14 12:33:37 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire gettext-devel instead of gettext: Allows OBS to
@@ -10,6 +45,11 @@ Fri Jul 12 12:53:13 UTC 2024 - Martin Jambor <mjambor@suse.com>
 - Add -Wno-error=implicit-function-declaration to %optflags to
   work-around an issue in mocklibc (which has been meanwhile removed
   by upstream) with exactly this kind of issue.
+
+-------------------------------------------------------------------
+Tue Jun  4 11:54:16 UTC 2024 - Marcus Meissner <meissner@suse.com>
+
+- polkit-fix-implicit.patch: fixed implicit to make it build with gcc14.
 
 -------------------------------------------------------------------
 Fri Dec  8 22:20:51 UTC 2023 - Tobias Klausmann <tobias.klausmann@freenet.de>

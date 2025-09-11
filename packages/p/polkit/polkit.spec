@@ -1,7 +1,7 @@
 #
 # spec file for package polkit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,13 @@
 %define run_tests        1
 
 Name:           polkit
-Version:        123
+Version:        126
 Release:        0
 Summary:        PolicyKit Authorization Framework
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-URL:            https://gitlab.freedesktop.org/polkit/polkit/
-Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
-Source3:        system-user-polkitd.conf
+URL:            https://github.com/polkit-org/polkit
+Source0:        %{url}/archive/refs/tags/%{version}.tar.gz
 Source4:        50-default.rules
 Source99:       baselibs.conf
 
@@ -44,8 +43,6 @@ Patch1:         polkit-gettext.patch
 Patch3:         polkit-keyinit.patch
 # PATCH-FIX-OPENSUSE polkit-adjust-libexec-path.patch -- Adjust path to polkit-agent-helper-1 (bsc#1180474)
 Patch4:         polkit-adjust-libexec-path.patch
-# Read actions also from /etc/polkit-1/actions
-Patch6:         polkit-actions-in-etc.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
@@ -163,7 +160,7 @@ This package provides the GObject Introspection bindings for PolicyKit.
 %global optflags %{optflags} -Wno-error=implicit-function-declaration
 
 %meson                                     \
-    -D session_tracking=libsystemd-login   \
+    -D session_tracking=logind             \
     -D systemdsystemunitdir="%{_unitdir}"  \
     -D os_type=suse                        \
     -D pam_module_dir="%{_pam_moduledir}"  \
@@ -172,8 +169,8 @@ This package provides the GObject Introspection bindings for PolicyKit.
     -D tests=true                          \
     -D gtk_doc=true                        \
     -D man=true                            \
-    -D js_engine=duktape                   \
     %{nil}
+
 %meson_build
 %sysusers_generate_pre %{SOURCE3} polkit system-user-polkitd.conf
 
@@ -197,12 +194,10 @@ This package provides the GObject Introspection bindings for PolicyKit.
 # create $HOME for polkit user
 install -d %{buildroot}%{_localstatedir}/lib/polkit
 
-rm -v %{buildroot}%{_polkit_rulesdir}/50-default.rules
-install -m0644 %{SOURCE4} %{buildroot}%{_polkit_rulesdir}/50-default.rules
+install -m0644 %{SOURCE4} %{buildroot}/%{_polkit_rulesdir}/50-default.rules
 
-# Install the polkitd user creation file:
-mkdir -p %{buildroot}%{_sysusersdir}
-install -m0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/
+# delete tmpfiles.d file for now
+rm %{buildroot}/usr/lib/tmpfiles.d/polkit-tmpfiles.conf
 
 # create actions dir in /etc
 mkdir %{buildroot}/%{_sysconfdir}/polkit-1/actions
@@ -263,10 +258,10 @@ mkdir %{buildroot}/%{_sysconfdir}/polkit-1/actions
 %dir %{_datadir}/polkit-1/actions
 %{_datadir}/polkit-1/actions/org.freedesktop.policykit.policy
 %attr(0555,root,root) %dir %{_polkit_rulesdir}
- %{_polkit_rulesdir}/50-default.rules
+%{_polkit_rulesdir}/50-default.rules
 %{_pam_vendordir}/polkit-1
 %dir %{_sysconfdir}/polkit-1
-%attr(0750,root,polkitd) %dir %{_sysconfdir}/polkit-1/rules.d
+%attr(0750,root,root) %dir %{_sysconfdir}/polkit-1/rules.d
 %dir %{_sysconfdir}/polkit-1/actions
 %{_bindir}/pkaction
 %{_bindir}/pkcheck
@@ -276,7 +271,7 @@ mkdir %{buildroot}/%{_sysconfdir}/polkit-1/actions
 %verify(not mode) %attr(4755,root,root) %{_libexecdir}/polkit-1/polkit-agent-helper-1
 # $HOME for polkit user
 %dir %{_localstatedir}/lib/polkit
-%{_sysusersdir}/system-user-polkitd.conf
+%{_sysusersdir}/polkit.conf
 %{_unitdir}/polkit.service
 
 %files devel

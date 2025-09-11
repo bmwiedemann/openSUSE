@@ -17,19 +17,19 @@ translations for the requested language.
  src/polkitbackend/polkitbackendactionpool.c | 17 +++++++++++++++--
  1 file changed, 15 insertions(+), 2 deletions(-)
 
-diff --git a/src/polkitbackend/polkitbackendactionpool.c b/src/polkitbackend/polkitbackendactionpool.c
-index 3894fe9..9252788 100644
---- a/src/polkitbackend/polkitbackendactionpool.c
-+++ b/src/polkitbackend/polkitbackendactionpool.c
-@@ -24,6 +24,7 @@
+Index: polkit-126/src/polkitbackend/polkitbackendactionpool.c
+===================================================================
+--- polkit-126.orig/src/polkitbackend/polkitbackendactionpool.c
++++ polkit-126/src/polkitbackend/polkitbackendactionpool.c
+@@ -23,6 +23,7 @@
  #include <pwd.h>
  #include <string.h>
  #include <expat.h>
 +#include <locale.h>
  
- #include <polkit/polkit.h>
- #include <polkit/polkitprivate.h>
-@@ -1132,8 +1133,20 @@ _localize (GHashTable *translations,
+ #ifdef ENABLE_GETTEXT
+ #include <locale.h>
+@@ -1232,8 +1233,20 @@ _localize (GHashTable *translations,
    if (result != NULL)
      goto out;
  
@@ -52,6 +52,3 @@ index 3894fe9..9252788 100644
  
  out:
    return result;
--- 
-2.12.2
-
