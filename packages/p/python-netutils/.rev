@@ -154,4 +154,12 @@
   * 651 Fix Palo set format config parsing for curly brace.</comment>
     <requestid>1292516</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d45fe7326c9c73de4a4fe0a6c16dcd22</srcmd5>
+    <version>1.15.0</version>
+    <time>1757594387</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1303643</requestid>
+  </revision>
 </revisionlist>
