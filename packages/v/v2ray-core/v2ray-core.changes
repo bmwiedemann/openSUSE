@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep  9 15:14:22 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.38.0
+  * TLSMirror Connection Enrollment System
+  * Add TLSMirror Sequence Watermarking
+  * LSMirror developer preview protocol is now a part of mainline V2Ray
+  * proxy dns with NOTIMP error
+  * Add TLSMirror looks like TLS censorship resistant transport protocol
+    as a developer preview transport
+  * proxy dns with NOTIMP error
+  * fix false success from SOCKS server when Dispatch() fails
+  * HTTP inbound: Directly forward plain HTTP 1xx response header
+  * add a option to override domain used to query https record
+  * Fix bugs
+  * Update vendor
+
+-------------------------------------------------------------------
 Mon Jun  2 12:53:55 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.33.0
