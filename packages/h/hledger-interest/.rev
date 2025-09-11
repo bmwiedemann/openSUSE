@@ -168,4 +168,14 @@
     <comment>version update</comment>
     <requestid>1282768</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>91f149b12be76dbce91a250cbae75c6b</srcmd5>
+    <version>1.6.7</version>
+    <time>1757594400</time>
+    <user>anag_factory</user>
+    <comment>- Update hledger-interest to version 1.6.7 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+</comment>
+    <requestid>1304020</requestid>
+  </revision>
 </revisionlist>
