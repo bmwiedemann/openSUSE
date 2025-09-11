@@ -1,7 +1,7 @@
 #
 # spec file for package libproxy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ ExclusiveArch:  do-not-build
 
 %define _name   libproxy
 Name:           libproxy%{?dash}%{?name_suffix}
-Version:        0.5.10
+Version:        0.5.11
 Release:        0
 Summary:        Automatic proxy configuration management for applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
