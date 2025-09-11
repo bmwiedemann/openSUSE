@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 10 08:24:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 6.2.0
+  * Improve general ``RRCache`` performance by storing cache keys in an
+    additional sequence container.  Note that this will increase memory
+    consumption.
+  * Add more unit tests.
+
+-------------------------------------------------------------------
 Sat Jul 12 11:43:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.0:

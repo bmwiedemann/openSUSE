@@ -254,4 +254,12 @@
   * Require Python 3.9 or later (breaking change).</comment>
     <requestid>1292330</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>be9580353c82f35691840c0b33ad7fe0</srcmd5>
+    <version>6.2.0</version>
+    <time>1757594288</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1303563</requestid>
+  </revision>
 </revisionlist>
