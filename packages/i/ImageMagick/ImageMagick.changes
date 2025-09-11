@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  9 12:37:21 UTC 2025 - pgajdos@suse.com
+
+- version update to 7.1.2.3
+  * fixes GHSA-23hg-53q6-hqfg CVE-2025-57807 [bsc#1249362]
+  * Close the blob so we can re-open it again (#8327)
+- modified patches
+  % ImageMagick-library-installable-in-parallel.patch (refreshed)
+
+-------------------------------------------------------------------
 Mon Aug 25 20:23:06 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - version update to 7.1.2.2

@@ -4145,4 +4145,16 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     CVE-2025-55212 [bsc#1248767]</comment>
     <requestid>1301785</requestid>
   </revision>
+  <revision rev="315" vrev="1">
+    <srcmd5>274615c6b76a02810fee23e205264281</srcmd5>
+    <version>7.1.2.3</version>
+    <time>1757594240</time>
+    <user>anag_factory</user>
+    <comment>- version update to 7.1.2.3
+  * fixes GHSA-23hg-53q6-hqfg CVE-2025-57807 [bsc#1249362]
+  * Close the blob so we can re-open it again (#8327)
+- modified patches
+  % ImageMagick-library-installable-in-parallel.patch (refreshed)</comment>
+    <requestid>1303354</requestid>
+  </revision>
 </revisionlist>
