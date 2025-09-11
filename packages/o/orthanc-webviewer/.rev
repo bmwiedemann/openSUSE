@@ -88,4 +88,12 @@
     <comment></comment>
     <requestid>1287586</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>dbf1ece968c75941e853560f517ef799</srcmd5>
+    <version>2.10</version>
+    <time>1757594510</time>
+    <user>anag_factory</user>
+    <comment>preparation for boost 1.89 (forwarded request 1303618 from DocB)</comment>
+    <requestid>1304036</requestid>
+  </revision>
 </revisionlist>
