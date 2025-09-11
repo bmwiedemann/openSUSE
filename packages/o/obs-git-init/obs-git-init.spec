@@ -17,7 +17,7 @@
 
 
 Name:           obs-git-init
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        A help service to setup git repositories for OBS
 License:        GPL-2.0-or-later

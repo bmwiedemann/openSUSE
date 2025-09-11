@@ -1,9 +1,9 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="url">https://src.opensuse.org/adrianSuSE/obs-git-init</param>
+    <param name="url">https://src.opensuse.org/openSUSE/obs-git-init</param>
     <param name="scm">git</param>
-    <param name="revision">0.2.2</param>
-    <param name="version">0.2.2</param>
+    <param name="revision">0.2.3</param>
+    <param name="version">0.2.3</param>
   </service>
   <service mode="manual" name="set_version" />
 

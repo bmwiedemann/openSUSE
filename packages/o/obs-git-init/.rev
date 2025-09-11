@@ -33,4 +33,13 @@
   * .gitignore list got extended with temporary directories of pbuild</comment>
     <requestid>1283378</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8f5a0a9ada6a79168ccb604f93d8fa2f</srcmd5>
+    <version>0.2.3</version>
+    <time>1757594514</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.2.3
+  * Support running inside of a git submodule</comment>
+    <requestid>1304056</requestid>
+  </revision>
 </revisionlist>
