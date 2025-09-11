@@ -197,4 +197,20 @@
     <comment></comment>
     <requestid>1232733</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a6bb6897cfc7a8a760cab4563397f5e2</srcmd5>
+    <version>1.4.0</version>
+    <time>1757594390</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.0:
+  * Fixing compatibility with pytest-asyncio. [#278]
+  * Adding new directive doctest-requires-all to conditionally skip
+    all doctests in narrative documentations based on availability of
+    dependencies. [#280]
+  * Adding new directive doctest-remote-data-all to conditionally skip
+    all doctests in narrative documentations based on availability of
+    remote-data. [#281]
+  * Versions of Python &lt;3.9 are no longer supported. [#274]</comment>
+    <requestid>1303654</requestid>
+  </revision>
 </revisionlist>

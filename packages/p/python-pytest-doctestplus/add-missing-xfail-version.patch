@@ -7,16 +7,16 @@ Subject: [PATCH] TST: one more version to xfail
  tests/test_doctestplus.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/test_doctestplus.py b/tests/test_doctestplus.py
-index a88ca7b..fb0ac37 100644
---- a/tests/test_doctestplus.py
-+++ b/tests/test_doctestplus.py
-@@ -1142,7 +1142,7 @@ def f():
+Index: pytest_doctestplus-1.4.0/tests/test_doctestplus.py
+===================================================================
+--- pytest_doctestplus-1.4.0.orig/tests/test_doctestplus.py
++++ pytest_doctestplus-1.4.0/tests/test_doctestplus.py
+@@ -1210,7 +1210,7 @@ def test_main(testdir):
  
  
  @pytest.mark.xfail(
--        python_version() in ('3.11.9', '3.11.10', '3.12.3'),
-+        python_version() in ('3.11.9', '3.11.10', '3.11.11', '3.12.3'),
+-        python_version() in ('3.11.9', '3.11.10', '3.11.11', '3.12.3'),
++        python_version() in ('3.11.9', '3.11.10', '3.11.11', '3.11.13', '3.12.3'),
          reason='broken by https://github.com/python/cpython/pull/115440')
  def test_ufunc(testdir):
      pytest.importorskip('numpy')
