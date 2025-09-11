@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 11 10:27:38 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1757357708.90c68ad:
+  * backend: Add missing text in svirt::die
+  * t: Fix typos in 29-backend-svirt test strings
+  * Update perltidy
+  * Add ping dependency to allow runtime IPv6 detection on workers
+  * baseclass: Fix missing error details on failed SSH connection attempts
+  * backend::svirt: Extract methods for serial_console command
+  * backend::svirt: Extract method for serial_grab command
+  * backend::svirt: Combine and simplify save_snapshot commands
+  * backend::svirt: Extract method 'vmname'
+  * backend::svirt: Extract methods for is_shutdown cmd
+  * backend::svirt: Extract specific stop_vm methods
+
+-------------------------------------------------------------------
 Fri Sep 05 21:31:05 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1757071172.ffc94dc:
