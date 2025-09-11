@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Sep  9 11:26:15 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.4.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.4.5
+- Changes since 6.4.4:
+  * Update version for new release 6.4.5
+  * wayland/colormanagement: add inert protocol error
+  * outputconfigurationstore: never choose a removed mode
+  * outputconfigurationstore: add some debug logging for mode selection
+  * outputconfigurationstore: add logging category specific to output configs
+  * wayland/surface: don't clear fifo barrier on new commits (kde#508822)
+  * backends/libinput: prefer output UUID over output names for identifying outputs
+  * wayland: Check for nullptr output in ColorManagementOutputV1
+  * backends/drm: work around amdgpu applying GAMMA_LUT in test-only commits
+  * wayland: fix only changing the rendering intent not doing anything
+  * wayland/outputdevice: add missing scheduleDone calls (kde#507087)
+  * wayland: Make ColorManagementOutputV1 handle output removal better (kde#504959)
+  * backends/drm: Reduce gamma LUT resolution requirement for color offload
+  * backends/drm: Also restrict gamma LUT size for atomic modesetting
+  * backends/drm: Use correct color pipeline for linear night light fallback
+  * backends/drm: ignore disabled outputs when checking for dpms off (kde#493879)
+  * plugins/maximize: ensure all animations end on the same frame (kde#505478)
+  * core/Outputlayer: fix the check for supported formats
+  * backends/libinput: Don't ask the session to take /sys/ devices
+  * kcms/tabbox: Use Plasma theme for preview (kde#507819)
+- Drop patch, now upstream:
+  * 0001-backends-drm-work-around-amdgpu-applying-GAMMA_LUT-i.patch
+
+-------------------------------------------------------------------
 Thu Aug 21 12:43:21 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to avoid flicker due to amdgpu driver bug (kde#508350):

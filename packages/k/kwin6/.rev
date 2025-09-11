@@ -290,4 +290,12 @@
   * 0001-backends-drm-work-around-amdgpu-applying-GAMMA_LUT-i.patch (forwarded request 1300799 from Vogtinator)</comment>
     <requestid>1300800</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>8e30e12d3140078b1bd1af9ef43fd9b8</srcmd5>
+    <version>6.4.5</version>
+    <time>1757594267</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1303396 from Vogtinator)</comment>
+    <requestid>1303475</requestid>
+  </revision>
 </revisionlist>
