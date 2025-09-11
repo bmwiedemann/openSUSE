@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kldap
-Version:        25.08.0
+Version:        25.08.1
 Release:        0
 Summary:        Library to assist working with LDAP directories
 License:        LGPL-2.1-or-later
