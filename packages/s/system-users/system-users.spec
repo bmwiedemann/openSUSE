@@ -19,7 +19,7 @@
 Name:           system-users
 Version:        20250822
 Release:        0
-Summary:        Provide system accounts
+Summary:        Provider for system accounts
 License:        MIT
 Group:          System/Fhs
 Source1:        system-user-uucp.conf
@@ -248,7 +248,7 @@ Group:          System/Fhs
 This package provides the system user and group 'ntp'.
 
 %prep
-%setup -q -c -T
+%autosetup -c
 
 %build
 %sysusers_generate_pre %{SOURCE1} uucp system-user-uucp.conf
@@ -276,20 +276,21 @@ This package provides the system user and group 'ntp'.
 %sysusers_generate_pre %{SOURCE25} ntp system-user-ntp.conf
 
 %install
-mkdir -p %{buildroot}%{_sysusersdir}
-mkdir -p %{buildroot}%{_sysconfdir}/uucp
-mkdir -p %{buildroot}%{_sysconfdir}/news
-mkdir -p %{buildroot}%{_localstatedir}/games
-mkdir -p %{buildroot}%{_localstatedir}/lib/ntp
-mkdir -p %{buildroot}%{_localstatedir}/lib/wwwrun
-mkdir -p %{buildroot}%{_localstatedir}/spool/amavis
-mkdir -p %{buildroot}%{_localstatedir}/spool/clientmqueue
-mkdir -p %{buildroot}%{_localstatedir}/spool/lpd
-mkdir -p %{buildroot}%{_localstatedir}/run/uuidd
-mkdir -p %{buildroot}/srv/ftp
-mkdir -p %{buildroot}%{_localstatedir}/lib/nobody
-mkdir -p %{buildroot}/srv/tftpboot
-mkdir -p %{buildroot}/var/lib/tpm
+mkdir -pv \
+	%{buildroot}%{_sysusersdir} \
+	%{buildroot}%{_sysconfdir}/uucp \
+	%{buildroot}%{_sysconfdir}/news \
+	%{buildroot}%{_localstatedir}/games \
+	%{buildroot}%{_localstatedir}/lib/ntp \
+	%{buildroot}%{_localstatedir}/lib/wwwrun \
+	%{buildroot}%{_localstatedir}/spool/amavis \
+	%{buildroot}%{_localstatedir}/spool/clientmqueue \
+	%{buildroot}%{_localstatedir}/spool/lpd \
+	%{buildroot}%{_localstatedir}/run/uuidd \
+	%{buildroot}/srv/ftp \
+	%{buildroot}%{_localstatedir}/lib/nobody \
+	%{buildroot}/srv/tftpboot \
+	%{buildroot}/var/lib/tpm
 install -m 644 %{SOURCE1} %{buildroot}%{_sysusersdir}/system-user-uucp.conf
 install -m 644 %{SOURCE2} %{buildroot}%{_sysusersdir}/system-user-games.conf
 install -m 644 %{SOURCE3} %{buildroot}%{_sysusersdir}/system-user-bin.conf
@@ -361,106 +362,83 @@ install -m 644 %{SOURCE25} %{buildroot}%{_sysusersdir}/system-user-ntp.conf
 %pre -n system-user-ntp -f ntp.pre
 
 %files -n system-user-uucp
-%defattr(-,root,root)
 %dir %attr(0750,uucp,uucp) %{_sysconfdir}/uucp
 %{_sysusersdir}/system-user-uucp.conf
 
 %files -n system-user-games
-%defattr(-,root,root)
 %dir %attr(0755,root,root) %{_localstatedir}/games
 %{_sysusersdir}/system-user-games.conf
 
 %files -n system-user-bin
-%defattr(-,root,root)
 %{_sysusersdir}/system-user-bin.conf
 
 %files -n system-user-daemon
-%defattr(-,root,root)
 %{_sysusersdir}/system-user-daemon.conf
 
 %files -n system-user-man
-%defattr(-,root,root)
 %{_sysusersdir}/system-user-man.conf
 
 %files -n system-user-news
-%defattr(-,root,root)
 %dir %attr(0750,news,news) %{_sysconfdir}/news
 %{_sysusersdir}/system-user-news.conf
 
 %files -n system-group-obsolete
-%defattr(-,root,root)
 %{_sysusersdir}/system-group-obsolete.conf
 
 %files -n system-group-hardware
-%defattr(-,root,root)
 %{_sysusersdir}/system-group-hardware.conf
 
 %files -n system-group-wheel
-%defattr(-,root,root)
 %{_sysusersdir}/system-group-wheel.conf
 
 %files -n system-user-wwwrun
-%defattr(-,root,root)
 %dir %attr(0755,wwwrun,root) %{_localstatedir}/lib/wwwrun
 %{_sysusersdir}/system-user-wwwrun.conf
 
 %files -n system-user-mail
-%defattr(-,root,root)
 %dir %attr(0770,mail,mail) %{_localstatedir}/spool/clientmqueue
 %{_sysusersdir}/system-user-mail.conf
 
 %files -n system-user-ftp
-%defattr(-,root,root)
 %dir %attr(0755,root,root) /srv/ftp
 %{_sysusersdir}/system-user-ftp.conf
 
 %files -n system-user-lp
-%defattr(-,root,root)
 %dir %attr(0755,lp,lp) %{_localstatedir}/spool/lpd
 %{_sysusersdir}/system-user-lp.conf
 
 %files -n system-user-nobody
-%defattr(-,root,root)
 %dir %attr(0755,nobody,root) %{_localstatedir}/lib/nobody
 %{_sysusersdir}/system-user-nobody.conf
 
 %files -n system-user-upsd
-%defattr(-,root,root)
 %{_sysusersdir}/system-user-upsd.conf
 
 %files -n system-user-uuidd
-%defattr(-,root,root)
 %{_sysusersdir}/system-user-uuidd.conf
 
 %files -n system-user-tftp
-%defattr(-,root,root)
 %dir %attr(0755,tftp,tftp) /srv/tftpboot
 %{_sysusersdir}/system-user-tftp.conf
 
 %files -n system-user-tss
-%defattr(-,root,root)
 %dir %attr(0750,tss,tss) /var/lib/tpm
 %{_sysusersdir}/system-user-tss.conf
 
 %files -n system-group-kvm
-%defattr(-,root,root)
 %{_sysusersdir}/system-group-kvm.conf
 
 %files -n system-user-qemu
-%defattr(-,root,root)
 %{_sysusersdir}/system-user-qemu.conf
 
 %files -n system-group-libvirt
-%defattr(-,root,root)
 %{_sysusersdir}/system-group-libvirt.conf
 
 %files -n system-user-vscan
-%defattr(-,root,root)
 %dir %attr(0750,vscan,vscan) %{_localstatedir}/spool/amavis
 %{_sysusersdir}/system-user-vscan.conf
 
 %files -n system-user-ntp
-%defattr(-,root,root)
 %dir %attr(0755,root,root) %{_localstatedir}/lib/ntp
 %{_sysusersdir}/system-user-ntp.conf
 

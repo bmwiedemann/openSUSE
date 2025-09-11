@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 25 09:01:05 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove old and now implicit %defattr lines
+- Use noun phrase for descriptions
+- Reduce calls to mkdir
+
+-------------------------------------------------------------------
 Fri Aug 22 14:27:27 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use fully locked user accounts

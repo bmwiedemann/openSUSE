@@ -288,4 +288,12 @@ The vscan user is currently used by the amavisd-new and clamav packages, but the
     <comment></comment>
     <requestid>1300997</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>bda28f706fd233b4988036867951ea06</srcmd5>
+    <version>20250822</version>
+    <time>1757594239</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1303598</requestid>
+  </revision>
 </revisionlist>
