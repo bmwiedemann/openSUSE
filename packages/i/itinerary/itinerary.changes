@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Sep 10 09:23:27 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.08.1/
+- Changes since 25.08.0:
+  * Add 25.08.1 release notes
+  * Fix applying flight journey query results to flight reservations
+  * Improve rich text detection heuristics
+  * Fix storing location identifiers in reservations
+  * Write more detailed version information to export files
+  * Also de-duplicate seats
+  * FormPlaceEditorDelegate: Fix error message for reverse lookup model
+  * Update currency exchange rates when conversions are enabled
+  * Show ticket tokens for hotels as well
+  * Explicitly apply the import action visibility property
+  * FormPlaceEditorDelegate: Use no background for geo action delegate
+  * Harden against Quotient data corruption
+  * Work around Kirigami KF 6.17 global toolbar regression
+  * Build stable packages against released dependencies
+  * Use arrival date for section headers when showing arrival search results
+  * Handle end-less elements in automatic trip grouping correctly
+  * Fix transfer time difference calculation to events without end time
+  * Don't block adding transfers if an adjacent transfer is far enough away
+
+-------------------------------------------------------------------
 Fri Aug  8 07:47:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.08.0
