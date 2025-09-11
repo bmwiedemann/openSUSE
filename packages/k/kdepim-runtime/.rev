@@ -1130,4 +1130,12 @@
   * 0001-Mail-dispatcher-agent-needs-widgets.patch</comment>
     <requestid>1303067</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>8f537ed2e5ae30a80925fa9cb84dca6d</srcmd5>
+    <version>25.08.1</version>
+    <time>1757594324</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.08.1</comment>
+    <requestid>1303854</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %define kf6_version 6.14.0
 %define qt6_version 6.8.0
-%define kpim6_version 6.5.0
+%define kpim6_version 6.5.1
 
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
 %bcond_without etebase
@@ -27,7 +27,7 @@
 %bcond_with kolabxml
 %bcond_without released
 Name:           kdepim-runtime
-Version:        25.08.0
+Version:        25.08.1
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -37,8 +37,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Mail-dispatcher-agent-needs-widgets.patch
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libboost_atomic-devel
