@@ -1780,4 +1780,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE release gear 25.08.0 (forwarded request 1299260 from krop)</comment>
     <requestid>1299758</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>39afde4e3af21b9e973a62359312f056</srcmd5>
+    <version>25.08.1</version>
+    <time>1757594492</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.08.1</comment>
+    <requestid>1304014</requestid>
+  </revision>
 </revisionlist>
