@@ -1,7 +1,7 @@
 #
 # spec file for package cyrus-sasl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Patch6:         cyrus-sasl-lfs.patch
 Patch7:         fix_libpq-fe_include.diff
 Patch8:         0001-Fix-time.h-check.patch
 Patch9:         cyrus-sasl-make-digestmd5-work-ssl3.patch
+Patch10:        0001-Use-HMAC-SHA256-for-cache-passwords-over-MD5.patch
 
 BuildRequires:  gdbm-devel
 BuildRequires:  krb5-mini-devel
@@ -178,6 +179,7 @@ fi
 %patch -P 7 -p1
 %patch -P 8 -p1
 %patch -P 9 -p1
+%patch -P 10 -p1
 
 %build
 find . -name "*.cvsignore" -exec rm -fv "{}" "+"
