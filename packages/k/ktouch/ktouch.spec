@@ -21,7 +21,7 @@
 #
 %bcond_without released
 Name:           ktouch
-Version:        25.08.0
+Version:        25.08.1
 Release:        0
 Summary:        Touch Typing Tutor
 License:        GPL-2.0-or-later
