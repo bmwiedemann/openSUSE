@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 10 21:38:13 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * libixion-boost-system.patch
+    + Add the @BOOST_SYSTEM_LIBS@ to the pkgconfig *.pc file
+    + Fixes linking errors in some libixion consumers
+
+-------------------------------------------------------------------
 Sat Aug 30 14:40:35 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Remove obsolete patches:

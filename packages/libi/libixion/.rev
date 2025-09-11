@@ -287,4 +287,12 @@
 - Fix main source tarball URL.</comment>
     <requestid>1302128</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>2abbbc50e6dfb4f15ffea4ed72dfbd50</srcmd5>
+    <version>0.20.0</version>
+    <time>1757594306</time>
+    <user>anag_factory</user>
+    <comment>Fix some linking errors with libixion having undefined symbols from boost::system</comment>
+    <requestid>1303729</requestid>
+  </revision>
 </revisionlist>
