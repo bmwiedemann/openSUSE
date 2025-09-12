@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 12 15:53:53 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250912:
+  * Add Retevis RA86 mobile radio
+  * at779UV: Fix setting empty memories
+  * thd74: multiple fixes
+  * Fix column sort order with numeric values
+
+-------------------------------------------------------------------
 Sat Sep  6 09:08:44 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250905:
