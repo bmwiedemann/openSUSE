@@ -1,7 +1,7 @@
 #
 # spec file for package lasso
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2019 Red Hat, Inc., Raleigh, North Carolina, United States of America.
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
@@ -28,28 +28,16 @@
   %global configure_args %{configure_args} --enable-wsf --with-sasl2=%{_prefix}/sasl2
 %endif
 Name:           lasso
-Version:        2.8.2
+Version:        2.9.0
 Release:        0
 Summary:        Liberty Alliance Single Sign On
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://lasso.entrouvert.org/
 Source:         https://dev.entrouvert.org/lasso/lasso-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE lasso-automake-1.17-support.patch -- Fix builds with automake 1.17
-Patch1:         lasso-automake-1.17-support.patch
-# PATCH-FIX-UPSTREAM lasso-fix-implicit-declarations.patch -- Fix implicit declarations
-Patch2:         lasso-fix-implicit-declarations.patch
-# PATCH-FIX-UPSTREAM lasso-libxml2-2.12-support.patch -- Fix builds with libxml2 2.12
-Patch3:         lasso-libxml2-2.12-support.patch
-# PATCH-FIX-UPSTREAM lasso-2.8.2-python_313.patch -- https://dev.entrouvert.org/issues/92106
-Patch4:         lasso-2.8.2-python_313.patch
 # PATCH-FIX-OPENSUSE fix_shebangs.patch mcepl@suse.com
 # fix incorrect shebangs to be #!/usr/bin/python3
 Patch5:         fix_shebangs.patch
-# PATCH-FIX-UPSTREAM remove-six.patch mcepl@suse.com
-# from https://git.entrouvert.org/entrouvert/lasso/pulls/19
-# remove dependency on the Python six module
-Patch6:         remove-six.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  check-devel

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Sep  9 12:08:10 UTC 2025 - pgajdos@suse.com
+
+- version update to 2.9.0
+  * Fix symbol deprecation of XMLSEC_CRYPTO macro in libxmlsec 1.3.0 (Patch
+    provided by Simo Sorce of RedHat) (#78280)
+  * Fix implicit function declaration errors, patch provided by Rob Crittenden
+    from RedHat (#85340)
+  * Fix proper selection of SHA512 in lasso_xmlnode_add_saml2_signature_template (#93018)
+  * Perl: fix leak of char* in return of functions (#55510)
+  * Perl: fix leak of xmlBuffer in xmlnode_to_tpv (#55510)
+  * xml: do not ignore unexpected text content (#105693)
+  * tests: check assignement of any_attribute is prevented (#105693)
+  * xml: do not terminate on an unknown XML node type (#105693)
+  * misc: check xmlSecGetNodeNsHref for possible NULL result (#105693)
+  * xml: prevent assignment of attribute value inside any attribute
+  * misc: never return CDATA nodes, include them in text value (#105693)
+  * tests: test that inserted comment do not change node value and still validate signature (#105693)
+  * autogen.sh: add support for automake up to 1.18 (#107955)
+  * autotools: use sysconfig module when distutils not available (#105650)
+  * tests: fix python bindings tests for Python 3.14 (#105622)
+  * xml: fix SAML 1.1 AttributeValue snippet flag (#102374)
+  * registry: fix lasso_registry_destroy private declaration (#101250)
+  * bindings: fix lasso_provider_get_key_encryption_method export (#101250)
+  * Improve differentiation of Redirect from POST messages (#97575)
+  * Annotate lasso_*_signature_method functions with LASSO_EXPORT (#86076)
+  * Adjust to structured error callback argument change in libxml2 2.12, patch
+    provided by Florian Wiemer of RedHat (#86080)
+  * all private_data public fields have been depreciated (but not removed to keep
+    ABI compatibilityy) and new GLib API for private data is used (#42073)
+  * python-six is no more used in the python bindings (#94580)
+  * new public function lasso_provider_verify_saml_signature (#92412)
+- modified patches
+  % fix_shebangs.patch (refreshed)
+- deleted patches
+  - lasso-2.8.2-python_313.patch (upstreamed)
+  - lasso-automake-1.17-support.patch (upstreamed)
+  - lasso-fix-implicit-declarations.patch (upstreamed)
+  - lasso-libxml2-2.12-support.patch (upstreamed)
+  - remove-six.patch (upstreamed)
+
+-------------------------------------------------------------------
 Wed Jul  9 16:04:54 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Fix builds with automake >= 1.17

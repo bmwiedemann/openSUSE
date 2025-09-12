@@ -10,91 +10,90 @@
  tools/check-lasso-sections.py           |    2 +-
  9 files changed, 9 insertions(+), 10 deletions(-)
 
-Index: lasso-2.8.2/bindings/bindings.py
+Index: lasso-2.9.0/bindings/bindings.py
 ===================================================================
---- lasso-2.8.2.orig/bindings/bindings.py	2021-09-11 19:20:25.844637909 +0200
-+++ lasso-2.8.2/bindings/bindings.py	2025-06-18 21:27:17.234890175 +0200
+--- lasso-2.9.0.orig/bindings/bindings.py
++++ lasso-2.9.0/bindings/bindings.py
 @@ -1,4 +1,4 @@
 -#! /usr/bin/env python
 +#!/usr/bin/python3
  #
  # Lasso - A free implementation of the Liberty Alliance specifications.
  #
-Index: lasso-2.8.2/bindings/python/tests/binding_tests.py
+Index: lasso-2.9.0/bindings/python/tests/binding_tests.py
 ===================================================================
---- lasso-2.8.2.orig/bindings/python/tests/binding_tests.py	2025-06-18 21:27:10.943408811 +0200
-+++ lasso-2.8.2/bindings/python/tests/binding_tests.py	2025-06-18 21:27:17.235260757 +0200
+--- lasso-2.9.0.orig/bindings/python/tests/binding_tests.py
++++ lasso-2.9.0/bindings/python/tests/binding_tests.py
 @@ -1,4 +1,4 @@
 -#! /usr/bin/env python
 +#!/usr/bin/python3
  # -*- coding: utf-8 -*-
  #
  # $Id: binding_tests.py 3283 2007-06-11 09:10:18Z dlaniel $
-Index: lasso-2.8.2/bindings/python/tests/profiles_tests.py
+Index: lasso-2.9.0/bindings/python/tests/profiles_tests.py
 ===================================================================
---- lasso-2.8.2.orig/bindings/python/tests/profiles_tests.py	2025-06-18 21:27:10.943816479 +0200
-+++ lasso-2.8.2/bindings/python/tests/profiles_tests.py	2025-06-18 21:27:17.235574138 +0200
+--- lasso-2.9.0.orig/bindings/python/tests/profiles_tests.py
++++ lasso-2.9.0/bindings/python/tests/profiles_tests.py
 @@ -1,4 +1,4 @@
 -#! /usr/bin/env python
 +#!/usr/bin/python3
  # -*- coding: utf-8 -*-
  #
  # $Id: profiles_tests.py 3254 2007-06-05 21:23:57Z fpeters $
-Index: lasso-2.8.2/bindings/python/tests/tests.py
+Index: lasso-2.9.0/bindings/python/tests/tests.py
 ===================================================================
---- lasso-2.8.2.orig/bindings/python/tests/tests.py	2021-09-11 19:20:25.848637964 +0200
-+++ lasso-2.8.2/bindings/python/tests/tests.py	2025-06-18 21:27:33.094107516 +0200
-@@ -1,5 +1,4 @@
+--- lasso-2.9.0.orig/bindings/python/tests/tests.py
++++ lasso-2.9.0/bindings/python/tests/tests.py
+@@ -1,4 +1,4 @@
 -#! /usr/bin/env python
--# -*- coding: utf-8 -*-
-++#!/usr/bin/python3
++#!/usr/bin/python3
  #
  # $Id: tests.py 3425 2007-10-10 09:31:03Z dlaniel $
  #
-Index: lasso-2.8.2/lasso/build_strerror.py
+Index: lasso-2.9.0/lasso/build_strerror.py
 ===================================================================
---- lasso-2.8.2.orig/lasso/build_strerror.py	2021-05-17 22:00:09.083309978 +0200
-+++ lasso-2.8.2/lasso/build_strerror.py	2025-06-18 21:27:17.236364820 +0200
+--- lasso-2.9.0.orig/lasso/build_strerror.py
++++ lasso-2.9.0/lasso/build_strerror.py
 @@ -1,4 +1,4 @@
 -#! /usr/bin/env python
 +#!/usr/bin/python3
  
  import glob
  import re
-Index: lasso-2.8.2/lasso/extract_sections.py
+Index: lasso-2.9.0/lasso/extract_sections.py
 ===================================================================
---- lasso-2.8.2.orig/lasso/extract_sections.py	2021-09-11 19:20:25.848637964 +0200
-+++ lasso-2.8.2/lasso/extract_sections.py	2025-06-18 21:27:17.236654944 +0200
+--- lasso-2.9.0.orig/lasso/extract_sections.py
++++ lasso-2.9.0/lasso/extract_sections.py
 @@ -1,4 +1,4 @@
 -#! /usr/bin/env python
 +#!/usr/bin/python3
  
  import io
  import re
-Index: lasso-2.8.2/lasso/extract_symbols.py
+Index: lasso-2.9.0/lasso/extract_symbols.py
 ===================================================================
---- lasso-2.8.2.orig/lasso/extract_symbols.py	2021-09-11 19:20:25.848637964 +0200
-+++ lasso-2.8.2/lasso/extract_symbols.py	2025-06-18 21:27:17.236878508 +0200
+--- lasso-2.9.0.orig/lasso/extract_symbols.py
++++ lasso-2.9.0/lasso/extract_symbols.py
 @@ -1,4 +1,4 @@
 -#! /usr/bin/env python
 +#!/usr/bin/python3
  
  import io
  import glob
-Index: lasso-2.8.2/lasso/extract_types.py
+Index: lasso-2.9.0/lasso/extract_types.py
 ===================================================================
---- lasso-2.8.2.orig/lasso/extract_types.py	2021-09-11 19:20:25.848637964 +0200
-+++ lasso-2.8.2/lasso/extract_types.py	2025-06-18 21:27:17.237043056 +0200
+--- lasso-2.9.0.orig/lasso/extract_types.py
++++ lasso-2.9.0/lasso/extract_types.py
 @@ -1,4 +1,4 @@
 -#! /usr/bin/env python
 +#!/usr/bin/python3
  
  import io
  import glob
-Index: lasso-2.8.2/tools/check-lasso-sections.py
+Index: lasso-2.9.0/tools/check-lasso-sections.py
 ===================================================================
---- lasso-2.8.2.orig/tools/check-lasso-sections.py	2021-05-17 22:00:09.275307814 +0200
-+++ lasso-2.8.2/tools/check-lasso-sections.py	2025-06-18 21:27:17.237215845 +0200
+--- lasso-2.9.0.orig/tools/check-lasso-sections.py
++++ lasso-2.9.0/tools/check-lasso-sections.py
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/python3
