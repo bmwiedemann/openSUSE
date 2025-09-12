@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 11 18:45:23 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 1.7.0
+  * New rewritten Graph view
+  * Dark/Light theme setting and detection
+  * Slight performance improvements
+  * Fixed clients reusing old names in profiler plots
+  * Fixed link permission availability depending on the first
+    connected remote
+
+-------------------------------------------------------------------
 Tue Jul 29 09:33:21 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 1.6.2

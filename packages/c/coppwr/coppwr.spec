@@ -19,7 +19,7 @@
 
 %define appid   io.github.dimtpap.coppwr
 Name:           coppwr
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        Low level PipeWire control GUI
 License:        GPL-3.0-or-later
