@@ -429,3 +429,10 @@ b117013b fix: let check_vol_slaves_all return 1 when checks on all slaves fail
 950475e8 fix(dmsquash-live): erofs collision with latest util-linux
 fa17b6fb fix(systemd-udevd): handle root=gpt-auto for systemd-v258
 4f6ca33d fix(dracut-util): crash if CMDLINE ends with quotation mark
+3d58272e feat(dracut.sh): output error message for --regenerate-all
+5c53a810 fix(dracut): use "-name" to avoid find matching temporary directory
+614e9d34 fix(kernel-modules-extra): remove stray \ before /
+82f7f7df improvement(74nvmf): lookup required NIC kernel modules for NBFT interfaces
+52155dde fix(dracut): library directory creation in --kernel-only
+1b11affd fix(74nvmf): only set netroot if it's yet empty
+f879b04d fix(74nvmf): make sure autoconnect script is run at least once

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 11 12:54:38 UTC 2025 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.757.g0d1d426d:
+
+  Additional fixes for PXE boot with filled-in NBFT (bsc#1238848):
+  * fix(74nvmf): make sure autoconnect script is run at least once
+  * fix(74nvmf): only set netroot if it's yet empty
+
+  Other:
+  * fix(dracut): library directory creation in --kernel-only
+  * improvement(74nvmf): lookup required NIC kernel modules for NBFT interfaces
+  * fix(kernel-modules-extra): remove stray \ before /
+  * fix(dracut): use "-name" to avoid find matching temporary directory
+  * feat(dracut.sh): output error message for --regenerate-all
+
+-------------------------------------------------------------------
 Mon Aug 11 12:37:40 UTC 2025 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.749.g280c842e:
