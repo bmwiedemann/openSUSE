@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Sep 11 20:09:11 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.6:
+  * Support BOM correctly.  Previously we would have stripped
+    any Byte Order Mark, and incorrectly matched items on the first
+    line.
+  * Extraneous blank lines are avoided when deleting a section.
+  * Previously blank lines preceeding a [section] were not
+    removed.
+  * Support creating a section called "default".  Previously
+    this would have been disallowed, with an invalid section name
+    error.
+  * Support ensuring a single space in all 'name = value'
+    entries in the file with --ini-options=space.  This is
+    symmetric and opposite to the existing --ini-options=nospace
+    option.
+  * Support ensuring a single blank line between sections, and
+    no blank lines at the start or end of the file, with --ini-
+    options=sectionspace.
+
+-------------------------------------------------------------------
 Thu Nov 16 15:58:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.5:

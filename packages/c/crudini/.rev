@@ -123,4 +123,28 @@
 - Initial package (0.3)</comment>
     <requestid>1126962</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d4af04b219f791db587f10e6e530415d</srcmd5>
+    <version>0.9.6</version>
+    <time>1757704200</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.9.6:
+  * Support BOM correctly.  Previously we would have stripped
+    any Byte Order Mark, and incorrectly matched items on the first
+    line.
+  * Extraneous blank lines are avoided when deleting a section.
+  * Previously blank lines preceeding a [section] were not
+    removed.
+  * Support creating a section called &quot;default&quot;.  Previously
+    this would have been disallowed, with an invalid section name
+    error.
+  * Support ensuring a single space in all 'name = value'
+    entries in the file with --ini-options=space.  This is
+    symmetric and opposite to the existing --ini-options=nospace
+    option.
+  * Support ensuring a single blank line between sections, and
+    no blank lines at the start or end of the file, with --ini-
+    options=sectionspace.</comment>
+    <requestid>1304151</requestid>
+  </revision>
 </revisionlist>
