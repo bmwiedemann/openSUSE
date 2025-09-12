@@ -1,0 +1,28 @@
+Index: devscripts/Makefile
+===================================================================
+--- devscripts.orig/Makefile
++++ devscripts/Makefile
+@@ -6,10 +6,6 @@ DESTDIR =
+ 
+ all: version doc make_scripts conf.default translated_manpages
+ 
+-version:
+-	rm -f version
+-	dpkg-parsechangelog -SVersion > version
+-
+ conf.default: conf.default.in version
+ 	rm -f $@ $@.tmp
+ 	VERSION=`cat version` && sed -e "s/###VERSION###/$$VERSION/" $< \
+Index: devscripts/scripts/Makefile
+===================================================================
+--- devscripts.orig/scripts/Makefile
++++ devscripts/scripts/Makefile
+@@ -166,7 +166,7 @@ clean:
+ test: test_pl test_sh test_py
+ 
+ install: all
+-	python3 setup.py install --root="$(DESTDIR)" --no-compile --install-layout=deb
++	python3 setup.py install --root="$(DESTDIR)" --no-compile
+ 	cp $(SCRIPTS) $(DESTDIR)$(BINDIR)
+ 	ln -sf edit-patch $(DESTDIR)$(BINDIR)/add-patch
+ 	install -d $(DESTDIR)$(COMPL_DIR)

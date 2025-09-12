@@ -34,4 +34,26 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1149015 from dimstar)</comment>
     <requestid>1149108</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9b3cb1c5b6fa738c963ef155d78e4bc4</srcmd5>
+    <version>2.25.19</version>
+    <time>1757704246</time>
+    <user>anag_factory</user>
+    <comment>- update to version 2.25.19:
+  - no changes in hardening-check, this is just to silence the
+    &quot;download_files&quot; service, which wasn't able to download the version
+    2.25.15 tarball, which got deleted upstream.
+
+- update to version 2.25.15:
+  - this is now based on hardening-check found in Debian's devscripts package.
+  - the standalone hardening-check package no longer exists.
+  - drop perl_regex.patch no longer needed.
+  - adjust to new build system complexities:
+    - add makefile_fixes.patch: cut out Debian specific parts
+    - add avoid_pod2man_errors.patch: silence some error diagnostics in
+      Docbook sources for man pages.
+  - the new version has additional support for new fortify source macros and
+    branch protection checks.</comment>
+    <requestid>1304321</requestid>
+  </revision>
 </revisionlist>

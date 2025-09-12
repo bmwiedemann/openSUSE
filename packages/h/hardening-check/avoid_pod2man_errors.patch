@@ -1,0 +1,65 @@
+Index: devscripts/scripts/chdist.pl
+===================================================================
+--- devscripts.orig/scripts/chdist.pl
++++ devscripts/scripts/chdist.pl
+@@ -26,7 +26,7 @@ B<chdist> [I<options>] [I<command>] [I<c
+ B<chdist> [I<options>] I<DIST> I<command> [I<command parameters>]
+ 
+ The second syntax is accepted when the I<DIST> does not match
+-one of the known commands from the list below (see L</COMMANDS>).
++one of the known commands from the list below (see COMMANDS).
+ Then the I<command> may be any program available on the system
+ and anything based on apt will be using the I<DIST> apt data.
+ 
+Index: devscripts/scripts/uscan.pl
+===================================================================
+--- devscripts.orig/scripts/uscan.pl
++++ devscripts/scripts/uscan.pl
+@@ -47,7 +47,7 @@ a directory containing multiple source t
+ 
+ Unless --watchfile is given, B<uscan> looks recursively for valid source
+ trees starting from the current directory (see the below section
+-L<Directory name checking> for details).
++<Directory name checking> for details).
+ 
+ For each valid source tree found, typically the following happens:
+ 
+Index: devscripts/po4a/po/de.po
+===================================================================
+--- devscripts.orig/po4a/po/de.po
++++ devscripts/po4a/po/de.po
+@@ -3774,7 +3774,7 @@ msgstr "B<chdist> [I<Optionen>] [I<Befeh
+ #: ../scripts/chdist.pl:28
+ msgid ""
+ "The second syntax is accepted when the I<DIST> does not match one of the "
+-"known commands from the list below (see L</COMMANDS>).  Then the I<command> "
++"known commands from the list below (see <COMMANDS>).  Then the I<command> "
+ "may be any program available on the system and anything based on apt will be "
+ "using the I<DIST> apt data."
+ msgstr ""
+Index: devscripts/po4a/po/fr.po
+===================================================================
+--- devscripts.orig/po4a/po/fr.po
++++ devscripts/po4a/po/fr.po
+@@ -2889,7 +2889,7 @@ msgstr "B<chdist> [I<options>] I<DIST> [
+ #. type: textblock
+ #: ../scripts/chdist.pl:28
+ msgid ""
+-"The second syntax is accepted when the I<DIST> does not match one of the known commands from the list below (see L</COMMANDS>).  Then the I<command> may be "
++"The second syntax is accepted when the I<DIST> does not match one of the known commands from the list below (see <COMMANDS>).  Then the I<command> may be "
+ "any program available on the system and anything based on apt will be using the I<DIST> apt data."
+ msgstr ""
+ "La seconde syntaxe est acceptée quand I<DIST> ne correspond pas à une commande connue de la liste plus bas (voir L</COMMANDES>). Dans ce cas I<commande> peut "
+Index: devscripts/po4a/po/pt.po
+===================================================================
+--- devscripts.orig/po4a/po/pt.po
++++ devscripts/po4a/po/pt.po
+@@ -3709,7 +3709,7 @@ msgstr "B<chdist> [I<options>] I<DIST> I
+ #: ../scripts/chdist.pl:28
+ msgid ""
+ "The second syntax is accepted when the I<DIST> does not match one of the "
+-"known commands from the list below (see L</COMMANDS>).  Then the I<command> "
++"known commands from the list below (see <COMMANDS>).  Then the I<command> "
+ "may be any program available on the system and anything based on apt will be "
+ "using the I<DIST> apt data."
+ msgstr ""

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Sep 12 13:28:08 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- update to version 2.25.19:
+  - no changes in hardening-check, this is just to silence the
+    "download_files" service, which wasn't able to download the version
+    2.25.15 tarball, which got deleted upstream.
+
+-------------------------------------------------------------------
+Tue Sep  9 09:28:45 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- update to version 2.25.15:
+  - this is now based on hardening-check found in Debian's devscripts package.
+  - the standalone hardening-check package no longer exists.
+  - drop perl_regex.patch no longer needed.
+  - adjust to new build system complexities:
+    - add makefile_fixes.patch: cut out Debian specific parts
+    - add avoid_pod2man_errors.patch: silence some error diagnostics in
+      Docbook sources for man pages.
+  - the new version has additional support for new fortify source macros and
+    branch protection checks.
+
+-------------------------------------------------------------------
 Thu Feb 22 07:51:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
