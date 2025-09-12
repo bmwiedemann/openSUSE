@@ -462,4 +462,12 @@
     <comment>- The Chinese languages do not include the territory (bsc#1248826).</comment>
     <requestid>1302320</requestid>
   </revision>
+  <revision rev="27" vrev="27">
+    <srcmd5>2e3e259ba74b6d67f8017f7fa5d29214</srcmd5>
+    <version>0</version>
+    <time>1757704226</time>
+    <user>anag_factory</user>
+    <comment>- Update translations (bsc#1249378)</comment>
+    <requestid>1304247</requestid>
+  </revision>
 </revisionlist>
