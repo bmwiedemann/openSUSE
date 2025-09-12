@@ -93,4 +93,12 @@
     <comment>- Update to release 0.7</comment>
     <requestid>1200170</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>3572e6c3e2bae054229f1050cff56b05</srcmd5>
+    <version>0.7</version>
+    <time>1757704207</time>
+    <user>anag_factory</user>
+    <comment>- Specifically request pkgconfig(cddgmp) now that it exists.</comment>
+    <requestid>1304157</requestid>
+  </revision>
 </revisionlist>

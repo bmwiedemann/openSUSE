@@ -1,7 +1,7 @@
 #
 # spec file for package gfan
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,23 +32,19 @@ Patch4:         gfan-c++20.patch
 Patch5:         gfan-gcd.patch
 Patch6:         gfan-multiplicities.patch
 BuildRequires:  automake
-BuildRequires:  cddlib-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
+BuildRequires:  pkgconfig(cddgmp)
 %define with_pdf 1
 %if 0%{?with_pdf}
-BuildRequires:  texlive-latex
-%if 0%{?suse_version} >= 1230
 BuildRequires:  texlive-amsfonts
 BuildRequires:  texlive-bibtex
 BuildRequires:  texlive-cm-super
 BuildRequires:  texlive-dvips
+BuildRequires:  texlive-latex
 BuildRequires:  texlive-ntgclass
 BuildRequires:  texlive-ulem
-%if 0%{?suse_version} > 1230
 BuildRequires:  tex(english.ldf)
-%endif
-%endif
 %endif
 # Software requires the presence of __int128; possibly relevant for armv7l too
 ExcludeArch:    %ix86
