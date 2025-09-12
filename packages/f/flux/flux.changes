@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 23 07:39:47 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to version 0.198.0, see:
+  https://github.com/influxdata/flux/releases/
+- Drop fix-unsigned-char.patch: upstreamed
+
+-------------------------------------------------------------------
 Mon Feb 24 08:46:16 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Update to version 0.196.1, see:
