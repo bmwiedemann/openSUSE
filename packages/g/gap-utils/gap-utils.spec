@@ -18,7 +18,7 @@
 
 Name:           gap-utils
 Summary:        GAP: Utility functions in GAP
-Version:        0.91
+Version:        0.92
 Release:        0
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math

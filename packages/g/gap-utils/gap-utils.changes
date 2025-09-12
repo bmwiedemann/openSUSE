@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 11 20:35:14 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.92
+  * Add timeout to `Download` class
+
+-------------------------------------------------------------------
 Wed Aug 13 14:57:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.91
