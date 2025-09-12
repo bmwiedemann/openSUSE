@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tomlkit
-Version:        0.13.2
+Version:        0.13.3
 Release:        0
 Summary:        Style preserving TOML library
 License:        MIT

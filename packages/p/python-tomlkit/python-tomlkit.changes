@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 12 14:02:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.13.3
+  * Add `.item()` method to array and tables to retrieve
+    an item by key. (#390)
+  * Fix missing newline when parsing a separated array
+    of tables without trailing new line. (#381)
+  * Fix non-existing key error when deleting an item
+    from an out-of-order table. (#383)
+  * Ensure newline is added between the plain values
+    and the first table. (#387)
+  * Fix repeated whitespace when removing an array item. (#405)
+  * Fix invalid serialization after removing array item
+    if the comma is on its own line. (#408)
+  * Fix serialization of a nested dotted key table. (#411)
+  * Refine the error message when use non-string as single key. (#412)
+  * Fix invalid serialization after overwriting a key of
+    a out-of-order table. (#414)
+
+-------------------------------------------------------------------
 Mon Oct 28 11:49:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13.2:
