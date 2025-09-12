@@ -14765,6 +14765,7 @@ unsorted:
   - libnfc-devel 
   - libnfc-tools 
   - libnfc6 
+  - libnfd1 
   - libnfdump-1_7_6 
   - libnffile-1_7_6 
   - libnfnetlink-devel 
@@ -15339,13 +15340,13 @@ unsorted:
   - libprofiler0 
   - libproj25 
   - libprometheus-cpp0_13 
-  - libprotobuf-lite31_1_0-32bit 
+  - libprotobuf-lite32_0_0-32bit 
   - libprotobuf-lite3_21_12 
   - libprotobuf-nanopb0 
-  - libprotobuf31_1_0-32bit 
+  - libprotobuf32_0_0-32bit 
   - libprotobuf3_21_12 
-  - libprotoc31_1_0 
-  - libprotoc31_1_0-32bit 
+  - libprotoc32_0_0 
+  - libprotoc32_0_0-32bit 
   - libprotoc3_21_12 
   - libproxy-devel 
   - libproxy-devel-doc 
@@ -16652,7 +16653,7 @@ unsorted:
   - libusrp1 
   - libusrsctp2 
   - libut1 
-  - libutf8_range-31_1_0-32bit 
+  - libutf8_range-32_0_0-32bit 
   - libutf8proc3 
   - libuuid-devel 
   - libuuid-devel-32bit 
@@ -19368,6 +19369,7 @@ unsorted:
   - native-maven-plugin 
   - native-platform 
   - native-platform-javadoc 
+  - nativefiledialog-extended-devel 
   - nautilus-devel 
   - nautilus-eiciel 
   - nautilus-extension-dropbox 
@@ -26909,6 +26911,7 @@ unsorted:
   - python311-rfc3986-validator 
   - python311-rfc3987 
   - python311-rfc8785 
+  - python311-rich-argparse 
   - python311-rich-click 
   - python311-rich-pixels 
   - python311-rjsmin 
@@ -30702,6 +30705,7 @@ unsorted:
   - python312-rfc3987 
   - python312-rfc8785 
   - python312-rich 
+  - python312-rich-argparse 
   - python312-rich-click 
   - python312-rich-pixels 
   - python312-rjsmin 
@@ -34435,6 +34439,7 @@ unsorted:
   - python313-rfc3987 
   - python313-rfc8785 
   - python313-rich 
+  - python313-rich-argparse 
   - python313-rich-click 
   - python313-rich-pixels 
   - python313-rjsmin 
