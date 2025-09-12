@@ -1,7 +1,7 @@
 #
 # spec file for package hyfetch
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,29 @@
 #
 
 
-%define skip_python2 1
+%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           hyfetch
-Version:        1.99.0
+Version:        2.0.2
 Release:        0
 Summary:        Customizable Linux System Information Script
 License:        MIT
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/hykilpikonna/HyFetch
-Source:         https://files.pythonhosted.org/packages/source/H/HyFetch/HyFetch-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
+Source1:        vendor.tar.xz
 # PATCH-FIX-SUSE Fix E: env-script-interpreter
 Patch0:         fix-shebang.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         https://patch-diff.githubusercontent.com/raw/hykilpikonna/hyfetch/pull/362.patch
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+BuildRequires:  cargo
+BuildRequires:  cargo-packaging
 Recommends:     maim
 Recommends:     w3m-inline-image
-BuildArch:      noarch
-%python_subpackages
+# Replaces Python packages that used to provide /usr/bin/hyfetch
+Obsoletes:      python311-hyfetch  < %{version}
+Obsoletes:      python312-hyfetch  < %{version}
+Obsoletes:      python313-hyfetch  < %{version}
+Conflicts:      python311-hyfetch
+Conflicts:      python312-hyfetch
+Conflicts:      python313-hyfetch
 
 %description
 HyFetch is a command line script to display information about your
@@ -49,7 +48,7 @@ It is a fork of neofetch, and adds pride flag coloration to the OS logo.
 
 %package -n neowofetch
 # version as reported by neowofetch --version
-Version:        7.98.0
+Version:        8.0.2
 Summary:        CLI system information tool written in BASH
 Provides:       neofetch = %{version}
 Obsoletes:      neofetch < %{version}
@@ -67,25 +66,15 @@ function and friends which let you add your own custom info.
 This is the forked version that is maintained together with hyfetch
 
 %prep
-%autosetup -p1 -n HyFetch-%{VERSION}
-# copy the patched neofetch to scripts/ - in git, this is a symlink, but the tarball has it as a regular file
-cp neofetch hyfetch/scripts/neowofetch
+%autosetup -a1 -p1
 
 %build
-sed -i 's/packages=find_namespace_packages(exclude=("tools", "tools.*")),/packages=find_namespace_packages(exclude=("tools", "tools.*", "docs")),/' setup.py
-%pyproject_wheel
+%{cargo_build}
 
 %install
-%pyproject_install
-%python_clone -a %{buildroot}/%{_bindir}/hyfetch
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{cargo_install -p crates/hyfetch}
+install -m 0755 %{_builddir}/%{name}-%{VERSION}/neofetch %{buildroot}%{_bindir}/neowofetch
 ln -s %{_bindir}/neowofetch %{buildroot}%{_bindir}/neofetch
-
-%post
-%{python_install_alternative hyfetch}
-
-%postun
-%python_uninstall_alternative hyfetch
 
 %check
 [ "$(%{buildroot}%{_bindir}/neofetch --version)" == "Neofetch %{version}" ] || (
@@ -93,12 +82,10 @@ ln -s %{_bindir}/neowofetch %{buildroot}%{_bindir}/neofetch
     exit 1
 )
 
-%files %{python_files}
+%files
+%{_bindir}/%{name}
 %doc README.md
 %license LICENSE.md
-%python_alternative %{_bindir}/hyfetch
-%{python_sitelib}/hyfetch
-%{python_sitelib}/HyFetch-%{VERSION}.dist-info
 
 %files -n neowofetch
 %{_bindir}/neofetch

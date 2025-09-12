@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 10 11:10:34 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Replace obsolete python modules.
+
+-------------------------------------------------------------------
+Tue Sep 09 19:00:58 UTC 2025 - cat@aulucya.gay
+
+- Update to version 2.0.2:
+  * [U] Release 2.0.2 (Rust rewrite)
+  * [O] Better warning message (#419)
+  * [+] Adipophilia flag (#424)
+  * [+] Nullflux flag (#397)
+  * [F] Hypergender flags Fixes (#422)
+  * [M] Move flag order
+  * [+] Fictosexual flag (#394)
+  * Remove 362.patch due to being merged upstream
+
+-------------------------------------------------------------------
+Fri Jun  6 11:12:59 UTC 2025 - Max Lin <mlin@suse.com>
+
+- Fix Leap 16.0 build
+
+-------------------------------------------------------------------
 Fri Nov  8 07:42:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 362.patch: update openSUSE distro logos in the source code.
@@ -72,3 +95,4 @@ Sun Dec  3 12:12:10 UTC 2023 - Bailey Kasin <baileykasin@gmail.com>
 Thu Sep  7 21:06:45 UTC 2023 - Bailey Kasin <baileykasin@gmail.com>
 
 - Add version 1.4.10
+
