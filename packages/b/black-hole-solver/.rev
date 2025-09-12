@@ -23,4 +23,18 @@
     <comment></comment>
     <requestid>1042484</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ceae692c2cd6cf992ab18d8d903bcb1f</srcmd5>
+    <version>1.14.0</version>
+    <time>1757704225</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.0:
+  * Fixed running black_hole_solver_run with the same
+    (or a smaller) iterations limit.  It ran indefinetely
+    then (Possible Denial-of-service?)
+  * Fix some hypothetical rresource leaks (e.g.: with &quot;fopen()&quot;).
+  * Cleanups: add &quot;const&quot;s , convert &quot;int&quot; to &quot;bool&quot;, etc.
+  * Add tests.</comment>
+    <requestid>1304218</requestid>
+  </revision>
 </revisionlist>

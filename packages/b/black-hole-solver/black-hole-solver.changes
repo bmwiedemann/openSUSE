@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 12 07:04:29 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * Fixed running black_hole_solver_run with the same
+    (or a smaller) iterations limit.  It ran indefinetely
+    then (Possible Denial-of-service?)
+  * Fix some hypothetical rresource leaks (e.g.: with "fopen()").
+  * Cleanups: add "const"s , convert "int" to "bool", etc.
+  * Add tests.
+
+-------------------------------------------------------------------
 Mon Dec  5 14:41:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package black-hole-solver
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # Missing perl(Env::Path), should also skip some tests like build-process
 %global run_tests 0
 Name:           black-hole-solver
-Version:        1.12.0
+Version:        1.14.0
 Release:        0
 Summary:        The Black Hole Solver Executable
 License:        MIT
