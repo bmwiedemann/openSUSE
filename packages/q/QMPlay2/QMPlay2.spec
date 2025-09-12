@@ -19,11 +19,11 @@
 %define __builder Ninja
 %bcond_without qt6
 
-%define _mtime 1756926879
-%define _commit 24a65998
+%define _mtime 1757616801
+%define _commit 94dcc1dd
 
 Name:           QMPlay2
-Version:        25.09.03
+Version:        25.09.11
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
@@ -127,10 +127,11 @@ It's a development package for %{name}.
   -DSOLID_ACTIONS_INSTALL_PATH="%{_datadir}/solid/actions" \
   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
   -DUSE_PCH=ON \
-%if 0%{?suse_version} >= 1699
   -DUSE_AUDIOFILTERS=ON \
+%if 0%{?suse_version} >= 1699
+  -DUSE_AVAUDIOFILTER=ON \
 %else
-  -DUSE_AUDIOFILTERS=OFF \
+  -DUSE_AVAUDIOFILTER=OFF \
 %endif
   -DUSE_GIT_VERSION=OFF \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \

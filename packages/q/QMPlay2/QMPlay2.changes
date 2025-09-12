@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 12 11:22:19 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 25.09.11:
+  * fix swapped Referer and User-Agent parameters,
+  * fix playing of some HLS streams,
+  * disable DRC audio on YouTube,
+  * fix "--opennew" parameter.
+- Fix QMPlay2 issue #951 by re-enabling most AudioFilters on
+  openSUSE Leap 15.X
+
+-------------------------------------------------------------------
 Thu Sep  4 01:56:18 UTC 2025 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 25.09.03:
