@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug 23 15:57:59 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.12:
+  * Drop previously removed -r option from usage message
+  * Refactor fixed group array to dynamic allocation
+  * Update usage message, add missing -b and -W options
+  * Fix too small buffer for IPv6 SSM
+  * Fix high RAM/RSS usage
+
+-------------------------------------------------------------------
 Mon Feb 26 20:47:39 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - move to bootstrapped tarball
