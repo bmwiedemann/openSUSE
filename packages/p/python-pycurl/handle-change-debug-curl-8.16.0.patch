@@ -1,0 +1,28 @@
+From eb7f52eeef85feb6c117678d52803050bbdd7bc8 Mon Sep 17 00:00:00 2001
+From: Carlos Henrique Lima Melara <charlesmelara@riseup.net>
+Date: Thu, 28 Aug 2025 20:37:33 -0300
+Subject: [PATCH] tests: handle change in debug output in curl 8.16.0
+
+Debug message has changed and so the assert in the test is failing.
+Handle this by checking the version to pick the expected string to
+compare in the test.
+---
+ tests/debug_test.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+Index: pycurl-7.45.6/tests/debug_test.py
+===================================================================
+--- pycurl-7.45.6.orig/tests/debug_test.py
++++ pycurl-7.45.6/tests/debug_test.py
+@@ -34,8 +34,10 @@ class DebugTest(unittest.TestCase):
+         self.check(0, util.b('Trying'))
+         if util.pycurl_version_less_than(7, 24):
+             self.check(0, util.b('connected'))
+-        else:
++        elif util.pycurl_version_less_than(8, 16):
+             self.check(0, util.b('Connected to %s' % localhost))
++        else:
++            self.check(0, util.b('Established connection to %s' % localhost))
+         self.check(0, util.b('port 8380'))
+         # request
+         self.check(2, util.b('GET /success HTTP/1.1'))

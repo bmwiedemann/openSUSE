@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycurl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pycurl%{psuffix}
-Version:        7.45.3
+Version:        7.45.6
 %global upversion %{version}
 Release:        0
 Summary:        PycURL -- cURL library module
@@ -43,8 +43,8 @@ Patch2:         disable_randomly_failing_tests.patch
 # PATCH-FIX-OPENSUSE make-leap15-compat.patch mcepl@suse.com
 # Make tests passing with Leap 15.2
 Patch3:         make-leap15-compat.patch
-# PATCH-FIX-UPSTREAM test-bottle-flask.patch gh#pycurl/pycurl#838
-Patch4:         test-bottle-flask.patch
+# PATCH-FIX-UPSTREAM handle-change-debug-curl-8.16.0.patch gh#pycurl/pycurl@eb7f52eeef85
+Patch4:         handle-change-debug-curl-8.16.0.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

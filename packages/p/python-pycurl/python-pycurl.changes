@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Sep 12 06:19:06 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add patch handle-change-debug-curl-8.16.0.patch (bsc#1249448, gh#pycurl/pycurl@eb7f52eeef85)
+- Drop patch test-bottle-flask.patch, not needed anymore
+- Update to 7.45.6:
+  * Re-enable building Linux wheels with CA bundle autodetection
+- 7.45.5
+  * Enable GSS-API and brotli support in wheels (patch by Scott Talbert).
+  * Add support for calling getinfo with CURLOPT_*_T arguments
+    (patch by Scott Talbert)
+  * Change wheels to build using shared libraries (vice static libraries)
+    (patch by Scott Talbert)
+  * Build wheels with curl 8.12.1 (mainly for security fixes)
+- 7.45.4
+  * Add support for CURLOPT_HAPROXY_CLIENT_IP (patch by Scott Talbert).
+  * Port tests from bottle to flask (patch by Miro Hrončok).
+  * Add constant for CURL_HTTP_VERSION_3ONLY (patch by Pavel Horáček).
+  * Add EFFECTIVE_METHOD info option (patch by Pavel Horáček).
+  * Don't use `-flat_namespace` on macOS (patch by Michael Cho).
+  * Add some missing GIL checks to callback functions
+    (patch by Scott Talbert).
+  * Fix assorted bugs in pycurl tests, including a segfault
+    (patch by Scott Talbert).  All tests should now pass on Linux and
+    macOS.
+  * Fix minor bug in examples/multi-socket_action-select.py
+    (patch by Oleg Broytman).
+  * Build all wheels using the latest version of libcurl and its
+    dependencies (patch by Scott Talbert).  All wheels should now have
+    openssl, HTTP2, and SSH support.
+  * Implement Certificate Authority path autodetection when building
+    Linux wheels (patch by Scott Talbert).
+
+-------------------------------------------------------------------
 Mon Dec  9 09:38:48 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch to %pyproject_*.
