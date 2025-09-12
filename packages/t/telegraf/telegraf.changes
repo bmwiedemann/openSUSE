@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 11 09:26:00 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Set the HOME environment variable to avoid a crash in
+  gosnowflakedb and actually set up /var/lib/telegraf so
+  gosnowflakedb has a place to store files:
+  https://github.com/influxdata/telegraf/issues/17607
+
+-------------------------------------------------------------------
 Tue Sep 09 09:17:42 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 1.36.1:

@@ -57,6 +57,7 @@ go build \
 %install
 # Install the binary.
 install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0750 -d      "%{buildroot}/var/lib/telegraf"
 
 mkdir -p %{buildroot}/%{_config_dir}
 mkdir -p %{buildroot}/%{_config_dir}/%{name}.d
@@ -87,5 +88,6 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %dir %{_config_dir}
 %config(noreplace) %{_config_dir}/%{name}.conf
 %{_bindir}/%{name}
+%dir /var/lib/telegraf
 
 %changelog

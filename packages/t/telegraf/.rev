@@ -628,4 +628,15 @@ devel:languages:go/telegraf r7 (forwarded request 758639 from jfkw)</comment>
   * fix(outputs.influxdb): Fix crash on init (#17605) (forwarded request 1303321 from darix)</comment>
     <requestid>1303384</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>b49fd9144329293d1822dffb2f839a3a</srcmd5>
+    <version>1.36.1</version>
+    <time>1757704202</time>
+    <user>anag_factory</user>
+    <comment>- Set the HOME environment variable to avoid a crash in
+  gosnowflakedb and actually set up /var/lib/telegraf so
+  gosnowflakedb has a place to store files:
+  https://github.com/influxdata/telegraf/issues/17607 (forwarded request 1304052 from darix)</comment>
+    <requestid>1304152</requestid>
+  </revision>
 </revisionlist>
