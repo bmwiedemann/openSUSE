@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 11 06:56:24 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.2.12
+  * Support Python 3.13
+  * Fix TypeError in check-yaml
+- Drop 0001-Fix-building-with-clang-16.patch, fixed upstream
+- Add setup.py from upstream to fix build with Python 3.14
+
+-------------------------------------------------------------------
 Tue Apr  1 15:48:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make it compatible with older setuptools

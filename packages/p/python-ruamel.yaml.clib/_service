@@ -1,6 +1,6 @@
 <services>
   <service name="tar_scm" mode="manual">
-    <param name="versionprefix">0.2.8+hg</param>
+    <param name="versionprefix">0.2.12+hg</param>
     <param name="url">http://hg.code.sf.net/p/ruamel-yaml-clib/code</param>
     <param name="scm">hg</param>
     <param name="exclude">.hg*</param>
