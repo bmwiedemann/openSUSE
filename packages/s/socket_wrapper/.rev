@@ -277,4 +277,14 @@ Note: socket_wrapper fails if built on 'lamb'</comment>
 </comment>
     <requestid>1294177</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2bf2f40a99ea6837e9c36bacd6de03a2</srcmd5>
+    <version>1.5.1</version>
+    <time>1757704144</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.1
+  * Added support for SOCKET_WRAPPER_ALLOW_DGRAM_SEQPACKET_FALLBACK
+</comment>
+    <requestid>1304070</requestid>
+  </revision>
 </revisionlist>
