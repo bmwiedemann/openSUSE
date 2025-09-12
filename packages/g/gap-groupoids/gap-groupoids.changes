@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 11 20:45:33 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.79
+  * Added operation GroupoidInnerAutomorphismNormalSubgroupoid
+  * Revised code and examples of GroupoidInnerAutomorphism
+  * Added GroupoidAutomorphismByNtuple(NC) and
+    HomogeneousDiscreteSubgroupoid
+
+-------------------------------------------------------------------
 Sun Jul 20 17:08:57 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.78
