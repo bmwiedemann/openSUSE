@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-communication-callautomation
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Microsoft Azure Communication Call Automation Client Library for Python
 License:        MIT
@@ -34,9 +34,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-communication-nspkg >= 0.0.0b1
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-msrest >= 0.7.1
-Requires:       (python-azure-core >= 1.29.5 with python-azure-core < 2.0.0)
-Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
+Requires:       (python-azure-core >= 1.30.0 with python-azure-core < 2.0.0)
+Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
+Requires:       python-typing_extensions >= 4.6.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-communication-callautomation < 1.1.0
 %endif
