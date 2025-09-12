@@ -1,14 +1,19 @@
 Run gn starting at only the targets we want to build (//electron:blah), not at (//...) to avoid hitting asserts in dead code.
 This makes this overriden build argument dead code which causes a warning during `gen` and more importantly `desc`. Remove it.
 
---- src/electron/build/args/all.gn.orig	2025-07-19 11:30:22.309996384 +0200
-+++ src/electron/build/args/all.gn	2025-07-19 16:27:55.565670609 +0200
+--- src/electron/build/args/all.gn.orig	2025-09-10 22:18:06.769733598 +0200
++++ src/electron/build/args/all.gn	2025-09-10 22:54:05.929977283 +0200
 @@ -1,5 +1,4 @@
  is_electron_build = true
 -root_extra_deps = [ "//electron" ]
  
  # Registry of NMVs --> https://github.com/nodejs/node/blob/main/doc/abi_version_registry.json
  node_module_version = 136
+@@ -75,4 +74,3 @@ enterprise_cloud_content_analysis = fals
+ content_enable_legacy_ipc = true
+ 
+ # We don't use anything from here, and it causes target collisions
+-enable_linux_installer = false
 
 All gn list calls must be also fixed because otherwise they fail just as gn gen does
 

@@ -1,0 +1,167 @@
+From c44fa8d0b65d3550157c2fd4b0636fb269764f3e Mon Sep 17 00:00:00 2001
+From: theanarkh <theratliter@gmail.com>
+Date: Thu, 10 Jul 2025 23:50:43 +0800
+Subject: [PATCH] dns: support max timeout
+
+PR-URL: https://github.com/nodejs/node/pull/58440
+Reviewed-By: Luigi Pinca <luigipinca@gmail.com>
+Reviewed-By: Matteo Collina <matteo.collina@gmail.com>
+---
+ doc/api/dns.md                                |  2 +
+ lib/internal/dns/utils.js                     | 20 +++--
+ src/cares_wrap.cc                             | 30 +++++---
+ src/cares_wrap.h                              | 11 +--
+ .../parallel/test-dns-resolver-max-timeout.js | 77 +++++++++++++++++++
+ 5 files changed, 118 insertions(+), 22 deletions(-)
+ create mode 100644 test/parallel/test-dns-resolver-max-timeout.js
+
+diff --git a/lib/internal/dns/utils.js b/lib/internal/dns/utils.js
+index 55f0b5268abf9d..d036c4c7255eab 100644
+--- a/third_party/electron_node/lib/internal/dns/utils.js
++++ b/third_party/electron_node/lib/internal/dns/utils.js
+@@ -25,6 +25,7 @@ const {
+   validateInt32,
+   validateOneOf,
+   validateString,
++  validateUint32,
+ } = require('internal/validators');
+ let binding;
+ function lazyBinding() {
+@@ -49,6 +50,12 @@ function validateTimeout(options) {
+   return timeout;
+ }
+ 
++function validateMaxTimeout(options) {
++  const { maxTimeout = 0 } = { ...options };
++  validateUint32(maxTimeout, 'options.maxTimeout');
++  return maxTimeout;
++}
++
+ function validateTries(options) {
+   const { tries = 4 } = { ...options };
+   validateInt32(tries, 'options.tries', 1);
+@@ -67,17 +74,18 @@ class ResolverBase {
+   constructor(options = undefined) {
+     const timeout = validateTimeout(options);
+     const tries = validateTries(options);
++    const maxTimeout = validateMaxTimeout(options);
+     // If we are building snapshot, save the states of the resolver along
+     // the way.
+     if (isBuildingSnapshot()) {
+-      this[kSnapshotStates] = { timeout, tries };
++      this[kSnapshotStates] = { timeout, tries, maxTimeout };
+     }
+-    this[kInitializeHandle](timeout, tries);
++    this[kInitializeHandle](timeout, tries, maxTimeout);
+   }
+ 
+-  [kInitializeHandle](timeout, tries) {
++  [kInitializeHandle](timeout, tries, maxTimeout) {
+     const { ChannelWrap } = lazyBinding();
+-    this._handle = new ChannelWrap(timeout, tries);
++    this._handle = new ChannelWrap(timeout, tries, maxTimeout);
+   }
+ 
+   cancel() {
+@@ -187,8 +195,8 @@ class ResolverBase {
+   }
+ 
+   [kDeserializeResolver]() {
+-    const { timeout, tries, localAddress, servers } = this[kSnapshotStates];
+-    this[kInitializeHandle](timeout, tries);
++    const { timeout, tries, maxTimeout, localAddress, servers } = this[kSnapshotStates];
++    this[kInitializeHandle](timeout, tries, maxTimeout);
+     if (localAddress) {
+       const { ipv4, ipv6 } = localAddress;
+       this._handle.setLocalAddress(ipv4, ipv6);
+diff --git a/src/cares_wrap.cc b/src/cares_wrap.cc
+index 7773314fa53bc1..e9516b03ec8960 100644
+--- a/third_party/electron_node/src/cares_wrap.cc
++++ b/third_party/electron_node/src/cares_wrap.cc
+@@ -787,14 +787,15 @@ Maybe<int> ParseSoaReply(Environment* env,
+ }
+ }  // anonymous namespace
+ 
+-ChannelWrap::ChannelWrap(
+-      Environment* env,
+-      Local<Object> object,
+-      int timeout,
+-      int tries)
++ChannelWrap::ChannelWrap(Environment* env,
++                         Local<Object> object,
++                         int timeout,
++                         int tries,
++                         int max_timeout)
+     : AsyncWrap(env, object, PROVIDER_DNSCHANNEL),
+       timeout_(timeout),
+-      tries_(tries) {
++      tries_(tries),
++      max_timeout_(max_timeout) {
+   MakeWeak();
+ 
+   Setup();
+@@ -808,13 +809,15 @@ void ChannelWrap::MemoryInfo(MemoryTracker* tracker) const {
+ 
+ void ChannelWrap::New(const FunctionCallbackInfo<Value>& args) {
+   CHECK(args.IsConstructCall());
+-  CHECK_EQ(args.Length(), 2);
++  CHECK_EQ(args.Length(), 3);
+   CHECK(args[0]->IsInt32());
+   CHECK(args[1]->IsInt32());
++  CHECK(args[2]->IsInt32());
+   const int timeout = args[0].As<Int32>()->Value();
+   const int tries = args[1].As<Int32>()->Value();
++  const int max_timeout = args[2].As<Int32>()->Value();
+   Environment* env = Environment::GetCurrent(args);
+-  new ChannelWrap(env, args.This(), timeout, tries);
++  new ChannelWrap(env, args.This(), timeout, tries, max_timeout);
+ }
+ 
+ GetAddrInfoReqWrap::GetAddrInfoReqWrap(Environment* env,
+@@ -879,9 +882,14 @@ void ChannelWrap::Setup() {
+   }
+ 
+   /* We do the call to ares_init_option for caller. */
+-  const int optmask = ARES_OPT_FLAGS | ARES_OPT_TIMEOUTMS |
+-                      ARES_OPT_SOCK_STATE_CB | ARES_OPT_TRIES |
+-                      ARES_OPT_QUERY_CACHE;
++  int optmask = ARES_OPT_FLAGS | ARES_OPT_TIMEOUTMS | ARES_OPT_SOCK_STATE_CB |
++                ARES_OPT_TRIES | ARES_OPT_QUERY_CACHE;
++
++  if (max_timeout_ > 0) {
++    options.maxtimeout = max_timeout_;
++    optmask |= ARES_OPT_MAXTIMEOUTMS;
++  }
++
+   r = ares_init_options(&channel_, &options, optmask);
+ 
+   if (r != ARES_SUCCESS) {
+diff --git a/src/cares_wrap.h b/src/cares_wrap.h
+index 876ec745d4fcc5..fd66a67164b3d3 100644
+--- a/third_party/electron_node/src/cares_wrap.h
++++ b/third_party/electron_node/src/cares_wrap.h
+@@ -152,11 +152,11 @@ struct NodeAresTask final : public MemoryRetainer {
+ 
+ class ChannelWrap final : public AsyncWrap {
+  public:
+-  ChannelWrap(
+-      Environment* env,
+-      v8::Local<v8::Object> object,
+-      int timeout,
+-      int tries);
++  ChannelWrap(Environment* env,
++              v8::Local<v8::Object> object,
++              int timeout,
++              int tries,
++              int max_timeout);
+   ~ChannelWrap() override;
+ 
+   static void New(const v8::FunctionCallbackInfo<v8::Value>& args);
+@@ -191,6 +191,7 @@ class ChannelWrap final : public AsyncWrap {
+   bool library_inited_ = false;
+   int timeout_;
+   int tries_;
++  int max_timeout_;
+   int active_query_count_ = 0;
+   NodeAresTask::List task_list_;
+ };

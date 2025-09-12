@@ -186,7 +186,7 @@ ExcludeArch: %arm
 
 
 Name:           nodejs-electron
-Version:        37.4.0
+Version:        37.5.0
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -212,6 +212,7 @@ Source470:      node-cares-1.21.patch
 Source471:      node-cares-1.21-2.patch
 Source472:      node-cares-1.21-3.patch
 Source473:      node-cares-1.21-4.patch
+Source474:      node-cares-1.21-5.patch
 # and spirv 2023
 Source480:      angle-SPV_BINARY_TO_TEXT_OPTION_NESTED_INDENT.patch
 #and nghttp 1.40
@@ -284,12 +285,15 @@ Patch607:       build-without-guest-view.patch
 Patch608:       vaapi-no-encoders.patch
 Patch609:       remove-probabilistic-token-which-uses-private-join-and-compute.patch
 Patch610:       masked_domain_list-flatbuffers.patch
+Patch611:       remove-node-sea.patch
 
 
 
 # PATCHES to use system libs
 Patch1000:      do-not-build-libvulkan.so.patch
 Patch1017:      system-libdrm.patch
+Patch1036:      node-version-ck.patch
+Patch1037:      system-dragonbox.patch
 # http://svnweb.mageia.org/packages/updates/7/chromium-browser-stable/current/SOURCES/chromium-74-pdfium-system-libopenjpeg2.patch?view=markup
 Patch1038:      pdfium-fix-system-libs.patch
 Patch1045:      angle-system-xxhash.patch
@@ -317,8 +321,7 @@ Patch1092:      fix-system-highway.patch
 Patch1093:      system-sqlite.patch
 Patch1094:      absl_strings-missing-headers.patch
 Patch1095:      system-zstd-in-node.patch
-Patch1036:      node-version-ck.patch
-Patch1037:      system-dragonbox.patch
+Patch1096:      system-ffmpeg.patch
 
 
 # PATCHES to fix interaction with third-party software
@@ -344,7 +347,6 @@ Patch2061:      private_aggregation_host-uint128.patch
 Patch2062:      wayland_version.patch
 #Conditionably disable feature which requires new highway
 Patch2064:      blink-shape_result-highway.patch
-#Patch2065:      node-llhttp9.3.patch
 Patch2066:      angle-BlobCache-Success.patch
 Patch2067:      partition_alloc-strict-aliasing.patch
 Patch2068:      llhttp-lax-vector-conversions.patch
@@ -740,6 +742,7 @@ test $(grep ^node_module_version electron/build/args/all.gn | sed 's/.* = //') =
 patch -R -p1 < %SOURCE472
 patch -R -p1 < %SOURCE471
 patch -R -p1 < %SOURCE470
+patch -R -p1 < %SOURCE474
 patch -R -p1 < %SOURCE473
 %endif
 

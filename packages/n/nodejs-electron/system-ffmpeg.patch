@@ -1,0 +1,15 @@
+--- src/electron/BUILD.gn.orig	2025-09-10 22:18:06.769733598 +0200
++++ src/electron/BUILD.gn	2025-09-10 22:58:47.594001652 +0200
+@@ -1650,11 +1650,7 @@ if (is_linux && is_official_build) {
+     deps = [ "//third_party/angle:libGLESv2" ]
+   }
+ 
+-  strip_binary("strip_libffmpeg_shlib") {
+-    binary_input = "$root_out_dir/libffmpeg.so"
+-    symbol_output = "$root_out_dir/debug/libffmpeg.so.debug"
+-    compress_debug_sections = true
+-    deps = [ "//third_party/ffmpeg" ]
++  source_set("strip_libffmpeg_shlib") {
+   }
+ 
+   strip_binary("strip_libvk_swiftshader_shlib") {

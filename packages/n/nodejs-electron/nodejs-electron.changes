@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 11 10:08:41 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 37.5.0
+  * Updated Chromium to 138.0.7204.251
+  * Updated Node.js to v22.19.0
+- 15.6: revert upstream changes to build with old cares (node-cares-1.21-5.patch)
+- add system-ffmpeg.patch to fix build error
+- remove useless single executable builder to fix build error (remove-node-sea.patch)
+
+-------------------------------------------------------------------
 Wed Aug 27 20:12:09 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 37.4.0
