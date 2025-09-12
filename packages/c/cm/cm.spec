@@ -17,7 +17,7 @@
 
 
 Name:           cm
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        Class polynomial computation via floating point approximations
 License:        GPL-3.0-or-later
@@ -27,7 +27,6 @@ URL:            https://www.multiprecision.org/cm/
 Source:         http://www.multiprecision.org/downloads/%name-%version.tar.gz
 Source2:        http://www.multiprecision.org/downloads/%name-%version.tar.gz.asc
 Source3:        %name.keyring
-Patch1:         0001-Include-standard-header-file.patch
 BuildRequires:  flint-devel >= 3
 BuildRequires:  gmp-devel >= 4.3.2
 BuildRequires:  libtool

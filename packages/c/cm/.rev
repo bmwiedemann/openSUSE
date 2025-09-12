@@ -55,4 +55,12 @@
     <comment>- Add 0001-Include-standard-header-file.patch to resolve FTBFS</comment>
     <requestid>1220178</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>52e7ecabaed4a6ea4ca2fce95bce7239</srcmd5>
+    <version>0.4.4</version>
+    <time>1757704230</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 0.4.4</comment>
+    <requestid>1304254</requestid>
+  </revision>
 </revisionlist>
