@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Sep 11 21:33:37 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2025.3:
+  * bugs squashed: fix potential memory leak in
+    print_routing_algos fix event parsing of hard interface names
+  * fix potential memory leak in print_routing_algos
+  * fix event parsing of hard interface names
+
+-------------------------------------------------------------------
+Sat Jul 12 15:14:11 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2025.2:
+  * coding style cleanups and refactoring
+  * subsecond precision support for ping intervals
+  * coding style cleanups and refactoring
+  * coding style cleanups and refactoring
+  * drop explicit requirement to run as root
+  * bugs squashed:
+    - fix header for neighbor table with B.A.T.M.A.N. V algorithm
+
+-------------------------------------------------------------------
 Fri May 16 09:59:39 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix changelog format: the dashed line indicates the beginning of
@@ -15,7 +36,7 @@ Wed Feb 21 04:24:54 UTC 2024 - ming li <mli@suse.com>
 
 - update to 2024.0:
   * Add stateless multicast packet format support
-  * bugs squashed: Fix various length checks in tcpdump-like subcommand 
+  * bugs squashed: Fix various length checks in tcpdump-like subcommand
 
 -------------------------------------------------------------------
 Sat Nov 25 18:51:03 UTC 2023 - Dirk Müller <dmueller@suse.com>

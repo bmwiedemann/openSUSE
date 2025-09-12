@@ -1,7 +1,7 @@
 #
 # spec file for package batctl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           batctl
-Version:        2024.1
+Version:        2025.3
 Release:        0
 Summary:        B.A.T.M.A.N. advanced control and management tool
 License:        GPL-2.0-only AND MIT
