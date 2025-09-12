@@ -748,4 +748,41 @@ https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/284#note_280561
     <comment></comment>
     <requestid>1255405</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>3f978ca42f1457c2254103be418b7a67</srcmd5>
+    <version>306</version>
+    <time>1757704204</time>
+    <user>anag_factory</user>
+    <comment>- update to 306:
+  * Fix compatibility with RPM 6.
+  * Use regular 'open' calls instead of the deprecated
+    'codecs.open'.
+  * Accept additional 'v' when calling 'fdtump --version'.
+  * Do not run jsondiff on files over 100KiB as the algorithm
+    runs in O(n^2)
+  * Fix test after the upload of systemd-ukify 258~rc3 (vs.
+    258~rc2).
+  * Avoid a crash in the HTML presenter when page limit is None.
+  * Don't check for PyPDF version 3 specifically, check for &gt;= 3.
+  * Ensure that Java class files are named .class on the
+    filesystem before passing them to javap(1).
+  * Mask stderr from the extract-vmlinux script.
+  * Make it much more explicit that we return 'success' from the
+    extract-vmlinux script instead of just falling through to
+    the bottom of the script.
+  * Use Difference.from_operation in an attempt to pipeline the
+    output of extract-vmlinux, potentially avoiding it all
+    residing in memory. This is an attempt to prevent out of
+    memory issues on try.diffoscope.org.
+  * Avoid spurious differences in h5dump output caused by
+    exposure of absolute internal extraction paths.
+  * Use our_check_output in the ODT comparator.
+  * Fix a regression and add a test so that diffoscope picks up
+    differences in metadata for identical files again.
+  * Handle RPM's HEADERSIGNATURES and HEADERIMMUTABLE specially
+    to avoid unncessarily large diffs.
+  * Add a LZMA comparator and tests.
+  * Don't rely on zipdetails' --walk functionality to be</comment>
+    <requestid>1304154</requestid>
+  </revision>
 </revisionlist>
