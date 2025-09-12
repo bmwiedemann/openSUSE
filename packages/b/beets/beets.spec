@@ -1,7 +1,7 @@
 #
 # spec file for package beets
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %{?sle15_python_module_pythons}
 %endif
 Name:           beets
-Version:        2.2.0
+Version:        2.3.1
 Release:        0
 Summary:        Music tagger and library organizer
 License:        MIT
