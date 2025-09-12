@@ -1,17 +1,29 @@
 -------------------------------------------------------------------
+Thu Sep 11 19:36:07 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.12:
+   https://github.com/doctest/doctest/compare/v2.4.11...v2.4.12
+   * Fixed issue when including doctest remotely
+   * Using CHECK with bitfield fails to compile
+   * Bump minimum CMake version to 3.5
+   * Add C++23 to supported standards list
+   * fix: typo in examples/all_features/CMakeLists.txt
+   * Feat: strip path prefixes
+
+-------------------------------------------------------------------
 Sat Mar 18 09:47:39 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.4.11
   * fixed issue #755 - FAIL/FAIL_CHECK weren't properly reported with the junit reporter
   * fixed #751 which was caused by commit db758e0 when turning the values from an enum to an integer implicitly
-  * removed the generated html docs 
+  * removed the generated html docs
 
 - Update to 2.4.10
   * Add Intel Compiler support
   * Fix stringification of enums that overload operator<<
-  * Suppress hash() clang integer sanitizer issues 
+  * Suppress hash() clang integer sanitizer issues
   * Fix compile errors when comparing pointers.
-  * Use variables instead of hard-coded mpirun -np 
+  * Use variables instead of hard-coded mpirun -np
   * Fix typos and CMake example in docs
 
 
@@ -144,7 +156,7 @@ Tue Jan  4 22:25:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.7:
   * Fix Stack-buffer-overflow probably because char array is viewed as NULL
-    terminated string 
+    terminated string
   * "C4834: discarding return value" with REQUIRE_THROWS
   * Xcode 11.3 is gone from macOS-latest (=macOS-11)
   * is it possible to define dependency for CHECKs

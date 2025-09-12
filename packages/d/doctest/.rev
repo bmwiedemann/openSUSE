@@ -79,4 +79,24 @@
     <comment></comment>
     <requestid>1072828</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9e5c25b7fa4f45f9f9db07e5e566d7f2</srcmd5>
+    <version>2.4.12</version>
+    <time>1757704155</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.12:
+   https://github.com/doctest/doctest/compare/v2.4.11...v2.4.12
+   * Fixed issue when including doctest remotely
+   * Using CHECK with bitfield fails to compile
+   * Bump minimum CMake version to 3.5
+   * Add C++23 to supported standards list
+   * fix: typo in examples/all_features/CMakeLists.txt
+   * Feat: strip path prefixes
+
+  * removed the generated html docs
+  * Suppress hash() clang integer sanitizer issues
+  * Use variables instead of hard-coded mpirun -np
+    terminated string</comment>
+    <requestid>1304144</requestid>
+  </revision>
 </revisionlist>
