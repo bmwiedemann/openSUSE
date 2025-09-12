@@ -1,7 +1,7 @@
 #
 # spec file for package bzip3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define libname libbzip3-1
 Name:           bzip3
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        Compressor with Burrows–Wheeler transform and PPM context modeling
 License:        BSD-2-Clause AND LGPL-3.0-or-later

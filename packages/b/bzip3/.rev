@@ -55,4 +55,21 @@
     <comment></comment>
     <requestid>1277843</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b6e2ccfac9de39baec431cbe89108232</srcmd5>
+    <version>1.5.3</version>
+    <time>1757704209</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.5.3:
+  * fix oom handling in main.c and yarg.h.
+  * cmake build fixes for non-unix platforms:
+  * disable pthreads by default on windows &amp; !mingw
+  * fix handling of dlls on windows.
+  * add missing find_dependency call to ensure Threads::threads
+    is present in downstream find_package callers.
+  * the project moved to https://github.com/iczelia/bzip3.
+
+- Build AVX2 enabled hwcaps library for x86_64-v3</comment>
+    <requestid>1304168</requestid>
+  </revision>
 </revisionlist>
