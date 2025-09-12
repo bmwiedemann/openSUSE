@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Sep 11 09:24:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.1:
+  * Now only warns bout /etc/timezone if it is actually
+    conflicting with other timezone configurations.
+  * Now supports Python 3.9 to 3.13, and no longer requires
+    backports.zoneinfo.
+  * Some distributions are for some reason removing support for
+    /etc/timezone, which is bad, because that's the only place
+    where the timezone is stated in plain text, and what's worse,
+    they don't delete it. So we can't trust it now, so when we
+    have multiple configs, we are forced to
+    just ignore it.
+  * Attempts to return a ZoneInfo object also for UTC.
+  * Updated python versions [hugovk]
+  * Added type hints for the public functions
+  * Moved to using pyproject.toml for project config.
+  * The Unicode data doesn't change tz names when IANA does, so
+    what is current in IANA is treated as an alias in Unicode data.
+    This version handles that.
+  * The logging info under windows made it look like it looked up
+    the registry info even when you had a TZ environment, but it
+    doesn't actually do that.
+  * Improved the handling of loggers.
+  * Fixed a bug in the new assert_tz_offset method.
+  * Change how the system offset is calculated to deal with non-
+    DST temporary changes, such as Ramadan time in Morocco.
+  * Change the default to only warn when the timezone offset and
+    system offset disagree (but still not even warn if TZ is set)
+  * Add the assert_tz_offset() method to the top level for those
+    who want to explicitly check and fail.
+
+-------------------------------------------------------------------
 Wed Jun  4 06:08:06 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
@@ -121,7 +154,7 @@ Wed Jul 31 12:31:37 UTC 2019 - pgajdos@suse.com
     This is a major difference from 1.x, where an exception would be raised.
     This change is because Docker images often have no configuration at all,
     and the unix utilities will then default to UTC, so we follow that.
-  - If tzlocal on Unix finds a timezone name in a /etc config file, then 
+  - If tzlocal on Unix finds a timezone name in a /etc config file, then
     tzlocal now verifies that the timezone it fouds has the same offset as
     the local computer is configured with. If it doesn't, something is
     configured incorrectly. (Victor Torres, regebro)
@@ -169,7 +202,7 @@ Wed Sep 12 15:03:50 UTC 2018 - Sean Marlow <sean.marlow@suse.com>
 -------------------------------------------------------------------
 Mon Oct  2 12:15:10 UTC 2017 - sean.marlow@suse.com
 
-- Update source tarball location. 
+- Update source tarball location.
 
 -------------------------------------------------------------------
 Mon Aug 28 17:37:27 UTC 2017 - bear454@opensuse.org
@@ -177,12 +210,12 @@ Mon Aug 28 17:37:27 UTC 2017 - bear454@opensuse.org
 - Update to version 1.4
   - Relicensed upstream as MIT
   - Dropping support for Python versions 2.5, 3.1, 3.2
-  - adding support for Python 3.6 
+  - adding support for Python 3.6
   - Closes stdout and stderr to get rid of ResourceWarnings
   - Added support for /var/db/zoneinfo
   - Tests failed if TZ was set in the environment.
   - Replaces os.popen() with subprocess.Popen()
-  - Systemd stores no time zone name, forcing us to look at the 
+  - Systemd stores no time zone name, forcing us to look at the
     name of the file that localtime symlinks to.
 
 -------------------------------------------------------------------

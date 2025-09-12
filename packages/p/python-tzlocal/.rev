@@ -178,4 +178,40 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1282538</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f8bd4715b70f6eb69b65998114af1628</srcmd5>
+    <version>5.3.1</version>
+    <time>1757704143</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.3.1:
+  * Now only warns bout /etc/timezone if it is actually
+    conflicting with other timezone configurations.
+  * Now supports Python 3.9 to 3.13, and no longer requires
+    backports.zoneinfo.
+  * Some distributions are for some reason removing support for
+    /etc/timezone, which is bad, because that's the only place
+    where the timezone is stated in plain text, and what's worse,
+    they don't delete it. So we can't trust it now, so when we
+    have multiple configs, we are forced to
+    just ignore it.
+  * Attempts to return a ZoneInfo object also for UTC.
+  * Updated python versions [hugovk]
+  * Added type hints for the public functions
+  * Moved to using pyproject.toml for project config.
+  * The Unicode data doesn't change tz names when IANA does, so
+    what is current in IANA is treated as an alias in Unicode data.
+    This version handles that.
+  * The logging info under windows made it look like it looked up
+    the registry info even when you had a TZ environment, but it
+    doesn't actually do that.
+  * Improved the handling of loggers.
+  * Fixed a bug in the new assert_tz_offset method.
+  * Change how the system offset is calculated to deal with non-
+    DST temporary changes, such as Ramadan time in Morocco.
+  * Change the default to only warn when the timezone offset and
+    system offset disagree (but still not even warn if TZ is set)
+  * Add the assert_tz_offset() method to the top level for those
+    who want to explicitly check and fail.</comment>
+    <requestid>1304050</requestid>
+  </revision>
 </revisionlist>

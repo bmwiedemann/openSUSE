@@ -1,7 +1,7 @@
 #
 # spec file for package python-tzlocal
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define modname tzlocal
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        4.3
+Version:        5.3.1
 Release:        0
 Summary:        tzinfo object for the local timezone
 License:        MIT
@@ -34,13 +34,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  (python38-backports.zoneinfo if python38-base)
 Requires:       python-pytz
 Requires:       python-pytz-deprecation-shim
 BuildArch:      noarch
-%ifpython38
-Requires:       python38-backports.zoneinfo
-%endif
 %python_subpackages
 
 %description
