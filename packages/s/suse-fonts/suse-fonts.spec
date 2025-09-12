@@ -17,7 +17,7 @@
 
 
 Name:           suse-fonts
-Version:        2.000
+Version:        2.001
 Release:        0
 Summary:        SUSE font
 License:        OFL-1.1
