@@ -1,7 +1,7 @@
 #
 # spec file for package cddlib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           cddlib
 %define lname   libcdd0
-Version:        0.94m
+Version:        0.94n
 Release:        0
 Summary:        Library for finding vertices of convex polytopes
 License:        GPL-2.0-or-later
