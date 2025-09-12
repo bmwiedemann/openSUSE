@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep  6 12:21:07 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update zlib to version 0.7.1.1.
+  0.7.1.1 Bodigrim <andrew.lelechenko@gmail.com> September 2025
+
+  * Allow newer versions of dependencies.
+  * Fix new GHC warnings.
+
+-------------------------------------------------------------------
 Sun Nov 24 20:39:41 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update zlib to version 0.7.1.0 revision 2.
