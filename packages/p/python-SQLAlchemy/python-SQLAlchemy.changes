@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 11 09:13:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.0.43
+  * Adjusted the test suite as well as the ORM’s method of scanning classes
+    for annotations to work under current beta releases of Python 3.14.
+  * Added support for postgresql_include keyword argument to UniqueConstraint
+    and PrimaryKeyConstraint.
+  * The values() construct gains a new method Values.cte(), which allows
+    creation of a named, explicit-columns CTE against an unnamed VALUES
+    expression, producing a syntax that allows column-oriented selection from
+    a VALUES construct on modern versions of PostgreSQL, SQLite, and MariaDB.
+  * Fixed some regressions from 2.0.40 in postgresql and mysql toolbox.
+  * Improved validation of execution parameters passed to the
+    Connection.execute() and similar methods.
+  * Added dataclass_metadata argument to all ORM attribute constructors that
+    accept dataclasses parameters.
+  * Implemented the defer(), undefer() and load_only() ORM loader options
+    to work for composite attributes.
+  * Added new parameter create_engine.skip_autocommit_rollback which provides
+    for a per-dialect feature of preventing the DBAPI .rollback() from being
+    called under any circumstances.
+
+-------------------------------------------------------------------
 Tue Apr 22 12:39:48 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update files to support modern and older setuptools, lowercase and

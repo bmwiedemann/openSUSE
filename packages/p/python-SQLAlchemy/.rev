@@ -1293,4 +1293,12 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
   uppercase dist-info file, in Factory and Leap.</comment>
     <requestid>1271880</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>d4fc7c4877e13b05a6133a5457381d52</srcmd5>
+    <version>2.0.43</version>
+    <time>1757704163</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1304239</requestid>
+  </revision>
 </revisionlist>
