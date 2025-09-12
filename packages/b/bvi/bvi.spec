@@ -1,7 +1,7 @@
 #
 # spec file for package bvi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bvi
-Version:        1.4.2
+Version:        1.5.0
 Release:        0
 Summary:        Editor for binary files
 License:        GPL-2.0-or-later
@@ -33,7 +33,7 @@ edit! A bmore program is also included in the package.  If you never heard
 about vi, maybe bvi is not the best choice for you.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
