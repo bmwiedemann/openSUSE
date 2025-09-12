@@ -18,7 +18,7 @@
 
 
 %undefine _build_create_debug
-%global openssl_version 3.4.1
+%global openssl_version 3.5.1
 %global softfloat_version b64af41c3276f
 %if 0%{?suse_version} < 1599
 %bcond_with build_riscv64
@@ -27,7 +27,7 @@
 %endif
 
 Name:           ovmf
-Version:        202505
+Version:        202508
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
@@ -60,7 +60,12 @@ Source101:      gdb_uefi.py.in
 Patch1:         %{name}-gdb-symbols.patch
 Patch2:         %{name}-pie.patch
 Patch3:         %{name}-disable-ia32-firmware-piepic.patch
+Patch4:         %{name}-OvmfPkg-Adjust-Memory-Layout-for-2MB-OVMF.patch
+# Bug 1249349 - Tcg2Pei.efi installation failure when TPM enable in ovmf edk2-stable202508
+Patch5:         %{name}-Revert-SecurityPkg-Add-Additional-TPM-Logging-at-DEB.patch
 Patch6:         %{name}-ignore-spurious-GCC-12-warning.patch
+# Bug 1245329 - The edk2-stable202505 OVMF firmware UI shows a mess when using libvirt with ncurses
+Patch7:         %{name}-MdeModulePkg-Fix-malformed-terminal-control-sequence.patch
 # Bug 1207095 - ASSERT [ArmCpuDxe] /home/abuild/rpmbuild/BUILD/edk2-edk2-stable202211/ArmPkg/Library/DefaultExceptionHandlerLib/AArch64/DefaultExceptionHandler.c(333): ((BOOLEAN)(0==1))
 Patch8:         %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.patch
 # Bug 1205613 - L3: win 2k22 UEFI xen VMs cannot boot in xen after upgrade
@@ -72,6 +77,8 @@ Patch10:        %{name}-Revert-Add-Stack-Cookie-Support-to-MSVC-and-GCC.patch
 Patch11:        %{name}-BaseTools-Using-gcc12-for-building-image.patch
 %endif
 %endif
+# Bug 1245454 - iSCSI boot support is disabled in OVMF images
+Patch12:        %{name}-OvmfPkg-Add-NETWORK_ISCSI_DEFAULT_ENABLE-build-flag.patch
 # Bug 1240420 - UEFI boot breaks: X64 Exception Type - 0E(#PF - Page-Fault) CPU Apic ID - 00000000
 Patch13:        %{name}-UefiCpuPkg-Disable-EFI-memory-attributes-protocol.patch
 # Bug 1244218 - ovmf: non-deterministic .bin files (about unreproducible)
@@ -296,6 +303,7 @@ FLAVORS_X64_SKIP_SB_KEY=("ovmf-x86_64-sev" "ovmf-x86_64-tdx")
 FLAVORS_X64_UNIFIED_ONLY=("ovmf-x86_64-sev" "ovmf-x86_64-tdx")
 BUILD_OPTIONS_X64=" \
 	$OVMF_FLAGS \
+	-D NETWORK_ISCSI_DEFAULT_ENABLE \
 	-D BUILD_SHELL=FALSE \
 	-a X64 \
 	-b DEBUG \

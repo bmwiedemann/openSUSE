@@ -1,0 +1,36 @@
+From e1b035647e201acb02195a9ffab210f8d3e96f89 Mon Sep 17 00:00:00 2001
+From: Richard Lyu <richard.lyu@suse.com>
+Date: Wed, 3 Sep 2025 14:42:08 +0800
+Subject: [PATCH] OvmfPkg: Adjust Memory Layout for 2MB OVMF
+
+This commit increases the space for FVMAIN_COMPACT to resolve
+build failures on 2MB OVMF firmware due to insufficient space. By
+reducing the size of SEVFV and reallocating the freed space to
+FVMAIN_COMPACT, this change ensures all necessary code can fit
+within the 2MB firmware size limit.
+
+Signed-off-by: Richard Lyu richard.lyu@suse.com
+---
+ OvmfPkg/Include/Fdf/OvmfPkgDefines.fdf.inc | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/OvmfPkg/Include/Fdf/OvmfPkgDefines.fdf.inc b/OvmfPkg/Include/Fdf/OvmfPkgDefines.fdf.inc
+index e2543a1535..94ba51421f 100644
+--- a/OvmfPkg/Include/Fdf/OvmfPkgDefines.fdf.inc
++++ b/OvmfPkg/Include/Fdf/OvmfPkgDefines.fdf.inc
+@@ -45,9 +45,9 @@ DEFINE FW_BLOCKS         = 0x200
+ DEFINE CODE_BASE_ADDRESS = 0xFFE20000
+ DEFINE CODE_SIZE         = 0x001E0000
+ DEFINE CODE_BLOCKS       = 0x1E0
+-DEFINE FVMAIN_SIZE       = 0x001BC000
+-DEFINE SECFV_OFFSET      = 0x001DC000
+-DEFINE SECFV_SIZE        = 0x24000
++DEFINE FVMAIN_SIZE       = 0x001CC000
++DEFINE SECFV_OFFSET      = 0x001EC000
++DEFINE SECFV_SIZE        = 0x14000
+ !endif
+ 
+ !if $(FD_SIZE_IN_KB) == 4096
+-- 
+2.46.1
+
