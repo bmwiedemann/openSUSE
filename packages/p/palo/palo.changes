@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 12 07:29:15 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.28:
+  * Fix various build warnings reported by Debian
+
+-------------------------------------------------------------------
 Wed Feb 19 16:56:40 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date (boo#1047218)

@@ -1,7 +1,7 @@
 #
 # spec file for package palo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2024-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           palo
-Version:        2.27
+Version:        2.28
 Release:        0
 Summary:        Linux boot loader for HP PA-RISC
 License:        GPL-2.0-only
