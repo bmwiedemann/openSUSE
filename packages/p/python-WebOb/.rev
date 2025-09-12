@@ -451,4 +451,12 @@ Drop sphinx doctrees for reproducible builds</comment>
 - Lowercase metadata directory name.</comment>
     <requestid>1266150</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>ab87102c98a6ace75efc19f3276cb9d7</srcmd5>
+    <version>1.8.9</version>
+    <time>1757704164</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1304241</requestid>
+  </revision>
 </revisionlist>

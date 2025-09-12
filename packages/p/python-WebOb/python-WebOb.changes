@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 11 09:54:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Skip test failing on Python 3.14
+
+-------------------------------------------------------------------
 Tue Apr  1 12:45:29 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make the dist-info name case-insensitive

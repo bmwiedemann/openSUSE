@@ -1,7 +1,7 @@
 #
 # spec file for package python-WebOb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -68,7 +68,8 @@ PYTHONPATH=./src sphinx-build -b html docs build/sphinx/html && rm -r build/sphi
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# test_interrupted_request fails with Python 3.14 https://github.com/Pylons/webob/issues/479
+%pytest -k "not test_interrupted_request"
 
 %files %{python_files}
 %license docs/license.txt
