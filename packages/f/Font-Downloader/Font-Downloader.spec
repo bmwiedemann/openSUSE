@@ -1,7 +1,7 @@
 #
 # spec file for package Font-Downloader
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ BuildRequires:  python3
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libhandy-1)
 Requires:       python3-gobject-Gdk
+Requires:       typelib(WebKit2) = 4.0
 BuildArch:      noarch
 
 %description
