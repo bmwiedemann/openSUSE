@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 11 14:25:38 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.37.0
+  * Update v2ray-core to 5.37.0
+- Drop update-vendor.patch, fixed by upstream
+
+-------------------------------------------------------------------
 Mon Jun  2 13:10:05 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.25.0

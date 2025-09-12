@@ -60,4 +60,14 @@
 - Add update-vendor.patch, update v2ray-core to v5.33.0 (boo#1243954 and CVE-2025-297850) (forwarded request 1281932 from hillwood)</comment>
     <requestid>1281933</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dbe550453cae973672a4c40be667987a</srcmd5>
+    <version>5.37.0</version>
+    <time>1757704175</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 5.37.0
+  * Update v2ray-core to 5.37.0
+- Drop update-vendor.patch, fixed by upstream (forwarded request 1304097 from hillwood)</comment>
+    <requestid>1304098</requestid>
+  </revision>
 </revisionlist>

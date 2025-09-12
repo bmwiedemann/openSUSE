@@ -1,7 +1,7 @@
 #
 # spec file for package shadowsocks-v2ray-plugin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %define   import_path     %{provider_prefix}
 
 Name:           shadowsocks-v2ray-plugin
-Version:        5.25.0
+Version:        5.37.0
 Release:        0
 Summary:        SIP003 plugin for shadowsocks
 License:        MIT
@@ -35,10 +35,8 @@ Group:          Productivity/Networking/Security
 URL:            https://github.com/teddysun/v2ray-plugin
 Source0:        https://github.com/teddysun/v2ray-plugin/archive/v%{version}/%{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Patch0:         update-vendor.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
-# BuildRequires:  golang(API) = 1.22
 AutoReqProv:    Off
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{go_provides}
