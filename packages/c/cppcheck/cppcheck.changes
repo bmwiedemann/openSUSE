@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 11 20:17:25 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.18.3:
+  * pathmatch.cpp: fixed reference to invalid container entry
+  * Fix #14067 (cmdlineparser: tweaks to --premium)
+  * Fix #14064 Files are reanalyzed with --cppcheck-build-dir
+  * Fix #14095 (TemplateSimplifier: store location of template argument
+  * Fix #14107 (GUI: add menu option to show EULA for cppcheck premium)
+
+-------------------------------------------------------------------
 Wed Jul 30 14:05:12 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - testcondition.patch: fix expected output in TestCondition::alwaysTrue
