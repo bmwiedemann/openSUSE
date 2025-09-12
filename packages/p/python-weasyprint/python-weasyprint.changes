@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Sep 12 14:38:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 66.0
+  * #2475: Add support for 'lh' and 'rlh' units
+  * #2432, #2437: Report footnotes when text overflows because of orphans,
+    with financial support from Code & Co.
+  * #2256, #2466: Handle transform-origin in SVG
+  * #2445: Add parameter to have additional HTTP headers for url_fetcher
+  * #2471, #2506, #2500, #2460, #2363, #2470, #1872, #2153, #1838, #1837,
+    #1784, #1835, #2444, #2497, #2505, #2503, #1836, #2467: Improve PDF/UA
+    support, with financial support from NLnet
+  * #2425, #1557: Improve position of outside markers
+  * #2409, #2265: Draw circles instead of rectangles when drawing dotted borders
+  * #2416, #2270: Correctly split words for automatic hyphenation
+  * #2439, #2426: Don’t rely on URL protocols outside URL fetcher function
+  * #2433: Disable style for deprecated outline algorithm
+  * #2447, #2441, #2448: Improve min- and max-content calculation,
+    with financial support from Menutech
+  * #2454, #2442, #2449: Minor fixes for flex layout
+  * #2473, #2459: Include out-of-flow boxes in page layout progress,
+    with financial support from Pathfindr
+  * #2458: Replace deprecated warn logger function
+  * #2494, #1856: Fix bug with bottom margins in columns
+  * #2435: Make footnote calls inherit from footnotes
+  * #2484, #2456: Allow to avoid page breaks after table-row-group elements
+  * #2450: Draw background and borders for relative grid containers
+  * #2453: Don’t advance position_y for collapsed margins of discarded children
+  * #2493: Fix endless loop with CSS variables referencing each other
+  * #2502: Ignore bottom margin when calculating footnote overflow
+
+-------------------------------------------------------------------
 Tue May 20 12:11:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 65.1
