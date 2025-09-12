@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 11 19:30:20 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 9.6.6:
+  * Fix regression introduced by 9.6.5 that caused Limine to fail to
+    boot with U-Boot.
+
+-------------------------------------------------------------------
 Sat Aug 30 16:03:54 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 9.6.5:
