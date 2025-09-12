@@ -472,4 +472,12 @@
 - Improved initialization of iBFT (bsc#1247711).</comment>
     <requestid>1301803</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>5bb1ad45b595aad0fe85763056389b39</srcmd5>
+    <version>17.devel347.8e874fef7</version>
+    <time>1757704226</time>
+    <user>anag_factory</user>
+    <comment>- Update translations (bsc#1249378)</comment>
+    <requestid>1304246</requestid>
+  </revision>
 </revisionlist>
