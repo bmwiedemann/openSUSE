@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ujson
-Version:        5.10.0
+Version:        5.11.0
 Release:        0
 Summary:        JSON encoder and decoder for Python
 License:        BSD-3-Clause
@@ -45,7 +45,6 @@ bindings for Python 2.7 and 3.8+
 %autosetup -p1 -n ujson-%{version}
 
 %build
-rm -r deps
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export UJSON_BUILD_DC_INCLUDES='%{_includedir}/double-conversion'
 export UJSON_BUILD_DC_LIBS='-ldouble-conversion'
@@ -61,6 +60,7 @@ export UJSON_BUILD_DC_LIBS='-ldouble-conversion'
 %files %{python_files}
 %doc README.md
 %{python_sitearch}/ujson.cpython-*-linux-gnu.so
+%{python_sitearch}/ujson-stubs
 %{python_sitearch}/ujson-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 12 14:28:16 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.11.0
+  * Inline type stubs (#674) @MarcoGorelli
+  * Add support for Python 3.14 (#680) @hugovk
+  * Add support for PyPy3.11 (#658) @hugovk
+  * Add Windows ARM64 wheels (#663) @tonybaloney
+  * Migrate to src/ layout (#664) @hugovk
+  * Build aarch64 wheels using native runners (#652) @hugovk
+  * Drop support for EOL Python 3.8 (#645) @hugovk
+  * Drop support for EOL PyPy3.8-PyPy3.10 (#639, #682) @hugovk
+  * fix(ujson.loads): raises a JSONDecodeError instead of
+    SystemError when parsing a nested json string (#667) @grandnew
+  * Pin setuptools < 72.2 to fix build on PyPy (#638) @hugovk
+  * Update README.md example to match actual output (#654) @AvdN
+- Add %{python_sitearch}/ujson-stubs to %files section
+- Drop command to remove deps directory
+
+-------------------------------------------------------------------
 Thu Jun 12 05:01:35 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
