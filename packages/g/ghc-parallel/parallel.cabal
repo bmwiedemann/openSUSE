@@ -1,7 +1,7 @@
 cabal-version:  >=1.10
 name:           parallel
 version:        3.2.2.0
-x-revision:     9
+x-revision: 10
 -- NOTE: Don't forget to update ./changelog.md
 license:        BSD3
 license-file:   LICENSE
@@ -67,7 +67,7 @@ library
     build-depends:
         array      >= 0.3 && < 0.6,
         base       >= 4.3 && < 4.22,
-        containers >= 0.4 && < 0.8,
+        containers >= 0.4 && < 0.9,
         deepseq    >= 1.1 && < 1.6
 
     ghc-options: -Wall
