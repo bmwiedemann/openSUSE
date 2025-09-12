@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 12 09:13:31 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update python-uv requirement for completion packages
+
+-------------------------------------------------------------------
+Thu Sep 12 05:39:40 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Completion packages renamed as uv-bash-completion instead of having
+  one per flavor. bsc#1249345
+- Add uv-bash-completion, uv-fish-completion and uv-zsh-completion
+  packages as recommendations in the base package.
+
+-------------------------------------------------------------------
 Thu Sep 11 12:04:28 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to  0.8.17

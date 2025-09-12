@@ -1,7 +1,6 @@
 #
 # spec file for package python-uv
 #
-# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -63,37 +62,43 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  zstd
 Obsoletes:      uv < %{version}
 Provides:       uv = %{version}
+Recommends:     uv-bash-completion = %{version}
+Recommends:     uv-fish-completion = %{version}
+Recommends:     uv-zsh-completion = %{version}
 Requires:       alts
 Requires:       python3
 
-%package        fish-completion
+%package        -n uv-fish-completion
 Summary:        Fish Completion for %{name}
-Supplements:    (%{name} and fish)
-Requires:       %{name}
+Provides:       python-uv-fish-completion = %{version}
+Supplements:    (uv and fish)
 Requires:       fish
+Requires:       uv
 BuildArch:      noarch
 
-%description    fish-completion
+%description    -n uv-fish-completion
 Fish command-line completion support for %{name}.
 
-%package        zsh-completion
+%package        -n uv-zsh-completion
 Summary:        Zsh Completion for %{name}
-Supplements:    (%{name} and zsh)
-Requires:       %{name}
+Provides:       python-uv-zsh-completion = %{version}
+Supplements:    (uv and zsh)
+Requires:       uv
 Requires:       zsh
 BuildArch:      noarch
 
-%description    zsh-completion
+%description    -n uv-zsh-completion
 Zsh command-line completion support for %{name}.
 
-%package        bash-completion
+%package        -n uv-bash-completion
 Summary:        Bash Completion for %{name}
-Supplements:    (%{name} and bash-completion)
-Requires:       %{name}
+Provides:       python-uv-bash-completion = %{version}
+Supplements:    (uv and bash-completion)
 Requires:       bash-completion
+Requires:       uv
 BuildArch:      noarch
 
-%description    bash-completion
+%description    -n uv-bash-completion
 Bash command-line completion support for %{name}.
 
 %python_subpackages
@@ -157,12 +162,12 @@ export CARGO_PROFILE_RELEASE_STRIP=false
 %python_clone -a %{buildroot}%{_bindir}/uvx
 %python_group_libalternatives uvx
 
-%python_expand uv-%{$python_bin_suffix} --generate-shell-completion bash > %{buildroot}%{_datadir}/bash-completion/completions/uv-%{$python_bin_suffix}
-%python_expand uv-%{$python_bin_suffix} --generate-shell-completion fish > %{buildroot}%{_datadir}/fish/vendor_completions.d/uv-%{$python_bin_suffix}.fish
-%python_expand uv-%{$python_bin_suffix} --generate-shell-completion zsh  > %{buildroot}%{_datadir}/zsh/site-functions/_uv-%{$python_bin_suffix}
-%python_expand uv-%{$python_bin_suffix} tool uvx --generate-shell-completion bash > %{buildroot}%{_datadir}/bash-completion/completions/uvx-%{$python_bin_suffix}
-%python_expand uv-%{$python_bin_suffix} tool uvx --generate-shell-completion fish > %{buildroot}%{_datadir}/fish/vendor_completions.d/uvx-%{$python_bin_suffix}.fish
-%python_expand uv-%{$python_bin_suffix} tool uvx --generate-shell-completion zsh  > %{buildroot}%{_datadir}/zsh/site-functions/_uvx-%{$python_bin_suffix}
+%python_expand uv-%{$python_bin_suffix} --generate-shell-completion bash > %{buildroot}%{_datadir}/bash-completion/completions/uv
+%python_expand uv-%{$python_bin_suffix} --generate-shell-completion fish > %{buildroot}%{_datadir}/fish/vendor_completions.d/uv.fish
+%python_expand uv-%{$python_bin_suffix} --generate-shell-completion zsh  > %{buildroot}%{_datadir}/zsh/site-functions/_uv
+%python_expand uv-%{$python_bin_suffix} tool uvx --generate-shell-completion bash > %{buildroot}%{_datadir}/bash-completion/completions/uvx
+%python_expand uv-%{$python_bin_suffix} tool uvx --generate-shell-completion fish > %{buildroot}%{_datadir}/fish/vendor_completions.d/uvx.fish
+%python_expand uv-%{$python_bin_suffix} tool uvx --generate-shell-completion zsh  > %{buildroot}%{_datadir}/zsh/site-functions/_uvx
 
 %pre
 %python_libalternatives_reset_alternative uv
@@ -176,22 +181,22 @@ export CARGO_PROFILE_RELEASE_STRIP=false
 %{python_sitearch}/uv
 %{python_sitearch}/uv-%{version}.dist-info
 
-%files %{python_files bash-completion}
+%files -n uv-bash-completion
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions
-%{_datadir}/bash-completion/completions/uv-%{python_bin_suffix}
-%{_datadir}/bash-completion/completions/uvx-%{python_bin_suffix}
+%{_datadir}/bash-completion/completions/uv
+%{_datadir}/bash-completion/completions/uvx
 
-%files %{python_files fish-completion}
+%files -n uv-fish-completion
 %dir %{_datadir}/fish
 %dir %{_datadir}/fish/vendor_completions.d
-%{_datadir}/fish/vendor_completions.d/uv-%{python_bin_suffix}.fish
-%{_datadir}/fish/vendor_completions.d/uvx-%{python_bin_suffix}.fish
+%{_datadir}/fish/vendor_completions.d/uv.fish
+%{_datadir}/fish/vendor_completions.d/uvx.fish
 
-%files %{python_files zsh-completion}
+%files -n uv-zsh-completion
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
-%{_datadir}/zsh/site-functions/_uv-%{python_bin_suffix}
-%{_datadir}/zsh/site-functions/_uvx-%{python_bin_suffix}
+%{_datadir}/zsh/site-functions/_uv
+%{_datadir}/zsh/site-functions/_uvx
 
 %changelog

@@ -1391,4 +1391,17 @@
   * Filter pre-release Python versions in uv init --script</comment>
     <requestid>1304077</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>bf6dd14c35a648bb12b202cd2e2ed27c</srcmd5>
+    <version>0.8.17</version>
+    <time>1757704223</time>
+    <user>anag_factory</user>
+    <comment>- Update python-uv requirement for completion packages
+
+- Completion packages renamed as uv-bash-completion instead of having
+  one per flavor. bsc#1249345
+- Add uv-bash-completion, uv-fish-completion and uv-zsh-completion
+  packages as recommendations in the base package.</comment>
+    <requestid>1304273</requestid>
+  </revision>
 </revisionlist>
