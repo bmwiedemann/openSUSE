@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 04 21:33:20 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.21 → 3.1.22
+
+-------------------------------------------------------------------
+Thu Sep 04 18:56:45 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixes to use flakes as normal user
+
+  Running a flake is a container based instance provisioning
+  and startup. Some part of this process requires root permissions
+  for example mounting the container instance store for the
+  provisioning step. This commit fixes the required calls to
+  be properly managed by sudo.
+
+-------------------------------------------------------------------
 Thu Aug 21 16:56:12 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 3.1.20 → 3.1.21
