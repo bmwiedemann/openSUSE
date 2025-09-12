@@ -1,7 +1,7 @@
 #
 # spec file for package polkit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -172,7 +172,6 @@ This package provides the GObject Introspection bindings for PolicyKit.
     %{nil}
 
 %meson_build
-%sysusers_generate_pre %{SOURCE3} polkit system-user-polkitd.conf
 
 %if 0%{?run_tests}
 %check
@@ -201,6 +200,8 @@ rm %{buildroot}/usr/lib/tmpfiles.d/polkit-tmpfiles.conf
 
 # create actions dir in /etc
 mkdir %{buildroot}/%{_sysconfdir}/polkit-1/actions
+
+%sysusers_generate_pre %{buildroot}%{_sysusersdir}/polkit.conf polkit polkitd.conf
 
 %pre -f polkit.pre
 %service_add_pre polkit.service
