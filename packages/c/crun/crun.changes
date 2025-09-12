@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Sep 11 20:08:17 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.24:
+  * linux: add support for NUMA set_mempolicy.
+  * intelrdt: add support for EnableMonitoring
+  * linux: optimize masked paths with shared empty directory.
+  * cgroup, systemd: validate the specified ebpf program is
+    loaded by systemd.
+  * krun: avoid failing if sev/nitro are not available.
+  * linux: limit tmpfs memory usage for masked paths.
+  * linux: fix regression mounting within userns.  Detect when
+    running inside a user namespace and treat the mounts in the
+    same way as they would be treated with a new user namespace.
+  * linux: never chown devices.
+
+-------------------------------------------------------------------
+Thu Aug 21 08:24:10 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to 1.23.1
+
+ * krun: enable virtio-gpu. Enable and configure a virtio-gpu device if /dev/dri and /usr/libexec/virgl_render_server are present within the container.
+ * krun: add support for nitro enclaves.
+ * criu: Add support for tcp-close.
+ * linux: fix issue when RestrictAddressFamilies="AF_UNIX AF_NETLINK" is in place in the systemd unit. Regression introduced in crun 1.17.
+ * cgroup,systemd: use BPFProgram=device on systemd to install the device controller eBPF.
+ * cgroup,systemd: allow empty slice in cgroupsPath.
+ * crun: print the program version even with an invalid rundir.
+ * linux: fix regression with idmapped mounts. Support idmapped mounts also when there is no user namespace specified for the container. crun 1.22 introduced the regression.
+ * cgroup: change formula to convert from cpu shares to cpu weight. The OCI CPU shares (range [2-262144]) to cgroup v2 cpu.weight (range [1-10000]) conversion formula has been updated to use a quadratic function so that min, max and default values match.
+ * exec: fix a bug where the terminal could lose some bytes when reading from the exec'ed process.
+ * utils: add bounds checking for Unix domain socket paths.
+
+-------------------------------------------------------------------
 Tue Jul  1 08:22:17 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to 1.22
@@ -20,7 +53,7 @@ Tue Jul  1 08:22:17 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@
   * fix a potential crash in krun by checking if library handles exist before being unloaded.
   * improve error messages for dlopen failures, making them more descriptive.
   * cgroup: fix a regression on WSL when running with cgroup v1.
-  * libcrun: setup /dev/console as a symlink to pty instead of bind mount when possible. 
+  * libcrun: setup /dev/console as a symlink to pty instead of bind mount when possible.
 
 -------------------------------------------------------------------
 Tue Apr  1 08:09:26 UTC 2025 - Dan Čermák <dcermak@suse.com>
