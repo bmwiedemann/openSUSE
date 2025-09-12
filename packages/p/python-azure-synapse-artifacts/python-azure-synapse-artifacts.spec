@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-synapse-artifacts
-Version:        0.20.0
+Version:        0.21.0
 Release:        0
 Summary:        Microsoft Azure Synapse Artifacts Client Library for Python
 License:        MIT
@@ -35,7 +35,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-azure-synapse-nspkg >= 1.0.0
 Requires:       python-typing_extensions >= 4.6.0
-Requires:       (python-azure-core >= 1.3.2 with python-azure-core < 2.0.0)
+Requires:       (python-azure-core >= 1.6.0 with python-azure-core < 2.0.0)
 Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
