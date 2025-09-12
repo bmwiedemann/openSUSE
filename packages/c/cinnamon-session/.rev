@@ -291,4 +291,14 @@
     <comment></comment>
     <requestid>1237110</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>91d8dab22ec78f15f0f44c8a171ad69a</srcmd5>
+    <version>6.4.1</version>
+    <time>1757704222</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.4.1:
+  * csm-manager.c: Clear system inhibitors before attempting to
+    restart or shutdown using systemd.</comment>
+    <requestid>1304220</requestid>
+  </revision>
 </revisionlist>
