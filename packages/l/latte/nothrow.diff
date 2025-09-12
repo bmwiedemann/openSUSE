@@ -1,0 +1,129 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2021-06-21 18:20:40.347484360 +0200
+
+[   86s] ExponentialSubst.h:62:3: error: ISO C++17 does not allow dynamic exception specifications
+[   86s]    62 |   throw(NotGenericException);
+
+---
+ code/latte/ExponentialSubst.cpp     |    2 --
+ code/latte/ExponentialSubst.h       |    4 ++--
+ code/latte/LattException.cpp        |    4 ++--
+ code/latte/LattException.h          |    7 ++-----
+ code/latte/sqlite/IntegrationDB.cpp |    2 +-
+ code/latte/sqlite/SqliteDB.cpp      |   10 +++++-----
+ 6 files changed, 12 insertions(+), 17 deletions(-)
+
+Index: latte-int-1.7.6/code/latte/ExponentialSubst.cpp
+===================================================================
+--- latte-int-1.7.6.orig/code/latte/ExponentialSubst.cpp
++++ latte-int-1.7.6/code/latte/ExponentialSubst.cpp
+@@ -57,7 +57,6 @@ mpq_vector
+ computeExponentialResidueWeights(const vec_ZZ &generic_vector,
+ 				 mpz_class &prod_ray_scalar_products,
+ 				 const listCone *cone, int numOfVars)
+-  throw(NotGenericException)
+ {
+   // Compute dimension; can be smaller than numOfVars
+   int dimension = 0;
+@@ -95,7 +94,6 @@ computeExponentialResidueWeights(const v
+ mpq_vector
+ computeExponentialResidueWeights(const vec_ZZ &generic_vector,
+ 				 const listCone *cone, int numOfVars)
+-  throw(NotGenericException)
+ {
+   mpz_class prod_ray_scalar_products;
+   return computeExponentialResidueWeights(generic_vector,
+Index: latte-int-1.7.6/code/latte/ExponentialSubst.h
+===================================================================
+--- latte-int-1.7.6.orig/code/latte/ExponentialSubst.h
++++ latte-int-1.7.6/code/latte/ExponentialSubst.h
+@@ -59,12 +59,12 @@ mpq_vector /* FIXME: This version can pr
+ computeExponentialResidueWeights(const vec_ZZ &generic_vector,
+ 				 mpz_class &prod_ray_scalar_products,
+ 				 const listCone *cone, int numOfVars)
+-  throw(NotGenericException);
++;
+ 
+ mpq_vector
+ computeExponentialResidueWeights(const vec_ZZ &generic_vector,
+ 				 const listCone *cone, int numOfVars)
+-  throw(NotGenericException);
++;
+ 
+ ZZ
+ scalar_power(const vec_ZZ &generic_vector,
+Index: latte-int-1.7.6/code/latte/LattException.cpp
+===================================================================
+--- latte-int-1.7.6.orig/code/latte/LattException.cpp
++++ latte-int-1.7.6/code/latte/LattException.cpp
+@@ -8,7 +8,7 @@
+ #include "LattException.h"
+ 
+ 
+-LattException::~LattException() throw() {}
++LattException::~LattException() {}
+ 
+ LattException::LattException(UserError ue, const char * file, const int line, const bool b, const char * message)
+ {
+@@ -56,7 +56,7 @@ string  LattException::printErrorMessage
+ 	return out.str();
+ }
+ 
+-const char* LattException::what() const throw()
++const char *LattException::what() const noexcept
+ {
+ 	string s = "";
+ 	if ( LATTEXCEPTION_PRINTSTATUS || printStatus == 1 )
+Index: latte-int-1.7.6/code/latte/LattException.h
+===================================================================
+--- latte-int-1.7.6.orig/code/latte/LattException.h
++++ latte-int-1.7.6/code/latte/LattException.h
+@@ -77,12 +77,9 @@ public:
+ 		bug_NotImplementedHere,			//this case does not exist is the function that throw it.
+ 	};
+ 
+-
+-
+-	virtual ~LattException() throw();
++	virtual ~LattException();
+ 	LattException(UserError ue, const char * file, const int line, const bool printException, const char * message = "");
+-
+-	virtual const char* what() const throw();
++	virtual const char *what() const noexcept;
+ 
+ private:
+ 	string printErrorMessages() const;
+Index: latte-int-1.7.6/code/latte/sqlite/IntegrationDB.cpp
+===================================================================
+--- latte-int-1.7.6.orig/code/latte/sqlite/IntegrationDB.cpp
++++ latte-int-1.7.6/code/latte/sqlite/IntegrationDB.cpp
+@@ -1277,7 +1277,7 @@ void  IntegrationDB::insertSpecficPolyto
+  * @parm filePath: to the latte-style polynomial.
+  * @return rowid of the inserted row.
+  */
+-int IntegrationDB::insertPolynomial(int dim, int degree, const char*filePath) throw(SqliteDBexception)
++int IntegrationDB::insertPolynomial(int dim, int degree, const char*filePath)
+ {
+ 	if ( doesPolynomialExist(filePath))
+ 		throw SqliteDBexception(string("insertPolynomial::Polynomial ")+filePath+" already exist");
+Index: latte-int-1.7.6/code/latte/sqlite/SqliteDB.cpp
+===================================================================
+--- latte-int-1.7.6.orig/code/latte/sqlite/SqliteDB.cpp
++++ latte-int-1.7.6/code/latte/sqlite/SqliteDB.cpp
+@@ -8,11 +8,11 @@
+ 
+ 
+ //A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+-SqliteDBexception::SqliteDBexception() throw() {}
+-SqliteDBexception::SqliteDBexception(const char* s) throw() {msg = s;}
+-SqliteDBexception::SqliteDBexception (const string s) throw() {msg = s;}
+-SqliteDBexception::~SqliteDBexception() throw() {}
+-const char* SqliteDBexception::what() const  throw() {return msg.c_str();}
++SqliteDBexception::SqliteDBexception() {}
++SqliteDBexception::SqliteDBexception(const char* s) { msg = s; }
++SqliteDBexception::SqliteDBexception (const string s) { msg = s; }
++SqliteDBexception::~SqliteDBexception() {}
++const char* SqliteDBexception::what() const { return msg.c_str(); }
+ 
+ 
+ 

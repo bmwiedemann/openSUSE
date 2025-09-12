@@ -1,0 +1,17 @@
+---
+ configure.ac |    2 --
+ 1 file changed, 2 deletions(-)
+
+Index: latte-int-1.7.6/configure.ac
+===================================================================
+--- latte-int-1.7.6.orig/configure.ac
++++ latte-int-1.7.6/configure.ac
+@@ -17,8 +17,6 @@ AC_USE_SYSTEM_EXTENSIONS
+ LT_INIT
+ AC_PROG_CC
+ AC_PROG_CXX
+-AC_CONFIG_MACRO_DIR([m4])
+-# AC_PROG_LIBTOOL
+ 
+ # For Gnulib relocatable-prog
+ gl_EARLY
