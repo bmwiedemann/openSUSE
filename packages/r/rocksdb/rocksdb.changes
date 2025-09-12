@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug 17 10:25:41 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 10.5.1:
+  * Fix a bug in remote compaction that may mistakenly delete
+    live SST file(s) during the cleanup phase when no keys survive
+    the compaction (all expired)
+  * skip_checking_sst_file_sizes_on_db_open is deprecated
+  * API extensions for retrieving file size
+  * trigger eligible compactions every 12 hours when periodic
+    compaction is configured
+  * Fix a crash bug in BackupEngine
+  * Fix DB::NewMultiScan iterator to respect the scan upper bound specified in ScanOptions
+  * Optimize MultiScan using BlockBasedTable to coalesce I/Os and
+    prefetch all data blocks.
+
+-------------------------------------------------------------------
 Sat Jul 12 15:02:49 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 10.4.2:
