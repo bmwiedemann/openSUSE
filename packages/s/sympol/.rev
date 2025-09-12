@@ -41,4 +41,12 @@
     <comment>- Add lrslib-0.7.3.diff</comment>
     <requestid>1250060</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>4af112acda7623a971e37b5a332c0a0c</srcmd5>
+    <version>0.1.9</version>
+    <time>1757704207</time>
+    <user>anag_factory</user>
+    <comment>- Specifically request pkgconfig(cddgmp) now that it exists.</comment>
+    <requestid>1304158</requestid>
+  </revision>
 </revisionlist>

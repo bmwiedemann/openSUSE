@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 11 20:16:25 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Specifically request pkgconfig(cddgmp) now that it exists.
+
+-------------------------------------------------------------------
 Tue Mar  4 11:07:12 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add lrslib-0.7.3.diff

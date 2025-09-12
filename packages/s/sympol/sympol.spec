@@ -1,7 +1,7 @@
 #
 # spec file for package sympol
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +40,7 @@ BuildRequires:  libboost_program_options-devel >= 1.34.1
 BuildRequires:  libboost_test-devel >= 1.34.1
 BuildRequires:  lrslib-devel >= 0.4.2c
 BuildRequires:  permlib-devel >= 0.2.8
-BuildRequires:  pkgconfig(cddlib) >= 0.94f
+BuildRequires:  pkgconfig(cddgmp) >= 0.94f
 BuildRequires:  pkgconfig(eigen3) >= 3.0
 
 %description
