@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 12 06:38:41 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.3.0:
+  * Added `max_connections` setting to `listen` and `protocol`
+    configuration; see doc/max_connections.md for more information.
+  * accept() is now disabled for some time when ulimit -n is reached.
+  * Support proxyprotocol on incoming connections.
+    See doc/proxyprotocol.md for information.
+  * Fix proxyprotocol target field
+  * Fix memory leak in regex probe.
+
+-------------------------------------------------------------------
 Mon Jun  2 05:18:34 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.2.4:

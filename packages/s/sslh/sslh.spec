@@ -1,7 +1,7 @@
 #
 # spec file for package sslh
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012 by Lars Vogdt
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           sslh
-Version:        2.2.4
+Version:        2.3.0
 Release:        0
 Summary:        SSL/SSH multiplexer
 License:        GPL-2.0-or-later

@@ -223,4 +223,19 @@
   * Fix potential parsing of undefined data in syslog probe (no CVE assigned)</comment>
     <requestid>1281729</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9956cda3bf09d03f065e775e4c4a1357</srcmd5>
+    <version>2.3.0</version>
+    <time>1757704220</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.0:
+  * Added `max_connections` setting to `listen` and `protocol`
+    configuration; see doc/max_connections.md for more information.
+  * accept() is now disabled for some time when ulimit -n is reached.
+  * Support proxyprotocol on incoming connections.
+    See doc/proxyprotocol.md for information.
+  * Fix proxyprotocol target field
+  * Fix memory leak in regex probe.</comment>
+    <requestid>1304214</requestid>
+  </revision>
 </revisionlist>
