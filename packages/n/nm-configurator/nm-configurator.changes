@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 12 12:25:18 UTC 2025 - Atanas Dinov <atanas.dinov@suse.com>
+
+- Update to version 0.3.4:
+  * Bump crate version (#189)
+  * Ensure runtime connection dir exists before recreation (#188)
+  * Bump clap from 4.5.46 to 4.5.47 (#186)
+  * Bump log from 0.4.27 to 0.4.28 (#187)
+  * Bump nmstate from 2.2.49 to 2.2.50 (#184)
+  * Bump clap from 4.5.45 to 4.5.46 (#185)
+  * Bump clap from 4.5.43 to 4.5.45 (#183)
+  * Bump anyhow from 1.0.98 to 1.0.99 (#182)
+  * Bump actions/checkout from 4 to 5 (#181)
+  * Bump network-interface from 2.0.2 to 2.0.3 (#179)
+
+-------------------------------------------------------------------
 Tue May 27 12:54:59 UTC 2025 - Sai Karthik Karra <kskarthik@disroot.org>
 
 - Use gz compression for source package (fixes rpm lint warning)

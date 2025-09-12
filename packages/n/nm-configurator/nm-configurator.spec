@@ -17,7 +17,7 @@
 
 
 Name:           nm-configurator
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 Summary:        NM Configurator
 License:        Apache-2.0
