@@ -365,6 +365,7 @@ install -D -m 644 %{SOURCE20} %{buildroot}%{_prefix}/share/factory/var/lib/gdm/.
 if [ $1 -gt 1 ]; then
   if [ "$(systemctl is-enabled display-manager-legacy)" = "enabled" -a -x /usr/sbin/update-alternatives ]; then
     if [ "$(update-alternatives  --query default-displaymanager | awk '/Value:/ {print $2}')" = "/usr/lib/X11/displaymanagers/gdm" ]; then
+        mkdir -p /run/gdm
         touch /run/gdm/migrate_to_gdm
     fi
   fi

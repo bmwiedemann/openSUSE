@@ -2245,4 +2245,13 @@
 - Fix syntax error in gdm's %pre script.</comment>
     <requestid>1302195</requestid>
   </revision>
+  <revision rev="288" vrev="15">
+    <srcmd5>829335d7a135bf83b5c026780bfcda4e</srcmd5>
+    <version>48.0</version>
+    <time>1757704148</time>
+    <user>anag_factory</user>
+    <comment>- Create /run/gdm in case it would not exist yet; this could
+  potentially happen on offline upgrades.</comment>
+    <requestid>1304073</requestid>
+  </revision>
 </revisionlist>
