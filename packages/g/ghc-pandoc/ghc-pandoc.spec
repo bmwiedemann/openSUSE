@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.7.0.2
+Version:        3.8
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -156,6 +156,8 @@ BuildRequires:  ghc-typst-devel
 BuildRequires:  ghc-typst-prof
 BuildRequires:  ghc-unicode-collation-devel
 BuildRequires:  ghc-unicode-collation-prof
+BuildRequires:  ghc-unicode-data-devel
+BuildRequires:  ghc-unicode-data-prof
 BuildRequires:  ghc-unicode-transforms-devel
 BuildRequires:  ghc-unicode-transforms-prof
 BuildRequires:  ghc-unix-devel
