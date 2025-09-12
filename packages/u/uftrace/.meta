@@ -1,0 +1,13 @@
+<package name="uftrace" project="openSUSE:Factory">
+  <title>A function call graph tracer for C, C++, Rust and Python programs</title>
+  <description>uftrace is a function call graph tracer for C, C++, Rust and Python programs.
+It was heavily inspired by the ftrace framework of the Linux kernel, and its
+name reflects this origin — a combination of 'user' and 'ftrace'.
+
+uftrace records function entry and exit with timestamps, arguments, and return
+values, and can trace user and kernel functions, library calls, and system
+events to provide a unified timeline of execution. It also offers filtering
+and visualization features such as Chrome trace viewer integration, flame
+graphs, and call-graph diagrams.</description>
+  <url>https://github.com/namhyung/uftrace</url>
+</package>
