@@ -1,0 +1,80 @@
+-------------------------------------------------------------------
+Mon Aug 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Simiplify file removal
+
+-------------------------------------------------------------------
+Fri Aug 22 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- export the hsakmt headers
+
+-------------------------------------------------------------------
+Fri Jul 25 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.2
+
+-------------------------------------------------------------------
+Thu May 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.1
+
+-------------------------------------------------------------------
+Wed Apr 16 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.0
+
+-------------------------------------------------------------------
+Thu Mar 13 00:00:00 UTC 2025 - Christian Goll <cgoll@suse.com>
+
+- Explicit require zlib-devel for SLE 15.6
+
+-------------------------------------------------------------------
+Tue Mar  4 00:00:00 UTC 2025 - Benjamin A. Beasley <code@musicinmybrain.net>
+
+- Fix the upgrade path for hsakmt-devel
+
+-------------------------------------------------------------------
+Sun Feb  9 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix SLE 15.6
+
+-------------------------------------------------------------------
+Sun Feb  2 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3.2
+
+-------------------------------------------------------------------
+Sat Jan 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- gcc 15 include cstdint
+
+-------------------------------------------------------------------
+Thu Jan  9 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Use compat gcc
+
+-------------------------------------------------------------------
+Sun Dec 22 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amc.com>
+
+- Update to 6.3.1
+
+-------------------------------------------------------------------
+Fri Dec 20 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Link kfdtest with static llvm libs
+
+-------------------------------------------------------------------
+Sat Dec  7 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+
+-------------------------------------------------------------------
+Sun Nov  3 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Stub for tumbleweed
+
