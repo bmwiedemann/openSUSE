@@ -48,4 +48,13 @@
   * boo1246605 - use 'ro=vfs' in fstab</comment>
     <requestid>1293782</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ece1aeb04432217c1d86dbf1caffc675</srcmd5>
+    <version>1.0.7</version>
+    <time>1757704242</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0.7:
+  * Drop boo1228416 check</comment>
+    <requestid>1304302</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           aeon-check
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        Aeon Check and Repair Tool
 License:        MIT
