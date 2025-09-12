@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 12 07:01:32 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 20241231:
+  * main.c: s/0/NULL/
+  * main.c: gcc warning
+  * reader.c:
+    make UCH() consistent wrt IS_xxxx macros
+  * main.c:
+    from NetBSD - if "-o" option is given, derive the filename of the ".h"
+    definitions-file by stripping commonly-used C/C++ suffixes such as ".c"
+    and then adding ".h"
+  * main.c: provide a fallback definition for W_OK, e.g., for Windows
+  * main.c: correct condition for using $TEMP environment variable
+  * output.c, yaccpar.c: gcc15 zero vs null warnings
+
+-------------------------------------------------------------------
 Sun Mar 17 19:15:44 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 20240109:
