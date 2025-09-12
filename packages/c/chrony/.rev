@@ -503,4 +503,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1299858</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>083028e6c9f762af4fc329eb960d637a</srcmd5>
+    <version>4.8</version>
+    <time>1757704151</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.8:
+  * Add maxunreach option to limit selection of unreachable sources
+  * Add -u option to chronyc to drop root privileges (default
+    chronyc user is set by configure script)
+  * Fix refclock extpps option to work on Linux &gt;= 6.15
+  * Validate refclock samples for reachability updates
+  * Obsoletes chrony-unix-socket.patch
+  * Obsoletes chrony-remove-chmod.patch</comment>
+    <requestid>1304087</requestid>
+  </revision>
 </revisionlist>

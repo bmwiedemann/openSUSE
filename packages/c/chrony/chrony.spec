@@ -33,7 +33,7 @@
 %bcond_without testsuite
 
 %define _systemdutildir %(pkg-config --variable systemdutildir systemd)
-%global clknetsim_ver a2eb0b25
+%global clknetsim_ver 6ee99f50
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
@@ -41,7 +41,7 @@
 %define chrony_helper %{_libexecdir}/chrony/helper
 %define chrony_rundir %{_rundir}/%{name}
 Name:           chrony
-Version:        4.7
+Version:        4.8
 Release:        0
 Summary:        System Clock Synchronization Client and Server
 License:        GPL-2.0-only
@@ -70,8 +70,6 @@ Patch2:         chrony-logrotate.patch
 Patch3:         chrony-service-ordering.patch
 Patch7:         chrony-htonl.patch
 Patch8:         chrony.nm-dispatcher.dhcp.patch
-Patch9:         chrony-unix-socket.patch
-Patch10:        chrony-remove-chmod.patch
 BuildRequires:  NetworkManager-devel
 BuildRequires:  bison
 BuildRequires:  findutils
@@ -183,8 +181,6 @@ e.g. because the servers will be set via DHCP.
 %patch -P 3
 %patch -P 7
 %patch -P 8
-%patch -P 9 -p1
-%patch -P 10 -p1
 
 # Remove pool statements from the default /etc/chrony.conf. They will
 # be provided by branding packages in /etc/chrony.d/pool.conf .

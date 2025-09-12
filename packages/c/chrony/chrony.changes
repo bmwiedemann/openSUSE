@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep  5 14:33:41 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Update to version 4.8:
+  * Add maxunreach option to limit selection of unreachable sources
+  * Add -u option to chronyc to drop root privileges (default
+    chronyc user is set by configure script)
+  * Fix refclock extpps option to work on Linux >= 6.15
+  * Validate refclock samples for reachability updates
+  * Obsoletes chrony-unix-socket.patch
+  * Obsoletes chrony-remove-chmod.patch
+
+-------------------------------------------------------------------
 Fri Aug  1 12:15:33 UTC 2025 - Reinhard Max <max@suse.com>
 
 - bsc#1246544: Fix racy socket creation
