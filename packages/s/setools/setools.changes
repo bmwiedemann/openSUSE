@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep 11 08:19:16 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Move tests to a test multibuild flavor
+
+-------------------------------------------------------------------
+Tue Sep  9 09:23:10 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 4.6.0:
+  - User Visible Changes
+    * Add seinfo option to see roles allowed for a specified type.
+    * Add sechecker module for asserting kernel modules are read-only.
+    * Add support for the nlmsg extended permission.
+  - Under The Hood Changes
+    * Significant code quality and unit testing improvements.
+    * Drop methods marked for deprecation.
+  - Packaging Changes
+    * Refactor packaging to use pyproject.toml.
+- Add %check section and run tests (Factory only)
+- Fix %fdupes call to clean up duplicates for all Python versions
+- Add minimum required dependency versions
+
+-------------------------------------------------------------------
 Mon Jun 30 13:54:20 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Drop legacy %python_build and %python_install macros and 

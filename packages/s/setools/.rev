@@ -439,4 +439,26 @@
 </comment>
     <requestid>1289308</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>71374b829cce003cd36672a95bd40d46</srcmd5>
+    <version>4.6.0</version>
+    <time>1757704142</time>
+    <user>anag_factory</user>
+    <comment>- Move tests to a test multibuild flavor
+- Update to version 4.6.0:
+  - User Visible Changes
+    * Add seinfo option to see roles allowed for a specified type.
+    * Add sechecker module for asserting kernel modules are read-only.
+    * Add support for the nlmsg extended permission.
+  - Under The Hood Changes
+    * Significant code quality and unit testing improvements.
+    * Drop methods marked for deprecation.
+  - Packaging Changes
+    * Refactor packaging to use pyproject.toml.
+- Add %check section and run tests (Factory only)
+- Fix %fdupes call to clean up duplicates for all Python versions
+- Add minimum required dependency versions
+</comment>
+    <requestid>1304046</requestid>
+  </revision>
 </revisionlist>
