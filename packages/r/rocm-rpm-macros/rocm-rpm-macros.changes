@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Sun Jul 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add gfx950,gfx1153 to default list
+
+-------------------------------------------------------------------
+Fri Jul 25 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Fri May  9 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add gfx950 module
+
+-------------------------------------------------------------------
+Wed Apr 16 00:00:00 UTC 2025 - Tim Flink <tflink@fedoraproject.org>
+
+- fixing typo in rocm_gpu_list_test macro
+
+-------------------------------------------------------------------
+Tue Apr 15 00:00:00 UTC 2025 - Tim Flink <tflink@fedoraproject.org>
+
+- added rocm_gpu_test_list to specify ISAs that tests are built for
+
+-------------------------------------------------------------------
+Sun Feb  9 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add ROCM_ALT* env for default module
+
+-------------------------------------------------------------------
+Wed Feb  5 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3.2
+- Add some gpu lists
+
+-------------------------------------------------------------------
+Thu Jan 23 00:00:00 UTC 2025 - Christoph Junghans <junghans@votca.org>
+
+- Add ROCM_INCLUDE to modules
+
+-------------------------------------------------------------------
+Mon Jan 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Cleanup dir ownership
+
+-------------------------------------------------------------------
+Thu Jan 16 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add gfx1150 to default set
+
+-------------------------------------------------------------------
+Wed Jan 15 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add gfx1152,gfx1200,gfx1201 to default set
+
+-------------------------------------------------------------------
+Mon Dec 30 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Add hipblaslt gpu list
+
+-------------------------------------------------------------------
+Sun Dec  8 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+
+-------------------------------------------------------------------
+Sun Nov 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Stub for tumbleweed
+
