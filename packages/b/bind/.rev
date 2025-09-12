@@ -2567,4 +2567,24 @@ New Features
   * Prevent spurious validation failures.</comment>
     <requestid>1300729</requestid>
   </revision>
+  <revision rev="223" vrev="1">
+    <srcmd5>6b98e576d0ffc5253dc1862d0c3b686f</srcmd5>
+    <version>9.20.13</version>
+    <time>1757704144</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to release 9.20.13
+  New Features:
+  * Add a new option `manual-mode` to dnssec-policy.
+  * Add a new option `servfail-until-ready` to response-policy
+    zones.
+  * Support for parsing HHIT and BRID records has been added.
+  Removed Features:
+  * Deprecate the `tkey-gssapi-credential` statement.
+  * Obsolete the `tkey-domain` statement.
+  Bug Fixes:
+  * Prevent spurious SERVFAILs for certain 0-TTL resource records.
+  * Fix unexpected termination if catalog-zones had undefined
+    `default-primaries`.</comment>
+    <requestid>1304066</requestid>
+  </revision>
 </revisionlist>

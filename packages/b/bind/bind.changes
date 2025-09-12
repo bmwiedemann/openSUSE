@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 11 09:17:09 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Upgrade to release 9.20.13
+  New Features:
+  * Add a new option `manual-mode` to dnssec-policy.
+  * Add a new option `servfail-until-ready` to response-policy
+    zones.
+  * Support for parsing HHIT and BRID records has been added.
+
+  Removed Features:
+  * Deprecate the `tkey-gssapi-credential` statement.
+  * Obsolete the `tkey-domain` statement.
+
+  Bug Fixes:
+  * Prevent spurious SERVFAILs for certain 0-TTL resource records.
+  * Fix unexpected termination if catalog-zones had undefined
+    `default-primaries`.
+
+-------------------------------------------------------------------
 Thu Aug 21 08:57:20 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Upgrade to release 9.20.12
