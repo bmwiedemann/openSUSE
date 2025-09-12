@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.9.0.1
+Version:        0.10
 Release:        0
 Summary:        Generates citations and bibliography from CSL styles
 License:        BSD-2-Clause
