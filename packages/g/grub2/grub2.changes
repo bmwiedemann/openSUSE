@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  9 14:25:42 UTC 2025 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Add support for `LoaderEntryDefault` EFI variable
+  * grub2-bls-loader-entry-default.patch
+
+-------------------------------------------------------------------
 Tue Sep  2 07:46:46 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Optimize PBKDF2 to reduce the decryption time

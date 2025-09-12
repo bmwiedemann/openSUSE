@@ -1,0 +1,93 @@
+Factoring out get_entry_from_efivar helper to reduce code duplication
+and add support for LoaderEntryDefault.
+
+Index: grub-2.12/grub-core/normal/menu.c
+===================================================================
+--- grub-2.12.orig/grub-core/normal/menu.c
++++ grub-2.12/grub-core/normal/menu.c
+@@ -741,6 +741,38 @@ workaround_snapshot_menu_default_entry (
+   return;
+ }
+ 
++#ifdef GRUB_MACHINE_EFI
++static int
++get_entry_from_efivar(grub_menu_t menu, const char* efivar)
++{
++  grub_efi_status_t status;
++  grub_size_t entry_size;
++  grub_efi_char16_t *entry_efi = NULL;
++  char *entry_name = NULL;
++  int entry_index = -1;
++  status = grub_efi_get_variable(efivar,
++								 &grub_efi_loader_guid,
++								 &entry_size,
++								 (void**) &entry_efi);
++  if (status == GRUB_EFI_SUCCESS)
++	{
++	  grub_efi_char16_t *src = entry_efi;
++	  int size = 0;
++	  while (*src++)
++		size++;
++	  if (size != 0)
++		{
++		  entry_name = grub_malloc (size * sizeof (char));
++		  grub_utf16_to_utf8 ((grub_uint8_t*) entry_name,
++							  (grub_uint16_t*) entry_efi, size);
++		  entry_index = search_entry (menu, entry_name);
++		}
++	}
++  grub_free(entry_name);
++  return entry_index;
++}
++#endif
++
+ #define GRUB_MENU_PAGE_SIZE 10
+ 
+ /* Show the menu and handle menu entry selection.  Returns the menu entry
+@@ -766,36 +798,19 @@ run_menu (grub_menu_t menu, int nested,
+   const char* val = grub_env_get ("enable_blscfg");
+   if (val && (val[0] == '1' || val[0] == 'y'))
+ 	{
+-	  grub_efi_status_t status;
+-	  int oneshot_entry_index;
+-	  grub_efi_char16_t *oneshot_entry_efi = NULL;
+-	  char *oneshot_entry = NULL;
+-	  grub_size_t oneshot_entry_size;
+-	  status = grub_efi_get_variable("LoaderEntryOneShot",
+-									 &grub_efi_loader_guid,
+-									 &oneshot_entry_size,
+-									 (void**) &oneshot_entry_efi);
+-	  if (status == GRUB_EFI_SUCCESS)
++	  int oneshot_entry, default_entry_efi;
++	  oneshot_entry = get_entry_from_efivar(menu, "LoaderEntryOneShot");
++	  if (oneshot_entry != -1)
+ 		{
+-		  grub_efi_char16_t *src = oneshot_entry_efi;
+-		  int size = 0;
+-		  while (*src++)
+-			size++;
+-		  if (size == 0)
++		  default_entry = oneshot_entry;
++		  grub_efi_set_variable_to_string("LoaderEntryOneShot",
++										  &grub_efi_loader_guid, "", 0);
++		} else {
++		  default_entry_efi = get_entry_from_efivar(menu, "LoaderEntryDefault");
++		  if (default_entry_efi != -1)
+ 			{
+-			  oneshot_entry = grub_malloc (size * sizeof (char));
+-			  grub_utf16_to_utf8 ((grub_uint8_t*) oneshot_entry,
+-								  (grub_uint16_t*) oneshot_entry_efi, size);
+-			  oneshot_entry_index = search_entry (menu, oneshot_entry);
+-			  if (oneshot_entry_index != -1)
+-				{
+-				  default_entry = oneshot_entry_index;
+-				  grub_efi_set_variable_to_string("LoaderEntryOneShot",
+-						  						  &grub_efi_loader_guid, "", 0);
+-				}
+-			  grub_free(oneshot_entry);
++			  default_entry = default_entry_efi;
+ 			}
+-		  grub_free(oneshot_entry_efi);
+ 		}
+ 	}
+ #endif
