@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 12 08:43:57 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.4.1
+  * Simplified functions by multiplication-table transposition
+  * Refactored anticommutativity index
+  * Added ``IsLeftDistributive`` and ``IsRightDistributive``
+  * Added more isomorphism invariants
+
+-------------------------------------------------------------------
 Fri Feb 14 11:35:15 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package (version 0.3.0) for build.opensuse.org

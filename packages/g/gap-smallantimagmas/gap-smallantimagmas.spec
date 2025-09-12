@@ -17,7 +17,7 @@
 
 
 Name:           gap-smallantimagmas
-Version:        0.3.0
+Version:        0.4.1
 Release:        0
 Summary:        GAP: A library of antiassociative magmas of small order
 License:        GPL-2.0-or-later
