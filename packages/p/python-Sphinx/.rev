@@ -1660,4 +1660,12 @@ IMPORTANT: It would be better to fix/update the test, so if you can fix this ple
     <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
     <requestid>1301462</requestid>
   </revision>
+  <revision rev="112" vrev="3">
+    <srcmd5>40e84b541186cf4ab53e5efb9bddd820</srcmd5>
+    <version>8.2.3</version>
+    <time>1757704162</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1304238</requestid>
+  </revision>
 </revisionlist>

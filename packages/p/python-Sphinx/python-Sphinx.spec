@@ -17,7 +17,7 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test"
+%if "%{flavor}" == "test+doc"
 %define psuffix -test
 %bcond_without test
 %else
@@ -47,6 +47,14 @@ Source3:        requests.inv
 Source4:        readthedocs.inv
 Source5:        update-intersphinx.sh
 Source99:       python-Sphinx.keyring
+# PATCH-FIX-UPSTREAM https://github.com/sphinx-doc/sphinx/pull/13527 Followup-to: Fix tests for Python 3.14a7+
+Patch0:         autodoc.patch
+# PATCH-FIX-UPSTREAM https://github.com/sphinx-doc/sphinx/commit/8962398b761c3d85a7c74b6f789b3ffb127bde0c autosummary: Update test for Python 3.14.0a5+
+Patch1:         autosummary.patch
+# PATCH-FIX-UPSTREAM https://github.com/sphinx-doc/sphinx/commit/e01e42f5fc738815b8499c4ede30c6caf130f0a4 Fix INVALID_BUILTIN_CLASSES test for Python 3.14.0a6+
+Patch2:         typing.patch
+# PATCH-FIX-UPSTREAM https://github.com/sphinx-doc/sphinx/commit/68d56109ff50dd81dd31d4a01e3dccbd006c50ee Tests: update LaTeX label test expectations from Docutils r10151
+Patch3:         docutils022.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module flit-core >= 3.11}
 BuildRequires:  %{python_module pip}

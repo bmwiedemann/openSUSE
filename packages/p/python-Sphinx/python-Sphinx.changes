@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 11 08:42:26 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream patches to fix tests with Python 3.14:
+  * autodoc.patch
+  * autosummary.patch
+  * typing.patch
+- Proactively add upstream patch to fix tests with docutils 0.22:
+  * docutils022.patch
+- Rename multibuild flavor 'test' to 'test+doc' to better reflect
+  the current behaviour
+
+-------------------------------------------------------------------
 Mon Aug 25 12:56:50 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems

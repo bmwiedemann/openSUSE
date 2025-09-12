@@ -1,0 +1,33 @@
+From 0227606e71dc765ed60cd0ad2c580a43b5ffca4f Mon Sep 17 00:00:00 2001
+From: James Addison <55152140+jayaddison@users.noreply.github.com>
+Date: Mon, 12 May 2025 16:52:52 +0000
+Subject: [PATCH] Fix tests for Python 3.14.0a7 (#13527)
+
+Authored-by: Adam Turner <9087854+aa-turner@users.noreply.github.com>
+Co-authored-by: Adam Turner <9087854+aa-turner@users.noreply.github.com>
+Co-authored-by: James Addison <55152140+jayaddison@users.noreply.github.com>
+---
+ tests/test_extensions/test_ext_autodoc.py         |  6 +++++-
+ tests/test_extensions/test_ext_autodoc_configs.py | 12 ++++++++++--
+ 2 files changed, 15 insertions(+), 3 deletions(-)
+
+diff --git a/tests/test_extensions/test_ext_autodoc.py b/tests/test_extensions/test_ext_autodoc.py
+index a06c1bbe30d..7aa12db3c32 100644
+--- a/tests/test_extensions/test_ext_autodoc.py
++++ b/tests/test_extensions/test_ext_autodoc.py
+@@ -938,10 +938,14 @@ def test_autodoc_special_members(app):
+     }
+     if sys.version_info >= (3, 13, 0, 'alpha', 5):
+         options['exclude-members'] = '__static_attributes__,__firstlineno__'
++    if sys.version_info >= (3, 14, 0, 'alpha', 7):
++        ann_attr_name = '__annotations_cache__'
++    else:
++        ann_attr_name = '__annotations__'
+     actual = do_autodoc(app, 'class', 'target.Class', options)
+     assert list(filter(lambda l: '::' in l, actual)) == [
+         '.. py:class:: Class(arg)',
+-        '   .. py:attribute:: Class.__annotations__',
++        f'   .. py:attribute:: Class.{ann_attr_name}',
+         '   .. py:attribute:: Class.__dict__',
+         '   .. py:method:: Class.__init__(arg)',
+         '   .. py:attribute:: Class.__module__',
