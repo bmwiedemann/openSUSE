@@ -319,4 +319,23 @@
   * various bugfixes</comment>
     <requestid>1303426</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>941f0d044cae682c383fc4bca3776808</srcmd5>
+    <version>0.10.6</version>
+    <time>1757704219</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.10.6:
+  * Improve Windows build #624
+  * Add support for mingw toolchain in Windows #627
+  * Handle default device change on windows #652
+  * Fix various pipewire linking bugs #662
+  * generate downmixed stereo buffer for Windows #668
+  * Read eq values from config in Windows #679
+  * theme files #632
+  * horizontal gradient #620
+  * dumb terminal support
+  * general visualization improvements #672
+  * various bugfixes</comment>
+    <requestid>1304213</requestid>
+  </revision>
 </revisionlist>
