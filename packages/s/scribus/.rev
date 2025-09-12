@@ -766,4 +766,13 @@
   poppler 25.07.0</comment>
     <requestid>1293491</requestid>
   </revision>
+  <revision rev="93" vrev="3">
+    <srcmd5>7b2301a0347a2e763ab7768739ea51ba</srcmd5>
+    <version>1.6.4</version>
+    <time>1757704145</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream change (boo#1249440)
+  * 0001-Failure-to-build-with-poppler-25.09.0.patch</comment>
+    <requestid>1304071</requestid>
+  </revision>
 </revisionlist>

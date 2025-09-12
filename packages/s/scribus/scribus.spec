@@ -1,7 +1,7 @@
 #
 # spec file for package scribus
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and constributors
 # Copyright (c) Peter Linnell and 2010 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -47,6 +47,8 @@ Patch1:         0001-Fix-build-with-poppler-25.06.0.patch
 Patch2:         0001-Fix-build-with-PoDoFo-1.0.0.patch
 # PATCH-FIX-UPSTREAM
 Patch3:         0001-Fix-build-with-poppler-25.07.0.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         0001-Failure-to-build-with-poppler-25.09.0.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix
