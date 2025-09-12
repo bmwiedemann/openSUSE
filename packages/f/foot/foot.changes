@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 12 15:41:55 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.24.0:
+  * foot.ini options:
+    * Added new main.uppercase-regex-insert option to control whether or not
+      an uppercase hint character will insert the selected text into the prompt
+      in regex-copy or show-urls-copy mode, ie the wezterm-inspired behavior
+      introduced in v1.23.0. It defaults to true.
+  * Label letters are no longer sorted before being assigned to URLs.
+  * Sending SIGUSR1/SIGUSR2 to a foot --server process now causes
+    newly spawned client instances to use the selected theme,
+    instead of the original one.
+  * SIGUSR1/SIGUSR2 can now be sent to a footclient process to change the theme
+    of that particular instance.
+  * Fixed invalid values in foot.ini overriding other valid ones,
+    which would cause misbehavior or crashes.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.24.0 for more details.
+
+-------------------------------------------------------------------
 Wed Jul 23 06:45:11 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.23.1:
