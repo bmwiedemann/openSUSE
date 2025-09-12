@@ -25,7 +25,7 @@
 %{!?_distconfdir:%global _distconfdir /etc}
 
 Name:           update-bootloader
-Version:        1.25
+Version:        1.26
 Release:        0
 Requires:       coreutils
 Requires:       util-linux
