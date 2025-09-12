@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Sep 11 09:12:56 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add requires for the qml files manually since the files are
+  compiled into the binary and our automatic Requires generator
+  wont work. Thank you to Fabian Vogt
+
+-------------------------------------------------------------------
+Wed Sep 10 20:14:12 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.1.3
+  - fix D-bus name by @stradus64 in #30
+  - Rename service-file to 'org.hyprland.hyprpolkitagent.service'
+    by @golgor in #35
+- Changes from 0.1.2 After a while, an update with all the good
+  stuff.
+
+  - Notes for packagers
+    - qqc2-desktop-style dep is now dropped, replaced with
+      hyprland-qt-support
+  - Fixes
+    - qml: adjust dialog size to message length
+  - MRs
+    - Add [install] section to hyprpolkitagent.service by @izmyname
+      in #3
+    - Fix: Resolve deprecated QML syntax in main.qml by @raexera in
+      #14
+    - Add support for Numpad Enter key in authentication by
+      @Hcode00 in #15
+    - chore: replace deprecated syntax by @nnyyxxxx in #18
+    - fix: don't create duplicate service file by @nnyyxxxx in #17
+    - dbus: add proper ini-type config file by @regul4rj0hn in #22
+    - nix: move to hyprland-qt-support by @outfoxxed in #25
+- drop obsolete patches
+  - Add_install_section.patch
+  - no-kde-dependency.patch
+- rename dbus service from hyprpolkitagent.service to
+  org.hyprland.hyprpolkitagent.service
+
+-------------------------------------------------------------------
 Wed Dec 25 23:24:18 UTC 2024 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - Replace explicit BuildRequires with pkgconfig alternatives
