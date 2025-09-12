@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Sep  6 08:19:27 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update skylighting to version 0.14.7.
+  ## 0.14.7
+
+    * Update xml syntax definitions: agda, apache, bash, c, clojure,
+      cmake, coffee, commonlisp, cpp, djangotemplate, dot, dtd, fasm,
+      gd-script, glsl, gnuassembler, html, ini, java, json, julia, kotlin,
+      latex, lua, mathematica, mediawiki, metafont, mips, mustache, nasm,
+      objectivecpp, octave, perl, php, povray, powershell, protobuf,
+      python, racket, raku, rhtml, ruby, scheme, sed, sgml,
+      sql-postgresql, stan, systemverilog, tcl, xml, xul.
+
+    * Add gleam.
+
+    * Relax xml-conduit upper bound.
+
+-------------------------------------------------------------------
 Tue Jan  7 23:20:05 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update skylighting to version 0.14.6.
