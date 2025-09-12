@@ -319,4 +319,19 @@
   * [15-encrypt] Add new tpm2-measure-pcr=yes crypttab opt for sdbootutil</comment>
     <requestid>1302741</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>cfe4cda21236ee3917acf80631055fb9</srcmd5>
+    <version>1.4.0</version>
+    <time>1757704180</time>
+    <user>anag_factory</user>
+    <comment>tik 1.4
+- Require tik, not tik-experimental for module-sicu 
+
+- Update to version 1.4.0:
+  * Self Install and encryption rework (#59)
+
+- Update to version 1.3.18:
+  * [15-encrypt] Also mount /run in chroot for udev</comment>
+    <requestid>1304287</requestid>
+  </revision>
 </revisionlist>

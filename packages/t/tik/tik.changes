@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep 12 10:30:39 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Require tik, not tik-experimental for module-sicu 
+
+-------------------------------------------------------------------
+Thu Sep 11 17:34:44 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Update to version 1.4.0:
+  * Self Install and encryption rework (#59)
+
+-------------------------------------------------------------------
+Tue Sep 09 09:03:00 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Update to version 1.3.18:
+  * [15-encrypt] Also mount /run in chroot for udev
+
+-------------------------------------------------------------------
 Thu Sep 04 12:31:01 UTC 2025 - Richard Brown <rbrown@suse.com>
 
 - Update to version 1.3.17:

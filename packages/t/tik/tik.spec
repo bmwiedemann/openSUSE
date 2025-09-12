@@ -17,7 +17,7 @@
 
 
 Name:           tik
-Version:        1.3.17
+Version:        1.4.0
 Release:        0
 Summary:        Transactional Installation Kit
 License:        MIT
@@ -70,6 +70,13 @@ Requires:       tik
 %description module-encrypt
 Encryption module for tik. Encrypts btrfs rootfs using various different supported credentials and recovery-keys.
 
+%package module-sicu
+Summary:        SelfInstall CleanUp module for tik
+Requires:       tik
+
+%description module-sicu
+SelfInstall CleanUp module for tik. Removes & reconfigures things in a SelfInstall-deployed system that cant otherwise be handled via systemd-repart.
+
 %prep
 %autosetup
 
@@ -94,6 +101,8 @@ install -D -m 644 usr/lib/tik/modules/post/20-mig %{buildroot}%{_prefix}/lib/tik
 
 install -D -m 644 usr/lib/tik/modules/pre/15-encrypt %{buildroot}%{_prefix}/lib/tik/modules/pre
 install -D -m 644 usr/lib/tik/modules/post/15-encrypt %{buildroot}%{_prefix}/lib/tik/modules/post
+
+install -D -m 644 usr/lib/tik/modules/post/10-sicu %{buildroot}%{_prefix}/lib/tik/modules/post
 
 %files
 %license LICENSE
@@ -126,5 +135,8 @@ install -D -m 644 usr/lib/tik/modules/post/15-encrypt %{buildroot}%{_prefix}/lib
 %files module-encrypt
 %{_prefix}/lib/tik/modules/pre/15-encrypt
 %{_prefix}/lib/tik/modules/post/15-encrypt
+
+%files module-sicu
+%{_prefix}/lib/tik/modules/post/10-sicu
 
 %changelog
