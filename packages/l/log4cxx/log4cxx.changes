@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Sep  4 14:08:11 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0 (bsc#1248601, CVE-2025-54812):
+  * Qt6 can be used when building with LOG4CXX_QT_SUPPORT=on
+  * TelnetAppender can now deliver messages when the socket is in
+    a TIME_WAIT state [#495]
+  * TelnetAppender can be restricted to specific network [#498]
+  * The following issues have been addressed:
+  * HTML output was illformed when the logger name, title or
+    thread name contained the special HTML characters
+  * JSON output was illformed when a message contained certain
+    control characters [#512]
+  * Undefined behaviour when reloading a configuration file after
+    calling LogManager::shutdown [#504]
+  * Compilation error when using gcc on MacOS [#499]
+  * It was possible for logging events to be lost when reloading
+    a configuration file [#491]
+  * Buffered file output is now periodically flushed by a
+    background thread [#445]
+  * The MultiprocessRollingFileAppender did not work [#439]
+  * Boundary conditions not comprehensively checked when
+    processing a configuration file
+  * Properly prevent undefined behaviour when an appender is
+    deleted without being closed [#431]
+  * Prevent abnormal termination on exit when using a static
+    NDC/MDC variable [#426]
+  * Support for std::experimental::optional
+  * Overhead reduction of upto 60% sending logging events to
+    an appender
+  * Statistics on the AsyncAppender's queue length
+    (in Log4cxx debug output)
+  * Fuzz tests along with Google OSS-Fuzz integration
+  * A potential 'use after free' fault when using AsyncAppender [#397]
+
+-------------------------------------------------------------------
 Sat Jan  6 10:35:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.0:
