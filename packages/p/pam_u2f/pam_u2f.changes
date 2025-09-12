@@ -1,9 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep 12 07:25:50 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * Add module configuration file support (default:
+    /etc/security/pam_u2f.conf).
+  * Add support for building in CMake. This deprecates the
+    autotools build system which is scheduled to be removed
+    in a future release.
+  * Terminology updates to user prompts.
+- update expected signing key
+
+-------------------------------------------------------------------
 Tue Jan 21 13:52:59 UTC 2025 - Paolo Perego <paolo.perego@suse.com>
 
 - update to 1.3.2:
   * Relax authfile permission check to a warning instead of an error to prevent
-    a breaking change locking existing users out of their systems. 
+    a breaking change locking existing users out of their systems.
 
 -------------------------------------------------------------------
 Wed Jan 15 10:02:56 UTC 2025 - Paolo Perego <paolo.perego@suse.com>
@@ -15,7 +27,7 @@ Wed Jan 15 10:02:56 UTC 2025 - Paolo Perego <paolo.perego@suse.com>
   * Hardened checks of authfile permissions.
   * Hardened checks for nouserok.
   * Improved debug messages.
-  * Improved documentation. 
+  * Improved documentation.
 
 -------------------------------------------------------------------
 Sat Apr 15 12:01:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -100,7 +112,7 @@ Wed Apr 18 11:47:00 UTC 2018 - kbabioch@suse.com
 
 - Update to version 1.0.6:
   - Fix an issue when using syslog as a debug facility.
-  - Do not honor cue if no sutable device is found. 
+  - Do not honor cue if no sutable device is found.
 
 -------------------------------------------------------------------
 Wed Apr 18 07:54:00 UTC 2018 - jengelh@inai.de
@@ -112,7 +124,7 @@ Wed Apr 18 07:54:00 UTC 2018 - jengelh@inai.de
 Tue Apr 17 06:59:04 UTC 2018 - kbabioch@suse.com
 
 - Update to version 1.0.5:
-  - General bugfixes and quality-of-life improvements. 
+  - General bugfixes and quality-of-life improvements.
 
 -------------------------------------------------------------------
 Thu Jan  7 21:34:49 UTC 2016 - t.gruner@katodev.de
@@ -125,7 +137,7 @@ Fri Nov  6 22:00:05 UTC 2015 - t.gruner@katodev.de
 
 - Version 1.0.3 (released 2015-11-02)
   - Bugfix in pamu2fcfg.
-  - Minor improvements for verbose mode in pamu2fcfg. 
+  - Minor improvements for verbose mode in pamu2fcfg.
 
 -------------------------------------------------------------------
 Tue Oct  6 14:11:20 UTC 2015 - t.gruner@katodev.de
@@ -262,7 +274,7 @@ Tue Jan 13 07:45:00 UTC 2015 - t.gruner@katodev.de
 	* .gitignore, AUTHORS, BLURB, COPYING, Makefile.am, NEWS, README,
 	README.adoc, README.md, configure.ac, m4/lib-ld.m4, m4/lib-link.m4,
 	m4/lib-prefix.m4, m4/manywarnings.m4, m4/warnings.m4, pam-u2f.c,
-	pam_u2f.8.txt, tests/Makefile.am, tests/basic.c, util.c, util.h: 
+	pam_u2f.8.txt, tests/Makefile.am, tests/basic.c, util.c, util.h:
 	Added initial content.
 
 2014-12-10  Alessio Di Mauro <a-dma@users.noreply.github.com>
