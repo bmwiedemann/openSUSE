@@ -2786,4 +2786,12 @@ we must have vb7.1.10.</comment>
   we can't build the bindings.</comment>
     <requestid>1301424</requestid>
   </revision>
+  <revision rev="297" vrev="3">
+    <srcmd5>55e583d4655601c5847e1f8fc38148e2</srcmd5>
+    <version>7.2.0</version>
+    <time>1757704166</time>
+    <user>anag_factory</user>
+    <comment>- Add curl-8.16.patch [boo#1249448]</comment>
+    <requestid>1304250</requestid>
+  </revision>
 </revisionlist>

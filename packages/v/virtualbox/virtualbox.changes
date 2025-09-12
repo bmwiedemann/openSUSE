@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 11 15:03:37 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add curl-8.16.patch [boo#1249448]
+
+-------------------------------------------------------------------
 Tue Aug 26 10:21:54 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable python bindings for Leap 16.0 (bsc#1248418)
