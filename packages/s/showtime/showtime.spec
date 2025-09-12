@@ -1,7 +1,7 @@
 #
 # spec file for package showtime
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.14.0
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.beta
 Requires:       gstreamer-plugins-rs
+Recommends:     gstreame-plugins-libav
+Recommends:     gstreamer-plugins-ugly
 BuildArch:      noarch
 
 %description
