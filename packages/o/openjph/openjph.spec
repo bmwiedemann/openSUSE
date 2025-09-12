@@ -17,7 +17,7 @@
 
 
 Name:           openjph
-Version:        0.22.0
+Version:        0.23.0
 Release:        0
 Summary:        An implementation of JPEG2000 Part-15
 License:        BSD-2-Clause
@@ -32,11 +32,11 @@ BuildRequires:  libtiff-devel
 This package contains libopenjph, a library implementing the JPEG-2000
 standard Part 15.
 
-%package -n libopenjph0_22
+%package -n libopenjph0_23
 Summary:        JPEG-2000 Part-15 library
 Group:          System/Libraries
 
-%description -n libopenjph0_22
+%description -n libopenjph0_23
 This is an implementation of High-throughput JPEG2000 (HTJ2K), also
 known as JPH, JPEG2000 Part 15, ISO/IEC 15444-15, or ITU-T T.814.
 Only the LGT 5/3 wavelet transform for lossless compression and the
@@ -46,7 +46,7 @@ CDF 9/7 wavelet transform for lossy compression are supported.
 Summary:        Development files for libopenjph, a JPEG-2000 Part 15 library
 Group:          Development/Libraries/C and C++
 Requires:       libjpeg-devel
-Requires:       libopenjph0_22 = %{version}
+Requires:       libopenjph0_23 = %{version}
 
 %description devel
 This package contains libopenjph, a library implementing the JPEG-2000
@@ -67,7 +67,7 @@ standard Part 15.
 %install
 %cmake_install
 
-%ldconfig_scriptlets -n libopenjph0_22
+%ldconfig_scriptlets -n libopenjph0_23
 
 %files
 %license LICENSE
@@ -75,7 +75,7 @@ standard Part 15.
 %{_bindir}/ojph_compress
 %{_bindir}/ojph_expand
 
-%files -n libopenjph0_22
+%files -n libopenjph0_23
 %{_libdir}/libopenjph*.so.*
 
 %files devel

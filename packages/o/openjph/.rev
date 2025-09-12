@@ -60,4 +60,16 @@
     This is useful for processing many similar codestream. #194</comment>
     <requestid>1301189</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>bd106e1982ddaabd620a2c934317990d</srcmd5>
+    <version>0.23.0</version>
+    <time>1757705005</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.23.0:
+  * don't use delete with malloc on store #199
+  * Handle platform diff of -fPIC #197
+  * Align CMake and pkgconf include paths #201
+  * Exposes used_size for mem_outfile #195</comment>
+    <requestid>1304215</requestid>
+  </revision>
 </revisionlist>
