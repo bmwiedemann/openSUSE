@@ -11,6 +11,5 @@ While not providing end-to-end security, it protects the local network, which is
 of the chain, against man-in-the-middle attacks. It also provides some confidentiality to DNS queries.
 
 </description>
-  <devel project="server:dns" package="dnscrypt-proxy"/>
   <url>http://dnscrypt.org</url>
 </package>
