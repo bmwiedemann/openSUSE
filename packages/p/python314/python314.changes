@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 12 07:46:55 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add gh138131-exclude-pycache-from-digest.patch fixing reproducible
+  build for python-nogil.
+  (bsc#1244680, gh#python/cpython#138131)
+
+-------------------------------------------------------------------
 Tue Sep  9 07:48:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - fix import_failed.map for python 3.14

@@ -2499,4 +2499,14 @@
     <comment>- fix import_failed.map for python 3.14</comment>
     <requestid>1303308</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>f7420f7c2177cd1bc7d6130c8d6a15ab</srcmd5>
+    <version>3.14.0~rc2</version>
+    <time>1757704234</time>
+    <user>anag_factory</user>
+    <comment>- Add gh138131-exclude-pycache-from-digest.patch fixing reproducible
+  build for python-nogil.
+  (bsc#1244680, gh#python/cpython#138131)</comment>
+    <requestid>1304274</requestid>
+  </revision>
 </revisionlist>
