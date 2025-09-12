@@ -295,4 +295,12 @@
   on SLE16 (bsc#1248484)</comment>
     <requestid>1301279</requestid>
   </revision>
+  <revision rev="27" vrev="27">
+    <srcmd5>07e2df166f704951bb802fbeab66bee9</srcmd5>
+    <version>0</version>
+    <time>1757704227</time>
+    <user>anag_factory</user>
+    <comment>- Update translations (bsc#1249378)</comment>
+    <requestid>1304249</requestid>
+  </revision>
 </revisionlist>
