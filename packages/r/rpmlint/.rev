@@ -5331,4 +5331,14 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
   * ZipCheck: fix utf8 decoding erros in jarfile manifest</comment>
     <requestid>1303173</requestid>
   </revision>
+  <revision rev="511" vrev="1">
+    <srcmd5>1124e16978c3ba6e0964335bcfd555cc</srcmd5>
+    <version>2.8.0+git20250909.1bb96561</version>
+    <time>1757704167</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.8.0+git20250909.1bb96561:
+  * Synced /var/spool/mail entry with Factory filesystem package.
+</comment>
+    <requestid>1303534</requestid>
+  </revision>
 </revisionlist>
