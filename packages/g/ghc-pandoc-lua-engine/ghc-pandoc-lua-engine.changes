@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep  6 21:56:13 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-engine to version 0.5.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Sat Jul 26 17:41:41 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update pandoc-lua-engine to version 0.4.3 revision 2.
