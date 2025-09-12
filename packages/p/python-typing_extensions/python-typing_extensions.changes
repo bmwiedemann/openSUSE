@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 11 09:45:29 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.15.0
+  * Add the @typing_extensions.disjoint_base decorator, as specified in PEP 800.
+  * Add typing_extensions.type_repr, a backport of annotationlib.type_repr,
+    introduced in Python 3.14.
+  * Fix behavior of type params in typing_extensions.evaluate_forward_ref.
+
+-------------------------------------------------------------------
 Fri Jul 18 16:11:33 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.14.1:

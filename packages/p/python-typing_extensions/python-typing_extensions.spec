@@ -1,7 +1,7 @@
 #
 # spec file for package python-typing_extensions
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-typing_extensions%{psuffix}
-Version:        4.14.1
+Version:        4.15.0
 Release:        0
 Summary:        Backported and Experimental Type Hints for Python 3.8+
 License:        Python-2.0
