@@ -39,4 +39,12 @@
     <comment>- Revert file-based systemd-repart config (Was not ready for Factory)</comment>
     <requestid>1298980</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>a5a88aacd605a7c0c0e9342e9669b2d5</srcmd5>
+    <version>20240404</version>
+    <time>1757704179</time>
+    <user>anag_factory</user>
+    <comment>to be merged with tik 1.4 sr1304115</comment>
+    <requestid>1304277</requestid>
+  </revision>
 </revisionlist>
