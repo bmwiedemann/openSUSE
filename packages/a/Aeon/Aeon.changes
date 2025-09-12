@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Thu Sep 11 17:48:20 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Re-enable getty generator 
+
+-------------------------------------------------------------------
+Thu Sep 11 17:18:29 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Replace development packages with production ones
+
+-------------------------------------------------------------------
+Thu Sep 11 16:47:40 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Disable getty-generator 
+
+-------------------------------------------------------------------
+Thu Sep 11 16:17:43 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Remove unncessary growfs config 
+
+-------------------------------------------------------------------
+Fri Jul 26 13:29:00 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Introduce tik self install cleanup module 
+
+-------------------------------------------------------------------
+Wed Jul 24 12:40:41 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Introduce tik encryption module
+- Transition towards "openSUSE-less" branding
+
+-------------------------------------------------------------------
+Fri May 24 13:30:21 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Correct ignition partition label to 'ignition' 
+
+-------------------------------------------------------------------
+Wed May 22 11:07:36 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove unused disk.sh (no systemd-boot on installer)
+- Remove growfs from initrd
+- Remove ro mount option as can cause racy mount behaviour on boot 
+
+-------------------------------------------------------------------
+Thu May 16 13:16:58 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Remove redundant relabelling (done better by kiwi now)
+- Shift growfs to initrd 
+
+-------------------------------------------------------------------
+Thu May 16 12:51:10 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- libcontainers-common no longer uses storage = btrfs by default,
+  neither should images 
+
+-------------------------------------------------------------------
+Thu May 16 07:57:30 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Require tik-osimage-openSUSE-Aeon 
+
+-------------------------------------------------------------------
+Wed May 15 08:17:59 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Prevent screen blanking during install 
+
+-------------------------------------------------------------------
+Tue May 14 08:30:59 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Move optional tik-module-mig and -welcome from patterns-tik to
+  image definition 
+
+-------------------------------------------------------------------
+Wed Apr 10 07:51:11 UTC 2024 - Richard Brown <rbrown@suse.com>
+
+- Initial Packaging 
