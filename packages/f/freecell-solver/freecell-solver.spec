@@ -1,7 +1,7 @@
 #
 # spec file for package freecell-solver
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libname libfreecell-solver
 %bcond_with tests
 Name:           freecell-solver
-Version:        6.12.0
+Version:        6.14.0
 Release:        0
 Summary:        A Freecell Solver
 License:        MIT
@@ -38,13 +38,9 @@ BuildRequires:  perl(Moo)
 BuildRequires:  perl(Path::Tiny)
 BuildRequires:  pkgconfig(glib-2.0)
 Requires:       python3-pysol-cards
-Requires:       python3-random2
-Requires:       python3-six
 %if %{with tests}
 BuildRequires:  python3-cffi
 BuildRequires:  python3-pysol-cards
-BuildRequires:  python3-random2
-BuildRequires:  python3-six
 BuildRequires:  perl(Task::FreecellSolver::Testing)
 %endif
 
@@ -77,9 +73,6 @@ Development package for the libfreecell-solver library
 
 %prep
 %autosetup -p1
-
-# Unneeded 3rdparty module
-rm -r rinutils
 
 %build
 %cmake -DBUILD_STATIC_LIBRARY:BOOL=FALSE \
