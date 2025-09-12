@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 11 20:16:25 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Specifically request pkgconfig(cddgmp) now that it exists.
+
+-------------------------------------------------------------------
 Thu Feb 27 23:00:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Make specfile conform to POSIX sh

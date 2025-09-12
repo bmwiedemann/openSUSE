@@ -23,4 +23,12 @@
     <comment>- Make specfile conform to POSIX sh</comment>
     <requestid>1249103</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>f6016b2f001bf2d13d99681277d40e83</srcmd5>
+    <version>2024.09.02</version>
+    <time>1757704207</time>
+    <user>anag_factory</user>
+    <comment>- Specifically request pkgconfig(cddgmp) now that it exists.</comment>
+    <requestid>1304156</requestid>
+  </revision>
 </revisionlist>
