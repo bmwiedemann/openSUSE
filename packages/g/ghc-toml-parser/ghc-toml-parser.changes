@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  9 22:41:51 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update toml-parser to version 2.0.1.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Apr 30 14:48:43 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update toml-parser to version 2.0.1.2.
