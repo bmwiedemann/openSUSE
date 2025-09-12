@@ -17,4 +17,12 @@
 Add reproducible.patch to avoid compile-time CPU-detection (boo#1100677)</comment>
     <requestid>1240185</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>145a09380db538bf2b2a13803c3e4273</srcmd5>
+    <version>0.8.1</version>
+    <time>1757704228</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1304244</requestid>
+  </revision>
 </revisionlist>

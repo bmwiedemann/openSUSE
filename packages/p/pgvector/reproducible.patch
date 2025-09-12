@@ -13,7 +13,7 @@ This patch was done while working on reproducible builds for openSUSE.
  1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
-index 7a4b88ca..4681d0f7 100644
+index 7a4b88caf..4681d0f7e 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -12,7 +12,11 @@ REGRESS = $(patsubst test/sql/%.sql,%,$(TESTS))

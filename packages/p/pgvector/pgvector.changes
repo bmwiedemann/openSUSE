@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 12 07:30:00 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.1:
+  * Added support for Postgres 18 rc1
+  * Improved performance of `binary_quantize` function
+
+-------------------------------------------------------------------
 Fri Jan 24 15:07:12 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to avoid compile-time CPU-detection (boo#1100677)
@@ -58,7 +65,7 @@ Wed Sep  4 13:35:00 UTC 2024 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 -------------------------------------------------------------------
 Tue May  7 23:32:12 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 0.7.0 
+- Update to 0.7.0
   no changelog provided
 
 -------------------------------------------------------------------

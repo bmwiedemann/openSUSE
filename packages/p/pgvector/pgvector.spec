@@ -1,7 +1,7 @@
 #
 # spec file for package pgvector
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Name:           %{pg_name}-%{ext_name}
 BuildRequires:  %{pg_name}-server-devel
 %pg_server_requires
 %endif
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        Open-source vector similarity search for Postgres
 License:        PostgreSQL
