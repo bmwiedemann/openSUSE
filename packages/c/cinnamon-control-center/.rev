@@ -340,4 +340,13 @@
     <comment></comment>
     <requestid>1237116</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>c0c1b955976f9a8c25aa7b88d311e783</srcmd5>
+    <version>6.4.2</version>
+    <time>1757704222</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.4.2:
+  * l10n: Update files</comment>
+    <requestid>1304219</requestid>
+  </revision>
 </revisionlist>
