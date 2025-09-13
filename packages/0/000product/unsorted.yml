@@ -8592,6 +8592,7 @@ unsorted:
   - hxtools-scripts 
   - hydra 
   - hydrogen 
+  - hyfetch 
   - hylafax+ 
   - hylafax+-client 
   - hyper-v-enhanced-session 
@@ -10061,6 +10062,7 @@ unsorted:
   - kf6-syndication-devel 
   - kf6-syntax-highlighting-devel 
   - kf6-threadweaver-devel 
+  - kfdtest 
   - kfind 
   - kfind-lang 
   - kfloppy 
@@ -10756,6 +10758,7 @@ unsorted:
   - latex2html-pngicons 
   - latex2rtf 
   - lato-fonts 
+  - latte 
   - layer-shell-qt6-devel 
   - layer-shell-qt6-imports 
   - lazarus 
@@ -13144,7 +13147,7 @@ unsorted:
   - libfluidsynth3 
   - libfluidsynth3-32bit 
   - libflux-devel 
-  - libflux0_196_1 
+  - libflux0_198_0 
   - libflxmlrpc1 
   - libfm 
   - libfm-devel 
@@ -13844,6 +13847,8 @@ unsorted:
   - libhpdf2_4 
   - libhpx1 
   - libhs5-vectorscan5 
+  - libhsa-runtime64-1 
+  - libhsa-runtime64-1-devel 
   - libhtp-devel 
   - libhtp2 
   - libhts-devel 
@@ -14986,7 +14991,7 @@ unsorted:
   - libopenhpi4 
   - libopenhtj2k0 
   - libopenjp2-7-32bit 
-  - libopenjph0_22 
+  - libopenjph0_23 
   - libopenlibm4 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
@@ -25489,7 +25494,6 @@ unsorted:
   - python311-husl 
   - python311-hvac 
   - python311-hvplot 
-  - python311-hyfetch 
   - python311-hypercorn 
   - python311-hypothesis 
   - python311-hypothesis-fspaths 
@@ -27377,9 +27381,6 @@ unsorted:
   - python311-usfm2osis 
   - python311-uuid6 
   - python311-uv 
-  - python311-uv-bash-completion 
-  - python311-uv-fish-completion 
-  - python311-uv-zsh-completion 
   - python311-uvicorn 
   - python311-uvloop 
   - python311-uwsgi-python3 
@@ -29252,7 +29253,6 @@ unsorted:
   - python312-husl 
   - python312-hvac 
   - python312-hvplot 
-  - python312-hyfetch 
   - python312-hypercorn 
   - python312-hyperframe 
   - python312-hyperlink 
@@ -31182,9 +31182,6 @@ unsorted:
   - python312-usfm2osis 
   - python312-uuid6 
   - python312-uv 
-  - python312-uv-bash-completion 
-  - python312-uv-fish-completion 
-  - python312-uv-zsh-completion 
   - python312-uvicorn 
   - python312-uvloop 
   - python312-uwsgi-python3 
@@ -33022,7 +33019,6 @@ unsorted:
   - python313-husl 
   - python313-hvac 
   - python313-hvplot 
-  - python313-hyfetch 
   - python313-hypercorn 
   - python313-hyperlink 
   - python313-hypothesis 
@@ -34911,9 +34907,6 @@ unsorted:
   - python313-usfm2osis 
   - python313-uuid6 
   - python313-uv 
-  - python313-uv-bash-completion 
-  - python313-uv-fish-completion 
-  - python313-uv-zsh-completion 
   - python313-uvicorn 
   - python313-uvloop 
   - python313-uwsgi-python3 
@@ -36153,6 +36146,10 @@ unsorted:
   - rocm-llvm-filesystem 
   - rocm-llvm-libs 
   - rocm-llvm-static 
+  - rocm-rpm-macros 
+  - rocm-rpm-macros-modules 
+  - rocm-smi 
+  - rocm-smi-devel 
   - rocs 
   - rocs-devel 
   - rocs-lang 
@@ -47524,6 +47521,7 @@ unsorted:
   - tik-config-generic 
   - tik-module-encrypt 
   - tik-module-mig 
+  - tik-module-sicu 
   - tik-module-welcome 
   - tilda 
   - tilda-lang 
@@ -48332,6 +48330,7 @@ unsorted:
   - ufraw 
   - ufraw-lang 
   - uftpd 
+  - uftrace 
   - ufw 
   - ufw-lang 
   - ugrep 
@@ -48495,6 +48494,9 @@ unsorted:
   - uudeview 
   - uuid-devel 
   - uuidd 
+  - uv-bash-completion 
+  - uv-fish-completion 
+  - uv-zsh-completion 
   - uvcdynctrl 
   - uwac0-devel 
   - uwsc 
