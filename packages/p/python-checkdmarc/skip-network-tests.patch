@@ -1,9 +1,9 @@
 diff --git a/tests.py b/tests.py
-index fd22132..b684ecb 100755
+index 9cfda48..cdaf4fe 100755
 --- a/tests.py
 +++ b/tests.py
-@@ -291,6 +291,7 @@ class Test(unittest.TestCase):
-             "{0} does not have any MX records".format(domain), results["warnings"]
+@@ -296,6 +296,7 @@ class Test(unittest.TestCase):
+             results["warnings"],
          )
  
 +    @unittest.skipUnless(os.path.exists("/etc/resolv.conf"), "no network")

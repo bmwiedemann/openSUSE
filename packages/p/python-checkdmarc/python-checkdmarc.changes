@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Sep 12 18:38:37 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.10.6
+  * Fix BIMI certificate validation error generation.
+  * Add support for the avp bimi tag.
+- Update to version 5.10.5
+  * Switch from DNS over UDP to DNS over TCP for DNSSEC and TLSA
+    queries.
+- Update to version 5.9.3
+  * Clarify warnings for DMARC p=none and sp=none.
+  * Use a different warning if DMARC pct is set to 0.
+  * Add location to the JSON output for BIMI.
+- Update to version 5.9.1
+  * Fix BIMI record parsing error introduced in 5.9.0.
+- Update to version 5.9.0
+  Bug fixes:
+  * Remove zero-width characters from domain inputs.
+  * Add a warning when the DMARC record p or sp value is none.
+  * Evaluate DMARC when checking BIMI.
+  * Do lot show a BIMI certificate warning when the l tag is set
+    to "".
+  * Include warnings if a domain is using BIMI, but does not have
+    an enforced DMARC policy.
+  New features:
+  * Parsed SPF record details are now provided even if it uses
+    too many DNS lookups.
+  API changes:
+  * Require keyword arguments to be passed as keyword=value pairs
+    instead of positional arguments.
+  * Add the option ignore_too_many_lookups to
+    checkdmarc.spf.parse_spf_record()
+    + This option will stop checkdmarc.spf.parse_spf_record() from
+      rasing exceptions related to too many DNS lookups, in
+      support of the new feature.
+    + False by default to maintain backwards compatibility.
+    + checkdmarc.spf.check_spf() uses this functionality to
+      support the new feature.
+- Update to version 5.8.8
+  * Provide an easier to understand error message when a mark
+    certificate is not is not issued by a recognized Mark
+    Verifying Authority (MVA).
+  * Bug fix: failure to download a BIMI image is noted in the
+    certificate section instead of the image section.
+- Update to version 5.8.7
+  * fix discrepencies on http_timeout usage.
+  * Fixing a bug in policy/subdomain policy check for parked
+    domains.
+- Update patch:
+  * skip-network-tests.patch
+
+-------------------------------------------------------------------
 Fri Jun 27 15:07:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
