@@ -570,4 +570,15 @@
     <comment></comment>
     <requestid>1293057</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>036d2820346564324db821e1d5601f84</srcmd5>
+    <version>1.35.1</version>
+    <time>1757868545</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.35.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1304276 from glaubitz)</comment>
+    <requestid>1304279</requestid>
+  </revision>
 </revisionlist>
