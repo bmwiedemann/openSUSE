@@ -115,8 +115,10 @@ cp -L %{_kf6_iconsdir}/breeze/actions/22/tools-wizard.svg %{buildroot}%{_kf6_ico
 %{_kf6_applicationsdir}/org.kde.plasmaengineexplorer.desktop
 %{_kf6_applicationsdir}/org.kde.plasmoidviewer.desktop
 %{_kf6_appstreamdir}/org.kde.plasma.iconexplorer.appdata.xml
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/org.kde.plasma.plasmoidviewershell.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.themeexplorer.appdata.xml
+%endif
 %{_kf6_appstreamdir}/org.kde.plasmaengineexplorer.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasmoidviewer.appdata.xml
 %{_kf6_bindir}/kqml
