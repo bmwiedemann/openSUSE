@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 11 18:45:12 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Remove pie linker flag, fixing builds with cmake 4.1
+
+-------------------------------------------------------------------
 Thu Sep  4 15:47:44 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 11.8.3:

@@ -432,9 +432,9 @@ cat %{SOURCE50} | tee -a mysql-test/unstable-tests
        -DINSTALL_SYSCONF2DIR="%{_sysconfdir}/my.cnf.d"              \
        -DCMAKE_BUILD_TYPE=RelWithDebInfo                            \
        -DINSTALL_SQLBENCHDIR=share                                  \
-       -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -pie -Wl,-z,relro,-z,now -Wl,-Bsymbolic -Wl,-Bsymbolic-functions" \
-       -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -pie -Wl,-z,relro,-z,now -Wl,-Bsymbolic -Wl,-Bsymbolic-functions" \
-       -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -pie -Wl,-z,relro,-z,now -Wl,-Bsymbolic -Wl,-Bsymbolic-functions" \
+       -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now -Wl,-Bsymbolic -Wl,-Bsymbolic-functions" \
+       -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now -Wl,-Bsymbolic -Wl,-Bsymbolic-functions" \
+       -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,relro,-z,now -Wl,-Bsymbolic -Wl,-Bsymbolic-functions" \
        -DCMAKE_SKIP_RPATH=OFF                                       \
        -DCMAKE_SKIP_INSTALL_RPATH=ON                                \
        -Wno-dev "$@" ..
