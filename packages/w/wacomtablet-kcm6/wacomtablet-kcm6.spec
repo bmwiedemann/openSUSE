@@ -92,7 +92,9 @@ with profile support to handle different button / pen layouts per profile.
 %files
 %license COPYING
 %doc %lang(en) %{_kf6_htmldir}/en/kcontrol/
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/org.kde.plasma.wacomtablet.appdata.xml
+%endif
 %{_kf6_appstreamdir}/org.kde.wacomtablet.metainfo.xml
 %{_kf6_applicationsdir}/kcm_wacomtablet.desktop
 %{_kf6_applicationsdir}/kde_wacom_tabletfinder.desktop
