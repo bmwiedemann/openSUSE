@@ -104,4 +104,23 @@
     <comment></comment>
     <requestid>1277829</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8c4b138468d393d9f2c40bd44b56c703</srcmd5>
+    <version>2.0.1</version>
+    <time>1757868555</time>
+    <user>anag_factory</user>
+    <comment>- Drop patches:
+  * freezegun-skip.patch
+  * python311.patch
+- update to 2.0.1:
+  * Via python_requires specifies that cached_property is for Python
+    version 3.8 or higher
+  * Officiall drop support for Python 2.6
+- 2.0.0 (2024-10-25)
+  * Remove support for Python versions &lt; 3.8
+  * Add formal support for Python versions up to 3.13
+  * Switch to Markdown for docs
+  * Migrate from black to ruff</comment>
+    <requestid>1304294</requestid>
+  </revision>
 </revisionlist>
