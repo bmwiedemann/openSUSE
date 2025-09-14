@@ -16,12 +16,12 @@
 #
 
 
-%define sigil_doc_version 2024.08.15
+%define sigil_doc_version 20250912
 %if 0%{?suse_version} < 1600
 %define pythons python311
 %endif
 Name:           sigil
-Version:        2.6.0
+Version:        2.6.2
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only
