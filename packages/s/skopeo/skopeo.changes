@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Aug 21 07:47:13 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 1.20.0:
+  * Bump to v1.20.0
+  * chore(deps): update module github.com/docker/docker to v28.3.3+incompatible [security]
+  * fix(deps): update github.com/opencontainers/image-spec digest to 2daaaaf
+  * openshiftCluster.dockerLogin: create path with parents
+  * integration: rename registry binary
+  * Update dependency golangci/golangci-lint to v2.3.0
+  * Improve parameter passing to hack/test-system.sh
+  * Improve parameter passing to hack/test-integration.sh
+  * Centralize policy edits in copySuite.policyFixture
+  * Use t.Cleanup in fileFromFixture
+  * Update module github.com/spf13/pflag to v1.0.7
+  * Update module github.com/containers/common to v0.64.0
+  * Update opencontainers/image-spec after https://github.com/opencontainers/image-spec/pull/1253 .
+  * Update module github.com/containers/image/v5 to v5.36.0
+  * Update dependency golangci/golangci-lint to v2.2.2
+  * Consolidate options shared between copy and sync to sharedCopyOptions
+  * Consistently use AddFlagSet before flag definitions
+  * Update GPG keys not to use SHA-1
+  * Update module golang.org/x/term to v0.33.0
+  * Update module github.com/Masterminds/semver/v3 to v3.4.0
+  * Update dependency golangci/golangci-lint to v2.2.1
+  * Packit: disable official CentOS Stream update job
+  * Update Neil Smith's GitHub username in MAINTAINERS.md
+  * Also exit with status 2 for missing tags in oci-archive:
+  * Fix the "missing image" check when reading oci:
+  * Fix some comments
+  * TMT: Install bats from source on RHEL
+  * RPM: make bats a weak dep
+  * Add conditional release-checking system test
+  * Packit: disable osh-diff-scan
+  * Tweak Governance and Maintainers for alignment
+  * rpm: build rpm with libsqlite3 tag
+  * Makefile: use libsqlite3 build when possible
+  * Improve documentation of --authfile
+  * Add Colin Walters as a reviewer
+  * Add --retry[-times] to test operations that tend to fail
+  * fix(deps): update module github.com/containers/common to v0.63.1
+  * [skip-ci] RPM: fix gating.yaml
+  * Don't BuildRequires: ostree-devel
+  * unshare: Add CAP_SYS_ADMIN to needed capabilities
+  * docs: Add a manpage for experimental-image-proxy
+  * Bump to v1.20.0-dev
+
+-------------------------------------------------------------------
 Tue May 27 08:05:01 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 1.19.0:
