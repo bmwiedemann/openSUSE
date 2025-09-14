@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Sep 12 19:02:02 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.0.0
+  * Add Cisco IOS show vlan group.
+  * Juniper junos show system configuration database usage.
+  * Add Huawei VRP dir.
+  * Add Huawei VRP virtual-cable-test.
+  * Add Linux iwconfig.
+  * Add Huawei VRP display license verbose.
+  * Fix Arista show version for cEOS.
+  * Fix Arista port-channel member bug and support dense.
+  * Update cisco_ios_show_interface_link.textfsm.
+  * Add Huawei SmartAX display ont-srvprofile gpon.
+  * Update Mikrotik RouterOS ip dhcp-server lease print.
+  * Update Mikrotik RouterOS ip dhcp-server lease print terse
+    without-paging.
+  * fix: Huawei VRP display version template.
+  * Fix broken uppercase capture group test.
+  * Support Alcatel service service-using names with spaces.
+  * Fix date,vrf in mikrotik int pr terse w/o paging.
+  * Fix Huawei VRP display startup template.
+  * Sanitize test data for Alcatel service-name-using.
+  * Update poetry version pinning for textfsm.
+  * Dependabot security fixes and remove Python 3.8.
+  * Support Linux iwconfig monitor mode.
+  * Improve Huawei VRP display interface brief.
+  * Add Huawei VRP display eth-trunk.
+  * Add Mikrotik routeros ip hotspot ip-binding print terse
+    without-paging.
+  * Improve Alcatel AOS show lldp remote-system.
+  * Improve Huawei VRP display interface.
+  * Modify Juniper junos show rsvp interface.
+  * Update Huawei VRP display lldp neighbor.
+  * Support cisco_ios BFD Echo Mode and Down Neighbors.
+  * Include Nexus model suffix in show version.
+  * Test for unused capture groups.
+  * Update Huawei VRP display vlan.
+  * Update nxos show interface.
+  * Rename Arista interface_up_time to last_link_flapped.
+  * Normalize pvid with vlan_id.
+    Modify asa sh acl PROTOCOL to accept numeric vals.
+  * Fix arista eos show version for containerlab ceos.
+
+-------------------------------------------------------------------
 Fri May 23 12:09:54 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.9.0
