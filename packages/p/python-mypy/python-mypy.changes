@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Fri Sep 12 08:57:49 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.18.1:
+  (full release notes on
+  https://mypy-lang.blogspot.com/2025/09/mypy-1181-released.html,
+  these are just headlines)
+  - Mypy Performance Improvements
+    Mypy 1.18.1 includes numerous performance improvements,
+    resulting in about 40% speedup compared to 1.17 when type
+    checking mypy itself. In extreme cases, the improvement
+    can be 10x or higher. The list below is an overview of
+    the various mypy optimizations. Many mypyc improvements
+    (discussed in a separate section below) also improve
+    performance.
+  - Fixed‑Format Cache (Experimental)
+    Mypy now supports a new cache format used for faster
+    incremental builds. It makes incremental builds up to
+    twice as fast. The feature is experimental and currently
+    only supported when using a compiled version of mypy.
+    Use --fixed-format-cache to enable the new format, or
+    fixed_format_cache = True in a configuration file.
+  - Flexible Variable Definitions: Update
+    Mypy 1.16.0 introduced --allow-redefinition-new, which allows
+    redefining variables with different types, and inferring
+    union types for variables from multiple assignments. The
+    feature is now documented in the --help output, but the
+    feature is still experimental.
+  - Inferred Type for Bare ClassVar
+    A ClassVar without an explicit type annotation now causes the
+    type of the variable to be inferred from the initializer:
+        from typing import ClassVar
+
+        class Item:
+            # Type of 'next_id' is now 'int' (it was 'Any')
+            next_id: ClassVar = 1
+
+            ...
+  - Disjoint Base Classes (@disjoint_base, PEP 800)
+    Mypy now understands disjoint bases (PEP 800): it recognizes
+    the @disjoint_base decorator, and rejects class definitions
+    that combine mutually incompatible base classes, and takes
+    advantage of the fact that such classes cannot exist in
+    reachability and narrowing logic.
+  - Miscellaneous improvements
+  - Experimental Free-threading Support for Mypyc
+  - Mypyc: Support __new__
+  - Mypyc: Faster Generators and Async Functions
+  - Miscellaneous Mypyc Improvements
+  - Stubtest Improvements
+  - Documentation Updates
+  - Other Fixes and Improvements
+  - Typeshed Updates
+
+-------------------------------------------------------------------
+Tue Sep  9 07:51:36 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.17.1:
+  * Prevent a crash when InitVar is redefined with a method in a
+    subclass
+  * Fix "ignored exception in hasattr" in dmypy
+  * Retain None as constraints bottom if no bottoms were provided
+
+-------------------------------------------------------------------
 Tue Aug 12 12:59:14 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Fix the libalternatives condition
@@ -644,7 +707,7 @@ Thu Apr  4 08:32:32 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Wed Mar 27 15:59:56 UTC 2024 - ecsos <ecsos@opensuse.org>
 
-- Disable self_check under %check in Leap because it does not work 
+- Disable self_check under %check in Leap because it does not work
   and prevent package building.
 
 -------------------------------------------------------------------

@@ -574,4 +574,41 @@ reveal_type(Context[MyBot]().bot)
     <comment>- Fix the libalternatives condition</comment>
     <requestid>1299074</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>848c3e943505355081dd9c5d2bff1c35</srcmd5>
+    <version>1.18.1</version>
+    <time>1757868569</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.18.1:
+  (full release notes on
+  https://mypy-lang.blogspot.com/2025/09/mypy-1181-released.html,
+  these are just headlines)
+  - Mypy Performance Improvements
+    Mypy 1.18.1 includes numerous performance improvements,
+    resulting in about 40% speedup compared to 1.17 when type
+    checking mypy itself. In extreme cases, the improvement
+    can be 10x or higher. The list below is an overview of
+    the various mypy optimizations. Many mypyc improvements
+    (discussed in a separate section below) also improve
+    performance.
+  - Fixed‑Format Cache (Experimental)
+    Mypy now supports a new cache format used for faster
+    incremental builds. It makes incremental builds up to
+    twice as fast. The feature is experimental and currently
+    only supported when using a compiled version of mypy.
+    Use --fixed-format-cache to enable the new format, or
+    fixed_format_cache = True in a configuration file.
+  - Flexible Variable Definitions: Update
+    Mypy 1.16.0 introduced --allow-redefinition-new, which allows
+    redefining variables with different types, and inferring
+    union types for variables from multiple assignments. The
+    feature is now documented in the --help output, but the
+    feature is still experimental.
+  - Inferred Type for Bare ClassVar
+    A ClassVar without an explicit type annotation now causes the
+    type of the variable to be inferred from the initializer:
+        from typing import ClassVar
+        class Item:</comment>
+    <requestid>1304339</requestid>
+  </revision>
 </revisionlist>
