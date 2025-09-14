@@ -102,7 +102,9 @@ rm -r %{buildroot}%{_kf6_plasmadir}/plasmoids/org.kde.graphsplasmoid/
 %doc %lang(en) %{_kf6_htmldir}/en/kalgebra
 %{_kf6_applicationsdir}/org.kde.kalgebra.desktop
 %{_kf6_appstreamdir}/org.kde.kalgebra.appdata.xml
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/org.kde.graphsplasmoid.appdata.xml
+%endif
 %{_kf6_bindir}/calgebra
 %{_kf6_bindir}/kalgebra
 %{_kf6_iconsdir}/hicolor/*/apps/kalgebra.*
