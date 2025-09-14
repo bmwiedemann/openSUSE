@@ -164,7 +164,9 @@ This package contains the Oxygen's KWin decoration.
 %files style
 %license LICENSES/*
 %dir %{_kf6_sharedir}/color-schemes/
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/org.kde.oxygen.appdata.xml
+%endif
 %{_kf6_bindir}/oxygen-demo6
 %{_kf6_bindir}/oxygen-settings6
 %{_kf6_iconsdir}/hicolor/*/apps/oxygen-settings.png
