@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 12 10:26:50 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.16:
+  + This release adds the following features:
+    - Add a 'search' feature to fwupdtool and fwupdmgr
+  + This release fixes the following bugs:
+    - Fix missing release locations when loading from artifact
+    - Fix remaining issues to make updates on FreeBSD work
+
+
+-------------------------------------------------------------------
 Wed Sep 10 17:10:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.0.15:
