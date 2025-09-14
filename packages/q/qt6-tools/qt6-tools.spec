@@ -45,6 +45,11 @@ Source13:       org.qt.assistant6.desktop
 # The 48x48 icon was removed from qttools
 Source14:       linguist6.png
 Source99:       qt6-tools-rpmlintrc
+# PATCH-FIX-OPENSUSE -- LLVM 21 compat
+Patch0:         0001-configure-Move-QDoc-clang-versions-into-module.patch
+Patch1:         0001-QDoc-Adapt-clang-AST-QualTypeNames.h-to-breaking-cha.patch
+Patch2:         0001-QDoc-Bump-minimum-Clang-version-to-17.0.6.patch
+Patch3:         0001-lupdate-remove-clang-parser.patch
 # clang-devel in Leap 15 points to clang7...
 %if 0%{?suse_version} == 1500
 # Leap 15.6 has llvm 19 since 2025-02-12, we need to use it to avoid doc build issues

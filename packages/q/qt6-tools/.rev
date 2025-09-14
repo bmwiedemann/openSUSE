@@ -411,4 +411,12 @@
     <comment>Update to 6.9.2 (forwarded request 1301562 from krop)</comment>
     <requestid>1301730</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>2f395fdca4c401abb4f2d61a7b15d630</srcmd5>
+    <version>6.9.2</version>
+    <time>1757868587</time>
+    <user>anag_factory</user>
+    <comment>add clang 21 compat changes</comment>
+    <requestid>1304326</requestid>
+  </revision>
 </revisionlist>

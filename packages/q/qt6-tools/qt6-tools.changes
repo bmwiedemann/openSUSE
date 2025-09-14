@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 12 07:15:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes for clang 21 compat
+  * 0001-configure-Move-QDoc-clang-versions-into-module.patch
+  * 0001-QDoc-Adapt-clang-AST-QualTypeNames.h-to-breaking-cha.patch
+  * 0001-QDoc-Bump-minimum-Clang-version-to-17.0.6.patch
+  * 0001-lupdate-remove-clang-parser.patch
+
+-------------------------------------------------------------------
 Wed Aug 27 07:15:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.9.2:

@@ -1,0 +1,90 @@
+From e2f79a321ec44a57451e2d1cfff8b5313e09a5cf Mon Sep 17 00:00:00 2001
+From: Paul Wicking <paul.wicking@qt.io>
+Date: Thu, 31 Jul 2025 21:54:41 +0200
+Subject: [PATCH] configure: Move QDoc clang versions into module
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Previously, QDoc’s minimum and explicitly supported Clang versions were
+defined in `.cmake.conf`, mixing tool-specific policy with repo-global
+settings. These values also lived far from the QDoc configure logic and
+messages that consume them.
+
+This made updates easy to miss during QDoc changes and forced edits to
+the top-level file for QDoc-only adjustments, adding noise to reviews.
+
+This change introduces `src/qdoc/cmake/QDocConfiguration.cmake` and
+moves QDOC_MINIMUM_CLANG_VERSION and QDOC_SUPPORTED_CLANG_VERSIONS
+there. `configure.cmake` now includes this module alongside
+`QDocConfigureMessages.cmake`, and the top-level definitions are
+removed.
+
+Behavior is unchanged. The configuration is now localized with the rest
+of QDoc’s CMake logic, improving discoverability and making future edits
+safer.
+
+Task-number: QTBUG-137569
+Pick-to: 6.8
+Change-Id: I3ff0f8f1a9f19064b039c860adf6cae2e94aed47
+Reviewed-by: Joerg Bornemann <joerg.bornemann@qt.io>
+(cherry picked from commit 2bf422652f9e305d360d691c86e38bb14e4ed0ef)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+(cherry picked from commit 91c40ac86f5d3bf4c827370c0ee9abea11e95318)
+---
+ .cmake.conf                            |  4 ----
+ configure.cmake                        |  3 +++
+ src/qdoc/cmake/QDocConfiguration.cmake | 13 +++++++++++++
+ 3 files changed, 16 insertions(+), 4 deletions(-)
+ create mode 100644 src/qdoc/cmake/QDocConfiguration.cmake
+
+diff --git a/.cmake.conf b/.cmake.conf
+index ce79f79..9288c11 100644
+--- a/.cmake.conf
++++ b/.cmake.conf
+@@ -1,9 +1,5 @@
+ set(QT_REPO_MODULE_VERSION "6.9.2")
+ set(QT_REPO_MODULE_PRERELEASE_VERSION_SEGMENT "alpha1")
+ set(QT_EXTRA_INTERNAL_TARGET_DEFINES "QT_NO_AS_CONST=1")
+-set(QDOC_MINIMUM_CLANG_VERSION "17")
+-set(QDOC_SUPPORTED_CLANG_VERSIONS
+-    "20.1" "19.1" "18.1" "17.0"
+-)
+ list(APPEND QT_EXTRA_INTERNAL_TARGET_DEFINES "QT_NO_FOREACH=1")
+ list(APPEND QT_EXTRA_INTERNAL_TARGET_DEFINES "QT_NO_CONTEXTLESS_CONNECT=1")
+diff --git a/configure.cmake b/configure.cmake
+index 798078a..c90348c 100644
+--- a/configure.cmake
++++ b/configure.cmake
+@@ -1,6 +1,9 @@
+ # Copyright (C) 2022 The Qt Company Ltd.
+ # SPDX-License-Identifier: BSD-3-Clause
+ 
++# Include QDoc-specific configuration early (needed for feature definitions)
++include(${CMAKE_CURRENT_LIST_DIR}/src/qdoc/cmake/QDocConfiguration.cmake)
++
+ #### Tests
+ 
+ qt_find_package(WrapLibClang 8 PROVIDED_TARGETS WrapLibClang::WrapLibClang)
+diff --git a/src/qdoc/cmake/QDocConfiguration.cmake b/src/qdoc/cmake/QDocConfiguration.cmake
+new file mode 100644
+index 0000000..b4ea6d5
+--- /dev/null
++++ b/src/qdoc/cmake/QDocConfiguration.cmake
+@@ -0,0 +1,13 @@
++# Copyright (C) 2025 The Qt Company Ltd.
++# SPDX-License-Identifier: BSD-3-Clause
++
++# QDoc-specific configuration variables
++
++# Minimum supported Clang version for QDoc
++set(QDOC_MINIMUM_CLANG_VERSION "17")
++
++# List of explicitly supported Clang versions for QDoc
++set(QDOC_SUPPORTED_CLANG_VERSIONS
++    "20.1" "19.1" "18.1" "17.0"
++)
++
+-- 
+2.51.0
+

@@ -1,0 +1,30 @@
+From 02f94ce224260143fc11aa03f465f81b768d952f Mon Sep 17 00:00:00 2001
+From: Paul Wicking <paul.wicking@qt.io>
+Date: Tue, 19 Aug 2025 16:02:40 +0200
+Subject: [PATCH] QDoc: Bump minimum Clang version to 17.0.6
+
+17.0.6 is the version we build with and test against.
+
+Task-number: QTBUG-139199
+Pick-to: 6.10
+Change-Id: I43bd6f91e30d77b12e9fbb25c6270147e54bf41b
+Reviewed-by: David Boddie <david.boddie@qt.io>
+---
+ src/qdoc/cmake/QDocConfiguration.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/qdoc/cmake/QDocConfiguration.cmake b/src/qdoc/cmake/QDocConfiguration.cmake
+index 8f627b1..aceeb92 100644
+--- a/src/qdoc/cmake/QDocConfiguration.cmake
++++ b/src/qdoc/cmake/QDocConfiguration.cmake
+@@ -8,6 +8,6 @@ set(QDOC_MINIMUM_CLANG_VERSION "17")
+ 
+ # List of explicitly supported Clang versions for QDoc
+ set(QDOC_SUPPORTED_CLANG_VERSIONS
+-    "21.1" "20.1" "19.1" "18.1" "17.0"
++    "21.1" "20.1" "19.1" "18.1" "17.0.6"
+ )
+ 
+-- 
+2.51.0
+
