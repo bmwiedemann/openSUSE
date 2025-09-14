@@ -108,4 +108,13 @@
     <comment>- Rename &quot;openSUSE Aeon&quot; to &quot;Aeon&quot; in zenity titles to follow Aeon's Brand Guidelines.</comment>
     <requestid>1285124</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>a80f8ae6398bbc2c6a3b6825d3860887</srcmd5>
+    <version>20231005</version>
+    <time>1757868619</time>
+    <user>anag_factory</user>
+    <comment>- Configure logind with zzz-aeon.conf to override gdm provided config 
+</comment>
+    <requestid>1304464</requestid>
+  </revision>
 </revisionlist>

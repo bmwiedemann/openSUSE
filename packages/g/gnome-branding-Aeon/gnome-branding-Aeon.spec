@@ -36,6 +36,7 @@ Source10:       wallpaper-branding-Aeon.xml
 Source11:       49-aeon.rules
 Source12:       aeon-mig-firstboot
 Source13:       vendor.conf
+Source14:       zzz-aeon.conf
 BuildArch:      noarch
 BuildRequires:  flatpak
 BuildRequires:  gio-branding-openSUSE
@@ -77,6 +78,7 @@ cp -a %{SOURCE10} wallpaper-branding-Aeon.xml
 cp -a %{SOURCE11} 49-aeon.rules
 cp -a %{SOURCE12} aeon-mig-firstboot
 cp -a %{SOURCE13} vendor.conf
+cp -a %{SOURCE14} zzz-aeon.conf
 
 %build
 
@@ -105,6 +107,8 @@ install -d %{buildroot}%{_datadir}/polkit-1/rules.d/
 install -m0444 49-aeon.rules %{buildroot}%{_datadir}/polkit-1/rules.d/49-aeon.rules
 install -d %{buildroot}%{_datadir}/gnome-initial-setup/
 install -m0644 vendor.conf %{buildroot}%{_datadir}/gnome-initial-setup/vendor.conf
+install -d %{buildroot}%{_prefix}/lib/systemd/logind.conf.d
+install -m0644 zzz-aeon.conf %{buildroot}%{_prefix}/lib/systemd/logind.conf.d/zzz-aeon.conf
 
 %pre
 %systemd_user_pre distrobox-upgrade-all.service
@@ -140,5 +144,7 @@ install -m0644 vendor.conf %{buildroot}%{_datadir}/gnome-initial-setup/vendor.co
 %{_datadir}/gnome-background-properties/wallpaper-branding-Aeon.xml
 %{_datadir}/polkit-1/rules.d/49-aeon.rules
 %{_datadir}/gnome-initial-setup/vendor.conf
+%dir %{_prefix}/lib/systemd/logind.conf.d
+%{_prefix}/lib/systemd/logind.conf.d/zzz-aeon.conf
 
 %changelog
