@@ -486,4 +486,36 @@ See e.g. editbox.c (forwarded request 150609 from babelworx)</comment>
   + update config.guess, config.sub</comment>
     <requestid>1178672</requestid>
   </revision>
+  <revision rev="44" vrev="13">
+    <srcmd5>0600d6e2c2dedd5d9bf7c108da21d984</srcmd5>
+    <version>1.3</version>
+    <time>1757868566</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.3-20250817:
+  + amend macros for temporarily disabling --no-tags in buildlist and
+    treeview to allow --no-items (report/testcase by Maksym Telychko).
+  + configure script fixes for compiler warnings
+  + modify dialog-config.in to allow for include-subdirectory.
+  + update configure script macros for changes made with Cdk.
+  + use $ LIB_ROOTNAME, e.g., set by --with-libname, in generating
+    *-config and &quot;.pc&quot; files
+  + further improvements to matching output from *-config and &quot;.pc&quot;
+  + improve gen-pkgconfig.in to mark the screen library, e.g., ncurses,
+    as &quot;Required&quot; and filter the cflags/libs from required packages out
+    of the &quot;.pc&quot; file, because pkg-config will add those automatically.
+  + fix some gcc15 strict compiler warnings
+  + configure script fixes for compiler warnings
+  + update config.guess, config.sub
+  + modify configure script to ease deprecation of libtool-bin package
+    (Debian #1071581).
+  + update dialog.map, dialog.sym for 2023/10/02 changes.
+  + improve dialog-config.in,
+    + suppressing several special cases of linker options, and
+    + adding support for --cflags-only-I, --cflags-only-other
+  + fix a few cppcheck warnings
+  + improvements to NLS configuration.
+  + add configure check for PIC vs PIE, needed for linking to libraries
+    which lack pkg-config scripts to specify LDFLAGS.</comment>
+    <requestid>1304325</requestid>
+  </revision>
 </revisionlist>

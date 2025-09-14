@@ -2,14 +2,14 @@ Index: dialog-1.3-20230209/util.c
 ===================================================================
 --- dialog-1.3-20230209.orig/util.c
 +++ dialog-1.3-20230209/util.c
-@@ -2406,8 +2406,10 @@ dlg_move_window(WINDOW *win, int height,
+@@ -2438,8 +2438,10 @@ dlg_move_window(WINDOW *win, int height,
  #ifdef HAVE_COLOR
- 	    if (p->shadow != 0) {
+ 	    if (p->shadow != NULL) {
  		if (dialog_state.use_shadow) {
 +		    (void) wresize(p->shadow, height, width);
  		    (void) mvwin(p->shadow, y + SHADOW_ROWS, x + SHADOW_COLS);
  		} else {
 +		    delwin(p->shadow);
- 		    p->shadow = 0;
+ 		    p->shadow = NULL;
  		}
  	    }
