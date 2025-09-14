@@ -1,0 +1,13 @@
+diff --git a/compiler-rt/lib/builtins/CMakeLists.txt b/compiler-rt/lib/builtins/CMakeLists.txt
+index 1dadb6a810ef..956ff3d1b006 100644
+--- a/compiler-rt/lib/builtins/CMakeLists.txt
++++ b/compiler-rt/lib/builtins/CMakeLists.txt
+@@ -64,7 +64,7 @@ include(CMakePushCheckState)
+ option(COMPILER_RT_BUILTINS_HIDE_SYMBOLS
+   "Do not export any symbols from the static library." ON)
+ 
+-include_directories(../../../third-party/siphash/include)
++include_directories(${CMAKE_SOURCE_DIR}/../third-party/siphash/include)
+ 
+ # TODO: Need to add a mechanism for logging errors when builtin source files are
+ # added to a sub-directory and not this CMakeLists file.

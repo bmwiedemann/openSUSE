@@ -1,0 +1,31 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c0ab708f2c80ebd1c74131b7d3a7388a</srcmd5>
+    <version>21.1.0</version>
+    <time>1757868579</time>
+    <user>anag_factory</user>
+    <comment>- Initial release based on version 21.1.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/21.1.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/21.1.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/21.1.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/21.1.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/21.1.0/tools/lld/docs/ReleaseNotes.html
+  * The LLVM tool llvm-ml is now also available as llvm-ml64.
+  * Clang tools amdgpu-arch and nvptx-arch have been unified into a
+    single tool offload-arch.
+- Require libxml2 not only for lldb, because it is (optionally)
+  also used in LLVM and Clang.
+- Rebase patches:
+  * assume-opensuse.patch
+  * link-clang-shared.patch
+  * llvm-do-not-install-static-libraries.patch
+  * llvm-fix-cov-test-i586.patch
+  * llvm-normally-versioned-libllvm.patch
+- Remove obsolete patches:
+  * reproducible.patch
+- Add compiler-rt-fix-relative-path.patch to fix relative path in
+  different directory layout.</comment>
+    <requestid>1303269</requestid>
+  </revision>
+</revisionlist>

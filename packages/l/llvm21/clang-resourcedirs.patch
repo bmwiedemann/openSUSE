@@ -1,0 +1,13 @@
+Index: clang-20.1.0.src.src/lib/Driver/Driver.cpp
+===================================================================
+--- clang-20.1.0.src.src.orig/lib/Driver/Driver.cpp
++++ clang-20.1.0.src.src/lib/Driver/Driver.cpp
+@@ -176,7 +176,7 @@
+ 
+   // Dir is bin/ or lib/, depending on where BinaryPath is.
+   StringRef Dir = llvm::sys::path::parent_path(BinaryPath);
+-  SmallString<128> P(Dir);
++  SmallString<128> P((Dir != "") ? Dir : "/usr/bin/");
+ 
+   StringRef ConfiguredResourceDir(CLANG_RESOURCE_DIR);
+   if (!ConfiguredResourceDir.empty()) {

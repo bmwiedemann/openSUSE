@@ -1,0 +1,19 @@
+diff --git a/llvm/CMakeLists.txt b/llvm/CMakeLists.txt
+index 04d4cf2..b698c27 100644
+--- a/llvm/CMakeLists.txt
++++ b/llvm/CMakeLists.txt
+@@ -1188,12 +1188,12 @@ foreach( binding ${LLVM_BINDINGS_LIST} )
+   endif()
+ endforeach()
+ 
+-add_subdirectory(projects)
+-
+ if( LLVM_INCLUDE_TOOLS )
+   add_subdirectory(tools)
+ endif()
+ 
++add_subdirectory(projects)
++
+ if( LLVM_INCLUDE_RUNTIMES )
+   add_subdirectory(runtimes)
+ endif()

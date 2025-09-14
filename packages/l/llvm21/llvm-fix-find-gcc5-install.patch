@@ -1,0 +1,13 @@
+Index: clang-18.1.0rc1.src/lib/Driver/ToolChains/Gnu.cpp
+===================================================================
+--- clang-18.1.0rc1.src.orig/lib/Driver/ToolChains/Gnu.cpp
++++ clang-18.1.0rc1.src/lib/Driver/ToolChains/Gnu.cpp
+@@ -2179,7 +2179,7 @@ Generic_GCC::GCCVersion Generic_GCC::GCC
+     return GoodVersion;
+   }
+ 
+-  if (!TryParseNumber(MinorStr, GoodVersion.Minor))
++  if (!MinorStr.str().empty() && !TryParseNumber(MinorStr, GoodVersion.Minor))
+     return BadVersion;
+   GoodVersion.MinorStr = MinorStr;
+ 
