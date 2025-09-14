@@ -1,7 +1,7 @@
 #
 # spec file for package qatlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qatlib
-Version:        24.09.0
+Version:        25.08.0
 Release:        0
 Summary:        Intel QuickAssist Technology Library
 License:        BSD-3-Clause
@@ -25,6 +25,7 @@ Group:          Hardware/Other
 URL:            https://github.com/intel/qatlib
 Source:         https://github.com/intel/qatlib/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  autoconf
+BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  nasm
@@ -84,6 +85,7 @@ rm -f %{buildroot}%{_libdir}/*.so.[0-9]
 %files
 %license LICENSE
 %doc README.md
+%{_mandir}/man7/cpa_sample_code.7*
 %{_mandir}/man8/qat*
 %{_unitdir}/qat*
 %{_sbindir}/qat*
