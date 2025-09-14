@@ -15,4 +15,15 @@
     <comment>Update to 0.5.1</comment>
     <requestid>1248035</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>05a821761210e7dd1b47f225f4b3e76a</srcmd5>
+    <version>0.5.2</version>
+    <time>1757868523</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.5.2:
+  * Leave choosing the MSVC runtime up to the C/C++ CMake code
+    (https://github.com/corrosion-rs/corrosion/pull/573,
+    https://github.com/corrosion-rs/corrosion/pull/566)</comment>
+    <requestid>1304222</requestid>
+  </revision>
 </revisionlist>

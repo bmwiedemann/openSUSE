@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 12 07:10:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.2:
+  * Leave choosing the MSVC runtime up to the C/C++ CMake code
+    (https://github.com/corrosion-rs/corrosion/pull/573,
+    https://github.com/corrosion-rs/corrosion/pull/566)
+
+-------------------------------------------------------------------
 Mon Feb 24 08:55:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.5.1
