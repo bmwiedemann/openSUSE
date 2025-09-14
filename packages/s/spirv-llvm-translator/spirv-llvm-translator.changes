@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Sep  7 21:55:38 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 21.1.0.
+  * Compatibility with LLVM 21.
+  * New extensions:
+    - SPV_KHR_bfloat16 extension
+    - SPV_INTEL_function_variants
+    - SPV_INTEL_int4
+    - SPV_INTEL_ternary_bitwise_function
+  * Deprecate extensions:
+    - SPV_INTEL_hw_thread_queries
+    - SPV_INTEL_token_type
+  * Remove extensions:
+    - SPV_INTEL_complex_float_mul_div
+    - SPV_INTEL_fast_composite
+    - SPV_INTEL_tensor_float32_rounding
+  * SPIR-V 1.6:
+    - Allow UniformDecoration capability for Uniform.
+    - Allow UniformDecoration capability for UniformId.
+    - Support reverse translation of FPFastMathMode decoration for
+      `fcmp` instruction.
+- Add Add-support-for-SPV_INTEL_function_variants.patch to revert
+  change temporarily because the corresponding change in spirv-
+  headers is not released yet.
+
+-------------------------------------------------------------------
 Sun Aug  3 19:36:09 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 20.1.5.
