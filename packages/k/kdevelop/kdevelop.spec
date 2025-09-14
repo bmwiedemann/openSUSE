@@ -209,7 +209,9 @@ done
 %{_includedir}/kdevelop/
 %{_kf6_applicationsdir}/org.kde.kdevelop*.desktop
 %{_kf6_appstreamdir}/org.kde.kdevelop.appdata.xml
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/org.kde.kdevelopsessions.appdata.xml
+%endif
 %{_kf6_bindir}/kdev_includepathsconverter
 %{_kf6_bindir}/kdevelop*
 %{_kf6_cmakedir}/KDevelop/
