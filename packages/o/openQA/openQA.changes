@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 12 19:18:15 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1757696527.61d51d58:
+  * Avoid partitioning in raid0 device
+  * Avoid "Server returned …" error if there is an actual error message
+  * Highlight invalid/problematic group config fields in UI when applying
+  * Improve validation of cleanup configuration
+  * AMQP: include list of failed modules in job.done messages
+
+-------------------------------------------------------------------
 Thu Sep 11 15:13:17 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1757597587.61c22a78:
