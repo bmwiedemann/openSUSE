@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Fri Sep 12 10:33:21 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.1754
+ * patch 9.1.1754: :helptags doesn't skip examples with syntax
+ * runtime(doc): improve 'complete' option description
+ * runtime(netrw): only keep cursor position in tree listing mode
+ * runtime(doc): use a single pattern in :h 'incsearch' example
+ * patch 9.1.1753: defaults: 'diffopt' option value can be improved
+ * runtime(vim): Update indent script for line continuation with lambda
+ * runtime(python): Update syntax, fix pythonEllipsis pattern
+ * runtime(doc): Update autocmd examples for command line autocompletion
+ * runtime(doc): improve docs related to 'autocomplete'
+ * patch 9.1.1752: tests: need another test for v9.1.1750 behaviour
+ * patch 9.1.1751: potential buffer-overflow in find_pattern_in_path()
+ * patch 9.1.1750: completion: preinserted text highlighed using ComplMatchIns
+ * patch 9.1.1749: leaking memory in cs_find_common()
+ * patch 9.1.1748: macOS: Default scheduler priority too low
+ * patch 9.1.1747: completion: redo (.) broken with preinsert and autocompletion
+ * runtime(doc): mention 'findfunc' at :h :find
+ * patch 9.1.1746: Missing Null ptr check in cs_find_common()
+ * runtime(doc): mention hl-PreInsert in version9.txt
+ * patch 9.1.1745: tabpanel: not properly redraw after wildmenu
+ * runtime(python): highlight ellipsis literals
+ * runtime(doc): Improve doc for cmdline-autocompletion
+ * patch 9.1.1744: tests: Test_skip_wildtrigger_hist_navigation() may fail
+ * patch 9.1.1743: Haiku: no full-screen support
+ * runtime(hare): update for Hare 0.25.2
+ * runtime(python): Update syntax file, fix f-string float highlighting
+ * patch 9.1.1742: complete: preinsert does not work well with preinsert
+ * patch 9.1.1741: Regression with kitty protocol and trailing byte "u"
+ * patch 9.1.1740: Memory leak with wildmode=longest,full and wildoptions=pum
+ * runtime(m4): Remove m4Type and leftover m4Function in syntax script
+ * runtime(doc): Tweak spacing in develop.txt
+ * patch 9.1.1739: Matches may be listed twice with wildmode=longest,list
+ * patch 9.1.1738: cmdline-autocompletion breaks history navigation
+ * patch 9.1.1737: Patch v9.1.1714 introduce a regression for wildmenu
+ * runtime(nu): Add new Nushell runtime files
+ * runtime(m4): Remove m4Function
+ * patch 9.1.1736: Cannot detect <F3> using kitty protocol
+ * patch 9.1.1735: Cygwin Makefile still checks for Win XP version
+ * runtime(colorresp): use correct load guard pattern
+ * runtime(ada): mark as unmaintained, fix a few issues with the ftplugin
+ * runtime(hamster): do not globally set ignorecase
+ * runtime(m4): Improve comments, distinguish them from #-lines
+ * patch 9.1.1734: Memory leak when allocating match fails
+ * patch 9.1.1733: tests: failure when remote_server() fails
+ * runtime(python): Do not match contained identifiers as pythonType
+ * runtime(netrw): Ensure netrw#fs#Dirname() always returns a trailing slash
+ * runtime(python): add syntax support inside f-strings
+ * patch 9.1.1732: filetype: .inc file detection can be improved
+ * patch 9.1.1731: Not using const qualifier for opchars
+ * runtime(doc): Add a Development policy
+ * runtime(doc): Tweak documentation in vi_diff.txt
+ * runtime(m4): update syntax script
+ * runtime(doc): Remove dead link from todo.txt
+ * runtime(doc): quote partial urls with a backtick
+ * runtime(vimgoto): Implement jumping to autoloaded functions
+ * patch 9.1.1730: filetype: vivado journal/log files are not recognized
+ * runtime(doc): remove documentation for t_Ms terminal code
+ * runtime(keymap): Add transliteration (buckwalter) arabic keymap
+ * patch 9.1.1729: CI is not run with clang 21
+ * patch 9.1.1728: termdebug: cannot evaluate visual selected expression
+ * patch 9.1.1727: Nextstep support still included
+ * patch 9.1.1726: Patch v9.1.1725 causes problems
+ * runtime(doc): document use of proto files in develop.txt
+ * patch 9.1.1725: Wayland code can be improved
+ * runtime(doc): add missing da1 value to TermResponseAll doc
+ * patch 9.1.1724: Compiler warning about ununitialized variable in ex_docmd.
+ * patch 9.1.1723: Missing ifdefs
+ * patch 9.1.1722: compiler may optimize away clearing of crypt key
+ * patch 9.1.1721: Defining a global gettimeofday() function
+ * patch 9.1.1720: using gettimeofday() for parsing OSC responses
+ * patch 9.1.1719: socket server code can be improved
+ * patch 9.1.1718: filetype: kubectl config file is not recognized
+ * patch 9.1.1717: filetype: AWS cli alias file is not recognized
+ * runtime(java): Dismiss "g:markdown_fenced_languages" for Java buffers
+ * runtime(vim): Update base syntax, fix Vim9 :for loop variable highlighting
+ * patch 9.1.1716: wrong indent in win_line()
+ * patch 9.1.1715: Some functions need to be re-ordered
+ * patch 9.1.1714: completion: wildmode=longest:full selects wrong item
+ * patch 9.1.1713: filetype: fvwm2m4 files are no longer detected
+ * patch 9.1.1712: Screen not redrawn properly on t_RB response
+ * patch 9.1.1711: Missing type cast in clipboard.c
+ * runtime(doc): Add [range] spec to :help :tcl and :help :tclfile
+ * runtime(doc): Tweak documentation style
+ * patch 9.1.1710: Compile warnings in clipboard.c
+ * patch 9.1.1709: filetype: kyaml files are not recognized
+ * runtime(vim): Update base syntax, match :defer command argument
+ * patch 9.1.1708: tests: various tests can be improved
+ * runtime(astro): catch json_decode() error when parsing tsconfig.json
+ * patch 9.1.1707: diff.pro contains #ifdefs
+
+-------------------------------------------------------------------
 Fri Aug 29 11:16:52 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.1.1706

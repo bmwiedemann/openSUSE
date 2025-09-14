@@ -8140,4 +8140,41 @@ always built-in because vim has direct perl dependencies anyway.
  * patch 9.1.1697: tests: no test for aclocal.m4</comment>
     <requestid>1301941</requestid>
   </revision>
+  <revision rev="390" vrev="1">
+    <srcmd5>0552dc43608deb71578766bc92871719</srcmd5>
+    <version>9.1.1754</version>
+    <time>1757868554</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.1.1754
+ * patch 9.1.1754: :helptags doesn't skip examples with syntax
+ * runtime(doc): improve 'complete' option description
+ * runtime(netrw): only keep cursor position in tree listing mode
+ * runtime(doc): use a single pattern in :h 'incsearch' example
+ * patch 9.1.1753: defaults: 'diffopt' option value can be improved
+ * runtime(vim): Update indent script for line continuation with lambda
+ * runtime(python): Update syntax, fix pythonEllipsis pattern
+ * runtime(doc): Update autocmd examples for command line autocompletion
+ * runtime(doc): improve docs related to 'autocomplete'
+ * patch 9.1.1752: tests: need another test for v9.1.1750 behaviour
+ * patch 9.1.1751: potential buffer-overflow in find_pattern_in_path()
+ * patch 9.1.1750: completion: preinserted text highlighed using ComplMatchIns
+ * patch 9.1.1749: leaking memory in cs_find_common()
+ * patch 9.1.1748: macOS: Default scheduler priority too low
+ * patch 9.1.1747: completion: redo (.) broken with preinsert and autocompletion
+ * runtime(doc): mention 'findfunc' at :h :find
+ * patch 9.1.1746: Missing Null ptr check in cs_find_common()
+ * runtime(doc): mention hl-PreInsert in version9.txt
+ * patch 9.1.1745: tabpanel: not properly redraw after wildmenu
+ * runtime(python): highlight ellipsis literals
+ * runtime(doc): Improve doc for cmdline-autocompletion
+ * patch 9.1.1744: tests: Test_skip_wildtrigger_hist_navigation() may fail
+ * patch 9.1.1743: Haiku: no full-screen support
+ * runtime(hare): update for Hare 0.25.2
+ * runtime(python): Update syntax file, fix f-string float highlighting
+ * patch 9.1.1742: complete: preinsert does not work well with preinsert
+ * patch 9.1.1741: Regression with kitty protocol and trailing byte &quot;u&quot;
+ * patch 9.1.1740: Memory leak with wildmode=longest,full and wildoptions=pum
+ * runtime(m4): Remove m4Type and leftover m4Function in syntax script</comment>
+    <requestid>1304288</requestid>
+  </revision>
 </revisionlist>
