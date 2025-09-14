@@ -1,14 +1,14 @@
 # Workaround as per https://github.com/WebAssembly/wasi-libc/issues/156
 diff --git a/Makefile b/Makefile
-index 00dd308..fa6a634 100644
+index 26bdcfa..216a251 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -814,7 +814,7 @@ finish: check-symbols
+@@ -879,7 +879,7 @@ finish: check-symbols
  endif
  endif
  
 -install: finish
 +install:
  	mkdir -p "$(INSTALL_DIR)"
- 	cp -r "$(SYSROOT)/lib" "$(SYSROOT)/share" "$(SYSROOT)/include" "$(INSTALL_DIR)"
+ 	cp -p -r "$(SYSROOT)/lib" "$(SYSROOT)/share" "$(SYSROOT)/include" "$(INSTALL_DIR)"
  

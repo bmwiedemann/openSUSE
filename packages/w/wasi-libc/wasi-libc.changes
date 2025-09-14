@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep  9 21:05:37 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version (wasi-sdk-)27.
+  * Update to musl 1.2.5.
+  * Compatibility with LLVM 20 & 21.
+  * Optional SIMD for memchr, strchrnul, strlen.
+  * Opt-in busywait mode for futexes.
+  * Preserve file timestamps when copying files in the install
+    target.
+  * Add services database and implement getservbyname/getservbyport
+    functions.
+  * Refactor stub pthread library and enable unconditionally.
+- Rebase workaround-broken-makefile.patch.
+- Drop obsolete ignore-intc-macros.patch.
+
+-------------------------------------------------------------------
 Wed Apr  9 21:18:51 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Require LLVM >= 14 for -mllvm -wasm-enable-sjlj.

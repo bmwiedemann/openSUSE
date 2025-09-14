@@ -63,4 +63,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1270148</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bc4d02d98d3e64050a420d4398402c52</srcmd5>
+    <version>27</version>
+    <time>1757868584</time>
+    <user>anag_factory</user>
+    <comment>- Update to version (wasi-sdk-)27.
+  * Update to musl 1.2.5.
+  * Compatibility with LLVM 20 &amp; 21.
+  * Optional SIMD for memchr, strchrnul, strlen.
+  * Opt-in busywait mode for futexes.
+  * Preserve file timestamps when copying files in the install
+    target.
+  * Add services database and implement getservbyname/getservbyport
+    functions.
+  * Refactor stub pthread library and enable unconditionally.
+- Rebase workaround-broken-makefile.patch.
+- Drop obsolete ignore-intc-macros.patch.
+</comment>
+    <requestid>1303415</requestid>
+  </revision>
 </revisionlist>
