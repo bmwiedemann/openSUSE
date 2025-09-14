@@ -1545,4 +1545,12 @@ touch version is still build but no desktop file installed. (forwarded request 2
     <comment>KDE release gear 25.08.1</comment>
     <requestid>1303983</requestid>
   </revision>
+  <revision rev="194" vrev="2">
+    <srcmd5>a04d6405f3f802a87de46d86f6ed7000</srcmd5>
+    <version>25.08.1</version>
+    <time>1757868645</time>
+    <user>anag_factory</user>
+    <comment>- Update file list after KDE Frameworks 6.18 release</comment>
+    <requestid>1304527</requestid>
+  </revision>
 </revisionlist>

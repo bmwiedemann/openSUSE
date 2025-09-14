@@ -204,8 +204,10 @@ export SUSE_ASNEEDED=0
 %{_kf6_appstreamdir}/org.kde.marble.appdata.xml
 %{_kf6_appstreamdir}/org.kde.marble.behaim.appdata.xml
 %{_kf6_appstreamdir}/org.kde.marble.maps.appdata.xml
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/org.kde.plasma.worldclock.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.worldmap.appdata.xml
+%endif
 %{_kf6_configkcfgdir}/marble.kcfg
 %{_kf6_debugdir}/marble.categories
 %{_kf6_iconsdir}/hicolor/*/apps/marble.*
