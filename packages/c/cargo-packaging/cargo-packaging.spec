@@ -1,7 +1,7 @@
 #
 # spec file for package cargo-packaging
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,9 @@ URL:            https://github.com/Firstyear/cargo-packaging
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Requires:       cargo-auditable
-Requires:       rust+cargo
+# IBS/OBS can't work out what version of rust to use if you rely on
+# the rust+cargo requires, so we have to ask for cargo directly.
+Requires:       cargo
 Requires:       zstd
 BuildRequires:  cargo
 BuildRequires:  zstd
