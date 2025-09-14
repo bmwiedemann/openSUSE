@@ -53,4 +53,12 @@
     <comment>Update to 0.10.0</comment>
     <requestid>1177140</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>70fdb6b979b58036248926eaf32c3239</srcmd5>
+    <version>0.10.0</version>
+    <time>1757868650</time>
+    <user>anag_factory</user>
+    <comment>- Update file list after KDE Frameworks 6.18 release</comment>
+    <requestid>1304536</requestid>
+  </revision>
 </revisionlist>

@@ -86,7 +86,9 @@ disturb you needlessly.
 %doc README.md
 %{_kf6_applicationsdir}/kcm_kup.desktop
 %{_kf6_appstreamdir}/org.kde.kup.appdata.xml
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/org.kde.kupapplet.appdata.xml
+%endif
 %{_kf6_bindir}/kup-daemon
 %{_kf6_bindir}/kup-filedigger
 %{_kf6_bindir}/kup-purger
