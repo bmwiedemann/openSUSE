@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 12 23:04:09 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1757691610.477636b:
+  * backend: Simplify json_fails collection with map
+  * backend: Simplify check_socket with early-return
+  * backend: Simplify do_capture by moving loop one level up
+  * backend: Extract method for do_capture loop body
+  * backend: Use more member variables in baseclass
+  * backend: Extract function 'find_needles_with_tags' in baseclass
+  * backend: Add missing text in svirt::die
+  * t: Fix typos in 29-backend-svirt test strings
+
+-------------------------------------------------------------------
 Thu Sep 11 10:27:38 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1757357708.90c68ad:
