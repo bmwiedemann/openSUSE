@@ -2,6 +2,7 @@ enable transactional-update.timer
 enable create-dirs-from-rpmdb.service
 enable health-checker.service
 disable purge-kernels.service
+disable getty@.service
 enable lastlog2-import.service
 enable zramswap.service
 enable x86_64_v3-transactional-update.service

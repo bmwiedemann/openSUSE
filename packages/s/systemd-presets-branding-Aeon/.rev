@@ -47,4 +47,13 @@
     <comment></comment>
     <requestid>1235589</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>761a4bddca842e2b3e5f75e36be7f749</srcmd5>
+    <version>20231005</version>
+    <time>1757868617</time>
+    <user>anag_factory</user>
+    <comment>- Disable getty@ service (managed by logind) 
+</comment>
+    <requestid>1304463</requestid>
+  </revision>
 </revisionlist>

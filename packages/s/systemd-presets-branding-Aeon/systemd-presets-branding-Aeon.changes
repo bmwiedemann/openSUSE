@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 12 11:39:59 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Disable getty@ service (managed by logind) 
+
+-------------------------------------------------------------------
 Fri Jan  3 15:23:33 UTC 2025 - Di Lorenzo <lauro@dilorenzo.one>
 
 - Enable switcheroo-control
