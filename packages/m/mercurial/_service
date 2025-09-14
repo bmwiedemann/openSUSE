@@ -1,0 +1,9 @@
+<services>
+  <service name="cargo_vendor" mode="manual">
+    <param name="src">mercurial-*.tar.gz</param>
+    <param name="custom-root">rust</param>
+    <param name="compression">zst</param>
+    <param name="update">true</param>
+    <param name="tag">rust</param>
+  </service>
+</services>

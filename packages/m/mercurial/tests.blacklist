@@ -1,2 +1,6 @@
-test-i18n.t
 test-status-color.t
+test-convert-svn-encoding.t
+# want internet access
+test-run-tests.t
+test-hghave.t
+

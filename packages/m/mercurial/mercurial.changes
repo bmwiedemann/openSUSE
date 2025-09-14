@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Sep 12 09:47:22 UTC 2025 - Sean Baggaley <sean@csnxs.uk>
+
+- Mercurial 7.1.1
+
+  A scheduled minor release containing only one series that is relevant for
+  these notes.
+  
+  The series fixes the way we detect non-critical repository corruption due to
+  issue6528 because, unfortunately, the fix for issue6528 was itself buggy.
+  
+  This means that if your repo had the on-the-fly rewrite option on
+  (which is the default), too many file revisions will have been marked
+  as having metadata, potentially costing you a bit of performance
+  because Mercurial will look for metadata that isn't there.
+  
+  **Your repository will behave completely fine by not doing anything**, and we
+  even have work well underway that changes how we flag file revisions
+  with metadata, removing the root of this problem entirely.
+  
+  If you want to fix this however, as with the original issue, this problem is
+  contagious across the wire so you need to first upgrade to 7.1.1 to get the
+  correct on-the-fly rewrite, and then run the `hg debug-repair-issue6528` command
+  to repair your clone. Consult the help of this command for more options.
+  
+   * issue6528: fix the detection of metadata from delta
+   * issue6528: avoid creating an intermediate bytes object
+   * issue6528: don't process snapshot as patches
+   * issue6528: fix fast path detection of file with metadata
+   * issue6528: don't report the revision as affect if it just has me
+   * issue6528: factor out the parent checking
+   * issue6528: stop trusting repository parent order claiming metadata ex
+   * issue6528: add --paranoid flag to various call
+   * issue6528: simplify code flow in _is_revision_affected_fast_inner
+   * issue6528: directly use delta_has_meta in _is_revision_affected_fast_inner
+
+-------------------------------------------------------------------
+Wed Sep 10 11:10:25 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Restored the ability to run tests at package build time. 'osc build --with tests' works now.
+  Locale related tests also work now by temporarily pointing it to the location of the locale
+  files in the build environment.
+  Tests are still disabled by default, because they take a very long time to run, and are quiet
+  when running, so OBS often times out the build.
+  The Rust tests also run clippy which causes errors with the current version.
+
+-------------------------------------------------------------------
+Sat Sep  6 13:16:16 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Package the Mercurial Rust features under the subpackage mercurial-rust.
+  This includes the Rust extensions for hg, and the standalone pure-Rust implementation, rhg.
+  These features are currently experimental and have caveats,
+  consult 'hg help rust' and the subpackage documentation before use.
+
+-------------------------------------------------------------------
 Mon Aug  4 20:11:10 UTC 2025 - Sean Baggaley <me@drinkybird.net>
 
 - Mercurial 7.1

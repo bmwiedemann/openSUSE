@@ -1919,4 +1919,14 @@ Regularly scheduled major release. (forwarded request 1186324 from develop7)</co
     <comment>- Mercurial 7.1</comment>
     <requestid>1297580</requestid>
   </revision>
+  <revision rev="217" vrev="1">
+    <srcmd5>e9c27aaacc10a4ccb022a3091fc1b0d2</srcmd5>
+    <version>7.1.1</version>
+    <time>1757868550</time>
+    <user>anag_factory</user>
+    <comment>- Mercurial 7.1.1
+- Package the experimental Rust extensions under the mercurial-rust subpackage
+- Fix up running tests via --with tests</comment>
+    <requestid>1304286</requestid>
+  </revision>
 </revisionlist>

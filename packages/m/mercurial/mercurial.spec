@@ -2,7 +2,6 @@
 # spec file for package mercurial
 #
 # Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,8 +30,14 @@
 %endif
 %endif
 
+%bcond_with tests
+
+%ifarch %{rust_arches}
+%bcond_without rust
+%endif
+
 Name:           mercurial
-Version:        7.1
+Version:        7.1.1
 Release:        0
 Summary:        Scalable Distributed SCM
 License:        GPL-2.0-or-later
@@ -61,16 +66,15 @@ Requires:       openssl-certs
 %else
 Requires:       ca-certificates
 %endif
-%if 0%{?with_tests}
+%if %{with tests}
 Source90:       tests.blacklist
 BuildRequires:  %{python_module Pygments}
-BuildRequires:  bzr
+BuildRequires:  breezy
 BuildRequires:  git
 BuildRequires:  gpg
 BuildRequires:  ncurses-devel
 BuildRequires:  subversion-python
 BuildRequires:  unzip
-#BuildRequires:  python-pyflakes
 %endif
 
 %description
@@ -78,6 +82,34 @@ Mercurial is a fast, lightweight source control management system
 designed for efficient handling of very large distributed projects.
 
 %lang_package
+
+%if %{with rust}
+%package rust
+Summary:        Rust extensions for Mercurial
+Requires:       %{name} = %{version}
+BuildRequires:  cargo
+BuildRequires:  cargo-packaging
+Source80:       vendor-rust.tar.zst
+
+%description rust
+Mercurial is a fast, lightweight source control management system
+designed for efficient handling of very large distributed projects.
+
+This package contains Rust-based features for Mercurial:
+- hg-core (and hg-pyo3): implementation of some
+  functionality of mercurial in Rust, e.g. ancestry computations in
+  revision graphs, status or pull discovery.
+- rhg: a pure Rust implementation of Mercurial, with a fallback mechanism for
+  unsupported invocations. It reuses the logic `hg-core` but
+  completely forgoes interaction with Python.
+
+These features are varying degrees of experimental and come with caveats.
+See 'hg help rust' (accessible without this package)
+or the documentation files in this package for more information.
+
+Installing this package will enable the Rust extensions for hg immediately.
+rhg is its own separate program.
+%endif
 
 %package tests
 Summary:        Mercurial tests
@@ -98,11 +130,21 @@ This package contains its tests.
 
 find . -type f -exec sed -i -e '1{/#!/s/env //}' '{}' \;
 
+%if %{with rust}
+%setup -q -a 80
+%endif
+
 chmod 644 hgweb.cgi
 
 %build
 %pyproject_wheel
 %make_build -C contrib/chg all
+
+%if %{with rust}
+pushd rust
+%cargo_build
+popd
+%endif
 
 %install
 %pyproject_install
@@ -128,9 +170,27 @@ install -Dm0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/mercurial/hgrc.d/cacerts.r
 mkdir -p %{buildroot}%{_datadir}/mercurial
 cp -a tests/. %{buildroot}%{_datadir}/mercurial/tests
 
-%if 0%{?with_tests}
+%if %{with rust}
+# set modulepolicy that would usually be set by setup.py
+echo 'modulepolicy = b"rust+c-allow"' > %{buildroot}%{python_sitearch}/mercurial/__modulepolicy__.py
+
+# workaround cargo-packaging < 1.3.0 not setting CARGO_TARGET_DIR and outputting to ./rust/target
+mv rust/target . || true
+
+install -m0755 target/release/rhg %{buildroot}%{_bindir}
+install -m0755 target/release/librusthgpyo3.so %{buildroot}%{python_sitearch}/mercurial/pyo3_rustext.so
+%endif
+
+%if %{with tests}
 %check
-%make_build tests TESTFLAGS="-v --blacklist=%{SOURCE90}" PYTHON=%{expand:%%__%{pythons}}
+# need to temporarily override the locale path to within buildroot to get
+# i18n-related tests to succeed in the build env
+cp %{buildroot}%{python_sitearch}/mercurial/i18n.py i18n.py.bak
+sed -i 's!/usr/share/locale!%{buildroot}/usr/share/locale!' %{buildroot}%{python_sitearch}/mercurial/i18n.py
+
+%make_build tests TESTFLAGS="-v --with-hg=%{buildroot}%{_bindir}/hg --blacklist=%{SOURCE90}" PYTHON=%{expand:%%__%{pythons}} PYTHONPATH=${PYTHONPATH:+$PYTHONPATH:}%{buildroot}%{python3_sitearch}
+
+mv i18n.py.bak %{buildroot}%{python_sitearch}/mercurial/i18n.py
 %endif
 
 %files lang -f hg.lang
@@ -139,10 +199,19 @@ cp -a tests/. %{buildroot}%{_datadir}/mercurial/tests
 %dir %{_datadir}/mercurial
 %{_datadir}/mercurial/tests
 
+%if %{with rust}
+%files rust
+%{_bindir}/rhg
+%{python_sitearch}/mercurial/pyo3_rustext.so
+%doc rust/rhg/README.md
+%endif
+
 %files
 %license COPYING
 %doc README.rst CONTRIBUTORS hgweb.cgi
-%{_bindir}/*
+%{_bindir}/hg
+%{_bindir}/hgk
+%{_bindir}/chg
 %{_datadir}/bash-completion/completions/*
 %{_datadir}/zsh/
 %dir %{_sysconfdir}/mercurial
@@ -161,5 +230,9 @@ cp -a tests/. %{buildroot}%{_datadir}/mercurial/tests
 %{python_sitearch}/hgext3rd
 %{python_sitearch}/mercurial
 %{python_sitearch}/mercurial-%{version}*-info
+
+%if %{with rust}
+%exclude %{python_sitearch}/mercurial/pyo3_rustext.so
+%endif
 
 %changelog
