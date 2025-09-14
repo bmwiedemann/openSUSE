@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  8 03:28:29 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream py314.patch to fix tests with Python 3.14
+
+-------------------------------------------------------------------
 Fri Dec  6 07:28:04 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable test_performance as it randomly fails

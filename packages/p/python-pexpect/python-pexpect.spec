@@ -1,7 +1,7 @@
 #
 # spec file for package python-pexpect
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Pure Python Expect-like module
 License:        ISC
 URL:            https://github.com/pexpect/pexpect
 Source:         https://files.pythonhosted.org/packages/source/p/pexpect/pexpect-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pexpect/pexpect/pull/808 Tests: Avoid the multiprocessing forkserver method
+Patch0:         py314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ptyprocess}
 BuildRequires:  %{python_module pytest}
