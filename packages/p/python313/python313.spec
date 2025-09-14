@@ -231,6 +231,8 @@ Patch42:        gh126985-mv-pyvenv.cfg2getpath.patch
 # PATCH-FIX-UPSTREAM bsc1243155-sphinx-non-determinism.patch bsc#1243155 mcepl@suse.com
 # Doc: Generate ids for audit_events using docname
 Patch43:        bsc1243155-sphinx-non-determinism.patch
+# PATCH-FIX-UPSTREAM gh138131-exclude-pycache-from-digest.patch bsc#1244680 daniel.garcia@suse.com
+Patch44:        gh138131-exclude-pycache-from-digest.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes

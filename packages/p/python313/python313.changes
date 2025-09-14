@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  9 10:11:58 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add gh138131-exclude-pycache-from-digest.patch fixing reproducible
+  build for python-nogil.
+  (bsc#1244680, gh#python/cpython#138131)
+
+-------------------------------------------------------------------
 Fri Aug 15 12:31:08 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.13.7:
