@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Aug 29 07:59:32 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Update to 4.1.1
+ * ctest: Restore default of no time limit for command-line `-T
+   Test` step
+ * ctest: Restore default test timeout for command-line `-T Test`
+   step
+ * cmList: fix swap function definition
+ * string(GENEX_STRIP): Fix regression on nested generator
+   expressions
+ * Clang/CUDA: Support CUDA Toolkit 13 new include layout
+
+-------------------------------------------------------------------
+Thu Aug  7 20:43:08 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Update to CMake 4.1.0
+  * The "cmake-configure-log(7)" now reports events from
+    "find_package()" (in "CONFIG" mode), "find_path()",
+    "find_file()", "find_library()", and "find_program()" commands
+    when first invoked, when their results transition between "not
+    found" and "found".
+  * The "cmake_pkg_config()" command now supports the "IMPORT" and
+    "POPULATE" subcommands for interfacing CMake targets with
+    pkg-config based dependencies.
+  * The "CMAKE_FIND_REQUIRED" variable was added to tell
+    "find_package()", "find_path()", "find_file()",
+    "find_library()", and "find_program()" to be "REQUIRED" by
+    default.
+  * The "FindBLAS" and "FindLAPACK" modules now support the NVIDIA
+    Performance Libraries (NVPL).
+  * The "string(REGEX MATCHALL)", "string(REGEX REPLACE)", and
+    "list(TRANSFORM REPLACE)" commands now match the regular
+    expression "^" anchor at most once in repeated searches, at the
+    start of the input. See policy "CMP0186".
+  * The "TARGET_PROPERTY" generator expression now evaluates the
+    "LINK_LIBRARIES" and "INTERFACE_LINK_LIBRARIES" target properties
+    transitively.  See policy "CMP0189".
+- Remove cmake-findhdf5-prefer-hl-compilers.patch, part of upstream
+
+-------------------------------------------------------------------
 Wed Jun 18 12:04:17 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - Set -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix a bunch of build

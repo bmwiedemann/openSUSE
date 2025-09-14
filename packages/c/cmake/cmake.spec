@@ -45,14 +45,14 @@
 %else
 %bcond_with full
 %endif
-%define shortversion 4.0
+%define shortversion 4.1.1
 %if 0%{?suse_version} && 0%{?suse_version} <= 1500
 %define pyver 311
 %else
 %define pyver 3
 %endif
 Name:           cmake%{?psuffix}
-Version:        4.0.3
+Version:        4.1.1
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
@@ -69,8 +69,6 @@ Source99:       README.SUSE
 Patch0:         cmake-fix-ruby-test.patch
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
 Patch1:         feature-suse-python-interp-search-order.patch
-# PATCH-FIX-UPSTREAM cmake-findhdf5-prefer-hl-compilers.patch badshah400@gmail.com -- FindHDF5: Prefer h5hl* compilers for HDF5_FIND_HL; patch submitted upstream [https://gitlab.kitware.com/cmake/cmake/-/merge_requests/10450.patch]
-Patch2:         cmake-findhdf5-prefer-hl-compilers.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
