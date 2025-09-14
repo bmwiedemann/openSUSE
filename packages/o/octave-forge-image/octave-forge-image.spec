@@ -18,7 +18,7 @@
 
 %define octpkg  image
 Name:           octave-forge-%{octpkg}
-Version:        2.18.0
+Version:        2.18.1
 Release:        0
 Summary:        Image Processing for Octave
 License:        BSD-2-Clause AND GPL-3.0-or-later AND MIT
@@ -58,7 +58,6 @@ echo "Skip tests requiring graphical toolkit: %{octskiptests}"
 %octave --eval "pkg rebuild"
 
 %files
-%defattr(-,root,root)
 %{octpackages_dir}/%{octpkg}-%{version}
 %{octlib_dir}/%{octpkg}-%{version}
 
