@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 05 21:07:32 UTC 2025 - Charles Arnold <carnold@suse.com>
+
+- Update to version 1.44.3:
+  * Version 1.44.3.
+  * server/public.c: Use lrint() instead of implicit conversion to int
+  * delay: Rearrange the options in alphabetical order in the documentation
+  * docs/nbdkit-client.pod: Document attaching NBD devices to QEMU VMs
+  * docs/nbdkit-client.pod: Combine and rename "LIMITATIONS" section
+  * tests/test-golang-fork-warning.sh: Fix hanging test
+  * tests: Use 'define script' in a few more places
+  * tests: Modify make-pki and make-psk scripts to be atomic
+  * tests: Define common functions for requiring TLS certs and PSK
+  * tests/test-tls.sh: Remove unused export of pkidir
+  * tests: Generate make-psk.sh
+  * tests/make-psk.sh: Fix typo "pkstool" -> "psktool"
+  * tests: Fix typo "An good" -> "A good"
+
+-------------------------------------------------------------------
 Mon Aug 04 15:42:29 UTC 2025 - Charles Arnold <carnold@suse.com>
 
 - Update to version 1.44.2:
