@@ -1,0 +1,16 @@
+<package name="komodo" project="openSUSE:Factory">
+  <title>Todo manager that uses todo.txt specification</title>
+  <description>KomoDo is a todo manager that uses todo.txt specification. It parses any
+compliant todo.txt files and turns them into easy to use list of tasks.
+KomoDo has built-in help for the todo.txt specification.
+
+Features
+
+- Open and create new todo.txt files
+
+- Add, delete and edit tasks
+
+- Filter and search tasks
+</description>
+  <url>https://apps.kde.org/komodo/</url>
+</package>
