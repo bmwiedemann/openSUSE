@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 12 17:48:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.46.0:
+  * HamlibRot: Changed Poll Interval from 500 to 2000ms
+  * NewContact: Trigger POTAQE search on callsign or frequency change
+  * WSJTX: Add POTA Ref from PotaQE
+  * DXC: Add POTA Ref if missing from PotaQE
+  * Added POTAQueryEngine - Received POTA Spots from api.pota.app
+  * Logbook SmartSearchBox improvements
+  * Add Heartbeat for Rig UDP Broadcast
+  * NewContact bug fixes
+  * Fix FREQ_RX/BAND_RX is present only when RX and TX freqs are different
+  * Fix DUPE is not detected for the first Contest QSO
+
+-------------------------------------------------------------------
 Fri Aug 29 14:59:08 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Add dependency on qt6-sql-sqlite and optionally tqsl boo#1248884
