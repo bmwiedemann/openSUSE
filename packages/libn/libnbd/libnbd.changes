@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Sep 05 21:02:25 UTC 2025 - Charles Arnold <carnold@suse.com>
+
+- Update to version 1.22.4:
+  * Version 1.22.4.
+  * docs: nbd_connect_uri: Combine export name sections together
+  * docs: nbd_connect_uri: Minor copyedits
+  * docs: nbd_connect_uri: Split up URI parsing section
+  * lib/uri.c: Use uri_query_list functions to free
+  * lib/uri.c: Add static annotation to parse_bool
+  * docs: Clarify documentation for export names in nbd_connect_uri
+  * docs: Add S<...> around qemu versions to avoid distracting linebreak
+  * generator: rust: Parse S<...> (non-breaking spaces) in POD
+  * generator: rust: Allow nested X<..X<..>..> expressions in POD
+  * generator: Don't list nbd_is_uri as a "flag call"
+  * generator: Clarify documentation for nbd_set_private_data
+  * ocaml: Small tweaks to the generated documentation
+  * ci: Remove fedora-40, alpine-320, add fedora-42, alpine-322
+  * common: utils: Add const to <vector>_duplicate variable decls
+  * copy, info: Use new vector_array_append functions in a couple of places
+  * common: utils: vector: Fix vector_uniq prototype and add a test
+  * common: utils: vector: Add range functions for insert, append and remove
+  * common: utils: vector: Prefer vector_reset over free()
+  * common: utils: vector: Add new vector_uniq function
+  * common/utils: Add convenient string_append_format function
+
+-------------------------------------------------------------------
 Thu Jul 31 17:01:32 UTC 2025 - Charles Arnold <carnold@suse.com>
 
 - Update to version 1.22.3:

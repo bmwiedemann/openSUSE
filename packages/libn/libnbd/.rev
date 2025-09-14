@@ -176,4 +176,12 @@ Factory, SLE15-SP7:GA, and SLFO:Main.</comment>
     <comment>Update libndb to version 1.22.3</comment>
     <requestid>1297550</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2234229281b9d2249efc0db0a056fc48</srcmd5>
+    <version>1.22.4</version>
+    <time>1757868604</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1304457</requestid>
+  </revision>
 </revisionlist>
