@@ -1501,4 +1501,12 @@ Add python version constraints to Requires &amp; BuildRequires</comment>
   * #11538: Added :class:`pytest.RaisesGroup` as an equivalent to</comment>
     <requestid>1293771</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>99492f7bcf66b96b3a91dc5bc0d9d659</srcmd5>
+    <version>8.4.2</version>
+    <time>1757868543</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1304278</requestid>
+  </revision>
 </revisionlist>

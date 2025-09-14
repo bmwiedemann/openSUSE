@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest%{psuffix}
-Version:        8.4.1
+Version:        8.4.2
 Release:        0
 Summary:        Simple powerful testing with Python
 License:        MIT
