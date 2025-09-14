@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Sep 12 19:34:16 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.0
+  BREAKING CHANGES
+  * modernize for Python 3.9+; drop legacy compat paths.
+  Features
+  * unparse: add limited XML comment round-trip; unify _emit
+    behavior (e43537e).
+  * unparse: add selective force_cdata support
+    (bool/tuple/callable) (a497fed), closes #375.
+  Bug Fixes
+  * namespaces: attach [@xmlns](https://github.com/xmlns) to
+    declaring element when process_namespaces=True.
+  * streaming: avoid parent accumulation at item_depth; add
+    regression tests (220240c).
+  * unparse: handle non-string #text with attributes; unify
+    value conversion (927a025).
+  * unparse: skip empty lists to keep pretty/compact outputs
+    consistent (ab4c86f).
+  Reverts
+  * remove initial Release Drafter config (c0b74ed).
+
+-------------------------------------------------------------------
 Tue Sep  9 07:46:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.15.1
