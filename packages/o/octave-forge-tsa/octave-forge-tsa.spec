@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package octave-forge-tsa
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,11 @@ Release:        0
 Summary:        Time Series Analysis Toolbox for Octave
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            https://octave.sourceforge.io
+URL:            https://gnu-octave.github.io/packages/tsa/
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildRequires:  octave-devel
 Requires:       octave-cli >= 2.9.7
-Requires:       octave-forge-nan
+Requires:       octave-forge-nan >= 3.0.0
 BuildArch:      noarch
 
 %description
@@ -36,6 +36,8 @@ This is part of Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
+# src dirctory without any purpose, see https://savannah.gnu.org/bugs/index.php?57578
+mv %{octpkg}-%{version}/src{,_disabled}
 %octave_pkg_src
 
 %build
@@ -54,7 +56,6 @@ This is part of Octave-Forge project.
 %octave --eval "pkg rebuild"
 
 %files
-%defattr(-,root,root)
 %{octpackages_dir}/%{octpkg}-%{version}
 
 %changelog
