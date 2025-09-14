@@ -84,7 +84,9 @@ A clock application for Plasma.
 %{_datadir}/dbus-1/services/org.kde.kclockd.service
 %{_kf6_applicationsdir}/org.kde.kclock.desktop
 %{_kf6_appstreamdir}/org.kde.kclock.appdata.xml
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/org.kde.plasma.kclock_1x2.appdata.xml
+%endif
 %{_kf6_bindir}/kclock
 %{_kf6_bindir}/kclockd
 %{_kf6_configdir}/autostart/org.kde.kclockd-autostart.desktop

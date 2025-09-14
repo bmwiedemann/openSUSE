@@ -240,4 +240,12 @@
     <comment>KDE release gear 25.08.1</comment>
     <requestid>1303841</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>3f34c07058460bc9471e4abfd1be0ba3</srcmd5>
+    <version>25.08.1</version>
+    <time>1757868649</time>
+    <user>anag_factory</user>
+    <comment>- Update file list after KDE Frameworks 6.18 release</comment>
+    <requestid>1304531</requestid>
+  </revision>
 </revisionlist>
