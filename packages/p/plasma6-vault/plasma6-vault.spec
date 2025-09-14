@@ -126,7 +126,9 @@ This package pulls in dependencies for the plasma6-vault gocryptfs backend.
 
 %files
 %license LICENSES/*
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/org.kde.plasma.vault.appdata.xml
+%endif
 %{_kf6_plasmadir}/plasmoids/org.kde.plasma.vault/
 %{_kf6_plugindir}/kf6/kded/plasmavault.so
 %dir %{_kf6_plugindir}/kf6/kfileitemaction
