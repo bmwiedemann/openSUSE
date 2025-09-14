@@ -7136,4 +7136,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.16.6 &amp; other fixes; bugs: bsc#1012628 bsc#1233640 bsc#1241353 bsc#1243677 bsc#1248156 bsc#1249346</comment>
     <requestid>1303394</requestid>
   </revision>
+  <revision rev="798" vrev="1">
+    <srcmd5>5d0c7cd903ee436b55ca1115da63e5ce</srcmd5>
+    <version>6.16.7</version>
+    <time>1757868504</time>
+    <user>anag_factory</user>
+    <comment>6.16.7 (VMSCAPE bugfix) &amp; other fixes; bugs: bsc#1012628 bsc#1248109</comment>
+    <requestid>1304216</requestid>
+  </revision>
 </revisionlist>
