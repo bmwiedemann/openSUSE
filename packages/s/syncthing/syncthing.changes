@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 13 09:41:12 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 2.0.9
+  * Fixes
+    fix(sqlite): add _txlock=immediate to modernc implementation by @calmh in #10384
+    fix(api): limit size of allowed authentication request by @calmh in #10386
+  * Other
+    chore(ursrv): update regex patterns for Syncthing-Fork entries by @Catfriend1 in #10380
+    chore: clean up migrated database by @calmh in #10381
+    chore(sqlite): use normalised tables for file names and versions by @calmh in #10383
+    chore(model): slightly deflake TestRecvOnlyRevertOwnID by @calmh in #10390
+
+-------------------------------------------------------------------
 Mon Sep  8 08:12:28 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 2.0.8
