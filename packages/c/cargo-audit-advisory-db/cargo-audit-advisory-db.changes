@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 13 01:09:23 UTC 2025 - william.brown@suse.com
+
+- Update to version 20250913:
+  * Assigned RUSTSEC-2025-0067 to libyml, RUSTSEC-2025-0068 to serde_yml
+  * explain why the alternatives are mentioned
+  * mark both unsound
+  * Add unmaintained libyml and serde_yml
+  * Assigned RUSTSEC-2021-0154 to fuser
+  * Add advisory for fuser
+  * Assigned RUSTSEC-2025-0066 to google-apis-common
+  * Add advisory (deprecated) for `google-apis-common`
+  * Assigned RUSTSEC-2025-0065 to matrix-sdk-base
+  * Fix candidate advisory ID
+
+-------------------------------------------------------------------
 Wed May 07 03:31:11 UTC 2025 - william.brown@suse.com
 
 - Update to version 20250507:
