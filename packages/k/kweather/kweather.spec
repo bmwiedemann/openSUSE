@@ -80,7 +80,9 @@ views for showing forecasts and other information.
 %{_datadir}/dbus-1/services/org.kde.kweather.service
 %{_kf6_applicationsdir}/org.kde.kweather.desktop
 %{_kf6_appstreamdir}/org.kde.kweather.appdata.xml
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/org.kde.plasma.kweather_1x4.appdata.xml
+%endif
 %{_kf6_bindir}/kweather
 %{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.kweather.svg
 %dir %{_kf6_plasmadir}/plasmoids
