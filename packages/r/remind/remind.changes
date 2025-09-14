@@ -1,4 +1,162 @@
 -------------------------------------------------------------------
+Sat Sep 13 07:42:24 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+* VERSION 6.1 Patch 1 - 2025-09-12
+
+- NEW FEATURE: remind: Add the new --max-expr-complexity=n
+  command-line argument.  It is possible to write expressions that use
+  enormous amounts of CPU time, such as the following:
+
+          FSET fib(n) iif(n <= 2, 1, fib(n-1)+fib(n-2))
+          SET a fib(100)
+
+  That will take essentially forever to execute, but will not hit the
+  built-in recursion limit.  Using a command-line argument of
+  --max-expr-complexity=1000000 will terminate evaluation in a few
+  dozen milliseconds on modern hardware, and should not affect
+  realistic reminder scripts.  See the man page for details.
+
+- IMPROVEMENT: remind: Add UTF-8-aware functions to complement the
+  byte-aware functions that could give incorrect results by splitting
+  a UTF-8 character sequence.  The correspondence between old and new
+  functions is:
+
+     NON-UTF-8-AWARE   UTF-8-AWARE
+     ===============   ===========
+     strlen            mbstrlen
+     substr            mbsubstr
+     index             mbindex
+     char              mbchar
+     asc               codepoint
+
+  See the remind(1) man page for details.
+
+- MINOR NEW FEATURE: remind: You can use hexadecimal integer constants
+  like 0xFE12 in expressions.  This is mostly useful for using
+  codepoint() since Unicode code points are often expressed in
+  hexadecimal.
+
+- BUG FIX: remind: When truncating a string when executing DUMPVARS or
+  during debugging of expression evaluation, Remind could sometimes
+  cut the string in the middle of a UTF-8 sequence.  This has been
+  fixed.
+  
+* VERSION 6.1 Patch 0 - 2025-09-08
+
+- MAJOR NEW FEATURE: remind: The TZ keyword lets you specify a time
+  zone for a REM command.  All trigger calculations are performed in
+  the named time zone.
+
+- DOCUMENTATION: Update README.md to document prerequisites for readline
+  support.
+
+- DOCUMENTATION: remind.1: Document system variables such as $T that can
+  have multiple types.
+
+- BUG FIX: remind: If Remind was run interactively ("remind -c -" with
+  readline support enabled) it would not properly cache the input
+  file, but would keep asking for interactive input.  This has been
+  fixed.
+
+* VERSION 6.0 Patch 2 - 2025-09-01
+
+- CHANGE: Default $ParseUntriggered to 0 instead of 1.  The default
+  could cause spurious warnings such as "type mismatch" warnings for
+  untriggered reminders.
+
+- TEST FIX: Explicitly set latitude and longitude in test files.
+
+- BUG FIX: remind: Don't add lines to "readline" history unless they
+  are actually being read from standard input.
+
+- BUG FIX: remind: On the command-line, make '-i$foo' behave the same
+  way as '-i$foo=0' as was documented in the man page.
+
+- BUG FIX: remind: Clamp the output of trigger() to "1 January 1990 AT
+  00:00" if the UTC flag is used, even if it would actually produce a
+  result in 1989.
+
+- MINOR FIX: remind: Avoid "unused result" compiler warning.
+
+* VERSION 6.0 Patch 1 - 2025-08-19
+
+- NEW FEATURE: remind: Add readline support if input is taken from stdin
+  (ie, "remind -").  This gives you full editing support if you run
+  Remind interactively.
+
+- BUG FIX: remind: Fix buffer overflow in DUMPVARS command.
+  Thanks to Jochen Sprickerhof for helping me find this bug.
+
+* VERSION 6.0 Patch 0 - 2025-08-18
+
+- MAJOR NEW FEATURE: remind: Introduction of TODOs.  These are similar
+  to normal reminders, but (in Agenda Mode) you keep getting reminded
+  of them even once they are in the past, unless you specifically mark
+  them as completed.
+
+- MAJOR NEW FEATURE: remind: The --json long option causes Remind to
+  output JSON in Agenda Mode instead of the normal text output.  See
+  tkremind for an example of how a front-end can use this output.
+
+- MINOR NEW FEATURE: remind: The RETURN statement can be used to skip
+  the rest of the current file.  Useful for early exit from an
+  INCLUDEd file.
+
+- MINOR NEW FEATURE: remind: Allow the %:, %!, %?, %@ and %#
+  substitution sequences to be overridden by defining the functions
+  subst_colon, subst_bang, subst_question, subst_at and subst_hash,
+  respectively.
+
+- SAFETY IMPROVEMENT: remind: If a function is defined in a context
+  where RUN is disabled, disable RUN during the evaluation of the
+  function.  Also disable RUN for all subst_XXX callbacks and the
+  ordx(n) callback.
+
+- MAJOR IMPROVEMENTS: tkremind: TkRemind has been given an overhaul.
+  The "Show Queue" and "Show Today's Reminders" windows now respect
+  the color scheme.  TkRemind lets you create TODO reminders and
+  easily mark them completed.  You can right-click on a day number
+  to get a window with Agenda Mode reminders for that day.
+
+- MINOR IMPROVEMENT: remind: Language packs can define an ordx(n)
+  function that localizes ord(n).  If this function is defined, then
+  ord(n) automatically calls it rather than using its built-in English
+  localization.  Appropriate ordx(n) definitions have been added to
+  all language packs.
+
+- MINOR IMPROVEMENT: remind: The %b substitution sequence handles
+  dates in the past (because of TODOs).  The %! sequence considers
+  both date and time, and can be used with non-timed reminders.  The
+  new %? sequence is similar to %!, but outputs "are" and "were"
+  instead of "is" and "was".  The new %*! and %*? sequences are
+  similar to %! and %?, but compare the trigger date to realtoday()
+  instead of to today().
+
+- MINOR IMPROVEMENT: remind: Downgrade a SPECIAL COLOR... with
+  out-of-range color values to a normal MSG-type reminder.
+
+- MINOR IMPROVEMENT: include/lang/nl.rem: Use "eergisteren" for "2
+  days ago" and "overmorgen" for "in 2 days' time."
+
+- MINOR IMPROVEMENT: tkremind: TkRemind now passes all command-line
+  options back to Remind.
+
+- TEST IMPROVEMENT: remind: Add --flush option and use it in tests to
+  have more predictable interleaving of stdout/stderr output.
+
+- BUG FIX: tkremind: In a couple of places, the "eval" command was used
+  where the intention was to use "catch".  I blame Perl...
+
+- BUG FIX: remind: SCANFROM and FROM are separated out internally, and
+  in the JSON output, the original FROM or SCANFROM value is
+  preserved, including relative SCANFROMs.
+
+- BUG FIX: tkremind: Remove some extraneous semicolons.
+
+- DOCUMENTATION FIX: Fix some man-page format directive errors;
+  tweak wording in several pages.
+
+-------------------------------------------------------------------
 Mon Jul 28 19:43:12 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 5.5 Patch 0 - 2025-07-28

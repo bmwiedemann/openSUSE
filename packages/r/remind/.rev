@@ -812,4 +812,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1297577</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>35b45c894f25a9b80f7ca89742c9971c</srcmd5>
+    <version>6.1.1</version>
+    <time>1757868641</time>
+    <user>anag_factory</user>
+    <comment>* VERSION 6.1 Patch 1 - 2025-09-12
+- NEW FEATURE: remind: Add the new --max-expr-complexity=n
+  command-line argument.  It is possible to write expressions that use
+  enormous amounts of CPU time, such as the following:
+          FSET fib(n) iif(n &lt;= 2, 1, fib(n-1)+fib(n-2))
+          SET a fib(100)
+  That will take essentially forever to execute, but will not hit the
+  built-in recursion limit.  Using a command-line argument of
+  --max-expr-complexity=1000000 will terminate evaluation in a few
+  dozen milliseconds on modern hardware, and should not affect
+  realistic reminder scripts.  See the man page for details.
+- IMPROVEMENT: remind: Add UTF-8-aware functions to complement the
+  byte-aware functions that could give incorrect results by splitting
+  a UTF-8 character sequence.  The correspondence between old and new
+  functions is:
+     NON-UTF-8-AWARE   UTF-8-AWARE
+     ===============   ===========
+     strlen            mbstrlen
+     substr            mbsubstr
+     index             mbindex
+     char              mbchar
+     asc               codepoint
+  See the remind(1) man page for details.
+- MINOR NEW FEATURE: remind: You can use hexadecimal integer constants
+  like 0xFE12 in expressions.  This is mostly useful for using
+  codepoint() since Unicode code points are often expressed in
+  hexadecimal.
+- BUG FIX: remind: When truncating a string when executing DUMPVARS or
+  during debugging of expression evaluation, Remind could sometimes
+  cut the string in the middle of a UTF-8 sequence.  This has been</comment>
+    <requestid>1304503</requestid>
+  </revision>
 </revisionlist>

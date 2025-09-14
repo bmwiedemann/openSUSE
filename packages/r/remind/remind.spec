@@ -1,7 +1,7 @@
 #
 # spec file for package remind
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           remind
-Version:        5.5.0
+Version:        6.1.1
 Release:        0
-%define tar_version 05.05.00
+%define tar_version 06.01.01
 Summary:        A sophisticated calendar and alarm program
 License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers
