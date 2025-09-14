@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep  7 21:51:15 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 21.
+  * For details, see the release notes:
+    - https://releases.llvm.org/21.1.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/21.1.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/21.1.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/21.1.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/21.1.0/tools/lld/docs/ReleaseNotes.html
+
+-------------------------------------------------------------------
 Thu Jul 31 06:48:44 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Enable lldb for riscv64

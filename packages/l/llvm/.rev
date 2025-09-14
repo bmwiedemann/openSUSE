@@ -2408,4 +2408,19 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>1297177</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>78f4724e3be56f017340a24fd663e3b0</srcmd5>
+    <version>21</version>
+    <time>1757868581</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 21.
+  * For details, see the release notes:
+    - https://releases.llvm.org/21.1.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/21.1.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/21.1.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/21.1.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/21.1.0/tools/lld/docs/ReleaseNotes.html
+</comment>
+    <requestid>1303270</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package llvm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define _sonum 20
+%define _sonum 21
 
 %ifarch aarch64 %{ix86} loongarch64 ppc64 ppc64le riscv64 x86_64
 %global has_openmp 1
@@ -42,6 +42,7 @@ Obsoletes:      %{1}16%{?2:-%{2}} \
 Obsoletes:      %{1}17%{?2:-%{2}} \
 Obsoletes:      %{1}18%{?2:-%{2}} \
 Obsoletes:      %{1}19%{?2:-%{2}} \
+Obsoletes:      %{1}20%{?2:-%{2}} \
 Obsoletes:      %{1}7%{?2:-%{2}} \
 Obsoletes:      %{1}8%{?2:-%{2}} \
 Obsoletes:      %{1}9%{?2:-%{2}}
