@@ -77,7 +77,9 @@ generated and stored by the "pass" password manager.
 %{_kf6_plasmadir}/plasmoids/org.kde.plasma.pass/
 %dir %{_kf6_qmldir}/org/kde/plasma/private
 %{_kf6_qmldir}/org/kde/plasma/private/plasmapass/
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/org.kde.plasma.pass.appdata.xml
+%endif
 
 %files lang -f %{name}.lang
 
