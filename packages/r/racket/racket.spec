@@ -1,7 +1,7 @@
 #
 # spec file for package racket
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2012, 2013 Togan Muftuoglu toganm@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,8 @@
 #
 
 
-%global         _configure ../configure
 Name:           racket
-Version:        8.17
+Version:        8.18
 Release:        0
 Summary:        Scheme implementation with teaching tools
 License:        Apache-2.0 OR MIT
@@ -146,6 +145,7 @@ echo "int main () { return !(((union {unsigned int x; unsigned char c; }){1}).c)
 rm -f test64 testendianess
 mach=tpb${wide}${endianess}
 unset wide endianess
+%define configure ../configure
 %configure \
     --prefix="%{_prefix}" \
     --exec-prefix="%{_prefix}" \
@@ -315,8 +315,8 @@ popd
 %verify(not md5 size mtime) %{_datadir}/%{name}/*.rktd
 %verify(not md5 size mtime) %{_datadir}/%{name}/pkgs/*.rktd
 %{_datadir}/%{name}/*
-%dir %{_sysconfdir}/%{name}
-%config %{_sysconfdir}/%{name}/config.rktd
+%dir %{_usr}/etc/%{name}
+%{_usr}/etc/%{name}/*
 
 %files doc
 %doc %{_docdir}/%{name}/*
