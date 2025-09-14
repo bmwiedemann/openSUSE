@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep  6 17:51:35 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.0.14:
+  * The following functions are new:
+    + vrml_Shape
+    + vrml_set_browser
+  * Alternative vrml browsers are now supported with
+    `vrml_set_browser'. Default support for whitedune is now
+    included in addition to freewrl.
+- Drop upstream fix-octave9-line-continuation.patch
+
+-------------------------------------------------------------------
 Wed Jan  1 17:22:32 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with Octave 9, add
