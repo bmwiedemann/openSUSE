@@ -177,7 +177,9 @@ true
 %{_kf6_applicationsdir}/org.kde.kdeconnect.handler.desktop
 %{_kf6_applicationsdir}/org.kde.kdeconnect.nonplasma.desktop
 %{_kf6_applicationsdir}/org.kde.kdeconnect.sms.desktop
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/org.kde.kdeconnect.appdata.xml
+%endif
 %{_kf6_appstreamdir}/org.kde.kdeconnect.metainfo.xml
 %{_kf6_bindir}/kdeconnect-app
 %{_kf6_bindir}/kdeconnect-cli
