@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 12 20:14:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.82:
+  * restrict request trailers to configured list:
+    trailers in request headers will be ignored unless allowed
+    field names are explicitly configured in a comma-separated list
+    containing no spaces:
+    server.feature-flags += (“request.trailer-whitelist” => “…”)
+    This changes behavior from lighttpd 1.4.80, which added support
+    for request trailers and header merging, but did not restrict
+    request trailers.
+  * bug fixes
+
+-------------------------------------------------------------------
 Thu Aug 14 20:43:34 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.80:

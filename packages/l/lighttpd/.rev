@@ -675,4 +675,14 @@ main package for now:
 lighttpd 1.4.80</comment>
     <requestid>1299476</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>e4108e477582a0779876670dec8a38cf</srcmd5>
+    <version>1.4.82</version>
+    <time>1757868610</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1304452 from AndreasStieger
+
+lighttpd 1.4.82</comment>
+    <requestid>1304455</requestid>
+  </revision>
 </revisionlist>

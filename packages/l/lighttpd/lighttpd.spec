@@ -23,7 +23,7 @@
 %define pkg_version %{version}
 %define tarball_version %{version}
 Name:           lighttpd
-Version:        1.4.80
+Version:        1.4.82
 Release:        0
 Summary:        A Secure, Fast, Compliant, and Very Flexible Web Server
 License:        BSD-3-Clause
