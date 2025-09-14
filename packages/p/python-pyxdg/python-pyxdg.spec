@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyxdg
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://freedesktop.org/wiki/Software/pyxdg
 Source0:        https://files.pythonhosted.org/packages/source/p/pyxdg/pyxdg-%{version}.tar.gz
 # Test data: examples
 Source1:        https://gitlab.freedesktop.org/xdg/pyxdg/-/archive/rel-%{version}/pyxdg-rel-%{version}.tar.gz?path=test/example#/pyxdg-%{version}-test-example.tar.gz
+# PATCH-FIX-UPSTREAM https://cgit.freedesktop.org/xdg/pyxdg/patch/?id=9291d419017263c922869d79ac1fe8d423e5f929 Menu: handle Python 3.14 ast.Str changes
+Patch0:         py314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
