@@ -150,7 +150,9 @@ This package provides a Plasma widget to view address book contacts.
 
 %files plasmoid
 %dir %{_kf6_plasmadir}/plasmoids
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/org.kde.merkuro.contact.applet.appdata.xml
+%endif
 %{_kf6_plasmadir}/plasmoids/org.kde.merkuro.contact.applet
 
 %files lang -f %{name}.lang
