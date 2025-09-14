@@ -1,7 +1,7 @@
 #
 # spec file for package python-iniparse
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2017 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,6 +37,8 @@ Patch3:         python311-compat.patch
 Patch4:         python3117.patch
 # PATCH-FIX-UPSTREAM Based on gh#candlepin/python-iniparse#32
 Patch5:         use-load-tests.patch
+# PATCH-FIX-UPSTREAM https://github.com/candlepin/python-iniparse/commit/42d34719f01229b25d2725cb56e7a527a3ec35cc Avoid the multiprocessing forkserver method
+Patch6:         py314.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}

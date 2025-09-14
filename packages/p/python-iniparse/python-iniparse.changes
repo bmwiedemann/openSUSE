@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  8 03:58:35 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add py314.patch to fix tests with Python 3.14
+
+-------------------------------------------------------------------
 Wed Aug 28 06:23:41 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch use-load-tests.patch:
