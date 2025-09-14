@@ -102,4 +102,14 @@ war rightfully raised in my previous one.</comment>
     error has occurred.</comment>
     <requestid>1299860</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>35a8f31ad816019fe37094f1324b9773</srcmd5>
+    <version>62</version>
+    <time>1757868568</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 62
+  * The C++ wrapper now support getting a human-readable error
+    message via the INIReader::ParseErrorMessage() method.</comment>
+    <requestid>1304336</requestid>
+  </revision>
 </revisionlist>
