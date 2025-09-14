@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 13 16:55:22 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch for deterministic translations (boo#1244083)
+
+-------------------------------------------------------------------
 Sat May 10 07:09:58 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build with fuse 3 (boo#1242079)

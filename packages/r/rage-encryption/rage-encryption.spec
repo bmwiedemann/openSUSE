@@ -32,6 +32,7 @@ Group:          Productivity/Security
 URL:            https://github.com/str4d/rage
 Source0:        rage-%{version}.tar.gz
 Source1:        vendor.tar.zst
+Patch0:         reproducible.patch
 %if %{suse_version} > 1500
 BuildRequires:  cargo-packaging
 %endif
@@ -88,7 +89,7 @@ BuildArch:      noarch
 Zsh command-line completion support for %{name}.
 
 %prep
-%autosetup -a 1 -n rage-%{version}
+%autosetup -a 1 -p1 -n rage-%{version}
 %vendored_licenses_packager_prep
 
 %build
