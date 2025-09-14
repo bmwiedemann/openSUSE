@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 10 03:05:57 UTC 2025 - William <william.brown@suse.com>
+
+- bsc#1249012 - CVE-2025-58160 - tracing subscriber ansi escapes
+
+-------------------------------------------------------------------
+Thu Jun 12 06:32:04 UTC 2025 - William Brown <william.brown@suse.com>
+
+- bsc#1243179 - CVE-2025-4574 - double free in crossbeam channel drop
+- bsc#1243851 - CVE-2024-12224 - idna accepts invalid punycode
+
+-------------------------------------------------------------------
 Wed May  7 04:35:41 UTC 2025 - William Brown <william.brown@suse.com>
 
 - bsc#1242675 - CVE-2025-3416 - openssl use after free
