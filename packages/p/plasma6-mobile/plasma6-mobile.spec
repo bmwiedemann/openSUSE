@@ -133,6 +133,7 @@ Plasma shell for mobile devices.
 %{_kf6_applicationsdir}/kcm_mobile_onscreenkeyboard.desktop
 %{_kf6_applicationsdir}/kcm_mobile_time.desktop
 %{_kf6_applicationsdir}/kcm_mobileshell.desktop
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/org.kde.breeze.mobile.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.mobile.defaultNavigationPanel.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.mobile.defaultStatusBar.appdata.xml
@@ -166,6 +167,7 @@ Plasma shell for mobile devices.
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.screenshot.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.settingsapp.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.quicksetting.wifi.appdata.xml
+%endif
 %{_kf6_bindir}/plasma-mobile-envmanager
 %{_kf6_bindir}/plasma-mobile-initial-start
 %{_kf6_bindir}/startplasmamobile
