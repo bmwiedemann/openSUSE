@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 11 20:12:22 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add get_llvm_tool_names-llvm21.patch to accept LLVM 21.
+
+-------------------------------------------------------------------
 Wed Sep  3 12:31:59 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add meson-issue-15992.patch: allow packagers and obs projects to

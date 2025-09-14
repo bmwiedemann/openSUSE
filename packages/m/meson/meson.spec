@@ -54,6 +54,8 @@ Patch2:         14001.patch
 Patch3:         reproducible.patch
 # PATCH-FIX-UPSTREAM -- rpm macros do not allow to override verbosity
 Patch4:         meson-issue-15992.patch
+# PATCH-FIX-UPSTREAM get_llvm_tool_names-llvm21.patch -- Accept LLVM 21.1.
+Patch5:         get_llvm_tool_names-llvm21.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
