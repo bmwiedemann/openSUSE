@@ -1,0 +1,18 @@
+<services>
+  <service mode="buildtime" name="kiwi_metainfo_helper"/>
+  <!-- Doesn't work with Leap 15.6 and I'm not sure it's needed
+  <service mode="buildtime" name="kiwi_label_helper"/>
+  -->
+  <!-- The following "replace_using_env" service fixes up these 2 lines in appliance.kiwi:
+    <image schemaversion="7.5" name="%OS_PRETTY_NAME_DASHED%-%OS_VERSION_ID%">
+    <file name="%OS_PRETTY_NAME_DASHED%.ico" target="/usr/share/pixmaps/%OS_PRETTY_NAME_DASHED%.ico" owner="root:root" permissions="644"/>
+  -->
+  <service mode="buildtime" name="replace_using_env">
+    <param name="file">appliance.kiwi</param>
+    <param name="var">OS_PRETTY_NAME_DASHED</param>
+    <param name="eval">OS_PRETTY_NAME_DASHED=$( find ./repos -iname '*-release*.rpm' -exec rpm -q --queryformat "%{SUMMARY}" {} \; -quit | sed 's/\ /-/g' | sed 's/\(Server-\|-Alpha.*\|-Beta.*\|-GMC.*\|-PublicBeta.*\|-PublicRC.*\|-RC1.*\|-Snapshot.*\)//g' )</param>
+    <param name="eval">sed -i -e "s#\(.image schemaversion=\"[0-9].[0-9]\" name=\"\).*\(-.*\".\)#\1%%OS_PRETTY_NAME_DASHED%%\2#" appliance.kiwi</param>
+    <param name="eval">sed -i -e "s#\(.file name=\"\).*\(.ico\" target=\"/usr/share/pixmaps/\).*\(.ico\"\)#\1%%OS_PRETTY_NAME_DASHED%%\2%%OS_PRETTY_NAME_DASHED%%\3#" appliance.kiwi</param>
+    <param name="verbose">1</param>
+  </service>
+</services>

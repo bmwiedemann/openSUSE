@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<image schemaversion="7.5" name="%OS_PRETTY_NAME_DASHED%-%OS_VERSION_ID%">
+  <description type="system">
+    <author>SUSE WSL Team</author>
+    <contact>wsl@suse.com</contact>
+    <specification>Simple tar archive build, bootstrap only</specification>
+  </description>
+  <preferences>
+    <type image="tbz"/>
+    <version>%RELEASE%</version>
+    <packagemanager>zypper</packagemanager>
+    <rpm-check-signatures>false</rpm-check-signatures>
+    <rpm-excludedocs>true</rpm-excludedocs>
+    </preferences>
+  <!-- REPOSITORY SETUP -->
+  <repository type="rpm-md">
+    <source path="obsrepositories:/"/>
+  </repository>
+  <!--
+  <repository type="rpm-md" alias="sbradnick" priority="1">
+    <source path="obs://home:sbradnick/openSUSE_Tumbleweed"/>
+  </repository>
+  <repository type="rpm-md" alias="factory" priority="2">
+    <source path="obs://openSUSE:Factory/standard"/>
+  </repository>
+  -->
+  <packages type="bootstrap">
+    <package name="ca-certificates"/>
+    <package name="ca-certificates-mozilla"/>
+    <package name="openSUSE-build-key"/>
+    <package name="sudo"/>
+    <package name="command-not-found"/>
+    <package name="vim"/>
+    <package name="joe"/>
+    <package name="patterns-openSUSE-minimal_base"/>
+    <!-- not in minimal_base but expected by applications -->
+    <package name="system-user-nobody"/>
+    <!-- only recommended in pattern -->
+    <package name="aaa_base-extras"/>
+    <package name="aaa_base-wsl"/>
+    <package name="bzip2"/>
+    <package name="dos2unix"/>
+    <package name="iputils"/>
+    <package name="less"/>
+    <package name="libyui-ncurses-pkg"/>
+    <package name="lsof"/>
+    <package name="man"/>
+    <package name="openssh"/>
+    <package name="procps"/>
+    <package name="screen"/>
+    <package name="wget"/>
+    <!--
+    <package name="yast2-firstboot"/>
+    <package name="yast2-firstboot-wsl"/>
+    <package name="yast2-packager"/>
+    <package name="jeos-firstboot"/>
+    -->
+    <package name="wsl-firstboot"/>
+    <package name="gawk"/>
+    <package name="shadow"/>
+    <package name="iproute2"/>
+    <package name="patterns-wsl-tmpfiles"/>
+    <package name="zip"/>
+    <!-- only in enhanced_base boo#1150379 -->
+    <package name="timezone"/>
+    <!-- needed for nullok hack in config.sh for now -->
+    <package name="pam-config"/>
+    <!-- Only used in config.sh and then removed again -->
+    <!-- Disabling 20250129, smb
+    <package name="live-add-yast-repos"/>
+    -->
+    <!-- Used to grab /usr/share/wsl-appx/DOTsettings
+    <package name="wsl-appx"/>
+    -->
+    <package name="filesystem"/>
+    <!-- These don't exist by this name in Leap >= 16.0
+    <package name="openSUSE-release"/>
+    <package name="openSUSE-release-appliance-wsl"/>
+    -->
+    <package name="distribution-release"/>
+    <package name="openSUSE-repos"/>
+    <!-- needed by tumbleweed and other projects using kiwi-nobasepackages until obs-build#562 resolved -->
+    <package name="zypper"/>
+    <!-- Doesn't work with python3-kiwi version 9.24.43 (20241120) in Leap 15.6 -->
+    <file name="%OS_PRETTY_NAME_DASHED%.ico" target="/usr/share/pixmaps/%OS_PRETTY_NAME_DASHED%.ico" owner="root:root" permissions="644"/>
+  </packages>
+</image>

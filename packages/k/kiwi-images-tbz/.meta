@@ -1,0 +1,6 @@
+<package name="kiwi-images-tbz" project="openSUSE:Factory">
+  <title>Generate installable tarball</title>
+  <description>Use `kiwi-ng` to produce a `*.tar.xz` file (which can be renamed to `*.wsl`) for install with `wsl.exe` &gt;=v2.4.4
+
+Note: `/etc/wsl-distribution.conf: defaultName=&lt;something&gt;` is used when installing via double-click of a `*.wsl` file</description>
+</package>

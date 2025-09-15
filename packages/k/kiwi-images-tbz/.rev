@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>130385ba12061718da751750e156534f</srcmd5>
+    <version>%RELEASE%</version>
+    <time>1757958664</time>
+    <user>anag_factory</user>
+    <comment>This is the kiwi image builder configuration which generates .tar.xz files for WSL, what Microsoft considers &quot;ModernDistributions&quot;; they are renamed to .wsl before inclusion in openSUSE/SUSE GitHub releases which are shared via Microsoft.</comment>
+    <requestid>1304358</requestid>
+  </revision>
+</revisionlist>

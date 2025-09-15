@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Sun Nov 24 07:56:56 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Remove Beta tag from SLE15SP7
+
+-------------------------------------------------------------------
+Sun Nov 24 07:24:11 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Fixing up '_service' so it works for openSUSE & SUSE releases
+
+-------------------------------------------------------------------
+Sun Nov 24 06:05:51 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'replace_using_env' service for SLE to remove "Server-" from name
+- Updating 'config.sh' to account for "Server-" removal
+- Updating SUSE icon files to not use "Server-" in their names
+
+-------------------------------------------------------------------
+Thu Nov 21 16:48:57 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding Leap/TW specific icons
+
+-------------------------------------------------------------------
+Thu Nov 21 15:59:51 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Leap requires a python3-kiwi higher than v9.24.43
+  * Without it, I can't use `<file name="<file_name>" ...`
+- Setting up a more logical defaultName variable
+- Commenting out 'kiwi_label_helper' from _service file
+
+-------------------------------------------------------------------
+Wed Nov 20 20:46:52 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding lock for jeos-firstboot
+- Fixing up repo conig
