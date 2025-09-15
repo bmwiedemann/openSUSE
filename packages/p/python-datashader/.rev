@@ -347,4 +347,29 @@
     <comment></comment>
     <requestid>1202835</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>0ac8cf2a4856fb73994a34d3b6b2a217</srcmd5>
+    <version>0.18.2</version>
+    <time>1757958768</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.18.2:
+  * Breaking Changes:
+    + Drop support for Python 3.9
+    + Making dask and pillow optional dependencies
+  * Enhancements:
+    + Add more information to repr of reductions
+    + Edge bundling speedup using optimized numba code
+  * Compatibility:
+    + Compatibility with Pillow 11.3.0
+    + Compatibility with cuDF 24.12
+    + Compatibility with dask 2025.1 and dask-expr 2
+    + Compatibility with pixi v0.40.0
+    + Compatibility with Python 3.13
+  * Bugfixes:
+    + Fix segfault when quadmesh reduction wrongly exceeded the array size
+    + PDF scaling bug
+  * Maintenance:
+    + Move to pixi and hatchling</comment>
+    <requestid>1304729</requestid>
+  </revision>
 </revisionlist>

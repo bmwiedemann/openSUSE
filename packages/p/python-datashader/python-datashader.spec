@@ -1,7 +1,7 @@
 #
 # spec file for package python-datashader
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ BuildArch:      noarch
 
 %{?sle15_python_module_pythons}
 Name:           python-datashader%{psuffix}
-Version:        0.16.3
+Version:        0.18.2
 Release:        0
 Summary:        Data visualization toolchain based on aggregating into a grid
 License:        BSD-3-Clause
@@ -37,11 +37,12 @@ URL:            https://datashader.org
 # SourceRepository: https://github.com/holoviz/datashader
 Source0:        https://files.pythonhosted.org/packages/source/d/datashader/datashader-%{version}.tar.gz
 Source100:      python-datashader-rpmlintrc
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module param}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyct}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow
@@ -101,9 +102,6 @@ saturation, overplotting, or underplotting issues.
 
 %prep
 %autosetup -p1 -n datashader-%{version}
-sed -i -e '/^#!\//, 1d' examples/*.py
-chmod -x examples/getting_started/2_Pipeline.ipynb
-sed -i 's/"--color=yes"//' pyproject.toml
 
 %build
 %pyproject_wheel
@@ -112,9 +110,7 @@ sed -i 's/"--color=yes"//' pyproject.toml
 %if ! %{with test}
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/datashader
-%{python_expand %fdupes %{buildroot}%{$python_sitelib}
-chmod a-x %{buildroot}%{$python_sitelib}/datashader/examples/filetimes.py
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %if %{with test}

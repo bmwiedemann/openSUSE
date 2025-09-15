@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Sep 15 05:51:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.18.2:
+  * Breaking Changes:
+    + Drop support for Python 3.9
+    + Making dask and pillow optional dependencies
+  * Enhancements:
+    + Add more information to repr of reductions
+    + Edge bundling speedup using optimized numba code
+  * Compatibility:
+    + Compatibility with Pillow 11.3.0
+    + Compatibility with cuDF 24.12
+    + Compatibility with dask 2025.1 and dask-expr 2
+    + Compatibility with pixi v0.40.0
+    + Compatibility with Python 3.13
+  * Bugfixes:
+    + Fix segfault when quadmesh reduction wrongly exceeded the array size
+    + PDF scaling bug
+  * Maintenance:
+    + Move to pixi and hatchling
+
+-------------------------------------------------------------------
 Sun Sep 22 12:17:10 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Don't require runtime requirements for building: Avoid resolver
