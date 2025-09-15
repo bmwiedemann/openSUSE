@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 14 11:55:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.78.9:
+  * Bug Fixes
+    - Fixed jf pip deps.cache off-by-one error by @fluxxBot in
+      #3065
+
+-------------------------------------------------------------------
 Tue Sep 02 05:39:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.78.8:
