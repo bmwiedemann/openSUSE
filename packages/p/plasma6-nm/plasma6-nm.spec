@@ -286,7 +286,9 @@ FortiGate SSL VPN plugin for plasma-nm components.
 %{_kf6_applicationsdir}/kcm_mobile_wifi.desktop
 %{_kf6_applicationsdir}/kcm_networkmanagement.desktop
 %{_kf6_applicationsdir}/org.kde.vpnimport.desktop
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/org.kde.plasma.networkmanagement.appdata.xml
+%endif
 %{_kf6_debugdir}/plasma-nm.categories
 %{_kf6_libdir}/libplasmanm_editor.so
 %{_kf6_libdir}/libplasmanm_internal.so
