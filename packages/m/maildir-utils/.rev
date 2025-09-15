@@ -934,4 +934,16 @@
     manual and unit tests.</comment>
     <requestid>1295676</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>c9216f6ef0f0f285253abe017c7eaa79</srcmd5>
+    <version>1.12.13</version>
+    <time>1757958774</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.12.13:
+  * Improvements to the build process
+  * Guile/Scheme binding (&quot;SCM&quot;)
+  * New experimental &quot;labels&quot; sub-command
+  * See https://github.com/djcb/mu/releases/tag/v1.12.13 for details</comment>
+    <requestid>1304743</requestid>
+  </revision>
 </revisionlist>

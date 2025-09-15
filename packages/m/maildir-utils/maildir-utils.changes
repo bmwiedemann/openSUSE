@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 15 08:03:03 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.13:
+  * Improvements to the build process
+  * Guile/Scheme binding ("SCM")
+  * New experimental "labels" sub-command
+  * See https://github.com/djcb/mu/releases/tag/v1.12.13 for details
+
+-------------------------------------------------------------------
 Fri Jul 25 06:18:51 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.12:
