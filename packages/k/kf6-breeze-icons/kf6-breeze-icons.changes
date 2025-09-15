@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Sep  8 13:32:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.18.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.18.0
+- Changes since 6.17.0:
+  * Update dependency version to 6.18.0
+  * Sort generated qrc (kde#508718)
+  * Remove nonstandard colorful app icon sizes
+  * Remove old unused Calligra app icons (kde#508720)
+  * Remove Bomi icon (kde#508770)
+  * Remove 22px colorful app icons (kde#508299)
+  * replace symlink to apps/codeblocks.svg with the file
+  * report where we found the link
+  * improve error message for windows links
+  * Remove all colorful 3rd-party app icons
+  * remove suyu icons
+  * Update version to 6.18.0
+
+-------------------------------------------------------------------
 Mon Aug  4 06:57:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.17.0
