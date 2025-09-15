@@ -1,7 +1,7 @@
 #
 # spec file for package hyprland-qtutils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2024 Malcolm J Lewis <malcolmlewis@opensuse.org>
 # Copyright (c) 2024 Shawn W Dunn <sfalken@opensuse.org>
 #
@@ -19,7 +19,7 @@
 
 
 Name:           hyprland-qtutils
-Version:        0.1.4
+Version:        0.1.5
 Release:        0
 Summary:        Hyprland QT/qml utility apps
 License:        BSD-3-Clause
