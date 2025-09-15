@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 14 11:56:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.40:
+  * Bump github.com/ulikunitz/xz from 0.5.12 to 0.5.14 by
+    @dependabot[bot] in #1868
+  * Issue 1817 fix: Show container name in Assisted remediation by
+    @cx-anjali-deore in #1867
+  * fix(imagescan): use all targets in exceptions by @htsr in #1869
+  * replace olekukonko/tablewriter with jedib0t/go-pretty by
+    @matthyx in #1866
+  * feat: add default matchers option to image scanning by
+    @aadarsh-nagrath in #1857
+
+-------------------------------------------------------------------
 Tue Sep 02 05:39:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.39:
