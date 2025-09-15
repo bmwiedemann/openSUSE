@@ -1,7 +1,7 @@
 #
 # spec file for package opensuse-migration-tool
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2025 Marcela Maslanova
 # Copyright (c) 2025 Lubos Kocman
 #
@@ -19,7 +19,7 @@
 
 
 Name:           opensuse-migration-tool
-Version:        20250731.8b95d00
+Version:        20250815.344dba5
 Release:        0
 Summary:        Migration and Upgrade tool for openSUSE
 License:        Apache-2.0
@@ -53,15 +53,19 @@ cp SLES.prod %{buildroot}/%{_datadir}/%{name}/SLES.prod
 # Install scripts directory
 cp -a scripts %{buildroot}/%{_datadir}/%{name}/
 
+# Dialogrc custom theme
+cp dialogrc %{buildroot}%{_datadir}/%{name}/dialogrc
+
 %check
 
 %files
 %defattr(644,root,root,755)
 %attr(0755, root, root) %{_sbindir}/%{name}
-%{_datadir}/%{name}
-%{_datadir}/%{name}/scripts
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/scripts
+%{_datadir}/%{name}
+%{_datadir}/%{name}/scripts
+%{_datadir}/%{name}/dialogrc
 %attr(0755, root, root) %{_datadir}/%{name}/scripts/*
 %attr(0644, root, root) %{_datadir}/%{name}/SLES.prod
 

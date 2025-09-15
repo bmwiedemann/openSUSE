@@ -85,4 +85,14 @@ migrations as well as point release upgrades
     <comment></comment>
     <requestid>1296819</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e22182d16c4c8fd3cc988a2dbcc53674</srcmd5>
+    <version>20250815.344dba5</version>
+    <time>1757958805</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250815.344dba5:
+  * Keep only Experimental in the title
+  * Install custom dialogrc with a green theme</comment>
+    <requestid>1304806</requestid>
+  </revision>
 </revisionlist>
