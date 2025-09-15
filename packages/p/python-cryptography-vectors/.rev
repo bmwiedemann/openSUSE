@@ -436,4 +436,13 @@
 - update to 44.0.2:</comment>
     <requestid>1292429</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>eab5855a8ca0a61bfd6bb9bf72bcf8f5</srcmd5>
+    <version>45.0.7</version>
+    <time>1757958627</time>
+    <user>anag_factory</user>
+    <comment>- update to 45.0.7:
+  * Update test vectors to match python-cryptography 45.0.7</comment>
+    <requestid>1304684</requestid>
+  </revision>
 </revisionlist>
