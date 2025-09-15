@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep  8 13:33:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.18.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.18.0
+- Too many changes since 6.17.0, only listing bugfixes:
+  * KDirModel: use moveAs instead of Rename when editing file name When renaming a file on the desktop to an existing filename, the operation previously failed with a generic error instead of showing the expected "file already exists" dialog. This change ensures consistent behavior with renaming in the file manager. BUG: 407509 FIXED-IN: 6.18 (kde#407509)
+  * kfileitem: mimeComment for .desktop should not be their 'Comment' (kde#382325)
+  * guard mount point lookup (kde#508185)
+  * KUrlComboBox::setUrls(): remove check for file existence (kde#507598)
+  * Avoid "Content-Length: 0" header for empty GET and HEAD requests (kde#507523)
+
+-------------------------------------------------------------------
 Mon Aug  4 06:57:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.17.0
