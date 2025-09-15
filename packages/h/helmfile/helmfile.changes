@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Sep 14 08:20:57 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.1.7:
+  What's Changed
+  * fix pflag error by @zhaque44 in #2164
+  * build(deps): bump actions/setup-go from 5 to 6 by
+    @dependabot[bot] in #2166
+  * build(deps): bump github.com/hashicorp/go-getter from 1.7.9 to
+    1.7.10 by @dependabot[bot] in #2165
+  * build(deps): bump github.com/spf13/pflag from 1.0.9 to 1.0.10
+    by @dependabot[bot] in #2163
+  * Add helm diff installation to README by @nwneisen in #2170
+  * build(deps): bump github.com/hashicorp/go-getter from 1.7.10
+    to 1.8.0 by @dependabot[bot] in #2175
+  * build(deps): bump golang.org/x/term from 0.34.0 to 0.35.0 by
+    @dependabot[bot] in #2174
+  * build(deps): bump github.com/zclconf/go-cty from 1.16.4 to
+    1.17.0 by @dependabot[bot] in #2173
+  * Fix panic when helm isn't installed by @nwneisen in #2169
+  * build(deps): bump golang.org/x/sync from 0.16.0 to 0.17.0 by
+    @dependabot[bot] in #2172
+  * ci: update minikube and kubernetes versions by @yxxhero in #2181
+  * build(deps): bump k8s.io/apimachinery from 0.34.0 to 0.34.1 by
+    @dependabot[bot] in #2180
+  * Remove deprecated --wait-retries flag support to fix Helm
+    compatibility error by @Copilot in #2179
+  * build(deps): bump go.yaml.in/yaml/v2 from 2.4.2 to 2.4.3 by
+    @dependabot[bot] in #2183
+  * build: update Helm to v3.19.0 across all components by @yxxhero
+    in #2187
+  * build: update helm-diff plugin to v3.13.0 by @yxxhero in #2189
+  * feat: Implement caching for pulling OCI charts by @mustdiechik
+    in #2171
+  * build(deps): bump github.com/helmfile/chartify from 0.24.7 to
+    0.25.0 by @dependabot[bot] in #2190
+
+-------------------------------------------------------------------
 Thu Sep  4 13:32:56 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.1.6:
