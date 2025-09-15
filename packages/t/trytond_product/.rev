@@ -128,4 +128,12 @@
     <comment>version bump (forwarded request 1289030 from DocB)</comment>
     <requestid>1289045</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c6b0714ed395aaa6abb7348b58222eac</srcmd5>
+    <version>7.0.3</version>
+    <time>1757958790</time>
+    <user>anag_factory</user>
+    <comment>bugfix version</comment>
+    <requestid>1304783</requestid>
+  </revision>
 </revisionlist>
