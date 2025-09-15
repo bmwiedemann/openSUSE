@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 14 18:27:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * Adjust signature of SugarTerminalReporter to avoid conflicts
+    with other pytest plugins
+- update to 1.1.0:
+  * Add Playwright trace file detection and display support for
+    failed tests
+  * `--sugar-trace-dir`: Configure the directory name for
+    Playwright trace files (default: test-results)
+  * `--sugar-no-trace`: Disable Playwright trace file detection
+    and display
+
+-------------------------------------------------------------------
 Thu Feb  1 20:51:57 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.0:
