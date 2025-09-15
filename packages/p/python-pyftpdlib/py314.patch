@@ -1,0 +1,46 @@
+From d90297a181c8edd8ffe5c08ba03866845e9a3493 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Miro=20Hron=C4=8Dok?= <miro@hroncok.cz>
+Date: Fri, 22 Nov 2024 22:20:13 +0100
+Subject: [PATCH] Avoid the multiprocessing forkserver method (#656)
+
+Python 3.14 changed the default multiprocessing method for POSIX (sans macOS)
+from fork to forkserver. This causes errors like:
+
+    TypeError: cannot pickle 'select.epoll' object
+    when serializing dict item '_poller'
+    when serializing pyftpdlib.ioloop.Epoll state
+    when serializing pyftpdlib.ioloop.Epoll object
+    when serializing dict item 'ioloop'
+    when serializing pyftpdlib.servers.MultiprocessFTPServer state
+    when serializing pyftpdlib.servers.MultiprocessFTPServer object
+    when serializing tuple item 0
+    when serializing method reconstructor arguments
+    when serializing method object
+    when serializing dict item '_target'
+    when serializing multiprocessing.context.Process state
+    when serializing multiprocessing.context.Process object
+
+See https://github.com/python/cpython/issues/125714
+---
+ pyftpdlib/servers.py | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/pyftpdlib/servers.py b/pyftpdlib/servers.py
+index 32c0db02..3dfc39c6 100644
+--- a/pyftpdlib/servers.py
++++ b/pyftpdlib/servers.py
+@@ -579,6 +579,13 @@ class MultiprocessFTPServer(_SpawnerBase):
+ 
+             _lock = multiprocessing.Lock()
+             _exit = multiprocessing.Event()
++            # Python 3.14 changed the non-macOS POSIX default to forkserver
++            # but the code in this module does not work with it
++            # See https://github.com/python/cpython/issues/125714
++            if multiprocessing.get_start_method() == 'forkserver':
++                _mp_context = multiprocessing.get_context(method='fork')
++            else:
++                _mp_context = multiprocessing.get_context()
+ 
+             def _start_task(self, *args, **kwargs):
+-                return multiprocessing.Process(*args, **kwargs)
++                return self._mp_context.Process(*args, **kwargs)

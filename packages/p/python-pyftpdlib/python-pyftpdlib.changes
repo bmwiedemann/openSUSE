@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 11 12:40:28 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.0.1
+  * exposed a new FTPHandler.encoding attribute defaulting to 'utf-8'.
+  * removed Python 2.7 support.
+  * remove copies of asyncore.py and asynchat.py. Use backports from
+    PYPI instead.
+  * set default SSL version from deprecated SSLv23_METHOD to newer
+    TLS_SERVER_METHOD.
+  * pysendfile module is no longer a required dependency.
+  * SSLv2 and SSLv3 connections are no longer accepted when client
+    connects.
+- Add py314.patch to add compatibility with Python 3.14
+
+-------------------------------------------------------------------
 Tue Aug 19 14:26:32 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only
