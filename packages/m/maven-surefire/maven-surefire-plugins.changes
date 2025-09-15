@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep 15 10:28:27 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 3.5.4
+  * New features and improvements
+    + Name the shutdown hook
+    + Implement fail-fast behavior for JUnit Platform provider
+    + Create a single LauncherSession for invocations of
+      JUnitPlatformProvider
+  * Bug Fixes
+    * SUREFIRE-2298: fix xml output with junit 5 nested classes
+      (fix integration with Cucumber and Archunit)
+  * Maintenance
+    + feat: enable prevent branch protection rules
+    + Get rid of plexus-annotations
+    + Remove maven-changes-plugin
+    + Enable GitHub Issues
+- Modified patches:
+  * 0001-Port-to-TestNG-7.4.0.patch
+  * 0002-Unshade-surefire.patch
+    + rediff
+  * maven-surefire-bootstrap-resources.patch
+    + regenerate from non-bootstrap build
+
+-------------------------------------------------------------------
 Mon Mar 31 15:14:16 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 3.5.3
