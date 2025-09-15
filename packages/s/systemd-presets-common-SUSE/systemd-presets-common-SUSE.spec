@@ -1,7 +1,7 @@
 #
 # spec file for package systemd-presets-common-SUSE
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           systemd-presets-common-SUSE
 Version:        15
@@ -43,9 +44,9 @@ Requires(post): bash
 Default presets for systemd on SUSE based distributions.
 
 %package devel
-Summary:   Devel package for systemd presets
-Group:     System/Base
-Requires:  systemd-presets-common-SUSE
+Summary:        Devel package for systemd presets
+Group:          System/Base
+Requires:       systemd-presets-common-SUSE
 
 %description devel
 This package provides the needed files to build preset

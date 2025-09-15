@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 11 11:40:31 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Enable gdm.service by default: allow to migrate from the legacy
+  display manager (xdm wrapper) to native systemd managed gdm.
+
+-------------------------------------------------------------------
 Thu Jul 10 07:01:47 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
 
 - Add cockpit.socket to improve user experience as it is replacing
