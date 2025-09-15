@@ -1,7 +1,7 @@
 #
 # spec file for package ttyplot
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2023-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           ttyplot
-Version:        1.7.1
+Version:        1.7.4
 Release:        0
 Summary:        Realtime plotting utility for terminals
 License:        Apache-2.0
