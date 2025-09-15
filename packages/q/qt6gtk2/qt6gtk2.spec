@@ -17,7 +17,7 @@
 
 %define qt_version 6.0.0
 Name:           qt6gtk2
-Version:        0.5
+Version:        0.6
 Release:        0
 Summary:        Qt6 Gtk2 Style Plugin
 License:        GPL-2.0-or-later
