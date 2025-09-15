@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 15 06:16:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install.
+- Use autosetup macro.
+- Dedupe the Suggests list.
+- List directories explicitly under %files.
+
+-------------------------------------------------------------------
 Tue Oct  8 02:01:18 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - Add patch 0001-Remove-upper-bound-for-tokenizers.patch
