@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>1203333</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>65ecab352b4a5d56cc5563b7b265aa9b</srcmd5>
+    <version>1.3.0</version>
+    <time>1757958728</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.3.0:
+  * docs: fix markdown violations
+  * switch to uv
+  * Fix for type error
+  * fix terminal width, improve version logic</comment>
+    <requestid>1304655</requestid>
+  </revision>
 </revisionlist>
