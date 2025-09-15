@@ -17,7 +17,7 @@
 
 
 Name:           pcm
-Version:        202502
+Version:        202509
 Release:        0
 Summary:        Intel Performance Counter Monitor
 License:        BSD-3-Clause
@@ -62,6 +62,7 @@ rm -rf %{buildroot}%{_docdir}/pcm/generate_summary_readme.md
 %{_docdir}/pcm/PCM-SENSOR-SERVER-README.md
 %{_docdir}/pcm/PCM_RAW_README.md
 %{_docdir}/pcm/CXL_README.md
+%{_docdir}/pcm/PCM_IIO_README.md
 %{_docdir}/pcm/LATENCY-OPTIMIZED-MODE.md
 %{_docdir}/pcm/PCM_ACCEL_README.md
 %{_docdir}/pcm/README.md
@@ -70,7 +71,6 @@ rm -rf %{buildroot}%{_docdir}/pcm/generate_summary_readme.md
 %{_sbindir}/pcm-core
 %{_sbindir}/pcm-iio
 %{_sbindir}/pcm-latency
-%{_sbindir}/pcm-lspci
 %{_sbindir}/pcm-memory
 %{_sbindir}/pcm-msr
 %{_sbindir}/pcm-tpmi
@@ -98,6 +98,7 @@ rm -rf %{buildroot}%{_docdir}/pcm/generate_summary_readme.md
 %{_datadir}/pcm/opCode-6-207.txt
 %{_datadir}/pcm/opCode-6-182.txt
 %{_datadir}/pcm/opCode-6-174.txt
+%{_datadir}/pcm/opCode-6-108.txt
 %{_datadir}/pcm/PMURegisterDeclarations
 
 %changelog

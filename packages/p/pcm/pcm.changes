@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Sep 14 11:00:00 UTC 2025 - Roman Dementiev <roman.dementiev@intel.com>
+
+- update to version 202509
+ * pcm-iio: enable the tool on Icelake-D Xeon by adding event opCode file
+ * pcm-power: implement csv output
+ * pcm-iio: add date/time to csv output
+ * pcm-raw: support second OCR (offcore-response) counter on Intel Atom/E-core
+ * pcm-pcie: allow core offlining on select Intel processor generations
+ * pcm-raw: implement -? option to print all Intel event descriptions
+ * support 1 bit in short notation: -b 1 instead of -b 1:1
+ * pcm: allow core 0 to be offlined
+ * don't fail if PCIe PMU discovery table is corrupt, produce BIOS table bug report instead
+ * Grafana dashboard: don't display UPI panels if there no Intel UPI links detected
+ * pcm-iio: add documentation
+ * pcm-memory: implement --nocxl option
+ * documentation updates
+ * pcm-accel: update documentation
+ * pcm-raw: add option to select first record in Intel PMT db match result
+ * pcm-bw-histogram.sh: expect pcm-memory to reside in same folder, rather than ./
+ * drop pcm-lspci, replaced by pcm-iio -list
+ * add L3 shared cache info
+ * fix DRAM energy unit on Intel Xeon 6 Granite Rapids/Sierra Forest/Grand Ridge
+ * fix issue on Intel Xeon 6 Granite Rapids with skipping IAA accelerator
+ * fix OCR events on GNR-D (Xeon 6 SoC)
+ * fix pcm-numa on Intel Xeon 6 Granite Rapids
+ * make cpu family/model extraction fully compliant to the spec to support the upcoming Diamond Rapids Xeon detection
+ * pcm-pcie: correct events help description
+ * pcm-sensor-server metric exporter: don't exit if IIO PMUs are not availabile
+ * pcm-pcie: check if the required CHA PMUs are available
+ * catch and report exceptions from thread creation
+ * increase CXL port array size and add bounds checking
+ * fix issue when CPUBUSNO_VALID is 0
+ * fix displaying binary codes in the terminal
+
+-------------------------------------------------------------------
 Sat Mar 01 11:00:00 UTC 2025 - Roman Dementiev <roman.dementiev@intel.com>
 
 - Update to version 202502
