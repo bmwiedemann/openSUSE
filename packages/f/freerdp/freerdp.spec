@@ -18,7 +18,7 @@
 
 %if 0%{?suse_version} > 1500 && 0%{?is_opensuse}
 %global _with_ffmpeg 1
-#global _with_openh264 1
+%global _with_openh264 1
 %global _with_soxr 1
 %global _with_lame 1
 %else
