@@ -204,4 +204,12 @@
     <comment>Pass '-DQT_QML_NO_CACHEGEN:BOOL=TRUE' to CMake to make builds reproducible (related: boo#1248369) (forwarded request 1302953 from bmwiedemann)</comment>
     <requestid>1303135</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ca82d928358327459e67a256f8930c01</srcmd5>
+    <version>6.18.0</version>
+    <time>1757958580</time>
+    <user>anag_factory</user>
+    <comment>KDE Frameworks 6.18 (forwarded request 1303540 from krop)</comment>
+    <requestid>1304410</requestid>
+  </revision>
 </revisionlist>
