@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyNaCl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-PyNaCl
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Python binding to the Networking and Cryptography (NaCl) library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/pyca/pynacl/
-Source:         https://pypi.org/packages/source/P/PyNaCl/PyNaCl-%{version}.tar.gz
-# https://github.com/pyca/pynacl/commit/a8c08b18f3a2e8f2140c531afaf42715fcab68e7
+Source:         https://pypi.org/packages/source/P/PyNaCl/pynacl-%{version}.tar.gz
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
@@ -51,7 +48,7 @@ a crypto library with the stated goal of improving usability, security and
 speed.
 
 %prep
-%setup -q -n PyNaCl-%{version}
+%setup -q -n pynacl-%{version}
 rm -Rf src/libsodium
 
 %build
