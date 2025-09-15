@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep  8 13:32:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.18.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.18.0
+- Changes since 6.17.0:
+  * ecm_generate_headers: add docs when target include dirs need no extra setup
+  * [KDEInstallDirsCommon] Add missing RUNSTATEDIR
+  * [ECMFeatureSummary] Add missing documentation
+  * Allow to use unity builds for qmlcachegen files
+  * ECMSetupQtPluginMacroNames: add MACRO_NAMES arg, phase out JSON_* ones
+  * KDECompilerSettings.cmake - enable warning 5249 when compiling with MSVC
+  * ECMAddAppIcon: Fix empty ELSEIF warnings w/ >=CMake-4.1.0
+  * Update version to 6.18.0
+  * Move away from removed docutils error handling helpers
+
+-------------------------------------------------------------------
 Mon Aug  4 06:57:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.17.0
