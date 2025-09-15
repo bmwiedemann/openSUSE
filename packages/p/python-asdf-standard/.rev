@@ -67,4 +67,35 @@
     <comment>- use modern python on sle15</comment>
     <requestid>1193955</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4c9a03141a487f4122acddc8c307fae2</srcmd5>
+    <version>1.4.0</version>
+    <time>1757958738</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.0:
+  * Update documentation to use new terminology. The ASDF
+    specification refers to the description of the file format
+    whereas the ASDF core schemas refers to the versioned
+    collection of schemas for core objects (ndarray, software,
+    etc)
+  * Add datatype-1.0.0 schema
+  * Add galexsec time to time-1.4.0
+  * Add utime and tai_seconds formats to new time-1.3.0
+  * Update reference files
+  * Remove statement discouraging use of YAML anchors and aliases
+  * Documentation theme config changes for new ASDF website
+  * Adds global navigation in docs top bar
+  * Adds reference files for v1.6.0
+  * Adds anchor, endian, structured and scalar reference files
+  * Update documentation to improve readability
+  * Discourage creation of new custom metaschemas
+  * Clarify that schema refs cannot contain tags
+  * Describe implementation handling of block compression
+    identifiers
+  * Update description of how tag version mismatches should be
+    handled
+  * Remove outdated schema top level tag attribute description
+  * Clarify post-tree pre-block padding allowed bytes</comment>
+    <requestid>1304692</requestid>
+  </revision>
 </revisionlist>
