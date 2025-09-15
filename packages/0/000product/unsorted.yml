@@ -4555,6 +4555,7 @@ unsorted:
   - gamescope-session-plus 
   - gamescope-session-steam 
   - gamescope-session-steam-generic 
+  - gamescope-shaders 
   - gammaray 
   - gammaray-devel 
   - gammaray-qt6 
@@ -24383,6 +24384,7 @@ unsorted:
   - python311-azure-mgmt-azurearcdata 
   - python311-azure-mgmt-azurestack 
   - python311-azure-mgmt-azurestackhci 
+  - python311-azure-mgmt-azurestackhcivm 
   - python311-azure-mgmt-baremetalinfrastructure 
   - python311-azure-mgmt-batch 
   - python311-azure-mgmt-batchai 
@@ -24398,6 +24400,7 @@ unsorted:
   - python311-azure-mgmt-communication 
   - python311-azure-mgmt-compute 
   - python311-azure-mgmt-computefleet 
+  - python311-azure-mgmt-computerecommender 
   - python311-azure-mgmt-computeschedule 
   - python311-azure-mgmt-confidentialledger 
   - python311-azure-mgmt-confluent 
@@ -24610,6 +24613,7 @@ unsorted:
   - python311-azure-mgmt-webpubsub 
   - python311-azure-mgmt-weightsandbiases 
   - python311-azure-mgmt-workloadmonitor 
+  - python311-azure-mgmt-workloadorchestration 
   - python311-azure-mgmt-workloads 
   - python311-azure-mgmt-workloadssapvirtualinstance 
   - python311-azure-mixedreality-authentication 
@@ -28119,6 +28123,7 @@ unsorted:
   - python312-azure-mgmt-azurearcdata 
   - python312-azure-mgmt-azurestack 
   - python312-azure-mgmt-azurestackhci 
+  - python312-azure-mgmt-azurestackhcivm 
   - python312-azure-mgmt-baremetalinfrastructure 
   - python312-azure-mgmt-batch 
   - python312-azure-mgmt-batchai 
@@ -28134,6 +28139,7 @@ unsorted:
   - python312-azure-mgmt-communication 
   - python312-azure-mgmt-compute 
   - python312-azure-mgmt-computefleet 
+  - python312-azure-mgmt-computerecommender 
   - python312-azure-mgmt-computeschedule 
   - python312-azure-mgmt-confidentialledger 
   - python312-azure-mgmt-confluent 
@@ -28346,6 +28352,7 @@ unsorted:
   - python312-azure-mgmt-webpubsub 
   - python312-azure-mgmt-weightsandbiases 
   - python312-azure-mgmt-workloadmonitor 
+  - python312-azure-mgmt-workloadorchestration 
   - python312-azure-mgmt-workloads 
   - python312-azure-mgmt-workloadssapvirtualinstance 
   - python312-azure-mixedreality-authentication 
@@ -31910,6 +31917,7 @@ unsorted:
   - python313-azure-mgmt-azurearcdata 
   - python313-azure-mgmt-azurestack 
   - python313-azure-mgmt-azurestackhci 
+  - python313-azure-mgmt-azurestackhcivm 
   - python313-azure-mgmt-baremetalinfrastructure 
   - python313-azure-mgmt-batch 
   - python313-azure-mgmt-batchai 
@@ -31925,6 +31933,7 @@ unsorted:
   - python313-azure-mgmt-communication 
   - python313-azure-mgmt-compute 
   - python313-azure-mgmt-computefleet 
+  - python313-azure-mgmt-computerecommender 
   - python313-azure-mgmt-computeschedule 
   - python313-azure-mgmt-confidentialledger 
   - python313-azure-mgmt-confluent 
@@ -32137,6 +32146,7 @@ unsorted:
   - python313-azure-mgmt-webpubsub 
   - python313-azure-mgmt-weightsandbiases 
   - python313-azure-mgmt-workloadmonitor 
+  - python313-azure-mgmt-workloadorchestration 
   - python313-azure-mgmt-workloads 
   - python313-azure-mgmt-workloadssapvirtualinstance 
   - python313-azure-mixedreality-authentication 
@@ -37377,6 +37387,7 @@ unsorted:
   - stackit-cli-bash-completion 
   - stackit-cli-fish-completion 
   - stackit-cli-zsh-completion 
+  - stackstate-cli 
   - stacktile 
   - staging-build-key 
   - stalld 
