@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b8924503878c58907b26ad1399c06d2a</srcmd5>
+    <version>0.1+git2.64d7a05</version>
+    <time>1757958657</time>
+    <user>anag_factory</user>
+    <comment>This package provides reshade shaders packaged with Gamescope.
+
+Fixed double buildrequire on gamescope</comment>
+    <requestid>1304543</requestid>
+  </revision>
+</revisionlist>
