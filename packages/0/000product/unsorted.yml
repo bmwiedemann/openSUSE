@@ -1505,7 +1505,6 @@ unsorted:
   - bluez-qt-devel 
   - bluez-qt-udev 
   - bluez-test 
-  - bluez-zsh-completion 
   - bmake 
   - bmkdep 
   - bmon 
@@ -1647,7 +1646,6 @@ unsorted:
   - btrfs-extent-same 
   - btrfs-soft-reboot-generator 
   - btrfsprogs-static 
-  - bubblewrap-zsh-completion 
   - bucklespring 
   - buckygen 
   - budgie-app-launcher-applet 
@@ -2200,11 +2198,9 @@ unsorted:
   - clamav-milter 
   - clamtk 
   - clamtk-lang 
-  - clang 
   - clang-devel 
   - clang-doc 
   - clang-extract 
-  - clang-tools 
   - clang15 
   - clang15-devel 
   - clang15-doc 
@@ -2217,6 +2213,8 @@ unsorted:
   - clang20 
   - clang20-devel 
   - clang20-doc 
+  - clang21-devel 
+  - clang21-doc 
   - clanlib 
   - clanlib-devel 
   - clanlib-doc 
@@ -2235,7 +2233,6 @@ unsorted:
   - claws-mail 
   - claws-mail-devel 
   - claws-mail-lang 
-  - clazy 
   - cld2-devel 
   - cldr-emoji-annotation 
   - cldr-emoji-annotation-devel 
@@ -2344,7 +2341,6 @@ unsorted:
   - cmus-plugin-vorbis 
   - cmus-plugin-wavpack 
   - cmus-plugins-all 
-  - cnf-zsh 
   - cni 
   - cni-plugin-flannel 
   - cni-plugins 
@@ -2669,7 +2665,6 @@ unsorted:
   - cpp13 
   - cpp14 
   - cpp7 
-  - cppcheck 
   - cppcheck-gui 
   - cpphs 
   - cppi 
@@ -2953,7 +2948,6 @@ unsorted:
   - cura-engine 
   - cura-fdm-materials 
   - curl-fish-completion 
-  - curl-zsh-completion 
   - curlie 
   - curtail 
   - curtail-lang 
@@ -4017,7 +4011,6 @@ unsorted:
   - fec-devel 
   - feedbackd 
   - feedbackd-devel 
-  - feh-zsh-completion 
   - felix-bundlerepository 
   - felix-bundlerepository-javadoc 
   - felix-gogo-command 
@@ -4189,7 +4182,6 @@ unsorted:
   - firewall-macros 
   - firewalld-rpcbind-helper 
   - firewalld-test 
-  - firewalld-zsh-completion 
   - firstyear-b612-fonts 
   - fish 
   - fish-devel 
@@ -4231,7 +4223,6 @@ unsorted:
   - flatpak-devel 
   - flatpak-spawn 
   - flatpak-xdg-utils 
-  - flatpak-zsh-completion 
   - flatten-maven-plugin 
   - flatten-maven-plugin-javadoc 
   - flawfinder 
@@ -4750,7 +4741,6 @@ unsorted:
   - gcal 
   - gcal-lang 
   - gcalcli 
-  - gcc 
   - gcc-32bit 
   - gcc-PIE 
   - gcc-ada 
@@ -7001,7 +6991,6 @@ unsorted:
   - git-subrepo 
   - git-subrepo-bash-completion 
   - git-subrepo-zsh-completion 
-  - git-svn 
   - git-sync 
   - git-test 
   - git-town 
@@ -8400,10 +8389,7 @@ unsorted:
   - health-check 
   - health-check-bash-completion 
   - health-checker-testing 
-  - heaptrack 
   - heaptrack-devel 
-  - heaptrack-gui 
-  - heaptrack-lang 
   - heatshrink 
   - heatshrink-devel 
   - hedgewars 
@@ -9876,17 +9862,13 @@ unsorted:
   - kdesignerplugin-lang 
   - kdesu-devel 
   - kdesvn 
-  - kdevelop 
-  - kdevelop-lang 
   - kdevelop-pg-qt 
   - kdevelop-plugin-php 
   - kdevelop-plugin-php-devel 
   - kdevelop-plugin-php-lang 
   - kdevelop-plugin-python3 
   - kdevelop-plugin-python3-lang 
-  - kdevplatform 
   - kdevplatform-devel 
-  - kdevplatform-lang 
   - kdf 
   - kdf-lang 
   - kdiagram-devel 
@@ -10274,6 +10256,8 @@ unsorted:
   - kolourpaint-lang 
   - kommit 
   - kommit-lang 
+  - komodo 
+  - komodo-lang 
   - kompare-devel 
   - kompose 
   - kompose-bash-completion 
@@ -11085,7 +11069,6 @@ unsorted:
   - libIlmThread-3_3-32-32bit 
   - libImath-3_1-29-32bit 
   - libIrrlicht1_8 
-  - libKChart2 
   - libKChart6-3 
   - libKChart6-3-lang 
   - libKDb3-4 
@@ -11119,7 +11102,6 @@ unsorted:
   - libKF5Su5 
   - libKF5Su5-lang 
   - libKF5Syndication5 
-  - libKF5ThreadWeaver5 
   - libKF5UnitConversion5 
   - libKF5UnitConversion5-lang 
   - libKGantt2 
@@ -11150,13 +11132,16 @@ unsorted:
   - libLLVM18-32bit 
   - libLLVM19 
   - libLLVM19-32bit 
+  - libLLVM20 
   - libLLVM20-32bit 
+  - libLLVM21-32bit 
   - libLLVMSPIRVLib-devel 
-  - libLLVMSPIRVLib20 
+  - libLLVMSPIRVLib21 
   - libLTO15 
   - libLTO18 
   - libLTO19 
   - libLTO20 
+  - libLTO21 
   - libLibreGraphAPI1 
   - libLimeSuite23_11-0 
   - libMagick++-7_Q16HDRI5 
@@ -11425,7 +11410,6 @@ unsorted:
   - libQt6DesignerComponents6 
   - libQt6Graphs6 
   - libQt6Grpc6 
-  - libQt6Help6 
   - libQt6HttpServer6 
   - libQt6Mqtt6 
   - libQt6Nfc6 
@@ -12259,10 +12243,8 @@ unsorted:
   - libboost_process1_88_0-devel 
   - libboost_process1_88_0-x86-64-v3 
   - libboost_program_options-devel 
-  - libboost_program_options1_88_0 
   - libboost_program_options1_88_0-32bit 
   - libboost_program_options1_88_0-devel 
-  - libboost_program_options1_88_0-x86-64-v3 
   - libboost_python-py3-1_88_0-32bit 
   - libboost_python-py3-1_88_0-devel 
   - libboost_python3-devel 
@@ -12530,7 +12512,7 @@ unsorted:
   - libclang-cpp19-32bit 
   - libclang-cpp20 
   - libclang-cpp20-32bit 
-  - libclang13 
+  - libclang-cpp21-32bit 
   - libclang_rt18 
   - libclang_rt19 
   - libclang_rt20 
@@ -14083,7 +14065,6 @@ unsorted:
   - libkcddb-devel 
   - libkcddb-lang 
   - libkcddb-qt6-devel 
-  - libkchart-lang 
   - libkcompactdisc-qt6-devel 
   - libkdcraw 
   - libkdcraw-devel 
@@ -14096,7 +14077,6 @@ unsorted:
   - libkdecorations2private10 
   - libkdegames-devel 
   - libkdepim-devel 
-  - libkdevplatform63 
   - libkdsingleapplication-qt6-1_2 
   - libkdsingleapplication1_2 
   - libkdsoap-server-qt6-2 
@@ -14305,6 +14285,7 @@ unsorted:
   - liblldb18 
   - liblldb19 
   - liblldb20 
+  - liblldb21 
   - liblldpctl4 
   - liblmdb-0_9_30-32bit 
   - liblms7002m-devel 
@@ -14932,6 +14913,7 @@ unsorted:
   - libomp18-devel 
   - libomp19-devel 
   - libomp20-devel 
+  - libomp21-devel 
   - libonnx 
   - libonnx_proto 
   - liboop-devel 
@@ -16013,7 +15995,6 @@ unsorted:
   - libsepol-utils 
   - libsepol2-32bit 
   - libserd-0-0-32bit 
-  - libserf-1-1 
   - libserf-devel 
   - libserialdv1 
   - libserializer-javadoc 
@@ -16214,13 +16195,11 @@ unsorted:
   - libstaroffice-tools 
   - libstatgrab-devel 
   - libstatgrab10 
-  - libstdc++-devel 
   - libstdc++-devel-32bit 
   - libstdc++6-devel-gcc13 
   - libstdc++6-devel-gcc13-32bit 
   - libstdc++6-devel-gcc14 
   - libstdc++6-devel-gcc14-32bit 
-  - libstdc++6-devel-gcc15 
   - libstdc++6-devel-gcc15-32bit 
   - libstdc++6-devel-gcc7 
   - libstdc++6-devel-gcc7-32bit 
@@ -16326,8 +16305,6 @@ unsorted:
   - libsvm-devel 
   - libsvm-java 
   - libsvm3 
-  - libsvn_auth_gnome_keyring-1-0 
-  - libsvn_auth_kwallet-1-0 
   - libswitchboard-3-0 
   - libsword-1_9_0 
   - libswresample3_9 
@@ -16659,7 +16636,6 @@ unsorted:
   - libusrsctp2 
   - libut1 
   - libutf8_range-32_0_0-32bit 
-  - libutf8proc3 
   - libuuid-devel 
   - libuuid-devel-32bit 
   - libuuid-devel-static 
@@ -17418,6 +17394,7 @@ unsorted:
   - lld18 
   - lld19 
   - lld20 
+  - lld21 
   - lldap 
   - lldap-cli 
   - lldap-migration-tool 
@@ -17432,6 +17409,8 @@ unsorted:
   - lldb19-devel 
   - lldb20 
   - lldb20-devel 
+  - lldb21 
+  - lldb21-devel 
   - lldpd 
   - lldpd-devel 
   - llmnrd 
@@ -17486,10 +17465,22 @@ unsorted:
   - llvm20-devel 
   - llvm20-doc 
   - llvm20-gold 
+  - llvm20-libc++-devel 
+  - llvm20-libc++1 
+  - llvm20-libc++abi-devel 
+  - llvm20-libc++abi1 
+  - llvm20-libclang13 
   - llvm20-opt-viewer 
   - llvm20-polly 
   - llvm20-polly-devel 
   - llvm20-vim-plugins 
+  - llvm21 
+  - llvm21-devel 
+  - llvm21-doc 
+  - llvm21-opt-viewer 
+  - llvm21-polly 
+  - llvm21-polly-devel 
+  - llvm21-vim-plugins 
   - lmdb 
   - lmdb-devel 
   - lmdbxx-devel 
@@ -18478,6 +18469,7 @@ unsorted:
   - mercurial-extension-hg-evolve 
   - mercurial-extension-hg-git 
   - mercurial-lang 
+  - mercurial-rust 
   - mercurial-tests 
   - mergiraf 
   - merkuro 
@@ -18490,10 +18482,8 @@ unsorted:
   - meshlab 
   - meslo-lg-dz-fonts 
   - meslo-lg-fonts 
-  - meson 
   - meson-test 
   - meson-tools 
-  - meson-vim 
   - messagelib-devel 
   - metacity 
   - metacity-devel 
@@ -19606,7 +19596,6 @@ unsorted:
   - nim 
   - nimbus-icon-theme 
   - nini 
-  - ninja 
   - ninja-test 
   - nintendo-gamecube-wiimote-udev-rules 
   - ninvaders 
@@ -19776,7 +19765,6 @@ unsorted:
   - nvimpager 
   - nvimpager-zsh-completion 
   - nvme-cli-regress-script 
-  - nvme-cli-zsh-completion 
   - nvme-stas 
   - nvmetcli 
   - nvptx-tools 
@@ -23102,7 +23090,6 @@ unsorted:
   - powerman 
   - powerman-devel 
   - powermanga 
-  - powerprofilesctl-zsh-completion 
   - powerstat 
   - powerstat-bash-completion 
   - powertop 
@@ -23600,6 +23587,7 @@ unsorted:
   - python3-clang18 
   - python3-clang19 
   - python3-clang20 
+  - python3-clang21 
   - python3-clingo 
   - python3-clustershell 
   - python3-coconut 
@@ -23709,6 +23697,7 @@ unsorted:
   - python3-lldb18 
   - python3-lldb19 
   - python3-lldb20 
+  - python3-lldb21 
   - python3-logreduce 
   - python3-lttngust 
   - python3-magnumclient 
@@ -26364,6 +26353,7 @@ unsorted:
   - python311-pyaml 
   - python311-pyarrow 
   - python311-pyarrow-devel 
+  - python311-pyasynchat 
   - python311-pyasyncore 
   - python311-pybars3 
   - python311-pybcj 
@@ -30145,6 +30135,7 @@ unsorted:
   - python312-pyarrow-devel 
   - python312-pyasn1 
   - python312-pyasn1-modules 
+  - python312-pyasynchat 
   - python312-pyasyncore 
   - python312-pybars3 
   - python312-pybcj 
@@ -31546,7 +31537,6 @@ unsorted:
   - python313-PyWavelets 
   - python313-PyWebDAV3-GNUHealth 
   - python313-PyX 
-  - python313-Pygments 
   - python313-Pympler 
   - python313-Pyphen 
   - python313-Pyro5 
@@ -33891,6 +33881,7 @@ unsorted:
   - python313-pyaml 
   - python313-pyarrow 
   - python313-pyarrow-devel 
+  - python313-pyasynchat 
   - python313-pyasyncore 
   - python313-pybars3 
   - python313-pybcj 
@@ -37495,11 +37486,8 @@ unsorted:
   - subunit-devel 
   - subunit-filters 
   - subunit-shell 
-  - subversion 
-  - subversion-bash-completion 
   - subversion-devel 
   - subversion-doc 
-  - subversion-perl 
   - subversion-python 
   - subversion-ruby 
   - subversion-server 
@@ -48314,7 +48302,6 @@ unsorted:
   - udiskie 
   - udiskie-lang 
   - udisks2-docs 
-  - udisks2-zsh-completion 
   - udns 
   - udns-devel 
   - udp2raw-tunnel 
@@ -49018,7 +49005,6 @@ unsorted:
   - wireplumber-devel 
   - wireplumber-doc 
   - wireplumber-video-only-profile 
-  - wireplumber-zsh-completion 
   - wireshark 
   - wireshark-devel 
   - wireshark-plugin-libvirt 
@@ -49822,7 +49808,6 @@ unsorted:
   - zps 
   - zram-generator 
   - zsa-udev-rules 
-  - zsh 
   - zsh-htmldoc 
   - zsh-sh 
   - zstd-gzip 
