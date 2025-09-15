@@ -1,7 +1,7 @@
 #
 # spec file for package mkvtoolnix
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mkvtoolnix
-Version:        94.0
+Version:        95.0
 Release:        0
 Summary:        Tools to Create, Alter, and Inspect Matroska Files
 License:        GPL-2.0-or-later
@@ -31,15 +31,18 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  file-devel
-BuildRequires:  libboost_filesystem-devel >= 1.66.0
-BuildRequires:  libboost_headers-devel >= 1.66.0
-BuildRequires:  libboost_system-devel >= 1.66.0
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_filesystem-devel >= 1.74.0
+BuildRequires:  libboost_headers-devel >= 1.74.0
+BuildRequires:  libboost_system-devel >= 1.74.0
 BuildRequires:  pkgconfig(gmp)
 %else
-BuildRequires:  gcc10-c++
+BuildRequires:  gcc13-c++
 BuildRequires:  gmp-devel
+BuildRequires:  libboost_filesystem1_75_0-devel
+BuildRequires:  libboost_headers1_75_0-devel
+BuildRequires:  libboost_system1_75_0-devel
 %endif
 BuildRequires:  gettext-tools
 BuildRequires:  hicolor-icon-theme
@@ -97,7 +100,7 @@ rm -rf lib/{libebml,libmatroska,nlohmann-json,pugixml,fmt,utf8-cpp}
 
 %build
 export CXX=g++
-test -x "$(type -p g++-10)" && export CXX=g++-10
+test -x "$(type -p g++-13)" && export CXX=g++-13
 export CPPFLAGS="%{optflags} -I%{_includedir}/utf8cpp"
 %configure --disable-update-check --enable-debug --enable-optimization
 rake --verbose %{?_smp_mflags} V=1

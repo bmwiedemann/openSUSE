@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Sep 14 11:48:32 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 95.0
+  New features and enhancements:
+  * mkvmerge, MKVToolNix GUI: new chapter generation feature: a
+    new placeholder has been introduced when generating chapters
+    for appended files, \<TITLE\>, which will be replaced by the
+    appended file's title metadata.
+  * mkvmerge: the display matrix from MP4 files are now
+    translated into appropriate roll and yaw values for output
+    MKV files.
+  * mkvmerge: add `--date` argument to set the date metadata.
+  Bug fixes:
+  * build system: fixed building with the upcoming Boost v1.89.0
+    by only requiring the header part of the Boost.System library
+    as it's been header-only since v1.69.0.
+  * mkvmerge: PCM packetizer: mkvmerge will now always write
+    frames with 40ms of samples, no matter how long or short the
+    frames in the source files were.
+  * mkvmerge: MP4/QuickTime reader: fix exorbitant memory usage
+    when reading PCM audio tracks.
+ Build system changes:
+  * Boost v1.74.0 or newer is now required.
+
+-------------------------------------------------------------------
 Sun Jul 27 19:02:58 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 94.0

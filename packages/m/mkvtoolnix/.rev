@@ -1579,4 +1579,12 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment></comment>
     <requestid>1295980</requestid>
   </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>18bd720a862fdefe0dabf70f1b63da1f</srcmd5>
+    <version>95.0</version>
+    <time>1757958724</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1304640</requestid>
+  </revision>
 </revisionlist>
