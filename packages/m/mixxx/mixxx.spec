@@ -4,7 +4,6 @@
 #
 # Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010-2012 Pascal Bleser <pascal.bleser@opensuse.org>
-# Copyright (c) 2005-2010 oc2pus
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +23,7 @@
 %endif
 
 Name:           mixxx
-Version:        2.5.2
+Version:        2.5.3
 Release:        0
 Summary:        DJ mixing application
 License:        GPL-3.0-or-later
@@ -69,35 +68,35 @@ BuildRequires:  cmake(Qt6WebSockets)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(gudev-1.0)
-BuildRequires:  pkgconfig(libebur128)
-BuildRequires:  pkgconfig(libmp3lame)
-BuildRequires:  pkgconfig(libprofiler)
-BuildRequires:  pkgconfig(libtcmalloc)
-BuildRequires:  pkgconfig(lilv-0)
-BuildRequires:  pkgconfig(portmidi)
 BuildRequires:  pkgconfig(benchmark)
 BuildRequires:  pkgconfig(djinterop) >= 0.26
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glut)
+BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(id3tag)
 BuildRequires:  pkgconfig(libavcodec) >= 58
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat) >= 58
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libchromaprint)
+BuildRequires:  pkgconfig(libebur128)
 BuildRequires:  pkgconfig(libkeyfinder)
 BuildRequires:  pkgconfig(libmodplug)
+BuildRequires:  pkgconfig(libmp3lame)
 BuildRequires:  pkgconfig(libpostproc)
+BuildRequires:  pkgconfig(libprofiler)
 BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(libtcmalloc)
 BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(lilv-0)
 BuildRequires:  pkgconfig(mad)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(portaudio-2.0)
+BuildRequires:  pkgconfig(portmidi)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(rubberband)
 BuildRequires:  pkgconfig(shout) >= 2.4.6
