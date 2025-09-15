@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-hunter
-Version:        3.8.0
+Version:        3.9.0
 Release:        0
 Summary:        Pytest plugin for coverage reporting
 License:        BSD-2-Clause
@@ -70,7 +70,8 @@ popd
 %install
 %pyproject_install
 %{python_expand \
-rm -r %{buildroot}%{$python_sitearch}/build_tests.py %{buildroot}%{$python_sitearch}/__pycache__
+      rm -r %{buildroot}%{$python_sitearch}/build_tests.py %{buildroot}%{$python_sitearch}/__pycache__
+      find %{buildroot}%{$python_sitearch}/hunter \( -name "*.c" -o -name "*.h" \) -delete
 %fdupes %{buildroot}%{$python_sitearch}/
 }
 %python_clone -a %{buildroot}%{_bindir}/hunter-trace
