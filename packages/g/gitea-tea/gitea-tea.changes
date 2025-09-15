@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Sep 12 20:27:00 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.10.1+git.1757695903.cc20b52:
+  - feat: add validation for object-format flag in repo create
+    command (see gh#openSUSE/openSUSE-git#60)
+  - Fix release version
+  - update gitea sdk to v0.22
+  - don't fallback login directly
+  - Check duplicated login name in interact mode when creating
+    new login
+  - Fix bug when output json with special chars
+  - add debug mode and update readme
+  - update go.mod to retract the wrong tag v1.3.3
+  - revert completion scripts removal
+  - Remove pagination from context
+  - Continue auth when failed to open browser
+  - Fix bug
+  - Fix tea login add with ssh public key bug
+  - Add temporary authentication via environment variables
+  - Fix attachment size
+  - deploy image when tagging
+  - Add Zip URL for release list
+  - Use bubbletea instead of survey for interacting with TUI
+  - capitalize a few items
+  - rm out of date comparison file
+  - README: Document logging in to gitea
+  - remove autocomplete command
+  - chore(deps): update ghcr.io/devcontainers/features/git-lfs
+    docker tag to v1.2.5
+  - replace arch package url
+  - fix: Reenable `-p` and `--limit` switches
+- Remove upstreamed patch:
+  - fix-Reenable-p-and-limit-switches-778.patch
+
+-------------------------------------------------------------------
 Wed Jul 23 17:44:40 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix argument parsing fix-Reenable-p-and-limit-switches-778.patch

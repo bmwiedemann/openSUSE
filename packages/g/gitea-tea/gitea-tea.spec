@@ -1,7 +1,7 @@
 #
 # spec file for package gitea-tea
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           gitea-tea
-Version:        0.10.1
+Version:        0.10.1+git.1757695903.cc20b52
 Release:        0
 Summary:        A command line tool to interact with Gitea servers
 License:        MIT
 URL:            https://gitea.com/gitea/tea
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Patch0:         fix-Reenable-p-and-limit-switches-778.patch
 BuildRequires:  golang(API) >= 1.24
 Conflicts:      tea
 
