@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 14 20:45:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 14.1.0:
+  * Removed `typing_extensions` from runtime dependencies
+  * Live objects (including Progress) may now be nested
+  * Added padding property to Syntax which returns a tuple of
+    four integers
+  * Fixed extraction of recursive exceptions
+  * Fixed padding applied to Syntax
+  * Fixed `Panel` title missing the panel background style
+  * Added `TTY_INTERACTIVE` environment variable to force
+    interactive mode off or on
+- drop pygments.patch (upstream)
+
+-------------------------------------------------------------------
 Fri May 30 13:35:48 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 14.0.0

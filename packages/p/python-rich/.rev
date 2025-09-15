@@ -396,4 +396,22 @@
     <comment></comment>
     <requestid>1281448</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>84ada9458298f1e9443bd8f834f5741e</srcmd5>
+    <version>14.1.0</version>
+    <time>1757958629</time>
+    <user>anag_factory</user>
+    <comment>- update to 14.1.0:
+  * Removed `typing_extensions` from runtime dependencies
+  * Live objects (including Progress) may now be nested
+  * Added padding property to Syntax which returns a tuple of
+    four integers
+  * Fixed extraction of recursive exceptions
+  * Fixed padding applied to Syntax
+  * Fixed `Panel` title missing the panel background style
+  * Added `TTY_INTERACTIVE` environment variable to force
+    interactive mode off or on
+- drop pygments.patch (upstream)</comment>
+    <requestid>1304685</requestid>
+  </revision>
 </revisionlist>

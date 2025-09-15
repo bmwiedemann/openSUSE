@@ -1,7 +1,7 @@
 #
 # spec file for package python-rich
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,15 +19,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-rich
-Version:        14.0.0
+Version:        14.1.0
 Release:        0
 Summary:        A Python library for rich text and beautiful formatting in the terminal
 License:        MIT
 URL:            https://github.com/Textualize/rich
 Source:         https://github.com/Textualize/rich/archive/refs/tags/v%{version}.tar.gz#/rich-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/Textualize/rich/pull/3604 Fix test that changed with Pygments 2.19.
-# and https://github.com/Textualize/rich/pull/3608 fix remaining tests with Pygments 2.19 #3604 did not fix
-Patch:          pygments.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module markdown-it-py >= 2.2.0}
 BuildRequires:  %{python_module pip}
