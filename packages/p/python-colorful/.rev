@@ -37,4 +37,17 @@
     <comment></comment>
     <requestid>1278069</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0ce85f564bf257a27d4892d3a6bf486b</srcmd5>
+    <version>0.5.7</version>
+    <time>1757958735</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.5.7:
+  * Read version from ast.Constant instead of ast.Str
+  * fix: DualOutput object has no attribute isatty
+  * Test Python 3.13 support
+
+- Initial release of 0.5.4</comment>
+    <requestid>1304682</requestid>
+  </revision>
 </revisionlist>

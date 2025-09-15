@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 14 20:40:54 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.7:
+  * Read version from ast.Constant instead of ast.Str
+  * fix: DualOutput object has no attribute isatty
+  * Test Python 3.13 support
+
+-------------------------------------------------------------------
 Fri May 16 09:41:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
@@ -22,5 +30,5 @@ Wed Jan  4 14:25:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Oct 10 03:57:10 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Initial release of 0.5.4 
+- Initial release of 0.5.4
 

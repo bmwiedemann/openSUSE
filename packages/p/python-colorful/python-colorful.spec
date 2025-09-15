@@ -1,7 +1,7 @@
 #
 # spec file for package python-colorful
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-colorful
-Version:        0.5.6
+Version:        0.5.7
 Release:        0
 Summary:        Terminal string styling done right, in Python
 License:        MIT
