@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jul 29 15:12:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.21.4
+  * No change, the 0.21.3 release failed, this is just a re-release
+- from version 0.21.3
+  * Clippy fixes
+  * Fixed an introduced backward breaking change in our Rust APIs.
+- from version 0.21.2
+  * Update the release builds following 0.21.1
+  * Replace lazy_static with stabilized std::sync::LazyLock in 1.80
+  * Fix no-onig no-wasm builds
+  * Fix typos in strings and comments
+  * Fix type notation of merges in BPE Python binding
+  * Bump http-proxy-middleware from 2.0.6 to 2.0.9 in
+    /tokenizers/examples/unstable_wasm/www
+  * Fix data path in test_continuing_prefix_trainer_mismatch
+  * clippy by @ArthurZucker
+  * Update pyo3 and rust-numpy depends for no-gil/free-threading compat
+  * Use ApiBuilder::from_env() in from_pretrained function
+  * Upgrade onig, to get it compiling with GCC 15
+  * Itertools upgrade
+  * Bump webpack-dev-server from 4.10.0 to 5.2.1
+    in /tokenizers/examples/unstable_wasm/www
+  * Bump brace-expansion from 1.1.11 to 1.1.12 in /bindings/node
+  * Fix features blending into a paragraph
+  * Adding throughput to benches to have a more consistent measure across
+  * Upgrading dependencies
+  * [docs] Whitespace
+  * Hotfixing the stub
+  * Bpe clones
+  * Fixed Length Pre-Tokenizer
+  * Consolidated optimization ahash dary compact str
+  * Breaking: Fix training with special tokens
+
+-------------------------------------------------------------------
 Wed Mar 19 18:26:11 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 0.21.1:
