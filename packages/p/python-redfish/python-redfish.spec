@@ -1,7 +1,7 @@
 #
 # spec file for package python-redfish
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2020-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           python-redfish
-Version:        3.3.2
+Version:        3.3.4
 Release:        0
 Summary:        Redfish Python Library
 License:        BSD-3-Clause
