@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  1 11:27:47 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
+
+- Update vendored depdendencies, fix [bsc#1248014, CVE-2025-55159] in slab
+
+-------------------------------------------------------------------
 Fri Aug 01 12:25:22 UTC 2025 - david.anes@suse.com
 
 - Update to version 2.3.2:
