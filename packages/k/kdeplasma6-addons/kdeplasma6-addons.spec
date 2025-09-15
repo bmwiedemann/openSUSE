@@ -113,7 +113,9 @@ the Plasma desktop.
 
 %files
 %license LICENSES/*
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/*.xml
+%endif
 %{_kf6_dbuspolicydir}/org.kde.kameleonhelper.conf
 %{_kf6_debugdir}/kdeplasma-addons.categories
 %{_kf6_debugdir}/kdeplasma-addons.renamecategories
