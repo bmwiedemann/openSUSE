@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 15 11:39:36 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.2.1
+  * Replace ``pkg_resources`` with ``importlib.metadata`` to access
+    package metadata.
+- Update BuildRequires from setup.py
+
+-------------------------------------------------------------------
 Fri May 30 08:54:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 5.2

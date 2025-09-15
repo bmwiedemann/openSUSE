@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define modname zdaemon
 Name:           python-%{modname}
-Version:        5.2
+Version:        5.2.1
 Release:        0
 Summary:        Daemon process control library and tools
 License:        ZPL-2.1
@@ -29,7 +29,6 @@ BuildRequires:  %{python_module ZConfig}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module manuel}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zc.customdoctests}
 BuildRequires:  %{python_module zope.testing}
