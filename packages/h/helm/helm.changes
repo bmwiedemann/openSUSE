@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Sat Sep 13 16:02:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 3.19.0:
+  * bump version to v3.19.0
+  * fix: use username and password if provided
+  * chore(deps): bump the k8s-io group with 7 updates
+  * chore(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+  * chore(deps): bump github.com/stretchr/testify from 1.11.0 to 1.11.1
+  * chore(deps): bump github.com/stretchr/testify from 1.10.0 to 1.11.0
+  * fix(helm-lint): fmt
+  * fix(helm-lint): Add TLSClientConfig
+  * fix(helm-lint): Add HTTP/HTTPS URL support for json schema references
+  * chore(deps): bump the k8s-io group with 7 updates
+  * fix: go mod tidy for v3
+  * chore(deps): bump golang.org/x/crypto from 0.40.0 to 0.41.0
+  * chore(deps): bump golang.org/x/term from 0.33.0 to 0.34.0
+  * fix Chart.yaml handling
+  * Handle messy index files
+  * chore(deps): bump github.com/containerd/containerd from 1.7.27 to 1.7.28
+  * json schema fix
+  * fix: k8s version parsing to match original
+  * chore(deps): bump sigs.k8s.io/yaml from 1.5.0 to 1.6.0
+  * Do not explicitly set SNI in HTTPGetter
+  * chore(deps): bump github.com/spf13/pflag from 1.0.6 to 1.0.7
+  * chore(deps): bump the k8s-io group with 7 updates
+  * chore(deps): bump golang.org/x/crypto from 0.39.0 to 0.40.0
+  * chore(deps): bump golang.org/x/term from 0.32.0 to 0.33.0
+  * chore(deps): bump golang.org/x/text from 0.26.0 to 0.27.0
+  * Disabling linter due to unknown issue
+  * Updating link handling
+  * Bump github.com/Masterminds/semver/v3 from 3.3.0 to 3.3.1
+  * build(deps): bump the k8s-io group with 7 updates
+  * build(deps): bump sigs.k8s.io/yaml from 1.4.0 to 1.5.0
+  * fix: user username password for login
+  * Update pkg/registry/transport.go
+  * Update pkg/registry/transport.go
+  * fix: add debug logging to oci transport
+  * build(deps): bump golang.org/x/crypto from 0.38.0 to 0.39.0
+  * build(deps): bump golang.org/x/text from 0.25.0 to 0.26.0
+  * fix: legacy docker support broken for login
+  * fix: plugin installer test with no Internet
+  * Handle an empty registry config file.
+  * Prevent fetching newReference again as we have in calling method
+  * Prevent failure when resolving version tags in oras memory store
+  * fix(client): skipnode utilization for PreCopy
+  * test: Skip instead of returning early. looks more intentional
+  * test: tests repo stripping functionality
+  * test: include tests for Login based on different protocol prefixes
+  * fix(client): layers now returns manifest - remove duplicate from descriptors
+  * fix(client): return nil on non-allowed media types
+  * Fix 3.18.0 regression: registry login with scheme
+  * Update pkg/plugin/plugin.go
+  * Update pkg/plugin/plugin.go
+  * Wait for Helm v4 before raising when platformCommand and Command are set
+  * Revert "fix (helm) : toToml` renders int as float [ backport to v3 ]"
+  * build(deps): bump the k8s-io group with 7 updates
+  * chore: update generalization warning message
+  * build(deps): bump oras.land/oras-go/v2 from 2.5.0 to 2.6.0
+  * build(deps): bump the k8s-io group with 7 updates
+  * build(deps): bump golang.org/x/crypto from 0.37.0 to 0.38.0
+  * fix: move warning to top of block
+  * fix: govulncheck workflow
+  * fix: replace fmt warning with slog
+  * fix: add warning when ignore repo flag
+  * bump version to v3.18.0
+  * backport #30673 to dev-v3
+  * feat: add httproute from gateway-api to create chart template
+
+-------------------------------------------------------------------
 Wed Aug 20 11:12:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.18.6:

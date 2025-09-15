@@ -947,4 +947,41 @@ See changelog in:
     <comment></comment>
     <requestid>1301959</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>1fe013718f99d8b4eb3dd37b22d0efe9</srcmd5>
+    <version>3.19.0</version>
+    <time>1757958665</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.19.0:
+  * bump version to v3.19.0
+  * fix: use username and password if provided
+  * chore(deps): bump the k8s-io group with 7 updates
+  * chore(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+  * chore(deps): bump github.com/stretchr/testify from 1.11.0 to 1.11.1
+  * chore(deps): bump github.com/stretchr/testify from 1.10.0 to 1.11.0
+  * fix(helm-lint): fmt
+  * fix(helm-lint): Add TLSClientConfig
+  * fix(helm-lint): Add HTTP/HTTPS URL support for json schema references
+  * chore(deps): bump the k8s-io group with 7 updates
+  * fix: go mod tidy for v3
+  * chore(deps): bump golang.org/x/crypto from 0.40.0 to 0.41.0
+  * chore(deps): bump golang.org/x/term from 0.33.0 to 0.34.0
+  * fix Chart.yaml handling
+  * Handle messy index files
+  * chore(deps): bump github.com/containerd/containerd from 1.7.27 to 1.7.28
+  * json schema fix
+  * fix: k8s version parsing to match original
+  * chore(deps): bump sigs.k8s.io/yaml from 1.5.0 to 1.6.0
+  * Do not explicitly set SNI in HTTPGetter
+  * chore(deps): bump github.com/spf13/pflag from 1.0.6 to 1.0.7
+  * chore(deps): bump the k8s-io group with 7 updates
+  * chore(deps): bump golang.org/x/crypto from 0.39.0 to 0.40.0
+  * chore(deps): bump golang.org/x/term from 0.32.0 to 0.33.0
+  * chore(deps): bump golang.org/x/text from 0.26.0 to 0.27.0
+  * Disabling linter due to unknown issue
+  * Updating link handling
+  * Bump github.com/Masterminds/semver/v3 from 3.3.0 to 3.3.1
+  * build(deps): bump the k8s-io group with 7 updates</comment>
+    <requestid>1304583</requestid>
+  </revision>
 </revisionlist>
