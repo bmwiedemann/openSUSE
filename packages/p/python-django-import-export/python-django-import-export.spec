@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-import-export
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-import-export
-Version:        4.3.8
+Version:        4.3.9
 Release:        0
 Summary:        Django data importing and exporting
 License:        BSD-2-Clause

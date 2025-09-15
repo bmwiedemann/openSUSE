@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 14 21:03:14 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.9:
+  * Allow specifying meta options in the
+    :ref:`model_resourcefactory<using_modelresource_factory>`
+    (2078)
+  * Allow custom fields and methods in
+    :ref:`model_resourcefactory<using_modelresource_factory>`
+    (2081)
+  * FAQ update to describe how to customize Excel exports (2088)
+
+-------------------------------------------------------------------
 Sat Jul 12 17:19:29 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.8:
