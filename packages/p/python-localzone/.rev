@@ -68,4 +68,13 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1281774</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>06aa92973b250de94786bd8b59fa9235</srcmd5>
+    <version>0.9.8</version>
+    <time>1757958763</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-dnspython-2.8.0.patch:
+  * Support dnspython 2.8.0 changes.</comment>
+    <requestid>1304710</requestid>
+  </revision>
 </revisionlist>

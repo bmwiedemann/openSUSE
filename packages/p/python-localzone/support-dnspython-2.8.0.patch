@@ -1,0 +1,24 @@
+From 200f4b47187c137340781ba05f3b79738f86ffa1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lum=C3=ADr=20=27Frenzy=27=20Balhar?=
+ <frenzy.madness@gmail.com>
+Date: Tue, 9 Sep 2025 13:17:37 +0200
+Subject: [PATCH] Fix test_zone_add_record_no_content with dnspython 2.8.0
+
+Fixes: https://github.com/ags-slc/localzone/issues/5
+---
+ tests/test_models.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_models.py b/tests/test_models.py
+index 621f6c0..b4e8687 100644
+--- a/tests/test_models.py
++++ b/tests/test_models.py
+@@ -78,7 +78,7 @@ def test_zone_add_record_unknown_type():
+ 
+ def test_zone_add_record_no_content():
+     with localzone.manage(ZONEFILE, ORIGIN) as z:
+-        with pytest.raises((AttributeError, DNSSyntaxError)):
++        with pytest.raises((AttributeError, DNSSyntaxError, ValueError)):
+             z.add_record("test", "txt", None)
+ 
+ 
