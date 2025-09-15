@@ -461,4 +461,17 @@
     lines.</comment>
     <requestid>1268468</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>cb51f6c61a732ea4fdb689a2b7569d82</srcmd5>
+    <version>3.23.0</version>
+    <time>1757958732</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.23.0:
+  * Added cipher modes Key Wrap (KW, RFC3394) and Key Wrap with
+    Padding (KWP, RFC5649). Both are defined also in NIST SP
+    800-38F.
+  * GH#862: For HashEdDSA and Ed448, sign() and verify() modified
+    the state of the XOF.</comment>
+    <requestid>1304659</requestid>
+  </revision>
 </revisionlist>

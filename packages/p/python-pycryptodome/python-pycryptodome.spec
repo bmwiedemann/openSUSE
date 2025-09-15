@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycryptodome
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define min_version %{lua:rpm.expand("%{version}"):gsub("^(%d+%.%d+).*", "%1")}
 %{?sle15_python_module_pythons}
 Name:           python-pycryptodome
-Version:        3.22.0
+Version:        3.23.0
 Release:        0
 Summary:        Cryptographic library for Python
 License:        BSD-2-Clause
