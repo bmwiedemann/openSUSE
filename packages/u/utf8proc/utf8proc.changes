@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 13 20:52:50 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.11.0:
+  * Unicode 17 support
+  * Documentation improvements
+  * Build fix for C90, silence ASAN warning, CMake modernization
+
+-------------------------------------------------------------------
 Wed Jan  1 12:06:27 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.10.0:

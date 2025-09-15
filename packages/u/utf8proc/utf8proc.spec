@@ -19,7 +19,7 @@
 
 %define lib_ver 3
 Name:           utf8proc
-Version:        2.10.0
+Version:        2.11.0
 Release:        0
 Summary:        Library for processing UTF-8 encoded Unicode strings
 License:        MIT
@@ -87,12 +87,13 @@ find %{buildroot}/%{_libdir} -type f -name "*.a" -print -delete
 %files -n lib%{name}%{lib_ver}
 %license LICENSE.md
 %doc lump.md NEWS.md README.md
-%{_libdir}/libutf8proc.so.*
+%{_libdir}/libutf8proc.so.%{lib_ver}{,.*}
 
 %files devel
 %license LICENSE.md
 %{_includedir}/utf8proc.h
 %{_libdir}/libutf8proc.so
 %{_libdir}/pkgconfig/libutf8proc.pc
+%{_libdir}/cmake/utf8proc
 
 %changelog
