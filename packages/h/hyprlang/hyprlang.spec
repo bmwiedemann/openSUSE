@@ -1,7 +1,7 @@
 #
 # spec file for package hyprlang
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 2
 
 Name:           hyprlang
-Version:        0.6.0
+Version:        0.6.4
 License:        LGPL-3.0-only
 Release:        0
 Summary:        A configuration language for Linux applications
@@ -75,7 +75,6 @@ This subpackeg contains headers for hyprlang.
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files -n lib%{name}%{sover}
-%{_libdir}/lib%{name}.so.%{sover}
-%{_libdir}/lib%{name}.so.%{version}
+%{_libdir}/lib%{name}.so.*
 
 %changelog
