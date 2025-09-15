@@ -18,7 +18,7 @@
 
 Name:           leiningen
 # Change LEIN_VERSION in lein-pkg when bumping
-Version:        2.11.2
+Version:        2.12.0
 Release:        0
 Summary:        Automation for Clojure projects
 License:        EPL-1.0
