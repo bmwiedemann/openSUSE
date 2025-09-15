@@ -7,8 +7,10 @@ Subject: [PATCH] Make unsafe subinterpreter support available via cfg flag
  src/impl_/pymodule.rs | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
---- a/vendor/pyo3-0.25.1/src/impl_/pymodule.rs
-+++ b/vendor/pyo3-0.25.1/src/impl_/pymodule.rs
+Index: cryptography-45.0.7/vendor/pyo3-0.25.1/src/impl_/pymodule.rs
+===================================================================
+--- cryptography-45.0.7.orig/vendor/pyo3-0.25.1/src/impl_/pymodule.rs
++++ cryptography-45.0.7/vendor/pyo3-0.25.1/src/impl_/pymodule.rs
 @@ -100,7 +100,7 @@ impl ModuleDef {
          // that static data is not reused across interpreters.
          //
@@ -18,8 +20,10 @@ Subject: [PATCH] Make unsafe subinterpreter support available via cfg flag
          {
              // PyInterpreterState_Get is only available on 3.9 and later, but is missing
              // from python3.dll for Windows stable API on 3.9
---- a/Cargo.toml
-+++ b/Cargo.toml
+Index: cryptography-45.0.7/Cargo.toml
+===================================================================
+--- cryptography-45.0.7.orig/Cargo.toml
++++ cryptography-45.0.7/Cargo.toml
 @@ -29,3 +29,6 @@ openssl-sys = "0.9.108"
  
  [profile.release]
@@ -27,9 +31,11 @@ Subject: [PATCH] Make unsafe subinterpreter support available via cfg flag
 +
 +[patch.crates-io]
 +pyo3 = { path="vendor/pyo3-0.25.1" }
---- a/Cargo.lock
-+++ b/Cargo.lock
-@@ -269,8 +269,6 @@ dependencies = [
+Index: cryptography-45.0.7/Cargo.lock
+===================================================================
+--- cryptography-45.0.7.orig/Cargo.lock
++++ cryptography-45.0.7/Cargo.lock
+@@ -276,8 +276,6 @@ dependencies = [
  [[package]]
  name = "pyo3"
  version = "0.25.1"

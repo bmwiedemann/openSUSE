@@ -1292,4 +1292,16 @@
   to allow ceph-mgr to load modules (boo#1248987) (forwarded request 1302241 from jimfunk)</comment>
     <requestid>1302472</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>ef4b2b1f80b62ccd41e8af061780da17</srcmd5>
+    <version>45.0.7</version>
+    <time>1757958626</time>
+    <user>anag_factory</user>
+    <comment>- update to 45.0.7:
+  * Added a function to support an upcoming pyOpenSSL release.
+
+  * Added basic support for PKCS7 decryption (including S/MIME 3.2) via
+    :func:`~cryptography.hazmat.primitives.serialization.pkcs7.pkcs7_decrypt_der`,</comment>
+    <requestid>1304683</requestid>
+  </revision>
 </revisionlist>

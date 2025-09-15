@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 14 20:45:39 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 45.0.7:
+  * Added a function to support an upcoming pyOpenSSL release.
+
+-------------------------------------------------------------------
 Mon Sep  1 14:46:55 UTC 2025 - James Oakley <jfunk@opensuse.org>
 
 - Add Make-unsafe-subinterpreter-support-available-via-cfg.patch
@@ -167,8 +173,8 @@ Sun Jan 26 10:59:13 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
     :class:`~cryptography.hazmat.primitives.kdf.argon2.Argon2id` when using
     OpenSSL 3.2.0+.
   * Added support for the :class:`~cryptography.x509.Admissions` certificate extension.
-  * Added basic support for PKCS7 decryption (including S/MIME 3.2) via 
-    :func:`~cryptography.hazmat.primitives.serialization.pkcs7.pkcs7_decrypt_der`, 
+  * Added basic support for PKCS7 decryption (including S/MIME 3.2) via
+    :func:`~cryptography.hazmat.primitives.serialization.pkcs7.pkcs7_decrypt_der`,
     :func:`~cryptography.hazmat.primitives.serialization.pkcs7.pkcs7_decrypt_pem`,
     and :func:`~cryptography.hazmat.primitives.serialization.pkcs7.pkcs7_decrypt_smime`.
 - Update specfile to accommodate new project structure at version 44.0.0
