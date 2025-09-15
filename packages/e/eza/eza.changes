@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 15 08:04:16 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.23.3:
+  Documentation:
+  * Corrected "user_executable_file" option
+  Features:
+  * Update flake inputs
+
+-------------------------------------------------------------------
 Mon Sep  8 06:54:33 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.23.2:

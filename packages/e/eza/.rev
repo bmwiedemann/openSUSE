@@ -1248,4 +1248,16 @@
   * Update flake</comment>
     <requestid>1303124</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>6e1fb9182cb4da7b129a6c6c923b5c15</srcmd5>
+    <version>0.23.3</version>
+    <time>1757958775</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.23.3:
+  Documentation:
+  * Corrected &quot;user_executable_file&quot; option
+  Features:
+  * Update flake inputs</comment>
+    <requestid>1304746</requestid>
+  </revision>
 </revisionlist>
