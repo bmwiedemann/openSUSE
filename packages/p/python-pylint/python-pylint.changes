@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Sep 14 18:17:44 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.8:
+  * Fix false positives for `possibly-used-before-assignment`
+    when variables are exhaustively assigned within a `match` block.
+  * Fix false positive for `missing-raises-doc` and `missing-
+    yield-doc` when the method length is less than docstring-min-
+    length.
+  * Fix a false positive for ``unused-variable`` when multiple
+    except handlers bind the same name under a try block.
+  * Fix false-negative for ``used-before-assignment`` with ``from
+    __future__ import annotations`` in function definitions.
+  * Fix a bug in Pyreverse where aggregations and associations
+    were included in diagrams regardless of the selected
+    --filter-mode (such as PUB_ONLY, ALL, etc.).
+  * Fix double underscores erroneously rendering as bold in
+    pyreverse's Mermaid output.
+
+-------------------------------------------------------------------
 Mon Aug 25 09:53:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems

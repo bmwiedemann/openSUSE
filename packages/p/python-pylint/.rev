@@ -801,4 +801,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1302173</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>a753bfbdf0bf24ba414fa46925bbb261</srcmd5>
+    <version>3.3.8</version>
+    <time>1757958726</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.8:
+  * Fix false positives for `possibly-used-before-assignment`
+    when variables are exhaustively assigned within a `match` block.
+  * Fix false positive for `missing-raises-doc` and `missing-
+    yield-doc` when the method length is less than docstring-min-
+    length.
+  * Fix a false positive for ``unused-variable`` when multiple
+    except handlers bind the same name under a try block.
+  * Fix false-negative for ``used-before-assignment`` with ``from
+    __future__ import annotations`` in function definitions.
+  * Fix a bug in Pyreverse where aggregations and associations
+    were included in diagrams regardless of the selected
+    --filter-mode (such as PUB_ONLY, ALL, etc.).
+  * Fix double underscores erroneously rendering as bold in
+    pyreverse's Mermaid output.</comment>
+    <requestid>1304654</requestid>
+  </revision>
 </revisionlist>
