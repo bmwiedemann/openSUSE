@@ -2,10 +2,11 @@
 Description=OpenSSH Per-Connection Server Daemon
 Documentation=man:systemd-ssh-generator(8) man:sshd(8)
 After=network.target
-	
+
 [Service]
 EnvironmentFile=-/etc/sysconfig/ssh
 ExecStartPre=/usr/sbin/sshd-gen-keys-start
 ExecStartPre=/usr/sbin/sshd -t $SSHD_OPTS
-ExecStart=-/usr/sbin/sshd -i $SSHD_OPTS
+ExecStart=-/usr/sbin/sshd -i $SSHD_OPTS -o "AuthorizedKeysFile ${CREDENTIALS_DIRECTORY}/ssh.ephemeral-authorized_keys-all .ssh/authorized_keys"
 StandardInput=socket
+ImportCredential=ssh.ephemeral-authorized_keys-all

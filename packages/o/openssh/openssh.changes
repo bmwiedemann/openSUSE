@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  9 07:26:02 UTC 2025 - Luna D Dragon <luna.dragon@suse.com>
+
+- Update sshd@.service to match upstream more closely, to enable
+  support for ephemeral sshd keys.
+- Add openssh-9.6p1-pam-rhost.patch which fixes a performance issue
+  where pam can do a reverse dns query of "UNKNOWN" which times out
+  multiple times, causing a substantial slowdown when logging in
+  (bsc#1249352).
+
+-------------------------------------------------------------------
 Tue May 13 09:32:44 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Enable --with-logind to call the SetTTY dbus method in systemd

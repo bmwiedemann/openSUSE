@@ -1971,4 +1971,17 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
     <comment></comment>
     <requestid>1277188</requestid>
   </revision>
+  <revision rev="195" vrev="3">
+    <srcmd5>72415d1c5907aea026c8a861e1f3e240</srcmd5>
+    <version>10.0p2</version>
+    <time>1757958624</time>
+    <user>anag_factory</user>
+    <comment>- Update sshd@.service to match upstream more closely, to enable
+  support for ephemeral sshd keys.
+- Add openssh-9.6p1-pam-rhost.patch which fixes a performance issue
+  where pam can do a reverse dns query of &quot;UNKNOWN&quot; which times out
+  multiple times, causing a substantial slowdown when logging in
+  (bsc#1249352). (forwarded request 1304675 from hpjansson)</comment>
+    <requestid>1304676</requestid>
+  </revision>
 </revisionlist>
