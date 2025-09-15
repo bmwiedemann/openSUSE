@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 15 06:13:30 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use poetry-core, rather than poetry as the build-system.
+
+-------------------------------------------------------------------
 Sun Sep  8 12:49:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Babel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2014 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module Flask >= 2.0}
 BuildRequires:  %{python_module Jinja2 >= 3.1}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz >= 2022.7}

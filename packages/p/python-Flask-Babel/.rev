@@ -95,4 +95,12 @@
   * Linting and other CI/build fixes</comment>
     <requestid>1199445</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>186f36bba7ff5b3cd20407b2077a31f7</srcmd5>
+    <version>4.1.0</version>
+    <time>1757958766</time>
+    <user>anag_factory</user>
+    <comment>- Use poetry-core, rather than poetry as the build-system.</comment>
+    <requestid>1304725</requestid>
+  </revision>
 </revisionlist>
