@@ -61,4 +61,16 @@
       (which includes all FILLVALs)</comment>
     <requestid>1297666</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b8a8b7e5495b3c3452b5c67b5c266313</srcmd5>
+    <version>1.3.6</version>
+    <time>1757958737</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.3.6:
+  * Stopping uncertainty &quot;DELTA_VAR&quot; variables from becoming
+    coordinate variables
+  * newbyteorder call was changed to update with newer version of
+    numpy</comment>
+    <requestid>1304691</requestid>
+  </revision>
 </revisionlist>

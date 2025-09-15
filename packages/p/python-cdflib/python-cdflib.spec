@@ -1,7 +1,7 @@
 #
 # spec file for package python-cdflib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-cdflib
-Version:        1.3.4
+Version:        1.3.6
 Release:        0
 Summary:        A python CDF reader toolkit
 License:        MIT
