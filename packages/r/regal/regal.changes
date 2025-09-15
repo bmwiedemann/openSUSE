@@ -1,4 +1,161 @@
 -------------------------------------------------------------------
+Sun Sep 14 12:09:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.36.1 (0.36.0 was not released):
+  This is Regal v0.36! The first Regal release since becoming a
+  part of the OPA project last month. This release mostly delivers
+  a number of new language server features as well as wider
+  improvements under the hood and to the developer experience.
+  * A note about Regal's documentation
+    Our documentation is now displayed as part of the main OPA
+    website!
+    https://www.openpolicyagent.org/projects/regal
+    From this release, links generated from Regal in output to
+    rules will point to this location. You might find links to the
+    old location as we get things updated. Please feel free to open
+    any issues for link problems you find just so we don't miss
+    anything.
+  * Get contextual documentation when calling built-in functions
+    - Following PR #1654, the Regal language server will now offer
+      signatureHelp to compatible clients. This shows the current
+      argument type and description in the help text for built-in
+      functions. This is in addition to the other general function
+      documentation displayed here.
+  * Quickly see related fields in when editing METADATA
+    - PR #1657 implements support for the documentHighlight request
+      from clients. This is currently only used to show signal
+      other related METADATA keys when working with Rego metadata.
+      In future, this same functionality could be used to highlight
+      other related items currently in the viewport.
+  * Jump directly from ignore directives to documentation
+    - documentLink is another request from clients which allow the
+      server to respond with link ranges. We have used this to make
+      regal ignore directives clickable, helping users quickly
+      learn what they mean when encountered in policies PR #1657.
+  * Get live diagnostics from custom rules as you type
+    - PR #1631 ensures that users of custom linter rules are also
+      able to access these for live diagnostics in language server
+      clients. Previously these were not evaluated in the server,
+      only in the Regal CLI.
+  * Notable Refactors & Development Changes
+    - Rego Language Server Routing: PR #1675 makes some notable
+      changes to how Rego is used within the Regal’s language
+      server. The Language Server Protocol (LSP), which Regal
+      implements to support LSP clients, is based on JSON message
+      passing. This lends itself to Rego evaluation which is JSON
+      in, JSON out. This PR updates the handling of different LSP
+      messages sent from clients to route them in Rego, handling
+      Rego backed rules first, and falling back to Golang
+      implementations that still remain otherwise. This sets the
+      direction for more Rego LSP functionality in the language
+      server in future.
+    - Development bundle loading from disk: PR #1646 gives those
+      working on Regal in development the option of using the
+      current source for the Regal bundle without rebuilding the
+      binary. This improves the experience when working on Rego
+      based language server functionality by reducing the time of a
+      feedback loop. Set REGAL_BUNDLE_PATH to use this feature.
+  * Changelog
+    - 1f1044f: build: Remove tap key (#1687) (@charlieegan3)
+    - build(deps): bump github/codeql-action from 3.29.0 to 3.29.1
+      in the dependencies group by @dependabot[bot] in #1616
+    - Add Regal bundle compilation benchmark by @anderseknert in
+      #1618
+    - Remove quotes from keywords in refs by @anderseknert in #1619
+    - lsp: Skip loading files on disk when in cache by
+      @charlieegan3 in #1620
+    - build(deps): bump the dependencies group with 2 updates by
+      @dependabot[bot] in #1621
+    - automated: update capabilities by @github-actions[bot] in
+      #1622
+    - add experimental lsp package for websocket communication by
+      @srenatus in #1623
+    - internal/io: add FindInputPath when the content isn't needed
+      by @srenatus in #1624
+    - build(deps): bump github/codeql-action from 3.29.2 to 3.29.3
+      in the dependencies group by @dependabot[bot] in #1626
+    - lsp/completions: Handle hyphenated package names by
+      @charlieegan3 in #1625
+    - lsp: fix didOpen templating race by @charlieegan3 in #1627
+    - build/lsp: add web client demo by @srenatus in #1629
+    - lsp: Fix stale diagnostics after deletion by @charlieegan3 in
+      #1628
+    - Some doc updates by @anderseknert in #1632
+    - lsp: Add support for custom rules by @charlieegan3 in #1631
+    - Vendor roast dependency by @anderseknert in #1634
+    - lsp: Address windows goto definition URI issue by
+      @charlieegan3 in #1633
+    - Fix regal new rule issues + refactor io code by @anderseknert
+      in #1636
+    - lsp: Use full text replacement for Intellij fmt by
+      @charlieegan3 in #1637
+    - test: refactor e2e test, add new regal command runner by
+      @anderseknert in #1640
+    - build(deps): bump github/codeql-action from 3.29.3 to 3.29.5
+      in the dependencies group by @dependabot[bot] in #1641
+    - Fix missing source.explore code action by @anderseknert in
+      #1643
+    - lsp: Present filename relative to root in errors by
+      @charlieegan3 in #1638
+    - refactor: Improve code quality throughout the codebase by
+      @anderseknert in #1642
+    - lsp/uri: Refactor URI handling by @charlieegan3 in #1644
+    - Tidying up more code by @anderseknert in #1645
+    - Provide development option to load bundle from disk by
+      @anderseknert in #1646
+    - lsp/eval: Ensure filenames use URI in print output by
+      @charlieegan3 in #1647
+    - Rewrite more completion providers in Rego. Resolve schemas at
+      runtime. by @anderseknert in #1652
+    - lsp: Add signature help by @charlieegan3 in #1654
+    - lsp: Fix server signature race in test by @charlieegan3 in
+      #1655
+    - build(deps): bump the dependencies group with 5 updates by
+      @dependabot[bot] in #1639
+    - build(deps): bump the dependencies group with 3 updates by
+      @dependabot[bot] in #1653
+    - docs: update README badges for OPA 1.7.1 release by
+      @charlieegan3 in #1656
+    - New LSP features and internal improvements by @anderseknert
+      in #1657
+    - lsp/documenthighlight: Add tests by @charlieegan3 in #1659
+    - Add tests for textDocument/documentLink handler by
+      @anderseknert in #1658
+    - Styra URLs -> OPA URLs by @anderseknert in #1662
+    - docs: Update README re: move to open-policy-agent by
+      @charlieegan3 in #1664
+    - internal/io: explicitly disable lazy loading of regal bundle
+      by @srenatus in #1666
+    - build(deps): bump the dependencies group across 1 directory
+      with 4 updates by @dependabot[bot] in #1663
+    - Enable pprof endpoint only with env var set by @anderseknert
+      in #1667
+    - docs: Remove update workflow & minor adjustments by
+      @charlieegan3 in #1668
+    - Disable Codecov PR comments by @anderseknert in #1670
+    - deps: OPA v1.8.0 by @anderseknert in #1669
+    - docs: Changes needed in docs for opa site deploy by
+      @charlieegan3 in #1673
+    - build(deps): bump github/codeql-action from 3.29.11 to 3.30.0
+      in the dependencies group by @dependabot[bot] in #1674
+    - Rego-based routing of Rego handlers + refactor by
+      @anderseknert in #1675
+    - Just one more.. refactor by @anderseknert in #1677
+    - docs: Updates in preparation for OPA site deploy by
+      @charlieegan3 in #1676
+    - lsp: GTD use URI for location by @charlieegan3 in #1680
+    - fix: Don't use OS path separator when walking FS by
+      @anderseknert in #1681
+    - build(deps): bump the dependencies group with 3 updates by
+      @dependabot[bot] in #1678
+    - build: Add windows runners to build workflow by @charlieegan3
+      in #1682
+    - Weekend refactor by @anderseknert in #1684
+    - Fix documentLink issue when no user config provided by
+      @anderseknert in #1686
+    - build: Remove tap key by @charlieegan3 in #1687
+
+-------------------------------------------------------------------
 Tue Jul 01 10:15:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.35.1 (0.35.0 was not released):

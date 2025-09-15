@@ -1,7 +1,7 @@
 #
 # spec file for package regal
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           regal
-Version:        0.35.1
+Version:        0.36.1
 Release:        0
 Summary:        Linter and language server for Rego
 License:        Apache-2.0
-URL:            https://github.com/StyraInc/regal
+URL:            https://github.com/open-policy-agent/regal
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.24
+BuildRequires:  golang(API) >= 1.25
 BuildRequires:  zsh
 
 %description
@@ -84,10 +84,10 @@ go build \
    -buildmode=pie \
    -tags="regal_standalone regal_enable_novelty" \
    -ldflags=" \
-   -X github.com/styrainc/regal/pkg/version.Version=%{version} \
-   -X github.com/styrainc/regal/pkg/version.Commit=${COMMIT_HASH} \
-   -X github.com/styrainc/regal/pkg/version.Hostname=build.opensuse.org \
-   -X github.com/styrainc/regal/pkg/version.Timestamp=${BUILD_DATE}" \
+   -X github.com/open-policy-agent/regal/pkg/version.Version=%{version} \
+   -X github.com/open-policy-agent/regal/pkg/version.Commit=${COMMIT_HASH} \
+   -X github.com/open-policy-agent/regal/pkg/version.Hostname=build.opensuse.org \
+   -X github.com/open-policy-agent/regal/pkg/version.Timestamp=${BUILD_DATE}" \
    -o bin/%{name}
 
 %install
