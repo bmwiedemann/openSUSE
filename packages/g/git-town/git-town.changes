@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Sep 14 12:26:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 21.5.0:
+  * New Features
+    - Added up and down commands to quickly move to the child or
+      parent of the current branch (#5432).
+    - All configuration settings can now be provided via
+      environment variables, in addition to the config file and Git
+      metadata. This makes it easy to use custom scripts that
+      provide configuration data (#5446). For example, to load an
+      API token from 1password CLI:
+
+       GIT_TOWN_GITHUB_TOKEN=$(op read op://development/GitHub/credentials/personal_token) git town config
+
+    - The hack, append, and prepend commands now support a stash
+      flag and config option to leave staged changes as-is. Handy
+      if you've carefully prepared an index you want to commit to a
+      new branch (#5429).
+    - The setup assistant can now do a quick setup with only the
+      essential settings (#5484).
+    - Added a new feature command to convert the given or current
+      branch into a feature branch (#5376).
+    - The detached sync flag can now be permanently enabled through
+      the new detached configuration setting (#5452).
+    - The auto-resolve flag can now be disabled with
+      --no-auto-resolve (#5458).
+  * Bug Fixes
+    - The setup assistant no longer stores a dev-remote when the
+      user selects the default option (#5492).
+
+-------------------------------------------------------------------
 Wed Aug 20 06:07:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 21.4.3:
