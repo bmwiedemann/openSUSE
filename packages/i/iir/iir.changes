@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 14 19:48:40 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.10.0
+  Bugfix release and new dynamic lib version
+  * The "setup" function for the butterworth bandstop filters with
+    un-normalized frequencies and requesting a lower biquad number
+    was incorrectly named "setupN" but should be called "setup".
+    That's been fixed in this release. Because this will break
+    dynamic linking against previous versions it's now a new
+    library version 1.10.0.
+- Use %ldconfig_scriptlets
+- Run testsuite
+
+-------------------------------------------------------------------
 Mon Aug 12 11:04:23 UTC 2024 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 1.9.5

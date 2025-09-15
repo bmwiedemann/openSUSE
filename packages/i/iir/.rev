@@ -25,4 +25,21 @@
   * Fixed phase inversal in the pole/zero to coefficient conversion.</comment>
     <requestid>1193393</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5ce98508470333fd68de20f02db4ff38</srcmd5>
+    <version>1.10.0</version>
+    <time>1757958759</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.10.0
+  Bugfix release and new dynamic lib version
+  * The &quot;setup&quot; function for the butterworth bandstop filters with
+    un-normalized frequencies and requesting a lower biquad number
+    was incorrectly named &quot;setupN&quot; but should be called &quot;setup&quot;.
+    That's been fixed in this release. Because this will break
+    dynamic linking against previous versions it's now a new
+    library version 1.10.0.
+- Use %ldconfig_scriptlets
+- Run testsuite</comment>
+    <requestid>1304705</requestid>
+  </revision>
 </revisionlist>

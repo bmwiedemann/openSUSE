@@ -1,7 +1,7 @@
 #
 # spec file for package iir
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover   1
 %define sname   %{name}%{sover}
 Name:           iir
-Version:        1.9.5
+Version:        1.10.0
 Release:        0
 Summary:        DSP infinite impulse response realtime C++ filter library
 License:        MIT
@@ -70,25 +70,28 @@ and the compiler can optimise both filter code and main program at the same time
 %autosetup -p1 -n %{sname}-%{version}
 
 %build
-%cmake -LA
+%cmake
 %cmake_build
 
 %install
 %cmake_install
-rm -r %{buildroot}%{_libdir}/cmake %{buildroot}%{_libdir}/lib%{name}_static.a
+rm %{buildroot}%{_libdir}/lib%{name}_static.a
 
-%post -n lib%{sname} -p /sbin/ldconfig
-%postun -n lib%{sname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{sname}
+
+%check
+%ctest
 
 %files -n lib%{sname}
 %license COPYING
 %doc README.md
-%{_libdir}/lib%{name}.so.*
+%{_libdir}/lib%{name}.so.%{sover}*
 
 %files -n lib%{name}-devel
 %{_includedir}/*.h
 %{_includedir}/%{name}
 %{_libdir}/lib%{name}.so
+%{_libdir}/cmake/%{name}
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
