@@ -1,7 +1,7 @@
 #
 # spec file for package gap-ferret
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-ferret
-Version:        1.0.14
+Version:        1.0.15
 Release:        0
 Summary:        GAP: Backtrack Search in Permutation Groups
 License:        MPL-2.0

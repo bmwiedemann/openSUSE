@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 14 19:27:03 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.15
+  * Remove obsolete ErrorNoReturn definition for old GAP
+
+-------------------------------------------------------------------
 Thu Feb 27 23:00:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Make specfile conform to POSIX sh
