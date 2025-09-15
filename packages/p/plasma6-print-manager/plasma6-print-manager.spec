@@ -97,7 +97,9 @@ plasma6-print-manager provides tools for managing print jobs and printers.
 %{_kf6_applicationsdir}/kcm_printer_manager.desktop
 %{_kf6_applicationsdir}/org.kde.ConfigurePrinter.desktop
 %{_kf6_applicationsdir}/org.kde.PrintQueue.desktop
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/org.kde.plasma.printmanager.appdata.xml
+%endif
 %{_kf6_appstreamdir}/org.kde.print-manager.metainfo.xml
 %{_kf6_bindir}/configure-printer
 %{_kf6_bindir}/kde-print-queue
