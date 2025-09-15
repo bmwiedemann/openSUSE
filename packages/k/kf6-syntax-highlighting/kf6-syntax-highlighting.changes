@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Sep  8 13:33:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.18.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.18.0
+- Changes since 6.17.0:
+  * Update dependency version to 6.18.0
+  * yaml.xml: Bump version
+  * yaml.xml: Associate `metadata` with YAML
+  * Change the Breeze Light MarkWarning color to orange
+  * Nix: Fix highlighting for assert expression
+  * Nix: Update name
+  * Typst: Update name
+  * theme_contrast_checker.py: show italic, underline, strike through and background color specified in a styles
+  * fix themes with two adjacent color in CSV syntaxes (kde#477042)
+  * increase version in markdown.xml
+  * change context identifier for toml and ini code blocks in markdown files
+  * add toml/desktop/ini code block support to markdown.xml
+  * cmake.xml: updates for CMake 4.1
+  * remove not used reference
+  * adjust references to added keywords
+  * Edit crystal.xml: added missing keywords (enum and some C-related ones)
+  * Update version to 6.18.0
+
+-------------------------------------------------------------------
 Mon Aug  4 06:57:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.17.0
