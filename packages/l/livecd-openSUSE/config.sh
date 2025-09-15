@@ -83,6 +83,11 @@ if [ "$desktop" = "x11" ] || [ "$desktop" = "xfce" ]; then
 	sed -i '/omit_dracutmodules=/d' /usr/bin/dracut
 fi
 
+if rpm -q Mesa-gallium; then
+	# Only used for OpenCL and X11 acceleration on vmwgfx (?), saves ~50MiB
+	rpm -e --nodeps Mesa-gallium
+fi
+
 # Too big and will have to be dropped anyway (unmaintained, known security issues)
 rm -rf /usr/lib*/libmfxhw*.so.* /usr/lib*/mfx/
 

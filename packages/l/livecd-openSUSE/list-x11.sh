@@ -131,6 +131,9 @@ buildignore gstreamer-plugins-bad
 # Pulls in perl
 buildignore xdg-utils-screensaver
 
+# On Leap 15, ^ was not split out yet so let's ignore some perl packages instead
+buildignore perl-libwww-perl
+
 # No audio stack
 buildignore libpipewire-0_3-0
 buildignore xfce4-pulseaudio-plugin

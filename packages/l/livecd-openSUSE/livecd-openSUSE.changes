@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 12 13:31:52 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- list-xfce: Allow xdg-desktop-portal again, needed by MozillaFirefox
+- list-x11: Ignore perl-libwww-perl
+- Delete Mesa-gallium only if it's installed
+
+-------------------------------------------------------------------
 Mon Sep  8 11:41:09 UTC 2025 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - No longer attempt to uninstall Mesa-gallium: package has been
@@ -13,7 +20,7 @@ Thu Jun  5 12:24:45 UTC 2025 - malcolmlewis@opensuse.org
 -------------------------------------------------------------------
 Tue May 13 12:39:15 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
-- list-common: Drop all xf86-video-* except for -nv and -qxl
+- list-common: Drop all xf86-video-* except for -nouveau and -qxl
 
 -------------------------------------------------------------------
 Wed Apr 30 14:42:30 UTC 2025 - Fabian Vogt <fvogt@suse.com>

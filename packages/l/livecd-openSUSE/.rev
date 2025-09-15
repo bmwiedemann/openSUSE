@@ -2174,4 +2174,12 @@
     <comment>- No longer attempt to uninstall Mesa-gallium: package has been
   dropped.</comment>
   </revision>
+  <revision rev="274" vrev="274">
+    <srcmd5>c8bc6508f21f17c5c1b3d8726247977c</srcmd5>
+    <version>unknown</version>
+    <time>1757958782</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1304761</requestid>
+  </revision>
 </revisionlist>

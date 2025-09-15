@@ -600,6 +600,8 @@
     <ignore name="gstreamer-plugins-bad"/>
     <!-- OBS-IgnorePackage: xdg-utils-screensaver -->
     <ignore name="xdg-utils-screensaver"/>
+    <!-- OBS-IgnorePackage: perl-libwww-perl -->
+    <ignore name="perl-libwww-perl"/>
     <!-- OBS-IgnorePackage: libpipewire-0_3-0 -->
     <ignore name="libpipewire-0_3-0"/>
     <!-- OBS-IgnorePackage: xfce4-pulseaudio-plugin -->

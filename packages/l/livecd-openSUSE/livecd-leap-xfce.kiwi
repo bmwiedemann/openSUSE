@@ -436,8 +436,6 @@
     <ignore name="gnome-online-accounts"/>
     <!-- OBS-IgnorePackage: samba -->
     <ignore name="samba"/>
-    <!-- OBS-IgnorePackage: xdg-desktop-portal -->
-    <ignore name="xdg-desktop-portal"/>
     <!-- OBS-IgnorePackage: pragha -->
     <ignore name="pragha"/>
     <package name="patterns-yast-yast2_basis"/>
