@@ -74,7 +74,9 @@ A dedicated search application built on top of Baloo
 
 %files
 %license LICENSES/*
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/org.kde.milou.appdata.xml
+%endif
 %{_kf6_plasmadir}/plasmoids/org.kde.milou/
 %{_kf6_qmldir}/org/kde/milou/
 
