@@ -1,7 +1,7 @@
 #
 # spec file for package renameutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,15 @@ License:        GPL-3.0-or-later
 URL:            https://www.nongnu.org/renameutils/
 Source:         http://download.savannah.gnu.org/releases/renameutils/renameutils-%{version}.tar.gz
 Patch0:         makefile-am-bindir.patch
+# PATCH-FIX-OPENSUSE Fixes for gcc 15, from Debian
+Patch1:         gcc15-fixes.patch
+# PATCH-FIX-OPENSUSE More fixes for gcc 15, from Debian
+Patch2:         gcc15-fixes2.patch
 BuildRequires:  fdupes
-BuildRequires:  readline-devel
 BuildRequires:  gettext
+BuildRequires:  readline-devel
 # Installs imv binary
-Conflicts: imv
+Conflicts:      imv
 
 %description
 The file renaming utilities (renameutils for short) are a set of programs
@@ -84,4 +88,3 @@ encoded in saved files.
 %{_mandir}/man1/qmv.1%{?ext_man}
 
 %changelog
-

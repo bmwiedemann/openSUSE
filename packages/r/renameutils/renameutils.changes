@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 15 01:52:43 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patches, both to fix building with GCC 15:
+  * gcc15-fixes.patch
+  * gcc15-fixes2.patch
+
+-------------------------------------------------------------------
 Mon Mar 22 23:20:44 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add Conflicts against imv, since it provides the same binary name as one

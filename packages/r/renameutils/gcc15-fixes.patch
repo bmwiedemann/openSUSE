@@ -1,0 +1,58 @@
+Author: Francois Marier <francois@debian.org>
+Last-Updated: 2025-02-27
+Bug-Debian: https://bugs.debian.org/1097788
+Description: Fixes for gcc15 warnings and errors
+
+--- a/src/common/error.c
++++ b/src/common/error.c
+@@ -75,11 +75,13 @@ v_warn_errno(const char *msg, va_list ap)
+ void
+ free_error(void)
+ {
+-	struct MessageHeader *hdr;
++	struct MessageHeader *hdr, *nexthdr;
+ 
+-	for (hdr = message_header; hdr != NULL; hdr = hdr->old) {
++	for (hdr = message_header; hdr != NULL; ) {
+ 		free(hdr->message);
++		nexthdr = hdr->old;
+ 		free(hdr);
++		hdr = nexthdr;
+ 	}
+ 	if (error_message != NULL)
+ 		free(error_message);
+diff --git a/src/common/hmap.c b/src/common/hmap.c
+index 9c5d657..8b77205 100644
+--- a/src/common/hmap.c
++++ b/src/common/hmap.c
+@@ -363,7 +363,7 @@ hmap_iterator(HMap *map, HMapIterator *it)
+  * function. But no other entry.
+  */
+ void
+-hmap_foreach_value(HMap *map, void (*iterator)())
++hmap_foreach_value(HMap *map, void (*iterator)(void *))
+ {
+     uint32_t c;
+ 
+@@ -378,7 +378,7 @@ hmap_foreach_value(HMap *map, void (*iterator)())
+ }
+ 
+ void
+-hmap_foreach_key(HMap *map, void (*iterator)())
++hmap_foreach_key(HMap *map, void (*iterator)(void *))
+ {
+     uint32_t c;
+ 
+diff --git a/src/common/llist.c b/src/common/llist.c
+index 01a74de..c498c0c 100644
+--- a/src/common/llist.c
++++ b/src/common/llist.c
+@@ -445,7 +445,7 @@ llist_is_empty(LList *list)
+ }
+ 
+ void
+-llist_iterate(LList *list, void (*iterator_func)())
++llist_iterate(LList *list, void (*iterator_func)(void *))
+ {
+ 	LNode *entry;
+ 	for (entry = list->first; entry != NULL; entry = entry->next)

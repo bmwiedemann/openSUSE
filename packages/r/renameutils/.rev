@@ -9,4 +9,14 @@
 - Initial release of 0.12.0</comment>
     <requestid>880637</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f65bd4b95ebb677f6d86afd440471664</srcmd5>
+    <version>0.12.0</version>
+    <time>1757958761</time>
+    <user>anag_factory</user>
+    <comment>- Add patches, both to fix building with GCC 15:
+  * gcc15-fixes.patch
+  * gcc15-fixes2.patch</comment>
+    <requestid>1304706</requestid>
+  </revision>
 </revisionlist>
