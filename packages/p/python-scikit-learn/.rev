@@ -744,4 +744,25 @@
     <comment></comment>
     <requestid>1288244</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>225c5b628bcdb991c2528a676aae6d71</srcmd5>
+    <version>1.7.2</version>
+    <time>1757958625</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.7.2:
+  * https://scikit-learn.org/stable/whats_new/v1.7.html#version-1-7-2
+  * https://scikit-learn.org/stable/whats_new/v1.7.html#version-1-7-1
+- drop scipy-iprint.patch (upstream)
+
+  * Scikit-learn classes and functions can be used while only having
+  * Many classes now properly handle Matplotlib aliases for style
+  * `utils.validation.validate_data` is introduced and replaces
+    previously private base.BaseEstimator._validate_data method.
+    This is intended for third party estimator developers, who should
+    use this function in most cases instead of `utils.check_array`
+  * Additional estimators and functions have been updated to include
+  * The tags.input_tags.sparse flag was corrected for a majority of
+  * _more_tags, _get_tags, and _safe_tags are now raising a `DeprecationWarning`</comment>
+    <requestid>1304679</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-learn
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,9 @@
 %if "%{flavor}" != "test-py313"
 %define skip_python313 1
 %endif
+%if "%{flavor}" != "test-py314"
+%define skip_python314 1
+%endif
 # Skip empty buildsets, last one is for sle15_python_module_pythons
 %if "%{shrink:%{pythons}}" == "" || ("%pythons" == "python311" && 0%{?skip_python311})
 ExclusiveArch:  donotbuild
@@ -43,14 +46,12 @@ ExclusiveArch:  donotbuild
 %bcond_with extratest
 
 Name:           python-scikit-learn%{psuffix}
-Version:        1.7.0
+Version:        1.7.2
 Release:        0
 Summary:        Python modules for machine learning and data mining
 License:        BSD-3-Clause
 URL:            https://scikit-learn.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-learn/scikit_learn-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/scikit-learn/scikit-learn/pull/31642 MNT Remove deprecated iprint and disp usage in scipy 1.15 LBFGS
-Patch0:         scipy-iprint.patch
 BuildRequires:  %{python_module Cython >= 3.0.10}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module joblib >= 1.2.0}
