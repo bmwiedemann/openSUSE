@@ -3,11 +3,8 @@
     <param name="url">https://github.com/sched-ext/scx.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">v1.0.15</param>
+    <param name="revision">v1.0.16</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="changesgenerate">enable</param>
-    <param name="changesauthor">fredrik.lonnegren@suse.com</param>
-    <param name="changesauthor">kilgore.trout@idesmi.eu</param>
   </service>
   <service mode="manual" name="set_version"/>
   <service mode="buildtime" name="tar"/>

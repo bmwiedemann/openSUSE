@@ -20,15 +20,13 @@
 %define libbpf_min_ver 1.4
 %define llvm_min_ver 17
 Name:           scx
-Version:        1.0.15
+Version:        1.0.16
 Release:        0
 Summary:        Sched_ext CPU schedulers
 License:        GPL-2.0-only
 URL:            https://github.com/sched-ext/scx
 Source0:        %{name}-%{version}.tar
 Source1:        vendor.tar.zst
-Patch0:         0001-scxtop-use-PT_REGS_IP-macro.patch
-Patch1:         0001-vmlinux.h-refresh-with-the-updated-script.patch
 BuildRequires:  bpftool >= 7.5.0
 BuildRequires:  clang >= %{llvm_min_ver}
 BuildRequires:  jq
@@ -87,7 +85,7 @@ Header files needed to develop a sched-ext scheduler in C.
 %files
 %license LICENSE
 %doc README.md OVERVIEW.md
-%{_bindir}/scx{ctl,top,_*}
+%{_bindir}/scx{cash,ctl,top,_*}
 %{_bindir}/vmlinux_docify
 %{_unitdir}/scx.service
 %config(noreplace) %{_sysconfdir}/default/%{name}
