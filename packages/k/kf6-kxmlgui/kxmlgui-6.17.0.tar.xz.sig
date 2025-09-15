@@ -1,7 +1,0 @@
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQSQqWisqEU3zCe5nq8sjfWHptSqwQUCaIyZiQAKCRAsjfWHptSq
-wRYsAQC5HEcblaQeMmwpB5nQgU4NBOHV2CjXoWsiYZJeslpFRgD/evEiI00zsdrn
-Sswthti8Zpa/WYa4Htt9C4cuvEiKgw0=
-=VGSj
------END PGP SIGNATURE-----
