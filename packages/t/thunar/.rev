@@ -1850,4 +1850,16 @@
     <comment></comment>
     <requestid>1295105</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>93ad0b77d4ac57bb33d3509b245d27bd</srcmd5>
+    <version>4.20.5</version>
+    <time>1757958764</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.20.5
+  * Update shortcut model asynchronously (#1022)
+  * Clear selection before updating selection (#1672)
+  * Translation Updates
+- Dropped git bcond as we no longer use it (forwarded request 1304711 from mauriziogalli)</comment>
+    <requestid>1304724</requestid>
+  </revision>
 </revisionlist>

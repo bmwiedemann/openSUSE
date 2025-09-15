@@ -1,7 +1,7 @@
 #
 # spec file for package thunar
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,8 @@
 
 
 %define libname libthunarx-3-0
-%bcond_with git
 Name:           thunar
-Version:        4.20.4
+Version:        4.20.5
 Release:        0
 Summary:        File Manager for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
@@ -58,9 +57,6 @@ BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.0
 BuildRequires:  pkgconfig(pango) >= 1.38.0
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(x11)
-%if %{with git}
-BuildRequires:  xfce4-dev-tools
-%endif
 # uses exo-desktop-item-edit, exo-open
 Requires:       exo-tools
 Recommends:     %{name}-lang = %{version}
@@ -109,19 +105,6 @@ This package provides the GObject Introspection bindings for the Thunar extensio
 %autosetup
 
 %build
-%if %{with git}
-NOCONFIGURE=1 ./autogen.sh
-%configure \
-    --enable-maintainer-mode \
-    --with-helper-path-prefix=%{_libexecdir} \
-    --docdir=%{_datadir}/xfce4/thunar \
-    --enable-dbus \
-    --enable-exif \
-    --enable-startup-notification \
-    --enable-pcre \
-    --enable-gtk-doc \
-    --disable-static
-%else
 %configure \
     --with-helper-path-prefix=%{_libexecdir} \
     --docdir=%{_datadir}/xfce4/thunar \
@@ -131,7 +114,6 @@ NOCONFIGURE=1 ./autogen.sh
     --enable-pcre \
     --enable-gtk-doc \
     --disable-static
-%endif
 %make_build
 
 %install
