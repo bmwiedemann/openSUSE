@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Sep 14 20:37:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.5:
+  * ASV supports the py-rattler backend through the rattler
+    option
+  *  ASV_USE_CONDARC can be set to load the options in the
+    CONDARC environment variable
+  * JSONC fixes
+  * Multiple python versions are now handled correctly
+  * Environment types can be specified for pytest
+  * ASV_PYTHONPATH is now applied for the discovery phase.
+  * Fix virtualenv setup for virtualenv 20.31
+  * Indicate when benchmarks start passing with *
+  * Internally consistent with ScientificPython guidelines
+  * Ruff used for styles
+  * New documentation design
+  * The mamba backend has been removed, with rattler as the
+    suggested replacement
+  * rattler is also expected to be the default in the next
+    release
+
+-------------------------------------------------------------------
 Mon Jun 16 14:21:00 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives

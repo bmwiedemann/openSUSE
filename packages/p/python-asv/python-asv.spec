@@ -1,7 +1,7 @@
 #
 # spec file for package python-asv
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-asv
-Version:        0.6.4
+Version:        0.6.5
 Release:        0
 Summary:        Airspeed Velocity: A Python history benchmarking tool
 License:        BSD-3-Clause AND MIT
