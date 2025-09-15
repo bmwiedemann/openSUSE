@@ -231,4 +231,12 @@
     <comment> (forwarded request 1303396 from Vogtinator)</comment>
     <requestid>1303452</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>86d7176d2d2d8fdc0691007867756396</srcmd5>
+    <version>6.4.5</version>
+    <time>1757958613</time>
+    <user>anag_factory</user>
+    <comment>- Update file list after KDE Frameworks 6.18 release</comment>
+    <requestid>1304504</requestid>
+  </revision>
 </revisionlist>

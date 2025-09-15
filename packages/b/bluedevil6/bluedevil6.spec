@@ -96,7 +96,9 @@ Bluetooth daemon for KDE Plasma, handling connections.
 %{_kf6_applicationsdir}/kcm_bluetooth.desktop
 %{_kf6_applicationsdir}/org.kde.bluedevilsendfile.desktop
 %{_kf6_applicationsdir}/org.kde.bluedevilwizard.desktop
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/org.kde.plasma.bluetooth.appdata.xml
+%endif
 %{_kf6_bindir}/bluedevil-sendfile
 %{_kf6_bindir}/bluedevil-wizard
 %{_kf6_debugdir}/bluedevil.categories
