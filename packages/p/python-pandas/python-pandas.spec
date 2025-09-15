@@ -1,7 +1,7 @@
 #
 # spec file for package python-pandas
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,9 @@
 %if "%{flavor}" != "test-py313"
 %define skip_python313 1
 %endif
+%if "%{flavor}" != "test-py314"
+%define skip_python314 1
+%endif
 # Skip empty buildsets on tumbleweed or flavors other than python311 on leap with sle15_python_module_pythons
 %if "%{shrink:%{pythons}}" == "" || ("%pythons" == "python311" && 0%{?skip_python311})
 ExclusiveArch:  donotbuild
@@ -58,13 +61,13 @@ ExclusiveArch:  donotbuild
 # depend/not depend on python-pyarrow and apache-arrow [bsc#1218592]
 %bcond_without pyarrow
 
-%if %{suse_version} <= 1500
+%if 0%{?suse_version} && %{suse_version} <= 1500
 # requires __has_builtin with keywords
-%define gccver 13
+%define gccver 14
 %endif
 Name:           python-pandas%{psuffix}
 # Set version through _service
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -78,7 +81,7 @@ Patch1:         pandas-pr61132-dropna.patch
 BuildRequires:  %{python_module Cython >= 3.0.5}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module meson-python >= 0.13.1}
-BuildRequires:  %{python_module numpy-devel >= 1.26}
+BuildRequires:  %{python_module numpy-devel >= 1.22.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module versioneer-toml}
 BuildRequires:  %{python_module wheel}
@@ -99,7 +102,7 @@ Requires:       python-numpy >= 1.22.4
 %if 0%{python_version_nodots} == 311
 Requires:       python-numpy >= 1.23.2
 %else
-Requires:       python-numpy >= 1.26
+Requires:       python-numpy >= 1.26.0
 %endif
 %endif
 # SECTION extras
@@ -206,7 +209,7 @@ provide speed improvements, especially when working with large data sets.
 %package computation
 Summary:        The python pandas[computation] extra
 Requires:       python-pandas = %{version}
-Requires:       python-scipy >= 1.10.0
+Requires:       python-scipy >= 1.12.0
 Requires:       python-xarray >= 2022.12.0
 BuildArch:      noarch
 
@@ -215,7 +218,7 @@ This package provides the [computation] extra for python-pandas
 
 %package fss
 Summary:        The python pandas[fss] extra
-Requires:       python-fsspec >= 2022.11
+Requires:       python-fsspec >= 2023.12.2
 Requires:       python-pandas = %{version}
 BuildArch:      noarch
 
@@ -407,7 +410,7 @@ Requires:       python-beautifulsoup4 >= 4.11.2
 Requires:       python-blosc
 %{?with_calamine:Requires:       python-calamine >= 0.1.7}
 %{?with_pyarrow:Requires:   python-fastparquet >= 2022.12}
-Requires:       python-fsspec >= 2022.11
+Requires:       python-fsspec >= 2023.12.2
 Requires:       python-gcsfs >= 2022.11
 Requires:       python-html5lib >= 1.1
 Requires:       python-hypothesis >= 6.46.1
@@ -423,7 +426,7 @@ Requires:       python-psycopg2 >= 2.9.6
 Requires:       python-pyreadstat >= 1.2.0
 Requires:       python-pytest >= 7.3.2
 Requires:       python-pytest-xdist >= 2.2.0
-Requires:       python-scipy >= 1.10.0
+Requires:       python-scipy >= 1.12.0
 Requires:       python-tables >= 3.8.0
 Requires:       python-tabulate >= 0.9
 Requires:       python-xarray >= 2022.12

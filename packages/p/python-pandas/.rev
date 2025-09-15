@@ -840,4 +840,41 @@ All packages broken by this update should be fixed now.</comment>
     60663)</comment>
     <requestid>1292272</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>20903cd74eda8db0a50b87c0a84b7c17</srcmd5>
+    <version>2.3.2</version>
+    <time>1757958632</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.3.2:
+  * Fix to_json() with orient=&quot;table&quot; to correctly use the
+    “string” type in the JSON Table Schema for StringDtype columns
+  * Boolean operations (|, &amp;, ^) with bool-dtype objects on the
+    left and StringDtype objects on the right now cast the string
+    to bool, with a deprecation warning
+  * Fixed match(), fullmatch() and contains() string methods with
+    compiled regex for the Arrow-backed string dtype
+  * Bug in Series.replace() and DataFrame.replace() inconsistently
+    replacing matching values when missing values are present
+    for string dtypes
+
+- Change skipped tests to also support Python 3.13.
+- Skip two tests that fail with Numpy 2.1.
+- Prepare for Python 3.13, by skipping it if we aren't building for it.
+- enable py312 testing, remove py39 testing
+    RangeIndex
+    the &quot;c&quot; and &quot;python&quot; engines
+  * Bug in Series.str.split() and Series.str.rsplit() with expand=True
+    (GH42915)
+  * Fixed regression in DataFrame.groupby.rolling.cov() and
+  * The deprecated attributes _AXIS_NAMES and _AXIS_NUMBERS of
+  * Bumped minimum fastparquet version to 0.4.0 to avoid
+  * Bumped minimum pymysql version to 0.8.1 to avoid test failures
+  * Added reference to backwards incompatible check_freq arg of
+    testing.assert_frame_equal() and testing.assert_series_equal()
+  * WARNING:
+    no longer maintained. The xlrd package is now only for reading
+      Previously, the default argument engine=None to read_excel()
+    would result in using the xlrd engine in many cases, including</comment>
+    <requestid>1304697</requestid>
+  </revision>
 </revisionlist>
