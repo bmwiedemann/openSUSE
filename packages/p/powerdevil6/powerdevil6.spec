@@ -123,8 +123,10 @@ rm -rv %{buildroot}%{_kf6_libdir}/libpowerdevilcore.so
 %doc %{_kf6_htmldir}/en/kcontrol/
 %{_kf6_applicationsdir}/kcm_mobile_power.desktop
 %{_kf6_applicationsdir}/kcm_powerdevilprofilesconfig.desktop
+%if %{pkg_vcmp cmake(KF6Package) < 6.18}
 %{_kf6_appstreamdir}/org.kde.plasma.battery.appdata.xml
 %{_kf6_appstreamdir}/org.kde.plasma.brightness.appdata.xml
+%endif
 %{_kf6_configdir}/autostart/powerdevil.desktop
 %{_kf6_dbuspolicydir}/org.kde.powerdevil.backlighthelper.conf
 %{_kf6_dbuspolicydir}/org.kde.powerdevil.discretegpuhelper.conf
