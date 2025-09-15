@@ -17,7 +17,7 @@
 
 
 Name:           gap-xgap
-Version:        4.32
+Version:        4.33
 Release:        0
 Summary:        GAP: Graphical user interface for GAP
 License:        GPL-2.0-or-later
@@ -26,7 +26,6 @@ URL:            https://gap-packages.github.io/xgap/
 #Git-Clone:     https://github.com/gap-packages/xgap
 Source:         https://github.com/gap-packages/xgap/releases/download/v%version/xgap-%version.tar.gz
 Patch1:         gcc14.patch
-Patch2:         gcc15.patch
 BuildRequires:  c_compiler
 BuildRequires:  fdupes
 BuildRequires:  gap-devel
