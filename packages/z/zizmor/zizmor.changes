@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sun Sep 14 11:54:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.13.0:
+  * New Features
+    - New audit: undocumented-permissions detects explicit
+      permission grants that lack an explanatory comment (#1131)
+      Many thanks to @johnbillion for proposing and implementing
+      this audit!
+  * Enhancements
+    - zizmor's configuration discovery behavior has been
+      significantly refactored, making it easier to audit multiple
+      independent inputs with their own configuration files (#1094)
+      For most users, this change should cause no compatibility
+      issues. For example, the following commands will continue to
+      load the same configuration files as before:
+
+        zizmor .
+        zizmor .github/
+
+      For other users, the behavior will change, but in a way
+      that's intended to correct a long-standing bug with
+      configuration discovery. In particular, the following
+      commands will now behave differently:
+
+        # OLD: would discover config in $CWD
+        # NEW: will discover two different configs, one in each of the repos
+        zizmor ./repoA ./repoB
+
+      Separately from these changes, zizmor continues to support
+      --config <path> and ZIZMOR_CONFIG with the exact same
+      behavior as before.
+      See Configuration - Discovery for a detailed explanation of
+      the new behavior.
+    - Audit rules can now be disabled entirely in zizmor's
+      configuration. See rules..disable for details (#1132)
+    - The obfuscation audit now supports auto-fixes for many
+      findings (#1088)
+  * Bug Fixes
+    - zizmor now correctly honors --strict-collection when
+      collecting from remote inputs. This also means that the
+      default collection strictness has changed for remote inputs
+      to match all other inputs (#1122)
+    - Fixed a bug where zizmor would crash on certain UTF-8 inputs
+      lacking an explicit final newline due to a bug in the
+      annotate-snippets crate (#1136)
+  * Dependencies
+    - chore(deps): bump github/codeql-action in the github-actions
+      group (#1140)
+    - chore(deps): bump the cargo group with 4 updates (#1141)
+    - chore(docs): remove external links section, add crates.io
+      link to footer (#1137)
+    - bugfix(deps): bump annotate-snippets to 0.12.2 (#1136)
+    - chore(deps): bump the github-actions group with 3 updates
+      (#1129)
+    - chore(deps): bump the cargo group with 2 updates (#1130)
+    - chore(deps): bump tracing-subscriber from 0.3.19 to 0.3.20
+      (#1121)
+    - chore(deps): bump the github-actions group with 2 updates
+      (#1112)
+    - chore(deps): bump the cargo group with 5 updates (#1111)
+    - chore(deps): bump the cargo group with 6 updates (#1097)
+    - chore(deps): bump the github-actions group with 6 updates
+      (#1096)
+
+-------------------------------------------------------------------
 Mon Aug 18 13:04:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.12.1:
