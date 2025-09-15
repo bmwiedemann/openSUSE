@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 14 21:24:56 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.1:
+  * For Python >= 3.10, allow NumPy 2.x to be used. (#361)
+  * Run HDF5-related tests on all platforms for Python >= 3.10.
+    (#362)
+  * Bump setup-edm-action from v3 to v4. (#359)
+  * Remove the issue template. (#355)
+  * Copyrights have been updated for 2025. (#360)
+
+-------------------------------------------------------------------
 Fri May  9 04:40:00 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
@@ -10,7 +21,7 @@ Thu Aug 22 09:16:55 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
   * Drop support for Python 3.7. (#339)
   * Replaced uses of ``numpy.alltrue``, for compatibility with NumPy 2.0. (#341)
   * Don't write to preferences on ``PreferencesHelper`` creation. (#343)
-  * Fix a test that was broken in the presence of Mayavi / TVTK. (#352) 
+  * Fix a test that was broken in the presence of Mayavi / TVTK. (#352)
 
 -------------------------------------------------------------------
 Sun Jan 14 17:35:12 UTC 2024 - Dirk Müller <dmueller@suse.com>

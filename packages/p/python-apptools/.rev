@@ -81,4 +81,20 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1275959</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1eceaf68c54a47945af9868528cde881</srcmd5>
+    <version>5.3.1</version>
+    <time>1757958739</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.3.1:
+  * For Python &gt;= 3.10, allow NumPy 2.x to be used. (#361)
+  * Run HDF5-related tests on all platforms for Python &gt;= 3.10.
+    (#362)
+  * Bump setup-edm-action from v3 to v4. (#359)
+  * Remove the issue template. (#355)
+  * Copyrights have been updated for 2025. (#360)
+
+  * Fix a test that was broken in the presence of Mayavi / TVTK. (#352)</comment>
+    <requestid>1304693</requestid>
+  </revision>
 </revisionlist>
