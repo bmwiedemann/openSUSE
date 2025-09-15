@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 11 09:54:08 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.5.5:
+  * fix(release-3.5.x): backport fix to correctly calculate entry metadata size (#19163)
+  * docs: Backport 19151 (#19158)
+  * docs: Add breaking change to upgrade (backport release-3.5.x) (#19147)
+  * docs: manual backport 3.5 (#19123)
+  * docs: Release notes for 3.5.4 (#19113)
+  * chore(release-3.5.x): release 3.5.4 (#18680)
+
+-------------------------------------------------------------------
 Thu Sep 04 12:42:22 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.5.4:
