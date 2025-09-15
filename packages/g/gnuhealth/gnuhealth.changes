@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 14 13:28:24 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 5.0.2
+  * inconsistent naming of package and directories, switch to local copy
+  * gnuhealth.keyring removed due to local copy
+  * Remove unused dependencies from health module
+  * Wrong cursor field teeth (dentistry module)
+  * remove pillow dependency from lab and dentistry 
+
+-------------------------------------------------------------------
 Tue Jul  1 08:40:05 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - version 5.0.0

@@ -1,7 +1,7 @@
 #
 # spec file for package gnuhealth
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2014-2025 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,15 +30,16 @@
 
 Name:           gnuhealth
 
-Version:        %{majorver}.0
+Version:        %{majorver}.2
 Release:        0
 URL:            https://health.gnu.org
 Summary:        A Health and Hospital Information System
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
 
-Source0:        https://ftp.gnu.org/gnu/health/%{name}-his-server-%{majorver}-bundle-2025.1.tar.gz
-##%Source0:        %{name}-%{version}.tar.gz
+# As directory naming is inconsistent we use a local download
+## Source0:        https://ftp.gnu.org/gnu/health/%{name}-his-server-patchset-%{version}-bundle.tar.gz
+Source0:        %{name}-his-server-patchset-%{version}-bundle.tar.gz
 Source1:        GNUHealth.README.openSUSE
 Source2:        gnuhealth-control
 Source3:        gnuhealth.service
@@ -46,8 +47,8 @@ Source4:        gnuhealth-webdav@.service
 Source5:        openSUSE-gnuhealth-setup
 Source6:        gnuhealth
 Source7:        gnuhealth-rpmlintrc
-Source8:        https://ftp.gnu.org/gnu/health/%{name}-his-server-%{majorver}-bundle-2025.1.tar.gz.sig
-Source9:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=health&download=1#/%{name}.keyring
+## Source8:        https://ftp.gnu.org/gnu/health/%{name}-his-server-patchset-%{version}-bundle.tar.gz.sig
+## Source9:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=health&download=1#/%{name}.keyring
 
 ##% BuildRequires:  %{python_module pytest}
 BuildRequires:  %{mypython}-pip
@@ -68,7 +69,7 @@ BuildRequires:  trytond_product >= 7.0
 
 # new fonts for the forms:
 Requires:       gnu-free-fonts
-Requires:       %{mypython}-Pillow >= 11.1.0
+Requires:       %{mypython}-Pillow
 Requires:       %{mypython}-PyWebDAV3-GNUHealth
 Requires:       %{mypython}-Werkzeug >= 3.1.3
 Requires:       %{mypython}-bcrypt
@@ -138,7 +139,7 @@ Requires:       gnuhealth
 This package provides the interface to Orthanc and the imaging worklist
 
 %prep
-%autosetup -n %{name}-his-%{majorver}-bundle-2025.1
+%autosetup -n %{name}-his-server-patchset-%{version}-bundle
 ##%%patch -P 0 -p1
 cp %{S:1} .
 cp %{S:2} .
