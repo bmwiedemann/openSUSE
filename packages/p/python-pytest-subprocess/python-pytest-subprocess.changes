@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Sep 15 09:11:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.3:
+  * #171, #178: Allow to access keyword arguments passed to
+    Popen.
+  * #180: Fixed an incorrect wait timeout calculation.
+  * #170: Wrapped ProcessDispatcher.dispatch into
+    FakePopenWrapper as it was causing TypeError when Popen is
+    used as a type.
+  * #169: Get rid of using thread in AsyncFakePopen as it causes
+    thread.join() to hang indefinitely.
+  * #162: Include tests (and docs) and sdist correctly, and stop
+    installing them to site-packages.
+  * #163: Add support for Python 3.12.
+  * #160: Changed pytest entrypoint to avoid error while loading
+    plugin with -p argument.
+  * #128: Add tests directory to sdist.
+- switch to gh tarball, which includes the tests handled out of
+  tree before
+- add py314-fix-tests.patch to fix tests with python 3.14
+
+-------------------------------------------------------------------
 Mon Apr  8 10:40:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons

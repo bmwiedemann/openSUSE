@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-subprocess
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-subprocess
-Version:        1.5.0
+Version:        1.5.3
 Release:        0
 Summary:        A plugin to fake subprocess for pytest
 License:        MIT
 URL:            https://github.com/aklajnert/pytest-subprocess
-Source0:        https://files.pythonhosted.org/packages/source/p/pytest-subprocess/pytest-subprocess-%{version}.tar.gz
-Source1:        tests.tar.xz
+Source0:        https://github.com/aklajnert/pytest-subprocess/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}-gh.tar.gz
+Patch1:         https://github.com/aklajnert/pytest-subprocess/commit/be30d9a94ba45afb600717e3fcd95b8b2ff2c60e.patch#/py314-fix-tests.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -48,9 +48,9 @@ A pytest plugin to fake subprocess for pytest.  The plugin adds the
 register subprocess results so you won't need to rely on the real processes.
 
 %prep
-%autosetup -p1 -a1 -n pytest-subprocess-%{version}
+%autosetup -p1 -n pytest-subprocess-%{version}
 
-chmod -x LICENSE README.rst pytest_subprocess/py.typed pytest_subprocess.egg-info/*
+chmod -x LICENSE README.rst pytest_subprocess/py.typed
 sed -Ei "s/\r$//" README.rst
 
 %build
@@ -62,7 +62,8 @@ sed -Ei "s/\r$//" README.rst
 
 %check
 # Docs dir is missing from tarball
-%pytest -k "not test_documentation"
+# recursive imports due to building outside git
+%pytest -k "not (test_documentation or test_universal_newlines or test_text)"
 
 %files %{python_files}
 %doc README.rst
