@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 15 11:46:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.55.0
+  * Added missing `msg.close()` to `openMsg()`. If the MSG file was
+    actually just a plain OLE file, it would be left open.
+  * Adjusted the default value of `maxNameLength` for `MessageBase.save()`
+    to 40 instead of 256.
+  * Adjusted exception handling for `MessageBase.save()` to properly report
+    the reason a folder fails to be created.
+  * Simplified some of the code for `MessageBase.save()`.
+  * Fixed some typing information.
+
+-------------------------------------------------------------------
 Mon May  5 07:06:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.54.1
