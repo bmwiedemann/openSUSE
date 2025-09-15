@@ -108,4 +108,16 @@
     formatting.</comment>
     <requestid>1292328</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b3bea2f187010eebda37c36aaa1e5b9b</srcmd5>
+    <version>2.7.0</version>
+    <time>1757958736</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.7.0:
+  * Add `mysql` and `mysql_unicode` output formats which right-
+    align numbers.
+  * Register the JSON formats so they are actually usable.
+  * Make JSON formats able to encode Decimals and None/NULLs.</comment>
+    <requestid>1304689</requestid>
+  </revision>
 </revisionlist>

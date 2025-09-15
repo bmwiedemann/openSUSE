@@ -1,7 +1,7 @@
 #
 # spec file for package python-cli-helpers
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-cli-helpers
-Version:        2.5.0
+Version:        2.7.0
 Release:        0
 Summary:        Helpers for building command-line apps
 License:        BSD-3-Clause
