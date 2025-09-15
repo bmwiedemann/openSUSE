@@ -127,4 +127,13 @@ https://hackweek.opensuse.org/21/projects/add-mbr-binary-format-support-to-the-f
     + uuid Decode tfxd and tfrf boxes. (forwarded request 1270994 from mnhauke)</comment>
     <requestid>1271001</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e74c44cb6402ab67582b4e1d584b8660</srcmd5>
+    <version>0.15.1</version>
+    <time>1757958714</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.15.1:
+  * Minor release to maninly fix golang sum database hash issue. (forwarded request 1304496 from mnhauke)</comment>
+    <requestid>1304635</requestid>
+  </revision>
 </revisionlist>
