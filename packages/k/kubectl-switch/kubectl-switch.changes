@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Sep 14 12:38:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.16:
+  * Bug Fixes
+    - go: update k8s.io/client-go ( v0.34.0 → v0.34.1 ) (7607d12)
+
+-------------------------------------------------------------------
+Sun Sep 14 12:33:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.15:
+  * Bug Fixes
+    - go: update k8s.io/apimachinery ( v0.34.0 → v0.34.1 )
+      (c9da3cb)
+  * Chores
+    - mise: update go ( 1.25.0 → 1.25.1 ) (1185450)
+    - mise: update aqua:goreleaser/goreleaser ( 2.11.2 → 2.12.0 )
+      (5a9b102)
+
+-------------------------------------------------------------------
+Sun Sep 14 12:31:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.14:
+  * Bug Fixes
+    - go: update github.com/spf13/cobra ( v1.10.0 → v1.10.1 )
+      (4bebda4)
+    - go: update github.com/spf13/cobra ( v1.9.1 → v1.10.0 )
+      (a7ae72e)
+
+-------------------------------------------------------------------
 Tue Sep 02 05:46:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.13:
