@@ -497,4 +497,17 @@ Resubmitting in the hope that all bots and maintainers pick it up this time. The
     <comment></comment>
     <requestid>1286131</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>677a730edbf1ae2b087efb3a94bc8200</srcmd5>
+    <version>2.9.3</version>
+    <time>1757958784</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.9.3
+  * Reduced Ringing on External Surfaces
+  * Cooling Logic Enhancements
+  * Custom G-code Parameters
+  * See https://github.com/prusa3d/PrusaSlicer/releases/tag/version_2.9.3
+</comment>
+    <requestid>1304763</requestid>
+  </revision>
 </revisionlist>

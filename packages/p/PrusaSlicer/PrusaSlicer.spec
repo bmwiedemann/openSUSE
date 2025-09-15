@@ -1,7 +1,7 @@
 #
 # spec file for package PrusaSlicer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%global base_version 2.9.2
+%global base_version 2.9.3
 
 %global prusa_slicer_version %{base_version}
 %global prusa_slicer_tarball_version %{base_version}
@@ -103,6 +103,7 @@ BuildRequires:  cmake(Catch2) >= 3.8
 BuildRequires:  cmake(LibBGCode)
 BuildRequires:  cmake(Qhull)
 BuildRequires:  cmake(Z3)
+BuildRequires:  cmake(nlohmann_json)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
