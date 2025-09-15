@@ -77,6 +77,7 @@ for variant in nano regular; do
     pushd build-${variant}-dir
     # On %%ix86 hosts newlib is documented to be buildable as shared library via --with-newlib,
     # but it fails to build for us and we don't need a host library at the moment.
+    export CC_FOR_TARGET=%{target}-gcc-%{gcc_version}
     export CFLAGS_FOR_TARGET="-O2 -g -ffunction-sections -fdata-sections"
     FEATURES="--disable-nls"
     if [[ "${variant}" == "nano" ]]; then
@@ -117,7 +118,7 @@ for variant in nano regular; do
         %make_install
     else
         %make_install DESTDIR=/tmp/newlib-nano
-	multilibs=$(%{target}-gcc --print-multi-lib)
+	multilibs=$(%{target}-gcc-%{gcc_version} --print-multi-lib)
 	for multilib in ${multilibs}; do
 	    multilib="${multilib%%;*}"
 	    for l in libc libg librdimon libstdc++ libsupc++; do

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 15 12:49:31 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Use versioned compiler binary (%{target}-gcc-%{gcc_version}) for building.
+
+-------------------------------------------------------------------
 Thu Jan 16 12:46:22 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Update to v4.5.0

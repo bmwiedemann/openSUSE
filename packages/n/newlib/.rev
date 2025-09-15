@@ -282,4 +282,12 @@
   * fixes for building with gcc-15</comment>
     <requestid>1238280</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>3ac1ff1e871aa6bacd1d56a48f751086</srcmd5>
+    <version>4.5.0.20241231</version>
+    <time>1757958813</time>
+    <user>anag_factory</user>
+    <comment>- Use versioned compiler binary (%{target}-gcc-%{gcc_version}) for building.</comment>
+    <requestid>1304828</requestid>
+  </revision>
 </revisionlist>
