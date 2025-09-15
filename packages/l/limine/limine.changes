@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 13 23:18:14 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 9.6.7:
+  * Relax EFI handle validation before running fallback volume detection.
+
+-------------------------------------------------------------------
 Thu Sep 11 19:30:20 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 9.6.6:
