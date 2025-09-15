@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 14 22:04:35 UTC 2025 - mcepl@cepl.eu
+
+- Update to version 2.1.0:
+  * feat: Implement Rofi-based pinentry in Lua
+  * When gpg-agent is run as a systemd user service (not in the session).
+  * Move everything irrelevant to _attic/.
+  * Don't exec, but run alternative pinentry.
+  * docs: some more resources on the pinentry programming.
+
+-------------------------------------------------------------------
 Tue Feb 25 08:11:11 UTC 2025 - mcepl@cepl.eu
 
 - Switch to the new upstream repository on Sourcehut. Despite

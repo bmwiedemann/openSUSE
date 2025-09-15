@@ -17,18 +17,16 @@
 
 
 Name:           pinentry-rofi
-Version:        2.0.5+git.1735213104.1b5afa0
+Version:        2.1.0
 Release:        0
 Summary:        Rofi frontend to pinentry
 License:        GPL-3.0-or-later+
 URL:            https://git.sr.ht/~mcepl/pinentry-rofi
 Source0:        pinentry-rofi-%{version}.tar.gz
-BuildRequires:  bash
-BuildRequires:  coreutils
-BuildRequires:  sed
-BuildRequires:  bats
+BuildRequires:  lua
 Requires:       rofi-launcher
-Requires:       sed
+Requires:       lua
+Requires:       gpg
 BuildArch:      noarch
 
 %description
@@ -51,11 +49,10 @@ need to use the full path to the binary.
 :
 
 %install
-install -Dm 755 pinentry-rofi.sh %{buildroot}%{_bindir}/pinentry-rofi
+install -Dm 755 pinentry-rofi.lua %{buildroot}%{_bindir}/pinentry-rofi
 
 %check
 export LANG=cs_CZ.utf8
-bats --formatter tap tests/*.bats || /bin/true
 
 %files
 %license LICENSE

@@ -19,4 +19,17 @@
 (🤖: Submission of pinentry-rofi via https://src.opensuse.org/pool/pinentry-rofi/pulls/6 by mcepl)</comment>
     <requestid>1249093</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8136d9927dc65a877e6803a00c962d00</srcmd5>
+    <version>2.1.0</version>
+    <time>1757958753</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.1.0:
+  * feat: Implement Rofi-based pinentry in Lua
+  * When gpg-agent is run as a systemd user service (not in the session).
+  * Move everything irrelevant to _attic/.
+  * Don't exec, but run alternative pinentry.
+  * docs: some more resources on the pinentry programming.</comment>
+    <requestid>1304728</requestid>
+  </revision>
 </revisionlist>

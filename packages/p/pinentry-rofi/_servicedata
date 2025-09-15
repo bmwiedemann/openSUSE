@@ -1,6 +1,4 @@
 <servicedata>
 <service name="tar_scm">
-                <param name="url">https://git.cepl.eu/cgit/rofi/pinentry-rofi</param>
-              <param name="changesrevision">65e623a629c3a75e5b62ba48b67744e5f1beef54</param></service><service name="tar_scm">
                 <param name="url">https://git.sr.ht/~mcepl/pinentry-rofi</param>
-              <param name="changesrevision">1b5afa0d8a634c4541d02268b0fbba8e1d62effe</param></service></servicedata>
+              <param name="changesrevision">1f7c4e6932c9d407ae937484b9aa4bb0cfa41b63</param></service></servicedata>
