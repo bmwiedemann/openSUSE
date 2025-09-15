@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 07 19:53:46 UTC 2025 - dmueller@suse.com
+
+- Update to version 20250907:
+  * Update test cases
+  * Special handling for 'SUSE Software Solutions Germany' license
+  * Keep 3rd party licenses intact
+  * Keep SUSE T&Cs close to SUSE Copyright
+  * Make create_copyright_section() return true when SUSE Copyright processed
+
+-------------------------------------------------------------------
 Mon Aug 04 07:26:51 UTC 2025 - dmueller@suse.com
 
 - Update to version 20250804:
