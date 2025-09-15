@@ -85,4 +85,12 @@
       AVR128DB28 AVR128DB32 AVR128DB48 AVR128DB64</comment>
     <requestid>1248419</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>e35458a32bd49f5a765a54a768856de1</srcmd5>
+    <version>2.2.1</version>
+    <time>1757958812</time>
+    <user>anag_factory</user>
+    <comment>- Use versioned compiler binary (avr-gcc-%{gcc_version}) for building.</comment>
+    <requestid>1304827</requestid>
+  </revision>
 </revisionlist>

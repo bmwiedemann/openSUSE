@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 15 13:23:58 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Use versioned compiler binary (avr-gcc-%{gcc_version}) for building.
+
+-------------------------------------------------------------------
 Fri Feb 21 10:54:54 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - update to 2.2.1

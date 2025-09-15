@@ -87,10 +87,10 @@ export CXXFLAGS="%{optflags}"
 # required for 0002-dox_latex_header.tex-Add-to-EXTRA_DIST-969-1023.patch
 #          and 0003-dox-api-Makefile.am-EXTRA_DIST-Add-filter-dox.sh-avr.patch
 ./bootstrap
-./configure --prefix=%{PREFIX} --host=avr --mandir=%{PREFIX}/man
-make %{?_smp_mflags} CC="avr-gcc -pipe" CCAS="avr-gcc -pipe"
+CC="avr-gcc-%{gcc_version}" ./configure --prefix=%{PREFIX} --host=avr --mandir=%{PREFIX}/man
+make %{?_smp_mflags} CC="avr-gcc-%{gcc_version} -pipe" CCAS="avr-gcc-%{gcc_version} -pipe"
 # dox-html target builds man pages
-make %{?_smp_mflags} -C doc/api dox-html
+make %{?_smp_mflags} CC="avr-gcc-%{gcc_version}" -C doc/api dox-html
 
 %install
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
