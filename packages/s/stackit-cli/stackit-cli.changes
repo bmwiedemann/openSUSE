@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Sun Sep 14 12:38:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.42.0:
+  * fix: add completions to linux archives (#982)
+  * fix(redis): output valid json on list cmd (#966)
+  * fix(deps): update stackit sdk modules (#980)
+  * chore(docs): add subcommand registration hint to contribution
+    guide (#979)
+  * fix(deps): update module github.com/spf13/viper to v1.21.0
+    (#974)
+  * chore(deps): bump renovatebot/github-action from 43.0.10 to
+    43.0.11 (#973)
+  * fix(deps): update module
+    github.com/stackitcloud/stackit-sdk-go/services/ske to v1.4.0
+    (#968)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/observability
+    (#965)
+  * chore(deps): bump actions/download-artifact from 4 to 5 (#967)
+
+-------------------------------------------------------------------
+Sun Sep 14 12:33:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.41.0:
+  * Highlights
+    - The STACKIT CLI is now GA
+      We are proud to announce that the official STACKIT CLI is now
+      GA.
+      The CLI is a command line tool that provides an user-friendly
+      interface for STACKIT services.
+      We have been continuously onboarding new STACKIT services and
+      new functionality (verbosity levels, structured logging,
+      support for profiles, etc).
+      The STACKIT CLI is available on Homebrew for macOS and APT
+      and Snap for Linux. Please refer to our Installation guide
+      for detailed instructions.
+      If you need any support, please raise an issue in the GitHub
+      repo or create a ticket in the STACKIT Help Center.
+  * Changelog
+    - b6db9f8: chore(cli): Move STACKIT CLI to GA (#944) (@Fyusel)
+    - b3eb402: chore(deps): bump actions/setup-go from 5 to 6
+      (#960) (@dependabot[bot])
+    - 0cb04b6: chore(deps): bump actions/stale from 9 to 10 (#959)
+      (@dependabot[bot])
+    - 9c98766: chore(deps): bump
+      github.com/stackitcloud/stackit-sdk-go/services/observability
+      (#961) (@dependabot[bot])
+
+-------------------------------------------------------------------
+Sun Sep 14 12:32:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.9:
+  * fix(ci/cd): use correct runner type for apt publishing (#962)
+
+-------------------------------------------------------------------
+Sun Sep 14 12:27:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.8:
+  * chore(ci/cd): split apt publishing from release pipeline (#958)
+  * fix: release pipeline increase max-tries in download of mirror
+    (#957)
+
+-------------------------------------------------------------------
+Sun Sep 14 12:13:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.7:
+  (no changes, 0.40.7 is on the same commit hash as 0.40.6)
+- Update to version 0.40.6:
+  * fix: s3 publish endpoint could not be parsed (#956)
+
+-------------------------------------------------------------------
+Sun Sep 14 12:02:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.5:
+  (no changes, 0.40.5 is on the same commit hash as 0.40.4)
+- Update to version 0.40.4:
+  (no changes, 0.40.4 is on the same commit hash as 0.40.3)
+
+-------------------------------------------------------------------
+Sun Sep 14 11:55:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.3 (0.40.2 was not released):
+  * fix: update aptly in release pipeline (#953)
+  * fix(deps): update module github.com/spf13/pflag to v1.0.10
+    (#948)
+  * fix(deps): update module
+    github.com/stackitcloud/stackit-sdk-go/services/observability
+    to v0.12.0 (#951)
+  * chore(deps): bump renovatebot/github-action from 43.0.9 to
+    43.0.10 (#950)
+  * chore(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+    (#947)
+  * fix(goreleaser): Remove conflicts configuration for
+    homebrew_casks (#945)
+
+-------------------------------------------------------------------
+Tue Sep  2 08:50:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.1:
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/observability
+    (#938) (@dependabot[bot])
+  * chore(deps): bump renovatebot/github-action from 43.0.7 to
+    43.0.8 (#929) (@dependabot[bot])
+  * chore(deps): bump renovatebot/github-action from 43.0.8 to
+    43.0.9 (#936) (@dependabot[bot])
+  * chore(image): add example how to create an image with uefi
+    disabled (#926) (@Fyusel)
+  * chore(scripts): use bash found in path in shebang (#937)
+    (@rubenhoenle)
+  * fix(deps): update module
+    github.com/stackitcloud/stackit-sdk-go/services/iaas to v0.29.1
+    (#927) (@stackit-pipeline)
+  * fix(deps): update module
+    github.com/stackitcloud/stackit-sdk-go/services/iaas to v0.29.2
+    (#943) (@stackit-pipeline)
+  * fix(ske): print valid json output when listing clusters (#940)
+    (@rubenhoenle)
+  * fix: remove access_token prefix from YAML output in
+    get-access-token (#933) (@Benjosh95)
+
+-------------------------------------------------------------------
 Fri Aug 29 14:12:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.40.0:
