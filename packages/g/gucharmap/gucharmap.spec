@@ -1,7 +1,7 @@
 #
 # spec file for package gucharmap
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define so_gucharmap 7
 %define pc_api 2.90
 Name:           gucharmap
-Version:        16.0.2
+Version:        17.0.0
 Release:        0
 Summary:        A Featureful Unicode Character Map
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -38,7 +38,7 @@ BuildRequires:  gtk3-devel >= 3.4.0
 BuildRequires:  intltool
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  unicode-ucd >= 16.0.0
+BuildRequires:  unicode-ucd >= 17.0.0
 BuildRequires:  unicode-ucd-unihan
 BuildRequires:  unzip
 BuildRequires:  vala
