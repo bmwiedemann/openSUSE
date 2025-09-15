@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 14 00:00:56 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.8.3:
+  * [Bug] libopenmpt is now compatible with most non-standard
+    builds of libmpg123 which do not by default output signed
+    16bit PCM.
+  * [Bug] openmpt123: Pausing playback using the space key did
+    not work since 0.8.0.
+  * IT: Even when the filter cutoff envelope is stopped before its
+    first tick is applied, the filter should still be activated.
+
+-------------------------------------------------------------------
 Sat Jul 19 19:52:16 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.8.2:

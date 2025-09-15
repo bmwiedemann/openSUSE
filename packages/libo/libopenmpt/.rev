@@ -1105,4 +1105,19 @@ Changes in 0.5.3:
     broken copy of cult.smod).</comment>
     <requestid>1294536</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>ac1adfe7387f260fbde6fd19328626fd</srcmd5>
+    <version>0.8.3</version>
+    <time>1757958621</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.3:
+  * [Bug] libopenmpt is now compatible with most non-standard
+    builds of libmpg123 which do not by default output signed
+    16bit PCM.
+  * [Bug] openmpt123: Pausing playback using the space key did
+    not work since 0.8.0.
+  * IT: Even when the filter cutoff envelope is stopped before its
+    first tick is applied, the filter should still be activated.</comment>
+    <requestid>1304594</requestid>
+  </revision>
 </revisionlist>
