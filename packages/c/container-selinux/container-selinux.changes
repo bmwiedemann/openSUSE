@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 15 06:15:58 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 2.242.0:
+  * Allow containers to read TCP diagnostic info
+  * Allow container domains to access shared host runtime directories under
+    /run
+  * Allow container access to runtime directories for crun masked path
+    optimization
+
+-------------------------------------------------------------------
 Tue Sep 02 11:06:14 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 2.241.0:
