@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 15 02:38:45 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pyftpdlib-2.0.patch:
+  * Support pyftpdlib 2.0 in the testsuite.
+- Drop Requires on psutil and pytz, undeclared.
+
+-------------------------------------------------------------------
 Sun Jun 30 20:36:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - drop scandir dependency (only for < 3.5)

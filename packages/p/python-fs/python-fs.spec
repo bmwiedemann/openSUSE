@@ -1,7 +1,7 @@
 #
 # spec file for package python-fs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2016 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,8 @@ URL:            https://github.com/PyFilesystem/pyfilesystem2
 Source:         https://files.pythonhosted.org/packages/source/f/fs/fs-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#PyFilesystem/pyfilesystem2#570
 Patch0:         support-python-312.patch
+# PATCH-FIX-UPSTREAM gh#PyFilesystem/pyfilesystem2#595
+Patch1:         support-pyftpdlib-2.0.patch
 BuildRequires:  %{python_module appdirs >= 1.4.3}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pip}
@@ -41,8 +43,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-appdirs >= 1.4.3
-Requires:       python-psutil
-Requires:       python-pytz
 Requires:       python-setuptools
 Requires:       python-six >= 1.10.0
 Recommends:     python-pyftpdlib

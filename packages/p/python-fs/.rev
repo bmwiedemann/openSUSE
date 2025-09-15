@@ -178,4 +178,14 @@
 * Made TarFS directory loading lazy</comment>
     <requestid>1184140</requestid>
   </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>15f51384853302cbb4cc38ef3453d0c8</srcmd5>
+    <version>2.4.16</version>
+    <time>1757958642</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-pyftpdlib-2.0.patch:
+  * Support pyftpdlib 2.0 in the testsuite.
+- Drop Requires on psutil and pytz, undeclared.</comment>
+    <requestid>1304709</requestid>
+  </revision>
 </revisionlist>
