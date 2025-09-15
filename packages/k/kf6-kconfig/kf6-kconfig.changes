@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep  8 13:33:00 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.18.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.18.0
+- Changes since 6.17.0:
+  * Fix unit test input data
+  * Update dependency version to 6.18.0
+  * Fix clazy misc small issues in autotests
+  * Fix/silence clazy suggestions about using static regex
+  * KWindowCondig: Avoid detaching of temporary container
+  * Avoid using size check and implicit 0 to false conversion to check for empty container
+  * Silence clazy warning about non-pod-static where it makes no sense
+  * KStandardActions: Disable formatting for one statement to have normalized connect signature
+  * Use -> operator directly instead of calling data on QPointer member
+  * Register KConfigSkeleton to QML
+  * Convert QLatin1String to QLatin1Char
+  * Use QStandardPaths::GenericStateLocation on all platforms
+  * Prevent KSharedConfig::openStateConfig() from opening configs in ~/.local/state in tests
+  * It compiles fine without qt 6.10 deprecated methods
+  * Update version to 6.18.0
+
+-------------------------------------------------------------------
 Mon Aug  4 06:57:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.17.0
