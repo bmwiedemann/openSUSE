@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep 14 18:31:28 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.9.3:
+  * Fixes a utility method.
+  * a warning is now issued if trying to create a nested fake
+    filesystem with custom arguments
+  * fixed `fake_filesystem.add_package_metadata` that had never
+    worked correctly
+  * updated the package build-system minimum version to
+    setuptools v61.2 and higher
+  * Fixes interaction with pytest.
+  * fixed an interaction problem of `fs` with other pytest
+    fixtures (see #1200)
+  * fixed some warnings in tests (see #1190)
+
+-------------------------------------------------------------------
 Thu Jun 26 10:19:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 5.9.1
