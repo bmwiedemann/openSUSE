@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep  8 13:33:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.18.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.18.0
+- Changes since 6.17.0:
+  * Update dependency version to 6.18.0
+  * Add kate modeline autocompletion
+  * ensure we only handle decorations that set foreground color (kde#507542)
+  * Remove unused includes
+  * Remove unused method
+  * Dont store KateRenderer in KateLineLayout
+  * Dont store Kate::TextLine in KateLineLayout
+  * multicursor: Fix performance issues when deleting lot of lines
+  * Fix selection drawing for block selection (kde#508522)
+  * Dont use SmallestReadableFont, it makes the text hard to read
+  * Fix QFormLayoutPrivate::setItem: Cell (1, 1) already occupied
+  * Readded toggle bookmark action in context menu
+  * Removed stateful bookmark toggle action
+  * Added stateless toggle bookmark action
+  * Update version to 6.18.0
+
+-------------------------------------------------------------------
 Mon Aug  4 06:57:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.17.0
