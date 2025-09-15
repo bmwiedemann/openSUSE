@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Aug 28 10:58:54 UTC 2025 - Hannes Braun <apple.hannes@gmail.com> - 0.21.0
+
+- Update to upstream version 0.21.0
+  * If supported by the terminal, links from a message can now be copied
+    to the system clipboard with the :copy-link command of the message
+    viewer.
+  * More extensive automatic configuration when using :new-accoount.
+  * New :version command shows the version of the running instance of
+    aerc in the statusbar.
+  * The :new-account wizard now includes an extensive auto-detection
+    mechanism which handles most mailserver configurations.
+  * Add option to request full DSN for SMTP sent messages.
+  * Support for number block enter to act as <Cr> in mappings.
+  * It is now possible to toggle notmuch and JMAP tags.
+  * Stylesets can be chained-up in styleset-name config parameter using
+    comma-separated format.
+  * A .HasNew flag indicating whether the account has received new
+    messages to be used in the templates.
+  * A tab-title-terminal setting for customizing the title of tabs in
+    which the terminal widget is run.
+  * Add the -u option to :next-folder and :prev-folder commands to cycle
+    between folders that contain unseen messages.
+  * Support for marking multiple messages based on filters.
+  * Forward with a different account than the current one with
+    ":forward-x <account>".
+  * Readonly support for GMail labels.
+  * Always use X-GM-EXT-1 extension if negotiated with GMail.
+  * Support :modify-labels command for GMail and Proton.
+  * Parsed links in HTML message parts now do not include trailing HTML
+    tags.
+  * Fixed an unguarded concurrent map access leading to crashes.
+  * IMAP servers without IDLE support do not timeout while polling.
+  * Some contacts provided by Gmail were ignored when tab-completing
+    email addresses.
+  * Fix an error when starting aerc through a mailto: link when the
+    new_message template runs a signature command.
+  * Threads now sorted by the greatest message according to the sort
+    criteria and not by the message with the greatest UID.
+  * Maildir backend now builds the therads according to the various
+    config options such as sort-thread-siblings,
+    reverse-msglist-order, threading-by-subject and
+    reverse-thread-order.
+  * :unsubscribe now follows RFC 8058.
+  * The account wizard now always shows the correct path for the account
+    configuration.
+  * The default IMAP connection timeout has been increased to 90 seconds.
+  * ":search -x <flag>" now requires lower-case flag values consistently
+    with ":flag -x <flag>".
+  * Thread siblings will now be ordered by subject if
+    "[ui].sort-thread-siblings = false" and
+    "[ui].threading-by-subject = true".
+  * The <account>.folders-sort now supports patterns for folder names.
+  * Results of filtering when fuzzy-complete is enabled list exact
+    matches first.
+  * The JWZ library used for threading is now vendored.
+- Added skip-autoconfig-test.patch to skip autoconfig tests that are likely
+  failing due to a missing internet connection.
+
+-------------------------------------------------------------------
 Mon Jan 27 22:27:28 UTC 2025 - Hannes Braun <apple.hannes@gmail.com> - 0.20.1
 
 - Update to upstream version 0.20.1

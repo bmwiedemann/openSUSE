@@ -1,7 +1,7 @@
 #
 # spec file for package aerc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2023 Hannes Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           aerc
-Version:        0.20.1
+Version:        0.21.0
 Release:        0
 Summary:        An email client for terminals
 License:        GPL-3.0-or-later
@@ -27,6 +27,7 @@ URL:            https://aerc-mail.org/
 Source0:        https://git.sr.ht/~rjarry/aerc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Patch0:         fix-script-interpreter.patch
+Patch1:         skip-autoconfig-test.patch
 BuildRequires:  gcc
 BuildRequires:  golang-packaging
 BuildRequires:  make
@@ -40,7 +41,11 @@ Requires:       w3m
 aerc is an email client that runs in terminals.
 
 %prep
-%autosetup -p1 -a1
+%setup -q -a1
+%autopatch -M0 -p1
+%if "%{_arch}" == "riscv64"
+    %patch -P1 -p1
+%endif
 
 %build
 # Need for cache writes

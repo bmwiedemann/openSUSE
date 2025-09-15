@@ -1,0 +1,24 @@
+diff --git a/lib/autoconfig/autoconfig_test.go b/lib/autoconfig/autoconfig_test.go
+index 0ca48a57..dbe3f91a 100644
+--- a/lib/autoconfig/autoconfig_test.go
++++ b/lib/autoconfig/autoconfig_test.go
+@@ -14,6 +14,7 @@ import (
+ )
+ 
+ func TestAutoconfig(t *testing.T) {
++	t.Skip()
+ 	tests := []struct {
+ 		address       string
+ 		correctConfig *Config
+diff --git a/lib/autoconfig/get_test.go b/lib/autoconfig/get_test.go
+index bdf86327..023d33ca 100644
+--- a/lib/autoconfig/get_test.go
++++ b/lib/autoconfig/get_test.go
+@@ -11,6 +11,7 @@ import (
+ )
+ 
+ func TestConfigRetrieval(t *testing.T) {
++	t.Skip()
+ 	tests := []struct {
+ 		address       string
+ 		correctConfig *Config
