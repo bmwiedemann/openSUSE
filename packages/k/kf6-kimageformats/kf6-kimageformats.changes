@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Sep  8 13:33:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.18.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.18.0
+- Changes since 6.17.0:
+  * Update dependency version to 6.18.0
+  * dds: Fix assert when reading broken data
+  * Unified maximum pixel value for large image plugins
+  * Removed the conversion of the entire image to a compatible format when saving from the PCX, PIC, and RGB plugins.
+  * TGA: Support for TGA specification 2.0
+  * Fix possible buffer overflow on corrupted images
+  * TGA: memory optimizations and native grayscale support
+  * Move fuzz target and build script into KImageFormats repository
+  * IFF: add support for a different palette per line
+  * IFF: Fix possible undefined-shift
+  * RAW: Error out on malformed files
+  * IFF: add support for RGBN/RGB8 image data and CAT chunk
+  * ILBM 64-bit extension support
+  * Fix oss-fuzz compilation error
+  * IFF: Fix halfbride detection, 1-bitplane colors and PBM line size calculation. It also ignore ZBuffer flag on Maya images (like Photoshop does) amd adds CMYK palette support.
+  * Update version to 6.18.0
+
+-------------------------------------------------------------------
 Mon Aug  4 06:57:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.17.0
