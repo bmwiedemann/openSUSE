@@ -387,4 +387,22 @@
   * For example: `instance_of(str | int)`</comment>
     <requestid>1234568</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ef122d30669749e17ce4043febe31faf</srcmd5>
+    <version>25.3.0</version>
+    <time>1757958632</time>
+    <user>anag_factory</user>
+    <comment>- update to 25.3.0:
+  * Restore support for generator-based `field_transformer`s.
+  * Checking mandatory vs non-mandatory attribute order is now
+    performed after the field transformer, since the field
+    transformer may change attributes and/or their order.
+  * `attrs.make_class()` now allows for Unicode class names.
+  * Speed up class creation by 30%-50% by compiling methods only
+    once and using a variety of other techniques.
+  * The error message if an attribute has both an annotation and
+    a type argument will now disclose _what_ attribute seems to
+    be the problem.</comment>
+    <requestid>1304694</requestid>
+  </revision>
 </revisionlist>

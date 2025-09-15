@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-attrs%{psuffix}
-Version:        24.3.0
+Version:        25.3.0
 Release:        0
 Summary:        Attributes without boilerplate
 License:        MIT
