@@ -68,8 +68,8 @@
 
 %define         _lto_cflags %{nil}
 Name:           wine%{psuffix}
-%define downloadver  10.13
-Version:        10.13
+%define downloadver  10.15
+Version:        10.15
 Release:        0
 Summary:        An MS Windows Emulator
 Group:          System/Emulators/PC
@@ -151,10 +151,10 @@ BuildRequires:  llvm
 #BuildRequires:  pkgconfig(valgrind)
 %endif
 # included tools replaced by objdump, objcopy
-#!BuildIgnore: mingw64-cross-binutils-utils                                                                                                                                              
-#!BuildIgnore: mingw64-cross-pkgconf-utils                                                                                                                                               
-#!BuildIgnore: mingw32-cross-binutils-utils                                                                                                                                              
-#!BuildIgnore: mingw32-cross-pkgconf-utils  
+#!BuildIgnore: mingw64-cross-binutils-utils
+#!BuildIgnore: mingw64-cross-pkgconf-utils
+#!BuildIgnore: mingw32-cross-binutils-utils
+#!BuildIgnore: mingw32-cross-pkgconf-utils
 %ifarch %{ix86}
 BuildRequires:  mingw32-cross-gcc
 BuildRequires:  mingw32-filesystem >= 20250822
@@ -202,6 +202,7 @@ Requires:       wine-32bit = %{version}
 %endif
 %endif
 Requires:       samba-winbind
+Recommends:     ntsync-autoload
 Recommends:     wine-gecko >= 2.47.4
 Recommends:     wine-mono >= 10.1.0
 Recommends:     winetricks
@@ -316,7 +317,10 @@ echo "  +^/usr/lib/wine/.*def" >> %SOURCE97
 echo " provides \"wine-devel-<targettype> = <version>\""		>> %SOURCE97
 %endif
 echo " conflicts \"otherproviders(wine-devel-<targettype>)\""		>> %SOURCE97
+%ifarch %ix86
 echo "wine-win-debuginfo" >> %SOURCE97
+echo "  +^/usr/lib/debug/usr/lib/wine/i386-windows/" >> %SOURCE97
+%endif
 
 cat %SOURCE97
 %endif
@@ -349,7 +353,7 @@ chmod 755 %winedir/my-find-requires.sh
 %define _use_internal_dependency_generator 0
 %define __find_requires %winedir/my-find-requires.sh
 
-%post 
+%post
 /sbin/ldconfig
 %if ! %{wow64}
 %ifarch x86_64

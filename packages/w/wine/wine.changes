@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Sep 13 18:28:55 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 10.15 release
+  - Unicode character tables updated to Unicode 17.0.0.
+  - Zip64 support in Packaging services.
+  - Various bug fixes.
+- update staging to 10.15 release
+- recommend ntsync-autoload for kernel support
+- fixed building win32 pe debuginfos (bsc#1236187)
+
+-------------------------------------------------------------------
+Sat Aug 30 08:22:05 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 10.14 release
+  - Bundled vkd3d upgraded to version 1.17.
+  - Mono engine updated to version 10.2.0.
+  - Support for ping on IPv6.
+  - Various bug fixes.
+- update staging to 10.14 release
+
+-------------------------------------------------------------------
 Thu Aug 28 07:39:11 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Remove the suffix “-32bit” from the package name for

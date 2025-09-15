@@ -5608,4 +5608,25 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
   it is automatically added by mkbaselibs. (forwarded request 1301744 from rhabacker)</comment>
     <requestid>1301761</requestid>
   </revision>
+  <revision rev="470" vrev="1">
+    <srcmd5>aac46d308f63f58e389ec25705d3a2a4</srcmd5>
+    <version>10.15</version>
+    <time>1757958771</time>
+    <user>anag_factory</user>
+    <comment>- updated to 10.15 release
+  - Unicode character tables updated to Unicode 17.0.0.
+  - Zip64 support in Packaging services.
+  - Various bug fixes.
+- update staging to 10.15 release
+- recommend ntsync-autoload for kernel support
+- fixed building win32 pe debuginfos (bsc#1236187)
+
+- updated to 10.14 release
+  - Bundled vkd3d upgraded to version 1.17.
+  - Mono engine updated to version 10.2.0.
+  - Support for ping on IPv6.
+  - Various bug fixes.
+- update staging to 10.14 release</comment>
+    <requestid>1304769</requestid>
+  </revision>
 </revisionlist>
