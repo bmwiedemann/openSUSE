@@ -8617,6 +8617,7 @@ unsorted:
   - hyprland-plugin-csgo-vulkan-fix 
   - hyprland-plugin-hyprbars 
   - hyprland-plugin-hyprexpo 
+  - hyprland-plugin-hyprfocus 
   - hyprland-plugin-hyprscrolling 
   - hyprland-plugin-hyprtrails 
   - hyprland-plugin-hyprwinwrap 
@@ -9215,6 +9216,13 @@ unsorted:
   - java-24-openjdk-javadoc 
   - java-24-openjdk-jmods 
   - java-24-openjdk-src 
+  - java-25-openjdk 
+  - java-25-openjdk-demo 
+  - java-25-openjdk-devel 
+  - java-25-openjdk-headless 
+  - java-25-openjdk-javadoc 
+  - java-25-openjdk-jmods 
+  - java-25-openjdk-src 
   - java-atk-wrapper 
   - java-cup 
   - java-cup-bootstrap 
@@ -11871,8 +11879,8 @@ unsorted:
   - libamd_comgr3-devel 
   - libaml0 
   - libancient2 
-  - libangelscript2_37_0 
-  - libangelscript_addons2_37_0 
+  - libangelscript2_38_0 
+  - libangelscript_addons2_38_0 
   - libansilove-devel 
   - libansilove1 
   - libanthy0 
@@ -22961,6 +22969,7 @@ unsorted:
   - postgresql13-llvmjit-devel 
   - postgresql13-orafce 
   - postgresql13-pg_cron 
+  - postgresql13-pg_rrule 
   - postgresql13-pgagent 
   - postgresql13-pgaudit 
   - postgresql13-pgsql-ogr-fdw 
@@ -22984,6 +22993,7 @@ unsorted:
   - postgresql14-llvmjit-devel 
   - postgresql14-orafce 
   - postgresql14-pg_cron 
+  - postgresql14-pg_rrule 
   - postgresql14-pgagent 
   - postgresql14-pgaudit 
   - postgresql14-pgsql-ogr-fdw 
@@ -23007,6 +23017,7 @@ unsorted:
   - postgresql15-llvmjit-devel 
   - postgresql15-orafce 
   - postgresql15-pg_cron 
+  - postgresql15-pg_rrule 
   - postgresql15-pgagent 
   - postgresql15-pgaudit 
   - postgresql15-pgsql-ogr-fdw 
@@ -23031,6 +23042,7 @@ unsorted:
   - postgresql16-llvmjit-devel 
   - postgresql16-orafce 
   - postgresql16-pg_cron 
+  - postgresql16-pg_rrule 
   - postgresql16-pgagent 
   - postgresql16-pgaudit 
   - postgresql16-pgsql-ogr-fdw 
@@ -23054,6 +23066,7 @@ unsorted:
   - postgresql17-llvmjit-devel 
   - postgresql17-orafce 
   - postgresql17-pg_cron 
+  - postgresql17-pg_rrule 
   - postgresql17-pgagent 
   - postgresql17-pgaudit 
   - postgresql17-pgsql-ogr-fdw 
@@ -25706,6 +25719,7 @@ unsorted:
   - python311-langfuse 
   - python311-langsmith 
   - python311-langtable 
+  - python311-lap 
   - python311-lark 
   - python311-latexcodec 
   - python311-launchpadlib 
@@ -29475,6 +29489,7 @@ unsorted:
   - python312-langfuse 
   - python312-langsmith 
   - python312-langtable 
+  - python312-lap 
   - python312-lark 
   - python312-latexcodec 
   - python312-launchpadlib 
@@ -33235,6 +33250,7 @@ unsorted:
   - python313-langfuse 
   - python313-langsmith 
   - python313-langtable 
+  - python313-lap 
   - python313-latexcodec 
   - python313-launchpadlib 
   - python313-lazr.config 
