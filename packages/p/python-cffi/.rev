@@ -445,4 +445,15 @@
     and ffibuilder.emit_c_code() (#81).</comment>
     <requestid>1206446</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>52b59e2934d5de8a256ddab4e8dd7206</srcmd5>
+    <version>2.0.0</version>
+    <time>1757958630</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.0.0:
+  * Added support for free threaded CPython (3.14t+ only)
+  * Added support for Python 3.14.
+  * Dropped support for Python 3.8.</comment>
+    <requestid>1304687</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 14 20:34:00 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Added support for free threaded CPython (3.14t+ only)
+  * Added support for Python 3.14.
+  * Dropped support for Python 3.8.
+
+-------------------------------------------------------------------
 Wed Oct  9 06:36:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.17.1:
