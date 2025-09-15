@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sat Sep  6 23:50:23 UTC 2025 - malcolmlewis@opensuse.org
+
+- Updated to version 25.07.7:
+  * l10n: Update translations.
+- Changes from version 25.07.6:
+  * Add startup check of btrfs-progs version to determine
+    capabilities.
+  * Main.vala: Improve readability of btrfs-progs version check.
+- Changes from version 25.07.5:
+  * Error if both lsb_release n os_release are missing,
+    (gh#linuxmint/timeshift#431).
+- Changes from version 25.07.4:
+  * TeeJee.Process.vala: Use GLib read_link instead of Posix
+    readlink.
+- Changes from version 25.07.3:
+  * l10n: Update translations.
+- Changes from version 25.07.2:
+  * Don't flag new log messages for translations.
+  * l10n: Update POT.
+- Changes from version 25.07.1:
+  * Subvolume.vala: (btrfs) Wait for async file operations to
+    complete.
+  * Btrfs: support default subvolid!=0,
+    (gh#linuxmint/timeshift#334).
+  * Allow explicitly setting ondemand tag from CLI,
+    (gh#linuxmint/timeshift#399).
+  * AppStream metadata fixes, (gh#linuxmint/timeshift#391).
+  * Remove dependencies to external binarys,
+    (gh#linuxmint/timeshift#333).
+  * Add user settings before defaults,
+    (gh#linuxmint/timeshift#342).
+  * Query the correct root path on btrfs,
+    (gh#linuxmint/timeshift#377).
+  * Add "timeshift" to the tempdir names,
+    (gh#linuxmint/timeshift#395).
+  * Refactor LinuxDistro (gh#linuxmint/timeshift#376).
+  * Main.vala: Don't check for distro name on every device.
+  * BTRFS custom hooks, (gh#linuxmint/timeshift#381).
+  * Specify the environment variables named DISPLAY and XAUTHORITY,
+    (gh#linuxmint/timeshift#384).
+  * Always delete brfs volumes recursively,
+    (gh#linuxmint/timeshift#423).
+  * Only kill a task if its pid is set,
+    (gh#linuxmint/timeshift#427).
+  * Add full non-interactive mode, (gh#linuxmint/timeshift#388).
+  * l10n: Update POT.
+- Change metainfo to com.linuxmint.timeshift.
+
+-------------------------------------------------------------------
 Tue Jan  7 03:58:03 UTC 2025 - ming li <mli@suse.com>
 
 - Updated to version 24.06.6:

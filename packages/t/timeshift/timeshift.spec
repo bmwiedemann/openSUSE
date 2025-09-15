@@ -1,8 +1,8 @@
 #
 # spec file for package timeshift
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2017-2024 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2017-2025 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           timeshift
-Version:        24.06.6
+Version:        25.07.7
 Release:        0
 Summary:        System restore utility
 License:        GPL-3.0-only
@@ -65,7 +65,7 @@ chrpath --delete %{buildroot}%{_bindir}/timeshift
 chrpath --delete %{buildroot}%{_bindir}/timeshift-gtk
 #Fix file permissions
 chmod 0644 %{buildroot}%{_sysconfdir}/timeshift/default.json
-chmod 0644 %{buildroot}%{_datadir}/metainfo/timeshift.appdata.xml
+chmod 0644 %{buildroot}%{_datadir}/metainfo/com.linuxmint.timeshift.metainfo.xml
 chmod 0644 %{buildroot}%{_datadir}/timeshift/images/*.svg
 #Remove as we use rpm/zypper
 rm -f %{buildroot}%{_bindir}/timeshift-uninstall
@@ -88,7 +88,7 @@ install -d %{buildroot}%{_localstatedir}/log/timeshift-btrfs
 %{_datadir}/icons/hicolor/*/apps/*
 %{_mandir}/man1/timeshift.1%{?ext_man}
 %{_mandir}/man1/timeshift-gtk.1%{?ext_man}
-%{_datadir}/metainfo/timeshift.appdata.xml
+%{_datadir}/metainfo/com.linuxmint.timeshift.metainfo.xml
 %{_datadir}/polkit-1/actions/in.teejeetech.pkexec.timeshift.policy
 %{_datadir}/pixmaps/timeshift.png
 %{_datadir}/timeshift/
