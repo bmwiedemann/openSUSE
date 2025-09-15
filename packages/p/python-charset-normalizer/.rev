@@ -370,4 +370,28 @@
     <comment></comment>
     <requestid>1274387</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>fdb0ae55c61faca63cfe87e5b49d1255</srcmd5>
+    <version>3.4.3</version>
+    <time>1757958631</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.4.3:
+  * mypy(c) is no longer a required dependency at build time if
+    `CHARSET_NORMALIZER_USE_MYPYC` isn't set to `1`. (#595)
+  * automatically lower confidence on small bytes samples that
+    are not Unicode in `detect` output legacy function.
+  * Custom build backend to overcome inability to mark mypy as an
+    optional dependency in the build phase.
+  * Support for Python 3.14
+  * sdist archive contained useless directories.
+  * automatically fallback on valid UTF-16 or UTF-32 even if the
+    md says it's noisy.
+  * SBOM are automatically published to the relevant GitHub
+    release to comply with regulatory changes.
+  * Each published wheel comes with its SBOM. We choose CycloneDX
+    as the format.
+  * Prebuilt optimized wheel are no longer distributed by default
+    for CPython 3.7 due to a change in cibuildwheel.</comment>
+    <requestid>1304688</requestid>
+  </revision>
 </revisionlist>
