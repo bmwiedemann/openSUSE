@@ -1,7 +1,7 @@
 #
 # spec file for package python-langsmith
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-langsmith
 Version:        0.1.52
@@ -23,6 +24,7 @@ Summary:        Interact with langsmitt platform
 License:        MIT
 URL:            https://github.com/langchain-ai/langsmith-sdk
 Source:         https://github.com/langchain-ai/langsmith-sdk/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module dataclasses-json}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module httpx}
@@ -31,9 +33,15 @@ BuildRequires:  %{python_module orjson}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pydantic}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing-inspect}
 BuildRequires:  fdupes
+Requires:       python-orjson
+Requires:       python-pydantic
+Requires:       python-requests
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -68,7 +76,8 @@ cd python/tests/unit_tests
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/
+%{python_sitelib}/langsmith
+%{python_sitelib}/langsmith-%{version}.dist-info
 %python_alternative %{_bindir}/langsmith
 
 %changelog

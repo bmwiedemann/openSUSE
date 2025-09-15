@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  1 03:04:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on attrs and pytest-asyncio.
+- Specify Requires.
+- List directories under sitelib explicitly.
+- Add missing update-alternatives Requires.
+
+-------------------------------------------------------------------
 Tue Aug 27 16:15:03 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - Enable sle15_python_module_pythons
