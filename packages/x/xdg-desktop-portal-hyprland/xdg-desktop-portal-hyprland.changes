@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 10 20:18:22 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.3.10:
+  - Fixes
+    - core: don't scan drm nodes on each new notification
+  - MRs
+    - Fix inverted arguments in
+      CGlobalShortcutsPortal::onListShortcuts by @checkraisefold in
+      #310
+    - nix: mesa -> libgbm by @andresilva in #318
+    - Implement hyprland-toplevel-mapping-v1 protocol by @WhySoBad
+      in #322
+    - shared: include vector header by @LinuxUserGD in #335
+    - nix: add meta.mainProgram to xdg-desktop-portal-hyprland by
+      @luisnquin in #337
+    - nix: use gcc15 by @FridayFaerie in #338
+    - fix (nix): removed duplicated directory copying by
+      @conneroisu in #339
+    - Properly set title and class by @dasJ in #341
+
+-------------------------------------------------------------------
 Sat Jun 21 09:27:18 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 1.3.9:

@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-hyprland
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global __builder ninja
 
 Name:           xdg-desktop-portal-hyprland
-Version:        1.3.9
+Version:        1.3.10
 Release:        0
 Summary:        Extended xdg-desktop-portal backend for Hyprland
 License:        MIT
