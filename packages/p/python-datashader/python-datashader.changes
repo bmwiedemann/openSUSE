@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 17 14:32:03 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Remove deprecated dask-expr from tests
+
+-------------------------------------------------------------------
 Mon Sep 15 05:51:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.18.2:

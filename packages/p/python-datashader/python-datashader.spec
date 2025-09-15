@@ -63,7 +63,6 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %if %{with test}
 BuildRequires:  %{python_module bokeh >= 3.1}
-BuildRequires:  %{python_module dask-expr}
 BuildRequires:  %{python_module datashader = %{version}}
 BuildRequires:  %{python_module fastparquet}
 BuildRequires:  %{python_module matplotlib >= 3.3}
