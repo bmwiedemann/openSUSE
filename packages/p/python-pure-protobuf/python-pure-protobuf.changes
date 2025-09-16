@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 16 09:21:33 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 3.1.5:
+  * Support Python 3.10+ union syntax (T | None)
+
+-------------------------------------------------------------------
 Thu Apr  3 00:02:14 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 3.1.4:

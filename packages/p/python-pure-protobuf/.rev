@@ -62,4 +62,13 @@
   * Fix: Any_ must inherit from BaseMessage (forwarded request 1266723 from rrahl0)</comment>
     <requestid>1266724</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>19839676f05fbed7bb955b6439df8cd9</srcmd5>
+    <version>3.1.5</version>
+    <time>1758039538</time>
+    <user>anag_factory</user>
+    <comment>- update to version 3.1.5:
+  * Support Python 3.10+ union syntax (T | None) (forwarded request 1305124 from rrahl0)</comment>
+    <requestid>1305125</requestid>
+  </revision>
 </revisionlist>
