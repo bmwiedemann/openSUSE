@@ -1,7 +1,7 @@
 #
 # spec file for package gopass
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global make_args PREFIX=%{_prefix} GOPASS_REVISION=v%{version}
 Name:           gopass
-Version:        1.15.16
+Version:        1.15.17
 Release:        0
 Summary:        The slightly more awesome standard unix password manager for teams
 License:        MIT

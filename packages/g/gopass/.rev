@@ -73,4 +73,31 @@
     <comment>- Update to 1.15.16:</comment>
     <requestid>1271210</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a761dbac6ca46787890808d317ae03d9</srcmd5>
+    <version>1.15.17</version>
+    <time>1758039512</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.15.17:
+  - [BUGFIX] Fix --force flag in recipients add (#3173)
+  - [chore] Add tests and comments for hasPwRuleForSecret (#3162)
+  - [chore] Automatically approve and merge dependabot PRs (#3220)
+  - [chore] Bump github.com/gopasspw/clipboard to v0.0.3 (#3219)
+  - [chore] Disable updating gopasspw.github.io (#3184)
+  - [chore] Expose gopass env in help (#3158)
+  - [chore] Fix hardened runner (#3196)
+  - [chore] Update Go versions (#3139)
+  - [chore] Update dependencies (#3197)
+  - [feat] Add Jujutsu storage backend (#3202)
+  - [feat] Honor generator options in the create workflow (#3149)
+  - [fix] Add workaround for pre-release test failures (#3198)
+  - [fix] Disable Windows tests (#3204)
+  - [fix] Fixes creation template lookup on Windows (#3157)
+  - [fix] avoid length prompt when input is within rule boundary
+    (#3159)
+  - [fix] skip redundant confirmation when --edit is used (#3161)
+  - [fix] use WritePassword for secure write (#3200)
+  - [testing] use /usr/bin/env cat instead of /bin/cat (#3160)</comment>
+    <requestid>1305040</requestid>
+  </revision>
 </revisionlist>
