@@ -1,7 +1,7 @@
 #
 # spec file for package fs-uae-launcher
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           fs-uae-launcher
-Version:        3.1.68
+Version:        3.2.20
 Release:        0
 Summary:        Graphical configuration frontend and launcher for FS-UAE
 License:        GPL-2.0-or-later
 Group:          System/Emulators/Other
 URL:            https://fs-uae.net/
-Source:         https://fs-uae.net/files/FS-UAE-Launcher/Stable/%{version}/fs-uae-launcher-%{version}.tar.xz
+Source:         https://github.com/FrodeSolheim/fs-uae-launcher/releases/download/v%{version}/fs-uae-launcher-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3-setuptools
