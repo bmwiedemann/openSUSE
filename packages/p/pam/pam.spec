@@ -95,6 +95,8 @@ Source24:       postlogin-session.pamd
 Patch1:         pam-limit-nproc.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         post-v1.7.1.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         pam_mkhomedir-Use-vendordir-when-defined.patch
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  flex

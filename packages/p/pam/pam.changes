@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 15 07:53:29 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- pam_mkhomedir: building with vendordir option allows fetching skeleton
+  directory from the vendor directory when creating the user home directory.
+  [+ pam_mkhomedir-Use-vendordir-when-defined.patch, bsc#1245524]
+
+-------------------------------------------------------------------
 Wed Aug 27 14:20:14 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to 1.7.1+git (post-v1.7.1.patch)
