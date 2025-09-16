@@ -1,6 +1,6 @@
 Format: 1.0
 Source: osc
-Version: 1.19.1-0
+Version: 1.20.0-0
 Binary: osc
 Maintainer: Adrian Schroeter <adrian@suse.de>
 Architecture: any
