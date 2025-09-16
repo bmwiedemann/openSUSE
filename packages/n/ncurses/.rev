@@ -5318,4 +5318,30 @@
 - Correct hunk offsets of patch ncurses-6.4.dif</comment>
     <requestid>1302199</requestid>
   </revision>
+  <revision rev="309" vrev="82">
+    <srcmd5>ae8997ddf8d05662dd64a3ba08ddd055</srcmd5>
+    <version>unknown</version>
+    <time>1758039482</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20250913
+  + update ncurses-howto.
+  + modify MKfallback.sh to eliminate TERMINFO environment variable.
+  + improve checks in run_tic.sh script, change some variable names to
+    reduce packager confusion (report by Stas Sergeev).
+  + disallow configure options which apply only to multiuser systems, to
+    improve ports to single-user systems such as Haiku (report by Stas
+    Sergeev).
+  + update ncurses/wcwidth.c, for MinGW ports, from xterm.
+  + correct _nc_to_char() for the case when wctob() is not found by
+    configure script (report/patch by Benno Schulenberg).
+  &gt; patches by Robin Haberkorn
+    + modify handle_wheel case 2 to ignore the event as in case 1 for
+      mouse version 1, since that corresponds to a button 6 or 7 event
+      which is not supported with ABI 6.
+    + use separate read/write pointers in the mouse event queue to work
+      with too-close events for the click-detection to work reliably,
+      and further improve that in case mouseinterval(0) is used to
+      suppress click-detection.</comment>
+    <requestid>1304810</requestid>
+  </revision>
 </revisionlist>

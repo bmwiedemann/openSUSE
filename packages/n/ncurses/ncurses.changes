@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep 15 08:28:37 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250913
+  + update ncurses-howto.
+  + modify MKfallback.sh to eliminate TERMINFO environment variable.
+  + improve checks in run_tic.sh script, change some variable names to
+    reduce packager confusion (report by Stas Sergeev).
+  + disallow configure options which apply only to multiuser systems, to
+    improve ports to single-user systems such as Haiku (report by Stas
+    Sergeev).
+  + update ncurses/wcwidth.c, for MinGW ports, from xterm.
+  + correct _nc_to_char() for the case when wctob() is not found by
+    configure script (report/patch by Benno Schulenberg).
+  > patches by Robin Haberkorn
+    + modify handle_wheel case 2 to ignore the event as in case 1 for
+      mouse version 1, since that corresponds to a button 6 or 7 event
+      which is not supported with ABI 6.
+    + use separate read/write pointers in the mouse event queue to work
+      with too-close events for the click-detection to work reliably,
+      and further improve that in case mouseinterval(0) is used to
+      suppress click-detection.
+
+-------------------------------------------------------------------
 Mon Sep  1 07:26:06 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20250830

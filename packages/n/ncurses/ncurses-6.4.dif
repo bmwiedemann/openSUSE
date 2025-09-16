@@ -18,8 +18,8 @@
  16 files changed, 197 insertions(+), 67 deletions(-)
 
 --- aclocal.m4
-+++ aclocal.m4	2025-08-11 06:19:13.219949163 +0000
-@@ -6159,12 +6159,12 @@ cat >>$cf_edit_man <<CF_EOF
++++ aclocal.m4	2025-09-15 09:53:54.828903502 +0000
+@@ -6181,12 +6181,12 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -34,7 +34,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -6174,7 +6174,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6196,7 +6196,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -43,7 +43,7 @@
  CF_EOF
  fi
  
-@@ -6217,7 +6217,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6239,7 +6239,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_manpage_so_strip \$TMP
  	fi
  	fi
@@ -52,7 +52,7 @@
  CF_EOF
  fi
  
-@@ -6226,31 +6226,31 @@ case "$MANPAGE_FORMAT" in
+@@ -6248,31 +6248,31 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -91,7 +91,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -6260,7 +6260,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6282,7 +6282,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -100,7 +100,7 @@
  							then
  								continue
  							fi
-@@ -6270,18 +6270,18 @@ CF_EOF
+@@ -6292,18 +6292,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -122,7 +122,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_manpage_compress" ; then
-@@ -6301,9 +6301,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6323,9 +6323,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -135,7 +135,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -6324,6 +6324,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -6346,6 +6346,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -144,7 +144,7 @@
  esac
  done
 --- configure
-+++ configure	2025-07-28 08:25:45.891920719 +0000
++++ configure	2025-09-15 09:53:54.832903432 +0000
 @@ -6752,7 +6752,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
@@ -174,7 +174,7 @@
  	do
  
  if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists "$cf_with_pcre2"; then
-@@ -15628,12 +15628,12 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15663,12 +15663,12 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
  	fi
@@ -189,7 +189,7 @@
  	sed	-f "$cf_man_alias" \\
  CF_EOF
  
-@@ -15643,7 +15643,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15678,7 +15678,7 @@ cat >>$cf_edit_man <<CF_EOF
  CF_EOF
  else
  cat >>$cf_edit_man <<CF_EOF
@@ -198,7 +198,7 @@
  CF_EOF
  fi
  
-@@ -15686,7 +15686,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15721,7 +15721,7 @@ cat >>$cf_edit_man <<CF_EOF
  		mv \$TMP.$cf_manpage_so_strip \$TMP
  	fi
  	fi
@@ -207,7 +207,7 @@
  CF_EOF
  fi
  
-@@ -15695,31 +15695,31 @@ case "$MANPAGE_FORMAT" in
+@@ -15730,31 +15730,31 @@ case "$MANPAGE_FORMAT" in
  cat >>$cf_edit_man <<CF_EOF
  	if test "\$form" = format ; then
  		# BSDI installs only .0 suffixes in the cat directories
@@ -246,7 +246,7 @@
  				for cf_alias in \$aliases
  				do
  					if test "\$section" = 1 ; then
-@@ -15729,7 +15729,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15764,7 +15764,7 @@ cat >>$cf_edit_man <<CF_EOF
  
  					if test "$MANPAGE_SYMLINKS" = yes ; then
  						if test -f "\$cf_alias\${suffix}" ; then
@@ -255,7 +255,7 @@
  							then
  								continue
  							fi
-@@ -15739,18 +15739,18 @@ CF_EOF
+@@ -15774,18 +15774,18 @@ CF_EOF
  case "x$LN_S" in
  (*-f)
  cat >>$cf_edit_man <<CF_EOF
@@ -277,7 +277,7 @@
  						echo ".so \$cf_source" >\$TMP
  CF_EOF
  if test -n "$cf_manpage_compress" ; then
-@@ -15770,9 +15770,9 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15805,9 +15805,9 @@ cat >>$cf_edit_man <<CF_EOF
  			)
  		)
  	elif test "\$verb" = removing ; then
@@ -290,7 +290,7 @@
  		)
  		test -d "\$cf_subdir\${section}" &&
  		test -n "\$aliases" && (
-@@ -15793,6 +15793,7 @@ cat >>$cf_edit_man <<CF_EOF
+@@ -15828,6 +15828,7 @@ cat >>$cf_edit_man <<CF_EOF
  #		echo ".hy 0"
  		cat \$TMP
  	fi
@@ -631,7 +631,7 @@
  # Don't use this, because not everyone has "screen.xterm-new":
  #:screen.xterm|screen for modern xterm,
  #:	use=screen.xterm-new,
-++screen.xterm|screen customized for modern xterm,
++screen.xterm|screen customized for modern xterm,
 +	bce@, bw,
 +	invis@, kIC@, kNXT@, kPRV@, meml@, memu@, rep@,
 +	sgr=%?%p9%t\E(0%e\E(B%;\E[0%?%p6%t;1%;%?%p2%t;4%;%?%p1%p3%|
@@ -703,46 +703,31 @@
 +
 +exec ${1+"$@"}
 --- ncurses/tinfo/MKfallback.sh
-+++ ncurses/tinfo/MKfallback.sh	2025-05-05 07:22:16.202714831 +0000
-@@ -66,14 +66,22 @@ if test $# != 0 ; then
- 	TERMINFO=`pwd`/$tmp_info
- 	export TERMINFO
- 
-+	test -d "$TERMINFO" || mkdir -p "$TERMINFO"
-+
- 	TERMINFO_DIRS=$TERMINFO:$terminfo_dir
- 	export TERMINFO_DIRS
- 
--	"$tic_path" -x "$terminfo_src" >&2
-+	"$tic_path" -o "$TERMINFO" -x "$terminfo_src" >&2
- else
++++ ncurses/tinfo/MKfallback.sh	2025-09-15 10:37:20.626057998 +0000
+@@ -71,6 +71,8 @@ else
  	tmp_info=
  fi
  
-+if test -n "$TERMINFO" -a -d "$TERMINFO" ; then
-+	infocmp_args="-v1 -A $TERMINFO"
-+else
-+	infocmp_args="-v1"
-+fi
++infocmp_args="-v1 -A $tmp_info"
 +
  cat <<EOF
  /* This file was generated by $0 */
  
-@@ -95,7 +103,7 @@ EOF
+@@ -94,7 +96,7 @@ EOF
  	for x in "$@"
  	do
  		echo "/* $x */"
--		"$infocmp_path" -x -E "$x" | sed -e 's/[ 	]short[ 	]/ NCURSES_INT2 /g'
-+		"$infocmp_path" $infocmp_args -x -E "$x" | sed -e 's/[ 	]short[ 	]/ NCURSES_INT2 /g'
+-		"$infocmp_path" -x"$opt_info" -E "$x" | sed -e 's/[ 	]short[ 	]/ NCURSES_INT2 /g'
++		"$infocmp_path" $infocmp_args -x"$opt_info" -E "$x" | sed -e 's/[ 	]short[ 	]/ NCURSES_INT2 /g'
  	done
  
  	cat <<EOF
-@@ -106,7 +114,7 @@ EOF
+@@ -105,7 +107,7 @@ EOF
  	for x in "$@"
  	do
  		echo "$comma /* $x */"
--		"$infocmp_path" -x -e "$x"
-+		"$infocmp_path" $infocmp_args -x -e "$x"
+-		"$infocmp_path" -x"$opt_info" -e "$x"
++		"$infocmp_path" $infocmp_args -x"$opt_info" -e "$x"
  		comma=","
  	done
  
