@@ -1,8 +1,8 @@
 #
 # spec file for package serialdv
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define sover   1
 %define libname libserialdv%{sover}
 Name:           serialdv
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        Library for audio de-/encoding with ABME3000 based devices
 License:        GPL-3.0-only
@@ -53,10 +53,10 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libserialdv.
 
 %prep
-%setup -q -n serialDV-%{version}
+%autosetup -n serialDV-%{version}
 
 %build
-%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+%cmake
 %cmake_build
 
 %install
@@ -65,8 +65,7 @@ applications that want to make use of libserialdv.
 %check
 %ctest
 
-%post   -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license LICENSE

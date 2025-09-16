@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 15 20:15:59 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.5
+  * Upgrade cmake minimum version to 3.17.
+  * Support for more bitrates.
+- Use %ldconfig_scriptlets
+
+-------------------------------------------------------------------
 Sat Mar 22 15:58:21 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
