@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep 16 13:02:47 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox Extended Support Release 140.3.0 ESR
+  * Fixed: Various security fixes.
+- Mozilla Firefox ESR 140.3.0
+  https://www.mozilla.org/security/advisories/mfsa2025-75
+  MFSA 2025-75 (boo#1249391)
+  * CVE-2025-10527 (bmo#1984825)
+    Sandbox escape due to use-after-free in the Graphics:
+    Canvas2D component
+  * CVE-2025-10528 (bmo#1986185)
+    Sandbox escape due to undefined behavior, invalid pointer in
+    the Graphics: Canvas2D component
+  * CVE-2025-10529 (bmo#1970490)
+    Same-origin policy bypass in the Layout component
+  * CVE-2025-10532 (bmo#1979502)
+    Incorrect boundary conditions in the JavaScript: GC component
+  * CVE-2025-10533 (bmo#1980788)
+    Integer overflow in the SVG component
+  * CVE-2025-10536 (bmo#1981502)
+    Information disclosure in the Networking: Cache component
+  * CVE-2025-10537 (bmo#1938220, bmo#1980730, bmo#1981280,
+    bmo#1981283, bmo#1984505, bmo#1985067)
+    Memory safety bugs fixed in Firefox ESR 140.3, Thunderbird
+    ESR 140.3, Firefox 143 and Thunderbird 143
+
+-------------------------------------------------------------------
 Fri Sep  5 09:34:40 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update MozillaFirefox.desktop from a fresh Factory/Tumbleweed
