@@ -17,7 +17,7 @@
 
 
 Name:           ibus-typing-booster
-Version:        2.27.74
+Version:        2.27.75
 Release:        0
 Summary:        An input completion utility
 License:        GPL-3.0-or-later
@@ -81,6 +81,8 @@ Recommends:     python3-regex
 Recommends:     python3-simpleaudio
 # To make emoji and Unicode symbol matching faster:
 Recommends:     python3-rapidfuzz
+# To use ollama:
+Recommends:     python3-httpx
 # To get the primary selection on Wayland when getting it using
 # surrounding text fails:
 Recommends:     wl-clipboard
