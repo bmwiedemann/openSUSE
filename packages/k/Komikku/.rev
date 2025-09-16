@@ -582,4 +582,19 @@
   * [L10n] Updated German, Italian, Russian and Ukrainian translations (forwarded request 1301889 from rrahl0)</comment>
     <requestid>1301911</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>2cbd29a466cfdbf389492562d286224e</srcmd5>
+    <version>1.87.0</version>
+    <time>1758039570</time>
+    <user>anag_factory</user>
+    <comment>- update to version 1.87.0:
+  * [Servers] Cartel De Manhwas (ES): Update
+  * [Servers] Flame Comics (EN): Update
+  * [Servers] Mangapill: Update
+  * [Servers] SCtoon (pt_BR): Disabled
+  * [Servers] Starbound Scans (FR): Update
+  * [L10n] Updated Arabic, Croatian, Finnish and Portuguese
+    (Brazil) translations (forwarded request 1305123 from rrahl0)</comment>
+    <requestid>1305142</requestid>
+  </revision>
 </revisionlist>
