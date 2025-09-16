@@ -41,4 +41,18 @@
   * Improve ImHex pattern file to show metadata syntaxes</comment>
     <requestid>1296663</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9c6d5638fe24e5a4bc6fdad56c5af09b</srcmd5>
+    <version>0.2.0.3</version>
+    <time>1758039581</time>
+    <user>anag_factory</user>
+    <comment>- update to version 0.2.0.3:
+  * Hotfix for malfunctional rate control algorithm in 'constant color frame'
+    like black screen
+- update to version 0.2.0.2:
+  * Improved the automatic assigning of band_idc value
+  * Fixed typo in APV family readme
+  * Impoved decoder ctests</comment>
+    <requestid>1305167</requestid>
+  </revision>
 </revisionlist>

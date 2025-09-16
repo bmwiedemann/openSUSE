@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 16 12:16:58 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 0.2.0.3:
+  * Hotfix for malfunctional rate control algorithm in 'constant color frame'
+    like black screen
+- update to version 0.2.0.2:
+  * Improved the automatic assigning of band_idc value
+  * Fixed typo in APV family readme
+  * Impoved decoder ctests
+
+-------------------------------------------------------------------
 Wed Jul 30 19:03:49 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 0.2.0.1:
