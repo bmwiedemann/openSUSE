@@ -1,4 +1,410 @@
 -------------------------------------------------------------------
+Fri Aug 29 05:59:46 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Add fix-i586.patch to fix compilation for i586 with gcc-15
+
+-------------------------------------------------------------------
+Fri Aug 29 01:26:36 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Drop -Werror
+
+-------------------------------------------------------------------
+Thu Aug 28 12:28:14 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to version 1.21.1+git20250827.61b4585e2:
+  *  [efi] Drag in MNP driver whenever SNP driver is present
+  *  [bnxt] Update CQ doorbell type
+  *  [dwgpio] Use fdt_reg() to get GPIO port numbers
+  *  [fdt] Provide fdt_reg() for unsized single-entry regions
+  *  [cmdline] Show commands in alphabetical order
+  *  [digest] Treat inability to acquire an image as a fatal error
+  *  [digest] Add "--set" option to store digest value in a setting
+  *  [digest] Add commands for all enabled digest algorithms
+  *  [dwgpio] Add driver for the DesignWare GPIO controller
+  *  [gpio] Add a framework for GPIO controllers
+  *  [fdt] Use phandle as device location
+  *  [dwmac] Show core version in debug messages
+  *  [bnxt] Remove unnecessary test_if macro
+  *  [bnxt] Remove unnecessary I/O macros
+  *  [serial] Explicitly initialise serial console UART to NULL
+  *  [undi] Assume that legacy interrupts are broken for any PCIe device
+  *  [pxeprefix] Display PCI vendor and device ID in PXE startup banner
+  *  [fdt] Add ability to locate node by phandle
+  *  [dwusb] Add driver for DesignWare USB3 host controller
+  *  [xhci] Allow for non-PCI xHCI host controllers
+  *  [xhci] Use root hub port number to determine slot type
+  *  [efi] Check only the non-extended WaitForKey event
+  *  [efi] Allow compiler to perform type checks on EFI_EVENT
+  *  [init] Show initialisation function names in debug messages
+  *  [efi] Assume that vendor wireless drivers are unusable via SNP
+  *  [efi] Drop to external TPL for calls to ConnectController()
+  *  [efi] Provide efi_tpl_name() for transcribing TPLs in debug messages
+  *  [dwmac] Add driver for DesignWare Ethernet MAC
+  *  [dma] Use virtual addresses for dma_map()
+  *  [build] Handle isohybrid with xorrisofs
+  *  [iobuf] Ensure I/O buffer data sits within unshared cachelines
+  *  [uaccess] Allow for coherent DMA mapping of the 32-bit address space
+  *  [bnxt] Update supported devices array
+  *  [bnxt] Update device descriptions
+  *  [bnxt] Remove VLAN stripping logic
+  *  [bnxt] Increase Tx descriptors
+  *  [build] Disable use of common symbols
+  *  [build] Allow for the existence of small-data sections
+  *  [legacy] Allocate legacy driver .bss-like segments at probe time
+  *  [legacy] Rename the global legacy NIC to "legacy_nic"
+  *  [legacy] Allocate extra padding in receive buffers
+  *  [pxe] Use a weak symbol for isapnp_read_port
+  *  [fdtcon] Add basic support for FDT-based system serial console
+  *  [dwuart] Read input clock frequency from the device tree
+  *  [uart] Wait for 16550 UART to become idle before modifying LCR
+  *  [serial] Allow platform to specify mechanism for identifying console
+  *  [dwuart] Add "ns16550a" compatible device ID
+  *  [dwuart] Add a basic driver for the Synopsys DesignWare UART
+  *  [uart] Allow for dynamically registered 16550 UARTs
+  *  [uart] Add support for MMIO-accessible 16550 UARTs
+  *  [uart] Allow for the existence of non-16550 UARTs
+  *  [uart] Remove ability to use frame formats other than 8n1
+  *  [fdt] Allow paths and aliases to be terminated with separator characters
+  *  [bnxt] Remove TX padding
+  *  [fdtmem] Limit relocation to 32-bit address space
+  *  [dt] Allow for creation of standalone devices
+  *  [ipv4] Add support for classless static routes
+  *  [ipv4] Extend routing mechanism to handle non-default routes
+  *  [ipv4] Add self-tests for IPv4 routing
+  *  [test] Add infrastructure for test network devices
+  *  [dt] Locate parent node at point of use in dt_ioremap()
+  *  [fdt] Provide ability to locate the parent device node
+  *  [fdt] Add tests for device tree creation
+  *  [image] Use image name rather than pointer value in all debug messages
+  *  [fdtmem] Ignore reservation regions with no fixed addresses
+  *  [memmap] Allow explicit colour selection for memory map debug messages
+  *  [memmap] Rename addr/last fields to min/max for clarity
+  *  [lkrn] Support initrd construction for RISC-V bare-metal kernels
+  *  [initrd] Squash and shuffle only initrds within the external heap
+  *  [initrd] Split out initrd construction from bzimage.c
+  *  [initrd] Allow for images straddling the top of the reshuffle region
+  *  [initrd] Rename bzimage_align() to initrd_align()
+  *  [initrd] Swap initrds entirely in-place via triple reversal
+  *  [uheap] Expose external heap region directly
+  *  [uheap] Prevent allocation of blocks with zero physical addresses
+  *  [fdtmem] Allow iPXE to be relocated to the top of the address space
+  *  [lkrn] Shut down devices before jumping to kernel entry point
+  *  [lkrn] Allow a single initrd to be passed to the booted kernel
+  *  [fdt] Allow an initrd to be specified when creating a device tree
+  *  [initrd] Move initrd reshuffling to be architecture-independent code
+  *  [image] Use image replacement when executing extracted images
+  *  [lkrn] Add support for EFI zboot compressed kernel images
+  *  [lkrn] Add basic support for the RISC-V Linux kernel image format
+  *  [bios] Use generic external heap based on the system memory map
+  *  [uheap] Add a generic external heap based on the system memory map
+  *  [malloc] Allow heap to specify block and pointer alignments
+  *  [malloc] Allow for the existence of multiple heaps
+  *  [memmap] Remove now-obsolete get_memmap()
+  *  [bios] Use memmap_describe() to find an external heap location
+  *  [settings] Use memmap_describe() to construct memory map settings
+  *  [bios] Use memmap_describe() to find a relocation address
+  *  [comboot] Use memmap_describe() to obtain available memory
+  *  [multiboot] Use memmap_describe() to construct Multiboot memory map
+  *  [image] Use memmap_describe() to check loadable image segments
+  *  [memmap] Use memmap_dump_all() to dump debug memory maps
+  *  [bios] Describe umalloc() heap as an in-use memory area
+  *  [bios] Update to use the generic system memory map API
+  *  [fdtmem] Update to use the generic system memory map API
+  *  [memmap] Define an API for managing the system memory map
+  *  [tests] Remove prehistoric umalloc() test code
+  *  [fdtmem] Record size of accessible physical address space
+  *  [bios] Rename memmap.c to int15.c
+  *  [bnxt] Use updated DMA APIs
+  *  [bnxt] Return proper error codes in probe
+  *  [crypto] Remove redundant null pointer check
+  *  [fdtmem] Add ability to parse FDT memory map for a relocation address
+  *  [fdt] Generalise access to "reg" property
+  *  [build] Formalise mechanism for accessing absolute symbols
+  *  [libc] Display assertion failure message before incrementing counter
+  *  [uaccess] Generalise librm's virt_offset mechanism for RISC-V
+  *  [build] Constrain PHYS_CODE() and REAL_CODE() to use i386 registers
+  *  [zbin] Allow for constructing compressed dynamic relocation records
+  *  [build] Allow for 32-bit and 64-bit versions of util/zbin
+  *  [uaccess] Remove redundant virt_to_user() and userptr_t
+  *  [uaccess] Reduce scope of included uaccess.h header
+  *  [image] Make image data read-only to most consumers
+  *  [image] Add the concept of a static image
+  *  [image] Move embedded images from .rodata to .data
+  *  [test] Separate read-only and writable CMS test images
+  *  [uaccess] Remove redundant copy_from_user() and copy_to_user()
+  *  [image] Clear recorded replacement image immediately after consuming
+  *  [bofm] Remove userptr_t from BOFM table parsing and updating
+  *  [bofm] Allow BOFM tests to be run without a BOFM-capable device driver
+  *  [build] Remove some long-obsolete unused header files
+  *  [peerdist] Remove never-used peerdist_msg_blk() macro
+  *  [peerdist] Remove userptr_t from PeerDist content information parsing
+  *  [xferbuf] Simplify and generalise data transfer buffers
+  *  [prefix] Remove userptr_t from command line image construction
+  *  [comboot] Remove userptr_t from COM32 API implementation
+  *  [comboot] Remove userptr_t from COMBOOT API implementation
+  *  [comboot] Remove userptr_t from COMBOOT image parsing
+  *  [uaccess] Remove redundant UNULL definition
+  *  [bzimage] Remove userptr_t from bzImage parsing
+  *  [initrd] Use physical addresses for calculations on initrd locations
+  *  [bzimage] Use image name in debug messages
+  *  [efi] Add ability to reboot to firmware setup menu
+  *  [reboot] Generalise warm reboot indicator to a flags bitmask
+  *  [multiboot] Remove userptr_t from Multiboot and ELF image parsing
+  *  [multiboot] Use image name in Multiboot and ELF debug messages
+  *  [linux] Enable compiler warnings when building the linux_api.o object
+  *  [linux] Add missing return statement to linux_poll()
+  *  [build] Disable gcc unterminated-string-initializer warnings
+  *  [build] Remove unsafe disable function wrapper from legacy NIC drivers
+  *  [build] Prevent the use of reserved words in C23
+  *  [build] Fix old-style function definition
+  *  [build] Fix typo in xenver.h header guard
+  *  [pnm] Remove userptr_t from PNM image parsing
+  *  [png] Remove userptr_t from PNG image parsing
+  *  [fbcon] Avoid redrawing unchanged characters when scrolling
+  *  [fbcon] Remove userptr_t from framebuffer console drivers
+  *  [efi] Remove userptr_t from EFI PE image parsing
+  *  [pxe] Remove userptr_t from PXE file API implementation
+  *  [pxe] Remove userptr_t from PXE API call dispatcher
+  *  [cmdline] Remove userptr_t from "digest" command
+  *  [nbi] Remove userptr_t from NBI image parsing
+  *  [sdi] Remove userptr_t from SDI image parsing
+  *  [pxe] Remove userptr_t from PXE NBP image parsing
+  *  [block] Remove userptr_t from block device abstraction
+  *  [uaccess] Remove now-obsolete memchr_user()
+  *  [script] Remove userptr_t from script image parsing
+  *  [ucode] Remove userptr_t from microcode image parsing
+  *  [ucode] Remove userptr_t from microcode update mechanism
+  *  [thunderx] Replace uses of userptr_t with direct pointer dereferences
+  *  [exanic] Replace uses of userptr_t with direct pointer dereferences
+  *  [uaccess] Remove trivial uses of userptr_t
+  *  [gve] Replace uses of userptr_t with direct pointer dereferences
+  *  [umalloc] Remove userptr_t from user memory allocations
+  *  [smbios] Remove userptr_t from SMBIOS structure parsing
+  *  [acpi] Remove userptr_t from ACPI table parsing
+  *  [deflate] Remove userptr_t from decompression code
+  *  [image] Remove userptr_t from image definition
+  *  [crypto] Remove userptr_t from CMS verification and decryption
+  *  [crypto] Remove userptr_t from ASN.1 parsers
+  *  [uaccess] Remove redundant read_user()
+  *  [uaccess] Replace real_to_user() with real_to_virt()
+  *  [uaccess] Remove user_to_phys() and phys_to_user()
+  *  [uaccess] Remove redundant user_to_virt()
+  *  [uaccess] Remove redundant memcpy_user() and related string functions
+  *  [uaccess] Remove redundant userptr_add() and userptr_diff()
+  *  [uaccess] Change userptr_t to be a pointer type
+  *  [uaccess] Add explicit casts to and from userptr_t where needed
+  *  [uaccess] Rename userptr_sub() to userptr_diff()
+  *  [time] Use currticks() to provide the null system time
+  *  [cgem] Add a driver for the Cadence GEM NIC
+  *  [undi] Work around broken ASUSTeK KNPA-U16 server PXE ROM
+  *  [efi] Inhibit calls to Shutdown() for wireless SNP devices
+  *  [netdevice] Add the concept of an insomniac network device
+  *  [efi] Allow for custom methods for disconnecting existing drivers
+  *  [dt] Provide dt_ioremap() to map device registers
+  *  [fdt] Add fdt_cells() to read cell-based properties such as "reg"
+  *  [netdevice] Add missing bus type identifier for devicetree devices
+  *  [crypto] Allow for explicit control of external trust sources
+  *  [dt] Add basic concept of a devicetree bus
+  *  [fdt] Remove concept of a device tree cursor
+  *  [fdt] Add basic tests for reading values from a flattened device tree
+  *  [fdt] Avoid temporarily modifying path during path lookup
+  *  [fdt] Provide fdt_strings() to read string list properties
+  *  [fdt] Allow for trailing slashes in path lookups
+  *  [crypto] Switch to using python-asn1crypto instead of python-asn1
+  *  [fdt] Populate boot arguments in constructed device tree
+  *  [fdt] Identify free space (if any) at end of parsed tree
+  *  [x509] Ensure certificate remains valid during x509_append()
+  *  [tls] Support fragmentation of transmitted records
+  *  [tls] Send an empty client certificate chain if we have no certificate
+  *  [iobuf] Limit automatic I/O buffer alignment to page size
+  *  [tls] Encrypt data in place to reduce memory usage
+  *  [xfer] Use xfer_alloc_iob() for transmit I/O buffers on stream sockets
+  *  [isa] Disable legacy ISA device probing by default
+  *  [efi] Allow for fact that SNP device may be removed by executed image
+  *  [efi] Check correct return value from efi_pxe_find()
+  *  [efi] Disconnect existing drivers on a per-protocol basis
+  *  [efi] Define an attachment priority order for EFI drivers
+  *  [efi] Show all drivers claiming support for a handle in debug messages
+  *  [efi] Return success from Stop() if driver is already stopped
+  *  [efi] Add various well-known GUIDs encountered in WiFi boot
+  *  [efi] Install a device tree for the booted OS, if available
+  *  [fdt] Provide the ability to create a device tree for a booted OS
+  *  [efi] Create a copy of the system flattened device tree, if present
+  *  [fdt] Allow for parsing device trees where the length is known in advance
+  *  [fdt] Allow for the existence of multiple device trees
+  *  [fdt] Add the "fdt" command
+  *  [fdt] Add the concept of an FDT image
+  *  [efi] Add support for installing EFI configuration tables
+  *  [efi] Add flattened device tree header and GUID definitions
+  *  [efi] Add ACPI and SMBIOS tables as well-known GUIDs
+  *  [undi] Ensure forward progress is made even if UNDI IRQ is stuck
+  *  [pxeprefix] Ensure that UNDI IRQ is disabled before starting iPXE
+  *  [pxeprefix] Work around missing type values from PXENV_UNDI_GET_NIC_TYPE
+  *  [efi] Allow use of typed pointers for efi_open() et al
+  *  [efi] Eliminate uses of HandleProtocol()
+  *  [efi] Use efi_open() for all ephemeral protocol opens
+  *  [efi] Use efi_open_unsafe() for all explicitly unsafe protocol opens
+  *  [efi] Use efi_open_by_driver() for all by-driver protocol opens
+  *  [efi] Use efi_open_by_child() for all by-child protocol opens
+  *  [efi] Create safe wrappers for OpenProtocol() and CloseProtocol()
+  *  [efi] Remove the efipci_open() and efipci_close() wrappers
+  *  [efi] Avoid function name near-collision
+  *  [efi] Remove spurious close of SNP device parent's device path
+  *  [efi] Use driver name only from driver binding handles in debug messages
+  *  [efi] Get veto candidate driver name via either component name protocol
+  *  [efi] Get veto candidate driver name from image handle
+  *  [efi] Show image address range in veto debug messages
+  *  [efi] Prefer driver name to device path for debug messages
+  *  [efi] Attempt to retrieve driver name from image handle for debug messages
+  *  [efi] Allow wrapping the global boot services table in situ
+  *  [efi] Fix debug wrappers for CloseEvent() and CheckEvent()
+  *  [efi] Ignore path separator characters in virtual filenames
+  *  [efi] Prescroll the display after a failed wrapped ExitBootServices() call
+  *  [efi] Add EFI_RNG_PROTOCOL_GUID as a well-known GUID
+  *  [crypto] Update cmsdetach to work with python-asn1 version 3.0.0
+  *  [rng] Restore state of IRQ 8 and PIE when disabling entropy gathering
+  *  [pic8259] Return previous state when enabling or disabling IRQs
+  *  [contrib] Update bochsrc.txt to work with current versions
+  *  [efi] Accept and trust CA certificates in the TlsCaCertificates variable
+  *  [efi] Add TLS authentication header and GUID definitions
+  *  [efi] Add EFI_GLOBAL_VARIABLE as a well-known GUID
+  *  [cpio] Allow for the construction of pure directories
+  *  [cpio] Fix calculation of name lengths in CPIO headers
+  *  [crypto] Support extracting certificates from EFI signature list images
+  *  [crypto] Allow for parsing of DER data separate from DER images
+  *  [efi] Allow efi_guid_ntoa() to be used in non-EFI builds
+  *  [efi] Add EFI_SIGNATURE_LIST header and GUID definitions
+  *  [efi] Update to current EDK2 headers
+  *  [build] Use -fshort-wchar when building EFI host utilities
+  *  [efi] Mark UsbHostController.h as a non-imported header
+  *  [lkrnprefix] Support a longer version string
+  *  [cpio] Allow for construction of parent directories as needed
+  *  [menu] Allow a post-activity timeout to be defined
+  *  [crypto] Start up RBG on demand if needed
+  *  [efi] Increase download timeout for autoexec.ipxe
+  *  [crypto] Support direct reduction only for Montgomery constant R^2 mod N
+  *  [crypto] Expose shifted out bit from big integer shifts
+  *  [bnxt] Allocate TX rings with firmware input
+  *  [malloc] Ensure free memory blocks remain aligned
+  *  [malloc] Clean up debug messages
+  *  [crypto] Add definitions and tests for the NIST P-384 elliptic curve
+  *  [crypto] Add definitions and tests for the NIST P-256 elliptic curve
+  *  [crypto] Add support for Weierstrass elliptic curve point multiplication
+  *  [crypto] Add a generic implementation of a Montgomery ladder
+  *  [test] Add generic tests for elliptic curve point multiplication
+  *  [tls] Allow for NIST elliptic curve point formats
+  *  [crypto] Generalise elliptic curve key exchange to ecdhe_key()
+  *  [crypto] Add bigint_ntoa() for transcribing big integers
+  *  [crypto] Extract bigint_reduce_supremum() from bigint_mod_exp()
+  *  [crypto] Allow for relaxed Montgomery reduction
+  *  [efi] Add EFI_TCG2_PROTOCOL header and GUID definition
+  *  [efi] Update to current EDK2 headers
+  *  [crypto] Calculate inverse of modulus on demand in bigint_montgomery()
+  *  [gve] Run startup process only while device is open
+  *  [crypto] Remove obsolete bigint_mod_multiply()
+  *  [crypto] Use Montgomery reduction for modular exponentiation
+  *  [crypto] Add bigint_montgomery() to perform Montgomery reduction
+  *  [crypto] Use inverse size as effective size for bigint_mod_invert()
+  *  [crypto] Eliminate temporary working space for bigint_mod_invert()
+  *  [crypto] Eliminate temporary working space for bigint_reduce()
+  *  [crypto] Expose carry flag from big integer addition and subtraction
+  *  [crypto] Add bigint_msb_is_set() to clarify code
+  *  [efi] Ensure local drives are connected when attempting a SAN boot
+  *  [build] Allow for per-architecture cross-compilation prefixes
+  *  [sbi] Add support for running as a RISC-V SBI payload
+  *  [build] Allow default platform to vary by architecture
+  *  [pci] Provide a null PCI API for platforms with no PCI bus
+  *  [fdt] Add ability to parse unsigned integer properties
+  *  [pci] Drag in PCI settings mechanism only when PCI support is present
+  *  [uaccess] Rename UACCESS_EFI to UACCESS_FLAT
+  *  [smbios] Provide a null SMBIOS API for platforms with no concept of SMBIOS
+  *  [crypto] Add bigint_mod_invert() to calculate inverse modulo a power of two
+  *  [usb] Expose USB device descriptor and strings via settings
+  *  [usb] Add "usbscan" command for iterating over USB devices
+  *  [crypto] Separate out bigint_reduce() from bigint_mod_multiply()
+  *  [crypto] Use architecture-independent bigint_is_set()
+  *  [crypto] Rename bigint_rol()/bigint_ror() to bigint_shl()/bigint_shr()
+  *  [crypto] Eliminate temporary carry space for big integer multiplication
+  *  [arm] Support building as a Linux userspace binary for AArch32
+  *  [arm] Check PMCCNTR availability before use for profiling
+  *  [profile] Standardise return type of profile_timestamp()
+  *  [crypto] Use constant-time big integer multiplication
+  *  [gve] Allocate all possible event counters
+  *  [efi] Remove redundant EFI_BOOT_FILE definitions
+  *  [linux] Allow a sysroot to be specified via SYSROOT=...
+  *  [efi] Use standard va_args macros instead of VA_START() etc
+  *  [test] Add tests for 64-bit logical and arithmetic shifts
+  *  [efi] Centralise definition of efi_cpu_nap()
+  *  [libc] Centralise architecture-independent portions of setjmp.h
+  *  [cloud] Add ability to delete old AMI images
+  *  [cloud] Add family and architecture tags to AWS snapshots and images
+  *  [ena] Change reported operating system type to "iPXE"
+  *  [gdb] Allow CPU architectures to omit support for GDB
+  *  [build] Centralise dummy architecture-specific headers
+  *  [aqc1xx] Add support for Marvell AQtion Ethernet controller
+  *  [etherfabric] Fix use of uninitialised variable in falcon_xaui_link_ok()
+  *  [test] Add CMS decryption self-tests
+  *  [crypto] Allow cms_decrypt() to be called on unregistered images
+  *  [image] Add the "imgdecrypt" command
+  *  [crypto] Support decryption of images via CMS envelopes
+  *  [image] Split image_strip_suffix() out from image_extract()
+  *  [crypto] Add cmsdetach script for detaching encrypted data from CMS messages
+  *  [test] Update CMS self-test terminology
+  *  [crypto] Allow for extraction of ASN.1 algorithm parameters
+  *  [crypto] Hold CMS message as a single ASN.1 object
+  *  [crypto] Remove the concept of a public-key algorithm reusable context
+  *  [tls] Group client and server state in TLS connection structure
+  *  [tls] Group transmit and receive state in TLS connection structure
+  *  [gve] Add missing error codes in EUNIQ() list of potential errors
+  *  [contrib] Remove obsolete rom-o-matic code
+  *  [test] Generalise public-key algorithm tests and use okx()
+  *  [crypto] Pass asymmetric keys as ASN.1 cursors
+  *  [efi] Allow discovery of PCI bus:dev.fn address ranges
+  *  [pci] Separate permission to probe buses from bus:dev.fn range discovery
+  *  [crypto] Fix debug name for empty certificate chain validators
+  *  [crypto] Generalise cms_signature to cms_message
+  *  [crypto] Add OID-identified algorithms for AES ciphers
+  *  [crypto] Pass image as parameter to CMS functions
+  *  [crypto] Allow passing a NULL certificate store to x509_find() et al
+  *  [crypto] Centralise mechanisms for identifying X.509 certificates
+  *  [crypto] Extend asn1_enter() to handle partial object cursors
+  *  [crypto] Clarify ASN.1 cursor invalidation behaviour
+  *  [crypto] Do not return an error when skipping the final ASN.1 object
+  *  [cpuid] Allow hypervisor CPUID leaves to be accessed as settings
+  *  [cpuid] Allow reading hypervisor CPUID leaves
+  *  [smbios] Allow reading an entire SMBIOS data structure as a setting
+  *  [smbios] Avoid reading beyond end of constructed SMBIOS setting
+  *  [cloud] Add utility to read INT13CON partition in Google Compute Engine
+  *  [gve] Increase number of receive buffers to reduce packet loss
+  *  [gve] Add driver for Google Virtual Ethernet NIC
+  *  [cloud] Add utility for importing images to Google Compute Engine
+  *  [ipv6] Expose router address for DHCPv6 leased addresses
+  *  [ipv4] Support small subnets with no directed broadcast address
+  *  [hci] Remove the generalised widget user interface abstraction
+  *  [form] Reimplement the "login" user interface
+  *  [form] Add support for dynamically created interactive forms
+  *  [dynui] Add concept of a secret user interface item
+  *  [dynui] Allow for multiple flags on a user interface item
+  *  [dynui] Generalise mechanisms for looking up user interface items
+  *  [dynui] Generalise the concept of a menu to a dynamic user interface
+  *  [hci] Allow tab key to be used to cycle through UI elements
+  *  [hci] Rename "item" command's first parameter from "label" to "name"
+  *  [hci] Split out msg() and alert() from settings UI code
+  *  [hci] Draw all widgets on the standard screen
+  *  [libc] Add stpcpy()
+  *  [hci] Provide a general concept of a text widget set
+  *  [test] Add test cases for editable strings
+  *  [hci] Fix semantics of replace_string() to match code comments
+  *  [efi] Veto the Dhcp6Dxe driver on all platforms
+  *  [hci] Use dynamically allocated buffers for editable strings
+  *  [efi] Do not attempt to download autoexec.ipxe without a valid base URI
+  *  [netdevice] Add "linktype" setting
+  *  [efi] Restructure handling of autoexec.ipxe script
+  *  [cachedhcp] Allow cached DHCPACK to apply to temporary network devices
+  *  [efi] Add the ability to create a temporary MNP network device
+  *  [efi] Allow for allocating EFI devices from arbitrary handles
+
+-------------------------------------------------------------------
 Mon Apr 01 04:48:13 UTC 2024 - william.brown@suse.com
 
 - Remove 1082.patch which has an alternative merged upstream

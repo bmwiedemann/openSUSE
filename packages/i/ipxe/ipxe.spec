@@ -1,7 +1,7 @@
 #
 # spec file for package ipxe
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 
 Name:           ipxe
-Version:        1.21.1+git20240329.764e34f
+Version:        1.21.1+git20250827.61b4585e2
 Release:        0
 Summary:        A Network Boot Firmware
 License:        GPL-2.0-only
@@ -32,6 +32,7 @@ Group:          System/Boot
 URL:            https://ipxe.org/
 Source:         %{name}-%{version}.tar.xz
 Patch0:         syslinux-mtools.patch
+Patch9:         fix-i586.patch
 BuildRequires:  binutils-devel
 # Do not build i586 for Leap/SLE: no such port available
 %ifarch i586
@@ -86,7 +87,11 @@ This package contains the iPXE boot images in USB, CD, floppy, and PXE
 UNDI formats. EFI is supported, too.
 
 %prep
-%autosetup -p1
+%autosetup -N
+%autopatch -p1 -M 8
+%ifarch %{ix86}
+%autopatch -p1 -m 9
+%endif
 cd src
 
 # enable compressed images
@@ -104,8 +109,8 @@ sed -i.bak \
 cd src
 
 make_ipxe() {
-    # https://github.com/ipxe/ipxe/issues/620
-    [ `gcc -dumpversion` -ge 12 ] && TAG="NO_WERROR=1" || TAG=""
+    # https://github.com/ipxe/ipxe/issues/620 ; and gcc-7 now also fails from -Werror
+    TAG="NO_WERROR=1"
     make -O %{?_smp_mflags} V=1 \
         VERSION=%{version} $TAG "$@"
 }

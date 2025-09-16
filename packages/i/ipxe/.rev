@@ -208,4 +208,14 @@ use xorrisofs for creating iso
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1166047</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>83d8b48cdcc3b72caa70df6e8d49a20d</srcmd5>
+    <version>1.21.1+git20250827.61b4585e2</version>
+    <time>1758039534</time>
+    <user>anag_factory</user>
+    <comment>* Add fix-i586.patch to fix compilation for i586 with gcc-15
+* Drop -Werror
+* Update to version 1.21.1+git20250827.61b4585e2</comment>
+    <requestid>1305114</requestid>
+  </revision>
 </revisionlist>
