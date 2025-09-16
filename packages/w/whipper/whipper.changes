@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 16 10:44:06 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add python3-setuptools tools as requirement (boo#1249580) 
+
+-------------------------------------------------------------------
 Tue Feb 20 15:20:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

@@ -82,4 +82,12 @@
     <comment></comment>
     <requestid>1148305</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>3bc1443eb0d4f4be2d57baeeb0ed0948</srcmd5>
+    <version>0.10.0</version>
+    <time>1758039550</time>
+    <user>anag_factory</user>
+    <comment>- Add python3-setuptools tools as requirement (boo#1249580)</comment>
+    <requestid>1305136</requestid>
+  </revision>
 </revisionlist>

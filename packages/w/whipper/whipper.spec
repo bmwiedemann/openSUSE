@@ -1,7 +1,7 @@
 #
 # spec file for package whipper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,7 @@ BuildRequires:  python3-mutagen
 BuildRequires:  python3-pycdio
 BuildRequires:  python3-pytest
 BuildRequires:  python3-ruamel.yaml
+BuildRequires:  python3-setuptools
 BuildRequires:  sox
 # /SECTION
 # nb: there is a difference between cd-paranoia [we want] and
@@ -57,6 +58,7 @@ Requires:       python3-musicbrainzngs
 Requires:       python3-mutagen
 Requires:       python3-pycdio
 Requires:       python3-ruamel.yaml
+Requires:       python3-setuptools
 Requires:       sox
 Conflicts:      morituri
 
