@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 16 12:16:54 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to v0.1.18g:
+  * Fix the regression of --addr option handling (bsc#1249755)
+  * Really abort the program if the open fails
+- Fix Source tag to point to the right version number
+
+-------------------------------------------------------------------
 Mon May 12 16:09:34 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to v0.1.18f:

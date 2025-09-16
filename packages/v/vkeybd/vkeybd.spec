@@ -1,7 +1,7 @@
 #
 # spec file for package vkeybd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           vkeybd
-Version:        0.1.18f
+Version:        0.1.18g
 Release:        0
 Summary:        Virtual Keyboard Instrument
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://github.com/tiwai/vkeybd
-Source:         https://github.com/tiwai/vkeybd/archive/refs/tags/v0.1.18e.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/tiwai/vkeybd/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
