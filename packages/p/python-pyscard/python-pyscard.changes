@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 12 19:06:18 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.0
+  * PCSCCardRequest: fix waitforcardevent() initialization.
+  * PCSCCardConnection: raise exception for .connect() after
+    .release()
+  * Fix race issue in SCardListReaders() and
+    SCardListReaderGroups().
+  * Use SCARD_AUTOALLOCATE where defined.
+  * Use SCardFreeMemory() on Unix.
+  * CardMonitoringThread: Fix a thread safeness issue.
+  * fix/ignore all pylint warnings.
+  * Minor changes.
+
+-------------------------------------------------------------------
 Wed Jun 18 10:36:19 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.2
