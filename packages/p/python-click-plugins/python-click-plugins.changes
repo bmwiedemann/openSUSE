@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 25 04:43:36 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 1.1.1.2:
+  * Add a clear note stating that the package is no longer maintained, but the library can be vendored.
+- Update to version 1.1.1.1:
+ * Mark the project as inactive.
+
+-------------------------------------------------------------------
 Wed May 14 04:08:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-click-8.2.patch:

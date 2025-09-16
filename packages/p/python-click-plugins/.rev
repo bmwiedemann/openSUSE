@@ -88,4 +88,12 @@
 - No more greedy globs in %files.</comment>
     <requestid>1277279</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f3dd993798162398cabd2c3670222f12</srcmd5>
+    <version>1.1.1.2</version>
+    <time>1758039505</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1305042</requestid>
+  </revision>
 </revisionlist>

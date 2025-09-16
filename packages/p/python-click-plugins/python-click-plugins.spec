@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-plugins
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-click-plugins
-Version:        1.1.1
+Version:        1.1.1.2
 Release:        0
 Summary:        Click extension to register CLI commands via setuptools entry-points
 License:        BSD-3-Clause
 URL:            https://github.com/click-contrib/click-plugins
-Source:         https://files.pythonhosted.org/packages/source/c/click-plugins/click-plugins-%{version}.tar.gz
+Source0:        https://github.com/click-contrib/click-plugins/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE https://github.com/click-contrib/click-plugins/issues/38
 Patch0:         support-click-8.2.patch
 BuildRequires:  %{python_module click >= 3.0}
