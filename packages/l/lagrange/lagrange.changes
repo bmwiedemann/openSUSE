@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 15 16:48:49 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.19.2
+  - Indicate automatic reloading in the Tabs list.
+  - Fixed broken timestamp calculation when creating identities.
+  - Fixed parsing Gemini response header when there are excessive whitespace
+    characters present.
+  - Fixed event handling glitch when opening a popup in split view mode.
+
+-------------------------------------------------------------------
 Fri Sep 12 18:51:28 UTC 2025 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.19.1
