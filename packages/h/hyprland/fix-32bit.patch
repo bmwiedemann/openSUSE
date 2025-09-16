@@ -1,0 +1,29 @@
+From 48627cb20971eba295ab7e3ce484b8e09d38b894 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Florian=20=22sp1rit=22=E2=80=8B?= <sp1rit@disroot.org>
+Date: Thu, 11 Sep 2025 16:26:24 +0200
+Subject: [PATCH] render/OpenGL: fix compilation for 32bit systems
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Florian "sp1rit"​ <sp1rit@disroot.org>
+---
+ src/render/OpenGL.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/render/OpenGL.cpp b/src/render/OpenGL.cpp
+index d7ea584..9f51aba 100644
+--- a/src/render/OpenGL.cpp
++++ b/src/render/OpenGL.cpp
+@@ -2876,7 +2876,7 @@ void CHyprOpenGLImpl::ensureBackgroundTexturePresence() {
+     static auto PNOWALLPAPER    = CConfigValue<Hyprlang::INT>("misc:disable_hyprland_logo");
+     static auto PFORCEWALLPAPER = CConfigValue<Hyprlang::INT>("misc:force_default_wallpaper");
+ 
+-    const auto  FORCEWALLPAPER = std::clamp(*PFORCEWALLPAPER, -1L, 2L);
++    const auto  FORCEWALLPAPER = std::clamp(*PFORCEWALLPAPER, sc<int64_t>(-1), sc<int64_t>(2));
+ 
+     if (*PNOWALLPAPER)
+         m_backgroundTexture.reset();
+-- 
+2.47.0
+

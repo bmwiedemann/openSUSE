@@ -2,6 +2,7 @@
 # spec file for package hyprland
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2022-24 Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +23,7 @@
 %define shortname hypr
 
 Name:           hyprland
-Version:        0.50.1
+Version:        0.51.0
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
@@ -32,6 +33,7 @@ Source99:       %{name}.rpmlintrc
 Patch1:         meson-missing-wayland-include.patch
 Patch2:         disable-donation-nag-popup.patch
 Patch3:         pkg-config-with-deps.patch
+Patch4:         fix-32bit.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 14
 BuildRequires:  git
@@ -39,7 +41,7 @@ BuildRequires:  glaze-devel
 BuildRequires:  glslang-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(aquamarine) >= 0.9.0
+BuildRequires:  pkgconfig(aquamarine) >= 0.9.3
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm) >= 17.1.0
@@ -48,7 +50,7 @@ BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(hyprcursor) >= 0.1.9
 BuildRequires:  pkgconfig(hyprgraphics) >= 0.1.3
 BuildRequires:  pkgconfig(hyprlang) >= 0.3.2
-BuildRequires:  pkgconfig(hyprutils) >= 0.8.1
+BuildRequires:  pkgconfig(hyprutils) >= 0.8.2
 BuildRequires:  pkgconfig(hyprwayland-scanner) >= 0.3.10
 BuildRequires:  pkgconfig(libdrm) >= 2.4.118
 BuildRequires:  pkgconfig(libinput) >= 1.14.0
