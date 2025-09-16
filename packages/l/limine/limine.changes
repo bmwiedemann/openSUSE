@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep 15 20:13:38 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 10.0.0:
+ * GPT embedding is no longer supported as a deployment method for
+   GPT-with-BIOS configurations. The rationale for this being that it is
+   far too fragile, especially with regards to growing or shrinking disk
+   images, and it may cause certain machines to refuse to boot such
+   setups as they are technically in violation of the GPT specification.
+ * The default baud rate for serial I/O on BIOS systems is now 115200,
+   instead of 9600.
+ * BIOS (chainloading) boot menu entries are now hidden when booting in
+   UEFI mode, and EFI (chainloading) entries are hidden when booting in
+   BIOS mode.
+ * For the Limine boot protocol, for relocatable executables, KASLR now
+   defaults to being disabled. The rationale for this being that KASLR
+   is a somewhat niche and fairly bypassable security technique, which
+   can cause headaches for kernels not wanting to support it, and make
+   troubleshooting harder.
+ * For the Limine boot protocol, for PE format kernels, do not discard
+   discardable sections, as code put to a discardable section like INIT
+   might be intended to only be discarded after early kernel init, not
+   before the kernel is even loaded. 
+
+-------------------------------------------------------------------
 Sat Sep 13 23:18:14 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 9.6.7:
