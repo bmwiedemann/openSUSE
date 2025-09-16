@@ -85,4 +85,22 @@
     prevent spurious guest interrupts (forwarded request 1295287 from rrahl0)</comment>
     <requestid>1295288</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c09fbbd493b8df231de3f340eb97006e</srcmd5>
+    <version>48.0</version>
+    <time>1758039541</time>
+    <user>anag_factory</user>
+    <comment>- update to version 48.0:
+  * Experimental fw_cfg Device Support
+  * Experimental ivshmem Device Support
+  * Firmware Boot Support on riscv64
+  * Increased vCPU Limit on x86_64/kvm
+  * Improved Block Performance with Small Block Sizes
+  * Faster VM Pause Operation
+  * Updated Documentation on Windows Guest Support
+  * Policy on AI Generated Code
+  * Removed SGX Support
+  * Seccomp filter fixes with glibc v2.42 (forwarded request 1305128 from rrahl0)</comment>
+    <requestid>1305129</requestid>
+  </revision>
 </revisionlist>
