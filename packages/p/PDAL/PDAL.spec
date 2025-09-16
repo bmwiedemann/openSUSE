@@ -18,10 +18,10 @@
 
 
 %define soname 19
-%define sovers 19.0.0
+%define sovers 19.2.0
 %define lname   pdal
 Name:           PDAL
-Version:        2.9.0
+Version:        2.9.2
 Release:        0
 Summary:        Point Data Abstraction Library (GDAL for point cloud data)
 # The code is licensed BSD except for:
@@ -40,6 +40,8 @@ Source1:        https://github.com/PDAL/PDAL/releases/download/%{version}/%{name
 Patch0:         PDAL_unbundle.patch
 # GDAL headers are located in %{_includedir}/gdal
 Patch1:         PDAL-fix-gdal-includes.patch
+# Drop venored gtest
+Patch2:         PDAL-remove-gtest.patch
 BuildRequires:  bash-completion
 BuildRequires:  cairo-devel
 BuildRequires:  cmake >= 2.8

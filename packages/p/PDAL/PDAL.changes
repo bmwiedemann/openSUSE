@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 11 17:17:31 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to PDAL 2.9.2
+  * Add PDAL-remove-gtest.patch to remove the venored gtest, which was
+    re-added by 2.9.1
+  * PDAL 2.9.1 contained the following changes:
+    + Sorting behaviour was changed, due to issues on Windows
+    + Fixed build issues and compiler warnings
+    + pdal --info will now return the same data as the python library's
+      pipeline.quickinfo
+    + Adds support for Arrow 21+
+    + Adds protection against empty views to some filters
+    + Adds new Radius assign filter
+    + Venored gtest was added back, with intent to drop again for 2.10
+  * PDAL 2.9.2 contains the following changes:
+    + Vendored arbiter now has a custom pdal namespace
+    + VSIIO will now call fp->Flush() when syncing the VSIStreamBuffer
+    + StageWrapper will no longer run on empty views
+
+-------------------------------------------------------------------
 Sun Jun 29 06:52:23 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to PDAL 2.9.0
