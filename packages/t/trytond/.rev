@@ -901,4 +901,12 @@
     <comment>bugfix version</comment>
     <requestid>1304780</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>357721674a6dfc6493b73668d01cd729</srcmd5>
+    <version>7.0.36</version>
+    <time>1758039605</time>
+    <user>anag_factory</user>
+    <comment>Security Release for issue #14220</comment>
+    <requestid>1305223</requestid>
+  </revision>
 </revisionlist>
