@@ -190,4 +190,17 @@
   * Local RSS: clean iframes even on summaries (forwarded request 1298817 from rrahl0)</comment>
     <requestid>1298818</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>980082de8a4d7e31d81a08c28ba9e379</srcmd5>
+    <version>4.1.4</version>
+    <time>1758039586</time>
+    <user>anag_factory</user>
+    <comment>- update to version 4.1.4:
+  * Database: fix crash where feed didn't exist before sync
+  * Database: fix crash with large sync results
+  * Move Category: correctly remove old mapping
+  * UI: break recursion loop calculating unread count of category with faulty
+    mapping (forwarded request 1305185 from rrahl0)</comment>
+    <requestid>1305186</requestid>
+  </revision>
 </revisionlist>
