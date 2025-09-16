@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 15 18:12:46 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1757954579.4d0727fe:
+  * Use of finish method in place of close_connection
+  * Clean up streamtext signature from unused params
+  * Fix invocation of `validateJobGroupForm()` when expanding group editor
+  * Improve showing advanced fields in case there are warnings
+  * Avoid race condition when creating job asset
+  * Ensure the `created_by` flag of job assets is set during registration
+  * Add unit test for 486c6e05ca
+  * build(deps-dev): bump debug from 4.4.1 to 4.4.3
+  * Update automatically updated group properties in UI
+  * Automatically increase important durations to match regular durations
+
+-------------------------------------------------------------------
 Sun Sep 14 17:12:54 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1757798615.f8615cd6:
