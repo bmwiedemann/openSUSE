@@ -97,8 +97,8 @@ BuildRequires:  tensorflow2-lite-devel >= 2.10
 %endif
 %endif
 %if %{with compute_cl}
-# Mesa-libOpenCl is required for tests
-BuildRequires:  Mesa-libOpenCL
+# MMesa-libRusticlOpenCL is required for tests
+BuildRequires:  Mesa-libRusticlOpenCL
 BuildRequires:  flatbuffers-devel
 BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-cpp-headers
@@ -116,7 +116,7 @@ BuildRequires:  python3-wheel
 BuildRequires:  swig >= 4
 %endif
 %if %{with compute_cl}
-Recommends:     Mesa-libOpenCL
+Recommends:     Mesa-libRusticlOpenCL
 %endif
 %if %{with armnn_flatbuffers}
 Requires:       libarmnnSerializer%{version_lib}%{?package_suffix} = %{version}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 15 16:07:22 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Switch from Mesa-libOpenCL to Mesa-libRusticlOpenCL
+
+-------------------------------------------------------------------
 Wed Jun 18 14:51:47 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to fix build with gcc15:
