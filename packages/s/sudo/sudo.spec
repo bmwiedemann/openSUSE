@@ -1,7 +1,7 @@
 #
 # spec file for package sudo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           sudo
-Version:        1.9.17p1
+Version:        1.9.17p2
 Release:        0
 Summary:        Execute some commands as root
 License:        ISC
@@ -104,6 +104,7 @@ Summary:        Users in the wheel group can authenticate as admin
 Group:          System/Base
 Requires:       %{name} = %{version}
 Requires:       group(wheel)
+BuildArch:      noarch
 
 %description policy-wheel-auth-self
 Sudo authentication policy that allows users in the wheel group to
@@ -114,6 +115,7 @@ Summary:        Users in the sudo group can authenticate as admin
 Group:          System/Base
 Requires:       %{name} = %{version}
 Requires:       group(sudo)
+BuildArch:      noarch
 
 %description policy-sudo-auth-self
 Sudo authentication policy that allows users in the sudo group to
@@ -122,6 +124,7 @@ authenticate as root with their own password
 %package -n system-group-sudo
 Summary:        System group 'sudo'
 Group:          System/Fhs
+BuildArch:      noarch
 %{sysusers_requires}
 
 %description -n system-group-sudo
@@ -205,9 +208,10 @@ rm -f %{buildroot}%{confdir}/sudoers.dist
 mkdir -p %{buildroot}%{_distconfdir}/sudoers.d %{buildroot}%{_sysconfdir}/sudoers.d
 chmod 644 %{buildroot}%{_distconfdir}/sudoers
 echo "@includedir /etc/sudoers.d" >> %{buildroot}%{_distconfdir}/sudoers
+chmod 440 %{buildroot}%{_distconfdir}/sudoers
 %endif
 
-install -D -m 644 %{SOURCE8} %{buildroot}%{confdir}/sudoers.d/50-wheel-auth-self
+install -D -m 440 %{SOURCE8} %{buildroot}%{confdir}/sudoers.d/50-wheel-auth-self
 install -D -m 644 %{SOURCE9} %{buildroot}/usr/share/polkit-1/rules.d/51-wheel.rules
 
 sed -e 's/wheel/sudo/g' < %{SOURCE8} > %{buildroot}%{confdir}/sudoers.d/50-sudo-auth-self
@@ -323,7 +327,7 @@ test -f %{_sysconfdir}/sudoers.rpmsave && mv -v %{_sysconfdir}/sudoers.rpmsave %
 %{_localstatedir}/lib/tests
 
 %files policy-wheel-auth-self
-%{confdir}/sudoers.d/50-wheel-auth-self
+%attr(0440,root,root) %{confdir}/sudoers.d/50-wheel-auth-self
 %dir /usr/share/polkit-1
 %dir %attr(0555,root,root) /usr/share/polkit-1/rules.d
 /usr/share/polkit-1/rules.d/51-wheel.rules
