@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 16 07:14:55 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.0.0
+  * Read only parameter can no longer be set through an alias.
+  * A new parameter `uncacheable_ttl` defines the TTL of objects
+    marked as uncacheable (or hit-for-miss) by the built-in VCL.
+  * The `http_req_overflow_status` parameter can now also be set to
+    500.
+  * The default value for `ban_any_variant` is now 0.
+  * `builtin.vcl` has been updated to return a synthetic 501
+    response and close the connection when receiving requests with
+    an unknown/unsupported http method instead of piping them.
+  * The VMOD functions `std.real2integer()`, `std.real2time()`,
+    `std.time2integer()` and `std.time2real()` have been removed.
+  * For more, see
+    <https://varnish-cache.org/docs/8.0/whats-new/changes-8.0.html>
+
+-------------------------------------------------------------------
 Thu May 15 05:19:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.7.1
@@ -763,10 +781,9 @@ Thu Aug  5 22:11:24 UTC 2010 - jengelh@medozas.de
 - Remove old changelog from .spec - changelog is in .changes
 
 -------------------------------------------------------------------
-Tue Dec 15 15:03.01 CEST 2009 - jg@internetx.de
+Tue Dec 15 15:03:01 CEST 2009 - jg@internetx.de
 
 - update 2.0.5
-
 
 -------------------------------------------------------------------
 Fri Apr  3 13:48:01 CEST 2009 - mrueckert@suse.de
@@ -807,4 +824,3 @@ Sat Dec  2 17:14:16 CET 2006 - mrueckert@suse.de
 Sun Nov 19 03:37:50 CET 2006 - mrueckert@suse.de
 
 - update to 1.0.2
-

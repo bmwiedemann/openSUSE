@@ -11,14 +11,14 @@ varnish screwing itself by use of -Werror.
 [   34s]   413 |  pid_t pid;
 
 ---
- bin/varnishtest/vtc_haproxy.c |    2 +-
+ bin/varnishtest/vtest2/src/vtc_haproxy.c |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: varnish-6.2.0/bin/varnishtest/vtc_haproxy.c
+Index: varnish-8.0.0/bin/varnishtest/vtest2/src/vtc_haproxy.c
 ===================================================================
---- varnish-6.2.0.orig/bin/varnishtest/vtc_haproxy.c
-+++ varnish-6.2.0/bin/varnishtest/vtc_haproxy.c
-@@ -410,7 +410,7 @@ haproxy_wait_pidfile(struct haproxy *h)
+--- varnish-8.0.0.orig/bin/varnishtest/vtest2/src/vtc_haproxy.c
++++ varnish-8.0.0/bin/varnishtest/vtest2/src/vtc_haproxy.c
+@@ -438,7 +438,7 @@ haproxy_wait_pidfile(struct haproxy *h)
  	char buf_err[1024] = {0};
  	int usleep_time = 1000;
  	double t0;

@@ -25,7 +25,7 @@
 %define _fillupdir %_localstatedir/adm/fillup-templates
 %endif
 Name:           varnish
-Version:        7.7.1
+Version:        8.0.0
 Release:        0
 Summary:        Accelerator for HTTP services
 License:        BSD-2-Clause
@@ -118,9 +118,6 @@ install -Dpm 0644 "%SOURCE5" "$b/%_sysconfdir/logrotate.d/varnish"
 install -Dpm 0644 "%SOURCE3" "$b/%_fillupdir/sysconfig.%name"
 install -Dpm 0644 "%SOURCE7" "$b/%_unitdir/varnish.service"
 install -Dpm 0644 "%SOURCE8" "$b/%_unitdir/varnishlog.service"
-mkdir -p "$b/%_sbindir"
-ln -s service "$b/%_sbindir/rcvarnish"
-ln -s service "$b/%_sbindir/rcvarnishlog"
 install -Dpm 0755 "%SOURCE9" "$b/%_sbindir/varnish_reload_vcl"
 #
 ##config files
@@ -169,7 +166,7 @@ fi
 %config(noreplace) %attr(0640,root,varnish) %_sysconfdir/%name/vcl.conf
 %_libdir/varnish
 %_sbindir/varnish*
-%_sbindir/rcvarnish*
+%_sbindir/vtest
 %_mandir/man*/*
 %_docdir/%name/
 %_datadir/%name/
