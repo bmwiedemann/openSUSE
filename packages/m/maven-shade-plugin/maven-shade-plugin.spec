@@ -17,7 +17,7 @@
 
 
 Name:           maven-shade-plugin
-Version:        3.6.0
+Version:        3.6.1
 Release:        0
 Summary:        Capability to package the artifact in an uber-jar
 License:        Apache-2.0

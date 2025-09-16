@@ -31,4 +31,12 @@
     <comment>Upgrade to 3.6.0</comment>
     <requestid>1226472</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b6209f2117ceacb29aa364da5630711a</srcmd5>
+    <version>3.6.1</version>
+    <time>1758039497</time>
+    <user>anag_factory</user>
+    <comment>3.6.1</comment>
+    <requestid>1305023</requestid>
+  </revision>
 </revisionlist>
