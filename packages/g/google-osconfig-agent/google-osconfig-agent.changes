@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep 16 12:12:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20250902.01
+  * Bump github.com/googleapis/enterprise-certificate-proxy (#829)
+- from version 20250902.00
+  * update github.com/go-jose/go-jose/v4 (#869)
+  * Upgrade scalibr and other deps (#866)
+- from version 20250901.00
+  * Fix possibility of path traversal for zip and tar archival (#868)
+- from version 20250825.00
+  * set CODEOWNERS file as required by org (#863)
+- from version 20250819.00
+  * Fix/rhel10 build centos image (#860)
+- from version 20250814.00
+  * Fix/rhel10 build image (#859)
+- from version 20250813.00
+  * Fix: Add RHEL 10 support to RPM startup script (#858)
+- from version 20250811.00
+  * Remove old/sles-15-sp4-sap as image is deprecated (#857)
+
+-------------------------------------------------------------------
 Mon Aug 11 13:30:16 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20250806.00
