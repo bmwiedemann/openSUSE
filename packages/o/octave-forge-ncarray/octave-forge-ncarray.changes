@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 14 19:29:35 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Add octave-forge-netcdf and octave-forge-statistics build
+  dependencies required for tests.
+
+-------------------------------------------------------------------
 Wed Jun 12 03:18:15 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 1.0.6:

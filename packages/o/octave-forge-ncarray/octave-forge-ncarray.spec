@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-ncarray
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://octave.sourceforge.io/%{octpkg}/
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  octave-devel
+BuildRequires:  octave-forge-netcdf >= 1.0.2
+BuildRequires:  octave-forge-statistics
 Requires:       octave-cli >= 3.4.0
 Requires:       octave-forge-netcdf >= 1.0.2
 Requires:       octave-forge-statistics >= 1.0.6
