@@ -1,7 +1,7 @@
 #
 # spec file for package dkms
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           dkms
-Version:        3.1.7
+Version:        3.2.1
 Release:        0
 Summary:        Dynamic Kernel Module Support Framework
 License:        GPL-2.0-only
 Group:          System/Kernel
 URL:            https://github.com/dell/dkms
-Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/v%{version}/%{name}-%{version}.tar.gz
 Source100:      %{name}.rpmlintrc
 BuildRequires:  make
 BuildRequires:  pkgconfig(systemd)
@@ -73,7 +73,7 @@ BuildArch:      noarch
 Zsh command line completion support for %{name}.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 

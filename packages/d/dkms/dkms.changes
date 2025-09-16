@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 10 09:40:48 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 3.2.1:
+  * Fix text in framework.conf
+  * Fix post_transaction when running dkms autoinstall via systemd unit
+- update to version 3.2.0:
+  * Force rebuild of dependent modules
+  * Add post transaction command that can be specified per site / installation
+  * Add logic for rebuilding modules when dependencies change
+  * Add helper function for boolean variables syntax checking
+- update to version 3.1.8:
+  * fix dkms getting stuck with an incomplete $m/$v/$k/$a/module/ directory
+  * deprecate CLEAN
+  * dkms: propagate OBSOLETE_BY to BUILD_EXCLUSIVE_KERNEL_MAX
+- make use of autosetup
+
+-------------------------------------------------------------------
 Wed May 14 20:10:14 UTC 2025 - Alexandru Gabriel Bradatan <alex.bradatan85@yahoo.it>
 
 - Update to 3.1.7
