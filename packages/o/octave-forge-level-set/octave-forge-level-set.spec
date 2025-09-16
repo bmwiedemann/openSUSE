@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-level-set
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,17 @@ Release:        0
 Summary:        Level-Set functions for Octave
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
-URL:            http://octave.sourceforge.net
+URL:            https://gnu-octave.github.io/packages/level-set/
 Source0:        %{octpkg}-%{version}.tar.xz
+Patch0:         https://file.savannah.gnu.org/file/octave9.patch?file_id=55685#/fix_octave9_compat.patch
+BuildRequires:  autoconf
+BuildRequires:  autoconf-archive
+BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  octave-devel
 BuildRequires:  octave-forge-parallel
 Requires:       octave-cli >= 4.0.0
 Requires:       octave-forge-parallel
-BuildArch:      noarch
 
 %description
 Routines for calculating the time-evolution of the level-set equation
@@ -39,6 +42,8 @@ This is part of Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
+%patch -p1 -P0 -d %{octpkg}-%{version}
+(cd %{octpkg}-%{version}/src; aclocal; autoreconf -f )
 %octave_pkg_src
 
 %build
@@ -48,6 +53,8 @@ This is part of Octave-Forge project.
 %octave_pkg_install
 
 %check
+%global octskiptests ls_sign_colourmap
+echo "Skip tests requiring graphical toolkit: %{octskiptests}"
 %octave_pkg_test
 
 %post
@@ -58,5 +65,6 @@ This is part of Octave-Forge project.
 
 %files
 %{octpackages_dir}/%{octpkg}-%{version}
+%{octlib_dir}/%{octpkg}-%{version}
 
 %changelog

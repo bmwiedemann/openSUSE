@@ -1,0 +1,42 @@
+Description: Fix FTBFS against Octave 9
+Author: Rafael Laboissière <rafael@debian.org>
+Forwarded: no
+Last-Update: 2024-02-11
+
+--- octave-level-set-0.3.1~git.2019.04.13.orig/src/internal_init_narrowband.cpp
++++ octave-level-set-0.3.1~git.2019.04.13/src/internal_init_narrowband.cpp
+@@ -109,7 +109,7 @@ DEFUN_DLD (__levelset_internal_init_narr
+               if (nPhi * myPhi < 0.0)
+                 {
+                   const double frac = getZeroFraction (myPhi, nPhi);
+-                  assert (lo_ieee_finite (frac));
++                  assert (lo_ieee_isfinite (frac));
+ 
+                   /* If the neighbour value is infinite leading to a frac
+                      of zero, this point is exactly on the boundary.  Thus
+--- octave-level-set-0.3.1~git.2019.04.13.orig/src/nbFromGeom.cpp
++++ octave-level-set-0.3.1~git.2019.04.13/src/nbFromGeom.cpp
+@@ -104,7 +104,7 @@ DEFUN_DLD (__levelset_nbFromGeom, args,
+           EXTRACT_VERTEX (b, isptCoord, indB)
+ 
+           ColumnVector dir = b - a;
+-          const double len = xnorm (dir);
++          const double len = octave::xnorm (dir);
+           dir /= len;
+ 
+           /* Try to update all boundary element nodes.  */
+@@ -123,11 +123,11 @@ DEFUN_DLD (__levelset_nbFromGeom, args,
+               const double proj = dir.transpose () * (x - a);
+               double cur;
+               if (proj < 0.0)
+-                cur = xnorm (x - a);
++                cur = octave::xnorm (x - a);
+               else if (proj > len)
+-                cur = xnorm (x - b);
++                cur = octave::xnorm (x - b);
+               else
+-                cur = xnorm (x - (a + proj * dir));
++                cur = octave::xnorm (x - (a + proj * dir));
+ 
+               if (hasG)
+                 {
