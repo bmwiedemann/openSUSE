@@ -1,0 +1,4 @@
+<package name="389-ds-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed 389 Directory Server</title>
+  <description>389 Directory Server container based on the openSUSE Tumbleweed Base Container Image.</description>
+</package>
