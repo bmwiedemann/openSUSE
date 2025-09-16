@@ -1,7 +1,7 @@
 #
 # spec file for package sysconfig
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,16 +36,19 @@
 %else
 %bcond_without  ifuser
 %endif
-%if 0%{?suse_version} >= 1230
-%define         udevdir	%{_prefix}/lib/udev
-BuildRequires:  pkgconfig(systemd)
+
+# disable nis on 16.x (dropped),
+# keeping on tumbleweed and 15.x
+%if 0%{?suse_version} != 1600
+%bcond_without  nis
 %else
-%define         udevdir	/lib/udev
+%bcond_with     nis
 %endif
+
 Name:           sysconfig
-Version:        0.90.0
+Version:        0.90.2
 Release:        0
-Summary:        The sysconfig scheme for traditional network scripts
+Summary:        The configuration scheme for traditional network scripts
 License:        GPL-2.0-or-later
 Group:          System/Base
 URL:            https://github.com/openSUSE/sysconfig
@@ -59,6 +62,9 @@ Requires(post): /usr/bin/chmod /usr/bin/mkdir /usr/bin/touch
 Requires:       /sbin/netconfig
 Requires:       (sysvinit(network) or service(network))
 Recommends:     wicked-service
+%endif
+%if %{without ifuser}
+BuildArch:      noarch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -76,7 +82,7 @@ Provides:       /sbin/netconfig
 
 %description netconfig
 This package provides the netconfig scripts to apply network
-provided settings like DNS or NIS into system files.
+provided settings like DNS, NTP or NIS into system files.
 
 %prep
 %setup -q
@@ -84,15 +90,21 @@ provided settings like DNS or NIS into system files.
 %build
 autoreconf -fvi
 CFLAGS="%{optflags} -fPIC" LDFLAGS="-pie" \
-%configure --prefix=/ \
-            --sbindir=%{_sbindir} \
-            --libdir=%{_libdir} \
-            --sysconfdir=%{_sysconfdir} \
-            --libexecdir=%{_libexecdir} \
-            --mandir=%{_mandir} \
-            --with-unitdir=%{_unitdir} \
-            --with-udevdir=%{udevdir} \
-            --with-fillup-templatesdir=%{_fillupdir}
+%configure \
+%if %{without nis}
+	--disable-netconfig-nis \
+%endif
+%if %{with ifuser}
+	--enable-ifuser \
+%endif
+	--prefix=/ \
+	--sbindir=%{_sbindir} \
+	--libdir=%{_libdir} \
+	--sysconfdir=%{_sysconfdir} \
+	--libexecdir=%{_libexecdir} \
+	--mandir=%{_mandir} \
+	--with-unitdir=%{_unitdir} \
+	--with-fillup-templatesdir=%{_fillupdir}
 make %{?_smp_mflags}
 
 %check
@@ -111,26 +123,28 @@ ln -s %{_sbindir}/netconfig %{buildroot}/sbin/netconfig
 %endif
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcnetwork
 rm -f %{buildroot}%{_docdir}/sysconfig/COPYING
-%if %{without ifuser}
-rm -f %{buildroot}%{_sbindir}/ifuser
-%endif
 
 mkdir -p %{buildroot}%{_tmpfilesdir}
+rm -f -- %{buildroot}%{_tmpfilesdir}/netconfig.conf
 cat >%{buildroot}%{_tmpfilesdir}/netconfig.conf <<-EOF
 	d /run/netconfig 0755 root root -
 	f /run/netconfig/resolv.conf 0644 root root -
-	f /run/netconfig/yp.conf 0644 root root -
 	L /etc/resolv.conf - - - - /run/netconfig/resolv.conf
+EOF
+%if %{with nis}
+cat >>%{buildroot}%{_tmpfilesdir}/netconfig.conf <<-EOF
+	f /run/netconfig/yp.conf 0644 root root -
 	L /etc/yp.conf - - - - /run/netconfig/yp.conf
 EOF
+%endif
 
 %files
 %defattr(-,root,root)
 %license doc/COPYING
 %dir %{_sysconfdir}/sysconfig/network
 %config %{_sysconfdir}/sysconfig/network/ifcfg.template
-%ghost %{_sysconfdir}/sysconfig/network/config
-%ghost %{_sysconfdir}/sysconfig/network/dhcp
+%ghost %attr(0644,root,root) %{_sysconfdir}/sysconfig/network/config
+%ghost %attr(0644,root,root) %{_sysconfdir}/sysconfig/network/dhcp
 %dir %{_docdir}/sysconfig
 %doc %{_docdir}/sysconfig/Contents
 %{_fillupdir}/sysconfig.dhcp-network
@@ -185,11 +199,13 @@ EOF
 %{_libexecdir}/ppp/pre-start.d/10-netconfig
 %{_libexecdir}/ppp/post-stop.d/90-netconfig
 %{_tmpfilesdir}/netconfig.conf
-%ghost %dir /run/netconfig
-%ghost /run/netconfig/resolv.conf
-%ghost /run/netconfig/yp.conf
-%ghost /etc/resolv.conf
-%ghost %config(noreplace) %{_sysconfdir}/yp.conf
+%ghost %attr(0755,root,root) %dir /run/netconfig
+%ghost %attr(0644,root,root) /run/netconfig/resolv.conf
+%ghost %attr(0644,root,root) /etc/resolv.conf
+%if %{with nis}
+%ghost %attr(0644,root,root) /run/netconfig/yp.conf
+%ghost %attr(0644,root,root) /etc/yp.conf
+%endif
 
 %post -p /bin/bash
 %{fillup_only -dns dhcp network network}

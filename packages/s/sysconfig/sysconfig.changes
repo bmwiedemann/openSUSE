@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Sep 16 08:29:08 UTC 2025 - Marius Tomaschewski <mt@suse.com>
+
+- version 0.90.2
+  * Change to create the sysconfig.config-network fillup
+    template from common and netconfig components at build
+    time, so it contains all variables again, instead to
+    fillup /etc/sysconfig/network/config using multiple
+    templates at installation time.
+    The installation-images package is creating the config
+    using the sysconfig.config-network template only, what
+    caused DNS issues in the yast2 installer (boo#1249210).
+
+-------------------------------------------------------------------
+Tue Sep  2 14:03:43 UTC 2025 - Marius Tomaschewski <mt@suse.com>
+
+- version 0.90.1
+  * codespell run for all repository files and changes file
+  * spec: fix no-binary rpmlint error and use noarch
+    Add configure conditional for ifuser utility (disabled
+    via bcond for > 15.x) and change BuildArch to noarch.
+  * netconfig: conditionally disable nis on Leap-16.x
+    Split sysconfig.config-network fillup template, add
+    conditionals allowing to disable installation of the
+    dns,ntp,nis modules and fillup templates (bsc#1248236).
+  * spec: fix zero-perms-ghost rpmlint warning
+    Define permissions in spec file attrs for ghost files
+    to avoid rpm --restore resets them to 0 (bsc#1237595).
+  * spec: fix name-repeated-in-summary rpmlint warning
+  * spec: fix obsolete-suse-version-check rpmlint warning
+    removing unused and obsolete udevdir definition.
+  * netconfig: fix non-executable-script rpmlint error by
+    removing shebang from functions.netconfig library file.
+
+-------------------------------------------------------------------
 Tue Dec 27 13:20:54 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)
@@ -18,7 +52,7 @@ Mon Jun 27 11:33:50 UTC 2022 - Marius Tomaschewski <mt@suse.com>
 - ppp: move /etc/ppp/ip-up to libexec directory
 - spec: move further executables/scripts to /usr
 - spec: revert to recommend wicked-service on <= 15.4
-- spec: install scripts except of ip-up bellow of /usr
+- spec: install scripts except of ip-up below of /usr
 - spec: drop (sle11) legacy migration and rpm-utils
 - ifuser: drop the artefact utility on >= 15.5
 - netconfig/dns-resolver: remove search limit of 6 domains (bsc#1199093)
@@ -181,7 +215,7 @@ Mon Apr 10 11:14:24 UTC 2017 - mt@suse.de
 
 - version 0.84.1
 - netconfig: cleanup tmp files (boo#1010760)
-  When /var/run/ntp/servers-netconfig has been modified externaly,
+  When /var/run/ntp/servers-netconfig has been modified externally,
   don't try to backup or keep tmp files to show what we would do.
 - netconfig: improve input check for duplicate keys (bsc#1009801)
 
@@ -195,7 +229,7 @@ Fri Sep  9 17:19:32 UTC 2016 - mt@suse.de
 
 - version 0.84.0
 - netconfig: intoduced a batch mode (bsc#989741)
-  It permits to preform multiple modify/remove operations
+  It permits to perform multiple modify/remove operations
   and call the effective update at the end of the batch.
 - netconfig: use ntpq, as ntpdc is deprecated (bsc#894889),
   lower sleep lock wait granularity and fix NTP_KEYS parsing
@@ -371,7 +405,7 @@ Thu Dec  5 10:51:54 UTC 2013 - mt@suse.de
 Thu Dec  5 09:57:07 UTC 2013 - mt@suse.de
 
 - version 0.82.0
-- Dropped udevmountd, the functionalty has been included in systemd
+- Dropped udevmountd, the functionality has been included in systemd
   (bnc#852762).
 
 -------------------------------------------------------------------
@@ -540,7 +574,7 @@ Wed Mar 20 09:44:26 UTC 2013 - mt@suse.de
 
 - Fixed to wait for dhcp/ipv6 under systemd again.
   Fixed regression caused by bnc#785240, bnc#780644 fixes to not
-  discard the dhcp/ipv6 dupplicate address detection in progress
+  discard the dhcp/ipv6 duplicate address detection in progress
   error codes under systemd completely, but wait until dhcp/ipv6
   dad finished or the WAIT_FOR_INTERFACES timeout is reached and
   then discard in the status returned to systemd (bnc#808718).
@@ -560,7 +594,7 @@ Thu Feb 22 08:20:23 UTC 2013 - mt@suse.com
 
 - version 0.80.5
 - Fixed to use a guarded migration hook from openSUSE < 12.3, that
-  disabes the (always enabled before) NetworkManager.service on
+  disables the (always enabled before) NetworkManager.service on
   NETWORKMANAGER=no and mask the network.service (provided by the
   /etc/init.d/network script) on NETWORKMANAGER=yes until NM has
   been installed and enabled as network.service (bnc#803058).
@@ -664,7 +698,7 @@ Thu Nov  1 17:08:25 UTC 2012 - mt@suse.com
 - version 0.76.7
 - Start ifup pre/post and if-up.d/if-down.d scripts in background.
   The new network/config variable WAIT_BACKGROUND_JOBS specifies
-  the wait limit. Default is 5 secons, 0 disables backgrounding
+  the wait limit. Default is 5 seconds, 0 disables backgrounding
   and reverts to previous blocking behavior. Attempt to solve the
   issues where interfaces are not come up in time, because some
   hook-script are blocking ifup (bnc#780644).
@@ -960,7 +994,7 @@ Wed Dec 22 15:37:44 UTC 2010 - mt@suse.de
 Thu Dec  9 15:13:27 UTC 2010 - mt@suse.de
 
 - version 0.74.3
-- Use iBFT primary or PXE BOOTIF inteface as primary dhcp interface
+- Use iBFT primary or PXE BOOTIF interface as primary dhcp interface
   (sets the default route and hostname) and the "first up interface
   wins" selection used before as fallback, when there is explicit
   user configuration available. Updated the DHCLIENT_PRIMARY_DEVICE
@@ -1223,14 +1257,14 @@ Wed Nov 11 12:02:07 CET 2009 - mt@suse.de
 
 - version 0.73.1
 - Implemented if-up.d/ndp-proxy plugin required to set proxy-ndp
-  (ipv6) and proxy-arp (ipv4) adresses in a xen routed setup
+  (ipv6) and proxy-arp (ipv4) addresses in a xen routed setup
   (fate#304415).
 - Changed to use NM_ONLINE_TIMEOUT="30" by default (fate#307610).
 - Improved netconfig update -m filter/usage text (fate#306274),
   improved netconfig usage text to show active modules and module
-  groups and to print debug messges about disabled/skipped modules.
+  groups and to print debug messages about disabled/skipped modules.
 - First implementation of netconfig DNS service ranking allowing
-  to specify which service provide preffered, e.g. vpn, and which
+  to specify which service provide preferred, e.g. vpn, and which
   fallback settings, e.g. avahi (fate#306342).
   Cleaned up netconfig.d/nis and ntp-runtime modules, apply policy
   with disabled filename glob expansion.
@@ -1585,14 +1619,14 @@ Fri Nov 28 14:39:40 CET 2008 - lnussel@suse.de
 Thu Nov 27 16:24:40 CET 2008 - mt@suse.de
 
 - Added DHCLIENT_USE_LAST_LEASE (-E/--lastlease) dhcpcd option to
-  dhcp config and ifup-dhcp script, addopted new DHCLIENT_TIMEOUT
+  dhcp config and ifup-dhcp script, adopted new DHCLIENT_TIMEOUT
   default 20 and increased WAIT_FOR_INTERFACES to 30 to allow
   dhcpcd to use the old lease in time (fate#302402, bnc#447237).
 
 -------------------------------------------------------------------
 Wed Nov 26 22:03:53 CET 2008 - mt@suse.de
 
-- Fixed obsolete ntp-runtime decription in netconfig.8 (bnc#446545).
+- Fixed obsolete ntp-runtime description in netconfig.8 (bnc#446545).
 - Fixed rcnetwork remotefs virtual iface start order (bnc#447098).
 
 -------------------------------------------------------------------
@@ -1703,7 +1737,7 @@ Mon Oct 13 21:29:47 CEST 2008 - mt@suse.de
 
 - version 0.71.8
 - Fixed netconfig argument and modify action input parsing to
-  reject formated invalid input / values (bnc#433780).
+  reject formatted invalid input / values (bnc#433780).
 - Fixed ppp/ip-up script to handle ipv6-up/down and trigger an
   firewall reconfiguration; added ipv6 links to rpm file list.
   Thanks to Ludwig Nussel (bnc#426303).
@@ -1712,7 +1746,7 @@ Mon Oct 13 21:29:47 CEST 2008 - mt@suse.de
 -------------------------------------------------------------------
 Mon Oct  6 15:16:39 CEST 2008 - mt@suse.de
 
-- Fixed hwdesc2iface to convert or disard only known getcfg hw
+- Fixed hwdesc2iface to convert or discard only known getcfg hw
   descriptions to not to break e.g. SuSEfirewall2 (bnc#428978).
 
 -------------------------------------------------------------------
@@ -1728,7 +1762,7 @@ Mon Sep 29 18:09:50 CEST 2008 - mt@suse.de
 -------------------------------------------------------------------
 Mon Sep 29 17:17:29 CEST 2008 - mt@suse.de
 
-- Set explicit permisions for netconfig generated files instead
+- Set explicit permissions for netconfig generated files instead
   of prereserveing [wrong] permissions from original (bnc#428458).
 - Improved netconfig check_md5_and_move function to match special
   comments additionally to the data to improve detection of user
@@ -1766,7 +1800,7 @@ Tue Sep 23 16:55:45 CEST 2008 - mt@suse.de
 - Fixed ifup-dhcp to retain spaces DHCLIENT_VENDOR_CLASS_ID and
   other dhcpcd option values (bnc#424356).
 - Fixed typo and improved vlan handling in is_iface_available.
-- Splitted ib interface type into ib and ibchild (e.g. ib0.8001),
+- Split ib interface type into ib and ibchild (e.g. ib0.8001),
   added ib vs. ibchild handling to several functions and the
   /etc/init.d/network script (bnc#423046).
 - Implemented a supported_on_localfs function returning whether an
@@ -2007,7 +2041,7 @@ Tue Dec 11 11:39:56 CET 2007 - mt@suse.de
 Wed Nov 28 12:23:24 CET 2007 - werner@suse.de
 
 - Some small changes on pool.tcpip to reduce conflicts with already
-  running fetchmail deamon or MTA (bug #231042).
+  running fetchmail daemon or MTA (bug #231042).
 
 -------------------------------------------------------------------
 Mon Sep 17 17:12:19 CEST 2007 - zoz@suse.de
@@ -2310,7 +2344,7 @@ Fri Oct 27 15:31:30 CEST 2006 - jg@suse.de
 -------------------------------------------------------------------
 Tue Oct 24 16:14:40 CEST 2006 - zoz@suse.de
 
-- Avoid unneccessary output from sysctl in ifup (Bug 201658)
+- Avoid unnecessary output from sysctl in ifup (Bug 201658)
 - blacklist 82875p_edac. (Bug 213840)
 - added hal and dbus to 'Requires:' in specfile since rcnetwork
   requires these services. (Bug 214652)
@@ -2500,7 +2534,7 @@ Fri Mar 10 16:19:34 CET 2006 - zoz@suse.de
 - getcfg:
   + fixed another segfault (Bug 156940)
     (getcfg failed if a config file ends with '-')
-  + fixed endless loop which occured with '-vvv' (Bug 156942)
+  + fixed endless loop which occurred with '-vvv' (Bug 156942)
 - /etc/sysconfig/hardware/config:DRIVER must be empty by default.
   (Bug 157063)
 - hwup now really checks presence of a module instead the driver link
@@ -2547,7 +2581,7 @@ Wed Mar  1 16:55:04 CET 2006 - zoz@suse.de
 
 - Teach hwup to be happy if a wanted module is already loaded or
   built in the kernel. (Bug 154383)
-- Add bus type 'vio' to list of valid busses in getcfg. (Bug 154289)
+- Add bus type 'vio' to list of valid buses in getcfg. (Bug 154289)
 - Skip loading bttv for certain devices without subids (Bug 149588)
 
 -------------------------------------------------------------------
@@ -2878,7 +2912,7 @@ Thu Dec  8 14:33:37 CET 2005 - zoz@suse.de
 - Added manpage ifservices (5)
 - Added support for interface bridging inclusive manpage and
   sysconfig metadata (by sscheler@suse.de, bug 44708, feature 2307)
-- suppress 'grep' error messsage in postinstall script (bug 137774)
+- suppress 'grep' error message in postinstall script (bug 137774)
 - Added 80-sysconfig.rules to package (was in udev before)
 
 -------------------------------------------------------------------
@@ -2983,7 +3017,7 @@ Mon Sep 26 14:12:31 CEST 2005 - werner@suse.de
 -------------------------------------------------------------------
 Fri Sep  9 12:25:49 CEST 2005 - jg@suse.de
 
-- ifup-wireless: removing seperator characters from hex WEP keys
+- ifup-wireless: removing separator characters from hex WEP keys
   (bug 116083)
 
 -------------------------------------------------------------------
@@ -3017,7 +3051,7 @@ Fri Sep  2 13:08:35 CEST 2005 - jg@suse.de
 
 - Do not start ifplugd for wireless devices, assume link status 
   'yes' instead (makes WPA configurations in conjunction ifplugd
-  possbile)
+  possible)
 - Use timeout defaults of ifplugd instead of using extra long
   ifdown timeout; it is not necessary because ifplugd is not used
   anymore on wireless devices which needed the long timeout
@@ -3025,7 +3059,7 @@ Fri Sep  2 13:08:35 CEST 2005 - jg@suse.de
 -------------------------------------------------------------------
 Thu Sep  1 18:03:28 CEST 2005 - zoz@suse.de
 
-- Moved rule for firmware-patch in seperate file and leave
+- Moved rule for firmware-patch in separate file and leave
   30-net_persistent_names.rules %config(noreplace) (Bug 114662)
 - Rewrote check for rcnetwork if interfaces are already renamed or
   not. Did not use timestamps this time. (Bug 112909)
@@ -3071,7 +3105,7 @@ Fri Aug 26 15:23:14 CEST 2005 - zoz@suse.de
 
   version 0.40.3
 - rcnetwork: Timestamps for new interfaces may have future time 
-  during installation. Therfore we don't skip interfaces at all
+  during installation. Therefore we don't skip interfaces at all
   when called from YaST. (bug 112909)
 - Make hwup handle static configurations again (bug 113158)
 - Added ra* interfaces to the list of names that should be made
@@ -3118,7 +3152,7 @@ Mon Aug 22 06:48:16 CEST 2005 - zoz@suse.de
     these are defined. These may be defined in functions.<subsystem>.
   + it now uses new output functions which respect udev loglevel.
   + allow spaces in config file names. Yes, ugly, but pcmcia may need it.
-- added functions.susbsystem.template
+- added functions.subsystem.template
 - Add new config variable LOG_LEVEL and mark DEBUG as deprecated in
   hardware/config. Backward compliance: DEBUG==yes ==> LOG_LEVEL=7
 - Also change default of USE_SYSLOG to "no".
@@ -3139,7 +3173,7 @@ Thu Aug 18 12:43:37 CEST 2005 - zoz@suse.de
 Wed Aug 17 14:42:58 CEST 2005 - zoz@suse.de
 
 - functions.common: added new functions {,err,info,debug}_mesg()
-  If not set explicitely via LOG_LEVEL these check the udev loglevel.
+  If not set explicitly via LOG_LEVEL these check the udev loglevel.
 - rename_netiface:
   + removed logging into a file in /tmp (Bug 104606)
   + use mktemp for temporary files
@@ -3266,7 +3300,7 @@ Thu Jun 23 11:29:15 CEST 2005 - hare@suse.de
 -------------------------------------------------------------------
 Thu Jun 16 17:01:11 CEST 2005 - poeml@suse.de
 
-- ifup-dhcp: explicitely call dhcpcd with -c
+- ifup-dhcp: explicitly call dhcpcd with -c
   /etc/sysconfig/network/scripts/dhcpcd-hook, unless
   DHCLIENT_SCRIPT_EXE is set otherwise, reflecting changed default
   in dhcpcd [#85849]
@@ -3321,7 +3355,7 @@ Sat Mar 19 01:10:03 CET 2005 - aj@suse.de
 Thu Mar 17 17:22:41 CET 2005 - zoz@suse.de
 
 - ifup-route: don't add a linklocal route if interface has no v4
-  adress (Bug 65557)
+  address (Bug 65557)
 
 -------------------------------------------------------------------
 Thu Mar 17 00:30:44 CET 2005 - ro@suse.de
@@ -3554,7 +3588,7 @@ Sun Sep 26 09:28:49 CEST 2004 - zoz@suse.de
 Fri Sep 24 07:55:36 CEST 2004 - zoz@suse.de
 
 - ifup: don't use 'cardctl ident' to obtain device description of
-  PC-Cards, becasue it interferes with 'cardctl eject' (Bug 44290)
+  PC-Cards, because it interferes with 'cardctl eject' (Bug 44290)
 
 -------------------------------------------------------------------
 Thu Sep 23 12:48:45 CEST 2004 - jg@suse.de
@@ -3584,7 +3618,7 @@ Fri Sep 17 11:18:22 CEST 2004 - poeml@suse.de
 -------------------------------------------------------------------
 Fri Sep 17 07:14:19 CEST 2004 - zoz@suse.de
 
-- made sourcing config files save in all occurences (Bug 42947)
+- made sourcing config files save in all occurrences (Bug 42947)
 
 -------------------------------------------------------------------
 Thu Sep 16 17:20:55 CEST 2004 - jg@suse.de
@@ -3621,7 +3655,7 @@ Thu Sep  9 13:25:26 CEST 2004 - zoz@suse.de
 - functions:
   + *_cached_config_data(): check if $RUN_FILES_BASE/tmp is
     existing and writeable  (Bug 43943)
-- implemeted module unloading in hwdown (Bug 44794)
+- implemented module unloading in hwdown (Bug 44794)
 
 -------------------------------------------------------------------
 Tue Sep  7 14:34:15 CEST 2004 - zoz@suse.de
@@ -3659,7 +3693,7 @@ Sat Sep  4 06:29:12 CEST 2004 - zoz@suse.de
 
 - Now officially skip support for bootp. (Bug 43299)
 - modem configuration files may now be called ifcfg-modem* (Bug 43651)
-  Removed if*-dsl links, because we now call if*-ppp explicitely for
+  Removed if*-dsl links, because we now call if*-ppp explicitly for
   all pppd based devices.
 
 -------------------------------------------------------------------
@@ -3690,7 +3724,7 @@ Thu Sep  2 13:55:04 CEST 2004 - zoz@suse.de
 Tue Aug 31 16:24:42 CEST 2004 - jg@suse.de
 
 - ifup, ifup-wireless, ifup-wireless-wpa: removed WPA stuff from
-  ifup-wireless and created ifup-wireless-wpa for WPA functionalty
+  ifup-wireless and created ifup-wireless-wpa for WPA functionality
 
 -------------------------------------------------------------------
 Tue Aug 31 09:44:39 CEST 2004 - zoz@suse.de
@@ -3754,11 +3788,11 @@ Mon Aug  9 15:37:44 CEST 2004 - zoz@suse.de
 - functions: *_cached_config_data(): major changes
   + deal with interface names or configuration names
   + write changes in an atomic way (modify tempfile, move it then)
-  + modfifications will have to be commited up to now with
+  + modifications will have to be committed up to now with
     commit_cached_config_data()
   + updated comments
 - ifup does now write status information to $RUN_FILES_BASE/if-*. To
-  achive this we now use an exithook which may be called to set the
+  achieve this we now use an exithook which may be called to set the
   final status and trap exit to finally write this state. Status files
   will now be written per interface and no longer per used configuration.
 - ifdown and ifstatus now use the configuration that was used for ifup
@@ -3952,7 +3986,7 @@ Tue Apr  6 13:03:13 CEST 2004 - poeml@suse.de
 - documentation fixes:
   - actually install the new man pages [#36722]
   - README: some more lines, but still far from ready
-  - hwup.8: - removed some options wich are not implemented
+  - hwup.8: - removed some options which are not implemented
     currently and adapted to current   state of hwup
 - convert_for_getconfig:
   - use configured network driver aliases from old modules.conf to
@@ -3972,7 +4006,7 @@ Mon Apr  5 11:20:09 CEST 2004 - zoz@suse.de
 - ifup: always rename interface if PERSISTENT_NAME is set. Ignore
   startmodes of interface and network for that. (Bug 38313)
 - rcnetwork: when listing failed mandatory interfaces distinguish between
-  mandatory devices whithout interface and failed interfaces. (Bug 38273)
+  mandatory devices without interface and failed interfaces. (Bug 38273)
 - added manpages for hw* and getcfg*. Started rewriting README (not finished)
 
 -------------------------------------------------------------------
@@ -4000,7 +4034,7 @@ Sat Apr  3 22:22:53 CEST 2004 - poeml@suse.de
   - try to mount sysfs if it is not mounted
   - do not ignore 'unconfigured' NICs -- the UNIQUE string matches,
     and that should be enough to know
-  - do not add a suggested persistant name in case of DHCP since it
+  - do not add a suggested persistent name in case of DHCP since it
     doesn't seem to work there
   - for debugging purposes, add a hook to possibly skip the
     conversion during update
@@ -4047,7 +4081,7 @@ Fri Apr  2 07:41:54 CEST 2004 - zoz@suse.de
 - rcnetwork: 
   + set up 'dial up' and tunnel interfaces after waiting for mandatory
     interfaces. (Bug 3790)
-  + do not add 'dial up' and tunnel interfaces to automaticly derived list of
+  + do not add 'dial up' and tunnel interfaces to automatically derived list of
     mandatory devices
   + removed unnecessary warning from ifup-route (Bug 37307)
   + removed X-UnitedLinux- from Should-St{art,op}
@@ -4109,7 +4143,7 @@ Fri Mar 26 19:43:05 CET 2004 - hare@suse.de
 -------------------------------------------------------------------
 Fri Mar 26 19:41:33 CET 2004 - mls@suse.de
 
-- ifup-route: add link-local route so that we can access rendevous
+- ifup-route: add link-local route so that we can access rendezvous
   hardware after detecting them via mdns/slp
 
 -------------------------------------------------------------------
@@ -4293,7 +4327,7 @@ Mon Mar  1 10:41:03 CET 2004 - poeml@suse.de
     read from configuration names, because they are not always
     present before. 
   - Wait some time for interfaces that came up via hotplug in
-    paralell 
+    parallel 
   - Make success of service network depending on a list of
     mandatory interfaces. All other interfaces are allowed to fail.
   - removed all alias stuff. From now on we only support multiple
@@ -4308,7 +4342,7 @@ Mon Mar  1 10:41:03 CET 2004 - poeml@suse.de
 - hwup: (zoz/hare)
   - use getconfig
   - load multiple modules
-  - call hwup-$DEVTYPE, if explicitely configured (hare)
+  - call hwup-$DEVTYPE, if explicitly configured (hare)
   - call hooked scripts
   - HOTPLUG=yes indicates that we are called via hotplug agent;
     agents call hwup with '-o hotplug' (hare)
@@ -4318,7 +4352,7 @@ Mon Mar  1 10:41:03 CET 2004 - poeml@suse.de
   (lnussel)
 - removed implicit device initialisation in is_iface_available()
 - add /etc/sysconfig/hardware/config (central config file for all
-  device-independant settins) (zoz)
+  device-independant settings) (zoz)
 - /etc/sysconfig/network/config: new variable MANDATORY_DEVICES
 - getconfig:
   - always print BUS_N, CONFIG_N and INTERFACE_N
@@ -4481,7 +4515,7 @@ Mon Sep 22 17:48:53 CEST 2003 - mmj@suse.de
 -------------------------------------------------------------------
 Thu Sep 18 16:06:26 CEST 2003 - mmj@suse.de
 
-- Add support for both types of writing gateway adresses in
+- Add support for both types of writing gateway addresses in
   ifroute-sitX. From mludvig. [#30934]
 
 -------------------------------------------------------------------
@@ -4580,7 +4614,7 @@ Mon Sep  1 17:02:22 CEST 2003 - zoz@suse.de
   + functions *_cached_config_data() now have a additional
     optional argument to set the file prefix (up to now always
     'if-'). Needed to cache not only CONFIG <-> INTERFACE
-    releations but also HWDESC <-> INTERAFACE relations when no
+    relations but also HWDESC <-> INTERAFACE relations when no
     matching configuration could be found. This information will
     be used later with 'rcnetwork restart' if a configuration for
     that HW was created in meantime.
@@ -4606,9 +4640,9 @@ Mon Sep  1 17:02:22 CEST 2003 - zoz@suse.de
     interface.  + Search for HWDESC <-> INTERFACE relations if no
     interface was found for an existing CONFIG. Call ifup again
     with all matching HWDESC INTERFACE pairs.
-  + delete cached HWDESC <-> INTERFACE relation if there finaly
+  + delete cached HWDESC <-> INTERFACE relation if there finally
     is a valid CONFIG <-> INTERFACE relation.
-  + Always cache CONFIG <-> INTERFACE releations, even if called
+  + Always cache CONFIG <-> INTERFACE relations, even if called
     from rcnetwork.
   + try to get a hardware description with get_hwdesc() if no
     CONFIG <-> HWDESC relation was cached and if option 'hotplug'
@@ -4633,7 +4667,7 @@ Wed Aug 27 11:31:21 CEST 2003 - mmj@suse.de
 
 - Updates from jg:
   o Set default for variable WIRELESS back to "" from "no"
-  o Exiting without error now in case we do not have the apropriate 
+  o Exiting without error now in case we do not have the appropriate 
     tools and WIRELESS is not set to "yes" [#29323]
 
 -------------------------------------------------------------------
@@ -4663,7 +4697,7 @@ Mon Aug 25 10:59:38 CEST 2003 - mmj@suse.de
   · Added auto-detection for wlan devices
   · Get rid of /var/lib/firewall (old personal-firewall cruft) [#28795]
   · Support for tunnel of different type: ipip, gre, sit and 6to4
-  · Improved messages for rcnetwork if multiple adresses are configured
+  · Improved messages for rcnetwork if multiple addresses are configured
   · New option "dhcp" to if* and if*-route:
     - if* will no longer call POST_UP and PRE_DOWN scripts if
       not called with '-o dhcp' (PRE_UP and POST_DOWN are still
@@ -4680,7 +4714,7 @@ Mon Aug 25 10:59:38 CEST 2003 - mmj@suse.de
 -------------------------------------------------------------------
 Tue Aug 12 16:37:53 CEST 2003 - poeml@suse.de
 
-- 'rcnetwork status' was, when using ISC dhclient, showing the wron
+- 'rcnetwork status' was, when using ISC dhclient, showing the wrong
   lease from /var/lib/dhcp/dhclient.leases. It showed the first one,
   but since the leases file is written like a log, the most current
   lease can be found at the end. Fix this with a patch by Thomas
@@ -5255,7 +5289,7 @@ Tue Feb 26 19:49:52 MET 2002 - mmj@suse.de
   ifup)
 - added option fake: don't call if*; instead print commands to
   stdout
-- added option type=<comma sepearted list of iface types> to act
+- added option type=<comma separated list of iface types> to act
   only on that types of interfaces
 
 -------------------------------------------------------------------
@@ -5446,7 +5480,7 @@ Mon Jan 28 12:37:05 CET 2002 - mmj@suse.de
 -------------------------------------------------------------------
 Fri Jan 25 16:13:53 CET 2002 - poeml@suse.de
 
-- Add conveniance wrapper rcdhclient, telling to use the new scripts
+- Add convenience wrapper rcdhclient, telling to use the new scripts
 
 -------------------------------------------------------------------
 Fri Jan 25 14:18:07 CET 2002 - arvin@suse.de

@@ -1787,4 +1787,37 @@ also obs request: #660553
     <comment></comment>
     <requestid>1058137</requestid>
   </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>229e1e74b6a62b95bd6c8dc1b3631cf4</srcmd5>
+    <version>0.90.2</version>
+    <time>1758039479</time>
+    <user>anag_factory</user>
+    <comment>- version 0.90.2
+  * Change to create the sysconfig.config-network fillup
+    template from common and netconfig components at build
+    time, so it contains all variables again, instead to
+    fillup /etc/sysconfig/network/config using multiple
+    templates at installation time.
+    The installation-images package is creating the config
+    using the sysconfig.config-network template only, what
+    caused DNS issues in the yast2 installer (boo#1249210).
+- version 0.90.1
+  * codespell run for all repository files and changes file
+  * spec: fix no-binary rpmlint error and use noarch
+    Add configure conditional for ifuser utility (disabled
+    via bcond for &gt; 15.x) and change BuildArch to noarch.
+  * netconfig: conditionally disable nis on Leap-16.x
+    Split sysconfig.config-network fillup template, add
+    conditionals allowing to disable installation of the
+    dns,ntp,nis modules and fillup templates (bsc#1248236).
+  * spec: fix zero-perms-ghost rpmlint warning
+    Define permissions in spec file attrs for ghost files
+    to avoid rpm --restore resets them to 0 (bsc#1237595).
+  * spec: fix name-repeated-in-summary rpmlint warning
+  * spec: fix obsolete-suse-version-check rpmlint warning
+    removing unused and obsolete udevdir definition.
+  * netconfig: fix non-executable-script rpmlint error by
+    removing shebang from functions.netconfig library file.</comment>
+    <requestid>1305139</requestid>
+  </revision>
 </revisionlist>
