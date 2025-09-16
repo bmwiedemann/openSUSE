@@ -15,8 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define hypr_tgt 0.50.1
-%define pkg_version 0.50.0
+%define hypr_tgt 0.51.0
+%define pkg_version 0.51.0
 
 Name:           hyprland-plugins
 Version:        %{pkg_version}
@@ -36,6 +36,7 @@ BuildRequires:  pkgconfig(pangocairo)
 	['csgo-vulkan-fix'] = 'This fixes custom resolutions on CS:GO with -vulkan',
 	['hyprbars'] = 'This plugin adds title bars to windows',
 	['hyprexpo'] = 'This plugin adds an expo-like workspace overview',
+	['hyprfocus'] = 'This plugin adds flashfocus for hyprland',
 	['hyprscrolling'] = 'This plugin adds a scrolling layout to hyprland',
 	['hyprtrails'] = 'This plugin adds smooth trails behind moving windows',
 	['hyprwinwrap'] = 'This plugin is a clone of xwinwrap, allows you to put any app as a\nwallpaper',

@@ -15,4 +15,12 @@
     <comment>depends on #1294759</comment>
     <requestid>1294762</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a5c3573aaf0ee03957ecbd537270f412</srcmd5>
+    <version>0.51.0</version>
+    <time>1758039486</time>
+    <user>anag_factory</user>
+    <comment>update to version 0.51.0. Depends on sr#1304990</comment>
+    <requestid>1304991</requestid>
+  </revision>
 </revisionlist>

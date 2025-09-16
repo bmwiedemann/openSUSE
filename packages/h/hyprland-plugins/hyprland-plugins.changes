@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 15 15:59:37 UTC 2025 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.51.0:
+  + The plugins were updated to use the plugin interface in use by
+    hyprland 0.51.0.
+  + Added hyprfocus plugin
+
+-------------------------------------------------------------------
 Mon Jul 21 08:14:30 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Bumped required hyprland version to 0.50.1
