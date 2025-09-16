@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-fulltoc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           python-sphinxcontrib-fulltoc
-Version:        1.2.0
+Version:        1.3
 Release:        0
 Summary:        Include a full table of contents in your Sphinx HTML sidebar
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://sphinxcontrib-fulltoc.readthedocs.org
-Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-fulltoc/sphinxcontrib-fulltoc-%{version}.tar.gz
+Source:         https://github.com/sphinx-contrib/fulltoc/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE fix_package_metadata.patch -- add metadata including the package version
+Patch0:         fix_package_metadata.patch
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -45,7 +47,7 @@ page titles are included, and the local headers for the current page
 are also included in the appropriate place within the document.
 
 %prep
-%setup -q -n sphinxcontrib-fulltoc-%{version}
+%autosetup -p1 -n fulltoc-%{version}
 sed -i 's/version = subprocess.*/version = "%{version}"/' docs/source/conf.py
 
 %build
@@ -67,7 +69,7 @@ sed -i 's/version = subprocess.*/version = "%{version}"/' docs/source/conf.py
 %{python_sitelib}/sphinxcontrib[-_]fulltoc-%{version}*-info
 %{python_sitelib}/sphinxcontrib[-_]fulltoc-%{version}*-nspkg.pth
 %license LICENSE
-%doc ChangeLog README.rst
+%doc README.rst
 #docs/build/html
 
 %changelog

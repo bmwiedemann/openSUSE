@@ -1,0 +1,156 @@
+diff -Naur fulltoc-1.3/PKG-INFO fulltoc-1.3.new/PKG-INFO
+--- fulltoc-1.3/PKG-INFO	1970-01-01 01:00:00.000000000 +0100
++++ fulltoc-1.3.new/PKG-INFO	2025-09-09 08:00:36.216622809 +0200
+@@ -0,0 +1,41 @@
++Metadata-Version: 1.1
++Name: sphinxcontrib-fulltoc
++Version: 1.3
++Summary: Include a full table of contents in your Sphinx HTML sidebar
++Home-page: http://sphinxcontrib-fulltoc.readthedocs.org
++Author: Doug Hellmann
++Author-email: doug@doughellmann.com
++License: UNKNOWN
++Description: .. -*- mode: rst -*-
++        
++        =======================
++         sphinxcontrib-fulltoc
++        =======================
++        
++        sphinxcontrib-fulltoc is an extension for the Sphinx_ documentation
++        system that changes the HTML output to include a more detailed table
++        of contents in the sidebar. By default Sphinx only shows the local
++        headers for the current page. With the extension installed, all of the
++        page titles are included, and the local headers for the current page
++        are also included in the appropriate place within the document.
++        
++        See the `project documentation`_ for more details.
++        
++        .. _Sphinx: http://sphinx.pocoo.org
++        
++        .. _project documentation: http://sphinxcontrib-fulltoc.readthedocs.org
++        
++        
++Platform: UNKNOWN
++Classifier: Development Status :: 4 - Beta
++Classifier: Environment :: Console
++Classifier: Intended Audience :: Developers
++Classifier: License :: OSI Approved :: Apache Software License
++Classifier: Operating System :: OS Independent
++Classifier: Programming Language :: Python
++Classifier: Programming Language :: Python :: 2
++Classifier: Programming Language :: Python :: 2.7
++Classifier: Programming Language :: Python :: 3
++Classifier: Programming Language :: Python :: 3.3
++Classifier: Topic :: Documentation
++Classifier: Topic :: Utilities
+diff -Naur fulltoc-1.3/setup.cfg fulltoc-1.3.new/setup.cfg
+--- fulltoc-1.3/setup.cfg	2025-06-01 22:42:18.000000000 +0200
++++ fulltoc-1.3.new/setup.cfg	2025-09-09 08:01:53.355171740 +0200
+@@ -38,3 +38,8 @@
+ 
+ [wheel]
+ universal = 1
++
++[egg_info]
++tag_build =
++tag_date = 0
++tag_svn_revision = 0
+diff -Naur fulltoc-1.3/sphinxcontrib_fulltoc.egg-info/dependency_links.txt fulltoc-1.3.new/sphinxcontrib_fulltoc.egg-info/dependency_links.txt
+--- fulltoc-1.3/sphinxcontrib_fulltoc.egg-info/dependency_links.txt	1970-01-01 01:00:00.000000000 +0100
++++ fulltoc-1.3.new/sphinxcontrib_fulltoc.egg-info/dependency_links.txt	2025-09-09 07:58:50.825140316 +0200
+@@ -0,0 +1 @@
++
+diff -Naur fulltoc-1.3/sphinxcontrib_fulltoc.egg-info/namespace_packages.txt fulltoc-1.3.new/sphinxcontrib_fulltoc.egg-info/namespace_packages.txt
+--- fulltoc-1.3/sphinxcontrib_fulltoc.egg-info/namespace_packages.txt	1970-01-01 01:00:00.000000000 +0100
++++ fulltoc-1.3.new/sphinxcontrib_fulltoc.egg-info/namespace_packages.txt	2025-09-09 07:58:50.825140316 +0200
+@@ -0,0 +1 @@
++sphinxcontrib
+diff -Naur fulltoc-1.3/sphinxcontrib_fulltoc.egg-info/not-zip-safe fulltoc-1.3.new/sphinxcontrib_fulltoc.egg-info/not-zip-safe
+--- fulltoc-1.3/sphinxcontrib_fulltoc.egg-info/not-zip-safe	1970-01-01 01:00:00.000000000 +0100
++++ fulltoc-1.3.new/sphinxcontrib_fulltoc.egg-info/not-zip-safe	2025-09-09 07:58:50.825140316 +0200
+@@ -0,0 +1 @@
++
+diff -Naur fulltoc-1.3/sphinxcontrib_fulltoc.egg-info/pbr.json fulltoc-1.3.new/sphinxcontrib_fulltoc.egg-info/pbr.json
+--- fulltoc-1.3/sphinxcontrib_fulltoc.egg-info/pbr.json	1970-01-01 01:00:00.000000000 +0100
++++ fulltoc-1.3.new/sphinxcontrib_fulltoc.egg-info/pbr.json	2025-09-09 07:59:36.866661683 +0200
+@@ -0,0 +1 @@
++{"is_release": true, "git_version": "8c09d82"}
+diff -Naur fulltoc-1.3/sphinxcontrib_fulltoc.egg-info/PKG-INFO fulltoc-1.3.new/sphinxcontrib_fulltoc.egg-info/PKG-INFO
+--- fulltoc-1.3/sphinxcontrib_fulltoc.egg-info/PKG-INFO	1970-01-01 01:00:00.000000000 +0100
++++ fulltoc-1.3.new/sphinxcontrib_fulltoc.egg-info/PKG-INFO	2025-09-09 07:59:53.799221193 +0200
+@@ -0,0 +1,41 @@
++Metadata-Version: 1.1
++Name: sphinxcontrib-fulltoc
++Version: 1.3
++Summary: Include a full table of contents in your Sphinx HTML sidebar
++Home-page: http://sphinxcontrib-fulltoc.readthedocs.org
++Author: Doug Hellmann
++Author-email: doug@doughellmann.com
++License: UNKNOWN
++Description: .. -*- mode: rst -*-
++        
++        =======================
++         sphinxcontrib-fulltoc
++        =======================
++        
++        sphinxcontrib-fulltoc is an extension for the Sphinx_ documentation
++        system that changes the HTML output to include a more detailed table
++        of contents in the sidebar. By default Sphinx only shows the local
++        headers for the current page. With the extension installed, all of the
++        page titles are included, and the local headers for the current page
++        are also included in the appropriate place within the document.
++        
++        See the `project documentation`_ for more details.
++        
++        .. _Sphinx: http://sphinx.pocoo.org
++        
++        .. _project documentation: http://sphinxcontrib-fulltoc.readthedocs.org
++        
++        
++Platform: UNKNOWN
++Classifier: Development Status :: 4 - Beta
++Classifier: Environment :: Console
++Classifier: Intended Audience :: Developers
++Classifier: License :: OSI Approved :: Apache Software License
++Classifier: Operating System :: OS Independent
++Classifier: Programming Language :: Python
++Classifier: Programming Language :: Python :: 2
++Classifier: Programming Language :: Python :: 2.7
++Classifier: Programming Language :: Python :: 3
++Classifier: Programming Language :: Python :: 3.3
++Classifier: Topic :: Documentation
++Classifier: Topic :: Utilities
+diff -Naur fulltoc-1.3/sphinxcontrib_fulltoc.egg-info/SOURCES.txt fulltoc-1.3.new/sphinxcontrib_fulltoc.egg-info/SOURCES.txt
+--- fulltoc-1.3/sphinxcontrib_fulltoc.egg-info/SOURCES.txt	1970-01-01 01:00:00.000000000 +0100
++++ fulltoc-1.3.new/sphinxcontrib_fulltoc.egg-info/SOURCES.txt	2025-09-09 07:58:50.825140316 +0200
+@@ -0,0 +1,24 @@
++AUTHORS
++ChangeLog
++LICENSE
++MANIFEST.in
++README.rst
++announce.rst
++setup.cfg
++setup.py
++docs/Makefile
++docs/requirements.txt
++docs/source/conf.py
++docs/source/developers.rst
++docs/source/history.rst
++docs/source/index.rst
++docs/source/install.rst
++sphinxcontrib/__init__.py
++sphinxcontrib/fulltoc.py
++sphinxcontrib_fulltoc.egg-info/PKG-INFO
++sphinxcontrib_fulltoc.egg-info/SOURCES.txt
++sphinxcontrib_fulltoc.egg-info/dependency_links.txt
++sphinxcontrib_fulltoc.egg-info/namespace_packages.txt
++sphinxcontrib_fulltoc.egg-info/not-zip-safe
++sphinxcontrib_fulltoc.egg-info/pbr.json
++sphinxcontrib_fulltoc.egg-info/top_level.txt
+\ No newline at end of file
+diff -Naur fulltoc-1.3/sphinxcontrib_fulltoc.egg-info/top_level.txt fulltoc-1.3.new/sphinxcontrib_fulltoc.egg-info/top_level.txt
+--- fulltoc-1.3/sphinxcontrib_fulltoc.egg-info/top_level.txt	1970-01-01 01:00:00.000000000 +0100
++++ fulltoc-1.3.new/sphinxcontrib_fulltoc.egg-info/top_level.txt	2025-09-09 07:58:50.825140316 +0200
+@@ -0,0 +1 @@
++sphinxcontrib

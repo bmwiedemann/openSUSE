@@ -23,4 +23,20 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1285164</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>efa61e4f3bb7c4a60dfc2de93861cc8d</srcmd5>
+    <version>1.3</version>
+    <time>1758039527</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.3:
+  * Fix #22: Support parallel read
+  * Use prune when rendering toctree to respect maxdepth
+- Add fix_package_metadata.patch to get an installable package with version number
+- Convert to pip-based build
+- disable failing doc build, see
+  https://lists.opensuse.org/archives/list/python@lists.opensuse.org/thread/UXTSXGRQBDZHYLFOYOC7RLDJKTVNAPQQ/
+- initial package for version 1.2.0
+</comment>
+    <requestid>1305095</requestid>
+  </revision>
 </revisionlist>
