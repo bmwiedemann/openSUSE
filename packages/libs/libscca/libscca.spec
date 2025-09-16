@@ -18,7 +18,7 @@
 
 %define lname	libscca1
 Name:           libscca
-Version:        20250912
+Version:        20250915
 Release:        0
 Summary:        Library and tools to access the Windows Prefetch File (PF) format
 License:        GFDL-1.3-only AND LGPL-3.0-or-later
