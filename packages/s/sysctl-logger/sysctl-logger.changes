@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 16 03:57:26 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to v0.0.7
+  * Add systemd hardenings
+  * Make output directory visible
+- Specify LLVM version to use for SLES 15 SP7
+
+-------------------------------------------------------------------
 Wed Apr 10 03:34:05 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Update to v0.0.6

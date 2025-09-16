@@ -20,6 +20,9 @@
  %define llvm_major_version %{nil}
 %else
  # Hard-code latest LLVM for SLES, the default version is too old
+ %if 0%{?sle_version} == 150700
+  %define llvm_major_version 19
+ %else
  %if 0%{?sle_version} == 150600
   %define llvm_major_version 17
  %else
@@ -31,10 +34,12 @@
  %endif
  %endif
  %endif
+ %endif
 %endif
 
+
 Name:           sysctl-logger
-Version:        0.0.6
+Version:        0.0.7
 Release:        0
 Summary:        A sysctl monitoring tool based on BPF
 License:        GPL-2.0-only
