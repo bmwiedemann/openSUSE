@@ -82,9 +82,11 @@ go build \
 %install
 install -v -m 0755 -D -t %{buildroot}%{_bindir} tea
 
+./tea completion bash > contrib/autocomplete.sh
 install -v -m 0644 -D contrib/autocomplete.sh \
     %{buildroot}%{_datadir}/bash-completion/completions/tea
 
+./tea completion zsh > contrib/autocomplete.zsh
 install -v -m 0644 -D contrib/autocomplete.zsh \
     %{buildroot}%{_datadir}/zsh/site-functions/_tea
 

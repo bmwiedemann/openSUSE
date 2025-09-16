@@ -97,4 +97,14 @@
     <comment></comment>
     <requestid>1304983</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>7557122a451144184b91457e7531bdcd</srcmd5>
+    <version>0.10.1+git.1757695903.cc20b52</version>
+    <time>1758039545</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1304993 from michals
+
+- Install up-to-date autocompletion files.</comment>
+    <requestid>1305132</requestid>
+  </revision>
 </revisionlist>
