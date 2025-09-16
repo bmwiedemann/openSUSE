@@ -30,8 +30,8 @@
 # major 69
 # mainver %%major.99
 %define major          140
-%define mainver        %major.2.0
-%define orig_version   140.2.0
+%define mainver        %major.2.1
+%define orig_version   140.2.1
 %define orig_suffix    esr
 %define update_channel esr
 %define source_prefix  thunderbird-%{orig_version}
@@ -97,8 +97,13 @@ BuildRequires:  cargo1.84
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
+%if 0%{?suse_version} == 1600
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc14
 BuildRequires:  gcc14-c++
+%endif
 BuildRequires:  memory-constraints
 BuildRequires:  rust1.84
 %if 0%{useccache} != 0
@@ -320,8 +325,13 @@ export MOZ_TELEMETRY_REPORTING=1
 export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 export CFLAGS="%{optflags}"
 %if 0%{?clang_build} == 0
+%if 0%{?suse_version} == 1600
+export CC=gcc-13
+export CXX=g++-13
+%else
 export CC=gcc-14
 export CXX=g++-14
+%endif
 %endif
 %ifarch %arm %ix86
 ### NOTE: these sections are not required anymore. Alson --no-keep-memory + -Wl,-z,pack-relative-relocs causes

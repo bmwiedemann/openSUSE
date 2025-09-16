@@ -6041,4 +6041,12 @@ I cannot test locally unfortunately.
     Thunderbird ESR 140.2, Firefox 142 and Thunderbird 142</comment>
     <requestid>1300598</requestid>
   </revision>
+  <revision rev="371" vrev="1">
+    <srcmd5>139909ff0369dd2cb9bcc693a5a2eec4</srcmd5>
+    <version>140.2.1</version>
+    <time>1758039552</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1305138</requestid>
+  </revision>
 </revisionlist>

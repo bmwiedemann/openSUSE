@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep  9 10:11:26 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Fix suse_version check for 16.0
+
+-------------------------------------------------------------------
+Mon Sep  8 18:36:27 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Build for Leap 16 using gcc13 (gcc14 is unavailable on Leap 16)
+
+-------------------------------------------------------------------
+Sat Sep  6 11:34:56 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 140.2.1
+  * Users could no longer send using smtp-relay.gmail.com
+  * Folder compaction could fail to complete due to folder write errors
+  * Creating an event or task from mail failed if the mail was
+    opened in a tab
+
+-------------------------------------------------------------------
 Wed Aug 20 14:15:50 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Mozilla Thunderbird 140.2
