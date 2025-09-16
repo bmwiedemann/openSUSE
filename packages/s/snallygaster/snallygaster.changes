@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep  8 20:35:07 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 0.0.14:
+ - Rework 404 error page checks
+   Avoid global variable and use @functools.cache instead for code
+   simplification.
+   Split out checks for django and symfony debugging pages into their
+   own tests.
+   Use a random, but static url path for 404 checks to allow duplicate
+   detection to work.
+   Closes: https://github.com/hannob/snallygaster/issues/84
+ - silence dlint warnings about lxml
+ - Fully replace beautifulsoup with lxml
+   beautifulsoup was a constant source of issues, causing
+   mutliple warnings to be silenced, regular API changes, etc.
+   We now use lxml for HTML parsing, which considerably simplifies
+   the code.
+   Closes: https://github.com/hannob/snallygaster/issues/87
+   Closes: https://github.com/hannob/snallygaster/pull/85
+ - Convert wordpress test from beautifulsoup to lxml
+   Bug: https://github.com/hannob/snallygaster/issues/87
+ - Raise minimum python version (3.7->3.9) in setup.py and CI
+
+-------------------------------------------------------------------
 Tue Apr 15 06:13:16 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to 0.0.13:

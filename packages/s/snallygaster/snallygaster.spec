@@ -1,7 +1,7 @@
 #
 # spec file for package snallygaster
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           snallygaster
-Version:        0.0.13
+Version:        0.0.14
 Release:        0
 Summary:        Tool to scan for hidden files on HTTP servers
 License:        0BSD
@@ -29,14 +29,15 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 # SECTION test requirements
 BuildRequires:  python3-pytest
-BuildRequires:  python3-beautifulsoup4 >= 4.11
+BuildRequires:  python3-base >= 3.9
 BuildRequires:  python3-dnspython
+BuildRequires:  python3-lxml
 BuildRequires:  python3-urllib3
 # /SECTION
 BuildRequires:  fdupes
-# otherwise: cannot import XMLParsedAsHTMLWarning
-Requires:       python3-beautifulsoup4 >= 4.11
+Requires:       python3-base >= 3.9
 Requires:       python3-dnspython
+Requires:       python3-lxml
 Requires:       python3-urllib3
 BuildArch:      noarch
 
