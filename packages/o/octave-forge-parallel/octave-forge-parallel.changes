@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 14 19:21:58 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix test, use dummy authentication data to run the local
+  pserver test.
+
+-------------------------------------------------------------------
 Mon Oct 30 16:00:43 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update URL to point to 'https://gnu-octave.github.io/packages/'

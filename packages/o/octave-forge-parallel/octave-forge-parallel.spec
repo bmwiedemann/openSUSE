@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-parallel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,11 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gnu-octave.github.io/packages/%{octpkg}/
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+Source1:        test_srp_data.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  gnutls-devel >= 3.4.0
 BuildRequires:  hdf5-devel
+BuildRequires:  hostname
 BuildRequires:  octave-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
@@ -49,6 +51,13 @@ This is part of Octave-Forge project.
 %octave_pkg_install
 
 %check
+# extract authentication data for tests
+# created with the 'parallel' function 'parallel_generate_srp_data("testuser")' with password "secret"
+# insists on reading from tty, so can't be created non-interactively
+HOME=${PWD}
+SRP_DIR=$(%octave --eval 'srp_dir = fullfile (a = pkg ("prefix"), "parallel-srp-data"); mkdir(srp_dir); disp(srp_dir) ')
+(cd ${SRP_DIR}; tar xaf %{S:1} )
+
 %octave_pkg_test
 
 %post
