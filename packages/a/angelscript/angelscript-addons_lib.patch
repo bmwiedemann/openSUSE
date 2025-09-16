@@ -50,9 +50,9 @@ Index: sdk/angelscript/projects/meson/meson.build
 +  soversion : meson.project_version(),
 +  version : meson.project_version(),
    install : true,
+   cpp_args:'-Wfatal-errors'
  )
- angelscript_inc = include_directories('../../include')
-@@ -73,4 +99,93 @@ angelscript_dep  = declare_dependency(
+@@ -74,4 +100,93 @@ angelscript_dep  = declare_dependency(
    version : meson.project_version(),
  )
  

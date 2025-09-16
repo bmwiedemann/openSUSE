@@ -1,4 +1,145 @@
 -------------------------------------------------------------------
+Sun Sep  7 14:33:24 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.38.0
+  * Bug fixes:
+    + Use of computed gotos on gnuc and clang was not enabled by default
+    + Fixed crash in context if the engine was shutdown while a context was 
+      still suspended
+    + Fixed assert failure in compiler when trying to initialize an ashandle
+      type with a value type
+    + Fixed crash in compiler when compiling value assignment to null handle
+    + Fixed parsing of declaration of global variable initialized with a 
+      template that takes multiple subtypes
+    + Fixed crash when initializing global variable of scoped type declared 
+      with direct construct call
+    + Fixed compilation global variable initialization with assignment so value
+      doesn't have to be copied
+    + Fixed some compilation errors in as_callfunc_arm64_msvc.asm
+    + Fixed crash in GetThisPointer on contexts with nested state
+    + Fixed compiler warning on fallthrough statement in as_context.cpp
+    + Fixed crash when doing implicit conversion from value type to ref type
+      for a function argument expecting reference to handle
+    + Fixed crash when compiling script attempting to declare variable with
+      type auto[]
+    + Explicit copy constructor is no longer used implicitly by compiler
+    + Fixed memory invasion that could happen if a context was reused after the
+      stack had grown
+    + Fixed crash when passing function pointer without @ prefix to argument 
+      expecting asOBJ_ASHANDLE
+    + Fixed incorrect attempt to convert to null handle in ternary condition
+    + Fixed assert on invalid assign with literal constant
+    + Fixed handling of stack pointer for variadic functions
+    + Fixed use of auto@ in foreach loop
+    + Fixed incorrect reference count management in the library for template 
+      functions
+    + Fixed invalid loop in FindNextFunctionCalled that could read out of 
+      bounds
+    + Fixed compilation error in as_callfunc.cpp on gcc 12
+    + Fixed crash in asIScriptGeneric::SetReturnObject for variadic functions
+    + Fixed crash in bytecode loader when it tries to translate a list factory 
+      in invalid bytecode
+    + Fixed crash in compiler when attempting to use template function without 
+      informing the subtypes 
+    + Fixed invalid bytecode when passing function pointer to functions 
+      expecting ?& 
+    + Fixed error for invalid scripts attempting to pass anonymous functions to
+      functions expecting ?&
+    + Fixed lookup of template subtypes when registering child funcdefs with 
+      different namespace set
+    + Fixed crash in CreateScriptObject with asCALL_CDECL_OBJFIRST|LAST and
+      auxiliary pointer
+    + Fixed issue in asIScriptModule::SetDefaultNamespace with nested 
+      namespaces
+    + Fixed implicit conversion to value type when the expression is a const 
+      of the same value type
+    + Fixed invalid access of inherited member before it is initialized by 
+      parent constructor
+    + Fixed crash on compiling function with funcdef by value as parameter type
+    + Fixed saving bytecode with template functions
+    + Removed compiler error on using temporary object as lvalue in value 
+      assignment
+    + Fixed crash in GetAddressOfVar for object variables whose stack position
+      is reused in multiple scopes
+    + Try/catch now properly restores the stack pointer on exceptions
+    + Fixed variadic in constructor/factory
+    + Fixed out of bounds access in GetDeclaredAt
+    + Fixed incorrect function overload matching with &out parameters when 
+      parameter type cannot be implicitly converted to argument type
+    + Fixed issue with builder not finding the inherited class if 
+      'using namespace' was used 
+    + Fixed saving/loading bytecode with calls to variadic functions
+    + Fixed issue with ?& arguments in native 32bit arm hard float calling
+      conventions
+    + Fixed issue with returning a structure of 4 floats by value in native 
+      32bit arm hard float calling conventions
+    + Fixed premature release of class factory when discarding a module with a
+      shared class declared within a namespace
+    + Fixed use of auto in foreach loop which should use handle if possible
+    + Fixed crash with ternary operator yielding reference to object handle 
+      and passed to function argument 
+    + Fixed crash due to aggressive bytecode optimization with ternary 
+      operator that set global variables in the result
+  * Library:
+    + Implemented support for registering template functions with 
+      RegisterGlobalFunction and RegisterObjectMethod using generic calling 
+      convention 
+    + Included a new function type asFUNC_TEMPLATE to indicate the template 
+      functions
+    + Added engine property asEP_MEMBER_INIT_MODE to allow backwards 
+      compatiblity for how class members are initialized
+    + Added engine property asEP_BOOL_CONVERSION_MODE to enable or disable 
+      contextual conversion to bool
+    + Added engine property asEP_FOREACH_SUPPORT to allow turning off the 
+      foreach loops for backwards compatibility
+    + Implemented support for registering functions with variadic arguments 
+      using generic calling convention
+    + Removed unnecessary spaces in default argument expression returned with
+      asIScriptFunction::GetDeclaration
+    + asIScriptContext::GetVar now returns in the type modifiers if the 
+      variable is const
+  * Library interface:
+    + Deprecated GetStringFactoryReturnTypeId, and implemented 
+      GetStringFactory instead
+    + Included GetSubTypeCount, GetSubTypeId, GetSubType to asIScriptFunction 
+      for template functions
+    + Changed the destructor of asIScriptFactory to public as it doesn't have 
+      to be reference counted
+    + asITypeInfo::GetProperty now returns info on constness
+    + SetTranslateAppExceptionCallback, SetLineCallback, SetExceptionCallback 
+      now take asSFuncPtr by ref for consistency
+    + Added GetMessageCallback
+    + Changed the return values for GetStateRegisters and 
+      GetCallStateRegisters to indicate when a context is in an invalid state
+    + Deprecated asIScriptFunction::GetScriptSectionName, use GetDeclaredAt 
+      instead
+  * Script language:
+    + It is now possible to instantiate registered template functions and 
+      call them
+    + A class member can now be explicitly initialized in the class 
+      constructor, overriding the initialization defined in the declaration 
+    + Implemented contextual conversion to bool in conditions and boolean 
+      operations
+    + Implemented support for foreach loops
+    + Implemented support for using namespace
+  * Add-ons & Samples
+    + Made parseFloat in std::string add-on threadsafe
+    + Fixed issue in script builder with metadata for variable declarations
+      using direct object initialization
+    + Implemented a script socket add-on
+    + asrun can now use sockets to setup a simple server, or connect to 
+      remote sockets
+    + Fixed crash in CScriptBuilder when parsing metadata in namespaces 
+      declared with nested scope on single line
+    + Added get_weekDay to datetime add-on
+    + Implemented a string::regexFind method for the std::string add-on
+    + Implemented support for foreach on script arrays and dictionary
+    + Implemented format and scan with variadic args for std::string add-on
+    + The any::retrieve methods were not registered as const
+    + Fixed bug in script builder that didn't clear metadata from previous 
+      builds
+
+-------------------------------------------------------------------
 Sun Dec 15 16:36:19 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.37.0
