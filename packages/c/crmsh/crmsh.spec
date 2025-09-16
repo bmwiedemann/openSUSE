@@ -41,7 +41,7 @@ Name:           crmsh
 Summary:        High Availability cluster command-line interface
 License:        GPL-2.0-or-later
 Group:          %{pkg_group}
-Version:        5.0.0+20250904.957a78bf
+Version:        5.0.0+20250916.c8f0c88a
 Release:        0
 URL:            http://crmsh.github.io
 Source0:        %{name}-%{version}.tar.bz2
@@ -69,7 +69,7 @@ BuildRequires:  python3-PyYAML
 %if 0%{?suse_version}
 # only require csync2 on SUSE since bootstrap
 # only works for SUSE at the moment anyway
-Requires:       csync2
+Recommends:     csync2
 %if %{use_firewalld}
 BuildRequires:  firewall-macros
 %endif

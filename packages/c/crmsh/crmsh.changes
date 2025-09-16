@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 16 03:30:29 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250916.c8f0c88a:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: spec: Change csync2 from requies to recommends
+  * Dev: bootstrap: For compatibility concerns, add -x option back
+  * Dev: doc: Update help text for crm cluster copy subcommand
+  * Dev: Rename function utils.cluster_copy_file to utils.cluster_copy_path
+  * Dev: Rename function bootstrap.sync_file to bootstrap.sync_path
+  * Dev: utils: Improve cluster_copy_file with absolute path, dir check, mkdir on remote
+  * Dev: bootstrap: Add -d option for cpio, to create directories as needed
+  * Dev: sbd: Only sync /etc/sysconfig/sbd when cluster is running
+  * Dev: bootstrap: Remove csync2 stage from join side
+  * Dev: bootstrap: Remove node_list_in_cluster from Context
+  * Dev: bootstrap: Don't remove csync2-related files when removing cluster node
+  * Dev: bootstrap: Remove csync2 from stage dependency list
+  * Dev: ui_cluster: Drop -x option, skip configuring and using csync2 by default
+
+-------------------------------------------------------------------
 Thu Sep 04 06:43:51 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250904.957a78bf:
