@@ -10,6 +10,12 @@ Wed Sep  3 12:31:59 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
   toggle verbosity of the meson commands (__meson_verbose 0|1).
 
 -------------------------------------------------------------------
+Tue Sep  2 14:37:05 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Modify 14001.patch: allow to specify an envvar to filter out
+  unwanted deps.
+
+-------------------------------------------------------------------
 Mon Aug 25 06:14:17 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Updtae to version 1.9.0:
