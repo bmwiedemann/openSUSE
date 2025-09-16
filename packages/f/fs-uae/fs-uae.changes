@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep  8 22:37:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.2.35
+  * Fix crash caused when opening the "More..." input menu.
+- from version 3.2.x
+  * Disable cpu governor warning on Linux.
+  * Allow overriding device names for hard drive directories.
+  * Upgrade libslirp to version 4.6.1.
+  * Backported builtin slirp from FS-UAE 4 (fixes A2065 instability).
+  * Use g_get_monotonic_time() for high-resolution time on Windows as well.
+- Update URL of upstream tarball in Source field
+
+-------------------------------------------------------------------
 Wed Apr 16 11:17:41 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop BuildRequires: pkgconfig(glew) as it is not used for build.
