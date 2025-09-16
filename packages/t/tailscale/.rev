@@ -347,4 +347,12 @@
     <comment>- add patch fix-CVE-2025-58058.patch, fixing bsc#1248920 (forwarded request 1301938 from rrahl0)</comment>
     <requestid>1301939</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c32d8c81cce802634c4920c0623818f8</srcmd5>
+    <version>1.88.1</version>
+    <time>1758039530</time>
+    <user>anag_factory</user>
+    <comment>- remove fix-CVE-2025-58058.patch, fixed upstream (forwarded request 1305110 from rrahl0)</comment>
+    <requestid>1305111</requestid>
+  </revision>
 </revisionlist>

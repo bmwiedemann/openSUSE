@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 12 11:11:48 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 1.88.1:
+  * Tailscale CLI prompts users to confirm impactful actions
+  * Tailscale SSH works as expected when using an IP address instead of a
+    hostname and MagicDNS is disabled
+  * fixed: Taildrive sharing when su not present
+  * Taildrive files remain consistently accessible
+  * new: Tailscale tray GUI
+  * DERP IPs changed for Singapore and Tokyo
+- remove fix-CVE-2025-58058.patch, fixed upstream
+
+-------------------------------------------------------------------
 Fri Aug 29 12:57:59 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - add patch fix-CVE-2025-58058.patch, fixing bsc#1248920
