@@ -1,0 +1,43 @@
+--- src/third_party/swiftshader/src/Reactor/LLVMJIT.cpp	2025-09-15 18:56:08.652126119 +0200
++++ /var/tmp/build-root/openSUSE_Tumbleweed-x86_64/home/abuild/rpmbuild/BUILD/nodejs-electron-37.5.0-build/src/third_party/swiftshader/src/Reactor/LLVMJIT.cpp	2025-09-15 19:25:40.331977649 +0200
+@@ -78,6 +78,10 @@ __pragma(warning(push))
+ #include "llvm/ExecutionEngine/Orc/AbsoluteSymbols.h"
+ #endif
+ 
++#if LLVM_VERSION_MAJOR >= 21 // https://github.com/llvm/llvm-project/commit/0faa181434cf959110651fe974bef31e7390eba8
++#include "llvm/ExecutionEngine/Orc/SelfExecutorProcessControl.h"
++#endif
++
+ #ifdef _MSC_VER
+     __pragma(warning(pop))
+ #endif
+@@ -820,7 +824,11 @@ public:
+ 	    , session(std::move(Unwrap(llvm::orc::SelfExecutorProcessControl::Create())))
+ #endif
+ #if USE_LEGACY_OBJECT_LINKING_LAYER
+-	    , objectLayer(session, [this]() {
++	    , objectLayer(session, [this](
++#if LLVM_VERSION_MAJOR >= 21 // https://github.com/llvm/llvm-project/commit/cd585864c0bbbd74ed2a2b1ccc191eed4d1c8f90
++			const llvm::MemoryBuffer &
++#endif
++		) {
+ 		    return std::make_unique<llvm::SectionMemoryManager>(&memoryMapper);
+ 	    })
+ #else
+@@ -959,7 +967,15 @@ JITBuilder::JITBuilder()
+     , module(new llvm::Module("", *context))
+     , builder(new llvm::IRBuilder<>(*context))
+ {
+-	module->setTargetTriple(LLVM_DEFAULT_TARGET_TRIPLE);
++	module->setTargetTriple(
++#if LLVM_VERSION_MAJOR >= 21 // https://github.com/llvm/llvm-project/commit/979c275097a642e9b96c6b0a12f013c831af3a6e
++		llvm::Triple(
++#endif
++			LLVM_DEFAULT_TARGET_TRIPLE
++#if LLVM_VERSION_MAJOR >= 21
++		)
++#endif
++	);
+ 	module->setDataLayout(JITGlobals::get()->getDataLayout());
+ 
+ 	msanInstrumentation = getPragmaState(MemorySanitizerInstrumentation);

@@ -384,6 +384,7 @@ Patch3220:      picture_in_picture_events_info-string-constexpr.patch
 Patch3221:      event_record-optional-initializer.patch
 Patch3222:      ANNOTATE_CONTIGUOUS_CONTAINER-Wodr.patch
 Patch3223:      v8-simd-flax-vector-conversions.patch
+Patch3224:      swiftshader-llvm21.patch
 
 # Patches to re-enable upstream force disabled features.
 # There's no sense in submitting them but they may be reused as-is by other packagers.
