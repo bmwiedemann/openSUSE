@@ -160,4 +160,18 @@
 </comment>
     <requestid>1293498</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1d50f7a99e5f071f20cf314bd47fa49c</srcmd5>
+    <version>3.4.2</version>
+    <time>1758039513</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.4.2:
+  * Fixed an issue when integrating apps from CLI
+- Update to 3.4.1:
+  * Added new command line option to unset update url
+- Update to 3.4.0:
+  * Added new command line option --set-update-url
+</comment>
+    <requestid>1305033</requestid>
+  </revision>
 </revisionlist>

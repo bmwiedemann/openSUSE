@@ -1,7 +1,7 @@
 #
 # spec file for package gearlever
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define appid it.mijorus.gearlever
 Name:           gearlever
-Version:        3.3.4
+Version:        3.4.2
 Release:        0
 Summary:        Manage AppImages
 License:        GPL-3.0-or-later
@@ -37,6 +37,7 @@ Requires:       dwarfs
 Requires:       flatpak-spawn
 Requires:       python3-dbus-python
 Requires:       python3-pyxdg
+Requires:       python3-requests
 Requires:       squashfs
 
 %description
