@@ -48,4 +48,16 @@
   * setWindowIcon explicitly</comment>
     <requestid>1295355</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>251fa2bc4cf4edd5fc315f181b9ea7e6</srcmd5>
+    <version>1.24.0</version>
+    <time>1758039571</time>
+    <user>anag_factory</user>
+    <comment>- update to version 1.24.0:
+  * The log levels values in the gui have changed
+  * rename binaries
+  * feat: Add switchToNextScreen hotkey to cycle through computers
+  * fix: Use correct log function for process exit status in onProcessFinished</comment>
+    <requestid>1305144</requestid>
+  </revision>
 </revisionlist>
