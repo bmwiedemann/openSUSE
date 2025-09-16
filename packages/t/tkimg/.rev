@@ -167,4 +167,31 @@
     <comment></comment>
     <requestid>1153995</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ef1235f6a077c9921a328ba6949db0b4</srcmd5>
+    <version>2.1.0</version>
+    <time>1758039546</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to 2.1.0
+  * Updated external libraries: PNG 1.6.48.
+  * Improved RAW image handler to handle all data types correctly.
+- bsc#1248331, CVE-2025-9165, tkimg-CVE-2025-9165.patch:
+  libtiff: local execution manipulation can lead to memory leak.
+- Upgrade to 2.0.0
+  * https://tkimg.sourceforge.net/history.html
+  * Major rework. Tk 9 support.
+  * Updated external libraries: JPEG 9f (9.6.0), PNG 1.6.44,
+    TIFF 4.7.0, ZLIB 1.3.1.
+  * bsc#1248281, CVE-2025-8851: LibTIFF Stack-based buffer overflow
+  * No base64 encoded image data support anymore.
+  * Syntax of option -resolution for format BMP has changed.
+  * All optional values specified when writing PNG files were
+    interpreted as text metadata. Text metadata for PNG files must
+    now be specified explicitely with new option -tag.
+  * Format GIF must be explicitely loaded with package require
+    img::gif
+  * The default resolution values written have been unified to be
+    0 for all image formats.</comment>
+    <requestid>1305134</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package tkimg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,22 @@
 
 
 Name:           tkimg
-Version:        1.4.16
+Version:        2.1.0
 Release:        0
 Summary:        More Image Formats for Tk
 Group:          Development/Libraries/Tcl
 License:        BSD-3-Clause
 URL:            https://sourceforge.net/projects/tkimg
-Source0:        https://sourceforge.net/projects/tkimg/files/tkimg/1.4/tkimg%%20%{version}/Img-%{version}-Source.tar.gz
+Source0:        https://sourceforge.net/projects/tkimg/files/tkimg/2.1/tkimg%%20%{version}/Img-%{version}.tar.gz
 Patch0:         tests-add-destdir-tcllibpath.patch
+Patch1:         tkimg-CVE-2025-9165.patch
 BuildRequires:  dos2unix
 BuildRequires:  tcllib
 BuildRequires:  tk-devel
+BuildRequires:  xorg-x11-fonts
 BuildRequires:  xvfb-run
 BuildRequires:  pkgconfig(x11)
+#!BuildIgnore:  tcl-bundled-extensions
 
 %description
 This package contains a collection of image format handlers for the Tk
@@ -46,33 +49,37 @@ Group:          Development/Libraries/Tcl
 Files needed to compile/link C code against tkimg.
 
 %prep
-%autosetup -p1 -n Img-%{version}
+%autosetup -p0 -n Img-%{version}
 # Source archive is likly created on Windows, so fix some issues
 # 1. Fix file permissions: Executable bit is set on every file, fix that
 find . -type f -not -name configure -exec chmod 0644 \{\} +
 # 2. Fix line ending
-dos2unix ANNOUNCE ChangeLog README Reorganization.Notes.txt changes doc/*.htm demo.tcl license.terms base/pkgIndex.tcl.in
+dos2unix README.md license.terms base/pkgIndex.tcl.in
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%configure \
+CONFOPTS="\
         --libdir=%tcl_archdir \
         --with-tcl=%_libdir \
-        --with-tk=%_libdir
+        --with-tk=%_libdir"
+%configure $CONFOPTS
 %make_build
+mkdir html
+dtplite -ext html -o html -exclude '*.inc' html doc
 
 %install
-%make_install INSTALL_ROOT=%buildroot
+make INSTALL_ROOT=%buildroot install-libraries install-man
 # Fix file permissions
 chmod a-x %buildroot%tcl_archdir/*/*.a
 
 %check
-xvfb-run make test DESTDIR=%buildroot
+TCLLIBPATH=`pwd` xvfb-run make test
 
 %files
-%doc ANNOUNCE ChangeLog README Reorganization.Notes.txt changes doc/*.htm demo.tcl
+%doc README.md
 %license license.terms
 %doc %_mandir/*/*
+%doc html
 %tcl_archdir/*
 %exclude %tcl_archdir/*/*.a
 

@@ -1,7 +1,6 @@
-diff -Nur Img-1.4.13/base/Makefile.in new/base/Makefile.in
---- Img-1.4.13/base/Makefile.in	2020-12-28 23:26:49.479342100 +0100
-+++ new/base/Makefile.in	2022-05-22 11:49:29.155999923 +0200
-@@ -139,7 +139,7 @@
+--- base/Makefile.in.orig
++++ base/Makefile.in
+@@ -139,7 +139,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -10,10 +9,9 @@ diff -Nur Img-1.4.13/base/Makefile.in new/base/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/bmp/Makefile.in new/bmp/Makefile.in
---- Img-1.4.13/bmp/Makefile.in	2020-12-28 23:26:49.490084800 +0100
-+++ new/bmp/Makefile.in	2022-05-22 11:49:29.155999923 +0200
-@@ -142,7 +142,7 @@
+--- bmp/Makefile.in.orig
++++ bmp/Makefile.in
+@@ -145,7 +145,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -22,10 +20,9 @@ diff -Nur Img-1.4.13/bmp/Makefile.in new/bmp/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/dted/Makefile.in new/dted/Makefile.in
---- Img-1.4.13/dted/Makefile.in	2020-12-28 23:26:49.722771200 +0100
-+++ new/dted/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -142,7 +142,7 @@
+--- dted/Makefile.in.orig
++++ dted/Makefile.in
+@@ -145,7 +145,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -34,10 +31,9 @@ diff -Nur Img-1.4.13/dted/Makefile.in new/dted/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/flir/Makefile.in new/flir/Makefile.in
---- Img-1.4.13/flir/Makefile.in	2020-12-28 23:26:49.731566800 +0100
-+++ new/flir/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -141,7 +141,7 @@
+--- flir/Makefile.in.orig
++++ flir/Makefile.in
+@@ -145,7 +145,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -46,10 +42,9 @@ diff -Nur Img-1.4.13/flir/Makefile.in new/flir/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/gif/Makefile.in new/gif/Makefile.in
---- Img-1.4.13/gif/Makefile.in	2020-12-28 23:26:49.740365300 +0100
-+++ new/gif/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -141,7 +141,7 @@
+--- gif/Makefile.in.orig
++++ gif/Makefile.in
+@@ -145,7 +145,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -58,10 +53,9 @@ diff -Nur Img-1.4.13/gif/Makefile.in new/gif/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/ico/Makefile.in new/ico/Makefile.in
---- Img-1.4.13/ico/Makefile.in	2020-12-28 23:26:49.748186700 +0100
-+++ new/ico/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -141,7 +141,7 @@
+--- ico/Makefile.in.orig
++++ ico/Makefile.in
+@@ -145,7 +145,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -70,10 +64,9 @@ diff -Nur Img-1.4.13/ico/Makefile.in new/ico/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/jpeg/Makefile.in new/jpeg/Makefile.in
---- Img-1.4.13/jpeg/Makefile.in	2020-12-28 23:26:49.756986000 +0100
-+++ new/jpeg/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -145,7 +145,7 @@
+--- jpeg/Makefile.in.orig
++++ jpeg/Makefile.in
+@@ -149,7 +149,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -82,10 +75,9 @@ diff -Nur Img-1.4.13/jpeg/Makefile.in new/jpeg/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/libjpeg/Makefile.in new/libjpeg/Makefile.in
---- Img-1.4.13/libjpeg/Makefile.in	2020-12-28 23:26:49.764806100 +0100
-+++ new/libjpeg/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -129,7 +129,7 @@
+--- libjpeg/Makefile.in.orig
++++ libjpeg/Makefile.in
+@@ -138,7 +138,7 @@ EXTRA_PATH	= $(top_builddir):$(TCL_BIN_D
  TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -94,10 +86,9 @@ diff -Nur Img-1.4.13/libjpeg/Makefile.in new/libjpeg/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
  SHARED_BUILD	= @SHARED_BUILD@
-diff -Nur Img-1.4.13/libpng/Makefile.in new/libpng/Makefile.in
---- Img-1.4.13/libpng/Makefile.in	2020-12-28 23:26:49.773604200 +0100
-+++ new/libpng/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -133,7 +133,7 @@
+--- libpng/Makefile.in.orig
++++ libpng/Makefile.in
+@@ -142,7 +142,7 @@ EXTRA_PATH	= $(top_builddir):$(TCL_BIN_D
  TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -106,10 +97,9 @@ diff -Nur Img-1.4.13/libpng/Makefile.in new/libpng/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
  SHARED_BUILD	= @SHARED_BUILD@
-diff -Nur Img-1.4.13/libtiff/Makefile.in new/libtiff/Makefile.in
---- Img-1.4.13/libtiff/Makefile.in	2020-12-28 23:26:49.782390400 +0100
-+++ new/libtiff/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -131,7 +131,7 @@
+--- libtiff/Makefile.in.orig
++++ libtiff/Makefile.in
+@@ -140,7 +140,7 @@ EXTRA_PATH	= $(top_builddir):$(TCL_BIN_D
  TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -118,10 +108,9 @@ diff -Nur Img-1.4.13/libtiff/Makefile.in new/libtiff/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
  SHARED_BUILD	= @SHARED_BUILD@
-diff -Nur Img-1.4.13/pcx/Makefile.in new/pcx/Makefile.in
---- Img-1.4.13/pcx/Makefile.in	2020-12-28 23:26:49.791201700 +0100
-+++ new/pcx/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -141,7 +141,7 @@
+--- pcx/Makefile.in.orig
++++ pcx/Makefile.in
+@@ -145,7 +145,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -130,10 +119,9 @@ diff -Nur Img-1.4.13/pcx/Makefile.in new/pcx/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/pixmap/Makefile.in new/pixmap/Makefile.in
---- Img-1.4.13/pixmap/Makefile.in	2020-12-28 23:26:49.800000700 +0100
-+++ new/pixmap/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -141,7 +141,7 @@
+--- pixmap/Makefile.in.orig
++++ pixmap/Makefile.in
+@@ -145,7 +145,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -142,10 +130,9 @@ diff -Nur Img-1.4.13/pixmap/Makefile.in new/pixmap/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/png/Makefile.in new/png/Makefile.in
---- Img-1.4.13/png/Makefile.in	2020-12-28 23:26:49.808798400 +0100
-+++ new/png/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -149,7 +149,7 @@
+--- png/Makefile.in.orig
++++ png/Makefile.in
+@@ -153,7 +153,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -154,10 +141,9 @@ diff -Nur Img-1.4.13/png/Makefile.in new/png/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/ppm/Makefile.in new/ppm/Makefile.in
---- Img-1.4.13/ppm/Makefile.in	2020-12-28 23:26:49.817597300 +0100
-+++ new/ppm/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -141,7 +141,7 @@
+--- ppm/Makefile.in.orig
++++ ppm/Makefile.in
+@@ -145,7 +145,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -166,10 +152,9 @@ diff -Nur Img-1.4.13/ppm/Makefile.in new/ppm/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/ps/Makefile.in new/ps/Makefile.in
---- Img-1.4.13/ps/Makefile.in	2020-12-28 23:26:49.826395900 +0100
-+++ new/ps/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -141,7 +141,7 @@
+--- ps/Makefile.in.orig
++++ ps/Makefile.in
+@@ -145,7 +145,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -178,10 +163,9 @@ diff -Nur Img-1.4.13/ps/Makefile.in new/ps/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/raw/Makefile.in new/raw/Makefile.in
---- Img-1.4.13/raw/Makefile.in	2020-12-28 23:26:49.834216800 +0100
-+++ new/raw/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -141,7 +141,7 @@
+--- raw/Makefile.in.orig
++++ raw/Makefile.in
+@@ -145,7 +145,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -190,10 +174,9 @@ diff -Nur Img-1.4.13/raw/Makefile.in new/raw/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/sgi/Makefile.in new/sgi/Makefile.in
---- Img-1.4.13/sgi/Makefile.in	2020-12-28 23:26:49.843014900 +0100
-+++ new/sgi/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -141,7 +141,7 @@
+--- sgi/Makefile.in.orig
++++ sgi/Makefile.in
+@@ -145,7 +145,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -202,10 +185,9 @@ diff -Nur Img-1.4.13/sgi/Makefile.in new/sgi/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/sun/Makefile.in new/sun/Makefile.in
---- Img-1.4.13/sun/Makefile.in	2020-12-28 23:26:49.851813400 +0100
-+++ new/sun/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -141,7 +141,7 @@
+--- sun/Makefile.in.orig
++++ sun/Makefile.in
+@@ -145,7 +145,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -214,10 +196,9 @@ diff -Nur Img-1.4.13/sun/Makefile.in new/sun/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/tga/Makefile.in new/tga/Makefile.in
---- Img-1.4.13/tga/Makefile.in	2020-12-28 23:26:49.859634800 +0100
-+++ new/tga/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -141,7 +141,7 @@
+--- tga/Makefile.in.orig
++++ tga/Makefile.in
+@@ -145,7 +145,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -226,10 +207,9 @@ diff -Nur Img-1.4.13/tga/Makefile.in new/tga/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/tiff/Makefile.in new/tiff/Makefile.in
---- Img-1.4.13/tiff/Makefile.in	2020-12-28 23:26:49.869397200 +0100
-+++ new/tiff/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -153,7 +153,7 @@
+--- tiff/Makefile.in.orig
++++ tiff/Makefile.in
+@@ -157,7 +157,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -238,10 +218,9 @@ diff -Nur Img-1.4.13/tiff/Makefile.in new/tiff/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/window/Makefile.in new/window/Makefile.in
---- Img-1.4.13/window/Makefile.in	2020-12-28 23:26:49.877231400 +0100
-+++ new/window/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -144,7 +144,7 @@
+--- window/Makefile.in.orig
++++ window/Makefile.in
+@@ -145,7 +145,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -250,10 +229,9 @@ diff -Nur Img-1.4.13/window/Makefile.in new/window/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/xbm/Makefile.in new/xbm/Makefile.in
---- Img-1.4.13/xbm/Makefile.in	2020-12-28 23:26:49.886017500 +0100
-+++ new/xbm/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -141,7 +141,7 @@
+--- xbm/Makefile.in.orig
++++ xbm/Makefile.in
+@@ -145,7 +145,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -262,10 +240,9 @@ diff -Nur Img-1.4.13/xbm/Makefile.in new/xbm/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/xpm/Makefile.in new/xpm/Makefile.in
---- Img-1.4.13/xpm/Makefile.in	2020-12-28 23:26:49.894828500 +0100
-+++ new/xpm/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -141,7 +141,7 @@
+--- xpm/Makefile.in.orig
++++ xpm/Makefile.in
+@@ -145,7 +145,7 @@ TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL
  		  TK_LIBRARY=`@CYGPATH@ $(TK_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
@@ -274,10 +251,9 @@ diff -Nur Img-1.4.13/xpm/Makefile.in new/xpm/Makefile.in
  TCLSH_PROG	= @TCLSH_PROG@
  WISH_PROG	= @WISH_PROG@
  TCLSH		= $(TCLSH_ENV) $(TCLSH_PROG)
-diff -Nur Img-1.4.13/zlib/Makefile.in new/zlib/Makefile.in
---- Img-1.4.13/zlib/Makefile.in	2020-12-28 23:26:49.903627400 +0100
-+++ new/zlib/Makefile.in	2022-05-22 11:49:29.151999923 +0200
-@@ -129,7 +129,7 @@
+--- zlib/Makefile.in.orig
++++ zlib/Makefile.in
+@@ -138,7 +138,7 @@ EXTRA_PATH	= $(top_builddir):$(TCL_BIN_D
  TCLSH_ENV	= TCL_LIBRARY=`@CYGPATH@ $(TCL_SRC_DIR)/library` \
  		  @LD_LIBRARY_PATH_VAR@="$(EXTRA_PATH):$(@LD_LIBRARY_PATH_VAR@)" \
  		  PATH="$(EXTRA_PATH):$(PATH)" \
