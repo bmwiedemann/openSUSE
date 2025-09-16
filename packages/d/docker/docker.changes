@@ -5,6 +5,7 @@ Thu Sep  4 08:37:24 UTC 2025 - Aleksa Sarai <asarai@suse.com>
   <https://github.com/docker/buildx/releases/tag/v0.28.0>
 - Update to Docker 28.4.0-ce. See upstream changelog online at
   <https://docs.docker.com/engine/release-notes/28/#2840>
+  * Fixes a nil pointer panic in "docker push". bsc#1248373
 - Rebased patches:
   * 0001-SECRETS-SUSE-always-clear-our-internal-secrets.patch
   * 0002-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
