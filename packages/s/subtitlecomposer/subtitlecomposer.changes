@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep 15 13:06:55 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.8.2
+  * Fixed issues and crashes with newer Qt6 versions
+  * Fixed Waveform and VideoPlayer paint issues
+  * Fixed PGS subtitle mime type
+  * Improved Wayland compatibility
+  * Improved GoogleCloudEngine translations
+  * Added configurable whitespace detection to VobSub import
+  * Replaced deprecated FFmpeg channel code
+  * Require FFmpeg >= 5.1.5
+- Drop 0001-Replaced-deprecated-FFmpeg-channel-layout-code.patch,
+  0002-VideoPlayer-check-AVFMT_NO_BYTE_SEEK-flag-for-seek_b.patch,
+  0003-VideoPlayer-drop-an-unused-function-argument.patch,
+  0004-VideoPlayer-stop-using-AVFrame.pkt_pos.patch,
+  0005-VideoPlayer-remove-usage-of-internal-AVInputFormat.r.patch,
+  0006-VideoPlayer-stop-injecting-stream-side-data-in-packe.patch,
+  0007-VideoPlayer-check-return-of-swr_alloc_set_opts2.patch,
+  0008-StreamProcessor-stop-using-pkt_duration.patch,
+  0009-StreamProcessor-stop-using-AVFrame-duration.patch and
+  0010-Require-FFmpeg-5.1.5.patch (merged upstream)
+
+-------------------------------------------------------------------
 Wed Dec 18 18:57:02 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to fix build with pocketsphinx 5.0.3 in TW since

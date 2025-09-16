@@ -1,7 +1,7 @@
 #
 # spec file for package subtitlecomposer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           subtitlecomposer
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        A text-based subtitle editor
 License:        GPL-2.0-or-later
@@ -26,17 +26,6 @@ URL:            https://invent.kde.org/multimedia/subtitlecomposer
 Source0:        https://download.kde.org/stable/subtitlecomposer/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/subtitlecomposer/%{name}-%{version}.tar.xz.sig
 Source2:        subtitlecomposer.keyring
-# PATCH-FIX-UPSTREAM refreshment of ffmpeg related code
-Patch0:         0001-Replaced-deprecated-FFmpeg-channel-layout-code.patch
-Patch1:         0002-VideoPlayer-check-AVFMT_NO_BYTE_SEEK-flag-for-seek_b.patch
-Patch2:         0003-VideoPlayer-drop-an-unused-function-argument.patch
-Patch3:         0004-VideoPlayer-stop-using-AVFrame.pkt_pos.patch
-Patch4:         0005-VideoPlayer-remove-usage-of-internal-AVInputFormat.r.patch
-Patch5:         0006-VideoPlayer-stop-injecting-stream-side-data-in-packe.patch
-Patch6:         0007-VideoPlayer-check-return-of-swr_alloc_set_opts2.patch
-Patch7:         0008-StreamProcessor-stop-using-pkt_duration.patch
-Patch8:         0009-StreamProcessor-stop-using-AVFrame-duration.patch
-Patch9:         0010-Require-FFmpeg-5.1.5.patch
 # PATCH-FIX-UPSTREAM https://invent.kde.org/multimedia/subtitlecomposer/-/merge_requests/48
 Patch10:        use-pocketsphinx-5.0.0-api.patch
 BuildRequires:  cmake >= 3.10
