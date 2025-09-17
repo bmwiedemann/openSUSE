@@ -1,7 +1,7 @@
 #
 # spec file for package python-domdf-python-tools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,9 @@ Summary:        Helpful functions for Python 🐍 🛠️
 License:        MIT
 URL:            https://github.com/domdfcoding/domdf_python_tools
 Source:         https://github.com/domdfcoding/domdf_python_tools/archive/refs/tags/v%{version}.tar.gz#/domdf_python_tools-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/domdfcoding/domdf_python_tools/pull/137 Fix Python 3.14 test failures
+# with one more fix from me (in the comments)
+Patch0:         py314.patch
 BuildRequires:  %{python_module hatch-requirements-txt}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
@@ -72,7 +75,7 @@ Helpful functions for Python 🐍 🛠️
 %check
 %if %{with test}
 # Broken upstream
-%pytest -k 'not (test_discover_entry_points or test_iter_submodules)'
+%pytest -k 'not (test_discover_entry_points)'
 %endif
 
 %if !%{with test}
