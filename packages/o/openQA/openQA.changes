@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 16 16:21:17 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1758036156.d3e99d09:
+  * Temporarily require manual review of Dependabot PRs
+  * Prevent warning from `DBIx::Class::Storage::TxnScopeGuard`
+  * Avoid sporadic test failures in `t/ui/15-comments.t`
+  * Worker: Detect IPMI config and shutdown SUT when unused
+
+-------------------------------------------------------------------
 Mon Sep 15 18:12:46 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1757954579.4d0727fe:
