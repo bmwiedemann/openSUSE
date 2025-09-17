@@ -28,4 +28,18 @@
   different directory layout.</comment>
     <requestid>1303269</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a86d7b37d981beb2e1f79d52c62e6cf1</srcmd5>
+    <version>21.1.1</version>
+    <time>1758123879</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 21.1.1.
+  * This release contains bug-fixes for the LLVM 21.1.0 release.
+    This release is API and ABI compatible with 21.1.0.
+- Include some clang-tidy headers in clang-devel for plugins.
+- Add clang-Generalize-test-over-32-and-64bit-targets.patch to fix
+  new test failure on 32-bit architectures.
+- Rebase llvm-do-not-install-static-libraries.patch.</comment>
+    <requestid>1305003</requestid>
+  </revision>
 </revisionlist>

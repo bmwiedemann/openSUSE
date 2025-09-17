@@ -19,7 +19,7 @@
 %global _sonum  21
 %global _minor  %{_sonum}.1
 %global _soname %{_minor}%{?_rc:-rc%_rc}
-%global _patch_level 0
+%global _patch_level 1
 %global _relver %{_minor}.%{_patch_level}
 %global _version %_relver%{?_rc:-rc%_rc}
 %global _itsme21 1
@@ -447,6 +447,8 @@ Patch25:        check-no-llvm-exegesis.patch
 Patch27:        clang-fix-openmp-test.patch
 # PATCH-FIX-UPSTREAM: Fix test with x87 floating-point.
 Patch28:        llvm-fix-cov-test-i586.patch
+# PATCH-FIX-UPSTREAM: Port back https://github.com/llvm/llvm-project/commit/5b4819e337c662fad7176a1d8e7b95a94f199290.
+Patch29:        clang-Generalize-test-over-32-and-64bit-targets.patch
 BuildRequires:  %{python_pkg}-base >= 3.8
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
@@ -896,6 +898,7 @@ pushd clang-%{_version}.src
 %patch -P 6 -p1
 %patch -P 9 -p2
 %patch -P 27 -p2
+%patch -P 29 -p2
 
 # We hardcode openSUSE
 rm unittests/Driver/DistroTest.cpp
@@ -1315,7 +1318,8 @@ ln -vsf "../../../${liblldb}" %{buildroot}%{python_pkg_sitearch}/lldb/_lldb.%{cp
 rm %{buildroot}%{_mandir}/man1/{lit,llvm-test-mustache-spec}.1
 
 # These are only available as static libraries, which we don't ship.
-rm -rf %{buildroot}%{_includedir}/{clang-tidy,lld}
+rm -rf %{buildroot}%{_includedir}/clang-tidy/[a-z]*
+rm -rf %{buildroot}%{_includedir}/lld
 rm -rf %{buildroot}%{_libdir}/cmake/lld/
 
 %if %{with openmp}
@@ -1810,6 +1814,7 @@ fi
 %{_libdir}/libclang*.so
 %{_includedir}/clang/
 %{_includedir}/clang-c/
+%{_includedir}/clang-tidy/
 %{_libdir}/cmake/clang
 
 %files -n clang%{_sonum}-doc

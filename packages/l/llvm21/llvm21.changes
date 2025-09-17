@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 14 21:17:05 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 21.1.1.
+  * This release contains bug-fixes for the LLVM 21.1.0 release.
+    This release is API and ABI compatible with 21.1.0.
+- Include some clang-tidy headers in clang-devel for plugins.
+- Add clang-Generalize-test-over-32-and-64bit-targets.patch to fix
+  new test failure on 32-bit architectures.
+- Rebase llvm-do-not-install-static-libraries.patch.
+
+-------------------------------------------------------------------
 Sun Sep  7 21:51:15 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 21.1.0.
