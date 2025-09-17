@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-fire
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        A library for automatically generating command line interfaces
 License:        Apache-2.0
