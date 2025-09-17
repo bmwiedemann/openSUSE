@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 15 11:38:15 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.2.2
+  * Fix PytzUsageWarning
+  * Avoid repeated loop over timezones
+  * Migrate from hijri-converter to hijridate
+  * Set minimum versions for dependencies
+  * Limited numpy to 1.x when installing dateparser[fasttext]
+  * Handle the Russian preposition “с”
+  * Fix weekday search
+  * Add Python 3.14 support
+  * Cache timezone offsets to improve import time
+
+-------------------------------------------------------------------
 Thu Aug 14 12:44:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems only

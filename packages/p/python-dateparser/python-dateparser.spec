@@ -1,7 +1,7 @@
 #
 # spec file for package python-dateparser
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-dateparser
-Version:        1.2.0
+Version:        1.2.2
 Release:        0
 Summary:        Date parsing library designed to parse dates from HTML pages
 License:        BSD-3-Clause
@@ -36,11 +36,11 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-python-dateutil
-Requires:       python-pytz
-Requires:       python-regex
-Requires:       python-tzlocal
-Recommends:     convertdate
+Requires:       python-python-dateutil >= 2.7.0
+Requires:       python-pytz >= 2024.2
+Requires:       python-regex >= 2024.9.11
+Requires:       python-tzlocal >= 0.2
+Recommends:     python-convertdate
 Recommends:     python-fasttext
 Recommends:     python-langdetect
 Recommends:     python-ruamel.yaml
@@ -58,11 +58,11 @@ BuildRequires:  %{python_module fasttext}
 BuildRequires:  %{python_module langdetect}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module regex}
+BuildRequires:  %{python_module python-dateutil >= 2.7.0}
+BuildRequires:  %{python_module pytz >= 2024.2}
+BuildRequires:  %{python_module regex >= 2024.9.11}
 BuildRequires:  %{python_module ruamel.yaml}
-BuildRequires:  %{python_module tzlocal}
+BuildRequires:  %{python_module tzlocal >= 0.2}
 # /SECTION
 %python_subpackages
 
@@ -91,8 +91,6 @@ sed -i '1{/\/usr\/bin\/env python/d;}' \
 export NO_NETWORK=1
 # Requires files not shipped in PyPI sdist
 ignoretestfiles="--ignore tests/test_dateparser_data_integrity.py"
-# https://github.com/scrapinghub/dateparser/issues/1053
-ignoretestfiles="$ignoretestfiles --ignore tests/test_search.py"
 # overflow on 32bit
 donttest="(not test_timezone_offset_calculation)"
 %pytest -k "$donttest" $ignoretestfiles
