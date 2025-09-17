@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 15 17:13:12 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.6:
+  + gstreamer: Make sure to zero-initialize the GValue before
+    G_VALUE_COLLECT_INIT
+  + Fix various memory leaks
+
+-------------------------------------------------------------------
 Mon Aug 25 10:03:43 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.26.5:
