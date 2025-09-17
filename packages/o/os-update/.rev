@@ -263,4 +263,15 @@
   * Fix check for service restarts</comment>
     <requestid>1228787</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>1c0ec8f554d682d544947923594c89ee</srcmd5>
+    <version>1.21+git.20250917</version>
+    <time>1758120269</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.21+git.20250917:
+  * Make number of log lines configurable
+  * Change description not be misleading
+  * systemd-status-mail doc</comment>
+    <requestid>1305321</requestid>
+  </revision>
 </revisionlist>

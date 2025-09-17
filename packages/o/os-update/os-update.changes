@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 17 08:57:12 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.21+git.20250917:
+  * Make number of log lines configurable
+  * Change description not be misleading
+  * systemd-status-mail doc
+
+-------------------------------------------------------------------
 Fri Dec 06 13:10:15 UTC 2024 - kukuk@suse.com
 
 - Update to version 1.21+git.20241206:
