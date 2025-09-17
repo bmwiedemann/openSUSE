@@ -874,4 +874,14 @@
 - update CUDA variant to 580.82.07</comment>
     <requestid>1303203</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>696746e1a21561f89b3cb62cba3ce11b</srcmd5>
+    <version>580.82.07</version>
+    <time>1758120295</time>
+    <user>anag_factory</user>
+    <comment>- pesign-spec-macros: added definition for %__kernel_supplements,
+  which replaced %__kmp_supplements with latest RPM used on TW now,
+  in order to fix PCI HW Supplements for TW (boo#1249814)</comment>
+    <requestid>1305387</requestid>
+  </revision>
 </revisionlist>

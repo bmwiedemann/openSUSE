@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 17 12:49:38 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- pesign-spec-macros: added definition for %__kernel_supplements,
+  which replaced %__kmp_supplements with latest RPM used on TW now,
+  in order to fix PCI HW Supplements for TW (boo#1249814)
+
+-------------------------------------------------------------------
 Mon Sep  8 08:21:42 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - let conflict CUDA and non-CUDA -devel packages; this is needed
