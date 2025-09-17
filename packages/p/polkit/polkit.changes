@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 16 14:46:00 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Skip tests in qemu emulation
+
+-------------------------------------------------------------------
+Mon Sep 15 09:12:08 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- change /etc/polkit-1/rules.d group ownership back to polkitd 
+  (bsc#1249581)
+
+-------------------------------------------------------------------
 Fri Sep 12 07:31:43 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix user generation: move sysusers_generate_pre to install

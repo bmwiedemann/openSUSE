@@ -18,7 +18,11 @@
 
 %define _polkit_rulesdir %{_datadir}/polkit-1/rules.d
 %define glib_br_version  2.30.0
+# qemu emulation creates multiple threads, so unshare(CLONE_THREAD) always
+# fails.
+%if !0%{?qemu_user_space_build}
 %define run_tests        1
+%endif
 
 Name:           polkit
 Version:        126
@@ -262,7 +266,7 @@ mkdir %{buildroot}/%{_sysconfdir}/polkit-1/actions
 %{_polkit_rulesdir}/50-default.rules
 %{_pam_vendordir}/polkit-1
 %dir %{_sysconfdir}/polkit-1
-%attr(0750,root,root) %dir %{_sysconfdir}/polkit-1/rules.d
+%attr(0750,root,polkitd) %dir %{_sysconfdir}/polkit-1/rules.d
 %dir %{_sysconfdir}/polkit-1/actions
 %{_bindir}/pkaction
 %{_bindir}/pkcheck
