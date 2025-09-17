@@ -443,4 +443,13 @@
 - Use autosetup. (forwarded request 970897 from marxin)</comment>
     <requestid>974971</requestid>
   </revision>
+  <revision rev="54" vrev="8">
+    <srcmd5>30276432e9cea6733d5528728ccc47ea</srcmd5>
+    <version>5.18.16</version>
+    <time>1758123869</time>
+    <user>anag_factory</user>
+    <comment>- text-mmap-check-failed-addr.patch: Fix missing error check from mmap
+  (CVE-2025-8746, bsc#1247921) (forwarded request 1304825 from Andreas_Schwab)</comment>
+    <requestid>1304826</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 15 12:49:28 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- text-mmap-check-failed-addr.patch: Fix missing error check from mmap
+  (CVE-2025-8746, bsc#1247921)
+
+-------------------------------------------------------------------
 Tue Apr 19 19:22:33 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add upstream patch autogen-avoid-GCC-code-analysis-bug.patch

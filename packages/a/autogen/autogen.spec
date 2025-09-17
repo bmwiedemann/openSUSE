@@ -1,7 +1,7 @@
 #
 # spec file for package autogen
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,13 +37,14 @@ Patch5:         gcc9-fix-wrestrict.patch
 # PATCH-FIX-UPSTREAM Allow building with guile 3.0
 Patch6:         guile-version.patch
 Patch7:         autogen-avoid-GCC-code-analysis-bug.patch
+Patch8:         text-mmap-check-failed-addr.patch
 BuildRequires:  fdupes
 BuildRequires:  guile-devel
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 
 %description
 AutoGen is a tool designed for generating program files that contain
