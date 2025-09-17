@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Sep 15 15:21:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.6:
+  + Highlighted bugfixes in 1.26.6:
+    - analytics GstTensorMeta handling changes (see note below)
+    - closed caption combiner and transcriberbin stability fixes
+    - decklinkvideosrc: fix unrecoverable state after failing to
+      start streaming because device is busy
+    - decodebin3 tag handling improvements
+    - fallbacksrc: Fix sources only being restarted once, as well
+      as some deadlocks and race conditions on shutdown
+    - gtk4paintablesink: Try importing dmabufs withouth DMA_DRM
+      caps
+    - hlsdemux2: Fix parsing of byterange and init map directives
+    - rtpmp4gdepay2: allow only constantduration with neither
+      constantsize nor sizelength set
+    - spotifysrc: update to librespot 0.7 to make work after recent
+      Spotify changes
+    - threadshare: new blocking adapter element for use in front of
+      block elements such as sinks that sync to the clock
+    - threadshare: various other threadshare element fixes and
+      improvements
+    - v4l2: Add support for WVC1 and WMV3
+    - videorate: possible performance improvements when operating
+      in drop-only mode
+    - GstBaseParse fixes
+    - Vulkan video decoder fixes
+    - Fix gst-device-monitor-1.0 tool device-path regression on
+      Windows
+    - Monorepo development environment builds fewer plugins using
+      subprojects by default, those require explicit enablement now
+    - Python bindings: Handle buffer PTS, DTS, duration, offset,
+      and offset-end as unsigned long long (regression fix)
+    - Cerbero: Reduce recipe parallelism in various cases and dump
+      cerbero and recipe versions into datadir during packaging
+    - Various bug fixes, build fixes, memory leak fixes, and other
+      stability and reliability improvements
+  + Possibly breaking behavioural changes:
+    - Previously it was guaranteed that there is only ever up to
+      one GstTensorMeta per buffer. This is no longer true and code
+      working with GstTensorMeta must be able to handle multiple
+      GstTensorMeta now.
+  + gstreamer:
+    - baseparse: Try harder to fixate caps based on upstream in
+      default negotiation
+    - gst-discoverer reports 1x1 dimensions for "valid" MP4 files
+    - baseparse: don't clear most sticky events after a FLUSH_STOP
+      event
+    - gstreamer: Disable miniobject inline functions for
+      gobject-introspection for non-subprojects too
+    - gstreamer: Make sure to zero-initialize the GValue before
+      G_VALUE_COLLECT_INIT
+    - ptp: Fix a new Rust 1.89 compiler warning on Windows
+    - ptp: Fix new compiler warning with Rust 1.89
+    - Segmentation fault when compiled with
+      "-ftrivial-auto-var-init=pattern". Use of unitialized GValue
+
+-------------------------------------------------------------------
 Tue Aug 12 05:30:52 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.5:
