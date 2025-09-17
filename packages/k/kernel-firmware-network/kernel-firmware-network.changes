@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 14 06:09:17 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250912 (git commit f0f4634972f4):
+  * linux-firmware: update firmware for en8811h 2.5G ethernet phy
+
+-------------------------------------------------------------------
 Tue Aug  5 12:13:48 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250804 (git commit 37b63dc35d98):
