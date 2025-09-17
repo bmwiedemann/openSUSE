@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Sep 17 08:44:32 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.6.0:
+  Bug fixes:
+  * Initialise %(head) from command line arguments. (#1366)
+  * Make $GIT_EDITOR value interpreted by the shell. (#1367)
+  * Use correct line from recursively blamed commit. (#1369, #1370)
+  * Use correct line when using :parent in blame view. (#1372)
+  * Fix the incorrect line shift after stage file. (#1371)
+  * Update display after setting column option. (#1384)
+  * Fix file mode diff header handling.
+  * Fix crash caused by too many diff cells. (#1389)
+  * Fix issue with blame when using absolute file paths. (#1391)
+  Improvements:
+  * Add color for cursor in backgrounded view. (#1374)
+  * Blame view now works without a working tree.
+  * Open diff view from blame at the correct line. (#1375)
+  * Document how to get a < within TIG_SCRIPT. (#1357)
+  * Allow to hide +/- signs in the diff view. (#855)
+  * Add toggle options to help. (#1381)
+  * Add expand/collapse all options to help. (#1382)
+  * Expand relevant sections only when opening the help view. (#782, #886)
+  * Introduce committer column.
+  * Open the blame and blob views from diffstat.
+  * Update utf8proc to v2.11.0, supporting Unicode 17.
+
+-------------------------------------------------------------------
 Fri Feb  7 07:20:43 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.5.12:
@@ -1098,4 +1125,3 @@ Sun May 13 21:35:04 CEST 2007 - bwalle@suse.de
 
 - initial package
 
--------------------------------------------------------------------
