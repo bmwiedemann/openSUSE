@@ -6456,4 +6456,12 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment>- baselibs.conf: let Mesa-32bit obsolete Mesa-gallium-32bit</comment>
     <requestid>1303236</requestid>
   </revision>
+  <revision rev="552" vrev="424">
+    <srcmd5>1a43e176eeb5647093bdb2fd51239f0d</srcmd5>
+    <version>25.2.2</version>
+    <time>1758120181</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1305190</requestid>
+  </revision>
 </revisionlist>

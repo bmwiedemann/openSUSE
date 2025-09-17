@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  9 11:31:15 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- redefine %meson_build/%meson_install on Leap 15.6 in order to fix
+  build
+
+-------------------------------------------------------------------
 Mon Sep  8 15:48:03 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - baselibs.conf: let Mesa-32bit obsolete Mesa-gallium-32bit
