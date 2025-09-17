@@ -623,4 +623,27 @@
     <comment></comment>
     <requestid>1293956</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>cd0c7e5376c92fd2698fa9abe8298f4b</srcmd5>
+    <version>5.9.5</version>
+    <time>1758120291</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.9.5
+  * bugfix: lp#2121689 edit a transfer scheduled display a sign
+    warning
+  * bugfix: lp#2121405 Budget report by Time faulty ignore
+    subcategory with no budget as spending
+  * bugfix: lp#2121309 manage account position of a new account is
+    wrong when you delete an account
+  * bugfix: lp#2121204 invalid backup folder path cause a console
+    warning and backup to silently fail
+  * bugfix: lp#2120855 system language preference is not persisted
+    well after first run
+  * bugfix: lp#2119051 added txn do not display in ledger when
+    date range is all date
+  * bugfix: lp#2118815 account excluded can't be filtered
+  * bugfix: lp#2117343 'Gear' icon Missing on Ubuntu 25.04
+    and later (forwarded request 1305258 from Kieltux)</comment>
+    <requestid>1305361</requestid>
+  </revision>
 </revisionlist>
