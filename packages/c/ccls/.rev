@@ -207,4 +207,15 @@
 </comment>
     <requestid>1268906</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>23a6b28db3d5a5d727c87147589cdc00</srcmd5>
+    <version>0.20241108</version>
+    <time>1758120251</time>
+    <user>anag_factory</user>
+    <comment>- Add llvm21-CompilerInstance-and-PointerUnion.patch and
+  fix-llvm21-build.patch to fix build with LLVM 21.
+- Add reformat.patch to ease applying patches from upstream.
+</comment>
+    <requestid>1305275</requestid>
+  </revision>
 </revisionlist>

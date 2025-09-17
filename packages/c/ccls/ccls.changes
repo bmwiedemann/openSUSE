@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 16 21:57:46 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add llvm21-CompilerInstance-and-PointerUnion.patch and
+  fix-llvm21-build.patch to fix build with LLVM 21.
+- Add reformat.patch to ease applying patches from upstream.
+
+-------------------------------------------------------------------
 Sat Apr 12 21:06:33 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add fix-llvm20-build.patch to fix build with LLVM 20.

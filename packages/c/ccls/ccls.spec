@@ -1,7 +1,7 @@
 #
 # spec file for package ccls
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,9 @@ Group:          Development/Tools/IDE
 URL:            https://github.com/MaskRay/ccls
 Source0:        %{URL}/archive/%{version}/%{name}-%{version}.tar.gz
 Patch0:         fix-llvm20-build.patch
+Patch1:         reformat.patch
+Patch2:         llvm21-CompilerInstance-and-PointerUnion.patch
+Patch3:         fix-llvm21-build.patch
 BuildRequires:  clang-devel >= 10
 BuildRequires:  cmake >= 3.8
 BuildRequires:  llvm-devel >= 10
