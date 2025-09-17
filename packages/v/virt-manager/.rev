@@ -2214,4 +2214,12 @@
     <comment>Update virt-manager to version 5.1.0</comment>
     <requestid>1303252</requestid>
   </revision>
+  <revision rev="280" vrev="2">
+    <srcmd5>783836ee76daa3d58f83cf1e92cfabfa</srcmd5>
+    <version>5.1.0</version>
+    <time>1758120183</time>
+    <user>anag_factory</user>
+    <comment>Fix issues with detection of openSUSE Leap 16</comment>
+    <requestid>1305196</requestid>
+  </revision>
 </revisionlist>

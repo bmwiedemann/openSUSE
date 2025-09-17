@@ -260,10 +260,10 @@ donttest="$donttest or testCLI0231virt_install_xen_hvm"
 donttest="$donttest or testCLI0232virt_install_xen_hvm"
 # foobhyve.qcow2 used instead of foobhyve.img
 donttest="$donttest or testCLI0239virt_install_bhyve_default_f27"
-# We use vda instead of vdaf
+# XML contains vda instead of vdaf
 donttest="$donttest or testCLI0319virt_xml_build_disk_domain"
 donttest="$donttest or testCLI0328virt_xml_build_pool_logical_disk"
-# We use hda instead of hdd
+# XML contains hda instead of hdd
 donttest="$donttest or testCLI0428virt_xml_add_disk_create_storage_start"
 # Disk path '/tmp/__virtinst_cli_exist1.img' does not exist.
 donttest="$donttest or testCLI0450virt_clone_auto_unmanaged"

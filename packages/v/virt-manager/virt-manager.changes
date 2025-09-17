@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 11 13:52:31 MDT 2025 - carnold@suse.com
+
+- Fix issues with detection of openSUSE Leap 16.
+  virtinst-add-sle16-detection-support.patch
+
+-------------------------------------------------------------------
 Mon Sep  8 06:21:53 MDT 2025 - carnold@suse.com
 
 - Update to Version 5.1.0 (jsc#PED-8910)
@@ -95,7 +101,7 @@ Mon Sep  8 06:21:53 MDT 2025 - carnold@suse.com
 Wed Aug 13 16:46:43 MDT 2025 - carnold@suse.com
 
 - Adjust how we detect sles16 as the media layout changes.
-  (bsc#1244685)
+  (bsc#1244685) (bsc#1249466)
   virtinst-add-sle16-detection-support.patch
 
 -------------------------------------------------------------------

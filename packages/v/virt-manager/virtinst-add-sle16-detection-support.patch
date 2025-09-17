@@ -2,7 +2,21 @@ Index: virt-manager-5.1.0/virtinst/install/urldetect.py
 ===================================================================
 --- virt-manager-5.1.0.orig/virtinst/install/urldetect.py
 +++ virt-manager-5.1.0/virtinst/install/urldetect.py
-@@ -283,6 +283,14 @@ class _SUSEContent:
+@@ -271,8 +271,11 @@ class _SUSEContent:
+ 
+         # Special case, parse version out of a line like this
+         # cpe:/o:opensuse:opensuse:13.2,openSUSE
+-        if not distro_version and re.match("^.*:.*,openSUSE*", self.content_dict["DISTRO"]):
+-            distro_version = self.content_dict["DISTRO"].rsplit(",", 1)[0].strip().rsplit(":")[4]
++        if not distro_version:
++            if "DISTRO" in self.content_dict and re.match("^.*:.*,openSUSE*", self.content_dict["DISTRO"]):
++                distro_version = self.content_dict["DISTRO"].rsplit(",", 1)[0].strip().rsplit(":")[4]
++            elif "openSUSE" in self.product_name:
++                distro_version = self.product_name.strip().rsplit(' ')[1]
+         distro_version = distro_version.strip()
+ 
+         if "Enterprise" in self.product_name or "SLES" in self.product_name or "Micro" in self.product_name:
+@@ -283,6 +286,14 @@ class _SUSEContent:
              else:
                  if "SUSE SL Micro" in self.product_name:
                      sle_version = self.product_name.strip().rsplit(' ')[3]
@@ -17,24 +31,28 @@ Index: virt-manager-5.1.0/virtinst/install/urldetect.py
                  else:
                      sle_version = self.product_name.strip().rsplit(' ')[4]
              if len(self.product_name.strip().rsplit(' ')) > 5 and not " Micro " in self.product_name:
-@@ -521,10 +529,16 @@ class _SuseDistro(_RHELDistro):
+@@ -518,13 +529,20 @@ class _SuseDistro(_RHELDistro):
+ 
+         if not cache.checked_for_suse_content:
+             cache.checked_for_suse_content = True
++            # The content file exists in sles12 and older
              content_str = cache.acquire_file_content("content")
              if content_str is None:
                  products_str = cache.acquire_file_content("media.1/products")
 +                if not products_str:
-+                    # For SLES16 install iso (not agama)
++                    # For SLES16 and Leap 16 install iso
 +                    products_str = cache.acquire_file_content("install/media.1/products")
                  if products_str:
                      products_str = products_str.replace('/', ' ,', 1)
                      products_str = "DISTRO " + products_str.replace('-', ' ')
                  media_str = cache.acquire_file_content("media.1/media")
 +                if not media_str:
-+                    # For SLES16 install iso (not agama)
++                    # For SLES16 and Leap 16 install iso
 +                    media_str = cache.acquire_file_content("install/media.1/media")
                  if media_str:
                      media_arch = "x86_64"
                      if 'aarch64' in media_str:
-@@ -580,6 +594,10 @@ class _SuseDistro(_RHELDistro):
+@@ -580,6 +598,10 @@ class _SuseDistro(_RHELDistro):
              if tree_arch == "ppc64":
                  self._kernel_paths.append(("suseboot/linux64", "suseboot/initrd64"))
  
@@ -45,7 +63,7 @@ Index: virt-manager-5.1.0/virtinst/install/urldetect.py
          # Tested with SLES 12 for ppc64le, all s390x
          self._kernel_paths.append(("boot/%s/linux" % tree_arch, "boot/%s/initrd" % tree_arch))
          # Tested with Opensuse 10.0
-@@ -669,7 +687,7 @@ class _SLESDistro(_SuseDistro):
+@@ -669,7 +691,7 @@ class _SLESDistro(_SuseDistro):
      PRETTY_NAME = "SLES"
      matching_distros = ["sles"]
      _variant_prefix = "sles"
@@ -53,4 +71,40 @@ Index: virt-manager-5.1.0/virtinst/install/urldetect.py
 +    _suse_regex = [".*SUSE Linux Enterprise Server*", ".*SLES Full*", ".*SUSE SLES*"]
      famregex = ".*SUSE Linux Enterprise.*"
  
+ 
+@@ -965,17 +987,17 @@ def _build_distro_list(osobj):
+     allstores = [
+         # Libosinfo takes priority
+         _LibosinfoDistro,
+-        _FedoraDistro,
+-        _RHELDistro,
+-        _CentOSDistro,
+-        _OLDistro,
+         _SLEDistro,
+         _SLESDistro,
++        _OpensuseDistro,
+         _SLEHPCDistro,
+         _SLEDDistro,
+-        _OpensuseDistro,
+         _MICRODistro,
+         _CAASPDistro,
++        _FedoraDistro,
++        _RHELDistro,
++        _CentOSDistro,
++        _OLDistro,
+         _OESDistro,
+         _DebianDistro,
+         _UbuntuDistro,
+Index: virt-manager-5.1.0/virtManager/createvm.py
+===================================================================
+--- virt-manager-5.1.0.orig/virtManager/createvm.py
++++ virt-manager-5.1.0/virtManager/createvm.py
+@@ -31,7 +31,7 @@ from .storagebrowse import vmmStorageBro
+ from .vmwindow import vmmVMWindow
+ 
+ # Number of seconds to wait for media detection
+-DETECT_TIMEOUT = 20
++DETECT_TIMEOUT = 30
+ 
+ DEFAULT_MEM = 1024
  
