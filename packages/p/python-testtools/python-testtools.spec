@@ -1,7 +1,7 @@
 #
 # spec file for package python-testtools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ URL:            https://github.com/testing-cabal/testtools
 Source0:        https://files.pythonhosted.org/packages/source/t/testtools/testtools-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/testing-cabal/testtools/commit/5b8cb6497c7159f593e68de6a13e15f7e78e56e3 Prepare tests for upcoming twisted version
 Patch0:         twisted.patch
+# PATCH-FIX-UPSTREAM gh#testing-cabal/testtools#424/commits/79fa5d41a05c423cf43a65d2b347c7c566bcdfa5
+Patch1:         resolve-testcase-eq-deprecation-warning.patch
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}

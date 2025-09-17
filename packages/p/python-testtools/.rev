@@ -422,4 +422,14 @@
     <comment></comment>
     <requestid>1202888</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>8ad3c507241a9e654667f24444222220</srcmd5>
+    <version>2.7.2</version>
+    <time>1758119831</time>
+    <user>anag_factory</user>
+    <comment>- Add patch resolve-testcase-eq-deprecation-warning.patch:
+  * Don't rely on bool(NotImplemented) which is now a TypeError in
+    Python 3.14.</comment>
+    <requestid>1305067</requestid>
+  </revision>
 </revisionlist>
