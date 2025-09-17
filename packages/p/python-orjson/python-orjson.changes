@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 15 14:46:50 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.11.3
+  * ABI compatibility with CPython 3.14 beta 4.
+  * Drop support for Python 3.8.
+  * Use a deserialization buffer allocated per request instead of a shared
+    buffer allocated on import.
+  * Fix str on big-endian architectures.
+  * Build now depends on Rust 1.85 or later instead of 1.82.
+  * Fix PyPI project metadata when using maturin 1.9.2 or later.
+
+-------------------------------------------------------------------
 Fri Feb  7 12:53:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.10.15

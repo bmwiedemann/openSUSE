@@ -1,7 +1,7 @@
 #
 # spec file for package python-orjson
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-orjson
-Version:        3.10.15
+Version:        3.11.3
 Release:        0
 Summary:        Fast, correct Python JSON library supporting dataclasses, datetimes, and numpy
 License:        Apache-2.0 OR MIT
@@ -29,8 +29,8 @@ Source1:        vendor.tar.xz
 Source2:        https://files.pythonhosted.org/packages/source/o/orjson/orjson-%{version}.tar.gz
 Source3:        devendor-sdist.sh
 Source4:        PACKAGING_README.md
-BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module maturin >= 1}
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module maturin >= 1.9.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
