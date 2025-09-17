@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  9 06:06:29 UTC 2025 - Petr Vorel <pvorel@suse.cz>
+
+- Update to 1.3.7:
+  * http://sourceforge.net/projects/libtirpc/files/libtirpc/1.3.7/Release-1.3.7.txt
+  * https://lore.kernel.org/linux-nfs/bfd46880-9150-4ba8-a2fb-bcb2b58c311c@redhat.com/
+- Remove patches accepted upstream in this release:
+  * libtirpc-1.3.6-gcc15-part1.patch
+  * libtirpc-1.3.6-gcc15-part2.patch
+
+-------------------------------------------------------------------
 Mon Apr 21 20:57:11 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add patches from upstream to fix gcc-15 compile time errors:
