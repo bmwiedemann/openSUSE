@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 16 13:24:12 UTC 2025 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 2.23.0:
+  * Features
+    * Support UpCloud
+  * Changes
+    * Switch to aws-sdk-go-v2 for S3 fetches and EC2 interactions
+  *Bug fixes
+    * Fix fetch-offline for Oracle Cloud Infrastructure
+
+-------------------------------------------------------------------
 Mon Jul 21 12:56:07 UTC 2025 - Ignaz Forster <iforster@suse.com>
 
 - Update to version 2.22.0:

@@ -851,4 +851,19 @@ This makes it possible to use Ignition also on bare metal (e.g. when dumping ima
 </comment>
     <requestid>1294836</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>75797e7745235464731209ab4bf95038</srcmd5>
+    <version>2.23.0</version>
+    <time>1758120186</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.23.0:
+  * Features
+    * Support UpCloud
+  * Changes
+    * Switch to aws-sdk-go-v2 for S3 fetches and EC2 interactions
+  *Bug fixes
+    * Fix fetch-offline for Oracle Cloud Infrastructure
+</comment>
+    <requestid>1305210</requestid>
+  </revision>
 </revisionlist>

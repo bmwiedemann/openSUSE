@@ -1,7 +1,7 @@
 #
 # spec file for package ignition
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ignition
-Version:        2.22.0
+Version:        2.23.0
 Release:        0
 Summary:        First boot installer and configuration tool
 License:        Apache-2.0
