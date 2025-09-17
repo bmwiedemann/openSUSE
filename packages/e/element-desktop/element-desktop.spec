@@ -17,7 +17,7 @@
 
 
 Name:           element-desktop
-Version:        1.11.110
+Version:        1.11.112
 Release:        0
 Summary:        A glossy Matrix collaboration client - desktop
 License:        AGPL-3.0-only OR GPL-3.0-only
@@ -212,7 +212,7 @@ install -pvm 0755 %{SOURCE4} "%{buildroot}%{_bindir}/%{name}"
 install -vd -m 0755 "%{buildroot}%{_datadir}/icons/hicolor/scalable/apps/"
 for i in 16 24 48 64 96 128 256 512; do
 	install -vd -m 0755 "%{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/"
-	install -pvm 0644 build/icons/${i}x${i}.png "%{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/io.element.Element.png"
+	install -pvm 0644 build/icon.png "%{buildroot}%{_datadir}/icons/hicolor/${i}x${i}/apps/io.element.Element.png"
 done
 
 # Prevent error msg on element start
@@ -237,8 +237,8 @@ grep -rlZ '#! \?/usr/bin/env' "%{buildroot}%{_datadir}/element/app/node_modules/
 %{_datadir}/element/app/lib
 %{_datadir}/element/app/node_modules
 %{_datadir}/element/app/package.json
-%dir %{_datadir}/element/img
-%{_datadir}/element/img/*
+%dir %{_datadir}/element/build
+%{_datadir}/element/build/*
 
 %{_prefix}/lib/element/
 %config(noreplace) %{_sysconfdir}/element/config.json

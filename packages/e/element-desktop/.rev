@@ -1437,4 +1437,23 @@ Version 1.11.100
   * Fix widget initialization in React development mode (https://github.com/element-hq/element-web/pull/30463). Contributed by @robintown.</comment>
     <requestid>1302167</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>ec7fa637ec353923c758b16a19b7593b</srcmd5>
+    <version>1.11.112</version>
+    <time>1758120222</time>
+    <user>anag_factory</user>
+    <comment>- Version 1.11.112
+  Fix https://github.com/element-hq/element-web/security/advisories/GHSA-m6c8-98f4-75rr
+      CVE-2025-59161
+  
+  ## This is the last release compatible with macOS Big Sur. It will not update further. Big Sur is End of Life for almost 2 years and the next version of Electron crashes upon startup on Big Sur.
+  
+  ## ✨ Features
+  
+  * https://github.com/element-hq/element-desktop/pull/2555). Contributed by @RiotRobot.
+  
+
+- Track element-web 1.1.111</comment>
+    <requestid>1305263</requestid>
+  </revision>
 </revisionlist>

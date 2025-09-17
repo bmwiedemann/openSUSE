@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 16 14:48:05 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.112
+  Fix https://github.com/element-hq/element-web/security/advisories/GHSA-m6c8-98f4-75rr
+      CVE-2025-59161
+  
+  ## This is the last release compatible with macOS Big Sur. It will not update further. Big Sur is End of Life for almost 2 years and the next version of Electron crashes upon startup on Big Sur.
+  
+  ## ✨ Features
+  
+  * https://github.com/element-hq/element-desktop/pull/2555). Contributed by @RiotRobot.
+  
+
+-------------------------------------------------------------------
+Wed Sep 10 12:25:34 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Track element-web 1.1.111
+
+-------------------------------------------------------------------
 Mon Sep  1 08:51:23 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.110
