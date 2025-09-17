@@ -26,7 +26,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        8.7.0
+Version:        8.10.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -53,6 +53,8 @@ Source100:      %{name}-rpmlintrc
 Patch2:         %{name}-setup.install.py.diff
 # PATCH-FIX-OPENSUSE: disabling Autoupdate Searcher
 Patch3:         %{name}-no-update.diff
+# PATCH-FIX-OPENSUSE: disbale piper because since 8.8.0 calibre needs onnxruntime which is not in openSUSE.
+Patch4:         %{name}-disable_piper.patch
 ExclusiveArch:  aarch64 x86_64 riscv64
 %if 0%{?suse_version} <= 1550
 BuildRequires:  gcc12
@@ -89,10 +91,10 @@ BuildRequires:  liberation-fonts
 BuildRequires:  libmtp-devel >= 1.1.21
 # Upstream use libopenssl-devel >= 3.1.7
 BuildRequires:  libopenssl-3-devel >= 3.1.4
-BuildRequires:  (libpodofo-0_10-devel >= 0.10.3 and libpodofo-0_10-devel < 1.0.0)
 BuildRequires:  libpoppler-devel >= 23.08.0
 BuildRequires:  libstemmer-devel >= 2.2.0
 BuildRequires:  libwmf-devel >= 0.2.8
+BuildRequires:  (libpodofo-0_10-devel >= 0.10.3 and libpodofo-0_10-devel < 1.0.0)
 # upstream use: mozjpeg >= 4.1.4
 BuildRequires:  optipng >= 0.7.7
 BuildRequires:  poppler-tools >= 23.08.0
@@ -301,6 +303,7 @@ into ebooks for convenient reading.
 %setup -q -a5 -a6
 %patch -P 2 -p1
 %patch -P 3 -p1 -b .no-update
+%patch -P 4 -p1
 
 # dos2unix newline conversion
 sed -i 's/\r//' src/calibre/web/feeds/recipes/*
@@ -424,6 +427,7 @@ TEST_EXCLUDE=(
     --exclude-test-name test_fts_basic              # rise up build error
     --exclude-test-name test_websocket_basic        # rise up build error
     --exclude-test-name test_piper                  # rise up build error
+    --exclude-test-name test_plugins                # rise up build error since disable_piper.patch
     --exclude-test-name test_pykakasi               # is not in openSUSE oss
     --exclude-test-name test_import_of_all_python_modules # rise up build error because of pykakasi
 %endif
