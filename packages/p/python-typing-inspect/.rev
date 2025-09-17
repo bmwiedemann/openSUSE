@@ -56,4 +56,12 @@
 - No more greedy globs in %files.</comment>
     <requestid>1282537</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>8a5612d6ecf029c3b942a8bf3f13abac</srcmd5>
+    <version>0.9.0</version>
+    <time>1758119828</time>
+    <user>anag_factory</user>
+    <comment>- Skip two broken tests under Python 3.14.</comment>
+    <requestid>1305063</requestid>
+  </revision>
 </revisionlist>

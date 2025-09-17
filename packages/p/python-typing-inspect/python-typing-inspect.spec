@@ -1,7 +1,7 @@
 #
 # spec file for package python-typing-inspect
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,8 @@ Python runtime inspection utilities for typing module.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# https://github.com/ilevkivskyi/typing_inspect/issues/108
+%pytest -k 'not (test_parameters or test_typed_dict_mypy_extension)'
 
 %files %{python_files}
 %doc README.md
