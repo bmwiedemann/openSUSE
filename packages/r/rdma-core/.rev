@@ -722,4 +722,13 @@
     <comment></comment>
     <requestid>1287848</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>7ffc58a11f65736b960fc1936bc3043a</srcmd5>
+    <version>59.0</version>
+    <time>1758123871</time>
+    <user>anag_factory</user>
+    <comment>- Update to rdma-core v59.0
+  - https://github.com/linux-rdma/rdma-core/releases/tag/v59.0</comment>
+    <requestid>1304845</requestid>
+  </revision>
 </revisionlist>
