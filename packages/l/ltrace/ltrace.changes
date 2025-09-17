@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Sep 15 19:06:55 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Update to ltrace 0.8.0
+   - Each DSO can now ship an ltrace config file (called prototype
+     library) that ltrace will open when that DSO is loaded to process
+     image
+   - The option -F was retrofitted to be a colon-separated list of
+     prototype libraries, and directories to look for prototype
+     libraries in
+   - Wide character strings are supported in prototypes
+   - Sole void function parameter is now considered obsolete
+   - Prototypes are now read from DWARF debug info, if available
+   - RISC-V initial support included
+   - MIPS and MIPSel are now handled by the same backend
+   - ARMv6, ARMv7 and ARMv8 (AArch64) are supported, including full
+     fetch backend
+   - Imagination Technologies Meta is now supported
+   - PowerPC64 ELFv2 little-endian ABI is now supported including full
+     fetch backend
+   - Cadence Tensilica Xtensa is now supported
+   - LoongArch is now supported
+   - On Linux, tracing of IFUNC symbols is supported
+   - -w output now shows full library path
+- lens-double-free.patch: removed
+- Enable build on loongarch64
+
+-------------------------------------------------------------------
 Wed Feb 21 10:27:40 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Use %autosetup

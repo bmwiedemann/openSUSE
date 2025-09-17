@@ -1,7 +1,7 @@
 #
 # spec file for package ltrace
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ltrace
-Version:        0.7.91+git20230705.8eabf68
+Version:        0.8.0
 Release:        0
 Summary:        Library and system call tracer for programs
 License:        GPL-2.0-or-later
@@ -27,7 +27,6 @@ Source:         ltrace-%{version}.tar.bz2
 Source2:        baselibs.conf
 Patch3:         ppc-ptrace.patch
 Patch5:         gcc9-printf-s-null-argument.patch
-Patch6:         lens-double-free.patch
 Patch7:         gcc9-Wlto-type-mismatch.patch
 Patch8:         s390x-ptrace.patch
 Patch9:         ppc64le-use-after-free.patch
@@ -39,7 +38,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libtool
-ExclusiveArch:  %{ix86} s390x ppc ppc64 ppc64le %{arm} x86_64 alpha ia64 m68k aarch64 riscv64
+ExclusiveArch:  %{ix86} s390x ppc ppc64 ppc64le %{arm} x86_64 alpha ia64 m68k aarch64 riscv64 loongarch64
 
 %description
 Ltrace is a program that runs the specified command until it exits. It
@@ -54,7 +53,7 @@ This is still a work in progress, so, for example, the tracking to
 child processes may fail or some things may not work as expected.
 
 %prep
-%autosetup -p1
+%autosetup -n %{name}-%{name}-%{version} -p1
 
 %build
 ./autogen.sh
