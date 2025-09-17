@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-cov
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,27 +26,27 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pytest-cov%{psuffix}
-Version:        6.2.1
+Version:        7.0.0
 Release:        0
 Summary:        Pytest plugin for coverage reporting
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-cov
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-cov/pytest_cov-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module hatch-fancy-pypi-readme}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 %if %{with test}
-BuildRequires:  %{python_module coverage >= 7.5}
+BuildRequires:  %{python_module coverage >= 7.10.6}
 BuildRequires:  %{python_module fields}
 BuildRequires:  %{python_module process-tests}
-BuildRequires:  %{python_module pytest >= 6.2.5}
+BuildRequires:  %{python_module pytest-cov = %{version}}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module virtualenv}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-coverage >= 7.5
+Requires:       python-coverage >= 7.10.6
 Requires:       python-pluggy >= 1.2
 Requires:       python-pytest >= 6.2.5
 BuildArch:      noarch
@@ -78,11 +78,12 @@ echo "import site;site.addsitedir(\"$(pwd)/src\")" > tests/sitecustomize.py
 # test_dist_missing_data - needs internet access
 # test_central_subprocess_change_cwd_with_pythonpath - needs pytest cov in venv which is not doable in OBS build
 donttest="test_dist_missing_data or test_central_subprocess_change_cwd_with_pythonpath"
-# Tests broken with the latest version of python-coverage (6.5.0)
-# gh#pytest-dev/pytest-cov#570
-donttest+=" or test_contexts"
-# gh#pytest-dev/pytest-cov#565
-donttest+=" or test_dist_boxed"
+# test_celery - requires testcontainers, not packaged
+donttest+=" or test_celery"
+# Broken with new version of coverage
+donttest+=" or test_subprocess_with_path_aliasing or test_central_subprocess"
+donttest+=" or test_dist_subprocess_not_collocated or test_cleanup_on_sigterm"
+donttest+=" or test_append_coverage_subprocess or test_dist_subprocess_collocated"
 %pytest -v -k "not (${donttest})"
 %endif
 
@@ -90,7 +91,6 @@ donttest+=" or test_dist_boxed"
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS.rst CHANGELOG.rst README.rst
-%{python_sitelib}/pytest-cov.pth
 %{python_sitelib}/pytest_cov
 %{python_sitelib}/pytest_cov-%{version}.dist-info
 %endif

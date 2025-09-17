@@ -366,4 +366,15 @@
 - Drop patch support-coverage-75.patch, included upstream.</comment>
     <requestid>1289703</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c656207133990646237b2465aa09adb0</srcmd5>
+    <version>7.0.0</version>
+    <time>1758119827</time>
+    <user>anag_factory</user>
+    <comment>- Update to 7.0.0:
+  * Dropped support for subprocesses measurement.
+  * Switched packaging to have metadata completely in pyproject.toml and use
+    hatchling for building.</comment>
+    <requestid>1305057</requestid>
+  </revision>
 </revisionlist>
