@@ -53,9 +53,7 @@ BuildRequires:  help2man
 BuildRequires:  libelf-devel
 BuildRequires:  liburing-devel
 BuildRequires:  lld20
-BuildRequires:  lldb20-debuginfo
 BuildRequires:  llvm20-devel
-BuildRequires:  llvm20-devel-debuginfo
 BuildRequires:  mold
 BuildRequires:  ninja
 BuildRequires:  zlib-devel
