@@ -18,7 +18,7 @@
 
 
 Name:           cargo-c
-Version:        0.10.3~git0.ee7d7ef
+Version:        0.10.15
 Release:        0
 Summary:        Helper to build and install c-like libraries from Rust
 License:        MIT

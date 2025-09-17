@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Sep 13 08:14:57 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix _service file to have proper versioning:
+  + Do not use ~ in versions: ~ implies 'older than';
+    @PARENT_OFFSET@ is always ahead of PARENT_TAG; the proper sign
+    for this is +
+  + Adjust the rewrite rule to strip +git0.* - when we are ON the
+    tag, without any offset, we can just use the tag as version.
+
+-------------------------------------------------------------------
+Thu Sep 11 18:51:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.10.15~git0.3e178d5:
+  * Bump actions/download-artifact from 4 to 5
+  * Update implib requirement from 0.3.5 to 0.4.0
+  * Add rlib to the targets when building tests
+  * Allow disabling emission of library version constants in header files
+  * Bump to cargo 0.90
+  * Fix static_libraries swallowing sequence of -framework flags
+  * Fix non-POSIX paths in Libdir under Windows
+  * Bump actions-rs-plus/clippy-check from 2.2.1 to 2.3.0
+  * Fix clippy lints
+  * Bump cargo-0.89, object-0.37.1, cbindgen-0.29
+
+-------------------------------------------------------------------
 Wed Sep 10 03:05:57 UTC 2025 - William <william.brown@suse.com>
 
 - bsc#1249012 - CVE-2025-58160 - tracing subscriber ansi escapes
