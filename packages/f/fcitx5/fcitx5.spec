@@ -34,6 +34,7 @@ Source2:        https://raw.githubusercontent.com/fcitx/fcitx-artwork/master/log
 Source3:        xim.d-fcitx5
 Source4:        macros.fcitx5
 Source5:        fcitx5-autostart
+Source6:        20-fcitx5-plasma-setup.sh
 Source102:      fcitx5.service
 Patch1:         fcitx5-gcc7.patch
 Patch2:         fcitx5-5.0.13-memfd.patch
@@ -172,6 +173,7 @@ pushd  %{buildroot}%{_distconfdir}/X11/xim.d/
 popd
 
 install -m 755 %{SOURCE5} %{buildroot}%{_bindir}/fcitx5-autostart
+install -D -m 0755 %{SOURCE6} %{buildroot}%{_distconfdir}/xdg/plasma-workspace/env/20-fcitx5-plasma-setup.sh
 install -D -m 0644 %{SOURCE102} %{buildroot}%{_userunitdir}/fcitx5.service
 
 # install icons
@@ -238,6 +240,9 @@ fi
 %dir %{_sysconfdir}/xdg/Xwayland-session.d
 %{_sysconfdir}/xdg/Xwayland-session.d/20-fcitx-x11
 %{_sysconfdir}/xdg/autostart/org.fcitx.Fcitx5.desktop
+%dir %{_distconfdir}/xdg/plasma-workspace
+%dir %{_distconfdir}/xdg/plasma-workspace/env
+%{_distconfdir}/xdg/plasma-workspace/env/20-fcitx5-plasma-setup.sh
 %{_bindir}/fcitx5
 %{_bindir}/fcitx5-configtool
 %{_bindir}/fcitx5-remote
