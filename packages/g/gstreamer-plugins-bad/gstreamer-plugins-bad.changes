@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Sep 15 15:37:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.6:
+  + analytics: always add GstTensorMeta
+  + cccombiner: Crash fixes
+  + curlsmtpsink: adapt to date formatting issue
+  + decklinkvideosrc: fix decklinkvideosrc becomes unrecoverable if
+    it fails to start streaming
+  + decklinkvideosrc gets into unrecoverable state if device is
+    busy
+  + dwrite: Fix D3D12 critical warning
+  + hlsdemux: Fix parsing of byterange and init map directives
+  + mpegtsmux: Caps event fails with stream type change error
+  + vulkanh24xdec: couple of fixes
+  + vulkanh26xdec: fix discont state handling
+  + waylandsink: add some error handler for event dispatch
+  + zbar: tests: Handle symbol-bytes as not null-terminated
+  + Monorepo: avtp, codec2json, iqa, microdns, openjpeg, qroverlay,
+    soundtouch, tinyalsa plugins require explicit enablement now
+    for a build using the Meson subproject fallback
+
+-------------------------------------------------------------------
 Tue Aug 12 06:42:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.26.5:
