@@ -291,4 +291,13 @@ This is for updated setuptools in Staging:B</comment>
   * Support newer version of cmake.</comment>
     <requestid>1297341</requestid>
   </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>fe0f3cebc68d541ed345eadc49f06de6</srcmd5>
+    <version>0.18.1</version>
+    <time>1758120256</time>
+    <user>anag_factory</user>
+    <comment>- Update patch support-new-cmake.patch:
+  * Check for a different cache error message as well as the original.</comment>
+    <requestid>1305283</requestid>
+  </revision>
 </revisionlist>

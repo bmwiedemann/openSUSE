@@ -8,3 +8,17 @@ Index: scikit_build-0.18.1/tests/samples/issue-335-support-cmake-source-dir/CMak
  
  project(hello NONE)
  
+Index: scikit_build-0.18.1/tests/test_cmaker.py
+===================================================================
+--- scikit_build-0.18.1.orig/tests/test_cmaker.py
++++ scikit_build-0.18.1/tests/test_cmaker.py
+@@ -82,7 +82,8 @@ def test_make_without_configure_fails(ca
+         CMaker().make()
+     _, err = capfd.readouterr()
+     assert "An error occurred while building with CMake." in str(excinfo.value)
+-    assert "Error: could not load cache" in err
++    assert ("Error: could not load cache" in err) or (
++        "Error: not a CMake build directory (missing CMakeCache.txt)" in err)
+ 
+ 
+ @pytest.mark.parametrize("configure_with_cmake_source_dir", [True, False])
