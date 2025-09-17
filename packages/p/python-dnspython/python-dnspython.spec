@@ -1,7 +1,7 @@
 #
 # spec file for package python-dnspython
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,14 +27,14 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-dnspython%{psuffix}
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Summary:        A DNS toolkit for Python
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/rthalley/dnspython
 Source:         https://files.pythonhosted.org/packages/source/d/dnspython/dnspython-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
@@ -50,7 +50,7 @@ Recommends:     python-h2
 # quic
 Recommends:     python-aioquic
 # trio
-Suggests:       python-trio >= 0.14.0
+Suggests:       python-trio >= 0.30
 BuildArch:      noarch
 %if %{with test}
 # dnssec
@@ -69,7 +69,7 @@ BuildRequires:  %{python_module requests}
 # # curio
 # BuildRequires:  %%{python_module sniffio >= 1.1}
 # trio
-BuildRequires:  %{python_module trio >= 0.14.0}
+BuildRequires:  %{python_module trio >= 0.30.0}
 BuildRequires:  %{python_module typing}
 BuildRequires:  netcfg
 BuildRequires:  (python3-contextvars if python3-base < 3.7)
