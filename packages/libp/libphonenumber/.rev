@@ -103,4 +103,15 @@
     which isn't even mentioned in the release notes. (forwarded request 1295266 from favogt)</comment>
     <requestid>1295271</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>8500276c5d8a55f992c7c3e967e83b0a</srcmd5>
+    <version>9.0.10</version>
+    <time>1758120153</time>
+    <user>anag_factory</user>
+    <comment>- No longer rely on libboost_system-devel as separate package:
+  (boo#1249611):
+  * Add 0001-Fix-build-with-Boost-1.89.0.patch
+  * Use libboost_headers-devel instead of libboost_system-devel (forwarded request 1305309 from favogt)</comment>
+    <requestid>1305314</requestid>
+  </revision>
 </revisionlist>

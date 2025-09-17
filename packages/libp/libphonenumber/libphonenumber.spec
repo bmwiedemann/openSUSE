@@ -1,7 +1,7 @@
 #
 # spec file for package libphonenumber
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/libphonenumber
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM (hopefully, https://github.com/google/libphonenumber/pull/3903)
+Patch1:         0001-Fix-build-with-Boost-1.89.0.patch
 # PATCH-FIX-DOWNSTREAM (see https://github.com/google/libphonenumber/pull/2874)
 Patch2:         0001-Revert-Fix-typo-in-arguments-to-add_metadata_gen_tar.patch
 Patch3:         0001-Add-support-to-protobuf-3.25.1.patch
@@ -33,7 +35,7 @@ Patch4:         0002-Avoid-intermediate-proto-object-library.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_date_time-devel >= 1.40.0
-BuildRequires:  libboost_system-devel >= 1.40.0
+BuildRequires:  libboost_headers-devel >= 1.40.0
 BuildRequires:  libboost_thread-devel >= 1.40.0
 BuildRequires:  pkgconfig
 # Actual version requirement unknown
