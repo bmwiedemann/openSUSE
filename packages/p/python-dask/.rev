@@ -1919,4 +1919,12 @@
   * Create dask-expr frame directly without roundtripping @phofl (forwarded request 1228725 from bnavigator)</comment>
     <requestid>1228728</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>0b59a56224af373a4588076e79a53d89</srcmd5>
+    <version>2025.9.1</version>
+    <time>1758121609</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1305368</requestid>
+  </revision>
 </revisionlist>

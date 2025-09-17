@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Wed Sep 17 10:42:04 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2025.9.1
+  * Avoid unconditional pyarrow dependency in dataframe.backends
+    (dask#12075) Tom Augspurger
+  * pandas 3.x compatibility for .groups (dask#12071) Tom
+    Augspurger
+  * Expose details about worker start timeout in the exception
+    message (distributed#9092) Taylor Braun-Jones
+  * pynvml => nvidia-ml-py in CI (distributed#9111) Jacob Tomlinson
+
+-------------------------------------------------------------------
+Wed Sep 17 02:58:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Make pyarrow version requirement the same everywhere.
+- Update dependencies of dataframe and test.
+- Skip two tests that are broken upstream.
+
+-------------------------------------------------------------------
+Sun Sep 14 21:09:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2025.9.0:
+  * pandas 3.x compatibility (:pr:`12025`) `Tom Augspurger`_
+  * Remove protocol="ucx" support in favor of distributed-ucxx
+    (:pr-distributed:`9105`) `Peter Andreas Entschev`_
+  * Account for __main__ in pickle normalization (:pr:`11970`)
+    `James Bourbeau`_
+  * Enable column projection in MapPartitions (:pr:`11875`)
+    `Richard (Rick) Zamora`_
+  * Add config option for direct-to-workers (:pr-
+    distributed:`9097`) `James Bourbeau`_
+  * Fixed Array setitem when both the array and the indexer have
+    unknown shape. See :pr:`11753` from `Tom Augspurger`_ for
+    more details.
+  * Fixed several delayed graph handling issues introduced in the
+    2025.4.0 release. See :pr:`11917`, :pr:`11907`, and :pr-
+    distributed:`9071` from `Florian Jetter`_ for more details.
+  * When computing multiple Dask-Expr backed collections like
+    DataFrames, they are now optimized together instead of
+    individually.
+  * Graph materialization and low level optimization is now being
+    performed on the scheduler of a distributed cluster (if
+    available).
+  * New kwarg force for DataFrame.shuffle which signals the
+    optimizer to not drop the shuffle during optimization.
+  * Collections that are passed to Dask methods as arguments are
+    now properly optimized. If multiple collections are passed as
+    arguments they will be optimized together. Collections passed
+    this way are prohibited from being being reused, i.e. if the
+    collection is used again in another function call it will be
+    computed again. This pattern is used to avoid pipeline
+    breakers which typically drive memory usage. Avoiding those
+    should reduce memory pressure on the cluster but can cause
+    runtime regressions.
+  * (Special case of above point) Collections passed to Delayed
+    objects are now optimized automatically.
+  * Support for custom low level optimizers removed.
+  * Top level dask.optimize will now always trigger graph
+    materialization. Previously this was not always the case.
+    This also causes any low level HLG annotations to be dropped.
+  * DataFrame and Array compute results are now always
+    concatenated on the cluster. Previously, the behavior was
+    dependent on the API used to call compute (dask.compute,
+    DaskCollection.compute, or Client.compute).
+  * dask.base.collections_to_dsk has been renamed to
+    collections_to_expr and no longer returns a HighLevelGraph or
+    dict object but instead guarantees an dask._expr.Expr object.
+    Further, it no longer performs low level optimization
+    immediately but instead delays until the Expr instance is
+    materialized, i.e. the returned object is no longer a mapping
+    such that converting it to dict or iterating over it is not
+    possible any more.
+
+-------------------------------------------------------------------
 Wed Dec  4 10:16:13 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2024.12.0

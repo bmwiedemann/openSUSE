@@ -1,7 +1,7 @@
 #
 # spec file for package python-dask
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,9 @@
 %if "%{flavor}" != "test-py313"
 %define skip_python313 1
 %endif
+%if "%{flavor}" != "test-py314"
+%define skip_python314 1
+%endif
 %else
 %if "%{pythons}" == "python311" && "%{flavor}" != "test-py311"
 # Hardcoded assumption: SLE15 pythons module has python311
@@ -50,8 +53,8 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           python-dask%{psuffix}
-# ===> Note: python-dask MUST be updated in sync with python-dask-expr,python-distributed! <===
-Version:        2024.12.0
+# ===> Note: python-dask MUST be updated in sync with python-distributed! <===
+Version:        2025.9.1
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -163,7 +166,7 @@ Requires:       %{name}-dataframe = %{version}
 Requires:       %{name}-diagnostics = %{version}
 Requires:       %{name}-distributed = %{version}
 Requires:       python-lz4 >= 4.3.2
-Requires:       python-pyarrow >= 7
+Requires:       python-pyarrow >= 14.0.1
 Provides:       %{name}-all = %{version}-%{release}
 Obsoletes:      %{name}-all < %{version}-%{release}
 
@@ -209,10 +212,8 @@ arrays using blocked algorithms and task scheduling.
 Summary:        Pandas-like DataFrame data structure for dask
 Requires:       %{name} = %{version}
 Requires:       %{name}-array = %{version}
-Requires:       %{name}-bag = %{version}
-# This is an extra package
-Requires:       (python-dask-expr >= 1.1 with python-dask-expr < 1.2)
 Requires:       python-pandas >= 2
+Requires:       python-pyarrow >= 14.0.1
 
 %description dataframe
 A flexible library for parallel computing in Python.
@@ -278,6 +279,7 @@ Summary:        The test submodules of the python-dask package
 Requires:       %{name}-complete = %{version}
 Requires:       python-pandas-test
 Requires:       python-pytest
+Requires:       python-pytest-mock
 Requires:       python-pytest-rerunfailures
 Requires:       python-pytest-timeout
 Requires:       python-pytest-xdist
@@ -345,7 +347,7 @@ donttest+=" or test_map_partitions_df_input"
 donttest+=" or test_pyarrow_filesystem_option_real_data"
 # different hash naming (?)
 donttest+=" or test_to_delayed_optimize_graph"
-%pytest --pyargs dask -n auto -r fE -m "not network" -k "not ($donttest)" --reruns 3 --reruns-delay 3
+%pytest --pyargs dask -n auto -r fE -m "not (network or array_expr)" -k "not ($donttest)" --reruns 3 --reruns-delay 3
 %endif
 
 %post
