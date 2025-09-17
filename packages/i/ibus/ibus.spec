@@ -48,6 +48,7 @@ Source7:        macros.ibus
 Source10:       ibus-autostart
 Source11:       ibus-autostart.desktop
 Source12:       20-defaults-openSUSE.conf
+Source13:       20-ibus-plasma-setup.sh
 Source99:       baselibs.conf
 # PATFH-FIX-OPENSUSE ibus-xim-fix-re-focus-after-lock.patch bnc#874869 tiwai@suse.de
 # Fix lost XIM input after screenlock
@@ -286,6 +287,9 @@ install -c -m 0644 ibus-autostart.desktop %{buildroot}%{_sysconfdir}/xdg/autosta
 mkdir -p %{buildroot}%{_userunitdir}/org.freedesktop.IBus.session.generic.service.d
 install -c -m 0644 %{SOURCE12} %{buildroot}%{_userunitdir}/org.freedesktop.IBus.session.generic.service.d
 
+# setup script for Plasma
+install -D -m 0755 %{SOURCE13} %{buildroot}%{_distconfdir}/xdg/plasma-workspace/env/20-ibus-plasma-setup.sh
+
 PRIORITY=40
 pushd %{buildroot}%{_distconfdir}/X11/xim.d/
     for lang in am ar as bn el fa gu he hi hr ja ka kk kn ko lo ml my \
@@ -360,6 +364,7 @@ rm -rf %{buildroot}%{_libdir}/libibus*
 rm -rf %{buildroot}%{_libdir}/pkgconfig
 rm -rf %{buildroot}%{_prefix}/lib/systemd
 rm -rf %{buildroot}%{_sysconfdir}/xdg
+rm -rf %{buildroot}%{_distconfdir}/xdg
 
 %post -n %{_name}-gtk4
 %{gtk4_immodule_post}
@@ -418,6 +423,9 @@ fi
 %config %{_sysconfdir}/dconf/db/ibus.d/00-upstream-settings
 %config %{_sysconfdir}/dconf/profile/ibus
 %config %{_sysconfdir}/xdg/autostart/ibus-autostart.desktop
+%dir %{_distconfdir}/xdg/plasma-workspace
+%dir %{_distconfdir}/xdg/plasma-workspace/env
+%{_distconfdir}/xdg/plasma-workspace/env/20-ibus-plasma-setup.sh
 %{_mandir}/man1/ibus.1%{ext_man}
 %{_mandir}/man1/ibus-daemon.1%{ext_man}
 %{_mandir}/man1/ibus-setup.1%{ext_man}

@@ -1,5 +1,12 @@
 #!/bin/sh
 
+#
+# Normal start process for X11 session
+# Note that INPUT_METHOD is not usually set under a Wayland session.
+#
+# For Plasma Wayland, see also /usr/etc/xdg/plasma-workspace/env/20-ibus-plasma-setup.sh.
+# To configure input method (virtual keyboard), please use KDE System Settings rather than
+# INPUT_METHOD variable.
 test x"$INPUT_METHOD" = x"ibus" || exit 0
 
 # GNOME starts ibus by itself
@@ -11,6 +18,7 @@ esac
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     case "$XDG_CURRENT_DESKTOP" in
         *KDE*)
+            # This will update kwinrc and set IBus for the active virtual keyboard
             ibus start --type=kde-wayland
             exit 0;;
         *)

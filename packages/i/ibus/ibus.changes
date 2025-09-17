@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 15 13:45:03 UTC 2025 - Fuminobu Takeyama <ftake@geeko.jp>
+
+- Add an initial setup feature for Plasma Wayland
+  * enables IBus as the active virtual keyboard on the first login,
+    allowing users to input text using IBus without manual configuration
+  * Fix boo#1084804, boo#1246423
+
+-------------------------------------------------------------------
 Sat Jun 14 08:35:05 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Fix *-32bit package post scripts (bsc#1244535):
