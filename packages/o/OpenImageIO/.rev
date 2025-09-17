@@ -573,4 +573,12 @@ Updated oiio-detectplatform-others.patch to handle armv6l
     <comment></comment>
     <requestid>1302550</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>d61f17506343caf52eea13ca03294068</srcmd5>
+    <version>3.0.10.1</version>
+    <time>1758120280</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1305348</requestid>
+  </revision>
 </revisionlist>

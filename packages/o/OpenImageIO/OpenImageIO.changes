@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 17 09:18:47 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.0.10.1
+  - ci: Fix broken python wheel building #4886 #4855 (by Zach
+    Lewis)
+  - deps: Several fixes to build against OpenEXR 3.4 and OpenJPH
+    build related fixes #4875
+
+-------------------------------------------------------------------
 Mon Sep  1 18:16:45 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.0.10.0
