@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep  9 05:58:32 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 7.10.6
+  * A new configuration option: ":ref:`config_run_patch`" specifies
+    named patches to work around some limitations in coverage
+    measurement. Please see docs for more info.
+  * The HTML report now dimly colors subsequent lines in multi-line
+    statements.
+  * Two new exclusion patterns are part of the defaults: ... is
+    automatically excluded as a line and if TYPE_CHECKING: is
+    excluded as a branch.
+  * A new command-line option: --save-signal=USR1 specifies a signal
+    that coverage.py will listen for. When the signal is sent, the
+    coverage data will be saved.
+  * Big speed improvements for coverage combine: it's now about twice
+    as fast!
+  * fix: source directories were not properly communicated to
+    subprocesses that ran in different directories.
+
+-------------------------------------------------------------------
 Tue Aug 19 10:42:47 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add _multibuild for running tests, it's required to call "coverage"
