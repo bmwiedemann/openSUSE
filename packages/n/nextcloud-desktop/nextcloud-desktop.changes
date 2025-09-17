@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Sep 17 05:24:10 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
+
+- Update to 3.17.2:
+  * fix(FileProviderExt): do not report syncing state when trying 
+    to delete trash items (gh#nextcloud/desktop#8629)
+  * fix(generalsettings): change remote pollinterval 
+    spinBox-minimum from 30 to 5 seconds, to align with configfile 
+    (gh#nextcloud/desktop#8644)
+  * Add CMake option to disable account migration 
+    (gh#nextcloud/desktop#8649)
+  * feat(wizard): allow to set proxy settings when setting 
+    up a new account (gh#nextcloud/desktop#8648)
+  * fix(userstatusselector): avoid setting default emoji when 
+    only setting a message (gh#nextcloud/desktop#8672)
+  * chore(log): use proper log level when the Qt client side is 
+    disconnected (gh#nextcloud/desktop#8723)
+  * fix(activityItemContent): make text color light on 
+    activityItem activeFocus (gh#nextcloud/desktop#8731)
+  * fix(ActivityList): attach vertical scrollbar, having minimum 
+    width and thumbsize, to the right of the traymenu 
+    (gh#nextcloud/desktop#8732)
+  * fix: Added clearance of NextcloudKit account error state 
+    on injection of credentials. (gh#nextcloud/desktop#8730)
+  * feat(gui): inform the user about untrusted certs with HSTS 
+    (gh#nextcloud/desktop#8736)
+  * Bugfix/crash dump log on fatal logs (gh#nextcloud/desktop#8752) 
+
+-------------------------------------------------------------------
 Tue Aug 19 13:59:07 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
 
 - Update to 3.17.1:
