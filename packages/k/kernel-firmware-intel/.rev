@@ -133,4 +133,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * Revert &quot;intel/ish: Add firmware for LENOVO THINKPAD X1 2-in-1 Gen 10&quot;</comment>
     <requestid>1302682</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5d34152a0926294cae8ff35f4b2b8e72</srcmd5>
+    <version>20250912</version>
+    <time>1758123883</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250912 (git commit 46730bc6b999):
+  * intel/ish: Add firmware for LENOVO THINKPAD X1 2-in-1 Gen 10</comment>
+    <requestid>1305077</requestid>
+  </revision>
 </revisionlist>
