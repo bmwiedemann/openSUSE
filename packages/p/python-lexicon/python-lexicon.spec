@@ -1,7 +1,7 @@
 #
 # spec file for package python-lexicon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lexicon
-Version:        2.0.1
+Version:        3.0.0
 Release:        0
 Summary:        Python dict subclass(es) with aliasing and attribute access
 License:        BSD-2-Clause
@@ -26,8 +26,7 @@ URL:            https://github.com/bitprophet/lexicon
 Source:         https://files.pythonhosted.org/packages/source/l/lexicon/lexicon-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM (sort of) Not in the sdist, but on GitHub
 Patch0:         add-pytest-ini.patch
-# PATCH-FIX-OPENSUSE Support pytest >= 8
-Patch1:         support-pytest-8.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

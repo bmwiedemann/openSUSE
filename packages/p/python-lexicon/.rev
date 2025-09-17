@@ -81,4 +81,12 @@
   * Use new &quot;setup_method&quot; to support pytest &gt;= 8.</comment>
     <requestid>1173811</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2d75d2d794fd2992660218cd2d6b172e</srcmd5>
+    <version>3.0.0</version>
+    <time>1758119825</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1305052</requestid>
+  </revision>
 </revisionlist>
