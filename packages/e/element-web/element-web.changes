@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Sep 16 14:35:50 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.112
+  Fix https://github.com/element-hq/element-web/security/advisories/GHSA-m6c8-98f4-75rr
+      CVE-2025-59161
+
+-------------------------------------------------------------------
+Wed Sep 10 12:25:35 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.11.111
+  ## ✨ Features
+
+  * Do not hide media from your own user by default (https://github.com/element-hq/element-web/pull/29797). Contributed by @Half-Shot.
+  * Remember whether sidebar is shown for calls when switching rooms (https://github.com/element-hq/element-web/pull/30262). Contributed by @bojidar-bg.
+  * Open the proper integration settings on integrations disabled error (https://github.com/element-hq/element-web/pull/30538). Contributed by @Half-Shot.
+  * Show a "progress" dialog while invites are being sent (https://github.com/element-hq/element-web/pull/30561). Contributed by @richvdh.
+  * Move the room list to the new ListView(backed by react-virtuoso)  (https://github.com/element-hq/element-web/pull/30515). Contributed by @langleyd.
+
+  ## 🐛 Bug Fixes
+
+  * https://github.com/element-hq/element-web/pull/30705). Contributed by @RiotRobot.
+  * Fix room joining over federation not specifying vias or using aliases (https://github.com/element-hq/element-web/pull/30641). Contributed by @t3chguy.
+  * Fix stable-suffixed MSC4133 support (https://github.com/element-hq/element-web/pull/30649). Contributed by @dbkr.
+  * Fix i18n of message when a setting is disabled (https://github.com/element-hq/element-web/pull/30646). Contributed by @dbkr.
+  * ListView should not handle the arrow keys if there is a modifier applied (https://github.com/element-hq/element-web/pull/30633). Contributed by @langleyd.
+  * Make BaseDialog's div keyboard focusable and fix test. (https://github.com/element-hq/element-web/pull/30631). Contributed by @langleyd.
+  * Fix: Allow triple-click text selection to flow around pills (https://github.com/element-hq/element-web/pull/30349). Contributed by @AlirezaMrtz.
+  * Watch for a 'join' action to know when the call is connected (https://github.com/element-hq/element-web/pull/29492). Contributed by @robintown.
+  * Fix: add missing tooltip and aria-label to lock icon next to composer (https://github.com/element-hq/element-web/pull/30623). Contributed by @florianduros.
+  * Don't render context menu when scrolling (https://github.com/element-hq/element-web/pull/30613). Contributed by @langleyd.
+
+-------------------------------------------------------------------
 Mon Sep  1 08:49:56 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.110
