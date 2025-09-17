@@ -156,4 +156,22 @@
     <comment></comment>
     <requestid>1296377</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9bf3152bb1a78a8e995365e8593d8d4a</srcmd5>
+    <version>0.24.0</version>
+    <time>1758119834</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.24.0
+  * Support for Python 3.8 has been dropped
+  * Bundled zstd library upgraded from 1.5.6 to 1.5.7.
+  * We now use and require cffi 1.17.0 or newer.
+  * We now collections.abs.Buffer on Python 3.12+ instead of typing.ByteString,
+    as typing.ByteString was deprecated and later removed.
+  * get_frame_parameters() now accepts an optional format argument defining
+    the zstandard frame type.
+  * Initial Python 3.14 support.
+- Drop merged fix-zstd-1.5.7.patch
+</comment>
+    <requestid>1305093</requestid>
+  </revision>
 </revisionlist>

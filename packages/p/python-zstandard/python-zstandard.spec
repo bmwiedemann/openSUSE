@@ -1,7 +1,7 @@
 #
 # spec file for package python-zstandard
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zstandard
-Version:        0.23.0
+Version:        0.24.0
 Release:        0
 Summary:        Zstandard bindings for Python
 License:        BSD-3-Clause
@@ -26,7 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/indygreg/python-zstandard
 Source:         https://files.pythonhosted.org/packages/source/z/zstandard/zstandard-%{version}.tar.gz
 Patch0:         feature-detection.patch
-Patch1:         fix-zstd-1.5.7.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -35,9 +34,9 @@ BuildRequires:  fdupes
 BuildRequires:  libzstd-devel = 1.5.7
 BuildRequires:  python-rpm-macros
 Requires:       libzstd1 = 1.5.7
-Requires:       python-cffi >= 1.11
+Requires:       python-cffi >= 1.17
 # SECTION test requirements
-BuildRequires:  %{python_module cffi >= 1.11}
+BuildRequires:  %{python_module cffi >= 1.17}
 BuildRequires:  %{python_module exceptiongroup}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest-xdist}
