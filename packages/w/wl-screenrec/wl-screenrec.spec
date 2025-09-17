@@ -1,7 +1,7 @@
 #
 # spec file for package wl-screenrec
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wl-screenrec
-Version:        0.1.7
+Version:        0.2.0
 License:        Apache-2.0
 Release:        0
 Summary:        High performance hardware accelerated wlroots screen recorder
@@ -25,6 +25,7 @@ Group:          Productivity/Graphics/Other
 URL:            https://github.com/russelltg/wl-screenrec
 Source0:        https://github.com/russelltg/wl-screenrec/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+BuildRequires:  pkgconfig
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
@@ -32,6 +33,7 @@ BuildRequires:  ffmpeg-devel
 BuildRequires:  libdrm-devel
 BuildRequires:  wayland-devel
 BuildRequires:  wayland-protocols-devel
+BuildRequires:  pkgconfig(vulkan)
 
 %package        fish-completion
 Summary:        Fish Completion for %{name}

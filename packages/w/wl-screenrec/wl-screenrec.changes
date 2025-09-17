@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 16 21:35:43 UTC 2025 - llyyr <llyyr@yukari.in>
+
+- Update to version 0.2.0:
+  * Default to ext-image-copy-capture instead of wlr-screencopy
+  * Support for ffmpeg 8
+  * Add options:
+    * --no-cursor Don't capture cursor
+    * --capture-source Which protocol to use to capture frames
+    * --max-fps to exclude frames from the recording
+  * Exit immediately on signals
+  * Support COSMIC compositor
+
+-------------------------------------------------------------------
 Sun Apr  6 05:19:17 UTC 2025 - llyyr <llyyr@yukari.in>
 
 - Update to version 0.1.7:

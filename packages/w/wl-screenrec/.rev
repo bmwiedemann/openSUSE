@@ -59,4 +59,21 @@
 </comment>
     <requestid>1267355</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1291ab0d0db9828913132f7a0ef62dcf</srcmd5>
+    <version>0.2.0</version>
+    <time>1758120241</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.2.0:
+  * Default to ext-image-copy-capture instead of wlr-screencopy
+  * Support for ffmpeg 8
+  * Add options:
+    * --no-cursor Don't capture cursor
+    * --capture-source Which protocol to use to capture frames
+    * --max-fps to exclude frames from the recording
+  * Exit immediately on signals
+  * Support COSMIC compositor
+</comment>
+    <requestid>1305270</requestid>
+  </revision>
 </revisionlist>
