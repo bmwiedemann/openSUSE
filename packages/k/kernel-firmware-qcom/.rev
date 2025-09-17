@@ -212,4 +212,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: add ADSP firmware for qcs615 platform</comment>
     <requestid>1302686</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fe17d9d16fee368f9c8df0e16bb28fb9</srcmd5>
+    <version>20250905</version>
+    <time>1758123891</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250905 (git commit 32563e28ea68):
+  * qcom: add CDSP firmware for qcs615 platform</comment>
+    <requestid>1305080</requestid>
+  </revision>
 </revisionlist>

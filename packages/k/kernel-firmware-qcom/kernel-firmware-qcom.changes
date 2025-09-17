@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep  7 07:49:33 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250905 (git commit 32563e28ea68):
+  * qcom: add CDSP firmware for qcs615 platform
+
+-------------------------------------------------------------------
 Wed Sep  3 15:23:18 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250903 (git commit c784990ba3d2):
