@@ -1,7 +1,7 @@
 #
 # spec file for package pkcs11-provider
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2023 Luca Boccassi <bluca@debian.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,27 +20,27 @@
 %define _MODULES_DIR %(pkg-config --variable=modulesdir libcrypto)
 
 Name:           pkcs11-provider
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        A PKCS#11 provider for OpenSSL 3.0+
 License:        Apache-2.0
 Group:          Productivity/Security
 URL:            https://github.com/latchset
-Source0:        %{url}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
-Source1:        %{url}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
+Source0:        %{url}/%{name}/releases/download/v%{version}.0/%{name}-%{version}.tar.xz
+Source1:        %{url}/%{name}/releases/download/v%{version}.0/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  meson
+BuildRequires:  openssl-devel >= 3.0.7
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libcrypto) >= 3.0.7
 BuildRequires:  pkgconfig(p11-kit-1)
 # Required for testing
 BuildRequires:  expect
-BuildRequires:  gnutls
 BuildRequires:  opensc
 BuildRequires:  p11-kit-devel
 BuildRequires:  p11-kit-server
 BuildRequires:  pkgconfig(nss)
 %if 0%{?suse_version} >= 1699
+# BuildRequires:  kryoptic
 BuildRequires:  softhsm-devel
 %endif
 
