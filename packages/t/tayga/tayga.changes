@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Aug 10 02:20:15 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- force newer gcc to fix build on 15.x
+
+-------------------------------------------------------------------
+Sun Aug 10 02:17:09 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable 32bit architectures
+
+-------------------------------------------------------------------
+Sun Aug 10 02:15:03 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- drop our own copy of tayga.service and apply our hardening to the
+  upstream unit files
+  - adds harden-services.patch
+
+-------------------------------------------------------------------
+Sun Aug 10 01:58:47 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.9.5
+  Upstream moved to https://github.com/apalrd/tayga
+  https://github.com/apalrd/tayga/releases/tag/0.9.5
+  https://github.com/apalrd/tayga/releases/tag/0.9.4
+- drop patches
+  tayga-obey-cflags.diff
+  tayga-fix-gcc14.patch
+
+-------------------------------------------------------------------
 Sat Nov  2 20:31:20 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch:
