@@ -1,8 +1,413 @@
 -------------------------------------------------------------------
+Fri Aug 29 06:54:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.3.0:
+  OpenCloud Server Changelog
+  * Features
+    - Tenant [#1274]
+  * Enhancement
+    - chore: bump web to v3.3.0 [#1329]
+  * Tests
+    - multiTenancyTests [#1313]
+  * Documentation
+    - Fix posix driver documentation in STORAGE_USERS_DRIVER
+      description [#1305]
+  * Bug Fixes
+    - Improve indexing performance using batches [#1306]
+    - Do not run the timout func if the work func has run [#1302]
+    - Make sure to register prometheus collectors only once [#1295]
+  * Dependencies
+    - [decomposed] bump-version-v3.3.0 [#1332]
+    - [full-ci] Reva bump 2.36.0 [#1328]
+    - Bump reva [#1315]
+  * Reva Changelog
+    - Features
+      - add tenant check for shares [#295]
+    - Bug Fixes
+      - Check storage for writability and xattrs support during
+        startup [#296]
+      - Do not assimilate irregular files [#294]
+      - Only scan dirty directories when recursing [#292]
+    - Enhancement
+      - Filter users by tenant id [#297]
+  * Web Changelog
+    - Features
+      - Add bottom drawer for mobile devices [#985]
+    - Bug Fixes
+      - fix: incoming group share name in sidebar [#1060]
+      - fix: dynamic viewport height on mobile devices [#1058]
+      - fix: crippled search after leaving public link [#1053]
+      - fix extension registry stable order [#1046]
+      - fix: resource deselect when clicking esc in a modal [#1051]
+      - fix: pasting files from local clipboard [#1047]
+      - fix: search preview design [#1008]
+      - fix: sidebar actions panel design [#1005]
+      - fix: show explicit error message, when trying to upload
+        space image but quota is exceeded [#1003]
+    - Enhancement
+      - feat: change bottom drawer to less technical context menu
+        label [#1063]
+      - feat: add drilldown menu for sub menus on mobile devices
+        [#1017]
+      - feat(preview): add webp as supported mimetype [#1062]
+      - feat: preserve empty folders on upload [#1018]
+      - feat: dispatch pathchange event for external integrations
+        [#1033]
+      - feat: only request thumnail if server support is guaranteed
+        [#874]
+      - feat: improve tile sort menu drop and drawer design [#1004]
+      - feat: improve and align drop and drawer design [#997]
+      - feat: make web installable as PWA [#980]
+    - Tests
+      - test: fix unit test warnings [#1067]
+      - enable upload tests for webkit [#1057]
+      - upload image from clipboard test [#1049]
+      - Mobile view tests [#1006]
+      - fix keycloak flaky test [#1021]
+      - fix flaky close viewer after download [#1010]
+      - e2e-test. fix share with multiple user test [#1013]
+      - change browser in the script [#998]
+      - cross browser testing [#954]
+      - [full-ci] add pipeline to send CI notifications to
+        matrix-channel [#960]
+      - clear input for md and odt files [#987]
+      - e2e-tests. clear input before fill name [#982]
+
+-------------------------------------------------------------------
+Fri Aug 29 06:29:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.2.1:
+  * Bug Fixes
+    - Do not try to log metrics when we failed to get the consumer
+      info [#1289]
+    - Add thumbnails to sharedWithMe and sharedByMe requests
+      [#1257]
+
+-------------------------------------------------------------------
+Fri Aug 29 06:16:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.2.0:
+  * Add dark mode and adjust light theme colors
+    - This release introduces a new dark mode for improved
+      accessibility and user experience in low-light environments.
+      Additionally, the light theme color palette has been adjusted
+      to align with the generated Material Design color guidelines,
+      ensuring visual consistency and design compliance across the
+      application.
+  * New action "empty trash"
+    - A new "Empty Trash" option is now available in the context
+      menu of the trash overview. This action allows user to empty
+      the trash of a selected space without navigating into it.
+      This improvement streamlines the cleanup process for users
+      managing multiple spaces.
+  * Add fillstate for deleted files in trash overview page
+    - The view feature "Show empty trash bins" has been added to
+      the trash overview page. This allows users easily filter and
+      focus on trash bins that still contain deleted files. This
+      enhancement provides a cleaner and more targeted trash
+      management experience.
+  * Features
+    - Metrics [#1242]
+    - Add HasTrashedItems property to /me/drives endpoint [#1163]
+  * Enhancement
+    - [full-ci] chore: bump web to v3.2.0 [#1253]
+    - proxy(sign_url_auth): Allow to verify server signed URLs
+      [#1191]
+    - Switch to the raw nats consumer instead of the go-micro
+      events [#1171]
+    - change: adjust default values for the S3 Uploads [#1224]
+    - feat(web): add dark mode and adjust light theme colors
+      [#1188]
+    - change: set better decomposedS3 defaults for multipart upload
+      [#1200]
+    - add missing full username mapper to the full example [#1181]
+  * Bug Fixes
+    - fix ready checks [#1222]
+    - Update config.go [#1183]
+    - Fix wrong build version [#1210]
+    - Update Makefile [#1187]
+    - fix(collaboration): re register app providers in a
+      configurable interval [#1035]
+    - Fix lico idp doesn't load opencloud font anymore [#1153]
+  * Dependencies
+    - [decomposed] bump-version-v3.2.0 [#1258]
+    - [full-ci] Reva bump 2.35.0 [#1255]
+    - build(deps): bump golang.org/x/net from 0.41.0 to 0.42.0
+      [#1232]
+    - build(deps): bump github.com/KimMachineGun/automemlimit from
+      0.7.3 to 0.7.4 [#1226]
+    - build(deps): bump golang.org/x/text from 0.26.0 to 0.27.0
+      [#1227]
+    - build(deps): bump golang.org/x/sync from 0.15.0 to 0.16.0
+      [#1209]
+    - build(deps): bump golang.org/x/term from 0.32.0 to 0.33.0
+      [#1208]
+    - build(deps): bump github.com/olekukonko/tablewriter from
+      1.0.7 to 1.0.8 [#1174]
+    - build(deps): bump github.com/nats-io/nats-server/v2 from
+      2.11.5 to 2.11.6 [#1164]
+    - build(deps): bump github.com/go-playground/validator/v10 from
+      10.26.0 to 10.27.0 [#1165]
+    - build(deps): bump github.com/pkg/xattr from 0.4.11 to 0.4.12
+      [#1156]
+    - build(deps): bump
+      go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
+      from 0.61.0 to 0.62.0 [#1155]
+    - build(deps): bump github.com/open-policy-agent/opa from 1.5.1
+      to 1.6.0 [#1148]
+    - build(deps): bump github.com/oklog/run from 1.1.0 to 1.2.0
+      [#1150]
+
+-------------------------------------------------------------------
+Fri Aug 29 05:19:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.1.0:
+  * Collabora: New “Export As” and “Save As” Options
+    Working in Collabora just got more powerful:
+    - Save As You can now save a copy of the current file directly
+      from within Collabora.
+    - Export As Export your currently edited document into another
+      format (e.g. PDF) — no extra tools needed.
+    These improvements let you convert and copy documents without
+    ever leaving the editor.
+  * Simplified "Open" Context Menu for Files
+    The file context menu has been redesigned for a cleaner and
+    more intuitive experience. A single "Open" entry replaces
+    multiple "Open with..." options. This feature is fully
+    accessible with keyboards.
+  * Extended File Format Support in Text Editor
+    The text editor now supports a wider range of text-based file
+    formats:
+    - Markup & Web: .html, .css, .scss, .sass, .less
+    - Scripts & Code: .c, .cpp, .java, .sh, .bat, .asm, .ts, .tsx,
+      .jsx, .vue
+    - Config & Environment: .yml, .yaml, .toml, .ini, .conf, .env
+    - Structured Data: .csv, .tsv, .xml
+    - Other Text Formats: .log, .rtf, .ics, .dockerfile, .makefile
+  * Features
+    - feat: adjust space template image to match brand color
+      [#1098]
+  * Tests
+    - enable user-settings e2e tests [#1140]
+  * Bug Fixes
+    - Only remove obsolete IDs from the index [#1127]
+    - fix: collabora use metrics instead of imperial metric system
+      [#1086]
+  * Documentation
+    - [full-ci] chore: bump web to v3.1.0 [#1129]
+    - Update the href of CONTRIBUTING to the dev docs [#1077]
+    - fix(docs): WEB_ASSET_PATH was still mentioned in the web
+      readme [#943]
+    - Fix link in CONTRIBUTING.md [#1048]
+  * Enhancement
+    - feat: re-enable Save As and Export in collabora [#1119]
+    - Add a "posixfs consistency" command [#1091]
+    - feat: add accessibility url to theme.json files [#1108]
+    - cleanup: Avoid fetching group membership when not needed
+      [#1036]
+  * Dependencies
+    - [decomposed] bump-version-v3.1.0 [#1142]
+    - build(deps): bump go.etcd.io/bbolt from 1.4.1 to 1.4.2
+      [#1131]
+    - [full-ci] chore:reva bump v.2.34 [#1139]
+    - build(deps): bump
+      go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc
+      from 0.61.0 to 0.62.0 [#1122]
+    - build(deps): bump go.opentelemetry.io/contrib/zpages from
+      0.61.0 to 0.62.0 [#1123]
+    - build(deps): bump
+      go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
+      from 1.36.0 to 1.37.0 [#1111]
+    - build(deps): bump go.opentelemetry.io/otel from 1.36.0 to
+      1.37.0 [#1112]
+    - build(deps): bump github.com/go-chi/chi/v5 from 5.2.1 to
+      5.2.2 [#1075]
+    - build(deps): bump github.com/grpc-ecosystem/grpc-gateway/v2
+      from 2.26.3 to 2.27.0 [#1072]
+    - build(deps): bump github.com/jellydator/ttlcache/v3 from
+      3.3.0 to 3.4.0 [#1071]
+    - build(deps): bump github.com/urfave/cli/v2 from 2.27.6 to
+      2.27.7 [#1061]
+    - build(deps): bump github.com/KimMachineGun/automemlimit from
+      0.7.2 to 0.7.3 [#1062]
+    - Bump reva to pull in the latest fixes [#1063]
+    - build(deps): bump go.etcd.io/bbolt from 1.4.0 to 1.4.1
+      [#1045]
+    - build(deps): bump google.golang.org/grpc from 1.72.2 to
+      1.73.0 [#1034]
+    - build(deps): bump golang.org/x/net from 0.40.0 to 0.41.0
+      [#1033]
+    - build(deps-dev): bump jest from 29.7.0 to 30.0.0 in
+      /services/idp [#1040]
+    - build(deps-dev): bump css-minimizer-webpack-plugin from 7.0.0
+      to 7.0.2 in /services/idp [#1038]
+    - build(deps): bump query-string from 9.1.1 to 9.2.0 in
+      /services/idp [#1031]
+
+-------------------------------------------------------------------
+Thu Aug 28 12:51:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.0:
+  https://github.com/opencloud-eu/opencloud/releases/tag/v3.0.0
+  Listing a Space took too long when it included many users.
+  To improve performance in this scenario, the drive root
+  permissions are no longer expanded automatically (#485).
+  This change modifies the API behavior. In accordance with
+  Semantic Versioning, we have incremented the major version
+  number. No manual migrationsteps are neccesary.
+  * Add Profile Photo
+    Users can now upload a profile photo to personalize their
+    account. The profile image will be displayed in the user
+    interface wherever user avatars are shown such as the top bar
+    and user lists enhancing recognition and adding a more personal
+    touch.
+  * Accessibility Improvement: Required Mark for Text Input Fields
+    The text input component now includes a proper "required" mark
+    for accessibility (a11y). This improves compliance with WCAG
+    2.1 and overall form usability.
+  * Delete Files Directly from Viewer or Editor
+    You can now delete files directly from within an editor or
+    viewer, without having to return to the file list. The delete
+    option is available in the topbar context menu, the right
+    sidebar action panel or the preview controls bar. Thanks to
+    fwinn for proposing this improvement.
+  * Calendar Integration URL Now Visible in Account Settings
+    Users can now easily find their personal CalDAV calendar URL
+    directly in the Web UI.
+    New "Calendar" panel in the account settings (visible only if
+    CalDAV is enabled by the server).
+    Includes:
+    - CalDAV URL (copyable)
+    - Username (copyable)
+    - Password info: use an app token for authentication
+    This makes it easier to connect your OpenCloud calendar to
+    third-party apps like Apple Calendar or Thunderbird.
+  * Croping of Space Images
+    Space managers can now select the visible area of a space image
+    in a 16:9 aspect ratio. When uploading a space image, a crop
+    tool lets you define the exact area shown in the space overview
+    and details. Cropping is also completely controllable via
+    keyboard.
+  * Improved Design of the Account Page
+    - The Account Page has been redesigned to offer a clearer
+      structure and better usability.
+  * Breaking changes
+    - do not automatically expand drive root permissions [#495]
+  * Features
+    - Enhancement: Introduced support for PrivateLink in WebDAV
+      search responses [#983]
+    - Add profile photo [#864]
+    - feat: hide close button in collabora [#828]
+  * Enhancement
+    - graph: Add $filter to only list (and/or count) member
+      permissions [#996]
+    - [full-ci] chore: bump web to v3.0.0 [#1026]
+    - [full-ci] chore: bump web to v3.0.0-alpha.1 [#972]
+    - feat: add shareType to sharees field on activities api [#954]
+    - graph: Add more $select options to ListPermissions endpoint
+      [#916]
+    - feat: add webp format [#869]
+  * Tests
+    - apiTest. count permission in the list permissions endpoint
+      [#1010]
+    - apiTest. select option for root/permissions endpoint [#942]
+    - [full-ci] ApiTest. checking private link in report response
+      [#993]
+    - [full-ci] Change eicar_com.zip virus file and update tests
+      [#992]
+  * Bug Fixes
+    - Fix broken urls in README.md of deployment example [#1023]
+    - Make activitylog service scalable [#941]
+    - Fix purging revisions from decomposeds3 blobstores [#958]
+    - fix(graph-metadata): lazy cs3 metadata storage initialization
+      [#946]
+    - always get the user email for admin user [#898]
+  * Documentation
+    - Updated boxes in readme [#970]
+  * Dependencies
+    - [decomposed] bump-version-v3.0.0 [#1030]
+    - [full-ci] chore:reva bump v.2.33.1 [#1027]
+    - build(deps): bump i18next from 25.1.2 to 25.2.1 in
+      /services/idp [#1024]
+    - build(deps): bump golang.org/x/image from 0.27.0 to 0.28.0
+      [#1012]
+    - build(deps): bump @types/node from 22.15.29 to 22.15.30 in
+      /services/idp [#1008]
+    - build(deps): bump github.com/open-policy-agent/opa from 1.5.0
+      to 1.5.1 [#1000]
+    - build(deps): bump golang.org/x/sync from 0.14.0 to 0.15.0
+      [#1006]
+    - build(deps-dev): bump eslint-plugin-react from 7.37.2 to
+      7.37.5 in /services/idp [#1004]
+    - build(deps-dev): bump postcss-normalize from 13.0.0 to 13.0.1
+      in /services/idp [#1003]
+    - build(deps): bump @testing-library/react from 11.2.7 to
+      12.1.5 in /services/idp [#994]
+    - build(deps): bump github.com/blevesearch/bleve/v2 from 2.5.1
+      to 2.5.2 [#999]
+    - build(deps): bump @fontsource/roboto from 5.1.0 to 5.2.5 in
+      /services/idp [#995]
+    - build(deps): bump google.golang.org/grpc from 1.72.1 to
+      1.72.2 [#991]
+    - build(deps): bump github.com/nats-io/nats.go from 1.42.0 to
+      1.43.0 [#990]
+    - build(deps): bump @types/jest from 29.5.12 to 29.5.14 in
+      /services/idp [#987]
+    - build(deps): bump github.com/leonelquinteros/gotext from
+      1.7.1 to 1.7.2 [#981]
+    - build(deps): bump @types/node from 22.15.19 to 22.15.29 in
+      /services/idp [#980]
+    - build(deps): bump github.com/opencloud-eu/libre-graph-api-go
+      from 1.0.6 to 1.0.7 [#982]
+    - build(deps-dev): bump sass-loader from 16.0.4 to 16.0.5 in
+      /services/idp [#979]
+    - build(deps): bump web-vitals from 4.2.4 to 5.0.2 in
+      /services/idp [#978]
+    - build(deps): bump github.com/open-policy-agent/opa from 1.4.2
+      to 1.5.0 [#977]
+    - build(deps-dev): bump cldr from 7.5.0 to 7.9.0 in
+      /services/idp [#975]
+    - build(deps): bump github.com/olekukonko/tablewriter from
+      1.0.6 to 1.0.7 [#974]
+    - build(deps): bump
+      go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc
+      from 0.60.0 to 0.61.0 [#915]
+    - build(deps): bump go.opentelemetry.io/contrib/zpages from
+      0.60.0 to 0.61.0 [#938]
+    - build(deps): bump @testing-library/user-event from 14.5.2 to
+      14.6.1 in /services/idp [#939]
+    - build(deps): bump i18next-browser-languagedetector from 7.2.1
+      to 8.1.0 in /services/idp [#937]
+    - build(deps): bump
+      go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
+      from 0.60.0 to 0.61.0 [#923]
+    - build(deps): bump github.com/nats-io/nats-server/v2 from
+      2.11.3 to 2.11.4 [#914]
+    - build(deps): bump
+      go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
+      from 1.35.0 to 1.36.0 [#907]
+    - build(deps): bump go.opentelemetry.io/otel/trace from 1.35.0
+      to 1.36.0 [#906]
+    - build(deps): bump github.com/blevesearch/bleve/v2 from 2.5.0
+      to 2.5.1 [#900]
+    - build(deps): bump axios from 1.7.7 to 1.8.2 in /services/idp
+      [#902]
+    - build(deps): bump github.com/opencloud-eu/libre-graph-api-go
+      from 1.0.5 to 1.0.6 [#899]
+    - build(deps): bump @types/node from 20.14.11 to 22.15.19 in
+      /services/idp [#886]
+    - build(deps-dev): bump i18next-conv from 14.1.0 to 15.1.1 in
+      /services/idp [#887]
+    - build(deps): bump golang.org/x/net from 0.39.0 to 0.40.0
+      [#889]
+    - build(deps): bump github.com/olekukonko/tablewriter from
+      0.0.5 to 1.0.6 [#888]
+
+-------------------------------------------------------------------
 Fri Jul  4 13:21:26 UTC 2025 - Klaas Freitag <opensuse@freisturz.de>
 
 - rename executable to opencloud-server to avoid clash with desktop
-  sync client 
+  sync client
 
 -------------------------------------------------------------------
 Sun May 18 12:03:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>

@@ -17,10 +17,10 @@
 
 
 %define executable_name opencloud-server
-%define web_assets_version v2.3.0
+%define web_assets_version v3.3.0
 
 Name:           opencloud-server
-Version:        2.2.0
+Version:        3.3.0
 Release:        0
 Summary:        Secure and private way to store, access, and share your files
 License:        Apache-2.0
@@ -29,10 +29,12 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        https://github.com/opencloud-eu/web/releases/download/%{web_assets_version}/web.tar.gz#/web-%{web_assets_version}.tar.gz
 Source3:        https://github.com/opencloud-eu/web/releases/download/%{web_assets_version}/third-party-licenses.tar.gz#/third-party-licenses-%{web_assets_version}.tar.gz
-Source4:        idp_%{version}.tar.gz
+Source4:        idp-%{version}.tar.gz
 Source11:       %{name}.service
 Source12:       environment-file
 Source21:       system-user-%{name}.conf
+Source31:       Makefile
+Source32:       PACKAGING_README.md
 BuildRequires:  golang(API) >= 1.23
 BuildRequires:  make
 BuildRequires:  pnpm
@@ -77,11 +79,6 @@ cp src/images/icon-lilac.svg assets/identifier/static/icon-lilac.svg
 PNPM_VERSION="$(rpm -q pnpm | awk -F '-' '{print $2}')"
 sed -i "/packageManager/ s/\"pnpm@.*\"/\"pnpm@${PNPM_VERSION}\"/g" package.json
 grep packageManager package.json
-
-# SLES15 / Leap 15.x
-%if 0%{?suse_version} < 1600
-sed -i 's/--openssl-legacy-provider //' package.json
-%endif
 
 # Creating an optimized production build...
 pnpm build

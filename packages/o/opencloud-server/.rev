@@ -15,4 +15,12 @@
     <comment>rename executable to opencloud-server to avoid clash with desktop sync client</comment>
     <requestid>1291887</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>887f3dd40d8455e95a17fd4a5ad6669b</srcmd5>
+    <version>3.3.0</version>
+    <time>1758120260</time>
+    <user>anag_factory</user>
+    <comment>update to 3.3.0</comment>
+    <requestid>1305289</requestid>
+  </revision>
 </revisionlist>
