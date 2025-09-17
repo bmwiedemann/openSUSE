@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 16 12:39:05 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20250913.00
+  * Swap guest-config rule from checking the build VM OS to taking
+    in a variable for target version
+- from version 20250905.00
+  * No public description
+- from version 20250826.00
+  * Merge pull request #119 from bk202:master
+  * Moved tx/rx IRQ logging after assignment
+  * Fix core assignment in set_irq_range
+  * Correct IRQ tx/rx affinity core assignment
+
+-------------------------------------------------------------------
 Mon Aug 11 13:04:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20250807.00

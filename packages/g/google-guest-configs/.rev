@@ -403,4 +403,21 @@
 - Drop ggc-no-dup-metasrv-entry.patch, merged upstream</comment>
     <requestid>1298851</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>87c736327e70abb8339bda44a03dd681</srcmd5>
+    <version>20250913.00</version>
+    <time>1758120239</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250913.00
+  * Swap guest-config rule from checking the build VM OS to taking
+    in a variable for target version
+- from version 20250905.00
+  * No public description
+- from version 20250826.00
+  * Merge pull request #119 from bk202:master
+  * Moved tx/rx IRQ logging after assignment
+  * Fix core assignment in set_irq_range
+  * Correct IRQ tx/rx affinity core assignment (forwarded request 1305176 from glaubitz)</comment>
+    <requestid>1305267</requestid>
+  </revision>
 </revisionlist>
