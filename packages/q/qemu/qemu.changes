@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Sep 12 11:14:16 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to latest release (10.1.0).
+  The full list of changes are available at:
+   https://wiki.qemu.org/ChangeLog/10.1
+    
+  Highlights include:
+  * VFIO: Initial support for accessing/mapping memory for confidential
+    guests when guest_memfd is being utilized, allowing passthrough support
+    for virtual machines running under SEV-SNP/TDX
+  * Live migration: support for utilizing multifd to accelerate post-copy
+    migration, optimizations for pre-copy migration, and RDMA migration
+    support for ipv6
+  * QEMU guest agent: support for querying load of virtual machines
+    running Windows via new 'guest-get-load' command
+  * ARM: support for CPU features FEAT_SME2, FEAT_SME2p1, FEAT_SME_B16B16,
+    FEAT_SME_F16F16, FEAT_SVE_B16B16, and FEAT_SVE2p1
+  * ARM: support for new board/machine models 'max78000fthr',
+    'ast2700fc', 'catalina-bmc', 'gb200-bmc', and 'ast2700a0-evb'
+  * ARM: 'virt' board now supports nested virtualization under KVM, CXL,
+    and ACPI-based PCI hotplug
+  * LoongArch: support for in-kernel irqchip
+  * Microblaze: support for selecting the endianess of 'petalogix_s3adsp1800'
+    machine type
+  * RISC-V: ISA/extension support for atomic instruction fetch (Ziccif),
+    'Svrsw60t59b', and numerous other improvements/additions/fixes
+  * RISC-V: support for Kunminghu CPU and platform
+  * x86: KVM support for running confidential guests via Intel TDX
+  * x86: Support for initializing confidential TDX or SEV-SNP virtual
+    machines using the IGVM file format
+  * and lots more...
+    
+  Have a look at the list of deprecated features too, especially
+  if you're still interested in using 32bits systems as hosts:
+  * https://qemu-project.gitlab.io/qemu/about/deprecated.html
+
+- Add patches (from the mailing list):
+  python: avoid deprecation warning with get_event_loop
+  python: Replace asyncio.get_event_loop for Python 3.14
+
+-------------------------------------------------------------------
 Tue Aug 12 15:21:42 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
 
 - Fix build issues due to Python version:

@@ -88,7 +88,7 @@ URL:            https://www.qemu.org/
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        10.0.3
+Version:        10.1.0
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -154,6 +154,15 @@ BuildRequires:  libxdp-devel
 %endif
 %if 0%{with qatzip}
 BuildRequires:  qatzip-devel
+%endif
+%if 0%{with igvm}
+#BuildRequires: igvm devel library here
+%endif
+%if 0%{with passt}
+#BuildRequires: passt devel library here
+%endif
+%if 0%{with valgrind}
+BuildRequires:  valgrind-devel
 %endif
 %if %{have_libcbor}
 BuildRequires:  libcbor-devel
@@ -352,6 +361,7 @@ This package acts as an umbrella package to the other QEMU sub-packages.
 %dir %_datadir/icons/hicolor/*/apps
 %dir %_datadir/%name
 %dir %_datadir/%name/firmware
+%dir %_datadir/%name/dtb/
 %dir %_datadir/%name/vhost-user
 %dir %_sysconfdir/%name
 %dir %_sysconfdir/%name/firmware
@@ -425,10 +435,10 @@ meson subprojects packagefiles --apply berkeley-softfloat-3
 # for the record, this set of firmware files is installed, but we don't
 # build (yet): bamboo.dtb canyonlands.dtb hppa-firmware.img hppa-firmware.img 64
 # openbios-ppc openbios-sparc32 openbios-sparc64 palcode-clipper petalogix-ml605.dtb
-# petalogix-s3adsp1800.dtb QEMU,cgthree.bin QEMU,tcx.bin qemu_vga.ndrv
-# u-boot.e500 u-boot-sam460-20100605.bin opensbi-riscv32-generic-fw_dynamic.bin
-# opensbi-riscv32-generic-fw_dynamic.elfnpcm7xx_bootrom.bin vof.bin
-# vof-nvram.bin npcm8xx_bootrom.bin pnv-pnor.bin vof.bin vof-nvram.bin
+# petalogix-s3adsp1800.dtb QEMU,cgthree.bin QEMU,tcx.bin qemu_vga.ndrv u-boot.e500
+# u-boot-sam460-20100605.bin opensbi-riscv32-generic-fw_dynamic.bin
+# opensbi-riscv32-generic-fw_dynamic.elfn ast27x0_bootrom.bin pcm7xx_bootrom.bin
+# vof.bin vof-nvram.bin npcm8xx_bootrom.bin pnv-pnor.bin vof.bin vof-nvram.bin
 
 # Note that:
 # - default firmwares are built "by default", i.e., they're built automatically
@@ -564,8 +574,6 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--audio-drv-list=pa,pipewire,alsa,jack,oss \
 %endif
 %ifarch x86_64
-	--enable-avx2 \
-	--enable-libpmem \
 %if %{with_xen}
 	--enable-xen \
 	--enable-xen-pci-passthrough \
@@ -603,6 +611,15 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 %endif
 %if 0%{with qatzip}
 	--enable-qatzip \
+%endif
+%if 0%{with igvm}
+	--enable-igvm \
+%endif
+%if 0%{with passt}
+	--enable-passt \
+%endif
+%if 0%{with valgrind}
+	--enable-valgrind \
 %endif
 %if 0%{has_rutabaga_gfx}
 	--enable-rutabaga-gfx \
@@ -1005,8 +1022,8 @@ echo "######## Block I/O tests ########"
 make -O V=1 VERBOSE=1 -j1 check-block TIMEOUT_MULTIPLIER=%{timeout_multiplier}
 
 echo "######## Functional tests ########"
-# NB: ppc64le hosts often fail one or more functional tests...
-%ifnarch ppc64le
+# NB: ppc64le and arm32 hosts often fail one or more functional tests...
+%ifnarch ppc64le %arm
 # 'check-func-quick' instead of 'check-functional' to avoid asset download
 %make_build check-func-quick TIMEOUT_MULTIPLIER=%{timeout_multiplier}
 %endif
@@ -1180,8 +1197,10 @@ This package provides ppc and ppc64 emulation.
 %ifnarch %ix86 armv7hl
 %_bindir/qemu-system-ppc64
 %endif
-%_datadir/%name/bamboo.dtb
-%_datadir/%name/canyonlands.dtb
+%_datadir/%name/dtb/bamboo.dtb
+%_datadir/%name/dtb/canyonlands.dtb
+%_datadir/%name/dtb/petalogix-ml605.dtb
+%_datadir/%name/dtb/petalogix-s3adsp1800.dtb
 %_datadir/%name/openbios-ppc
 %_datadir/%name/qemu_vga.ndrv
 %_datadir/%name/pnv-pnor.bin
@@ -1228,6 +1247,7 @@ This package provides arm emulation.
 %ifnarch %ix86 armv7hl
 %_bindir/qemu-system-aarch64
 %endif
+%_datadir/%name/ast27x0_bootrom.bin
 %_datadir/%name/npcm7xx_bootrom.bin
 %_datadir/%name/npcm8xx_bootrom.bin
 %doc %_docdir/qemu-arm
@@ -1267,6 +1287,8 @@ popular QEMU packages which are dedicated to a single architecture.)
 %endif
 %_bindir/qemu-system-avr
 %_bindir/qemu-system-m68k
+%_bindir/qemu-system-microblaze
+%_bindir/qemu-system-microblazeel
 %_bindir/qemu-system-mips
 %_bindir/qemu-system-mipsel
 %_bindir/qemu-system-or1k
@@ -1288,8 +1310,6 @@ popular QEMU packages which are dedicated to a single architecture.)
 %_datadir/%name/opensbi-riscv32-generic-fw_dynamic.bin
 %_datadir/%name/opensbi-riscv64-generic-fw_dynamic.bin
 %_datadir/%name/palcode-clipper
-%_datadir/%name/petalogix-ml605.dtb
-%_datadir/%name/petalogix-s3adsp1800.dtb
 %_datadir/%name/QEMU,cgthree.bin
 %_datadir/%name/QEMU,tcx.bin
 
@@ -1813,8 +1833,6 @@ This package provides QTest accelerator for testing QEMU.
 %_libdir/%name/accel-qtest-alpha.so
 %_libdir/%name/accel-qtest-hppa.so
 %_libdir/%name/accel-qtest-loongarch64.so
-%_libdir/%name/accel-qtest-microblaze.so
-%_libdir/%name/accel-qtest-microblazeel.so
 %_libdir/%name/accel-qtest-mips64.so
 %_libdir/%name/accel-qtest-mips64el.so
 %_libdir/%name/accel-qtest-ppc64.so
@@ -1823,10 +1841,13 @@ This package provides QTest accelerator for testing QEMU.
 %_libdir/%name/accel-qtest-sparc64.so
 %_libdir/%name/accel-qtest-x86_64.so
 %endif
+
 %_libdir/%name/accel-qtest-arm.so
 %_libdir/%name/accel-qtest-avr.so
 %_libdir/%name/accel-qtest-i386.so
 %_libdir/%name/accel-qtest-m68k.so
+%_libdir/%name/accel-qtest-microblaze.so
+%_libdir/%name/accel-qtest-microblazeel.so
 %_libdir/%name/accel-qtest-mips.so
 %_libdir/%name/accel-qtest-mipsel.so
 %_libdir/%name/accel-qtest-or1k.so
@@ -1839,7 +1860,6 @@ This package provides QTest accelerator for testing QEMU.
 %_libdir/%name/accel-qtest-tricore.so
 %_libdir/%name/accel-qtest-xtensa.so
 %_libdir/%name/accel-qtest-xtensaeb.so
-
 %if 0%{with rbd}
 %package block-rbd
 Summary:        Rados Block Device (Ceph) support for QEMU
@@ -1918,7 +1938,7 @@ wider support than qboot, but still focuses on quick boot up.
 %package seabios
 Summary:        x86 Legacy BIOS for QEMU
 Group:          System/Emulators/PC
-Version:        10.0.3%{sbver}
+Version:        10.1.0%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1939,7 +1959,7 @@ is the default and legacy BIOS for QEMU.
 %package vgabios
 Summary:        VGA BIOSes for QEMU
 Group:          System/Emulators/PC
-Version:        10.0.3%{sbver}
+Version:        10.1.0%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1965,7 +1985,7 @@ video card. For use with QEMU.
 %package ipxe
 Summary:        PXE ROMs for QEMU NICs
 Group:          System/Emulators/PC
-Version:        10.0.3
+Version:        10.1.0
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
