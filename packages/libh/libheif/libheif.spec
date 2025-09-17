@@ -61,7 +61,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(aom)
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavcodec) >= 61
 BuildRequires:  pkgconfig(libbrotlienc)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(openh264)
