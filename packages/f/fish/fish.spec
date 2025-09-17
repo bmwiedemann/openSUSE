@@ -1,7 +1,7 @@
 #
 # spec file for package fish
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fish
-Version:        4.0.1
+Version:        4.0.6
 Release:        0
 Summary:        The "friendly interactive shell"
 # see bundled doc_src/license.rst
@@ -25,7 +25,6 @@ License:        BSD-3-Clause AND GPL-2.0-only AND ISC AND LGPL-2.0-or-later AND 
 Group:          System/Shells
 URL:            https://fishshell.com/
 Source:         https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.xz
-Source1:        https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.xz.asc
 Source2:        vendor.tar.zst
 Source100:      fish.keyring
 BuildRequires:  cargo

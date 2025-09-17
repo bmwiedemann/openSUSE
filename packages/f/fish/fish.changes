@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Mon Sep 15 20:52:24 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 4.0.6
+  * fish now properly inherits $PATH under Windows WSL2 (#11354).
+  * Remote filesystems are detected properly again on non-Linux systems.
+  * the :doc:`printf <cmds/printf>` builtin no longer
+    miscalculates width of multi-byte characters (#11412).
+  * For many years, fish has been "relocatable" -- it was
+    possible to move the entire CMAKE_INSTALL_PREFIX and fish
+    would use paths relative to its binary. Only gettext locale
+    paths were still determined purely at compile time, which has been fixed.
+  * the :doc:`commandline <cmds/commandline>` builtin failed to
+    print the commandline set by a commandline -C invocation,
+    which broke some completion scripts. This has been corrected (#11423).
+  * To work around terminals that fail to parse Operating System
+    Command (OSC) sequences, a temporary feature flag has been
+    added. It allows you to disable prompt marking (OSC 133) by
+    running (once) set -Ua fish_features no-mark-prompt and restarting fish (#11749).
+  * The routines to save history and universal variables have
+    seen some robustness improvements.
+  * builtin :doc:`status current-command <cmds/status>` no longer
+    prints a trailing blank line.
+  * A crash displaying multi-line quoted command substitutions
+    has been fixed (#11444).
+  * Commands like set fish_complete_path ... accidentally
+    disabled completion autoloading, which has been corrected.
+  * nmcli completions have been fixed to query network
+    information dynamically instead of only when completing the
+    first time.
+  * Git completions no longer print an error when no git-foo
+    executable is in :envvar:`PATH`.
+  * Custom completions like complete foo -l long -xa ... that use
+    the output of commandline -t. on a command-line like foo --
+    long= have been invalidated by a change in 4.0; the
+    completion scripts have been adjusted accordingly (#11508).
+  * Some completions were misinterpreted, which caused garbage to
+    be displayed in the completion list. This has been fixed.
+  * fish no longer interprets invalid control sequences from the
+    terminal as if they were alt-[ or alt-o key strokes.
+  * :doc:`bind <cmds/bind>` has been taught about the printscreen
+    and menu keys.
+  * alt-delete now deletes the word right of the cursor
+  * ctrl-alt-h erases the last word again (#11548)
+  * alt-left alt-right were misinterpreted because they send
+    unexpected sequences on some terminals; a workaround has been added. (#11479).
+  * Key bindings like bind shift-A are no longer accepted; use bind
+    shift-a or bind A.
+  * Key bindings like bind shift-a take precedence over bind A
+    when the key event included the shift modifier.
+  * Bindings using shift with non-ASCII letters (such as ctrl-
+    shift-ä) are now supported.
+  * Bindings with modifiers such as bind ctrl-w work again on non-
+    Latin keyboard layouts such as a Russian one. This is
+    implemented by allowing key events such as ctrl-ц to match
+    bindings of the corresponding Latin key, using the kitty
+    keyboard protocol's base layout key (#11520).
+  * Vi mode: The cursor position after pasting via p has been corrected.
+  * Vi mode: Trying to replace the last character via r no longer
+    replaces the last-but-one character (#11484),
+- includes 4.0.2
+  * Completions are quoted, rather than backslash-escaped, only
+    if the completion is unambiguous. Continuing to edit the
+    token is therefore easier (#11271). This changes the
+    behavior introduced in 4.0.0 where all completions were quoted.
+  * The warning when the terminfo database can't be found has
+    been downgraded to a log message. fish will act as if the
+    terminal behaves like xterm-256color, which is correct for
+    the vast majority of cases (#11277, #11290).
+  * Key combinations using the super (Windows/command) key can
+    now (actually) be bound using the super- prefix (#11217).
+    This was listed in the release notes for 4.0.1 but did
+    not work correctly.
+  * :doc:`function <cmds/function>` is stricter about argument
+    parsing, rather than allowing additional parameters to be
+    silently ignored (#11295).
+  * Using parentheses in the :doc:`test <cmds/test>` builtin
+    works correctly, following a regression in 4.0.0 where they
+    were not recognized (#11387).
+  * delete in Vi mode when Num Lock is active will work correctly
+    (#11303).
+  * Abbreviations cannot alter the command-line contents,
+    preventing a crash (#11324).
+  * Improvements to various completions, including new
+    completions for wl-randr (#11301), performance
+    improvements for cargo completions by avoiding network
+    requests (#11347), and other improvements for btrfs (#11320),
+    cryptsetup (#11315), git (#11319, #11322, #11323), (#11046),
+    and systemd-analyze (#11314).
+  * The Mercurial (hg) prompt can handle working directories that
+    contain an embedded newline, rather than producing errors (#11348).
+  * A number of crashes have been fixed. Triggers include prompts
+    containing backspace characters (#11280), history
+    pager search (#11355), invalid UTF-8 in :doc:`read <
+    cmds/read>` (#11383), and the kill-selection binding
+    (#11367)
+  * A race condition in the test suite has been fixed (#11254),
+    and a test for fish versioning relaxed to support
+    downstream distributors' modifications (#11173).
+  * Small improvements to the documentation (#11264, #11329, #11361)
+- checksum removed upstream
+
+-------------------------------------------------------------------
 Thu Apr 17 14:11:25 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - update to 4.0.1
@@ -38,7 +140,7 @@ Thu Apr 17 14:11:25 UTC 2025 - Robert Frohl <rfrohl@suse.com>
   * The output of certain error messages no longer prints newlines to standard
     output (#11248).
   * A number of crashes have been fixed, including file names longer than 255
-    bytes (#11221), using fish on a btrfs filesystem (#11219), history files 
+    bytes (#11221), using fish on a btrfs filesystem (#11219), history files
     that do not have the expected format (#11236), and pasting into an empty
     command line (#11256).
 - Remove fish-3.7.1-drop-pcre-tests.patch, no problem for 4.0.x
