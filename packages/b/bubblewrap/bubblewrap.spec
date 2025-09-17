@@ -1,7 +1,7 @@
 #
 # spec file for package bubblewrap
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,6 +29,7 @@ Source1:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.xz.a
 # https://www.pseudorandom.co.uk/2003/contact/
 # 0x4DE8FF2A63C7CC90, fingerprint: DA98 F25C 0871 C49A 59EA FF2C 4DE8 FF2A 63C7 CC90
 Source2:        %{name}.keyring
+Source3:        nobwrap.helper
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc
 BuildRequires:  git
@@ -54,6 +55,7 @@ This package provides zsh tab-completion for bubblewrap.
 
 %prep
 %autosetup -p1 -n %{name}-%{version}
+cp %SOURCE3 .
 sed -i '1d' completions/bash/bwrap
 %if 0%{?suse_version} < 1500
 sed -i '1s,%{_bindir}/env bash,/bin/bash,' demos/bubblewrap-shell.sh
@@ -74,6 +76,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files
 %license COPYING
 %doc README.md demos
+%doc nobwrap.helper
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions
 %{_datadir}/bash-completion/completions/bwrap

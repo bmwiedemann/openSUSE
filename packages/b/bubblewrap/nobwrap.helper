@@ -1,0 +1,35 @@
+#!/bin/sh
+# Fake bubblewrap for OBS tests: remove sandbox flags and run the real program
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        # zero-argument flags
+        --unshare-*|--die-with-parent|--clearenv)
+            shift
+            ;;
+        # one-argument flags
+        --chdir|--dev|--seccomp)
+            shift 2
+            ;;
+        # two-argument flags
+        --ro-bind|--ro-bind-try|--symlink)
+            shift 3
+            ;;
+        # one-argument flags that act like “two elements” in bwrap
+        --tmpfs)
+            shift 2
+            ;;
+        # two-argument flags
+        --setenv)
+            shift 3
+            ;;
+        # anything else is the real program → exec
+        *)
+            exec "$@"
+            ;;
+    esac
+done
+
+echo "bwrap-wrapper: no command to exec" >&2
+exit 1
+
