@@ -1,7 +1,7 @@
 #
 # spec file for package fabtests
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define git_ver .0.2182f99e9
+%define git_ver .0.ea52cb54c
 
 Name:           fabtests
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Test suite for libfabric API
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -41,6 +41,9 @@ Fabtests provides a set of examples that uses libfabric, a fabric software libra
 %autosetup -p0 -n  libfabric-%{version}%{git_ver}
 
 %build
+%if 0%{?gcc_version} >= 8
+export CFLAGS="$CFLAGS --std=gnu17"
+%endif
 cd fabtests
 ./autogen.sh
 %configure %{?_with_libfabric}

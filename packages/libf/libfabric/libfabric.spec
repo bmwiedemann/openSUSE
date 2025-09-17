@@ -1,7 +1,7 @@
 #
 # spec file for package libfabric
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,20 @@
 
 
 #
-%define git_ver .0.2182f99e9
+%define git_ver .0.ea52cb54c
 
 %ifarch aarch64 %power64 x86_64 s390x riscv64
-%if 0%{?suse_version} > 1530
+  %if 0%{?suse_version} > 1530
 %define with_ucx 1
+  %endif
 %endif
+
+%ifarch x86_64 aarch64
 %define with_efa 1
 %endif
 
 Name:           libfabric
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        User-space RDMA Fabric Interfaces
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -35,6 +38,7 @@ Group:          Development/Libraries/C and C++
 Source:         %{name}-%{version}%{git_ver}.tar.bz2
 Source1:        baselibs.conf
 Patch0:         libfabric-libtool.patch
+Patch1:         prov-opx-fix-compilation-error.patch
 URL:            http://www.github.com/ofiwg/libfabric
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -82,7 +86,11 @@ services, such as RDMA. This package contains the development files.
 %autosetup -p0 -n  %{name}-%{version}%{git_ver}
 
 %build
-export CFLAGS=-Wno-incompatible-pointer-types
+export CFLAGS="-Wno-incompatible-pointer-types"
+%if 0%{?gcc_version} >= 8
+export CFLAGS="$CFLAGS --std=gnu17"
+%endif
+
 rm -f config/libtool.m4
 autoreconf -fi
 # defaults: with-dlopen and without-valgrind can be over-rode:
