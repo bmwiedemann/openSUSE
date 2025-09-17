@@ -254,4 +254,17 @@
     <comment></comment>
     <requestid>1254336</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8bb188c1d64f31f249edfee5111a7a3e</srcmd5>
+    <version>3.19.1</version>
+    <time>1758120151</time>
+    <user>anag_factory</user>
+    <comment>- Add missing BuildRequires on pytest-timeout.
+
+- update to 3.19.1:
+  * add 3.14t (free threading) to matrix
+- update to 3.19.0:
+  * Add support for 3.14</comment>
+    <requestid>1305274</requestid>
+  </revision>
 </revisionlist>
