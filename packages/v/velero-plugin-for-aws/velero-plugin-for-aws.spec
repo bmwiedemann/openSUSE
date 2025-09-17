@@ -1,7 +1,7 @@
 #
 # spec file for package velero-plugin-for-aws
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ URL:            https://velero.io
 Source0:        https://github.com/vmware-tanzu/velero-plugin-for-aws/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.14
+BuildRequires:  golang(API) >= 1.14
 
 %description
 Plugins to support Velero on Amazon Web Service (AWS)
@@ -38,7 +38,6 @@ Plugins to support Velero on Amazon Web Service (AWS)
 
 %build
 %goprep %{goipath}
-export CGO_ENABLED=0
 %gobuild -mod vendor -installsuffix "static" %{name}
 
 %install

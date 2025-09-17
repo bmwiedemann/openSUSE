@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 20 12:42:35 UTC 2025 - Michael Matz <matz@suse.com>
+
+- Use current distro go default version.  Don't force CGO to
+  off (doesn't work on some archs), use whatever go does by default.
+
+-------------------------------------------------------------------
 Wed Feb 16 07:57:37 UTC 2022 - jenting.hsiao@suse.com
 
 - Update to version 1.4.0:
