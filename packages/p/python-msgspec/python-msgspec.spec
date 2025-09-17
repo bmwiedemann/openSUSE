@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-msgspec
 Version:        0.18.6
 Release:        0

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 17 13:09:18 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Oct 28 22:29:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add python313.patch: support python 3.13

@@ -81,4 +81,13 @@
     <comment>- add python313.patch: support python 3.13</comment>
     <requestid>1218885</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>258bfcf99f2d05e97c1b2b575450e6ab</srcmd5>
+    <version>0.18.6</version>
+    <time>1758121611</time>
+    <user>anag_factory</user>
+    <comment>- Add %{?sle15_python_module_pythons}
+</comment>
+    <requestid>1305403</requestid>
+  </revision>
 </revisionlist>
