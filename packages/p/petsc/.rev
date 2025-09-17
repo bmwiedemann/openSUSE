@@ -425,4 +425,15 @@
     <comment></comment>
     <requestid>1278500</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>5c0a83feadfdcd5c422c397ca7b5ef41</srcmd5>
+    <version>3.23.0</version>
+    <time>1758120236</time>
+    <user>anag_factory</user>
+    <comment>- Drop ptscotch-parmetis-*-devel BuildRequires as the devel files
+  from parmetis are now included as part of ptscotch-*-devel
+  directly.
+</comment>
+    <requestid>1305251</requestid>
+  </revision>
 </revisionlist>

@@ -103,7 +103,6 @@ BuildRequires:  %{mpi_flavor}-devel
 BuildRequires:  %{mpi_flavor}-macros-devel
 BuildRequires:  blacs-%{mpi_flavor}-devel
 BuildRequires:  ptscotch-%{mpi_flavor}-devel
-BuildRequires:  ptscotch-parmetis-%{mpi_flavor}-devel
 BuildRequires:  scalapack-%{mpi_flavor}-devel
  %if %{with pastix}
 BuildRequires:  pastix-%{mpi_flavor}-devel
@@ -144,7 +143,6 @@ Requires:       metis-devel
 %else
 Requires:       blacs-%{mpi_flavor}-devel
 Requires:       ptscotch-%{mpi_flavor}-devel
-Requires:       ptscotch-parmetis-%{mpi_flavor}-devel
 Requires:       scalapack-%{mpi_flavor}-devel
 %endif
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 13 07:14:00 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop ptscotch-parmetis-*-devel BuildRequires as the devel files
+  from parmetis are now included as part of ptscotch-*-devel
+  directly.
+
+-------------------------------------------------------------------
 Mon May 19 09:04:39 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Use COPTFLAGS, FOPTFLAGS, and CXXOPTFLAGS to pass rpm optflags
