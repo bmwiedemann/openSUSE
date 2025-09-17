@@ -229,4 +229,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * cirrus: cs35l56: Add firmware for Cirrus Amps for some Lenovo laptops</comment>
     <requestid>1300899</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6fc9f77aa5d54aa79ef788fd9b317316</srcmd5>
+    <version>20250905</version>
+    <time>1758123893</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250905 (git commit 32563e28ea68):
+  * qcom: move Monaco EVK topology from qcs8275 to qcs8300 subdir
+  * qcom: Add Audio topology for LEMANS-EVK
+  * Revert &quot;cs35l56: Rename firmware for Thinkbook 16P Gen6 (17AA3921) without multiple speakers&quot;
+  * cs35l56: Rename firmware for Thinkbook 16P Gen6 (17AA3921) without multiple speakers</comment>
+    <requestid>1305081</requestid>
+  </revision>
 </revisionlist>
