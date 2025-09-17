@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 17 08:46:14 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.23.1:
+  * Fix compilation for Windows on ARM #205
+
+-------------------------------------------------------------------
 Fri Sep 12 06:40:22 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.23.0:

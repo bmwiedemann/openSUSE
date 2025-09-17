@@ -72,4 +72,13 @@
   * Exposes used_size for mem_outfile #195</comment>
     <requestid>1304215</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cdd4a9144f48ffa8d8dda3ee2ca8264f</srcmd5>
+    <version>0.23.1</version>
+    <time>1758120268</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.23.1:
+  * Fix compilation for Windows on ARM #205</comment>
+    <requestid>1305317</requestid>
+  </revision>
 </revisionlist>
