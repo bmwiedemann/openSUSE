@@ -1,4 +1,120 @@
 -------------------------------------------------------------------
+Wed Sep 17 10:42:04 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2025.9.1
+  * Avoid unconditional pyarrow dependency in dataframe.backends
+    (dask#12075) Tom Augspurger
+  * pandas 3.x compatibility for .groups (dask#12071) Tom
+    Augspurger
+  * Expose details about worker start timeout in the exception
+    message (distributed#9092) Taylor Braun-Jones
+  * pynvml => nvidia-ml-py in CI (distributed#9111) Jacob Tomlinson
+
+-------------------------------------------------------------------
+Sun Sep 14 21:11:38 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2025.9.0:
+  * Remove protocol="ucx" support in favor of distributed-ucxx
+- update to 2025.7.0:
+  * Add config option for ``direct-to-workers`` @jrbourbeau
+  * Ensure ``memray`` profiler runs on all workers @jrbourbeau
+  * Update ``def`` to ``class`` typo in actors docs @pfackeldey
+  * Update persist in tests for async clients @TomAugspurger
+  * Fix ``pyarrow`` ``FileInfo`` import @jrbourbeau
+  * Make module name logic more resilient in
+    ``\_always\_use\_pickle\_for`` @jrbourbeau
+  * Temporarily pin ``pytest`` in CI to avoid coverage error
+    @jrbourbeau
+  * Remove ``s3fs`` from testing CI environment @jrbourbeau
+  * Reuse Comm objects in Scheduler.broadcast @TomAugspurger
+  * Fix
+    ``test\_resubmit\_nondeterministic\_task\_different\_deps``
+- update to 2025.5.0:
+  * Use stable crick for py310 @fjetter
+  * Remove internal dependencies mapping in update\_graph
+  * [Regression] Allow `Client.map` to accept futures as args and
+    kwargs @fjetter
+  * Partially forgotten dependencies @fjetter
+  * Replace ``filesystem-spec`` in CI environment with ``fsspec``
+    @jrbourbeau
+  * Ensure actors set erred state properly in case of worker
+    failure @fjetter
+  * Refactor timeouts in start cluster @fjetter
+  * Fix workers / threads / memory displayed in client repr
+    @jrbourbeau
+  * Pin pip for readthedocs @fjetter
+  * Skip TLS functional tests `test_nanny` and
+    `test_retire_workers` on linux @fjetter
+  * Ensure client submit does not serialize unnecessarily
+    @fjetter
+- update to 2025.4.0:
+  * Improve error when submitting work from a closed client
+  * Return a default value if address resolution fails
+  * Avoid deepcopy when submitting graph @fjetter
+  * Dynamically scale heartbeat and scheduler\_info intervals
+  * Speed up process startup time by avoiding importing packages
+    on version check @fjetter
+  * Reduce size of scheduler\_info @fjetter
+  * Cache WorkerState host property @fjetter
+  * clear ci env cache @fjetter
+  * Remove deprecated PubSub @fjetter
+  * Perform explicit culling step only if LLG is submitted
+  * Do not fully materialize global annotations by type @fjetter
+  * Allow nested `worker_client` calls @gsakkis
+  * Bump CI cache number @fjetter
+  * Scheduler type annotations @fjetter
+  * Reduce dask.order overhead by removing stripped\_dep
+    computation @fjetter
+  * Use Expr instead of HLG @fjetter
+- update to 2025.3.0:
+  * Fix badges in readme @fjetter
+  * Properly forward cancellation reason @fjetter
+  * Bokeh 3.7 compatibility @fjetter
+  * Ensure FileInfo can be serialized @fjetter
+  * Add ipykernel to skipped modules in code sampling @mrocklin
+  * SpecCluster: add option to \*not\* shut down the scheduler
+    when the cluster is closed @nocnokneo
+  * Fix CI by using `client.persist(collection)` instead of
+    `collection.persist()` @hendrikmakait
+  * Add redirect from prefix root to status @icykip
+- update to 2025.2.0:
+  * Remove traceback from sizeof failure warning @jacobtomlinson
+  * Hotfix: Ignore negative occupancy @hendrikmakait
+  * Remove expensive tokenization for key uniqueness check @phofl
+  * Fix CI for changes in from\_map @phofl
+  * Avoid handling stale long-running messages on scheduler
+    @hendrikmakait
+  * Bump `test_ucx::test_stress` timeout @TomAugspurger
+  * Poll in test\_rmm\_metrics test @TomAugspurger
+  * Cache occupancy in `WorkStealing.balance()` @hendrikmakait
+  * Homogeneous balancing by accounting for in-flight requests
+    @hendrikmakait
+  * Consistent estimation of task duration between stealing,
+    adaptive and occupancy calculation @hendrikmakait
+  * Increase default work-stealing interval by 10x @hendrikmakait
+  * Remove Occupancy plot from status dashboard @hendrikmakait
+- update to 2025.1.0:
+  * Fix windows ci to avoid os.getuid @phofl
+  * Use IO task marker in scheduling @jrbourbeau
+  * Skip unwritable test if root @TomAugspurger
+  * Enable `UploadDirectory` plugin to upload to scheduler
+  * Handle SSLError in TCP comm @jacobtomlinson
+  * pynvml compatibility @TomAugspurger
+  * Handle Client(..., security=False) @jacobtomlinson
+  * Removed big-endian sparse tests @TomAugspurger
+  * Set usedforsecurity=False for md5 call in utils.color\_of
+    @relativistic
+  * Remove subgraph callable @fjetter
+  * Remove dependency on dedicated `dask-expr` repo
+  * Skip big-endian floats in `test_serialize_scipy_sparse` if
+    using `scipy>=1.15.0` @hendrikmakait
+  * Run dask with a matching interpreter @cjwatson
+  * Remove unused "type: ignore" comment @cjwatson
+  * Clean up tests after legacy DataFrame removal @phofl
+  * Pin jupyter-events to avoid incompatibility with jupyter-
+    server @phofl
+
+-------------------------------------------------------------------
 Wed Dec  4 10:16:13 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2024.12.0

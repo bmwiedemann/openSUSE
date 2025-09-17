@@ -1,7 +1,7 @@
 #
 # spec file for package python-distributed
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,9 @@
 %if "%{flavor}" != "test-py313"
 %define skip_python313 1
 %endif
+%if "%{flavor}" != "test-py314"
+%define skip_python314 1
+%endif
 %else
 %if "%{pythons}" == "python311" && "%{flavor}" != "test-py311"
 # Hardcoded assumption: SLE15 pythons module has python311
@@ -54,7 +57,7 @@ ExclusiveArch:  donotbuild
 
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2024.12.0
+Version:        2025.9.1
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
