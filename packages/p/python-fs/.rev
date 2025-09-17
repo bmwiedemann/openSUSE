@@ -188,4 +188,12 @@
 - Drop Requires on psutil and pytz, undeclared.</comment>
     <requestid>1304709</requestid>
   </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>0784d45905fd7222c5fbe15e9cf78761</srcmd5>
+    <version>2.4.16</version>
+    <time>1758119841</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1305264</requestid>
+  </revision>
 </revisionlist>

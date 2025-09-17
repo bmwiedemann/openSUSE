@@ -69,7 +69,8 @@ sed -i -e '/install_requires/,/bdist_wheel/ s:~=:>=:g' setup.cfg
 
 %check
 export LANG=en_US.UTF-8
-%pytest -k 'not (TestFTPFS and test_create or TestReadZipFSMem and test_seek)'
+# test_complex_geturl, test_geturl_for_fs - fail with Python 3.14 https://github.com/PyFilesystem/pyfilesystem2/issues/596
+%pytest -k 'not (TestFTPFS and test_create or TestReadZipFSMem and test_seek or test_complex_geturl or test_geturl_for_fs)'
 
 %files %{python_files}
 %doc README.md
