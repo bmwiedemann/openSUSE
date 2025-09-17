@@ -15,9 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Do not build against libimobile and libplist by default
-# Reading out battery and charging state of USB connected iPod/iPad
-# does not justify the introduction of these dependencies
+
 %bcond_with libimobile
 %if %{with libimobile}
 %define idevice enabled
@@ -30,7 +28,7 @@
 %define idevice disabled
 %endif
 Name:           upower
-Version:        1.90.9.28+git.903a827
+Version:        1.90.10
 Release:        0
 Summary:        Power Device Enumeration Framework
 License:        GPL-2.0-or-later
