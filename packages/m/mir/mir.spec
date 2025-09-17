@@ -36,14 +36,12 @@
 %global mirevdevsover 10
 
 Name:           mir
-Version:        2.22.0
+Version:        2.22.1
 Release:        0
 Summary:        Libraries for building Wayland shells
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
 URL:            https://mir-server.io
 Source:         https://github.com/canonical/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 0001-Fix-include-paths.patch
-Patch0:         0001-Fix-include-paths.patch
 # PATCH-FIX-OPENSUSE 0002-remove-use-of-env-to-call-bash.patch
 Patch1:         0002-remove-use-of-env-to-call-bash.patch
 

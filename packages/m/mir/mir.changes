@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 16 15:04:03 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to 2.22.1:
+  * Bugs Fixed:
+    - debian: drop extra symbol (gh#canonical/mir#4153)
+    - Fix some memory leaks (gh#canonical/mir#4158)
+    - Changing cursor_scale causes weird cursors and crashes
+      (gh#canonical/mir#4157)
+    - on Ubuntu 25.10 wf-recorder y-inverts some frames
+      (gh#canonical/mir#4160)
+    - use-pkgconfig-better (gh#canonical/mir#4194)
+    - Check for WL_bind_wayland_display when probing eglstream-kms
+      support platform (gh#canonical/mir#4155)
+    - Platform-specific options not passed through if platforms not
+      probed (gh#canonical/mir#4130)
+    - mircommon: Add xkbcommon to pkgconfig dependency
+      (gh#canonical/mir#4240)
+  * Drop 0001-Fix-include-paths.patch
+-------------------------------------------------------------------
 Wed Sep  3 17:55:44 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 2.22.0:

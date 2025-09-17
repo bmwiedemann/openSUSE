@@ -180,4 +180,12 @@ Will be a requirement for forthcoming miriway submission</comment>
     - fix: move minimized windows to the back of the Z stack</comment>
     <requestid>1302775</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0204372542ba723d12d557037dc249aa</srcmd5>
+    <version>2.22.1</version>
+    <time>1758120226</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1305235</requestid>
+  </revision>
 </revisionlist>
