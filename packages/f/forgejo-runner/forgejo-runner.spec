@@ -19,10 +19,10 @@
 %define services %{name}.service
 
 Name:           forgejo-runner
-Version:        9.1.1
+Version:        11.0.0
 Release:        0
 Summary:        Daemon that connects to a Forgejo instance and runs CI jobs
-License:        MIT
+License:        GPL-3.0-or-later
 URL:            https://code.forgejo.org/forgejo/runner
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz

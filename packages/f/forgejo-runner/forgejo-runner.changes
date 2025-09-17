@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 17 09:49:16 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 11.0.0:
+  * license: change from MIT to GPL-3.0-or-later
+  * fix: shutdown the runner when the cache fails with a non recoverable error
+  * fix: also cascade if run-*-test is set when the PR is open
+  * fix: graceful shutdown of tasks being interrupted by signal
+  * fix: lxc-systemd example: export INPUTS_SERIAL
+  * fix: allow inputs context in action defaults
+  * fix: an expression in with: for a reusable workflow call can use env
+- update to version 10.0.1:
+  * fix: pull_request_target events can share the cache of the repository
+- update to version 10.0.0:
+  * fix(security): prevent on: pull_request actions from mutating caches of
+    other workflow events
+  * fix(security): ensure unique names for container images created by actions
+
+-------------------------------------------------------------------
 Fri Aug 29 12:19:16 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to version 9.1.1:
