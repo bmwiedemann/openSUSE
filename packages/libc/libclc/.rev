@@ -326,4 +326,12 @@
 - supersedes fix-cmake-install.patch</comment>
     <requestid>1267897</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>f1a26a955994e9acd5a46d3c02414db0</srcmd5>
+    <version>0.2.0+llvm21.1.0</version>
+    <time>1758123866</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1304798</requestid>
+  </revision>
 </revisionlist>

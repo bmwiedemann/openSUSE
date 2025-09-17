@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Wed Sep 10 21:07:30 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 21.1.0.
+  * Move (add|sub)_sat to CLC; optimize
+  * Move several integer functions to CLC library
+  * Remove use of symlinks
+  * Move mad_sat to CLC; optimize for vector types
+  * Move rotate to CLC library; optimize
+  * Allow default path when looking for llvm-spirv
+  * Have all targets build all CLC functions
+  * Move sign to the CLC builtins library
+  * Move conversion builtins to the CLC library
+  * [cmake] Fix per-target *_convert.cl dependencies
+  * Fix dependencies on generated convert builtins
+  * Disable external-calls testing for clspv targets
+  * Suppress data-layout warnings during linking
+  * Use CLC conversion builtins in CLC functions
+  * Replace gfx940 and gfx941 with gfx942
+  * Improve nextafter behaviour around zero
+  * Clean up directory search procedure
+  * Explicitly qualify private address spaces
+  * Move modf to the CLC library
+  * Move frexp to CLC library; optimize half vecs
+  * Define macros for users of gentype.inc
+  * Fix int<->float conversion builtins
+  * Move fma to the CLC library
+  * Remove clspv-specific clc conversions
+  * Move nan to the CLC library
+  * Stop using asm declarations for r600 on amdgcn for
+    get_global_size
+  * Move log/log2/log10 to CLC library
+  * Move round to CLC library
+  * Move __clc_ldexp to CLC library
+  * Make CLC library warning-free
+  * Move sqrt to CLC library
+  * Move rsqrt to the CLC library
+  * Move hypot to CLC library; optimize
+  * Reduce bithacking in CLC frexp
+  * Stop installing CLC headers
+  * Add missing gfx950 target
+  * Update license headers
+  * add --only-needed to llvm-link when INTERNALIZE flag is set
+  * link_bc target should depends on target
+    builtins.link.clc-arch_suffix
+  * Add license headers to files missing them
+  * Relicense gen_convert.py
+  * erfc: fix fp32 implementation in FTZ mode
+  * Move fp32 sincos helpers to CLC library
+  * Add missing license headers to source IR files
+  * Move asin/acos/atan to the CLC library
+  * Move asinpi/acospi/atanpi to the CLC library
+  * Move log1p/asinh/acosh/atanh to the CLC library
+  * Move atan2/atan2pi to the CLC library
+  * Move fmod, remainder & remquo to the CLC library
+  * Pass -fapprox-func when compiling 'native' builtins
+  * Move pow, powr & pown to the CLC library
+  * Implement native_exp2 via AMD builtin
+  * Fix unresolved reference to missing table
+  * Move rootn to the CLC library; optimize
+  * Move several 'native' builtins to CLC library
+  * Move sinpi/cospi/tanpi to the CLC library
+  * Move exp10 to the CLC library
+  * Move exp, exp2 and expm1 to the CLC library
+  * Move cbrt to the CLC library; vectorize
+  * Move lgamma, lgamma_r & tgamma to CLC library
+  * Move sinh, cosh & tanh to the CLC library
+  * Move native_(exp10|powr|tan) to CLC library
+  * clspv: add a dummy implememtation for mul_hi
+  * frexp: fix implementation regarding denormals
+  * Move shuffle/shuffle2 to the CLC library
+  * clspv: fma: remove fp16 implementation
+  * Fix commands in compile_to_bc are executed sequentially
+  * Add ctz built-in implementation to clc and generic
+  * Build for OpenCL 3.0
+  * Fix unguarded use of image types
+  * Re-enable compiler warning
+  * only check filename part of the source for avoiding duplication
+  * Remove unnecessary clcmacros.h
+  * Remove (vload|vstore)_half helpers
+  * Move fmin & fmax to CLC library
+  * Move fract to the CLC library
+  * Move fdim to CLC library; simplify
+  * Avoid casting NANs & literals to 'gentype'
+  * Add v3 variants of async_work_group_copy/
+    async_work_group_strided_copy/prefetch
+  * Clean up unnecessary #undef __CLC_BODYs
+  * Move minmag & maxmag to the CLC library
+  * Move log2/log10 tables to CLC tables impl
+  * Move sin, cos & sincos to CLC library
+  * Move tan to the CLC library
+  * Move 'half' builtins to CLC library
+  * Move (fast) length & distance to CLC library
+  * Move logb/ilogb to CLC library; optimize
+  * Move cross to CLC library; add missing half overloads
+  * Improving vector code generated from scalar code
+  * Append file_specific_compile_options after ARG_COMPILE_FLAGS
+  * Mov erf & erfc to CLC library
+  * Reorganize OpenCL builtins
+  * Fix header inclusion issues
+  * Re-use shuffle_decl.inc in OpenCL shuffle2 declaration
+  * Move all remquo address spaces to CLC library
+  * Support the generic address space
+  * Move step to the CLC library; add missing half variants
+  * Move vload & vstore to CLC library
+  * Move prefetch to clc library
+  * clspv: do not set generic_addrspace_val
+  * Add (fast) normalize to CLC; add half overloads
+  * Support LLVM_ENABLE_RUNTIMES when building
+  * Avoid out-of-range float-to-int.
+  * Add __clc_nan implementation with signed nancode argument
+  * Add missing clc_lgamma_r with generic address space pointer arg
+  * Reduce include usage in OpenCL builtins
+  * Fix typo in OpenCL header math/sincos.h
+  * Tighten OpenCL builtin include strategy
+  * Remove catch-all opencl/clc.h
+  * Declare workitem built-ins in clc, move ptx-nvidiacl workitem
+    built-ins into clc
+- Headers are no longer included.
+
+-------------------------------------------------------------------
 Sat Apr  5 08:56:27 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 20.1.0 (boo#1240848);changes since 19.1.0:
