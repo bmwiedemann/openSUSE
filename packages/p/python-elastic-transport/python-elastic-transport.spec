@@ -1,7 +1,7 @@
 #
 # spec file for package python-elastic-transport
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Transport classes and utilities shared among Python Elastic clie
 License:        Apache-2.0
 URL:            https://github.com/elastic/elastic-transport-python
 Source:         https://github.com/elastic/elastic-transport-python/archive/refs/tags/v%{version}.tar.gz#/elastic-transport-python-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/elastic/elastic-transport-python/pull/257 fix behaviour with pytest-asyncio 1.2.0
+Patch0:         fixture-scope.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
