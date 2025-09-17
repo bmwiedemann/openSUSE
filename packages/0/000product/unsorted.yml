@@ -24934,7 +24934,6 @@ unsorted:
   - python311-dask-dataframe 
   - python311-dask-diagnostics 
   - python311-dask-distributed 
-  - python311-dask-expr 
   - python311-dask-test 
   - python311-databases 
   - python311-dataclasses-json 
@@ -28685,7 +28684,6 @@ unsorted:
   - python312-dask-dataframe 
   - python312-dask-diagnostics 
   - python312-dask-distributed 
-  - python312-dask-expr 
   - python312-dask-test 
   - python312-databases 
   - python312-dataclasses-json 
@@ -32467,7 +32465,6 @@ unsorted:
   - python313-dask-dataframe 
   - python313-dask-diagnostics 
   - python313-dask-distributed 
-  - python313-dask-expr 
   - python313-dask-test 
   - python313-databases 
   - python313-dataclasses-json 
@@ -37345,7 +37342,6 @@ unsorted:
   - sqlite3-devel 
   - sqlite3-doc 
   - sqlitebrowser 
-  - sqliteman 
   - sqliteodbc 
   - sqliteodbc-doc 
   - sqlmap 
@@ -47954,6 +47950,7 @@ unsorted:
   - ttyplot 
   - tuba 
   - tuba-lang 
+  - tuc 
   - tucnak 
   - tudu 
   - tui-journal 
