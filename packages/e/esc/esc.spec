@@ -1,7 +1,7 @@
 #
 # spec file for package esc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ URL:            https://github.com/mjibson/esc
 Source0:        %{name}-v%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) = 1.15
+BuildRequires:  golang(API) >= 1.15
 %{go_nostrip}
 %{go_provides}
 
@@ -45,6 +45,8 @@ esc embeds files into go programs and provides http.FileSystem interfaces to the
 tar -zxf %{SOURCE1}
 
 %build
+GO111MODULE=off
+export GO111MODULE
 %goprep %{provider_prefix}
 %gobuild .
 

@@ -16,4 +16,12 @@
   (Upstream expected to add go1.16 in future versions) (forwarded request 896966 from RBrownSUSE)</comment>
     <requestid>896967</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>12022e0c38fb03d530508e08b1e2a326</srcmd5>
+    <version>0.2.0</version>
+    <time>1758123905</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1305382</requestid>
+  </revision>
 </revisionlist>
