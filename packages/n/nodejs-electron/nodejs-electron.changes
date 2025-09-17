@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 17 05:33:20 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 37.5.1
+  * v8: Don't assume that upper 32-bit of Int32MulOvfCheck are 0
+
+-------------------------------------------------------------------
 Mon Sep 15 17:51:55 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - aarch64: add swiftshader-llvm21.patch to fix ftbfs with new LLVM

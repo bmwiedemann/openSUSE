@@ -1433,4 +1433,12 @@ to Staging:F with it</comment>
     <comment>- aarch64: add swiftshader-llvm21.patch to fix ftbfs with new LLVM</comment>
     <requestid>1305064</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>88e265ce00baa6b59b021561946cba0d</srcmd5>
+    <version>37.5.1</version>
+    <time>1758120265</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1305308</requestid>
+  </revision>
 </revisionlist>
