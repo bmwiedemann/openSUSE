@@ -19,7 +19,7 @@
 %define binary_name jj
 
 Name:           jujutsu
-Version:        0.32.0
+Version:        0.33.0
 Release:        0
 Summary:        Git-compatible DVCS that is both simple and powerful
 License:        MIT
@@ -42,7 +42,10 @@ BuildRequires:  zsh
 #
 # armv7l
 # rustc-LLVM ERROR: out of memory
-ExcludeArch:    s390x armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
+#
+# i586
+# rustc-LLVM ERROR: out of memory
+ExcludeArch:    i586 s390x armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
 
 %description
 Jujutsu is a Git-compatible DVCS. It combines features from Git (data model,
