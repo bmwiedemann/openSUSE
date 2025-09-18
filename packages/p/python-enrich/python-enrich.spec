@@ -1,7 +1,7 @@
 #
 # spec file for package python-enrich
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-enrich
-Version:        1.2.7
+Version:        1.3.0
 Release:        0
 Summary:        Extends the python-rich library functionality
 License:        MIT
 URL:            https://github.com/pycontribs/enrich
-Source:         https://files.pythonhosted.org/packages/source/e/enrich/enrich-%{version}.tar.gz
+Source0:        https://github.com/pycontribs/enrich/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE remove_setuptools_scm.patch -- remove dependency on setuptools-scm
 Patch0:         remove_setuptools_scm.patch
+# PATCH-FIX-UPSTREAM remove_rich_constraint.patch -- remove the constraint on rich < 12.5, the tests also succeed with rich 14.0 https://github.com/pycontribs/enrich/issues/40
+Patch1:         remove_rich_constraint.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
@@ -42,9 +45,8 @@ Extends the python-rich library functionality
 with a set of changes that were not accepted to rich itself.
 
 %prep
-%autosetup -p1 -n enrich-%{version}
-sed -i 's/__VERSION__/%{version}/' setup.py
-sed -i '/_scm/ d' setup.cfg
+%autosetup -n enrich-%{version} -p1
+sed -i 's/__VERSION__/%{version}/' pyproject.toml
 
 %build
 %pyproject_wheel

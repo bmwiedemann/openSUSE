@@ -32,4 +32,32 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1280250</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5842c3bb8271b76f1df2f03f5e979dc0</srcmd5>
+    <version>1.3.0</version>
+    <time>1758222491</time>
+    <user>anag_factory</user>
+    <comment>- Add remove_rich_constraint.patch
+  remove the constraint on rich &lt; 12.5, the tests also succeed with rich 14.0 https://github.com/pycontribs/enrich/issues/40
+- Update to version 1.3.0:
+  * Require python 3.9 or newer (#67)
+  * Externalize package requirments (#65)
+  * RichHandler add omit_repeated_times parameter (#62)
+  * Adopt PEP-621 (#57)
+  * Move tests outside package (#56)
+  * Remove mock from test dependencies (#46)
+  * Update build-system requirement for setuptools-scm to &gt;=7.0.0 (#45)
+  * Packaging fixes (#48)
+  * Enable support for python 3.11 (#42)
+  * Temporary pin down rich version (#43)
+- Adapt remove_setuptools_scm.patch
+- Convert to pip-based build
+- Actually run the testsuite.
+- Add a missing Requires on python-rich 
+- add sle15_python_module_pythons
+- add remove_setuptools_scm.patch to get rid of setuptools-scm and fix the version
+- initial package for version 1.2.7
+</comment>
+    <requestid>1305503</requestid>
+  </revision>
 </revisionlist>

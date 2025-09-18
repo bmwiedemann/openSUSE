@@ -1,0 +1,5 @@
+--- a/.config/requirements.in	2024-06-14 14:49:49.000000000 +0200
++++ b/.config/requirements.in	2025-09-17 17:15:41.785371328 +0200
+@@ -1 +1 @@
+-rich>=10.0.0,<12.5.0 # https://github.com/pycontribs/enrich/issues/40
++rich>=10.0.0

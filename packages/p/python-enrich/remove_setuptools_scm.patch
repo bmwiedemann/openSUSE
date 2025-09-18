@@ -1,11 +1,19 @@
---- enrich-1.2.7/setup.py	2022-01-28 17:29:54.476189319 +0100
-+++ enrich-1.2.7/setup1.py	2022-01-28 17:29:45.739753919 +0100
-@@ -12,6 +12,6 @@
+--- a/pyproject.toml      2024-06-14 14:49:49.000000000 +0200
++++ b/pyproject.toml      2025-09-08 22:56:54.944216329 +0200
+@@ -1,14 +1,14 @@
+ [build-system]
+ requires = [
+   "setuptools >= 65.3.0", # required by pyproject+setuptools_scm integration and editable installs
+-  "setuptools_scm[toml] >= 7.0.5", # required for "no-local-version" scheme
+ ]
+ build-backend = "setuptools.build_meta"
  
- if __name__ == "__main__":
-     setuptools.setup(
--        use_scm_version={"local_scheme": "no-local-version"},
--        setup_requires=["setuptools_scm[toml]>=3.5.0"],
-+        name='enrich',
-+        version='__VERSION__',
-     )
+ [project]
+ # https://peps.python.org/pep-0621/#readme
+ requires-python = ">=3.9"
+-dynamic = ["version", "dependencies", "optional-dependencies"]
++version = "__VERSION__"
++dynamic = ["dependencies", "optional-dependencies"]
+ name = "enrich"
+ description = "enrich"
+ readme = "README.md"
