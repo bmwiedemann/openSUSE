@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Sep 18 09:10:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.133:
+  * General
+    - [docs] [helm] chore: add description of
+      env.MESHSYNC_DEFAULT_DEPLOYMENT_MODE to meshery operator
+      readme @n2h9 (#15819)
+    - Add expiration-date to SECURITY-INSIGHTS.yml @sangramrath
+      (#15792)
+    - [server] chore: add events to meshery controller helper @n2h9
+      (#15782)
+    - [server] chore: upgrade meshkit to v0.8.43 @n2h9 (#15783)
+    - [server] chore: enhance logs @n2h9 (#15778)
+    - chore: update meshkit to v0.8.42 @n2h9 (#15777)
+  * Meshery CLI
+    - fix(mesheryctl-design): refactor mesheryctl list to use
+      pagination @lekaf974 (#15728)
+    - fix(mesheryctl-e2e): remove quote in Makefile variable
+      assignation @lekaf974 (#15755)
+  * Maintenance
+    - [workflow] [docs] [mesheryctl] chore: mesheryctl docs
+      generate: remove current pages before run make docs @n2h9
+      (#15818)
+    - Update slack.yml @RanitMukherjee (#15813)
+    - Update playground and staging-playground servers @sangramrath
+      (#15730)
+    - Refactor Slack notifications in workflow @leecalcote (#15788)
+    - Bump fortio.org/fortio from 1.66.2 to 1.71.2 @dependabot
+      (#15737)
+    - Bump lint-staged from 15.5.0 to 16.1.6 in /ui @dependabot
+      (#15738)
+    - Bump start-server-and-test from 2.0.11 to 2.0.13 in
+      /provider-ui @dependabot (#15739)
+    - Bump next from 15.4.5 to 15.5.2 in /provider-ui @dependabot
+      (#15744)
+    - Bump gorm.io/gorm from 1.30.1 to 1.30.2 @dependabot (#15741)
+    - Bump github.com/stretchr/testify from 1.10.0 to 1.11.1
+      @dependabot (#15743)
+  * Documentation
+    - [docs]: add meshery operator health status description @n2h9
+      (#15825)
+    - fix(mesheryctl-design): refactor mesheryctl list to use
+      pagination @lekaf974 (#15728)
+    - Fix displaying key ids in permissions table @Siddhi-sahu
+      (#15786)
+    - [docs] chore: update operator docs add description about
+      endpoint determination @n2h9 (#15754)
+    - [docs] chore: add mehsync deployment mode description to
+      meshsync doc @n2h9 (#15723)
+
+-------------------------------------------------------------------
 Tue Sep  2 08:44:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.132:
