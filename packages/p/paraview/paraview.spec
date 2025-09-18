@@ -16,46 +16,39 @@
 #
 
 
-%define major_ver 5
-%define minor_ver 13
+%define major_ver 6
+%define minor_ver 0
 %define short_ver %{major_ver}.%{minor_ver}
 %define shlib libparaview%{major_ver}_%{minor_ver}
 
 %if 0%{?suse_version} <= 1500
 %bcond_with    fast_float
-%bcond_with    jsoncpp
-%if 0%{?sle_version} <= 150400
-%bcond_with    pugixml
-%bcond_with    verdict
-%else
-%bcond_without pugixml
-%bcond_without verdict
-%endif
-
-%if 0%{?sle_version} <= 150600
-%bcond_with    jsoncpp
 %bcond_with    fmt
 %bcond_with    haru
-%else
-%bcond_without fmt
-%bcond_without haru
-%endif
-
+%bcond_with    jsoncpp
+%bcond_with    proj
+%bcond_with    nlohmann
+%bcond_with    pugixml
+%bcond_with    cli11
+%bcond_without gl2ps
+%define gcc_version 8
 %else
 %bcond_without fast_float
 %bcond_without fmt
 %bcond_without haru
 %bcond_without jsoncpp
+%bcond_without proj
+%bcond_without nlohmann
 %bcond_without pugixml
-%bcond_without verdict
+%bcond_without cli11
+%bcond_with gl2ps
 %endif
 
-%bcond_without nlohmann
-%bcond_without proj
-%bcond_without gl2ps
+%bcond_without verdict
+%bcond_without netcdf
 
 Name:           paraview
-Version:        %{short_ver}.2
+Version:        %{short_ver}.0
 Release:        0
 Summary:        Data analysis and visualization application
 License:        BSD-3-Clause
@@ -64,7 +57,7 @@ URL:            https://www.paraview.org
 Source0:        https://www.paraview.org/files/v%{short_ver}/ParaView-v%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 # CAUTION: GettingStarted may or may not be updated with each minor version
-Source2:        https://www.paraview.org/files/v%{short_ver}/ParaViewGettingStarted-%{major_ver}.%{minor_ver}.2.pdf
+Source2:        https://www.paraview.org/files/v%{short_ver}/ParaViewGettingStarted-%{major_ver}.%{minor_ver}.0.pdf
 # PATCH-FIX-UPSTREAM paraview-desktop-entry-fix.patch badshah400@gmail.com -- Fix desktop menu entry by inserting proper required categories
 Patch0:         paraview-desktop-entry-fix.patch
 # PATCH-FIX-OPENSUSE fix-libharu-missing-m.patch -- missing libraries for linking (gh#libharu/libharu#213)
@@ -73,6 +66,8 @@ Patch1:         fix-libharu-missing-m.patch
 Patch2:         fix-soversion-soname.patch
 # PATCH-FIX-UPSTREAM
 Patch3:         0001-Add-missing-libm-link-library-for-bundled-ExodusII.patch
+# PATCH-FIX-UPSTREAM https://gitlab.kitware.com/vtk/vtk/-/merge_requests/12449
+Patch4:         vtk-sqlite-fix-typo-in-cmake-variable-for-external-dep.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cgns-devel
 BuildRequires:  cmake >= 3.13
@@ -80,8 +75,8 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  double-conversion-devel
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-BuildRequires:  gcc-fortran
+BuildRequires:  gcc%{gcc_version}-c++
+BuildRequires:  gcc%{gcc_version}-fortran
 BuildRequires:  gnuplot
 BuildRequires:  graphviz
 BuildRequires:  hdf5-devel
@@ -89,45 +84,52 @@ BuildRequires:  libboost_graph-devel
 BuildRequires:  libboost_headers-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} <= 1500
+BuildRequires:  protobuf-devel
+%else
 BuildRequires:  protobuf21-devel
+%endif
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-Twisted
 BuildRequires:  python3-devel
 BuildRequires:  python3-matplotlib
 BuildRequires:  python3-qt5-devel
 BuildRequires:  readline-devel
+BuildRequires:  sqlite3
 BuildRequires:  utfcpp-devel
 BuildRequires:  wget
-BuildRequires:  pkgconfig(CLI11)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Help)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5WebEngine)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(eigen3) >= 2.91.0
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(liblz4) >= 1.7.3
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(libpqxx)
 BuildRequires:  pkgconfig(libtiff-4)
-BuildRequires:  pkgconfig(netcdf)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(proj) >= 5.0.0
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(theora)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(zlib)
+%if %{with proj}
+BuildRequires:  pkgconfig(proj) >= 5.0.0
+%endif
+%if %{with cli11}
+BuildRequires:  pkgconfig(CLI11)
+%endif
 %if %{with fmt}
-BuildRequires:  fmt-10-devel
+BuildRequires:  fmt-devel
 %endif
 %if %{with gl2ps}
 BuildRequires:  gl2ps-devel >= 1.4.1
@@ -137,6 +139,9 @@ BuildRequires:  libharu-devel > 2.4.0
 %endif
 %if %{with fast_float}
 BuildRequires:  cmake(FastFloat)
+%endif
+%if %{with netcdf}
+BuildRequires:  pkgconfig(netcdf)
 %endif
 %if %{with jsoncpp}
 BuildRequires:  pkgconfig(jsoncpp) >= 1.9.4
@@ -221,19 +226,19 @@ This package provides the paraview plugins bundled with the upstream release.
 # FIX env BASED HASHBANG
 sed -Ei "1{s|#!%{_bindir}/env python3|#!%{_bindir}/python3|}" Clients/CommandLineExecutables/paraview-config.in
 
-# Fix erroneous dependency on sqlite3 binary
-sed -i -e '/set(vtk_sqlite_build_binary 1)/ s/.*/#\0/' CMakeLists.txt
-
 # Allow other versions for fast_float
 sed -i -e '/VERSION .*/ d' VTK/ThirdParty/fast_float/CMakeLists.txt
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 %global __builder ninja
+%if 0%{?gcc_version}
+export CC=gcc-%{gcc_version}
+export CXX=g++-%{gcc_version}
+export FC=gfortran-%{gcc_version}
+%endif
 
-%cmake -DCMAKE_INSTALL_LIBDIR=%{_lib} \
-       -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name} \
-       -DPARAVIEW_BUILD_SHARED_LIBS:BOOL=ON \
+%cmake -DPARAVIEW_BUILD_SHARED_LIBS:BOOL=ON \
 %if 0%{?suse_version} <= 1500 && 0%{?is_opensuse}
        -DCMAKE_SKIP_RPATH:BOOL=OFF \
 %endif
@@ -251,12 +256,12 @@ sed -i -e '/VERSION .*/ d' VTK/ThirdParty/fast_float/CMakeLists.txt
        -DQtTesting_INSTALL_NO_DEVELOPMENT:BOOL=ON \
        -DVTK_BUILD_QT_DESIGNER_PLUGIN:BOOL=OFF \
        -DVTK_ENABLE_CATALYST:BOOL=ON \
-       -DVTK_OPENGL_HAS_OSMESA:BOOL=OFF \
        -DVTK_PYTHON_OPTIONAL_LINK:BOOL=OFF \
        -DVTK_WRAP_PYTHON:BOOL=ON \
+       -DOpenGL_GL_PREFERENCE:STRING='GLVND' \
        -DVTK_MODULE_ENABLE_VTK_libharu:BOOL=YES \
        -DVTK_MODULE_ENABLE_VTK_pegtl:BOOL=YES \
-       -DVTK_MODULE_ENABLE_VTK_zfp:BOOL=NO \
+       -DVTK_MODULE_USE_EXTERNAL_VTK_cli11=%{?with_cli11:ON}%{!?with_cli11:OFF} \
        -DVTK_MODULE_USE_EXTERNAL_VTK_exprtk:BOOL=OFF \
        -DVTK_MODULE_USE_EXTERNAL_VTK_fast_float:BOOL=%{?with_fast_float:ON}%{!?with_fast_float:OFF} \
        -DVTK_MODULE_USE_EXTERNAL_VTK_fmt:BOOL=%{?with_fmt:ON}%{!?with_fmt:OFF} \
@@ -265,9 +270,11 @@ sed -i -e '/VERSION .*/ d' VTK/ThirdParty/fast_float/CMakeLists.txt
        -DVTK_MODULE_USE_EXTERNAL_VTK_jsoncpp=%{?with_jsoncpp:ON}%{!?with_jsoncpp:OFF} \
        -DVTK_MODULE_USE_EXTERNAL_VTK_libharu=%{?with_haru:ON}%{!?with_haru:OFF} \
        -DVTK_MODULE_USE_EXTERNAL_VTK_libproj=%{?with_proj:ON}%{!?with_proj:OFF} \
+       -DVTK_MODULE_USE_EXTERNAL_VTK_netcdf=%{?with_netcdf:ON}%{!?with_netcdf:OFF} \
        -DVTK_MODULE_USE_EXTERNAL_VTK_nlohmannjson=%{?with_nlohmann:ON}%{!?with_nlohmann:OFF} \
-       -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=NO \
+       -DVTK_MODULE_USE_EXTERNAL_VTK_pegtl=OFF  \
        -DVTK_MODULE_USE_EXTERNAL_VTK_pugixml=%{?with_pugixml:ON}%{!?with_pugixml:OFF} \
+       -DVTK_MODULE_USE_EXTERNAL_VTK_sqlite:BOOL=ON \
        -DVTK_MODULE_USE_EXTERNAL_VTK_token:BOOL=OFF \
        -DVTK_MODULE_USE_EXTERNAL_VTK_verdict=%{?with_verdict:ON}%{!?with_verdict:OFF} \
        -Wno-dev \

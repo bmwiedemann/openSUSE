@@ -592,4 +592,33 @@ Please consider for 13.2, which already has 4.2.0-RC1 and the only change is the
 </comment>
     <requestid>1235695</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>78dd3bd310419e11b34827fcab5f04c7</srcmd5>
+    <version>6.0.0</version>
+    <time>1758222498</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 6.0.0:
+  * A new default background and color map.
+  * Runtime selection between headless, offscreen, and onscreen
+    rendering modes.
+  * Improved Cell Grid support.
+  * C++17 is now required.
+  * Qt 6 is fully supported, however, this package still uses Qt5.
+  * Find many more features info at:
+    &lt;https://www.kitware.com/paraview-6-0-0-release-notes/&gt;.
+- Removed support for Leap &lt; 15.6.
+- Use GLVND as OpenGL preference.
+- Use internal GL2PS when in tumbleweed due to GL incompatibility
+  of upstream.
+- Use internal proj in leap 15.6.
+- Use internal jsoncpp in leap 15.6.
+- Use internal nlohman_json in leap 15.6.
+- Use internal cli11 in leap 15.6.
+- Use internal pugixml in leap 15.6.
+- Removed sed command to enable sqlite3bin heuristics.
+- Add patches:
+  * vtk-sqlite-fix-typo-in-cmake-variable-for-external-dep.patch
+</comment>
+    <requestid>1305337</requestid>
+  </revision>
 </revisionlist>

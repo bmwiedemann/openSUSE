@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Sep 11 00:01:00 UTC 2025 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
+
+- Update to version 6.0.0:
+  * A new default background and color map.
+  * Runtime selection between headless, offscreen, and onscreen
+    rendering modes.
+  * Improved Cell Grid support.
+  * C++17 is now required.
+  * Qt 6 is fully supported, however, this package still uses Qt5.
+  * Find many more features info at:
+    <https://www.kitware.com/paraview-6-0-0-release-notes/>.
+- Removed support for Leap < 15.6.
+- Use GLVND as OpenGL preference.
+- Use internal GL2PS when in tumbleweed due to GL incompatibility
+  of upstream.
+- Use internal proj in leap 15.6.
+- Use internal jsoncpp in leap 15.6.
+- Use internal nlohman_json in leap 15.6.
+- Use internal cli11 in leap 15.6.
+- Use internal pugixml in leap 15.6.
+- Removed sed command to enable sqlite3bin heuristics.
+- Add patches:
+  * vtk-sqlite-fix-typo-in-cmake-variable-for-external-dep.patch
+
+
+-------------------------------------------------------------------
 Thu Jan 06 00:01:00 UTC 2025 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
 
 - Update to version 5.13.2:
