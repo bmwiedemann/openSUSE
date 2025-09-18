@@ -319,4 +319,13 @@
     <comment></comment>
     <requestid>1238682</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>108bf8a69bf23b89af583ae08b4cfe8d</srcmd5>
+    <version>6.0.2</version>
+    <time>1758222540</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.0.2:
+  * https://github.com/CGAL/cgal/issues?q=sort%3Aupdated-desc+label%3AMerged_in_6.0.2+-label%3AMerged_in_6.0.1</comment>
+    <requestid>1305575</requestid>
+  </revision>
 </revisionlist>
