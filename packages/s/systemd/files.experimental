@@ -6,10 +6,6 @@
 %dir %{_distconfdir}/ssh
 %dir %{_distconfdir}/ssh/ssh_config.d
 %if %{without bootstrap}
-%dir %{_prefix}/lib/pcrlock.d
-%dir %{_prefix}/lib/pcrlock.d/400-secureboot-separator.pcrlock.d
-%dir %{_prefix}/lib/pcrlock.d/500-separator.pcrlock.d
-%dir %{_prefix}/lib/pcrlock.d/700-action-efi-exit-boot-services.pcrlock.d
 %dir %{_sysconfdir}/systemd/oomd.conf.d
 %endif
 %if %{with upstream}
@@ -66,8 +62,6 @@
 %{_mandir}/man5/oomd.conf.d.5.gz
 %{_mandir}/man5/org.freedesktop.oom1.5.gz
 %{_mandir}/man5/org.freedesktop.sysupdate1.5.gz
-%{_mandir}/man5/systemd.pcrlock.5.gz
-%{_mandir}/man5/systemd.pcrlock.d.5.gz
 %{_mandir}/man5/sysupdate.d.5.gz
 %{_mandir}/man5/sysupdate.features.5.gz
 %{_mandir}/man8/systemd-bsod.8.gz
@@ -93,7 +87,6 @@
 %{_mandir}/man8/systemd-pcrlock-make-policy.service.8.gz
 %{_mandir}/man8/systemd-pcrlock-secureboot-authority.service.8.gz
 %{_mandir}/man8/systemd-pcrlock-secureboot-policy.service.8.gz
-%{_mandir}/man8/systemd-pcrlock.8.gz
 %{_mandir}/man8/systemd-pcrmachine.service.8.gz
 %{_mandir}/man8/systemd-pcrphase-initrd.service.8.gz
 %{_mandir}/man8/systemd-pcrphase-sysinit.service.8.gz
@@ -125,19 +118,6 @@
 %endif
 %endif
 %if %{without bootstrap}
-%{_prefix}/lib/pcrlock.d/350-action-efi-application.pcrlock
-%{_prefix}/lib/pcrlock.d/400-secureboot-separator.pcrlock.d/300-0x00000000.pcrlock
-%{_prefix}/lib/pcrlock.d/400-secureboot-separator.pcrlock.d/600-0xffffffff.pcrlock
-%{_prefix}/lib/pcrlock.d/500-separator.pcrlock.d/300-0x00000000.pcrlock
-%{_prefix}/lib/pcrlock.d/500-separator.pcrlock.d/600-0xffffffff.pcrlock
-%{_prefix}/lib/pcrlock.d/700-action-efi-exit-boot-services.pcrlock.d/300-present.pcrlock
-%{_prefix}/lib/pcrlock.d/700-action-efi-exit-boot-services.pcrlock.d/600-absent.pcrlock
-%{_prefix}/lib/pcrlock.d/750-enter-initrd.pcrlock
-%{_prefix}/lib/pcrlock.d/800-leave-initrd.pcrlock
-%{_prefix}/lib/pcrlock.d/850-sysinit.pcrlock
-%{_prefix}/lib/pcrlock.d/900-ready.pcrlock
-%{_prefix}/lib/pcrlock.d/950-shutdown.pcrlock
-%{_prefix}/lib/pcrlock.d/990-final.pcrlock
 %{_systemd_util_dir}/oomd.conf
 %{_systemd_util_dir}/systemd-bsod
 %if %{with upstream}
@@ -149,7 +129,6 @@
 %if %{with sd_boot}
 %{_systemd_util_dir}/systemd-pcrextend
 %endif
-%{_systemd_util_dir}/systemd-pcrlock
 %{_systemd_util_dir}/systemd-sbsign
 %if %{with upstream}
 %{_systemd_util_dir}/systemd-ssh-issue
@@ -194,7 +173,6 @@
 %endif
 %if %{with sd_boot}
 %{_unitdir}/sockets.target.wants/systemd-pcrextend.socket
-%{_unitdir}/sockets.target.wants/systemd-pcrlock.socket
 %endif
 %{_unitdir}/storage-target-mode.target
 %if %{with upstream}
@@ -229,7 +207,6 @@
 %{_unitdir}/systemd-pcrlock-make-policy.service
 %{_unitdir}/systemd-pcrlock-secureboot-authority.service
 %{_unitdir}/systemd-pcrlock-secureboot-policy.service
-%{_unitdir}/systemd-pcrlock.socket
 %{_unitdir}/systemd-pcrlock@.service
 %{_unitdir}/systemd-pcrmachine.service
 %if %{with upstream}

@@ -7739,4 +7739,22 @@ handle manual pages that consist only of a .so directive such as
 - Rebase 5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch</comment>
     <requestid>1303345</requestid>
   </revision>
+  <revision rev="457" vrev="2">
+    <srcmd5>6d45aecf18ca87fb43e7b3146c3c4d52</srcmd5>
+    <version>257.9</version>
+    <time>1758222495</time>
+    <user>anag_factory</user>
+    <comment>- Move systemd-pcrlock out from the experimental sub-package to udev (bsc#1248261)
+
+- systemd.spec: use %sysusers_generate_pre so that some systemd users are
+  already available in %pre. This is important because D-Bus automatically
+  reloads its configuration whenever new configuration files are installed,
+  i.e. between %pre and %post. (bsc#1248501)
+  
+  No needs for systemd and udev packages as they are always installed during
+  the initial installation.
+
+- Sign aarch64 and riscv systemd-boot EFI binaries (bsc#1247474)</comment>
+    <requestid>1305565</requestid>
+  </revision>
 </revisionlist>

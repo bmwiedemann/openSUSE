@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep 16 10:32:38 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Move systemd-pcrlock out from the experimental sub-package to udev (bsc#1248261)
+
+-------------------------------------------------------------------
+Mon Sep 15 13:03:57 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- systemd.spec: use %sysusers_generate_pre so that some systemd users are
+  already available in %pre. This is important because D-Bus automatically
+  reloads its configuration whenever new configuration files are installed,
+  i.e. between %pre and %post. (bsc#1248501)
+  
+  No needs for systemd and udev packages as they are always installed during
+  the initial installation.
+
+-------------------------------------------------------------------
+Mon Sep 15 09:04:44 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Sign aarch64 and riscv systemd-boot EFI binaries (bsc#1247474)
+
+-------------------------------------------------------------------
 Tue Sep  9 08:30:35 UTC 2025 - Franck Bui <fbui@suse.com>
 
 - Import commit c139debf2c6e9556df8ee6eca77ae18d5b98f027 (merge of v257.9)

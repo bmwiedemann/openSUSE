@@ -8,6 +8,10 @@
 %if %{without bootstrap}
 %dir %{_prefix}/lib/kernel
 %dir %{_prefix}/lib/kernel/install.d
+%dir %{_prefix}/lib/pcrlock.d
+%dir %{_prefix}/lib/pcrlock.d/400-secureboot-separator.pcrlock.d
+%dir %{_prefix}/lib/pcrlock.d/500-separator.pcrlock.d
+%dir %{_prefix}/lib/pcrlock.d/700-action-efi-exit-boot-services.pcrlock.d
 %endif
 %dir %{_prefix}/lib/udev
 %if %{without bootstrap}
@@ -85,6 +89,8 @@
 %{_mandir}/man5/repart.d.5.gz
 %{_mandir}/man5/sleep.conf.d.5.gz
 %{_mandir}/man5/systemd-sleep.conf.5.gz
+%{_mandir}/man5/systemd.pcrlock.5.gz
+%{_mandir}/man5/systemd.pcrlock.d.5.gz
 %{_mandir}/man5/timesyncd.conf.5.gz
 %{_mandir}/man5/timesyncd.conf.d.5.gz
 %{_mandir}/man5/udev.conf.5.gz
@@ -131,6 +137,9 @@
 %{_mandir}/man8/systemd-modules-load.service.8.gz
 %{_mandir}/man8/systemd-network-generator.8.gz
 %{_mandir}/man8/systemd-network-generator.service.8.gz
+%if %{with sd_boot}
+%{_mandir}/man8/systemd-pcrlock.8.gz
+%endif
 %{_mandir}/man8/systemd-pstore.8.gz
 %{_mandir}/man8/systemd-pstore.service.8.gz
 %{_mandir}/man8/systemd-quotacheck.8.gz
@@ -176,6 +185,19 @@
 %{_prefix}/lib/kernel/install.d/50-depmod.install
 %{_prefix}/lib/kernel/install.d/90-loaderentry.install
 %{_prefix}/lib/kernel/install.d/90-uki-copy.install
+%{_prefix}/lib/pcrlock.d/350-action-efi-application.pcrlock
+%{_prefix}/lib/pcrlock.d/400-secureboot-separator.pcrlock.d/300-0x00000000.pcrlock
+%{_prefix}/lib/pcrlock.d/400-secureboot-separator.pcrlock.d/600-0xffffffff.pcrlock
+%{_prefix}/lib/pcrlock.d/500-separator.pcrlock.d/300-0x00000000.pcrlock
+%{_prefix}/lib/pcrlock.d/500-separator.pcrlock.d/600-0xffffffff.pcrlock
+%{_prefix}/lib/pcrlock.d/700-action-efi-exit-boot-services.pcrlock.d/300-present.pcrlock
+%{_prefix}/lib/pcrlock.d/700-action-efi-exit-boot-services.pcrlock.d/600-absent.pcrlock
+%{_prefix}/lib/pcrlock.d/750-enter-initrd.pcrlock
+%{_prefix}/lib/pcrlock.d/800-leave-initrd.pcrlock
+%{_prefix}/lib/pcrlock.d/850-sysinit.pcrlock
+%{_prefix}/lib/pcrlock.d/900-ready.pcrlock
+%{_prefix}/lib/pcrlock.d/950-shutdown.pcrlock
+%{_prefix}/lib/pcrlock.d/990-final.pcrlock
 %endif
 %{_prefix}/lib/udev/ata_id
 %{_prefix}/lib/udev/cdrom_id
@@ -225,6 +247,9 @@
 %{_systemd_util_dir}/systemd-modules-load
 %endif
 %{_systemd_util_dir}/systemd-network-generator
+%if %{without bootstrap}
+%{_systemd_util_dir}/systemd-pcrlock
+%endif
 %{_systemd_util_dir}/systemd-pstore
 %{_systemd_util_dir}/systemd-quotacheck
 %{_systemd_util_dir}/systemd-random-seed
@@ -363,6 +388,7 @@
 %{_unitdir}/sleep.target
 %if %{with sd_boot}
 %{_unitdir}/sockets.target.wants/systemd-bootctl.socket
+%{_unitdir}/sockets.target.wants/systemd-pcrlock.socket
 %endif
 %{_unitdir}/sockets.target.wants/systemd-udevd-control.socket
 %{_unitdir}/sockets.target.wants/systemd-udevd-kernel.socket
@@ -415,6 +441,9 @@
 %{_unitdir}/systemd-modules-load.service
 %endif
 %{_unitdir}/systemd-network-generator.service
+%if %{with sd_boot}
+%{_unitdir}/systemd-pcrlock.socket
+%endif
 %{_unitdir}/systemd-pstore.service
 %{_unitdir}/systemd-quotacheck-root.service
 %{_unitdir}/systemd-quotacheck@.service

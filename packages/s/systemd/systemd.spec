@@ -2,6 +2,7 @@
 # spec file for package systemd
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -125,6 +126,7 @@ BuildRequires:  meson >= 0.53.2
 BuildRequires:  pam-devel
 BuildRequires:  python3-Jinja2
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(blkid) >= 2.26
 # The following packages are only required by the execution of the unit tests
 # during the 'check' section.
@@ -484,6 +486,7 @@ Summary:        Systemd Network Manager
 License:        LGPL-2.1-or-later
 Requires:       %{name} = %{version}-%{release}
 %systemd_requires
+%sysusers_requires
 Obsoletes:      systemd-network < %{version}-%{release}
 Provides:       systemd-network = %{version}-%{release}
 Provides:       systemd-network:/usr/lib/systemd/systemd-networkd
@@ -508,6 +511,7 @@ Summary:        Systemd Network Name Resolution Manager
 License:        LGPL-2.1-or-later
 Requires:       %{name} = %{version}-%{release}
 %systemd_requires
+%sysusers_requires
 # This Recommends because some symbols of libidn2 are dlopen()ed by resolved
 Recommends:     libidn2
 BuildRequires:  pkgconfig(libidn2)
@@ -917,13 +921,11 @@ for the C APIs.
 %ifarch x86_64
 export BRP_PESIGN_FILES="%{_systemd_util_dir}/boot/efi/systemd-bootx64.efi"
 %endif
-%if %{with upstream}
 %ifarch aarch64
 export BRP_PESIGN_FILES="%{_systemd_util_dir}/boot/efi/systemd-bootaa64.efi"
 %endif
 %ifarch riscv64
 export BRP_PESIGN_FILES="%{_systemd_util_dir}/boot/efi/systemd-bootriscv64.efi"
-%endif
 %endif
 %endif
 
@@ -1110,6 +1112,14 @@ rm -f  %{buildroot}%{_journalcatalogdir}/*
 rm -fr %{buildroot}%{_docdir}/systemd
 %endif
 
+# Generate system users for pre scriptlets.
+%if %{with resolved}
+%sysusers_generate_pre %{buildroot}/%{_sysusersdir}/systemd-resolve.conf systemd-resolve systemd-resolve.conf
+%endif
+%if %{with networkd}
+%sysusers_generate_pre %{buildroot}/%{_sysusersdir}/systemd-network.conf systemd-network systemd-network.conf
+%endif
+
 # Don't drop the following 'pre' section even if it becomes empty: the build
 # process of installation images uses a hardcoded list of packages with a 'pre'
 # section that needs to be run during the build and complains if it can't find
@@ -1287,13 +1297,12 @@ fi
 %endif
 
 %if %{with networkd}
-%pre networkd
+%pre networkd -f systemd-network.pre
 %systemd_pre systemd-networkd.service
 %systemd_pre systemd-networkd-wait-online.service
 
 %post networkd
 %if %{without filetriggers}
-%sysusers_create systemd-network.conf
 %tmpfiles_create systemd-network.conf
 %endif
 %systemd_post systemd-networkd.service
@@ -1309,13 +1318,12 @@ fi
 %endif
 
 %if %{with resolved}
-%pre resolved
+%pre resolved -f systemd-resolve.pre
 %systemd_pre systemd-resolved.service
 
 %post resolved
 %ldconfig
 %if %{without filetriggers}
-%sysusers_create systemd-resolve.conf
 %tmpfiles_create systemd-resolve.conf
 %endif
 %systemd_post systemd-resolved.service
