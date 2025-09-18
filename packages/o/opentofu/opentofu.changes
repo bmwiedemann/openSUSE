@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 18 05:28:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.6:
+  * UPGRADE NOTES:
+    - Upgrade go from 1.24.4 to 1.24.6 to fix GO-2025-3849 (3127)
+    - Upgrade github.com/openbao/openbao/api/v2 from 2.1.0 to 2.3.0
+      to fix GO-2025-3783 (3134)
+      - The upgrade is necessary to silence the security scanner
+        and does not affect the actual state encryption provided by
+        OpenBao.
+  * BUG FIXES:
+    - Variables with validation no longer interfere with the
+      destroy process (#3131)
+    - Fixed crash when processing multiple deprecated marks on a
+      complex object (#3105)
+    - When OpenTelemetry encounters errors, log it at the warning
+      level instead of panic (#3235)
+
+-------------------------------------------------------------------
 Sun Aug 03 11:30:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.5:
