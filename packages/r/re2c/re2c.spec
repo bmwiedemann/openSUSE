@@ -1,7 +1,7 @@
 #
 # spec file for package re2c
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           re2c
-Version:        4.1
+Version:        4.3
 Release:        0
 Summary:        Tool for generating C-based recognizers from regular expressions
 License:        SUSE-Public-Domain
@@ -67,6 +67,7 @@ terms of size and speed.
 %{_bindir}/re2js
 %{_bindir}/re2ocaml
 %{_bindir}/re2py
+%{_bindir}/re2swift
 %{_bindir}/re2v
 %{_bindir}/re2zig
 %{_mandir}/man1/re2c.1%{?ext_man}
@@ -77,6 +78,7 @@ terms of size and speed.
 %{_mandir}/man1/re2js.1%{?ext_man}
 %{_mandir}/man1/re2ocaml.1%{?ext_man}
 %{_mandir}/man1/re2py.1%{?ext_man}
+%{_mandir}/man1/re2swift.1%{?ext_man}
 %{_mandir}/man1/re2v.1%{?ext_man}
 %{_mandir}/man1/re2zig.1%{?ext_man}
 %dir %{_datadir}/re2c

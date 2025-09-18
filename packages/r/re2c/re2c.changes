@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Sep 14 19:41:18 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.3
+  * Added warning -Wdeprecated-eof-rule, this will be turned to
+    error in the future.
+  * Improved re2c performance (made determinization faster, #544).
+
+-------------------------------------------------------------------
+Wed Apr 23 18:06:19 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.2
+  * Added Swift backend
+  * Added options:
+    + --lang swift
+    + --computed-gotos-relative
+  * Added configurations:
+    + re2c:cgoto:relative, re2c:computed-gotos:relative
+    + re2c:yyfn:throw
+  * Added syntax file code templates:
+    + code:cgoto
+    + code:cgoto_data
+    + code:yytarget_filter
+    + code:type_yyctable
+  * Added syntax file conditionals:
+    + .cgoto.relative
+    + .yyfn.throw
+  * Added some C++ benchmarks without submatch extraction.
+
+-------------------------------------------------------------------
 Thu Mar 13 12:09:16 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.1:
