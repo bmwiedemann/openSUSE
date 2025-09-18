@@ -1,7 +1,7 @@
 #
 # spec file for package mdbook-linkcheck
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,10 +38,10 @@ built-in HTML renderer.
 
 %build
 rm .cargo/config
-%{cargo_build} --all-features --locked
+%{cargo_build} --all-features
 
 %install
-%{cargo_install} --all-features --locked
+%{cargo_install} --all-features
 
 %files
 %license LICENSE
