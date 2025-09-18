@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep 18 08:56:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.26.0:
+  * Prepare release v4.26.0
+  * Add DNS provider for KeyHelp (#2642)
+  * chore: update dependencies (#2644)
+  * servercow: updated API documentation link (#2643)
+  * chore: update dependencies (#2640)
+  * selectelv2: add missing options (#2639)
+  * feat(EAB): fallback to base64.URLEncoding (#2635)
+  * chore: update documentation theme (#2632)
+  * simply: update to API v2 (#2631)
+  * oraclecloud: add aliases (#2627)
+  * Add DNS provider for Binary Lane (#2624)
+  * azuredns: pipeline credential support (#2621)
+  * tests: new DNS router/server/mock (#2613)
+  * chore: bump alidns from v4.55.10 to v4.55.11 (#2601)
+  * Add DNS provider for Tencent EdgeOne (#2606)
+  * bump: github.com/akamai/AkamaiOPEN-edgegrid-golang to v11
+    (#2524)
+  * oraclecloud: handle instance_principal authentication (#2599)
+  * Detach v4.25.2
+
+-------------------------------------------------------------------
 Thu Aug 07 05:04:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.25.2:
