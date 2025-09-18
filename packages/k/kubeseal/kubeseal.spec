@@ -17,7 +17,7 @@
 
 
 Name:           kubeseal
-Version:        0.31.0
+Version:        0.32.2
 Release:        0
 Summary:        CLI for encrypting secrets to SealedSecrets
 License:        Apache-2.0

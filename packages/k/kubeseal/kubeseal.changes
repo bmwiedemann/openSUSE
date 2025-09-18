@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Sep 18 08:37:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.32.2:
+  * Release notes 0.32.2 (#1812)
+  * Fix controller yaml (#1811)
+  * Bump k8s.io/code-generator from 0.33.4 to 0.34.1 (#1809)
+  * Activate dockerfile checks with dependabot (#1808)
+  * Release carvel package 2.17.6 (#1807)
+  * Release chart 2.17.6 (#1806)
+
+-------------------------------------------------------------------
+Thu Sep 18 08:32:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.32.1:
+  * Release notes 0.32.1 (#1805)
+  * Bump distroless version (#1804)
+  * Fix release process (#1803)
+  * Release carvel package 2.17.5 (#1802)
+  * Release chart 2.17.5 (#1800)
+
+-------------------------------------------------------------------
+Thu Sep 18 08:25:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.32.0:
+  * Release notes 0.32 (#1799)
+  * Bump k8s.io/apimachinery from 0.33.4 to 0.34.0 (#1795)
+  * Fix regression mismatching namespace (#1798)
+  * Bump github.com/spf13/pflag from 1.0.7 to 1.0.10 (#1794)
+  * Bump github.com/onsi/ginkgo/v2 from 2.25.1 to 2.25.3 (#1793)
+  * Bump golang.org/x/crypto from 0.41.0 to 0.42.0 (#1797)
+  * Bump github.com/prometheus/client_golang from 1.23.0 to 1.23.2
+    (#1796)
+  * Bump github.com/onsi/gomega from 1.38.0 to 1.38.1 (#1787)
+  * Update Goreleaser to use the latest one version (#1783)
+  * Bump k8s.io/client-go from 0.33.3 to 0.33.4 (#1774)
+  * Bump k8s.io/api from 0.33.3 to 0.33.4 (#1775)
+  * Bump github.com/onsi/ginkgo/v2 from 2.23.4 to 2.24.0 (#1776)
+  * Bump k8s.io/apimachinery from 0.33.3 to 0.33.4 (#1777)
+  * Bump k8s.io/code-generator from 0.33.3 to 0.33.4 (#1778)
+  * Compile again binaries and create containers internally (#1779)
+  * Release carvel package 2.17.4 (#1782)
+  * Release chart 2.17.4 (#1781)
+
+-------------------------------------------------------------------
 Wed Aug 20 12:57:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.31.0:
