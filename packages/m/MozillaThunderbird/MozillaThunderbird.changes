@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Sep 14 06:58:42 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 140.3.0 ESR
+  * Right-clicking 'List-ID' -> 'Unsubscribe' created double encoded
+    draft subject
+  * Thunderbird could crash on startup
+  * Thunderbird could crash when importing mail
+  * Opening Website header link in RSS feed incorrectly re-encoded
+    URL parameters
+  MFSA 2025-78 (bsc#1249391)
+  * CVE-2025-10527 (bmo#1984825)
+    Sandbox escape due to use-after-free in the Graphics:
+    Canvas2D component
+  * CVE-2025-10528 (bmo#1986185)
+    Sandbox escape due to undefined behavior, invalid pointer in
+    the Graphics: Canvas2D component
+  * CVE-2025-10529 (bmo#1970490)
+    Same-origin policy bypass in the Layout component
+  * CVE-2025-10532 (bmo#1979502)
+    Incorrect boundary conditions in the JavaScript: GC component
+  * CVE-2025-10533 (bmo#1980788)
+    Integer overflow in the SVG component
+  * CVE-2025-10536 (bmo#1981502)
+    Information disclosure in the Networking: Cache component
+  * CVE-2025-10537 (bmo#1938220, bmo#1980730, bmo#1981280,
+    bmo#1981283, bmo#1984505, bmo#1985067)
+    Memory safety bugs fixed in Firefox ESR 140.3, Thunderbird
+    ESR 140.3, Firefox 143 and Thunderbird 143
+
+-------------------------------------------------------------------
 Tue Sep  9 10:11:26 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Fix suse_version check for 16.0
