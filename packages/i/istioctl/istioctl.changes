@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 18 13:20:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.27.1:
+  https://istio.io/latest/news/releases/1.27.x/announcing-1.27.1/
+  * Changes
+    - Fixed a change in output of istioctl proxy-status to be more
+      consistent with previous versions. (Issue #57339)
+  
+-------------------------------------------------------------------
 Thu Aug 21 04:58:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.27.0:

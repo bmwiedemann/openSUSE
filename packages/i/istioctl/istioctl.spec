@@ -17,7 +17,7 @@
 
 
 Name:           istioctl
-Version:        1.27.0
+Version:        1.27.1
 Release:        0
 Summary:        CLI for the istio servic mesh in Kubernetes
 License:        Apache-2.0
