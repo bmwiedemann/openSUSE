@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 18 08:57:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.15.27:
+  * release: prepare v0.15.26
+  * Fixed vulns by bumping up go to 1.24.6 (#1424)
+  * release: prepare v0.15.26 (#1421)
+
+-------------------------------------------------------------------
 Wed Jun 25 12:26:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.15.26:
