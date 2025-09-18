@@ -1,7 +1,7 @@
 #
 # spec file for package cups-filters
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,6 +75,42 @@ Patch1:         require_cxx17.patch
 Patch2:         cups-filters-1.28.15-0001-beh-backend-Use-execv-instead-of-system-CVE-2023-24805.patch
 Patch3:         cups-filters-1.28.15-0002-beh-backend-Extra-checks-against-odd-forged-input-CVE-2023-24805.patch
 Patch4:         cups-filters-1.28.15-0003-beh-backend-Further-improvements-CVE-2023-24805.patch
+# Patch108 cups-filters-1.28.17-CVE-2024-47176.patch is based on
+# https://github.com/OpenPrinting/cups-browsed/commit/1d1072a0de573b7850958df614e9ec5b73ea0e0d
+# backported to cups-filters 1.28.17 to fix CVE-2024-47176
+# "cups-browsed binds to UDP INADDR_ANY:631"
+# see https://bugzilla.suse.com/show_bug.cgi?id=1230939
+# and to avoid CVE-2024-47850
+# "cups-browsed can be abused to initiate remote DDoS against third-party targets"
+# see https://bugzilla.suse.com/show_bug.cgi?id=1231294
+# by removing legacy CUPS Browsing support in cups-browsed which is not needed any more.
+# CUPS Browsing was removed in CUPS 1.6 so at that time (in 2012) cups-browsed was introduced
+# to provide backward compatible CUPS Browsing functionality for environments with CUPS before 1.6
+# by automated setup of local print queues for remote printers which are announced via CUPS Browsing.
+# The cups-browsed binds on UDP INADDR_ANY:631 and trusts any packet from any remote printer
+# which triggers a Get-Printer-Attributes IPP request to the announced remote printer
+# to do the automated setup of a local print queue for that remote printer.
+# This can be misused by an attacker with a malicious fake remote printer
+# to run commands via the automated setup of a local print queue for the fake remote printer
+# see the section "Automated print queue setup via cups-browsed"
+# in https://en.opensuse.org/SDB:CUPS_and_SANE_Firewall_settings
+# and https://www.evilsocket.net/2024/09/26/Attacking-UNIX-systems-via-CUPS-Part-I/
+# Legacy CUPS Browsing is a security risk which is not needed any more nowadays.
+# So this patch removes CUPS Browsing support in cups-browsed, see the upstream commit
+# https://github.com/OpenPrinting/cups-browsed/commit/1d1072a0de573b7850958df614e9ec5b73ea0e0d
+Patch108:       cups-filters-1.28.17-CVE-2024-47176.patch
+# Patch109 cups-filters-1.25.0-CVE-2024-47076.patch is based on
+# https://github.com/OpenPrinting/libcupsfilters/commit/95576ec3
+# backported to cups-filters 1.28.17 to fix CVE-2024-47076
+# "lack of input sanitization in cfGetPrinterAttributes5"
+# see https://bugzilla.suse.com/show_bug.cgi?id=1230937
+Patch109:       cups-filters-1.28.17-CVE-2024-47076.patch
+# Patch110 cups-filters-1.28.17-CVE-2024-47175.patch is based on
+# https://github.com/OpenPrinting/libppd/commit/d681747ebf12602cb426725eb8ce2753211e2477
+# backported to cups-filters 1.28.17 to fix CVE-2024-47175
+# "lack of input sanitization in _ppdCreateFromIPP()"
+# see https://bugzilla.suse.com/show_bug.cgi?id=1230932
+Patch110:       cups-filters-1.28.17-CVE-2024-47175.patch
 # Support for cups154 in the SLE12 legacy module is abandoned (by default SLE12 has CUPS 1.7.5)
 # because newer cups-filters versions use stuff that is provided since CUPS > 1.5.4 so that it does
 # no longer build with CUPS 1.5.4 so that cups-filters does not work with CUPS 1.5.4:

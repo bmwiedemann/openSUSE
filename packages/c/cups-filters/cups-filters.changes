@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Sep 18 12:13:39 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
+
+- cups-filters-1.28.17-CVE-2024-47176.patch is based on 
+  https://github.com/OpenPrinting/cups-browsed/commit/1d1072a0de573b7850958df614e9ec5b73ea0e0d
+  backported to cups-filters 1.28.17 to fix CVE-2024-47176
+  "cups-browsed binds to UDP INADDR_ANY:631" (bsc#1230939)
+  and to avoid CVE-2024-47850 "cups-browsed can be abused to
+  initiate remote DDoS against third-party targets" (bsc#1231294)
+  by removing legacy CUPS Browsing support in cups-browsed
+  (introduced 2012) which is no longer needed nowadays.
+  CUPS browsing was removed from CUPS since version 1.6.
+  Legacy CUPS Browsing is a generic security risk, see the
+  section "Automated print queue setup via cups-browsed" in
+  https://en.opensuse.org/SDB:CUPS_and_SANE_Firewall_settings
+
+-------------------------------------------------------------------
+Wed Sep 17 13:58:00 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
+
+- cups-filters-1.28.17-CVE-2024-47076.patch is based on
+  https://github.com/OpenPrinting/libcupsfilters/commit/95576ec3
+  backported to cups-filters 1.28.17 to fix CVE-2024-47076
+  "lack of input sanitization in cfGetPrinterAttributes5"
+  (bsc#1230937)
+
+-------------------------------------------------------------------
+Wed Sep 17 08:33:40 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
+
+- cups-filters-1.28.17-CVE-2024-47175.patch is based on
+  https://github.com/OpenPrinting/libppd/commit/d681747ebf12602cb426725eb8ce2753211e2477
+  backported to cups-filters 1.28.17 to fix CVE-2024-47175
+  "lack of input sanitization in _ppdCreateFromIPP()"
+  (bsc#1230932)
+- In general regarding CUPS and cups-browsed security issues see
+  https://en.opensuse.org/SDB:CUPS_and_SANE_Firewall_settings
+
+-------------------------------------------------------------------
 Mon Apr  7 13:52:37 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to

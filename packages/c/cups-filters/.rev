@@ -486,4 +486,12 @@
     <comment></comment>
     <requestid>1267764</requestid>
   </revision>
+  <revision rev="60" vrev="5">
+    <srcmd5>f2eaf10412d553c0087db9b6ce672cc6</srcmd5>
+    <version>1.28.17</version>
+    <time>1758222493</time>
+    <user>anag_factory</user>
+    <comment>cups-filters fix CVE-2024-47176 bsc#1230939 and avoid CVE-2024-47850 bsc#1231294 (forwarded request 1305790 from jsmeix)</comment>
+    <requestid>1305791</requestid>
+  </revision>
 </revisionlist>
