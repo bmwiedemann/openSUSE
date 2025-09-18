@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Thu Sep 18 06:17:34 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
+
+- Jump from 1.9.8 to 1.15.1
+
+- Update to version 1.15.1:
+  * unixgram: Make fd non-blocking
+
+- Update to version 1.15.0:
+  * clippy: Fix clippy uninlined_format_args
+  * build: Bump virtio-bindings to v0.2.6
+  * nitro: Fix typos
+  * fdt: Gate aarch64 fdt behind a module
+  * README: add libkrun logo
+  * net: support multiple network interfaces
+  * Enable libkrun on RISC-V 64-bit architecture
+  * Add AUTHORS file and update authors in metadata
+  * nitro: Remove vsock proxying + documentation additions
+  * Devices: clean up interrupt sending code
+  * Move/vendor the krun-sys crate in this repository + new version of the crate
+  * Add preliminary Intel TDX support [v2]
+  * init.c: only use KRUN_EXIT_CODE_IOCTL if root is really virtiofs
+  * Introduce an API for hooking up GPU display (callbacks)
+  * rustc: Fix mismatched_lifetime_syntaxes
+  * aarch64: Expose pointer authentication to guests
+  * Add support for EDID display information
+  * Simplify booting from block devices
+  * net: implement a backend for tap devices
+  * KRUN_* environment variables should be preserved when a custom kernel cmdline is configured
+  * Implement a ENOMEM workaround for our integration tests
+  * libkrun: on legacy interface delay net creation
+  * console: avoid logging error on ENOTTY
+  * init: translate unicode strings into ascii
+
+- Update to version 1.14.0:
+  * Tweak the Makefile to decouple EFI and GPU features
+  * Update rust-vmm/kvm dependencies
+  * Preliminary support for AWS Nitro Enclaves
+  * misc: Use align module form vmm-sys-util
+  * vmm: fix worker thread panic
+  * Fix main breakage
+  * Fix the library install name and path
+  * arch: aarch64: Provide initrd_size to arch_memory_regions
+
+- Update to version 1.13.0:
+  * examples: Fix connect_to_passt function by @mtjhrc in #336
+  * Introduce a new krun_init_log() API by @mtjhrc in #326
+  * Remove orphaned source files which are never used by @mtjhrc in #337
+  * hvf: mask SME in ID_AA64PFR1_EL1 by @slp in #338
+  * arch/aarch64: replace offset__of with a safe macro by @slp in #339
+  * vmm: bump kbs-types and drop tee-sev by @slp in #340
+
+- update to version 1.12.0:
+  * Add support for userspace IOAPIC
+  * include: Add #ifndef header guards
+  * Update KVM dependencies
+  * tee/snp: Update SEV-SNP APIs, use KVM guest_memfd
+  * Fix clippy warnings
+  * Implement the ability to record the exit code from the entrypoint in userspace
+  * hvf: Add API to verify Nested Virt is supported
+  * arch_gen: add Cargo edition
+  * Consolidate worker threads
+
+- Update to version 1.11.0:
+  * fix krunkit typo in README
+  * Drop bare SEV in favor of SEV-ES
+  * devices/console: Fix a bug which would cause libkrun to hang on exit
+  * demote WARN log to DEBUG
+  * Connect to gvproxy socket
+  * Fix incremental builds using make
+  * Fix clippy warnings
+  * tee: Remove legacy AMD-SEV module
+  * libkrun.pc.in: add libs and cflags directories
+  * Introduce an E2E testing framework
+  * init: escape json strings
+  * Remove vendor-ed imago crate
+  * CODEOWNERS: add jakecorrenti
+  * upgrade imago to 0.1.4
+  * Support loading external kernels
+  * libkrun: avoid failing when libkrunfw is missing
+  * vsock: TCP test + fix a bug leading to an error in TCP connect call in guest
+  * Remove amd-sev specific cmdline
+  * ci: add integration tests
+  * libkrun: fix shutdown_efd for efi flavor
+  * libkrun/macos: only spawn helper thread with a gpu
+  * ci: consolidate tests on github runners
+  * Added new functions: krun_setuid, krun_setgid
+  * Revert "vsock: Fix TCP connection bug" and implement a different approach
+  * Generalize interrupt controllers and implement support for the in-kernel GICv3 in HVF
+  * Implement support for HVF Nested Virtualization
+  * Another round of clippy fixes and deprecated unit tests
+  * devices: set CacheType::Unsafe for macOS raw disks
+  * libkrun: stop using patchelf
+
+- Update to version 1.10.0:
+  * Add support for Qcow2 disk images
+  * Fix Code Quality failure
+  * hvf: ensure vcpus run in the right thread
+  * Emulate GICv3 on macos
+  * virtio/fs: Check capabilities & act accordingly
+  * net: Allow creating vsocks in listen mode.
+  * Adopt latest clippy suggestions
+  * Add pipewire cross domain channel type.
+  * Don't use SO_REUSEPORT with UNIX sockets
+
+-------------------------------------------------------------------
 Mon Nov 18 23:58:38 UTC 2024 - jfehlig@suse.com
 
 - Update to version 1.9.8:

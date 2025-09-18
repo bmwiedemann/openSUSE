@@ -1,7 +1,7 @@
 #
 # spec file for package libkrun
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ complexity that comes from Virtual Machine management, offering users a simple C
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           libkrun
-Version:        1.9.8
+Version:        1.15.1
 Release:        0
 Summary:        A dynamic library providing KVM-based process isolation capabilities
 License:        Apache-2.0
@@ -40,19 +40,28 @@ URL:            https://github.com/containers/libkrun
 Source0:        libkrun-%{version}.tar.gz
 Source1:        vendor.tar.zst
 ExclusiveArch:  x86_64 aarch64
+BuildRequires:  binutils
 BuildRequires:  cargo >= 1.43.0
+BuildRequires:  clang-devel
 BuildRequires:  gcc
 BuildRequires:  glibc-static
-BuildRequires:  libkrunfw-devel >= 3.6.3
+BuildRequires:  libcurl-devel
+BuildRequires:  libdrm-devel
+BuildRequires:  libepoxy-devel
 BuildRequires:  libopenssl-devel
+BuildRequires:  openssl-devel
 BuildRequires:  patchelf
+BuildRequires:  pipewire-devel
 BuildRequires:  rust
-%if %{sev}
-BuildRequires:  libkrunfw-sev-devel >= 3.6.3
-%endif
+BuildRequires:  virglrenderer-devel
+#%if %{sev}
+#BuildRequires:  libkrunfw-sev-devel >= 4.0.0
+#%endif
 %ifarch aarch64
 BuildRequires:  libfdt-devel >= 1.6.0
 %endif
+# Starting 1.11.0, libkrunfw is no longer build-time linked.
+Requires:       libkrunfw-devel >= 4.0.0
 # For handling the transition from (very) old versions of the packages
 Conflicts:      libkrun-devel <= 0.1.7
 Conflicts:      libkrun0 <= 0.1.7
@@ -108,7 +117,7 @@ use libkrun-sev Virtualization-based process isolation capabilities.
 %build
 export RUSTFLAGS=%{rustflags}
 
-%make_build
+%make_build GPU=1 BLK=1 NET=1 SND=1
 
 %if %{sev}
 %make_build SEV=1
@@ -133,6 +142,7 @@ export RUSTFLAGS=%{rustflags}
 %{_libdir}/libkrun.so
 %{_libdir}/pkgconfig/libkrun.pc
 %{_includedir}/libkrun.h
+%{_includedir}/libkrun_display.h
 
 %post -n %{name}1 -p /sbin/ldconfig
 
