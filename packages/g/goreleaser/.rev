@@ -373,4 +373,26 @@
   * chore: auto-update generated files (forwarded request 1302603 from ph03nix)</comment>
     <requestid>1302605</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c14f8c1b4e68a0b37cb5034aeb127d76</srcmd5>
+    <version>2.12.2</version>
+    <time>1758222639</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.12.2:
+  * chore: auto-update generated files
+  * ci: enrich SBOMs
+  * chore(deps): bump actions/checkout from 4.3.0 to 5.0.0 (#6093)
+  * ci: pin all actions (#6092)
+  * ci: add moderator (#6091)
+  * ci(sec): improve codeql (#6090)
+  * fix(dockers/v2): properly support pywheel (#6089)
+  * chore(deps): bump mkdocs-material from 9.6.19 to 9.6.20 in /www (#6088)
+  * chore(deps): bump github.com/charmbracelet/fang from 0.4.0 to 0.4.1 (#6087)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.144.1 to 0.145.0 (#6086)
+  * chore(deps): bump anchore/scan-action from 6 to 7 (#6085)
+  * chore(deps): bump anchore/sbom-action from 0.20.5 to 0.20.6 (#6084)
+  * chore: auto-update generated files
+  * chore: auto-update generated files (forwarded request 1305715 from ph03nix)</comment>
+    <requestid>1305778</requestid>
+  </revision>
 </revisionlist>

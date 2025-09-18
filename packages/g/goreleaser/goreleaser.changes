@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Thu Sep 18 07:17:28 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.12.2:
+  * chore: auto-update generated files
+  * ci: enrich SBOMs
+  * chore(deps): bump actions/checkout from 4.3.0 to 5.0.0 (#6093)
+  * ci: pin all actions (#6092)
+  * ci: add moderator (#6091)
+  * ci(sec): improve codeql (#6090)
+  * fix(dockers/v2): properly support pywheel (#6089)
+  * chore(deps): bump mkdocs-material from 9.6.19 to 9.6.20 in /www (#6088)
+  * chore(deps): bump github.com/charmbracelet/fang from 0.4.0 to 0.4.1 (#6087)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.144.1 to 0.145.0 (#6086)
+  * chore(deps): bump anchore/scan-action from 6 to 7 (#6085)
+  * chore(deps): bump anchore/sbom-action from 0.20.5 to 0.20.6 (#6084)
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+
+-------------------------------------------------------------------
+Wed Sep 17 06:14:52 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.12.1:
+  * docs: fix typo in signs config section (#6083)
+  * fix(poetry): schema, import
+  * ci(sec): fix codeql config
+  * chore(deps): bump sigstore/cosign-installer from 3.9.2 to 3.10.0 (#6081)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.143.3 to 0.144.1 (#6080)
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * docs: irp
+  * ci: fix generate job
+  * ci: fix generate job
+  * ci: fix generate job
+  * chore: auto-update generated files
+  * ci: fix generate job
+  * ci: improve license checks
+  * fix(blob): disable ssl param name (#6048)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from 1.88.0 to 1.88.1 (#6077)
+  * chore(deps): bump github/codeql-action from 3.30.2 to 3.30.3 (#6074)
+  * chore(deps): bump golang.org/x/tools from 0.36.0 to 0.37.0 (#6076)
+  * chore(deps): bump github.com/muesli/mango-cobra from 1.2.0 to 1.3.0 (#6075)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.143.1 to 0.143.3 (#6071)
+  * chore(deps): bump github/codeql-action from 3.30.1 to 3.30.2 (#6070)
+  * ci: check dependencies on build
+  * chore(deps): update go-version
+  * docs: update security.md
+  * chore: update schema
+  * chore(deps): bump golang.org/x/crypto from 0.41.0 to 0.42.0 (#6069)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from 1.87.3 to 1.88.0 (#6068)
+  * chore(deps): bump github.com/docker/docker from 28.3.3+incompatible to 28.4.0+incompatible (#6067)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.142.6 to 0.143.1 (#6066)
+  * fix: lint issues
+  * chore(deps): bump mkdocs-material from 9.6.18 to 9.6.19 in /www (#6064)
+  * fix(schema): Introduce BinarySign struct to fix schema bug (#6058)
+  * chore(deps): bump golang.org/x/text from 0.28.0 to 0.29.0 (#6063)
+  * chore(deps): bump golang.org/x/oauth2 from 0.30.0 to 0.31.0 (#6061)
+  * chore(deps): bump github/codeql-action from 3.30.0 to 3.30.1 (#6060)
+  * chore(deps): bump golang from 1.25.0-alpine to 1.25.1-alpine (#6059)
+  * chore: remove .envrc, flake (#6056)
+  * fix(docker/v2): properly set manifest annotations (#6053)
+  * chore(deps): bump codecov/codecov-action from 5.5.0 to 5.5.1 (#6055)
+  * chore(deps): bump actions/github-script from 7.0.1 to 8.0.0 (#6054)
+  * fix(docker/v2): improve error message
+  * chore(go): 1.25.1
+  * chore(deps): bump actions/setup-go from 5.5.0 to 6.0.0 (#6052)
+  * docs: Fixed typo in dockers_v2. Should be images for string list. (#6051)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.142.5 to 0.142.6 (#6050)
+  * chore(deps): bump github.com/mark3labs/mcp-go from 0.38.0 to 0.39.1 (#6049)
+  * fix(docker/v2): do not warn skip docker/v2 on production builds (#6047)
+  * docs: update
+  * fix(blob): artifact filter
+  * chore(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1 (#6045)
+  * chore(deps): bump github/codeql-action from 3.29.11 to 3.30.0 (#6044)
+  * chore: auto-update generated files
+  * docs: announce v2.12 (#6043)
+  * chore: auto-update generated files
+
+-------------------------------------------------------------------
 Wed Sep 03 11:52:53 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.12.0:
