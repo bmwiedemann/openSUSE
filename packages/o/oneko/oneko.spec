@@ -1,7 +1,7 @@
 #
 # spec file for package oneko
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,10 +44,10 @@ cursor.
 %build
 %global optflags %{optflags} -fpermissive
 xmkmf -a
-make all %{?_smp_mflags}
+make all %{?_smp_mflags} MANPATH=%{_mandir}
 
 %install
-%make_install install.man
+%make_install install.man MANPATH=%{_mandir}
 mv README README.jp
 
 %files
