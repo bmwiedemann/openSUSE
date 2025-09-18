@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 18 13:16:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.47.4:
+  * Bug Fixes
+    - buildah,host-cleanup: protect temp dangling images from
+      parallel "werf host cleanup" process (#7050) (d953ef2)
+
+-------------------------------------------------------------------
+Thu Sep 18 13:12:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.47.3:
+  * Bug Fixes
+    - build,stapel: fix fromArtifact error (a0a4745)
+
+-------------------------------------------------------------------
 Fri Aug 22 05:05:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.47.2:
