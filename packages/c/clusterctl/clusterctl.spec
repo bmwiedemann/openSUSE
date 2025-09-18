@@ -16,11 +16,11 @@
 #
 
 
-%define version_git_major 1
-%define version_git_minor 8
+%define version_git_major %(echo %{version} | awk 'BEGIN { FS=\".\"}; {print $1}')
+%define version_git_minor %(echo %{version} | awk 'BEGIN { FS=\".\"}; {print $2}')
 
 Name:           clusterctl
-Version:        1.11.0
+Version:        1.11.1
 Release:        0
 Summary:        CLI tool to handle the lifecycle of a Cluster API management cluster
 License:        Apache-2.0

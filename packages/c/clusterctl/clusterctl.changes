@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 18 13:08:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.11.1:
+  Full changelog:
+  https://github.com/kubernetes-sigs/cluster-api/releases/tag/v1.11.1
+  * clusterctl: Allow metadata.yaml's Kind to be empty (#12715)
+  * Dependency: Bump github.com/go-viper/mapstructure/v2 to fix CVE
+    (#12680)
+  * Dependency: Bump to envtest v1.34.0 (#12706)
+
+-------------------------------------------------------------------
 Thu Aug 21 05:14:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.11.0:
