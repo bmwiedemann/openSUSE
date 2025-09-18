@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 18 05:08:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.11.1:
+  https://github.com/siderolabs/talos/releases/tag/v1.11.1
+  * no CLI-related changes in the Changelog
+  * Dependency changes
+    - cloud.google.com/go/compute/metadata v0.7.0 -> v0.8.0
+    - github.com/aws/aws-sdk-go-v2/config v1.29.17 -> v1.31.2
+    - github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.16.32 ->
+      v1.18.4
+    - github.com/aws/smithy-go v1.22.4 -> v1.22.5
+    - github.com/miekg/dns v1.1.67 -> v1.1.68
+    - github.com/siderolabs/pkgs v1.11.0-15-g2ac857a ->
+      v1.11.0-18-g1a25681
+    - github.com/siderolabs/talos/pkg/machinery v1.11.0 -> v1.11.1
+    - golang.org/x/net v0.42.0 -> v0.43.0
+    - golang.org/x/sys v0.34.0 -> v0.35.0
+    - golang.org/x/term v0.33.0 -> v0.34.0
+    - golang.org/x/text v0.27.0 -> v0.28.0
+    - google.golang.org/grpc v1.73.0 -> v1.75.0
+    - google.golang.org/protobuf v1.36.6 -> v1.36.8
+
+-------------------------------------------------------------------
 Tue Sep  2 09:14:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.11.0:
