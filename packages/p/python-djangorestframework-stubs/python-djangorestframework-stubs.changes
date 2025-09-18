@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 18 05:48:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to version 3.16.2:
+  * Remove deprecated schema methods from BaseFilterProtocol (#809)
+  * Tests: Update mypy error message (#798)
+  * Tests: Cleanup usages of obsolete Union/Optional style (#792)
+  * Tests: Fix compatbility with mypy 1.17 due to bump in django-stubs (#791)
+  * Update mypy requirement from <1.17,>=1.13 to >=1.13,<1.18 (#787)
+- Drop patch support-new-mypy.patch, included upstream.
+
+-------------------------------------------------------------------
 Tue Aug  5 06:45:20 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to version 3.16.1:

@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/typeddjango/djangorestframework-stubs.git</param>
     <param name="scm">git</param>
-    <param name="revision">3.16.1</param>
+    <param name="revision">3.16.2</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
   </service>

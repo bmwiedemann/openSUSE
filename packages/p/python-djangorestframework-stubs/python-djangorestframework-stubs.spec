@@ -27,14 +27,12 @@
 %define package_name djangorestframework_stubs
 %{?sle15_python_module_pythons}
 Name:           python-djangorestframework-stubs%{psuffix}
-Version:        3.16.1
+Version:        3.16.2
 Release:        0
 Summary:        PEP-484 stubs for django-rest-framework
 License:        MIT
 URL:            https://github.com/typeddjango/djangorestframework-stubs
 Source:         %{short_name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#typeddjango/djangorestframework-stubs#791
-Patch0:         support-new-mypy.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

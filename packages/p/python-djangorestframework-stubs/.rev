@@ -19,4 +19,18 @@
   * Support mypy 1.17.0 changes.</comment>
     <requestid>1297636</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7b077f6fb8c59e5a71fcf0f3f1a843e0</srcmd5>
+    <version>3.16.2</version>
+    <time>1758222642</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.16.2:
+  * Remove deprecated schema methods from BaseFilterProtocol (#809)
+  * Tests: Update mypy error message (#798)
+  * Tests: Cleanup usages of obsolete Union/Optional style (#792)
+  * Tests: Fix compatbility with mypy 1.17 due to bump in django-stubs (#791)
+  * Update mypy requirement from &lt;1.17,&gt;=1.13 to &gt;=1.13,&lt;1.18 (#787)
+- Drop patch support-new-mypy.patch, included upstream.</comment>
+    <requestid>1305633</requestid>
+  </revision>
 </revisionlist>
