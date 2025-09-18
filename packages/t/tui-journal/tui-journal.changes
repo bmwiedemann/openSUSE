@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 18 04:57:47 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.16.1:
+  * Remove Dependencies to OpenSSL & Native TLS
+  * Add CLI arg --config for configuration directory and themes
+  * Add Custom themes on user level & Styles improvements
+  * Config for extension of temp file in external editor
+- Remove openssl-devel BuildRequires: unneeded anymore
+
+-------------------------------------------------------------------
 Sun Dec  8 21:48:54 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.13.1:

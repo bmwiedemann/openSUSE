@@ -2,7 +2,7 @@
 # spec file for package tui-journal
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024 mantarimay
+# Copyright (c) 2025 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %bcond_without test
 Name:           tui-journal
-Version:        0.13.1
+Version:        0.16.1
 Release:        0
 Summary:        Write and manage journals/notes from the terminal
 License:        MIT
@@ -27,7 +27,6 @@ URL:            https://github.com/AmmarAbouZor/tui-journal
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-BuildRequires:  openssl-devel
 
 %description
 TUI-Journal is a terminal-based application written in Rust that allows
