@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 18 05:06:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.11:
+  * Finalize PR 114 Configuration command to Manage System
+    Configuration (#521)
+  * feat:add command to manage user passwords (#524)
+  * enhancement: Support for querying in project list command
+    (#533)
+  * docs: add instructions for docs update (#536)
+  * build(deps): bump github.com/stretchr/testify from 1.10.0 to
+    1.11.0 (#537)
+
+-------------------------------------------------------------------
 Wed Aug 20 06:10:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.10:
