@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Thu Sep 18 07:32:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.43.0:
+  * fail DB build (optionally) on missing fix date (#694)
+
+-------------------------------------------------------------------
+Thu Sep 18 07:26:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.42.1:
+  * chore(deps): update anchore dependencies (#691)
+  * chore(deps): Bump 8398a7/action-slack from 3.18.0 to 3.19.0
+    (#688)
+  * chore(deps): Bump gorm.io/gorm from 1.30.5 to 1.31.0 (#689)
+  * chore(deps): Bump astral-sh/setup-uv in
+    /.github/actions/bootstrap (#690)
+  * chore(deps): Bump zizmorcore/zizmor-action from 0.1.2 to 0.2.0
+    (#687)
+
+-------------------------------------------------------------------
+Thu Sep 18 07:22:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.42.0:
+  * Added Features
+    - Add support for annotated openvex [#685 @wagoodman]
+  * Dependencies
+    - chore(deps): Bump github.com/spf13/viper from 1.20.1 to
+      1.21.0 (#676)
+    - chore(deps): Bump github.com/spf13/afero from 1.14.0 to
+      1.15.0 (#679)
+    - chore(deps): Bump github.com/hashicorp/go-getter from 1.7.9
+      to 1.8.0 (#673)
+    - chore(deps): Bump zizmorcore/zizmor-action from 0.1.1 to
+      0.1.2 (#637)
+    - chore(deps): Bump golang.org/x/text from 0.28.0 to 0.29.0
+      (#677)
+    - chore(deps): update tools to latest versions (#675)
+    - chore(deps): Bump astral-sh/setup-uv in
+      /.github/actions/bootstrap (#664)
+    - chore(deps): Bump gorm.io/gorm from 1.30.2 to 1.30.5 (#678)
+    - chore(deps): Bump github.com/openvex/go-vex from 0.2.5 to
+      0.2.6 (#680)
+    - chore(deps): Bump golang.org/x/sync from 0.16.0 to 0.17.0
+      (#674)
+
+-------------------------------------------------------------------
+Thu Sep 18 07:16:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.41.0:
+  * Added Features
+    - Add unaffected package and CPE stores [#648 @wagoodman]
+    - add vex as valid vulnerability format [#634 @CrosleyZack]
+  * Bug Fixes
+    - Use results db explicitly in build [#683 @wagoodman]
+    - Validate only the results.db file [#682 @wagoodman]
+    - Some APK vulnerabilities are no longer reported by grype in
+      the latest grype-db [#681]
+  * Dependencies
+    - chore(deps): Bump github.com/spf13/pflag from 1.0.7 to 1.0.10
+      (#667)
+    - chore(deps): update tools to latest versions (#666)
+
+-------------------------------------------------------------------
 Tue Sep 02 05:51:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.40.0:
