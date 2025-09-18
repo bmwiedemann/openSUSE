@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 17 16:15:56 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.32.13:
+  + Another brown paperbag
+- Changes from version 0.32.12:
+  + Brown paperbag release due to broken appdata in .11
+- Chnages from version 0.32.11:
+  + Fix wrong "Error -53" dialog when plugging in phone
+  + Fix issue when Google Photos returns empty response
+  + Fix assertion when deleting an image in fullscreen view
+  + Add a work-around comments with "charset=" prefix
+  + Fix publishing Google Photos
+- Add 70aedc48.patch: fix duplicate versions in appdata
+
+-------------------------------------------------------------------
 Tue Oct 29 07:53:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.32.10:
