@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Sep 18 05:11:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.100.0:
+  * Added Features
+    - Add unaffected package and CPE stores [#2888 @wagoodman]
+    - use unaffected match table to remove appropriate vulns [#2886
+      @CrosleyZack]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#2944)
+    - chore(deps): bump golang.org/x/tools from 0.36.0 to 0.37.0
+      (#2938)
+    - chore(deps): update tools to latest versions (#2940)
+    - chore(deps): bump gorm.io/gorm from 1.30.5 to 1.31.0 (#2936)
+    - chore(deps): bump 8398a7/action-slack from 3.18.0 to 3.19.0
+      (#2941)
+    - chore(deps): bump zizmorcore/zizmor-action from 0.1.2 to
+      0.2.0 (#2942)
+    - chore(deps): bump sigstore/cosign-installer from 3.9.2 to
+      3.10.0 (#2943)
+    - chore(deps): bump github.com/charmbracelet/bubbletea from
+      1.3.8 to 1.3.9 (#2937)
+    - chore(deps): bump github.com/hashicorp/go-getter from 1.7.9
+      to 1.8.0 (#2923)
+    - chore(deps): bump gorm.io/gorm from 1.30.3 to 1.30.5 (#2925)
+    - chore(deps): bump github.com/openvex/go-vex from 0.2.5 to
+      0.2.6 (#2922)
+    - chore(deps): bump github.com/spf13/afero from 1.14.0 to
+      1.15.0 (#2928)
+    - chore(deps): bump github.com/charmbracelet/bubbletea from
+      1.3.6 to 1.3.8 (#2929)
+    - chore(deps): update tools to latest versions (#2931)
+    - chore(deps): bump github/codeql-action from 3.30.1 to 3.30.3
+      (#2934)
+    - chore(deps): bump golang.org/x/time from 0.12.0 to 0.13.0
+      (#2926)
+    - chore(deps): bump github.com/docker/docker (#2911)
+    - chore(deps): bump gorm.io/gorm from 1.30.2 to 1.30.3 (#2913)
+    - chore(deps): bump actions/github-script from 7 to 8 (#2914)
+    - chore(deps): bump actions/setup-python in
+      /.github/actions/bootstrap (#2915)
+    - chore(deps): bump actions/setup-go in
+      /.github/actions/bootstrap (#2916)
+    - chore(deps): bump github/codeql-action from 3.30.0 to 3.30.1
+      (#2920)
+    - chore(deps): update tools to latest versions (#2909)
+    - chore(deps): bump github.com/spf13/cobra from 1.9.1 to 1.10.1
+      (#2907)
+    - chore(deps): bump github.com/ulikunitz/xz from 0.5.13 to
+      0.5.15 (#2903)
+    - chore(deps): bump github/codeql-action from 3.29.11 to 3.30.0
+      (#2908)
+
+-------------------------------------------------------------------
 Tue Sep 02 05:51:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.99.1:
