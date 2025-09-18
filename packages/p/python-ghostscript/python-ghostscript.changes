@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Sep 18 11:52:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.8.1
+  * Fix crash on Windows for Python >= 3.12, caused by
+    distutils module been removed from Python 3.12.
+- from version 0.8
+  * Fix unnecessary runtime dependency on setuptools.
+  * Explicitly require a first argument called "progname". This is to
+    avoid the common error not passing a progname by pointing users to it.
+    This is fully backward compatible
+  * Issue a warning if first argument looks like an option.
+  * Fix crash if gs.new_instance() fails.
+  * Breaking change (only effecting the low-level API):
+    init_with_args() no longer catches e_Quit,
+    but raises an exception like for any other error except e_Info.
+  * Pass correct value to gslib if user_error is set.
+  * Enhance documentation
+  * Add some doc-strings.
+  * Fix some linting issues.
+  * Add testing with Python 3.10, 3.11, 3.12 and 3.13.
+  * Revise testing, packaging and CI/CD.
+  * Make tests independent of fonts, thus avoiding test failures.
+  * Enhance examples.
+- Drop python-ghostscript-update-tests.patch, fixed upstream
+- Remove CHANGES.txt from %doc section
+
+-------------------------------------------------------------------
 Tue Sep 17 13:19:05 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add testimage.bmp to proper sources, delete _service

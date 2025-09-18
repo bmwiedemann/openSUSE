@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ghostscript
-Version:        0.7
+Version:        0.8.1
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Python interface to the Ghostscript C-API
@@ -26,9 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://gitlab.com/pdftools/python-ghostscript
 Source:         https://files.pythonhosted.org/packages/source/g/ghostscript/ghostscript-%{version}.tar.gz
 Source1:        https://gitlab.com/pdftools/python-ghostscript/-/raw/develop/test/testimage.bmp
-# Previous tests were dependent on fonts and generated different results
-# depending on ghostscript version and platform
-Patch1:         python-ghostscript-update-tests.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -62,7 +59,7 @@ cp %{SOURCE1} test
 %pytest -v
 
 %files %{python_files}
-%doc CHANGES.txt README.rst
+%doc README.rst
 %license COPYING
 %{python_sitelib}/ghostscript
 %{python_sitelib}/ghostscript-%{version}*-info
